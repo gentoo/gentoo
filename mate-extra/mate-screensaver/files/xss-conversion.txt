@@ -1,0 +1,22 @@
+There is a conversion script which you can use to convert XScreenSaver
+screensavers to the gnome-screensaver format.  The conversion script is located
+in the documentation directory (/usr/share/doc/${PF}/).
+
+The migrate-xscreensaver-config.sh and xscreensaver-config.xsl files will be
+needed to convert the screensaver.  Make sure to enable the executable bit on
+the script (chmod +x migrate-xscreensaver-config.sh).
+
+The script takes the module to convert and creates a .desktop file corresponding
+to the module.
+
+migrate-xscreensaver-config.sh /usr/share/xscreensaver/config/*.xml
+
+The above command should convert all xscreensaver modules.
+
+You must copy the desktop files into /usr/share/applications/gnome-screensavers (cp
+*.desktop /usr/share/applications/screensavers), and the executables from
+/usr/lib/misc/xscreensaver into /usr/libexec/gnome-screensaver
+(cp /usr/lib/misc/xscreensaver/* /usr/libexec/gnome-screensaver)
+
+Going to the gnome-screensaver-preferences dialog should now show the new
+modules in the list.

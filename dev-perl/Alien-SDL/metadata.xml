@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <herd>games</herd>
+  <upstream>
+    <remote-id type="cpan">Alien-SDL</remote-id>
+    <remote-id type="cpan-module">Alien::SDL</remote-id>
+  </upstream>
+</pkgmetadata>

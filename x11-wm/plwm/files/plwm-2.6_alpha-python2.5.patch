@@ -1,0 +1,21 @@
+diff -ur PLWM-2.6a.orig/plwm/inspect.py PLWM-2.6a/plwm/inspect.py
+--- PLWM-2.6a.orig/plwm/inspect.py	2007-06-29 14:40:54.000000000 +0200
++++ PLWM-2.6a/plwm/inspect.py	2007-06-29 14:41:25.000000000 +0200
+@@ -23,7 +23,7 @@
+ import sys
+ import traceback
+ import struct
+-import whrandom
++import random
+ import cStringIO
+ 
+ InspectFileEventType = event.new_event_type()
+@@ -75,7 +75,7 @@
+ 	# portnumber in a property on screen 0
+ 
+ 	addr, port = self.inspect_socket.getsockname()
+-	self.inspect_cookie = whrandom.randint(0, 0x7ffffffe)
++	self.inspect_cookie = random.randint(0, 0x7ffffffe)
+ 	
+ 	self.default_screen.root.change_property(self.PLWM_INSPECT_SERVER,
+ 					     self.PLWM_INSPECT_SERVER,

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<use>
+		<flag name="network">Enable support for multiplayer via <pkg>media-libs/sdl-net</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">skfans</remote-id>
+	</upstream>
+</pkgmetadata>

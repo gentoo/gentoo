@@ -1,0 +1,55 @@
+Author: Roland Rosenfeld <roland@debian.org>
+Description: Add a format string to fprintf()/sprintf() call instead
+ of directly printing out Err_Mem.  This is needed by harding options.
+
+--- a/fig2dev/trans_spline.c
++++ b/fig2dev/trans_spline.c
+@@ -648,7 +648,7 @@
+     F_control	   *cp;
+ 
+     if ((cp = (F_control *) malloc(CONTROL_SIZE)) == NULL)
+-	fprintf(stderr,Err_mem);
++	fprintf(stderr, "%s", Err_mem);
+     return cp;
+ }
+ 
+@@ -659,7 +659,7 @@
+     F_line	   *l;
+ 
+     if ((l = (F_line *) malloc(LINOBJ_SIZE)) == NULL)
+-	fprintf(stderr,Err_mem);
++	fprintf(stderr, "%s", Err_mem);
+     l->pic = NULL;
+     l->next = NULL;
+     l->for_arrow = NULL;
+--- a/fig2dev/dev/gencgm.c
++++ b/fig2dev/dev/gencgm.c
+@@ -139,7 +139,7 @@
+   
+   if (from) {
+ 	figname = malloc(strlen(from)+1);
+-	sprintf(figname, from);
++	sprintf(figname, "%s", from);
+ 	p = strrchr(figname, '/');
+ 	if (p) 
+ 	    figname = p+1;		/* remove path from name for comment in file */
+--- a/fig2dev/dev/genmp.c
++++ b/fig2dev/dev/genmp.c
+@@ -1150,7 +1150,7 @@
+ 	    }
+ 	} else {
+ 	    /* special text in latex mode: just write the text. */
+-	    fprintf(tfp, t->cstring);
++	    fprintf(tfp, "%s", t->cstring);
+ 	}
+ 	fprintf(tfp," etex;\n");
+ 
+@@ -1164,7 +1164,7 @@
+ 
+ 	fprintf(tfp,"  picture q;\n");
+ 	fprintf(tfp,"  q=thelabel.urt(\"");
+-        fprintf(tfp, t->cstring);
++        fprintf(tfp, "%s", t->cstring);
+ 	fprintf(tfp, "\" infont ");
+ 	if (t->font<0) {
+ 	    fprintf(tfp, "defaultfont");

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>naota@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="audit">
+      Enable support for sys-process/audit.
+    </flag>
+    <flag name="demangle">
+      Enable C++ symbol name demangling, using libbfd from
+      <pkg>sys-devel/binutils</pkg>. When this flag is enabled, the
+      package will have to be rebuilt after every version bump of
+      binutils.
+    </flag>
+    <flag name="doc">
+      Build documentation and man pages. With this USE flag disabled,
+      the --help parameter for perf and its sub-tools will not be
+      available. This is optional because it depends on a few
+      documentation handling tools that are not always welcome on user
+      systems.
+    </flag>
+    <flag name="perl">
+      Add support for Perl as a scripting language for perf tools.
+    </flag>
+    <flag name="unwind">
+      Use sys-libs/libunwind for frame unwinding support.
+    </flag>
+  </use>
+</pkgmetadata>

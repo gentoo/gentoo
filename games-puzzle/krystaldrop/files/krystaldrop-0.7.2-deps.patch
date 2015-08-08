@@ -1,0 +1,26 @@
+Index: krystaldrop/Makefile.dep
+===================================================================
+--- krystaldrop.orig/Makefile.dep
++++ krystaldrop/Makefile.dep
+@@ -10,7 +10,6 @@ default:
+ $(DEP): dep/%.d: %.cpp
+ 	@test -d dep/$(dir $*) || mkdir -p dep/$(dir $*)
+ 	@$(SHELL) -ec '$(CC) $(CCFLAGS) $(DCFLAGS) $< \
+-	| sed '\''s/$(subst .,\.,$(notdir $*))\.o[ :]*/$(subst /,\/,$*).o \
+-	dep\/$(subst /,\/,$*).d : /g'\'' > $@; \
++	| sed '\''s/$(subst .,\.,$(notdir $*))\.o[ :]*/$(subst /,\/,$*).o dep\/$(subst /,\/,$*).d : /g'\'' > $@; \
+ 	[ -s $@ ] || rm -f $@'
+ 
+Index: krystaldrop/Sources/Makefile.dep
+===================================================================
+--- krystaldrop.orig/Sources/Makefile.dep
++++ krystaldrop/Sources/Makefile.dep
+@@ -10,7 +10,6 @@ default:
+ $(DEP): dep/%.d: %.cpp
+ 	@test -d dep/$(dir $*) || mkdir -p dep/$(dir $*)
+ 	@$(SHELL) -ec '$(CC) $(CCFLAGS) $(DCFLAGS) $< \
+-	| sed '\''s/$(subst .,\.,$(notdir $*))\.o[ :]*/$(subst /,\/,$*).o \
+-	dep\/$(subst /,\/,$*).d : /g'\'' > $@; \
++	| sed '\''s/$(subst .,\.,$(notdir $*))\.o[ :]*/$(subst /,\/,$*).o dep\/$(subst /,\/,$*).d : /g'\'' > $@; \
+ 	[ -s $@ ] || rm -f $@'
+ 

@@ -1,0 +1,152 @@
+diff --git a/Makefile b/Makefile
+index 7e00197..b078f06 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,10 +4,11 @@
+ #  Last modified: Jun/30/2010
+ #
+ 
+-CFLAGS		= -O3 -lm
++CFLAGS		?= -O3 
++LIBS			=-lm
+ 
+ TARGETS		= xyza2pipe ucsf2pipe nv2pipe xeasy2pipe azara2pipe vnmr2pipe xwnmr2pipe\
+-		pipe2xyza pipe2ucsf pipe2nv pipe2xeasy pipe2azara\
++		pipe2xyza pipe2ucsf-olivia pipe2nv pipe2xeasy pipe2azara-olivia \
+ 		pipe2proj add2pipe adducsf2pipe addnv2pipe addxeasy2pipe addazara2pipe addvnmr2pipe addxwnmr2pipe
+ 
+ OBJECTS_C	= checklabel.o checkxyza.o cnvhdr.o\
+@@ -60,86 +61,90 @@ clean:
+ 	rm -f $(TARGETS) addxyza2pipe
+ 
+ .o:
+-	$(CC) $< -c -o $@ $(CFLAGS)
++	$(CC) $(CFLAGS) $< -c -o $@
+ 
+ xyza2pipe: $(OBJECTS_C) $(OBJECTS_XP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ pipe2xyza: $(OBJECTS_C) $(OBJECTS_PX)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ ucsf2pipe: $(OBJECTS_C) $(OBJECTS_UP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+-pipe2ucsf: $(OBJECTS_C) $(OBJECTS_PU)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++pipe2ucsf-olivia: $(OBJECTS_C) $(OBJECTS_PU)
++	$(CC) $(CFLAGS) $(LDFLAGS) pipe2ucsf.c $^ -o $@ \
++	$(LIBS)
+ 
+ nv2pipe: $(OBJECTS_C) $(OBJECTS_NP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ pipe2nv: $(OBJECTS_C) $(OBJECTS_PN)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ xeasy2pipe: $(OBJECTS_C) $(OBJECTS_EP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ pipe2xeasy: $(OBJECTS_C) $(OBJECTS_PE)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ azara2pipe: $(OBJECTS_C) $(OBJECTS_AP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+-pipe2azara: $(OBJECTS_C) $(OBJECTS_PA)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++pipe2azara-olivia: $(OBJECTS_C) $(OBJECTS_PA)
++	$(CC) $(CFLAGS) $(LDFLAGS) pipe2azara.c $^ -o $@ \
++	$(LIBS)
+ 
+ vnmr2pipe: $(OBJECTS_C) $(OBJECTS_VP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ xwnmr2pipe: $(OBJECTS_C) $(OBJECTS_BP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ pipe2proj: $(OBJECTS_C) $(OBJECTS_PJ)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ add2pipe: $(OBJECTS_C) $(OBJECTS_DXP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 	rm -f addxyza2pipe
+ 	ln -s add2pipe addxyza2pipe
+ 
+ adducsf2pipe: $(OBJECTS_C) $(OBJECTS_DUP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ addnv2pipe: $(OBJECTS_C) $(OBJECTS_DNP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ addxeasy2pipe: $(OBJECTS_C) $(OBJECTS_DEP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ addazara2pipe: $(OBJECTS_C) $(OBJECTS_DAP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ addvnmr2pipe: $(OBJECTS_C) $(OBJECTS_DVP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
+ 
+ addxwnmr2pipe: $(OBJECTS_C) $(OBJECTS_DBP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(LIBS)
++
++install: $(TARGETS)
++	install -d $(DESTDIR)/usr/bin
++	install $(TARGETS) $(DESTDIR)/usr/bin/

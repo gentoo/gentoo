@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnome</herd>
+	<use>
+		<flag name="glade">Install the glade catalog</flag>
+		<flag name="python">Build support for loading <pkg>dev-lang/python</pkg>
+			plugins</flag>
+	</use>
+</pkgmetadata>

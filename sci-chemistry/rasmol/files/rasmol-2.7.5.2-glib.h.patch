@@ -1,0 +1,31 @@
+ src/egg-macros.h           |    3 ++-
+ src/eggfileformatchooser.c |    2 ++
+ 2 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/src/egg-macros.h b/src/egg-macros.h
+index 9a7caad..1a6bce0 100644
+--- a/src/egg-macros.h
++++ b/src/egg-macros.h
+@@ -9,7 +9,8 @@
+ #ifndef _EGG_MACROS_H_
+ #define _EGG_MACROS_H_
+ 
+-#include <glib/gmacros.h>
++#include <glib.h>
++#include <glib/gprintf.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/src/eggfileformatchooser.c b/src/eggfileformatchooser.c
+index 32ce2ab..febfc2e 100644
+--- a/src/eggfileformatchooser.c
++++ b/src/eggfileformatchooser.c
+@@ -19,6 +19,8 @@
+ #include "eggfileformatchooser.h"
+ #include "egg-macros.h"
+ 
++#include <glib.h>
++#include <glib/gprintf.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #include <string.h>

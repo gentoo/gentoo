@@ -1,0 +1,221 @@
+Nicked from http://cvs.fedoraproject.org/viewvc/devel/xdelta/xdelta-1.1.4-glib2.patch
+
+
+--- xdelta-1.1.4pre1/libedsio/edsio.c.glib2	2007-01-29 14:55:10.000000000 +0100
++++ xdelta-1.1.4pre1/libedsio/edsio.c	2007-01-29 14:56:52.000000000 +0100
+@@ -179,9 +179,9 @@
+ 		    }
+ 		}
+ 
+-	      while (g_queue_get_size (queued) > 0)
++	      while (g_queue_get_length (queued) > 0)
+ 		{
+-		  DelayedEvent* de = g_queue_pop (queued);
++		  DelayedEvent* de = g_queue_pop_head (queued);
+ 
+ 		  for (i = 0; i < all_event_watchers->len; i += 1)
+ 		    {
+@@ -211,7 +211,7 @@
+ 	      de->def = def;
+ 	      de->msg = out->str;
+ 
+-	      g_queue_push (queued, de);
++	      g_queue_push_tail (queued, de);
+ 
+ 	      g_ptr_array_add (free_strings, out);
+ 	    }
+@@ -1482,129 +1482,3 @@
+   g_free (source);
+ }
+ 
+-/* Missing glib stuff
+- */
+-
+-GQueue *
+-g_queue_new (void)
+-{
+-  GQueue *q = g_new (GQueue, 1);
+-
+-  q->list = q->list_end = NULL;
+-  q->list_size = 0;
+-
+-  return q;
+-}
+-
+-
+-void
+-g_queue_free (GQueue *q)
+-{
+-  if (q)
+-    {
+-      if (q->list)
+-        g_list_free (q->list);
+-      g_free (q);
+-    }
+-}
+-
+-
+-guint
+-g_queue_get_size (GQueue *q)
+-{
+-  return (q == NULL) ? 0 : q->list_size;
+-}
+-
+-
+-void
+-g_queue_push_front (GQueue *q, gpointer data)
+-{
+-  if (q)
+-    {
+-      q->list = g_list_prepend (q->list, data);
+-
+-      if (q->list_end == NULL)
+-        q->list_end = q->list;
+-
+-      q->list_size++;
+-    }
+-}
+-
+-
+-void
+-g_queue_push_back (GQueue *q, gpointer data)
+-{
+-  if (q)
+-    {
+-      q->list_end = g_list_append (q->list_end, data);
+-
+-      if (! q->list)
+-        q->list = q->list_end;
+-      else
+-        q->list_end = q->list_end->next;
+-
+-      q->list_size++;
+-    }
+-}
+-
+-
+-gpointer
+-g_queue_pop_front (GQueue *q)
+-{
+-  gpointer data = NULL;
+-
+-  if ((q) && (q->list))
+-    {
+-      GList *node;
+-
+-      node = q->list;
+-      data = node->data;
+-
+-      if (! node->next)
+-        {
+-          q->list = q->list_end = NULL;
+-          q->list_size = 0;
+-        }
+-      else
+-        {
+-          q->list = node->next;
+-          q->list->prev = NULL;
+-          q->list_size--;
+-        }
+-
+-      g_list_free_1 (node);
+-    }
+-
+-  return data;
+-}
+-
+-
+-gpointer
+-g_queue_pop_back (GQueue *q)
+-{
+-  gpointer data = NULL;
+-
+-  if ((q) && (q->list))
+-    {
+-      GList *node;
+-
+-      node = q->list_end;
+-      data = node->data;
+-
+-      if (! node->prev)
+-	{
+-          q->list = q->list_end = NULL;
+-          q->list_size = 0;
+-        }
+-      else
+-	{
+-          q->list_end = node->prev;
+-          q->list_end->next = NULL;
+-          q->list_size--;
+-        }
+-
+-      g_list_free_1 (node);
+-    }
+-
+-  return data;
+-}
+--- xdelta-1.1.4pre1/libedsio/edsio.h.glib2	2007-01-29 14:54:38.000000000 +0100
++++ xdelta-1.1.4pre1/libedsio/edsio.h	2007-01-29 14:55:00.000000000 +0100
+@@ -481,49 +481,6 @@
+ 
+ #endif
+ 
+-/* Missing glib stuff
+- */
+-
+-typedef struct _GQueue		GQueue;
+-
+-struct _GQueue
+-{
+-  GList *list;
+-  GList *list_end;
+-  guint list_size;
+-};
+-
+-/* Queues
+- */
+-
+-GQueue *	g_queue_new		(void);
+-void		g_queue_free		(GQueue *q);
+-guint		g_queue_get_size	(GQueue *q);
+-void		g_queue_push_front	(GQueue *q, gpointer data);
+-void		g_queue_push_back	(GQueue *q, gpointer data);
+-gpointer	g_queue_pop_front	(GQueue *q);
+-gpointer	g_queue_pop_back	(GQueue *q);
+-
+-#define g_queue_empty(queue) \
+-	((((GQueue *)(queue)) && ((GQueue *)(queue))->list) ? FALSE : TRUE)
+-
+-#define g_queue_peek_front(queue) \
+-	((((GQueue *)(queue)) && ((GQueue *)(queue))->list) ? \
+-		((GQueue *)(queue))->list->data : NULL)
+-
+-#define g_queue_peek_back(queue) \
+-	((((GQueue *)(queue)) && ((GQueue *)(queue))->list_end) ? \
+-		((GQueue *)(queue))->list_end->data : NULL)
+-
+-#define g_queue_index(queue,ptr) \
+-	((((GQueue *)(queue)) && ((GQueue *)(queue))->list) ? \
+-		g_list_index (((GQueue *)(queue))->list, (ptr)) : -1)
+-
+-#define		g_queue_push		g_queue_push_back
+-#define		g_queue_pop		g_queue_pop_front
+-#define		g_queue_peek		g_queue_peek_front
+-
+-
+ #ifdef __cplusplus
+ }
+ #endif
+--- xdelta-1.1.4pre1/configure.in.glib2	2007-01-29 14:58:06.000000000 +0100
++++ xdelta-1.1.4pre1/configure.in	2007-01-29 14:59:18.000000000 +0100
+@@ -71,8 +71,8 @@
+ top_srcdir_absolute=`cd $srcdir; pwd`
+ AC_SUBST(top_srcdir_absolute)
+ 
+-AM_PATH_GLIB(1.2.8,,
+-  AC_MSG_ERROR(Test for GLIB failed. Download it from ftp://ftp.gtk.org/pub/gtk/v1.2/))
++AM_PATH_GLIB_2_0(2.10.0,,
++  AC_MSG_ERROR(Test for GLIB2.0 failed. Download it from ftp://ftp.gtk.org/pub/gtk/v2.10/))
+ 
+ dnl AC_CHECK_LIB(z, gzsetparams, */
+ dnl   AC_CHECK_HEADER(zlib.h,, */

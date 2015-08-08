@@ -1,0 +1,37 @@
+support libsuffix, fix version
+
+--- lib/x11/Makefile.x11.in
++++ lib/x11/Makefile.x11.in
+@@ -3,6 +3,7 @@
+ # Installation prefix (default to /usr/local)
+ ##########################################################################
+ PREFIX ?= /usr/local
++LIBDIR ?= lib
+ 
+ 
+ ##########################################################################
+@@ -99,7 +100,7 @@
+ # Rule for building libglfw.pc
+ ##########################################################################
+ libglfw.pc: libglfw.pc.in
+-	$(SED) -e 's,\@PREFIX\@,$(PREFIX),' libglfw.pc.in > libglfw.pc
++	$(SED) -e 's,\@PREFIX\@,$(PREFIX),' -e 's,\@LIBDIR@,$(LIBDIR),' libglfw.pc.in > libglfw.pc
+ 
+ 
+ ##########################################################################
+--- compile.sh
++++ compile.sh
+@@ -734,11 +734,11 @@
+ prefix=@PREFIX@
+ exec_prefix=\${prefix}
+ includedir=\${prefix}/include
+-libdir=\${exec_prefix}/lib
++libdir=\${exec_prefix}/@LIBDIR@
+ 
+ Name: GLFW
+ Description: A portable framework for OpenGL development
+-Version: 2.7.4
++Version: 2.7.7
+ URL: http://www.glfw.org/
+ Requires.private: gl x11 $PKG_LIBS
+ Libs: -L\${libdir} -lglfw $LFLAGS_THREAD $LFLAGS_CLOCK

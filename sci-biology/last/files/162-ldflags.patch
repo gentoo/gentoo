@@ -1,0 +1,16 @@
+ src/makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/makefile b/src/makefile
+index e77ffa7..92e4575 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -51,7 +51,7 @@ lastal: $(ALSRC) $(ALINC) makefile $(OBJ)
+ 	$(CXX) $(STRICT) $(CXXFLAGS) -o $@ $(ALSRC) $(OBJ)
+ 
+ lastex: $(EXSRC) $(EXINC) makefile
+-	$(CXX) -Igumbel_params $(CXXFLAGS) -o $@ $(EXSRC)
++	$(CXX) $(STRICT) -Igumbel_params $(CXXFLAGS) -o $@ $(EXSRC)
+ 
+ $(OBJ): CA_code/*.c CA_code/*.h makefile
+ 	$(CC) $(CFLAGS) -c CA_code/lambda_calculator.c

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<longdescription>
+		Babeltrace is a command-line tool and library to read and convert trace files to and from different formats. It supports the CTF format, which is outputted by the LTTng 2.0 tracers.
+	</longdescription>
+</pkgmetadata>

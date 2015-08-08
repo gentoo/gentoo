@@ -1,0 +1,67 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+eblit-perl-pkg_postinst() {
+	dual_scripts
+
+	if [[ "${ROOT}" = "/" ]] ; then
+		local INC DIR file
+		INC=$(perl -e 'for $line (@INC) { next if $line eq "."; next if $line =~ m/'${SHORT_PV}'|etc|local|perl$/; print "$line\n" }')
+		einfo "Removing old .ph files"
+		for DIR in ${INC} ; do
+			if [[ -d "${DIR}" ]] ; then
+				for file in $(find "${DIR}" -name "*.ph" -type f ) ; do
+					rm -f "${file}"
+					einfo "<< ${file}"
+				done
+			fi
+		done
+		# Silently remove the now empty dirs
+		for DIR in ${INC} ; do
+			if [[ -d "${DIR}" ]] ; then
+				find "${DIR}" -depth -type d -print0 | xargs -0 -r rmdir &> /dev/null
+			fi
+		done
+
+#		ebegin "Generating ConfigLocal.pm (ignore any error)"
+#		enc2xs -C
+
+		einfo "Converting C header files to the corresponding Perl format (ignore any error)"
+		# Prefix note: unprefixed as this is all kernel/libc stuff that we never provide
+		pushd /usr/include >/dev/null
+			h2ph -Q -a -d "${EPREFIX}"${ARCH_LIB} \
+				asm/termios.h syscall.h syslimits.h syslog.h sys/ioctl.h \
+				sys/socket.h sys/time.h wait.h sysexits.h
+		popd >/dev/null
+
+# This has been moved into a function because rumor has it that a future release
+# of portage will allow us to check what version was just removed - which means
+# we will be able to invoke this only as needed :)
+		# Tried doing this via  -z, but $INC is too big...
+		#if [[ "${INC}x" != "x" ]]; then
+		#	cleaner_msg
+		#fi
+	fi
+}
+
+cleaner_msg() {
+	eerror "You have had multiple versions of perl. It is recommended"
+	eerror "that you run perl-cleaner now. perl-cleaner will"
+	eerror "assist with this transition. This script is capable"
+	eerror "of cleaning out old .ph files, rebuilding modules for "
+	eerror "your new version of perl, as well as re-emerging"
+	eerror "applications that compiled against your old libperl$(get_libname)"
+	eerror
+	eerror "PLEASE DO NOT INTERRUPT THE RUNNING OF THIS SCRIPT."
+	eerror "Part of the rebuilding of applications compiled against "
+	eerror "your old libperl involves temporarily unmerging"
+	eerror "them - interruptions could leave you with unmerged"
+	eerror "packages before they can be remerged."
+	eerror ""
+	eerror "If you have run perl-cleaner and a package still gives"
+	eerror "you trouble, and re-emerging it fails to correct"
+	eerror "the problem, please check http://bugs.gentoo.org/"
+	eerror "for more information or to report a bug."
+	eerror ""
+}

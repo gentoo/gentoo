@@ -1,0 +1,45 @@
+diff -ru opengfx-0.5.2-source.orig/Makefile opengfx-0.5.2-source/Makefile
+--- opengfx-0.5.2-source.orig/Makefile	2015-04-12 12:57:17.000000000 -0400
++++ opengfx-0.5.2-source/Makefile	2015-07-28 21:13:46.496708233 -0400
+@@ -99,8 +99,8 @@
+ AWK            ?= awk
+ GREP           ?= grep
+ PYTHON         ?= python
+-UNIX2DOS       ?= unix2dos
+-UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null && echo "-q" || echo "")
++UNIX2DOS       ?= $(shell which unix2dos 2>/dev/null)
++UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null >&2 && echo "-q" || echo "")
+ 
+ # Graphics processing
+ GIMP           ?= gimp
+@@ -196,7 +196,7 @@
+ endif
+ 
+ # Days of commit since 2000-1-1 00-00
+-REPO_DAYS_SINCE_2000 ?= $(shell $(PYTHON) -c "from datetime import date; print (date(`echo "$(REPO_DATE)" | sed s/-/,/g | sed s/,0/,/g`)-date(2000,1,1)).days")
++REPO_DAYS_SINCE_2000 ?= $(shell $(PYTHON) -c "from datetime import date; print ((date(`echo "$(REPO_DATE)" | sed s/-/,/g | sed s/,0/,/g`)-date(2000,1,1)).days)")
+ 
+ # Filename addition, if we're not building the default branch
+ REPO_BRANCH_STRING ?= $(shell if [ "$(REPO_BRANCH)" = "$(DEFAULT_BRANCH_NAME)" ]; then echo ""; else echo "-$(REPO_BRANCH)"; fi)
+@@ -377,7 +377,11 @@
+ 		| sed -e "s/$(REPLACE_REVISION)/$(NEWGRF_VERSION)/" \
+ 		| sed -e "s/$(REPLACE_FILENAME)/$(OUTPUT_FILENAME)/" \
+ 		> $@
+-	$(_V) [ -z "$(UNIX2DOS)" ] || $(UNIX2DOS) $(UNIX2DOS_FLAGS) $@
++ifeq ($(UNIX2DOS),)
++	$(_E) Warning: unix2dos not available. $@ keeps current eol style.
++else
++	$(_V) $(UNIX2DOS) $(UNIX2DOS_FLAGS) $@
++endif
+ 
+ clean::
+ 	$(_E) "[CLEAN DOC]"
+@@ -714,7 +718,7 @@
+ 	$(_E)
+ endif
+ 	$(_E) "Release:"
+-	$(_E) "bananas:     Upload bundle to BaNaNaS
++	$(_E) "bananas:     Upload bundle to BaNaNaS"
+ 	$(_E)
+ 	$(_E) "Valid command line variables are:"
+ 	$(_E) "Helper programmes:"

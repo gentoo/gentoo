@@ -1,0 +1,28 @@
+From 49b8d9662365e0e9b0725682b8a8479de402b272 Mon Sep 17 00:00:00 2001
+From: Alexey Shvetsov <alexxy@gentoo.org>
+Date: Sat, 23 Mar 2013 16:40:04 +0400
+Subject: [PATCH] Drop chmod hack.
+
+It doesnt work if wrapper installed system-wide
+
+Signed-off-by: Alexey Shvetsov <alexxy@gentoo.org>
+---
+ gromacs/config.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/gromacs/config.py b/gromacs/config.py
+index cece6fc..2e686e7 100644
+--- a/gromacs/config.py
++++ b/gromacs/config.py
+@@ -619,8 +619,6 @@ del g
+ # Must extract because it is part of a zipped python egg;
+ # see http://peak.telecommunity.com/DevCenter/PythonEggs#accessing-package-resources
+ GridMAT_MD = resource_filename(__name__,'external/GridMAT-MD_v1.0.2/GridMAT-MD.pl')
+-os.chmod(GridMAT_MD, 0755)
+-
+ 
+ #: 3rd party bundled analysis scripts and tools; this is a list of triplets of
+ #:
+-- 
+1.8.1.5
+

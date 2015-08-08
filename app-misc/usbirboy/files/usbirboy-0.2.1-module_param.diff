@@ -1,0 +1,23 @@
+Nur in usbirboy-0.2.1/usbirboykmod: Modules.symvers.
+Nur in usbirboy-0.2.1/usbirboykmod/.tmp_versions: usbirboy.mod.
+diff -ru usbirboy-0.2.1-orig/usbirboykmod/usbirboy.c usbirboy-0.2.1/usbirboykmod/usbirboy.c
+--- usbirboy-0.2.1-orig/usbirboykmod/usbirboy.c	2006-07-03 10:30:07.393102962 +0200
++++ usbirboy-0.2.1/usbirboykmod/usbirboy.c	2006-07-03 10:34:02.999771952 +0200
+@@ -90,7 +90,8 @@
+ 
+ /* define debug kernel option */
+ static int debug = 0;
+-MODULE_PARM(debug, "i");
++module_param(debug, bool, 0644);
++MODULE_PARM_DESC(debug, "Enable debugging messages");
+ 
+ static struct usb_driver usbirboy_driver;
+ static struct usb_class_driver usbirboy_class;
+Nur in usbirboy-0.2.1/usbirboykmod: usbirboy.ko.
+Nur in usbirboy-0.2.1/usbirboykmod: .usbirboy.ko.cmd.
+Nur in usbirboy-0.2.1/usbirboykmod: usbirboy.mod.c.
+Nur in usbirboy-0.2.1/usbirboykmod: usbirboy.mod.o.
+Nur in usbirboy-0.2.1/usbirboykmod: .usbirboy.mod.o.cmd.
+Nur in usbirboy-0.2.1/usbirboykmod: usbirboy.o.
+Nur in usbirboy-0.2.1/usbirboykmod: .usbirboy.o.cmd.
+Nur in usbirboy-0.2.1-orig/usbirboykmod: .usbirboy.o.d.

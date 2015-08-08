@@ -1,0 +1,32 @@
+From 1ca4589ef5a87999ec564081900bc8fdaed83c74 Mon Sep 17 00:00:00 2001
+From: Slaven Rezic <slaven@rezic.de>
+Date: Sun, 2 Mar 2014 12:10:31 +0100
+Subject: [PATCH] look also for /usr/include/freetype2/freetype.h
+
+In some freetype installations (e.g. Debian/jessie) the intermediate
+"freetype" directory may be missing in the include path.
+
+This should fix
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=740207
+---
+ myConfig | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/myConfig b/myConfig
+index 02d2ee5..3ca8144 100755
+--- a/myConfig
++++ b/myConfig
+@@ -147,7 +147,12 @@ sub Ift
+ {
+  foreach (map { "$_/freetype2" } @_)
+   {
+-   if (-d $_ && -d "$_/freetype" && -r "$_/freetype/freetype.h")
++   if (-r "$_/freetype.h") # location in Debian (since jessie)
++    {
++     print "Using -I$_ to find $_/freetype/freetype.h\n";
++     return "-I$_";
++    }
++   if (-r "$_/freetype/freetype.h") # location in FreeBSD (up to version 10.0) and Debian (up to wheezy)
+     {
+      print "Using -I$_ to find $_/freetype/freetype.h\n";
+      return "-I$_";

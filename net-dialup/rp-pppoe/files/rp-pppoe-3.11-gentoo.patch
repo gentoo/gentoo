@@ -1,0 +1,11 @@
+--- rp-pppoe-3.11/gui/Makefile.in
++++ rp-pppoe-3.11/gui/Makefile.in
+@@ -37,7 +37,7 @@
+ 	@echo "Type 'make install' as root to install the software."
+ 
+ pppoe-wrapper: wrapper.o
+-	@CC@ -o pppoe-wrapper wrapper.o
++	@CC@ $(CFLAGS) $(LDFLAGS) -o pppoe-wrapper wrapper.o
+ 
+ wrapper.o: wrapper.c
+ 	@CC@ $(CFLAGS) -c -o wrapper.o wrapper.c

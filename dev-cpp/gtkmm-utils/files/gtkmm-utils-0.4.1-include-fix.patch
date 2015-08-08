@@ -1,0 +1,11 @@
+diff -urN b/glibmm-utils/log-stream.cc c/glibmm-utils/log-stream.cc
+--- b/glibmm-utils/log-stream.cc	2012-11-12 23:57:19.311866269 +0100
++++ c/glibmm-utils/log-stream.cc	2012-11-12 23:57:36.031869479 +0100
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <sys/time.h>
++#include <sys/stat.h>
+ #include <cstring> // for g++ 4.3
+ #include <iostream>
+ #include <map>

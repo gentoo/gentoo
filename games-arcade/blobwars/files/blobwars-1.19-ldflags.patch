@@ -1,0 +1,22 @@
+--- makefile~	2011-08-29 20:32:22.000000000 +0200
++++ makefile	2011-08-29 20:33:27.052159159 +0200
+@@ -82,16 +82,16 @@
+ 
+ # linking the program.
+ $(PROG): $(GAMEOBJS)
+-	$(CXX) $(GAMEOBJS) -o $(PROG) $(LIBS)
++	$(CXX) $(LDFLAGS) $(GAMEOBJS) -o $(PROG) $(LIBS)
+ 	
+ pak: $(PAKOBJS)
+-	$(CXX) $(PAKOBJS) -o pak $(LIBS)
++	$(CXX) $(LDFLAGS) $(PAKOBJS) -o pak $(LIBS)
+ 
+ %.mo: %.po
+ 	msgfmt -c -o $@ $<
+ 
+ mapeditor: $(MAPOBJS)
+-	$(CXX) $(MAPOBJS) -o mapeditor $(LIBS)
++	$(CXX) $(LDFLAGS) $(MAPOBJS) -o mapeditor $(LIBS)
+ 
+ # cleaning everything that can be automatically recreated with "make".
+ clean:

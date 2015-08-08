@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>xmw@gentoo.org</email>
+	<name>Michael Weber</name>
+</maintainer>
+<upstream>
+	<maintainer status="active">
+	<email>projects@yorhel.nl</email>
+	</maintainer>
+	<changelog>http://dev.yorhel.nl/ncdc/changes</changelog>
+	<doc lang="en">http://dev.yorhel.nl/ncdc/man</doc>
+	<bugs-to>http://dev.yorhel.nl/ncdc/bug</bugs-to>
+</upstream>
+</pkgmetadata>

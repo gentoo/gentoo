@@ -1,0 +1,35 @@
+patch made from https://github.com/benoitc/socketpool/blob/06d659612f15cb4c207a2fc508b6099e09d3fde7/socketpool/pool.py
+in reply to;  size is supposed to be a property. fix #20
+commit 06d659612f15cb4c207a2fc508b6099e09d3fde7.
+file included changes making the first hunk
+diff -ur socketpool-0.5.2.orig/socketpool/pool.py socketpool-0.5.2/socketpool/pool.py
+--- socketpool/pool.py	2012-08-05 12:22:13.000000000 +0800
++++ socketpool/pool.py	2013-02-10 22:51:45.607637365 +0800
+@@ -48,8 +48,12 @@
+                  max_size=10, options=None,
+                  reap_connections=True, backend="thread"):
+ 
+-        self.backend_mod = load_backend(backend)
+-        self.backend = backend
++        if isinstance(backend, str):
++            self.backend_mod = load_backend(backend)
++            self.backend = backend
++        else:
++            self.backend_mod = backend
++            self.backend = str(getattr(backend, '__name__', backend))
+         self.max_size = max_size
+         self.pool = getattr(self.backend_mod, 'PriorityQueue')()
+         self._free_conns = 0
+@@ -97,6 +101,7 @@
+         if conn.is_connected():
+             conn.invalidate()
+ 
++    @property
+     def size(self):
+         return self.pool.qsize()
+ 
+@@ -193,3 +198,4 @@
+         finally:
+             self.release_connection(conn)
+ 
++

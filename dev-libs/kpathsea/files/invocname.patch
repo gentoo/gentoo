@@ -1,0 +1,19 @@
+Preserve API for now. This has been renamed for TeX Live 2011.
+
+Index: texlive-20110627-source/texk/kpathsea/types.h
+===================================================================
+--- texlive-20110627-source.orig/texk/kpathsea/types.h
++++ texlive-20110627-source/texk/kpathsea/types.h
+@@ -280,8 +280,12 @@ extern KPSEDLL kpathsea kpse_def;
+ 
+ #undef kpse_invocation_name
+ #define kpse_invocation_name         kpse_def_inst.invocation_name
++#undef program_invocation_name
++#define program_invocation_name      kpse_def_inst.invocation_name
+ #undef kpse_invocation_short_name
+ #define kpse_invocation_short_name   kpse_def_inst.invocation_short_name
++#undef program_invocation_short_name
++#define program_invocation_short_name kpse_def_inst.invocation_short_name
+ 
+ #endif /* KPSE_COMPAT_API */
+ 

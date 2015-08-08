@@ -1,0 +1,293 @@
+diff -ur buffer-1.19.orig/buffer.c buffer-1.19/buffer.c
+--- buffer-1.19.orig/buffer.c	2004-08-21 01:45:29.938082048 -0400
++++ buffer-1.19/buffer.c	2004-08-21 01:45:39.444118464 -0400
+@@ -109,6 +109,9 @@
+  * Initial revision
+  * 
+  */
++#include <stdlib.h>
++#include <string.h>
++#include <limits.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <signal.h>
+@@ -120,6 +123,7 @@
+ #include <sys/shm.h>
+ #include <sys/sem.h>
+ #include <sys/wait.h>
++#include <sys/time.h>
+ #include "sem.h"
+ 
+ #ifndef lint
+@@ -127,8 +131,8 @@
+ #endif
+ 
+-#ifndef __alpha
++#ifndef __linux__
+ extern char *shmat();
+-#endif /* __alpha */
++#endif /* __linux__ */
+ 
+ /* General macros */
+ #define TRUE 1
+@@ -136,6 +140,14 @@
+ #define K *1024
+ #define M *1024*1024
+ 
++#if defined __GNUC__ || __STDC_VERSION__ >= 199901L
++#define NUM_K_TYPE unsigned long long
++#define NUM_K_FMT "llu"
++#else
++#define NUM_K_TYPE unsigned long
++#define NUM_K_FMT "lu"
++#endif
++
+ /* Some forward declarations */
+ void byee();
+ void start_reader_and_writer();
+@@ -250,7 +262,9 @@
+ 
+ char print_total = 0;
+ /* Number of K output */
+-unsigned long outk = 0;
++NUM_K_TYPE outk = 0;
++
++struct timeval starttime;
+ 
+ int
+ main( argc, argv )
+@@ -262,6 +276,8 @@
+ 	set_handlers();
+ 
+ 	buffer_allocate();
++	
++	gettimeofday(&starttime, NULL);
+ 
+ 	start_reader_and_writer();
+ 
+@@ -384,8 +400,8 @@
+ 			fprintf( stderr, "Usage: %s [-B] [-t] [-S size] [-m memsize] [-b blocks] [-p percent] [-s blocksize] [-u pause] [-i infile] [-o outfile] [-z size]\n",
+ 				progname );
+ 			fprintf( stderr, "-B = blocked device - pad out last block\n" );
+-			fprintf( stderr, "-t = show total amount writen at end\n" );
+-			fprintf( stderr, "-S size = show amount writen every size bytes\n" );
++			fprintf( stderr, "-t = show total amount written at end\n" );
++			fprintf( stderr, "-S size = show amount written every size bytes\n" );
+ 			fprintf( stderr, "-m size = size of shared mem chunk to grab\n" );
+ 			fprintf( stderr, "-b num = number of blocks in queue\n" );
+ 			fprintf( stderr, "-p percent = don't start writing until percent blocks filled\n" );
+@@ -397,6 +413,11 @@
+ 			byee( -1 );
+ 		}
+ 	}
++	
++	if (argc > optind) {
++		fprintf( stderr, "too many arguments\n" );
++		byee( -1 );
++	}
+ 
+ 	if (zflag) showevery = blocksize;
+ 
+@@ -507,9 +528,9 @@
+ 	get_buffer();
+ 
+ 	if( debug )
+-		fprintf( stderr, "%s pbuffer is 0x%08x, buffer_size is %d [%d x %d]\n",
++		fprintf( stderr, "%s pbuffer is 0x%08lx, buffer_size is %d [%d x %d]\n",
+ 			proc_string,
+-			(char *)pbuffer, buffer_size, blocks, blocksize );
++			(unsigned long)pbuffer, buffer_size, blocks, blocksize );
+ 
+ #ifdef SYS5
+ 	memset( (char *)pbuffer, '\0', buffer_size );
+@@ -528,7 +549,17 @@
+ 	pbuffer->blocks_free_lock = 1;
+ 	/* start this off so lock() can be called on it for each block
+ 	 * till all the blocks are used up */
++	/* Initializing the semaphore to "blocks - 1" causes a hang when using option
++	 * "-p 100" because it always keeps one block free, so we'll never reach 100% fill
++	 * level. However, there doesn't seem to be a good reason to keep one block free,
++	 * so we initialize the semaphore to "blocks" instead.
++	 * <mbuck@debian.org> 2004-01-11
++	 */	
++#if 0
+ 	sem_set( pbuffer->semid, pbuffer->blocks_free_lock, blocks - 1 );
++#else
++	sem_set( pbuffer->semid, pbuffer->blocks_free_lock, blocks );
++#endif
+ 
+ 	/* Detattach the shared memory so the fork doesnt do anything odd */
+ 	shmdt( (char *)pbuffer );
+@@ -648,7 +679,7 @@
+ int
+ fill_block()
+ {
+-	int bytes;
++	int bytes = 0;
+ 	char *start;
+ 	int toread;
+ 	static char eof_reached = 0;
+@@ -707,7 +738,7 @@
+ {
+ 	int filled = 0;
+ 	int maxfilled = (blocks * percent) / 100;
+-	int first_block;
++	int first_block = 0;
+ 
+ 	if( debug )
+ 		fprintf( stderr, "\tW: Entering writer\n blocks = %d\n maxfilled = %d\n",
+@@ -742,7 +773,7 @@
+ 	}
+ 
+ 	if( print_total ){
+-		fprintf( stderr, "Kilobytes Out %lu\n", outk );
++		fprintf( stderr, "Kilobytes Out %" NUM_K_FMT "\n", outk );
+ 	}
+ 
+ 	if( debug )
+@@ -783,14 +814,14 @@
+ void
+ write_block_to_stdout()
+ {
+-	static unsigned long out = 0;
++	unsigned long out = 0;
+ 	static unsigned long last_gb = 0;
+-	static unsigned long next_k = 0;
++	static NUM_K_TYPE next_k = 0;
+ 	int written;
+ 
+ 	if( next_k == 0 && showevery ){
+ 		if( debug > 3 )
+-			fprintf( stderr, "W: next_k = %lu showevery = %d\n", next_k, showevery );
++			fprintf( stderr, "W: next_k = %" NUM_K_FMT " showevery = %d\n", next_k, showevery );
+ 		showevery = showevery / 1024;
+ 		next_k = showevery;
+ 	}
+@@ -798,7 +829,7 @@
+ 	if( (written = write( fdout, curr_block->data, curr_block->bytes )) != curr_block->bytes ){
+ 		report_proc();
+ 		perror( "write of data failed" );
+-		fprintf( stderr, "bytes to write=%d, bytes written=%d, total written %10luK\n", curr_block->bytes, written, outk );
++		fprintf( stderr, "bytes to write=%d, bytes written=%d, total written %10" NUM_K_FMT "K\n", curr_block->bytes, written, outk );
+ 		byee( -1 );
+ 	}
+ 
+@@ -825,7 +856,7 @@
+ 	}
+ 	if( showevery ){
+ 		if( debug > 3 )
+-			fprintf( stderr, "W: outk = %lu, next_k = %lu\n",
++			fprintf( stderr, "W: outk = %" NUM_K_FMT ", next_k = %" NUM_K_FMT "\n",
+ 				outk, next_k );
+ 		if( outk >= next_k ){
+ 			pr_out();
+@@ -914,13 +945,12 @@
+ do_size( arg )
+ 	char *arg;
+ {
+-	char format[ 20 ];
+-	int ret;
++	int ret = 0;
+ 
+-	*format = '\0';
+-	sscanf( arg, "%d%s", &ret, format );
++	char unit = '\0';
++	sscanf( arg, "%d%c", &ret, &unit );
+ 
+-	switch( *format ){
++	switch( unit ){
+ 	case 'm':
+ 	case 'M':
+ 		ret = ret K K;
+@@ -941,7 +971,36 @@
+ void
+ pr_out()
+ {
+-	fprintf( stderr, " %10luK\r", outk );
++	struct timeval now;
++	unsigned long ms_delta, k_per_s;
++	
++	gettimeofday(&now, NULL);
++	ms_delta = (now.tv_sec - starttime.tv_sec) * 1000
++		   + (now.tv_usec - starttime.tv_usec) / 1000;
++	if (ms_delta) {
++		/* Use increased accuracy for small amounts of data,
++		 * decreased accuracy for *huge* throughputs > 4.1GB/s
++		 * to avoid division by 0. This will overflow if your
++		 * machine's throughput exceeds 4TB/s - you deserve to
++		 * loose if you're still using 32 bit longs on such a
++		 * beast ;-)
++		 * <mbuck@debian.org>
++		 */
++		if (outk < ULONG_MAX / 1000) {
++			k_per_s = (outk * 1000) / ms_delta;
++		} else if (ms_delta >= 1000) {
++			k_per_s = outk / (ms_delta / 1000);
++		} else {
++			k_per_s = (outk / ms_delta) * 1000;
++		}
++		fprintf( stderr, " %10" NUM_K_FMT "K, %10luK/s\r", outk, k_per_s );
++	} else {
++		if (outk) {
++			fprintf( stderr, " %10" NUM_K_FMT "K,          ?K/s\r", outk );
++		} else {
++			fprintf( stderr, "          0K,          0K/s\r");
++		}
++	}
+ }
+ 
+ #ifdef SYS5
+diff -ur buffer-1.19.orig/buffer.man buffer-1.19/buffer.man
+--- buffer-1.19.orig/buffer.man	2004-08-21 01:45:29.935085504 -0400
++++ buffer-1.19/buffer.man	2004-08-21 01:45:39.441121920 -0400
+@@ -37,7 +37,8 @@
+ Use the given file as the output file.  The default is stdout.
+ .TP
+ .B \-S size
+-After every chunk this size has been writen print out how much been writen so far.
++After every chunk of this size has been written, print out how much has
++been written so far. Also prints the total througput.
+ By default this is not set.
+ .TP
+ .B \-s size
+@@ -71,9 +72,9 @@
+ throughput on some drives.)
+ .TP
+ .B \-B
+-Force each block writen to be padded out to the blocksize.  This is needed by some tape
++Force each block written to be padded out to the blocksize.  This is needed by some tape
+ and cartridge drives.  Defaults to unpadded.  This only affects the
+-last block writen.
++last block written.
+ .TP
+ .B \-t
+ On exiting print to stderr a brief message showing the total number of
+@@ -82,7 +83,7 @@
+ .B \-Z
+ If reading/writing directly to a character device (like a tape drive)
+ then after each gigabyte perform an lseek to the start of the file.
+-Use this flag with extreme care.  If can only be used on devices where
++Use this flag with extreme care.  It can only be used on devices where
+ an lseek does not rewind the tape but does reset the kernels position
+ flags.  It is used to allow more than 2 gigabytes to be written.
+ .PP
+diff -ur buffer-1.19.orig/sem.c buffer-1.19/sem.c
+--- buffer-1.19.orig/sem.c	2004-08-21 01:45:29.939080896 -0400
++++ buffer-1.19/sem.c	2004-08-21 01:47:41.265618240 -0400
+@@ -27,6 +27,7 @@
+  * semaphores */
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ipc.h>
+@@ -95,7 +96,7 @@
+ 	return sem;
+ }
+ 
+-static
++static void
+ do_sem( sem_id, pbuf, err )
+ 	int sem_id;
+ 	struct sembuf *pbuf;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>x11</herd>
+<use>
+	<flag name='dmx'>Build the Distributed Multiheaded X server</flag>
+	<flag name='glamor'>Enable Glamor OpenGL 2D acceleration</flag>
+	<flag name='kdrive'>Build the kdrive X servers</flag>
+	<flag name='tslib'>Build with tslib support for touchscreen devices</flag>
+	<flag name='unwind'>Enable libunwind usage for backtraces</flag>
+	<flag name='xnest'>Build the Xnest server</flag>
+	<flag name='xephyr'>Build the Xephyr server</flag>
+	<flag name='xorg'>Build the Xorg X server (HIGHLY RECOMMENDED)</flag>
+	<flag name='xvfb'>Build the Xvfb server</flag>
+</use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:x.org:xorg-server</remote-id>
+</upstream>
+</pkgmetadata>

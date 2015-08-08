@@ -1,0 +1,21 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sat Jan 26 17:40:22 UTC 2013
+Subject: remove bashisms
+
+--- triggers/cache-error-trigger
++++ triggers/cache-error-trigger
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ # cache error trigger. This shell script is executed by mcelog in daemon mode
+ # when a CPU reports excessive corrected cache errors. This could be a indication
+ # for future uncorrected errors.
+@@ -28,7 +28,7 @@
+ 	logger -s -p daemon.crit -t mcelog "Offlining CPU $i due to cache error threshold"
+ 	F=$(printf "/sys/devices/system/cpu/cpu%d/online" $i)
+ 	echo 0 > $F
+-	if [ "$(< $F)" != "0" ] ; then
++	if [ "$(cat $F)" != "0" ] ; then
+ 		logger -s -p daemon.warn -t mcelog "Offlining CPU $i failed"
+ 		EXIT=1
+ 	fi

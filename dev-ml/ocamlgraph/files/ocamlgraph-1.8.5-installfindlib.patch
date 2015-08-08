@@ -1,0 +1,38 @@
+Index: ocamlgraph-1.8.5/Makefile.in
+===================================================================
+--- ocamlgraph-1.8.5.orig/Makefile.in
++++ ocamlgraph-1.8.5/Makefile.in
+@@ -417,21 +417,25 @@ ifeq (@LABLGNOMECANVAS@,yes)
+ 	cp -f $(VIEWER_DIR)/*.mli $(DGRAPH_DIR)/*.mli $(INSTALL_LIBDIR)
+ endif
+ 
++ifneq ($(WANT_OCAMLOPT),no)
++INSTALL_OPT=graph$(LIBEXT) graph.cmx $(CMXA)
++INSTALL_GTK_OPT=$(VIEWER_CMXLIB) $(VIEWER_CMXLIB:.cmx=.o) $(DGRAPH_CMXLIB) $(DGRAPH_CMXLIB:.cmx=.o) graph$(OBJEXT)
++endif
++
+ install-findlib: META
+ ifdef OCAMLFIND
+-ifeq (@LABLGNOMECANVAS@,yes)
++ifeq ($(WANT_GTK),yes)
+ 	$(OCAMLFIND) install ocamlgraph META \
+ 		$(SRCDIR)/*.mli $(VIEWER_DIR)/*.mli $(DGRAPH_DIR)/*.mli \
+-		graph$(OBJEXT) graph$(LIBEXT) graph.cmx graph.cmo graph.cmi \
+-		$(CMA) $(CMXA) \
+-		$(VIEWER_CMXLIB) $(VIEWER_CMOLIB) $(VIEWER_CMILIB) \
+-                $(VIEWER_CMXLIB:.cmx=.o) \
+-                $(DGRAPH_CMXLIB) $(DGRAPH_CMOLIB) $(DGRAPH_CMILIB) \
+-                $(DGRAPH_CMXLIB:.cmx=.o)
++		$(INSTALL_OPT) graph.cmo graph.cmi \
++		$(CMA) \
++		$(INSTALL_GTK_OPT) \
++		$(VIEWER_CMOLIB) $(VIEWER_CMILIB) \
++                $(DGRAPH_CMOLIB) $(DGRAPH_CMILIB)
+ else
+ 	$(OCAMLFIND) install ocamlgraph META \
+ 		$(SRCDIR)/*.mli $(VIEWER_DIR)/*.mli $(DGRAPH_DIR)/*.mli \
+-		graph$(LIBEXT) graph.cmx graph.cmo graph.cmi $(CMA) $(CMXA)
++		$(INSTALL_OPT) graph.cmo graph.cmi $(CMA)
+ endif
+ endif
+ 

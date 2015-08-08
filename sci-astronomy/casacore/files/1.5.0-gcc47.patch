@@ -1,0 +1,22 @@
+diff -Nur casacore-1.5.0.orig/casa/Arrays/IPosition.h casacore-1.5.0/casa/Arrays/IPosition.h
+--- casacore-1.5.0.orig/casa/Arrays/IPosition.h	2012-03-14 14:30:48.000000000 +0000
++++ casacore-1.5.0/casa/Arrays/IPosition.h	2012-06-05 22:07:39.000000000 +0100
+@@ -34,6 +34,7 @@
+ #include <casa/BasicSL/String.h>
+ #include <vector>
+ #include <cstddef>                  // for ptrdiff_t
++#include <unistd.h> // for ssize_t
+ 
+ namespace casa { //# NAMESPACE CASA - BEGIN
+ 
+diff -Nur casacore-1.5.0.orig/casa/System/Casarc.cc casacore-1.5.0/casa/System/Casarc.cc
+--- casacore-1.5.0.orig/casa/System/Casarc.cc	2011-10-18 08:39:05.000000000 +0100
++++ casacore-1.5.0/casa/System/Casarc.cc	2012-06-05 22:11:31.000000000 +0100
+@@ -34,6 +34,7 @@
+ #include <fcntl.h>
+ #include <sys/mman.h>
+ #include <cstdio>
++#include <unistd.h>
+ 
+ #define USE_FLOCK 0
+ #define CASARC_DEBUG 0

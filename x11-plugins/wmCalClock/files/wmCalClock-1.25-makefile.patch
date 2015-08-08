@@ -1,0 +1,35 @@
+--- Makefile.orig	1999-03-27 07:46:38.000000000 +0100
++++ Makefile	2008-01-27 22:45:09.000000000 +0100
+@@ -1,8 +1,8 @@
+-CC     = gcc
+-CFLAGS = -O2 -Wall
+-INCDIR = -I/usr/X11R6/include/X11 -I/usr/X11R6/include
+-DESTDIR= /usr/X11R6
+-LIBDIR = -L/usr/X11R6/lib
++CC     ?= gcc
++CFLAGS += -Wall
++INCDIR = -I/usr/include/X11 -I/usr/include
++PREFIX ?= /usr
++LIBDIR ?= /usr/lib
+ 
+ # for Linux
+ LIBS   = -lXpm -lX11 -lXext
+@@ -22,7 +22,7 @@
+ 
+ wmCalClock.o: wmCalClock_master.xpm wmCalClock_mask.xbm
+ wmCalClock:	$(OBJS) 
+-	$(CC) $(COPTS) $(SYSTEM) -o wmCalClock $^ $(INCDIR) $(LIBDIR) $(LIBS)
++	$(CC) $(CFLAGS) -o wmCalClock $^ $(INCDIR) -L$(LIBDIR) $(LDFLAGS) $(LIBS)
+ 
+ clean:
+ 	for i in $(OBJS) ; do \
+@@ -31,6 +31,7 @@
+ 	rm -f wmCalClock
+ 
+ install:: wmCalClock
+-	install -c -s -m 0755 wmCalClock $(DESTDIR)/bin
+-	install -c -m 0644 wmCalClock.1 $(DESTDIR)/man/man1 
++	install -d $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(PREFIX)/share/man/man1
++	install -m 0755 wmCalClock $(DESTDIR)$(PREFIX)/bin
++	install -m 0644 wmCalClock.1 $(DESTDIR)$(PREFIX)/share/man/man1
+ 

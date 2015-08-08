@@ -1,0 +1,86 @@
+From 0bfc3e09b7d7ca2b75d42c17874b89333b96f371 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 3 Dec 2012 22:30:04 -0500
+Subject: [PATCH] fix implicit decl warnings
+
+Include the proper headers to fix warnings like:
+libnfs-sync.c:1529:3: warning: implicit declaration of function 'gettimeofday' [-Wimplicit-function-declaration]
+libnfs-zdr.c:506:2: warning: implicit declaration of function 'getuid' [-Wimplicit-function-declaration]
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ lib/libnfs-sync.c | 1 +
+ lib/libnfs-zdr.c  | 9 +++++++++
+ lib/libnfs.c      | 1 +
+ lib/socket.c      | 1 +
+ 4 files changed, 12 insertions(+)
+
+diff --git a/lib/libnfs-sync.c b/lib/libnfs-sync.c
+index 0fc1094..c140258 100644
+--- a/lib/libnfs-sync.c
++++ b/lib/libnfs-sync.c
+@@ -77,6 +77,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
++#include <sys/time.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+diff --git a/lib/libnfs-zdr.c b/lib/libnfs-zdr.c
+index c32f661..b6b3ed9 100644
+--- a/lib/libnfs-zdr.c
++++ b/lib/libnfs-zdr.c
+@@ -20,6 +20,10 @@
+  * i.e. zdrmem_create() buffers.
+  * It aims to be compatible with normal rpcgen generated functions.
+  */
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
+ #ifdef WIN32
+ #include "win32_compat.h"
+ #endif
+@@ -28,9 +32,14 @@
+ #include "aros_compat.h"
+ #endif
+ 
++#ifdef HAVE_ARPA_INET_H
++#include <arpa/inet.h>
++#endif
++
+ #include <stdlib.h>
+ #include <string.h>
+ #include <time.h>
++#include <unistd.h>
+ #include "libnfs-zdr.h"
+ 
+ struct opaque_auth _null_auth;
+diff --git a/lib/libnfs.c b/lib/libnfs.c
+index 5692dc3..0a7d139 100644
+--- a/lib/libnfs.c
++++ b/lib/libnfs.c
+@@ -73,6 +73,7 @@
+ #include <string.h>
+ #include <assert.h>
+ #include <errno.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+diff --git a/lib/socket.c b/lib/socket.c
+index 3f7f89f..f8db957 100644
+--- a/lib/socket.c
++++ b/lib/socket.c
+@@ -68,6 +68,7 @@
+ #include <fcntl.h>
+ #include <string.h>
+ #include <errno.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include "libnfs-zdr.h"
+ #include "libnfs.h"
+-- 
+2.0.0
+

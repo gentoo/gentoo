@@ -1,0 +1,11 @@
+--- libptp2-1.1.10.orig/src/Makefile.am	2005-11-01 02:39:40.000000000 +1100
++++ libptp2-1.1.10/src/Makefile.am	2007-12-28 09:51:01.000000000 +1100
+@@ -17,7 +17,7 @@
+ else 
+ ptpcam_SOURCES = ptpcam.c ptpcam.h
+ endif
+-ptpcam_LDADD = -lptp2 @PTPCAM_LDFLAGS@
++ptpcam_LDADD = libptp2.la @PTPCAM_LDFLAGS@
+ ptpcam_DEPENDANCIES = libptp2.la
+ ptpcam_CFLAGS = @PTPCAM_CFLAGS@
+ endif

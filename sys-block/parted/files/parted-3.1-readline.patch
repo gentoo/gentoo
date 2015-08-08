@@ -1,0 +1,11 @@
+--- a/parted/ui.c
++++ b/parted/ui.c
+@@ -1474,7 +1474,7 @@
+ #ifdef HAVE_LIBREADLINE
+   if (!opt_script_mode) {
+     rl_initialize ();
+-    rl_attempted_completion_function = (CPPFunction*) complete_function;
++    rl_attempted_completion_function = (rl_completion_func_t*) complete_function;
+     readline_state.in_readline = 0;
+   }
+ #endif

@@ -1,0 +1,121 @@
+--- gcc/config/alpha/linux-unwind.h
++++ gcc/config/alpha/linux-unwind.h
+@@ -52,7 +52,7 @@ alpha_fallback_frame_state (struct _Unwind_Context *context,
+   else if (pc[1] == 0x201f015f)	/* lda $0,NR_rt_sigreturn */
+     {
+       struct rt_sigframe {
+-	struct siginfo info;
++	siginfo_t info;
+ 	struct ucontext uc;
+       } *rt_ = context->cfa;
+       sc = &rt_->uc.uc_mcontext;
+
+--- gcc/config/bfin/linux-unwind.h
++++ gcc/config/bfin/linux-unwind.h
+@@ -52,10 +52,10 @@ bfin_fallback_frame_state (struct _Unwind_Context *context,
+     {
+       struct rt_sigframe {
+ 	int sig;
+-	struct siginfo *pinfo;
++	siginfo_t *pinfo;
+ 	void *puc;
+ 	char retcode[8];
+-	struct siginfo info;
++	siginfo_t info;
+ 	struct ucontext uc;
+       } *rt_ = context->cfa;
+ 
+--- gcc/config/i386/linux-unwind.h
++++ gcc/config/i386/linux-unwind.h
+@@ -137,9 +137,9 @@ x86_fallback_frame_state (struct _Unwind_Context *context,
+     {
+       struct rt_sigframe {
+ 	int sig;
+-	struct siginfo *pinfo;
++	siginfo_t *pinfo;
+ 	void *puc;
+-	struct siginfo info;
++	siginfo_t info;
+ 	struct ucontext uc;
+       } *rt_ = context->cfa;
+       /* The void * cast is necessary to avoid an aliasing warning.
+
+--- gcc/config/ia64/linux-unwind.h
++++ gcc/config/ia64/linux-unwind.h
+@@ -51,7 +51,7 @@ ia64_fallback_frame_state (struct _Unwind_Context *context,
+       struct sigframe {
+ 	char scratch[16];
+ 	unsigned long sig_number;
+-	struct siginfo *info;
++	siginfo_t *info;
+ 	struct sigcontext *sc;
+       } *frame_ = (struct sigframe *)context->psp;
+       struct sigcontext *sc = frame_->sc;
+@@ -130,7 +130,7 @@ ia64_handle_unwabi (struct _Unwind_Context *context, _Unwind_FrameState *fs)
+       struct sigframe {
+ 	char scratch[16];
+ 	unsigned long sig_number;
+-	struct siginfo *info;
++	siginfo_t *info;
+ 	struct sigcontext *sc;
+       } *frame = (struct sigframe *)context->psp;
+       struct sigcontext *sc = frame->sc;
+
+--- gcc/config/mips/linux-unwind.h
++++ gcc/config/mips/linux-unwind.h
+@@ -79,7 +79,7 @@ mips_fallback_frame_state (struct _Unwind_Context *context,
+       struct rt_sigframe {
+ 	u_int32_t ass[4];  /* Argument save space for o32.  */
+ 	u_int32_t trampoline[2];
+-	struct siginfo info;
++	siginfo_t info;
+ 	_sig_ucontext_t uc;
+       } *rt_ = context->cfa;
+       sc = &rt_->uc.uc_mcontext;
+
+--- gcc/config/pa/linux-unwind.h
++++ gcc/config/pa/linux-unwind.h
+@@ -66,7 +66,7 @@ pa32_fallback_frame_state (struct _Unwind_Context *context,
+   int i;
+   struct sigcontext *sc;
+   struct rt_sigframe {
+-    struct siginfo info;
++    siginfo_t info;
+     struct ucontext uc;
+   } *frame;
+ 
+--- gcc/config/sh/linux-unwind.h
++++ gcc/config/sh/linux-unwind.h
+@@ -80,9 +80,9 @@ shmedia_fallback_frame_state (struct _Unwind_Context *context,
+ 	   && (*(unsigned long *) (pc+11)  == 0x6ff0fff0))
+     {
+       struct rt_sigframe {
+-	struct siginfo *pinfo;
++	siginfo_t *pinfo;
+ 	void *puc;
+-	struct siginfo info;
++	siginfo_t info;
+ 	struct ucontext uc;
+       } *rt_ = context->cfa;
+       /* The void * cast is necessary to avoid an aliasing warning.
+@@ -179,7 +179,7 @@ sh_fallback_frame_state (struct _Unwind_Context *context,
+ 		&& (*(unsigned short *) (pc+14)  == 0x00ad))))
+     {
+       struct rt_sigframe {
+-	struct siginfo info;
++	siginfo_t info;
+ 	struct ucontext uc;
+       } *rt_ = context->cfa;
+       /* The void * cast is necessary to avoid an aliasing warning.
+
+--- gcc/config/xtensa/linux-unwind.h
++++ gcc/config/xtensa/linux-unwind.h
+@@ -66,7 +66,7 @@ xtensa_fallback_frame_state (struct _Unwind_Context *context,
+   struct sigcontext *sc;
+ 
+   struct rt_sigframe {
+-    struct siginfo info;
++    siginfo_t info;
+     struct ucontext uc;
+   } *rt_;
+ 

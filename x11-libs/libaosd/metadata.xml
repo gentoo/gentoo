@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="pango">Enable the textual helpers (requires pangocairo).</flag>
+		<flag name="tools">Install the aosd_cat tool (requires glib-2.0).</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">atheme/libaosd</remote-id>
+	</upstream>
+</pkgmetadata>

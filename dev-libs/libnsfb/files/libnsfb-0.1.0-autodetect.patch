@@ -1,0 +1,21 @@
+--- libnsfb-0.1.0/Makefile
++++ libnsfb-0.1.0/Makefile
+@@ -23,10 +23,18 @@
+ NSFB_XCB_PKG_NAMES := xcb xcb-icccm xcb-image xcb-keysyms xcb-atom
+ 
+ # determine which surface handlers can be compiled based upon avalable library
++ifeq ($(WITH_VNC),yes)
+ $(eval $(call pkg_config_package_available,NSFB_VNC_AVAILABLE,libvncserver))
++endif
++ifeq ($(WITH_SDL),yes)
+ $(eval $(call pkg_config_package_available,NSFB_SDL_AVAILABLE,sdl))
++endif
++ifeq ($(WITH_XCB),yes)
+ $(eval $(call pkg_config_package_available,NSFB_XCB_AVAILABLE,$(NSFB_XCB_PKG_NAMES)))
++endif
++ifeq ($(WITH_WLD),yes)
+ $(eval $(call pkg_config_package_available,NSFB_WLD_AVAILABLE,wayland-client))
++endif
+ 
+ # surfaces not detectable via pkg-config 
+ NSFB_ABLE_AVAILABLE := no

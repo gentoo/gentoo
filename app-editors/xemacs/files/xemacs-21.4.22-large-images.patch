@@ -1,0 +1,122 @@
+PATCH 21.4
+
+Here is the 21.4 version of the previous patch.  The lisp.h hunk is a
+little ugly.  Recommendations on how to deal with the absence of
+UINT_64_T in 21.4 are welcome.
+
+Index: src/glyphs-eimage.c
+===================================================================
+RCS file: /pack/xemacscvs/XEmacs/xemacs/src/glyphs-eimage.c,v
+retrieving revision 1.9.2.5
+diff -d -u -r1.9.2.5 glyphs-eimage.c
+--- src/glyphs-eimage.c	2007/08/20 19:52:28	1.9.2.5
++++ src/glyphs-eimage.c	2009/07/01 22:36:04
+@@ -407,6 +407,7 @@
+    */
+
+   {
++    UINT_64_BIT pixels_sq;
+     int jpeg_gray = 0;		/* if we're dealing with a grayscale */
+     /* Step 4: set parameters for decompression.   */
+
+@@ -429,7 +430,10 @@
+     jpeg_start_decompress (&cinfo);
+
+     /* Step 6: Read in the data and put into EImage format (8bit RGB triples)*/
+-
++    pixels_sq =
++      (UINT_64_BIT) cinfo.output_width * (UINT_64_BIT) cinfo.output_height;
++    if (pixels_sq > ((size_t) -1) / 3)
++      signal_image_error ("JPEG image too large to instantiate", instantiator);
+     unwind.eimage = (unsigned char*) xmalloc (cinfo.output_width * cinfo.output_height * 3);
+     if (!unwind.eimage)
+       signal_image_error("Unable to allocate enough memory for image", instantiator);
+@@ -671,6 +675,7 @@
+   {
+     ColorMapObject *cmo = unwind.giffile->SColorMap;
+     int i, j, row, pass, interlace, slice;
++    UINT_64_BIT pixels_sq;
+     unsigned char *eip;
+     /* interlaced gifs have rows in this order:
+        0, 8, 16, ..., 4, 12, 20, ..., 2, 6, 10, ..., 1, 3, 5, ...  */
+@@ -679,6 +684,9 @@
+
+     height = unwind.giffile->SHeight;
+     width = unwind.giffile->SWidth;
++    pixels_sq = (UINT_64_BIT) width * (UINT_64_BIT) height;
++    if (pixels_sq > ((size_t) -1) / (3 * unwind.giffile->ImageCount))
++      signal_image_error ("GIF image too large to instantiate", instantiator);
+     unwind.eimage = (unsigned char*)
+       xmalloc (width * height * 3 * unwind.giffile->ImageCount);
+     if (!unwind.eimage)
+@@ -937,11 +945,15 @@
+   {
+     int y;
+     unsigned char **row_pointers;
++    UINT_64_BIT pixels_sq;
+     height = info_ptr->height;
+     width = info_ptr->width;
++    pixels_sq = (UINT_64_BIT) width * (UINT_64_BIT) height;
++    if (pixels_sq > ((size_t) -1) / 3)
++      signal_image_error ("PNG image too large to instantiate", instantiator);
+
+     /* Wow, allocate all the memory.  Truly, exciting. */
+-    unwind.eimage = xnew_array_and_zero (unsigned char, width * height * 3);
++    unwind.eimage = xnew_array_and_zero (unsigned char, pixels_sq * 3);
+     /* libpng expects that the image buffer passed in contains a
+        picture to draw on top of if the png has any transparencies.
+        This could be a good place to pass that in... */
+@@ -994,7 +1006,7 @@
+       png_set_expand (png_ptr);
+     /* send grayscale images to RGB too */
+     if (info_ptr->color_type == PNG_COLOR_TYPE_GRAY ||
+-        info_ptr->color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
++	info_ptr->color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+       png_set_gray_to_rgb (png_ptr);
+     /* we can't handle alpha values */
+     if (info_ptr->color_type & PNG_COLOR_MASK_ALPHA)
+@@ -1268,6 +1280,7 @@
+
+     uint32 *raster;
+     unsigned char *ep;
++    UINT_64_BIT pixels_sq;
+
+     assert (!NILP (data));
+
+@@ -1290,12 +1303,15 @@
+
+     TIFFGetField (unwind.tiff, TIFFTAG_IMAGEWIDTH, &width);
+     TIFFGetField (unwind.tiff, TIFFTAG_IMAGELENGTH, &height);
+-    unwind.eimage = (unsigned char *) xmalloc (width * height * 3);
++    pixels_sq = (UINT_64_BIT) width * (UINT_64_BIT) height;
++    if (pixels_sq >= 1 << 29)
++      signal_image_error ("TIFF image too large to instantiate", instantiator);
++    unwind.eimage = (unsigned char *) xmalloc (pixels_sq * 3);
+
+     /* #### This is little more than proof-of-concept/function testing.
+        It needs to be reimplemented via scanline reads for both memory
+        compactness. */
+-    raster = (uint32*) _TIFFmalloc (width * height * sizeof (uint32));
++    raster = (uint32*) _TIFFmalloc ((tsize_t) (pixels_sq * sizeof (uint32)));
+     if (raster != NULL)
+       {
+ 	int i,j;
+Index: src/lisp.h
+===================================================================
+RCS file: /pack/xemacscvs/XEmacs/xemacs/src/lisp.h,v
+retrieving revision 1.45.2.10
+diff -d -u -r1.45.2.10 lisp.h
+--- src/lisp.h	2005/02/01 03:55:02	1.45.2.10
++++ src/lisp.h	2009/07/01 22:36:05
+@@ -265,6 +265,11 @@
+ /*#define REGISTER register*/
+ /*#endif*/
+
++#if SIZEOF_LONG == 8
++#define UINT_64_BIT unsigned long
++#elif SIZEOF_LONG_LONG == 8
++#define UINT_64_BIT unsigned long long
++#endif
+
+ /* EMACS_INT is the underlying integral type into which a Lisp_Object must fit.
+    In particular, it must be large enough to contain a pointer.

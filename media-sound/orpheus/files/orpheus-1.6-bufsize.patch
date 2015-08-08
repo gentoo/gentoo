@@ -1,0 +1,13 @@
+Index: orpheus-1.6/kkstrtext-0.1/kkstrtext.cc
+===================================================================
+--- orpheus-1.6.orig/kkstrtext-0.1/kkstrtext.cc
++++ orpheus-1.6/kkstrtext-0.1/kkstrtext.cc
+@@ -1132,7 +1132,7 @@ string striprtf(const string &s, const s
+ 			    bunicode = false;
+ 			    if(unichar.substr(0, 4).find_first_not_of("0123456789") == -1) {
+ 				long l = strtol(unichar.substr(0, 4).c_str(), 0, 0);
+-				char ubuf[sizeof(long)+4];
++				char ubuf[sizeof(long)*2+4];
+ 			    #ifdef HAVE_ICONV
+ 				memcpy(ubuf, "\xff\xfe", 2);
+ 				memcpy(ubuf+2, &l, sizeof(long));

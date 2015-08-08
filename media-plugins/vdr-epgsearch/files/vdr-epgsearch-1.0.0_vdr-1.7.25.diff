@@ -1,0 +1,32 @@
+--- epgsearch/conflictcheck.h.bak	2012-03-03 15:33:15.000000000 +0100
++++ epgsearch/conflictcheck.h	2012-03-03 15:35:43.000000000 +0100
+@@ -169,12 +169,12 @@
+ 				    result = true;
+ #ifdef DO_REC_AND_PLAY_ON_PRIMARY_DEVICE
+ 				else
+-				    result = Priority >= Setup.PrimaryLimit;
++				    result = Priority >= 0;
+ #endif
+ #endif
+ 			}
+ 			else
+-			    result = !IsPrimaryDevice() || Priority >= Setup.PrimaryLimit;
++			    result = !IsPrimaryDevice() || Priority >= 0;
+ 		    }
+ 		    else
+ 			needsDetachReceivers = true;
+@@ -259,12 +259,12 @@
+ 				result = true;
+ #ifdef DO_REC_AND_PLAY_ON_PRIMARY_DEVICE
+ 			    else
+-				result = Priority >= Setup.PrimaryLimit;
++				result = Priority >= 0;
+ #endif
+ #endif
+ 			}
+ 			else
+-			    result = !IsPrimaryDevice() || Priority >= Setup.PrimaryLimit;
++			    result = !IsPrimaryDevice() || Priority >= 0;
+ 		    }
+ 		    else
+ 			needsDetachReceivers = true;

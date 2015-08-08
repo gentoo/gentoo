@@ -1,0 +1,18 @@
+fix build failure against recent glib-2.32
+
+In file included from Graphics/UI/Gtk/General/hsgthread.c:29:0: 
+
+/usr/include/glib-2.0/glib/gthread.h:28:2:
+     ошибка: #error "Only <glib.h> can be included directly."
+diff --git a/Graphics/UI/Gtk/General/hsgthread.c b/Graphics/UI/Gtk/General/hsgthread.c
+index 5eaed46..6d20e73 100644
+--- a/Graphics/UI/Gtk/General/hsgthread.c
++++ b/Graphics/UI/Gtk/General/hsgthread.c
+@@ -26,7 +26,6 @@
+  */
+ 
+ #include <glib.h>
+-#include <glib/gthread.h>
+ #include <gdk/gdk.h>
+ #include "hsgthread.h"
+ 

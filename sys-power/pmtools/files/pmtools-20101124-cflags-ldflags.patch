@@ -1,0 +1,48 @@
+diff -Nuar pmtools-20100123.orig/acpidump/Makefile pmtools-20100123/acpidump/Makefile
+--- pmtools-20100123.orig/acpidump/Makefile	2006-11-30 13:41:15.000000000 +0100
++++ pmtools-20100123/acpidump/Makefile	2010-03-07 14:19:12.337141824 +0100
+@@ -1,11 +1,11 @@
+ PROG= acpidump
+ SRCS=	acpidump.c
+ KERNEL_INCLUDE := ../include
+-CFLAGS += -Wall -Wstrict-prototypes -Wdeclaration-after-statement -Os -s -D_LINUX -DDEFINE_ALTERNATE_TYPES -I$(KERNEL_INCLUDE) 
++CFLAGS += -Wall -Wstrict-prototypes -Wdeclaration-after-statement -D_LINUX -DDEFINE_ALTERNATE_TYPES -I$(KERNEL_INCLUDE) 
+ 
+ all: acpidump
+ $(PROG) : $(SRCS)
+-	$(CC) $(CFLAGS) $(SRCS) -o $(PROG)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(SRCS) -o $(PROG)
+ 
+ CLEANFILES= $(PROG)
+ 
+diff -Nuar pmtools-20100123.orig/acpixtract/Makefile pmtools-20100123/acpixtract/Makefile
+--- pmtools-20100123.orig/acpixtract/Makefile	2006-11-30 13:45:06.000000000 +0100
++++ pmtools-20100123/acpixtract/Makefile	2010-03-07 14:19:12.337141824 +0100
+@@ -6,7 +6,7 @@
+ all: $(PROG)
+ 
+ $(PROG) : $(SRCS)
+-	$(CC) $(CFLAGS) $(SRCS) -o $(PROG)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(SRCS) -o $(PROG)
+ 
+ CLEANFILES= $(PROG)
+ 
+diff -Nuar pmtools-20100123.orig/madt/Makefile pmtools-20100123/madt/Makefile
+--- pmtools-20100123.orig/madt/Makefile	2005-11-11 18:07:04.000000000 +0100
++++ pmtools-20100123/madt/Makefile	2010-03-07 14:22:15.199017246 +0100
+@@ -1,6 +1,6 @@
+ test: madt
+ 	./madt < APIC
+ madt: madt.c acpi.h tables.c
+-	cc -o madt madt.c
++	$(CC) $(CFLAGS) $(LDFLAGS) madt.c -o madt
+ clean:
+ 	rm madt
+--- pmtools-20101124.orig/turbostat/Makefile.old	2010-11-27 22:13:00.405571001 +0100
++++ pmtools-20101124/turbostat/Makefile	2010-11-27 22:16:39.070571001 +0100
+@@ -1,3 +1,5 @@
++all : turbostat
++
+ turbostat : turbostat.c
+ 
+ clean :

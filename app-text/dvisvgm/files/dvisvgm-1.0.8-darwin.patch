@@ -1,0 +1,10 @@
+--- src/Process.cpp
++++ src/Process.cpp
+@@ -25,6 +25,7 @@
+ #include <fcntl.h>
+ #include <sys/wait.h>
+ #include <unistd.h>
++#include <signal.h>
+ #endif
+ 
+ #include <cstdlib>

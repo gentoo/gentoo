@@ -1,0 +1,28 @@
+From 8d5ebc7399ee03d742a1abe115905c807f8186e3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 17 May 2014 09:23:02 +0200
+Subject: [PATCH] Fix -I flags to support building out-of-source.
+
+When building out-of-source, the headers are located in subdirectories
+in $(top_srcdir) rather than $(top_builddir). Adjust AM_CPPFLAGS
+accordingly.
+---
+ src/bin/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bin/Makefile.am b/src/bin/Makefile.am
+index 1d3d445..111c24a 100644
+--- a/src/bin/Makefile.am
++++ b/src/bin/Makefile.am
+@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in
+ 
+ AM_CPPFLAGS = \
+ -DPACKAGE_DATA_DIR=\"$(datadir)/$(PACKAGE)\" \
+--I$(top_builddir)/src/lib \
++-I$(top_srcdir)/src/lib \
+ $(X_CFLAGS)
+ 
+ if BUILD_X11
+-- 
+1.9.3
+

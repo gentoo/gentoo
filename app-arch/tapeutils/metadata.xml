@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>app-backup</herd>
+    <maintainer>
+        <email>robbat2@gentoo.org</email>
+        <name>Robin H. Johnson</name>
+    </maintainer>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+--- a/configure.in
++++ b/configure.in
+@@ -3,6 +3,8 @@
+ dnl AM_CONFIG_HEADER(config.h)
+ AM_PROG_CC_STDC
+ CFLAGS="$CFLAGS -DURLVIEW -Dunix"
++
++PKG_CHECK_MODULES(ncurses,ncurses)
+ AC_ARG_WITH(slang, [  --with-slang[=DIR]      use S-Lang instead of curses],
+ 	[AC_DEFINE(USE_SLANG)
+ 	if test $withval = yes -a -d ../slang; then
+@@ -22,8 +24,7 @@
+ 		fi
+ 		LIBS="$LIBS -lslang -lm"
+ 	fi],
+-
+-	[AC_CHECK_LIB(ncurses, initscr, [LIBS="$LIBS -lncurses"], [LIBS="$LIBS -lcurses"])
++	[LIBS="$LIBS $ncurses_LIBS"
+ 	AC_CHECK_FUNCS(curs_set)
+ 	AC_CHECK_HEADERS(ncurses.h)
+ 	AC_CHECK_HEADER(ncurses/curses.h, [CPPFLAGS="$CPPFLAGS -I/usr/include/ncurses"])])

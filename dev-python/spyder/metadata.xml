@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription lang="en">
+  Spyder development environment and its PyQt4-based IDE tools:
+  interactive Python shell, Python code editor, workspace
+  (dict/list/string/array editor), doc viewer, history log,
+  environment variables editor, ...
+</longdescription>
+  <use>
+    <flag name="ipython">Add support for <pkg>dev-python/ipython</pkg></flag>
+    <flag name="matplotlib">Add support for <pkg>dev-python/matplotlib</pkg></flag>
+    <flag name="numpy">Add support for <pkg>dev-python/numpy</pkg></flag>
+    <flag name="pep8">Add support for <pkg>dev-python/pep8</pkg></flag>
+    <flag name="pyflakes">Add support for <pkg>dev-python/pyflakes</pkg></flag>
+    <flag name="pylint">Add support for <pkg>dev-python/pylint</pkg></flag>
+    <flag name="rope">Add support for <pkg>dev-python/rope</pkg></flag>
+    <flag name="scipy">Add support for <pkg>sci-libs/scipy</pkg></flag>
+    <flag name="sphinx">Add support for <pkg>dev-python/sphinx</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">spyder</remote-id>
+    <remote-id type="bitbucket">spyder-ide/spyderlib</remote-id>
+  </upstream>
+</pkgmetadata>

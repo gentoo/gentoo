@@ -1,0 +1,12 @@
+As seen on http://code.google.com/p/android/issues/detail?id=20795
+--- netsniff-ng-0.5.8-rc2/Makefile
++++ netsniff-ng-0.5.8-rc2/Makefile
+@@ -72,7 +72,7 @@
+   CFLAGS_DEF += -Wstack-protector
+   CFLAGS_DEF += --param=ssp-buffer-size=4
+   CFLAGS_DEF += -ftrapv
+-  CFLAGS_DEF += -D_FORTIFY_SOURCE=2
++  CFLAGS_DEF += -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+   CFLAGS_DEF += -fexceptions
+ endif
+ 

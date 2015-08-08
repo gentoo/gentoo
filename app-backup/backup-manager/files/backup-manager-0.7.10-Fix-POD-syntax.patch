@@ -1,0 +1,30 @@
+From 808f397dbc76d61e6e29c661585afeb6ba9c41a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Sat, 20 Jul 2013 13:41:25 +0200
+Subject: [PATCH] Fix POD syntax
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ backup-manager-purge | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/backup-manager-purge b/backup-manager-purge
+index ce7a67f..c9a5f1c 100755
+--- a/backup-manager-purge
++++ b/backup-manager-purge
+@@ -53,6 +53,8 @@ than I<ttl> days will be outdated.
+ 
+ =head1 OPTIONAL ARGS
+ 
++=over 4
++
+ =item B<--files-from=>file
+ 
+ A file containing a list of archives to parse, one archive per line.
+-- 
+1.8.1.4
+

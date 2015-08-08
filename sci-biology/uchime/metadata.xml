@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-biology</herd>
+	<longdescription>
+UCHIME is a new algorithm for detecting chimeric sequences. It was developed in 
+collaboration with Brian Haas, Jose Carlos Clemente, Chris Quince and Rob 
+Knight. Chimeras are commonly created during DNA sample amplification by 
+PCR, especially in community sequencing experiments using single regions 
+such as the 16S rRNA gene in bacteria or the fungal ITS region. UCHIME can 
+detect chimeras using a reference database or de novo using abundance 
+information on the assumption that chimeras are less abundant than their 
+parents because they must have undergone fewer rounds of amplification.
+</longdescription>
+</pkgmetadata>

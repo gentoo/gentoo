@@ -1,0 +1,11 @@
+[Unit]
+Description=SKS database thread
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/sks db
+User=sks
+WorkingDirectory=/var/lib/sks
+
+[Install]
+WantedBy=multi-user.target

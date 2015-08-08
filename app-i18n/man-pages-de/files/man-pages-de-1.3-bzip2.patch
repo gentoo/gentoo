@@ -1,0 +1,19 @@
+--- po/generate-manpage.sh.old	2012-11-29 13:26:30.000000000 +0100
++++ po/generate-manpage.sh	2013-08-18 18:34:37.715547485 +0200
+@@ -38,6 +38,16 @@
+ 		original="$uncompressed_manpage"
+ 	fi
+ fi
++# Try a bzip'ed version
++if [ ! -f "$original" ]; then
++	original=/usr/share/man/man$section/$manpage.bz2
++	if [ -f "$original" ]; then
++		# The manpage exists, but needs to be decompressed
++		uncompressed_manpage=`mktemp`
++		bzip2 -d -c "$original" > "$uncompressed_manpage"
++		original="$uncompressed_manpage"
++	fi
++fi
+ # Cannot generate manpage if the original could not be found
+ if [ ! -f "$original" ]; then
+ 	echo "The original manpage for $manpage could not be found." >&2

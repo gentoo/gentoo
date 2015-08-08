@@ -1,0 +1,11 @@
+--- xdelta-1.1.3/xdelta.m4.aclocal	2004-10-20 00:20:47.875648144 +0200
++++ xdelta-1.1.3/xdelta.m4	2004-10-20 00:21:47.205628616 +0200
+@@ -4,7 +4,7 @@
+ dnl AM_PATH_XDELTA([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND [, MODULES]]]])
+ dnl Test for XDELTA, and define XDELTA_CFLAGS and XDELTA_LIBS, if "gmodule" or
+ dnl
+-AC_DEFUN(AM_PATH_XDELTA,
++AC_DEFUN([AM_PATH_XDELTA],
+ [dnl
+ dnl Get the cflags and libraries from the xdelta-config script
+ dnl

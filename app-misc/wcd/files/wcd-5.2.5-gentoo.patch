@@ -1,0 +1,72 @@
+ src/Makefile | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index d4120cc..4505b8d 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -46,12 +46,12 @@ include version.mk
+ 
+ CC		?= gcc
+ STATIC		=
+-STRIP		= strip
++STRIP		=
+ 
+ ENABLE_NLS = 1
+ 
+ PACKAGE		= wcd
+-EXT		= .exe
++EXT		=
+ PROGRAM         = $(PACKAGE)$(EXT)
+ BIN		= $(PROGRAM)
+ 
+@@ -188,9 +188,9 @@ endif
+ # possible values: ncurses, curses, pdcurses, pdcursesw or <empty>
+ 
+ ifdef UCS
+-	CURSES = ncursesw
++	CURSES = $(shell pkg-config --libs ncursesw)
+ else
+-	CURSES = ncurses
++	CURSES = $(shell pkg-config --libs ncurses)
+ endif
+ 
+ ifdef CURSES
+@@ -201,7 +201,7 @@ endif
+ 
+ ifneq (,$(CURSES))
+ 	DEFS_CURSES = -DWCD_USECURSES
+-	LIB_CURSES  = -l$(CURSES)
++	LIB_CURSES  = $(CURSES)
+ endif
+ 
+ 
+@@ -406,15 +406,15 @@ ifdef ASCII_TREE
+ endif
+ 
+ LDFLAGS_USER   =
+-LDFLAGS		= $(RPM_OPT_FLAGS) \
++LIBS		= $(RPM_OPT_FLAGS) \
+ 	          $(LDFLAGS_EXTRA) \
+ 		  $(NLFLAG) \
+ 		  $(LDFLAG_STATIC) \
+ 		  $(LDFLAGS_USER)
+ 
+-LIBS = $(LIB_CURSES) \
+-       $(LIB_UNISTRING) \
+-       $(LIBS_EXTRA)
++LIBS += $(LIB_CURSES) \
++	$(LIB_UNISTRING) \
++	$(LIBS_EXTRA)
+ 
+ DEFS_USER   =
+ DEFS		= $(DEF_UNIX) $(DEFS_CURSES) $(EXTRA_DEFS) $(DEFS_USER)
+@@ -470,7 +470,7 @@ status:
+ 
+ $(BIN): $(OBJS1)
+ 	$(MAKE) status
+-	$(CC) $(OBJS1) $(LDFLAGS) $(LIBS) -o $@
++	$(CC) $(LDFLAGS) $(OBJS1) -o $@ $(LIBS)
+ 
+ %.o: %.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(DEFS) -c $< -o $@

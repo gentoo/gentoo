@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>forensics</herd>
+	<use>
+		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
+		<flag name="prelink">Enable support for <pkg>sys-devel/prelink</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">aide</remote-id>
+	</upstream>
+</pkgmetadata>

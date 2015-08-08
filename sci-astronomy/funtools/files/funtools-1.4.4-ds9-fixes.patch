@@ -1,0 +1,292 @@
+Origin: http://hea-www.harvard.edu/saord/download/ds9/source/ds9.7.0.tar.gz
+Description: Fixes that were applied to the package included in the saods9 
+ source. Only the patches that affect the Debian distribution are included here.
+ These patches are not specific for DS9, however.
+ .
+ From the changelog:
+  * Fixed -J funcone, which was not properly outputting all rows.
+  * Fixed bug in funim.c which broke vcol functionality.
+ .
+--- a/filter/filter.c
++++ b/filter/filter.c
+@@ -326,24 +326,31 @@ Filter FilterOpen(header, string, mode)
+   }
+ 
+   /* determine which type of process execution we do */
+-  filter->ptype = DEFAULT_FILTER_PTYPE;
+-  *tbuf = '\0';
+-  if( (s=(char *)getenv("FILTER_PTYPE")) ){
+-    strcpy(tbuf, s);
+-  }
+-  if( !*tbuf && (s=xstrdup(filter->mode)) ){
+-    keyword(s, "ptype", tbuf, SZ_LINE);
+-    if( s ) xfree(s);
+-  }
+-  if( *tbuf ){
+-    if( *tbuf == 'p' )
+-      filter->ptype = PTYPE_PROCESS;
+-    else if( *tbuf == 'c' )
+-      filter->ptype = PTYPE_CONTAINED;
++  switch(filter->method){
++  case METHOD_C:
++    filter->ptype = DEFAULT_FILTER_PTYPE;
++    *tbuf = '\0';
++    if( (s=(char *)getenv("FILTER_PTYPE")) ){
++      strcpy(tbuf, s);
++    }
++    if( !*tbuf && (s=xstrdup(filter->mode)) ){
++      keyword(s, "ptype", tbuf, SZ_LINE);
++      if( s ) xfree(s);
++    }
++    if( *tbuf ){
++      if( *tbuf == 'p' )
++	filter->ptype = PTYPE_PROCESS;
++      else if( *tbuf == 'c' )
++	filter->ptype = PTYPE_CONTAINED;
+ #ifdef USE_DL
+-    else if( *tbuf == 'd' )
+-      filter->ptype = PTYPE_DYNAMIC;
++      else if( *tbuf == 'd' )
++	filter->ptype = PTYPE_DYNAMIC;
+ #endif
++    }
++    break;
++  default:
++    filter->ptype = PTYPE_PROCESS;
++    break;
+   }
+ 
+   /* determine region paint mode */
+@@ -470,7 +477,10 @@ Filter FilterOpen(header, string, mode)
+   if( !FilterProgCompile(filter) )
+     goto error;
+ 
+-  if( filter->debug < 2 ){
++  if( filter->debug >= 2 ) goto done;
++
++  switch(filter->method){
++  case METHOD_C:
+     switch(filter->ptype){
+     case PTYPE_PROCESS:
+     case PTYPE_CONTAINED:
+@@ -478,7 +488,7 @@ Filter FilterOpen(header, string, mode)
+       case PIPE_WIN32:
+ #if HAVE_CYGWIN
+ 	if( !WinProcessOpen(filter->prog, 
+-	    &(filter->ihandle), &(filter->ohandle), &(filter->process)) )
++	     &(filter->ihandle), &(filter->ohandle), &(filter->process)) )
+ 	  goto error;
+ #else
+ 	gerror(stderr, "internal error: no WinProcess without Windows");
+@@ -487,20 +497,23 @@ Filter FilterOpen(header, string, mode)
+ 	break;
+       default:
+ 	if( !ProcessOpen(filter->prog, 
+-		    &(filter->ichan), &(filter->ochan), &(filter->pid)) )
++	     &(filter->ichan), &(filter->ochan), &(filter->pid)) )
+ 	  goto error;
+ 	break;
+       }
+       break;
+ #ifdef USE_DL
+     case PTYPE_DYNAMIC:
+-     if( !(filter->dl=DLOpen(filter->prog)) )
+-       goto error;
+-     break;
++      if( !(filter->dl=DLOpen(filter->prog)) )
++	goto error;
++      break;
+ #endif
+     default:
+-      goto error;
++	goto error;
+     }
++    break;
++  default:
++    goto error;
+   }
+ 
+   /* return the good news */
+--- a/filter/filt.l
++++ b/filter/filt.l
+@@ -871,6 +871,26 @@ compass     { BEGIN COMM; }
+  *
+  */
+ 
++
++#ifdef YY_USE_PROTOS
++static void floatprefix(void)
++#else
++static void floatprefix()
++#endif
++{
++  if( filt->method == METHOD_C )
++    _FiltLexCat("(double)");
++}
++
++#ifdef YY_USE_PROTOS
++static void floatsuffix(void)
++#else
++static void floatsuffix()
++#endif
++{
++  return;
++}
++
+ #ifdef YY_USE_PROTOS
+ static void
+ bin2num(char *d, char *s, int maxlen)
+@@ -1414,7 +1434,14 @@ static void _FiltLexRegionStart(docols)
+     FilterSymbolDefaults(filt, 0);
+     /* initialize wcs for default image case */
+     _FiltLexWcsCols(filt->fhd, filt->xbin, filt->ybin);
+-    _FiltLexCat(",(double)x,(double)y");
++    _FiltLexCat(",");
++    floatprefix();
++    _FiltLexCat("x");
++    floatsuffix();
++    _FiltLexCat(",");
++    floatprefix();
++    _FiltLexCat("y");
++    floatsuffix();
+     break;
+   case 1:
+     if( !initbindefs ){
+@@ -1427,16 +1454,24 @@ static void _FiltLexRegionStart(docols)
+     if( !filt->xbin || !filt->ybin ){
+       _filterror("two binning columns are required for regions");
+     }
+-    _FiltLexCat(",(double)");
++    _FiltLexCat(",");
++    floatprefix();
+     _FiltLexCat(filt->xbin);
+-    _FiltLexCat(",(double)");
++    floatsuffix();
++    _FiltLexCat(",");
++    floatprefix();
+     _FiltLexCat(filt->ybin);
++    floatsuffix();
+     break;
+   case 2:
+-    _FiltLexCat(",(double)");
++    _FiltLexCat(",");
++    floatprefix();
+     _FiltLexCat(colnames[0]);
+-    _FiltLexCat(",(double)");
++    floatsuffix();
++    _FiltLexCat(",");
++    floatprefix();
+     _FiltLexCat(colnames[1]);
++    floatsuffix();
+     break;
+   }
+   if( s ) xfree(s);
+--- a/filter/filtprog_c.c
++++ b/filter/filtprog_c.c
+@@ -198,7 +198,8 @@ static int FilterProgOpen_C(filter)
+     ccstr = "gcc";
+   }
+   /* make sure we have a compiler */
+-  if( !(filter->cc = Find(ccstr, "x", NULL, FilterPath()))		&&
++  if( !(filter->cc = Access(ccstr, "x"))				&&
++      !(filter->cc = Find(ccstr, "x", NULL, FilterPath()))		&&
+       !(filter->cc = Find("gcc", "x", NULL, FilterPath()))		&&
+       !(filter->cc = Find("cc",  "x", NULL, FilterPath()))		&&
+       !(filter->cc = Find("cc",  "x", NULL, "."))  			&&
+@@ -212,6 +213,9 @@ static int FilterProgOpen_C(filter)
+ #if HAVE_CYGWIN
+   if( (s=strrchr(filter->cc, '/')) ){
+     s++;
++  }
++  else if( (s=strrchr(filter->cc, '\\')) ){
++    s++;
+   } else {
+     s = filter->cc;
+   }
+--- a/funcone.c
++++ b/funcone.c
+@@ -1036,6 +1036,9 @@ main(argc, argv)
+   strncpy(decstr, argv[optind+ioff++], SZ_LINE-1);
+   strncpy(radstr, argv[optind+ioff++], SZ_LINE-1);
+ 
++  /* dolimfilt does not work with doall */
++  if( doall ) dolimfilt = 0;
++
+   /* process list arguments */
+   if( dolist ){
+     if( !(list=OpenList(lname, rastr, decstr, radstr)) ){
+@@ -1085,6 +1088,8 @@ main(argc, argv)
+     if( !(adbuf=xcalloc(nrow+1, sizeof(char))) ){
+       gerror(stderr, "can't allocate all (-J|-X) buffer of size %d\n", nrow);
+     }
++    /* must read one event at a time, or else we can't tell the event num */
++    maxrow = 1;
+   }
+ 
+   /* activate columns specified by user, if necessary */
+@@ -1371,7 +1376,7 @@ done:
+     while( (ebuf = (Ev)FunTableRowGet(fun, NULL, maxrow, NULL, &got)) ){
+       /* if we have a filter, then we don't know the row number til after
+ 	 we read the event, i.e. now */
+-      if( doall & ALL_FILT ) FunInfoGet(fun, FUN_ROW, &irow, 0);
++      FunInfoGet(fun, FUN_ROW, &irow, 0);
+       /* process all rows */
+       for(i=0; i<got; i++){
+ 	/* skip rows that already were written out */
+--- a/funtab.c
++++ b/funtab.c
+@@ -1386,7 +1386,7 @@ int FunTableRowPut(fun, rows, nrow, idx, plist)
+ off_t
+ FunTableRowSeek(Fun fun, int nrow, char *plist)
+ #else
+-off_t FunTableRowPut(fun, nrow, plist)
++off_t FunTableRowSeek(fun, nrow, plist)
+      Fun fun;
+      int nrow;
+      char *plist;
+--- a/funim.c
++++ b/funim.c
+@@ -111,9 +111,9 @@ static void *_FunTableBin(fun, buf, plist)
+   /* optional value column for binning */
+   if( fun->vbin >= 0 ){
+     dovcol = 1;
+-    voffset = fun->header->table->col[fun->bin[2]].offset;
+-    vsize = fun->header->table->col[fun->bin[2]].size;
+-    vtype = fun->header->table->col[fun->bin[2]].type;
++    voffset = fun->header->table->col[fun->vbin].offset;
++    vsize = fun->header->table->col[fun->vbin].size;
++    vtype = fun->header->table->col[fun->vbin].type;
+   }
+   else{
+     dovcol = 0;
+--- a/calc.l
++++ b/calc.l
+@@ -284,7 +284,7 @@ static char *_CalcCB(name, client_data)
+ {
+   CalcCols cur;  
+   char tbuf[SZ_LINE];
+-  char tbuf2[SZ_LINE];
++  char tbuf2[SZ_LINE*2];
+   char tbuf3[SZ_LINE];
+   int i, got, ip;
+   
+--- a/util/gio.c
++++ b/util/gio.c
+@@ -2209,7 +2209,7 @@ void gerror(va_alist) va_dcl
+     vsnprintf(_gerrors, SZ_LINE-1, tbuf, args);
+     /* if the error flag is positive, we output immediately */
+     if( (fd != NULL) && _gerror ){
+-      fprintf(fd, _gerrors);
++      fputs(_gerrors, fd);
+       fflush(fd);
+     }
+     /* if the error flag is set high, we exit */
+@@ -2281,7 +2281,7 @@ void gwarning(va_alist) va_dcl
+     vsnprintf(_gwarnings, SZ_LINE-1, tbuf, args);
+     /* if the warning flag is positive, we output immediately */
+     if( (fd != NULL) && _gwarning ){
+-      fprintf(fd, _gwarnings);
++      fputs(_gwarnings, fd);
+       fflush(fd);
+     }
+ }

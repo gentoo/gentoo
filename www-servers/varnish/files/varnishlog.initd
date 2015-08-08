@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+VARNISHLOG_PID=${VARNISHLOG_PID:-/run/${SVCNAME}.pid}
+
+command="${VARNISHLOG:-/usr/bin/varnishlog}"
+command_args="-D -P ${VARNISHLOG_PID} ${VARNISHLOG_OPTS}"
+pidfile="${VARNISHLOG_PID}"
+
+extra_started_commands="reload rotate flush"
+
+description_rotate="Rotate the log file"
+description_flush="Flush any outstanding transactions"
+
+rotate() {
+	ebegin "Rotating log file"
+	start-stop-daemon -p ${VARNISHLOG_PID} -s SIGHUP
+	eend $?
+}
+
+flush() {
+	ebegin "Flushing any outstanding transactions"
+	start-stop-daemon -p ${VARNISHLOG_PID} -s SIGUSR1
+	eend $?
+}
+
+reload() {
+	flush
+	rotate
+}

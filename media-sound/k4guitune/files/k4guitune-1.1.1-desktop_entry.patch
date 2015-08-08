@@ -1,0 +1,10 @@
+--- k4guitune.orig/src/k4guitune.desktop	2009-12-29 14:54:54.000000000 +0100
++++ k4guitune/src/k4guitune.desktop	2012-01-12 14:42:56.000000000 +0100
+@@ -7,6 +7,6 @@
+ DocPath=k4guitune/index.html
+ Categories=Qt;KDE;AudioVideo;
+ GenericName=A chromatic tumer for KDE4
+-Terminal=0
++Terminal=false
+ 
+ X-Ubuntu-Gettext-Domain=desktop_kdesdk

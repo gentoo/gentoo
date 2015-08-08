@@ -1,0 +1,32 @@
+diff -ru openvas-libraries-7.0.1.orig/nasl/nasl_builtin_synscan.c openvas-libraries-7.0.1.new/nasl/nasl_builtin_synscan.c
+--- openvas-libraries-7.0.1.orig/nasl/nasl_builtin_synscan.c	2014-05-24 01:11:33.049417462 +0200
++++ openvas-libraries-7.0.1.new/nasl/nasl_builtin_synscan.c	2014-05-24 17:01:25.409361461 +0200
+@@ -24,7 +24,7 @@
+ *
+ */
+ 
+-#define _BSD_SOURCE 1
++#define _DEFAULT_SOURCE 1
+ 
+ #include <unistd.h>      /* for close() */
+ #include <stdlib.h>      /* for rand() */
+diff -ru openvas-libraries-7.0.1.orig/nasl/nasl_raw.h openvas-libraries-7.0.1.new/nasl/nasl_raw.h
+--- openvas-libraries-7.0.1.orig/nasl/nasl_raw.h	2014-05-24 01:11:33.287412716 +0200
++++ openvas-libraries-7.0.1.new/nasl/nasl_raw.h	2014-05-24 17:02:33.829967589 +0200
+@@ -20,12 +20,12 @@
+ #ifndef OPENVAS_RAW_H
+ #define OPENVAS_RAW_H
+ #ifdef __linux__
+-#ifndef __BSD_SOURCE
+-#define __BSD_SOURCE
++#ifndef __DEFAULT_SOURCE
++#define __DEFAULT_SOURCE
+ #endif
+ 
+-#ifndef _BSD_SOURCE
+-#define _BSD_SOURCE
++#ifndef _DEFAULT_SOURCE
++#define _DEFAULT_SOURCE
+ #endif
+ 
+ #ifndef __FAVOR_BSD

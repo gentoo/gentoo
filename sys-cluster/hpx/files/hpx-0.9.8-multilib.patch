@@ -1,0 +1,163 @@
+From 383acb45e75406fb94bb4fa86c162a78c05ab840 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@lanl.gov>
+Date: Tue, 20 May 2014 11:03:16 -0600
+Subject: [PATCH] added LIB cmake option to configure lib directory
+
+for multiarch distributions the lib directory needs to changed
+from 'lib' to 'lib64'/'lib32'. Add an cmake option to do this.
+---
+ CMakeLists.txt                              | 11 +++++++----
+ cmake/HPX_AddComponent.cmake                |  2 +-
+ cmake/HPX_AddLibrary.cmake                  |  2 +-
+ plugins/binary_filter/bzip2/CMakeLists.txt  |  2 +-
+ plugins/binary_filter/snappy/CMakeLists.txt |  2 +-
+ plugins/binary_filter/zlib/CMakeLists.txt   |  2 +-
+ plugins/parcel/coalescing/CMakeLists.txt    |  2 +-
+ src/CMakeLists.txt                          |  6 +++---
+ 8 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8d5df19..8ad79cb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -192,6 +192,9 @@ else()
+     "64" ADVANCED)
+ endif()
+ 
++if (NOT DEFINED LIB)
++  set(LIB "lib")
++endif(NOT DEFINED LIB)
+ ###############################################################################
+ if(UNIX)
+   hpx_link_directories("${CMAKE_BINARY_DIR}/lib/hpx")
+@@ -2027,14 +2030,14 @@
+ if(NOT HPX_NO_INSTALL)
+   if(NOT ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug"))
+     install(FILES ${output_dir}/lib/pkgconfig/hpx_application.pc
+-            DESTINATION lib/pkgconfig)
++            DESTINATION ${LIB}/pkgconfig)
+     install(FILES ${output_dir}/lib/pkgconfig/hpx_component.pc
+-            DESTINATION lib/pkgconfig)
++            DESTINATION ${LIB}/pkgconfig)
+   else()
+     install(FILES ${output_dir}/lib/pkgconfig/hpx_application_debug.pc
+-            DESTINATION lib/pkgconfig)
++            DESTINATION ${LIB}/pkgconfig)
+     install(FILES ${output_dir}/lib/pkgconfig/hpx_component_debug.pc
+-            DESTINATION lib/pkgconfig)
++            DESTINATION ${LIB}/pkgconfig)
+   endif()
+ endif()
+ 
+diff --git a/cmake/HPX_AddComponent.cmake b/cmake/HPX_AddComponent.cmake
+index afbee24..babca54 100644
+--- a/cmake/HPX_AddComponent.cmake
++++ b/cmake/HPX_AddComponent.cmake
+@@ -258,7 +258,7 @@ macro(add_hpx_component name)
+     if(${name}_INSTALL_SUFFIX)
+       hpx_library_install("${name}_component" "${${name}_INSTALL_SUFFIX}")
+     else()
+-      hpx_library_install(${name}_component lib/hpx)
++      hpx_library_install(${name}_component ${LIB}/hpx)
+     endif()
+ 
+     foreach(target ${${name}_INI})
+diff --git a/cmake/HPX_AddLibrary.cmake b/cmake/HPX_AddLibrary.cmake
+index 7f39700..8524a45 100644
+--- a/cmake/HPX_AddLibrary.cmake
++++ b/cmake/HPX_AddLibrary.cmake
+@@ -248,7 +248,7 @@ macro(add_hpx_library name)
+     if(${name}_INSTALL_SUFFIX)
+       hpx_library_install("${name}_lib" "${${name}_INSTALL_SUFFIX}")
+     else()
+-      hpx_library_install(${name}_lib lib/hpx)
++      hpx_library_install(${name}_lib ${LIB}/hpx)
+     endif()
+   endif()
+ endmacro()
+diff --git a/plugins/binary_filter/bzip2/CMakeLists.txt b/plugins/binary_filter/bzip2/CMakeLists.txt
+index 2580164..b2fbf40 100644
+--- a/plugins/binary_filter/bzip2/CMakeLists.txt
++++ b/plugins/binary_filter/bzip2/CMakeLists.txt
+@@ -38,7 +38,7 @@ macro(add_bzip2_module)
+     add_hpx_pseudo_dependencies(plugins.compression.bzip2 compress_bzip2_lib)
+ 
+     if(NOT HPX_NO_INSTALL)
+-      hpx_library_install(compress_bzip2_lib lib/hpx)
++      hpx_library_install(compress_bzip2_lib ${LIB}/hpx)
+     endif()
+   endif()
+ endmacro()
+diff --git a/plugins/binary_filter/snappy/CMakeLists.txt b/plugins/binary_filter/snappy/CMakeLists.txt
+index 6a7bbac..47e5966 100644
+--- a/plugins/binary_filter/snappy/CMakeLists.txt
++++ b/plugins/binary_filter/snappy/CMakeLists.txt
+@@ -30,7 +30,7 @@ macro(add_snappy_module)
+     add_hpx_pseudo_dependencies(plugins.compression.snappy compress_snappy_lib)
+ 
+     if(NOT HPX_NO_INSTALL)
+-      hpx_library_install(compress_snappy_lib lib/hpx)
++      hpx_library_install(compress_snappy_lib ${LIB}/hpx)
+     endif()
+   endif()
+ endmacro()
+diff --git a/plugins/binary_filter/zlib/CMakeLists.txt b/plugins/binary_filter/zlib/CMakeLists.txt
+index 4a188ca..e4485f7 100644
+--- a/plugins/binary_filter/zlib/CMakeLists.txt
++++ b/plugins/binary_filter/zlib/CMakeLists.txt
+@@ -38,7 +38,7 @@ macro(add_zlib_module)
+     add_hpx_pseudo_dependencies(plugins.compression.zlib compress_zlib_lib)
+ 
+     if(NOT HPX_NO_INSTALL)
+-      hpx_library_install(compress_zlib_lib lib/hpx)
++      hpx_library_install(compress_zlib_lib ${LIB}/hpx)
+     endif()
+   endif()
+ endmacro()
+diff --git a/plugins/parcel/coalescing/CMakeLists.txt b/plugins/parcel/coalescing/CMakeLists.txt
+index 093e427..889c10c 100644
+--- a/plugins/parcel/coalescing/CMakeLists.txt
++++ b/plugins/parcel/coalescing/CMakeLists.txt
+@@ -22,7 +22,7 @@ macro(add_coalescing_module)
+   add_hpx_pseudo_dependencies(plugins.parcel.coalescing parcel_coalescing_lib)
+ 
+   if(NOT HPX_NO_INSTALL)
+-    hpx_library_install(parcel_coalescing_lib lib/hpx)
++    hpx_library_install(parcel_coalescing_lib ${LIB}/hpx)
+   endif()
+ endmacro()
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4f4c79c..6190839 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -312,7 +312,7 @@ set_property(TARGET hpx_serialization APPEND
+   "HPX_COROUTINE_EXPORTS")
+ 
+ if(NOT HPX_NO_INSTALL)
+-  hpx_library_install(hpx_serialization lib/hpx)
++  hpx_library_install(hpx_serialization ${LIB}/hpx)
+ endif()
+ 
+ ################################################################################
+@@ -403,7 +403,7 @@ set_property(TARGET hpx APPEND
+   "HPX_COROUTINE_EXPORTS") # Do we still need this?
+ 
+ if(NOT HPX_NO_INSTALL)
+-  hpx_library_install(hpx lib/hpx)
++  hpx_library_install(hpx ${LIB}/hpx)
+ endif()
+ 
+ ################################################################################
+@@ -436,7 +436,7 @@ endif()
+ set_property(TARGET hpx_init PROPERTY FOLDER "Core")
+ 
+ if(NOT HPX_NO_INSTALL)
+-  hpx_archive_install(hpx_init lib/hpx)
++  hpx_archive_install(hpx_init ${LIB}/hpx)
+ endif()
+ 
+ set(HPX_CONFIG_DEFINITIONS ${HPX_CONFIG_DEFINITIONS} PARENT_SCOPE)
+-- 
+1.8.5.5
+

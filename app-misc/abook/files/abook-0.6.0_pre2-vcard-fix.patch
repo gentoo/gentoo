@@ -1,0 +1,10 @@
+--- abook-0.6.0pre2/abook.c.orig	2010-10-03 14:54:23.827767178 -0700
++++ abook-0.6.0pre2/abook.c	2010-10-03 14:54:55.738042419 -0700
+@@ -708,6 +708,7 @@
+ 	check_abook_directory();
+ 	init_opts();
+ 	load_opts(rcfile);
++	init_standard_fields();
+ 	atexit(free_opts);
+ 
+ 	/*

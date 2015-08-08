@@ -1,0 +1,38 @@
+From 0eb3daa4b17ee64b464594f1a5d413ecb364957c Mon Sep 17 00:00:00 2001
+From: Jeff Layton <jlayton@samba.org>
+Date: Thu, 14 Jun 2012 10:59:18 -0400
+Subject: [PATCH 1/1] mount.cifs: set rc to 0 in libcap toggle_dac_capability
+
+Thus spake Jochen:
+
+The mount.cifs program from the cifs-utils package 5.5 did not work on
+my Linux system. It just exited without an error message and did not
+mount anything.
+
+[...]
+
+I think, when this variable rc is now used in this function, it has also
+to be properly initialized there.
+
+Reported-by: Jochen Roderburg <roderburg@uni-koeln.de>
+Signed-off-by: Jeff Layton <jlayton@samba.org>
+---
+ mount.cifs.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/mount.cifs.c b/mount.cifs.c
+index a1b0454..6f3f382 100644
+--- a/mount.cifs.c
++++ b/mount.cifs.c
+@@ -495,7 +495,7 @@ free_caps:
+ static int
+ toggle_dac_capability(int writable, int enable)
+ {
+-	int rc;
++	int rc = 0;
+ 	cap_t caps;
+ 	cap_value_t capability = writable ? CAP_DAC_OVERRIDE : CAP_DAC_READ_SEARCH;
+ 
+-- 
+1.7.0.4
+

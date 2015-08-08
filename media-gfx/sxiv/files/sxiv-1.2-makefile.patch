@@ -1,0 +1,16 @@
+--- sxiv-1.2/Makefile
++++ sxiv-1.2/Makefile
+@@ -3,10 +3,9 @@
+ PREFIX    = /usr/local
+ MANPREFIX = $(PREFIX)/share/man
+ 
+-CC       = gcc
+-CFLAGS   = -std=c99 -Wall -pedantic -O2
+-CPPFLAGS = -I$(PREFIX)/include -D_XOPEN_SOURCE=500 -DHAVE_GIFLIB
+-LDFLAGS  = -L$(PREFIX)/lib
++CC       ?= gcc
++CFLAGS   += -std=c99 -Wall -pedantic -O2
++CPPFLAGS += -D_XOPEN_SOURCE=500 -DHAVE_GIFLIB
+ LIBS     = -lX11 -lImlib2 -lgif
+ 
+ SRC = commands.c exif.c image.c main.c options.c thumbs.c util.c window.c

@@ -1,0 +1,13 @@
+diff -r -U1 ecl-13.5.1.orig/src/h/object.h ecl-13.5.1/src/h/object.h
+--- ecl-13.5.1.orig/src/h/object.h	2013-05-28 03:37:36.000000000 +0700
++++ ecl-13.5.1/src/h/object.h	2013-05-29 19:23:34.000000000 +0700
+@@ -25,4 +25,9 @@
+ 
++#ifndef TRUE
+ #define	TRUE		1	/*  boolean true value  */
++#endif
++
++#ifndef FALSE
+ #define	FALSE		0	/*  boolean false value  */
++#endif
+ 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>ruby</herd>
+  <use>
+    <flag name="highlight">Enable source code highlighting via <pkg>dev-ruby/syntax</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">bhollis/maruku</remote-id>
+  </upstream>
+</pkgmetadata>

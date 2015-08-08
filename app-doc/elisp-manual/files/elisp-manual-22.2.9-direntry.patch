@@ -1,0 +1,19 @@
+--- elisp-manual-22-2.9-orig/elisp.texi
++++ elisp-manual-22-2.9/elisp.texi
+@@ -1,6 +1,6 @@
+ \input texinfo  @c -*-texinfo-*-
+ @c %**start of header
+-@setfilename elisp
++@setfilename elisp22.info
+ @settitle GNU Emacs Lisp Reference Manual
+ @c %**end of header
+ 
+@@ -11,7 +11,7 @@
+ 
+ @dircategory Emacs
+ @direntry
+-* Elisp: (elisp).       The Emacs Lisp Reference Manual.
++* Elisp 22: (elisp22).  The Emacs Lisp Reference Manual for Emacs 22.
+ @end direntry
+ 
+ @c in general, keep the following line commented out, unless doing a

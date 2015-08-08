@@ -1,0 +1,103 @@
+--- wave.c.orig	2012-08-06 18:54:21.829756875 -0700
++++ wave.c	2012-08-06 19:04:35.818049655 -0700
+@@ -1,11 +1,26 @@
+ #include <stdio.h>
+ #include <string.h>
++#include <endian.h>
+ #include "wave.h"
+ 
+ int read_header (FILE *f, waveheaderstruct *header)
+ {
++	waveheaderstruct h;
+ 	fseek (f, 0, SEEK_SET);
+-	return fread (header, 1, sizeof (waveheaderstruct), f);
++	size_t red = fread (&h, 1, sizeof (waveheaderstruct), f);
++	
++	h.length = le32toh(h.length);
++	h.length_chunk = le32toh(h.length_chunk);
++	h.format = le16toh(h.format);
++	h.modus = le16toh(h.modus);
++	h.sample_fq = le32toh(h.sample_fq);
++	h.byte_p_sec = le32toh(h.byte_p_sec);
++	h.byte_p_spl = le16toh(h.byte_p_spl);
++	h.bit_p_spl = le16toh(h.bit_p_spl);
++	h.data_length = le32toh(h.data_length);
++	
++	*header = h;
++	return red;
+ }
+ 
+ int read_frames (FILE *f, int start, int length, char *data)
+@@ -52,12 +67,12 @@
+ 	
+ 	read_header (f, &header);
+ 	
+-	printf ("Length: %lu\n", header.length);
+-	printf ("Length Chunk: %lu\n", header.length_chunk);
++	printf ("Length: %lu\n", (unsigned long)header.length);
++	printf ("Length Chunk: %lu\n", (unsigned long)header.length_chunk);
+ 	printf ("Format: %u\n", header.format);
+ 	printf ("Modus: %u\n", header.modus);
+-	printf ("Sample Frequency: %lu\n", header.sample_fq);
+-	printf ("Bytes per Second: %lu\n", header.byte_p_sec);
++	printf ("Sample Frequency: %lu\n", (unsigned long)header.sample_fq);
++	printf ("Bytes per Second: %lu\n", (unsigned long)header.byte_p_sec);
+ 	printf ("Bytes per Sample: %u\n", header.byte_p_spl);
+-	printf ("Data Length: %lu\n", header.data_length);
++	printf ("Data Length: %lu\n", (unsigned long)header.data_length);
+ }
+--- wave.h.orig	2012-08-06 18:55:38.009165756 -0700
++++ wave.h	2012-08-06 18:55:50.377232324 -0700
+@@ -22,24 +22,25 @@
+ #ifndef WAVE_H
+ #define WAVE_H
+ 
+-typedef unsigned long ulongT;
+-typedef unsigned short ushortT;
++#include <stdint.h>
+ 
++#pragma pack(push,1)
+ typedef struct {		/* header for WAV-Files */
+-	char		main_chunk[4];	/* 'RIFF' */
+-	unsigned long	length;		/* length of file */
+-	char		chunk_type[4];	/* 'WAVE' */
+-	char		sub_chunk[4];	/* 'fmt' */
+-	unsigned long	length_chunk;	/* length sub_chunk, always 16 bytes */
+-	unsigned short	format;		/* always 1 = PCM-Code */
+-	unsigned short	modus;		/* 1 = Mono, 2 = Stereo */
+-	unsigned long	sample_fq;	/* Sample Freq */
+-	unsigned long	byte_p_sec;	/* Data per sec */
+-	unsigned short	byte_p_spl;	/* Bytes per sample */
+-	unsigned short	bit_p_spl;	/* bits per sample, 8, 12, 16 */
+-	char		data_chunk[4];	/* 'data' */
+-	unsigned long	data_length;	/* length of data */
+-} waveheaderstruct;
++	uint8_t		main_chunk[4];	/* 'RIFF' */
++	uint32_t	length;		/* length of file */
++	uint8_t		chunk_type[4];	/* 'WAVE' */
++	uint8_t		sub_chunk[4];	/* 'fmt' */
++	uint32_t	length_chunk;	/* length sub_chunk, always 16 bytes */
++	uint16_t	format;		/* always 1 = PCM-Code */
++	uint16_t	modus;		/* 1 = Mono, 2 = Stereo */
++	uint32_t	sample_fq;	/* Sample Freq */
++	uint32_t	byte_p_sec;	/* Data per sec */
++	uint16_t	byte_p_spl;	/* Bytes per sample */
++	uint16_t	bit_p_spl;	/* bits per sample, 8, 12, 16 */
++	uint8_t		data_chunk[4];	/* 'data' */
++	uint32_t	data_length;	/* length of data */
++} __attribute__ ((__packed__)) waveheaderstruct;
++#pragma pack(pop)
+ 
+ int read_header (FILE *f, waveheaderstruct *header);
+ int read_frames (FILE *f, int start, int length, char *data);
+--- spectromatic.c.orig	2012-08-06 18:54:05.260668605 -0700
++++ spectromatic.c	2012-08-06 19:28:18.637679446 -0700
+@@ -217,7 +217,7 @@
+ 		if (header.modus == 2)
+ 			ch2 = (double*) malloc (window_size * sizeof (double));
+ 
+-		fprintf (stderr, "samples = %li, step_size = %i, window_size = %i\n", header.data_length / header.byte_p_spl, step_size, window_size);
++		fprintf (stderr, "samples = %lu, step_size = %i, window_size = %i\n", (unsigned long)header.data_length / header.byte_p_spl, step_size, window_size);
+ 
+ 		for (i = -window_size; i < window_size + (int)(header.data_length / header.byte_p_spl); i += step_size) {
+ 			read_frames (f, i, window_size, data);

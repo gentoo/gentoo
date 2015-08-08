@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<use>
+		<flag name="mixer">
+		Enables <pkg>media-libs/sdl-mixer</pkg> sound backend in addition to
+		<pkg>media-libs/openal</pkg> one.
+	</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">naev</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+--- sdl/sdl.cpp.orig
++++ sdl/sdl.cpp
+@@ -6285,6 +6285,7 @@
+ #endif
+ 	static unsigned long hide_mouse_when;
+ 	static bool hide_mouse;
++	bool pressed;
+ #ifdef WITH_JOYSTICK
+ 	static uint32_t const axis_value[][3] = {
+ 		// { pressed, [implicitly released ...] }
+@@ -6301,7 +6302,6 @@
+ 	};
+ 	unsigned int hat_value_map;
+ 	intptr_t joypad;
+-	bool pressed;
+ #endif
+ 	uint32_t plist[8];
+ 	uint32_t rlist[8];

@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/513240
+
+the jasper headers are horribly broken and break things like stdbool.h.
+re-order the includes to work around this.
+
+--- a/converter/other/jpeg2000/jpeg2ktopam.c
++++ b/converter/other/jpeg2000/jpeg2ktopam.c
+@@ -13,13 +13,14 @@
+ #define _XOPEN_SOURCE 600
+ #include <string.h>
+ 
++#include <jasper/jasper.h>
++
+ #include "pm_c_util.h"
+ #include "pam.h"
+ #include "shhopt.h"
+ #include "nstring.h"
+ #include "mallocvar.h"
+ 
+-#include <jasper/jasper.h>
+ #include "libjasper_compat.h"
+ 
+ enum compmode {COMPMODE_INTEGER, COMPMODE_REAL};
+--- a/converter/other/jpeg2000/pamtojpeg2k.c
++++ b/converter/other/jpeg2000/pamtojpeg2k.c
+@@ -13,13 +13,14 @@
+ #define _XOPEN_SOURCE 600
+ #include <string.h>
+ 
++#include <jasper/jasper.h>
++
+ #include "pm_c_util.h"
+ #include "pam.h"
+ #include "shhopt.h"
+ #include "nstring.h"
+ #include "mallocvar.h"
+ 
+-#include <jasper/jasper.h>
+ #include "libjasper_compat.h"
+ 
+ 

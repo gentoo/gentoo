@@ -1,0 +1,16 @@
+diff --unified -uNrp fontconfig-2.10.2-orig/configure.ac fontconfig-2.10.2/configure.ac
+--- fontconfig-2.10.2-orig/configure.ac	2012-11-26 09:21:13.000000000 +0100
++++ fontconfig-2.10.2/configure.ac	2013-01-05 15:40:54.541682239 +0100
+@@ -570,7 +570,11 @@ AC_SUBST(XMLDIR)
+ # Let people not build/install docs if they don't have docbook
+ #
+ 
+-AC_CHECK_PROG(HASDOCBOOK, docbook2html, yes, no)
++AC_ARG_ENABLE(docbook,           [  --disable-docbook                Don't build documentation],,)
++
++if test x$enable_docbook != xno; then
++	AC_CHECK_PROG(HASDOCBOOK, docbook2html, yes, no)
++fi
+ 
+ AM_CONDITIONAL(USEDOCBOOK, test "x$HASDOCBOOK" = xyes)
+ 

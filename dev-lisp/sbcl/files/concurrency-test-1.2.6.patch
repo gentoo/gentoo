@@ -1,0 +1,24 @@
+diff -Nuar a/contrib/sb-concurrency/tests/test-frlock.lisp b/contrib/sb-concurrency/tests/test-frlock.lisp
+--- a/contrib/sb-concurrency/tests/test-frlock.lisp	2014-11-29 19:56:58.000000000 +0100
++++ b/contrib/sb-concurrency/tests/test-frlock.lisp	2014-12-16 23:52:18.569947139 +0100
+@@ -22,9 +22,9 @@
+   #+openbsd 0.01
+   #-openbsd 0.0001)
+ 
+-(defun test-frlocks (&key (reader-count 100) (read-count 1000000)
++(defun test-frlocks (&key (reader-count 50) (read-count 500000)
+                           (outer-read-pause 0) (inner-read-pause 0)
+-                          (writer-count 10) (write-count (/ 1 *minimum-sleep*))
++                          (writer-count 10) (write-count 5000)
+                           (outer-write-pause *minimum-sleep*) (inner-write-pause 0))
+     (let ((rw (make-frlock))
+           (a 0)
+@@ -87,7 +87,7 @@
+ #+sb-thread
+ (deftest* (frlock.1 :fails-on :win32)
+     (handler-case
+-        (sb-ext:with-timeout 60 (test-frlocks))
++        (sb-ext:with-timeout 240 (test-frlocks))
+       (sb-ext:timeout (c)
+         (error "~A" c)))
+   nil

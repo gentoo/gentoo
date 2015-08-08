@@ -1,0 +1,18 @@
+diff -Naruw a/raster/rt_core/Makefile.in b/raster/rt_core/Makefile.in
+--- a/raster/rt_core/Makefile.in	2012-03-21 21:36:59.000000000 +0000
++++ b/raster/rt_core/Makefile.in	2013-04-28 13:23:21.055728249 +0000
+@@ -8,7 +8,7 @@
+ #
+ #############################################################################
+ 
+-AR=ar rs
++ARFLAGS=rs
+ 
+ CC=@CC@
+ LIBLWGEOM_LDFLAGS=../../liblwgeom/.libs/liblwgeom.a
+@@ -35,4 +35,4 @@
+ 	rm -f Makefile
+ 
+ librtcore.a: $(RT_OBJS) $(RT_HEADERS)
+-	$(AR) $(RT_LIB) $(RT_OBJS)
++	$(AR) $(ARFLAGS) $(RT_LIB) $(RT_OBJS)

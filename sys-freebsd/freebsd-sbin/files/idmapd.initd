@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need rpcbind
+}
+
+start() {
+	ebegin "Starting NFS idmapd"
+	start-stop-daemon --start --quiet --exec \
+		/sbin/idmapd -- $idmapdopts
+	eend $? "Error starting NFS idmapd"
+}
+
+stop() {
+	ebegin "Stopping NFS idmapd"
+	start-stop-daemon --stop --quiet --exec /sbin/idmapd
+	eend $? "Error stopping NFS idmapd"
+}

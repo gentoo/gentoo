@@ -1,0 +1,26 @@
+diff -Nuar valgrind-3.8.1.orig/configure.in valgrind-3.8.1/configure.in
+--- valgrind-3.8.1.orig/configure.in	2012-09-18 15:17:32.000000000 -0400
++++ valgrind-3.8.1/configure.in	2013-02-19 13:00:26.000000000 -0500
+@@ -906,6 +906,13 @@
+ 	DEFAULT_SUPP="glibc-2.34567-NPTL-helgrind.supp ${DEFAULT_SUPP}"
+ 	DEFAULT_SUPP="glibc-2.X-drd.supp ${DEFAULT_SUPP}"
+ 	;;
++     2.17)
++	AC_MSG_RESULT(2.17 family)
++	AC_DEFINE([GLIBC_2_17], 1, [Define to 1 if you're using glibc 2.17.x])
++	DEFAULT_SUPP="glibc-2.X.supp ${DEFAULT_SUPP}"
++	DEFAULT_SUPP="glibc-2.34567-NPTL-helgrind.supp ${DEFAULT_SUPP}"
++	DEFAULT_SUPP="glibc-2.X-drd.supp ${DEFAULT_SUPP}"
++	;;
+      darwin)
+ 	AC_MSG_RESULT(Darwin)
+ 	AC_DEFINE([DARWIN_LIBC], 1, [Define to 1 if you're using Darwin])
+@@ -919,7 +926,7 @@
+ 
+      *)
+ 	AC_MSG_RESULT([unsupported version ${GLIBC_VERSION}])
+-	AC_MSG_ERROR([Valgrind requires glibc version 2.2 - 2.16])
++	AC_MSG_ERROR([Valgrind requires glibc version 2.2 - 2.17])
+ 	AC_MSG_ERROR([or Darwin libc])
+ 	;;
+ esac

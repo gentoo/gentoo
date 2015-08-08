@@ -1,0 +1,31 @@
+From 2881b8189dcacc8ab6a336f0e107d72752c8c47e Mon Sep 17 00:00:00 2001
+From: Tom Stellard <thomas.stellard@amd.com>
+Date: Wed, 14 Mar 2012 11:20:08 -0400
+Subject: [PATCH 3/3] r600: Add read_global_size and read_local_size builtins
+
+---
+ include/clang/Basic/BuiltinsR600.def |    8 ++++++++
+ 1 files changed, 8 insertions(+), 0 deletions(-)
+
+diff --git a/include/clang/Basic/BuiltinsR600.def b/include/clang/Basic/BuiltinsR600.def
+index ce1f30e..c81758e 100644
+--- a/include/clang/Basic/BuiltinsR600.def
++++ b/include/clang/Basic/BuiltinsR600.def
+@@ -17,6 +17,14 @@
+ 
+ // The format of this database matches clang/Basic/Builtins.def.
+ 
++BUILTIN(__builtin_r600_read_global_size_x, "z", "nc")
++BUILTIN(__builtin_r600_read_global_size_y, "z", "nc")
++BUILTIN(__builtin_r600_read_global_size_z, "z", "nc")
++
++BUILTIN(__builtin_r600_read_local_size_x, "z", "nc")
++BUILTIN(__builtin_r600_read_local_size_y, "z", "nc")
++BUILTIN(__builtin_r600_read_local_size_z, "z", "nc")
++
+ BUILTIN(__builtin_r600_read_ngroups_x, "z", "nc")
+ BUILTIN(__builtin_r600_read_ngroups_y, "z", "nc")
+ BUILTIN(__builtin_r600_read_ngroups_z, "z", "nc")
+-- 
+1.7.7.6
+

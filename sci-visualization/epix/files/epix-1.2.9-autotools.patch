@@ -1,0 +1,94 @@
+* disable automatic install of doc and examples
+* update for newer autotools
+Patch by Sebastien Fabbro
+
+diff -Nur epix-1.2.9.orig/doc/Makefile.am epix-1.2.9/doc/Makefile.am
+--- epix-1.2.9.orig/doc/Makefile.am	2009-02-16 02:16:58.000000000 +0000
++++ epix-1.2.9/doc/Makefile.am	2012-02-19 16:46:02.123782104 +0000
+@@ -1,7 +1,7 @@
+ # Makefile.am for ePiX v1.x "doc" directory
+ #
+ 
+-EPIXFLAGS = --no-defaults -I.. -L.. -lepix -v
++EPIXFLAGS = --no-defaults -I.. -L.. -lepix -q
+ 
+ %.eepic: %.xp
+ 	../epix-local $(EPIXFLAGS) $<
+@@ -13,13 +13,13 @@
+ CLEANFILES = *~ *.aux *.dvi *.log *.out *.toc \
+ 	*.fdx *.flg *.fnd *.idx *.ilg *.ind \
+ 	epix.info epix.info.bz2 manual_src.tar manual.pdf manual.ps \
+-	manual_src.tar.gz manual.pdf.gz manual.ps.gz manual-stamp
++	manual_src.tar.gz manual.pdf manual.ps.gz manual-stamp
+ 
+ MAINTAINERCLEANFILES = *.eepic *.aux *.dvi *.log *.out *.toc \
+ 	*.fdx *.flg *.fnd *.idx *.ilg *.ind
+ 
+ ## Targets ##
+-doc_DATA = manual.pdf.gz manual.ps.gz manual_src.tar.gz
++doc_DATA = 
+ 
+ info_TEXINFOS = epix.texi
+ 
+@@ -42,8 +42,7 @@
+ 	gzip -9 -c manual.ps > manual.ps.gz
+ 
+ #PDF
+-manual.pdf.gz: manual-stamp
+-	gzip -9 -c manual.pdf > manual.pdf.gz
++manual.pdf: manual-stamp
+ 
+ epix.info: manual-stamp epix.texi
+ 	makeinfo epix.texi 2>&1 >/dev/null
+diff -Nur epix-1.2.9.orig/Makefile.am epix-1.2.9/Makefile.am
+--- epix-1.2.9.orig/Makefile.am	2010-01-25 02:42:26.000000000 +0000
++++ epix-1.2.9/Makefile.am	2012-02-19 16:50:24.890671835 +0000
+@@ -15,7 +15,8 @@
+ bin_SCRIPTS = epix elaps flix laps
+ 
+ pkglib_LIBRARIES = libepix.a
+-pkglib_DATA = epix-lib.sh
++pkgepixdir = $(pkglibdir)
++pkgepix_DATA = epix-lib.sh
+ include_HEADERS = epix.h
+ 
+ libepix_a_CXXSOURCES = active_screen.cc affine.cc angle_units.cc \
+@@ -56,7 +57,7 @@
+ 
+ EPIX_CONFFILES = bash_completions $(EPIX_EL)
+ 
+-EPIX_NOTEFILES = AUTHORS BUGS ChangeLog COPYING INSTALL NEWS POST-INSTALL \
++EPIX_NOTEFILES = AUTHORS BUGS ChangeLog NEWS POST-INSTALL \
+ 	README THANKS VERSION
+ 
+ EXTRA_DIST = $(bin_SCRIPTS) $(man_MANS) $(EPIX_CONFFILES) $(EPIX_NOTEFILES) \
+@@ -102,13 +103,12 @@
+ # Extra things to install
+ install-data-local:
+ 	@echo; echo "Installing notes and configuration files"
+-	$(mkinstalldirs) $(DESTDIR)$(docdir)/notes $(DESTDIR)$(docdir)/config
+-	$(INSTALL_DATA) $(EPIX_NOTEFILES) $(DESTDIR)$(docdir)/notes
+-	$(INSTALL_DATA) $(EPIX_CONFFILES) $(DESTDIR)$(docdir)/config
++	$(mkinstalldirs) $(DESTDIR)$(docdir)
++	$(INSTALL_DATA) $(EPIX_NOTEFILES) $(DESTDIR)$(docdir)
+ 
+ # This is being installed by install-exec, but should not be executable
+-install-exec-local: install-pkglibDATA
+-	chmod a-x $(DESTDIR)$(pkglibdir)/epix-lib.sh
++install-exec-local: install-pkgepixDATA
++	chmod a-x $(DESTDIR)$(pkgepixdir)/epix-lib.sh
+ 
+ uninstall-local:
+ 	-rm -rf $(DESTDIR)$(docdir)/notes $(DESTDIR)$(docdir)/config
+diff -Nur epix-1.2.9.orig/samples/Makefile.am epix-1.2.9/samples/Makefile.am
+--- epix-1.2.9.orig/samples/Makefile.am	2008-07-01 03:55:14.000000000 +0100
++++ epix-1.2.9/samples/Makefile.am	2012-02-19 16:46:02.123782104 +0000
+@@ -7,7 +7,7 @@
+ CLEANFILES = *~ *.eepic *.eps sample_src.tar sample_src.tar.gz sample-stamp
+ 
+ ## Targets ##
+-doc_DATA = sample_src.tar.gz
++doc_DATA =
+ 
+ 
+ # tar up tex, xp, and eepic files

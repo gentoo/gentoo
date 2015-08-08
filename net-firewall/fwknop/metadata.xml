@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>itumaykin@gmail.com</email>
+		<name>Coacher</name>
+	</maintainer>
+	<use>
+		<flag name="client">Build fwknop client</flag>
+		<flag name="gdbm">Replace file digest-cache with gdbm</flag>
+		<flag name="gpg">Enable GPG support via <pkg>app-crypt/gpgme</pkg></flag>
+		<flag name="server">Build fwknopd server</flag>
+		<flag name="extras">Install example apparmor policy</flag>
+		<flag name="udp-server">Build fwknopd with UDP server mode only</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mrash/fwknop</remote-id>
+	</upstream>
+</pkgmetadata>

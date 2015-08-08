@@ -1,0 +1,11 @@
+--- heroes-0.21/configure.ac
++++ heroes-0.21/configure.ac
+@@ -112,7 +112,7 @@
+ # Checks for typedefs, structures, and compiler characteristics.
+ # ==============================================================
+ 
+-AM_C_PROTOTYPES
++AC_C_PROTOTYPES
+ AC_C_CONST
+ AC_TYPE_UID_T     dnl This checks for gid_t too.
+ AC_CHECK_TYPES([ssize_t])

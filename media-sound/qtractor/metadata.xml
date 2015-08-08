@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proaudio</herd>
+  <use>
+    <flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
+    <flag name="rubberband">Enable support for in-place audio clip pitch-shifting through the rubberband library</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">qtractor</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,185 @@
+From 2dc45e25b200e1b70e862f46c9f7ad652e59c8a2 Mon Sep 17 00:00:00 2001
+From: David Woodhouse <David.Woodhouse@intel.com>
+Date: Mon, 3 Nov 2014 17:39:43 +0000
+Subject: [PATCH 28/34] Update to new hash handling, fix to match stored certs
+ only for the same host/port
+
+---
+ auth-dialog/main.c | 90 +++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 49 insertions(+), 41 deletions(-)
+
+diff --git a/auth-dialog/main.c b/auth-dialog/main.c
+index df0146c..38f3a8f 100644
+--- a/auth-dialog/main.c
++++ b/auth-dialog/main.c
+@@ -694,7 +694,7 @@ static char* get_title(const char *vpn_name)
+ 
+ typedef struct cert_data {
+ 	auth_ui_data *ui_data;
+-	OPENCONNECT_X509 *peer_cert;
++	char *cert_details;
+ 	const char *reason;
+ } cert_data;
+ 
+@@ -722,13 +722,10 @@ static gboolean user_validate_cert(cert_data *data)
+ {
+ 	auth_ui_data *ui_data = _ui_data; /* FIXME global */
+ 	char *title;
+-	char *details;
+ 	GtkWidget *dlg, *text, *scroll;
+ 	GtkTextBuffer *buffer;
+ 	int result;
+ 
+-	details = openconnect_get_cert_details(ui_data->vpninfo, data->peer_cert);
+-
+ 	title = get_title(data->ui_data->vpn_name);
+ 	dlg = gtk_message_dialog_new(NULL, 0, GTK_MESSAGE_QUESTION,
+ 				     GTK_BUTTONS_OK_CANCEL,
+@@ -751,8 +748,7 @@ static gboolean user_validate_cert(cert_data *data)
+ 
+ 	text = gtk_text_view_new();
+ 	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(text));
+-	gtk_text_buffer_set_text(buffer, details, -1);
+-	openconnect_free_cert_info(data->ui_data->vpninfo, details);
++	gtk_text_buffer_set_text(buffer, data->cert_details, -1);
+ 	gtk_text_view_set_editable(GTK_TEXT_VIEW(text), 0);
+ 	gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(text), FALSE);
+ 	gtk_container_add(GTK_CONTAINER(scroll), text);
+@@ -775,36 +771,40 @@ static gboolean user_validate_cert(cert_data *data)
+ 
+ /* runs in worker thread */
+ static int validate_peer_cert(void *cbdata,
+-			      OPENCONNECT_X509 *peer_cert, const char *reason)
++#if !OPENCONNECT_CHECK_VER(5,0)
++			      OPENCONNECT_X509 *peer_cert,
++#endif
++			      const char *reason)
+ {
+ 	auth_ui_data *ui_data = cbdata;
+-	char fingerprint[41];
+-	char *certs_data;
+ 	int ret = 0;
+ 	cert_data *data;
++	char *certkey;
++	char *accepted_hash = NULL;
++#if OPENCONNECT_CHECK_VER(5,0)
++	const char *fingerprint = openconnect_get_peer_cert_hash(ui_data->vpninfo);
++#else
++	char fingerprint[41];
+ 
+ 	ret = openconnect_get_cert_sha1(ui_data->vpninfo, peer_cert, fingerprint);
+ 	if (ret)
+ 		return ret;
+ 
+-	certs_data = g_hash_table_lookup (ui_data->secrets, "certsigs");
+-	if (certs_data) {
+-		char **certs = g_strsplit_set(certs_data, "\t", 0);
+-		char **this = certs;
++#define openconnect_check_peer_cert_hash(v, h) strcmp(h, fingerprint)
++#define openconnect_get_peer_cert_details(v) openconnect_get_cert_details(v, peer_cert);
++#endif
+ 
+-		while (*this) {
+-			if (!strcmp(*this, fingerprint)) {
+-				g_strfreev(certs);
+-				goto out;
+-			}
+-			this++;
+-		}
+-		g_strfreev(certs);
+-	}
++	certkey = g_strdup_printf ("certificate:%s:%d",
++				   openconnect_get_hostname(ui_data->vpninfo),
++				   openconnect_get_port(ui_data->vpninfo));
++
++	accepted_hash = g_hash_table_lookup (ui_data->secrets, certkey);
++	if (accepted_hash && !openconnect_check_peer_cert_hash(ui_data->vpninfo, accepted_hash))
++		goto accepted;
+ 
+ 	data = g_slice_new(cert_data);
+ 	data->ui_data = ui_data; /* FIXME uses global */
+-	data->peer_cert = peer_cert;
++	data->cert_details = openconnect_get_peer_cert_details(ui_data->vpninfo);
+ 	data->reason = reason;
+ 
+ 	g_mutex_lock(&ui_data->form_mutex);
+@@ -813,27 +813,27 @@ static int validate_peer_cert(void *cbdata,
+ 	g_idle_add((GSourceFunc)user_validate_cert, data);
+ 
+ 	/* wait for user to accept or cancel */
+-	while (ui_data->cert_response == CERT_USER_NOT_READY) {
++	while (ui_data->cert_response == CERT_USER_NOT_READY)
+ 		g_cond_wait(&ui_data->cert_response_changed, &ui_data->form_mutex);
+-	}
+-	if (ui_data->cert_response == CERT_ACCEPTED) {
+-		if (certs_data) {
+-			char *new = g_strdup_printf("%s\t%s", certs_data, fingerprint);
+-			g_hash_table_insert (ui_data->secrets,
+-					     g_strdup ("certsigs"), new);
+-		} else {
+-			g_hash_table_insert (ui_data->secrets, g_strdup ("certsigs"),
+-					     g_strdup (fingerprint));
+-		}
++
++	openconnect_free_cert_info(data->ui_data->vpninfo, data->cert_details);
++	g_slice_free(cert_data, data);
++
++	if (ui_data->cert_response == CERT_ACCEPTED)
+ 		ret = 0;
+-	} else {
++	else
+ 		ret = -EINVAL;
+-	}
++
+ 	g_mutex_unlock (&ui_data->form_mutex);
+ 
+-	g_slice_free(cert_data, data);
++ accepted:
++	if (!ret) {
++		g_hash_table_insert (ui_data->secrets, certkey,
++				     g_strdup(fingerprint));
++		certkey = NULL;
++	}
+ 
+- out:
++	g_free (certkey);
+ 	return ret;
+ }
+ 
+@@ -1196,7 +1196,7 @@ static gboolean cookie_obtained(auth_ui_data *ui_data)
+ 			gtk_widget_set_sensitive(ui_data->cancel_button, FALSE);
+ 		}
+ 	} else if (!ui_data->cookie_retval) {
+-		OPENCONNECT_X509 *cert;
++		const void *cert;
+ 		gchar *key, *value;
+ 
+ 		/* got cookie */
+@@ -1218,14 +1218,22 @@ static gboolean cookie_obtained(auth_ui_data *ui_data)
+ 		g_hash_table_insert (ui_data->secrets, key, value);
+ 		openconnect_clear_cookie(ui_data->vpninfo);
+ 
++#if OPENCONNECT_CHECK_VER(5,0)
++		cert = openconnect_get_peer_cert_hash (ui_data->vpninfo);
++		if (cert) {
++			key = g_strdup (NM_OPENCONNECT_KEY_GWCERT);
++			value = g_strdup (cert);
++			g_hash_table_insert (ui_data->secrets, key, value);
++		}
++#else
+ 		cert = openconnect_get_peer_cert (ui_data->vpninfo);
+ 		if (cert) {
+ 			key = g_strdup (NM_OPENCONNECT_KEY_GWCERT);
+ 			value = g_malloc0 (41);
+-			openconnect_get_cert_sha1(ui_data->vpninfo, cert, value);
++			openconnect_get_cert_sha1(ui_data->vpninfo, (void *)cert, value);
+ 			g_hash_table_insert (ui_data->secrets, key, value);
+ 		}
+-
++#endif
+ 		if (get_save_passwords(ui_data->secrets)) {
+ 			g_hash_table_foreach(ui_data->success_passwords,
+ 					     keyring_store_passwords,
+-- 
+2.2.0
+

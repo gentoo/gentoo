@@ -1,0 +1,12 @@
+diff -urp alpine-2.00.org/configure.ac alpine-2.00/configure.ac
+--- alpine-2.00.org/configure.ac	2008-08-08 19:11:31.000000000 +0200
++++ alpine-2.00/configure.ac	2011-11-24 12:01:47.741607522 +0100
+@@ -954,7 +954,7 @@ dnl provide SSL support?
+ if test "x$alpine_SSLTYPE" != "xnone" ; then
+   AC_SEARCH_LIBS(SSL_library_init,ssl,
+     [
+-      LIBS="$LIBS -lssl"
++      LIBS="$LIBS -lcrypto"
+     ])
+   if test "x$alpine_SSLTYPE" = "xnone" ; then
+     AC_MSG_NOTICE([OpenSSL libraries NOT found])

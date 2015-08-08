@@ -1,0 +1,94 @@
+--- configure.ac.original	2008-03-17 13:07:48.000000000 -0400
++++ configure.ac	2008-03-17 13:08:03.000000000 -0400
+@@ -28,15 +28,12 @@
+   AC_ARG_WITH(tcltk,
+               AS_HELP_STRING(--with-tcltk,Create tcltk version),
+               MY_PROG="generator-tcltk")
+-  AC_ARG_WITH(gtk,
+-              AS_HELP_STRING(--with-gtk,Create gtk version),
+-              MY_PROG="generator-gtk")
+   AC_ARG_WITH(sdl,
+               AS_HELP_STRING(--with-sdl,Create SDL version),
+               [MY_PROG="generator-sdl"; USE_SDL_AUDIO=yes])
+    if [[ "x$MY_PROG" = "x" ]]; then
+     AC_MSG_ERROR(You must select a user interface type:
+-    svgalib allegro tcltk gtk sdl)
++    svgalib allegro tcltk sdl)
+   fi
+   if [[ "x$MY_PROG" = "xgenerator-allegro" ]]; then
+     AC_DEFINE(ALLEGRO, 1, [Allegro version])
+@@ -202,50 +199,6 @@
+       CFLAGS="$CFLAGS -Wstrict-prototypes -Wunused"
+     fi
+   fi
+-  if [[ "x$DEBUG" != "xno" ]]; then
+-    AC_MSG_RESULT(Turning on debug flags)
+-    CFLAGS="$CFLAGS -g -O"
+-    optimum=no
+-  else
+-    if [[ "x$GCCVER" != "xno" ]]; then
+-      AC_MSG_RESULT(Turning on gcc optimisations)
+-      CFLAGS="$CFLAGS -O3 -fomit-frame-pointer"
+-      if [[ "x$GCCVER" = "x3" ]]; then
+-        AC_MSG_RESULT(Turning on gcc 3 optimisations)
+-        CFLAGS="$CFLAGS -fno-math-errno"
+-      fi
+-      case "$CFLAGS" in
+-        *mcpu*|*march*) AC_MSG_RESULT(Skipping target optimisations)
+-              ;;
+-        *) case "$target_cpu" in
+-             i386) AC_MSG_RESULT(Turning on i386 optimisations)
+-                   CFLAGS="$CFLAGS -march=i386 -ffast-math"
+-                   ;;
+-             i486) AC_MSG_RESULT(Turning on i486 optimisations)
+-                   CFLAGS="$CFLAGS -march=i486 -ffast-math"
+-                   ;;
+-             i586) AC_MSG_RESULT(Turning on pentium optimisations)
+-                   # cannot do malign-double as we link to other libraries and
+-                   # it would break binary compatibility
+-                   CFLAGS="$CFLAGS -march=pentium -ffast-math"
+-                   ;;
+-             i?86) AC_MSG_RESULT(Turning on i686 optimisations)
+-                   # cannot do malign-double as we link to other libraries and
+-                   # it would break binary compatibility
+-                   CFLAGS="$CFLAGS -march=i686 -ffast-math"
+-                   ;;
+-             alpha*) AC_MSG_RESULT(Adding -mieee for Alpha)
+-                   CFLAGS="$CFLAGS -mieee"
+-                   ;;
+-                *) AC_MSG_RESULT(Sorry unknown target CPU)
+-                   ;;
+-           esac
+-      esac
+-    else
+-      AC_MSG_WARN(You did not opt for gcc optimisations!)
+-      optimum=no
+-    fi
+-  fi
+   AC_CHECK_LIB(jpeg, jpeg_start_compress, 
+     [ MY_LIBS="-ljpeg $MY_LIBS"; AC_DEFINE(JPEG, 1, [JPEG features]) ])
+ 
+@@ -272,14 +225,7 @@
+ 
+   AC_PATH_XTRA
+ 
+-  if [[ "x$MY_PROG" = "xgenerator-gtk" ]]; then
+-    MY_SUBDIRS="glade gtkopts $MY_SUBDIRS"
+-    AM_PATH_GTK(1.2.10,,AC_MSG_ERROR(Generator needs gtk 1.2.10 or later))
+-    AM_PATH_SDL(1.2.6,,AC_MSG_ERROR(Generator needs sdk 1.2.6 or later))
+-
+-    MY_LIBS="$MY_LIBS $X_PRE_LIBS $X_LIBS $X_EXTRA_LIBS"
+-    CFLAGS="$CFLAGS $X_CFLAGS"
+-  elif [[ "x$MY_PROG" = "xgenerator-sdl" ]]; then
++  if [[ "x$MY_PROG" = "xgenerator-sdl" ]]; then
+     MY_SUBDIRS="gtkopts $MY_SUBDIRS"
+     AM_PATH_SDL(1.2.6,,AC_MSG_ERROR(Generator needs sdk 1.2.6 or later))
+ 
+@@ -305,6 +251,7 @@
+   AC_CHECK_SIZEOF(unsigned long, 4)
+   AC_CHECK_SIZEOF(unsigned long long, 8)
+   AC_CHECK_HEADERS(sys/param.h)
++  AC_CHECK_HEADERS(sys/time.h)
+   AC_CHECK_HEADERS(bzlib.h)
+   AC_CHECK_HEADERS(zlib.h)
+   AC_CHECK_HEADERS(tcl8.0.h)

@@ -1,0 +1,34 @@
+From 5717fb2da383d0c8c80fffdbe3ced568b2151f86 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 29 May 2014 18:58:48 +0200
+Subject: [PATCH] Fix "make install"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[..]
+for FILE in bkisofs-manual/manual/*html; do \
+            install -m 644 $FILE DESTDIR/usr/share/doc/isomaster-1.3.11/bkisofs; \
+        done;
+install: cannot create regular file ‘DESTDIR/usr/share/doc/isomaster-1.3.11/bkisofs’: No such file or directory
+[..]
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 116b2fd..fa4989e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -129,7 +129,7 @@ endif
+ 	$(INSTALL) -m 644 isomaster.1 $(DESTDIR)$(MYMANPATH)
+ 	$(INSTALL) -d $(DESTDIR)$(DESKTOPPATH)
+ 	$(INSTALL) -m 644 isomaster.desktop $(DESTDIR)$(DESKTOPPATH)
+-	#$(INSTALL) -d $(DESTDIR)$(MYDOCPATH)
++	$(INSTALL) -d $(DESTDIR)$(MYDOCPATH)
+ 	for FILE in bkisofs-manual/manual/*html; do \
+             $(INSTALL) -m 644 $$FILE $(DESTDIR)$(MYDOCPATH); \
+         done;
+-- 
+1.9.3
+

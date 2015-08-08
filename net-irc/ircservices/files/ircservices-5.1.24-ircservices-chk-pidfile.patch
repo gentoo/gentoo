@@ -1,0 +1,22 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Date: 2011/06/15
+Subject: Use the same datadir/pidfile searching algorithm in
+	ircservices-chk as in ircservices to ensure consistent
+	results.
+
+--- a/tools/ircservices-chk.in
++++ b/tools/ircservices-chk.in
+@@ -21,10 +21,10 @@
+ fi
+ 
+ ok=
+-if [ -f "@DATDEST@/$PIDFILE" ] ; then
+-	pid=`cat "@DATDEST@/$PIDFILE"`
++if ! cd "@DATDEST@" || [ -f "$PIDFILE" ] ; then
++	pid=`cat "$PIDFILE"`
+ 	if echo "0$pid" | grep -q '[^0-9]' ; then
+-		rm -f "@DATDEST@/$PIDFILE"
++		rm -f "$PIDFILE"
+ 	elif kill -0 $pid ; then
+ 		ok=1
+ 	fi

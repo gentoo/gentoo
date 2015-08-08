@@ -1,0 +1,36 @@
+diff --git a/build.xml b/build.xml
+index d89485a..7be5431 100644
+--- a/build.xml
++++ b/build.xml
+@@ -17,4 +17,31 @@
+ 	<target depends="build" name="jar">
+       <jar destfile="eclipsito.jar" basedir="bin" compress="yes"/>
+ 	</target>
++
++  <target name="javadoc" description="Generates the Javadoc of the application">
++    <javadoc sourcepath="src" 
++             packagenames="*" 
++             destdir="apidocs" 
++             access="protected" 
++             old="false" 
++             verbose="false" 
++             encoding="UTF-8" 
++             version="true" 
++             use="true" 
++             author="true" 
++             splitindex="false" 
++             nodeprecated="false" 
++             nodeprecatedlist="false" 
++             notree="false" 
++             noindex="false" 
++             nohelp="false" 
++             nonavbar="false" 
++             serialwarn="false" 
++             charset="ISO-8859-1" 
++             docencoding="UTF-8" 
++             source="1.5" 
++             linksource="true" 
++             breakiterator="false">
++    </javadoc>
++  </target>
+ </project>

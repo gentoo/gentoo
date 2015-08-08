@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Encode-compat</remote-id>
+    <remote-id type="cpan-module">Encode</remote-id>
+    <remote-id type="cpan-module">Encode::Alias</remote-id>
+    <remote-id type="cpan-module">Encode::compat</remote-id>
+    <remote-id type="cpan-module">Encode::compat::5006001</remote-id>
+    <remote-id type="cpan-module">Encode::compat::Alias</remote-id>
+    <remote-id type="cpan-module">Encode::compat::common</remote-id>
+  </upstream>
+</pkgmetadata>

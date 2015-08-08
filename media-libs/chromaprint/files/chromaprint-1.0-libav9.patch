@@ -1,0 +1,11 @@
+--- chromaprint-1.0.orig/src/ext/ffmpeg_decoder.h	2013-11-03 17:32:04.347686878 +0800
++++ chromaprint-1.0/src/ext/ffmpeg_decoder.h	2013-11-03 17:32:41.082686494 +0800
+@@ -124,7 +124,7 @@
+ 		return false;
+ 	}
+ 
+-	if (avcodec_open(m_codec_ctx, codec) < 0) {
++	if (avcodec_open2(m_codec_ctx, codec, NULL) < 0) {
+ 		m_error = "Couldn't open the codec.";
+ 		return false;
+ 	}

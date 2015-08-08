@@ -1,0 +1,16 @@
+ src/inclan/Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/inclan/Makefile b/src/inclan/Makefile
+index fc5a8bf..482d48f 100644
+--- a/src/inclan/Makefile
++++ b/src/inclan/Makefile
+@@ -35,7 +35,7 @@ clean:
+ 
+ inclan.a: $(OBJS)
+ 	rm -f $@
+-	ar rc $@ $(OBJS)
++	$(AR) rc $@ $(OBJS)
+ 	if [ "$(RANLIB)" ]; then $(RANLIB) $@; fi
+ 
+ inclan.o: inclan.for

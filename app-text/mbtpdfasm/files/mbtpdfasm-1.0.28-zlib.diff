@@ -1,0 +1,26 @@
+diff -Naur work.orig/makefile work/makefile
+--- work.orig/makefile	2010-07-21 01:11:54.390456452 +0200
++++ work/makefile	2010-07-21 01:12:22.843456093 +0200
+@@ -9,8 +9,8 @@
+ LF = $(O)/main.o $(O)/pdfFile.o $(O)/pdfXrefTable.o $(O)/string.o $(O)/rc4.o $(O)/md5.o $(O)/pdfString.o $(O)/listeFichiers_linux.o $(O)/diversPdf.o $(O)/strMatcher.o $(O)/pcre.o $(O)/study.o $(O)/get.o $(O)/maketables.o $(O)/pdfEncrypt.o $(O)/pdfFileOutline.o $(O)/pdfNames.o $(O)/pdfObject.o $(O)/calc.o
+ ZLIB = $(O)/adler32.o $(O)/compress.o $(O)/crc32.o $(O)/deflate.o $(O)/gzio.o $(O)/infback.o $(O)/inffast.o $(O)/inflate.o $(O)/inftrees.o $(O)/trees.o $(O)/uncompr.o $(O)/zutil.o
+ #
+-$(EXENAME): $(LF) $(ZLIB)
+-	$(CC) $(LDFLAGS) $(LF) $(ZLIB) -o $@
++$(EXENAME): $(LF)
++	$(CC) $(LDFLAGS) $(LF) -lz -o $@
+ $(O)/main.o: main.cpp
+ 	$(CC) $(CXXFLAGS) -c main.cpp -o $*.o
+ $(O)/pdfFile.o: pdfFile.cpp
+diff -Naur work.orig/pdfObject.cpp work/pdfObject.cpp
+--- work.orig/pdfObject.cpp	2007-08-22 20:13:56.000000000 +0200
++++ work/pdfObject.cpp	2010-07-21 01:11:54.486455713 +0200
+@@ -1,7 +1,7 @@
+ #include "pdfObject.hpp"
+ #include "pdfXrefTable.hpp"
+ #include "diversPdf.hpp"
+-#include "zlib.h"
++#include <zlib.h>
+ #include <stdlib.h>
+ 
+ #ifdef DEBUG_MEM_LEAK

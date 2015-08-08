@@ -1,0 +1,31 @@
+Index: tap-reverbed-r0/configure.ac
+===================================================================
+--- tap-reverbed-r0.orig/configure.ac
++++ tap-reverbed-r0/configure.ac
+@@ -25,8 +25,7 @@ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.0.0
+ AC_FUNC_MALLOC
+ AC_CHECK_FUNCS([strdup])
+ 
+-CFLAGS="-O3 -Wall -fomit-frame-pointer -fstrength-reduce -funroll-loops -ffast-math -fPIC -DPIC $GTK_CFLAGS $JACK_CFLAGS"
+-LDFLAGS="-Wall $GTK_LIBS $JACK_LIBS"
++CFLAGS="$CFLAGS -Wall $GTK_CFLAGS $JACK_CFLAGS"
+ 
+ AC_CONFIG_FILES([Makefile src/Makefile])
+ AC_OUTPUT
+Index: tap-reverbed-r0/src/Makefile.am
+===================================================================
+--- tap-reverbed-r0.orig/src/Makefile.am
++++ tap-reverbed-r0/src/Makefile.am
+@@ -9,11 +9,11 @@ file_io.h file_io.c \
+ gui_ext.h gui_ext.c \
+ ports.h ports.c \
+ sound.h sound.c
++reverbed_LDADD = $(GTK_LIBS) $(JACK_LIBS)
+ 
+ EXTRA_DIST = .reverbed
+ 
+ INCLUDES =
+-LIBS =
+ #LIBS = $(LDFLAGS)
+ 
+ install: all

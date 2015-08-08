@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>tupone@gentoo.org</email>
+<name>Alfredo Tupone</name>
+</maintainer>
+<longdescription lang="en">
+RocketWiki is a small parser written in Haskell which translates a wiki dialect to HTML. It uses Parsec, a monadic parser combinator library. The compressed source code of RocketWiki has a size of only 5162 bytes.
+</longdescription>
+</pkgmetadata>
+

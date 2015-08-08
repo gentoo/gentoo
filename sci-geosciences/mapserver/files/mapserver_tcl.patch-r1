@@ -1,0 +1,44 @@
+--- mapscript/tcl/Makefile.in.orig	2001-10-26 00:56:39.000000000 +0200
++++ mapscript/tcl/Makefile.in	2008-02-04 11:04:22.000000000 +0100
+@@ -25,7 +25,7 @@
+ TCL_LIBS            = @TCL_LIBS@
+ LIBS                = @TCL_LIBS@
+ TCL_DBGX            = @TCL_DBGX@
+-LIB_RUNTIME_DIR     = @TCL_EXEC_PREFIX@/lib:@TCL_EXEC_PREFIX@/lib/$(PACKAGEDIR):@TCL_PREFIX@/lib:@MAPSERVERHOME@
++LIB_RUNTIME_DIR     = @TCL_EXEC_PREFIX@/@libdir@:@TCL_EXEC_PREFIX@/@libdir@/$(PACKAGEDIR):@TCL_PREFIX@/@libdir@:@MAPSERVERHOME@
+ 
+ MAPSERVERHOME       = @MAPSERVERHOME@
+ MAPSERVERDEFS       = @MAPSERVERDEFS@
+@@ -69,14 +69,14 @@
+ $(DLTARGET)$(TCL_SHLIB_SUFFIX): mapscript_wrap.o
+ 
+ install: $(DLTARGET)$(TCL_SHLIB_SUFFIX)
+-	-mkdir $(TCL_EXEC_PREFIX)/lib/$(PACKAGEDIR)
+-	cp $(DLTARGET)$(TCL_SHLIB_SUFFIX) $(TCL_EXEC_PREFIX)/lib/$(PACKAGEDIR)
++	-mkdir $(TCL_EXEC_PREFIX)/@libdir@/$(PACKAGEDIR)
++	cp $(DLTARGET)$(TCL_SHLIB_SUFFIX) $(TCL_EXEC_PREFIX)/@libdir@/$(PACKAGEDIR)
+ 	chmod +x \
+-	   $(TCL_EXEC_PREFIX)/lib/$(PACKAGEDIR)/$(DLTARGET)$(TCL_SHLIB_SUFFIX)
+-	cp pkgIndex.tcl                   $(TCL_EXEC_PREFIX)/lib/$(PACKAGEDIR)
+-	cp mapscriptsupp.tcl              $(TCL_EXEC_PREFIX)/lib/$(PACKAGEDIR)
+-	cp mapscriptsupp.html             $(TCL_EXEC_PREFIX)/lib/$(PACKAGEDIR)
+-	cp mapscript_wrap.html            $(TCL_EXEC_PREFIX)/lib/$(PACKAGEDIR)
++	   $(TCL_EXEC_PREFIX)/@libdir@/$(PACKAGEDIR)/$(DLTARGET)$(TCL_SHLIB_SUFFIX)
++	cp pkgIndex.tcl                   $(TCL_EXEC_PREFIX)/@libdir@/$(PACKAGEDIR)
++	cp mapscriptsupp.tcl              $(TCL_EXEC_PREFIX)/@libdir@/$(PACKAGEDIR)
++	cp mapscriptsupp.html             $(TCL_EXEC_PREFIX)/@libdir@/$(PACKAGEDIR)
++	cp mapscript_wrap.html            $(TCL_EXEC_PREFIX)/@libdir@/$(PACKAGEDIR)
+ 
+ 
+ useprebuilt:
+--- mapscript/mapscript.i	2005-11-22 22:44:48.000000000 +0100
++++ mapscript/mapscript.i	2006-04-12 23:47:23.000000000 +0200
+@@ -206,7 +206,7 @@
+ 
+ /* Tcl */
+ #ifdef SWIGTCL8
+-%include "tclmodule.i"
++/* %include "tclmodule.i" */
+ #endif /* SWIGTCL8 */
+ 
+ /* 

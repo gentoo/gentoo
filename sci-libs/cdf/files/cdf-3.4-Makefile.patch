@@ -1,0 +1,102 @@
+diff -Nur cdf34_1-dist.orig/Makefile cdf34_1-dist/Makefile
+--- cdf34_1-dist.orig/Makefile	2012-06-19 06:05:21.000000000 -0700
++++ cdf34_1-dist/Makefile	2012-08-03 10:11:38.672992055 -0700
+@@ -715,17 +715,17 @@
+ "PIC=$(PIC_$(OS)_$(ENV))" \
+ "CCx=$(CC_$(OS)_$(ENV))" \
+ "LDx=$(LD_$(OS)_$(ENV))" \
+-"COPTIONS=$(UCOPTIONS) $(COPTIONS_$(OS)_$(ENV))" \
++"COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))" \
+ "SYSLIBS=$(SYSLIBSshr_$(OS)_$(ENV))" \
+ "SHAREDEXT=$(SHAREDEXT_$(OS))" \
+-"LDOPTIONS=$(LDOPTIONS_$(OS)_$(ENV))" \
++"LDOPTIONS=$(LDFLAGS) $(LDOPTIONS_$(OS)_$(ENV))" \
+ "AROPTIONS=$(AROPTIONS_$(OS))" \
+ "RANLIB=$(RANLIB_$(OS))" \
+ all
+ 	@cd $(TOOLSsrcDIR); $(MAKE) \
+ "CURSES=$(AND.$(CURSES).$(CURSES_$(OS)_$(ENV)))" \
+ "CCx=$(CC_$(OS)_$(ENV))" \
+-"COPTIONS=$(COPTIONS_$(OS)_$(ENV))" \
++"COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))" \
+ "COPTIONSld=$(COPTIONSld_$(OS)_$(ENV))" \
+ "SYSLIBS=$(SYSLIBSexe_$(OS)_$(ENV))" \
+ "CURSESLIB=$(CURSESLIB_$(OS)_$(ENV))" \
+@@ -735,9 +735,9 @@
+ "FCx=$(FC_$(OS))" \
+ "CCx=$(CC_$(OS)_$(ENV))" \
+ "SHARED=$(AND.$(SHARED).$(SHARED_$(OS)))" \
+-"FOPTIONS=$(FOPTIONS_$(OS)) $(FOPTIONS_$(OS)_$(ENV))" \
++"FOPTIONS=$(FFLAGS) $(FOPTIONS_$(OS)) $(FOPTIONS_$(OS)_$(ENV))" \
+ "FOPTIONSld=$(FOPTIONSld_$(OS)) $(FOPTIONSld_$(OS)_$(ENV))" \
+-"COPTIONS=$(COPTIONS_$(OS)_$(ENV))" \
++"COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))" \
+ "COPTIONSld=$(COPTIONSld_$(OS)_$(ENV))" \
+ "SYSLIBS=$(SYSLIBSexe_$(OS)_$(ENV))" \
+ "SHAREDEXT=$(SHAREDEXT_$(OS))" \
+@@ -773,12 +773,17 @@
+ install.all: install.definitions install.include install.lib \
+ 	     install.tools install.help_ notify.user copy.leapseconds
+ 
+-install.definitions: create.bin copy.definitions change.definitions
++install.definitions: create.bin
+ install.include: create.include copy.include
+ install.tools: create.bin copy.tools
+ install.help_: create.help copy.help
+ 
+ install.lib: create.lib copy.lib.a
++	@if [ -f $(LIBsrcDIR)/libcdf.$(SHAREDEXT) ] ; then \
++	   $(MAKE) "INSTALLDIR=$(INSTALLDIR)" install.lib.so ; \
++	 else \
++	   $(NULL) ; \
++	 fi
+ 	@if [ -f $(LIBsrcDIR)/libcdf.so ] ; then \
+ 	   $(MAKE) "INSTALLDIR=$(INSTALLDIR)" install.lib.so ; \
+ 	 else \
+@@ -884,8 +889,8 @@
+ 	      cp $(INCsrcDIR)/cdfconfig.h $(INSTALLDIR)/include
+ 
+ copy.lib.so:
+-	@echo cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib
+-	      cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib
++	@echo cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib
++	      cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib
+ 
+ copy.lib.sl:
+ 	@echo cp $(LIBsrcDIR)/libcdf.sl $(INSTALLDIR)/lib
+@@ -1964,15 +1969,15 @@
+ show.supported:
+ 	@echo SHARED is $(SUPPORTED.$(SHARED_$(OS)))
+ 	@echo CURSES is $(SUPPORTED.$(CURSES_$(OS)_$(ENV)))
+-	@echo FOPTIONS=$(FOPTIONS_$(OS))
++	@echo FOPTIONS=$(FFLAGS) $(FOPTIONS_$(OS))
+ 	@echo FOPTIONSld=$(FOPTIONSld_$(OS))
+ 	@echo SHAREDEXT=$(SHAREDEXT_$(OS))
+-	@echo LDOPTIONSlibcdf=$(LDOPTIONS_$(OS)_$(ENV))
++	@echo LDOPTIONSlibcdf=$(LDFLAGS) $(LDOPTIONS_$(OS)_$(ENV))
+ 	@echo RANLIB=$(RANLIB_$(OS))
+ 	@echo FCx=$(FC_$(OS))
+ 	@echo CCx=$(CC_$(OS)_$(ENV))
+ 	@echo PIC=$(PIC_$(OS)_$(ENV))
+-	@echo COPTIONS=$(COPTIONS_$(OS)_$(ENV))
++	@echo COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))
+ 	@echo COPTIONSld=$(COPTIONSld_$(OS)_$(ENV))
+ 	@echo CURSESLIB=$(CURSESLIB_$(OS)_$(ENV))
+ 	@echo SYSLIBSexe=$(SYSLIBSexe_$(OS)_$(ENV))
+diff -Nur cdf34_1-dist.orig/src/tools/Makefile cdf34_1-dist/src/tools/Makefile
+--- cdf34_1-dist.orig/src/tools/Makefile	2012-06-15 09:22:16.000000000 -0700
++++ cdf34_1-dist/src/tools/Makefile	2012-08-03 10:11:38.685992724 -0700
+@@ -35,10 +35,10 @@
+ INCLUDEcdf= ../include
+ 
+ CC=$(CCx)
+-CFLAGS=$(COPTIONS) -I$(INCLUDEcdf)
+-CFLAGSld=$(COPTIONSld)
++CFLAGS:=$(CFLAGS) $(COPTIONS) -I$(INCLUDEcdf)
++CFLAGSld=$(LDFLAGS) $(COPTIONSld)
+ 
+-LIBCDFa=../lib/libcdf.a 
++LIBCDFa=../lib/libcdf.so.3
+ LIBs1=$(LIBCDFa) $(SYSLIBS)
+ LIBs2=$(LIBCDFa) $(CURSESLIB) $(SYSLIBS)
+ 

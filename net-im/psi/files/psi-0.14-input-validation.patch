@@ -1,0 +1,257 @@
+commit c68fdd9926a38b2820bc5df97fd1905355a2640d
+Author: rion <rion4ik@gmail.com>
+Date:   Fri Oct 7 22:19:05 2011 +0600
+
+    Fixed QLabel CVE
+
+--- src/Certificates/CertificateDisplay.ui	2011-10-19 08:30:15 +0000
++++ src/Certificates/CertificateDisplay.ui	2011-10-19 08:31:23 +0000
+@@ -1,105 +1,118 @@
+-<ui version="4.0" >
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
+  <class>CertificateDisplay</class>
+- <widget class="QDialog" name="CertificateDisplay" >
+-  <property name="geometry" >
++ <widget class="QDialog" name="CertificateDisplay">
++  <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+-    <width>518</width>
++    <width>525</width>
+     <height>369</height>
+    </rect>
+   </property>
+-  <property name="windowTitle" >
++  <property name="windowTitle">
+    <string>Certificate Information</string>
+   </property>
+-  <layout class="QVBoxLayout" >
+-   <property name="margin" >
++  <layout class="QVBoxLayout">
++   <property name="spacing">
++    <number>6</number>
++   </property>
++   <property name="margin">
+     <number>11</number>
+    </property>
+-   <property name="spacing" >
+-    <number>6</number>
+-   </property>
+    <item>
+-    <layout class="QHBoxLayout" >
+-     <property name="margin" >
++    <layout class="QHBoxLayout">
++     <property name="spacing">
++      <number>6</number>
++     </property>
++     <property name="margin">
+       <number>0</number>
+      </property>
+-     <property name="spacing" >
+-      <number>6</number>
+-     </property>
+      <item>
+-      <layout class="QVBoxLayout" >
+-       <property name="margin" >
++      <layout class="QVBoxLayout">
++       <property name="spacing">
++        <number>6</number>
++       </property>
++       <property name="margin">
+         <number>0</number>
+        </property>
+-       <property name="spacing" >
+-        <number>6</number>
+-       </property>
+        <item>
+-        <widget class="QLabel" name="textLabel4" >
+-         <property name="text" >
++        <widget class="QLabel" name="textLabel4">
++         <property name="text">
+           <string>Certificate Validation:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+-        <widget class="QLabel" name="lb_valid" >
+-         <property name="text" >
++        <widget class="QLabel" name="lb_valid">
++         <property name="text">
+           <string/>
+          </property>
++         <property name="textFormat">
++          <enum>Qt::PlainText</enum>
++         </property>
+         </widget>
+        </item>
+        <item>
+-        <widget class="QLabel" name="textLabel2" >
+-         <property name="text" >
++        <widget class="QLabel" name="textLabel2">
++         <property name="text">
+           <string>Valid From:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+-        <widget class="QLabel" name="lb_notBefore" >
+-         <property name="text" >
++        <widget class="QLabel" name="lb_notBefore">
++         <property name="text">
+           <string/>
+          </property>
++         <property name="textFormat">
++          <enum>Qt::PlainText</enum>
++         </property>
+         </widget>
+        </item>
+        <item>
+-        <widget class="QLabel" name="textLabel3" >
+-         <property name="text" >
++        <widget class="QLabel" name="textLabel3">
++         <property name="text">
+           <string>Valid Until:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+-        <widget class="QLabel" name="lb_notAfter" >
+-         <property name="text" >
++        <widget class="QLabel" name="lb_notAfter">
++         <property name="text">
+           <string/>
+          </property>
++         <property name="textFormat">
++          <enum>Qt::PlainText</enum>
++         </property>
+         </widget>
+        </item>
+        <item>
+-        <widget class="QLabel" name="textLabel1" >
+-         <property name="text" >
++        <widget class="QLabel" name="textLabel1">
++         <property name="text">
+           <string>Serial Number:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+-        <widget class="QLabel" name="lb_sn" >
+-         <property name="text" >
++        <widget class="QLabel" name="lb_sn">
++         <property name="text">
+           <string/>
+          </property>
++         <property name="textFormat">
++          <enum>Qt::PlainText</enum>
++         </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+-         <property name="orientation" >
++         <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+-         <property name="sizeType" >
++         <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+-         <property name="sizeHint" >
++         <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>106</height>
+@@ -110,14 +123,14 @@
+       </layout>
+      </item>
+      <item>
+-      <widget class="QTextBrowser" name="tb_cert" >
+-       <property name="minimumSize" >
++      <widget class="QTextBrowser" name="tb_cert">
++       <property name="minimumSize">
+         <size>
+          <width>350</width>
+          <height>300</height>
+         </size>
+        </property>
+-       <property name="horizontalScrollBarPolicy" >
++       <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+@@ -125,35 +138,35 @@
+     </layout>
+    </item>
+    <item>
+-    <widget class="Line" name="line1" >
+-     <property name="frameShape" >
++    <widget class="Line" name="line1">
++     <property name="frameShape">
+       <enum>QFrame::HLine</enum>
+      </property>
+-     <property name="frameShadow" >
++     <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+-     <property name="orientation" >
++     <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+-    <layout class="QHBoxLayout" >
+-     <property name="margin" >
++    <layout class="QHBoxLayout">
++     <property name="spacing">
++      <number>6</number>
++     </property>
++     <property name="margin">
+       <number>0</number>
+      </property>
+-     <property name="spacing" >
+-      <number>6</number>
+-     </property>
+      <item>
+       <spacer>
+-       <property name="orientation" >
++       <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+-       <property name="sizeType" >
++       <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+-       <property name="sizeHint" >
++       <property name="sizeHint" stdset="0">
+         <size>
+          <width>421</width>
+          <height>20</height>
+@@ -162,17 +175,17 @@
+       </spacer>
+      </item>
+      <item>
+-      <widget class="QPushButton" native="1" name="pb_close">
+-	    <property name="text">
+-		  <string>Close</string>
+-		</property>
+-	  </widget>
++      <widget class="QPushButton" name="pb_close">
++       <property name="text">
++        <string>Close</string>
++       </property>
++      </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+- <layoutdefault spacing="6" margin="11" />
++ <layoutdefault spacing="6" margin="11"/>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+   <tabstop>tb_cert</tabstop>
+

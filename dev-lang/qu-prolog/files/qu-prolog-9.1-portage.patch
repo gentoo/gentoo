@@ -1,0 +1,32 @@
+diff -ur qp9.1.orig/bin/qc.in qp9.1/bin/qc.in
+--- qp9.1.orig/bin/qc.in	2011-08-23 11:17:28.000000000 +1200
++++ qp9.1/bin/qc.in	2011-11-20 07:16:18.000000000 +1300
+@@ -27,13 +27,13 @@
+ 
+ ##############################
+ 
+-preprocess='@QPHOME@/bin/qppp'
+-expand='@QPHOME@/bin/qg'
+-qpcompile='@QPHOME@/bin/qc1'
++preprocess='qppp'
++expand='qg'
++qpcompile='qc1'
+ compversion='qup'
+-assemble='@QPHOME@/bin/qa'
+-link='@QPHOME@/bin/ql'
+-execute='@QPHOME@/bin/qem'
++assemble='qa'
++link='ql'
++execute='qem'
+ libqofiles="@QPHOME@/prolog/compiler/*.qo @QPHOME@/prolog/library/*.qo"
+ 
+ ##############################
+diff -ur qp9.1.orig/prolog/Makefile.in qp9.1/prolog/Makefile.in
+--- qp9.1.orig/prolog/Makefile.in	2006-04-06 16:01:45.000000000 +1200
++++ qp9.1/prolog/Makefile.in	2011-11-20 07:16:18.000000000 +1300
+@@ -1,3 +1,5 @@
++PATH:=$(PATH):@QPHOME@/bin
++
+ .DEFAULT:
+ 	@$(MAKE) -C compiler	$@
+ 	@$(MAKE) -C library	$@

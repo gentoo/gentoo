@@ -1,0 +1,15 @@
+diff --git a/tools/cfgupgrade b/tools/cfgupgrade
+index c8dfdec..0f886b2 100755
+--- a/tools/cfgupgrade
++++ b/tools/cfgupgrade
+@@ -169,6 +169,10 @@ def UpgradeCluster(config_data):
+     cluster.get("zeroing_image", "")
+   cluster["compression_tools"] = \
+     cluster.get("compression_tools", constants.IEC_DEFAULT_TOOLS)
++  cluster["hv_state_static"] = \
++    cluster.get("hv_state_static", {})
++  cluster["disk_state_static"] = \
++    cluster.get("disk_state_static", {})
+   if "enabled_user_shutdown" not in cluster:
+     cluster["enabled_user_shutdown"] = False
+ 

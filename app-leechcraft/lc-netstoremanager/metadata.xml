@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>leechcraft</herd>
+<use>
+	<flag name="googledrive">Support Google Drive storage backend</flag>
+	<flag name="yandexdisk">Support Yandex.Disk storage backend</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+diff -r -U1 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/tree/QtWaitingSpinner.cpp	2014-07-10 19:18:17.002886537 +0700
+@@ -88,3 +88,3 @@
+ void QtWaitingSpinner::setRoundness(qreal roundness) {
+-	myRoundness = std::max(0.0, std::min(100.0, roundness));
++	myRoundness = std::max(static_cast<qreal>(0.0), std::min(static_cast<qreal>(100.0), roundness));
+ }
+@@ -150,3 +150,3 @@
+ 	qreal resultAlpha = color.alphaF() - gradation * distance;
+-	resultAlpha = std::min(1.0, std::max(0.0, resultAlpha)); //if alpha is out of bound, force it to bounds
++	resultAlpha = std::min(static_cast<qreal>(1.0), std::max(static_cast<qreal>(0.0), resultAlpha)); //if alpha is out of bound, force it to bounds
+ 	color.setAlphaF(resultAlpha);

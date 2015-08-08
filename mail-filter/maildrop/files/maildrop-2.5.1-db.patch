@@ -1,0 +1,63 @@
+--- maildrop/bdbobj/configure.in
++++ maildrop/bdbobj/configure.in
+@@ -23,15 +23,19 @@
+ dnl Checks for libraries.
+ 
+ saveLIBS="$LIBS"
+-AC_CHECK_LIB(db, dbopen, [ LIBDB=-ldb ; LIBS="-ldb $LIBS" ],
+-	AC_CHECK_LIB(db, db_open, [ LIBDB=-ldb ; LIBS="-ldb $LIBS"],
+-	AC_CHECK_LIB(db, db_env_create, [ LIBDB=-ldb; LIBS="-ldb $LIBS"])
+-	))
++for dbname in db-5.2 db-5.1 db-5.0 db-4.8 db-4.7 db-4.6 db-4.5 db-4.4 db-4.3 db-4.2 db4.2 db42 db-4.1 db4.1 db41 db-4.0 db4.0 db-4 db40 db4 db
++  do
++        AC_CHECK_LIB($dbname, db_create_4002, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++          AC_CHECK_LIB($dbname, db_create_4001, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++            AC_CHECK_LIB($dbname, db_create_4000, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++              AC_CHECK_LIB($dbname, db_create, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ]))))
+ 
++  done
+ FOUND_DB=0
+-AC_CHECK_FUNC(dbopen, FOUND_DB=1)
+-AC_CHECK_FUNC(db_open, FOUND_DB=1)
+-AC_CHECK_FUNC(db_env_create, FOUND_DB=1)
++AC_CHECK_FUNC(db_create, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4002, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4001, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4000, FOUND_DB=1)
+ 
+ LIBS="$saveLIBS"
+ 
+--- maildrop/configure.in
++++ maildrop/configure.in
+@@ -115,18 +115,21 @@
+ 	USE_GDBM=1
+ 	;;
+ db)
+-	AC_CHECK_LIB(db, dbopen, [ LIBDB=-ldb ; LIBS="-ldb $LIBS" ],
+-		AC_CHECK_LIB(db, db_open, [ LIBDB=-ldb ; LIBS="-ldb $LIBS"],
+-		AC_CHECK_LIB(db, db_env_create,
+-					[ LIBDB=-ldb; LIBS="-ldb $LIBS"])
+-		))
+-
+-	AC_CHECK_FUNC(dbopen, HAVE_BDB=1)
+-	AC_CHECK_FUNC(db_open, HAVE_BDB=1)
+-	AC_CHECK_FUNC(db_env_create, HAVE_BDB=1)
++  for dbname in db-5.0 db-4.8 db-4.7 db-4.6 db-4.5 db-4.4 db-4.3 db-4.2 db4.2 db42 db-4.1 db4.1 db41 db-4.0 db4.0 db-4 db40 db4 db
++    do
++	AC_CHECK_LIB($dbname, db_create_4002, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++ 	  AC_CHECK_LIB($dbname, db_create_4001, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++ 	    AC_CHECK_LIB($dbname, db_create_4000, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++ 	      AC_CHECK_LIB($dbname, db_create, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ]))))
++    done
++  AC_CHECK_FUNC(db_create, HAVE_BDB=1)
++  AC_CHECK_FUNC(db_create_4002, HAVE_BDB=1)
++  AC_CHECK_FUNC(db_create_4001, HAVE_BDB=1)
++  AC_CHECK_FUNC(db_create_4000, HAVE_BDB=1)
++
+ 	if test "$HAVE_BDB" != "1"
+ 	then
+-		AC_MSG_ERROR(GDBM library not found)
++		AC_MSG_ERROR(DB library not found)
+ 	fi
+ 	dblibrary=bdbobj/libbdbobj.la
+ 	USE_DB=1

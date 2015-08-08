@@ -1,0 +1,12 @@
+diff -ru fbzx-2.10.0.orig/Makefile fbzx-2.10.0/Makefile
+--- fbzx-2.10.0.orig/Makefile	2012-06-22 19:44:32.000000000 -0400
++++ fbzx-2.10.0/Makefile	2012-08-11 03:08:12.761127099 -0400
+@@ -4,7 +4,7 @@
+         PREFIX2=/usr/local
+ endif
+ 
+-CFLAGS += `pkg-config --cflags sdl libpulse-simple alsa` -O2 -Wno-pointer-sign -Wall -D D_SOUND_PULSE -D D_SOUND_ALSA -D D_SOUND_OSS
++CFLAGS += `pkg-config --cflags sdl libpulse-simple alsa` -Wno-pointer-sign -Wall -D D_SOUND_PULSE -D D_SOUND_ALSA -D D_SOUND_OSS
+ LDFLAGS += `pkg-config --libs sdl libpulse-simple alsa`
+ 
+ fbzx: computer.o Z80free.o Z80free_codes.o Z80free_codesCB.o Z80free_codesED.o Z80free_codesDD.o Z80free_codesFD.o Z80free_codesDDCB.o Z80free_codesFDCB.o emulator.o cargador.o characters.o menus.o sound.o tape.o spk_ay.o microdrive.o

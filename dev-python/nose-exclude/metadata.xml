@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+    Exclude specific directories from nosetests runs.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">nose-exclude</remote-id>
+    <remote-id type="bitbucket">kgrandis/nose-exclude</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,37 @@
+From: Wim Taymans
+Date: Wed,  7 Jan 2015 11:20:01 +0100
+Subject: [PATCH] svolume.orc: avoid parameter loading undefined behaviour
+
+In some cases, depending on the instruction that performs the load, orc
+ignores the size of the parameter when loading it for the first time.
+Explicitly load the parameter into a temp to make sure it is loaded
+correctly, like we do for the 2ch case.
+
+See https://bugzilla.gnome.org/show_bug.cgi?id=742271
+---
+ src/pulsecore/svolume.orc | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/pulsecore/svolume.orc b/src/pulsecore/svolume.orc
+index 0edbefb..f869893 100644
+--- a/src/pulsecore/svolume.orc
++++ b/src/pulsecore/svolume.orc
+@@ -45,13 +45,15 @@
+ 
+ .function pa_volume_s16ne_orc_1ch
+ .dest 2 samples int16_t
+-.param 4 v int32_t
++.param 4 vols int32_t
++.temp 4 v
+ .temp 2 vh
+ .temp 4 s
+ .temp 4 mh
+ .temp 4 ml
+ .temp 4 signc
+ 
++loadpl v, vols
+ convuwl s, samples
+ x2 cmpgtsw signc, 0, s
+ x2 andw signc, signc, v
+-- 
+1.9.3

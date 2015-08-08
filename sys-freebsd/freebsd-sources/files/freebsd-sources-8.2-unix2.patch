@@ -1,0 +1,55 @@
+Index: sys/kern/uipc_usrreq.c
+===================================================================
+--- sys/kern/uipc_usrreq.c	(revision 225745)
++++ sys/kern/uipc_usrreq.c	(working copy)
+@@ -462,6 +462,8 @@
+ 	unp = sotounpcb(so);
+ 	KASSERT(unp != NULL, ("uipc_bind: unp == NULL"));
+ 
++	if (soun->sun_len > sizeof(struct sockaddr_un))
++		return (EINVAL);
+ 	namelen = soun->sun_len - offsetof(struct sockaddr_un, sun_path);
+ 	if (namelen <= 0)
+ 		return (EINVAL);
+@@ -1252,6 +1254,8 @@
+ 	unp = sotounpcb(so);
+ 	KASSERT(unp != NULL, ("unp_connect: unp == NULL"));
+ 
++	if (nam->sa_len > sizeof(struct sockaddr_un))
++		return (EINVAL);
+ 	len = nam->sa_len - offsetof(struct sockaddr_un, sun_path);
+ 	if (len <= 0)
+ 		return (EINVAL);
+Index: sys/compat/linux/linux_socket.c
+===================================================================
+--- sys/compat/linux/linux_socket.c	(revision 225919)
++++ sys/compat/linux/linux_socket.c	(working copy)
+@@ -104,6 +104,7 @@
+ 	int oldv6size;
+ 	struct sockaddr_in6 *sin6;
+ #endif
++	int namelen;
+ 
+ 	if (*osalen < 2 || *osalen > UCHAR_MAX || !osa)
+ 		return (EINVAL);
+@@ -166,6 +167,20 @@
+ 		}
+ 	}
+ 
++	if ((bdom == AF_LOCAL) && (*osalen > sizeof(struct sockaddr_un))) {
++		for (namelen = 0;
++		    namelen < *osalen - offsetof(struct sockaddr_un, sun_path);
++		    namelen++)
++			if (!((struct sockaddr_un *)kosa)->sun_path[namelen])
++				break;
++		if (namelen + offsetof(struct sockaddr_un, sun_path) >
++		    sizeof(struct sockaddr_un)) {
++			error = EINVAL;
++			goto out;
++		}
++		alloclen = sizeof(struct sockaddr_un);
++	}
++
+ 	sa = (struct sockaddr *) kosa;
+ 	sa->sa_family = bdom;
+ 	sa->sa_len = alloclen;

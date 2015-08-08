@@ -1,0 +1,36 @@
+--- configure.in
++++ configure.in
+@@ -4,6 +4,7 @@
+ AM_INIT_AUTOMAKE(peksystray, 0.4.0)
+ 
+ AC_PROG_CC
++AC_PATH_X
+ AC_PATH_XTRA
+ 
+ dnl Are we going to enable the debugging output ??
+@@ -19,13 +20,7 @@
+         AC_DEFINE(DEBUG,,[Enable verbose debugging output])
+ fi
+ 
+-CFLAGS="$CFLAGS $X_CFLAGS"
+-#x_includes="-I$x_includes"
+-LDFLAGS="$LDFLAGS $X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
+-#x_libraries="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
+-
+-AC_SUBST(x_includes)
+-AC_SUBST(x_libraries)
++AC_CHECK_LIB([X11], [XOpenDisplay])
+ 
+ AC_OUTPUT([
+ Makefile
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -1,7 +1,4 @@
+ bin_PROGRAMS = peksystray
+ 
+-INCLUDES = @x_includes@
+-
+-peksystray_LDADD = @x_libraries@
+-
+ peksystray_SOURCES = peksystray.c
++peksystray_LDADD   = @X_PRE_LIBS@ @X_LIBS@ @X_EXTRA_LIBS@

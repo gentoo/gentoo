@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription>autopep8 formats Python code based on the output of the pep8 utility</longdescription>
+  <upstream>
+    <remote-id type="pypi">autopep8</remote-id>
+    <remote-id type="github">hhatto/autopep8</remote-id>
+  </upstream>
+</pkgmetadata>

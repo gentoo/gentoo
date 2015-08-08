@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<maintainer>
+	<email>tamiko@gentoo.org</email>
+	<name>Matthias Maier</name>
+	<description>Please CC me on bugs</description>
+</maintainer>
+</pkgmetadata>

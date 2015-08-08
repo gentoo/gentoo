@@ -1,0 +1,200 @@
+From 5730efa0804468d342cb82d1ac9d5fc794ff572d Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 16 May 2014 11:29:53 +0200
+Subject: [PATCH] detect openssl/pcre/libuuid/zlib via pkg-config if it's
+ available
+
+Newer versions of these packages ship with pkg-config files, so if we can
+detect it via those, do so.  If that fails, fall back to the old methods.
+
+Forward-ported to 1.15 release from b97942cd6b496501b396ea3bc2710010f4591542
+(Mon, 21 May 2012 18:39:59 -0400)
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 107 ++++++++++++++++++++++++++++++++++++++++++-----------------
+ 1 file changed, 77 insertions(+), 30 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c5437bf..e0e2b25 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -68,6 +68,9 @@ AC_ARG_WITH(ssl,
+ AC_ARG_WITH(zlib,
+ [[  --without-zlib          disable zlib ]])
+ 
++AC_ARG_ENABLE(pcre, AC_HELP_STRING([--disable-pcre],
++				   [Disable PCRE style regular expressions]))
++
+ AC_ARG_ENABLE(opie,
+ [  --disable-opie          disable support for opie or s/key FTP login],
+ ENABLE_OPIE=$enableval, ENABLE_OPIE=yes)
+@@ -237,12 +240,28 @@ dnl
+ dnl Checks for libraries.
+ dnl
+ 
++PKG_PROG_PKG_CONFIG
++
+ AS_IF([test x"$with_zlib" != xno], [
+   with_zlib=yes
+-  AC_CHECK_LIB(z, compress)
++  PKG_CHECK_MODULES([ZLIB], zlib, [
++    LIBS="$ZLIB_LIBS $LIBS"
++    CFLAGS="$ZLIB_CFLAGS $CFLAGS"
++    AC_DEFINE([HAVE_LIBZ], [1], [Define if using zlib.])
++  ], [
++    AC_CHECK_LIB(z, compress)
++  ])
+ ])
+ 
+ AS_IF([test x"$with_ssl" = xopenssl], [
++  PKG_CHECK_MODULES([OPENSSL], [openssl], [
++    AC_MSG_NOTICE([compiling in support for SSL via OpenSSL])
++    AC_LIBOBJ([openssl])
++    LIBS="$OPENSSL_LIBS $LIBS"
++    CFLAGS="$OPENSSL_CFLAGS -DHAVE_LIBSSL $CFLAGS"
++    LIBSSL=" " # ntlm check below wants this
++    AC_DEFINE([HAVE_LIBSSL], [1], [Define if using openssl.])
++  ], [
+   dnl As of this writing (OpenSSL 0.9.6), the libcrypto shared library
+   dnl doesn't record its dependency on libdl, so we need to make sure
+   dnl -ldl ends up in LIBS on systems that have it.  Most OSes use
+@@ -276,9 +295,9 @@ AS_IF([test x"$with_ssl" = xopenssl], [
+     ;;
+   esac
+ 
+-  AS_IF([test x$ssl_found != xyes], [
+-    dnl Now actually check for -lssl if it wasn't already found
+-    AC_LIB_HAVE_LINKFLAGS([ssl], [crypto], [
++    AS_IF([test x$ssl_found != xyes], [
++      dnl Now actually check for -lssl if it wasn't already found
++      AC_LIB_HAVE_LINKFLAGS([ssl], [crypto], [
+ #include <openssl/ssl.h>
+ #include <openssl/x509.h>
+ #include <openssl/err.h>
+@@ -286,17 +305,18 @@ AS_IF([test x"$with_ssl" = xopenssl], [
+ #include <openssl/des.h>
+ #include <openssl/md4.h>
+ #include <openssl/md5.h>
+-    ], [SSL_library_init ()])
+-    if test x"$LIBSSL" != x
+-    then
+-      ssl_found=yes
+-      AC_MSG_NOTICE([compiling in support for SSL via OpenSSL])
+-      AC_LIBOBJ([openssl])
+-      LIBS="$LIBSSL $LIBS"
+-    elif test x"$with_ssl" != x
+-    then
+-      AC_MSG_ERROR([--with-ssl=openssl was given, but SSL is not available.])
+-    fi
++      ], [SSL_library_init ()])
++      if test x"$LIBSSL" != x
++      then
++        ssl_found=yes
++        AC_MSG_NOTICE([compiling in support for SSL via OpenSSL])
++        AC_LIBOBJ([openssl])
++        LIBS="$LIBSSL $LIBS"
++      elif test x"$with_ssl" != x
++      then
++        AC_MSG_ERROR([--with-ssl=openssl was given, but SSL is not available.])
++      fi
++    ])
+   ])
+ 
+ ], [
+@@ -305,6 +325,14 @@ AS_IF([test x"$with_ssl" = xopenssl], [
+     dnl default is -lgnutls
+     with_ssl=gnutls
+ 
++  PKG_CHECK_MODULES([GNUTLS], [gnutls], [
++    AC_MSG_NOTICE([compiling in support for SSL via GnuTLS])
++    AC_LIBOBJ([gnutls])
++    LIBS="$GNUTLS_LIBS $LIBS"
++    CFLAGS="$GNUTLS_CFLAGS -DHAVE_LIBGNUTLS $CFLAGS"
++    AC_DEFINE([HAVE_LIBGNUTLS], [1], [Define if using gnutls.])
++  ], [
++
+     dnl Now actually check for -lgnutls
+     AC_LIB_HAVE_LINKFLAGS([gnutls], [], [
+ #include <gnutls/gnutls.h>
+@@ -319,6 +347,8 @@ AS_IF([test x"$with_ssl" = xopenssl], [
+       AC_MSG_ERROR([--with-ssl=gnutls was given, but GNUTLS is not available.])
+     fi
+ 
++    ])
++
+     AC_CHECK_FUNCS(gnutls_priority_set_direct)
+   ]) # endif: --with-ssl != no?
+ ]) # endif: --with-ssl == openssl?
+@@ -542,32 +542,51 @@ fi
+ dnl
+ dnl Check for UUID
+ dnl
+-AC_CHECK_HEADER(uuid.h,
+-                AC_CHECK_FUNC(uuid, uuid_create,
+-                  [AC_DEFINE([HAVE_UUID_CREATE], 1,
+-                             [Define if uuid_create is available.])
+-                  ])
+-)
+ 
+-AC_CHECK_HEADER(uuid/uuid.h,
+-                AC_CHECK_LIB(uuid, uuid_generate,
+-                  [LIBS="${LIBS} -luuid"
+-                   AC_DEFINE([HAVE_LIBUUID], 1,
+-                             [Define if libuuid is available.])
+-                  ])
+-)
++AC_ARG_WITH(libuuid, AC_HELP_STRING([--without-libuuid],
++				    [Generate UUIDs for WARC files via libuuid]))
++AS_IF([test "X$with_libuuid" != "Xno"],[
++  PKG_CHECK_MODULES([UUID], uuid, [
++    LIBS="$UUID_LIBS $LIBS"
++    CFLAGS="$UUID_CFLAGS $CFLAGS"
++    AC_DEFINE([HAVE_LIBUUID], [1], [Define if using libuuid.])
++  ], [
++    AC_CHECK_HEADER(uuid.h,
++                    AC_CHECK_FUNC(uuid, uuid_create,
++                      [AC_DEFINE([HAVE_UUID_CREATE], 1,
++                                 [Define if uuid_create is available.])
++                      ])
++    )
++
++    AC_CHECK_HEADER(uuid/uuid.h,
++                    AC_CHECK_LIB(uuid, uuid_generate,
++                      [LIBS="${LIBS} -luuid"
++                       AC_DEFINE([HAVE_LIBUUID], 1,
++                                 [Define if libuuid is available.])
++                      ])
++    )
++  ])
++])
+ 
+ dnl
+ dnl Check for PCRE
+ dnl
+ 
+-AC_CHECK_HEADER(pcre.h,
+-                AC_CHECK_LIB(pcre, pcre_compile,
+-                  [LIBS="${LIBS} -lpcre"
+-                   AC_DEFINE([HAVE_LIBPCRE], 1,
+-                             [Define if libpcre is available.])
+-                  ])
+-)
++AS_IF([test "X$enable_pcre" != "Xno"],[
++  PKG_CHECK_MODULES([PCRE], libpcre, [
++    LIBS="$PCRE_LIBS $LIBS"
++    CFLAGS="$PCRE_CFLAGS $CFLAGS"
++    AC_DEFINE([HAVE_LIBPCRE], [1], [Define if using libpcre.])
++  ], [
++    AC_CHECK_HEADER(pcre.h,
++                    AC_CHECK_LIB(pcre, pcre_compile,
++                      [LIBS="${LIBS} -lpcre"
++                       AC_DEFINE([HAVE_LIBPCRE], 1,
++                                 [Define if libpcre is available.])
++                      ])
++    )
++  ])
++])
+ 
+ 
+ dnl Needed by src/Makefile.am

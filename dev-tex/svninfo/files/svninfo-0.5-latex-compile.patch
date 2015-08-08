@@ -1,0 +1,11 @@
+--- svninfo/Makefile.old	2006-02-11 23:57:52.000000000 +0100
++++ svninfo/Makefile	2006-02-11 23:58:10.000000000 +0100
+@@ -74,7 +74,7 @@
+ 	$(PDFLATEX) $*.tex
+ 
+ %.ps:%.dvi
+-	$(DVIPS) $*.dvi
++	$(DVIPS) -o $@ $<
+ 
+ html:	svninfo.perl svninfo2html.tex
+ 	rm -fr $(HTML_DIR)

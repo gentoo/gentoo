@@ -1,0 +1,53 @@
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Fri, 22 Feb 2013 18:42:23 +0000 (+0100)
+Subject: * [sources]: fix counting in oyRankMap data
+X-Git-Url: http://www.oyranos.org/scm?p=oyranos.git;a=commitdiff_plain;h=c2feb3e1f1ab45702f98c8728898eab1ee849cd4
+
+* [sources]: fix counting in oyRankMap data
+
+2013-04-21: backport to oyranos-0.9.4, remove (duplicate) patch for nonexistent file
+
+This fixes crashes in several oyRankMap helper functions.
+---
+
+diff --git a/src/API_generated/oyConfig_s.c b/src/API_generated/oyConfig_s.c
+index 8ec0ff6..7ea1f3b 100644
+--- a/src/API_generated/oyConfig_s.c
++++ b/src/API_generated/oyConfig_s.c
+@@ -983,14 +983,14 @@ oyRankMap *        oyRankMapCopy     ( const oyRankMap   * rank_map,
+ {
+   oyRankMap * map = 0;
+   int error = !rank_map;
+-  int n = 0, i;
++  int n = 0, i = 0;
+ 
+   if(!allocateFunc)
+     allocateFunc = oyAllocateFunc_;
+ 
+   if(error <= 0)
+   {
+-    while( rank_map[n++].key ) {}
++    while( rank_map[i++].key ) ++n;
+ 
+     oyAllocHelper_m_( map, oyRankMap, n + 1, allocateFunc, error = 1 );
+   }
+@@ -1025,7 +1025,7 @@ OYAPI void  OYEXPORT
+                                        oyDeAlloc_f         deAllocateFunc )
+ {
+   int error = !rank_map || !*rank_map;
+-  int n = 0, i;
++  int n = 0, i = 0;
+ 
+   if(!deAllocateFunc)
+     deAllocateFunc = oyDeAllocateFunc_;
+@@ -1033,7 +1033,7 @@ OYAPI void  OYEXPORT
+   if(error <= 0)
+   {
+     oyRankMap * map = *rank_map;
+-    while( (*rank_map)[n++].key ) {}
++    while( (*rank_map)[i++].key ) ++n;
+     for(i = 0; i < n; ++i)
+     {
+       deAllocateFunc( map[i].key ); map[i].key = 0;
+--
+1.5.6.5

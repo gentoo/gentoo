@@ -1,0 +1,207 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2005-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2 or later
+# $
+
+DESCRIPTION="Control which metaploit version is active"
+MAINTAINER="zerochaos@pentoo.ch"
+
+###WARNING: don't even think of using this insanity for a reference (but it works,mostly)
+#base idea from kernel.eselect, get_libdir from php.eselect with --use-old from opencl.eselect
+#all modified randomly until it worked, entropy is wonderful
+###/WARNING
+
+inherit multilib
+
+get_libdir() {
+	local dir
+	if has lib64 $(list_libdirs); then
+		echo lib64
+		return
+	fi
+	echo lib
+}
+
+MSFPATH="/usr/$(get_libdir)/metasploit"
+
+# find a list of metasploit symlink targets and sort them
+find_targets() {
+	local f
+	for f in "${EROOT}${MSFPATH}"[[:digit:]]*; do
+		[[ -d ${f} ]] && basename "${f}"
+	done | LC_ALL=C sort
+}
+
+# remove the metasploit symlink
+remove_symlink() {
+	for i in $(qlist metasploit | grep $(canonicalise "${EROOT}${MSFPATH}")/msf)
+	do
+		if [ -L /usr/bin/$(echo ${i} | awk -F'/' '{print $5}') ]; then
+			unlink /usr/bin/$(echo ${i} | awk -F'/' '{print $5}') || die -q "failed to unlink ${i}"
+		fi
+	done
+	if [ -L ${EROOT}${MSFPATH} ]; then
+		unlink "${EROOT}${MSFPATH}" || die -q "failed to unlink ${EROOT}${MSFPATH}"
+	elif [ -e ${EROOT}${MSFPATH} ]; then
+		die -q "${EROOT}${MSFPATH} exists but is not a symlink"
+	fi
+}
+
+# set the metasploit symlink
+set_symlink() {
+	local target=$1
+
+	if is_number "${target}"; then
+		local targets=( $(find_targets) )
+		target=${targets[target-1]}
+	fi
+
+	if [[ -z ${target} ]]; then
+		die -q "Target \"$1\" doesn't appear to be valid!"
+	elif [[ -d ${EROOT}/usr/$(get_libdir)/${target} ]]; then
+		ln -s "${target}" "${EROOT}${MSFPATH}"
+		for i in $(qlist metasploit | grep /usr/$(get_libdir)/${target}/msf)
+		do
+			ln -s /usr/bin/msfloader /usr/bin/$(echo ${i} | awk -F'/' '{print $5}')
+		done
+	#this elif looks like it is trying to support setting by slot only,
+	#but that isn't supported by the rest of the script... fix or remove?
+	elif [[ -d ${EROOT}${MSFPATH}${target} ]]; then
+		ln -s "metasploit${target}" "${EROOT}${MSFPATH}"
+		for i in $(qlist metasploit | grep /usr/$(get_libdir)/${target}/msf)
+		do
+			ln -s /usr/bin/msfloader /usr/bin/$(echo ${i} | awk -F'/' '{print $5}')
+		done
+	else
+		die -q "Target \"$1\" doesn't appear to be valid!"
+	fi
+}
+
+# wrapper to safely set the symlink
+set_symlink_safe() {
+	if [[ -L ${EROOT}${MSFPATH} ]]; then
+		# existing symlink
+		remove_symlink || die -q "Couldn't remove existing symlink"
+		set_symlink "$1" || die -q "Couldn't set a new symlink"
+		#um, why is there an env-update here?
+		env-update
+	elif [[ -e ${EROOT}${MSFPATH} ]]; then
+		# we have something strange
+		die -q "${EROOT}${MSFPATH} exists but is not a symlink"
+	else
+		set_symlink "$1" || die -q "Couldn't set a new symlink"
+	fi
+}
+
+### show action ###
+
+describe_show() {
+	echo "Show the current metasploit symlink"
+}
+
+do_show() {
+	write_list_start "Current metasploit symlink:"
+	if [[ -L ${EROOT}${MSFPATH} ]]; then
+		local metasploit=$(canonicalise "${EROOT}${MSFPATH}")
+		write_kv_list_entry "${metasploit%/}" ""
+	else
+		write_kv_list_entry "(unset)" ""
+	fi
+}
+
+### list action ###
+
+describe_list() {
+	echo "List available metasploit symlink targets"
+}
+
+do_list() {
+	local i targets=( $(find_targets) )
+
+	write_list_start "Available metasploit symlink targets:"
+	for (( i = 0; i < ${#targets[@]}; i++ )); do
+		[[ ${targets[i]} = \
+			$(basename "$(canonicalise "${EROOT}${MSFPATH}")") ]] \
+			&& targets[i]=$(highlight_marker "${targets[i]}")
+	done
+	write_numbered_list -m "(none found)" "${targets[@]}"
+}
+
+### set action ###
+
+describe_set() {
+	echo "Set a new metasploit symlink target"
+}
+
+describe_set_parameters() {
+	echo "<target>"
+}
+
+describe_set_options() {
+	echo "<target> : Target name or number (from 'list' action)"
+	echo "--use-old : If an implementation is already set, use that one instead"
+}
+
+do_set() {
+	local action="error"
+	local current=$(basename "$(canonicalise "${EROOT}${MSFPATH}")")
+	local available=( $(find_targets) )
+	local new
+	local opt
+
+	while [[ ${#@} -gt 0 ]] ; do
+		opt=$1
+		shift
+		case ${opt} in
+			--use-old)
+				if [[ -n "${current}" ]] && has "${current}" "${available[@]}"; then
+					action="old-implementation"
+				fi
+			;;
+			metasploit*)
+				if [[ "${action}" != "old-implementation" ]] ; then
+					action="set-implementation"
+				fi
+
+				if has ${opt} ${available[@]}; then
+					new="${opt}"
+				else
+					echo "You need to emerge ${opt} before you try to eselect it"
+				fi
+			;;
+			*)
+				if [[ "${action}" != "old-implementation" ]] ; then
+					action="set-implementation"
+				fi
+
+				if is_number ${opt} ; then
+					#targets=( $(get_implementations) )
+					new=${available[opt - 1]}
+					if [[ -z ${new} ]] ; then
+						die -q "Unrecognized option: ${opt}"
+					fi
+				else
+					die -q "Unrecognized option: ${opt}"
+				fi
+			;;
+		esac
+	done
+
+	case ${action} in
+		old-implementation)
+			set_symlink_safe ${current}
+			return $?
+		;;
+		set-implementation)
+			if [[ -n ${new} ]] ; then
+				set_symlink_safe ${new}
+				return $?
+			else
+				die -q "Please specify an implementation to set"
+			fi
+		;;
+		*)
+			die -q "Invalid usage of set action."
+		;;
+	esac
+}

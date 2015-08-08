@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 0d0028f..9d05d59 100644
+--- a/Makefile
++++ b/Makefile
+@@ -41,7 +41,7 @@ _deltarpmmodule.so: readdeltarpm.o rpmhead.o util.o md5.o cfile.o $(zlibbundled)
+ 			if [ ! -f "python$$PYVER/$@" ]; then \
+ 				mkdir -p python$$PYVER ;\
+ 				$(CC) $(CFLAGS) $$PYCFLAGS $(zlibcppflag) -fPIC -c -o python$$PYVER/deltarpmmodule.o deltarpmmodule.c ;\
+-				$(CC) -o python$$PYVER/$@ python$$PYVER/deltarpmmodule.o $^ -shared -Wl,-soname,_deltarpmmodule.so $(LDLIBS) $$PYLDFLAGS; \
++				$(CC) -o python$$PYVER/$@ python$$PYVER/deltarpmmodule.o $^ -shared -Wl,-soname,_deltarpmmodule.so $(LDLIBS) $(LDFLAGS) $$PYLDFLAGS; \
+ 			fi; \
+ 		fi; \
+ 	done

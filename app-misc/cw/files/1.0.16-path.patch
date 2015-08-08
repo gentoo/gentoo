@@ -1,0 +1,19 @@
+diff --git a/bin/colorcfg b/bin/colorcfg
+index cf73b50..3e78c73 100755
+--- a/bin/colorcfg
++++ b/bin/colorcfg
+@@ -10,13 +10,7 @@ echo "[ cw/color wrapper: user setup script. ]"
+ if test -x "${HOME}/.cw/bin/colorcfg";then
+  CWLIB="${HOME}/.cw/def"
+ else
+- SED="`which sed 2>/dev/null`"
+- if test -z "$SED";then
+-  CWLIB="/usr/local/lib/cw"
+-  echo "(NOTE: using static cw library path, this could be invalid)"
+- else
+-  CWLIB="`echo \"$0/lib/cw\"|sed \"s/\/bin\/colorcfg//g\"`"
+- fi
++  CWLIB="/usr/libexec/cw"
+ fi
+ 
+ echo "[ cw library path: $CWLIB ]"

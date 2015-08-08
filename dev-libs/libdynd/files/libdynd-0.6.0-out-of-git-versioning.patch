@@ -1,0 +1,14 @@
+--- CMakeLists.txt.orig	2014-02-10 14:26:48.299381259 -0800
++++ CMakeLists.txt	2014-02-10 14:55:48.245644726 -0800
+@@ -86,9 +86,8 @@
+ endif()
+ 
+ # Get the git revision
+-include(GetGitRevisionDescriptionDyND)
+-get_git_head_revision("${CMAKE_CURRENT_SOURCE_DIR}" GIT_REFSPEC DYND_GIT_SHA1)
+-git_describe("${CMAKE_CURRENT_SOURCE_DIR}" DYND_VERSION_STRING --dirty --match "v[0-9]*")
++set(DYND_GIT_SHA1 "9f2e102e3b0c44da82feaa431bb89a5d71b40498")
++set(DYND_VERSION_STRING "v0.6.0")
+ message(STATUS "DyND version: ${DYND_VERSION_STRING}")
+ configure_file(
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/dynd/git_version.cpp.in"

@@ -1,0 +1,2 @@
+KERNEL=="ipath", MODE="0666"
+KERNEL=="kcopy[0-6][0-9]", NAME="kcopy/%n", MODE="0666"

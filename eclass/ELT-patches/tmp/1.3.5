@@ -1,0 +1,15 @@
+--- ltmain.sh	Fri Jul  7 18:49:44 2000
++++ ltmain.sh	Fri May 26 21:53:15 2000
+@@ -3462,7 +3462,11 @@
+ 	    if test "$finalize" = yes && test -z "$run"; then
+ 	      tmpdir="/tmp"
+ 	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
+-	      tmpdir="$tmpdir/libtool-$$"
++              tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
++              if test $? = 0 ; then :
++              else
++                tmpdir="$tmpdir/libtool-$$"
++              fi
+ 	      if $mkdir -p "$tmpdir" && chmod 700 "$tmpdir"; then :
+ 	      else
+ 		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2

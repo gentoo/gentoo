@@ -1,0 +1,40 @@
+=== modified file 'NEWS'
+--- NEWS	2009-01-14 11:11:28 +0000
++++ NEWS	2009-12-21 14:12:02 +0000
+@@ -25,6 +25,9 @@
+ 
+    (Forest Bond)
+ 
++ * Fixed output protection test that was failing on some systems.
++   (Forest Bond)
++
+ 
+ sclapp 0.5.3 2008-07-21
+ =======================
+
+=== modified file 'tests/output_protection.py'
+--- tests/output_protection.py	2008-05-18 21:46:03 +0000
++++ tests/output_protection.py	2009-12-21 14:12:02 +0000
+@@ -109,8 +109,10 @@
+   exceptions = ()):
+     def test_fn():
+         pid = failure_fn(main_fn)
+-        assertLogFileContainsExactly('foo', foos)
+-        assertLogFileContainsExactly('bar', bars)
++        if foos is not None:
++            assertLogFileContainsExactly('foo', foos)
++        if bars is not None:
++            assertLogFileContainsExactly('bar', bars)
+         for signal in signals:
+             assertSignalCaught(signal, pid)
+         for exception in exceptions:
+@@ -171,7 +173,7 @@
+         'test_stdout_fails_without_signal_handling_without_output_protection',
+         _stdout_fails,
+         main_without_signal_handling_without_output_protection,
+-        2, 2, ()
++        2, None, ()
+     )))
+     test_stdout_stderr_fail_without_signal_handling_without_output_protection = (
+       staticmethod(_make_test_fn(
+

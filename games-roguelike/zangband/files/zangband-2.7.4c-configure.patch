@@ -1,0 +1,51 @@
+--- configure.in.orig
++++ configure.in
+@@ -236,48 +236,5 @@
+ AC_CHECK_FUNCS([Tk_SetClassProcs TkpSync])
+ AC_CHECK_FUNCS([mkstemp usleep getpwuid getpwnam shmget])
+ 
+-dnl A nice function to test compiler options (like warnings)
+-AC_DEFUN(AC_CHECK_CC_OPT,
+-[FLAG=`echo zangband_cv_cflag_$1 | sed s/-/_/g`
+-AC_CACHE_CHECK([whether ${CC-cc} accepts $1],
+-[$FLAG],
+-[echo 'void f(void); void f(){}' > conftest.c
+-if test -z "`${CC-cc} -c ${CFLAGS} $1 conftest.c 2>&1`"; then
+-  eval $FLAG=yes
+-else
+-  eval $FLAG=no
+-fi])
+-if test ${!FLAG} = yes ; then
+-  CFLAGS="$1 $CFLAGS"
+-fi
+-])
+-
+-dnl Check for lots of extra warning options
+-AC_CHECK_CC_OPT(-pedantic)
+-AC_CHECK_CC_OPT(-W)
+-AC_CHECK_CC_OPT(-Wall)
+-AC_CHECK_CC_OPT(-Wmissing-prototypes)
+-AC_CHECK_CC_OPT(-Wmissing-declarations)
+-AC_CHECK_CC_OPT(-Wno-long-long)
+-AC_CHECK_CC_OPT(-Wwrite-strings)
+-AC_CHECK_CC_OPT(-Wpointer-arith)
+-AC_CHECK_CC_OPT(-Wbad-function-cast)
+-AC_CHECK_CC_OPT(-Waggregate-return)
+-AC_CHECK_CC_OPT(-Wstrict-prototypes)
+-AC_CHECK_CC_OPT(-Wredundant-decls)
+-dnl AC_CHECK_CC_OPT(-Wunreachable-code)
+-AC_CHECK_CC_OPT(-Wchar-subscripts)
+-AC_CHECK_CC_OPT(-Wimplicit)
+-AC_CHECK_CC_OPT(-Wparentheses)
+-AC_CHECK_CC_OPT(-Wsequence-point)
+-AC_CHECK_CC_OPT(-Wreturn-type)
+-AC_CHECK_CC_OPT(-Wswitch)
+-AC_CHECK_CC_OPT(-Wunused)
+-AC_CHECK_CC_OPT(-Wuninitialized)
+-AC_CHECK_CC_OPT(-Wundef)
+-AC_CHECK_CC_OPT(-Wnested-externs)
+-AC_CHECK_CC_OPT(-Wdeclaration-after-statement)
+-AC_CHECK_CC_OPT(-Wsign-compare)
+-
+ AC_CONFIG_FILES([makefile])
+ AC_OUTPUT

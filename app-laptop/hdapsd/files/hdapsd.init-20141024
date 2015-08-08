@@ -1,0 +1,76 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2
+
+description="Hard Drive Active Protection System daemon"
+command="/usr/sbin/hdapsd"
+pidfile="/run/hdapsd.pid"
+
+# Always daemonize when started by OpenRC, and don't make the pidfile
+# configurable. Even if the user sets something dumb for the pidfile
+# in /etc/hdapsd.conf, we want it to work! Fortunately the settings
+# passed on the command-line override the config file.
+command_args="--background --pidfile=${pidfile}"
+
+
+depend() {
+    need localmount
+}
+
+checkconfig() {
+    # An empty DISKLIST is allowed because the disk will be
+    # auto-detected.
+    for DISK in ${DISKLIST}; do
+        if [ ! -b /dev/${DISK} ]; then
+            eerror "Could not find disk /dev/${DISK}!"
+            eerror "Adjust the DISK setting in /etc/conf.d/hdapsd"
+            return 1
+        fi
+
+        if [ ! -e /sys/block/${DISK}/queue/protect ] && \
+	    [ ! -e /sys/block/${DISK}/device/unload_heads ] ; then
+            eerror "No protect entry for ${DISK}!"
+            eerror "Make sure your kernel is patched with the blk_freeze patch"
+            return 1
+        fi
+    done
+
+    # Load the tp_smapi module first. This is not a requirement, but
+    # it helps hdapsd's adaptive mode.
+    if [ ! -e /sys/devices/platform/smapi ] ; then
+	modprobe tp_smapi 2>/dev/null
+    fi
+
+    if [ ! -d /sys/devices/platform/hdaps ] ; then
+	ebegin "Loading hdaps module"
+        modprobe hdaps
+	eend $? || return 1
+    fi
+}
+
+start() {
+    checkconfig || return 1
+
+    for DISK in ${DISKLIST}; do
+	command_args="${command_args} -d ${DISK}"
+    done
+
+    # Since all of these settings are now optional, we append them
+    # only if we need to.
+    if [ ! -z "${THRESHOLD}" ] ; then
+	command_args="${command_args} --sensitivity ${THRESHOLD}"
+    fi
+
+    if [ ! -z "${SYSLOG}" ] ; then
+	command_args="${command_args} --syslog"
+    fi
+
+    if [ ! -z "${OPTIONS}" ] ; then
+	command_args="${command_args} ${OPTIONS}"
+    fi
+
+    ebegin "Starting the ${description}"
+    start-stop-daemon --start --exec "${command}" --pidfile "${pidfile}" \
+	-- ${command_args}
+    eend $?
+}

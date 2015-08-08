@@ -1,0 +1,13 @@
+Index: flobopuyo-0.20/PuyoGame.h
+===================================================================
+--- flobopuyo-0.20.orig/PuyoGame.h
++++ flobopuyo-0.20/PuyoGame.h
+@@ -46,7 +46,7 @@ public:
+     virtual ~PuyoPuyo() {};
+     PuyoState getPuyoState();
+     void setPuyoState(PuyoState state);
+-    bool PuyoPuyo::isFalling();
++    bool isFalling();
+     int getPuyoX() const;
+     int getPuyoY() const;
+     void setPuyoXY(int X, int Y);

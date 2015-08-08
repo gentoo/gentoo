@@ -1,0 +1,85 @@
+To complete installation you need to proceed the following steps:
+=================================================================
+
+1. Temporarily make the "mw-config" directory writable to the user the web
+server is running as. The quickest way is to make the directory world
+writable. For example:
+
+$ cd ${MY_INSTALLDIR}
+$ chmod a+w mw-config
+
+
+2. Configure database.
+a.) If you know the root password on your database, the MediaWiki installation
+script can create a new database for you.
+
+b.) If you don't know the root password, MediaWiki still needs database to
+work with. So, please, read the following link and find solution which suits
+your needs best:
+
+http://www.mediawiki.org/wiki/Manual:Installing_MediaWiki#Create_a_database
+
+
+3. Now continue the installation through web browser by accessing the
+following page:
+
+http://${VHOST_HOSTNAME}${VHOST_APPDIR}/mw-config/
+ 
+
+4. After the setup script has finished running successfully, a file called
+LocalSettings.php is created in the "mw-config" directory. Move this file to the
+root wiki directory (${MY_INSTALLDIR}):
+
+$ mv mw-config/LocalSettings.php .
+
+Set stringent permissions on the LocalSettings.php file:
+
+$ chown <webserver-user>:root LocalSettings.php
+$ chmod 600 LocalSettings.php
+
+And delete the "mw-config" directory:
+
+$ rm -rf mw-config
+
+
+5. Once you have done the above, your wiki should be ready to use!
+
+http://${VHOST_HOSTNAME}${VHOST_APPDIR}/
+ 
+
+Enabling Optional Features and other configuration
+==================================================
+
+Allow images and other files to be uploaded through the wiki
+------------------------------------------------------------
+
+If you wish to enable images and other files to be uploaded through wiki then
+edit the LocalSettings.php file and set \$wgEnableUploads to 'true':
+
+\$wgEnableUploads       = true;
+
+Now if MediaWiki was built with the imagemagick USE-flag the directory
+permissions are correct, otherwise install ImageMagick and adjust permissions
+on the images directory to allow the web server to write. For example:
+ 
+$ chown <webserver-user>:<webserver-group> ${MY_INSTALLDIR}/images
+
+IMPORTANT: Uploads need to be set up properly in order to be secure! For more
+details take a look at the following page:
+
+http://www.mediawiki.org/wiki/Manual:$wgEnableUploads
+
+
+Math Support
+------------
+
+Math support has been removed from the core mediawiki package from 1.18.0
+onwards. See http://www.mediawiki.org/wiki/Extension:Math to enable math
+support.
+
+
+Other
+-----
+
+For other tweaks, continue with the following:
+http://www.mediawiki.org/wiki/Manual:Installing_MediaWiki#See_also

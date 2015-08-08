@@ -1,0 +1,131 @@
+diff --git a/Base.lhs b/Base.lhs
+index c26e048..46c68de 100644
+--- a/Base.lhs
++++ b/Base.lhs
+@@ -38,3 +38,4 @@
+ > import Prettier
+-> import Control.Monad                  (  MonadPlus(..)  )
++> import Control.Applicative
++> import Control.Monad
+ > import System.IO
+@@ -117,2 +118,9 @@ A simple exception monad.
+ 
++> instance Functor Result where
++>     fmap  = liftM
++
++> instance Applicative Result where
++>     pure  = return
++>     (<*>) = ap  -- defined in Control.Monad
++
+ > instance Monad Result where
+@@ -123,2 +131,6 @@ A simple exception monad.
+ 
++> instance Alternative Result where
++>     (<|>) = mplus
++>     empty = mzero
++
+ > instance MonadPlus Result where
+diff --git a/Compact.lhs b/Compact.lhs
+index 6886a6a..84f125c 100644
+--- a/Compact.lhs
++++ b/Compact.lhs
+@@ -54,3 +54,3 @@
+ > import Data.Maybe
+-> import Prelude                hiding (  lookup  )
++> import Prelude                hiding (  lookup, (<$>)  )
+ 
+diff --git a/Convert.lhs b/Convert.lhs
+index 01d2c32..d31f437 100644
+--- a/Convert.lhs
++++ b/Convert.lhs
+@@ -235,2 +235,9 @@ Writer monad for collecting multiple error messages.
+ 
++> instance Functor (Writer w) where
++>     fmap  = liftM
++
++> instance Applicative (Writer w) where
++>     pure  = return
++>     (<*>) = ap  -- defined in Control.Monad
++
+ > instance Monad (Writer w) where
+diff --git a/GParser2.hs b/GParser2.hs
+index 0cb4c21..1597acc 100644
+--- a/GParser2.hs
++++ b/GParser2.hs
+@@ -41,2 +41,5 @@
+   where
++  import Prelude hiding ((<$>))
++  import Control.Applicative hiding ((<$>))
++  import Control.Monad hiding ( guard )
+   import Lexer2
+@@ -2130,3 +2133,10 @@
+                                                          -> m Answer) }
+- 
++
++  instance (Monad m) => Functor (Lex m) where
++      fmap  = liftM
++
++  instance (Monad m) => Applicative (Lex m) where
++      pure  = return
++      (<*>) = ap  -- defined in Control.Monad
++
+   instance (Monad m) => Monad (Lex m) where
+diff --git a/GParser2.lg b/GParser2.lg
+index e036f8f..800e245 100644
+--- a/GParser2.lg
++++ b/GParser2.lg
+@@ -41,2 +41,5 @@ Compile me with
+ > where
++> import Prelude hiding ((<$>))
++> import Control.Applicative hiding ((<$>))
++> import Control.Monad hiding ( guard )
+ > import Lexer2
+@@ -354,2 +357,10 @@ A continuation-based state monad.
+ >
++
++> instance (Monad m) => Functor (Lex m) where
++>     fmap  = liftM
++
++> instance (Monad m) => Applicative (Lex m) where
++>     pure  = return
++>     (<*>) = ap  -- defined in Control.Monad
++
+ > instance (Monad m) => Monad (Lex m) where
+diff --git a/GVStack.lhs b/GVStack.lhs
+index acb5d96..3869493 100644
+--- a/GVStack.lhs
++++ b/GVStack.lhs
+@@ -51,3 +51,3 @@
+ > import Data.List                   (  maximumBy  )
+-> import Prelude                hiding (  lookup  )
++> import Prelude                hiding (  lookup, (<$>)  )
+ 
+diff --git a/Lib/OrdUniqListSet.lhs b/Lib/OrdUniqListSet.lhs
+index ddb8629..decf65d 100644
+--- a/Lib/OrdUniqListSet.lhs
++++ b/Lib/OrdUniqListSet.lhs
+@@ -114,2 +114,6 @@ Yes, \tr{Set} is a functor and a monad.
+ >
++> instance Applicative Set where
++>     pure  = return
++>     (<*>) = ap  -- defined in Control.Monad
++>
+ > instance Monad Set where
+diff --git a/Stackless.lhs b/Stackless.lhs
+index 2fb1a97..dac8ef5 100644
+--- a/Stackless.lhs
++++ b/Stackless.lhs
+@@ -53,3 +53,3 @@
+ > import Control.Monad
+-> import Prelude                hiding (  lookup  )
++> import Prelude                hiding (  lookup, (<$>)  )
+ 
+diff --git a/Standard.lhs b/Standard.lhs
+index 9fb5305..c3fcbb0 100644
+--- a/Standard.lhs
++++ b/Standard.lhs
+@@ -52,3 +52,3 @@
+ > import Data.Maybe
+-> import Prelude                hiding (  lookup  )
++> import Prelude                hiding (  lookup, (<$>)  )
+ 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>ml</herd>
+  <use>
+    <flag name="parmap">Adds multi-core CPU support via <pkg>dev-ml/parmap</pkg>.</flag>
+	<flag name="zip">Adds support for handling zip files.</flag>
+	<flag name="rpm4">Adds support for handling rpm4 files.</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,8 @@
+diff --git a/Data/List/LCS/HuntSzymanski.hs b/Data/List/LCS/HuntSzymanski.hs
+index 306368f..e9df4ef 100644
+--- a/Data/List/LCS/HuntSzymanski.hs
++++ b/Data/List/LCS/HuntSzymanski.hs
+@@ -1,2 +1,2 @@
+-
++{-# LANGUAGE FlexibleContexts #-}
+ -----------------------------------------------------------------------------

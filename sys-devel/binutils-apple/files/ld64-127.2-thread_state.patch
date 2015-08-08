@@ -1,0 +1,13 @@
+Include thread_status.h so that __darwin_i386_thread_state_t is known and will
+not generate warnings that it's declared inside parameter list.
+
+--- ld64-127.2/src/ld/HeaderAndLoadCommands.hpp.orig	2015-01-28 00:32:55.000000000 +0100
++++ ld64-127.2/src/ld/HeaderAndLoadCommands.hpp	2015-01-28 00:27:51.000000000 +0100
+@@ -29,6 +29,7 @@
+ #include <limits.h>
+ #include <unistd.h>
+ #include <mach-o/loader.h>
++#include <mach/i386/thread_status.h>
+ 
+ #include <vector>
+ 

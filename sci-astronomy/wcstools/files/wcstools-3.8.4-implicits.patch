@@ -1,0 +1,21 @@
+--- a/libned/ned_sk.c
++++ b/libned/ned_sk.c
+@@ -57,6 +57,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ #include <netdb.h>
+ 
+ #include <sys/resource.h>
+--- a/gethead.c
++++ b/gethead.c
+@@ -32,6 +32,8 @@
+ #include "libwcs/fitsfile.h"
+ #include "libwcs/wcscat.h"
+ 
++void fk425();
++
+ #define MAXKWD 100
+ #define MAXFILES 2000
+ static int maxnkwd = MAXKWD;

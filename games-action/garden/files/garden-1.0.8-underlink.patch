@@ -1,0 +1,19 @@
+--- bin/Makefile.am.old	2011-06-22 18:16:30.654661047 +0200
++++ bin/Makefile.am	2011-06-22 18:16:55.662251326 +0200
+@@ -9,6 +9,7 @@
+ garden_LDFLAGS = -static
+ else #unix version :-)
+ AM_CPPFLAGS = -D'DATADIR="@DATADIR_NAME@"'
++garden_LDADD = -lm
+ endif
+ 
+ #how to build resources?
+--- Makefile.am.old	2011-06-22 18:19:37.787560851 +0200
++++ Makefile.am	2011-06-22 18:19:44.078960907 +0200
+@@ -1,5 +1,5 @@
+ ACLOCAL_AMFLAGS= -I m4
+-SUBDIRS = bin resources
++SUBDIRS = bin
+ 
+ if NO_EXISTING_DATA
+ SUBDIRS += data 

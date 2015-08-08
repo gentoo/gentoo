@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>page@cubata.homelinux.net</email>
+		<name>Carles Pagès</name>
+	</maintainer>
+	<use>
+		<flag name="ssh">Build with SFTP support</flag>
+	</use>
+</pkgmetadata>

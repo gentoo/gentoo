@@ -1,0 +1,33 @@
+From 2a0f32e8cb46c8a1c0a33ed151737e5abb5679ed Mon Sep 17 00:00:00 2001
+From: Andrey Rijov <rdron@users.sourceforge.net>
+Date: Mon, 31 Oct 2011 19:38:17 +0400
+Subject: [PATCH] Updated aqemu.desktop file (See bug: 3430317)
+
+---
+ menu_data/aqemu.desktop |    9 +++++----
+ 1 files changed, 5 insertions(+), 4 deletions(-)
+
+--- a/menu_data/aqemu.desktop
++++ b/menu_data/aqemu.desktop
+@@ -1,14 +1,15 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Name=AQEMU
+ Exec=aqemu
+ Terminal=false
+ Type=Application
+-Icon=aqemu_48x48.png
++Icon=aqemu_48x48
+ StartupNotify=true
+ Categories=System;Emulator;
+ 
+-Name[ru]=AQEMU
++Name=AQEMU
++Comment=Virtual machine manager
+ Name[en]=AQEMU
+-Comment[ru]=Управление виртуальными машинами
+ Comment[en]=Virtual machine manager
++Name[ru]=AQEMU
++Comment[ru]=Управление виртуальными машинами
+-- 
+1.7.4.1

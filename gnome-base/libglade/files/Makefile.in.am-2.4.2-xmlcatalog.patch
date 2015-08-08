@@ -1,0 +1,22 @@
+--- a/Makefile.am	2004-11-11 18:56:13.000000000 +0800
++++ b/Makefile.am	2004-12-06 11:00:24.501734048 +0800
+@@ -24,7 +24,7 @@
+ 
+ if HAVE_XMLCATALOG
+ install-data-local:
+-	-$(XMLCATALOG) --noout --add "system" "http://glade.gnome.org/glade-2.0.dtd" $(xmldir)/glade-2.0.dtd $(XML_CATALOG_FILE)
++#	-$(XMLCATALOG) --noout --add "system" "http://glade.gnome.org/glade-2.0.dtd" $(xmldir)/glade-2.0.dtd $(XML_CATALOG_FILE)
+ uninstall-local:
+ 	-$(XMLCATALOG) --noout --del $(xmldir)/glade-2.0.dtd $(XML_CATALOG_FILE)
+ endif
+--- a/Makefile.in	2004-11-11 19:21:38.000000000 +0800
++++ b/Makefile.in	2004-12-06 11:00:49.786890120 +0800
+@@ -819,7 +819,7 @@
+ 
+ 
+ @HAVE_XMLCATALOG_TRUE@install-data-local:
+-@HAVE_XMLCATALOG_TRUE@	-$(XMLCATALOG) --noout --add "system" "http://glade.gnome.org/glade-2.0.dtd" $(xmldir)/glade-2.0.dtd $(XML_CATALOG_FILE)
++@HAVE_XMLCATALOG_TRUE@#	-$(XMLCATALOG) --noout --add "system" "http://glade.gnome.org/glade-2.0.dtd" $(xmldir)/glade-2.0.dtd $(XML_CATALOG_FILE)
+ @HAVE_XMLCATALOG_TRUE@uninstall-local:
+ @HAVE_XMLCATALOG_TRUE@	-$(XMLCATALOG) --noout --del $(xmldir)/glade-2.0.dtd $(XML_CATALOG_FILE)
+ 

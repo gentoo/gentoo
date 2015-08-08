@@ -1,0 +1,19 @@
+Description: Fix -Wimplicit-function-declaration warning in the test suite
+ Fix the warning: isprefix.driver.c:43:5: warning: implicit declaration of
+ function ‘strcmp’ [-Wimplicit-function-declaration]
+Author: Andrey Rahmatullin <wrar@wrar.name>
+Forwarded: no
+Last-Update: 2012-02-05
+
+diff --git a/testsuite/isprefix.driver.c b/testsuite/isprefix.driver.c
+index a9fd77b..df558c2 100644
+--- a/testsuite/isprefix.driver.c
++++ b/testsuite/isprefix.driver.c
+@@ -21,6 +21,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include "isprefix.h"
+ 

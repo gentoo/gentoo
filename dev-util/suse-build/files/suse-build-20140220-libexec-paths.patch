@@ -1,0 +1,212 @@
+diff -Naru obs-build-20140220-bak/build obs-build-20140220/build
+--- obs-build-20140220-bak/build	2014-03-02 17:04:18.655731128 +0000
++++ obs-build-20140220/build	2014-03-02 17:04:56.710281988 +0000
+@@ -12,7 +12,7 @@
+    exec /.build/build "$@"
+ fi
+ 
+-test -z "$BUILD_DIR" && BUILD_DIR=/usr/lib/build
++test -z "$BUILD_DIR" && BUILD_DIR=/usr/libexec/suse-build
+ test -z "$BUILD_ROOT" && BUILD_ROOT=/var/tmp/build-root
+ test -z "$CONFIG_DIR" && CONFIG_DIR="$BUILD_DIR/configs"
+ 
+diff -Naru obs-build-20140220-bak/createarchdeps obs-build-20140220/createarchdeps
+--- obs-build-20140220-bak/createarchdeps	2014-03-02 17:04:18.659731079 +0000
++++ obs-build-20140220/createarchdeps	2014-03-02 17:04:56.710281988 +0000
+@@ -3,7 +3,7 @@
+ # Archlinux support, based on the GSoC work of Nikolay Rysev <mad.f3ka@gmail.com>
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{"BUILD_DIR"} || "/usr/lib/build");
++  unshift @INC, ($::ENV{"BUILD_DIR"} || "/usr/libexec/suse-build");
+ }
+ 
+ use strict;
+diff -Naru obs-build-20140220-bak/createrepomddeps obs-build-20140220/createrepomddeps
+--- obs-build-20140220-bak/createrepomddeps	2014-03-02 17:04:18.659731079 +0000
++++ obs-build-20140220/createrepomddeps	2014-03-02 17:04:56.710281988 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+diff -Naru obs-build-20140220-bak/createrpmdeps obs-build-20140220/createrpmdeps
+--- obs-build-20140220-bak/createrpmdeps	2014-03-02 17:04:18.659731079 +0000
++++ obs-build-20140220/createrpmdeps	2014-03-02 17:04:56.710281988 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+diff -Naru obs-build-20140220-bak/createyastdeps obs-build-20140220/createyastdeps
+--- obs-build-20140220-bak/createyastdeps	2014-03-02 17:04:18.656731116 +0000
++++ obs-build-20140220/createyastdeps	2014-03-02 17:04:56.711281976 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+diff -Naru obs-build-20140220-bak/download obs-build-20140220/download
+--- obs-build-20140220-bak/download	2014-03-02 17:04:18.659731079 +0000
++++ obs-build-20140220/download	2014-03-02 17:04:56.711281976 +0000
+@@ -3,7 +3,7 @@
+ use Net::SSL ();
+ BEGIN {
+   $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0,
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use LWP::UserAgent;
+diff -Naru obs-build-20140220-bak/expanddeps obs-build-20140220/expanddeps
+--- obs-build-20140220-bak/expanddeps	2014-03-02 17:04:18.658731091 +0000
++++ obs-build-20140220/expanddeps	2014-03-02 17:04:56.711281976 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+diff -Naru obs-build-20140220-bak/getbinaryid obs-build-20140220/getbinaryid
+--- obs-build-20140220-bak/getbinaryid	2014-03-02 17:04:18.659731079 +0000
++++ obs-build-20140220/getbinaryid	2014-03-02 17:04:56.711281976 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+diff -Naru obs-build-20140220-bak/getoptflags obs-build-20140220/getoptflags
+--- obs-build-20140220-bak/getoptflags	2014-03-02 17:04:18.659731079 +0000
++++ obs-build-20140220/getoptflags	2014-03-02 17:05:22.777976219 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+diff -Naru obs-build-20140220-bak/changelog2spec obs-build-20140220/changelog2spec
+--- obs-build-20140220-bak/changelog2spec	2014-03-02 17:04:18.658731091 +0000
++++ obs-build-20140220/changelog2spec	2014-03-02 17:05:24.268958777 +0000
+@@ -5,7 +5,7 @@
+ #
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Date::Parse;
+diff -Naru obs-build-20140220-bak/init_buildsystem obs-build-20140220/init_buildsystem
+--- obs-build-20140220-bak/init_buildsystem	2014-03-02 17:04:18.655731128 +0000
++++ obs-build-20140220/init_buildsystem	2014-03-02 17:05:24.268958777 +0000
+@@ -16,7 +16,7 @@
+ export YAST_IS_RUNNING="instsys"
+ export DEBIAN_FRONTEND=noninteractive
+ export DEBIAN_PRIORITY=critical
+-export BUILD_DIR=${BUILD_DIR:-/usr/lib/build}
++export BUILD_DIR=${BUILD_DIR:-/usr/libexec/suse-build}
+ # need to restore build root owner for non-root builds
+ browner=0
+ definesnstuff=()
+diff -Naru obs-build-20140220-bak/initvm.c obs-build-20140220/initvm.c
+--- obs-build-20140220-bak/initvm.c	2014-03-02 17:04:18.658731091 +0000
++++ obs-build-20140220/initvm.c	2014-03-02 17:05:24.269958765 +0000
+@@ -54,9 +54,10 @@
+ #define SYSFS_BINFMT_MISC_REG	"/proc/sys/fs/binfmt_misc/register"
+ #define SYSFS_BINFMT_MISC_STAT	"/proc/sys/fs/binfmt_misc/status"
+ 
+-/* /usr/lib/build/x paths are copied to /.build inside a virtual machine */
++/* /usr/libexec/suse-build/x paths are copied to /.build inside a virtual machine */
+ #define BINFMT_REGF_0		"/.build/qemu-reg"
+-#define BINFMT_REGF_1		"/usr/lib/build/qemu-reg"
++#define BINFMT_REGF_1		"/usr/libexec/suse-build/qemu-reg"
++#define BINFMT_REGF_2		"/usr/lib/build/qemu-reg"
+ #define BUILD			"/.build/build"
+ 
+ /* useful constant arrays */
+@@ -324,9 +325,13 @@
+ 			fprintf(stderr, "%s: failed. Trying alternate binfmt file\n",
+ 				BINFMT_REGF_0);
+ 			if (!binfmt_register(BINFMT_REGF_1, SYSFS_BINFMT_MISC_REG)) {
+-				fprintf(stderr, "%s: binfmt registration failed\n",
++				fprintf(stderr, "%s: failed. Trying alternate binfmt file\n",
+ 					BINFMT_REGF_1);
+-				exit(1);
++				if (!binfmt_register(BINFMT_REGF_2, SYSFS_BINFMT_MISC_REG)) {
++					fprintf(stderr, "%s: binfmt registration failed\n",
++						BINFMT_REGF_2);
++					exit(1);
++				}
+ 			}
+ 		}
+ 	}
+diff -Naru obs-build-20140220-bak/mkdrpms obs-build-20140220/mkdrpms
+--- obs-build-20140220-bak/mkdrpms	2014-03-02 17:04:18.656731116 +0000
++++ obs-build-20140220/mkdrpms	2014-03-02 17:05:24.269958765 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, '/usr/lib/build';
++  unshift @INC, '/usr/libexec/suse-build';
+   unshift @INC, $::ENV{'BUILD_DIR'} if $::ENV{'BUILD_DIR'};
+ }
+ 
+diff -Naru obs-build-20140220-bak/order obs-build-20140220/order
+--- obs-build-20140220-bak/order	2014-03-02 17:04:18.658731091 +0000
++++ obs-build-20140220/order	2014-03-02 17:05:24.269958765 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+diff -Naru obs-build-20140220-bak/spectool obs-build-20140220/spectool
+--- obs-build-20140220-bak/spectool	2014-03-02 17:04:18.658731091 +0000
++++ obs-build-20140220/spectool	2014-03-02 17:05:24.269958765 +0000
+@@ -116,7 +116,7 @@
+ my $builddir;
+ 
+ BEGIN {
+-  $builddir = ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  $builddir = ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+   unshift @INC, $builddir;
+ }
+ 
+diff -Naru obs-build-20140220-bak/substitutedeps obs-build-20140220/substitutedeps
+--- obs-build-20140220-bak/substitutedeps	2014-03-02 17:04:18.659731079 +0000
++++ obs-build-20140220/substitutedeps	2014-03-02 17:05:24.269958765 +0000
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;

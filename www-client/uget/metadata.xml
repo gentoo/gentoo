@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>wired@gentoo.org</email>
+		<name>Alex Alexander</name>
+	</maintainer>
+	<longdescription lang="en">
+		Uget is a download manager. It allows you to classify URLs before downloading
+		them, and allows you to import URLs from HTML files. Every category has an
+		independent configuration that can be inherited by each download in that
+		category.
+	</longdescription>
+	<use>
+		<flag name="aria2">Enable support for <pkg>net-misc/aria2</pkg> through xmlrpc.
+			You'll find the plugin in the app's settings.</flag>
+		<flag name="hide-temp-files">Make temporary files that are used while downloading hidden.</flag>
+		<flag name="gtk3">Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">urlget</remote-id>
+	</upstream>
+</pkgmetadata>

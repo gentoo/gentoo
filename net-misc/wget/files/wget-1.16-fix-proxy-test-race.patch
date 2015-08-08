@@ -1,0 +1,96 @@
+From 3eff3ad69a46364475e1f4abdf9412cfa87e3d6c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim=20R=C3=BChsen?= <tim.ruehsen@gmx.de>
+Date: Tue, 28 Oct 2014 11:40:34 +0100
+Subject: [PATCH] synchronize client and server in Test-proxied-https-auth.px
+
+---
+ tests/ChangeLog                  |  4 ++++
+ tests/Test-proxied-https-auth.px | 36 +++++++++++++++++++++++++-----------
+ 2 files changed, 29 insertions(+), 11 deletions(-)
+
+2014-10-28  Tim Ruehsen <tim.ruehsen@gmx.de>
+
+	* tests/Test-proxied-https-auth.px: synchronize client and server
+
+diff --git a/tests/Test-proxied-https-auth.px b/tests/Test-proxied-https-auth.px
+index cc987ff..272003f 100755
+--- a/tests/Test-proxied-https-auth.px
++++ b/tests/Test-proxied-https-auth.px
+@@ -49,12 +49,15 @@ sub get_request {
+ }
+ 
+ sub do_server {
++    my ($synch_callback) = @_;
+     my $alrm = alarm 10;
+-
+     my $s = $SOCKET;
+     my $conn;
+     my $rqst;
+     my $rspn;
++
++    $synch_callback->();
++
+     for my $expect_inner_auth (0, 1) {
+         $conn = $s->accept;
+         $rqst = $conn->get_request;
+@@ -90,7 +93,7 @@ sub do_server {
+                 Connection => 'close'
+                 ]);
+             $rspn->protocol('HTTP/1.0');
+-            print $rspn->as_string;
++            print STDERR $rspn->as_string;
+             print $conn $rspn->as_string;
+         } else {
+             die "No proxied auth\n" unless $rqst->header('Authorization');
+@@ -100,9 +103,9 @@ sub do_server {
+                 'Connection' => 'close',
+                 ], "foobarbaz\n");
+             $rspn->protocol('HTTP/1.0');
+-            print "=====\n";
+-            print $rspn->as_string;
+-            print "\n=====\n";
++            print STDERR "=====\n";
++            print STDERR $rspn->as_string;
++            print STDERR "\n=====\n";
+             print $conn $rspn->as_string;
+         }
+         $conn->close;
+@@ -113,18 +116,29 @@ sub do_server {
+ }
+ 
+ sub fork_server {
+-    my $pid = fork;
+-    die "Couldn't fork" if ($pid < 0);
+-    return $pid if $pid;
++    pipe(FROM_CHILD, TO_PARENT) or die "Cannot create pipe!";
++    select((select(TO_PARENT), $| = 1)[0]);
++
++    my $pid = fork();
++    if ($pid < 0) {
++        die "Cannot fork";
++    } elsif ($pid == 0) {
++        # child
++        close FROM_CHILD;
++        do_server(sub { print TO_PARENT "SYNC\n"; close TO_PARENT });
++    } else {
++        # parent
++        close TO_PARENT;
++        chomp(my $line = <FROM_CHILD>);
++        close FROM_CHILD;
++    }
+ 
+-    &do_server;
+-    exit;
++    return $pid;
+ }
+ 
+ system ('rm -f needs-auth.txt');
+ my $pid = &fork_server;
+ 
+-sleep 1;
+ my $cmdline = $WgetTest::WGETPATH . " --user=fiddle-dee-dee"
+     . " --password=Dodgson -e https_proxy=localhost:{{port}}"
+     . " --no-check-certificate"
+-- 
+2.1.2
+

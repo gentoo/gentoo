@@ -1,0 +1,14 @@
+diff -Nuar aggregate-1.6.orig/Makefile.in aggregate-1.6/Makefile.in
+--- aggregate-1.6.orig/Makefile.in	2002-03-06 08:59:37.000000000 -0800
++++ aggregate-1.6/Makefile.in	2008-10-10 01:31:42.613937925 -0700
+@@ -25,8 +25,8 @@
+ INSTALL = @INSTALL@
+ DEFS = @DEFS@
+ LIBS = @LIBS@
+-CFLAGS = -O
+-LDFLAGS = -s
++CFLAGS +=
++LDFLAGS +=
+ prefix = @prefix@
+ 
+ SHELL = /bin/sh

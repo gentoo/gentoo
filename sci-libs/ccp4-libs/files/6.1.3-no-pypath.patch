@@ -1,0 +1,87 @@
+ include/ccp4.setup-bash |  8 --------
+ include/ccp4.setup-csh  | 11 -----------
+ include/ccp4.setup-sh   |  8 --------
+ include/ccp4.setup-zsh  | 10 ----------
+ 4 files changed, 37 deletions(-)
+
+diff --git a/include/ccp4.setup-bash b/include/ccp4.setup-bash
+index 3a67791..80aef23 100755
+--- a/include/ccp4.setup-bash
++++ b/include/ccp4.setup-bash
+@@ -185,14 +185,6 @@ else
+   fi
+ fi
+ 
+-#Python path for the subprocess fixed module
+-
+-if [ $ccp4_first_in_path -eq 1 ]; then
+-    setenv PYTHONPATH ${CCP4}/share/python:${PYTHONPATH}
+-else
+-    setenv PYTHONPATH ${PYTHONPATH}:${CCP4}/share/python
+-fi
+-
+ ### PLOT_COMMAND PRINT_COMMAND for the XCCPJIFFY programs to compile ###
+ setenv PLOT_COMMAND   'lp -s -dmicrolaser'  
+ setenv PRINT_COMMAND  'lp -s -denscript'    
+diff --git a/include/ccp4.setup-csh b/include/ccp4.setup-csh
+index 10d3ab8..72cc479 100755
+--- a/include/ccp4.setup-csh
++++ b/include/ccp4.setup-csh
+@@ -177,17 +177,6 @@ else
+   endif
+ endif
+ 
+-#Python path for the subprocess fixed module
+-if (${?PYTHONPATH}) then
+-  if ($ccp4_first_in_path) then
+-      setenv PYTHONPATH ${CCP4}/share/python:${PYTHONPATH}
+-  else
+-      setenv PYTHONPATH ${PYTHONPATH}:${CCP4}/share/python
+-  endif
+-else
+-    setenv PYTHONPATH ${CCP4}/share/python
+-endif
+-
+ ### PLOT_COMMAND PRINT_COMMAND for the XCCPJIFFY programs to compile ###
+ setenv PLOT_COMMAND   'lp -s -dmicrolaser'  
+ setenv PRINT_COMMAND  'lp -s -denscript'    
+diff --git a/include/ccp4.setup-sh b/include/ccp4.setup-sh
+index 2298bba..44643ab 100755
+--- a/include/ccp4.setup-sh
++++ b/include/ccp4.setup-sh
+@@ -225,14 +225,6 @@ test -r $CCP4/include/ccp4.msg && cat $CCP4/include/ccp4.msg
+ 
+ ################### EXPERIENCED USERS STOP HERE #####################
+ 
+-#Python path for the subprocess fixed module
+-
+-if test $ccp4_first_in_path -eq 1; then
+-    export PYTHONPATH=${CCP4}/share/python:${PYTHONPATH}
+-else
+-    export PYTHONPATH=${PYTHONPATH}:${CCP4}/share/python
+-fi
+-
+ ################### THE REST SHOULDN'T NEED EDITING #####################
+ 
+ ### dbCCP4i database handler setup ###
+diff --git a/include/ccp4.setup-zsh b/include/ccp4.setup-zsh
+index 660b35b..e453db9 100755
+--- a/include/ccp4.setup-zsh
++++ b/include/ccp4.setup-zsh
+@@ -154,16 +154,6 @@ export CCP4_BIN=$CBIN
+ CLASSPATH=$CBIN:$CLASSPATH               # edit this if necessary
+ export CLASSPATH
+ 
+-#Python path for the subprocess fixed module
+-
+-if ($ccp4_first_in_path) then
+-    PYTHONPATH=${CCP4}/share/python:${PYTHONPATH}
+-    export PYTHONPATH
+-else
+-    PYTHONPATH=${PYTHONPATH}:${CCP4}/share/python
+-    export PYTHONPATH
+-fi
+-
+ ### PLOT_COMMAND PRINT_COMMAND for the XCCPJIFFY programs to compile ###
+ export PLOT_COMMAND='lpr'  
+ export PRINT_COMMAND='lpr'    

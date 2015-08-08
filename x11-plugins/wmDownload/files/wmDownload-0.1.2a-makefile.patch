@@ -1,0 +1,28 @@
+--- Makefile.orig	2000-04-14 15:39:52.000000000 +0200
++++ Makefile	2008-01-27 23:07:51.000000000 +0100
+@@ -1,17 +1,17 @@
+-CC     = gcc
+-CFLAGS = -O2 -Wall -fomit-frame-pointer -s
+-INCDIR = -I/usr/X11R6/include/X11
+-DESTDIR= /usr/bin
+-LIBDIR = -L/usr/X11R6/lib
++CC     ?= gcc
++CFLAGS += -Wall
++INCDIR = -I/usr/include/X11
++PREFIX = /usr
++LIBDIR ?= /usr/lib
+ LIBS   = -ldockapp -lX11 -lXext -lXpm
+ OBJS   = wmDownload.o
+ 
+ wmDownload: $(OBJS) 
+-	$(CC) $(CFLAGS) $(OBJS) -o wmDownload $(INCDIR) $(LIBDIR) $(LIBS)
++	$(CC) $(CFLAGS) $(OBJS) -o wmDownload $(INCDIR) -L$(LIBDIR) $(LDFLAGS) $(LIBS)
+ 
+ install: wmDownload
+-	strip wmDownload
+-	install -s wmDownload $(DESTDIR)
++	install -d $(DESTDIR)$(PREFIX)/bin
++	install -m 0755 wmDownload $(DESTDIR)$(PREFIX)/bin
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)/wmDownload

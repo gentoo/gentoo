@@ -1,0 +1,57 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+depend() {
+	use vdr
+}
+
+start() {
+	ebegin "Starting vdradmin"
+
+	: ${VDRADMIN_USER:=vdradmin}
+
+	local dir vdradmin_opts
+
+	# Prepare directories
+	for dir in cache log run; do
+		checkpath -q -d -m 0755 -o ${VDRADMIN_USER}:vdradmin "/var/${dir}/vdradmin"
+	done
+	checkpath -q -d -m 0755 -o ${VDRADMIN_USER}:vdradmin "/etc/vdradmin" \
+		"/etc/vdradmin/certs"
+	checkpath -q -f -m 0644 -o ${VDRADMIN_USER}:vdradmin "/etc/vdradmin/vdradmind.conf" \
+		"/etc/vdradmin/certs/server-cert.pem" \
+		"/etc/vdradmin/certs/server-key.pem"
+
+	if [ "${SSL}" = "yes" ]; then vdradmin_opts="${vdradmin_opts} --ssl"; fi
+	if [ "${IPV6}" = "yes" ]; then vdradmin_opts="${vdradmin_opts} --ipv6"; fi
+	vdradmin_opts="${vdradmin_opts} --log ${LOGLEVEL:=4}"
+
+	if [ "${LOGGING}" = "syslog" ]; then
+		sed -i -e "/LOGGING/s-LOGGING.*-LOGGING = 1-" /etc/vdradmin/vdradmind.conf
+		sed -i -e "/LOGFILE/s-LOGFILE.*-LOGFILE = syslog-" /etc/vdradmin/vdradmind.conf
+	elif [ "${LOGGING}" = "file" ]; then
+		sed -i -e "/LOGGING/s-LOGGING.*-LOGGING = 1-" /etc/vdradmin/vdradmind.conf
+		sed -i -e "/LOGFILE/s-LOGFILE.*-LOGFILE = vdradmind.log-" /etc/vdradmin/vdradmind.conf
+	else
+		sed -i -e "/LOGGING/s-LOGGING.*-LOGGING = 0-" /etc/vdradmin/vdradmind.conf
+	fi
+
+	if [ -n "${RC_UNAME}" ]; then
+		# running on baselayout-2/openrc
+		start-stop-daemon --start --background --user "${VDRADMIN_USER}" \
+		--pidfile /var/run/vdradmin/vdradmind.pid \
+		--exec /usr/bin/perl /usr/bin/vdradmind -- ${vdradmin_opts}
+	else
+		start-stop-daemon --start --background --chuid "${VDRADMIN_USER}" \
+		--exec /usr/bin/vdradmind -- ${vdradmin_opts}
+	fi
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping vdradmin"
+	start-stop-daemon --stop --quiet --pidfile /var/run/vdradmin/vdradmind.pid
+	eend $?
+}

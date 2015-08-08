@@ -1,0 +1,21 @@
+--- a/examples/ratop/Makefile.in
++++ b/examples/ratop/Makefile.in
+@@ -54,7 +54,8 @@
+ DEFS = @DEFS@
+ COMPATLIB = @COMPATLIB@ @LIB_SASL@ @LIBS@ @V_THREADS@ @V_GEOIPDEP@ @V_PCRE@ @V_FTDEP@ @ZLIB@
+ 
+-CURSESLIB = @CURSESLIB@ @V_READLINE@
++CURSESLIB = @CURSESLIB@
++V_READLINE = @V_READLINE@
+ 
+ # Standard CFLAGS
+ CFLAGS = $(CCOPT) $(INCLS) $(DEFS)
+@@ -93,7 +94,7 @@
+ all: $(PROGS)
+ 
+ $(INSTALLBIN)/ratop: $(OBJ) $(LIB)
+-	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LDFLAGS) $(LIB) $(COMPATLIB) $(CURSESLIB)
++	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LDFLAGS) $(LIB) $(COMPATLIB) $(CURSESLIB) $(V_READLINE)
+ 
+ CLEANFILES = $(OBJ) $(PROGS)
+ 

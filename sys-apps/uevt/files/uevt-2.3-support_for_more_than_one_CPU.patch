@@ -1,0 +1,220 @@
+From 69d2f45e234190fbfb37745ea05ab88547a3de96 Mon Sep 17 00:00:00 2001
+From: Elentir <elentir@frugalware.org>
+Date: Wed, 29 Aug 2012 03:41:38 +0000
+Subject: fix for processors with more than 2 cores
+
+---
+diff --git a/src/helpers/uevt-cpu-helper.vala b/src/helpers/uevt-cpu-helper.vala
+index 89df7db..81283ff 100644
+--- a/src/helpers/uevt-cpu-helper.vala
++++ b/src/helpers/uevt-cpu-helper.vala
+@@ -21,9 +21,9 @@ using Posix;
+ 
+ namespace UEvtCpuHelper
+ {
+-    string[] availcpulist;
++    int cpunumber;
+ 
+-    private string[] uevt_cpu_helper_detect_cpu_number()
++    private int uevt_cpu_helper_detect_cpu_number()
+     {
+         string prescpu = "";
+         GLib.File file = File.new_for_path("/sys/devices/system/cpu/present");
+@@ -38,17 +38,17 @@ namespace UEvtCpuHelper
+ 
+         string[] availcpu = prescpu.split("-", 0);
+ 
+-        return availcpu;
++        return int.parse(availcpu[1]);
+     }
+ 
+-    private string uevt_cpu_helper_get_cpu_max_freq(string cpu_num)
++    private string uevt_cpu_helper_get_cpu_max_freq(int cpu_num)
+     {
+         string freq = "";
+ 
+-        if(!(cpu_num in availcpulist))
++        if(cpu_num > cpunumber)
+             return "";
+ 
+-        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_max_freq"
++        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_max_freq"
+                                      .printf(cpu_num));
+ 
+         try {
+@@ -61,14 +61,14 @@ namespace UEvtCpuHelper
+         return freq;
+     }
+ 
+-    private string uevt_cpu_helper_get_cpu_min_freq(string cpu_num)
++    private string uevt_cpu_helper_get_cpu_min_freq(int cpu_num)
+     {
+         string freq = "";
+ 
+-        if(!(cpu_num in availcpulist))
++        if(cpu_num > cpunumber)
+             return "";
+ 
+-        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_min_freq"
++        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_min_freq"
+                                      .printf(cpu_num));
+ 
+         try {
+@@ -81,14 +81,14 @@ namespace UEvtCpuHelper
+         return freq;
+     }
+ 
+-    private string uevt_cpu_helper_get_frequency(string cpu_num)
++    private string uevt_cpu_helper_get_frequency(int cpu_num)
+     {
+         string freq = "";
+ 
+-        if(!(cpu_num in availcpulist))
++        if(cpu_num > cpunumber)
+             return "";
+ 
+-        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_cur_freq"
++        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_cur_freq"
+                                      .printf(cpu_num));
+ 
+         try {
+@@ -101,7 +101,7 @@ namespace UEvtCpuHelper
+         return freq;
+     }
+ 
+-    private void uevt_cpu_helper_set_frequency(string cpu_num, string newfreq)
++    private void uevt_cpu_helper_set_frequency(int cpu_num, string newfreq)
+     {
+         string newfreqstring = newfreq.to_string();
+ 
+@@ -110,7 +110,7 @@ namespace UEvtCpuHelper
+             return;
+         }
+ 
+-        FILE file = FILE.open("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_setspeed"
++        FILE file = FILE.open("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_setspeed"
+                                   .printf(cpu_num), "w");
+         file.puts(newfreq);
+ 
+@@ -119,20 +119,20 @@ namespace UEvtCpuHelper
+ 
+     private void uevt_cpu_helper_set_global_frequency(string newfrequency)
+     {
+-        foreach(string cpu in availcpulist)
++        for(int cpu = 0; cpu <= cpunumber; cpu++)
+             uevt_cpu_helper_set_frequency(cpu, newfrequency);
+ 
+         return;
+     }
+ 
+-    private string[] uevt_cpu_helper_get_available_cpu_freqs(string cpu_num)
++    private string[] uevt_cpu_helper_get_available_cpu_freqs(int cpu_num)
+     {
+         string[] freqs = {};
+ 
+-        if(!(cpu_num in availcpulist))
++        if(cpu_num > cpunumber)
+             return {};
+ 
+-        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_available_frequencies"
++        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_available_frequencies"
+                                      .printf(cpu_num));
+ 
+         try {
+@@ -147,14 +147,14 @@ namespace UEvtCpuHelper
+         return freqs;
+     }
+ 
+-    private string[] uevt_cpu_helper_get_available_governors(string cpu_num)
++    private string[] uevt_cpu_helper_get_available_governors(int cpu_num)
+     {
+         string[] govs = {};
+ 
+-        if(!(cpu_num in availcpulist))
++        if(cpu_num > cpunumber)
+             return {};
+ 
+-        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_available_governors"
++        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_available_governors"
+                                      .printf(cpu_num));
+ 
+         try {
+@@ -169,14 +169,14 @@ namespace UEvtCpuHelper
+         return govs;
+     }
+ 
+-    private string uevt_cpu_helper_get_governor(string cpu_num)
++    private string uevt_cpu_helper_get_governor(int cpu_num)
+     {
+         string gov = "";
+ 
+-        if(!(cpu_num in availcpulist))
++        if(cpu_num > cpunumber)
+             return "";
+ 
+-        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_governor"
++        GLib.File file = File.new_for_path("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_governor"
+                                            .printf(cpu_num));
+ 
+         try {
+@@ -189,14 +189,14 @@ namespace UEvtCpuHelper
+         return gov;
+     }
+ 
+-    private void uevt_cpu_helper_set_governor(string cpu_num, string newgovernor)
++    private void uevt_cpu_helper_set_governor(int cpu_num, string newgovernor)
+     {
+         if(!(newgovernor in uevt_cpu_helper_get_available_governors(cpu_num))) {
+             Posix.stdout.printf("Unrecognized governor %s\n", newgovernor);
+             return;
+         }
+ 
+-        FILE file = FILE.open("/sys/devices/system/cpu/cpu%s/cpufreq/scaling_governor"
++        FILE file = FILE.open("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_governor"
+                               .printf(cpu_num), "w");
+         file.puts(newgovernor);
+ 
+@@ -205,7 +205,7 @@ namespace UEvtCpuHelper
+ 
+     private void uevt_cpu_helper_set_global_governor(string newgovernor)
+     {
+-        foreach(string cpu in availcpulist)
++        for(int cpu = 0; cpu <= cpunumber; cpu++)
+             uevt_cpu_helper_set_governor(cpu, newgovernor);
+ 
+         return;
+@@ -215,7 +215,7 @@ namespace UEvtCpuHelper
+     {
+         string minfreq;
+ 
+-        foreach(string cpu in availcpulist) {
++        for(int cpu = 0; cpu <= cpunumber; cpu++) {
+             minfreq = uevt_cpu_helper_get_cpu_min_freq(cpu);
+             uevt_cpu_helper_set_frequency(cpu, minfreq);
+         }
+@@ -227,7 +227,7 @@ namespace UEvtCpuHelper
+     {
+         string maxfreq;
+ 
+-        foreach(string cpu in availcpulist) {
++        for(int cpu = 0; cpu <= cpunumber; cpu++) {
+             maxfreq = uevt_cpu_helper_get_cpu_max_freq(cpu);
+             uevt_cpu_helper_set_frequency(cpu, maxfreq);
+         }
+@@ -242,11 +242,11 @@ namespace UEvtCpuHelper
+             return 1;
+         }
+ 
+-        availcpulist = uevt_cpu_helper_detect_cpu_number();
++        cpunumber = uevt_cpu_helper_detect_cpu_number();
+ 
+         if(args[1] == "show-infos") {
+-            foreach(string cpu in availcpulist) {
+-                Posix.stdout.printf("CPU %s : current governor %s, current frequency %s\n",
++            for(int cpu = 0; cpu <= cpunumber; cpu++) {
++                Posix.stdout.printf("CPU %d : current governor %s, current frequency %s\n",
+                                     cpu,
+                                     uevt_cpu_helper_get_governor(cpu),
+                                     uevt_cpu_helper_get_frequency(cpu));
+--
+cgit v0.9.0.3

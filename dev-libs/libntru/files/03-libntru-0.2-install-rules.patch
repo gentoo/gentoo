@@ -1,0 +1,255 @@
+From 625e8727bbbeb38975e54f1829bcd7a23f81bb11 Mon Sep 17 00:00:00 2001
+From: Tim Buktu <tbuktu@hotmail.com>
+Date: Tue, 15 Apr 2014 20:45:36 +0200
+Subject: [PATCH] Add Makefile targets
+
+New targets: all, install, uninstall, dist, distclean
+This fixes https://github.com/tbuktu/libntru/issues/6
+---
+ Makefile     | 48 +++++++++++++++++++++++++++++++++++++++++++++
+ Makefile.osx | 47 ++++++++++++++++++++++++++++++++++++++++++++
+ Makefile.win | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/ntru.h   |  1 -
+ 4 files changed, 159 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index ea88bb3..e4a6370 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,14 +5,57 @@ SRCDIR=src
+ TESTDIR=tests
+ LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
+ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
++VERSION=0.2
++INST_PFX=/usr
++INST_HEADERS=ntru.h types.h key.h encparams.h hash.h rand.h err.h
+ 
+ LIB_OBJS_PATHS=$(patsubst %,$(SRCDIR)/%,$(LIB_OBJS))
+ TEST_OBJS_PATHS=$(patsubst %,$(TESTDIR)/%,$(TEST_OBJS))
++DIST_NAME=libntru-$(VERSION)
++
++.PHONY: all
++all: lib
+ 
+ .PHONY: lib
+ lib: $(LIB_OBJS_PATHS)
+ 	$(CC) $(CFLAGS) -shared -Wl,-soname,libntru.so -o libntru.so $(LIB_OBJS_PATHS) $(LDFLAGS)
+ 
++.PHONY: install
++install: lib
++	test -d $(INST_PFX) || mkdir -p $(INST_PFX)
++	test -d $(INST_PFX)/lib || mkdir $(INST_PFX)/lib
++	test -d $(INST_PFX)/include/libntru || mkdir -p $(INST_PFX)/include/libntru
++	test -d $(INST_PFX)/share/doc/libntru || mkdir -p $(INST_PFX)/share/doc/libntru
++	install -m 0755 libntru.so $(INST_PFX)/lib/libntru.so
++	install -m 0644 README.md $(INST_PFX)/share/doc/libntru/README.md
++	for header in $(INST_HEADERS); do \
++	    install -m 0644 $(SRCDIR)/$$header $(INST_PFX)/include/libntru/; \
++	done
++
++.PHONY: uninstall
++uninstall:
++	rm -f $(INST_PFX)/lib/libntru.so
++	rm -f $(INST_PFX)/share/doc/libntru/README.md
++	rmdir $(INST_PFX)/share/doc/libntru/
++	for header in $(INST_HEADERS); do \
++	    rm $(INST_PFX)/include/libntru/$$header; \
++	done
++	rmdir $(INST_PFX)/include/libntru/
++
++.PHONY: dist
++dist:
++	rm -rf $(DIST_NAME)
++	mkdir $(DIST_NAME)
++	mkdir $(DIST_NAME)/$(SRCDIR)
++	mkdir $(DIST_NAME)/$(TESTDIR)
++	cp Makefile Makefile.win Makefile.osx README.md LICENSE PATENTS $(DIST_NAME)
++	cp $(SRCDIR)/*.c $(DIST_NAME)/$(SRCDIR)
++	cp $(SRCDIR)/*.h $(DIST_NAME)/$(SRCDIR)
++	cp $(TESTDIR)/*.c $(DIST_NAME)/$(TESTDIR)
++	cp $(TESTDIR)/*.h $(DIST_NAME)/$(TESTDIR)
++	tar cf $(DIST_NAME).tar.xz $(DIST_NAME) --lzma
++	rm -rf $(DIST_NAME)
++
+ test: lib $(TEST_OBJS_PATHS)
+ 	$(CC) $(CFLAGS) -o test $(TEST_OBJS_PATHS) -L. -lntru -lm
+ 	LD_LIBRARY_PATH=. ./test
+@@ -30,3 +73,8 @@ tests/%.o: tests/%.c
+ clean:
+ 	@# also clean files generated on other OSes
+ 	rm -f $(SRCDIR)/*.o $(TESTDIR)/*.o libntru.so libntru.dylib libntru.dll test test.exe bench bench.exe
++
++.PHONY: distclean
++distclean: clean
++	rm -rf $(DIST_NAME)
++	rm -f $(DIST_NAME).tar.xz $(DIST_NAME).zip
+diff --git a/Makefile.osx b/Makefile.osx
+index 68877fb..0baef8c 100644
+--- a/Makefile.osx
++++ b/Makefile.osx
+@@ -4,14 +4,56 @@ SRCDIR=src
+ TESTDIR=tests
+ LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
+ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
++VERSION=0.2
++INST_HEADERS=ntru.h types.h key.h encparams.h hash.h rand.h err.h
+ 
+ LIB_OBJS_PATHS=$(patsubst %,$(SRCDIR)/%,$(LIB_OBJS))
+ TEST_OBJS_PATHS=$(patsubst %,$(TESTDIR)/%,$(TEST_OBJS))
++DIST_NAME=libntru-$(VERSION)
++
++.PHONY: all
++all: lib
+ 
+ .PHONY: lib
+ lib: $(LIB_OBJS_PATHS)
+ 	$(CC) $(CFLAGS) -dylib -dynamiclib -o libntru.dylib $(LIB_OBJS_PATHS) $(LDFLAGS)
+ 
++.PHONY: install
++install: lib
++	test -d $(INST_PFX) || mkdir -p $(INST_PFX)
++	test -d $(INST_PFX)/lib || mkdir $(INST_PFX)/lib
++	test -d $(INST_PFX)/include/libntru || mkdir -p $(INST_PFX)/include/libntru
++	test -d $(INST_PFX)/share/doc/libntru || mkdir -p $(INST_PFX)/share/doc/libntru
++	install -m 0755 libntru.so $(INST_PFX)/lib/libntru.so
++	install -m 0644 README.md $(INST_PFX)/share/doc/libntru/README.md
++	for header in $(INST_HEADERS); do \
++	    install -m 0644 $(SRCDIR)/$$header $(INST_PFX)/include/libntru/; \
++	done
++
++.PHONY: uninstall
++uninstall:
++	rm -f $(INST_PFX)/lib/libntru.so
++	rm -f $(INST_PFX)/share/doc/libntru/README.md
++	rmdir $(INST_PFX)/share/doc/libntru/
++	for header in $(INST_HEADERS); do \
++	    rm $(INST_PFX)/include/libntru/$$header; \
++	done
++	rmdir $(INST_PFX)/include/libntru/
++
++.PHONY: dist
++dist:
++	rm -rf $(DIST_NAME)
++	mkdir $(DIST_NAME)
++	mkdir $(DIST_NAME)/$(SRCDIR)
++	mkdir $(DIST_NAME)/$(TESTDIR)
++	cp Makefile Makefile.win Makefile.osx README.md LICENSE PATENTS $(DIST_NAME)
++	cp $(SRCDIR)/*.c $(DIST_NAME)/$(SRCDIR)
++	cp $(SRCDIR)/*.h $(DIST_NAME)/$(SRCDIR)
++	cp $(TESTDIR)/*.c $(DIST_NAME)/$(TESTDIR)
++	cp $(TESTDIR)/*.h $(DIST_NAME)/$(TESTDIR)
++	tar cf $(DIST_NAME).tar.xz $(DIST_NAME) --lzma
++	rm -rf $(DIST_NAME)
++
+ test: lib $(TEST_OBJS_PATHS)
+ 	$(CC) $(CFLAGS) -o test $(TEST_OBJS_PATHS) -L. -lntru -lm
+ 	DYLD_LIBRARY_PATH=. ./test
+@@ -29,3 +71,8 @@ tests/%.o: tests/%.c
+ clean:
+ 	@# also clean files generated on other OSes
+ 	rm -f $(SRCDIR)/*.o $(TESTDIR)/*.o libntru.so libntru.dylib libntru.dll test test.exe bench bench.exe
++
++.PHONY: distclean
++distclean: clean
++	rm -rf $(DIST_NAME)
++	rm -f $(DIST_NAME).tar.xz $(DIST_NAME).zip
+diff --git a/Makefile.win b/Makefile.win
+index 0eb18a5..315e08b 100644
+--- a/Makefile.win
++++ b/Makefile.win
+@@ -4,13 +4,64 @@ SRCDIR=src
+ TESTDIR=tests
+ LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
+ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
++VERSION=0.2
++INST_PFX=%PROGRAMFILES%
++INST_HEADERS=ntru.h types.h key.h encparams.h hash.h rand.h err.h
+ 
+ LIB_OBJS_PATHS=$(patsubst %,$(SRCDIR)/%,$(LIB_OBJS))
+ TEST_OBJS_PATHS=$(patsubst %,$(TESTDIR)/%,$(TEST_OBJS))
++DIST_NAME=libntru-$(VERSION)
+ 
++.PHONY: all
++all: lib
++
++.PHONY: lib
+ lib: $(LIB_OBJS_PATHS)
+ 	$(CC) $(CFLAGS) -shared -o libntru.dll $(LIB_OBJS_PATHS) -lws2_32 -ladvapi32
+ 
++.PHONY: install
++install: lib
++	if not exist "%PROGRAMFILES%\libntru" mkdir "%PROGRAMFILES%\libntru"
++	if not exist "%PROGRAMFILES%\libntru\include" mkdir "%PROGRAMFILES%\libntru\include"
++	copy libntru.dll "%PROGRAMFILES%\libntru"
++	copy README.md "%PROGRAMFILES%\libntru"
++	for %%h in ($(INST_HEADERS)) do \
++	    copy $(SRCDIR)\%%h "%PROGRAMFILES%\libntru\include"
++
++uninstall:
++	if exist "%PROGRAMFILES%\libntru\libntru.dll" del "%PROGRAMFILES%\libntru\libntru.dll"
++	if exist "%PROGRAMFILES%\libntru\README.md" del "%PROGRAMFILES%\libntru\README.md"
++	for %%h in ($(INST_HEADERS)) do \
++	    if exist "%PROGRAMFILES%\libntru\include\%%h" del "%PROGRAMFILES%\libntru\include\%%h"
++	if exist "%PROGRAMFILES%\libntru\include" rmdir "%PROGRAMFILES%\libntru\include"
++	if exist "%PROGRAMFILES%\libntru" rmdir "%PROGRAMFILES%\libntru"
++
++.PHONY: dist
++dist:
++	@if exist $(DIST_NAME)\$(SRCDIR)\*.c del $(DIST_NAME)\$(SRCDIR)\*.c
++	@if exist $(DIST_NAME)\$(SRCDIR)\*.h del $(DIST_NAME)\$(SRCDIR)\*.h
++	@if exist $(DIST_NAME)\$(SRCDIR) rmdir $(DIST_NAME)\$(SRCDIR)
++	@if exist $(DIST_NAME)\$(TESTDIR)\*.c del $(DIST_NAME)\$(TESTDIR)\*.c
++	@if exist $(DIST_NAME)\$(TESTDIR)\*.h del $(DIST_NAME)\$(TESTDIR)\*.h
++	@if exist $(DIST_NAME)\$(TESTDIR) rmdir $(DIST_NAME)\$(TESTDIR)
++	@if exist $(DIST_NAME)\*.* del /q $(DIST_NAME)\*.*
++	@if exist $(DIST_NAME) rmdir $(DIST_NAME)
++	mkdir $(DIST_NAME)
++	mkdir $(DIST_NAME)\$(SRCDIR)
++	mkdir $(DIST_NAME)\$(TESTDIR)
++	copy Makefile $(DIST_NAME)
++	copy Makefile.win $(DIST_NAME)
++	copy Makefile.osx $(DIST_NAME)
++	copy README.md $(DIST_NAME)
++	copy LICENSE $(DIST_NAME)
++	copy PATENTS $(DIST_NAME)
++	copy $(SRCDIR)\*.c $(DIST_NAME)\$(SRCDIR)
++	copy $(SRCDIR)\*.h $(DIST_NAME)\$(SRCDIR)
++	copy $(TESTDIR)\*.c $(DIST_NAME)\$(TESTDIR)
++	copy $(TESTDIR)\*.h $(DIST_NAME)\$(TESTDIR)
++	@rem zip is provided by MinGW
++	zip -rm $(DIST_NAME).zip $(DIST_NAME)
++
+ test: lib $(TEST_OBJS_PATHS)
+ 	$(CC) $(CFLAGS) -o test.exe $(TEST_OBJS_PATHS) -L. -lntru -lm
+ 	test.exe
+@@ -36,3 +87,16 @@ clean:
+ 	@if exist libntru.dylib del libntru.dylib
+ 	@if exist test del test
+ 	@if exist bench del bench
++
++.PHONY: distclean
++distclean: clean
++	@if exist $(DIST_NAME)\$(SRCDIR)\*.c del $(DIST_NAME)\$(SRCDIR)\*.c
++	@if exist $(DIST_NAME)\$(SRCDIR)\*.h del $(DIST_NAME)\$(SRCDIR)\*.h
++	@if exist $(DIST_NAME)\$(SRCDIR) rmdir $(DIST_NAME)\$(SRCDIR)
++	@if exist $(DIST_NAME)\$(TESTDIR)\*.c del $(DIST_NAME)\$(TESTDIR)\*.c
++	@if exist $(DIST_NAME)\$(TESTDIR)\*.h del $(DIST_NAME)\$(TESTDIR)\*.h
++	@if exist $(DIST_NAME)\$(TESTDIR) rmdir $(DIST_NAME)\$(TESTDIR)
++	@if exist $(DIST_NAME)\*.* del /q $(DIST_NAME)\*.*
++	@if exist $(DIST_NAME) rmdir $(DIST_NAME)
++	@if exist $(DIST_NAME).zip del $(DIST_NAME).zip
++	@if exist $(DIST_NAME).tar.xz del $(DIST_NAME).tar.xz
+diff --git a/src/ntru.h b/src/ntru.h
+index a8ff338..41f15e3 100644
+--- a/src/ntru.h
++++ b/src/ntru.h
+@@ -3,7 +3,6 @@
+ 
+ #include "types.h"
+ #include "key.h"
+-#include "poly.h"
+ #include "encparams.h"
+ #include "rand.h"
+ #include "err.h"
+-- 
+1.9.1

@@ -1,0 +1,15 @@
+Index: texk/xdvik/mksedscript
+===================================================================
+--- texk/xdvik/mksedscript	(revision 25824)
++++ texk/xdvik/mksedscript	(revision 25826)
+@@ -43,7 +43,9 @@
+ 
+ # Get arguments from c-auto.h
+ 
+-eval "`awk '/^#define/ { print "mk_"$2"="$3 }' c-auto.h`"
++eval "`awk '/^#define/ { printf "mk_%s=%s", $2, $3
++  for (i = 4; i <= NF; i++) printf " %s", $i
++  print "" }' c-auto.h`"
+ 
+ # eval "`cat c-auto.h \
+ #   | grep '^[ 	]*#[ 	]*define[ 	]' \

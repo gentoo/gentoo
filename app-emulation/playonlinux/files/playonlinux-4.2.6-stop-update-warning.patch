@@ -1,0 +1,17 @@
+# This patch enables the DEBIAN_PACKGE for playonlinux.
+# The changes are described in the source comments below.
+# The flag is unfortnuately named debian, however the
+# benefits apply to any package management system.
+# Patch written by Adam Mills <adam@armills.info>
+
+--- python/lib/Variables.py	2013-08-10 22:19:46.053365072 -0400
++++ python/lib/Variables-patched.py	2013-08-10 22:17:58.275881842 -0400
+@@ -26,7 +26,7 @@
+ # Debian packagers should switch this to TRUE
+ # It will disable update alerts, bug reports, statistics
+ # It will set the good locale directory, and it will use the good msttcorefonts
+-os.environ["DEBIAN_PACKAGE"] = "FALSE"
++os.environ["DEBIAN_PACKAGE"] = "TRUE"
+ 
+ # Variables PlayOnMac
+ if (os.environ["POL_OS"] == "Mac"):

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Script that starts the ns-slapd server.
+# Exit status can be:
+#       0: Server started successfully
+#       1: Server could not be started
+#       2: Server already running
+
+rc-config stop 389-ds
+rc-config start 389-ds
+rc="${?}"
+# give the daemon a chance to start
+sleep 8
+exit "${rc:-1}"

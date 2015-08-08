@@ -1,0 +1,85 @@
+Drop dependency on esound support in libgnome and replace it by libcanberra.
+
+Gentoo bug: #348605
+
+--- a/configure.ac	2008-11-09 20:52:01.000000000 +0000
++++ b/configure.ac	2011-03-06 13:08:42.000000000 +0000
+@@ -18,7 +18,8 @@
+                         gconfmm-2.6 >= 2.6.0 \
+                         gtkmm-2.4 >= 2.6.0 \
+                         libgnomecanvasmm-2.6 >= 2.6.0 \
+-			libglademm-2.4 >= 2.4.0)
++			libglademm-2.4 >= 2.4.0 \
++			libcanberra)
+ AC_SUBST(DEPS_CFLAGS)
+ AC_SUBST(DEPS_LIBS)
+ 
+--- a/src/sound.hpp	2007-01-06 16:16:30.000000000 +0000
++++ b/src/sound.hpp	2011-03-06 13:12:47.000000000 +0000
+@@ -22,6 +22,7 @@
+ #define SOUND_HPP
+ 
+ #include <string>
++#include <canberra.h>
+ 
+ #include "helpers.hpp"
+ 
+@@ -39,8 +40,7 @@
+ private:
+   Sound();
+   
+-  typedef std::map<std::string, int> cache_map;
+-  cache_map cache;
++  ca_context *ctx;
+ };
+ 
+ #endif
+--- a/src/sound.cpp	2007-01-06 16:16:30.000000000 +0000
++++ b/src/sound.cpp	2011-03-07 21:55:47.000000000 +0000
+@@ -18,9 +18,6 @@
+  * USA.
+  */
+ 
+-#include <libgnome/gnome-sound.h>
+-#include <esd.h>
+-
+ #include "sound.hpp"
+ 
+ 
+@@ -30,26 +27,23 @@
+   return s;
+ }
+ 
+-Sound::Sound()
++Sound::Sound() :
++  ctx(0)
+ {
++  ca_context_create(&ctx);
+ }
+ 
+ Sound::~Sound()
+ {
++  if (ctx)
++    ca_context_destroy(ctx);
+ }
+ 
+ void Sound::play(const std::string &name)
+ {
+-  int id;
+-  
+-  cache_map::iterator i = cache.find(name);
+-  if (i != cache.end())
+-    id = i->second;
+-  else {
+-    id = gnome_sound_sample_load(name.c_str(),
+-			    (MONSTER_MASHER_SOUND_DIR + name).c_str());
+-    cache.insert(make_pair(name, id));
+-  }
+-
+-  esd_sample_play(gnome_sound_connection_get(), id);
++  if (ctx)
++    ca_context_play(ctx, 0,
++      CA_PROP_MEDIA_FILENAME,         (MONSTER_MASHER_SOUND_DIR + name).c_str(),
++      CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
++      NULL);
+ }

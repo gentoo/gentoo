@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Oroborus
+Exec=oroborus
+TryExec=oroborus
+Icon=
+Type=Application
+
+[X-Window Manager]
+SessionManaged=false

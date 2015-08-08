@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">
+  BLZ is a chunked container for numerical data. Chunking allows for
+  efficient enlarging/shrinking of data container. In addition, it can
+  also be compressed for reducing memory/disk needs. The compression
+  process is carried out internally by Blosc, a high-performance
+  compressor that is optimized for binary data.
+</longdescription>
+  <upstream>
+    <remote-id type="github">ContinuumIO/blz</remote-id>
+  </upstream>
+</pkgmetadata>

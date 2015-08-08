@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>fauli@gentoo.org</email>
+  <name>Christian Faulhammer</name>
+</maintainer>
+<longdescription>
+	ICAClient is a Linux client to a Citrix Metaframe Server.
+</longdescription>
+<longdescription lang="ja">
+	ICAClient は Citrix Metaframe Server への Linux 用クライアントです。
+</longdescription>
+<longdescription lang="de">
+	ICAClient ist ein Programm zum Zugriff auf Citrix Metaframe Server.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,925 @@
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/parser/expat/elements.txx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/expat/elements.txx
+--- xsd-3.3.0/libxsd/xsd/cxx/parser/expat/elements.txx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/expat/elements.txx	2012-06-03 11:02:09.000000000 +0200
+@@ -594,7 +594,7 @@
+             {
+               try
+               {
+-                start_element (ns, name, 0);
++                this->start_element (ns, name, 0);
+               }
+               catch (const schema_exception<C>& e)
+               {
+@@ -621,7 +621,7 @@
+               {
+                 try
+                 {
+-                  start_element (ns, name, 0);
++                  this->start_element (ns, name, 0);
+                 }
+                 catch (const schema_exception<C>& e)
+                 {
+@@ -693,7 +693,7 @@
+                   }
+ 
+                   ro_string<C> ro_id (id);
+-                  start_element (ns, name, &ro_id);
++                  this->start_element (ns, name, &ro_id);
+                 }
+                 catch (const schema_exception<C>& e)
+                 {
+@@ -713,7 +713,7 @@
+ 
+             try
+             {
+-              attribute (ns, name, value);
++              this->attribute (ns, name, value);
+             }
+             catch (const schema_exception<C>& e)
+             {
+@@ -748,7 +748,7 @@
+ 
+           try
+           {
+-            end_element (ns, name);
++            this->end_element (ns, name);
+           }
+           catch (const schema_exception<C>& e)
+           {
+@@ -777,7 +777,7 @@
+ 
+             try
+             {
+-              characters (str);
++              this->characters (str);
+             }
+             catch (const schema_exception<C>& e)
+             {
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/parser/non-validating/parser.txx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/non-validating/parser.txx
+--- xsd-3.3.0/libxsd/xsd/cxx/parser/non-validating/parser.txx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/non-validating/parser.txx	2012-06-03 11:02:09.000000000 +0200
+@@ -164,15 +164,15 @@
+           if (ns == xml::bits::xmlns_namespace<C> ())
+             return;
+ 
+-          if (!_attribute_impl (ns, name, value))
+-            _any_attribute (ns, name, value);
++          if (!this->_attribute_impl (ns, name, value))
++            this->_any_attribute (ns, name, value);
+         }
+ 
+         template <typename C>
+         void simple_content<C>::
+         _characters (const ro_string<C>& str)
+         {
+-          _characters_impl (str);
++          this->_characters_impl (str);
+         }
+ 
+ 
+@@ -190,15 +190,15 @@
+           if (s.depth_++ > 0)
+           {
+             if (s.any_)
+-              _start_any_element (ns, name, type);
++              this->_start_any_element (ns, name, type);
+             else if (s.parser_)
+               s.parser_->_start_element (ns, name, type);
+           }
+           else
+           {
+-            if (!_start_element_impl (ns, name, type))
++            if (!this->_start_element_impl (ns, name, type))
+             {
+-              _start_any_element (ns, name, type);
++              this->_start_any_element (ns, name, type);
+               s.any_ = true;
+             }
+             else if (s.parser_ != 0)
+@@ -235,7 +235,7 @@
+ 
+               this->_post_impl ();
+ 
+-              if (!_end_element_impl (ns, name))
++              if (!this->_end_element_impl (ns, name))
+                 assert (false);
+             }
+           }
+@@ -246,7 +246,7 @@
+             if (--s.depth_ > 0)
+             {
+               if (s.any_)
+-                _end_any_element (ns, name);
++                this->_end_any_element (ns, name);
+               else if (s.parser_)
+                 s.parser_->_end_element (ns, name);
+             }
+@@ -255,10 +255,10 @@
+               if (s.parser_ != 0 && !s.any_)
+                 s.parser_->_post_impl ();
+ 
+-              if (!_end_element_impl (ns, name))
++              if (!this->_end_element_impl (ns, name))
+               {
+                 s.any_ = false;
+-                _end_any_element (ns, name);
++                this->_end_any_element (ns, name);
+               }
+             }
+           }
+@@ -292,14 +292,14 @@
+           if (s.depth_ > 0)
+           {
+             if (s.any_)
+-              _any_attribute (ns, name, value);
++              this->_any_attribute (ns, name, value);
+             else if (s.parser_)
+               s.parser_->_attribute (ns, name, value);
+           }
+           else
+           {
+-            if (!_attribute_impl (ns, name, value))
+-              _any_attribute (ns, name, value);
++            if (!this->_attribute_impl (ns, name, value))
++              this->_any_attribute (ns, name, value);
+           }
+         }
+ 
+@@ -312,14 +312,14 @@
+           if (s.depth_ > 0)
+           {
+             if (s.any_)
+-              _any_characters (str);
++              this->_any_characters (str);
+             else if (s.parser_)
+               s.parser_->_characters (str);
+           }
+           else
+           {
+-            if (!_characters_impl (str))
+-              _any_characters (str);
++            if (!this->_characters_impl (str))
++              this->_any_characters (str);
+           }
+         }
+ 
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/parser/non-validating/xml-schema-pskel.txx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/non-validating/xml-schema-pskel.txx
+--- xsd-3.3.0/libxsd/xsd/cxx/parser/non-validating/xml-schema-pskel.txx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/non-validating/xml-schema-pskel.txx	2012-06-03 11:02:09.000000000 +0200
+@@ -20,7 +20,7 @@
+                              const ro_string<C>& name,
+                              const ro_string<C>* type)
+         {
+-          _start_any_element (ns, name, type);
++          this->_start_any_element (ns, name, type);
+           this->complex_content<C>::context_.top ().any_ = true;
+           return true;
+         }
+@@ -30,7 +30,7 @@
+         _end_element_impl (const ro_string<C>& ns, const ro_string<C>& name)
+         {
+           this->complex_content<C>::context_.top ().any_ = false;
+-          _end_any_element (ns, name);
++          this->_end_any_element (ns, name);
+           return true;
+         }
+ 
+@@ -41,7 +41,7 @@
+                          const ro_string<C>& name,
+                          const ro_string<C>& value)
+         {
+-          _any_attribute (ns, name, value);
++          this->_any_attribute (ns, name, value);
+           return true;
+         }
+ 
+@@ -49,7 +49,7 @@
+         bool any_type_pskel<C>::
+         _characters_impl (const ro_string<C>& s)
+         {
+-          _any_characters (s);
++          this->_any_characters (s);
+           return true;
+         }
+ 
+@@ -60,7 +60,7 @@
+         bool any_simple_type_pskel<C>::
+         _characters_impl (const ro_string<C>& s)
+         {
+-          _any_characters (s);
++          this->_any_characters (s);
+           return true;
+         }
+       }
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/parser/validating/parser.txx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/validating/parser.txx
+--- xsd-3.3.0/libxsd/xsd/cxx/parser/validating/parser.txx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/validating/parser.txx	2012-06-03 11:02:09.000000000 +0200
+@@ -93,8 +93,8 @@
+                         const ro_string<C>& name,
+                         const ro_string<C>* type)
+         {
+-          if (!_start_element_impl (ns, name, type))
+-            _unexpected_element (ns, name);
++          if (!this->_start_element_impl (ns, name, type))
++            this->_unexpected_element (ns, name);
+         }
+ 
+         template <typename C>
+@@ -102,8 +102,8 @@
+         _end_element (const ro_string<C>& ns,
+                       const ro_string<C>& name)
+         {
+-          if (!_end_element_impl (ns, name))
+-            _unexpected_element (ns, name);
++          if (!this->_end_element_impl (ns, name))
++            this->_unexpected_element (ns, name);
+         }
+ 
+         template <typename C>
+@@ -129,16 +129,16 @@
+           if (ns == xml::bits::xmlns_namespace<C> ())
+             return;
+ 
+-          if (!_attribute_impl (ns, name, value))
+-            _unexpected_attribute (ns, name, value);
++          if (!this->_attribute_impl (ns, name, value))
++            this->_unexpected_attribute (ns, name, value);
+         }
+ 
+         template <typename C>
+         void empty_content<C>::
+         _characters (const ro_string<C>& s)
+         {
+-          if (!_characters_impl (s))
+-            _unexpected_characters (s);
++          if (!this->_characters_impl (s))
++            this->_unexpected_characters (s);
+         }
+ 
+         //
+@@ -218,15 +218,15 @@
+           if (ns == xml::bits::xmlns_namespace<C> ())
+             return;
+ 
+-          if (!_attribute_impl (ns, name, value))
+-            _unexpected_attribute (ns, name, value);
++          if (!this->_attribute_impl (ns, name, value))
++            this->_unexpected_attribute (ns, name, value);
+         }
+ 
+         template <typename C>
+         void simple_content<C>::
+         _characters (const ro_string<C>& str)
+         {
+-          if (!_characters_impl (str))
++          if (!this->_characters_impl (str))
+           {
+             // Mixed content is implemented in the generated code
+             // by overriding _characters_impl and forwarding to
+@@ -245,7 +245,7 @@
+                   c != C (0x0D) && // carriage return
+                   c != C (0x09) && // tab
+                   c != C (0x0A))
+-                _unexpected_characters (str);
++                this->_unexpected_characters (str);
+             }
+           }
+         }
+@@ -322,14 +322,14 @@
+           if (s.depth_++ > 0)
+           {
+             if (s.any_)
+-              _start_any_element (ns, name, type);
++              this->_start_any_element (ns, name, type);
+             else if (s.parser_)
+               s.parser_->_start_element (ns, name, type);
+           }
+           else
+           {
+-            if (!_start_element_impl (ns, name, type))
+-              _unexpected_element (ns, name);
++            if (!this->_start_element_impl (ns, name, type))
++              this->_unexpected_element (ns, name);
+             else if (s.parser_ != 0)
+               s.parser_->_pre_impl ();
+           }
+@@ -364,7 +364,7 @@
+ 
+               this->_post_impl ();
+ 
+-              if (!_end_element_impl (ns, name))
++              if (!this->_end_element_impl (ns, name))
+                 assert (false);
+             }
+           }
+@@ -375,7 +375,7 @@
+             if (--s.depth_ > 0)
+             {
+               if (s.any_)
+-                _end_any_element (ns, name);
++                this->_end_any_element (ns, name);
+               else if (s.parser_)
+                 s.parser_->_end_element (ns, name);
+             }
+@@ -384,8 +384,8 @@
+               if (s.parser_ != 0 && !s.any_)
+                 s.parser_->_post_impl ();
+ 
+-              if (!_end_element_impl (ns, name))
+-                _unexpected_element (ns, name);
++              if (!this->_end_element_impl (ns, name))
++                this->_unexpected_element (ns, name);
+             }
+           }
+         }
+@@ -418,14 +418,14 @@
+           if (s.depth_ > 0)
+           {
+             if (s.any_)
+-              _any_attribute (ns, name, value);
++              this->_any_attribute (ns, name, value);
+             else if (s.parser_)
+               s.parser_->_attribute (ns, name, value);
+           }
+           else
+           {
+-            if (!_attribute_impl (ns, name, value))
+-              _unexpected_attribute (ns, name, value);
++            if (!this->_attribute_impl (ns, name, value))
++              this->_unexpected_attribute (ns, name, value);
+           }
+         }
+ 
+@@ -438,13 +438,13 @@
+           if (s.depth_ > 0)
+           {
+             if (s.any_)
+-              _any_characters (str);
++              this->_any_characters (str);
+             else if (s.parser_)
+               s.parser_->_characters (str);
+           }
+           else
+           {
+-            if (!_characters_impl (str))
++            if (!this->_characters_impl (str))
+             {
+               // Mixed content is implemented in the generated code
+               // by overriding _characters_impl and forwarding to
+@@ -463,7 +463,7 @@
+                     c != C (0x0D) && // carriage return
+                     c != C (0x09) && // tab
+                     c != C (0x0A))
+-                  _unexpected_characters (str);
++                  this->_unexpected_characters (str);
+               }
+             }
+           }
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/parser/validating/xml-schema-pskel.txx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/validating/xml-schema-pskel.txx
+--- xsd-3.3.0/libxsd/xsd/cxx/parser/validating/xml-schema-pskel.txx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/parser/validating/xml-schema-pskel.txx	2012-06-03 11:02:09.000000000 +0200
+@@ -20,7 +20,7 @@
+                              const ro_string<C>& name,
+                              const ro_string<C>* type)
+         {
+-          _start_any_element (ns, name, type);
++          this->_start_any_element (ns, name, type);
+           this->complex_content<C>::context_.top ().any_ = true;
+           return true;
+         }
+@@ -30,7 +30,7 @@
+         _end_element_impl (const ro_string<C>& ns, const ro_string<C>& name)
+         {
+           this->complex_content<C>::context_.top ().any_ = false;
+-          _end_any_element (ns, name);
++          this->_end_any_element (ns, name);
+           return true;
+         }
+ 
+@@ -41,7 +41,7 @@
+                                    const ro_string<C>& name,
+                                    const ro_string<C>& value)
+         {
+-          _any_attribute (ns, name, value);
++          this->_any_attribute (ns, name, value);
+           return true;
+         }
+ 
+@@ -49,7 +49,7 @@
+         bool any_type_pskel<C>::
+         _characters_impl (const ro_string<C>& s)
+         {
+-          _any_characters (s);
++          this->_any_characters (s);
+           return true;
+         }
+ 
+@@ -60,7 +60,7 @@
+         bool any_simple_type_pskel<C>::
+         _characters_impl (const ro_string<C>& s)
+         {
+-          _any_characters (s);
++          this->_any_characters (s);
+           return true;
+         }
+       }
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/tree/parsing.txx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/tree/parsing.txx
+--- xsd-3.3.0/libxsd/xsd/cxx/tree/parsing.txx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/tree/parsing.txx	2012-06-03 11:02:09.000000000 +0200
+@@ -299,7 +299,7 @@
+ 
+           if (j != basic_string<C>::npos)
+           {
+-            push_back (
++            this->push_back (
+               traits<T, C, ST>::create (
+                 basic_string<C> (data + i, j - i), parent, 0, 0));
+ 
+@@ -309,7 +309,7 @@
+           {
+             // Last element.
+             //
+-            push_back (
++            this->push_back (
+               traits<T, C, ST>::create (
+                 basic_string<C> (data + i, size - i), parent, 0, 0));
+ 
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/tree/stream-extraction.hxx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/tree/stream-extraction.hxx
+--- xsd-3.3.0/libxsd/xsd/cxx/tree/stream-extraction.hxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/tree/stream-extraction.hxx	2012-06-03 11:03:11.000000000 +0200
+@@ -68,7 +68,7 @@
+           while (size--)
+           {
+             std::auto_ptr<T> p (new T (s, f, c));
+-            push_back (p);
++            this->push_back (p);
+           }
+         }
+       }
+@@ -91,7 +91,7 @@
+           {
+             T x;
+             s >> x;
+-            push_back (x);
++            this->push_back (x);
+           }
+         }
+       }
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/libxsd/xsd/cxx/zc-istream.txx xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/zc-istream.txx
+--- xsd-3.3.0/libxsd/xsd/cxx/zc-istream.txx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/libxsd/xsd/cxx/zc-istream.txx	2012-06-03 11:02:09.000000000 +0200
+@@ -32,7 +32,7 @@
+       C* b (const_cast<C*> (str_.data ()));
+       C* e (b + str_.size ());
+ 
+-      setg (b, b, e);
++      this->setg (b, b, e);
+     }
+ 
+     template <typename C>
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/xsd/cxx/elements.cxx xsd-3.3.0-2+dep/xsd/xsd/cxx/elements.cxx
+--- xsd-3.3.0/xsd/cxx/elements.cxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/xsd/cxx/elements.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -326,7 +326,11 @@
+         }
+         catch (SemanticGraph::InvalidPath const&)
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           pair = path.native_file_string ();
++#else
++          pair = path.string ();
++#endif
+         }
+       }
+ 
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/xsd/cxx/parser/elements.cxx xsd-3.3.0-2+dep/xsd/xsd/cxx/parser/elements.cxx
+--- xsd-3.3.0/xsd/cxx/parser/elements.cxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/xsd/cxx/parser/elements.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -244,7 +244,11 @@
+       }
+       catch (SemanticGraph::InvalidPath const&)
+       {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         path_str = path.native_file_string ();
++#else
++        path_str = path.string ();
++#endif
+       }
+ 
+       String inc_path;
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/xsd/cxx/parser/generator.cxx xsd-3.3.0-2+dep/xsd/xsd/cxx/parser/generator.cxx
+--- xsd-3.3.0/xsd/cxx/parser/generator.cxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/xsd/cxx/parser/generator.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -552,7 +552,11 @@
+     {
+       try
+       {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         Path fs_path (path, boost::filesystem::native);
++#else
++        Path fs_path (path.c_str());
++#endif
+         ifs.open (fs_path, std::ios_base::in | std::ios_base::binary);
+ 
+         if (!ifs.is_open ())
+@@ -638,7 +642,11 @@
+       {
+         if (NarrowString name = ops.value<CLI::extern_xml_schema> ())
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           if (file_path.native_file_string () != name)
++#else
++          if (file_path.string () != name)
++#endif
+             generate_xml_schema = false;
+         }
+       }
+@@ -815,7 +823,11 @@
+ 
+       // Generate code.
+       //
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       NarrowString name (file_path.leaf ());
++#else
++      NarrowString name (file_path.filename().string());
++#endif
+       NarrowString skel_suffix (ops.value <CLI::skel_file_suffix> ());
+       NarrowString impl_suffix (ops.value <CLI::impl_file_suffix> ());
+ 
+@@ -921,9 +933,15 @@
+         cxx_driver_name = cxx_driver_expr.merge (name);
+       }
+ 
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       Path hxx_path (hxx_name, boost::filesystem::native);
+       Path ixx_path (ixx_name, boost::filesystem::native);
+       Path cxx_path (cxx_name, boost::filesystem::native);
++#else
++      Path hxx_path (hxx_name.c_str());
++      Path ixx_path (ixx_name.c_str());
++      Path cxx_path (cxx_name.c_str());
++#endif
+ 
+       Path hxx_impl_path;
+       Path cxx_impl_path;
+@@ -931,9 +949,15 @@
+ 
+       if (impl || driver)
+       {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         hxx_impl_path = Path (hxx_impl_name, boost::filesystem::native);
+         cxx_impl_path = Path (cxx_impl_name, boost::filesystem::native);
+         cxx_driver_path = Path (cxx_driver_name, boost::filesystem::native);
++#else
++        hxx_impl_path = Path (hxx_impl_name.c_str());
++        cxx_impl_path = Path (cxx_impl_name.c_str());
++        cxx_driver_path = Path (cxx_driver_name.c_str());
++#endif
+       }
+ 
+       Path out_dir;
+@@ -942,7 +966,11 @@
+       {
+         try
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           out_dir = Path (dir, boost::filesystem::native);
++#else
++          out_dir = Path (dir.c_str());
++#endif
+         }
+         catch (InvalidPath const&)
+         {
+@@ -1010,7 +1038,11 @@
+         }
+ 
+         unlinks.add (hxx_impl_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         file_list.push_back (hxx_impl_path.native_file_string ());
++#else
++        file_list.push_back (hxx_impl_path.string ());
++#endif
+ 
+         if (!ops.value<CLI::force_overwrite> ())
+         {
+@@ -1036,7 +1068,11 @@
+         }
+ 
+         unlinks.add (cxx_impl_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         file_list.push_back (cxx_impl_path.native_file_string ());
++#else
++        file_list.push_back (cxx_impl_path.string ());
++#endif
+       }
+ 
+       if (driver)
+@@ -1065,7 +1101,11 @@
+         }
+ 
+         unlinks.add (cxx_driver_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         file_list.push_back (cxx_driver_path.native_file_string ());
++#else
++        file_list.push_back (cxx_driver_path.string ());
++#endif
+       }
+ 
+       // Open the skel files.
+@@ -1081,7 +1121,11 @@
+       }
+ 
+       unlinks.add (hxx_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       file_list.push_back (hxx_path.native_file_string ());
++#else
++      file_list.push_back (hxx_path.string ());
++#endif
+ 
+       if (inline_)
+       {
+@@ -1094,7 +1138,11 @@
+         }
+ 
+         unlinks.add (ixx_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         file_list.push_back (ixx_path.native_file_string ());
++#else
++        file_list.push_back (ixx_path.string ());
++#endif
+       }
+ 
+ 
+@@ -1109,7 +1157,11 @@
+         }
+ 
+         unlinks.add (cxx_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         file_list.push_back (cxx_path.native_file_string ());
++#else
++        file_list.push_back (cxx_path.string ());
++#endif
+       }
+ 
+       // Print copyright and license.
+@@ -1168,7 +1220,11 @@
+       NarrowString guard_prefix (ops.value<CLI::guard_prefix> ());
+ 
+       if (!guard_prefix)
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         guard_prefix = file_path.branch_path ().native_directory_string ();
++#else
++        guard_prefix = file_path.branch_path ().string ();
++#endif
+ 
+       if (guard_prefix)
+         guard_prefix += '_';
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/xsd/cxx/tree/elements.cxx xsd-3.3.0-2+dep/xsd/xsd/cxx/tree/elements.cxx
+--- xsd-3.3.0/xsd/cxx/tree/elements.cxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/xsd/cxx/tree/elements.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -1312,7 +1312,11 @@
+       }
+       catch (SemanticGraph::InvalidPath const&)
+       {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         path_str = path.native_file_string ();
++#else
++        path_str = path.string ();
++#endif
+       }
+ 
+       String inc_path;
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/xsd/cxx/tree/generator.cxx xsd-3.3.0-2+dep/xsd/xsd/cxx/tree/generator.cxx
+--- xsd-3.3.0/xsd/cxx/tree/generator.cxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/xsd/cxx/tree/generator.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -773,7 +773,11 @@
+     {
+       try
+       {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         Path fs_path (path, boost::filesystem::native);
++#else
++        Path fs_path (path.c_str());
++#endif
+         ifs.open (fs_path, std::ios_base::in | std::ios_base::binary);
+ 
+         if (!ifs.is_open ())
+@@ -939,7 +943,11 @@
+       {
+         if (NarrowString name = ops.value<CLI::extern_xml_schema> ())
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           if (file_path.native_file_string () != name)
++#else
++          if (file_path.string () != name)
++#endif
+             generate_xml_schema = false;
+         }
+       }
+@@ -954,7 +962,11 @@
+ 
+       // Generate code.
+       //
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       NarrowString name (file_path.leaf ());
++#else
++      NarrowString name (file_path.filename ().string());
++#endif
+ 
+       NarrowString hxx_suffix (ops.value <CLI::hxx_suffix> ());
+       NarrowString ixx_suffix (ops.value <CLI::ixx_suffix> ());
+@@ -1013,9 +1025,15 @@
+       NarrowString ixx_name (inline_ ? ixx_expr.merge (name) : NarrowString ());
+       NarrowString fwd_name (forward ? fwd_expr.merge (name) : NarrowString ());
+ 
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       Path hxx_path (hxx_name, boost::filesystem::native);
+       Path ixx_path (ixx_name, boost::filesystem::native);
+       Path fwd_path (fwd_name, boost::filesystem::native);
++#else
++      Path hxx_path (hxx_name.c_str());
++      Path ixx_path (ixx_name.c_str());
++      Path fwd_path (fwd_name.c_str());
++#endif
+       Paths cxx_paths;
+ 
+       if (source)
+@@ -1041,12 +1059,20 @@
+             }
+ 
+             cxx_paths.push_back (
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+               Path (cxx_expr.merge (part_name), boost::filesystem::native));
++#else
++              Path (cxx_expr.merge (part_name).c_str()));
++#endif
+           }
+         }
+         else
+           cxx_paths.push_back (
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+             Path (cxx_expr.merge (name), boost::filesystem::native));
++#else
++            Path (cxx_expr.merge (name).c_str()));
++#endif
+       }
+ 
+       Path out_dir;
+@@ -1055,7 +1081,11 @@
+       {
+         try
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           out_dir = Path (dir, boost::filesystem::native);
++#else
++          out_dir = Path (dir.c_str());
++#endif
+         }
+         catch (InvalidPath const&)
+         {
+@@ -1108,7 +1138,11 @@
+         }
+ 
+         unlinks.add (fwd_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         file_list.push_back (fwd_path.native_file_string ());
++#else
++        file_list.push_back (fwd_path.string ());
++#endif
+       }
+ 
+ 
+@@ -1121,7 +1155,11 @@
+       }
+ 
+       unlinks.add (hxx_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       file_list.push_back (hxx_path.native_file_string ());
++#else
++      file_list.push_back (hxx_path.string ());
++#endif
+ 
+ 
+       // IXX
+@@ -1137,7 +1175,11 @@
+         }
+ 
+         unlinks.add (ixx_path);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         file_list.push_back (ixx_path.native_file_string ());
++#else
++        file_list.push_back (ixx_path.string ());
++#endif
+       }
+ 
+ 
+@@ -1158,7 +1200,11 @@
+           }
+ 
+           unlinks.add (*i);
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           file_list.push_back (i->native_file_string ());
++#else
++          file_list.push_back (i->string ());
++#endif
+           cxx.push_back (s);
+         }
+       }
+@@ -1230,7 +1276,11 @@
+       NarrowString guard_prefix (ops.value<CLI::guard_prefix> ());
+ 
+       if (!guard_prefix)
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         guard_prefix = file_path.branch_path ().native_directory_string ();
++#else
++        guard_prefix = file_path.branch_path ().string ();
++#endif
+ 
+       if (guard_prefix)
+         guard_prefix += '_';
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/xsd/xsd.cxx xsd-3.3.0-2+dep/xsd/xsd/xsd.cxx
+--- xsd-3.3.0/xsd/xsd.cxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/xsd/xsd.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -636,7 +636,11 @@
+ 
+         try
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           tu = SemanticGraph::Path (args[i], boost::filesystem::native);
++#else
++          tu = SemanticGraph::Path (args[i]);
++#endif
+         }
+         catch (SemanticGraph::InvalidPath const&)
+         {
+@@ -675,7 +679,11 @@
+               if (NarrowString name =
+                   tree_ops->value<CXX::Tree::CLI::extern_xml_schema> ())
+               {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+                 if (tu.native_file_string () != name)
++#else
++                if (tu.string () != name)
++#endif
+                   gen_xml_schema = false;
+               }
+             }
+@@ -690,7 +698,11 @@
+               if (NarrowString name =
+                   parser_ops->value<CXX::Parser::CLI::extern_xml_schema> ())
+               {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+                 if (tu.native_file_string () != name)
++#else
++                if (tu.string () != name)
++#endif
+                   gen_xml_schema = false;
+               }
+             }
+@@ -827,8 +839,13 @@
+       {
+         try
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           paths.push_back (
+             SemanticGraph::Path (args[i], boost::filesystem::native));
++#else
++          paths.push_back (
++            SemanticGraph::Path (args[i]));
++#endif
+         }
+         catch (SemanticGraph::InvalidPath const&)
+         {
+@@ -991,9 +1008,17 @@
+       try
+       {
+         OutputFileStream ofs;
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         SemanticGraph::Path path (fl);
++#else
++        SemanticGraph::Path path (fl.c_str());
++#endif
+ 
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         ofs.open (fl, std::ios_base::out);
++#else
++        ofs.open (fl.c_str(), std::ios_base::out);
++#endif
+ 
+         if (!ofs.is_open ())
+         {
+diff -Naurb -I '^//' -I '^# copyright' -x vcproj -x build xsd-3.3.0/xsd/xsd.hxx xsd-3.3.0-2+dep/xsd/xsd/xsd.hxx
+--- xsd-3.3.0/xsd/xsd.hxx	2010-04-28 08:58:09.000000000 +0200
++++ xsd-3.3.0-2+dep/xsd/xsd/xsd.hxx	2012-06-03 11:02:29.000000000 +0200
+@@ -38,7 +38,11 @@
+   {
+     if (!canceled_)
+     {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       std::remove (file_.native_file_string ().c_str ());
++#else
++      std::remove (file_.string ().c_str ());
++#endif
+     }
+   }
+ 

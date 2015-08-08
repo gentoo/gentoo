@@ -1,0 +1,76 @@
+From d2a4e30fdb92aeaf476dcaaf2b5d6f8275d6af70 Mon Sep 17 00:00:00 2001
+From: Peter Wu <lekensteyn@gmail.com>
+Date: Tue, 4 Sep 2012 19:40:08 +0200
+Subject: [PATCH] Do not crash on missing/invalid DISPLAY envvar.
+
+- Check whether the passed DISPLAY environment variable contains ":".
+
+- Fallback to "-display" parameter passed to QApplication.
+---
+ src/CMakeLists.txt |    2 ++
+ src/qibusbus.cpp   |   23 ++++++++++++++++-------
+ 2 files changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2ad5588..8866ac0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -92,9 +92,11 @@ set_target_properties(
+ target_link_libraries(
+     ibus-qt
+     debug ${QT_QTCORE_LIBRARY_DEBUG}
++    debug ${QT_QTGUI_LIBRARY_DEBUG}
+     debug ${QT_QTDBUS_LIBRARY_DEBUG}
+     debug ${QT_QTXML_LIBRARY_DEBUG}
+     optimized ${QT_QTCORE_LIBRARY_RELEASE}
++    optimized ${QT_QTGUI_LIBRARY_RELEASE}
+     optimized ${QT_QTDBUS_LIBRARY_RELEASE}
+     optimized ${QT_QTXML_LIBRARY_RELEASE}
+     ${DBUS_LIBRARIES}
+diff --git a/src/qibusbus.cpp b/src/qibusbus.cpp
+index 6a45d65..ed8248a 100644
+--- a/src/qibusbus.cpp
++++ b/src/qibusbus.cpp
+@@ -12,7 +12,8 @@
+ #include "qibusbus.h"
+ #include "qibusibusproxy.h"
+ #include "qibusdbusproxy.h"
+-
++#include <X11/Xlib.h>
++#include <QX11Info>
+ 
+ namespace IBus {
+ /**
+@@ -121,15 +122,23 @@
+ Bus::getSocketPath (void)
+ {
+     QString display = getenv ("DISPLAY");
+-    QStringList strs = display.split(":");
+     QString hostname = "unix";
+     QString display_number = "0";
++    /* fallback when -display is passed to QApplication with no DISPLAY env */
++    if (display == NULL) {
++        Display * dpy = QX11Info::display();
++        if (dpy)
++            display = XDisplayString(dpy);
++    }
++    if (display != NULL && display.contains(':')) {
++        QStringList strs = display.split(":");
+ 
+-    if (!strs[0].isEmpty())
+-        hostname = strs[0];
+-    strs = strs[1].split(".");
+-    if (!strs[0].isEmpty())
+-        display_number = strs[0];
++        if (!strs[0].isEmpty())
++            hostname = strs[0];
++        strs = strs[1].split(".");
++        if (!strs[0].isEmpty())
++            display_number = strs[0];
++    }
+ 
+     QString path =
+         QDir::homePath() +
+-- 
+1.7.10
+

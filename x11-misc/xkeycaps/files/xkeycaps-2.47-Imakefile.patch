@@ -1,0 +1,22 @@
+diff -ur xkeycaps-2.47.orig/Imakefile xkeycaps-2.47/Imakefile
+--- xkeycaps-2.47.orig/Imakefile	2005-02-23 00:33:15.000000000 +0200
++++ xkeycaps-2.47/Imakefile	2008-12-07 22:55:24.000000000 +0200
+@@ -1,5 +1,5 @@
+-/**/# Imakefile for xkeycaps;
+-/**/# Copyright (c) 1991, 1992, 1993, 1994, 1995, 1999 Jamie Zawinski.
++/* Imakefile for xkeycaps;
++   Copyright (c) 1991, 1992, 1993, 1994, 1995, 1999 Jamie Zawinski. */
+ 
+ /*
+  *  To specify a different default keyboard (for when the vendor display
+@@ -353,8 +353,8 @@
+             TAR = tar
+        COMPRESS = compress
+    COMPRESS_EXT = Z
+-/**/#      COMPRESS = gzip --verbose --best
+-/**/#  COMPRESS_EXT = gz
++/* COMPRESS = gzip --verbose --best */
++/* COMPRESS_EXT = gz */
+ 
+ ComplexProgramTarget(xkeycaps)
+ 

@@ -1,0 +1,116 @@
+http://bugs.gentoo.org/385521
+http://www.htmldoc.org/str.php?L243+P0+S-2+C0+I0+E0+M10+Q
+
+--- htmldoc/image.cxx
++++ htmldoc/image.cxx
+@@ -1472,6 +1472,9 @@ image_load_png(image_t *img,	/* I - Imag
+   png_bytep	*rows;		/* PNG row pointers */
+   uchar		*inptr,		/* Input pixels */
+ 		*outptr;	/* Output pixels */
++  png_bytep trans_alpha;
++  int num_trans;
++  png_color_16p trans_color;
+ 
+ 
+  /*
+@@ -1499,7 +1502,7 @@ image_load_png(image_t *img,	/* I - Imag
+ 
+   rows = NULL;
+ 
+-  if (setjmp(pp->jmpbuf)) 
++  if (setjmp(png_jmpbuf(pp))) 
+   {
+     progress_error(HD_ERROR_BAD_FORMAT, "PNG file contains errors!");
+ 
+@@ -1526,7 +1529,7 @@ image_load_png(image_t *img,	/* I - Imag
+ 
+   png_read_info(pp, info);
+ 
+-  if (info->color_type & PNG_COLOR_MASK_PALETTE)
++  if (png_get_color_type(pp, info) & PNG_COLOR_MASK_PALETTE)
+   {
+     png_set_expand(pp);
+ 
+@@ -1535,15 +1538,15 @@ image_load_png(image_t *img,	/* I - Imag
+     if (Encryption)
+       img->use ++;
+   }
+-  else if (info->bit_depth < 8)
++  else if (png_get_bit_depth(pp, info) < 8)
+   {
+     png_set_packing(pp);
+     png_set_expand(pp);
+   }
+-  else if (info->bit_depth == 16)
++  else if (png_get_bit_depth(pp, info) == 16)
+     png_set_strip_16(pp);
+ 
+-  if (info->color_type & PNG_COLOR_MASK_COLOR)
++  if (png_get_color_type(pp, info) & PNG_COLOR_MASK_COLOR)
+   {
+     depth      = 3;
+     img->depth = gray ? 1 : 3;
+@@ -1554,10 +1557,11 @@ image_load_png(image_t *img,	/* I - Imag
+     img->depth = 1;
+   }
+ 
+-  img->width  = info->width;
+-  img->height = info->height;
++  img->width  = png_get_image_width(pp, info);
++  img->height = png_get_image_height(pp, info);
+ 
+-  if ((info->color_type & PNG_COLOR_MASK_ALPHA) || info->num_trans)
++  png_get_tRNS(pp, info, &trans_alpha, &num_trans, &trans_color);
++  if ((png_get_color_type(pp, info) & PNG_COLOR_MASK_ALPHA) || num_trans)
+   {
+     if ((PSLevel == 0 && PDFVersion >= 14) || PSLevel == 3)
+       image_need_mask(img, 8);
+@@ -1571,14 +1575,14 @@ image_load_png(image_t *img,	/* I - Imag
+ 
+ #ifdef DEBUG
+   printf("color_type=0x%04x, depth=%d, img->width=%d, img->height=%d, img->depth=%d\n",
+-         info->color_type, depth, img->width, img->height, img->depth);
+-  if (info->color_type & PNG_COLOR_MASK_COLOR)
++         png_get_color_type(pp, info), depth, img->width, img->height, img->depth);
++  if (png_get_color_type(pp, info) & PNG_COLOR_MASK_COLOR)
+     puts("    COLOR");
+   else
+     puts("    GRAYSCALE");
+-  if ((info->color_type & PNG_COLOR_MASK_ALPHA) || info->num_trans)
++  if ((png_get_color_type(pp, info) & PNG_COLOR_MASK_ALPHA) || num_trans)
+     puts("    ALPHA");
+-  if (info->color_type & PNG_COLOR_MASK_PALETTE)
++  if (png_get_color_type(pp, info) & PNG_COLOR_MASK_PALETTE)
+     puts("    PALETTE");
+ #endif // DEBUG
+ 
+@@ -1594,9 +1598,9 @@ image_load_png(image_t *img,	/* I - Imag
+   * Allocate pointers...
+   */
+ 
+-  rows = (png_bytep *)calloc(info->height, sizeof(png_bytep));
++  rows = (png_bytep *)calloc(png_get_image_height(pp, info), sizeof(png_bytep));
+ 
+-  for (i = 0; i < (int)info->height; i ++)
++  for (i = 0; i < (int)png_get_image_height(pp, info); i ++)
+     rows[i] = img->pixels + i * img->width * depth;
+ 
+  /*
+@@ -1610,7 +1614,7 @@ image_load_png(image_t *img,	/* I - Imag
+   * Generate the alpha mask as necessary...
+   */
+ 
+-  if ((info->color_type & PNG_COLOR_MASK_ALPHA) || info->num_trans)
++  if ((png_get_color_type(pp, info) & PNG_COLOR_MASK_ALPHA) || num_trans)
+   {
+ #ifdef DEBUG
+     for (inptr = img->pixels, i = 0; i < img->height; i ++)
+@@ -1639,7 +1643,7 @@ image_load_png(image_t *img,	/* I - Imag
+   * Reformat the data as necessary for the reader...
+   */
+ 
+-  if (gray && info->color_type & PNG_COLOR_MASK_COLOR)
++  if (gray && png_get_color_type(pp, info) & PNG_COLOR_MASK_COLOR)
+   {
+    /*
+     * Greyscale output needed...

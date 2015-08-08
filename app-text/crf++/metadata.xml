@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<longdescription lang="en">
+		CRF++ is a simple, customizable, and open source implementation
+		of Conditional Random Fields (CRFs) for segmenting/labeling
+		sequential data. CRF++ is designed for generic purpose and will be
+		applied to a lot of NLP tasks, such as Named Entity Recognition,
+		Information Extraction and Text Chunking.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+--- twelf-orig/emacs/twelf-init.el	2002-12-28 16:15:42.000000000 +1100
++++ twelf/emacs/twelf-init.el	2012-12-10 00:45:49.363104690 +1100
+@@ -20,16 +20,13 @@
+ 			      auto-mode-alist)))))
+ 
+ ;; Default Twelf server program location
+-(setq twelf-server-program
+-      (concat twelf-root "bin/twelf-server"))
++(setq twelf-server-program "/usr/bin/twelf-server")
+ 
+ ;; Default Twelf SML program location
+-(setq twelf-sml-program
+-      (concat twelf-root "bin/twelf-sml"))
++(setq twelf-sml-program "/usr/bin/twelf-sml")
+ 
+ ;; Default documentation location (in info format)
+-(setq twelf-info-file
+-      (concat twelf-root "doc/info/twelf.info"))
++(setq twelf-info-file "/usr/share/info/twelf.info")
+ 
+ ;; Automatically highlight Twelf sources using font-lock
+ (add-hook 'twelf-mode-hook 'twelf-font-fontify-buffer)

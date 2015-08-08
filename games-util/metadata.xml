@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-util category contains various game-related utilities.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-util enthält verschiede Tools rund um Spiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-util contiene varias utilidades relacionadas con
+		juegos.
+	</longdescription>
+	<longdescription lang="ja">
+		games-utilカテゴリーにはゲームに関連した様々なユーティリティが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-util categorie bevat hulpmiddelen voor bepaalde spellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-util chứa các tiện ích linh tinh liên quan đến các trò chơi.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-util contiene varie utilità per i giochi.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-util contém vários utilitários relacionados a
+		jogos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-util zawiera narządzia związane z grami.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,66 @@
+--- zlib-1.2.3/configure
++++ zlib-1.2.3/configure
+@@ -23,7 +23,7 @@
+ VER=`sed -n -e '/VERSION "/s/.*"\(.*\)".*/\1/p' < zlib.h`
+ VER2=`sed -n -e '/VERSION "/s/.*"\([0-9]*\\.[0-9]*\)\\..*/\1/p' < zlib.h`
+ VER1=`sed -n -e '/VERSION "/s/.*"\([0-9]*\)\\..*/\1/p' < zlib.h`
+-AR=${AR-"ar rc"}
++AR=${AR-"ar"}
+ RANLIB=${RANLIB-"ranlib"}
+ prefix=${prefix-/usr/local}
+ exec_prefix=${exec_prefix-'${prefix}'}
+--- zlib-1.2.3/Makefile.in
++++ zlib-1.2.3/Makefile.in
+@@ -70,7 +70,7 @@
+ 	fi
+ 
+ libz.a: $(OBJS) $(OBJA)
+-	$(AR) $@ $(OBJS) $(OBJA)
++	$(AR) rc $@ $(OBJS) $(OBJA)
+ 	-@ ($(RANLIB) $@ || true) >/dev/null 2>&1
+ 
+ match.o: match.S
+--- zlib-1.2.3/win32/Makefile.gcc
++++ zlib-1.2.3/win32/Makefile.gcc
+@@ -30,21 +30,23 @@
+ #LOC = -DASMV
+ #LOC = -DDEBUG -g
+ 
+-CC = gcc
+-CFLAGS = $(LOC) -O3 -Wall
++CC ?= gcc
++CFLAGS ?= $(LOC) -O3 -Wall
+ 
+-AS = $(CC)
+-ASFLAGS = $(LOC) -Wall
++AS ?= $(CC)
++ASFLAGS ?= $(LOC) -Wall
+ 
+ LD = $(CC)
+-LDFLAGS = $(LOC) -s
++LDFLAGS ?= $(LOC) -s
+ 
+-AR = ar
++AR ?= ar
+ ARFLAGS = rcs
+ 
+-RC = windres
++RC ?= windres
+ RCFLAGS = --define GCC_WINDRES
+ 
++DLLWRAP ?= dllwrap
++
+ CP = cp -fp
+ # If GNU install is available, replace $(CP) with install.
+ INSTALL = $(CP)
+@@ -79,9 +81,8 @@
+ $(IMPLIB): $(SHAREDLIB)
+ 
+ $(SHAREDLIB): win32/zlib.def $(OBJS) $(OBJA) zlibrc.o
+-	dllwrap --driver-name $(CC) --def win32/zlib.def \
++	$(DLLWRAP) --driver-name $(CC) --def win32/zlib.def \
+ 	  --implib $(IMPLIB) -o $@ $(OBJS) $(OBJA) zlibrc.o
+-	strip $@
+ 
+ example: example.o $(STATICLIB)
+ 	$(LD) $(LDFLAGS) -o $@ example.o $(STATICLIB)

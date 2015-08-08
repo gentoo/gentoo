@@ -1,0 +1,25 @@
+From 861d148321aafa3f7dadb1da4f507da83ba2f846 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 26 Feb 2015 17:39:23 -0500
+Subject: [PATCH] ntpshm: fix status type
+
+---
+ ntpshm.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ntpshm.h b/ntpshm.h
+index c8cd3b6..45648a8 100644
+--- a/ntpshm.h
++++ b/ntpshm.h
+@@ -60,7 +60,7 @@ enum segstat_t {
+     OK, NO_SEGMENT, NOT_READY, BAD_MODE, CLASH};
+ 
+ struct shm_stat_t {
+-    int status;
++    enum segstat_t status;
+     struct timespec tvc, tvr, tvt;
+     int precision;
+     int leap;
+-- 
+2.3.0
+

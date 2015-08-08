@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jer@gentoo.org</email>
+		<name>Jeroen Roovers</name>
+	</maintainer>
+	<maintainer>
+		<email>jnrowe@gmail.com</email>
+		<name>James Rowe</name>
+	</maintainer>
+	<longdescription lang="en">
+		Surfraw provides a fast unix command line interface to a variety of
+		popular WWW search engines and other artifacts of power. It reclaims
+		google, altavista, babelfish, dejanews, freshmeat, research index,
+		slashdot and many others from the false-prophet, pox-infested heathen
+		lands of html-forms, placing these 	wonders where they belong, deep in
+		unix heartland, as god loving extensions to the shell.
+
+		Surfraw abstracts the browser away from input. Doing so lets it get on
+		with what it's good at. Browsing. Interpretation of linguistic forms is
+		handed back to the	shell, which is what it, and human beings are good
+		at. Combined with netscape-remote or incremental text browsers, such as
+		links (http://artax.karlin.mff.cuni.cz/~mikulas/links/),
+		w3m (http://www.w3m.org/), and screen(1) a Surfraw liberateur is
+		capable of navigating speeds that leave GUI tainted idolaters agape
+		with fear and wonder.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+diff -urNad lineak-xosdplugin-0.9~/xosd_plugin/xosdctrl.cpp lineak-xosdplugin-0.9/xosd_plugin/xosdctrl.cpp
+--- lineak-xosdplugin-0.9~/xosd_plugin/xosdctrl.cpp	2006-02-08 18:32:13.000000000 +0000
++++ lineak-xosdplugin-0.9/xosd_plugin/xosdctrl.cpp	2008-03-17 04:35:12.000000000 +0000
+@@ -21,6 +21,8 @@
+ #include <lineak/lconfig.h>
+ #include <lineak/lineak_core_functions.h>
+ 
++#include <cstdlib>
++#include <cstring>
+ 
+ using namespace lineak_core_functions;
+ using namespace std;
+
+

@@ -1,0 +1,51 @@
+diff -urN sassena-v1.4.1/cmake/CMakeLists.txt.executables sassena-v1.4.1.patched/cmake/CMakeLists.txt.executables
+--- sassena-v1.4.1/cmake/CMakeLists.txt.executables	2012-02-03 04:43:33.000000000 +0400
++++ sassena-v1.4.1.patched/cmake/CMakeLists.txt.executables	2012-03-21 18:07:13.000000000 +0400
+@@ -61,6 +61,20 @@
+ INSTALL(TARGETS s_maketnx RUNTIME DESTINATION bin)
+ INSTALL(TARGETS s_stage RUNTIME DESTINATION bin)
+ 
++IF(NOT STATIC)
++INSTALL(TARGETS sass_controlio LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_decomposition LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_log LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_math LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_mpi LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_report LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_sample LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_scatter_devices LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_services LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_stager LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++INSTALL(TARGETS sass_vendor_xdrfile LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++ENDIF(NOT STATIC)
++
+ TARGET_LINK_LIBRARIES (unit_broadcast 
+ 	sass_log
+ 	sass_report
+@@ -69,4 +83,4 @@
+ 	${BOOST_LIBRARIES}
+ )
+ 
+-INSTALL(TARGETS unit_broadcast RUNTIME DESTINATION bin)
+\ В конце файла нет новой строки
++INSTALL(TARGETS unit_broadcast RUNTIME DESTINATION bin)
+diff -urN sassena-v1.4.1/cmake/CMakeLists.txt.shared sassena-v1.4.1.patched/cmake/CMakeLists.txt.shared
+--- sassena-v1.4.1/cmake/CMakeLists.txt.shared	2012-02-03 04:43:33.000000000 +0400
++++ sassena-v1.4.1.patched/cmake/CMakeLists.txt.shared	2012-03-21 18:10:30.000000000 +0400
+@@ -4,6 +4,8 @@
+ 
+ SET(INTERNAL_LIBRARY_TYPE SHARED)
+ 
++SET(LIB_INSTALL_DIR  ${CMAKE_INSTALL_PREFIX}/lib)
++
+ IF(CMAKE_HOST_APPLE)
+ SET(CMAKE_EXE_LINKER_FLAGS "-fPIC ${CMAKE_EXE_LINKER_FLAGS}")
+ ELSE(CMAKE_HOST_APPLE)
+@@ -15,4 +17,4 @@
+ INCLUDE(${CMAKE_PROJECT_PATH}/CMakeLists.txt.intern)
+ INCLUDE(${CMAKE_PROJECT_PATH}/CMakeLists.txt.executables)
+ 
+-INCLUDE(${CMAKE_PROJECT_PATH}/CMakeLists.txt.packages)
+\ В конце файла нет новой строки
++INCLUDE(${CMAKE_PROJECT_PATH}/CMakeLists.txt.packages)
+diff -urN sassena-v1.4.1/CMakeLists.txt sassena-v1.4.1.patched/CMakeLists.txt

@@ -1,0 +1,119 @@
+Make ghc use the libffi installed on the system instead of the bundled one.
+
+This patch is based on the one used by Debian and Fedora, but was
+augmented by additional lines to identify the libffi include directory
+using pkg-config, as libffi on Gentoo installs into a subdirectory of
+the system include directory.
+
+2012-04-24 Martin von Gagern
+
+References:
+https://bugs.gentoo.org/411925
+http://hackage.haskell.org/trac/ghc/ticket/5743
+
+Index: ghc-7.4.1/ghc.mk
+===================================================================
+--- ghc-7.4.1.orig/ghc.mk
++++ ghc-7.4.1/ghc.mk
+@@ -579,7 +579,6 @@ BUILD_DIRS += \
+    driver/ghci \
+    driver/ghc \
+    driver/haddock \
+-   libffi \
+    includes \
+    rts
+ 
+Index: ghc-7.4.1/rts/ghc.mk
+===================================================================
+--- ghc-7.4.1.orig/rts/ghc.mk
++++ ghc-7.4.1/rts/ghc.mk
+@@ -86,8 +86,7 @@
+ ALL_RTS_DEF_LIBNAMES 	= base ghc-prim
+ ALL_RTS_DEF_LIBS	= \
+ 	rts/dist/build/win32/libHSbase.dll.a \
+-	rts/dist/build/win32/libHSghc-prim.dll.a \
+-	libffi/build/inst/lib/libffi.dll.a
++	rts/dist/build/win32/libHSghc-prim.dll.a 
+ 
+ # -- import libs for the regular Haskell libraries
+ define make-importlib-def # args $1 = lib name
+@@ -172,12 +171,12 @@
+ # Making a shared library for the RTS.
+ ifneq "$$(findstring dyn, $1)" ""
+ ifeq "$$(HOSTPLATFORM)" "i386-unknown-mingw32"
+-$$(rts_$1_LIB) : $$(rts_$1_OBJS) $$(ALL_RTS_DEF_LIBS) rts/libs.depend rts/dist/build/libffi-5.dll
++$$(rts_$1_LIB) : $$(rts_$1_OBJS) $$(ALL_RTS_DEF_LIBS) rts/libs.depend
+ 	"$$(RM)" $$(RM_OPTS) $$@
+ 	"$$(rts_dist_HC)" -package-name rts -shared -dynamic -dynload deploy \
+ 	  -no-auto-link-packages -Lrts/dist/build -lffi-5 `cat rts/libs.depend` $$(rts_$1_OBJS) $$(ALL_RTS_DEF_LIBS) -o $$@
+ else
+-$$(rts_$1_LIB) : $$(rts_$1_OBJS) $$(rts_$1_DTRACE_OBJS) rts/libs.depend rts/dist/build/libffi$$(soext)
++$$(rts_$1_LIB) : $$(rts_$1_OBJS) $$(rts_$1_DTRACE_OBJS) rts/libs.depend
+ 	"$$(RM)" $$(RM_OPTS) $$@
+ 	"$$(rts_dist_HC)" -package-name rts -shared -dynamic -dynload deploy \
+ 	  -no-auto-link-packages -Lrts/dist/build -lffi `cat rts/libs.depend` $$(rts_$1_OBJS) \
+@@ -188,9 +187,9 @@
+ endif
+ endif
+ else
+-$$(rts_$1_LIB) : $$(rts_$1_OBJS) $$(rts_$1_DTRACE_OBJS) $$(rts_ffi_objs_stamp)
++$$(rts_$1_LIB) : $$(rts_$1_OBJS) $$(rts_$1_DTRACE_OBJS)
+ 	"$$(RM)" $$(RM_OPTS) $$@
+-	echo $$(rts_ffi_objs) $$(rts_$1_OBJS) $$(rts_$1_DTRACE_OBJS) | "$$(XARGS)" $$(XARGS_OPTS) "$$(AR_STAGE1)" \
++	echo $$(rts_$1_OBJS) $$(rts_$1_DTRACE_OBJS) | "$$(XARGS)" $$(XARGS_OPTS) "$$(AR_STAGE1)" \
+ 		$$(AR_OPTS_STAGE1) $$(EXTRA_AR_ARGS_STAGE1) $$@
+ endif
+ 
+@@ -403,6 +402,12 @@
+ rts/dist/build/sm/Evac_thr_CC_OPTS += -DPARALLEL_GC -Irts/sm
+ rts/dist/build/sm/Scav_thr_CC_OPTS += -DPARALLEL_GC -Irts/sm
+ 
++# Use system libffi
++libffi_include_flags:=$(shell pkg-config --cflags-only-I libffi)
++rts/Adjustor_CC_OPTS += $(libffi_include_flags)
++rts/Interpreter_CC_OPTS += $(libffi_include_flags)
++rts/sm/Storage_CC_OPTS += $(libffi_include_flags)
++
+ #-----------------------------------------------------------------------------
+ # Add PAPI library if needed
+ 
+@@ -504,10 +509,8 @@
+ # installing
+ 
+ INSTALL_LIBS += $(ALL_RTS_LIBS)
+-INSTALL_LIBS += $(wildcard rts/dist/build/libffi$(soext)*)
+-INSTALL_LIBS += $(wildcard rts/dist/build/libffi-5.dll)
+ 
+-install: install_libffi_headers
++install:
+ 
+ .PHONY: install_libffi_headers
+ install_libffi_headers :
+Index: ghc-7.4.1/rts/package.conf.in
+===================================================================
+--- ghc-7.4.1.orig/rts/package.conf.in
++++ ghc-7.4.1/rts/package.conf.in
+@@ -24,8 +24,9 @@
+ hs-libraries:   "HSrts"
+ 
+ extra-libraries:
++				"ffi"
+ #ifdef HAVE_LIBM
+-                		"m"		/* for ldexp() */
++			      , "m"		/* for ldexp() */
+ #endif
+ #ifdef HAVE_LIBRT
+ 			      , "rt"
+Index: ghc-7.4.1/compiler/ghc.mk
+===================================================================
+--- ghc-7.4.1.orig/compiler/ghc.mk
++++ ghc-7.4.1/compiler/ghc.mk
+@@ -260,6 +260,8 @@
+ 
+ compiler_CPP_OPTS += -I$(GHC_INCLUDE_DIR)
+ compiler_CPP_OPTS += ${GhcCppOpts}
++libffi_include_flags := $(shell pkg-config --cflags-only-I libffi)
++compiler/ghci/LibFFI_HSC2HS_OPTS += $(addprefix --cflag=,$(libffi_include_flags))
+ 
+ $(PRIMOPS_TXT) compiler/parser/Parser.y: %: %.pp compiler/stage1/$(PLATFORM_H)
+ 	$(CPP) $(RAWCPP_FLAGS) -P $(compiler_CPP_OPTS) -x c $< | grep -v '^#pragma GCC' > $@

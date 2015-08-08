@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>ada</herd>
+  <use>
+    <flag name="lto">Add support for link-time optimizations (unsupported, use
+      at your own risk).</flag>
+  </use>
+<longdescription>
+GNAT, the (GN)U (A)da (T)oolchain, is a high performance Ada 95
+development environment based on the mature GCC compiler technology. It
+implements the full Ada 95 language defined by the ISO standard and is upward
+compatible with Ada 83. This is an FSF supported version, integrated with gcc.
+</longdescription>
+</pkgmetadata>

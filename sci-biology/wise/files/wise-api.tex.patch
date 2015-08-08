@@ -1,0 +1,38 @@
+--- api.tex.old	2005-03-06 11:31:59.862760952 -0500
++++ api.tex	2005-03-06 11:42:31.375756384 -0500
+@@ -204,7 +204,7 @@
+ \item Build two Sequence objects, from a file or strings (\ref{object_Sequence})
+ \item Optionally convert the Sequence objects into Protein objects (\ref{object_Protein}). This ensures you have proteins
+ \item Read in the comparison matrix using CompMat (\ref{object_CompMat})
+-\item Use one of the algorithm calls in sw_wrap module (\ref{module_sw_wrap})
++\item Use one of the algorithm calls in sw\_wrap module (\ref{module_sw_wrap})
+ \item Show the alignment using a call in the seqaligndisaply module (\ref{module_seqaligndisplay})
+ \end{itemize}
+ 
+@@ -213,7 +213,7 @@
+ \item Read in a sequence object and convert it to a protein object (\ref{object_Protein},\ref{object_Sequence})
+ \item Make a protein database from the single protein object (\ref{object_ProteinDB})
+ \item Make a protein database from a single fasta file (\ref{object_ProteinDB})
+-\item Using one of the calls to the sw_wrap module, make a Hscore object (\ref{module_sw_wrap})
++\item Using one of the calls to the sw\_wrap module, make a Hscore object (\ref{module_sw_wrap})
+ \item Show the Hscore object using a show function (\ref{object_Hscore})
+ \item Retrieve individual protein objects from the database by taking out the
+ DataEntry objects (\ref{object_DataEntry}) and passing them into the ProteinDB object (\ref{object_ProteinDB}), giving you a protein object
+@@ -232,7 +232,7 @@
+ \item Read in a codon table (\ref{object_CodonTable})
+ \item Make a random DNA model (\ref{object_RandomModelDNA})
+ \item Make an algorithm type (\ref{module_gwrap})
+-\item Build an entire parameter set for genewise using Wise2::GeneParameter21_wrap (\ref{module_gwrap})
++\item Build an entire parameter set for genewise using Wise2::GeneParameter21\_wrap (\ref{module_gwrap})
+ \item Run the actual algorithm (\ref{module_gwrap})
+ \item show the alignment using genedisplay (\ref{module_gwrap})
+ \end{itemize}
+@@ -5055,7 +5055,7 @@
+ Member functions of RandomModel
+ 
+ \section{sequence\_codon}
+-\label{module_sequence\_codon}
++\label{module_sequence_codon}
+ This module only contains factory methods
+ 
+ \subsection{sequence\_codon factory methods}

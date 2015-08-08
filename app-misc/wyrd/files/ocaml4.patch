@@ -1,0 +1,20 @@
+Index: wyrd-1.4.5/configure.ac
+===================================================================
+--- wyrd-1.4.5.orig/configure.ac
++++ wyrd-1.4.5/configure.ac
+@@ -61,6 +61,7 @@ echo "ocaml library path is $OCAMLLIB"
+ # check for sufficient OCAMLVERSION
+ OCAMLMAJORVERSION=`echo $OCAMLVERSION | cut -d '.' -f 1`
+ OCAMLMINORVERSION=`echo $OCAMLVERSION | cut -d '.' -f 2`
++if test $OCAMLMAJORVERSION -lt 4 ; then
+ if test $OCAMLMAJORVERSION -lt 3 ; then
+    AC_MSG_ERROR(Wyrd requires OCaml version 3.08 or greater.)
+ else
+@@ -68,6 +69,7 @@ else
+       AC_MSG_ERROR(Wyrd requires OCaml version 3.08 or greater.)
+    fi
+ fi
++fi
+ 
+ 
+ # then we look for ocamlopt; if not present, we issue a warning

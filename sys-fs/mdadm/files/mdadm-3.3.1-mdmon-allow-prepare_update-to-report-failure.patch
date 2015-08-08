@@ -1,0 +1,119 @@
+From 5fe6f031d9a21a935f0ef1b1fbdb314b53f2199f Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Thu, 10 Jul 2014 15:54:02 +1000
+Subject: [PATCH 11/14] mdmon: allow prepare_update to report failure.
+
+If 'prepare_update' fails for some reason there is little
+point continuing on to 'process_update'.
+For now only malloc failures are caught, but other failures
+will be considered in future.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ managemon.c   | 3 ++-
+ mdadm.h       | 5 ++++-
+ super-ddf.c   | 8 +++++---
+ super-intel.c | 9 +++++----
+ 4 files changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/managemon.c b/managemon.c
+index 5f7e2ce..1c9eccc 100644
+--- a/managemon.c
++++ b/managemon.c
+@@ -819,7 +819,8 @@ static void handle_message(struct supertype *container, struct metadata_update *
+ 		mu->space_list = NULL;
+ 		mu->next = NULL;
+ 		if (container->ss->prepare_update)
+-			container->ss->prepare_update(container, mu);
++			if (!container->ss->prepare_update(container, mu))
++				free_updates(&mu);
+ 		queue_metadata_update(mu);
+ 	}
+ }
+diff --git a/mdadm.h b/mdadm.h
+index 914d67c..02a9288 100644
+--- a/mdadm.h
++++ b/mdadm.h
+@@ -929,7 +929,10 @@ extern struct superswitch {
+ 	void (*sync_metadata)(struct supertype *st);
+ 	void (*process_update)(struct supertype *st,
+ 			       struct metadata_update *update);
+-	void (*prepare_update)(struct supertype *st,
++	/* Prepare updates allocates extra memory that might be
++	 * needed.  If the update cannot be understood,  return 0.
++	 */
++	int (*prepare_update)(struct supertype *st,
+ 			       struct metadata_update *update);
+ 
+ 	/* activate_spare will check if the array is degraded and, if it
+diff --git a/super-ddf.c b/super-ddf.c
+index ab9fc46..1e43ca2 100644
+--- a/super-ddf.c
++++ b/super-ddf.c
+@@ -4906,8 +4906,8 @@ static void ddf_process_update(struct supertype *st,
+ 	/* case DDF_SPARE_ASSIGN_MAGIC */
+ }
+ 
+-static void ddf_prepare_update(struct supertype *st,
+-			       struct metadata_update *update)
++static int ddf_prepare_update(struct supertype *st,
++			      struct metadata_update *update)
+ {
+ 	/* This update arrived at managemon.
+ 	 * We are about to pass it to monitor.
+@@ -4922,15 +4922,17 @@ static void ddf_prepare_update(struct supertype *st,
+ 				   offsetof(struct vcl, conf)
+ 				   + ddf->conf_rec_len * 512) != 0) {
+ 			update->space = NULL;
+-			return;
++			return 0;
+ 		}
+ 		vcl = update->space;
+ 		vcl->conf.sec_elmnt_count = conf->sec_elmnt_count;
+ 		if (alloc_other_bvds(ddf, vcl) != 0) {
+ 			free(update->space);
+ 			update->space = NULL;
++			return 0;
+ 		}
+ 	}
++	return 1;
+ }
+ 
+ /*
+diff --git a/super-intel.c b/super-intel.c
+index 7734bde..2547b4a 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -8607,8 +8607,8 @@ static void imsm_process_update(struct supertype *st,
+ 
+ static struct mdinfo *get_spares_for_grow(struct supertype *st);
+ 
+-static void imsm_prepare_update(struct supertype *st,
+-				struct metadata_update *update)
++static int imsm_prepare_update(struct supertype *st,
++			       struct metadata_update *update)
+ {
+ 	/**
+ 	 * Allocate space to hold new disk entries, raid-device entries or a new
+@@ -8828,6 +8828,7 @@ static void imsm_prepare_update(struct supertype *st,
+ 		else
+ 			super->next_buf = NULL;
+ 	}
++	return 1;
+ }
+ 
+ /* must be called while manager is quiesced */
+@@ -9716,8 +9717,8 @@ static void imsm_update_metadata_locally(struct supertype *st,
+ 	mu.space = NULL;
+ 	mu.space_list = NULL;
+ 	mu.next = NULL;
+-	imsm_prepare_update(st, &mu);
+-	imsm_process_update(st, &mu);
++	if (imsm_prepare_update(st, &mu))
++		imsm_process_update(st, &mu);
+ 
+ 	while (mu.space_list) {
+ 		void **space = mu.space_list;
+-- 
+2.0.0
+

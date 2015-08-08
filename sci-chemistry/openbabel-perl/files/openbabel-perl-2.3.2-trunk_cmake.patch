@@ -1,0 +1,41 @@
+diff --git a/scripts/CMakeLists.txt b/scripts/CMakeLists.txt
+index e7298ce..16e9000 100644
+--- a/scripts/CMakeLists.txt
++++ b/scripts/CMakeLists.txt
+@@ -231,36 +239,6 @@ if (DO_PERL_BINDINGS)
+     install(TARGETS bindings_perl LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+     install(FILES ${openbabel_SOURCE_DIR}/scripts/perl/OpenBabel.pm DESTINATION ${LIB_INSTALL_DIR})
+ 
+-    set(PERL_INSTALLDIRS_TEXT "")
+-    if (OBPERL_INSTALLDIRS)
+-      set(PERL_INSTALLDIRS_TEXT "INSTALLDIRS=${OBPERL_INSTALLDIRS}")
+-    endif (OBPERL_INSTALLDIRS)
+-
+-    if (NOT MSVC)
+-      add_custom_target(pre_bindings_perl ALL
+-        # Create the scripts/perl directory; we cannot do this inside
+-        # bindings_perl as the WORKING_DIRECTORY needs to already exist!
+-        COMMAND ${CMAKE_COMMAND} -E make_directory ${openbabel_BINARY_DIR}/scripts/perl
+-        )
+-      add_custom_target(bindings_perl ALL
+-        COMMAND ${CMAKE_COMMAND} -E copy ${openbabel_SOURCE_DIR}/scripts/perl/Makefile.PL ${openbabel_BINARY_DIR}/scripts/perl
+-        COMMAND ${CMAKE_COMMAND} -E copy ${openbabel_SOURCE_DIR}/scripts/perl/OpenBabel.pm ${openbabel_BINARY_DIR}/scripts/perl
+-        COMMAND ${CMAKE_COMMAND} -E copy ${openbabel_SOURCE_DIR}/scripts/perl/openbabel-perl.cpp ${openbabel_BINARY_DIR}/scripts/perl
+-        COMMAND PERL5LIB=${openbabel_SOURCE_DIR}/scripts/perl/inc SRC_DIR=${openbabel_SOURCE_DIR} OBJ_DIR=${openbabel_BINARY_DIR} ${PERL_EXECUTABLE} ${openbabel_BINARY_DIR}/scripts/perl/Makefile.PL ${PERL_PREFIX_TEXT} ${PERL_INSTALLDIRS_TEXT}
+-        COMMAND PERL5LIB=${openbabel_SOURCE_DIR}/scripts/perl/inc make
+-            DEPENDS openbabel ${openbabel_SOURCE_DIR}/scripts/perl/openbabel-perl.cpp
+-            WORKING_DIRECTORY ${openbabel_BINARY_DIR}/scripts/perl
+-        )
+-      add_dependencies(bindings_perl pre_bindings_perl openbabel)
+-      install(CODE "execute_process(COMMAND make install DESTDIR=\$ENV{DESTDIR} WORKING_DIRECTORY ${openbabel_BINARY_DIR}/scripts/perl)")
+-
+-    else (NOT MSVC)
+-      add_library(bindings_perl MODULE ${openbabel_SOURCE_DIR}/scripts/perl/openbabel-perl.cpp)
+-      target_link_libraries(bindings_perl ${PERL_LIBRARY} ${BABEL_LIBRARY})
+-      set_target_properties(bindings_perl PROPERTIES
+-          OUTPUT_NAME openbabel_perl )
+-    endif(NOT MSVC)
+-
+ endif (DO_PERL_BINDINGS)
+ 
+ ###################

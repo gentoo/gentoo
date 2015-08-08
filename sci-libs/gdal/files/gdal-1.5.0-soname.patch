@@ -1,0 +1,13 @@
+--- GDALmake.opt.in.orig	2008-02-02 18:25:48.000000000 -0800
++++ GDALmake.opt.in	2008-02-02 18:54:53.000000000 -0800
+@@ -97,6 +97,10 @@
+ GDAL_SLIB	=	$(GDAL_ROOT)/libgdal.$(SO_EXT)
+ GDAL_SLIB_LINK	=	-L$(GDAL_ROOT) -lgdal
+ 
++# for building without libtool
++GDAL_SLIB_SO_VER =	$(GDAL_VERSION_MAJOR).$(LIBGDAL_CURRENT).$(LIBGDAL_REVISION)
++GDAL_SLIB_SONAME =	-Wl,-soname,libgdal.$(SO_EXT).$(GDAL_VERSION_MAJOR)
++
+ # Mac OS X Framework definition
+ MACOSX_FRAMEWORK = @MACOSX_FRAMEWORK@
+ 

@@ -1,0 +1,1 @@
+SYSFS{product}=="LEGO USB Tower", NAME="usb/%k", SYMLINK="usb/lego%n", GROUP="usb"

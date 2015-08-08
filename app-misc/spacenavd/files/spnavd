@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+depend() {
+        need localmount
+        after bootmisc
+}
+
+start() {
+        ebegin "Starting Spacenav system daemon"
+
+        start-stop-daemon --start --pidfile /var/run/spnavd.pid --exec /usr/bin/spacenavd
+        eend $?
+}
+
+stop() {
+        local retval
+
+        ebegin "Stopping Spacenav system daemon"
+
+        start-stop-daemon --stop --pidfile /var/run/spnavd.pid
+        retval=$?
+
+        eend ${retval}
+        return ${retval}
+}

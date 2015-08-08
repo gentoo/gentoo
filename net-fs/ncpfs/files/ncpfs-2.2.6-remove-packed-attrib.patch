@@ -1,0 +1,297 @@
+diff -Naurp ncpfs-2.2.6.orig//include/ncp/ipxlib.h ncpfs-2.2.6//include/ncp/ipxlib.h
+--- ncpfs-2.2.6.orig//include/ncp/ipxlib.h	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6//include/ncp/ipxlib.h	2011-02-10 02:38:18.822076000 -0500
+@@ -64,12 +64,12 @@ struct sap_query
+ struct sap_server_ident
+ {
+ 	u_int16_t	server_type __attribute__((packed));
+-	char		server_name[48] __attribute__((packed));
++	char		server_name[48];
+ 	IPXNet		server_network __attribute__((packed));
+ #ifdef SWIG
+ 	u_int8_t	server_node[6] __attribute__((packed));
+ #else
+-	IPXNode		server_node __attribute__((packed));
++	IPXNode		server_node;
+ #endif
+ 	IPXPort		server_port __attribute__((packed));
+ 	u_int16_t	intermediate_network __attribute__((packed));
+@@ -87,7 +87,7 @@ struct ipx_rt_def {
+ struct ipx_rip_packet
+ {
+ 	u_int16_t		operation __attribute__((packed));
+-	struct ipx_rt_def	rt[1] __attribute__((packed));
++	struct ipx_rt_def	rt[1];
+ };
+ 
+ #ifdef SWIG
+diff -Naurp ncpfs-2.2.6.orig//include/ncp/kernel/ncp.h ncpfs-2.2.6//include/ncp/kernel/ncp.h
+--- ncpfs-2.2.6.orig//include/ncp/kernel/ncp.h	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6//include/ncp/kernel/ncp.h	2011-02-10 02:38:18.822076000 -0500
+@@ -53,12 +53,12 @@
+ 
+ struct ncp_request_header {
+ 	u_int16_t type __attribute__((packed));
+-	u_int8_t  sequence __attribute__((packed));
+-	u_int8_t  conn_low __attribute__((packed));
+-	u_int8_t  task __attribute__((packed));
+-	u_int8_t  conn_high __attribute__((packed));
+-	u_int8_t  function __attribute__((packed));
+-	u_int8_t  data[0] __attribute__((packed));
++	u_int8_t  sequence;
++	u_int8_t  conn_low;
++	u_int8_t  task;
++	u_int8_t  conn_high;
++	u_int8_t  function;
++	u_int8_t  data[0];
+ };
+ 
+ #define NCP_REPLY                (0x3333)
+@@ -66,13 +66,13 @@ struct ncp_request_header {
+ 
+ struct ncp_reply_header {
+ 	u_int16_t type __attribute__((packed));
+-	u_int8_t sequence __attribute__((packed));
+-	u_int8_t conn_low __attribute__((packed));
+-	u_int8_t task __attribute__((packed));
+-	u_int8_t conn_high __attribute__((packed));
+-	u_int8_t completion_code __attribute__((packed));
+-	u_int8_t connection_state __attribute__((packed));
+-	u_int8_t data[0] __attribute__((packed));
++	u_int8_t sequence;
++	u_int8_t conn_low;
++	u_int8_t task;
++	u_int8_t conn_high;
++	u_int8_t completion_code;
++	u_int8_t connection_state;
++	u_int8_t data[0];
+ };
+ 
+ #define NCP_VOLNAME_LEN (16)
+@@ -230,8 +230,8 @@ struct nw_info_struct {
+ 	u_int32_t EAKeyCount __attribute__((packed));
+ 	u_int32_t EAKeySize __attribute__((packed));
+ 	u_int32_t NSCreator __attribute__((packed));
+-	u_int8_t nameLen __attribute__((packed));
+-	u_int8_t entryName[256] __attribute__((packed));
++	u_int8_t nameLen;
++	u_int8_t entryName[256];
+ };
+ #endif
+ 
+@@ -282,13 +282,13 @@ struct nw_file_info {
+ 	int opened;
+ 	int access;
+ 	u_int32_t server_file_handle __attribute__((packed));
+-	u_int8_t open_create_action __attribute__((packed));
+-	u_int8_t file_handle[6] __attribute__((packed));
++	u_int8_t open_create_action;
++	u_int8_t file_handle[6];
+ };
+ #endif
+ 
+ struct nw_search_sequence {
+-	u_int8_t volNumber __attribute__((packed));
++	u_int8_t volNumber;
+ 	u_int32_t dirBase __attribute__((packed));
+ 	u_int32_t sequence __attribute__((packed));
+ };
+diff -Naurp ncpfs-2.2.6.orig//include/ncp/ncp.h ncpfs-2.2.6//include/ncp/ncp.h
+--- ncpfs-2.2.6.orig//include/ncp/ncp.h	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6//include/ncp/ncp.h	2011-02-10 02:38:18.822076000 -0500
+@@ -95,7 +95,7 @@ struct prop_net_address {
+ #ifdef SWIG
+ 	fixedArray node[IPX_NODE_LEN];
+ #else
+-	u_int8_t node[IPX_NODE_LEN] __attribute__((packed));
++	u_int8_t node[IPX_NODE_LEN];
+ #endif
+ 	u_int16_t port __attribute__((packed));
+ };
+@@ -163,20 +163,20 @@ struct nw_queue_job_entry {
+ 	u_int32_t ClientTask __attribute__((packed));
+ 	u_int32_t ClientObjectID __attribute__((packed));
+ 	u_int32_t TargetServerID __attribute__((packed));
+-	u_int8_t TargetExecTime[6] __attribute__((packed));
+-	u_int8_t JobEntryTime[6] __attribute__((packed));
++	u_int8_t TargetExecTime[6];
++	u_int8_t JobEntryTime[6];
+ 	u_int32_t JobNumber __attribute__((packed));
+ 	u_int16_t JobType __attribute__((packed));
+ 	u_int16_t JobPosition __attribute__((packed));
+ 	u_int16_t JobControlFlags __attribute__((packed));
+-	u_int8_t FileNameLen __attribute__((packed));
+-	char JobFileName[13] __attribute__((packed));
++	u_int8_t FileNameLen;
++	char JobFileName[13];
+ 	u_int32_t JobFileHandle __attribute__((packed));
+ 	u_int32_t ServerStation __attribute__((packed));
+ 	u_int32_t ServerTaskNumber __attribute__((packed));
+ 	u_int32_t ServerObjectID __attribute__((packed));
+-	char JobTextDescription[50] __attribute__((packed));
+-	char ClientRecordArea[152] __attribute__((packed));
++	char JobTextDescription[50];
++	char ClientRecordArea[152];
+ };
+ 
+ struct queue_job {
+@@ -217,18 +217,18 @@ struct print_job_record {
+ };
+ #else
+ struct print_job_record {
+-	u_int8_t Version __attribute__((packed));
+-	u_int8_t TabSize __attribute__((packed));
++	u_int8_t Version;
++	u_int8_t TabSize;
+ 	u_int16_t Copies __attribute__((packed));
+ 	u_int16_t CtrlFlags __attribute__((packed));
+ 	u_int16_t Lines __attribute__((packed));
+ 	u_int16_t Rows __attribute__((packed));
+-	char FormName[16] __attribute__((packed));
+-	u_int8_t Reserved[6] __attribute__((packed));
+-	char BannerName[13] __attribute__((packed));
+-	char FnameBanner[13] __attribute__((packed));
+-	char FnameHeader[14] __attribute__((packed));
+-	char Path[80] __attribute__((packed));
++	char FormName[16];
++	u_int8_t Reserved[6];
++	char BannerName[13];
++	char FnameBanner[13];
++	char FnameHeader[14];
++	char Path[80];
+ };
+ #endif
+ 
+diff -Naurp ncpfs-2.2.6.orig//include/ncp/ncplib.h ncpfs-2.2.6//include/ncp/ncplib.h
+--- ncpfs-2.2.6.orig//include/ncp/ncplib.h	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6//include/ncp/ncplib.h	2011-02-10 02:38:18.822076000 -0500
+@@ -462,24 +462,24 @@ struct ncp_file_server_info
+ #else
+ struct ncp_file_server_info
+ {
+-	u_int8_t ServerName[48] __attribute__((packed));
+-	u_int8_t FileServiceVersion __attribute__((packed));
+-	u_int8_t FileServiceSubVersion __attribute__((packed));
++	u_int8_t ServerName[48];
++	u_int8_t FileServiceVersion;
++	u_int8_t FileServiceSubVersion;
+ 	u_int16_t MaximumServiceConnections __attribute__((packed));
+ 	u_int16_t ConnectionsInUse __attribute__((packed));
+ 	u_int16_t NumberMountedVolumes __attribute__((packed));
+-	u_int8_t Revision __attribute__((packed));
+-	u_int8_t SFTLevel __attribute__((packed));
+-	u_int8_t TTSLevel __attribute__((packed));
++	u_int8_t Revision;
++	u_int8_t SFTLevel;
++	u_int8_t TTSLevel;
+ 	u_int16_t MaxConnectionsEverUsed __attribute__((packed));
+-	u_int8_t AccountVersion __attribute__((packed));
+-	u_int8_t VAPVersion __attribute__((packed));
+-	u_int8_t QueueVersion __attribute__((packed));
+-	u_int8_t PrintVersion __attribute__((packed));
+-	u_int8_t VirtualConsoleVersion __attribute__((packed));
+-	u_int8_t RestrictionLevel __attribute__((packed));
+-	u_int8_t InternetBridge __attribute__((packed));
+-	u_int8_t Reserved[60] __attribute__((packed));
++	u_int8_t AccountVersion;
++	u_int8_t VAPVersion;
++	u_int8_t QueueVersion;
++	u_int8_t PrintVersion;
++	u_int8_t VirtualConsoleVersion;
++	u_int8_t RestrictionLevel;
++	u_int8_t InternetBridge;
++	u_int8_t Reserved[60];
+ };
+ #endif
+ 
+@@ -592,7 +592,7 @@ struct ncp_station_addr
+ #ifdef SWIG
+ 	fixedArray Node[6];
+ #else
+-	u_int8_t Node[6] __attribute__((packed));
++	u_int8_t Node[6];
+ #endif
+ 	u_int16_t Socket __attribute__((packed));
+ };
+@@ -602,32 +602,32 @@ struct ncp_prop_login_control
+ #ifdef SWIG
+ 	fixedArray AccountExpireDate[3];
+ #else
+-	u_int8_t AccountExpireDate[3] __attribute__((packed));
++	u_int8_t AccountExpireDate[3];
+ #endif	
+-	u_int8_t Disabled __attribute__((packed));
++	u_int8_t Disabled;
+ #ifdef SWIG
+ 	fixedArray PasswordExpireDate[3];
+ #else	
+-	u_int8_t PasswordExpireDate[3] __attribute__((packed));
++	u_int8_t PasswordExpireDate[3];
+ #endif	
+-	u_int8_t GraceLogins __attribute__((packed));
++	u_int8_t GraceLogins;
+ 	u_int16_t PasswordExpireInterval __attribute__((packed));
+-	u_int8_t MaxGraceLogins __attribute__((packed));
+-	u_int8_t MinPasswordLength __attribute__((packed));
++	u_int8_t MaxGraceLogins;
++	u_int8_t MinPasswordLength;
+ 	u_int16_t MaxConnections __attribute__((packed));
+ #ifdef SWIG
+ 	fixedArray ConnectionTimeMask[42] __attribute__((packed));
+ 	fixedArray LastLogin[6] __attribute__((packed));
+ #else	
+-	u_int8_t ConnectionTimeMask[42] __attribute__((packed));
+-	u_int8_t LastLogin[6] __attribute__((packed));
++	u_int8_t ConnectionTimeMask[42];
++	u_int8_t LastLogin[6];
+ #endif	
+-	u_int8_t RestrictionMask __attribute__((packed));
+-	u_int8_t reserved __attribute__((packed));
++	u_int8_t RestrictionMask;
++	u_int8_t reserved;
+ 	u_int32_t MaxDiskUsage __attribute__((packed));
+ 	u_int16_t BadLoginCount __attribute__((packed));
+ 	u_int32_t BadLoginCountDown __attribute__((packed));
+-	struct ncp_station_addr LastIntruder __attribute__((packed));
++	struct ncp_station_addr LastIntruder;
+ };
+ 
+ NWCCODE NWReadPropertyValue(NWCONN_HANDLE conn, const char *objName,
+diff -Naurp ncpfs-2.2.6.orig//ipx-1.0/ipx_cmd.c ncpfs-2.2.6//ipx-1.0/ipx_cmd.c
+--- ncpfs-2.2.6.orig//ipx-1.0/ipx_cmd.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6//ipx-1.0/ipx_cmd.c	2011-02-10 02:40:19.222076002 -0500
+@@ -63,8 +63,8 @@
+ /* we are doing EthernetII... Any objections? */
+ struct {
+ 	u_int16_t	unknown	__attribute__((packed));
+-	u_int8_t	dst[6]	__attribute__((packed));
+-	u_int8_t	src[6]	__attribute__((packed));
++	u_int8_t	dst[6];
++	u_int8_t	src[6];
+ 	u_int16_t	type	__attribute__((packed));
+ 	u_int8_t	ipx[16384];
+ 	} buffer;
+diff -Naurp ncpfs-2.2.6.orig//lib/ncplib.c ncpfs-2.2.6//lib/ncplib.c
+--- ncpfs-2.2.6.orig//lib/ncplib.c	2011-02-10 02:38:05.000000000 -0500
++++ ncpfs-2.2.6//lib/ncplib.c	2011-02-10 02:38:18.822076000 -0500
+@@ -2584,13 +2584,13 @@ ncp_request(struct ncp_conn *conn, int f
+ 
+ struct nw_time_buffer
+ {
+-	u_int8_t year __attribute__((packed));
+-	u_int8_t month __attribute__((packed));
+-	u_int8_t day __attribute__((packed));
+-	u_int8_t hour __attribute__((packed));
+-	u_int8_t minute __attribute__((packed));
+-	u_int8_t second __attribute__((packed));
+-	u_int8_t wday __attribute__((packed));
++	u_int8_t year;
++	u_int8_t month;
++	u_int8_t day;
++	u_int8_t hour;
++	u_int8_t minute;
++	u_int8_t second;
++	u_int8_t wday;
+ };
+ 
+ static time_t

@@ -1,0 +1,21 @@
+--- a/tools/tracetop/Makefile.am
++++ b/tools/tracetop/Makefile.am
+@@ -6,6 +6,6 @@
+ include ../Makefile.tools
+ 
+ tracetop_SOURCES = tracetop.cc
+-tracetop_LDADD = -lncurses 
++tracetop_LDADD = @ncurses_LIBS@ 
+ tracetop_CPPFLAGS = -fno-strict-aliasing $(AM_CFLAGS)
+ endif
+--- a/configure.in
++++ b/configure.in
+@@ -492,6 +492,8 @@
+ 	fi
+ fi
+ 
++PKG_CHECK_MODULES(ncurses,ncurses)
++
+ AC_ARG_WITH([ncurses],
+ 	AC_HELP_STRING([--with-ncurses], [build tracetop (requires ncurses)]))
+ 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>netmon</herd>
+	<use>
+		<flag name="pcap">Enable packet capturing support using <pkg>net-libs/libpcap</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">flowgrind/flowgrind</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,530 @@
+Author: Roland Rosenfeld <roland@debian.org>
+Description: Escape hyphen '-' in man pages
+
+--- a/doc/fig2dev.1
++++ b/doc/fig2dev.1
+@@ -63,9 +63,9 @@
+ Notes:
+ .br
+ .I dvips
+-and
++ and
+ .I xdvi
+-must be compiled with the tpic support (-DTPIC) for epic, eepic and tpic to work.
++must be compiled with the tpic support (\-DTPIC) for epic, eepic and tpic to work.
+ .br
+ You must have ghostscript and ps2pdf, which comes with the ghostscript distribution
+ to get the pdf output and the bitmap formats (png, jpeg, etc.), and the netpbm (pbmplus)
+@@ -81,16 +81,16 @@
+ 
+ .TP
+ .B "\-D +/-rangelist"
+-With +rangelist, keep only those depths in the list.  With -rangelist, keep all
++With +rangelist, keep only those depths in the list.  With \-rangelist, keep all
+ depths except those in the list. The rangelist may be a list of comma-separated
+-numbers or ranges separated by colon (:). For example, -D +10,40,55:70,80
++numbers or ranges separated by colon (:). For example, \-D +10,40,55:70,80
+ means keep only layers 10, 40, 55 \fBthrough\fR 70, and 80.
+ 
+ .TP
+-.B -K
+-The selection of the depths with the '-D +/-rangelist' option does normally not
++.B \-K
++The selection of the depths with the '\-D +/\-rangelist' option does normally not
+ affect the calcualtion of the bounding box. Thus the generated document might 
+-have a much larger bounding box than necessary. If -K is given then the 
++have a much larger bounding box than necessary. If \-K is given then the 
+ bounding box is adjusted to include only those objects in the selected depths.
+ 
+ .TP
+@@ -107,10 +107,10 @@
+ .TP
+ .B "\-G minor[:major][:unit]"
+ Draws a grid on the page.  Specify thin, or thin and thick line
+-spacing in one of several units.  For example, "-G .25:1cm" draws a thin,
++spacing in one of several units.  For example, "\-G .25:1cm" draws a thin,
+ gray line every .25 cm and a thicker gray line every 1 cm.  Specifying
+-"-G 1in" draws a thin line every 1 inch.
+-Fractions may be used, e.g. "-G 1/16:1/2in" will draw a thin line every
++"\-G 1in" draws a thin line every 1 inch.
++Fractions may be used, e.g. "\-G 1/16:1/2in" will draw a thin line every
+ 1/16 inch (0.0625 inch) and a thick line every 1/2 inch.
+ .br
+ Allowable units are: i, in, inch, f, ft, feet, c, cm, mm, and m.
+@@ -126,7 +126,7 @@
+ Set the magnification at which the figure is rendered to
+ .I mag.
+ The default is 1.0.
+-This may not be used with the maxdimension option (-Z).
++This may not be used with the maxdimension option (\-Z).
+ 
+ .TP
+ .B "\-s size"
+@@ -141,7 +141,7 @@
+ .I maxdimension
+ inches or cm, depending on whether the figure was saved with
+ imperial or metric units.
+-This may not be used with the magnification option (-m).
++This may not be used with the magnification option (\-m).
+ 
+ .TP
+ .I other options
+@@ -157,7 +157,7 @@
+ something that they won't do with EPS files that have an ASCII preview.
+ .TP
+ .B "\-b dummyarg"
+-Generate binary output (dummy argument required after the "-b").
++Generate binary output (dummy argument required after the "\-b").
+ 
+ .TP
+ .B \-r
+@@ -335,7 +335,7 @@
+ file.
+ The table must have 21 entries - one for each of the area fill patterns.
+ Each entry consists of 5 numbers which specify the
+-1.) pattern number (-1 - 6),
++1.) pattern number (\-1 - 6),
+ 2.) pattern length (inches),
+ 3.) fill type (1 - 5),
+ 4.) fill spacing (inches) and
+@@ -390,7 +390,7 @@
+ .TP
+ .B \-F
+ Use correct font sizes (points, 1/72 inch) instead of the traditional size that xfig/fig2dev uses,
+-which is (1/80 inch).  The corresponding xfig command-line option is -correct_font_size.
++which is (1/80 inch).  The corresponding xfig command-line option is \-correct_font_size.
+ 
+ .TP
+ .B \-g color
+@@ -403,13 +403,13 @@
+ Convert all colors to grayscale.
+ 
+ .TP
+-.B -S smoothfactor
++.B \-S smoothfactor
+ This will smooth the output by passing
+ .I smoothfactor
+ to ghostscript in the 
+-.I -dTextAlphaBits 
++.I \-dTextAlphaBits 
+ and
+-.I -dGraphicsAlphaBits
++.I \-dGraphicsAlphaBits
+ options to improve font rendering and graphic smoothing.
+ A value of 2 for
+ .I smoothfactor
+@@ -418,7 +418,7 @@
+ .SH GIF OPTIONS
+ 
+ .TP
+-.B -t color
++.B \-t color
+ Use
+ .I color
+ for the transparent color in the GIF file.  This must be specified
+@@ -428,7 +428,7 @@
+ 
+ .SH JPEG OPTIONS
+ .TP
+-.B -q image_quality
++.B \-q image_quality
+ use the integer value
+ .I image_quality
+ for the JPEG "Quality" factor.  Valid values are 0-100, with the default being 75.
+@@ -495,7 +495,7 @@
+ .I fig2dev
+ scales the figure by 1/8 before generating METAFONT code.
+ The magnification can be further changed with the
+-.B -m
++.B \-m
+ option or by giving magnification options to
+ .B mf.
+ .LP
+@@ -506,33 +506,33 @@
+ under the subdirectory: graphics/mfpic
+ 
+ .TP
+-.B -C code
++.B \-C code
+ specifies the starting METAFONT font code. The default is 32.
+ .TP
+-.B -n name
++.B \-n name
+ specifies the name to use in the output file.
+ .TP
+-.B -p pen_magnification
++.B \-p pen_magnification
+ specifies how much the line width should be magnified compared to the
+ original figure. The default is 1.
+ .TP
+-.B -t top
++.B \-t top
+ specifies the top of the whole coordinate system. The default is
+ .B ypos.
+ .TP
+-.B -x xmin
++.B \-x xmin
+ specifies the minimum x coordinate value of the figure (inches). The
+ default is 0.
+ .TP
+-.B -y ymin
++.B \-y ymin
+ specifies the minumum y coordinate value of the figure (inches). The
+ default is 0.
+ .TP
+-.B -X xmax
++.B \-X xmax
+ specifies the maximum x coordinate value of the figure (inches). The
+ default is 8.
+ .TP
+-.B -Y ymax
++.B \-Y ymax
+ specifies the maximum y coordinate value of the figure (inches). The
+ default is 8.
+ 
+@@ -546,7 +546,7 @@
+ Include file content as additional header.
+ 
+ .TP
+-.B -o
++.B \-o
+ Old mode (no latex).
+ 
+ .TP
+@@ -597,15 +597,15 @@
+ Set encoding for latex text translation (0 no translation, 1 ISO-8859-1, 2 ISO-8859-2)
+ 
+ .SH GBX OPTIONS (Gerber, RS-247-X) 
+-Typically you will wish to set the y scale to -1.  See
+-.B -g
++Typically you will wish to set the y scale to \-1.  See
++.B \-g
+ for more information.
+ .TP
+-.B -d [mm|in]
++.B \-d [mm|in]
+ Output dimensions should be assumed to be millimeters (mm) or inches
+ (in).  The default is millimeters.
+ .TP
+-.B -p [pos|neg]
++.B \-p [pos|neg]
+ Select the image polarity.  For positive images lines drawn in the fig
+ file will generate lines of material.  For negative images lines drawn
+ in the fig file will result in removed material.  Consider etching a
+@@ -613,29 +613,29 @@
+ choosing 'neg' will result in these lines being etched through the
+ chrome, leaving transparent lines.
+ .TP
+-.B -g <x scale>x<y scale>+<x offset>+<y offset>
++.B \-g <x scale>x<y scale>+<x offset>+<y offset>
+ This controls the geometry of the output, scaling the dimensions as
+ shown and applying the given offset.  Typically you will wish to set
+-the y scale to -1, mirroring about the x axis.  This is because Gerber
++the y scale to \-1, mirroring about the x axis.  This is because Gerber
+ assumes the origin to be bottom left, while xfig selects top left.
+ .TP
+-.B -f <n digits>.<n digits>
++.B \-f <n digits>.<n digits>
+ This controls the number of digits of precision before and after the
+-implied decimal point.  With -f 5.3 the following number 12345678
+-corresponds to 12345.678.  Whereas with -f 3.5 it corresponds to
++implied decimal point.  With \-f 5.3 the following number 12345678
++corresponds to 12345.678.  Whereas with \-f 3.5 it corresponds to
+ 123.45678.  The default is for 3 places before the decimal point and 5
+ after.  This corresponds, to a range of 0 to 1m in 10 micron
+ increments.
+ .TP
+-.B -i [on|off]
++.B \-i [on|off]
+ Controls the output of comments describing the type of objects being
+ output.  The text appears as comments starting with ## on each line in
+ the output file.  By default this is on.
+ 
+ .SH POSTSCRIPT, ENCAPSULATED POSTSCRIPT (EPS), and PDF OPTIONS
+ With PostScript, xfig can be used to create multiple page figures 
+-Specify the -M option to produce a multi-page output. 
+-For posters, add -O to overlap the pages slightly to get around the problem of
++Specify the \-M option to produce a multi-page output. 
++For posters, add \-O to overlap the pages slightly to get around the problem of
+ the unprintable area in most printers, then cut and paste the pages together.
+ Due to memory limitations of most laser printers, the figure should not
+ have large imported images (bitmaps). Great for text with very big letters.
+@@ -658,7 +658,7 @@
+ .LP
+ The EPS driver has the following two special options:
+ .TP
+-.B -B 'Wx [Wy X0 Y0]'
++.B \-B 'Wx [Wy X0 Y0]'
+ This specifies that the bounding box of the EPS file should have the
+ width Wx and the height Wy. 
+ Note that it doesn't scale the figure to this size, it merely sets the bounding box.
+@@ -667,13 +667,13 @@
+ screen (0,0) (upper-left).
+ Wx, Wy, X0 and Y0 are interpreted in centimeters or inches depending on the measure 
+ given in the fig-file.
+-Remember to put either quotes (") or apostrophes (') to group the arguments to -B.
++Remember to put either quotes (") or apostrophes (') to group the arguments to \-B.
+ .TP
+-.B -R 'Wx [Wy X0 Y0]'
+-Same as the -B option except that X0 and Y0 is relative to the lower 
++.B \-R 'Wx [Wy X0 Y0]'
++Same as the \-B option except that X0 and Y0 is relative to the lower 
+ left corner of the 
+ .B figure.
+-Remember to put either quotes (") or apostrophes (') to group the arguments to -R.
++Remember to put either quotes (") or apostrophes (') to group the arguments to \-R.
+ .LP
+ The PDF driver uses all the PostScript options.
+ .LP
+@@ -697,106 +697,106 @@
+ In addition, there are 16 patterns such as bricks, diagonal lines,
+ crosshatch, etc.
+ .TP
+-.B -A
++.B \-A
+ Add an ASCII (EPSI) preview.
+ .TP
+-.B -b borderwidth
++.B \-b borderwidth
+ Make blank border around figure of width
+ .I borderwidth.
+ .br
+-Not availble in EPS.
++Not available in EPS.
+ 
+ .TP
+-.B -C dummy_arg
++.B \-C dummy_arg
+ Add a color *binary* TIFF preview for Microsoft products that need a binary preview.
+-See also -T (monochrome preview).  A dummy argument must be supplied for historical reasons.
++See also \-T (monochrome preview).  A dummy argument must be supplied for historical reasons.
+ .TP
+-.B -c
++.B \-c
+ option centers the figure on the page.
+ The centering may not be accurate if there are texts in the
+ .I fig_file
+ that extends too far to the right of other objects.
+ .TP
+-.B -e
++.B \-e
+ option puts the figure against the edge (not centered) of the page.
+-Not availble in EPS.
++Not available in EPS.
+ 
+ .TP
+-.B -F
++.B \-F
+ Use correct font sizes (points) instead of the traditional size that xfig/fig2dev uses,
+-which is 1/80 inch.  The corresponding xfig command-line option is -correct_font_size.
++which is 1/80 inch.  The corresponding xfig command-line option is \-correct_font_size.
+ 
+ .TP
+-.B -g color
++.B \-g color
+ Use
+ .I color
+ for the background.
+ .TP
+-.B -l dummy_arg
++.B \-l dummy_arg
+ Generate figure in landscape mode.  The dummy argument is ignored,
+ but must appear on the command line for reasons of compatibility.
+ This option will override the orientation specification in the
+ file (for file versions 3.0 and higher).
+ .br
+-Not availble in EPS.
++Not available in EPS.
+ .TP
+-.B -M
++.B \-M
+ Generate multiple pages if figure exceeds paper size.
+ .br
+-Not availble in EPS.
++Not available in EPS.
+ .TP
+ .B \-N
+ Convert all colors to grayscale.
+ 
+ .TP
+-.B -n name
++.B \-n name
+ Set the Title part of the PostScript output to
+ .I name.
+ This is useful when the input to
+ .I fig2dev
+ comes from standard input.
+ .TP
+-.B -O
++.B \-O
+ When used with \fB-M\fR,
+ overlaps the pages slightly to get around the problem of
+ the unprintable area in most printers.
+ .br
+-Not availble in EPS.
++Not available in EPS.
+ .TP
+-.B -p dummy_arg
++.B \-p dummy_arg
+ Generate figure in portrait mode.  The dummy argument is ignored,
+ but must appear on the command line for reasons of compatibility.
+ This option will override the orientation specification in the
+ file (for file versions 3.0 and higher).
+ This is the default for Fig files of version 2.1 or lower.
+ .br
+-Not availble in EPS.
++Not available in EPS.
+ 
+ .TP
+-.B -T
++.B \-T
+ Add a monochrome *binary* TIFF preview for Microsoft products that need a binary preview.
+-See also -C (color preview).
++See also \-C (color preview).
+ .TP
+ .TP
+-.B -x offset
++.B \-x offset
+ shift the figure in the X direction by
+ .I offset
+ units (1/72 inch).
+ A negative value shifts the figure to the left and a positive value to the right.
+ .br
+-Not availble in EPS.
++Not available in EPS.
+ .TP
+-.B -y offset
++.B \-y offset
+ shift the figure in the Y direction by
+ .I offset
+ units (1/72 inch).
+ A negative value shifts the figure up and a positive value down.
+ .br
+-Not availble in EPS.
++Not available in EPS.
+ .TP
+-.B -z papersize
++.B \-z papersize
+ Sets the papersize. 
+-Not availble in EPS.
++Not available in EPS.
+ .br
+ Available paper sizes are:
+ .nf
+@@ -839,17 +839,17 @@
+ special text.
+ 
+ .TP
+-.B -F
++.B \-F
+ Use correct font sizes (points) instead of the traditional size that xfig/fig2dev uses,
+-which is 1/80 inch.  The corresponding xfig command-line option is -correct_font_size.
++which is 1/80 inch.  The corresponding xfig command-line option is \-correct_font_size.
+ 
+ .TP
+-.B -g color
++.B \-g color
+ Use
+ .I color
+ for the background.
+ .TP
+-.B -n name
++.B \-n name
+ sets the Title part of the PostScript output to
+ .I name.
+ This is useful when the input to
+@@ -876,7 +876,7 @@
+ LaTeX document. With this option on, you can set the font from your LaTeX
+ document (like "\fB\\sfshape \\input picture.eepic\fR").
+ .TP
+-.B -p file
++.B \-p file
+ specifies the name of the PostScript file to be overlaid.
+ If not set or its value is null then no PS file will be inserted.
+ 
+@@ -977,7 +977,7 @@
+ .TP
+ .B \-P 
+ Shorthand for
+-.B -n 3
++.B \-n 3
+  .
+ 
+ .TP
+@@ -992,7 +992,7 @@
+ directory!  Don't put your stuff here.  The
+ .B includegraphics
+ commands in the output file refer to this directory.  Even
+-if the -p option is not used, 
++if the \-p option is not used, 
+ .B includegrpahics
+ commands follow this convention with the default directory
+ .I "\./eps".
+@@ -1064,26 +1064,26 @@
+ 
+ .SH TK and PTK OPTIONS (tcl/tk and Perl/tk)
+ .TP
+-.B -l dummy_arg
++.B \-l dummy_arg
+ Generate figure in landscape mode.  The dummy argument is ignored,
+ but must appear on the command line for reasons of compatibility.
+ This option will override the orientation specification in the
+ file (for file versions 3.0 and higher).
+ .TP
+-.B -p dummy_arg
++.B \-p dummy_arg
+ Generate figure in portrait mode.  The dummy argument is ignored,
+ but must appear on the command line for reasons of compatibility.
+ This option will override the orientation specification in the
+ file (for file versions 3.0 and higher).
+ This is the default for Fig files of version 2.1 or lower.
+ .TP
+-.B -P
++.B \-P
+ Generate canvas of full page size instead of using the bounding box
+ of the figure's objects. The default is to use only the bounding box.
+ .TP
+-.B -z papersize
++.B \-z papersize
+ Sets the papersize.  See the POSTSCRIPT OPTIONS for available paper sizes.
+-This is only used when the -P option (use full page) is used.
++This is only used when the \-P option (use full page) is used.
+ 
+ .SH "SEE ALSO"
+ [x]fig(1),
+--- a/doc/transfig.1
++++ b/doc/transfig.1
+@@ -3,11 +3,11 @@
+ transfig \- creates a makefile for portable LaTeX figures
+ .SH SYNOPSIS
+ .B transfig
+-[ -L \fIlanguage\fR ]
+-[ -M \fImakefile\fR ]
+-[ -T \fItexfile\fR ]
+-[ -I \fImacrofile\fR ]
+-[ -V ] 
++[ \-L \fIlanguage\fR ]
++[ \-M \fImakefile\fR ]
++[ \-T \fItexfile\fR ]
++[ \-I \fImacrofile\fR ]
++[ \-V ] 
+ [ \fIcontrol_specs\fR figfile ... ]
+ .SH DESCRIPTION
+ .I Transfig
+@@ -76,13 +76,13 @@
+ is the default.
+ .PP
+ The names of the makefile and TeX macro file can be set with the
+--M and -T options.
++\-M and \-T options.
+ The default names are "Makefile" and "transfig.tex", respectively.
+ If there is already an existing \fImakefile\fR in the directory, transfig
+ first renames it to \fImakefile~\fR.  The same holds for any existing TeX macro file.
+-If the -I option is specified, then a command to read in \fImacrofile\fR is
++If the \-I option is specified, then a command to read in \fImacrofile\fR is
+ 	inserted into the TeX macro file.
+-If the -V option is specified, the program version number is printed only.
++If the \-V option is specified, the program version number is printed only.
+ .PP
+ Control specifiers are 
+ .TP

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=vim-Qt
+Comment=A highly configurable text editor
+Exec=qvim -f %F
+Icon=vim-qt
+Terminal=false
+Type=Application
+MimeType=text/plain;
+Categories=Qt;TextEditor;Development;

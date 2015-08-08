@@ -1,0 +1,48 @@
+From 0b44b1aa3d66f974e3d255c6e027947f1375b685 Mon Sep 17 00:00:00 2001
+From: Stephen Kelly <steveire@gmail.com>
+Date: Mon, 25 Apr 2011 22:09:08 +0200
+Subject: [PATCH 2/6] Only start akonadi asynchronously on KDE 4.6.2.
+
+Revises cfa404b7188e4c26bddbc9579728f6d25f8cd214 to hopefully fix
+the bug seen on fedora.
+
+Please re-test this on 4.6.2 on fedora too. Unfortunately that's the
+best I can do because I can't reproduce the issue.
+
+BUG: 268120
+---
+ kaddressbook/main.cpp  |    2 +-
+ kmail/kmmainwidget.cpp |    2 +-
+ kmail/main.cpp         |    2 +-
+ kontact/src/main.cpp   |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/kmail/kmmainwidget.cpp b/kmail/kmmainwidget.cpp
+index 10b14e4..f6461d9 100644
+--- a/kmail/kmmainwidget.cpp
++++ b/kmail/kmmainwidget.cpp
+@@ -189,7 +189,7 @@ KMMainWidget::KMMainWidget( QWidget *parent, KXMLGUIClient *aGUIClient,
+     mVacationIndicatorActive( false ),
+     mGoToFirstUnreadMessageInSelectedFolder( false )
+ {
+-#if KDE_IS_VERSION(4,6,0)
++#if KDE_IS_VERSION(4,6,2)
+   Akonadi::Control::widgetNeedsAkonadi(this);
+   Akonadi::ServerManager::start();
+ #endif
+diff --git a/kmail/main.cpp b/kmail/main.cpp
+index c2dd1c3..f59d5e6 100644
+--- a/kmail/main.cpp
++++ b/kmail/main.cpp
+@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
+   app.setEventLoopReached();
+   app.delayedInstanceCreation();
+ 
+-#if !KDE_IS_VERSION(4,6,0)
++#if !KDE_IS_VERSION(4,6,2)
+   // Start Akonadi
+   if ( !Akonadi::Control::start( kmkernel->getKMMainWidget() ) ) {
+     //TODO: add message box after string freeze
+-- 
+1.7.9.2
+

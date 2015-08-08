@@ -1,0 +1,53 @@
+# Upstream confused LIBDIRS with LDFLAGS in Makefile. f2py wants only
+# LIBDIRS as parameter and takes LDFLAGS only from environment.
+--- Makefile.in.orig	2013-01-31 13:17:23.000000000 +0000
++++ Makefile.in	2013-01-31 13:19:19.000000000 +0000
+@@ -3,7 +3,7 @@
+ INSTALL=	install
+ CC ?= @CC@
+ FFLAGS	= @FFLAGS@
+-LDFLAGS	= @LDFLAGS@
++LIBDIRS	= @LIBDIRS@
+ LIBS	= @LIBS@ -lfftw3f
+ CPPFLAGS = @CPPFLAGS@
+ CFLAGS	= @CFLAGS@
+@@ -39,7 +39,7 @@
+ FCV=@FCV@
+ FC_LIB_PATH	+= @FC_LIB_PATH@
+ 
+-LDFLAGS	+= -L${FC_LIB_PATH}
++LIBDIRS	+= -L${FC_LIB_PATH}
+ 
+ PYTHON	?= @PYTHON@
+ RM	?= @RM@
+@@ -78,7 +78,7 @@
+ 	--f77flags="${FFLAGS}" --f90flags="${FFLAGS}" \
+ 	--fcompiler=${FCV} --f77exec=${FC} --f90exec=${FC} \
+ 	--opt="-fbounds-check ${FFLAGS}" \
+-	${CPPFLAGS} ${LDFLAGS} ${LIBS} \
++	${CPPFLAGS} ${LIBDIRS} ${LIBS} \
+ 	only: $(F2PYONLY) : \
+ 	$(SRCS2F90) $(SRCS2F77) $(SRCS2C)
+ 	${MKDIR} -p build/lib/WsprMod
+# drop hardcoded libdir path,
+# switch LDFLAGS naming to LIBDIRS (see above comment).
+--- configure.ac.orig	2013-01-31 13:19:01.000000000 +0000
++++ configure.ac	2013-01-31 13:19:19.000000000 +0000
+@@ -22,7 +22,7 @@
+ 
+ dnl Lets guess at some likely places for extra libs/includes XXX -db
+ CPPFLAGS="-I/usr/local/include ${CPPFLAGS}"
+-LDFLAGS="-L/usr/local/lib ${LDFLAGS}"
++LIBDIRS="-L/usr/local/lib ${LIBDIRS}"
+ LIBS=" -lpthread ${LIBS}"
+ FFLAGS_GFORTRAN="${FFLAGS} -fno-range-check -ffixed-line-length-none\
+ 			-Wall -fbounds-check -fno-second-underscore -fPIC"
+@@ -160,7 +160,7 @@
+ dnl 
+ AC_SUBST(PREFIX, "${prefix}")
+ AC_SUBST(CPPFLAGS, "${CPPFLAGS}")
+-AC_SUBST(LDFLAGS, "${LDFLAGS}")
++AC_SUBST(LIBDIRS, "${LIBDIRS}")
+ AC_SUBST(LIBS, "${LIBS}")
+ AC_SUBST(CFLAGS)
+ AC_SUBST(FFLAGS)

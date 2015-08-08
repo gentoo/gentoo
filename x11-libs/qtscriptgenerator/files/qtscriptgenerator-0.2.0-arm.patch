@@ -1,0 +1,41 @@
+diff -Nru qtscriptgenerator-src-0.2.0.orig/generator/typesystem_core-common.xml qtscriptgenerator-src-0.2.0/generator/typesystem_core-common.xml
+--- qtscriptgenerator-src-0.2.0.orig/generator/typesystem_core-common.xml	2012-01-23 12:30:03.000000000 +0100
++++ qtscriptgenerator-src-0.2.0/generator/typesystem_core-common.xml	2012-03-08 05:36:14.342528441 +0100
+@@ -921,6 +921,7 @@
+   <value-type name="QEasingCurve">
+     <modify-function signature="customType()const" remove="all" />
+     <modify-function signature="setCustomType(double)" remove="all" />
++    <modify-function signature="setCustomType(float)" remove="all" />
+   </value-type>
+ 
+   <object-type name="QAbstractAnimation" />
+diff -Nru qtscriptgenerator-src-0.2.0.orig/generator/typesystem_core-qtscript.xml qtscriptgenerator-src-0.2.0/generator/typesystem_core-qtscript.xml
+--- qtscriptgenerator-src-0.2.0.orig/generator/typesystem_core-qtscript.xml	2012-01-23 12:30:03.000000000 +0100
++++ qtscriptgenerator-src-0.2.0/generator/typesystem_core-qtscript.xml	2012-03-08 05:41:37.492524499 +0100
+@@ -1447,6 +1447,7 @@
+     <modify-function signature="operator==(const QEasingCurve &amp;)const" remove="all"/>
+     <modify-function signature="operator!=(const QEasingCurve &amp;)const" remove="all"/>
+     <modify-function signature="setCustomType(double)" remove="all"/>
++    <modify-function signature="setCustomType(float)" remove="all"/>
+     <modify-function signature="customType()const" remove="all"/>
+   </value-type>
+ 
+diff -Nru qtscriptgenerator-src-0.2.0.orig/generator/typesystem_core.xml qtscriptgenerator-src-0.2.0/generator/typesystem_core.xml
+--- qtscriptgenerator-src-0.2.0.orig/generator/typesystem_core.xml	2012-01-23 12:30:03.000000000 +0100
++++ qtscriptgenerator-src-0.2.0/generator/typesystem_core.xml	2012-03-08 05:39:53.932524942 +0100
+@@ -1388,14 +1388,12 @@
+   </value-type>
+ 
+   <value-type name="QEasingCurve">
+-    <modify-function signature="customType()const" remove="all"/>
+-    <modify-function signature="setCustomType(double)" remove="all"/>
+-  
+     <modify-function signature="QEasingCurve(QEasingCurve)" remove="all"/>
+     <modify-function signature="operator=(QEasingCurve)" remove="all"/>
+     <modify-function signature="operator==(const QEasingCurve &amp;)const" remove="all"/>
+     <modify-function signature="operator!=(const QEasingCurve &amp;)const" remove="all"/>
+     <modify-function signature="setCustomType(double)" remove="all"/>
++    <modify-function signature="setCustomType(float)" remove="all"/>
+     <modify-function signature="customType()const" remove="all"/>
+   </value-type>
+ 

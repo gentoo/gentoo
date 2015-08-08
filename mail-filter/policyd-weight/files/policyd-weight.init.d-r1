@@ -1,0 +1,29 @@
+#!/sbin/runscript
+
+extra_started_commands="reload"
+
+daemon="policyd-weight"
+exec="/usr/libexec/postfix/policyd-weight"
+
+depend(){
+	before postfix
+	use net
+}
+
+start(){
+	ebegin "Starting ${daemon}"
+	${exec} start
+	eend $?
+}
+
+stop(){
+	ebegin "Stopping ${daemon}"
+	${exec} -k stop
+	eend $?
+}
+
+reload(){
+	ebegin "Reloading ${daemon}"
+	${exec} reload
+	eend $?
+}

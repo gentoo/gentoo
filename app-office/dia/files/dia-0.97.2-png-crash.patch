@@ -1,0 +1,33 @@
+From 8b8ae09fcc16cc0522679099728f779e291d959c Mon Sep 17 00:00:00 2001
+From: Hans Breuer <hans@breuer.org>
+Date: Fri, 18 Apr 2014 13:28:45 +0200
+Subject: Bug 728405 - back-port some bounding box calculation fixes from
+ master
+
+... so that the unit test works without complaints.
+
+diff --git a/lib/boundingbox.c b/lib/boundingbox.c
+index fd50da7..46adbfa 100644
+--- a/lib/boundingbox.c
++++ b/lib/boundingbox.c
+@@ -494,7 +494,7 @@ polybezier_bbox(const BezPoint *pts, int numpoints,
+        account with the "pointy corners" X (and PS) add when LINEJOIN_MITER mode is 
+        in force. */
+ 
+-    if ((!start) && (!end)) { /* We have a non-extremity vertex. */
++    if (!end) { /* only the last segment might not produce overshoot. */
+       Point vpx,vxn;
+       real co,alpha;
+ 
+@@ -515,7 +515,7 @@ polybezier_bbox(const BezPoint *pts, int numpoints,
+         real overshoot;
+         Point vovs,pto;
+ 
+-	if (finite(alpha))
++	if (alpha > 0.0 && alpha < M_PI)
+ 	  overshoot = extra->middle_trans / sin(alpha/2.0);
+ 	else /* prependicular? */
+ 	  overshoot = extra->middle_trans;
+-- 
+cgit v0.10.1
+

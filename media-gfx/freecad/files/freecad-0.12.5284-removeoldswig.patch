@@ -1,0 +1,111 @@
+--- src/Base/Interpreter.cpp.old	2010-08-27 16:24:16.000000000 +0200
++++ src/Base/Interpreter.cpp	2011-12-24 00:13:52.356641021 +0100
+@@ -503,11 +503,6 @@
+ #if (defined(HAVE_SWIG) && (HAVE_SWIG == 1))
+ namespace Swig_python { extern int createSWIGPointerObj_T(const char* TypeName, void* obj, PyObject** ptr, int own); }
+ #endif
+-namespace Swig_1_3_25 { extern int createSWIGPointerObj_T(const char* TypeName, void* obj, PyObject** ptr, int own); }
+-namespace Swig_1_3_33 { extern int createSWIGPointerObj_T(const char* TypeName, void* obj, PyObject** ptr, int own); }
+-namespace Swig_1_3_36 { extern int createSWIGPointerObj_T(const char* TypeName, void* obj, PyObject** ptr, int own); }
+-namespace Swig_1_3_38 { extern int createSWIGPointerObj_T(const char* TypeName, void* obj, PyObject** ptr, int own); }
+-namespace Swig_1_3_40 { extern int createSWIGPointerObj_T(const char* TypeName, void* obj, PyObject** ptr, int own); }
+ 
+ PyObject* InterpreterSingleton::createSWIGPointerObj(const char* Module, const char* TypeName, void* Pointer, int own)
+ {
+@@ -517,21 +512,6 @@
+     int version = getSWIGVersionFromModule(Module);
+     switch (version&0xff)
+     {
+-    case 25:
+-        result = Swig_1_3_25::createSWIGPointerObj_T(TypeName, Pointer, &proxy, own);
+-        break;
+-    case 33:
+-        result = Swig_1_3_33::createSWIGPointerObj_T(TypeName, Pointer, &proxy, own);
+-        break;
+-    case 36:
+-        result = Swig_1_3_36::createSWIGPointerObj_T(TypeName, Pointer, &proxy, own);
+-        break;
+-    case 38:
+-        result = Swig_1_3_38::createSWIGPointerObj_T(TypeName, Pointer, &proxy, own);
+-        break;
+-    case 40:
+-        result = Swig_1_3_40::createSWIGPointerObj_T(TypeName, Pointer, &proxy, own);
+-        break;
+     default:
+ #if (defined(HAVE_SWIG) && (HAVE_SWIG == 1))
+     result = Swig_python::createSWIGPointerObj_T(TypeName, Pointer, &proxy, own);
+@@ -550,11 +530,6 @@
+ #if (defined(HAVE_SWIG) && (HAVE_SWIG == 1))
+ namespace Swig_python { extern int convertSWIGPointerObj_T(const char* TypeName, PyObject* obj, void** ptr, int flags); }
+ #endif
+-namespace Swig_1_3_25 { extern int convertSWIGPointerObj_T(const char* TypeName, PyObject* obj, void** ptr, int flags); }
+-namespace Swig_1_3_33 { extern int convertSWIGPointerObj_T(const char* TypeName, PyObject* obj, void** ptr, int flags); }
+-namespace Swig_1_3_36 { extern int convertSWIGPointerObj_T(const char* TypeName, PyObject* obj, void** ptr, int flags); }
+-namespace Swig_1_3_38 { extern int convertSWIGPointerObj_T(const char* TypeName, PyObject* obj, void** ptr, int flags); }
+-namespace Swig_1_3_40 { extern int convertSWIGPointerObj_T(const char* TypeName, PyObject* obj, void** ptr, int flags); }
+ 
+ bool InterpreterSingleton::convertSWIGPointerObj(const char* Module, const char* TypeName, PyObject* obj, void** ptr, int flags)
+ {
+@@ -563,21 +538,6 @@
+     int version = getSWIGVersionFromModule(Module);
+     switch (version&0xff)
+     {
+-    case 25:
+-        result = Swig_1_3_25::convertSWIGPointerObj_T(TypeName, obj, ptr, flags);
+-        break;
+-    case 33:
+-        result = Swig_1_3_33::convertSWIGPointerObj_T(TypeName, obj, ptr, flags);
+-        break;
+-    case 36:
+-        result = Swig_1_3_36::convertSWIGPointerObj_T(TypeName, obj, ptr, flags);
+-        break;
+-    case 38:
+-        result = Swig_1_3_38::convertSWIGPointerObj_T(TypeName, obj, ptr, flags);
+-        break;
+-    case 40:
+-        result = Swig_1_3_40::convertSWIGPointerObj_T(TypeName, obj, ptr, flags);
+-        break;
+     default:
+ #if (defined(HAVE_SWIG) && (HAVE_SWIG == 1))
+         result = Swig_python::convertSWIGPointerObj_T(TypeName, obj, ptr, flags);
+@@ -596,11 +556,6 @@
+ #if (defined(HAVE_SWIG) && (HAVE_SWIG == 1))
+ namespace Swig_python { extern void cleanupSWIG_T(const char* TypeName); }
+ #endif
+-namespace Swig_1_3_25 { extern void cleanupSWIG_T(const char* TypeName); }
+-namespace Swig_1_3_33 { extern void cleanupSWIG_T(const char* TypeName); }
+-namespace Swig_1_3_36 { extern void cleanupSWIG_T(const char* TypeName); }
+-namespace Swig_1_3_38 { extern void cleanupSWIG_T(const char* TypeName); }
+-namespace Swig_1_3_40 { extern void cleanupSWIG_T(const char* TypeName); }
+ 
+ void InterpreterSingleton::cleanupSWIG(const char* TypeName)
+ {
+@@ -608,9 +563,4 @@
+ #if (defined(HAVE_SWIG) && (HAVE_SWIG == 1))
+     Swig_python::cleanupSWIG_T(TypeName);
+ #endif
+-    Swig_1_3_25::cleanupSWIG_T(TypeName);
+-    Swig_1_3_33::cleanupSWIG_T(TypeName);
+-    Swig_1_3_36::cleanupSWIG_T(TypeName);
+-    Swig_1_3_38::cleanupSWIG_T(TypeName);
+-    Swig_1_3_40::cleanupSWIG_T(TypeName);
+ }
+--- src/Base/Makefile.am.old	2011-12-24 00:14:25.625540687 +0100
++++ src/Base/Makefile.am	2010-10-27 12:29:37.000000000 +0200
+@@ -65,16 +65,6 @@
+ 		Swap.cpp \
+ 		swigpyrun.inl \
+ 		swigpyrun.cpp \
+-		swigpyrun_1.3.25.cpp \
+-		swigpyrun_1.3.25.h \
+-		swigpyrun_1.3.33.cpp \
+-		swigpyrun_1.3.33.h \
+-		swigpyrun_1.3.36.cpp \
+-		swigpyrun_1.3.36.h \
+-		swigpyrun_1.3.38.cpp \
+-		swigpyrun_1.3.38.h \
+-		swigpyrun_1.3.40.cpp \
+-		swigpyrun_1.3.40.h \
+ 		TimeInfo.cpp \
+ 		Type.cpp \
+ 		Tools.cpp \

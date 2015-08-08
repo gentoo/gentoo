@@ -1,0 +1,18 @@
+--- grib_api-1.9.9.orig/src/grib_ieeefloat.c	2009-11-24 11:51:55.000000000 +0000
++++ grib_api-1.9.9/src/grib_ieeefloat.c	2011-03-08 17:36:39.000000000 +0000
+@@ -336,12 +336,13 @@
+ #if IEEE_LE
+   unsigned char s[8]={0,};
+   unsigned char* buf=(unsigned char*)&x;
++  size_t nb = sizeof(unsigned long);
+   int j=0;
+   for (j=7;j>=0;j--)
+     s[j]= *(buf++);
+-  memcpy(&lval,s,8);
++  memcpy(&lval,s,nb);
+ #elif IEEE_BE
+-  memcpy(&lval,&x,8);
++  memcpy(&lval,&x,nb);
+ #endif
+   return lval;
+ }

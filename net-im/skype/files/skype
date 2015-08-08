@@ -1,0 +1,2 @@
+#!/bin/sh
+exec i686-pc-linux-gnu-apulse skype-bin "$@"

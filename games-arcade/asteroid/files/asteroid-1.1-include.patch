@@ -1,0 +1,11 @@
+--- src/hiscore.c
++++ src/hiscore.c
+@@ -35,6 +35,8 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "main.h"
+ #include "hiscore.h"

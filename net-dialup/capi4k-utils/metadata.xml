@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-dialup</herd>
+	<longdescription lang="en">
+		This package contains the CAPI 2.0 library, which is needed for all
+		CAPI applications. It also contains programs to show information about
+		installed CAPI controllers and for the receiving and sending of FAX
+		messages. CAPI 2.0 drivers for Linux are available for a growing
+		number of ISDN devices.
+	</longdescription>
+	<use>
+		<flag name='fax'>Install capi-fax demo programs</flag>
+		<flag name='pppd'>Installs pppdcapiplugin modules</flag>
+		<flag name='rcapid'>Installs rcapid daemon</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,42 @@
+--- pandoc-1.11.1-orig/tests/lhs-test.html+lhs	2013-03-18 09:26:59.000000000 +1100
++++ pandoc-1.11.1/tests/lhs-test.html+lhs	2013-09-14 10:27:51.318546683 +1000
+@@ -30,7 +30,7 @@
+ <h1>lhs test</h1>
+ <p><code>unsplit</code> is an arrow that takes a pair of values and combines them to return a single value:</p>
+ <pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; unsplit ::</span> (<span class="dt">Arrow</span> a) <span class="ot">=&gt;</span> (b <span class="ot">-&gt;</span> c <span class="ot">-&gt;</span> d) <span class="ot">-&gt;</span> a (b, c) d
+-<span class="ot">&gt;</span> unsplit <span class="fu">=</span> arr <span class="fu">.</span> <span class="fu">uncurry</span>
++<span class="ot">&gt;</span> unsplit <span class="fu">=</span> arr <span class="fu">.</span> uncurry
+ <span class="ot">&gt;</span>           <span class="co">-- arr (\op (x,y) -&gt; x `op` y)</span></code></pre>
+ <p><code>(***)</code> combines two arrows into a new arrow by running the two arrows on a pair of values (one arrow on the first item of the pair and one arrow on the second item of the pair).</p>
+ <pre><code>f *** g = first f &gt;&gt;&gt; second g</code></pre>
+--- pandoc-1.11.1-orig/tests/lhs-test.html	2013-03-18 09:26:59.000000000 +1100
++++ pandoc-1.11.1/tests/lhs-test.html	2013-09-14 10:27:28.671546899 +1000
+@@ -30,7 +30,7 @@
+ <h1>lhs test</h1>
+ <p><code>unsplit</code> is an arrow that takes a pair of values and combines them to return a single value:</p>
+ <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="ot">unsplit ::</span> (<span class="dt">Arrow</span> a) <span class="ot">=&gt;</span> (b <span class="ot">-&gt;</span> c <span class="ot">-&gt;</span> d) <span class="ot">-&gt;</span> a (b, c) d
+-unsplit <span class="fu">=</span> arr <span class="fu">.</span> <span class="fu">uncurry</span>
++unsplit <span class="fu">=</span> arr <span class="fu">.</span> uncurry
+           <span class="co">-- arr (\op (x,y) -&gt; x `op` y)</span></code></pre>
+ <p><code>(***)</code> combines two arrows into a new arrow by running the two arrows on a pair of values (one arrow on the first item of the pair and one arrow on the second item of the pair).</p>
+ <pre><code>f *** g = first f &gt;&gt;&gt; second g</code></pre>
+--- pandoc-1.11.1-orig/tests/lhs-test.latex	2013-09-14 10:46:07.412536229 +1000
++++ pandoc-1.11.1/tests/lhs-test.latex	2013-09-14 10:45:51.638536380 +1000
+@@ -21,7 +21,7 @@
+ \usepackage{color}
+ \usepackage{fancyvrb}
+ \newcommand{\VerbBar}{|}
+-\DefineShortVerb[commandchars=\\\{\}]{\|}
++\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+ \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+ % Add ',fontsize=\small' for more characters per line
+ \newenvironment{Shaded}{}{}
+@@ -73,7 +73,7 @@
+ \begin{Shaded}
+ \begin{Highlighting}[]
+ \OtherTok{unsplit ::} \NormalTok{(}\DataTypeTok{Arrow} \NormalTok{a) }\OtherTok{=>} \NormalTok{(b }\OtherTok{->} \NormalTok{c }\OtherTok{->} \NormalTok{d) }\OtherTok{->} \NormalTok{a (b, c) d}
+-\NormalTok{unsplit }\FunctionTok{=} \NormalTok{arr }\FunctionTok{.} \FunctionTok{uncurry}
++\NormalTok{unsplit }\FunctionTok{=} \NormalTok{arr }\FunctionTok{.} \NormalTok{uncurry}
+           \CommentTok{-- arr (\textbackslash{}op (x,y) -> x `op` y)}
+ \end{Highlighting}
+ \end{Shaded}

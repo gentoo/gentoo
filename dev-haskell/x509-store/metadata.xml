@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<use>
+		<flag name="executable">Build the executable</flag>
+	</use>
+	<longdescription>
+		X.509 collection accessing and storing methods for certificate, crl, exception list
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vincenthz/hs-certificate</remote-id>
+	</upstream>
+</pkgmetadata>

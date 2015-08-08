@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>mattm@gentoo.org</email>
+<name>Matthew Marlowe</name>
+</maintainer>
+<longdescription>
+This is the software that will drive your MakerBot Replicator, Thing-O-Matic, CupCake CNC, RepRap machine, or generic CNC machine. You can give it a GCode or STL file to process, and it takes it from there. It's cross platform, easily installed, and is based on the familiar Arduino / Processing environments. ReplicatorG is used by thousands of MakerBot Operators, and has printed tens of thousands of objects and counting.
+</longdescription>
+<use>
+</use>
+</pkgmetadata>

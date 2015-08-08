@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>desktop-misc</herd>
+  <use>
+    <flag name="drm">Enable VSync with DRM_IOCTL_WAIT_VBLANK</flag>
+    <flag name="opengl">Enable VSync with SGI_swap_control OpenGL extension</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">chjj/compton</remote-id>
+  </upstream>
+</pkgmetadata>

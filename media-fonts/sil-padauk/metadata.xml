@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>fonts</herd>
+  <longdescription lang="en">
+    Padauk supports the Myanmar script extensions including changes to
+    how Burmese is encoded, Sgaw Karen and Mon.
+  </longdescription>
+</pkgmetadata>

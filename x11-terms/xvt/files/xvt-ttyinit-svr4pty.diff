@@ -1,0 +1,63 @@
+--- ttyinit.c	2004-08-24 18:51:18.510722064 +0100
++++ ttyinit.c.new	2004-08-24 18:50:30.539014872 +0100
+@@ -46,6 +46,7 @@
+ #include <pwd.h>
+ #include <errno.h>
+ #include <string.h>
++#include <stropts.h>
+ #include "xvt.h"
+ #include "token.h"
+ #include "command.h"
+@@ -410,44 +411,6 @@
+ get_pseudo_tty(pmaster,pslave)
+ int *pmaster, *pslave;
+ {
+-#ifdef BSD_PTY
+-	int mfd, sfd;
+-	char *s3, *s4;
+-	static char ptyc3[] = "pqrstuvwxyz";
+-	static char ptyc4[] = "0123456789abcdef";
+-	static char ptynam[] = "/dev/ptyxx";
+-	static char ttynam[] = "/dev/ttyxx";
+-
+-	/*  First find a master pty that we can open.
+-	 */
+-	mfd = -1;
+-	for (s3 = ptyc3; *s3 != 0; s3++) {
+-		for (s4 = ptyc4; *s4 != 0; s4++) {
+-			ptynam[8] = ttynam[8] = *s3;
+-			ptynam[9] = ttynam[9] = *s4;
+-			if ((mfd = open(ptynam,O_RDWR)) >= 0) {
+-				if (geteuid() == 0 || access(ttynam,R_OK|W_OK) == 0)
+-					break;
+-				else {
+-					close(mfd);
+-					mfd = -1;
+-				}
+-			}
+-		}
+-		if (mfd >= 0)
+-			break;
+-	}
+-	if (mfd < 0) {
+-		error("Can't open a pseudo teletype");
+-		return(NULL);
+-	}
+-	if ((sfd = open(ttynam,O_RDWR)) < 0) {
+-		error("could not open slave tty %s",ttynam);
+-		return(NULL);
+-	}
+-#endif /* BSD_PTY */
+-
+-#ifdef SVR4_PTY
+ 	char *ttynam;
+ 	int mfd, sfd;
+ 
+@@ -464,7 +427,6 @@
+ 	}
+ 	ioctl(sfd,I_PUSH,"ptem");
+ 	ioctl(sfd,I_PUSH,"ldterm");
+-#endif /* SVR4_PTY */
+ 
+ 	*pslave = sfd;
+ 	*pmaster = mfd;

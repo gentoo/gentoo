@@ -1,0 +1,9 @@
+# Config file for /etc/init.d/busybox-watchdog
+
+# run "/sbin/watchdog --help" to see all possible options.
+
+# Periodically write to watchdog device
+WATCHDOG_OPTS="/dev/watchdog"
+
+# optionally set the nice-level
+#SSD_NICELEVEL="-20"

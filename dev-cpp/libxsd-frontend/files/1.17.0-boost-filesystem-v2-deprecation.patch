@@ -1,0 +1,261 @@
+diff -Naurb -I '^//' -I '^# copyright' -x build libxsd-frontend-1.17.0/tests/dump/driver.cxx xsd-3.3.0-2+dep/libxsd-frontend/tests/dump/driver.cxx
+--- libxsd-frontend-1.17.0/tests/dump/driver.cxx	2010-04-27 21:31:24.000000000 +0200
++++ xsd-3.3.0-2+dep/libxsd-frontend/tests/dump/driver.cxx	2012-08-23 11:30:16.074750804 +0200
+@@ -586,7 +586,11 @@
+ 
+     // Parse schema.
+     //
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+     SemanticGraph::Path path (argv[i], boost::filesystem::native);
++#else
++    SemanticGraph::Path path (argv[i]);
++#endif
+ 
+     Parser parser (true, false, true);
+     Evptr<SemanticGraph::Schema> tu (parser.parse (path));
+diff -Naurb -I '^//' -I '^# copyright' -x build libxsd-frontend-1.17.0/xsd-frontend/parser.cxx xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/parser.cxx
+--- libxsd-frontend-1.17.0/xsd-frontend/parser.cxx	2010-04-27 21:31:24.000000000 +0200
++++ xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/parser.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -1274,7 +1274,11 @@
+     operator () (SemanticGraph::Path const& x,
+                  SemanticGraph::Path const& y) const
+     {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         return x.native_file_string () < y.native_file_string ();
++#else
++        return x.string () < y.string ();
++#endif
+     }
+   };
+ 
+@@ -1627,9 +1631,15 @@
+       friend Boolean
+       operator< (SchemaId const& x, SchemaId const& y)
+       {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         return x.path_.native_file_string () < y.path_.native_file_string ()
+           || (x.path_.native_file_string () == y.path_.native_file_string ()
+               && x.ns_ < y.ns_);
++#else
++        return x.path_.string () < y.path_.string ()
++          || (x.path_.string () == y.path_.string ()
++              && x.ns_ < y.ns_);
++#endif
+       }
+ 
+     private:
+@@ -2376,6 +2386,7 @@
+     Path path, rel_path, abs_path;
+     try
+     {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       try
+       {
+         path = Path (loc);
+@@ -2386,6 +2397,10 @@
+         //
+         path = Path (loc, boost::filesystem::native);
+       }
++#else
++      // The new ABI does not have a fallback native representation
++      path = Path (loc.c_str());
++#endif
+ 
+       if (path.is_complete ())
+       {
+@@ -2479,6 +2494,7 @@
+     Path path, rel_path, abs_path;
+     try
+     {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       try
+       {
+         path = Path (loc);
+@@ -2489,6 +2505,10 @@
+         //
+         path = Path (loc, boost::filesystem::native);
+       }
++#else
++      // The new API does not have a fallback native representation.
++      path = Path (loc.c_str());
++#endif
+ 
+       if (path.is_complete ())
+       {
+@@ -4674,9 +4694,14 @@
+         return true;
+ 
+ 
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       XSDFrontend::SemanticGraph::Path abs_path (
+         XML::transcode_to_narrow (e.getLocation ()->getURI ()),
+         boost::filesystem::native);
++#else
++      XSDFrontend::SemanticGraph::Path abs_path (
++        XML::transcode_to_narrow (e.getLocation ()->getURI ()).c_str());
++#endif
+ 
+       XSDFrontend::SemanticGraph::Path rel_path (ctx_.file (abs_path));
+ 
+@@ -4729,8 +4754,12 @@
+           base_ (base),
+           ctx_ (ctx)
+     {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       setSystemId (XML::XMLChString (
+                      String (abs_.native_file_string ())).c_str ());
++#else
++      setSystemId (XML::XMLChString (String (abs_.string ())).c_str ());
++#endif
+     }
+ 
+     virtual Xerces::BinInputStream*
+@@ -4803,8 +4832,12 @@
+ 
+       // base_uri should be a valid path by now.
+       //
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+       Path base (XML::transcode_to_narrow (base_uri),
+                  boost::filesystem::native);
++#else
++      Path base (XML::transcode_to_narrow (base_uri).c_str());
++#endif
+ 
+       if (prv_id == 0)
+       {
+@@ -4830,6 +4863,7 @@
+       {
+         Path path;
+ 
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         try
+         {
+           path = Path (path_str);
+@@ -4840,6 +4874,10 @@
+           //
+           path = Path (path_str, boost::filesystem::native);
+         }
++#else
++      // The new ABI does not have a fallback native representation
++      path = Path (path_str.c_str());
++#endif
+ 
+         Path base_dir (base.branch_path ());
+ 
+diff -Naurb -I '^//' -I '^# copyright' -x build libxsd-frontend-1.17.0/xsd-frontend/semantic-graph/elements.cxx xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/semantic-graph/elements.cxx
+--- libxsd-frontend-1.17.0/xsd-frontend/semantic-graph/elements.cxx	2010-04-27 21:31:24.000000000 +0200
++++ xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/semantic-graph/elements.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -342,5 +342,9 @@
+ std::wostream&
+ operator<< (std::wostream& os, XSDFrontend::SemanticGraph::Path const& path)
+ {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+   return os << path.native_file_string ().c_str ();
++#else
++  return os << path.string ().c_str ();
++#endif
+ }
+diff -Naurb -I '^//' -I '^# copyright' -x build libxsd-frontend-1.17.0/xsd-frontend/transformations/anonymous.cxx xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/transformations/anonymous.cxx
+--- libxsd-frontend-1.17.0/xsd-frontend/transformations/anonymous.cxx	2010-04-27 21:31:24.000000000 +0200
++++ xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/transformations/anonymous.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -275,7 +275,11 @@
+             }
+             catch (SemanticGraph::InvalidPath const&)
+             {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+               file_str = file.native_file_string ();
++#else
++              file_str = file.string ();
++#endif
+             }
+ 
+             String name (
+@@ -358,7 +362,11 @@
+                 }
+                 catch (SemanticGraph::InvalidPath const&)
+                 {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+                   file_str = file.native_file_string ();
++#else
++                  file_str = file.string ();
++#endif
+                 }
+               }
+ 
+@@ -441,7 +449,11 @@
+             }
+             catch (SemanticGraph::InvalidPath const&)
+             {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+               file_str = file.native_file_string ();
++#else
++              file_str = file.string ();
++#endif
+             }
+ 
+             String name (
+@@ -639,7 +651,11 @@
+         }
+         catch (SemanticGraph::InvalidPath const&)
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           file_str = file.native_file_string ();
++#else
++          file_str = file.string ();
++#endif
+         }
+ 
+         String name (
+diff -Naurb -I '^//' -I '^# copyright' -x build libxsd-frontend-1.17.0/xsd-frontend/transformations/schema-per-type.cxx xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/transformations/schema-per-type.cxx
+--- libxsd-frontend-1.17.0/xsd-frontend/transformations/schema-per-type.cxx	2010-04-27 21:31:24.000000000 +0200
++++ xsd-3.3.0-2+dep/libxsd-frontend/xsd-frontend/transformations/schema-per-type.cxx	2012-06-03 11:02:29.000000000 +0200
+@@ -167,7 +167,11 @@
+ 
+             try
+             {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+               path = Path (file_name);
++#else
++              path = Path (file_name.c_str());
++#endif
+             }
+             catch (InvalidPath const&)
+             {
+@@ -349,6 +353,7 @@
+         //
+         NarrowString abs_path;
+ 
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         // Try to use the portable representation of the path. If that
+         // fails, fall back to the native representation.
+         //
+@@ -360,9 +365,17 @@
+         {
+           abs_path = path.native_file_string ();
+         }
++#else
++        // The new ABI does not have a fallback native representation
++        abs_path = path.string ();
++#endif
+ 
+         NarrowString tf (trans_.translate_schema (abs_path));
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+         NarrowString file (tf ? tf : path.leaf ());
++#else
++        NarrowString file (tf ? tf : path.filename ().string());
++#endif
+ 
+         Size p (file.rfind ('.'));
+         NarrowString ext (
+@@ -389,7 +402,11 @@
+ 
+         try
+         {
++#if !defined(BOOST_FILESYSTEM_VERSION) || BOOST_FILESYSTEM_VERSION == 2
+           (*i)->context ().set ("renamed", SemanticGraph::Path (new_name));
++#else
++          (*i)->context ().set ("renamed", SemanticGraph::Path (new_name.c_str()));
++#endif
+         }
+         catch (SemanticGraph::InvalidPath const&)
+         {

@@ -1,0 +1,21 @@
+diff --git a/src/mgui/author/script.h b/src/mgui/author/script.h
+index fe80307..a96fb54 100644
+--- a/src/mgui/author/script.h
++++ b/src/mgui/author/script.h
+@@ -115,9 +115,14 @@ ExitData AsyncOFCall(const std::string& cmd, const std::string& out_dir, OutputF
+ // POSIX-народ бесповоротно ушел на cdrkit (genisoimage), но с Win32
+ // у cdrkit хреново (только cygwin, нет собранного с growisofs с cdrkit под Win32) => потому - "вилка"
+ #ifdef _WIN32
+-#define MK_ISO_CMD "mkisofs"
++    #define MK_ISO_CMD "mkisofs"
+ #else
+-#define MK_ISO_CMD "genisoimage"
++    #define USE_CDRTOOLS
++    #ifdef USE_CDRTOOLS
++        #define MK_ISO_CMD "mkisofs"
++    #else // !USE_CDRTOOLS
++        #define MK_ISO_CMD "genisoimage"
++    #endif // !USE_CDRTOOLS
+ #endif
+ 
+ #endif // #ifndef __MGUI_AUTHOR_SCRIPT_H__

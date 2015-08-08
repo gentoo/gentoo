@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-block category contains packages which work with block devices.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-block contiene paquetes que trabajan con dispositivos
+		de bloque.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-block enthält Pakete für die Arbeit mit Blockgeräten
+		(Festplatten, Disketten, CD-ROMs etc.).
+	</longdescription>
+	<longdescription lang="ja">
+		sys-blockカテゴリにはブロックデバイスと使用パッケージが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-block categorie bevat gereedschappen voor het omgaan met blok-apparaten
+		zoals harde schijven, diskettes en CD-ROM's.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-block chứa các gói hoạt động với thiết bị khối (block device).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-block contiene pacchetti per la gestione dei dispositivi a blocchi.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-block contém pacotes que funcionam com
+		dispositivos de bloco.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-block zawiera programy do pracy na urządzeniach blokowych.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,12 @@
+Index: cpp2latex-2.3/cpp2latex/main.cpp
+===================================================================
+--- cpp2latex-2.3.orig/cpp2latex/main.cpp
++++ cpp2latex-2.3/cpp2latex/main.cpp
+@@ -22,6 +22,7 @@
+ #include <iostream>
+ #include <stdlib.h>
+ #include <string>
++#include <cstring>
+ #include <fstream>
+ #include <vector>
+ #include <stdio.h>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnustep</herd>
+	<longdescription>HighlighterKit is a framework to allow easy incorporation of syntax highlighting features into your application.</longdescription>
+</pkgmetadata>

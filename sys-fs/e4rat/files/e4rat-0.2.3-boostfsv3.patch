@@ -1,0 +1,86 @@
+Bug #425422
+Fixes building against boost-1.50
+Port to boost FS v3
+
+--- CMakeLists.txt.orig	2012-09-07 03:17:55.515017487 +0200
++++ CMakeLists.txt	2012-09-13 19:54:18.160054076 +0200
+@@ -15,7 +15,6 @@
+ ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+ 
+ set(Boost_USE_MULTITHREADED OFF)
+-add_definitions(-DBOOST_FILESYSTEM_VERSION=2)
+ find_package(Boost 1.41 COMPONENTS system filesystem regex REQUIRED)
+ set(${PROJECT_NAME}_LIBRARIES   ${${PROJECT_NAME}_LIBRARIES}
+     ${Boost_LIBRARIES})
+--- src/config.cc.orig	2012-09-13 19:50:32.829871091 +0200
++++ src/config.cc	2012-09-13 19:55:37.023068153 +0200
+@@ -71,7 +71,7 @@
+         return;
+     }
+     
+-    tool_name = fs::path(argv[0]).filename();
++    tool_name = fs::path(argv[0]).filename().string();
+     found = tool_name.find_last_of("-");
+     if(found)
+         defaultSection = tool_name.substr(found+1);
+--- src/common.cc.orig	2012-09-13 19:58:06.187203344 +0200
++++ src/common.cc	2012-09-13 19:59:34.752096130 +0200
+@@ -157,7 +157,7 @@
+         p /= filesearch;
+     }
+     // Initialize regex filter - use * as default if nothing is given in filesearch
+-    std::string f( p.has_filename() ? p.filename() : "*");
++    std::string f( p.has_filename() ? p.filename().string() : "*");
+ 
+     fs::path dir(system_complete(p).parent_path());
+     if( is_directory(dir) )
+@@ -166,8 +166,8 @@
+              it!=boost::filesystem::directory_iterator();
+              ++it )
+         {
+-            if( boost::regex_match( it->leaf(), path2regex(f) ) )
+-                fileset.push_back(it->string());
++            if( boost::regex_match( it->path().filename().string(), path2regex(f) ) )
++                fileset.push_back(it->path().filename().string());
+         }
+     return fileset;
+ }
+--- src/e4rat-collect.cc.orig	2012-09-13 20:03:40.185027797 +0200
++++ src/e4rat-collect.cc	2012-09-13 20:03:54.404850024 +0200
+@@ -396,7 +396,7 @@
+          * Parse application list given as arguments
+          */
+         for ( ; optind < argc; optind++)
+-            project.observeApp(fs::path(argv[optind]).filename());
++            project.observeApp(fs::path(argv[optind]).filename().string());
+ 
+         /*
+          * Parse application list on stdin
+--- src/device.cc.orig	2012-09-13 20:00:40.232277516 +0200
++++ src/device.cc	2012-09-13 20:03:11.026392331 +0200
+@@ -196,13 +196,13 @@
+         it != end_itr;
+         ++it )
+     {
+-        if(it->filename() == "root")
++        if(it->path().filename().string() == "root")
+             continue;
+-        if(lstat(it->string().c_str(), &st))
++        if(lstat(it->path().filename().c_str(), &st))
+             continue;
+         if(st.st_rdev == get()->devno)
+         {
+-            get()->deviceName = it->filename();
++            get()->deviceName = it->path().filename().string();
+             get()->devicePath = "/dev/" + get()->deviceName;
+             return 0;
+         }
+@@ -225,7 +225,7 @@
+             // the minor number of virtual filesystems are allocated dynamically in function set_anon_super() in fs/super.c
+             // for convenience set deviceName and devicePath to a common name
+             get()->deviceName = "virtual file system";
+-            get()->devicePath = get()->mount_point.filename();
++            get()->devicePath = get()->mount_point.filename().string();
+             return 0;
+         case 2:
+             ss << "fd"; 

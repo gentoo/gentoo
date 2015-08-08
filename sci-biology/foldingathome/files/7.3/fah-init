@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $
+
+extra_commands="unitinfo"
+
+unitinfo() {
+	einfo "$(head -n1 /opt/foldingathome/unitinfo.txt):"
+	sed -e '1,2d' /opt/foldingathome/unitinfo.txt
+}
+
+start() {
+	ebegin "Starting Folding@Home"
+	cd /opt/foldingathome
+	start-stop-daemon --chdir ${PWD} --user foldingathome --nicelevel 19 \
+		--make-pidfile --pidfile "${PIDFILE}" \
+		--start --background --exec ./FAHClient -- ${FOLD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Folding@Home"
+	start-stop-daemon --stop --user foldingathome --pidfile "${PIDFILE}"
+	if [ $? -ne 0 ]; then
+		killall --user foldingathome --signal SIGKILL
+		ewarn "killing all processes running as user 'foldingathome' ..."
+	fi
+	eend $?
+}

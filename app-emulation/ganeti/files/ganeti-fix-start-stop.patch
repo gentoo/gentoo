@@ -1,0 +1,47 @@
+From 9f8f304c983635e0ead6adadd1c4a62be6e92e01 Mon Sep 17 00:00:00 2001
+From: Lance Albertson <ramereth@gmail.com>
+Date: Mon, 8 Aug 2011 23:34:33 -0700
+Subject: [PATCH] Remove/fix deprecated start-stop-daemon functions
+
+daemon-util uses the deprecated functions --startas, --chuid and, most
+importantly, --oknodo. The last one causes start-stop-daemon to exit with a
+non-zero status, which makes openrc think it crashed (when in reality it just
+shut down properly) [1].
+
+[1] https://bugs.gentoo.org/show_bug.cgi?id=377905
+
+Signed-off-by: Lance Albertson <ramereth@gmail.com>
+---
+ daemons/daemon-util.in |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/daemons/daemon-util.in b/daemons/daemon-util.in
+index 819fd6b..00fe1b6 100644
+--- a/daemons/daemon-util.in
++++ b/daemons/daemon-util.in
+@@ -172,10 +172,10 @@ start() {
+ 
+   @PKGLIBDIR@/ensure-dirs
+ 
+-  start-stop-daemon --start --quiet --oknodo \
++  start-stop-daemon --start --quiet \
+     --pidfile $(_daemon_pidfile $name) \
+-    --startas $(_daemon_executable $name) \
+-    --chuid $(_daemon_usergroup $plain_name) \
++    --exec $(_daemon_executable $name) \
++    --user $(_daemon_usergroup $plain_name) \
+     -- $args "$@"
+ }
+ 
+@@ -188,7 +188,7 @@ stop() {
+ 
+   local name="$1"; shift
+ 
+-  start-stop-daemon --stop --quiet --oknodo --retry 30 \
++  start-stop-daemon --stop --quiet --retry 30 \
+     --pidfile $(_daemon_pidfile $name)
+ }
+ 
+-- 
+1.7.4.1
+

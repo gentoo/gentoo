@@ -1,0 +1,102 @@
+--- Makefile.in.orig	2013-07-08 09:45:42.667070273 -0700
++++ Makefile.in	2013-07-08 09:46:43.928417641 -0700
+@@ -29,17 +29,17 @@
+ #################################################################
+ #PREFIX  = /usr/local
+ #PREFIX  = $(HOME)
+-PREFIX  = @prefix@
++PREFIX  = $(DESTDIR)@prefix@
+ PACKAGE = cdsclient
+ VERSION = @version@
+ DISTRIB = $(PACKAGE)-$(VERSION)
+ #################################################################
+ 
+ INCDIR  = $(PREFIX)/include
+-LIBDIR  = $(PREFIX)/lib
++LIBDIR  = $(DESTDIR)/@libdir@
+ BINDIR  = $(PREFIX)/bin
+ SHSDIR  = $(PREFIX)/bin
+-MANDIR  = $(PREFIX)/man
++MANDIR  = $(PREFIX)/share/man
+ ###########
+ # NOTE: The definition below is required only on SOLARIS
+ #       Comment the following line if required
+@@ -60,7 +60,7 @@
+ DEBUG = 
+ C_OPT = -O
+ SYS = 
+-CFLAGS = $(C_OPT) $(DEBUG) $(SYS) -I.
++
+ 
+ # FILES		--------------------------------
+ VERFILE = $(PREFIX)/versions
+@@ -98,7 +98,7 @@
+ # RULES		--------------------------------
+ .SUFFIXES: .o .c 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CFLAGS) -I. -c $<
+ 
+ # DEPENDENCIES	--------------------------------
+ 
+@@ -117,41 +117,41 @@
+ #		rm -f $$f; ln finducac2 $$f; done
+ 
+ aclient: aclient.o $(OBJ)
+-	$(CC) $@.o $(OBJ) $(LIBSYS) -o $@
+-	$(STRIP) $@
++	$(CC) $(LDFLAGS) $@.o $(OBJ) $(LIBSYS) -o $@
++
+ 
+ wwwget: wwwget.c
+-	$(CC) wwwget.c $(LIBSYS) -o $@
+-	$(STRIP) $@
++	$(CC) $(CFLAGS) $(LDFLAGS) wwwget.c $(LIBSYS) -o $@
++
+ 
+ doc: sk.tex man.tex aclient.tex
+ 	latex man.tex
+ 
+-install: $(EXPORT_INSTALL) install_shs install_info
++install: $(EXPORT_INSTALL) install_shs
+ 	rm -rf *.cache
+ 
+ export_install: install_bin install_man 
+ 
+ install_man: $(MAN)
+ 	if [ -d $(MANDIR) ]; then echo $(MANDIR) exists; \
+-	else mkdir $(MANDIR); fi 
++	else mkdir -p $(MANDIR); fi 
+ 	for f in $(MAN); do \
+ 	    e=`echo $$f | cut -d. -f2`;  \
+ 	    if [ -d $(MANDIR)/man$$e ] ; then echo $(MANDIR)/man$$e exists ; \
+-	    else mkdir $(MANDIR)/man$$e ; fi ; \
++	    else mkdir -p $(MANDIR)/man$$e ; fi ; \
+ 	    $(COPY) $$f $(MANDIR)/man$$e ;  \
+ 	done
+ 
+ install_h: $(INC)
+-	test -d $(INCDIR) || mkdir $(INCDIR)
++	test -d $(INCDIR) || mkdir -p $(INCDIR)
+ 	$(COPY) $(INC) $(INCDIR)
+ 
+ install_bin: $(BIN)
+-	test -d $(BINDIR) || mkdir $(BINDIR)
++	test -d $(BINDIR) || mkdir -p $(BINDIR)
+ 	$(COPY) $(BIN) $(BINDIR)
+ 
+ install_shs: Makefile
+-	test -d $(SHSDIR) || mkdir $(SHSDIR)
++	test -d $(SHSDIR) || mkdir -p $(SHSDIR)
+ 	ractools=""; test -r $(RACatCDS) && ractools=$(RACatCDS)/*; \
+         test -z "$$ractools" || ls -l $$ractools; \
+ 	cdsutil="$(SHSatCDS)"; test -z "$(atCDS)" && cdsutil=""; \
+@@ -189,7 +189,7 @@
+ 	$(MAKE) clean
+ 	-test -d /tmp/$(DISTRIB) && rm -rf /tmp/$(DISTRIB)
+ 	autoconf
+-	mkdir /tmp/$(DISTRIB)
++	mkdir -p /tmp/$(DISTRIB)
+ 	cp -p $(SHS) Makefile.in configure /tmp/$(DISTRIB)
+ 	test -z "$(atCDS)" || cp -p $(SHSatCDS) /tmp/$(DISTRIB)
+ 

@@ -1,0 +1,24 @@
+ configure.ac |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index ad2f1e6..4f9d7be 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,6 +8,7 @@ AC_PROG_CXX
+ 
+ # set CFLAGS and CXXFLAGS
+ user_CFLAGS=${CFLAGS}
++user_CXXFLAGS=${CXXFLAGS}
+ generic_CFLAGS="-Wall"
+ ext_CFLAGS=""
+ case "${host_cpu}-${host_os}" in
+@@ -37,7 +38,7 @@ AC_ARG_ENABLE(shortread,    [  --enable-shortreads     use shortread mode],
+ AC_ARG_ENABLE(intel64,      [  --enable-intel64        optimize for Intel64 CPU such as Xeon and Core2],
+ 			  [ext_CFLAGS="${ext_CFLAGS} -mtune=nocona"], [])
+ CFLAGS="${generic_CFLAGS} ${ext_CFLAGS} ${user_CFLAGS}"
+-CXXFLAGS=$CFLAGS
++CXXFLAGS="${generic_CFLAGS} ${ext_CFLAGS} ${user_CXXFLAGS}"
+ 
+ AC_STDC_HEADERS
+ AC_CHECK_HEADER(zlib.h)

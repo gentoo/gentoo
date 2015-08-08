@@ -1,0 +1,15 @@
+clisp does not need a full blown ncurses, but it does require a termcap or tinfo
+I would have changed this in src/m4/termcap.m4 but configure.in fails terribly - JeR
+
+
+--- a/src/configure
++++ b/src/configure
+@@ -28613,7 +28613,7 @@
+   return 0;
+ }
+ _ACEOF
+-for ac_lib in '' ncurses termcap; do
++for ac_lib in '' tinfo ncurses termcap; do
+   if test -z "$ac_lib"; then
+     ac_res="none required"
+   else

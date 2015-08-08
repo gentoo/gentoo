@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="aspell">Enable the app-text/aspell spell-checking backend</flag>
+		<flag name="hunspell">Enable the app-text/hunspell spell-checking backend</flag>
+	</use>
+</pkgmetadata>

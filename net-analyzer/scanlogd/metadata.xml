@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>netmon</herd>
+<use>
+<flag name='nids'>Use <pkg>net-libs/libnids</pkg> for packet capturing</flag>
+<flag name='pcap'>Use <pkg>net-libs/libpcap</pkg> for packet capturing</flag>
+</use>
+</pkgmetadata>

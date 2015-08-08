@@ -1,0 +1,17 @@
+This patch was adapted from -2.77-transmations-path-fix.patch for 2.80
+
+Fix path for finding locale-specific files:
+QCoreApplication::applicationDirPath() transforms to '/usr/bin'
+and locale files are in '/usr/share/qt4/translations'
+
+--- qt/app.cc
++++ qt/app.cc
+@@ -98,7 +98,7 @@
+   installTranslator (&qtTranslator);
+ 
+   // install the transmission translator
+-  appTranslator.load (QString (MY_CONFIG_NAME) + "_" + QLocale::system ().name (), QCoreApplication::applicationDirPath () + "/translations");
++  appTranslator.load (QString (MY_CONFIG_NAME) + "_" + QLocale::system ().name (), QLibraryInfo::location(QLibraryInfo::TranslationsPath) );
+   installTranslator (&appTranslator);
+ 
+   Formatter::initUnits ();

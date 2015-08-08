@@ -1,0 +1,209 @@
+fix from upstream for implicit decls
+
+--- trunk/sdcc/debugger/mcs51/sdcdb.c	2009/09/20 11:50:19	5517
++++ trunk/sdcc/debugger/mcs51/sdcdb.c	2010/04/14 16:18:37	5813
+@@ -34,6 +34,10 @@
+ #include <readline/readline.h>
+ #include <readline/history.h>
+ #endif  /* HAVE_LIBREADLINE */
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++#include <sys/wait.h>
+ 
+ #ifdef SDCDB_DEBUG
+ int   sdcdbDebug = 0;
+@@ -1609,7 +1609,7 @@ static void parseCmdLine (int argc, char **argv)
+             }
+ 
+             if (strncmp(argv[i],"-cd=",4) == 0) {
+-                chdir(argv[i][4]);
++                chdir(&argv[i][4]);
+                 continue;
+             }
+ 
+--- trunk/sdcc/debugger/mcs51/config.h.in
++++ trunk/sdcc/debugger/mcs51/config.h.in
+@@ -15,6 +15,10 @@
+ 
+ #undef HAVE_LIBREADLINE
+ 
++#undef HAVE_UNISTD_H
++
++#undef HAVE_SYS_WAIT_H
++
+ #endif
+ 
+ /* End of config.h */
+
+fix from upstream for collision between "link" in unistd.h and local "link"
+
+--- trunk/sdcc/debugger/mcs51/symtab.h	2006/09/16 14:10:20	4379
++++ trunk/sdcc/debugger/mcs51/symtab.h	2010/04/14 16:18:37	5813
+@@ -106,13 +106,13 @@
+     short    num_elem;     /* # of elems if type==array  */
+     short    ptr_const :1;   /* pointer is constant        */
+     short    ptr_volatile:1; /* pointer is volatile        */
+-    struct link *tspec;     /* pointer type specifier      */
++    struct st_link *tspec;     /* pointer type specifier      */
+ } declarator ;
+ 
+ #define DECLARATOR   0
+ #define SPECIFIER    1
+ 
+-typedef struct link {
++typedef struct st_link {
+     unsigned class : 1      ;  /* DECLARATOR or SPECIFIER    */
+     unsigned tdef  : 1      ;  /* current link created by    */
+     /* typedef if this flag is set*/
+@@ -121,8 +121,8 @@
+         declarator     d     ;  /* if CLASS == DECLARATOR     */
+     } select ;
+ 
+-    struct link    *next    ;  /* next element on the chain  */
+-} link ;
++    struct st_link    *next    ;  /* next element on the chain  */
++} st_link ;
+ 
+ typedef struct symbol {
+     char     *name               ;
+@@ -136,8 +136,8 @@
+     unsigned addr               ;  /* address if the symbol */
+     unsigned eaddr              ;  /* end address for functions */
+     char     addr_type          ;  /* which address space   */
+-    link     *type              ;  /* start of type chain        */
+-    link     *etype             ;  /* end of type chain          */
++    st_link  *type              ;  /* start of type chain        */
++    st_link  *etype             ;  /* end of type chain          */
+     char     scopetype         ;  /* 'G' global, 'F' - file, 'L' local */
+     char     *sname             ;  /* if 'F' or 'L' then scope name */
+     char     *rname             ;  /* real name i.e. mangled beyond recognition */
+@@ -242,6 +242,6 @@
+ DEFSETFUNC(moduleWithName);
+ DEFSETFUNC(moduleWithCName);
+ DEFSETFUNC(moduleWithAsmName);
+-unsigned int getSize (link *);
++unsigned int getSize (st_link *);
+ 
+ #endif
+	
+--- a/sdcc/debugger/mcs51/symtab.c
++++ b/sdcc/debugger/mcs51/symtab.c
+@@ -31,7 +31,7 @@ DEFSETFUNC(symWithRName);
+ /*------------------------------------------------------------------*/
+ /* getSize - returns size of a type chain in bits                   */
+ /*------------------------------------------------------------------*/
+-unsigned int   getSize ( link *p )
++unsigned int   getSize ( st_link *p )
+ {
+     /* if nothing return 0 */
+     if ( ! p )
+@@ -127,8 +127,8 @@ static char  *parseTypeInfo (symbol *sym, char *s)
+     /* bp now points to '}' ... go past it */
+     s = ++bp;
+     while (*s != ')') { /* till we reach the end */
+-        link *type;
+-        type = Safe_calloc(1,sizeof(link));
++        st_link *type;
++        type = Safe_calloc(1,sizeof(st_link));
+         if (*s == ',') s++;
+ 
+         /* is a declarator */
+--- a/sdcc/debugger/mcs51/cmd.c
++++ b/sdcc/debugger/mcs51/cmd.c
+@@ -327,8 +327,8 @@ static char *warranty=
+ "POSSIBILITY OF SUCH DAMAGES.\n";
+ #endif
+ 
+-static void printTypeInfo(link *);
+-static void printValAggregates (symbol *,link *,char,unsigned int,int);
++static void printTypeInfo(st_link *);
++static void printValAggregates (symbol *,st_link *,char,unsigned int,int);
+ static  int printOrSetSymValue (symbol *sym, context *cctxt,
+                                 int flg, int dnum, int fmt,
+                                 char *rs, char *val, char cmp);
+@@ -2323,7 +2323,7 @@ int cmdListSrc (char *s, context *cctxt)
+     return 0;
+ }
+ 
+-static unsigned long getValBasic(symbol *sym, link *type, char *val)
++static unsigned long getValBasic(symbol *sym, st_link *type, char *val)
+ {
+     char *s;
+     union
+@@ -2347,7 +2347,7 @@ static unsigned long getValBasic(symbol *sym, link *type, char *val)
+     {
+             if (IS_INTEGRAL(type))
+         {
+-            link *etype;
++            st_link *etype;
+             if ( type->next )
+                 etype = type->next;
+             else
+@@ -2460,7 +2460,7 @@ static void printFmtInteger(char *deffmt,int fmt, long val,
+ /*-----------------------------------------------------------------*/
+ /* printValBasic - print value of basic types                      */
+ /*-----------------------------------------------------------------*/
+-static void printValBasic(symbol *sym, link *type,
++static void printValBasic(symbol *sym, st_link *type,
+                           char mem, unsigned addr,int size, int fmt)
+ {
+     union {
+@@ -2484,7 +2484,7 @@ static void printValBasic(symbol *sym, link *type,
+         else
+         if (IS_INTEGRAL(type))
+         {
+-            link *etype;
++            st_link *etype;
+             if ( type->next )
+                 etype = type->next;
+             else
+@@ -2534,10 +2534,10 @@ static void printValFunc (symbol *sym, int fmt)
+ /*-----------------------------------------------------------------*/
+ /* printArrayValue - will print the values of array elements       */
+ /*-----------------------------------------------------------------*/
+-static void printArrayValue (symbol *sym,  link *type,
++static void printArrayValue (symbol *sym,  st_link *type,
+                              char space, unsigned int addr, int fmt)
+ {
+-        link *elem_type = type->next;
++        st_link *elem_type = type->next;
+         int i;
+ 
+         fprintf(stdout,"{");
+@@ -2558,7 +2558,7 @@ static void printArrayValue (symbol *sym,  link *type,
+ /*-----------------------------------------------------------------*/
+ /* printStructValue - prints structures elements                   */
+ /*-----------------------------------------------------------------*/
+-static void printStructValue (symbol *sym, link *type,
++static void printStructValue (symbol *sym, st_link *type,
+                               char space, unsigned int addr, int fmt)
+ {
+         symbol *fields = SPEC_STRUCT(type)->fields;
+@@ -2581,7 +2581,7 @@ static void printStructValue (symbol *sym, link *type,
+ /*-----------------------------------------------------------------*/
+ /* printValAggregates - print value of aggregates                  */
+ /*-----------------------------------------------------------------*/
+-static void printValAggregates (symbol *sym, link *type,
++static void printValAggregates (symbol *sym, st_link *type,
+                                 char space,unsigned int addr, int fmt)
+ {
+ 
+@@ -2606,7 +2606,7 @@ static int printOrSetSymValue (symbol *sym, context *cctxt,
+     static char fmtChar[] = " todx ";
+     static int stack = 1;
+         symbol *fields;
+-    link *type;
++    st_link *type;
+     unsigned int  addr;
+     int size, n;
+     char *s, *s2;
+@@ -2808,7 +2808,7 @@ static void printStructInfo (structdef *sdef)
+ /*-----------------------------------------------------------------*/
+ /* printTypeInfo - print out the type information                  */
+ /*-----------------------------------------------------------------*/
+-static void printTypeInfo(link *p)
++static void printTypeInfo(st_link *p)
+ {
+     if (!p)
+         return ;

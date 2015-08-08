@@ -1,0 +1,13 @@
+diff -Naur root.orig/config/Makefile.in root/config/Makefile.in
+--- root.orig/config/Makefile.in	2010-12-14 17:20:26.000000000 +0300
++++ root/config/Makefile.in	2010-12-17 22:33:34.902161458 +0300
+@@ -27,7 +27,7 @@
+ 
+ EXTRA_CFLAGS   := -Iinclude @cflags@
+ EXTRA_CXXFLAGS := -Iinclude @cflags@
+-EXTRA_LDFLAGS  := @ldflags@
++EXTRA_LDFLAGS  := @ldflags@ $(LDFLAGS)
+ WINRTDEBUG     := @winrtdebug@
+ 
+ GLBPATCHFLAGS  := @glbpatchcflags@
+

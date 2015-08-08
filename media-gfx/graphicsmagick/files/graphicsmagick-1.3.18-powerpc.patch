@@ -1,0 +1,11 @@
+--- a/magick/studio.h
++++ b/magick/studio.h
+@@ -51,7 +51,7 @@
+   threads.  Most CPUs have cache lines of 32 or 64 bytes.  IBM Power CPUs have
+   cache lines of 128 bytes.
+ */
+-#if defined(MAGICK_TARGET_CPU) && (MAGICK_TARGET_CPU == powerpc)
++#ifdef __powerpc__
+ #  define MAGICK_CACHE_LINE_SIZE 128
+ #else
+ #  define MAGICK_CACHE_LINE_SIZE 64

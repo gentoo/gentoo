@@ -1,0 +1,18 @@
+http://bugs.freedesktop.org/19128
+http://bugs.gentoo.org/303591
+http://bugzilla.redhat.com/468565
+http://bugzilla.gnome.org/502664
+
+--- a/conf.d/30-urw-aliases.conf
++++ b/conf.d/30-urw-aliases.conf
+@@ -29,6 +29,10 @@
+ 	  <family>Zapf Dingbats</family>
+ 	  <accept><family>Dingbats</family></accept>
+ 	</alias>
++	<alias binding="same">
++	  <family>ZapfDingbats</family>
++	  <accept><family>Dingbats</family></accept>
++	</alias>
+ 	<match target="pattern">
+ 	  <test name="family">
+ 	    <string>Symbol</string>

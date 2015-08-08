@@ -1,0 +1,23 @@
+--- configure.in	2010-06-06 13:22:08.000000000 -0400
++++ configure.in	2011-11-06 11:36:37.684800151 -0500
+@@ -6,8 +6,6 @@
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+-dnl reset CFLAGS
+-CFLAGS=
+ 
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+@@ -39,10 +37,9 @@
+ AC_ARG_ENABLE(debug, [  --enable-debug=[no/yes] turn on debugging
+                        [default=$debug_default]],, enable_debug=$debug_default)
+ if test "x$enable_debug" = "xyes"; then
+-  CFLAGS="$CFLAGS -g"
+   AC_MSG_RESULT(yes)
+ else
+-  CFLAGS="$CFLAGS -O2 -DNDEBUG"
++  CFLAGS="$CFLAGS -DNDEBUG"
+   AC_MSG_RESULT(no)
+ fi
+ 

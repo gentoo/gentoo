@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,7 +27,7 @@
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_MACRO_DIR([m4])
+-AM_INIT_AUTOMAKE([-Wall -Werror])
++AM_INIT_AUTOMAKE([-Wall])
+ 
+ AC_PROG_CC
+ gl_EARLY

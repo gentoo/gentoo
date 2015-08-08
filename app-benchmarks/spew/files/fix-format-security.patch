@@ -1,0 +1,24 @@
+diff -Naur spew-1.0.8.orig/src/spew.cpp spew-1.0.8/src/spew.cpp
+--- spew-1.0.8.orig/src/spew.cpp	2010-05-14 01:06:18.000000000 -0400
++++ spew-1.0.8/src/spew.cpp	2014-11-19 08:39:31.806338597 -0500
+@@ -285,7 +285,7 @@
+             PATTERN_LOOKUP[Job::PATTERN_USER_DEFINED],
+             PATTERN_LOOKUP[Job::PATTERN_USER_DEFINED],
+             PATTERN_LOOKUP[DEFAULT_PATTERN]);
+-   fprintf(stdout, outStr);
++   fprintf(stdout, "%s", outStr);
+ 
+    fprintf(stdout, "\nReport bugs to Andrew Patterson <andrew.patterson@hp.com>.\n");
+ }
+diff -Naur spew-1.0.8.orig/src/SpewTuiStatisticsWindow.cpp spew-1.0.8/src/SpewTuiStatisticsWindow.cpp
+--- spew-1.0.8.orig/src/SpewTuiStatisticsWindow.cpp	2008-05-13 00:47:17.000000000 -0400
++++ spew-1.0.8/src/SpewTuiStatisticsWindow.cpp	2014-11-19 08:39:52.527339540 -0500
+@@ -278,7 +278,7 @@
+              "");
+    if (mSpewTui->getCurrentIteration() > 0)
+    {
+-      int len = snprintf(NULL, 0, (char *)mTotalRunTime.getElapsedTimeStr().c_str());
++      int len = snprintf(NULL, 0, "%s", (char *)mTotalRunTime.getElapsedTimeStr().c_str());
+       mvwprintw(mWindow, 
+                 RUNTIME_FIELD_STARTY, 
+                 RUNTIME_FIELD_STARTX + RUNTIME_FIELD_WIDTH - len,

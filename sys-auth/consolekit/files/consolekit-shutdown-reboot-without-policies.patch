@@ -1,0 +1,26 @@
+From: Romain Perier <mrpouet@gentoo.org>
+Date: Sat, 24 Oct 2009 18:43:43 +0200
+Subject: [PATCH] Be able to shutdown or reboot even without polkit or RBAC supports
+
+Ck does NOTHING at the origin if its built without polkit or RBAC supports, except
+display a warning using g_warning() (which does not make sense).
+The trick is to to call do_stop()/do_restart() in the #else directive :)
+
+--- src/ck-manager.c
++++ src/ck-manager.c
+@@ -1131,6 +1131,7 @@
+         check_rbac_permissions (manager, context, RBAC_SHUTDOWN_KEY, do_restart);
+ #else
+         g_warning ("Compiled without PolicyKit or RBAC support!");
++        do_restart(manager, context);
+ #endif
+ 
+         return TRUE;
+@@ -1207,6 +1208,7 @@
+         check_rbac_permissions (manager, context, RBAC_SHUTDOWN_KEY, do_stop);
+ #else
+         g_warning ("Compiled without PolicyKit or RBAC support!");
++        do_stop(manager, context);
+ #endif
+ 
+         return TRUE;

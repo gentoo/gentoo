@@ -1,0 +1,77 @@
+Index: flex-2.5.35/configure.in
+===================================================================
+--- flex-2.5.35.orig/configure.in
++++ flex-2.5.35/configure.in
+@@ -39,6 +39,7 @@ AM_GNU_GETTEXT_VERSION(0.12)
+ AC_PROG_YACC
+ AM_PROG_LEX
+ AC_PROG_CC
++AM_PROG_CC_C_O
+ AC_PROG_CXX
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
+@@ -103,13 +104,6 @@ AC_HEADER_STDBOOL
+ AC_C_CONST
+ AC_TYPE_SIZE_T
+ 
+-# Checks for library functions.
+-
+-AC_FUNC_FORK
+-AC_FUNC_MALLOC
+-AC_FUNC_REALLOC
+-AC_CHECK_FUNCS([dup2 isascii memset pow regcomp setlocale strchr strtol])
+-
+ AC_CONFIG_FILES(
+ Makefile
+ doc/Makefile
+Index: flex-2.5.35/Makefile.am
+===================================================================
+--- flex-2.5.35.orig/Makefile.am
++++ flex-2.5.35/Makefile.am
+@@ -127,33 +127,6 @@ LIBS = @LIBINTL@ @LIBS@
+ skel.c: flex.skl mkskel.sh flexint.h tables_shared.h
+ 	sed 's/m4_/m4postproc_/g; s/m4preproc_/m4_/g' $(srcdir)/flex.skl | $(m4) -P -DFLEX_MAJOR_VERSION=`echo $(VERSION)|cut -f 1 -d .` -DFLEX_MINOR_VERSION=`echo $(VERSION)|cut -f 2 -d .` -DFLEX_SUBMINOR_VERSION=`echo $(VERSION)|cut -f 3 -d .` | sed 's/m4postproc_/m4_/g' | $(SHELL) $(srcdir)/mkskel.sh  >skel.c
+ 
+-# Explicitly describe dependencies.
+-# You can recreate this with `gcc -I. -MM *.c'
+-buf.o: buf.c flexdef.h flexint.h
+-ccl.o: ccl.c flexdef.h flexint.h
+-dfa.o: dfa.c flexdef.h flexint.h tables.h tables_shared.h
+-ecs.o: ecs.c flexdef.h flexint.h
+-scanflags.o: scanflags.c flexdef.h flexint.h
+-gen.o: gen.c flexdef.h flexint.h tables.h tables_shared.h
+-libmain.o: libmain.c
+-libyywrap.o: libyywrap.c
+-main.o: main.c flexdef.h flexint.h version.h options.h scanopt.h \
+- tables.h tables_shared.h
+-misc.o: misc.c flexdef.h flexint.h tables.h tables_shared.h
+-nfa.o: nfa.c flexdef.h flexint.h
+-options.o: options.c options.h scanopt.h flexdef.h flexint.h
+-parse.o: parse.c flexdef.h flexint.h tables.h tables_shared.h
+-scan.o: scan.c flexdef.h flexint.h parse.h
+-scanopt.o: scanopt.c flexdef.h flexint.h scanopt.h
+-skel.o: skel.c flexdef.h flexint.h
+-sym.o: sym.c flexdef.h flexint.h
+-tables.o: tables.c flexdef.h flexint.h tables.h tables_shared.h
+-tables_shared.o: tables_shared.c flexdef.h flexint.h tables.h \
+- tables_shared.h
+-tblcmp.o: tblcmp.c flexdef.h flexint.h
+-yylex.o: yylex.c flexdef.h flexint.h parse.h
+-filter.o: filter.c flexdef.h flexint.h
+-
+ # Create the ChangeLog, but only if we're inside a cvs working directory
+ 
+ ChangeLog: $(srcdir)/tools/cvsauthors $(srcdir)/tools/cvs2cl.pl
+Index: flex-2.5.35/tests/test-pthread/Makefile.am
+===================================================================
+--- flex-2.5.35.orig/tests/test-pthread/Makefile.am
++++ flex-2.5.35/tests/test-pthread/Makefile.am
+@@ -27,7 +27,7 @@ CLEANFILES = scanner.c scanner.h parser.
+ OBJS = scanner.o # parser.o
+ 
+ AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir)
+-LDFLAGS = -lpthread
++LOADLIBES = -lpthread
+ #LFLAGS = --header="scanner.h"
+ #YFLAGS = --defines --output=parser.c
+ 

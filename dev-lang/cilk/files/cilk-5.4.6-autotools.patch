@@ -1,0 +1,81 @@
+diff -Nur cilk-5.4.6.orig/cilk2c/Makefile.am cilk-5.4.6/cilk2c/Makefile.am
+--- cilk-5.4.6.orig/cilk2c/Makefile.am	2012-11-12 21:18:50.374020109 -0800
++++ cilk-5.4.6/cilk2c/Makefile.am	2012-11-12 21:19:09.667111443 -0800
+@@ -1,4 +1,6 @@
+-pkglib_PROGRAMS = cilk2c
++pkglibexec_PROGRAMS = cilk2c
++
++BUILT_SOURCES = ANSI-C.c ANSI-C.h
+ 
+ cilk2c_SOURCES = analyze.c ast.c complex-types.c constexpr.c		\
+ container.c conversions.c dataflow.c elide.c initializer.c list.c	\
+diff -Nur cilk-5.4.6.orig/configure.ac cilk-5.4.6/configure.ac
+--- cilk-5.4.6.orig/configure.ac	2012-11-12 21:18:50.371020111 -0800
++++ cilk-5.4.6/configure.ac	2012-11-12 21:19:09.668111459 -0800
+@@ -1,8 +1,8 @@
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT
+ AC_CONFIG_SRCDIR([config.h.in])
+-AM_CONFIG_HEADER([config.h runtime/cilk-sysdep.h])
+-AC_PREREQ(2.53)
++AC_CONFIG_HEADERS([config.h runtime/cilk-sysdep.h])
++AC_PREREQ(2.68)
+ AM_INIT_AUTOMAKE(cilk, 5.4.6)
+ AC_CANONICAL_HOST
+ 
+@@ -20,7 +20,7 @@
+ 
+ dnl Checks for required programs.
+ if test "$GCC" != "yes"; then
+-   AC_ERROR("I cannot find gcc.  gcc is required for Cilk to work.")
++   AC_MSG_ERROR("I cannot find gcc.  gcc is required for Cilk to work.")
+ fi
+ 
+ dnl Checks for libraries.
+diff -Nur cilk-5.4.6.orig/examples/Makefile.am cilk-5.4.6/examples/Makefile.am
+--- cilk-5.4.6.orig/examples/Makefile.am	2012-11-12 21:18:50.370020112 -0800
++++ cilk-5.4.6/examples/Makefile.am	2012-11-12 21:20:06.347380163 -0800
+@@ -5,13 +5,13 @@
+ NPROC = 4
+ PROGFLAGS = --nproc $(NPROC) --yield
+ 
+-CILKFLAGS=@CFLAGS@
++CILKFLAGS=-O2
+ CILKCOMPILE = $(CILK) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CILKFLAGS) $(CILKFLAGS)
+ CILKLD = $(CILK)
+ CILKLINK = $(CILKLD) $(AM_CILKFLAGS) $(CILKFLAGS) $(PERFCTR_LIBS) $(LDFLAGS) -o $@
+ LINK=$(CILKLINK)
+ 
+-noinst_PROGRAMS=hello fib fib-serial testall ck magic knapsack queens	\
++check_PROGRAMS=hello fib fib-serial testall ck magic knapsack queens	\
+ cilksort fft test-locks bucket cholesky game nfib kalah matmul lu plu	\
+ heat test-errno strassen rectmul spacemul \
+ test-void-func \
+@@ -58,7 +58,7 @@
+ EXTRA_DIST = knapsack-example1.input knapsack-example2.input	\
+ knapsack-example3.input
+ 
+-check:  hello testall fft fib lu matmul cilksort heat test-locks test-errno
++check-local:  hello testall fft fib lu matmul cilksort heat test-locks test-errno
+ 	@echo "Runnig Cilk tests.  This will take a while."
+ 	./hello $(PROGFLAGS)
+ 	./test-void-func $(PROGFLAGS)
+diff -Nur cilk-5.4.6.orig/runtime/Makefile.am cilk-5.4.6/runtime/Makefile.am
+--- cilk-5.4.6.orig/runtime/Makefile.am	2012-11-12 21:18:50.375020110 -0800
++++ cilk-5.4.6/runtime/Makefile.am	2012-11-12 21:19:09.668111459 -0800
+@@ -1,5 +1,5 @@
+ lib_LTLIBRARIES = libcilk.la libcilk.g.la libcilk.p.la libcilk.g.p.la
+-pkglib_LIBRARIES = libcilkrt0.a libcilkrt0g.a libcilkrt0p.a libcilkrt0gp.a
++lib_LIBRARIES = libcilkrt0.a libcilkrt0g.a libcilkrt0p.a libcilkrt0gp.a
+ 
+ CILK_HFILES = cilk-cilk2c.h cilk.h cilk-lib.h cilk-lib.cilkh	\
+ gcc-builtin.h cilk-cilk2c-pre.h
+@@ -8,7 +8,7 @@
+ cmdline.c internal-malloc.c timing.c invoke-main.c malloc.c debug.c	\
+ workers.c mutex.c
+ 
+-pkginclude_HEADERS = $(CILK_HFILES) cilk-conf.h cilk-sysdep.h
++include_HEADERS = $(CILK_HFILES) cilk-conf.h cilk-sysdep.h
+ 
+ CILK_SRC = cilk-internal.h $(CILK_CFILES) $(CILK_HFILES)
+ COMMON_LINK_FLAGS = -version-info 1:3:0 @PTHREAD_LIBS@

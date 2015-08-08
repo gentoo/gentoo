@@ -1,0 +1,21 @@
+--- letters-trans.py.old	2010-04-26 12:13:12.000000000 +0200
++++ letters-trans.py	2010-04-26 12:13:49.000000000 +0200
+@@ -39,7 +39,7 @@
+ import os,fnmatch,operator,sys,locale
+ from CPConstants import ASSETMLROOT
+ 
+-if os.environ['USER'] != 'root':
++if os.environ['LOGNAME'] != 'root':
+     print "\nOnly root can use this script, sorry.\n"
+     sys.exit(1)
+ 
+@@ -69,7 +69,8 @@
+     sys.exit(0)
+         
+ # get description names from memory assetml, these are the words used by letters.py
+-parser = pyassetml.AssetmlParser('childsplay/memory-136x136/memory-136x136.assetml')
++assetmlfile = os.path.join(cwd,'memory-136x136.assetml')
++parser = pyassetml.AssetmlParser(assetmlfile)
+ loc = parser.get_locale()# get current locale setting, only the first two chars !!
+ wlist_org = parser.find_names((('file','.'),('description',"en")))
+ wlist = parser.find_names((('file','.'),('description',loc)))

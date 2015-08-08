@@ -1,0 +1,21 @@
+Index: polyml/libpolyml/gc_mark_phase.cpp
+===================================================================
+--- polyml/libpolyml/gc_mark_phase.cpp	(revision 2008)
++++ polyml/libpolyml/gc_mark_phase.cpp	(revision 2009)
+@@ -176,6 +176,16 @@
+     // Clear the mark stack
+     for (unsigned i = 0; i < MARK_STACK_SIZE; i++)
+         markStack[i] = 0;
++    // Clear the large object cache.  Actually only largeObjectCache[0].base
++    // needs to be set to zero and for the objects allocated on the heap it is
++    // cleared before each GC in either MarkRoots or MarkPointersTask.
++    // The remianing case is the RescanMarked sub-class which is allocated on the stack
++    // but it doesn't hurt to clear it in all cases.
++    for (unsigned j = 0; j < LARGECACHE_SIZE; j++)
++    {
++        largeObjectCache[locPtr].base = 0;
++        largeObjectCache[locPtr].current = 0;
++    }
+ }
+ 
+ // Called when the stack has overflowed.  We need to include this

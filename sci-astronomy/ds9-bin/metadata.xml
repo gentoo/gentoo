@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-astronomy</herd>
+<longdescription lang="en">
+  The Smithsonian Astrophysical Observatory Image Deep Space 9 is an
+  astronomical imaging and data visualization application. It is the
+  new generation of the SAOImage software. DS9 supports FITS images
+  and binary tables, multiple frame buffers, region manipulation, many
+  scale algorithms and colormaps. It provides communication with
+  external analysis tasks and is configurable and extensible. DS9
+  supports multiple frame buffers, mosaic images, tiling, blinking,
+  geometric markers, colormap manipulation, scaling, arbitrary zoom,
+  rotation, pan, and a variety of coordinate systems. DS9 also
+  supports FTP and HTTP data access.
+  This is the binary version (source version has a lot of source
+  bundling issues).
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>x11</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>eva@gentoo.org</email>
+		<name>Gilles Dartiguelongue</name>
+	</maintainer>
+	<maintainer>
+		<email>egore@gmx.de</email>
+		<name>Christoph Brill</name>
+		<description>upstream co-maintainer</description>
+	</maintainer>
+</pkgmetadata>

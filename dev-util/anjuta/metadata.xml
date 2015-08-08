@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnome</herd>
+  <use>
+    <flag name="devhelp">Enable devhelp integration</flag>
+    <flag name="glade">Build glade plugin for anjuta</flag>
+    <flag name="packagekit">Use packagekit to search for missing tools</flag>
+    <flag name="terminal">Enable terminal plugin based on <pkg>x11-libs/vte</pkg></flag>
+  </use>
+</pkgmetadata>

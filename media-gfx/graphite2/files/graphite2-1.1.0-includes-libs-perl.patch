@@ -1,0 +1,13 @@
+--- graphite2-0.9.3.orig/contrib/perl/Build.PL
++++ graphite2-0.9.3/contrib/perl/Build.PL
+@@ -8,8 +8,8 @@ my $builder = Module::Build->new(
+     dist_author         => 'Simon Cozens <simon@cpan.org>',
+     dist_version_from   => 'lib/Text/Graphite2.pm',
+     extra_compiler_flags => $^O ne 'MSWin32' ? '-Wall -Wno-unused-variable' : '',
+-    extra_linker_flags  => $^O eq 'MSWin32' ? '../../build/src/graphite2.lib' : '-lgraphite2',
+-    include_dirs        => ['.'],
++    extra_linker_flags  => $^O eq 'MSWin32' ? '../../build/src/graphite2.lib' : '-L @BUILD_DIR@ -lgraphite2',
++    include_dirs        => ['.', '../../include'],
+     requires => {
+         'Test::More' => 0,
+     },

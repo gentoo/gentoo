@@ -1,0 +1,27 @@
+From 7ab0852f24a803ea2c9b0d8e1ce45d13cdd25320 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Tue, 24 Feb 2015 22:28:24 +0300
+Subject: [PATCH 5/5] base/dracut-lib.sh: remove bashism
+
+---
+ modules.d/99base/dracut-lib.sh | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/modules.d/99base/dracut-lib.sh b/modules.d/99base/dracut-lib.sh
+index 5c1504f..c1a22b6 100755
+--- a/modules.d/99base/dracut-lib.sh
++++ b/modules.d/99base/dracut-lib.sh
+@@ -886,7 +886,9 @@ dev_unit_name()
+     dev="${dev##/}"
+     dev="$(str_replace "$dev" '\' '\x5c')"
+     dev="$(str_replace "$dev" '-' '\x2d')"
+-    dev=${dev/#\./\\x2e}
++    if [ "${dev##.}" != "$dev" ]; then
++        dev="\x2e${dev##.}"
++    fi
+     dev="$(str_replace "$dev" '/' '-')"
+ 
+     printf -- "%s" "$dev"
+-- 
+2.4.1
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+	<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">SuperSwitcher is a (more feature-ful) replacement for the Alt-Tab window
+switching behavior and Ctrl-Alt-Left/Right/Up/Down workspace switching behavior
+that is currently provided by Metacity.</longdescription>
+	<upstream>
+		<remote-id type="google-code">superswitcher</remote-id>
+	</upstream>
+</pkgmetadata>

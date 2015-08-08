@@ -1,0 +1,11 @@
+--- test/startup_v2.py.orig	2013-08-27 12:23:10.520185408 +0400
++++ test/startup_v2.py	2013-08-27 12:23:27.155186209 +0400
+@@ -50,7 +50,7 @@
+     return re.match(expected, actual, re.DOTALL) != None
+ 
+ 
+-t = BoostBuild.Tester(match=match_re, boost_build_path="", pass_toolset=0)
++t = BoostBuild.Tester(match=match_re, boost_build_path="/invalid/location", pass_toolset=0)
+ t.set_tree("startup")
+ check_for_existing_boost_build_jam(t)
+ 

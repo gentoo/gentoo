@@ -1,0 +1,20 @@
+--- a/src/othptab.c
++++ b/src/othptab.c
+@@ -410,7 +410,7 @@
+ 				break;
+ 			}
+ 
+-			sprintf(scratchpad, rarp_mac_addr);
++			sprintf(scratchpad, "%s", rarp_mac_addr);
+ 			strcat(msgstring, scratchpad);
+ 			wattrset(table->othpwin, ARPATTR);
+ 			break;
+@@ -485,7 +485,7 @@
+ 		wattrset(table->othpwin, UNKNIPATTR);
+ 		protptr = getprotobynumber(entry->protocol);
+ 		if (protptr != NULL) {
+-			sprintf(protname, protptr->p_aliases[0]);
++			sprintf(protname, "%s", protptr->p_aliases[0]);
+ 		} else {
+ 			sprintf(protname, "IP protocol");
+ 			unknown = 1;

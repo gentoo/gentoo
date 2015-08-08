@@ -1,0 +1,73 @@
+Fix by Bertrand Jacquin <beber AT meleeweb.net>
+
+Gentoo bugreport: https://bugs.gentoo.org/show_bug.cgi?id=373365
+Upstream bugreport: https://developer.berlios.de/bugs/?func=detailbug&bug_id=18190&group_id=1208
+
+--- configure.in.orig	2011-06-28 16:26:10.000000000 +0200
++++ configure.in	2011-06-28 16:26:12.000000000 +0200
+@@ -104,32 +104,40 @@
+ AC_CHECK_FUNCS(flock fcntl uname gethostname sysinfo getdomainname)
+ AC_CHECK_FUNCS(stricmp random rand snprintf vsnprintf)
+ 
+-if test "$ac_cv_func_uname" = 'yes'
+-then
+-	AC_MSG_CHECKING([for field domainname in struct utsname])
+-	AC_TRY_RUN([
+-	#include <sys/utsname.h>
++AC_CACHE_CHECK([for field domainname in struct utsname], ac_cv_struct_utsname,
++ [AC_TRY_RUN([
++  #include <sys/utsname.h>
+ 	
+-	main(int argc, char **argv)
+-	{
+-		struct utsname uts;
+-		uts.domainname[0] = '\0';
+-	}
+-	],
+-	AC_MSG_RESULT(yes)
+-	AC_DEFINE(HAVE_STRUCT_UTSNAME_DOMAINNAME),
+-	AC_MSG_RESULT(no)
+-	)
+-fi
++  main(int argc, char **argv)
++  {
++    struct utsname uts;
++    uts.domainname[0] = '\0';
++  }
++ ],
++ ac_cv_struct_utsname=yes,
++ ac_cv_struct_utsname=no,
++ [AC_MSG_ERROR([cross-compiling,
++  presetting ac_cv_struct_utsname=(yes|no) will help])]
++ )
++])
++AS_VAR_IF(ac_cv_struct_utsname, yes,
++ [AC_DEFINE(HAVE_STRUCT_UTSNAME_DOMAINNAME)],
++)
+ 
+-AC_MSG_CHECKING([for /dev/urandom])
+-if test -c /dev/urandom
+-then
+-	AC_MSG_RESULT(yes)
+-	AC_DEFINE(HAVE_DEV_URANDOM)
+-else
+-	AC_MSG_RESULT(no)
+-fi
++AC_CACHE_CHECK([for /dev/urandom], ac_cv_file__dev_urandom,
++ [AS_IF([test "$cross_compiling" = yes],
++  [AC_MSG_ERROR([cross-compiling,
++   presetting ac_cv_file__dev_urandom=(yes|no) will help])],
++  if test -c /dev/urandom ; then
++    ac_cv_file__dev_urandom=yes
++  else
++    ac_cv_file__dev_urandom=no
++  fi
++ )]
++)
++AS_VAR_IF(ac_cv_file__dev_urandom, yes,
++ [AC_DEFINE(HAVE_DEV_URANDOM)]
++)
+ 
+ dnl Determine PATH setting
+ echo $ac_n "using the following PATH setting for exec'ed programs... $ac_c" 1>&6
+

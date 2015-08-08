@@ -1,0 +1,18 @@
+Files bbappconf-0.0.2.orig/.BaseDisplay.cc.swp and bbappconf-0.0.2/.BaseDisplay.cc.swp differ
+Files bbappconf-0.0.2.orig/.resource.cc.swp and bbappconf-0.0.2/.resource.cc.swp differ
+diff -urN bbappconf-0.0.2.orig/resource.cc bbappconf-0.0.2/resource.cc
+--- bbappconf-0.0.2.orig/resource.cc	2005-01-19 09:49:19.000000000 -0500
++++ bbappconf-0.0.2/resource.cc	2005-01-19 10:09:42.530236696 -0500
+@@ -19,10 +19,12 @@
+ // (See the included file COPYING / GPL-2.0)
+ //
+ 
++#include <cstdlib>
+ #include "resource.hh"
+ #include "blackboxstyle.hh"
+ 
+ Resource::Resource(ToolWindow *toolwindow): BaseResource(toolwindow) {
++  frame.font = NULL;
+   Load();
+ }
+ 

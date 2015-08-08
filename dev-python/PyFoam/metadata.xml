@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<maintainer>
+		<email>oli.borm@web.de</email>
+		<name>Oliver Borm</name>
+	</maintainer>
+	<use>
+  		<flag name='extras'>Enable optional dependencies</flag>
+	</use>
+</pkgmetadata>

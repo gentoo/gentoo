@@ -1,0 +1,61 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,5 +1,5 @@
+ 
+-VERSION=0.7.3
++VERSION=0.8
+ PLATFORM=$(shell uname -m)
+ 
+ 
+@@ -33,12 +33,10 @@
+ SUBDIRS = sap_moni
+ #C-Compiler
+ 
+-CC=gcc -DSAP_RFC_TIME
+-X_CFLAGS = $(CFLAGS)
++X_CFLAGS = $(CFLAGS) $(LDFLAGS) -DSAP_RFC_TIME
+ SHARED_OBJECTS=libs/$(PLATFORM)/librfccm.so
+ 
+ ifeq ($(patsubst i%86,x86,$(PLATFORM)), x86)
+-	CC=gcc -DSAP_RFC_TIME
+ 	SHARED_OBJECTS=libs/x86/librfccm.so
+ endif
+ 
+--- a/src/sap_moni/Makefile	2009-03-16 12:34:26.000000000 +0100
++++ b/src/sap_moni/Makefile	2010-10-20 01:24:14.000000000 +0200
+@@ -1,23 +1,16 @@
+-PLATFORM=$(shell uname -m)
+-
+ #used files
+-SRC_INI = iniparser.c dictionary.c strlib.c
++SRC_INI = dictionary.c strlib.c
+ OBJ_INI = $(SRC_INI:.c=.o)
+ OBJ=ctype_b.o agnt_rfc.o agnt_mon.o $(OBJ_INI)
+ 
+ SHARED  = sap_moni.so 
+ 
+ #C-Compiler
+-CC=gcc -DSAP_RFC_TIME
+-X_CFLAGS=$(CFLAGS) -fPIC
+-
+-ifeq ($(PLATFORM),ppc64)
+-	CC=gcc -m64 -DSAP_RFC_TIME
+-endif
++X_CFLAGS=$(CFLAGS) -fPIC -DSAP_RFC_TIME
+ 
+ #Rules
+ shared: $(OBJ)
+-	$(CC) -shared $ $(X_CFLAGS) -o $(SHARED) $(OBJ) -ldl -lm
++	$(CC) -shared $ $(X_CFLAGS) $(LDFLAGS) -o $(SHARED) $(OBJ) -ldl -lm -liniparser
+ 
+ 
+ .SUFFIXES: .c .o
+@@ -26,7 +19,7 @@
+ 
+ #Dependencies
+ agnt_rfc.o: saprfc.h sapitab.h agnt_def.h
+-agnt_mon.o: agnt_def.h iniparser.h sapitab.h
++agnt_mon.o: agnt_def.h sapitab.h
+ 
+ 
+ #------

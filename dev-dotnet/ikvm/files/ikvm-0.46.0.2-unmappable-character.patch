@@ -1,0 +1,11 @@
+--- openjdk/sun/print/Win32PrintService.java.orig	2012-02-26 17:56:16.751000012 +0100
++++ openjdk/sun/print/Win32PrintService.java	2012-02-26 17:56:37.182000012 +0100
+@@ -119,7 +119,7 @@
+         Chromaticity.class
+     };
+ 
+-    // conversion from 1/100 Inch (.NET) to µm (Java)
++    // conversion from 1/100 Inch (.NET) to m (Java)
+     private static final int INCH100_TO_MYM = 254;
+     private static final int  MATCH_DIFF = 500; // 0.5 mm
+     

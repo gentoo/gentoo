@@ -1,0 +1,386 @@
+diff -urN amber11.orig/AmberTools/src/configure amber11/AmberTools/src/configure
+--- amber11.orig/AmberTools/src/configure	2011-04-14 15:30:55.000000000 +0300
++++ amber11/AmberTools/src/configure	2011-06-04 12:26:45.000000000 +0300
+@@ -293,7 +293,8 @@
+    echo "Your AMBERHOME environment variable is not set! It should be set to"
+    echo "$ambhome  NOT doing so may cause errors when you compile. Continue"
+    echo "anyway? (yes or no)"
+-   read answer
++   #read answer
++   answer='yes'
+    if [ "$answer" = 'yes' -o "$answer" = 'Yes' -o "$answer" = 'YES' -o "$answer" = 'y' -o "$answer" = 'Y' ]; then
+       echo ""
+       echo "Continuing anyway... Setting AMBERHOME to $ambhome temporarily"
+@@ -356,11 +357,11 @@
+ mpi_flag=
+ lex=flex
+ flibs_mkl=
+-lapack=install
+-blas=install
++lapack=skip
++blas=skip
+ f2c=skip
+-ucpp=install
+-cpp="\$(BINDIR)/ucpp -l"
++ucpp=skip
++cpp="\$(EPREFIX)/usr/bin/ucpp -l"
+ 
+ #-----------------------------------
+ # skip building of sleap?
+@@ -1655,24 +1656,24 @@
+   #--------------------------------------------------------------------------
+   #  Configure fftw-3.2.2:
+   #--------------------------------------------------------------------------
+-  if [ "$mdgx" = 'yes' ]; then
+-      mdgxflag="--prefix=$AMBERHOME --disable-fortran" 
+-      echo
+-      echo "Configuring fftw-3.2.2 (may be time-consuming)..."
+-      echo
+-      cd fftw-3.2.2 && \
+-      env CC="$cc" CFLAGS="$cflags $cnooptflags" \
+-          ./configure $mdgxflag > ../fftw3_config.log 2>&1
+-      ncerror=$?
+-      if [ $ncerror -gt 0 ]; then
+-          echo "    Error: FFTW configure returned $ncerror"
+-          echo "    FFTW configure failed! Check the fftw3_config.log file."
+-          exit 1
+-      else
+-          echo "    fftw-3.2.2 configure succeeded."
+-      fi
+-      cd ..
+-  fi
++  #if [ "$mdgx" = 'yes' ]; then
++  #    mdgxflag="--prefix=$AMBERHOME --disable-fortran" 
++  #    echo
++  #    echo "Configuring fftw-3.2.2 (may be time-consuming)..."
++  #    echo
++  #    cd fftw-3.2.2 && \
++  #    env CC="$cc" CFLAGS="$cflags $cnooptflags" \
++  #        ./configure $mdgxflag > ../fftw3_config.log 2>&1
++  #    ncerror=$?
++  #    if [ $ncerror -gt 0 ]; then
++  #        echo "    Error: FFTW configure returned $ncerror"
++  #        echo "    FFTW configure failed! Check the fftw3_config.log file."
++  #        exit 1
++  #    else
++  #        echo "    fftw-3.2.2 configure succeeded."
++  #    fi
++  #    cd ..
++  #fi
+ 
+   #--------------------------------------------------------------------------
+   #  Configure python
+@@ -1792,27 +1793,27 @@
+           echo
+           echo "Configuring fftw-2.1.5 (may be time-consuming)..."
+           echo
+-          cd fftw-2.1.5
+-          if [ "$mpi" = 'yes' ]; then
+-              ./configure $rismflag --enable-mpi \
+-              CC="$cc" CFLAGS="$cflags $coptflags" \
+-              F77="$fc" FFLAGS="$fflags $foptflags" \
+-                  FLIBS="$flibs_arch" > ../fftw2_config.log 2>&1
+-          else
+-              ./configure $rismflag \
+-              CC="$cc" CFLAGS="$cflags $coptflags" \
+-              F77="$fc" FFLAGS="$fflags $foptflags" \
+-                  FLIBS="$flibs_arch" > ../fftw2_config.log 2>&1
+-          fi
+-          ncerror=$?
+-          if [ $ncerror -gt 0 ]; then
+-              echo "    Error: fftw configure returned $ncerror"
+-              echo "    fftw configure failed!  Check the fftw2_config.log file."
+-              exit 1
+-          else
+-              echo "    fftw-2.1.5 configure succeeded."
+-          fi
+-          cd ..
++  #        cd fftw-2.1.5
++  #        if [ "$mpi" = 'yes' ]; then
++  #            ./configure $rismflag --enable-mpi \
++  #            CC="$cc" CFLAGS="$cflags $coptflags" \
++  #            F77="$fc" FFLAGS="$fflags $foptflags" \
++  #                FLIBS="$flibs_arch" > ../fftw2_config.log 2>&1
++  #        else
++  #            ./configure $rismflag \
++  #            CC="$cc" CFLAGS="$cflags $coptflags" \
++  #            F77="$fc" FFLAGS="$fflags $foptflags" \
++  #                FLIBS="$flibs_arch" > ../fftw2_config.log 2>&1
++  #        fi
++  #        ncerror=$?
++  #        if [ $ncerror -gt 0 ]; then
++  #            echo "    Error: fftw configure returned $ncerror"
++  #            echo "    fftw configure failed!  Check the fftw2_config.log file."
++  #            exit 1
++  #        else
++  #            echo "    fftw-2.1.5 configure succeeded."
++  #        fi
++  #        cd ..
+           flibs_fftw2="-ldrfftw -ldfftw"
+           if [ "$mpi" = 'yes' ]; then
+               flibs_fftw2="-ldrfftw_mpi -ldfftw_mpi $flibs_fftw2"
+diff -urN amber11.orig/AmberTools/src/cpptraj/src/Makefile_at amber11/AmberTools/src/cpptraj/src/Makefile_at
+--- amber11.orig/AmberTools/src/cpptraj/src/Makefile_at	2011-04-14 15:30:16.000000000 +0300
++++ amber11/AmberTools/src/cpptraj/src/Makefile_at	2011-05-20 00:45:48.000000000 +0300
+@@ -65,8 +65,8 @@
+ 	-/bin/rm FindDepend.o
+ 	-/bin/rm findDepend
+ 
+-cpptraj$(SFX): $(NETCDFLIB) $(OBJECTS)
+-	$(CXX) $(LDFLAGS) -o cpptraj$(SFX) $(OBJECTS) $(NETCDFLIB) $(ZLIB) $(BZLIB)
++cpptraj$(SFX): $(OBJECTS)
++	$(CXX) $(LDFLAGS) -o cpptraj$(SFX) $(OBJECTS) $(NETCDFLIB) $(ZLIB) $(BZLIB) -lgomp
+ 
+ $(NETCDFLIB): ../../netcdf_config.log
+ 	cd ../../netcdf/src && $(MAKE) install
+diff -urN amber11.orig/AmberTools/src/Makefile amber11/AmberTools/src/Makefile
+--- amber11.orig/AmberTools/src/Makefile	2011-04-14 15:30:12.000000000 +0300
++++ amber11/AmberTools/src/Makefile	2011-05-19 23:36:36.000000000 +0300
+@@ -8,15 +8,15 @@
+ 
+ install: $(INSTALLTYPE)
+ 
+-serial: configured_serial $(NETCDFLIB) $(PYINSTALL) $(MTKPP)
++serial: configured_serial
+ 	@echo "Starting installation of ${AMBERTOOLS} serial at `date`".
+ #	utility routines and libraries:
+-	(cd ucpp-1.3 && $(MAKE) $(UCPP) )
++#	(cd ucpp-1.3 && $(MAKE) $(UCPP) )
+ 	(cd byacc && $(MAKE) install )
+-	(cd arpack && $(MAKE) install );
+-	(cd lapack && $(MAKE) $(LAPACK) )
+-	(cd blas && $(MAKE) $(BLAS) )
+-	(cd c9x-complex && $(MAKE) $(C9XCOMPLEX) )
++#	(cd arpack && $(MAKE) install );
++#	(cd lapack && $(MAKE) $(LAPACK) )
++#	(cd blas && $(MAKE) $(BLAS) )
++#	(cd c9x-complex && $(MAKE) $(C9XCOMPLEX) )
+ 	(cd etc && $(MAKE) install )
+ 	(cd chamber && $(MAKE) install )
+ 	(cd pbsa && $(MAKE) install )
+@@ -32,7 +32,7 @@
+ 	(cd cpptraj && $(MAKE) $(CPPTRAJ))
+ 
+ #   miscellaneous:
+-	(cd reduce && $(MAKE) install )
++#	(cd reduce && $(MAKE) install )
+ 
+ #   leap and gleap:
+ 	(cd leap && $(MAKE) install )
+@@ -42,7 +42,7 @@
+ 	(cd rism && $(MAKE) install )
+ 
+ #   nab:
+-	(cd cifparse && $(MAKE) install )
++#	(cd cifparse && $(MAKE) install )
+ 	(cd sff && $(MAKE) install )
+ 	(cd pbsa && $(MAKE) libinstall )
+ 	(cd nab && $(MAKE) install )
+@@ -63,19 +63,19 @@
+ 	@echo "Installation of ${AMBERTOOLS} serial is complete at `date`."
+ 	@echo ""
+ 
+-nabonly: $(NETCDFLIB) 
++nabonly:
+ #	utility routines and libraries:
+-	(cd ucpp-1.3 && $(MAKE) $(UCPP) )
++#	(cd ucpp-1.3 && $(MAKE) $(UCPP) )
+ 	(cd byacc && $(MAKE) install )
+-	(cd arpack && $(MAKE) install );
+-	(cd lapack && $(MAKE) $(LAPACK) )
+-	(cd blas && $(MAKE) $(BLAS) )
+-	(cd c9x-complex && $(MAKE) $(C9XCOMPLEX) )
++#	(cd arpack && $(MAKE) install );
++#	(cd lapack && $(MAKE) $(LAPACK) )
++#	(cd blas && $(MAKE) $(BLAS) )
++#	(cd c9x-complex && $(MAKE) $(C9XCOMPLEX) )
+ 	(cd pbsa && $(MAKE) libinstall )
+ 	(cd rism && $(MAKE) install )
+ 
+ #	nab:
+-	(cd cifparse && $(MAKE) install )
++#	(cd cifparse && $(MAKE) install )
+ 	(cd sff && $(MAKE) install )
+ 	(cd nab && $(MAKE) install )
+ 	(cd nss && $(MAKE) install )
+diff -urN amber11.orig/AmberTools/src/mdgx/Makefile amber11/AmberTools/src/mdgx/Makefile
+--- amber11.orig/AmberTools/src/mdgx/Makefile	2011-04-14 15:30:17.000000000 +0300
++++ amber11/AmberTools/src/mdgx/Makefile	2011-05-20 12:44:38.000000000 +0300
+@@ -109,7 +109,7 @@
+ 
+ FFTW_LIBS = $(LIBDIR)/libfftw3.a
+ 
+-mdgx$(SFX) : $(MDGX_OBJS) $(FFTW_LIBS) $(NETCDFLIB)
++mdgx$(SFX) : $(MDGX_OBJS)
+ 	$(CC) $(COPTFLAGS) $(CFLAGS) $(AMBERCFLAGS) \
+ 	-o $@ $(MDGX_OBJS) $(FFTW_LIBS) $(NETCDFLIB) $(LM)
+ 
+diff -urN amber11.orig/AmberTools/src/pbsa/Makefile amber11/AmberTools/src/pbsa/Makefile
+--- amber11.orig/AmberTools/src/pbsa/Makefile	2011-04-14 15:30:19.000000000 +0300
++++ amber11/AmberTools/src/pbsa/Makefile	2011-05-19 22:27:40.000000000 +0300
+@@ -148,7 +148,7 @@
+ 	)
+ 
+ #---------------------------------------------------------------------------
+-pbsa$(SFX): $(OBJ) syslib netlib c9x-complex configured_serial
++pbsa$(SFX): $(OBJ) syslib configured_serial
+ 	$(FC) $(FFLAGS) $(AMBERFFLAGS) -o pbsa$(SFX) $(OBJ) \
+ 	        ../lib/nxtsec.o ../lib/random.o \
+ 	        $(FLIBSF) $(LDFLAGS) $(AMBERLDFLAGS)
+@@ -158,7 +158,7 @@
+ 	        ../lib/nxtsec.o ../lib/random.o \
+ 	        $(FLIBSF) $(LDFLAGS) $(AMBERLDFLAGS)
+ 
+-simplepbsa$(SFX): simplepbsa.o gopt.o libpbsa.a sfflib syslib netlib c9x-complex
++simplepbsa$(SFX): simplepbsa.o gopt.o libpbsa.a sfflib syslib
+ 	$(FC) $(FFLAGS) $(AMBERFFLAGS) -o simplepbsa$(SFX) simplepbsa.o gopt.o \
+ 		libpbsa.a $(LIBDIR)/libsff.a ../lib/nxtsec.o $(FLIBSF) \
+ 		$(LDFLAGS) $(AMBERLDFLAGS)
+@@ -194,15 +194,15 @@
+ sfflib:
+ 	cd ../sff && $(MAKE) install
+ 
+-netlib: 
+-	cd ../lapack && $(MAKE) $(LAPACK)
+-	cd ../blas && $(MAKE) $(BLAS)
+-	cd ../arpack && $(MAKE) install
+-
+-c9x-complex:
+-	@if test $(C9XCOMPLEX) != "skip"; then \
+-	   cd ../c9x-complex && $(MAKE) libmc.a; \
+-	 fi
++#netlib: 
++#	cd ../lapack && $(MAKE) $(LAPACK)
++#	cd ../blas && $(MAKE) $(BLAS)
++#	cd ../arpack && $(MAKE) install
++
++#c9x-complex:
++#	@if test $(C9XCOMPLEX) != "skip"; then \
++#	   cd ../c9x-complex && $(MAKE) libmc.a; \
++#	 fi
+ 
+ %.LIBPBSA.o: %.f
+ 	$(FPP) $(FPPFLAGS) $(AMBERFPPFLAGS) -DLIBPBSA $< > _$<
+diff -urN amber11.orig/AmberTools/src/ptraj/Makefile amber11/AmberTools/src/ptraj/Makefile
+--- amber11.orig/AmberTools/src/ptraj/Makefile	2011-04-14 15:30:19.000000000 +0300
++++ amber11/AmberTools/src/ptraj/Makefile	2011-05-19 23:38:36.000000000 +0300
+@@ -57,25 +57,25 @@
+ pubfft.o:  pubfft.f
+ 	$(FC) -c $(FREEFORMAT_FLAG) $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ $<
+ 
+-rdparm$(SFX): libs $(NETCDFLIB) $(OBJECTS)
++rdparm$(SFX): libs $(OBJECTS)
+ 	$(CC) $(CFLAGS) $(AMBERCFLAGS) $(LDFLAGS) $(AMBERLDFLAGS) \
+ 		-o rdparm$(SFX) $(OBJECTS) $(LIBS) $(NETCDFLIB) $(LM)
+ 
+-ptraj$(SFX): libs netlib $(NETCDFLIB) $(OBJECTS)
++ptraj$(SFX): libs $(OBJECTS)
+ 	$(CC) $(CFLAGS) $(AMBERCFLAGS) $(LDFLAGS) $(AMBERLDFLAGS) \
+ 		-o ptraj$(SFX) $(OBJECTS) $(LIBS) $(NETCDFLIB) $(LM)
+ 
+-ptraj.MPI$(SFX): libs netlib $(PNETCDFLIB) $(OBJECTS)
++ptraj.MPI$(SFX): libs $(PNETCDFLIB) $(OBJECTS)
+ 	$(CC) $(CFLAGS) $(AMBERCFLAGS) $(LDFLAGS) $(AMBERLDFLAGS) \
+ 		-o ptraj.MPI$(SFX) $(OBJECTS) $(LIBS) $(PNETCDFLIB) $(LM)
+ 
+ libs: 
+ 	cd pdb && $(MAKE) 
+-	cd ../arpack && $(MAKE)
++#	cd ../arpack && $(MAKE)
+ 
+-netlib:
+-	cd ../lapack && $(MAKE) $(LAPACK)
+-	cd ../blas && $(MAKE) $(BLAS)
++#netlib:
++#	cd ../lapack && $(MAKE) $(LAPACK)
++#	cd ../blas && $(MAKE) $(BLAS)
+ 
+ clean:
+ 	cd pdb && $(MAKE) clean
+diff -urN amber11.orig/AmberTools/src/ptraj/netcdf_ptraj.h amber11/AmberTools/src/ptraj/netcdf_ptraj.h
+--- amber11.orig/AmberTools/src/ptraj/netcdf_ptraj.h	2011-04-14 15:30:19.000000000 +0300
++++ amber11/AmberTools/src/ptraj/netcdf_ptraj.h	2011-05-19 22:30:43.000000000 +0300
+@@ -4,7 +4,7 @@
+ #    include "../../include/pnetcdf.h"
+ #    define nc_strerror ncmpi_strerror
+ #  else
+-#    include "../../include/netcdf.h"
++#    include <netcdf.h>
+ #  endif 
+ #endif
+ 
+diff -urN amber11.orig/AmberTools/src/ptraj/ptraj.h amber11/AmberTools/src/ptraj/ptraj.h
+--- amber11.orig/AmberTools/src/ptraj/ptraj.h	2011-04-14 15:30:19.000000000 +0300
++++ amber11/AmberTools/src/ptraj/ptraj.h	2011-06-04 13:25:01.000000000 +0300
+@@ -94,7 +94,7 @@
+ #define nc_strerror ncmpi_strerror
+ #include "../../include/pnetcdf.h"
+ #else
+-#include "../../include/netcdf.h"
++#include <netcdf.h>
+ #endif
+ #endif
+ 
+diff -urN amber11.orig/AmberTools/src/rism/Makefile amber11/AmberTools/src/rism/Makefile
+--- amber11.orig/AmberTools/src/rism/Makefile	2011-04-14 15:30:19.000000000 +0300
++++ amber11/AmberTools/src/rism/Makefile	2011-05-20 01:07:26.000000000 +0300
+@@ -49,7 +49,7 @@
+ 	mdiis_orig_c.o mdiis_blas_c.o mdiis_blas2_c.o mdiis_c.o \
+ 	fce_c.o erfcfun.o safemem.o blend.o timer_c.o
+ 
+-librism: $(LIBOBJ) $(FLIBS_FFTW2)
++librism: $(LIBOBJ)
+ 	$(AR) $(LIBDIR)/$@.a $(LIBOBJ)
+ 	$(RANLIB) $(LIBDIR)/$@.a
+ 
+diff -urN amber11.orig/AmberTools/src/sff/AmberNetcdf.c amber11/AmberTools/src/sff/AmberNetcdf.c
+--- amber11.orig/AmberTools/src/sff/AmberNetcdf.c	2011-04-14 15:30:19.000000000 +0300
++++ amber11/AmberTools/src/sff/AmberNetcdf.c	2011-05-20 10:49:06.000000000 +0300
+@@ -27,7 +27,7 @@
+ #endif
+     
+ #ifdef BINTRAJ
+-#include "../../include/netcdf.h"
++#include <netcdf.h>
+ 
+ #define NCFRAME "frame"
+ #define NCSPATIAL "spatial"
+diff -urN amber11.orig/AmberTools/src/sff/Makefile amber11/AmberTools/src/sff/Makefile
+--- amber11.orig/AmberTools/src/sff/Makefile	2011-04-14 15:30:19.000000000 +0300
++++ amber11/AmberTools/src/sff/Makefile	2011-05-20 09:53:27.000000000 +0300
+@@ -1,7 +1,7 @@
+ include ../config.h
+ 
+ .c.o:
+-	$(CC) -c -Dflex $(COPTFLAGS) $(CFLAGS) $(AMBERCFLAGS) $(RISMSFF) -o $@ $<
++	$(CC) -c -Dflex $(COPTFLAGS) $(CFLAGS) $(AMBERCFLAGS) $(RISMSFF) $(NETCDFLIB) -o $@ $<
+ 
+ OBJS = binpos.o conjgrad.o lmodC.o memutil.o nblist.o newton.o nmode.o \
+ 	prm.o rand2.o sasad.o sff.o time.o xminC.o AmberNetcdf.o \
+diff -urN amber11.orig/AmberTools/src/sqm/Makefile amber11/AmberTools/src/sqm/Makefile
+--- amber11.orig/AmberTools/src/sqm/Makefile	2011-04-14 15:30:20.000000000 +0300
++++ amber11/AmberTools/src/sqm/Makefile	2011-05-19 22:31:49.000000000 +0300
+@@ -77,7 +77,7 @@
+ install: sqm$(SFX)
+ 	mv sqm$(SFX) $(BINDIR)
+ 
+-sqm$(SFX): $(SQMOBJ) $(QMOBJ) netlib sys
++sqm$(SFX): $(SQMOBJ) $(QMOBJ) sys
+ 	$(FC) $(FFLAGS) $(AMBERFFLAGS) -o sqm$(SFX) $(SQMOBJ) $(QMOBJ) \
+ 		$(FLIBSF) ../lib/sys.a $(LDFLAGS) $(AMBERLDFLAGS)
+ 
+@@ -94,10 +94,10 @@
+ sys:
+ 	cd ../lib; $(MAKE) sys.a
+ 
+-netlib:
+-	cd ../lapack; $(MAKE) $(LAPACK)
+-	cd ../blas; $(MAKE) $(BLAS)
+-	cd ../arpack && $(MAKE) install
++#netlib:
++#	cd ../lapack; $(MAKE) $(LAPACK)
++#	cd ../blas; $(MAKE) $(BLAS)
++#	cd ../arpack && $(MAKE) install
+ 
+ clean:
+ 	/bin/rm -f *.o _*.f *.mod *.d sqm$(SFX)

@@ -1,0 +1,12 @@
+diff -urN ptlib-2.12.4.old/configure.ac ptlib-2.12.4/configure.ac
+--- ptlib-2.12.4.old/configure.ac	2013-06-22 21:01:51.392606863 +0200
++++ ptlib-2.12.4/configure.ac	2013-06-22 21:02:02.991606450 +0200
+@@ -448,7 +448,7 @@
+    ],
+    [
+       AC_MSG_RESULT(no)
+-      PTLIB_CXXFLAGS="$PTLIB_CFLAGS -frtti"
++      PTLIB_CXXFLAGS="$PTLIB_CXXFLAGS -frtti"
+    ]
+ )
+ 

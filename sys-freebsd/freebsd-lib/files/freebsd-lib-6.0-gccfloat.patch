@@ -1,0 +1,16 @@
+This patch is needed to avoid inclusion of GCC's float.h that defines
+LDBL_MANT_DIG at 53 (while the source file checks for 113 or 64.
+
+Index: freebsd-6.0_beta4/lib/msun/src/s_fmal.c
+===================================================================
+--- freebsd-6.0_beta4.orig/lib/msun/src/s_fmal.c
++++ freebsd-6.0_beta4/lib/msun/src/s_fmal.c
+@@ -28,7 +28,7 @@
+ __FBSDID("$FreeBSD: src/lib/msun/src/s_fmal.c,v 1.2 2005/03/18 02:27:59 das Exp $");
+ 
+ #include <fenv.h>
+-#include <float.h>
++#include <machine/float.h>
+ #include <math.h>
+ 
+ /*

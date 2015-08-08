@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>cdargs.git - cdargs</title>
+<meta name='generator' content='cgit v0.10.2'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit-data/cgit.css'/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='http://pkgs.fedoraproject.org/cgit/cdargs.git/atom/cdargs-1.35_format_security.patch?h=master' type='application/atom+xml'/>
+</head>
+<body>
+<script src="https://apps.fedoraproject.org/fedmenu/js/jquery-1.11.2.min.js"></script>
+<script src="https://apps.fedoraproject.org/fedmenu/js/fedmenu.js"></script>
+
+<script>
+    var base = 'https://apps.fedoraproject.org/';
+    var tokens = window.location.href.split('/');
+  var repo = null;
+  if (tokens.length > 4 && tokens[4] != '') {
+    repo = tokens[4].split('.')[0];
+  }
+  fedmenu({
+      'url': base + 'js/data.js',
+      'mimeType': 'application/javascript',
+      'position': 'bottom-right',
+      'package': repo,
+  });
+</script>
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/cgit/'><img src='/cgit-data/cgit.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/cgit/'>index</a> : <a title='cdargs.git' href='/cgit/cdargs.git/'>cdargs.git</a></td><td class='form'><form method='get' action=''>
+<select name='h' onchange='this.form.submit();'>
+<option value='f10'>f10</option>
+<option value='f11'>f11</option>
+<option value='f12'>f12</option>
+<option value='f13'>f13</option>
+<option value='f14'>f14</option>
+<option value='f15'>f15</option>
+<option value='f16'>f16</option>
+<option value='f17'>f17</option>
+<option value='f18'>f18</option>
+<option value='f19'>f19</option>
+<option value='f20'>f20</option>
+<option value='f21'>f21</option>
+<option value='f22'>f22</option>
+<option value='f7'>f7</option>
+<option value='f8'>f8</option>
+<option value='f9'>f9</option>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' name='' value='switch'/></form></td></tr>
+<tr><td class='sub'>cdargs</td><td class='sub right'>Jesse Keating</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/cgit/cdargs.git/'>summary</a><a href='/cgit/cdargs.git/refs/'>refs</a><a href='/cgit/cdargs.git/log/cdargs-1.35_format_security.patch'>log</a><a class='active' href='/cgit/cdargs.git/tree/cdargs-1.35_format_security.patch'>tree</a><a href='/cgit/cdargs.git/commit/cdargs-1.35_format_security.patch'>commit</a><a href='/cgit/cdargs.git/diff/cdargs-1.35_format_security.patch'>diff</a><a href='/cgit/cdargs.git/stats/cdargs-1.35_format_security.patch'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/cdargs.git/log/cdargs-1.35_format_security.patch'>
+<select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/cgit/cdargs.git/tree/'>root</a>/<a href='/cgit/cdargs.git/tree/cdargs-1.35_format_security.patch'>cdargs-1.35_format_security.patch</a></div><div class='content'>blob: 3ddc550e607e9f908b891c7e3626ee256484607e (<a href='/cgit/cdargs.git/plain/cdargs-1.35_format_security.patch'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+</pre></td>
+<td class='lines'><pre><code>diff --git a/src/cdargs.cc b/src/cdargs.cc
+index e505e4e..1fdfeb8 100644
+--- a/src/cdargs.cc
++++ b/src/cdargs.cc
+@@ -1301,7 +1301,7 @@ void helpscreen(void) {
+ 
+ void fatal_exit(char* msg) {
+     endwin();
+-    fprintf(stderr, msg);
++    fprintf(stderr, "%s", msg);
+     exit(1);
+ }
+ 
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div class='footer'>generated  by cgit v0.10.2 at 2015-06-21 13:46:50 (GMT)</div>
+</div> <!-- id=cgit -->
+</body>
+</html>

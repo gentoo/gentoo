@@ -1,0 +1,30 @@
+commit f24e8010e01449648f1d1e28cb325bde21bfdaed
+Author: Hans de Graaff <hans@degraaff.org>
+Date:   Thu Jul 8 20:37:26 2010 +0200
+
+    Fix case where both memcached and memcache are not present.
+    
+    The second require attempt will also generate a LoadError if memcache is not
+    present, so this requires an extra block to rescue that error.
+
+diff --git a/lib/moneta/memcache.rb b/lib/moneta/memcache.rb
+index 5cf8c02..4e2f9d6 100644
+--- a/lib/moneta/memcache.rb
++++ b/lib/moneta/memcache.rb
+@@ -2,10 +2,12 @@ begin
+   require "memcached"
+   MemCache = Memcached
+ rescue LoadError
+-  require "memcache"
+-rescue
+-  puts "You need either the `memcached` or `memcache-client` gem to use the Memcache moneta store"
+-  exit
++  begin
++    require "memcache"
++  rescue LoadError
++    puts "You need either the `memcached` or `memcache-client` gem to use the Memcache moneta store"
++    exit
++  end
+ end
+ 
+ module Moneta

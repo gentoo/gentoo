@@ -1,0 +1,27 @@
+From 21dcbd03507632c987e8c68b3efcf7b4a5d51147 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 18 Apr 2012 21:11:22 -0400
+Subject: [PATCH] use right libnl pkg-config name
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile |    3 +--
+ 1 files changed, 1 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 94ed2be..8a90b85 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,8 +39,7 @@ endif
+ 
+ ifeq ($(NL3FOUND),Y)
+ CPPFLAGS += -DCONFIG_LIBNL20
+-LIBS += -lnl-genl
+-NLLIBNAME = libnl-3.0
++NLLIBNAME = libnl-genl-3.0
+ endif
+ 
+ ifeq ($(NLLIBNAME),)
+-- 
+1.7.8.5
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>games</herd>
+  <maintainer>
+    <email>calchan@gentoo.org</email>
+    <name>Denis Dupeyron</name>
+  </maintainer>
+  <use>
+    <flag name="hou">Install the Hordes of the Underdark expansion pack</flag>
+    <flag name="sou">Installs the Shadows of Undrentide expension pack</flag>
+  </use>
+</pkgmetadata>

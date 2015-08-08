@@ -1,0 +1,23 @@
+ doc/texinfo2HTML |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/doc/texinfo2HTML b/doc/texinfo2HTML
+index 39bed0e..43d3fe6 100755
+--- a/doc/texinfo2HTML
++++ b/doc/texinfo2HTML
+@@ -54,12 +54,12 @@ BUGS:
+ 		the end is here} and more blah
+ 	will not get the \@code{} item converted correctly.
+ ";
+-require "ctime.pl";
+-require "getopts.pl";
++use POSIX qw(strftime ctime);
++use Getopt::Std;
+ 
+ $debug = 0;
+ 
+-die if !&Getopts('h');
++die if !getopts('h');
+ $print_help = 0;
+ $print_help = $opt_h if $opt_h;
+ if ($print_help) {

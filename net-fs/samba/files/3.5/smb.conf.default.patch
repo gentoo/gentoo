@@ -1,0 +1,86 @@
+--- samba-3.5.9/examples/smb.conf.default	2011-06-14 05:17:28.000000000 -0600
++++ /etc/samba/smb.conf.default	2011-06-29 10:12:13.000000000 -0600
+@@ -61,11 +61,11 @@
+ # otherwise the user "nobody" is used
+ ;  guest account = pcguest
+ 
+ # this tells Samba to use a separate log file for each machine
+ # that connects
+-   log file = /usr/local/samba/var/log.%m
++   log file = /var/log/samba/log.%m
+ 
+ # Put a capping on the size of the log files (in Kb).
+    max log size = 50
+ 
+ # Use password server option only with security = server
+@@ -79,19 +79,22 @@
+ # Specifies the Active Directory realm the host is part of
+ ;   realm = MY_REALM
+ 
+ # Backend to store user information in. New installations should 
+ # use either tdbsam or ldapsam. smbpasswd is available for backwards 
+-# compatibility. tdbsam requires no further configuration.
++# compatibility. tdbsam requires no further configuration. If you're 
++# migrating from < samba 3.4, you'll have to convert your old user 
++# passwords to the new backend with the command:
++# pdbedit -i smbpasswd:/var/lib/samba/private/smbpasswd -e
+ ;   passdb backend = tdbsam
+ 
+ # Using the following line enables you to customise your configuration
+ # on a per machine basis. The %m gets replaced with the netbios name
+ # of the machine that is connecting.
+ # Note: Consider carefully the location in the configuration file of
+ #       this line.  The included file is read at that point.
+-;   include = /usr/local/samba/lib/smb.conf.%m
++;   include = /etc/samba/smb.conf.%m
+ 
+ # Configure Samba to use multiple interfaces
+ # If you have multiple network interfaces then you must list them
+ # here. See the man page for details.
+ ;   interfaces = 192.168.12.2/24 192.168.13.2/24 
+@@ -164,29 +167,29 @@
+    writable = yes
+ 
+ # Un-comment the following and create the netlogon directory for Domain Logons
+ ; [netlogon]
+ ;   comment = Network Logon Service
+-;   path = /usr/local/samba/lib/netlogon
++;   path = /var/lib/samba/netlogon
+ ;   guest ok = yes
+ ;   writable = no
+ ;   share modes = no
+ 
+ 
+ # Un-comment the following to provide a specific roving profile share
+ # the default is to use the user's home directory
+ ;[Profiles]
+-;    path = /usr/local/samba/profiles
++;    path = /var/lib/samba/profiles
+ ;    browseable = no
+ ;    guest ok = yes
+ 
+ 
+ # NOTE: If you have a BSD-style print system there is no need to 
+ # specifically define each individual printer
+ [printers]
+    comment = All Printers
+-   path = /usr/spool/samba
++   path = /var/spool/samba
+    browseable = no
+ # Set public = yes to allow user 'guest account' to print
+    guest ok = no
+    writable = no
+    printable = yes
+@@ -202,11 +205,11 @@
+ # the "staff" group
+ ;[public]
+ ;   comment = Public Stuff
+ ;   path = /home/samba
+ ;   public = yes
+-;   writable = no
++;   writable = yes
+ ;   printable = no
+ ;   write list = @staff
+ 
+ # Other examples. 
+ #

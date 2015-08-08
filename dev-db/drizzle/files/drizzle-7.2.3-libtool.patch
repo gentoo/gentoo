@@ -1,0 +1,13 @@
+Index: drizzle-7.2.3/libdrizzle-1.0/include.am
+===================================================================
+--- drizzle-7.2.3.orig/libdrizzle-1.0/include.am
++++ drizzle-7.2.3/libdrizzle-1.0/include.am
+@@ -48,7 +48,7 @@ libdrizzle_1_0_libdrizzle_la_LDFLAGS= \
+ 				      -version-info \
+ 				      $(LIBDRIZZLE_LIBRARY_VERSION)
+ 
+-libdrizzle_1_0_libdrizzle_la_LIBADD= $(LIBSSL)
++libdrizzle_1_0_libdrizzle_la_LIBADD= $(LTLIBSSL)
+ 
+ libdrizzle_1_0_libdrizzle_la_SOURCES= \
+ 				      libdrizzle/column.cc \

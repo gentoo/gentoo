@@ -1,0 +1,24 @@
+--- cmake/modules/LLVMConfig.cmake.in.old	2013-12-30 14:40:54.888983600 +0100
++++ cmake/modules/LLVMConfig.cmake.in	2013-12-30 14:44:15.448970509 +0100
+@@ -39,16 +39,10 @@
+ set(LLVM_LIBRARY_DIRS ${LLVM_INSTALL_PREFIX}/lib)
+ set(LLVM_DEFINITIONS "-D__STDC_LIMIT_MACROS" "-D__STDC_CONSTANT_MACROS")
+ 
+-# We try to include using the current setting of CMAKE_MODULE_PATH,
+-# which suppossedly was filled by the user with the directory where
+-# this file was installed:
+-include( LLVM-Config OPTIONAL RESULT_VARIABLE LLVMCONFIG_INCLUDED )
+-
+-# If failed, we assume that this is an un-installed build:
+-if( NOT LLVMCONFIG_INCLUDED )
+-  set(CMAKE_MODULE_PATH
++# For some reasons without it it fails on Gentoo, see bug #496480
++set(CMAKE_MODULE_PATH
+     ${CMAKE_MODULE_PATH}
+-    "@LLVM_SOURCE_DIR@/cmake/modules")
+-  include( LLVM-Config )
+-endif()
++    "@LLVM_INSTALL_PREFIX@/share/llvm/cmake")
++
++include(LLVM-Config)
+ 

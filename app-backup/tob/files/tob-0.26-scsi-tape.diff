@@ -1,0 +1,12 @@
+diff -Nur tob-0.26/tob /tmp/tob-0.26/tob
+--- a/tob-0.26/tob	2005-02-27 22:46:15.701964928 +0100
++++ b/tob-0.26/tob	2005-02-27 22:45:41.091226560 +0100
+@@ -219,8 +219,6 @@
+     if [ -d "$BACKUPDEV" ]; then
+     	BACKUPDIR=$BACKUPDEV
+     	BACKUPDEV="${BACKUPDIR}/${VOLUMENAME}_${DATE}_${TYPE}.${EXT}"
+-    else
+-        BACKUPDIR="/var/lib/tob"
+     fi
+ 
+     # check that relevant environment vars are set

@@ -1,0 +1,38 @@
+Index: lib/tty/key.c
+===================================================================
+--- lib/tty/key.c	(revision 0ed4a91d7df4e50512defd2e0734ecab7c9da07f)
++++ lib/tty/key.c	(revision 21bf5d2dde704fd9ae90d991ce1279ba925897c9)
+@@ -1947,4 +1947,5 @@
+ {
+     int c;
++    static int flag = 0;        /* Return value from select */
+ #ifdef HAVE_LIBGPM
+     static struct Gpm_Event ev; /* Mouse event */
+@@ -1979,5 +1980,4 @@
+     {
+         int nfd;
+-        static int flag = 0;    /* Return value from select */
+         fd_set select_set;
+ 
+Index: lib/tty/tty-ncurses.c
+===================================================================
+--- lib/tty/tty-ncurses.c	(revision bb65b467900ea9eb1f7867c059fd26fac86c747c)
++++ lib/tty/tty-ncurses.c	(revision 21bf5d2dde704fd9ae90d991ce1279ba925897c9)
+@@ -50,4 +50,5 @@
+ #include "tty.h"
+ #include "color-internal.h"
++#include "key.h"
+ #include "mouse.h"
+ #include "win.h"
+@@ -531,4 +532,5 @@
+     {
+         int res;
++        unsigned char str[UTF8_CHAR_LEN + 1];
+ 
+         res = g_unichar_to_utf8 (c, (char *) str);
+@@ -541,5 +543,4 @@
+         else
+         {
+-            unsigned char str[UTF8_CHAR_LEN + 1];
+             const char *s;
+ 

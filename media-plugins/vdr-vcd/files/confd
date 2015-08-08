@@ -1,0 +1,11 @@
+# /etc/conf.d/vdr.vcd:
+# $Id$
+
+# Config file for vdr plugin vcd
+
+#Device to read VCDs from
+#  allowed values: cdrom-device names
+#  default: VDR_CDREADER from /etc/conf.d/vdr.cd-dvd
+#            (or if file does not exist /dev/cdrom)
+#VCD_DEVICE="/dev/cdrom"
+

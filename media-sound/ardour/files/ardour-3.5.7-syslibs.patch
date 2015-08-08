@@ -1,0 +1,36 @@
+diff -rupN a/ardour-3.5.74/libs/ardour/wscript b/ardour-3.5.74/libs/ardour/wscript
+--- a/ardour-3.5.74/libs/ardour/wscript 2013-11-05 20:20:03.000000000 +0100
++++ b/ardour-3.5.74/libs/ardour/wscript 2013-11-08 09:51:41.553000000 +0100
+@@ -287,7 +287,8 @@ def configure(conf):
+ 
+     # we don't try to detect this, since its part of our source tree
+ 
+-    conf.define('HAVE_RUBBERBAND', 1) # controls whether we think we have it
++    autowaf.check_pkg(conf, 'taglib', uselib_store='TAGLIB', atleast_version='1.7')
++    autowaf.check_pkg(conf, 'rubberband', uselib_store='RUBBERBAND', atleast_version='1.4')
+     conf.define('USE_RUBBERBAND', 1)  # controls whether we actually use it
+ 
+     conf.define('CURRENT_SESSION_FILE_VERSION', CURRENT_SESSION_FILE_VERSION)
+@@ -332,7 +333,7 @@ def build(bld):
+     obj.target       = 'ardour'
+     obj.uselib       = ['GLIBMM','GTHREAD','AUBIO','SIGCPP','XML','UUID',
+                         'SNDFILE','SAMPLERATE','LRDF','AUDIOUNITS',
+-                        'OSX','BOOST','CURL','DL']
++                        'OSX','BOOST','CURL','DL','RUBBERBAND','TAGLIB']
+     obj.use          = ['libpbd','libmidipp','libevoral','libvampplugin',
+                         'libaudiographer','libltc','libtimecode']
+     if bld.is_defined('USE_EXTERNAL_LIBS'):
+diff -rupN a/ardour-3.5.74/wscript b/ardour-3.5.74/wscript
+--- a/ardour-3.5.74/wscript     2013-11-05 20:20:03.000000000 +0100
++++ b/ardour-3.5.74/wscript     2013-11-08 09:49:27.594000000 +0100
+@@ -56,9 +56,7 @@ children = [
+         'libs/vamp-sdk',
+         'libs/qm-dsp',
+         'libs/vamp-plugins',
+-        'libs/taglib',
+         'libs/libltc',
+-        'libs/rubberband',
+         'libs/surfaces',
+         'libs/panners',
+         'libs/backends',
+

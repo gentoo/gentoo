@@ -1,0 +1,12 @@
+Index: libmemcache-1.4.0.rc2/test/benchmark/benchmark.c
+===================================================================
+--- libmemcache-1.4.0.rc2.orig/test/benchmark/benchmark.c
++++ libmemcache-1.4.0.rc2/test/benchmark/benchmark.c
+@@ -29,6 +29,7 @@
+ 
+ #include "memcache.h"
+ 
++char *strdup(const char *s1);
+ double tt(const struct timeval *t1, const struct timeval *t2);
+ 
+ double

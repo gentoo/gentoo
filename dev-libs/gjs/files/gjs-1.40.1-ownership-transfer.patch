@@ -1,0 +1,72 @@
+From a432e83f967f3d15ef14cfa8040f868af13d1e74 Mon Sep 17 00:00:00 2001
+From: Giovanni Campagna <gcampagna@src.gnome.org>
+Date: Tue, 6 May 2014 19:03:15 +0200
+Subject: function: respect ownership transfer of instance parameters
+
+When calling a method that is (transfer full) on the instance
+parameter we need to make an extra ref/copy.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=729545
+
+diff --git a/gi/function.cpp b/gi/function.cpp
+index 859ea44..792778c 100644
+--- a/gi/function.cpp
++++ b/gi/function.cpp
+@@ -543,6 +543,7 @@ gjs_fill_method_instance (JSContext  *context,
+     GIBaseInfo *container = g_base_info_get_container((GIBaseInfo *) function->info);
+     GIInfoType type = g_base_info_get_type(container);
+     GType gtype = g_registered_type_info_get_g_type ((GIRegisteredTypeInfo *)container);
++    GITransfer transfer = g_callable_info_get_instance_ownership_transfer (function->info);
+ 
+     switch (type) {
+     case GI_INFO_TYPE_STRUCT:
+@@ -553,6 +554,8 @@ gjs_fill_method_instance (JSContext  *context,
+                 return JS_FALSE;
+ 
+             out_arg->v_pointer = gjs_gerror_from_error(context, obj);
++            if (transfer == GI_TRANSFER_EVERYTHING)
++                out_arg->v_pointer = g_error_copy ((GError*) out_arg->v_pointer);
+         } else {
+             if (!gjs_typecheck_boxed(context, obj,
+                                      container, gtype,
+@@ -560,6 +563,14 @@ gjs_fill_method_instance (JSContext  *context,
+                 return JS_FALSE;
+ 
+             out_arg->v_pointer = gjs_c_struct_from_boxed(context, obj);
++            if (transfer == GI_TRANSFER_EVERYTHING) {
++                if (gtype != G_TYPE_NONE)
++                    out_arg->v_pointer = g_boxed_copy (gtype, out_arg->v_pointer);
++                else {
++                    gjs_throw (context, "Cannot transfer ownership of instance argument for non boxed structure");
++                    return JS_FALSE;
++                }
++            }
+         }
+         break;
+ 
+@@ -569,6 +580,8 @@ gjs_fill_method_instance (JSContext  *context,
+             return JS_FALSE;
+ 
+         out_arg->v_pointer = gjs_c_union_from_union(context, obj);
++        if (transfer == GI_TRANSFER_EVERYTHING)
++            out_arg->v_pointer = g_boxed_copy (gtype, out_arg->v_pointer);
+         break;
+ 
+     case GI_INFO_TYPE_OBJECT:
+@@ -577,10 +590,14 @@ gjs_fill_method_instance (JSContext  *context,
+             if (!gjs_typecheck_object(context, obj, gtype, JS_TRUE))
+                 return JS_FALSE;
+             out_arg->v_pointer = gjs_g_object_from_object(context, obj);
++            if (transfer == GI_TRANSFER_EVERYTHING)
++                g_object_ref (out_arg->v_pointer);
+         } else if (gjs_typecheck_is_fundamental(context, obj, JS_FALSE)) {
+             if (!gjs_typecheck_fundamental(context, obj, gtype, JS_TRUE))
+                 return JS_FALSE;
+             out_arg->v_pointer = gjs_g_fundamental_from_object(context, obj);
++            if (transfer == GI_TRANSFER_EVERYTHING)
++                gjs_fundamental_ref (context, out_arg->v_pointer);
+         } else {
+             gjs_throw_custom(context, "TypeError",
+                              "%s.%s is not an object instance neither a fundamental instance of a supported type",
+-- 
+cgit v0.10.1

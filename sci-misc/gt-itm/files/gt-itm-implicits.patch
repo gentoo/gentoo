@@ -1,0 +1,111 @@
+--- gt-itm/src/geog.c
++++ gt-itm/src/geog.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/param.h>		/* for NBBY */
+ #include <alloca.h>
+ #include <assert.h>
+@@ -31,6 +32,9 @@
+ 
+ static char geogId[]="$Id$";
+ 
++long fdiam(Graph *g);
++void die(s);
++
+ double
+ distance(Vertex *u, Vertex *v)
+ {
+--- gt-itm/src/ts.c
++++ gt-itm/src/ts.c
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/types.h>		/* for NBBY */
+ #include <alloca.h>
+ #include "gb_graph.h"
+@@ -64,6 +65,10 @@
+ 			  return (x); }
+ */
+ 
++int td_OK(Vertex *snp,Vertex *dnp);
++long random(void);
++int stubs_OK(Vertex *snp0,Vertex *snp1);
++
+ /* fast diameter computation using Floyd-Warshall
+  * Returns the HOP diameter of the graph, i.e. each edge given UNIT wt.
+  * Leaves the LENGTH diameter of the graph in g->Gldiam.
+--- gt-itm/include/geog.h
++++ gt-itm/include/geog.h
+@@ -74,3 +74,8 @@
+          geo_parms* toppp,      /* params for transit connectivity */
+          geo_parms* transpp,    /*   "     "  transit domains   */
+          geo_parms* stubpp);     /*   "     "  stub domains      */
++
++void randomize(long* a, long size, long mean, int iters);
++long idist(Vertex *u, Vertex *v);
++int printparms(char *buf,geo_parms *pp);
++int isconnected(Graph *G);
+--- gt-itm/src/edriver.c
++++ gt-itm/src/edriver.c
+@@ -35,6 +35,8 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "gb_graph.h"
+ #include "gb_save.h"
+ #include "gb_dijk.h"
+--- gt-itm/include/eval.h
++++ gt-itm/include/eval.h
+@@ -8,4 +8,7 @@
+ enum Field {Len, A, B, Hops};
+ 
+ void twofield_sptree(Graph*, Vertex*, enum Field, enum Field);
+-
++int finddegdist(Graph *g, int** degdist);
++void dopaths(Graph *g, enum Field f0, enum Field f1, int *rmin, int *rmax, float *ravg);
++void dodepthdist(Graph *g, int** ddist);
++int bicomp(Graph *g,int verbose);
+--- gt-itm/src/dfs.c
++++ gt-itm/src/dfs.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <alloca.h>
+ #include <sys/types.h>
+ #include "gb_graph.h"
+@@ -18,6 +19,8 @@
+ 
+ #define NBBY 8
+ 
++int dfs(Graph *G,int n,u_char *vis);
++
+ /* check connectivity of graph g                        */
+ /* uses depth-first search.                             */
+ isconnected(Graph *G)
+--- gt-itm/src/itm.c.orig	2010-10-12 17:11:25.748461793 +0200
++++ gt-itm/src/itm.c	2010-10-12 17:13:09.237165705 +0200
+@@ -42,6 +42,7 @@
+ #include <stdlib.h>		/* for calloc(),atoi(),etc. */
+ #include <string.h>		/* for strtok() */
+ #include "gb_graph.h"
++#include "gb_save.h"
+ #include "geog.h"
+ 
+ #define LINE 512
+@@ -55,6 +56,7 @@
+ char *delim = " \t\n", *nonestr = "<none>";
+ static char  errstr[256];
+ 
++void die(s);
+ 
+ char *
+ get_geoparms(FILE * f, geo_parms * pp)

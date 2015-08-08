@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gpe</herd>
+	<use>
+		<flag name="pango">Enable <pkg>x11-libs/pango</pkg> support</flag>
+		<flag name="xsettings">Enable the use of xsettings for settings
+		management</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">check</remote-id>
+	</upstream>
+</pkgmetadata>

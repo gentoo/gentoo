@@ -1,0 +1,138 @@
+--- js/src/Makefile.ref
++++ js/src/Makefile.ref
+@@ -127,7 +127,7 @@ endif 
+ ifdef JS_READLINE
+ # For those platforms with the readline library installed.
+ DEFINES += -DEDITLINE
+-PROG_LIBS += -lreadline -ltermcap
++PROG_LIBS += -lreadline
+ else
+ ifdef JS_EDITLINE
+ # Use the editline library, built locally.
+@@ -370,3 +370,16 @@ TARFILES = files `cat files`
+ SUFFIXES: .i
+ %.i: %.c
+ 	$(CC) -C -E $(CFLAGS) $< > $*.i
++
++DESTDIR :=
++PREFIX := /usr
++BINDIR := $(PREFIX)/bin
++MY_LIBDIR := $(PREFIX)/$(LIBDIR)
++INCLUDEDIR := $(PREFIX)/include/js
++INSTALL := install -g 0 -o root
++install:
++	$(INSTALL) -m 755 -d $(DESTDIR)$(INCLUDEDIR) $(DESTDIR)$(MY_LIBDIR) $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 $(SHARED_LIBRARY) $(DESTDIR)$(MY_LIBDIR)
++	$(INSTALL) -m 644 $(LIBRARY) $(DESTDIR)$(MY_LIBDIR)
++	$(INSTALL) -m 755 $(OBJDIR)/js $(OBJDIR)/jscpucfg $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 644 $(HFILES) $(DESTDIR)$(INCLUDEDIR)
+--- js/src/config/Linux_All.mk
++++ js/src/config/Linux_All.mk
+@@ -41,37 +41,15 @@
+ # Config for all versions of Linux
+ #
+ 
+-CC = gcc
+-CCC = g++
+ CFLAGS +=  -Wall -Wno-format
+ OS_CFLAGS = -DXP_UNIX -DSVR4 -DSYSV -D_BSD_SOURCE -DPOSIX_SOURCE -DHAVE_LOCALTIME_R
+ 
+ RANLIB = echo
+-MKSHLIB = $(LD) -shared $(XMKSHLIBOPTS)
++MKSHLIB = $(LD) -shared $(XMKSHLIBOPTS) -soname $(notdir $@)
+ 
+ #.c.o:
+ #      $(CC) -c -MD $*.d $(CFLAGS) $<
+ 
+-CPU_ARCH = $(shell uname -m)
+-# don't filter in x86-64 architecture
+-ifneq (x86_64,$(CPU_ARCH))
+-ifeq (86,$(findstring 86,$(CPU_ARCH)))
+-CPU_ARCH = x86
+-OS_CFLAGS+= -DX86_LINUX
+-
+-ifeq (gcc, $(CC))
+-# if using gcc on x86, check version for opt bug 
+-# (http://bugzilla.mozilla.org/show_bug.cgi?id=24892)
+-GCC_VERSION := $(shell gcc -v 2>&1 | grep version | awk '{ print $$3 }')
+-GCC_LIST:=$(sort 2.91.66 $(GCC_VERSION) )
+-
+-ifeq (2.91.66, $(firstword $(GCC_LIST)))
+-CFLAGS+= -DGCC_OPT_BUG
+-endif
+-endif
+-endif
+-endif
+-
+ GFX_ARCH = x
+ 
+ OS_LIBS = -lm -lc
+@@ -88,16 +66,6 @@
+ endif
+ 
+ # Use the editline library to provide line-editing support.
+-JS_EDITLINE = 1
++JS_READLINE = 1
+ 
+-ifeq ($(CPU_ARCH),x86_64)
+-# Use VA_COPY() standard macro on x86-64
+-# FIXME: better use it everywhere
+ OS_CFLAGS += -DHAVE_VA_COPY -DVA_COPY=va_copy
+-endif
+-
+-ifeq ($(CPU_ARCH),x86_64)
+-# We need PIC code for shared libraries
+-# FIXME: better patch rules.mk & fdlibm/Makefile*
+-OS_CFLAGS += -DPIC -fPIC
+-endif
+--- js/src/rules.mk
++++ js/src/rules.mk
+@@ -82,6 +82,10 @@ $(OBJDIR)/%.o: %.c
+ 	@$(MAKE_OBJDIR)
+ 	$(CC) -o $@ -c $(CFLAGS) $*.c
+ 
++$(OBJDIR)/%.lo: %.c
++	@$(MAKE_OBJDIR)
++	$(CC) -o $@ -c $(CFLAGS) $*.c -fPIC
++
+ $(OBJDIR)/%.o: %.s
+ 	@$(MAKE_OBJDIR)
+ 	$(AS) -o $@ $(ASFLAGS) $*.s
+@@ -111,11 +115,12 @@ $(SHARED_LIBRARY): $(LIB_OBJS)
+ 	    /implib:"$(OBJDIR)/$(@F:.dll=.lib)" $^
+ else
+ $(LIBRARY): $(LIB_OBJS)
+-	$(AR) rv $@ $?
++	$(AR) cr $@ $?
+ 	$(RANLIB) $@
+ 
+-$(SHARED_LIBRARY): $(LIB_OBJS)
+-	$(MKSHLIB) -o $@ $(LIB_OBJS) $(LDFLAGS) $(OTHER_LIBS)
++SHARED_LIB_OBJS := $(LIB_OBJS:.o=.lo)
++$(SHARED_LIBRARY): $(SHARED_LIB_OBJS)
++	$(MKSHLIB) -o $@ $(SHARED_LIB_OBJS) $(LDFLAGS) $(OTHER_LIBS)
+ endif
+ endif
+ 
+--- js/src/fdlibm/Makefile.ref
++++ js/src/fdlibm/Makefile.ref
+@@ -151,7 +151,7 @@
+ 
+ $(OBJDIR)/%.o: %.c
+ 	@$(MAKE_OBJDIR)
+-	$(CC) -o $@ -c $(CFLAGS) $*.c
++	$(CC) -o $@ -c $(CFLAGS) $*.c -fPIC
+ 
+ $(OBJDIR)/%.o: %.s
+ 	@$(MAKE_OBJDIR)
+--- js/src/config.mk
++++ js/src/config.mk
+@@ -112,6 +112,8 @@
+ CP = cp
+ endif
+ 
++BUILD_OPT := 1
++
+ ifdef BUILD_OPT
+ OPTIMIZER  = -O
+ DEFINES    += -UDEBUG -DNDEBUG -UDEBUG_$(shell whoami)

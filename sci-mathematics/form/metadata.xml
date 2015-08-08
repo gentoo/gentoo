@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <longdescription lang="en">
+A system which can efficiently manipulate huge formulas limited only by available disk space.
+</longdescription>
+  <use>
+    <flag name="devref">Build and install developers reference</flag>
+    <flag name="doxygen">Build and install API documentation</flag>
+  </use>
+</pkgmetadata>

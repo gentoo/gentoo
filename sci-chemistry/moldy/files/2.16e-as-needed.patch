@@ -1,0 +1,65 @@
+diff --git a/Makefile.in b/Makefile.in
+index 0b02f00..ec588a8 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -115,25 +115,25 @@ VMSBUILD=	compile_moldy.com link_moldy.com defcomm.com\
+ 
+ DOSBUILD=	Makefile.mak OFILES.RSP SHAKOBJS.RSP Makefile.w32
+ 
+-all:		moldy utilities Makefile
++all:		moldy utilities
+ 
+ moldy:		$(OFILES) $(EXTRA_OBJ) $(HFILES)
+-		$(CC) -o moldy $(LDFLAGS) $(OFILES) $(EXTRA_OBJ)  $(LIBS)
++		$(CC) $(LDFLAGS) -o moldy $(LDFLAGS) $(OFILES) $(EXTRA_OBJ)  $(LIBS)
+ 
+ moldyext:	moldyext.c $(LIBOBJS) $(HFILES)
+-		$(CC) $(CFLAGS) -o moldyext $(OPT) $(DEFS) $(LDFLAGS1) moldyext.c $(LIBOBJS) $(LDFLAGS) $(LIBS)
++		$(CC) $(LDFLAGS) $(CFLAGS) -o moldyext $(OPT) $(DEFS) $(LDFLAGS1) moldyext.c $(LIBOBJS) $(LIBS)
+ 
+ manalyze:	manalyze.c $(HFILES)
+-		$(CC) $(CFLAGS)  -o manalyze $(OPT) $(DEFS) $(LDFLAGS1) manalyze.c $(LDFLAGS) $(LIBS)
++		$(CC) $(LDFLAGS) $(CFLAGS)  -o manalyze $(OPT) $(DEFS) $(LDFLAGS1) manalyze.c $(LIBS)
+ 
+ dumpanal:	dumpanal.c xdr.o $(HFILES)
+-		$(CC) $(CFLAGS) -o dumpanal $(OPT) $(DEFS) $(LDFLAGS1) dumpanal.c xdr.o  $(LDFLAGS) $(LIBS)
++		$(CC) $(LDFLAGS) $(CFLAGS) -o dumpanal $(OPT) $(DEFS) $(LDFLAGS1) dumpanal.c xdr.o $(LIBS)
+ 
+ dumpext:	dumpext.c xdr.o utlsup.o matrix.o $(LIBOBJS) $(HFILES)
+-		$(CC) $(CFLAGS) -o dumpext $(OPT) $(DEFS) $(LDFLAGS1) dumpext.c xdr.o utlsup.o matrix.o $(LIBOBJS) $(LDFLAGS) $(LIBS)
++		$(CC) $(LDFLAGS) $(CFLAGS) -o dumpext $(OPT) $(DEFS) $(LDFLAGS1) dumpext.c xdr.o utlsup.o matrix.o $(LIBOBJS) $(LIBS)
+ 
+ dumpconv:	dumpconv.c xdr.o $(HFILES)
+-		$(CC) $(CFLAGS) -o dumpconv $(OPT) $(DEFS) $(LDFLAGS1) dumpconv.c xdr.o $(LDFLAGS) $(LIBS)
++		$(CC) $(LDFLAGS) $(CFLAGS) -o dumpconv $(OPT) $(DEFS) $(LDFLAGS1) dumpconv.c xdr.o $(LIBS)
+ 
+ #mdtraj:		mdtraj.o $(SHAKOBJS) $(LIBOBJS) 
+ #		$(CC) -o mdtraj $(LDFLAGS) mdtraj.o $(SHAKOBJS) $(LIBOBJS) $(LIBS)
+@@ -142,21 +142,21 @@ mdshak:		mdshak.o $(SHAKOBJS) $(LIBOBJS)
+ 		$(CC) -o mdshak $(LDFLAGS) mdshak.o $(SHAKOBJS) $(LIBOBJS) $(LIBS)
+ 
+ msd:		msd.o $(SHAKOBJS) $(LIBOBJS) 
+-		$(CC) -o msd $(LDFLAGS1) msd.o $(SHAKOBJS) $(LIBOBJS) $(LDFLAGS) $(LIBS)
++		$(CC) $(LDFLAGS) -o msd $(LDFLAGS1) msd.o $(SHAKOBJS) $(LIBOBJS) $(LIBS)
+ 
+ mdvaf:		mdvaf.o $(SHAKOBJS) $(LIBOBJS) 
+-		$(CC) -o mdvaf $(LDFLAGS1) mdvaf.o $(SHAKOBJS) $(LIBOBJS) $(LDFLAGS) $(LIBS)
++		$(CC) $(LDFLAGS) -o mdvaf $(LDFLAGS1) mdvaf.o $(SHAKOBJS) $(LIBOBJS) $(LIBS)
+ mdavpos:	mdavpos.o $(SHAKOBJS) $(LIBOBJS) 
+-		$(CC) -o mdavpos $(LDFLAGS1) mdavpos.o $(SHAKOBJS) $(LIBOBJS) $(LDFLAGS)  $(LIBS)
++		$(CC) $(LDFLAGS) -o mdavpos $(LDFLAGS1) mdavpos.o $(SHAKOBJS) $(LIBOBJS) $(LIBS)
+ 
+ mdbond:	mdbond.o $(SHAKOBJS) $(LIBOBJS) 
+-		$(CC) -o mdbond $(LDFLAGS1) mdbond.o $(SHAKOBJS) $(LIBOBJS) $(LDFLAGS)  $(LIBS)
++		$(CC) $(LDFLAGS) -o mdbond $(LDFLAGS1) mdbond.o $(SHAKOBJS) $(LIBOBJS) $(LIBS)
+ 
+ bdist:	bdist.c $(HFILES)
+-		$(CC) $(CFLAGS)  -o bdist $(OPT) $(DEFS) $(LDFLAGS1) bdist.c $(LIBOBJS) $(LDFLAGS) $(LIBS)
++		$(CC) $(CFLAGS) $(LDFLAGS) -o bdist $(OPT) $(DEFS) $(LDFLAGS1) bdist.c $(LIBOBJS) $(LIBS)
+ 
+ ransub:	ransub.o $(SHAKOBJS) $(LIBOBJS) 
+-		$(CC) -o ransub $(LDFLAGS1) ransub.o $(SHAKOBJS) $(LIBOBJS) $(LDFLAGS)  $(LIBS)
++		$(CC) $(LDFLAGS) -o ransub $(LDFLAGS1) ransub.o $(SHAKOBJS) $(LIBOBJS) $(LIBS)
+ 
+ utilities:	$(UTILS) $(UTILS2)
+ 

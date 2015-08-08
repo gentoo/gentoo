@@ -1,0 +1,89 @@
+# Description: Fix python2.6 deprecation warnings
+# Origin: Ubuntu
+# Author: Alessio Treglia <quadrispro@ubuntu.com>
+# Bug-Ubuntu: https://bugs.launchpad.net/bugs/394775
+diff -Nur -x '*.orig' -x '*~' pyzor-0.5.0/lib/pyzor/client.py pyzor-0.5.0.new/lib/pyzor/client.py
+--- pyzor-0.5.0/lib/pyzor/client.py	2009-04-29 22:53:50.000000000 +0200
++++ pyzor-0.5.0.new/lib/pyzor/client.py	2009-08-01 12:27:55.749263645 +0200
+@@ -10,7 +10,7 @@
+ import tempfile
+ import mimetools
+ import multifile
+-import sha
++import hashlib
+ 
+ import pyzor
+ from pyzor import *
+@@ -402,12 +402,12 @@
+         del p2
+ 
+         saltfile = open(randfile)
+-        salt = saltfile.read(sha.digest_size)
++        salt = saltfile.read(hashlib.sha1().digest_size)
+         del saltfile
+ 
+-        salt_digest = sha.new(salt)
++        salt_digest = hashlib.sha1(salt)
+ 
+-        pass_digest = sha.new()
++        pass_digest = hashlib.sha1()
+         pass_digest.update(salt_digest.digest())
+         pass_digest.update(p1)
+         sys.stdout.write("salt,key:\n")
+@@ -498,7 +498,7 @@
+         if len(offsets) == 0:
+             return
+ 
+-        self._digest = sha.new()
++        self._digest = hashlib.sha1()
+ 
+         if len(offsets) <= self.atomic_num_lines:
+             self.handle_atomic(fp)
+diff -Nur -x '*.orig' -x '*~' pyzor-0.5.0/lib/pyzor/__init__.py pyzor-0.5.0.new/lib/pyzor/__init__.py
+--- pyzor-0.5.0/lib/pyzor/__init__.py	2009-04-29 22:53:50.000000000 +0200
++++ pyzor-0.5.0.new/lib/pyzor/__init__.py	2009-08-01 12:28:20.268413580 +0200
+@@ -8,7 +8,7 @@
+ import os.path
+ import re
+ import sys
+-import sha
++import hashlib
+ import tempfile
+ import random
+ import ConfigParser
+@@ -114,7 +114,7 @@
+ 
+ class DataDigest(str):
+     # hex output doubles digest size
+-    value_size = sha.digest_size * 2
++    value_size = hashlib.sha1().digest_size * 2
+ 
+     def __init__(self, value):
+         if len(value) != self.value_size:
+@@ -285,7 +285,7 @@
+         """returns a digest object"""
+         typecheck(msg, Message)
+ 
+-        return sha.new(str(msg))
++        return hashlib.sha1(str(msg))
+ 
+     hash_msg = staticmethod(hash_msg)
+ 
+@@ -295,7 +295,7 @@
+         typecheck(key, long)
+         typecheck(user, Username)
+ 
+-        return sha.new("%s:%x" % (Username, key)).hexdigest().lower()
++        return hashlib.sha1("%s:%x" % (Username, key)).hexdigest().lower()
+ 
+     hash_key = staticmethod(hash_key)
+ 
+@@ -316,7 +316,7 @@
+ 
+         h_msg = self.hash_msg(msg)
+ 
+-        return sha.new("%s:%d:%s" % (h_msg.digest(), ts, hashed_key)).hexdigest().lower()
++        return hashlib.sha1("%s:%d:%s" % (h_msg.digest(), ts, hashed_key)).hexdigest().lower()
+ 
+     sign_msg = classmethod(sign_msg)
+ 

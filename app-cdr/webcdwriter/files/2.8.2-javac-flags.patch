@@ -1,0 +1,67 @@
+diff -ur webCDwriter-2.8.2.orig/configure webCDwriter-2.8.2/configure
+--- webCDwriter-2.8.2.orig/configure	2007-03-20 15:14:30.000000000 +0200
++++ webCDwriter-2.8.2/configure	2008-06-07 13:56:36.000000000 +0300
+@@ -47,6 +47,9 @@
+ 	--destDir=*)
+ 		DESTDIR=`echo $1 | sed "s:--destDir=::g"`
+ 		;;
++	--javac-flags=*)
++		JAVACFLAGS=`echo $1 | sed "s:--javac-flags=::g"`
++		;;
+ 	--doNotCompileCDWserver)
+ 		doNotCompileCDWserver="on"
+ 		;;
+@@ -105,6 +108,8 @@
+ 
+ --destDir              use a prefix invisible to the installed files
+ 
++--javac-flags          flags for javac
++
+ --doNotCompileCDWserver  if you want to install CDWserver Pro
+ 
+ --doNotCompileWebCDcreator  use the precompiled and signed webCDcreator
+@@ -152,7 +157,7 @@
+ 	}
+ }
+ EOF
+-javac Test.java 2> /dev/null \
++javac ${JAVACFLAGS} Test.java Test0.java \
+ 	&& webCDcreator="webCDcreator.jar $webCDcreator" \
+ 	&& echo " OK -> will build webCDcreator.jar" \
+ 	|| echo " not found -> will use precompiled webCDcreator.jar"
+@@ -284,12 +289,15 @@
+ 	forPluginRSA=""
+ fi
+ 
++echo "JAVACFLAGS=${JAVACFLAGS}"
++
+ cat webCDcreator/Makefile.in \
+ 	| sed s/@nosCert@/"$nosCert"/g \
+ 	| sed s/@sunCert@/"$sunCert"/g \
+ 	| sed s/@all@/"$webCDcreator"/g \
+ 	| sed s/@4pi@/"$forPlugin"/g \
+ 	| sed s/@4ns@/"$forPluginRSA"/g \
++	| sed s_@JAVACFLAGS@_"$JAVACFLAGS"_g \
+ 	> webCDcreator/Makefile
+ 
+ 
+diff -ur webCDwriter-2.8.2.orig/webCDcreator/Makefile.in webCDwriter-2.8.2/webCDcreator/Makefile.in
+--- webCDwriter-2.8.2.orig/webCDcreator/Makefile.in	2007-04-21 01:22:20.000000000 +0300
++++ webCDwriter-2.8.2/webCDcreator/Makefile.in	2008-06-07 13:57:56.000000000 +0300
+@@ -14,6 +14,7 @@
+ 
+ nosCert=@nosCert@
+ sunCert=@sunCert@
++JAVACFLAGS=@JAVACFLAGS@
+ 
+ all: @all@
+ 
+@@ -21,7 +22,7 @@
+ 	$(MAKE) -C icons
+ 
+ webCDcreator.jar: *.java icons/up.jpg
+-	javac -encoding ISO-8859-1 -source 1.4 -target 1.4 *.java
++	javac -encoding ISO-8859-1 ${JAVACFLAGS} *.java netscape/security/*.java
+ 	jar cfm webCDcreator.jar Manifest \
+ 		gpl.html \
+ 		*.class \

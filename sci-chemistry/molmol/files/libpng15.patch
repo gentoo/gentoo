@@ -1,0 +1,32 @@
+--- src/motogl/MotOGLDump.c
++++ src/motogl/MotOGLDump.c
+@@ -248,7 +248,7 @@
+ pngErrHand(png_structp pngStrucP, char *errMsg)
+ {
+   IORaiseError(errMsg);
+-  longjmp(pngStrucP->jmpbuf, 1);
++  longjmp(png_jmpbuf(pngStrucP), 1);
+ }
+ #endif
+ 
+@@ -357,7 +357,7 @@
+       return IO_RES_ERR;
+     }
+ 
+-    if (setjmp(pngStrucP->jmpbuf)) {
++    if (setjmp(png_jmpbuf(pngStrucP))) {
+       if (cBuf != NULL)
+ 	free(cBuf);
+       if (fBuf != NULL)
+@@ -368,10 +368,7 @@
+ 
+     png_init_io(pngStrucP, ImgFileP);
+ 
+-    pngInfoP->width = imgW;
+-    pngInfoP->height = imgH;
+-    pngInfoP->bit_depth = 8;
+-    pngInfoP->color_type = PNG_COLOR_TYPE_RGB;
++    png_set_IHDR(pngStrucP, pngInfoP, imgW, imgH, 8, PNG_COLOR_TYPE_RGB, 0, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
+     png_write_info(pngStrucP, pngInfoP);
+   }
+ #endif

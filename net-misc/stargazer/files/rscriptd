@@ -1,0 +1,23 @@
+#!/sbin/runscript
+
+DAEMON=/usr/sbin/rscriptd
+RSCRIPTD_OPTS="/etc/stargazer/rscriptd.conf"
+PIDFILE="/run/rscriptd.pid"
+
+depend() {
+	need net
+	provide rscriptd
+}
+
+start() {
+	ebegin "Starting rscriptd"
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PIDFILE} --exec ${DAEMON} -- ${RSCRIPTD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rscriptd"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	rm -f ${PIDFILE}
+	eend $?
+}

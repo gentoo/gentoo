@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+[ -e /etc/conf.d/nfs ] && . /etc/conf.d/nfs
+
+depend() {
+	local opts myneed=""
+	if [ -e /etc/fstab ] ; then
+		for opts in $(fstabinfo -o -t nfs,nfs4) ; do
+			case $opts in
+				*sec=krb*|*sec=spkm*) myneed="$myneed rpc.gssd" ;;
+			esac
+		done
+	fi
+	config /etc/fstab
+	need portmap rpc.statd rpc.idmapd ${myneed}
+	use ypbind dns
+}
+
+start() {
+	if [ -x /usr/sbin/sm-notify ] ; then
+		ebegin "Starting NFS sm-notify"
+		/usr/sbin/sm-notify ${OPTS_SMNOTIFY}
+		eend $?
+	fi
+
+	# Make sure nfs support is loaded in the kernel #64709
+	if [ -e /proc/modules ] && ! grep -qs 'nfs$' /proc/filesystems ; then
+		modprobe -q nfs
+	fi
+	return 0
+}

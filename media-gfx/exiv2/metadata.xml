@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>graphics</herd>
+	<herd>kde</herd>
+	<longdescription lang="en">
+		Exiv2 is a C++ library and a command line utility to read and
+		write EXIF and IPTC image metadata.
+	</longdescription>
+	<use>
+		<flag name='contrib'>
+			Build additional contrib components
+		</flag>
+	</use>
+</pkgmetadata>

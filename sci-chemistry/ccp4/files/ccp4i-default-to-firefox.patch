@@ -1,0 +1,13 @@
+--- ccp4-5.99.5.orig/ccp4i/etc/configure.def.dist	2006-01-06 17:54:17.000000000 -0800
++++ ccp4-5.99.5/ccp4i/etc/configure.def.dist	2006-01-06 17:54:47.000000000 -0800
+@@ -54,8 +54,8 @@
+ MESSAGE                   _text				""
+ BLT_LIBRARY               _text                     ""
+ MENU_LENGTH               _positiveint              25
+-HYPERTEXT_VIEWER          _text                     netscape
+-START_NETSCAPE	          _text			    netscape
++HYPERTEXT_VIEWER          _text                     firefox
++START_NETSCAPE	          _text			    firefox
+ O_MAPMAN                  _text                     mapman
+ MAPMAN_MAXSIZE		  _positiveint		    4194304
+ QUANTA_MBKALL             _text                     mbkall

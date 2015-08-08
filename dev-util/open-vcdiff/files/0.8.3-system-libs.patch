@@ -1,0 +1,215 @@
+Unbundle the following libraries:
+gflags
+gtest
+zlib
+
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 42)
++++ configure.ac	(working copy)
+@@ -111,7 +111,5 @@
+ fi
+ AC_SUBST(LIBSTDCXX_LA_LINKER_FLAG)
+ 
+-AC_CONFIG_FILES([Makefile
+-                 gflags/src/gflags/gflags.h
+-                 gflags/src/gflags/gflags_completions.h])
++AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+Index: Makefile.am
+===================================================================
+--- Makefile.am	(revision 42)
++++ Makefile.am	(working copy)
+@@ -5,11 +5,7 @@
+                   -I gflags/m4
+ 
+ # This is so we can #include <google/vcencoder.h> or <gtest/gtest.h>
+-AM_CPPFLAGS = -I$(top_srcdir)/src \
+-              -I$(top_srcdir)/src/zlib \
+-              -I$(top_srcdir)/gflags/src \
+-              -I$(top_srcdir)/gtest \
+-              -I$(top_srcdir)/gtest/include
++AM_CPPFLAGS = -I$(top_srcdir)/src
+ 
+ # For a non-optimized (debug) build, change "-DNDEBUG" to "-DDEBUG".
+ AM_CXXFLAGS = -DNDEBUG -DNO_THREADS
+@@ -46,6 +42,7 @@
+ ## Tests are added one by one to these lists in the RULES sections.
+ check_PROGRAMS =
+ check_SCRIPTS =
++check_LTLIBRARIES =
+ 
+ ## Other binaries, scripts, and libraries that are built but not automatically
+ ## installed.
+@@ -55,52 +52,11 @@
+ 
+ ## vvvv RULES TO MAKE THE LIBRARIES, BINARIES, AND UNITTESTS
+ 
+-# google-gflags: Used for command-line client
+-#     Please refer to http://code.google.com/p/google-gflags/ for details
+-noinst_LTLIBRARIES += libgflags.la
+-libgflags_la_SOURCES = gflags/src/gflags/gflags.h \
+-                       gflags/src/gflags/gflags_completions.h \
+-                       gflags/src/mutex.h \
+-                       gflags/src/gflags.cc \
+-                       gflags/src/gflags_completions.cc \
+-                       gflags/src/gflags_reporting.cc
+-
+-# gtest (Google Test): Used for unit tests only
+-#     Please refer to http://code.google.com/p/googletest/ for details
+-noinst_LTLIBRARIES += libgtest_main.la
+-libgtest_main_la_SOURCES = gtest/include/gtest/gtest.h \
+-                           gtest/include/gtest/gtest-death-test.h \
+-                           gtest/include/gtest/gtest-message.h \
+-                           gtest/include/gtest/gtest-param-test.h \
+-                           gtest/include/gtest/gtest_pred_impl.h \
+-                           gtest/include/gtest/gtest_prod.h \
+-                           gtest/include/gtest/gtest-spi.h \
+-                           gtest/include/gtest/gtest-test-part.h \
+-                           gtest/include/gtest/gtest-typed-test.h \
+-                           gtest/include/gtest/internal/gtest-death-test-internal.h \
+-                           gtest/include/gtest/internal/gtest-filepath.h \
+-                           gtest/include/gtest/internal/gtest-internal.h \
+-                           gtest/include/gtest/internal/gtest-linked_ptr.h \
+-                           gtest/include/gtest/internal/gtest-param-util.h \
+-                           gtest/include/gtest/internal/gtest-param-util-generated.h \
+-                           gtest/include/gtest/internal/gtest-port.h \
+-                           gtest/include/gtest/internal/gtest-string.h \
+-                           gtest/include/gtest/internal/gtest-tuple.h \
+-                           gtest/include/gtest/internal/gtest-type-util.h \
+-                           gtest/src/gtest-internal-inl.h \
+-                           gtest/src/gtest.cc \
+-                           gtest/src/gtest-death-test.cc \
+-                           gtest/src/gtest-filepath.cc \
+-                           gtest/src/gtest-port.cc \
+-                           gtest/src/gtest-test-part.cc \
+-                           gtest/src/gtest-typed-test.cc \
+-                           gtest/src/gtest_main.cc \
+-                           src/testing.h
+-
+-noinst_LTLIBRARIES += libvcdecoder_test_common.la
++check_LTLIBRARIES += libvcdecoder_test_common.la
+ libvcdecoder_test_common_la_SOURCES = src/vcdecoder_test.h \
+ 				      src/vcdecoder_test.cc
+-libvcdecoder_test_common_la_LIBADD = libvcddec.la libgtest_main.la
++libvcdecoder_test_common_la_LIBADD = libvcddec.la -lgtest_main
++libvcdecoder_test_common_la_LDFLAGS = -pthread
+ 
+ # libvcdcom: The open-vcdiff *common* library
+ lib_LTLIBRARIES += libvcdcom.la
+@@ -112,9 +68,6 @@
+ 		       src/logging.h \
+ 		       src/varint_bigendian.h \
+ 		       src/vcdiff_defs.h \
+-		       src/zlib/zlib.h \
+-		       src/zlib/zconf.h \
+-		       src/zlib/adler32.c \
+ 		       src/addrcache.cc \
+ 		       src/codetable.cc \
+ 		       src/logging.cc \
+@@ -128,7 +81,7 @@
+ 		       src/decodetable.cc \
+ 		       src/headerparser.cc \
+ 		       src/vcdecoder.cc
+-libvcddec_la_LIBADD = libvcdcom.la
++libvcddec_la_LIBADD = libvcdcom.la -lz
+ 
+ # libvcdenc: The open-vcdiff *encoder* library
+ lib_LTLIBRARIES += libvcdenc.la
+@@ -147,52 +100,62 @@
+ 		       src/jsonwriter.cc \
+ 		       src/vcdiffengine.cc \
+                        src/vcencoder.cc
+-libvcdenc_la_LIBADD = libvcdcom.la
++libvcdenc_la_LIBADD = libvcdcom.la -lz
+ 
+ bin_PROGRAMS += vcdiff
+ vcdiff_SOURCES = src/vcdiff_main.cc
+-vcdiff_LDADD = libvcddec.la libvcdenc.la libgflags.la
++vcdiff_LDADD = libvcddec.la libvcdenc.la -lgflags
+ 
+ check_PROGRAMS += addrcache_test
+ addrcache_test_SOURCES = src/addrcache_test.cc
+-addrcache_test_LDADD = libvcdcom.la libgtest_main.la
++addrcache_test_LDADD = libvcdcom.la -lgtest_main
++addrcache_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += blockhash_test
+ blockhash_test_SOURCES = src/blockhash_test.cc
+-blockhash_test_LDADD = libvcdenc.la libgtest_main.la
++blockhash_test_LDADD = libvcdenc.la -lgtest_main
++blockhash_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += codetable_test
+ codetable_test_SOURCES = src/codetable_test.cc
+-codetable_test_LDADD = libvcdcom.la libgtest_main.la
++codetable_test_LDADD = libvcdcom.la -lgtest_main
++codetable_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += decodetable_test
+ decodetable_test_SOURCES = src/decodetable_test.cc
+-decodetable_test_LDADD = libvcddec.la libvcdcom.la libgtest_main.la
++decodetable_test_LDADD = libvcddec.la libvcdcom.la -lgtest_main
++decodetable_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += encodetable_test
+ encodetable_test_SOURCES = src/encodetable_test.cc
+-encodetable_test_LDADD = libvcdenc.la libvcdcom.la libgtest_main.la
++encodetable_test_LDADD = libvcdenc.la libvcdcom.la -lgtest_main
++encodetable_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += headerparser_test
+ headerparser_test_SOURCES = src/headerparser_test.cc
+-headerparser_test_LDADD = libvcddec.la libvcdcom.la libgtest_main.la
++headerparser_test_LDADD = libvcddec.la libvcdcom.la -lgtest_main
++headerparser_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += instruction_map_test
+ instruction_map_test_SOURCES = src/instruction_map_test.cc
+-instruction_map_test_LDADD = libvcdenc.la libvcdcom.la libgtest_main.la
++instruction_map_test_LDADD = libvcdenc.la libvcdcom.la -lgtest_main
++instruction_map_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += output_string_test
+ output_string_test_SOURCES = src/output_string_crope.h \
+ 			     src/output_string_test.cc
+-output_string_test_LDADD = libgtest_main.la
++output_string_test_LDADD = -lgtest_main
++output_string_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += rolling_hash_test
+ rolling_hash_test_SOURCES = src/rolling_hash_test.cc
+-rolling_hash_test_LDADD = libvcdcom.la libgtest_main.la
++rolling_hash_test_LDADD = libvcdcom.la -lgtest_main
++rolling_hash_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += varint_bigendian_test
+ varint_bigendian_test_SOURCES = src/varint_bigendian_test.cc
+-varint_bigendian_test_LDADD = libvcdcom.la libgtest_main.la
++varint_bigendian_test_LDADD = libvcdcom.la -lgtest_main
++varint_bigendian_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += vcdecoder1_test
+ vcdecoder1_test_SOURCES = src/vcdecoder1_test.cc
+@@ -216,15 +179,18 @@
+ 
+ check_PROGRAMS += vcdiffengine_test
+ vcdiffengine_test_SOURCES = src/vcdiffengine_test.cc
+-vcdiffengine_test_LDADD = libvcdenc.la libvcdcom.la libgtest_main.la
++vcdiffengine_test_LDADD = libvcdenc.la libvcdcom.la -lgtest_main
++vcdiffengine_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += vcencoder_test
+ vcencoder_test_SOURCES = src/vcencoder_test.cc
+-vcencoder_test_LDADD = libvcddec.la libvcdenc.la libvcdcom.la libgtest_main.la
++vcencoder_test_LDADD = libvcddec.la libvcdenc.la libvcdcom.la -lgtest_main
++vcencoder_test_LDFLAGS = -pthread
+ 
+ check_PROGRAMS += jsonwriter_test
+ jsonwriter_test_SOURCES = src/jsonwriter_test.cc
+-jsonwriter_test_LDADD = libvcdenc.la libvcdcom.la libgtest_main.la
++jsonwriter_test_LDADD = libvcdenc.la libvcdcom.la -lgtest_main
++jsonwriter_test_LDFLAGS = -pthread
+ 
+ check_SCRIPTS += src/vcdiff_test.sh
+ dist_noinst_DATA = testdata/configure.ac.v0.1 \

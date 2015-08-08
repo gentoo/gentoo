@@ -1,0 +1,9 @@
+diff -Naur varnish-3.0.5.orig/lib/libvmod_std/vmod.py varnish-3.0.5/lib/libvmod_std/vmod.py
+--- varnish-3.0.5.orig/lib/libvmod_std/vmod.py	2013-12-02 02:47:57.000000000 -0500
++++ varnish-3.0.5/lib/libvmod_std/vmod.py	2014-01-16 13:21:50.763238020 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/python
++#!/usr/bin/python
+ #-
+ # Copyright (c) 2010-2011 Varnish Software AS
+ # All rights reserved.

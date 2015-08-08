@@ -1,0 +1,14 @@
+{
+  AppExit = appexit.wav;
+  AppStart = appstart.wav;
+  Hide = hide.wav;
+  Iconify = iconify.wav;
+  Maximize = maximize.wav;
+  UnMaximize = unmaximize.wav;
+  Shade = shade.wav;
+  Startup = appstart.wav;
+  UnHide = unhide.wav;
+  DeIconify = deiconify.wav;
+  UnShade = unshade.wav;
+  UserDefined = replaceme.wav;
+}

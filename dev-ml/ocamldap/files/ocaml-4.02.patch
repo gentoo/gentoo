@@ -1,0 +1,13 @@
+diff --git a/src/ldap_ooclient.ml b/src/ldap_ooclient.ml
+index 79fd51d..7ffa39e 100644
+--- a/src/ldap_ooclient.ml
++++ b/src/ldap_ooclient.ml
+@@ -23,7 +23,7 @@
+ open Ldap_types
+ open Ldap_funclient
+ open Ldap_schemaparser
+-open String
++let lowercase = String.lowercase
+ 
+ (* types used throughout the library *)
+ (* add types *)

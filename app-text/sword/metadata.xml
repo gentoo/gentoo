@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>theology</herd>
+<maintainer>
+  <email>theology@gentoo.org</email>
+</maintainer>
+<longdescription>
+The SWORD Project is the CrossWire Bible Society's free Bible software
+project. Its purpose is to create tools that allow programmers and Bible
+societies to write new Bible software more quickly and easily.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>desktop-misc</herd>
+  <longdescription>
+    sakura is a terminal emulator based on GTK and VTE. It's a terminal emulator
+    with few dependencies, so you don't need a full GNOME desktop installed to
+    have a decent terminal emulator. Current terminal emulators based on VTE are
+    gnome-terminal, XFCE Terminal, TermIt and a small sample program included
+    in the vte sources. Sakura differences from the last one is that it uses a
+    notebook to provide several terminals in one window and adds a contextual
+    menu with some basic options. No more no less.
+  </longdescription>
+  <upstream>
+    <remote-id type="launchpad">sakura</remote-id>
+  </upstream>
+</pkgmetadata>

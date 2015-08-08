@@ -1,0 +1,81 @@
+--- CMakeLists.txt.old	2015-02-20 19:37:32.754551301 +0100
++++ CMakeLists.txt	2015-02-20 19:38:45.643356903 +0100
+@@ -38,6 +38,7 @@
+ add_definitions(-DOMX_SKIP64BIT)
+ add_definitions(-DEGL_SERVER_DISPMANX)
+ add_definitions(-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64)
++add_definitions(-D_GNU_SOURCE)
+ 
+ # do we actually need this?
+ add_definitions(-D__VIDEOCORE4__)
+--- interface/vchiq_arm/vchiq_test.c.old	2015-02-20 20:52:15.202983349 +0100
++++ interface/vchiq_arm/vchiq_test.c	2015-02-20 20:53:34.401882346 +0100
+@@ -130,6 +130,7 @@
+ #ifdef __linux__
+ 
+ #include <fcntl.h>
++#include <sys/ioctl.h>
+ #include "interface/vmcs_host/vc_cma.h"
+ 
+ static void reserve_test(int reserve, int delay)
+@@ -1311,6 +1312,7 @@
+ clnt_callback(VCHIQ_REASON_T reason, VCHIQ_HEADER_T *header,
+    VCHIQ_SERVICE_HANDLE_T service, void *bulk_userdata)
+ {
++   int data;
+    vcos_mutex_lock(&g_mutex);
+    if (reason == VCHIQ_MESSAGE_AVAILABLE)
+    {
+@@ -1318,7 +1320,7 @@
+          vchiq_release_message(service, header);
+       else
+       /* Responses of length 0 are not sync points */
+-      if ((header->size >= 4) && (*(int *)header->data == MSG_ECHO))
++      if ((header->size >= 4) && (memcpy(&data, header->data, sizeof(data)), data == MSG_ECHO))
+       {
+          /* This is a complete echoed packet */
+          if (g_params.verify && (mem_check(header->data, bulk_tx_data[ctrl_received % NUM_BULK_BUFS], g_params.blocksize) != 0))
+--- interface/vchiq_arm/CMakeLists.txt.old	2015-02-20 21:23:05.736777755 +0100
++++ interface/vchiq_arm/CMakeLists.txt	2015-02-20 21:24:11.335832941 +0100
+@@ -3,7 +3,7 @@
+             vchiq_lib.c vchiq_util.c)
+ 
+ # pull in VCHI cond variable emulation
+-target_link_libraries(vchiq_arm)
++target_link_libraries(vchiq_arm vcos)
+ 
+ install(TARGETS vchiq_arm DESTINATION lib)
+ #install(FILES etc/10-vchiq.rules DESTINATION /etc/udev/rules.d)
+--- makefiles/cmake/vmcs.cmake.old	2015-02-21 14:31:57.608527445 +0100
++++ makefiles/cmake/vmcs.cmake	2015-02-21 14:32:09.358363958 +0100
+@@ -10,7 +10,7 @@
+ if (ANDROID)
+   SET(VMCS_INSTALL_PREFIX "/vendor/brcm/islands" CACHE PATH "Prefix prepended to install directories" FORCE)
+ else()
+-  SET(VMCS_INSTALL_PREFIX "/opt/vc" CACHE PATH "Prefix prepended to install directories" FORCE)
++  SET(VMCS_INSTALL_PREFIX "/usr" CACHE PATH "Prefix prepended to install directories" FORCE)
+ endif()
+ 
+ SET(CMAKE_INSTALL_PREFIX "${VMCS_INSTALL_PREFIX}" CACHE INTERNAL "Prefix
+--- interface/vmcs_host/vcilcs_out.c.old	2015-02-24 06:57:20.977771332 +0100
++++ interface/vmcs_host/vcilcs_out.c	2015-02-24 06:59:34.735428061 +0100
+@@ -37,6 +37,7 @@
+ #include "interface/vmcs_host/vc_ilcs_defs.h"
+ #include "interface/vmcs_host/vcilcs.h"
+ #include "interface/vmcs_host/vcilcs_common.h"
++#include "interface/vcos/vcos_dlfcn.h"
+ 
+ static VC_PRIVATE_PORT_T *find_port(VC_PRIVATE_COMPONENT_T *comp, OMX_U32 nPortIndex)
+ {
+--- interface/khronos/common/linux/khrn_client_rpc_linux.c.old	2015-02-24 06:56:24.458761962 +0100
++++ interface/khronos/common/linux/khrn_client_rpc_linux.c	2015-02-24 07:02:41.522158412 +0100
+@@ -503,7 +503,8 @@
+ void rpc_call8_makecurrent(CLIENT_THREAD_STATE_T *thread, uint32_t id, uint32_t p0,
+    uint32_t p1, uint32_t p2, uint32_t p3, uint32_t p4, uint32_t p5, uint32_t p6, uint32_t p7)
+ {
+-   if (thread->merge_pos == CLIENT_MAKE_CURRENT_SIZE && *((uint32_t *)thread->merge_buffer) == EGLINTMAKECURRENT_ID)
++   uint32_t data;
++   if (thread->merge_pos == CLIENT_MAKE_CURRENT_SIZE && (memcpy(&data,thread->merge_buffer,sizeof(data)), data == EGLINTMAKECURRENT_ID))
+    {
+       rpc_begin(thread);
+       vcos_log_trace("rpc_call8_makecurrent collapse onto previous makecurrent");

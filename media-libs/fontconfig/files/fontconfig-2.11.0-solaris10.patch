@@ -1,0 +1,63 @@
+
+ configure.ac          |    2 +-
+ test/test-migration.c |   15 ++++++++++++++-
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+New commits:
+commit 65872e9e46d17e4461c3a891ef23abe156005e04
+Author: Akira TAGOH <akira@tagoh.org>
+Date:   Thu Oct 24 19:35:26 2013 +0900
+
+    Fix a build issue on Solaris 10
+    
+    Use own mkdtemp implementation if not available.
+    
+    Reported by Thomas Klausner and Jörn Clausen
+
+diff --git a/configure.ac b/configure.ac
+index c3743f4..4478914 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -148,7 +148,7 @@ AC_TYPE_PID_T
+ # Checks for library functions.
+ AC_FUNC_VPRINTF
+ AC_FUNC_MMAP
+-AC_CHECK_FUNCS([link mkstemp mkostemp _mktemp_s getopt getopt_long getprogname getexecname rand random lrand48 random_r rand_r regcomp regerror regexec regfree fstatvfs fstatfs lstat])
++AC_CHECK_FUNCS([link mkstemp mkostemp _mktemp_s mkdtemp getopt getopt_long getprogname getexecname rand random lrand48 random_r rand_r regcomp regerror regexec regfree fstatvfs fstatfs lstat])
+ 
+ dnl AC_CHECK_FUNCS doesn't check for header files.
+ dnl posix_fadvise() may be not available in older libc.
+diff --git a/test/test-migration.c b/test/test-migration.c
+index 9709651..f127e27 100644
+--- a/test/test-migration.c
++++ b/test/test-migration.c
+@@ -11,6 +11,19 @@
+ #endif
+ #include <fontconfig/fontconfig.h>
+ 
++#ifdef HAVE_MKDTEMP
++#define fc_mkdtemp	mkdtemp
++#else
++char *
++fc_mkdtemp (char *template)
++{
++    if (!mktemp (template) || mkdir (template, 0700))
++	return NULL;
++
++    return template;
++}
++#endif
++
+ FcBool
+ mkdir_p(const char *dir)
+ {
+@@ -107,7 +120,7 @@ int
+ main(void)
+ {
+     char template[32] = "fontconfig-XXXXXXXX";
+-    char *tmp = mkdtemp (template);
++    char *tmp = fc_mkdtemp (template);
+     size_t len = strlen (tmp), xlen, dlen;
+     char xdg[256], confd[256], fn[256], nfn[256], ud[256], nud[256];
+     int ret = -1;
+

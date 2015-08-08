@@ -1,0 +1,31 @@
+--- build.xml.orig	2011-01-25 17:33:24.750473340 +0100
++++ build.xml	2011-01-25 17:07:14.657410373 +0100
+@@ -176,7 +176,9 @@
+     <path id="test.runpath">
+       <pathelement path="${build}/${jar}"/>
+       <pathelement path="${test.classes}"/>
++      <!--
+       <pathelement path="lib/clover.jar"/>
++      -->
+       <path refid="test.libs"/>
+     </path>
+   </target>
+@@ -433,13 +435,17 @@
+     <copy todir="${build}/jws" file="${build}/${jar}"/>
+     <copy todir="${build}/jws" file="${build}/${testjar}"/>
+     <copy todir="${build}/jws" file="lib/junit.jar"/>
++    <!--
+     <copy todir="${build}/jws" file="lib/clover.jar"/>
++    -->
+     <jar jarfile="${build}/jws/jnidispatch.jar">
+       <fileset dir="${build.native}" includes="*jnidispatch.*"/>
+     </jar>
++    <!--
+     <signjar alias="jna" keystore="jna.keystore" storepass="jnadev" lazy="true"> 
+-      <fileset dir="${build}/jws" includes="jna.jar,jna-test.jar,junit.jar,jnidispatch.jar,clover.jar"/>
++      <fileset dir="${build}/jws" includes="jna.jar,jna-test.jar,junit.jar,jnidispatch.jar"/>
+     </signjar>
++    -->
+   </target>
+ 	
+   <!-- When running tests from an IDE, be sure to set jna.library.path -->

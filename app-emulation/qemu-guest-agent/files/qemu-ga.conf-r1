@@ -1,0 +1,11 @@
+# Specifies the transport method used to communicate to QEMU on the host side
+# Default: virtio-serial
+#GA_METHOD="virtio-serial"
+
+# Specifies the device path for the communications back to QEMU on the host
+# Default: /dev/virtio-ports/org.qemu.guest_agent.0
+#GA_PATH="/dev/virtio-ports/org.qemu.guest_agent.0"
+
+# Additional options to qemu-guest-agent such as --fsfreeze-hook
+# See qemu-ga --help for more info
+#GA_OPTIONS="-F/etc/qemu/fsfreeze-hook"

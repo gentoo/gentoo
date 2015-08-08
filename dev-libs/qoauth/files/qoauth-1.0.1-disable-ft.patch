@@ -1,0 +1,20 @@
+diff --git a/qoauth.pro b/qoauth.pro
+index f09b3be..27d7bb3 100644
+--- a/qoauth.pro
++++ b/qoauth.pro
+@@ -5,6 +5,6 @@ SUBDIRS += src tests
+ CONFIG += ordered
+ 
+ check.target = check
+-check.commands = ( cd tests/ut_interface && ./ut_interface ) && ( cd tests/ft_interface && ./ft_interface )
++check.commands = ( cd tests/ut_interface && ./ut_interface )
+ check.depends = sub-tests
+ QMAKE_EXTRA_TARGETS += check
+diff --git a/tests/tests.pro b/tests/tests.pro
+index d582750..e010bb0 100644
+--- a/tests/tests.pro
++++ b/tests/tests.pro
+@@ -1,2 +1,2 @@
+ TEMPLATE = subdirs
+-SUBDIRS += ut_interface ft_interface
++SUBDIRS += ut_interface

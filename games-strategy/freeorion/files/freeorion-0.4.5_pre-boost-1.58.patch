@@ -1,0 +1,57 @@
+From 8cb623ceecaf00e29f273225eb37602e26e1a6d0 Mon Sep 17 00:00:00 2001
+From: Dilvish-fo <dilvish.fo@gmail.com>
+Date: Sat, 6 Jun 2015 08:04:56 -0700
+Subject: [PATCH] workarounds for missing includes with boost 1.58
+
+---
+ util/Process.h     | 6 ++++++
+ util/Serialize.ipp | 9 ++++++++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/util/Process.h b/util/Process.h
+index f9927cc..25cec56 100644
+--- a/util/Process.h
++++ b/util/Process.h
+@@ -14,6 +14,12 @@
+ #include <boost/serialization/type_info_implementation.hpp> // This
+ #endif
+ 
++#if BOOST_VERSION == 105800
++// HACK: The following two includes work around a bug in boost 1.58
++#include <boost/serialization/type_info_implementation.hpp>
++#include <boost/archive/basic_archive.hpp>
++#endif
++
+ #include <boost/serialization/shared_ptr.hpp>
+ 
+ #include <vector>
+diff --git a/util/Serialize.ipp b/util/Serialize.ipp
+index b4027b2..c3c87db 100644
+--- a/util/Serialize.ipp
++++ b/util/Serialize.ipp
+@@ -1,17 +1,24 @@
++// -*- C++ -*-
+ #if defined(_MSC_VER) && defined(int64_t)
+ #undef int64_t
+ #endif
+ 
+ #include <boost/static_assert.hpp>
+ #include <boost/detail/endian.hpp>
++#include <boost/version.hpp>
+ 
+ #if BOOST_VERSION == 105600
+ // HACK: The following two includes work around a bug in boost 1.56,
+-// which uses them without including. They can be removed once the bug is gone.
+ #include <boost/serialization/singleton.hpp> // This
+ #include <boost/serialization/extended_type_info.hpp> //This
+ #endif
+ 
++#if BOOST_VERSION == 105800
++// HACK: The following two includes work around a bug in boost 1.58
++#include <boost/serialization/type_info_implementation.hpp>
++#include <boost/archive/basic_archive.hpp>
++#endif
++
+ #include <boost/serialization/export.hpp>
+ #include <boost/serialization/deque.hpp>
+ #include <boost/serialization/list.hpp>

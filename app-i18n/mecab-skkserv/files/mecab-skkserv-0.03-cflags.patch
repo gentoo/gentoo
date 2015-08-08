@@ -1,0 +1,15 @@
+diff --git a/configure.in b/configure.in
+index c7c00aa..a2c7a9e 100644
+--- a/configure.in
++++ b/configure.in
+@@ -19,8 +19,8 @@ AC_CHECK_FUNCS(getopt)
+ AC_CHECK_FUNCS(getopt_long)
+ 
+ if test -n "$GCC"; then
+-   CFLAGS="-O3  -Wno-deprecated -Wall"
+-   CXXFLAGS="-O3 -Wno-deprecated -Wall"
++   CFLAGS+=" -Wno-deprecated -Wall"
++   CXXFLAGS+=" -Wno-deprecated -Wall"
+ fi
+ 
+ AC_ARG_WITH(

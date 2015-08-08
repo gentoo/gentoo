@@ -1,0 +1,27 @@
+--- data/Makefile.am	2014-12-18 23:16:47.513887559 -0500
++++ data/Makefile.am	2014-12-18 23:16:59.060609420 -0500
+@@ -151,11 +151,11 @@
+ EXTRA_DIST = $(klavaro_data)
+ else
+ @INTLTOOL_DESKTOP_RULE@
+-desktopdir = $(prefix)/$(DATADIRNAME)/applications
++desktopdir = $(datadir)/applications
+ desktop_in_file = klavaro.desktop.in
+ desktop_DATA = $(desktop_in_file:.desktop.in=.desktop)
+ @INTLTOOL_XML_RULE@
+-appdatadir = $(prefix)/$(DATADIRNAME)/appdata
++appdatadir = $(datadir)/appdata
+ appdata_in_files = klavaro.appdata.xml.in
+ appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+ DISTCLEANFILES = $(desktop_DATA) \
+--- src/Makefile.am	2014-12-18 23:17:35.956725053 -0500
++++ src/Makefile.am	2014-12-18 23:17:45.309501898 -0500
+@@ -20,7 +20,7 @@
+ 
+ AM_CPPFLAGS = @GTK_CFLAGS@ \
+ 	      -DPACKAGE_DATA_DIR=\""$(datadir)"\" \
+-	      -DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
++	      -DPACKAGE_LOCALE_DIR=\""$(datadir)/locale"\"
+ 
+ AM_CFLAGS = -Wextra \
+ 	    -I$(top_srcdir)/gtkdatabox

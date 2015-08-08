@@ -1,0 +1,12 @@
+# /etc/conf.d/mysql-proxy: config file for /etc/init.d/mysql-proxy
+
+# location of pidfile
+PIDFILE="/var/run/mysql-proxy.pid"
+
+# general options for mysql-proxy
+# do NOT specify --daemon or --pid-file=... here!
+OPTS="--log-use-syslog"
+
+# if you want mysql-proxy to depend on mysql, enable this:
+#RC_NEED="mysql" # baselayout-1
+#rc_need="mysql" # baselayout-2/OpenRC

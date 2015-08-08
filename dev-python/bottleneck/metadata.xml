@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <longdescription>
+  Bottleneck is a collection of fast NumPy array functions written in
+  Cython.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">Bottleneck</remote-id>
+  </upstream>
+</pkgmetadata>

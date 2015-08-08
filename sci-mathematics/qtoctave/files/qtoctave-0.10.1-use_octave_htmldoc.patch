@@ -1,0 +1,34 @@
+Description: Update Octave's HTML doc path to use octave-htmldoc
+ Also, avoid failure on nonexistent path to upstream stripped HTML files.
+Author: Thomas Weber <tweber@debian.org>
+Author: Sébastien Villemot <sebastien@debian.org>
+Last-Update: 2012-03-11
+Forwarded: not-needed
+--- a/qtoctave/src/configure.h.in
++++ b/qtoctave/src/configure.h.in
+@@ -2,7 +2,7 @@
+ #ifndef __CONFIGURE_H__
+ #define __CONFIGURE_H__
+ #define CONFIG_PATH "${CMAKE_INSTALL_PREFIX}/share/qtoctave"
+-#define HELP_PATH "${CMAKE_INSTALL_PREFIX}/share/doc/octave-html/octave_doc/index.html"
++#define HELP_PATH "${CMAKE_INSTALL_PREFIX}/share/doc/octave-htmldoc/interpreter/index.html"
+ #define ICON_PATH "${CMAKE_INSTALL_PREFIX}/share/qtoctave/images"
+ #define LANG_PATH "${CMAKE_INSTALL_PREFIX}/share/qtoctave/lang"
+ #define QTOCTAVE_HELP_PATH "${CMAKE_INSTALL_PREFIX}/share/doc/qtoctave/qtoctave_doc/index.html"
+--- a/qtoctave/src/CMakeLists.txt
++++ b/qtoctave/src/CMakeLists.txt
+@@ -64,14 +64,6 @@
+   DESTINATION share/qtoctave/lang
+ )
+ 
+-
+-
+-install (
+-	DIRECTORY octave_doc
+-	DESTINATION share/doc/octave-html
+-	PATTERN ".svn" EXCLUDE
+-	)
+-
+ install (
+ 	DIRECTORY qtoctave_doc
+ 	DESTINATION share/doc/qtoctave

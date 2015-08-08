@@ -1,0 +1,22 @@
+--- configure.old	2014-06-18 08:36:47.151142539 +0200
++++ configure	2014-06-18 09:05:13.568360179 +0200
+@@ -20769,7 +20769,7 @@
+ 	DRI3_LIBS=$pkg_cv_DRI3_LIBS
+         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ $as_echo "yes" >&6; }
+-	DRI3=$DRI
++	DRI3=no
+ fi
+ 	fi
+ 	if test "x$DRI3" != "xno"; then
+@@ -20850,10 +20850,6 @@
+ $as_echo "#define HAVE_DRI3 1" >>confdefs.h
+ 
+ 	dri_msg="$dri_msg DRI3"
+-else
+-	if test "x$DRI" = "xyes" -a "x$KMS" = "xyes"; then
+-		as_fn_error $? "DRI3 requested but prerequisites not found" "$LINENO" 5
+-	fi
+ fi
+ 
+ for ac_header in X11/extensions/dpmsconst.h

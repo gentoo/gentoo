@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="ldap">Enable seahorse to manipulate GPG keys on a LDAP server.</flag>
+</use>
+<longdescription>Seahorse is a Gnome interface for GnuPG.  It's main purpose is to be a PGP/GPG Key Manager, though 
+it has other components including a text editor and file manager.
+
+Key Manager Features:
+Generating a key
+Deleting a key
+Importing keys from text or a file
+Exporting a key to text or a file
+View key properties
+
+Key Properties Features:
+Show key info
+Change owner trust
+Change primary key's expiration date
+Change passphrase
+Export key
+Delete Key
+
+Plugins:
+Nautilus Integration
+Gedit plugin
+</longdescription>
+</pkgmetadata>

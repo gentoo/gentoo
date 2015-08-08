@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>idella4@gentoo.org</email>
+    <name>Ian Delaney</name>
+    <description>Maintainer. Assign bugs to him</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">qserve</remote-id>
+    <remote-id type="github">pediapress/qserve</remote-id>
+  </upstream>
+</pkgmetadata>

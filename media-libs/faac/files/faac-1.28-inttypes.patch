@@ -1,0 +1,41 @@
+use standard integer types, not linux ones
+
+--- frontend/main.c
++++ frontend/main.c
+@@ -440,13 +440,13 @@
+     MP4TrackId MP4track = 0;
+     unsigned int ntracks = 0, trackno = 0;
+     unsigned int ndiscs = 0, discno = 0;
+-    u_int8_t compilation = 0;
++    uint8_t compilation = 0;
+     const char *artist = NULL, *title = NULL, *album = NULL, *year = NULL,
+       *genre = NULL, *comment = NULL, *writer = NULL;
+-    u_int8_t *art = NULL;
+-    u_int64_t artSize = 0;
+-    u_int64_t total_samples = 0;
+-    u_int64_t encoded_samples = 0;
++    uint8_t *art = NULL;
++    uint64_t artSize = 0;
++    uint64_t total_samples = 0;
++    uint64_t encoded_samples = 0;
+     unsigned int delay_samples;
+     unsigned int frameSize;
+ #endif
+@@ -647,7 +647,7 @@
+         FILE *artFile = fopen(optarg, "rb");
+ 
+         if(artFile) {
+-            u_int64_t r;
++            uint64_t r;
+ 
+             fseek(artFile, 0, SEEK_END);
+         artSize = ftell(artFile);
+@@ -1112,7 +1112,7 @@
+             if (bytesWritten > 0)
+             {
+ #ifdef HAVE_LIBMP4V2
+-                u_int64_t samples_left = total_samples - encoded_samples + delay_samples;
++                uint64_t samples_left = total_samples - encoded_samples + delay_samples;
+                 MP4Duration dur = samples_left > frameSize ? frameSize : samples_left;
+                 MP4Duration ofs = encoded_samples > 0 ? 0 : delay_samples;
+ 

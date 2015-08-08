@@ -1,0 +1,10 @@
+--- gpsd-2.95/Makefile.am	2010-07-12 02:40:22.000000000 +0200
++++ gpsd-2.95.new/Makefile.am	2010-10-03 18:04:10.000000000 +0200
+@@ -340,6 +340,7 @@
+ 	     "QMAKE_CC=$(CC)" \
+ 	     "QMAKE_CFLAGS+=$(CFLAGS)" \
+ 	     "QMAKE_LFLAGS+=$(LDFLAGS)" \
++	     "QMAKE_STRIP=" \
+ 	     "VERSION=$(libgps_VERSION)" \
+ 	     "TARGET_LIBDIR=${libdir}" \
+ 	     "TARGET_INCLUDEDIR=${includedir}"

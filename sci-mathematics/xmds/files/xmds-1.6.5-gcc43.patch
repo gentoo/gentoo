@@ -1,0 +1,108 @@
+diff -Naurp xmds-1.6.5-orig/source/xmds_integrate_ark45.cc xmds-1.6.5/source/xmds_integrate_ark45.cc
+--- xmds-1.6.5-orig/source/xmds_integrate_ark45.cc	2008-06-28 21:48:21.000000000 +0200
++++ xmds-1.6.5/source/xmds_integrate_ark45.cc	2008-06-28 21:48:57.000000000 +0200
+@@ -35,6 +35,7 @@
+ #include <xmds_simulation.h>
+ #include <xmds_vector.h>
+ #include <cstdlib>
++#include <cstring>
+ 
+ // **************************************************************************
+ // **************************************************************************
+@@ -289,7 +290,7 @@ void xmdsIntegrateARK45::writeTimestepEr
+       fprintf(outfile, "for(unsigned long _i0=0; _i0<_%s_size; _i0++){\n", fieldName);
+     }
+     fprintf(outfile, "   for(unsigned long _i1=0; _i1<_%s_main_ncomponents; _i1++){\n", fieldName);
+-    if (strcmp(typeName, "complex") == 0) {
++    if (std::strcmp(typeName, "complex") == 0) {
+       fprintf(outfile, "    _temp_mod=mod2(_%s_main[_%s_main_index_pointer + _i1]);\n", fieldName, fieldName);
+     }
+     else {
+@@ -347,7 +348,7 @@ void xmdsIntegrateARK45::writeTimestepEr
+     }
+     fprintf(outfile, "   for(unsigned long _i1=0; _i1<_%s_main_ncomponents; _i1++)\n", fieldName);
+ 
+-    if (strcmp(typeName, "complex") == 0) {
++    if (std::strcmp(typeName, "complex") == 0) {
+       fprintf(outfile, "       if(mod2(_%s_main[_%s_main_index_pointer + _i1])>_peak[_i1]){\n", fieldName, fieldName);
+       fprintf(outfile, "            _temp_error=mod(_%s_main[_%s_main_index_pointer + _i1]-_checkfield[_%s_main_index_pointer + _i1])/(mod(_%s_main[_%s_main_index_pointer + _i1])+1e-20);\n", fieldName, fieldName, fieldName, fieldName, fieldName);
+     }
+@@ -364,7 +365,7 @@ void xmdsIntegrateARK45::writeTimestepEr
+   else{ // if ndims==0
+     fprintf(outfile, "   for(unsigned long _i1=0; _i1<_%s_main_ncomponents; _i1++){\n", fieldName);
+ 
+-    if (strcmp(typeName, "complex") == 0) {
++    if (std::strcmp(typeName, "complex") == 0) {
+       fprintf(outfile, "       _temp_error=mod(_%s_main[_i1]-_checkfield[_i1])/(mod(_%s_main[_i1])+1e-20);\n", fieldName, fieldName);
+     }
+     else{
+diff -Naurp xmds-1.6.5-orig/source/xmds_integrate_ark89.cc xmds-1.6.5/source/xmds_integrate_ark89.cc
+--- xmds-1.6.5-orig/source/xmds_integrate_ark89.cc	2008-06-28 21:48:21.000000000 +0200
++++ xmds-1.6.5/source/xmds_integrate_ark89.cc	2008-06-28 21:48:57.000000000 +0200
+@@ -35,6 +35,7 @@
+ #include <xmds_simulation.h>
+ #include <xmds_vector.h>
+ #include <cstdlib>
++#include <cstring>
+ 
+ // **************************************************************************
+ // **************************************************************************
+@@ -284,7 +285,7 @@ void xmdsIntegrateARK89::writeTimestepEr
+       fprintf(outfile, "for (unsigned long _i0=0; _i0<_%s_size; _i0++){\n", fieldName);
+     }
+     fprintf(outfile, "   for (unsigned long _i1=0; _i1<_%s_main_ncomponents; _i1++){\n", fieldName);
+-    if (strcmp(typeName, "complex") == 0) {
++    if (std::strcmp(typeName, "complex") == 0) {
+       fprintf(outfile, "    _temp_mod=mod2(_%s_main[_%s_main_index_pointer + _i1]);\n", fieldName, fieldName);
+     }
+     else {
+@@ -334,7 +335,7 @@ void xmdsIntegrateARK89::writeTimestepEr
+     }
+     fprintf(outfile, "   for (unsigned long _i1=0; _i1<_%s_main_ncomponents; _i1++)\n", fieldName);
+ 
+-    if (strcmp(typeName, "complex") == 0) {
++    if (std::strcmp(typeName, "complex") == 0) {
+       fprintf(outfile, "       if (mod2(_%s_main[_%s_main_index_pointer + _i1])>_peak[_i1]){\n", fieldName, fieldName);
+       fprintf(outfile, "            _temp_error=mod(_%s_main[_%s_main_index_pointer + _i1]-_checkfield[_%s_main_index_pointer + _i1])/(mod(_%s_main[_%s_main_index_pointer + _i1])+1e-20);\n", fieldName, fieldName, fieldName, fieldName, fieldName);
+     }
+@@ -352,7 +353,7 @@ void xmdsIntegrateARK89::writeTimestepEr
+ 
+     fprintf(outfile, "   for (unsigned long _i1=0; _i1<_%s_main_ncomponents; _i1++){\n", fieldName);
+ 
+-    if (strcmp(typeName, "complex") == 0){
++    if (std::strcmp(typeName, "complex") == 0){
+       fprintf(outfile, "       _temp_error=mod(_%s_main[_i1]-_checkfield[_i1])/(mod(_%s_main[_i1])+1e-20);\n", fieldName, fieldName);
+     }
+     else{
+diff -Naurp xmds-1.6.5-orig/source/xmds_simulation.h xmds-1.6.5/source/xmds_simulation.h
+--- xmds-1.6.5-orig/source/xmds_simulation.h	2008-06-28 21:48:21.000000000 +0200
++++ xmds-1.6.5/source/xmds_simulation.h	2008-06-28 21:48:57.000000000 +0200
+@@ -40,6 +40,8 @@
+ #include <xmds_sequence.h>
+ #include <xmds_globals.h>
+ 
++#include <string>
++
+ // *****************************************************************************
+ // *****************************************************************************
+ //                              xmdsSimulation
+diff -Naurp xmds-1.6.5-orig/source/xsil2graphics.cc xmds-1.6.5/source/xsil2graphics.cc
+--- xmds-1.6.5-orig/source/xsil2graphics.cc	2008-06-28 21:48:21.000000000 +0200
++++ xmds-1.6.5/source/xsil2graphics.cc	2008-06-28 21:48:57.000000000 +0200
+@@ -40,6 +40,7 @@
+ #include <xsil_field.h>
+ #include <getopt_xmds.h>
+ #include <iostream>
++#include <cstring>
+ 
+ // **********************************************************************
+ 
+@@ -306,7 +307,7 @@ int main(
+ 
+     const DOMString *mgName = nextElement->getAttribute("Name");
+     int mgNumber = i+1;
+-    if (strcmp("breakpoint", mgName->c_str()) == 0) {
++    if (std::strcmp("breakpoint", mgName->c_str()) == 0) {
+       mgNumber = 1;
+     }
+     else {

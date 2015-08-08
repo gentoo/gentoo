@@ -1,0 +1,287 @@
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/Windows/Assistant.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/Windows/Assistant.chs	2012-10-11 12:51:38.040935853 +1100
+@@ -274,7 +274,7 @@
+ {#pointer AssistantPageFunc#}
+ 
+ foreign import ccall "wrapper" mkAssistantPageFunc ::
+-  ({#type glong#} -> Ptr () -> IO {#type glong#})
++  ({#type gint#} -> Ptr () -> IO {#type gint#})
+   -> IO AssistantPageFunc
+ 
+ -- | Sets the page type for @page@. The page type determines the page behavior
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/Multiline/TextIter.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/Multiline/TextIter.chs	2012-10-11 12:50:59.510893025 +1100
+@@ -797,7 +797,7 @@
+ {#pointer TextCharPredicate#}
+ 
+ foreign import ccall "wrapper" mkTextCharPredicate ::
+-  ({#type gunichar#} -> Ptr () -> {#type gboolean#}) -> IO TextCharPredicate
++  ({#type gunichar#} -> Ptr () -> IO {#type gboolean#}) -> IO TextCharPredicate
+ 
+ -- | Move 'TextIter' forward until a
+ -- predicate function returns True.
+@@ -810,7 +810,7 @@
+ textIterForwardFindChar :: TextIter -> (Char -> Bool) -> Maybe TextIter ->
+                            IO Bool
+ textIterForwardFindChar ti pred limit = do
+-  fPtr <- mkTextCharPredicate (\c _ -> fromBool $ pred (chr (fromIntegral c)))
++  fPtr <- mkTextCharPredicate (\c _ -> return $ fromBool $ pred (chr (fromIntegral c)))
+   res <- liftM toBool $ {#call text_iter_forward_find_char#} 
+     ti fPtr nullPtr (fromMaybe (TextIter nullForeignPtr) limit)
+   freeHaskellFunPtr fPtr
+@@ -827,7 +827,7 @@
+ textIterBackwardFindChar :: TextIter -> (Char -> Bool) -> Maybe TextIter ->
+                             IO Bool
+ textIterBackwardFindChar ti pred limit = do
+-  fPtr <- mkTextCharPredicate (\c _ -> fromBool $ pred (chr (fromIntegral c)))
++  fPtr <- mkTextCharPredicate (\c _ -> return $ fromBool $ pred (chr (fromIntegral c)))
+   res <- liftM toBool $ {#call text_iter_backward_find_char#} 
+     ti fPtr nullPtr (fromMaybe (TextIter nullForeignPtr) limit)
+   freeHaskellFunPtr fPtr
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/ModelView/TreeView.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/ModelView/TreeView.chs	2012-10-11 12:50:02.711356413 +1100
+@@ -582,7 +582,7 @@
+ {#pointer TreeViewColumnDropFunc#}
+ 
+ foreign import ccall "wrapper" mkTreeViewColumnDropFunc ::
+-  (Ptr () -> Ptr TreeViewColumn -> Ptr TreeViewColumn -> Ptr TreeViewColumn ->
++  (Ptr TreeView -> Ptr TreeViewColumn -> Ptr TreeViewColumn -> Ptr TreeViewColumn ->
+   Ptr () -> IO {#type gboolean#}) -> IO TreeViewColumnDropFunc
+ 
+ -- | Scroll to a coordinate.
+@@ -798,7 +798,7 @@
+ {#pointer TreeViewMappingFunc#}
+ 
+ foreign import ccall "wrapper" mkTreeViewMappingFunc ::
+-  (Ptr () -> Ptr NativeTreePath -> Ptr () -> IO ()) ->
++  (Ptr TreeView -> Ptr NativeTreePath -> Ptr () -> IO ()) ->
+   IO TreeViewMappingFunc
+ 
+ -- | Check if row is expanded.
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/ModelView/TreeSelection.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/ModelView/TreeSelection.chs	2012-10-11 12:49:22.402264615 +1100
+@@ -151,7 +151,7 @@
+ treeSelectionSetSelectFunction :: TreeSelectionClass self => self
+  -> TreeSelectionCB -> IO ()
+ treeSelectionSetSelectFunction ts fun = do
+-  fPtr <- mkTreeSelectionFunc (\_ _ tp _ -> do
++  fPtr <- mkTreeSelectionFunc (\_ _ tp _ _ -> do
+     path <- peekTreePath (castPtr tp)
+     liftM fromBool $ fun path
+     )
+@@ -168,7 +168,7 @@
+ {#pointer TreeSelectionFunc#}
+ 
+ foreign import ccall "wrapper"  mkTreeSelectionFunc ::
+-  (Ptr () -> Ptr () -> Ptr TreePath -> Ptr () -> IO CInt)->
++  (Ptr TreeSelection -> Ptr TreeModel -> Ptr NativeTreePath -> {#type gint#} -> Ptr () -> IO CInt)->
+   IO TreeSelectionFunc
+ 
+ -- | Retrieve the 'TreeView' widget that this 'TreeSelection' works on.
+@@ -199,7 +199,7 @@
+  -> TreeSelectionForeachCB
+  -> IO ()
+ treeSelectionSelectedForeach self fun = do
+-  fPtr <- mkTreeSelectionForeachFunc (\_ _ iterPtr -> do
++  fPtr <- mkTreeSelectionForeachFunc (\_ _ iterPtr _ -> do
+     -- make a deep copy of the iterator. This makes it possible to store this
+     -- iterator in Haskell land somewhere. The TreeModel parameter is not
+     -- passed to the function due to performance reasons. But since it is
+@@ -219,7 +219,7 @@
+ {#pointer TreeSelectionForeachFunc#}
+ 
+ foreign import ccall "wrapper"  mkTreeSelectionForeachFunc ::
+-  (Ptr () -> Ptr () -> Ptr TreeIter -> IO ()) -> IO TreeSelectionForeachFunc
++  (Ptr TreeModel -> Ptr NativeTreePath -> Ptr TreeIter -> Ptr () -> IO ()) -> IO TreeSelectionForeachFunc
+ 
+ #if GTK_CHECK_VERSION(2,2,0)
+ -- | Creates a list of paths of all selected rows.
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/ModelView/TreeModelFilter.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/ModelView/TreeModelFilter.chs	2012-10-11 12:47:30.867237897 +1100
+@@ -160,7 +160,7 @@
+ {#pointer TreeModelFilterVisibleFunc #}
+ 
+ foreign import ccall "wrapper" mkTreeModelFilterVisibleFunc ::
+-  (Ptr TreeModelFilter -> Ptr TreeIter -> Ptr () -> IO {#type gboolean#}) ->
++  (Ptr TreeModel -> Ptr TreeIter -> Ptr () -> IO {#type gboolean#}) ->
+   IO TreeModelFilterVisibleFunc
+ 
+ -- %hash c:a56d d:b42e
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/ModelView/TreeModel.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/ModelView/TreeModel.chs	2012-10-11 12:47:06.478576590 +1100
+@@ -427,7 +427,7 @@
+ {#pointer TreeModelForeachFunc#}
+ 
+ foreign import ccall "wrapper"  mkTreeModelForeachFunc ::
+-  (Ptr () -> Ptr () -> Ptr TreeIter -> Ptr () -> IO CInt) ->
++  (Ptr TreeModel -> Ptr NativeTreePath -> Ptr TreeIter -> Ptr () -> IO CInt) ->
+   IO TreeModelForeachFunc
+ 
+ #if GTK_CHECK_VERSION(2,2,0)
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/MenuComboToolbar/ComboBox.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/MenuComboToolbar/ComboBox.chs	2012-10-11 12:46:41.970912216 +1100
+@@ -493,17 +493,17 @@
+   {# call gtk_combo_box_set_row_separator_func #}
+     (toComboBox self) nullFunPtr nullPtr nullFunPtr
+ comboBoxSetRowSeparatorSource self (Just (model, extract)) = do
+-  funPtr <- mkRowSeparatorFunc $ \_ iterPtr -> do
++  funPtr <- mkRowSeparatorFunc $ \_ iterPtr _ -> do
+         iter <- peek iterPtr
+         value <- customStoreGetRow model iter
+-        return (extract value)
++        return (fromBool $ extract value)
+   {# call gtk_combo_box_set_row_separator_func #}
+     (toComboBox self) funPtr (castFunPtrToPtr funPtr) destroyFunPtr
+ 
+ {#pointer TreeViewRowSeparatorFunc#}
+ 
+ foreign import ccall "wrapper" mkRowSeparatorFunc ::
+-  (Ptr TreeModel -> Ptr TreeIter -> IO Bool) -> IO TreeViewRowSeparatorFunc
++  (Ptr TreeModel -> Ptr TreeIter -> Ptr () -> IO {#type gboolean #}) -> IO TreeViewRowSeparatorFunc
+ 
+ -- %hash c:5bf8
+ -- | Sets whether the popup menu should have a tearoff menu item.
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/General/Clipboard.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/General/Clipboard.chs	2012-10-11 12:45:41.325267512 +1100
+@@ -260,7 +260,7 @@
+                               -- data succeeded.
+ clipboardSetWithData self targets getFunc clearFunc = do
+   gFunPtr <- mkClipboardGetFunc
+-    (\_ sPtr info -> runReaderT (getFunc info) sPtr >> return ())
++    (\_ sPtr info _ -> runReaderT (getFunc info) sPtr >> return ())
+   cFunPtr <- mkClipboardClearFunc
+     (\_ _ -> clearFunc)
+   res <- withTargetEntries targets $ \nTargets targets ->
+@@ -282,7 +282,7 @@
+ {#pointer ClipboardClearFunc#}
+ 
+ foreign import ccall "wrapper" mkClipboardGetFunc ::
+-  (Ptr Clipboard -> Ptr () -> {#type guint#} -> IO ()) -> IO ClipboardGetFunc
++  (Ptr Clipboard -> Ptr () -> {#type guint#} -> Ptr () -> IO ()) -> IO ClipboardGetFunc
+ 
+ foreign import ccall "wrapper" mkClipboardClearFunc ::
+   (Ptr Clipboard -> Ptr () -> IO ()) -> IO ClipboardClearFunc
+@@ -313,7 +313,7 @@
+                               -- ignored.
+ clipboardSetWithOwner self targets getFunc clearFunc owner = do
+   gFunPtr <- mkClipboardGetFunc
+-    (\_ sPtr info -> runReaderT (getFunc info) sPtr >> return ())
++    (\_ sPtr info _ -> runReaderT (getFunc info) sPtr >> return ())
+   cFunPtr <- mkClipboardClearFunc
+     (\_ _ -> clearFunc)
+   res <- withTargetEntries targets $ \nTargets targets ->
+@@ -404,7 +404,7 @@
+ clipboardRequestContents self (Atom target) callback = do
+   cbRef <- newIORef nullFunPtr
+   cbPtr <- mkClipboardReceivedFunc
+-    (\_ sPtr -> do
++    (\_ sPtr _ -> do
+       freeHaskellFunPtr =<< readIORef cbRef
+       runReaderT callback sPtr
+       return ())
+@@ -418,7 +418,7 @@
+ {#pointer ClipboardReceivedFunc#}
+ 
+ foreign import ccall "wrapper" mkClipboardReceivedFunc ::
+-  (Ptr Clipboard -> Ptr () -> IO ()) -> IO ClipboardReceivedFunc
++  (Ptr Clipboard -> Ptr () -> Ptr () -> IO ()) -> IO ClipboardReceivedFunc
+ 
+ -- %hash c:7bb1 d:4ef1
+ -- | Requests the contents of the clipboard as text. When the text is later
+@@ -439,7 +439,7 @@
+ clipboardRequestText self callback = do
+   cbRef <- newIORef nullFunPtr
+   cbPtr <- mkClipboardTextReceivedFunc
+-    (\_ sPtr -> do
++    (\_ sPtr _ -> do
+       freeHaskellFunPtr =<< readIORef cbRef
+       mStr <- if sPtr==nullPtr then return Nothing else
+         liftM Just $ peekUTFString sPtr
+@@ -453,7 +453,7 @@
+ {#pointer ClipboardTextReceivedFunc#}
+ 
+ foreign import ccall "wrapper" mkClipboardTextReceivedFunc ::
+-  (Ptr Clipboard -> CString -> IO ()) -> IO ClipboardTextReceivedFunc
++  (Ptr Clipboard -> CString -> Ptr () -> IO ()) -> IO ClipboardTextReceivedFunc
+ 
+ 
+ #if GTK_CHECK_VERSION(2,6,0)
+@@ -477,7 +477,7 @@
+ clipboardRequestImage self callback = do
+   cbRef <- newIORef nullFunPtr
+   cbPtr <- mkClipboardImageReceivedFunc
+-    (\_ sPtr -> do
++    (\_ sPtr _ -> do
+       freeHaskellFunPtr =<< readIORef cbRef
+       mPixbuf <- maybeNull (makeNewGObject mkPixbuf) (return sPtr)
+       callback mPixbuf)
+@@ -490,7 +490,7 @@
+ {#pointer ClipboardImageReceivedFunc#}
+ 
+ foreign import ccall "wrapper" mkClipboardImageReceivedFunc ::
+-  (Ptr Clipboard -> Ptr Pixbuf -> IO ()) -> IO ClipboardImageReceivedFunc
++  (Ptr Clipboard -> Ptr Pixbuf -> Ptr () -> IO ()) -> IO ClipboardImageReceivedFunc
+ 
+ #endif
+ 
+@@ -513,7 +513,7 @@
+ clipboardRequestTargets self callback = do
+   cbRef <- newIORef nullFunPtr
+   cbPtr <- mkClipboardTargetsReceivedFunc
+-    (\_ tPtr len -> do
++    (\_ tPtr len _ -> do
+       -- We must free Haskell pointer *in* the callback to avoid segfault.
+       freeHaskellFunPtr =<< readIORef cbRef
+       mTargets <- if tPtr==nullPtr then return Nothing else
+@@ -528,7 +528,7 @@
+ {#pointer ClipboardTargetsReceivedFunc#}
+ 
+ foreign import ccall "wrapper" mkClipboardTargetsReceivedFunc ::
+-  (Ptr Clipboard -> Ptr (Ptr ()) -> {#type gint#} -> IO ()) -> IO ClipboardTargetsReceivedFunc
++  (Ptr Clipboard -> Ptr (Ptr ()) -> {#type gint#} -> Ptr () -> IO ()) -> IO ClipboardTargetsReceivedFunc
+ 
+ #if GTK_CHECK_VERSION(2,10,0)
+ -- %hash c:5601 d:d6a6
+@@ -552,10 +552,10 @@
+ clipboardRequestRichText self buffer callback = do
+   cbRef <- newIORef nullFunPtr
+   cbPtr <- mkClipboardRichTextReceivedFunc
+-    (\_ tPtr sPtr len -> do
++    (\_ tPtr sPtr len _ -> do
+       freeHaskellFunPtr =<< readIORef cbRef
+       mRes <- if sPtr==nullPtr then return Nothing else liftM Just $ do
+-        str <- peekUTFStringLen (sPtr,fromIntegral len)
++        str <- peekUTFStringLen (castPtr sPtr,fromIntegral len)
+         return (Atom tPtr, str)
+       callback mRes)
+   writeIORef cbRef cbPtr
+@@ -568,7 +568,7 @@
+ {#pointer ClipboardRichTextReceivedFunc#}
+ 
+ foreign import ccall "wrapper" mkClipboardRichTextReceivedFunc ::
+-  (Ptr Clipboard -> Ptr () -> CString -> {#type gsize#} -> IO ()) ->
++  (Ptr Clipboard -> Ptr () -> Ptr CUChar -> {#type gsize#} -> Ptr () -> IO ()) ->
+   IO ClipboardRichTextReceivedFunc
+ #endif
+ #endif
+--- gtk-0.12.3.1-orig/Graphics/UI/Gtk/Abstract/Object.chs	2012-06-18 07:39:34.000000000 +1000
++++ gtk-0.12.3.1/Graphics/UI/Gtk/Abstract/Object.chs	2012-10-11 12:40:38.320051642 +1100
+@@ -126,7 +126,8 @@
+ 
+ {#pointer GWeakNotify#}
+ 
+-foreign import ccall "wrapper" mkDestructor :: IO () -> IO GWeakNotify
++foreign import ccall "wrapper" mkDestructor
++  :: (Ptr () -> Ptr GObject -> IO ()) -> IO GWeakNotify
+ 
+ -- | Attach a callback that will be called after the
+ -- destroy hooks have been called
+@@ -134,7 +135,7 @@
+ objectWeakref :: ObjectClass o => o -> IO () -> IO GWeakNotify
+ objectWeakref obj uFun = do
+   funPtrContainer <- newIORef nullFunPtr
+-  uFunPtr <- mkDestructor $ do
++  uFunPtr <- mkDestructor $ \_ _ -> do
+     uFun
+     funPtr <- readIORef funPtrContainer
+     freeHaskellFunPtr funPtr

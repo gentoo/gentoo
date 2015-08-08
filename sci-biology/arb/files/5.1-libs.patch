@@ -1,0 +1,16 @@
+diff --git a/SOURCE_TOOLS/provide_libs.pl b/SOURCE_TOOLS/provide_libs.pl
+index b653a66..b346c96 100644
+--- a/SOURCE_TOOLS/provide_libs.pl
++++ b/SOURCE_TOOLS/provide_libs.pl
+@@ -118,11 +118,6 @@ sub provide_libs($$$) {
+   foreach my $lib (keys %needed_by) {
+     update_lib($lib, $bindir.'/'.$needed_by{$lib}, $addlibsdir);
+   }
+-  if ($opengl==1) {
+-    foreach my $lib (keys %needed_by_opengl) {
+-      update_lib($lib, $bindir.'/'.$needed_by_opengl{$lib}, $addlibsdir);
+-    }
+-  }
+ }
+ 
+ sub main() {

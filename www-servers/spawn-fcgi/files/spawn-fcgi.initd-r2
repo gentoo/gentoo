@@ -1,0 +1,117 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+PROGNAME=${SVCNAME#*.}
+SPAWNFCGI=/usr/bin/spawn-fcgi
+PIDPATH=/run/spawn-fcgi
+PIDFILE=${PIDPATH}/${PROGNAME}
+
+depend() {
+	need net
+}
+
+start() {
+	local X E OPTIONS i RETVAL FCGI_PROGRAM_EXEC
+	FCGI_PROGRAM_EXEC=$(echo ${FCGI_PROGRAM} | awk "{print \$1}")
+
+	if [ "${SVCNAME}" = "spawn-fcgi" ]; then
+		eerror "You are not supposed to run this script directly. Create a symlink"
+		eerror "for the FastCGI application you want to run as well as a copy of the"
+		eerror "configuration file and modify it appropriately like so..."
+		eerror
+		eerror "  ln -s spawn-fcgi /etc/init.d/spawn-fcgi.trac"
+		eerror "  cp /etc/conf.d/spawn-fcgi /etc/conf.d/spawn-fcgi.trac"
+		eerror "  `basename "${EDITOR}"` /etc/conf.d/spawn-fcgi.trac"
+		eerror
+		return 1
+	fi
+
+	if [ ! -z "${FCGI_SOCKET}" ] && [ ! -z "${FCGI_PORT}" ]; then
+		eerror "Only one of the two may be defined:"
+		eerror "  FCGI_SOCKET=${FCGI_SOCKET}"
+		eerror "  FCGI_PORT=${FCGI_PORT}"
+		return 1
+	fi
+
+	if [ -z "${FCGI_PROGRAM}" ]; then
+		eerror "You need to specify which \$FCGI_PROGRAM"
+		eerror "you want to start."
+		eerror "Please adjust /etc/conf.d/spawn-fcgi.${PROGNAME}"
+		return 1
+	fi
+
+	if [ ! -x "${FCGI_PROGRAM_EXEC}" ]; then
+		eerror "The file specified as \$FCGI_PROGRAM"
+		eerror "does not exist or is not executable."
+		eerror "Please adjust /etc/conf.d/spawn-fcgi.${PROGNAME}"
+		return 1
+	fi
+
+	if [ -z "${FCGI_ADDRESS}" ]; then
+		FCGI_ADDRESS=127.0.0.1
+	fi
+
+	if [ -z "${FCGI_CHILDREN}" ]; then
+		FCGI_CHILDREN=1
+	fi
+
+	if [ -n "${FCGI_CHROOT}" ]; then
+		OPTIONS="${OPTIONS} -c ${FCGI_CHROOT}"
+	fi
+
+	if [ -n "${FCGI_DIR}" ]; then
+		OPTIONS="${OPTIONS} -d ${FCGI_DIR}"
+	fi
+
+	if [ -n "${FCGI_USER}" ] && [ "${FCGI_USER}" != "root" ]; then
+		OPTIONS="${OPTIONS} -u ${FCGI_USER}"
+	fi
+
+	if [ -n "${FCGI_GROUP}" ] && [ "${FCGI_GROUP}" != "root" ]; then
+		OPTIONS="${OPTIONS} -g ${FCGI_GROUP}"
+	fi
+
+	if [ -n "${FCGI_EXTRA_OPTIONS}" ]; then
+		OPTIONS="${OPTIONS} ${FCGI_EXTRA_OPTIONS}"
+	fi
+
+	unset E
+	for i in ${ALLOWED_ENV}; do
+		local j
+		eval j=$(echo \$"$i")
+		[ -n "${j}" ] && E="${E} ${i}=${j}"
+	done
+
+	ebegin "Starting FastCGI application ${PROGNAME}"
+	checkpath -q -d -m 700 /run/spawn-fcgi
+	X=0
+	while [ $X -lt ${FCGI_CHILDREN} ]; do
+		X=$(($X+1))
+		local P SOCKET_OPTION INET_OPTION
+		P=${PIDFILE}-${X}.pid
+		[ -n "${FCGI_SOCKET}" ] && SOCKET_OPTION="-s ${FCGI_SOCKET}-${X}"
+		[ -n "${FCGI_PORT}" ] && INET_OPTION="-a ${FCGI_ADDRESS} -p $((${FCGI_PORT} + ${X} - 1))"
+
+		env -i ${E} /sbin/start-stop-daemon --start --pidfile ${P} --exec ${SPAWNFCGI} \
+			--name ${FCGI_PROGRAM_EXEC} -- ${SOCKET_OPTION} ${INET_OPTION} \
+			-P ${P} ${OPTIONS} -- ${FCGI_PROGRAM}
+		RETVAL=$?
+
+		# Stop on error. Don't want to spawn a mess!
+		[ "${RETVAL}" != "0" ] && break
+	done
+	eend ${RETVAL}
+}
+
+stop() {
+	local X RETVAL=0
+
+	ebegin "Stopping FastCGI application ${PROGNAME}"
+	for X in ${PIDFILE}-[0-9]*.pid ; do
+		start-stop-daemon --stop --pidfile ${X} || \
+			{ RETVAL=$? && break ; }
+	done
+	eend ${RETVAL}
+}

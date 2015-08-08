@@ -1,0 +1,13 @@
+diff --git a/mwlib/rl/fontconfig.py b/mwlib/rl/fontconfig.py
+index fdf5cba..ab792df 100755
+--- a/mwlib/rl/fontconfig.py
++++ b/mwlib/rl/fontconfig.py
+@@ -14,7 +14,7 @@ from reportlab.pdfbase import pdfmetrics
+ from reportlab.pdfbase.ttfonts import TTFont
+ from reportlab.pdfbase.cidfonts import UnicodeCIDFont
+ 
+-font_paths = [os.path.dirname(mwlib.fonts.__file__),
++font_paths = ['/usr/share/fonts',
+               os.path.expanduser('~/mwlibfonts/')
+               ]
+ 

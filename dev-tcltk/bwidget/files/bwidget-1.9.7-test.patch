@@ -1,0 +1,31 @@
+Index: tests/entry.test
+==================================================================
+--- tests/entry.test
++++ tests/entry.test
+@@ -21,11 +21,11 @@
+     {-bg #ff0000 #ff0000 non-existent {unknown color name "non-existent"}}
+     {-borderwidth 1.3 1 badValue {bad screen distance "badValue"}}
+     {-command foo foo {} {}}
+     {-disabledforeground blue blue non-existent \
+ 	    {unknown color name "non-existent"}}
+-    {-editable false false shazbot {expected boolean value but got "shazbot"}}
++    {-editable false 0 shazbot {expected boolean value but got "shazbot"}}
+     {-exportselection yes 1 xyzzy {expected boolean value but got "xyzzy"}}
+     {-fg #110022 #110022 bogus {unknown color name "bogus"}}
+     {-font {Helvetica 12 italic} {Helvetica 12 italic} {} \
+ 	    {font "" doesn't exist}}
+     {-foreground #110022 #110022 bogus {unknown color name "bogus"}}
+@@ -63,11 +63,11 @@
+ }
+ destroy .e
+ 
+ test Entry-2.1 {Entry} {
+     list [catch {Entry} msg] $msg
+-} {1 {no value given for parameter "path" to "Entry"}}
++} {1 {wrong # args: should be "Entry path ?arg ...?"}}
+ test Entry-2.2 {Entry} {
+     list [catch {Entry gorp} msg] $msg
+ } {1 {bad window path name "gorp"}}
+ test Entry-2.3 {Entry procedure} {
+     Entry .e
+

@@ -1,0 +1,44 @@
+#!/sbin/runscript
+
+piddir=${pid_dir:-/var/run/fetchmail}
+pid_file=${piddir}/${RC_SVCNAME}.pid
+rcfile=/etc/${RC_SVCNAME}rc
+
+depend() {
+	need net
+	use mta
+}
+
+checkconfig() {
+	if [ ! -f ${rcfile} ]; then
+		eerror "Configuration file ${rcfile} not found"
+		return 1
+	fi
+	local fetchmail_instance
+	fetchmail_instance=${RC_SVCNAME##*.}
+	if [ -n "${fetchmail_instance}" -a "${RC_SVCNAME}" != "fetchmail" ]; then
+		fidfile=/var/lib/fetchmail/.fetchids.${RC_SVCNAME}
+	else
+		fidfile=/var/lib/fetchmail/.fetchids
+	fi
+	if [ ! -d ${piddir} ]; then
+		checkpath -q -d -o fetchmail:fetchmail -m 0755 ${piddir} || return 1
+	fi
+}
+
+start() {
+        checkconfig || return 1
+	ebegin "Starting ${RC_SVCNAME}"
+	start-stop-daemon --start --pidfile ${pid_file} \
+		--user fetchmail --exec /usr/bin/fetchmail \
+		-- -d ${polling_period} -f ${rcfile} \
+		--pidfile ${pid_file} -i ${fidfile}
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping ${RC_SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile ${pid_file}
+	eend ${?}
+}
+

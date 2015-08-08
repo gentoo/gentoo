@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<longdescription lang="en">
+A collection of Gentoo themes for splashutils.
+</longdescription>
+<maintainer>
+  <email>email@missionaccomplish.com</email>
+  <name>Fernando Orocu</name>
+</maintainer>
+<herd>proxy-maintainers</herd>
+</pkgmetadata>

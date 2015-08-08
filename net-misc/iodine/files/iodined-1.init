@@ -1,0 +1,62 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+PID_FILE="/run/iodined.pid"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting iodined"
+	ARGS=""
+	if [ "$IODINED_USER" ]; then
+		ARGS="$ARGS -u $IODINED_USER"
+	fi
+	if [ "$IODINED_CHROOT" ]; then
+		ARGS="$ARGS -t $IODINED_CHROOT"
+	fi
+	if [ "$IODINED_MTU" ]; then
+		ARGS="$ARGS -m $IODINED_MTU"
+	fi
+	if [ "$IODINED_LISTENPORT" ]; then
+		ARGS="$ARGS -p $IODINED_LISTENPORT"
+	fi
+	if [ "$IODINED_EXTERN_IP" ]; then
+		ARGS="$ARGS -n $IODINED_EXTERN_IP"
+	fi
+	if [ "$IODINED_LOCAL_DNS_PORT" ]; then
+		ARGS="$ARGS -b $IODINED_LOCAL_DNS_PORT"
+	fi
+	if [ "$IODINED_LISTENIP" ]; then
+		ARGS="$ARGS -l $IODINED_LISTENIP"
+	fi
+	if [ "$IODINED_PASSWD" ]; then
+		ARGS="$ARGS -P $IODINED_PASSWD"
+	else
+		eerror "Please set a password (IODINED_PASSWD) in /etc/conf.d/iodined!"
+		return 1
+	fi
+	if [ "$IODINED_IP" ]; then
+		ARGS="$ARGS $IODINED_IP"
+	else
+		eerror "Please set an IP (IODINED_IP) in /etc/conf.d/iodined!"
+		return 1
+	fi
+	if [ "$IODINED_DOMAIN" ]; then
+		ARGS="$ARGS $IODINED_DOMAIN"
+	else
+		eerror "Please set a domain (IODINED_DOMAIN) in /etc/conf.d/iodined!"
+		return 1
+	fi
+	start-stop-daemon --start --exec /usr/sbin/iodined --pidfile $PID_FILE -- -F $PID_FILE $ARGS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping iodined"
+	start-stop-daemon --stop --exec /usr/sbin/iodined --pidfile $PID_FILE
+	eend $?
+}

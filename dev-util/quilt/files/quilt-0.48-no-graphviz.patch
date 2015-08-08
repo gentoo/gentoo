@@ -1,0 +1,34 @@
+--- Makefile.in.orig	2009-02-24 13:49:47.000000000 -0500
++++ Makefile.in	2009-02-24 13:50:21.000000000 -0500
+@@ -82,8 +82,7 @@ QUILT :=	$(QUILT_IN)
+ SRC +=		$(QUILT_SRC:%=quilt/%)
+ DIRT +=		$(QUILT_IN:%=quilt/%)
+ 
+-SCRIPTS_IN :=	patchfns parse-patch inspect dependency-graph edmail	\
+-		remove-trailing-ws
++SCRIPTS_IN :=	patchfns parse-patch inspect edmail	remove-trailing-ws
+ 
+ SCRIPTS_SRC :=	$(SCRIPTS_IN:%=%.in)
+ SCRIPTS :=	$(SCRIPTS_IN)
+--- bash_completion.orig	2009-02-24 13:49:52.000000000 -0500
++++ bash_completion	2009-02-24 13:50:46.000000000 -0500
+@@ -189,19 +189,6 @@ _quilt_completion()
+ 	        ;;
+ 	   esac
+ 	   ;;
+-	graph)
+-	   case $prev in
+-	     -T)
+-	     	COMPREPLY=( $( compgen -W "ps" -- $cur ) )
+-		;;
+-	     --edge-labels)
+-	        COMPREPLY=( $( compgen -W "files" -- $cur ) )
+-		;;
+-	     *)
+-		COMPREPLY=( $( compgen -W "-T -h --all --reduce --lines --edge-labels $(quilt applied)" -- $cur ) )
+-		;;
+-	   esac
+-	   ;;
+ 	grep)
+ 	   _longopt grep
+ 	   COMPREPLY=( ${COMPREPLY[@]:-} $( compgen -W "-h" -- $cur ) )

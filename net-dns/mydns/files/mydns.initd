@@ -1,0 +1,35 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+MYDNS_CHECKCONF="/usr/bin/mydnscheck"
+MYDNS_CONFFILE="${MYDNS_CONFFILE:-/etc/mydns.conf}"
+
+command="/usr/sbin/mydns"
+command_args="--background --conf=${MYDNS_CONFFILE} ${MYDNS_EXTRA_OPTS}"
+extra_commands="configtest"
+extra_started_commands="reload"
+pidfile="$(grep '^pidfile' ${MYDNS_CONFFILE} | sed -e 's/^pidfile\s*=\s*\([^# 	]\+\?\)\s*\(#.*\)\?$/\1/')"
+pidfile="${pidfile:-/var/run/mydns.pid}"
+
+depend() {
+	need net
+	use logger mysql postgresql
+}
+
+checkconfig() {
+	"${MYDNS_CHECKCONF}" --conf="${MYDNS_CONFFILE}"
+	return $?
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	checkconfig
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}

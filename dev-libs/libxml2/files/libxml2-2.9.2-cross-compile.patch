@@ -1,0 +1,17 @@
+https://bugzilla.gnome.org/show_bug.cgi?id=749416
+
+do not use -L$Z_DIR/lib when Z_DIR isn't actually set
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -392,7 +392,9 @@ if test "$with_zlib" = "no"; then
+ else
+     AC_CHECK_HEADERS(zlib.h,
+         [SAVE_LDFLAGS="${LDFLAGS}"
+-	 LDFLAGS="-L${Z_DIR}/lib"
++	if test "x${Z_DIR}" != "x"; then
++	    LDFLAGS="${LDFLAGS} -L${Z_DIR}/lib"
++	fi
+ 	AC_CHECK_LIB(z, gzread,[
+ 	    AC_DEFINE([HAVE_LIBZ], [1], [Have compression library])
+ 	    WITH_ZLIB=1

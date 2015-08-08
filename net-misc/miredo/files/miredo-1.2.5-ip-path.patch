@@ -1,0 +1,28 @@
+Index: miredo-1.2.5/misc/client-hook.iproute
+===================================================================
+--- miredo-1.2.5.orig/misc/client-hook.iproute
++++ miredo-1.2.5/misc/client-hook.iproute
+@@ -5,7 +5,10 @@
+ # Distributed under the terms of the GNU General Public License version 2.
+ 
+ # Linux iproute2 path:
+-IP="/sbin/ip"
++IP="ip"
++
++test -x "/sbin/ip" && IP=/sbin/ip
++test -x "/bin/ip" && IP=/bin/ip
+ 
+ # Linux default route default metric is 1024
+ # (we put 1029 so that Teredo is used as a last resort):
+@@ -23,11 +26,6 @@ PRIO=32765
+ # (default: specified by the Teredo server, or 1280)
+ #MTU=1400
+ 
+-if ! test -x "$IP"; then
+-	echo "$0: iproute2 is required! Please install it." >&2
+-	exit 1
+-fi
+-
+ # Nothing to do with destroy event
+ if test "$STATE" = "destroy"; then exit 0; fi
+ 

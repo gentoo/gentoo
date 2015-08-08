@@ -1,0 +1,15 @@
+--- netifaces-0.10.4/setup.py
++++ netifaces-0.10.4/setup.py
+@@ -18,12 +18,6 @@
+     
+ __version__ = "0.10.4"
+ 
+-# Disable hard links, otherwise building distributions fails on OS X
+-try:
+-    del os.link
+-except:
+-    pass
+-
+ # On Windows, we need ws2_32 and iphlpapi
+ if getattr(sys, 'getwindowsversion', None):
+     libraries = ['ws2_32', 'iphlpapi']

@@ -1,0 +1,28 @@
+--- tinycdb-0.77.orig/Makefile
++++ tinycdb-0.77/Makefile
+@@ -34,7 +34,7 @@
+ CDB_USELIB = $(LIB)
+ NSS_USELIB = $(PICLIB)
+ LIBMAP = $(LIBBASE).map
+-INSTALLPROG = cdb
++INSTALLPROG = cdb-shared
+ 
+ # The following assumes GNU CC/LD -
+ # used for building shared libraries only
+@@ -59,7 +59,7 @@
+  ChangeLog NEWS
+ DEBIANFILES = debian/control debian/rules debian/copyright debian/changelog
+ 
+-all: static
++all: shared
+ static: staticlib cdb
+ staticlib: $(LIB)
+ nss: $(NSS_CDB)
+@@ -128,6 +128,7 @@
+ 
+ do_install = \
+  while [ "$$1" ] ; do \
++   if [ ! -f $$1 ]; then shift 4; continue; fi; \
+    if [ .$$4 = .- ]; then f=$$1; else f=$$4; fi; \
+    d=$(DESTDIR)$$3 ; echo installing $$1 to $$d/$$f; \
+    [ -d $$d ] || mkdir -p $$d || exit 1 ; \

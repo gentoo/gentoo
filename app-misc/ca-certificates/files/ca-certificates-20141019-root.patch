@@ -1,0 +1,116 @@
+add a --root option so we can generate with DESTDIR installs
+
+--- a/usr/sbin/update-ca-certificates
++++ b/usr/sbin/update-ca-certificates
+@@ -23,6 +23,8 @@
+ 
+ verbose=0
+ fresh=0
++ROOT=""
++RELPATH=""
+ while [ $# -gt 0 ];
+ do
+   case $1 in
+@@ -30,18 +32,23 @@ do
+       verbose=1;;
+     --fresh|-f)
+       fresh=1;;
++    --root|-r)
++      ROOT=$(readlink -f "$2")
++      # needed as c_rehash wants to read the files directly
++      RELPATH="../../.."
++      shift;;
+     --help|-h|*)
+-      echo "$0: [--verbose] [--fresh]"
++      echo "$0: [--verbose] [--fresh] [--root <dir>]"
+       exit;;
+   esac
+   shift
+ done
+ 
+-CERTSCONF=/etc/ca-certificates.conf
+-CERTSDIR=/usr/share/ca-certificates
+-LOCALCERTSDIR=/usr/local/share/ca-certificates
++CERTSCONF="$ROOT/etc/ca-certificates.conf"
++CERTSDIR="$ROOT/usr/share/ca-certificates"
++LOCALCERTSDIR="$ROOT/usr/local/share/ca-certificates"
+ CERTBUNDLE=ca-certificates.crt
+-ETCCERTSDIR=/etc/ssl/certs
++ETCCERTSDIR="$ROOT/etc/ssl/certs"
+ 
+ cleanup() {
+   rm -f "$TEMPBUNDLE"
+@@ -66,7 +73,7 @@ add() {
+                                                   -e 's/,/_/g').pem"
+   if ! test -e "$PEM" || [ "$(readlink "$PEM")" != "$CERT" ]
+   then
+-    ln -sf "$CERT" "$PEM"
++    ln -sf "${RELPATH}${CERT#$ROOT}" "$PEM"
+     echo +$PEM >> "$ADDED"
+   fi
+   # Add trailing newline to certificate, if it is missing (#635570)
+@@ -79,36 +86,36 @@ remove() {
+   if test -L "$PEM"
+   then
+     rm -f "$PEM"
+-    echo -$PEM >> "$REMOVED"
++    echo "-$PEM" >> "$REMOVED"
+   fi
+ }
+ 
+-cd $ETCCERTSDIR
++cd "$ETCCERTSDIR"
+ if [ "$fresh" = 1 ]; then
+-  echo -n "Clearing symlinks in $ETCCERTSDIR..."
++  printf "Clearing symlinks in $ETCCERTSDIR..."
+   find . -type l -print | while read symlink
+   do
+-    case $(readlink $symlink) in
+-      $CERTSDIR*) rm -f $symlink;;
++    case $(readlink "$symlink") in
++      "$CERTSDIR"*) rm -f "$symlink";;
+     esac
+   done
+   find . -type l -print | while read symlink
+   do
+-    test -f $symlink || rm -f $symlink
++    test -f "$symlink" || rm -f "$symlink"
+   done
+   echo "done."
+ fi
+ 
+-echo -n "Updating certificates in $ETCCERTSDIR... "
++printf "Updating certificates in $ETCCERTSDIR... "
+ 
+ # Handle certificates that should be removed.  This is an explicit act
+ # by prefixing lines in the configuration files with exclamation marks (!).
+-sed -n -e '/^$/d' -e 's/^!//p' $CERTSCONF | while read crt
++sed -n -e '/^$/d' -e 's/^!//p' "$CERTSCONF" | while read crt
+ do
+   remove "$CERTSDIR/$crt"
+ done
+ 
+-sed -e '/^$/d' -e '/^#/d' -e '/^!/d' $CERTSCONF | while read crt
++sed -e '/^$/d' -e '/^#/d' -e '/^!/d' "$CERTSCONF" | while read crt
+ do
+   if ! test -f "$CERTSDIR/$crt"
+   then
+@@ -151,14 +158,14 @@ mv -f "$TEMPBUNDLE" "$CERTBUNDLE"
+ 
+ echo "$ADDED_CNT added, $REMOVED_CNT removed; done."
+ 
+-HOOKSDIR=/etc/ca-certificates/update.d
+-echo -n "Running hooks in $HOOKSDIR...."
++HOOKSDIR="$ROOT/etc/ca-certificates/update.d"
++printf "Running hooks in $HOOKSDIR...."
+ VERBOSE_ARG=
+ [ "$verbose" = 0 ] || VERBOSE_ARG=--verbose
+-eval run-parts $VERBOSE_ARG --test -- $HOOKSDIR | while read hook
++eval run-parts $VERBOSE_ARG --test -- \""$HOOKSDIR"\" | while read hook
+ do
+   ( cat $ADDED
+-    cat $REMOVED ) | $hook || echo E: $hook exited with code $?.
++    cat $REMOVED ) | "$hook" || echo E: "$hook" exited with code $?.
+ done
+ echo "done."
+ 

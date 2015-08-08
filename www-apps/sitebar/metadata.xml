@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>web-apps</herd>
+	<use>
+		<flag name="plugins">Install optional plugins</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sitebar</remote-id>
+	</upstream>
+</pkgmetadata>

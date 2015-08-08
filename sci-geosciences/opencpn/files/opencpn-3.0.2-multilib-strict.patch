@@ -1,0 +1,12 @@
+--- OpenCPN-3.0.2-Source/CMakeLists.txt.orig	2012-07-18 00:27:24.531257698 +0200
++++ OpenCPN-3.0.2-Source/CMakeLists.txt	2012-07-18 00:29:37.669412986 +0200
+@@ -99,6 +99,9 @@
+       SET (LIB_INSTALL_DIR "lib")
+     ENDIF (CMAKE_SIZEOF_VOID_P MATCHES "8")
+   ENDIF (EXISTS /etc/suse-release OR EXISTS /etc/SuSE-release)
++  IF (EXISTS /etc/gentoo-release)
++    SET (LIB_INSTALL_DIR "lib${LIB_SUFFIX}")
++  ENDIF (EXISTS /etc/gentoo-release)
+   IF(APPLE)
+     IF (CMAKE_SIZEOF_VOID_P MATCHES "8")
+       IF (CMAKE_OSX_64)

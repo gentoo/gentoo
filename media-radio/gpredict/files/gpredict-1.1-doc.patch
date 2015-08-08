@@ -1,0 +1,15 @@
+--- Makefile.am.orig	2009-04-19 12:09:03.000000000 +0200
++++ Makefile.am	2009-04-19 12:09:20.000000000 +0200
+@@ -2,12 +2,7 @@
+ 
+ install-data-local:
+ 	@$(NORMAL_INSTALL)
+-	$(INSTALL_DATA) $(top_srcdir)/AUTHORS $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/ChangeLog $(DESTDIR)$(pkgdatadir)
+ 	$(INSTALL_DATA) $(top_srcdir)/NEWS $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/README $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/COPYING $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/TODO $(DESTDIR)$(pkgdatadir)
+ 
+ EXTRA_DIST = \
+ 	autogen.sh            \

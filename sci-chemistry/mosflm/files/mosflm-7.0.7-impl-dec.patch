@@ -1,0 +1,29 @@
+ mosflm/mosflm_jpeg.c           |    1 +
+ src/dps/index/ind_gen_direct.c |    2 ++
+ 2 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/mosflm/mosflm_jpeg.c b/mosflm/mosflm_jpeg.c
+index 2b32b2e..54684d0 100644
+--- a/mosflm/mosflm_jpeg.c
++++ b/mosflm/mosflm_jpeg.c
+@@ -76,6 +76,7 @@ G. Winter
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #if (defined _MSC_VER) 
+ /* no need to do this for __MINGW_ (Mingw gcc) this is just about unique!*/
+ #define S_IRWXU S_IREAD|S_IWRITE|S_IEXEC
+diff --git a/src/dps/index/ind_gen_direct.c b/src/dps/index/ind_gen_direct.c
+index 6e143df..2eea61b 100644
+--- a/src/dps/index/ind_gen_direct.c
++++ b/src/dps/index/ind_gen_direct.c
+@@ -41,6 +41,8 @@
+ /* #include <malloc.h> */
+ #include "util.h"
+ #include "ind_gen_direct.h"
++#include "ind_help.h"
++#include "ind_sort_merge.h"
+ /* char *strcat( char *, const char *); */
+ 
+ 

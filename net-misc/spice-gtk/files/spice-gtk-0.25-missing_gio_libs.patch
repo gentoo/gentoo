@@ -1,0 +1,12 @@
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 8da1a11..6332db9 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -189,6 +189,7 @@ libspice_client_glib_2_0_la_LIBADD =					\
+ 	$(top_builddir)/spice-common/common/libspice-common-client.la	\
+ 	$(GLIB2_LIBS)							\
+ 	$(SOUP_LIBS)							\
++	$(GIO_LIBS)								\
+ 	$(GOBJECT2_LIBS)						\
+ 	$(CELT051_LIBS)							\
+ 	$(OPUS_LIBS)							\

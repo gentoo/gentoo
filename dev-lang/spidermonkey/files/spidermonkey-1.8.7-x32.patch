@@ -1,0 +1,25 @@
+--- a/js/src/jslock.cpp	2012-04-06 16:24:51.000000000 -0500
++++ b/js/src/jslock.cpp	2012-06-21 20:57:00.877937542 -0500
+@@ -150,17 +150,22 @@
+ 
+ static JS_ALWAYS_INLINE int
+ NativeCompareAndSwap(volatile jsword *w, jsword ov, jsword nv)
+ {
+     unsigned int res;
+ 
+     __asm__ __volatile__ (
+                           "lock\n"
++/* GCC's x32 abi support */
++#if defined(__LP64__)
+                           "cmpxchgq %2, (%1)\n"
++#else
++                          "cmpxchg %2, (%1)\n"
++#endif
+                           "sete %%al\n"
+                           "movzbl %%al, %%eax\n"
+                           : "=a" (res)
+                           : "r" (w), "r" (nv), "a" (ov)
+                           : "cc", "memory");
+     return (int)res;
+ }
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>pchrist@gentoo.org</email>
+	<name>Panagiotis Christopoulos</name>
+</maintainer>
+  <longdescription>
+  A selection of even more styles for *box window managers.
+  </longdescription>
+</pkgmetadata>

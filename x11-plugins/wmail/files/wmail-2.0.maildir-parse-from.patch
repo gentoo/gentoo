@@ -1,0 +1,12 @@
+--- src/wmail.c	2007-01-26 19:17:08.000000000 +0100
++++ src/wmail.c.new	2007-01-26 19:17:02.000000000 +0100
+@@ -871,6 +871,9 @@
+ 			InsertName( ParseFromField( buf+6 ), checksum,
+ 						isNewMail ? FLAG_INITIAL : FLAG_READ );
+ 
++			// got name, address: do not parse the rest of email
++			break;
++
+ 			//++numMails;
+ 		}
+ 	}

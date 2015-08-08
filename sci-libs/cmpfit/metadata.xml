@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  MPFIT uses the Levenberg-Marquardt technique to solve the
+  least-squares problem. In its typical use, MPFIT will be used to fit
+  a user-supplied function (the "model") to user-supplied data points
+  (the "data") by adjusting a set of parameters. MPFIT is based upon
+  MINPACK-1 (LMDIF.F) by More' and collaborators.
+</longdescription>
+</pkgmetadata>

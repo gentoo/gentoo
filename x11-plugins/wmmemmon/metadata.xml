@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+WMMemMon is a program to monitor memory/swap usages. It is a dockapp that is 
+supported by X window managers such as Window Maker, AfterStep, BlackBox, and 
+Enlightenment. The current memory usage is displaied as the outside pie-slices. 
+The swap usage is represented by the inside slices. It has an LCD look-alike 
+user interface. The back light may be turned on/off by clicking the mouse 
+button over the appliacation.
+</longdescription>
+</pkgmetadata>

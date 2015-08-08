@@ -1,0 +1,449 @@
+ build                  | 18 +++++++++---------
+ build-recipe-kiwi      |  4 ++--
+ build-recipe-livebuild |  4 ++--
+ build-recipe-spec      |  8 ++++----
+ changelog2spec         |  2 +-
+ createarchdeps         |  2 +-
+ createrepomddeps       |  2 +-
+ createrpmdeps          |  2 +-
+ createyastdeps         |  2 +-
+ createzyppdeps         |  2 +-
+ download               |  2 +-
+ expanddeps             |  4 ++--
+ getbinaryid            |  2 +-
+ init_buildsystem       |  2 +-
+ initvm.c               | 13 +++++++++----
+ mkdrpms                |  2 +-
+ order                  |  4 ++--
+ queryconfig            |  4 ++--
+ spectool               |  2 +-
+ substitutedeps         |  4 ++--
+ test/common            |  2 +-
+ 21 files changed, 46 insertions(+), 41 deletions(-)
+
+diff --git a/build b/build
+old mode 100755
+new mode 100644
+index 9f9fb72..fcfec70
+--- a/build
++++ b/build
+@@ -13,7 +13,7 @@ if test "$0" = /sbin/init ; then
+ fi
+ 
+ test -z "$BUILD_DIR" -a -e /.build/build.data -a -z "$BUILD_IGNORE_2ND_STAGE" && BUILD_DIR=/.build
+-test -z "$BUILD_DIR" && BUILD_DIR=/usr/lib/build
++test -z "$BUILD_DIR" && BUILD_DIR=/usr/libexec/suse-build
+ test -z "$BUILD_ROOT" && BUILD_ROOT=/var/tmp/build-root
+ test -z "$CONFIG_DIR" && CONFIG_DIR="$BUILD_DIR/configs"
+ 
+@@ -493,8 +493,8 @@ create_baselibs() {
+ 	if test -e $BUILD_ROOT$TOPDIR/SOURCES/baselibs.conf ; then
+ 	    BASELIBS_CFG="-c $TOPDIR/SOURCES/baselibs.conf"
+ 	fi
+-	if test -e $BUILD_ROOT/usr/lib/build/baselibs_global.conf; then
+-	    BASELIBS_GLOBAL="-c /usr/lib/build/baselibs_global.conf"
++	if test -e $BUILD_ROOT/usr/libexec/suse-build/baselibs_global.conf; then
++	    BASELIBS_GLOBAL="-c /usr/libexec/suse-build/baselibs_global.conf"
+ 	fi
+ 	pkgs=($RPMS)
+     fi
+@@ -503,14 +503,14 @@ create_baselibs() {
+     # don't use -R as extracted sources, build root etc might be below $TOPDIR
+     chown "$ABUILD_UID:$ABUILD_GID" "$BUILD_ROOT$TOPDIR"/* "$BUILD_ROOT$TOPDIR"/RPMS/* || true
+ 
+-    local mkbaselibs="/usr/lib/build/mkbaselibs"
++    local mkbaselibs="/usr/libexec/suse-build/mkbaselibs"
+     local whichone=''
+     # $BUILD_DIR is set to /.build when using a vm. So we need to
+-    # hardcode /usr/lib/build instead of $BUILD_DIR to prefer
++    # hardcode /usr/libexec/suse-build instead of $BUILD_DIR to prefer
+     # mkbaselibs from the distro.
+     if test -f $BUILD_ROOT$mkbaselibs; then
+-	if test -z "$BASELIBS_CFG" -a -e $BUILD_ROOT/usr/lib/build/baselibs.conf ; then
+-	    BASELIBS_CFG="-c /usr/lib/build/baselibs.conf"
++	if test -z "$BASELIBS_CFG" -a -e $BUILD_ROOT/usr/libexec/suse-build/baselibs.conf ; then
++	    BASELIBS_CFG="-c /usr/libexec/suse-build/baselibs.conf"
+ 	fi
+     else
+ 	if test "$CREATE_BASELIBS" = 'internal'; then
+@@ -1274,7 +1274,7 @@ if test -n "$RPMS" -a -n "$BUILD_USER_ABUILD_USED" ; then
+     recipe_check_file_owners
+ fi
+ 
+-if test -n "$RPMS" -a -d "$BUILD_ROOT/usr/lib/build/checks" ; then
++if test -n "$RPMS" -a -d "$BUILD_ROOT/usr/libexec/suse-build/checks" ; then
+     export DO_RPM_REMOVE=true
+     # find package name
+     export PNAME=
+@@ -1282,7 +1282,7 @@ if test -n "$RPMS" -a -d "$BUILD_ROOT/usr/lib/build/checks" ; then
+ 	test -f "$SRPM" && PNAME=`rpm --nodigest --nosignature -qp --qf "%{NAME}" $SRPM`
+     done
+     mount -n -tproc none $BUILD_ROOT/proc 2> /dev/null
+-    for CHECKSCRIPT in $BUILD_ROOT/usr/lib/build/checks/* ; do
++    for CHECKSCRIPT in $BUILD_ROOT/usr/libexec/suse-build/checks/* ; do
+ 	echo "... running ${CHECKSCRIPT##*/}"
+ 	$CHECKSCRIPT || cleanup_and_exit 1
+     done
+diff --git a/build-recipe-kiwi b/build-recipe-kiwi
+index 95afd3f..23cafb7 100644
+--- a/build-recipe-kiwi
++++ b/build-recipe-kiwi
+@@ -459,8 +459,8 @@ recipe_build_kiwi() {
+     fi
+ 
+     # Hook for running post kiwi build scripts like QA scripts if installed
+-    if test -x $BUILD_ROOT/usr/lib/build/kiwi_post_run ; then
+-	chroot $BUILD_ROOT su -c /usr/lib/build/kiwi_post_run || cleanup_and_exit 1
++    if test -x $BUILD_ROOT/usr/libexec/suse-build/kiwi_post_run ; then
++	chroot $BUILD_ROOT su -c /usr/libexec/suse-build/kiwi_post_run || cleanup_and_exit 1
+     fi
+ }
+ 
+diff --git a/build-recipe-livebuild b/build-recipe-livebuild
+index 6ae7046..c426ea0 100644
+--- a/build-recipe-livebuild
++++ b/build-recipe-livebuild
+@@ -172,9 +172,9 @@ recipe_build_livebuild() {
+     # TODO: Add the repository public key
+     # cp ... $BUILD_ROOT/$TOPDIR/$LIVEBUILD_ROOT/config/archives/debian.key
+ 
+-    if [ -x $BUILD_ROOT/usr/lib/build/livebuild_pre_run ] ; then
++    if [ -x $BUILD_ROOT/usr/libexec/suse-build/livebuild_pre_run ] ; then
+ 	echo "Running OBS build livebuild_pre_run hook"
+-	chroot $BUILD_ROOT su -c "/usr/lib/build/livebuild_pre_run" - root \
++	chroot $BUILD_ROOT su -c "/usr/libexec/suse-build/livebuild_pre_run" - root \
+ 	    < /dev/null || cleanup_and_exit 1
+     fi
+ 
+diff --git a/build-recipe-spec b/build-recipe-spec
+index b120f02..7a0b424 100644
+--- a/build-recipe-spec
++++ b/build-recipe-spec
+@@ -194,10 +194,10 @@ recipe_run_rpmlint() {
+ }
+ 
+ recipe_compare_oldpackages() {
+-    if test -x "$BUILD_ROOT/usr/lib/build/same-build-result.sh" ; then 
++    if test -x "$BUILD_ROOT/usr/libexec/suse-build/same-build-result.sh" ; then 
+ 	echo "... comparing built packages with the former built"
+ 	mount -n -tproc none $BUILD_ROOT/proc 2> /dev/null
+-	if chroot $BUILD_ROOT /usr/lib/build/same-build-result.sh /.build.oldpackages "$TOPDIR/RPMS" "$TOPDIR/SRPMS"; then 
++	if chroot $BUILD_ROOT /usr/libexec/suse-build/same-build-result.sh /.build.oldpackages "$TOPDIR/RPMS" "$TOPDIR/SRPMS"; then 
+ 	    chroot $BUILD_ROOT touch /.build/.same_result_marker
+ 	    # XXX: dirty build service hack. fix bs_worker. Search for
+ 	    # 'same_result_marker' for traces of a first try to get rid of this
+@@ -210,9 +210,9 @@ recipe_compare_oldpackages() {
+ }
+ 
+ recipe_create_deltarpms() {
+-    if test -x "$BUILD_ROOT/usr/bin/makedeltarpm" -a -x $BUILD_ROOT/usr/lib/build/mkdrpms ; then
++    if test -x "$BUILD_ROOT/usr/bin/makedeltarpm" -a -x $BUILD_ROOT/usr/libexec/suse-build/mkdrpms ; then
+ 	echo "... creating delta rpms"
+ 	ds=("$BUILD_ROOT/$TOPDIR"/RPMS/* "$BUILD_ROOT$TOPDIR/SRPMS")
+-	chroot $BUILD_ROOT /usr/lib/build/mkdrpms /.build.oldpackages "${ds[@]#$BUILD_ROOT}"
++	chroot $BUILD_ROOT /usr/libexec/suse-build/mkdrpms /.build.oldpackages "${ds[@]#$BUILD_ROOT}"
+     fi
+ }
+diff --git a/changelog2spec b/changelog2spec
+old mode 100755
+new mode 100644
+index 4b94798..b87f4e1
+--- a/changelog2spec
++++ b/changelog2spec
+@@ -5,7 +5,7 @@
+ #
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Date::Parse;
+diff --git a/createarchdeps b/createarchdeps
+old mode 100755
+new mode 100644
+index 94efdb1..5e6795c
+--- a/createarchdeps
++++ b/createarchdeps
+@@ -3,7 +3,7 @@
+ # Archlinux support, based on the GSoC work of Nikolay Rysev <mad.f3ka@gmail.com>
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{"BUILD_DIR"} || "/usr/lib/build");
++  unshift @INC, ($::ENV{"BUILD_DIR"} || "/usr/libexec/suse-build");
+ }
+ 
+ use strict;
+diff --git a/createrepomddeps b/createrepomddeps
+old mode 100755
+new mode 100644
+index fad84e5..f2292a6
+--- a/createrepomddeps
++++ b/createrepomddeps
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+diff --git a/createrpmdeps b/createrpmdeps
+old mode 100755
+new mode 100644
+index c8c796d..c890df1
+--- a/createrpmdeps
++++ b/createrpmdeps
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+diff --git a/createyastdeps b/createyastdeps
+old mode 100755
+new mode 100644
+index 43c83e7..094c532
+--- a/createyastdeps
++++ b/createyastdeps
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+diff --git a/createzyppdeps b/createzyppdeps
+index 9abf693..e78937c 100755
+--- a/createzyppdeps
++++ b/createzyppdeps
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+diff --git a/download b/download
+old mode 100755
+new mode 100644
+index b0a7c1f..d08770f
+--- a/download
++++ b/download
+@@ -3,7 +3,7 @@
+ use Net::SSL ();
+ BEGIN {
+   $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0,
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use LWP::UserAgent;
+diff --git a/expanddeps b/expanddeps
+old mode 100755
+new mode 100644
+index 48116d8..04b9c20
+--- a/expanddeps
++++ b/expanddeps
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+@@ -10,7 +10,7 @@ use Build;
+ 
+ my ($dist, $rpmdeps, $archs, $configdir, $useusedforbuild, $installonly, $noinstall);
+ 
+-$configdir = ($::ENV{'BUILD_DIR'} || '/usr/lib/build') . '/configs';
++$configdir = ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build') . '/configs';
+ 
+ while (@ARGV)  {
+   if ($ARGV[0] eq '--dist') {
+diff --git a/getbinaryid b/getbinaryid
+old mode 100755
+new mode 100644
+index 55c57f6..8f06579
+--- a/getbinaryid
++++ b/getbinaryid
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+diff --git a/init_buildsystem b/init_buildsystem
+old mode 100755
+new mode 100644
+index 9fec7aa..21c5d4f
+--- a/init_buildsystem
++++ b/init_buildsystem
+@@ -13,7 +13,7 @@
+ # needed globals variables
+ #
+ export SRC
+-export BUILD_DIR=${BUILD_DIR:-/usr/lib/build}
++export BUILD_DIR=${BUILD_DIR:-/usr/libexec/suse-build}
+ 
+ export YAST_IS_RUNNING=instsys
+ 
+diff --git a/initvm.c b/initvm.c
+index 55686ea..f922eb4 100644
+--- a/initvm.c
++++ b/initvm.c
+@@ -54,9 +54,10 @@ const int n_fields = 8;
+ #define SYSFS_BINFMT_MISC_REG	"/proc/sys/fs/binfmt_misc/register"
+ #define SYSFS_BINFMT_MISC_STAT	"/proc/sys/fs/binfmt_misc/status"
+ 
+-/* /usr/lib/build/x paths are copied to /.build inside a virtual machine */
++/* /usr/libexec/suse-build/x paths are copied to /.build inside a virtual machine */
+ #define BINFMT_REGF_0		"/.build/qemu-reg"
+-#define BINFMT_REGF_1		"/usr/lib/build/qemu-reg"
++#define BINFMT_REGF_1		"/usr/libexec/suse-build/qemu-reg"
++#define BINFMT_REGF_2		"/usr/libexec/suse-build/qemu-reg"
+ #define BUILD			"/.build/build"
+ 
+ /* useful constant arrays */
+@@ -324,9 +325,13 @@ int main(int argc, char* argv[], char* env[])
+ 			fprintf(stderr, "%s: failed. Trying alternate binfmt file\n",
+ 				BINFMT_REGF_0);
+ 			if (!binfmt_register(BINFMT_REGF_1, SYSFS_BINFMT_MISC_REG)) {
+-				fprintf(stderr, "%s: binfmt registration failed\n",
++				fprintf(stderr, "%s: failed. Trying alternate binfmt file\n",
+ 					BINFMT_REGF_1);
+-				exit(1);
++				if (!binfmt_register(BINFMT_REGF_2, SYSFS_BINFMT_MISC_REG)) {
++					fprintf(stderr, "%s: binfmt registration failed\n",
++						BINFMT_REGF_2);
++					exit(1);
++				}
+ 			}
+ 		}
+ 	}
+diff --git a/mkdrpms b/mkdrpms
+old mode 100755
+new mode 100644
+index b3c13b3..11b929c
+--- a/mkdrpms
++++ b/mkdrpms
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, '/usr/lib/build';
++  unshift @INC, '/usr/libexec/suse-build';
+   unshift @INC, $::ENV{'BUILD_DIR'} if $::ENV{'BUILD_DIR'};
+ }
+ 
+diff --git a/order b/order
+old mode 100755
+new mode 100644
+index 2236b46..246b9fd
+--- a/order
++++ b/order
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use Build;
+@@ -9,7 +9,7 @@ use strict;
+ 
+ my ($dist, $archs, $configdir, $manifest);
+ 
+-$configdir = ($::ENV{'BUILD_DIR'} || '/usr/lib/build') . '/configs';
++$configdir = ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build') . '/configs';
+ 
+ while (@ARGV)  {
+   if ($ARGV[0] eq '--dist') {
+diff --git a/queryconfig b/queryconfig
+index f4d383c..bb1e018 100755
+--- a/queryconfig
++++ b/queryconfig
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+@@ -10,7 +10,7 @@ use Build;
+ 
+ my ($dist, $archs, $configdir, $debug, $type, $argument);
+ 
+-$configdir = ($::ENV{'BUILD_DIR'} || '/usr/lib/build') . '/configs';
++$configdir = ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build') . '/configs';
+ 
+ while (@ARGV)  {
+   if ($ARGV[0] eq '--dist') {
+diff --git a/spectool b/spectool
+old mode 100755
+new mode 100644
+index ef05859..24bd500
+--- a/spectool
++++ b/spectool
+@@ -116,7 +116,7 @@ the algorithm is prepended with colon to the check sum.
+ my $builddir;
+ 
+ BEGIN {
+-  $builddir = ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  $builddir = ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+   unshift @INC, $builddir;
+ }
+ 
+diff --git a/substitutedeps b/substitutedeps
+old mode 100755
+new mode 100644
+index 54e540c..d327c42
+--- a/substitutedeps
++++ b/substitutedeps
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ BEGIN {
+-  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/lib/build');
++  unshift @INC, ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build');
+ }
+ 
+ use strict;
+@@ -19,7 +19,7 @@ sub expand {
+ 
+ my ($dist, $buildroot, $rpmdeps, $archs, $configdir, $release, $changelog);
+ 
+-$configdir = ($::ENV{'BUILD_DIR'} || '/usr/lib/build') . '/configs';
++$configdir = ($::ENV{'BUILD_DIR'} || '/usr/libexec/suse-build') . '/configs';
+ 
+ while (@ARGV)  {
+   if ($ARGV[0] eq '--root') {
+diff --git a/test/common b/test/common
+index 45c0da2..86a062b 100644
+--- a/test/common
++++ b/test/common
+@@ -22,7 +22,7 @@ if [ -e ${0%/*}/config.local ]; then
+ 	. ${0%/*}/config.local
+ fi
+ 
+-: ${BUILD_DIR:=/usr/lib/build}
++: ${BUILD_DIR:=/usr/libexec/suse-build}
+ 
+ #if [ ! -e "$build_vm_img" ]; then
+ #	sudo dd if=/dev/zero of="$build_vm_img" bs=512 count=0 seek=$((build_vm_image_size*2*1024))

@@ -1,0 +1,31 @@
+diff -ru senken-0.3.0.orig/server/protocol.c senken-0.3.0/server/protocol.c
+--- senken-0.3.0.orig/server/protocol.c	2003-11-20 02:30:15.000000000 -0500
++++ senken-0.3.0/server/protocol.c	2014-10-30 11:04:39.831848871 -0400
+@@ -294,7 +294,7 @@
+     /*
+      * If transaction active just save this for later
+      */
+-    if (connection_txn_active) {
++    if (connection_txn_active(conn)) {
+ 	set_op_t *op = calloc(1, sizeof(set_op_t));
+ 	int r;
+ 
+diff -ru senken-0.3.0.orig/src/gtkhelp_reports.c senken-0.3.0/src/gtkhelp_reports.c
+--- senken-0.3.0.orig/src/gtkhelp_reports.c	2003-11-20 02:30:16.000000000 -0500
++++ senken-0.3.0/src/gtkhelp_reports.c	2014-10-30 11:06:43.795828908 -0400
+@@ -1,3 +1,4 @@
++#include <string.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdk.h>
+ 
+diff -ru senken-0.3.0.orig/src/main.c senken-0.3.0/src/main.c
+--- senken-0.3.0.orig/src/main.c	2003-11-20 02:30:16.000000000 -0500
++++ senken-0.3.0/src/main.c	2014-10-30 11:06:28.147336339 -0400
+@@ -25,6 +25,7 @@
+ #  include <config.h>
+ #endif
+ 
++#include <string.h>
+ #include <unistd.h>
+ #include <signal.h>
+ #include <gtk/gtk.h>

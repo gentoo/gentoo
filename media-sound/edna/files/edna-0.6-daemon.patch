@@ -1,0 +1,67 @@
+--- edna.py.orig	2007-01-27 18:49:16.000000000 +0000
++++ edna.py	2007-01-27 18:47:19.000000000 +0000
+@@ -36,7 +36,9 @@
+ import string
+ import os
+ import cgi
++import ctypes
+ import urllib
++import pwd
+ import socket
+ import re
+ import stat
+@@ -1149,7 +1151,7 @@
+       print '  if config-file is not specified, then edna.conf is used'
+       sys.exit(0)
+ 
+-def daemonize(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null',pname=''):
++def daemonize(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null', pname='', uid = None):
+     '''This forks the current process into a daemon.
+     The stdin, stdout, and stderr arguments are file names that
+     will be opened and be used to replace the standard file descriptors
+@@ -1159,6 +1161,11 @@
+     if it shares a file with stdout then interleaved output
+     may not appear in the order that you expect.
+     '''
++    # Rename process in /proc/<pid>/stat from python to edna
++    # (helps start-stop-daemon find us)
++    libc = ctypes.CDLL('/lib/libc.so.6')
++    libc.prctl(15, 'edna\0', 0, 0, 0)
++    
+     # Do first fork.
+     try: 
+         pid = os.fork() 
+@@ -1186,6 +1193,8 @@
+         sys.stderr.write("fork #2 failed: (%d) %s\n" % (e.errno, e.strerror)    )
+         sys.exit(1)
+     # Now I am a daemon!
++    # If specified change the process owner
++    if uid: os.setuid(uid)
+     # Redirect standard file descriptors.
+     si = open(stdin, 'r')
+     so = open(stdout, 'a+')
+@@ -1198,9 +1207,16 @@
+ if __name__ == '__main__':
+   fname = 'edna.conf'
+   daemon_mode=0
++  uid = os.getuid()
++  pidfile = '/var/run/edna.pid'
+   for a in sys.argv[1:]:
+     if a == "--daemon":
+       daemon_mode=1
++    elif a.startswith("--user"):
++      uname = a.split("=")[1].strip()
++      uid = pwd.getpwnam(uname)[2]
++    elif a.startswith("--pidfile"):
++      pidfile = a.split("=")[1].strip()
+     elif a == "--help" or a == "-h" or string.find(a, '--')==0:
+       usage()
+     else:
+@@ -1211,6 +1227,6 @@
+     raise SystemExit
+ 
+   if daemon_mode:
+-    daemonize('/dev/null', '/var/log/edna.log', '/var/log/edna.log', '/var/run/edna.pid')
++    daemonize(uid = uid, pname = pidfile)
+ 
+   run_server(fname)

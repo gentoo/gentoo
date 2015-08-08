@@ -1,0 +1,22 @@
+From 29f347c19cb7ad17c4b401e1d984fce8eafaaafa Mon Sep 17 00:00:00 2001
+From: Yorhel <git@yorhel.nl>
+Date: Tue, 7 Apr 2015 10:39:46 +0200
+Subject: shell.c: Include sys/wait.h
+
+Required for the W* macros on OpenBSD. Reported by Brian Callahan.
+
+diff --git a/src/shell.c b/src/shell.c
+index d601b5a..eb275cd 100644
+--- a/src/shell.c
++++ b/src/shell.c
+@@ -32,6 +32,7 @@
+ #include <ncurses.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <sys/wait.h>
+ 
+ void shell_draw() {
+   char *full_path;
+-- 
+cgit v0.10.1
+

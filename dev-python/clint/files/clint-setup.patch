@@ -1,0 +1,15 @@
+setup.py installs data files to /usr/ !!!??!!
+diff -ur clint-0.3.1.orig/setup.py clint-0.3.1/setup.py
+--- setup.py	2012-01-16 22:25:54.000000000 +0800
++++ setup.py	2014-10-11 12:20:29.174133572 +0800
+@@ -29,10 +29,6 @@
+     author='Kenneth Reitz',
+     author_email='me@kennethreitz.com',
+     url='https://github.com/kennethreitz/clint',
+-    data_files=[
+-        'README.rst',
+-        'HISTORY.rst',
+-    ],
+     packages= [
+         'clint',
+         'clint.textui',

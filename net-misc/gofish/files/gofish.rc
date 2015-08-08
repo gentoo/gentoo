@@ -1,0 +1,33 @@
+#!/sbin/runscript
+#
+# Startup script for the Gofish Gopher Server (for Gentoo Linux)
+#
+# config: /etc/conf.d/gofish
+##
+# use: rc-update add gofish default
+#
+
+opts="start stop"
+
+depend() {
+       need net
+}
+
+
+start() {
+       ebegin "Starting ${GOFISH_APP} "
+       start-stop-daemon --start --verbose --pidfile ${GOFISH_PIDFILE}  \
+           --exec  ${GOFISH_EXEC} -- ${GOFISH_START_OPTS}
+       eend $?
+}
+
+
+stop() {
+       ebegin "Stopping ${GOFISH_APP} "
+       start-stop-daemon --stop --quiet --pidfile  ${GOFISH_PIDFILE}  \
+           --exec ${GOFISH_EXEC} -- ${GOFISH_STOP_OPTS}
+       eend $?
+}
+
+
+

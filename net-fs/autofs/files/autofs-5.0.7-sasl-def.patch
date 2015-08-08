@@ -1,0 +1,43 @@
+diff --git a/modules/lookup_ldap.c b/modules/lookup_ldap.c
+index ce1e2e5..35a2106 100644
+--- a/modules/lookup_ldap.c
++++ b/modules/lookup_ldap.c
+@@ -28,9 +28,6 @@
+ #include <arpa/nameser.h>
+ #include <resolv.h>
+ #include <lber.h>
+-#ifdef HAVE_SASL
+-#include <libxml/tree.h>
+-#endif
+ 
+ #define MODULE_LOOKUP
+ #include "automount.h"
+@@ -38,6 +35,10 @@
+ #include "lookup_ldap.h"
+ #include "base64.h"
+ 
++#ifdef WITH_SASL
++#include <libxml/tree.h>
++#endif
++
+ #define MAPFMT_DEFAULT "sun"
+ 
+ #define MODPREFIX "lookup(ldap): "
+@@ -587,7 +588,7 @@ static LDAP *do_connect(unsigned logopt, const char *uri, struct lookup_context
+ {
+ 	LDAP *ldap;
+ 
+-#ifdef HAVE_SASL
++#ifdef WITH_SASL
+ 	if (ctxt->extern_cert && ctxt->extern_key) {
+ 		set_env(logopt, ENV_LDAPTLS_CERT, ctxt->extern_cert);
+ 		set_env(logopt, ENV_LDAPTLS_KEY, ctxt->extern_key);
+@@ -1389,7 +1390,7 @@ static void free_context(struct lookup_context *ctxt)
+ 		defaults_free_searchdns(ctxt->sdns);
+ 	if (ctxt->dclist)
+ 		free_dclist(ctxt->dclist);
+-#ifdef HAVE_SASL
++#ifdef WITH_SASL
+ 	if (ctxt->extern_cert)
+ 		free(ctxt->extern_cert);
+ 	if (ctxt->extern_key)

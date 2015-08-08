@@ -1,0 +1,132 @@
+--- a/src/Makefile.in	2010-04-12 04:39:43.000000000 +0200
+--- b/src/Makefile.in	2010-05-07 05:26:03.000000000 +0200
+@@ -135,8 +135,8 @@
+ # Dependencies for installing
+ #
+ 
+-daemon:
+-	cd mtserver; make
++daemon: $(UFDBOBJS)
++	cd mtserver; $(MAKE)
+ 
+ ufdbhttpd: ufdbhttpd.o httpserver.o ufdbbase.o ufdblib.o sgLog.o crypt.o
+ 	$(LINK) ufdbhttpd.o httpserver.o ufdbbase.o ufdblib.o sgLog.o crypt.o $(LIBS)
+@@ -235,6 +235,6 @@
+ 	$(RM) $(bindir)/ufdbhttpd
+ 
+ install.mt::
+-	cd mtserver ; make
++	cd mtserver ; $(MAKE)
+ 	$(INSTALL_PROGRAM) mtserver/ufdbguardd  $(bindir)/ufdbguardd
+ 	$(INSTALL_PROGRAM) mtserver/ufdbgclient $(bindir)/ufdbgclient
+@@ -272,8 +272,8 @@
+ 	$(RM) *~ *.bak core core.* *.log *.log.[0-9] *.error
+ 	$(RM) *.o y.tab.c y.tab.h ufdbGuard ufdbGenTable ufdbAnalyse ufdbPrintTable ufdbhttpd 
+ 	$(RM) ipv6 iptst rwtest lex.yy.c
+-	-@cd mtserver && make clean
+-	-@cd api 2>/dev/null && make clean
++	-@cd mtserver && $(MAKE) clean
++	-@cd api 2>/dev/null && $(MAKE) clean
+ 
+ realclean:: clean
+ 	@echo making $@ in `basename \`pwd\``
+@@ -286,11 +286,11 @@
+ distclean:: realclean
+ 	@echo making $@ in `basename \`pwd\``
+ 	$(RM) Makefile sg.h config.h ufdbUpdate ufdbConvertDB ufdbGuard.conf
+-	-cd mtserver ; make distclean
++	-cd mtserver ; $(MAKE) distclean
+ 
+ apidistclean: distclean
+ 	@echo making $@ in `basename \`pwd\``
+-	-cd api ; make distclean
++	-cd api ; $(MAKE) distclean
+ 
+ grab: ufdbGrab
+ 	./ufdbGrab $(cfgdir) $(logdir)
+@@ -532,25 +532,25 @@
+ 	$(CC) --version
+ 
+ g2953:
+-	make clean 
+-	CC=/usr/local/gcc/2.95.3/bin/gcc make -e $(MAKEFLAGS) ccversion all ufdbPrintTable
++	$(MAKE) clean 
++	CC=/usr/local/gcc/2.95.3/bin/gcc $(MAKE) -e $(MAKEFLAGS) ccversion all ufdbPrintTable
+ 
+ g344:
+-	make clean 
+-	CC=/usr/local/gcc/3.4.4/bin/gcc make -e $(MAKEFLAGS) ccversion all ufdbPrintTable
++	$(MAKE) clean 
++	CC=/usr/local/gcc/3.4.4/bin/gcc $(MAKE) -e $(MAKEFLAGS) ccversion all ufdbPrintTable
+ 
+ g401:
+-	make clean 
+-	CC=/usr/local/gcc/4.0.1/bin/gcc make -e $(MAKEFLAGS) ccversion all ufdbPrintTable
++	$(MAKE) clean 
++	CC=/usr/local/gcc/4.0.1/bin/gcc $(MAKE) -e $(MAKEFLAGS) ccversion all ufdbPrintTable
+ 
+ g411:
+-	make clean 
+-	CC=/usr/local/gcc/4.1.1/bin/gcc make -e $(MAKEFLAGS) ccversion all ufdbPrintTable
++	$(MAKE) clean 
++	CC=/usr/local/gcc/4.1.1/bin/gcc $(MAKE) -e $(MAKEFLAGS) ccversion all ufdbPrintTable
+ 
+ qinst:
+ 	/etc/init.d/squid stop
+ 	/etc/init.d/ufdb stop
+-	make install
++	$(MAKE) install
+ 	/etc/init.d/ufdb start
+ 	/etc/init.d/squid start
+ 
+--- a/src/mtserver/Makefile.in	2010-04-12 02:56:20.000000000 +0200
+--- b/src/mtserver/Makefile.in	2010-05-07 05:26:03.000000000 +0200
+@@ -48,10 +48,10 @@
+ 	$(LINK) ufdbgclient.o -L. -lufdbd    $(SOLARIS_LIBS)
+ 
+ ../lex.yy.o:
+-	cd .. ; make lex.yy.o
++	cd .. ; $(MAKE) lex.yy.o
+ 
+ ../y.tab.o:
+-	cd .. ; make y.tab.o
++	cd .. ; $(MAKE) y.tab.o
+ 
+ $(MYLIB): ../crypt.o ../lex.yy.o ../sgDiv.o ../sgLog.o ../ufdbLookup.o \
+           ../ufdblib.o ../y.tab.o ../ufdbbase.o 
+@@ -60,7 +60,7 @@
+ 	               ../ufdblib.o ../y.tab.o ../ufdbbase.o 
+ 
+ ptmalloc3/libptmalloc3.a:
+-	cd ptmalloc3 ; make linux-pthread
++	cd ptmalloc3 ; $(MAKE) linux-pthread
+ 
+ $(MYLIBSSL): ../ufdbchkport.o ../httpsQueue.o ../ufdbHashtable.o
+ 	-@rm -f $(MYLIBSSL)
+@@ -102,7 +102,7 @@
+ 	./ufdbgclient -p $(PORT) -l . -d "www.sex.com" 10.1.1.1 kees
+ 
+ ../../test/blacklist/domains.ufdb: ../../test/blacklist/domains
+-	cd ../../test ; make blacklist/domains.ufdb
++	cd ../../test ; $(MAKE) blacklist/domains.ufdb
+ 
+ LEAKOPTS= --leak-check=full --show-reachable=yes
+ LEAKOPTS=
+@@ -382,7 +382,7 @@
+ 	time ./ufdbgclient -p $(PORT) -l . < ../100000 > /dev/null 2>&1
+ 
+ tt:
+-	make tp3
++	$(MAKE) tp3
+ 	sleep 3
+ 	kill -HUP `ps -ef | grep ufdbguardd | grep -v grep | head -1 | awk '{ print $$2 }'`
+ 
+@@ -455,6 +455,6 @@
+ 
+ 
+ g411:	
+-	make clean
+-	CC=/usr/local/gcc/4.1.1/bin/gcc make -e $(MAKEFLAGS) all
++	$(MAKE) clean
++	CC=/usr/local/gcc/4.1.1/bin/gcc $(MAKE) -e $(MAKEFLAGS) all
+ 

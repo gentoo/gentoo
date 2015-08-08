@@ -1,0 +1,54 @@
+http://lists.mplayerhq.hu/pipermail/dvdnav-discuss/2012-March/001672.html
+
+use pkg-config for libdvdread by default rather than the ugly xxx-config scripts
+
+https://bugs.gentoo.org/410189
+
+hassle vapier@gentoo.org if this causes issues
+
+--- configure.ac	(revision 1243)
++++ configure.ac	(working copy)
+@@ -89,6 +89,7 @@ AC_PROG_CC
+ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
++PKG_PROG_PKG_CONFIG
+ 
+ dnl --------------------------------------------------------------
+ dnl Libtool
+@@ -185,15 +186,26 @@ AC_ARG_WITH([dvdread-config],
+   [AS_HELP_STRING([--with-dvdread-config=PROG],
+     [dvdread-config program to use @<:@default=from PATH@:>@])],
+   [DVDREAD_CONFIG="$withval"],
+-  [dnl User didn't specify program, search PATH
+-  AC_PATH_PROG([DVDREAD_CONFIG], [dvdread-config], [no])
+-  test "x$DVDREAD_CONFIG" = xno && \
+-    AC_MSG_ERROR([dvdread-config required to link with libdvdread])
+-  ])
+-DVDREAD_CFLAGS=`$DVDREAD_CONFIG --cflags` || \
+-  AC_MSG_ERROR([Could not get libdvdread CFLAGS from $DVDREAD_CONFIG])
+-DVDREAD_LIBS=`$DVDREAD_CONFIG --libs` || \
+-  AC_MSG_ERROR([Could not get libdvdread LIBS from $DVDREAD_CONFIG])
++  [DVDREAD_CONFIG=""])
++
++dnl by default, search pkg-config, and then fall back to dvdread-config
++DVDREAD_PKG_CONFIG="no"
++if test "x$DVDREAD_CONFIG" = "x"; then
++  PKG_CHECK_MODULES([DVDREAD], [dvdread],
++    [DVDREAD_PKG_CONFIG="yes"],
++    [dnl User didn't specify program, search PATH
++      AC_PATH_PROG([DVDREAD_CONFIG], [dvdread-config], [no])
++      test "x$DVDREAD_CONFIG" = xno && \
++      AC_MSG_ERROR([dvdread-config required to link with libdvdread])
++    ])
++fi
++if test "x$DVDREAD_PKG_CONFIG" != "xyes"; then
++  DVDREAD_CFLAGS=`$DVDREAD_CONFIG --cflags` || \
++    AC_MSG_ERROR([Could not get libdvdread CFLAGS from $DVDREAD_CONFIG])
++  DVDREAD_LIBS=`$DVDREAD_CONFIG --libs` || \
++    AC_MSG_ERROR([Could not get libdvdread LIBS from $DVDREAD_CONFIG])
++fi
++
+ AC_SUBST([DVDREAD_CFLAGS])
+ AC_SUBST([DVDREAD_LIBS])
+ 

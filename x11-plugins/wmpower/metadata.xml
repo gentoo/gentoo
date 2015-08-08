@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+wmpower is a Window Maker dock application
+allowing the user to graphically see (and set) the power management status of his laptop.
+It works with both APM and ACPI enabled kernels, has special support for Toshiba, Compal
+and Dell hardware, and allows you to dinamically set the frequency of your CPU(s) via CPUfreq.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wmpower</remote-id>
+	</upstream>
+</pkgmetadata>

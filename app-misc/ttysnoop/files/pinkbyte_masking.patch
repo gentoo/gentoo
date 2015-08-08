@@ -1,0 +1,41 @@
+--- ttysnoops.c	2009-08-13 17:11:30.705202250 +0400
++++ ttysnoops.c	2009-08-13 17:17:29.989201055 +0400
+@@ -18,6 +18,7 @@
+ 	v0.12d  8-4-98 Carl Declerck	- updated #includes a bit
+ 	   k26 28-5-00 Vinicius Anselmo - added sound alert (demoniac) created by Stas
+ 	   k26 31-5-04 Vinicius Anselmo - updated for unix98 pty support
++	   k26 13-8-09 Pinkbyte		- deleted fucking sound alert and "bye bye" message ;)
+ */
+ 
+ #include <sys/types.h>
+@@ -502,22 +503,6 @@
+ 	struct utmp utmp;
+ 	int ptyfd, servfd, len, n, sel, susp = 0;
+ 
+-	/* demoniac begin */
+-	
+-	StopHandle();
+-	
+-	if (InitSound()) /* play if we can */
+-	{
+-		DoSound(466, SLEN);	// A#4
+-		DoSound(622, SLEN);	// D#5
+-		DoSound(784, SLEN);	// G5
+-		DoSound(932, SLEN*2);	// A#5
+-		DoSound(784, SLEN);	// G5
+-		DoSound(932, SLEN*3);	// A#5
+-	}
+-	
+-	/* demoniac end */
+-	
+ 	if (!isatty(STDIN_FILENO))
+ 		errorf ("stdin is not a tty\n");
+ 
+@@ -660,7 +645,6 @@
+ 		{
+ 			if ((n = read(ptyfd, buff, BUFF_SIZE)) < 1)
+ 			{
+-				errorf ("bye bye\n");
+ 				exit (0);
+ 			}
+ 				

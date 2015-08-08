@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>rafaelmartins@gentoo.org</email>
+		<name>Rafael G. Martins</name>
+	</maintainer>
+	<maintainer>
+		<email>bugs@bergstroem.nu</email>
+		<name>Johan Bergström</name>
+		<description>Co-maintainer, CC on bugs.</description>
+	</maintainer>
+	<longdescription lang="en">Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a
+    pre-fork worker model ported from Ruby's Unicorn project. The Gunicorn
+    server is broadly compatible with various web frameworks, simply
+    implemented, light on server resources, and fairly speedy. </longdescription>
+	<upstream>
+		<remote-id type="pypi">gunicorn</remote-id>
+	</upstream>
+</pkgmetadata>

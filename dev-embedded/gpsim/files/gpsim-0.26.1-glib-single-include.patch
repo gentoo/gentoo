@@ -1,0 +1,13 @@
+http://gpsim.svn.sourceforge.net/viewvc/gpsim/trunk/src/bitlog.h?r1=2107&r2=2182
+
+--- trunk/src/bitlog.h	2010/06/05 06:41:12	2107
++++ trunk/src/bitlog.h	2012/01/03 02:54:49	2182
+@@ -25,7 +25,7 @@
+ 
+ // include the absolute minimum portion of GLIB to get the definitions
+ // for guint64, etc.
+-#include <glibconfig.h>
++#include <glib.h>
+ 
+ /**********************************************************************
+  * boolean event logging

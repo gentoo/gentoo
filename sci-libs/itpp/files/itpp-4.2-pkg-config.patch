@@ -1,0 +1,27 @@
+ configure.ac |    2 +-
+ itpp.pc.in   |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4f06171..d3d7b76 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -322,7 +322,7 @@ test "x$FFT_LIBS" != x && LIBS="$FFT_LIBS $LIBS"
+ CPPFLAGS="`echo \"$CPPFLAGS\" | sed -e 's/  */ /g' -e 's/^ //' -e 's/ $//'`"
+ LDFLAGS="`echo \"$LDFLAGS\" | sed -e 's/  */ /g' -e 's/^ //' -e 's/ $//'`"
+ LIBS="`echo \"$LIBS\" | sed -e 's/  */ /g' -e 's/^ //' -e 's/ $//'`"
+-LDLIBS="`echo \"$LDFLAGS $LIBS\" | sed -e 's/^ //' -e 's/ $//'`"
++LDLIBS="`echo \"$LIBS\" | sed -e 's/^ //' -e 's/ $//'`"
+ 
+ if test $enable_explicit_deps = yes; then
+   EXPLICIT_LIBS=" $LDLIBS" # the leading space is important here...
+diff --git a/itpp.pc.in b/itpp.pc.in
+index 4018865..48a9543 100644
+--- a/itpp.pc.in
++++ b/itpp.pc.in
+@@ -9,4 +9,4 @@ Version: @PACKAGE_VERSION@
+ URL: http://itpp.sourceforge.net/
+ Libs: -L${libdir} -l@PACKAGE@@EXPLICIT_LIBS@
+ Libs.private:@PRIVATE_LIBS@
+-Cflags: -I${includedir} @CXXFLAGS_OPT@
++Cflags: -I${includedir}

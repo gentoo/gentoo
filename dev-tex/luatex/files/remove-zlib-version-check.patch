@@ -1,0 +1,23 @@
+Let soname dictate the ABI and do not check for minor/micro which requires
+needless rebuilds after every zlib update. By Ulrich Müller.
+
+https://bugs.gentoo.org/show_bug.cgi?id=310487
+http://www.ntg.nl/pipermail/dev-luatex/2012-July/004534.html
+
+--- luatex-beta-0.70.1-orig/source/texk/web2c/luatexdir/luazlib/lzlib.c
++++ luatex-beta-0.70.1/source/texk/web2c/luatexdir/luazlib/lzlib.c
+@@ -549,14 +549,6 @@
+ 
+     /* ====================================================================== */
+ 
+-    /* make sure header and library version are consistent */
+-    const char* version = zlibVersion();
+-    if (strncmp(version, ZLIB_VERSION, 5))
+-    {
+-        lua_pushfstring(L, "zlib library version does not match - header: %s, library: %s", ZLIB_VERSION, version);
+-        lua_error(L);
+-    }
+-
+     /* create new metatable for zlib compression structures */
+     luaL_newmetatable(L, ZSTREAMMETA);
+     lua_pushliteral(L, "__index");

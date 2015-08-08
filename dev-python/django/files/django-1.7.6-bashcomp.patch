@@ -1,0 +1,34 @@
+ extras/django_bash_completion | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
+
+diff --git a/extras/django_bash_completion b/extras/django_bash_completion
+index 3e02d8e..5a33938 100755
+--- a/extras/django_bash_completion
++++ b/extras/django_bash_completion
+@@ -37,7 +37,7 @@ _django_completion()
+                    COMP_CWORD=$COMP_CWORD \
+                    DJANGO_AUTO_COMPLETE=1 $1 ) )
+ }
+-complete -F _django_completion -o default django-admin.py manage.py django-admin
++complete -F _django_completion -o default django-admin.py django-admin
+ 
+ _python_django_completion()
+ {
+@@ -55,17 +55,3 @@ _python_django_completion()
+         fi
+     fi
+ }
+-
+-# Support for multiple interpreters.
+-unset pythons
+-if command -v whereis &>/dev/null; then
+-    python_interpreters=$(whereis python | cut -d " " -f 2-)
+-    for python in $python_interpreters; do
+-        pythons="${pythons} ${python##*/}"
+-    done
+-    pythons=$(echo $pythons | tr " " "\n" | sort -u | tr "\n" " ")
+-else
+-    pythons=python
+-fi
+-
+-complete -F _python_django_completion -o default $pythons

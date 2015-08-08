@@ -1,0 +1,59 @@
+From 86f740420cb12cf071f7dc7981330353e258931a Mon Sep 17 00:00:00 2001
+From: Andrew Svetlov <andrew.svetlov@gmail.com>
+Date: Sun, 22 Jun 2014 15:19:27 +0300
+Subject: [PATCH] Don't install gaiohttp if python < 3.3
+
+---
+ setup.py | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index be54106..f538734 100644
+--- a/setup.py
++++ b/setup.py
+@@ -5,12 +5,15 @@
+
+
+ import os
+-from setuptools import setup, find_packages, Command
++from setuptools import setup, Command
+ import sys
+
+ from gunicorn import __version__
+
+
++ASYNCIO_COMPAT = sys.version_info >= (3, 3)
++
++
+ CLASSIFIERS = [
+     'Development Status :: 4 - Beta',
+     'Environment :: Other Environment',
+@@ -65,6 +68,17 @@ def run(self):
+
+ REQUIREMENTS = []
+
++py_modules = []
++
++for root, folders, files in os.walk('gunicorn'):
++    for f in files:
++        if f.endswith('.py') and (ASYNCIO_COMPAT or f != 'gaiohttp.py'):
++            full = os.path.join(root, f[:-3])
++            parts = full.split(os.path.sep)
++            modname = '.'.join(parts)
++            py_modules.append(modname)
++
++
+ setup(
+     name = 'gunicorn',
+     version = __version__,
+@@ -78,7 +92,7 @@ def run(self):
+
+     classifiers = CLASSIFIERS,
+     zip_safe = False,
+-    packages = find_packages(exclude=['examples', 'tests']),
++    py_modules = py_modules,
+     include_package_data = True,
+
+     tests_require = tests_require,
+--
+1.9.3

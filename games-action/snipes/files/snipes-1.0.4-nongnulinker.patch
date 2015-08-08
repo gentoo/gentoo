@@ -1,0 +1,20 @@
+--- Makefile.old	2011-12-18 17:24:28.795315064 +0100
++++ Makefile	2011-12-18 17:24:59.005311478 +0100
+@@ -33,7 +33,7 @@
+ IMGOBJ = $(OIMGS:%.pbm=$(INTERMEDIATE)/%.o)
+ 
+ CFLAGS += `sdl-config --cflags` -I$(INTERMEDIATE)
+-LDLIBS += `sdl-config --libs`
++LDLIBS += `sdl-config --libs` -lm
+ LDFLAGS += -Wl,-z,noexecstack
+ 
+ 
+@@ -52,7 +52,7 @@
+ 
+ # Why does this result in an executable stack? Can I run my bitmaps? Do bitmaps behave like Conway's game of life, when run?
+ $(INTERMEDIATE)/%.o: $(IMG)/%.pbm
+-	$(LD) -r -b binary -z noexecstack -z really_noexecstack -z pretty_please_noexecstack -o $@ $<
++	$(LD) -r -b binary -z noexecstack -o $@ $<
+ 
+ snipes.6: snipes.6.in
+ 	sed s/'`VERSION`'/`cat VERSION`/ < $< > $@

@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -16,6 +16,7 @@
+ dnl Checks for libraries.
+ dnl Replace `main' with a function in -lncurses:
+ AC_CHECK_LIB(ncurses, initscr)
++AC_SEARCH_LIBS(halfdelay, tinfo)
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC

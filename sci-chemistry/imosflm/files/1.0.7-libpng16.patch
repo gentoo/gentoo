@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/467036
+
+--- src/contrast.tcl
++++ src/contrast.tcl
+@@ -3,7 +3,7 @@
+ 
+ package require palette
+ 
+-image create photo ::img::pixel_count_v -data "iVBORw0KGgoAAAANSUhEUgAAAA4AAABCCAIAAAGft0AHAAAABGdBTUEAAYagMeiWXwAAASFJREFUKJGtVFEWhCAINJ9H4f4n4jD7YauAA1jGT2EwAxNyMXMppZZu3bv6Q3t3iH7ob3fOPz3wdLoi7y8V1SOZp0NE02Hm7quc6VSVaokFKzMD8qKUUd0tyEQ0z1DchNQaud+JCHclzeIDOUCle7EjcA/XPZU4Klb9y2GDY68LVe8YiAihmXT052G9SQ0+m4yN2J7EZqrvnZpheMdGRLnq5/ViddTusPeux9o5G7fdsskrV9ej8rw3I80LhNUUgqmvwCY8izozZcvo5tGt1owfoGJhoEVtgcXg2da2gJa0JYESseRJ8gvyOYSGlxUkScYFoBoJB+RZrR+H2sWx2vEQrnv0pa4HYkFqF7UHrefRdjE5zQQFAp/Nqwf8XNePZ+AHq5sOPlXtupMAAAAASUVORK5CYII="
++image create photo ::img::pixel_count_v -data "iVBORw0KGgoAAAANSUhEUgAAAA4AAABCCAIAAAGft0AHAAAABGdBTUEAAYagMeiWXwAAASFJREFUeJytVFEWhCAINJ9H4f4n4jD7YauAA1jGT2EwAxNyMXMppZZu3bv6Q3t3iH7ob3fOPz3wdLoi7y8V1SOZp0NE02Hm7quc6VSVaokFKzMD8qKUUd0tyEQ0z1DchNQaud+JCHclzeIDOUCle7EjcA/XPZU4Klb9y2GDY68LVe8YiAihmXT052G9SQ0+m4yN2J7EZqrvnZpheMdGRLnq5/ViddTusPeux9o5G7fdsskrV9ej8rw3I80LhNUUgqmvwCY8izozZcvo5tGt1owfoGJhoEVtgcXg2da2gJa0JYESseRJ8gvyOYSGlxUkScYFoBoJB+RZrR+H2sWx2vEQrnv0pa4HYkFqF7UHrefRdjE5zQQFAp/Nqwf8XNePZ+AHq5sOPv4fGP4AAAAASUVORK5CYII="
+ 
+ class Contrast {
+     inherit Palette

@@ -1,0 +1,13 @@
+diff --git a/src/main/Makefile b/src/main/Makefile
+index 74530fa..102d1b7 100644
+--- a/src/main/Makefile
++++ b/src/main/Makefile
+@@ -22,7 +22,7 @@ SRC = $(OBJ:.o=.c)
+ default: $(PROGRAM)
+ 
+ $(PROGRAM): $(OBJ) $(LIBS) $(SGLIB) $(TOOLSLIB)
+-	$(CC) -o $@ $(CFLAGS) $(OBJ) $(LIBS) $(SGLIB) $(TOOLSLIB) $(SYSLIB)
++	$(CC) $(CFLAGS) ${LDFLAGS} -o $@ $(OBJ) $(LIBS) $(SGLIB) $(TOOLSLIB) $(SYSLIB)
+ 
+ clean:
+ 	rm -f $(OBJ) $(PROGRAM) core *.ps

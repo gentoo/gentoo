@@ -1,0 +1,20 @@
+--- src/date.cpp
++++ src/date.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <iomanip>
+ #include <cstdlib>
++#include <cstdio>
+ #include "date.h"
+ #include "texts.h"
+ 
+--- src/filehelper.cpp
++++ src/filehelper.cpp
+@@ -23,6 +23,7 @@
+ #include "filehelper.h"
+ #include "error.h"
+ #include <vector>
++#include <cstdio>
+ using namespace std;
+ 
+ #ifdef WIN32

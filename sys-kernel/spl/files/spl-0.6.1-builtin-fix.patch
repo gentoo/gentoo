@@ -1,0 +1,28 @@
+From 991857cac5929fa149820722b8e8cd90f874670c Mon Sep 17 00:00:00 2001
+From: Matthew Thode <mthode@mthode.org>
+Date: Fri, 21 Jun 2013 14:55:07 -0400
+Subject: [PATCH] Copy spl.release.in to kernel dir
+
+Required when compiling ZFS in the kernel.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #253
+---
+ copy-builtin | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/copy-builtin b/copy-builtin
+index 3277270..cd98b7a 100755
+--- a/copy-builtin
++++ b/copy-builtin
+@@ -33,6 +33,7 @@ rm -rf "$KERNEL_DIR/include/spl" "$KERNEL_DIR/spl"
+ cp --recursive include "$KERNEL_DIR/include/spl"
+ cp --recursive module "$KERNEL_DIR/spl"
+ cp spl_config.h "$KERNEL_DIR/"
++cp spl.release.in "$KERNEL_DIR/"
+ 
+ adjust_obj_paths()
+ {
+-- 
+1.8.1.6
+

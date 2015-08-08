@@ -1,0 +1,70 @@
+commit 24e6f45408083745080ff2f3710f58209041113c
+Author: Luite Stegeman <stegeman@gmail.com>
+Date:   Sun Dec 28 21:33:22 2014 +0100
+
+    updates for GHC 7.10 and Template Haskell 2.10
+
+diff --git a/haskell-src-meta.cabal b/haskell-src-meta.cabal
+index de6a022..42d9619 100644
+--- a/haskell-src-meta.cabal
++++ b/haskell-src-meta.cabal
+@@ -18,14 +18,14 @@ description:        The translation from haskell-src-exts abstract syntax
+ extra-source-files: ChangeLog README examples/*.hs
+ 
+ library
+-  build-depends:   base >= 4.2 && < 4.8,
++  build-depends:   base >= 4.2 && < 4.9,
+                    haskell-src-exts == 1.16.*,
+                    pretty >= 1.0 && < 1.2,
+                    syb >= 0.1 && < 0.5,
+                    th-orphans >= 0.5 && < 0.9
+ 
+   if impl(ghc >= 7.4)
+-    Build-depends: template-haskell >= 2.7 && < 2.10
++    Build-depends: template-haskell >= 2.7 && < 2.11
+   else
+     Build-depends: template-haskell >= 2.4 && < 2.7,
+                    uniplate >= 1.3 && < 1.7
+diff --git a/src/Language/Haskell/Meta/Syntax/Translate.hs b/src/Language/Haskell/Meta/Syntax/Translate.hs
+index 189d32e..36a08f1 100644
+--- a/src/Language/Haskell/Meta/Syntax/Translate.hs
++++ b/src/Language/Haskell/Meta/Syntax/Translate.hs
+@@ -384,9 +384,15 @@ a .->. b = AppT (AppT ArrowT a) b
+ toCxt :: Hs.Context -> Cxt
+ toCxt = fmap toPred
+  where
++#if MIN_VERSION_template_haskell(2,10,0)
++  toPred (Hs.ClassA n ts) = foldl' AppT (ConT (toName n)) (fmap toType ts)
++  toPred (Hs.InfixA t1 n t2) = foldl' AppT (ConT (toName n)) (fmap toType [t1,t2])
++  toPred (Hs.EqualP t1 t2) = foldl' AppT EqualityT (fmap toType [t1,t2])
++#else
+   toPred (Hs.ClassA n ts) = ClassP (toName n) (fmap toType ts)
+   toPred (Hs.InfixA t1 n t2) = ClassP (toName n) (fmap toType [t1, t2])
+   toPred (Hs.EqualP t1 t2) = EqualP (toType t1) (toType t2)
++#endif
+   toPred a@Hs.IParam{} = noTH "toCxt" a
+ 
+ foldAppT :: Type -> [Type] -> Type
+diff --git a/src/Language/Haskell/Meta/Utils.hs b/src/Language/Haskell/Meta/Utils.hs
+index 36f7e96..d194f3e 100644
+--- a/src/Language/Haskell/Meta/Utils.hs
++++ b/src/Language/Haskell/Meta/Utils.hs
+@@ -166,6 +166,9 @@ renameT env new (ForallT ns cxt t) =
+     unVarT (VarT n) = PlainTV n
+     renamePreds = renameThings renamePred
+ 
++#if MIN_VERSION_template_haskell(2,10,0)
++    renamePred = renameT
++#else
+     renamePred env new (ClassP n ts) = let
+         (ts', env', new') = renameTs env new [] ts
+       in (ClassP (normaliseName n) ts', env', new')
+@@ -174,7 +177,7 @@ renameT env new (ForallT ns cxt t) =
+         (t1', env1, new1) = renameT env new t1
+         (t2', env2, new2) = renameT env1 new1 t2
+       in (EqualP t1' t2', env2, new2)
+-
++#endif
+ 
+ -- | Remove qualification, etc.
+ normaliseName :: Name -> Name

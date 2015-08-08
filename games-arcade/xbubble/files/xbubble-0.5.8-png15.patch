@@ -1,0 +1,20 @@
+--- src/loadpng.c.old	2011-09-14 09:58:40.503566961 +0200
++++ src/loadpng.c	2011-09-14 10:03:39.708531447 +0200
+@@ -73,7 +73,7 @@
+     return NULL;
+   }
+   /* libpng does a longjmp here when it encounters an error */
+-  if ( setjmp( png_ptr->jmpbuf ) ) {
++  if ( setjmp( png_jmpbuf(png_ptr) ) ) {
+     png_destroy_read_struct( &png_ptr, &info_ptr, NULL);
+     fclose(fd);
+     return NULL;
+@@ -95,7 +95,7 @@
+     png_set_gray_to_rgb(png_ptr);
+ 
+   /* detect alpha layer */
+-  if (( info_ptr->color_type & PNG_COLOR_MASK_ALPHA )||
++  if (( png_get_color_type(png_ptr, info_ptr) & PNG_COLOR_MASK_ALPHA )||
+       ( png_get_valid( png_ptr, info_ptr, PNG_INFO_tRNS )))
+     *has_alpha = 1;
+   else

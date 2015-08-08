@@ -1,0 +1,12 @@
+diff -urN wxmacmolplt-7.4.2.orig/configure.ac wxmacmolplt-7.4.2/configure.ac
+--- wxmacmolplt-7.4.2.orig/configure.ac	2010-12-05 02:48:29.000000000 +0300
++++ wxmacmolplt-7.4.2/configure.ac	2010-12-06 19:30:24.000000000 +0300
+@@ -20,7 +20,7 @@
+       ;;
+    *)
+       HOST=LINUX
+-      LIBGL="-lGL -lGLU"
++      LIBGL=`pkg-config --libs glu glew`
+       ;;
+ esac
+ AM_CONDITIONAL(HOST_IS_MSW, [test "x$HOST" == xMSW])

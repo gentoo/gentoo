@@ -1,0 +1,29 @@
+diff -ru libspectre-0.2.0.orig/libspectre/spectre-utils.c libspectre-0.2.0/libspectre/spectre-utils.c
+--- libspectre-0.2.0.orig/libspectre/spectre-utils.c	2008-05-06 08:35:07 +0200
++++ libspectre-0.2.0/libspectre/spectre-utils.c	2008-05-06 08:49:51 +0200
+@@ -148,6 +148,17 @@
+ spectre_strdup_vprintf (const char *format,
+ 			va_list     args)
+ {
++#ifdef __INTERIX
++	/* no [v]asprintf here, so we need to do something else. */
++	char * string = NULL;
++	char buf[524288];
++
++	if(vsprintf(buf, format, args) < 0)
++		return NULL;
++	
++	string = strdup(buf);
++	return string;
++#else
+ 	char *string = NULL;
+ 	int len = vasprintf (&string, format, args);
+ 	
+@@ -155,6 +166,7 @@
+ 		string = NULL;
+ 
+ 	return string;
++#endif
+ }
+ 
+ char *

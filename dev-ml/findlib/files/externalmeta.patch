@@ -1,0 +1,13 @@
+Index: findlib-1.5.5/configure
+===================================================================
+--- findlib-1.5.5.orig/configure
++++ findlib-1.5.5/configure
+@@ -515,7 +515,7 @@ fi
+ 
+ # Generate the META files now.
+ 
+-l="$ldbm dynlink graphics num num-top str threads unix stdlib bigarray $llabltk $lcamlp4 $lobuild $lcomplibs $lbytes"
++l="$ldbm dynlink graphics num num-top str threads unix stdlib bigarray $lobuild $lcomplibs $lbytes"
+ 
+ for dir in site-lib-src/*; do
+     # We do not really know if $dir is a directory.

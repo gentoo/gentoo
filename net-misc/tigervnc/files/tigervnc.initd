@@ -1,0 +1,73 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -n "${DISPLAYS}" ]; then
+		if [ $1 = "start" ]; then
+			local user
+			for user in $DISPLAYS; do
+				if eval [ ! -f "~${user%%:*}/.vnc/passwd" ]; then
+					eerror "There are no passwords defined for user ${user%%:*}."
+					return 1
+				elif [ -e "/tmp/.X11-unix/X${user##*:}" ]; then
+					eerror "Display :${user##*:} appears to be already in use because of /tmp/.X11-unix/X${user##*:}"
+					eerror "Remove this file if there is no X server $HOSTNAME:${user##*:}"
+					return 1
+				elif [ -e "/tmp/.X${user##*:}-lock" ]; then
+					eerror "Display :${user##*:} appears to be already in use because of /tmp/.X${user##*:}-lock"
+					eerror "Remove this file if there is no X server $HOSTNAME:${user##*:}"
+					return 1
+				fi
+			done
+		fi
+		return 0
+	else
+		eerror 'Please define $DISPLAYS in /etc/conf.d/tigervnc'
+		return 1
+	fi
+}
+
+start() {
+	checkconfig start || return 1
+	ebegin "Starting TigerVNC server"
+	for user in $DISPLAYS; do
+		usrname=${user%%:*}
+		usropts=VNC_OPTS_${usrname}
+		usrdisp=${user##*:}
+		usrvar=$usropts"["$usrdisp"]"
+		[ -z ${!usrvar} ] && vnc_opts=$VNC_OPTS || vnc_opts=${!usrvar}
+
+		# A user may have an invalid shell, so we default to /bin/sh if its the case
+		if [ -x /usr/bin/getent ] ; then
+			usrshell=`getent passwd ${user%%:*} | cut -d: -f 7`
+			case "$usrshell" in
+				*/bash|*/ksh|*/sh|*/csh|*/tcsh) ;;          
+				*) shell="-s /bin/sh" ;;
+			esac
+			echo $usrshell $shell
+		fi
+
+		su ${shell} ${user%%:*} -c "source /etc/profile && cd ~${user%%:*} && vncserver :${user##*:} $vnc_opts" &>/dev/null
+	done
+	eend $?
+}
+
+stop() {
+	checkconfig stop || return 2
+	ebegin "Stopping TigerVNC server"
+	for user in $DISPLAYS; do
+		su -s /bin/sh ${user%%:*} -c "vncserver -kill :${user##*:}" &>/dev/null
+	done
+	eend $?
+}
+
+restart() {
+        svc_stop
+        svc_start
+}

@@ -1,0 +1,31 @@
+From 35469116fbf0b398d748f8116e4dcc8bdaee12c7 Mon Sep 17 00:00:00 2001
+From: Jon Nordby <jononor@gmail.com>
+Date: Thu, 12 Apr 2012 12:10:05 +0000
+Subject: gobject-introspection: Fix build after 0.2.x version bump
+
+Remove hardcoding of version numbers so that this does
+not happen again.
+---
+(limited to 'gegl/Makefile.am')
+
+diff --git a/gegl/Makefile.am b/gegl/Makefile.am
+index aef4c33..43010ce 100644
+--- a/gegl/Makefile.am
++++ b/gegl/Makefile.am
+@@ -118,10 +118,10 @@ introspection_sources = \
+ INCLUDES = $(AM_CFLAGS) $(AM_CPPFLAGS)
+ 
+ Gegl-@GEGL_API_VERSION@.gir: libgegl-@GEGL_API_VERSION@.la Makefile
+-Gegl_0_1_gir_INCLUDES = GObject-2.0 GLib-2.0 Babl-0.1
+-Gegl_0_1_gir_CFLAGS = $(INCLUDES)
+-Gegl_0_1_gir_LIBS = libgegl-@GEGL_API_VERSION@.la
+-Gegl_0_1_gir_FILES = $(introspection_sources)
++Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_INCLUDES = GObject-2.0 GLib-2.0 Babl-0.1
++Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_CFLAGS = $(INCLUDES)
++Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_LIBS = libgegl-@GEGL_API_VERSION@.la
++Gegl_@GEGL_MAJOR_VERSION@_@GEGL_MINOR_VERSION@_gir_FILES = $(introspection_sources)
+ INTROSPECTION_GIRS += Gegl-@GEGL_API_VERSION@.gir
+ 
+ girdir = $(datadir)/gir-1.0
+--
+cgit v0.9.1

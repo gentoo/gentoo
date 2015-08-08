@@ -1,0 +1,34 @@
+From 60df86a6fbc0f5893fff182b4308c2ee4d679569 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Wed, 10 Jun 2015 12:03:54 +0100
+Subject: [PATCH] embed: Use the GDK visual from Clutter
+
+Instead of relying on the widget one. This is similar to what we do when
+running with the X11 backend.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=747489
+---
+ clutter-gtk/gtk-clutter-embed.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/clutter-gtk/gtk-clutter-embed.c b/clutter-gtk/gtk-clutter-embed.c
+index 64cc8b6..80b5839 100644
+--- a/clutter-gtk/gtk-clutter-embed.c
++++ b/clutter-gtk/gtk-clutter-embed.c
+@@ -327,6 +327,13 @@ gtk_clutter_embed_realize (GtkWidget *widget)
+   gint attributes_mask;
+   gint border_width;
+ 
++#if defined(CLUTTER_WINDOWING_GDK)
++  if (clutter_check_windowing_backend (CLUTTER_WINDOWING_GDK))
++    {
++      GdkVisual *visual = clutter_gdk_get_visual ();
++      gtk_widget_set_visual (widget, visual);
++    }
++#endif
+ #if defined(GDK_WINDOWING_X11) && defined(CLUTTER_WINDOWING_X11)
+   if (clutter_check_windowing_backend (CLUTTER_WINDOWING_X11))
+     {
+-- 
+2.4.3
+

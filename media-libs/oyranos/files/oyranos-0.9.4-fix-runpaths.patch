@@ -1,0 +1,121 @@
+From b8f4a5fe0cea02878de106f5d02751e922438275 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Wed, 3 Apr 2013 10:01:04 +0200
+Subject: [PATCH 1/1] * [build]: fix has insecure RUNPATHs
+
+https://sourceforge.net/tracker/?func=detail&atid=879553&aid=3609840&group_id=177017
+
+2013-04-03: backport to oyranos-0.9.4:
+	merged 1-line change from commit 5b63d318e53ae8b8f3a0ccb166c97acf6103caac
+
+---
+ CMakeLists.txt                     |    2 +-
+ src/examples/CMakeLists.txt        |   26 ++++++++++++++++++++++++++
+ src/examples/oforms/CMakeLists.txt |   28 ++++------------------------
+ src/tools/CMakeLists.txt           |    2 +-
+ 4 files changed, 32 insertions(+), 26 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f24965c..6e9c8fb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,7 +10,7 @@ SET (OYRANOS_DEVEL_MONTH 01)
+ SET (OYRANOS_DEVEL_YEAR 2013)
+ 
+ SET (PACKAGE_NAME "oyranos")
+-set (PACKAGE_DESCRIPTION "Oyranos is a Colour Management System (CMS) on operating system level. It allows to match predictably input device colours to output device colours across supporting applications. One goal is to make colour management useful for all users in a automated fashion and regardless of any technical knowledge.")
++SET (PACKAGE_DESCRIPTION "Oyranos is a Colour Management System (CMS) on operating system level. It allows to match predictably input device colours to output device colours across supporting applications. One goal is to make colour management useful for all users in a automated fashion and regardless of any technical knowledge.")
+ 
+ SET( OY_CMMSUBPATH     "colour/modules" )
+ SET( OY_METASUBPATH    "${PACKAGE_NAME}" )
+diff --git a/src/examples/CMakeLists.txt b/src/examples/CMakeLists.txt
+index dfe807c..4adfdc9 100644
+--- a/src/examples/CMakeLists.txt
++++ b/src/examples/CMakeLists.txt
+@@ -60,4 +60,30 @@ IF( FLTK_FOUND )
+   INSTALL (TARGETS oyranos-config-fltk DESTINATION bin)
+ ENDIF()
+ 
++
+ ADD_SUBDIRECTORY( oforms )
++
++# oFORMS for a Oyranos CLI renderer and parser
++ADD_EXECUTABLE( oyranos-xforms oforms/oyranos_xforms.c )
++TARGET_LINK_LIBRARIES( oyranos-xforms
++                  ${OY_OFORMS_LIB} oyranos ${EXTRA_LIBS} )
++#INSTALL (TARGETS oyranos-xforms DESTINATION bin)
++
++# oFORMS for a Oyranos FLTK renderer and parser
++IF( FLTK_FOUND )
++  ADD_EXECUTABLE( oyranos-xforms-fltk
++                  oforms/oyranos_forms_fltk.cxx
++                  oforms/oyranos_widgets_fltk.cxx
++                  oforms/oyranos_xforms_fltk.cxx
++                )
++  TARGET_LINK_LIBRARIES ( oyranos-xforms-fltk oyranos ${EXTRA_LIBS}
++                  ${OY_OFORMS_LIB} ${FLTK_LIBRARIES} )
++  #INSTALL (TARGETS oyranos-xforms-fltk DESTINATION bin)
++ENDIF()
++
++# oFORMS for a Oyranos module generation
++ADD_EXECUTABLE( oyranos-xforms-modules oforms/oyranos_xforms_modules.c )
++TARGET_LINK_LIBRARIES( oyranos-xforms-modules
++             oyranos ${OY_OFORMS_LIB} ${EXTRA_LIBS} )
++INSTALL (TARGETS oyranos-xforms-modules DESTINATION bin)
++
+diff --git a/src/examples/oforms/CMakeLists.txt b/src/examples/oforms/CMakeLists.txt
+index 4d248ec..c0ff965 100644
+--- a/src/examples/oforms/CMakeLists.txt
++++ b/src/examples/oforms/CMakeLists.txt
+@@ -1,31 +1,11 @@
+ #oFORMS basics
+-SET( OY_OFORMS_LIB ${PACKAGE_NAME}_forms_cmd_line )
++SET( OY_OFORMS_LIB ${PACKAGE_NAME}_forms_cmd_line-static )
++SET( OY_OFORMS_LIB ${OY_OFORMS_LIB} PARENT_SCOPE )
+ ADD_LIBRARY( ${OY_OFORMS_LIB}
+-             STATIC ${OY_OFORMS_LIB}.c )
++             STATIC ${PACKAGE_NAME}_forms_cmd_line.c )
+ TARGET_LINK_LIBRARIES ( ${OY_OFORMS_LIB} oyranos ${EXTRA_LIBS} )
+ 
+-# oFORMS for a Oyranos CML renderer and parser
+-ADD_EXECUTABLE( ../oyranos-xforms oyranos_xforms.c )
+-TARGET_LINK_LIBRARIES( ../oyranos-xforms
+-             oyranos ${OY_OFORMS_LIB} ${EXTRA_LIBS} )
+-#INSTALL (TARGETS oyranos-xforms DESTINATION bin)
++MESSAGE( "-- OY_OFORMS_LIB: ${OY_OFORMS_LIB}" )
+ 
+-# oFORMS for a Oyranos FLTK renderer and parser
+-IF( FLTK_FOUND )
+-  ADD_EXECUTABLE( ../oyranos-xforms-fltk
+-                  oyranos_forms_fltk.cxx
+-                  oyranos_widgets_fltk.cxx
+-                  oyranos_xforms_fltk.cxx
+-                )
+-  TARGET_LINK_LIBRARIES ( ../oyranos-xforms-fltk oyranos ${EXTRA_LIBS}
+-                 ${FLTK_LIBRARIES} )
+-  #INSTALL (TARGETS oyranos-xforms-fltk DESTINATION bin)
+-ENDIF()
+-
+-# oFORMS for a Oyranos module generation
+-ADD_EXECUTABLE( ../oyranos-xforms-modules oyranos_xforms_modules.c )
+-TARGET_LINK_LIBRARIES( ../oyranos-xforms-modules
+-             oyranos ${OY_OFORMS_LIB} ${EXTRA_LIBS} )
+-INSTALL (TARGETS ../oyranos-xforms-modules DESTINATION bin)
+ INSTALL (FILES ./oyranos-xforms-modules.1 DESTINATION share/man/man1 )
+ 
+diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
+index cb23ace..3b2572a 100644
+--- a/src/tools/CMakeLists.txt
++++ b/src/tools/CMakeLists.txt
+@@ -30,7 +30,7 @@ ENDIF()
+ 
+ # colour conversion
+ ADD_EXECUTABLE( oyranos-icc "${CMAKE_CURRENT_SOURCE_DIR}/oyranos_convert.c" )
+-TARGET_LINK_LIBRARIES( oyranos-icc oyranos ${EXTRA_LIBS} )
++TARGET_LINK_LIBRARIES( oyranos-icc oyranos ${EXTRA_LIBS} oyranos_forms_cmd_line-static )
+ INSTALL (TARGETS oyranos-icc DESTINATION bin)
+ 
+ ADD_SUBDIRECTORY (qcmsevents)
+-- 
+1.5.6.5
+

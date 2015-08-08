@@ -1,0 +1,36 @@
+From a7c1cdd6f69a1b91a95361359e49494b4ed88701 Mon Sep 17 00:00:00 2001
+From: Bastian Kleineidam <bastian.kleineidam@web.de>
+Date: Tue, 10 Dec 2013 20:56:26 +0100
+Subject: [PATCH] Check for help files.
+
+---
+ linkcheck/configuration/__init__.py | 6 ++++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/linkcheck/configuration/__init__.py b/linkcheck/configuration/__init__.py
+index 3b72499..f40f285 100644
+--- a/linkcheck/configuration/__init__.py
++++ b/linkcheck/configuration/__init__.py
+@@ -96,7 +96,8 @@ def get_share_file (devel_dir, filename):
+     @param filename: filename to search for
+     @ptype filename: string
+     @return: the found filename or None
+-    @rtype: string or None
++    @rtype: string
++    @raises: ValueError if not found
+     """
+     paths = [
+         # when developing
+@@ -112,7 +113,8 @@ def get_share_file (devel_dir, filename):
+         if os.path.isfile(fullpath):
+             return fullpath
+     # not found
+-    return None
++    msg = "%s not found in %s; check your installation" % (filename, paths)
++    raise ValueError(msg)
+ 
+ 
+ # dynamic options
+-- 
+1.8.5.1
+

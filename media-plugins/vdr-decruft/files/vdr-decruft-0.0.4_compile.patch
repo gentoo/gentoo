@@ -1,0 +1,24 @@
+compile fix
+https://bugs.gentoo.org/show_bug.cgi?id=537658
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> 30/jan/2015
+diff -Naur decruft-0.0.4.orig/cruft.c decruft-0.0.4/cruft.c
+--- decruft-0.0.4.orig/cruft.c	2015-01-30 16:41:24.000000000 +0100
++++ decruft-0.0.4/cruft.c	2015-01-30 16:42:55.000000000 +0100
+@@ -15,6 +15,7 @@
+ 
+ 
+ #include <vdr/channels.h>
++#include <vdr/dvbdevice.h>
+ 
+ #include <stdio.h>
+ #include <string.h>
+@@ -439,7 +440,8 @@
+        }
+    }
+    if ( settings->num_pols ) {
+-       char  pol = tolower(Channel->Polarization());
++       cDvbTransponderParameters dtp(Channel->Parameters());
++       char  pol = tolower(dtp.Polarization());
+        tests++;
+        for ( j = 0; j < settings->num_pols; j++ ) {
+            if ( settings->pols[j] == pol ) {

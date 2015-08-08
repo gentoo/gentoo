@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>slyfox@gentoo.org</email>
+    <name>Sergei Trofimovich</name>
+    <description>Primary Maintainer</description>
+  </maintainer>
+  <herd>tools-portage</herd>
+  <upstream>
+    <remote-id type="github">jjwhitney/BDelta</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Fri Nov 30 20:02:03 UTC 2012
+Subject: desktop file
+
+	fix desktop file according to fd.o spec
+
+--- gtetrinet.desktop
++++ gtetrinet.desktop
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=GTetrinet
+ Name[am]=GTetrinet
+ Name[bg]=GTetrinet
+@@ -99,11 +98,11 @@
+ Comment[zh_HK]=Tetrinet 的 GNOME 客戶端程式
+ Comment[zh_TW]=Tetrinet 的 GNOME 客戶端程式
+ Exec=gtetrinet
+-Icon=gtetrinet.png
++Icon=gtetrinet
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Game;BlocksGame;
++Categories=GNOME;Game;BlocksGame;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gtetrinet
+ X-GNOME-Bugzilla-Component=general

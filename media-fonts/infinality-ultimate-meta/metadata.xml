@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>fonts</herd>
+  <maintainer>
+    <email>witold.pilat@gmail.com</email>
+    <description>Proxied/co-maintainer. CC on bugs.</description>
+  </maintainer>
+  <use>
+    <flag name="free">Install fonts for the "free" preset</flag>
+    <flag name="latin">Install additional latin fonts</flag>
+    <flag name="minimal">Install a minimal set of fonts</flag>
+    <flag name="ms">Install (free) fonts for the "ms" preset</flag>
+  </use>
+</pkgmetadata>

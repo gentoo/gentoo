@@ -1,0 +1,10 @@
+--- netsurf-2.9/framebuffer/font_internal.c
++++ netsurf-2.9/framebuffer/font_internal.c
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include <inttypes.h>
++#include <string.h>
+ 
+ #include <assert.h>
+ #include "css/css.h"

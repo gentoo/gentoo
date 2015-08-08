@@ -1,0 +1,31 @@
+From 86e885f1f17db2ec3caa31b0ff7955dfe2b4e543 Mon Sep 17 00:00:00 2001
+From: daniel g. siegel <dgsiegel@gnome.org>
+Date: Tue, 27 Apr 2010 18:22:57 +0000
+Subject: replace some deprecated gtk functions
+
+use gtk_widget_has_focus instead of GTK_WIDGET_HAS_FOCUS and
+gtk_widget_get_state instead of GTK_WIDGET_STATE
+---
+diff --git a/libmuine/rb-cell-renderer-pixbuf.c b/libmuine/rb-cell-renderer-pixbuf.c
+index 42cff41..abf6958 100644
+--- a/libmuine/rb-cell-renderer-pixbuf.c
++++ b/libmuine/rb-cell-renderer-pixbuf.c
+@@ -295,14 +295,14 @@ rb_cell_renderer_pixbuf_render (GtkCellRenderer    *cell,
+ 
+   if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED)
+     {
+-      if (GTK_WIDGET_HAS_FOCUS (widget))
++      if (gtk_widget_has_focus (widget))
+         state = GTK_STATE_SELECTED;
+       else
+         state = GTK_STATE_ACTIVE;
+     }
+   else
+     {
+-      if (GTK_WIDGET_STATE (widget) == GTK_STATE_INSENSITIVE)
++      if (gtk_widget_get_state (widget) == GTK_STATE_INSENSITIVE)
+         state = GTK_STATE_INSENSITIVE;
+       else
+         state = GTK_STATE_NORMAL;
+--
+cgit v0.8.3.1

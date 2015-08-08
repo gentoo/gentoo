@@ -1,0 +1,28 @@
+From 6a68348f4b1fb755724e1df34bff4d6986d07dab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <gentoo@mgorny.alt.pl>
+Date: Sat, 26 Nov 2011 22:30:15 +0100
+Subject: [PATCH] Merge CFLAGS and LDFLAGS from the environment.
+
+---
+ SConstruct |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 9dc17f5..e529e88 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -194,6 +194,11 @@ SConsEnvironment.InstallLibraryAs = lambda env, dest, files: InstallPermAs(env,
+ 
+ vars.Update(env)
+ 
++# Merge environment CFLAGS & LDFLAGS
++
++env.MergeFlags([os.environ.get('CFLAGS', ''),
++	os.environ.get('LDFLAGS', '')])
++
+ #----------------
+ # SWIG
+ 
+-- 
+1.7.8.rc3.31.g017d.dirty
+

@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+start() {
+	ebegin "Starting xhkeys"
+	start-stop-daemon --start --quiet --exec /usr/bin/xhkeys	
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping xhkeys"
+	start-stop-daemon --stop --quiet --exec /usr/bin/xhkeys
+	eend $?
+}

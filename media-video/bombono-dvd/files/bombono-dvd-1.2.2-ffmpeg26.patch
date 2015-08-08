@@ -1,0 +1,13 @@
+Index: bombono-dvd-1.2.2/src/mgui/ffviewer.cpp
+===================================================================
+--- bombono-dvd-1.2.2.orig/src/mgui/ffviewer.cpp
++++ bombono-dvd-1.2.2/src/mgui/ffviewer.cpp
+@@ -1120,7 +1120,7 @@ static bool SeekSetTime(FFViewer& ffv, d
+         bool seek_ok = TimeSeek(ffv, start_time, time);
+         if( !seek_ok && CanByteSeek(ffv.iCtx) )
+             // тогда переходим в начало файла
+-            seek_ok = DoSeek(ffv, ffv.iCtx->data_offset, true);
++            seek_ok = DoSeek(ffv, 0, true);
+ 
+         // некоторое видео глючит в начале (Hellboy), из-за чего
+         // последовательный доступ выполняется с перескоками -

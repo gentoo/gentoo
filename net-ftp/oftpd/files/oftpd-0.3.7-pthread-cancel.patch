@@ -1,0 +1,17 @@
+in order for pthread_cancel to work (which oftpd uses to close inactive
+connections), most ports need to load libgcc_s.so.1.  but when oftpd uses
+a chroot, that file is no longer available (in fact, it'll try to load it
+from the chroot itself which is kind of a security issue).  so have the
+code proactively link against libgcc_s when it is found so that the lib
+is already loaded when we cancel.
+
+--- a/configure.in
++++ b/configure.in
+@@ -39,6 +39,7 @@ AC_FUNC_STRFTIME
+ AC_CHECK_FUNCS(getcwd gettimeofday select socket strerror localtime_r gmtime_r)
+ dnl AC_CHECK_LIB(pthread, pthread_create)
+ dnl AC_SEARCH_LIBS(pthread_create, [ pthread pthreads thread threads ])
++AC_CHECK_LIB(gcc_s, _Unwind_Resume)
+ AC_SEARCH_LIBS(socket, socket)
+ AC_SEARCH_LIBS(inet_ntoa, nsl)
+ AC_CHECK_FUNCS(inet_aton)

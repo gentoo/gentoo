@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>dirk.vdb@gmail.com</email>
+		<name>Dirk Vanden Boer</name>
+		<description>Proxy maintainer and upstream developer. Please CC him on bugs</description>
+	</maintainer>
+	<longdescription lang="en">
+	</longdescription>
+	<upstream>
+		<remote-id type="google-code">lastfmlib</remote-id>
+	</upstream>
+</pkgmetadata>

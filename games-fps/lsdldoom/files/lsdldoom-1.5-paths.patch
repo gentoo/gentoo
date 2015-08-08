@@ -1,0 +1,64 @@
+diff -urN lsdldoom-1.5.orig//Makefile.in lsdldoom-1.5/Makefile.in
+--- lsdldoom-1.5.orig//Makefile.in	2011-10-23 22:17:01.582705152 -0700
++++ lsdldoom-1.5/Makefile.in	2011-10-23 22:18:00.846237242 -0700
+@@ -209,7 +209,7 @@
+ builddir = @builddir@
+ datadir = @datadir@
+ datarootdir = @datarootdir@
+-docdir = $(prefix)/share/doc/@PACKAGE@
++docdir = /usr/share/doc/$(PF)
+ dvidir = @dvidir@
+ exec_prefix = @exec_prefix@
+ host = @host@
+diff -urN lsdldoom-1.5.orig//configure lsdldoom-1.5/configure
+--- lsdldoom-1.5.orig//configure	2011-10-23 22:17:01.544700322 -0700
++++ lsdldoom-1.5/configure	2011-10-23 22:18:00.829235080 -0700
+@@ -5689,10 +5689,10 @@
+ then exec_prefix=$prefix
+ fi
+ 
+-gamesdir=$prefix/games
++gamesdir=$bindir
+ exp_gamesdir=`eval "echo $gamesdir"`
+ exp_datadir=`eval "echo $datadir"`
+-waddir=$exp_datadir/games/doom
++waddir=$exp_datadir/doom-data
+ cat >>confdefs.h <<_ACEOF
+ #define DOOMWADDIR "$waddir"
+ _ACEOF
+diff -urN lsdldoom-1.5.orig//data/Makefile.in lsdldoom-1.5/data/Makefile.in
+--- lsdldoom-1.5.orig//data/Makefile.in	2011-10-23 22:17:01.634711762 -0700
++++ lsdldoom-1.5/data/Makefile.in	2011-10-23 22:18:00.844236988 -0700
+@@ -188,7 +188,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-waddir = $(datadir)/games/doom
++waddir = $(datadir)/doom-data
+ wad_DATA = boomlump.wad
+ EXTRA_DIST = boomlump.wad
+ all: all-am
+diff -urN lsdldoom-1.5.orig//doc/Makefile.in lsdldoom-1.5/doc/Makefile.in
+--- lsdldoom-1.5.orig//doc/Makefile.in	2011-10-23 22:17:00.348548297 -0700
++++ lsdldoom-1.5/doc/Makefile.in	2011-10-23 22:18:00.840236480 -0700
+@@ -158,7 +158,7 @@
+ builddir = @builddir@
+ datadir = @datadir@
+ datarootdir = @datarootdir@
+-docdir = $(prefix)/share/doc/@PACKAGE@
++docdir = /usr/share/doc/$(PF)
+ dvidir = @dvidir@
+ exec_prefix = @exec_prefix@
+ host = @host@
+diff -urN lsdldoom-1.5.orig//src/Makefile.in lsdldoom-1.5/src/Makefile.in
+--- lsdldoom-1.5.orig//src/Makefile.in	2011-10-23 22:17:01.041636386 -0700
++++ lsdldoom-1.5/src/Makefile.in	2011-10-23 22:18:00.835235845 -0700
+@@ -242,7 +242,7 @@
+ # Process this file with automake to produce Makefile.in
+ #
+ #
+-gamesdir = $(prefix)/games
++gamesdir = $(bindir)
+ games_PROGRAMS = @BUILD_SDLDOOM@ @BUILD_SERVER@
+ @I386_ASM_FALSE@ASMS = 
+ @I386_ASM_TRUE@ASMS = drawspan.S drawcol.S drawasm.h

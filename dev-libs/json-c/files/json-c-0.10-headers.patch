@@ -1,0 +1,27 @@
+--- json-c-0.10/json.pc.in
++++ json-c-0.10/json.pc.in
+@@ -8,4 +8,4 @@
+ Version: @VERSION@
+ Requires: 
+ Libs:  -L${libdir} -ljson
+-Cflags: -I${includedir}/json
++Cflags: -I${includedir}/json-c
+--- json-c-0.10/Makefile.am
++++ json-c-0.10/Makefile.am
+@@ -8,7 +8,7 @@
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = json.pc
+ 
+-libjsonincludedir = $(includedir)/json
++libjsonincludedir = $(includedir)/json-c
+ libjsoninclude_HEADERS = \
+ 	arraylist.h \
+ 	bits.h \
+@@ -17,6 +17,7 @@
+ 	json_config.h \
+ 	json_inttypes.h \
+ 	json_object.h \
++	json_object_iterator.h \
+ 	json_object_private.h \
+ 	json_tokener.h \
+ 	json_util.h \

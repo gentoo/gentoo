@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+	<maintainer>
+		<email>angelos@gentoo.org</email>
+		<name>Christoph Mende</name>
+	</maintainer>
+	<use>
+		<flag name='cover'>Enable cover art fetching</flag>
+		<flag name='lyrics'>Enable lyric fetching</flag>
+	</use>
+</pkgmetadata>
+

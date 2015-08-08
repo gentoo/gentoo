@@ -1,0 +1,48 @@
+Index: swh-plugins-0.4.15/Makefile.am
+===================================================================
+--- swh-plugins-0.4.15.orig/Makefile.am
++++ swh-plugins-0.4.15/Makefile.am
+@@ -33,7 +33,7 @@ plugin_LTLIBRARIES = \
+ 	latency_1914.la xfade_1915.la sc4m_1916.la \
+ 	mbeq_1197.la pitch_scale_1193.la pitch_scale_1194.la imp_1199.la
+ 
+-SUBDIRS = m4  po util gsm gverb metadata
++SUBDIRS = m4  po util gverb metadata
+ 
+ # Wacky stuff to stop automake getting confused
+ EXTRA_DIST = @top_srcdir@/*.xml @top_srcdir@/*.c @top_srcdir@/*.h \
+@@ -72,7 +72,7 @@ sc3_1427_la_LIBADD = util/libdb.la util/
+ sc4_1882_la_LIBADD = util/libdb.la util/librms.la
+ sc4m_1916_la_LIBADD = util/libdb.la util/librms.la
+ se4_1883_la_LIBADD = util/libdb.la util/librms.la
+-gsm_1215_la_LIBADD = gsm/libgsm.la
++gsm_1215_la_LIBADD = @GSM_LIBS@
+ gverb_1216_la_LIBADD = gverb/libgverb.la
+ lcr_delay_1436_la_DEPENDENCIES = util/biquad.h
+ 
+Index: swh-plugins-0.4.15/configure.in
+===================================================================
+--- swh-plugins-0.4.15.orig/configure.in
++++ swh-plugins-0.4.15/configure.in
+@@ -136,17 +136,19 @@ else
+   AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR, "${datadir}/${PACKAGE}")
+ fi
+ 
+-subdirs="util gsm gverb metadata"
++GSM_LIBS=-lgsm
++
++subdirs="util gverb metadata"
+ 
+ AC_SUBST(subdirs)
+ AC_SUBST(FFTW_LIBS)
+ AC_SUBST(STATIC_FFTW_LIBS)
+ AC_SUBST(FFTW_CFLAGS)
++AC_SUBST(GSM_LIBS)
+ AC_SUBST(LIBTOOL)
+ AC_OUTPUT([ m4/Makefile 
+ Makefile
+ util/Makefile
+-gsm/Makefile
+ gverb/Makefile
+ metadata/Makefile
+ po/Makefile.in

@@ -1,0 +1,29 @@
+--- a/rubrica2.schemas.in
++++ b/rubrica2.schemas.in
+@@ -6,7 +6,7 @@
+ 		<applyto>/apps/rubrica2/file_format</applyto>
+ 		<owner>rubrica</owner>
+ 		<type>int</type>
+-		<default>@FILE_FORMAT@</default>
++		<default>@RUBRICA_FILE_FORMAT@</default>
+ 		<locale name="C">
+         		<short>rubrica file format</short>
+       		</locale>
+@@ -88,7 +88,7 @@
+ 		<key>/schemas/apps/rubrica2/file/load_files</key>
+ 		<applyto>/apps/rubrica2/file/load_files</applyto>
+ 		<owner>rubrica</owner>
+-		<type>boolean</type>
++		<type>bool</type>
+ 		<default>false</default>
+ 		<locale name="C">
+ 			<short>Load addressbooks on startup</short>
+@@ -100,7 +100,7 @@
+ 		<applyto>/apps/rubrica2/file/files</applyto>
+ 		<owner>rubrica</owner>
+ 		<type>list</type>
+-		<default></default>
++		<list_type>string</list_type>
+ 		<locale name="C">
+ 			<short>Files that rubrica will open at startup</short>
+ 		</locale>

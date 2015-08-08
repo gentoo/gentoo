@@ -1,0 +1,16 @@
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 0a77cdf..e7ba643 100644
+--- a/setup.py
++++ b/setup.py
+@@ -55,7 +55,7 @@ packages = ['PyMca','PyMca.PyMcaPlugins', 'PyMca.tests']
+ py_modules = []
+ 
+ # Specify all the required PyMca data
+-data_files = [(PYMCA_DATA_DIR, ['LICENSE.GPL',
++data_files = [(PYMCA_DATA_DIR, [
+                          'PyMca/PyMcaData/Scofield1973.dict',
+                          'changelog.txt',
+                          'PyMca/PyMcaData/McaTheory.cfg',

@@ -1,0 +1,102 @@
+--- a/configure.in
++++ b/configure.in
+@@ -41,7 +41,7 @@
+ CFLAGS="${CFLAGS} -Wextra -Wno-unused-parameter"
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_extra_warnings="yes"],[have_extra_warnings="no"])
+ AC_MSG_RESULT($have_extra_warnings)
+-if test "$have_extra_warnings" == "no" ; then
++if test "$have_extra_warnings" = "no" ; then
+     CFLAGS="${saved_CFLAGS}"
+ fi
+ 
+@@ -50,7 +50,7 @@
+ CFLAGS="${CFLAGS} -Werror=implicit-function-declaration"
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_implicit_function_declaration="yes"],[have_implicit_function_declaration="no"])
+ AC_MSG_RESULT($have_implicit_function_declaration)
+-if test "$have_implicit_function_declaration" == "no" ; then
++if test "$have_implicit_function_declaration" = "no" ; then
+     CFLAGS="${saved_CFLAGS}"
+ fi
+ 
+@@ -59,7 +59,7 @@
+ CFLAGS="${CFLAGS} -Werror=format"
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_error_format="yes"],[have_error_format="no"])
+ AC_MSG_RESULT($have_error_format)
+-if test "$have_error_format" == "no" ; then
++if test "$have_error_format" = "no" ; then
+     CFLAGS="${saved_CFLAGS}"
+ fi
+ 
+@@ -93,7 +93,7 @@
+ [],[with_gd=check])
+ if ( test "x$with_gd" != "xno" ) ; then
+ 	AC_CHECK_HEADERS(gd.h gdfontl.h gdfontt.h gdfonts.h gdfontmb.h gdfontg.h)
+-	if ( test "x$ac_cv_header_gd_h" == "xyes" ) ; then
++	if ( test "x$ac_cv_header_gd_h" = "xyes" ) ; then
+ 		AC_CHECK_LIB(gd, gdImagePng,LIBS="-lgd ${LIBS}"; HAVE_GD_LIB="yes", HAVE_GD_LIB="")
+ 		if ( test "x$HAVE_GD_LIB" != "xyes" ) ; then
+ 			AC_MSG_ERROR([ligbd is required to compile sarg with gd])
+@@ -137,7 +137,7 @@
+ [],[with_pcre=check])
+ if ( test "x$with_pcre" != "xno" ) ; then
+ 	AC_CHECK_HEADERS(pcre.h)
+-	if ( test "x$ac_cv_header_pcre_h" == "xyes" ) ; then
++	if ( test "x$ac_cv_header_pcre_h" = "xyes" ) ; then
+ 		LIBS="$LIBS $(pcre-config --libs)"
+ 		CFLAGS="$CFLAGS $(pcre-config --cflags)"
+ 	else
+@@ -243,7 +243,7 @@
+     fi
+ ],[FONTDIR="${datarootdir}/sarg/fonts"])
+ if test "$FONTDIR" ; then
+-   if test "x$prefix" == "xNONE" ; then
++   if test "x$prefix" = "xNONE" ; then
+       tempfullpath=`prefix=$ac_default_prefix ; eval "echo $FONTDIR"`
+    else
+       tempfullpath=`eval "echo $FONTDIR"`
+@@ -261,7 +261,7 @@
+         IMAGEDIR=$enableval
+     fi
+ ],[IMAGEDIR="${datarootdir}/sarg/images"])
+-if test "x$prefix" == "xNONE" ; then
++if test "x$prefix" = "xNONE" ; then
+    tempfullpath=`prefix=$ac_default_prefix ; eval "echo $IMAGEDIR"`
+ else
+    tempfullpath=`eval "echo $IMAGEDIR"`
+@@ -286,7 +286,7 @@
+        CFLAGS="${CFLAGS} -Wformat -Werror=format-security"
+        AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_format_security="yes"],[have_format_security="no"])
+        AC_MSG_RESULT($have_format_security)
+-       if test "$have_format_security" == "no" ; then
++       if test "$have_format_security" = "no" ; then
+           CFLAGS="${saved_CFLAGS}"
+        fi
+ 
+@@ -295,7 +295,7 @@
+        CFLAGS="${CFLAGS} -Wempty-body"
+        AC_COMPILE_IFELSE([AC_LANG_SOURCE([])],[have_empty_body="yes"],[have_empty_body="no"])
+        AC_MSG_RESULT($have_empty_body)
+-       if test "$have_empty_body" == "no" ; then
++       if test "$have_empty_body" = "no" ; then
+           CFLAGS="${saved_CFLAGS}"
+        fi
+     fi
+@@ -367,14 +367,14 @@
+ AC_CONFIG_FILES([Makefile po/Makefile.in])
+ AC_OUTPUT
+ 
+-if ( test "x$gd_status" == "xdisabled" ) ; then
++if ( test "x$gd_status" = "xdisabled" ) ; then
+ 	AC_MSG_NOTICE([Not building with gd as requested on the configuration command line])
+-elif ( test "x$gd_status" == "xnot found" ) ; then
++elif ( test "x$gd_status" = "xnot found" ) ; then
+ 	AC_MSG_NOTICE([gd.h was not found so the graphs won't be available in the report])
+ fi
+ 
+-if ( test "x$pcre_status" == "xdisabled" ) ; then
++if ( test "x$pcre_status" = "xdisabled" ) ; then
+ 	AC_MSG_NOTICE([Not building with pcre as requested on the configuration command line])
+-elif ( test "x$pcre_status" == "xnot found" ) ; then
++elif ( test "x$pcre_status" = "xnot found" ) ; then
+ 	AC_MSG_NOTICE([pcre.h was not found so the regexp won't be available in the hostalias])
+ fi

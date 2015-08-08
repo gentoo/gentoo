@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>pacho@gentoo.org</email>
+    <name>Pacho Ramos</name>
+  </maintainer>
+  <use>
+    <flag name="test-programs">Install tools for testing of
+			various Bluetooth functions</flag>
+    <flag name="hid2hci">The HID proxying makes the keyboard / mouse show up
+			as regular USB HID devices, but needs them to be
+			paired before enabling this, otherwise they won't be
+			detected</flag>
+    <flag name="obex">Enable OBEX transfer support.</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:bluez:bluez</remote-id>
+    <remote-id type="cpe">cpe:/a:bluez:bluez-libs</remote-id>
+  </upstream>
+</pkgmetadata>

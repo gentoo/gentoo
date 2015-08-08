@@ -1,0 +1,29 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Fix crash on project save (closes: #718583)
+Git-Branch: p/crash-on-save
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..cfc9473d1fa0e565d0aad4994fbb31
+
+Patch from upstream SVN commit [r6114].
+
+ meshlab/src/meshlab/mainwindow_RunTime.cpp |    8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/meshlab/src/meshlab/mainwindow_RunTime.cpp b/meshlab/src/meshlab/mainwindow_RunTime.cpp
+index 8f5057c..3273cec 100644
+--- a/meshlab/src/meshlab/mainwindow_RunTime.cpp
++++ b/meshlab/src/meshlab/mainwindow_RunTime.cpp
+@@ -1575,8 +1575,12 @@ void MainWindow::saveProject()
+ 
+   /*********WARNING!!!!!! CHANGE IT!!! ALSO IN THE OPENPROJECT FUNCTION********/
+   meshDoc()->setDocLabel(fileName);
+-  mdiarea->activeSubWindow()->setWindowTitle(meshDoc()->docLabel());
+-  layerDialog->setWindowTitle(meshDoc()->docLabel());
++  QMdiSubWindow* sub = mdiarea->currentSubWindow();
++  if (sub != NULL)
++  {
++    sub->setWindowTitle(meshDoc()->docLabel());
++    layerDialog->setWindowTitle(meshDoc()->docLabel());
++  }
+   /****************************************************************************/
+ 
+ 

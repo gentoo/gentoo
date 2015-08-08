@@ -1,0 +1,448 @@
+Provides get/set ANNOTATIONS support to the c-client library. [Version: 2006k]
+
+diff -r 217555555c77 src/c-client/imap4r1.c
+--- a/src/c-client/imap4r1.c	Thu Feb 21 17:37:37 2008 +0100
++++ b/src/c-client/imap4r1.c	Thu Feb 21 17:38:15 2008 +0100
+@@ -135,7 +135,8 @@ typedef struct imap_argument {
+ #define MULTIAPPEND 13
+ #define SNLIST 14
+ #define MULTIAPPENDREDO 15
+-
++#define QLIST 16
++#define QSTRING 17
+ 
+ /* Append data */
+ 
+@@ -205,12 +206,15 @@ void imap_gc_body (BODY *body);
+ void imap_gc_body (BODY *body);
+ void imap_capability (MAILSTREAM *stream);
+ long imap_acl_work (MAILSTREAM *stream,char *command,IMAPARG *args[]);
++long imap_annotation_work (MAILSTREAM *stream,char *command,IMAPARG *args[]);
+ 
+ IMAPPARSEDREPLY *imap_send (MAILSTREAM *stream,char *cmd,IMAPARG *args[]);
+ IMAPPARSEDREPLY *imap_sout (MAILSTREAM *stream,char *tag,char *base,char **s);
+ long imap_soutr (MAILSTREAM *stream,char *string);
+ IMAPPARSEDREPLY *imap_send_astring (MAILSTREAM *stream,char *tag,char **s,
+ 				    SIZEDTEXT *as,long wildok,char *limit);
++IMAPPARSEDREPLY *imap_send_qstring (MAILSTREAM *stream,char *tag,char **s,
++				    SIZEDTEXT *as,char *limit);
+ IMAPPARSEDREPLY *imap_send_literal (MAILSTREAM *stream,char *tag,char **s,
+ 				    STRING *st);
+ IMAPPARSEDREPLY *imap_send_spgm (MAILSTREAM *stream,char *tag,char *base,
+@@ -2753,6 +2757,84 @@ long imap_getacl (MAILSTREAM *stream,cha
+     args[0] = &ambx; args[1] = NIL;
+   return imap_acl_work (stream,"GETACL",args);
+ }
++
++/* IMAP set annotation
++ * Accepts: mail stream
++ *          annotation struct
++ * Returns: T on success, NIL on failure
++ */
++
++long imap_setannotation (MAILSTREAM *stream,ANNOTATION *annotation)
++{
++  IMAPARG *args[4],ambx,apth,aval;
++  long ret;
++  
++  ambx.type = ASTRING;
++  ambx.text = (void *) annotation->mbox;
++  args[0] = &ambx;
++  
++  apth.type = QSTRING;
++  apth.text = (void *) annotation->entry;
++  args[1] = &apth;
++
++  STRINGLIST *st,*l;
++  ANNOTATION_VALUES *v;
++  
++  l = st = mail_newstringlist();
++  v = annotation->values;
++  while(v){
++    l->text.size = strlen((char *) (l->text.data = (unsigned char*)cpystr(v->attr)));
++    l->next = mail_newstringlist();
++    l = l->next;
++    l->text.size = strlen((char *) (l->text.data = (unsigned char*)cpystr(v->value)));
++    if(v->next){
++      l->next = mail_newstringlist();
++      l = l->next;
++    }
++    v = v->next;
++  }
++  
++  aval.type = QLIST;
++  aval.text = (void *)st;
++  args[2] = &aval;
++  args[3] = NIL;
++  
++  ret = imap_annotation_work(stream, "SETANNOTATION",args);
++  mail_free_stringlist(&st);
++  return ret;
++}
++  
++  
++  
++/* IMAP get annotation
++ * Accepts: mail stream
++ *          mailbox name
++ *          annotation entry list
++ *          annotation attribute list
++ * Returns: T on success with data returned via callback, NIL on failure
++ */
++
++long imap_getannotation (MAILSTREAM *stream,char *mailbox,STRINGLIST *entries, STRINGLIST *attributes)
++{
++  IMAPARG *args[4],ambx,apth,aattr;
++  long ret;
++  ambx.type = ASTRING;
++  ambx.text = (void*) mailbox;
++  args[0] = &ambx; 
++
++ 
++  apth.type = QLIST;
++  apth.text = (void*) entries;
++  args[1] = &apth;
++
++  aattr.type = QLIST;
++  aattr.text = (void*) attributes;
++  args[2] = &aattr;
++
++  args[3] = NIL;
++  ret = imap_annotation_work(stream, "GETANNOTATION",args);
++  return ret;
++}
+ 
+ /* IMAP list rights
+  * Accepts: mail stream
+@@ -2805,6 +2887,16 @@ long imap_acl_work (MAILSTREAM *stream,c
+   else mm_log ("ACL not available on this IMAP server",ERROR);
+   return ret;
+ }
++ long imap_annotation_work(MAILSTREAM *stream, char *command,IMAPARG *args[])
++{
++  long ret = NIL;
++  IMAPPARSEDREPLY *reply;
++  if (imap_OK (stream,reply = imap_send (stream,command,args)))
++    ret = LONGT;
++  else mm_log (reply->text,ERROR);
++  return ret;
++}
++
+ 
+ /* IMAP set quota
+  * Accepts: mail stream
+@@ -2937,6 +3029,11 @@ IMAPPARSEDREPLY *imap_send (MAILSTREAM *
+       if (reply = imap_send_astring (stream,tag,&s,&st,NIL,CMDBASE+MAXCOMMAND))
+ 	return reply;
+       break;
++    case QSTRING:		/* atom or string, must be literal? */
++      st.size = strlen ((char *) (st.data = (unsigned char *) arg->text));
++      if (reply = imap_send_qstring (stream,tag,&s,&st,CMDBASE+MAXCOMMAND))
++	return reply;
++      break;
+     case LITERAL:		/* literal, as a stringstruct */
+       if (reply = imap_send_literal (stream,tag,&s,arg->text)) return reply;
+       break;
+@@ -2947,6 +3044,18 @@ IMAPPARSEDREPLY *imap_send (MAILSTREAM *
+       do {			/* for each list item */
+ 	*s++ = c;		/* write prefix character */
+ 	if (reply = imap_send_astring (stream,tag,&s,&list->text,NIL,
++				       CMDBASE+MAXCOMMAND)) return reply;
++	c = ' ';		/* prefix character for subsequent strings */
++      }
++      while (list = list->next);
++      *s++ = ')';		/* close list */
++      break;
++    case QLIST:			/* list of strings */
++      list = (STRINGLIST *) arg->text;
++      c = '(';			/* open paren */
++      do {			/* for each list item */
++	*s++ = c;		/* write prefix character */
++	if (reply = imap_send_qstring (stream,tag,&s,&list->text,
+ 				       CMDBASE+MAXCOMMAND)) return reply;
+ 	c = ' ';		/* prefix character for subsequent strings */
+       }
+@@ -3119,6 +3228,32 @@ IMAPPARSEDREPLY *imap_send (MAILSTREAM *
+   reply = imap_sout (stream,tag,CMDBASE,&s);
+   mail_unlock (stream);		/* unlock stream */
+   return reply;
++}
++
++/* IMAP send quoted-string
++ * Accepts: MAIL stream
++ *	    reply tag
++ *	    pointer to current position pointer of output bigbuf
++ *	    atom-string to output
++ *	    maximum to write as atom or qstring
++ * Returns: error reply or NIL if success
++ */
++
++IMAPPARSEDREPLY *imap_send_qstring (MAILSTREAM *stream,char *tag,char **s,
++				    SIZEDTEXT *as,char *limit)
++{
++  unsigned long j;
++  char c;
++  STRING st;
++				/* in case needed */
++  INIT (&st,mail_string,(void *) as->data,as->size);
++				/* always write literal if no space */
++  if ((*s + as->size) > limit) return imap_send_literal (stream,tag,s,&st);
++
++  *(*s)++ = '"';	/* write open quote */
++  for (j = 0; j < as->size; j++) *(*s)++ = as->data[j];
++  *(*s)++ = '"';	/* write close quote */
++  return NIL;
+ }
+ 
+ /* IMAP send atom-string
+@@ -4049,6 +4184,50 @@ void imap_parse_unsolicited (MAILSTREAM 
+     }
+   }
+ 
++  else if (!strcmp (reply->key,"ANNOTATION") && (s = reply->text)){
++    char * mbox;    
++    /* response looks like ANNOTATION "mailbox" "entry" ("attr" "value" ["attr" "value"]) ["entry" ("attr "value" ["attr" "value"] )]*/
++    getannotation_t an = (getannotation_t) mail_parameters (NIL,GET_ANNOTATION,NIL);
++    
++    mbox = imap_parse_astring (stream, &s, reply,NIL);
++    
++    while(*s){
++      ANNOTATION * al = mail_newannotation();    
++      al->mbox = cpystr(mbox);
++      t = imap_parse_astring (stream, &s, reply,NIL);
++      al->entry = t;
++      STRINGLIST *strlist;
++      if (s){while (*s == ' ')s++;}
++      
++      strlist = imap_parse_stringlist(stream, &s,reply);
++
++      ANNOTATION_VALUES *vlIter, *vlBegin;
++      vlIter = vlBegin = NIL;
++      if (strlist) {
++        while(strlist){	
++          if(vlIter){
++            vlIter->next = mail_newannotationvalue();
++            vlIter = vlIter->next;
++          }else{
++            vlIter = mail_newannotationvalue();
++            vlBegin = vlIter;
++          }
++          if ( strlist->text.size )
++            vlIter->attr = cpystr (strlist->text.data);        
++          strlist = strlist->next;        
++          if(!strlist) continue;
++          if ( strlist->text.size )
++            vlIter->value = cpystr (strlist->text.data);
++          strlist = strlist->next;
++        }
++      }
++      al->values = vlBegin;
++      if (an) 
++        (*an) (stream,al);
++      mail_free_annotation(&al);
++    }
++    fs_give ((void **)&mbox);
++  }
+   else if (!strcmp (reply->key,"ACL") && (s = reply->text) &&
+ 	   (t = imap_parse_astring (stream,&s,reply,NIL))) {
+     getacl_t ar = (getacl_t) mail_parameters (NIL,GET_ACL,NIL);
+diff -r 217555555c77 src/c-client/imap4r1.h
+--- a/src/c-client/imap4r1.h	Thu Feb 21 17:37:37 2008 +0100
++++ b/src/c-client/imap4r1.h	Thu Feb 21 17:38:15 2008 +0100
+@@ -279,3 +279,5 @@ long imap_setquota (MAILSTREAM *stream,c
+ long imap_setquota (MAILSTREAM *stream,char *qroot,STRINGLIST *limits);
+ long imap_getquota (MAILSTREAM *stream,char *qroot);
+ long imap_getquotaroot (MAILSTREAM *stream,char *mailbox);
++long imap_getannotation (MAILSTREAM *stream,char *mailbox,STRINGLIST *entries,STRINGLIST *attributes);
++long imap_setannotation (MAILSTREAM *stream,ANNOTATION *annotation); 
+diff -r 217555555c77 src/c-client/mail.c
+--- a/src/c-client/mail.c	Thu Feb 21 17:37:37 2008 +0100
++++ b/src/c-client/mail.c	Thu Feb 21 17:38:15 2008 +0100
+@@ -69,6 +69,7 @@ static newsrcquery_t mailnewsrcquery = N
+ static newsrcquery_t mailnewsrcquery = NIL;
+ 				/* ACL results callback */
+ static getacl_t mailaclresults = NIL;
++static getannotation_t mailannotationresults = NIL;
+ 				/* list rights results callback */
+ static listrights_t maillistrightsresults = NIL;
+ 				/* my rights results callback */
+@@ -598,6 +599,11 @@ void *mail_parameters (MAILSTREAM *strea
+     ret = (void *) (debugsensitive ? VOIDT : NIL);
+     break;
+ 
++  case SET_ANNOTATION:
++    mailannotationresults = (getannotation_t) value;
++  case GET_ANNOTATION:
++    ret = (void *) mailannotationresults;
++    break;
+   case SET_ACL:
+     mailaclresults = (getacl_t) value;
+   case GET_ACL:
+@@ -5701,7 +5707,15 @@ ACLLIST *mail_newacllist (void)
+   return (ACLLIST *) memset (fs_get (sizeof (ACLLIST)),0,sizeof (ACLLIST));
+ }
+ 
+-
++ANNOTATION *mail_newannotation (void)
++{
++  return (ANNOTATION *) memset (fs_get (sizeof (ANNOTATION)),0,sizeof(ANNOTATION));
++}
++
++ANNOTATION_VALUES *mail_newannotationvalue (void)
++{
++  return (ANNOTATION_VALUES *) memset (fs_get (sizeof (ANNOTATION_VALUES)),0,sizeof(ANNOTATION_VALUES));
++}
+ /* Mail instantiate new quotalist
+  * Returns: new quotalist
+  */
+@@ -6024,6 +6038,25 @@ void mail_free_acllist (ACLLIST **al)
+   }
+ }
+ 
++static void mail_free_annotation_values(ANNOTATION_VALUES **val)
++{
++  if (*val) {
++    if ((*val)->attr) fs_give ((void**) &(*val)->attr);
++    if ((*val)->value) fs_give ((void**) &(*val)->value);
++    mail_free_annotation_values (&(*val)->next);
++    fs_give ((void **) val);
++  }
++}				
++void mail_free_annotation(ANNOTATION **al)
++{
++  if (*al) {
++    if((*al)->mbox) fs_give ((void**) &(*al)->mbox);
++    if((*al)->entry) fs_give ((void**) &(*al)->entry);
++    if((*al)->values)
++      mail_free_annotation_values(&(*al)->values);
++    fs_give ((void **) al);
++  }
++}
+ 
+ /* Mail garbage collect quotalist
+  * Accepts: pointer to quotalist pointer
+diff -r 217555555c77 src/c-client/mail.h
+--- a/src/c-client/mail.h	Thu Feb 21 17:37:37 2008 +0100
++++ b/src/c-client/mail.h	Thu Feb 21 17:38:15 2008 +0100
+@@ -351,6 +351,8 @@
+ #define SET_SCANCONTENTS (long) 573
+ #define GET_MHALLOWINBOX (long) 574
+ #define SET_MHALLOWINBOX (long) 575
++#define GET_ANNOTATION (long) 576
++#define SET_ANNOTATION (long) 577
+ 
+ /* Driver flags */
+ 
+@@ -1043,6 +1045,24 @@ ACLLIST {
+   char *identifier;		/* authentication identifier */
+   char *rights;			/* access rights */
+   ACLLIST *next;
++};
++
++/* ANNOTATION Response */
++
++#define ANNOTATION_VALUES struct annotation_value_list
++
++ANNOTATION_VALUES {
++	char *attr;
++	char *value;
++	ANNOTATION_VALUES *next;
++};
++
++#define ANNOTATION struct annotation
++
++ANNOTATION {
++	char *mbox;
++	char *entry;
++	ANNOTATION_VALUES * values;
+ };
+ 
+ /* Quota resource list */
+@@ -1353,6 +1373,7 @@ typedef void (*logouthook_t) (void *data
+ typedef void (*logouthook_t) (void *data);
+ typedef char *(*sslclientcert_t) (void);
+ typedef char *(*sslclientkey_t) (void);
++typedef void (*getannotation_t) (MAILSTREAM *stream,ANNOTATION* annot);
+ 
+ /* Globals */
+ 
+@@ -1771,7 +1792,10 @@ SORTPGM *mail_newsortpgm (void);
+ SORTPGM *mail_newsortpgm (void);
+ THREADNODE *mail_newthreadnode (SORTCACHE *sc);
+ ACLLIST *mail_newacllist (void);
++ANNOTATION* mail_newannotation(void);
++ANNOTATION_VALUES* mail_newannotationvalue(void);
+ QUOTALIST *mail_newquotalist (void);
++void mail_free_annotation(ANNOTATION **a);
+ void mail_free_body (BODY **body);
+ void mail_free_body_data (BODY *body);
+ void mail_free_body_parameter (PARAMETER **parameter);
+diff -r 217555555c77 src/mtest/mtest.c
+--- a/src/mtest/mtest.c	Thu Feb 21 17:37:37 2008 +0100
++++ b/src/mtest/mtest.c	Thu Feb 21 17:38:15 2008 +0100
+@@ -145,6 +145,8 @@ int main ()
+ #endif
+   return NIL;
+ }
++
++void mm_annotation (MAILSTREAM *stream, ANNOTATION *a);
+ 
+ /* MM command loop
+  * Accepts: MAIL stream
+@@ -195,6 +197,28 @@ void mm (MAILSTREAM *stream,long debug)
+ 	mail_setflag (stream,arg,"\\DELETED");
+       else puts ("?Bad message number");
+       break;
++    case 'A':
++      {
++        char parms[MAILTMPLEN];
++        prompt("Annotation: ",parms);
++        if (parms) {
++          mail_parameters(stream,SET_ANNOTATION,mm_annotation);
++          STRINGLIST *entries = mail_newstringlist();
++          STRINGLIST *cur = entries;
++          cur->text.size = strlen((char *) (cur->text.data = (unsigned char*)cpystr (parms)));
++          cur->next = NIL;
++          
++          STRINGLIST *attributes = mail_newstringlist();
++          cur = attributes;
++          cur->text.size = strlen((char *) (cur->text.data = (unsigned char*)cpystr ("*")));
++          cur->next = NIL;
++          
++          imap_getannotation(stream,"INBOX",entries,attributes);
++          mail_free_stringlist(&entries);
++          mail_free_stringlist(&attributes);
++        }
++      }
++      break;  
+     case 'E':			/* Expunge command */
+       mail_expunge (stream);
+       last = 0;
+@@ -347,7 +371,7 @@ void mm (MAILSTREAM *stream,long debug)
+     case '?':			/* ? command */
+       puts ("Body, Check, Delete, Expunge, Find, GC, Headers, Literal,");
+       puts (" MailboxStatus, New Mailbox, Overview, Ping, Quit, Send, Type,");
+-      puts ("Undelete, Xit, +, -, or <RETURN> for next message");
++      puts ("Undelete, Xit,Annotation, +, -, or <RETURN> for next message");
+       break;
+     default:			/* bogus command */
+       printf ("?Unrecognized command: %s\n",cmd);
+@@ -600,6 +624,18 @@ void prompt (char *msg,char *txt)
+ 
+ /* Interfaces to C-client */
+ 
++void mm_annotation (MAILSTREAM *stream, ANNOTATION *a)
++{
++  if(a){
++    fprintf(stderr,"mailbox: %s\nentry: %s\n",a->mbox,a->entry);
++    ANNOTATION_VALUES * v = a->values;
++    while(v){
++      fprintf(stderr,"attr: %s, value: %s\n",v->attr,v->value);
++      v = v->next;
++    }
++  }
++}
++
+ 
+ void mm_searched (MAILSTREAM *stream,unsigned long number)
+ {

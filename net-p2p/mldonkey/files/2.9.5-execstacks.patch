@@ -1,0 +1,44 @@
+diff -ur mldonkey-2.9.5.orig/src/utils/lib/md4_i386.s mldonkey-2.9.5/src/utils/lib/md4_i386.s
+--- mldonkey-2.9.5.orig/src/utils/lib/md4_i386.s	2008-06-30 17:45:37.000000000 +0200
++++ mldonkey-2.9.5/src/utils/lib/md4_i386.s	2008-06-30 17:48:10.000000000 +0200
+@@ -934,3 +934,7 @@
+ 
+ 	.data
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++
+diff -ur mldonkey-2.9.5.orig/src/utils/lib/md4_i486.s mldonkey-2.9.5/src/utils/lib/md4_i486.s
+--- mldonkey-2.9.5.orig/src/utils/lib/md4_i486.s	2008-06-30 17:45:37.000000000 +0200
++++ mldonkey-2.9.5/src/utils/lib/md4_i486.s	2008-06-30 17:48:21.000000000 +0200
+@@ -1091,3 +1091,7 @@
+ 
+ 	.data
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++
+diff -ur mldonkey-2.9.5.orig/src/utils/lib/md4_i586.s mldonkey-2.9.5/src/utils/lib/md4_i586.s
+--- mldonkey-2.9.5.orig/src/utils/lib/md4_i586.s	2008-06-30 17:45:37.000000000 +0200
++++ mldonkey-2.9.5/src/utils/lib/md4_i586.s	2008-06-30 17:48:27.000000000 +0200
+@@ -1047,3 +1047,7 @@
+ 
+ 	.data
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++
+diff -ur mldonkey-2.9.5.orig/src/utils/lib/md4_i686.s mldonkey-2.9.5/src/utils/lib/md4_i686.s
+--- mldonkey-2.9.5.orig/src/utils/lib/md4_i686.s	2008-06-30 17:45:37.000000000 +0200
++++ mldonkey-2.9.5/src/utils/lib/md4_i686.s	2008-06-30 17:48:34.000000000 +0200
+@@ -1009,3 +1009,7 @@
+ 
+ 	.data
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++

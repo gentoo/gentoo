@@ -1,0 +1,64 @@
+Use system bzip2 library. Get CC and CFLAGS from environment.
+ -jer (bug #249140)
+
+
+--- a/src/Makefile	2004-12-19 14:51:30.000000000 +0100
++++ b/src/Makefile	2008-12-15 22:50:04.000000000 +0100
+@@ -2,16 +2,16 @@
+ # Please read docs/Readme.html, or http://www.analog.cx/
+ # This is a general Unix-like Makefile: Makefiles for other OS's can be found
+ #   in the "build" directory.
+-CC = gcc           # which compiler to use: eg cc, acc, gcc. NB Different
++# CC is set in the environment.
+ #                    compilers need different CFLAGS, e.g., -O instead of -O2.
+ MAKE = make        # which "make" to use
+-CFLAGS = -O2    # options, e.g. for optimisation or ANSI compilation.
++# CFLAGS is set in the environment.
+ #                 Some OS's need -D_FILE_OFFSET_BITS=64 to support files > 2MB.
+ #                 HP/UX cc needs CFLAGS = -Aa (HP/UX 9) or -Ae (HP/UX 10)
+ #                 BeOS needs CFLAGS = -O2 -Wl,-L/boot/home/config/lib
+ #                 BS2000/OSD needs CFLAGS = -XLLML -XLLMK
+ #                 NeXTSTEP needs CFLAGS = -O2 -pipe -no-precomp 
+-DEFS =          # any combination of -DNOPIPES -DNODNS -DNODIRENT -DNOGLOB ...
++DEFS = -DHAVE_GD -DHAVE_PCRE -DHAVE_ZLIB -DHAVE_BZLIB
+ #                 ... -DNOOPEN -DNOFOLLOW -DNOALARM -DNOGRAPHICS -DNOGMTIME ...
+ #                 ... -DEBCDIC -DUSE_PLAIN_SETJMP ...
+ #                 ... -DHAVE_GD -DHAVE_ZLIB -DHAVE_BZLIB -DHAVE_PCRE ...
+@@ -30,7 +30,7 @@
+ #
+ OS = UNIX         # Operating system: UNIX, DOS, WIN32, MAC, OS2, OSX, VMS
+ #                   RISCOS, BEOS, NEXTSTEP, MPEIX, BS2000, AS400, OS390
+-LIBS = -lm  # extra libraries needed; most platforms (but not OS X or BeOS)
++LIBS = -lgd -lz -lbz2 -lpcre -lm -lpng -ljpeg
+ #               need -lm LAST
+ #             if you defined HAVE_GD above you also need -lgd -lpng -ljpeg -lz
+ #             if you defined HAVE_ZLIB above you also need -lz
+@@ -54,7 +54,7 @@
+ 	input.o macinput.o macstuff.o output.o output2.o outcro.o outhtml.o \
+ 	outlatex.o outplain.o outxhtml.o outxml.o process.o settings.o sort.o \
+ 	tree.o utils.o win32.o
+-SUBDIRS = bzip2 libgd libpng pcre unzip zlib
++SUBDIRS = libgd libpng pcre unzip zlib
+ SUBDIROBJS = libgd/gd.o  libgd/gd_io.o libgd/gd_io_file.o libgd/gd_png.o \
+ 	libgd/gdfontf.o libgd/gdfonts.o libgd/gdtables.o \
+ 	libpng/png.o libpng/pngerror.o libpng/pngmem.o libpng/pngset.o \
+@@ -63,9 +63,7 @@
+ 	zlib/adler32.o zlib/compress.o zlib/crc32.o zlib/deflate.o \
+ 	zlib/gzio.o zlib/infblock.o zlib/infcodes.o zlib/inffast.o \
+ 	zlib/inflate.o zlib/inftrees.o zlib/infutil.o zlib/trees.o \
+-	zlib/uncompr.o zlib/zutil.o unzip/ioapi.o unzip/unzip.o \
+-	bzip2/bzlib.o bzip2/blocksort.o bzip2/compress.o bzip2/crctable.o \
+-	bzip2/decompress.o bzip2/huffman.o bzip2/randtable.o
++	zlib/uncompr.o zlib/zutil.o unzip/ioapi.o unzip/unzip.o
+ HEADERS = anlghead.h anlghea2.h anlghea3.h anlghea4.h macdir.h \
+ 	pcre/pcre.h libgd/gd.h libgd/gdfontf.h libgd/gdfonts.h unzip/unzip.h \
+ 	zlib/zlib.h bzip2/bzlib.h
+@@ -77,8 +75,6 @@
+ 
+ # There doesn't seem to be a good way to write all these rules in a generic
+ # form that works for all "make" programs
+-bzip2: ALWAYS
+-	cd bzip2 && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 
+ libgd: ALWAYS
+ 	cd libgd && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'

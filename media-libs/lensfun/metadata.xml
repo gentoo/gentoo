@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>graphics</herd>
+	<longdescription lang="en">
+The project provides a database of photographic lenses and a library that allows advanced access to the database including functions to correct images based on intimate knowledge of lens characteristics and calibration data.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">lensfun</remote-id>
+	</upstream>
+</pkgmetadata>

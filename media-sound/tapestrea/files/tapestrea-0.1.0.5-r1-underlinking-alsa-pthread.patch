@@ -1,0 +1,34 @@
+--- a/src/makefile.alsa
++++ b/src/makefile.alsa
+@@ -3,7 +3,7 @@
+ CHUCK_DIR=../scripting/chuck-1.2.1.2/src
+ INCLUDES=-I$(CHUCK_DIR)
+ FLAGS=-D__LINUX_ALSA__ `pkg-config --cflags gtk+-2.0` $(CFLAGS) -c
+-LIBS=-lasound -lstdc++ -lm -lsndfile -lGL -lGLU -lglut `pkg-config --libs gtk+-2.0`
++LIBS=-lasound -lstdc++ -lm -lsndfile -lGL -lGLU -lglut `pkg-config --libs gtk+-2.0` -lpthread
+ 
+ TAPS_OBJS= taps_analysis.o taps_birdbrain.o taps_driver.o \
+ 	taps_featurelibrary.o taps_pvc.o taps_regioncomparer.o \
+--- a/scripting/chuck-1.2.1.2/src/makefile.alsa
++++ b/scripting/chuck-1.2.1.2/src/makefile.alsa
+@@ -5,7 +5,7 @@
+ INCLUDES=
+ CFLAGS?= -O3
+ FLAGS= -D__LINUX_ALSA__ -c $(CFLAGS)
+-LIBS=-lasound -lstdc++ -ldl -lm
++LIBS=-lasound -lstdc++ -lm -lpthread -ldl
+ SF_OBJ=util_sndfile.o
+ 
+ ifneq ($(CHUCK_DEBUG),)
+diff -Naur a/src/makefile.alsa b/src/makefile.alsa
+--- a/src/makefile.alsa	2014-01-30 02:21:02.173891275 +0100
++++ b/src/makefile.alsa	2014-01-30 02:21:23.026891253 +0100
+@@ -48,7 +48,7 @@
+ OBJS+=ui_scripting.o
+ # scripting disable needs most of chuck anyway due to includes 
+ # in latest rtaudio.cpp, so always keep this line:
+-LIBS+=$(CHUCK_OBJS)
++LIBS+=$(CHUCK_OBJS) -ldl
+ 
+ # uncomment to use preconfigured sndfile
+ #FLAGS+=-D__USE_SNDFILE_PRECONF__

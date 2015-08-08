@@ -1,0 +1,31 @@
+diff -ruN tkispell-0.18.orig/Makefile.PL tkispell-0.18/Makefile.PL
+--- tkispell-0.18.orig/Makefile.PL	2004-02-28 20:38:46.000000000 +0100
++++ tkispell-0.18/Makefile.PL	2014-10-11 10:43:09.372002632 +0200
+@@ -1,11 +1,11 @@
+ use ExtUtils::MakeMaker;
+ 
+-my $ispell_bin = `which ispell`;
++my $ispell_bin = `which ispell-aspell`;
+ # The first match is for Solaris which.  The second is for 
+ # Linux which.
+-if (($ispell_bin =~ /no ispell/) || (length($ispell_bin) == 0)) {
+-    print "Could not find locate ispell.  Make sure that\n";
+-    print "the ispell program is installed in a directory\n";
++if (($ispell_bin =~ /no ispell-aspell/) || (length($ispell_bin) == 0)) {
++    print "Could not find locate ispell-aspell.  Make sure that\n";
++    print "the ispell-aspell program is installed in a directory\n";
+     print "named in the PATH environment variable.\n";  
+     exit 1;
+ }
+diff -ruN tkispell-0.18.orig/tkispell tkispell-0.18/tkispell
+--- tkispell-0.18.orig/tkispell	2004-03-14 03:50:34.000000000 +0100
++++ tkispell-0.18/tkispell	2014-10-11 10:43:58.772005395 +0200
+@@ -14,7 +14,7 @@
+ if ($lang =~ /^C$/ || ! defined ($lang)) {$lang = 'default'; }
+ my $hdict = $ENV{HOME}."/.ispell_$lang"; # Personal dictionary. 
+ 
+-my $ispell_prog = `which ispell`;  
++my $ispell_prog = `which ispell-aspell`;  
+ chomp $ispell_prog;
+ my ($cw, $b1, @misspelledlist, @replacementlist, @addlist, $midx);
+ my $ifname = '';

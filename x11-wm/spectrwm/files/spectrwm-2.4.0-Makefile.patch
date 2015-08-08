@@ -1,0 +1,17 @@
+--- spectrwm-2.4.0/linux/Makefile
++++ spectrwm-2.4.0/linux/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS+= -std=c99 -Wmissing-prototypes -Wall -Wextra -Wshadow -Wno-uninitialized -g
++CFLAGS+= -std=c99 -Wmissing-prototypes -Wall -Wextra -Wshadow -Wno-uninitialized
+ CFLAGS+= -D_GNU_SOURCE -I. -I/usr/include/freetype2 -DSWM_LIB=\"libswmhack.so.$(LVERS)\"
+ LDADD+= -lX11 -lX11-xcb -lxcb -lxcb-icccm -lxcb-randr -lxcb-keysyms -lxcb-util -lxcb-xtest -lXft -lXcursor
+ 
+@@ -29,7 +29,7 @@
+ 	$(CC) $(LDFLAGS) -o $@ $+ $(LDADD)
+ 
+ %.so: %.c
+-	$(CC) $(CFLAGS) -c -fpic -DPIC $+ -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) -c -fpic -DPIC $+ -o $@
+ 
+ libswmhack.so.$(LVERS): swm_hack.so
+ 	$(CC) $(LDFLAGS) -Wl,-soname,$@ -shared -fpic -o libswmhack.so.$(LVERS) swm_hack.so $(LDADD)

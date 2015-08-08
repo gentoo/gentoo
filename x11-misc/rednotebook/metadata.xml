@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="libyaml">enable libyaml support</flag>
+		<flag name="spell">enable gtk-spell support</flag>
+	</use>
+	<maintainer>
+		<email>mattm@gentoo.org</email>
+		<name>Matthew Marlowe</name>
+	</maintainer>
+	<longdescription lang="en">
+A graphical journal with calendar, templates, tags, keyword searching, and export functionality.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">rednotebook</remote-id>
+	</upstream>
+</pkgmetadata>

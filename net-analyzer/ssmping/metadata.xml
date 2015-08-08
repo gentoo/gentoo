@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>netmon</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>venaas@uninett.no</email>
+		<name>Stig Venaas (upstream)</name>
+	</maintainer>
+</pkgmetadata>

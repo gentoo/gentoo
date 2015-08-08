@@ -1,0 +1,4 @@
+# /etc/conf.d/cherokee: config file for /etc/init.d/cherokee
+
+#CHEROKEE_OPTS="--config=/etc/cherokee/cherokee.conf --valgrind"
+CHEROKEE_OPTS=""

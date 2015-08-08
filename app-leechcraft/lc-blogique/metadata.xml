@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>leechcraft</herd>
+<use>
+	<flag name="metida">Support for the LiveJournal blogging platform</flag>
+	<flag name="hestia">Allows one to keep a local blog</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">
+  llvmpy is a Python wrapper around the LLVM C++ library which allows
+  simple access to compiler tools.
+</longdescription>
+  <upstream>
+    <remote-id type="github">llvmpy/llvmpy</remote-id>
+  </upstream>
+</pkgmetadata>

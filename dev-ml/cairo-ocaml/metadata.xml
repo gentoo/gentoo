@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang='en'>
+   This package contains all the development stuff you need to use Cairo in
+   your OCaml programs. The folowing backends are supported: PostScript,
+   PDF, PNG, In-memory images and X11.
+</longdescription>
+<use>
+  <flag name='pango'>Enable support for <pkg>x11-libs/pango</pkg></flag>
+</use>
+</pkgmetadata>

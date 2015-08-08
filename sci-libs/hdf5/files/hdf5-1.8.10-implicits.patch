@@ -1,0 +1,54 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1494,6 +1494,9 @@ case "$host_cpu-$host_vendor-$host_os" in
+     ## however, we do not do this since it breaks the big test on some 
+     ## older platforms.
+     AM_CPPFLAGS="-D_BSD_SOURCE $AM_CPPFLAGS"
++
++    dnl _GNU_SOURCE is needed for vasprintf
++    AM_CPPFLAGS="-D_GNU_SOURCE $AM_CPPFLAGS"
+     ;;
+ esac
+ 
+--- a/hl/src/H5LTanalyze.c
++++ b/hl/src/H5LTanalyze.c
+@@ -49,6 +49,7 @@
+ #define YY_FLEX_MINOR_VERSION 5
+ 
+ #include <stdio.h>
++#include "H5pubconf.h"
+ #ifdef H5_HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
+--- a/test/cache_common.h
++++ b/test/cache_common.h
+@@ -702,5 +702,9 @@ void validate_mdc_config(hid_t file_id,
+                          hbool_t compare_init,
+                          int test_num);
+ 
++hbool_t resize_configs_are_equal(const H5C_auto_size_ctl_t *a,
++                                 const H5C_auto_size_ctl_t *b,
++                                 hbool_t compare_init);
++
+ #endif /* _CACHE_COMMON_H */
+ 
+--- a/tools/h5repack/testh5repack_detect_szip.c
++++ b/tools/h5repack/testh5repack_detect_szip.c
+@@ -18,6 +18,7 @@
+ #include "h5tools.h"
+ #include "h5tools_utils.h"
+ #include "h5test.h"
++#include "h5tools_utils.h"
+ 
+ 
+ /* Name of tool */
+--- a/tools/misc/talign.c
++++ b/tools/misc/talign.c
+@@ -23,6 +23,7 @@
+ 
+ #include "hdf5.h"
+ #include "H5private.h"
++#include "h5tools.h"
+ 
+ const char *fname = "talign.h5";
+ const char *setname = "align";

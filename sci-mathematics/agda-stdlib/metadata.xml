@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <herd>haskell</herd>
+  <longdescription lang="en">
+  Agda standard library.
+</longdescription>
+  <use>
+    <flag name="ffi">Install agda-lib-ffi for compilation using the MAlonzo backend</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">agda/agda-stdlib</remote-id>
+  </upstream>
+</pkgmetadata>

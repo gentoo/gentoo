@@ -1,0 +1,66 @@
+--- -	2003-02-15 23:35:46.000000000 +0800
++++ locking.c	2003-02-15 23:19:11.000000000 +0800
+@@ -45,6 +45,7 @@
+ #include <stdarg.h>
+ #include "pathnames.h"
+ #include "mail.local.h"
++#include "open_with_exlock.h"
+ 
+ static char lpath[MAXPATHLEN];
+ 
+@@ -93,7 +94,7 @@
+ 				}
+ 				goto again;
+ 			}
+-			if ((lfd = open(lpath, O_CREAT|O_WRONLY|O_EXCL|O_EXLOCK,
++			if ((lfd = open_with_exlock(lpath, O_CREAT|O_WRONLY|O_EXCL,
+ 			    S_IRUSR|S_IWUSR)) != -1)
+ 				break;
+ again:
+@@ -104,7 +105,7 @@
+ 				return(-1);
+ 			}
+ 			if (tries > 9 &&
+-			    (lfd = open(lpath, O_WRONLY|O_EXLOCK, 0)) != -1) {
++			    (lfd = open_with_exlock(lpath, O_WRONLY, 0)) != -1) {
+ 				if (fstat(lfd, &fsb) != -1 &&
+ 				    lstat(lpath, &sb) != -1) {
+ 					if (fsb.st_dev == sb.st_dev &&
+@@ -169,3 +170,4 @@
+ 	if (isfatal)
+ 		exit(1);
+ }
++
+--- -	2003-02-15 23:37:13.000000000 +0800
++++ mail.local.c	2003-02-15 23:20:50.000000000 +0800
+@@ -66,6 +66,7 @@
+ #include <string.h>
+ #include "pathnames.h"
+ #include "mail.local.h"
++#include "open_with_exlock.h"
+ 
+ int
+ main(int argc, char *argv[])
+@@ -218,7 +219,7 @@
+ 			merr(NOTFATAL, "%s: %s", path, strerror(errno));
+ 			goto bad;
+ 		}
+-		if ((mbfd = open(path, O_APPEND|O_CREAT|O_EXCL|O_WRONLY|O_EXLOCK,
++		if ((mbfd = open_with_exlock(path, O_APPEND|O_CREAT|O_EXCL|O_WRONLY,
+ 		     S_IRUSR|S_IWUSR)) < 0) {
+ 			if (errno == EEXIST) {
+ 				/* file appeared since lstat */
+@@ -244,7 +245,7 @@
+ 			merr(NOTFATAL, "%s: linked or special file", path);
+ 			goto bad;
+ 		}
+-		if ((mbfd = open(path, O_APPEND|O_WRONLY|O_EXLOCK,
++		if ((mbfd = open_with_exlock(path, O_APPEND|O_WRONLY,
+ 		    S_IRUSR|S_IWUSR)) < 0) {
+ 			merr(NOTFATAL, "%s: %s", path, strerror(errno));
+ 			goto bad;
+@@ -340,3 +341,4 @@
+ {
+ 	merr(FATAL, "usage: mail.local [-lL] [-f from] user ...");
+ }
++

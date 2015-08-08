@@ -1,0 +1,13 @@
+Index: iscan-2.21.0/configure.ac
+===================================================================
+--- iscan-2.21.0.orig/configure.ac
++++ iscan-2.21.0/configure.ac
+@@ -68,7 +68,7 @@ AC_PROG_CXX
+ #  to be larger than that for the gcc-3.[23] packages (as long as both
+ #  are distributed) for smooth upgrade paths.
+ 
+-if test x"$CXX" = xg++; then
++if test "$GXX" = "yes"; then
+     AC_MSG_CHECKING([C++ ABI version])
+     CXX_ABI="`$CXX -E -dM - < /dev/null | $AWK '/GXX_ABI/ { print $3 }'`"
+     AC_MSG_RESULT([$CXX_ABI])

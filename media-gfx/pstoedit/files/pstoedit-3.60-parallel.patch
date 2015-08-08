@@ -1,0 +1,49 @@
+--- pstoedit-3.60/src/Makefile.am.orig
++++ pstoedit-3.60/src/Makefile.am
+@@ -87,6 +87,7 @@
+         $(sample_drivers_src)                   
+ libp2edrvstd_la_LIBADD=libpstoedit.la
+ libp2edrvstd_la_LDFLAGS=-no-undefined -module
++libp2edrvstd_la_DEPENDENCIES = libpstoedit.la
+ 
+ #libp2edrvplugins_la_SOURCES=drvmif.cpp drvcgm.cpp drvrtf.cpp drvwwmf.cpp
+ #libp2edrvplugins_la_LIBADD=
+@@ -96,25 +97,30 @@
+ libp2edrvlplot_la_SOURCES=drvlplot.cpp drvlplot.h initlibrary.cpp
+ libp2edrvlplot_la_LIBADD=$(LIBPLOTTER_LDFLAGS) libpstoedit.la
+ libp2edrvlplot_la_LDFLAGS=-no-undefined -module
++libp2edrvlplot_la_DEPENDENCIES = libpstoedit.la
+ 
+ libp2edrvswf_la_SOURCES=drvswf.cpp drvswf.h initlibrary.cpp
+ libp2edrvswf_la_LIBADD=$(LIBMING_LDFLAGS) libpstoedit.la
+ libp2edrvswf_la_LDFLAGS=-no-undefined -module
++libp2edrvswf_la_DEPENDENCIES = libpstoedit.la
+ 
+ # note the __ stand for ++ - automake treats all no alphanums chars as _
+ libp2edrvmagick___la_SOURCES=drvmagick++.cpp drvmagick++.h initlibrary.cpp
+ libp2edrvmagick___la_LIBADD=${LIBMAGICK_LDFLAGS} libpstoedit.la
+ libp2edrvmagick___la_LDFLAGS=-no-undefined -module
++libp2edrvmagick___la_DEPENDENCIES = libpstoedit.la
+ # moved to configure.ac because needed only for g++ libp2edrvmagick___la_CPPFLAGS=$(LIBMAGICK_CFLAGS) $(AM_CPPFLAGS) -Wno-long-long
+ 
+ if USE_EMFBYSOURCE
+ libp2edrvwmf_la_SOURCES=emflib.cpp drvwmf.cpp drvwmf.h initlibrary.cpp
+ libp2edrvwmf_la_LIBADD=libpstoedit.la 
+ libp2edrvwmf_la_LDFLAGS=-no-undefined -module
++libp2edrvwmf_la_DEPENDENCIES = libpstoedit.la
+ else
+ libp2edrvwmf_la_SOURCES=drvwmf.cpp drvwmf.h initlibrary.cpp
+ libp2edrvwmf_la_LIBADD=$(LIBEMF_LDFLAGS) libpstoedit.la 
+ libp2edrvwmf_la_LDFLAGS=-no-undefined -module
++libp2edrvwmf_la_DEPENDENCIES = libpstoedit.la
+ endif
+ 
+ libpstoedit_la_SOURCES =			\
+@@ -139,6 +145,7 @@
+ pstoedit_SOURCES = cmdmain.cpp
+ pstoedit_LDADD = libpstoedit.la ${LIBLD_LDFLAGS}
+ pstoedit_LDFLAGS = -no-undefined
++pstoedit_DEPENDENCIES = libpstoedit.la
+ 
+ pkginclude_HEADERS =				\
+ 	pstoedit.h				\

@@ -1,0 +1,11 @@
+--- configure.old	2014-10-02 15:41:45.692471540 +0200
++++ configure.ac	2014-10-02 15:42:11.122743182 +0200
+@@ -835,7 +835,7 @@
+ AM_CONDITIONAL(ENABLE_RSYSLOGRT, test x$enable_rsyslogrt = xyes)
+ RSRT_CFLAGS="\$(RSRT_CFLAGS1) \$(LIBESTR_CFLAGS) \$(JSON_C_CFLAGS)"
+ if test "$GCC" = "yes"
+-then RSRT_CFLAGS="$RSRT_CFLAGS -W -std=c99 -Wall -Wformat-security -Wshadow -Wcast-align -Wpointer-arith -Wmissing-format-attribute -g"
++then RSRT_CFLAGS="$RSRT_CFLAGS -W -std=c99 -Wall -Wformat-security -Wshadow -Wcast-align -Wpointer-arith -Wmissing-format-attribute"
+ fi
+ RSRT_LIBS="\$(RSRT_LIBS1) \$(LIBESTR_LIBS) \$(JSON_C_LIBS)"
+ AC_SUBST(RSRT_CFLAGS1)

@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the Erlang Public License 1.1
+# $Id$
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting Erlang Port Mapper Daemon"
+	start-stop-daemon --start --quiet --user nobody --group nobody --exec /usr/bin/epmd -- -daemon
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Erlang Port Mapper Daemon"
+	/usr/bin/epmd -kill >/dev/null
+	eend $?
+}

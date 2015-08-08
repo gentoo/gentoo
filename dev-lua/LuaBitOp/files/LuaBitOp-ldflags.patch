@@ -1,0 +1,13 @@
+Index: LuaBitOp-1.0.1/Makefile
+===================================================================
+--- LuaBitOp-1.0.1.orig/Makefile
++++ LuaBitOp-1.0.1/Makefile
+@@ -14,7 +14,7 @@ LUA= lua
+ 
+ CC= gcc
+ SOCFLAGS= -fPIC
+-SOCC= $(CC) -shared $(SOCFLAGS)
++SOCC= $(CC) -shared $(SOCFLAGS) $(LDFLAGS)
+ CFLAGS += -Wall $(SOCFLAGS) $(DEFINES) $(INCLUDES)
+ RM= rm -f
+ INSTALL= install -p

@@ -1,0 +1,14 @@
+Link against -lm (mathlib) because ScaleSpace.c (which is part of the internal libsift.a)
+is using the exp() function, see http://bugs.gentoo.org/472150
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -121,7 +121,7 @@
+ 
+ ADD_LIBRARY(libsift STATIC ${LIBSIFT_SOURCES})
+ 
+-set(all_libs libsift ${JPEG_LIBRARIES} ${TIFF_LIBRARIES}
++set(all_libs libsift m ${JPEG_LIBRARIES} ${TIFF_LIBRARIES}
+     ${PNG_LIBRARIES} ${ZLIB_LIBRARIES} ${PANO13_LIBRARIES} ${LIBXML2_LIBRARIES}) 
+ 
+ add_executable(generatekeys GenerateKeys.c)

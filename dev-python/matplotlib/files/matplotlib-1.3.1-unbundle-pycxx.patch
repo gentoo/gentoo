@@ -1,0 +1,22 @@
+diff --git a/setupext.py b/setupext.py
+index 7b629b6..8131bb1 100644
+--- a/setupext.py
++++ b/setupext.py
+@@ -674,16 +674,9 @@ class CXX(SetupPackage):
+     name = 'pycxx'
+ 
+     def check(self):
+-        if sys.version_info[0] >= 3:
+-            # There is no version of PyCXX in the wild that will work
+-            # with Python 3.x
+-            self.__class__.found_external = False
+-            return ("Official versions of PyCXX are not compatible with "
+-                    "Python 3.x.  Using local copy")
+-
+         self.__class__.found_external = True
+         old_stdout = sys.stdout
+-        sys.stdout = io.BytesIO()
++        #sys.stdout = io.BytesIO()
+         try:
+             import CXX
+         except ImportError:

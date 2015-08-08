@@ -1,0 +1,56 @@
+--- kiki/kodilib/src/handler/KPickable.h.orig	2003-04-09 05:56:01.000000000 +0300
++++ kiki/kodilib/src/handler/KPickable.h	2008-10-18 17:23:42.000000000 +0300
+@@ -9,6 +9,8 @@
+ #include "KIntrospection.h"
+ #include <vector>
+ 
++#include <limits.h>
++
+ #define DEBUG_PICKING		false
+ 
+ class KPickable;
+--- kiki/kodilib/src/tools/KIntrospection.h.orig	2003-04-09 05:56:03.000000000 +0300
++++ kiki/kodilib/src/tools/KIntrospection.h	2008-10-18 17:22:03.000000000 +0300
+@@ -11,6 +11,7 @@
+ #endif
+ 
+ #include <string>
++#include <cstring>
+ 
+ // --------------------------------------------------------------------------------------------------------
+ class KClassInfo
+--- kiki/kodilib/src/tools/KStringTools.cpp.orig	2003-04-14 00:42:13.000000000 +0300
++++ kiki/kodilib/src/tools/KStringTools.cpp	2008-10-18 17:25:48.000000000 +0300
+@@ -6,9 +6,10 @@
+ #include "KStringTools.h"
+ #include "KVector.h"
+ 
+-#include <sys/types.h> 	// INT_MAX
+ #include <stdio.h>
+ 
++#include <limits.h> // INT_MAX
++
+ // --------------------------------------------------------------------------------------------------------
+ void kStringInsertStringBehindTags ( std::string & str, const std::string & insertString, 
+                                      const std::string & tag )
+--- kiki/kodilib/src/tools/KStringTools.h.orig	2003-04-09 05:56:04.000000000 +0300
++++ kiki/kodilib/src/tools/KStringTools.h	2008-10-18 17:22:49.000000000 +0300
+@@ -7,6 +7,7 @@
+ #define __KStringTools
+ 
+ #include <string>
++#include <cstring>
+ #include <vector>
+ #include <stdarg.h>
+ 
+--- kiki/kodilib/src/tools/KXMLTools.cpp.orig	2003-04-14 00:42:13.000000000 +0300
++++ kiki/kodilib/src/tools/KXMLTools.cpp	2008-10-18 17:26:42.000000000 +0300
+@@ -8,6 +8,8 @@
+ #include "KSeparatedMatrix.h"
+ #include <stdio.h>
+ 
++#include <cstdlib>
++
+ // --------------------------------------------------------------------------------------------------------
+ std::string kXMLTag ( const std::string & name, const std::string & attributes, int depth )
+ {

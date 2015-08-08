@@ -1,0 +1,48 @@
+#!/sbin/runscript
+
+ceph_conf="${ceph_conf:-/etc/ceph/ceph.conf}"
+extra_commands="reload"
+type=${RC_SVCNAME:5:3}
+id=${RC_SVCNAME:9}
+id=${id:-"0"}
+command="/usr/bin/ceph-${type}"
+pidfile="/run/ceph/${type}.${id}.pid"
+command_args="-i ${id} --pid-file ${pidfile} -c ${ceph_conf}"
+
+depend() {
+	after net ntpd ntp-client chronyd
+	before netmount
+}
+
+is_type_valid() {
+	case ${type} in
+		mon|mds|osd) return 0;;
+		*) return 1;;
+	esac
+}
+
+start_pre() {
+        checkpath -d -q $(dirname ${pidfile})
+}
+
+start() {
+	ebegin "Starting Ceph ${type}.${id}"
+	if ! is_type_valid ;then
+		eerror "Please give valid Ceph Server Type: mds, mon, osd"
+		return 1
+	fi
+	${command} ${command_args}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Ceph ${type}.${id}"
+	start-stop-daemon --stop --pidfile ${pidfile}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading Ceph ${type}.${id}"
+	start-stop-daemon --signal 1 --pidfile ${pidfile}
+	eend $?
+}

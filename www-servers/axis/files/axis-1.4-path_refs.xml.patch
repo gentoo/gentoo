@@ -1,0 +1,20 @@
+--- xmls/path_refs.xml.orig	2006-04-23 03:56:52.000000000 +0200
++++ xmls/path_refs.xml	2006-10-01 15:31:34.000000000 +0200
+@@ -1,4 +1,5 @@
+   <path id="classpath">
++  	<!--
+     <pathelement location="${xercesImpl.jar}"/>
+     <pathelement location="${xmlParserAPIs.jar}"/>
+     <pathelement location="${xalan.jar}"/>
+@@ -14,10 +15,10 @@
+     <pathelement location="${j2ee.jar}"/>
+     <pathelement location="${junit.jar}"/>
+     <pathelement location="${servlet.jar}"/>
++	-->
+     <fileset dir="${lib.dir}">
+         <include name="**/*.jar"/>
+     </fileset>
+-    <pathelement path="${java.class.path}"/>
+     <pathelement location="${build.dest}" />
+     <pathelement location="${build.dir}/tools" />
+     <pathelement location="${build.lib}/axis-ant.jar" />

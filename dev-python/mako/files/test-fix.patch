@@ -1,0 +1,11 @@
+diff -ur Mako-0.7.0.orig/test/test_template.py Mako-0.7.0/test/test_template.py
+--- test/test_template.py	2012-03-31 07:52:02.000000000 +0800
++++ test/test_template.py	2012-04-11 20:25:23.797168875 +0800
+@@ -1,5 +1,5 @@
+ # -*- coding: utf-8 -*-
+-
++from __future__ import with_statement
+ from mako.template import Template, ModuleTemplate
+ from mako.lookup import TemplateLookup
+ from mako.ext.preprocessors import convert_comments
+

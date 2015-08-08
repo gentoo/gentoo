@@ -1,0 +1,11 @@
+--- interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c.orig	2011-06-15 20:01:31.000000000 +0200
++++ interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c	2011-06-15 20:01:45.000000000 +0200
+@@ -64,7 +64,7 @@
+ 
+      DirectStream                 *stream;
+ 
+-     ByteIOContext                 pb;
++     AVIOContext                   pb;
+      AVFormatContext              *ctx;
+      AVStream                     *st;
+      void                         *iobuf;

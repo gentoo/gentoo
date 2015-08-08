@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting rwhod"
+	/sbin/start-stop-daemon --start --quiet --exec /usr/sbin/rwhod -- $RWHOD_OPTIONS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rwhod"
+	/sbin/start-stop-daemon --stop --quiet --name rwhod
+	eend $?
+}

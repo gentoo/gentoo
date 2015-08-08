@@ -1,0 +1,34 @@
+From c4072ed7bc923039e544319f52d0761b7a4600a4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 22 Apr 2013 18:02:37 +0200
+Subject: [PATCH] Trigger 'EGGing' mode only by 'bdist_egg' and not 'egg_info'.
+
+We use the 'egg_info' command to explicitly enforce temporary EGG file
+location outside the source tree on Gentoo. As a result, our build
+command activates the 'EGGing' mode and wxPython is not installed
+properly.
+
+I believe that the 'EGGing' mode should be activated only by an explicit
+call to 'bdist_egg' command where the expected files are actually
+created.  The 'egg_info' command is a more broad one and is often used
+implicitly, e.g. by the 'install' command.
+---
+ config.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.py b/config.py
+index 4fbd83f..b45707d 100644
+--- a/config.py
++++ b/config.py
+@@ -23,7 +23,7 @@
+ import sys, os, glob, fnmatch, tempfile
+ import subprocess
+ 
+-EGGing = 'bdist_egg' in sys.argv or 'egg_info' in sys.argv
++EGGing = 'bdist_egg' in sys.argv
+ if not EGGing:
+     from distutils.core import setup, Extension
+ else:
+-- 
+1.8.1.5
+

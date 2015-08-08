@@ -1,0 +1,163 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_started_commands="reload"
+
+# This variable is used for controlling whether or not to run exportfs -ua;
+# see stop() for more information
+restarting=no
+
+# The binary locations
+exportfs=/usr/sbin/exportfs
+  mountd=/usr/sbin/rpc.mountd
+    nfsd=/usr/sbin/rpc.nfsd
+smnotify=/usr/sbin/sm-notify
+
+depend() {
+	local myneed=""
+	# XXX: no way to detect NFSv4 is desired and so need rpc.idmapd
+	myneed="${myneed} $(
+		awk '!/^[[:space:]]*#/ {
+			# clear the path to avoid spurious matches
+			$1 = "";
+			if ($0 ~ /[(][^)]*sec=(krb|spkm)[^)]*[)]/) {
+				print "rpc.svcgssd"
+				exit 0
+			}
+		}' /etc/exports /etc/exports.d/*.exports 2>/dev/null
+	)"
+	config /etc/exports /etc/exports.d/*.exports
+	need portmap rpc.statd ${myneed} ${NFS_NEEDED_SERVICES}
+	use ypbind net dns rpc.rquotad rpc.idmapd rpc.svcgssd
+	after quota
+}
+
+mkdir_nfsdirs() {
+	local d
+	for d in v4recovery v4root ; do
+		d="/var/lib/nfs/${d}"
+		[ ! -d "${d}" ] && mkdir -p "${d}"
+	done
+}
+
+waitfor_exportfs() {
+	local pid=$1
+	( sleep ${EXPORTFS_TIMEOUT:-30}; kill -9 ${pid} 2>/dev/null ) &
+	wait $1
+}
+
+mount_nfsd() {
+	if [ -e /proc/modules ] ; then
+		# Make sure nfs support is loaded in the kernel #64709
+		if ! grep -qs nfsd /proc/filesystems ; then
+			modprobe -q nfsd
+		fi
+		# Restart idmapd if needed #220747
+		if grep -qs nfsd /proc/modules ; then
+			killall -q -HUP rpc.idmapd
+		fi
+	fi
+
+	# This is the new "kernel 2.6 way" to handle the exports file
+	if grep -qs nfsd /proc/filesystems ; then
+		if ! mountinfo -q /proc/fs/nfsd ; then
+			ebegin "Mounting nfsd filesystem in /proc"
+			mount -t nfsd -o nodev,noexec,nosuid nfsd /proc/fs/nfsd
+			eend $?
+		fi
+
+		local o
+		for o in ${OPTS_NFSD} ; do
+			echo "${o#*=}" > "/proc/fs/nfsd/${o%%=*}"
+		done
+	fi
+}
+
+start_it() {
+	ebegin "Starting NFS $1"
+	shift
+	"$@"
+	eend $?
+	ret=$((ret + $?))
+}
+start() {
+	mount_nfsd
+	mkdir_nfsdirs
+
+	# Exportfs likes to hang if networking isn't working.
+	# If that's the case, then try to kill it so the
+	# bootup process can continue.
+	if grep -qs '^[[:space:]]*/' /etc/exports /etc/exports.d/*.exports ; then
+		ebegin "Exporting NFS directories"
+		${exportfs} -r &
+		waitfor_exportfs $!
+		eend $?
+	fi
+
+	local ret=0
+	start_it mountd ${mountd} ${OPTS_RPC_MOUNTD}
+	start_it daemon ${nfsd} ${OPTS_RPC_NFSD}
+	[ -x "${smnotify}" ] && start_it smnotify ${smnotify} ${OPTS_SMNOTIFY}
+	return ${ret}
+}
+
+stop() {
+	local ret=0
+
+	ebegin "Stopping NFS mountd"
+	start-stop-daemon --stop --exec ${mountd}
+	eend $?
+	ret=$((ret + $?))
+
+	# nfsd sets its process name to [nfsd] so don't look for $nfsd
+	ebegin "Stopping NFS daemon"
+	start-stop-daemon --stop --name nfsd --user root --signal 2
+	eend $?
+	ret=$((ret + $?))
+	# in case things don't work out ... #228127
+	rpc.nfsd 0
+
+	# When restarting the NFS server, running "exportfs -ua" probably
+	# isn't what the user wants.  Running it causes all entries listed
+	# in xtab to be removed from the kernel export tables, and the
+	# xtab file is cleared. This effectively shuts down all NFS
+	# activity, leaving all clients holding stale NFS filehandles,
+	# *even* when the NFS server has restarted.
+	#
+	# That's what you would want if you were shutting down the NFS
+	# server for good, or for a long period of time, but not when the
+	# NFS server will be running again in short order.  In this case,
+	# then "exportfs -r" will reread the xtab, and all the current
+	# clients will be able to resume NFS activity, *without* needing
+	# to umount/(re)mount the filesystem.
+	if [ "${restarting}" = no -o "${RC_CMD}" = "restart" ] ; then
+		ebegin "Unexporting NFS directories"
+		# Exportfs likes to hang if networking isn't working.
+		# If that's the case, then try to kill it so the
+		# shutdown process can continue.
+		${exportfs} -ua &
+		waitfor_exportfs $!
+		eend $?
+	fi
+
+	return ${ret}
+}
+
+reload() {
+	# Exportfs likes to hang if networking isn't working.
+	# If that's the case, then try to kill it so the
+	# bootup process can continue.
+	ebegin "Reloading /etc/exports"
+	${exportfs} -r 1>&2 &
+	waitfor_exportfs $!
+	eend $?
+}
+
+restart() {
+	# See long comment in stop() regarding "restarting" and exportfs -ua
+	restarting=yes
+	svc_stop
+	svc_start
+}

@@ -1,0 +1,20 @@
+--- gtk-0.13.4-orig/SetupWrapper.hs	2014-12-24 22:16:46.000000000 +1100
++++ gtk-0.13.4/SetupWrapper.hs	2015-03-10 22:00:39.902873712 +1100
+@@ -18,7 +18,7 @@
+ 
+ import System.Environment
+ import System.Process
+-import System.Exit
++import System.Exit (ExitCode(..), exitWith)
+ import System.FilePath
+ import System.Directory
+ import qualified Control.Exception as Exception
+--- gtk-0.13.4-orig/Graphics/UI/Gtk/Gdk/EventM.hsc	2014-12-24 22:16:46.000000000 +1100
++++ gtk-0.13.4/Graphics/UI/Gtk/Gdk/EventM.hsc	2015-03-10 21:44:29.022453643 +1100
+@@ -1,5 +1,6 @@
+ {-# LANGUAGE ScopedTypeVariables #-}
+ {-# LANGUAGE EmptyDataDecls #-}
++{-# LANGUAGE FlexibleContexts #-}
+ -- -*-haskell-*-
+ 
+ #include <gtk/gtk.h>

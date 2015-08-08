@@ -1,0 +1,31 @@
+diff --git a/MCONFIG.in b/MCONFIG.in
+index 64cb016..f5d1012 100644
+--- a/MCONFIG.in
++++ b/MCONFIG.in
+@@ -40,7 +40,7 @@ GINC+=		@EXT2FS_CFLAGS@
+ # indicate where the ext2fs library can be found (this is not needed if you
+ # have run `make install-libs' in the e2fsprogs source directory).
+ #GLIBDIR=	-L/usr/src/e2fsprogs-0.5c/lib
+-GLIBS=		$(GLIBDIR) -L../compat/lib -lcompat @EXT2FS_LIBS@
++GLIBS=		$(GLIBDIR) -L../compat/lib -lcompat @EXT2FS_LIBS@ @COM_ERR_LIBS@
+ 
+ #
+ # Definitions (don't change them unless you know what you are doing)
+diff --git a/configure.in b/configure.in
+index 2d69157..c8a9e04 100644
+--- a/configure.in
++++ b/configure.in
+@@ -414,11 +414,12 @@ fi
+ if test "$ext2fs_h" = no -o "x$EXT2FS_LIBS" = "x"; then
+ 	AC_MSG_ERROR(You need to install the Ext2fs libraries from the E2fsprogs distribution first - hint: make install-libs)
+ fi
++PKG_CHECK_MODULES(COM_ERR, [com_err])
+ 
+ dnl
+ dnl Check for ext2fs_read_inode_full
+ dnl
+-AC_CHECK_LIB(ext2fs, ext2fs_read_inode_full, [rif=yes], [rif=no], [-lcom_err])
++AC_CHECK_LIB(ext2fs, ext2fs_read_inode_full, [rif=yes], [rif=no], [$COM_ERR_LIBS])
+ if test "$rif" = yes; then
+ 	AC_DEFINE([HAVE_EXT2FS_READ_INODE_FULL],1,[Define this if your ext2fs libs have the ext2fs_read_inode_full function.])
+ fi

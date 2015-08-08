@@ -1,0 +1,38 @@
+From 03fdb011dd661315a83998af8af779d8f089e3fe Mon Sep 17 00:00:00 2001
+From: Stephen Hemminger <stephen@networkplumber.org>
+Date: Wed, 17 Apr 2013 13:33:26 -0700
+Subject: [PATCH] ipnetns: fix build on older systems
+
+Debian Squeeze has out of date <sys/mount.h> without the required flags.
+---
+ ip/ipnetns.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/ip/ipnetns.c b/ip/ipnetns.c
+index b047b97..c9bc20a 100644
+--- a/ip/ipnetns.c
++++ b/ip/ipnetns.c
+@@ -29,6 +29,20 @@
+ #define MNT_DETACH	0x00000002	/* Just detach from the tree */
+ #endif /* MNT_DETACH */
+ 
++/* sys/mount.h may be out too old to have these */
++#ifndef MS_REC
++#define MS_REC		16384
++#endif
++
++#ifndef MS_SLAVE
++#define MS_SLAVE	(1 << 19)
++#endif
++
++#ifndef MS_SHARED
++#define MS_SHARED	(1 << 20)
++#endif
++
++
+ #ifndef HAVE_SETNS
+ static int setns(int fd, int nstype)
+ {
+-- 
+1.8.2.1
+

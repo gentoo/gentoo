@@ -1,0 +1,40 @@
+From da49802f8620562f91ac2c947520dccd223ee26b Mon Sep 17 00:00:00 2001
+From: Andreas Hildebrandt <andreas.hildebrandt@uni-mainz.de>
+Date: Wed, 15 Jan 2014 17:42:01 +0100
+Subject: [PATCH] Fix compilation of sipModularWidget
+
+---
+ source/PYTHON/EXTENSIONS/VIEW/modularWidget.sip | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/source/PYTHON/EXTENSIONS/VIEW/modularWidget.sip b/source/PYTHON/EXTENSIONS/VIEW/modularWidget.sip
+index 522b0ed..7b8ba3e 100644
+--- a/source/PYTHON/EXTENSIONS/VIEW/modularWidget.sip
++++ b/source/PYTHON/EXTENSIONS/VIEW/modularWidget.sip
+@@ -22,18 +22,18 @@ class ModularWidget
+ 	static Size countInstances();
+ 	static ModularWidget* getInstance(Position);
+ 
+-  ModularWidget(const char* = "<ModularWidget>")	throw();
+-	ModularWidget(const ModularWidget&) throw();
++  ModularWidget(const char* = "<ModularWidget>");
++	ModularWidget(const ModularWidget&);
+  	~ModularWidget() throw();
+ 				
+-	virtual void destroy() throw();
+-	virtual void clear() throw();
++//	virtual void destroy();
++	virtual void clear();
+ 
+ 	static void registerWidget(ModularWidget*) throw(NullPointer);
+ //	virtual void initializeWidget(MainControl&);
+ // 	virtual void finalizeWidget(MainControl&);
+ 	virtual void checkMenu(MainControl&) throw();
+-//	virtual void initializePreferencesTab(Preferences&)	throw();
++//	virtual void initializePreferencesTab(Preferences&);
+ //	virtual void finalizePreferencesTab(Preferences&)	throw();
+ 	virtual void applyPreferences() throw();
+   virtual void fetchPreferences(INIFile&) throw();
+-- 
+1.9.1
+

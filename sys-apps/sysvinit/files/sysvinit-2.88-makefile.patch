@@ -1,0 +1,60 @@
+http://savannah.nongnu.org/bugs/index.php?29758
+
+From 2b7d90f04cdd0e343f413c5c7672615926c02706 Mon Sep 17 00:00:00 2001
+From: wfink <wfink@456724a4-4300-0410-8514-c89748c515a2>
+Date: Tue, 4 May 2010 07:50:12 +0000
+Subject: [PATCH] Fix sysvinit bug #29758
+
+git-svn-id: svn://svn.sv.gnu.org/sysvinit/sysvinit/trunk@87 456724a4-4300-0410-8514-c89748c515a2
+
+diff --git a/src/Makefile b/src/Makefile
+index e2b8028..19675c5 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -92,9 +92,9 @@ all:		$(BIN) $(SBIN) $(USRBIN)
+ init:		LDLIBS += $(INITLIBS) $(STATIC)
+ init:		init.o init_utmp.o
+ 
+-halt:		halt.o ifdown.o hddown.o utmp.o reboot.h
++halt:		halt.o ifdown.o hddown.o utmp.o
+ 
+-last:		last.o oldutmp.h
++last:		last.o
+ 
+ mesg:		mesg.o
+ 
+@@ -109,7 +109,7 @@ sulogin:	sulogin.o
+ 
+ wall:		dowall.o wall.o
+ 
+-shutdown:	dowall.o shutdown.o utmp.o reboot.h
++shutdown:	dowall.o shutdown.o utmp.o
+ 
+ bootlogd:	LDLIBS += -lutil
+ bootlogd:	bootlogd.o
+@@ -118,14 +118,22 @@ sulogin.o:	CPPFLAGS += $(SELINUX_DEF)
+ sulogin.o:	sulogin.c 
+ 
+ init.o:		CPPFLAGS += $(SELINUX_DEF)
+-init.o:		init.c init.h set.h reboot.h initreq.h
++init.o:		init.c init.h initreq.h paths.h reboot.h set.h
+ 
+-utmp.o:		utmp.c init.h
++utmp.o:		
+ 
+ init_utmp.o:	CPPFLAGS += -DINIT_MAIN
+-init_utmp.o:	utmp.c init.h
++init_utmp.o:	utmp.c init.h initreq.h paths.h
+ 		$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
++utmpdump.o:	utmpdump.c oldutmp.h
++
++shutdown.o:	shutdown.c paths.h reboot.h initreq.h init.h
++
++halt.o:		halt.c reboot.h
++
++last.o:		last.c oldutmp.h
++
+ cleanobjs:
+ 		rm -f *.o *.bak
+ 

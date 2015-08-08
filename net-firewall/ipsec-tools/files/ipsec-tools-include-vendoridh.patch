@@ -1,0 +1,11 @@
+diff -Naur ipsec-tools-0.8.0.orig//src/racoon/ipsec_doi.c ipsec-tools-0.8.0/src/racoon/ipsec_doi.c
+--- ipsec-tools-0.8.0.orig//src/racoon/ipsec_doi.c	2012-02-28 13:42:24.000000000 -0500
++++ ipsec-tools-0.8.0/src/racoon/ipsec_doi.c	2012-02-28 13:41:22.000000000 -0500
+@@ -87,6 +87,7 @@
+ #ifdef HAVE_GSSAPI
+ #include <iconv.h>
+ #include "gssapi.h"
++#include "vendorid.h"
+ #ifdef HAVE_ICONV_2ND_CONST
+ #define __iconv_const const
+ #else

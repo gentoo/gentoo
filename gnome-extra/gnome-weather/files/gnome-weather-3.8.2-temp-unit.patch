@@ -1,0 +1,59 @@
+From 7c901f42d2837e682f37d85b1fa3ee94922f2a05 Mon Sep 17 00:00:00 2001
+From: Giovanni Campagna <gcampagna@src.gnome.org>
+Date: Mon, 13 May 2013 21:19:49 +0000
+Subject: Add a submenu to the app menu to choose the temperature unit
+
+Among all the preferences in the old dialog, temperature unit
+is the only one that makes real sense, as we don't show wind
+speed, visibility or pressure.
+Also, exclude the Kelvin entry, which is there just to make
+cool screenshots :)
+---
+diff --git a/data/app-menu.ui b/data/app-menu.ui
+index 42a16a4..c332595 100644
+--- a/data/app-menu.ui
++++ b/data/app-menu.ui
+@@ -6,12 +6,25 @@
+         <attribute name="action">win.new</attribute>
+         <attribute name="accel">&lt;Primary&gt;n</attribute>
+       </item>
++    </section>
++    <submenu>
++      <attribute translatable="yes" name="label">Temperature unit</attribute>
++      <item>
++        <attribute translatable="yes" name="label">Celsius</attribute>
++        <attribute name="action">app.temperature-unit</attribute>
++        <attribute name="target">centigrade</attribute>
++      </item>
++      <item>
++        <attribute translatable="yes" name="label">Fahrenheit</attribute>
++        <attribute name="action">app.temperature-unit</attribute>
++        <attribute name="target">fahrenheit</attribute>
++      </item>
++    </submenu>
++    <section>
+       <item>
+         <attribute name="action">win.about</attribute>
+         <attribute name="label" translatable="yes">About Weather</attribute>
+       </item>
+-    </section>
+-    <section>
+       <item>
+         <attribute name="action">app.quit</attribute>
+         <attribute name="label" translatable="yes">Quit</attribute>
+diff --git a/src/main.js b/src/main.js
+index 687b79e..844a0d4 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -76,6 +76,9 @@ const Application = new Lang.Class({
+                          [{ name: 'quit',
+                             activate: this._onQuit }]);
+ 
++        let gwSettings = new Gio.Settings({ schema: 'org.gnome.GWeather' });
++        this.add_action(gwSettings.create_action('temperature-unit'));
++
+         this._initAppMenu();
+ 
+         this.add_accelerator("Escape", "win.selection-mode(false)", null);
+--
+cgit v0.9.2

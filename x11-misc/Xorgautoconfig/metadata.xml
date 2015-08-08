@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>ppc</herd>
+<maintainer>
+<email>josejx@gentoo.org</email>
+<name>Joseph Jezak</name>
+</maintainer>
+<longdescription lang="en">
+An X.org auto configuration tool for PPC machines.
+</longdescription>
+</pkgmetadata>
+

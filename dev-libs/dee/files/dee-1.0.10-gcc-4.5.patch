@@ -1,0 +1,30 @@
+ src/dee-filter.h       |    2 +-
+ src/dee-model-reader.h |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/dee-filter.h b/src/dee-filter.h
+index de8d252..327f512 100644
+--- a/src/dee-filter.h
++++ b/src/dee-filter.h
+@@ -30,7 +30,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-typedef struct _DeeFilter DeeFilter;
++//typedef struct _DeeFilter DeeFilter;
+ 
+ /**
+  * DeeFilterMapFunc:
+diff --git a/src/dee-model-reader.h b/src/dee-model-reader.h
+index a249149..dd23de6 100644
+--- a/src/dee-model-reader.h
++++ b/src/dee-model-reader.h
+@@ -30,7 +30,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-typedef struct _DeeFilter DeeFilter;
++//typedef struct _DeeFilter DeeFilter;
+ 
+ /**
+  * DeeModelReaderFunc:

@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend() {
+	provide lirc
+}
+
+start() {
+	ebegin "Starting inputlircd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/inputlircd -- ${INPUTLIRCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping inputlircd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/inputlircd
+	eend $?
+}

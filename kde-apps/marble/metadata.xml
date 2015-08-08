@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="designer-plugin">Enable designer plugin</flag>
+		<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg></flag>
+		<flag name="shapefile">Enable support for ESRI shapefiles</flag>
+		<flag name="zip">Enable support for reading and displaying .kmz files</flag>
+	</use>
+	<herd>kde</herd>
+</pkgmetadata>

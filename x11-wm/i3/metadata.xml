@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>xarthisius@gentoo.org</email>
+		<name>Kacper Kowalik</name>
+	</maintainer>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+		<description>Maintains the live ebuild.</description>
+	</maintainer>
+	<use>
+		<flag name="pango">Use <pkg>x11-libs/pango</pkg> to render text in order to support fonts which have more glyphs (e.g. Kanji). See RELEASE-NOTES for more information</flag>
+	</use>
+</pkgmetadata>

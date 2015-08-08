@@ -1,0 +1,44 @@
+diff -ur wmmsg-1.0.1.orig/configure.in wmmsg-1.0.1/configure.in
+--- wmmsg-1.0.1.orig/configure.in	2004-10-04 19:57:13.000000000 +0300
++++ wmmsg-1.0.1/configure.in	2008-03-12 17:45:29.000000000 +0200
+@@ -17,11 +17,6 @@
+ AM_MAINTAINER_MODE
+ 
+ # get options
+-AC_ARG_WITH(gtk,
+-        [  --with-gtk=DIR       use gtk in <DIR>],
+-        [CFLAGS="$CFLAGS -I$withval/include"
+-        LIBS="-L$withval/lib $LIBS"])
+-
+ AC_ARG_WITH(imlib2,
+         [  --with-imlib2=DIR       use imlib2 in <DIR>],
+         [CFLAGS="$CFLAGS -I$withval/include"
+@@ -32,10 +27,9 @@
+ AC_CHECK_LIB([m], [sin])
+ 
+ # Check for glib/gtk stuff
+-AM_PATH_GLIB(1.2.2,,AC_MSG_ERROR([*** GLIB >= 1.2.2 not installed - please insta
+-ll first ***]))
+-AM_PATH_GTK(1.2.2,,AC_MSG_ERROR([*** GTK+ >= 1.2.2 not installed - please instal
+-l first ***]),gthread)
++PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= 2.0.0])
++AC_SUBST(GTK_CFLAGS)
++AC_SUBST(GTK_LIBS)
+ 
+ # check for Imlib2
+ AC_PATH_GENERIC(imlib2, 1.0.0, [
+diff -ur wmmsg-1.0.1.orig/Makefile.am wmmsg-1.0.1/Makefile.am
+--- wmmsg-1.0.1.orig/Makefile.am	2003-03-26 09:08:21.000000000 +0200
++++ wmmsg-1.0.1/Makefile.am	2008-03-12 17:42:48.000000000 +0200
+@@ -3,8 +3,9 @@
+ bin_PROGRAMS = wmmsg wmmsg_notify
+ wmmsg_SOURCES = src/wmmsg/wmconfig.c src/wmmsg/wmmsg.c src/wmmsg/getopt.c src/wmgeneral/wmgeneral.c src/wmgeneral/misc.c src/wmgeneral/list.c
+ wmmsg_notify_SOURCES = src/wmmsg/wmmsg_notify.c src/wmmsg/getopt.c
+-INCLUDES = -I/usr/X11R6/include -I$(prefix)/include -I$(includedir) -I. `glib-config --cflags` `gtk-config --cflags` `imlib2-config --cflags`
+-AM_LDFLAGS = -lX11 -lXext -lXpm -L/usr/X11R6/lib -L/usr/lib -L/usr/local/lib `glib-config --libs` `gtk-config --libs` `imlib2-config --libs`
++INCLUDES = -I$(prefix)/include -I$(includedir) -I. `pkg-config --cflags gtk+-2.0` `imlib2-config --cflags`
++wmmsg_LDADD = -lX11 -lXext -lXpm -L/usr/lib -L/usr/local/lib $(GTK_LIBS) $(IMLIB_LIBS)
++wmmsg_notify_LDADD = $(wmmsg_LDADD)
+ 
+ man1_MANS = man/wmmsg.1 man/wmmsg_notify.1
+ man_MANS = 

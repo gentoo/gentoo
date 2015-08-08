@@ -1,0 +1,36 @@
+We install texmfcnf.lua in a different location than TeX Live so default
+heuristics fail. Help it.
+
+--- texmf-dist/scripts/context/stubs/unix/mtxrun.old	2012-07-31 09:17:57.580364255 -0400
++++ texmf-dist/scripts/context/stubs/unix/mtxrun	2012-07-31 09:19:50.801292839 -0400
+@@ -12466,7 +12466,7 @@
+     resolvers.luacnfspec = environment.default_texmfcnf
+ else
+  -- resolvers.luacnfspec = "selfautoparent:texmf{-local,-context,}/web2c"
+-    resolvers.luacnfspec = "{selfautoloc:,selfautodir:,selfautoparent:}{,/texmf{-local,}/web2c}"
++    resolvers.luacnfspec = "selfautodir:share{/local,}/texmf/web2c"
+ end
+ 
+ resolvers.luacnfspec = 'home:texmf/web2c;' .. resolvers.luacnfspec
+--- texmf-dist/tex/context/base/data-res.lua.old	2012-07-31 09:23:01.459021878 -0400
++++ texmf-dist/tex/context/base/data-res.lua	2012-07-31 09:23:27.395248684 -0400
+@@ -94,7 +94,7 @@
+     resolvers.luacnfspec = environment.default_texmfcnf
+ else
+  -- resolvers.luacnfspec = "selfautoparent:texmf{-local,-context,}/web2c"
+-    resolvers.luacnfspec = "{selfautoloc:,selfautodir:,selfautoparent:}{,/texmf{-local,}/web2c}"
++    resolvers.luacnfspec = "selfautodir:share{/local,}/texmf/web2c"
+ end
+ 
+ resolvers.luacnfspec = 'home:texmf/web2c;' .. resolvers.luacnfspec
+--- texmf-dist/scripts/context/lua/mtxrun.lua.old	2012-07-31 09:24:19.319697670 -0400
++++ texmf-dist/scripts/context/lua/mtxrun.lua	2012-07-31 09:24:41.327886068 -0400
+@@ -12466,7 +12466,7 @@
+     resolvers.luacnfspec = environment.default_texmfcnf
+ else
+  -- resolvers.luacnfspec = "selfautoparent:texmf{-local,-context,}/web2c"
+-    resolvers.luacnfspec = "{selfautoloc:,selfautodir:,selfautoparent:}{,/texmf{-local,}/web2c}"
++    resolvers.luacnfspec = "selfautodir:share{/local,}/texmf/web2c"
+ end
+ 
+ resolvers.luacnfspec = 'home:texmf/web2c;' .. resolvers.luacnfspec

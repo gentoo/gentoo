@@ -1,0 +1,9 @@
+--- extra/Makefile.am
++++ extra/Makefile.am
+@@ -20,5 +20,5 @@
+
+ SUBDIRS                 =  resources
+
+-mibdir = $(datadir)/snmp/mibs
++mibdir = $(datadir)/$(PACKAGE)/snmp/mibs
+ mib_DATA = PCMK-MIB.txt

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnome</herd>
+  <longdescription>
+    This package contains some standard themes and theme engines for
+    GTK+. Version 0.12 provides engines and themes for GTK+ 1,
+    including Pixmap, Metal, Redmond95, Notif and Raleigh. Versions
+    2.x provide engines and themes for GTK+ 2, including Clearlooks,
+    Crux, HighContrast, Industrial, Lighthouseblue, Metal, Mist,
+    Redmond, Smooth and Thinice.
+  </longdescription>
+</pkgmetadata>

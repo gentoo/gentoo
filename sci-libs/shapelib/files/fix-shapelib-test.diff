@@ -1,0 +1,30 @@
+--- makeshape.sh.orig	2003-04-07 15:03:22.000000000 +0200
++++ makeshape.sh	2009-09-06 11:31:37.000000000 +0200
+@@ -5,17 +5,17 @@
+ #	should display in ARCView II.
+ #
+ 
+-shpcreate test polygon
+-dbfcreate test.dbf -s Description 30 -n TestInt 6 0 -n TestDouble 16 5
++./shpcreate test polygon
++./dbfcreate test.dbf -s Description 30 -n TestInt 6 0 -n TestDouble 16 5
+ 
+-shpadd test 0 0 100 0 100 100 0 100 0 0 + 20 20 20 30 30 30 20 20
+-dbfadd test.dbf "Square with triangle missing" 1.5 2.5
++./shpadd test 0 0 100 0 100 100 0 100 0 0 + 20 20 20 30 30 30 20 20
++./dbfadd test.dbf "Square with triangle missing" 1.5 2.5
+ 
+-shpadd test 150 150 160 150 180 170 150 150
+-dbfadd test.dbf "Smaller triangle" 100 1000.25
++./shpadd test 150 150 160 150 180 170 150 150
++./dbfadd test.dbf "Smaller triangle" 100 1000.25
+ 
+-shpadd test 150 150 160 150 180 170 150 150
+-dbfadd test.dbf "" "" ""
++./shpadd test 150 150 160 150 180 170 150 150
++./dbfadd test.dbf "" "" ""
+ 
+-shpdump test.shp
+-dbfdump test.dbf
++./shpdump test.shp
++./dbfdump test.dbf

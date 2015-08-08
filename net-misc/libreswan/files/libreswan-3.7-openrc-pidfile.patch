@@ -1,0 +1,37 @@
+From ee43bdf59ad20e099093a5de4a7cfe63f0c12ba0 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 6 Jan 2014 14:43:37 -0500
+Subject: [PATCH] packaging: Fix pidfile handling in openrc init script
+
+Variable is referenced as PLUTO_PIDFILE in start() and stop().
+
+Also, don't initialize PLUTO_OPTS to blank; this allows the sysadmin to
+set it in /etc/conf.d/ipsec.
+---
+ initsystems/openrc/ipsec.init.in | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/initsystems/openrc/ipsec.init.in b/initsystems/openrc/ipsec.init.in
+index f3ab2f9..c121897 100755
+--- a/initsystems/openrc/ipsec.init.in
++++ b/initsystems/openrc/ipsec.init.in
+@@ -1,7 +1,5 @@
+ #!/sbin/runscript
+ 
+-PLUTO_OPTS=""
+-
+ name="ipsec pluto daemon"
+ extra_commands="configtest"
+ extra_started_commands="reload"
+@@ -12,7 +10,7 @@ description_reload="reloads the configuration - does not affect existing connect
+ PLUTO_BINARY=${PLUTO_BINARY:-@FINALLIBDIR@/pluto}
+ PLUTO_CONFFILE=${PLUTO_CONFFILE:-@FINALCONFFILE@}
+ IPSEC_BINARY=${IPSEC_BINARY:-@FINALSBINDIR@/ipsec}
+-PLUTO_PID=${PLUTO_PID:-/var/run/pluto/pluto.pid}
++PLUTO_PIDFILE=${PLUTO_PIDFILE:-/var/run/pluto/pluto.pid}
+ 
+ depend() {
+ 	need net
+-- 
+1.8.5.2
+

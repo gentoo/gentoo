@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/show_bug.cgi?id=526118
+http://bugs.cinelerra-cv.org/ticket/1005
+
+Author: Bernd Feige 
+
+--- guicast/pngtoh.c	2015-01-29 13:41:01 +0000
++++ guicast/pngtoh.c	2015-01-29 13:41:07 +0000
+@@ -148,4 +148,6 @@
+ 		fprintf(out, "};\n\n#endif\n");
+ 		fclose(out);
+ 	}
++
++	return 0;
+ }
+

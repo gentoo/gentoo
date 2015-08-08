@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <maintainer>
+	  <email>monsieurp@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Validate-Tiny</remote-id>
+    <remote-id type="cpan-module">Validate::Tiny</remote-id>
+  </upstream>
+</pkgmetadata>

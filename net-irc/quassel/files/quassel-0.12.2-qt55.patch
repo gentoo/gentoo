@@ -1,0 +1,53 @@
+From 0df317e85ab3d1d80135995d3b5d7f5341fef6e4 Mon Sep 17 00:00:00 2001
+From: Armin K <krejzi@email.com>
+Date: Sat, 2 May 2015 23:04:53 +0200
+Subject: [PATCH] Fix build with Qt-5.5
+
+http://code.qt.io/cgit/qt/qtbase.git/commit/?id=ebef2ad1360c80ad62de5f4a1c4e7e4051725c1c
+---
+ src/client/treemodel.cpp | 5 ++---
+ src/common/peer.h        | 1 +
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/client/treemodel.cpp b/src/client/treemodel.cpp
+index f599803..fd47bc0 100644
+--- a/src/client/treemodel.cpp
++++ b/src/client/treemodel.cpp
+@@ -556,10 +556,9 @@ void TreeModel::endAppendChilds()
+     ChildStatus cs = _childStatus;
+ #ifndef QT_NO_DEBUG
+     QModelIndex parent = indexByItem(parentItem);
+-#endif
+     Q_ASSERT(cs.parent == parent);
+     Q_ASSERT(rowCount(parent) == cs.childCount + cs.end - cs.start + 1);
+-
++#endif
+     _aboutToRemoveOrInsert = false;
+     for (int i = cs.start; i <= cs.end; i++) {
+         connectItem(parentItem->child(i));
+@@ -605,9 +604,9 @@ void TreeModel::endRemoveChilds()
+ #ifndef QT_NO_DEBUG
+     ChildStatus cs = _childStatus;
+     QModelIndex parent = indexByItem(parentItem);
+-#endif
+     Q_ASSERT(cs.parent == parent);
+     Q_ASSERT(rowCount(parent) == cs.childCount - cs.end + cs.start - 1);
++#endif
+     _aboutToRemoveOrInsert = false;
+ 
+     endRemoveRows();
+diff --git a/src/common/peer.h b/src/common/peer.h
+index 02eb3c0..79204b4 100644
+--- a/src/common/peer.h
++++ b/src/common/peer.h
+@@ -22,6 +22,7 @@
+ #define PEER_H
+ 
+ #include <QAbstractSocket>
++#include <QDataStream>
+ #include <QPointer>
+ 
+ #include "authhandler.h"
+-- 
+2.4.0
+

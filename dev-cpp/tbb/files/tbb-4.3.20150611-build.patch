@@ -1,0 +1,196 @@
+ build/FreeBSD.gcc.inc | 18 ++++--------------
+ build/linux.clang.inc | 26 +++-----------------------
+ build/linux.gcc.inc   | 38 +++++++-------------------------------
+ 3 files changed, 14 insertions(+), 68 deletions(-)
+
+diff --git a/build/FreeBSD.gcc.inc b/build/FreeBSD.gcc.inc
+index 20f0027..8bbdeba 100644
+--- a/build/FreeBSD.gcc.inc
++++ b/build/FreeBSD.gcc.inc
+@@ -28,14 +28,14 @@ WARNING_KEY = -Wall
+ DYLIB_KEY = -shared
+ WARNING_SUPPRESS = -Wno-parentheses
+ 
+-CPLUS = g++ 
+-CONLY = gcc
++CPLUS = $(CXX)
++CONLY = $(CC)
+ LIB_LINK_FLAGS = -shared
+ LIBS = -lpthread 
+ C_FLAGS = $(CPLUS_FLAGS)
+ 
+ ifeq ($(cfg), release)
+-        CPLUS_FLAGS = -g -O2 -DUSE_PTHREAD
++        CPLUS_FLAGS = -g -DUSE_PTHREAD
+ endif
+ ifeq ($(cfg), debug)
+         CPLUS_FLAGS = -DTBB_USE_DEBUG -g -O0 -DUSE_PTHREAD
+@@ -52,22 +52,12 @@ ifeq (ia64,$(arch))
+     CPLUS_FLAGS += $(PIC_KEY)
+ endif 
+ 
+-ifeq (intel64,$(arch))
+-    CPLUS_FLAGS += -m64
+-    LIB_LINK_FLAGS += -m64
+-endif 
+-
+-ifeq (ia32,$(arch))
+-    CPLUS_FLAGS += -m32
+-    LIB_LINK_FLAGS += -m32
+-endif 
+-
+ #------------------------------------------------------------------------------
+ # Setting assembler data.
+ #------------------------------------------------------------------------------
+ ASSEMBLY_SOURCE=$(arch)-gas
+ ifeq (ia64,$(arch))
+-    ASM=as
++    ASM=$(AS)
+     TBB_ASM.OBJ = atomic_support.o lock_byte.o log2.o pause.o
+     MALLOC_ASM.OBJ = atomic_support.o lock_byte.o pause.o
+ endif 
+diff --git a/build/linux.clang.inc b/build/linux.clang.inc
+index de9aee5..3a366f1 100644
+--- a/build/linux.clang.inc
++++ b/build/linux.clang.inc
+@@ -31,15 +31,15 @@ DYLIB_KEY = -shared
+ EXPORT_KEY = -Wl,--version-script,
+ LIBDL = -ldl
+ 
+-CPLUS = clang++
+-CONLY = clang
++CPLUS := $(CXX)
++CONLY := $(CC)
+ LIB_LINK_FLAGS = $(DYLIB_KEY) -Wl,-soname=$(BUILDING_LIBRARY)
+ LIBS += -lpthread -lrt
+ LINK_FLAGS = -Wl,-rpath-link=. -rdynamic
+ C_FLAGS = $(CPLUS_FLAGS)
+ 
+ ifeq ($(cfg), release)
+-        CPLUS_FLAGS = $(ITT_NOTIFY) -g -O2 -DUSE_PTHREAD
++        CPLUS_FLAGS = $(ITT_NOTIFY) -g -DUSE_PTHREAD
+ endif
+ ifeq ($(cfg), debug)
+         CPLUS_FLAGS = -DTBB_USE_DEBUG $(ITT_NOTIFY) -g -O0 -DUSE_PTHREAD
+@@ -61,24 +61,10 @@ MALLOC_ASM.OBJ=
+ 
+ ifeq (intel64,$(arch))
+     ITT_NOTIFY = -DDO_ITT_NOTIFY
+-    CPLUS_FLAGS += -m64
+-    LIB_LINK_FLAGS += -m64
+ endif
+ 
+ ifeq (ia32,$(arch))
+     ITT_NOTIFY = -DDO_ITT_NOTIFY
+-    CPLUS_FLAGS += -m32 -march=pentium4
+-    LIB_LINK_FLAGS += -m32
+-endif
+-
+-ifeq (ppc64,$(arch))
+-    CPLUS_FLAGS += -m64
+-    LIB_LINK_FLAGS += -m64
+-endif
+-
+-ifeq (ppc32,$(arch))
+-    CPLUS_FLAGS += -m32
+-    LIB_LINK_FLAGS += -m32
+ endif
+ 
+ ifeq (bg,$(arch))
+@@ -90,12 +76,6 @@ endif
+ # Setting assembler data.
+ #------------------------------------------------------------------------------
+ ASM = as
+-ifeq (intel64,$(arch))
+-    ASM_FLAGS += --64
+-endif
+-ifeq (ia32,$(arch))
+-    ASM_FLAGS += --32
+-endif
+ ifeq ($(cfg),debug)
+     ASM_FLAGS += -g
+ endif
+diff --git a/build/linux.gcc.inc b/build/linux.gcc.inc
+index 4b7122b..e8ba711 100644
+--- a/build/linux.gcc.inc
++++ b/build/linux.gcc.inc
+@@ -32,12 +32,12 @@ DYLIB_KEY = -shared
+ EXPORT_KEY = -Wl,--version-script,
+ LIBDL = -ldl
+ 
+-CPLUS = g++
+-CONLY = gcc
++CPLUS := $(CXX)
++CONLY := $(CC)
+ LIB_LINK_FLAGS = $(DYLIB_KEY) -Wl,-soname=$(BUILDING_LIBRARY)
+ LIBS += -lpthread -lrt
+ LINK_FLAGS = -Wl,-rpath-link=. -rdynamic
+-C_FLAGS = $(CPLUS_FLAGS)
++C_FLAGS := $(CPLUS_FLAGS)
+ # gcc 4.4 and higher support -std=c++0x
+ ifneq (,$(shell gcc -dumpversion | egrep  "^(4\.[4-9]|[5-9])"))
+     CPP11_FLAGS = -std=c++0x -D_TBB_CPP0X
+@@ -54,7 +54,7 @@ ifneq (,$(shell gcc -dumpversion | egrep  "^4\.[8-9]"))
+ endif
+ 
+ ifeq ($(cfg), release)
+-        CPLUS_FLAGS = $(ITT_NOTIFY) -g -O2 -DUSE_PTHREAD
++        CPLUS_FLAGS = $(ITT_NOTIFY) -g -DUSE_PTHREAD
+ endif
+ ifeq ($(cfg), debug)
+         CPLUS_FLAGS = -DTBB_USE_DEBUG $(ITT_NOTIFY) -g -O0 -DUSE_PTHREAD
+@@ -74,24 +74,12 @@ endif
+ 
+ ifeq (intel64,$(arch))
+     ITT_NOTIFY = -DDO_ITT_NOTIFY
+-    CPLUS_FLAGS += -m64 $(RTM_KEY)
+-    LIB_LINK_FLAGS += -m64
++    CPLUS_FLAGS += $(RTM_KEY)
+ endif
+ 
+ ifeq (ia32,$(arch))
+     ITT_NOTIFY = -DDO_ITT_NOTIFY
+-    CPLUS_FLAGS += -m32 -march=pentium4 $(RTM_KEY)
+-    LIB_LINK_FLAGS += -m32
+-endif
+-
+-ifeq (ppc64,$(arch))
+-    CPLUS_FLAGS += -m64
+-    LIB_LINK_FLAGS += -m64
+-endif
+-
+-ifeq (ppc32,$(arch))
+-    CPLUS_FLAGS += -m32
+-    LIB_LINK_FLAGS += -m32
++    CPLUS_FLAGS += $(RTM_KEY)
+ endif
+ 
+ ifeq (bg,$(arch))
+@@ -99,12 +87,6 @@ ifeq (bg,$(arch))
+     CONLY = $(firstword $(notdir $(shell which powerpc{64,32,}-bg{z..a}-linux-gcc 2>/dev/null)))
+ endif
+ 
+-# for some gcc versions on Solaris, -m64 may imply V9, but perhaps not everywhere (TODO: verify)
+-ifeq (sparc,$(arch))
+-    CPLUS_FLAGS    += -mcpu=v9 -m64
+-    LIB_LINK_FLAGS += -mcpu=v9 -m64
+-endif
+-
+ # automatically generate "IT" instructions when compiling for Thumb ISA
+ ifeq (armv7,$(arch))
+     CPLUS_FLAGS    += -Wa,-mimplicit-it=thumb
+@@ -113,13 +95,7 @@ endif
+ #------------------------------------------------------------------------------
+ # Setting assembler data.
+ #------------------------------------------------------------------------------
+-ASM = as
+-ifeq (intel64,$(arch))
+-    ASM_FLAGS += --64
+-endif
+-ifeq (ia32,$(arch))
+-    ASM_FLAGS += --32
+-endif
++ASM := $(AS)
+ ifeq ($(cfg),debug)
+     ASM_FLAGS += -g
+ endif

@@ -1,0 +1,13 @@
+--- fim-0.3/configure.ac
++++ fim-0.3/configure.ac
+@@ -86,10 +86,6 @@
+ AC_MSG_RESULT($fim_cv_prefix)
+ 
+ AC_ISC_POSIX
+-AM_C_PROTOTYPES
+-if test "x$U" != "x"; then
+-  AC_MSG_ERROR(Compiler not ANSI compliant)
+-fi
+ #AC_PROG_CPP
+ AC_PROG_MAKE_SET
+ 

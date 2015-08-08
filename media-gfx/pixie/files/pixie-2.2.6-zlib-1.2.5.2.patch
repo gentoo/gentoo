@@ -1,0 +1,73 @@
+http://bugs.gentoo.org/406899
+
+--- src/ri/rib.l
++++ src/ri/rib.l
+@@ -17,7 +17,7 @@
+ 
+ // Overwrite the YYinput so that it uses libz
+ #undef YY_INPUT
+-#define YY_INPUT(buf, retval, maxlen)	if ( (retval = gzread(ribin,buf,maxlen)) < 0) 			\
++#define YY_INPUT(buf, retval, maxlen)	if ( (retval = gzread((gzFile)ribin,buf,maxlen)) < 0) 			\
+ 											YY_FATAL_ERROR( "input in flex scanner failed" );
+ 
+ #endif
+@@ -223,7 +223,7 @@
+ 															TRibFile	*nextFile	=	ribStack->next;
+ 															rib_delete_buffer( YY_CURRENT_BUFFER );
+ #ifdef HAVE_ZLIB
+-															gzclose(ribin);
++															gzclose((gzFile)ribin);
+ #else
+ 															fclose(ribin);
+ #endif
+@@ -243,7 +243,7 @@
+ 															rib_delete_buffer( YY_CURRENT_BUFFER );
+ 															
+ #ifdef HAVE_ZLIB
+-															gzclose(ribin);
++															gzclose((gzFile)ribin);
+ #else
+ 															fclose(ribin);
+ #endif
+--- src/ri/ribOut.cpp
++++ src/ri/ribOut.cpp
+@@ -162,7 +162,7 @@
+ 
+ #ifdef HAVE_ZLIB
+ 			if (outputCompressed) {
+-				gzclose(outFile);
++				gzclose((gzFile)outFile);
+ 			} else {
+ 				fclose(outFile);
+ 			}
+--- src/ri/ribOut.h
++++ src/ri/ribOut.h
+@@ -237,7 +237,7 @@
+ 												const int	l	=	vsprintf(scratch,mes,args);
+ 
+ 												#ifdef HAVE_ZLIB
+-													if (outputCompressed)	gzwrite(outFile,scratch,l);
++													if (outputCompressed)	gzwrite((gzFile)outFile,scratch,l);
+ 													else					fwrite(scratch,1,l,outFile);
+ 												#else
+ 													fwrite(scratch,1,l,outFile);
+@@ -258,7 +258,7 @@
+ 												const int l	=	vsprintf(scratch,mes,args);
+ 
+ 												#ifdef HAVE_ZLIB
+-													if (outputCompressed)	gzwrite(outFile,scratch,l);
++													if (outputCompressed)	gzwrite((gzFile)outFile,scratch,l);
+ 													else					fwrite(scratch,1,l,outFile);
+ 												#else
+ 													fwrite(scratch,1,l,outFile);
+--- src/ri/rib.y
++++ src/ri/rib.y
+@@ -2940,7 +2940,7 @@
+ 		
+ 		if (ribin != NULL) {
+ #ifdef HAVE_ZLIB
+-			gzclose(ribin);
++			gzclose((gzFile)ribin);
+ #else
+ 			fclose(ribin);
+ #endif

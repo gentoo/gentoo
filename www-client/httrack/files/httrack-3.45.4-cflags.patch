@@ -1,0 +1,12 @@
+--- /configure.in	2012-07-10 20:19:09.958552772 +0200
++++ /configure.in	2012-07-10 20:19:39.011189564 +0200
+@@ -13,8 +13,7 @@
+ AC_PROG_LN_S
+ 
+ ### Default CFLAGS
+-DEFAULT_CFLAGS=""
+-DEFAULT_CFLAGS="-O -g3 -Wall -Wcast-align -Wstrict-prototypes \
++DEFAULT_CFLAGS="-Wall -Wcast-align -Wstrict-prototypes \
+ -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith \
+ -Wnested-externs -D_REENTRANT"
+ AC_SUBST(DEFAULT_CFLAGS)

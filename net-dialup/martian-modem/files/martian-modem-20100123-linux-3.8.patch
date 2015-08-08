@@ -1,0 +1,87 @@
+diff -urN martian-full-20100123.orig/kmodule/martian.c martian-full-20100123/kmodule/martian.c
+--- martian-full-20100123.orig/kmodule/martian.c	2015-03-21 16:15:55.498819336 -0400
++++ martian-full-20100123/kmodule/martian.c	2015-03-21 16:17:03.769752308 -0400
+@@ -592,7 +592,7 @@
+ 
+ static int dev_idx = 0;
+ 
+-static void __devinit 
++static void
+ martian_configure_isr (struct martian *mdev) 
+ {
+ 	struct martian_common *mcb = mdev->common;
+@@ -614,7 +614,7 @@
+ 	mcb->dp_bamil_rd7 = 0xff;
+ }
+ 
+-static void __devinit 
++static void 
+ martian_configure_params (struct martian *mdev) 
+ {
+ 	mdev->params.dsp_mars	= mdev->metrics.dsp_mars;
+@@ -792,7 +792,7 @@
+ 
+ /***** PCI Driver Interface *****/
+ 
+-static int __devinit 
++static int
+ martian_device_gatherinfo (const struct pci_dev *dev, const struct pci_device_id *ent, struct martian_metrics *metrics)
+ {
+ 	int bar;
+@@ -997,7 +997,7 @@
+ 	return 0;
+ }
+ 
+-static int __devinit 
++static int
+ mars_device_probe (struct pci_dev *dev, const struct pci_device_id *ent)
+ {
+ 	int ret;
+@@ -1036,7 +1036,7 @@
+ }
+ 
+ 
+-static void __devexit mars_remove (struct pci_dev *dev) 
++static void mars_remove (struct pci_dev *dev) 
+ {
+ 	martian_del (pci_get_drvdata (dev));
+ 	pci_disable_device (dev);
+@@ -1048,7 +1048,7 @@
+ struct pci_driver martian_driver = {
+ 	.name		= "martian",
+ 	.probe		= mars_device_probe,
+-	.remove		= __devexit_p (mars_remove),
++	.remove		= mars_remove,
+ 	.id_table	= martian_ids
+ };
+ 
+@@ -1062,7 +1062,7 @@
+ 
+ #define SERIAL_DRIVER	"serial"
+ 
+-static void __devinit detach_from_serial_class (unsigned int class, unsigned int mask) 
++static void detach_from_serial_class (unsigned int class, unsigned int mask) 
+ {
+ 	struct pci_dev *dev = NULL;
+ 	const struct pci_device_id *entry;
+@@ -1083,7 +1083,7 @@
+ 	}
+ }
+ 
+-static void __devinit detach_from_serial(void) 
++static void detach_from_serial(void) 
+ {
+ 	detach_from_serial_class (PCI_CLASS_COMMUNICATION_SERIAL << 8, 0xffff00);
+ 	detach_from_serial_class (PCI_CLASS_COMMUNICATION_MODEM << 8, 0xffff00);
+diff -urN martian-full-20100123.orig/kmodule/martian_ids.c martian-full-20100123/kmodule/martian_ids.c
+--- martian-full-20100123.orig/kmodule/martian_ids.c	2015-03-21 16:15:48.461826345 -0400
++++ martian-full-20100123/kmodule/martian_ids.c	2015-03-21 16:17:17.167739363 -0400
+@@ -8,7 +8,7 @@
+ 	.subvendor = (_subvendor), 			\
+ 	.subdevice = PCI_ANY_ID
+ 
+-__devinitdata static struct pci_device_id martian_ids[] = {
++static struct pci_device_id martian_ids[] = {
+ 	{ PCI_DEVICE (PCI_VENDOR_ID_ATT, 0x440) },
+ 	{ PCI_DEVICE (PCI_VENDOR_ID_ATT, 0x441) },
+ 	{ PCI_DEVICE (PCI_VENDOR_ID_ATT, 0x442) },

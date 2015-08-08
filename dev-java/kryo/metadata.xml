@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+	Kryo is a fast and efficient object graph serialization framework for Java.
+	The goals of the project are speed, efficiency, and an easy to use API. The project
+	is useful any time objects need to be persisted, whether to a file, database, or over
+	the network. Kryo can also perform automatic deep and shallow copying/cloning. This is direct copying
+	from object to object, not object->bytes->object.
+	</longdescription>
+</pkgmetadata>
+

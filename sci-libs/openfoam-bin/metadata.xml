@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<maintainer>
+		<email>oli.borm@web.de</email>
+		<name>Oliver Borm</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">foam</remote-id>
+	</upstream>
+</pkgmetadata>

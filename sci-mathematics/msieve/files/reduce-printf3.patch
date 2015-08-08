@@ -1,0 +1,31 @@
+--- gnfs/poly/poly_skew.c	2011-12-23 03:48:49.000000000 +0800
++++ gnfs/poly/poly_skew.c.new	2012-11-30 17:14:29.802747785 +0800
+@@ -221,7 +221,7 @@
+ static void stage1_callback(mpz_t high_coeff, mpz_t p, mpz_t m, 
+ 				double coeff_bound, void *extra) {
+ 	
+-	gmp_printf("%Zd %Zd %Zd\n", high_coeff, p, m);
++	/* gmp_printf("%Zd %Zd %Zd\n", high_coeff, p, m); */
+ 	poly_stage2_run((poly_stage2_t *)extra, high_coeff, p, m, 
+ 			coeff_bound, NULL);
+ }
+@@ -231,7 +231,7 @@
+ 				double coeff_bound, void *extra) {
+ 	
+ 	FILE *mfile = (FILE *)extra;
+-	gmp_printf("%Zd %Zd %Zd\n", high_coeff, p, m);
++	/* gmp_printf("%Zd %Zd %Zd\n", high_coeff, p, m); */
+ 	gmp_fprintf(mfile, "%Zd %Zd %Zd\n",
+ 			high_coeff, p, m);
+ 	fflush(mfile);
+--- gnfs/poly/stage2/root_sieve_line.c	2011-11-25 00:25:28.000000000 +0800
++++ gnfs/poly/stage2/root_sieve_line.c.new	2012-11-30 17:18:19.887475567 +0800
+@@ -402,7 +402,7 @@
+ 	uint32 num_primes = rs->num_primes;
+ 	uint16 *block = rs->sieve_block;
+ 
+-	printf("%u ", num_blocks); fflush(stdout);
++	/* printf("%u ", num_blocks); fflush(stdout); */
+ 
+ 	if (mpz_cmp_ui(x->mp_lattice_size, 1) == 0)
+ 		prepare_sieve_line(rs);

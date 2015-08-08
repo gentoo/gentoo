@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		 PLWM is a Python package, containing classes suitable for 
+		 implementing a window manager. PLWM is also a window manager, 
+		 using the PLWM package.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">plwm</remote-id>
+	</upstream>
+</pkgmetadata>

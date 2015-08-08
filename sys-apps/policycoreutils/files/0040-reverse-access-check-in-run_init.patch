@@ -1,0 +1,12 @@
+diff -uNr policycoreutils-2.2.1.orig/run_init/run_init.c policycoreutils-2.2.1/run_init/run_init.c
+--- policycoreutils-2.2.1.orig/run_init/run_init.c	2013-11-04 21:40:27.490018417 +0100
++++ policycoreutils-2.2.1/run_init/run_init.c	2013-11-04 21:40:57.088018480 +0100
+@@ -406,7 +406,7 @@
+ 			new_context);
+ 		exit(-1);
+ 	}
+-	if (! access("/usr/sbin/open_init_pty", X_OK)) {
++	if (access("/usr/sbin/open_init_pty", X_OK) != 0) {
+ 		if (execvp(argv[1], argv + 1)) {
+ 			perror("execvp");
+ 			exit(-1);

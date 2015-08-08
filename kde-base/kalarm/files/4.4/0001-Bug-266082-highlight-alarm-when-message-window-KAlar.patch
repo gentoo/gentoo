@@ -1,0 +1,146 @@
+From 712e45630ccd4ec128a087cb3de396b2df9e4ffc Mon Sep 17 00:00:00 2001
+From: David Jarvie <djarvie@kde.org>
+Date: Fri, 22 Apr 2011 00:36:20 +0100
+Subject: [PATCH 1/6] Bug 266082: highlight alarm when message window KAlarm
+ button clicked
+
+Fix the KAlarm button in the alarm window not always showing the main
+window, and not highlighting the alarm in the main window.
+---
+ kalarm/Changelog         |    4 ++++
+ kalarm/eventlistview.cpp |   11 +++++++----
+ kalarm/eventlistview.h   |    6 +++---
+ kalarm/functions.cpp     |   11 +++--------
+ kalarm/kalarm.h          |    2 +-
+ kalarm/mainwindow.cpp    |    7 +------
+ 6 files changed, 19 insertions(+), 22 deletions(-)
+
+diff --git a/kalarm/Changelog b/kalarm/Changelog
+index 25569f4..fab5edf 100644
+--- a/kalarm/Changelog
++++ b/kalarm/Changelog
+@@ -1,5 +1,9 @@
+ KAlarm Change Log
+ 
++=== Version 2.4.12 --- 22 April 2011 ===
++- Fix KAlarm button in alarm window not always showing main window and not
++  highlighting the alarm in the main window.
++
+ === Version 2.4.11 (KDEPIM 4.4.11) --- 16 April 2011 ===
+ - Fix bad borders round left hand buttons of time spinboxes in Oxygen style.
+ - Fix initialisation of library global statics.
+diff --git a/kalarm/eventlistview.cpp b/kalarm/eventlistview.cpp
+index 75e8be8..0880c7f 100644
+--- a/kalarm/eventlistview.cpp
++++ b/kalarm/eventlistview.cpp
+@@ -1,7 +1,7 @@
+ /*
+  *  eventlistview.cpp  -  base class for widget showing list of alarms
+  *  Program:  kalarm
+- *  Copyright © 2007-2009 by David Jarvie <djarvie@kde.org>
++ *  Copyright © 2007-2009,2011 by David Jarvie <djarvie@kde.org>
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -62,15 +62,18 @@ KAEvent* EventListView::event(int row) const
+ 
+ /******************************************************************************
+ * Select one event and make it the current item.
++* Optionally scroll to ensure that the  event is visible.
+ */
+-void EventListView::select(const QString& eventId)
++void EventListView::select(const QString& eventId, bool scrollToEvent)
+ {
+-	select(eventModel()->eventIndex(eventId));
++	select(eventModel()->eventIndex(eventId), scrollToEvent);
+ }
+ 
+-void EventListView::select(const QModelIndex& index)
++void EventListView::select(const QModelIndex& index, bool scrollToIndex)
+ {
+ 	selectionModel()->select(index, QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
++	if (scrollToIndex)
++		scrollTo(index);
+ }
+ 
+ /******************************************************************************
+diff --git a/kalarm/eventlistview.h b/kalarm/eventlistview.h
+index 23b97b1..f0dc7ca 100644
+--- a/kalarm/eventlistview.h
++++ b/kalarm/eventlistview.h
+@@ -1,7 +1,7 @@
+ /*
+  *  eventlistview.h  -  base class for widget showing list of alarms
+  *  Program:  kalarm
+- *  Copyright © 2007,2008 by David Jarvie <djarvie@kde.org>
++ *  Copyright © 2007,2008,2011 by David Jarvie <djarvie@kde.org>
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -42,8 +42,8 @@ class EventListView : public QTreeView
+ 		EventListModel*   eventModel() const   { return static_cast<EventListModel*>(static_cast<QAbstractProxyModel*>(model())->sourceModel()); }
+ 		KAEvent*          event(int row) const;
+ 		KAEvent*          event(const QModelIndex&) const;
+-		void              select(const QString& eventId);
+-		void              select(const QModelIndex&);
++		void              select(const QString& eventId, bool scrollToEvent = false);
++		void              select(const QModelIndex&, bool scrollToIndex = false);
+ 		QModelIndex       selectedIndex() const;
+ 		KAEvent*          selectedEvent() const;
+ 		KAEvent::List     selectedEvents() const;
+diff --git a/kalarm/functions.cpp b/kalarm/functions.cpp
+index ab1b6f1..307539a 100644
+--- a/kalarm/functions.cpp
++++ b/kalarm/functions.cpp
+@@ -132,14 +132,9 @@ MainWindow* displayMainWindowSelected(const QString& eventID)
+ 	else
+ 	{
+ 		// There is already a main window, so make it the active window
+-		bool visible = win->isVisible();
+-		if (visible)
+-			win->hide();        // in case it's on a different desktop
+-		if (!visible  ||  win->isMinimized())
+-		{
+-			win->setWindowState(win->windowState() & ~Qt::WindowMinimized);
+-			win->show();
+-		}
++		win->hide();        // in case it's on a different desktop
++		win->setWindowState(win->windowState() & ~Qt::WindowMinimized);
++		win->show();
+ 		win->raise();
+ 		win->activateWindow();
+ 	}
+diff --git a/kalarm/kalarm.h b/kalarm/kalarm.h
+index 63333b2..e887eb3 100644
+--- a/kalarm/kalarm.h
++++ b/kalarm/kalarm.h
+@@ -23,7 +23,7 @@
+ 
+ #undef QT3_SUPPORT
+ 
+-#define KALARM_VERSION "2.4.11"
++#define KALARM_VERSION "2.4.12"
+ #define KALARM_NAME "KAlarm"
+ #define KALARM_DBUS_SERVICE  "org.kde.kalarm"  // D-Bus service name of KAlarm application
+ 
+diff --git a/kalarm/mainwindow.cpp b/kalarm/mainwindow.cpp
+index 95ce321..dd3b915 100644
+--- a/kalarm/mainwindow.cpp
++++ b/kalarm/mainwindow.cpp
+@@ -657,12 +657,7 @@ void MainWindow::updateKeepArchived(int days)
+ void MainWindow::selectEvent(const QString& eventID)
+ {
+ 	mListView->clearSelection();
+-	QModelIndex index = EventListModel::alarms()->eventIndex(eventID);
+-	if (index.isValid())
+-	{
+-		mListView->select(index);
+-		mListView->scrollTo(index);
+-	}
++	mListView->select(eventID, true);
+ }
+ 
+ /******************************************************************************
+-- 
+1.7.9.2
+

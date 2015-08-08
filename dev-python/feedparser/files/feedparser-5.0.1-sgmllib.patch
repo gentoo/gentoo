@@ -1,0 +1,26 @@
+--- feedparser/feedparser.py
++++ feedparser/feedparser.py
+@@ -135,7 +135,11 @@
+ #ACCEPTABLE_URI_SCHEMES = ()
+ 
+ # ---------- required modules (should come with any Python distribution) ----------
+-import sgmllib, re, sys, copy, urlparse, time, types, cgi, urllib, urllib2, datetime
++import re, sys, copy, urlparse, time, types, cgi, urllib, urllib2, datetime
++try:
++    import sgmllib
++except ImportError:
++    import _feedparser_sgmllib as sgmllib
+ try:
+     from io import BytesIO as _StringIO
+ except ImportError:
+--- setup.py
++++ setup.py
+@@ -17,7 +17,7 @@
+     download_url = 'http://code.google.com/p/feedparser/',
+     platforms = ['POSIX', 'Windows'],
+     package_dir = {'': 'feedparser'},
+-    py_modules = ['feedparser'],
++    py_modules = ['feedparser', '_feedparser_sgmllib'],
+     keywords = ['atom', 'cdf', 'feed', 'parser', 'rdf', 'rss'],
+     classifiers = [
+         'Development Status :: 5 - Production/Stable',

@@ -1,0 +1,6 @@
+Please go to this location
+
+http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/install/index.php
+
+and select "Upgrade from a previous version of b2evolution" after 
+providing the credentials required for the database acces.

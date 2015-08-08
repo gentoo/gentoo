@@ -1,0 +1,8 @@
+# /etc/conf.d/vdr.xine:
+
+# Global config file for vdr rc-scripts
+
+# -r:
+#   Enable xine to send keys to vdr-process
+
+_EXTRAOPTS="-r"

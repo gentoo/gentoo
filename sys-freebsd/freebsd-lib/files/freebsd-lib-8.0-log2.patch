@@ -1,0 +1,21 @@
+log2 and log2f are required by C99 and are not implemented.
+Workaround the deficiency.
+
+--- lib/msun/src/math.h.old	2010-03-14 17:02:25.000000000 +0100
++++ lib/msun/src/math.h	2010-03-14 17:07:03.000000000 +0100
+@@ -203,6 +203,7 @@
+ double	frexp(double, int *);	/* fundamentally !__pure2 */
+ double	ldexp(double, int);
+ double	log(double);
++#define log2(x) log(x)/log(2.0)
+ double	log10(double);
+ double	modf(double, double *);	/* fundamentally !__pure2 */
+ 
+@@ -319,6 +320,7 @@
+ float	log10f(float);
+ float	log1pf(float);
+ float	logf(float);
++#define log2f(x) logf(x)/logf(2.0)
+ float	modff(float, float *);	/* fundamentally !__pure2 */
+ 
+ float	powf(float, float);

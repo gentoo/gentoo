@@ -1,0 +1,1425 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 14_fig2mpdf.dpatch by Michael Pfeiffer <p3fff@web.de>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+
+## DP: creating multilayered or singlelayer PDF or EPS figures for
+## DP: including into LaTeX documents.
+## DP: http://p3f.gmxhome.de/fig2mpdf/fig2mpdf.html
+
+@DPATCH@
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/doc/fig2dev.1 transfig/doc/fig2dev.1
+--- transfig~/doc/fig2dev.1
++++ transfig/doc/fig2dev.1
+@@ -53,8 +53,8 @@
+ \fBbox, cgm, epic, eepic, eepicemu, emf, eps, gbx (Gerber beta driver), gif, ibmgl, jpeg,
+ latex, map (HTML image map), mf (MetaFont),
+ mp (MetaPost), mmp (Multi-MetaPost),
+-pcx, pdf, pdftex, pdftex_t, pic, pictex, png, ppm, ps,
+-pstex, pstex_t, pstricks, ptk (Perl/tk),
++pcx, pdf, pdftex, pdftex_t, pdftex_p, pic, pictex, png, ppm, ps,
++pstex, pstex_t, pstex_p, pstricks, ptk (Perl/tk),
+ shape (LaTeX shaped paragraphs), sld (AutoCad slide format), 
+ svg (beta driver), textyl,
+ tiff, tk (tcl/tk), tpic, xbm and
+@@ -1062,6 +1062,62 @@
+ font.  Option 1 sets LaTeX font size only.  Option 2 issues no font
+ commands at all.
+ 
++.SH PSTEX_P and PDFTEX_P OPTIONS
++The \fBpstex_p\fR language has the same intention as
++the combination of \fBpstex\fR and \fBpstex_t\fR.
++The only reason to use \fBpstex_p\fR is that you have partially overlayed texts. 
++\fBpstex_p\fR splits the Fig file concerning the depths of existing texts. Because 
++of it's necessary to get the resulting size of the figure for the pdf document 
++you have to specify the target document format 
++(i.e. using \fBpstex_p\fR rsp. \fBpdftex_p\fR).
++.br
++Two files results by using this language:
++.br
++.HP +.3i
++1) A bash script for creating and removing the necessary graphics files. 
++Extension: \fB.create\fR
++.HP +.3i
++.HP +.3i
++2) The latex code which includes all graphics files and special texts. Content is
++put to stdout.
++
++.TP
++The \fBpstex_p\fR driver has the following special options:
++
++.TP
++.B \-p basename
++specifies the basename of the files to be created (see (1) above). This option 
++is mandatory. 
++.TP
++.B "\-d dmag"
++Set a separate magnification for the length of line dashes to
++.I dmag.
++.TP
++.B \-E num
++Set encoding for latex text translation (0 no translation, 1 ISO-8859-1, 2 ISO-8859-2)
++.TP
++.B "\-l lwidth"
++Sets the threshold between LaTeX thin and thick lines to
++.I lwidth
++pixels.
++LaTeX supports only two different line width: \\thinlines and \\thicklines.
++Lines of width greater than
++.I lwidth
++pixels are drawn as \\thicklines.
++Also affects the size of dots in dotted line style.
++The default is 1.
++.TP
++.B \-v
++Verbose mode.
++.TP
++.B \-F
++Don't set the font face, series, and style; only set it's size and the
++baselineskip. By default, fig2dev sets all 5 font parameters when it 
++puts some text. The disadvantage is that you can't set the font from your
++LaTeX document. With this option on, you can set the font from your LaTeX
++document (like "\fB\\sfshape \\input picture.eepic\fR").
++
++
+ .SH TK and PTK OPTIONS (tcl/tk and Perl/tk)
+ .TP
+ .B \-l dummy_arg
+@@ -1107,6 +1163,13 @@
+ .PP
+ Rotated text is only supported in the IBM-GL (HP/GL) and PostScript (including eps)
+ languages.
++.PP
++In \fBpdftex_p\fR language \fIfig2dev\fR can not determine the exact sizes of
++the special texts set by pdflatex afterwards. If these texts are bigger than 
++expected the calculated bounding box might be too small so that some texts passes 
++over the figure boundaries. If this happen you have to put an invisible
++rectangle (line width 0) around the text or the entire figure.
++
+ .SH COPYRIGHT
+ Copyright (c) 1991 Micah Beck
+ .br
+@@ -1187,3 +1250,7 @@
+ The GBX (Gerber) driver was written by
+ .br
+ Edward Grace (ej.grace@imperial.ac.uk).
++.sp
++The PSTEX_P and PDFTEX_P drivers (overlayed LaTeX texts) was written by
++.br
++Michael Pfeiffer (p3f@gmx.de)
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2dev/dev/genpstex.c transfig/fig2dev/dev/genpstex.c
+--- transfig~/fig2dev/dev/genpstex.c
++++ transfig/fig2dev/dev/genpstex.c
+@@ -70,7 +70,307 @@
+ 	genps_end ();
+ 
+ static char pstex_file[1000] = "";
++static int    iObjectsRead = 0;
++static int    iTextRead = 0;
++static int    iObjectsFileNumber = 0;
++static int    iStartDepth;
++static int    iLastDepth;
++static FILE * ptCreateFile;
++static char   szFileName[1000];
++static int    iLength;
++static int    iPdfOutputs = 0;
++
++#ifdef never
++static double		unitlength;
++static double		dash_mag = 1.0;
++
++static int		(*translate_coordinates)() = NULL;
++static int		(*translate_coordinates_d)() = NULL;
++#else
++extern double		unitlength;
++extern double		dash_mag;
++
++extern int		(*translate_coordinates)();
++extern int		(*translate_coordinates_d)();
++#endif
++
++#define TOP		840
++#define	SWAP(x,y)	{tmp=x; x=y; y=tmp;}
++#define TRANS(x,y)		(*translate_coordinates)(&x,&y)
++#define TRANS2(x1,y1,x2,y2)	(*translate_coordinates)(&x1,&y1); \
++				(*translate_coordinates)(&x2,&y2)
++#define TRANSD(x,y)		(*translate_coordinates_d)(&x,&y)
++
++static void genpstex_p_finalize_objects(int depth);
++
++/*************************************************************************
++ *************************************************************************/
++static
++translate2(xp, yp)
++  int	*xp, *yp;
++{
++	*xp = *xp + 1;
++	*yp = (double)(TOP - *yp -1);
++	}
++
++static
++translate1_d(xp, yp)
++  double	*xp, *yp;
++{
++	*xp = *xp + 1.0;
++	*yp = *yp + 1.0;
++	}
++
++static
++translate2_d(xp, yp)
++  double	*xp, *yp;
++{
++	*xp = *xp + 1.0;
++	*yp = (double)TOP - *yp -1.0;
++	}
++
++/*************************************************************************
++ *************************************************************************/
++void genpstex_p_option(opt, optarg)
++char opt, *optarg;
++{
++       if (opt == 'p')
++       {
++	   strcpy(pstex_file, optarg);
++       }
++       else
++	   genlatex_option(opt, optarg);
++}
++
++
++/*************************************************************************
++ *************************************************************************/
++void genpstex_p_start(objects)
++  F_compound	*objects;
++{
++	int	      tmp;
++	struct stat   tStat;
++	long          lUnitLength;
++
++        if (*pstex_file == '\0')
++        {
++		put_msg("Argument -p is mandatory to pstex_p.");
++		exit(1);
++	}
++       
++	strncpy(szFileName, pstex_file, 900);
++	iLength = strlen(szFileName);
++
++	sprintf(szFileName + iLength, ".create");
++	ptCreateFile = fopen (szFileName, "wb");
++
++	if ( ! ptCreateFile)
++        {
++		put_msg("Couldn't open %s for writing", szFileName);
++		exit(1);
++	}
++	fstat(fileno(ptCreateFile), & tStat);
++	fchmod (fileno(ptCreateFile), tStat.st_mode | ((tStat.st_mode & (S_IRUSR | S_IRGRP | S_IROTH)) >> 2));
++	fprintf(ptCreateFile, "#!/bin/bash\n\n", szFileName);
++
++	fprintf(ptCreateFile, "while getopts \"r\" Option\n");
++	fprintf(ptCreateFile, "do\n");
++	fprintf(ptCreateFile, "  case $Option in\n");
++	fprintf(ptCreateFile, "    r) iOptRemove=1;;\n");
++	fprintf(ptCreateFile, "    *) echo \"illegal option -$Option\"\n");
++	fprintf(ptCreateFile, "  esac\n");
++	fprintf(ptCreateFile, "done\n");
++	fprintf(ptCreateFile, "shift $(($OPTIND - 1))\n");
++
++	texfontsizes[0] = texfontsizes[1] = 
++		TEXFONTSIZE(font_size != 0.0? font_size : DEFAULT_FONT_SIZE);
++
++ 	unitlength = mag/ppi;
++	dash_mag /= unitlength*80.0;
++
++	translate_coordinates = translate2;
++	translate_coordinates_d = translate2_d;
++
++	TRANS2(llx, lly, urx, ury);
++	if (llx > urx) SWAP(llx, urx)
++	if (lly > ury) SWAP(lly, ury)
++
++	/* LaTeX start */
++
++	/* print any whole-figure comments prefixed with "%" */
++	if (objects->comments) {
++	    fprintf(tfp,"%%\n");
++	    print_comments("% ",objects->comments, "");
++	    fprintf(tfp,"%%\n");
++	}
++
++	lUnitLength = (long) (round(4736286.72*unitlength));
++	fprintf(tfp, "\\setlength{\\unitlength}{%lisp}%%\n",
++				lUnitLength);
++	/* define the SetFigFont macro */
++	define_setfigfont(tfp);
++
++	sprintf(szFileName + iLength, ".size");
++	fprintf(ptCreateFile, "if [ \"$iOptRemove\" == \"\" ]; then\n");
++	if (iPdfOutputs)
++		fprintf(ptCreateFile, "  echo \"\\setlength\\pdfpagewidth{%3.2fpt}\\setlength\\pdfpageheight{%3.2fpt}\" > %s\n",
++        	        (float) lUnitLength / 65536 * (urx - llx), (float) lUnitLength / 65536 * (ury - lly), szFileName);
++	else
++		fprintf(ptCreateFile, "echo -n\"\" > %s\n", szFileName);
++	fprintf(ptCreateFile, "else\n  rm -f %s\nfi\n", szFileName);
++}
++
++/*************************************************************************
++ *************************************************************************/
++void genpdftex_p_start(objects)
++  F_compound	*objects;
++{
++	iPdfOutputs = 1;
++	genpstex_p_start(objects);
++}
++
++
++/*************************************************************************
++ *************************************************************************/
++int genpstex_p_end()
++{
++	if (iTextRead)
++	{
++		fprintf(tfp, "\\end{picture}%%\n");
++		iTextRead = 0;
++	}
++	if (iObjectsRead)
++	{
++		genpstex_p_finalize_objects(iLastDepth);
++		iObjectsRead = 0;
++	}
++
++	/* LaTeX ending */
++	fprintf(tfp, "\\begin{picture}(%d,%d)\n", urx-llx, ury-lly);
++	fprintf(tfp, "\\end{picture}%%\n");
++
++	fclose(ptCreateFile);
++
++	/* all ok */
++	return 0;
++}
++
++
++/*************************************************************************
++ *************************************************************************/
++void genpstex_p_finalize_objects(depth)
++int depth;
++{
++	char	szFileName[1000];
++	int     iLength;
++
++	strncpy(szFileName, pstex_file, 900);
++	iLength = strlen(szFileName);
++
++	
++	sprintf(szFileName + iLength, "%03d", iObjectsFileNumber++);
++	fprintf(ptCreateFile, "if [ \"$iOptRemove\" == \"\" ]; then\n");
++	if (iPdfOutputs)
++	{
++		fprintf(ptCreateFile, "  %s -L pstex -D +%d,%d %s", prog, depth, iStartDepth, from, szFileName);
++		fprintf(ptCreateFile, " | epstopdf -f > %s.pdf\n", szFileName, szFileName);
++	}
++	else
++		fprintf(ptCreateFile, "%s -L pstex -D +%d,%d %s %s.eps\n", prog, depth, iStartDepth, from, szFileName);
++	fprintf(ptCreateFile, "else\n  rm -f %s.", szFileName);
++	if (iPdfOutputs)
++		fprintf(ptCreateFile, "pdf");
++	else
++		fprintf(ptCreateFile, "eps");
++	fprintf(ptCreateFile, "\nfi\n");
++
++	fprintf(tfp, "\\begin{picture}(0,0)%%\n");
++/* newer includegraphics directive suggested by Stephen Harker 1/13/99 */
++#if defined(LATEX2E_GRAPHICS)
++#  if defined(EPSFIG)
++	fprintf(tfp, "\\epsfig{file=%s.eps}%%\n",szFileName); 
++#  else
++	fprintf(tfp, "\\includegraphics{%s}%%\n",szFileName);
++#  endif
++#else
++	fprintf(tfp, "\\special{psfile=%s.eps}%%\n",szFileName);
++#endif
++	fprintf(tfp, "\\end{picture}%%\n");
++}
++
++/*************************************************************************
++ *************************************************************************/
++void genpstex_p_object(depth)
++int depth;
++{
++	if (iTextRead)
++	{
++		fprintf(tfp, "\\end{picture}%%\n");
++		iTextRead = 0;
++	}
++	if (iObjectsRead == 0)
++	{
++		iStartDepth = depth;
++		iObjectsRead = 1;
++	}
++	iLastDepth = depth;
++
++}
+ 
++void genpstex_p_arc(obj)
++F_arc	*obj;
++{
++	genpstex_p_object(obj->depth);
++}
++
++	
++void genpstex_p_ellipse(obj)
++F_ellipse	*obj;
++{
++	genpstex_p_object(obj->depth);
++}
++	
++void genpstex_p_line(obj)
++F_line	*obj;
++{
++	genpstex_p_object(obj->depth);
++}
++	
++void genpstex_p_spline(obj)
++F_spline	*obj;
++{
++	genpstex_p_object(obj->depth);
++}
++
++
++
++/*************************************************************************
++ *************************************************************************/
++void genpstex_p_text(t)
++F_text	*t;
++{
++
++	if (!special_text(t))
++		genpstex_p_object(t->depth);
++	else
++	{
++		if (iObjectsRead)
++		{
++			genpstex_p_finalize_objects(iLastDepth);
++			iObjectsRead = 0;
++		}
++		if (iTextRead == 0)
++		{
++			fprintf(tfp, "\\begin{picture}(0,0)(%d,%d)\n", llx, lly);
++			iTextRead = 1;
++		}
++		genlatex_text(t);
++	}
++
++}
++
++/*************************************************************************
++ *************************************************************************/
+ void genpstex_t_option(opt, optarg)
+ char opt, *optarg;
+ {
+@@ -112,6 +412,8 @@
+ 	else genlatex_text(t);
+ }
+ 
++/*************************************************************************
++ *************************************************************************/
+ void genpstex_text(t)
+ F_text	*t;
+ {
+@@ -128,6 +430,32 @@
+ 	   genlatex_option(opt, optarg);
+ }
+ 
++struct driver dev_pstex_p = {
++  	genpstex_p_option,
++	genpstex_p_start,
++	gendev_null,
++	genpstex_p_arc,
++	genpstex_p_ellipse,
++	genpstex_p_line,
++	genpstex_p_spline,
++	genpstex_p_text,
++	genpstex_p_end,
++	INCLUDE_TEXT
++};
++
++struct driver dev_pdftex_p = {
++  	genpstex_p_option,
++	genpdftex_p_start,
++	gendev_null,
++	genpstex_p_arc,
++	genpstex_p_ellipse,
++	genpstex_p_line,
++	genpstex_p_spline,
++	genpstex_p_text,
++	genpstex_p_end,
++	INCLUDE_TEXT
++};
++
+ struct driver dev_pstex_t = {
+   	genpstex_t_option,
+ 	genpstex_t_start,
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2dev/drivers.h transfig/fig2dev/drivers.h
+--- transfig~/fig2dev/drivers.h
++++ transfig/fig2dev/drivers.h
+@@ -30,8 +30,10 @@
+ extern struct driver dev_pdf;
+ extern struct driver dev_pdftex;
+ extern struct driver dev_pdftex_t;
++extern struct driver dev_pdftex_p;
+ extern struct driver dev_pstex;
+ extern struct driver dev_pstex_t;
++extern struct driver dev_pstex_p;
+ extern struct driver dev_pstricks;
+ extern struct driver dev_textyl;
+ extern struct driver dev_tk;
+@@ -75,6 +77,7 @@
+ 		{"pdf",		&dev_pdf},
+ 		{"pdftex",	&dev_pdftex},
+ 		{"pdftex_t",	&dev_pdftex_t},
++		{"pdftex_p",	&dev_pdftex_p},
+ 		{"pic",		&dev_pic},
+ 		{"pictex",	&dev_pictex},
+ 		{"png",		&dev_bitmaps},
+@@ -82,6 +85,7 @@
+ 		{"ps",		&dev_ps},
+ 		{"pstex",	&dev_pstex},
+ 		{"pstex_t",	&dev_pstex_t},
++		{"pstex_p",	&dev_pstex_p},
+ 		{"pstricks",	&dev_pstricks},
+ 		{"ptk",		&dev_ptk},
+ 		{"shape",	&dev_shape},
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2dev/fig2dev.c transfig/fig2dev/fig2dev.c
+--- transfig~/fig2dev/fig2dev.c
++++ transfig/fig2dev/fig2dev.c
+@@ -651,6 +651,18 @@
+ #endif /* NFSS */
+     printf("  -p name	name of the PostScript file to be overlaid\n");
+ 
++    printf("PSTEX_P and PDFTEX_P Options:\n");
++    printf("  -p name	basename of the files to be created\n");
++#ifdef NFSS
++    printf("  -F		don't set font family/series/shape, so you can\n");
++    printf("		  set it from latex\n");
++#endif /* NFSS */
++    printf("  -d dmag	set separate magnification for length of line dashes to dmag\n");
++    printf("  -E num	set encoding for text translation (0 no translation,\n");
++    printf("		  1 ISO-8859-1, 2 ISO-8859-2)\n");
++    printf("  -l lwidth	set threshold between thin and thick lines to lwidth\n");
++    printf("  -v		verbose mode\n");
++
+     printf("SHAPE (ShapePar driver) Options:\n");
+     printf("  -n name	Set basename of the macro (e.g. \"face\" gives faceshape and facepar)\n");
+     printf("Tcl/Tk (tk) and Perl/Tk (ptk) Options:\n");
+@@ -778,6 +790,12 @@
+ int rec_comp(r1, r2)
+     struct obj_rec	*r1, *r2;
+ {
++	if (r2->depth == r1->depth)
++	{
++		if ((r1->gendev == dev->text) ^ (r2->gendev == dev->text))
++			return ((r1->gendev == dev->text) * 2 - 1);
++		return (0);
++	}
+ 	return (r2->depth - r1->depth);
+ }
+ 
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2mpdf/copyright.txt transfig/fig2mpdf/copyright.txt
+--- transfig~/fig2mpdf/copyright.txt
++++ transfig/fig2mpdf/copyright.txt
+@@ -0,0 +1,25 @@
++The following files contain copyright and license info for
++the code they contain: 
++fig2mpdf, fig2mpdf.1, transfig.3.2.4.patch, transfig-3.2.5-alpha7.patch
++
++-- fig2mpdf copyright begins here --
++
++    fig2mpdf/pdftex_p and pstex_p driver of fig2dev
++    Copyright (C) 2006 Michael Pfeiffer -- p3fff@web.de
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program; if not, write to the Free Software
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    (Author's note: the license is in the file gpl.txt, which is included
++     in the archive.)
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2mpdf/fig2mpdf transfig/fig2mpdf/fig2mpdf
+--- transfig~/fig2mpdf/fig2mpdf
++++ transfig/fig2mpdf/fig2mpdf
+@@ -0,0 +1,653 @@
++#!/bin/sh
++
++unset POSIXLY_CORRECT
++
++gawk '
++#########################################################################
++#########################################################################
++BEGIN {
++
++  cmdGawk	= "gawk";
++  cmdCat	= "cat";
++  cmdLess	= "less";
++  cmdRm		= "rm"
++  cmdMv		= "mv"
++  cmdLatex	= "latex";
++  cmdPdftex	= "pdflatex";
++  cmdEpsToPdf	= "epstopdf";
++  cmdDvips	= "dvips";
++  cmdFig2dev	= "fig2dev";
++  cmdTouch	= "touch";
++
++  szVersion     = "1.1.2";
++  iError        = 0;
++  iGapWidth     = 1;
++
++
++  # get the options
++  szOptString = "&l%e&m$p%i%I$s$H$g%G%v%V%d";
++  getopt(szOptString);
++
++  if (aOptions["d"])
++  {
++    aOptions["v"] = "-";
++    for (iI = 0; iI < ARGC; iI++)
++      printf("ARGV[%d]=%s\n", iI, ARGV[iI]);
++
++    iDim = split(szOptString, aOpts, "[$%&]");
++    for (iI = 2; iI <= iDim; iI++)
++      debug("aOptions[%s] = >%s<\n", aOpts[iI], aOptions[aOpts[iI]]);
++  }
++
++
++
++  if (aOptions["V"] != "")
++  {
++    printf("fig2mpdf: version %s\n", szVersion);
++    iError = 1;
++    exit(0);
++  }
++  
++  szTmpPrefix	= "_fig2mpdf"
++
++  iLine = -1;
++  iInString = 0;
++  iDepths = 1;
++
++  iInvalidDepth = -2
++  iAdminDepth   = 2000
++  
++  szBase = ARGV[1];
++  szOrigFile = ARGV[1];
++  szOrigPath = ARGV[1];
++
++  # set default switch state
++  iDoMultiLayer = 0;
++  iDoLatex = 0;
++  iDoPdftex = 1;
++  iIncludeLowestRange = 1;
++    
++  # set iDoLatex and iDoMultiLayer concerning the given suffix
++  match(szBase, /\.[^\.\/]+$/);
++  if (RLENGTH != -1)
++  {
++    szSuffix = substr(szBase, RSTART);
++    if (szSuffix == ".lfig")
++      iDoLatex = 1;
++    else if (szSuffix == ".mfig")
++      iDoMultiLayer = 1;
++    else if ((szSuffix == ".mlfig") || (szSuffix == ".lmfig"))
++    {
++      iDoLatex = 1;
++      iDoMultiLayer = 1;
++    }
++  }
++
++  ################################
++  # evalutate options
++
++  # set toggle latex
++  if (aOptions["l"] == "-")
++    iDoLatex = 1;
++  if (aOptions["l"] == "+")
++    iDoLatex = 0;
++
++  # set multilayer flag
++  if (aOptions["m"] == "-")
++    iDoMultiLayer = 1;
++  if (aOptions["m"] == "+")
++    iDoMultiLayer = 0;
++
++  # set toggle pdftex
++  if (aOptions["e"] == "-")
++    iDoPdftex = 0;
++
++  # evaluate do not include lowest layer in all figs
++  iIncludeLowestRange = (aOptions["i"] == "-");
++
++  # evaluate include all lower ranges in the sub figs
++  iIncludeAllLowerRanges = (aOptions["I"] != "-");
++  
++  # check consistencies
++  # if there are ranges given -> do multilayer
++  if (aOptions["p"] != "")
++    iDoMultiLayer = 1;
++
++
++  if (aOptions["g"] != "")
++  {
++    if ( ! match (aOptions["g"], /^[0-9]+$/))
++      usage();
++
++    iGapWidth = aOptions["g"] + 1;
++  }
++
++  # get the basename of the source
++  gsub(/\.[^\/]+$/, "", szBase);
++  gsub(/^.*\//, "", szBase);
++
++  # get the path to the original
++  gsub(/[^\/]+$/, "", szOrigPath);
++}
++#########################################################################
++#########################################################################
++
++( iInString != 0) {
++  aszLine[iLine] = sprintf("%s\n%s", aszLine[iLine], $0);
++  iInString = (match($0, "\\\\001$") == 0);
++  iSubLine++;
++  next;
++}
++
++/^[135][ 	]/ {
++  iCmd		= $1;
++  iSubCmd	= -1;
++  iSubLine	= 0;
++  aiDepth[++iLine] = fnGetDepth($1);
++  aszLine[iLine] = $0;
++  next;
++}
++
++/^[2][ 	]/ {
++  iCmd		= $1;
++  iSubCmd	= $2;
++  iSubLine	= 0;
++  aiDepth[++iLine] = fnGetDepth($1);
++  aszLine[iLine] = $0;
++  next;
++}
++
++
++/^[4][ 	]/ {
++  iCmd		= $1;
++  iSubCmd	= $2;
++  iSubLine	= 0;
++  aiDepth[++iLine] = fnGetDepth($1);
++  aszLine[iLine] = $0;
++  iInString = (match($0, "\\\\001$") == 0);
++  next;
++}
++
++/^(6[ 	])|(-6)/ {
++  iCmd		= $1;
++  iSubCmd	= -1;
++  iSubLine	= 0;
++  next;
++}
++
++/^[^	]/ {
++  iCmd		= -1;
++  aiDepth[++iLine]	= fnGetDepth("A");
++  iSubLine		= 0;
++  aszLine[iLine]	= $0;
++  next;
++}
++
++/^[	]/ {
++  iSubLine++;
++  if ((iCmd == 2) && (iSubCmd == 5) && (iSubLine == 1))
++  {
++    if (match($0, "^\t[01] "))
++    {
++      szFileName = substr($0, RSTART + RLENGTH);
++      if ( ! match(szFileName, /^\//))
++        szFileName = sprintf("%s%s", szOrigPath, szFileName);
++      aszLine[iLine] = sprintf("%s\n\t%s %s", aszLine[iLine], $1, szFileName);
++    }
++    else
++      aszLine[iLine] = sprintf("%s\n%s", aszLine[iLine], $0);
++  }
++  else
++    aszLine[iLine] = sprintf("%s\n%s", aszLine[iLine], $0);
++}
++
++
++END {
++  iLine++;
++  iLowestLayer = 0;
++  iFirstRange = 0;
++
++  if (iError == 0)
++  {
++
++
++    if (iDoMultiLayer)
++    {
++      asort(aiDepths, aiSortedDepth);
++
++      # check for ranges as options
++      if (aOptions["p"] != "")
++      {
++        # we have explicit ranges
++        gsub(/-/, ":", aOptions["p"]);
++        iRanges = split(aOptions["p"], aszRanges, ",");
++      }
++      else
++      {
++        if (iDepths < 4)
++        {
++          iRanges = 1;
++          aszRanges[1] = "1:999";
++        }
++        else
++        {
++          iRanges = 0;
++          iLastRange = aiSortedDepth[iDepths - 2] + 0;
++          iRangeStart = iLastRange;
++          for (iI = iDepths - 3; iI > 0; iI--)
++          {
++            aiSortedDepth[iI] += 0;
++            if ((aiSortedDepth[iI] < iLastRange - iGapWidth) || (iI == 1))
++            {
++              if (aiSortedDepth[iI] >= iLastRange - iGapWidth)
++                iLastRange = aiSortedDepth[iI];
++
++              if (iLastRange != iRangeStart)
++                aszRanges[++iRanges] = sprintf("%d:%d", iLastRange, iRangeStart);
++              else
++                aszRanges[++iRanges] = sprintf("%d", iRangeStart);
++              iRangeStart = aiSortedDepth[iI];
++
++              if ((iI == 1) && (aiSortedDepth[iI] < iLastRange - iGapWidth))
++                aszRanges[++iRanges] = sprintf("%d", aiSortedDepth[iI]);
++            }
++            iLastRange = aiSortedDepth[iI];
++          }
++        }
++      }
++
++
++      # check for a multilayer file with only one range
++      if ((iRanges == 1) && iIncludeLowestRange)
++      {
++        iIncludeLowestRange = 0;
++      }
++
++      szInitRangeList = " -D ";
++      szSep = "";
++
++      if (iIncludeLowestRange)
++      {
++        szInitRangeList = sprintf("%s+%s", szInitRangeList, aszRanges[1]);
++        szSep = ",";
++      }
++      szRangeList = szInitRangeList;
++
++      # step through the ranges
++      for (iI = iIncludeLowestRange; iI < iRanges; iI++)
++      {
++        szFileBase = sprintf("%s-%d", szBase, iI - iIncludeLowestRange);
++
++        if (aOptions["I"])
++        {
++          szRangeList = sprintf("%s%s+%s", szRangeList, szSep, aszRanges[iI + 1]);
++          szSep = ",";
++        }
++        else
++          szRangeList = sprintf("%s%s+%s", szInitRangeList, szSep, aszRanges[iI + 1]);
++
++
++        if (iDoLatex)
++          szTargetFile = fnDoTexFig(szFileBase, szOrigFile, szRangeList, (iDoPdftex != 0));
++        else
++          szTargetFile = fnDoNormalFig(szFileBase, szOrigFile, szRangeList, (iDoPdftex != 0));
++
++
++        if (aOptions["G"])
++        {
++          match(szTargetFile, /\.[^.]*$/);
++          szCommand = sprintf("%s %s %s.page%d%s", cmdMv, szTargetFile, szBase, iI - iIncludeLowestRange, substr(szTargetFile, RSTART, RLENGTH));
++          debug("%s\n", szCommand);
++          system(szCommand);
++        }
++      }
++    }
++    else
++    {
++      szRangeList = "";
++
++      if (iDoLatex)
++        szTargetFile = fnDoTexFig(szBase, szOrigFile, szRangeList, (iDoPdftex != 0));
++      else
++        szTargetFile = fnDoNormalFig(szBase, szOrigFile, szRangeList, (iDoPdftex != 0));
++    }
++  }
++}
++
++
++
++#########################################################################
++#########################################################################
++function debug(str, arg0, arg1, arg2, arg3, arg4)
++{
++  if (aOptions["v"])
++    printf (str, arg0, arg1, arg2, arg3, arg4);
++}
++
++#########################################################################
++#########################################################################
++function fnGetDepth (iControl)
++{
++
++  if (iControl == 1)
++  {
++    iReturn = sprintf("%04d", $7);
++  }
++  else if (iControl == 2)
++  {
++    iReturn = sprintf("%04d", $7);
++  }
++  else if (iControl == 3)
++  {
++    iReturn = sprintf("%04d", $7);
++  }
++  else if (iControl == 4)
++  {
++    iReturn = sprintf("%04d", $4);
++  }
++  else if (iControl == 5)
++  {
++    iReturn = sprintf("%04d", $7);
++  }
++  else if ((iControl == 6) || (iControl == -6))
++  {
++    iReturn = sprintf("%04d", iInvalidDepth);
++  }
++  else
++  {
++    iReturn = sprintf("%04d", iAdminDepth);
++  }
++
++  if (iReturn >= 0)
++  {
++    if (ahDepths[iReturn] == 0)
++    {
++      ahDepths[iReturn] = 1;
++      aiDepths[iDepths++] = iReturn;
++    }
++  }
++
++  return (iReturn);
++
++}
++
++#########################################################################
++#########################################################################
++function fnDoNormalFig(szFileNameBase, szFigFile, szRangeList, iPdf,
++                         szEpsFile, szPdfFile, szTargetFile, szCommand)
++{
++
++  debug("FileNameBase >%s< FigFile >%s< Pdf:%d\n", szFileNameBase, szFigFile, iPdf);
++
++  if (iPdf)
++    szEpsFile = sprintf("%s%s.eps", szTmpPrefix, szFileNameBase);
++  else
++  {
++    szEpsFile = sprintf("%s.eps", szFileNameBase);
++    szTargetFile = szEpsFile;
++  }
++
++  szCommand = sprintf("%s -L eps %s %s %s 2> /dev/null", cmdFig2dev, szRangeList, szFigFile, szEpsFile);
++  debug("%s\n", szCommand);
++  system(szCommand);
++
++  if (iPdf)
++  {
++    szPdfFile = sprintf("%s.pdf", szFileNameBase);
++    szTargetFile = szPdfFile;
++    szCommand = sprintf("%s --outfile=%s %s", cmdEpsToPdf, szPdfFile, szEpsFile);
++    debug("%s\n", szCommand);
++    system(szCommand);
++    
++
++    if ( ! aOptions["d"])
++    {
++      szCommand = sprintf("%s -f %s", cmdRm, szEpsFile);
++      debug("%s\n", szCommand);
++      system(szCommand);
++    }
++  }
++
++  
++  return (szTargetFile);
++}
++
++
++#########################################################################
++#########################################################################
++function fnDoTexFig(szFileNameBase, szFigFile, szRangeList, iPdf,
++		       szEpsFile, szPdfFile, szTexDoc, szTexPdf, szTexLog, szTexAux, szTexInp, szTmpPs, szTmpPdf, szTexSiz, szTmpEps, szCommand, szHeader)
++{
++
++  debug("FileNameBase >%s< FigFile >%s< Pdf:%d\n", szFileNameBase, szFigFile, iPdf);
++
++  szEpsFile = sprintf("%s.eps", szFileNameBase);
++  szPdfFile = sprintf("%s.pdf", szFileNameBase);
++  szTexDoc = sprintf("%s%s_doc.tex", szTmpPrefix, szFileNameBase);
++  szTexPdf = sprintf("%s%s_doc.pdf", szTmpPrefix, szFileNameBase);
++  szTexDvi = sprintf("%s%s_doc.dvi", szTmpPrefix, szFileNameBase);
++  szTexLog = sprintf("%s%s_doc.log", szTmpPrefix, szFileNameBase);
++  szTexAux = sprintf("%s%s_doc.aux", szTmpPrefix, szFileNameBase);
++  szTexInpPref = sprintf("%s%s_inp", szTmpPrefix, szFileNameBase);
++  szTexInp = sprintf("%s.tex", szTexInpPref);
++  szTexCreator = sprintf("%s.create", szTexInpPref);
++  szTexSiz = sprintf("%s.size", szTexInpPref);
++
++  if (iPdf)
++    szCommand = sprintf("%s -L pdftex_p %s -p %s %s %s", cmdFig2dev, szRangeList, szTexInpPref, szFigFile, szTexInp);
++  else
++    szCommand = sprintf("%s -L pstex_p %s -p %s %s %s", cmdFig2dev, szRangeList, szTexInpPref, szFigFile, szTexInp);
++  debug("%s\n", szCommand);
++  system(szCommand);
++
++  szCommand = sprintf("./%s", szTexCreator);
++  debug("%s\n", szCommand);
++  system(szCommand);
++
++  # check if there is an own hederfile to include 
++  if (aOptions["s"] == "")
++    aOptions["s"] = "times";
++
++  if (aOptions["H"] == "")
++  {
++    szHeader = sprintf("\\documentclass{article}\n\
++\\usepackage{german,amssymb,amsmath}\n\
++\\usepackage{%s}", aOptions["s"]);
++  }
++  else
++    szHeader = sprintf("\\input{%s}\n", aOptions["H"]);
++
++  szHeader = sprintf("%s\n\
++\\usepackage{color}\n\
++\\usepackage{ifpdf}\n\
++\\setlength{\\textwidth}{100cm}\n\
++\\setlength{\\textheight}{100cm}\n\
++\\setlength{\\topmargin}{-1in}\n\
++\\setlength{\\headsep}{0pt}\n\
++\\setlength{\\headheight}{0pt}\n\
++\\setlength{\\oddsidemargin}{-1in}\n\
++\\parindent=0cm\n\
++\\ifpdf\n\
++\\usepackage[pdftex]{graphicx}\n\
++\\DeclareGraphicsExtensions{.pdf,.png,.jpg}\n\
++\\usepackage{epsfig}\n\
++\\input{%s}\n\
++\\else\n\
++\\usepackage{graphicx}\n\
++\\usepackage{epsfig}\n\
++\\fi\n\
++", szHeader, szTexSiz);
++
++  szCommand = sprintf("%s > %s << EOF\n\
++%s\\begin{document}\n\
++\\pagestyle{empty}\n\
++\\input{%s}\n\
++\\end{document}\n\
++EOF", cmdCat, szTexDoc, szHeader, szTexInp);
++  if (aOptions["d"] != "")
++    debug("%s\n", szCommand);
++  system(szCommand);
++
++  if (iPdf)
++  {
++
++    szCommand = sprintf("%s -interaction batchmode %s", cmdPdftex, szTexDoc);
++    debug("%s\n", szCommand);
++    iReturn = system(szCommand);
++
++    if (iReturn)
++    {
++      szCommand = sprintf("%s %s | %s +G", cmdCat, szTexLog, cmdLess);
++      system (szCommand);
++    }
++    else
++    {
++      szCommand = sprintf("%s %s %s", cmdMv, szTexPdf, szPdfFile);
++      debug("%s\n", szCommand);
++      system(szCommand);
++    }
++
++  }
++  else
++  {
++    szCommand = sprintf("%s -interaction batchmode %s", cmdLatex, szTexDoc);
++    debug("%s\n", szCommand);
++    iReturn = system(szCommand);
++    if (iReturn)
++    {
++      szCommand = sprintf("%s %s | %s +G", cmdCat, szTexLog, cmdLess);
++      system (szCommand);
++    }
++    else
++    {
++      szCommand = sprintf("%s -q -E  %s -o %s 2>&1 > /dev/null", cmdDvips, szTexDvi, szEpsFile);
++      debug("%s\n", szCommand);
++      system(szCommand);
++    }
++  }
++
++  if ( ! aOptions["d"])
++  {
++    szCommand = sprintf("./%s -r", szTexCreator);
++    debug("%s\n", szCommand);
++    system(szCommand);
++  }
++
++  if ( ! aOptions["d"])
++  {
++    szCommand = sprintf("%s -f %s %s %s %s %s %s %s", cmdRm, szTexDoc, szTexLog, szTexAux, szTexDvi, szTexInp, szTexCreator, szTexPdf);
++    debug("%s\n", szCommand);
++    system(szCommand);
++  }
++
++  if (iPdf)
++    return (szPdfFile);
++  else
++    return (szEpsFile);
++}
++
++
++#########################################################################
++#########################################################################
++function getopt(sOptions, n, m, fHuntParam, iSearchMinus, iSPos, iCLen, iHuntSwitches, szSwChar, szOptChar) {
++# Options:      Flagoptions: %f
++#               Parameter:   $p
++
++  n = 1;                        # index in argv
++  m = 1;                        # processed entries in argv finally it points to the firs$
++  iSearchMinus = 1;             # indicate that a switch leading sign minus is expected
++
++  # check for initial -- to separate the gawk switches from the script switches
++  if (ARGV[n] == "--")
++    n++;
++
++
++  while (n < ARGC)
++  {
++    iHuntSwitches = 0;
++    iCLen = length(ARGV[n]);
++
++    szSwChar = substr(ARGV[n], 1, 1);
++    if ((szSwChar == "-") || (szSwChar == "+"))
++    {
++      if ((iSearchMinus == 0) || fHuntParam)
++        usage();
++      iHuntSwitches = 1;
++      iSPos = 2;
++      fHuntParam = 0;
++    }
++    else
++    {
++      iSPos = 1;
++
++      if (fHuntParam == 0)
++        iSearchMinus = 0;
++    }
++
++    while (iSPos <= iCLen)
++    {
++      if (iHuntSwitches)
++      {
++        szOptChar = substr(ARGV[n], iSPos, 1);
++        iOPos = index(sOptions, szOptChar);
++        if (iOPos == 0)
++        {
++          printf("unknown option \"%s\"\n", szOptChar);
++          usage();
++        }
++        if ((substr(sOptions, iOPos - 1, 1) == "&") || ((substr(sOptions, iOPos - 1, 1) == "%") && (szSwChar == "-")))
++        {
++          aOptions[szOptChar] = szSwChar;
++          iSPos = iSPos + 1;
++        }
++        else if ((substr(sOptions, iOPos - 1, 1) == "$") && (szSwChar == "-"))
++        {
++          fHuntParam = 1;
++          iHuntSwitches = 0;
++          iSPos = iSPos + 1;
++        }
++        else
++          usage();
++
++      }
++      else if (fHuntParam)
++      {
++        fHuntParam = 0;
++        aOptions[szOptChar] = substr(ARGV[n], iSPos, iCLen + 1 - iSPos);
++        iSPos = iCLen + 1;
++      } 
++      else
++      {
++        ARGV[m++] = ARGV[n];
++        iSPos = iCLen + 1;
++      }
++    }
++    n = n + 1;
++  }
++  ARGC = m;
++}
++
++
++#########################################################################
++#########################################################################
++function usage() {
++  print "usage: fig2mpdf [-|+lm] [-eiIGvV] [-p <ranges>] [-g <gapwidth>] [-s <style>] [-H <headerfile>] file\n\
++\n\
++  -|+l         set|reset latex call\n\
++  -e           create an eps file instead of a pdf\n\
++  -|+m         set|reset multilayer creation\n\
++  -p <ranges>  colon separated list of layer ranges a-b,c,d-e,...\n\
++  -i           do include the deepest range in all figures\n\
++               (the one with the higest level number)\n\
++  -I           include all lower ranges (pyramide mode)\n\
++  -g <gap>     set layer gapwidth for automatically detecting ranges (default:0)\n\
++  -s <style>   replace \\usepackage{times} by \\usepackage{<style>} in the latex commands\n\
++  -H <header>  use file <header> for creating tex documents (only\n\
++                 \\begin{document}...\\end{document} is set by fig2mpdf)\n\
++  -G           name multilayer files in PGF file name format <name>.page<no>.<ext>\n\
++  -v           be verbose\n\
++  -V           print out the version of fig2mpdf\n";
++  exit 1;
++}
++' -- $*
++
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2mpdf/fig2mpdf.1 transfig/fig2mpdf/fig2mpdf.1
+--- transfig~/fig2mpdf/fig2mpdf.1
++++ transfig/fig2mpdf/fig2mpdf.1
+@@ -0,0 +1,208 @@
++.TH fig2mpdf 1 "Jun 2006" "" "Including xfig figures into LaTeX documents"
++.SH NAME
++fig2mpdf \- creation of multilayer pdf or eps figures from fig files using latex for typesetting
++.SH SYNOPSIS
++.B fig2mpdf
++[\fIOPTION\fR]... \fIFILE\fR
++.SH DESCRIPTION
++.PP
++This tool can create pdf or eps figures using fig files as source. For beamer
++presentations, for example, you can use the multilayer mode to create
++multiple figures that can be overlayed to get a dynamic figure. For 
++proper appearance you can use latex to typeset some or all texts,
++possibly containing formulas.
++
++The default interpretation of the given fig \fIFILE\fR depends on its suffix.
++.TP
++\fIfig\fR
++Normal conversion of a fig file. All texts are interpreted as postscript
++texts and all elements of the figure are included in the resulting figure.
++.TP
++\fIlfig\fR
++LaTeX interpretation of the file. All texts of the input file that have the
++special bit set are typeset by pdflatex resp. latex (see: Option \fB\-|+l\fR).
++.TP
++\fImfig\fR
++Multilayer file interpretation. Depending on the used depths of the
++figure it is split into multiple parts. For each part an output file is
++created (see: section \fBMultiLayerOutput\fR).
++.TP
++\fImlfig\fR or \fIlmfig\fR
++Combination of multilayer and LaTeX interpretation of the input (see: Suffix
++\fIlfig\fR and \fImfig\fR).
++.PP
++The default interpretation of the input can be changed by using the options below.
++.SH OPTIONS
++.PP
++.TP
++\fB\-e\fR
++produce an eps output file. Instead of creating a pdf file (the default)
++an eps figure is produced.
++.TP
++\fB\-|+l\fR
++force calling (pdf)latex (-) or do not use (pdf)latex (+) for
++typesetting the text marked with the special flag. With this option you
++can change the default behavior given by the input file suffix.
++.TP
++\fB\-|+m\fR
++force set (-) or unset (+) the multilayer interpretation (see:
++\fBMultiLayerOutput\fR below) which was previously set by the input
++file suffix.
++.TP
++\fB\-p\fR \fIranges\fR
++explicitly set the ranges of depths for splitting the input figure in
++multilayer mode. \fIranges\fR is a colon separated list of ranges of
++the form \fIupper-lower\fR or \fIdepth\fR where \fIupper\fR  is the
++top and \fIlower\fR the bottom depth in the range. If you use the
++\fIdepth\fR form the range consist of just that depth.
++.TP
++\fB\-i\fR
++include the the bottommost range (that is, the one with the highest depth) into
++all output figures. This is for compatibility to older versions of this
++tool.
++.TP
++\fB\-I\fR
++turn on pyramid mode. The figure of a corresponding range in multilayer
++mode includes all lower ranges too.
++.TP
++\fB\-g\fR \fIgapwidth\fR
++set the allowed gapwidth between two used depths to decide if these
++depths should be grouped together in one range. With this option you get
++more flexibility to insert objects with new depths. The default width is
++zero (no gap = consecutively numbered depths are grouped together).
++.TP
++\fB\-s\fR \fIstyle\fR
++replace the default style for selecting a font family in LaTeX mode.
++If this option is omitted the style `times' is set by default.
++.TP
++\fB\-H\fR \fIheader\fR
++replace the default header sequence for creating temporary
++LaTeX documents in LaTeX mode. To get maximum flexibility you can
++set the entire document header in the file \fIheader\fR (see:
++\fBCustomized Headers\fR  below).
++.TP
++\fB\-G\fR
++in multilayer mode change the default output file pattern to the PDF
++format which is  <name>.page<no>.<ext>
++.TP
++\fB\-v\fR
++be verbose and print out all executed commands
++.TP
++\fB\-V\fR
++print out the version of \fBfig2mpdf\fR
++.PP
++.SH "MultiLayerOutput"
++In xfig you can assign an individual depth to all objects of the
++figure. These depths are normally used to determine the order of
++printing the objects. \fBfig2mpdf\fR uses these depths to group the
++objects into ranges in automatic mode (if the ranges option is
++omitted). In the list of used depths, consecutively numbered depths are
++grouped into one range. That is, all gaps between used depths are used
++to logically split the figure. With \fB\-g\fR you can set the
++gapwidth which doesn't split the figure (default: zero).
++.PP
++The resulting list of ranges determines the number of output files. In
++default mode all objects with depths assigned to one range are
++collected and put into the corresponding output file. The contents of
++the output files can be changed with the two Options \fB\-i\fR and
++\fB\-I\fR.
++.PP
++The \fB\-i\fR option reduces the number of output files by one. The
++bottommost range, that is the range which consist of the highest depths
++of the figure, is included into all output files.
++.PP
++In pyramid mode, activated by the option \fB\-I\fR, the output files
++contain additionally all lower ranges. With this mode you can
++get stand alone figures that don't have to be overlayed to have
++meaningful content.
++.PP
++\fBExample 1\fR
++.PD 0
++.PP
++Assume that you have a fig file \fIfoo.fig\fR which contains the three ranges
++.IR "230-233",
++.IR "455-460"
++and
++.IR "499-500".
++.PD
++.PP
++With no options set you get three output files, one per range. But if you
++set the \fB\-i\fR option you get the following two files where the
++bottommost range is included in both of the files:
++.PD 0
++.PP
++  \fIfoo-0.pdf\fR with ranges \fI455-460\fR and \fI499-500\fR
++.PP
++  \fIfoo-1.pdf\fR with ranges \fI230-233\fR and \fI499-500\fR.
++.PD
++.PP
++\fBExample 2\fR
++.PD 0
++.PP
++The pyramid mode, activated by the option \fB\-I\fR, will produce the
++following files from the source file of \fBExample 1\fR:
++.PP
++  \fIfoo-0.pdf\fR with ranges \fI499-500\fR
++.PP
++  \fIfoo-1.pdf\fR with ranges \fI455-460\fR and \fI499-500\fR
++.PP
++  \fIfoo-2.pdf\fR with ranges \fI230-233\fR, \fI455-460\fR and \fI499-500\fR.
++.PD
++.PP
++\fBExample 3\fR
++.PD 0
++.PP
++If both options are set you will get just two files with the following
++contents:
++.PP
++  \fIfoo-0.pdf\fR with ranges \fI455-460\fR and \fI499-500\fR
++.PP
++  \fIfoo-1.pdf\fR with ranges \fI230-233\fR, \fI455-460\fR and \fI499-500\fR.
++.PD
++.PP
++.SH "Customized Headers"
++For various reasons you might want to change the standard latex generation,
++e.g., if you want to change the default font family. The following
++example represents a valid header file. 
++
++The usage of this example file changes the font family to sans serif
++and adds an additional search path for includegraphics to the `figures'
++subdirectory.
++
++.PD 0
++  \\documentclass{article}
++.PP
++  \\usepackage{german,amssymb,amsmath}
++.PP
++  \\renewcommand{\\familydefault}{\\sfdefault}
++.PP
++  \\AtBeginDocument{\\graphicspath{{figures/}}}
++.PD
++
++The following packages are generally used: \fBcolor\fR, \fBgraphicx\fR and \fBepsfig\fR.
++.SH "Tex errors"
++Sometimes it might happen that latex generates an error while processing
++your special texts. To keep you informed about the occurrence of that
++error and about what has happened, in this case the log file is shown
++by invoking a less command.
++.SH "Files"
++In single layer mode for the resulting files the suffix fig is replaced
++by pdf (resp. eps) (i.e. foo.fig -> foo.pdf). 
++.PP
++.PD 0
++In multilayer mode the base name of the source fig files is extended
++by '-<range>' and the suffix is set to pdf (resp. eps).
++.PP
++(i.e., foo.fig -> foo-0.pdf, foo-1.pdf, foo-2.pdf,  ... 
++.PP
++    or foo.fig -> foo.page0.pdf, foo.page1.pdf, foo.page2.pdf, ... 
++.PP
++       if the option \fB\-G\fR is set).
++.PD
++.SH "SEE ALSO"
++.IR xfig(1)
++.IR fig2dev(1)
++.IR gawk(1)
++.IR pdflatex(1)
++.IR latex(1)
++.IR dvips(1)

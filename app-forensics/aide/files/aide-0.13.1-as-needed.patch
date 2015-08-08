@@ -1,0 +1,36 @@
+diff -Naur aide-0.13.1.orig/configure.in aide-0.13.1/configure.in
+--- aide-0.13.1.orig/configure.in	2006-12-09 06:49:21.000000000 +0900
++++ aide-0.13.1/configure.in	2009-12-16 19:30:17.000000000 +0900
+@@ -546,12 +546,12 @@
+ if test x$with_zlib = xyes; then
+   AC_CHECK_HEADERS(zlib.h,,
+  	[AC_MSG_ERROR([You don't have zlib properly installed. Install it or try --without-zlib.])])
+-  save_LDFLAGS=$LDFLAGS
+-  LDFLAGS="$LDFLAGS $LD_STATIC_FLAG"
++#  saveLIBS=$LIBS
++  LIBS="$LIBS -lz $LD_STATIC_FLAG"
+   AC_CHECK_LIB(z,gzdopen,,
+  	  [AC_MSG_ERROR([You don't have zlib properly installed. Install it or try --without-zlib.])]
+   )
+-  LDFLAGS=$save_LDFLAGS
++#  LIBS=$saveLIBS
+   AC_DEFINE(WITH_ZLIB,1,[use zlib])
+ fi
+ 
+@@ -565,13 +565,13 @@
+ 	fi
+   AC_CHECK_HEADERS(curl/curl.h,,
+  	[AC_MSG_ERROR([You don't have curl properly installed. Install it or try --without-curl.])])
+-#  save_LDFLAGS=$LDFLAGS
++#  saveLIBS=$LIBS
+ 	CFLAGS="$CFLAGS $CURL_CFLAGS"
+-  LDFLAGS="$LDFLAGS $CURL_LIBS $LD_STATIC_FLAG"
++  LIBS="$LIBS $CURL_LIBS $LD_STATIC_FLAG"
+   AC_CHECK_LIB(curl,curl_easy_init,havecurl=yes,
+  	[AC_MSG_ERROR([You don't have curl properly installed. Install it or try --without-curl.])]
+ )
+-#  LDFLAGS=$save_LDFLAGS
++#  LIBS=$saveLIBS
+   AC_DEFINE(WITH_CURL,1,[use curl])
+ 	compoptionstring="${compoptionstring}WITH_CURL\\n"],
+ fi

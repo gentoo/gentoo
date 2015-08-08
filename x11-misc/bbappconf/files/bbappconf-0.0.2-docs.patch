@@ -1,0 +1,14 @@
+Don't install README to /usr/share/${PN}
+
+--- data/Makefile.am
++++ data/Makefile.am
+@@ -1,8 +1,7 @@
+ configdir = $(datadir)/bbtools
+ 
+ config_DATA =	bbappconf.bb \
+-		bbappconf.nobb \
+-		README.bbappconf
++		bbappconf.nobb
+ 
+ EXTRA_DIST = $(config_DATA)
+ 

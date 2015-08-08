@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting cbqinit"
+	/usr/sbin/cbqinit start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cbqinit"
+	/usr/sbin/cbqinit stop
+	eend $?
+}

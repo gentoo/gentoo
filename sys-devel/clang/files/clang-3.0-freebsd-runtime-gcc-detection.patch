@@ -1,0 +1,20 @@
+diff -upNr a/llvm-3.0.src/tools/clang/lib/Driver/ToolChains.cpp b/llvm-3.0.src/tools/clang/lib/Driver/ToolChains.cpp
+--- a/llvm-3.0.src/tools/clang/lib/Driver/ToolChains.cpp	2012-05-23 15:45:01.333127000 -0400
++++ b/llvm-3.0.src/tools/clang/lib/Driver/ToolChains.cpp	2012-05-23 16:16:26.023642076 -0400
+@@ -1215,6 +1215,16 @@ FreeBSD::FreeBSD(const HostInfo &Host, c
+   } else {
+     getFilePaths().push_back("/usr/lib");
+   }
++
++  llvm::OwningPtr<llvm::MemoryBuffer> File;
++  if (!llvm::MemoryBuffer::getFile("/etc/env.d/gcc/config-" + getDriver().DefaultHostTriple, File))
++  {
++    bool Exists;
++    StringRef Version = File.get()->getBuffer().rsplit('-').second.substr(0,5);
++    const std::string GentooPath = "/usr/lib/gcc/" + getDriver().DefaultHostTriple + "/" + Version.str();
++    if (!llvm::sys::fs::exists(GentooPath + "/crtbegin.o", Exists) && Exists)
++      getFilePaths().push_back(GentooPath);
++  }
+ }
+ 
+ Tool &FreeBSD::SelectTool(const Compilation &C, const JobAction &JA,

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>powerman-asdf@yandex.ru</email>
+                <description>Primary maintainer</description>
+                <name>Alex Efros</name>
+	</maintainer>
+<longdescription>sslserver and sslclient are command-line tools for building SSL
+client-server applications. They conform to the UNIX Client-Server Program
+Interface, UCSPI.</longdescription>
+</pkgmetadata>

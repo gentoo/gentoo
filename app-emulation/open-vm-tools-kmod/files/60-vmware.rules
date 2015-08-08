@@ -1,0 +1,1 @@
+KERNEL=="vsock", GROUP="vmware", MODE=660

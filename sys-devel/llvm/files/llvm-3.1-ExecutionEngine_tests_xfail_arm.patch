@@ -1,0 +1,27 @@
+diff -Naur llvm-3.1.src/test/ExecutionEngine/2002-12-16-ArgTest.ll llvm.src/test/ExecutionEngine/2002-12-16-ArgTest.ll
+--- llvm-3.1.src/test/ExecutionEngine/2002-12-16-ArgTest.ll	2012-04-12 22:13:57.000000000 +0200
++++ llvm.src/test/ExecutionEngine/2002-12-16-ArgTest.ll	2012-10-08 15:06:30.000000000 +0200
+@@ -1,4 +1,5 @@
+ ; RUN: %lli %s > /dev/null
++; XFAIL: arm
+ 
+ @.LC0 = internal global [10 x i8] c"argc: %d\0A\00"		; <[10 x i8]*> [#uses=1]
+ 
+diff -Naur llvm-3.1.src/test/ExecutionEngine/test-fp-no-external-funcs.ll llvm.src/test/ExecutionEngine/test-fp-no-external-funcs.ll
+--- llvm-3.1.src/test/ExecutionEngine/test-fp-no-external-funcs.ll	2012-04-12 22:13:57.000000000 +0200
++++ llvm.src/test/ExecutionEngine/test-fp-no-external-funcs.ll	2012-10-08 15:06:30.000000000 +0200
+@@ -1,4 +1,5 @@
+ ; RUN: %lli  %s > /dev/null
++; XFAIL: arm
+ 
+ define double @test(double* %DP, double %Arg) {
+ 	%D = load double* %DP		; <double> [#uses=1]
+diff -Naur llvm-3.1.src/test/ExecutionEngine/test-fp.ll llvm.src/test/ExecutionEngine/test-fp.ll
+--- llvm-3.1.src/test/ExecutionEngine/test-fp.ll	2012-04-12 22:13:57.000000000 +0200
++++ llvm.src/test/ExecutionEngine/test-fp.ll	2012-10-08 15:06:30.000000000 +0200
+@@ -1,4 +1,5 @@
+ ; RUN: %lli %s > /dev/null
++; XFAIL: arm
+ 
+ define double @test(double* %DP, double %Arg) {
+ 	%D = load double* %DP		; <double> [#uses=1]

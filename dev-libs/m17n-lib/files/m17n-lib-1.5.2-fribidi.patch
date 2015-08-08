@@ -1,0 +1,16 @@
+diff --git a/src/draw.c b/src/draw.c
+index f9667d0..1ba6cf6 100644
+--- a/src/draw.c
++++ b/src/draw.c
+@@ -1750,7 +1750,11 @@ mdraw__init ()
+   MbidiS = msymbol ("S");
+   MbidiNSM = msymbol ("NSM");
+ #ifdef HAVE_FRIBIDI
++#if FRIBIDI_INTERFACE_VERSION < 3
+   fribidi_set_mirroring (TRUE);
++#else
++  fribidi_set_mirroring (1);
++#endif
+ #endif
+ 
+   M_break_at_space = msymbol ("bs");

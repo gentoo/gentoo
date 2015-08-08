@@ -1,0 +1,57 @@
+diff -ur newspost-2.1.1.orig/base/newspost.c newspost-2.1.1/base/newspost.c
+--- newspost-2.1.1.orig/base/newspost.c	2003-04-23 18:33:23.000000000 +0300
++++ newspost-2.1.1/base/newspost.c	2009-08-06 14:46:41.000000000 +0300
+@@ -342,7 +342,7 @@
+ 	file = fopen(filename, "r");
+ 	if (file != NULL) {
+ 		while (!feof(file)) {
+-			line = getline(line, file);
++			line = get_line(line, file);
+ 			if(line == NULL){
+ 				text_buffer = buff_add(text_buffer, "\r\n");
+ 				continue;
+diff -ur newspost-2.1.1.orig/base/utils.c newspost-2.1.1/base/utils.c
+--- newspost-2.1.1.orig/base/utils.c	2009-08-06 14:44:35.000000000 +0300
++++ newspost-2.1.1/base/utils.c	2009-08-06 14:45:20.000000000 +0300
+@@ -43,7 +43,7 @@
+ 	return NULL;
+ }
+ 
+-Buff * getline(Buff *buff, FILE *file){
++Buff * get_line(Buff *buff, FILE *file){
+ 	int c = fgetc(file);
+ 	buff = buff_free(buff);
+ 	while(TRUE){
+diff -ur newspost-2.1.1.orig/base/utils.h newspost-2.1.1/base/utils.h
+--- newspost-2.1.1.orig/base/utils.h	2003-02-08 17:09:41.000000000 +0200
++++ newspost-2.1.1/base/utils.h	2009-08-06 14:45:13.000000000 +0300
+@@ -26,7 +26,7 @@
+ file_entry * file_entry_alloc();
+ file_entry * file_entry_free(file_entry *fe);
+ 
+-Buff * getline(Buff *buff, FILE *file);
++Buff * get_line(Buff *buff, FILE *file);
+ Buff *buff_add(Buff *buff, char *data, ... );
+ Buff * buff_free(Buff *buff);
+ Buff *buff_create(Buff *buff, char *data, ... );
+diff -ur newspost-2.1.1.orig/ui/options.c newspost-2.1.1/ui/options.c
+--- newspost-2.1.1.orig/ui/options.c	2003-04-23 18:33:33.000000000 +0300
++++ newspost-2.1.1/ui/options.c	2009-08-06 14:46:31.000000000 +0300
+@@ -332,7 +332,7 @@
+ 		file = fopen(filename->data, "r");
+ 		if (file != NULL) {
+ 			while (!feof(file)) {
+-				line = getline(line, file);
++				line = get_line(line, file);
+ 				linenum++;
+ 				if(line == NULL) continue;
+ 
+@@ -429,7 +429,7 @@
+ 				linenum = 0;
+ 				while (linenum < 8) {
+ 					linenum++;
+-					line = getline(line, file);
++					line = get_line(line, file);
+ 					if(line == NULL) continue;
+ 
+ 					switch (linenum) {

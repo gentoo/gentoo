@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+INSTANCE=${SVCNAME#*.}
+PROGRAM=${SVCNAME%%.*}
+PIDFILE=${PIDFILE:-/var/run/owfs/${PROGRAM}.pid}
+OWUID=${OWUID:-owfs}
+OWGID=${OWGID:-owfs}
+
+depend() {
+	need net
+	use logger owserver
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/bin/${PROGRAM} \
+		--pidfile ${PIDFILE} -c ${OWUID}:${OWGID} -- \
+		--pid_file ${PIDFILE} \
+		--background --error_print 1 \
+		${OWFS_OPTS:--m /var/lib/owfs/mnt --allow_other -s 127.0.0.1:4304}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec /usr/bin/${PROGRAM} \
+		--pidfile ${PIDFILE} -u ${OWUID}
+	eend $?
+}

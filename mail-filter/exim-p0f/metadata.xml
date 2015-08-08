@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-mail</herd>
+	<maintainer>
+		<email>grobian@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">This is p0f version 3 dlfunc library for Exim.
+		It implements an interface between Exim access control lists and the
+		p0f daemon which does passive OS fingerprinting.  This can be useful
+		for greylisting or scoring IP addresses of SMTP senders according to
+		sender's operating system.  This dlfunc supports IPv6.
+	</longdescription>
+</pkgmetadata>

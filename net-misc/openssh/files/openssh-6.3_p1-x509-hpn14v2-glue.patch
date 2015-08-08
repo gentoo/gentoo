@@ -1,0 +1,51 @@
+--- openssh-6.3p1/Makefile.in
++++ openssh-6.3p1/Makefile.in
+@@ -45,7 +45,7 @@
+ CC=@CC@
+ LD=@LD@
+ CFLAGS=@CFLAGS@
+-CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ @LDAP_CPPFLAGS@ $(PATHS) @DEFS@
++CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ $(PATHS) @DEFS@
+ LIBS=@LIBS@
+ K5LIBS=@K5LIBS@
+ GSSLIBS=@GSSLIBS@
+@@ -53,6 +53,7 @@
+ SSHDLIBS=@SSHDLIBS@
+ LIBEDIT=@LIBEDIT@
+ LIBLDAP=@LDAP_LDFLAGS@ @LDAP_LIBS@
++CPPFLAGS+=@LDAP_CPPFLAGS@
+ AR=@AR@
+ AWK=@AWK@
+ RANLIB=@RANLIB@
+--- openssh-6.3p1/sshconnect.c
++++ openssh-6.3p1/sshconnect.c
+@@ -465,7 +465,7 @@
+ {
+ 	/* Send our own protocol version identification. */
+ 	if (compat20) {
+-		xasprintf(&client_version_string, "SSH-%d.%d-%.100s PKIX\r\n",
++		xasprintf(&client_version_string, "SSH-%d.%d-%.100s\r\n",
+ 		    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION);
+ 	} else {
+ 		xasprintf(&client_version_string, "SSH-%d.%d-%.100s\n",
+--- openssh-6.3p1/sshd.c
++++ openssh-6.3p1/sshd.c
+@@ -472,8 +472,8 @@
+ 		comment = "";
+ 	}
+ 
+-	xasprintf(&server_version_string, "SSH-%d.%d-%.100s%s%s%s%s",
+-	    major, minor, SSH_VERSION, comment,
++	xasprintf(&server_version_string, "SSH-%d.%d-%.100s%s%s%s",
++	    major, minor, SSH_VERSION,
+ 	    *options.version_addendum == '\0' ? "" : " ",
+ 	    options.version_addendum, newline);
+ 
+--- openssh-6.3p1/version.h
++++ openssh-6.3p1/version.h
+@@ -3,4 +3,5 @@
+ #define SSH_VERSION	"OpenSSH_6.3"
+ 
+ #define SSH_PORTABLE	"p1"
++#define SSH_X509	" PKIX"
+ #define SSH_RELEASE	SSH_VERSION SSH_PORTABLE

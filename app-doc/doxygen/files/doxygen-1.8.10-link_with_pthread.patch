@@ -1,0 +1,32 @@
+diff --git a/addon/doxywizard/CMakeLists.txt b/addon/doxywizard/CMakeLists.txt
+index 055aac3..b66bde7 100644
+--- a/addon/doxywizard/CMakeLists.txt
++++ b/addon/doxywizard/CMakeLists.txt
+@@ -73,6 +73,7 @@ ${doxywizard_RESOURCES_RCC}
+ )
+ target_link_libraries(doxywizard
+ ${QT_LIBRARIES}
++pthread
+ )
+ 
+ install(TARGETS doxywizard DESTINATION bin)
+diff --git a/addon/doxysearch/CMakeLists.txt b/addon/doxysearch/CMakeLists.txt
+index 33e01c1..165fc3e 100644
+--- a/addon/doxysearch/CMakeLists.txt
++++ b/addon/doxysearch/CMakeLists.txt
+@@ -20,6 +20,7 @@ target_link_libraries(doxyindexer
+                       ${ZLIB_LIBRARIES}
+ 		      ${WIN_EXTRA_LIBS}
+                       qtools
++                      pthread
+ )
+ 
+ add_executable(doxysearch.cgi
+@@ -29,6 +30,7 @@ target_link_libraries(doxysearch.cgi
+                       ${XAPIAN_LIBRARIES}
+                       ${ZLIB_LIBRARIES}
+ 		      ${WIN_EXTRA_LIBS}
++                      pthread
+ )
+ 
+ install(TARGETS doxyindexer doxysearch.cgi DESTINATION bin)

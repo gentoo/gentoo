@@ -1,0 +1,20 @@
+diff -Naur libnatpmp-20120821.orig/Makefile libnatpmp-20120821/Makefile
+--- libnatpmp-20120821.orig/Makefile	2012-08-26 20:26:27.000000000 -0400
++++ libnatpmp-20120821/Makefile	2012-08-26 20:27:07.000000000 -0400
+@@ -4,6 +4,7 @@
+ # (c) 2007-2011 Thomas Bernard
+ # http://miniupnp.free.fr/libnatpmp.html
+ 
++GENTOO_LIBDIR ?= lib
+ OS = $(shell uname -s)
+ CC ?= gcc
+ INSTALL = install
+@@ -41,7 +42,7 @@
+ 
+ INSTALLPREFIX ?= $(PREFIX)/usr
+ INSTALLDIRINC = $(INSTALLPREFIX)/include
+-INSTALLDIRLIB = $(INSTALLPREFIX)/lib
++INSTALLDIRLIB = $(INSTALLPREFIX)/$(GENTOO_LIBDIR)
+ INSTALLDIRBIN = $(INSTALLPREFIX)/bin
+ 
+ .PHONY:	all clean depend install cleaninstall installpythonmodule

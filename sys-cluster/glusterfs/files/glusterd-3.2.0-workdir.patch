@@ -1,0 +1,49 @@
+Change the default workdir of the glusterd daemon to /var/lib/glusterd instead of /etc/glusterd.
+This directory is dynamically populated by glusterd via the gluster CLI so it does better
+belong into /var/lib/.
+
+Patch by Ultrabug.
+
+--- a/xlators/mgmt/glusterd/src/glusterd.h   2010-10-13 06:20:37.000000000 +0200
++++ b/xlators/mgmt/glusterd/src/glusterd.h   2010-10-26 10:47:52.747265444 +0200
+@@ -204,7 +204,7 @@
+         GLUSTERD_VOL_COMP_RJT,
+ };
+
+-#define GLUSTERD_DEFAULT_WORKDIR "/etc/glusterd"
++#define GLUSTERD_DEFAULT_WORKDIR "/var/lib/glusterd"
+ #define GLUSTERD_DEFAULT_PORT    GF_DEFAULT_BASE_PORT
+ #define GLUSTERD_INFO_FILE      "glusterd.info"
+ #define GLUSTERD_VOLUME_DIR_PREFIX "vols"
+--- a/doc/glusterd.vol  2010-10-13 06:20:36.000000000 +0200
++++ b/doc/glusterd.vol  2010-10-26 10:48:16.487931870 +0200
+@@ -1,6 +1,6 @@
+ volume management
+     type mgmt/glusterd
+-    option working-directory /etc/glusterd
++    option working-directory /var/lib/glusterd
+     option transport-type socket,rdma
+     option transport.socket.keepalive-time 10
+     option transport.socket.keepalive-interval 2
+--- a/doc/glusterd.8 2010-10-13 06:20:36.000000000 +0200
++++ b/doc/glusterd.8 2010-10-26 10:48:44.898729373 +0200
+@@ -70,7 +70,7 @@
+
+ .PP
+ .SH FILES
+-/etc/glusterd/*
++/var/lib/glusterd/*
+
+ .SH SEE ALSO
+ .nf
+--- a/doc/gluster.8     2011-04-22 19:37:28.000000000 +0200
++++ b/doc/gluster.8     2011-05-16 11:56:14.318682346 +0200
+@@ -121,7 +121,7 @@
+ Exit the gluster command line interface.
+
+ .SH FILES
+-/etc/glusterd/*
++/var/lib/glusterd/*
+ .SH SEE ALSO
+ .nf
+ \fBfusermount\fR(1), \fBmount.glusterfs\fR(8), \fBglusterfs\fR(8), \fBglusterd\fR(8)

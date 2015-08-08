@@ -1,0 +1,11 @@
+--- server/mtinkd.c.orig	2012-01-15 13:03:41.000000000 +0000
++++ server/mtinkd.c	2012-01-15 13:03:58.000000000 +0000
+@@ -244,7 +244,7 @@
+          /* look for pid into /var/run/mtink(<fifo> */
+          if ( (fp = fopen(runFile,"r")) )
+          {
+-            if ( fgets(ibuf, sizeof(buf), fp) )
++            if ( fgets(ibuf, sizeof(ibuf), fp) )
+             {
+                if ( (pid = atoi(ibuf)) )
+                {

@@ -1,0 +1,8 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Anthony G. Basile <blueness@gentoo.org> (11 Nov 2012)
+# Only gnome-base/gdm has stable keywording. If x11-misc/lightdm or kde-base/kdm
+# gets stable keyword, this line can be removed.
+x11-misc/xscreensaver gdm

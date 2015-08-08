@@ -1,0 +1,11 @@
+--- configure	2011-04-09 19:17:25.000000000 +0200
++++ configure	2011-04-13 16:40:22.000000000 +0200
+@@ -14934,7 +14934,7 @@
+ fi
+ 
+ LIBNOTIFY_REQUIRED=0.4.3
+-LIBNOTIFY_TOO_HIGH=0.7.0
++LIBNOTIFY_TOO_HIGH=0.8.0
+ # Check whether --enable-libnotify was given.
+ if test "${enable_libnotify+set}" = set; then :
+   enableval=$enable_libnotify; enable_libnotify=$enableval

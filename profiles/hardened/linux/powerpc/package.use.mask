@@ -1,0 +1,3 @@
+# Diego Pettenò <flameeyes@gentoo.org> (10 Nov 2007)
+# Tests for Linux-PAM 0.99 require >=sys-libs/glibc-2.4
+>=sys-libs/pam-0.99.8 test

@@ -1,0 +1,42 @@
+This patch fixes issues during package build with ebuild supporting
+installation for Python versions: sed substitutions in common.py and location
+of ufw script in Python ABIs which have prefix different than /usr.
+Also makes .mo files not to be installed in wrong paths.
+
+More info about the first issue:
+with support for multiple Python versions in the ebuild, seems the
+file isn't copied from staging/ to build-*/lib/ufw/ after being
+modified. That's why the copy needs to be done "manually" here.
+The issue occurs with "setup.py build -b build-XXX" followed by
+"setup.py build -b build-XXX install".
+
+probably related: https://bugs.launchpad.net/ufw/+bug/819600
+--- setup.py
++++ setup.py
+@@ -90,6 +90,8 @@
+                              "-i",
+                              "s%#SHARE_DIR#%" + real_sharedir + "%g",
+                              os.path.join('staging', file)])
++            self.copy_file(os.path.join('staging', file),
++                           os.path.join(self.build_base, "lib", "ufw"))
+ 
+         # Now byte-compile everything
+         super(Install, self).run()
+@@ -99,7 +101,8 @@
+         if self.root != None:
+             prefix = self.root + real_prefix
+ 
+-        script = os.path.join(prefix, 'sbin', 'ufw')
++        # PyPy (and Jython?) has different prefix. Without the change the binary would end up in a wrong path.
++        script = os.path.join(self.root, 'usr', 'sbin', 'ufw')
+         manpage = os.path.join(prefix, 'share', 'man', 'man8', 'ufw.8')
+         manpage_f = os.path.join(prefix, 'share', 'man', 'man8', \
+                                  'ufw-framework.8')
+@@ -147,7 +150,6 @@
+         self.mkpath(i18ndir)
+         if len(os.listdir('locales/mo')) == 0:
+             subprocess.call(["make", "mo"])
+-        self.copy_tree('locales/mo', i18ndir)
+ 
+         # Install configuration files
+         confdir = real_confdir

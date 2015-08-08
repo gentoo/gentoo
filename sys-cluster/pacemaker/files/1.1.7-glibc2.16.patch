@@ -1,0 +1,13 @@
+Fix building with glibc-2.16
+
+https://bugs.gentoo.org/show_bug.cgi?id=432012
+--- a/mcp/pacemaker.h
++++ b/mcp/pacemaker.h
+@@ -21,6 +21,7 @@
+ #include <sys/param.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <sys/resource.h>
+ 
+ #include <stdint.h>
+ 

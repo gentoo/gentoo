@@ -1,0 +1,20 @@
+--- trinity-1.4/Makefile
++++ trinity-1.4/Makefile
+@@ -9,7 +9,7 @@
+ CC := $(CROSS_COMPILE)$(CC)
+ LD := $(CROSS_COMPILE)$(LD)
+ 
+-CFLAGS += -Wall -W -g -O2 -I. -Iinclude/ -Wimplicit -D_FORTIFY_SOURCE=2 -D_GNU_SOURCE -D__linux__
++CFLAGS += -Wall -W -I. -Iinclude/ -Wimplicit -D_GNU_SOURCE -D__linux__
+ ifneq ($(SYSROOT),)
+ CFLAGS += --sysroot=$(SYSROOT)
+ endif
+@@ -84,7 +84,7 @@
+ df = $(DEPDIR)/$(*D)/$(*F)
+ 
+ %.o : %.c
+-	$(QUIET_CC)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
++	$(QUIET_CC)$(CC) $(CFLAGS) -o $@ -c $<
+ 	@mkdir -p $(DEPDIR)/$(*D)
+ 	@$(CC) -MM $(CFLAGS) $*.c > $(df).d
+ 	@mv -f $(df).d $(df).d.tmp

@@ -1,0 +1,40 @@
+diff -ru warmux-11.04.orig/configure.ac warmux-11.04/configure.ac
+--- warmux-11.04.orig/configure.ac	2011-04-18 16:46:12.000000000 -0400
++++ warmux-11.04/configure.ac	2011-04-19 11:17:27.380256500 -0400
+@@ -43,8 +43,6 @@
+   AC_MSG_ERROR([*** No C++ compiler can be found!])
+ fi
+ 
+-AX_CFLAGS_WARN_ALL([CXXFLAGS])
+-
+ # ==========================================================================
+ # == Set flags for various environments                                    =
+ # ==========================================================================
+@@ -348,14 +346,9 @@
+   exit 1
+ fi
+ 
+-dnl === Add Werror flag for gcc/g++ if debug mode is enabled, ==============
+-dnl === but allow RTTI (ie dynamic_cast, typeid/typeinfo unavailable) ======
+-if test "x${debug}" = "xyes"; then
++if test "x${debug}" != "xyes"; then
+-  CFLAGS="$CFLAGS -Werror"
+-  CXXFLAGS="$CXXFLAGS -Werror"
+-else
+   CXXFLAGS="$CXXFLAGS -fno-rtti"
+ fi
+ 
+ dnl === Forbid exceptions (Android platform requirement) ===================
+ CXXFLAGS="$CXXFLAGS -fno-exceptions"
+diff -ru warmux-11.04.orig/data/Makefile.am warmux-11.04/data/Makefile.am
+--- warmux-11.04.orig/data/Makefile.am	2011-04-18 16:46:11.000000000 -0400
++++ warmux-11.04/data/Makefile.am	2011-04-19 11:17:45.134724536 -0400
+@@ -1,8 +1,2 @@
+-xdg_appsdir = $(prefix)/share/applications
+-xdg_apps_DATA = warmux.desktop warmux_files.desktop
+-pixmapsdir = $(prefix)/share/pixmaps
+-pixmaps_DATA = icon/warmux_128x128.png
+-
+ nobase_dist_pkgdata_DATA = @DATA_FILES@
+ pkgdatadir = @DATADIR@
+-EXTRA_DIST = $(pixmaps_DATA)

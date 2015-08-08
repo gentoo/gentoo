@@ -1,0 +1,8 @@
+diff -r -U1 TeXmacs-1.0.7.10-src.orig/plugins/mupad/bin/tm_mupad_help TeXmacs-1.0.7.10-src/plugins/mupad/bin/tm_mupad_help
+--- TeXmacs-1.0.7.10-src.orig/plugins/mupad/bin/tm_mupad_help	2011-03-05 16:46:18.000000000 +0600
++++ TeXmacs-1.0.7.10-src/plugins/mupad/bin/tm_mupad_help	2011-03-18 01:56:23.000000000 +0600
+@@ -28,3 +28,3 @@
+ export SYSINFO
+-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${MuPAD_ROOT_PATH}/${SYSINFO}/lib:/usr/local/X11R6/motif-2.0/lib:/usr/local/X11R6/lib:$MuPAD_ROOT_PATH/$SYSINFO/bin
++LD_LIBRARY_PATH=${LD_LIBRARY_PATH+${LD_LIBRARY_PATH}:}${MuPAD_ROOT_PATH}/${SYSINFO}/lib:/usr/local/X11R6/motif-2.0/lib:/usr/local/X11R6/lib:$MuPAD_ROOT_PATH/$SYSINFO/bin
+ export LD_LIBRARY_PATH

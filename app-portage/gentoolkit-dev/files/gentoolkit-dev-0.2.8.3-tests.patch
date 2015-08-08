@@ -1,0 +1,25 @@
+From 2da4232cfd9597b829dda4bcfbf3aab25f243950 Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Sat, 11 May 2013 23:56:25 +0200
+Subject: [PATCH] Fix echangelog test
+
+---
+ src/echangelog/test/test.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/echangelog/test/test.sh b/src/echangelog/test/test.sh
+index 0559113..53bb0b5 100755
+--- a/src/echangelog/test/test.sh
++++ b/src/echangelog/test/test.sh
+@@ -160,7 +160,7 @@ ebegin "Preparing echangelog"
+ 
+ if [ -e "../echangelog" ]; then
+ 	cp ../echangelog "${_ROOT}/tmp" || set $?
+-	sed -i -e 's:use POSIX qw.*:use POSIX qw(setlocale getcwd);\nuse TEST qw(strftime);:' "${_ROOT}/tmp/echangelog" || set $?
++	sed -i -e 's:use POSIX qw.*:use POSIX qw(locale_h setlocale getcwd);\nuse TEST qw(strftime);:' "${_ROOT}/tmp/echangelog" || set $?
+ 	eend ${1:-0} || exit ${1}
+ else
+ 	eerror "error"
+-- 
+1.8.1.5
+

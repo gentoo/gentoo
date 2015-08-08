@@ -1,0 +1,26 @@
+# /etc/conf.d/varnishd
+
+VARNISHD="/usr/sbin/varnishd"
+VARNISHADM="/usr/bin/varnishadm"
+CONFIGFILE="/etc/varnish/default.vcl"
+
+# Listen on 127.0.0.1:8080 and connect to backend 127.0.0.1:80
+# Ignore the config file, /etc/varnish/default.vcl
+VARNISHD_OPTS="-a 127.0.0.1:8080 -b 127.0.0.1:80"
+
+# Alternatively, don't listen to a backend and use 
+# the config file
+#VARNISHD_OPTS="-a 127.0.0.1:8080 -f $CONFIGFILE"
+
+# Arguments passed to varnishncsa
+# Please see varnishncsa(1) for more options
+VARNISHNCSA_ARGS="-c -a -w /var/log/varnish/access.log"
+
+# Arguments passed to varnishncsa -F option
+# Please see varnishncsa(1) for more options
+# VARNISHNCSA_LOGFORMAT='%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-agent}i"'
+
+# We need to increase the number of open files (-n)
+# and the maximum amount off locked memory (-l)
+# See bug #459142
+rc_ulimit="-n 32786 -l 82000"

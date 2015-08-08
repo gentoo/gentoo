@@ -1,0 +1,28 @@
+ Makefile.am |    2 +-
+ Makefile.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 7c69428..bccf1d4 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -10,5 +10,5 @@ AUTOMAKE_OPTIONS = gnu
+ bin_PROGRAMS = wmstickynotes
+ wmstickynotes_SOURCES = wmstickynotes.c wmstickynotes.h wmstickynotes.xpm delete_button.xpm resize_button.xpm
+ 
+-wmstickynotes_LDADD = @GTK_LIBS@
++wmstickynotes_LDADD = @GTK_LIBS@ -lX11
+ EXTRA_DIST = THANKS
+diff --git a/Makefile.in b/Makefile.in
+index 91b19bd..fd883f2 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -182,7 +182,7 @@ top_srcdir = @top_srcdir@
+ AM_CFLAGS = @GTK_CFLAGS@
+ AUTOMAKE_OPTIONS = gnu
+ wmstickynotes_SOURCES = wmstickynotes.c wmstickynotes.h wmstickynotes.xpm delete_button.xpm resize_button.xpm
+-wmstickynotes_LDADD = @GTK_LIBS@
++wmstickynotes_LDADD = @GTK_LIBS@ -lX11
+ EXTRA_DIST = THANKS
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am

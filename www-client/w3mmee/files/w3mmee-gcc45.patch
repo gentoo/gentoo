@@ -1,0 +1,17 @@
+Fixing build with gcc-4.5
+
+https://bugs.gentoo.org/show_bug.cgi?id=317815
+
+Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
+
+--- configure
++++ configure
+@@ -2636,7 +2636,7 @@
+ fi
+ 
+ cat >do_mk_btri.sh <<END_OF_DO_MK_BTRI
+-$dcpp "\$1" | sed -n "/^[ 	]*[\\"'%]/p" | $mk_btri_cmd
++$dcpp -P "\$1" | sed -n "/^[ 	]*[\\"'%]/p" | $mk_btri_cmd
+ END_OF_DO_MK_BTRI
+ 
+ cat >TABMakefile <<END_OF_TABMAKEFILE1

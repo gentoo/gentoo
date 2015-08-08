@@ -1,0 +1,20 @@
+--- a/glusterfsd/src/Makefile.am
++++ b/glusterfsd/src/Makefile.am
+@@ -25,6 +25,7 @@
+ install-data-local:
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(localstatedir)/run
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(localstatedir)/log/glusterfs
++	$(INSTALL) -d -m 755 $(DESTDIR)$(sbindir)
+ 	rm -f $(DESTDIR)$(sbindir)/glusterfs
+ 	rm -f $(DESTDIR)$(sbindir)/glusterd
+ 	ln -s glusterfsd $(DESTDIR)$(sbindir)/glusterfs
+--- a/libglusterfs/src/Makefile.am
++++ b/libglusterfs/src/Makefile.am
+@@ -43,6 +43,7 @@
+ graph.lex.c: graph.l y.tab.h
+ 	$(LEX) -t $(srcdir)/graph.l > $@
+ 
++y.tab.c: y.tab.h
+ y.tab.h: graph.y
+ 	$(YACC) -d $(srcdir)/graph.y
+ 

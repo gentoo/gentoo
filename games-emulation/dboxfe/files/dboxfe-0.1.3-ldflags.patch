@@ -1,0 +1,20 @@
+--- dboxfe.pro.old	2010-09-29 23:53:38.000000000 +0200
++++ dboxfe.pro	2010-09-29 23:54:11.000000000 +0200
+@@ -83,6 +83,7 @@
+ # Unix/Linux settings
+ unix{
+   TARGET = dboxfe
++  QMAKE_LFLAGS += $(LDFLAGS)
+   #QMAKE_POST_LINK = strip -s bin/dboxfe
+   RCC_DIR = .unix/rcc
+   MOC_DIR += .unix/moc
+--- dboxfetray/dboxfetray.pro.old	2010-09-29 23:55:31.000000000 +0200
++++ dboxfetray/dboxfetray.pro	2010-09-29 23:56:12.000000000 +0200
+@@ -56,6 +56,7 @@
+ # Unix/Linux settings
+ unix{
+   TARGET = dboxfetray
++  QMAKE_LFLAGS += $(LDFLAGS)
+   #QMAKE_POST_LINK = strip -s bin/dboxfetray
+   RCC_DIR = .unix/rcc
+   MOC_DIR += .unix/moc

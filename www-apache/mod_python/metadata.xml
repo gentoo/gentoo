@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<longdescription>
+		Mod_python is an Apache module that embeds the Python interpreter within
+		the server. With mod_python you can write web-based applications in Python
+		that will run many times faster than traditional CGI and will have access
+		to advanced features such as ability to retain database connections and
+		other data between hits and access to Apache internals.
+	</longdescription>
+	<longdescription lang="ja">
+		Mod_PythonはウェブサーバーにPythonインタープリタを埋め込むApacheモジュールです。
+		Mod_PythonはPython言語のウェブベース・アプリケーションを従来のCGIよりも何倍も高>
+		速に走らせることができ、データデータベースのコネクション保持に関するより高度なア
+		クセス機能やヒット間の他のデータやApache内部へのアクセス機能を持ちます。
+	</longdescription>
+</pkgmetadata>

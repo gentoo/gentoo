@@ -1,0 +1,92 @@
+ CMakeLists.txt          | 18 +++++++++---------
+ src/CMakeLists.txt      |  1 -
+ src/fem/CMakeLists.txt  |  2 +-
+ src/pmgc/CMakeLists.txt |  2 +-
+ 4 files changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 75ddbdd..c46f5e7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,7 +61,7 @@ set(LIBRARY_OUTPUT_PATH ${APBS_ROOT}/lib)
+ set(TOOLS_PATH ${APBS_ROOT}/tools)
+ set(APBS_BINARY ${EXECUTABLE_OUTPUT_PATH}/apbs)
+ 
+-set(LIBRARY_INSTALL_PATH lib)
++set(LIBRARY_INSTALL_PATH ${CMAKE_INSTALL_LIBDIR})
+ set(HEADER_INSTALL_PATH include/apbs)
+ set(EXECUTABLE_INSTALL_PATH bin)
+ set(SHARE_INSTALL_PATH share/apbs)
+@@ -93,8 +93,6 @@ set(CMAKE_INCLUDE_PATH "${CMAKE_INCLUDE_PATH}")
+ list(APPEND CMAKE_INCLUDE_PATH /usr/include)
+ list(APPEND CMAKE_INCLUDE_PATH /usr/local/include)
+ 
+-set(APBS_LIBS "-L${APBS_ROOT}/lib -lapbs_geoflow")
+-
+ ################################################################################
+ # Enable ansi pedantic compiling                                               #
+ ################################################################################
+@@ -193,9 +191,11 @@ if(ENABLE_BEM)
+     else()
+         set(TABI_LIBRARY_BASENAME ${CMAKE_STATIC_LIBRARY_PREFIX}${TABI}${CMAKE_STATIC_LIBRARY_SUFFIX})
+     endif()
+-    
++
++    file(GLOB MODS ${LIBRARY_OUTPUT_PATH}/*.mod)
++
+     install(
+-        FILES ${LIBRARY_OUTPUT_PATH}/${TABI_LIBRARY_BASENAME} ${LIBRARY_OUTPUT_PATH}/*.mod
++        FILES ${LIBRARY_OUTPUT_PATH}/${TABI_LIBRARY_BASENAME} ${MODS}
+         DESTINATION ${LIBRARY_INSTALL_PATH}
+     )
+     set(TABI_LIBRARY ${APBS_ROOT}/${LIBRARY_INSTALL_PATH}/${TABI_LIBRARY_BASENAME})
+@@ -210,7 +210,7 @@ if(ENABLE_BEM)
+     endif()
+     get_filename_component(LIBGFORTRANPATH ${LIBGFORTRANPATH} PATH)
+     find_path(LIBGFORTRAN_PATH ${LIBGFORTRAN_NAME} PATH ${LIBGFORTRANPATH})
+-    list(APPEND APBS_LIBS "-L${APBS_ROOT}/${LIBRARY_INSTALL_PATH} -L${LIBGFORTRAN_PATH} -lgfortran -ltabipb" )
++    list(APPEND APBS_LIBS "-L${APBS_ROOT}/lib -L${LIBGFORTRAN_PATH} -lgfortran -ltabipb" )
+ endif() # ENABLE_BEM
+ 
+ find_file( # this should be find path...
+@@ -228,7 +228,7 @@ endif()
+ 
+ 
+ find_library(MALOC_LIBRARY  "maloc"
+-    PATHS ${FETK_PATH}/lib ${CONTRIB_PATH}
++    PATHS ${FETK_PATH}/${CMAKE_INSTALL_LIBDIR} ${CONTRIB_PATH}
+     DOC   "The fetk/maloc library"
+ )
+ if(MALOC_LIBRARY)
+@@ -296,9 +296,9 @@ if(ENABLE_FETK)
+     set(FETK_ENALBED 1)
+ 
+     list(APPEND APBS_LIBS "-lstdc++")
+-    list(APPEND APBS_LIBS "-L${FETK_PATH}/lib")
++    list(APPEND APBS_LIBS "-L${FETK_PATH}/${CMAKE_INSTALL_LIBDIR}")
+     list(APPEND APBS_LIBS -lamd -lpunc -lmc -lgamer -lsuperlu -lumfpack
+--lblas -lvf2c -ltetgen -ltriangle -lg2c -lreadline )
++-lblas -lvf2c -ltetgen -ltriangle -lreadline )
+     
+     SET(HAVE_MC_H YES)
+ endif()
+diff --git a/src/fem/CMakeLists.txt b/src/fem/CMakeLists.txt
+index 5a950c2..dc37f48 100644
+--- a/src/fem/CMakeLists.txt
++++ b/src/fem/CMakeLists.txt
+@@ -12,4 +12,4 @@ add_items(
+     vpee.h
+ )
+ 
+-add_sublibrary(fem)
++add_sublibrary(fem apbs_geoflow)
+diff --git a/src/pmgc/CMakeLists.txt b/src/pmgc/CMakeLists.txt
+index 85b0c1e..97c95f0 100644
+--- a/src/pmgc/CMakeLists.txt
++++ b/src/pmgc/CMakeLists.txt
+@@ -42,4 +42,4 @@ add_items(
+     mgfasd.h
+ )
+ 
+-add_sublibrary(pmgc)
++add_sublibrary(pmgc apbs_geoflow)

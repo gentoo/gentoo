@@ -1,0 +1,145 @@
+From fdc52203836f7fd54e1bff84e11d26838a8f21bc Mon Sep 17 00:00:00 2001
+From: "nick.j.sanders@gmail.com"
+ <nick.j.sanders@gmail.com@93e54ea4-8218-11de-8aaf-8d8425684b44>
+Date: Tue, 11 Feb 2014 08:53:31 +0000
+Subject: [PATCH] Fix autoconf bugs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Correctly use autoconf host rather than target.
+* Use autoconf host_os.
+* Warn rather than error on unknown configs.
+* Add --disable-default-optimizations to avoid forced flags.
+* Fix manfile install
+
+
+git-svn-id: http://stressapptest.googlecode.com/svn/trunk@42 93e54ea4-8218-11de-8aaf-8d8425684b44
+---
+ Makefile.am     |   3 +-
+ Makefile.in     | 171 ++++++++-----
+ aclocal.m4      |  72 ++++--
+ configure       | 781 ++++++++++++++++++++++++++++----------------------------
+ configure.ac    |  63 +++--
+ src/Makefile.in |  36 ++-
+ 6 files changed, 602 insertions(+), 524 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index c476e5f..5b1998f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,2 +1,3 @@
+ SUBDIRS = src
+-dist_doc_DATA = COPYING stressapptest.1
+\ No newline at end of file
++dist_man_MANS = stressapptest.1
++
+diff --git a/configure.ac b/configure.ac
+index 6f09eb9..1fbc460 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,60 +12,53 @@ else
+ fi
+ 
+ AC_CANONICAL_HOST
+-AC_CANONICAL_BUILD
+ # Checking for target cpu and setting custom configuration
+ # for the different platforms
+-AC_CANONICAL_TARGET
+-case x"$target_cpu" in
+-  "xx86_64")
++AS_CASE(["$host_cpu"],
++  [*x86_64*], [
+     AC_DEFINE([STRESSAPPTEST_CPU_X86_64],[],
+               [Defined if the target CPU is x86_64])
+-    ;;
+-  "xi686")
++    ], 
++  [*i686*], [
+     AC_DEFINE([STRESSAPPTEST_CPU_I686],[],
+               [Defined if the target CPU is i686])
+-    ;;
+-  "xpowerpc")
++    ], 
++  [*powerpc*], [
+     AC_DEFINE([STRESSAPPTEST_CPU_PPC],[],
+               [Defined if the target CPU is PowerPC])
+-    ;;
+-  "xarmv7a")
++    ], 
++  [*armv7a*], [
+     AC_DEFINE([STRESSAPPTEST_CPU_ARMV7A],[],
+               [Defined if the target CPU is armv7a])
+-    ;;
+-  *)
+-    AC_MSG_ERROR([$target_cpu is not supported! Try x86_64, i686, powerpc, or armv7a])
+-    ;;
+-esac
++    ], 
++  [AC_MSG_WARN([Unsupported CPU: $host_cpu! Try x86_64, i686, powerpc, or armv7a])]
++)
+ 
+-_os=`uname`
+ ## The following allows like systems to share settings. This is not meant to
+ ## imply that these OS are the same thing. From OpenOffice dmake configure.in
+-case "$_os" in
+-  "Linux")
++AS_CASE(["$host_os"],
++  [*linux*], [
+     OS_VERSION=linux
+     AC_DEFINE([STRESSAPPTEST_OS_LINUX],[],
+               [Defined if the target OS is Linux])
+-    ;;
+-  "Darwin")
++    ],
++  [*darwin*], [
+     OS_VERSION=macosx
+     AC_DEFINE([STRESSAPPTEST_OS_DARWIN],[],
+               [Defined if the target OS is OSX])
+-    ;;
+-  "FreeBSD")
++    ],
++  [*freebsd*], [
+     OS_VERSION=bsd
+     AC_DEFINE([STRESSAPPTEST_OS_BSD],[],
+               [Defined if the target OS is BSD based])
+-    ;;
+-  "NetBSD")
++    ],
++  [*netbsd*], [
+     OS_VERSION=bsd
+     AC_DEFINE([STRESSAPPTEST_OS_BSD],[],
+               [Defined if the target OS is BSD based])
+-    ;;
+-  *)
+-    AC_MSG_ERROR([$_os operating system is not suitable to build dmake!])
+-    ;;
+-esac
++    ],
++  [AC_MSG_WARN([unsupported system: $host_os])]
++)
+ 
+ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+ AC_CONFIG_SRCDIR([src/])
+@@ -95,10 +88,14 @@ AC_DEFINE_UNQUOTED([STRESSAPPTEST_TIMESTAMP],
+                    "$username @ $hostname on $timestamp",
+                    [Timestamp when ./configure was executed])
+ 
+-#Default cxxflags
+-CXXFLAGS="$CXXFLAGS -DCHECKOPTS"
+-CXXFLAGS="$CXXFLAGS -Wreturn-type -Wunused -Wuninitialized -Wall -Wno-psabi"
+-CXXFLAGS="$CXXFLAGS -O3 -funroll-all-loops  -funroll-loops -DNDEBUG"
++AC_ARG_ENABLE([default-optimizations],
++    [AS_HELP_STRING([--disable-default-optimizations], [Disable default optimization flag overrides])])
++AS_IF([test x"$enable_default_optimizations" != xno], [
++    #Default cxxflags
++    CXXFLAGS="$CXXFLAGS -DCHECKOPTS"
++    CXXFLAGS="$CXXFLAGS -Wreturn-type -Wunused -Wuninitialized -Wall -Wno-psabi"
++    CXXFLAGS="$CXXFLAGS -O3 -funroll-all-loops  -funroll-loops -DNDEBUG"
++])
+ 
+ # Checks for header files.
+ AC_HEADER_DIRENT
+-- 
+2.0.0
+

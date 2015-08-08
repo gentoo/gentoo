@@ -1,0 +1,19 @@
+commit 62308d9fc24bde22a50497816c44c8ca91f96f63
+Author: hasufell <hasufell@gentoo.org>
+Date:   Fri Jul 19 18:36:34 2013 +0200
+
+    remove hhc.exe reference
+
+diff --git a/doc/doxygen/Doxyfile b/doc/doxygen/Doxyfile
+index 397cc30..ac61756 100644
+--- a/doc/doxygen/Doxyfile
++++ b/doc/doxygen/Doxyfile
+@@ -1051,7 +1051,7 @@ CHM_FILE               = blender.chm
+ # the HTML help compiler (hhc.exe). If non-empty doxygen will try to run
+ # the HTML help compiler on the generated index.hhp.
+ 
+-HHC_LOCATION           = "C:/Program Files (x86)/HTML Help Workshop/hhc.exe"
++HHC_LOCATION           = 
+ 
+ # If the GENERATE_HTMLHELP tag is set to YES, the GENERATE_CHI flag
+ # controls if a separate .chi index file is generated (YES) or that

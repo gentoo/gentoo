@@ -1,0 +1,20 @@
+diff -crB cooledit-3.17.17/widget/editcmd.c cooledit-new/widget/editcmd.c
+*** cooledit-3.17.17/widget/editcmd.c	2005-04-04 16:47:45.000000000 -0400
+--- cooledit-new/widget/editcmd.c	2009-04-25 21:56:14.000000000 -0400
+***************
+*** 214,220 ****
+      if (file < 0 && (flags & O_CREAT))	/* must it be created ? */
+  	return creat ((char *) pathname, mode);
+      close (file);
+!     return open ((char *) pathname, flags);
+  }
+  
+  /* "Oleg Yu. Repin" <repin@ssd.sscc.ru> added backup filenames
+--- 214,220 ----
+      if (file < 0 && (flags & O_CREAT))	/* must it be created ? */
+  	return creat ((char *) pathname, mode);
+      close (file);
+!     return open ((char *) pathname, flags, mode);
+  }
+  
+  /* "Oleg Yu. Repin" <repin@ssd.sscc.ru> added backup filenames

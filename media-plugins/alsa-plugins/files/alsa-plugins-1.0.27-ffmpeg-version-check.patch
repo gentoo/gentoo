@@ -1,0 +1,13 @@
+Index: alsa-plugins-1.0.27/a52/pcm_a52.c
+===================================================================
+--- alsa-plugins-1.0.27.orig/a52/pcm_a52.c
++++ alsa-plugins-1.0.27/a52/pcm_a52.c
+@@ -27,7 +27,7 @@
+ #include <alsa/pcm_plugin.h>
+ #include AVCODEC_HEADER
+ 
+-#if LIBAVCODEC_VERSION_MAJOR >= 53 && LIBAVCODEC_VERSION_MINOR >= 34
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53,34,0)
+ #include <libavutil/audioconvert.h>
+ #include <libavutil/mem.h>
+ #define USE_AVCODEC_FRAME

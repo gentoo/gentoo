@@ -1,0 +1,130 @@
+diff -ru iroffer-dinoex-3.29/beispiel.config iroffer-dinoex-3.29.NEW/beispiel.config
+--- iroffer-dinoex-3.29/beispiel.config	2013-02-01 08:28:18.000000000 +0100
++++ iroffer-dinoex-3.29.NEW/beispiel.config	2013-03-09 18:43:33.084000000 +0100
+@@ -15,19 +15,19 @@
+ ##############################################################################
+ ###                             - pid file -                               ###
+ ### Schreibt die Prozess-ID beim Start in diese Datei                      ###
+-pidfile mybot.pid
++pidfile /var/run/iroffer-dinoex/iroffer-dinoex.pid
+ 
+ ##############################################################################
+ ###                             - log file -                               ###
+ ### logfile gibt die Logdatei für den Bot an.                              ###
+-logfile mybot.log
++logfile /var/log/iroffer-dinoex/mybot.log
+ 
+ ##############################################################################
+ ###                            - log rotate -                              ###
+ ### logrotate gibt den Zeitraum vor, nach dem die Logdatei gewechselt      ###
+ ### wird, mögliche Werte "none" (nie), "monthly" (monatlich),              ###
+ ### "weekly" (wöchentlich), "daily" (täglich) und 1-24 (stündlich).        ###
+-logrotate weekly
++logrotate none
+ 
+ ##############################################################################
+ ###                         - expire logfiles -                            ###
+@@ -48,7 +48,7 @@
+ ### Diese Datei dient als allgemeines Datenlager für die bereitgestellten  ###
+ ### Dateien und die dazugehörigen statistische Daten. Hier werden auch die ###
+ ### Beschreibungen der Pakete gespeichert.                                 ###
+-statefile mybot.state
++statefile /var/lib/iroffer-dinoex/mybot.state
+ 
+ ##############################################################################
+ ###                          - old state file -                            ###
+@@ -74,7 +74,7 @@
+ ### als Packliste auf einer Webseite zu dienen, oder für andere Zwecke.    ###
+ ### Wenn xdcclistfileraw gesetzt ist, werden die IRC-Farbcode auch mit     ###
+ ### ausgegeben.                                                            ###
+-xdcclistfile mybot.txt
++xdcclistfile /var/lib/iroffer-dinoex/mybot.txt
+ #xdcclistfileraw
+ 
+ ##############################################################################
+diff -ru iroffer-dinoex-3.29/exemple.config iroffer-dinoex-3.29.NEW/exemple.config
+--- iroffer-dinoex-3.29/exemple.config	2013-02-01 08:26:21.000000000 +0100
++++ iroffer-dinoex-3.29.NEW/exemple.config	2013-03-09 18:45:35.340000000 +0100
+@@ -15,18 +15,18 @@
+ ##############################################################################
+ ###                             - pid file -                               ###
+ ### Écrit l'identifiant du processus dans ce fichier au lancement.         ###
+-pidfile monbot.pid
++pidfile /var/run/iroffer-dinoex/iroffer-dinoex.pid
+ 
+ ##############################################################################
+ ###                             - log file -                               ###
+ ### Écrit le journal du robot dans ce fichier.                             ###
+-logfile monbot.log
++logfile /var/log/iroffer-dinoex/mybot.log
+ 
+ ##############################################################################
+ ###                            - log rotate -                              ###
+ ### Archivage du journal jamais (« none »), quotidien (« daily »),         ###
+ ### hebdomadaire (« weekly ») ou mensuelle (« monthly »).                  ###
+-logrotate weekly
++logrotate none
+ 
+ ##############################################################################
+ ###                         - expire logfiles -                            ###
+@@ -44,7 +44,7 @@
+ ##############################################################################
+ ###                             - state file -                             ###
+ ### Fichier temporaire de stockage des informations d'état d'Iroffer.      ###
+-statefile monbot.state
++statefile /var/lib/iroffer-dinoex/mybot.state
+ 
+ ##############################################################################
+ ###                          - old state file -                            ###
+@@ -71,7 +71,7 @@
+ ### « xdcclistfile » et Iroffer écrira la liste XDCC dès que nécessaire.   ###
+ ### Si « xdcclistfileraw » est défini, le fichier sera écrit avec les      ###
+ ### caractères spéciaux IRC (couleur, format, etc.)                        ###
+-xdcclistfile monbot.txt
++xdcclistfile /var/lib/iroffer-dinoex/mybot.txt
+ #xdcclistfileraw
+ 
+ ##############################################################################
+diff -ru iroffer-dinoex-3.29/sample.config iroffer-dinoex-3.29.NEW/sample.config
+--- iroffer-dinoex-3.29/sample.config	2013-02-01 08:26:58.000000000 +0100
++++ iroffer-dinoex-3.29.NEW/sample.config	2013-03-09 18:46:30.612000000 +0100
+@@ -15,18 +15,18 @@
+ ##############################################################################
+ ###                             - pid file -                               ###
+ ### Writes the process id to this file on startup                          ###
+-pidfile mybot.pid
++pidfile /var/run/iroffer-dinoex/iroffer-dinoex.pid
+ 
+ ##############################################################################
+ ###                             - log file -                               ###
+ ### Writes logging information to this file.                               ###
+-logfile mybot.log
++logfile /var/log/iroffer-dinoex/mybot.log
+ 
+ ##############################################################################
+ ###                            - log rotate -                              ###
+ ### After the time given here a logfile will be rotated.                   ###
+ ### logrotate can be set to none, 1 - 24 hours, daily, weekly or monthly   ###
+-logrotate weekly
++logrotate none
+ 
+ ##############################################################################
+ ###                         - expire logfiles -                            ###
+@@ -44,7 +44,7 @@
+ ##############################################################################
+ ###                             - state file -                             ###
+ ### temporary storage for iroffer state information across restarts        ###
+-statefile mybot.state
++statefile /var/lib/iroffer-dinoex/mybot.state
+ 
+ ##############################################################################
+ ###                          - old state file -                            ###
+@@ -71,7 +71,7 @@
+ ### needed.                                                                ###
+ ### If xdcclistfileraw is set the file will be written with the IRC        ###
+ ### control characters included (color, formatting, etc..).                ###
+-xdcclistfile mybot.txt
++xdcclistfile /var/lib/iroffer-dinoex/mybot.txt
+ #xdcclistfileraw
+ 
+ ##############################################################################

@@ -1,0 +1,12 @@
+diff -Naur tk8.4.11.orig/unix/configure.in tk8.4.11/unix/configure.in
+--- tk8.4.11.orig/unix/configure.in	2005-06-30 01:43:10.000000000 +0900
++++ tk8.4.11/unix/configure.in	2005-07-02 23:22:16.000000000 +0900
+@@ -393,7 +393,7 @@
+     TCL_STUB_FLAGS="-DUSE_TCL_STUBS"
+ fi
+ 
+-TK_LIBRARY='$(prefix)/lib/tk$(VERSION)'
++TK_LIBRARY='$(libdir)/tk$(VERSION)'
+ PRIVATE_INCLUDE_DIR='$(includedir)'
+ HTML_DIR='$(DISTDIR)/html'
+ TK_PKG_DIR='tk$(VERSION)$(TK_DBGX)'

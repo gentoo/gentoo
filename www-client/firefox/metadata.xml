@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>mozilla</herd>
+<use>
+	<flag name="bindist">Disable official Firefox branding (icons, name) which 
+		are not binary-redistributable according to upstream.</flag>
+	<flag name="custom-optimization">Fine-tune custom compiler
+		optimizations (-Os, -O0, -O1, -O2, -O3)</flag>
+	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
+		downloaded and kept up-to-date in user profiles</flag>
+	<flag name="gstreamer-0">Use gstreamer:0.10 instead of gstreamer:1 for media support</flag>
+	<flag name="jemalloc3">Enable or disable jemalloc3 (forced-on when supported prior to 38.0)</flag>
+	<flag name="minimal">Prevent sdk and headers from being installed</flag>
+	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
+		for faster binaries. This option will double the compile time.</flag>
+	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
+		instead of bundled.</flag>
+	<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg>
+		instead of bundled.</flag>
+	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
+		instead of bundled.</flag>
+	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
+		instead of bundled.</flag>
+	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>
+		installation with secure-delete enabled</flag>
+	<flag name="egl">Enable EGL provider</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+Disallow all control characters in argument handling.
+
+This closes a security hole that allowed passing commands via the argument
+handling, if a newline was used to seperate the argument from the rest of the
+command.
+
+X-URL: http://www.exploit-db.com/exploits/32925/
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--
+I didn't find any patches from upstream NRPE, so I wrote this quick one.
+If somebody else has a valid use for control characters in NRPE arguments, then
+this could be relaxed slightly.
+
+diff -Nuar --exclude '*.orig' nrpe-2.15.orig/src/nrpe.c nrpe-2.15/src/nrpe.c
+--- nrpe-2.15.orig/src/nrpe.c	2014-04-19 09:37:16.022373910 -0700
++++ nrpe-2.15/src/nrpe.c	2014-04-19 09:46:53.237458939 -0700
+@@ -53,7 +53,7 @@
+ 
+ #define DEFAULT_COMMAND_TIMEOUT	60			/* default timeout for execution of plugins */
+ #define MAXFD                   64
+-#define NASTY_METACHARS         "|`&><'\"\\[]{};"
++#define NASTY_METACHARS         "|`&><'\"\\[]{};\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x7f"
+ #define howmany(x,y)	(((x)+((y)-1))/(y))
+ #define MAX_LISTEN_SOCKS        16
+ 

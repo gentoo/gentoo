@@ -1,0 +1,13 @@
+diff --git a/haskell-src.cabal b/haskell-src.cabal
+index 2d41e6e..0434cc1 100644
+--- a/haskell-src.cabal
++++ b/haskell-src.cabal
+@@ -33,8 +33,5 @@ library
+     build-depends:      base >= 4 && < 5, syb, pretty, array
+   else
+     build-depends:      base < 3
+-  build-depends: haskell98
+-  -- The dependency on Haskell 98 is only because
+-  -- Happy generates a parser that imports Array
+   extensions:   CPP
+   nhc98-options:        -K11M

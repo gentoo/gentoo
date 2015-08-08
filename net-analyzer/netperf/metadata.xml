@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>netmon</herd>
+<use>
+<flag name='demo'>Emit interim results during the run. May affect results</flag>
+<flag name='sctp'>Include tests to measure SCTP performance</flag>
+</use>
+</pkgmetadata>

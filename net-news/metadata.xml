@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-news category contains news-related network software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-news enthält News-Software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-news contiene programas relacionados con los servicios
+		de noticias.
+	</longdescription>
+	<longdescription lang="ja">
+		net-newsカテゴリーにはニュース関連のネットワーク・ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-news categorie bevat nieuws-software.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-news chứa các phần mềm liên quan đến news.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-news contiene programmi per il servizio news.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-news contém programas relacionados com serviços
+		de notícias (news).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-news zawiera programy do czytania wiadomości.
+	</longdescription>
+</catmetadata>
+

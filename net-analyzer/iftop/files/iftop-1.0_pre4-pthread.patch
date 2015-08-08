@@ -1,0 +1,46 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -383,39 +383,10 @@
+ dnl libraries, etc. We use a test program to figure this stuff out.
+ dnl
+ 
+-AC_MSG_CHECKING([POSIX threads compilation])
+-thrfail=1
+-oldCFLAGS=$CFLAGS
+-oldLIBS=$LIBS
+-for flag in "" -mt -pthread -thread ; do
+-    CFLAGS="$oldCFLAGS $flag"
+-    for lib in "" -lpthread "-lpthread -lposix4" ; do
+-        LIBS="$oldLIBS $lib"
+-        AC_LINK_IFELSE([AC_LANG_SOURCE([`cat config/pthread.c`])], [
+-            foundthrlib=$lib
+-            foundthrflag=$flag
+-            thrfail=0
+-            break
+-            ])
+-    done
+-    if test $thrfail = 0 ; then
+-        break
+-    fi
+-done
+-
+-if test $thrfail = 1 ; then
+-    AC_MSG_RESULT([no idea])
+-    AC_MSG_ERROR([can't figure out how to compile with POSIX threads
+-  If your system actually supports POSIX threads, this means we've messed up.])
+-fi
+-
+-AC_MSG_RESULT([CFLAGS=$foundthrflag and LIBS=$foundthrlib])
+-AC_MSG_CHECKING([POSIX threads usability])
+-AC_RUN_IFELSE([AC_LANG_SOURCE([`cat config/pthread.c`])],
+-	      [AC_MSG_RESULT([yes])],
+-              [AC_MSG_ERROR(
+-	       [it fails.  We probably guessed the wrong CFLAGS.])],
+-	      [AC_MSG_RESULT([can't test because we are cross-compiling])])
++AX_PTHREAD(
++  [LIBS="$PTHREAD_LIBS $LIBS"
++  CFLAGS="$CFLAGS $PTHREAD_CFLAGS"],
++  AC_MSG_ERROR([Could not find out how to enable POSIX threads]))
+ 
+ dnl
+ dnl Are we on a system (like Solaris) that requires promiscuous mode in order to

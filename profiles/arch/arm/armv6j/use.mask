@@ -1,0 +1,4 @@
+# Unmask armv6 specific USE flags
+-armvfp
+-armv6
+-armv6t2

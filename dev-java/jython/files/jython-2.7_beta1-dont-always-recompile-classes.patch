@@ -1,0 +1,11 @@
+--- a/src/org/python/core/imp.java
++++ b/src/org/python/core/imp.java
+@@ -228,7 +228,7 @@
+         }
+         if (testing && mtime != NO_MTIME) {
+             long time = ar.getMTime();
+-            if (mtime != time) {
++            if (mtime < time) {
+                 return null;
+             }
+         }

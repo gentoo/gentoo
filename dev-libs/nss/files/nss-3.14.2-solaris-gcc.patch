@@ -1,0 +1,24 @@
+--- nss-3.14.2/mozilla/security/coreconf/SunOS5.mk
++++ nss-3.14.2/mozilla/security/coreconf/SunOS5.mk
+@@ -5,6 +5,9 @@
+ 
+ include $(CORE_DEPTH)/coreconf/UNIX.mk
+ 
++NS_USE_GCC = 1
++GCC_USE_GNU_LD = 1
++
+ # Sun's WorkShop defines v8, v8plus and v9 architectures.
+ # gcc on Solaris defines v8 and v9 "cpus".  
+ # gcc's v9 is equivalent to Workshop's v8plus.
+@@ -71,11 +74,6 @@
+ NOMD_OS_CFLAGS += $(DSO_CFLAGS) $(OS_DEFINES) $(SOL_CFLAGS)
+ 
+ MKSHLIB  = $(CC) $(DSO_LDOPTS) $(RPATH)
+-ifdef NS_USE_GCC
+-ifeq (GNU,$(findstring GNU,$(shell `$(CC) -print-prog-name=ld` -v 2>&1)))
+-	GCC_USE_GNU_LD = 1
+-endif
+-endif
+ ifdef MAPFILE
+ ifdef NS_USE_GCC
+ ifdef GCC_USE_GNU_LD

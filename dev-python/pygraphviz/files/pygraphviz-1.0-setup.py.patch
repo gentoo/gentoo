@@ -1,0 +1,33 @@
+--- setup_egg.py
++++ setup_egg.py
+@@ -46,7 +46,6 @@
+         download_url     = release.download_url,
+         classifiers      = release.classifiers,
+         packages         = packages,
+-        data_files       = data,
+         ext_modules      = extension,
+         package_data     = package_data,
+         install_requires=['setuptools'],
+--- setup.py
++++ setup.py
+@@ -98,12 +98,6 @@
+ sys.path.pop(0)
+ 
+ packages = ["pygraphviz","pygraphviz.tests"]
+-docdirbase  = 'share/doc/pygraphviz-%s' % release.version
+-data = [(docdirbase, glob("*.txt")),
+-        (os.path.join(docdirbase, 'examples'),glob("examples/*.py")),
+-        (os.path.join(docdirbase, 'examples'),glob("examples/*.dat")),
+-        (os.path.join(docdirbase, 'examples'),glob("examples/*.dat.gz")),
+-        ]
+ extension = [Extension("pygraphviz._graphviz",
+                       ["pygraphviz/graphviz_wrap.c"],
+                       include_dirs=include_dirs,
+@@ -130,7 +124,6 @@
+         download_url     = release.download_url,
+         classifiers      = release.classifiers,
+         packages         = packages,
+-        data_files       = data,
+         ext_modules      = extension,
+         package_data     = package_data
+       )

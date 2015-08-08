@@ -1,0 +1,24 @@
+From c33d534b802f353a2cd1b42e98a6f5e8e04bc2b5 Mon Sep 17 00:00:00 2001
+From: Dane Springmeyer <dane@dbsgeo.com>
+Date: Thu, 9 Feb 2012 16:00:39 -0800
+Subject: [PATCH] link to boost system
+
+---
+ plugins/input/templates/helloworld/build.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/plugins/input/templates/helloworld/build.py b/plugins/input/templates/helloworld/build.py
+index 402b882..c0b75f0 100644
+--- a/plugins/input/templates/helloworld/build.py
++++ b/plugins/input/templates/helloworld/build.py
+@@ -44,6 +44,7 @@
+ libraries = [ '' ] # eg 'libfoo'
+ 
+ libraries.append('mapnik')
++libraries.append('boost_system%s' % env['BOOST_APPEND'])
+ # link libicuuc, but ICU_LIB_NAME is used custom builds of icu can
+ # have different library names like osx which offers /usr/lib/libicucore.dylib
+ libraries.append(env['ICU_LIB_NAME'])
+-- 
+1.7.10
+

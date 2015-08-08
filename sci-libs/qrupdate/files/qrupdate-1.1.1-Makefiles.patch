@@ -1,0 +1,88 @@
+diff -Nur qrupdate-1.1.1.orig/Makefile qrupdate-1.1.1/Makefile
+--- qrupdate-1.1.1.orig/Makefile	2009-02-06 09:12:00.000000000 +0000
++++ qrupdate-1.1.1/Makefile	2010-05-13 17:27:15.000000000 +0100
+@@ -32,22 +32,22 @@
+ 	@echo "   make install - installs everything"
+ 
+ lib:
+-	make -C src/ lib
++	$(MAKE) -C src lib
+ solib:
+-	make -C src/ solib
++	$(MAKE) -C src solib
+ test: lib
+-	make -C test/
++	$(MAKE) -C test
+ 
+ clean:
+ 	rm -f libqrupdate.a libqrupdate.so
+-	make -C src/ clean
+-	make -C test/ clean
++	$(MAKE) -C src clean
++	$(MAKE) -C test clean
+ 
+ install:
+-	make -C src/ install
++	$(MAKE) -C src install
+ 
+ install-shlib:
+-	make -C src/ install-shlib
++	$(MAKE) -C src install-shlib
+ 
+ install-staticlib:
+-	make -C src/ install-staticlib
++	$(MAKE) -C src install-staticlib
+diff -Nur qrupdate-1.1.1.orig/src/Makefile qrupdate-1.1.1/src/Makefile
+--- qrupdate-1.1.1.orig/src/Makefile	2010-01-19 11:32:35.000000000 +0000
++++ qrupdate-1.1.1/src/Makefile	2010-05-13 17:28:30.000000000 +0100
+@@ -34,6 +34,8 @@
+ 
+ OBJS = $(SRC:%.f=%.o)
+ 
++PICOBJS = $(SRC:%.f=%.lo)
++
+ lib: ../libqrupdate.a
+ 
+ ifeq ($(shell uname),Darwin)
+@@ -46,19 +48,22 @@
+ ../libqrupdate.a: $(OBJS)
+ 	ar -cr $@ $(OBJS)
+ 
+-../libqrupdate.so: $(OBJS)
+-	$(FC) $(FFLAGS) -shared -o $@ -Wl,-soname=libqrupdate.so.$(MAJOR) $(OBJS) \
++../libqrupdate.so: $(PICOBJS)
++	$(FC) $(LDFLAGS) -shared -o $@ -Wl,-soname=libqrupdate.so.$(MAJOR) $(PICOBJS) \
+ 		$(BLAS) $(LAPACK)
+ 
+-../libqrupdate.dylib: $(OBJS)
+-	$(FC) $(FFLAGS) $(LDFLAGS) -dynamiclib -o $@ -install_name $(PREFIX)/$(LIBDIR)/libqrupdate.$(MAJOR).dylib $(OBJS) \
++../libqrupdate.dylib: $(PICOBJS)
++	$(FC) $(LDFLAGS) -dynamiclib -o $@ -install_name $(PREFIX)/$(LIBDIR)/libqrupdate.$(MAJOR).dylib $(PICOBJS) \
+ 		$(BLAS) $(LAPACK)
+ 
++$(PICOBJS): %.lo: %.f
++	$(FC) $(FFLAGS) $(FPICFLAGS) -c $< -o $@
++
+ $(OBJS): %.o: %.f
+-	$(FC) $(FFLAGS) $(FPICFLAGS) -c $<
++	$(FC) $(FFLAGS) -c $<
+ 
+ clean:
+-	rm -f $(OBJS)
++	rm -f $(OBJS) $(PICOBJS)
+ 
+ install: install-shlib install-staticlib
+ 
+diff -Nur qrupdate-1.1.1.orig/test/Makefile qrupdate-1.1.1/test/Makefile
+--- qrupdate-1.1.1.orig/test/Makefile	2010-02-11 08:25:37.000000000 +0000
++++ qrupdate-1.1.1/test/Makefile	2010-05-13 17:15:51.000000000 +0100
+@@ -41,7 +41,7 @@
+ 	$(FC) $(FFLAGS) -c $<
+ 
+ ../libqrupdate.a:
+-	make -C ../ lib
+-	
++	$(MAKE) -C .. lib
++
+ clean: 
+ 	rm -f *.o $(PROGS) $(OUTS)

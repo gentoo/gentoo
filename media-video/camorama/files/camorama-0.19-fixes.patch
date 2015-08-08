@@ -1,0 +1,107 @@
+http://cvs.fedoraproject.org/viewvc/rpms/camorama/devel/
+
+--- camorama-0.19/src/callbacks.c	2007-09-16 15:36:55.000000000 +0200
++++ camorama-0.19.new/src/callbacks.c	2008-06-29 22:22:44.000000000 +0200
+@@ -387,9 +387,6 @@
+         }
+     }
+ 
+-    cam->pixmap = gdk_pixmap_new (NULL, cam->x, cam->y, cam->desk_depth);
+-    gtk_widget_set_size_request (glade_xml_get_widget (cam->xml, "da"),
+-                                 cam->x, cam->y);
+ 
+     /*
+      * if(cam->read == FALSE) {
+@@ -441,6 +438,11 @@
+      * * } 
+      */
+     get_win_info (cam);
++
++    cam->pixmap = gdk_pixmap_new (NULL, cam->x, cam->y, cam->desk_depth);
++    gtk_widget_set_size_request (glade_xml_get_widget (cam->xml, "da"),
++                                 cam->x, cam->y);
++
+     frame = 0;
+     gtk_window_resize (GTK_WINDOW
+                        (glade_xml_get_widget (cam->xml, "main_window")), 320,
+@@ -520,8 +522,14 @@
+     gtk_widget_show (about);
+ }
+ 
++void
++camorama_filter_color_filter(void* filter, guchar *image, int x, int y, int depth);
++
+ static void
+ apply_filters(cam* cam) {
++	/* v4l has reverse rgb order from what camora expect so call the color
++	   filter to fix things up before running the user selected filters */
++	camorama_filter_color_filter(NULL, cam->pic_buf, cam->x, cam->y, cam->depth);
+ 	camorama_filter_chain_apply(cam->filter_chain, cam->pic_buf, cam->x, cam->y, cam->depth);
+ #warning "FIXME: enable the threshold channel filter"
+ //	if((effect_mask & CAMORAMA_FILTER_THRESHOLD_CHANNEL)  != 0) 
+--- camorama-0.19/src/filter.c	2007-09-16 14:48:50.000000000 +0200
++++ camorama-0.19.new/src/filter.c	2008-06-29 22:11:42.000000000 +0200
+@@ -151,12 +151,12 @@
+ static void
+ camorama_filter_color_init(CamoramaFilterColor* self) {}
+ 
+-static void
++void
+ camorama_filter_color_filter(CamoramaFilterColor* filter, guchar *image, int x, int y, int depth) {
+ 	int i;
+ 	char tmp;
+ 	i = x * y;
+-	while (--i) {
++	while (i--) {
+ 		tmp = image[0];
+ 		image[0] = image[2];
+ 		image[2] = tmp;
+--- camorama-0.19/src/main.c	2007-09-16 15:36:55.000000000 +0200
++++ camorama-0.19.new/src/main.c	2008-06-29 22:20:04.000000000 +0200
+@@ -224,8 +224,7 @@
+ 
+     /* get picture attributes */
+     get_pic_info (cam);
+-//	set_pic_info(cam);
+-    /* set_pic_info(cam); */
++    set_pic_info (cam);
+     cam->contrast = cam->vid_pic.contrast;
+     cam->brightness = cam->vid_pic.brightness;
+     cam->colour = cam->vid_pic.colour;
+--- camorama-0.19/src/v4l.c	2007-09-16 14:48:05.000000000 +0200
++++ camorama-0.19.new/src/v4l.c	2008-06-29 22:20:23.000000000 +0200
+@@ -158,8 +158,8 @@
+ 	if(cam->debug) {
+ 		g_message("SET PIC");
+ 	}
+-	//cam->vid_pic.palette = VIDEO_PALETTE_RGB24;
+-	//cam->vid_pic.depth = 24;
++	cam->vid_pic.palette = VIDEO_PALETTE_RGB24;
++	cam->vid_pic.depth = 24;
+ 	//cam->vid_pic.palette = VIDEO_PALETTE_YUV420P;
+ 	if(ioctl(cam->dev, VIDIOCSPICT, &cam->vid_pic) == -1) {
+ 		if(cam->debug) {
+@@ -232,6 +232,8 @@
+       exit(0);
+    }
+ 
++   cam->x = cam->vid_win.width;
++   cam->y = cam->vid_win.height;
+ }
+ 
+ void set_buffer(cam * cam)
+--- camorama-0.19/src/camorama-window.c~	2007-09-16 15:36:55.000000000 +0200
++++ camorama-0.19/src/camorama-window.c	2009-06-23 20:19:16.000000000 +0200
+@@ -209,11 +209,7 @@ load_interface(cam* cam) {
+ 
+     logo = gtk_icon_theme_load_icon(gtk_icon_theme_get_for_screen(gtk_widget_get_screen(glade_xml_get_widget(cam->xml, "main_window"))), CAMORAMA_STOCK_WEBCAM, 24, 0, NULL);
+     gtk_window_set_default_icon(logo);
+-    logo = (GdkPixbuf *) create_pixbuf (PACKAGE_DATA_DIR "/pixmaps/camorama.png");
+-    if (logo == NULL) {
+-        printf ("\n\nLOGO NO GO\n\n");
+-    }
+-
++    logo = gtk_icon_theme_load_icon(gtk_icon_theme_get_for_screen(gtk_widget_get_screen(glade_xml_get_widget(cam->xml, "main_window"))), "camorama", 48, 0, NULL);
+     if (cam->show_adjustments == FALSE) {
+         gtk_widget_hide (glade_xml_get_widget
+                          (cam->xml, "adjustments_table"));

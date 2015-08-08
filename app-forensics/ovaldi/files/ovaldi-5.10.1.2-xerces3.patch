@@ -1,0 +1,306 @@
+--- src/XmlProcessor.cpp.old	2011-08-18 14:51:20.311616357 +0200
++++ src/XmlProcessor.cpp	2011-08-18 14:51:47.214381144 +0200
+@@ -35,7 +35,6 @@
+ // for dom Writer
+ #include <xercesc/dom/DOMImplementation.hpp>
+ #include <xercesc/dom/DOMImplementationLS.hpp>
+-#include <xercesc/dom/DOMWriter.hpp>
+ #include <xercesc/framework/StdOutFormatTarget.hpp>
+ #include <xercesc/framework/LocalFileFormatTarget.hpp>
+ #include <xercesc/util/XMLUni.hpp>
+@@ -53,8 +52,17 @@
+ //****************************************************************************************//
+ //			DataDirResolver Class                                   					  //	
+ //****************************************************************************************//
+-
++#if XERCES_VERSION_MAJOR < 3
+ DOMInputSource* DataDirResolver::resolveEntity (const XMLCh *const /*publicId*/, const XMLCh *const systemId, const XMLCh *const /*baseURI*/) {
++#else
++InputSource* DataDirResolver::resolveEntity(const XMLCh* publicId, const XMLCh* systemId)
++{
++	return NULL;
++	//return DataDirResolver::resolveEntity (publicId, systemId, NULL);
++}
++
++DOMLSInput* DataDirResolver::resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI) {
++#endif
+ 	string path = "";
+ 	size_t last;
+ 	string schemapath = Common::GetSchemaPath();
+@@ -104,13 +112,19 @@
+ 
+     try  {
+         XMLPlatformUtils::Initialize();
++#if XERCES_VERSION_MAJOR < 3
++#define SetParameter(parser,n,v) parser->setFeature(n,v)
++#else
++#define SetParameter(parser,n,v) parser->getDomConfig()->setParameter(n,v)
++#endif
+ 
+ 		parser = makeParser();
+ 		parserWithCallerAdoption = makeParser();
+ 		// add one extra feature on this parser to prevent it from
+ 		// taking ownership of its documents.
+-		parserWithCallerAdoption->setFeature(XMLUni::fgXercesUserAdoptsDOMDocument, true);
++		SetParameter(parserWithCallerAdoption, XMLUni::fgXercesUserAdoptsDOMDocument, true);
+ 
++#undef SetParameter
+     } catch (const XMLException& toCatch) {
+         string errMsg = "Error:  An error occured durring initialization of the xml utilities:\n";
+         errMsg.append(XmlCommon::ToString(toCatch.getMessage()));
+@@ -137,32 +151,55 @@
+ 
+ }
+ 
++#if XERCES_VERSION_MAJOR < 3
+ DOMBuilder *XmlProcessor::makeParser() {
++#else
++DOMLSParser *XmlProcessor::makeParser() {
++#endif
+     // Instantiate the DOM parser.
+ 	static const XMLCh gLS[] = { chLatin_L, chLatin_S, chNull };
+ 	DOMImplementation *impl = DOMImplementationRegistry::getDOMImplementation(gLS);
+ 
++#if XERCES_VERSION_MAJOR < 3
+ 	DOMBuilder *parser = ((DOMImplementationLS*)impl)->createDOMBuilder(DOMImplementationLS::MODE_SYNCHRONOUS, 0);
++#else
++	DOMLSParser *parser = ((DOMImplementationLS*)impl)->createLSParser(DOMImplementationLS::MODE_SYNCHRONOUS, 0);
++#endif
+ 
+ 	///////////////////////////////////////////////////////
+ 	//	Set features on the builder
+ 	///////////////////////////////////////////////////////
+ 
+-	parser->setFeature(XMLUni::fgDOMComments, false); // Discard Comment nodes in the document. 
+-	parser->setFeature(XMLUni::fgDOMDatatypeNormalization, true); // Let the validation process do its datatype normalization that is defined in the used schema language.  
+-	parser->setFeature(XMLUni::fgDOMNamespaces, true); //  Perform Namespace processing
+-	parser->setFeature(XMLUni::fgDOMValidation, true); // Report all validation errors.  
+-	parser->setFeature(XMLUni::fgXercesSchema, true); //  Enable the parser's schema support.
+-	parser->setFeature(XMLUni::fgXercesSchemaFullChecking, true); //  Enable full schema constraint checking, including checking which may be time-consuming or memory intensive. Currently, particle unique attribution constraint checking and particle derivation restriction checking are controlled by this option.  
+-	parser->setFeature(XMLUni::fgXercesValidationErrorAsFatal, true); //  The parser will treat validation error as fatal and will exit  
+-	parser->setFeature(XMLUni::fgXercesDOMHasPSVIInfo, true); // Enable storing of PSVI information in element and attribute nodes.
++#if XERCES_VERSION_MAJOR < 3
++#define SetParameter(parser,n,v) parser->setFeature(n,v)
++#else
++#define SetParameter(parser,n,v) parser->getDomConfig()->setParameter(n,v)
++#endif
++
++	SetParameter(parser, XMLUni::fgDOMComments, false); // Discard Comment nodes in the document. 
++	SetParameter(parser, XMLUni::fgDOMDatatypeNormalization, true); // Let the validation process do its datatype normalization that is defined in the used schema language.  
++	SetParameter(parser, XMLUni::fgDOMNamespaces, true); //  Perform Namespace processing
++#if XERCES_VERSION_MAJOR < 3
++	SetParameter(parser, XMLUni::fgDOMValidation, true); // Report all validation errors.   
++#else
++	SetParameter(parser, XMLUni::fgDOMValidate, true); // Report all validation errors.   
++#endif
++	SetParameter(parser, XMLUni::fgXercesSchema, true); //  Enable the parser's schema support.
++	SetParameter(parser, XMLUni::fgXercesSchemaFullChecking, true); //  Enable full schema constraint checking, including checking which may be time-consuming or memory intensive. Currently, particle unique attribution constraint checking and particle derivation restriction checking are controlled by this option.  
++	SetParameter(parser, XMLUni::fgXercesValidationErrorAsFatal, true); //  The parser will treat validation error as fatal and will exit  
++	SetParameter(parser, XMLUni::fgXercesDOMHasPSVIInfo, true); // Enable storing of PSVI information in element and attribute nodes.
++#undef SetParameter
+ 
+ 	///////////////////////////////////////////////////////
+ //****************************************************************************************//
+ //			The following code was added to handle air-gap operation					  //	
+ //****************************************************************************************//
+ 	/* Look for XML schemas in local directory instead of Internet */
++#if XERCES_VERSION_MAJOR < 3
+ 	parser->setEntityResolver (&resolver);
++#else
++	parser->getDomConfig()->setParameter(XMLUni::fgXercesEntityResolver, &resolver);
++#endif
+ //****************************************************************************************//
+ //			End of air-gap code															  //	
+ //****************************************************************************************//
+@@ -170,7 +207,11 @@
+ 	///////////////////////////////////////////////////////
+ 	//	Add an Error Handler
+ 	///////////////////////////////////////////////////////
++#if XERCES_VERSION_MAJOR < 3
+ 	parser->setErrorHandler(&errHandler);
++#else
++	parser->getDomConfig()->setParameter(XMLUni::fgDOMErrorHandler, &errHandler);
++#endif
+ 
+ 	return parser;
+ }
+@@ -250,24 +291,26 @@
+ 		XMLCh tempStr[100];
+ 		XMLString::transcode("LS", tempStr, 99);
+ 		DOMImplementation *impl = DOMImplementationRegistry::getDOMImplementation(tempStr);
++#if XERCES_VERSION_MAJOR < 3
+ 		DOMWriter *theSerializer = ((DOMImplementationLS*)impl)->createDOMWriter();
++#else
++		DOMLSSerializer *theSerializer = ((DOMImplementationLS*)impl)->createLSSerializer();
++#endif
++
++#if XERCES_VERSION_MAJOR < 3
++#define SetParameter(serializer,n,v) if (serializer->canSetFeature(n,v)) serializer->setFeature(n,v)
++#else
++#define SetParameter(serializer,n,v) if (serializer->getDomConfig()->canSetParameter(n,v)) serializer->getDomConfig()->setParameter(n,v)
++#endif
+ 
+ 		// set feature if the serializer supports the feature/mode
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTSplitCdataSections, true))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTSplitCdataSections, true);
+-
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTDiscardDefaultContent, true))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTDiscardDefaultContent, true);
+-
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTFormatPrettyPrint, true))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTFormatPrettyPrint, true);
+-
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTBOM, false))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTBOM, false);
+-
+-		//if (theSerializer->canSetFeature(XMLUni::fgDOMWRTDiscardDefaultContent, true))
+-		//	theSerializer->setFeature(XMLUni::fgDOMWRTBOM, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTSplitCdataSections, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTDiscardDefaultContent, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTFormatPrettyPrint, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTBOM, false);
++		//SetParameter(theSerializer, XMLUni::fgDOMWRTBOM, true);
+ 
++#undef SetParameter
+ 		//
+ 		// Plug in a format target to receive the resultant
+ 		// XML stream from the serializer.
+@@ -284,7 +327,13 @@
+ 		//
+ 		// do the serialization through DOMWriter::writeNode();
+ 		//
++#if XERCES_VERSION_MAJOR < 3
+ 		theSerializer->writeNode(myFormTarget, *doc);
++#else
++		DOMLSOutput *output = ((DOMImplementationLS*)impl)->createLSOutput();
++		output->setByteStream(myFormTarget);
++		theSerializer->write(doc, output);
++#endif
+ 
+ 		theSerializer->release();
+ 		delete myFormTarget;
+--- src/XmlProcessor.h.old	2011-08-18 14:35:41.608703233 +0200
++++ src/XmlProcessor.h	2011-08-18 14:39:21.835597094 +0200
+@@ -38,14 +38,17 @@
+ #include <string>
+ 
+ //	required xerces	includes
+-#include <xercesc/dom/DOMBuilder.hpp>
+ #include <xercesc/dom/DOMDocument.hpp>
+ #include <xercesc/dom/DOMErrorHandler.hpp>
+ #include <xercesc/dom/DOMError.hpp>
+ 
+ // for entity resolver
+-#include <xercesc/dom/DOMEntityResolver.hpp>
+-#include <xercesc/dom/DOMInputSource.hpp>
++
++#include <xercesc/dom/DOMImplementationRegistry.hpp>
++#include <xercesc/dom/DOMLSParser.hpp>
++#include <xercesc/sax/EntityResolver.hpp>
++#include <xercesc/sax/InputSource.hpp>
++#include <xercesc/sax2/SAX2XMLReader.hpp>
+ 
+ #include "Exception.h"
+ 
+@@ -53,12 +56,14 @@
+ 	This class extends the default DOMEntityResolver and implments the resolve entity method 
+ 	to support 
+ */
+-class DataDirResolver : public xercesc::DOMEntityResolver {
++class DataDirResolver : public xercesc::EntityResolver {
+ public:
+ 	/**
+      *     
+ 	*/
+-	xercesc::DOMInputSource *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI);
++//	xercesc::DOMInputSource *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI);
++	xercesc::InputSource *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId);
++	xercesc::DOMLSInput *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI);
+ };
+ 
+ /**
+@@ -135,7 +140,7 @@
+ 	/**
+ 	 * Has the common code for creating an XML parser.
+ 	 */
+-	xercesc::DOMBuilder *makeParser();
++	xercesc::DOMLSParser *makeParser();
+ 
+ 	static XmlProcessor* instance;
+ 
+@@ -144,7 +149,7 @@
+ 	 * owns the documents it builds.  Users must manually destroy
+ 	 * those documents.
+ 	 */
+-	xercesc::DOMBuilder *parserWithCallerAdoption;
++	xercesc::DOMLSParser *parserWithCallerAdoption;
+ 
+ 	/**
+ 	 * This parser doesn't have user-adoption switched on, so it
+@@ -156,7 +161,7 @@
+ 	 * appear to ever be switched off.  So to make sure this isn't
+ 	 * leaking memory, I have created separate parsers.
+ 	 */
+-	xercesc::DOMBuilder *parser;
++	xercesc::DOMLSParser *parser;
+ 
+ 	/** The entity resolver for both parsers. */
+ 	DataDirResolver resolver;
+--- src/probes/independent/XmlFileContentProbe.cpp.old	2010-10-22 14:49:22.000000000 +0200
++++ src/probes/independent/XmlFileContentProbe.cpp	2010-10-22 14:51:39.000000000 +0200
+@@ -419,12 +419,24 @@
+     return new DummyEntityResolver::DoNothingBinInputStream();
+ }
+ 
++#if XERCES_VERSION_MAJOR < 3
+ unsigned int DummyEntityResolver::DoNothingBinInputStream::curPos() const
++#else
++const XMLCh* DummyEntityResolver::DoNothingBinInputStream::getContentType() const
++{
++    return NULL;
++}
++XMLFilePos DummyEntityResolver::DoNothingBinInputStream::curPos() const
++#endif
+ {
+     return 0;
+ }
+ 
++#if XERCES_VERSION_MAJOR < 3
+ unsigned int DummyEntityResolver::DoNothingBinInputStream::readBytes(XMLByte *const /*toFill*/, const unsigned int /*maxToRead*/)
++#else
++XMLSize_t DummyEntityResolver::DoNothingBinInputStream::readBytes(XMLByte *const toFill, XMLSize_t maxToRead)
++#endif
+ {
+     return 0;
+ }
+--- src/probes/independent/XmlFileContentProbe.h.old	2010-10-22 14:55:47.000000000 +0200
++++ src/probes/independent/XmlFileContentProbe.h	2010-10-22 14:57:00.000000000 +0200
+@@ -134,8 +134,14 @@
+     class DoNothingBinInputStream : public BinInputStream
+     {
+     public:
++#if XERCES_VERSION_MAJOR < 3
+         virtual unsigned int curPos() const;
+         virtual unsigned int readBytes(XMLByte *const toFill, const unsigned int maxToRead);
++#else
++	virtual XMLFilePos curPos() const;
++	virtual const XMLCh* getContentType() const;
++	virtual XMLSize_t readBytes(XMLByte *const toFill, XMLSize_t maxToRead);
++#endif
+     };
+ };
+ 
+--- src/XmlCommon.cpp.old
++++ src/XmlCommon.cpp
+@@ -546,7 +546,11 @@ void XmlCommon::AddSchemaLocation(XERCES_CPP_NAMESPACE_QUALIFIER DOMDocument *do
+ string XmlCommon::GetNamespace(DOMElement *element) {
+ 
+ 	string xmlns = "";
++#if XERCES_VERSION_MAJOR < 3
+ 	xmlns = XmlCommon::ToString(element->getTypeInfo()->getNamespace());
++#else
++	xmlns = XmlCommon::ToString(element->getSchemaTypeInfo()->getTypeNamespace());
++#endif
+ 	if (xmlns.compare("") == 0) {
+ 		xmlns = "";
+ 	}

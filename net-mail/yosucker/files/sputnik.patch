@@ -1,0 +1,43 @@
+--- sputnik.pm	2004-06-08 06:16:03.000000000 -0400
++++ sputnik.pm	2004-06-15 13:37:01.000000000 -0400
+@@ -1485,27 +1485,10 @@
+ 
+   $headeritmz[@headeritmz] = "From YoSucker ".$timenow."\n";
+ 
+-  my $folded = 0;
+ 
+   while (<$handle>) {
+-        # chomp;
+-#        if (/\:<\/b><\/td>/) {
+-	if ($folded) {
+-		$folded = 0 if /<\/small>/;
+-		s/<[^>]*>//gs;
+-		s/\&lt\;/</gs;
+-		s/\&gt\;/>/gs;
+-		s/\&#34\;/"/gs;
+-		s/\&#39\;/'/gs;
+-		s/\&amp\;/\&/gs;
+-		s/From:(.*?)&nbsp;\|.+$/From:$1/;
+-		s/From:(.*?)&nbsp;&nbsp;.+$/From:$1/;
+-		s/\&nbsp\;/ /gs;
+-		$headeritmz[@headeritmz-1] .= $_;
+-	}
+-	elsif (/:(<\/small><\/b><\/td>|<\/b><\/td>)/i) {
++	if (/^<tr><td class=label nowrap>/i) {
+ 		$headers_fetched = 'yes';
+-		$folded = 1 unless /(<\/small>|<\/a>)<\/td><\/tr>$/i;
+                 s/<[^>]*>//gs;
+                 s/\&lt\;/</gs;
+                 s/\&gt\;/>/gs;
+@@ -1518,6 +1501,11 @@
+ 			s/^$key/$class->{headtrans}{$key}/g;
+ 		}
+ 
++		# new stuff to strip out for 100meg yahoo
++		s/^<tr><td class=label nowrap>//gs;
++		s/<\/td><td>//gs;
++		s/<\/td><\/tr>//gs;
++
+ 		s/From:(.*?)&nbsp;\|.+$/From:$1/;
+ 		s/From:(.*?)&nbsp;&nbsp;.+$/From:$1/;
+                 s/\&nbsp\;/ /gs;

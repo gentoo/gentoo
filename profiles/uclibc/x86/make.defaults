@@ -1,0 +1,6 @@
+ARCH="x86"
+ACCEPT_KEYWORDS="x86"
+
+CHOST="i386-gentoo-linux-uclibc"
+
+UCLIBC_CPU_DEFAULT="GENERIC_386"

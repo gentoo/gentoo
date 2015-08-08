@@ -1,0 +1,11 @@
+#fixes test run (bug 282490)
+--- bvl/src/bvl_bcomp_y.y.orig	2010-10-13 09:29:48.000000000 +0200
++++ bvl/src/bvl_bcomp_y.y	2010-10-13 09:30:13.000000000 +0200
+@@ -17,6 +17,7 @@
+ #include "bvl.h"
+ #include "bvl_byacc.h"
+ #include "bvl_bedef.h"
++#include "bvl_bcomp_y.h"
+ 
+ /* ###--------------------------------------------------------------### */
+ /* function	: bvl_y_error						*/

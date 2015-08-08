@@ -1,0 +1,64 @@
+ elf.cpp    |    6 +++---
+ idhelp.cpp |    8 ++++----
+ sets.cpp   |    8 ++++----
+ 3 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/elf.cpp b/elf.cpp
+index ec2ed3d..a57665f 100644
+--- a/elf.cpp
++++ b/elf.cpp
+@@ -1175,10 +1175,10 @@ void Plink::elfBaseline()
+ 	  << setw(8) << gcnt << " "
+ 	  << setw(8) << (double)cnt / (double)gcnt << "\n";
+ 
+-      map<int,int>::iterator i = chr_cnt.begin();
+-      while ( i != chr_cnt.end() )
++      map<int,int>::iterator j = chr_cnt.begin();
++      while ( j != chr_cnt.end() )
+ 	{
+-	  int c = i->first;
++	  int c = j->first;
+ 	  int x = chr_cnt.find( c )->second;
+ 	  int y = chr_gcnt.find( c )->second;
+ 	  
+diff --git a/idhelp.cpp b/idhelp.cpp
+index a9244fa..8882097 100644
+--- a/idhelp.cpp
++++ b/idhelp.cpp
+@@ -772,12 +772,12 @@ void IDHelper::idHelp()
+       for (int j = 0 ; j < jointField.size(); j++ )
+ 	{
+ 	  set<IDField*> & jf = jointField[j];
+-	  set<IDField*>::iterator j = jf.begin();
++	  set<IDField*>::iterator k = jf.begin();
+ 	  PP->printLOG(" { ");
+-	  while ( j != jf.end() )
++	  while ( k != jf.end() )
+ 	    {
+-	      PP->printLOG( (*j)->name + " " );
+-	      ++j;
++	      PP->printLOG( (*k)->name + " " );
++	      ++k;
+ 	    }
+ 	  PP->printLOG(" }");
+ 	}
+diff --git a/sets.cpp b/sets.cpp
+index 3a8f92f..66787e8 100644
+--- a/sets.cpp
++++ b/sets.cpp
+@@ -768,11 +768,11 @@ vector_t Set::profileTestScore()
+       //////////////////////////////////////////////
+       // Reset original missing status
+ 
+-      vector<Individual*>::iterator i = PP->sample.begin();
+-      while ( i != PP->sample.end() )
++      vector<Individual*>::iterator j = PP->sample.begin();
++      while ( j != PP->sample.end() )
+ 	{
+-	  (*i)->missing = (*i)->flag;
+-	  ++i;
++	  (*j)->missing = (*j)->flag;
++	  ++j;
+ 	}
+ 
+       ////////////////////////////////////////////////

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<maintainer>
+		<email>jingcheng01@gmail.com</email>
+		<name> Jing, Cheng</name>
+		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">sshpass</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+	<use>
+		<flag name="aacplus">AAC+ encoding via media-libs/libaacplus</flag>
+		<flag name="opus">Enable Opus audio codec support</flag>
+		<flag name="twolame">Build with twolame support</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">darkice</remote-id>
+	</upstream>
+</pkgmetadata>

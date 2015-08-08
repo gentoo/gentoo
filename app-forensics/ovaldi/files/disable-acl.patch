@@ -1,0 +1,23 @@
+--- src/probes/unix/FileProbe.cpp.old	2013-01-14 16:28:33.000000000 +0100
++++ src/probes/unix/FileProbe.cpp	2013-01-14 16:30:33.000000000 +0100
+@@ -427,19 +427,8 @@
+ 	   5) If a file doesn't have an ACL, or it matches the standard UNIX permissions, the value will be 'false' (this is covered by acl_extended_file() - thank you openscap)
+ 	   6) If a file has an ACL, the value will be 'true'.
+ 	*/
+-	
+-	int hasExtendedAcl = acl_extended_file(filePath.c_str());
+-	if(hasExtendedAcl > -1){ // behavior 4, 5, and 6
+-          item->AppendElement(new ItemEntity("has_extended_acl",Common::ToString(hasExtendedAcl),OvalEnum::DATATYPE_BOOLEAN,OvalEnum::STATUS_EXISTS,0));
+-	}else{
+-	  if(errno == EOPNOTSUPP){ // behavior 3
+-	    item->AppendElement(new ItemEntity("has_extended_acl","",OvalEnum::DATATYPE_BOOLEAN,OvalEnum::STATUS_DOES_NOT_EXIST,0));
+-          }else{ // behavior 2
+-	    item->AppendElement(new ItemEntity("has_extended_acl","",OvalEnum::DATATYPE_BOOLEAN,OvalEnum::STATUS_ERROR,0));
+-            item->AppendMessage(new OvalMessage(string("Error reading ACL data: ") + strerror(errno)));
+-          }
+-	}
+ 
++	item->AppendElement(new ItemEntity("has_extended_acl","",OvalEnum::DATATYPE_BOOLEAN,OvalEnum::STATUS_NOT_COLLECTED,0));
+ # else
+ 	// behavior 1
+ 	item->AppendElement(new ItemEntity("has_extended_acl","",OvalEnum::DATATYPE_BOOLEAN,OvalEnum::STATUS_NOT_COLLECTED,0));

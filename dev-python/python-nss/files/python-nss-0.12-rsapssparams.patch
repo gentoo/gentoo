@@ -1,0 +1,25 @@
+RCS file: /cvsroot/mozilla/security/python/nss/src/py_nss.c,v
+retrieving revision 1.23
+diff -b -u -r1.23 py_nss.c
+--- src/py_nss.c	6 Jun 2011 15:21:13 -0000	1.23
++++ src/py_nss.c	17 Nov 2011 21:11:40 -0000
+@@ -4669,7 +4669,7 @@
+     }
+
+     if (params.hashAlg) {
+-        obj = oid_secitem_to_pystr_desc(&params->hashAlg->algorithm);
++        obj = oid_secitem_to_pystr_desc(&params.hashAlg->algorithm);
+     } else {
+         obj = PyString_FromString("default, SHA-1");
+     }
+@@ -4677,8 +4677,8 @@
+     Py_CLEAR(obj);
+
+     if (params.maskAlg) {
+-        obj = oid_secitem_to_pystr_desc(&params->maskAlg->algorithm);
+-        if (SEC_QuickDERDecodeItem(pool, &mask_hash_alg,
++        obj = oid_secitem_to_pystr_desc(&params.maskAlg->algorithm);
++        if (SEC_QuickDERDecodeItem(arena, &mask_hash_alg,
+                                    SEC_ASN1_GET(SECOID_AlgorithmIDTemplate),
+                                    &params.maskAlg->parameters) == SECSuccess) {
+             obj1 = oid_secitem_to_pystr_desc(&mask_hash_alg);

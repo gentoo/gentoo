@@ -1,0 +1,107 @@
+From 3bf30af66c8fd77a88d9379a0956ddb2fc70dc20 Mon Sep 17 00:00:00 2001
+From: Tsuda Kageyu <tsuda.kageyu@gmail.com>
+Date: Wed, 6 Nov 2013 17:01:21 +0900
+Subject: [PATCH 2/6] Fixed ABI breakage in TagLib::String
+
+---
+ taglib/toolkit/tstring.cpp | 20 ++++++++++++++++++--
+ taglib/toolkit/tstring.h   | 12 ++++++++++--
+ tests/test_string.cpp      | 14 ++++++++++++++
+ 3 files changed, 42 insertions(+), 4 deletions(-)
+
+diff --git a/taglib/toolkit/tstring.cpp b/taglib/toolkit/tstring.cpp
+index 75a9833..fb6e947 100644
+--- a/taglib/toolkit/tstring.cpp
++++ b/taglib/toolkit/tstring.cpp
+@@ -209,8 +209,16 @@ String::String(const std::string &s, Type t)
+ String::String(const wstring &s, Type t)
+   : d(new StringPrivate())
+ {
+-  if(t == UTF16 || t == UTF16BE || t == UTF16LE)
++  if(t == UTF16 || t == UTF16BE || t == UTF16LE) {
++    // This looks ugly but needed for the compatibility with TagLib1.8. 
++    // Should be removed in TabLib2.0.
++    if (t == UTF16BE)
++      t = WCharByteOrder;
++    else if (t == UTF16LE)
++      t = (WCharByteOrder == UTF16LE ? UTF16BE : UTF16LE);
++
+     copyFromUTF16(s.c_str(), s.length(), t);
++  }
+   else {
+     debug("String::String() -- A TagLib::wstring should not contain Latin1 or UTF-8.");
+   }
+@@ -219,8 +227,16 @@ String::String(const wstring &s, Type t)
+ String::String(const wchar_t *s, Type t)
+   : d(new StringPrivate())
+ {
+-  if(t == UTF16 || t == UTF16BE || t == UTF16LE)
++  if(t == UTF16 || t == UTF16BE || t == UTF16LE) {
++    // This looks ugly but needed for the compatibility with TagLib1.8. 
++    // Should be removed in TabLib2.0.
++    if (t == UTF16BE)
++      t = WCharByteOrder;
++    else if (t == UTF16LE)
++      t = (WCharByteOrder == UTF16LE ? UTF16BE : UTF16LE);
++
+     copyFromUTF16(s, ::wcslen(s), t);
++  }
+   else {
+     debug("String::String() -- A const wchar_t * should not contain Latin1 or UTF-8.");
+   }
+diff --git a/taglib/toolkit/tstring.h b/taglib/toolkit/tstring.h
+index 57945be..605b9c2 100644
+--- a/taglib/toolkit/tstring.h
++++ b/taglib/toolkit/tstring.h
+@@ -134,13 +134,21 @@ namespace TagLib {
+ 
+     /*!
+      * Makes a deep copy of the data in \a s.
++     *
++     * /note If \a t is UTF16LE, the byte order of \a s will be swapped regardless 
++     * of the CPU byte order.  If UTF16BE, it will not be swapped.  This behavior
++     * will be changed in TagLib2.0.
+      */
+-    String(const wstring &s, Type t = WCharByteOrder);
++    String(const wstring &s, Type t = UTF16BE);
+ 
+     /*!
+      * Makes a deep copy of the data in \a s.
++     *
++     * /note If \a t is UTF16LE, the byte order of \a s will be swapped regardless 
++     * of the CPU byte order.  If UTF16BE, it will not be swapped.  This behavior
++     * will be changed in TagLib2.0.
+      */
+-    String(const wchar_t *s, Type t = WCharByteOrder);
++    String(const wchar_t *s, Type t = UTF16BE);
+ 
+     /*!
+      * Makes a deep copy of the data in \a c.
+diff --git a/tests/test_string.cpp b/tests/test_string.cpp
+index a815a0b..9a574b3 100644
+--- a/tests/test_string.cpp
++++ b/tests/test_string.cpp
+@@ -75,6 +75,20 @@ public:
+ 	String unicode3(L"\u65E5\u672C\u8A9E");
+ 	CPPUNIT_ASSERT(*(unicode3.toCWString() + 1) == L'\u672C');
+ 
++    String unicode4(L"\u65e5\u672c\u8a9e", String::UTF16BE);
++    CPPUNIT_ASSERT(unicode4[1] == L'\u672c');
++
++    String unicode5(L"\u65e5\u672c\u8a9e", String::UTF16LE);
++    CPPUNIT_ASSERT(unicode5[1] == L'\u2c67');
++
++    wstring stduni = L"\u65e5\u672c\u8a9e";
++
++    String unicode6(stduni, String::UTF16BE);
++    CPPUNIT_ASSERT(unicode6[1] == L'\u672c');
++
++    String unicode7(stduni, String::UTF16LE);
++    CPPUNIT_ASSERT(unicode7[1] == L'\u2c67');
++
+     CPPUNIT_ASSERT(strcmp(String::number(0).toCString(), "0") == 0);
+     CPPUNIT_ASSERT(strcmp(String::number(12345678).toCString(), "12345678") == 0);
+     CPPUNIT_ASSERT(strcmp(String::number(-12345678).toCString(), "-12345678") == 0);
+-- 
+1.8.4.2
+

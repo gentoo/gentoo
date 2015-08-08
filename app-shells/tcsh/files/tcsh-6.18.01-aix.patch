@@ -1,0 +1,14 @@
+Upstream report, without better patch yet:
+http://bugs.gw.com/view.php?id=366
+
+--- tc.who.c.orig	2014-06-26 11:21:43 +0200
++++ tc.who.c	2014-06-26 11:21:58 +0200
+@@ -60,6 +60,8 @@
+ #  define TCSH_PATH_UTMP _PATH_UTMPX
+ # elif defined(UTMPX_FILE)
+ #  define TCSH_PATH_UTMP UTMPX_FILE
++# elif defined(UTMP_FILE)
++#  define TCSH_PATH_UTMP UTMP_FILE
+ # elif __FreeBSD_version >= 900000
+ #  /* Why isn't this defined somewhere? */
+ #  define TCSH_PATH_UTMP "/var/run/utx.active"

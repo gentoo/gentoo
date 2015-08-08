@@ -1,0 +1,11 @@
+--- oyranos-0.3.2/makefile.in
++++ oyranos-0.3.2/makefile.in
+@@ -995,7 +995,7 @@
+ 	echo current git version is:
+ 	n=0; for i in `cd $(SRCDIR); git rev-list master`; do if [ $${n} -eq 0 ]; then echo git id:$${i}; fi; n=1; done
+ 	echo run tests/test_oyranos
+-	OY_MODULE_PATHS=. LD_LIBRARY_PATH=./:$(libdir):$${LD_LIBRARY_PATH} tests/test_oyranos
++	OY_MODULE_PATHS=. LD_LIBRARY_PATH=./:$(libdir):$${LD_LIBRARY_PATH} tests/test_oyranos "Version matching" "Internationalisation" "Elektra" "basic oyOption_s" "default oyOptions_s settings" "Profiles reading" "Registration matching" "Generic Object Observation"
+ 
+ examples:	all
+ 	cd examples && ($(MAKE) clean; PATH="$(PATH):$(bindir):.." LD_LIBRARY_PATH=./:$(libdir):$${LD_LIBRARY_PATH} PKG_CONFIG_PATH="$(PKG_CONFIG_PATH):$(DESTDIR)$(libdir)/pkgconfig:.." INCLUDE="-I$(includedir) -I$(SRCDIR) -I../ -I$(SRCDIR)/$(GENDIR)" SRCDIR=$(SRCDIR)/examples/ CFLAGS="$(CFLAGS)" LIBS="-L$(libdir) -L../" intl="$(intl)" $(MAKE))

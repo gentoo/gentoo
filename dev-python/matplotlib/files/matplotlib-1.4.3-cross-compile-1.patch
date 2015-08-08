@@ -1,0 +1,50 @@
+https://github.com/matplotlib/matplotlib/pull/4430
+
+From 08d26a80859023963bc2ffb41a0b6aed942685a9 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Fri, 15 May 2015 03:36:45 -0400
+Subject: [PATCH 1/3] setupext: respect $PKG_CONFIG
+
+When cross-compiling, it is common to set the PKG_CONFIG env var to a
+custom pkg-config that knows about the target.  Make sure we respect
+that just like the standard pkg-config tools suggest (pkg.m4).  If it
+isn't set, we use the same default as today -- "pkg-config".
+---
+ setupext.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/setupext.py b/setupext.py
+index 80b2a6c..29cddf9 100755
+--- a/setupext.py
++++ b/setupext.py
+@@ -253,7 +253,8 @@ class PkgConfig(object):
+             self.has_pkgconfig = False
+         else:
+             self.set_pkgconfig_path()
+-            status, output = getstatusoutput("pkg-config --help")
++            self.pkgconfig = os.environ.get('PKG_CONFIG', 'pkg-config')
++            status, output = getstatusoutput("%s --help" % self.pkgconfig)
+             self.has_pkgconfig = (status == 0)
+             if not self.has_pkgconfig:
+                 print("IMPORTANT WARNING:")
+@@ -286,7 +287,7 @@ class PkgConfig(object):
+ 
+         executable = alt_exec
+         if self.has_pkgconfig:
+-            executable = 'pkg-config {0}'.format(package)
++            executable = '%s %s' % (self.pkgconfig, package)
+ 
+         use_defaults = True
+ 
+@@ -330,7 +331,7 @@ class PkgConfig(object):
+             return None
+ 
+         status, output = getstatusoutput(
+-            "pkg-config %s --modversion" % (package))
++            '%s %s --modversion' % (self.pkgconfig, package))
+         if status == 0:
+             return output
+         return None
+-- 
+2.4.0
+

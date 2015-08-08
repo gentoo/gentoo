@@ -1,0 +1,12 @@
+--- libgit2-0.17.0/CMakeLists.txt
++++ libgit2-0.17.0/CMakeLists.txt
+@@ -70,8 +70,7 @@
+ 
+    # Precompiled headers
+ ELSE ()
+-	SET(CMAKE_C_FLAGS "-O2 -g -D_GNU_SOURCE -fvisibility=hidden -Wall -Wextra -Wno-missing-field-initializers -Wstrict-aliasing=2 -Wstrict-prototypes -Wmissing-prototypes ${CMAKE_C_FLAGS}")
+-	SET(CMAKE_C_FLAGS_DEBUG "-O0 -g")
++	SET(CMAKE_C_FLAGS "-D_GNU_SOURCE -fvisibility=hidden -Wall -Wextra -Wno-missing-field-initializers -Wstrict-aliasing=2 -Wstrict-prototypes -Wmissing-prototypes ${CMAKE_C_FLAGS}")
+ 	IF (NOT MINGW) # MinGW always does PIC and complains if we tell it to
+ 		SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+ 	ENDIF ()

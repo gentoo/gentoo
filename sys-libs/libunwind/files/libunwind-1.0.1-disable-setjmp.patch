@@ -1,0 +1,37 @@
+http://cvs.fedoraproject.org/viewvc/rpms/libunwind/devel/libunwind-disable-setjmp.patch?revision=1.1&view=markup
+http://bugs.gentoo.org/299344
+
+At least x86_64 version cannot work, src/setjmp/setjmp.c and
+src/setjmp/sigsetjmp.c are not even compiled, src/x86_64/longjmp.S does not
+match src/setjmp/setjmp.c + include/tdep-x86_64/jmpbuf.h .
+
+--- libunwind-1.0.1/src/Makefile.am
++++ libunwind-1.0.1/src/Makefile.am
+@@ -9,6 +9,3 @@
+ # libunwind-setjmp depends on libunwind-$(arch). Therefore must be added
+ # at the end.
+-if !REMOTE_ONLY
+-lib_LTLIBRARIES += libunwind-setjmp.la
+-endif
+ 
+ #
+--- libunwind-1.0.1/tests/Makefile.am
++++ libunwind-1.0.1/tests/Makefile.am
+@@ -27,7 +27,7 @@
+ 			Gia64-test-nat Lia64-test-nat			\
+ 			Gia64-test-rbs Lia64-test-rbs			\
+ 			Gia64-test-readonly Lia64-test-readonly		\
+-			ia64-test-setjmp ia64-test-sig
++			ia64-test-sig
+ else
+ if ARCH_PPC64
+ if USE_ALTIVEC
+@@ -44,7 +44,7 @@
+ 			Gtest-dyn1 Ltest-dyn1				 \
+ 			Gtest-trace Ltest-trace				 \
+ 			test-async-sig test-flush-cache test-init-remote \
+-			test-mem test-setjmp test-ptrace		 \
++			test-mem test-ptrace		 \
+ 			Ltest-nomalloc Ltest-nocalloc rs-race
+  noinst_PROGRAMS_cdep = forker mapper test-ptrace-misc			 \
+ 			Gperf-simple Lperf-simple

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>lxqt</herd>
+  <maintainer>
+    <email>jauhien@gentoo.org</email>
+    <name>Jauhien Piatlicki</name>
+  </maintainer>
+  <use>
+    <flag name="clock">Build clock plugin</flag>
+    <flag name="colorpicker">Build colorpicker plugin</flag>
+    <flag name="cpuload">Build cpuload plugin</flag>
+    <flag name="desktopswitch">Build desktopswitch plugin</flag>
+    <flag name="dom">Build dom plugin</flag>
+    <flag name="kbindicator">Build kbindicator plugin</flag>
+    <flag name="mainmenu">Build mainmenu plugin</flag>
+    <flag name="mount">Build mount plugin</flag>
+    <flag name="networkmonitor">Build networkmonitor plugin</flag>
+    <flag name="quicklaunch">Build quicklaunch plugin</flag>
+    <flag name="screensaver">Build screensaver plugin</flag>
+    <flag name="sensors">Build sensors plugin</flag>
+    <flag name="showdesktop">Build showdesktop plugin</flag>
+    <flag name="sysstat">Build sysstat plugin</flag>
+    <flag name="taskbar">Build taskbar plugin</flag>
+    <flag name="teatime">Build teatime plugin</flag>
+    <flag name="tray">Build tray plugin</flag>
+    <flag name="volume">Build volume plugin</flag>
+    <flag name="worldclock">Build worldclock plugin</flag>
+  </use>
+</pkgmetadata>

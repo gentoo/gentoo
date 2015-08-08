@@ -1,0 +1,16 @@
+ converter/other/Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/converter/other/Makefile b/converter/other/Makefile
+index 1417cd3..c178101 100644
+--- a/converter/other/Makefile
++++ b/converter/other/Makefile
+@@ -167,7 +167,7 @@ pngtopam: %: %.o pngx.o $(NETPBMLIB) $(LIBOPT)
+ pnmtopng: %: %.o pngx.o pngtxt.o $(NETPBMLIB) $(LIBOPT)
+ 	$(LD) -o $@ $@.o pngx.o pngtxt.o \
+ 	  $(shell $(LIBOPT) $(NETPBMLIB)) \
+-	  $(PNGLIB_LIBOPTS) $(MATHLIB) $(LDFLAGS) $(LDLIBS) $(RPATH) $(LADD)
++	  $(PNGLIB_LIBOPTS) $(MATHLIB) $(LDFLAGS) $(LDLIBS) $(RPATH) $(LADD) -lz
+ 
+ pamrgbatopng: %: %.o $(NETPBMLIB) $(LIBOPT)
+ 	$(LD) -o $@ $@.o \

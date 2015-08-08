@@ -1,0 +1,28 @@
+diff -Naur vdk-2.4.1/vdk/vdkcomboentry.h vdk-2.4.1-ok/vdk/vdkcomboentry.h
+--- vdk-2.4.1/vdk/vdkcomboentry.h	2004-09-10 08:14:48.000000000 +0200
++++ vdk-2.4.1-ok/vdk/vdkcomboentry.h	2006-05-30 11:39:18.000000000 +0200
+@@ -51,8 +51,8 @@
+ class VDKComboEntry: public VDKObject
+ {
+  protected:
+-  static int VDKComboEntry::FocusOutEvent(GtkWidget *,  GdkEventFocus*, gpointer wid);
+-  static int VDKComboEntry::FocusInEvent(GtkWidget *, GdkEventFocus*, gpointer wid);
++  static int FocusOutEvent(GtkWidget *,  GdkEventFocus*, gpointer wid);
++  static int FocusInEvent(GtkWidget *, GdkEventFocus*, gpointer wid);
+   VDKObjectSignal s_activated, s_changed, s_selected;
+  public:
+   /*!
+diff -Naur vdk-2.4.1/vdk/vdkfilechooser.h vdk-2.4.1-ok/vdk/vdkfilechooser.h
+--- vdk-2.4.1/vdk/vdkfilechooser.h	2004-09-10 08:15:10.000000000 +0200
++++ vdk-2.4.1-ok/vdk/vdkfilechooser.h	2006-05-30 11:39:04.000000000 +0200
+@@ -106,8 +106,8 @@
+   DECLARE_EVENT_LIST(VDKFileChooser);
+   // declares two static used to initialize
+   // form display type and initial position
+-  static GtkWindowType VDKFileChooser::DisplayType;
+-  static GtkWindowPosition VDKFileChooser::InitialPosition;
++  static GtkWindowType DisplayType;
++  static GtkWindowPosition InitialPosition;
+   //
+     /*! 
+    * Add a filter based on a pattern

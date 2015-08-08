@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=Ked Password Manager
+GenericName=Password Manager
+GenericName[ca]=Gestor de contrasenyes
+GenericName[es]=Gestor de contraseñas
+Comment=Manage passwords and related information
+Comment[ca]=Gestioneu contrasenyes i informació relacionada
+Comment[es]=Gestiona contraseñas e información relacionada
+Exec=kedpm
+Icon=/usr/share/kedpm/glade/logo.png
+Terminal=false
+Type=Application
+Categories=GNOME;Utility;
+StartupNotify=true
+MimeType=application/xml;

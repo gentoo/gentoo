@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-mathematics</herd>
+<herd>cpp</herd>
+<longdescription lang="en">
+  NTL is a high-performance, portable C++ library providing data
+  structures and algorithms for manipulating signed, arbitrary length
+  integers, and for vectors, matrices, and polynomials over the
+  integers and over finite fields.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,63 @@
+--- a/tests/client_0_8/test_serialization.py	2011-07-18 00:11:48.000000000 -0400
++++ b/tests/client_0_8/test_serialization.py	2012-03-02 16:54:35.000000000 -0500
+@@ -32,6 +32,18 @@
+     # Python 2.5 and lower
+     bytes = str
+ 
++#Unicode Strings for py3 tests
++uni_strings = {
++    'u0100' : '\u0100',
++    'hello' : 'hello',
++    'a' : 'a',
++    'another' : 'And something in unicode'
++}
++
++if hasattr(str, 'decode'):
++    for wk, wv in uni_strings.iteritems():
++        uni_strings[wk] = wv.decode("utf-8")
++
+ import settings
+ 
+ from amqplib.client_0_8.serialization import AMQPReader, AMQPWriter, GenericContent
+@@ -232,12 +244,12 @@
+ 
+     def test_shortstr_unicode(self):
+         w = AMQPWriter()
+-        w.write_shortstr(u'hello')
++        w.write_shortstr(uni_strings['hello'])
+         s = w.getvalue()
+         self.assertEqualBinary(s, '\x05hello')
+ 
+         r = AMQPReader(s)
+-        self.assertEqual(r.read_shortstr(), u'hello')
++        self.assertEqual(r.read_shortstr(),uni_strings['hello'])
+ 
+     def test_long_shortstr(self):
+         w = AMQPWriter()
+@@ -245,7 +257,7 @@
+ 
+     def test_long_shortstr_unicode(self):
+         w = AMQPWriter()
+-        self.assertRaises(ValueError, w.write_shortstr, u'\u0100' * 128)
++        self.assertRaises(ValueError, w.write_shortstr, uni_strings['u0100'] * 128)
+ 
+ 
+     #
+@@ -273,7 +285,7 @@
+         self.assertEqual(r.read_longstr(), str(val))
+ 
+     def test_longstr_unicode(self):
+-        val = u'a' * 512
++        val = uni_strings['a'] * 512
+         w = AMQPWriter()
+         w.write_longstr(val)
+         s = w.getvalue()
+@@ -324,7 +336,7 @@
+             'foo': 7,
+             'bar': Decimal('123345.1234'),
+             'baz': 'this is some random string I typed',
+-            'ubaz': u'And something in unicode',
++            'ubaz': uni_strings['another'],
+             'dday_aniv': datetime(1994, 6, 6),
+             'more': {
+                         'abc': -123,

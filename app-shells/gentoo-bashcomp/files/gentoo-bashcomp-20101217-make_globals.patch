@@ -1,0 +1,11 @@
+--- a/gentoo
++++ b/gentoo
+@@ -21,7 +21,7 @@ have()
+ _portdir()
+ {
+     (
+-    source @GENTOO_PORTAGE_EPREFIX@/etc/make.globals 2>/dev/null
++    source @GENTOO_PORTAGE_EPREFIX@/usr/share/portage/config/make.globals 2>/dev/null
+     source @GENTOO_PORTAGE_EPREFIX@/etc/make.conf 2>/dev/null
+ 
+     echo ${PORTDIR}

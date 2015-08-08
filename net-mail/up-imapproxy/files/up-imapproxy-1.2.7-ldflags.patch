@@ -1,0 +1,19 @@
+commit 98876519b581c0427b81d772f56b25ad3d0121df
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Sun Jun 5 19:43:41 2011 +0300
+
+    respect LDFLAGS
+
+diff --git a/Makefile.in b/Makefile.in
+index 1b235b8..8ac1e4f 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -70,7 +70,7 @@ $(XYD_BIN): $(XYD_OBJ)
+ 	$(CC) -o $@ $(XYD_OBJ) $(LDFLAGS) $(XYD_LIB)
+ 
+ $(TAT_BIN): $(TAT_OBJ)
+-	$(CC) -o $@ $(TAT_OBJ) $(TAT_LIB)
++	$(CC) -o $@ $(TAT_OBJ) $(LDFLAGS) $(TAT_LIB)
+ 
+ clean:
+ 	rm -f ./src/core  $(XYD_OBJ) $(TAT_OBJ) $(XYD_BIN) $(TAT_BIN)

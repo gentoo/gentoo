@@ -1,0 +1,31 @@
+diff -up quazip-0.5.1/qztest/testquagzipfile.cpp.zl quazip-0.5.1/qztest/testquagzipfile.cpp
+--- quazip-0.5.1/qztest/testquagzipfile.cpp.zl	2012-09-05 17:24:35.000000000 +0200
++++ quazip-0.5.1/qztest/testquagzipfile.cpp	2013-03-03 14:27:05.168659773 +0100
+@@ -8,9 +8,9 @@ void TestQuaGzipFile::read()
+ {
+     QDir curDir;
+     curDir.mkpath("tmp");
+-    voidp gzFile = gzopen("tmp/test.gz", "wb");
+-    gzwrite(gzFile, "test", 4);
+-    gzclose(gzFile);
++    gzFile File = gzopen("tmp/test.gz", "wb");
++    gzwrite(File, "test", 4);
++    gzclose(File);
+     QuaGzipFile testFile("tmp/test.gz");
+     QVERIFY(testFile.open(QIODevice::ReadOnly));
+     char buf[5];
+@@ -32,11 +32,11 @@ void TestQuaGzipFile::write()
+     QCOMPARE(testFile.write("test", 4), static_cast<qint64>(4));
+     testFile.close();
+     QVERIFY(!testFile.isOpen());
+-    voidp gzFile = gzopen("tmp/test.gz", "rb");
++    gzFile File = gzopen("tmp/test.gz", "rb");
+     char buf[5];
+     buf[4] = '\0';
+-    QCOMPARE(gzread(gzFile, buf, 5), 4);
+-    gzclose(gzFile);
++    QCOMPARE(gzread(File, buf, 5), 4);
++    gzclose(File);
+     QCOMPARE(static_cast<const char*>(buf), "test");
+     curDir.remove("tmp/test.gz");
+     curDir.rmdir("tmp");

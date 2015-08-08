@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Proc-Background</remote-id>
+    <remote-id type="cpan-module">Proc::Background</remote-id>
+    <remote-id type="cpan-module">Proc::Background::Unix</remote-id>
+    <remote-id type="cpan-module">Proc::Background::Win32</remote-id>
+  </upstream>
+</pkgmetadata>

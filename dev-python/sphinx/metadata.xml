@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">Sphinx is a tool to create documentation for Python projects (or
+    other documents consisting of multiple reStructuredText sources).</longdescription>
+  <upstream>
+    <remote-id type="pypi">Sphinx</remote-id>
+  </upstream>
+</pkgmetadata>

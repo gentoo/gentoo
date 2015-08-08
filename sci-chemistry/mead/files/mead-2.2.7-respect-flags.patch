@@ -1,0 +1,74 @@
+diff --git a/apps/Makefile.common.in b/apps/Makefile.common.in
+index 15c61ae..f15d71d 100644
+--- a/apps/Makefile.common.in
++++ b/apps/Makefile.common.in
+@@ -36,10 +36,10 @@ REGEX_CPP	= @REGEX_CPP@
+ LIBS		= @LIBS@ -lm
+ 
+ ALL_CPPFLAGS	= -I. $(LOCALINCS) $(CPPFLAGS) $(REGEX_CPP) $(CXX_DEFS)
+-ALL_CXXFLAGS	= $(CXX_OPTFLAGS) $(CXX_DEBUGFLAGS)
+-ALL_CFLAGS	= $(CC_DEBUGFLAGS) $(CC_OPTFLAGS)
++ALL_CXXFLAGS	= @CXXFLAGS@
++ALL_CFLAGS	= @CFLAGS@
+ 
+-CXXLINK = $(CXX) $(ALL_CPPFLAGS) $(CXX_DEBUGFLAGS) $(CXX_OPTFLAGS) \
++CXXLINK = $(CXX) $(ALL_CPPFLAGS) @CXXFLAGS@ \
+            $(LDFLAGS)
+ 
+ .SUFFIXES: .cc .o
+diff --git a/apps/libmso/Makefile.in b/apps/libmso/Makefile.in
+index 249c25b..9d23665 100644
+--- a/apps/libmso/Makefile.in
++++ b/apps/libmso/Makefile.in
+@@ -35,8 +35,8 @@ INSTALL		= @INSTALL@
+ INSTALL_PROGRAM	= @INSTALL_PROGRAM@
+ 
+ ALL_CPPFLAGS	= -I. $(LOCALINCS) $(CPPFLAGS) $(REGEX_CPP) $(CXX_DEFS)
+-ALL_CXXFLAGS	= $(CXX_OPTFLAGS) $(CXX_DEBUGFLAGS)
+-ALL_CFLAGS	= $(CC_DEBUGFLAGS) $(CC_OPTFLAGS)
++ALL_CXXFLAGS	= @CXXFLAGS@
++ALL_CFLAGS	= @CFLAGS@
+ 
+ .SUFFIXES:
+ .SUFFIXES: .cc .o
+diff --git a/apps/redti/Makefile.in b/apps/redti/Makefile.in
+index c4aa5ca..9561bf3 100644
+--- a/apps/redti/Makefile.in
++++ b/apps/redti/Makefile.in
+@@ -21,7 +21,7 @@ CFLAGS	= @CFLAGS@
+ redti_objs = redti.o rfixpro.o rfixprosee.o pfix.o tc.o
+ 
+ redti : $(redti_objs)
+-	$(CC) $(CFLAGS) $(redti_objs) -lm -o redti
++	$(CC) $(CFLAGS) $(LDFLAGS) $(redti_objs) -lm -o redti
+ 
+ appname = redti
+ include ../Makefile.common
+diff --git a/libmead/Makefile.in b/libmead/Makefile.in
+index 3d4d5f0..8b4a4ac 100644
+--- a/libmead/Makefile.in
++++ b/libmead/Makefile.in
+@@ -99,8 +99,8 @@ PYTHONINC	= @PYTHONINC@
+ INCLUDES	= -I$(top_srcdir)
+ 
+ ALL_CPPFLAGS	= $(INCLUDES) $(CPPFLAGS) $(REGEX_CPP) $(CXX_DEFS)
+-ALL_CXXFLAGS	= $(CXX_OPTFLAGS) $(CXX_DEBUGFLAGS) $(CXX_SHAREDFLAGS)
+-ALL_CFLAGS	= $(CC_DEBUGFLAGS) $(CC_OPTFLAGS)
++ALL_CXXFLAGS	= @CXXFLAGS@
++ALL_CFLAGS	= @CFLAGS@
+ 
+ 
+ 
+diff --git a/swig/Makefile.in b/swig/Makefile.in
+index 81b3b4e..8410307 100644
+--- a/swig/Makefile.in
++++ b/swig/Makefile.in
+@@ -58,7 +58,7 @@ CPP_FLAGS	= -DSWIG @CPPFLAGS@
+ CXX_FLAGS	= @CXX_NOOPTFLAGS@ @CXX_DEBUGFLAGS@ @CXX_SHAREDFLAGS@
+ CXX_DYNLIB_FLAGS = @CXX_DYNLIB_FLAGS@
+ 
+-ALL_CXXFLAGS	= $(CPP_FLAGS) $(CXX_FLAGS)
++ALL_CXXFLAGS	= $(CPP_FLAGS) @CXXFLAGS@ @CXX_SHAREDFLAGS@
+ 
+ MEADINC		= -I$(top_srcdir) -I$(srcdir)
+ MEADLIBS	= -L../libmead -lmead

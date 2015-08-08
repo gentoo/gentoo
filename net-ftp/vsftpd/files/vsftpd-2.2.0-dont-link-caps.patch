@@ -1,0 +1,21 @@
+diff -ur vsftpd-2.2.0.orig/vsf_findlibs.sh vsftpd-2.2.0/vsf_findlibs.sh
+--- vsftpd-2.2.0.orig/vsf_findlibs.sh	2009-08-23 22:15:39.000000000 -0700
++++ vsftpd-2.2.0/vsf_findlibs.sh	2009-08-23 22:16:31.000000000 -0700
+@@ -44,17 +44,6 @@
+ # For older HP-UX...
+ locate_library /usr/lib/libsec.sl && echo "-lsec";
+ 
+-# Look for libcap (capabilities)
+-if locate_library /lib/libcap.so.1; then
+-  echo "/lib/libcap.so.1";
+-elif locate_library /lib/libcap.so.2; then
+-  echo "/lib/libcap.so.2";
+-else
+-  locate_library /usr/lib/libcap.so && echo "-lcap";
+-  locate_library /lib/libcap.so && echo "-lcap";
+-  locate_library /lib64/libcap.so && echo "-lcap";
+-fi
+-
+ # Solaris needs this for nanosleep()..
+ locate_library /lib/libposix4.so && echo "-lposix4";
+ locate_library /usr/lib/libposix4.so && echo "-lposix4";

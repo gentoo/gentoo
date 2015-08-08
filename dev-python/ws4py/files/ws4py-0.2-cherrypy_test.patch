@@ -1,0 +1,24 @@
+db23aff2ea commit 4ec8638c268ecdb710d97176a55cc5b818aa1a18
+https://github.com/Lawouach/WebSocket-for-Python/issues/72
+diff -ur ws4py-0.2.4.orig/test/test_cherrypy.py ws4py-0.2.4/test/test_cherrypy.py
+--- test/test_cherrypy.py	2012-12-14 03:35:48.000000000 +0800
++++ test/test_cherrypy.py	2013-01-11 16:56:37.555534011 +0800
+@@ -4,6 +4,7 @@
+ import cherrypy
+ from ws4py.server.cherrypyserver import WebSocketPlugin, WebSocketTool
+ from ws4py.websocket import EchoWebSocket
++from ws4py.compat import py3k
+ 
+ class FakeSocket(object):
+     def settimeout(self, timeout):
+@@ -65,7 +66,10 @@
+         h = EchoWebSocket(s, [], [])
+         cherrypy.engine.publish('handle-websocket', h, ('127.0.0.1', 0))
+         self.assertEquals(len(cherrypy.engine.websocket.pool), 1)
+-        k = cherrypy.engine.websocket.pool.keys()[0]
++        if py3k:
++            k = list(cherrypy.engine.websocket.pool.keys())[0]
++        else:
++            k = cherrypy.engine.websocket.pool.keys()[0]
+         self.assertTrue(k is h)
+         self.assertEquals(cherrypy.engine.websocket.pool[k][1], ('127.0.0.1', 0))

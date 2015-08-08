@@ -1,0 +1,15 @@
+--- build.xml.orig	2006-04-23 03:57:27.000000000 +0200
++++ build.xml	2006-10-01 21:18:20.000000000 +0200
+@@ -223,10 +223,12 @@
+         </section>
+       </manifest>
+     </jar>
++	<!--
+     <copy file="${wsdl4j.jar}" toDir="${build.lib}"/>
+     <copy file="${commons-logging.jar}" toDir="${build.lib}"/>
+     <copy file="${commons-discovery.jar}" toDir="${build.lib}"/>
+     <copy file="${log4j-core.jar}" toDir="${build.lib}"/>
++	-->
+     <copy file="${src.dir}/log4j.properties"
+           toDir="${build.lib}"/>
+ 

@@ -1,0 +1,32 @@
+From 1022a4f21ef2c4c7dc671261aa24e33d8e1223e0 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 22 Jun 2012 22:38:21 +0200
+Subject: [PATCH] Make sure that files example.{c,h} are matched once
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Otherwise "make install" dies with this error:
+
+/usr/bin/install: will not overwrite just-created ‘[..]/example.c’ with ‘example.c’
+/usr/bin/install: will not overwrite just-created ‘[..]/example.h’ with ‘example.h’
+make[2]: *** [install-exemplesDATA] Error 1
+---
+ libtest/Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libtest/Makefile.am b/libtest/Makefile.am
+index 7e90ba0..4be2158 100644
+--- a/libtest/Makefile.am
++++ b/libtest/Makefile.am
+@@ -1,6 +1,6 @@
+ 
+ exemplesdir = $(datadir)/httrack/libtest
+-exemples_DATA = example.* *.c *.h *.txt
++exemples_DATA = *.c *.h *.txt
+ EXTRA_DIST = $(exemples_DATA)
+ 
+ INCLUDES = \
+-- 
+1.7.10.2
+

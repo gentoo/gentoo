@@ -1,0 +1,22 @@
+--- cddl/lib/libzfs/Makefile.old	2011-11-04 10:27:30.000000000 +0000
++++ cddl/lib/libzfs/Makefile	2011-11-04 10:28:59.000000000 +0000
+@@ -7,7 +7,7 @@
+ 
+ LIB=	zfs
+ DPADD=	${LIBMD} ${LIBPTHREAD} ${LIBUMEM} ${LIBUTIL}
+-LDADD=	-lmd -lpthread -lumem -lutil
++LDADD=	-lmd -lpthread -lumem -lutil -luutil -lnvpair -lm -lgeom
+ 
+ SRCS=	deviceid.c \
+ 	fsshare.c \
+--- cddl/lib/libzpool/Makefile.old	2011-11-04 18:22:28.000000000 +0000
++++ cddl/lib/libzpool/Makefile	2011-11-04 18:24:01.000000000 +0000
+@@ -57,7 +57,7 @@
+ CFLAGS+=	-I${.CURDIR}/../../../lib/libthr/arch/${MACHINE_CPUARCH}/include
+ 
+ DPADD=		${LIBMD} ${LIBPTHREAD} ${LIBZ}
+-LDADD=		-lmd -lpthread -lz
++LDADD=		-lmd -lpthread -lz -lumem -lnvpair -lavl
+ 
+ # atomic.S doesn't like profiling.
+ NO_PROFILE=

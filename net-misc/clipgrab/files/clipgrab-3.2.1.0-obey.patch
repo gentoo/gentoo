@@ -1,0 +1,85 @@
+--- clipgrab-3.2.1.0/clipgrab.cpp
++++ clipgrab-3.2.1.0/clipgrab.cpp
+@@ -128,71 +128,10 @@
+         }
+     }
+ 
+-    activateProxySettings();
+-    QNetworkAccessManager* obeyatorManager = new QNetworkAccessManager;
+-    QNetworkRequest obeyatorRequest;
+-    QString sys = "x11";
+-
+-    #if defined Q_WS_WIN
+-        sys = "win";
+-    #endif
+-    #if defined Q_WS_MAC
+-        sys = "mac";
+-    #endif
+-
+-    QDateTime startedDateTime = QDateTime::currentDateTime();
+-    if (settings.value("firstStarted", 0).toInt() == 0)
+-    {
+-        settings.setValue("firstStarted", startedDateTime.toTime_t());
+-    }
+-    if (settings.value("firstStarted-" + version, 0) == 0)
+-    {
+-        settings.setValue("firstStarted-" + version, startedDateTime.toTime_t());
+-    }
+-    obeyatorRequest.setUrl("http://clipgrab.de/or.php?version=" + version +"&lang="+QLocale::system().name().split("_")[0]+"&sys="+sys+"&current=" + settings.value("firstStarted-" + version, startedDateTime.toTime_t()).toString()+"&first="+settings.value("firstStarted", startedDateTime.toTime_t()).toString());
+-    obeyatorManager->get(obeyatorRequest);
+-    connect(obeyatorManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(obey(QNetworkReply*)));
+-
+     connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(clipboardChanged()));
+ 
+ }
+ 
+-void ClipGrab::obey(QNetworkReply* reply)
+-{
+-    if (reply->bytesAvailable())
+-    {
+-        QStringList commands = QString(reply->readAll()).split("\n");
+-        qDebug() << commands;
+-        for (int i = 0; i < commands.size(); ++i)
+-        {
+-            QStringList command = commands.at(i).split("|");
+-            if (!command.isEmpty())
+-            {
+-                if (command.at(0) == "url")
+-                {
+-                    if (command.size() == 2 || (command.size() == 3 && settings.value(command.at(2)).toString() != "true"))
+-                    {
+-                        if  (!(command.at(1).contains("update")  && this->settings.value("DisableUpdateNotifications", false) == true))
+-                        {
+-                            QDesktopServices::openUrl(QUrl(command.at(1)));
+-                        }
+-                        if (command.size() == 3)
+-                        {
+-                            settings.setValue(command.at(2), "true");
+-                        }
+-                    }
+-                }
+-                else if (command.at(0) == "set" && command.size() == 3)
+-                {
+-                    settings.setValue(command.at(1), command.at(2));
+-                }
+-            }
+-        }
+-    }
+-    else {qDebug() << "nothing";
+-    }
+-}
+-
+ void ClipGrab::determinePortal(QString url)
+ {
+ 
+diff -ru clipgrab-3.2.1.0.orig/clipgrab.h clipgrab-3.2.1.0/clipgrab.h
+--- clipgrab-3.2.1.0.orig/clipgrab.h	2013-06-20 17:01:28.000000000 +0200
++++ clipgrab-3.2.1.0/clipgrab.h	2013-06-23 17:57:14.187000000 +0200
+@@ -92,7 +92,6 @@
+         void errorHandler(QString);
+         void errorHandler(QString, video*);
+         void addDownload(video* clip);
+-        void obey(QNetworkReply* reply);
+         void cancelDownload(int item);
+         void clipboardChanged();
+         void pauseDownload(int);

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-chemistry</herd>
+  <longdescription>
+OpenBabel is a chemical toolbox designed to speak the many languages of
+chemical data. It's an open, collaborative project allowing anyone to
+search, convert, analyze, or store data from molecular modeling, chemistry,
+solid-state materials, biochemistry, or related areas. This package enables
+to access OpenBabel library from Python programs.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">openbabel</remote-id>
+  </upstream>
+</pkgmetadata>

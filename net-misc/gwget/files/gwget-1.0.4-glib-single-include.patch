@@ -1,0 +1,13 @@
+Index: gwget-1.0.4/src/gwget-application.h
+===================================================================
+--- gwget-1.0.4.orig/src/gwget-application.h
++++ gwget-1.0.4/src/gwget-application.h
+@@ -18,7 +18,7 @@
+ #ifndef GWGET_APPLICATION_H
+ #define GWGET_APPLICATION_H
+ 
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <glib-object.h>
+ 
+ G_BEGIN_DECLS

@@ -1,0 +1,11 @@
+--- a/openslp-1.2.1/slpd/slpd_socket.c	2010-09-11 16:31:47.325871093 -0500
++++ b/openslp-1.2.1/slpd/slpd_socket.c	2010-09-11 16:31:55.706851189 -0500
+@@ -183,7 +183,7 @@
+     memcpy(&mreq.imr_multiaddr, maddr, sizeof(struct in_addr));
+ 
+     /* drop for the specified interface */
+-    memcpy(&mreq.imr_interface,addr,sizeof(addr));
++    memcpy(&mreq.imr_interface,addr,sizeof(struct in_addr));
+ 
+     return setsockopt(sockfd, IPPROTO_IP, IP_DROP_MEMBERSHIP, (char*)&mreq,sizeof(mreq));               
+ }

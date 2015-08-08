@@ -1,0 +1,144 @@
+From c93a8b8b54afe33e5ecf9870723543cb4058fa94 Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Tue, 09 Apr 2013 03:46:30 +0000
+Subject: Obtain fonts data via FT_Face instead of opening a file directly
+
+---
+diff --git a/src/fcfreetype.c b/src/fcfreetype.c
+index 8a037c0..1eecfdb 100644
+--- a/src/fcfreetype.c
++++ b/src/fcfreetype.c
+@@ -1662,7 +1662,7 @@ FcFreeTypeQueryFace (const FT_Face  face,
+     if (!FcPatternAddBool (pat, FC_DECORATIVE, decorative))
+ 	goto bail1;
+ 
+-    hashstr = FcHashGetSHA256DigestFromFile (file);
++    hashstr = FcHashGetSHA256DigestFromFace (face);
+     if (!hashstr)
+ 	goto bail1;
+     if (!FcPatternAddString (pat, FC_HASH, hashstr))
+diff --git a/src/fchash.c b/src/fchash.c
+index 4ea5f37..043d94b 100644
+--- a/src/fchash.c
++++ b/src/fchash.c
+@@ -29,6 +29,9 @@
+ #include "fcint.h"
+ #include <stdio.h>
+ #include <string.h>
++#include <ft2build.h>
++#include FT_TRUETYPE_TABLES_H
++#include FT_TRUETYPE_TAGS_H
+ 
+ #define ROTRN(w, v, n)	((((FcChar32)v) >> n) | (((FcChar32)v) << (w - n)))
+ #define ROTR32(v, n)	ROTRN(32, v, n)
+@@ -204,41 +207,50 @@ FcHashGetSHA256Digest (const FcChar8 *input_strings,
+ }
+ 
+ FcChar8 *
+-FcHashGetSHA256DigestFromFile (const FcChar8 *filename)
++FcHashGetSHA256DigestFromFace (const FT_Face face)
+ {
+-    FILE *fp = fopen ((const char *)filename, "rb");
+-    char ibuf[64];
++    char ibuf[64], *buf = NULL;
+     FcChar32 *ret;
+-    size_t len;
+-    struct stat st;
++    FT_Error err;
++    FT_ULong len = 0, alen, i = 0;
+ 
+-    if (!fp)
++    err = FT_Load_Sfnt_Table (face, 0, 0, NULL, &len);
++    if (err != FT_Err_Ok)
+ 	return NULL;
+-
+-    if (FcStat (filename, &st))
++    alen = (len + 63) & ~63;
++    buf = malloc (alen);
++    if (!buf)
++	return NULL;
++    err = FT_Load_Sfnt_Table (face, 0, 0, (FT_Byte *)buf, &len);
++    if (err != FT_Err_Ok)
+ 	goto bail0;
++    memset (&buf[len], 0, alen - len);
+ 
+     ret = FcHashInitSHA256Digest ();
+     if (!ret)
+ 	goto bail0;
+ 
+-    while (!feof (fp))
++    while (i <= len)
+     {
+-	if ((len = fread (ibuf, sizeof (char), 64, fp)) < 64)
++	if ((len - i) < 64)
+ 	{
+ 	    long v;
++	    int n;
+ 
+ 	    /* add a padding */
+-	    memset (&ibuf[len], 0, 64 - len);
+-	    ibuf[len] = 0x80;
+-	    if ((64 - len) < 9)
++	    n = len - i;
++	    if (n > 0)
++		memcpy (ibuf, &buf[i], n);
++	    memset (&ibuf[n], 0, 64 - n);
++	    ibuf[n] = 0x80;
++	    if ((64 - n) < 9)
+ 	    {
+ 		/* process a block once */
+ 		FcHashComputeSHA256Digest (ret, ibuf);
+ 		memset (ibuf, 0, 64);
+ 	    }
+ 	    /* set input size at the end */
+-	    v = (long)st.st_size * 8;
++	    v = len * 8;
+ 	    ibuf[63 - 0] =  v        & 0xff;
+ 	    ibuf[63 - 1] = (v >>  8) & 0xff;
+ 	    ibuf[63 - 2] = (v >> 16) & 0xff;
+@@ -252,14 +264,18 @@ FcHashGetSHA256DigestFromFile (const FcChar8 *filename)
+ 	}
+ 	else
+ 	{
+-	    FcHashComputeSHA256Digest (ret, ibuf);
++	    FcHashComputeSHA256Digest (ret, &buf[i]);
+ 	}
++	i += 64;
+     }
+-    fclose (fp);
++    if (buf)
++	free (buf);
+ 
+     return FcHashSHA256ToString (ret);
+ 
+ bail0:
+-    fclose (fp);
++    if (buf)
++	free (buf);
++
+     return NULL;
+ }
+diff --git a/src/fcint.h b/src/fcint.h
+index c45075e..703b983 100644
+--- a/src/fcint.h
++++ b/src/fcint.h
+@@ -47,6 +47,8 @@
+ #include "fcdeprecate.h"
+ #include "fcmutex.h"
+ #include "fcatomic.h"
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ 
+ #ifndef FC_CONFIG_PATH
+ #define FC_CONFIG_PATH "fonts.conf"
+@@ -819,7 +821,7 @@ FcPrivate FcChar8 *
+ FcHashGetSHA256Digest (const FcChar8 *input_strings,
+ 		       size_t         len);
+ FcPrivate FcChar8 *
+-FcHashGetSHA256DigestFromFile (const FcChar8 *filename);
++FcHashGetSHA256DigestFromFace (const FT_Face face);
+ 
+ /* fcinit.c */
+ FcPrivate FcConfig *
+--
+cgit v0.9.0.2-2-gbebe

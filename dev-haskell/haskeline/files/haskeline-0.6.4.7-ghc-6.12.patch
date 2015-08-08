@@ -1,0 +1,22 @@
+Workarounds build failure for ghc-6.12
+
+[18 of 27] Compiling System.Console.Haskeline.Backend.Terminfo ( System/Console/Haskeline/Backend/Terminfo.hs, dist/build/System/Console/Haskeline/Backend/Terminfo.o )
+
+System/Console/Haskeline/Backend/Terminfo.hs:200:9:
+    Inferred type is less polymorphic than expected
+          Quantified type variable `m' escapes
+              In the expression: Writer.tell
+                  In the definition of `output': output = Writer.tell
+diff --git a/System/Console/Haskeline/Backend/Terminfo.hs b/System/Console/Haskeline/Backend/Terminfo.hs
+index 1bd0373..d01e9ba 100644
+--- a/System/Console/Haskeline/Backend/Terminfo.hs
++++ b/System/Console/Haskeline/Backend/Terminfo.hs
+@@ -197,7 +197,7 @@ runActionT m = do
+     return x
+ 
+ output :: TermAction -> ActionM ()
+-output = Writer.tell
++output = \x -> Writer.tell x
+ 
+ outputText :: String -> ActionM ()
+ outputText str = posixEncode str >>= output . const . termText . B.unpack

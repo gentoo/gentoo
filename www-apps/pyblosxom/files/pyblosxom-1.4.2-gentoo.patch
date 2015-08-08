@@ -1,0 +1,13 @@
+--- setup.py.orig	2007-12-18 11:13:36.439046250 +0100
++++ setup.py	2007-12-18 11:14:05.216844750 +0100
+@@ -73,9 +73,7 @@
+     # we want to move the web script files as well, so we sneak them
+     # in here.
+     pydf.append( [os.path.join('share', PVER, 'web'),
+-                  [os.path.normpath("web/pyblosxom.cgi"), 
+-                   os.path.normpath("web/pyblosxom.tac"), 
+-                   os.path.normpath("web/config.py")]])
++                  [os.path.normpath("web/pyblosxom.tac")]])
+ 
+ else:
+     # we don't know what platform they have, so we print out

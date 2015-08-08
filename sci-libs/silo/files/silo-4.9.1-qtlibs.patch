@@ -1,0 +1,66 @@
+diff -ru silo-4.9.1-old/configure silo-4.9.1-new/configure
+--- silo-4.9.1-old/configure	2014-01-18 23:19:15.755030306 +0100
++++ silo-4.9.1-new/configure	2014-01-18 23:20:52.595031159 +0100
+@@ -27503,7 +27503,7 @@
+         ax_qt_lib="`ls $ax_qt_lib_dir/libQt* | sed -n 1p |
+                      sed s@$ax_qt_lib_dir/lib@@ | sed s@[.].*@@`"
+       fi
+-      ax_qt_LIBS="-L$ax_qt_lib_dir -l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
++      ax_qt_LIBS="-L$ax_qt_lib_dir -l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lQtCore -lQtGui -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
+     else
+       # Use cached value or do search, starting with suggestions from
+       # the command line
+@@ -27577,7 +27577,7 @@
+       ax_qt_lib="`ls $ax_qt_lib_dir/libQt* | sed -n 1p |
+                    sed s@$ax_qt_lib_dir/lib@@ | sed s@[.].*@@`"
+     fi
+-    ax_qt_LIBS="-L$ax_qt_lib_dir -l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
++    ax_qt_LIBS="-L$ax_qt_lib_dir -l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lQtCore -lQtGui -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
+   else
+     # There is no valid definition for $QTDIR as Trolltech likes to see it
+     ax_qt_dir=
+@@ -27589,7 +27589,7 @@
+         ax_qt_lib="`ls $ax_qt_lib_dir/libQt* | sed -n 1p |
+                      sed s@$ax_qt_lib_dir/lib@@ | sed s@[.].*@@`"
+       fi
+-      ax_qt_LIBS="-L$ax_qt_lib_dir -l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
++      ax_qt_LIBS="-L$ax_qt_lib_dir -l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lQtCore -lQtGui -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
+     else
+       # Normally, when there is no traditional Trolltech installation,
+       # the library is installed in a place where the linker finds it
+@@ -27607,7 +27607,7 @@
+       # See if we find the library without any special options.
+       # Don't add top $LIBS permanently yet
+       ax_save_LIBS="$LIBS"
+-      LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
++      LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lQtCore -lQtGui -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
+       ax_qt_LIBS="$LIBS"
+       ax_save_CXXFLAGS="$CXXFLAGS"
+       CXXFLAGS="-I$ax_qt_include_dir -I$ax_qt_include_dir/Qt -I$ax_qt_include_dir/QtCore -I$ax_qt_include_dir/QtGui"
+@@ -27668,7 +27668,7 @@
+         # That did not work. Try the multi-threaded version
+         echo "Non-critical error, please neglect the above." >&5
+         ax_qt_lib=qt-mt
+-        LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
++        LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lQtCore -lQtGui -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
+         cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -27726,7 +27726,7 @@
+           # That did not work. Try the OpenGL version
+           echo "Non-critical error, please neglect the above." >&5
+           ax_qt_lib=qt-gl
+-          LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
++          LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lQtCore -lQtGui -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
+           cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -27809,7 +27809,7 @@
+               fi
+             done
+             # Try with that one
+-            LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
++            LIBS="-l$ax_qt_lib $X_PRE_LIBS $X_LIBS -lQtCore -lQtGui -lX11 -lXext -lXmu -lXt -lXi $X_EXTRA_LIBS"
+             cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF

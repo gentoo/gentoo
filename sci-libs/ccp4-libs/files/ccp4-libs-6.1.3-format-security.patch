@@ -1,0 +1,16 @@
+ lib/DiffractionImage/DiffractionImagePythonInterface.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/DiffractionImage/DiffractionImagePythonInterface.cpp b/lib/DiffractionImage/DiffractionImagePythonInterface.cpp
+index f729fc5..4c24e82 100755
+--- a/lib/DiffractionImage/DiffractionImagePythonInterface.cpp
++++ b/lib/DiffractionImage/DiffractionImagePythonInterface.cpp
+@@ -867,7 +867,7 @@ SWIG_Python_AddErrorMsg(const char* mesg)
+     Py_DECREF(old_str);
+     Py_DECREF(value);
+   } else {
+-    PyErr_Format(PyExc_RuntimeError, mesg);
++    PyErr_Format(PyExc_RuntimeError, "%s", mesg);
+   }
+ }
+ 

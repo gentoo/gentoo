@@ -1,0 +1,173 @@
+From 0217487c4ba80cb8392450442a71d5f86e2e9ed3 Mon Sep 17 00:00:00 2001
+From: Thomas Eschenbacher <Thomas.Eschenbacher@gmx.de>
+Date: Sun, 20 Jul 2014 08:12:36 +0200
+Subject: [PATCH] fixed missing entities in french online help (svn -> git)
+
+---
+ doc/help_fr.po | 51 ++++++++++++++++++++++++++-------------------------
+ 1 file changed, 26 insertions(+), 25 deletions(-)
+
+diff --git a/doc/help_fr.po b/doc/help_fr.po
+index 97bf9f6..81d677c 100644
+--- a/doc/help_fr.po
++++ b/doc/help_fr.po
+@@ -7,7 +7,7 @@ msgid ""
+ msgstr ""
+ "Project-Id-Version: Kwave\n"
+ "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+-"POT-Creation-Date: 2014-06-04 16:45+0000\n"
++"POT-Creation-Date: 2014-07-20 06:11+0000\n"
+ "PO-Revision-Date: 2012-05-17 20:26+0200\n"
+ "Last-Translator: Thomas Eschenbacher\n"
+ "Language-Team: German <kde-i18n-de@kde.org>\n"
+@@ -360,15 +360,15 @@ msgid ""
+ "\"&url_git_web;\">web interface</ulink> you can use to browse through the "
+ "sources."
+ msgstr ""
+-"Il y a également un dépôt CVS, qui est hébergé par <ulink url="
++"Il y a également un dépôt GIT, qui est hébergé par <ulink url="
+ "\"&url_sourceforge;\">SourceForge</ulink> ou vous pouvez télécharger les "
+ "dernières versions des sources du programme. Pour toute information "
+-"concernant la procédure d'accès au dépôt CVS, lisez le chapitre sur <link "
+-"linkend=\"building_rpm_from_cvs\">la construction à partir du CVS</link>, "
+-"consultez l'URL <ulink url=\"&url_svn_instructions;\">"
+-"\"&url_svn_instructions;\"</ulink>, ou visiter l'arborescence CVS "
++"concernant la procédure d'accès au dépôt GIT, lisez le chapitre sur <link "
++"linkend=\"building_rpm_from_git\">la construction à partir du GIT</link>, "
++"consultez l'URL <ulink url=\"&url_git_instructions;\">"
++"\"&url_git_instructions;\"</ulink>, ou visiter l'arborescence GIT "
+ "directement à travers votre navigateur internet. <emphasis>Un accès anonyme "
+-"au dépôt CVS est disponible !</emphasis>"
++"au dépôt GIT est disponible !</emphasis>"
+ 
+ #. Tag: title
+ #: help_en.docbook:220
+@@ -674,8 +674,8 @@ msgid ""
+ "If you intend to get the &kwave; sources via GIT, you will also need a "
+ "current git package."
+ msgstr ""
+-"Si vous désirez utiliser CVS, il vous faut aussi la version actuelle du "
+-"paquetage correspondant à CVS."
++"Si vous désirez utiliser GIT, il vous faut aussi la version actuelle du "
++"paquetage correspondant à GIT."
+ 
+ #. Tag: para
+ #: help_en.docbook:396
+@@ -895,10 +895,10 @@ msgstr ""
+ "RPM. Premièrement, vous devez récupérer les sources de &kwave;, tel que "
+ "l'archive au format « .tar.gz » disponible sur la page WEB de téléchargement "
+ "de &kwave; ou une copie de la dernière version des sources via le <link "
+-"linkend=\"cvs-repository\">serveur CVS</link> (comme cela est décrit dans le "
+-"chapitre concernant le <link linkend=\"cvs_checkout\">CVS</link>), et lisez "
+-"le chapitre concernant la <link linkend=\"building_rpm_from_cvs"
+-"\">compilation d'un RPM à partir du CVS</link>."
++"linkend=\"git-repository\">serveur GIT</link> (comme cela est décrit dans le "
++"chapitre concernant le <link linkend=\"git_checkout\">GIT</link>), et lisez "
++"le chapitre concernant la <link linkend=\"building_rpm_from_git"
++"\">compilation d'un RPM à partir du GIT</link>."
+ 
+ #. Tag: para
+ #: help_en.docbook:553
+@@ -1117,9 +1117,9 @@ msgid ""
+ "your provider doesn't give you full access. A good place for the source "
+ "files will be <filename>\"$HOME/src\"</filename>."
+ msgstr ""
+-"Pour initialement vérifier la mise à jour des sources sur le CVS, vous avez "
++"Pour initialement vérifier la mise à jour des sources sur le GIT, vous avez "
+ "besoin d'un espace disque conséquent (environ 70 Mo) dans le dossier de "
+-"votre choix, du paquetage correspondant au programme cvs dédié à votre "
++"votre choix, du paquetage correspondant au programme git dédié à votre "
+ "distribution, et d'un accès complet à internet. Si vous recevez un message "
+ "d'erreur pour des connexions qui sont rejetées, soit vous avez tapé des "
+ "commandes incorrectes, soit votre fournisseur d'accès à internet n'autorise "
+@@ -1159,7 +1159,7 @@ msgstr ""
+ #, fuzzy, no-c-format
+ msgid "<prompt>% </prompt><command>git clone &url_git_master; kwave</command>"
+ msgstr ""
+-"<prompt>% </prompt><command>svn checkout &url_svn_trunk; kwave</command>"
++"<prompt>% </prompt><command>svn checkout &url_git_master; kwave</command>"
+ 
+ #. Tag: para
+ #: help_en.docbook:669
+@@ -1189,7 +1189,7 @@ msgid ""
+ msgstr ""
+ "Il <emphasis>ne doit pas</emphasis> y avoir de dossier nommé "
+ "<filename>kwave</filename> dans le dossier où vous aller stocker les sources "
+-"en provenance du CVS. En effet si tel est le cas, le programme cvs enverra "
++"en provenance du GIT. En effet si tel est le cas, le programme git enverra "
+ "un message d'erreur indiquant qu'il existe déjà un dossier de ce nom et le "
+ "téléchargement des sources sur votre machine échouera."
+ 
+@@ -1197,7 +1197,7 @@ msgstr ""
+ #: help_en.docbook:691
+ #, fuzzy, no-c-format
+ msgid "Updating fresh sources from GIT"
+-msgstr "La mise à jour les sources à partir du CVS"
++msgstr "La mise à jour les sources à partir du GIT"
+ 
+ #. Tag: para
+ #: help_en.docbook:692
+@@ -1215,7 +1215,7 @@ msgstr ""
+ "Mettez vous dans le sous-dossier que vous souhaitez mettre à jour et tapez "
+ "les commandes suivantes : <screen width=\"75\" format=\"linespecific\">\n"
+ "<prompt>% </prompt><command>make distclean</command>\n"
+-"<prompt>% </prompt><command>cvs update -dP -C</command>\n"
++"<prompt>% </prompt><command>git pull</command>\n"
+ "</screen> Vous pouvez alors passer à la section suivante pour faire une "
+ "compilation du programme."
+ 
+@@ -1231,7 +1231,7 @@ msgstr ""
+ "Si vous pensez que vous avez endommagé vos fichiers sources en local ou s'il "
+ "y a des conflits pendant la mise à jour, vous pouvez enlever tous les "
+ "fichiers et les sous-dossiers dans votre copie locale de &kwave; <emphasis>à "
+-"l'exception des dossiers <filename>CVS</filename></emphasis> et recommencer "
++"l'exception des dossiers <filename>GIT</filename></emphasis> et recommencer "
+ "à nouveau."
+ 
+ #. Tag: screen
+@@ -1266,7 +1266,7 @@ msgid ""
+ "<literal>sparc</literal> or whatever, <replaceable>XXX</replaceable> stands "
+ "for the version number you have checked out."
+ msgstr ""
+-"Construire un paquetage RPM à partir des sources du CVS est une chose assez "
++"Construire un paquetage RPM à partir des sources du GIT est une chose assez "
+ "facile à réaliser. La procédure est presque la même que celle décrite dans "
+ "la section précédente, et malheureusement on a le même problème avec la "
+ "commande <command>rpmbuild -ta</command>. Comme dans le chapitre précédent, "
+@@ -1300,7 +1300,7 @@ msgid ""
+ "instead of installing."
+ msgstr ""
+ "Vous devez être le superutilisateur ROOT pour faire la mise à jour à partir "
+-"du CVS, construire le paquetage de &kwave;, et l'installer. Si vous avez "
++"du GIT, construire le paquetage de &kwave;, et l'installer. Si vous avez "
+ "déjà une version de &kwave; installée sur votre système, vous devez "
+ "désinstaller celle-ci en premier ou utiliser l'option <literal>rpm -U</"
+ "literal> à la place de <literal>rpm -i</literal> pour faire une mise à jour "
+@@ -1358,12 +1358,13 @@ msgstr ""
+ 
+ #. Tag: screen
+ #: help_en.docbook:763
+-#, fuzzy, no-c-format
++#, no-c-format
+ msgid ""
+ "<prompt>% </prompt><command>sudo apt-get install build-essential "
+ "checkinstall</command>"
+ msgstr ""
+-"<prompt>% </prompt><command>svn checkout &url_svn_trunk; kwave</command>"
++"<prompt>% </prompt><command>sudo apt-get install build-essential "
++"checkinstall</command>"
+ 
+ #. Tag: para
+ #: help_en.docbook:766
+@@ -1559,7 +1560,7 @@ msgid ""
+ "flags need to be specified before the call. For example:"
+ msgstr ""
+ "Si vous construisez &kwave; à partir des sources (tel qu'une archive au "
+-"format « .tar.gz » ou via le dépot CVS) l'option à activer doit l'être avant "
++"format « .tar.gz » ou via le dépot GIT) l'option à activer doit l'être avant "
+ "l'appel de la commande <command>make -f Makefile.dist</command>. Par "
+ "exemple :"
+ 
+-- 
+2.0.5
+

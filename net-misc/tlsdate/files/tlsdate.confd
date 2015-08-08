@@ -1,0 +1,8 @@
+# config file for /etc/init.d/tlsdate
+
+# Command to execute to set the time.
+# This are some common tlsdate options:
+#  -l: leap (set time regardless of difference)
+#  -H: hostname to sync with
+#  -x: proxy URL
+TLSDATE_OPTS="-l -H www.google.com"

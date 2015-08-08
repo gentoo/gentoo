@@ -1,0 +1,108 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 449f4b4..1c9ad00 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -252,7 +252,8 @@ if(NOT MSVC)
+     }
+    " SCANDIR_NEEDS_CONST)
+ 
+-  set(OB_MODULE_PATH "${CMAKE_INSTALL_PREFIX}/${OB_PLUGIN_INSTALL_DIR}")
++  set(OB_MODULE_PATH "${CMAKE_INSTALL_PREFIX}/${OB_PLUGIN_INSTALL_DIR}"
++      CACHE PATH "Set to system install for bindings only build")
+   add_definitions(-DOB_MODULE_PATH="\\"${OB_MODULE_PATH}\\"")
+ 
+   # Add some visibility support when using GCC
+@@ -380,7 +381,8 @@ if(UNIX AND BUILD_SHARED)
+   if(APPLE)
+     set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
+   else()
+-    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}")
++    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}"
++        CACHE PATH "Set sane rpath")
+     set(CMAKE_SKIP_BUILD_RPATH FALSE)
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+     set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+@@ -477,6 +479,13 @@ endif()
+ # Should the language bindings be regenereted?
+ option(RUN_SWIG "Generate language bindings with SWIG" OFF)
+ 
++# Build bindings only
++option(BINDINGS_ONLY "Build bindings only" OFF)
++
++# Point to library if building bindings only
++set(BABEL_SYSTEM_LIBRARY ${BABEL_LIBRARY}
++    CACHE PATH "Point to openbabel library if building bindings only")
++
+ # Should all bindings be built?
+ option(ALL_BINDINGS "Build all languages bindings" OFF)
+ 
+diff --git a/scripts/CMakeLists.txt b/scripts/CMakeLists.txt
+index 16e9000..8f92e91 100644
+--- a/scripts/CMakeLists.txt
++++ b/scripts/CMakeLists.txt
+@@ -92,16 +92,30 @@ if (DO_PYTHON_BINDINGS)
+     endif(RUN_SWIG)
+ 
+     add_library(bindings_python MODULE ${openbabel_SOURCE_DIR}/scripts/python/openbabel-python.cpp)
+-    target_link_libraries(bindings_python ${PYTHON_LIBRARIES} ${BABEL_LIBRARY})
++    if(BINDINGS_ONLY)
++        target_link_libraries(bindings_python ${PYTHON_LIBRARIES} ${BABEL_SYSTEM_LIBRARY})
++    else()
++        target_link_libraries(bindings_python ${PYTHON_LIBRARIES} ${BABEL_LIBRARY})
++    endif()
++
+     if(NOT WIN32)
+         set_target_properties(bindings_python PROPERTIES
+             OUTPUT_NAME _openbabel
+             PREFIX ""
+             SUFFIX .so )
+-        add_dependencies(bindings_python openbabel)
+-        install(TARGETS bindings_python LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+-        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/openbabel.py DESTINATION ${LIB_INSTALL_DIR})
+-        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/pybel.py DESTINATION ${LIB_INSTALL_DIR})
++        if(NOT BINDINGS_ONLY)
++            add_dependencies(bindings_python openbabel)
++        endif()
++
++        install(TARGETS bindings_python
++                LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++                COMPONENT bindings_python)
++        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/openbabel.py
++                DESTINATION ${LIB_INSTALL_DIR}
++                COMPONENT bindings_python)
++        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/pybel.py
++                DESTINATION ${LIB_INSTALL_DIR}
++                COMPONENT bindings_python)
+     else(NOT WIN32)
+         set_target_properties(bindings_python PROPERTIES
+             OUTPUT_NAME _openbabel
+@@ -231,13 +245,25 @@ if (DO_PERL_BINDINGS)
+     endif (RUN_SWIG)
+ 
+     add_library(bindings_perl MODULE ${openbabel_SOURCE_DIR}/scripts/perl/openbabel-perl.cpp)
+-    target_link_libraries(bindings_perl ${PERL_LIBRARY} ${BABEL_LIBRARY} ${PERL_EXTRA_LINK_FLAGS})
++    if(BINDINGS_ONLY)
++      target_link_libraries(bindings_perl ${PERL_LIBRARY} ${BABEL_SYSTEM_LIBRARY} ${PERL_EXTRA_LINK_FLAGS})
++    else()
++      target_link_libraries(bindings_perl ${PERL_LIBRARY} ${BABEL_LIBRARY} ${PERL_EXTRA_LINK_FLAGS})
++    endif()
++
+     set_target_properties(bindings_perl PROPERTIES
+         PREFIX ""
+         OUTPUT_NAME OpenBabel)
+-    add_dependencies(bindings_perl openbabel)
+-    install(TARGETS bindings_perl LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+-    install(FILES ${openbabel_SOURCE_DIR}/scripts/perl/OpenBabel.pm DESTINATION ${LIB_INSTALL_DIR})
++    if(NOT BINDINGS_ONLY)
++      add_dependencies(bindings_perl openbabel)
++    endif()
++
++    install(TARGETS bindings_perl
++            LIBRARY DESTINATION ${LIB_INSTALL_DIR}/auto/Chemistry/OpenBabel/
++            COMPONENT bindings_perl)
++    install(FILES ${openbabel_SOURCE_DIR}/scripts/perl/OpenBabel.pm
++            DESTINATION ${LIB_INSTALL_DIR}/Chemistry/
++            COMPONENT bindings_perl)
+ 
+ endif (DO_PERL_BINDINGS)
+ 

@@ -1,0 +1,12 @@
+diff -ruN libgadu-1.12.0/test/manual/lib/base64.c my/test/manual/lib/base64.c
+--- libgadu-1.12.0/test/manual/lib/base64.c	2014-06-13 20:41:37.000000000 +0200
++++ my/test/manual/lib/base64.c	2014-08-13 03:08:00.612006311 +0200
+@@ -30,7 +30,7 @@
+ #include <openssl/bio.h>
+ #include <openssl/buffer.h>
+ 
+-char *gg_base64_encode(const char *input, ssize_t len)
++char *gg_base64_encode2(const char *input, ssize_t len)
+ {
+ 	BIO *bmem, *b64;
+ 	BUF_MEM *bptr;

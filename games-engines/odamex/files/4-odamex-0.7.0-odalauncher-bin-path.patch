@@ -1,0 +1,58 @@
+From 672b2e61f3c0347c29746a4a22fe3ab912e88d62 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Thu, 27 Mar 2014 21:19:48 +0100
+Subject: [PATCH 4/4] use CMAKE_BINDIR as default bin patch in odalauncher
+
+---
+ config.h.in                | 1 +
+ odalaunch/src/dlg_main.cpp | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/config.h.in b/config.h.in
+index e91b3a6..7019a02 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -2,5 +2,6 @@
+ #define CONFIG_H
+ 
+ #define CMAKE_WADDIR "@CMAKE_INSTALL_DATADIR@"
++#define CMAKE_BINDIR "@CMAKE_INSTALL_BINDIR@"
+ 
+ #endif
+diff --git a/odalaunch/src/dlg_main.cpp b/odalaunch/src/dlg_main.cpp
+index a95a5f6..abbfc0a 100644
+--- a/odalaunch/src/dlg_main.cpp
++++ b/odalaunch/src/dlg_main.cpp
+@@ -27,6 +27,7 @@
+ #include "str_utils.h"
+ 
+ #include "md5.h"
++#include "config.h"
+ 
+ #include <wx/settings.h>
+ #include <wx/menu.h>
+@@ -42,6 +43,7 @@
+ #include <wx/process.h>
+ #include <wx/toolbar.h>
+ #include <wx/xrc/xmlres.h>
++#include <wx/string.h>
+ #include <wx/cmdline.h>
+ 
+ #ifdef __WXMSW__
+@@ -205,10 +207,12 @@ dlgMain::dlgMain(wxWindow* parent, wxWindowID id)
+     }
+     #endif
+ 
++    const char *cmake_bindir_str = CMAKE_BINDIR;
++    wxString cmake_bindir = wxString::FromAscii(cmake_bindir_str);
+     launchercfg_s.get_list_on_start = 1;
+     launchercfg_s.show_blocked_servers = 0;
+     launchercfg_s.wad_paths = wxGetCwd();
+-    launchercfg_s.odamex_directory = wxGetCwd();
++    launchercfg_s.odamex_directory = cmake_bindir;
+ 
+     m_LstCtrlServers = XRCCTRL(*this, "Id_LstCtrlServers", LstOdaServerList);
+     m_LstCtrlPlayers = XRCCTRL(*this, "Id_LstCtrlPlayers", LstOdaPlayerList);
+-- 
+1.9.1
+

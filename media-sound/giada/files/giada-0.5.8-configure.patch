@@ -1,0 +1,50 @@
+--- giada-0.5.8/configure.ac
++++ giada-0.5.8/configure.ac
+@@ -52,6 +52,27 @@
+   [AC_DEFINE(WITH_VST)]
+ )
+ 
++AC_ARG_ENABLE(
++	alsa,
++	AS_HELP_STRING([--disable-alsa], [disable alsa support]),
++  [AC_DEFINE(WITH_ALSA)]
++)
++AM_CONDITIONAL(ALSA, test "x$enable_alsa" = "xtrue")
++
++AC_ARG_ENABLE(
++	jack,
++	AS_HELP_STRING([--enable-jack], [enable jack support]),
++  [AC_DEFINE(WITH_JACK)]
++)
++AM_CONDITIONAL(JACK, test "x$enable_jack" = "xtrue")
++
++AC_ARG_ENABLE(
++	pulse,
++	AS_HELP_STRING([--enable-pulse], [enable pulseaudio support]),
++  [AC_DEFINE(WITH_PULSE)]
++)
++AM_CONDITIONAL(PULSE, test "x$enable_pulse" = "xtrue")
++
+ # ----------------------------------------------------------------------
+ 
+ # Checks for programs.
+--- giada-0.5.8/src/Makefile.am
++++ giada-0.5.8/src/Makefile.am
+@@ -39,7 +39,16 @@
+ # inside configure.ac
+ if LINUX
+ giada_LDADD = -lsndfile -lfltk -lXext -lX11 -lXft -lXpm -lm -lrtaudio  \
+-						  -ljack -lasound -lpthread -ldl -lpulse-simple -lsamplerate
++						  -lpthread -ldl -lsamplerate
++if ALSA
++giada_LDADD += -lasound
++endif
++if JACK
++giada_LDADD += -ljack
++endif
++if PULSE
++giada_LDADD += -lpulse-simple
++endif
+ endif
+ if WINDOWS
+ giada_LDADD   = -lole32 -lrtaudio -ldsound -lwinmm -lwsock32 -lm       \

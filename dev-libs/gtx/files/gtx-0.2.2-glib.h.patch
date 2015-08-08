@@ -1,0 +1,15 @@
+ src/gtx.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/gtx.h b/src/gtx.h
+index 57bee60..ab128b0 100644
+--- a/src/gtx.h
++++ b/src/gtx.h
+@@ -24,7 +24,6 @@
+ #define __GTX_H__
+ 
+ #include <glib.h>
+-#include <glib/gtestutils.h>
+ #include <glib-object.h>
+ 
+ G_BEGIN_DECLS

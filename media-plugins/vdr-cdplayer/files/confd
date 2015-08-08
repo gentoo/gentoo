@@ -1,0 +1,32 @@
+# /etc/conf.d/vdr.cdplayer
+
+
+# Set way to your CD Drive
+#   allowed values: path to device
+#   default: /dev/cdrom
+#
+#CDPLAYER_DEVICE=/dev/cdrom
+
+# Set URL to the CDDB databank
+#	allowed values: URL to the databank
+#	default: freedb.freedb.org
+#
+#CDPLAYER_CDDB_SERVER="freedb.freedb.org"
+
+# Enable cddb request to the given db on top
+#	allowed values: yes no
+#	default: yes
+#
+#CDPLAYER_CDDB_QUERY="no"
+
+# Enable cache of cddb data
+# allowed values: yes no
+# default: yes
+#
+#CDPLAYER_CDDB_CACHE="no"
+
+# Set path to the cddb data cache dir
+# allowed values: path to cache dir
+# default: /var/cache/vdr/cdplayer
+#
+#CDPLAYER_CACHE_DIR=

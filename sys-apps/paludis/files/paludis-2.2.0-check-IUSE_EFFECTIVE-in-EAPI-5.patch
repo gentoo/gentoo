@@ -1,0 +1,88 @@
+From bfb1bd7682b4a678cfa7dccb87d1f49d842317ac Mon Sep 17 00:00:00 2001
+From: David Leverton <levertond@googlemail.com>
+Date: Sat, 21 Mar 2015 20:04:30 +0000
+Subject: Only check IUSE_EFFECTIVE for EAPI 5
+
+In other EAPIs the value isn't set by C++, and therefore may leak in
+from the calling environment.
+
+diff --git a/paludis/repositories/e/ebuild/0/list_functions.bash b/paludis/repositories/e/ebuild/0/list_functions.bash
+index 0c5d91a..4998c2b 100644
+--- a/paludis/repositories/e/ebuild/0/list_functions.bash
++++ b/paludis/repositories/e/ebuild/0/list_functions.bash
+@@ -37,13 +37,6 @@ usev()
+ 
+ useq()
+ {
+-    if [[ -n "${IUSE_EFFECTIVE:+x}" ]] ; then
+-        local i=( $IUSE_EFFECTIVE )
+-        if ! hasq ${1#!} "${i[@]#[+-]}" ; then
+-            die "Flag '${1#!}' is not included in IUSE_EFFECTIVE=\"${IUSE_EFFECTIVE}\""
+-        fi
+-    fi
+-
+     if [[ "${1:0:1}" == "!" ]] ; then
+         ! hasq "${1#!}" "${USE}"
+     else
+diff --git a/paludis/repositories/e/ebuild/5/Makefile.am b/paludis/repositories/e/ebuild/5/Makefile.am
+index fbcb919..ced4e53 100644
+--- a/paludis/repositories/e/ebuild/5/Makefile.am
++++ b/paludis/repositories/e/ebuild/5/Makefile.am
+@@ -7,6 +7,7 @@ libexecprog5dir = $(libexecdir)/paludis/5
+ libexecprog5_SCRIPTS = \
+ 	src_test.bash \
+ 	usex.bash \
++	list_functions.bash \
+ 	output_functions.bash
+ 
+ TESTS =
+diff --git a/paludis/repositories/e/ebuild/5/list_functions.bash b/paludis/repositories/e/ebuild/5/list_functions.bash
+new file mode 100644
+index 0000000..7cb22ad
+--- /dev/null
++++ b/paludis/repositories/e/ebuild/5/list_functions.bash
+@@ -0,0 +1,41 @@
++#!/usr/bin/env bash
++# vim: set sw=4 sts=4 et :
++
++# Copyright (c) 2006, 2009, 2012 Ciaran McCreesh
++# Copyright (c) 2015 David Leverton
++#
++# Based in part upon ebuild.sh from Portage, which is Copyright 1995-2005
++# Gentoo Foundation and distributed under the terms of the GNU General
++# Public License v2.
++#
++# This file is part of the Paludis package manager. Paludis is free software;
++# you can redistribute it and/or modify it under the terms of the GNU General
++# Public License, version 2, as published by the Free Software Foundation.
++#
++# Paludis is distributed in the hope that it will be useful, but WITHOUT ANY
++# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
++# details.
++#
++# You should have received a copy of the GNU General Public License along with
++# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
++# Place, Suite 330, Boston, MA  02111-1307  USA
++
++ebuild_load_module --older list_functions
++
++useq()
++{
++    if [[ -n "${IUSE_EFFECTIVE:+x}" ]] ; then
++        local i=( $IUSE_EFFECTIVE )
++        if ! hasq ${1#!} "${i[@]#[+-]}" ; then
++            die "Flag '${1#!}' is not included in IUSE_EFFECTIVE=\"${IUSE_EFFECTIVE}\""
++        fi
++    fi
++
++    if [[ "${1:0:1}" == "!" ]] ; then
++        ! hasq "${1#!}" "${USE}"
++    else
++        hasq "${1}" "${USE}"
++    fi
++}
++
+-- 
+cgit v0.10.2
+

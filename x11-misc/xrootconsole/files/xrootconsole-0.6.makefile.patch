@@ -1,0 +1,36 @@
+--- xrootconsole-0.6/Makefile.org	2004-02-20 22:53:28.000000000 +0100
++++ xrootconsole-0.6/Makefile	2010-02-08 12:01:11.000000000 +0100
+@@ -43,20 +43,16 @@
+             else echo Bleeding Edge Version; \
+         fi;)
+ 
+-CC = gcc
+-CPPFLAGS =
+-
+ # for production
+-CFLAGS = -O2 -DNDEBUG -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION)\"" \
+-    -I /usr/X11R6/include
+-LDFLAGS = -s
++CFLAGS += -DNDEBUG -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION)\"" \
++    $(shell pkg-config --cflags x11)
+ 
+ # for testing
+ #CFLAGS = -g -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION) (debug build)\"" \
+     -I /usr/X11R6/include
+ #LDFLAGS = 
+ 
+-LIBS = -L/usr/X11R6/lib -lX11 -lutil
++LIBS = $(shell pkg-config --libs x11) -lutil
+ 
+ OBJS = main.o util.o
+ 
+@@ -76,5 +72,7 @@
+ 	rm -f $(EXEC) *.o core *~
+ 
+ install: $(EXEC)
+-	cp $(EXEC) $(BINDIR)
+-	cp $(MANFILE) $(MANDIR)
++	install -d $(BINDIR)
++	install -d $(MANDIR)
++	install $(EXEC) $(BINDIR)
++	install $(MANFILE) $(MANDIR)

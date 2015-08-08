@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">CPAN-Changes</remote-id>
+		<remote-id type="cpan-module">CPAN::Changes</remote-id>
+		<remote-id type="cpan-module">CPAN::Changes::Release</remote-id>
+		<remote-id type="cpan-module">Test::CPAN::Changes</remote-id>
+	</upstream>
+</pkgmetadata>

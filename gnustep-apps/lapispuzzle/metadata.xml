@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnustep</herd>
+	<longdescription>a tetris-like game which challenges the player by making the opposing team's victories count doubly against the player and vice versa</longdescription>
+</pkgmetadata>

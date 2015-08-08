@@ -1,0 +1,23 @@
+--- epos-2.5.37.orig/src/nnet/neural.cc
++++ epos-2.5.37/src/nnet/neural.cc
+@@ -38,7 +38,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <time.h>
+ 
+ /*
+--- epos-2.5.37.orig/arch/win/service/install.cpp
++++ epos-2.5.37/arch/win/service/install.cpp
+@@ -23,7 +23,7 @@
+ #include <winsvc.h>
+ #include "service.h"
+ #include <stdio.h>		//sprintf & fopen
+-#include <iostream.h>
++#include <iostream>
+ #include "Shlwapi.h"
+ 
+ SC_HANDLE	scm;
+

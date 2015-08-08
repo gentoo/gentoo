@@ -1,0 +1,39 @@
+From 286688cb68c9989f697203ca779b08fad23366db Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 12 Jun 2015 05:05:41 -0400
+Subject: [PATCH] tests: force TZ to UTC for everyone
+
+This should make test outputs more stable across systems.
+
+URL: https://bugs.gentoo.org/551806
+Reported-by: Nikoli <nikoli@gmx.us>
+---
+ tests/init.sh          | 2 ++
+ tests/qlop/list01.good | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tests/init.sh b/tests/init.sh
+index b3f634e..11fd379 100644
+--- a/tests/init.sh
++++ b/tests/init.sh
+@@ -33,6 +33,8 @@ setup_env
+ unset ROOT PORTAGE_CONFIGROOT PORTAGE_QUIET
+ # but make sure we don't implicitly rely on user's setup
+ export PORTAGE_CONFIGROOT="${ab}/not/a/real/path"
++# Always use UTC for timestamps to keep tests stable. #551806
++export TZ='UTC 0'
+ 
+ q -i -q
+ 
+diff --git a/tests/qlop/list01.good b/tests/qlop/list01.good
+index 458c751..fc8683c 100644
+--- a/tests/qlop/list01.good
++++ b/tests/qlop/list01.good
+@@ -1,2 +1,2 @@
+-Thu Jan 27 00:42:17 2005 >>> rsync://192.168.0.5/gentoo-portage
+-Sat May 16 04:21:00 2015 >>> gentoo
++Thu Jan 27 05:42:17 2005 >>> rsync://192.168.0.5/gentoo-portage
++Sat May 16 08:21:00 2015 >>> gentoo
+-- 
+2.4.1
+

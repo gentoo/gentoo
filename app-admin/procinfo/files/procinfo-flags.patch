@@ -1,0 +1,16 @@
+--- procinfo-18/Makefile.orig	2001-02-25 00:29:53.000000000 +0100
++++ procinfo-18/Makefile	2006-10-21 13:57:47.000000000 +0200
+@@ -2,10 +2,10 @@
+ 
+ prefix=/usr
+ 
+-CC = gcc -Wall -Wstrict-prototypes
++CC += 
+ 
+-CFLAGS = -O2
+-LDFLAGS = -s
++CFLAGS += -Wall -Wstrict-prototypes
++LDFLAGS +=
+ 
+ # If you get lots of `undefined references', you probably need -lncurses
+ # instead:

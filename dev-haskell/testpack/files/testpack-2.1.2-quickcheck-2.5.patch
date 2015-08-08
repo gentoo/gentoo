@@ -1,0 +1,31 @@
+--- testpack-2.1.2-orig/src/Test/HUnit/Tools.hs	2012-02-29 09:20:32.000000000 +1100
++++ testpack-2.1.2/src/Test/HUnit/Tools.hs	2012-07-09 09:03:53.104931180 +1000
+@@ -128,7 +128,13 @@
+ >        q "Integer -> Int (safe bounds)" prop_integer_to_int_pass]
+ -}
+ qc2hu :: QC.Testable a => Int -> String -> a -> HU.Test
+-qc2hu maxTest = qccheck (stdArgs {maxSuccess = maxTest, maxDiscard = 20000})
++qc2hu maxTest = qccheck (stdArgs {maxSuccess = maxTest,
++#if MIN_VERSION_QuickCheck(2,5,0)
++                                  maxDiscardRatio = if maxTest /= 0 then 20000 `div` maxTest else 10
++#else
++                                  maxDiscard = 20000
++#endif
++                                 })
+ 
+ {- | Run verbose tests.  Example:
+ 
+@@ -174,7 +180,12 @@
+               Just (rnd,_) -> return rnd
+      test MkState{ terminal          = tm
+                  , maxSuccessTests   = maxSuccess args
+-                 , maxDiscardedTests = maxDiscard args
++                 , maxDiscardedTests =
++#if MIN_VERSION_QuickCheck(2,5,0)
++                                       maxDiscardRatio args * maxSuccess args
++#else
++                                       maxDiscard args
++#endif
+                  , computeSize       = case replay args of
+                                          Nothing    -> \n d -> (n * maxSize args)
+                                                          `div` maxSuccess args

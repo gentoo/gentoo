@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <longdescription>
+    The program cdd+ is a C++ implementation of the Double Description Method of Motzkin et al. for generating all
+    vertices (i.e. extreme points) and extreme rays of a general convex polyhedron in R^d given by a system of linear
+    inequalities: P = { x : A x &lt;= b } where A is an m x d real matrix and b is a real m dimensional vector.
+  </longdescription>
+</pkgmetadata>

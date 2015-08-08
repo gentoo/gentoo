@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-geosciences</herd>
+<longdescription lang='en'>
+  GSHHS is a high-resolution shoreline data set amalgamated from two
+  databases in the public domain. The data have undergone extensive
+  processing and are free of internal inconsistencies such as erratic
+  points and crossing segments. The shorelines are constructed
+  entirely from hierarchically arranged closed polygons. The data can
+  be used to simplify data searches and data selections, or to study
+  the statistical characteristics of shorelines and land-masses.
+</longdescription>
+</pkgmetadata>

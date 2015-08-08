@@ -1,0 +1,10 @@
+--- src/main.h.old	2006-05-19 22:24:24.000000000 +0200
++++ src/main.h	2006-05-19 22:25:57.000000000 +0200
+@@ -459,7 +459,6 @@
+ #endif
+ extern struct HiScore		highscore[];
+ extern struct TapeInfo		tape;
+-extern struct JoystickInfo	joystick[];
+ extern struct SetupInfo		setup;
+ extern struct GameInfo		game;
+ extern struct LaserInfo		laser;

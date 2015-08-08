@@ -1,0 +1,20 @@
+--- pambase-20120417/login.in.orig	2012-11-21 14:31:49.031948988 +0100
++++ pambase-20120417/login.in	2012-11-21 14:32:41.172330601 +0100
+@@ -3,4 +3,6 @@
+ 
+ account    include	system-local-login
+ password   include	system-local-login
++
++session    optional pam_lastlog.so DEBUG
+ session    include	system-local-login
+--- pambase-20120417/system-login.in.orig	2012-11-21 14:31:42.232160039 +0100
++++ pambase-20120417/system-login.in	2012-11-21 14:35:20.738025880 +0100
+@@ -41,7 +41,7 @@
+ session		required	pam_env.so DEBUG
+ #endif
+ #if HAVE_LASTLOG
+-session		optional	pam_lastlog.so DEBUG
++session		optional	pam_lastlog.so silent DEBUG
+ #endif
+ session		include		system-auth
+ #if HAVE_CONSOLEKIT

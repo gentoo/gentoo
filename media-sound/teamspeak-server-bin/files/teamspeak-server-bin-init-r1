@@ -1,0 +1,43 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+name="TeamSpeak Server"
+command="/usr/sbin/ts3server"
+pidfile="/run/teamspeak3-server/server.pid"
+command_background="true"
+
+depend() {
+	need net
+	use mysql
+}
+
+start_pre() {
+	# ensure, that the TS3-server finds all custom supplied shared objects on startup.
+	LD_LIBRARY_PATH="/opt/teamspeak3-server:$LD_LIBRARY_PATH"
+	export LD_LIBRARY_PATH
+
+	# temporay fix for EPERM bug (we still leave it here to make sure it is *really* not there)
+	rm -f /dev/shm/7gbhujb54g8z9hu43jre8
+
+	checkpath -d --owner teamspeak3:teamspeak3 --mode 0700 /run/teamspeak3-server
+}
+
+start() {
+	ebegin "Starting ${name}"
+
+	start-stop-daemon --start --quiet --background \
+		--pidfile "/run/teamspeak3-server/server.pid" --make-pidfile \
+		--user "teamspeak3" --chdir "/opt/teamspeak3-server" \
+		--exec "/usr/sbin/ts3server" -- \
+		inifile="/etc/teamspeak3-server/server.conf"
+
+	eend $?
+}
+
+restart() {
+	stop
+	sleep 3
+	start
+}

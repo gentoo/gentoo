@@ -1,0 +1,35 @@
+--- Source/GameDraw.cpp
++++ Source/GameDraw.cpp
+@@ -36,7 +36,7 @@
+ 
+ /*********************> DrawGLScene() <*****/
+ 
+-int Game::DrawGLScene(GLvoid)									
++int Game::DrawGLScene(void)									
+ 
+ {	
+ 
+--- Source/Game.h
++++ Source/Game.h
+@@ -75,8 +75,8 @@
+ 		
+ 		//GL functions
+ 		GLvoid ReSizeGLScene(float fov, float near);
+-		int DrawGLScene(GLvoid);
+-		int InitGL(GLvoid);
++		int DrawGLScene(void);
++		int InitGL(void);
+ 		void LoadingScreen(float percent);
+ 		
+ 		//Game Functions
+--- Source/GameInitDispose.cpp
++++ Source/GameInitDispose.cpp
+@@ -3913,7 +3913,7 @@
+ 
+ 
+ 
+-int Game::InitGL(GLvoid)										
++int Game::InitGL(void)										
+ 
+ {
+ 

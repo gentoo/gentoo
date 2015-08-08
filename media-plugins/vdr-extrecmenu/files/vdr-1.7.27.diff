@@ -1,0 +1,98 @@
+diff -Naur extrecmenu-1.2.1.orig/mymenueditrecording.c extrecmenu-1.2.1/mymenueditrecording.c
+--- extrecmenu-1.2.1.orig/mymenueditrecording.c	2012-04-07 09:48:21.000000000 +0200
++++ extrecmenu-1.2.1/mymenueditrecording.c	2012-04-07 09:52:03.000000000 +0200
+@@ -500,8 +500,8 @@
+ myMenuRecordingDetails::myMenuRecordingDetails(cRecording *Recording):cOsdMenu(tr("Details"),12)
+ {
+   recording=Recording;
+-  priority=recording->priority;
+-  lifetime=recording->lifetime;
++  priority=recording->Priority();
++  lifetime=recording->Lifetime();
+ 
+   Add(new cMenuEditIntItem(trVDR("Priority"),&priority,0,MAXPRIORITY));
+   Add(new cMenuEditIntItem(trVDR("Lifetime"),&lifetime,0,MAXLIFETIME));
+@@ -514,7 +514,10 @@
+   {
+     if(Key==kOk)
+     {
+-      if((priority!=recording->priority)||(lifetime!=recording->lifetime))
++        int old_priority = recording->Priority();
++        int old_lifetime = recording->Lifetime();
++        if((priority!=old_priority)||(lifetime!=old_lifetime))
++//      if((priority!=recording->priority)||(lifetime!=recording->lifetime))
+       {
+ #if VDRVERSNUM > 10713
+         if(recording->IsPesRecording())
+diff -Naur extrecmenu-1.2.1.orig/tools.c extrecmenu-1.2.1/tools.c
+--- extrecmenu-1.2.1.orig/tools.c	2012-04-07 09:48:21.000000000 +0200
++++ extrecmenu-1.2.1/tools.c	2012-04-07 09:56:33.000000000 +0200
+@@ -456,7 +456,7 @@
+     if(!(fromfile=fromfilename->Open()) || !(tofile=tofilename->Open()))
+       return;
+     fromfile->SetReadAhead(MEGABYTE(20));
+-    index=mark->position;
++    index=mark->Position();
+     mark=frommarks.Next(mark);
+     tomarks.Add(0);
+     tomarks.Save();
+@@ -542,8 +542,8 @@
+     filesize+=length;
+     if(!lastiframe)
+       lastiframe=toindex->Last();
+-      
+-    if(mark && index >= mark->position)
++
++    if(mark && index >= mark->Position())
+     {
+       mark=frommarks.Next(mark);
+       tomarks.Add(lastiframe);
+@@ -552,7 +552,7 @@
+       tomarks.Save();
+       if(mark)
+       {
+-        index=mark->position;
++        index=mark->Position();
+         mark=frommarks.Next(mark);
+         currentfilenumber=0;
+         cutin=true;
+diff -Naur extrecmenu-1.2.1.orig/mymenurecordings.c extrecmenu-1.2.1/mymenurecordings.c
+--- extrecmenu-1.2.1.orig/mymenurecordings.c	2012-04-07 10:08:35.000000000 +0200
++++ extrecmenu-1.2.1/mymenurecordings.c	2012-04-07 10:17:19.000000000 +0200
+@@ -66,7 +66,9 @@
+   else
+   {
+     stringstream text;
+-    text << *DateString(recording->start) << ", " << *TimeString(recording->start) << "\n\n";
++//    text << *DateString(recording->start) << ", " << *TimeString(recording->start) << "\n\n";
++    time_t start = recording->Start();
++    text << *DateString(start) << ", " << *TimeString(start) << "\n\n";
+ 
+     if(recording->Info()->Title())
+     {
+@@ -95,8 +97,12 @@
+     else
+       text << tr("Size") << ": " << recmb << " MB\n";
+ 
+-    text << trVDR("Priority") << ": " << recording->priority << "\n";
+-    text << trVDR("Lifetime") << ": " << recording->lifetime << "\n";
++//    text << trVDR("Priority") << ": " << recording->priority << "\n";
++//    text << trVDR("Lifetime") << ": " << recording->lifetime << "\n";
++    int prio = recording->Priority();
++    int lft = recording->Lifetime();
++    text << trVDR("Priority") << ": " << prio << "\n";
++    text << trVDR("Lifetime") << ": " << lft << "\n";
+ 
+     DisplayMenu()->SetText(text.str().c_str(),false);
+     cStatus::MsgOsdTextItem(text.str().c_str());
+@@ -192,7 +198,9 @@
+ 
+       // date and time of recording
+       struct tm tm_r;
+-      struct tm *t=localtime_r(&Recording->start,&tm_r);
++//      struct tm *t=localtime_r(&Recording->start,&tm_r);
++      time_t start = Recording->Start();
++      struct tm *t=localtime_r(&start,&tm_r);
+ 
+       idbuffer << t->tm_mday << t->tm_mon << t->tm_year
+                << t->tm_hour << t->tm_min;

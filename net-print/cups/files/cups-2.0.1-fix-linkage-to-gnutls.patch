@@ -1,0 +1,24 @@
+--- a/cups/usersys.c
++++ b/cups/usersys.c
+@@ -1044,7 +1044,9 @@
+ 	  options = 0;
+       }
+ 
++#ifdef HAVE_SSL
+       _httpTLSSetOptions(options);
++#endif /* HAVE_SSL */
+     }
+   }
+ 
+--- a/scheduler/conf.c
++++ b/scheduler/conf.c
+@@ -2975,7 +2975,9 @@
+         }
+       }
+ 
++#ifdef HAVE_SSL
+       _httpTLSSetOptions(options);
++#endif /* HAVE_SSL */
+     }
+     else if ((!_cups_strcasecmp(line, "Port") || !_cups_strcasecmp(line, "Listen")
+ #ifdef HAVE_SSL

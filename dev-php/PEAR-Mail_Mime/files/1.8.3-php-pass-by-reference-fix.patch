@@ -1,0 +1,74 @@
+--- a/Mail/mime.php.orig	2007-08-16 12:16:47.000000000 +0200
++++ b/Mail/mime.php	2007-08-16 12:25:07.000000000 +0200
+@@ -376,7 +376,7 @@
+      * @return string  contents of $file_name
+      * @access private
+      */
+-    function &_file2str($file_name)
++    function _file2str($file_name)
+     {
+         if (!is_readable($file_name)) {
+             $err = PEAR::raiseError('File is not readable ' . $file_name);
+@@ -413,7 +413,7 @@
+      * @return object  The text mimePart object
+      * @access private
+      */
+-    function &_addTextPart(&$obj, $text)
++    function _addTextPart(&$obj, $text)
+     {
+         $params['content_type'] = 'text/plain';
+         $params['encoding']     = $this->_build_params['text_encoding'];
+@@ -437,7 +437,7 @@
+      * @return object The html mimePart object
+      * @access private
+      */
+-    function &_addHtmlPart(&$obj)
++    function _addHtmlPart(&$obj)
+     {
+         $params['content_type'] = 'text/html';
+         $params['encoding']     = $this->_build_params['html_encoding'];
+@@ -459,7 +459,7 @@
+      * @return object The multipart/mixed mimePart object
+      * @access private
+      */
+-    function &_addMixedPart()
++    function _addMixedPart()
+     {
+         $params                 = array();
+         $params['content_type'] = 'multipart/mixed';
+@@ -480,7 +480,7 @@
+      * @return object  The multipart/mixed mimePart object
+      * @access private
+      */
+-    function &_addAlternativePart(&$obj)
++    function _addAlternativePart(&$obj)
+     {
+         $params['content_type'] = 'multipart/alternative';
+         if (is_object($obj)) {
+@@ -502,7 +502,7 @@
+      * @return object  The multipart/mixed mimePart object
+      * @access private
+      */
+-    function &_addRelatedPart(&$obj)
++    function _addRelatedPart(&$obj)
+     {
+         $params['content_type'] = 'multipart/related';
+         if (is_object($obj)) {
+@@ -523,7 +523,7 @@
+      * @return object  The image mimePart object
+      * @access private
+      */
+-    function &_addHtmlImagePart(&$obj, $value)
++    function _addHtmlImagePart(&$obj, $value)
+     {
+         $params['content_type'] = $value['c_type'];
+         $params['encoding']     = 'base64';
+@@ -546,7 +546,7 @@
+      * @return object  The image mimePart object
+      * @access private
+      */
+-    function &_addAttachmentPart(&$obj, $value)
++    function _addAttachmentPart(&$obj, $value)
+     {
+         $params['dfilename'] = $value['name'];
+         $params['encoding']  = $value['encoding'];

@@ -1,0 +1,19 @@
+diff -ur liblockfile-1.06-orig/Makefile.in liblockfile-1.06/Makefile.in
+--- liblockfile-1.06-orig/Makefile.in	2006-11-28 06:19:09.000000000 +0100
++++ liblockfile-1.06/Makefile.in	2006-11-28 06:24:30.000000000 +0100
+@@ -5,6 +5,7 @@
+ #
+ 
+ VER	= 1.0
++MVER	= 1
+ NVER	= 0.1
+ 
+ CFLAGS		= @CFLAGS@ -I.
+@@ -55,6 +56,7 @@
+ install_shared:	shared install_common
+ 		install -m 755 liblockfile.so \
+ 			$(ROOT)$(libdir)/liblockfile.so.$(VER)
++		ln -s liblockfile.so.$(VER) $(ROOT)$(libdir)/liblockfile.so.$(MVER)
+ 		ln -s liblockfile.so.$(VER) $(ROOT)$(libdir)/liblockfile.so
+ 		if test "$(ROOT)" = ""; then @LDCONFIG@; fi
+ 

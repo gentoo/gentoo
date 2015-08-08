@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>toolchain</herd>
+	<use>
+		<flag name="lzma">Support automatic decompression of LZMA-compressed files and kernel images</flag>
+		<flag name="threads">Build the libraries with thread safe support</flag>
+		<flag name="utils">Install command-line utilities (all the eu-* programs)</flag>
+	</use>
+</pkgmetadata>

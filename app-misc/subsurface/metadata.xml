@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>me@bearsh.org</email>
+    <name>Martin Gysel</name>
+    <description>Proxy maintainer. Assign bugs to him.</description>    
+  </maintainer>
+  <maintainer>
+    <email>bauman.aaron@gmail.com</email>
+    <name>Aaron Bauman</name>
+    <description>Proxy maintainer. Please CC bugs to him.</description>
+  </maintainer>
+  <herd>proxy-maintainers</herd>
+  <longdescription lang="en">
+    An open source dive log program.
+  </longdescription>
+  <use>
+    <flag name="linguas_da_DK">Language support for da_DK.</flag>
+    <flag name="linguas_de_CH">Language support for de_CH.</flag>
+    <flag name="linguas_gsw">Language support for gsw.</flag>
+    <flag name="linguas_hr_HR">Language support for hr_HR.</flag>
+  </use>
+</pkgmetadata>

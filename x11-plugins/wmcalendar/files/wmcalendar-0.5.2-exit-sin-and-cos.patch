@@ -1,0 +1,67 @@
+--- a/Src/calendarfunc.c	2003-07-13 17:41:02.000000000 +0300
++++ b/Src/calendarfunc.c	2008-05-03 10:03:06.000000000 +0300
+@@ -22,7 +22,7 @@
+ 
+ #include "calendarfunc.h"
+ #include <stdio.h>
+-
++#include <math.h>
+ 
+ 
+ long persian_jdn(struct icaltimetype dt)
+--- a/Src/dockapp.c	2003-07-15 18:15:12.000000000 +0300
++++ b/Src/dockapp.c	2008-05-03 10:03:34.000000000 +0300
+@@ -23,6 +23,7 @@
+  * modified by Seiichi SATO <ssato@sh.rim.or.jp>
+  */
+ 
++#include <stdlib.h>
+ #include "dockapp.h"
+ 
+ #define WINDOWED_SIZE_W 64
+--- a/Src/Makefile	2003-07-15 18:19:26.000000000 +0300
++++ b/Src/Makefile	2008-05-03 10:11:48.000000000 +0300
+@@ -1,19 +1,15 @@
+-CC     = gcc
++CC     ?= gcc
+ INCLUDES  = `pkg-config --cflags gtk+-2.0` -I. 
+-LFLAGS = `pkg-config --libs gtk+-2.0`
+ 
+ # for BSD
+ #INCLUDES = `gtk12-config --cflags` -I. 
+ #LFLAGS = `gtk12-config --libs`
+-X11BASE = /usr/X11R6
+-CFLAGS =  $(INCLUDES) -DICON_TYPE=$(ICON_TYPE)
+-INCDIR = -I$(X11BASE)/include/X11 -I$(X11BASE)/include -I$/usr/include -I$/usr/local/include
+-DESTDIR= /usr/local
+-LIBDIR = -L/usr/lib -L${X11BASE}/lib -L/usr/local/lib
++CFLAGS +=  $(INCLUDES) -DICON_TYPE=$(ICON_TYPE)
++PREFIX = /usr
+ PACKAGE = wmCalendar
+ 
+ # for Linux
+-LIBS   = $(LIBDIR) -lXpm -lical -lpthread
++LIBS   = -lpthread -lm $(shell $(PKG_CONFIG) --libs gtk+-2.0 x11 xpm xext libical)
+ # for Solaris (untested!!!)
+ # LIBS   = -lXpm -lX11 -lXext -lsocket -lnsl -lical
+ 
+@@ -30,7 +26,7 @@
+ all:	wmCalendar.o wmCalendar 
+ 
+ wmCalendar: $(OBJECTS) 
+-	 $(CC) $(COPTS)  $(SYSTEM) $(LFLAGS) -o $@ $(OBJECTS) -o wmCalendar $(INCDIR)$(LIBDIR) $(LIBS)
++	 $(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
+ 
+ wmCalendar.o: wmCalendar_master.xpm   wmCalendar_master2.xpm
+ clean:
+@@ -40,6 +36,8 @@
+ 	rm -f wmCalendar
+ 
+ install:: wmCalendar
+-	install -c -s -m 0755 wmCalendar $(DESTDIR)/bin/
+-	install -c -m 0644 wmCalendar.1 $(DESTDIR)/man/man1 
++	install -d $(DESTDIR)$(PREFIX)/bin
++	install -m 0755 wmCalendar $(DESTDIR)$(PREFIX)/bin
++	install -d $(DESTDIR)$(PREFIX)/share/man/man1
++	install -m 0644 wmCalendar.1 $(DESTDIR)$(PREFIX)/share/man/man1 
+ 

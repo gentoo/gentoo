@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-mathematics</herd>
+	<longdescription lang="en">
+  muParser is a C++ library for mathematical expression parsing.
+  It is based on transforming an expression into a bytecode and
+  precalculating constant parts of it.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">muparser</remote-id>
+	</upstream>
+</pkgmetadata>

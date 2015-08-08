@@ -1,0 +1,35 @@
+--- chessx-1.2.2/src/quazip/ioapi.h
++++ chessx-1.2.2-patched/src/quazip/ioapi.h
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* ioapi.h -- IO base function header for compress/uncompress .zip
+    files using zlib + zip or unzip API
+ 
+--- chessx-1.2.2/src/quazip/unzip.c
++++ chessx-1.2.2-patched/src/quazip/unzip.c
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* unzip.c -- IO for uncompress .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 
+--- chessx-1.2.2/src/quazip/unzip.h
++++ chessx-1.2.2-patched/src/quazip/unzip.h
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* unzip.h -- IO for uncompress .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 
+--- chessx-1.2.2/src/quazip/zip.c
++++ chessx-1.2.2-patched/src/quazip/zip.c
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* zip.c -- IO on .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 
+--- chessx-1.2.2/src/quazip/zip.h
++++ chessx-1.2.2-patched/src/quazip/zip.h
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* zip.h -- IO for compress .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 

@@ -1,0 +1,37 @@
+From 48500945ca9717907189389d0a57e6df5f09a82c Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 8 Sep 2013 22:34:13 +0200
+Subject: [PATCH] Fix .desktop files validation
+
+---
+ html/server/div/WebHTTrack-Websites.desktop | 2 +-
+ html/server/div/WebHTTrack.desktop          | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/html/server/div/WebHTTrack-Websites.desktop b/html/server/div/WebHTTrack-Websites.desktop
+index 6efcab8..d36a4f9 100644
+--- a/html/server/div/WebHTTrack-Websites.desktop
++++ b/html/server/div/WebHTTrack-Websites.desktop
+@@ -5,6 +5,6 @@ Categories=Network;
+ Terminal=false
+ Name=Browse Mirrored Websites
+ Comment=Browse Websites Mirrored by WebHTTrack
+-Keywords=browse mirrored
++Keywords=browse mirrored;
+ Exec=webhttrack browse
+ Icon=httrack
+diff --git a/html/server/div/WebHTTrack.desktop b/html/server/div/WebHTTrack.desktop
+index 984f4c7..28591f2 100644
+--- a/html/server/div/WebHTTrack.desktop
++++ b/html/server/div/WebHTTrack.desktop
+@@ -5,6 +5,6 @@ Categories=Network;
+ Terminal=false
+ Name=WebHTTrack Website Copier
+ Comment=Copy websites to your computer
+-Keywords=copy website;backup website;capture website;offline browser;surf offline;mirror;mirroring;archiving;forensics;crawl;preservation
++Keywords=copy website;backup website;capture website;offline browser;surf offline;mirror;mirroring;archiving;forensics;crawl;preservation;
+ Exec=webhttrack
+ Icon=httrack
+-- 
+1.8.2.1
+

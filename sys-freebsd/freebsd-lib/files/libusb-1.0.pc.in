@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=@LIBDIR@
+includedir=${prefix}/include
+
+Name: libusb
+Description: USB access library (FreeBSD version)
+Version: 1.0.1
+Libs: -L${libdir} -lusb
+Cflags: -I${includedir}
+

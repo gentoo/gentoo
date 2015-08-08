@@ -1,0 +1,12 @@
+diff -Nuar --exclude '*.orig' awesome-3.5-rc1.orig/awesomeConfig.cmake awesome-3.5-rc1/awesomeConfig.cmake
+--- awesome-3.5-rc1.orig/awesomeConfig.cmake	2012-11-24 13:51:33.000000000 +0000
++++ awesome-3.5-rc1/awesomeConfig.cmake	2012-11-24 20:42:23.743412441 +0000
+@@ -56,7 +56,7 @@
+ a_find_program(LUA_EXECUTABLE lua FALSE)
+ a_find_program(LDOC_EXECUTABLE ldoc.lua FALSE)
+ # theme graphics
+-a_find_program(CONVERT_EXECUTABLE convert TRUE)
++a_find_program(CONVERT_EXECUTABLE bin/convert TRUE)
+ # doxygen
+ include(FindDoxygen)
+ # pkg-config

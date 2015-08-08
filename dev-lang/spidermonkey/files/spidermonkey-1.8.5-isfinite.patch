@@ -1,0 +1,11 @@
+--- js/src/jsnum.h	2011-03-03 05:43:06.000000000 -0500
++++ js/src/jsnum.h.new	2012-08-16 14:58:04.000000000 -0400
+@@ -97,6 +97,8 @@
+ {
+ #ifdef WIN32
+     return _finite(d);
++#elif defined(__UCLIBC__)
++    return isfinite(d);
+ #else
+     return finite(d);
+ #endif

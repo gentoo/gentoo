@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=xmonad
+Comment=A lightweight window manager
+Exec=/etc/X11/Sessions/xmonad
+TryExec=xmonad
+Icon=
+Type=Application

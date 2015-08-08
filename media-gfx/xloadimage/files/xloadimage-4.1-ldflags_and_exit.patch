@@ -1,0 +1,23 @@
+diff -ur xloadimage.4.1.orig/Makefile.in xloadimage.4.1/Makefile.in
+--- xloadimage.4.1.orig/Makefile.in	2009-09-04 15:37:09.000000000 +0300
++++ xloadimage.4.1/Makefile.in	2009-09-04 15:38:50.000000000 +0300
+@@ -27,7 +27,7 @@
+ 	$(CC) -o $@ $(OBJS) build.o $(LDFLAGS) $(XLIB) $(LIBS)
+ 
+ uufilter: uufilter.c
+-	$(CC) $(CFLAGS) $(DEFS) uufilter.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) uufilter.c -o $@
+ 
+ .c.o: config.h image.h
+ 	$(CC) $(CFLAGS) -c $(DEFS) $<
+diff -ur xloadimage.4.1.orig/uufilter.c xloadimage.4.1/uufilter.c
+--- xloadimage.4.1.orig/uufilter.c	2009-09-04 15:37:09.000000000 +0300
++++ xloadimage.4.1/uufilter.c	2009-09-04 15:37:59.000000000 +0300
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ int main(argc, argv)

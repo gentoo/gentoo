@@ -1,0 +1,4 @@
+uclibc/x86
+# cd /etc/
+# rm make.profile
+# ln -s ../usr/portage/profiles/uclibc/x86 make.profile

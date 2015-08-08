@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A general sequence representation with arbitrary
+		annotations, for use as a base for implementations of
+		various collection types, with examples, as described
+		in section 4 of
+		
+		* Ralf Hinze and Ross Paterson,
+		\&quot;Finger trees: a simple general-purpose data structure\&quot;,
+		/Journal of Functional Programming/ 16:2 (2006) pp 197-217.
+		&lt;http://www.soi.city.ac.uk/~ross/papers/FingerTree.html&gt;
+		
+		For a tuned sequence type, see @Data.Sequence@ in the
+		@containers@ package, which is a specialization of
+		this structure.
+	</longdescription>
+</pkgmetadata>

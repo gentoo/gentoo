@@ -1,0 +1,11 @@
+--- kdump/Makefile
++++ kdump/Makefile
+@@ -18,7 +18,7 @@
+ $(KDUMP): CC=$(TARGET_CC)
+ $(KDUMP): $(KDUMP_OBJS)
+ 	@$(MKDIR) -p $(@D)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -o $@ $(KDUMP_OBJS)
++	$(LINK.o) $(CFLAGS) -o $@ $(KDUMP_OBJS)
+ 
+ $(KDUMP_MANPAGE): kdump/kdump.8
+ 	$(MKDIR) -p     $(MANDIR)/man8

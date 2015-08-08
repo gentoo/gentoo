@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cpp</herd>
+	<use>
+		<flag name="boost">Enable the usage of <pkg>dev-libs/boost</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">stlport</remote-id>
+	</upstream>
+</pkgmetadata>

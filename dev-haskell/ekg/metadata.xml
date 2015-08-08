@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This library lets you remotely monitor a running process over HTTP.
+		It provides a simple way to integrate a monitoring server into any
+		application.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">tibbe/ekg</remote-id>
+	</upstream>
+</pkgmetadata>

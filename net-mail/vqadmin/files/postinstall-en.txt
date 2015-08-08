@@ -1,0 +1,12 @@
+You need to setup authentication. For apache do the following:
+
+<Files ${VHOST_CGIBINDIR}/${PN}>
+	AuthType Basic
+	AuthUserFile ${VHOST_CONFDIR}${PN}.passwd
+	AuthName ${PN}
+	Require valid-user
+</Files>
+
+The create the password file like this:
+
+htpasswd -c ${VHOST_CONFDIR}${PN}.passwd <user>

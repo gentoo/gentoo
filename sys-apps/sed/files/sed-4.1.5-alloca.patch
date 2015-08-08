@@ -1,0 +1,14 @@
+fix building on BSD systems which often do not have alloca.h
+
+--- sed-4.1.5/lib/regex_internal.h
++++ sed-4.1.5/lib/regex_internal.h
+@@ -410,7 +410,9 @@ static unsigned int re_string_context_at
+ #define re_string_skip_bytes(pstr,idx) ((pstr)->cur_idx += (idx))
+ #define re_string_set_index(pstr,idx) ((pstr)->cur_idx = (idx))
+ 
++#ifdef HAVE_ALLOCA_H
+ #include <alloca.h>
++#endif
+ 
+ #ifndef _LIBC
+ # if HAVE_ALLOCA

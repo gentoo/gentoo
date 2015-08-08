@@ -1,0 +1,11 @@
+--- configure.in_old	2009-01-26 21:46:07.000000000 +0100
++++ configure.in	2009-01-26 21:47:25.000000000 +0100
+@@ -67,7 +67,7 @@
+       AS_HELP_STRING([--disable-avcodec], [Don't build plugins depending on avcodec (a52)]))
+ 
+ if test "x$enable_avcodec" != "xno"; then
+-  PKG_CHECK_MODULES(AVCODEC, [libavcodec], [HAVE_AVCODEC=yes], [HAVE_AVCODEC=no])
++  PKG_CHECK_MODULES(AVCODEC, [libavcodec libavutil], [HAVE_AVCODEC=yes], [HAVE_AVCODEC=no])
+ fi
+ 
+ if test "x$HAVE_AVCODEC" = "xno"; then

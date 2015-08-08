@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>maintainer-needed@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    Suite of programs to manage some I2O-compliant RAID controllers; in
+    particular some Adaptec hardware; to be very specific those using the
+    dpt_i2o kernel module or CONFIG_SCSI_DPT_I2O driver. One can create/delete a
+    RAID array, add/remove a hot spare drive to/from an array, activate/silence
+    the alarm, and query array/disk status.
+  </longdescription>
+</pkgmetadata>

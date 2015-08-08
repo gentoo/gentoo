@@ -1,0 +1,15 @@
+Ripped from Fedora
+
+http://lists.gnu.org/archive/html/bug-bash/2005-12/msg00013.html
+https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=173283
+
+--- bash-3.0/builtins/read.def
++++ bash-3.0/builtins/read.def
+@@ -461,6 +461,7 @@
+   if (retval < 0)
+     {
+       builtin_error (_("read error: %d: %s"), fd, strerror (errno));
++      run_unwind_frame ("read_builtin");
+       return (EXECUTION_FAILURE);
+     }
+ #endif

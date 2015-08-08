@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+	Data analysis and scientific plotting package. This is a clone of the
+	popular Origin software available on another well known platform implemented
+	in Qt with powerful 2D and 3D data plotting, ASCII import and powerful
+	spreadsheet data manipulation using column logic. Curve fitting and other
+	statistical tools are also available.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,98 @@
+diff --git a/lib/libcam/Makefile b/lib/libcam/Makefile
+index 9a21dde..0815f0a 100644
+--- a/lib/libcam/Makefile
++++ b/lib/libcam/Makefile
+@@ -8,6 +8,7 @@ INCS=		camlib.h
+ 
+ DPADD=		${LIBSBUF}
+ LDADD=		-lsbuf
++LDFLAGS+=	-L${.OBJDIR}/../libsbuf
+ 
+ MAN=		cam.3 cam_cdbparse.3
+ 
+diff --git a/lib/libdwarf/Makefile b/lib/libdwarf/Makefile
+index dbd7895..607b1f6 100644
+--- a/lib/libdwarf/Makefile
++++ b/lib/libdwarf/Makefile
+@@ -21,6 +21,7 @@ SRCS=	\
+ INCS=	dwarf.h libdwarf.h
+ 
+ CFLAGS+=	-I${.CURDIR}
++CFLAGS+=	-I${.CURDIR}/../libelf
+ 
+ SHLIB_MAJOR=	3
+ 
+diff --git a/lib/libproc/Makefile b/lib/libproc/Makefile
+index 4449c06..f024cf0 100644
+--- a/lib/libproc/Makefile
++++ b/lib/libproc/Makefile
+@@ -14,6 +14,7 @@ SRCS=	proc_bkpt.c		\
+ INCS=	libproc.h
+ 
+ CFLAGS+=	-I${.CURDIR}
++CFLAGS+=	-I${.CURDIR}/../libelf
+ 
+ .if ${MK_LIBCPLUSPLUS} != "no"
+ LDADD+=		-lcxxrt
+@@ -27,4 +28,7 @@ SHLIB_MAJOR=	2
+ 
+ WITHOUT_MAN=
+ 
++LDADD+=		-lelf
++LDFLAGS+=	-L${.OBJDIR}/../libelf
++
+ .include <bsd.lib.mk>
+diff --git a/lib/libprocstat/Makefile b/lib/libprocstat/Makefile
+index af5a775..c01aa05 100644
+--- a/lib/libprocstat/Makefile
++++ b/lib/libprocstat/Makefile
+@@ -16,6 +16,8 @@ VERSION_DEF=	${.CURDIR}/Versions.def
+ SYMBOL_MAPS=	${.CURDIR}/Symbol.map
+ 
+ INCS=		libprocstat.h
++CFLAGS+=	-I${.CURDIR}/../libelf
++LDFLAGS+=       -L${.OBJDIR}/../libelf
+ CFLAGS+=	-I. -I${.CURDIR} -D_KVM_VNODE
+ SHLIB_MAJOR=	1
+ 
+diff --git a/lib/librtld_db/Makefile b/lib/librtld_db/Makefile
+index 2815a07..e992662 100644
+--- a/lib/librtld_db/Makefile
++++ b/lib/librtld_db/Makefile
+@@ -10,5 +10,8 @@ SRCS=		rtld_db.c
+ INCS=		rtld_db.h
+ 
+ CFLAGS+= -I${.CURDIR}
++CFLAGS+= -I${.CURDIR}/../libelf
++LDADD+= -lutil -lproc
++LDFLAGS+= -L${.OBJDIR}/../libutil -L${.OBJDIR}/../libproc
+ 
+ .include <bsd.lib.mk>
+diff --git a/lib/libtelnet/Makefile b/lib/libtelnet/Makefile
+index 1cf52a0..3d25fae 100644
+--- a/lib/libtelnet/Makefile
++++ b/lib/libtelnet/Makefile
+@@ -13,6 +13,8 @@ INTERNALLIB=
+ SRCS=		genget.c getent.c misc.c
+ CFLAGS+=	-I${TELNETDIR}
+ 
++CFLAGS+=	-I${.CURDIR}/../libmp
++
+ WARNS?=		2
+ 
+ .if !defined(RELEASE_CRUNCH)
+diff --git a/lib/libexecinfo/Makefile b/lib/libexecinfo/Makefile
+index 30a1dfb..9f8a99c 100644
+--- a/lib/libexecinfo/Makefile
++++ b/lib/libexecinfo/Makefile
+@@ -10,8 +10,10 @@ SHLIB_MAJOR=	1
+ INCS=		execinfo.h
+ SRCS=		backtrace.c symtab.c unwind.c
+ 
++CFLAGS+=	-I${.CURDIR}/../libelf
+ DPADD=		${LIBELF}
+ LDADD=		-lelf
++LDFLAGS+=	-L${.OBJDIR}/../libelf
+ 
+ MAN=		backtrace.3
+ 

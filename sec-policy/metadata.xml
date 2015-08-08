@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sec-policy category contains security policies for
+		access control systems such as SELinux.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sec-policy contiene políticas de seguridad para sistemas de
+		control de acceso como SELinux.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sec-policy enthält Sicherheitsrichtlinien für 
+		Zugriffskontrollsysteme wie SELinux.
+	</longdescription>
+	<longdescription lang="ja">
+		sec-policyカテゴリーにはSELinuxのようなアクセス・コントロール・システムの
+		ためのセキュリティポリシー(修正をが加えられたパッケージ)が含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sec-policy categorie bevat beveilingsrichtlijnen voor toegangscontrole-
+		systemen als SELinux. 
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sec-policy chứa các chính sách an ninh cho các hệ thống
+		điều khiển quyền truy cập như SELinux.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sec-policy contiene le politiche di sicurezza per i sistemi di controllo
+		di accesso come SELinux.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sec-policy contém políticas de segurança para
+		sistemas de controle de acesso como SELinux.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sec-policy zawiera polityki bezpieczeństwa i programy kontroli
+		dostępu takie jak np. SELinux.
+	</longdescription>
+</catmetadata>
+

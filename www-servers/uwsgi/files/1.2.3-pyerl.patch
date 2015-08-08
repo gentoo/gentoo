@@ -1,0 +1,31 @@
+diff --git a/plugins/pyerl/pyerl.c b/plugins/pyerl/pyerl.c
+index a335f03..aee98e2 100644
+--- a/plugins/pyerl/pyerl.c
++++ b/plugins/pyerl/pyerl.c
+@@ -537,7 +537,7 @@ void pyerl_init() {
+ }
+ 
+ struct uwsgi_plugin pyerl_plugin = {
+-
++        .name = "pyerl",
+         .post_init = pyerl_init,
+ };
+ 
+diff --git a/plugins/pyerl/uwsgiplugin.py b/plugins/pyerl/uwsgiplugin.py
+index 161d722..ae9c68d 100644
+--- a/plugins/pyerl/uwsgiplugin.py
++++ b/plugins/pyerl/uwsgiplugin.py
+@@ -1,7 +1,12 @@
+ from distutils import sysconfig
++import os
+ 
+ NAME='pyerl'
+-CFLAGS = ['-I' + sysconfig.get_python_inc(), '-I' + sysconfig.get_python_inc(plat_specific=True)]
++
++ERLANGPATH = os.environ.get('UWSGICONFIG_ERLANGPATH', 'erl')
++includedir = os.popen(ERLANGPATH + " -noshell -noinput -eval \"io:format('~s~n', [code:lib_dir(erl_interface, include)])\" -s erlang halt").read().rstrip()
++
++CFLAGS = ['-I' + sysconfig.get_python_inc(), '-I' + sysconfig.get_python_inc(plat_specific=True),  '-I' + includedir ]
+ LDFLAGS = []
+ LIBS = []
+ 

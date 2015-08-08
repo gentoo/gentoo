@@ -1,0 +1,11 @@
+diff -Naur keepassx-0.4.3/src/lib/random.cpp keepassx-0.4.3.new/src/lib/random.cpp
+--- keepassx-0.4.3/src/lib/random.cpp	2009-06-28 16:22:31.000000000 +0200
++++ keepassx-0.4.3.new/src/lib/random.cpp	2012-04-19 00:20:15.757415510 +0200
+@@ -19,6 +19,7 @@
+  ***************************************************************************/
+ 
+ #include "random.h"
++#include <unistd.h>
+ 
+ 
+ #if defined(Q_WS_X11) || defined(Q_WS_MAC)

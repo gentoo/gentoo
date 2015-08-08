@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>fauli@gentoo.org</email>
+  <name>Christian Faulhammer</name>
+</maintainer>
+<maintainer>
+  <email>ulm@gentoo.org</email>
+  <name>Ulrich Müller</name>
+</maintainer>
+<longdescription>
+  Conkeror is a keyboard-oriented, highly-customizable, highly-extensible
+  web browser based on Mozilla XULRunner, written mainly in JavaScript, and
+  inspired by exceptional software such as Emacs and vi. Conkeror features a
+  sophisticated keyboard system, allowing users to run commands and interact
+  with content in powerful and novel ways, and it is self-documenting,
+  featuring a powerful interactive help system.
+</longdescription>
+</pkgmetadata>

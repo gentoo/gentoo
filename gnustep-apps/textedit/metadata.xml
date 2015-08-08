@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnustep</herd>
+<longdescription>
+TextEdit
+
+This directory contains the source code for the TextEdit demo, which is a simple text editor.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+# drop -Ofast option understood only from gcc-4.6 on 
+# and make it respect LDFLAGS and CXXFLAGS
+--- src/Makefile.old	2012-02-11 13:29:27.000000000 +0100
++++ src/Makefile	2012-02-11 13:31:13.000000000 +0100
+@@ -59,13 +59,7 @@
+ INSTALLDIR = /usr/local/bin
+ 
+ # Compiler options
+-ifeq ($(GSPICEUI_DBG),0)
+-  # Options for release (not using -Wall since it's GCC specific)
+-  CXXFLAGS := -Ofast -pipe $(shell $(WXCFG) --cxxflags)
+-else
+-  # Options for development
+-  CXXFLAGS := -Wall -g -pipe $(shell $(WXCFG) --cxxflags)
+-endif
++  CXXFLAGS += $(shell $(WXCFG) --cxxflags)
+ 
+ # Includes
+ INCLUDES = -I/usr/include -I/usr/X11R6/include -I.
+@@ -106,7 +100,7 @@
+ #   -o     specify the output file name
+ 
+ $(BINDIR)/$(PROG) : $(OBJS)
+-	$(CC) -pipe -o $(BINDIR)/$(PROG) obj/*.o $(LIBS)
++	$(CC) -pipe -o $(BINDIR)/$(PROG) obj/*.o $(LDFLAGS) $(LIBS)
+ ifeq ($(ROOT)/GSpiceUI.app,$(wildcard $(ROOT)/GSpiceUI.app))
+ 	cp $(BINDIR)/$(PROG) $(ROOT)/GSpiceUI.app/Contents/MacOS/gspiceui
+ endif

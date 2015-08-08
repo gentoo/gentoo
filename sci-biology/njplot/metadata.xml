@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-biology</herd>
+  <longdescription>
+		NJplot is a tree drawing program able to draw any phylogenetic tree
+		expressed in the Newick phylogenetic tree format (e.g., the format used
+		by the PHYLIP package). NJplot is especially convenient for rooting the
+		unrooted trees obtained from parsimony, distance or maximum likelihood
+		tree-building methods.
+	</longdescription>
+</pkgmetadata>

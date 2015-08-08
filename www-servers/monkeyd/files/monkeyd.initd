@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+DAEMON="/usr/bin/monkey"
+CONFFILE="/etc/monkeyd/monkey.conf"
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting monkeyd"
+	start-stop-daemon --start --exec "${DAEMON}" -- "-D" "${MONKEY_ARGS}" >/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping monkeyd"
+	local PORT=$(awk '/^ *Port/ { print $2 }' "${CONFFILE}")
+	local PIDFILE=$(awk '/^ *PidFile/ { print $2 }' "${CONFFILE}")
+	PIDFILE="${PIDFILE}"."${PORT}"
+	start-stop-daemon --stop --quiet --pidfile "${PIDFILE}"
+	eend $?
+}

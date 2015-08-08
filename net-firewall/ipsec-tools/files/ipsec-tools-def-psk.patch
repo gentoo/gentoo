@@ -1,0 +1,25 @@
+diff -brau ipsec-tools-0.7.3.o/src/racoon/oakley.c ipsec-tools-0.7.3/src/racoon/oakley.c
+--- ipsec-tools-0.7.3.o/src/racoon/oakley.c	2009-08-13 11:18:45.000000000 +0200
++++ ipsec-tools-0.7.3/src/racoon/oakley.c	2011-06-06 09:36:11.000000000 +0200
+@@ -2498,8 +2498,21 @@
+ 				plog(LLV_ERROR, LOCATION, iph1->remote,
+ 					"couldn't find the pskey for %s.\n",
+ 					saddrwop2str(iph1->remote));
++			}
++		}
++		if (iph1->authstr == NULL) {
++			/*
++			 * If we could not locate a psk above try and locate
++			 * the default psk, ie, "*".
++			 */
++			iph1->authstr = privsep_getpsk("*", 1);
++			if (iph1->authstr == NULL) {
++				plog(LLV_ERROR, LOCATION, iph1->remote,
++					"couldn't find the the default pskey either.\n");
+ 				goto end;
+ 			}
++			plog(LLV_NOTIFY, LOCATION, iph1->remote,
++					"Using default PSK.\n");
+ 		}
+ 		plog(LLV_DEBUG, LOCATION, NULL, "the psk found.\n");
+ 		/* should be secret PSK */

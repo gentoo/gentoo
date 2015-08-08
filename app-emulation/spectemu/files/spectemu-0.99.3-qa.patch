@@ -1,0 +1,23 @@
+--- spectemu-0.99.3/Makefile.in
++++ spectemu-0.99.3/Makefile.in
+@@ -45,9 +45,9 @@
+ 
+ install_prog: $(progs)
+ 	if test -f xspect; then \
+-	   $(INSTALL_PROGRAM) -s -m 755 xspect $(i_bindir); fi
++	   $(INSTALL_PROGRAM) -m 755 xspect $(i_bindir); fi
+ 	if test -f vgaspect; then \
+-	   $(INSTALL_PROGRAM) -s -m 4755 vgaspect $(i_bindir); fi
++	   $(INSTALL_PROGRAM) -m 4755 vgaspect $(i_bindir); fi
+ 
+ install_man:
+ 	$(INSTALL_DATA) ./xspect.1 $(i_mandir)
+@@ -88,7 +88,7 @@
+ 	./sp_to_s < i386emul.sp > i386emul.s
+ 
+ i386emul.o: i386emul.s
+-	$(CC) -c $(CFLAGS) i386emul.s
++	$(CC) -c $(ASFLAGS) -Xassembler --noexecstack i386emul.s
+ 
+ sp_to_s: sp_to_s.o
+ 	$(CC) -o sp_to_s $(LDFLAGS) sp_to_s.o

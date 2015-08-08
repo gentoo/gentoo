@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cpp</herd>
+	<longdescription>Socket++ library defines a family of C++ classes that can be used more effectively than directly calling the underlying low-level system functions.</longdescription>
+</pkgmetadata>

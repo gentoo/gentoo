@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<use>
+		<flag name='profile_accuracy'>
+			Compile a binary optimized for accuracy</flag>
+		<flag name='profile_balanced'>
+			Compile a binary with balanced optimization</flag>
+		<flag name='profile_performance'>
+			Compile a binary optimized for performance</flag>
+		<flag name='udev'>Enable udev based input</flag>
+	</use>
+</pkgmetadata>
+

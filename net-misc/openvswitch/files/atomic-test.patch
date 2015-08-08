@@ -1,0 +1,14 @@
+Description: Link atomic test with -latomic for powerpc.
+Author: Adam Conrad <adconrad@ubuntu.com>
+
+--- openvswitch-2.0.0.orig/tests/automake.mk
++++ openvswitch-2.0.0/tests/automake.mk
+@@ -181,7 +181,7 @@ tests_test_aes128_LDADD = lib/libopenvsw
+ 
+ noinst_PROGRAMS += tests/test-atomic
+ tests_test_atomic_SOURCES = tests/test-atomic.c
+-tests_test_atomic_LDADD = lib/libopenvswitch.a $(SSL_LIBS)
++tests_test_atomic_LDADD = lib/libopenvswitch.a $(SSL_LIBS) -latomic
+ 
+ noinst_PROGRAMS += tests/test-bundle
+ tests_test_bundle_SOURCES = tests/test-bundle.c

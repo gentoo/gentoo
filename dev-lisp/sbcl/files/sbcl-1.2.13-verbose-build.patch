@@ -1,0 +1,25 @@
+diff -r -U2 sbcl-1.2.13.orig/make.sh sbcl-1.2.13/make.sh
+--- sbcl-1.2.13.orig/make.sh	2015-06-29 01:24:03.000000000 +0600
++++ sbcl-1.2.13/make.sh	2015-06-29 15:53:04.430927942 +0600
+@@ -25,5 +25,5 @@
+ # any --xc-host parameter should be suitable for the host machine
+ # instead of the target.
+-sh make-config.sh "$@" || exit $?
++sh -x make-config.sh "$@" || exit $?
+ 
+ . output/prefix.def
+@@ -70,9 +70,9 @@
+ # and the make-target-*.sh scripts will take care of transferring the
+ # necessary files.
+-time sh make-host-1.sh
+-time sh make-target-1.sh
+-time sh make-host-2.sh
+-time sh make-target-2.sh
+-time sh make-target-contrib.sh
++time sh -x make-host-1.sh
++time sh -x make-target-1.sh
++time sh -x make-host-2.sh
++time sh -x make-target-2.sh
++time sh -x make-target-contrib.sh
+ 
+ NCONTRIBS=`find contrib -name Makefile -print | wc -l`

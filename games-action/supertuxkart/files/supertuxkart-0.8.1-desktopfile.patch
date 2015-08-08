@@ -1,0 +1,24 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu Dec 13 18:45:18 UTC 2012
+Subject: fix desktop file
+
+--- data/supertuxkart_desktop.template
++++ data/supertuxkart_desktop.template
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Name=SuperTuxKart
+-Icon=@PREFIX@/share/pixmaps/supertuxkart_128.png
++Icon=supertuxkart
+ GenericName=A kart racing game
+ GenericName[de_DE]=Ein Kart-Rennspiel
+ GenericName[fr_FR]=Un jeu de karting
+ GenericName[gl]=Xogo de carreiras con karts
+ GenericName[ro_RO]=Un joc de curse cu carturi
+-Exec=@PREFIX@/@STK_INSTALL_BINARY_DIR@/supertuxkart --no-console
++Exec=@STK_INSTALL_BINARY_DIR@/supertuxkart --no-console
+ Terminal=false
+ StartupNotify=false
+ Type=Application
+-TryExec=@PREFIX@/@STK_INSTALL_BINARY_DIR@/supertuxkart
++TryExec=@STK_INSTALL_BINARY_DIR@/supertuxkart
+ Categories=Game;ArcadeGame;

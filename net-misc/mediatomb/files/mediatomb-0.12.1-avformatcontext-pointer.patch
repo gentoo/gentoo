@@ -1,0 +1,19 @@
+When opening a file to check its avformat, the AVFormatContext pointer was
+not initialized to NULL before it was passed by reference to the open
+function.
+
+Patch by Bradley Broom <bmbroom@gmail.com>
+
+https://bugs.gentoo.org/show_bug.cgi?id=446922
+
+--- mediatomb-0.12.1/src/metadata/ffmpeg_handler.cc
++++ mediatomb-0.12.1/src/metadata/ffmpeg_handler.cc
+@@ -281,7 +281,7 @@
+     int x = 0;
+     int y = 0;
+ 
+-	AVFormatContext *pFormatCtx;
++	AVFormatContext *pFormatCtx = NULL;
+ 	
+ 	// Suppress all log messages
+ 	av_log_set_callback(FfmpegNoOutputStub);

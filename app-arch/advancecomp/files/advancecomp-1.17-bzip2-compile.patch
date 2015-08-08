@@ -1,0 +1,16 @@
+--- advancecomp-1.17/zipsh.cc
++++ advancecomp-1.17/zipsh.cc
+@@ -215,11 +215,11 @@
+ 		}
+ 
+ #if USE_BZIP2
+-		if (level != shrink_fast && !standard) {
++		if (level.level != shrink_fast && !standard) {
+ 			unsigned bzip2_level;
+ 			unsigned bzip2_workfactor;
+ 
+-			switch (level) {
++			switch (level.level) {
+ 			case shrink_normal :
+ 				bzip2_level = 6;
+ 				bzip2_workfactor = 30;

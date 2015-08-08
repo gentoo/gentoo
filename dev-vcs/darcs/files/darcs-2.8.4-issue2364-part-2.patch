@@ -1,0 +1,52 @@
+Tue May 13 22:07:19 FET 2014  Sergei Trofimovich <slyfox@community.haskell.org>
+  * resolve issue2364: don't break list of 'bad sources'
+  
+  This time the bug manifested on a simple operation:
+  $ darcs record -a -m "something"
+  
+  Attempt to write a patch resulted in something like:
+    Failed to record patch 'hello'
+  
+    HINT: I could not reach the following repositories:
+          http://repetae.net/repos/jhc
+          /home/st/.darcs/cache
+          /home/st/.cache/darcs
+          /home/st/dev/darcs/jhc
+        If you're not using them, you should probably delete
+  
+  The sequence should be the following:
+      1. store patch to inventory/foo
+      2. try to store to a writable cache (say, ~/.darcs/cache/patches)
+      3. fail to write
+      4. filter out bad caches
+      5. try again
+      6. copy from cache to patches/
+  
+  Due to missing NOINLINE step 4. led to
+  all caches treated as writable, thus step 5
+  failed without a chance for patch to
+  go to 'patches/'.
+  
+  As a side-effect building darcs with -O0 produced seemingly working darcs.
+  Reported-by: Ivan Miljenovic
+diff -rN -u old-darcs.net/src/Darcs/Util/Global.hs new-darcs.net/src/Darcs/Util/Global.hs
+--- old-darcs.net/src/Darcs/Global.hs	2014-05-13 22:23:29.897329750 +0300
++++ new-darcs.net/src/Darcs/Global.hs	2014-05-13 22:23:29.979329754 +0300
+@@ -135,7 +135,7 @@
+ 
+ _badSourcesList :: IORef [String]
+ _badSourcesList = unsafePerformIO $ newIORef []
+-{- NOINLINE _badSourcesList -}
++{-# NOINLINE _badSourcesList #-}
+ 
+ 
+ addBadSource :: String -> IO ()
+@@ -154,7 +154,7 @@
+ 
+ _reachableSourcesList :: IORef [String]
+ _reachableSourcesList = unsafePerformIO $ newIORef []
+-{- NOINLINE _reachableSourcesList -}
++{-# NOINLINE _reachableSourcesList #-}
+ 
+ 
+ addReachableSource :: String -> IO ()

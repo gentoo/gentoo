@@ -1,0 +1,38 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+#NB: Config is in /etc/conf.d/bozohttpd
+
+
+depend() {
+	need logger net
+}
+
+checkconfig() {
+	if [ -z "$DATADIR" ] || [ -z "$BIND_ADDRESS" ] || [ -z "$LISTEN_PORT" ]; then
+		eerror "You need to setup DATADIR, BIND_ADDRESS and LISTEN PORT in /etc/conf.d/bozohttpd first"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	local params=""
+	
+	[ -n "$USER" ]                     && params="$params -U $USER"	
+	[ -n "$INDEX_DEFAULT" ]            && params="$params -x $INDEX_DEFAULT"
+	[ -n "$APPEND" ]                   && params="$params $APPEND"	
+
+	ebegin "Starting bozohttpd"
+	start-stop-daemon --start --exec /usr/bin/bozohttpd -- -b -i $BIND_ADDRESS -I $LISTEN_PORT -X ${params} $DATADIR
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping bozohttpd"
+	start-stop-daemon --stop --exec /usr/bin/bozohttpd
+	eend ${?}
+}

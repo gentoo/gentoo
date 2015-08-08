@@ -1,0 +1,30 @@
+From b3e1f10a2d795d0cf31f6efb3f88a31ad4c68980 Mon Sep 17 00:00:00 2001
+From: Michael Stahl <mstahl@redhat.com>
+Date: Wed, 29 May 2013 16:29:04 +0200
+Subject: [PATCH] fix "Constant Groups" regression on file pages
+
+Due to a copy/paste error in the UNO IDL patch the "Namespaces"
+listed on the "File Reference" pages are erroneously duplicated.
+(thanks to Stephan Bergmann for finding this problem)
+
+Signed-off-by: Dimitri van Heesch <dimitri@stack.nl>
+---
+ src/layout.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/layout.cpp b/src/layout.cpp
+index c2b1ac5..010c850 100644
+--- a/src/layout.cpp
++++ b/src/layout.cpp
+@@ -582,7 +582,7 @@ class LayoutParser : public QXmlDefaultHandler
+                                            SrcLangExt_Fortran,theTranslator->trModules()
+                                          )));
+       m_sHandler.insert("file/memberdecl/constantgroups",
+-          new StartElementHandlerSection(this,LayoutDocEntry::FileNamespaces,&LayoutParser::startSectionEntry,
++          new StartElementHandlerSection(this,LayoutDocEntry::FileConstantGroups,&LayoutParser::startSectionEntry,
+                                          theTranslator->trConstantGroups()));
+       m_sHandler.insert("file/memberdecl/defines", 
+           new StartElementHandlerMember(this,&LayoutParser::startMemberDeclEntry,
+-- 
+1.8.1.6
+

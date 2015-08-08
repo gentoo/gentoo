@@ -1,0 +1,15 @@
+--- CMakeLists.txt.orig	2011-01-22 01:47:07.000000000 +0000
++++ CMakeLists.txt	2011-01-22 02:00:58.676084146 +0000
+@@ -209,9 +209,9 @@
+ # Install any extra files needed such as documentation and legacy Makefiles
+ #
+ # User example code
+-install(DIRECTORY examples
+-    DESTINATION ${GEANT4_DATAROOTDIR}/geant4-${geant4_VERSION}
+-    PATTERN "CVS" EXCLUDE)
++#install(DIRECTORY examples
++#    DESTINATION ${GEANT4_DATAROOTDIR}/geant4-${geant4_VERSION}
++#    PATTERN "CVS" EXCLUDE)
+ 
+ 
+ #

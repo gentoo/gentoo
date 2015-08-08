@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/503424#c5
+http://sourceforge.net/p/pam-ssh/bugs/16/
+
+--- a/pam_ssh.c
++++ b/pam_ssh.c
+@@ -867,6 +867,7 @@
+ 	int attempt;      /* No. of attempt to contact agent */
+ 	const char *user;               /* username */
+ 	struct options options;         /* PAM options */
++	struct stat sb;			/* to check for existing .ssh */
+ 
+ #if HAVE_PAM_STRUCT_OPTIONS || !HAVE_PAM_STD_OPTION
+ 	memset(&options, 0, sizeof options);
+@@ -916,7 +917,7 @@
+ 		openpam_restore_cred(pamh);
+ 		return PAM_SERVICE_ERR;
+ 	}
+-	if ((access(dotdir,F_OK)) == -1) {
++	if (stat(dotdir, &sb) == -1) {
+ 		pam_ssh_log(LOG_DEBUG, "inexistent configuration directory");
+ 		free(dotdir);
+ 		openpam_restore_cred(pamh);

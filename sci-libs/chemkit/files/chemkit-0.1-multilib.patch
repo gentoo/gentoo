@@ -1,0 +1,90 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e531be4..e0d6b2d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,7 +44,7 @@ configure_file(
+     "${CMAKE_MODULE_PATH}/ChemkitConfig.cmake.in"
+     "${CMAKE_BINARY_DIR}/ChemkitConfig.cmake"
+     IMMEDIATE @ONLY)
+-install(FILES ${CMAKE_BINARY_DIR}/ChemkitConfig.cmake DESTINATION lib/chemkit)
++install(FILES ${CMAKE_BINARY_DIR}/ChemkitConfig.cmake DESTINATION lib${LIB_SUFFIX}/chemkit)
+ 
+ # Create a ChemkitBuildTreeSettings.cmake file for the use from the build tree
+ configure_file(
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 88c6b5f..1100c3b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -8,12 +8,12 @@ macro(add_chemkit_library library_name)
+   add_library(${library_name} SHARED ${ARGN})
+ 
+   # add install target
+-  install(TARGETS ${library_name} DESTINATION lib)
++  install(TARGETS ${library_name} DESTINATION lib${LIB_SUFFIX})
+ 
+   # copy library into build directory
+   get_target_property(library_location ${library_name} LOCATION)
+   get_filename_component(library_filename ${library_location} NAME)
+-  add_custom_command(TARGET ${library_name} POST_BUILD COMMAND ${CMAKE_COMMAND} ARGS -E copy ${library_location} ${CMAKE_BINARY_DIR}/lib/${library_filename})
++  add_custom_command(TARGET ${library_name} POST_BUILD COMMAND ${CMAKE_COMMAND} ARGS -E copy ${library_location} ${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}/${library_filename})
+ 
+ endmacro(add_chemkit_library)
+ 
+diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
+index dc8970f..77029b7 100644
+--- a/src/plugins/CMakeLists.txt
++++ b/src/plugins/CMakeLists.txt
+@@ -3,7 +3,7 @@ macro(add_chemkit_plugin plugin_name)
+   add_library(${plugin_name} SHARED ${ARGN})
+ 
+   # add install target
+-  install(TARGETS ${plugin_name} DESTINATION lib/chemkit/plugins/)
++  install(TARGETS ${plugin_name} DESTINATION lib${LIB_SUFFIX}/chemkit/plugins/)
+ 
+   # remove 'lib' prefix
+   set_target_properties(${plugin_name} PROPERTIES PREFIX "")
+@@ -11,15 +11,15 @@ macro(add_chemkit_plugin plugin_name)
+   # copy plugin into build directory
+   get_target_property(plugin_location ${plugin_name} LOCATION)
+   get_filename_component(plugin_filename ${plugin_location} NAME)
+-  add_custom_command(TARGET ${plugin_name} POST_BUILD COMMAND ${CMAKE_COMMAND} ARGS -E copy ${plugin_location} ${CMAKE_BINARY_DIR}/lib/chemkit/plugins/${plugin_filename})
++  add_custom_command(TARGET ${plugin_name} POST_BUILD COMMAND ${CMAKE_COMMAND} ARGS -E copy ${plugin_location} ${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}/chemkit/plugins/${plugin_filename})
+ 
+   # plugin data
+   if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/data)
+     # copy plugin data into build directory
+-    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data/ DESTINATION ${CMAKE_BINARY_DIR}/lib/chemkit/plugins/data/${plugin_name}/)
++    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data/ DESTINATION ${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}/chemkit/plugins/data/${plugin_name}/)
+     
+     # install plugin data directory
+-    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/ DESTINATION lib/chemkit/plugins/data/${plugin_name})
++    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/ DESTINATION lib${LIB_SUFFIX}/chemkit/plugins/data/${plugin_name})
+   endif()
+ endmacro(add_chemkit_plugin)
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index b191b82..a4ea0b0 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -4,7 +4,7 @@ endif()
+ 
+ macro(add_chemkit_test test_name test_executable)
+   add_test(NAME ${test_name} COMMAND ${test_executable})
+-  set_tests_properties(${test_name} PROPERTIES ENVIRONMENT "CHEMKIT_PLUGIN_PATH=${CMAKE_BINARY_DIR}/lib/chemkit/plugins/")
++  set_tests_properties(${test_name} PROPERTIES ENVIRONMENT "CHEMKIT_PLUGIN_PATH=${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}/chemkit/plugins/")
+ endmacro(add_chemkit_test)
+ 
+ add_subdirectory(auto)
+diff --git a/tests/auto/bindings/python/CMakeLists.txt b/tests/auto/bindings/python/CMakeLists.txt
+index 9859867..70da693 100644
+--- a/tests/auto/bindings/python/CMakeLists.txt
++++ b/tests/auto/bindings/python/CMakeLists.txt
+@@ -5,7 +5,7 @@ endif()
+ macro(add_chemkit_python_test test_name test_script)
+   add_test(${test_name} ${PYTHON_EXECUTABLE} ${test_script})
+   set_tests_properties(${test_name} PROPERTIES
+-                       ENVIRONMENT "PYTHONPATH=${CMAKE_BINARY_DIR}/bindings/python/;CHEMKIT_PLUGIN_PATH=${CMAKE_BINARY_DIR}/lib/chemkit/plugins")
++                       ENVIRONMENT "PYTHONPATH=${CMAKE_BINARY_DIR}/bindings/python/;CHEMKIT_PLUGIN_PATH=${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}/chemkit/plugins")
+ endmacro(add_chemkit_python_test)
+ 
+ add_chemkit_python_test(python.Atom ${CMAKE_CURRENT_SOURCE_DIR}/atomtest.py)

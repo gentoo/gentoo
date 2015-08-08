@@ -1,0 +1,216 @@
+diff -urN pcf2bdf-1.04~/pcf2bdf.cc pcf2bdf-1.04/pcf2bdf.cc
+--- pcf2bdf-1.04~/pcf2bdf.cc	2002-10-20 18:35:29.000000000 +0200
++++ pcf2bdf-1.04/pcf2bdf.cc	2006-07-11 22:51:12.000000000 +0200
+@@ -4,9 +4,12 @@
+  * see xc/lib/font/bitmap/pcfread.c,pcfwrite.c for detail
+  */
+ 
++#define __STDC_FORMAT_MACROS
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <inttypes.h>
+ 
+ #if defined(_MSC_VER) // Microsoft Visual C++
+ #  include <io.h>
+@@ -28,13 +31,14 @@
+ // miscellaneous definition ///////////////////////////////////////////////////
+ 
+ 
+-typedef bool bool8;
+-typedef unsigned char uint8;
+-typedef unsigned char byte8;
+-typedef short int16;
+-typedef unsigned short uint16;
+-typedef long int32;
+-typedef unsigned long uint32;
++typedef uint8_t bool8;
++typedef int8_t int8;
++typedef uint8_t uint8;
++typedef uint8_t byte8;
++typedef int16_t int16;
++typedef uint16_t uint16;
++typedef int32_t int32;
++typedef uint32_t uint32;
+ 
+ // section ID
+ enum type32 {
+@@ -436,12 +440,12 @@
+ {
+   if (verbose)
+   {
+-    fprintf(stderr, "\t%s.leftSideBearing  = %d\n", name, m->leftSideBearing);
+-    fprintf(stderr, "\t%s.rightSideBearing = %d\n", name, m->rightSideBearing);
+-    fprintf(stderr, "\t%s.characterWidth   = %d\n", name, m->characterWidth);
+-    fprintf(stderr, "\t%s.ascent           = %d\n", name, m->ascent);
+-    fprintf(stderr, "\t%s.descent          = %d\n", name, m->descent);
+-    fprintf(stderr, "\t%s.attributes       = %04x\n", name, m->attributes);
++    fprintf(stderr, "\t%s.leftSideBearing  = %" PRId16 "\n", name, m->leftSideBearing);
++    fprintf(stderr, "\t%s.rightSideBearing = %" PRId16 "\n", name, m->rightSideBearing);
++    fprintf(stderr, "\t%s.characterWidth   = %" PRId16 "\n", name, m->characterWidth);
++    fprintf(stderr, "\t%s.ascent           = %" PRId16 "\n", name, m->ascent);
++    fprintf(stderr, "\t%s.descent          = %" PRId16 "\n", name, m->descent);
++    fprintf(stderr, "\t%s.attributes       = %04" PRIx16 "\n", name, m->attributes);
+   }
+ }
+ 
+@@ -467,20 +471,20 @@
+   accelerators.maxOverlap      = read_int32();
+   if (verbose)
+   {
+-    fprintf(stderr, "\tnoOverlap       = %d\n", (int)accelerators.noOverlap);
+-    fprintf(stderr, "\tconstantMetrics = %d\n",
+-	    (int)accelerators.constantMetrics);
+-    fprintf(stderr, "\tterminalFont    = %d\n",
+-	    (int)accelerators.terminalFont);
+-    fprintf(stderr, "\tconstantWidth   = %d\n",
+-	    (int)accelerators.constantWidth);
+-    fprintf(stderr, "\tinkInside       = %d\n", (int)accelerators.inkInside);
+-    fprintf(stderr, "\tinkMetrics      = %d\n", (int)accelerators.inkMetrics);
+-    fprintf(stderr, "\tdrawDirection   = %d\n",
+-	    (int)accelerators.drawDirection);
+-    fprintf(stderr, "\tfontAscent      = %d\n", (int)accelerators.fontAscent);
+-    fprintf(stderr, "\tfontDescent     = %d\n", (int)accelerators.fontDescent);
+-    fprintf(stderr, "\tmaxOverlap      = %d\n", (int)accelerators.maxOverlap);
++    fprintf(stderr, "\tnoOverlap       = %" PRId8 "\n", (int8)accelerators.noOverlap);
++    fprintf(stderr, "\tconstantMetrics = %" PRId8 "\n",
++	    (int8)accelerators.constantMetrics);
++    fprintf(stderr, "\tterminalFont    = %" PRId8 "\n",
++	    (int8)accelerators.terminalFont);
++    fprintf(stderr, "\tconstantWidth   = %" PRId8 "\n",
++	    (int8)accelerators.constantWidth);
++    fprintf(stderr, "\tinkInside       = %" PRId8 "\n", (int8)accelerators.inkInside);
++    fprintf(stderr, "\tinkMetrics      = %" PRId8 "\n", (int8)accelerators.inkMetrics);
++    fprintf(stderr, "\tdrawDirection   = %" PRId8 "\n",
++	    (int8)accelerators.drawDirection);
++    fprintf(stderr, "\tfontAscent      = %" PRId8 "\n", (int8)accelerators.fontAscent);
++    fprintf(stderr, "\tfontDescent     = %" PRId8 "\n", (int8)accelerators.fontDescent);
++    fprintf(stderr, "\tmaxOverlap      = %" PRId8 "\n", (int8)accelerators.maxOverlap);
+   }
+   read_metric(&accelerators.minBounds);
+   read_metric(&accelerators.maxBounds);
+@@ -667,7 +671,7 @@
+     }
+     else
+       if (verbose)
+-	fprintf(stderr, "%ld\n", props[i].value.v);
++	fprintf(stderr, "%" PRId32 "\n", props[i].value.v);
+   }
+   
+   // read old accelerators section
+@@ -711,7 +715,7 @@
+       break;
+   }
+   if (verbose)
+-    fprintf(stderr, "\tnMetrics = %ld\n", nMetrics);
++    fprintf(stderr, "\tnMetrics = %" PRId32 "\n", nMetrics);
+   fontbbx = metrics[0];
+   for (i = 1; i < nMetrics; i++)
+   {
+@@ -746,10 +750,10 @@
+   //
+   if (verbose)
+   {
+-    fprintf(stderr, "\t1<<format.scan = %d\n", 1 << format.scan);
++    fprintf(stderr, "\t1<<format.scan = %" PRId8 "\n", (int8)1 << format.scan);
+     fprintf(stderr, "\t%sSBit first\n", format.bit ? "M" : "L");
+     fprintf(stderr, "\t%sSByte first\n", format.byte ? "M" : "L");
+-    fprintf(stderr, "\t1<<format.glyph = %d\n", 1 << format.glyph);
++    fprintf(stderr, "\t1<<format.glyph = %" PRId8 "\n", (int8)1 << format.glyph);
+   }
+   if (format.bit != BDF_format.bit)
+   {
+@@ -798,11 +802,11 @@
+   defaultCh = read_int16();
+   if (verbose)
+   {
+-    fprintf(stderr, "\tfirstCol  = %X\n", firstCol);
+-    fprintf(stderr, "\tlastCol   = %X\n", lastCol);
+-    fprintf(stderr, "\tfirstRow  = %X\n", firstRow);
+-    fprintf(stderr, "\tlastRow   = %X\n", lastRow);
+-    fprintf(stderr, "\tdefaultCh = %X\n", defaultCh);
++    fprintf(stderr, "\tfirstCol  = %" PRIX16 "\n", firstCol);
++    fprintf(stderr, "\tlastCol   = %" PRIX16 "\n", lastCol);
++    fprintf(stderr, "\tfirstRow  = %" PRIX16 "\n", firstRow);
++    fprintf(stderr, "\tlastRow   = %" PRIX16 "\n", lastRow);
++    fprintf(stderr, "\tdefaultCh = %" PRIX16 "\n", defaultCh);
+   }
+   nEncodings = (lastCol - firstCol + 1) * (lastRow - firstRow + 1);
+   check_memory((encodings = new int16[nEncodings]));
+@@ -888,12 +892,12 @@
+   if (!is_exist_property_value("RESOLUTION_X") ||
+       !is_exist_property_value("RESOLUTION_Y"))
+     rx = ry = (int)(get_property_value("RESOLUTION") / 100.0 * 72.27) ;
+-  fprintf(ofp, "SIZE %ld %ld %ld\n", get_property_value("PIXEL_SIZE"), rx, ry);
+-  fprintf(ofp, "FONTBOUNDINGBOX %d %d %d %d\n\n",
++  fprintf(ofp, "SIZE %" PRId32 " %" PRId32 " %" PRId32 "\n", get_property_value("PIXEL_SIZE"), rx, ry);
++  fprintf(ofp, "FONTBOUNDINGBOX %" PRId16 " %" PRId16 " %" PRId16 " %" PRId16 "\n\n",
+ 	  fontbbx.widthBits(), fontbbx.height(),
+ 	  fontbbx.leftSideBearing, -fontbbx.descent);
+   
+-  int nPropsd = -1;
++  int32 nPropsd = -1;
+   if (!is_exist_property_value("DEFAULT_CHAR") &&
+       defaultCh != NO_SUCH_CHAR)
+     nPropsd ++;
+@@ -904,7 +908,7 @@
+       is_exist_property_value("RESOLUTION"))
+     nPropsd --;
+     
+-  fprintf(ofp, "STARTPROPERTIES %ld\n", nProps + nPropsd);
++  fprintf(ofp, "STARTPROPERTIES %" PRId32 "\n", nProps + nPropsd);
+   for (i = 0; i < nProps; i++)
+   {
+     if (strcmp(props[i].name.s, "FONT") == 0)
+@@ -917,16 +921,16 @@
+     if (props[i].isStringProp)
+       fprintf(ofp, "\"%s\"\n", props[i].value.s);
+     else
+-      fprintf(ofp, "%ld\n", props[i].value.v);
++      fprintf(ofp, "%" PRId32 "\n", props[i].value.v);
+   }
+   
+   if (!is_exist_property_value("DEFAULT_CHAR") &&
+       defaultCh != NO_SUCH_CHAR)
+-    fprintf(ofp, "DEFAULT_CHAR %d\n", defaultCh);
++    fprintf(ofp, "DEFAULT_CHAR %" PRId16 "\n", defaultCh);
+   if (!is_exist_property_value("FONT_DESCENT"))
+-    fprintf(ofp, "FONT_DESCENT %ld\n", accelerators.fontDescent);
++    fprintf(ofp, "FONT_DESCENT %" PRId32 "\n", accelerators.fontDescent);
+   if (!is_exist_property_value("FONT_ASCENT"))
+-    fprintf(ofp, "FONT_ASCENT %ld\n", accelerators.fontAscent);
++    fprintf(ofp, "FONT_ASCENT %" PRId32 "\n", accelerators.fontAscent);
+   fprintf(ofp, "ENDPROPERTIES\n\n");
+   
+   fprintf(ofp, "CHARS %d\n\n", nValidEncodings);
+@@ -945,14 +949,14 @@
+     else if (0x21 <= charcode && charcode <= 0x7e)
+       fprintf(ofp, "STARTCHAR %c\n", (char)charcode);
+     else
+-      fprintf(ofp, "STARTCHAR %04X\n", charcode);
+-    fprintf(ofp, "ENCODING %d\n", charcode);
+-    fprintf(ofp, "SWIDTH %ld %d\n", m.swidth, 0);
+-    fprintf(ofp, "DWIDTH %d %d\n", m.characterWidth, 0);
+-    fprintf(ofp, "BBX %d %d %d %d\n",
++      fprintf(ofp, "STARTCHAR %04" PRIX16 "\n", charcode);
++    fprintf(ofp, "ENCODING %" PRId16 "\n", charcode);
++    fprintf(ofp, "SWIDTH %" PRId32 " %d\n", m.swidth, 0);
++    fprintf(ofp, "DWIDTH %" PRId16 " %d\n", m.characterWidth, 0);
++    fprintf(ofp, "BBX %" PRId16 " %" PRId16" %" PRId16 " %" PRId16"\n",
+ 	    m.widthBits(), m.height(), m.leftSideBearing, -m.descent);
+     if (0 < m.attributes)
+-      fprintf(ofp, "ATTRIBUTES %4X\n", (uint16)m.attributes);
++      fprintf(ofp, "ATTRIBUTES %4" PRIX16 "\n", (uint16)m.attributes);
+     fprintf(ofp, "BITMAP\n");
+ 
+     int widthBytes = m.widthBytes(format);
+@@ -964,7 +968,7 @@
+       for (int c = 0; c < widthBytes; c++)
+       {
+ 	if (c < w)
+-	  fprintf(ofp, "%02X", *b);
++	  fprintf(ofp, "%02" PRIX8, *b);
+ 	b++;
+       }
+       fprintf(ofp, "\n");

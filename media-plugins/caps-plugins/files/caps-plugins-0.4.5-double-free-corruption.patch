@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/show_bug.cgi?id=418241
+
+--- interface.cc.orig	2012-08-11 07:35:45.723235289 -0300
++++ interface.cc	2012-08-11 07:36:46.656565620 -0300
+@@ -128,8 +128,10 @@
+ __attribute__ ((destructor)) 
+ void _fini()
+ {
+-	for (ulong i = 0; i < N; ++i)
++	for (ulong i = 0; i < N; ++i) {
+ 		delete descriptors[i];
++		descriptors[i] = NULL;
++	}
+ }
+ 
+ /* /////////////////////////////////////////////////////////////////////// */

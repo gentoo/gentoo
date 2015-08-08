@@ -1,0 +1,25 @@
+diff -Naur rdd-3.0.4-orig/src/Makefile.am rdd-3.0.4/src/Makefile.am
+--- rdd-3.0.4-orig/src/Makefile.am	2013-07-26 11:27:50.288696066 -0400
++++ rdd-3.0.4/src/Makefile.am	2013-07-26 12:14:51.601771619 -0400
+@@ -83,14 +83,15 @@
+ 			rdd-verify.1
+ 
+ install-exec-local:
+-			$(INSTALL) $(srcdir)/rddi.py $(bindir)/rddi
+-			$(INSTALL) $(srcdir)/plot-entropy.py $(bindir)/plot-entropy
+-			$(INSTALL) $(srcdir)/plot-md5.py $(bindir)/plot-md5
++			$(INSTALL) -d $(DESTDIR)$(bindir)
++			$(INSTALL) $(srcdir)/rddi.py $(DESTDIR)$(bindir)/rddi
++			$(INSTALL) $(srcdir)/plot-entropy.py $(DESTDIR)$(bindir)/plot-entropy
++			$(INSTALL) $(srcdir)/plot-md5.py $(DESTDIR)$(bindir)/plot-md5
+ 
+ uninstall-local:
+-			rm -f $(bindir)/rddi
+-			rm -f $(bindir)/plot-entropy
+-			rm -f $(bindir)/plot-md5
++			rm -f $(DESTDIR)$(bindir)/rddi
++			rm -f $(DESTDIR)$(bindir)/plot-entropy
++			rm -f $(DESTDIR)$(bindir)/plot-md5
+ 
+ DISTCLEANFILES=		Makefile.in
+ 

@@ -1,0 +1,31 @@
+--- a/src/plugins/yajl/yajl.c
++++ b/src/plugins/yajl/yajl.c
+@@ -23,6 +23,10 @@
+  ***************************************************************************/
+ 
+ 
++#ifndef HAVE_KDBCONFIG
++# include "kdbconfig.h"
++#endif
++
+ #include "yajl.h"
+ 
+ #include <kdberrors.h>
+@@ -340,7 +344,7 @@
+ 	KeySet *config= elektraPluginGetConfig(handle);
+ 
+ 	// ksClear (returned);
+-	if (keyIsUser(parentKey))
++	if (!strncmp(keyName(parentKey), "user", 4))
+ 	{
+ 		const Key * lookup = ksLookupByName(config, "/user_path", 0);
+ 		if (!lookup)
+@@ -422,7 +426,7 @@
+ 	return 1; /* success */
+ }
+ 
+-int elektraYajlSet(Plugin *handle, KeySet *returned, Key *parentKey)
++int elektraYajlSet(Plugin *handle ELEKTRA_UNUSED, KeySet *returned, Key *parentKey)
+ {
+ 	yajl_gen_config conf = { 1, "  " };
+ 	yajl_gen g = yajl_gen_alloc(&conf, NULL);

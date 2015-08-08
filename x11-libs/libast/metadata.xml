@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+ <email>vapier@gentoo.org</email>
+</maintainer>
+<longdescription>
+LibAST is the Library of Assorted Spiffy Things.  It contains many
+spiffy things, and it is a library.  Thus, the ever-so-creative name.
+LibAST has been previously known as libmej, the Eterm helper library
+which nobody really understood and certainly never used.  My current
+plan is to gradually remove some of the neat stuff from Eterm that
+could be made generic (things like the theme parsing engine, the
+command-line options parser, perhaps the event engine, ...) and place
+it here in the hopes that others will find them useful.
+</longdescription>
+</pkgmetadata>

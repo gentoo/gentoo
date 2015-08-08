@@ -1,0 +1,68 @@
+
+https://bugzilla.redhat.com/show_bug.cgi?id=688210
+
+--- mod_auth_kerb-5.4/src/mod_auth_kerb.c.delegation
++++ mod_auth_kerb-5.4/src/mod_auth_kerb.c
+@@ -209,6 +209,7 @@ typedef struct krb5_conn_data {
+ 	char *authline;
+ 	char *user;
+ 	char *mech;
++	char *ccname;
+ 	int  last_return;
+ } krb5_conn_data;
+ 
+@@ -875,7 +876,7 @@ create_krb5_ccache(krb5_context kcontext
+    int ret;
+    krb5_ccache tmp_ccache = NULL;
+ 
+-   ccname = apr_psprintf(r->pool, "FILE:%s/krb5cc_apache_XXXXXX", P_tmpdir);
++   ccname = apr_psprintf(r->connection->pool, "FILE:%s/krb5cc_apache_XXXXXX", P_tmpdir);
+    fd = mkstemp(ccname + strlen("FILE:"));
+    if (fd < 0) {
+       log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
+@@ -905,7 +906,7 @@ create_krb5_ccache(krb5_context kcontext
+    }
+ 
+    apr_table_setn(r->subprocess_env, "KRB5CCNAME", ccname);
+-   apr_pool_cleanup_register(r->pool, ccname, krb5_cache_cleanup,
++   apr_pool_cleanup_register(r->connection->pool, ccname, krb5_cache_cleanup,
+ 	 		     apr_pool_cleanup_null);
+ 
+    *ccache = tmp_ccache;
+@@ -1866,10 +1868,15 @@ already_succeeded(request_rec *r, char *
+    if (apr_pool_userdata_get((void**)&conn_data, keyname, r->connection->pool) != 0)
+ 	return NULL;
+ 
+-   if(conn_data) {
+-	if(strcmp(conn_data->authline, auth_line) == 0) {
+-		log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "matched previous auth request");
+-		return conn_data;
++   if(conn_data && conn_data->ccname != NULL) {
++       apr_finfo_t finfo;
++
++       if (apr_stat(&finfo, conn_data->ccname + strlen("FILE:"), 
++                    APR_FINFO_NORM, r->pool) == APR_SUCCESS
++           && (finfo.valid & APR_FINFO_TYPE)
++           && finfo.filetype == APR_REG) {
++           log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "matched previous auth request");
++           return conn_data;
+ 	}
+    }
+    return NULL;
+@@ -2001,6 +2008,8 @@ kerb_authenticate_user(request_rec *r)
+ 	ret = prevauth->last_return;
+ 	MK_USER = prevauth->user;
+ 	MK_AUTH_TYPE = prevauth->mech;
++	if (prevauth->ccname)
++		apr_table_setn(r->subprocess_env, "KRB5CCNAME", prevauth->ccname);
+    }
+ 
+    /*
+@@ -2011,6 +2020,7 @@ kerb_authenticate_user(request_rec *r)
+        prevauth->user = apr_pstrdup(r->connection->pool, MK_USER);
+        prevauth->authline = apr_pstrdup(r->connection->pool, auth_line);
+        prevauth->mech = apr_pstrdup(r->connection->pool, auth_type);
++       prevauth->ccname = apr_pstrdup(r->connection->pool, apr_table_get(r->subprocess_env, "KRB5CCNAME"));
+        prevauth->last_return = ret;
+        snprintf(keyname, sizeof(keyname) - 1,
+            "mod_auth_kerb::connection::%s::%ld", 

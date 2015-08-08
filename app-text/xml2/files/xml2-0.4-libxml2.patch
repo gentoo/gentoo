@@ -1,0 +1,53 @@
+diff -ur xml2-0.4.orig/2xml.c xml2-0.4/2xml.c
+--- xml2-0.4.orig/2xml.c	2003-12-24 22:28:48.000000000 +0200
++++ xml2-0.4/2xml.c	2008-05-14 20:02:40.000000000 +0300
+@@ -24,7 +24,7 @@
+ #include <assert.h>
+ #include <ctype.h>
+ 
+-#include <HTMLparser.h>
++#include <libxml/HTMLparser.h>
+ 
+ int do_html;
+ int in_tag = 0;
+diff -ur xml2-0.4.orig/configure.ac xml2-0.4/configure.ac
+--- xml2-0.4.orig/configure.ac	2008-02-07 18:11:54.000000000 +0200
++++ xml2-0.4/configure.ac	2008-05-14 20:05:12.000000000 +0300
+@@ -11,7 +11,7 @@
+ AC_PROG_CC
+ 
+ # Checks for libraries.
+-PKG_CHECK_MODULES(XML, libxml)
++PKG_CHECK_MODULES(XML, libxml-2.0)
+ AC_SUBST(XML_LIBS)
+ AC_SUBST(XML_CFLAGS)
+ 
+diff -ur xml2-0.4.orig/Makefile.am xml2-0.4/Makefile.am
+--- xml2-0.4.orig/Makefile.am	2008-02-07 17:58:13.000000000 +0200
++++ xml2-0.4/Makefile.am	2008-05-14 20:06:10.000000000 +0300
+@@ -1,9 +1,9 @@
+ AM_CPPFLAGS = $(XML_CFLAGS)
+ bin_PROGRAMS = xml2 2xml csv2 2csv
+ xml2_SOURCES = xml2.c
+-xml2_LDADD = -lxml
++xml2_LDADD = -lxml2
+ 2xml_SOURCES = 2xml.c
+-2xml_LDADD = -lxml
++2xml_LDADD = -lxml2
+ csv2_SOURCES = csv2.c
+ 2csv_SOURCES = 2csv.c
+ 
+diff -ur xml2-0.4.orig/xml2.c xml2-0.4/xml2.c
+--- xml2-0.4.orig/xml2.c	2001-10-28 06:29:46.000000000 +0200
++++ xml2-0.4/xml2.c	2008-05-14 20:03:31.000000000 +0300
+@@ -24,8 +24,8 @@
+ #include <string.h>
+ #include <ctype.h>
+ 
+-#include <parser.h>
+-#include <HTMLparser.h>
++#include <libxml/parser.h>
++#include <libxml/HTMLparser.h>
+ 
+ struct node
+ {

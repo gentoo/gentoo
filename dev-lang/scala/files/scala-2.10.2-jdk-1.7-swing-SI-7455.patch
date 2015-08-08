@@ -1,0 +1,165 @@
+commit f3f1064c90371449949892f30de91cc1f2662c55
+Merge: 0b7dddb 050b4c9
+Author: Grzegorz Kossakowski <grzegorz.kossakowski@gmail.com>
+Date:   Sat Jul 27 22:39:44 2013 -0700
+
+    Merge pull request #2750 from retronym/ticket/7455-2.10.x
+    
+    SI-7455 Drop dummy param for synthetic access constructor
+
+commit 050b4c951c838699c2fe30cbf01b63942c63a299
+Author: Jason Zaugg <jzaugg@gmail.com>
+Date:   Wed Jul 17 15:52:48 2013 +1000
+
+    SI-7455 Drop dummy param for synthetic access constructor
+    
+    Java synthesizes public constructors in private classes to
+    allow access from inner classes. The signature of
+    that synthetic constructor (known as a "access constructor")
+    has a dummy parameter appended to avoid overloading clashes.
+    javac chooses the type "Enclosing$1" for the dummy parameter
+    (called the "access constructor tag") which is either an
+    existing anonymous class or a synthesized class for this purpose.
+    
+    In OpenJDK, this transformation is performed in:
+    
+      langtools/src/share/classes/com/sun/tools/javac/comp/Lower.java
+    
+    (Incidentally, scalac would just emits a byte-code public
+    constructor in this situation, rather than a private constructor /
+    access constructor pair.)
+    
+    Scala parses the signature of the access contructor, and drops
+    the $outer parameter, but retains the dummy parameter. This causes
+    havoc when it tries to parse the bytecode for that anonymous class;
+    the class file parser doesn't have the enclosing type parameters
+    of Vector in scope and crash ensues.
+    
+    In any case, we shouldn't allow user code to see that constructor;
+    it should only be called from within its own compilation unit.
+    
+    This commit drops the dummy parameter from access constructor
+    signatures in class file parsing.
+
+diff --git a/src/compiler/scala/tools/nsc/symtab/classfile/ClassfileParser.scala b/src/compiler/scala/tools/nsc/symtab/classfile/ClassfileParser.scala
+index da11754..4e5204f 100644
+--- a/src/compiler/scala/tools/nsc/symtab/classfile/ClassfileParser.scala
++++ b/src/compiler/scala/tools/nsc/symtab/classfile/ClassfileParser.scala
+@@ -626,7 +626,7 @@ abstract class ClassfileParser {
+         sawPrivateConstructor = true
+       in.skip(2); skipAttributes()
+     } else {
+-      if ((sflags & PRIVATE) != 0L && global.settings.optimise.value) {
++      if ((sflags & PRIVATE) != 0L && global.settings.optimise.value) { // TODO this should be !optimize, no? See c4181f656d.
+         in.skip(4); skipAttributes()
+       } else {
+         val name = pool.getName(in.nextChar)
+@@ -636,7 +636,7 @@ abstract class ClassfileParser {
+           info match {
+             case MethodType(params, restpe) =>
+               // if this is a non-static inner class, remove the explicit outer parameter
+-              val newParams = innerClasses getEntry currentClass match {
++              val paramsNoOuter = innerClasses getEntry currentClass match {
+                 case Some(entry) if !isScalaRaw && !isStatic(entry.jflags) =>
+                   /* About `clazz.owner.isPackage` below: SI-5957
+                    * For every nested java class A$B, there are two symbols in the scala compiler.
+@@ -650,6 +650,15 @@ abstract class ClassfileParser {
+                 case _ =>
+                   params
+               }
++              val newParams = paramsNoOuter match {
++                case (init :+ tail) if (jflags & JAVA_ACC_SYNTHETIC) != 0L =>
++                  // SI-7455 strip trailing dummy argument ("access constructor tag") from synthetic constructors which
++                  // are added when an inner class needs to access a private constructor.
++                  init
++                case _ =>
++                  paramsNoOuter
++              }
++
+               info = MethodType(newParams, clazz.tpe)
+           }
+         sym.setInfo(info)
+diff --git a/test/files/run/t7455.check b/test/files/run/t7455.check
+new file mode 100644
+index 0000000..0eb9342
+--- /dev/null
++++ b/test/files/run/t7455.check
+@@ -0,0 +1,4 @@
++private[package <empty>] def <init>(x$1: String): Outer[E]
++private[package <empty>] def <init>(): Outer$PrivateInner
++private[package <empty>] def <init>(): Outer$PrivateStaticInner
++private[package <empty>] def <init>(x$2: String): Outer$PublicInner
+diff --git a/test/files/run/t7455/Outer.java b/test/files/run/t7455/Outer.java
+new file mode 100644
+index 0000000..10c97a9
+--- /dev/null
++++ b/test/files/run/t7455/Outer.java
+@@ -0,0 +1,31 @@
++public class Outer<E> {
++    public void elements() {
++        new C<E>() {
++        };
++    }
++
++    private Outer(String a) {}
++
++    static class SubSelf extends Outer<String> {
++        public SubSelf() { super(""); }
++    }
++
++    private class PrivateInner {
++    }
++    class SubPrivateInner extends PrivateInner {
++    }
++
++    private class PublicInner {
++        private PublicInner(String a) {}
++    }
++    class SubPublicInner extends PublicInner {
++        public SubPublicInner() { super(""); }
++    }
++
++    private static class PrivateStaticInner {
++    }
++    public static class SubPrivateStaticInner extends PrivateStaticInner {
++    }
++}
++
++class C<E> {}
+diff --git a/test/files/run/t7455/Test.scala b/test/files/run/t7455/Test.scala
+new file mode 100644
+index 0000000..b23a724
+--- /dev/null
++++ b/test/files/run/t7455/Test.scala
+@@ -0,0 +1,30 @@
++import scala.tools.partest._
++
++// javac adds dummy parameters of type Outer$1 to synthetic access constructors
++// This test shows that we strip them from the signatures. If we don't, we trigger
++// parsing of Outer$1 which can fail if it references type parameters of the Outer.
++//
++// OLD OUTPUT:
++//  private[package <empty>] def <init>(x$2: Outer$1): Outer$PrivateInner
++//  error: error while loading Outer$1, class file 't7455-run.obj/Outer$1.class' is broken
++//  (class java.util.NoSuchElementException/key not found: E)
++//  ...
++object Test extends DirectTest {
++  override def code = ""
++
++  def show {
++    val classpath = List(sys.props("partest.lib"), testOutput.path) mkString sys.props("path.separator")
++    val compiler = newCompiler("-cp", classpath, "-d", testOutput.path)
++    import compiler._, definitions._
++    new compiler.Run
++
++    for {
++      name <- Seq("Outer", "Outer$PrivateInner", "Outer$PrivateStaticInner", "Outer$PublicInner")
++      clazz = compiler.rootMirror.staticClass(name)
++      constr <- clazz.info.member(nme.CONSTRUCTOR).alternatives
++    } {
++      println(constr.defString)
++      fullyInitializeSymbol(constr)
++    }
++  }
++}
+

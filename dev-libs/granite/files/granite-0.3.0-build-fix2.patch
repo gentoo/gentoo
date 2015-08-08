@@ -1,0 +1,13 @@
+=== modified file 'lib/Widgets/DynamicNotebook.vala'
+--- lib/Widgets/DynamicNotebook.vala	2014-08-30 13:28:37 +0000
++++ lib/Widgets/DynamicNotebook.vala	2014-09-23 13:43:11 +0000
+@@ -941,7 +941,7 @@
+             notebook.create_window.connect (on_create_window);
+         }
+ 
+-        ~Notebook () {
++        ~DynamicNotebook () {
+             notebook.switch_page.disconnect (on_switch_page);
+             notebook.page_added.disconnect (on_page_added);
+             notebook.page_removed.disconnect (on_page_removed);
+

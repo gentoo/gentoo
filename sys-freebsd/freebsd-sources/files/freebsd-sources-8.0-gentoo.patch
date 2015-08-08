@@ -1,0 +1,33 @@
+--- sys/conf/kern.mk.old	2007-05-24 23:53:42.000000000 +0200
++++ sys/conf/kern.mk	        2008-03-14 14:37:47.216420518 +0100
+@@ -12,7 +12,7 @@
+ .else
+ CWARNFLAGS?=	-Wall -Wredundant-decls -Wnested-externs -Wstrict-prototypes \
+ 		-Wmissing-prototypes -Wpointer-arith -Winline -Wcast-qual \
+-		${_wundef} ${_Wno_pointer_sign} -fformat-extensions
++		${_wundef} ${_Wno_pointer_sign}
+ .if !defined(WITH_GCC3)
+ _Wno_pointer_sign=-Wno-pointer-sign
+ .endif
+@@ -36,7 +36,7 @@
+ # reserved for user applications.
+ #
+ .if ${MACHINE_ARCH} == "i386" && ${CC} != "icc"
+-CFLAGS+=	-mno-align-long-strings -mpreferred-stack-boundary=2 \
++CFLAGS+=	-mpreferred-stack-boundary=2 \
+ 		-mno-mmx -mno-3dnow -mno-sse -mno-sse2 -mno-sse3
+ INLINE_LIMIT?=	8000
+ .endif
+Only in ./sys/conf: kern.mk.rej
+Only in ./sys/conf: kern.mk~
+--- sys/dev/aic7xxx/aicasm/Makefile.old	2010-03-10 14:01:50 +0100
++++ sys/dev/aic7xxx/aicasm/Makefile	2010-03-10 14:01:56 +0100
+@@ -14,7 +14,7 @@
+ SRCS=	${GENHDRS} ${CSRCS} ${YSRCS} ${LSRCS}
+ CLEANFILES+= ${GENHDRS} ${YSRCS:R:C/(.*)/\1.output/g}
+ DPADD=	${LIBL}
+-LDADD=	-ll
++LDADD=	-lfl
+ WARNS?=	6
+ 
+ # Correct path for kernel builds

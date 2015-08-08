@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proaudio</herd>
+<longdescription lang="en">
+	FlowCanvas is an interactive Gtkmm/Gnomecanvasmm widget for "boxes and
+	lines" environments (ie modular synths or interactive finite state automata
+	diagrams).
+</longdescription>
+</pkgmetadata>

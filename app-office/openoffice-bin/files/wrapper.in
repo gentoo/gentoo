@@ -1,0 +1,4 @@
+#!/bin/sh
+export OOO_EXTRA_ARG=''
+unset PYTHONPATH
+@GENTOO_PORTAGE_EPREFIX@/usr/LIBDIR/openoffice/program/soffice "$@"

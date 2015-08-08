@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>miska@gentoo.org</email>
+		<name>Michal Hrušecký</name>
+	</maintainer>
+	<longdescription lang="en">
+Qt plugin for libyui -- YaST2 user interface engine that provides the abstraction from graphical user interfaces (Qt, Gtk) and text based user interfaces (ncurses).
+</longdescription>
+	<upstream>
+		<remote-id type="github">libyui/libyui-qt</remote-id>
+	</upstream>
+</pkgmetadata>

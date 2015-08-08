@@ -1,0 +1,12 @@
+--- tmclock.c	2005-09-21 18:39:57 +0200
++++ tmclock.c.new	2007-06-16 15:58:26 +0200
+@@ -18,8 +18,10 @@
+ #include <sys/time.h>
+ #else
+ #include <time.h>
++#ifdef timezone
+ extern long	timezone;	/* should be in <time.h>, but isn't on Sun */
+ #endif
++#endif
+ 
+ long	tzone;

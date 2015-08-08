@@ -1,0 +1,28 @@
+From 121061115d1902d8298fbe9ebc3f8d081a725934 Mon Sep 17 00:00:00 2001
+From: Tyler Gates <tgates81@gmail.com>
+Date: Mon, 20 Jul 2015 17:14:12 -0400
+Subject: [PATCH] daemon startup options as declared in conf.d/sssd
+
+---
+Gentoo bugzilla: https://bugs.gentoo.org/show_bug.cgi?id=553678
+Upstrem bugzilla: https://fedorahosted.org/sssd/ticket/2722
+---
+ src/sysv/gentoo/sssd.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/sysv/gentoo/sssd.in b/src/sysv/gentoo/sssd.in
+index 30d7559..7ced44f 100644
+--- a/src/sysv/gentoo/sssd.in
++++ b/src/sysv/gentoo/sssd.in
+@@ -7,7 +7,7 @@ depend(){
+ 
+ start(){
+     ebegin "Starting sssd"
+-    start-stop-daemon --start --exec @sbindir@/sssd -- -Df
++    start-stop-daemon --start --exec @sbindir@/sssd -- -Df ${SSSD_OPTIONS}
+     eend ${?}
+ }
+ 
+-- 
+2.0.5
+

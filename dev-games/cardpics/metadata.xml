@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<longdescription>
+cardpics is a set of free cards sets.
+
+If you are programming a card game and are looking for free cards, 
+Cardpics was made for you! Get a set of cards and include them in your 
+project, as soon as your project is free.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qmail</herd>
+	<longdescription>
+		ucspi-tcp is a replacement for inetd. It consists of tcpserver and
+		tcpclient. tcpserver can listen on sockets and start programs in an
+		inetd like fashion except that information like the IP address and
+		remote port are communicated via environment variables. tcpclient makes
+		a TCP connection and runs a program of your choice. It sets up the same
+		environment variables as tcpserver.
+	</longdescription>
+</pkgmetadata>

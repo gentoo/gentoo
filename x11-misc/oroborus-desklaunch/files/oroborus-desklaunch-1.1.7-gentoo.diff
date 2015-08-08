@@ -1,0 +1,39 @@
+--- Makefile
++++ Makefile
+@@ -1,29 +1,26 @@
+-CC        = gcc
+-CFLAGS    = -g -O2 -Wall
+-XROOT     = /usr/X11R6
+-INCLUDES  = -I$(XROOT)/include
+-LIBS      = -lX11 -lXext -lXpm 
+-LDPATH    = -L$(XROOT)/lib
++INCLUDES  = `pkg-config --cflags x11 xext xpm`
++LIBS      = `pkg-config --libs x11 xext xpm`
+ 
+-DESTDIR   =
+ PROG      = desklaunch
+ PREFIX    = $(DESTDIR)/usr
++MANDIR	  = $(PREFIX)/share/man
+ RCFILE    = .$(PROG)rc
+ DEFINES   = -DRCFILE=\"$(RCFILE)\" #-DDEBUG
+ 
+ OBJS      = $(PROG).o  
++MAN	  = debian/$(PROG).1
+ 
+ all: $(PROG) 
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(OBJS) $(LDPATH) $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
+ 
+ $(OBJS): %.o: %.c $(HEADERS)
+ 	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+ 
+ install: all
+-	install $(PROG) $(PREFIX)/bin
+-	install -d $(PREFIX)/share/$(PROG)
++	install -D -m 755 $(PROG) $(PREFIX)/bin/$(PROG)
++	install -D -m 644 $(MAN) $(MANDIR)/man1/$(PROG).1
+ 
+ uninstall:
+ 	rm -f $(PREFIX)/bin/$(PROG)

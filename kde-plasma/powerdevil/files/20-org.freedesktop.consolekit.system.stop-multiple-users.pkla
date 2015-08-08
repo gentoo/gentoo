@@ -1,0 +1,13 @@
+# Enable user shutdown support.
+#
+# Author: Eric Hameleers <alien@slackware.com>
+#
+# KDE bug #344456
+# Gentoo bug #529186
+#
+[Allow all users to shutdown]
+Identity=unix-group:users
+Action=org.freedesktop.consolekit.system.stop-multiple-users;org.freedesktop.consolekit.system.stop
+ResultAny=yes
+ResultInactive=no
+ResultActive=yes

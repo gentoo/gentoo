@@ -1,0 +1,13 @@
+Index: bibclean-2.11.4/Makefile.in
+===================================================================
+--- bibclean-2.11.4.orig/Makefile.in
++++ bibclean-2.11.4/Makefile.in
+@@ -343,7 +343,7 @@ BIBCLEAN-OBJS   = bibclean.o chek.o do.o
+ 		  $(LIBOBJS)
+ 
+ bibclean:         $(BIBCLEAN-OBJS)
+-	$(CC) -o bibclean $(CFLAGS) $(BIBCLEAN-OBJS) $(LIBS)
++	$(CC) $(LDFLAGS) -o bibclean $(CFLAGS) $(BIBCLEAN-OBJS) $(LIBS)
+ 
+ # This target converts the option descriptions from the manual pages
+ # to C code for inclusion in bibclean.c.  The first awk command

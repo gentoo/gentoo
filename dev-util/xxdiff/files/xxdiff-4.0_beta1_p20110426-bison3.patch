@@ -1,0 +1,100 @@
+http://bugs.gentoo.org/511560
+
+Description: Fix compilation with Bison 3
+YYPARSE_PARAM was deprecated in Bison 1.875 and removed in Bison 3;
+%parse-param can be used instead. Also fix a warning about %pure_parser
+Author: Florian Schlichting <fsfs@debian.org>
+
+--- a/src/resParser.y
++++ b/src/resParser.y
+@@ -39,12 +39,11 @@
+ 
+ // The parser input is the resources object to fill in.
+ #define RESOURCES  ( static_cast<XxResources*>(resources) )
+-#define YYPARSE_PARAM resources
+ 
+ // Declare lexer from other compilation unit.
+ int resParserlex( YYSTYPE* yylval );
+ 
+-void resParsererror( const char* msg );
++void resParsererror( void *resources, const char* msg );
+ 
+ // Declare some parser functions and data defined in resParser.cpp
+ namespace XxResParserNS {
+@@ -58,6 +57,9 @@
+ 
+ %}
+ 
++/* The parser input is the resources object to fill in. */
++%parse-param { void *resources }
++
+ /* generate header file */
+ %defines
+ 
+@@ -144,7 +146,7 @@
+ %type <num> boolkwd
+ 
+ %start xxdiffrc
+-%pure_parser
++%pure-parser
+ 
+ %%
+ xxdiffrc	: stmts
+@@ -188,7 +190,7 @@
+                       RESOURCES->setPreferredGeometry( geometry );
+                    }
+                    else {
+-                      yyerror( "Bad geometry specification." );
++                      yyerror( resources, "Bad geometry specification." );
+                       // Should never happen, the lexer regexp should be tough
+                       // enough.
+                    }
+@@ -212,7 +214,7 @@
+                       QString err = QString( "Requested style key does not exist." );
+                       err += QString( "\nValid styles are: " );
+                       err += styles.join( ", " );
+-                      yyerror( err.toLatin1().constData() );
++                      yyerror( resources, err.toLatin1().constData() );
+                    }
+                 }
+                 ;
+@@ -224,7 +226,7 @@
+                       char buf[2048];
+                       ::snprintf( buf, 2048,
+                                   "Unrecognized accelerator: %s\n", $5 );
+-                      yyerror( buf );
++                      yyerror( resources, buf );
+                    }
+                 }
+ 		;
+--- a/src/resParser.l
++++ b/src/resParser.l
+@@ -298,7 +298,7 @@
+                      QString os;
+                      QTextOStream oss( &os );
+                      oss << "ignoring char: " << yytext << flush;
+-                     yyerror( os.latin1() );
++                     yyerror( resources, os.latin1() );
+                      */
+                   }
+                 }
+--- a/src/resParser.cpp
++++ b/src/resParser.cpp
+@@ -73,7 +73,7 @@
+ 
+ //------------------------------------------------------------------------------
+ //
+-void resParsererror( const char* msg )
++void resParsererror( void* resources __attribute__((__unused__)), const char* msg )
+ {
+    // Send errors to stdout so we can filter out the debug info shmeglu while
+    // debugging parser.
+@@ -794,7 +794,7 @@
+       QString os;
+       QTextStream oss( &os );
+       oss << "Unknown " << errmsg << ": " << name << flush;
+-      resParsererror( os.toLatin1().constData() );
++      resParsererror( NULL, os.toLatin1().constData() );
+    }
+    num = ERROR_TOKEN;
+    return ERROR_TOKEN;

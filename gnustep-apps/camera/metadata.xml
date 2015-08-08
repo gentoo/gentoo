@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnustep</herd>
+<longdescription>
+Camera is a simple application to download files from a digital
+camera. The files can be optionally deleted after download. During
+download, a thumbnail of the currently downloaded file is displayed.
+</longdescription>
+</pkgmetadata>

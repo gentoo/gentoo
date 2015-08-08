@@ -1,0 +1,35 @@
+From a2dcc5cc49c3e79d64bd1a2ad7a5bc4df5b073ee Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kf@sumptuouscapital.com>
+Date: Wed, 13 Aug 2014 11:13:34 +0200
+Subject: [PATCH] gpg: Need to init the trustdb for import.
+
+* g10/trustdb.c (clear_ownertrusts): Init trustdb.
+
+--
+
+This was fixed in 1.4 branch in commit
+23191d7851eae2217ecdac6484349849a24fd94a but was not applied to the
+2.0 branch that exhibits the same problem. This is actually a hack
+to fix a bug introduced with commit 2528178.
+
+GnuPG-bug-id: 1622
+---
+ g10/trustdb.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/g10/trustdb.c b/g10/trustdb.c
+index f96701a..7bfef25 100644
+--- a/g10/trustdb.c
++++ b/g10/trustdb.c
+@@ -923,6 +923,8 @@ clear_ownertrusts (PKT_public_key *pk)
+   TRUSTREC rec;
+   int rc;
+ 
++  init_trustdb();
++
+   if (trustdb_args.no_trustdb && opt.trust_model == TM_ALWAYS)
+     return 0;
+ 
+-- 
+1.8.5.5
+

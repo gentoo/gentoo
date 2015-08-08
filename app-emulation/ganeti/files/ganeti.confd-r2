@@ -1,0 +1,19 @@
+# /etc/conf.d/ganeti: config file for /etc/init.d/ganeti
+
+# Extra options to pass to all of the ganeti daemons
+# GANETI_OPTS="-d"
+
+# Options to pass to ganeti-masterd
+# GANETI_MASTERD_OPTS=""
+
+# Options to pass to ganeti-rapi
+# GANETI_RAPI_OPTS=""
+
+# Options to pass to ganeti-noded
+# GANETI_NODED_OPTS=""
+
+# Options to pass to ganeti-confd
+# GANETI_CONFD_OPTS=""
+
+# Options to pass to ganeti-luxid
+# GANETI_LUXID_OPTS=""

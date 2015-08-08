@@ -1,0 +1,25 @@
+--- hiredis-0.1.1/setup.py
++++ hiredis-0.1.1/setup.py
+@@ -20,13 +20,9 @@
+         if self.distribution.has_ext_modules():
+           self.run_command('build_ext')
+ 
+-lib = ("hiredis", {
+-  "sources": ["vendor/hiredis/%s.c" % src for src in ("hiredis", "net", "sds")],
+-  "include_dirs": ["vendor/hiredis"]})
+-
+ ext = Extension("hiredis.hiredis",
+   sources=glob.glob("src/*.c"),
+-  include_dirs=["src", "vendor"],
++  include_dirs=["src"],
+   libraries=["hiredis"])
+ 
+ setup(
+@@ -39,7 +35,6 @@
+   keywords=["Redis"],
+   license="BSD",
+   packages=["hiredis"],
+-  libraries=[lib],
+   ext_modules=[ext],
+ 
+   # Override "install_lib" command

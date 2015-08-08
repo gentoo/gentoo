@@ -1,0 +1,16 @@
+Remove test that unloads the current class loader. If this is enabled, the
+testAutoUnloadClassloaders testcase will fail if it's run after
+testRemoveClassloaders. Since junit generally runs tests in an arbitrary order
+this causes random testsuite failures.
+
+--- reflectasm-1.09/test/com/esotericsoftware/reflectasm/ClassLoaderTest.java
++++ reflectasm-1.09/test/com/esotericsoftware/reflectasm/ClassLoaderTest.java
+@@ -104,8 +104,6 @@
+ 		assertEquals(initialCount+1, AccessClassLoader.activeAccessClassLoaders());
+ 		AccessClassLoader.remove(testObject2.getClass().getClassLoader());
+ 		assertEquals(initialCount+0, AccessClassLoader.activeAccessClassLoaders());
+-		AccessClassLoader.remove(this.getClass().getClassLoader());
+-		assertEquals(initialCount-1, AccessClassLoader.activeAccessClassLoaders());
+ 	}
+ 
+ 	static public class Test {

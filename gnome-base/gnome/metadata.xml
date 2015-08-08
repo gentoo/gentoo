@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+  <flag name="classic">Install <pkg>gnome-extra/gnome-shell-extensions</pkg>
+    for the Gnome Shell Classic mode</flag>
+  <flag name="extras">Install additional GNOME applications</flag>
+</use>
+</pkgmetadata>

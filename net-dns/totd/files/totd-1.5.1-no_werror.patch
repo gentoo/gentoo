@@ -1,0 +1,11 @@
+--- totd-1.5.1/Makefile.in	2005-01-31 12:55:14.000000000 +0100
++++ totd-1.5.1_new/Makefile.in	2007-06-30 22:51:07.000000000 +0200
+@@ -19,7 +19,7 @@
+ 
+ INSTALL = /usr/bin/install
+ 
+-CFLAGS  = @CFLAGS@ @DEFS@  -Werror -Wall -DTOTCONF=\"$(TOT_CONFIG_FILE)\" @OPTFLAGS@ $(INCLUDEPATH)
++CFLAGS  = @CFLAGS@ @DEFS@   -Wall -DTOTCONF=\"$(TOT_CONFIG_FILE)\" @OPTFLAGS@ $(INCLUDEPATH)
+ 
+ # When debugging is enabled by --enable-malloc-debug flag to the configure
+ # script, the @DBMALLOC@ substitution will contain the empty string, thus

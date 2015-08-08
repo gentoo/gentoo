@@ -1,0 +1,23 @@
+--- rapidsvn-0.12.0dfsg.orig/src/locale/Makefile.in
++++ rapidsvn-0.12.0dfsg/src/locale/Makefile.in
+@@ -369,8 +369,7 @@ all: all-mo
+ distclean: clean
+ clean:
+ 	for i in $(RAPIDSVN_LANGUAGES) ; do \
+-		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo ; \
+-		fi ; \
++		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo || true; \
+ 	done
+ .PHONY: all-mo
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+--- rapidsvn-0.12.0dfsg.orig/src/locale/Makefile.am
++++ rapidsvn-0.12.0dfsg/src/locale/Makefile.am
+@@ -38,7 +38,6 @@ all: all-mo
+ distclean: clean
+ clean:
+ 	for i in $(RAPIDSVN_LANGUAGES) ; do \
+-		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo ; \
+-		fi ; \
++		test -f $(srcdir)/$$i/rapidsvn.mo && rm $(srcdir)/$$i/rapidsvn.mo || true; \
+ 	done
+ .PHONY: all-mo

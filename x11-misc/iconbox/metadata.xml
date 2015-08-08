@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-misc</herd>
+<longdescription lang="en">
+Iconbox is a free desktop tool that allows applications to be started quickly
+with one mouse click. When Iconbox is running, the main window is invisible
+until you move the cursor into a chosen area on the desktop. When the Iconbox
+window appears, an application is started by clicking on the respective icon.
+Afterward, the iconbox window disappears. 
+</longdescription>
+</pkgmetadata>
+

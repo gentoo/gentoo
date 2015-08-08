@@ -1,0 +1,53 @@
+From 6b40739a29b99fbed7a9622c8cbe1c423e397b48 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 3 Nov 2014 19:53:24 +0100
+Subject: [PATCH] Make "gnuchess" the default engine
+
+---
+ gtk/xboard.h | 2 +-
+ xaw/xboard.h | 2 +-
+ xboard.conf  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/gtk/xboard.h b/gtk/xboard.h
+index 234692d..dfa42ac 100644
+--- a/gtk/xboard.h
++++ b/gtk/xboard.h
+@@ -108,7 +108,7 @@ typedef struct {
+ 
+ #define BORDER_X_OFFSET 3
+ #define BORDER_Y_OFFSET 27
+-#define FIRST_CHESS_PROGRAM	"fairymax"
++#define FIRST_CHESS_PROGRAM	"gnuchess"
+ #define SECOND_CHESS_PROGRAM	""
+ #define FIRST_DIRECTORY         "."
+ #define SECOND_DIRECTORY        "."
+diff --git a/xaw/xboard.h b/xaw/xboard.h
+index bcfafb2..d4b3407 100644
+--- a/xaw/xboard.h
++++ b/xaw/xboard.h
+@@ -118,7 +118,7 @@ typedef struct {
+ 
+ #define BORDER_X_OFFSET 3
+ #define BORDER_Y_OFFSET 27
+-#define FIRST_CHESS_PROGRAM	"fairymax"
++#define FIRST_CHESS_PROGRAM	"gnuchess"
+ #define SECOND_CHESS_PROGRAM	""
+ #define FIRST_DIRECTORY         "."
+ #define SECOND_DIRECTORY        "."
+diff --git a/xboard.conf b/xboard.conf
+index 6c43b97..90fc680 100644
+--- a/xboard.conf
++++ b/xboard.conf
+@@ -73,7 +73,7 @@
+ ;
+ ; Engines & adjudicatons in engine-engine games
+ ;
+--firstChessProgram fairymax
++-firstChessProgram gnuchess
+ -firstChessProgramNames {fairymax
+ "Fruit 2.1" -fcp fruit -fUCI
+ "Crafty" -fcp crafty
+-- 
+2.1.3
+

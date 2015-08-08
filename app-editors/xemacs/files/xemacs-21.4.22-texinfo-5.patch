@@ -1,0 +1,437 @@
+--- xemacs-21.4.22-orig/man/custom.texi
++++ xemacs-21.4.22/man/custom.texi
+@@ -60,7 +60,7 @@
+ 
+ @node Declaring Groups, Declaring Variables, Top, Top
+ @comment  node-name,  next,  previous,  up
+-@section Declaring Groups
++@chapter Declaring Groups
+ 
+ Use @code{defgroup} to declare new customization groups.
+ 
+@@ -92,7 +92,7 @@
+ 
+ @node Declaring Variables, Declaring Faces, Declaring Groups, Top
+ @comment  node-name,  next,  previous,  up
+-@section Declaring Variables
++@chapter Declaring Variables
+ 
+ Use @code{defcustom} to declare user editable variables.
+ 
+@@ -176,7 +176,7 @@
+ 
+ @node Declaring Faces, Usage for Package Authors, Declaring Variables, Top
+ @comment  node-name,  next,  previous,  up
+-@section Declaring Faces
++@chapter Declaring Faces
+ 
+ Faces are declared with @code{defface}.
+ 
+@@ -228,7 +228,7 @@
+ 
+ @node Usage for Package Authors, Utilities, Declaring Faces, Top
+ @comment  node-name,  next,  previous,  up
+-@section Usage for Package Authors
++@chapter Usage for Package Authors
+ 
+ The recommended usage for the author of a typical emacs lisp package is
+ to create one group identifying the package, and make all user options
+@@ -244,7 +244,7 @@
+ 
+ @node  Utilities, The Init File, Usage for Package Authors, Top
+ @comment  node-name,  next,  previous,  up
+-@section Utilities
++@chapter Utilities
+ 
+ These utilities can come in handy when adding customization support.
+ 
+@@ -276,7 +276,7 @@
+ 
+ @node The Init File, Wishlist, Utilities, Top
+ @comment  node-name,  next,  previous,  up
+-@section The Init File
++@chapter The Init File
+ 
+ Customizations are saved to the file specified by @code{custom-file}, as
+ calls to @code{custom-set-variables} and @code{custom-set-faces}.
+@@ -299,7 +299,7 @@
+ 
+ @node Wishlist,  , The Init File, Top
+ @comment  node-name,  next,  previous,  up
+-@section Wishlist
++@chapter Wishlist
+ 
+ @itemize @bullet
+ @item
+--- xemacs-21.4.22-orig/man/info.texi
++++ xemacs-21.4.22/man/info.texi
+@@ -543,6 +543,10 @@
+ @c If a menu appears at the end of this node, remove it.
+ @c It is an accident of the menu updating command.
+ 
++@menu
++* Help-Cross::
++@end menu
++
+ @node Help-Cross,  ,  , Help-Adv
+ @subsection The node reached by the cross reference in Info
+ 
+--- xemacs-21.4.22-orig/man/lispref/edebug-inc.texi
++++ xemacs-21.4.22/man/lispref/edebug-inc.texi
+@@ -1103,7 +1103,7 @@
+ Here is a table of the possibilities for @var{specification} and how each
+ directs processing of arguments.
+ 
+-@table @bullet
++@table @asis
+ 
+ @item @code{t}
+ All arguments are instrumented for evaluation.
+--- xemacs-21.4.22-orig/man/lispref/packaging.texi
++++ xemacs-21.4.22/man/lispref/packaging.texi
+@@ -600,7 +600,7 @@
+ Does most of the work.  Builds the elcs, infos at a minimum.
+ @end table
+ 
+-@subsection The targets that most people would be interested in would be:
++@section The targets that most people would be interested in would be:
+ 
+ @itemize @bullet
+ @item @code{all}
+--- xemacs-21.4.22-orig/man/term.texi
++++ xemacs-21.4.22/man/term.texi
+@@ -4,7 +4,7 @@
+ 
+ @titlepage
+ @sp 6
+-@center @titlefont(Notes about Emacs TERM Mode)
++@center @titlefont{Notes about Emacs TERM Mode}
+ @end titlepage
+ 
+ @ifinfo
+--- xemacs-21.4.22-orig/man/widget.texi
++++ xemacs-21.4.22/man/widget.texi
+@@ -38,7 +38,7 @@
+ 
+ @node  Introduction, User Interface, Top, Top
+ @comment  node-name,  next,  previous,  up
+-@section Introduction
++@chapter Introduction
+ 
+ Most graphical user interface toolkits, such as Motif and XView, provide
+ a number of standard user interface controls (sometimes known as
+@@ -129,7 +129,7 @@
+ 
+ @node User Interface, Programming Example, Introduction, Top
+ @comment  node-name,  next,  previous,  up
+-@section User Interface
++@chapter User Interface
+ 
+ A form consists of read only text for documentation and some fields,
+ where each of the fields contains two parts, a tag and a value.  The
+@@ -175,7 +175,7 @@
+ a form, namely editing the editable text fields and activating the
+ buttons.
+ 
+-@subsection Editable Text Fields
++@section Editable Text Fields
+ 
+ In the example, the value for the @samp{Name} is most likely displayed
+ in an editable text field, and so are values for each of the members of
+@@ -194,7 +194,7 @@
+ Face used for other editing fields.
+ @end deffn
+ 
+-@subsection Buttons
++@section Buttons
+ 
+ Some portions of the buffer have an associated @dfn{action}, which can
+ be @dfn{invoked} by a standard key or mouse command.  These portions
+@@ -259,7 +259,7 @@
+ Face used for buttons when the mouse pointer is above it.
+ @end defopt
+ 
+-@subsection Navigation
++@section Navigation
+ 
+ You can use all the normal Emacs commands to move around in a form
+ buffer, plus you will have these additional commands:
+@@ -277,7 +277,7 @@
+ 
+ @node Programming Example, Setting Up the Buffer, User Interface, Top
+ @comment  node-name,  next,  previous,  up
+-@section Programming Example
++@chapter Programming Example
+ 
+ Here is the code to implement the user interface example (see @ref{User
+ Interface}).
+@@ -369,7 +369,7 @@
+ 
+ @node Setting Up the Buffer, Basic Types, Programming Example, Top
+ @comment  node-name,  next,  previous,  up
+-@section Setting Up the Buffer
++@chapter Setting Up the Buffer
+ 
+ Widgets are created with @code{widget-create}, which returns a
+ @dfn{widget} object.  This object can be queried and manipulated by
+@@ -422,7 +422,7 @@
+ 
+ @node Basic Types, Sexp Types, Setting Up the Buffer, Top
+ @comment  node-name,  next,  previous,  up
+-@section Basic Types
++@chapter Basic Types
+ 
+ The syntax of a type specification is given below:
+ 
+@@ -635,7 +635,7 @@
+ 
+ @node link, url-link, Basic Types, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{link} Widget
++@section The @code{link} Widget
+ 
+ Syntax:
+ 
+@@ -659,7 +659,7 @@
+ 
+ @node url-link, info-link, link, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{url-link} Widget
++@section The @code{url-link} Widget
+ 
+ Syntax:
+ 
+@@ -672,7 +672,7 @@
+ 
+ @node info-link, push-button, url-link, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{info-link} Widget
++@section The @code{info-link} Widget
+ 
+ Syntax:
+ 
+@@ -685,7 +685,7 @@
+ 
+ @node  push-button, editable-field, info-link, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{push-button} Widget
++@section The @code{push-button} Widget
+ 
+ Syntax:
+ 
+@@ -709,7 +709,7 @@
+ 
+ @node editable-field, text, push-button, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{editable-field} Widget
++@section The @code{editable-field} Widget
+ 
+ Syntax:
+ 
+@@ -753,7 +753,7 @@
+ 
+ @node text, menu-choice, editable-field, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{text} Widget
++@section The @code{text} Widget
+ 
+ This is just like @code{editable-field}, but intended for multiline text
+ fields.  The default @code{:keymap} is @code{widget-text-keymap}, which
+@@ -761,7 +761,7 @@
+ 
+ @node menu-choice, radio-button-choice, text, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{menu-choice} Widget
++@section The @code{menu-choice} Widget
+ 
+ Syntax:
+ 
+@@ -796,7 +796,7 @@
+ 
+ @node radio-button-choice, item, menu-choice, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{radio-button-choice} Widget
++@section The @code{radio-button-choice} Widget
+ 
+ Syntax:
+ 
+@@ -856,7 +856,7 @@
+ 
+ @node item, choice-item, radio-button-choice, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{item} Widget
++@section The @code{item} Widget
+ 
+ Syntax:
+ 
+@@ -870,7 +870,7 @@
+ 
+ @node choice-item, toggle, item, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{choice-item} Widget
++@section The @code{choice-item} Widget
+ 
+ Syntax:
+ 
+@@ -886,7 +886,7 @@
+ 
+ @node toggle, checkbox, choice-item, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{toggle} Widget
++@section The @code{toggle} Widget
+ 
+ Syntax:
+ 
+@@ -914,7 +914,7 @@
+ 
+ @node checkbox, checklist, toggle, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{checkbox} Widget
++@section The @code{checkbox} Widget
+ 
+ The widget has two possible states, `selected' and `unselected', which
+ corresponds to a @code{t} or @code{nil} value.
+@@ -927,7 +927,7 @@
+ 
+ @node checklist, editable-list, checkbox, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{checklist} Widget
++@section The @code{checklist} Widget
+ 
+ Syntax:
+ 
+@@ -978,7 +978,7 @@
+ 
+ @node editable-list, group, checklist, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{editable-list} Widget
++@section The @code{editable-list} Widget
+ 
+ Syntax:
+ 
+@@ -1030,7 +1030,7 @@
+ 
+ @node group,  , editable-list, Basic Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The @code{group} Widget
++@section The @code{group} Widget
+ 
+ This widget simply groups other widgets together.
+ 
+@@ -1044,7 +1044,7 @@
+ 
+ @node Sexp Types, Widget Properties, Basic Types, Top
+ @comment
+-@section Sexp Types
++@chapter Sexp Types
+ 
+ A number of widgets for editing s-expressions (lisp types) are also
+ available.  These basically fall in the following categories.
+@@ -1058,7 +1058,7 @@
+ 
+ @node constants, generic, Sexp Types, Sexp Types
+ @comment  node-name,  next,  previous,  up
+-@subsection The Constant Widgets.
++@section The Constant Widgets.
+ 
+ The @code{const} widget can contain any lisp expression, but the user is
+ prohibited from editing it, which is mainly useful as a component of one
+@@ -1094,7 +1094,7 @@
+ 
+ @node generic, atoms, constants, Sexp Types
+ @comment  node-name,  next,  previous,  up
+-@subsection Generic Sexp Widget.
++@section Generic Sexp Widget.
+ 
+ The @code{sexp} widget can contain any lisp expression, and allows the
+ user to edit it inline in the buffer.
+@@ -1115,7 +1115,7 @@
+ 
+ @node atoms, composite, generic, Sexp Types
+ @comment  node-name,  next,  previous,  up
+-@subsection Atomic Sexp Widgets.
++@section Atomic Sexp Widgets.
+ 
+ The atoms are s-expressions that does not consist of other
+ s-expressions.  A string is an atom, while a list is a composite type.
+@@ -1192,7 +1192,7 @@
+ 
+ @node composite,  , atoms, Sexp Types
+ @comment  node-name,  next,  previous,  up
+-@subsection Composite Sexp Widgets.
++@section Composite Sexp Widgets.
+ 
+ The syntax for the composite are
+ 
+@@ -1265,7 +1265,7 @@
+ 
+ @node Widget Properties, Defining New Widgets, Sexp Types, Top
+ @comment  node-name,  next,  previous,  up
+-@section Properties
++@chapter Properties
+ 
+ You can examine or set the value of a widget by using the widget object
+ that was returned by @code{widget-create}.
+@@ -1353,7 +1353,7 @@
+ 
+ @node Defining New Widgets, Widget Browser, Widget Properties, Top
+ @comment  node-name,  next,  previous,  up
+-@section Defining New Widgets
++@chapter Defining New Widgets
+ 
+ You can define specialized widgets with @code{define-widget}.  It allows
+ you to create a shorthand for more complex widgets.  This includes
+@@ -1565,7 +1565,7 @@
+ 
+ @node Widget Browser, Widget Minor Mode, Defining New Widgets, Top
+ @comment  node-name,  next,  previous,  up
+-@section Widget Browser
++@chapter Widget Browser
+ 
+ There is a separate package to browse widgets.  This is intended to help
+ programmers who want to examine the content of a widget.  The browser
+@@ -1589,7 +1589,7 @@
+ 
+ @node  Widget Minor Mode, Utilities, Widget Browser, Top
+ @comment  node-name,  next,  previous,  up
+-@section Widget Minor Mode
++@chapter Widget Minor Mode
+ 
+ There is a minor mode for manipulating widgets in major modes that
+ doesn't provide any support for widgets themselves.  This is mostly
+@@ -1606,7 +1606,7 @@
+ 
+ @node  Utilities, Widget Wishlist, Widget Minor Mode, Top
+ @comment  node-name,  next,  previous,  up
+-@section Utilities.
++@chapter Utilities.
+ 
+ @defun widget-prompt-value widget prompt [ value unbound ]
+ Prompt for a value matching @var{widget}, using @var{prompt}.@*
+@@ -1621,7 +1621,7 @@
+ 
+ @node Widget Wishlist, Widget Internals, Utilities, Top
+ @comment  node-name,  next,  previous,  up
+-@section Wishlist
++@chapter Wishlist
+ 
+ @itemize @bullet
+ @item 
+@@ -1693,7 +1693,7 @@
+ @end itemize
+ 
+ @node Widget Internals, , Widget Wishlist, Top
+-@section Internals
++@chapter Internals
+ 
+ This (very brief!) section provides a few notes on the internal
+ structure and implementation of Emacs widgets.  Avoid relying on this
+@@ -1701,7 +1701,7 @@
+ To the extent that it actually describes APIs, the information will be
+ moved to appropriate sections of the manual in due course.
+ 
+-@subsection The @dfn{Widget} and @dfn{Type} Structures
++@section The @dfn{Widget} and @dfn{Type} Structures
+ 
+ Widgets and types are currently both implemented as lists.
+ 

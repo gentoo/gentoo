@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="designer">Build KF5 widgets plugin for QtDesigner</flag>
+		<flag name="webkit">Build kdewebkit plugin for QtDesigner</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+	Much of the behaviour of Terminator is based on GNOME Terminal, and 
+	we are adding more features from that as time goes by, but we also 
+	want to extend out in different directions with useful features for 
+	sysadmins and other users. If you have any suggestions, please file 
+	wishlist bugs! (see below for the address)
+</longdescription>
+  <use>
+    <flag name="libnotify">Enables desktop notifications via<pkg>dev-python/notify-python</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="launchpad">terminator</remote-id>
+  </upstream>
+</pkgmetadata>

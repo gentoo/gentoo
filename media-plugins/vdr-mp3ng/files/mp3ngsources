@@ -1,0 +1,3 @@
+/VDR/data/local_music;Lokale Musik;0;*.mp3/*.ogg/*.wav/*.MP3/*.OGG/*.WAV/*.m3u/*.M3U/*.pls/*.PLS
+/mnt/cdrom;CD-Rom;1;*.mp3/*.wav/*.MP3/*.WAV/*.m3u/*.M3U/*.pls/*.PLS
+/mnt/usbstick;USB-Stick;1;*.mp3/*.ogg/*.wav/*.MP3/*.OGG/*.WAV/*.m3u/*.M3U/*.pls/*.PLS

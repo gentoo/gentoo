@@ -1,0 +1,43 @@
+diff -ruN lnxhc-1.2/Makefile lnxhc-1.2-patched/Makefile
+--- lnxhc-1.2/Makefile	2013-02-06 04:14:17.000000000 -0500
++++ lnxhc-1.2-patched/Makefile	2013-02-09 13:39:25.096883794 -0500
+@@ -71,7 +71,6 @@
+ pycheckdir	:= $(libdir)/python/check
+ exampledir	:= $(docdir)/examples
+ dbdir1		:= $(libdir)
+-dbdir2		:= /usr/local/lib/lnxhc
+ 
+ # Base files
+ binfiles	:= $(wildcard bin/*)
+@@ -154,7 +153,7 @@
+ 			$(DESTDIR)$(sysvardir) $(DESTDIR)$(pmdir) \
+ 			$(DESTDIR)$(checkdir) $(DESTDIR)$(consdir) \
+ 			$(DESTDIR)$(profiledir) $(DESTDIR)$(dbdir1) \
+-			$(DESTDIR)$(dbdir2) $(DESTDIR)$(pmcheckdir)  \
++			$(DESTDIR)$(pmcheckdir)  \
+ 			$(DESTDIR)$(pmconsumerdir) $(DESTDIR)$(pydir) \
+ 			$(DESTDIR)$(pycheckdir) $(DESTDIR)$(exampledir)
+ 
+@@ -164,7 +163,7 @@
+ 		 $(DESTDIR)$(checkdir) $(DESTDIR)$(consdir) \
+ 		 $(DESTDIR)$(profiledir) $(DESTDIR)$(pycheckdir) \
+ 		 $(DESTDIR)$(pydir) $(DESTDIR)$(libdir) \
+-		 $(DESTDIR)$(dbdir2) $(DESTDIR)$(exampledir) \
++		 $(DESTDIR)$(exampledir) \
+ 		 $(DESTDIR)$(docdir)
+ 
+ installbase: installdirs
+@@ -184,11 +183,11 @@
+ 	$(CP) -rp $(examples) $(DESTDIR)$(exampledir)
+ 	for FILE in $(notdir $(binfiles)) ; do \
+ 		$(FIXPATH) "$(DESTDIR)/$(bindir)/$${FILE}" "$(libdir)" \
+-			   "$(dbdir1)" "$(dbdir2)" ; \
++			   "$(dbdir1)" ; \
+ 	done
+ 	for FILE in $(notdir $(conffiles)) ; do \
+ 		$(FIXPATH) "$(DESTDIR)/$(confdir)/$${FILE}" "$(libdir)" \
+-			   "$(dbdir1)" "$(dbdir2)" ; \
++			   "$(dbdir1)" ; \
+ 	done
+ 
+ uninstallbase:

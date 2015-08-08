@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/326849
+
+allow ipv6 to be disabled
+
+--- iproute2-2.6.31/ip/iptunnel.c
++++ iproute2-2.6.31/ip/iptunnel.c
+@@ -456,13 +456,6 @@ int do_iptunnel(int argc, char **argv)
+ 		break;
+ 	case AF_INET:
+ 		break;
+-	/*
+-	 * This is silly enough but we have no easy way to make it
+-	 * protocol-independent because of unarranged structure between
+-	 * IPv4 and IPv6.
+-	 */
+-	case AF_INET6:
+-		return do_ip6tunnel(argc, argv);
+ 	default:
+ 		fprintf(stderr, "Unsupported family:%d\n", preferred_family);
+ 		exit(-1);
+--- iproute2-2.6.31/ip/Makefile
++++ iproute2-2.6.31/ip/Makefile
+@@ -1,4 +1,4 @@
+ IPOBJ=ip.o ipaddress.o ipaddrlabel.o iproute.o iprule.o \
+-    rtm_map.o iptunnel.o ip6tunnel.o tunnel.o ipneigh.o ipntable.o iplink.o \
++    rtm_map.o iptunnel.o tunnel.o ipneigh.o ipntable.o iplink.o \
+     ipmaddr.o ipmonitor.o ipmroute.o ipprefix.o \

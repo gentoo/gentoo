@@ -1,0 +1,43 @@
+--- cmake/Modules/Geant4ToolchainBackwardCompatibility.cmake.orig	2011-01-22 00:49:11.096082056 +0000
++++ cmake/Modules/Geant4ToolchainBackwardCompatibility.cmake	2011-01-22 00:53:04.746078920 +0000
+@@ -74,9 +74,9 @@
+ # Construct backward compatible variables
+ #
+ set(G4SYSTEM  "${GEANT4_SYSTEM}-${GEANT4_COMPILER}")
+-set(G4INSTALL ${GEANT4_DATADIR}/geant4-${geant4_VERSION})
++set(G4INSTALL ${GEANT4_DATADIR}/geant4)
+ set(G4INCLUDE ${GEANT4_INCLUDEDIR}/geant4)
+-set(G4LIB     ${GEANT4_LIBDIR}/geant4-${geant4_VERSION})
++set(G4LIB     ${GEANT4_LIBDIR}/geant4)
+ 
+ message(STATUS "Geant4 backwards compatible variable G4SYSTEM : ${G4SYSTEM}")
+ message(STATUS "Geant4 backwards compatible variable G4INSTALL: ${G4INSTALL}")
+@@ -125,7 +125,7 @@
+     # Install targets
+     # toolchain
+     install(DIRECTORY config
+-        DESTINATION ${GEANT4_DATAROOTDIR}/geant4-${geant4_VERSION}
++        DESTINATION ${GEANT4_DATAROOTDIR}/geant4
+         FILES_MATCHING PATTERN "*.gmk"
+         PATTERN "CVS" EXCLUDE
+         PATTERN "scripts/" EXCLUDE)
+@@ -134,16 +134,16 @@
+     install(FILES
+         ${CMAKE_BINARY_DIR}/outputs/runtime/geant4-${geant4_VERSION}.sh
+         ${CMAKE_BINARY_DIR}/outputs/runtime/geant4-${geant4_VERSION}.csh
+-        DESTINATION ${GEANT4_DATAROOTDIR}/geant4-${geant4_VERSION}/config
++        DESTINATION ${GEANT4_DATAROOTDIR}/geant4/config
+         PERMISSIONS 
+             OWNER_READ OWNER_WRITE OWNER_EXECUTE
+             GROUP_READ GROUP_EXECUTE
+             WORLD_READ WORLD_EXECUTE)
+ 
+     # compatibility softlink to library directory
+-    install(CODE "execute_process(COMMAND \${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}${GEANT4_LIBDIR}/geant4-${geant4_VERSION})")
++    install(CODE "execute_process(COMMAND \${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}${GEANT4_LIBDIR}/geant4)")
+ 
+-    install(CODE "execute_process(COMMAND \${CMAKE_COMMAND} -E create_symlink .. ${GEANT4_SYSTEM}-${GEANT4_COMPILER} WORKING_DIRECTORY \$ENV{DESTDIR}${GEANT4_LIBDIR}/geant4-${geant4_VERSION})")
++    install(CODE "execute_process(COMMAND \${CMAKE_COMMAND} -E create_symlink .. ${GEANT4_SYSTEM}-${GEANT4_COMPILER} WORKING_DIRECTORY \$ENV{DESTDIR}${GEANT4_LIBDIR}/geant4)")
+ 
+ endif()
+ 

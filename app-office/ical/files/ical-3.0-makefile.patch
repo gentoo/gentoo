@@ -1,0 +1,33 @@
+Add LDFLAGS to linker calls
+Fix deps on check targets for parallel tests
+
+Patch by Kevin McCarthy <signals42@gmail.com>
+
+--- Makefile.in
++++ Makefile.in
+@@ -74,13 +74,13 @@
+ all: $(CONFIGURED) ical
+ 
+ ical: $(LIB3) $(LIB2) $(LIB1) $(OBJS) main.o
+-	$(CXXLINKER) -o $@ $(OBJS) main.o $(LIBS)
++	$(CXXLINKER) $(LDFLAGS) -o $@ $(OBJS) main.o $(LIBS)
+ 
+ ical-bundle: $(LIB3) $(LIB2) $(LIB1) $(OBJS) mbundle.o
+-	$(CXXLINKER) -o $@ $(OBJS) mbundle.o $(BLIBS)
++	$(CXXLINKER) $(LDFLAGS) -o $@ $(OBJS) mbundle.o $(BLIBS)
+ 
+ ical-tiny: $(LIB3) $(LIB2) $(LIB1) $(OBJS) mbundle.o
+-	$(CXXLINKER) -o $@ $(OBJS) mbundle.o $(TINY_BLIBS)
++	$(CXXLINKER) $(LDFLAGS) -o $@ $(OBJS) mbundle.o $(TINY_BLIBS)
+ 
+ $(LIB1): FRC
+ 	@echo making in calendar
+@@ -195,7 +195,7 @@
+ check_text:
+ 	@ICAL_LIBRARY=$(srcdir) ./ical -nodisplay -f $(srcdir)/tests/no_x.tcl
+ 
+-check_x:
++check_x: check_text
+ 	@ICAL_LIBRARY=$(srcdir) ./ical -f $(srcdir)/tests/x.tcl
+ 
+ # Rules for shipping html documentation

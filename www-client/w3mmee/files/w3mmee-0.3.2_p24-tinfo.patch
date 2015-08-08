@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 73e247b..32afb35 100755
+--- a/configure
++++ b/configure
+@@ -1354,7 +1354,7 @@ main()
+ EOF
+ 
+ if [ -z "$dtermlib" ]; then
+- TERM_LIBS='termcap termlib terminfo mytinfo curses ncurses'
++ TERM_LIBS='termcap termlib terminfo mytinfo curses ncurses tinfo'
+ 
+  for lib in $TERM_LIBS; do
+   for tlibdir in /lib /usr/lib /usr/local/lib /usr/ucblib /usr/ccslib /usr/ccs/lib $prefix/lib; do

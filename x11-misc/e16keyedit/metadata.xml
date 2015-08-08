@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>vapier@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+This is a standalone keybindings editor for enlightenment version 0.16.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">enlightenment</remote-id>
+	</upstream>
+</pkgmetadata>

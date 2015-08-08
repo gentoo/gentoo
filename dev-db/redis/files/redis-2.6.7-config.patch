@@ -1,0 +1,69 @@
+commit 7f05e59a052941fd070be1825d0623a054c66e2d
+Author: jbergstroem <bugs@bergstroem.nu>
+Date:   Tue Oct 30 13:11:23 2012 +1100
+
+    Adapt config based on Gentoo defaults
+
+diff --git a/redis.conf b/redis.conf
+index 751a3eb..1a36b12 100644
+--- a/redis.conf
++++ b/redis.conf
+@@ -14,11 +14,11 @@
+
+ # By default Redis does not run as a daemon. Use 'yes' if you need it.
+ # Note that Redis will write a pid file in /var/run/redis.pid when daemonized.
+-daemonize no
++daemonize yes
+
+ # When running daemonized, Redis writes a pid file in /var/run/redis.pid by
+ # default. You can specify a custom pid file location here.
+-pidfile /var/run/redis.pid
++pidfile /var/run/redis/redis.pid
+
+ # Accept connections on the specified port, default is 6379.
+ # If port 0 is specified Redis will not listen on a TCP socket.
+@@ -27,7 +27,7 @@ port 6379
+ # If you want you can bind a single interface, if the bind option is not
+ # specified all the interfaces will listen for incoming connections.
+ #
+-# bind 127.0.0.1
++bind 127.0.0.1
+
+ # Specify the path for the unix socket that will be used to listen for
+ # incoming connections. There is no default, so Redis will not listen
+@@ -50,7 +50,7 @@ loglevel notice
+ # Specify the log file name. Also 'stdout' can be used to force
+ # Redis to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile stdout
++logfile /var/log/redis/redis.log
+
+ # To enable logging to the system logger, just set 'syslog-enabled' to yes,
+ # and optionally update the other syslog parameters to suit your needs.
+@@ -124,7 +124,7 @@ rdbcompression yes
+ rdbchecksum yes
+
+ # The filename where to dump the DB
+-dbfilename dump.rdb
++dbfilename /var/lib/redis/dump.rdb
+
+ # The working directory.
+ #
+@@ -134,7 +134,7 @@ dbfilename dump.rdb
+ # Also the Append Only File will be created inside this directory.
+ #
+ # Note that you must specify a directory here, not a file name.
+-dir ./
++dir /var/lib/redis/
+
+ ################################# REPLICATION #################################
+
+@@ -278,7 +278,7 @@ slave-priority 100
+ # limit for maxmemory so that there is some free RAM on the system for slave
+ # output buffers (but this is not needed if the policy is 'noeviction').
+ #
+-# maxmemory <bytes>
++maxmemory 67108864
+
+ # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
+ # is reached? You can select among five behavior:

@@ -1,0 +1,35 @@
+http://bugs.gentoo.org/424419
+
+--- libfakeroot.c
++++ libfakeroot.c
+@@ -1551,6 +1551,7 @@
+   return fakeroot_disabled;
+ }
+ 
++#ifdef HAVE_SYS_ACL_H
+ #ifdef HAVE_ACL_T
+ int acl_set_fd(int fd, acl_t acl) {
+   errno = ENOTSUP;
+@@ -1561,6 +1562,7 @@
+   errno = ENOTSUP;
+   return -1;
+ }
++#endif /* HAVE_ACL_T */
+ #endif /* HAVE_SYS_ACL_H */
+ 
+ #ifdef HAVE_FTS_READ
+--- wrapfunc.inp
++++ wrapfunc.inp
+@@ -167,10 +167,12 @@
+ #endif /* HAVE_UNLINKAT */
+ #endif /* HAVE_FSTATAT */
+ 
++#ifdef HAVE_SYS_ACL_H
+ #ifdef HAVE_ACL_T
+ acl_set_fd;int;(int fd, acl_t acl);(fd, acl)
+ acl_set_file;int;(const char *path_p, acl_type_t type, acl_t acl);(path_p, type, acl)
+ #endif /* HAVE_ACL_T */
++#endif /* HAVE_SYS_ACL_H */
+ 
+ #ifdef HAVE_FTS_READ
+ fts_read;FTSENT *;(FTS *ftsp);(ftsp)

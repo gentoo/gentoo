@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-geosciences</herd>
+	<herd>python</herd>
+	<use>
+		<flag name="server">Enable OpenDAP server support</flag>
+	</use>
+	<longdescription lang="en">pydap is a Python implementation of the Data Access Protocol
+  a.k.a. DODS or OPeNDAP. Using pydap as a client you can access
+  hundreds of scientific datasets. You can also use it to serve your
+  data from a variety of formats.</longdescription>
+	<upstream>
+		<remote-id type="pypi">dap</remote-id>
+	</upstream>
+</pkgmetadata>

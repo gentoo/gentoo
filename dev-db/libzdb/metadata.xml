@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+        <email>lordvan@gentoo.org</email>
+ 	<name>Thomas Raschbacher</name>
+  </maintainer>
+  <maintainer>
+        <email>bugs@bergstroem.nu</email>
+ 	<name>Johan Bergström</name>
+	<description>Proxy Maintainer. CC on bugs</description>
+  </maintainer>
+</pkgmetadata>

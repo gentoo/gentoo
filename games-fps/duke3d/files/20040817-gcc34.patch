@@ -1,0 +1,82 @@
+--- source/astub.c.orig	2004-08-22 14:44:50.691126872 +0100
++++ source/astub.c	2004-08-22 14:47:15.532107696 +0100
+@@ -540,6 +540,11 @@
+         return(tempbuf);
+ } //end
+ 
++void SpriteName(short spritenum, char *lo2)
++{
++    sprintf(lo2,names[sprite[spritenum].picnum]);
++}// end SpriteName
++
+ const char *ExtGetSpriteCaption(short spritenum)
+ {
+ 
+@@ -608,7 +613,11 @@
+ //  y1, y2  0-143  (status bar is 144 high, origin is top-left of STATUS BAR)
+ //  col     0-15
+ 
+-
++void PrintStatus(char *string,int num,char x,char y,char color)
++{
++     sprintf(tempbuf,"%s %d",string,num);
++     printext16(x*8,y*8,color,-1,tempbuf,0);
++}
+ 
+ void TotalMem()
+ {
+@@ -1276,18 +1285,6 @@
+ 
+ }
+ 
+-
+-void PrintStatus(char *string,int num,char x,char y,char color)
+-{
+-     sprintf(tempbuf,"%s %d",string,num);
+-     printext16(x*8,y*8,color,-1,tempbuf,0);
+-}
+-
+-void SpriteName(short spritenum, char *lo2)
+-{
+-    sprintf(lo2,names[sprite[spritenum].picnum]);
+-}// end SpriteName
+-
+ char GAMEpalette[768];
+ char WATERpalette[768];
+ char SLIMEpalette[768];
+@@ -1326,6 +1323,17 @@
+  ReadGamePalette();
+ }// end ReadPaletteTable
+ 
++void Ver()
++{
++ sprintf(tempbuf,"DUKE NUKEM BUILD: V032696");
++ if (qsetmode == 200)    //In 3D mode
++ { printext256(60*8,24*8,11,-1,tempbuf,1);
++   rotatesprite((320-8)<<16,(200-8)<<16,64<<9,0,SPINNINGNUKEICON+(((4-totalclock>>3))&7),0,0,0,0,0,xdim-1,ydim-1);
++ }else
++ { printext16(0,0,15,-1,tempbuf,0);
++ }
++}
++
+ void Keys3d(void)
+ {
+     long i,count,rate,nexti;
+@@ -2206,17 +2214,6 @@
+         }
+ }
+ 
+-void Ver()
+-{
+- sprintf(tempbuf,"DUKE NUKEM BUILD: V032696");
+- if (qsetmode == 200)    //In 3D mode
+- { printext256(60*8,24*8,11,-1,tempbuf,1);
+-   rotatesprite((320-8)<<16,(200-8)<<16,64<<9,0,SPINNINGNUKEICON+(((4-totalclock>>3))&7),0,0,0,0,0,xdim-1,ydim-1);
+- }else
+- { printext16(0,0,15,-1,tempbuf,0);
+- }
+-}
+-
+ ActorMem(int i)
+ {int total=0,j;
+     switch(i)

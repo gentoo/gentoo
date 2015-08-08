@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-go category contains libraries and utilities relevant to the
+		Go programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-go enthält Bibliotheken und Werkzeuge für die 
+		Programmiersprache Go.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-go contiene librerias y utilidades referentes al
+		lenguaje de programación Go.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-go カテゴリーにはGoプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-go categorie bevat bibliotheken en hulpmiddelen voor het gebruik van
+		de Go programmeertaal.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-go chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Go.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-go contiene librerie ed utilità per il linguaggio Go.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-go contém bibliotecas e utilitários relevantes
+		para a linguagem de programação Go.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-go zawiera biblioteki i narzędzia związane z językiem
+		programowania Go.
+	</longdescription>
+</catmetadata>

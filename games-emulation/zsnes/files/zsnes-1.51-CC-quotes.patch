@@ -1,0 +1,20 @@
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -95,7 +95,7 @@
+ %.o: %.cpp
+ 	@CXX@ @CXXFLAGS@ -o $@ -c $<
+ %.o %.h: %.psr $(PSR)
+-	./$(PSR) @PSRFLAGS@ -gcc @CC@ -compile -flags "@CFLAGS@ -O1" -cheader $*.h -fname $* $*.o $<
++	./$(PSR) @PSRFLAGS@ -gcc "@CC@" -compile -flags "@CFLAGS@ -O1" -cheader $*.h -fname $* $*.o $<
+ 
+ default: main
+ all: main tools--- zsnes_1_51/src/Makefile.in.orig	2009-02-25 18:02:07.000000000 +0100
+@@ -133,7 +133,7 @@
+ 
+ include makefile.dep
+ makefile.dep: $(TOOL_D)/depbuild Makefile
+-	$(TOOL_D)/depbuild @CC@ "@CFLAGS@" @NASMPATH@ "@NFLAGS@" $(Z_OBJS) > makefile.dep
++	$(TOOL_D)/depbuild "@CC@" "@CFLAGS@" @NASMPATH@ "@NFLAGS@" $(Z_OBJS) > makefile.dep
+ 
+ Makefile: Makefile.in config.status
+ 	./config.status

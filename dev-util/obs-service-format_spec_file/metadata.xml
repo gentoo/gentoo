@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>suse</herd>
+<longdescription lang="en">
+This is a source service for openSUSE Build Service.
+
+This source service is formating the spec file to SUSE standard. The rational
+behind is to make it easier to review spec files from unknown packagers.
+
+This should be used in "trylocal" mode, so that osc is adapting the existing
+spec file instead of creating a new one.
+</longdescription>
+</pkgmetadata>

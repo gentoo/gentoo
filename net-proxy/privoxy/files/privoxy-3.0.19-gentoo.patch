@@ -1,0 +1,114 @@
+--- a/GNUmakefile.in
++++ b/GNUmakefile.in
+@@ -62,8 +62,8 @@
+ MAN_DEST     = $(MAN_DIR)/man1
+ MAN_PAGE     = privoxy.1
+ SHARE_DEST   = @datadir@
+-DOC_DEST     = $(SHARE_DEST)/doc/privoxy
+-VAR_DEST     = @localstatedir@
++DOC_DEST     = @docdir@
++VAR_DEST     = /var
+ LOGS_DEST    = $(VAR_DEST)/log/privoxy
+ PIDS_DEST    = $(VAR_DEST)/run
+ 
+@@ -852,7 +852,6 @@
+ 		$(INSTALL) $(INSTALL_T) $(DOK_WEB)/man-page/*html $(DESTDIR)$$DOC/man-page;\
+ 		$(INSTALL) $(INSTALL_T) $(DOK_WEB)/privoxy-index.html $(DESTDIR)$$DOC/index.html;\
+ 		$(INSTALL) $(INSTALL_T) AUTHORS $(DESTDIR)$$DOC;\
+-		$(INSTALL) $(INSTALL_T) LICENSE $(DESTDIR)$$DOC;\
+ 		$(INSTALL) $(INSTALL_T) README $(DESTDIR)$$DOC;\
+ 		$(INSTALL) $(INSTALL_T) ChangeLog $(DESTDIR)$$DOC;\
+ 		$(INSTALL) $(INSTALL_T) $(DOK_WEB)/p_doc.css $(DESTDIR)$$DOC;\
+@@ -923,34 +922,8 @@
+ 	fi ;\
+ 	$(ECHO) Installing configuration files to $(DESTDIR)$(CONF_DEST);\
+ 	for i in $(CONFIGS); do \
+-		if [ "$$i" = "default.action" ] || [ "$$i" = "default.filter" ] ; then \
+-			$(RM) $(DESTDIR)$(CONF_DEST)/$$i ;\
+-			$(ECHO) Installing fresh $$i;\
+ 			$(INSTALL) $$INSTALL_CONF $$i $(DESTDIR)$(CONF_DEST) || exit 1;\
+-		elif [ -s "$(CONF_DEST)/$$i" ]; then \
+-			$(ECHO) Installing $$i as $$i.new ;\
+-			$(INSTALL) $$INSTALL_CONF $$i $(DESTDIR)$(CONF_DEST)/$$i.new || exit 1;\
+-			NEW=1;\
+-		else \
+-			$(INSTALL) $$INSTALL_CONF $$i $(DESTDIR)$(CONF_DEST) || exit 1;\
+-		fi ;\
+ 	done ;\
+-	if [ -n "$$NEW" ]; then \
+-		$(CHMOD) $(RWD_MODE) $(DESTDIR)$(CONF_DEST)/*.new || exit 1 ;\
+-		$(ECHO) "Warning: Older config files are preserved. Check new versions for changes!" ;\
+-	fi ;\
+-	[ ! -f $(DESTDIR)$(LOG_DEST)/logfile ] && $(ECHO) Creating logfiles in $(DESTDIR)$(LOG_DEST) || \
+-		$(ECHO) Checking logfiles in $(DESTDIR)$(LOG_DEST) ;\
+-		$(TOUCH) $(DESTDIR)$(LOG_DEST)/logfile || exit 1 ;\
+-	if [ x$$USER != x ]; then \
+-		$(CHOWN) $$USER $(DESTDIR)$(LOG_DEST)/logfile || \
+-		$(ECHO) "** WARNING ** current install user different from configured user. Logging may fail!!" ;\
+-	fi ;\
+-	if [ x$$GROUP_T != x ]; then \
+-		$(CHGRP) $$GROUP_T $(DESTDIR)$(LOG_DEST)/logfile || \
+-		$(ECHO) "** WARNING ** current install user different from configured user. Logging may fail!!" ;\
+-	fi ;\
+-	$(CHMOD) $(RWD_MODE) $(DESTDIR)$(LOG_DEST)/logfile || exit 1 ;\
+ 	if [ "$(prefix)" = "/usr/local" ] || [ "$(prefix)" = "/usr" ]; then \
+ 		if [ -f /etc/slackware-version ] && [ -d /etc/rc.d/ ] && [ -w /etc/rc.d/ ] ; then \
+                $(SED) 's+%PROGRAM%+$(PROGRAM)+' slackware/rc.privoxy.orig | \
+--- a/config
++++ b/config
+@@ -265,7 +265,7 @@
+ #
+ #      No trailing "/", please.
+ #
+-confdir .
++confdir /etc/privoxy
+ #
+ #
+ #  2.2. templdir
+@@ -322,7 +322,7 @@
+ #
+ #      No trailing "/", please.
+ #
+-logdir .
++logdir /var/log/privoxy
+ #
+ #
+ #  2.4. actionsfile
+@@ -462,7 +462,7 @@
+ #      Any log files must be writable by whatever user Privoxy is
+ #      being run as (on Unix, default user id is "privoxy").
+ #
+-logfile logfile
++logfile privoxy.log
+ #
+ #
+ #  2.7. trustfile
+--- a/default.action.master
++++ b/default.action.master
+@@ -566,7 +566,7 @@
+ +client-header-tagger{css-requests} \
+ +client-header-tagger{image-requests} \
+ +hide-from-header{block} \
+-+set-image-blocker{pattern} \
+++set-image-blocker{blank} \
+ }
+ standard.Cautious
+ 
+@@ -588,7 +588,7 @@
+ +hide-from-header{block} \
+ +hide-referrer{conditional-block} \
+ +session-cookies-only \
+-+set-image-blocker{pattern} \
+++set-image-blocker{blank} \
+ }
+ standard.Medium
+ 
+@@ -627,7 +627,7 @@
+ +hide-referrer{conditional-block} \
+ +limit-connect{,} \
+ +overwrite-last-modified{randomize} \
+-+set-image-blocker{pattern} \
+++set-image-blocker{blank} \
+ }
+ standard.Advanced
+ 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<longdescription lang="en">OpenCC is a library for converting characters and phrases between
+Traditional Chinese and Simplified Chinese.</longdescription>
+	<upstream>
+		<remote-id type="google-code">open-chinese-convert</remote-id>
+	</upstream>
+</pkgmetadata>

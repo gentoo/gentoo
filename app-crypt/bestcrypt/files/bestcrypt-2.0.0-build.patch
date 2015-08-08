@@ -1,0 +1,59 @@
+diff --git a/Makefile b/Makefile
+index 63baafb..995d48e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -56,7 +56,8 @@ KGSHA_LIB = $(KGSHA_BUILD_DIR)/lib$(KGSHA_LIB_NAME).a
+ KGGHOST_LIB = $(KGGHOST_BUILD_DIR)/lib$(KGGHOST_LIB_NAME).a
+ SPACEMAP_LIB = $(SPACEMAP_BUILD_DIR)/lib$(SPACEMAP_LIB_NAME).a
+ 
+-BC_EXTRA_CFLAGS= -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
++BC_EXTRA_CFLAGS= $(CFLAGS) -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
++BC_EXTRA_LDFLAGS = $(LDFLAGS)
+ 
+ #
+ # commands
+@@ -86,7 +87,7 @@ BCTOOL_OBJS =   container/linux/file.o \
+                 src/bctool-rawlink.o
+ 
+ BCTOOL_CFLAGS = $(BC_EXTRA_CFLAGS) -DBC_LINUX -Wall -I. -Icertificate/  
+-BCTOOL_LDFLAGS = -L$(TARGET_DIR) -l$(KERN_LIB_NAME) -l$(KGSHA_LIB_NAME) \
++BCTOOL_LDFLAGS = $(BC_EXTRA_LDFLAGS) -L$(TARGET_DIR) -l$(KERN_LIB_NAME) -l$(KGSHA_LIB_NAME) \
+                  -l$(KGGHOST_LIB_NAME) -l$(CERT_LIB_NAME) -l$(SPACEMAP_LIB_NAME) \
+                  -ludev -lpthread -l$(FS_LIB_NAME)
+ 
+@@ -101,7 +102,7 @@ $(shell mkdir -p $(TARGET_DIR)/kernel)
+ #
+ 
+ # default target builds console tool with modules
+-all: Makefile helpers module bctool-app
++all: Makefile helpers bctool-app
+ 	true
+ 
+ # GUI executable with helpers and console tool
+@@ -216,7 +217,7 @@ module-clean: force-look
+ #
+ 
+ # install for default target
+-install: module-install bctool-app-install helpers-install
++install: bctool-app-install helpers-install
+ 	true
+ 
+ # uninstall for default target
+@@ -224,6 +225,7 @@ uninstall: before-uninstall module-uninstall bctool-app-uninstall helpers-uninst
+ 	true
+ 
+ helpers-install:
++	install -o root -m 755 -d $(PREFIX)/sbin
+ 	install -o root -m 4755 -s $(TARGET_DIR)/bcmount_helper      $(PREFIX)/sbin
+ 	install -o root -m 4755 -s $(TARGET_DIR)/bcumount_helper     $(PREFIX)/sbin
+ 	install -o root -m 4755 -s $(TARGET_DIR)/bcrrpart_helper     $(PREFIX)/sbin
+@@ -247,7 +249,9 @@ before-uninstall: force-look
+ 
+ # install for main executable only
+ bctool-app-install: force-look
++	install -o root -m 755 -d $(PREFIX)/usr/bin
+ 	install -o root -m 0755 -s build/bctool             $(PREFIX)/usr/bin/
++	install -o root -m 755 -d $(PREFIX)/$(MAN_PATH)/man8
+ 	install -m 644 bctool.8                             $(PREFIX)/$(MAN_PATH)/man8/     
+ 
+ # uninstall for main executable only

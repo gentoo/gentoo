@@ -1,0 +1,21 @@
+Patch from http://libbinio.cvs.sourceforge.net/viewvc/libbinio/libbinio/doc/libbinio.texi?r1=1.13&r2=1.14
+--- doc/libbinio.texi	2004/08/18 19:55:22	1.13
++++ doc/libbinio.texi	2006/05/14 21:36:13	1.14
+@@ -9,7 +9,7 @@
+ This manual documents the binary I/O stream class library, version
+ @value{VERSION}. It was last updated on @value{UPDATED}.
+ 
+-Copyright @copyright{} 2002 - 2004 Simon Peter
++Copyright @copyright{} 2002 - 2005 Simon Peter
+ 
+ @quotation
+ Permission is granted to copy, distribute and/or modify this document
+@@ -27,7 +27,7 @@
+ 
+ @dircategory Software Libraries
+ @direntry
+-* libbinio: (libbinio)          Binary I/O stream class library @value{VERSION}
++* libbinio: (libbinio).          Binary I/O stream class library @value{VERSION}
+ @end direntry
+ 
+ @titlepage

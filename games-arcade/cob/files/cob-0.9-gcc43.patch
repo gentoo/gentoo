@@ -1,0 +1,26 @@
+--- cob/menu.cpp
++++ cob/menu.cpp
+@@ -16,6 +16,7 @@
+  ***************************************************************************/
+ 
+ #include "cob.hxx"
++#include <cstring>
+ 
+ //	**************************************************************************************************************************
+ //
+--- cob/sdw.hxx
++++ cob/sdw.hxx
+@@ -19,6 +19,7 @@
+ 
+ #include <iostream>
+ #include <string>
++#include <cstdlib>
+ 
+ namespace SDLWrapper                            // It's all nicely in a namespace SDLWrapper
+ {
+@@ -192,4 +193,4 @@
+         AudioNoise(int l) : AudioBeep(0,l) { }
+ };
+ 
+-};
++}

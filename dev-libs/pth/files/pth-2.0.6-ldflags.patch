@@ -1,0 +1,17 @@
+Index: pth-2.0.6/Makefile.in
+===================================================================
+--- pth-2.0.6.orig/Makefile.in
++++ pth-2.0.6/Makefile.in
+@@ -168,10 +168,10 @@ pth_p.h: $(S)pth_p.h.in
+ 
+ #   build the static and possibly shared libraries
+ libpth.la: $(LOBJS)
+-	$(LIBTOOL) --mode=link --quiet $(CC) -o libpth.la $(LOBJS) \
++	$(LIBTOOL) --mode=link --quiet $(CC) $(LDFLAGS) -o libpth.la $(LOBJS) \
+ 	-rpath $(libdir) -version-info `$(SHTOOL) version -lc -dlibtool $(_VERSION_FILE)`
+ libpthread.la: pthread.lo $(LOBJS)
+-	$(LIBTOOL) --mode=link --quiet $(CC) -o libpthread.la pthread.lo $(LOBJS) \
++	$(LIBTOOL) --mode=link --quiet $(CC) $(LDFLAGS) -o libpthread.la pthread.lo $(LOBJS) \
+ 	-rpath $(libdir) -version-info `$(SHTOOL) version -lc -dlibtool $(_VERSION_FILE)`
+ 
+ #   build the manual pages

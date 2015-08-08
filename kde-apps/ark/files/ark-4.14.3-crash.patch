@@ -1,0 +1,81 @@
+From cd8ad2761d41d1ec0a18cff7f4d166b53c899fc2 Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <rakuco@FreeBSD.org>
+Date: Mon, 24 Nov 2014 01:37:06 +0200
+Subject: [PATCH] Stop crashing on exit when being used solely as a KPart.
+
+This change fixes a crash introduced by commit 3b981ca ("Remove Part
+from KXMLGUIFactory on exit").
+
+Part::~Part() is the wrong place to call KXMLGUIFactory::removeClient(),
+as it assumes addClient() had been called in the first place.
+
+This is only true if Ark is called as a standalone program, since that
+is done in MainWindow::loadPart()'s call to KXMLGuiWindow::createGUI().
+
+Conversely, if the Ark KPart is being used as an embedded viewer in,
+say, Konqueror or to preview an archive inside an archive (ie. Ark
+inside Ark) that does not hold true and we try to access a
+KXMLGUIFactory that does not exist.
+
+Instead, call KXMLGuiWindow::removeClient() in MainWindow's destructor,
+since in this case we are certain that addClient() was been called
+before.
+
+CCBUG:      341187
+
+(cherry picked from commit 9c30f30b38c36a31e6fcb3aa047a0247ac5a22fb)
+This was committed for completeness, as there will be no additional
+releases from the KDE/4.14 branch.
+
+Conflicts:
+	part/part.cpp
+---
+ app/mainwindow.cpp | 3 +++
+ part/part.cpp      | 3 ---
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index aee8231..181fe76 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -38,6 +38,7 @@
+ #include <KDebug>
+ #include <KEditToolBar>
+ #include <KShortcutsDialog>
++#include <KXMLGUIFactory>
+ 
+ #include <QDragEnterEvent>
+ #include <QDragMoveEvent>
+@@ -69,6 +70,8 @@ MainWindow::~MainWindow()
+     if (m_recentFilesAction) {
+         m_recentFilesAction->saveEntries(KGlobal::config()->group("Recent Files"));
+     }
++
++    guiFactory()->removeClient(m_part);
+     delete m_part;
+     m_part = 0;
+ }
+diff --git a/part/part.cpp b/part/part.cpp
+index bae4882..09fe1cb 100644
+--- a/part/part.cpp
++++ b/part/part.cpp
+@@ -53,7 +53,6 @@
+ #include <KStandardGuiItem>
+ #include <KTempDir>
+ #include <KToggleAction>
+-#include <KXMLGUIFactory>
+ 
+ #include <QAction>
+ #include <QCursor>
+@@ -138,8 +137,6 @@ Part::Part(QWidget *parentWidget, QObject *parent, const QVariantList& args)
+ 
+ Part::~Part()
+ {
+-    factory()->removeClient(this);
+-
+     saveSplitterSizes();
+ 
+     m_extractFilesAction->menu()->deleteLater();
+-- 
+2.0.5
+

@@ -1,0 +1,23 @@
+--- hS3-0.5.6-orig/Network/AWS/AWSConnection.hs	2011-04-21 13:29:41.000000000 +1000
++++ hS3-0.5.6/Network/AWS/AWSConnection.hs	2012-11-18 22:21:27.136988604 +1100
+@@ -1,3 +1,4 @@
++{-# LANGUAGE ScopedTypeVariables #-}
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  Network.AWS.AWSConnection
+@@ -15,6 +16,8 @@
+    AWSConnection(..)
+    ) where
+ 
++import Prelude hiding (catch)
++import Control.Exception
+ import System.Environment
+ 
+ -- | An Amazon Web Services connection.  Everything needed to connect
+@@ -55,5 +58,5 @@
+                   ( _, "", "") -> Nothing
+                   ( _, "",  _) -> Just (amazonS3Connection ak sk1)
+                   ( _,  _,  _) -> Just (amazonS3Connection ak sk0)
+-    where getEnvKey s = catch (getEnv s) (const $ return "")
++    where getEnvKey s = catch (getEnv s) (\(_::IOException) -> return "")
+ 

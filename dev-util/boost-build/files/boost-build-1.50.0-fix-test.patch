@@ -1,0 +1,11 @@
+--- test/startup_v2.py.orig	2012-08-19 11:48:12.020600368 +0200
++++ test/startup_v2.py	2012-08-19 11:48:28.564516623 +0200
+@@ -14,7 +14,7 @@
+     return re.match(expected,actual,re.DOTALL) != None
+ 
+ # Test the v1 startup behavior.
+-t = BoostBuild.Tester(match=match_re, boost_build_path='', pass_toolset=0)
++t = BoostBuild.Tester(match=match_re, boost_build_path='/invalid/location', pass_toolset=0)
+ 
+ t.set_tree('startup')
+ 

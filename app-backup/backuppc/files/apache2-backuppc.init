@@ -1,0 +1,170 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+opts="configdump configtest fullstatus graceful gracefulstop modules reload virtualhosts"
+
+depend() {
+	need net
+	use mysql dns logger netmount postgresql
+	after sshd
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	checkconfig
+	eend $?
+}
+
+checkconfd() {
+	PIDFILE="${PIDFILE:-/var/run/apache2-backuppc.pid}"
+	TIMEOUT=${TIMEOUT:-10}
+
+	SERVERROOT="${SERVERROOT:-/usr/lib/apache2}"
+	if [ ! -d ${SERVERROOT} ]; then
+		eerror "SERVERROOT does not exist: ${SERVERROOT}"
+		return 1
+	fi
+
+	CONFIGFILE="${CONFIGFILE:-/etc/BackupPC/httpd.conf}"
+	[ "${CONFIGFILE#/}" = "${CONFIGFILE}" ] && CONFIGFILE="${SERVERROOT}/${CONFIGFILE}"
+	if [ ! -r "${CONFIGFILE}" ]; then
+		eerror "Unable to read configuration file: ${CONFIGFILE}"
+		return 1
+	fi
+
+	APACHE2_OPTS="${APACHE2_OPTS} -d ${SERVERROOT}"
+	APACHE2_OPTS="${APACHE2_OPTS} -f ${CONFIGFILE}"
+	[ -n "${STARTUPERRORLOG}" ] && APACHE2_OPTS="${APACHE2_OPTS} -E ${STARTUPERRORLOG}"
+
+	APACHE2="/usr/sbin/apache2"
+}
+
+checkconfig() {
+	checkconfd || return 1
+
+	${APACHE2} ${APACHE2_OPTS} -t 1>/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} has detected a syntax error in your configuration files:"
+		${APACHE2} ${APACHE2_OPTS} -t
+	fi
+
+	return $ret
+}
+
+start() {
+	checkconfig || return 1
+
+	[ -f /var/log/apache2/ssl_scache ] && rm /var/log/apache2/ssl_scache
+
+	ebegin "Starting ${SVCNAME}"
+	${APACHE2} ${APACHE2_OPTS} -k start
+
+	let i=0
+	while [ ! -e "${PIDFILE}" ] && [ $i -lt ${TIMEOUT} ]; do
+		sleep 1 && i=$(expr $i + 1)
+	done
+
+	test $i -le ${TIMEOUT}
+	eend $?
+}
+
+stop() {
+	checkconfd || return 1
+
+	ebegin "Stopping ${SVCNAME}"
+	${APACHE2} ${APACHE2_OPTS} -k stop
+
+	let i=0
+	while pidof "${APACHE2}" >/dev/null && [ $i -lt ${TIMEOUT} ]; do
+		sleep 1 && i=$(expr $i + 1)
+	done
+
+	test $i -le ${TIMEOUT}
+	eend $?
+}
+
+reload() {
+	RELOAD_TYPE="${RELOAD_TYPE:-graceful}"
+
+	checkconfig || return 1
+	service_started "${SVCNAME}" || return
+
+	if [ "${RELOAD_TYPE}" = "restart" ]; then
+		ebegin "Restarting ${SVCNAME}"
+		${APACHE2} ${APACHE2_OPTS} -k restart
+		eend $?
+	elif [ "${RELOAD_TYPE}" = "graceful" ]; then
+		ebegin "Gracefully restarting ${SVCNAME}"
+		${APACHE2} ${APACHE2_OPTS} -k graceful
+		eend $?
+	else
+		eerror "${RELOAD_TYPE} is not a valid RELOAD_TYPE. Please edit /etc/conf.d/${SVCNAME}"
+	fi
+}
+
+graceful() {
+	checkconfig || return 1
+	service_started "${SVCNAME}" || return
+	ebegin "Gracefully restarting ${SVCNAME}"
+	${APACHE2} ${APACHE2_OPTS} -k graceful
+	eend $?
+}
+
+gracefulstop() {
+	checkconfig || return 1
+
+	# zap!
+	if service_started "${SVCNAME}"; then
+		mark_service_stopped "${SVCNAME}"
+	fi
+
+	ebegin "Gracefully stopping ${SVCNAME}"
+	${APACHE2} ${APACHE2_OPTS} -k graceful-stop
+	eend $?
+}
+
+modules() {
+	checkconfig || return 1
+
+	${APACHE2} ${APACHE2_OPTS} -M 2>&1
+}
+
+fullstatus() {
+	LYNX="${LYNX:-lynx -dump}"
+	STATUSURL="${STATUSURL:-http://localhost/server-status}"
+
+	if ! service_started "${SVCNAME}"; then
+		eerror "${SVCNAME} not started"
+	elif ! type -p ${LYNX} 2>&1 >/dev/null; then
+		eerror "lynx not found! you need to emerge www-client/lynx"
+	else
+		${LYNX} ${STATUSURL}
+	fi
+}
+
+virtualhosts() {
+	checkconfd || return 1
+	${APACHE2} ${APACHE2_OPTS} -S
+}
+
+configdump() {
+	LYNX="${LYNX:-lynx -dump}"
+	INFOURL="${INFOURL:-http://localhost/server-info}"
+
+	checkconfd || return 1
+
+	if ! service_started "${SVCNAME}"; then
+		eerror "${SVCNAME} not started"
+	elif ! type -p ${LYNX} 2>&1 >/dev/null; then
+		eerror "lynx not found! you need to emerge www-client/lynx"
+	else
+		echo "${APACHE2} started with '${APACHE2_OPTS}'"
+		for i in config server list; do
+			${LYNX} "${INFOURL}/?${i}" | sed '/Apache Server Information/d;/^[[:space:]]\+[_]\+$/Q'
+		done
+	fi
+}
+
+# vim: ts=4 filetype=gentoo-init-d

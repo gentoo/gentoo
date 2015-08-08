@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>dev-zero@gentoo.org</email>
+</maintainer>
+<maintainer>
+<email>prometheanfire@gentoo.org</email>
+</maintainer>
+<herd>virtualization</herd>
+<use>
+	<flag name='monitor'>Build the Python and GUI dependent monitor applications</flag>
+	<flag name='pyside'>Use <pkg>dev-python/pyside</pkg> instead of <pkg>dev-python/PyQt4</pkg> for Python/Qt-bindings when building with USE=monitor.</flag>
+</use>
+</pkgmetadata>

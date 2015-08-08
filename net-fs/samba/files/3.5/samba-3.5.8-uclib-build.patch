@@ -1,0 +1,58 @@
+From a5bfd634ecd0e81eb92b065da311ee4cf6f08757 Mon Sep 17 00:00:00 2001
+From: Jeff Layton <jlayton@samba.org>
+Date: Mon, 5 Jul 2010 08:39:45 -0400
+Subject: [PATCH] mount.cifs: switch to using _PATH_MNTTAB and paths.h
+
+The code currently uses fstab.h and _PATH_FSTAB, but uClibc apparently
+doesn't have that header. It does have paths.h and _PATH_MNTTAB however
+and so does glibc, so use that instead.
+
+Reported-by: Armin Kuster <linux@kama-aina.net>
+Signed-off-by: Jeff Layton <jlayton@samba.org>
+---
+diff -NrU5 samba-3.5.8.original/client/mount.cifs.c samba-3.5.8/client/mount.cifs.c
+--- samba-3.5.8.original/client/mount.cifs.c	2011-03-06 12:48:05.000000000 -0600
++++ samba-3.5.8/client/mount.cifs.c	2011-05-04 08:51:42.000000000 -0600
+@@ -37,11 +37,11 @@
+ #include <netdb.h>
+ #include <string.h>
+ #include <mntent.h>
+ #include <fcntl.h>
+ #include <limits.h>
+-#include <fstab.h>
++#include <paths.h>
+ #include "mount.h"
+ 
+ #define MOUNT_CIFS_VERSION_MAJOR "1"
+ #define MOUNT_CIFS_VERSION_MINOR "14"
+ 
+@@ -261,14 +261,14 @@
+ {
+ 	FILE *fstab;
+ 	struct mntent *mnt;
+ 
+ 	/* make sure this mount is listed in /etc/fstab */
+-	fstab = setmntent(_PATH_FSTAB, "r");
++	fstab = setmntent(_PATH_MNTTAB, "r");
+ 	if (!fstab) {
+ 		fprintf(stderr, "Couldn't open %s for reading!\n",
+-				_PATH_FSTAB);
++				_PATH_MNTTAB);
+ 		return EX_FILEIO;
+ 	}
+ 
+ 	while((mnt = getmntent(fstab))) {
+ 		if (!strcmp(mountpoint, mnt->mnt_dir))
+@@ -277,11 +277,11 @@
+ 	endmntent(fstab);
+ 
+ 	if (mnt == NULL || strcmp(mnt->mnt_fsname, devname)) {
+ 		fprintf(stderr, "%s: permission denied: no match for "
+ 				"%s found in %s\n", progname, mountpoint,
+-				_PATH_FSTAB);
++				_PATH_MNTTAB);
+ 		return EX_USAGE;
+ 	}
+ 
+ 	/*
+ 	 * 'mount' munges the options from fstab before passing them

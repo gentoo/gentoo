@@ -1,0 +1,12 @@
+diff -Nur feynmf-orig/feynmf.pl feynmf/feynmf.pl
+--- feynmf-orig/feynmf.pl	1996-12-02 01:00:00.000000000 +0100
++++ feynmf/feynmf.pl	2004-09-02 23:25:40.603910119 +0200
+@@ -373,7 +373,7 @@
+ 			maybe_run "$gftopk_prog $gf" if $gftopk_prog;
+ 		    }
+ 		}
+-		close (<LOG>);
++		close (LOG);
+ 	    }
+ 	}
+     }

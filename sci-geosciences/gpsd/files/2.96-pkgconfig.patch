@@ -1,0 +1,37 @@
+Index: gpsd-2.96/configure.ac
+===================================================================
+--- gpsd-2.96.orig/configure.ac
++++ gpsd-2.96/configure.ac
+@@ -687,12 +687,7 @@ AC_MSG_CHECKING([for BlueZ support])
+ if test x"$ac_bluetooth" = x"yes"; then
+     AC_MSG_RESULT([yes])
+     AC_DEFINE(HAVE_BLUEZ,1,[Define if we have Bluez])
+-    # Older versions of autotools barf and die on this.
+-    #PKG_CHECK_MODULES(BLUEZ, bluez )
+-    BLUEZ_CFLAGS=`pkg-config --cflags bluez`
+-    BLUEZ_LIBS=`pkg-config --libs bluez`
+-    AC_SUBST(BLUEZ_CFLAGS)
+-    AC_SUBST(BLUEZ_LIBS)
++    PKG_CHECK_MODULES(BLUEZ, bluez )
+ else
+     AC_MSG_RESULT([no])
+ fi
+@@ -709,16 +704,8 @@ AC_MSG_CHECKING([for DBUS support])
+ if test x"$ac_dbus" = "xyes"; then
+     AC_MSG_RESULT([yes])
+     AC_DEFINE([DBUS_ENABLE], 1, [DBUS support])
+-    # Older versions of autotools barf and die on this.
+-    #PKG_CHECK_MODULES(DBUS, dbus-1 >= 0.23.4 )
+-    DBUS_CFLAGS=`pkg-config --cflags dbus-glib-1`
+-    DBUS_LIBS=`pkg-config --libs dbus-1`
+-    AC_SUBST(DBUS_CFLAGS)
+-    AC_SUBST(DBUS_LIBS)
+-    #PKG_CHECK_MODULES(DBUS_GLIB, dbus-glib-1 >= 0.22 )
+-    DBUS_GLIB_LIBS=`pkg-config --libs dbus-glib-1`
+-    AC_SUBST(DBUS_GLIB_CFLAGS)
+-    AC_SUBST(DBUS_GLIB_LIBS)
++    PKG_CHECK_MODULES(DBUS, dbus-1 >= 0.23.4 )
++    PKG_CHECK_MODULES(DBUS_GLIB, dbus-glib-1 >= 0.22 )
+ else
+     AC_MSG_RESULT([no])
+ fi

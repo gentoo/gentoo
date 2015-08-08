@@ -1,0 +1,119 @@
+From 8f85db2a32cab4bad987b2100424fbaf42f6ed26 Mon Sep 17 00:00:00 2001
+From: Thomas McGuire <mcguire@kde.org>
+Date: Mon, 25 Apr 2011 00:50:43 +0100
+Subject: [PATCH 2/2] Implement readOnly() for Akonadi kresources.
+
+Now it doesn't ask me if I want to save in my local calendar
+or in my Facebook folder anymore, since only the local calendar
+is writeable.
+
+REVIEW: 101229
+---
+ kresources/kabc/resourceakonadi.cpp       |    5 +++++
+ kresources/kabc/resourceakonadi.h         |    2 ++
+ kresources/kcal/resourceakonadi.cpp       |    5 +++++
+ kresources/kcal/resourceakonadi.h         |    2 ++
+ kresources/shared/sharedresourceprivate.h |    5 +++++
+ kresources/shared/subresourcemodel.h      |   13 +++++++++++++
+ 6 files changed, 32 insertions(+)
+
+diff --git a/kresources/kabc/resourceakonadi.cpp b/kresources/kabc/resourceakonadi.cpp
+index d2ea349..39edf6e 100644
+--- a/kresources/kabc/resourceakonadi.cpp
++++ b/kresources/kabc/resourceakonadi.cpp
+@@ -249,5 +249,10 @@ void ResourceAkonadi::setSubresourceCompletionWeight( const QString &subResource
+   }
+ }
+ 
++bool ResourceAkonadi::readOnly() const
++{
++  return d->isReadOnly();
++}
++
+ #include "resourceakonadi.moc"
+ // kate: space-indent on; indent-width 2; replace-tabs on;
+diff --git a/kresources/kabc/resourceakonadi.h b/kresources/kabc/resourceakonadi.h
+index f2075a4..747a0c1 100644
+--- a/kresources/kabc/resourceakonadi.h
++++ b/kresources/kabc/resourceakonadi.h
+@@ -73,6 +73,8 @@ class ResourceAkonadi : public ResourceABC, public SharedResourceIface
+     virtual QStringList subresources() const;
+     virtual QMap<QString, QString> uidToResourceMap() const;
+ 
++    virtual bool readOnly() const;
++
+     StoreConfigIface &storeConfig();
+ 
+   public Q_SLOTS:
+diff --git a/kresources/kcal/resourceakonadi.cpp b/kresources/kcal/resourceakonadi.cpp
+index d2c9415..9552ffa 100644
+--- a/kresources/kcal/resourceakonadi.cpp
++++ b/kresources/kcal/resourceakonadi.cpp
+@@ -432,6 +432,11 @@ void ResourceAkonadi::doClose()
+   d->doClose();
+ }
+ 
++bool ResourceAkonadi::readOnly() const
++{
++  return d->isReadOnly();
++}
++
+ #include "resourceakonadi.moc"
+ 
+ // kate: space-indent on; indent-width 2; replace-tabs on;
+diff --git a/kresources/kcal/resourceakonadi.h b/kresources/kcal/resourceakonadi.h
+index a220616..f7ee77d 100644
+--- a/kresources/kcal/resourceakonadi.h
++++ b/kresources/kcal/resourceakonadi.h
+@@ -140,6 +140,8 @@ class ResourceAkonadi : public ResourceCalendar, public SharedResourceIface
+ 
+     virtual QString infoText() const;
+ 
++    virtual bool readOnly() const;
++
+   protected:
+     virtual bool doLoad( bool syncCache );
+ 
+diff --git a/kresources/shared/sharedresourceprivate.h b/kresources/shared/sharedresourceprivate.h
+index 8019204..ea551d5 100644
+--- a/kresources/shared/sharedresourceprivate.h
++++ b/kresources/shared/sharedresourceprivate.h
+@@ -68,6 +68,11 @@ class SharedResourcePrivate : public ResourcePrivateBase
+       return mModel.subResource( id );
+     }
+ 
++    bool isReadOnly() const
++    {
++      return !mModel.hasWritableSubResource();
++    }
++
+   protected:
+      SubResourceModelClass mModel;
+ 
+diff --git a/kresources/shared/subresourcemodel.h b/kresources/shared/subresourcemodel.h
+index b6f4dc2..956a0ff 100644
+--- a/kresources/shared/subresourcemodel.h
++++ b/kresources/shared/subresourcemodel.h
+@@ -97,6 +97,19 @@ class SubResourceModel : public AbstractSubResourceModel
+       return result;
+     }
+ 
++    bool hasWritableSubResource() const
++    {
++      Akonadi::MimeTypeChecker mimeChecker;
++      mimeChecker.setWantedMimeTypes( SubResourceClass::supportedMimeTypes() );
++
++      foreach ( const SubResourceClass *subResource, mSubResourcesByColId ) {
++        if ( subResource->isWritable() && mimeChecker.isWantedCollection( subResource->collection() ) ) {
++          return true;
++        }
++      }
++      return false;
++    }
++
+     SubResourceClass *findSubResourceForMappedItem( const QString &kresId ) const
+     {
+       foreach ( SubResourceClass *subResource, mSubResourcesByColId ) {
+-- 
+1.7.9.2
+

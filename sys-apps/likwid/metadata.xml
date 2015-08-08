@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>brendan@horan.hk</email>
+		<name>Brendan Horan</name>
+		<description>Proxy - Maintainer. Assign bugs to him</description>
+	</maintainer>
+</pkgmetadata>

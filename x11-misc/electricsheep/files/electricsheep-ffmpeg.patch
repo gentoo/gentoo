@@ -1,0 +1,41 @@
+Index: electricsheep-2.7_beta11/electricsheep.c
+===================================================================
+--- electricsheep-2.7_beta11.orig/electricsheep.c
++++ electricsheep-2.7_beta11/electricsheep.c
+@@ -61,6 +61,9 @@
+ #define STATFS statfs
+ #endif
+ 
++#ifndef guess_format
++#define guess_format av_guess_format
++#endif
+ 
+ prefs_t prefs;
+ 
+@@ -662,7 +665,7 @@ void copy_out_file(char *fname) {
+     input_stream_index = -1;
+     for (j = 0; j < ictx->nb_streams; j++) {
+ 	AVCodecContext *enc = ictx->streams[j]->codec;
+-	if (CODEC_TYPE_VIDEO == enc->codec_type) {
++	if (AVMEDIA_TYPE_VIDEO == enc->codec_type) {
+ 	    input_stream_index = j;
+ 	    break;
+ 	}
+@@ -686,7 +689,7 @@ void copy_out_file(char *fname) {
+ 	    }
+ 	}
+ 
+-	output_ctx = av_alloc_format_context();
++	output_ctx = avformat_alloc_context();
+ 
+ 	ofmt = guess_format(NULL, fname, NULL);
+ 	if (!ofmt) {
+@@ -730,7 +733,7 @@ void copy_out_file(char *fname) {
+ 	av_init_packet(&opkt);
+ 	if (av_parser_change(ictx->streams[input_stream_index]->parser, output_ctx->streams[0]->codec,
+ 			     &opkt.data, &opkt.size, ipkt.data, ipkt.size,
+-			     ipkt.flags & PKT_FLAG_KEY))
++			     ipkt.flags & AV_PKT_FLAG_KEY))
+ 	    opkt.destruct= av_destruct_packet;
+ 		
+ 	if (-1 == av_interleaved_write_frame(output_ctx, &opkt)) {

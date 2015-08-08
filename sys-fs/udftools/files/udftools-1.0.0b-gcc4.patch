@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/112122
+
+gcc4 compat
+
+--- a/wrudf/wrudf.c
++++ b/wrudf/wrudf.c
+@@ -245,7 +245,7 @@
+ 	    } else if( strncmp( spm->partIdent.ident, UDF_ID_VIRTUAL, strlen(UDF_ID_VIRTUAL)) == 0 )
+ 		virtualPartitionNum = i;
+ 	}
+-	(char*)spm += spm->partitionMapLength;
++	spm = (char*)spm + spm->partitionMapLength;
+     }
+ 
+     if( medium == CDR ) {

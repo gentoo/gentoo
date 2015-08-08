@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/520314
+http://gitorious.org/procps/procps/commit/7f6efed9bb85d1e212e06985ea3e06720f6ca949
+
+--- sysctl.c
++++ sysctl.c
+@@ -640,7 +640,7 @@
+ 	}
+ 
+ 
+-	if (stat(DEFAULT_PRELOAD, &ts) < 0 && S_ISREG(ts.st_mode)) {
++	if (stat(DEFAULT_PRELOAD, &ts) == 0 && S_ISREG(ts.st_mode)) {
+ 		if (!Quiet)
+ 			printf(_("* Applying %s ...\n"), DEFAULT_PRELOAD);
+ 		rc |= Preload(DEFAULT_PRELOAD);

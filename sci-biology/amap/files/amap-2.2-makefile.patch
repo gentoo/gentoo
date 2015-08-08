@@ -1,0 +1,35 @@
+Respect {CXX,LD}FLAGS
+
+http://bugs.gentoo.org/332009
+
+--- amap-align/align/Makefile
++++ amap-align/align/Makefile
+@@ -15,6 +15,8 @@
+ #    c) RELEASE mode
+ ################################################################################
+ 
++OPT_CXXFLAGS = -O3 -W -Wall -pedantic -funroll-loops
++
+ OTHERFLAGS = -DNumInsertStates=1 -DVERSION='"AMAP.2.2"'
+ 
+ # debug mode    
+@@ -26,8 +28,7 @@
+ 
+ # release mode
+ #CXXFLAGS = -O3 -W -Wall -pedantic -DNDEBUG $(OTHERFLAGS) -mmmx -msse -msse2 -mfpmath=sse -march=pentium4 -mcpu=pentium4 -funroll-loops -fomit-frame-pointer 
+-CXXFLAGS = -O3 -W -Wall -pedantic -DNDEBUG $(OTHERFLAGS) -funroll-loops
+-
++CXXFLAGS = $(OPT_CXXFLAGS) -DNDEBUG $(OTHERFLAGS)
+ ################################################################################
+ # 3) Dependencies
+ ################################################################################
+ 
+@@ -38,7 +37,7 @@
+ all : $(TARGETS)
+ 
+ amap : MultiSequenceDag.h MultiSequence.h ProbabilisticModel.h ScoreType.h Sequence.h FileBuffer.h SparseMatrix.h EvolutionaryTree.h Defaults.h SafeVector.h Amap.cc
+-	$(CXX) $(CXXFLAGS) -lm -o amap Amap.cc 
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o amap Amap.cc -lm
+ 
+ .PHONY : clean
+ clean:

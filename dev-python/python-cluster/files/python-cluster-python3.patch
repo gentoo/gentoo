@@ -1,0 +1,37 @@
+--- cluster.py.old	2010-10-01 14:41:55.000000000 +0200
++++ cluster.py	2010-10-01 14:42:32.000000000 +0200
+@@ -130,7 +130,7 @@
+    format =  " %%%is |" % maxlen
+    format = "|" + format*colcount
+    for row in list:
+-      print format % tuple(row)
++      print (format % tuple(row))
+ 
+ def magnitude(a):
+    "calculates the magnitude of a vecor"
+@@ -239,12 +239,12 @@
+       """
+       Pretty-prints this cluster. Useful for debuging
+       """
+-      print depth*"   " + "[level %s]" % self.__level
++      print (depth*"   " + "[level %s]" % self.__level)
+       for item in self.__items:
+          if isinstance(item, Cluster):
+             item.display(depth+1)
+          else:
+-            print depth*"   "+"%s" % item
++            print (depth*"   "+"%s" % item)
+ 
+    def topology(self):
+       """
+--- cluster.py.old	2010-10-01 14:48:54.000000000 +0200
++++ cluster.py	2010-10-01 14:49:21.000000000 +0200
+@@ -429,7 +429,7 @@
+       elif method == 'uclus':
+          self.linkage = self.uclusDistance
+       else:
+-         raise ValueError, 'distance method must be one of single, complete, average of uclus'
++         raise ValueError('distance method must be one of single, complete, average of uclus')
+ 
+    def uclusDistance(self, x, y):
+       """

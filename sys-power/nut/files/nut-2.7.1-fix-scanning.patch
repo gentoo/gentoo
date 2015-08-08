@@ -1,0 +1,72 @@
+Search for correct libusb in testing.
+
+There may be many libusb libraries on a system, and we need to iterate until we
+find the correct one.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar --exclude .libs --exclude '*.o' --exclude core nut-2.7.1.orig/tools/nut-scanner/scan_usb.c nut-2.7.1/tools/nut-scanner/scan_usb.c
+--- nut-2.7.1.orig/tools/nut-scanner/scan_usb.c	2014-01-04 18:38:22.496816444 -0800
++++ nut-2.7.1/tools/nut-scanner/scan_usb.c	2014-01-04 19:05:04.598647935 -0800
+@@ -28,7 +28,7 @@
+ #include <ltdl.h>
+ 
+ /* dynamic link library stuff */
+-static char * libname = "libusb";
++static char * libname = "libusb-0.1";
+ static lt_dlhandle dl_handle = NULL;
+ static const char *dl_error = NULL;
+ static int (*nut_usb_close)(usb_dev_handle *dev);
+@@ -41,6 +41,8 @@
+ static usb_dev_handle * (*nut_usb_open)(struct usb_device *dev);
+ static int (*nut_usb_find_devices)(void);
+ 
++int nutscan_test_usb_library(const char*,void*);
++
+ /* return 0 on error */
+ int nutscan_load_usb_library()
+ {
+@@ -58,6 +60,22 @@
+ 		return 0;
+ 	}
+ 
++	int ret = lt_dlforeachfile(NULL, nutscan_test_usb_library, libname);
++	if(ret == 0) {
++		dl_handle = (void *)1;
++		lt_dlexit();
++	}
++
++	return ret;
++}
++
++int nutscan_test_usb_library(const char *filename, void* data) {
++		char prefix[64];
++		char *libname  = (char*) data;
++		sprintf(prefix, "/%s", libname);
++		if(strstr(filename, prefix) == NULL)
++			return 0;
++
+-        dl_handle = lt_dlopenext(libname);
++        dl_handle = lt_dlopenext(filename);
+         if (!dl_handle) {
+                 dl_error = lt_dlerror();
+                 goto err;
+@@ -100,16 +118,15 @@
+                 goto err;
+         }
+ 
+         *(void **)(&nut_usb_find_devices) = lt_dlsym(dl_handle,"usb_find_devices");
+         if ((dl_error = lt_dlerror()) != NULL)  {
+                 goto err;
+         }
+ 
++        fprintf(stderr, "Loaded USB library (%s from %s) : USB search enabled.\n", libname, filename);
+         return 1;
+ err:
+-        fprintf(stderr, "Cannot load USB library (%s) : %s. USB search disabled.\n", libname, dl_error);
+-        dl_handle = (void *)1;
+-	lt_dlexit();
++        fprintf(stderr, "Cannot load USB library (%s from %s) : %s. USB search disabled.\n", libname, filename, dl_error);
+         return 0;
+ }
+ /* end of dynamic link library stuff */

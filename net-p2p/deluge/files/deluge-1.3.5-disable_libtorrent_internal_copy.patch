@@ -1,0 +1,42 @@
+--- setup.py
++++ setup.py
+@@ -205,38 +205,7 @@
+ 
+ _ext_modules = []
+ 
+-# Check for a system libtorrent and if found, then do not build the libtorrent extension
+-build_libtorrent = True
+-try:
+-    from deluge._libtorrent import lt
+-except ImportError:
+-    build_libtorrent = True
+-else:
+-    build_libtorrent = False
+-
+-if build_libtorrent:
+-    got_libtorrent = False
+-    if not os.path.exists("libtorrent"):
+-        import subprocess
+-        if subprocess.call(['./get_libtorrent.sh']) > 0:
+-            got_libtorrent = False
+-        else:
+-            got_libtorrent = True
+-    else:
+-        got_libtorrent = True
+-
+-    if got_libtorrent:
+-        # There isn't a system libtorrent library, so let's build the one included with deluge
+-        libtorrent = Extension(
+-            'libtorrent',
+-            extra_compile_args = _extra_compile_args,
+-            include_dirs = _include_dirs,
+-            libraries = _libraries,
+-            library_dirs = _library_dirs,
+-            sources = _sources
+-        )
+-
+-        _ext_modules = [libtorrent]
++import deluge._libtorrent
+ 
+ desktop_data = 'deluge/data/share/applications/deluge.desktop'
+ 

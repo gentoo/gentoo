@@ -1,0 +1,12 @@
+Fix compilation for >=linux-headers-2.6.35
+
+--- xhkeys-2.2.1/xhkeys_cdaudio.c
++++ xhkeys-2.2.1/xhkeys_cdaudio.c
+@@ -16,6 +16,7 @@
+ #include <string.h>
+ #include <stdarg.h>
+ #include <ctype.h>
++#include <limits.h>
+ #include <linux/cdrom.h>
+ #include <sys/ioctl.h>
+ #include <fcntl.h>

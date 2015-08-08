@@ -1,0 +1,15 @@
+Sadly the CMake side of openjpeg slotting in Gentoo is broken.
+To reliably find openjpeg:2 we need to use pkg-config.
+
+diff -ruN poppler-0.33.0.orig/CMakeLists.txt poppler-0.33.0/CMakeLists.txt
+--- poppler-0.33.0.orig/CMakeLists.txt	2015-05-14 20:22:31.000000000 +0200
++++ poppler-0.33.0/CMakeLists.txt	2015-05-24 20:39:30.163709257 +0200
+@@ -172,7 +172,7 @@
+   set(USE_OPENJPEG1 ${LIBOPENJPEG_FOUND})
+   set(WITH_OPENJPEG ${LIBOPENJPEG_FOUND})
+ elseif(ENABLE_LIBOPENJPEG STREQUAL "openjpeg2")
+-  find_package(LIBOPENJPEG2)
++  pkg_check_modules(LIBOPENJPEG2 libopenjp2)
+   set(USE_OPENJPEG2 ${LIBOPENJPEG2_FOUND})
+   set(WITH_OPENJPEG ${LIBOPENJPEG2_FOUND})
+ endif()

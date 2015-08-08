@@ -1,0 +1,36 @@
+http://crbug.com/318478
+https://github.com/GoogleCloudPlatform/gsutil/pull/171
+
+From 0067df5b08ebab29b88bbb7e6c1cd79dc4d96100 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 27 Nov 2013 14:57:05 -0500
+Subject: [PATCH] drop http_proxy clearing
+
+The boto logic takes care of merging the env vars and the settings in its
+boto config file, so there shouldn't be a need to clear things.
+---
+ gslib/__main__.py | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/gslib/__main__.py b/gslib/__main__.py
+index 82a69c1..a18db42 100644
+--- a/gslib/__main__.py
++++ b/gslib/__main__.py
+@@ -247,14 +247,6 @@ def main():
+     else:
+       command_name = args[0]
+ 
+-    # Unset http_proxy environment variable if it's set, because it confuses
+-    # boto. (Proxies should instead be configured via the boto config file.)
+-    if 'http_proxy' in os.environ:
+-      if debug > 1:
+-        sys.stderr.write(
+-            'Unsetting http_proxy environment variable within gsutil run.\n')
+-      del os.environ['http_proxy']
+-
+     if os.environ.get('_ARGCOMPLETE', '0') == '1':
+       return _PerformTabCompletion(command_runner)
+ 
+-- 
+1.8.4.3
+

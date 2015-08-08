@@ -1,0 +1,15 @@
+Removes deprecated and useless items.
+
+--- knutclient.desktop
++++ knutclient.desktop
+@@ -6,9 +6,8 @@
+ Comment[de]=
+ Comment[cs]=Klient pro UPS syst� NUT
+ Comment[es]=Cliente KDE para NUT
+-Exec=knutclient -caption "%c" %i %m
++Exec=knutclient
+ Icon=knutclient
+-MiniIcon=knutclient
+ Type=Application
+ X-DocPath=knutclient/index.html
+ GenericName=KNutClient

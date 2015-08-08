@@ -1,0 +1,38 @@
+From 6932b9a17c4f64c13f7060895d46334bc7022430 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 7 Aug 2012 01:29:01 -0400
+Subject: [PATCH] Do not check for libGL symbols when checking libOSMesa
+
+If mesa had been built with shared glapi, glAccum is not available in
+libOSMesa without explicitly linking to libGL. In addition, in
+mesa-8.0.x and earlier, libOSMesa needs to be explicitly linked to
+libglapi if mesa was built with shared glapi, see
+https://bugs.gentoo.org/show_bug.cgi?id=399813
+And in mesa-8.1.x, libOSMesa in addition needs libdl, libpthread, and
+libstdc++, see https://bugs.gentoo.org/show_bug.cgi?id=431832
+---
+ configure.ac | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index de807d2..a2e8684 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1233,7 +1233,13 @@ This probably prevents linking to OpenGL. Try deleting the file and restarting c
+ 
+         if test "x$with_osmesa" != "xno"
+         then
+-            WINE_CHECK_SONAME(OSMesa,glAccum,,,[$X_LIBS -lm $X_EXTRA_LIBS])
++            WINE_CHECK_SONAME(OSMesa,OSMesaCreateContext,,,[$X_LIBS -lm $X_EXTRA_LIBS])
++            if test "x$ac_cv_lib_soname_OSMesa" = "x"; then
++                osmesa_save_CC=$CC
++                CC=$CXX
++                WINE_CHECK_SONAME(OSMesa,OSMesaCreateContext,,,[-lglapi -lpthread -ldl $X_LIBS -lm $X_EXTRA_LIBS])
++                CC=$osmesa_save_CC
++            fi
+             WINE_NOTICE_WITH(osmesa,[test "x$ac_cv_lib_soname_OSMesa" = "x"],
+                              [libOSMesa ${notice_platform}development files not found (or too old), OpenGL rendering in bitmaps won't be supported.])
+         fi
+-- 
+1.8.5.3
+

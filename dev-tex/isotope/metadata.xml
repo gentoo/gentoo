@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>tex</herd>
+  <herd>sci</herd>
+  <longdescription>
+    The package provides a command \isotope for setting the atomic weight and
+	atomic number indications of isotopes. (The naive way of doing the job with
+	(La)TeX mathematics commands produces an unsatisfactory result.)
+  </longdescription>
+</pkgmetadata>

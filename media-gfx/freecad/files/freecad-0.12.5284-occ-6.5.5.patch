@@ -1,0 +1,224 @@
+--- FreeCAD-0.12.5284/src/Mod/Part/App/TopoShape.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/TopoShape.cpp
+@@ -1370,7 +1370,7 @@
+ 
+     //circular profile
+     Handle(Geom_Circle) aCirc = new Geom_Circle (gp::XOY(), 1.0);
+-    aCirc->Rotate (gp::OZ(), Standard_PI/2.);
++    aCirc->Rotate (gp::OZ(), M_PI/2.);
+ 
+     //perpendicular section
+     Handle(BRepAdaptor_HCurve) myPath = new BRepAdaptor_HCurve(path_adapt);
+@@ -1469,12 +1469,12 @@
+         }
+ 
+         gp_Pnt2d aPnt(0, 0);
+-        gp_Dir2d aDir(2. * PI, pitch);
++        gp_Dir2d aDir(2. * M_PI, pitch);
+         gp_Ax2d aAx2d(aPnt, aDir);
+ 
+         Handle(Geom2d_Line) line = new Geom2d_Line(aAx2d);
+         gp_Pnt2d beg = line->Value(0);
+-        gp_Pnt2d end = line->Value(sqrt(4.0*PI*PI+pitch*pitch)*(height/pitch));
++        gp_Pnt2d end = line->Value(sqrt(4.0*M_PI*M_PI+pitch*pitch)*(height/pitch));
+         Handle(Geom2d_TrimmedCurve) segm = GCE2d_MakeSegment(beg , end);
+ 
+         TopoDS_Edge edgeOnSurf = BRepBuilderAPI_MakeEdge(segm , surf);
+@@ -1772,7 +1772,7 @@
+     Standard_Real x3, y3, z3;
+ 
+     Handle_StlMesh_Mesh aMesh = new StlMesh_Mesh();
+-    StlTransfer::BuildIncrementalMesh(this->_Shape, accuracy, aMesh);
++    StlTransfer::BuildIncrementalMesh(this->_Shape, accuracy, false, aMesh);
+     StlMesh_MeshExplorer xp(aMesh);
+     for (Standard_Integer nbd=1;nbd<=aMesh->NbDomains();nbd++) {
+         for (xp.InitTriangle (nbd); xp.MoreTriangle (); xp.NextTriangle ()) {
+--- FreeCAD-0.12.5284/src/Mod/Part/App/FeatureRevolution.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/FeatureRevolution.cpp
+@@ -71,7 +71,7 @@
+     try {
+         // Now, let's get the TopoDS_Shape
+         TopoDS_Shape revolve = base->Shape.getShape().revolve(gp_Ax1(pnt, dir),
+-            Angle.getValue()/180.0f*Standard_PI);
++            Angle.getValue()/180.0f*M_PI);
+         if (revolve.IsNull())
+             return new App::DocumentObjectExecReturn("Resulting shape is null");
+         this->Shape.setValue(revolve);
+--- FreeCAD-0.12.5284/src/Mod/Part/App/PrimitiveFeature.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/PrimitiveFeature.cpp
+@@ -263,9 +263,9 @@
+         return new App::DocumentObjectExecReturn("Radius of sphere too small");
+     try {
+         BRepPrimAPI_MakeSphere mkSphere(Radius.getValue(),
+-                                        Angle1.getValue()/180.0f*Standard_PI,
+-                                        Angle2.getValue()/180.0f*Standard_PI,
+-                                        Angle3.getValue()/180.0f*Standard_PI);
++                                        Angle1.getValue()/180.0f*M_PI,
++                                        Angle2.getValue()/180.0f*M_PI,
++                                        Angle3.getValue()/180.0f*M_PI);
+         TopoDS_Shape ResultShape = mkSphere.Shape();
+         this->Shape.setValue(ResultShape);
+     }
+@@ -321,9 +321,9 @@
+         gp_Ax2 ax2(pnt,dir);
+         BRepPrimAPI_MakeSphere mkSphere(ax2,
+                                         Radius2.getValue(), 
+-                                        Angle1.getValue()/180.0f*Standard_PI,
+-                                        Angle2.getValue()/180.0f*Standard_PI,
+-                                        Angle3.getValue()/180.0f*Standard_PI);
++                                        Angle1.getValue()/180.0f*M_PI,
++                                        Angle2.getValue()/180.0f*M_PI,
++                                        Angle3.getValue()/180.0f*M_PI);
+         Standard_Real scale = Radius1.getValue()/Radius2.getValue();
+         gp_Dir xDir = ax2.XDirection();
+         gp_Dir yDir = ax2.YDirection();
+@@ -380,7 +380,7 @@
+     try {
+         BRepPrimAPI_MakeCylinder mkCylr(Radius.getValue(),
+                                         Height.getValue(),
+-                                        Angle.getValue()/180.0f*Standard_PI);
++                                        Angle.getValue()/180.0f*M_PI);
+         TopoDS_Shape ResultShape = mkCylr.Shape();
+         this->Shape.setValue(ResultShape);
+     }
+@@ -429,7 +429,7 @@
+         BRepPrimAPI_MakeCone mkCone(Radius1.getValue(),
+                                     Radius2.getValue(),
+                                     Height.getValue(),
+-                                    Angle.getValue()/180.0f*Standard_PI);
++                                    Angle.getValue()/180.0f*M_PI);
+         TopoDS_Shape ResultShape = mkCone.Shape();
+         this->Shape.setValue(ResultShape);
+     }
+@@ -498,9 +498,9 @@
+ #else
+         BRepPrimAPI_MakeTorus mkTorus(Radius1.getValue(),
+                                       Radius2.getValue(),
+-                                      Angle1.getValue()/180.0f*Standard_PI,
+-                                      Angle2.getValue()/180.0f*Standard_PI,
+-                                      Angle3.getValue()/180.0f*Standard_PI);
++                                      Angle1.getValue()/180.0f*M_PI,
++                                      Angle2.getValue()/180.0f*M_PI,
++                                      Angle3.getValue()/180.0f*M_PI);
+         const TopoDS_Solid& ResultShape = mkTorus.Solid();
+ #endif
+         this->Shape.setValue(ResultShape);
+--- FreeCAD-0.12.5284/src/Mod/Part/App/AppPartPy.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/AppPartPy.cpp
+@@ -492,7 +492,7 @@
+             d.SetCoord(vec.x, vec.y, vec.z);
+         }
+         Handle_Geom_Plane aPlane = new Geom_Plane(p, d);
+-        BRepBuilderAPI_MakeFace Face(aPlane, 0.0, length, 0.0, width);
++        BRepBuilderAPI_MakeFace Face(aPlane, 0.0, length, 0.0, width, Precision::Confusion());
+         return new TopoShapeFacePy(new TopoShape((Face.Face()))); 
+     }
+     catch (Standard_DomainError) {
+--- FreeCAD-0.12.5284/src/Mod/Part/App/GeometrySurfacePyImp.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/GeometrySurfacePyImp.cpp
+@@ -79,7 +79,7 @@
+             s->Bounds(u1,u2,v1,v2);
+             if (!PyArg_ParseTuple(args, "|dddd", &u1,&u2,&v1,&v2))
+                 return 0;
+-            BRepBuilderAPI_MakeFace mkBuilder(s, u1, u2, v1, v2);
++            BRepBuilderAPI_MakeFace mkBuilder(s, u1, u2, v1, v2, Precision::Confusion());
+             TopoDS_Shape sh = mkBuilder.Shape();
+             return new TopoShapeFacePy(new TopoShape(sh));
+         }
+--- FreeCAD-0.12.5284/src/Mod/Part/App/Geometry.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/Geometry.cpp
+@@ -1252,7 +1252,7 @@
+     Handle_Geom_Surface s = Handle_Geom_Surface::DownCast(handle());
+     Standard_Real u1,u2,v1,v2;
+     s->Bounds(u1,u2,v1,v2);
+-    BRepBuilderAPI_MakeFace mkBuilder(s, u1, u2, v1, v2);
++    BRepBuilderAPI_MakeFace mkBuilder(s, u1, u2, v1, v2, Precision::Confusion());
+     return mkBuilder.Shape();
+ }
+ 
+--- FreeCAD-0.12.5284/src/Mod/Part/App/PrimitiveFeature.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/PrimitiveFeature.cpp
+@@ -191,7 +191,7 @@
+     gp_Pnt pnt(0.0,0.0,0.0);
+     gp_Dir dir(0.0,0.0,1.0);
+     Handle_Geom_Plane aPlane = new Geom_Plane(pnt, dir);
+-    BRepBuilderAPI_MakeFace mkFace(aPlane, 0.0, L, 0.0, W);
++    BRepBuilderAPI_MakeFace mkFace(aPlane, 0.0, L, 0.0, W, Precision::Confusion());
+ 
+     const char *error=0;
+     switch (mkFace.Error())
+--- FreeCAD-0.12.5284/src/Mod/Part/App/TopoShape.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/TopoShape.cpp
+@@ -1338,7 +1338,7 @@
+     double u1,u2,v1,v2;
+     surf->Bounds(u1,u2,v1,v2);
+ 
+-    BRepBuilderAPI_MakeFace mkBuilder(surf, umin, umax, v1, v2);
++    BRepBuilderAPI_MakeFace mkBuilder(surf, umin, umax, v1, v2, Precision::Confusion());
+     return mkBuilder.Face();
+ }
+ 
+@@ -1391,7 +1391,7 @@
+ 
+         Standard_Real u1,u2,v1,v2;
+         mySurface->Bounds(u1,u2,v1,v2);
+-        BRepBuilderAPI_MakeFace mkBuilder(mySurface, u1, u2, v1, v2);
++        BRepBuilderAPI_MakeFace mkBuilder(mySurface, u1, u2, v1, v2, Precision::Confusion());
+         return mkBuilder.Shape();
+     }
+ 
+@@ -1443,7 +1443,7 @@
+     mkSweep.Perform(tol, Standard_False, GeomAbs_C1, BSplCLib::MaxDegree(), 1000);
+ 
+     const Handle_Geom_Surface& surf = mkSweep.Surface();
+-    BRepBuilderAPI_MakeFace mkBuilder(surf, umin, umax, vmin, vmax);
++    BRepBuilderAPI_MakeFace mkBuilder(surf, umin, umax, vmin, vmax, Precision::Confusion());
+     return mkBuilder.Face();
+ }
+ 
+--- FreeCAD-0.12.5284/src/Mod/Part/App/TopoShapeFacePyImp.cpp
++++ FreeCAD-0.12.5284/src/Mod/Part/App/TopoShapeFacePyImp.cpp
+@@ -135,7 +135,7 @@
+                 return -1;
+             }
+ 
+-            BRepBuilderAPI_MakeFace mkFace(S);
++            BRepBuilderAPI_MakeFace mkFace(S, Precision::Confusion());
+             if (bound) {
+                 Py::List list(bound);
+                 for (Py::List::iterator it = list.begin(); it != list.end(); ++it) {
+--- FreeCAD-0.12.5284/src/Mod/Fem/App/AppFemPy.cpp
++++ FreeCAD-0.12.5284/src/Mod/Fem/App/AppFemPy.cpp
+@@ -498,12 +498,12 @@
+ 
+ 		//Do a Monte Carlo approach and start from the Principal Axis System
+ 		//and rotate +/- 60° around each axis in a first iteration
+-		double	angle_range_min_x=-PI/3.0,angle_range_max_x=PI/3.0,
+-			angle_range_min_y=-PI/3.0,angle_range_max_y=PI/3.0,
+-			angle_range_min_z=-PI/3.0,angle_range_max_z=PI/3.0;
++		double	angle_range_min_x=-M_PI/3.0,angle_range_max_x=M_PI/3.0,
++			angle_range_min_y=-M_PI/3.0,angle_range_max_y=M_PI/3.0,
++			angle_range_min_z=-M_PI/3.0,angle_range_max_z=M_PI/3.0;
+ 
+ 		//We rotate until we are 0.1° sure to be in the right position
+-		for (step_size = (2.0*PI/it_steps);step_size>(2.0*PI/3600.0);step_size=(2.0*PI/it_steps))
++		for (step_size = (2.0*M_PI/it_steps);step_size>(2.0*M_PI/3600.0);step_size=(2.0*M_PI/it_steps))
+ 		{
+ 			for(alpha_x=angle_range_min_x;alpha_x<angle_range_max_x;alpha_x=alpha_x+step_size)
+ 			{
+@@ -744,11 +744,11 @@
+ 
+ 		//Do a Monte Carlo approach and start from the Principal Axis System
+ 		//and rotate +/- 60° around each axis in a first iteration
+-		double	angle_range_min_x=-PI/3.0,angle_range_max_x=PI/3.0,
+-				angle_range_min_y=-PI/3.0,angle_range_max_y=PI/3.0,
+-				angle_range_min_z=-PI/3.0,angle_range_max_z=PI/3.0;
++		double	angle_range_min_x=-M_PI/3.0,angle_range_max_x=M_PI/3.0,
++				angle_range_min_y=-M_PI/3.0,angle_range_max_y=M_PI/3.0,
++				angle_range_min_z=-M_PI/3.0,angle_range_max_z=M_PI/3.0;
+ 		
+-		for (step_size = (2.0*PI/it_steps);step_size>(2.0*PI/360.0);step_size=(2.0*PI/it_steps))
++		for (step_size = (2.0*M_PI/it_steps);step_size>(2.0*M_PI/360.0);step_size=(2.0*M_PI/it_steps))
+ 		{
+ 			for(alpha_x=angle_range_min_x;alpha_x<angle_range_max_x;alpha_x=alpha_x+step_size)
+ 			{

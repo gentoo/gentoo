@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v3 or later
+
+depend() {
+	need net
+	use dns logger netmount
+	after sshd
+}
+
+checkconfig() {
+	if [ ! -d "$THTTPD_DOCROOT" ]; then
+		eend 1 "THTTPD_DOCROOT not set correctly in /etc/conf.d/${SVCNAME}"
+	fi
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+
+	checkconfig || return 1
+
+	start-stop-daemon --quiet --start --exec /usr/sbin/thttpd \
+		--pidfile /var/run/${SVCNAME}.pid --chdir "$THTTPD_DOCROOT" -- \
+			-i /var/run/${SVCNAME}.pid \
+			-l /var/log/${SVCNAME}.log \
+			${THTTPD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --quiet --stop --pidfile /var/run/${SVCNAME}.pid
+	eend $?
+}

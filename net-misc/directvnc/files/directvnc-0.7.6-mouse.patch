@@ -1,0 +1,30 @@
+diff --git a/src/dfb.c b/src/dfb.c
+old mode 100755
+new mode 100644
+index 8de0f0a..0241c82
+--- a/src/dfb.c
++++ b/src/dfb.c
+@@ -28,7 +28,6 @@ IDirectFB               *dfb = NULL;
+ IDirectFBSurface        *primary;
+ IDirectFBDisplayLayer   *layer;
+ IDirectFBInputDevice    *keyboard;
+-IDirectFBInputDevice    *mouse;
+ IDirectFBEventBuffer    *input_buffer;
+ DFBResult err;
+ DFBSurfaceDescription dsc;
+@@ -70,7 +69,6 @@ dfb_init(int argc, char *argv[])
+      primary->GetSize (primary, &opt.client.width, &opt.client.height);
+ 
+      DFBCHECK(dfb->GetInputDevice( dfb, DIDID_KEYBOARD, &keyboard ));
+-     DFBCHECK(dfb->GetInputDevice( dfb, DIDID_MOUSE, &mouse ));
+      DFBCHECK (dfb->CreateInputEventBuffer (dfb, DICAPS_ALL, DFB_TRUE, &input_buffer));
+ }
+ 
+@@ -84,7 +82,6 @@ dfb_deinit()
+      primary->Release( primary );
+      input_buffer->Release(input_buffer);
+      keyboard->Release( keyboard );
+-     mouse->Release( mouse );
+      layer->Release( layer );
+      dfb->Release( dfb ); 
+ }

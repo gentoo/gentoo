@@ -1,0 +1,46 @@
+From 4e78fab6a1b2e9653a7959cbdb7d54bb750041d0 Mon Sep 17 00:00:00 2001
+From: Jakub Hrozek <jhrozek@redhat.com>
+Date: Mon, 04 Feb 2013 16:30:48 +0000
+Subject: krb5: include backwards compatible declaration of krb5_trace_info
+
+krb5-1.10 used to include "struct krb5_trace_info", now krb5-1.11
+includes a "krb5_trace_info" typedefed from "struct _krb5_trace_info".
+
+Do the same in the SSSD to allow compiling with both 1.10 and 1.11.
+---
+diff --git a/src/external/krb5.m4 b/src/external/krb5.m4
+index 5bc8711..f1679a1 100644
+--- a/src/external/krb5.m4
++++ b/src/external/krb5.m4
+@@ -37,7 +37,7 @@ SAVE_LIBS=$LIBS
+ CFLAGS="$CFLAGS $KRB5_CFLAGS"
+ LIBS="$LIBS $KRB5_LIBS"
+ AC_CHECK_HEADERS([krb5.h krb5/krb5.h])
+-AC_CHECK_TYPES([krb5_ticket_times, krb5_times], [], [],
++AC_CHECK_TYPES([krb5_ticket_times, krb5_times, krb5_trace_info], [], [],
+                [ #ifdef HAVE_KRB5_KRB5_H
+                  #include <krb5/krb5.h>
+                  #else
+diff --git a/src/util/sss_krb5.c b/src/util/sss_krb5.c
+index bb61d10..ab0344c 100644
+--- a/src/util/sss_krb5.c
++++ b/src/util/sss_krb5.c
+@@ -1001,9 +1001,15 @@ sss_krb5_residual_check_type(const char *full_location,
+ }
+ 
+ #ifdef HAVE_KRB5_SET_TRACE_CALLBACK
++
++#ifndef HAVE_KRB5_TRACE_INFO
++/* krb5-1.10 had struct krb5_trace_info, 1.11 has type named krb5_trace_info */
++typedef struct krb5_trace_info krb5_trace_info;
++#endif  /* HAVE_KRB5_TRACE_INFO */
++
+ static void
+ sss_child_krb5_trace_cb(krb5_context context,
+-                        const struct krb5_trace_info *info, void *data)
++                        const krb5_trace_info *info, void *data)
+ {
+     if (info == NULL) {
+         /* Null info means destroy the callback data. */
+--
+cgit v0.9.1

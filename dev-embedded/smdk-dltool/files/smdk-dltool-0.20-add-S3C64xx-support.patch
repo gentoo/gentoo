@@ -1,0 +1,66 @@
+From ed9e5da97fdb40082aca7acbdce5286b530fb2ba Mon Sep 17 00:00:00 2001
+From: Maurus Cuelenaere <mcuelenaere@gmail.com>
+Date: Mon, 11 Jan 2010 01:55:34 +0100
+Subject: [PATCH] Add S3C64xx support
+
+Author: unknown
+URL: http://dev.odroid.com/frs/download.php/22/Linux-dltool.tar.gz
+---
+ dltool/dltool.c |   19 ++++++++++++++-----
+ 1 files changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/dltool/dltool.c b/dltool/dltool.c
+index 4e2d238..e76e607 100644
+--- a/dltool/dltool.c
++++ b/dltool/dltool.c
+@@ -26,6 +26,8 @@ char *dl_file = "download.dat";
+ char *dl_udev = NULL;
+ char *dl_ubus = NULL;
+ 
++int ep_out = 0;
++
+ #define DBG(x) if (debug) { printf x; }
+ 
+ void write_u32(unsigned char *dp, unsigned long val)
+@@ -120,9 +122,15 @@ int verify_device(struct usb_device *dev)
+ 	DBG(("\t=> idVendor %x\n", dev->descriptor.idVendor));
+ 	DBG(("\t=> idProduct %x\n", dev->descriptor.idProduct));
+ 
+-	if (dev->descriptor.idVendor == 0x5345 &&
+-	    dev->descriptor.idProduct == 0x1234)
++	if (dev->descriptor.idVendor == 0x5345 && dev->descriptor.idProduct == 0x1234) {
++		ep_out = 3;
++		return 1;
++	}
++	else if(dev->descriptor.idVendor == 0x4e8 && dev->descriptor.idProduct == 0x1234){
++		printf("S3C64XX Detected!\n");
++		ep_out = 2;
+ 		return 1;
++	}
+ 
+ 	return 0;
+ }
+@@ -180,9 +188,9 @@ int main(int argc, char **argv)
+ 	usb_dev_handle *devh;
+ 	int ret;
+ 
+-	printf("SMDK42XX USB Download Tool\n");
++	printf("SMDK42XX,S3C64XX USB Download Tool\n");
+ 	printf("Version 0.20 (c) 2004,2005,2006"
+-	       "Ben Dooks <ben-linux@fluff.org>\n");
++	       " Ben Dooks <ben-linux@fluff.org>\n");
+ 	printf("\n");
+ 
+ 	while (1) {
+@@ -309,7 +317,8 @@ int main(int argc, char **argv)
+ 	write_header(dl_data, dl_addr, dl_size);
+ 	calc_cksum(dl_data, dl_size);
+ 
+-	ret = usb_bulk_write(devh, 3, (void *)dl_data, dl_size, 5*1000*1000);
++	//ret = usb_bulk_write(devh, 3, (void *)dl_data, dl_size, 5*1000*1000);
++	ret = usb_bulk_write(devh, ep_out, (void *)dl_data, dl_size, 5*1000*1000);
+ 	printf("=> usb_bulk_write() returned %d\n", ret);
+ 
+ 	if (ret != dl_size) {
+-- 
+1.7.0.4

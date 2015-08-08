@@ -1,0 +1,54 @@
+https://github.com/matplotlib/matplotlib/pull/4430
+
+From 3761303016cab0542891374032eca87e74d585bf Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Fri, 15 May 2015 03:43:17 -0400
+Subject: [PATCH 2/3] setupext: do not mess with PKG_CONFIG_PATH
+
+The current code always sets PKG_CONFIG_PATH to build paths in / which
+breaks cross-compiling -- things like /usr/lib are for the build system
+(e.g. x86) and not for the target (e.g. arm).  Since we're adding paths
+that are already the default for pkg-config, there's no point in trying
+to be smart here.  Just punt the code.
+
+This basically reverts commit 101beb975d3a1218350f02bf68dc2a43ac8ff148.
+---
+ setupext.py | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/setupext.py b/setupext.py
+index 29cddf9..57d80e7 100755
+--- a/setupext.py
++++ b/setupext.py
+@@ -252,7 +252,6 @@ class PkgConfig(object):
+         if sys.platform == 'win32':
+             self.has_pkgconfig = False
+         else:
+-            self.set_pkgconfig_path()
+             self.pkgconfig = os.environ.get('PKG_CONFIG', 'pkg-config')
+             status, output = getstatusoutput("%s --help" % self.pkgconfig)
+             self.has_pkgconfig = (status == 0)
+@@ -262,20 +261,6 @@ class PkgConfig(object):
+                     "    pkg-config is not installed.\n"
+                     "    matplotlib may not be able to find some of its dependencies")
+ 
+-    def set_pkgconfig_path(self):
+-        pkgconfig_path = sysconfig.get_config_var('LIBDIR')
+-        if pkgconfig_path is None:
+-            return
+-
+-        pkgconfig_path = os.path.join(pkgconfig_path, 'pkgconfig')
+-        if not os.path.isdir(pkgconfig_path):
+-            return
+-
+-        try:
+-            os.environ['PKG_CONFIG_PATH'] += ':' + pkgconfig_path
+-        except KeyError:
+-            os.environ['PKG_CONFIG_PATH'] = pkgconfig_path
+-
+     def setup_extension(self, ext, package, default_include_dirs=[],
+                         default_library_dirs=[], default_libraries=[],
+                         alt_exec=None):
+-- 
+2.4.0
+

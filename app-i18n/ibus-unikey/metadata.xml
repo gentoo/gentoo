@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<longdescription lang="en">Ibus-unikey is a IM Engine for IBus
+Use for type Vietnamese
+Support via forum at: http://forum.ubuntu-vn.com/viewforum.php?f=85</longdescription>
+	<use>
+		<flag name="gtk3">Enable support for gtk+3</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">ibus-unikey</remote-id>
+	</upstream>
+</pkgmetadata>

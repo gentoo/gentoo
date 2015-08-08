@@ -1,0 +1,18 @@
+http://bugs.gentoo.org/show_bug.cgi?id=366835
+https://sourceforge.net/tracker/?func=detail&aid=3300653&group_id=121058&atid=689120
+
+--- exim_469_dsn_1_3.patch
++++ exim_469_dsn_1_3.patch
+@@ -524,10 +524,10 @@
+ diff -urN exim-4.69-orig/src/readconf.c exim-4.69-dsn/src/readconf.c
+ --- exim-4.69-orig/src/readconf.c	2007-08-23 12:01:49.000000000 +0100
+ +++ exim-4.69-dsn/src/readconf.c	2008-07-28 09:52:55.000000000 +0100
+-@@ -207,6 +207,9 @@
+-   { "dns_ipv4_lookup",          opt_stringptr,   &dns_ipv4_lookup },
++@@ -219,6 +219,9 @@
+    { "dns_retrans",              opt_time,        &dns_retrans },
+    { "dns_retry",                opt_int,         &dns_retry },
++   { "dns_use_edns0",            opt_int,         &dns_use_edns0 },
+ +#ifdef SUPPORT_DSN
+ +  { "dsn",                      opt_bool,        &dsn },
+ +#endif

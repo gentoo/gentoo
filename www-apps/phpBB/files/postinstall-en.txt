@@ -1,0 +1,22 @@
+You are almost done!
+
+  0. Setup a database (e.g. MySQL: see 
+                       http://www.gentoo.org/doc/en/mysql-howto.xml)
+
+  1. Login on
+
+     http://${VHOST_HOSTNAME}/${VHOST_APPDIR}
+
+     and finish the installation.
+
+  2. Move into the directory where you installed phpBB and remove
+     the "install" folder:
+
+     # cd ${MY_INSTALLDIR}
+     # rm -rf install
+
+  3. You can now launch your browser and point it to your phpBB site:
+
+     http://${VHOST_HOSTNAME}/${VHOST_APPDIR} 
+
+  Enjoy phpBB!

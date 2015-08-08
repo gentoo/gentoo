@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>dev-zero@gentoo.org</email>
+		<name>Tiziano Müller</name>
+	</maintainer>
+	<longdescription>
+		The dwz package contains a program that attempts to optimize DWARF
+		debugging information contained in ELF shared libraries and ELF executables
+		for size, by replacing DWARF information representation with equivalent
+		smaller representation where possible and by reducing the amount of
+		duplication using techniques from DWARF standard appendix E - creating
+		DW_TAG_partial_unit compilation units (CUs) for duplicated information
+		and using DW_TAG_imported_unit to import it into each CU that needs it.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,7 @@
+(compiler::emit-fn t)
+(compiler::link nil "bootstrapped_ansi_gcl"
+		(format nil "(progn (let ((*load-path* (cons ~S *load-path*)) 
+		(si::*load-types* ~S))  (compiler::emit-fn t))  (when (fboundp (quote
+		si::sgc-on))  (si::sgc-on t))  (setq compiler::*default-system-p* t))"
+		si::*system-directory* (quote (list ".lsp")))
+		"-lutil")

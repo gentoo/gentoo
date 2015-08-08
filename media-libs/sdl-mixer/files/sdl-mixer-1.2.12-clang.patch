@@ -1,0 +1,11 @@
+--- SDL_mixer-1.2.12.orig/music_mad.c
++++ SDL_mixer-1.2.12/music_mad.c
+@@ -224,7 +224,7 @@
+   if ((mp3_mad->status & MS_playing) == 0) {
+ 	/* We're not supposed to be playing, so send silence instead. */
+ 	memset(stream, 0, len);
+-	return;
++	return 0;
+   }
+ 
+   out = stream;

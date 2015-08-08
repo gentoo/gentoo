@@ -1,0 +1,23 @@
+--- libs/maildir/configure.ac.orig	2004-06-08 15:44:23.000000000 -0700
++++ libs/maildir/configure.ac	2004-08-14 15:28:20.525714876 -0700
+@@ -73,6 +73,12 @@
+ dnl Checks for library functions.
+ AC_CHECK_HEADER(fam.h, :, :)
+ AC_CHECK_FUNCS(symlink readlink strcasecmp utime utimes)
++AC_ARG_WITH(fam, [  --with-fam              Compile with FAM support],
++       fam="$withval",
++       fam="no")
++
++if test "$fam" != "no"
++then
+ AC_CHECK_LIB(fam, FAMOpen,  [
+ 			LIBFAM=-lfam
+ 			AC_DEFINE_UNQUOTED(HAVE_FAM,1,
+@@ -87,6 +93,7 @@
+ AC_MSG_ERROR([[FAM development libraries not found.]]) ]
+ 					)
+ 		  ])
++fi
+ 
+ AC_SUBST(LIBFAM)
+ 

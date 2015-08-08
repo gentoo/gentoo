@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e4a6479..0c205e2 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,6 @@
+-libdir=${prefix}/lib/gmpc/plugins/
++plugindir=${libdir}/gmpc/plugins/
+ 
+-lib_LTLIBRARIES = awnplugin.la
++plugin_LTLIBRARIES = awnplugin.la
+ 
+ awnplugin_la_SOURCES= plugin.c 
+ 

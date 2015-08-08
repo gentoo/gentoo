@@ -1,0 +1,30 @@
+--- zsh-4.3.11/Completion/Unix/Command/_init_d
++++ zsh-4.3.11/Completion/Unix/Command/_init_d
+@@ -1,6 +1,6 @@
+ #compdef -p */(init|rc[0-9S]#).d/*
+ 
+-local cmds script
++local cmds script opts
+ 
+ _compskip=all
+ 
+@@ -83,10 +83,17 @@
+ 
+ script=$words[1]
+ [[ $script = */* ]] || script="$(_init_d_fullpath "$script")"
++[[ ! -f $script ]] &&
++    { _message "${words[1]:t} is not an init script" && return }
+ 
+ cmds=( $(_init_d_get_cmds) ) || return
+ 
+-(( $#cmds )) || zstyle -a ":completion:${curcontext}:commands" commands cmds ||
+-    cmds=(start stop)
++(( $#cmds )) || zstyle -a ":completion:${curcontext}:commands" commands cmds
++opts=(start stop restart pause zap status ineed iuse needsme usesme broken)
++
++# If we didn't get $cmds from a zstyle, then read init script for opts.
++# If script doesn't specify opts, then default to the standard opts.
++(( $#cmds )) || cmds=( ${(eQz)${(M)${(f)"$( <$script)"}:#[[:blank:]]#opts=*}#*=} )
++(( $#cmds )) || cmds=($opts)
+ 
+ _sub_commands $cmds

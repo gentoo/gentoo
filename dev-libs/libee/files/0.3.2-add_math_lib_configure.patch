@@ -1,0 +1,16 @@
+diff -r fb643518cffc configure.ac
+--- a/configure.ac	Sun Apr 22 18:45:47 2012 +0300
++++ b/configure.ac	Sun Apr 22 18:48:05 2012 +0300
+@@ -18,11 +18,8 @@
+ AC_PROG_LIBTOOL
+ 
+ # Checks for libraries.
+-save_LIBS=$LIBS
+-LIBS=
+-#AC_SEARCH_LIBS(clock_gettime, rt)
++AC_SEARCH_LIBS(pow, m)
+ #rt_libs=$LIBS
+-LIBS=$save_LIBS
+ 
+ # We CURRENTLY do NOT need libxml, but this will change at a later stage.
+ # If we need libxml, we need it for features which some may not find essential.

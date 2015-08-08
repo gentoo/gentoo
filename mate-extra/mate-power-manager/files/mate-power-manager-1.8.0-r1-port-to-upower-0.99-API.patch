@@ -1,0 +1,390 @@
+diff --git a/src/gpm-backlight.c b/src/gpm-backlight.c
+index 1f1d834..d2938a4 100644
+--- a/src/gpm-backlight.c
++++ b/src/gpm-backlight.c
+@@ -410,7 +410,11 @@ gpm_settings_key_changed_cb (GSettings *settings, const gchar *key, GpmBacklight
+  * Does the actions when the ac power source is inserted/removed.
+  **/
+ static void
++#if UP_CHECK_VERSION(0, 99, 0)
++gpm_backlight_client_changed_cb (UpClient *client, GParamSpec *pspec, GpmBacklight *backlight)
++#else
+ gpm_backlight_client_changed_cb (UpClient *client, GpmBacklight *backlight)
++#endif
+ {
+ 	gpm_backlight_brightness_evaluate_and_set (backlight, FALSE, TRUE);
+ }
+@@ -727,8 +731,13 @@ gpm_backlight_init (GpmBacklight *backlight)
+ 
+ 	/* we use up_client for the ac-adapter-changed signal */
+ 	backlight->priv->client = up_client_new ();
++#if UP_CHECK_VERSION(0, 99, 0)
++	g_signal_connect (backlight->priv->client, "notify",
++			  G_CALLBACK (gpm_backlight_client_changed_cb), backlight);
++#else
+ 	g_signal_connect (backlight->priv->client, "changed",
+ 			  G_CALLBACK (gpm_backlight_client_changed_cb), backlight);
++#endif
+ 
+ 	/* gets caps */
+ 	backlight->priv->can_dim = gpm_brightness_has_hw (backlight->priv->brightness);
+diff --git a/src/gpm-button.c b/src/gpm-button.c
+index 1e38173..b331cf6 100644
+--- a/src/gpm-button.c
++++ b/src/gpm-button.c
+@@ -324,7 +324,11 @@ gpm_button_reset_time (GpmButton *button)
+  * gpm_button_client_changed_cb
+  **/
+ static void
++#if UP_CHECK_VERSION(0, 99, 0)
++gpm_button_client_changed_cb (UpClient *client, GParamSpec *pspec, GpmButton *button)
++#else
+ gpm_button_client_changed_cb (UpClient *client, GpmButton *button)
++#endif
+ {
+ 	gboolean lid_is_closed;
+ 
+@@ -363,9 +367,13 @@ gpm_button_init (GpmButton *button)
+ 
+ 	button->priv->client = up_client_new ();
+ 	button->priv->lid_is_closed = up_client_get_lid_is_closed (button->priv->client);
++#if UP_CHECK_VERSION(0, 99, 0)
++	g_signal_connect (button->priv->client, "notify",
++			  G_CALLBACK (gpm_button_client_changed_cb), button);
++#else
+ 	g_signal_connect (button->priv->client, "changed",
+ 			  G_CALLBACK (gpm_button_client_changed_cb), button);
+-
++#endif
+ 	/* register the brightness keys */
+ 	gpm_button_xevent_key (button, XF86XK_PowerOff, GPM_BUTTON_POWER);
+ #ifdef HAVE_XF86XK_SUSPEND
+diff --git a/src/gpm-control.c b/src/gpm-control.c
+index ec50136..0562d38 100644
+--- a/src/gpm-control.c
++++ b/src/gpm-control.c
+@@ -289,10 +289,11 @@ gpm_control_suspend (GpmControl *control, GError **error)
+ 		}
+ 		g_object_unref(proxy);
+ 	}
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 	else {
+ 		ret = up_client_suspend_sync (control->priv->client, NULL, error);
+ 	}
+-
++#endif
+ 	egg_debug ("emitting resume");
+ 	g_signal_emit (control, signals [RESUME], 0, GPM_CONTROL_ACTION_SUSPEND);
+ 
+@@ -399,10 +400,11 @@ gpm_control_hibernate (GpmControl *control, GError **error)
+ 			ret = TRUE;
+ 		}
+ 	}
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 	else {
+ 		ret = up_client_hibernate_sync (control->priv->client, NULL, error);
+ 	}
+-
++#endif
+ 	egg_debug ("emitting resume");
+ 	g_signal_emit (control, signals [RESUME], 0, GPM_CONTROL_ACTION_HIBERNATE);
+ 
+diff --git a/src/gpm-engine.c b/src/gpm-engine.c
+index 96a043e..e6c6bf2 100644
+--- a/src/gpm-engine.c
++++ b/src/gpm-engine.c
+@@ -768,12 +768,14 @@ gpm_engine_coldplug_idle_cb (GpmEngine *engine)
+ 	guint i;
+ 	GPtrArray *array = NULL;
+ 	UpDevice *device;
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 	gboolean ret;
+ 	GError *error = NULL;
++#endif
+ 
+ 	g_return_val_if_fail (engine != NULL, FALSE);
+ 	g_return_val_if_fail (GPM_IS_ENGINE (engine), FALSE);
+-
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 	/* get devices from UPower */
+ 	ret = up_client_enumerate_devices_sync (engine->priv->client, NULL, &error);
+ 	if (!ret) {
+@@ -781,7 +783,7 @@ gpm_engine_coldplug_idle_cb (GpmEngine *engine)
+ 		g_error_free (error);
+ 		goto out;
+ 	}
+-
++#endif
+ 	/* connected mobile phones */
+ 	gpm_phone_coldplug (engine->priv->phone);
+ 
+@@ -793,7 +795,9 @@ gpm_engine_coldplug_idle_cb (GpmEngine *engine)
+ 		device = g_ptr_array_index (array, i);
+ 		gpm_engine_device_add (engine, device);
+ 	}
++#if !UP_CHECK_VERSION(0, 99, 0)
+ out:
++#endif
+ 	if (array != NULL)
+ 		g_ptr_array_unref (array);
+ 	/* never repeat */
+@@ -816,6 +820,22 @@ gpm_engine_device_added_cb (UpClient *client, UpDevice *device, GpmEngine *engin
+  * gpm_engine_device_removed_cb:
+  **/
+ static void
++#if UP_CHECK_VERSION(0, 99, 0)
++gpm_engine_device_removed_cb (UpClient *client, const char *object_path, GpmEngine *engine)
++{
++	guint i;
++
++	for (i = 0; i < engine->priv->array->len; i++) {
++		UpDevice *device = g_ptr_array_index (engine->priv->array, i);
++
++		if (g_strcmp0 (object_path, up_device_get_object_path (device)) == 0) {
++			g_ptr_array_remove_index (engine->priv->array, i);
++			break;
++		}
++	}
++	gpm_engine_recalculate_state (engine);
++}
++#else
+ gpm_engine_device_removed_cb (UpClient *client, UpDevice *device, GpmEngine *engine)
+ {
+ 	gboolean ret;
+@@ -824,12 +844,18 @@ gpm_engine_device_removed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
+ 		return;
+ 	gpm_engine_recalculate_state (engine);
+ }
+-
++#endif
+ 
+ /**
+  * gpm_engine_device_changed_cb:
+  **/
+ static void
++#if UP_CHECK_VERSION(0, 99, 0)
++gpm_engine_device_changed_cb (UpClient *client, GParamSpec *pspec, GpmEngine *engine)
++{
++	gpm_engine_recalculate_state (engine);
++}
++#else
+ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *engine)
+ {
+ 	UpDeviceKind kind;
+@@ -891,6 +917,7 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
+ 
+ 	gpm_engine_recalculate_state (engine);
+ }
++#endif
+ 
+ /**
+  * gpm_engine_get_devices:
+@@ -1003,7 +1030,10 @@ phone_device_refresh_cb (GpmPhone *phone, guint idx, GpmEngine *engine)
+ static void
+ gpm_engine_init (GpmEngine *engine)
+ {
+-
++#if UP_CHECK_VERSION(0, 99, 0)
++	GPtrArray *array = NULL;
++	guint i;
++#endif
+ 	engine->priv = GPM_ENGINE_GET_PRIVATE (engine);
+ 
+ 	engine->priv->array = g_ptr_array_new_with_free_func (g_object_unref);
+@@ -1012,8 +1042,13 @@ gpm_engine_init (GpmEngine *engine)
+ 			  G_CALLBACK (gpm_engine_device_added_cb), engine);
+ 	g_signal_connect (engine->priv->client, "device-removed",
+ 			  G_CALLBACK (gpm_engine_device_removed_cb), engine);
++#if UP_CHECK_VERSION(0, 99, 0)
++	g_signal_connect (engine->priv->client, "notify",
++			  G_CALLBACK (gpm_engine_device_changed_cb), engine);
++#else
+ 	g_signal_connect (engine->priv->client, "device-changed",
+ 			  G_CALLBACK (gpm_engine_device_changed_cb), engine);
++#endif
+ 
+ 	engine->priv->settings = g_settings_new (GPM_SETTINGS_SCHEMA);
+ 	g_signal_connect (engine->priv->settings, "changed",
+@@ -1027,6 +1062,18 @@ gpm_engine_init (GpmEngine *engine)
+ 	g_signal_connect (engine->priv->phone, "device-refresh",
+ 			  G_CALLBACK (phone_device_refresh_cb), engine);
+ 
++#if UP_CHECK_VERSION(0, 99, 0)
++	/* coldplug */
++	array = up_client_get_devices(engine->priv->client);
++	if (array) {
++		for (i = 0; i < array->len; i++) {
++			UpDevice *device = g_ptr_array_index (array, i);
++			gpm_engine_device_added_cb(engine->priv->client, device, engine);
++		}
++		g_ptr_array_free (array, TRUE);
++	}
++#endif
++
+ 	/* create a fake virtual composite battery */
+ 	engine->priv->battery_composite = up_device_new ();
+ 	g_object_set (engine->priv->battery_composite,
+diff --git a/src/gpm-kbd-backlight.c b/src/gpm-kbd-backlight.c
+index a439e94..3a0f6e6 100644
+--- a/src/gpm-kbd-backlight.c
++++ b/src/gpm-kbd-backlight.c
+@@ -486,6 +486,9 @@ gpm_kbd_backlight_control_resume_cb (GpmControl *control,
+  **/
+ static void
+ gpm_kbd_backlight_client_changed_cb (UpClient *client,
++#if UP_CHECK_VERSION(0, 99, 0)
++                    GParamSpec *pspec,
++#endif
+                     GpmKbdBacklight *backlight)
+ {
+    gpm_kbd_backlight_evaluate_power_source_and_set (backlight);
+@@ -755,8 +758,13 @@ gpm_kbd_backlight_init (GpmKbdBacklight *backlight)
+ 
+    /* Use upower for ac changed signal */
+    backlight->priv->client = up_client_new ();
++#if UP_CHECK_VERSION(0, 99, 0)
++   g_signal_connect (backlight->priv->client, "notify",
++             G_CALLBACK (gpm_kbd_backlight_client_changed_cb), backlight);
++#else
+    g_signal_connect (backlight->priv->client, "changed",
+              G_CALLBACK (gpm_kbd_backlight_client_changed_cb), backlight);
++#endif
+ 
+     backlight->priv->settings = g_settings_new (GPM_SETTINGS_SCHEMA);
+ 	//g_signal_connect (backlight->priv->settings, "changed", G_CALLBACK (gpm_settings_key_changed_cb), backlight);
+diff --git a/src/gpm-manager.c b/src/gpm-manager.c
+index c4d0530..df84cac 100644
+--- a/src/gpm-manager.c
++++ b/src/gpm-manager.c
+@@ -971,7 +971,11 @@ gpm_manager_get_spindown_timeout (GpmManager *manager)
+  * gpm_manager_client_changed_cb:
+  **/
+ static void
++#if UP_CHECK_VERSION(0, 99, 0)
++gpm_manager_client_changed_cb (UpClient *client, GParamSpec *pspec, GpmManager *manager)
++#else
+ gpm_manager_client_changed_cb (UpClient *client, GpmManager *manager)
++#endif
+ {
+ 	gboolean event_when_closed;
+ 	gint timeout;
+@@ -1853,8 +1857,13 @@ gpm_manager_init (GpmManager *manager)
+ 	g_signal_connect (manager->priv->settings, "changed",
+ 			  G_CALLBACK (gpm_manager_settings_changed_cb), manager);
+ 	manager->priv->client = up_client_new ();
++#if UP_CHECK_VERSION(0, 99, 0)
++	g_signal_connect (manager->priv->client, "notify",
++			  G_CALLBACK (gpm_manager_client_changed_cb), manager);
++#else
+ 	g_signal_connect (manager->priv->client, "changed",
+ 			  G_CALLBACK (gpm_manager_client_changed_cb), manager);
++#endif
+ 
+ 	/* use libmatenotify */
+ 	notify_init (GPM_NAME);
+diff --git a/src/gpm-prefs-core.c b/src/gpm-prefs-core.c
+index 7a2662d..6abb792 100644
+--- a/src/gpm-prefs-core.c
++++ b/src/gpm-prefs-core.c
+@@ -811,7 +811,9 @@ gpm_prefs_init (GpmPrefs *prefs)
+ 	UpDevice *device;
+ 	UpDeviceKind kind;
+ 	GpmBrightness *brightness;
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 	gboolean ret;
++#endif
+ 	guint i;
+ 
+ 	GDBusProxy *proxy;
+@@ -897,9 +899,11 @@ gpm_prefs_init (GpmPrefs *prefs)
+ 	else {
+ 		/* are we allowed to shutdown? */
+ 		egg_console_kit_can_stop (prefs->priv->console, &prefs->priv->can_shutdown, NULL);
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 		/* get values from UpClient */
+ 		prefs->priv->can_suspend = up_client_get_can_suspend (prefs->priv->client);
+ 		prefs->priv->can_hibernate = up_client_get_can_hibernate (prefs->priv->client);
++#endif
+ 	}
+ 
+ 	if (LOGIND_RUNNING()) {
+@@ -953,14 +957,14 @@ gpm_prefs_init (GpmPrefs *prefs)
+ 	brightness = gpm_brightness_new ();
+ 	prefs->priv->has_lcd = gpm_brightness_has_hw (brightness);
+ 	g_object_unref (brightness);
+-
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 	/* get device list */
+ 	ret = up_client_enumerate_devices_sync (prefs->priv->client, NULL, &error);
+ 	if (!ret) {
+ 		egg_warning ("failed to get device list: %s", error->message);
+ 		g_error_free (error);
+ 	}
+-
++#endif
+ 	devices = up_client_get_devices (prefs->priv->client);
+ 	for (i=0; i<devices->len; i++) {
+ 		device = g_ptr_array_index (devices, i);
+diff --git a/src/gpm-statistics.c b/src/gpm-statistics.c
+index 98b5632..13489dc 100644
+--- a/src/gpm-statistics.c
++++ b/src/gpm-statistics.c
+@@ -1236,6 +1236,12 @@ gpm_stats_device_added_cb (UpClient *client, UpDevice *device, gpointer user_dat
+  * gpm_stats_device_changed_cb:
+  **/
+ static void
++#if UP_CHECK_VERSION(0, 99, 0)
++gpm_stats_device_changed_cb (UpClient *client, GParamSpec *pspec, gpointer user_data)
++{
++	gpm_stats_button_update_ui();
++}
++#else
+ gpm_stats_device_changed_cb (UpClient *client, UpDevice *device, gpointer user_data)
+ {
+ 	const gchar *object_path;
+@@ -1246,6 +1252,7 @@ gpm_stats_device_changed_cb (UpClient *client, UpDevice *device, gpointer user_d
+ 	if (g_strcmp0 (current_device, object_path) == 0)
+ 		gpm_stats_update_info_data (device);
+ }
++#endif
+ 
+ /**
+  * gpm_stats_device_removed_cb:
+@@ -1794,11 +1801,12 @@ main (int argc, char *argv[])
+ 
+ 	wakeups = up_wakeups_new ();
+ 	g_signal_connect (wakeups, "data-changed", G_CALLBACK (gpm_stats_data_changed_cb), NULL);
+-
++#if !UP_CHECK_VERSION(0, 99, 0)
+ 	/* coldplug */
+ 	ret = up_client_enumerate_devices_sync (client, NULL, NULL);
+ 	if (!ret)
+ 		goto out;
++#endif
+ 	devices = up_client_get_devices (client);
+ 
+ 	/* add devices in visually pleasing order */
+@@ -1814,7 +1822,11 @@ main (int argc, char *argv[])
+ 	/* connect now the coldplug is done */
+ 	g_signal_connect (client, "device-added", G_CALLBACK (gpm_stats_device_added_cb), NULL);
+ 	g_signal_connect (client, "device-removed", G_CALLBACK (gpm_stats_device_removed_cb), NULL);
++#if UP_CHECK_VERSION(0, 99, 0)
++	g_signal_connect (client, "notify", G_CALLBACK (gpm_stats_device_changed_cb), NULL);
++#else
+ 	g_signal_connect (client, "device-changed", G_CALLBACK (gpm_stats_device_changed_cb), NULL);
++#endif
+ 
+ 	/* set current device */
+ 	if (devices->len > 0) {
+@@ -1854,8 +1866,9 @@ main (int argc, char *argv[])
+ 	gtk_widget_show (widget);
+ 
+ 	gtk_main ();
+-
++#if !UP_CHECK_VERSION(0, 99, 0)
+ out:
++#endif
+ 	g_object_unref (settings);
+ 	g_object_unref (client);
+ 	g_object_unref (wakeups);
+

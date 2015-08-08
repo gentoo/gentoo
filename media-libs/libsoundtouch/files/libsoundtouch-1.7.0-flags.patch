@@ -1,0 +1,22 @@
+--- soundtouch/source/SoundStretch/Makefile.am
++++ soundtouch/source/SoundStretch/Makefile.am
+@@ -48,7 +48,7 @@
+ # soundstretch_LDFLAGS=-s
+ 
+ ## additional compiler flags
+-soundstretch_CXXFLAGS=-O3
++#soundstretch_CXXFLAGS=-O3
+ 
+ #clean-local: 
+ #	-rm -f additional-files-to-remove-on-make-clean
+--- soundtouch/source/SoundTouch/Makefile.am
++++ soundtouch/source/SoundTouch/Makefile.am
+@@ -32,7 +32,7 @@
+ 
+ 
+ # Compiler flags
+-AM_CXXFLAGS=-O3 -fcheck-new -I../../include
++AM_CXXFLAGS=-fcheck-new -I../../include
+ 
+ # Compile the files that need MMX and SSE individually.
+ libSoundTouch_la_LIBADD=libSoundTouchMMX.la libSoundTouchSSE.la

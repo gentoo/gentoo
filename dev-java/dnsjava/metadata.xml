@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		dnsjava is an implementation of DNS in Java. It supports all defined record 
+		ypes (including the DNSSEC types), and unknown types. It can be used for queries,
+		zone transfers, and dynamic updates. It includes a cache which can be used by
+		clients, and a minimal implementation of a server. It supports TSIG authenticated
+		messages, partial DNSSEC verification, and EDNS0.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">http://sourceforge.net/projects/dnsjava/</remote-id>
+	</upstream>
+</pkgmetadata>
+

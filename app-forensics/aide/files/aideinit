@@ -1,0 +1,145 @@
+#!/bin/sh
+# Copyright 2003 Mike Markley <mike@markley.org>
+# This script is free for any purpose whatseoever so long as the above
+# copyright notice remains in place.
+#
+# Modified for Gentoo: Benjamin Smee
+# Date: Fri Sep 10 11:36:04 BST 2004
+
+# This is the email address reports get mailed to
+MAILTO=root@localhost
+
+# Defaults
+#MAILTO="${MAILTO:-root}"
+
+# Options
+opt_f=0
+opt_y=0
+opt_c=0
+opt_b=0
+config="/etc/aide/aide.conf"
+
+aideinit_usage() {
+	echo "Usage: $0 [options] -- [aide options]"
+	echo "  -y|--yes         Overwrite output file"
+	echo "  -f|--force       Force overwrite of database"
+	echo "  -c|--config      Specify alternate config file"
+	echo "  -o|--output      Specify alternate output file"
+	echo "  -d|--database    Specify alternate database file"
+	echo "  -b|--background  Run in the background"
+}
+
+while [ -n "$1" ]; do
+	case "$1" in
+	    -h|--help)
+		aideinit_usage
+		exit 0
+		;;
+	    -f|--force)
+		opt_f=1
+		shift
+		;;
+	    -y|--yes)
+		opt_y=1
+		shift
+		;;
+	    -b|--background)
+		opt_b=1
+		shift
+		;;
+	    -o|--output)
+		shift
+		[ -z "$1" ] && aideinit_usage && exit 1
+		outfile=$1
+		shift
+		;;
+	    -d|--database)
+		shift
+		[ -z "$1" ] && aideinit_usage && exit 1
+		dbfile=$1
+		shift
+		;;
+	    -c|--config)
+		opt_c=1
+		shift
+		[ -z "$1" ] && aideinit_usage && exit 1
+		config=$1
+		shift
+		;;
+	    --)
+	    	shift
+		break 2
+		;;
+	    *)
+		echo "Unknown option $1 (use -- to delimit aideinit and aide options)"
+		exit
+		;;
+	esac
+done
+
+if [ ! -f "$config" ]; then
+	echo "$0: $config: file not found"
+	exit 1
+fi
+
+if [ -z "$outfile" ]; then
+	outfile=`egrep "database_out=file:" $config | cut -d: -f2`
+	[ -z "$outfile" ] && outfile="/var/lib/aide/aide.db.new"
+fi
+if [ -z "$dbfile" ]; then
+	dbfile=`egrep "database=file:" $config | cut -d: -f2`
+	[ -z "$dbfile" ] && dbfile="/var/lib/aide/aide.db"
+fi
+
+if [ -f $outfile ]; then
+	if [ $opt_y -eq 0 ]; then
+		echo -n "Overwrite existing $outfile [Yn]? "
+		read yn
+		case "$yn" in
+		    [Nn]*)
+			exit 0
+			;;
+		esac
+	fi
+fi
+
+extraflags=""
+
+if [ $opt_c -eq 1 ]; then
+	extraflags="$extraflags --config $config"
+fi
+
+if [ $opt_b -eq 1 ]; then
+	(aide --init $extraflags $@ >/var/log/aide/aideinit.log 2>/var/log/aide/aideinit.errors
+	if [ -f "$dbfile" -a $opt_f -eq 0 ]; then
+		echo "$dbfile exists and -f was not specified" >> /var/log/aide/aideinit.errors
+	fi
+	lines=`wc -l /var/log/aide/aideinit.errors | awk '{ print $1 }'`
+	if [ "$lines" -gt 0 ]; then
+		(echo "AIDE init errors:"; cat /var/log/aide/aideinit.errors) | /bin/mail -s "AIDE initialization problem" $MAILTO
+	else
+		cp -f $outfile $dbfile
+	fi) &
+	exit 0
+fi
+
+echo "Running aide --init..."
+aide --init $extraflags $@
+
+return=$?
+if [ $return -ne 0 ]; then
+	echo "Something didn't quite go right; see $outfile for details" >&2
+	exit $return
+fi
+
+if [ -f "$dbfile" -a $opt_f -eq 0 ]; then
+	echo -n "Overwrite $dbfile [yN]? "
+	read yn
+	case "$yn" in
+	    [yY]*)
+		cp -f $outfile $dbfile
+		;;
+	esac
+else
+	cp -f $outfile $dbfile
+fi

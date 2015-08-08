@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>ruby</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>troy@lump.net</email>
+		<name>Troy Bowman</name>
+	</maintainer>
+	<longdescription>Oracle Interface for Ruby, compatible with oracle 8, 9i, 10g and 11g.</longdescription>
+	<upstream>
+		<remote-id type="rubyforge">ruby-oci8</remote-id>
+	</upstream>
+</pkgmetadata>

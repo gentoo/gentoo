@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>xmw@gentoo.org</email>
+<name>Michael Weber</name>
+</maintainer>
+<upstream>
+	<remote-id type="sourceforge">sithwm</remote-id>
+	<bugs-to>http://sourceforge.net/tracker/?group_id=175787</bugs-to>
+</upstream>
+</pkgmetadata>
+

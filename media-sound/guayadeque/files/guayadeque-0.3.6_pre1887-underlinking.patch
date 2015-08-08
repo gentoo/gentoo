@@ -1,0 +1,10 @@
+--- guayadeque-svn1858/src/CMakeLists.txt.orig	2012-12-14 19:42:25.000000000 +0100
++++ guayadeque-svn1858/src/CMakeLists.txt	2012-12-24 14:33:58.486362648 +0100
+@@ -321,6 +321,7 @@
+ 	${LIBINDICATE07_LIBRARIES}
+ 	${LIBAPPINDICATOR_LIBRARIES}
+ 	${LIBWXSQLITE3_LIBRARIES}
++	-lgdk_pixbuf-2.0
+ 	)
+ 
+ INSTALL( TARGETS guayadeque

@@ -1,0 +1,26 @@
+--- a/build.xml	2013-05-16 22:04:22.000000000 +0200
++++ b/build.xml	2013-12-25 23:58:47.447266535 +0100
+@@ -773,4 +773,23 @@
+     </fail>
+   </target>
+ 
++  <target depends="" name="javadoc" description="o Generate javadoc" >
++    <mkdir dir="${build.home}/docs" >
++    </mkdir>
++    <tstamp >
++      <format pattern="2001-yyyy" property="year" >
++      </format>
++    </tstamp>
++    <property name="copyright" value="Copyright &amp;copy;  The Apache Software Foundation. All Rights Reserved." >
++    </property>
++    <property name="title" value="Logging 1.1 API" >
++    </property>
++    <javadoc use="true" author="true" sourcepath="src/main/java" destdir="${build.home}/docs" version="true" private="true" packagenames="org.apache.commons.logging.*" >
++      <classpath >
++        <path refid="javadoc.classpath" >
++        </path>
++      </classpath>
++    </javadoc>
++  </target>
++
+ </project>

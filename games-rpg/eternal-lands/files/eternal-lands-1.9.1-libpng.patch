@@ -1,0 +1,23 @@
+--- elc.orig/misc.c
++++ elc/misc.c
+@@ -311,7 +311,7 @@ int IMG_SavePNG_RW (SDL_Surface *face, S
+ 	}
+ 	
+ 	/* Set error handling. */
+-	if (setjmp(png_ptr->jmpbuf))
++	if (setjmp(png_jmpbuf(png_ptr)))
+ 	{
+ 		/* If we get here, we had a problem reading the file */
+ 		IMG_SetError("Error writing the PNG file");
+@@ -360,10 +360,7 @@ done:
+ 	if (row_pointers != NULL)
+ 		free (row_pointers);
+ 	
+-	if (info_ptr != NULL && info_ptr->palette != NULL)
+-		free (info_ptr->palette);
+-	
+-	png_destroy_write_struct (&png_ptr, (png_infopp)NULL);
++	png_destroy_write_struct (&png_ptr, &info_ptr);
+ 	
+ 	return result;
+ }

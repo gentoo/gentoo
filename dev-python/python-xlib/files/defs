@@ -1,0 +1,11 @@
+# Definitions for documentation makefiles
+
+SRCDIR = ../src
+
+TOPSRC = $(SRCDIR)/python-xlib.texi
+
+SRCS = $(TOPSRC) \
+     $(SRCDIR)/concepts.texi $(SRCDIR)/package.texi \
+     $(SRCDIR)/connect.texi $(SRCDIR)/errors.texi \
+     $(SRCDIR)/events.texi $(SRCDIR)/objects.texi
+

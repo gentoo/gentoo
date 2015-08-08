@@ -1,0 +1,20 @@
+--- a/palo/Makefile
++++ b/palo/Makefile
+@@ -14,7 +14,7 @@
+ ifeq ($(strip ${OS}),HP-UX)
+ CFLAGS=-g -O -I../include -I../lib -I$(PA)/include
+ else
+-CFLAGS=-g -O -I../include -I../lib
++CFLAGS+= -O -I../include -I../lib
+ endif
+ 
+ # LDFLAGS=-Wl,-Bstatic 
+@@ -34,7 +34,7 @@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o palo palo.a build.o
+ 
+ palo.a:	$(OFILES)
+-	ar rv palo.a $?
++	$(AR) rv palo.a $?
+ 
+ mkbootable:	$(OFILES2)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o mkbootable $(OFILES2)

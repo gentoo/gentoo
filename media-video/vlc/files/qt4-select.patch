@@ -1,0 +1,51 @@
+https://gist.github.com/karolherbst/fb9e3d8f6ba05f1f5d54
+For use until upstream ever accepts this patch or fixes it themsleves
+--- configure.ac.orig	2015-03-01 02:28:48.983932684 +0100
++++ configure.ac	2015-03-01 02:41:29.641927072 +0100
+@@ -3709,7 +3709,8 @@
+   ])
+ ])
+ AS_IF([test "${enable_qt}" != "no"], [
+-  PKG_CHECK_MODULES([QT], [Qt5Core >= 5.1.0 Qt5Widgets Qt5Gui], [
++  AS_IF([test "${enable_qt}" != "4"], [
++    PKG_CHECK_MODULES([QT], [Qt5Core >= 5.1.0 Qt5Widgets Qt5Gui], [
+       PKG_CHECK_MODULES([QTX11], [Qt5X11Extras], [
+           VLC_ADD_LIBS([qt4],[${QTX11_LIBS}])
+           VLC_ADD_CXXFLAGS([qt4],[${QTX11_CFLAGS} -DQT5_HAS_X11])
+@@ -3721,20 +3722,23 @@
+       AC_PATH_PROGS(MOC, [moc-qt5 moc], moc, ["${QT_HOST_PATH}" "${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
+       AC_PATH_PROGS(RCC, [rcc-qt5 rcc], rcc, ["${QT_HOST_PATH}" "${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
+       AC_PATH_PROGS(UIC, [uic-qt5 uic], uic, ["${QT_HOST_PATH}" "${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
++      enable_qt="5"
+-    ], [
+-      PKG_CHECK_MODULES([QT], [QtCore QtGui >= 4.6.0],, [
+-        AS_IF([test -n "${enable_qt}"],[
+-          AC_MSG_ERROR([${QT_PKG_ERRORS}.])
+-        ],[
+-          AC_MSG_WARN([${QT_PKG_ERRORS}.])
+-        ])
+-        enable_qt="no"
++    ])
++  ])
++  AS_IF([test "${enable_qt}" != "5"], [
++    PKG_CHECK_MODULES([QT], [QtCore QtGui >= 4.6.0],, [
++      AS_IF([test -n "${enable_qt}"],[
++        AC_MSG_ERROR([${QT_PKG_ERRORS}.])
++      ],[
++        AC_MSG_WARN([${QT_PKG_ERRORS}.])
+       ])
+-      QT_PATH="$(eval $PKG_CONFIG --variable=exec_prefix QtCore)"
+-      AC_PATH_PROGS(MOC, [moc-qt4 moc], moc, ["${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
+-      AC_PATH_PROG(RCC, rcc, rcc, [${QT_PATH}/bin ${CONTRIB_DIR}/bin])
+-      AC_PATH_PROGS(UIC, [uic-qt4 uic], uic, ["${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
++      enable_qt="no"
+     ])
++    QT_PATH="$(eval $PKG_CONFIG --variable=exec_prefix QtCore)"
++    AC_PATH_PROGS(MOC, [moc-qt4 moc], moc, ["${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
++    AC_PATH_PROG(RCC, rcc, rcc, [${QT_PATH}/bin ${CONTRIB_DIR}/bin])
++    AC_PATH_PROGS(UIC, [uic-qt4 uic], uic, ["${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
++  ])
+ ])
+ AS_IF([test "${enable_qt}" != "no"], [
+   VLC_ADD_PLUGIN([qt4])
+

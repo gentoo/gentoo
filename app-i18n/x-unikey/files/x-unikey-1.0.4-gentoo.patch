@@ -1,0 +1,20 @@
+--- x-unikey-1.0.4.orig/src/unikey-gtk/Makefile.am	2005-10-16 12:39:15.000000000 +0900
++++ x-unikey-1.0.4/src/unikey-gtk/Makefile.am	2008-12-18 00:48:37.000000000 +0900
+@@ -34,7 +34,7 @@
+ 
+ install-data-hook:
+ 	gtk-query-immodules-2.0 \
+-	> @gtk_sysconfdir@/gtk.immodules
++	> $(DESTDIR)@gtk_sysconfdir@/gtk.immodules
+ 
+ ##	$(moduledir)/im-vn.la \
+ ##	@GTK_PREFIX@/lib/gtk-2.0/@GTK_VERSION@/immodules/*.la \
+@@ -42,7 +42,7 @@
+ 
+ uninstall-hook:
+ 	gtk-query-immodules-2.0 > \
+-	@gtk_sysconfdir@/gtk.immodules
++	$(DESTDIR)@gtk_sysconfdir@/gtk.immodules
+ ##	@GTK_PREFIX@/lib/gtk-2.0/@GTK_VERSION@/immodules/*.la \
+ 
+ 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The www-servers category contains web server packages.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría www-servers contiene servidores web.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie www-server enthält verschiedene Webserver.
+	</longdescription>
+	<longdescription lang="ja">
+		www-miscカテゴリーにはウェブサーバーのパッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De www-server categorie bevat verschillende webservers.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm www-servers chứa các phần mềm web server.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria www-servers contiene una selezione di software web server.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria www-servers contém pacotes de servidores de web.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria www-servers zawiera serwery stron WWW.
+	</longdescription>
+</catmetadata>
+

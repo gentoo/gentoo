@@ -1,0 +1,58 @@
+Patch by Arfrever; sent to upstream developer.
+
+--- libpbe/src/parse_http_request.cc
++++ libpbe/src/parse_http_request.cc
+@@ -18,11 +18,11 @@
+ 
+ #include "parse_http_request.hh"
+ 
+-#include <boost/spirit.hpp>
+-#include <boost/spirit/actor/insert_at_actor.hpp>
+-#include <boost/spirit/dynamic/if.hpp>
+-#include <boost/spirit/utility/loops.hpp>
+-#include <boost/spirit/iterator/multi_pass.hpp>
++#include <boost/spirit/include/classic.hpp>
++#include <boost/spirit/include/classic_if.hpp>
++#include <boost/spirit/include/classic_insert_at_actor.hpp>
++#include <boost/spirit/include/classic_loops.hpp>
++#include <boost/spirit/include/classic_multi_pass.hpp>
+ 
+ #include <boost/lexical_cast.hpp>
+ #include <boost/scoped_array.hpp>
+@@ -31,7 +31,7 @@
+ 
+ 
+ using namespace std;
+-using namespace boost::spirit;
++using namespace boost::spirit::classic;
+ 
+ 
+ namespace pbe {
+--- libpbe/src/URI.cc
++++ libpbe/src/URI.cc
+@@ -18,11 +18,11 @@
+ 
+ #include "URI.hh"
+ 
+-#include <boost/spirit.hpp>
+-#include <boost/spirit/actor/insert_at_actor.hpp>
+-#include <boost/spirit/dynamic/if.hpp>
+-#include <boost/spirit/utility/loops.hpp>
+-#include <boost/spirit/iterator/multi_pass.hpp>
++#include <boost/spirit/include/classic.hpp>
++#include <boost/spirit/include/classic_if.hpp>
++#include <boost/spirit/include/classic_insert_at_actor.hpp>
++#include <boost/spirit/include/classic_loops.hpp>
++#include <boost/spirit/include/classic_multi_pass.hpp>
+ 
+ #include <boost/lexical_cast.hpp>
+ #include <boost/scoped_array.hpp>
+@@ -30,7 +30,7 @@
+ #include <map>
+ 
+ using namespace std;
+-using namespace boost::spirit;
++using namespace boost::spirit::classic;
+ 
+ 
+ namespace pbe {

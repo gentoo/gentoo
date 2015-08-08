@@ -1,0 +1,188 @@
+<!-- From: https://github.com/cbeust/testng/blob/master/build-tests.xml -->
+
+<project name="testng" default="all" basedir=".">
+
+  <property file="build.properties"/>
+
+  <property name="report.dir" value="${test.output.dir}"/>
+  <property name="junit.report.dir" value="${report.dir}/test-tmp"/>
+  <property name="testng.report.dir" value="${report.dir}"/>
+
+  <target name="all" depends="prepare,compile,run,reports,done"/>
+
+  <!-- ==================================================================== -->
+  <!-- Compile                                                              -->
+  <!-- ==================================================================== -->
+  <path id="compile.cp">
+    <pathelement location="${testng.jar}" />
+    <fileset dir="${lib.dir}" includes="${guice2.jar}" />
+    <fileset dir="${lib.dir}" includes="${junit.jar}" />
+  </path>
+
+  <target name="env:info">
+    <echo>
+BASEDIR          =${basedir}
+TEST.DIR         =${test.dir}
+TEST.BUILD.DIR   =${test.build.dir}
+REPORT.DIR       =${report.dir}
+JUNIT.REPORT.DIR =${junit.report.dir}
+TESTNG.REPORT.DIR=${testng.report.dir}
+    </echo>
+  </target>
+
+  <target name="compile" depends="prepare">
+    <echo message="                                 -- Compiling tests --"/>
+
+    <property name="build.compiler" value="modern"/>
+    <javac debug="true"
+           source="1.5"
+           classpathref="compile.cp"
+           srcdir="${test.dir}"
+           destdir="${test.build.dir}"
+    />
+
+  </target>
+
+  <target name="prepare">
+    <tstamp/>
+    <mkdir dir="${test.build.dir}"/>
+    <mkdir dir="${junit.report.dir}"/>
+    <mkdir dir="${testng.report.dir}"/>
+
+  <taskdef name="testng"
+             classname="org.testng.TestNGAntTask"
+             classpath="${build.dir}"/>
+  </target>
+
+<!--
+  <property name="cobertura.dir" value="../cobertura-1.9.4.1" />
+
+  <path id="cobertura.classpath">
+      <fileset dir="${cobertura.dir}">
+          <include name="cobertura.jar" />
+          <include name="lib/**/*.jar" />
+      </fileset>
+  </path>
+-->
+
+  <!-- ==================================================================== -->
+  <!-- Run                                                             -->
+  <!-- ==================================================================== -->
+
+  <path id="run.cp">
+<!--
+  	<path location="target/instrumented-classes" />
+  	<path refid="cobertura.classpath" />
+-->
+    <path refid="compile.cp"/>
+    <pathelement location="${test.build.dir}"/>
+  </path>
+
+  <target name="run" description="Run tests" depends="compile,copy-resources">
+    <echo message="                                 -- Running tests --"/>
+    <echo message="                                 -- ${testng.jar} --" />
+    <testng classpathref="run.cp"
+            outputdir="${testng.report.dir}">
+      <xmlfileset dir="${test.resources.dir}" includes="testng.xml"/>
+      <jvmarg value="-Dtest.resources.dir=${test.resources.dir}" />
+      <jvmarg value="-Dsun.io.serialization.extendedDebugInfo=true" />
+    </testng>
+  </target>
+
+  <target name="copy-resources" description="Copies resources.">
+    <copy verbose="false"
+          file="${src.resources.dir}/testngtasks"
+          todir="${build.dir}" />
+    <copy todir="${build.dir}">
+      <fileset dir="${src.resources.dir}">
+        <exclude name="**/.*" />
+        <exclude name="**/CVS/*" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="run:single" description="Run 1 property file named with the ant property test" depends="compile">
+      <echo message="                                 -- testng-tests-run1 --"/>
+
+    <testng outputdir="${testng.report.dir}"
+        classpathref="run.cp"
+        useDefaultListeners="true"
+        outputDir="${testng.report.dir}">
+      <xmlfileset dir="${test.resources.dir}" includes="testng-single.xml"/>
+     </testng>
+
+      <echo>Report created in    open ${testng.report.dir}/index.html</echo>
+  </target>
+
+  <target name="run:antprop" description="Run a test to see if ant system propertes are passed correctly" depends="compile">
+      <echo message="                                 -- testng-tests-run-antprop --"/>
+      <property name="syspropset1" value="value 1"/>
+      <property name="syspropset2" value="value 2"/>
+      <propertyset id="propset1">
+          <propertyref name="syspropset1"/>
+          <propertyref name="syspropset2"/>
+      </propertyset>
+
+      <testng outputdir="${testng.report.dir}"
+              classpathref="run.cp">
+          <xmlfileset dir="${test.resources.dir}" includes="testng-single3.xml"/>
+          <propertyset refid="propset1"/>
+          <sysproperty key="sysprop1" value="value 3"/>
+      </testng>
+  </target>
+
+  <!-- ==================================================================== -->
+  <!-- Run specific configuration                                           -->
+  <!-- ==================================================================== -->
+  <target name="run:conf"
+          if="testng.conf"
+          depends="clean:reports,compile"
+          description="Run specified tests">
+    <echo message="                                 -- testng-tests-run --"/>
+    <echo message="using: ${testng.conf}.xml"/>
+
+    <testng classpathref="run.cp"
+            outputDir="${testng.report.dir}">
+        <xmlfileset dir="${test.resources.dir}" includes="${testng.conf}.xml"/>
+    </testng>
+
+    <antcall target="clean.tmp"/>
+  </target>
+
+
+  <!-- ==================================================================== -->
+  <!-- Reports                                                              -->
+  <!-- ==================================================================== -->
+
+  <target name="reports">
+    <junitreport todir="${junit.report.dir}">
+      <fileset dir="${testng.report.dir}">
+        <include name="*.xml"/>
+        <exclude name="testng-failed.xml"/>
+        <exclude name="testng-results.xml" />
+      </fileset>
+      <report format="noframes" todir="${junit.report.dir}"/>
+    </junitreport>
+  </target>
+
+
+  <target name="clean.tmp">
+      <delete dir="${test.output.dir}"/>
+  </target>
+
+  <target name="clean:reports">
+      <delete dir="${report.dir}"/>
+      <delete dir="${junit.report.dir}"/>
+  </target>
+
+  <target name="clean" depends="clean.tmp,clean:reports">
+    <echo message="                                 -- test clean --"/>
+
+    <delete dir="${test.build.dir}"/>
+  </target>
+
+  <target name="done">
+    <echo>Reports can be found in:    open ${testng.report.dir}/index.html</echo>
+  </target>
+
+</project>

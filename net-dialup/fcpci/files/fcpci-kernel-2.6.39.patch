@@ -1,0 +1,24 @@
+--- fritz/src/driver.c~	2011-06-15 21:18:25.792662667 +0200
++++ fritz/src/driver.c	2011-06-15 21:22:15.307420952 +0200
+@@ -101,7 +101,8 @@
+ static unsigned long		crit_flags;
+ static atomic_t			scheduler_enabled	= ATOMIC_INIT (0);
+ static atomic_t			scheduler_id		= ATOMIC_INIT (-1);
+-static spinlock_t		sched_lock		= SPIN_LOCK_UNLOCKED;
++//static spinlock_t		sched_lock		= SPIN_LOCK_UNLOCKED;
++static DEFINE_SPINLOCK(sched_lock);
+ #if !defined (__fcclassic__)
+ static int			card_id			= 0;
+ #endif
+--- fritz/src/tools.c~	2011-06-15 21:18:32.336741325 +0200
++++ fritz/src/tools.c	2011-06-15 21:22:23.899524196 +0200
+@@ -529,7 +529,8 @@
+ 		ERROR("Could not allocate lock structure!!!\n");
+ 		return 0;
+ 	}
+-	tmp->lock = SPIN_LOCK_UNLOCKED;
++//	tmp->lock = SPIN_LOCK_UNLOCKED;
++	spin_lock_init(&tmp->lock);
+ 	*plock = tmp;
+ 	return 1;
+ } /* lock_init */

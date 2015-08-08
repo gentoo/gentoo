@@ -1,0 +1,13 @@
+Index: oops-1.5.23/src/modules/berkeley_db_api.c
+===================================================================
+--- oops-1.5.23.orig/src/modules/berkeley_db_api.c
++++ oops-1.5.23/src/modules/berkeley_db_api.c
+@@ -283,7 +283,7 @@ int	rc;
+     dbp->set_bt_compare(dbp, my_bt_compare);
+     dbp->set_pagesize(dbp, OOPS_DB_PAGE_SIZE);
+     rc = dbp->open(dbp,
+-        #if DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR > 0
++        #if DB_VERSION_MAJOR > 4 || DB_VERSION_MINOR > 0
+         NULL,
+         #endif
+         dbname,

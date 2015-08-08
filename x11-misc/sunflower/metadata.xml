@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer>
+		<email>henrique.ribeiro.dias@gmail.com</email>
+		<name>Henrique Dias</name>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">MeanEYE/Sunflower</remote-id>
+	</upstream>
+</pkgmetadata>

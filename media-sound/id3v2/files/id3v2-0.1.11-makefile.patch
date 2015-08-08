@@ -1,0 +1,23 @@
+Index: id3v2-0.1.11/Makefile
+===================================================================
+--- id3v2-0.1.11.orig/Makefile
++++ id3v2-0.1.11/Makefile
+@@ -3,14 +3,14 @@ all: id3v2
+ VERSION=0.1.11
+ 
+ PREFIX=	/usr/local
+-CXXFLAGS+=	-I${PREFIX}/include/ -DVERSION="\"${VERSION}\"" #-DSORT_RUNTIME
+-LDFLAGS+=	-L${PREFIX}/lib/ 
++CXXFLAGS+=	-I${PREFIX}/include/ -DVERSION="\"${VERSION}\"" $(OPT_CXXFLAGS) #-DSORT_RUNTIME
++LDFLAGS+=	-L${PREFIX}/lib/ $(OPT_LDFLAGS)
+ 
+ id3v2:	convert.o list.o id3v2.o genre.o
+-	c++ ${LDFLAGS} -pedantic -Wall -lz -lid3 -g -o $@ $^
++	$(CXX) $(LDFLAGS) -pedantic -Wall -o $@ $^ -lz -lid3
+ 
+ create_map: create_map.o
+-	c++ -Wall -g -o $@ $^
++	$(CXX) $(LDFLAGS) -o $@ $^
+ 
+ install: all
+ 	install -c -s id3v2 ${PREFIX}/bin/id3v2

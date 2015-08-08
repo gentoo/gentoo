@@ -1,0 +1,47 @@
+Allow to set directory for as backends from the outside.
+
+--- cctools-855/as/driver.c.orig	2014-04-05 00:42:22.000000000 +0200
++++ cctools-855/as/driver.c	2014-11-13 13:07:09.000000000 +0100
+@@ -365,7 +365,11 @@
+ 	/*
+ 	 * If this assembler exist try to run it else print an error message.
+ 	 */
++#ifndef ASLIBEXECDIR
+ 	as = makestr(prefix, LIB, arch_name, AS, NULL);
++#else
++	as = makestr(ASLIBEXECDIR, arch_name, AS, NULL);
++#endif
+ 	new_argv = allocate((argc + 1) * sizeof(char *));
+ 	new_argv[0] = as;
+ 	j = 1;
+@@ -387,6 +391,9 @@
+ 	    else
+ 		exit(1);
+ 	}
++#ifdef ASLIBEXECDIR
++	as_local = "";
++#else
+ 	as_local = makestr(prefix, LOCALLIB, arch_name, AS, NULL);
+ 	new_argv[0] = as_local;
+ 	if(access(as_local, F_OK) == 0){
+@@ -396,10 +403,12 @@
+ 	    else
+ 		exit(1);
+ 	}
++#endif
+ 	printf("%s: assembler (%s or %s) for architecture %s not installed\n",
+ 	       progname, as, as_local, arch_name);
+ 	arch_flags = get_arch_flags();
+ 	count = 0;
++#ifndef ASLIBEXECDIR
+ 	for(i = 0; arch_flags[i].name != NULL; i++){
+ 	    as = makestr(prefix, LIB, arch_flags[i].name, AS, NULL);
+ 	    if(access(as, F_OK) == 0){
+@@ -420,6 +429,7 @@
+ 		}
+ 	    }
+ 	}
++#endif
+ 	if(count == 0)
+ 	    printf("%s: no assemblers installed\n", progname);
+ 	exit(1);

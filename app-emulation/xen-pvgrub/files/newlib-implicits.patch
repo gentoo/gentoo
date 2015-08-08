@@ -1,0 +1,149 @@
+diff -ur newlib-1.16.0.orig/newlib/libc/stdlib/wcstoull.c newlib-1.16.0/newlib/libc/stdlib/wcstoull.c
+--- newlib/libc/stdlib/wcstoull.c	2007-07-07 04:03:28.000000000 +0800
++++ newlib/libc/stdlib/wcstoull.c	2012-12-02 14:19:40.905136553 +0800
+@@ -124,7 +124,7 @@
+ #include <errno.h>
+ #include <stdlib.h>
+ #include <reent.h>
+-
++#include <wchar.h>
+ #ifndef _REENT_ONLY
+ 
+ unsigned long long
+diff -ur newlib-1.16.0.orig/newlib/doc/makedoc.c 
+newlib-1.16.0/newlib/doc/makedoc.c
+--- newlib/doc/makedoc.c	2007-01-03 01:59:59.000000000 +0900
++++ newlib/doc/makedoc.c	2012-12-02 16:53:42.700289294 +0800
+@@ -39,7 +39,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <ctype.h>
+-
++#include <string.h>
+ #define DEF_SIZE 5000
+ #define STACK 50
+ 
+diff -ur newlib-1.16.0.orig/newlib/libc/reent/lseek64r.c newlib-1.16.0/newlib/libc/reent/lseek64r.c
+--- newlib/libc/reent/lseek64r.c	2003-06-04 03:48:07.000000000 +0800
++++ newlib/libc/reent/lseek64r.c	2012-12-02 18:29:45.435760985 +0800
+@@ -1,8 +1,8 @@
+ /* Reentrant versions of lseek system call. */
+
+-#include <reent.h>
++#include "../include/reent.h"
+ #include <unistd.h>
+-#include <_syslist.h>
++#include "../include/_syslist.h"
+
+ /* Some targets provides their own versions of this functions.  Those
+    targets should define REENTRANT_SYSCALLS_PROVIDED in TARGET_CFLAGS.  */
+diff -ur newlib-1.16.0.orig/newlib/libc/stdio64/fseeko64.c newlib-1.16.0/newlib/libc/stdio64/fseeko64.c
+--- newlib/libc/stdio64/fseeko64.c	2007-07-14 04:37:53.000000000 +0800
++++ newlib/libc/stdio64/fseeko64.c	2012-12-02 18:26:29.955778906 +0800
+@@ -119,7 +119,7 @@
+ 	  ptr->_errno = EOVERFLOW;
+ 	  return EOF;
+ 	}
+-      return (_off64_t) _fseeko_r (ptr, fp, offset, whence);
++      return (_off64_t) _fseeko64_r (ptr, fp, offset, whence);
+     }
+ 
+   /* Make sure stdio is set up.  */
+
+diff -ur newlib-1.16.0.orig/newlib/libc/reent/fstat64r.c newlib-1.16.0/newlib/libc/reent/fstat64r.c
+--- newlib/libc/reent/fstat64r.c	2012-12-03 13:17:26.569703981 +0800
++++ newlib/libc/reent/fstat64r.c	2003-06-04 03:48:07.000000000 +0800
+@@ -1,10 +1,10 @@
+ /* Reentrant versions of fstat system call.  This implementation just
+    calls the fstat system call.  */
+ 
+-#include <reent.h>
++#include "../include/reent.h">
+ #include <unistd.h>
+ #include <sys/stat.h>
+-#include <_syslist.h>
++#include "../include/_syslist.h"
+ 
+ #ifdef __LARGE64_FILES
+ 
+diff -ur newlib-1.16.0.orig/libgloss/i386/cygmon-gmon.c newlib-1.16.0/libgloss/i386/cygmon-gmon.c
+--- libgloss/i386/cygmon-gmon.c	2002-10-26 03:18:46.000000000 +0800
++++ libgloss/i386/cygmon-gmon.c	2012-12-03 14:38:41.454257066 +0800
+@@ -68,6 +68,9 @@
+ 
+ #include "cygmon-gmon.h"
+
++#include <unistd.h>
++#include <stdlib.h>
++#include <strings.h>
+ /*
+  *	froms is actually a bunch of unsigned shorts indexing tos
+ */
+@@ -78,6 +78,8 @@
+ static char		*s_lowpc = 0;
+ static char		*s_highpc = 0;
+ static unsigned long	s_textsize = 0;
++extern void profil_write(int, char*, int);
++extern int moncontrol (int);
+ 
+ static int	ssiz;
+ static char	*sbuf;
+diff -ur newlib-1.16.0.orig/newlib/libc/include/_syslist.h 
+newlib-1.16.0/newlib/libc/include/_syslist.h
+--- newlib/libc/include/_syslist.h   2005-08-23 05:13:35.000000000 +0800
++++ newlib/libc/include/_syslist.h        2012-12-03 17:20:03.092369483 +0800
+@@ -2,6 +2,7 @@
+    and only provide C names, so that we end up in violation of ANSI */
+ #ifndef __SYSLIST_H
+ #define __SYSLIST_H
++#include <sys/types.h>
+
+ #ifdef MISSING_SYSCALL_NAMES
+ #define _close close
+
+#diff -ur newlib-1.16.0.orig/newlib/libc/Makefile.in newlib-1.16.0/newlib/libc/Makefile.in
+#--- newlib/libc/Makefile.in	2007-05-25 01:33:30.000000000 +0800
+#+++ newlib/libc/Makefile.in	2012-12-03 21:52:05.621873084 +0800
+diff -ur newlib-1.16.0.orig/newlib/libc/stdio64/ftello64.c newlib-1.16.0/newlib/libc/stdio64/ftello64.c
+--- newlib/libc/stdio64/ftello64.c	2007-07-14 04:37:53.000000000 +0800
++++ newlib/libc/stdio64/ftello64.c	2012-12-04 18:34:46.491509484 +0800
+@@ -93,7 +93,7 @@
+ 
+   /* Only do 64-bit tell on large file.  */
+   if (!(fp->_flags & __SL64))
+-    return (_off64_t) _ftello_r (ptr, fp);
++    return (_off64_t) _ftello64_r (ptr, fp);
+ 
+   /* Ensure stdio is set up.  */
+ 
+diff -ur newlib-1.16.0.orig/newlib/libc/reent/open64r.c newlib-1.16.0/newlib/libc/reent/open64r.c
+--- newlib/libc/reent/open64r.c	2002-08-27 02:56:06.000000000 +0800
++++ newlib/libc/reent/open64r.c	2012-12-04 20:06:10.044006769 +0800
+@@ -1,8 +1,8 @@
+ /* Reentrant versions of open system call. */
+
+-#include <reent.h>
++#include "../include/reent.h">
+ #include <unistd.h>
+-#include <fcntl.h>
++#include <sys/_default_fcntl.h>
+ #include <_syslist.h>
+ 
+ #ifdef __LARGE64_FILES
+diff -ur newlib-1.16.0.orig/newlib/libc/reent/signalr.c newlib-1.16.0/newlib/libc/reent/signalr.c
+--- newlib/libc/reent/signalr.c 2012-12-05 07:33:25.623393126 +0800
++++ newlib/libc/reent/signalr.c 2012-12-05 07:34:03.943389613 +0800
+@@ -1,10 +1,10 @@
+ /* Reentrant versions of syscalls need to support signal/raise.
+    These implementations just call the usual system calls.  */
+
+-#include <reent.h>
++#include "../include/reent.h"
+ #include <signal.h>
+ #include <unistd.h>
+-#include <_syslist.h>
++#include "../include/_syslist.h"
+
+ /* Some targets provides their own versions of these functions.  Those
+    targets should define REENTRANT_SYSCALLS_PROVIDED in TARGET_CFLAGS.  */
+

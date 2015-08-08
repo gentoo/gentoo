@@ -1,0 +1,54 @@
+We install texmfcnf.lua in a different location than TeX Live so default
+heuristics fail. Help it.
+
+Index: work/texmf-dist/scripts/context/lua/mtxrun.lua
+===================================================================
+--- work.orig/texmf-dist/scripts/context/lua/mtxrun.lua
++++ work/texmf-dist/scripts/context/lua/mtxrun.lua
+@@ -12970,10 +12970,8 @@ if environment.default_texmfcnf then
+ else
+   resolvers.luacnfspec=concat ({
+     "home:texmf/web2c",
+-    "selfautoparent:/texmf-local/web2c",
+-    "selfautoparent:/texmf-context/web2c",
+-    "selfautoparent:/texmf-dist/web2c",
+-    "selfautoparent:/texmf/web2c",
++    "selfautodir:local/share/texmf/web2c",
++    "selfautodir:share/texmf/web2c",
+   },";")
+ end
+ local unset_variable="unset"
+Index: work/texmf-dist/scripts/context/stubs/unix/mtxrun
+===================================================================
+--- work.orig/texmf-dist/scripts/context/stubs/unix/mtxrun
++++ work/texmf-dist/scripts/context/stubs/unix/mtxrun
+@@ -12970,10 +12970,8 @@ if environment.default_texmfcnf then
+ else
+   resolvers.luacnfspec=concat ({
+     "home:texmf/web2c",
+-    "selfautoparent:/texmf-local/web2c",
+-    "selfautoparent:/texmf-context/web2c",
+-    "selfautoparent:/texmf-dist/web2c",
+-    "selfautoparent:/texmf/web2c",
++    "selfautodir:local/share/texmf/web2c",
++    "selfautodir:share/texmf/web2c",
+   },";")
+ end
+ local unset_variable="unset"
+Index: work/texmf-dist/tex/context/base/data-res.lua
+===================================================================
+--- work.orig/texmf-dist/tex/context/base/data-res.lua
++++ work/texmf-dist/tex/context/base/data-res.lua
+@@ -122,10 +122,8 @@ if environment.default_texmfcnf then
+ else
+     resolvers.luacnfspec = concat ( {
+         "home:texmf/web2c",
+-        "selfautoparent:/texmf-local/web2c",
+-        "selfautoparent:/texmf-context/web2c",
+-        "selfautoparent:/texmf-dist/web2c",
+-        "selfautoparent:/texmf/web2c",
++	"selfautodir:local/share/texmf/web2c",
++	"selfautodir:share/texmf/web2c",
+     }, ";")
+ end
+ 

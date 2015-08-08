@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -14,7 +14,6 @@
+ 	echo
+ 	exit 1)
+ 
+-LDFLAGS=`gtk-config --cflags`
++PKG_CHECK_MODULES(LIBX11, x11,[LIBS="$LIBS $LIBX11_LIBS";INCLUDES="$INCLUDES $LIBX11_CFLAGS"],[exit 1])
+ 
+-AC_SUBST(LDFLAGS)
+ AC_OUTPUT(Makefile)

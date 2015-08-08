@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+        need net rpcbind
+}
+
+start() {
+        ebegin "Starting NFS statd"
+        start-stop-daemon --start --quiet --exec \
+                /usr/sbin/rpc.statd -- $rpcstatdopts
+        eend $? "Error starting NFS statd"
+}
+
+stop() {
+        ebegin "Stopping NFS statd"
+        start-stop-daemon --stop --quiet --exec /usr/sbin/rpc.statd
+        eend $? "Error stopping NFS statd"
+}

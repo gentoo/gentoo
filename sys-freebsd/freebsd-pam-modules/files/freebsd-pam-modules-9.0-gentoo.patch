@@ -1,0 +1,22 @@
+--- lib/libpam/modules/Makefile.inc.old	2011-11-02 20:46:56.000000000 +0000
++++ lib/libpam/modules/Makefile.inc	2011-11-02 20:47:16.000000000 +0000
+@@ -5,18 +5,10 @@
+ NO_INSTALLLIB=
+ NO_PROFILE=
+ 
+-CFLAGS+= -I${PAMDIR}/include -I${.CURDIR}/../../libpam
++CFLAGS+= -I${.CURDIR}/../../libpam
+ 
+-# This is nasty.
+-# For the static case, libpam.a depends on the modules.
+-# For the dynamic case, the modules depend on libpam.so.N
+-.if defined(_NO_LIBPAM_SO_YET)
+-NO_PIC=
+-.else
+ SHLIB_NAME?=	${LIB}.so.${SHLIB_MAJOR}
+-DPADD+=		${LIBPAM}
+ LDADD+=		-lpam
+-.endif
+ 
+ .c.o:
+ 	${CC} ${CFLAGS} -DOPENPAM_STATIC_MODULES -c ${.IMPSRC}

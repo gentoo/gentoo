@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>morlix@morlix.de</email>
+		<name>Timo Eissler</name>
+		<description>maintainer, assign bugs</description>
+	</maintainer>
+	<longdescription lang="en">
+		General purpose Nagios/Icinga plugin for retrieving data.
+		Check_MK is a collection of extensions for the IT-Monitoring-Kernel of Nagios/Icinga
+		and together with this, and ideally also with PNP4Nagios and NagVis constitutes
+		a complete IT-Monitoring-System.
+	</longdescription>
+	<use>
+		<flag name="agent-only">Install only the check_mk agent.</flag>
+		<flag name="logwatch">Install check_mk-agent logwatch plugin.</flag>
+		<flag name="smart">Install check_mk-agent S.M.A.R.T plugin.</flag>
+		<flag name="mysql">Install check_mk-agent mysql plugin.</flag>
+		<flag name="postgres">Install check_mk-agent postgres plugin.</flag>
+		<flag name="apache_status">Install check_mk-agent apache-status plugin.</flag>
+		<flag name="nfsexports">Install check_mk-agent nfsexports plugin.</flag>
+		<flag name="dmi_sysinfo">Install check_mk-agent dmi_sysinfo plugin.</flag>
+		<flag name="zypper">Install check_mk-agent zypper plugin.</flag>
+		<flag name="livestatus">Enable livestatus.</flag>
+		<flag name="wato">Enable check_mk WATO - check_mk's Web Administration Tool.</flag>
+	</use>
+	<upstream>
+		<changelog>http://mathias-kettner.com/check_mk_download.html</changelog>
+		<doc>http://mathias-kettner.com/checkmk.html</doc>
+	</upstream>
+</pkgmetadata>

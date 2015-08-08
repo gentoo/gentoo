@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gstreamer</herd>
+	<use>
+		<flag name="libvisual">Enable visualization effects via
+			<pkg>media-libs/libvisual</pkg></flag>
+	</use>
+</pkgmetadata>

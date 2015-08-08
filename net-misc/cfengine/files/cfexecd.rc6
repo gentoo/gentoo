@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting cfexecd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/cfexecd 
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cfexecd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/cfexecd
+	eend $?
+}

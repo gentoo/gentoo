@@ -1,0 +1,12 @@
+--- src/squirrel/squtils.h.old	2012-08-30 18:06:43.474037926 +0200
++++ src/squirrel/squtils.h	2012-08-30 18:14:13.300261523 +0200
+@@ -8,6 +8,9 @@
+ #define SQ_FREE(__ptr,__size) sq_vm_free(__ptr,__size);
+ #define SQ_REALLOC(__ptr,__oldsize,__size) sq_vm_realloc(__ptr,__oldsize,__size);
+ 
++void *sq_vm_realloc(void *p,SQUnsignedInteger oldsize,SQUnsignedInteger size);
++void sq_vm_free(void *p,SQUnsignedInteger size);
++
+ //sqvector mini vector class, supports objects by value
+ template<typename T> class sqvector
+ {

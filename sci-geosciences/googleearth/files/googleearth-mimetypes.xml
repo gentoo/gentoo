@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="application/vnd.google-earth.kml+xml">
+    <comment>Keyhole Markup Language data</comment>
+    <glob pattern="*.kml"/>
+  </mime-type>
+
+  <mime-type type="application/vnd.google-earth.kmz">
+    <comment>Keyhole Markup Language archive</comment>
+    <glob pattern="*.kmz"/>
+  </mime-type>
+
+  <mime-type type="application/keyhole">
+    <comment>Keyhole Markup Language data</comment>
+  </mime-type>
+
+  <mime-type type="application/earthviewer">
+    <comment>Keyhole Markup Language data</comment>
+  </mime-type>
+</mime-info>
+

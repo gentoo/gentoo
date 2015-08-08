@@ -1,0 +1,31 @@
+--- DAV-1.0.3-orig/hdav.hs	2014-10-15 03:15:28.000000000 +1100
++++ DAV-1.0.3/hdav.hs	2015-04-05 14:41:10.869833370 +1000
+@@ -16,6 +16,8 @@
+ -- You should have received a copy of the GNU General Public License
+ -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++{-# LANGUAGE FlexibleContexts #-}
++
+ import qualified Data.ByteString.Char8 as BC8
+ 
+ import Paths_DAV (version)
+--- DAV-1.0.3-orig/Network/Protocol/HTTP/DAV.hs	2014-10-15 03:15:28.000000000 +1100
++++ DAV-1.0.3/Network/Protocol/HTTP/DAV.hs	2015-04-05 14:40:00.119911047 +1000
+@@ -52,7 +52,7 @@
+ 
+ import Network.Protocol.HTTP.DAV.TH
+ 
+-import Control.Applicative (liftA2, Applicative)
++import Control.Applicative (liftA2, Alternative, Applicative)
+ import Control.Error (EitherT(..))
+ import Control.Lens ((^.), (.=), (%=), (.~))
+ import Control.Monad (when, MonadPlus)
+@@ -89,7 +89,7 @@
+     def = DAVContext [] def B.empty B.empty [] Nothing def Nothing "hDav-using application"
+ 
+ newtype DAVT m a = DAVT { runDAVT :: EitherT String (StateT DAVContext m) a }
+-    deriving (Applicative, Functor, Monad, MonadBase b, MonadError String, MonadFix, MonadIO, MonadPlus, MonadState DAVContext)
++    deriving (Alternative, Applicative, Functor, Monad, MonadBase b, MonadError String, MonadFix, MonadIO, MonadPlus, MonadState DAVContext)
+ 
+ -- this orphan instance is probably a bad idea
+ instance MonadMask m => MonadMask (EitherT e m) where

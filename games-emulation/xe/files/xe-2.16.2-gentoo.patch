@@ -1,0 +1,16 @@
+--- Makefile.old	2012-12-20 21:20:49.560756950 +0100
++++ Makefile	2012-12-20 21:22:16.644707544 +0100
+@@ -1,11 +1,9 @@
+ BIN	= xe
+-CC	= gcc
+-CFLAGS	= -Wl,-export-dynamic -L. -L/usr/X11R6/lib -lxe -lasound -ldl -lz     \
++LDLIBS	= -L. -L/usr/X11R6/lib -lxe -lasound -ldl -lz     \
+ 	  -lX11 -lXext -lXv -lXinerama -lXxf86vm `pkg-config gtk+-2.0 --libs`
+ 
+ $(BIN): libxe.a
+-	@ $(CC) -o $(BIN) $(CFLAGS)
+-	@ strip $(BIN)
++	$(CC) -o $(BIN) $(LDFLAGS) -Wl,-export-dynamic $(LDLIBS)
+ 
+ install:
+ 	@ sh install.sh

@@ -1,0 +1,11 @@
+--- crrcsim-0.9.11/configure.ac
++++ crrcsim-0.9.11/configure.ac
+@@ -229,7 +229,7 @@
+       has_CGAL="yes  (found CGAL v3)"
+     fi   
+     CGAL_CFLAGS=-frounding-math
+-    CGAL_LIBS=-lCGAL
++    CGAL_LIBS="-lCGAL -lgmp"
+     AC_DEFINE([WINDDATA3D], [1], [Import code for wind data, needs CGAL, 0 to disable])
+ else
+     has_CGAL="no   (CGAL not found)"

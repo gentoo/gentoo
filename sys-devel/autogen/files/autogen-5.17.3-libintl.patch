@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/466462
+
+--- a/config/libopts.m4
++++ b/config/libopts.m4
+@@ -106,6 +106,7 @@ AC_DEFUN([INVOKE_LIBOPTS_MACROS_FIRST],[
+   # AC_CHECK_LIB for SVR4 libgen, and use it if it defines pathfind.
+   # ----------------------------------------------------------------------
+   AC_CHECK_LIB(gen, pathfind)
++  AC_SEARCH_LIBS([gettext], [intl]) 
+   AC_FUNC_VPRINTF
+   AC_FUNC_FORK
+   AC_CHECK_FUNCS([mmap canonicalize_file_name snprintf strdup strchr \

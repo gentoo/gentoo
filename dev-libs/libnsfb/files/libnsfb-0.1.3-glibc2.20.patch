@@ -1,0 +1,19 @@
+--- libnsfb-0.1.3/Makefile
++++ libnsfb-0.1.3/Makefile
+@@ -15,13 +15,13 @@
+ # Toolchain flags
+ WARNFLAGS := -Wall -Wextra -Wundef -Wpointer-arith -Wcast-align \
+ 	-Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes \
+-	-Wmissing-declarations -Wnested-externs -Werror
++	-Wmissing-declarations -Wnested-externs
+ 
+ # would like these flags but gcc earlier than 4.4 fail
+ #-pedantic -Wno-overlength-strings # For nsglobe.c
+ 
+-CFLAGS := -g -std=c99 -D_BSD_SOURCE -D_POSIX_C_SOURCE=200112L \
+-	-I$(CURDIR)/include/ -I$(CURDIR)/src $(WARNFLAGS) $(CFLAGS) -Wno-error
++CFLAGS := -std=c99 -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L \
++	-I$(CURDIR)/include/ -I$(CURDIR)/src $(WARNFLAGS) $(CFLAGS)
+ 
+ NSFB_XCB_PKG_NAMES := xcb xcb-icccm xcb-image xcb-keysyms xcb-atom
+ 

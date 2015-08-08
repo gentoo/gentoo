@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>jer@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This is a Python port of the Text::Unidecode Perl (<pkg>dev-perl/Text-Unidecode</pkg> module
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">Unidecode</remote-id>
+  </upstream>
+</pkgmetadata>

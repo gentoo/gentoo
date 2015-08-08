@@ -1,0 +1,13 @@
+Index: rman-3.2/Makefile
+===================================================================
+--- rman-3.2.orig/Makefile
++++ rman-3.2/Makefile
+@@ -102,7 +102,7 @@ all:  rman
+ 
+ # everyone but me zaps assertions with the -DNDEBUG flag
+ rman: rman.c Makefile
+-	$(CC) -DNDEBUG $(defs) -DPOLYGLOTMANVERSION=\"$(version)\" $(CFLAGS) -o rman rman.c
++	$(CC) $(LDFLAGS) -DNDEBUG $(defs) -DPOLYGLOTMANVERSION=\"$(version)\" $(CFLAGS) -o rman rman.c
+ 
+ 
+ debug:

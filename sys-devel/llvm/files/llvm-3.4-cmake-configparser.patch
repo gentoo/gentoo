@@ -1,0 +1,35 @@
+From 773560acfad511769017e971991c0305dbc0323d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 11 Jun 2014 09:40:26 +0200
+Subject: [PATCH] Avoid using external configparser in favor of built-in
+ ConfigParser.
+
+We only support Python 2 anyway, and configparser-3.2 is known to break
+the build. Since some packages actually force version 3.2, and we do not
+to pull in extra dependencies, forcing built-in seems to be the best
+option.
+
+Fixes: https://bugs.gentoo.org/show_bug.cgi?id=500856
+---
+ utils/llvm-build/llvmbuild/componentinfo.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/utils/llvm-build/llvmbuild/componentinfo.py b/utils/llvm-build/llvmbuild/componentinfo.py
+index eda3a48..c963ef1 100644
+--- a/utils/llvm-build/llvmbuild/componentinfo.py
++++ b/utils/llvm-build/llvmbuild/componentinfo.py
+@@ -3,10 +3,7 @@ Descriptor objects for entities that are part of the LLVM project.
+ """
+ 
+ from __future__ import absolute_import
+-try:
+-    import configparser
+-except:
+-    import ConfigParser as configparser
++import ConfigParser as configparser
+ import sys
+ 
+ from llvmbuild.util import *
+-- 
+2.0.0
+

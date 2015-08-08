@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<maintainer>
+		<email>idl0r@gentoo.org</email>
+		<name>Christian Ruppert</name>
+		<description>Secondary maintainer</description>
+	</maintainer>
+	<use>
+		<flag name="tools">Build additional tools: varnishhist, varnishstat, varnishtop, varnishsizes</flag>
+		<flag name="jemalloc">Use dev-libs/jemalloc for allocations</flag>
+	</use>
+	<longdescription lang="en">
+	Varnish is an HTTP accelerator. An HTTP accelerator (often called Reverse Proxy)
+	is an application that stores (caches) documents that have been requested over
+	the HTTP protocol.
+	Based on certain criteria the next client requesting the document is either
+	given the cached document, or a "fresh" document requested from a backend
+	server. The purpose of this is to minimize the requests going to the backend
+	server(s) by serving the same document to potentially many users.
+
+	The goal of Varnish is to be a very fast, stable and effective light-weight HTTP
+	accelerator daemon, by using modern and effective technologies. Ease of
+	managment and good documentation is also a main goal of the project since the
+	lack of either one will render Varnish useless.
+	</longdescription>
+</pkgmetadata>

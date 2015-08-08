@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		User interface toolkit for building highly interactive visualizations
+		of structured and unstructured data.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">prefuse</remote-id>
+	</upstream>
+</pkgmetadata>

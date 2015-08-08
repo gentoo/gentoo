@@ -1,0 +1,12 @@
+diff --git a/resources/CMakeLists.txt b/resources/CMakeLists.txt
+index d436115..8f1033c 100644
+--- a/resources/CMakeLists.txt
++++ b/resources/CMakeLists.txt
+@@ -30,7 +30,6 @@ add_subdirectory( ical )
+ add_subdirectory( imap )
+ add_subdirectory( kabc )
+ add_subdirectory( kcal )
+-add_subdirectory( knut )
+ add_subdirectory( kolabproxy )
+ add_subdirectory( localbookmarks )
+ add_subdirectory( maildir )

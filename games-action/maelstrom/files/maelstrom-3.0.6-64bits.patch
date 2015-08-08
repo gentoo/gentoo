@@ -1,0 +1,15 @@
+--- screenlib/SDL_FrameBuf.cpp.old	2006-10-25 22:37:21.000000000 +0200
++++ screenlib/SDL_FrameBuf.cpp	2006-10-25 22:38:26.000000000 +0200
+@@ -847,10 +847,8 @@
+ 			/* Update the dirty rectangle map with the new list */
+ 			for ( i=0; i<dirtymaplen; ++i ) {
+ 				if ( dirtymap[i] != NULL ) {
+-					dirtymap[i] = (SDL_Rect *)(
+-					((int)dirtymap[i]-(int)updatelist) +
+-								(int)newlist
+-					);
++					dirtymap[i] = newlist
++						+ (dirtymap[i]-updatelist);
+ 				}
+ 			}
+ 			delete[] updatelist;

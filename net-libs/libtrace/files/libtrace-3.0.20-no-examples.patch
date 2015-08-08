@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,7 @@
+ LIBPACKETDUMP_DIR = libpacketdump
+ TOOLS_DIR = tools
+ WANDIO_DIR=libwandio
+-SUBDIRS = $(WANDIO_DIR) lib $(LIBPACKETDUMP_DIR) $(TOOLS_DIR) docs examples
++SUBDIRS = $(WANDIO_DIR) lib $(LIBPACKETDUMP_DIR) $(TOOLS_DIR) docs 
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ AUTOMAKE_OPTIONS = 1.9 foreign

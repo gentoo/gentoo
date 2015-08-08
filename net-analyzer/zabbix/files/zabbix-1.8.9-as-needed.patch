@@ -1,0 +1,83 @@
+From 90b086b4daebf61756e3d6f8926cf8951a2fc96a Mon Sep 17 00:00:00 2001
+From: Vladimir V. Kamarzin <vvk@altlinux.org>
+Date: Fri, 22 Oct 2010 17:47:01 +0600
+Subject: [PATCH 1/2] Fix linking with ldap libs
+
+Move "-lldap -llber" from LDAP_LDFLAGS to LDAP_LIBS and include them to
+LIBS
+---
+ configure.in |    1 +
+ m4/ldap.m4   |    4 +++-
+ 2 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index d3d981b..b11b2ee 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1281,6 +1281,7 @@ if test "x$want_ldap" = "xyes"; then
+ fi
+ CFLAGS="${CFLAGS} ${LDAP_CPPFLAGS}"
+ SERVER_LDFLAGS="${SERVER_LDFLAGS} ${LDAP_LDFLAGS}"
++LIBS="${LIBS} ${LDAP_LIBS}"
+ PROXY_LDFLAGS="${PROXY_LDFLAGS} ${LDAP_LDFLAGS}"
+ AGENT_LDFLAGS="${AGENT_LDFLAGS} ${LDAP_LDFLAGS}"
+ 
+ found_iconv="no"
+ dnl Check for libiconv [by default - skip]
+diff --git a/m4/ldap.m4 b/m4/ldap.m4
+index 29e97cd..885b3e0 100644
+--- a/m4/ldap.m4
++++ b/m4/ldap.m4
+@@ -72,7 +72,8 @@ AC_HELP_STRING([--with-ldap@<:@=DIR@:>@],[Include LDAP support @<:@default=no@:>
+                fi
+ 
+                LDAP_CPPFLAGS=-I$LDAP_INCDIR
+-               LDAP_LDFLAGS="-L$LDAP_LIBDIR -lldap -llber $LDAP_LIBS"
++               LDAP_LDFLAGS="-L$LDAP_LIBDIR $LDAP_LIBS"
++               LDAP_LIBS="-lldap -llber $LDAP_LIBS"
+ 
+                found_ldap="yes"
+                AC_DEFINE(HAVE_LDAP,1,[Define to 1 if LDAP should be enabled.])
+@@ -92,6 +93,7 @@ AC_HELP_STRING([--with-ldap@<:@=DIR@:>@],[Include LDAP support @<:@default=no@:>
+ 
+   AC_SUBST(LDAP_CPPFLAGS)
+   AC_SUBST(LDAP_LDFLAGS)
++  AC_SUBST(LDAP_LIBS)
+ 
+   unset _libldap_with
+ ])dnl
+-- 
+1.7.3.1
+
+From f6378e6aeb0bec1883a83c70c8cdfd1213f11f97 Mon Sep 17 00:00:00 2001
+From: Vladimir V. Kamarzin <vvk@altlinux.org>
+Date: Fri, 22 Oct 2010 17:49:16 +0600
+Subject: [PATCH 2/2] m4/ax_lib_postgresql.m4: move -pq from POSTGRESQL_LDFLAGS to POSTGRESQL_LIBS
+
+---
+ m4/ax_lib_postgresql.m4 |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/m4/ax_lib_postgresql.m4 b/m4/ax_lib_postgresql.m4
+index fe06f66..934d12c 100644
+--- a/m4/ax_lib_postgresql.m4
++++ b/m4/ax_lib_postgresql.m4
+@@ -84,7 +84,8 @@ AC_DEFUN([AX_LIB_POSTGRESQL],
+             AC_MSG_CHECKING([for PostgreSQL libraries])
+ 
+             POSTGRESQL_CPPFLAGS="-I`$PG_CONFIG --includedir`"
+-            POSTGRESQL_LDFLAGS="-L`$PG_CONFIG --libdir` -lpq"
++            POSTGRESQL_LDFLAGS="-L`$PG_CONFIG --libdir`"
++            POSTGRESQL_LIBS="-lpq"
+ 
+             POSTGRESQL_VERSION=`$PG_CONFIG --version | sed -e 's#PostgreSQL ##'`
+ 
+@@ -179,4 +180,5 @@ PQserverVersion(conn);
+     AC_SUBST([POSTGRESQL_VERSION])
+     AC_SUBST([POSTGRESQL_CPPFLAGS])
+     AC_SUBST([POSTGRESQL_LDFLAGS])
++    AC_SUBST([POSTGRESQL_LIBS])
+ ])
+-- 
+1.7.3.1
+

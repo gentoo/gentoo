@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+  matio is an ISO C library (with a limited Fortran 90 interface) for
+  reading and writing Matlab MAT files.
+</longdescription>
+  <use>
+    <flag name="sparse">Extend formats for sparse matrix (not matlab)</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">matio</remote-id>
+  </upstream>
+</pkgmetadata>

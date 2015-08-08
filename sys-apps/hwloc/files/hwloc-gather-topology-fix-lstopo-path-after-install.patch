@@ -1,0 +1,26 @@
+From 6d42748f8604f3c1d0ca6cf122e8776b3c153ac4 Mon Sep 17 00:00:00 2001
+From: Brice Goglin <Brice.Goglin@inria.fr>
+Date: Thu, 12 Mar 2015 10:01:13 +0100
+Subject: [PATCH] hwloc-gather-topology: fix lstopo path after install
+
+Broken when utils moved to utils/ subdirectories.
+
+(cherry picked from commit 0a32f719c48fb7dabf4882f8f2477017c25b15a9)
+---
+ NEWS                    | 1 +
+ tests/linux/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/linux/Makefile.am b/tests/linux/Makefile.am
+index f0a2f8a..27c261a 100644
+--- a/tests/linux/Makefile.am
++++ b/tests/linux/Makefile.am
+@@ -171,7 +171,7 @@ LOG_COMPILER = $(builddir)/test-topology.sh
+ bin_SCRIPTS = hwloc-gather-topology
+ 
+ install-exec-hook:
+-	$(SED) -e 's/HWLOC_top_builddir\/utils/bindir/' -e '/HWLOC_top_builddir/d' $(DESTDIR)$(bindir)/hwloc-gather-topology > $(DESTDIR)$(bindir)/hwloc-gather-topology.tmp && mv -f $(DESTDIR)$(bindir)/hwloc-gather-topology.tmp $(DESTDIR)$(bindir)/hwloc-gather-topology
++	$(SED) -e 's/HWLOC_top_builddir\/utils\/lstopo/bindir/' -e '/HWLOC_top_builddir/d' $(DESTDIR)$(bindir)/hwloc-gather-topology > $(DESTDIR)$(bindir)/hwloc-gather-topology.tmp && mv -f $(DESTDIR)$(bindir)/hwloc-gather-topology.tmp $(DESTDIR)$(bindir)/hwloc-gather-topology
+ 	chmod +x $(DESTDIR)$(bindir)/hwloc-gather-topology
+ 
+ SUBDIRS = gather

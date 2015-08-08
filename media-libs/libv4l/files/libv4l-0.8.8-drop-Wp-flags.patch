@@ -1,0 +1,22 @@
+don't bother generating dependency information:
+ - we don't use/care because we aren't doing rebuilds
+ - it uses the -Wp flag which is gcc specific for no good reason
+
+upstream has rewritten things to use autotools, so this will go away
+once they release another version
+
+--- a/Make.rules
++++ b/Make.rules
+@@ -23,10 +23,10 @@ LIB_RELEASE = 0
+ # And last various rules
+ 
+ %.o: %.c
+-	$(CC) -Wp,-MMD,"$*.d",-MQ,"$@",-MP -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
+ 
+ %.o: %.cpp
+-	$(CXX) -Wp,-MMD,"$*.d",-MQ,"$@",-MP -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $<
++	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $<
+ 
+ %.so:
+ 	$(CC) -shared $(LDFLAGS) -Wl,-soname,$@.$(LIB_RELEASE) -o $@.$(LIB_RELEASE) $^ $(LIBS_$*)

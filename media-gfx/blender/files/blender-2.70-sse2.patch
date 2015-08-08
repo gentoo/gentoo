@@ -1,0 +1,35 @@
+commit 0e0b27a589680e10e38a26575ad4dba8f3af2ec6
+Author: hasufell <hasufell@gentoo.org>
+Date:   Fri Jul 19 18:50:19 2013 +0200
+
+    add option to explicitly control sse2 optimization
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 78bb3c6..d5f4576 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -86,6 +86,7 @@
+ #-----------------------------------------------------------------------------
+ # Load some macros.
+ include(build_files/cmake/macros.cmake)
++include(CMakeDependentOption)
+ 
+ 
+ #-----------------------------------------------------------------------------
+@@ -251,6 +252,7 @@
+ # Misc
+ option(WITH_INPUT_NDOF "Enable NDOF input devices (SpaceNavigator and friends)" ON)
+ option(WITH_RAYOPTIMIZATION	"Enable use of SIMD (SSE) optimizations for the raytracer" ON)
++cmake_dependent_option(WITH_SSE2 "SSE2 optimizations" ON WITH_RAYOPTIMIZATION OFF)
+ option(WITH_OPENNL        "Enable use of Open Numerical Library" ON)
+ if(UNIX AND NOT APPLE)
+ 	option(WITH_INSTALL_PORTABLE "Install redistributeable runtime, otherwise install into CMAKE_INSTALL_PREFIX" ON)
+@@ -1950,7 +1952,7 @@
+ 		set(PLATFORM_CFLAGS " ${COMPILER_SSE_FLAG} ${PLATFORM_CFLAGS}")
+ 		add_definitions(-D__SSE__ -D__MMX__)
+ 	endif()
+-	if(SUPPORT_SSE2_BUILD)
++	if(WITH_SSE2 AND SUPPORT_SSE2_BUILD)
+ 		set(PLATFORM_CFLAGS " ${COMPILER_SSE2_FLAG} ${PLATFORM_CFLAGS}")
+ 		add_definitions(-D__SSE2__)
+ 		if(NOT SUPPORT_SSE_BUILD) # dont double up

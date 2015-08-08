@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Draw pretty sequence diagrams of D-Bus traffic
+	</longdescription>
+	<use>
+		<flag name="interactivetests">Build interactive test programs</flag>
+		<flag name="threaded">Build with support for multithreaded execution.</flag>
+	</use>
+</pkgmetadata>

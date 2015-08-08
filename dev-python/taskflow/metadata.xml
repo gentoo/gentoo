@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>openstack</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+  A library to do [jobs, tasks, flows] in a HA manner
+  using different backends to be used with OpenStack projects.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">taskflow</remote-id>
+    <remote-id type="github">openstack/taskflow</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gstreamer</herd>
+	<longdescription lang="en">
+		Snappy is a gstreamer + clutter media player with powerful features in mind
+	</longdescription>
+</pkgmetadata>

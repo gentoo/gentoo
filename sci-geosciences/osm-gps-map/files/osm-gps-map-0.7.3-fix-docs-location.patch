@@ -1,0 +1,12 @@
+diff -urN osm-gps-map-0.7.3-old/Makefile.am osm-gps-map-0.7.3/Makefile.am
+--- osm-gps-map-0.7.3-old/Makefile.am	2011-06-16 12:03:29.562435752 +0000
++++ osm-gps-map-0.7.3/Makefile.am	2011-06-16 12:03:58.535612125 +0000
+@@ -7,7 +7,7 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ 
+-osm_gps_mapdocdir = ${prefix}/doc/osm-gps-map
++osm_gps_mapdocdir = ${docdir}
+ osm_gps_mapdoc_DATA =                           \
+ 	README                                      \
+ 	COPYING                                     \

@@ -1,0 +1,15 @@
+avoid weak perl usage in tests
+
+https://bugs.gentoo.org/421609
+
+--- a/test.sh
++++ b/test.sh
+@@ -1466,7 +1466,7 @@
+     mkdir -p $dir
+     i=0
+     while [ $i -lt 10 ]; do
+-        perl -e 'print "A" x 4017' >$dir/result$i-4017.o
++        printf '%4017s' '' | tr ' ' 'A' >$dir/result$i-4017.o
+         touch $dir/result$i-4017.stderr
+         touch $dir/result$i-4017.d
+         if [ $i -gt 5 ]; then

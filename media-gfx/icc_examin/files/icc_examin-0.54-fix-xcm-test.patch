@@ -1,0 +1,15 @@
+Fix https://bugs.gentoo.org/492374
+
+Michael Weber
+
+--- icc_examin-0.54/configure_tests.sh
++++ icc_examin-0.54/configure_tests.sh
+@@ -543,7 +543,7 @@
+     if [ -z "$found" ]; then
+       pkg-config  --atleast-version=0.2 $pc_package
+       if [ $? = 0 ]; then
+-        found=`pkg-config --cflags $pc_package`
++        found=" "`pkg-config --cflags $pc_package`
+         version=`pkg-config --modversion $pc_package`
+       fi
+     fi

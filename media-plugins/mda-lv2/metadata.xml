@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proaudio</herd>
+<longdescription lang="en">
+	MDA-LV2 is an LV2 port of the MDA plugins by Paul Kellett. It contains 36 high-quality plugins for a variety of tasks.
+
+	This is a more or less faithful port of both the effects and instrument plugins. The only functional difference in code is to support LV2-style toggle ports (> 0.0 is on, rather than 0.5). All the plugins have been tested, and thanks to several bug fixes this collection should be more reliable than the original.
+
+	No custom UIs are included, however control ports are grouped and given designations where appropriate, so hosts should be able to generate a good generic UI. The original "programs" are available as standard LV2 presets. The documentation from the old web site has been included in the data files and is readable by hosts, so detailed port and plugin documentation can be made available in the UI. This is intended to establish a precedent; hosts are encouraged to make this information somehow visible (currently at least Ardour 3 and Jalv support this by showing tooltips for controls, and Ardour has a drop down pane for the plugin description).
+
+	The instrument plugins make use of the new atom:AtomPort to receive MIDI. Apologies for any inconvenience, but this means they will only work in modern hosts which have implemented atom-based MIDI. The effects should work fine in any LV2 host.
+</longdescription>
+</pkgmetadata>

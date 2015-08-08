@@ -1,0 +1,13 @@
+Index: lightdm-1.0.6/data/lightdm.conf
+===================================================================
+--- lightdm-1.0.6.orig/data/lightdm.conf
++++ lightdm-1.0.6/data/lightdm.conf
+@@ -65,7 +65,7 @@
+ #user-session=default
+ #allow-guest=true
+ #guest-session=UNIMPLEMENTED
+-#session-wrapper=lightdm-session
++session-wrapper=/etc/lightdm/Xsession
+ #display-setup-script=
+ #greeter-setup-script=
+ #session-setup-script=

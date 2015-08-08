@@ -1,0 +1,22 @@
+--- contrib/mplayer.te	2012-11-25 21:02:45.896073761 +0100
++++ contrib/mplayer.te	2012-11-25 21:02:14.847042646 +0100
+@@ -207,8 +207,6 @@
+ xserver_user_x_domain_template(mplayer, mplayer_t, mplayer_tmpfs_t)
+ 
+ ifdef(`distro_gentoo',`
+-	alsa_domain(mplayer_t, mplayer_tmpfs_t)
+-
+ 	xdg_manage_videos_home(mplayer_t)
+ 
+ 	tunable_policy(`mplayer_read_user_content',`
+@@ -226,6 +224,10 @@
+ 
+ 		userdom_write_user_tmp_sockets(mplayer_t)
+ 	')
++
++	optional_policy(`
++		alsa_domain(mplayer_t, mplayer_tmpfs_t)
++	')
+ ')
+ 
+ ifndef(`enable_mls',`

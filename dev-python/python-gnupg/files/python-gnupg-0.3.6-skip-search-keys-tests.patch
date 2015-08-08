@@ -1,0 +1,20 @@
+--- python-gnupg-0.3.6/gnupg.py
++++ python-gnupg-0.3.6/gnupg.py
+@@ -1078,6 +1078,7 @@
+     def search_keys(self, query, keyserver='pgp.mit.edu'):
+         """ search keyserver by query (using --search-keys option)
+ 
++        # doctest: +SKIP
+         >>> import shutil
+         >>> shutil.rmtree('keys')
+         >>> gpg = GPG(gnupghome='keys')
+--- python-gnupg-0.3.6/test_gnupg.py
++++ python-gnupg-0.3.6/test_gnupg.py
+@@ -493,6 +493,7 @@
+                     os.remove(fn)
+         logger.debug("test_file_encryption_and_decryption ends")
+ 
++    @unittest.skip("requires network access")
+     def test_search_keys(self):
+         "Test that searching for keys works"
+         r = self.gpg.search_keys('<vinay_sajip@hotmail.com>')

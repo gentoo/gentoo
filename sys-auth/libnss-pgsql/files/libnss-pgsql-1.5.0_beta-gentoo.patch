@@ -1,0 +1,44 @@
+Index: libnss-pgsql-1.5.0-beta/src/backend.c
+===================================================================
+--- libnss-pgsql-1.5.0-beta.orig/src/backend.c
++++ libnss-pgsql-1.5.0-beta/src/backend.c
+@@ -11,7 +11,7 @@
+  */
+ 
+ #include "nss-pgsql.h"
+-#include <postgresql/libpq-fe.h>
++#include <libpq-fe.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
+Index: libnss-pgsql-1.5.0-beta/doc/Makefile.am
+===================================================================
+--- libnss-pgsql-1.5.0-beta.orig/doc/Makefile.am
++++ libnss-pgsql-1.5.0-beta/doc/Makefile.am
+@@ -1,14 +1,6 @@
+ TARGETS	= nss-pgsql.html
+ 
+-all html: $(TARGETS)
+-
+-install-data-local: $(TARGETS)
+-	$(mkinstalldirs) $(DESTDIR)$(docdir)
+-	$(INSTALL_DATA) nss-pgsql.html $(DESTDIR)$(docdir)
+-	$(INSTALL_DATA) $(srcdir)/caution.png $(DESTDIR)$(docdir)
+-
+-clean-local:
+-	rm -f $(TARGETS)
++html_DATA = $(TARGETS) caution.png
+ 
+ nss-pgsql.html: config.xsl nss-pgsql.xml
+ 	xmlto xhtml-nochunks -m $(srcdir)/config.xsl $(srcdir)/nss-pgsql.xml
+Index: libnss-pgsql-1.5.0-beta/src/Makefile.am
+===================================================================
+--- libnss-pgsql-1.5.0-beta.orig/src/Makefile.am
++++ libnss-pgsql-1.5.0-beta/src/Makefile.am
+@@ -1,5 +1,5 @@
+ lib_LTLIBRARIES = libnss_pgsql.la
+ libnss_pgsql_la_SOURCES = interface.c config.c backend.c util.c
+-libnss_pgsql_la_LDFLAGS = -module -version-info 2
++libnss_pgsql_la_LDFLAGS = -module -version-info 2 -shared
+ EXTRA_DIST = nss-pgsql.h
+ 

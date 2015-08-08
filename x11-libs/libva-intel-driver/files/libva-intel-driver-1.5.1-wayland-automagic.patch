@@ -1,0 +1,20 @@
+--- configure.ac~	2015-03-20 04:48:37.000000000 +0100
++++ configure.ac	2015-06-24 21:45:47.954846367 +0200
+@@ -164,12 +164,13 @@
+     PKG_CHECK_MODULES([LIBVA_WAYLAND_DEPS], [libva-wayland],
+         [AC_DEFINE([HAVE_VA_WAYLAND], [1], [Defined to 1 if VA/Wayland API is enabled])],
+         [USE_WAYLAND="no"])
++    m4_ifdef([WAYLAND_SCANNER_RULES],
++        [WAYLAND_SCANNER_RULES(['$(top_builddir)/src/wayland'])],
++        [wayland_scanner_rules=""; AC_SUBST(wayland_scanner_rules)])
++        
+ fi
+-AM_CONDITIONAL(USE_WAYLAND, test "$USE_WAYLAND" = "yes")
+ 
+-m4_ifdef([WAYLAND_SCANNER_RULES],
+-    [WAYLAND_SCANNER_RULES(['$(top_builddir)/src/wayland'])],
+-    [wayland_scanner_rules=""; AC_SUBST(wayland_scanner_rules)])
++AM_CONDITIONAL(USE_WAYLAND, test "$USE_WAYLAND" = "yes")
+ 
+ AC_OUTPUT([
+     Makefile

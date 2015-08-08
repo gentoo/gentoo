@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <longdescription lang="en">
+</longdescription>
+  <use>
+    <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto backend</flag>
+    <flag name="polarssl">Use <pkg>net-libs/polarssl</pkg> as crypto backend</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">shadowsocks/shadowsocks-libev</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/configure.ac	2014-07-23 10:37:39.052887243 +0200
++++ b/configure.ac	2014-07-23 10:37:53.541464249 +0200
+@@ -1226,8 +1226,6 @@
+         CFLAGS="$CFLAGS -g"
+ 	enable_fatal_warnings=no
+ else
+-        CFLAGS="$CFLAGS -ggdb"
+-
+ 	# We had to eliminate -Wnested-externs because of libtool changes
+         EXTRA_FLAGS="-fgnu89-inline
+ 		-fstack-protector-all

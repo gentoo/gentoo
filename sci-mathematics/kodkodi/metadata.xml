@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>gienah@gentoo.org</email>
+  <name>Mark Wright</name>
+</maintainer>
+<herd>sci-mathematics</herd>
+<longdescription lang='en'>
+A text front-end for the Kodkod Java library.
+</longdescription>
+<use>
+  <flag name='isabelle'>Add integration support for the Isabelle/HOL
+  theorem prover.</flag>
+</use>
+</pkgmetadata>

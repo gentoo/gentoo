@@ -1,0 +1,12 @@
+diff --git a/lib/bora/basicHttp/http.c b/lib/bora/basicHttp/http.c
+index a0f7df3..1f538b4 100644
+--- a/lib/bora/basicHttp/http.c
++++ b/lib/bora/basicHttp/http.c
+@@ -40,7 +40,6 @@
+ #include "requestQueue.h"
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #include <curl/multi.h>
+ 

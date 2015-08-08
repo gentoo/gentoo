@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-physics</herd>
+  <maintainer>
+    <email>ottxor@gentoo.org</email>
+    <name>Christoph Junghans</name>
+  </maintainer>
+  <use>
+    <flag name="cuda">Enable cuda support</flag>
+    <flag name="examples">Installs the examples</flag>
+    <flag name="packages">Installs extra subpackages</flag>
+  </use>
+</pkgmetadata>

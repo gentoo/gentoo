@@ -1,0 +1,26 @@
+From c5b7a4bf93a28e6ce68beb54b48d3745db943e54 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <ottxor@gentoo.org>
+Date: Mon, 27 Oct 2014 21:57:10 -0600
+Subject: [PATCH] fix build with linux-3.17
+
+https://bugs.gentoo.org/show_bug.cgi?id=524614
+---
+ acpi_call.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/acpi_call.c b/acpi_call.c
+index 3025d97..fa4f2c6 100644
+--- a/acpi_call.c
++++ b/acpi_call.c
+@@ -6,7 +6,7 @@
+ #include <linux/proc_fs.h>
+ #include <linux/slab.h>
+ #include <asm/uaccess.h>
+-#include <acpi/acpi.h>
++#include <linux/acpi.h>
+ 
+ MODULE_LICENSE("GPL");
+ 
+-- 
+2.0.4
+

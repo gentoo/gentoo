@@ -1,0 +1,42 @@
+diff -ur cfengine-3.5.3.orig/configure.ac cfengine-3.5.3/configure.ac
+--- cfengine-3.5.3.orig/configure.ac	2013-12-09 13:13:14.000000000 +0100
++++ cfengine-3.5.3/configure.ac	2014-02-27 12:36:55.179893570 +0100
+@@ -1047,6 +1047,16 @@
+ AM_SUBST_NOTMAKE(post_macros)
+ 
+ dnl ######################################################################
++dnl Find the path to ifconfig
++dnl ######################################################################
++
++AC_PATH_PROG(IFCONFIG_PATH,ifconfig)
++if test x"$IFCONFIG_PATH" = x"" ; then
++  AC_MSG_ERROR([Cannot found the ifconfig binary.])
++fi
++AC_DEFINE_UNQUOTED(IFCONFIG_RUN, "$IFCONFIG_PATH -a", [the path to run ifconfig -a])
++
++dnl ######################################################################
+ dnl Summarize
+ dnl ######################################################################
+ 
+diff -ur cfengine-3.5.3.orig/libpromises/unix.c cfengine-3.5.3/libpromises/unix.c
+--- cfengine-3.5.3.orig/libpromises/unix.c	2013-12-09 13:13:14.000000000 +0100
++++ cfengine-3.5.3/libpromises/unix.c	2014-02-27 12:38:35.036608105 +0100
+@@ -767,7 +767,7 @@
+         return;
+     }
+ #else
+-    if ((pp = cf_popen("/sbin/ifconfig -a", "r", true)) == NULL)
++    if ((pp = cf_popen(IFCONFIG_RUN, "r", true)) == NULL)
+     {
+         Log(LOG_LEVEL_VERBOSE, "Could not find interface info");
+         return;
+diff -ur cfengine-3.5.3.orig/libutils/config.h.in cfengine-3.5.3/libutils/config.h.in
+--- cfengine-3.5.3.orig/libutils/config.h.in	2013-12-09 13:55:25.000000000 +0100
++++ cfengine-3.5.3/libutils/config.h.in	2014-02-27 12:39:41.537416111 +0100
+@@ -914,3 +914,6 @@
+ 
+ /* Define to rpl_vsnprintf if the replacement function should be used. */
+ #undef vsnprintf
++
++/* Define to the path for running ifconfig -a */
++#undef IFCONFIG_RUN

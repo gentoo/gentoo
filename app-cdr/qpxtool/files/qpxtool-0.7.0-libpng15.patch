@@ -1,0 +1,125 @@
+--- console/f1tattoo/f1tattoo.cpp
++++ console/f1tattoo/f1tattoo.cpp
+@@ -96,6 +96,10 @@
+ 	int      c;
+ 	int32_t  r,g,b;
+ 
++	png_colorp palette;
++	int num_palette;
++	png_get_PLTE(png_ptr, info_ptr, &palette, &num_palette);
++
+ 	if (fread(header, 1, 8, fp) < 8) {
+ 		printf("Error reading PNG header\n");
+ 		fclose(fp);	
+@@ -129,9 +133,9 @@
+ 
+ 	png_read_info(png_ptr, info_ptr);
+ 
+-	printf("Image size: %ld x %ld\n", info_ptr->width, info_ptr->height);
++	printf("Image size: %ld x %ld\n", png_get_image_width(png_ptr, info_ptr), png_get_image_height(png_ptr, info_ptr));
+ 
+-	if (info_ptr->width != 3744U || info_ptr->height != rows ) {
++	if (png_get_image_width(png_ptr, info_ptr) != 3744U || png_get_image_height(png_ptr, info_ptr) != rows ) {
+ 		printf("Image should be 3744 x %d", rows);
+ 		return 1;
+ 	}
+@@ -143,14 +147,14 @@
+ 	number_of_passes = png_set_interlace_handling(png_ptr);
+ 	png_read_update_info(png_ptr, info_ptr);
+ 
+-	printf("Color type: [%d] ", info_ptr->color_type);
+-	switch (info_ptr->color_type) {
++	printf("Color type: [%d] ", png_get_color_type(png_ptr, info_ptr));
++	switch (png_get_color_type(png_ptr, info_ptr)) {
+ 	    case PNG_COLOR_TYPE_GRAY:
+ 			printf("PNG_COLOR_TYPE_GRAY\n");
+ 			break;
+ 	    case PNG_COLOR_TYPE_PALETTE:
+ 			printf("PNG_COLOR_TYPE_PALETTE\n");
+-			if (!(info_ptr->valid & PNG_INFO_PLTE)) {
++			if (!(png_get_valid(png_ptr,info_ptr,PNG_INFO_PLTE))) {
+ 				printf("PNG color type is indexed, but no palette found!");
+ 				goto err_read_png;
+ 			}
+@@ -168,49 +172,49 @@
+ 			printf("unlnown PNG color type!\n");
+ 			goto err_read_png;
+ 	}
+-	printf("Bit depth : %d\n", info_ptr->bit_depth);
+-	if (info_ptr->bit_depth != 8) {
++	printf("Bit depth : %d\n", png_get_bit_depth(png_ptr, info_ptr));
++	if (png_get_bit_depth(png_ptr, info_ptr) != 8) {
+ 		printf("Unsupported bit depth!\n");
+ 		goto err_read_png;
+ 	}
+-	if (info_ptr->valid & PNG_INFO_PLTE) {
+-		printf("Palette   : %d colors\n", info_ptr->num_palette);
++	if (png_get_valid(png_ptr,info_ptr,PNG_INFO_PLTE)) {
++		printf("Palette   : %d colors\n", num_palette);
+ 	} else {
+ 		printf("Palette   : NO\n");
+ 	}
+-	printf("ROW bytes : %ld\n", info_ptr->rowbytes);
++	printf("ROW bytes : %ld\n", png_get_rowbytes(png_ptr, info_ptr));
+ 
+ 
+ 	raw_row_pointer = buf;
+-	png_row_pointer = (png_byte*) malloc(info_ptr->rowbytes);
++	png_row_pointer = (png_byte*) malloc(png_get_rowbytes(png_ptr, info_ptr));
+ 	for (row=0; row<rows; row++) {
+ 		if (setjmp(png_jmpbuf(png_ptr))) {
+ 			printf("png_jmpbuf failed!\n");
+ 			goto err_read_png;
+ 		}
+ 		png_read_row(png_ptr, png_row_pointer, NULL);
+-		if (info_ptr->width < 3744U)
++		if (png_get_image_width(png_ptr, info_ptr) < 3744U)
+ 			memset(raw_row_pointer, 0, 3744);
+ 
+-		switch (info_ptr->color_type) {
++		switch (png_get_color_type(png_ptr, info_ptr)) {
+ 		    case PNG_COLOR_TYPE_GRAY:
+-				for (col=0; col<info_ptr->width; col++) {
++				for (col=0; col<png_get_image_width(png_ptr, info_ptr); col++) {
+ 					raw_row_pointer[col] = png_row_pointer[col] ^ 0xFF;
+ //					memcpy(raw_row_pointer, png_row_pointer, 3744);
+ 				}
+ 				break;
+ 		    case PNG_COLOR_TYPE_PALETTE:
+-				for (col=0; col<info_ptr->width; col++) {
++				for (col=0; col<png_get_image_width(png_ptr, info_ptr); col++) {
+ 					c = png_row_pointer[col];
+-					r = info_ptr->palette[c].red;
+-					g = info_ptr->palette[c].green;
+-					b = info_ptr->palette[c].blue;
++					r = palette[c].red;
++					g = palette[c].green;
++					b = palette[c].blue;
+ 					c = (r*11 + g*16 + b*5) / 32;
+ 					raw_row_pointer[col] = c ^ 0xFF;
+ 				}
+ 				break;
+ 		    case PNG_COLOR_TYPE_RGB:
+-				for (col=0; col<info_ptr->width; col++) {
++				for (col=0; col<png_get_image_width(png_ptr, info_ptr); col++) {
+ 					r = png_row_pointer[col*3];
+ 					g = png_row_pointer[col*3+1];
+ 					b = png_row_pointer[col*3+2];
+@@ -219,7 +223,7 @@
+ 				}
+ 				break;
+ 		    case PNG_COLOR_TYPE_RGB_ALPHA:
+-				for (col=0; col<info_ptr->width; col++) {
++				for (col=0; col<png_get_image_width(png_ptr, info_ptr); col++) {
+ 					r = png_row_pointer[col*4];
+ 					g = png_row_pointer[col*4+1];
+ 					b = png_row_pointer[col*4+2];
+@@ -228,7 +232,7 @@
+ 				}
+ 				break;
+ 		    case PNG_COLOR_TYPE_GRAY_ALPHA:
+-				for (col=0; col<info_ptr->width; col++) {
++				for (col=0; col<png_get_image_width(png_ptr, info_ptr); col++) {
+ 					raw_row_pointer[col] = png_row_pointer[col*2] ^ 0xFF;
+ 				}
+ 				break;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+WMPop3 is a Window Maker dockable app which will check a pop3 mail server and 
+report how many messages are waiting( new and old ). Check it out!
+</longdescription>
+</pkgmetadata>

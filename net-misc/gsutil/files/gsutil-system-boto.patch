@@ -1,0 +1,23 @@
+http://code.google.com/p/gsutil/issues/detail?id=71
+
+--- a/gsutil
++++ b/gsutil
+@@ -41,13 +41,15 @@
+   _OutputAndExit('Unable to determine where gsutil is installed. Sorry, '
+                 'cannot run correctly without this.\n')
+ boto_lib_dir = os.path.join(gsutil_bin_dir, 'boto')
+-if not os.path.isdir(boto_lib_dir):
++if os.path.isdir(boto_lib_dir):
++  sys.path.insert(0, boto_lib_dir)
++try:
++  import boto
++except:
+   _OutputAndExit('There is no boto library under the gsutil install directory '
+                 '(%s).\nThe gsutil command cannot work properly when installed '
+                 'this way.\nPlease re-install gsutil per the installation '
+                 'instructions.' % gsutil_bin_dir)
+-sys.path.insert(0, boto_lib_dir)
+-import boto
+ from boto.exception import BotoClientError
+ from boto.exception import InvalidAclError
+ from boto.exception import InvalidUriError

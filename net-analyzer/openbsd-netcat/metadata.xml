@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+    <email>heroxbd@gentoo.org</email>
+    <name>Benda Xu</name>
+</maintainer>
+<longdescription lang="en">
+    This package provides the openbsd linux port of netcat.
+</longdescription>
+</pkgmetadata>

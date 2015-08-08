@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/473970
+
+already sent upstream
+
+patch by Jungshik Shin
+
+--- ragel-6.7/configure.in
++++ ragel-6.7/configure.in
+@@ -27,9 +27,9 @@
+ 
+ dnl Choose defaults for the build_parsers and build_manual vars. If the dist
+ dnl file is present in the root then default to no, otherwise go for it.
+-AC_CHECK_FILES( $srcdir/DIST, 
+-	[ . $srcdir/DIST; ], 
+-	[ build_parsers=yes; build_manual=yes; ] )
++
++AS_IF([test -r $srcdir/DIST], [. $srcdir/DIST], [build_parsers=yes;
++       build_manual=yes])
+ 
+ dnl
+ dnl Enable arg to explicitly control the building of the manual

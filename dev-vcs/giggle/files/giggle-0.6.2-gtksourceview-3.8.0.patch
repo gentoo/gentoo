@@ -1,0 +1,24 @@
+diff --git a/src/giggle-diff-view.h b/src/giggle-diff-view.h
+index de5fe02..9ef33b5 100644
+--- a/src/giggle-diff-view.h
++++ b/src/giggle-diff-view.h
+@@ -23,6 +23,7 @@
+ 
+ #include <glib-object.h>
+ #include <gtk/gtk.h>
++#include <gtksourceview/gtksourcebuffer.h>
+ #include <gtksourceview/gtksourceview.h>
+ #include <gtksourceview/gtksourcelanguagemanager.h>
+ 
+diff --git a/src/giggle-view-file.c b/src/giggle-view-file.c
+index 7746225..7b74c0a 100644
+--- a/src/giggle-view-file.c
++++ b/src/giggle-view-file.c
+@@ -42,6 +42,7 @@
+ 
+ #include <gtksourceview/gtksourcelanguagemanager.h>
+ #include <gtksourceview/gtksourceview.h>
++#include <gtksourceview/gtksourcebuffer.h>
+ 
+ #define GIGGLE_TYPE_VIEW_FILE_SNAPSHOT            (giggle_view_file_snapshot_get_type ())
+ #define GIGGLE_VIEW_FILE_SNAPSHOT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GIGGLE_TYPE_VIEW_FILE_SNAPSHOT, GiggleViewFileSnapshot))

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+  Bokeh is a Python interactive visualization library for large
+  datasets that natively uses the latest web technologies. Its goal is
+  to provide elegant, concise construction of novel graphics in the
+  style of Protovis/D3, while delivering high-performance
+  interactivity over large data to thin clients.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">bokeh</remote-id>
+    <remote-id type="github">ContinuumIO/bokeh</remote-id>
+  </upstream>
+</pkgmetadata>

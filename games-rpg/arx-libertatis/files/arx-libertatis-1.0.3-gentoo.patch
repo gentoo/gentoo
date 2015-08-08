@@ -1,0 +1,74 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Wed Jun 27 22:04:32 UTC 2012
+Subject: build system
+
+respect flags
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -365,21 +365,6 @@
+ 		
+ 	endif()
+ 	
+-	# Warning level
+-	add_cxxflag("-Wall")
+-	add_cxxflag("-Wextra")
+-	add_cxxflag("-Wformat=2")
+-	add_cxxflag("-Wundef")
+-	add_cxxflag("-Wpointer-arith")
+-	add_cxxflag("-Wcast-qual")
+-	add_cxxflag("-Woverloaded-virtual")
+-	add_cxxflag("-Wlogical-op")
+-	
+-	add_cxxflag("-Wliteral-conversion")
+-	add_cxxflag("-Wshift-overflow")
+-	add_cxxflag("-Woverflow")
+-	add_cxxflag("-Wbool-conversions")
+-	
+ 	# TODO enable:
+ 	# add_cxxflag("-Wconversion") # very noisy
+ 	# add_cxxflag("-Wsign-conversion") # very noisy
+@@ -391,27 +376,12 @@
+ 	endif()
+ 	
+ 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+-		
+-		#Debug
+ 		add_definitions(-D_DEBUG)
+-		
+-		check_compiler_flag(RESULT "-g3")
+-		if(NOT RESULT STREQUAL "")
+-			string(REGEX REPLACE "-g(|[0-9]|gdb)" "" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+-			set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${RESULT}")
+-		endif()
+-		
+-		check_compiler_flag(RESULT "-O0")
+-		string(REGEX REPLACE "-O[0-9]" "" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+-		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${RESULT}")
+-		
+ 	elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+-		
+ 		if((NOT CMAKE_CXX_FLAGS MATCHES "-g(|[0-9]|gdb)")
+ 			 AND (NOT CMAKE_CXX_FLAGS_RELEASE MATCHES "-g(|[0-9]|gdb)"))
+ 			add_cxxflag("-g2")
+ 		endif()
+-		
+ 	endif()
+ 	
+ 	if(DEBUG_EXTRA)
+@@ -419,15 +389,7 @@
+ 		add_cxxflag("-fbounds-checking")
+ 		add_cxxflag("-fcatch-undefined-behavior")
+ 		add_cxxflag("-Wstrict-aliasing=1")
+-	else()
+-		# -Wuninitialized causes too many false positives
+-		add_cxxflag("-Wno-uninitialized")
+-		# (clang only) Conflicts with using const variables for configuration.
+-		add_cxxflag("-Wno-constant-logical-operand")
+ 	endif()
+-	
+-	# Because we are lazy
+-	add_ldflag("-Wl,--as-needed")
+ 
+ 	# Xcode does not support -isystem yet
+ 	if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")

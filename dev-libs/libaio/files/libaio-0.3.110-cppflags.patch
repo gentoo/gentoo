@@ -1,0 +1,25 @@
+From 3bf96bb62370035dba18d4b25459406b32365cfc Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 26 Mar 2014 23:10:18 -0400
+Subject: [PATCH] respect env CPPFLAGS
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Makefile b/src/Makefile
+index 49f448f..b918c8b 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -5,6 +5,7 @@ usrlibdir=$(libdir)
+ 
+ CFLAGS ?= -g -fomit-frame-pointer -O2
+ CFLAGS += -nostdlib -nostartfiles -Wall -I. -fPIC
++CFLAGS += $(CPPFLAGS)
+ SO_CFLAGS=-shared $(CFLAGS)
+ L_CFLAGS=$(CFLAGS)
+ LINK_FLAGS=
+-- 
+1.9.1
+

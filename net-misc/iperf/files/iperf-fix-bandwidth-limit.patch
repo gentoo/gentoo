@@ -1,0 +1,21 @@
+
+2011-10-14 Israel G. Lugo <israel.lugo@lugosys.com>
+
+* Fix delay_loop() for delays of 1s and greater. Was causing breakage when a
+low bandwidth limit was specified.
+
+
+--- a/compat/delay.cpp
++++ b/compat/delay.cpp
+@@ -63,8 +63,9 @@ void delay_loop(unsigned long usec)
+ {
+     struct timespec requested, remaining;
+ 
+-    requested.tv_sec  = 0;
+-    requested.tv_nsec = usec * 1000L;
++    /* convert to seconds; nanosleep requires 0 <= tv_nsec <= 999999999 */
++    requested.tv_sec  = usec / 1000000UL;
++    requested.tv_nsec = (usec % 1000000UL) * 1000UL;
+ 
+     while (nanosleep(&requested, &remaining) == -1)
+         if (errno == EINTR)

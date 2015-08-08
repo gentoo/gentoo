@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>dev-embedded</herd>
+	<longdescription>ICDPROG is a simple command line programmer for Microchip PIC
+    controllers, using the Microchip ICD (in circuit debugger)
+    hardware.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">icdprog</remote-id>
+	</upstream>
+</pkgmetadata>

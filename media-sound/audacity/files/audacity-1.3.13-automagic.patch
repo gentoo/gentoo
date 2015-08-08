@@ -1,0 +1,61 @@
+--- audacity-src-1.3.13-beta.orig/configure.in
++++ audacity-src-1.3.13-beta/configure.in
+@@ -173,6 +173,9 @@
+             lib_preference=$withval,
+             lib_preference="system local")
+ 
++AC_ARG_WITH([alsa], AS_HELP_STRING([--without-alsa], [Build without alsa library (default: test)]))
++AC_ARG_WITH([jack], AS_HELP_STRING([--without-jack], [Build without jack library (default: test)]))
++
+ dnl AC_ARG_WITH(wx-version,
+ dnl            [AS_HELP_STRING([--with-wx-version],
+ dnl                            [select wxWidgets version (if both installed) [2.8,]])],
+@@ -574,13 +577,21 @@
+       ;;
+    *)
+       dnl Unix
+-      AC_CHECK_LIB(asound, snd_pcm_open, have_alsa=yes, have_alsa=no)
+-      if [[ $have_alsa = "yes" ]] ; then
+-         LIBS="$LIBS -lasound"
+-      fi
+-      PKG_CHECK_MODULES(JACK, jack, have_jack=yes, have_jack=no)
+-      if [[ $have_jack = "yes" ]] ; then
+-         LIBS="$LIBS $JACK_LIBS"
++      if test "x$with_alsa" != "xno"; then
++         AC_CHECK_LIB(asound, snd_pcm_open, have_alsa=yes, have_alsa=no)
++         if [[ $have_alsa = "yes" ]] ; then
++            LIBS="$LIBS -lasound"
++        else
++            AC_MSG_WARN([Support for alsa not available])
++         fi
++      fi        
++      if test "x$with_jack" != "xno"; then
++         PKG_CHECK_MODULES(JACK, jack, have_jack=yes, have_jack=no)
++         if [[ $have_jack = "yes" ]] ; then
++            LIBS="$LIBS $JACK_LIBS"
++        else
++            AC_MSG_WARN([Support for jack not available])
++         fi
+       fi
+       AC_CHECK_LIB(hpi, HPI_SubSysCreate, have_asihpi=yes, have_asihpi=no, -lm)
+       if [[ $have_asihpi = "yes" ]] ; then
+--- audacity-src-1.3.13-beta.orig/lib-src/portmixer/configure.ac
++++ audacity-src-1.3.13-beta/lib-src/portmixer/configure.ac
+@@ -31,6 +31,8 @@
+   [AC_SUBST( cflags, ["$cflags -g"] )  AC_MSG_RESULT(yes)],
+   [AC_SUBST( cflags, ["$cflags -O2"] ) AC_MSG_RESULT(no)])
+ 
++AC_ARG_WITH([alsa], AC_HELP_STRING([--without-alsa], [Build without alsa library (default: test)]))
++
+ #
+ # Check for portaudio path
+ #
+@@ -133,7 +135,7 @@
+    have_support=yes
+ fi
+ 
+-if [[ $have_alsa = "yes" ]] ; then
++if [[ $have_alsa = "yes" -a "x$with_alsa" != "xno" ]] ; then
+    AC_MSG_NOTICE([Including support for ALSA])
+    AC_DEFINE(PX_USE_LINUX_ALSA)
+    objects="$objects px_linux_alsa.o"

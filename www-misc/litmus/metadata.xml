@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>beber@meleeweb.net</email>
+		<name>Bertrand Jacquin</name>
+	</maintainer>
+	<longdescription>WebDAV server protocol compliance test suite</longdescription>
+	<use>
+		<flag name="libproxy">Support for automatic proxy configuratino management through <pkg>net-libs/libproxy</pkg>.</flag>
+		<flag name="libxml2">Use dev-libs/libxml2 to parse XML</flag>
+		<flag name="pkcs11">Support for PKCS #11 through PaKChoiS (<pkg>dev-libs/pakchois</pkg>).</flag>
+	</use>
+</pkgmetadata>

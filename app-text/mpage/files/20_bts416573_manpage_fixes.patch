@@ -1,0 +1,628 @@
+Index: mpage-2.5.6/mpage.1.in
+===================================================================
+--- mpage-2.5.6.orig/mpage.1.in	2008-08-12 19:12:42.274087056 +0200
++++ mpage-2.5.6/mpage.1.in	2008-08-12 19:14:15.003371396 +0200
+@@ -54,7 +54,7 @@
+ 
+ 
+ .SH DESCRIPTION
+-.I mpage
++.B mpage
+ reads plain text files or PostScript documents and prints them on a
+ PostScript printer with the text reduced in size so that several
+ pages appear on one sheet of paper.
+@@ -63,14 +63,18 @@
+ 
+ .PP
+ The following options are recognized (note that arguments to options may be
+-separated from the option by spaces, except for 
++separated from the option by spaces, except for
+ .BR -B ,
+ .BR -m ,
+ .BR -M ,
+ .B -p
+ and
+ .BR -P ):
+-Also when mpage encounters -- as option it will stop parsing arguments
++Also when
++.B mpage
++encounters
++.B --
++as option it will stop parsing arguments
+ and the remaining arguments are interpreted as filenames.
+ 
+ .TP
+@@ -84,7 +88,7 @@
+ .TP
+ .B -4
+ Print 4 normal pages per sheet
+-.IR (default) .
++.RI ( default ).
+ 
+ .TP
+ .B -8
+@@ -95,25 +99,29 @@
+ Toggle layout of the pages on the sheet so that successively numbered
+ pages run down the sheet, as opposed to left to right.
+ .RI ( default
+-updown) .
++updown).
+ 
+ .TP
+ .B -A
+-This option is deprecated, see \fB-b\fP.
+-Prepare output for A4 sized paper.
+-For default see 'mpage -x'.
++This option is deprecated, use
++.B -bA4
++instead.
+ 
+ .TP
+-.BI -b papertype
+-Prepare output for selected paper type.
++.BI -b papersize
++Prepare output for the selected paper type.
+ .I Papersize
+-can be \fIA3\fP for European A3,
+-\fIA4\fP for European A4,
+-\fILetter\fP for US Letter or \fILegal\fP for Legal
+-sized paper.
+-For default see 'mpage -x'.
+-To see the list of currently available types, just give the 'mpage -bl'
+-or 'mpage -b?' command (Note: mpage exits after finding such option use.)
++can be \fBA3\fP for European A3,
++\fBA4\fP for European A4,
++\fBLetter\fP for US Letter, or \fBLegal\fP for Legal
++sized paper.  For available types, see option \fB-bl\fP.
++For the default, see 'mpage \-x'.  This default is taken from the
++system; see \fBpapersize\fP(5).  If it isn't found, mpage exits
++with an error.
++
++.TP
++.BR -bl ,\  -b?
++List the currently available paper types, then exit.
+ 
+ .TP
+ .BR -B [\fI<num>\fR[\fBlrtb\fR]*]
+@@ -121,19 +129,19 @@
+ Specify text box margins and line thickness.
+ The default is 0 columns (lines) for both left and right (top and bottom)
+ margins and 0 line thickness.
+-Specifying 
+-.B -B 
+-solely toggles printing of the box. 
++Specifying
++.B -B
++solely toggles printing of the box.
+ .IR l ,
+ .IR r ,
+ .I t
+ or
+ .I b
+-set the left, right, top or bottom margin respectively to 
++set the left, right, top or bottom margin respectively to
+ .I <num>
+ columns (lines).
+-Not specifying any of the sides, will set the line thickness when 
+-.I <num> 
++Not specifying any of the sides, will set the line thickness when
++.I <num>
+ is given.
+ For example
+ .BI -B 1
+@@ -142,7 +150,7 @@
+ 
+ .TP
+ .B -c
+-Toggle concatenation off pages from different files on single sheets
++Toggle concatenation of pages from different files on single sheets
+ .RI ( default
+ off).
+ 
+@@ -166,27 +174,26 @@
+ 
+ .TP
+ .BI -D dateformat
+-Set the date format as in 
++Set the date format as in
+ .IR strftime (3)
+ to be used in date/time representations (e.g. in headers).
+-(Note: to be useful you probably need the \fB-H\fP option.)
++(Note: to make this useful you probably need the \fB-H\fP option.)
+ 
+ .TP
+ .B -e
+-Print 2 normal pages per sheet in duplex mode. Every first 
+-and fourth page or on one side and every second and third
++Print 2 normal pages per sheet in duplex mode: every first
++and fourth page on one side and every second and third
+ on the other side. This is more or less a combination of
+-the \fR-O\fP and \fR-E\fP option but then in one pass.
++the \fR-O\fP and \fR-E\fP options but in one pass.
+ 
+ .TP
+ .B -E
+-Print 2 normal pages per sheet. However, this option will print
+-every second and third page of every set of four pages.
+-This option will ignore
++Print 2 normal pages per sheet, namely: print only the second and
++third page of every set of four pages. See also \fB-O\fP. These
++options override
+ .B -a
+ and
+ .BR -l .
+-See also the \fR-O\fP option.
+ Using these options double sided prints can be created without
+ a duplex printer.
+ 
+@@ -194,11 +201,11 @@
+ .B -f
+ Toggles folding lines longer than page width
+ .RI ( default
+-off) .
++off).
+ 
+ .TP
+ .BI -F fontname
+-Specify font. 
++Specify font.
+ .RI ( default
+ Courier). Check your printer for supported fonts. Note: this has
+ almost nothing to do with the fonts used for your X-windows/KDE/Gnome
+@@ -206,13 +213,13 @@
+ 
+ .TP
+ .BI -h header
+-This is used only when the 
++This is used only when the
+ .B -p
+ or
+ .B -H
+ switch is used and is passed as the "\fB-h\fI\ header\fR" option to
+-.BR pr ( 1 )
+-or as the header for 
++.BR pr (1)
++or as the header for
+ .BR -H .
+ 
+ .TP
+@@ -220,26 +227,26 @@
+ Create header line for each logical page separated from page text by a
+ horizontal line. Unless
+ .B -h
+-is given, the header consist of last file modification time,
++is given, the header consists of last file modification time,
+ filename and page number, all in bold and slightly larger font.
+ This option only applies to non-postscript files.
+ 
+ .TP
+ .BI -I indent
+-Indent text by 
++Indent text by
+ .I indent
+ characters.
+ 
+ .TP
+-.BI -j first\fR[\fI-last\fR][\fI%interval\fR]
++.BI -j first\fR[ - last\fR][ % interval\fR]
+ Print just the selected sheets, specified by a number, starting at 1.
+-Here 
++Here
+ .I last
+ defaults to the end of data, \fIinterval\fP to 1.
+-Several \fB-j\fR options can be given (upto MAXJARGS, default 100)
++Several \fB-j\fR options can be given (up to MAXJARGS, default 100)
+ to create a complex selection of pages.
+-Thus \fB-j\fI1\-10\fR selects the first 10 sheets, while
+-\fB-j\fI 1%2\fR prints just the odd-numbered sheets and \fB-j\fI 2%2\fR
++Thus \fB-j1\-10\fR selects the first 10 sheets, while
++\fB-j\ 1%2\fR prints just the odd-numbered sheets and \fB-j\ 2%2\fR
+ prints just the even ones.
+ .sp
+ You can do double-sided printing, in two passes, as follows.
+@@ -249,7 +256,7 @@
+ Print the odd-numbered sheets with
+ .IP
+ .ti +5
+-mpage ... -j 1%2 ...
++mpage ... \-j 1%2 ...
+ .IP
+ Note the number of pages it reports.  (Only half this many will really
+ be printed).  When printing finishes, if mpage reported an
+@@ -262,7 +269,7 @@
+ Now print the even-numbered sheets in reverse order with
+ .IP
+ .ti +5
+-mpage ... -r -j 2%2 ...
++mpage ... \-r \-j 2%2 ...
+ .IP
+ hoping no one else reaches the printer before you do.
+ 
+@@ -274,70 +281,71 @@
+ 
+ .TP
+ .B -k
+-When mpage finds a %%TRailer or %%PSTrailer in the postscript input file
++When mpage finds a %%Trailer or %%PSTrailer in the postscript input file
+ it normally assumes this is the end of the postscript file and stops reading
+ the input file. But when the PS file includes EPS files, %%Trailers might
+-be anywhere. Using this option ignores the %%TRailer and %%PSTRailer lines.
++be anywhere. Using this option ignores the %%Trailer and %%PSTrailer lines.
++
+ .TP
+ .B -l
+-Toggle printing landscape or portrait mode.
+-Landscape pages are 55 lines long by 132 characters wide by default. 
+-Portrait pages are 66 lines long by 80 characters wide by default.
++Toggle printing landscape or portrait mode
+ .RI ( default
+-portrait.) 
++portrait).
++Landscape pages are 55 lines long by 132 characters wide by default.
++Portrait pages are 66 lines long by 80 characters wide by default.
+ 
+ .TP
+ .BI -L lines
+ Adjust the page reduction parameters so that
+ .I lines
+ lines will fit in the space of one page.
+-This overrides the default values normally supplied.  (See 
++This overrides the default values normally supplied.  (See
+ .BR -l .)
+-If used in conjunction with 
++If used in conjunction with
+ .B -p
+ then this value is passed to the
+ .BR pr (1)
+ as well.
+ As a side effect this changes the font size as well (as will the \fB-W\fR
+-option.) So while there is an option to change font family, there is no 
++option.) So while there is an option to change font family, there is no
+ explicit option to change font size!
+ 
+ .TP
+ .BR -m [\fI<num>\fR[\fBlrtb\fR]*]
+ Specify sheet margin. The default margin is 20 points.
+-Only specifying 
+-.B -m 
+-sets left margin to 40 points. 
++Only specifying
++.B -m
++sets left margin to 40 points.
+ .IR l ,
+ .IR r ,
+ .I t
+ or
+ .I b
+-set left, right, top or bottom margin respectively to 
++set left, right, top or bottom margin respectively to
+ .I <num>
+ points.
+-Not specifying any of the sides will set all sides when 
+-.I <num> 
++Not specifying any of the sides will set all sides when
++.I <num>
+ is given.
+ .I <num>
+ defaults to 40 points. For example
+ .BI -m 10
+ sets all margins to 10 points.
+ .BI -m l50tb
+-sets left margin to default 40 and top and bottom margin to 50 points.
++sets left margin to default 40 and top and bottom margins to 50 points.
+ .BI -m 50l25bt30r
+-set bottom and top margin to 25, left margin to 50 and
++sets bottom and top margin to 25, left margin to 50 and
+ right margin to 30 points.
+ Margins can have negative numbers.
+ 
+ .TP
+ .BR -M [\fI<num>\fR[\fBlrtb\fR]*]
+-Specify logical page margins. For syntax, see 
++Specify logical page margins. For syntax, see
+ .B -m
+ option.
+-Defaults are 4 for 
+-.B -M 
+-solely, and 8 for 
++Defaults are 4 for
++.B -M
++solely, and 8 for
+ .IR <num> .
+ Margins can be negative.
+ This way large white borders
+@@ -351,20 +359,18 @@
+ 
+ .TP
+ .B -O
+-Print 2 normal pages per sheet.
+-However, this option will print every first and fourth page of every
+-set of four pages.
+-This option will ignore 
++Print 2 normal pages per sheet, namely: print only the first and
++fourth page of every set of four pages. See also \fB-E\fP. These
++options override
+ .B -a
+ and
+ .BR -l .
+-See also the \fR-E\fP option.
+ Using these options double sided prints can be created without
+ a duplex printer.
+ 
+ .TP
+ .BR -p [\fIprprog\fR]
+-Pipe input through 
++Pipe input through
+ .I prprog
+ command (including specified options) before printing
+ (assumes the input is a text file).
+@@ -373,14 +379,16 @@
+ 
+ .TP
+ .BR -P [\fIprinter\fR]
+-Specify the printer to which the PostScript output will be sent
+-(e.g.lpr -P\fIprinter\fP). Using
++Specify the printer to which the PostScript output is sent
++(e.g. lpr \-P\fIprinter\fP). Using
+ .B -P
+-with no printer specified will send the PostScript to the default printer
+-queue (e.g. lpr). Using -P- will return output to stdout, useful in
+-combination with MPAGE environment variable. Without
++with no printer specified sends the PostScript to the default printer
++queue (e.g. lpr). Using \fB-P-\fP returns output to stdout, useful in
++combination with the
++.B MPAGE
++environment variable. Without
+ .B -P
+-output will be send to standard output.
++output is sent to standard output.
+ 
+ .TP
+ .B -r
+@@ -392,58 +400,65 @@
+ .B -R
+ Switch to left to right mode, starting first page on left bottom corner.
+ This might be useful for landscape postscript files.
+-(Note: using 
++(Note: using
+ .B -l
+ after
+ .B -R
+ undoes
+ .BR -R ,
+-and switches to normal landscape mode.
++and switches to normal landscape mode.)
+ 
+ .TP
+ .BI -s tabstop
+ Set tabstop width (\fIdefault\fP 8 characters).
+-Should by >= 2.
++Should be >= 2.
+ 
+ .TP
+ .B -S
+ Accept non-square page reduction.
+ By default, pages are shrunk equally in X and Y, even if this wastes some
+ space on the sheet.
+-With \fB\-S\fP, 
+-reduced pages are larger but slightly distorted. (only used when printing
++With \fB\-S\fP,
++reduced pages are larger but slightly distorted. (Only used when printing
+ postscript files.)
+ 
+ .TP
+ .B -t
+ Toggle printing on both sides of the paper.
+-+This option has 3 states: nop, yes, no, which mean:
+-.BR  NOP :
+- dont do anything on PostScript, so printer default will be used;
+-.BR  YES :
+- force printer to do duplex;
+-.BR  NO  :
++This option has 3 states: nop, yes, no, which mean:
++.RS
++.TP
++.BR NOP :
++don't do anything in PostScript, use the printer default;
++.TP
++.BR YES :
++force printer to do duplex;
++.TP
++.BR NO :
+ force printer not to do it.
+-If there is no -t, then the duplex is NOP. If you put some -t on
++.HP 0
++If there is no \fB\-t\fP, then the duplex is NOP. If you put some \-t on
+ the command line, the state toggles as "yes,no,yes,no...".
+ So, if your printer is set to print, by default, in duplex mode,
+-you will use "-t -t" on command line to force it to print in non-duplex mode.
+-Use this option only if your printer is capable of printing in duplex mode. 
++you will use "\-t \-t" on the command line to force it to print in
++non-duplex mode. Use this option only if your printer is capable of
++printing in duplex mode.
+ .RI ( default
+ NOP).
++.RE
+ 
+ .TP
+ .B -T
+ Toggle tumble of every second pages.
+-This option has 3 states: nop, yes, no (with behaviour similar to -t).
++This option has 3 states: nop, yes, no (with behaviour similar to \-t).
+ So, if your printer is set to print, by default, in duplex mode,
+ with tumble on,
+-you will use "-T -T" on command line to print in nontumble mode.
++you will use "\-T \-T" on command line to print in nontumble mode.
+ Use this option only if your printer is capable of printing in duplex mode.
+ With this version of mpage,
+-you may use this option even if you do not use -t.
++you may use this option even if you do not use \-t.
+ .RI ( default
+-NOP.)
++NOP).
+ 
+ .TP
+ .B -u
+@@ -451,15 +466,15 @@
+ 
+ .TP
+ .B -U
+-This option is deprecated, see \fB-b\fP.
+-Prepare output for US Letter sized paper.
+-For default see 'mpage -x'.
++This option is deprecated, use
++.B -bLetter
++instead.
+ 
+ .TP
+ .B -v
+ Toggle printing a count of the number of sheets produced for printing
+ .RI ( default
+-off.)
++off).
+ 
+ .TP
+ .B -V
+@@ -467,27 +482,27 @@
+ 
+ .TP
+ .BI -W width
+-Adjust the page reduction parameters so that a line with
++Adjust the page reduction parameters so that a line
+ .I width
+ characters long will fit in the space of one page.
+-This overrides the default values normally supplied.  (See 
++This overrides the default values normally supplied.  (See
+ .BR -l .)
+ If used in conjunction with
+ .B -p
+-then this value is passed to the s
++then this value is passed to the
+ .BR pr (1)
+ program as well.
+ See also the \fB-L\fP\ option on font sizes.
+ 
+ .TP
+ .B -x
+-Force usage display, which also shows current defaults.
++Print usage information (including current defaults), then exit.
+ 
+ .TP
+-.B -X [header]
++.BR -X [\fIheader\fR]
+ Print header on the left and the page number on the right
+ of each physical page (sheet).
+-If no header is given, the default is the current filename (note 
++If no header is given, the default is the current filename (note
+ influence of
+ .BR -c ),
+ the filename of the first file on the page is used.
+@@ -495,12 +510,12 @@
+ .TP
+ .BI -z printcommand
+ Specify command to use to send output to.
+-Default is 
+-.B lpr 
+-(1) for BSD style spooler,
+-.B lp
+-(1) for SYSV style spooler.
+-You can specify command line options, but note 
++Default is
++.BR lpr (1)
++for BSD style spooler,
++.BR lp (1)
++for SYSV style spooler.
++You can specify command line options, but note
+ .BR -Z .
+ For example \fB-zlp\fR for system V Unix.
+ 
+@@ -508,7 +523,7 @@
+ .BI -Z printprog_queuename_arg
+ Specify what option to use for the "\fB-z\fI\ printcommand\fR" to specify
+ a printqueue.
+-For example \fB-zlp -Z-d\fR for system V Unix.
++For example \fB\-zlp \-Z\-d\fR for system V Unix.
+ Default is
+ .B -P
+ for BSD style spooler,
+@@ -518,10 +533,10 @@
+ .PP
+ 
+ .SH ENVIRONMENT
+-.I mpage
++.B mpage
+ examines the
+ .B PRINTER
+-(or 
++(or
+ .B LPDEST
+ for SYSV style spooler)
+ environment variable to override its default printer.
+@@ -529,18 +544,20 @@
+ .PP
+ The
+ .B MPAGE_LIB
+-environment variable can be used to control where the character 
++environment variable can be used to control where the character
+ encoding files (\fB-C\fR) can be found.
+ 
+ .PP
+-.I mpage
++.B mpage
+ also examines the
+ .B MPAGE
+ environment variable for default option settings.
+ Any option or combination of options can be specified in the
+ .B MPAGE
+ environment variable.
+-For example, if MPAGE is set to the string:
++For example, if
++.B MPAGE
++is set to the string:
+ .IP
+ .B -2oPqms -L60
+ .PP
+@@ -550,14 +567,14 @@
+ .B "qms"
+ (overriding the
+ .B PRINTER\fR/\fBLPDEST
+-environment variable, if it exists.)
++environment variable, if it exists).
+ In the environment variable, white space is used as an option delimiter,
+ and no quoting is recognized.
+ 
+ .PP
+ Any command line options will override both the
+ .B PRINTER
+-and 
++and
+ .B MPAGE
+ environment variables.
+ 
+@@ -571,7 +588,7 @@
+ Suffers under the burden of far too many switches.
+ (But
+ .B you
+-wanted the choices!) 
++wanted the choices!)
+ .PP
+ NULL characters in a postscript input file will cause mpage to crash!
+ .PP
+@@ -580,7 +597,7 @@
+ Mpage is year 2000 compliant, as long as the underlying operating system is!!!
+ 
+ .SH VERSION
+-Version 2.5.6, Released Januari 2008.
++Version 2.5.6, Released January 2008.
+ .br
+ Location:
+ .IP
+@@ -588,6 +605,6 @@
+ .br
+ ftp://ftp.mesa.nl/pub/mpage
+ .SH AUTHORS
+-Marcel Mol <marcel@mesa.nl> (current maintainer). 
++Marcel Mol <marcel@mesa.nl> (current maintainer).
+ .PP
+-Mark P. Hahn (Original author) 
++Mark P. Hahn (Original author)

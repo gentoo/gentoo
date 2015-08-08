@@ -1,0 +1,107 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu May 31 13:46:18 UTC 2012
+Subject: build system
+
+fix underlinking ( https://bugs.gentoo.org/show_bug.cgi?id=367859 )
+remove DEPRECATED flags ( https://bugs.gentoo.org/show_bug.cgi?id=387823 )
+fix permissions on schema files
+make icondir modifiable
+
+--- configure.ac
++++ configure.ac
+@@ -41,6 +41,10 @@
+ AC_SUBST(GTHREAD_CFLAGS)
+ AC_SUBST(GTHREAD_LIBS)
+ 
++PKG_CHECK_MODULES(X11, [x11])
++AC_SUBST(X11_CFLAGS)
++AC_SUBST(X11_LIBS)
++
+ AC_ARG_ENABLE(gconf,
+   [  --disable-gconf         disable use of gconf (for embedded targets)],
+   [], [enable_gconf="yes"])
+@@ -64,6 +68,13 @@
+ fi
+ AM_CONDITIONAL(USE_GCONF, test "$enable_gconf" = "yes")
+ 
++AC_ARG_WITH([icondir],
++	    [AC_HELP_STRING([--with-icondir=DIR],
++			    [where icon gets installed to (default: datadir/pixmaps)])],
++	    [icondir="$withval"],
++	    [icondir="$datadir/pixmaps"])
++AC_SUBST(icondir)
++
+ AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_FILES([
+   Makefile
+--- quark/Makefile.am
++++ quark/Makefile.am
+@@ -1,7 +1,6 @@
+ localedir=$(datadir)/locale
+ 
+ AM_CPPFLAGS=$(GLIB_CFLAGS) $(GTHREAD_CFLAGS) $(GNOMEVFS_CFLAGS) $(GCONF_CFLAGS) $(XINE_CFLAGS) \
+-  -DG_DISABLE_DEPRECATED -DGCONF_DISABLE_DEPRECATED \
+   -DLOCALEDIR=\"$(localedir)\"
+ 
+ bin_PROGRAMS = quark
+@@ -30,7 +29,7 @@
+ 	gconftool-2 --makefile-install-rule $<
+ endif
+ 	$(INSTALL) -d $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)
+-	$(INSTALL) $< $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)
++	$(INSTALL_DATA) $< $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)
+ 
+ uninstall-local:
+ 	$(RM) $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)/quark.schemas
+--- strange-quark/Makefile.am
++++ strange-quark/Makefile.am
+@@ -6,14 +6,13 @@
+   $(GTK_CFLAGS) \
+   $(GCONF_CFLAGS) \
+   $(GDK_PIXBUF_CFLAGS) \
+-  -DG_DISABLE_DEPRECATED \
+   -DG_LOG_DOMAIN=\"strange-quark\" \
+-  -DPIXMAPDIR=\"$(pixmapdir)\" \
++  -DPIXMAPDIR=\"$(icondir)\" \
+   -DLOCALEDIR=\"$(localedir)\"
+ 
+ bin_PROGRAMS = strange-quark
+ 
+-strange_quark_LDADD = $(GTK_LIBS) $(GCONF_LIBS)
++strange_quark_LDADD = $(GTK_LIBS) $(GCONF_LIBS) $(X11_LIBS)
+ strange_quark_SOURCES = \
+   gettext.h \
+   main.c \
+@@ -43,7 +42,7 @@
+ 	gconftool-2 --makefile-install-rule $<
+ endif
+ 	$(INSTALL) -d $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)
+-	$(INSTALL) $< $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)
++	$(INSTALL_DATA) $< $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)
+ 
+ uninstall-local:
+ 	$(RM) $(DESTDIR)$(GCONF_SCHEMA_FILE_DIR)/strange-quark.schemas
+--- pixmaps/Makefile.am
++++ pixmaps/Makefile.am
+@@ -1,8 +1,5 @@
+-pixmapdir = $(datadir)/pixmaps
+-
+-pixmap_DATA = \
+-  quark.png \
+-  quark48.png
++icon_DATA = \
++  quark.png
+ 
+ EXTRA_DIST = \
+   quark.png \
+--- strange-quark/quark.desktop
++++ strange-quark/quark.desktop
+@@ -3,7 +3,7 @@
+ Name=Quark Music Player
+ Comment=Play music from the system tray
+ Exec=strange-quark
+-Icon=quark48.png
++Icon=quark.png
+ Terminal=false
+ Type=Application
+ Categories=Application;AudioVideo;

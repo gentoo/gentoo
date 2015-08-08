@@ -1,0 +1,11 @@
+--- chaosreader 2011-11-10 19:17:50.000000000 +0100
++++ chaosreader-0.94    2012-03-09 18:15:21.096105305 +0100
+@@ -6233,6 +6254,8 @@
+ 		$command = "tcpdump -s9999 -w";
+ 	} elsif ($^O eq "solaris") {
+ 		$command = "snoop -o";
++	} elsif ($^O eq "darwin") {
++		$command = "tcpdump -i en1 -s9999 -w";
+ 	} else {
+ 		die "ERROR54: Can't find the sniffer command for \"$^O\".\n" .
+ 		 "\t Please use log mode instead.\n";

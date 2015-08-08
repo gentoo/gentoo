@@ -1,0 +1,28 @@
+commit 04b0ac05377936d121a36873bb63d492cde292c9
+Author: Simon Kelley <simon@thekelleys.org.uk>
+Date:   Mon Apr 6 17:19:13 2015 +0100
+
+    Fix crash caused by looking up servers.bind when many servers defined.
+
+diff --git a/src/cache.c b/src/cache.c
+index d7bea57..178d654 100644
+--- a/src/cache.c
++++ b/src/cache.c
+@@ -1367,7 +1367,7 @@ int cache_make_stat(struct txt_record *t)
+ 		}
+ 	    port = prettyprint_addr(&serv->addr, daemon->addrbuff);
+ 	    lenp = p++; /* length */
+-	    bytes_avail = (p - buff) + bufflen;
++	    bytes_avail = bufflen - (p - buff );
+ 	    bytes_needed = snprintf(p, bytes_avail, "%s#%d %u %u", daemon->addrbuff, port, queries, failed_queries);
+ 	    if (bytes_needed >= bytes_avail)
+ 	      {
+@@ -1381,7 +1381,7 @@ int cache_make_stat(struct txt_record *t)
+ 		lenp = p - 1;
+ 		buff = new;
+ 		bufflen = newlen;
+-		bytes_avail = (p - buff) + bufflen;
++		bytes_avail =  bufflen - (p - buff );
+ 		bytes_needed = snprintf(p, bytes_avail, "%s#%d %u %u", daemon->addrbuff, port, queries, failed_queries);
+ 	      }
+ 	    *lenp = bytes_needed;

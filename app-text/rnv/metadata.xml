@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>l.valerimanera@gmail.com</email>
+	</maintainer>
+	<maintainer>
+		<email>dma05@web.de</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">rnv</remote-id>
+	</upstream>
+</pkgmetadata>

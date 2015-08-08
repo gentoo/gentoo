@@ -1,0 +1,61 @@
+Author: Jo Shields
+Description: This patch ensures that rather than trying to use the Mono Crypto
+Description: Service Provider to retrieve a signing key (CSP is not safe to
+Description: run with fakeroot), we simply hard-code the path to a bundled key
+Description: file
+Index: ikvm/ikvm-7.0.4335.0/CommonAssemblyInfo.cs.in
+===================================================================
+--- ikvm.orig/ikvm-7.0.4335.0/CommonAssemblyInfo.cs.in	2012-02-07 01:29:25.080047165 +0000
++++ ikvm/ikvm-7.0.4335.0/CommonAssemblyInfo.cs.in	2012-02-07 01:30:58.092593303 +0000
+@@ -33,5 +33,6 @@
+ 
+ #if SIGNCODE
+ 	#pragma warning disable 1699
+-	[assembly: AssemblyKeyName("ikvm-key")]
++	[assembly: AssemblyDelaySign(false)]
++	[assembly: AssemblyKeyFile("../../debian/mono.snk")]
+ #endif
+Index: ikvm/ikvm-7.0.4335.0/ikvm.build
+===================================================================
+--- ikvm.orig/ikvm-7.0.4335.0/ikvm.build	2012-02-07 01:29:57.152235493 +0000
++++ ikvm/ikvm-7.0.4335.0/ikvm.build	2012-02-07 01:30:48.348536094 +0000
+@@ -6,8 +6,8 @@
+     </target>
+     <target name="signed">
+          <property name="signed" value="SIGNCODE" />
+-         <property name="signoption" value="-key:ikvm-key" />
+-         <property name="ilasm_signoption" value="/key:@ikvm-key" />
++         <property name="signoption" value="-keyfile:../../debian/mono.snk" />
++         <property name="ilasm_signoption" value="/key:../../debian/mono.snk" />
+          <call target="managed" />
+     </target>
+     <target name="managed" depends="clean-managed CommonAssemblyInfo">
+Index: ikvm/ikvm-7.0.4335.0/runtime/runtime.build
+===================================================================
+--- ikvm.orig/ikvm-7.0.4335.0/runtime/runtime.build	2012-02-07 01:31:20.084722420 +0000
++++ ikvm/ikvm-7.0.4335.0/runtime/runtime.build	2012-02-07 01:31:47.120881144 +0000
+@@ -19,8 +19,8 @@
+ 
+     <target name="signed">
+         <property name="signed" value="SIGNCODE" />
+-        <property name="signoption" value="-key:ikvm-key" />
+-        <property name="ilasm_signoption" value="/key:@ikvm-key" />
++        <property name="signoption" value="-keyfile:../../../debian/mono.snk" />
++        <property name="ilasm_signoption" value="/key:../../../debian/mono.snk" />
+         <call target="full" />
+     </target>
+ 
+Index: ikvm/ikvm-7.0.4335.0/tools/pubkey.cs
+===================================================================
+--- ikvm.orig/ikvm-7.0.4335.0/tools/pubkey.cs	2012-02-07 01:28:30.479726527 +0000
++++ ikvm/ikvm-7.0.4335.0/tools/pubkey.cs	2012-02-07 01:28:58.927893592 +0000
+@@ -29,7 +29,8 @@
+ 
+ #if SIGNCODE
+     #pragma warning disable 1699
+-    [assembly: AssemblyKeyName("ikvm-key")]
++    [assembly: AssemblyDelaySign(false)]
++    [assembly: AssemblyKeyFile("../../debian/mono.snk")]
+ #endif
+ 
+ class PublicKey

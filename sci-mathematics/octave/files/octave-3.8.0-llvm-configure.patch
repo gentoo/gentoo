@@ -1,0 +1,12 @@
+--- octave-3.8.0-orig/configure.ac	2013-12-28 08:58:28.000000000 +1100
++++ octave-3.8.0/configure.ac	2014-02-15 20:51:21.431570121 +1100
+@@ -805,7 +805,8 @@
+     dnl Use -isystem so we don't get warnings from llvm headers
+     LLVM_CPPFLAGS="$LLVM_INCLUDE_FLAG `$LLVM_CONFIG --includedir`"
+     LLVM_CXXFLAGS=
+-    LLVM_LDFLAGS="-L`$LLVM_CONFIG --libdir`"
++    dnl If llvm-config --ldflags has -L ending with /llvm then specify this directory with -R
++    LLVM_LDFLAGS="`$LLVM_CONFIG --ldflags | sed -e 's/-L\(@<:@^ \t@:>@*\/llvm\)/-L\1 -R\1/' -e 's/-@<:@^LR@:>@.*@<:@ \t@:>@//g'`"
+ 
+ 
+     LDFLAGS="$LDFLAGS $LLVM_LDFLAGS"

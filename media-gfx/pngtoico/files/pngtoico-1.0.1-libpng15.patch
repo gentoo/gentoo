@@ -1,0 +1,11 @@
+--- pngtoico.c
++++ pngtoico.c
+@@ -188,7 +188,7 @@
+     goto perrexit;
+   }
+ 
+-  if ( setjmp(png_ptr->jmpbuf) ) {
++  if ( setjmp(png_jmpbuf(png_ptr)) ) {
+     fprintf(stderr, "%s: PNG format error\n", file);
+     goto errexit;
+   }

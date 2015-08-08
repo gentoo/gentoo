@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="modemmanager">Enable support for mobile broadband devices</flag>
+		<flag name="openconnect">Build support for the OpenConnect VPN client</flag>
+		<flag name="teamd">Enable Teamd control support</flag>
+	</use>
+</pkgmetadata>

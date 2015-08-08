@@ -1,0 +1,101 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+RUNAS_USER="vdr"
+
+# Set Verbose Level 0 -> 5 
+VERBOSE="1"
+
+#export LANG=de_DE.utf8
+
+depend() {
+	need vdr
+}
+
+# some fixed Path
+CONFIGFILE="/etc/xxv/xxvd.cfg"
+PIDFILE="/var/run/xxv/xxvd.pid"
+XXV_BIN="/usr/bin/xxvd"
+LOGFILE="/var/log/xxv/xxvd.log"
+
+xxv_logger() {
+	printf "\tXXV running as user: ${RUNAS_USER}\n" >> "${LOGFILE}"
+	printf "\tVerbose Level: ${VERBOSE}\n" >> "${LOGFILE}"
+	printf "\tYou can change this in xxv init script\n\n" >> "${LOGFILE}"
+}
+
+check_vdradmin() {
+
+	# Check at first, is VDR-Admin running
+	# Stopping, while running on same ports
+	if [ -n "`netstat -anp | grep vdradmin | grep 8080`" ] ; then
+		echo
+		eerror "VDR-Admin will Stop at first now"
+		eerror "vdradmin and xxv can not run on the same port"
+		echo
+		/etc/init.d/vdradmin stop
+	fi
+}
+
+xxv_kill_pid() {
+
+	# After unclear stop, xxvd.pid will not removed, fixed with next line
+	if [ ! -x /etc/init.d/root ]; then
+		if [ -e ${PIDFILE} -a ! -L /var/lib/init.d/started/xxv ]; then
+			rm ${PIDFILE}
+			killall xxvd 2> /dev/null
+		fi
+	fi
+
+}
+
+xxv_kill_initfile() {
+
+	# After unclear stop, init file in /var/lib/init.d/started/ still not removed
+	
+	if [ ! -x /etc/init.d/root ]; then
+		if [ -L /var/lib/init.d/started/xxv -a ! -e ${PIDFILE} ]; then
+			rm /var/lib/init.d/started/xxv
+			/etc/init.d/xxv zap
+			killall xxvd 2> /dev/null
+		fi
+	fi
+
+}
+	
+start() {
+	check_vdradmin
+	xxv_logger	
+
+	ebegin "Start xxv"
+	echo
+	einfo "xxv running as user: ${RUNAS_USER}"
+	einfo "Verbose Level: ${VERBOSE}"
+	
+	start-stop-daemon  --nicelevel 15 --pidfile ${PIDFILE} --start -u ${RUNAS_USER} --exec ${XXV_BIN} -- \
+	-configfile=${CONFIGFILE} -verbose=${VERBOSE} -pidfile=${PIDFILE}
+	eend $?
+}
+
+
+stop() {
+
+	ebegin "Stopping xxvd"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+
+		xxv_kill_pid
+		xxv_kill_initfile
+
+	eend $?
+}
+
+#restart() {
+
+#	xxv_kill_pid
+#	xxv_kill_initfile
+
+#	svc_stop
+#	svc_start
+#}

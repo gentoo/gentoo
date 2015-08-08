@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-eselect category contains modules for the eselect
+		configuration and administration tool.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-eselect enthält Module für das Konfigurations-
+		und Verwaltungswerkzeug eselect.
+	</longdescription>
+</catmetadata>

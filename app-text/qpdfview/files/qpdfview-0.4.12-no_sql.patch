@@ -1,0 +1,14 @@
+--- sources/database.cpp.org	2014-10-22 12:28:30.305031435 +0200
++++ sources/database.cpp	2014-10-22 12:29:14.735028437 +0200
+@@ -366,11 +366,6 @@
+ 
+         transaction.commit();
+     }
+-
+-#else
+-
+-    Q_UNUSED(bookmarks);
+-
+ #endif // WITH_SQL
+ }
+ 

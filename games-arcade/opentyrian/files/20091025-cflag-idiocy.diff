@@ -1,0 +1,12 @@
+--- opentyrian/Makefile.orig	2009-10-25 00:52:54.401229746 +0100
++++ opentyrian/Makefile	2009-10-25 00:54:37.642954736 +0100
+@@ -49,9 +49,6 @@
+ 
+ # FLAGS ####################################################
+ 
+-NDEBUG_FLAGS := -g0 -O2 -DNDEBUG
+-DEBUG_FLAGS := -g3 -O0 -Werror
+-
+ CFLAGS += --std=c99 -pedantic -Wall -Wextra -Wno-sign-compare -Wno-missing-field-initializers
+ CFLAGS += -I./src -I$(INCLUDEDIR)
+ LDFLAGS += -L$(LIBDIR) -lm

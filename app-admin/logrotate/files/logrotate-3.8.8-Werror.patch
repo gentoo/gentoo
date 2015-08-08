@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,7 @@
+ MAN = logrotate.8
+ MAN5 = logrotate.conf.5
+ 
+-AM_CFLAGS = -Wall -Werror
++AM_CFLAGS = -Wall
+ sbin_PROGRAMS = logrotate
+ logrotate_SOURCES = logrotate.c log.c config.c basenames.c
+ 

@@ -1,0 +1,131 @@
+From ffb08fa288cea4c9ac8f18fd83e063b2e86ac51b Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sun, 27 Jan 2013 23:39:56 -0500
+Subject: [PATCH] Implement "pre-sleep" action dispatch
+
+Based on work by Christian Becke <christianbecke@gmail.com> in
+https://bugzilla.gnome.org/show_bug.cgi?id=387832
+---
+ callouts/nm-dispatcher-utils.c |  3 ++-
+ src/nm-dispatcher.c            |  8 ++++++--
+ src/nm-dispatcher.h            |  3 ++-
+ src/nm-manager.c               | 28 +++++++++++++++++++++-------
+ 4 files changed, 31 insertions(+), 11 deletions(-)
+
+diff --git a/callouts/nm-dispatcher-utils.c b/callouts/nm-dispatcher-utils.c
+index 8824295..66cbc4b 100644
+--- a/callouts/nm-dispatcher-utils.c
++++ b/callouts/nm-dispatcher-utils.c
+@@ -409,7 +409,8 @@ nm_dispatcher_utils_construct_envp (const char *action,
+ 	g_return_val_if_fail (*out_iface == NULL, NULL);
+ 
+ 	/* Hostname changes don't require a device nor contain a connection */
+-	if (!strcmp (action, "hostname"))
++	if (!strcmp (action, "hostname") ||
++	    !strcmp (action, "pre-sleep"))
+ 		return g_new0 (char *, 1);
+ 
+ 	/* Canonicalize the VPN interface name; "" is used when passing it through
+diff --git a/src/nm-dispatcher.c b/src/nm-dispatcher.c
+index 12cd0f0..42d7e12 100644
+--- a/src/nm-dispatcher.c
++++ b/src/nm-dispatcher.c
+@@ -237,6 +237,8 @@ action_to_string (DispatcherAction action)
+ 		return "dhcp4-change";
+ 	case DISPATCHER_ACTION_DHCP6_CHANGE:
+ 		return "dhcp6-change";
++	case DISPATCHER_ACTION_PRE_SLEEP:
++		return "pre-sleep";
+ 	default:
+ 		break;
+ 	}
+@@ -269,7 +271,8 @@ _dispatcher_call (DispatcherAction action,
+ 	DispatchInfo *info;
+ 
+ 	/* All actions except 'hostname' require a device */
+-	if (action != DISPATCHER_ACTION_HOSTNAME)
++	if (action != DISPATCHER_ACTION_HOSTNAME &&
++	    action != DISPATCHER_ACTION_PRE_SLEEP)
+ 		g_return_val_if_fail (NM_IS_DEVICE (device), NULL);
+ 	/* VPN actions require at least an IPv4 config (for now) */
+ 	if (action == DISPATCHER_ACTION_VPN_UP)
+@@ -308,7 +311,8 @@ _dispatcher_call (DispatcherAction action,
+ 	vpn_ip6_props = value_hash_create ();
+ 
+ 	/* hostname actions only send the hostname */
+-	if (action != DISPATCHER_ACTION_HOSTNAME) {
++	if (action != DISPATCHER_ACTION_HOSTNAME &&
++	    action != DISPATCHER_ACTION_PRE_SLEEP) {
+ 		fill_device_props (device,
+ 		                   device_props,
+ 		                   device_ip4_props,
+diff --git a/src/nm-dispatcher.h b/src/nm-dispatcher.h
+index 05a6c87..8e95834 100644
+--- a/src/nm-dispatcher.h
++++ b/src/nm-dispatcher.h
+@@ -39,7 +39,8 @@ typedef enum {
+ 	DISPATCHER_ACTION_VPN_PRE_DOWN,
+ 	DISPATCHER_ACTION_VPN_DOWN,
+ 	DISPATCHER_ACTION_DHCP4_CHANGE,
+-	DISPATCHER_ACTION_DHCP6_CHANGE
++	DISPATCHER_ACTION_DHCP6_CHANGE,
++	DISPATCHER_ACTION_PRE_SLEEP = 999,
+ } DispatcherAction;
+ 
+ typedef void (*DispatcherFunc) (gconstpointer call, gpointer user_data);
+diff --git a/src/nm-manager.c b/src/nm-manager.c
+index 811f49d..f52956d 100644
+--- a/src/nm-manager.c
++++ b/src/nm-manager.c
+@@ -73,6 +73,7 @@
+ #include "nm-sleep-monitor.h"
+ #include "nm-connectivity.h"
+ #include "nm-policy.h"
++#include "nm-dispatcher.h"
+ 
+ 
+ #define NM_AUTOIP_DBUS_SERVICE "org.freedesktop.nm_avahi_autoipd"
+@@ -3350,6 +3351,23 @@ impl_manager_deactivate_connection (NMManager *self,
+ }
+ 
+ static void
++pre_sleep_dispatcher_done (gpointer call, gpointer user_data)
++{
++	NMManager *self = (NMManager *) user_data;
++	NMManagerPrivate *priv = NM_MANAGER_GET_PRIVATE (self);
++	GSList *iter;
++
++	/* Just deactivate and down all devices from the device list,
++	 * to keep things fast the device list will get resynced when
++	 * the manager wakes up.
++	 */
++	for (iter = priv->devices; iter; iter = iter->next)
++		nm_device_set_managed (NM_DEVICE (iter->data), FALSE, NM_DEVICE_STATE_REASON_SLEEPING);
++
++	nm_manager_update_state (self);
++}
++
++static void
+ do_sleep_wake (NMManager *self)
+ {
+ 	NMManagerPrivate *priv = NM_MANAGER_GET_PRIVATE (self);
+@@ -3359,13 +3377,9 @@ do_sleep_wake (NMManager *self)
+ 	if (manager_sleeping (self)) {
+ 		nm_log_info (LOGD_SUSPEND, "sleeping or disabling...");
+ 
+-		/* Just deactivate and down all devices from the device list,
+-		 * to keep things fast the device list will get resynced when
+-		 * the manager wakes up.
+-		 */
+-		for (iter = priv->devices; iter; iter = iter->next)
+-			nm_device_set_managed (NM_DEVICE (iter->data), FALSE, NM_DEVICE_STATE_REASON_SLEEPING);
+-
++		nm_dispatcher_call (DISPATCHER_ACTION_PRE_SLEEP, NULL, NULL,
++		                    pre_sleep_dispatcher_done, self);
++		return;
+ 	} else {
+ 		nm_log_info (LOGD_SUSPEND, "waking up and re-enabling...");
+ 
+-- 
+1.8.3.2
+

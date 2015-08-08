@@ -1,0 +1,13 @@
+Missing -ldl for dlsym, dlerror, and dlopen, see http://bugs.gentoo.org/379251
+
+--- ams-2.1.1/src/Makefile.am
++++ ams-2.1.1/src/Makefile.am
+@@ -252,6 +252,8 @@
+ 	textedit.h \
+ 	notelist.h
+ 
++ams_LDADD = -ldl
++
+ translationsdir = $(pkgdatadir)/translations
+ translations = \
+ 	translations/ams_de.ts \

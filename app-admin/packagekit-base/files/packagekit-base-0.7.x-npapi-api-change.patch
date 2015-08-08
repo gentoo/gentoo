@@ -1,0 +1,17 @@
+--- a/contrib/browser-plugin/pk-main.c
++++ b/contrib/browser-plugin/pk-main.c
+@@ -503,11 +503,11 @@ NP_Shutdown ()
+ /**
+  * NP_GetMIMEDescription:
+  **/
+-const char *
++char *
+ NP_GetMIMEDescription (void)
+ {
+ 	g_debug ("NP_GetMIMEDescription");
+-	return (const gchar*) "application/x-packagekit-plugin:bsc:PackageKit Plugin";
++	return (gchar*) "application/x-packagekit-plugin:bsc:PackageKit Plugin";
+ }
+ 
+ /**
+

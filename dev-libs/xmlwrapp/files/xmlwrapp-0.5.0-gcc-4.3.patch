@@ -1,0 +1,10 @@
+--- src/libxml/node.cxx.orig	2008-04-05 02:55:35.804091000 +0200
++++ src/libxml/node.cxx	2008-04-05 03:09:21.170667965 +0200
+@@ -51,6 +51,7 @@
+ #include <algorithm>
+ #include <stdexcept>
+ #include <functional>
++#include <cstring>
+ 
+ // libxml includes
+ #include <libxml/tree.h>

@@ -1,0 +1,20 @@
+ Makefile.in |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index e492136..a44371a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -165,10 +165,10 @@ CFLAGS = $(OPT) $(WARNING_FLAGS) $(DEFINES) @CFLAGS@ @SHARED_CFLAGS@
+ default: $(TARGETS)
+ 
+ normal:
+-	@$(MAKE) -f $(srcdir)/Makefile.rules TARGETS="$(TARGET_LIBS)" SUFFIX="" CFLAGS="$(CFLAGS)" CC="$(CC)" OBJDIR=normal_obj LINK_SHARED='@LINK_SHARED@' SHARED_EXT='@SHARED_EXT@' SHARED_ALT='@SHARED_ALT@' LIBS='$(LIBS)' srcdir='$(srcdir)' LIBDIR='$(LIBDIR)' LN_S='@LN_S@' DEMOS="$(DEMOS)" PROGRAMS='$(PROGRAMS)' RANLIB='$(RANLIB)' LDFLAGS=$(LDFLAGS) CPPFLAGS=$(CPPFLAGS)
++	@$(MAKE) -f $(srcdir)/Makefile.rules TARGETS="$(TARGET_LIBS)" SUFFIX="" CFLAGS="$(CFLAGS)" CC="$(CC)" OBJDIR=normal_obj LINK_SHARED='@LINK_SHARED@' SHARED_EXT='@SHARED_EXT@' SHARED_ALT='@SHARED_ALT@' LIBS='$(LIBS)' srcdir='$(srcdir)' LIBDIR='$(LIBDIR)' LN_S='@LN_S@' DEMOS="$(DEMOS)" PROGRAMS='$(PROGRAMS)' RANLIB='$(RANLIB)' LDFLAGS='$(LDFLAGS)' CPPFLAGS='$(CPPFLAGS)'
+ 
+ reentrant:
+-	@$(MAKE) -f $(srcdir)/Makefile.rules TARGETS="$(TARGET_LIBS)" SUFFIX="_r" CFLAGS="$(CFLAGS) $(DEFINES_R)" CC="$(CC)" OBJDIR=reentrant_obj LINK_SHARED='@LINK_SHARED@' SHARED_EXT='@SHARED_EXT@' SHARED_ALT='@SHARED_ALT@' LIBS='$(LIBS)' srcdir='$(srcdir)' LIBDIR='$(LIBDIR)' LN_S='@LN_S@' DEMOS="$(DEMOS)" PROGRAMS='$(PROGRAMS_R)' RANLIB='$(RANLIB)' LDFLAGS=$(LDFLAGS) CPPFLAGS=$(CPPFLAGS)
++	@$(MAKE) -f $(srcdir)/Makefile.rules TARGETS="$(TARGET_LIBS)" SUFFIX="_r" CFLAGS="$(CFLAGS) $(DEFINES_R)" CC="$(CC)" OBJDIR=reentrant_obj LINK_SHARED='@LINK_SHARED@' SHARED_EXT='@SHARED_EXT@' SHARED_ALT='@SHARED_ALT@' LIBS='$(LIBS)' srcdir='$(srcdir)' LIBDIR='$(LIBDIR)' LN_S='@LN_S@' DEMOS="$(DEMOS)" PROGRAMS='$(PROGRAMS_R)' RANLIB='$(RANLIB)' LDFLAGS='$(LDFLAGS)' CPPFLAGS='$(CPPFLAGS)'
+ 
+ demos: normal
+ 

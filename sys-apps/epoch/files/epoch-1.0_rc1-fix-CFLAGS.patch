@@ -1,0 +1,11 @@
+--- a/buildepoch.sh
++++ b/buildepoch.sh
+@@ -53,7 +53,7 @@
+ }
+ 
+ MEMBUS_SIZE_SET="0"
+-NEED_EMPTY_CFLAGS="0"
++NEED_EMPTY_CFLAGS="1"
+ outdir="../built"
+ 
+ if [ "$CC" == "" ]; then

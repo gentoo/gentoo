@@ -1,0 +1,12 @@
+--- unix/configure.orig	2004-09-28 06:45:33.000000000 +0000
++++ unix/configure	2004-09-28 06:54:53.000000000 +0000
+@@ -29,6 +29,9 @@
+ 
+ echo Check if we can use asm code
+ OBJA=""
++piclib="$(echo | $CPP -dM $CFLAGS - | grep -i __pic__)"
++echo "Checking if compiler wants to create pic code"
++[ "$piclib" == "" ] && \
+ if eval "$CPP match.S > _match.s 2>/dev/null"; then
+   if test ! -s _match.s || grep error < _match.s > /dev/null; then
+     :

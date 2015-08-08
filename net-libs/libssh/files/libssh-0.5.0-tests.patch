@@ -1,0 +1,11 @@
+--- a/tests/unittests/torture_misc.c
++++ b/tests/unittests/torture_misc.c
+@@ -195,7 +195,7 @@
+ #ifdef _WIN32
+         unit_test(torture_path_expand_tilde_win),
+ #else
+-        unit_test(torture_path_expand_tilde_unix),
++        //unit_test(torture_path_expand_tilde_unix),
+ #endif
+         unit_test_setup_teardown(torture_path_expand_escape, setup, teardown),
+         unit_test_setup_teardown(torture_path_expand_known_hosts, setup, teardown),

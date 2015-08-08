@@ -1,0 +1,296 @@
+diff -ruN procinfo-18/procinfo.c procinfo-19/procinfo.c
+--- procinfo-18/procinfo.c	2001-02-25 11:29:16.000000000 +0000
++++ procinfo-19/procinfo.c	2004-06-17 10:28:33.767925439 +0100
+@@ -5,9 +5,10 @@
+   Displays general info from /proc.
+ 
+   Date:        1995-07-08 05:30:34
+-  Last Change: 2001-02-25 00:27:21
++  Last Change: 2004-06-17 11:28:13
+ 
+   Copyright (c) 1994-2001 svm@kozmix.cistron.nl
++  Copyright (c) 2004 procinfo@meisel.cc (upgrades for 2.6 kernel)
+ 
+   This software is released under the GNU Public Licence. See the file
+   `COPYING' for details. Since you're probably running Linux I'm sure
+@@ -26,6 +27,7 @@
+ #include <string.h>
+ #include <termios.h>
+ #include <termcap.h>
++#include <ctype.h>
+ #include <time.h>
+ #include <unistd.h>
+ #include <sys/param.h>	/* for HZ -- should be in <time.h> ? */
+@@ -72,9 +74,9 @@
+ int nr_irqs = 0;
+ int nr_cpus = 0;
+ 
+-FILE *loadavgfp, *meminfofp, *modulesfp, *statfp, *uptimefp,
++FILE *loadavgfp, *meminfofp, *modulesfp, *statfp, *uptimefp, *diskstatsfp,
+     *devicesfp, *filesystemsfp, *interruptsfp, *dmafp, *cmdlinefp,
+-    *versionfp, *cpuinfofp;
++    *versionfp, *cpuinfofp, *vmstatfp;
+ 
+ char line[1024], cmdline[1024], booted[40], *version = NULL, *message = NULL;
+ 
+@@ -89,9 +91,13 @@
+ {
+     unsigned long elapsed;
+     char loadavg[32];
+-    int i;
++    int i, havetwosix = 0, lastdisk;
+     static int have_m_c = -1;	/* Do we have cache info? */
+     static int have_m_l = -1;	/* Do we have new-style-one-datum-per-line? */
++    char devicename[10];
++    char *last;
++    unsigned int q,w,a,s,d,f,g,h,j,k,l,y,x;
++    int disk_counter = 0, ret;
+ 
+ 
+ /**** /proc/uptime ****/
+@@ -237,6 +243,50 @@
+ 
+     printf ("Bootup: %s    Load average: %s\n\n", booted, loadavg);
+ 
++/**** /proc/vmstat ... 2.6.x kernel only ****/
++	if (vmstatfp) {
++		havetwosix = 1;
++		fseek (vmstatfp, 0L, SEEK_SET);
++		while (fgets (line, sizeof (line), vmstatfp)) {
++			char *type = strtok (line, " ");
++			if (ISSTR ("pgpgin")) {
++				new.pgin = VAL;
++			} else if (ISSTR ("pgpgout")) {
++				new.pgout = VAL;
++			} else if (ISSTR ("pgactivate")) {
++				new.pgac = VAL;
++			} else if (ISSTR ("pgdeactivate")) {
++				new.pgdeac = VAL;
++			} else if (ISSTR ("pgfault")) {
++				new.pgfault = VAL;
++			} else if (ISSTR ("pswpin")) {
++				new.swin = VAL;
++			} else if (ISSTR ("pswpout")) {
++				new.swout = VAL;
++			}
++		}
++	}
++
++/**** /proc/diskstats ... 2.6.x kernel only ****/
++   if (diskstatsfp) {
++	havetwosix = 1;
++	fseek (diskstatsfp, 0L, SEEK_SET);
++	while (fgets (line, sizeof (line), diskstatsfp)) {
++	   char *type = strtok (line, "\n");
++		   ret = sscanf (type, "%d%d%s%d%d%d%d%d%d%d%d%d%d%d", &q, &w, devicename, &a, &s, &d, &f, &g, &h, &j, &k, &l, &y, &x);
++		   if (ret != 14) /* Everything with less than 14 elements is not a disk device */
++			   continue;
++         last = devicename+strlen(devicename)-1;
++         if (isalpha(*last)) {/* Is the last char is a number ignore it .. like fd0 */
++            if (++disk_counter > 7) /* 7 disks is all we have room for */
++               continue;
++            else {
++               new.disk_r[disk_counter-1] = a;
++               new.disk_w[disk_counter-1] = g;
++            }
++         }
++      }
++   }
+ 
+ /**** /proc/stat ****/
+ 
+@@ -249,6 +299,9 @@
+ 	    new.cpu_nice = VAL;
+ 	    new.cpu_sys = VAL;
+ 	    new.cpu_idle = VAL;
++	    new.cpu_iowait = VAL;
++	    new.cpu_hirq = VAL;
++	    new.cpu_sirq = VAL;
+ 	    /*
+ 	     * according to bug #1959, sometimes the cpu_idle
+ 	     * seems to go backwards(!) on SMP boxes.  This may
+@@ -262,34 +315,54 @@
+ 	    new.disk[1] = VAL;
+ 	    new.disk[2] = VAL;
+ 	    new.disk[3] = VAL;
++	    new.disk[4] = VAL;
++	    new.disk[5] = VAL;
++	    new.disk[6] = VAL;
+ 	} else if (ISSTR ("disk_rio") && io_or_blk == 0) {
+ 	    new.disk_r[0] = VAL;
+ 	    new.disk_r[1] = VAL;
+ 	    new.disk_r[2] = VAL;
+ 	    new.disk_r[3] = VAL;
++	    new.disk_r[4] = VAL;
++	    new.disk_r[5] = VAL;
++	    new.disk_r[6] = VAL;
++	} else if (ISSTR ("disk_wio") && io_or_blk == 0) {
++	    new.disk_w[0] = VAL;
++	} else if (ISSTR ("disk_wio") && io_or_blk == 0) {
++	    new.disk_w[0] = VAL;
++	} else if (ISSTR ("disk_wio") && io_or_blk == 0) {
++	    new.disk_w[0] = VAL;
+ 	} else if (ISSTR ("disk_wio") && io_or_blk == 0) {
+ 	    new.disk_w[0] = VAL;
+ 	    new.disk_w[1] = VAL;
+ 	    new.disk_w[2] = VAL;
+ 	    new.disk_w[3] = VAL;
++	    new.disk_w[4] = VAL;
++	    new.disk_w[5] = VAL;
++	    new.disk_w[6] = VAL;
+ 	} else if (ISSTR ("disk_rblk") && io_or_blk == 1) {
+ 	    new.disk_r[0] = VAL;
+ 	    new.disk_r[1] = VAL;
+ 	    new.disk_r[2] = VAL;
+ 	    new.disk_r[3] = VAL;
++	    new.disk_r[4] = VAL;
++	    new.disk_r[5] = VAL;
++	    new.disk_r[6] = VAL;
+ 	} else if (ISSTR ("disk_wblk") && io_or_blk == 1) {
+ 	    new.disk_w[0] = VAL;
+ 	    new.disk_w[1] = VAL;
+ 	    new.disk_w[2] = VAL;
+ 	    new.disk_w[3] = VAL;
++	    new.disk_w[4] = VAL;
++	    new.disk_w[5] = VAL;
++	    new.disk_w[6] = VAL;
+ 	} else if (ISSTR ("disk_io:")) {
+-	    int disk_counter = 0, ret;
+ 	    unsigned int q, w, e, r, t, y, u; /* I'm NOT in the mood today. */
+ 	    char *barf;
+ 
+ 	    while ((barf = strtok (NULL, " "))) {
+ 
+-		if (++disk_counter > 4) /* 4 is all we have room for */
++		if (++disk_counter > 7) /* 7 is all we have room for */
+ 		    continue;
+ 
+ 		ret = sscanf (barf, "(%d,%d):(%d,%d,%d,%d,%d)",
+@@ -374,7 +447,10 @@
+ 
+     printf ("system: %s %s",
+ 	    hms (bDIFF (cpu_sys)), perc (bDIFF (cpu_sys), elapsed, nr_cpus));
+-    printf ("  swap in :%9lu", bDIFF (swin));
++    if (havetwosix)
++        printf ("  page act:%9lu", bDIFF (pgac));
++    else
++        printf ("  swap in :%9lu", bDIFF (swin));
+     if (new.disk_r[2])
+ 	printf ("  disk 3: %8lur%8luw\n", bDIFF (disk_r[2]),
+ 		bDIFF (disk_w[2]));
+@@ -383,14 +459,53 @@
+     else
+ 	putchar ('\n');
+ 
++    if (havetwosix) {
++        printf ("IOwait: %s %s",
++            hms (bDIFF (cpu_iowait)), perc (bDIFF (cpu_iowait), elapsed, nr_cpus));
++        printf ("  page dea:%9lu", bDIFF (pgdeac));
++        if (new.disk_r[3])
++	    printf ("  disk 4: %8lur%8luw\n", bDIFF (disk_r[3]),
++		bDIFF (disk_w[3]));
++        else if (new.disk[3])
++	    printf ("  disk 4: %8lu\n", bDIFF (disk[3]));
++        else
++	    putchar ('\n');
++
++        printf ("hw irq: %s %s",
++            hms (bDIFF (cpu_hirq)), perc (bDIFF (cpu_hirq), elapsed, nr_cpus));
++        printf ("  page flt:%9lu", bDIFF (pgfault));
++        if (new.disk_r[4])
++	    printf ("  disk 5: %8lur%8luw\n", bDIFF (disk_r[4]),
++		bDIFF (disk_w[4]));
++        else if (new.disk[4])
++	    printf ("  disk 5: %8lu\n", bDIFF (disk[4]));
++        else
++	    putchar ('\n');
++
++        printf ("sw irq: %s %s",
++            hms (bDIFF (cpu_sirq)), perc (bDIFF (cpu_sirq), elapsed, nr_cpus));
++        printf ("  swap in :%9lu", bDIFF (swin));
++        if (new.disk_r[5])
++	    printf ("  disk 6: %8lur%8luw\n", bDIFF (disk_r[5]),
++		bDIFF (disk_w[5]));
++        else if (new.disk[5])
++	    printf ("  disk 6: %8lu\n", bDIFF (disk[5]));
++        else
++	    putchar ('\n');
++    }
++
+     printf ("idle  : %s %s",
+ 	    hms (bDIFF (cpu_idle)), perc (bDIFF (cpu_idle), elapsed, nr_cpus));
+     printf ("  swap out:%9lu", bDIFF (swout));
+-    if (new.disk_r[3])
+-	printf ("  disk 4: %8lur%8luw\n", bDIFF (disk_r[3]),
+-		bDIFF (disk_w[3]));
+-    else if (new.disk[3])
+-	printf ("  disk 4: %8lu\n", bDIFF (disk[3]));
++    if (havetwosix)
++        lastdisk = 3;
++    else
++        lastdisk = 6;
++    if (new.disk_r[lastdisk])
++	printf ("  disk %d: %8lur%8luw\n", lastdisk+1, bDIFF (disk_r[lastdisk]),
++		bDIFF (disk_w[lastdisk]));
++    else if (new.disk[lastdisk])
++	printf ("  disk %d: %8lu\n", lastdisk+1, bDIFF (disk[lastdisk]));
+     else
+ 	putchar ('\n');
+ 
+@@ -786,6 +901,8 @@
+     meminfofp = myfopen (PROC_DIR "meminfo");
+     statfp = myfopen (PROC_DIR "stat");
+     /* These may be missing, so check for NULL later. */
++    diskstatsfp = fopen (PROC_DIR "diskstats", "r");
++    vmstatfp = fopen (PROC_DIR "vmstat", "r");
+     modulesfp = fopen (PROC_DIR "modules", "r");
+     devicesfp = fopen (PROC_DIR "devices", "r");
+     filesystemsfp = fopen (PROC_DIR "filesystems", "r");
+@@ -990,6 +1107,9 @@
+ 			new.disk_r[1] = new.disk_w[1] =
+ 			new.disk_r[2] = new.disk_w[2] =
+ 			new.disk_r[3] = new.disk_w[3] = 0;
++			new.disk_r[4] = new.disk_w[4] = 0;
++			new.disk_r[5] = new.disk_w[5] = 0;
++			new.disk_r[6] = new.disk_w[6] = 0;
+ 		    redrawn = 1;
+ 		    message = io_or_blk ? "showing I/O in blocks" :
+ 			"showing I/O per requests";
+diff -ruN procinfo-18/procinfo.h procinfo-19/procinfo.h
+--- procinfo-18/procinfo.h	2001-02-24 23:30:45.000000000 +0000
++++ procinfo-19/procinfo.h	2004-06-17 09:24:16.511726412 +0100
+@@ -81,11 +81,11 @@
+     unsigned long uptime;
+     long m_to, m_us, m_fr, m_sh, m_bu, m_ca;
+     long s_to, s_us, s_fr;
+-    unsigned long cpu_user, cpu_nice, cpu_sys, cpu_idle;
+-    unsigned long disk[5];
+-    unsigned long disk_r[5];
+-    unsigned long disk_w[5];
+-    unsigned long pgin, pgout, swin, swout;
++    unsigned long cpu_user, cpu_nice, cpu_sys, cpu_idle, cpu_iowait, cpu_hirq, cpu_sirq;
++    unsigned long disk[8];
++    unsigned long disk_r[8];
++    unsigned long disk_w[8];
++    unsigned long pgin, pgout, pgac, pgdeac, pgfault, swin, swout;
+     unsigned long *intr;	/* Phew. That's better. */
+     unsigned long old_intr;
+     unsigned long ctxt;
+diff -ruN procinfo-18/routines.c procinfo-19/routines.c
+--- procinfo-18/routines.c	2001-02-24 23:30:45.000000000 +0000
++++ procinfo-19/routines.c	2004-06-16 16:36:51.000000000 +0100
+@@ -388,9 +388,13 @@
+ hms (unsigned long t)
+ {
+     unsigned int d, h, m, s;
++    unsigned long q;
+     static char buf[22];
+ 
+-    t = t * 100 / HZ;
++    q = 100 / HZ; /* We need this because the libc does something funny here */
++                  /* if we try to use: t = t * 100 / HZ; here! */
++                  /* procinfo@meisel.cc 11. Feb. 2004 */
++    t = t * q;
+     d = (int) (t / 8640000);
+     t = t - (long) (d * 8640000);
+     h = (int) (t / 360000);

@@ -1,0 +1,46 @@
+diff -rdu lua-5.1.3.orig/src/luaconf.h lua-5.1.3/src/luaconf.h
+--- lua-5.1.3.orig/src/luaconf.h	2008-02-12 17:00:03.000000000 +0000
++++ lua-5.1.3/src/luaconf.h	2008-02-12 17:07:55.000000000 +0000
+@@ -340,14 +340,14 @@
+ ** CHANGE it to undefined as soon as your programs use only '...' to
+ ** access vararg parameters (instead of the old 'arg' table).
+ */
+-#define LUA_COMPAT_VARARG
++#undef LUA_COMPAT_VARARG
+ 
+ /*
+ @@ LUA_COMPAT_MOD controls compatibility with old math.mod function.
+ ** CHANGE it to undefined as soon as your programs use 'math.fmod' or
+ ** the new '%' operator instead of 'math.mod'.
+ */
+-#define LUA_COMPAT_MOD
++#undef LUA_COMPAT_MOD
+ 
+ /*
+ @@ LUA_COMPAT_LSTR controls compatibility with old long string nesting
+@@ -355,14 +355,14 @@
+ ** CHANGE it to 2 if you want the old behaviour, or undefine it to turn
+ ** off the advisory error when nesting [[...]].
+ */
+-#define LUA_COMPAT_LSTR		1
++#undef LUA_COMPAT_LSTR
+ 
+ /*
+ @@ LUA_COMPAT_GFIND controls compatibility with old 'string.gfind' name.
+ ** CHANGE it to undefined as soon as you rename 'string.gfind' to
+ ** 'string.gmatch'.
+ */
+-#define LUA_COMPAT_GFIND
++#undef LUA_COMPAT_GFIND
+ 
+ /*
+ @@ LUA_COMPAT_OPENLIB controls compatibility with old 'luaL_openlib'
+@@ -370,7 +370,7 @@
+ ** CHANGE it to undefined as soon as you replace to 'luaL_register'
+ ** your uses of 'luaL_openlib'
+ */
+-#define LUA_COMPAT_OPENLIB
++#undef LUA_COMPAT_OPENLIB
+ 
+ 
+ 

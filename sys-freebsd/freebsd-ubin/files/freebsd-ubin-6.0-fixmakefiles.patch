@@ -1,0 +1,35 @@
+Index: usr.bin/calendar/Makefile
+===================================================================
+--- usr.bin/calendar/Makefile.orig
++++ usr.bin/calendar/Makefile
+@@ -10,6 +10,7 @@ FR_LINKS=       fr_FR.ISO8859-15
+ TEXTMODE?=	444
+ 
+ beforeinstall:
++	${INSTALL} -d ${DESTDIR}${SHAREDIR}/calendar
+ 	${INSTALL} -o ${BINOWN} -g ${BINGRP} -m ${TEXTMODE} \
+ 	    ${.CURDIR}/calendars/calendar.* ${DESTDIR}${SHAREDIR}/calendar
+ .for lang in ${INTER}
+Index: usr.bin/ee/Makefile
+===================================================================
+--- usr.bin/ee/Makefile.orig
++++ usr.bin/ee/Makefile
+@@ -12,12 +12,12 @@ LDADD=	-lncurses
+ NLS=	en_US.US-ASCII fr_FR.ISO8859-1 de_DE.ISO8859-1 pl_PL.ISO8859-2 \
+ 	uk_UA.KOI8-U ru_RU.KOI8-R
+ 
+-NLSLINKS_en_US.US-ASCII= en_US.ISO8859-1 en_US.ISO8859-15
+-NLSLINKS_fr_FR.ISO8859-1= fr_BE.ISO8859-1 fr_BE.ISO8859-15 \
+-        fr_CA.ISO8859-1 fr_CA.ISO8859-15 fr_CH.ISO8859-1 fr_CH.ISO8859-15 \
+-	fr_FR.ISO8859-15
+-NLSLINKS_de_DE.ISO8859-1= de_AT.ISO8859-1 de_AT.ISO8859-15 de_CH.ISO8859-1 \
+-        de_CH.ISO8859-15 de_DE.ISO8859-15
++#NLSLINKS_en_US.US-ASCII= en_US.ISO8859-1 en_US.ISO8859-15
++#NLSLINKS_fr_FR.ISO8859-1= fr_BE.ISO8859-1 fr_BE.ISO8859-15 \
++#        fr_CA.ISO8859-1 fr_CA.ISO8859-15 fr_CH.ISO8859-1 fr_CH.ISO8859-15 \
++#	fr_FR.ISO8859-15
++#NLSLINKS_de_DE.ISO8859-1= de_AT.ISO8859-1 de_AT.ISO8859-15 de_CH.ISO8859-1 \
++#        de_CH.ISO8859-15 de_DE.ISO8859-15
+ 
+ NLSSRCFILES=ee.msg
+ .for lang in ${NLS}

@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/336260
+
+--- libacovea/acovea.cpp
++++ libacovea/acovea.cpp
+@@ -44,6 +44,7 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <sys/stat.h>
+ 
+ #include <vector>
+ #include <cstring>

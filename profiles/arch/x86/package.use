@@ -1,0 +1,11 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
+# Enable luajit (for OSC) by default
+media-video/mpv lua luajit
+
+# Doug Goldstein <cardoe@gentoo.org> (29 Oct 2012)
+# Enable the native arch as the default qemu target
+app-emulation/qemu qemu_softmmu_targets_i386

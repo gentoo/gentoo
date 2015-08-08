@@ -1,0 +1,3 @@
+#!/bin/sh
+cd GENTOO_DIR
+exec ./bf1942_lnxded "$@"

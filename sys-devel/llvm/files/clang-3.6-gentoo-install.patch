@@ -1,0 +1,48 @@
+---
+ tools/clang/lib/Driver/Tools.cpp        | 2 +-
+ tools/clang/tools/scan-build/scan-build | 4 ++--
+ tools/clang/tools/scan-view/scan-view   | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tools/clang/lib/Driver/Tools.cpp b/tools/clang/lib/Driver/Tools.cpp
+index 187ed38..55bcd99 100644
+--- a/tools/clang/lib/Driver/Tools.cpp
++++ b/tools/clang/lib/Driver/Tools.cpp
+diff --git a/tools/clang/tools/scan-build/scan-build b/tools/clang/tools/scan-build/scan-build
+index 0f119f6..58f78d9 100755
+--- a/tools/clang/tools/scan-build/scan-build
++++ b/tools/clang/tools/scan-build/scan-build
+@@ -419,7 +419,7 @@
+
+   my $Dir = shift;
+
+-  my $JS = Cwd::realpath("$RealBin/sorttable.js");
++  my $JS = Cwd::realpath("@EPREFIX@/usr/share/llvm/sorttable.js");
+
+   DieDiag("Cannot find 'sorttable.js'.\n")
+     if (! -r $JS);
+@@ -429,7 +429,7 @@
+   DieDiag("Could not copy 'sorttable.js' to '$Dir'.\n")
+     if (! -r "$Dir/sorttable.js");
+
+-  my $CSS = Cwd::realpath("$RealBin/scanview.css");
++  my $CSS = Cwd::realpath("@EPREFIX@/usr/share/llvm/scanview.css");
+
+   DieDiag("Cannot find 'scanview.css'.\n")
+     if (! -r $CSS);
+diff --git a/tools/clang/tools/scan-view/scan-view b/tools/clang/tools/scan-view/scan-view
+index fb27da6..1f8ddb8 100755
+--- a/tools/clang/tools/scan-view/scan-view
++++ b/tools/clang/tools/scan-view/scan-view
+@@ -54,7 +54,7 @@ def start_browser(port, options):
+     webbrowser.open(url)
+ 
+ def run(port, options, root):
+-    import ScanView
++    from clang import ScanView
+     try:
+         print 'Starting scan-view at: http://%s:%d'%(options.host,
+                                                      port)
+-- 
+1.8.4.4
+

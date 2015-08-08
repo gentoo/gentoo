@@ -1,0 +1,12 @@
+diff --git a/uip/Makefile.in b/uip/Makefile.in
+index b3c6717..5ed34f8 100644
+--- a/uip/Makefile.in
++++ b/uip/Makefile.in
+@@ -267,7 +267,6 @@ install-lcmds:
+ 	rm -f $(DESTDIR)$(bindir)/folders
+ 	rm -f $(DESTDIR)$(bindir)/prev
+ 	rm -f $(DESTDIR)$(bindir)/next
+-	rm -f $(DESTDIR)$(libdir)/install-mh
+ 	$(LN) $(DESTDIR)$(bindir)/flist  $(DESTDIR)$(bindir)/flists
+ 	$(LN) $(DESTDIR)$(bindir)/folder $(DESTDIR)$(bindir)/folders
+ 	$(LN) $(DESTDIR)$(bindir)/show   $(DESTDIR)$(bindir)/prev

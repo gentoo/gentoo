@@ -1,0 +1,60 @@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 70781f3..b2dcc25 100755
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -760,7 +760,7 @@ chainsawobjs = chainsaw.o
+ pdbcur : $(pdbcurobjs)
+ 	@$(SETFLAGS) ; rm -f pdbcur; eval $(CXX) $${mmdb_app_FLAGS-"$(CXXFLAGS)"} -o pdbcur $(pdbcurobjs) $(LDCXXFLAGS)
+ ncont : $(ncontobjs)
+-	@$(SETFLAGS) ; rm -f ncont; eval $(CXX) $${mmdb_app_FLAGS-"$(CXXFLAGS)"} -o ncont $(ncontobjs) $(LDCXXFLAGS)
++	@$(SETFLAGS) ; rm -f ncont; eval $(CXX) $${mmdb_app_FLAGS-"$(CXXFLAGS)"} -o ncont $(ncontobjs) $(LDCXXFLAGS) -lmmdb
+ coord_format : $(coord_formatobjs)
+ 	@$(SETFLAGS) xxx=1 ; \
+ 	rm -f coord_format; \
+diff --git a/src/rapper/LOOP/Makefile.am b/src/rapper/LOOP/Makefile.am
+index 85f212e..2608c6d 100755
+--- a/src/rapper/LOOP/Makefile.am
++++ b/src/rapper/LOOP/Makefile.am
+@@ -15,12 +15,12 @@ params.cpp typed_value.cpp misc.cpp residue.cpp atom.cpp psa.cpp edm_sidechains.
+ hash_table.cpp surface.cpp parse.cpp band.cpp edensity.cpp read_map.cpp iterator.cpp \
+ residue_range.cpp pop_search_frags.cpp saxs.cpp lib_choral.cpp pdf.cpp WeightedDistribMean.cpp
+ 
+-rapper_LDADD = ../gc7.0/libgc.la ../libxml2/libxml2.la
++rapper_LDADD = @GC_LIBS@ @LIBXML_LIBS@
+ 
+ pkgdatadir = $(datadir)/rapper
+ dist_pkgdata_DATA = params.xml
+ 
+-INCLUDES = -I. -I../gc7.0/include -I../libxml2/include
++INCLUDES = -I. @LIBXML_CFLAGS@ @GC_CFLAGS@
+ #SUBDIRS = \
+ #@PYTHON_USE_TRUE@ python
+ 
+diff --git a/src/rapper/Makefile.am b/src/rapper/Makefile.am
+index e78b10d..486b931 100755
+--- a/src/rapper/Makefile.am
++++ b/src/rapper/Makefile.am
+@@ -1,3 +1,3 @@
+-SUBDIRS = libxml2 gc7.0 LOOP data
++SUBDIRS = LOOP data
+ 
+ EXTRA_DIST =
+diff --git a/src/rapper/configure.ac b/src/rapper/configure.ac
+index 5e4ef69..268a579 100755
+--- a/src/rapper/configure.ac
++++ b/src/rapper/configure.ac
+@@ -48,6 +48,13 @@ AM_CONDITIONAL(AMDEP, test "x$enable_dependency_tracking" != xno)
+ 
+ AC_SUBST(rapper_LDFLAGS)
+ 
+-AC_CONFIG_SUBDIRS([gc7.0 libxml2])
++PKG_CHECK_MODULES([LIBXML],[libxml-2.0])
++AC_SUBST([LIBXML_CFLAGS])
++AC_SUBST([LIBXML_LIBS])
++
++PKG_CHECK_MODULES([GC],[bdw-gc])
++AC_SUBST([GC_CFLAGS])
++AC_SUBST([GC_LIBS])
++
+ #AC_OUTPUT(Makefile LOOP/Makefile LOOP/python/Makefile data/Makefile)
+ AC_OUTPUT(Makefile LOOP/Makefile data/Makefile)

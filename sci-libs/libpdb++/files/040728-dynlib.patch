@@ -1,0 +1,12 @@
+diff --git a/libpdb++/Makefile b/libpdb++/Makefile
+index bbf0778..286a638 100644
+--- a/libpdb++/Makefile
++++ b/libpdb++/Makefile
+@@ -32,6 +32,7 @@ install:	$(LIBARCH)
+ 
+ $(LIBARCH):     $(OBJS)
+ 		@echo "Loading $(LIBARCH) ... "
++		$(CXX) $(LDFLAGS) -shared -Wl,--soname,libpdb++.so.0 -o libpdb++.so.0.1 $(OBJS)
+ 		@ar cru $(LIBARCH) $(OBJS)
+ 		@$(RANLIB) $(LIBARCH)
+ 		@echo "done"

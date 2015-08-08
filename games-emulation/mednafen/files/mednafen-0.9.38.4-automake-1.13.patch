@@ -1,0 +1,11 @@
+--- mednafen-0.9.28-wip/mednafen/configure.ac
++++ mednafen-0.9.28-wip/mednafen/configure.ac
+@@ -13,7 +13,7 @@
+ AC_CANONICAL_TARGET
+ AM_INIT_AUTOMAKE([mednafen], $MEDNAFEN_VERSION)
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
+-AM_CONFIG_HEADER([include/config.h:include/config.h.in])
++AC_CONFIG_HEADERS([include/config.h:include/config.h.in])
+ 
+ AC_PROG_CC
+ AC_PROG_CPP

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		Lightweight Java cryptography APIs that work with everything
+		from the J2ME to the JDK 1.6
+	</longdescription>
+</pkgmetadata>

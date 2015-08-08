@@ -1,0 +1,38 @@
+Index: src/vrml97/JS_VRMLClasses.h
+===================================================================
+--- src/vrml97/JS_VRMLClasses.h	(revision 13505)
++++ src/vrml97/JS_VRMLClasses.h	(revision 13506)
+@@ -28,6 +28,7 @@
+ #error this is a private header file
+ #endif /* ! COIN_INTERNAL */
+ 
++#if defined(HAVE_VRML97) && defined(COIN_HAVE_JAVASCRIPT)
+ /* ********************************************************************** */
+ 
+ class SoJavaScriptEngine;
+@@ -37,5 +38,6 @@
+ void JS_addVRMLclasses(SoJavaScriptEngine * engine);
+ 
+ /* ********************************************************************** */
++#endif // HAVE_VRML97 && COIN_HAVE_JAVASCRIPT
+ 
+ #endif /* !COIN_JS_VRMLCLASSES_H */
+Index: src/vrml97/JS_VRMLClasses.cpp
+===================================================================
+--- src/vrml97/JS_VRMLClasses.cpp	(revision 13505)
++++ src/vrml97/JS_VRMLClasses.cpp	(revision 13506)
+@@ -2,7 +2,7 @@
+ #include "config.h"
+ #endif // HAVE_CONFIG_H
+ 
+-#ifdef HAVE_VRML97
++#if defined(HAVE_VRML97) && defined(COIN_HAVE_JAVASCRIPT)
+ 
+ /**************************************************************************\
+  *
+@@ -2097,4 +2097,4 @@
+     MFVec3dHandler::jsval2field);
+ }
+ 
+-#endif // HAVE_VRML97
++#endif // HAVE_VRML97 && COIN_HAVE_JAVASCRIPT

@@ -1,0 +1,40 @@
+From 409098e97292aa1698ddff7f34dd8099db41a550 Mon Sep 17 00:00:00 2001
+From: ksergey <inndie@gmail.com>
+Date: Tue, 28 Jan 2014 00:35:36 -0500
+Subject: [PATCH] fixed pkgconfig file path
+
+---
+ src/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e36b736..27b7c7d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -30,7 +30,7 @@ ADD_DEFINITIONS(-DYAJL_BUILD)
+ # set up some paths
+ SET (libDir ${CMAKE_CURRENT_BINARY_DIR}/../${YAJL_DIST_NAME}/lib)
+ SET (incDir ${CMAKE_CURRENT_BINARY_DIR}/../${YAJL_DIST_NAME}/include/yajl)
+-SET (shareDir ${CMAKE_CURRENT_BINARY_DIR}/../${YAJL_DIST_NAME}/share/pkgconfig)
++SET (pkgConfigDir ${CMAKE_CURRENT_BINARY_DIR}/../${YAJL_DIST_NAME}/lib/pkgconfig)
+ 
+ # set the output path for libraries
+ SET(LIBRARY_OUTPUT_PATH ${libDir})
+@@ -61,7 +61,7 @@ FILE(MAKE_DIRECTORY ${incDir})
+ # generate build-time source
+ SET(dollar $)
+ CONFIGURE_FILE(api/yajl_version.h.cmake ${incDir}/yajl_version.h)
+-CONFIGURE_FILE(yajl.pc.cmake ${shareDir}/yajl.pc)
++CONFIGURE_FILE(yajl.pc.cmake ${pkgConfigDir}/yajl.pc)
+ 
+ # copy public headers to output directory
+ FOREACH (header ${PUB_HDRS})
+@@ -82,5 +82,5 @@ IF(NOT WIN32)
+   INSTALL(TARGETS yajl_s ARCHIVE DESTINATION lib${LIB_SUFFIX})
+   INSTALL(FILES ${PUB_HDRS} DESTINATION include/yajl)
+   INSTALL(FILES ${incDir}/yajl_version.h DESTINATION include/yajl)
+-  INSTALL(FILES ${shareDir}/yajl.pc DESTINATION share/pkgconfig)
++  INSTALL(FILES ${pkgConfigDir}/yajl.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ ENDIF()
+-- 
+1.8.5.5

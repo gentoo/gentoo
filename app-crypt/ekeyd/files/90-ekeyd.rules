@@ -1,0 +1,16 @@
+# Entropy key udev rules
+#
+# Centos/RHEL 6 rules for udev version 147
+# 
+# These rules create devices under /dev/entropykey/<serialnumber>
+#
+# Copyright 2011-2014 Simtec Electronics
+#
+# For licence terms refer to the COPYING file distributed with the source.
+
+ACTION=="add", SUBSYSTEM=="tty", ENV{ID_VENDOR_ID}=="20df", ENV{ID_MODEL_ID}=="0001", SYMLINK+="entropykey/$env{ID_SERIAL_SHORT}"
+
+ACTION=="add", SUBSYSTEM=="tty", ENV{ID_VENDOR_ID}=="20df", ENV{ID_MODEL_ID}=="0001", RUN+="/usr/sbin/ekeydctl add /dev/entropykey/$env{ID_SERIAL_SHORT}"
+
+ACTION=="remove", SUBSYSTEM=="tty", ENV{ID_VENDOR_ID}=="20df", ENV{ID_MODEL_ID}=="0001", RUN+="/usr/sbin/ekeydctl remove $env{ID_SERIAL_SHORT}"
+

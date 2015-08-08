@@ -1,0 +1,269 @@
+diff -Naurp ncpfs-2.2.6.orig/sutil/ncplogin.c ncpfs-2.2.6/sutil/ncplogin.c
+--- ncpfs-2.2.6.orig/sutil/ncplogin.c	2014-08-13 02:52:56.859067273 -0400
++++ ncpfs-2.2.6/sutil/ncplogin.c	2014-08-13 02:53:42.699067001 -0400
+@@ -111,7 +111,6 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <sys/mount.h>
+-#include <mntent.h>
+ #include <ncp/kernel/ipx.h>
+ #include <sys/ioctl.h>
+ #ifdef CONFIG_NATIVE_UNIX
+@@ -935,12 +934,6 @@ ncpipx:;
+ 	}
+ 	NWCCCloseConn(conn);
+ 	NWDSFreeContext(ctx);
+-	/* ncpmap, ncplogin must write in /etc/mtab */
+-	{
+-		block_sigs();
+-		add_mnt_entry(mount_name, mount_point, info.flags);
+-		unblock_sigs();
+-	}
+ 	free(mount_name);
+ 	if (info.echo_mnt_pnt) {
+ 		printf(_("mounted on:%s\n"),mount_point);
+diff -Naurp ncpfs-2.2.6.orig/sutil/ncpm_common.c ncpfs-2.2.6/sutil/ncpm_common.c
+--- ncpfs-2.2.6.orig/sutil/ncpm_common.c	2014-08-13 02:52:56.959067273 -0400
++++ ncpfs-2.2.6/sutil/ncpm_common.c	2014-08-13 02:55:38.349066313 -0400
+@@ -104,7 +104,6 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <sys/mount.h>
+-#include <mntent.h>
+ #include <ncp/kernel/ipx.h>
+ #include <sys/ioctl.h>
+ #if MOUNT3
+@@ -1423,68 +1422,6 @@ static const struct smntflags {
+        {MS_NODIRATIME,	"nodiratime"},
+        {0,		NULL}};
+ 
+-void add_mnt_entry(char* mount_name, char* mpnt, unsigned long flags) {
+-	const struct smntflags* sf;
+-	char mnt_opts[80];
+-	char* p;
+-	struct mntent ment;
+-	int fd;
+-	FILE* mtab;
+-
+-	if (check_name(mount_name) == -1 || check_name(mpnt) == -1)
+-		errexit(107, _("Illegal character in mount entry\n"));
+-
+-	ment.mnt_fsname = mount_name;
+-	ment.mnt_dir = mpnt;
+-	ment.mnt_type = (char*)"ncpfs";
+-	ment.mnt_opts = mnt_opts;
+-	ment.mnt_freq = 0;
+-	ment.mnt_passno = 0;
+-
+-	p = mnt_opts;
+-	*p++ = 'r';
+-	*p++ = (flags & MS_RDONLY)?'o':'w';
+-	for (sf = mntflags; sf->flag; sf++) {
+-		if (flags & sf->flag) {
+-			*p++ = ',';
+-			strcpy(p, sf->name);
+-			p += strlen(p);
+-		}
+-	}
+-	*p = 0;
+-
+-	if (ncpm_suser()) {
+-		errexit(91, _("Cannot switch to superuser: %s\n"), strerror(errno));
+-	}
+-	if ((fd = open(MOUNTED "~", O_RDWR | O_CREAT | O_EXCL, 0600)) == -1)
+-	{
+-		errexit(58, _("Can't get %s~ lock file\n"), MOUNTED);
+-	}
+-	close(fd);
+-
+-	if ((mtab = setmntent(MOUNTED, "a+")) == NULL)
+-	{
+-		errexit(59, _("Can't open %s\n"), MOUNTED);
+-	}
+-	if (addmntent(mtab, &ment) == 1)
+-	{
+-		errexit(60, _("Can't write mount entry\n"));
+-	}
+-	if (fchmod(fileno(mtab), 0644) == -1)
+-	{
+-		errexit(61, _("Can't set perms on %s\n"), MOUNTED);
+-	}
+-	endmntent(mtab);
+-
+-	if (unlink(MOUNTED "~") == -1)
+-	{
+-		errexit(62, _("Can't remove %s~\n"), MOUNTED);
+-	}
+-	if (ncpm_normal()) {
+-		errexit(90, _("Cannot relinquish superuser rights: %s\n"), strerror(EPERM));
+-	}
+-}
+-
+ static int __proc_option(const struct optinfo* opts, struct ncp_mount_info* info, const char* opt, const char* param) {
+ 	const struct optinfo* optr;
+ 
+diff -Naurp ncpfs-2.2.6.orig/sutil/ncpm_common.h ncpfs-2.2.6/sutil/ncpm_common.h
+--- ncpfs-2.2.6.orig/sutil/ncpm_common.h	2014-08-13 02:52:56.749067274 -0400
++++ ncpfs-2.2.6/sutil/ncpm_common.h	2014-08-13 02:53:42.699067001 -0400
+@@ -60,7 +60,6 @@ void verify_argv(int argc, char* argv[])
+ int ncp_mount_specific(struct ncp_conn* conn, int pathNS, const unsigned char* NWpath, int pathlen);
+ int mount_ok(struct stat *st);
+ void mycom_err(int, const char*, ...);
+-void add_mnt_entry(char* mount_name, char* mpoint, unsigned long flags);
+ 
+ struct ncp_mount_info {
+ 	struct ncp_mount_data_independent mdata;
+diff -Naurp ncpfs-2.2.6.orig/sutil/ncpmount.c ncpfs-2.2.6/sutil/ncpmount.c
+--- ncpfs-2.2.6.orig/sutil/ncpmount.c	2014-08-13 02:52:56.749067274 -0400
++++ ncpfs-2.2.6/sutil/ncpmount.c	2014-08-13 02:53:42.699067001 -0400
+@@ -114,7 +114,6 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <sys/mount.h>
+-#include <mntent.h>
+ #include <ncp/kernel/ipx.h>
+ #include <ncp/nwclient.h>
+ #include <sys/ioctl.h>
+@@ -719,11 +718,6 @@ ncpipx:;
+ 	}
+ 	ncp_close(conn);
+ 
+-	if (!opt_n) {
+-		block_sigs();
+-		add_mnt_entry(mount_name, mount_point, info.flags);
+-		unblock_sigs();
+-	}
+ 	return 0;
+ }
+ 
+diff -Naurp ncpfs-2.2.6.orig/sutil/ncpumount.c ncpfs-2.2.6/sutil/ncpumount.c
+--- ncpfs-2.2.6.orig/sutil/ncpumount.c	2014-08-13 02:52:56.749067274 -0400
++++ ncpfs-2.2.6/sutil/ncpumount.c	2014-08-13 02:55:10.369066480 -0400
+@@ -179,108 +179,6 @@ static void enableAlarm(void) {
+ 	sigprocmask(SIG_UNBLOCK, &sa.sa_mask, NULL);
+ }
+ 
+-static int __clearMtab (const char* mount_points[], unsigned int numEntries) {
+-// main logic from ncpumount.c
+-	struct mntent *mnt;
+-	FILE *mtab;
+-	FILE *new_mtab;
+-
+-#define MOUNTED_TMP MOUNTED".tmp"
+-
+-	if ((mtab = setmntent(MOUNTED, "r")) == NULL){
+-		eprintf(_("Can't open %s: %s\n"), MOUNTED,
+-			strerror(errno));
+-		return 1;
+-	}
+-
+-	if ((new_mtab = setmntent(MOUNTED_TMP, "w")) == NULL){
+-		eprintf(_("Can't open %s: %s\n"), MOUNTED_TMP,
+-			strerror(errno));
+-		endmntent(mtab);
+-		return 1;
+-	}
+-	while ((mnt = getmntent(mtab)) != NULL)	{
+-		unsigned int i=0;
+-		int found=0;
+-
+-		while (i<numEntries && !found) {
+-			found=!strcmp(mnt->mnt_dir, mount_points[i]);
+-			i++;
+-		}
+-		if (!found) {
+-			addmntent(new_mtab, mnt);
+-		}
+-	}
+-
+-	endmntent(mtab);
+-
+-	if (fchmod(fileno(new_mtab), S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH) < 0){
+-		eprintf(_("Error changing mode of %s: %s\n"),
+-			MOUNTED_TMP, strerror(errno));
+-		return 1;
+-	}
+-	endmntent(new_mtab);
+-
+-	if (rename(MOUNTED_TMP, MOUNTED) < 0){
+-		eprintf(_("Cannot rename %s to %s: %s\n"),
+-			MOUNTED, MOUNTED_TMP, strerror(errno));
+-		return 1;
+-	}
+-	return 0;
+-}
+-
+-static int clearMtab (const char* mount_points[], unsigned int numEntries) {
+-	int fd;
+-	int err;
+-	int retries = 10;
+-
+-	if (!numEntries)
+-		return 0; /* don't waste time ! */
+-
+-	block_sigs();
+-
+-	while ((fd = open(MOUNTED "~", O_RDWR | O_CREAT | O_EXCL, 0600)) == -1) {
+-		struct timespec tm;
+-
+-		if (errno != EEXIST || retries == 0) {
+-			unblock_sigs();
+-			eprintf(_("Can't get %s~ lock file: %s\n"), MOUNTED, strerror(errno));
+-			return 1;
+-		}
+-		fd = open(MOUNTED "~", O_RDWR);
+-		if (fd != -1) {
+-			alarm(10);
+-			err = lockf(fd, F_LOCK, 0);
+-			alarm(0);
+-			close(fd);
+-			if (err) {
+-				unblock_sigs();
+-				eprintf(_("Can't lock lock file %s~: %s\n"), MOUNTED, _("Lock timed out"));
+-				return 1;
+-			}
+-			tm.tv_sec = 0;
+-			tm.tv_nsec = 20000000;
+-			nanosleep(&tm, NULL);
+-		}
+-		retries--;
+-	}
+-	alarm(1);
+-	lockf(fd, F_LOCK, 0);
+-	alarm(0);
+-	close(fd);
+-
+-	err = __clearMtab(mount_points, numEntries);
+-
+-	if ((unlink(MOUNTED "~") == -1) && (err == 0)){
+-		unblock_sigs();
+-		eprintf(_("Can't remove %s~"), MOUNTED);
+-		return 1;
+-	}
+-	unblock_sigs();
+-	return err;
+-}
+-
+-
+ int ncp_mnt_umount(const char *abs_mnt, const char *rel_mnt)
+ {
+ 	if (umount(rel_mnt) != 0) {
+@@ -617,10 +515,6 @@ static int old_ncpumount(int argc, char
+ 			ret = 1;
+ 			continue;
+ 		}
+-		if (clearMtab(&mount_point, 1)) {
+-			ret = 1;
+-			continue;
+-		}
+ 	}
+ 	return ret;
+ }
+@@ -739,7 +633,6 @@ main(int argc, char *argv[])
+ 			if (serverName || allConns) {
+ 				processBindServers(conns,curEntries,serverName,umountTable,&mountEntries);
+ 			}
+-			clearMtab(umountTable, mountEntries);
+ 		} else if (treeName) {
+ 			eprintf(_("No NCP connections to tree %s.\n"),treeName);
+ 		} else if (serverName) {

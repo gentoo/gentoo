@@ -1,0 +1,74 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# DO NOT MODIFY THIS FILE DIRECTLY! CREATE A COPY AND MODIFY THAT INSTEAD!
+
+# The FCGI process can be made available through a filesystem socket or
+# through a inet socket. One and only one of the two types must be choosen.
+# Default is the inet socket.
+
+# The filename specified by
+# FCGI_SOCKET will be suffixed with a number for each child process, for
+# example, fcgi.socket-1. 
+# Leave empty to use an IP socket (default). See below. Enabling this, 
+# disables the IP socket.
+# 
+FCGI_SOCKET=
+
+# When using FCGI_PORT, connections will only be accepted from the following
+# address. The default is 127.0.0.1. Use 0.0.0.0 to bind to all addresses.
+#
+FCGI_ADDRESS=127.0.0.1
+
+# The port specified by FCGI_PORT is the port used
+# by the first child process. If this is set to 1234 then subsequent child
+# processes will use 1235, 1236, etc.
+#
+FCGI_PORT=1234
+
+# The path to your FastCGI application. These sometimes carry the .fcgi
+# extension but not always. For PHP, you should usually point this to
+# /usr/bin/php-cgi.
+#
+#FCGI_PROGRAM=/usr/bin/php-cgi
+FCGI_PROGRAM=
+
+# The number of child processes to spawn. The default is 1.
+#
+FCGI_CHILDREN=1
+
+# If you want to run your application inside a chroot then specify the
+# directory here. Leave this blank otherwise.
+#
+FCGI_CHROOT=
+
+# If you want to run your application from a specific directiory specify
+# it here. Leave this blank otherwise.
+#
+FCGI_CHDIR=
+
+# The user and group to run your application as. If you do not specify these,
+# the application will be run as root:root.
+#
+FCGI_USER=
+FCGI_GROUP=
+
+# Additional options you might want to pass to spawn-fcgi
+#
+#FCGI_EXTRA_OPTIONS=
+
+# If your application requires additional environment variables, you may
+# specify them here. See PHP example below.
+#
+ALLOWED_ENV="PATH"
+
+# PHP ONLY :: These two options are specific to PHP. The first is the number
+# of child processes to spawn. The second is the number of requests to be
+# served by a single PHP process before it is restarted.
+#
+#PHP_FCGI_CHILDREN=5
+#PHP_FCGI_MAX_REQUESTS=500
+#
+# For this to work you would set
+# ALLOWED_ENV="PATH PHP_FCGI_CHILDREN PHP_FCGI_MAX_REQUESTS"

@@ -1,0 +1,39 @@
+From 1c50c992bafd96773dc3950d382a89806df8cc9c Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Wed, 9 Jan 2013 11:09:06 -0800
+Subject: [PATCH] Revert "Avoid ELOOP on auto-mounted snapshots"
+
+This reverts commit 7afcf5b1da83549bfba70a61fae7a00eaa63c2b0 which
+accidentally introduced a regression with the .zfs snapshot directory.
+While the updated code still does correctly mount the requested
+snapshot.  It updates the vfsmount such that it references the
+original dataset vfsmount.  The result is that the snapshot itself
+isn't visible.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #816
+---
+ module/zfs/zpl_ctldir.c |    7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/module/zfs/zpl_ctldir.c b/module/zfs/zpl_ctldir.c
+index a2d8fa9..7dfaf6e 100644
+--- a/module/zfs/zpl_ctldir.c
++++ b/module/zfs/zpl_ctldir.c
+@@ -357,13 +357,6 @@
+ 		return ERR_PTR(error);
+ 
+ 	/*
+-	 * Ensure path->dentry points to the dentry for the root of the
+-	 * newly-mounted snapshot, otherwise this function may be called
+-	 * repeatedly which can lead to an incorrect ELOOP error return.
+-	 */
+-	follow_up(path);
+-
+-	/*
+ 	 * Rather than returning the new vfsmount for the snapshot we must
+ 	 * return NULL to indicate a mount collision.  This is done because
+ 	 * the user space mount calls do_add_mount() which adds the vfsmount
+-- 
+1.7.10
+

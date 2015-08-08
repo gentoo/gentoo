@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>openstack</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+    This is a client for the OpenStack APIs.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">python-openstackclient</remote-id>
+    <remote-id type="github">openstack/python-openstackclient</remote-id>
+  </upstream>
+</pkgmetadata>

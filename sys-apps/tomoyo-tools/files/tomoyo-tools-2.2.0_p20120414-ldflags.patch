@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index d84a02b..e1cb36b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,10 +39,10 @@ CFLAGS=-Wall -O2 -pipe -fomit-frame-pointer -march=core2 -mcx16 -msahf -maes -mp
+ 	sleep 10
+ 
+ tomoyotools: tomoyotools.src/*.c tomoyotools.src/*.h /usr/include/curses.h
+-	$(CC) $(CFLAGS) -o tomoyotools tomoyotools.src/*.c -lncurses -DCOLOR_ON
++	$(CC) $(CFLAGS) $(LDFLAGS) -o tomoyotools tomoyotools.src/*.c -lncurses -DCOLOR_ON
+ 
+ .c:
+-	$(CC) $(CFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ clean:
+ 	rm -f $(MAIN_FILES) $(MISC_FILES)

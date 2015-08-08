@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/show_bug.cgi?id=450464
+
+Index: VTK5.10.1/IO/vtkFFMPEGWriter.cxx
+===================================================================
+--- VTK5.10.1.orig/IO/vtkFFMPEGWriter.cxx
++++ VTK5.10.1/IO/vtkFFMPEGWriter.cxx
+@@ -192,13 +192,6 @@ int vtkFFMPEGWriterInternal::Start()
+     c->bit_rate_tolerance = this->Writer->GetBitRateTolerance();
+     }
+ 
+-  //apply the chosen parameters
+-  if (av_set_parameters(this->avFormatContext, NULL) < 0)
+-    {
+-    vtkGenericWarningMacro (<< "Invalid output format parameters." );
+-    return 0;
+-    }
+-
+   //manufacture a codec with the chosen parameters
+   AVCodec *codec = avcodec_find_encoder(c->codec_id);
+   if (!codec) 
+@@ -259,14 +252,17 @@ int vtkFFMPEGWriterInternal::Start()
+ 
+ 
+   //Finally, open the file and start it off.
+-  if (url_fopen(&this->avFormatContext->pb, this->avFormatContext->filename, URL_WRONLY) < 0) 
++  if (avio_open(&this->avFormatContext->pb, this->avFormatContext->filename, AVIO_FLAG_WRITE) < 0) 
+     {
+     vtkGenericWarningMacro (<< "Could not open " << this->Writer->GetFileName() << "." );
+     return 0;
+     }
+   this->openedFile = 1;
+ 
+-  av_write_header(this->avFormatContext);
++  if(avformat_write_header(this->avFormatContext, NULL) < 0) {
++    vtkGenericWarningMacro (<< "Failed to write header." );
++    return 0;
++  }
+   return 1;
+ }
+ 
+@@ -391,7 +387,7 @@ void vtkFFMPEGWriterInternal::End()
+ #ifdef VTK_FFMPEG_OLD_URL_FCLOSE
+       url_fclose(&this->avFormatContext->pb);
+ #else
+-      url_fclose(this->avFormatContext->pb);
++      avio_close(this->avFormatContext->pb);
+ #endif
+       this->openedFile = 0;
+       }

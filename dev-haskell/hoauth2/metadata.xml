@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Haskell OAuth2 authentication.
+		
+		Tested following services
+		
+		* google web oauth: &lt;https://developers.google.com/accounts/docs/OAuth2WebServer&gt;
+		
+		* weibo oauth2: &lt;http://open.weibo.com/wiki/Oauth2&gt;
+		
+		* github oauth: &lt;http://developer.github.com/v3/oauth/&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">freizl/hoauth2</remote-id>
+	</upstream>
+</pkgmetadata>

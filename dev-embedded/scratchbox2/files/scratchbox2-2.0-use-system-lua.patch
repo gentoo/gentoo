@@ -1,0 +1,77 @@
+diff --git a/Makefile b/Makefile
+index c5b26cc..da48ea0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -60,7 +60,7 @@ subdirs = luaif preload utils
+ -include config.mak
+ 
+ CFLAGS += -I$(OBJDIR)/include -I$(SRCDIR)/include
+-CFLAGS += -I$(SRCDIR)/luaif/lua-5.1.4/src
++# CFLAGS += -I$(SRCDIR)/luaif/lua-5.1.4/src
+ CFLAGS += -D_GNU_SOURCE=1 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1
+ CFLAGS += -DSCRATCHBOX_ROOT="$(prefix)"
+ CFLAGS += $(MACH_CFLAG)
+@@ -103,10 +103,7 @@ regular: .configure .version
+ 	@$(MAKE) -f $(SRCDIR)/Makefile --include-dir=$(SRCDIR) SRCDIR=$(SRCDIR) do-all
+ 
+ multilib:
+-	@mkdir -p obj-32
+-	@mkdir -p obj-64
+-	@$(MAKE) MACH_CFLAG=-m32 -C obj-32 --include-dir=.. -f ../Makefile SRCDIR=.. regular
+-	@$(MAKE) MACH_CFLAG=-m64 -C obj-64 --include-dir=.. -f ../Makefile SRCDIR=.. regular
++	@$(MAKE) MACH_CFLAG=-m64 regular
+ 
+ 
+ gcc_bins = addr2line ar as cc c++ c++filt cpp g++ gcc gcov gdb gdbtui gprof ld nm objcopy objdump ranlib rdi-stub readelf run size strings strip
+@@ -230,8 +227,7 @@ endif
+ multilib_prefix=$(prefix)
+ 
+ install-multilib: multilib
+-	@$(MAKE) -C obj-32 --include-dir=.. -f ../Makefile SRCDIR=.. do-install-multilib bitness=32
+-	@$(MAKE) -C obj-64 --include-dir=.. -f ../Makefile SRCDIR=.. do-install-multilib bitness=64
++	@$(MAKE) do-install-multilib bitness=64
+ 
+ do-install-multilib: install-noarch
+ 	$(P)INSTALL
+diff --git a/luaif/Makefile b/luaif/Makefile
+index 28e8885..5e1af6f 100644
+--- a/luaif/Makefile
++++ b/luaif/Makefile
+@@ -5,7 +5,7 @@ objs := $(D)/luaif.o $(D)/sb_log.o $(D)/paths.o $(D)/argvenvp.o
+ $(D)/sb_log.o: preload/exported.h
+ 
+ luaif/libluaif.a: $(objs)
+-luaif/libluaif.a: override CFLAGS := $(CFLAGS) -O2 -g -fPIC -Wall -W -I$(SRCDIR)/$(LUASRC) -I$(OBJDIR)/preload -I$(SRCDIR)/preload
++luaif/libluaif.a: override CFLAGS := $(CFLAGS) -O2 -g -fPIC -Wall -W -I$(OBJDIR)/preload -I$(SRCDIR)/preload
+ luaif/libluaif.a: override LDFLAGS := $(LDFLAGS)
+ luaif/libluaif.a: override LIBS := 
+ 
+@@ -24,5 +24,5 @@ luaif/liblua.a: override CFLAGS := -O2 -g -fPIC -Wall -W $(CFLAGS)
+ luaif/liblua.a: override LDFLAGS := $(LDFLAGS)
+ luaif/liblua.a: override LIBS :=
+ 
+-targets := $(targets) $(D)/libluaif.a $(D)/liblua.a
++targets := $(targets) $(D)/libluaif.a
+ 
+diff --git a/preload/Makefile b/preload/Makefile
+index 9f785ba..5094dbc 100644
+--- a/preload/Makefile
++++ b/preload/Makefile
+@@ -8,7 +8,7 @@ LIBSB2_LDFLAGS = -Wl,-soname=$(LIBSB2_SONAME) \
+ # DO NOT add any libraries that depend on libpthread to
+ # LIBSB2_LIBS or LIBS!! see the comments in luaif.c.
+ 
+-LIBSB2_LIBS =
++LIBSB2_LIBS = -llua
+ SHLIBEXT = so
+ else
+ LIBSB2_LIBS =
+@@ -17,7 +17,7 @@ endif
+ 
+ 
+ $(D)/libsb2.$(SHLIBEXT): $(call O,$(objs))
+-$(D)/libsb2.$(SHLIBEXT): luaif/libluaif.a luaif/liblua.a
++$(D)/libsb2.$(SHLIBEXT): luaif/libluaif.a
+ $(D)/libsb2.$(SHLIBEXT): CFLAGS := $(CFLAGS) -fPIC -Wall -W \
+ 		-I$(SRCDIR)/preload -Ipreload/ $(PROTOTYPEWARNINGS)
+ $(D)/libsb2.$(SHLIBEXT): LDFLAGS := $(LDFLAGS) $(LIBSB2_LDFLAGS)

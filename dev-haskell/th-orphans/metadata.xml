@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Orphan instances for TH datatypes.  In particular, instances
+		for Ord and Lift, as well as a few missing Show / Eq.  These
+		instances used to live in haskell-src-meta, and that&#39;s where
+		the version number started.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+Index: camlidl-1.05/runtime/comerror.c
+===================================================================
+--- camlidl-1.05.orig/runtime/comerror.c
++++ camlidl-1.05/runtime/comerror.c
+@@ -22,6 +22,7 @@
+ #include <caml/callback.h>
+ #include <caml/fail.h>
+ #include <caml/alloc.h>
++#include <caml/printexc.h>
+ #include "camlidlruntime.h"
+ #include "comstuff.h"
+ 

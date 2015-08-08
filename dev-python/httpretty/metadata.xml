@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>openstack</herd>
+  <upstream>
+    <remote-id type="pypi">httpretty</remote-id>
+    <remote-id type="github">gabrielfalcao/httpretty</remote-id>
+  </upstream>
+</pkgmetadata>

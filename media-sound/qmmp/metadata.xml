@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sound</herd>
+  <maintainer>
+  	<email>hwoarang@gentoo.org</email>
+	<name>Markos Chandras</name>
+	</maintainer>
+  <use>
+    <flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
+	<flag name="crossfade">Enable crossfade effect when switching tracks</flag>
+	<flag name="cover">Enable album cover support</flag>
+	<flag name="enca">Detects the character encoding automatically</flag>
+	<flag name="game">Enable Game music support</flag>
+	<flag name="lyrics">Fetch track lyrics from the web</flag>
+	<flag name="midi">Enable midi support using wildmidi library</flag>
+	<flag name="mpris">Enable MPRIS support</flag>
+	<flag name="notifier">Enable qmmps' notifier system</flag>
+	<flag name="opus">Enable the opus plugin</flag>
+	<flag name="stereo">Enable stereo effect</flag>
+	<flag name="tray">Build tray icon</flag>
+	<flag name="kde">Use kde4 notifier system</flag>
+	<flag name="projectm">Enable projectm music visualization plugin</flag>
+    <flag name="scrobbler">Enable audioscrobbler/last.fm support</flag>
+  </use>
+</pkgmetadata>

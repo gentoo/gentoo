@@ -1,0 +1,764 @@
+--- examples/Demo/Makefile
++++ examples/Demo/Makefile
+@@ -2,8 +2,9 @@
+ Target = Demo
+ Sources = CDemo.cpp CMainMenu.cpp main.cpp
+ 
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -Wall -O3 -ffast-math
++CXXFLAGS ?= -O3
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS += -Wall -ffast-math
+ 
+ ifeq ($(HOSTTYPE), x86_64)
+ LIBSELECT=64
+@@ -13,7 +14,7 @@
+ 
+ # target specific settings
+ all_linux: SYSTEM=Linux
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/$(SYSTEM) -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ 
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32: LDFLAGS = -L../../lib/$(SYSTEM) -lIrrlicht -lopengl32 -lm
+--- examples/14.Win32Window/Makefile
++++ examples/14.Win32Window/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/12.TerrainRendering/Makefile
++++ examples/12.TerrainRendering/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht 
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/11.PerPixelLighting/Makefile
++++ examples/11.PerPixelLighting/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/08.SpecialFX/Makefile
++++ examples/08.SpecialFX/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/06.2DGraphics/Makefile
++++ examples/06.2DGraphics/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/04.Movement/Makefile
++++ examples/04.Movement/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,14 +18,14 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32: CPPFLAGS += -D__GNUWIN32__ -D_WIN32 -DWIN32 -D_WINDOWS -D_MBCS -D_USRDLL
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/16.Quake3MapShader/Makefile
++++ examples/16.Quake3MapShader/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/15.LoadIrrFile/Makefile
++++ examples/15.LoadIrrFile/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/02.Quake3Map/Makefile
++++ examples/02.Quake3Map/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,7 +18,7 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht
+ static_win32: LDFLAGS += -lgdi32 -lopengl32 -ld3dx9d -lwinmm -lm
+@@ -25,7 +25,7 @@
+ static_win32 all_win32 clean_win32: SYSTEM=Win32-gcc
+ static_win32 all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32 static_win32:
+ 	$(warning Building...)
+--- examples/19.MouseAndJoystick/Makefile
++++ examples/19.MouseAndJoystick/Makefile
+@@ -5,9 +5,10 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
++CPPFLAGS += -I/usr/include/irrlicht
+ #CXXFLAGS = -O3 -ffast-math
+-CXXFLAGS = -g -Wall
++CXXFLAGS ?= -O3
++CXXFLAGS += -Wall
+ 
+ #default target is Linux
+ all: all_linux
+@@ -17,14 +18,14 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32: CPPFLAGS += -D__GNUWIN32__ -D_WIN32 -DWIN32 -D_WINDOWS -D_MBCS -D_USRDLL
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/13.RenderToTexture/Makefile
++++ examples/13.RenderToTexture/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/10.Shaders/Makefile
++++ examples/10.Shaders/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/09.Meshviewer/Makefile
++++ examples/09.Meshviewer/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS +=  -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/21.Quake3Explorer/Makefile
++++ examples/21.Quake3Explorer/Makefile
+@@ -5,9 +5,10 @@
+ Sources = main.cpp sound.cpp q3factory.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
++CPPFLAGS += -I/usr/include/irrlicht
+ #CXXFLAGS = -O3 -ffast-math
++CXXFLAGS ?= -O3
+-CXXFLAGS = -g -Wall
++CXXFLAGS += -Wall
+ 
+ #default target is Linux
+ all: all_linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/03.CustomSceneNode/Makefile
++++ examples/03.CustomSceneNode/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/20.ManagedLights/Makefile
++++ examples/20.ManagedLights/Makefile
+@@ -5,9 +5,10 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
++CPPFLAGS += -I/usr/include/irrlicht
+ #CXXFLAGS = -O3 -ffast-math
++CXXFLAGS ?= -O3
+-CXXFLAGS = -g -Wall
++CXXFLAGS += -Wall
+ 
+ #default target is Linux
+ all: all_linux
+@@ -17,14 +18,14 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32: CPPFLAGS += -D__GNUWIN32__ -D_WIN32 -DWIN32 -D_WINDOWS -D_MBCS -D_USRDLL
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/05.UserInterface/Makefile
++++ examples/05.UserInterface/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/01.HelloWorld/Makefile
++++ examples/01.HelloWorld/Makefile
+@@ -7,15 +7,15 @@
+ # List of source files, separated by spaces
+ Sources := main.cpp
+ # Path to Irrlicht directory, should contain include/ and lib/
+-IrrlichtHome := ../..
++IrrlichtHome := /usr
+ # Path for the executable. Note that Irrlicht.dll should usually also be there for win32 systems
+-BinPath = ../../bin/$(SYSTEM)
++BinPath = ../../bin
+ 
+ # general compiler settings (might need to be set when compiling the lib, too)
+ # preprocessor flags, e.g. defines and include paths
+ USERCPPFLAGS = 
+ # compiler flags such as optimization flags
+-USERCXXFLAGS = -O3 -ffast-math
++USERCXXFLAGS = -ffast-math
+ #USERCXXFLAGS = -g -Wall
+ # linker flags such as additional libraries and link paths
+ USERLDFLAGS =
+@@ -24,16 +24,17 @@
+ #no changes necessary below this line
+ ####
+ 
+-CPPFLAGS = -I$(IrrlichtHome)/include -I/usr/X11R6/include $(USERCPPFLAGS)
+-CXXFLAGS = $(USERCXXFLAGS)
+-LDFLAGS = $(USERLDFLAGS)
++CPPFLAGS += -I/usr/include/irrlicht $(USERCPPFLAGS)
++CXXFLAGS ?= -O3
++CXXFLAGS += $(USERCXXFLAGS)
++LDFLAGS += $(USERLDFLAGS)
+ 
+ #default target is Linux
+ all: all_linux
+ 
+ # target specific settings
+-all_linux all_win32 static_win32: LDFLAGS += -L$(IrrlichtHome)/lib/$(SYSTEM) -lIrrlicht
+-all_linux: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux all_win32 static_win32: LDFLAGS += -lIrrlicht
++all_linux: LDFLAGS += -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32 clean_win32 static_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32 static_win32: SUF=.exe
+--- examples/18.SplitScreen/Makefile
++++ examples/18.SplitScreen/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/07.Collision/Makefile
++++ examples/07.Collision/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,13 +18,13 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)
+--- examples/24.CursorControl/Makefile
++++ examples/24.CursorControl/Makefile
+@@ -7,15 +7,15 @@
+ # List of source files, separated by spaces
+ Sources := main.cpp
+ # Path to Irrlicht directory, should contain include/ and lib/
+-IrrlichtHome := ../..
++IrrlichtHome := /usr
+ # Path for the executable. Note that Irrlicht.dll should usually also be there for win32 systems
+-BinPath = ../../bin/$(SYSTEM)
++BinPath = ../../bin
+ 
+ # general compiler settings (might need to be set when compiling the lib, too)
+ # preprocessor flags, e.g. defines and include paths
+ USERCPPFLAGS = 
+ # compiler flags such as optimization flags
+-USERCXXFLAGS = -O3 -ffast-math
++USERCXXFLAGS = -ffast-math
+ #USERCXXFLAGS = -g -Wall
+ # linker flags such as additional libraries and link paths
+ USERLDFLAGS =
+@@ -24,16 +24,17 @@
+ #no changes necessary below this line
+ ####
+ 
+-CPPFLAGS = -I$(IrrlichtHome)/include -I/usr/X11R6/include $(USERCPPFLAGS)
+-CXXFLAGS = $(USERCXXFLAGS)
+-LDFLAGS = $(USERLDFLAGS)
++CPPFLAGS += -I/usr/include/irrlicht $(USERCPPFLAGS)
++CXXFLAGS ?= -O3
++CXXFLAGS += $(USERCXXFLAGS)
++LDFLAGS += $(USERLDFLAGS)
+ 
+ #default target is Linux
+ all: all_linux
+ 
+ # target specific settings
+-all_linux all_win32 static_win32: LDFLAGS += -L$(IrrlichtHome)/lib/$(SYSTEM) -lIrrlicht
+-all_linux: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux all_win32 static_win32: LDFLAGS += -lIrrlicht
++all_linux: LDFLAGS += -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32 clean_win32 static_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32 static_win32: SUF=.exe
+--- examples/25.XmlHandling/Makefile
++++ examples/25.XmlHandling/Makefile
+@@ -7,15 +7,15 @@
+ # List of source files, separated by spaces
+ Sources := main.cpp
+ # Path to Irrlicht directory, should contain include/ and lib/
+-IrrlichtHome := ../..
++IrrlichtHome := /usr
+ # Path for the executable. Note that Irrlicht.dll should usually also be there for win32 systems
+-BinPath = ../../bin/$(SYSTEM)
++BinPath = ../../bin
+ 
+ # general compiler settings (might need to be set when compiling the lib, too)
+ # preprocessor flags, e.g. defines and include paths
+ USERCPPFLAGS = 
+ # compiler flags such as optimization flags
+-USERCXXFLAGS = -O3 -ffast-math
++USERCXXFLAGS = -ffast-math
+ #USERCXXFLAGS = -g -Wall
+ # linker flags such as additional libraries and link paths
+ USERLDFLAGS =
+@@ -24,16 +24,17 @@
+ #no changes necessary below this line
+ ####
+ 
+-CPPFLAGS = -I$(IrrlichtHome)/include -I/usr/X11R6/include $(USERCPPFLAGS)
+-CXXFLAGS = $(USERCXXFLAGS)
+-LDFLAGS = $(USERLDFLAGS)
++CPPFLAGS += -I/usr/include/irrlicht $(USERCPPFLAGS)
++CXXFLAGS ?= -O3
++CXXFLAGS += $(USERCXXFLAGS)
++LDFLAGS += $(USERLDFLAGS)
+ 
+ #default target is Linux
+ all: all_linux
+ 
+ # target specific settings
+-all_linux all_win32 static_win32: LDFLAGS += -L$(IrrlichtHome)/lib/$(SYSTEM) -lIrrlicht
+-all_linux: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux all_win32 static_win32: LDFLAGS += -lIrrlicht
++all_linux: LDFLAGS += -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32 clean_win32 static_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32 static_win32: SUF=.exe
+--- examples/26.OcclusionQuery/Makefile
++++ examples/26.OcclusionQuery/Makefile
+@@ -5,8 +5,9 @@
+ Sources = main.cpp
+ 
+ # general compiler settings
+-CPPFLAGS = -I../../include -I/usr/X11R6/include
+-CXXFLAGS = -O3 -ffast-math
++CPPFLAGS += -I/usr/include/irrlicht
++CXXFLAGS ?= -O3
++CXXFLAGS += -ffast-math
+ #CXXFLAGS = -g -Wall
+ 
+ #default target is Linux
+@@ -17,14 +18,14 @@
+ endif
+ 
+ # target specific settings
+-all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor
++all_linux: LDFLAGS += -L../../lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lpng -ljpeg
+ all_linux clean_linux: SYSTEM=Linux
+ all_win32: LDFLAGS = -L../../lib/Win32-gcc -lIrrlicht -lopengl32 -lm
+ all_win32: CPPFLAGS += -D__GNUWIN32__ -D_WIN32 -DWIN32 -D_WINDOWS -D_MBCS -D_USRDLL
+ all_win32 clean_win32: SYSTEM=Win32-gcc
+ all_win32 clean_win32: SUF=.exe
+ # name of the binary - only valid for targets which set SYSTEM
+-DESTPATH = ../../bin/$(SYSTEM)/$(Target)$(SUF)
++DESTPATH = ../../bin/$(Target)$(SUF)
+ 
+ all_linux all_win32:
+ 	$(warning Building...)

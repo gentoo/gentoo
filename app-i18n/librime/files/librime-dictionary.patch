@@ -1,0 +1,13 @@
+diff --git a/data/test/dictionary_test.dict.yaml b/data/test/dictionary_test.dict.yaml
+index c0b6d65..7e362b1 100644
+--- a/data/test/dictionary_test.dict.yaml
++++ b/data/test/dictionary_test.dict.yaml
+@@ -5,7 +5,7 @@
+ # http://android.git.kernel.org/?p=platform/packages/inputmethods/PinyinIME.git
+ 
+ ---
+-name: luna_pinyin
++name: dictionary_test
+ version: "0.1"
+ sort: by_weight  # by_weight / original
+ ...

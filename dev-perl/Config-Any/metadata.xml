@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Config-Any</remote-id>
+    <remote-id type="cpan-module">Config::Any</remote-id>
+    <remote-id type="cpan-module">Config::Any::Base</remote-id>
+    <remote-id type="cpan-module">Config::Any::General</remote-id>
+    <remote-id type="cpan-module">Config::Any::INI</remote-id>
+    <remote-id type="cpan-module">Config::Any::JSON</remote-id>
+    <remote-id type="cpan-module">Config::Any::Perl</remote-id>
+    <remote-id type="cpan-module">Config::Any::XML</remote-id>
+    <remote-id type="cpan-module">Config::Any::YAML</remote-id>
+  </upstream>
+</pkgmetadata>

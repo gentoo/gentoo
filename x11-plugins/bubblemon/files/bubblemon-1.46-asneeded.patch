@@ -1,0 +1,30 @@
+--- Makefile
++++ Makefile
+@@ -32,14 +32,12 @@
+ OBJS = bubblemon.o
+ BUBBLEMON = bubblemon
+ 
+-LDFLAGS = -shared -Wl
+-
+ STRIP = strip
+ 
+-CC = gcc
++CC ?= gcc
+ INSTALLMAN = -m 644
+ 
+-
++LIBS = -lX11
+ 
+ # special things for Linux
+ ifeq ($(OS), Linux)
+@@ -91,8 +89,8 @@
+ all: $(BUBBLEMON)
+ 
+ bubblemon: clean_obj
+-	$(CC) $(GTK2_CFLAGS) $(CFLAGS) -o $(BUBBLEMON) \
+-		$(LIBS) $(GTK2_LIBS) $(SRCS)
++	$(CC) $(LDFLAGS) $(GTK2_CFLAGS) $(CFLAGS) -o $(BUBBLEMON) \
++		$(SRCS) $(LIBS) $(GTK2_LIBS)
+ 
+ clean_obj:
+ 	rm -rf *.o

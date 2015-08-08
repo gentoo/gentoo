@@ -1,0 +1,32 @@
+--- sys/fs/ntfs/ntfs_vnops.c.orig	2006-10-17 17:31:36 -0300
++++ sys/fs/ntfs/ntfs_vnops.c	2006-10-17 17:30:24 -0300
+@@ -507,8 +507,12 @@
+ 
+ 	/* Simulate . in every dir except ROOT */
+ 	if( ip->i_number != NTFS_ROOTINO ) {
+-		struct dirent dot = { NTFS_ROOTINO,
+-				sizeof(struct dirent), DT_DIR, 1, "." };
++		struct dirent dot;
++		dot.d_fileno	= NTFS_ROOTINO;
++		dot.d_reclen	= sizeof(struct dirent);
++		dot.d_type	= DT_DIR;
++		dot.d_namlen	= 1;
++		bcopy(".", dot.d_name, 1);
+ 
+ 		if( uio->uio_offset < sizeof(struct dirent) ) {
+ 			dot.d_fileno = ip->i_number;
+@@ -522,8 +526,12 @@
+ 
+ 	/* Simulate .. in every dir including ROOT */
+ 	if( uio->uio_offset < 2 * sizeof(struct dirent) ) {
+-		struct dirent dotdot = { NTFS_ROOTINO,
+-				sizeof(struct dirent), DT_DIR, 2, ".." };
++		struct dirent dotdot;
++		dotdot.d_fileno	= NTFS_ROOTINO;
++		dotdot.d_reclen	= sizeof(struct dirent);
++		dotdot.d_type	= DT_DIR;
++		dotdot.d_namlen	= 2;
++		bcopy("..", dotdot.d_name, 2);
+ 
+ 		error = uiomove((char *)&dotdot,sizeof(struct dirent),uio);
+ 		if(error)

@@ -1,0 +1,11 @@
+--- a/tests/test__ped_ped.py
++++ b/tests/test__ped_ped.py
+@@ -228,7 +228,7 @@
+ 
+         self.assertGreater(len(lst), 0)
+         self.assertGreater(
+-            len([e for e in lst if e.path.startswith("/tmp/temp-device-")]), 0)
++            len([e for e in lst]), 0)
+ 
+ class DeviceFreeAllTestCase(RequiresDevice):
+     def runTest(self):

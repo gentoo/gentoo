@@ -1,0 +1,61 @@
+diff -dupr zip30-old/fileio.c zip30/fileio.c
+--- zip30-old/fileio.c	2008-05-28 20:13:24.000000000 +0200
++++ zip30/fileio.c	2012-06-12 17:30:29.794547493 +0200
+@@ -3502,7 +3502,7 @@ zwchar *local_to_wide_string(local_strin
+   if ((wc_string = (wchar_t *)malloc((wsize + 1) * sizeof(wchar_t))) == NULL) {
+     ZIPERR(ZE_MEM, "local_to_wide_string");
+   }
+-  wsize = mbstowcs(wc_string, local_string, strlen(local_string) + 1);
++  wsize = mbstowcs(wc_string, local_string, wsize + 1);
+   wc_string[wsize] = (wchar_t) 0;
+ 
+   /* in case wchar_t is not zwchar */
+diff -dupr zip30-old/zipfile.c zip30/zipfile.c
+--- zip30/zipfile.c	2008-07-01 00:15:30.000000000 +0200
++++ zip30/zipfile.c	2012-06-10 01:59:42.571706181 +0200
+@@ -5406,6 +5406,8 @@ int putlocal(z, rewrite)
+     if (z->flg & UTF8_BIT) {
+       /* If this flag is set, then restore UTF-8 as path name */
+       use_uname = 1;
++      tempzn -= nam;
+       nam = strlen(z->uname);
++      tempzn += nam;
+     } else {
+       /* use extra field */
+       add_Unicode_Path_local_extra_field(z);
+@@ -5647,7 +5650,9 @@ int putcentral(z)
+     if (z->flg & UTF8_BIT) {
+       /* If this flag is set, then restore UTF-8 as path name */
+       use_uname = 1;
++      tempzn -= nam;
+       nam = strlen(z->uname);
++      tempzn += nam;
+     } else {
+       add_Unicode_Path_cen_extra_field(z);
+     }
+diff -dupr zip30/zipnote.c zip30/zipnote.c
+--- zip30/zipnote.c	2008-05-08 04:17:08.000000000 +0200
++++ zip30/zipnote.c	2012-06-10 02:33:36.372663528 +0200
+@@ -575,6 +575,13 @@ char **argv;            /* command line
+       strcpy(z->iname, a+2);
+ #endif
+ 
++#ifdef UNICODE_SUPPORT
++#define UTF8_BIT (1 << 11)
++      if (using_utf8) {
++        z->uname = z->iname;
++      }
++#endif
++
+ /*
+  * Don't update z->nam here, we need the old value a little later.....
+  * The update is handled in zipcopy().
+@@ -661,7 +668,7 @@ char **argv;            /* command line
+     if ((r = zipcopy(z)) != ZE_OK)
+       ziperr(r, "was copying an entry");
+   }
+-  fclose(x);
++  fclose(in_file);
+ 
+   /* Write central directory and end of central directory with new comments */
+   if ((c = zftello(y)) == (zoff_t)-1)    /* get start of central */

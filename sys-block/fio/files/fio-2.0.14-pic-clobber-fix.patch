@@ -1,0 +1,29 @@
+diff -Nuar fio-2.0.14.orig/arch/arch-x86-common.h fio-2.0.14/arch/arch-x86-common.h
+--- fio-2.0.14.orig/arch/arch-x86-common.h	2013-02-21 18:12:32.000000000 +0000
++++ fio-2.0.14/arch/arch-x86-common.h	2013-03-27 01:48:04.000000000 +0000
+@@ -6,10 +6,24 @@
+ static inline void do_cpuid(unsigned int *eax, unsigned int *ebx,
+ 			    unsigned int *ecx, unsigned int *edx)
+ {
++#ifdef __PIC__
++    /* 32-bit Hardened GCC (PIC) uses register EBX, so it must be preserved 
++     * Fix ported from Gentoo's x86info-1.24-pic patch 
++     * http://tuxion.com/2010/07/02/clobber-registers.html */
++	asm volatile(
++            "movl %%ebx,%%edi\n"
++            "cpuid\n"
++            "movl %%ebx,%1\n"
++            "movl %%edi,%%ebx\n"
++		: "=a" (*eax), "=m" (*ebx), "=c" (*ecx), "=d" (*edx)
++		: "0" (*eax), "2" (*ecx)
++		: "memory", "%edi");
++#else
+ 	asm volatile("cpuid"
+ 		: "=a" (*eax), "=b" (*ebx), "=c" (*ecx), "=d" (*edx)
+ 		: "0" (*eax), "2" (*ecx)
+ 		: "memory");
++#endif
+ }
+ 
+ static inline void cpuid(unsigned int op,
+

@@ -1,0 +1,60 @@
+--- a/build.xml
++++ b/build.xml
+@@ -73,9 +73,6 @@
+       <param name="jar.file" value="${testng.jar}" />
+     </antcall>
+     <jar jarfile="${testng.jar}" update="true">
+-      <zipfileset src="${lib.dir}/${beanshell.jar}" />
+-      <zipfileset src="${lib.dir}/${jcommander.jar}" />
+-      <zipfileset src="${lib.dir}/${yaml.jar}" />
+     </jar>
+ 
+   </target>
+@@ -195,10 +192,6 @@
+       <param name="jar.file" value="${other.jars.dir}/${testng.junit.jar}" />
+     </antcall>
+     <jar jarfile="${other.jars.dir}/${testng.junit.jar}" update="true">
+-      <zipfileset src="${lib.dir}/${beanshell.jar}" />
+-      <zipfileset src="${lib.dir}/${jcommander.jar}" />
+-      <zipfileset src="${lib.dir}/${junit.jar}" />
+-      <zipfileset src="${lib.dir}/${yaml.jar}" />
+     </jar>
+   </target>
+ 
+@@ -207,9 +200,6 @@
+       <param name="jar.file" value="${other.jars.dir}/${testng.nobsh.guice.jar}" />
+     </antcall>
+     <jar jarfile="${other.jars.dir}/${testng.nobsh.guice.jar}" update="true">
+-      <zipfileset src="${lib.dir}/${guice2.jar}" />
+-      <zipfileset src="${lib.dir}/${jcommander.jar}" />
+-      <zipfileset src="${lib.dir}/${junit.jar}" />
+     </jar>
+   </target>
+ 
+@@ -218,9 +208,6 @@
+       <param name="jar.file" value="${other.jars.dir}/${testng.bsh.noguice.jar}" />
+     </antcall>
+     <jar jarfile="${other.jars.dir}/${testng.bsh.noguice.jar}" update="true">
+-      <zipfileset src="${lib.dir}/${beanshell.jar}" />
+-      <zipfileset src="${lib.dir}/${jcommander.jar}" />
+-      <zipfileset src="${lib.dir}/${junit.jar}" />
+     </jar>
+   </target>
+ 
+@@ -229,8 +216,6 @@
+       <param name="jar.file" value="${other.jars.dir}/${testng.nobsh.noguice.jar}" />
+     </antcall>
+     <jar jarfile="${other.jars.dir}/${testng.bsh.noguice.jar}" update="true">
+-      <zipfileset src="${lib.dir}/${jcommander.jar}" />
+-      <zipfileset src="${lib.dir}/${junit.jar}" />
+     </jar>
+   </target>
+ 
+@@ -239,7 +224,6 @@
+       <param name="jar.file" value="${other.jars.dir}/${testng.dist.jar}" />
+     </antcall>
+     <jar jarfile="${other.jars.dir}/${testng.dist.jar}" update="true">
+-      <zipfileset src="${lib.dir}/${jcommander.jar}" />
+     </jar>
+   </target>
+ 

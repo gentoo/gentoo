@@ -1,0 +1,26 @@
+slotmove =dev-ruby/rack-mount-0.6.14 0 0.6
+slotmove =dev-ruby/rack-mount-0.7.3  0 0.7
+move sci-electronics/ng-spice-rework sci-electronics/ngspice
+move dev-php5/PEAR-PHP_Timer dev-php/php-timer
+move net-irc/irssi-svn net-irc/irssi
+move dev-php5/pecl-apc dev-php/pecl-apc
+slotmove =dev-ruby/rack-test-0.5.7 0 0.5
+slotmove =dev-ruby/rack-test-0.6.0 0 0.6
+move dev-lang/ekopath-bin dev-lang/ekopath
+move media-libs/libkmap media-libs/libkgeomap
+slotmove kde-misc/entropy-kioslaves 0 4
+move x11-libs/Xaw3d x11-libs/libXaw3d
+move media-libs/libwpg app-text/libwpg
+slotmove =kde-misc/steamcompanion-0.2.2 0 4
+move app-editors/gentoo-editor app-misc/editor-wrapper
+move dev-php5/pecl-memcache dev-php/pecl-memcache
+move kde-misc/smaragd x11-themes/smaragd
+slotmove >sys-boot/grub-1 0 2
+move dev-php5/suhosin dev-php/suhosin
+move dev-php5/PEAR-Text_Template dev-php/php-texttemplate
+move dev-php5/PHPonTrax dev-php/PHPonTrax
+move dev-php5/phpunit-mockobject dev-php/phpunit-mockobject
+move dev-php5/phpunit-selenium dev-php/phpunit-selenium
+move dev-php5/pecl-drizzle dev-php/pecl-drizzle
+move dev-php5/pecl-id3 dev-php/pecl-id3
+slotmove =net-wireless/iwl1000-ucode-128.50.3.1 0 3

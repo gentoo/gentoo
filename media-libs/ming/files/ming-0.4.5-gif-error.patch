@@ -1,0 +1,20 @@
+--- a/ming-0.4.5/src/libming.h	2013-06-08 10:08:51.000000000 -0400
++++ b/ming-0.4.5/src/libming.h	2014-08-29 16:26:57.874643312 -0400
+@@ -76,11 +76,16 @@
+   #include <unistd.h>
+ #endif
+ 
+-#if GIFLIB_GIFERRORSTRING
++#ifdef HAVE_GIF_LIB_H
++#include <gif_lib.h>
+ static void
+ PrintGifError(void)
+ {
++#if GIFLIB_GIFERRORSTRING
+ 	fprintf(stderr, "\nGIF-LIB error: %s.\n", GifErrorString());
++#else
++	fprintf(stderr, "\nGIF-LIB error but no GifErrorString support.\n");
++#endif
+ }
+ #endif
+ 

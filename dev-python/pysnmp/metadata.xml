@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <herd>netmon</herd>
+  <longdescription>
+This is a Python implementation of SNMP v.1/v.2c engine. Its general
+functionality is to assemble/disassemble SNMP messages from/into
+given SNMP Object IDs along with associated values. PySNMP also provides
+a few transport methods specific to TCP/IP networking.
+
+PySNMP is written entirely in Python and is self-sufficient in terms
+that it does not rely on any third party tool (it is not a wrapper!).
+</longdescription>
+  <longdescription lang="ja">
+ããã¯ SNMP v.1/v.2 ã¨ã³ã¸ã³ã®Pythonè¨èªã§ã®å®è£ã§ããé¢é£å¤ã«æ²¿ã£ãSNMPãªãã¸ã§
+ã¯ãIDãã/ã¸SNMPã¡ãã»ã¼ã¸ãã¢ã»ã³ãã«/ãã£ã¹ã¢ã»ã³ãã«ããã®ãä¸è¬çãªæ©è½ã§ã
+ãPySNMPã¯å¹¾ã¤ãã®TCP/IPãããã¯ã¼ã­ã³ã°ãç¹å®ãããã©ã³ã¹ãã¼ãã»ã¡ã½ãããæä¾
+ãã¾ãã
+
+PySNMPã¯å¨ä½ãPythonè¨èªã§è¨è¿°ãããã©ã®ãµã¼ããã¼ãã£è£½ãã¼ã«ãä¿¡ç¨ããªãç«å ´ã§
+èªçµ¦èªè¶³ãã¾ãã(ããã¯ã©ããã¼ã»ãã¼ã«ã§ã¯ããã¾ããã)
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">pysnmp</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+--- skkserv.c.orig   Tue Jan 21 04:16:36 1997
++++ skkserv.c        Thu Mar 25 19:45:50 1999
+@@ -723,7 +723,11 @@
+     fprintf(errout, "%s:cannot get hostname, or too long hostname\n", pgmnm);
+     exit(1);
+   }
+-  hentry = gethostbyname(hname);
++  if ((hentry = gethostbyname(hname)) == NULL
++       && (hentry = gethostbyname("localhost")) == NULL) {
++    perror("gethostbyname");
++    exit(1);
++  }
+ #ifdef NO_ADDR_LIST
+   strcat(hname, ":");
+   strcat(hname, hentry->h_addr);

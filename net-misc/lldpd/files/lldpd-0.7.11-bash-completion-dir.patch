@@ -1,0 +1,9 @@
+diff --git a/src/client/Makefile.am b/src/client/Makefile.am
+index 454bdeb..f1580a0 100644
+--- a/src/client/Makefile.am
++++ b/src/client/Makefile.am
+@@ -44,2 +44,2 @@ endif
+-bashcompletiondir = $(sysconfdir)/bash_completion.d
+-dist_bashcompletion_DATA = lldpcli.bash-completion
++bashcompletiondir = $(datadir)/bash-completion/completions
++dist_bashcompletion_DATA = lldpcli

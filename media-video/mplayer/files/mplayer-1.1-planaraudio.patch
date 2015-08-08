@@ -1,0 +1,138 @@
+------------------------------------------------------------------------
+r35228 | cigaes | 2012-10-04 15:04:42 -0300 (Thu, 04 Oct 2012) | 5 lines
+
+ad_ffmpeg: basic support for planar formats.
+
+Upgrade to avcodec_decode_audio4().
+Planar formats are immediately converted to packet formats.
+A lot of optimizations are still possible.
+------------------------------------------------------------------------
+
+
+Index: libmpcodecs/ad_ffmpeg.c
+===================================================================
+--- libmpcodecs/ad_ffmpeg.c	(revision 35227)
++++ libmpcodecs/ad_ffmpeg.c	(revision 35228)
+@@ -57,7 +57,7 @@
+ {
+     int broken_srate = 0;
+     int samplerate    = lavc_context->sample_rate;
+-    int sample_format = samplefmt2affmt(lavc_context->sample_fmt);
++    int sample_format = samplefmt2affmt(av_get_packed_sample_fmt(lavc_context->sample_fmt));
+     if (!sample_format)
+         sample_format = sh_audio->sample_format;
+     if(sh_audio->wf){
+@@ -169,10 +169,10 @@
+       sh_audio->i_bps=sh_audio->wf->nAvgBytesPerSec;
+ 
+   switch (lavc_context->sample_fmt) {
+-      case AV_SAMPLE_FMT_U8:
+-      case AV_SAMPLE_FMT_S16:
+-      case AV_SAMPLE_FMT_S32:
+-      case AV_SAMPLE_FMT_FLT:
++      case AV_SAMPLE_FMT_U8:  case AV_SAMPLE_FMT_U8P:
++      case AV_SAMPLE_FMT_S16: case AV_SAMPLE_FMT_S16P:
++      case AV_SAMPLE_FMT_S32: case AV_SAMPLE_FMT_S32P:
++      case AV_SAMPLE_FMT_FLT: case AV_SAMPLE_FMT_FLTP:
+           break;
+       default:
+           return 0;
+@@ -202,10 +202,68 @@
+     return CONTROL_UNKNOWN;
+ }
+ 
++static av_always_inline void copy_samples_planar(unsigned bps,
++                                                 unsigned nb_samples,
++                                                 unsigned nb_channels,
++                                                 unsigned char *dst,
++                                                 unsigned char **src)
++{
++    unsigned s, c, o = 0;
++
++    for (s = 0; s < nb_samples; s++) {
++        for (c = 0; c < nb_channels; c++) {
++            memcpy(dst, src[c] + o, bps);
++            dst += bps;
++        }
++        o += bps;
++    }
++}
++
++static int copy_samples(AVCodecContext *avc, AVFrame *frame,
++                        unsigned char *buf, int max_size)
++{
++    int channels = avc->channels;
++    int sample_size = av_get_bytes_per_sample(avc->sample_fmt);
++    int size = channels * sample_size * frame->nb_samples;
++
++    if (size > max_size) {
++        av_log(avc, AV_LOG_ERROR,
++               "Buffer overflow while decoding a single frame\n");
++        return AVERROR(EINVAL); /* same as avcodec_decode_audio3 */
++    }
++    /* TODO reorder channels at the same time */
++    if (av_sample_fmt_is_planar(avc->sample_fmt)) {
++        switch (sample_size) {
++        case 1:
++            copy_samples_planar(1, frame->nb_samples, channels,
++                                buf, frame->extended_data);
++            break;
++        case 2:
++            copy_samples_planar(2, frame->nb_samples, channels,
++                                buf, frame->extended_data);
++            break;
++        case 4:
++            copy_samples_planar(4, frame->nb_samples, channels,
++                                buf, frame->extended_data);
++        default:
++            copy_samples_planar(sample_size, frame->nb_samples, channels,
++                                buf, frame->extended_data);
++    }
++    } else {
++        memcpy(buf, frame->data[0], size);
++    }
++    return size;
++}
++
+ static int decode_audio(sh_audio_t *sh_audio,unsigned char *buf,int minlen,int maxlen)
+ {
+     unsigned char *start=NULL;
+-    int y,len=-1;
++    int y,len=-1, got_frame;
++    AVFrame *frame = avcodec_alloc_frame();
++
++    if (!frame)
++        return AVERROR(ENOMEM);
++
+     while(len<minlen){
+ 	AVPacket pkt;
+ 	int len2=maxlen;
+@@ -230,7 +288,7 @@
+ 	    sh_audio->pts = pts;
+ 	    sh_audio->pts_bytes = 0;
+ 	}
+-	y=avcodec_decode_audio3(sh_audio->context,(int16_t*)buf,&len2,&pkt);
++	y=avcodec_decode_audio4(sh_audio->context, frame, &got_frame, &pkt);
+ //printf("return:%d samples_out:%d bitstream_in:%d sample_sum:%d\n", y, len2, x, len); fflush(stdout);
+ 	// LATM may need many packets to find mux info
+ 	if (y == AVERROR(EAGAIN))
+@@ -238,6 +296,11 @@
+ 	if(y<0){ mp_msg(MSGT_DECAUDIO,MSGL_V,"lavc_audio: error\n");break; }
+ 	if(!sh_audio->parser && y<x)
+ 	    sh_audio->ds->buffer_pos+=y-x;  // put back data (HACK!)
++        if (!got_frame)
++            continue;
++        len2 = copy_samples(sh_audio->context, frame, buf, maxlen);
++        if (len2 < 0)
++            return len2;
+ 	if(len2>0){
+ 	  if (((AVCodecContext *)sh_audio->context)->channels >= 5) {
+             int samplesize = av_get_bytes_per_sample(((AVCodecContext *)
+@@ -258,5 +321,7 @@
+         if (setup_format(sh_audio, sh_audio->context))
+             break;
+     }
++
++  av_free(frame);
+   return len;
+ }

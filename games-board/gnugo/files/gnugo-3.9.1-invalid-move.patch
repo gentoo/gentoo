@@ -1,0 +1,21 @@
+From 84a32e9cee2a70c0ec6ef58c1be279fed84a9a53 Mon Sep 17 00:00:00 2001
+From: Gunnar FarnebÃ¤ck <gunnar@lysator.liu.se>
+Date: Thu, 13 Jun 2013 18:45:03 +0000
+Subject: Avoid crashing due to registering an invalid loss move reason.
+
+---
+diff --git a/engine/value_moves.c b/engine/value_moves.c
+index e9f2daa..7ec8fdd 100644
+--- a/engine/value_moves.c
++++ b/engine/value_moves.c
+@@ -383,7 +383,7 @@ do_find_more_owl_attack_and_defense_moves(int color, int pos,
+       int dcode = owl_does_defend(pos, dd, &kworm);
+ 
+       if (dcode >= DRAGON2(dd).owl_defense_code) {
+-	if (dcode == LOSS)
++	if (dcode == LOSS && kworm != NO_MOVE)
+ 	  add_loss_move(pos, dd, kworm);
+ 	else
+ 	  add_owl_defense_move(pos, dd, dcode);
+--
+cgit v0.9.0.2

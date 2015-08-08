@@ -1,0 +1,14 @@
+diff -ruN grantlee-0.3.0.orig/CMakeLists.txt grantlee-0.3.0/CMakeLists.txt
+--- grantlee-0.3.0.orig/CMakeLists.txt	2012-11-01 21:14:18.000000000 +0100
++++ grantlee-0.3.0/CMakeLists.txt	2013-03-09 12:25:56.498096399 +0100
+@@ -62,8 +62,8 @@
+   endif()
+ 
+   if (NOT APPLE)
+-    set ( CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}")
+-    set ( CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined ${CMAKE_MODULE_LINKER_FLAGS}")
++    set ( CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}")
++    set ( CMAKE_MODULE_LINKER_FLAGS "-Wl,--no-undefined ${CMAKE_MODULE_LINKER_FLAGS}")
+   endif ()
+ 
+   if (NOT MINGW)

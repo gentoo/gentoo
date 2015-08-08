@@ -1,0 +1,73 @@
+Upstream commit to support GL_EXT_texture_storage.
+
+commit 0436cc01329b6be60801dd7bfe641be7d8be5bc7
+Author: José Fonseca <jfonseca@vmware.com>
+Date:   Wed Nov 13 13:57:43 2013 +0000
+
+    egltrace: Add GL_EXT_texture_storage entrypoints
+    
+    Prototypes obtained through:
+    
+      specs/scripts/gltxt.py http://www.khronos.org/registry/gles/extensions/EXT/EXT_texture_storage.txt
+    
+    Issue #184.
+
+commit 0bacf23eacd15c8f15413b85bdcb6ccc4d288f37
+Author: José Fonseca <jfonseca@vmware.com>
+Date:   Wed Nov 13 13:59:51 2013 +0000
+
+    glxtrace: Add GLES prototypes too.
+    
+    Some applications seem to fail to distinguish GLES and GL entrypoints
+    apart.  To have complete traces in that situation, generate wrappers
+    for both GLES and GL prototypes.
+    
+    Issue #184.
+
+--- apitrace/specs/glesapi.py
++++ apitrace/specs/glesapi.py
+@@ -255,4 +255,16 @@ glesapi.addFunctions([
+     #GlFunction(Void, "glProgramUniformMatrix4fvEXT", [(GLprogram, "program"), (GLlocation, "location"), (GLsizei, "count"), (GLboolean, "transpose"), (Array(Const(GLfloat), "count*4*4"), "value")]),
+     GlFunction(Void, "glValidateProgramPipelineEXT", [(GLpipeline, "pipeline")]),
+     GlFunction(Void, "glGetProgramPipelineInfoLogEXT", [(GLpipeline, "pipeline"), (GLsizei, "bufSize"), Out(Pointer(GLsizei), "length"), Out(GLstring, "infoLog")], sideeffects=False),
++
++    # GL_EXT_multisampled_render_to_texture
++    #GlFunction(Void, "glRenderbufferStorageMultisampleEXT", [(GLenum, "target"), (GLsizei, "samples"), (GLenum, "internalformat"), (GLsizei, "width"), (GLsizei, "height")]),
++    GlFunction(Void, "glFramebufferTexture2DMultisampleEXT", [(GLenum, "target"), (GLenum, "attachment"), (GLenum, "textarget"), (GLtexture, "texture"), (GLint, "level"), (GLsizei, "samples")]),
++
++    # GL_EXT_texture_storage
++    GlFunction(Void, "glTexStorage1DEXT", [(GLenum, "target"), (GLsizei, "levels"), (GLenum, "internalformat"), (GLsizei, "width")]),
++    GlFunction(Void, "glTexStorage2DEXT", [(GLenum, "target"), (GLsizei, "levels"), (GLenum, "internalformat"), (GLsizei, "width"), (GLsizei, "height")]),
++    GlFunction(Void, "glTexStorage3DEXT", [(GLenum, "target"), (GLsizei, "levels"), (GLenum, "internalformat"), (GLsizei, "width"), (GLsizei, "height"), (GLsizei, "depth")]),
++    #GlFunction(Void, "glTextureStorage1DEXT", [(GLtexture, "texture"), (GLenum, "target"), (GLsizei, "levels"), (GLenum, "internalformat"), (GLsizei, "width")]),
++    #GlFunction(Void, "glTextureStorage2DEXT", [(GLtexture, "texture"), (GLenum, "target"), (GLsizei, "levels"), (GLenum, "internalformat"), (GLsizei, "width"), (GLsizei, "height")]),
++    #GlFunction(Void, "glTextureStorage3DEXT", [(GLtexture, "texture"), (GLenum, "target"), (GLsizei, "levels"), (GLenum, "internalformat"), (GLsizei, "width"), (GLsizei, "height"), (GLsizei, "depth")]),
+ ])
+--- apitrace/wrappers/CMakeLists.txt
++++ apitrace/wrappers/CMakeLists.txt
+@@ -393,6 +393,7 @@ elseif (X11_FOUND)
+             gltrace.py
+             trace.py
+             ${CMAKE_SOURCE_DIR}/specs/glxapi.py
++            ${CMAKE_SOURCE_DIR}/specs/glesapi.py
+             ${CMAKE_SOURCE_DIR}/specs/glapi.py
+             ${CMAKE_SOURCE_DIR}/specs/glparams.py
+             ${CMAKE_SOURCE_DIR}/specs/gltypes.py
+--- apitrace/wrappers/glxtrace.py
++++ apitrace/wrappers/glxtrace.py
+@@ -32,6 +32,7 @@ from gltrace import GlTracer
+ from specs.stdapi import Module, API
+ from specs.glapi import glapi
+ from specs.glxapi import glxapi
++from specs.glesapi import glesapi
+ 
+ 
+ class GlxTracer(GlTracer):
+@@ -104,6 +105,7 @@ if __name__ == '__main__':
+     module = Module()
+     module.mergeModule(glxapi)
+     module.mergeModule(glapi)
++    module.mergeModule(glesapi)
+     api = API()
+     api.addModule(module)
+     tracer = GlxTracer()

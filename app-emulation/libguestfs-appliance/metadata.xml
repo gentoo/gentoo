@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>andreis.vinogradovs@gmail.com</email>
+	<name>Andreis Vinogradovs</name>
+</maintainer>
+<maintainer>
+	<email>maksbotan@gentoo.org</email>
+	<name>Maxim Koltsov</name>
+</maintainer>
+<maintainer>
+	<email>rich@annexia.org</email>
+	<name>Richard Jones</name>
+	<description>Upstream - please CC on bugs that concerns upstream</description>
+</maintainer>
+</pkgmetadata>

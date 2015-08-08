@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Ban CPP from your code.  See the README for what is covered:
+		&lt;https://github.com/sol/base-compat#readme&gt;
+	</longdescription>
+</pkgmetadata>

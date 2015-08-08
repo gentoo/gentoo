@@ -1,0 +1,27 @@
+Fix building against texinfo >= 5.0
+
+http://bugs.gentoo.org/514772
+http://www.gnu.org/software/texinfo/manual/texinfo/texinfo.html#g_t_0040copyright
+
+--- doc/conduits.texi
++++ doc/conduits.texi
+@@ -33,7 +33,7 @@
+ 
+ @page
+ @vskip 0pt plus 1filll
+-Copyright @copyright 2000 Andrew Arensburger.
++Copyright @copyright{} 2000 Andrew Arensburger.
+ 
+ Permission is granted to make and distribute verbatim copies of
+ this manual provided the copyright notice and this permission notice
+--- doc/libpalm.texi
++++ doc/libpalm.texi
+@@ -57,7 +57,7 @@
+ 
+ @page
+ @vskip 0pt plus 1filll
+-Copyright @copyright 1999 Andrew Arensburger.
++Copyright @copyright{} 1999 Andrew Arensburger.
+ 
+ Permission is granted to make and distribute verbatim copies of
+ this manual provided the copyright notice and this permission notice

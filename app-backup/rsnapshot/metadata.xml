@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+    <name>Diego Elio Pettenò</name>
+  </maintainer>
+  <maintainer>
+    <email>erik_hahn@gmx.de</email>
+    <name>Erik Hahn</name>
+    <description>proxied maintainer</description>
+  </maintainer>
+</pkgmetadata>

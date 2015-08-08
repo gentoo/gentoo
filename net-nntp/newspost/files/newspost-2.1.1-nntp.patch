@@ -1,0 +1,69 @@
+--- newspost-2.1.1.orig/base/nntp.c
++++ newspost-2.1.1/base/nntp.c
+@@ -26,6 +26,10 @@
+ *** Public Routines
+ **/
+ 
++int _nntp_post(const char *subject, newspost_data *data,
++		const char *buffer, long length,
++		boolean no_ui_updates);
++
+ boolean nntp_logon(newspost_data *data) {
+ 	char buffer[STRING_BUFSIZE];
+ 
+@@ -78,6 +82,35 @@
+ int nntp_post(const char *subject, newspost_data *data, 
+ 	      const char *buffer, long length,
+ 	      boolean no_ui_updates) {
++	int retval = _nntp_post(subject, data, buffer, length, no_ui_updates);
++
++	if (retval == POSTING_FAILED-64) {
++		/* try log out then back in */
++		ui_nntp_posting_retry();
++		nntp_logoff();
++		socket_close();
++		sleep(5);
++
++		/* create the socket */
++		ui_socket_connect_start(data->address->data);
++		retval = socket_create(data->address->data, data->port);
++		if (retval < 0)
++			return retval;
++		ui_socket_connect_done();
++
++		ui_nntp_logon_start(data->address->data);
++		if (nntp_logon(data) == FALSE)
++			return POSTING_FAILED;
++		ui_nntp_logon_done();
++
++		retval = _nntp_post(subject, data, buffer, length, no_ui_updates);
++		}
++	return retval;
++}
++
++int _nntp_post(const char *subject, newspost_data *data, 
++	      const char *buffer, long length,
++	      boolean no_ui_updates) {
+ 	char response[STRING_BUFSIZE];
+ 	const char *pi;
+ 	long i, chunksize;
+@@ -95,7 +128,7 @@
+ 	if (strncmp(response, NNTP_PROCEED_WITH_POST, 3) != 0) {
+ 		/* this shouldn't really happen */
+ 		ui_nntp_unknown_response(response);
+-		return POSTING_FAILED;
++		return POSTING_FAILED-64;
+ 	}
+ 	
+ 	buff = buff_add(buff, "From: %s\r\n", data->from->data);
+--- newspost-2.1.1.orig/base/utils.c
++++ newspost-2.1.1/base/utils.c
+@@ -44,7 +44,7 @@
+ }
+ 
+ Buff * getline(Buff *buff, FILE *file){
+-	char c = fgetc(file);
++	int c = fgetc(file);
+ 	buff = buff_free(buff);
+ 	while(TRUE){
+ 		if((c == '\n')

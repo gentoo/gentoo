@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>slis@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="boost">Build assimp with boost support</flag>
+		<flag name="samples">Build viewer library</flag>
+		<flag name="tools">Build assimp tool binary</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">assimp</remote-id>
+	</upstream>
+</pkgmetadata>

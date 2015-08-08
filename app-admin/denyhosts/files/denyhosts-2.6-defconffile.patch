@@ -1,0 +1,12 @@
+diff -up ./DenyHosts/constants.py.defconffile ./DenyHosts/constants.py
+--- ./DenyHosts/constants.py.defconffile	2008-07-01 18:12:34.000000000 -0500
++++ ./DenyHosts/constants.py	2008-07-01 18:12:43.000000000 -0500
+@@ -36,7 +36,7 @@ PURGE_HISTORY = "purge-history"
+ #                           Miscellaneous constants                             #
+ #################################################################################
+ 
+-CONFIG_FILE = "denyhosts.cfg"  # default can be overridden on cmd line
++CONFIG_FILE = "/etc/denyhosts.conf"  # default can be overridden on cmd line
+ 
+ DENY_DELIMITER = "# DenyHosts:"
+ ENTRY_DELIMITER = " | "

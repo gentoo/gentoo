@@ -1,0 +1,28 @@
+ https://bugs.gentoo.org/421769
+
+ ../../src/includes/Ref.h:248:5: error: 'assign' was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation
+ 
+
+ src/includes/Ref.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/src/includes/Ref.h
++++ b/src/includes/Ref.h
+@@ -189,7 +189,7 @@ public:
+ 
+   CRef<T> &operator=(const CRef<T> &other)
+   {
+-    assign(other);
++    this->assign(other);
+     return *this;
+   }
+ 
+@@ -245,7 +245,7 @@ public:
+ 
+   Ref<T> &operator=(const Ref<T> &other)
+   {
+-    assign(other);
++    this->assign(other);
+     return *this;
+   }
+ 

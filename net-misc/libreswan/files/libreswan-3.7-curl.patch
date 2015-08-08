@@ -1,0 +1,30 @@
+diff --git a/include/secrets.h b/include/secrets.h
+index c5ac092..92c1679 100644
+--- a/include/secrets.h
++++ b/include/secrets.h
+@@ -173,10 +173,8 @@ extern struct secret *lsw_find_secret_by_id(struct secret *secrets,
+ 					    const struct id *his_id,
+ 					    bool asym);
+ 
+-#if defined(LIBCURL) || defined(LDAP_VER)
+ extern void lock_certs_and_keys(const char *who);
+ extern void unlock_certs_and_keys(const char *who);
+-#endif
+ 
+ #include "x509.h"
+ extern const struct RSA_private_key*lsw_get_x509_private_key(
+diff --git a/include/x509.h b/include/x509.h
+index f85e5b9..a796f89 100644
+--- a/include/x509.h
++++ b/include/x509.h
+@@ -230,8 +230,9 @@ extern void unlock_authcert_list(const char *who);	/* in secrets.c */
+ #else
+ /* WARNING empty x509 locking functions defined bypassing real locking */
+ /* not fixing this hack, see issues #1390, #1391, #1392 */
++#define check_crls(who)                 /* nothing */
++#define lock_crl_list(who)              /* nothing */
+ #define unlock_crl_list(who)            /* nothing */
+-#define lock_cacert_list(who)           /* nothing */
+ #define lock_authcert_list(who)         /* nothing */
+ #define unlock_authcert_list(who)       /* nothing */
+ #endif

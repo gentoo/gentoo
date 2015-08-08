@@ -1,0 +1,11 @@
+diff -ur wsdl4j-1_6_2.old/build.xml wsdl4j-1_6_2/build.xml
+--- wsdl4j-1_6_2.old/build.xml	2007-06-09 01:12:11.000000000 +0300
++++ wsdl4j-1_6_2/build.xml	2007-06-09 01:13:09.000000000 +0300
+@@ -279,6 +279,7 @@
+   <target name="test" depends="compile" if="junit.present">
+     <junit printsummary="on">
+       <sysproperty key="jwsdltck_home" value="./test"/>
++	  <sysproperty key="java.home" value="${temp.dir}"/>
+       <sysproperty key="javax.wsdl.factory.WSDLFactoryCandidate"
+                    value="com.ibm.wsdl.factory.WSDLFactoryImpl"/>
+ 

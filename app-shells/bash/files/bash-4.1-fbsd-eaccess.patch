@@ -1,0 +1,29 @@
+Bash built-in test fails to correctly report exeuctable status for non-
+executable files when run by root on FreeBSD.
+
+See http://bugs.gentoo.org/303411
+
+Patch from Johan Hattne <johan.hattne@utsuthwestern.edu>
+--- lib/sh/eaccess.c.orig
++++ lib/sh/eaccess.c
+@@ -198,11 +198,19 @@
+      char *path;
+      int mode;
+ {
++  struct stat s;
++  int ret;
++
+   if (path_is_devfd (path))
+     return (sh_stataccess (path, mode));
+ 
+ #if defined (HAVE_EACCESS)		/* FreeBSD */
+-  return (eaccess (path, mode));
++  if (stat (path, &s) != 0)
++    return (-1);
++  ret = eaccess (path, mode);
++  if (mode == X_OK && ret == 0 && !S_ISDIR(s.st_mode) && geteuid() == 0)
++    return ((s.st_mode & (S_IXUSR | S_IXGRP | S_IXOTH)) == 0 ? -1 : 0);
++  return (ret);
+ #elif defined (EFF_ONLY_OK)		/* SVR4(?), SVR4.2 */
+   return access (path, mode|EFF_ONLY_OK);
+ #else

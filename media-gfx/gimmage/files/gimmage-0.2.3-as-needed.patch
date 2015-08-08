@@ -1,0 +1,11 @@
+diff -ru gimmage-0.2.3.orig/src/Makefile.am gimmage-0.2.3/src/Makefile.am
+--- gimmage-0.2.3.orig/src/Makefile.am	2008-11-30 18:43:28.000000000 +0100
++++ gimmage-0.2.3/src/Makefile.am	2008-11-30 18:43:40.000000000 +0100
+@@ -7,5 +7,5 @@
+ SaveErrorDialog.cpp SaveErrorDialog.h \
+ main.cpp defines.h
+ 
+-AM_CXXFLAGS = @CXXFLAGS@ $(DEPS_CFLAGS) -lcurl -lmagic
+-LDADD = $(DEPS_LIBS)
++AM_CXXFLAGS = @CXXFLAGS@ $(DEPS_CFLAGS)
++LDADD = $(DEPS_LIBS) -lcurl -lmagic

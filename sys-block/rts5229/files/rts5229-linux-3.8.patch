@@ -1,0 +1,29 @@
+--- rts5229.a/rtsx.c	2012-03-21 07:10:18.000000000 +0530
++++ rts5229.b/rtsx.c	2013-05-29 01:06:32.333737569 +0530
+@@ -911,7 +911,7 @@
+ 	chip->support_mmc = 1;
+ }
+ 
+-static int __devinit rtsx_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
++static int rtsx_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
+ {
+ 	struct Scsi_Host *host;
+ 	struct rtsx_dev *dev;
+@@ -1066,7 +1066,7 @@
+ }
+ 
+ 
+-static void __devexit rtsx_remove(struct pci_dev *pci)
++static void rtsx_remove(struct pci_dev *pci)
+ {
+ 	struct rtsx_dev *dev = (struct rtsx_dev *)pci_get_drvdata(pci);
+ 
+@@ -1092,7 +1092,7 @@
+ 	.name = CR_DRIVER_NAME,
+ 	.id_table = rts5229_ids,
+ 	.probe = rtsx_probe,
+-	.remove = __devexit_p(rtsx_remove),
++	.remove = rtsx_remove,
+ #ifdef CONFIG_PM
+ 	.suspend = rtsx_suspend,
+ 	.resume = rtsx_resume,

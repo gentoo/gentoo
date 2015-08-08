@@ -1,0 +1,214 @@
+revert AC_C_BIGENDIAN to the version found in 2.61 since the version in 2.62 is
+known to be broken and the changes that it brings are not critical
+
+http://bugs.gentoo.org/228825
+
+--- autoconf-2.62/lib/autoconf/c.m4
++++ autoconf-2.61/lib/autoconf/c.m4
+@@ -1393,140 +1351,74 @@
+ ])# AC_C_CHAR_UNSIGNED
+ 
+ 
+-# AC_C_BIGENDIAN ([ACTION-IF-TRUE], [ACTION-IF-FALSE], [ACTION-IF-UNKNOWN],
+-#                 [ACTION-IF-UNIVERSAL])
++# AC_C_BIGENDIAN ([ACTION-IF-TRUE], [ACTION-IF-FALSE], [ACTION-IF-UNKNOWN])
+ # -------------------------------------------------------------------------
+ AC_DEFUN([AC_C_BIGENDIAN],
+-[AH_VERBATIM([WORDS_BIGENDIAN],
+-[/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+-   significant byte first (like Motorola and SPARC, unlike Intel and VAX). */
+-#if defined __BIG_ENDIAN__
+-# define WORDS_BIGENDIAN 1
+-#elif ! defined __LITTLE_ENDIAN__
+-# undef WORDS_BIGENDIAN
+-#endif])dnl
+- AC_CACHE_CHECK([whether byte ordering is bigendian], [ac_cv_c_bigendian],
+-   [ac_cv_c_bigendian=unknown
+-    m4_ifval(m4_ifdef([AH_HEADER], 1)[$4],
+-      [# See if __BIG_ENDIAN__ or __LITTLE_ENDIAN__ is defined.
+-       AC_COMPILE_IFELSE(
+-	 [AC_LANG_SOURCE(
+-	    [[#if ! (defined __BIG_ENDIAN__ || defined __LITTLE_ENDIAN__)
+-	       neither is defined;
+-	     #endif
+-	     typedef int dummy;
+-	    ]])],
+-	 [ac_cv_c_bigendian=universal])],
+-      [AC_DIAGNOSE([obsolete], [AC_C_BIGENDIAN suggests AC_CONFIG_HEADERS])])
+-    if test $ac_cv_c_bigendian = unknown; then
+-      # See if sys/param.h defines the BYTE_ORDER macro.
+-      AC_COMPILE_IFELSE(
+-	[AC_LANG_PROGRAM(
+-	   [[#include <sys/types.h>
+-	     #include <sys/param.h>
+-	   ]],
+-	   [[#if ! (defined BYTE_ORDER && defined BIG_ENDIAN \
+-		     && defined LITTLE_ENDIAN && BYTE_ORDER && BIG_ENDIAN \
+-		     && LITTLE_ENDIAN)
+-	      bogus endian macros
+-	     #endif
+-	   ]])],
+-	[# It does; now see whether it defined to BIG_ENDIAN or not.
+-	 AC_COMPILE_IFELSE(
+-	   [AC_LANG_PROGRAM(
+-	      [[#include <sys/types.h>
+-		#include <sys/param.h>
+-	      ]],
+-	      [[#if BYTE_ORDER != BIG_ENDIAN
+-		 not big endian
+-		#endif
+-	      ]])],
+-	   [ac_cv_c_bigendian=yes],
+-	   [ac_cv_c_bigendian=no])])
+-    fi
+-    if test $ac_cv_c_bigendian = unknown; then
+-      # See if <limits.h> defines _LITTLE_ENDIAN or _BIG_ENDIAN (e.g., Solaris).
+-      AC_COMPILE_IFELSE(
+-	[AC_LANG_PROGRAM(
+-	   [[#include <limits.h>
+-	   ]],
+-	   [[#if ! (defined _LITTLE_ENDIAN || defined _BIG_ENDIAN)
+-	      bogus endian macros
+-	     #endif
+-	   ]])],
+-	[# It does; now see whether it defined to _BIG_ENDIAN or not.
+-	 AC_COMPILE_IFELSE(
+-	   [AC_LANG_PROGRAM(
+-	      [[#include <limits.h>
+-	      ]],
+-	      [[#ifndef _BIG_ENDIAN
+-		 not big endian
+-		#endif
+-	      ]])],
+-	   [ac_cv_c_bigendian=yes],
+-	   [ac_cv_c_bigendian=no])])
+-    fi
+-    if test $ac_cv_c_bigendian = unknown; then
+-      # Compile a test program.
+-      AC_RUN_IFELSE(
+-	[AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT],
+-	   [[
+-	     /* Are we little or big endian?  From Harbison&Steele.  */
+-	     union
+-	     {
+-	       long int l;
+-	       char c[sizeof (long int)];
+-	     } u;
+-	     u.l = 1;
+-	     return u.c[sizeof (long int) - 1] == 1;
+-	   ]])],
+-	[ac_cv_c_bigendian=no],
+-	[ac_cv_c_bigendian=yes],
+-	[# Try to guess by grepping values from an object file.
+-	 AC_COMPILE_IFELSE(
+-	   [AC_LANG_PROGRAM(
+-	      [[short int ascii_mm[] =
+-		  { 0x4249, 0x4765, 0x6E44, 0x6961, 0x6E53, 0x7953, 0 };
+-		short int ascii_ii[] =
+-		  { 0x694C, 0x5454, 0x656C, 0x6E45, 0x6944, 0x6E61, 0 };
+-		int use_ascii (int i) {
+-		  return ascii_mm[i] + ascii_ii[i];
+-		}
+-		short int ebcdic_ii[] =
+-		  { 0x89D3, 0xE3E3, 0x8593, 0x95C5, 0x89C4, 0x9581, 0 };
+-		short int ebcdic_mm[] =
+-		  { 0xC2C9, 0xC785, 0x95C4, 0x8981, 0x95E2, 0xA8E2, 0 };
+-		int use_ebcdic (int i) {
+-		  return ebcdic_mm[i] + ebcdic_ii[i];
+-		}
+-		extern int foo;
+-	      ]],
+-	      [[return use_ascii (foo) == use_ebcdic (foo);]])],
+-	   [if grep BIGenDianSyS conftest.$ac_objext >/dev/null; then
+-	      ac_cv_c_bigendian=yes
+-	    fi
+-	    if grep LiTTleEnDian conftest.$ac_objext >/dev/null ; then
+-	      if test "$ac_cv_c_bigendian" = unknown; then
+-		ac_cv_c_bigendian=no
+-	      else
+-		# finding both strings is unlikely to happen, but who knows?
+-		ac_cv_c_bigendian=unknown
+-	      fi
+-	    fi])])
+-    fi])
+- case $ac_cv_c_bigendian in #(
+-   yes)
+-     m4_default([$1],
+-       [AC_DEFINE([WORDS_BIGENDIAN], 1)]);; #(
+-   no)
+-     $2 ;; #(
+-   universal)
+-     $4 ;; #(
+-   *)
+-     m4_default([$3],
+-       [AC_MSG_ERROR([unknown endianness
+- presetting ac_cv_c_bigendian=no (or yes) will help])]) ;;
+- esac
++[AC_CACHE_CHECK(whether byte ordering is bigendian, ac_cv_c_bigendian,
++[# See if sys/param.h defines the BYTE_ORDER macro.
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <sys/types.h>
++#include <sys/param.h>
++],
++[#if  ! (defined BYTE_ORDER && defined BIG_ENDIAN && defined LITTLE_ENDIAN \
++	&& BYTE_ORDER && BIG_ENDIAN && LITTLE_ENDIAN)
++ bogus endian macros
++#endif
++])],
++[# It does; now see whether it defined to BIG_ENDIAN or not.
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <sys/types.h>
++#include <sys/param.h>
++], [#if BYTE_ORDER != BIG_ENDIAN
++ not big endian
++#endif
++])], [ac_cv_c_bigendian=yes], [ac_cv_c_bigendian=no])],
++[# It does not; compile a test program.
++AC_RUN_IFELSE(
++[AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT], [[
++  /* Are we little or big endian?  From Harbison&Steele.  */
++  union
++  {
++    long int l;
++    char c[sizeof (long int)];
++  } u;
++  u.l = 1;
++  return u.c[sizeof (long int) - 1] == 1;
++]])],
++	      [ac_cv_c_bigendian=no],
++	      [ac_cv_c_bigendian=yes],
++[# try to guess the endianness by grepping values into an object file
++  ac_cv_c_bigendian=unknown
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
++[[short int ascii_mm[] = { 0x4249, 0x4765, 0x6E44, 0x6961, 0x6E53, 0x7953, 0 };
++short int ascii_ii[] = { 0x694C, 0x5454, 0x656C, 0x6E45, 0x6944, 0x6E61, 0 };
++void _ascii () { char *s = (char *) ascii_mm; s = (char *) ascii_ii; }
++short int ebcdic_ii[] = { 0x89D3, 0xE3E3, 0x8593, 0x95C5, 0x89C4, 0x9581, 0 };
++short int ebcdic_mm[] = { 0xC2C9, 0xC785, 0x95C4, 0x8981, 0x95E2, 0xA8E2, 0 };
++void _ebcdic () { char *s = (char *) ebcdic_mm; s = (char *) ebcdic_ii; }]],
++[[ _ascii (); _ebcdic (); ]])],
++[if grep BIGenDianSyS conftest.$ac_objext >/dev/null ; then
++  ac_cv_c_bigendian=yes
++fi
++if grep LiTTleEnDian conftest.$ac_objext >/dev/null ; then
++  if test "$ac_cv_c_bigendian" = unknown; then
++    ac_cv_c_bigendian=no
++  else
++    # finding both strings is unlikely to happen, but who knows?
++    ac_cv_c_bigendian=unknown
++  fi
++fi])])])])
++case $ac_cv_c_bigendian in
++  yes)
++    m4_default([$1],
++      [AC_DEFINE([WORDS_BIGENDIAN], 1,
++	[Define to 1 if your processor stores words with the most significant
++	 byte first (like Motorola and SPARC, unlike Intel and VAX).])]) ;;
++  no)
++    $2 ;;
++  *)
++    m4_default([$3],
++      [AC_MSG_ERROR([unknown endianness
++presetting ac_cv_c_bigendian=no (or yes) will help])]) ;;
++esac
+ ])# AC_C_BIGENDIAN
+ 
+ 

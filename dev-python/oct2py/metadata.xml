@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-mathematics</herd>
+<longdescription lang="en">
+  Uses Octave to run commands and m-files. Supports any Octave
+  function or m-file, passing the data seamlessly between Python and
+  Octave using MAT files.
+</longdescription>
+<upstream>
+  <remote-id type="pypi">oct2py</remote-id>
+</upstream>
+</pkgmetadata>

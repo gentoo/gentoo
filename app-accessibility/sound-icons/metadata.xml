@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>accessibility</herd>
+<maintainer>
+  <email>williamh@gentoo.org</email>
+</maintainer>
+<longdescription lang="en">
+This is a collection of sound icons which can be used by speech dispatcher.
+</longdescription>
+</pkgmetadata>

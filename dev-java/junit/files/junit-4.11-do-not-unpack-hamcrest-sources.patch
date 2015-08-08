@@ -1,0 +1,19 @@
+--- a/build.xml	2012-11-14 20:23:00.000000000 +0100
++++ b/build.xml	2013-06-15 23:12:30.981988033 +0200
+@@ -138,7 +138,7 @@
+     </exec>
+   </target>
+   
+-  <target name="javadoc" depends="unjar.hamcrest">
++  <target name="javadoc">
+     <javadoc destdir="${javadocdir}"
+              author="false"
+              version="false"
+@@ -151,7 +151,6 @@
+       <excludepackage name="org.junit.experimental.theories.internal.*" />
+       
+       <sourcepath location="${src}" />
+-      <sourcepath location="${hamcrestsrc}" />
+       <link href="http://java.sun.com/javase/6/docs/api/" />
+     </javadoc>
+   </target>

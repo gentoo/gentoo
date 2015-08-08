@@ -1,0 +1,44 @@
+Nick Hadaway <raker@gentoo.org>
+Updated by Andrea Barisani <lcars@gentoo.org>
+18/05/2004
+
+Setting up clamav-milter on Gentoo Linux
+
+Step 1 - Configure clamd
+
+Check /etc/clamd.conf, default values should work out of the box but 
+read and understand all the options especially if you are going to
+use it on production boxes.
+
+Step 2 - Tell the init script to start clamd as well as freshclam and the
+         milter itself.
+
+	nano -w /etc/conf.d/clamd
+
+	START_CLAMD=yes
+	START_FRESHCLAM=yes
+	START_MILTER=yes
+
+Step 3 - Edit sendmail.mc
+
+	Add these lines to sendmail.mc before any any other 
+	INPUT_MAIL_FILTER lines and before MAILER(local)
+	NOTE: ANY INPUT_MAIL_FILTER definitions put before these lines
+	will be discarded due to the use of confINPUT_MAIL_FILTERS
+	Make this your first mail filter. :)
+
+	INPUT_MAIL_FILTER(`clmilter',`S=local:/var/run/clamav/clmilter.sock, F=, T=S:4m;R:4m')dnl
+	define(`confINPUT_MAIL_FILTERS', `clmilter')dnl
+
+Step 4 - Rebuild sendmail.cf
+
+	cd /etc/mail
+	m4 sendmail.mc > sendmail.cf
+
+Step 5 - Start clamad
+
+	/etc/init.d/clamd start
+
+Step 6 - Restart sendmail
+
+	/etc/init.d/sendmail restart

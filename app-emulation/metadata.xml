@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-emulation category contains emulation software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-emulation enthält Emulationssoftware.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-emulation contiene programas para emulación.
+	</longdescription>
+	<longdescription lang="ja">
+		app-emulationカテゴリにはエミュレーションソフトウェアが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-emulation categorie bevat emulatie programma's.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-emulation chứa các phần mềm mô phỏng.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-emulation contiene programmi di emulazione.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-emulation contém programas para emulação.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-emulation zawiera programy służące do emulacji.
+	</longdescription>
+</catmetadata>
+

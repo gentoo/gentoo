@@ -1,0 +1,11 @@
+--- p3scan.c	2005-12-12 15:00:00.000000000 +0000
++++ p3scan.c	2009-03-06 02:34:13.000000000 +0000
+@@ -366,7 +366,7 @@
+       XXXXXX[4] = letters[v % 62];
+       v /= 62;
+       XXXXXX[5] = letters[v % 62];
+-      fd=open(template, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR | O_SYNC, 0600);
++      fd=open(template, O_RDWR | O_CREAT | O_EXCL | O_SYNC, 0600);
+       if (fd >= 0){
+          errno = save_errno;
+          return fd;

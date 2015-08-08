@@ -1,0 +1,48 @@
+diff -r -U1 TeXmacs-1.0.7.16-src.orig/plugins/axiom/Makefile TeXmacs-1.0.7.16-src/plugins/axiom/Makefile
+--- TeXmacs-1.0.7.16-src.orig/plugins/axiom/Makefile	2010-12-18 01:02:16.000000000 +0600
++++ TeXmacs-1.0.7.16-src/plugins/axiom/Makefile	2012-09-13 00:38:53.000000000 +0700
+@@ -16,3 +16,3 @@
+ bin/tm_axiom: src/tm_axiom.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) src/tm_axiom.c -o bin/tm_axiom
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) src/tm_axiom.c -o bin/tm_axiom
+ 
+diff -r -U1 TeXmacs-1.0.7.16-src.orig/plugins/graphviz/Makefile TeXmacs-1.0.7.16-src/plugins/graphviz/Makefile
+--- TeXmacs-1.0.7.16-src.orig/plugins/graphviz/Makefile	2010-12-18 01:02:15.000000000 +0600
++++ TeXmacs-1.0.7.16-src/plugins/graphviz/Makefile	2012-09-13 00:38:58.000000000 +0700
+@@ -16,3 +16,3 @@
+ bin/tm_graphviz: src/tm_graphviz.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) src/tm_graphviz.c -o bin/tm_graphviz
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) src/tm_graphviz.c -o bin/tm_graphviz
+ 
+diff -r -U1 TeXmacs-1.0.7.16-src.orig/plugins/maple/Makefile TeXmacs-1.0.7.16-src/plugins/maple/Makefile
+--- TeXmacs-1.0.7.16-src.orig/plugins/maple/Makefile	2010-12-18 01:02:16.000000000 +0600
++++ TeXmacs-1.0.7.16-src/plugins/maple/Makefile	2012-09-13 00:39:59.000000000 +0700
+@@ -17,3 +17,3 @@
+ bin/tm_maple_5: src/tm_maple_5.cpp
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) src/tm_maple_5.cpp -o bin/tm_maple_5
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) src/tm_maple_5.cpp -o bin/tm_maple_5
+ 
+diff -r -U1 TeXmacs-1.0.7.16-src.orig/plugins/mathematica/Makefile TeXmacs-1.0.7.16-src/plugins/mathematica/Makefile
+--- TeXmacs-1.0.7.16-src.orig/plugins/mathematica/Makefile	2010-12-18 01:02:15.000000000 +0600
++++ TeXmacs-1.0.7.16-src/plugins/mathematica/Makefile	2012-09-13 00:40:18.000000000 +0700
+@@ -14,3 +14,3 @@
+ bin/realpath: src/realpath.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) src/realpath.c -o bin/realpath
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) src/realpath.c -o bin/realpath
+ 
+diff -r -U1 TeXmacs-1.0.7.16-src.orig/plugins/r/Makefile TeXmacs-1.0.7.16-src/plugins/r/Makefile
+--- TeXmacs-1.0.7.16-src.orig/plugins/r/Makefile	2010-12-18 01:02:16.000000000 +0600
++++ TeXmacs-1.0.7.16-src/plugins/r/Makefile	2012-09-13 00:41:16.000000000 +0700
+@@ -16,3 +16,3 @@
+ bin/tm_r: src/tm_r.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -I../../src/System src/tm_r.c -o bin/tm_r -lutil
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -I../../src/System src/tm_r.c -o bin/tm_r -lutil
+ 
+diff -r -U1 TeXmacs-1.0.7.16-src.orig/plugins/shell/Makefile TeXmacs-1.0.7.16-src/plugins/shell/Makefile
+--- TeXmacs-1.0.7.16-src.orig/plugins/shell/Makefile	2010-12-18 01:02:15.000000000 +0600
++++ TeXmacs-1.0.7.16-src/plugins/shell/Makefile	2012-09-13 00:41:57.000000000 +0700
+@@ -16,3 +16,3 @@
+ bin/tm_shell: src/tm_shell.cpp
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS)  -I../../src/System  -lutil src/tm_shell.cpp -o bin/tm_shell
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS)  -I../../src/System  -lutil src/tm_shell.cpp -o bin/tm_shell
+ 

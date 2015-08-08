@@ -1,0 +1,57 @@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index ada3dca..6acd71c 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -10,7 +10,7 @@ CPPFLAGS        = @CPPFLAGS@
+ DEFS            = @DEFS@
+ RANLIB          = @RANLIB@
+ LN_S            = @LN_S@
+-LDFLAGS	        = @with_db_lib@
++LDFLAGS	        = @with_db_lib@ @LDFLAGS@
+ INC	        = @with_db_inc@
+ INSTALL         = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+@@ -55,7 +55,7 @@ all: $(LIBNAME) @build_supports@
+ 
+ $(LIBNAME): $(LIBOBJS)
+ 	$(LIBTOOL) --mode=link $(CC) -o $@ $(LIBOBJS) -rpath $(libdir) \
+-		-version-info $(CURRENT_VER):$(REVISION_VER):$(AGE_VER)
++		-version-info $(CURRENT_VER):$(REVISION_VER):$(AGE_VER) $(LDFLAGS)
+ 
+ bims:
+ 	(cd supports/bims; $(MAKE))
+diff --git a/src/supports/bims/Makefile.in b/src/supports/bims/Makefile.in
+index dc2534d..0e3041b 100644
+--- a/src/supports/bims/Makefile.in
++++ b/src/supports/bims/Makefile.in
+@@ -10,7 +10,7 @@ CPPFLAGS        = @CPPFLAGS@
+ DEFS            = @DEFS@
+ RANLIB          = @RANLIB@
+ LN_S            = @LN_S@
+-LDFLAGS         = @with_db_lib@
++LDFLAGS         = @with_db_lib@ @LDFLAGS@
+ INC             = -I../..
+ INSTALL         = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+@@ -45,7 +45,7 @@ all: $(LIBNAME)
+ 
+ $(LIBNAME): $(LIBOBJS)
+ 	$(LIBTOOL) --mode=link $(CC) -o $@ $(LIBOBJS) -rpath $(libdir) \
+-		-version-info $(CURRENT_VER):$(REVISION_VER):$(AGE_VER)
++		-version-info $(CURRENT_VER):$(REVISION_VER):$(AGE_VER) $(LDFLAGS)
+ 
+ bims.lo: bims.c bims.h
+ 	$(LIBTOOL) --mode=compile $(CC) -c $(CFLAGS) $(DEFS) $(INC) -o $@ bims.c
+diff --git a/util/Makefile.in b/util/Makefile.in
+index cb82736..16425d1 100644
+--- a/util/Makefile.in
++++ b/util/Makefile.in
+@@ -10,7 +10,7 @@ CPPFLAGS        = @CPPFLAGS@
+ DEFS            = @DEFS@
+ RANLIB          = @RANLIB@
+ LN_S            = @LN_S@
+-LDFLAGS         = ../src/libtabe.la @with_db_lib@
++LDFLAGS         = ../src/libtabe.la @with_db_lib@ @LDFLAGS@
+ INC             = -I../src @with_db_inc@
+ INSTALL		= @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@

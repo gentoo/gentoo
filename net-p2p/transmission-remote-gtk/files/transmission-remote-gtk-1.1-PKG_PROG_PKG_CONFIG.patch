@@ -1,0 +1,16 @@
+This is required when passing --without-libnotify because otherwise the first call to
+PKG_CHECK_MODULES is not called and the ./configure will bail out.
+
+http://bugs.gentoo.org/435586
+http://code.google.com/p/transmission-remote-gtk/issues/detail?id=216
+
+--- configure.ac
++++ configure.ac
+@@ -34,6 +34,7 @@
+ AC_PROG_INSTALL
+ LT_INIT
+ IT_PROG_INTLTOOL([0.35.0])
++PKG_PROG_PKG_CONFIG
+ 
+ AC_CHECK_HEADERS([stdlib.h string.h])
+ AC_TYPE_SIZE_T

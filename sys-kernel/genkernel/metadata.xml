@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>genkernel@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="crypt">Obsolete USE flag. Use cryptsetup for LUKS support. (bug ##414523)</flag>
+		<flag name="cryptsetup">Enable support for Luks disk encryption using <pkg>sys-fs/cryptsetup</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">fuse</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+Description: Use correct preprocessor directive to avoid FTBFS
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648547
+Author: Carlos Martín Nieto <carlos@cmartin.tk>
+
+Index: blam/src/Application.cs
+===================================================================
+--- blam.orig/src/Application.cs	2011-08-01 16:06:44.000000000 +0200
++++ blam/src/Application.cs	2011-08-01 16:07:17.000000000 +0200
+@@ -22,7 +22,7 @@
+ #if DBUS_SHARP
+ using DBus;
+ using org.freedesktop.DBus;
+-#elseif NDESK_DBUS
++#elif NDESK_DBUS
+ using NDesk.DBus;
+ using org.freedesktop.DBus;
+ #endif

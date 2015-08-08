@@ -1,0 +1,144 @@
+From e08dbcca6cf50c834e2fe4e7290cce642903251d Mon Sep 17 00:00:00 2001
+From: Hermitifier <quantifier666@gmail.com>
+Date: Mon, 3 Oct 2011 17:06:18 +0200
+Subject: [PATCH] Protect GMarkup parser against invalid unicode characters
+
+[Alexandre Rostovtsev <tetromino@gentoo.org>: backport to 1.4.3]
+
+http://loudmouth.lighthouseapp.com/projects/17276/tickets/61
+---
+ loudmouth/lm-parser.c |   94 ++++++++++++++++++++++++++++++++++++++++++++-----
+ 1 files changed, 85 insertions(+), 9 deletions(-)
+
+diff --git a/loudmouth/lm-parser.c b/loudmouth/lm-parser.c
+index 89f6675..0a61a56 100644
+--- a/loudmouth/lm-parser.c
++++ b/loudmouth/lm-parser.c
+@@ -43,6 +43,8 @@ struct LmParser {
+ 		
+ 	GMarkupParser           *m_parser;
+ 	GMarkupParseContext     *context;
++	gchar                   *incomplete; /* incomplete utf-8 character
++	                                        found at the end of buffer */
+ };
+ 
+ 
+@@ -233,25 +235,98 @@ lm_parser_new (LmParserMessageFunction function,
+ 	parser->cur_root = NULL;
+ 	parser->cur_node = NULL;
+ 
++	parser->incomplete = NULL;
++
+ 	return parser;
+ }
+ 
++static gchar *
++_lm_parser_make_valid (const gchar *buffer, gchar **incomplete)
++{
++	GString *string;
++	const gchar *remainder, *invalid;
++	gint remaining_bytes, valid_bytes;
++	gunichar code; /*error code for invalid character*/
++
++	g_return_val_if_fail (buffer != NULL, NULL);
++
++	string = NULL;
++	remainder = buffer;
++	remaining_bytes = strlen (buffer);
++
++	while (remaining_bytes != 0)
++	{
++		if (g_utf8_validate (remainder, remaining_bytes, &invalid))
++			break;
++		valid_bytes = invalid - remainder;
++
++		if (string == NULL)
++			string = g_string_sized_new (remaining_bytes);
++
++		g_string_append_len (string, remainder, valid_bytes);
++
++		remainder = g_utf8_find_next_char(invalid, NULL);
++		remaining_bytes -= valid_bytes + (remainder - invalid);
++
++		code = g_utf8_get_char_validated (invalid, -1);
++
++		if (code == -1) {
++			/* A complete but invalid codepoint */
++		   	/* append U+FFFD REPLACEMENT CHARACTER */
++	   		g_string_append (string, "\357\277\275");
++#ifndef LM_NO_DEBUG
++	   		g_debug ("invalid character!\n");
++#endif
++		} else if (code == -2) {
++			/* Beginning of what could be a character */
++			*incomplete = g_strdup (invalid);
++#ifndef LM_NO_DEBUG
++			g_debug ("incomplete character: %s\n", *incomplete);
++#endif
++
++			g_assert (remaining_bytes == 0);
++			g_assert (*(g_utf8_find_next_char(invalid, NULL)) == '\0');
++		}
++	}
++
++	if (string == NULL)
++		return g_strdup (buffer);
++
++	g_string_append (string, remainder);
++
++	g_assert (g_utf8_validate (string->str, -1, NULL));
++
++	return g_string_free (string, FALSE);
++}
++
++
+ void
+ lm_parser_parse (LmParser *parser, const gchar *string)
+ {
++	gchar *valid, *completed;
+ 	g_return_if_fail (parser != NULL);
+ 	
+-        if (!parser->context) {
+-                parser->context = g_markup_parse_context_new (parser->m_parser, 0,
+-                                                              parser, NULL);
+-        }
+-        
+-        if (g_markup_parse_context_parse (parser->context, string, 
+-                                          (gssize)strlen (string), NULL)) {
+-        } else {
++	if (!parser->context) {
++		parser->context = g_markup_parse_context_new (parser->m_parser, 0,
++		                                              parser, NULL);
++	}
++
++	if (parser->incomplete) {
++		completed = g_strdup_printf("%s%s", parser->incomplete, string);
++		g_free(parser->incomplete);
++		parser->incomplete = NULL;
++	} else {
++		completed = g_strdup(string);
++	}
++	valid = _lm_parser_make_valid (completed, &parser->incomplete);
++	g_free(completed);
++	if (g_markup_parse_context_parse (parser->context, valid,
++		                          (gssize)strlen (valid), NULL)) {
++	} else {
+ 		g_markup_parse_context_free (parser->context);
+ 		parser->context = NULL;
+-        }
++	}
++	g_free(valid);
+ }
+ 
+ void
+@@ -264,6 +339,7 @@ lm_parser_free (LmParser *parser)
+ 	if (parser->context) {
+ 		g_markup_parse_context_free (parser->context);
+ 	}
++	g_free (parser->incomplete);
+ 	g_free (parser->m_parser);
+ 	g_free (parser);
+ }
+-- 
+1.7.7.1
+

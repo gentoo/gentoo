@@ -1,0 +1,211 @@
+--- Externals/Bochs_disasm/PowerPCDisasm.cpp	2013-05-04 10:01:04.218490222 +0200
++++ Externals/Bochs_disasm/PowerPCDisasm.cpp	2013-05-04 10:01:19.159459773 +0200
+@@ -580,7 +580,7 @@
+ 		if (me < mb) 
+ 			mask = ~mask;
+ 		//rotate the mask so it can be applied to source reg
+-		return _rotl(mask, 32 - r);
++		return __rotl(mask, 32 - r);
+ 	}
+ 
+ 
+--- Source/Core/Common/Src/CommonFuncs.h	2013-05-04 10:01:04.139490384 +0200
++++ Source/Core/Common/Src/CommonFuncs.h	2013-05-04 10:02:18.181339068 +0200
+@@ -65,7 +65,7 @@
+ 	#endif
+ 	#define ARRAYSIZE(A) (sizeof(A)/sizeof((A)[0]))
+ 
+-inline u32 _rotl(u32 x, int shift) {
++inline u32 __rotl(u32 x, int shift) {
+     shift &= 31;
+     if (!shift) return x;
+     return (x << shift) | (x >> (32 - shift));
+@@ -76,7 +76,7 @@
+ 	return (x << n) | (x >> (64 - n));
+ }
+ 
+-inline u32 _rotr(u32 x, int shift) {
++inline u32 __rotr(u32 x, int shift) {
+     shift &= 31;
+     if (!shift) return x;
+     return (x >> shift) | (x << (32 - shift));
+--- Source/Core/Common/Src/Hash.cpp	2013-05-04 10:01:04.140490382 +0200
++++ Source/Core/Common/Src/Hash.cpp	2013-05-04 10:01:19.161459756 +0200
+@@ -362,15 +362,15 @@
+ inline void bmix32(u32 & h1, u32 & h2, u32 & k1, u32 & k2, u32 & c1, u32 & c2)
+ {
+ 	k1 *= c1; 
+-	k1  = _rotl(k1,11); 
++	k1  = __rotl(k1,11); 
+ 	k1 *= c2;
+ 	h1 ^= k1;
+ 	h1 += h2;
+ 
+-	h2 = _rotl(h2,17);
++	h2 = __rotl(h2,17);
+ 
+ 	k2 *= c2; 
+-	k2  = _rotl(k2,11);
++	k2  = __rotl(k2,11);
+ 	k2 *= c1;
+ 	h2 ^= k2;
+ 	h2 += h1;
+--- Source/Core/Core/Src/ARDecrypt.cpp	2013-05-04 10:01:04.193490273 +0200
++++ Source/Core/Core/Src/ARDecrypt.cpp	2013-05-04 10:01:19.161459756 +0200
+@@ -270,26 +270,26 @@
+ {
+ 	u32 tmp;
+ 
+-	*val = _rotl(*val,4);
++	*val = __rotl(*val,4);
+ 
+ 	tmp = ((*addr^*val)&0xF0F0F0F0);
+ 	*addr ^= tmp;
+-	*val = _rotr((*val^tmp),0x14);
++	*val = __rotr((*val^tmp),0x14);
+ 
+ 	tmp = ((*addr^*val)&0xFFFF0000);
+ 	*addr ^= tmp;
+-	*val = _rotr((*val^tmp),0x12);
++	*val = __rotr((*val^tmp),0x12);
+ 
+ 	tmp = ((*addr^*val)&0x33333333);
+ 	*addr ^= tmp;
+-	*val = _rotr((*val^tmp),6);
++	*val = __rotr((*val^tmp),6);
+ 
+ 	tmp = ((*addr^*val)&0x00FF00FF);
+ 	*addr ^= tmp;
+-	*val = _rotl((*val^tmp),9);
++	*val = __rotl((*val^tmp),9);
+ 
+ 	tmp = ((*addr^*val)&0xAAAAAAAA);
+-	*addr = _rotl((*addr^tmp),1);
++	*addr = __rotl((*addr^tmp),1);
+ 	*val ^= tmp;
+ }
+ 
+@@ -297,27 +297,27 @@
+ {
+ 	u32 tmp;
+ 
+-	*val = _rotr(*val,1);
++	*val = __rotr(*val,1);
+ 
+ 	tmp = ((*addr^*val)&0xAAAAAAAA);
+ 	*val ^= tmp;
+-	*addr = _rotr((*addr^tmp),9);
++	*addr = __rotr((*addr^tmp),9);
+ 
+ 	tmp = ((*addr^*val)&0x00FF00FF);
+ 	*val ^= tmp;
+-	*addr = _rotl((*addr^tmp),6);
++	*addr = __rotl((*addr^tmp),6);
+ 
+ 	tmp = ((*addr^*val)&0x33333333);
+ 	*val ^= tmp;
+-	*addr = _rotl((*addr^tmp),0x12);
++	*addr = __rotl((*addr^tmp),0x12);
+ 
+ 	tmp = ((*addr^*val)&0xFFFF0000);
+ 	*val ^= tmp;
+-	*addr = _rotl((*addr^tmp),0x14);
++	*addr = __rotl((*addr^tmp),0x14);
+ 
+ 	tmp = ((*addr^*val)&0xF0F0F0F0);
+ 	*val ^= tmp;
+-	*addr = _rotr((*addr^tmp),4);
++	*addr = __rotr((*addr^tmp),4);
+ }
+ 
+ void decryptcode(u32 *seeds, u32 *code)
+@@ -330,11 +330,11 @@
+ 	unscramble1(&addr,&val);
+ 	while (i < 32)
+ 	{
+-		tmp = (_rotr(val,4)^seeds[i++]);
++		tmp = (__rotr(val,4)^seeds[i++]);
+ 		tmp2 = (val^seeds[i++]);
+ 		addr ^= (table6[tmp&0x3F]^table4[(tmp>>8)&0x3F]^table2[(tmp>>16)&0x3F]^table0[(tmp>>24)&0x3F]^table7[tmp2&0x3F]^table5[(tmp2>>8)&0x3F]^table3[(tmp2>>16)&0x3F]^table1[(tmp2>>24)&0x3F]);
+ 
+-		tmp = (_rotr(addr,4)^seeds[i++]);
++		tmp = (__rotr(addr,4)^seeds[i++]);
+ 		tmp2 = (addr^seeds[i++]);
+ 		val ^= (table6[tmp&0x3F]^table4[(tmp>>8)&0x3F]^table2[(tmp>>16)&0x3F]^table0[(tmp>>24)&0x3F]^table7[tmp2&0x3F]^table5[(tmp2>>8)&0x3F]^table3[(tmp2>>16)&0x3F]^table1[(tmp2>>24)&0x3F]);
+ 	}
+--- Source/Core/Core/Src/PowerPC/Interpreter/Interpreter_Integer.cpp	2013-05-04 10:01:04.187490286 +0200
++++ Source/Core/Core/Src/PowerPC/Interpreter/Interpreter_Integer.cpp	2013-05-04 10:01:19.162459748 +0200
+@@ -194,21 +194,21 @@
+ void Interpreter::rlwimix(UGeckoInstruction _inst)
+ {
+ 	u32 mask = Helper_Mask(_inst.MB,_inst.ME);
+-	m_GPR[_inst.RA] = (m_GPR[_inst.RA] & ~mask) | (_rotl(m_GPR[_inst.RS],_inst.SH) & mask);
++	m_GPR[_inst.RA] = (m_GPR[_inst.RA] & ~mask) | (__rotl(m_GPR[_inst.RS],_inst.SH) & mask);
+ 	if (_inst.Rc) Helper_UpdateCR0(m_GPR[_inst.RA]);
+ }
+ 
+ void Interpreter::rlwinmx(UGeckoInstruction _inst)
+ {
+ 	u32 mask = Helper_Mask(_inst.MB,_inst.ME);
+-	m_GPR[_inst.RA] = _rotl(m_GPR[_inst.RS],_inst.SH) & mask;
++	m_GPR[_inst.RA] = __rotl(m_GPR[_inst.RS],_inst.SH) & mask;
+ 	if (_inst.Rc) Helper_UpdateCR0(m_GPR[_inst.RA]);
+ }
+ 
+ void Interpreter::rlwnmx(UGeckoInstruction _inst)
+ {
+ 	u32 mask = Helper_Mask(_inst.MB,_inst.ME);
+-	m_GPR[_inst.RA] = _rotl(m_GPR[_inst.RS], m_GPR[_inst.RB] & 0x1F) & mask;
++	m_GPR[_inst.RA] = __rotl(m_GPR[_inst.RS], m_GPR[_inst.RB] & 0x1F) & mask;
+ 
+ 	if (_inst.Rc) Helper_UpdateCR0(m_GPR[_inst.RA]);
+ }
+--- Source/Core/Core/Src/PowerPC/Jit64/Jit_Integer.cpp	2013-05-04 10:01:04.185490290 +0200
++++ Source/Core/Core/Src/PowerPC/Jit64/Jit_Integer.cpp	2013-05-04 10:01:19.190459657 +0200
+@@ -1672,7 +1672,7 @@
+ 	{
+ 		unsigned result = (int)gpr.R(s).offset;
+ 		if (inst.SH != 0)
+-			result = _rotl(result, inst.SH);
++			result = __rotl(result, inst.SH);
+ 		result &= Helper_Mask(inst.MB, inst.ME);
+ 		gpr.SetImmediate32(a, result);
+ 		if (inst.Rc)
+@@ -1739,7 +1739,7 @@
+ 	if (gpr.R(a).IsImm() && gpr.R(s).IsImm())
+ 	{
+ 		u32 mask = Helper_Mask(inst.MB,inst.ME);
+-		gpr.SetImmediate32(a, ((u32)gpr.R(a).offset & ~mask) | (_rotl((u32)gpr.R(s).offset,inst.SH) & mask));
++		gpr.SetImmediate32(a, ((u32)gpr.R(a).offset & ~mask) | (__rotl((u32)gpr.R(s).offset,inst.SH) & mask));
+ 		if (inst.Rc)
+ 		{
+ 			ComputeRC(gpr.R(a));
+@@ -1824,7 +1824,7 @@
+ 	u32 mask = Helper_Mask(inst.MB, inst.ME);
+ 	if (gpr.R(b).IsImm() && gpr.R(s).IsImm())
+ 	{
+-		gpr.SetImmediate32(a, _rotl((u32)gpr.R(s).offset, (u32)gpr.R(b).offset & 0x1F) & mask);
++		gpr.SetImmediate32(a, __rotl((u32)gpr.R(s).offset, (u32)gpr.R(b).offset & 0x1F) & mask);
+ 		if (inst.Rc)
+ 		{
+ 			ComputeRC(gpr.R(a));
+--- Source/Core/Core/Src/PowerPC/Jit64IL/IR.cpp	2013-05-04 10:01:04.188490284 +0200
++++ Source/Core/Core/Src/PowerPC/Jit64IL/IR.cpp	2013-05-04 10:01:19.191459655 +0200
+@@ -248,7 +248,7 @@
+ 		return 0;
+ 	case Rol:
+ 		if (isImm(*getOp2(I))) {
+-			return _rotl(ComputeKnownZeroBits(getOp1(I)),
++			return __rotl(ComputeKnownZeroBits(getOp1(I)),
+ 			             GetImmValue(getOp2(I)));
+ 		}
+ 	default:
+@@ -844,7 +844,7 @@
+ InstLoc IRBuilder::FoldRol(InstLoc Op1, InstLoc Op2) {
+ 	if (isImm(*Op2)) {
+ 		if (isImm(*Op1))
+-			return EmitIntConst(_rotl(GetImmValue(Op1),
++			return EmitIntConst(__rotl(GetImmValue(Op1),
+ 					          GetImmValue(Op2)));
+ 		if (!(GetImmValue(Op2) & 31)) return Op1;
+ 	}

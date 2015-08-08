@@ -1,0 +1,23 @@
+Remove bashifications
+https://bugs.gentoo.org/287130
+
+--- a/configure
++++ b/configure
+@@ -4880,7 +4880,7 @@ ac_config_files="$ac_config_files version.h:config/version.h.in"
+ 
+ # 1.234<whatever> -> 1234<whatever>
+ case "$PACKAGE_VERSION" in
+-[0-9].*) eu_version="${PACKAGE_VERSION/./}" ;;
++[0-9].*) eu_version=`echo "$PACKAGE_VERSION" | sed 's@\.@@'` ;;
+ *)     	   as_fn_error $? "confused by version number '$PACKAGE_VERSION'" "$LINENO" 5 ;;
+ esac
+ case "$eu_version" in
+@@ -4909,7 +4909,7 @@ case "$eu_version" in
+ esac
+ 
+ # Round up to the next release API (x.y) version.
+-eu_version=$[($eu_version + 999) / 1000]
++eu_version=`expr \( $eu_version + 999 \) / 1000`
+ 
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure

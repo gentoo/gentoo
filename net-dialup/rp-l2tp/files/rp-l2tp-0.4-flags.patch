@@ -1,0 +1,54 @@
+diff -ru rp-l2tp-0.4.orig/handlers/Makefile.in rp-l2tp-0.4/handlers/Makefile.in
+--- rp-l2tp-0.4.orig/handlers/Makefile.in	2008-10-18 08:35:39.000000000 +0000
++++ rp-l2tp-0.4/handlers/Makefile.in	2008-10-18 08:47:02.000000000 +0000
+@@ -15,24 +15,24 @@
+ 
+ OBJS=pty.o sync-pppd.o dstring.o
+ SRCS=$(OBJS:.o=.c)
+-CFLAGS=-g -O2 -I.. -I../libevent -I../../libevent -Wall
++CFLAGS=@CFLAGS@ -I.. -I../libevent -I../../libevent -Wall
+ 
+ all: $(HANDLERS) l2tp-control
+ 
+ l2tp-control: cmd-control.o
+-	gcc -o l2tp-control cmd-control.o
++	gcc $(LDFLAGS) -o l2tp-control cmd-control.o
+ 
+ cmd-control.o: cmd-control.c
+-	gcc -c -o $@ $^
++	gcc $(CFLAGS) -c -o $@ $^
+ 
+ %.o: %.c
+ 	gcc $(CFLAGS) -fPIC -c -o $@ $<
+ 
+ sync-pppd.so: pty.o sync-pppd.o
+-	gcc -shared -o $@ $^
++	gcc $(LDFLAGS) -shared -o $@ $^
+ 
+ cmd.so: cmd.o dstring.o
+-	gcc -shared -o $@ $^
++	gcc $(LDFLAGS) -shared -o $@ $^
+ 
+ clean:
+ 	rm -f *.so *.o *~
+diff -ru rp-l2tp-0.4.orig/Makefile.in rp-l2tp-0.4/Makefile.in
+--- rp-l2tp-0.4.orig/Makefile.in	2008-10-18 08:35:39.000000000 +0000
++++ rp-l2tp-0.4/Makefile.in	2008-10-18 08:40:38.000000000 +0000
+@@ -31,7 +31,7 @@
+ EXTRA_LIBS=@LIBEVENT@/*.o -ldl
+ 
+ SRCS=$(OBJS:.o=.c)
+-CFLAGS=-g -I.. -I@LIBEVENT@ -Wall -Wstrict-prototypes -ansi -pedantic -D_GNU_SOURCE -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(prefix)\" -DLIBDIR=\"$(libdir)\"
++CFLAGS=@CFLAGS@ -I.. -I@LIBEVENT@ -Wall -Wstrict-prototypes -ansi -pedantic -D_GNU_SOURCE -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(prefix)\" -DLIBDIR=\"$(libdir)\"
+ 
+ TARGETS=l2tpd libl2tp.a handlers
+ 
+@@ -44,7 +44,7 @@
+ 
+ l2tpd: libl2tp.a libevent/libevent.a
+ 	$(MAKE) -C handlers
+-	@CC@ -o l2tpd -rdynamic $(OBJS) $(EXTRA_LIBS)
++	@CC@ $(LDFLAGS) -o l2tpd -rdynamic $(OBJS) $(EXTRA_LIBS)
+ 
+ libevent/libevent.a:
+ 	test -d libevent || ln -s ../libevent .

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<upstream>
+		<remote-id type="cpan">Perl-Critic-Deprecated</remote-id>
+		<remote-id type="cpan-module">Perl::Critic::Deprecated</remote-id>
+		<remote-id type="cpan-module">Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs</remote-id>
+		<remote-id type="cpan-module">Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseVars</remote-id>
+		<remote-id type="cpan-module">Perl::Critic::Utils::PPIRegexp</remote-id>
+	</upstream>
+</pkgmetadata>

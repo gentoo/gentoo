@@ -1,0 +1,71 @@
+diff --git a/Makefile.am b/Makefile.am
+index 33f265b..346326d 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,9 @@
+ EXTRA_DIST = AUTHORS COPYING NEWS README README.packaging \
+              bless.mdp bless.mds bless.spec autogen.sh bless.mi
+ 
++doc_DATA = AUTHORS COPYING INSTALL ChangeLog NEWS \
++           README README.packaging bless.spec
++
+ SUBDIRS = po builder src bin data doc . tests
+ 
+ DIST_SUBDIRS= po builder src bin doc data tests
+@@ -34,11 +37,5 @@ bless-builder:
+ dist-hook:
+ 	bzr log > $(distdir)/ChangeLog
+ 
+-install-data-local:
+-	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)
+-	$(INSTALL_DATA) AUTHORS COPYING INSTALL ChangeLog NEWS \
+-			README README.packaging bless.spec     \
+-			$(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)
+-
+ uninstall-local:
+ 	rm -rf $(DESTDIR)$(libdir)/$(PACKAGE_NAME)
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index b18e94a..d7eecc6 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,4 +1 @@
+ SUBDIRS= developer user
+-
+-uninstall-local:
+-	rm -rf $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)
+diff --git a/doc/user/Makefile.am b/doc/user/Makefile.am
+index 729b295..58a1358 100644
+--- a/doc/user/Makefile.am
++++ b/doc/user/Makefile.am
+@@ -7,6 +7,11 @@ CLEANFILES=$(OMF)
+ 
+ noinst_SCRIPTS=$(OMF)
+ 
++docmandir=$(docdir)/user
++docfigsdir=$(docmandir)/figures
++
++docfigs_DATA=$(FIGURES)
++docman_DATA=$(DOCS) $(wildcard *.html)
+ 
+ $(OMF): $(OMF).in
+ 	if [ -x `which scrollkeeper-preinstall` ]; then \
+@@ -27,11 +32,6 @@ dist-hook: doc
+ 	rm html_file_list
+ 
+ install-data-local:
+-	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user
+-	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user/figures
+-	$(INSTALL_DATA) $(DOCS) $(wildcard *.html) \
+-			$(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user
+-	$(INSTALL_DATA) $(FIGURES) $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user/figures
+ 	$(INSTALL) -d $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)
+ 	$(INSTALL_DATA) $(OMF) $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)
+ if WITH_SCROLLKEEPER
+@@ -39,7 +39,6 @@ if WITH_SCROLLKEEPER
+ endif
+ 
+ uninstall-local:
+-	rm -rf $(DESTDIR)$(datadir)/doc/$(PACKAGE_NAME)/user
+ 	rm $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)/$(OMF)
+ if WITH_SCROLLKEEPER
+ 	scrollkeeper-update -o $(DESTDIR)$(datadir)/omf/$(PACKAGE_NAME)

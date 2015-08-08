@@ -1,0 +1,32 @@
+ src/gui/curses/CMakeLists.txt | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/gui/curses/CMakeLists.txt b/src/gui/curses/CMakeLists.txt
+index 284956f..492fc77 100644
+--- a/src/gui/curses/CMakeLists.txt
++++ b/src/gui/curses/CMakeLists.txt
+@@ -35,7 +35,14 @@ main.c)
+ 
+ set(EXECUTABLE weechat)
+ 
+-find_package(Ncurses)
++
++find_package(PkgConfig)
++pkg_search_module(NCURSES ncursesw ncurses)
++
++if(NOT NCURSES_FOUND)
++  find_package(Ncurses)
++endif(NCURSES_FOUND)
++
+ if(NCURSES_FOUND)
+   check_include_files(ncursesw/ncurses.h NCURSESW_HEADERS)
+   if(NCURSESW_HEADERS)
+@@ -46,7 +53,7 @@ if(NCURSES_FOUND)
+       add_definitions(-DHAVE_NCURSES_H)
+     endif()
+   endif()
+-  list(APPEND EXTRA_LIBS ${NCURSES_LIBRARY})
++  list(APPEND EXTRA_LIBS ${NCURSES_LIBRARY} ${NCURSES_LIBRARIES} )
+ endif()
+ 
+ if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Get the major number of the aac ioctl device node
+aacdev_major=$(egrep '[[:space:]]aac$' /proc/devices 2>/dev/null | awk '{print $1}' 2>/dev/null)
+aacdev_node=/dev/afa0
+
+# AACRAID device node major number found
+if [ -z "${aacdev_major}" ]; then
+	echo "ERROR: failed to determine device node major number"
+	exit 1
+fi
+if [ -e "${aacdev_node}" ]; then
+	if ! rm -f "${aacdev_node}"; then
+		echo "ERROR: failed to remove existing device node ${aacdev_node}"
+		exit 1
+	fi
+fi
+if ! mknod "${aacdev_node}" c "${aacdev_major}" 0; then
+	echo "ERROR: failed to create device node ${aacdev_node}"
+	exit 1
+fi
+
+# Start the real afacli binary
+"${0%/*}/afacli.bin" "${@}"

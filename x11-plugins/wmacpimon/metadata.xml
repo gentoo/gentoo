@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+wmacpimon is a Windowmaker dockapp that monitors
+the temperature and Speedstep features in new ACPI-based systems.
+It supports batteries, automatic shutdown when the power is low,
+and multiple screens.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wmacpimon</remote-id>
+	</upstream>
+</pkgmetadata>

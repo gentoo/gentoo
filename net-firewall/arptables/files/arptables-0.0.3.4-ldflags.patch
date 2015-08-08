@@ -1,0 +1,13 @@
+=== modified file 'Makefile'
+--- Makefile	2010-09-15 11:51:49 +0000
++++ Makefile	2010-09-15 11:52:56 +0000
+@@ -31,7 +31,7 @@
+ 	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ arptables: arptables-standalone.o arptables.o libarptc/libarptc.o $(EXT_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ $(DESTDIR)$(MANDIR)/man8/arptables.8: arptables.8
+ 	mkdir -p $(@D)
+

@@ -1,0 +1,120 @@
+diff -Naur epgsearch-1.0.0.orig/epgsearchsvdrp.c epgsearch-1.0.0/epgsearchsvdrp.c
+--- epgsearch-1.0.0.orig/epgsearchsvdrp.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/epgsearchsvdrp.c	2012-12-15 11:44:38.000000000 +0100
+@@ -564,7 +564,7 @@
+             strftime(bufStart, sizeof(bufStart), "%H%M", localtime_r(&start, &tm_r));
+             strftime(bufEnd, sizeof(bufEnd), "%H%M", localtime_r(&stop, &tm_r));
+ 		
+-            int timerMatch;
++            eTimerMatch timerMatch;
+             bool hasTimer = false;
+             if (Timers.GetMatch(pEvent, &timerMatch)) 
+                hasTimer = (timerMatch == tmFull);
+diff -Naur epgsearch-1.0.0.orig/mail.c epgsearch-1.0.0/mail.c
+--- epgsearch-1.0.0.orig/mail.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/mail.c	2012-12-15 11:45:02.000000000 +0100
+@@ -49,7 +49,7 @@
+     const cEvent* pEvent = GetEvent();
+     if (!pEvent) return "";
+ 
+-    int TimerMatch = tmNone;
++    eTimerMatch TimerMatch = tmNone;
+     cTimer* pTimer = Timers.GetMatch(pEvent, &TimerMatch);
+     if (!pTimer) return "";
+ 
+diff -Naur epgsearch-1.0.0.orig/menu_commands.c epgsearch-1.0.0/menu_commands.c
+--- epgsearch-1.0.0.orig/menu_commands.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/menu_commands.c	2012-12-15 11:45:40.000000000 +0100
+@@ -121,7 +121,7 @@
+ {
+    if (!event) return osContinue;
+ 
+-   int timerMatch = tmNone;
++   eTimerMatch timerMatch = tmNone;
+    cTimer* timer = Timers.GetMatch(event, &timerMatch);
+    if (timerMatch == tmFull) 
+    {
+diff -Naur epgsearch-1.0.0.orig/menu_event.c epgsearch-1.0.0/menu_event.c
+--- epgsearch-1.0.0.orig/menu_event.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/menu_event.c	2012-12-15 11:46:17.000000000 +0100
+@@ -92,7 +92,7 @@
+       cEventObj* eventObjPrev = GetPrev(event);
+       cEventObj* eventObjNext = GetNext(event);
+ 
+-      int timerMatch = tmNone;      
++      eTimerMatch timerMatch = tmNone;      
+       Timers.GetMatch(event, &timerMatch);
+       const char* szRed = trVDR("Button$Record");
+       if (timerMatch == tmFull)
+diff -Naur epgsearch-1.0.0.orig/menu_main.c epgsearch-1.0.0/menu_main.c
+--- epgsearch-1.0.0.orig/menu_main.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/menu_main.c	2012-12-15 11:47:08.000000000 +0100
+@@ -181,7 +181,7 @@
+   if (item) {
+       if (item->timerMatch == tmFull) 
+       {
+-	  int tm = tmNone;
++	  eTimerMatch tm = tmNone;
+ 	  cTimer *timer = Timers.GetMatch(item->event, &tm);
+ 	  if (timer)
+ 	    {
+diff -Naur epgsearch-1.0.0.orig/menu_searchresults.c epgsearch-1.0.0/menu_searchresults.c
+--- epgsearch-1.0.0.orig/menu_searchresults.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/menu_searchresults.c	2012-12-15 11:51:12.000000000 +0100
+@@ -217,7 +217,7 @@
+    if (item) {
+       if (item->timerMatch == tmFull) 
+       {
+-         int tm = tmNone;
++         eTimerMatch tm = tmNone;
+          cTimer *timer = Timers.GetMatch(item->event, &tm);
+          if (timer)
+ 	   {
+diff -Naur epgsearch-1.0.0.orig/menu_searchresults.h epgsearch-1.0.0/menu_searchresults.h
+--- epgsearch-1.0.0.orig/menu_searchresults.h	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/menu_searchresults.h	2012-12-15 11:51:57.000000000 +0100
+@@ -50,7 +50,7 @@
+     bool episodeOnly;
+     cMenuTemplate* menuTemplate;
+  public: 
+-    int timerMatch;
++    eTimerMatch timerMatch;
+     bool inSwitchList;
+     const cEvent *event;
+     const cSearchExt* search;
+diff -Naur epgsearch-1.0.0.orig/menu_whatson.c epgsearch-1.0.0/menu_whatson.c
+--- epgsearch-1.0.0.orig/menu_whatson.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/menu_whatson.c	2012-12-15 11:52:37.000000000 +0100
+@@ -527,7 +527,7 @@
+    {
+       if (item->timerMatch == tmFull) 
+       {
+-         int tm = tmNone;
++         eTimerMatch tm = tmNone;
+          cTimer *timer = Timers.GetMatch(item->event, &tm);
+          if (timer)
+ 	   {
+diff -Naur epgsearch-1.0.0.orig/menu_whatson.h epgsearch-1.0.0/menu_whatson.h
+--- epgsearch-1.0.0.orig/menu_whatson.h	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/menu_whatson.h	2012-12-15 11:53:09.000000000 +0100
+@@ -35,7 +35,7 @@
+   const cEvent *event;
+   cChannel *channel;
+   showMode mode;
+-  int timerMatch;
++  eTimerMatch timerMatch;
+   bool inSwitchList;
+   cMenuTemplate* menuTemplate;
+ 
+diff -Naur epgsearch-1.0.0.orig/services.c epgsearch-1.0.0/services.c
+--- epgsearch-1.0.0.orig/services.c	2012-12-15 11:42:41.000000000 +0100
++++ epgsearch-1.0.0/services.c	2012-12-15 11:53:34.000000000 +0100
+@@ -143,7 +143,7 @@
+          strftime(bufStart, sizeof(bufStart), "%H%M", localtime_r(&start, &tm_r));
+          strftime(bufEnd, sizeof(bufEnd), "%H%M", localtime_r(&stop, &tm_r));
+ 	    
+-         int timerMatch;
++         eTimerMatch timerMatch;
+          bool hasTimer = false;
+          if (Timers.GetMatch(pEvent, &timerMatch)) 
+             hasTimer = (timerMatch == tmFull);

@@ -1,0 +1,22 @@
+diff --git a/MazesOfMonad.cabal b/MazesOfMonad.cabal
+index db5e5bf..c3b427b 100644
+--- a/MazesOfMonad.cabal
++++ b/MazesOfMonad.cabal
+@@ -34,3 +34,3 @@ Executable mazesofmonad
+     regex-posix, containers, filepath, directory, pretty, 
+-    array, mtl, old-locale, time					 
++    array, mtl, old-locale, time, time-locale-compat 
+ 
+diff --git a/src/MoresmauJP/Rpg/Save.hs b/src/MoresmauJP/Rpg/Save.hs
+index 12965b7..238b9b9 100644
+--- a/src/MoresmauJP/Rpg/Save.hs
++++ b/src/MoresmauJP/Rpg/Save.hs
+@@ -10,2 +10,3 @@ import Data.Maybe
+ import Data.Time
++import qualified Data.Time.Locale.Compat as DTLC
+ 
+@@ -112,3 +113,3 @@ listGames rs name= do
+       if isJust $ bckGame bs 
+-        then return $ Just (dropExtension x,formatTime defaultTimeLocale (iso8601DateFormat $ Just "%R") $ bckDate bs) 
++        then return $ Just (dropExtension x,formatTime DTLC.defaultTimeLocale (DTLC.iso8601DateFormat $ Just "%R") $ bckDate bs) 
+         else return Nothing

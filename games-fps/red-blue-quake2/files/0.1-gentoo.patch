@@ -1,0 +1,63 @@
+diff -ur Makefile.old Makefile
+--- Makefile	2001-12-29 20:37:22.000000000 -0500
++++ Makefile	2003-07-17 22:14:50.000000000 -0400
+@@ -54,7 +54,7 @@
+ RELEASE_CFLAGS=$(BASE_CFLAGS) -O6 -ffast-math -funroll-loops \
+ 	-fomit-frame-pointer -fexpensive-optimizations
+ else
+-RELEASE_CFLAGS=$(BASE_CFLAGS) -g -mpentiumpro -O6 -ffast-math -funroll-loops \
++RELEASE_CFLAGS=$(BASE_CFLAGS) -g $(GENTOO_CFLAGS) -DGENTOO_DATADIR=\\\"$(GENTOO_DATADIR)\\\" -O6 -ffast-math -funroll-loops \
+ 	-fomit-frame-pointer -fexpensive-optimizations
+ endif
+ 
+diff -ur sys_linux.c.old sys_linux.c
+--- sys_linux.c.old	2001-12-22 18:45:58.000000000 -0500
++++ sys_linux.c	2003-07-17 22:34:11.000000000 -0400
+@@ -220,7 +220,7 @@
+ 	char	curpath[MAX_OSPATH];
+ 	char	*path;
+ #ifdef __i386__
+-	const char *gamename = "gamei386.so";
++	const char *gamename = "GENTOO_DIR/gamei386.so";
+ #elif defined __alpha__
+ 	const char *gamename = "gameaxp.so";
+ #else
+@@ -250,6 +250,14 @@
+ 		{
+ 			Com_Printf ("LoadLibrary (%s)\n",name);
+ 			break;
++		} else {
++			sprintf (name, "%s", gamename);
++			game_library = dlopen (name, RTLD_LAZY );
++			if (game_library)
++			{
++				Com_Printf ("LoadLibrary (%s)\n",name);
++				break;
++			}
+ 		}
+ 	}
+ 
+diff -ur ../qcommon/files.c ../qcommon/files.c
+--- ../qcommon/files.c	2001-12-22 16:32:26.000000000 -0500
++++ ../qcommon/files.c	2003-07-17 22:34:29.000000000 -0400
+@@ -865,7 +865,7 @@
+ 	//
+ 	// start up with baseq2 by default
+ 	//
+-	FS_AddGameDirectory (va("%s/"BASEDIRNAME, fs_basedir->string) );
++	FS_AddGameDirectory (va(BASEDIRNAME) );
+ 
+ 	// any set gamedirs will be freed up to here
+ 	fs_base_searchpaths = fs_searchpaths;
+diff -ur ../qcommon/qcommon.h ../qcommon/qcommon.h
+--- ../qcommon/qcommon.h	2001-12-22 16:32:26.000000000 -0500
++++ ../qcommon/qcommon.h	2003-07-17 21:20:03.000000000 -0400
+@@ -25,7 +25,7 @@
+ 
+ #define	VERSION		3.21
+ 
+-#define	BASEDIRNAME	"baseq2"
++#define	BASEDIRNAME	GENTOO_DATADIR
+ 
+ #ifdef WIN32
+ 

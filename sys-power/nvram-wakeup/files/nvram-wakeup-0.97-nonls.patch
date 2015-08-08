@@ -1,0 +1,18 @@
+--- nvram-wakeup-0.97/Makefile
++++ nvram-wakeup-0.97/Makefile
+@@ -41,3 +41,3 @@
+ 
+-all: $(BINS) $(GTTXT)
++all: $(BINS)
+ 	size $(BINS)
+@@ -88,3 +88,2 @@
+ 	@$(INSTALL) -vd $(DOCDIR)
+-	@$(INSTALL) -vd $(GTTXTDIR)
+ 	@$(INSTALL) -vm 755 $(PROG_SH)    $(BINDIR)
+@@ -94,3 +93,2 @@
+ 	@$(INSTALL) -vm 644 $(DOC)        $(DOCDIR)
+-	@$(INSTALL) -vm 755 $(GTTXT)      $(GTTXTDIR)
+ 
+@@ -110,2 +108 @@
+ 	cd $(DOCDIR); rm -f $(DOC)
+-	cd $(GTTXTDIR); rm -f $(GTTXT)

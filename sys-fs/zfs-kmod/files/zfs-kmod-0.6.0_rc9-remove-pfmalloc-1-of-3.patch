@@ -1,0 +1,44 @@
+From e2060f922f8526aecf437de4cc4dff4c3cdfae16 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Tue, 15 May 2012 23:19:32 -0400
+Subject: [PATCH] Revert Fix ASSERTION(!dsl_pool_sync_context(tx->tx_pool))
+
+Commit eec8164771bee067c3cd55ed0a16dadeeba276de worked around an issue
+involving direct reclaim through the use of PF_MEMALLOC.   Since we
+are reworking thing to use KM_PUSHPAGE so that swap works, we revert
+this patch in favor of the use of KM_PUSHPAGE in the affected areas.
+
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #726
+---
+ module/zfs/txg.c |   13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/module/zfs/txg.c b/module/zfs/txg.c
+index 5021e44..8d037f7 100644
+--- a/module/zfs/txg.c
++++ b/module/zfs/txg.c
+@@ -372,19 +372,6 @@
+ 	callb_cpr_t cpr;
+ 	uint64_t start, delta;
+ 
+-#ifdef _KERNEL
+-	/*
+-	 * Disable the normal reclaim path for the txg_sync thread.  This
+-	 * ensures the thread will never enter dmu_tx_assign() which can
+-	 * otherwise occur due to direct reclaim.  If this is allowed to
+-	 * happen the system can deadlock.  Direct reclaim call path:
+-	 *
+-	 *   ->shrink_icache_memory->prune_icache->dispose_list->
+-	 *   clear_inode->zpl_clear_inode->zfs_inactive->dmu_tx_assign
+-	 */
+-	current->flags |= PF_MEMALLOC;
+-#endif /* _KERNEL */
+-
+ 	txg_thread_enter(tx, &cpr);
+ 
+ 	start = delta = 0;
+-- 
+1.7.10
+

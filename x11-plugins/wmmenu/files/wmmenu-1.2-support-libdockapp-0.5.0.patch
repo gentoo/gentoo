@@ -1,0 +1,14 @@
+--- wmmenu/wmmenu.c~	2002-03-10 05:41:12 -0500
++++ wmmenu/wmmenu.c	2004-12-16 18:30:52 -0500
+@@ -18,8 +18,9 @@
+ 
+     DAParseArguments (Options_Argc, Options_Argv, NULL, 0,
+         "wmmenu", VERSION) ;
+-    DAInitialize (NULL, (char*)Menu_GetTitle (), 48, 48, argc, argv) ;
+-
++    DAOpenDisplay (NULL, argc, argv) ;
++    DACreateIcon((char*)Menu_GetTitle (), 48, 48, argc, argv);
++    
+     Pixmaps_LoadMenu () ;
+     Pixmaps_LoadTile () ;
+     /* needs tile to be loaded before to have autoscale work */

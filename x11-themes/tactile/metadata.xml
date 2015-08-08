@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+<email>hwoarang@gentoo.org</email>
+<name>Markos Chandras</name>
+</maintainer>
+<maintainer>
+<email>m4rk@silverarrow.org</email>
+<name>Markellos Orfanos</name>
+<description>CC him on bugs</description>
+</maintainer>
+<longdescription lang="en">
+</longdescription>
+</pkgmetadata>
+

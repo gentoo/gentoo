@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<use>
+		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
+		<flag name="gtkstyle">Build a Qt style called GTK+ that mimics the active
+			GTK+ theme</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>http://doc.qt.io/</doc>
+	</upstream>
+</pkgmetadata>

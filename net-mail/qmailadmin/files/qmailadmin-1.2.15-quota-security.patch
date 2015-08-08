@@ -1,0 +1,41 @@
+Previous patch did not fix the 32-bit overflow properly.
+This goes with the vpopmail 5.4.33 matching quota fix (in upstream).
+
+X-Gentoo-Bug: 269129
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar qmailadmin-1.2.15.orig/qmailadmin.h qmailadmin-1.2.15/qmailadmin.h
+--- qmailadmin-1.2.15.orig/qmailadmin.h	2013-05-30 23:42:27.689759997 +0000
++++ qmailadmin-1.2.15/qmailadmin.h	2013-05-30 23:44:33.870866242 +0000
+@@ -63,4 +63,4 @@
+ /* copied from maildirquota.c in vpopmail
+  * it really needs to get into vpopmail.h somehow
+  */
+-int readuserquota(const char* dir, long *sizep, int *cntp);
++//int readuserquota(const char* dir, storage_t *sizep, storage_t *cntp);
+diff -Nuar qmailadmin-1.2.15.orig/template.c qmailadmin-1.2.15/template.c
+--- qmailadmin-1.2.15.orig/template.c	2009-02-06 05:30:05.000000000 +0000
++++ qmailadmin-1.2.15/template.c	2013-05-30 23:45:47.319571080 +0000
+@@ -426,7 +426,7 @@
+           case 'Q':
+             vpw = vauth_getpw(ActionUser, Domain);
+             if (strncmp(vpw->pw_shell, "NOQUOTA", 2) != 0) {
+-              long diskquota = 0;
+-              int maxmsg = 0;
++              uint64_t diskquota = 0;
++              uint64_t maxmsg = 0;
+               char path[256];
+ 
+diff -Nuar qmailadmin-1.2.15.orig/user.c qmailadmin-1.2.15/user.c
+--- qmailadmin-1.2.15.orig/user.c	2009-05-02 19:13:29.000000000 +0000
++++ qmailadmin-1.2.15/user.c	2013-05-30 23:45:26.039946212 +0000
+@@ -170,7 +170,7 @@
+               (AdminType==USER_ADMIN && strcmp(pw->pw_name,Username)==0)))) {
+         if (AdminType==DOMAIN_ADMIN || 
+             (AdminType==USER_ADMIN && strcmp(pw->pw_name,Username)==0)) {
+-          long diskquota = 0;
+-          int maxmsg = 0;
++          uint64_t diskquota = 0;
++          uint64_t maxmsg = 0;
+ 
+           /* display account name and user name */

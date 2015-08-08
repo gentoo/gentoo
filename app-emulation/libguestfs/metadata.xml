@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>andreis.vinogradovs@gmail.com</email>
+	<name>Andreis Vinogradovs</name>
+</maintainer>
+<maintainer>
+	<email>maksbotan@gentoo.org</email>
+	<name>Maxim Koltsov</name>
+</maintainer>
+<maintainer>
+	<email>rich@annexia.org</email>
+	<name>Richard Jones</name>
+	<description>Upstream - please CC on bugs that concerns upstream</description>
+</maintainer>
+
+<longdescription>Libguestfs is a library and tool set for accessing and 
+modifying virtual machine (VM) disk images</longdescription>
+<use>
+	<flag name="fuse">Enable image mount support via fuse</flag>
+	<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
+	<flag name="erlang">Build Erlang bindings</flag>
+	<flag name="systemtap">Use <pkg>dev-util/systemtap</pkg> to inspect VM via "probes" way</flag>
+	<flag name="inspect-icons">Use <pkg>media-gfx/icoutils</pkg>for acces icon file in image and inspect it</flag>
+</use>
+</pkgmetadata>

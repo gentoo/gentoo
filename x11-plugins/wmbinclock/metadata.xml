@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+The windowmaker Binary Clock applet shows the
+actual system time as a binary clock. You have to
+add up the bits to get the time. The clock has a
+24-hour format.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wmbinclock</remote-id>
+	</upstream>
+</pkgmetadata>

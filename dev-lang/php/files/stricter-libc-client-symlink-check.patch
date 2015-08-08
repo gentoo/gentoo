@@ -1,0 +1,15 @@
+Gentoo bugs: 88944 463800
+--- ext/imap/config.m4	2013-03-27 19:31:13.000000000 +0100
++++ ext/imap/config.m4.new	2013-03-30 18:34:17.581557062 +0100
+@@ -198,9 +198,9 @@
+       AC_MSG_ERROR(Cannot find rfc822.h. Please check your c-client installation.)
+     fi
+ 
+-    if test -r "$IMAP_DIR/c-client/c-client.a"; then
++    if test ! -r "$IMAP_DIR/c-client/libc-client.a" && -r "$IMAP_DIR/c-client/c-client.a" ; then
+       ln -s "$IMAP_DIR/c-client/c-client.a" "$IMAP_DIR/c-client/libc-client.a" >/dev/null 2>&1
+-    elif test -r "$IMAP_DIR/$PHP_LIBDIR/c-client.a"; then
++    elif test ! -r "$IMAP_DIR/$PHP_LIBDIR/libc-client.a" && -r "$IMAP_DIR/$PHP_LIBDIR/c-client.a"; then
+       ln -s "$IMAP_DIR/$PHP_LIBDIR/c-client.a" "$IMAP_DIR/$PHP_LIBDIR/libc-client.a" >/dev/null 2>&1
+     fi
+ 

@@ -1,0 +1,396 @@
+diff --git a/Base.lhs b/Base.lhs
+index bbd9df5..c26e048 100644
+--- a/Base.lhs
++++ b/Base.lhs
+@@ -36,9 +36,9 @@
+ > where
+ >
+ > import Prettier
+-> import Monad                  (  MonadPlus(..)  )
+-> import IO
+-> import System
++> import Control.Monad                  (  MonadPlus(..)  )
++> import System.IO
++> import System.Exit
+ 
+ %-------------------------------------------------------------------------------
+ \subsection{List utilities}
+diff --git a/Case.lhs b/Case.lhs
+index 6558614..cbe87c0 100644
+--- a/Case.lhs
++++ b/Case.lhs
+@@ -45,10 +45,10 @@
+ > import MergeSort
+ > import Base
+ > import Options
+-> import Maybe
+-> import IO
+-> import Monad
+-> import List                   (  partition  )
++> import Data.Maybe
++> import System.IO
++> import Control.Monad
++> import Data.List                   (  partition  )
+ > import Prelude                hiding (  lookup  )
+ 
+ %-------------------------------=  --------------------------------------------
+@@ -347,4 +347,4 @@ More lookahead.
+ > actions'                      :: Symbol -> Past -> Past
+ > actions' x (Node es ts)       =  Node [ a{ future = f } | a <- es
+ >                                                         , Just f <- [lookup (future a) x] ]
+->                                       [ (e, actions' x t) | (e, t) <- ts ]
+\ No newline at end of file
++>                                       [ (e, actions' x t) | (e, t) <- ts ]
+diff --git a/Compact.lhs b/Compact.lhs
+index f878a06..6886a6a 100644
+--- a/Compact.lhs
++++ b/Compact.lhs
+@@ -49,9 +49,9 @@
+ > import Base
+ > import Generate
+ > import MergeSort
+-> import Char
+-> import IO
+-> import Maybe
++> import Data.Char
++> import System.IO
++> import Data.Maybe
+ > import Prelude                hiding (  lookup  )
+ 
+ %-------------------------------=  --------------------------------------------
+@@ -444,4 +444,4 @@ Names.
+ 
+ >     wrap s                    =  prefix opts ++ s ++ suffix opts
+ >     wrap_var s                =  var (wrap s)
+->     wrap_con s                =  con (wrap s)
+\ No newline at end of file
++>     wrap_con s                =  con (wrap s)
+diff --git a/Convert.lhs b/Convert.lhs
+index 6b7d836..01d2c32 100644
+--- a/Convert.lhs
++++ b/Convert.lhs
+@@ -42,13 +42,13 @@
+ > import OrdUniqListSet         (  Set, MinView(Empty, Min)  ) -- for nhc98
+ > import Atom                   hiding (  string  )
+ > import Haskell                hiding (  Empty, Decl, guard  )
+-> import Maybe
+-> import List
++> import Data.Maybe
++> import Data.List
+ > import Base
+ > import Prettier               hiding (  concat, intersperse  )
+ > import qualified Prettier as PP
+-> import Monad
+-> import IO                     hiding (  isEOF  )
++> import Control.Monad
++> import System.IO                     hiding (  isEOF  )
+ > import Options
+ 
+ > newEOF                        :: Ident
+@@ -361,4 +361,4 @@ Instance of a rule scheme.
+ >           | terminal w        =  w
+ >           | otherwise         =  case lookup w bindings of
+ >                                      Just w' -> w' { attributes = attributes w }
+->                                      Nothing -> updateArgs w (map substitute (arguments w))
+\ No newline at end of file
++>                                      Nothing -> updateArgs w (map substitute (arguments w))
+diff --git a/GParser2.hs b/GParser2.hs
+index 9d04100..0cb4c21 100644
+--- a/GParser2.hs
++++ b/GParser2.hs
+@@ -47,9 +47,9 @@
+   import qualified Base
+   import Prettier               (  Pretty  )
+   import Options
+-  import Char
+-  import List
+-  import IO
++  import Data.Char              hiding (  isSymbol  )
++  import Data.List
++  import System.IO
+ 
+ 
+ 
+@@ -2258,4 +2258,4 @@
+       where verb                =  verbose opts
+  
+   run                           :: (Monad m) => Lex m Answer -> (String -> m Answer)
+-  run parser inp                =  unLex parser (\a _ _ _ _ -> return a) False inp 1 (take 1 (lines inp))
+\ No newline at end of file
++  run parser inp                =  unLex parser (\a _ _ _ _ -> return a) False inp 1 (take 1 (lines inp))
+diff --git a/GVStack.lhs b/GVStack.lhs
+index f5968ad..acb5d96 100644
+--- a/GVStack.lhs
++++ b/GVStack.lhs
+@@ -45,10 +45,10 @@
+ > import Options
+ > import Base
+ > import Generate
+-> import IO
+-> import Monad
+-> import Char
+-> import List                   (  maximumBy  )
++> import System.IO
++> import Control.Monad
++> import Data.Char
++> import Data.List                   (  maximumBy  )
+ > import Prelude                hiding (  lookup  )
+ 
+ %-------------------------------=  --------------------------------------------
+diff --git a/Generate.lhs b/Generate.lhs
+index 74d7335..3b7284f 100644
+--- a/Generate.lhs
++++ b/Generate.lhs
+@@ -43,7 +43,7 @@
+ > import OrdUniqListSet         (  Set  )
+ > import Base
+ > --import Char                   (  toLower, toUpper  )
+-> import List                   (  intersperse  )
++> import Data.List                   (  intersperse  )
+ 
+ Symbols.
+ 
+diff --git a/Haskell.lhs b/Haskell.lhs
+index aba2831..74f7bec 100644
+--- a/Haskell.lhs
++++ b/Haskell.lhs
+@@ -35,7 +35,7 @@
+ > import Atom                   hiding (  string  )
+ > import qualified Atom
+ > import Prettier
+-> import Char
++> import Data.Char
+ > import Prelude                hiding (  concat  )
+ 
+ %-------------------------------=  --------------------------------------------
+diff --git a/LR0.lhs b/LR0.lhs
+index 0a16123..60bb002 100644
+--- a/LR0.lhs
++++ b/LR0.lhs
+@@ -45,7 +45,7 @@
+ > import Base                   hiding (  list  )
+ > import qualified Base
+ > import Prelude                hiding (  null  )
+-> import IO
++> import System.IO
+ > import Options
+ 
+ %-------------------------------=  --------------------------------------------
+@@ -269,4 +269,4 @@ State |0| is the error or trap state and the goto state for start
+ productions such as |Start# : Start, EOF;|.
+ 
+ > errorState                    :: State
+-> errorState                    =  State 0 (Set.empty :\/ Set.empty)
+\ No newline at end of file
++> errorState                    =  State 0 (Set.empty :\/ Set.empty)
+diff --git a/Lexer2.lhs b/Lexer2.lhs
+index af55186..3bb1e33 100644
+--- a/Lexer2.lhs
++++ b/Lexer2.lhs
+@@ -35,9 +35,9 @@
+ > module Lexer2
+ > where
+ > import Prelude
+-> import Char
+-> import IO
+-> import Monad
++> import Data.Char
++> import System.IO
++> import Control.Monad
+ > import Base
+ > import Options
+ 
+@@ -156,4 +156,4 @@
+ 
+ > isSymbol, isIdChar	        :: Char -> Bool
+ > isSymbol c			=  c `elem` "!@#$%&*+./<=>?\\^|:-~"
+-> isIdChar c			=  isAlphaNum c || c `elem` "_'"
+\ No newline at end of file
++> isIdChar c			=  isAlphaNum c || c `elem` "_'"
+diff --git a/Lib/OrdUniqListFM.lhs b/Lib/OrdUniqListFM.lhs
+index 1419028..4e2eea5 100644
+--- a/Lib/OrdUniqListFM.lhs
++++ b/Lib/OrdUniqListFM.lhs
+@@ -64,8 +64,8 @@
+ > import qualified OrdUniqList as OUL
+ > import MergeSort		(  mergeSort  )
+ > import Prettier               hiding (  empty  )
+-> import qualified List
+-> import Maybe                  (  fromMaybe  )
++> import qualified Data.List as List
++> import Data.Maybe                  (  fromMaybe  )
+ 
+ > infixl 9  !
+ > infixl 9  //
+@@ -292,4 +292,4 @@ The list argument of |fromList_C| need not be functional.
+ @prefixLookup@ returns the list of all completions of the given list.
+ 
+  prefixLookup			:: Ord a => FM [a] b -> [a] -> [([a], b)]
+- prefixLookup (FM f) s		=  [ b | Assoc b@(a, _)<-f, s `isPrefixOf` a ]
+\ No newline at end of file
++ prefixLookup (FM f) s		=  [ b | Assoc b@(a, _)<-f, s `isPrefixOf` a ]
+diff --git a/Lib/OrdUniqListSet.lhs b/Lib/OrdUniqListSet.lhs
+index 66eba10..ddb8629 100644
+--- a/Lib/OrdUniqListSet.lhs
++++ b/Lib/OrdUniqListSet.lhs
+@@ -59,8 +59,8 @@
+ > import qualified Prelude
+ > import qualified OrdUniqList as OUL
+ > import Prettier               hiding (  empty  )
+-> import qualified List
+-> import Monad
++> import qualified Data.List as List
++> import Control.Monad
+ 
+ %-------------------------------------------------------------------------------
+ \subsection{Type definitions and instance declarations}
+diff --git a/Lookahead.lhs b/Lookahead.lhs
+index ba23a5d..5c0fb31 100644
+--- a/Lookahead.lhs
++++ b/Lookahead.lhs
+@@ -42,9 +42,9 @@
+ > import qualified Prettier as PP
+ > import Base
+ > import Options
+-> import IO
+-> import Maybe
+-> import Monad                  (  when  )
++> import System.IO
++> import Data.Maybe
++> import Control.Monad                  (  when  )
+ 
+ %-------------------------------=  --------------------------------------------
+ \section{Grouping of actions}
+diff --git a/Main.lhs b/Main.lhs
+index b9b2a2e..98af968 100644
+--- a/Main.lhs
++++ b/Main.lhs
+@@ -53,11 +53,12 @@ Compile me with
+ > import Prettier               hiding (  string, concat  )
+ > import qualified Prettier as PP
+ > import qualified SearchTree as ST
+-> import Monad                  (  when  )
+-> import Directory
+-> import IO
+-> import System
++> import Control.Monad                  (  when  )
++> import System.Directory
+ > import System.Console.GetOpt
++> import System.Exit
++> import System.Environment
++> import System.IO
+ 
+ %-------------------------------=  --------------------------------------------
+ \section{The main program}
+@@ -689,4 +690,4 @@ o  Introduce abbreviations for patterns (as in Happy):
+                                  | let add op = ADDOP (op :: Addop)
+                                  | let id  s  = IDENT (s :: String);
+ 
+-   |add op| serves as an abbreviation for |ADDOP op|.
+\ No newline at end of file
++   |add op| serves as an abbreviation for |ADDOP op|.
+diff --git a/Options.lhs b/Options.lhs
+index a0e559f..ece780d 100644
+--- a/Options.lhs
++++ b/Options.lhs
+@@ -33,8 +33,8 @@
+ > where
+ > import Base
+ > import System.Console.GetOpt
+-> import Char
+-> import IO
++> import Data.Char
++> import System.IO
+ 
+ %-------------------------------=  --------------------------------------------
+ \section{Command line options}
+@@ -149,4 +149,4 @@
+ >   | otherwise                 =  Signature False
+ 
+ > (<<)                          :: String -> String -> Bool
+-> s << t                        =  map toLower s `isPrefix` map toLower t
+\ No newline at end of file
++> s << t                        =  map toLower s `isPrefix` map toLower t
+diff --git a/SearchTree.lhs b/SearchTree.lhs
+index 85755d4..d1c58ba 100644
+--- a/SearchTree.lhs
++++ b/SearchTree.lhs
+@@ -32,7 +32,7 @@
+ >                               ,  length, lookup, unsafeLookup  )
+ > where
+ > import MergeSort		(  mergeSortBy  )
+-> import Maybe                  (  fromMaybe  )
++> import Data.Maybe                  (  fromMaybe  )
+ > import Prelude                hiding (  length, lookup  )
+ > import qualified Prelude
+ 
+@@ -99,4 +99,4 @@ Lookup.
+ 
+ 
+ > unsafeLookup                  :: (Ord a, Show a) => FM a v -> a -> v
+-> unsafeLookup fm a             =  fromMaybe (error ("unsafeLookup: key not found: " ++ show a)) (lookup fm a)
+\ No newline at end of file
++> unsafeLookup fm a             =  fromMaybe (error ("unsafeLookup: key not found: " ++ show a)) (lookup fm a)
+diff --git a/Stackless.lhs b/Stackless.lhs
+index 106b8f3..2fb1a97 100644
+--- a/Stackless.lhs
++++ b/Stackless.lhs
+@@ -47,10 +47,10 @@
+ > import Base
+ > import Generate
+ > import MergeSort
+-> import Char
+-> import Maybe
+-> import IO
+-> import Monad
++> import Data.Char
++> import Data.Maybe
++> import System.IO
++> import Control.Monad
+ > import Prelude                hiding (  lookup  )
+ 
+ Characteristics.
+@@ -311,4 +311,4 @@ Names.
+ 
+ >     wrap s                    =  prefix opts ++ s ++ suffix opts
+ >     wrap_var s                =  var (wrap s)
+->     wrap_con s                =  con (wrap s)
+\ No newline at end of file
++>     wrap_con s                =  con (wrap s)
+diff --git a/Standard.lhs b/Standard.lhs
+index 18bce59..9fb5305 100644
+--- a/Standard.lhs
++++ b/Standard.lhs
+@@ -47,9 +47,9 @@
+ > import Options
+ > import Base
+ > import Generate
+-> import Char
+-> import IO
+-> import Maybe
++> import Data.Char
++> import System.IO
++> import Data.Maybe
+ > import Prelude                hiding (  lookup  )
+ 
+ Characteristics.
+@@ -293,4 +293,4 @@ Names.
+ 
+ >     wrap s                    =  prefix opts ++ s ++ suffix opts
+ >     wrap_var s                =  var (wrap s)
+->     wrap_con s                =  con (wrap s)
+\ No newline at end of file
++>     wrap_con s                =  con (wrap s)
+diff --git a/frown.cabal b/frown.cabal
+index 19448ed..5a44fdf 100644
+--- a/frown.cabal
++++ b/frown.cabal
+@@ -2,7 +2,7 @@ Name:			Frown
+ Version:		0.6
+ License:		GPL
+ Author:			Ralf Hinze
+-Build-Depends:		base, haskell98
++Build-Depends:		base, directory
+ Synopsis:		A parser generator for Haskell
+ 
+ Executable:		frown

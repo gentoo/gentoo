@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>video</herd>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="libvisual">Enable libvisual support</flag>
+  </use>
+</pkgmetadata>

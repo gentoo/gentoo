@@ -1,0 +1,129 @@
+commit 48155008397bdaed4f97c5678d83c70d4bc3f0ff
+Author: John MacFarlane <fiddlosopher@gmail.com>
+Date:   Sat Sep 14 19:24:01 2013 -0700
+
+    Changes to allow compilation with pandoc 1.12.
+    
+    TODO:  Better handling of images and other resources in
+    Docx, ODT, PDF exports.
+
+diff --git a/Network/Gitit/ContentTransformer.hs b/Network/Gitit/ContentTransformer.hs
+index 9bf656a..1489c4f 100644
+--- a/Network/Gitit/ContentTransformer.hs
++++ b/Network/Gitit/ContentTransformer.hs
+@@ -85,6 +85,7 @@ import Network.URI (isUnescapedInURI)
+ import Network.URL (encString)
+ import Prelude hiding (catch)
+ import System.FilePath
++import qualified Text.Pandoc.Builder as B
+ import Text.HTML.SanitizeXSS (sanitizeBalance)
+ import Text.Highlighting.Kate
+ import Text.Pandoc hiding (MathML, WebTeX, MathJax)
+@@ -452,8 +453,8 @@ addPageTitleToPandoc :: String -> Pandoc -> ContentTransformer Pandoc
+ addPageTitleToPandoc title' (Pandoc _ blocks) = do
+   updateLayout $ \layout -> layout{ pgTitle = title' }
+   return $ if null title'
+-              then Pandoc (Meta [] [] []) blocks
+-              else Pandoc (Meta [Str title'] [] []) blocks
++              then Pandoc nullMeta blocks
++              else Pandoc (B.setMeta "title" (B.str title') nullMeta) blocks
+ 
+ -- | Adds javascript links for math support.
+ addMathSupport :: a -> ContentTransformer a
+@@ -553,9 +554,10 @@ inlinesToString = concatMap go
+                LineBreak               -> " "
+                Math DisplayMath s      -> "$$" ++ s ++ "$$"
+                Math InlineMath s       -> "$" ++ s ++ "$"
+-               RawInline "tex" s       -> s
++               RawInline (Format "tex") s -> s
+                RawInline _ _           -> ""
+                Link xs _               -> concatMap go xs
+                Image xs _              -> concatMap go xs
+                Note _                  -> ""
++               Span _ xs               -> concatMap go xs
+ 
+diff --git a/Network/Gitit/Export.hs b/Network/Gitit/Export.hs
+index 2eb5c2c..38d5bfa 100644
+--- a/Network/Gitit/Export.hs
++++ b/Network/Gitit/Export.hs
+@@ -79,7 +79,7 @@ respondX templ mimetype ext fn opts page doc = do
+              then fixURLs page doc
+              else return doc
+   respond mimetype ext (fn opts{writerTemplate = template
+-                               ,writerSourceDirectory = repositoryPath cfg
++                               ,writerSourceURL = Just $ baseUrl cfg
+                                ,writerUserDataDir = pandocUserData cfg})
+           page doc'
+ 
+@@ -135,7 +135,7 @@ respondSlides templ slideVariant page doc = do
+                 writerVariables =
+                   ("body",body''):("dzslides-core",dzcore):("highlighting-css",pygmentsCss):variables'
+                ,writerTemplate = template
+-               ,writerSourceDirectory = repositoryPath cfg
++               ,writerSourceURL = Just $ baseUrl cfg
+                ,writerUserDataDir = pandocUserData cfg
+                } (Pandoc meta [])
+     h' <- liftIO $ makeSelfContained (pandocUserData cfg) h
+diff --git a/Network/Gitit/Types.hs b/Network/Gitit/Types.hs
+index a278633..87d6b29 100644
+--- a/Network/Gitit/Types.hs
++++ b/Network/Gitit/Types.hs
+@@ -400,7 +400,7 @@ type Handler = GititServerPart Response
+ fromEntities :: String -> String
+ fromEntities ('&':xs) =
+   case lookupEntity ent of
+-        Just c  -> c : fromEntities rest
++        Just c  -> c ++ fromEntities rest
+         Nothing -> '&' : fromEntities xs
+     where (ent, rest) = case break (\c -> isSpace c || c == ';') xs of
+                              (zs,';':ys) -> (zs,ys)
+diff --git a/data/default.conf b/data/default.conf
+index e2d6cae..8a6d818 100644
+--- a/data/default.conf
++++ b/data/default.conf
+@@ -238,8 +238,8 @@ use-feed: no
+ 
+ base-url:
+ # the base URL of the wiki, to be used in constructing feed IDs
+-# and RPX token_urls.  Set this if use-feed is 'yes' or
+-# authentication-method is 'rpx'.
++# and RPX token_urls, and in exporting docx and pdf.
++# Set this if use-feed is 'yes' or authentication-method is 'rpx'.
+ 
+ absolute-urls: no
+ # make wikilinks absolute with respect to the base-url.
+diff --git a/gitit.cabal b/gitit.cabal
+index 53bf8fb..07a76f7 100644
+--- a/gitit.cabal
++++ b/gitit.cabal
+@@ -117,8 +117,8 @@ Library
+     exposed-modules: Network.Gitit.Interface
+     build-depends:   ghc, ghc-paths
+     cpp-options:     -D_PLUGINS
+-  build-depends:     base >= 3, pandoc >= 1.10.0.5 && < 1.12,
+-                     pandoc-types >= 1.10 && < 1.11, filepath, safe
++  build-depends:     base >= 3, pandoc >= 1.12 && < 1.13,
++                     pandoc-types >= 1.12 && < 1.13, filepath, safe
+   extensions:        CPP
+   if impl(ghc >= 6.12)
+     ghc-options:     -Wall -fno-warn-unused-do-bind
+@@ -134,8 +134,8 @@ Executable           gitit
+                      pretty,
+                      xhtml,
+                      containers,
+-                     pandoc >= 1.10.0.5 && < 1.12,
+-                     pandoc-types >= 1.10 && < 1.11,
++                     pandoc >= 1.12 && < 1.13,
++                     pandoc-types >= 1.12 && < 1.13,
+                      process,
+                      filepath,
+                      directory,
+@@ -164,7 +164,7 @@ Executable           gitit
+                      ConfigFile >= 1 && < 1.2,
+                      feed >= 0.3.6 && < 0.4,
+                      xss-sanitize >= 0.3 && < 0.4,
+-                     tagsoup >= 0.12 && < 0.13,
++                     tagsoup >= 0.13 && < 0.14,
+                      blaze-html >= 0.4 && < 0.7,
+                      json >= 0.4 && < 0.8
+   if impl(ghc >= 6.10)

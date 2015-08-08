@@ -1,0 +1,15 @@
+diff -ruN kvpnc-0.9.6a-kde4.orig/src/kvpnc.cpp kvpnc-0.9.6a-kde4/src/kvpnc.cpp
+--- kvpnc-0.9.6a-kde4.orig/src/kvpnc.cpp	2010-03-08 11:26:33.000000000 +0100
++++ kvpnc-0.9.6a-kde4/src/kvpnc.cpp	2012-06-25 22:12:51.454408816 +0200
+@@ -6030,7 +6030,10 @@
+                     }
+ 
+ 
+-					if (GlobalConfig->OpenvpnNeedSecurityParameter || (OpenvpnMajor == 2 && OpenvpnMinor == 1 && OpenvpnExtraVer > 8 && OpenvpnExtra == "rc")||  ( OpenvpnMajor == 2 && OpenvpnMinor == 1 ) || (OpenvpnMajor > 2 && OpenvpnMinor >= 2)) {
++			if (GlobalConfig->OpenvpnNeedSecurityParameter || 
++                            (OpenvpnMajor == 2 && OpenvpnMinor == 1 && OpenvpnExtraVer > 8 && OpenvpnExtra == "rc")||
++                            (OpenvpnMajor == 2 && OpenvpnMinor >= 1 ) || 
++			    (OpenvpnMajor > 2)) {
+                         if (GlobalConfig->KvpncDebugLevel > 3)
+                             GlobalConfig->appendLogEntry(i18n("OpenVPN >= 2.1-rc9 detected, adding script security parameter to config."), KVpncEnum::info);
+ 

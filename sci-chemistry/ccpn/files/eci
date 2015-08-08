@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export CCPNMR_TOP_DIR=gentoo_sitedir
+export PYTHONPATH=.:${CCPNMR_TOP_DIR}/ccpn/python
+export TCL_LIBRARY=gentootcl
+export TK_LIBRARY=gentootk
+export PSIPRED_DIR=gentoousr
+gentoopython -O ${CCPNMR_TOP_DIR}/ccpn/python/ccpnmr/eci/EntryCompletionGui.py $*

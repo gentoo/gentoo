@@ -1,0 +1,38 @@
+--- a/unix/configure.ac
++++ b/unix/configure.ac
+@@ -4,7 +4,7 @@ AC_REVISION([$Revision: 1.1 $])
+ 
+ AC_CONFIG_SRCDIR([unix.cpp])
+ 
+-AC_CANONICAL_TARGET
++AC_CANONICAL_HOST
+ 
+ AC_PROG_CC
+ AC_PROG_CXX
+@@ -38,7 +38,7 @@ AC_DEFUN([AC_S9X_COMPILER_FLAG],
+ 				return (argc);
+ 			}
+ 		],
+-		[snes9x_cv_option_$2="yes"], [snes9x_cv_option_$2="no"])
++		[snes9x_cv_option_$2="yes"], [snes9x_cv_option_$2="no"], [snes9x_cv_option_$2="yes"])
+ 	])
+ 
+ 	CXXFLAGS="[$]OLD_CXXFLAGS"
+@@ -94,7 +94,7 @@ AC_MSG_CHECKING([whether the OS is Linux])
+ 
+ AC_CACHE_VAL([snes9x_cv_linux_os],
+ [
+-	case "$target" in
++	case "$host" in
+ 		*-*-linux*)
+ 			snes9x_cv_linux_os="yes"
+ 			;;
+@@ -332,7 +332,7 @@ AC_DEFUN([AC_S9X_CHECK_SAR],
+ 			return (i < 0 ? 0 : 1);
+ 		}
+ 	],
+-	[snes9x_sar_$1="yes"], [snes9x_sar_$1="no"])
++	[snes9x_sar_$1="yes"], [snes9x_sar_$1="no"], [snes9x_sar_$1=$GCC])
+ 
+ 	CXXFLAGS="[$]OLD_CXXFLAGS"
+ 

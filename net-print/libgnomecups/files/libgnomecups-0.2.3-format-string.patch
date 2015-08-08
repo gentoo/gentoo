@@ -1,0 +1,34 @@
+From afe4d5299e6f48ace0fbedbfba8159812afcdd1c Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Tue, 14 Jan 2014 15:23:59 +0100
+Subject: [PATCH] Fix build with -Werror=format-security
+
+---
+ libgnomecups/gnome-cups-request.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libgnomecups/gnome-cups-request.c b/libgnomecups/gnome-cups-request.c
+index c94f623..fa1bd97 100644
+--- a/libgnomecups/gnome-cups-request.c
++++ b/libgnomecups/gnome-cups-request.c
+@@ -353,7 +353,7 @@ request_thread_main (GnomeCupsRequest *request,
+ 			g_warning ("IPP request failed with status %d", status);
+ 			if (request->error != NULL)
+ 				*(request->error) = g_error_new (GNOME_CUPS_ERROR, 
+-								 status, ippErrorString (status));
++								 status, "%s", ippErrorString (status));
+ 		} else if (request->response && _gnome_cups_debug) {
+ 			g_print ("response = \n");
+ 			dump_request (request->response);
+@@ -364,7 +364,7 @@ request_thread_main (GnomeCupsRequest *request,
+ 		request->response = NULL;
+ 		if (HTTP_OK != status && request->error != NULL)
+ 			*(request->error) = g_error_new (GNOME_CUPS_ERROR, 
+-							 status, httpStatus (status));
++							 status, "%s", httpStatus (status));
+ 	} else {
+ 		g_warning ("Neither request nor output_fd set");
+ 		if (request->error != NULL)
+-- 
+1.8.3.1
+

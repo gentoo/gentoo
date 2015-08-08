@@ -1,0 +1,11 @@
+--- a/tenshi.gentoo-init
++++ b/tenshi.gentoo-init
+@@ -1,6 +1,7 @@
+ #!/sbin/runscript
+ 
+-opts="depend start stop reload flush checkconfig"
++extra_commands="checkconfig"
++extra_started_commands="reload flush"
+ 
+ depend() {
+ 	need clock hostname logger

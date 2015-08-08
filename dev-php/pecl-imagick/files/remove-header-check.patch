@@ -1,0 +1,16 @@
+--- config.m4	2012-05-30 22:21:12.000000000 +0200
++++ config.m4	2013-04-17 11:47:27.753015522 +0200
+@@ -50,13 +50,6 @@
+   		AC_MSG_ERROR(Cannot locate header file magick-wand.h)
+     fi	
+   else	
+-    AC_MSG_CHECKING(for MagickWand.h header file)
+-
+-    if test -r $WAND_DIR/include/ImageMagick/wand/MagickWand.h; then
+-      AC_MSG_RESULT(found in $WAND_DIR/include/ImageMagick/wand/MagickWand.h)
+-    else
+-      AC_MSG_ERROR(Cannot locate header file MagickWand.h)
+-    fi
+     AC_DEFINE(IMAGICK_USE_NEW_HEADER,1,[ ])
+     PHP_IMAGICK_USE_NEW_HEADER=1
+   fi

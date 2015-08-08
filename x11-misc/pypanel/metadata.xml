@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<longdescription>
+PyPanel is a lightweight panel/taskbar for X11 window managers that can
+be easily customized to match any desktop theme or taste.
+
+Some of the customizable features include transparency w/ shading, panel
+dimensions and location, font type and colors, button events/actions,
+clock and workspace name display.
+
+PyPanel should work with any WM that supports the EWMH specification.
+The following have been tested: Kahakai, Openbox3, PekWM, WindowMaker.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">pypanel</remote-id>
+	</upstream>
+</pkgmetadata>

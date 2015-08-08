@@ -1,0 +1,36 @@
+Index: Makefile.in
+===================================================================
+RCS file: /cvsroot/tcljava/tcljava/Makefile.in,v
+retrieving revision 1.60
+diff -u -r1.60 Makefile.in
+--- Makefile.in	5 Aug 2006 01:50:11 -0000	1.60
++++ Makefile.in	3 Apr 2007 08:51:22 -0000
+@@ -54,7 +54,7 @@
+ XTERM			= xterm
+ JAVA_FLAGS		= @JAVA_FLAGS@
+ JAVA_G_FLAGS		= @JAVA_G_FLAGS@
+-JAVAC_FLAGS		= @JAVAC_FLAGS@
++JAVAC_FLAGS		?= @JAVAC_FLAGS@
+ JAVAC_D_FLAG		= @JAVAC_D_FLAG@
+ JAR_EXTRACT_FLAGS	= @JAR_EXTRACT_FLAGS@
+ JAR_COMPRESS_FLAGS	= @JAR_COMPRESS_FLAGS@
+Index: tcljava.m4
+===================================================================
+RCS file: /cvsroot/tcljava/tcljava/tcljava.m4,v
+retrieving revision 1.35
+diff -u -r1.35 tcljava.m4
+--- tcljava.m4	21 Aug 2006 22:26:37 -0000	1.35
++++ tcljava.m4	3 Apr 2007 08:51:28 -0000
+@@ -226,9 +226,9 @@
+     # Look for a setting for the CLASSPATH, we might need one to run JAVAC
+     AC_JAVA_CLASSPATH
+ 
+-    # FIXME : add detection of command line arguments for JAVAC
+-
+-    JAVAC_FLAGS=-g
++    if test "x${JAVAC_FLAGS}" = "x"; then
++        JAVAC_FLAGS=-g
++    fi
+     JAVAC_D_FLAG=-d
+ 
+     dnl Test out the Java compiler with an empty class

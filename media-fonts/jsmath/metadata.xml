@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-mathematics</herd>
+<longdescription lang='en'>
+  Rasterized fonts saved in image files to enable viewing of jsMath
+  pages by a web-browser which is missing access to TeX fonts.
+</longdescription>
+</pkgmetadata>

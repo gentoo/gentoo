@@ -1,0 +1,13 @@
+diff -Naur Text-Kakasi-1.05.orig/Makefile.PL Text-Kakasi-1.05/Makefile.PL
+--- Text-Kakasi-1.05.orig/Makefile.PL	2002-08-24 00:18:28.000000000 +0900
++++ Text-Kakasi-1.05/Makefile.PL	2002-08-24 00:20:37.000000000 +0900
+@@ -3,7 +3,7 @@
+ WriteMakefile(
+ 	      'NAME' => 'Text::Kakasi',
+ 	      'VERSION_FROM' => 'Kakasi.pm',
+-	      'INC' => '-I/usr/local/include',
+-	      'LIBS' => ['-L/usr/local/lib -lkakasi'],
++	      'INC' => '-I/usr/include',
++	      'LIBS' => ['-L/usr/lib -lkakasi'],
+ 	      'DEFINE' => '-DWAKATIGAKI',
+ );

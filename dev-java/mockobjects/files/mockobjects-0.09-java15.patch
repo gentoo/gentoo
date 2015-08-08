@@ -1,0 +1,11 @@
+--- src/jdk/common/alt/java/io/FileImpl.java	2006-01-15 13:49:06.000000000 +0100
++++ src/jdk/common/alt/java/io/FileImpl.java	2006-01-15 13:47:59.000000000 +0100
+@@ -171,7 +171,7 @@
+     }
+ 
+     public int compareTo(Object o) {
+-        return file.compareTo(o);
++        return file.compareTo((java.io.File) o);
+     }
+ 
+     public java.io.File getRealFile() {

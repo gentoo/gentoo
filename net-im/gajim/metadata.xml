@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>net-im</herd>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    A fully featured and easy to use GTK+ Jabber client written in PyGTK.
+  </longdescription>
+  <use>
+    <flag name="idle">Enable idle module</flag>
+    <flag name="srv">SRV capabilities</flag>
+    <flag name="xhtml">Enable XHTML support</flag>
+  </use>
+</pkgmetadata>

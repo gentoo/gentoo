@@ -1,0 +1,26 @@
+From 3a47a1a918e9076133c046f8792cf68973f7c585 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 22 Jan 2014 22:07:18 +0100
+Subject: [PATCH] Don't use --debug in Test--post-file.px
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ tests/Test--post-file.px | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/Test--post-file.px b/tests/Test--post-file.px
+index 1c017b7..1212af6 100755
+--- a/tests/Test--post-file.px
++++ b/tests/Test--post-file.px
+@@ -8,7 +8,7 @@ use HTTPTest;
+ 
+ ###############################################################################
+ 
+-my $cmdline = $WgetTest::WGETPATH . " -d --post-file=nofile http://localhost:{{port}}/";
++my $cmdline = $WgetTest::WGETPATH . " --post-file=nofile http://localhost:{{port}}/";
+ 
+ my $expected_error_code = 3;
+ 
+-- 
+1.8.5.3
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>tomka@gentoo.org</email>
+		<name>Thomas Kahle</name>
+	</maintainer>
+	<herd>sci</herd>
+	<longdescription lang="en">
+TOPCOM is a package for computing Triangulations Of Point Configurations and Oriented Matroids
+</longdescription>
+</pkgmetadata>

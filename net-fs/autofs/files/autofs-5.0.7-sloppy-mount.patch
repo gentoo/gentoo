@@ -1,0 +1,99 @@
+From: Ian Kent <ikent@redhat.com>
+
+Historically autofs added an option to mounts, called the sloppy
+option, meant to allow mount(8) to ignore invalid mount options.
+This was done so that mount map entries for sites that needed to
+use different mount options for some machines would still work.
+It was needed for nfs mounts in particular.
+
+Recent changes to mount(8) cause the sloppy option to be passed on
+for all mounts when it is given.
+
+Previously mount(8) only passed on the option to nfs mounts so now,
+for other than nfs mounts, the mount will fail if the file system
+doesn't understand the sloppy option.
+
+Since the option was not passed on to other than nfs mounts before
+it seems sensible for autofs to not add it for other than nfs mounts
+now.
+
+Signed-off-by: Ian Kent <ikent@redhat.com>
+---
+ modules/mount_bind.c    |    9 ++++-----
+ modules/mount_changer.c |    6 +++---
+ modules/mount_ext2.c    |    6 +++---
+ modules/mount_generic.c |    4 ++--
+ 4 files changed, 12 insertions(+), 13 deletions(-)
+
+--- a/modules/mount_bind.c
++++ b/modules/mount_bind.c
+@@ -158,13 +158,12 @@ int mount_mount(struct autofs_point *ap,
+ 		if (!status)
+ 			existed = 0;
+ 
+-		debug(ap->logopt,
+-		      MODPREFIX
+-		      "calling mount --bind " SLOPPY " -o %s %s %s",
++		debug(ap->logopt, MODPREFIX
++		      "calling mount --bind -o %s %s %s",
+ 		      options, what, fullpath);
+ 
+-		err = spawn_bind_mount(ap->logopt,
+-			     SLOPPYOPT "-o", options, what, fullpath, NULL);
++		err = spawn_bind_mount(ap->logopt, "-o",
++				       options, what, fullpath, NULL);
+ 
+ 		if (err) {
+ 			if (ap->type != LKP_INDIRECT)
+--- a/modules/mount_changer.c
++++ b/modules/mount_changer.c
+@@ -103,12 +103,12 @@ int mount_mount(struct autofs_point *ap,
+ 	}
+ 
+ 	if (options && options[0]) {
+-		debug(ap->logopt,
+-		      MODPREFIX "calling mount -t %s " SLOPPY "-o %s %s %s",
++		debug(ap->logopt, MODPREFIX
++		      "calling mount -t %s -o %s %s %s",
+ 		      fstype, options, what, fullpath);
+ 
+ 		err = spawn_mount(ap->logopt, "-t", fstype,
+-			     SLOPPYOPT "-o", options, what, fullpath, NULL);
++			          "-o", options, what, fullpath, NULL);
+ 	} else {
+ 		debug(ap->logopt,
+ 		      MODPREFIX "calling mount -t %s %s %s",
+--- a/modules/mount_ext2.c
++++ b/modules/mount_ext2.c
+@@ -116,11 +116,11 @@ int mount_mount(struct autofs_point *ap,
+ 	}
+ 
+ 	if (options) {
+-		debug(ap->logopt,
+-		      MODPREFIX "calling mount -t %s " SLOPPY "-o %s %s %s",
++		debug(ap->logopt, MODPREFIX
++		      "calling mount -t %s -o %s %s %s",
+ 		      fstype, options, what, fullpath);
+ 		err = spawn_mount(ap->logopt, "-t", fstype,
+-			     SLOPPYOPT "-o", options, what, fullpath, NULL);
++			          "-o", options, what, fullpath, NULL);
+ 	} else {
+ 		debug(ap->logopt,
+ 		      MODPREFIX "calling mount -t %s %s %s",
+--- a/modules/mount_generic.c
++++ b/modules/mount_generic.c
+@@ -97,11 +97,11 @@ int mount_mount(struct autofs_point *ap,
+ 
+ 	if (options && options[0]) {
+ 		debug(ap->logopt,
+-		      MODPREFIX "calling mount -t %s " SLOPPY "-o %s %s %s",
++		      MODPREFIX "calling mount -t %s -o %s %s %s",
+ 		      fstype, options, loc, fullpath);
+ 
+ 		err = spawn_mount(ap->logopt, "-t", fstype,
+-			     SLOPPYOPT "-o", options, loc, fullpath, NULL);
++				  "-o", options, loc, fullpath, NULL);
+ 	} else {
+ 		debug(ap->logopt, MODPREFIX "calling mount -t %s %s %s",
+ 		      fstype, loc, fullpath);
+

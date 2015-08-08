@@ -1,0 +1,54 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+DOCKER_LOGFILE=${DOCKER_LOGFILE:-/var/log/${SVCNAME}.log}
+DOCKER_PIDFILE=${DOCKER_PIDFILE:-/run/${SVCNAME}.pid}
+DOCKER_BINARY=${DOCKER_BINARY:-/usr/bin/docker}
+DOCKER_WORKAROUND_1422=${DOCKER_WORKAROUND_1422:-0}
+DOCKER_WORKAROUND_1422_DELAY=${DOCKER_WORKAROUND_1422_DELAY:-1}
+
+start() {
+	checkpath -f -m 0644 -o root:docker "$DOCKER_LOGFILE"
+
+	ebegin "Starting docker daemon"
+	start-stop-daemon --start --background \
+		--exec "$DOCKER_BINARY" \
+		--pidfile "$DOCKER_PIDFILE" \
+		--stdout "$DOCKER_LOGFILE" \
+		--stderr "$DOCKER_LOGFILE" \
+		-- -d -p "$DOCKER_PIDFILE"
+	eend $?
+	ret=$?
+
+	if [ $ret -eq 0 ] \
+		&& [ "$DOCKER_WORKAROUND_1422" ] \
+		&& [ "$DOCKER_WORKAROUND_1422" -gt 0 ] \
+	; then
+		# see https://github.com/dotcloud/docker/issues/1422
+		ewarn "Working around gh#1422 (via busybox image); this may take a moment"
+
+		# we were calling "docker run" more quickly than "docker -d" could get
+		#  fired up, so our workaround wasn't successful without a short delay
+		sleep $DOCKER_WORKAROUND_1422_DELAY
+
+		# TODO when we get https://github.com/dotcloud/docker/pull/1589, these
+		#  both need -rm so we clean up after ourselves (thanks, @eliasp!)
+		docker run -i -t busybox true &> /dev/null || true
+		# first run will fail, so we ignore its output and result and run again
+		docker run -i -t busybox true
+
+		ewend $?
+	fi
+
+	return $ret
+}
+
+stop() {
+	ebegin "Stopping docker daemon"
+	start-stop-daemon --stop \
+		--exec "$DOCKER_BINARY" \
+		--pidfile "$DOCKER_PIDFILE"
+	eend $?
+}

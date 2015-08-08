@@ -1,0 +1,11 @@
+--- screen.c.orig	2006-04-02 17:05:28.000000000 +0200
++++ screen.c	2006-04-02 17:05:39.000000000 +0200
+@@ -1197,7 +1197,7 @@ char **av;
+   if (!detached)
+     {
+       /* reopen tty. must do this, because fd 0 may be RDONLY */
+-      if ((n = secopen(attach_tty, O_RDWR, 0)) < 0)
++      if ((n = secopen(attach_tty, O_RDWR | O_NONBLOCK, 0)) < 0)
+ 	Panic(0, "Cannot reopen '%s' - please check.", attach_tty);
+     }
+   else

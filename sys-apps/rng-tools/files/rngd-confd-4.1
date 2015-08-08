@@ -1,0 +1,22 @@
+# /etc/conf.d/rngd
+
+# Please see "/usr/sbin/rngd --help" and "man rngd" for more information
+
+# If a single device is preferred, then specify it here, otherwise we will
+# search for suitable devices.
+#DEVICE=
+
+# Random step (Number of bytes written to random-device at a time):
+STEP=64
+
+# Should TPM be avoided?
+# NO_TPM=0
+
+# Should RDRAND be avoided? Please note that unless this is commented
+# out, RDRAND _will_ be disabled, as any value will cause it to be
+# disabled.
+# NO_DRNG=1
+
+# Fill watermark
+# 0 <= n <= `sysctl kernel.random.poolsize`
+WATERMARK=2048

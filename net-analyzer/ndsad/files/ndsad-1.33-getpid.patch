@@ -1,0 +1,10 @@
+--- a/linux_ulog.h
++++ b/linux_ulog.h
+@@ -8,6 +8,7 @@
+ #include <pthread.h>
+ #include <iostream>
+ #include <sys/types.h>
++#include <unistd.h> /* getpid() */
+ #include <sys/socket.h>
+ 
+ /// linux specific headers!

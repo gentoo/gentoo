@@ -1,0 +1,46 @@
+From 396cbc4cf36166217d877e2ff7e0a290758b0bc2 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 27 Jun 2013 18:37:17 -0400
+Subject: [PATCH] kill: fix -PID handling
+
+Commit 19b6f48990b02aeca211b480625b95b2033c1017 tried to fix -PID
+handling, but the new logic ends up skipping over the arg.  This is
+because getopt increments optind after it processed the -PID (even
+though it was an unknown option).  We need to decrement it by one
+so the loop at the end of the code will process it for us.
+
+I also fixed some whitespace errors in that same commit.
+
+URL: http://code.google.com/p/chromium/issues/detail?id=255209
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ skill.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/skill.c b/skill.c
+index fb57305..074c5d7 100644
+--- a/skill.c
++++ b/skill.c
+@@ -390,7 +390,7 @@ static void __attribute__ ((__noreturn__))
+ 	else
+ 		sigopt++;
+ 
+-	opterr=0; /* suppress errors on -123 */
++	opterr = 0; /* suppress errors on -123 */
+ 	while (loop == 1 && (i = getopt_long(argc, argv, "l::Ls:hV", longopts, NULL)) != -1)
+ 		switch (i) {
+ 		case 'l':
+@@ -423,7 +423,9 @@ static void __attribute__ ((__noreturn__))
+ 				xwarnx(_("invalid argument %c"), optopt);
+ 				kill_usage(stderr);
+ 			}
+-			loop=0;
++			/* We need to back off by one since getopt() ate the -PID */
++			--optind;
++			loop = 0;
+ 			break;
+ 		default:
+ 			kill_usage(stderr);
+-- 
+1.8.2.1
+

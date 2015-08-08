@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This library implements the \&quot;patience diff\&quot; algorithm, as well as the patience
+		algorithm for the longest increasing subsequence problem.
+		
+		Patience diff computes the difference between two lists, for example the
+		lines of two versions of a source file.  It provides a good balance of
+		performance, nice output for humans, and implementation simplicity.  For more
+		information, see &lt;http://alfedenzo.livejournal.com/170301.html&gt; and
+		&lt;http://bramcohen.livejournal.com/73318.html&gt;.
+		
+		New in version 0.1.1: relaxed @containers@ dependency, so it should build on
+		GHC 6.10.
+	</longdescription>
+</pkgmetadata>

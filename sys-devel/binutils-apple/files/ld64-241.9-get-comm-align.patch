@@ -1,0 +1,30 @@
+Provide macros [GS]ET_COMM_ALIGN if it's missing (<= 10.4).
+
+--- ld64-241.9/src/ld/parsers/macho_relocatable_file.cpp	2015-01-22 22:23:11.000000000 +0100
++++ ld64-241.9/src/ld/parsers/macho_relocatable_file.cpp	2015-01-22 22:28:03.000000000 +0100
+@@ -51,6 +51,10 @@
+ #include "macho_relocatable_file.h"
+ 
+ 
++/* missing on < 10.5 */
++#if !defined(GET_COMM_ALIGN)
++#define GET_COMM_ALIGN(n_desc) (((n_desc) >> 8) & 0x0f)
++#endif
+ 
+ extern void throwf(const char* format, ...) __attribute__ ((noreturn,format(printf, 1, 2)));
+ extern void warning(const char* format, ...) __attribute__((format(printf, 1, 2)));
+--- Gentoo/tmp/var/tmp/portage/sys-devel/binutils-apple-6.1/work/ld64-241.9/src/ld/LinkEditClassic.hpp	2015-01-22 22:29:14.000000000 +0100
++++ ld64-241.9/src/ld/LinkEditClassic.hpp	2015-01-22 22:31:23.000000000 +0100
+@@ -39,6 +39,12 @@
+ #define UNORDERED_MAP unordered_map
+ #endif
+ 
++#if !defined(SET_COMM_ALIGN)
++/* missing on < 10.5 */
++#define SET_COMM_ALIGN(n_desc,align) \
++    (n_desc) = (((n_desc) & 0xf0ff) | (((align) & 0x0f) << 8))
++#endif
++
+ #include "Options.h"
+ #include "ld.hpp"
+ #include "Architectures.hpp"

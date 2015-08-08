@@ -1,0 +1,47 @@
+Backported from d76c2e9aa1c05ceac1c2d06a29783ee95e876a37 upstream commit
+
+OpenSSH 6.8, which was just released, includes the following change:
+
+http://www.openssh.com/txt/release-6.8
+
+Fingerprints now have the hash algorithm prepended. An example of
+the new format: SHA256:mVPwvezndPv/ARoIadVY98vAC0g+P/5633yTC4d/wXE
+Please note that visual host keys will also be different.
+
+(Previous versions always dumped in MD5 with no prefix.)
+
+The pattern match that keychain uses doesn't work with the new
+fingerprint format. The patch below takes care of it.
+
+I used shopt extglob so I could use @( ) for the alternative. I'm not
+a bash pattern whiz; there may be a better way to do that.
+
+Upstream commit by Daniel Robbins
+Link: https://github.com/funtoo/keychain/commit/d76c2e9aa1c05ceac1c2d06a29783ee95e876a37
+Signed-off-by: Markos Chandras <hwoarang@gentoo.org>
+
+Index: keychain-2.7.1/keychain
+===================================================================
+--- keychain-2.7.1.orig/keychain
++++ keychain-2.7.1/keychain
+@@ -50,6 +50,8 @@ confirmopt=false
+ unset ssh_confirm
+ unset GREP_OPTIONS
+ 
++shopt -s extglob
++
+ BLUE="[34;01m"
+ CYAN="[36;01m"
+ CYANN="[36m"
+@@ -671,6 +673,11 @@ extract_fingerprints() {
+                 #   1024 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 /home/barney/.ssh/id_dsa (DSA)
+                 echo "$ef_line" | cut -f2 -d' '
+                 ;;
++            *\ @(SHA256|MD5):[0-9a-zA-Z\+\/=]*)
++                # The new OpenSSH 6.8+ format,
++                # 1024 SHA256:mVPwvezndPv/ARoIadVY98vAC0g+P/5633yTC4d/wXE /home/barney/.ssh/id_dsa (DSA)
++                echo "$ef_line" | cut -f2 -d' '
++                ;;
+             *)
+                 # Fall back to filename.  Note that commercial ssh is handled
+                 # explicitly in ssh_l and ssh_f, so hopefully this rule will

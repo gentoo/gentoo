@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>ruby</herd>
+	<maintainer>
+		<email>vikraman@gentoo.org</email>
+		<name>Vikraman Choudhury (vikraman)</name>
+	</maintainer>
+	<longdescription lang="en">
+		Compass is a Sass-based Stylesheet Framework that streamlines the
+		creation and maintenance of CSS.
+	</longdescription>
+</pkgmetadata>

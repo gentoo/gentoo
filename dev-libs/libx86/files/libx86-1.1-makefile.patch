@@ -1,0 +1,28 @@
+--- Makefile.orig	2013-02-11 16:35:56.834368910 +0400
++++ Makefile	2013-02-11 16:36:02.587369368 +0400
+@@ -22,7 +22,7 @@
+ 	$(AR) cru libx86.a $(OBJECTS)
+ 
+ shared: $(OBJECTS)
+-	$(CC) $(CFLAGS) -o libx86.so.1 -shared -Wl,-soname,libx86.so.1 $(OBJECTS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o libx86.so.1 -shared -Wl,-soname,libx86.so.1 $(OBJECTS)
+ 
+ objclean:
+ 	$(MAKE) -C x86emu clean
+@@ -31,8 +31,14 @@
+ clean: objclean
+ 	rm -f *.so.1 *.a
+ 
+-install: libx86.so.1
++install-shared: libx86.so.1
+ 	install -D libx86.so.1 $(DESTDIR)$(LIBDIR)/libx86.so.1
+-	install -D libx86.a $(DESTDIR)$(LIBDIR)/libx86.a
+ 	ln -sf libx86.so.1 $(DESTDIR)$(LIBDIR)/libx86.so
++
++install-header:
+ 	install -p -m 0644 -D lrmi.h $(DESTDIR)/usr/include/libx86.h
++
++install-static:
++	install -D libx86.a $(DESTDIR)$(LIBDIR)/libx86.a
++
++install: install-shared install-static install-header

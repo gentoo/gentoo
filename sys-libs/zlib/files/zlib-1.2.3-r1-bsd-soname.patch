@@ -1,0 +1,15 @@
+Generate a DT_SONAME on *BSD machines
+
+http://bugs.gentoo.org/123571
+
+--- configure
++++ configure
+@@ -80,7 +80,7 @@
+   SFLAGS="${CFLAGS-"-O3"} -fPIC"
+   CFLAGS="$cflags"
+   case `(uname -s || echo unknown) 2>/dev/null` in
+-  Linux | linux | GNU | GNU/*) LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1"};;
++  Linux | linux | GNU | GNU/* | *BSD | DragonFly) LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1"};;
+   CYGWIN* | Cygwin* | cygwin* | OS/2* )
+              EXE='.exe';;
+   QNX*)  # This is for QNX6. I suppose that the QNX rule below is for QNX2,QNX4

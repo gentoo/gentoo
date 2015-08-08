@@ -1,0 +1,56 @@
+diff -rupN ardour-4.0-vanilla/libs/ardour/automatable.cc ardour-4.0/libs/ardour/automatable.cc
+--- ardour-4.0-vanilla/libs/ardour/automatable.cc       2015-04-18 00:23:10.000000000 +0200
++++ ardour-4.0/libs/ardour/automatable.cc       2015-04-21 16:32:14.943812000 +0200
+@@ -34,7 +34,11 @@
+ #include "ardour/plugin.h"
+ #include "ardour/plugin_insert.h"
+ #include "ardour/session.h"
++
++#ifdef LV2_SUPPORT
+ #include "ardour/uri_map.h"
++#endif
++
+ #include "ardour/value_as_string.h"
+ 
+ #include "i18n.h"
+diff -rupN ardour-4.0-vanilla/libs/ardour/buffer_set.cc ardour-4.0/libs/ardour/buffer_set.cc
+--- ardour-4.0-vanilla/libs/ardour/buffer_set.cc        2015-04-18 00:23:10.000000000 +0200
++++ ardour-4.0/libs/ardour/buffer_set.cc        2015-04-21 16:40:44.216812000 +0200
+@@ -34,8 +34,8 @@
+ #include "ardour/midi_buffer.h"
+ #include "ardour/port.h"
+ #include "ardour/port_set.h"
+-#include "ardour/uri_map.h"
+ #ifdef LV2_SUPPORT
++#include "ardour/uri_map.h"
+ #include "ardour/lv2_plugin.h"
+ #include "lv2_evbuf.h"
+ #endif
+diff -rupN ardour-4.0-vanilla/libs/ardour/event_type_map.cc ardour-4.0/libs/ardour/event_type_map.cc
+--- ardour-4.0-vanilla/libs/ardour/event_type_map.cc    2015-04-18 00:23:10.000000000 +0200
++++ ardour-4.0/libs/ardour/event_type_map.cc    2015-04-21 16:47:28.489812000 +0200
+@@ -24,7 +24,9 @@
+ #include "ardour/event_type_map.h"
+ #include "ardour/parameter_descriptor.h"
+ #include "ardour/parameter_types.h"
++#ifdef LV2_SUPPORT
+ #include "ardour/uri_map.h"
++#endif
+ #include "evoral/Parameter.hpp"
+ #include "evoral/ParameterDescriptor.hpp"
+ #include "evoral/midi_events.h"
+diff -rupN ardour-4.0-vanilla/libs/ardour/globals.cc ardour-4.0/libs/ardour/globals.cc
+--- ardour-4.0-vanilla/libs/ardour/globals.cc   2015-04-18 00:23:10.000000000 +0200
++++ ardour-4.0/libs/ardour/globals.cc   2015-04-21 16:54:33.404812000 +0200
+@@ -106,8 +106,9 @@
+ #include "ardour/runtime_functions.h"
+ #include "ardour/session_event.h"
+ #include "ardour/source_factory.h"
++#ifdef LV2_SUPPORT
+ #include "ardour/uri_map.h"
+-
++#endif
+ #include "audiographer/routines.h"
+ 
+ #if defined (__APPLE__)
+

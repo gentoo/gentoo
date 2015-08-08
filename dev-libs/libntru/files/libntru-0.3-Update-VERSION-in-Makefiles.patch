@@ -1,0 +1,53 @@
+From e434656449d0797a2f6e14e33b6a0114371d0e16 Mon Sep 17 00:00:00 2001
+From: Julian Ospald <hasufell@hasufell.de>
+Date: Mon, 17 Nov 2014 22:58:29 +0100
+Subject: [PATCH 3/4] Update VERSION in Makefiles
+
+---
+ Makefile.linux | 2 +-
+ Makefile.osx   | 2 +-
+ Makefile.win   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.linux b/Makefile.linux
+index fabf8d5..3248ba8 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -7,7 +7,7 @@ SRCDIR=src
+ TESTDIR=tests
+ LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
+ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
+-VERSION=0.2
++VERSION=0.3
+ INST_PFX=/usr
+ INST_LIBDIR=$(INST_PFX)/lib
+ INST_INCLUDE=$(INST_PFX)/include/libntru
+diff --git a/Makefile.osx b/Makefile.osx
+index ccbdf3e..a0f67d3 100644
+--- a/Makefile.osx
++++ b/Makefile.osx
+@@ -4,7 +4,7 @@ SRCDIR=src
+ TESTDIR=tests
+ LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
+ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
+-VERSION=0.2
++VERSION=0.3
+ INST_PFX=/usr
+ INST_LIBDIR=$(INST_PFX)/lib
+ INST_INCLUDE=$(INST_PFX)/include/libntru
+diff --git a/Makefile.win b/Makefile.win
+index 7a93144..ffa7225 100644
+--- a/Makefile.win
++++ b/Makefile.win
+@@ -6,7 +6,7 @@ SRCDIR=src
+ TESTDIR=tests
+ LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
+ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
+-VERSION=0.2
++VERSION=0.3
+ INST_PFX=%PROGRAMFILES%
+ INST_LIBDIR=$(INST_PFX)\libntru
+ INST_INCLUDE=$(INST_PFX)\libntru\include
+-- 
+2.1.3
+

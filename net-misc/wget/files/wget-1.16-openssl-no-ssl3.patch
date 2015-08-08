@@ -1,0 +1,34 @@
+From c81e3df2bc4d06835791427d888d4ae04a2384bc Mon Sep 17 00:00:00 2001
+From: Peter Meiser <meiser@gmx-topmail.de>
+Date: Wed, 29 Oct 2014 19:26:28 +0100
+Subject: [PATCH] Add guard for OpenSSL without SSLv3
+
+---
+ src/ChangeLog | 5 +++++
+ src/openssl.c | 2 ++
+ 2 files changed, 7 insertions(+)
+
+2014-10-29  Peter Meiser <meiser@gmx-topmail.de> (tiny change)
+
+	* openssl.c (ssl_init) [! OPENSSL_NO_SSL3]: Add guard for OpenSSL
+	without SSLv3.
+
+diff --git a/src/openssl.c b/src/openssl.c
+index e24954a..6f11650 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -208,9 +208,11 @@ ssl_init (void)
+       meth = SSLv2_client_method ();
+       break;
+ #endif
++#ifndef OPENSSL_NO_SSL3
+     case secure_protocol_sslv3:
+       meth = SSLv3_client_method ();
+       break;
++#endif
+     case secure_protocol_auto:
+     case secure_protocol_pfs:
+     case secure_protocol_tlsv1:
+-- 
+2.1.2
+

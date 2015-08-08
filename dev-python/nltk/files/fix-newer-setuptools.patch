@@ -1,0 +1,32 @@
+From efe85968bb23e3afdcd331293f2c2588b1590091 Mon Sep 17 00:00:00 2001
+From: Mikhail Korobov <kmike84@gmail.com>
+Date: Fri, 9 Jan 2015 02:06:21 +0500
+Subject: [PATCH] Fixed installation with recent setuptools.
+
+These lines were introduced here: https://github.com/nltk/nltk/commit/1ecbd2edc32db24b4e6c7dd8555d0b89c668f041
+It seems they fix an issue with .svn folders. We use git now,
+there are no .svn folders.
+
+See also: http://stackoverflow.com/questions/1129180/how-can-i-make-setuptools-ignore-subversion-inventory
+---
+ setup.py | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 3ec0949..079bcf3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -29,13 +29,6 @@
+ # setuptools
+ from setuptools import setup, find_packages
+ 
+-#
+-# Prevent setuptools from trying to add extra files to the source code
+-# manifest by scanning the version control system for its contents.
+-#
+-from setuptools.command import sdist
+-del sdist.finders[:]
+-
+ setup(
+     name = "nltk",
+     description = "Natural Language Toolkit",

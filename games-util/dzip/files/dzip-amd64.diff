@@ -1,0 +1,30 @@
+--- dzip/crc32.c	2002-07-12 06:07:54.000000000 +0200
++++ dz/crc32.c	2010-01-20 23:23:43.000000000 +0100
+@@ -1,10 +1,12 @@
++#include <stdint.h>
++
+ unsigned long crcval;
+ unsigned long crctable[256];
+ 
+-unsigned long crc_reflect(unsigned long x, int bits)
+-{
+-	int i;
+-	unsigned long v = 0, b = 1 << (bits - 1);
++unsigned long crc_reflect(uint32_t x, int bits)
++{
++	uint32_t i;
++	uint32_t v = 0, b = 1 << (bits - 1);
+ 
+ 	for (i = 0; i < bits; i++)
+ 	{
+@@ -16,8 +18,8 @@
+ 
+ void crc_init(void)
+ {
+-	unsigned long crcpol = 0x04c11db7;
+-	unsigned long i, j, k;
++	uint32_t crcpol = 0x04c11db7;
++	uint32_t i, j, k;
+ 
+ 	for (i = 0; i < 256; i++)
+ 	{

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>leechcraft</herd>
+	<longdescription>Advanced Notifications module provides an extremely flexible and configurable
+		notifications framework for LeechCraft. More information is in the corresponding devel
+		digest: http://leechcraft.org/devel-digest-5.</longdescription> 
+</pkgmetadata>

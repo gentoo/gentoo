@@ -1,0 +1,9 @@
+diff --git a/dicrc b/dicrc
+index cb6a53e..7f06086 100644
+--- a/dicrc
++++ b/dicrc
+@@ -2,3 +2,4 @@ bos-feature = BOS/EOS
+ node-format-ime = %H
+ unk-format-ime = %M
+ eos-format-ime  = \n
++cost-factor = 700

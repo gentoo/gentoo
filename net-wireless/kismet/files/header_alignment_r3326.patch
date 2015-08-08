@@ -1,0 +1,58 @@
+diff -Naur kismet-2011-03-R2-orig/packetsource_pcap.cc kismet-2011-03-R2/packetsource_pcap.cc
+--- kismet-2011-03-R2-orig/packetsource_pcap.cc	2011-01-05 16:52:51.000000000 -0500
++++ kismet-2011-03-R2/packetsource_pcap.cc	2012-02-20 22:37:17.973526919 -0500
+@@ -553,6 +553,9 @@
+ }
+ #endif
+ 
++#define ALIGN_OFFSET(offset, width) \
++	    ( (((offset) + ((width) - 1)) & (~((width) - 1))) - offset )
++
+ /*
+  * Useful combinations of channel characteristics.
+  */
+@@ -617,6 +620,8 @@
+ 	enum ieee80211_radiotap_type bit;
+ 	int bit0;
+ 	const u_char *iter;
++	const u_char *iter_start;
++	unsigned int iter_align;
+ 	int fcs_cut = 0; // Is the FCS bit set?
+ 	char errstr[STATUS_MAX];
+ 
+@@ -658,7 +663,7 @@
+ 
+ 	eight11chunk->dlt = KDLT_IEEE802_11;
+ 	
+-    iter = (u_char*)(last_presentp + 1);
++    iter_start = iter = (u_char*)(last_presentp + 1);
+ 
+     for (bit0 = 0, presentp = &hdr->it_present; presentp <= last_presentp;
+          presentp++, bit0 += 32) {
+@@ -686,6 +691,9 @@
+                     u.i8 = *iter++;
+                     break;
+                 case IEEE80211_RADIOTAP_CHANNEL:
++					iter_align = ALIGN_OFFSET((unsigned int) (iter - iter_start), 2);
++					iter += iter_align;
++
+                     u.u16 = EXTRACT_LE_16BITS(iter);
+                     iter += sizeof(u.u16);
+                     u2.u16 = EXTRACT_LE_16BITS(iter);
+@@ -695,10 +703,16 @@
+                 case IEEE80211_RADIOTAP_LOCK_QUALITY:
+                 case IEEE80211_RADIOTAP_TX_ATTENUATION:
+                 case IEEE80211_RADIOTAP_DB_TX_ATTENUATION:
++					iter_align = ALIGN_OFFSET((unsigned int) (iter - iter_start), 2);
++					iter += iter_align;
++
+                     u.u16 = EXTRACT_LE_16BITS(iter);
+                     iter += sizeof(u.u16);
+                     break;
+                 case IEEE80211_RADIOTAP_TSFT:
++					iter_align = ALIGN_OFFSET((unsigned int) (iter - iter_start), 8);
++					iter += iter_align;
++
+                     u.u64 = EXTRACT_LE_64BITS(iter);
+                     iter += sizeof(u.u64);
+                     break;

@@ -1,0 +1,101 @@
+diff -ru cubetest-0.9.4.orig/configure cubetest-0.9.4/configure
+--- cubetest-0.9.4.orig/configure	2005-12-05 17:29:43.000000000 -0500
++++ cubetest-0.9.4/configure	2009-09-20 21:23:24.886585972 -0400
+@@ -19741,13 +19741,16 @@
+ if test -n "$PKG_CONFIG"; then
+         if test -n "$PKG_CONFIG" && \
+     { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"QtGui >= \$QT_REQUIRED_VERSION
++	QtCore >= \$QT_REQUIRED_VERSION
+ 	Qt3Support >= \$QT_REQUIRED_VERSION\"") >&5
+   ($PKG_CONFIG --exists --print-errors "QtGui >= $QT_REQUIRED_VERSION
++	QtCore >= $QT_REQUIRED_VERSION
+ 	Qt3Support >= $QT_REQUIRED_VERSION") 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; then
+   pkg_cv_QT_CFLAGS=`$PKG_CONFIG --cflags "QtGui >= $QT_REQUIRED_VERSION
++	QtCore >= $QT_REQUIRED_VERSION
+ 	Qt3Support >= $QT_REQUIRED_VERSION" 2>/dev/null`
+ else
+   pkg_failed=yes
+@@ -19758,13 +19761,16 @@
+ if test -n "$PKG_CONFIG"; then
+         if test -n "$PKG_CONFIG" && \
+     { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"QtGui >= \$QT_REQUIRED_VERSION
++	QtCore >= \$QT_REQUIRED_VERSION
+ 	Qt3Support >= \$QT_REQUIRED_VERSION\"") >&5
+   ($PKG_CONFIG --exists --print-errors "QtGui >= $QT_REQUIRED_VERSION
++	QtCore >= $QT_REQUIRED_VERSION
+ 	Qt3Support >= $QT_REQUIRED_VERSION") 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; then
+   pkg_cv_QT_LIBS=`$PKG_CONFIG --libs "QtGui >= $QT_REQUIRED_VERSION
++	QtCore >= $QT_REQUIRED_VERSION
+ 	Qt3Support >= $QT_REQUIRED_VERSION" 2>/dev/null`
+ else
+   pkg_failed=yes
+@@ -19775,6 +19781,7 @@
+ 
+ if test $pkg_failed = yes; then
+ 	QT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "QtGui >= $QT_REQUIRED_VERSION
++	QtCore >= $QT_REQUIRED_VERSION
+ 	Qt3Support >= $QT_REQUIRED_VERSION"`
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$QT_PKG_ERRORS" 1>&5
+@@ -19842,6 +19849,7 @@
+ 
+ fi
+ 
++    QT_CXXFLAGS="$QT_CFLAGS $QT_CXXFLAGS"
+     { echo "$as_me:$LINENO: Set QT_CXXFLAGS... $QT_CXXFLAGS" >&5
+ echo "$as_me: Set QT_CXXFLAGS... $QT_CXXFLAGS" >&6;}
+     { echo "$as_me:$LINENO: Set QT_LIBS... $QT_LIBS" >&5
+Only in cubetest-0.9.4: configure.orig
+diff -ru cubetest-0.9.4.orig/src/cubetest/cubetest_it.ts cubetest-0.9.4/src/cubetest/cubetest_it.ts
+--- cubetest-0.9.4.orig/src/cubetest/cubetest_it.ts	2005-12-05 14:48:20.000000000 -0500
++++ cubetest-0.9.4/src/cubetest/cubetest_it.ts	2009-09-20 21:23:06.640704967 -0400
+@@ -19,11 +19,11 @@
+     </message>
+     <message>
+         <source>Well done! The correct answer is %1.</source>
+-        <translation>Bene! La risposta esatta &egrave; %1.</translation>
++        <translation>Bene! La risposta esatta &#232; %1.</translation>
+     </message>
+     <message>
+         <source>Wrong! The correct answer is %1.</source>
+-        <translation>Sbagliato! La risposta esatta &egrave; %1.</translation>
++        <translation>Sbagliato! La risposta esatta &#232; %1.</translation>
+     </message>
+     <message>
+         <source>Next question</source>
+@@ -69,11 +69,11 @@
+     </message>
+     <message>
+         <source>Difficulty </source>
+-        <translation>Difficolt&agrave;</translation>
++        <translation>Difficolt&#224;</translation>
+     </message>
+     <message>
+         <source>Can I play Daddy?</source>
+-        <translation>Posso giocare, Pap&agrave;?</translation>
++        <translation>Posso giocare, Pap&#224;?</translation>
+     </message>
+     <message>
+         <source>Don&apos;t hurt my brain</source>
+@@ -113,7 +113,7 @@
+     </message>
+     <message>
+         <source>CubeTest is written by Jos van den Oever and released under the General Public License.</source>
+-        <translation>CubeTest &egrave; stato scritto da Jos van der Oever ed &egrave; rilasciato con la Licenza Pubblica Generale (GPL) di GNU.</translation>
++        <translation>CubeTest &#232; stato scritto da Jos van der Oever ed &#232; rilasciato con la Licenza Pubblica Generale (GPL) di GNU.</translation>
+     </message>
+     <message>
+         <source>Easy</source>
+@@ -132,4 +132,4 @@
+         <translation>Ostico</translation>
+     </message>
+ </context>
+-</TS>
+\ No newline at end of file
++</TS>

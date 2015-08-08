@@ -1,0 +1,51 @@
+From 438344fe7ce2edbd23f4df2dfd8e7b6be0a2d7c2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 11 Sep 2013 11:10:32 +0200
+Subject: [PATCH] Use proper json-c requirement in libreport-web.pc.
+
+Depending on whether json-c was found as 'json' or 'json-c', require the
+same package in the generated .pc file.
+
+[Alexandre Rostovtsev <tetromino@gentoo.org>: backport to 2.0.13]
+---
+ configure.ac        | 9 +++++++--
+ libreport-web.pc.in | 2 +-
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1e32c64..ace4cde 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -102,9 +102,14 @@ PKG_CHECK_MODULES([DBUS], [dbus-1])
+ PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
+ PKG_CHECK_MODULES([NSS], [nss])
+ PKG_CHECK_MODULES([CURL], [libcurl])
+-PKG_CHECK_MODULES([JSON_C], [json],,[
+-    PKG_CHECK_MODULES([JSON_C], [json-c])
++PKG_CHECK_MODULES([JSON_C], [json], [
++    JSON_C_PACKAGE=json
++], [
++    PKG_CHECK_MODULES([JSON_C], [json-c], [
++        JSON_C_PACKAGE=json-c
++    ])
+ ])
++AC_SUBST([JSON_C_PACKAGE])
+ PKG_CHECK_MODULES([BTPARSER], [btparser])
+ PKG_CHECK_MODULES([NEWT], [libnewt])
+ PKG_CHECK_MODULES([PROXY], [libproxy-1.0], [
+diff --git a/libreport-web.pc.in b/libreport-web.pc.in
+index 14505f8..2a7c926 100644
+--- a/libreport-web.pc.in
++++ b/libreport-web.pc.in
+@@ -6,7 +6,7 @@ includedir=@includedir@
+ Name: libreport
+ Description: Library providing network API for libreport
+ Version: @VERSION@
+-Requires: glib-2.0 libcurl libproxy-1.0 libxml-2.0 json btparser libreport
++Requires: glib-2.0 libcurl libproxy-1.0 libxml-2.0 @JSON_C_PACKAGE@ btparser libreport
+ Libs: -L${libdir} @XMLRPC_LIBS@ @XMLRPC_CLIENT_LIBS@ -lreport-web
+ Cflags: @XMLRPC_CFLAGS@ @XMLRPC_CLIENT_CFLAGS@
+ 
+-- 
+1.8.3.2
+

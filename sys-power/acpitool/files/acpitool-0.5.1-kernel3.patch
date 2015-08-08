@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/377355
+
+--- src/acpitool.cpp
++++ src/acpitool.cpp
+@@ -205,8 +205,7 @@
+ 	Kernel_24 = 1;           
+ 	Kernel_26 = 0;
+     }
+-        
+-    if(strncmp(str,"2.6",3)==0)
++    else
+     {
+ 	Kernel_24 = 0;           
+ 	Kernel_26 = 1;

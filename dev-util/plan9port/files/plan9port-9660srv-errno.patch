@@ -1,0 +1,19 @@
+Defining int errno; resuls in the following error on amd64:
+
+  ld: errno: TLS definition in /lib64/libc.so.6 section .tbss mismatches
+  non-TLS reference in main.o
+
+Patch by Alex Efros:
+
+  http://code.swtch.com/plan9port/issue/39/
+--- plan9/src/cmd/9660srv/main.c
++++ plan9.new/src/cmd/9660srv/main.c
+@@ -38,7 +38,7 @@
+ uchar mdata[Maxiosize];
+ char fdata[Maxfdata];
+ uchar statbuf[STATMAX];
+-int errno;
++#include <errno.h>
+ 
+ 
+ extern Xfsub	*xsublist[];

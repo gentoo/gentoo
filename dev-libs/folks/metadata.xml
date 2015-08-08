@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="tracker">Load contacts from <pkg>app-misc/tracker</pkg> index</flag>
+	<flag name="telepathy">Load contacts from the Telepathy framework</flag>
+	<flag name="utils">Build the folks-inspect utility</flag>
+	<flag name="zeitgeist">Add support for Zeitgeist event tracking system</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,121 @@
+diff -ru wmacpiload-0.2.0/src/lib_acpi.c wmacpiload-0.2.0.new//src/lib_acpi.c
+--- wmacpiload-0.2.0/src/lib_acpi.c	2005-07-21 21:41:31.000000000 -0400
++++ wmacpiload-0.2.0.new//src/lib_acpi.c	2011-06-28 23:37:50.148092904 -0400
+@@ -83,7 +83,7 @@
+         if (!k->ac)
+             fprintf(stderr, "%s : no AC adapter detected\n", PACKAGE);
+ 
+-        n = snprintf(dir, FILENAME_MAX + 1, "%s%s", "/proc/acpi",
++        n = snprintf(dir, FILENAME_MAX + 1, "%s%s", "/sys/class",
+                      thermal_zone_dir);
+         if (n > FILENAME_MAX) {
+             fprintf(stderr, "%s : file name too long, "
+@@ -322,10 +322,10 @@
+     n = strlen(searched);
+ 
+     if (dest != NULL && dest_size > 0
+-        && n > 0 && n < (sizeof buffer) - 1
++        && n < (sizeof buffer) - 1
+         && file_name != NULL && (fd = fopen(file_name, "r")) != NULL) {
+         while (fgets(buffer, sizeof buffer, fd) != NULL)
+-            if (strncmp(buffer, searched, n) == 0) {
++            if (n == 0 || strncmp(buffer, searched, n) == 0) {
+                 char *src;
+                 char *end;
+                 size_t len;
+diff -ru wmacpiload-0.2.0/src/thermal.c wmacpiload-0.2.0.new//src/thermal.c
+--- wmacpiload-0.2.0/src/thermal.c	2005-09-29 19:32:46.000000000 -0400
++++ wmacpiload-0.2.0.new//src/thermal.c	2011-06-29 00:18:24.851904854 -0400
+@@ -30,12 +30,17 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <errno.h>
++#include <limits.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <dirent.h>
+ #include "lib_acpi.h"
+ #include "wmacpiload.h"
+ #include "thermal.h"
++#include <unistd.h>
++#include <sys/types.h>
++#include <sys/stat.h>
+ 
+ /************************************************************************
+  * Macro definitions
+@@ -48,8 +53,10 @@
+  * Global constants definitions
+  ************************************************************************/
+ 
+-const char *const thermal_zone_dir = "/thermal_zone/";
+-const char *const thermal_zone_status_file = "/temperature";
++const char *const thermal_zone_dir = "/hwmon/";
++const char *const thermal_zone_status_file = "/temp1_input";
++const char *const thermal_zone_search[] = { "", "/device" };
++const int thermal_zone_MAX_SEARCH = 2;
+ 
+ /************************************************************************
+  * Function definitions
+@@ -86,9 +93,24 @@
+     }
+     strcpy(tz->name, fd->d_name);
+ 
+-    tz->tempfile =
+-        strcat4("/proc/acpi", thermal_zone_dir, tz->name,
+-                thermal_zone_status_file);
++    int i;
++    for (i=0; i < thermal_zone_MAX_SEARCH ; i++) {
++      char device_name[MAXSTRLEN+1];
++      char *tempfile;
++      struct stat tempstat;
++      snprintf(device_name, MAXSTRLEN, "%s%s", tz->name, thermal_zone_search[i]);
++      tempfile = 
++	strcat4("/sys/class", thermal_zone_dir, device_name, 
++	    thermal_zone_status_file);
++      if (stat(tempfile, &tempstat) == -1) {
++	if (verbose)
++		printf("Unable to read thermal zone '%s'\n", tempfile);
++      } else {
++	tz->tempfile = tempfile;
++	break;
++      }
++    }
++
+     if (!tz->tempfile) {
+         fprintf(stderr, "%s : could not allocate memory "
+                 "for thermal zone tempfile concerning "
+@@ -127,16 +149,19 @@
+ 
+     if (tz != NULL) {
+         if (parse_file(tz->tempfile,
+-                       "temperature:", buf, sizeof buf) != NULL) {
++                       "", buf, sizeof buf) != NULL) {
+             char *endptr;
+ 
+             temp = strtoul(buf, &endptr, 10);
+             /*
+-             * The format is "temperature:    xx C" where xx is the
+-             * temperature in celcius degrees. So we check if we have the
+-             * " C" left in the buffer to see if all went well. 
++             * The format is "xxxxxx" where xx is the
++             * temperature in celcius degrees times 1000.
+              */
+-            if (strcmp(endptr, TEMP_UNIT) != 0) {
++	    errno = 0;
++	    if ((errno == ERANGE && (temp == LONG_MAX || temp == LONG_MIN) ) ||
++		(errno != 0 && temp == 0) ||
++		endptr == buf) {
++	      perror("strtol");
+                 fprintf(stderr, "%s : Unconsistent temperature  "
+                         "about thermal zone %s\n", PACKAGE, tz->name);
+                 temp = 0;
+@@ -144,7 +169,7 @@
+         } else {
+             temp = 0;
+         }
+-        tz->temp = temp;
++        tz->temp = temp / 1000;
+     }
+ }
+ 

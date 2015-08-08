@@ -1,0 +1,17 @@
+* todo: extend for powerpc64 also
+
+--- src/bfd/config.bfd.orig	2009-06-23 11:05:43 +0200
++++ src/bfd/config.bfd	2009-06-23 11:05:47 +0200
+@@ -500,6 +500,12 @@
+     targ_archs="bfd_i386_arch bfd_powerpc_arch bfd_rs6000_arch"
+     targ_underscore=yes
+     ;;
++  x86_64-*-darwin*)
++    targ_defvec=mach_o_le_vec
++    targ_selvecs="mach_o_le_vec mach_o_be_vec mach_o_fat_vec pef_vec pef_xlib_vec sym_vec"
++    targ_archs="bfd_i386_arch bfd_powerpc_arch bfd_rs6000_arch"
++    targ_underscore=yes
++    ;;
+  i[3-7]86-sequent-bsd*)
+     targ_defvec=i386dynix_vec
+     targ_underscore=yes

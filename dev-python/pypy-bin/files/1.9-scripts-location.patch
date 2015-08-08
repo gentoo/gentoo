@@ -1,0 +1,11 @@
+--- pypy-pypy-release-1.7/lib-python/2.7/distutils/command/install.py
++++ pypy-pypy-release-1.7/lib-python/2.7/distutils/command/install.py
+@@ -87,7 +87,7 @@
+         'purelib': '$base/site-packages',
+         'platlib': '$base/site-packages',
+         'headers': '$base/include',
+-        'scripts': '$base/bin',
++        'scripts': '/usr/bin',
+         'data'   : '$base',
+         },
+     }

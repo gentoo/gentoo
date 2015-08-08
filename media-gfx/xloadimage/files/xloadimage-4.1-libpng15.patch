@@ -1,0 +1,29 @@
+--- png.c
++++ png.c
+@@ -75,7 +75,7 @@
+ {
+   debug(" #error ");
+   output_warn( png_ptr, str);
+-  longjmp(png_ptr->jmpbuf, 1);	/* return control to outer routine */
++  longjmp(png_jmpbuf(png_ptr), 1);	/* return control to outer routine */
+ }
+ 
+ 
+@@ -164,7 +164,7 @@
+     png_destroy_read_struct(png_pp, info_pp, end_pp);
+     return 0;
+   }
+-  if (setjmp((*png_pp)->jmpbuf)) {
++  if (setjmp(png_jmpbuf(*png_pp))) {
+     /* On error */
+     png_destroy_read_struct(png_pp, info_pp, end_pp);
+     return 0;
+@@ -220,7 +220,7 @@
+     zclose(zinput_file);
+     return 0;
+   }
+-  if (setjmp(png_ptr->jmpbuf)) {
++  if (setjmp(png_jmpbuf(png_ptr))) {
+     /* On error */
+     freeImage(image);
+     png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);

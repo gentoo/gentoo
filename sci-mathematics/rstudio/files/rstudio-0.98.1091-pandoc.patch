@@ -1,0 +1,26 @@
+--- rstudio-0.98.1091-orig/src/cpp/session/CMakeLists.txt	2014-11-06 23:15:47.000000000 +1100
++++ rstudio-0.98.1091/src/cpp/session/CMakeLists.txt	2014-11-26 17:12:42.699712510 +1100
+@@ -25,9 +25,6 @@
+ if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/mathjax-23")
+   message(FATAL_ERROR "Mathjax 2.3 not found (re-run install-dependencies script to install)")
+ endif()
+-if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc")
+-  message(FATAL_ERROR "pandoc not found (re-run install-dependencies script to install)")
+-endif()
+ if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/rmarkdown")
+   message(FATAL_ERROR "rmarkdown package not found (re-run install-dependencies script to install)")
+ endif()
+@@ -343,13 +340,6 @@
+    install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/mathjax-23"
+            DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+ 
+-   # install pandoc
+-   set(PANDOC_BIN "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc/1.12.4.2")
+-   file(GLOB PANDOC_FILES "${PANDOC_BIN}/pandoc*")
+-   install(FILES ${PANDOC_FILES}
+-           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+-           DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
+-
+    # install rmarkdown package
+    file(GLOB RMARKDOWN_PACKAGE "${RSTUDIO_DEPENDENCIES_DIR}/common/rmarkdown*.tar.gz")
+    install(FILES ${RMARKDOWN_PACKAGE}

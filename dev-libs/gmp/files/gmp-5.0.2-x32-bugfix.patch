@@ -1,0 +1,94 @@
+UpstreamStatus: Pending
+
+When LONG_MIN is passed to val, -val is undefined.  This patch fixes
+it.  See for details: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=50066
+
+Received this patch from H.J. Lu <hjl.tools@gmail.com>
+
+Signed-Off-By: Nitin A Kamble <nitin.a.kamble@intel.com> 2011/12/01
+
+--- gmp-4.3.2/mpf/iset_si.c.ll	2010-01-07 12:09:03.000000000 -0800
++++ gmp-4.3.2/mpf/iset_si.c	2011-11-30 16:42:35.827944358 -0800
+@@ -31,7 +31,7 @@ mpf_init_set_si (mpf_ptr r, long int val
+   r->_mp_prec = prec;
+   r->_mp_d = (mp_ptr) (*__gmp_allocate_func) ((prec + 1) * BYTES_PER_MP_LIMB);
+ 
+-  vl = (mp_limb_t) (unsigned long int) (val >= 0 ? val : -val);
++  vl = (mp_limb_t) (val >= 0 ? (unsigned long int) val : -(unsigned long int) val);
+ 
+   r->_mp_d[0] = vl & GMP_NUMB_MASK;
+   size = vl != 0;
+--- gmp-4.3.2/mpf/set_si.c.ll	2010-01-07 12:09:03.000000000 -0800
++++ gmp-4.3.2/mpf/set_si.c	2011-11-30 16:42:47.823878367 -0800
+@@ -27,7 +27,7 @@ mpf_set_si (mpf_ptr dest, long val)
+   mp_size_t size;
+   mp_limb_t vl;
+ 
+-  vl = (mp_limb_t) (unsigned long int) (val >= 0 ? val : -val);
++  vl = (mp_limb_t) (val >= 0 ? (unsigned long int) val : -(unsigned long int) val);
+ 
+   dest->_mp_d[0] = vl & GMP_NUMB_MASK;
+   size = vl != 0;
+--- gmp-4.3.2/mpz/cmp_si.c.ll	2010-01-07 12:09:03.000000000 -0800
++++ gmp-4.3.2/mpz/cmp_si.c	2011-11-30 13:44:25.923319700 -0800
+@@ -27,7 +27,7 @@ _mpz_cmp_si (mpz_srcptr u, signed long i
+ {
+   mp_size_t usize = u->_mp_size;
+   mp_size_t vsize;
+-  mp_limb_t u_digit;
++  mp_limb_t u_digit, vl_digit;
+ 
+ #if GMP_NAIL_BITS != 0
+   /* FIXME.  This isn't very pretty.  */
+@@ -41,11 +41,14 @@ _mpz_cmp_si (mpz_srcptr u, signed long i
+ 
+   vsize = 0;
+   if (v_digit > 0)
+-    vsize = 1;
++    {
++      vsize = 1;
++      vl_digit = (mp_limb_t) (unsigned long) v_digit;
++    }
+   else if (v_digit < 0)
+     {
+       vsize = -1;
+-      v_digit = -v_digit;
++      vl_digit = (mp_limb_t) -(unsigned long) v_digit;
+     }
+ 
+   if (usize != vsize)
+@@ -56,10 +59,10 @@ _mpz_cmp_si (mpz_srcptr u, signed long i
+ 
+   u_digit = u->_mp_d[0];
+ 
+-  if (u_digit == (mp_limb_t) (unsigned long) v_digit)
++  if (u_digit == vl_digit)
+     return 0;
+ 
+-  if (u_digit > (mp_limb_t) (unsigned long) v_digit)
++  if (u_digit > vl_digit)
+     return usize;
+   else
+     return -usize;
+--- gmp-4.3.2/mpz/iset_si.c.ll	2010-01-07 12:09:03.000000000 -0800
++++ gmp-4.3.2/mpz/iset_si.c	2011-11-30 13:44:25.924319695 -0800
+@@ -31,7 +31,7 @@ mpz_init_set_si (mpz_ptr dest, signed lo
+   dest->_mp_alloc = 1;
+   dest->_mp_d = (mp_ptr) (*__gmp_allocate_func) (BYTES_PER_MP_LIMB);
+ 
+-  vl = (mp_limb_t) (unsigned long int) (val >= 0 ? val : -val);
++  vl = (mp_limb_t) (val >= 0 ? (unsigned long int) val : -(unsigned long int) val);
+ 
+   dest->_mp_d[0] = vl & GMP_NUMB_MASK;
+   size = vl != 0;
+--- gmp-4.3.2/mpz/set_si.c.ll	2010-01-07 12:09:03.000000000 -0800
++++ gmp-4.3.2/mpz/set_si.c	2011-11-30 13:44:25.947319574 -0800
+@@ -27,7 +27,7 @@ mpz_set_si (mpz_ptr dest, signed long in
+   mp_size_t size;
+   mp_limb_t vl;
+ 
+-  vl = (mp_limb_t) (unsigned long int) (val >= 0 ? val : -val);
++  vl = (mp_limb_t) (val >= 0 ? (unsigned long int) val : -(unsigned long int) val);
+ 
+   dest->_mp_d[0] = vl & GMP_NUMB_MASK;
+   size = vl != 0;

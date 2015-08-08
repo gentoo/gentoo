@@ -1,0 +1,108 @@
+--- a/makefile
++++ b/makefile
+@@ -1,8 +1,8 @@
+ WXCONFIG = wx-config
+ CC = `$(WXCONFIG) --cc`
+ CPP = `$(WXCONFIG) --cxx`
+-CXXFLAGS= `$(WXCONFIG) --cxxflags` -Iudis86 -Imhash/include -MMD -O2 -c ${OPTFLAGS}
+-LDFLAGS = `$(WXCONFIG) --libs`
++WXCXXFLAGS= `$(WXCONFIG) --cxxflags` -MMD -c ${OPTFLAGS} -fopenmp ${CXXFLAGS}
++WXLDFLAGS = `$(WXCONFIG) --libs` -fopenmp ${LDFLAGS}
+ RC = `$(WXCONFIG) --rescomp`
+ #RC = x86_64-w64-mingw32-windres --define WX_CPU_AMD64
+ RCFLAGS = `$(WXCONFIG) --cxxflags | sed s/' '-m.*//g;`
+@@ -19,7 +19,7 @@ SOURCES= src/HexEditorGui.cpp \
+ 			src/HexEditorCtrl/wxHexCtrl/Tag.cpp\
+ 			src/HexEditorCtrl/HexEditorCtrlGui.cpp\
+ 			src/HexEditorFrame.cpp
+-LIBS = udis86/libudis86/.libs/libudis86.a mhash/lib/.libs/libmhash.a
++LIBS = -lmhash -ludis86
+ OBJECTS=$(SOURCES:.cpp=.o)
+ DEPENDS=$(OBJECTS:.o=.d)
+ RESOURCES= resources/resource.rc
+@@ -28,43 +28,35 @@ EXECUTABLE=wxHexEditor
+ EXECUTABLE_WIN=$(EXECUTABLE).exe
+ EXECUTABLE_DIR_MAC=$(EXECUTABLE).app
+ 
+-PREFIX      = /usr/local
++DESTDIR     =
++PREFIX      = $(DESTDIR)/usr
+ BINDIR      = $(PREFIX)/bin
+ DATADIR     = $(PREFIX)/share
+ LOCALEDIR   = $(DATADIR)/locale
+ 
+-VERSION = 0.12 Beta
++VERSION = 0.20
+ 
+ all: $(EXECUTABLE)
+ 
+-$(OBJECTS): $(LIBS) $(SOURCES)
++$(OBJECTS): $(SOURCES)
+ 
+ $(EXECUTABLE): $(OBJECTS)
+-	$(CPP) $(OBJECTS) $(LIBS) $(LDFLAGS) -lgomp -o $@
++	$(CPP) $(OBJECTS) $(LIBS) $(WXLDFLAGS) ${CXXFLAGS} -o $@
+ 
+-.cpp.o: $(LIBS)
+-	$(CPP) $(CXXFLAGS) $< -o $@
++.cpp.o:
++	$(CPP) $(WXCXXFLAGS) $< -o $@
+ 
+ %.o : %.rc
+ 	$(RC) $(RCFLAGS) $< -o $@
+ 
+-udis86/libudis86/.libs/libudis86.a:
+-	cd udis86;./autogen.sh
+-	cd udis86;./configure --host=$(HOST)
+-	cd udis86/libudis86; $(MAKE) $(MFLAGS)
+-
+-mhash/lib/.libs/libmhash.a:
+-	cd mhash; ./configure --host=$(HOST)
+-	cd mhash; $(MAKE) $(MFLAGS)
+-
+ win: $(RESOURCES) $(EXECUTABLE_WIN)
+ 
+ #Stack override required for file comparison function...
+ $(EXECUTABLE_WIN): $(OBJECTS) $(RESOURCE_OBJ)
+-	$(CPP) $(OBJECTS) $(RESOURCE_OBJ) $(LIBS) $(LDFLAGS) -static-libgcc -static-libstdc++ -Wl,--stack,32000000 -o $@
++	$(CPP) $(OBJECTS) $(RESOURCE_OBJ) $(LIBS) ${CXXFLAGS} $(WXLDFLAGS) -static-libgcc -static-libstdc++ -Wl,--stack,32000000 -o $@
+ 
+ maclink: $(OBJECTS)
+-	$(CPP) $(OBJECTS) $(LIBS) $(LDFLAGS) -lexpat -Wl,-stack_size,0x2000000 -o $(EXECUTABLE)
++	$(CPP) $(OBJECTS) $(LIBS) ${CXXFLAGS} $(WXLDFLAGS) -lexpat -Wl,-stack_size,0x2000000 -o $(EXECUTABLE)
+ 
+ mac: maclink
+ 	mkdir -p $(EXECUTABLE_DIR_MAC)/Contents
+--- a/src/HexDialogs.cpp
++++ b/src/HexDialogs.cpp
+@@ -24,7 +24,7 @@
+ #define NANINT 0xFFFFFFFFFFFFFFFFLL
+ #include "HexDialogs.h"
+ #include <wx/progdlg.h>
+-#include "../mhash/include/mhash.h"
++#include <mhash.h>
+ 
+ #ifdef _OPENMP
+    #include <omp.h>
+--- a/src/HexEditor.h
++++ b/src/HexEditor.h
+@@ -25,7 +25,7 @@
+ #ifndef _wxHexEditor_h_
+ #define _wxHexEditor_h_
+ 
+-#include "../mhash/include/mhash.h"
++#include <mhash.h>
+ 
+ #include <wx/ffile.h>
+ #include <wx/clipbrd.h>
+--- a/src/HexPanels.h
++++ b/src/HexPanels.h
+@@ -27,7 +27,7 @@
+ #include "HexEditorFrame.h"
+ #include "HexEditorCtrl/HexEditorCtrl.h"
+ #include "HexEditorCtrl/wxHexCtrl/wxHexCtrl.h"
+-#include "../udis86/udis86.h"
++#include <udis86.h>
+ 
+ #ifdef WX_GCH
+ #include <wx_pch.h>

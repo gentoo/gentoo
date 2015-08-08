@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		hnb is a program to organize many kinds of data in one place, including
+		addresses, TODO lists, ideas, book reviews, brainstorming, speech
+		outlines, etc. It stores data in XML format, and is capable of native
+		export to ASCII and HTML.
+	</longdescription>
+</pkgmetadata>

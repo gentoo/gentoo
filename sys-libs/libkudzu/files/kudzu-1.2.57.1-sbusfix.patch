@@ -1,0 +1,72 @@
+--- a/sbus.c
++++ b/sbus.c
+@@ -162,6 +162,7 @@
+ 		    	devClass = CLASS_NETWORK;
+ 		} else if (!strcmp(prop, "le")) {
+ 			type = "Sun Lance Ethernet";
++			module = "sunlance";
+ 		    	devClass = CLASS_NETWORK;
+ 		} else if (!strcmp(prop, "qe")) {
+ 			prop = prom_getproperty("channel#", &len);
+@@ -206,9 +207,11 @@
+ 		    	devClass = CLASS_SCSI;
+ 		} else if (!strcmp(prop, "esp")) {
+ 			type = "Sun Enhanced SCSI Processor (ESP)";
++			module = "esp";
+ 		    	devClass = CLASS_SCSI;
+ 		} else if (!strcmp(prop, "fas")) {
+ 			type = "Sun Swift (ESP)";
++			module = "esp";
+ 		    	devClass = CLASS_SCSI;
+ 		} else if (!strcmp(prop, "ptisp")) {
+ 			type = "Performance Technologies ISP";
+@@ -232,19 +235,19 @@
+ 			while ((*prop >= 'A' && *prop <= 'Z') || *prop == ',')
+ 				if (*prop++ == ',') break;
+ 		if (!strcmp(prop, "audio")) {
+-			type = "AMD7930";
+-			module = "amd7930";
++			type = "Sun|AMD7930";
++			module = "snd-sun-amd7930";
+ 		    	devClass = CLASS_AUDIO;
+ 		} else if (!strcmp(prop, "CS4231")) {
+ 			if (ebus)
+-				type = "CS4231 EB2 DMA (PCI)";
++				type = "Sun|CS4231 EB2 DMA (PCI)";
+ 			else
+-				type = "CS4231 APC DMA (SBUS)";
+-			module = "cs4231";
++				type = "Sun|CS4231 APC DMA (SBUS)";
++			module = "snd-sun-cs4231";
+ 		    	devClass = CLASS_AUDIO;
+ 		} else if (!strcmp(prop, "DBRIe")) {
+-			type = "SS10/SS20 DBRI";
+-			module = "dbri";
++			type = "Sun|SS10/SS20 DBRI";
++			module = "snd-sun-dbri";
+ 		    	devClass = CLASS_AUDIO;
+ 		}
+ 	    	prop = prom_getproperty("device_type", &len);
+@@ -452,22 +455,6 @@
+ 
+ struct device *sbusProbe( enum deviceClass probeClass, int probeFlags,
+ 		    struct device *devlist) {
+-    if (probeClass & CLASS_MOUSE) {
+-	int fd;
+-	struct sbusDevice *mousedev;
+-
+-	if ((fd = open("/dev/sunmouse", O_RDONLY)) != -1) {
+-	    /* FIXME: Should probably talk to the mouse to see
+-	       if the connector is not empty. */
+-	    close (fd);
+-	    mousedev = sbusNewDevice(NULL);
+-	    mousedev->type = CLASS_MOUSE;
+-	    mousedev->device = strdup("sunmouse");
+-	    mousedev->desc = strdup("Sun Mouse");
+-	    mousedev->next = devlist;
+-	    devlist = (struct device *)mousedev;
+-	}
+-    }
+     if (
+ 	(probeClass & CLASS_OTHER) ||
+ 	(probeClass & CLASS_NETWORK) ||

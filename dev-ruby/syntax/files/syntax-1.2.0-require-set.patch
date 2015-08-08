@@ -1,0 +1,16 @@
+commit 22430510b9662edd64e3792c560629daf8aebc82
+Author: Jan Berkel <jan@soundcloud.com>
+Date:   Tue Apr 1 07:00:17 2014 -0400
+
+    Explicitly require 'set'.
+
+diff --git a/lib/syntax/lang/ruby.rb b/lib/syntax/lang/ruby.rb
+index edccda0..90eca56 100644
+--- a/lib/syntax/lang/ruby.rb
++++ b/lib/syntax/lang/ruby.rb
+@@ -1,4 +1,5 @@
+ require 'syntax'
++require 'set'
+ 
+ module Syntax
+ 

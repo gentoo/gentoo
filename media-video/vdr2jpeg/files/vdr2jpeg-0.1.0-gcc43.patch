@@ -1,0 +1,38 @@
+add missing inludes for gcc-4.3.x
+http://bugs.gentoo.org/show_bug.cgi?id=229377
+diff -uBbwNr vdr2jpeg-0.1.0_orig/gop.cpp vdr2jpeg-0.1.0/gop.cpp
+--- vdr2jpeg-0.1.0_orig/gop.cpp	2008-02-17 07:14:46.000000000 +0100
++++ vdr2jpeg-0.1.0/gop.cpp	2008-06-25 13:48:19.000000000 +0200
+@@ -29,6 +29,7 @@
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <time.h>
++#include <string.h>
+ #include <iostream>
+ #include <fstream>
+ #include <sstream>
+diff -uBbwNr vdr2jpeg-0.1.0_orig/tools.cpp vdr2jpeg-0.1.0/tools.cpp
+--- vdr2jpeg-0.1.0_orig/tools.cpp	2008-02-17 07:15:22.000000000 +0100
++++ vdr2jpeg-0.1.0/tools.cpp	2008-06-25 13:47:40.000000000 +0200
+@@ -19,6 +19,8 @@
+  * Or, point your browser to http://www.gnu.org/copyleft/gpl.html
+  */
+ 
++#include <string.h>
++
+ #include "tools.h"
+ 
+ int option(int argc, char *argv[], const char opt, bool bParam,
+diff -uBbwNr vdr2jpeg-0.1.0_orig/vdr2jpeg.cpp vdr2jpeg-0.1.0/vdr2jpeg.cpp
+--- vdr2jpeg-0.1.0_orig/vdr2jpeg.cpp	2008-02-17 07:15:48.000000000 +0100
++++ vdr2jpeg-0.1.0/vdr2jpeg.cpp	2008-06-25 13:47:12.000000000 +0200
+@@ -22,6 +22,8 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>       
+ #include <fcntl.h>
++#include <stdlib.h>
++#include <algorithm>
+ #include <iostream>
+ #include <fstream>
+ #include <sstream>
+

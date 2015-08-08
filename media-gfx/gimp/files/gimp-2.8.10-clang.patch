@@ -1,0 +1,204 @@
+--- app/Makefile.am
++++ app/Makefile.am
+@@ -120,29 +120,29 @@
+ 
+ # FIXME: core should not depend on xcf
+ workaround_that_core_depends_on_xcf = \
+-	-u $(SYMPREFIX)xcf_init
++	-Wl,-u,$(SYMPREFIX)xcf_init
+ 
+ # FIXME: core should not depend on pdb
+ workaround_that_core_depends_on_pdb = \
+-	-u $(SYMPREFIX)internal_procs_init		\
+-	-u $(SYMPREFIX)gimp_plug_in_manager_restore
++	-Wl,-u,$(SYMPREFIX)internal_procs_init		\
++	-Wl,-u,$(SYMPREFIX)gimp_plug_in_manager_restore
+ 
+ # FIXME: plug-in should not depend on pdb
+ workaround_that_plug_in_depends_on_pdb = \
+-	-u $(SYMPREFIX)gimp_pdb_compat_param_spec
++	-Wl,-u,$(SYMPREFIX)gimp_pdb_compat_param_spec
+ 
+ # FIXME: file should not depend on plug-in
+ workaround_that_file_depends_on_plug_in = \
+-	-u $(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
+-	-u $(SYMPREFIX)gimp_image_map_config_get_type
++	-Wl,-u,$(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
++	-Wl,-u,$(SYMPREFIX)gimp_image_map_config_get_type
+ 
+ # core, vectors and gegl are on the same architectural layer, prevent
+ # the linker from panicing
+ calm_down_linker = \
+-	-u $(SYMPREFIX)gimp_vectors_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_curve_map_pixels
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_curve_map_pixels
+ 
+ AM_LDFLAGS = \
+ 	$(munix)					\
+--- app/Makefile.in
++++ app/Makefile.in
+@@ -702,33 +702,33 @@
+ 
+ # FIXME: core should not depend on xcf
+ workaround_that_core_depends_on_xcf = \
+-	-u $(SYMPREFIX)xcf_init
++	-Wl,-u,$(SYMPREFIX)xcf_init
+ 
+ 
+ # FIXME: core should not depend on pdb
+ workaround_that_core_depends_on_pdb = \
+-	-u $(SYMPREFIX)internal_procs_init		\
+-	-u $(SYMPREFIX)gimp_plug_in_manager_restore
++	-Wl,-u,$(SYMPREFIX)internal_procs_init		\
++	-Wl,-u,$(SYMPREFIX)gimp_plug_in_manager_restore
+ 
+ 
+ # FIXME: plug-in should not depend on pdb
+ workaround_that_plug_in_depends_on_pdb = \
+-	-u $(SYMPREFIX)gimp_pdb_compat_param_spec
++	-Wl,-u,$(SYMPREFIX)gimp_pdb_compat_param_spec
+ 
+ 
+ # FIXME: file should not depend on plug-in
+ workaround_that_file_depends_on_plug_in = \
+-	-u $(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
+-	-u $(SYMPREFIX)gimp_image_map_config_get_type
++	-Wl,-u,$(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
++	-Wl,-u,$(SYMPREFIX)gimp_image_map_config_get_type
+ 
+ 
+ # core, vectors and gegl are on the same architectural layer, prevent
+ # the linker from panicing
+ calm_down_linker = \
+-	-u $(SYMPREFIX)gimp_vectors_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_curve_map_pixels
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_curve_map_pixels
+ 
+ AM_LDFLAGS = \
+ 	$(munix)					\
+--- app/tests/Makefile.am
++++ app/tests/Makefile.am
+@@ -63,22 +63,22 @@
+ # We need this due to circular dependencies, see more detailed
+ # comments about it in app/Makefile.am
+ AM_LDFLAGS = \
+-	-u $(SYMPREFIX)xcf_init				\
+-	-u $(SYMPREFIX)base_init			\
+-	-u $(SYMPREFIX)internal_procs_init		\
+-	-u $(SYMPREFIX)gimp_plug_in_manager_restore	\
+-	-u $(SYMPREFIX)gimp_pdb_compat_param_spec	\
+-	-u $(SYMPREFIX)gui_init				\
+-	-u $(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
+-	-u $(SYMPREFIX)gimp_image_map_config_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
+-	-u $(SYMPREFIX)actions_init			\
+-	-u $(SYMPREFIX)gimp_error_dialog_new		\
+-	-u $(SYMPREFIX)menus_save			\
+-	-u $(SYMPREFIX)gimp_tools_save			\
+-	-u $(SYMPREFIX)gimp_curve_map_pixels
++	-Wl,-u,$(SYMPREFIX)xcf_init				\
++	-Wl,-u,$(SYMPREFIX)base_init			\
++	-Wl,-u,$(SYMPREFIX)internal_procs_init		\
++	-Wl,-u,$(SYMPREFIX)gimp_plug_in_manager_restore	\
++	-Wl,-u,$(SYMPREFIX)gimp_pdb_compat_param_spec	\
++	-Wl,-u,$(SYMPREFIX)gui_init				\
++	-Wl,-u,$(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
++	-Wl,-u,$(SYMPREFIX)gimp_image_map_config_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)actions_init			\
++	-Wl,-u,$(SYMPREFIX)gimp_error_dialog_new		\
++	-Wl,-u,$(SYMPREFIX)menus_save			\
++	-Wl,-u,$(SYMPREFIX)gimp_tools_save			\
++	-Wl,-u,$(SYMPREFIX)gimp_curve_map_pixels
+ 
+ # Note that we have some duplicate entries here too to work around
+ # circular dependencies and systems on the same architectural layer as
+--- app/tests/Makefile.in
++++ app/tests/Makefile.in
+@@ -1221,22 +1221,22 @@
+ # We need this due to circular dependencies, see more detailed
+ # comments about it in app/Makefile.am
+ AM_LDFLAGS = \
+-	-u $(SYMPREFIX)xcf_init				\
+-	-u $(SYMPREFIX)base_init			\
+-	-u $(SYMPREFIX)internal_procs_init		\
+-	-u $(SYMPREFIX)gimp_plug_in_manager_restore	\
+-	-u $(SYMPREFIX)gimp_pdb_compat_param_spec	\
+-	-u $(SYMPREFIX)gui_init				\
+-	-u $(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
+-	-u $(SYMPREFIX)gimp_image_map_config_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
+-	-u $(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
+-	-u $(SYMPREFIX)actions_init			\
+-	-u $(SYMPREFIX)gimp_error_dialog_new		\
+-	-u $(SYMPREFIX)menus_save			\
+-	-u $(SYMPREFIX)gimp_tools_save			\
+-	-u $(SYMPREFIX)gimp_curve_map_pixels
++	-Wl,-u,$(SYMPREFIX)xcf_init				\
++	-Wl,-u,$(SYMPREFIX)base_init			\
++	-Wl,-u,$(SYMPREFIX)internal_procs_init		\
++	-Wl,-u,$(SYMPREFIX)gimp_plug_in_manager_restore	\
++	-Wl,-u,$(SYMPREFIX)gimp_pdb_compat_param_spec	\
++	-Wl,-u,$(SYMPREFIX)gui_init				\
++	-Wl,-u,$(SYMPREFIX)plug_in_icc_profile_apply_rgb	\
++	-Wl,-u,$(SYMPREFIX)gimp_image_map_config_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_mod_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)gimp_vectors_prop_undo_get_type	\
++	-Wl,-u,$(SYMPREFIX)actions_init			\
++	-Wl,-u,$(SYMPREFIX)gimp_error_dialog_new		\
++	-Wl,-u,$(SYMPREFIX)menus_save			\
++	-Wl,-u,$(SYMPREFIX)gimp_tools_save			\
++	-Wl,-u,$(SYMPREFIX)gimp_curve_map_pixels
+ 
+ 
+ # Note that we have some duplicate entries here too to work around
+--- devel-docs/app/Makefile.am
++++ devel-docs/app/Makefile.am
+@@ -62,10 +62,10 @@
+ 	-UGTK_DISABLE_SINGLE_INCLUDES
+ 
+ GTKDOC_LIBS = \
+-	-u $(SYMPREFIX)xcf_init		   				     \
+-	-u $(SYMPREFIX)internal_procs_init 				     \
+-	-u $(SYMPREFIX)gimp_coords_mix	   				     \
+-	-u $(SYMPREFIX)gimp_plug_in_manager_restore			     \
++	-Wl,-u,$(SYMPREFIX)xcf_init		   				     \
++	-Wl,-u,$(SYMPREFIX)internal_procs_init 				     \
++	-Wl,-u,$(SYMPREFIX)gimp_coords_mix	   				     \
++	-Wl,-u,$(SYMPREFIX)gimp_plug_in_manager_restore			     \
+ 	$(top_builddir)/app/app.o					     \
+         $(top_builddir)/app/batch.o					     \
+         $(top_builddir)/app/errors.o					     \
+--- devel-docs/app/Makefile.in
++++ devel-docs/app/Makefile.in
+@@ -511,10 +511,10 @@
+ 	-UGTK_DISABLE_SINGLE_INCLUDES
+ 
+ GTKDOC_LIBS = \
+-	-u $(SYMPREFIX)xcf_init		   				     \
+-	-u $(SYMPREFIX)internal_procs_init 				     \
+-	-u $(SYMPREFIX)gimp_coords_mix	   				     \
+-	-u $(SYMPREFIX)gimp_plug_in_manager_restore			     \
++	-Wl,-u,$(SYMPREFIX)xcf_init		   				     \
++	-Wl,-u,$(SYMPREFIX)internal_procs_init 				     \
++	-Wl,-u,$(SYMPREFIX)gimp_coords_mix	   				     \
++	-Wl,-u,$(SYMPREFIX)gimp_plug_in_manager_restore			     \
+ 	$(top_builddir)/app/app.o					     \
+         $(top_builddir)/app/batch.o					     \
+         $(top_builddir)/app/errors.o					     \

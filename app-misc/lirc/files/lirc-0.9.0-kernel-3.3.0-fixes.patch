@@ -1,0 +1,50 @@
+diff -ur drivers/lirc_serial/lirc_serial.c drivers.new/lirc_serial/lirc_serial.c
+--- drivers/lirc_serial/lirc_serial.c	2011-03-25 18:28:18.000000000 -0400
++++ drivers.new/lirc_serial/lirc_serial.c	2012-10-24 14:32:14.000000000 -0400
+@@ -66,7 +66,12 @@
+ #include <linux/poll.h>
+ #include <linux/platform_device.h>
+ 
++#include "drivers/kcompat.h"
++#if LINUX_VERSION_CODE > KERNEL_VERSION(3, 3, 0)
++#include <asm/switch_to.h>
++#else
+ #include <asm/system.h>
++#endif
+ #include <linux/io.h>
+ #include <linux/irq.h>
+ #include <linux/fcntl.h>
+@@ -80,7 +85,6 @@
+ #define UART_IE_IXP42X_UUE   0x40 /* IXP42X UART Unit enable */
+ #define UART_IE_IXP42X_RTOIE 0x10 /* IXP42X Receiver Data Timeout int.enable */
+ 
+-#include "drivers/kcompat.h"
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 35)
+ #include <media/lirc.h>
+ #include <media/lirc_dev.h>
+diff -ur drivers/lirc_sir/lirc_sir.c drivers.new/lirc_sir/lirc_sir.c
+--- drivers/lirc_sir/lirc_sir.c	2011-03-25 18:28:18.000000000 -0400
++++ drivers.new/lirc_sir/lirc_sir.c	2012-10-24 14:32:46.000000000 -0400
+@@ -59,7 +59,14 @@
+ #include <linux/mm.h>
+ #include <linux/delay.h>
+ #include <linux/poll.h>
++
++#include "drivers/kcompat.h"
++#if LINUX_VERSION_CODE > KERNEL_VERSION(3, 3, 0)
++#include <asm/switch_to.h>
++#else
+ #include <asm/system.h>
++#endif
++
+ #include <linux/io.h>
+ #include <asm/irq.h>
+ #include <linux/fcntl.h>
+@@ -74,7 +81,6 @@
+ 
+ #include <linux/timer.h>
+ 
+-#include "drivers/kcompat.h"
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 35)
+ #include <media/lirc.h>
+ #include <media/lirc_dev.h>

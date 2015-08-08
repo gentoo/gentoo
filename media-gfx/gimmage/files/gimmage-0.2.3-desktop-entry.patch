@@ -1,0 +1,16 @@
+diff -ur gimmage-0.2.3.orig/gimmage.desktop.in gimmage-0.2.3/gimmage.desktop.in
+--- gimmage-0.2.3.orig/gimmage.desktop.in	2007-06-27 00:22:57.000000000 +0300
++++ gimmage-0.2.3/gimmage.desktop.in	2010-08-06 20:42:55.000000000 +0300
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=gimmage
+ Exec=@prefix@/bin/gimmage
+-Icon=gimmage.png
++Icon=gimmage
+ Type=Application
+-Categories=Application;Graphics;
++Categories=Graphics;
+ Comment=A simple image viewer.
+-MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/png;image/tiff;image/x-bmp;image/x-pcx;image/x-tga;image/x-portable-pixmap;image/x-portable-bitmap;image/x-targa;image/x-portable-greymap;application/pcx;image/svg+xml;image/svg-xml
+\ No newline at end of file
++MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/png;image/tiff;image/x-bmp;image/x-pcx;image/x-tga;image/x-portable-pixmap;image/x-portable-bitmap;image/x-targa;image/x-portable-greymap;application/pcx;image/svg+xml;image/svg-xml;

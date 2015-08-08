@@ -1,0 +1,30 @@
+diff -ur mm2.7.orig/src/metamail/uue.c mm2.7/src/metamail/uue.c
+--- mm2.7.orig/src/metamail/uue.c	1993-07-28 21:31:02.000000000 +0300
++++ mm2.7/src/metamail/uue.c	2009-08-07 12:09:35.000000000 +0300
+@@ -30,7 +30,7 @@
+ }
+ 
+ 
+-getline (buf, size, fp)
++get_line (buf, size, fp)
+ char *buf;
+ int size;
+ FILE *fp;
+@@ -70,7 +70,7 @@
+     char buf[63];
+ 
+     while (1) {
+-	if (getline (buf, sizeof buf, infp) < 0) {
++	if (get_line (buf, sizeof buf, infp) < 0) {
+ 	    fprintf (stderr, "Premature EOF!\n");
+ 	    return;
+ 	}
+@@ -82,7 +82,7 @@
+ 	}
+     }	
+     while (1) {
+-	if (getline (buf, sizeof buf, infp) < 0) {
++	if (get_line (buf, sizeof buf, infp) < 0) {
+ 	    fprintf (stderr, "Premature EOF!\n");
+ 	    return;
+ 	}

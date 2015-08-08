@@ -1,0 +1,87 @@
+diff --git a/Lvm/Asm/Data.hs b/Lvm/Asm/Data.hs
+index 7939754..f3da0b7 100644
+--- a/Lvm/Asm/Data.hs
++++ b/Lvm/Asm/Data.hs
+@@ -17,2 +17,3 @@ import Lvm.Core.Module
+ import Text.PrettyPrint.Leijen
++import Prelude hiding ((<$>))
+ 
+diff --git a/Lvm/Common/IdMap.hs b/Lvm/Common/IdMap.hs
+index a50bcb6..10758e6 100644
+--- a/Lvm/Common/IdMap.hs
++++ b/Lvm/Common/IdMap.hs
+@@ -24,2 +24,3 @@ import Lvm.Common.Id
+ import Control.Arrow (first)
++import Prelude hiding (foldMap)
+ 
+diff --git a/Lvm/Core/Expr.hs b/Lvm/Core/Expr.hs
+index 8bc50d7..935e16a 100644
+--- a/Lvm/Core/Expr.hs
++++ b/Lvm/Core/Expr.hs
+@@ -17,2 +17,3 @@ import Lvm.Core.PrettyId
+ import Text.PrettyPrint.Leijen
++import Prelude hiding ((<$>))
+ 
+diff --git a/Lvm/Core/Module.hs b/Lvm/Core/Module.hs
+index 923870e..ac52201 100644
+--- a/Lvm/Core/Module.hs
++++ b/Lvm/Core/Module.hs
+@@ -24,2 +24,3 @@ import Lvm.Instr.Data
+ import Text.PrettyPrint.Leijen
++import Prelude hiding ((<$>))
+ 
+diff --git a/Lvm/Instr/Data.hs b/Lvm/Instr/Data.hs
+index 497a690..959cb5c 100644
+--- a/Lvm/Instr/Data.hs
++++ b/Lvm/Instr/Data.hs
+@@ -19,2 +19,3 @@ import Lvm.Common.Id
+ import Text.PrettyPrint.Leijen
++import Prelude hiding ((<$>))
+ 
+diff --git a/Lvm/Instr/Resolve.hs b/Lvm/Instr/Resolve.hs
+index 6845f74..4172a74 100644
+--- a/Lvm/Instr/Resolve.hs
++++ b/Lvm/Instr/Resolve.hs
+@@ -10,2 +10,4 @@ module Lvm.Instr.Resolve (instrResolve) where
+ import Control.Exception (assert)
++import Control.Applicative
++import Control.Monad
+ import Data.Maybe
+@@ -32,2 +34,6 @@ instance Functor Resolve where
+ 
++instance Applicative Resolve where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad Resolve where
+diff --git a/Lvm/Read.hs b/Lvm/Read.hs
+index 7137331..25797f9 100644
+--- a/Lvm/Read.hs
++++ b/Lvm/Read.hs
+@@ -9,2 +9,3 @@ module Lvm.Read (lvmReadFile, lvmRead) where
+ 
++import Control.Applicative
+ import Control.Monad
+@@ -390,2 +391,7 @@ instance Functor (Read v) where
+                                         Result x st2 -> Result (f x) st2)
++
++instance Applicative (Read v) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad (Read v) where
+diff --git a/Lvm/Write.hs b/Lvm/Write.hs
+index 48570f8..37469bc 100644
+--- a/Lvm/Write.hs
++++ b/Lvm/Write.hs
+@@ -11,2 +11,3 @@ import qualified Control.Exception as CE (assert, catch, IOException)
+ import Control.Monad
++import Control.Applicative
+ import Data.Maybe
+@@ -465,2 +466,6 @@ instance Functor Emit where
+ 
++instance Applicative Emit where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad Emit where

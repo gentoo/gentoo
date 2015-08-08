@@ -1,0 +1,13 @@
+--- libnsfb-0.1.2/Makefile
++++ libnsfb-0.1.2/Makefile
+@@ -20,8 +20,8 @@
+ # would like these flags but gcc earlier than 4.4 fail
+ #-pedantic -Wno-overlength-strings # For nsglobe.c
+ 
+-CFLAGS := -g -std=c99 -D_BSD_SOURCE -D_POSIX_C_SOURCE=200112L \
+-	-I$(CURDIR)/include/ -I$(CURDIR)/src $(WARNFLAGS) $(CFLAGS) -Wno-error
++CFLAGS := -g -std=c99 -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L \
++	-I$(CURDIR)/include/ -I$(CURDIR)/src $(WARNFLAGS) $(CFLAGS)
+ 
+ NSFB_XCB_PKG_NAMES := xcb xcb-icccm xcb-image xcb-keysyms xcb-atom
+ 

@@ -1,0 +1,31 @@
+https://bitbucket.org/vinay.sajip/python-gnupg/commits/79c73a9ce6e33555246f9dae2ef4be9964e2704b
+# HG changeset patch
+# User Vinay Sajip <vinay_sajip@yahoo.co.uk>
+# Date 1419023737 0
+# Node ID 79c73a9ce6e33555246f9dae2ef4be9964e2704b
+# Parent  767aa49b175738b6d0404a2fb2fca3e3c081e0a8
+Closes #22: handled PROGRESS messages during verification and signing.
+
+diff --git a/gnupg.py b/gnupg.py
+--- a/gnupg.py
++++ b/gnupg.py
+@@ -221,7 +221,8 @@
+                      "PLAINTEXT_LENGTH", "POLICY_URL", "DECRYPTION_INFO",
+                      "DECRYPTION_OKAY", "INV_SGNR", "FILE_START", "FILE_ERROR",
+                      "FILE_DONE", "PKA_TRUST_GOOD", "PKA_TRUST_BAD", "BADMDC",
+-                     "GOODMDC", "NO_SGNR", "NOTATION_NAME", "NOTATION_DATA"):
++                     "GOODMDC", "NO_SGNR", "NOTATION_NAME", "NOTATION_DATA",
++                     "PROGRESS"):
+             pass
+         elif key == "BADSIG":
+             self.valid = False
+@@ -601,7 +602,7 @@
+         if key in ("USERID_HINT", "NEED_PASSPHRASE", "BAD_PASSPHRASE",
+                    "GOOD_PASSPHRASE", "BEGIN_SIGNING", "CARDCTRL", "INV_SGNR",
+                    "NO_SGNR", "MISSING_PASSPHRASE", "NEED_PASSPHRASE_PIN",
+-                   "SC_OP_FAILURE", "SC_OP_SUCCESS"):
++                   "SC_OP_FAILURE", "SC_OP_SUCCESS", "PROGRESS"):
+             pass
+         elif key in ("KEYEXPIRED", "SIGEXPIRED"):
+             self.status = 'key expired'
+

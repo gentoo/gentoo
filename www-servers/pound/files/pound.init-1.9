@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting pound"
+	if [ ! -f "/etc/pound.cfg" ]; then
+		eend 1 "configfile /etc/pound.cfg not found."
+	fi
+	start-stop-daemon --quiet --start --exec /usr/sbin/pound -- -f /etc/pound.cfg -p /var/run/pound.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pound"
+	start-stop-daemon --quiet --stop --pidfile /var/run/pound.pid
+	eend $?
+}

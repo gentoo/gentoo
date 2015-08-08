@@ -1,0 +1,36 @@
+From 896cde549eeb254cc4960f20f54cab845e95b061 Mon Sep 17 00:00:00 2001
+From: Andreas Moog <amoog@ubuntu.com>
+Date: Sun, 19 Jun 2011 22:03:10 +0200
+Subject: [PATCH] LIBS go after objects to allow linking with ld --as-needed
+
+---
+ makefile |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/makefile b/makefile
+index 0a9cc94..509c2ff 100755
+--- a/makefile
++++ b/makefile
+@@ -82,16 +82,16 @@ all: $(ALL)
+ 
+ # linking the program.
+ $(PROG): $(GAMEOBJS)
+-	$(CXX) $(LIBS) $(GAMEOBJS) -o $(PROG)
++	$(CXX) $(GAMEOBJS) -o $(PROG) $(LIBS)
+ 	
+ pak: $(PAKOBJS)
+-	$(CXX) $(LIBS) $(PAKOBJS) -o pak
++	$(CXX) $(PAKOBJS) -o pak $(LIBS)
+ 
+ %.mo: %.po
+ 	msgfmt -c -o $@ $<
+ 
+ mapeditor: $(MAPOBJS)
+-	$(CXX) $(LIBS) $(MAPOBJS) -o mapeditor
++	$(CXX) $(MAPOBJS) -o mapeditor $(LIBS)
+ 
+ # cleaning everything that can be automatically recreated with "make".
+ clean:
+-- 
+1.7.5.4
+

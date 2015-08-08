@@ -1,0 +1,41 @@
+From 80d9d1b3003ff79ddee26e9fd09eb1b746b6bf5c Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 4 May 2013 00:14:32 +0200
+Subject: [PATCH] Fix GCC warnings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+httrack.c: In function ‘htsshow_loop’:
+httrack.c:446:21: warning: the address of ‘tempo’ will always evaluate as ‘true’
+httrack.c:480:19: warning: the address of ‘s’ will always evaluate as ‘true’
+httrack.c:484:19: warning: the address of ‘s’ will always evaluate as ‘true’
+---
+ src/httrack.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/httrack.h b/src/httrack.h
+index 8b049a1..90ca9d5 100644
+--- a/src/httrack.h
++++ b/src/httrack.h
+@@ -129,7 +129,7 @@ extern FILE* ioinfo;
+ } while(0)
+ #define strncatbuff(A, B, N) do { \
+   assertf( (A) != NULL ); \
+-  if ( ! (B) ) { assertf( 0 ); } \
++  if ( (B) == NULL ) { assertf( 0 ); } \
+   if (htsMemoryFastXfr) { \
+     if (sizeof(A) != sizeof(char*)) { \
+       (A)[sizeof(A) - 1] = '\0'; \
+@@ -158,7 +158,7 @@ extern FILE* ioinfo;
+ } while(0)
+ #define strcpybuff(A, B) do { \
+   assertf( (A) != NULL ); \
+-  if ( ! (B) ) { assertf( 0 ); } \
++  if ( (B) == NULL ) { assertf( 0 ); } \
+   if (htsMemoryFastXfr) { \
+     if (sizeof(A) != sizeof(char*)) { \
+       (A)[sizeof(A) - 1] = '\0'; \
+-- 
+1.8.1.5
+

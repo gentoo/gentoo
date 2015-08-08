@@ -1,0 +1,24 @@
+diff -Naur coolio-1.1.0.orig/ext/cool.io/ev_wrap.h coolio-1.1.0/ext/cool.io/ev_wrap.h
+--- coolio-1.1.0.orig/ext/cool.io/ev_wrap.h	2012-03-15 03:30:08.755266522 +0900
++++ coolio-1.1.0/ext/cool.io/ev_wrap.h	2012-03-15 03:31:50.839378421 +0900
+@@ -4,5 +4,5 @@
+ # define FD_SETSIZE 2048 /* wishful thinking, as msvcrt6 [?] seems to only allow 512 fd's and 256 sockets max */
+ #endif
+ 
+-#include "../libev/ev.h"
++#include "ev.h"
+ 
+diff -Naur coolio-1.1.0.orig/ext/cool.io/extconf.rb coolio-1.1.0/ext/cool.io/extconf.rb
+--- coolio-1.1.0.orig/ext/cool.io/extconf.rb	2012-03-15 03:30:08.755266522 +0900
++++ coolio-1.1.0/ext/cool.io/extconf.rb	2012-03-15 03:31:04.114327009 +0900
+@@ -20,6 +20,10 @@
+   libs << "-lrt"
+ end
+ 
++if have_library('ev', 'ev_loop_new')
++  libs << "-lev"
++end
++
+ if have_header('sys/select.h')
+   $defs << '-DEV_USE_SELECT'
+ end

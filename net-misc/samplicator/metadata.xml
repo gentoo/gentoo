@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>spiderx@spiderx.dp.ua</email>
+    <name>Vladimir Pavljuchenkov</name>
+    <description>Primary maintainer.</description>
+  </maintainer>
+  <herd>proxy-maintainers</herd>
+  <longdescription>
+    This small program receives UDP datagrams on a given port, and resends
+    those datagrams to a specified set of receivers. In addition, a
+    sampling divisor N may be specified individually for each receiver,
+    which will then only receive one in N of the received packets.
+  </longdescription>
+  <upstream>
+    <changelog>https://code.google.com/p/samplicator/source/browse/trunk/ChangeLog</changelog>
+    <doc>https://code.google.com/p/samplicator/source/browse/trunk/README</doc>
+    <bugs-to>mailto:simon.leinen@gmail.com</bugs-to>
+  </upstream>
+</pkgmetadata>

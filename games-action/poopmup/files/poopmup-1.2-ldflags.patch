@@ -1,0 +1,11 @@
+--- Makefile.old	2010-10-01 00:05:06.000000000 +0200
++++ Makefile	2010-10-01 00:05:30.000000000 +0200
+@@ -7,7 +7,7 @@
+ OBJ =poopmup.o 
+ 
+ all:
+-	$(CC) $(SOURCE) -o $(OBJ) -lglut -lGL -lGLU -L/usr/X11R6/lib -lXmu -lXext -lXt -lXi -lX11
++	$(CC) $(LDFLAGS) $(SOURCE) -o $(OBJ) -lglut -lGL -lGLU -L/usr/X11R6/lib -lXmu -lXext -lXt -lXi -lX11
+ 
+ 
+ clean:

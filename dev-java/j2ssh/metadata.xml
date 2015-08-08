@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		SSHTools is a suite of Java SSH applications providing a Java SSH API,
+		SSH Terminal, SSH secured VNC client, SFTP client and SSH Daemon.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">sshtools</remote-id>
+	</upstream>
+</pkgmetadata>

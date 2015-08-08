@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>scheme</herd>
+	<longdescription lang="en">
+Guile is a library designed to help programmers create flexible applications. Using Guile in an application allows programmers to write plug-ins, or modules (there are many names, but the concept is essentially the same) and users to use them to have an application fit their needs.
+	</longdescription>
+	<use>
+	<flag name='debug-freelist'>Include garbage collector freelist debugging
+	code</flag>
+	<flag name='debug-malloc'>Include malloc debugging code</flag>
+	<flag name='deprecated'>Enable deprecated features</flag>
+	<flag name='discouraged'> (implied by deprecated) enable merely discouraged
+	features</flag>
+	<flag name='networking'>Include networking interfaces</flag>
+	<flag name='regex'> Include regular expression interfaces</flag>
+	</use>
+</pkgmetadata>

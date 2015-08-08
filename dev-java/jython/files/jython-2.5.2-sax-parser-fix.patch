@@ -1,0 +1,94 @@
+
+# HG changeset patch
+# User Alan Kennedy <jython-dev@xhaus.com>
+# Date 1319980040 0
+# Node ID 936bd1b132eb9c591cf915b060c6567ae8e16914
+# Parent  71b3f883f6c5f0f39f0ae8aff097a439d4970f46
+Fix for xml attribute namespaces issue
+http://bugs.jython.org/issue1768
+
+diff --git a/Lib/test/test_sax.py b/Lib/test/test_sax.py
+--- a/Lib/test/test_sax.py
++++ b/Lib/test/test_sax.py
+@@ -390,22 +390,23 @@ def test_expat_nsattrs_wattr():
+     gather = AttrGatherer()
+     parser.setContentHandler(gather)
+ 
+-    parser.parse(StringIO("<doc xmlns:ns='%s' ns:attr='val'/>" % ns_uri))
++    a_name = "id" ; a_val = "val"
++    parser.parse(StringIO("<doc xmlns:ns='%s' ns:%s='%s'/>" % (ns_uri, a_name, a_val) ))
+ 
+     attrs = gather._attrs
+ 
+     return attrs.getLength() == 1 and \
+-           attrs.getNames() == [(ns_uri, "attr")] and \
+-           attrs.getQNames() == ["ns:attr"] and \
++           attrs.getNames() == [(ns_uri, a_name)] and \
++           attrs.getQNames() == ["ns:%s" % a_name] and \
+            len(attrs) == 1 and \
+-           attrs.has_key((ns_uri, "attr")) and \
+-           attrs.keys() == [(ns_uri, "attr")] and \
+-           attrs.get((ns_uri, "attr")) == "val" and \
+-           attrs.get((ns_uri, "attr"), 25) == "val" and \
+-           attrs.items() == [((ns_uri, "attr"), "val")] and \
+-           attrs.values() == ["val"] and \
+-           attrs.getValue((ns_uri, "attr")) == "val" and \
+-           attrs[(ns_uri, "attr")] == "val"
++           attrs.has_key((ns_uri, a_name)) and \
++           attrs.keys() == [(ns_uri, a_name)] and \
++           attrs.get((ns_uri, a_name)) == a_val and \
++           attrs.get((ns_uri, a_name), 25) == a_val and \
++           attrs.items() == [((ns_uri, a_name), a_val)] and \
++           attrs.values() == [a_val] and \
++           attrs.getValue((ns_uri, a_name)) == a_val and \
++           attrs[(ns_uri, a_name)] == a_val
+ 
+ def test_expat_nsattrs_no_namespace():
+     parser = make_parser()
+@@ -413,22 +414,23 @@ def test_expat_nsattrs_no_namespace():
+     gather = AttrGatherer()
+     parser.setContentHandler(gather)
+ 
+-    parser.parse(StringIO("<doc attr='val'/>"))
++    a_name = "id" ; a_val = "val"
++    parser.parse(StringIO("<doc %s='%s'/>" % (a_name, a_val) ))
+ 
+     attrs = gather._attrs
+ 
+     return attrs.getLength() == 1 and \
+-           attrs.getNames() == [(None, "attr")] and \
+-           attrs.getQNames() == ["attr"] and \
++           attrs.getNames() == [(None, a_name)] and \
++           attrs.getQNames() == [a_name] and \
+            len(attrs) == 1 and \
+-           attrs.has_key((None, "attr")) and \
+-           attrs.keys() == [(None, "attr")] and \
+-           attrs.get((None, "attr")) == "val" and \
+-           attrs.get((None, "attr"), 25) == "val" and \
+-           attrs.items() == [((None, "attr"), "val")] and \
+-           attrs.values() == ["val"] and \
+-           attrs.getValue((None, "attr")) == "val" and \
+-           attrs[(None, "attr")] == "val"
++           attrs.has_key((None, a_name)) and \
++           attrs.keys() == [(None, a_name)] and \
++           attrs.get((None, a_name)) == a_val and \
++           attrs.get((None, a_name), 25) == a_val and \
++           attrs.items() == [((None, a_name), a_val)] and \
++           attrs.values() == [a_val] and \
++           attrs.getValue((None, a_name)) == a_val and \
++           attrs[(None, a_name)] == a_val
+ 
+ # ===== InputSource support
+ 
+diff --git a/Lib/xml/sax/drivers2/drv_javasax.py b/Lib/xml/sax/drivers2/drv_javasax.py
+--- a/Lib/xml/sax/drivers2/drv_javasax.py
++++ b/Lib/xml/sax/drivers2/drv_javasax.py
+@@ -238,7 +238,7 @@ class JavaSAXParser(xmlreader.XMLReader,
+         pass # TODO
+ 
+ def _fixTuple(nsTuple, frm, to):
+-    if len(nsTuple) == 2:
++    if isinstance(nsTuple, tuple) and len(nsTuple) == 2:
+         nsUri, localName = nsTuple
+         if nsUri == frm:
+             nsUri = to

@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Export-Package: org.apache.commons.compress.changes;version="1.1",org.
+ apache.commons.compress.archivers.ar;version="1.1",org.apache.commons
+ .compress.archivers.jar;version="1.1",org.apache.commons.compress.arc
+ hivers.cpio;version="1.1",org.apache.commons.compress.archivers.zip;v
+ ersion="1.1",org.apache.commons.compress.archivers;version="1.1",org.
+ apache.commons.compress.archivers.tar;version="1.1",org.apache.common
+ s.compress.compressors.bzip2;version="1.1",org.apache.commons.compres
+ s.compressors;version="1.1",org.apache.commons.compress.utils;version
+ ="1.1",org.apache.commons.compress.compressors.gzip;version="1.1"
+Tool: Bnd-0.0.255
+Bundle-Name: Commons Compress
+Created-By: 1.7.0-ea (Oracle Corporation)
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 1.1
+Bnd-LastModified: 1311506267618
+Bundle-ManifestVersion: 2
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-Description: Commons Compress defines an API for working with c
+ ompression and archive formats.  These include: bzip2, gzip and ar, c
+ pio, jar, tar, zip.
+Bundle-SymbolicName: org.apache.commons.compress
+Bundle-DocURL: http://commons.apache.org/compress/
+

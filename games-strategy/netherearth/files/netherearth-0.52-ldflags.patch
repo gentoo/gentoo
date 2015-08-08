@@ -1,0 +1,8 @@
+--- Makefile.old	2010-10-12 09:30:19.000000000 +0200
++++ Makefile	2010-10-12 09:30:38.000000000 +0200
+@@ -17,4 +17,4 @@
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJECTS)
+-	g++ $(OBJECTS) -o $(TARGET) -lGL -lGLU -lglut -lSDL -lSDL_mixer -lpthread
++	g++ $(LDFLAGS) $(OBJECTS) -o $(TARGET) -lGL -lGLU -lglut -lSDL -lSDL_mixer -lpthread

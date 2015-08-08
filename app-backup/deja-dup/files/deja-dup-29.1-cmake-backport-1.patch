@@ -1,0 +1,11 @@
+=== modified file 'deja-dup/nautilus/CMakeLists.txt'
+--- deja-dup/nautilus/CMakeLists.txt	2013-10-11 19:57:03 +0000
++++ deja-dup/nautilus/CMakeLists.txt	2013-11-08 03:32:53 +0000
+@@ -23,5 +23,6 @@
+                       OUTPUT_NAME deja-dup
+                       INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/libdeja"
+                       COMPILE_FLAGS "${GLIB_CFLAGS} ${NAUTILUS_CFLAGS} ${COMMON_CFLAGS}")
++add_dependencies(deja-dup-nautilus deja) # needs DirHandling.c
+ install(TARGETS deja-dup-nautilus DESTINATION "${NAUTILUS_EXTENSIONDIR}")
+ endif()
+

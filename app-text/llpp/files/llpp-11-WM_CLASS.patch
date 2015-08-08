@@ -1,0 +1,42 @@
+--- llpp/link.c
++++ llpp/link.c
+@@ -2792,6 +2792,32 @@
+     CAMLreturn (Val_unit);
+ }
+ 
++#if !defined (_WIN32) && !defined (__APPLE__)
++#undef pixel
++#include <X11/X.h>
++#include <X11/Xlib.h>
++#include <X11/Xutil.h>
++#include <GL/glx.h>
++
++static void set_wm_class (void)
++{
++    Display *dpy;
++    Window win;
++    int screen;
++    XClassHint hint;
++
++    dpy = XOpenDisplay (getenv ("DISPLAY"));
++    screen = DefaultScreen (dpy);
++    hint.res_name = "llpp";
++    hint.res_class = "llpp";
++    win = glXGetCurrentDrawable ();
++    XSetClassHint (dpy, win, &hint);
++    XCloseDisplay (dpy);
++}
++#else
++#define set_wm_class()
++#endif
++
+ CAMLprim value ml_init (value pipe_v, value params_v)
+ {
+     CAMLparam2 (pipe_v, params_v);
+@@ -2852,5 +2878,6 @@
+         errx (1, "pthread_create: %s", strerror (ret));
+     }
+ 
++    set_wm_class ();
+     CAMLreturn (Val_unit);
+ }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>media-optical</herd>
+<longdescription>
+  CD command line recording, ripping and copying tool.  Especially ISOs- and
+  bin/cue-files are handled very well.
+</longdescription>
+<use>
+	<flag name='gcdmaster'>Enable building of gcdmaster application</flag>
+</use>
+</pkgmetadata>

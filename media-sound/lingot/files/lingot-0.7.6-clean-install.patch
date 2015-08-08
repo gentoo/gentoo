@@ -1,0 +1,24 @@
+diff -ur lingot-0.7.6.orig/Makefile.am lingot-0.7.6/Makefile.am
+--- lingot-0.7.6.orig/Makefile.am	2007-12-23 21:45:19.000000000 +0200
++++ lingot-0.7.6/Makefile.am	2008-05-08 13:00:18.000000000 +0300
+@@ -8,19 +8,12 @@
+ lingotdocdir = ${docdir}
+ lingotdoc_DATA = \
+ 	README\
+-	COPYING\
+ 	AUTHORS\
+ 	ChangeLog\
+-	INSTALL\
+ 	NEWS\
+ 	TODO\
+ 	THANKS\
+-	MAINTAINERS\
+-	src/lingot-background.xpm\
+-	src/lingot-logo.xpm\
+-	intltool-extract.in\
+-	intltool-merge.in\
+-	intltool-update.in
++	MAINTAINERS
+ 
+ EXTRA_DIST = $(lingotdoc_DATA)
+ 

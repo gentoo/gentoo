@@ -1,0 +1,31 @@
+http://bugs.gentoo.org/326791
+
+--- include/omniORB4/sslContext.h
++++ include/omniORB4/sslContext.h
+@@ -111,7 +111,11 @@
+   virtual ~sslContext();
+ 
+  protected:
+-  virtual SSL_METHOD* set_method(); 
++  #if OPENSSL_VERSION_NUMBER >= 0x10000000L
++  virtual const SSL_METHOD* set_method();
++  #else
++  virtual SSL_METHOD* set_method();
++  #endif
+   // Default to return SSLv23_method().
+ 
+   virtual void set_supported_versions(); 
+--- src/lib/omniORB/orbcore/ssl/sslContext.cc
++++ src/lib/omniORB/orbcore/ssl/sslContext.cc
+@@ -197,7 +197,11 @@
+ }
+ 
+ /////////////////////////////////////////////////////////////////////////
++#if OPENSSL_VERSION_NUMBER >= 0x10000000L
++const SSL_METHOD*
++#else
+ SSL_METHOD*
++#endif
+ sslContext::set_method() {
+   return SSLv23_method();
+ }

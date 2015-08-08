@@ -1,0 +1,10 @@
+--- src/PatternLayout.cpp.orig      2015-01-14 09:24:32.332489499 +0300
++++ src/PatternLayout.cpp   2015-01-14 09:23:18.162493691 +0300
+@@ -24,6 +24,7 @@
+ #include <iomanip>
+ #include <ctime>
+ #include <cstdlib>
++#include <cmath>
+ #include "Localtime.hh"
+ 
+ #ifdef LOG4CPP_HAVE_INT64_T

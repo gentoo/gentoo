@@ -1,0 +1,66 @@
+diff -Nuarp dx-4.4.4-orig/src/exec/dxmods/local.mk dx-4.4.4/src/exec/dxmods/local.mk
+--- dx-4.4.4-orig/src/exec/dxmods/local.mk	2008-09-11 22:31:38.000000000 +0200
++++ dx-4.4.4/src/exec/dxmods/local.mk	2008-09-11 22:33:44.000000000 +0200
+@@ -14,15 +14,15 @@ user.c:  dx.mdf
+ 
+ dxcm.mdf:  ${srcdir}/dxmdf.src
+ 	-rm -f dxcm.mdf
+-	cp ${srcdir}/dxmdf.src tmp.c
+-	$(CPP) $(INCLUDES) $(MDF) $(DEFS) tmp.c > dxcm.mdf
+-	-rm -f tmp.c
++	cp ${srcdir}/dxmdf.src tmp-dxcm.c
++	$(CPP) $(INCLUDES) $(MDF) $(DEFS) tmp-dxcm.c > dxcm.mdf
++	-rm -f tmp-dxcm.c
+ 
+ dx.mdf:  ${srcdir}/dxmdf.src
+ 	echo MYINC: $(MYINC)
+ 	-rm -f dx.mdf
+-	cp ${srcdir}/dxmdf.src tmp.c
+-	$(CPP) $(INCLUDES) $(MYINC) $(MDF) $(DEFS) -DCPLUSPLUS_UI -DEXECUTIVE_MODS tmp.c > dx.mdf
++	cp ${srcdir}/dxmdf.src tmp-dx.c
++	$(CPP) $(INCLUDES) $(MYINC) $(MDF) $(DEFS) -DCPLUSPLUS_UI -DEXECUTIVE_MODS tmp-dx.c > dx.mdf
+ 	@echo '/^ *$$/{' > stripl.sed
+ 	@echo 'N' >> stripl.sed
+ 	@echo '/^ *\\n *$$/D' >> stripl.sed
+@@ -30,7 +30,7 @@ dx.mdf:  ${srcdir}/dxmdf.src
+ 	cat dx.mdf |sed '/^#/d' > tmp.mdf
+ 	cat tmp.mdf |sed -f stripl.sed > dx.mdf
+ 	@rm -f stripl.sed tmp.mdf
+-	-rm -f tmp.c
++	-rm -f tmp-dx.c
+ 
+ .y.h:
+ 	$(YACC) $(YFLAGS) -d ${srcdir}/$*.y
+diff -Nuarp dx-4.4.4-orig/src/exec/dxmods/local.mk dx-4.4.4/src/exec/dxmods/local.mk
+--- dx-4.4.4-orig/src/exec/dxmods/local.mk.in	2008-09-11 22:31:38.000000000 +0200
++++ dx-4.4.4/src/exec/dxmods/local.mk.in	2008-09-11 22:33:44.000000000 +0200
+@@ -14,15 +14,15 @@ user.c:  dx.mdf
+ 
+ dxcm.mdf:  ${srcdir}/dxmdf.src
+ 	-rm -f dxcm.mdf
+-	cp ${srcdir}/dxmdf.src tmp.c
+-	$(CPP) $(INCLUDES) $(MDF) $(DEFS) tmp.c > dxcm.mdf
+-	-rm -f tmp.c
++	cp ${srcdir}/dxmdf.src tmp-dxcm.c
++	$(CPP) $(INCLUDES) $(MDF) $(DEFS) tmp-dxcm.c > dxcm.mdf
++	-rm -f tmp-dxcm.c
+ 
+ dx.mdf:  ${srcdir}/dxmdf.src
+ 	echo MYINC: $(MYINC)
+ 	-rm -f dx.mdf
+-	cp ${srcdir}/dxmdf.src tmp.c
+-	$(CPP) $(INCLUDES) $(MYINC) $(MDF) $(DEFS) -DCPLUSPLUS_UI -DEXECUTIVE_MODS tmp.c > dx.mdf
++	cp ${srcdir}/dxmdf.src tmp-dx.c
++	$(CPP) $(INCLUDES) $(MYINC) $(MDF) $(DEFS) -DCPLUSPLUS_UI -DEXECUTIVE_MODS tmp-dx.c > dx.mdf
+ 	@echo '/^ *$$/{' > stripl.sed
+ 	@echo 'N' >> stripl.sed
+ 	@echo '/^ *\\n *$$/D' >> stripl.sed
+@@ -30,7 +30,7 @@ dx.mdf:  ${srcdir}/dxmdf.src
+ 	cat dx.mdf |sed '/^#/d' > tmp.mdf
+ 	cat tmp.mdf |sed -f stripl.sed > dx.mdf
+ 	@rm -f stripl.sed tmp.mdf
+-	-rm -f tmp.c
++	-rm -f tmp-dx.c
+ 
+ .y.h:
+ 	$(YACC) $(YFLAGS) -d ${srcdir}/$*.y

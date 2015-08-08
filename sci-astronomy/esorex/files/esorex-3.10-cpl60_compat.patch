@@ -1,0 +1,13 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Subject: Remove function that is only in cpl >= 6.3 to establish compability
+ with older (stable) versions and allow backporting.
+--- a/src/er_main.c
++++ b/src/er_main.c
+@@ -641,7 +641,6 @@
+ 
+ cpl_msg_set_domain (PACKAGE);
+ cpl_msg_set_time_off ();
+-cpl_msg_set_threadid_off ();
+ cpl_msg_set_domain_on ();
+ cpl_msg_set_component_off ();
+ 

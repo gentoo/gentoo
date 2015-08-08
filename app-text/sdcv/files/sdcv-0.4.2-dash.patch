@@ -1,0 +1,21 @@
+diff --git a/tests/t_datadir b/tests/t_datadir
+index 116ae7e..327e5b5 100755
+--- a/tests/t_datadir
++++ b/tests/t_datadir
+@@ -1 +1 @@
+-#!/bin/sh
++#!/bin/bash
+diff --git a/tests/t_list b/tests/t_list
+index 42ae137..62e52fd 100755
+--- a/tests/t_list
++++ b/tests/t_list
+@@ -1 +1 @@
+-#!/bin/sh
++#!/bin/bash
+diff --git a/tests/t_utf8input b/tests/t_utf8input
+index 7ae88c4..e692ab0 100755
+--- a/tests/t_utf8input
++++ b/tests/t_utf8input
+@@ -1 +1 @@
+-#!/bin/sh
++#!/bin/bash

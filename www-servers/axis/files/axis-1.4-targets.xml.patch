@@ -1,0 +1,86 @@
+--- xmls/targets.xml.orig	2006-10-01 15:08:41.000000000 +0200
++++ xmls/targets.xml	2006-10-01 15:14:27.000000000 +0200
+@@ -84,6 +84,7 @@
+     <mkdir dir="${build.lib}"/>
+     <mkdir dir="${build.dir}/work"/>
+ 
++	<!--
+     <available property="servlet.present"
+       classname="javax.servlet.Servlet"
+       classpathref="classpath"/>
+@@ -135,18 +136,18 @@
+     <available property="httpunit.present"
+       classname="com.meterware.httpunit.GetMethodWebRequest"
+       classpathref="classpath"/>
+-
++	-->
+     <available property="jsse.present"
+       classname="javax.net.ssl.SSLSocketFactory"
+       classpathref="classpath"/>
+-
++	<!--
+     <condition property="jetty.present" >
+       <and>
+         <available classname="javax.servlet.Servlet" classpathref="classpath" />
+         <available classname="org.mortbay.http.HttpServer" classpathref="classpath" />
+       </and>
+     </condition>
+-
++	-->
+     <condition property="jdk14.jsse.present" >
+       <and>
+         <available classname="javax.net.ssl.X509TrustManager" classpathref="classpath" />
+@@ -185,7 +186,7 @@
+     <condition property="sun.codec.present" >
+       <available classname="sun.awt.image.codec.JPEGImageEncoderImpl" classpathref="classpath" />
+     </condition>
+-
++	<!--
+     <condition property="jimi.present" >
+       <available classname="com.sun.jimi.core.Jimi" classpathref="classpath" />
+     </condition>
+@@ -193,7 +194,7 @@
+     <condition property="merlinio.present" >
+       <available classname="javax.imageio.ImageIO" classpathref="classpath" />
+     </condition>
+-
++	-->
+     <condition property="axis-ant.present" >
+       <available classname="org.apache.axis.tools.ant.foreach.ForeachTask">
+         <classpath>
+@@ -201,7 +202,7 @@
+         </classpath>
+       </available>
+     </condition>
+-
++	<!--
+     <condition property="jimiAndAttachments.present">
+       <and>
+         <available classname="javax.activation.DataHandler" classpathref="classpath" />
+@@ -220,7 +221,7 @@
+         <available classname="progress.message.jclient.Message" classpathref="classpath" />
+       </and>
+     </condition>
+-
++	-->
+     <available property="post-compile.present" file="post-compile.xml" />
+ 
+     <property environment="env"/>
+@@ -229,7 +230,7 @@
+       <equals arg1="on" arg2="${env.debug}"/>
+     </and>
+     </condition>
+-
++	<!--
+     <condition property="castor.present" >
+       <available classname="org.exolab.castor.xml.MarshalException" classpathref="classpath" />
+     </condition>
+@@ -248,7 +249,7 @@
+     <condition property="combridge.present" >
+       <available classname="org.apache.axis.components.bridge.COMBridge" classpathref="classpath" />
+     </condition>
+-
++	-->
+     <!-- look for WSDL support on the platform -->
+     <condition property="wsdl.found">
+       <or>

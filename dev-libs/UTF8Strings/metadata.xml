@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>gorelov@grigory.info</email>
+    <name>Gorelov Grigory</name>
+    <description>Maintainer and upstream developer.</description>
+  </maintainer>
+  <herd>proxy-maintainers</herd>
+  <longdescription>
+    C++ library that provides ability to work natively with UTF8 strings in a very simple way.
+  </longdescription>
+</pkgmetadata>

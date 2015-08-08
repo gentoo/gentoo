@@ -1,0 +1,33 @@
+diff -Naur distcc-3.0.orig/include_server/c_extensions/distcc_pump_c_extensions_module.c distcc-3.0/include_server/c_extensions/distcc_pump_c_extensions_module.c
+--- distcc-3.0.orig/include_server/c_extensions/distcc_pump_c_extensions_module.c	2008-08-07 05:52:20.000000000 +0900
++++ distcc-3.0/include_server/c_extensions/distcc_pump_c_extensions_module.c	2008-10-14 22:34:38.000000000 +0900
+@@ -23,17 +23,18 @@
+ 
+ #include "Python.h"
+ 
+-static char *version = ".01";
++static const char *version = ".01";
+ 
+ /* To suppress compiler warnings */
+ #define UNUSED(v) ((void)&v)
+ 
+-char *rs_program_name = "distcc_include_server";
++const char *rs_program_name = "distcc_include_server";
+ 
+ #include "distcc.h"
+ #include "rpc.h"
+ 
+ static PyObject *distcc_pump_c_extensionsError;
++void initdistcc_pump_c_extensions(void);
+ 
+ 
+ /***********************************************************************
+@@ -385,7 +386,7 @@
+   PyObject *module;
+   PyObject *py_str;
+   distcc_pump_c_extensionsError = PyErr_NewException(
+-      "distcc_pump_c_extensions.Error", NULL, NULL);
++      (char *)"distcc_pump_c_extensions.Error", NULL, NULL);
+   
+   module = Py_InitModule4("distcc_pump_c_extensions", 
+                           methods, 

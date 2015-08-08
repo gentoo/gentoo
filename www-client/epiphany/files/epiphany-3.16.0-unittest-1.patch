@@ -1,0 +1,30 @@
+From 7ed4a68e2106480f0984703f70b7c25734803161 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 10 May 2015 17:35:57 +0200
+Subject: [PATCH 2/3] Gentoo tests run in ${PORTAGE_TMPDIR} which is not
+ guaranteed to be /tmp
+
+---
+ tests/ephy-file-helpers-test.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/tests/ephy-file-helpers-test.c b/tests/ephy-file-helpers-test.c
+index 43d0009..0fcb585 100644
+--- a/tests/ephy-file-helpers-test.c
++++ b/tests/ephy-file-helpers-test.c
+@@ -89,12 +89,7 @@ test_ephy_file_helpers_init (void)
+ 
+     /* Cleanup dir left behind. */
+     if (keep_dir) {
+-      /* As a safety measure, only try recursive delete on paths
+-       * prefixed with /tmp. */
+-      if (g_str_has_prefix (tmp_dir, "/tmp"))
+         g_assert (ephy_file_delete_dir_recursively (tmp_dir, NULL));
+-      else
+-        g_warning ("INIT: dangerous path returned as tmp_dir: %s", tmp_dir);
+     }
+ 
+     g_free (tmp_dir);
+-- 
+2.3.6
+

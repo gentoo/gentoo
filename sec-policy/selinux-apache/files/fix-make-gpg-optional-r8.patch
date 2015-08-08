@@ -1,0 +1,52 @@
+--- contrib/apache.te	2012-11-25 20:20:08.229745244 +0100
++++ contrib/apache.te	2012-11-24 20:02:13.095338898 +0100
+@@ -357,7 +357,6 @@
+ 
+ type httpd_gpg_t;
+ domain_type(httpd_gpg_t)
+-gpg_entry_type(httpd_gpg_t)
+ role system_r types httpd_gpg_t;
+ 
+ ifdef(`distro_gentoo',`
+@@ -586,10 +585,6 @@
+ 	allow httpd_t httpd_script_exec_type:dir list_dir_perms;
+ ')
+ 
+-tunable_policy(`httpd_enable_cgi && httpd_use_gpg',`
+-	gpg_spec_domtrans(httpd_t, httpd_gpg_t)
+-')
+-
+ tunable_policy(`httpd_enable_cgi && httpd_use_nfs',`
+ 	fs_nfs_domtrans(httpd_t, httpd_sys_script_t)
+ ')
+@@ -677,6 +672,13 @@
+ ')
+ 
+ optional_policy(`
++	tunable_policy(`httpd_enable_cgi && httpd_use_gpg',`
++		gpg_spec_domtrans(httpd_t, httpd_gpg_t)
++	')
++')
++
++
++optional_policy(`
+ 	tunable_policy(`httpd_mod_auth_ntlm_winbind',`
+ 		samba_domtrans_winbind_helper(httpd_t)
+ 	')
+@@ -1398,7 +1400,6 @@
+ 
+ miscfiles_read_localization(httpd_gpg_t)
+ 
+-gpg_exec(httpd_gpg_t)
+ 
+ tunable_policy(`httpd_gpg_anon_write',`
+ 	miscfiles_manage_public_files(httpd_gpg_t)
+@@ -1407,3 +1408,8 @@
+ optional_policy(`
+ 	apache_manage_sys_rw_content(httpd_gpg_t)
+ ')
++
++optional_policy(`
++	gpg_entry_type(httpd_gpg_t)
++	gpg_exec(httpd_gpg_t)
++')

@@ -1,0 +1,10 @@
+--- ccp4-5.99.5.orig/x-windows/Mosflm/mosflm/Makefile.in	2006-01-06 00:04:12.000000000 -0800
++++ ccp4-5.99.5/x-windows/Mosflm/mosflm/Makefile.in	2006-01-06 00:04:41.000000000 -0800
+@@ -37,6 +37,7 @@
+ 	${F77} ${FFLAGS} -o $@ $<
+ 
+ ipmosflm:	${OBJS}
++		mkdir -p ${DPSBIN}
+ 		${FLINK} ${FFLAGS} ${OBJS} ${LOCALLIBS} ${LIBS} \
+                 -o ${DPSBIN}/ipmosflm ${LDFLAGS}
+ 

@@ -1,0 +1,16 @@
+diff -ur Flask-SQLAlchemy-1.0.orig/docs/conf.py Flask-SQLAlchemy-1.0/docs/conf.py
+--- docs/conf.py	2013-01-27 08:57:36.000000000 +0800
++++ docs/conf.py	2014-04-03 18:08:34.772268079 +0800
+@@ -224,9 +224,9 @@
+ 
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'http://docs.python.org/': None,
+-                       'http://flask.pocoo.org/docs/': None,
+-                       'http://www.sqlalchemy.org/docs/': None}
++#intersphinx_mapping = {'http://docs.python.org/': None,
++#                       'http://flask.pocoo.org/docs/': None,
++#                       'http://www.sqlalchemy.org/docs/': None}
+ pygments_style = 'flask_theme_support.FlaskyStyle'
+ 
+ # fall back if theme is not there

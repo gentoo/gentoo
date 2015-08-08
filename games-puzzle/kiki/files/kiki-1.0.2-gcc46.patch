@@ -1,0 +1,22 @@
+--- SWIG/KikiPy_wrap.cpp.old	2011-04-20 14:48:38.000000000 +0200
++++ SWIG/KikiPy_wrap.cpp	2011-04-20 15:15:08.000000000 +0200
+@@ -12968,7 +12968,7 @@
+   void *argp1 = 0 ;
+   int res1 = 0 ;
+   PyObject * obj0 = 0 ;
+-  std::string *result = 0 ;
++  std::string result ;
+   
+   if (!PyArg_ParseTuple(args,(char *)"O:KikiText_getText",&obj0)) SWIG_fail;
+   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_KikiText, 0 |  0 );
+@@ -12976,8 +12976,8 @@
+     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KikiText_getText" "', argument " "1"" of type '" "KikiText const *""'"); 
+   }
+   arg1 = reinterpret_cast< KikiText * >(argp1);
+-  result = (std::string *) &((KikiText const *)arg1)->getText();
+-  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
++  result = ((KikiText const *)arg1)->getText();
++  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+   return resultobj;
+ fail:
+   return NULL;

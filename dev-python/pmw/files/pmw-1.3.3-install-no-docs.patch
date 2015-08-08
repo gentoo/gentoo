@@ -1,0 +1,17 @@
+ src/setup.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/setup.py b/src/setup.py
+index a5f9039..cfcf8a2 100755
+--- a/src/setup.py
++++ b/src/setup.py
+@@ -16,9 +16,7 @@ setup(name="Pmw",
+ 		'Pmw.Pmw_1_3_3.lib',],
+ 
+       package_data={'Pmw': ['Pmw_1_3_3/lib/Pmw.def',
+-			    'Pmw_1_3_3/doc/*',
+ 	                    'Pmw_1_3_3/contrib/*',
+-	                    'Pmw_1_3_3/demos/*',
+ 	                    'Pmw_1_3_3/tests/*',
+                             'Pmw_1_3_3/bin/*',
+ 			   ]

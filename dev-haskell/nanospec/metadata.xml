@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A lightweight implementation of a subset of Hspec&#39;s API with
+		minimal dependencies.
+	</longdescription>
+</pkgmetadata>

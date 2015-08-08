@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>
+		wmforkplop is yet another dockapp for WindowMaker, or any windowmanager/desktop environment that handles dockapps. It is a mixture between wmhdplop and the great wmtop: wmforkplop monitors your processes by sending visual stimuli to your cortex each time your kernel forks or kills a process. Try to compile a kernel and enjoy the wmforkplop show!
+	</longdescription>
+</pkgmetadata>

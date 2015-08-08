@@ -1,0 +1,24 @@
+diff -ur b/src/runtime/Config.x86-linux a/src/runtime/Config.x86-linux
+--- b/src/runtime/Config.x86-linux	2012-01-09 02:08:10.000000000 +0000
++++ a/src/runtime/Config.x86-linux	2012-02-02 14:32:56.000000000 +0000
+@@ -27,7 +27,7 @@
+ # (You *are* encouraged to design and implement a coherent stable
+ # interface, though.:-| As far as I (WHN 2002-05-19) know, no one is
+ # working on one and it would be a nice thing to have.)
+-LINKFLAGS += -Wl,--export-dynamic -m32
++LINKFLAGS += -Wl,--export-dynamic -m32 -nopie
+ OS_LIBS = -ldl
+ 
+ ifdef LISP_FEATURE_LARGEFILE
+diff -ur b/src/runtime/Config.x86_64-linux a/src/runtime/Config.x86_64-linux
+--- b/src/runtime/Config.x86_64-linux	2012-01-09 02:08:10.000000000 +0000
++++ a/src/runtime/Config.x86_64-linux	2012-02-02 14:32:44.000000000 +0000
+@@ -27,7 +27,7 @@
+ # (You *are* encouraged to design and implement a coherent stable
+ # interface, though.:-| As far as I (WHN 2002-05-19) know, no one is
+ # working on one and it would be a nice thing to have.)
+-LINKFLAGS += -Wl,--export-dynamic
++LINKFLAGS += -Wl,--export-dynamic -nopie
+ OS_LIBS = -ldl
+ 
+ ifdef LISP_FEATURE_LARGEFILE

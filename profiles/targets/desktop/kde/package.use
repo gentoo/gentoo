@@ -1,0 +1,30 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Required by kde-base/pykde4
+dev-python/PyQt4 script sql webkit
+
+# Required by app-office/akonadi-server
+dev-qt/qtsql mysql
+
+# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
+media-libs/gd fontconfig
+
+# Required by dev-db/virtuoso-server
+sys-libs/zlib minizip
+
+# Not required, but makes life easier with Qt; bug 457934
+app-arch/unzip natspec
+
+# Required by kde-apps/libkexiv2
+media-gfx/exiv2 xmp
+
+# Required by kde-apps/artikulate
+dev-qt/qt-mobility multimedia
+
+# Required by app-office/libreoffice
+media-libs/phonon designer
+
+# Enable crash-reporter here instead of in ebuild
+kde-apps/kdebase-runtime-meta crash-reporter

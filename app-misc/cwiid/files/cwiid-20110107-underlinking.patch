@@ -1,0 +1,31 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Aug 14 23:04:03 UTC 2012
+Subject: build system
+
+fix build for linkers that don't permit underlinking
+
+--- configure.ac
++++ configure.ac
+@@ -69,6 +69,8 @@
+ 	AC_MSG_ERROR([linux/uinput.h]),
+ 	[#include <linux/input.h>])
+ 
++PKG_CHECK_MODULES([BLUETOOTH], [bluez])
++
+ AC_ISC_POSIX
+ 
+ AC_ARG_WITH(cwiid-config-dir,AC_HELP_STRING([--with-cwiid-config-dir],
+--- wmdemo/Makefile.in
++++ wmdemo/Makefile.in
+@@ -6,9 +6,9 @@
+ 
+ SOURCES = wmdemo.c
+ 
+-CFLAGS += -I@top_builddir@/libcwiid
++CFLAGS += -I@top_builddir@/libcwiid @BLUETOOTH_CFLAGS@
+ LDFLAGS += -L@top_builddir@/libcwiid
+-LDLIBS += -lcwiid
++LDLIBS += -lcwiid @BLUETOOTH_LIBS@
+ INST_DIR = @bindir@
+ 
+ include $(COMMON)/include/app.mak

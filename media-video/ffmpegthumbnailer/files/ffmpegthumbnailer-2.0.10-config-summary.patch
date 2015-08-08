@@ -1,0 +1,23 @@
+From 9c2a5fe997a6d8b00bef49eabb7bc49840882ec6 Mon Sep 17 00:00:00 2001
+From: Dirk Vanden Boer <dirk.vdb@gmail.com>
+Date: Wed, 29 Apr 2015 20:19:58 +0200
+Subject: [PATCH] Fixed configuration summary
+
+---
+ .travis.yml    | 1 +
+ CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 22803d9..6b6e515 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -239,7 +239,7 @@ ELSE ()
+     MESSAGE(STATUS "register thumbnailer : disabled")
+ ENDIF ()
+ 
+-IF (ENABLE_UNITTEST)
++IF (ENABLE_TESTS)
+     MESSAGE(STATUS "unittests            : enabled")
+ ELSE ()
+     MESSAGE(STATUS "unittests            : disabled")

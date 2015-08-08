@@ -1,0 +1,11 @@
+--- a/getdate.c
++++ b/getdate.c
+@@ -444,7 +444,7 @@
+     char *fitsdate, *newfdate, *stdate;
+     char temp[64];
+     char fyear[16];
+-    char ts0[8];
++    char ts0[9];
+     char *tchar;
+     int its, its1;
+     time_t lts;

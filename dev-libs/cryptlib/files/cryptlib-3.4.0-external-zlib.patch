@@ -1,0 +1,35 @@
+--- makefile	2011-01-18 14:23:05.000000000 -0500
++++ makefile.new	2011-01-18 14:25:47.000000000 -0500
+@@ -259,7 +259,7 @@
+ OBJS		= $(BNOBJS) $(CERTOBJS) $(CRYPTOBJS) $(CTXOBJS) $(DEVOBJS) \
+ 			  $(ENCDECOBJS) $(ENVOBJS) $(HASHOBJS) $(IOOBJS) $(KEYSETOBJS) \
+ 			  $(KRNLOBJS) $(LIBOBJS) $(MECHOBJS) $(MISCOBJS) $(SESSOBJS) \
+-			  $(ZLIBOBJS) $(OSOBJS)
++			  $(OSOBJS)
+ 
+ # Object files for the self-test code
+ 
+@@ -1477,7 +1477,7 @@
+ 
+ $(SLIBNAME):	$(OBJS) $(EXTRAOBJS) $(TESTOBJS)
+ 				@./tools/buildsharedlib.sh $(OSNAME) $(SLIBNAME) $(LD) $(OBJS) \
+-					$(EXTRAOBJS)
++					$(EXTRAOBJS) -lz
+ 
+ $(DYLIBNAME):	$(OBJS) $(EXTRAOBJS) $(TESTOBJS)
+ 				@$(LD) -dynamiclib -compatibility_version $(MAJ).$(MIN) \
+--- envelope/envelope.h	2010-12-14 23:16:40.000000000 -0500
++++ envelope.h.new	2011-01-18 14:28:06.000000000 -0500
+@@ -17,11 +17,7 @@
+   #endif /* Compiler-specific includes */
+ #endif /* _STREAM_DEFINED */
+ #ifdef USE_COMPRESSION
+-  #if defined( INC_ALL )
+-	#include "zlib.h"
+-  #else
+-	#include "zlib/zlib.h"
+-  #endif /* Compiler-specific includes */
++	#include <zlib.h>
+ #endif /* USE_COMPRESSION */
+ 
+ /****************************************************************************

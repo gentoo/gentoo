@@ -1,0 +1,12 @@
+--- setup.py.orig	2012-12-28 01:01:07.865345417 -0500
++++ setup.py	2012-12-28 01:01:17.003360680 -0500
+@@ -14,9 +14,6 @@
+ 		'distutils.commands':
+ 			['ptr = ptr:PyTest'],
+ 	},
+-	setup_requires=[
+-		'hgtools',
+-	],
+ )
+ if __name__ == '__main__':
+ 	setuptools.setup(**setup_params)

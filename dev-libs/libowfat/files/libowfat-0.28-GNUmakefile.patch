@@ -1,0 +1,10 @@
+--- GNUmakefile.bak	2011-10-22 22:08:53.443669478 -0700
++++ GNUmakefile	2011-10-22 22:09:27.535002311 -0700
+@@ -277,6 +277,7 @@
+ socket_accept4.o socket_accept6.o socket_connected.o socket_local4.o \
+ socket_local6.o socket_recv4.o socket_recv6.o socket_remote4.o \
+ socket_remote6.o: havesl.h
++socket_remote4.o: havescope.h
+ 
+ dns_nd6.o fmt_xlong.o scan_xlong.o fmt_ip6_flat.o $(TEXTCODE_OBJS): haveinline.h
+ 

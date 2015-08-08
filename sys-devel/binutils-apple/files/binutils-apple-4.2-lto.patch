@@ -1,0 +1,34 @@
+--- misc/lipo.c
++++ misc/lipo.c
+@@ -1191,6 +1191,7 @@
+ 		thin->fat_arch.align = 0;
+ 	    }
+ 	    else{
++#ifdef LTO_SUPPORT
+ 		if(is_llvm_bitcode_from_memory(addr, size, &input->arch_flag,
+ 					       NULL) != 0){
+ 		    /* create a thin file struct for it */
+@@ -1204,6 +1205,7 @@
+ 		    thin->fat_arch.align = 0;
+ 		}
+ 		else
++#endif
+ 		    fatal("can't figure out the architecture type of: %s",
+ 			  input->name);
+ 	    }
+@@ -1444,6 +1446,7 @@
+ 		    if(strncmp(ar_name, SYMDEF, sizeof(SYMDEF) - 1) != 0){
+ 			ar_addr = addr + offset + ar_name_size;
+ 			ar_size = strtoul(ar_hdr->ar_size, NULL, 10);
++#ifdef LTO_SUPPORT
+ 			if(is_llvm_bitcode_from_memory(ar_addr, ar_size,
+ 						       &arch_flag, NULL) != 0){
+ 			    if(*cputype == 0){
+@@ -1466,6 +1464,7 @@
+ 				      (*cpusubtype) & ~CPU_SUBTYPE_MASK);
+ 			    }
+ 			}
++#endif
+ 		    }
+ 		}
+ 	    } 

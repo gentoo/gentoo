@@ -1,0 +1,66 @@
+From e6edd1f581b59dffbc1e21d2221af049a5f0b38a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 19 Dec 2012 15:48:22 -0500
+Subject: [PATCH] add configure flags for setting droppriv user/group
+
+In order to override the default user/group, you have to append your
+CPPFLAGS before compiling.  Since you also have to pass along double
+quotes, it can get ugly/messy fast in shell (due to the escaping).
+Plus, the existing code always defines UNPRIV_USER to "nobody" which
+leads to compile time warnings.
+
+Add dedicated configure flags to make the interface simple for people
+to control.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ configure.ac  | 20 ++++++++++++++++++++
+ src/tlsdate.h |  1 -
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index f6efb0b..c95090e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,6 +57,26 @@ AC_CHECK_HEADERS([unistd.h], ,[AC_MSG_ERROR([Required headers missing; compilati
+ AC_CHECK_FUNCS([setresuid])
+ AC_CHECK_FUNCS([gettimeofday])
+ 
++AC_MSG_CHECKING([user/group to drop privs to])
++
++AC_ARG_WITH([unpriv-user],
++            [AS_HELP_STRING([--with-unpriv-user=<user>],
++                            [User to drop privs to @<:@default: nobody@:>@])])
++AS_CASE([$with_unpriv_user],
++        [""|yes|no], [UNPRIV_USER="nobody"],
++        [*], [UNPRIV_USER=$with_unpriv_user])
++AC_DEFINE_UNQUOTED([UNPRIV_USER], ["${UNPRIV_USER}"], [Unprivileged user])
++
++AC_ARG_WITH([unpriv-group],
++            [AS_HELP_STRING([--with-unpriv-group=<group>],
++                            [Group to drop privs to @<:@default: nogroup@:>@])])
++AS_CASE([$with_unpriv_group],
++        [""|yes|no], [UNPRIV_GROUP="nogroup"],
++        [*], [UNPRIV_GROUP=$with_unpriv_group])
++AC_DEFINE_UNQUOTED([UNPRIV_GROUP], ["${UNPRIV_GROUP}"], [Unprivileged group])
++
++AC_MSG_RESULT(${UNPRIV_USER}:${UNPRIV_GROUP})
++
+ # Check for -lrt
+ AC_CHECK_LIB([rt], [clock_gettime], [
+               RT_LIB="-lrt"
+diff --git a/src/tlsdate.h b/src/tlsdate.h
+index 4db56c1..4c918cd 100644
+--- a/src/tlsdate.h
++++ b/src/tlsdate.h
+@@ -18,7 +18,6 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
+-#define UNPRIV_USER "nobody"
+ #define DEFAULT_HOST "www.ptb.de"
+ #define DEFAULT_PORT "443"
+ #define DEFAULT_PROTOCOL "tlsv1"
+-- 
+1.8.0
+

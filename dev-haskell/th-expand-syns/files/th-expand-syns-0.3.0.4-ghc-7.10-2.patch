@@ -1,0 +1,69 @@
+commit dbf14af22edd0636d4f9c8b083e42565bfcf99c9
+Author: Gabor Greif <ggreif@gmail.com>
+Date:   Mon Jun 16 16:15:39 2014 +0200
+
+    Support for GHC HEAD (v7.9, aka. template-haskell-2.10)
+    
+    Pred is a type synonym now, and EqualityT is new.
+
+diff --git a/Language/Haskell/TH/ExpandSyns.hs b/Language/Haskell/TH/ExpandSyns.hs
+index cc0dccf..7a18c17 100644
+--- a/Language/Haskell/TH/ExpandSyns.hs
++++ b/Language/Haskell/TH/ExpandSyns.hs
+@@ -24,7 +24,9 @@ packagename = "th-expand-syns"
+ 
+ -- Compatibility layer for TH >=2.4 vs. 2.3
+ tyVarBndrGetName :: TyVarBndr -> Name
++#if !MIN_VERSION_template_haskell(2,10,0)
+ mapPred :: (Type -> Type) -> Pred -> Pred
++#endif
+ bindPred :: (Type -> Q Type) -> Pred -> Q Pred
+ tyVarBndrSetName :: Name -> TyVarBndr -> TyVarBndr
+ 
+@@ -32,11 +34,15 @@ tyVarBndrSetName :: Name -> TyVarBndr -> TyVarBndr
+ tyVarBndrGetName (PlainTV n) = n
+ tyVarBndrGetName (KindedTV n _) = n
+ 
++#if MIN_VERSION_template_haskell(2,10,0)
++bindPred = id
++#else
+ mapPred f (ClassP n ts) = ClassP n (f <$> ts)
+ mapPred f (EqualP t1 t2) = EqualP (f t1) (f t2)
+ 
+ bindPred f (ClassP n ts) = ClassP n <$> mapM f ts
+ bindPred f (EqualP t1 t2) = EqualP <$> f t1 <*> f t2
++#endif
+ 
+ tyVarBndrSetName n (PlainTV _) = PlainTV n
+ tyVarBndrSetName n (KindedTV _ k) = KindedTV n k
+@@ -198,6 +204,10 @@ expandSyns = \t ->
+       go acc x@(LitT _) = passThrough acc x
+ #endif
+ 
++#if MIN_VERSION_template_haskell(2,10,0)
++      go acc x@EqualityT = passThrough acc x
++#endif
++
+ class SubstTypeVariable a where
+     -- | Capture-free substitution
+     subst :: (Name, Type) -> a -> a
+@@ -236,6 +246,10 @@ instance SubstTypeVariable Type where
+       go s@(LitT _) = s
+ #endif
+ 
++#if MIN_VERSION_template_haskell(2,10,0)
++      go s@EqualityT = s
++#endif
++
+ -- testCapture :: Type
+ -- testCapture =
+ --     let
+@@ -249,7 +263,7 @@ instance SubstTypeVariable Type where
+ --                    (v "x" `AppT` v "y"))
+ 
+ 
+-#if MIN_VERSION_template_haskell(2,4,0)
++#if MIN_VERSION_template_haskell(2,4,0) && !MIN_VERSION_template_haskell(2,10,0)
+ instance SubstTypeVariable Pred where
+     subst s = mapPred (subst s)
+ #endif

@@ -1,0 +1,28 @@
+# -*- apache -*-
+
+ScriptAlias /munin-cgi/ /usr/libexec/munin/cgi/
+Alias /munin/static /etc/munin/static
+
+<IfDefine MUNIN_HTML_CGI>
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} (/|\.html)$
+RewriteCond %{REQUEST_URI} !/static
+RewriteRule ^/munin/(.*) /munin-cgi/munin-cgi-html/$1 [PT,L]
+</IfDefine>
+
+<Directory /usr/libexec/munin/cgi/>
+	Options +ExecCGI
+	Require all granted
+
+	<IfModule mod_fcgid.c>
+		SetHandler fcgid-script
+	</IfModule>
+	<IfModule !mod_fcgid.c>
+		SetHandler cgi-script
+	</IfModule>
+</Directory>
+
+<Directory /etc/munin/static>
+	Require all granted
+</Directory>

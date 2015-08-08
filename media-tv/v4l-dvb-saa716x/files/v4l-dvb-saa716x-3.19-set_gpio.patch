@@ -1,0 +1,24 @@
+--- v4l-dvb-saa716x-d7e98fc59230-orig/linux/drivers/media/common/saa716x/saa716x_budget.c	2014-11-09 15:44:55.000000000 +0100
++++ v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_budget.c	2015-02-28 13:58:01.258743639 +0100
+@@ -497,10 +497,10 @@
+ 		break;
+ 	}
+ 
+-	err = stv090x_set_gpio(fe, 2, 0, en, 0);
++	err = skystar2_stv090x_config.set_gpio(fe, 2, 0, en, 0);
+ 	if (err < 0)
+ 		goto exit;
+-	err = stv090x_set_gpio(fe, 3, 0, sel, 0);
++	err = skystar2_stv090x_config.set_gpio(fe, 3, 0, sel, 0);
+ 	if (err < 0)
+ 		goto exit;
+ 
+@@ -519,7 +519,7 @@
+ 	else
+ 		value = 0;
+ 
+-	err = stv090x_set_gpio(fe, 4, 0, value, 0);
++	err = skystar2_stv090x_config.set_gpio(fe, 4, 0, value, 0);
+ 	if (err < 0)
+ 		goto exit;
+ 

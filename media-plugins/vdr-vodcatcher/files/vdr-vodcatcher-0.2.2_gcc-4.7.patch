@@ -1,0 +1,15 @@
+compilefix for gcc-4.7
+https://bugs.gentoo.org/show_bug.cgi?id=514128
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> 22/Jun/2014
+
+diff -Naur vodcatcher-0.2.2.orig/src/LocalFileCache.cc vodcatcher-0.2.2/src/LocalFileCache.cc
+--- vodcatcher-0.2.2.orig/src/LocalFileCache.cc	2014-06-22 00:34:55.448489644 +0200
++++ vodcatcher-0.2.2/src/LocalFileCache.cc	2014-06-22 00:36:11.090546002 +0200
+@@ -24,6 +24,7 @@
+ #include "LocalFileCache.h"
+ #include "SdbmHashCalculator.h"
+ #include <values.h>
++#include <unistd.h>
+ 
+ using namespace std;
+ 

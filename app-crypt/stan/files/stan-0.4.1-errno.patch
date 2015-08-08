@@ -1,0 +1,26 @@
+--- src/data.c.orig	2005-12-05 13:23:44.000000000 +0200
++++ src/data.c	2005-12-05 13:24:31.000000000 +0200
+@@ -55,7 +55,9 @@
+ #include <stats.h>
+ #include <config.h>
+ 
+-extern int errno, verbose, progress, bits;
++#include <errno.h>
++
++extern int verbose, progress, bits;
+ extern tnode_t **treap;
+ extern bnode_t *bintree;
+ size_t size = 0;
+--- src/stan.c.orig	2005-12-05 13:23:49.000000000 +0200
++++ src/stan.c	2005-12-05 13:24:57.000000000 +0200
+@@ -46,7 +46,9 @@
+ #include <bits.h>
+ #include <config.h>
+ 
+-int errno, verbose = 0, progress = 0, bits = 0;
++#include <errno.h>
++
++int verbose = 0, progress = 0, bits = 0;
+ 
+ void print_usage()
+ {

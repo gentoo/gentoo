@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<longdescription>
+	Pio (Pioneers) is a clone of the board game The Settlers of Catan.
+</longdescription>
+	<use>
+		<flag name="help">Enable gnome ingame help via scrollkeeper</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">pio</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,36 @@
+diff -Naur libnatpmp-20140401.orig/Makefile libnatpmp-20140401/Makefile
+--- libnatpmp-20140401.orig/Makefile	2013-12-09 15:52:28.000000000 -0500
++++ libnatpmp-20140401/Makefile	2014-04-02 10:03:42.128609226 -0400
+@@ -5,7 +5,7 @@
+ # http://miniupnp.free.fr/libnatpmp.html
+ 
+ OS = $(shell uname -s)
+-CC = gcc
++CC ?= gcc
+ INSTALL = install -p
+ ARCH = $(shell uname -m | sed -e s/i.86/i686/)
+ VERSION = $(shell cat VERSION)
+@@ -153,19 +153,19 @@
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+ 
+ natpmpc-static:	natpmpc.o $(STATICLIB)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+ 
+ natpmpc-shared:	natpmpc.o $(SHAREDLIB)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+ 
+ $(STATICLIB):	$(LIBOBJS)
+ 	$(AR) crs $@ $?
+ 
+ $(SHAREDLIB):	$(LIBOBJS)
+ ifeq ($(OS), Darwin)
+-	$(CC) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
+ else
+-	$(CC) -shared -Wl,-soname,$(SONAME) -o $@ $^ $(EXTRA_LD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -Wl,-soname,$(SONAME) -o $@ $^ $(EXTRA_LD)
+ endif
+ 
+ 

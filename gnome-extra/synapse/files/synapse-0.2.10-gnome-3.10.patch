@@ -1,0 +1,75 @@
+Index: synapse-0.2.10/src/ui/inspector.vala
+===================================================================
+--- synapse-0.2.10.orig/src/ui/inspector.vala
++++ synapse-0.2.10/src/ui/inspector.vala
+@@ -28,7 +28,7 @@ namespace UI
+ 
+     public Inspector ()
+     {
+-      timer_id = Timeout.add (500, this.check_window_at_pointer);
++      timer_id = Gtk.Timeout.add (500, this.check_window_at_pointer);
+     }
+   
+     ~Inspector ()
+Index: synapse-0.2.10/src/ui/widgets-matchlistview.vala
+===================================================================
+--- synapse-0.2.10.orig/src/ui/widgets-matchlistview.vala
++++ synapse-0.2.10/src/ui/widgets-matchlistview.vala
+@@ -551,7 +551,7 @@ namespace Synapse.Gui
+       }
+       if (needs_animation)
+       {
+-        if (tid == 0) tid = Timeout.add (ANIM_TIMEOUT, this.update_current_offsets);
++        if (tid == 0) tid = Gtk.Timeout.add (ANIM_TIMEOUT, this.update_current_offsets);
+         this.queue_draw ();
+         return true;
+       }
+@@ -734,7 +734,7 @@ namespace Synapse.Gui
+           this.inhibit_move = true;
+           this.set_indexes (this.dragdrop_target_item, this.dragdrop_target_item);
+           this.selected_index_changed (this.select_index);
+-          Timeout.add (Gtk.Settings.get_default ().gtk_double_click_time ,()=>{
++          Gtk.Timeout.add (Gtk.Settings.get_default ().gtk_double_click_time ,()=>{
+             if (inhibit_move)
+             {
+               inhibit_move = false;
+Index: synapse-0.2.10/src/ui/widgets.vala
+===================================================================
+--- synapse-0.2.10.orig/src/ui/widgets.vala
++++ synapse-0.2.10/src/ui/widgets.vala
+@@ -185,7 +185,7 @@ namespace Synapse.Gui
+     {
+       if (tid != 0) return;
+ 
+-      tid = Timeout.add (40, ()=>{
++      tid = Gtk.Timeout.add (40, ()=>{
+         offset = (offset - 1) % (_anim_width);
+         queue_draw ();
+         return true;
+@@ -245,7 +245,7 @@ namespace Synapse.Gui
+       {
+         if (tid == 0)
+         {
+-          tid = Timeout.add (INITIAL_TIMEOUT, ()=>{
++          tid = Gtk.Timeout.add (INITIAL_TIMEOUT, ()=>{
+             tid = 0;
+             start_animation ();
+             return false;
+@@ -1085,7 +1085,7 @@ namespace Synapse.Gui
+       }
+       if (tid == 0)
+       {
+-        tid = Timeout.add (30, ()=>{
++        tid = Gtk.Timeout.add (30, ()=>{
+           return update_current_offset ();
+         });
+       }
+@@ -1121,7 +1121,7 @@ namespace Synapse.Gui
+       });
+       this.size_allocate.connect (()=>{
+         if (tid == 0)
+-          tid = Timeout.add (30, ()=>{
++          tid = Gtk.Timeout.add (30, ()=>{
+             return update_current_offset ();
+           });
+       });

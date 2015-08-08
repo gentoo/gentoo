@@ -1,0 +1,107 @@
+commit 255334e6749ec4d4358e627dc6693b4159aaf912
+Author: Hiroyuki Ikezoe <poincare@ikezoe.net>
+Date:   Fri Mar 12 19:13:54 2010 +0900
+
+    mouse extension -> pointing device.
+    
+    Why did I use this weird name?
+
+diff --git a/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c b/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c
+index db4dd8e..31dd336 100644
+--- a/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c
++++ b/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c
+@@ -29,34 +29,34 @@
+ #include "gpds-gconf.h"
+ #include "gpds-xinput-pointer-info.h"
+ 
+-#define GSD_TYPE_MOUSE_EXTENSION_PLUGIN            (gsd_mouse_extension_plugin_get_type ())
+-#define GSD_MOUSE_EXTENSION_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GSD_TYPE_MOUSE_EXTENSION_PLUGIN, GsdMouseExtensionPlugin))
+-#define GSD_MOUSE_EXTENSION_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GSD_TYPE_MOUSE_EXTENSION_PLUGIN, GsdTracklassPointPluginClass))
+-#define GSD_IS_MOUSE_EXTENSION_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GSD_TYPE_MOUSE_EXTENSION_PLUGIN))
+-#define GSD_IS_MOUSE_EXTENSION_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GSD_TYPE_MOUSE_EXTENSION_PLUGIN))
+-#define GSD_MOUSE_EXTENSION_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GSD_TYPE_MOUSE_EXTENSION_PLUGIN, GsdTracklassPointPluginClass))
++#define GSD_TYPE_POINTING_DEVICE_PLUGIN            (gsd_pointing_device_plugin_get_type ())
++#define GSD_POINTING_DEVICE_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GSD_TYPE_POINTING_DEVICE_PLUGIN, GsdPointingDevicePlugin))
++#define GSD_POINTING_DEVICE_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GSD_TYPE_POINTING_DEVICE_PLUGIN, GsdTracklassPointPluginClass))
++#define GSD_IS_POINTING_DEVICE_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GSD_TYPE_POINTING_DEVICE_PLUGIN))
++#define GSD_IS_POINTING_DEVICE_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GSD_TYPE_POINTING_DEVICE_PLUGIN))
++#define GSD_POINTING_DEVICE_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GSD_TYPE_POINTING_DEVICE_PLUGIN, GsdTracklassPointPluginClass))
+ 
+-typedef struct _GsdMouseExtensionPlugin GsdMouseExtensionPlugin;
+-typedef struct _GsdMouseExtensionPluginClass GsdMouseExtensionPluginClass;
++typedef struct _GsdPointingDevicePlugin GsdPointingDevicePlugin;
++typedef struct _GsdPointingDevicePluginClass GsdPointingDevicePluginClass;
+ 
+-struct _GsdMouseExtensionPlugin
++struct _GsdPointingDevicePlugin
+ {
+     GnomeSettingsPlugin parent;
+     GList *managers;
+ };
+ 
+-struct _GsdMouseExtensionPluginClass
++struct _GsdPointingDevicePluginClass
+ {
+     GnomeSettingsPluginClass parent_class;
+ }; 
+ 
+-GType gsd_mouse_extension_plugin_get_type (void) G_GNUC_CONST;
++GType gsd_pointing_device_plugin_get_type (void) G_GNUC_CONST;
+ G_MODULE_EXPORT GType register_gnome_settings_plugin (GTypeModule *module);
+ 
+-GNOME_SETTINGS_PLUGIN_REGISTER(GsdMouseExtensionPlugin, gsd_mouse_extension_plugin)
++GNOME_SETTINGS_PLUGIN_REGISTER(GsdPointingDevicePlugin, gsd_pointing_device_plugin)
+ 
+ static void
+-gsd_mouse_extension_plugin_init (GsdMouseExtensionPlugin *plugin)
++gsd_pointing_device_plugin_init (GsdPointingDevicePlugin *plugin)
+ {
+     plugin->managers = NULL;
+ }
+@@ -104,10 +104,10 @@ collect_pointer_device_infos_from_gconf (void)
+ static void
+ activate (GnomeSettingsPlugin *plugin)
+ {
+-    GsdMouseExtensionPlugin *mouse_extension_plugin;
++    GsdPointingDevicePlugin *pointing_device_plugin;
+     GList *pointer_device_infos, *node;
+ 
+-    mouse_extension_plugin = GSD_MOUSE_EXTENSION_PLUGIN(plugin); 
++    pointing_device_plugin = GSD_POINTING_DEVICE_PLUGIN(plugin); 
+ 
+     pointer_device_infos = collect_pointer_device_infos_from_gconf();
+     for (node = pointer_device_infos; node; node = g_list_next(node)) {
+@@ -120,8 +120,8 @@ activate (GnomeSettingsPlugin *plugin)
+             continue;
+ 
+         gsd_pointing_device_manager_start(manager, NULL);
+-        mouse_extension_plugin->managers =
+-            g_list_prepend(mouse_extension_plugin->managers, manager);
++        pointing_device_plugin->managers =
++            g_list_prepend(pointing_device_plugin->managers, manager);
+     }
+     g_list_foreach(pointer_device_infos,
+                    (GFunc)gpds_xinput_pointer_info_free, NULL);
+@@ -129,7 +129,7 @@ activate (GnomeSettingsPlugin *plugin)
+ }
+ 
+ static void
+-stop_all_managers (GsdMouseExtensionPlugin *plugin)
++stop_all_managers (GsdPointingDevicePlugin *plugin)
+ {
+     GList *node;
+ 
+@@ -147,11 +147,11 @@ stop_all_managers (GsdMouseExtensionPlugin *plugin)
+ static void
+ deactivate (GnomeSettingsPlugin *plugin)
+ {
+-    stop_all_managers(GSD_MOUSE_EXTENSION_PLUGIN(plugin));
++    stop_all_managers(GSD_POINTING_DEVICE_PLUGIN(plugin));
+ }
+ 
+ static void
+-gsd_mouse_extension_plugin_class_init (GsdMouseExtensionPluginClass *klass)
++gsd_pointing_device_plugin_class_init (GsdPointingDevicePluginClass *klass)
+ {
+     GnomeSettingsPluginClass *plugin_class = GNOME_SETTINGS_PLUGIN_CLASS(klass);
+ 

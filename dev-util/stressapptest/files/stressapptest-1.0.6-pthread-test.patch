@@ -1,0 +1,136 @@
+From 2cc58e88b26e13e87a36439d7a7e7b44b4a1e47e Mon Sep 17 00:00:00 2001
+From: "nick.j.sanders" <nick.j.sanders@93e54ea4-8218-11de-8aaf-8d8425684b44>
+Date: Wed, 9 Jan 2013 21:13:13 +0000
+Subject: [PATCH] Allow ./configure for cross compile
+
+Fix regression from BARRIER detect change.
+
+
+git-svn-id: http://stressapptest.googlecode.com/svn/trunk@36 93e54ea4-8218-11de-8aaf-8d8425684b44
+---
+ configure                     | 49 +++++++------------------------------------
+ configure.ac                  | 21 +------------------
+ src/stressapptest_config.h.in |  3 +++
+ 3 files changed, 11 insertions(+), 62 deletions(-)
+
+diff --git a/configure b/configure
+index 12bc16b..8c10c52 100755
+--- a/configure
++++ b/configure
+@@ -5064,6 +5064,13 @@ if test "$ac_res" != no; then :
+ 
+ fi
+ 
++ac_fn_c_check_type "$LINENO" "pthread_barrier_t" "ac_cv_type_pthread_barrier_t" "$ac_includes_default"
++if test "x$ac_cv_type_pthread_barrier_t" = x""yes; then :
++
++$as_echo "#define HAVE_PTHREAD_BARRIERS 1" >>confdefs.h
++
++fi
++
+ for ac_header in libaio.h
+ do :
+   ac_fn_c_check_header_mongrel "$LINENO" "libaio.h" "ac_cv_header_libaio_h" "$ac_includes_default"
+@@ -5201,48 +5208,6 @@ if test "$ac_res" != no; then :
+ fi
+ 
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for pthread_barrier" >&5
+-$as_echo_n "checking for pthread_barrier... " >&6; }
+-if test "${ac_cv_func_pthread_barrier+set}" = set; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test "$cross_compiling" = yes; then :
+-  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error "cannot run test program while cross compiling
+-See \`config.log' for more details." "$LINENO" 5; }
+-else
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-
+-      #include <pthread.h>
+-      int main(void)
+-      {
+-        pthread_barrier_t t;
+-        return 0;
+-      }
+-
+-_ACEOF
+-if ac_fn_c_try_run "$LINENO"; then :
+-  ac_cv_func_pthread_barrier=yes
+-else
+-  ac_cv_func_pthread_barrier=no
+-
+-fi
+-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+-  conftest.$ac_objext conftest.beam conftest.$ac_ext
+-fi
+-
+-
+-fi
+-
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_func_pthread_barrier" >&5
+-$as_echo "$ac_cv_func_pthread_barrier" >&6; }
+-if test "$ac_cv_func_pthread_barrier" = "yes"; then
+-
+-$as_echo "#define HAVE_PTHREAD_BARRIER 1" >>confdefs.h
+-
+-fi
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for stdbool.h that conforms to C99" >&5
+diff --git a/configure.ac b/configure.ac
+index aba8791..ca10966 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -107,31 +107,12 @@ AC_HEADER_STDC
+ AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h stdint.h stdlib.h string.h sys/ioctl.h sys/socket.h sys/time.h unistd.h], [], [AC_MSG_FAILURE([Missing some header files.])])
+ AC_CHECK_HEADERS([pthread.h])
+ AC_SEARCH_LIBS([pthread_create], [pthread])
++AC_CHECK_TYPE([pthread_barrier_t], AC_DEFINE(HAVE_PTHREAD_BARRIERS, [1], [Define to 1 if the system has `pthread_barrier'.]))
+ AC_CHECK_HEADERS([libaio.h])
+ AC_SEARCH_LIBS([io_setup], [aio])
+ AC_CHECK_HEADERS([sys/shm.h])
+ AC_SEARCH_LIBS([shm_open], [rt])
+ 
+-AC_MSG_CHECKING(for pthread_barrier)
+-AC_CACHE_VAL(
+-  ac_cv_func_pthread_barrier,
+-  AC_TRY_RUN(
+-    [
+-      #include <pthread.h>
+-      int main(void)
+-      {
+-        pthread_barrier_t t;
+-        return 0;
+-      }
+-    ],
+-    ac_cv_func_pthread_barrier=yes,
+-    ac_cv_func_pthread_barrier=no
+-  )
+-)
+-AC_MSG_RESULT($ac_cv_func_pthread_barrier)
+-if test "$ac_cv_func_pthread_barrier" = "yes"; then
+-  AC_DEFINE(HAVE_PTHREAD_BARRIER, [1], [Define to 1 if the system has `pthread_barrier'.])
+-fi
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_HEADER_STDBOOL
+diff --git a/src/stressapptest_config.h.in b/src/stressapptest_config.h.in
+index 97f306e..5412df4 100644
+--- a/src/stressapptest_config.h.in
++++ b/src/stressapptest_config.h.in
+@@ -53,6 +53,9 @@
+ /* Define to 1 if you have the `posix_memalign' function. */
+ #undef HAVE_POSIX_MEMALIGN
+ 
++/* Define to 1 if the system has `pthread_barrier'. */
++#undef HAVE_PTHREAD_BARRIERS
++
+ /* Define to 1 if you have the <pthread.h> header file. */
+ #undef HAVE_PTHREAD_H
+ 
+-- 
+2.0.0
+

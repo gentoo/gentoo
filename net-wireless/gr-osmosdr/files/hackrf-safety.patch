@@ -1,0 +1,34 @@
+commit 39230788d7f4b0a8d6d3ab32039073ed53e74af6
+Author: Dimitri Stolnikov <horiz0n@gmx.net>
+Date:   Tue Oct 21 22:10:40 2014 +0200
+
+    hackrf: disable AMP gain stage by default to protect it from damage
+    
+    patch proivided by Paul Connolly
+
+diff --git a/lib/hackrf/hackrf_sink_c.cc b/lib/hackrf/hackrf_sink_c.cc
+index 120b271..3a1e7da 100644
+--- a/lib/hackrf/hackrf_sink_c.cc
++++ b/lib/hackrf/hackrf_sink_c.cc
+@@ -213,7 +213,7 @@ hackrf_sink_c::hackrf_sink_c (const std::string &args)
+   set_sample_rate( get_sample_rates().start() );
+   set_bandwidth( 0 );
+ 
+-  set_gain( 14 ); /* enable AMP gain stage by default */
++  set_gain( 0 ); /* disable AMP gain stage by default to protect full sprectrum pre-amp from physical damage */
+ 
+   set_if_gain( 16 ); /* preset to a reasonable default (non-GRC use case) */
+ 
+diff --git a/lib/hackrf/hackrf_source_c.cc b/lib/hackrf/hackrf_source_c.cc
+index f647b80..e3b3ea4 100644
+--- a/lib/hackrf/hackrf_source_c.cc
++++ b/lib/hackrf/hackrf_source_c.cc
+@@ -168,7 +168,7 @@ hackrf_source_c::hackrf_source_c (const std::string &args)
+   set_sample_rate( get_sample_rates().start() );
+   set_bandwidth( 0 );
+ 
+-  set_gain( 14 ); /* enable AMP gain stage by default */
++  set_gain( 0 ); /* disable AMP gain stage by default to protect full sprectrum pre-amp from physical damage */
+ 
+   set_if_gain( 16 ); /* preset to a reasonable default (non-GRC use case) */
+ 

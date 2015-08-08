@@ -1,0 +1,13 @@
+Also check for dylib before giving up, bug #335811
+
+--- macros/ac_python_devel.m4
++++ macros/ac_python_devel.m4
+@@ -42,7 +42,7 @@
+         # Check for Python library path
+         AC_MSG_CHECKING([for Python library path])
+         python_path=`python$PYTHON_VERSION -c 'import distutils.sysconfig; print(distutils.sysconfig.get_config_var("LIBDIR"))'`
+-        if test ! -f "${python_path}"/libpython$PYTHON_VERSION.so ; then
++        if test ! -f "${python_path}"/libpython$PYTHON_VERSION.so && test ! -f "${python_path}"/libpython$PYTHON_VERSION.dylib ; then
+                 python_path=""
+         fi
+         AC_MSG_RESULT([$python_path])

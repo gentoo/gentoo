@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>kentfredric@gmail.com</email>
+    <name>Kent Fredric</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-Readme</remote-id>
+    <remote-id type="cpan-module">Pod::Readme</remote-id>
+  </upstream>
+</pkgmetadata>

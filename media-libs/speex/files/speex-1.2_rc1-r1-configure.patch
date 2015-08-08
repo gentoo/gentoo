@@ -1,0 +1,40 @@
+diff -urN speex-1.2rc1.orig/configure.ac speex-1.2rc1/configure.ac
+--- speex-1.2rc1.orig/configure.ac	2008-07-21 03:17:08.000000000 +0100
++++ speex-1.2rc1/configure.ac	2011-03-15 00:23:21.263751871 +0000
+@@ -112,9 +112,6 @@
+ 
+ AC_CHECK_HEADERS(sys/soundcard.h sys/audioio.h)
+ 
+-XIPH_PATH_OGG([src="src"], [src=""])
+-AC_SUBST(src)
+-
+ AC_CHECK_LIB(m, sin)
+ 
+ # Check for getopt_long; if not found, use included source.
+@@ -139,10 +136,16 @@
+   AC_DEFINE([ENABLE_VALGRIND], , [Enable valgrind extra checks])
+ fi])
+ 
++AC_ARG_ENABLE(ogg, [  --enable-ogg            Enable OGG support], [if test "$enableval" = yes; then
++  XIPH_PATH_OGG([src="src"], [src=""])
++  AC_SUBST(src)
++fi
++])
++
+ AC_ARG_ENABLE(sse, [  --enable-sse            Enable SSE support], [
+ if test "x$enableval" != xno; then
+ has_sse=yes
+-CFLAGS="$CFLAGS -O3 -msse"
++CFLAGS="$CFLAGS -msse"
+ else
+ has_sse=no
+ fi
+@@ -217,7 +220,7 @@
+  ],
+  [gpl-fftw3], [
+   AC_DEFINE([USE_GPL_FFTW3], [], [Use FFTW3 for FFT])
+-  PKG_CHECK_MODULES(FFT, fftw3f)
++  PKG_CHECK_MODULES([FFT], [fftw3f])
+  ],
+  [proprietary-intel-mkl], [
+   AC_DEFINE([USE_INTEL_MKL], [], [Use Intel Math Kernel Library for FFT])

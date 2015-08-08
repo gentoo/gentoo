@@ -1,0 +1,26 @@
+--- a/python/setup.py.in
++++ b/python/setup.py.in
+@@ -9,6 +9,7 @@
+                          sources = ['netlink/capi.i'],
+ 			 include_dirs = include,
+ 			 swig_opts = opts,
++			 library_dirs=['@top_builddir@/lib/.libs'],
+ 			 libraries = ['nl-3'],
+ 			)
+ 
+@@ -16,6 +17,7 @@
+                          sources = ['netlink/route/capi.i'],
+ 			 include_dirs = include,
+ 			 swig_opts = opts,
++			 library_dirs=['@top_builddir@/lib/.libs'],
+ 			 libraries = ['nl-3', 'nl-route-3'],
+ 			)
+ 
+@@ -23,6 +25,7 @@
+ 			 sources = ['netlink/genl/capi.i'],
+ 			 include_dirs = include,
+ 			 swig_opts = opts,
++			 library_dirs=['@top_builddir@/lib/.libs'],
+ 			 libraries = ['nl-3', 'nl-genl-3'],
+ 			)
+ 

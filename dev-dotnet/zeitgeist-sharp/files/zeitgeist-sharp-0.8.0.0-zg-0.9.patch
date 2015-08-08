@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index acf4cfd..11ed653 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,7 +45,7 @@ PKG_CHECK_MODULES([DBUS_SHARP_10], [dbus-sharp-1.0])
+ PKG_CHECK_MODULES([DBUS_SHARP_GLIB_10], [dbus-sharp-glib-1.0])
+ PKG_CHECK_MODULES([GLIB_SHARP_20], [glib-sharp-2.0])
+
+-PKG_CHECK_MODULES([ZEITGEIST_DAEMON], [zeitgeist-daemon >= 0.7.1])
++AC_CHECK_PROG([ZEITGEIST_DAEMON], [zeitgeist-daemon], yes, no)
+
+ AC_CONFIG_FILES([
+ Zeitgeist/zeitgeist-sharp.pc

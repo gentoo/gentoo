@@ -1,0 +1,12 @@
+diff -Naur -u a/configure.in b/configure.in
+--- a/configure.in	2013-11-30 17:03:04.733971428 +0100
++++ b/configure.in	2013-11-30 17:03:21.231971410 +0100
+@@ -205,7 +205,7 @@
+   [ with_gui="no" ])
+ AM_CONDITIONAL(WITH_GUI, [test "$with_gui" = "yes"])
+ if test "$with_gui" = "yes"; then
+-  PKG_CHECK_MODULES(GTKMM, gtkmm-2.4 >= 2.4)
++  PKG_CHECK_MODULES(GTKMM, gtkmm-2.4 >= 2.4 x11)
+ dnl  PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= 2.0)
+ dnl  GTKMM_LIBS="$GTKMM_LIBS $GTHREAD_LIBS"
+   AC_SUBST(GTKMM_CFLAGS)

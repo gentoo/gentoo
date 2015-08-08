@@ -1,0 +1,2 @@
+#!/bin/sh
+cd /opt/zyGrib && exec bin/zyGrib

@@ -1,0 +1,23 @@
+diff -Naur atftp-0.7.orig/test/test.sh atftp-0.7/test/test.sh
+--- atftp-0.7.orig/test/test.sh	2003-04-28 21:59:51.000000000 -0400
++++ atftp-0.7/test/test.sh	2005-10-26 22:42:15.000000000 -0400
+@@ -151,7 +151,7 @@
+ test_blocksize 1428
+ test_blocksize 16000
+ test_blocksize 64000
+-test_blocksize 65465
++test_blocksize 65464
+ 
+ #
+ # testing fot tsize
+@@ -162,9 +162,9 @@
+ TSIZE=`grep "OACK <tsize:" out | sed -e "s/[^0-9]//g"`
+ if [ "$TSIZE" != "2048" ]; then
+     echo "ERROR (server report $TSIZE bytes but it should be 2048)"
++    ERROR=1
+ else
+     echo "OK"
+-    ERROR=1
+ fi
+ 
+ #

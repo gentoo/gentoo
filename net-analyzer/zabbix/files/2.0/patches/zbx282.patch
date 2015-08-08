@@ -1,0 +1,182 @@
+--- configure.in	2013-02-12 04:27:27.000000000 -0700
++++ configure.in	2013-05-03 07:59:46.318882346 -0600
+@@ -903,19 +903,32 @@
+ 	AC_MSG_CHECKING([for the linux kernel version])
+ 
+ 	kernel=`uname -r`
++	kernel_major=`uname -r|cut -d. -f1`
++	kernel_minor=`uname -r|cut -d. -f2`
+ 
+-	case "${kernel}" in
+-		2.6.*)
+-			AC_MSG_RESULT([2.6 family (${kernel})])
+-			AC_DEFINE([KERNEL_2_6], 1, [Define to 1 if you are using Linux 2.6.x])
+-			;;
+-		2.4.*)
+-			AC_MSG_RESULT([2.4 family (${kernel})])
+-			AC_DEFINE([KERNEL_2_4], 1, [Define to 1 if you are using Linux 2.4.x])
+-			;;
+-		*)
+-			AC_MSG_RESULT([unknown family (${kernel})])
+-			;;
++        case "${kernel_major}" in
++             2)
++                    case "${$kernel_minor}" in
++                         6) 
++                                AC_MSG_RESULT([Linux Kernel >= 2.6.x family (${kernel})])
++                                AC_DEFINE([KERNEL_2_6_Xplus], 1, [Define to 1 if you are using Linux >= 2.6.x])
++                                ;;
++                         4) 
++                                AC_MSG_RESULT([2.4 family (${kernel})])
++                                AC_DEFINE([KERNEL_2_4], 1, [Define to 1 if you are using Linux 2.4.x])
++                                ;;
++                    esac
++                    ;;
++             1)
++                    echo
++                    ;;
++             0)
++                    echo
++                    ;;
++             *)
++                    AC_MSG_RESULT([Linux Kernel >= 2.6.x family (${kernel})])
++                    AC_DEFINE([KERNEL_2_6_Xplus], 1, [Define to 1 if you are using Linux >= 2.6.x])
++                    ;;
+ 	esac
+ fi
+ 
+--- include/config.h.in	2013-02-12 04:27:41.000000000 -0700
++++ include/config.h.in	2013-05-03 07:47:39.658588709 -0600
+@@ -507,8 +507,8 @@
+ /* Define to 1 if you are using Linux 2.4.x */
+ #undef KERNEL_2_4
+ 
+-/* Define to 1 if you are using Linux 2.6.x */
+-#undef KERNEL_2_6
++/* Define to 1 if you are using Linux >= 2.6.x */
++#undef KERNEL_2_6_Xplus
+ 
+ /* Define to 1 if LDAP depricated functions is used. */
+ #undef LDAP_DEPRECATED
+
+--- src/libs/zbxsysinfo/linux/sensors.c	2013-02-12 04:27:22.000000000 -0700
++++ src/libs/zbxsysinfo/linux/sensors.c	2013-05-03 07:47:39.658588709 -0600
+@@ -20,14 +20,21 @@
+ #include "common.h"
+ #include "sysinfo.h"
+ 
+-#ifdef KERNEL_2_4
++#if defined(KERNEL_2_4) || defined(KERNEL_2_6_Xplus)
+ 
+ #define DO_ONE	0
+ #define DO_AVG	1
+ #define DO_MAX	2
+ #define DO_MIN	3
+ 
++#if defined(KERNEL_2_4)
+ #define DEVICE_DIR	"/proc/sys/dev/sensors"
++#endif
++
++#if defined(KERNEL_2_6_Xplus)
++#define DEVICE_DIR	"/sys/class/hwmon"
++#define	EXTRA		"device"
++#endif
+ 
+ static void	count_sensor(int do_task, const char *filename, double *aggr, int *cnt)
+ {
+@@ -46,9 +53,17 @@
+ 
+ 	zbx_fclose(f);
+ 
+-	if (1 == sscanf(line, "%*f\t%*f\t%lf\n", &value))
++#if defined(KERNEL_2_6_Xplus)
++       if (1 == sscanf(line, "%lf", &value))
++#else
++        if (1 == sscanf(line, "%*lf\t%*lf\t%lf\n", &value))
++#endif
+ 	{
+ 		(*cnt)++;
++#if defined(KERNEL_2_6_Xplus)
++               if(NULL == strstr(filename, "fan"))
++                       value = value / 1000;
++#endif
+ 
+ 		switch (do_task)
+ 		{
+@@ -70,11 +85,35 @@
+ 
+ static void	get_device_sensors(int do_task, const char *device, const char *name, double *aggr, int *cnt)
+ {
++#if defined(KERNEL_2_6_Xplus)
++	struct stat buffer;
++	int	use_extra = 0;
++#endif
+ 	char	sensorname[MAX_STRING_LEN];
++	char	sensortest[MAX_STRING_LEN];
++
++#if defined(KERNEL_2_6_Xplus)
++	zbx_snprintf(sensortest, sizeof(sensortest), "%s/%s/name", DEVICE_DIR, device);
++	if(stat(sensortest, &buffer) != 0)
++	{
++		zbx_snprintf(sensortest, sizeof(sensortest), "%s/%s/device/name", DEVICE_DIR, device);
++		if(stat(sensortest, &buffer) == 0)
++		{
++			use_extra = 1;
++		}
++	}
++#endif
+ 
+ 	if (DO_ONE == do_task)
+ 	{
++#if defined(KERNEL_2_6_Xplus)
++		if(use_extra)
++			zbx_snprintf(sensorname, sizeof(sensorname), "%s/%s/%s/%s_input", DEVICE_DIR, device, EXTRA, name);
++		else
++			zbx_snprintf(sensorname, sizeof(sensorname), "%s/%s/%s_input", DEVICE_DIR, device, name);
++#else
+ 		zbx_snprintf(sensorname, sizeof(sensorname), "%s/%s/%s", DEVICE_DIR, device, name);
++#endif
+ 		count_sensor(do_task, sensorname, aggr, cnt);
+ 	}
+ 	else
+@@ -94,7 +133,14 @@
+ 			if (NULL == zbx_regexp_match(deviceent->d_name, device, NULL))
+ 				continue;
+ 
++#if defined(KERNEL_2_6_Xplus)
++			if(use_extra)
++				zbx_snprintf(devicename, sizeof(devicename), "%s/%s/%s", DEVICE_DIR, deviceent->d_name, EXTRA);
++			else
++				zbx_snprintf(devicename, sizeof(devicename), "%s/%s", DEVICE_DIR, deviceent->d_name);
++#else
+ 			zbx_snprintf(devicename, sizeof(devicename), "%s/%s", DEVICE_DIR, deviceent->d_name);
++#endif
+ 
+ 			if (NULL == (sensordir = opendir(devicename)))
+ 				continue;
+@@ -107,7 +153,19 @@
+ 				if (NULL == zbx_regexp_match(sensorent->d_name, name, NULL))
+ 					continue;
+ 
++#if defined(KERNEL_2_6_Xplus)
++				if (0 != strcmp(sensorent->d_name + strlen(sensorent->d_name) - 6, "_input"))
++					continue;
++#endif
++
++#if defined(KERNEL_2_6_Xplus)
++				if(use_extra)
++					zbx_snprintf(sensorname, sizeof(sensorname), "%s/%s/%s", devicename, sensorent->d_name, EXTRA);
++				else
++					zbx_snprintf(sensorname, sizeof(sensorname), "%s/%s", devicename, sensorent->d_name);
++#else
+ 				zbx_snprintf(sensorname, sizeof(sensorname), "%s/%s", devicename, sensorent->d_name);
++#endif
+ 				count_sensor(do_task, sensorname, aggr, cnt);
+ 			}
+ 			closedir(sensordir);
+@@ -162,4 +220,4 @@
+ 	return SYSINFO_RET_FAIL;
+ }
+ 
+-#endif	/* KERNEL_2_4 */
++#endif	/* KERNEL_2_4 || KERNEL_2_6_Xplus */

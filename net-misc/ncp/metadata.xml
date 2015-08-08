@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>xmw@gentoo.org</email>
+<name>Michael Weber</name>
+</maintainer>
+<longdescription lang="en">
+"ncp" is a utility for copying files in a LAN. It has absolutely no security or integrity checking, no throttling, no features, except one: you don't have to type the coordinates of your peer.
+</longdescription>
+<use><flag name="diet">Compile against <pkg>dev-libs/dietlibc</pkg></flag></use>
+</pkgmetadata>
+

@@ -1,0 +1,10 @@
+--- src/libfreepv/Action.h.orig	2011-06-16 17:37:55.705868856 +0200
++++ src/libfreepv/Action.h	2011-06-16 17:38:19.792311535 +0200
+@@ -24,6 +24,7 @@
+ 
+ #ifndef FPV_ACTION_H
+ #define FPV_ACTION_H
++#include <cstddef>
+ #include "Behavior.h"
+ 
+ namespace FPV

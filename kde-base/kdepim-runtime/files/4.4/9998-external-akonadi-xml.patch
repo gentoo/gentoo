@@ -1,0 +1,53 @@
+From ae557eb6f7c106012a96e6dcc86bc15c71c48c7f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20Vr=C3=A1til?= <dvratil@redhat.com>
+Date: Wed, 9 Oct 2013 13:17:28 +0200
+Subject: [PATCH] Fix build of resourcetester against akonadi-xml in kdepimlibs
+
+---
+ resourcetester/CMakeLists.txt    | 2 +-
+ resourcetester/xmloperations.cpp | 2 +-
+ resourcetester/xmloperations.h   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/resourcetester/CMakeLists.txt b/resourcetester/CMakeLists.txt
+index 74bd851..c9d0313 100644
+--- a/resourcetester/CMakeLists.txt
++++ b/resourcetester/CMakeLists.txt
+@@ -20,7 +20,7 @@ set( resourcetester_SRCS
+ kde4_add_executable(resourcetester ${resourcetester_SRCS})
+ 
+ target_link_libraries( resourcetester
+-  akonadi-xml
++  ${KDEPIMLIBS_AKONADI_XML_LIBS}
+   ${KDEPIMLIBS_AKONADI_LIBS}
+   ${QT_QTCORE_LIBRARY}
+   ${QT_QTGUI_LIBRARY}
+diff --git a/resourcetester/xmloperations.cpp b/resourcetester/xmloperations.cpp
+index 9bc5202..59b5754 100644
+--- a/resourcetester/xmloperations.cpp
++++ b/resourcetester/xmloperations.cpp
+@@ -25,7 +25,7 @@
+ #include <akonadi/collectionfetchscope.h>
+ #include <akonadi/itemfetchjob.h>
+ #include <akonadi/itemfetchscope.h>
+-#include "xml/xmlwritejob.h"
++#include <akonadi/xml/xmlwritejob.h>
+ 
+ #include <KDebug>
+ 
+diff --git a/resourcetester/xmloperations.h b/resourcetester/xmloperations.h
+index c32b622..e75ad59 100644
+--- a/resourcetester/xmloperations.h
++++ b/resourcetester/xmloperations.h
+@@ -22,7 +22,7 @@
+ 
+ #include <akonadi/collection.h>
+ #include <akonadi/item.h>
+-#include "xml/xmldocument.h"
++#include <akonadi/xml/xmldocument.h>
+ 
+ #include <QtCore/QMetaEnum>
+ #include <QtCore/QObject>
+-- 
+1.8.5.1
+

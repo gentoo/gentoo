@@ -1,0 +1,46 @@
+diff -purN kdelibs-4.3.80.orig/kdeui/util/kkeyserver_mac.cpp kdelibs-4.3.80/kdeui/util/kkeyserver_mac.cpp
+--- kdelibs-4.3.80.orig/kdeui/util/kkeyserver_mac.cpp	2009-12-14 17:05:26.284881642 -0500
++++ kdelibs-4.3.80/kdeui/util/kkeyserver_mac.cpp	2009-12-14 17:11:23.393094384 -0500
+@@ -68,7 +68,7 @@ namespace KKeyServer {
+ #ifdef QT_MAC_USE_COCOA
+     static TISInputSourceRef lastLayout = 0;
+ #else
+-    static KeyboardLayoutRef lastLayout = NULL;
++    static TISInputSourceRef lastLayout = NULL;
+ #endif
+     
+     void updateScancodes() {
+@@ -125,16 +125,27 @@ namespace KKeyServer {
+ #endif
+             lastLayout = layout;
+             scancodes.clear();
+-            void *kchr;
+-            if (KLGetKeyboardLayoutProperty(layout, kKLKCHRData, const_cast<const void**>(&kchr)) != noErr) {
++            UCKeyboardLayout *uchr = (UCKeyboardLayout *)TISGetInputSourceProperty(layout, kTISPropertyUnicodeKeyLayoutData);
++            if (uchr == NULL) {
+                 kWarning() << "Couldn't load active keyboard layout";
+             } else {
+                 for (int i = 0; i < 128; i++) {
+                     UInt32 tmpState = 0;
+-                    UInt32 chr = KeyTranslate(kchr, i, &tmpState);
+-                    if (chr && chr != kFunctionKeyCharCode) {
+-                        scancodes.insert(chr, i);
+-                    }
++                    UInt32 deadKeyState = 0;
++                    UInt32 flags = 0;
++                    UniCharCount maxStringLength = 255;
++                    UniCharCount actualStringLength = 0;
++                    UniChar unicodeString[maxStringLength];
++                    
++                    UCKeyTranslate(uchr, i, kUCKeyActionDown,
++                            flags, LMGetKbdType(),
++                            1, &deadKeyState, maxStringLength, &actualStringLength, unicodeString);
++                    fprintf(stderr, "Got key: %s\n", unicodeString);
++                    fflush(stderr);
++                    //UInt32 chr = KeyTranslate(kchr, i, &tmpState);
++                    //if (chr && chr != kFunctionKeyCharCode) {
++                    //    scancodes.insert(chr, i);
++                    //}
+                 }
+             }
+         }

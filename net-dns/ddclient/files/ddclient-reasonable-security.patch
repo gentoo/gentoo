@@ -1,0 +1,21 @@
+--- ddclient	2006-04-11 10:14:16.000000000 +0100
++++ ddclient	2006-04-11 20:31:14.000000000 +0100
+@@ -776,15 +776,10 @@
+ 	# fatal("Cannot open file '%s'. ($!)", $file);
+ 	warning("Cannot open file '%s'. ($!)", $file);
+     }
+-    # Check for only owner has any access to config file
++    # Guard against world-readability of config file
+     my ($dev, $ino, $mode, @statrest) = stat(FD);
+-    if ($mode & 077) {                          
+-	if (-f FD && (chmod 0600, $file)) {
+-	    warning("file $file must be accessible only by its owner (fixed).");
+-	} else {
+-	    # fatal("file $file must be accessible only by its owner.");
+-	    warning("file $file must be accessible only by its owner.");
+-	}
++    if ($mode & 007) {
++		fatal("Must not be world-accessible\nchange its permissions using e.g.\nchmod 640", $file);
+     }
+ 
+     local $lineno       = 0;

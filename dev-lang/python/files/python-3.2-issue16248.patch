@@ -1,0 +1,19 @@
+# HG changeset patch
+# User Georg Brandl <georg@python.org>
+# Date 1379142489 -7200
+# Node ID c18c18774e240377d47638fb23e8276c1ac2e606
+# Parent  b9b521efeba385af0142988899a55de1c1c805c7
+Fix tkinter regression introduced by the security fix in #16248.
+
+diff --git a/Lib/tkinter/__init__.py b/Lib/tkinter/__init__.py
+--- a/Lib/tkinter/__init__.py
++++ b/Lib/tkinter/__init__.py
+@@ -1722,7 +1722,7 @@ class Tk(Misc, Wm):
+         # ensure that self.tk is always _something_.
+         self.tk = None
+         if baseName is None:
+-            import sys, os
++            import os
+             baseName = os.path.basename(sys.argv[0])
+             baseName, ext = os.path.splitext(baseName)
+             if ext not in ('.py', '.pyc', '.pyo'):

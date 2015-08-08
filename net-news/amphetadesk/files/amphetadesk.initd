@@ -1,0 +1,15 @@
+#!/sbin/runscript
+
+start() {
+	ebegin "Starting AmphetaDesk"
+	cd /usr/share/amphetadesk
+	./AmphetaDesk.pl > /dev/null &
+	eend 0
+}
+
+stop() {
+	ebegin "Stoping AmphetaDesk"
+	killall AmphetaDesk.pl
+	eend 0
+}
+

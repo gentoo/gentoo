@@ -1,0 +1,11 @@
+KDE4_INCLUDES also contains Qt includes required by KDE.
+See FindKDE4Internal.cmake for more details.
+
+--- kdialogd4/CMakeLists.txt
++++ kdialogd4/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/common ${CMAKE_BINARY_DIR} ${KDE4_INCLUDE_DIR} ${QT_INCLUDE_DIR})
++include_directories (${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR}/common ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES} ${QT_INCLUDE_DIR})
+ set(kdialogd4_bin_SRCS kdialogd.cpp)
+ kde4_add_executable(kdialogd4_bin ${kdialogd4_bin_SRCS})
+ set_target_properties(kdialogd4_bin PROPERTIES OUTPUT_NAME kdialogd4)

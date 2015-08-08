@@ -1,0 +1,83 @@
+diff -ur gc6.5.orig/include/private/gcconfig.h gc6.5/include/private/gcconfig.h
+--- gc6.5.orig/include/private/gcconfig.h	2005-08-05 00:03:00.000000000 +0200
++++ gc6.5/include/private/gcconfig.h	2005-08-05 00:08:42.000000000 +0200
+@@ -1100,6 +1100,9 @@
+ # 	endif
+ #	define OS_TYPE "LINUX"
+ #       define LINUX_STACKBOTTOM
++	/* On I386 Linux, enable HEURISTIC2 as a backup to /proc data	*/
++	/* for the case where /proc is missing or nobbled (grsec)	*/
++#	define HEURISTIC2
+ #	if 0
+ #	  define HEURISTIC1
+ #         undef STACK_GRAN
+@@ -1901,6 +1904,9 @@
+ #   ifdef LINUX
+ #	define OS_TYPE "LINUX"
+ #       define LINUX_STACKBOTTOM
++	/* On x86_64 Linux, enable HEURISTIC2 as a backup to /proc data	*/
++	/* for the case where /proc is missing or nobbled (grsec)	*/
++#	define HEURISTIC2
+ #       if !defined(GC_LINUX_THREADS) || !defined(REDIRECT_MALLOC)
+ #	    define MPROTECT_VDB
+ #	else
+diff -ur gc6.5.orig/os_dep.c gc6.5/os_dep.c
+--- gc6.5.orig/os_dep.c	2005-08-05 00:03:00.000000000 +0200
++++ gc6.5/os_dep.c	2005-08-05 00:07:56.000000000 +0200
+@@ -967,7 +967,13 @@
+ #   endif
+     f = open("/proc/self/stat", O_RDONLY);
+     if (f < 0 || STAT_READ(f, stat_buf, STAT_BUF_SIZE) < 2 * STAT_SKIP) {
++    /* if /proc/self/stat isn't available, and HEURISTIC2 is possible,  */
++    /* return NULL so that HEURISTIC2 will be tried.  Otherwise bail.   */
++#	ifdef HEURISTIC2
++	return (ptr_t)NULL;
++#	else
+ 	ABORT("Couldn't read /proc/self/stat");
++#	endif
+     }
+     c = stat_buf[buf_offset++];
+     /* Skip the required number of fields.  This number is hopefully	*/
+@@ -983,7 +989,16 @@
+       c = stat_buf[buf_offset++];
+     }
+     close(f);
+-    if (result < 0x10000000) ABORT("Absurd stack bottom value");
++    if (result < 0x10000000) {
++    /* if stack base result is silly (e.g. is 0 due to grsec), and	*/
++    /* HEURISTIC2 is enabled, return NULL so that HEURISTIC2 will be	*/
++    /* tried.  Otherwise bail.						*/
++#	ifdef HEURISTIC2
++		return (ptr_t)NULL;
++#	else
++		ABORT("Absurd stack bottom value");
++#	endif
++	}
+     return (ptr_t)result;
+   }
+ 
+@@ -1045,6 +1060,12 @@
+ 	   result = GC_freebsd_stack_base();
+ #	endif
+ #	ifdef HEURISTIC2
++/* if both LINUX_STACKBOTTOM and HEURISTIC2 are enabled, try HEURISTIC2	*/
++/* when the LINUX_STACKBOTTOM returns NULL (indicating failure to get	*/
++/* a sensible result from /proc/self/stat)				*/
++#	    ifdef LINUX_STACKBOTTOM
++	    if (result == (ptr_t)NULL) {
++#	    endif
+ #	    ifdef STACK_GROWS_DOWN
+ 		result = GC_find_limit((ptr_t)(&dummy), TRUE);
+ #           	ifdef HEURISTIC2_LIMIT
+@@ -1062,6 +1083,11 @@
+ 		    }
+ #	        endif
+ #	    endif
++/* tail of extra 'if' condition when both LINUX_STACKBOTTOM and		*/
++/* HEURISTIC are configured.						*/
++#	ifdef LINUX_STACKBOTTOM
++	    }
++#	endif
+ 
+ #	endif /* HEURISTIC2 */
+ #	ifdef STACK_GROWS_DOWN

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>wxwidgets</herd>
+	<herd>python</herd>
+	<use>
+		<flag name="examples">Install interactive demo module browser and sample applets.</flag>
+		<flag name="doc">Install HTML wxWidgets docs and wxpython API reference.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">wxpython</remote-id>
+	</upstream>
+</pkgmetadata>

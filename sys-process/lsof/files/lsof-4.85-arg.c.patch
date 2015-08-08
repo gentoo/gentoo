@@ -1,0 +1,30 @@
+arg.c.patch	Patches: lsof_4.85_src/arg.c
+
+			 Importance: major for all dialects supporting
+				     the +|-e option (e.g., Linux)
+
+			 Function: this patch corrects a bug in the
+				   accumulation of multiple +|-e
+				   option values
+
+*** /tmp/T0iAaaeo	Thu Oct 20 14:08:43 2011
+--- arg.c	Thu Oct 20 14:03:49 2011
+***************
+*** 778,785 ****
+  	ep->pathl = i;
+  	ep->rdlnk = rdlnk;
+  	ep->mp = (struct mounts *)NULL;
+! 	if (!(ep->next = Efsysl))
+! 	    Efsysl = ep;
+  	return(0);
+  }
+  #endif	/* defined(HASEOPT) */
+--- 778,785 ----
+  	ep->pathl = i;
+  	ep->rdlnk = rdlnk;
+  	ep->mp = (struct mounts *)NULL;
+! 	ep->next = Efsysl;
+! 	Efsysl = ep;
+  	return(0);
+  }
+  #endif	/* defined(HASEOPT) */

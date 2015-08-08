@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The kde-base category contains core KDE packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie kde-base enthält die Basispakete für KDE.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría kde-base contiene los paquetes base de KDE.
+	</longdescription>
+	<longdescription lang="ja">
+		kde-baseカテゴリーにはKDEのコア・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De kde-base categorie bevat de basispakketten van KDE.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm kde-base chứa các gói KDE cốt lõi.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria kde-base contiene i pacchetti base di KDE.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria kde-base contém os pacotes centrais do KDE.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria kde-base zawiera podstawowe pakiety środowiska KDE.
+	</longdescription>
+</catmetadata>
+

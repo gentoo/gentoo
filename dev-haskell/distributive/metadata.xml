@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Haskell 98 Distributive functors -- Dual to Traversable
+	</longdescription>
+	<use>
+		<flag name="lib-werror">Compile with the ghc -Werror option</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/distributive</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+--- install-sh	2007-07-04 14:36:49 +0100
++++ install-sh	2007-09-14 11:00:41 +0100
+@@ -192,7 +192,10 @@
+ 
+ if [ x"$dir_arg" != x ]
+ then
+-	$doit $instcmd $dst &&
++	{ $doit $instcmd "$dst" || lasterr=$?
++	  # It's ok for mkdir to fail if the directory already exists.
++	  test -d "$dst" || { (exit ${lasterr-1}); exit; }
++	} &&
+ 
+ 	if [ x"$chowncmd" != x ]; then $doit $chowncmd $dst; else : ; fi &&
+ 	if [ x"$chgrpcmd" != x ]; then $doit $chgrpcmd $dst; else : ; fi &&

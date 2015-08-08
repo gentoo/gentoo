@@ -1,0 +1,14 @@
+--- src/tools/Makefile.am
++++ src/tools/Makefile.am
+@@ -75,10 +75,7 @@
+ # see http://lists.xiph.org/pipermail/ogg-dev/2008-July/001083.html
+ install-exec-local:
+ 	for p in dump diff info merge rip ; do \
+-	  if test -e $(exec_prefix)/bin/oggz$$p ; then \
+-	    $(RM) $(exec_prefix)/bin/oggz$$p ; \
+-	    $(LN_S) $(exec_prefix)/bin/oggz-$$p $(exec_prefix)/bin/oggz$$p ; \
+-	  fi ; \
++	  $(LN_S) $(exec_prefix)/bin/oggz-$$p $(DESTDIR)$(exec_prefix)/bin/oggz$$p ; \
+ 	done
+ 
+ # On 'make uninstall', remove the deprecated tool -- but only if it is a

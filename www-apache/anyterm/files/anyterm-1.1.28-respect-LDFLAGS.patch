@@ -1,0 +1,26 @@
+=== modified file 'common.mk'
+--- common.mk	2009-01-24 12:40:55 +0000
++++ common.mk	2009-01-24 14:02:19 +0000
+@@ -71,7 +71,7 @@
+ OBJS=$(addsuffix .o,$(notdir $(basename $(CC_SRCS))))
+ 
+ %.o: %.cc
+-	$(CXX) $(CC_COMPILE_FLAGS) -c $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(CC_COMPILE_FLAGS) -c $<
+ 
+ ifdef HAVE_GNU_LD
+ %.blob.o: ../browser/%
+@@ -87,10 +87,10 @@
+ 
+ 
+ anytermd: $(OBJS) $(BLOBS) $(LIBPBE_LIB)
+-	$(CXX) -o $@ $(OBJS) $(BLOBS) $(LINK_FLAGS)
++	$(CXX) -o $@ $(LDFLAGS) $(OBJS) $(BLOBS) $(LINK_FLAGS)
+ 
+ %.d: %.cc
+-	$(CXX) -MM -MG -MT $@ -MT $(<:%.cc=%.o) $(CPP_FLAGS) $(GCC_FLAGS) -o $@ $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MM -MG -MT $@ -MT $(<:%.cc=%.o) $(CPP_FLAGS) $(GCC_FLAGS) -o $@ $<
+ 
+ DEPENDS=$(addsuffix .d,$(basename $(OBJS)))
+ 
+

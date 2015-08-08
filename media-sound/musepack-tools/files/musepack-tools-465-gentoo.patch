@@ -1,0 +1,40 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -15,10 +15,6 @@
+ 
+ add_definitions(-DFAST_MATH -DCVD_FASTLOG)
+ 
+-if(NOT MSVC)
+-  set(CMAKE_C_FLAGS "-O3 -Wall -fomit-frame-pointer -pipe")
+-endif(NOT MSVC)
+-
+ add_subdirectory(libmpcdec)
+ add_subdirectory(libmpcpsy)
+ add_subdirectory(libmpcenc)
+--- libmpcdec/CMakeLists.txt
++++ libmpcdec/CMakeLists.txt
+@@ -1,7 +1,22 @@
+ include_directories(${libmpc_SOURCE_DIR}/include)
+ if(SHARED)
+   add_library(mpcdec_shared SHARED huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
+-else(SHARED)
+-  add_library(mpcdec_static STATIC huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++  set_target_properties(mpcdec_shared PROPERTIES OUTPUT_NAME mpcdec CLEAN_DIRECT_OUTPUT 1 VERSION 7.0.1 SOVERSION 7)
++  if(NOT MSVC)
++    target_link_libraries(mpcdec_shared m)
++  endif(NOT MSVC)
+ endif(SHARED)
+ 
++add_library(mpcdec_static STATIC huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++
++set_target_properties(mpcdec_static PROPERTIES OUTPUT_NAME mpcdec CLEAN_DIRECT_OUTPUT 1)
++
++if(NOT MSVC)
++  target_link_libraries(mpcdec_static m)
++endif(NOT MSVC)
++
++install(TARGETS mpcdec_static LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
++
++if(SHARED)
++  install(TARGETS mpcdec_shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
++endif(SHARED)

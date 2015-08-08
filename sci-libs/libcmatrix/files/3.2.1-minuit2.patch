@@ -1,0 +1,14 @@
+--- configure-libraries.ac	2008-03-04 00:48:46.000000000 +0100
++++ configure-libraries.ac.new	2009-03-19 18:22:21.000000000 +0100
+@@ -14,8 +14,8 @@
+ 	fi
+ 	if test x$FOUNDMINUIT = xyes; then
+ 		AC_CHECK_LIB(lcg_Minuit,main,,	
+-			AC_CHECK_LIB(Minuit,main,,FOUNDMINUIT=no
+-				AC_MSG_WARN([Minuit library (liblcg_Minuit or libMinuit) not found
++			AC_CHECK_LIB(Minuit2,main,,FOUNDMINUIT=no
++				AC_MSG_WARN([Minuit library (liblcg_Minuit or libMinuit2) not found
+ Is LDFLAGS is defined to include relevant directory?])))
+ 		if test x$FOUNDMINUIT = xyes; then
+ 			AC_DEFINE(HAVE_LIBMINUIT)
+

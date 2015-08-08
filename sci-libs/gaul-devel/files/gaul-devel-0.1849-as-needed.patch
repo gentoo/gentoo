@@ -1,0 +1,26 @@
+--- gaul-devel-0.1849-0.orig/src/Makefile.am	2005-04-20 16:25:27.000000000 +0200
++++ gaul-devel-0.1849-0/src/Makefile.am	2010-02-13 16:57:55.051370268 +0100
+@@ -83,7 +83,7 @@
+     gaul/ga_tabu.h \
+     gaul.h
+ 
+-libgaul_la_LIBFLAGS = -lm
++libgaul_la_LIBADD = $(top_srcdir)/util/libgaul_util.la -lm
+ libgaul_la_LDFLAGS = -version-info ${GA_MAJOR_VERSION}:${GA_LT_MINOR_VERSION}:0
+ 
+ 
+--- gaul-devel-0.1849-0.orig/util/Makefile.am	2005-04-20 16:25:53.000000000 +0200
++++ gaul-devel-0.1849-0/util/Makefile.am	2010-02-13 17:00:00.128370192 +0100
+@@ -64,10 +64,10 @@
+ 	gaul/table_util.h \
+ 	gaul/timer_util.h
+ 
+-libgaul_util_a_LIBFLAGS =
++libgaul_util_la_LIBADD = -lm
+ libgaul_util_la_LDFLAGS = -version-info ${GA_MAJOR_VERSION}:${GA_LT_MINOR_VERSION}:0
+ 
+-libnn_util_a_LIBFLAGS =
++libnn_util_la_LIBADD = -lm
+ libnn_util_la_LDFLAGS = -version-info ${GA_MAJOR_VERSION}:${GA_LT_MINOR_VERSION}:0
+ 
+ # Regenerate gaul_config.h with config.status whenever gaul_config.h.in changes.

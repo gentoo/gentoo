@@ -1,0 +1,22 @@
+diff --git a/sbin/savecore/savecore.c b/sbin/savecore/savecore.c
+index bdbf7e3..a4c67ec 100644
+--- a/sbin/savecore/savecore.c
++++ b/sbin/savecore/savecore.c
+@@ -92,7 +92,7 @@ static int checkfor, compress, clear, force, keep, verbose;	/* flags */
+ static int nfound, nsaved, nerr;			/* statistics */
+ static int maxdumps;
+ 
+-extern FILE *zopen(const char *, const char *);
++extern FILE *gzopen(const char *, const char *);
+ 
+ static sig_atomic_t got_siginfo;
+ static void infohandler(int);
+@@ -626,7 +626,7 @@ DoFile(const char *savedir, const char *device)
+ 	if (compress) {
+ 		snprintf(corename, sizeof(corename), "%s.%d.gz",
+ 		    istextdump ? "textdump.tar" : "vmcore", bounds);
+-		fp = zopen(corename, "w");
++		fp = gzopen(corename, "w");
+ 	} else {
+ 		snprintf(corename, sizeof(corename), "%s.%d",
+ 		    istextdump ? "textdump.tar" : "vmcore", bounds);

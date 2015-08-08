@@ -1,0 +1,15 @@
+ tree.hh |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/tree.hh b/tree.hh
+index 1429da3..d780be3 100644
+--- a/tree.hh
++++ b/tree.hh
+@@ -71,6 +71,7 @@
+ #include <set>
+ #include <queue>
+ #include <algorithm>
++#include <cstddef>
+ 
+ // HP-style construct/destroy have gone from the standard,
+ // so here is a copy.

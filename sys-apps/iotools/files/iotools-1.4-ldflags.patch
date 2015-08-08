@@ -1,0 +1,13 @@
+http://code.google.com/p/iotools/issues/detail?id=3
+
+--- a/Makefile
++++ b/Makefile
+@@ -44,7 +44,7 @@ OBJS=$(OBJS_TO_BUILD)
+ all: $(BINARY)
+ 
+ $(BINARY): $(OBJS) iotools.o Makefile
+-	$(CC) $(CFLAGS) -o $@ iotools.o $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ iotools.o $(OBJS)
+ 
+ RUSER ?= root
+ RHOST ?=

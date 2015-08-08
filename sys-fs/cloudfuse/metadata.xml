@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer status="active">
+		<email>erikmack@gmail.com</email>
+		<name>Erik Mackdanz</name>
+	</maintainer>
+	<maintainer status="active">
+		<email>alunduil@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Cloudfuse is a FUSE application which provides access
+		to Rackspace's Cloud Files.  The README claims that
+		Openstack Swift is also supported, though I haven't
+		tested this yet.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">redbo/cloudfuse</remote-id>
+	</upstream>
+</pkgmetadata>

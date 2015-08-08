@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>gienah@gentoo.org</email>
+  <name>Mark Wright</name>
+</maintainer>
+<longdescription lang='en'>
+CDM is a minimalistic, yet full-featured replacement for
+login-managers like slim, kdm, gdm and qingy that provides a fast,
+dialog-based login system without the overhead of the X Window System
+or the instability of qingy. Written in pure bash, CDM has no other
+dependencies, yet supports multiple users/sessions and can start
+virtually any DE/WM.
+</longdescription>
+<use> 
+  <flag name='consolekit'>Enable native consolekit support</flag>
+</use>
+</pkgmetadata>

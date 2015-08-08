@@ -1,0 +1,10 @@
+--- Atlas/Filter.cpp.old	2009-07-06 09:58:04.000000000 +0200
++++ Atlas/Filter.cpp	2009-07-06 09:58:44.000000000 +0200
+@@ -5,6 +5,7 @@
+ #include <Atlas/Filter.h>
+ 
+ #include <string.h>
++#include <cstdio>
+ 
+ namespace Atlas {
+ 

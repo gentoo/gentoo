@@ -1,0 +1,16 @@
+--- lxdm-0.4.1.orig/src/lxdm.c
++++ lxdm-0.4.1/src/lxdm.c
+@@ -1458,8 +1458,12 @@ void lxdm_do_login(struct passwd *pw, ch
+ 		setenv("XDG_SESSION_COOKIE", ck_connector_get_cookie(s->ckc), 1);
+ 	}
+ #endif
++	int i;
++	for(i=2;i<256;i++)
++		g_source_remove(i);
++
+ 	char** env, *path;
+-	int n_env,i;
++	int n_env;
+ 	n_env  = g_strv_length(environ);
+ 	/* copy all environment variables and override some of them */
+ 	env = g_new(char*, n_env + 1 + 13);

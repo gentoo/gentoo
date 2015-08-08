@@ -1,0 +1,36 @@
+--- zhcon-0.2.5.orig/configure.in	2010-01-31 15:12:10.521592172 +0100
++++ zhcon-0.2.5/configure.in	2010-01-31 15:12:33.939593092 +0100
+@@ -170,18 +170,25 @@
+ dnl-----------------------------------------------------------------------
+ dnl Checks for gpm
+ dnl-----------------------------------------------------------------------
+-usegpm="yes"
+-AC_CHECK_HEADERS(gpm.h,,usegpm="no")
+-AC_CHECK_LIB(gpm,Gpm_Open,,usegpm="no")
++AC_ARG_WITH([gpm], AS_HELP_STRING([--without-gpm], [Build without gpm library (default: test)]))
++
++usegpm='no'
++if test "x$with_gpm" != "xno"; then
++    AC_CHECK_HEADERS(gpm.h,,AC_ERROR([gpm.h not found]))
++    AC_CHECK_LIB(gpm,Gpm_Open,,AC_ERROR([libgpm not found]))
++    usegpm='yes'
++fi
+ 
+ dnl-----------------------------------------------------------------------
+ dnl Checks for libggi
+ dnl-----------------------------------------------------------------------
+-useggi="yes"
+-AC_CHECK_HEADERS(ggi/ggi.h,,useggi="no")
+-AC_CHECK_LIB(ggi, main,,useggi="no")
+-if test "$useggi" = 'yes';then
+-	AC_DEFINE(HAVE_GGI_LIB)
++AC_ARG_WITH([ggi], AS_HELP_STRING([--without-ggi], [Build without ggi library (default: test)]))
++
++useggi='no'
++if test "x$with_ggi" != "xno"; then
++    AC_CHECK_HEADERS(ggi/ggi.h,,AC_ERROR([ggi.h not found]))
++    AC_CHECK_LIB(ggi, ggiInit,, AC_ERROR([libggi not found]))
++    useggi='yes'
+ fi
+ 
+ AC_OUTPUT([Makefile

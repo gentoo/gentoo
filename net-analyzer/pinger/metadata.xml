@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>netmon</herd>
+<use>
+<flag name='gtk2'>Install the gtkpinger GUI utility based on <pkg>x11-libs/gtk:2</pkg></flag>
+<flag name='gtk3'>Install the gtkpinger GUI utility based on <pkg>x11-libs/gtk:3</pkg></flag>
+</use>
+</pkgmetadata>

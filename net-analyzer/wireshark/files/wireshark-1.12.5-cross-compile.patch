@@ -1,0 +1,51 @@
+https://code.wireshark.org/review/8481
+
+From edefd74591d8f7010024a31576c2cb51eb1526ad Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Sat, 16 May 2015 05:08:53 -0400
+Subject: [PATCH] switch to AC_PATH_TOOL
+
+The TOOL variant will automatically search for host prefixed scripts
+(e.g. armv7a-unknown-linux-gnueabi-pcap-config) before falling back
+to the default (i.e. pcap-config).  This makes cross-compiling a bit
+simpler.
+
+Change-Id: Ia450839693b5550f798634a7e8b82c2a661b088c
+---
+ acinclude.m4 | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index ffb1cac..c79c427 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -380,7 +380,7 @@ AC_DEFUN([AC_WIRESHARK_PCAP_CHECK],
+ 	  # The user didn't specify a directory in which libpcap resides.
+ 	  # First, look for a pcap-config script.
+ 	  #
+-	  AC_PATH_PROG(PCAP_CONFIG, pcap-config)
++	  AC_PATH_TOOL(PCAP_CONFIG, pcap-config)
+ 
+ 	  if test -n "$PCAP_CONFIG" ; then
+ 	    #
+@@ -1217,7 +1217,7 @@ AC_DEFUN([AC_WIRESHARK_KRB5_CHECK],
+ 	    AC_DEFINE(HAVE_MIT_KERBEROS, 1, [Define to use MIT kerberos])
+ 	  fi
+ 	else
+-	  AC_PATH_PROG(KRB5_CONFIG, krb5-config)
++	  AC_PATH_TOOL(KRB5_CONFIG, krb5-config)
+ 	  if test -x "$KRB5_CONFIG"
+ 	  then
+ 	    KRB5_FLAGS=`"$KRB5_CONFIG" --cflags`
+@@ -2033,7 +2033,7 @@ AC_DEFUN([AC_WIRESHARK_QT_CHECK],
+ [
+ 	no_qt=""
+ 
+-	AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
++	AC_PATH_TOOL(PKG_CONFIG, pkg-config, no)
+ 
+ 	if test x$PKG_CONFIG != xno ; then
+ 		if pkg-config --atleast-pkgconfig-version 0.7 ; then
+-- 
+2.4.0
+

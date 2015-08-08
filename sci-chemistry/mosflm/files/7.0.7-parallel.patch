@@ -1,0 +1,92 @@
+ Makefile     |   21 ++++++++++-----------
+ cbf/Makefile |    9 +++++++--
+ 2 files changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 37f4c7e..51d4164 100644
+--- a/Makefile
++++ b/Makefile
+@@ -22,8 +22,8 @@ DPSLIBS = lib/DPSLIB.a
+ CBFLIBS = cbf/lib/libcbf.a
+ JPGLIBS = jpg/libjpeg.a
+ 
+-all:	$(DPSLIBS) $(CBFLIBS) $(JPGLIBS)
+-	cd mosflm ; make
++all:	$(DPSLIBS)
++	$(MAKE) -C mosflm
+ 
+ ##########################################################################
+ #                                                                        #
+@@ -47,22 +47,21 @@ dpslibs:
+ 
+ cbflibs: 
+ 	rm -f `find ./cbf -name "*.a" -print`
+-	cd cbf ; make all ; if [ -f $(RANLIB) ]; \
+-	then $(RANLIB) lib/libcbf.a; fi
++	$(MAKE) -C cbf all
+ 
+ jpglibs: 
+-	cd jpg ; if [ ! -f Makefile ]; then ./configure ; fi; make libjpeg.a
++	cd jpg ; if [ ! -f Makefile ]; then ./configure ; fi; $(MAKE) libjpeg.a
+ 
+ ${DPSLIBS}:
+-	make dpslibs
++	$(MAKE) dpslibs
+ 
+ ${CBFLIBS}:
+-	make cbflibs
++	$(MAKE) cbflibs
+ 
+ ${JPGLIBS}:
+-	make jpglibs
++	$(MAKE) jpglibs
+ 
+-libs:	${DPSLIBS} ${CBFLIBS} ${JPGLIBS}
++libs:	${DPSLIBS} ${CBFLIBS}
+ 	@echo "****************************************************************"
+ 	@echo "             Making libraries for system ${HOSTTYPE}"
+ 	@echo "****************************************************************"
+@@ -71,11 +70,11 @@ ipmosflm: libs
+ 	@echo "****************************************************************"
+ 	@echo "           Making IPMOSFLM for system ${HOSTTYPE}"
+ 	@echo "****************************************************************"
+-	cd mosflm ; make ipmosflm
++	$(MAKE) -C mosflm ipmosflm
+ 
+ force:
+ 	rm bin/ipmosflm
+-	make ipmosflm
++	$(MAKE) ipmosflm
+ 
+ install:
+ 	@echo "the executable is in ${MOSHOME}/bin/ipmosflm"
+diff --git a/cbf/Makefile b/cbf/Makefile
+index e61497c..c3c94ac 100644
+--- a/cbf/Makefile
++++ b/cbf/Makefile
+@@ -362,6 +362,8 @@ HEADERS   =  $(INCLUDE)/cbf.h                  \
+              $(EXAMPLES)/img.h               \
+              $(INCLUDE)/md5.h
+ 
++OBJ = $(subst .c,.o,$(SOURCE))
++
+ #
+ # Compile the library and examples
+ #
+@@ -379,11 +381,14 @@ $(INSTALLDIR):
+ $(LIB):
+ 	mkdir $(LIB)
+ 
++
++.c.o: $(SOURCE) $(HEADERS)
++	$(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c $<
++
+ #
+ # CBF library
+ #
+-$(LIB)/libcbf.a: $(SOURCE) $(HEADERS) $(COMMONDEP)
+-	$(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c $(SOURCE)
++$(LIB)/libcbf.a: $(OBJ) $(COMMONDEP)
+ 	$(AR) cr $@ *.o
+ 	rm *.o
+ 	if [ -f $(RANLIB) ]; then $(RANLIB) $@ ; fi

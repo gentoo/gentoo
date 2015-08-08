@@ -1,0 +1,23 @@
+--- a/src/h2s-gtk.scm
++++ b/src/h2s-gtk.scm
+@@ -50,6 +50,11 @@
+ (define pango-directory
+   (find-header-dir #`"pango-,|pango-version|/pango/pango.h"
+                    *header-search-paths*))
++(define gdk-pixbuf-directory
++  (guard (e [(<error> e)
++             gtk-directory])
++    (find-header-dir #`"gdk-pixbuf-,|gtk-version|/gdk-pixbuf/gdk-pixbuf.h"
++                     *header-search-paths* )))
+ 
+ 
+ (define (parse-gdk)
+@@ -64,7 +69,7 @@
+                  (call-with-input-file "PANGOFILES" port->string-list)))
+ 
+ (define (parse-gdk-pixbuf)
+-  (parse-headers #`",|gtk-directory|/gdk-pixbuf"
++  (parse-headers #`",|gdk-pixbuf-directory|/gdk-pixbuf"
+                  (call-with-input-file "GDKPIXBUFFILES" port->string-list)))
+ 
+ ;; defaults for the gauche-gtk package:

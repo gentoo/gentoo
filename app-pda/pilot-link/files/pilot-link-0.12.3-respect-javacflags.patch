@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/267445
+
+--- bindings/Java/Makefile.am
++++ bindings/Java/Makefile.am
+@@ -70,7 +70,7 @@
+ $(java_classes): java_compile
+ 
+ java_compile: $(java_files)
+-	$(JAVAC) -d . $(java_files)
++	$(JAVAC) $(JAVACFLAGS) -d . $(java_files)
+ 
+ java_lib: libjpisock.c
+ 	$(CXX) $(INCLUDES) -fPIC $(DEFS) -L $(top_builddir)/libpisock/.libs -lpisock -shared -o libjpisock.so $(srcdir)/libjpisock.c

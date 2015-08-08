@@ -1,0 +1,8 @@
+Please change the values of the following variables in
+${MY_HTDOCSDIR}/include/db.inc.php:
+
+	DB_TYPE
+	DB_SERVER
+	DB_DATABASE
+	DB_USER
+	DB_PASSWORD

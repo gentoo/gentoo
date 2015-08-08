@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<herd>python</herd>
+<longdescription>
+PyGTK provides a convenient wrapper for the GTK+ library for use in
+Python programs, taking care of many of the boring details such as
+managing memory and type casting. When combined with PyORBit and
+gnome-python, it can be used to write full featured Gnome applications.
+</longdescription>
+<longdescription lang="ja">
+PyGTKは、Python言語プログラムでGTK+ライブラリを使うための、マネージング・メモリ>やタイプ・キャスティングの様な詰まらない事柄の世話をしてくれる便利なラッパーを提
+供します。PyORBitとgnome-pythonと組みあわせると、GNOMEのアプリケーションの特性を
+完全に抑えるものにすることができます。
+</longdescription>
+</pkgmetadata>

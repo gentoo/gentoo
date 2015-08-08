@@ -1,0 +1,36 @@
+--- libaacskeys.make.orig	2010-02-16 18:37:31.000000000 -0700
++++ libaacskeys.make	2010-02-16 18:40:15.000000000 -0700
+@@ -13,12 +13,12 @@
+   LIBDIR := .
+   OBJDIR := obj/linux/ReleaseLib
+   OUTDIR := lib/linux
+-  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -D "JNILIB" -I "/usr/local/ssl/include" -I "/usr/lib/jvm/java-6-sun/include" -I "/usr/lib/jvm/java-6-sun/include/linux"
+-  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -fPIC -Wall -fomit-frame-pointer -O3 -pipe
++  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -D "JNILIB" -I "/usr/ssl/include" -I "/etc/java-config-2/current-system-vm/include" -I "/etc/java-config-2/current-system-vm/include/linux"
++  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -fPIC
+   CXXFLAGS := $(CFLAGS)
+-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -shared -s -L"/usr/local/ssl/lib" -lcrypto
++  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -shared -L"/usr/ssl/lib" -lcrypto
+   LDDEPS :=
+-  RESFLAGS := -D "_REENTRANT" -D "JNILIB" -I "/usr/local/ssl/include" -I "/usr/lib/jvm/java-6-sun/include" -I "/usr/lib/jvm/java-6-sun/include/linux"
++  RESFLAGS := -D "_REENTRANT" -D "JNILIB" -I "/usr/ssl/include" -I "/etc/java-config-2/current-system-vm/include" -I "/etc/java-config-2/current-system-vm/include/linux"
+   TARGET := libaacskeys.so
+   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
+ endif
+@@ -28,12 +28,12 @@
+   LIBDIR := .
+   OBJDIR := obj/linux/DebugLib
+   OUTDIR := lib/linux/debug
+-  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -D "JNILIB" -D "DEBUG" -I "/usr/local/ssl/include" -I "/usr/lib/jvm/java-6-sun/include" -I "/usr/lib/jvm/java-6-sun/include/linux"
+-  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -fPIC -g -Wall -pipe
++  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -D "JNILIB" -D "DEBUG" -I "/usr/ssl/include" -I "/etc/java-config-2/current-system-vm/include" -I "/etc/java-config-2/current-system-vm/include/linux"
++  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -fPIC -g
+   CXXFLAGS := $(CFLAGS)
+-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -shared -L"/usr/local/ssl/lib" -lcrypto
++  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -shared -L"/usr/ssl/lib" -lcrypto
+   LDDEPS :=
+-  RESFLAGS := -D "_REENTRANT" -D "JNILIB" -D "DEBUG" -I "/usr/local/ssl/include" -I "/usr/lib/jvm/java-6-sun/include" -I "/usr/lib/jvm/java-6-sun/include/linux"
++  RESFLAGS := -D "_REENTRANT" -D "JNILIB" -D "DEBUG" -I "/usr/ssl/include" -I "/etc/java-config-2/current-system-vm/include" -I "/etc/java-config-2/current-system-vm/include/linux"
+   TARGET := libaacskeys.so
+   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
+ endif

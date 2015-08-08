@@ -1,0 +1,18 @@
+--- ./api/perl/t/perlcriticrc	2013-08-21 22:37:57.791099241 +0200
++++ ./api/perl/t/perlcriticrc	2013-08-21 22:38:02.943210061 +0200
+@@ -133,8 +133,6 @@ severity   = 3
+ [Perl::Critic::Policy::Miscellanea::ProhibitTies]
+ severity   = 4
+ 
+-[-Perl::Critic::Policy::Miscellanea::RequireRcsKeywords]
+-
+ [Perl::Critic::Policy::Modules::ProhibitAutomaticExportation]
+ severity   = 4
+ 
+@@ -283,4 +281,4 @@ severity   = 5
+ severity   = 5
+ 
+ [Perl::Critic::Policy::Variables::RequireNegativeIndices]
+-severity   = 4
+\ No newline at end of file
++severity   = 4

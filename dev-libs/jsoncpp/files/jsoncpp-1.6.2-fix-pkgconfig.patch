@@ -1,0 +1,55 @@
+From e6f1cffdd3fb04a0ed96319e6f8df6a7cbdd1557 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 19 May 2015 17:32:31 +0200
+Subject: [PATCH] Fix custom includedir & libdir substitution in pkg-config
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Do not prepend ${prefix} to substituted includedir & libdir
+in the pkg-config file -- if the paths are overriden by user, CMake puts
+absolute paths there (even if user specifies a relative path). Instead,
+use the absolute path provided by CMake and appropriately default
+LIBRARY_INSTALL_DIR & INCLUDE_INSTALL_DIR to absolute paths with
+${CMAKE_INSTALL_PREFIX} prepended.
+
+Fixes: https://github.com/open-source-parsers/jsoncpp/issues/279
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ CMakeLists.txt           | 6 +++---
+ pkg-config/jsoncpp.pc.in | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 30038d5..d31a6ad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,11 +25,11 @@ SET(LIB_SUFFIX "" CACHE STRING "Optional arch-dependent suffix for the library i
+ 
+ SET(RUNTIME_INSTALL_DIR bin
+     CACHE PATH "Install dir for executables and dlls")
+-SET(ARCHIVE_INSTALL_DIR lib${LIB_SUFFIX}
++SET(ARCHIVE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
+     CACHE PATH "Install dir for static libraries")
+-SET(LIBRARY_INSTALL_DIR lib${LIB_SUFFIX}
++SET(LIBRARY_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
+     CACHE PATH "Install dir for shared libraries")
+-SET(INCLUDE_INSTALL_DIR include
++SET(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/include
+     CACHE PATH "Install dir for headers")
+ SET(PACKAGE_INSTALL_DIR lib${LIB_SUFFIX}/cmake
+     CACHE PATH "Install dir for cmake package config files")
+diff --git a/pkg-config/jsoncpp.pc.in b/pkg-config/jsoncpp.pc.in
+index 9613181..3ca4a84 100644
+--- a/pkg-config/jsoncpp.pc.in
++++ b/pkg-config/jsoncpp.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/@LIBRARY_INSTALL_DIR@
+-includedir=${prefix}/@INCLUDE_INSTALL_DIR@
++libdir=@LIBRARY_INSTALL_DIR@
++includedir=@INCLUDE_INSTALL_DIR@
+ 
+ Name: jsoncpp
+ Description: A C++ library for interacting with JSON

@@ -1,0 +1,7 @@
+# Name of this node in the etcd cluster.
+ETCD_NAME=etcd
+
+# Path to the data directory.
+ETCD_DATA_DIR=/var/lib/etcd
+
+ETCD_OPTS=""

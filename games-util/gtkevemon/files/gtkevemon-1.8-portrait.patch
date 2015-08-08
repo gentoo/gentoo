@@ -1,0 +1,17 @@
+http://trac.battleclinic.com:8000/gtkevemon/changeset/121/trunk/gtkevemon/src/gtkportrait.cc
+
+Index: trunk/gtkevemon/src/gtkportrait.cc
+===================================================================
+--- trunk/gtkevemon/src/gtkportrait.cc	(revision 109)
++++ trunk/gtkevemon/src/gtkportrait.cc	(revision 121)
+@@ -107,6 +107,8 @@
+ 
+   AsyncHttp* http = AsyncHttp::create();;
+-  http->set_host("img.eve.is");
+-  http->set_path("/serv.asp?s=256&c=" + this->char_id);
++  //http->set_host("img.eve.is");
++  //http->set_path("/serv.asp?s=256&c=" + this->char_id);
++  http->set_host("image.eveonline.com");
++  http->set_path("/Character/" + this->char_id + "_256.jpg");
+   Config::setup_http(http);
+ 

@@ -1,0 +1,27 @@
+From: David Tardon <dtardon@redhat.com>
+Date: Sat, 20 Dec 2014 17:35:36 +0000 (+0100)
+Subject: coverity#1259904 dereference before null check
+X-Git-Url: https://gerrit.libreoffice.org/gitweb?p=libabw.git;a=commitdiff_plain;h=a65eb81c5e9d9da0548eb9066f9dde77a7328cc3
+
+coverity#1259904 dereference before null check
+
+Change-Id: If53074b31a821b0764acc9e9f1b0f9d7894e2e5e
+---
+
+diff --git a/src/lib/ABWParser.cpp b/src/lib/ABWParser.cpp
+index cf914bf..426ab54 100644
+--- a/src/lib/ABWParser.cpp
++++ b/src/lib/ABWParser.cpp
+@@ -338,9 +338,11 @@ void libabw::ABWParser::readAbiword(xmlTextReaderPtr reader)
+ void libabw::ABWParser::readM(xmlTextReaderPtr reader)
+ {
+   xmlChar *const key = xmlTextReaderGetAttribute(reader, BAD_CAST("key"));
+-  m_state->m_currentMetadataKey = reinterpret_cast<const char *>(key);
+   if (key)
++  {
++    m_state->m_currentMetadataKey = reinterpret_cast<const char *>(key);
+     xmlFree(key);
++  }
+ }
+ 
+ void libabw::ABWParser::readHistory(xmlTextReaderPtr reader)

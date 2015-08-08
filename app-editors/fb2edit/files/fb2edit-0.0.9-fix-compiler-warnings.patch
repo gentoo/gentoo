@@ -1,0 +1,101 @@
+commit 5a378858e83e95f88ffec5e14ae1fd8157101ed0
+Author: Kandrashin Denis <mail@lintest.ru>
+Date:   Fri Jul 18 23:03:05 2014 +0400
+
+    Remove compiler warning
+
+diff --git a/source/fb2main.cpp b/source/fb2main.cpp
+index 50c5a80..504ccd8 100644
+--- a/source/fb2main.cpp
++++ b/source/fb2main.cpp
+@@ -27,6 +27,7 @@ FbMainWindow::FbMainWindow(const QString &filename, ViewMode mode)
+     , isSwitched(false)
+     , isUntitled(true)
+ {
++    Q_UNUSED(mode);
+     connect(qApp, SIGNAL(logMessage(QtMsgType, QString)), SLOT(logMessage(QtMsgType, QString)));
+ 
+     setUnifiedTitleAndToolBarOnMac(true);
+@@ -50,16 +51,22 @@ FbMainWindow::FbMainWindow(const QString &filename, ViewMode mode)
+ 
+ void FbMainWindow::warning(int row, int col, const QString &msg)
+ {
++    Q_UNUSED(row);
++    Q_UNUSED(col);
+     logMessage(QtWarningMsg, msg.simplified());
+ }
+ 
+ void FbMainWindow::error(int row, int col, const QString &msg)
+ {
++    Q_UNUSED(row);
++    Q_UNUSED(col);
+     logMessage(QtCriticalMsg, msg.simplified());
+ }
+ 
+ void FbMainWindow::fatal(int row, int col, const QString &msg)
+ {
++    Q_UNUSED(row);
++    Q_UNUSED(col);
+     logMessage(QtFatalMsg, msg.simplified());
+ }
+ 
+@@ -164,6 +171,7 @@ void FbMainWindow::createActions()
+     FbTextEdit *text = mainDock->text();
+     FbHeadEdit *head = mainDock->head();
+     FbCodeEdit *code = mainDock->code();
++    Q_UNUSED(head)
+ 
+     menu = menuBar()->addMenu(tr("&File"));
+     tool = addToolBar(tr("File"));
+diff --git a/source/fb2text.cpp b/source/fb2text.cpp
+index 0ea146f..aa2d276 100644
+--- a/source/fb2text.cpp
++++ b/source/fb2text.cpp
+@@ -37,14 +37,14 @@ FbTextAction::FbTextAction(const QIcon &icon, const QString &text, QWebPage::Web
+ {
+ }
+ 
+-QAction * FbTextAction::action(QWebPage::WebAction action)
++QAction * FbTextAction::action()
+ {
+     return m_parent->pageAction(m_action);
+ }
+ 
+ void FbTextAction::updateAction()
+ {
+-    if (QAction * act = action(m_action)) {
++    if (QAction * act = action()) {
+         if (isCheckable()) setChecked(act->isChecked());
+         setEnabled(act->isEnabled());
+     }
+@@ -52,7 +52,7 @@ void FbTextAction::updateAction()
+ 
+ void FbTextAction::connectAction()
+ {
+-    if (QAction * act = action(m_action)) {
++    if (QAction * act = action()) {
+         connect(this, SIGNAL(triggered(bool)), act, SIGNAL(triggered(bool)));
+         connect(act, SIGNAL(changed()), this, SLOT(updateAction()));
+         if (isCheckable()) setChecked(act->isChecked());
+@@ -65,7 +65,7 @@ void FbTextAction::connectAction()
+ 
+ void FbTextAction::disconnectAction()
+ {
+-    QAction * act = action(m_action);
++    QAction * act = action();
+     disconnect(act, 0, this, 0);
+     disconnect(this, 0, act, 0);
+ }
+diff --git a/source/fb2text.hpp b/source/fb2text.hpp
+index c1d1cb4..41f8a6c 100644
+--- a/source/fb2text.hpp
++++ b/source/fb2text.hpp
+@@ -169,7 +169,7 @@ private slots:
+     void updateAction();
+ 
+ private:
+-    QAction * action(QWebPage::WebAction action);
++    QAction * action();
+ 
+ private:
+     QWebPage::WebAction m_action;

@@ -1,0 +1,17 @@
+# For more information, please see the hosts.allow(5) manpage
+
+# Rule format:
+# daemon : client list
+# The value for 'daemon' is determined by the name of the binary.
+# OpenSSH runs as 'sshd' so you would use 'sshd' for 'daemon'.
+# Client list can be a list of ip's or hostnames.
+
+# Allow only sshd connections from ips matching 192.168.0.*            
+#sshd: 192.168.0.
+
+# Only allow sendmail connections from the localhost
+#sendmail: localhost
+
+# Allow everyone from foobar.edu to access everything except for
+# the terminalserver 
+#ALL: .foobar.edu EXCEPT terminalserver.foobar.edu

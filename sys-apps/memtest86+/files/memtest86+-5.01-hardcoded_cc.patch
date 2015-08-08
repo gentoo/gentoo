@@ -1,0 +1,16 @@
+--- Makefile.orig	2015-02-01 01:08:33.000000000 +0300
++++ Makefile	2015-02-01 01:10:17.624757244 +0300
+@@ -9,11 +9,10 @@
+ #
+ FDISK=/dev/fd0
+ 
+-AS=as -32
+-CC=gcc
+-
+ CFLAGS= -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin \
+ 	-ffreestanding -fPIC $(SMP_FL) -fno-stack-protector 
++CPPFLAGS= -m32
++ASFLAGS= -32
+ 	
+ OBJS= head.o reloc.o main.o test.o init.o lib.o patn.o screen_buffer.o \
+       config.o cpuid.o linuxbios.o pci.o memsize.o spd.o error.o dmi.o controller.o \

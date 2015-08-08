@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/327353
+
+--- doc/Makefile.am
++++ doc/Makefile.am
+@@ -6,7 +6,7 @@
+ 
+ CLEANFILES = index.html compatibility.html changelog.html license.html Xdialog.1
+ 
+-doc_DATA = index.html compatibility.html changelog.html license.html $(srcdir)/*.html $(srcdir)/*.png
++doc_DATA = $(srcdir)/*.html $(srcdir)/*.png
+ 
+ man_MANS = Xdialog.1
+ 

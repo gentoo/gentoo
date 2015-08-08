@@ -1,0 +1,29 @@
+Patch taken from opensuse:
+https://www.mail-archive.com/opensuse-commit@opensuse.org/msg60296.html
+
+Modified to be conditional on MARIADB_BASE_VERSION
+
+++++++ mysql-workbench-mysql_options4.patch ++++++
+diff --git a/plugins/migration/copytable/copytable.cpp 
+b/plugins/migration/copytable/copytable.cpp
+index b273287..77c227b 100644
+--- a/plugins/migration/copytable/copytable.cpp
++++ b/plugins/migration/copytable/copytable.cpp
+@@ -1633,12 +1633,17 @@ MySQLCopyDataTarget::MySQLCopyDataTarget(const 
+   std::string &hostname, int port,
+   _truncate = false;
+ 
+   mysql_init(&_mysql);
++  /* This is optional has compiled in for MySQL >= 5.6.6
++   * Looks like MariaDB does not support this as supposed,
++   * so disable completly. */
++#ifndef MARIADB_BASE_VERSION
+ #if defined(MYSQL_VERSION_MAJOR) && defined(MYSQL_VERSION_MINOR) && defined(MYSQL_VERSION_PATCH)
+ #if MYSQL_CHECK_VERSION(5,6,6)
+   mysql_options4(&_mysql, MYSQL_OPT_CONNECT_ATTR_ADD, "program_name", app_name.c_str());
+ #endif
+ #endif
++#endif
+ 
+   // _bulk_insert_record is used to prepare a single record string, the connection
+   // is needed to escape binary data properly

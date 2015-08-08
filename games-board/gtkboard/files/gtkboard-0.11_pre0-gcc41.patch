@@ -1,0 +1,24 @@
+gcc-4.1 patch from debian.
+
+--- src/board.c
++++ src/board.c
+@@ -74,7 +74,7 @@
+ //! default background
+ char board_default_colors [9] = {215, 215, 215, 215, 215, 215, 0, 0, 0};
+ 
+-static int cell_size, num_pieces;
++int cell_size, num_pieces;
+ 
+ extern void ui_make_human_move (byte *move, int *rmove);
+ 
+--- src/menu.c
++++ src/menu.c
+@@ -829,7 +829,7 @@
+ 	
+ 	{
+ 	int i;
+-	GtkItemFactoryEntry help_items [3];
++	GtkItemFactoryEntry help_items [4];
+ 	help_items[0].path = g_strdup_printf ("/Help/%s", opt_game->name);
+ 	help_items[0].accelerator = NULL;
+ 	help_items[0].callback = NULL;

@@ -1,0 +1,20 @@
+Description: Do not use the exit status of log rather the exit status of the hook.
+
+http://bugs.freedesktop.org/show_bug.cgi?id=32210
+http://bugs.gentoo.org/360673
+
+--- pm/pm-functions.in
++++ pm/pm-functions.in
+@@ -197,9 +197,11 @@
+ 	# rest of args passed to hook unchanged.
+ 	log "Running hook $*:"
+ 	hook_ok "$1" && "$@"
++	# log() changes the return value, so save it for later
++	local status=$?
+ 	log ""
+ 	log -n "$*: " 
+-	hook_exit_status $? && LAST_HOOK="${1##*/}" || inhibit
++	hook_exit_status $status && LAST_HOOK="${1##*/}" || inhibit
+ }
+ 
+ if profiling; then

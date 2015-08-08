@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+ <email>vapier@gentoo.org</email>
+ <description>fix what you like</description>
+</maintainer>
+<use>
+ <flag name='tools'>build and install extra helper utilities</flag>
+</use>
+</pkgmetadata>

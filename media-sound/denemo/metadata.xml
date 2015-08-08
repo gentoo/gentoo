@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sound</herd>
+<use>
+	<flag name="fluidsynth">Enable Fluidsynth MIDI software synthesis</flag>
+	<flag name="portmidi">Enable support for the portmidi backend</flag>
+</use>
+</pkgmetadata>

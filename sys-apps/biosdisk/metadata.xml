@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>mattsch@gmail.com</email>
+	<name>Matthew Schultz</name>
+	<description>Assign bugs to him</description>
+</maintainer>
+<maintainer>
+	<email>pacho@gentoo.org</email>
+	<description>Proxy maintainer, CC him in bugs</description>
+</maintainer>
+</pkgmetadata>

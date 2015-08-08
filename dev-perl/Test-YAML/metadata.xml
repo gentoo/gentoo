@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">YAML</remote-id>
+    <remote-id type="cpan-module">Test::YAML</remote-id>
+    <remote-id type="cpan-module">Test::YAML::Filter</remote-id>
+    <remote-id type="cpan-module">YAML</remote-id>
+    <remote-id type="cpan-module">YAML::Any</remote-id>
+    <remote-id type="cpan-module">YAML::Dumper</remote-id>
+    <remote-id type="cpan-module">YAML::Dumper::Base</remote-id>
+    <remote-id type="cpan-module">YAML::Error</remote-id>
+    <remote-id type="cpan-module">YAML::Loader</remote-id>
+    <remote-id type="cpan-module">YAML::Loader::Base</remote-id>
+    <remote-id type="cpan-module">YAML::Marshall</remote-id>
+    <remote-id type="cpan-module">YAML::Mo</remote-id>
+    <remote-id type="cpan-module">YAML::Node</remote-id>
+    <remote-id type="cpan-module">YAML::Tag</remote-id>
+    <remote-id type="cpan-module">YAML::Type::blessed</remote-id>
+    <remote-id type="cpan-module">YAML::Type::code</remote-id>
+    <remote-id type="cpan-module">YAML::Type::glob</remote-id>
+    <remote-id type="cpan-module">YAML::Type::ref</remote-id>
+    <remote-id type="cpan-module">YAML::Type::regexp</remote-id>
+    <remote-id type="cpan-module">YAML::Type::undef</remote-id>
+    <remote-id type="cpan-module">YAML::Types</remote-id>
+    <remote-id type="cpan-module">YAML::Warning</remote-id>
+    <remote-id type="cpan-module">yaml_mapping</remote-id>
+    <remote-id type="cpan-module">yaml_scalar</remote-id>
+    <remote-id type="cpan-module">yaml_sequence</remote-id>
+  </upstream>
+</pkgmetadata>

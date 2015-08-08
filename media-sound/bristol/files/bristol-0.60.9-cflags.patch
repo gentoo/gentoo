@@ -1,0 +1,10 @@
+--- bristol-0.60.9/libbrighton/Makefile.am.orig
++++ bristol-0.60.9/libbrighton/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/brighton -I/usr/X11R6/include/ -I. -O0 @BRIGHTON_HAS_X11@ @BRIGHTON_HAS_AUTOZOOM@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/brighton -I/usr/X11R6/include/ -I. @BRIGHTON_HAS_X11@ @BRIGHTON_HAS_AUTOZOOM@
+ libbrighton_la_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@ @BRIGHTON_LIBXLIBS@ @BRIGHTON_LIBXLIBS@
+ 
+ lib_LTLIBRARIES = libbrighton.la

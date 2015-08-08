@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		ASN.1 standard types
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vincenthz/hs-asn1-types</remote-id>
+	</upstream>
+</pkgmetadata>

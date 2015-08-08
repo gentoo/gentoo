@@ -1,0 +1,5 @@
+ATTRS{idVendor}=="ffff", ATTRS{idProduct}=="0004", MODE="0660", GROUP="usb"
+ATTRS{idVendor}=="id50", ATTRS{idProduct}=="6000", MODE="0660", GROUP="usb"
+ATTRS{idVendor}=="id50", ATTRS{idProduct}=="6001", MODE="0660", GROUP="usb"
+ATTRS{idVendor}=="id50", ATTRS{idProduct}=="6002", MODE="0660", GROUP="usb"
+ATTRS{idVendor}=="id50", ATTRS{idProduct}=="6003", MODE="0660", GROUP="usb"

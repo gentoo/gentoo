@@ -1,0 +1,24 @@
+Fix a buffer overflow on platforms where sizeof(long) > sizeof(int).
+https://bugs.gentoo.org/show_bug.cgi?id=329031
+
+--- libvncserver/tightvnc-filetransfer/filetransfermsg.c
++++ libvncserver/tightvnc-filetransfer/filetransfermsg.c
+@@ -393,7 +393,8 @@
+ CreateFileDownloadZeroSizeDataMsg(unsigned long mTime)
+ {
+ 	FileTransferMsg fileDownloadZeroSizeDataMsg;
+-	int length = sz_rfbFileDownloadDataMsg + sizeof(int);
++	uint32_t mTime32 = (uint32_t)mTime;
++	int length = sz_rfbFileDownloadDataMsg + sizeof(mTime32);
+ 	rfbFileDownloadDataMsg *pFDD = NULL;
+ 	char *pFollow = NULL;
+ 	
+@@ -413,7 +414,7 @@
+ 	pFDD->compressedSize = Swap16IfLE(0);
+ 	pFDD->realSize = Swap16IfLE(0);
+ 	
+-	memcpy(pFollow, &mTime, sizeof(unsigned long));
++	memcpy(pFollow, &mTime, sizeof(mTime32));
+ 
+ 	fileDownloadZeroSizeDataMsg.data	= pData;
+ 	fileDownloadZeroSizeDataMsg.length	= length;

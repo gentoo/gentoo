@@ -1,0 +1,20 @@
+Description: iperf does not handle right large time values
+ Reported by Eugene Butan <eugene@mikrotik.com>
+ When I invoke 'iperf' with '-t 100000000' argument from an ordinary shell
+ prompt it immediately exits displaying incorrect bandwidth. If I supply
+ smaller time value, iperf works as expected.
+Author: Roberto Lumbreras <rover@debian.org>
+Bug-Debian: http://bugs.debian.org/346099
+Forwarded: https://sourceforge.net/tracker/index.php?func=detail&aid=3140391&group_id=128336&atid=711371
+
+--- a/src/Settings.cpp
++++ b/src/Settings.cpp
+@@ -458,7 +458,7 @@
+         case 't': // seconds to write for
+             // time mode (instead of amount mode)
+             setModeTime( mExtSettings );
+-            mExtSettings->mAmount = (int) (atof( optarg ) * 100.0);
++            mExtSettings->mAmount = (max_size_t) (atof( optarg ) * 100.0);
+             break;
+ 
+         case 'u': // UDP instead of TCP

@@ -1,0 +1,11 @@
+--- utmp.c.orig 2004-11-14 23:15:28.000000000 +0100
++++ utmp.c      2004-11-14 23:15:39.000000000 +0100
+@@ -618,7 +618,7 @@
+ #endif /* sgi */
+   strncpy(u->ut_line, line, sizeof(u->ut_line));
+   u->ut_pid = pid;
+-  (void)time((time_t *)&u->ut_time);
++  u->ut_time = time(NULL);
+ }
+ 
+ static slot_t

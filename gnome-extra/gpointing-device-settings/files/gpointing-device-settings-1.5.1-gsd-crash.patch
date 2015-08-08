@@ -1,0 +1,35 @@
+diff -ru gpointing-device-settings-1.5.1-orig/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c gpointing-device-settings-1.5.1/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c
+--- gpointing-device-settings-1.5.1-orig/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c	2010-12-20 01:29:09.204274003 -0500
++++ gpointing-device-settings-1.5.1/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c	2010-12-20 02:15:21.652274002 -0500
+@@ -96,19 +96,21 @@
+         XDevicePresenceNotifyEvent *notify_event = (XDevicePresenceNotifyEvent *)xev;
+ 
+         device_info = gpds_xinput_utils_get_device_info_from_id(notify_event->deviceid, NULL);
+-        if (notify_event->devchange == DeviceEnabled) {
+-            GsdPointingDeviceManager *manager;
++        if (device_info) {
++            if (notify_event->devchange == DeviceEnabled) {
++                GsdPointingDeviceManager *manager;
+ 
+-            if (has_manager(plugin, device_info->name))
+-                return GDK_FILTER_CONTINUE;
++                if (has_manager(plugin, device_info->name))
++                    return GDK_FILTER_CONTINUE;
+ 
+-            manager = gsd_pointing_device_manager_new(gdk_x11_get_xatom_name(device_info->type),
+-                                                      device_info->name);
+-            if (manager) {
+-                gsd_pointing_device_manager_start(manager, NULL);
+-                plugin->managers = g_list_prepend(plugin->managers, manager);
++                manager = gsd_pointing_device_manager_new(gdk_x11_get_xatom_name(device_info->type),
++                                                          device_info->name);
++                if (manager) {
++                    gsd_pointing_device_manager_start(manager, NULL);
++                    plugin->managers = g_list_prepend(plugin->managers, manager);
++                }
++            } else if (notify_event->devchange == DeviceRemoved) {
+             }
+-        } else if (notify_event->devchange == DeviceRemoved) {
+         }
+     }
+ 

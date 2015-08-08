@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ ! -e ~/.tomenet/.gentoo ]; then
+	LIBDIR="@LIBDIR@"
+	[ -e ~/.tomenet ] || mkdir ~/.tomenet
+
+	ln -s "${LIBDIR}"/game ~/.tomenet/game
+	ln -s "${LIBDIR}"/text ~/.tomenet/text
+	cp -R "${LIBDIR}"/user "${LIBDIR}"/scpt "${LIBDIR}"/xtra ~/.tomenet/
+	[ -e ~/.tomenetrc ] || cp "${LIBDIR}"/.tomenetrc ~/.tomenetrc
+
+	touch ~/.tomenet/.gentoo
+fi
+
+TOMENET_PATH="${HOME}/.tomenet"
+export TOMENET_PATH
+cd "${TOMENET_PATH}"
+exec tomenet.bin "$@"

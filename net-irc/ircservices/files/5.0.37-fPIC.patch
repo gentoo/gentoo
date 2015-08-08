@@ -1,0 +1,23 @@
+--- ircservices-5.0.37/modules/Makerules	2004-08-14 22:59:07.290105488 +0200
++++ ircservices-5.0.37-fPIC/modules/Makerules	2004-08-14 22:59:30.496577568 +0200
+@@ -164,7 +164,7 @@
+ $(TARGET).o: .compiled-$(TARGET).o FRC
+ 	@echo >/dev/null
+ .compiled-$(TARGET).o: $(TARGET).c $(DEPS) $(INCLUDES2)
+-	cd $(TOPDIR) && $(CC) $(CFLAGS) -I. -c modules/$(DIRNAME)/$< -o modules/$(DIRNAME)/$(TARGET).o
++	cd $(TOPDIR) && $(CC) $(CFLAGS) -fPIC -I. -c modules/$(DIRNAME)/$< -o modules/$(DIRNAME)/$(TARGET).o
+ 	@rm -f $@
+ 	@ln -s $(TARGET).o $@
+ 
+--- ircservices-5.0.37/modules/protocol/Makefile	2004-08-14 23:05:00.399424712 +0200
++++ ircservices-5.0.37-fPIC/modules/protocol/Makefile	2004-08-14 23:05:09.366061576 +0200
+@@ -72,7 +72,7 @@
+ ###########################################################################
+ 
+ sjoin-bahamut.o: sjoin.c $(DEPS) $(INCLUDES-sjoin.o)
+-	$(CC) $(CFLAGS) -DBAHAMUT_HACK -I$(TOPDIR) -c sjoin.c -o $@
++	$(CC) $(CFLAGS) -fPIC -DBAHAMUT_HACK -I$(TOPDIR) -c sjoin.c -o $@
+ 
+ sjoin-unreal.o: sjoin.c $(DEPS) $(INCLUDES-sjoin.o)
+-	$(CC) $(CFLAGS) -DUNREAL_HACK -I$(TOPDIR) -c sjoin.c -o $@
++	$(CC) $(CFLAGS) -fPIC -DUNREAL_HACK -I$(TOPDIR) -c sjoin.c -o $@

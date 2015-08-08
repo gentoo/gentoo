@@ -1,0 +1,115 @@
+diff -ru exmap-0.10.orig/work/exmap-0.10/jutil/Makefile exmap-0.10/work/exmap-0.10/jutil/Makefile
+--- jutil/Makefile	2006-09-28 18:52:25.000000000 +0200
++++ jutil/Makefile	2010-02-17 17:31:56.000000000 +0100
+@@ -12,21 +12,20 @@
+ OBJ += $(ETOBJ)
+ EXES += egtest
+ 
+-CXX=g++
+-CXXFLAGS=-Wall -Werror -g -I.
+-LD=g++
+-LDFLAGS=-lpcre
++CXX = g++
++CXXFLAGS += -Wall -I.
++LD = ld
+ 
+ build: $(LIBS) $(EXES)
+ 
+ trun: $(TROBJ) $(JLIB)
+-	$(LD) $(TROBJ) -o trun $(LDFLAGS) -ljutil -L.
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(TROBJ) -o trun -ljutil -lpcre -L.
+ 
+ $(JLIB): $(JOBJ)
+ 	ar rs $(JLIB) $(JOBJ)
+ 
+ egtest: $(ETOBJ)
+-	$(LD) $(ETOBJ) -o egtest $(LDFLAGS)
++	$(CXX) $(CXXFLAGS) $(ETOBJ) -o egtest $(LDFLAGS)
+ 
+ clean:
+ 	rm -f $(OBJ) $(EXES) $(JLIB) *~
+diff -ru exmap-0.10.orig/work/exmap-0.10/kernel/Makefile exmap-0.10/work/exmap-0.10/kernel/Makefile
+--- kernel/Makefile	2006-09-28 18:52:25.000000000 +0200
++++ kernel/Makefile	2010-02-17 17:30:06.000000000 +0100
+@@ -7,7 +7,7 @@
+ build: kernel_modules
+ 
+ kernel_modules:
+-	make -C /lib/modules/$(shell uname -r)/build M=$(CURDIR) modules
++	$(MAKE) -C ${KERNEL_DIR} M=$(CURDIR) modules
+ 
+ clean:
+-	make -C /lib/modules/$(shell uname -r)/build M=$(CURDIR) clean
++	$(MAKE) -C ${KERNEL_DIR} M=$(CURDIR) clean
+Only in exmap-0.10/work/exmap-0.10/kernel/.tmp_versions: exmap.mod
+diff -ru exmap-0.10.orig/work/exmap-0.10/src/Makefile exmap-0.10/work/exmap-0.10/src/Makefile
+--- src/Makefile	2006-09-28 18:52:25.000000000 +0200
++++ src/Makefile	2010-02-17 17:33:38.000000000 +0100
+@@ -1,5 +1,5 @@
+ CXX=g++
+-LD=g++
++LD=ld
+ JUTILDIR=../jutil
+ 
+ #CXXFLAGS += -pg
+@@ -11,11 +11,12 @@
+ 
+ EXMAP_OBJ=Exmap.o Range.o Elf.o
+ 
+-CXXFLAGS += -g -Wall -Werror -I$(JUTILDIR)
+-LDFLAGS += -lpcre -ljutil -L$(JUTILDIR)
++CXXFLAGS += -Wall -I$(JUTILDIR)
++LDFLAGS += -L$(JUTILDIR)
++LIBS += -lpcre -ljutil
+ 
+ GTKCXXFLAGS = `pkg-config --cflags gtkmm-2.4`
+-GTKLDFLAGS = `pkg-config --libs gtkmm-2.4`
++GTKLIBS = `pkg-config --libs gtkmm-2.4`
+ 
+ # ------------------------------------------------------------
+ 
+@@ -76,34 +77,34 @@
+ 	$(JUTILDIR)/trun $(TESTS)
+ 
+ gexmap: $(GEM_OBJ)
+-	$(LD) -o gexmap $(GEM_OBJ) $(LDFLAGS) $(GTKLDFLAGS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o gexmap $(GEM_OBJ) $(LIBS) $(GTKLIBS)
+ 
+ gexmap.o: gexmap.cpp
+-	$(CC) $(CXXFLAGS) $(GTKCXXFLAGS) -c $<
++	$(CXX) $(CXXFLAGS) $(GTKCXXFLAGS) -c $<
+ 
+ exmtool: $(CL_OBJ)
+-	$(LD) -o exmtool $(CL_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o exmtool $(CL_OBJ) $(LIBS)
+ 
+ elftool: $(ET_OBJ)
+-	$(LD) -o elftool $(ET_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o elftool $(ET_OBJ) $(LIBS)
+ 
+ showproc: $(SP_OBJ)
+-	$(LD) -o showproc $(SP_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o showproc $(SP_OBJ) $(LIBS)
+ 
+ t_range: $(TR_OBJ)
+-	$(LD) -o t_range $(TR_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o t_range $(TR_OBJ) $(LIBS)
+ 
+ t_elf: $(TE_OBJ)
+-	$(LD) -o t_elf $(TE_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o t_elf $(TE_OBJ) $(LIBS)
+ 
+ t_pcre: $(TP_OBJ)
+-	$(LD) -o t_pcre $(TP_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o t_pcre $(TP_OBJ) $(LIBS)
+ 
+ t_exmap: $(TX_OBJ)
+-	$(LD) -o t_exmap $(TX_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o t_exmap $(TX_OBJ) $(LIBS)
+ 
+ t_artsd: $(TA_OBJ)
+-	$(LD) -o t_artsd $(TA_OBJ) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o t_artsd $(TA_OBJ) $(LIBS) 
+ 
+ clean: cleantags cleandoc
+ 	rm -f $(OBJS) $(EXES) $(SHLIBS) $(EXTRA_DEL_FILES)

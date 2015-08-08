@@ -1,0 +1,16 @@
+This is already typedef'ed like that in gstffmpeg.h, included from this file.
+https://bugs.gentoo.org/show_bug.cgi?id=460208
+
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegpipe.h
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegpipe.h
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegpipe.h
+@@ -48,8 +48,6 @@ G_BEGIN_DECLS
+   g_cond_signal (m->cond);                                              \
+ } G_STMT_END
+ 
+-typedef struct _GstFFMpegPipe GstFFMpegPipe;
+-
+ struct _GstFFMpegPipe
+ {
+   /* lock for syncing */

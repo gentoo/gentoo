@@ -1,0 +1,10 @@
+--- gnac-0.2.4.1/po/POTFILES.in
++++ gnac-0.2.4.1/po/POTFILES.in
+@@ -32,6 +32,7 @@
+ [type: gettext/xml]data/profiles/vorbis.xml.in
+ [type: gettext/xml]data/profiles/wav.xml.in
+ [type: gettext/xml]data/profiles/wavpack.xml.in
++intl/plural.c
+ libgnac/libgnac-converter.c
+ libgnac/libgnac-error.c
+ libgnac/libgnac-gst.c

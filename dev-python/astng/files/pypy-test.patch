@@ -1,0 +1,36 @@
+diff -ur logilab-astng-0.24.3.orig/test/unittest_builder.py logilab-astng-0.24.3/test/unittest_builder.py
+--- test/unittest_builder.py	2013-04-17 17:38:31.000000000 +0800
++++ test/unittest_builder.py	2013-06-19 02:13:51.425269363 +0800
+@@ -62,8 +62,12 @@
+         self.assertEqual(name.tolineno, 4)
+         strarg = callfunc.args[0]
+         self.assertIsInstance(strarg, nodes.Const)
+-        self.assertEqual(strarg.fromlineno, 5) # no way for this one (is 4 actually)
+-        self.assertEqual(strarg.tolineno, 5)
++        if hasattr(sys, 'pypy_version_info'):
++            self.assertEqual(strarg.fromlineno, 4) # no way for this one (is 4 actually)
++            self.assertEqual(strarg.tolineno, 4)
++        else:
++            self.assertEqual(strarg.fromlineno, 5) # no way for this one (is 4 actually)
++            self.assertEqual(strarg.tolineno, 5)
+         namearg = callfunc.args[1]
+         self.assertIsInstance(namearg, nodes.Name)
+         self.assertEqual(namearg.fromlineno, 5)
+diff -ur logilab-astng-0.24.3.orig/test/unittest_inference.py logilab-astng-0.24.3/test/unittest_inference.py
+--- test/unittest_inference.py	2013-04-17 17:38:31.000000000 +0800
++++ test/unittest_inference.py	2013-06-19 02:52:41.618270007 +0800
+@@ -710,8 +710,12 @@
+         node = get_name_node(astng, 'open', -1)
+         infered = list(node.infer())
+         self.assertEqual(len(infered), 1)
+-        self.assertIsInstance(infered[0], nodes.Function)
+-        self.assertEqual(infered[0].name, 'open')
++        if hasattr(sys, 'pypy_version_info'):
++            self.assertIsInstance(infered[0], nodes.Class)
++            self.assertEqual(infered[0].name, 'file')
++        else:
++            self.assertIsInstance(infered[0], nodes.Function)
++            self.assertEqual(infered[0].name, 'open') 
+ 
+     def test_callfunc_context_func(self):
+         code = '''

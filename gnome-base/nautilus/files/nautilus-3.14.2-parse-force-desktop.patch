@@ -1,0 +1,38 @@
+From 845e8dbe02a3609b3d7df41dd0df38f8bbad3682 Mon Sep 17 00:00:00 2001
+From: Carlos Soriano <carlos.sorian89@gmail.com>
+Date: Fri, 5 Dec 2014 17:57:19 +0100
+Subject: nautilus-application: Parse force-desktop before exiting
+
+In commit ae4d4960 we introduced a regression that a new window was
+openned if both --no-default-window and --force-desktop options were
+used.
+
+To avoid that, activate those options before actually skipping the
+activate of the application if --no-default-window option is provided.
+
+The application nornally would exit if --no-default-window is provided
+and the show-desktop-window is not activated, but, we rely on a the
+detail that activating the open-desktop action when --force-desktop is
+provided as a option, creates a new window, which makes the application
+keep alive.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=741166
+
+diff --git a/src/nautilus-application.c b/src/nautilus-application.c
+index f26c8c7..c336a39 100644
+--- a/src/nautilus-application.c
++++ b/src/nautilus-application.c
+@@ -930,7 +930,9 @@ nautilus_application_handle_local_options (GApplication *application,
+ 		self->priv->desktop_override = TRUE;
+ 		g_action_group_activate_action (G_ACTION_GROUP (application),
+ 						"close-desktop", NULL);
+-	}  else if (g_variant_dict_contains (options, "no-default-window")) {
++	}
++
++	if (g_variant_dict_contains (options, "no-default-window")) {
+ 		/* We want to avoid trigering the activate signal; so no window is created.
+ 		 * GApplication doesn't call activate if we return a value >= 0.
+ 		 * Use EXIT_SUCCESS since is >= 0. */
+-- 
+cgit v0.10.1
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>openstack</herd>
+  <herd>python</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+OpenStack logging configuration library provides standardized configuration for all openstack projects.
+It also provides custom formatters, handlers and support for context specific logging (like resource id’s etc).
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">oslo.log</remote-id>
+    <remote-id type="github">openstack/oslo.log</remote-id>
+  </upstream>
+</pkgmetadata>

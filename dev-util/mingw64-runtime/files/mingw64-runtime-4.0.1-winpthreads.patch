@@ -1,0 +1,86 @@
+From 0adec5d0e1c65fc4ce4f84f3d4bb6738e923e1de Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Mon, 4 May 2015 20:39:52 +0300
+Subject: [PATCH 1/2] build: autoconf: support winpthreads library
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ Makefile.am  |  6 +++++-
+ configure.ac | 15 +++++++++++++--
+ 2 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 26a7606..308b6fd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -14,6 +14,10 @@ if LIBRARIES_PSEH
+   MAYBE_LIBRARIES_PSEH = mingw-w64-libraries/pseh
+ endif
+ 
++if LIBRARIES_WINPTHREADS
++  MAYBE_LIBRARIES_WINPTHREADS = mingw-w64-libraries/winpthreads
++endif
++
+ if TOOLS_GENDEF
+   MAYBE_TOOLS_GENDEF = mingw-w64-tools/gendef
+ endif
+@@ -22,7 +26,7 @@ if TOOLS_GENIDL
+   MAYBE_TOOLS_GENIDL = mingw-w64-tools/genidl
+ endif
+ 
+-SUBDIRS = $(MAYBE_HEADER) $(MAYBE_CRT) $(MAYBE_LIBRARIES_MANGLE) $(MAYBE_LIBRARIES_PSEH) $(MAYBE_TOOLS_GENDEF) $(MAYBE_TOOLS_GENIDL)
++SUBDIRS = $(MAYBE_HEADER) $(MAYBE_CRT) $(MAYBE_LIBRARIES_MANGLE) $(MAYBE_LIBRARIES_PSEH) $(MAYBE_LIBRARIES_WINPTHREADS) $(MAYBE_TOOLS_GENDEF) $(MAYBE_TOOLS_GENIDL)
+ 
+ DISTCHECK_CONFIGURE_FLAGS = --with-headers --with-crt --with-libraries=all --with-tools=all
+ 
+diff --git a/configure.ac b/configure.ac
+index 4bb3926..468d1b1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -53,30 +53,41 @@ AC_MSG_RESULT([$with_crt])
+ AC_MSG_CHECKING([whether to build the optional libraries])
+ AC_ARG_WITH([libraries],
+   [AS_HELP_STRING([--with-libraries=ARG],
+-    [Build the extra mingw-w64 libs, where ARG is one of libmangle, pseh, or all])],
++    [Build the extra mingw-w64 libs, where ARG is one of libmangle, pseh, winpthreads, or all])],
+   [],
+   [with_libraries=no])
+ AS_CASE([$with_libraries],
+   [yes|all],[
+-    with_libraries="libmangle,pseh"
++    with_libraries="libmangle,pseh,winpthreads"
++    with_libraries_winpthreads=yes
+     with_libraries_mangle=yes
+     with_libraries_pseh=yes],
+   [libmangle],[
+     with_libraries="libmangle"
++    with_libraries_winpthreads=no
+     with_libraries_mangle=yes
+     with_libraries_pseh=no],
+   [pseh],[
+     with_libraries="pseh"
++    with_libraries_winpthreads=no
+     with_libraries_mangle=no
+     with_libraries_pseh=yes],
++  [winpthreads],[
++    with_libraries="winpthreads"
++    with_libraries_winpthreads=yes
++    with_libraries_mangle=no
++    with_libraries_pseh=no],
+   [no],[
++    with_libraries_winpthreads=no
+     with_libraries_mangle=no
+     with_libraries_pseh=no],
+   [MW64_OPTION_ERROR([with-libraries])])
+ AM_CONDITIONAL([LIBRARIES_MANGLE],[test "x$with_libraries_mangle" = xyes])
+ AM_CONDITIONAL([LIBRARIES_PSEH],[test "x$with_libraries_pseh" = xyes])
++AM_CONDITIONAL([LIBRARIES_WINPTHREADS],[test "x$with_libraries_winpthreads" = xyes])
+ AM_COND_IF([LIBRARIES_MANGLE],[AC_CONFIG_SUBDIRS([mingw-w64-libraries/libmangle])])
+ AM_COND_IF([LIBRARIES_PSEH],[AC_CONFIG_SUBDIRS([mingw-w64-libraries/pseh])])
++AM_COND_IF([LIBRARIES_WINPTHREADS],[AC_CONFIG_SUBDIRS([mingw-w64-libraries/winpthreads])])
+ AC_MSG_RESULT([$with_libraries])
+ 
+ AC_MSG_CHECKING([whether to build the optional tools])
+-- 
+2.3.6
+

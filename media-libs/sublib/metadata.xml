@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>video</herd>
+	<longdescription lang="en">
+SubLib is a library that eases the development of subtitling applications. It
+supports the most common text-based subtitle formats and allows for subtitle
+editing, conversion and synchronization.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">sublib</remote-id>
+	</upstream>
+</pkgmetadata>

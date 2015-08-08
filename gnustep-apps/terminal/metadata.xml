@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnustep</herd>
+<herd>proxy-maintainers</herd>
+<longdescription>
+Terminal.app - copyright (c) 2002 Alexander Malmberg alexander@malmberg.org
+
+a terminal emulator for GNUstep
+</longdescription>
+</pkgmetadata>

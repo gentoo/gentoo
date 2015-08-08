@@ -1,0 +1,44 @@
+From b605a5fb47ab73412071b6571afcaef4b03c389d Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 30 Mar 2013 16:35:42 -0400
+Subject: [PATCH] punt export_t
+
+Nothing is actually following the convention laid out by this enum,
+so punt it.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libgps.h | 17 -----------------
+ 1 file changed, 17 deletions(-)
+
+diff --git a/libgps.h b/libgps.h
+index c16b6aa..d30353f 100644
+--- a/libgps.h
++++ b/libgps.h
+@@ -6,23 +6,6 @@
+ #ifndef _GPSD_LIBGPS_H_
+ #define _GPSD_LIBGPS_H_
+ 
+-/*
+- * first member of each kind of privdata structure must be named
+- * 'export_type' and must be of this type.  It's how we do runtime
+- * dispatch to the different transports.
+- */
+-enum export_t {
+-#ifdef SOCKET_EXPORT_ENABLE
+-    sockets,
+-#endif /* SOCKET_EXPORT_ENABLE */
+-#ifdef SHM_EXPORT_ENABLE
+-    shm,
+-#endif /* SHM_EXPORT_ENABLE */
+-#ifdef DBUS_EXPORT_ENABLE
+-    dbus,
+-#endif /* DBUS_EXPORT_ENABLE */
+-};
+-
+ /* values to poke in the gps_fd member if we get it via something special */
+ #define SHM_PSEUDO_FD	-1
+ #define DBUS_PSEUDO_FD	-2
+-- 
+1.8.1.2
+

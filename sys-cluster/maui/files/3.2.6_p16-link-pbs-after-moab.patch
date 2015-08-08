@@ -1,0 +1,25 @@
+--- maui-3.2.6p16.orig/src/server/Makefile	2006-09-25 16:08:33.000000000 -0700
++++ maui-3.2.6p16/src/server/Makefile	2006-09-25 21:12:47.000000000 -0700
+@@ -88,11 +88,11 @@
+ 	$(CC) $(IP) $(DEFS) $(CFLAGS) $(SOURCE) -c $<
+ 
+ $(SERVER): $(SOBJECTS)
+-	$(LD) $(SOBJECTS) -o $(BIN)/$@ $(LP) $(LIBS) $(OSLDFLAGS) 
++	$(LD) $(SOBJECTS) -o $(BIN)/$@ $(LIBS) $(LP) $(OSLDFLAGS) 
+ 	chmod 711 $(BIN)/$@ || true
+ 
+ mclient: mclient.o
+-	$(LD) mclient.o -o $(BIN)/$@ $(OSLDFLAGS) $(LP) $(LIBS)     
++	$(LD) mclient.o -o $(BIN)/$@ $(OSLDFLAGS) $(LIBS) $(LP)    
+ 	chmod 751 $(BIN)/$@
+ 	for i in $(MCLIENTS); do \
+ 	  ln -f $(BIN)/$@ $(BIN)/$$i; \
+@@ -100,7 +100,7 @@
+ 	done
+ 
+ mprof:  $(POBJECTS)
+-	$(LD) $(POBJECTS) -o $(BIN)/$@ $(OSLDFLAGS) $(LP) $(LIBS)     
++	$(LD) $(POBJECTS) -o $(BIN)/$@ $(OSLDFLAGS) $(LIBS) $(LP)    
+ 	chmod 751 $(BIN)/$@
+ 
+ clean:

@@ -1,0 +1,19 @@
+--- configure.ac.orig	2010-01-25 01:34:58.296824267 +0200
++++ configure.ac	2010-01-25 01:36:16.101825667 +0200
+@@ -433,13 +433,10 @@
+ 
+ if test "$enable_rpath" != "yes" ; then
+    AC_MSG_NOTICE([Fixing libtool to remove automatic rpath to $libdir . . .])
+-   cp -p libtool libtool.orig
+-   cp -p libtool libtool.tmp
++   cp -p ./libtool libtool.orig
++   cp -p ./libtool libtool.tmp
+    sed -e '/^runpath_var/ d' \
+-       -e '/^hardcode_libdir_flag_spec/ d' \
+-       libtool > libtool.tmp
+-   cp -p libtool.tmp libtool
+-   rm -f libtool.tmp
++       -e '/^hardcode_libdir_flag_spec/ d' -i ./libtool
+ fi
+ 
+ AC_CONFIG_FILES([Makefile])

@@ -1,0 +1,10 @@
+--- geekcode.h.orig	2003-06-30 16:47:40.000000000 +0200
++++ geekcode.h	2010-12-30 19:14:51.000000000 +0100
+@@ -22,6 +22,7 @@
+ #ifndef __INCLUDED_GEEKCODE_H__
+ #define __INCLUDED_GEEKCODE_H__
+ 
++#include <stdlib.h> /* exit() */
+ 
+ #define VERSION "1.7.3" /* Added in v1.2 */
+ 

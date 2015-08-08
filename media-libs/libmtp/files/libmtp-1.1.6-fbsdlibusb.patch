@@ -1,0 +1,19 @@
+FreeBSD installs its libusb-1.0 implementation in /usr/include. libmtp uses
+pkg-config to discover it which adds the correct -I flag, so just #include
+libusb.h to make it work with every implementation.
+
+https://sourceforge.net/p/libmtp/patches/52/
+
+Index: libmtp-1.1.6/src/libusb-glue.h
+===================================================================
+--- libmtp-1.1.6.orig/src/libusb-glue.h
++++ libmtp-1.1.6/src/libusb-glue.h
+@@ -32,7 +32,7 @@
+ 
+ #include "ptp.h"
+ #ifdef HAVE_LIBUSB1
+-#include <libusb-1.0/libusb.h>
++#include <libusb.h>
+ #endif
+ #ifdef HAVE_LIBUSB0
+ #include <usb.h>

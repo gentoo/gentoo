@@ -1,0 +1,12 @@
+diff -uNr libss7-1.0.2.ORIG/Makefile libss7-1.0.2/Makefile
+--- libss7-1.0.2.ORIG/Makefile	2012-08-23 10:22:27.855524115 +0100
++++ libss7-1.0.2/Makefile	2012-08-23 10:22:46.156542689 +0100
+@@ -11,7 +11,7 @@
+ DYNAMIC_OBJS=mtp2.o ss7_sched.o ss7.o mtp3.o isup.o version.o
+ STATIC_LIBRARY=libss7.a
+ DYNAMIC_LIBRARY=libss7.so.1.0
+-CFLAGS=-Wall -Werror -Wstrict-prototypes -Wmissing-prototypes -g -fPIC
++CFLAGS=-Wall -Wstrict-prototypes -Wmissing-prototypes -g -fPIC
+ LDCONFIG_FLAGS=-n
+ SOFLAGS=-Wl,-hlibss7.so.1
+ LDCONFIG=/sbin/ldconfig

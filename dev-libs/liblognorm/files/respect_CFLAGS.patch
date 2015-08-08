@@ -1,0 +1,11 @@
+--- configure.ac.new	2014-03-20 10:56:14.777901140 +0200
++++ configure.ac	2014-03-20 10:56:50.154143106 +0200
+@@ -12,7 +12,7 @@
+ AC_PROG_CC
+ AM_PROG_CC_C_O
+ if test "$GCC" = "yes"
+-then CFLAGS="$CFLAGS -W -Wall -Wformat-security -Wshadow -Wcast-align -Wpointer-arith -Wmissing-format-attribute -g"
++then CFLAGS="$CFLAGS -W -Wall -Wformat-security -Wshadow -Wcast-align -Wpointer-arith -Wmissing-format-attribute"
+ fi
+ 
+ AC_PROG_LIBTOOL

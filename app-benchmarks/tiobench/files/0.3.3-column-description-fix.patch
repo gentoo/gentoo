@@ -1,0 +1,21 @@
+--- tiobench.pl	2005-02-23 00:21:33.000000000 +0100
++++ tiobench.pl	2005-03-15 18:11:19.000000000 +0100
+@@ -168,6 +168,8 @@
+                   $stat_data{$identifier}{$thread}{$size}{$block}{$field}{'stime'} ) / 
+                   $stat_data{$identifier}{$thread}{$size}{$block}{$field}{'time'};
+                $stat_data{$identifier}{$thread}{$size}{$block}{$field}{'cpueff'} =
++                  ($stat_data{$identifier}{$thread}{$size}{$block}{$field}{'cpu'} == 0) ?
++                  '0' :
+                   ($stat_data{$identifier}{$thread}{$size}{$block}{$field}{'rate'} /
+                   ($stat_data{$identifier}{$thread}{$size}{$block}{$field}{'cpu'}/100));
+             }
+@@ -196,6 +198,9 @@
+ $report{'SEQ_WRITES'}   = "Sequential Writes";
+ $report{'RAND_WRITES'}  = "Random Writes";
+ 
++# The top is the same for all 4 reports
++$^ = 'SEQ_READS_TOP';
++
+ foreach my $title ('SEQ_READS', 'RAND_READS', 'SEQ_WRITES', 'RAND_WRITES') {
+    $-=0; $~="$title"; $^L=''; # reporting variables
+    print "\n$report{$title}\n";

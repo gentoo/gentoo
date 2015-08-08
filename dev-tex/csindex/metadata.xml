@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>tex</herd>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>malenko@email.cz</email>
+  <name>Jaromir Malenko</name>
+  <description>Jaromir is helping us with Czeck and Slovak support in
+  Gentoo. He is also a maintainer of cstetex. See bug #31657</description>
+</maintainer>
+</pkgmetadata>

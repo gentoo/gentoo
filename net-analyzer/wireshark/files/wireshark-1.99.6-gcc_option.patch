@@ -1,0 +1,40 @@
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -1735,15 +1735,15 @@
+     CXXFLAGS_saved="$CXXFLAGS"
+     if expr "x$GCC_OPTION" : "x-W.*" >/dev/null
+     then
+-      CXXFLAGS="$CXXFLAGS $ac_wireshark_unknown_warning_option_error $ac_wireshark_non_cxx_warning_option_error $GCC_OPTION"
++      CXXFLAGS="$GCC_OPTION $CXXFLAGS $ac_wireshark_unknown_warning_option_error $ac_wireshark_non_cxx_warning_option_error"
+     elif expr "x$GCC_OPTION" : "x-f.*" >/dev/null
+     then
+-      CXXFLAGS="$CXXFLAGS -Werror $GCC_OPTION"
++      CXXFLAGS="$GCC_OPTION $CXXFLAGS -Werror"
+     elif expr "x$GCC_OPTION" : "x-m.*" >/dev/null
+     then
+-      CXXFLAGS="$CXXFLAGS -Werror $GCC_OPTION"
++      CXXFLAGS="$GCC_OPTION $CXXFLAGS -Werror"
+     else
+-      CXXFLAGS="$CXXFLAGS $GCC_OPTION"
++      CXXFLAGS="$GCC_OPTION $CXXFLAGS"
+     fi
+     AC_LANG_PUSH([C++])
+     AC_COMPILE_IFELSE(
+@@ -1773,7 +1773,7 @@
+               # added them, by setting CXXFLAGS to the saved value plus
+               # just the new option.
+               #
+-              CXXFLAGS="$CXXFLAGS_saved $GCC_OPTION"
++              CXXFLAGS="$GCC_OPTION $CXXFLAGS_saved"
+             ],
+             [
+               AC_MSG_RESULT(yes)
+@@ -1785,7 +1785,7 @@
+           # added them, by setting CXXFLAGS to the saved value plus
+           # just the new option.
+           #
+-          CXXFLAGS="$CXXFLAGS_saved $GCC_OPTION"
++          CXXFLAGS="$GCC_OPTION $CXXFLAGS_saved"
+         fi
+       ],
+       [

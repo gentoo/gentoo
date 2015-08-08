@@ -1,0 +1,26 @@
+From 76cb98e439c65b5ec8d32d809100a67c653e5635 Mon Sep 17 00:00:00 2001
+From: Paul Varner <fuzzyray@gentoo.org>
+Date: Mon, 21 Jan 2013 15:37:19 -0600
+Subject: [PATCH] Fix issue where genlop <pkg name> no longer displays merge
+ information (Bug 453382).
+
+---
+ genlop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/genlop b/genlop
+index 52af5ed..d5020eb 100755
+--- a/genlop
++++ b/genlop
+@@ -1127,7 +1127,7 @@ foreach my $ebuild_arg (@targets)
+ 						}
+ 					}
+ 				}
+-				if ($list_found or $ebuild_found or $time_found)
++				if ($list_found or $ebuild_found or $time_found or !$info_found)
+ 				{
+ 					my $eb = $2;
+ 					my $extra = $3 || "";
+-- 
+1.8.1.1
+

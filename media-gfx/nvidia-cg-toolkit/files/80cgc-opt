@@ -1,0 +1,6 @@
+# Configures the CG Runtime environment for Bourne shell and compatible shells
+CG_COMPILER_EXE=/opt/bin/cgc
+
+# Make sure the helper files are found
+LDPATH="/opt/nvidia-cg-toolkit/lib"
+MANPATH="/opt/nvidia-cg-toolkit/man"

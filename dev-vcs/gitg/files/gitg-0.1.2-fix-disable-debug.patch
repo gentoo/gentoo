@@ -1,0 +1,58 @@
+From eeec06ef06073b28f011a2be5417f4398d187c2e Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 27 Mar 2011 22:42:29 +0200
+Subject: [PATCH] Fix --disable-debug
+
+---
+ gitg-debug.c |    7 +++++++
+ gitg-debug.h |    4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/libgitg/gitg-debug.c b/libgitg/gitg-debug.c
+index 6530e7a..781101e 100644
+--- a/libgitg/gitg-debug.c
++++ b/libgitg/gitg-debug.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "gitg-debug.h"
++#if ENABLE_DEBUG
+ #include <glib.h>
+ #include <stdio.h>
+ 
+@@ -72,3 +73,9 @@ gitg_debug_message (guint level,
+ 		g_free (msg);
+ 	}
+ }
++
++#else
++
++void gitg_debug_init (void) { }
++
++#endif /* ENABLE_DEBUG */
+diff --git a/libgitg/gitg-debug.h b/libgitg/gitg-debug.h
+index 55d4428..ab81b4e 100644
+--- a/libgitg/gitg-debug.h
++++ b/libgitg/gitg-debug.h
+@@ -35,8 +35,9 @@ enum
+ 	GITG_DEBUG_CONFIG = 1 << 3
+ };
+ 
+-#if ENABLE_DEBUG
+ void gitg_debug_init (void);
++
++#if ENABLE_DEBUG
+ gboolean gitg_debug_enabled (guint debug);
+ 
+ void gitg_debug_message (guint level,
+@@ -49,7 +50,6 @@ void gitg_debug_message (guint level,
+ #define gitg_debug(level,args...) gitg_debug_message (level, __FILE__, __LINE__, G_STRFUNC, args)
+ #else
+ 
+-#define gitg_debug_init ;
+ #define gitg_debug_enabled(x) FALSE
+ #define gitg_debug(level,args...) ;
+ 
+-- 
+1.7.4.1
+

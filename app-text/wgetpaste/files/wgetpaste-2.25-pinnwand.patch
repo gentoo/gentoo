@@ -1,0 +1,87 @@
+--- /var/tmp/portage/app-text/wgetpaste-2.25-r1/work/wgetpaste-2.25/wgetpaste	2014-05-23 20:51:44.000000000 +0400
++++ /usr/bin/wgetpaste	2014-09-14 16:46:21.345261294 +0400
+@@ -16,8 +16,10 @@
+ ### services
+ SERVICES="bpaste ca codepad dpaste gists poundpython"
+ # bpaste
+-ENGINE_bpaste=lodgeit
+-URL_bpaste="http://bpaste.net/"
++ENGINE_bpaste=pinnwand
++URL_bpaste="https://bpaste.net/"
++DEFAULT_EXPIRATION_bpaste="1week"
++DEFAULT_LANGUAGE_bpaste="text"
+ # ca
+ ENGINE_ca=ca
+ URL_ca="http://pastebin.ca/"
+@@ -143,6 +145,62 @@
+ vim xml xml+cheetah xml+django xml+evoque xml+mako xml+myghty xml+php xml+erb xml+smarty xslt yaml"
+ POST_lodgeit="submit=Paste! % % language % % code"
+ REGEX_RAW_lodgeit='s|^\(http://[^/]*/\)show\(/[[:alnum:]]*/\)$|\1raw\2|'
++# pinnwand
++LANGUAGES_pinnwand="ABAP ActionScript%3 ActionScript Ada ANTLR ANTLR%With%ActionScript%Target \
++ANTLR%With%CPP%Target ANTLR%With%C#%Target ANTLR%With%Java%Target ANTLR%With%ObjectiveC%Target \
++ANTLR%With%Perl%Target ANTLR%With%Python%Target ANTLR%With%Ruby%Target ApacheConf AppleScript \
++AspectJ aspx-cs aspx-vb Asymptote autohotkey AutoIt Awk Base%Makefile Bash Bash%Session Batchfile \
++BBCode Befunge BlitzMax Boo Brainfuck Bro BUGS ca65 CBM%BASIC%V2 C C++ C# Ceylon CFEngine3 \
++cfstatement Cheetah Clojure CMake c-objdump COBOL COBOLFree CoffeeScript Coldfusion%HTML Common%Lisp \
++Coq cpp-objdump Croc CSS CSS+Django/Jinja CSS+Genshi%Text CSS+Lasso CSS+Mako CSS+Myghty CSS+PHP \
++CSS+Ruby CSS+Smarty CUDA Cython Darcs%Patch Dart D Debian%Control%file Debian%Sourcelist Delphi dg \
++Diff Django/Jinja d-objdump DTD Duel Dylan DylanLID Dylan%session eC ECL Elixir Elixir%iex%session \
++Embedded%Ragel ERB Erlang Erlang%erl%session Evoque Factor Fancy Fantom Felix Fortran FoxPro FSharp \
++GAS Genshi Genshi%Text Gettext%Catalog Gherkin GLSL Gnuplot Go GoodData-CL Gosu Gosu%Template Groff \
++Groovy Haml Haskell haXe HTML+Cheetah HTML+Django/Jinja HTML+Evoque HTML+Genshi HTML HTML+Lasso \
++HTML+Mako HTML+Myghty HTML+PHP HTML+Smarty HTML+Velocity HTTP Hxml Hybris IDL INI Io Ioke IRC%logs \
++Jade JAGS Java JavaScript+Cheetah JavaScript+Django/Jinja JavaScript+Genshi%Text JavaScript \
++JavaScript+Lasso JavaScript+Mako JavaScript+Myghty JavaScript+PHP JavaScript+Ruby JavaScript+Smarty \
++Java%Server%Page JSON Julia%console Julia Kconfig Koka Kotlin Lasso Lighttpd%configuration%file \
++Literate%Haskell LiveScript LLVM Logos Logtalk Lua Makefile Mako MAQL Mason Matlab Matlab%session \
++MiniD Modelica Modula-2 MoinMoin/Trac%Wiki%markup Monkey MOOCode MoonScript Mscgen MuPAD MXML Myghty \
++MySQL NASM Nemerle NewLisp Newspeak Nginx%configuration%file Nimrod NSIS NumPy objdump Objective-C++ \
++Objective-C Objective-J OCaml Octave Ooc Opa OpenEdge%ABL Perl PHP PL/pgSQL \
++PostgreSQL%console%(psql) PostgreSQL%SQL%dialect PostScript POVRay PowerShell Prolog Properties \
++Protocol%Buffer Puppet PyPy%Log Python%3.0%Traceback Python%3 Python%console%session Python \
++Python%Traceback QML Racket Ragel%in%C%Host Ragel%in%CPP%Host Ragel%in%D%Host Ragel%in%Java%Host \
++Ragel%in%Objective%C%Host Ragel%in%Ruby%Host Ragel Raw%token%data RConsole Rd REBOL Redcode reg \
++reStructuredText RHTML RobotFramework RPMSpec Ruby%irb%session Ruby Rust Sass Scala \
++Scalate%Server%Page Scaml Scheme Scilab SCSS Shell%Session Smali Smalltalk Smarty Snobol SourcePawn \
++sqlite3con SQL SquidConf S Standard%ML Stan systemverilog Tcl Tcsh Tea TeX Text%only Text Treetop \
++TypeScript UrbiScript Vala VB.net Velocity verilog VGL vhdl VimL XML+Cheetah XML+Django/Jinja \
++XML+Evoque XML+Lasso XML+Mako XML+Myghty XML+PHP XML+Ruby XML+Smarty XML+Velocity XML XQuery XSLT \
++Xtend YAML"
++LANGUAGE_VALUES_pinnwand="abap as3 as ada antlr antlr-as antlr-cpp antlr-csharp antlr-java \
++antlr-objc antlr-perl antlr-python antlr-ruby apacheconf applescript aspectj aspx-cs aspx-vb asy ahk \
++autoit awk basemake bash console bat bbcode befunge blitzmax boo brainfuck bro bugs ca65 cbmbas c \
++cpp csharp ceylon cfengine3 cfs cheetah clojure cmake c-objdump cobol cobolfree coffee-script cfm \
++common-lisp coq cpp-objdump croc css css+django css+genshitext css+lasso css+mako css+myghty css+php \
++css+erb css+smarty cuda cython dpatch dart d control sourceslist delphi dg diff django d-objdump dtd \
++duel dylan dylan-lid dylan-console ec ecl elixir iex ragel-em erb erlang erl evoque factor fancy fan \
++felix fortran Clipper fsharp gas genshi genshitext pot Cucumber glsl gnuplot go gooddata-cl gosu gst \
++groff groovy haml haskell hx html+cheetah html+django html+evoque html+genshi html html+lasso \
++html+mako html+myghty html+php html+smarty html+velocity http haxeml hybris idl ini io ioke irc jade \
++jags java js+cheetah js+django js+genshitext js js+lasso js+mako js+myghty js+php js+erb js+smarty \
++jsp json jlcon julia kconfig koka kotlin lasso lighty lhs live-script llvm logos logtalk lua make \
++mako maql mason matlab matlabsession minid modelica modula2 trac-wiki monkey moocode moon mscgen \
++mupad mxml myghty mysql nasm nemerle newlisp newspeak nginx nimrod nsis numpy objdump objective-c++ \
++objective-c objective-j ocaml octave ooc opa openedge perl php plpgsql psql postgresql postscript \
++pov powershell prolog properties protobuf puppet pypylog py3tb python3 pycon python pytb qml racket \
++ragel-c ragel-cpp ragel-d ragel-java ragel-objc ragel-ruby ragel raw rconsole rd rebol redcode \
++registry rst rhtml RobotFramework spec rbcon rb rust sass scala ssp scaml scheme scilab scss \
++shell-session smali smalltalk smarty snobol sp sqlite3 sql squidconf splus sml stan systemverilog \
++tcl tcsh tea tex text text treetop ts urbiscript vala vb.net velocity verilog vgl vhdl vim \
++xml+cheetah xml+django xml+evoque xml+lasso xml+mako xml+myghty xml+php xml+erb xml+smarty \
++xml+velocity xml xquery xslt xtend yaml"
++EXPIRATIONS_pinnwand="1day 1week 1month never"
++POST_pinnwand="submit=Paste! % % lexer expiry % code"
++REGEX_RAW_pinnwand='s|^\(http://[^/]*/\)show\(/[[:alnum:]]*/\)$|\1raw\2|'
+ 
+ ### errors
+ die() {
+@@ -514,7 +572,7 @@
+ 		sed -n -e "${!regex}" <<< "$*"
+ 	else
+ 		[[ needstdout = $1 ]] && return 1
+-		sed -n -e 's|^.*Location: \(http://[^ ]*\).*$|\1|p' <<< "$*"
++		sed -n -e 's|^.*Location: \(https\{0,1\}://[^ ]*\).*$|\1|p' <<< "$*"
+ 	fi
+ }
+ 

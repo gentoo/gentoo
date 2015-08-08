@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This package provides the old time library.
+		
+		For new projects, the newer
+		&lt;http://hackage.haskell.org/package/time time library&gt;
+		is recommended.
+	</longdescription>
+</pkgmetadata>

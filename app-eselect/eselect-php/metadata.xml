@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>php</herd>
+	<longdescription lang="en">PHP eselect module
+	</longdescription>
+	<use>
+		<flag name='fpm'>Enable the FastCGI Process Manager SAPI</flag>
+	</use>
+</pkgmetadata>
+

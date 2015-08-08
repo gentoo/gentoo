@@ -1,0 +1,132 @@
+https://bugs.gentoo.org/show_bug.cgi?id=464168
+
+commit 85ad240e47dcdc1bf20ef6a95e921ac1f766d995
+Author: schwab <schwab@138bc75d-0d04-0410-961f-82ee72b054a4>
+Date:   Sun Oct 28 09:19:54 2012 +0000
+
+    * doc/cppopts.texi: Fix use of @item vs. @itemx inside @table.
+    * doc/extend.texi: Likewise.
+    * doc/generic.texi: Likewise.
+    * doc/invoke.texi: Likewise.
+    * doc/md.texi: Likewise.
+    * doc/sourcebuild.texi: Likewise.
+    
+    
+    git-svn-id: svn+ssh://gcc.gnu.org/svn/gcc/trunk@192887 138bc75d-0d04-0410-961f-82ee72b054a4
+
+diff --git a/gcc/doc/cppopts.texi b/gcc/doc/cppopts.texi
+index 27b1095..a2eb79d 100644
+--- a/gcc/doc/cppopts.texi
++++ b/gcc/doc/cppopts.texi
+@@ -805,7 +805,7 @@ Replacement:      [    ]    @{    @}    #    \    ^    |    ~
+ Enable special code to work around file systems which only permit very
+ short file names, such as MS-DOS@.
+ 
+-@itemx --help
++@item --help
+ @itemx --target-help
+ @opindex help
+ @opindex target-help
+diff --git a/gcc/doc/md.texi b/gcc/doc/md.texi
+index dfbdc4c..bca0d8f 100644
+--- a/gcc/doc/md.texi
++++ b/gcc/doc/md.texi
+@@ -4483,8 +4483,8 @@ means of constraints requiring operands 1 and 0 to be the same location.
+ @cindex @code{ior@var{m}3} instruction pattern
+ @cindex @code{xor@var{m}3} instruction pattern
+ @item @samp{ssadd@var{m}3}, @samp{usadd@var{m}3}
+-@item @samp{sub@var{m}3}, @samp{sssub@var{m}3}, @samp{ussub@var{m}3}
+-@item @samp{mul@var{m}3}, @samp{ssmul@var{m}3}, @samp{usmul@var{m}3}
++@itemx @samp{sub@var{m}3}, @samp{sssub@var{m}3}, @samp{ussub@var{m}3}
++@itemx @samp{mul@var{m}3}, @samp{ssmul@var{m}3}, @samp{usmul@var{m}3}
+ @itemx @samp{div@var{m}3}, @samp{ssdiv@var{m}3}
+ @itemx @samp{udiv@var{m}3}, @samp{usdiv@var{m}3}
+ @itemx @samp{mod@var{m}3}, @samp{umod@var{m}3}
+diff --git a/gcc/doc/sourcebuild.texi b/gcc/doc/sourcebuild.texi
+index 89e7712..ec8263f 100644
+--- a/gcc/doc/sourcebuild.texi
++++ b/gcc/doc/sourcebuild.texi
+@@ -691,7 +691,7 @@ standard rule in @file{gcc/Makefile.in} to the variable
+ @code{lang_checks}.
+ 
+ @table @code
+-@itemx all.cross
++@item all.cross
+ @itemx start.encap
+ @itemx rest.encap
+ FIXME: exactly what goes in each of these targets?
+--- a/gcc/doc/c-tree.texi
++++ b/gcc/doc/c-tree.texi
+@@ -2338,13 +2338,13 @@
+ not matter.  The type of the operands and that of the result are
+ always of @code{BOOLEAN_TYPE} or @code{INTEGER_TYPE}.
+ 
+-@itemx POINTER_PLUS_EXPR
++@item POINTER_PLUS_EXPR
+ This node represents pointer arithmetic.  The first operand is always
+ a pointer/reference type.  The second operand is always an unsigned
+ integer type compatible with sizetype.  This is the only binary
+ arithmetic operand that can operate on pointer types.
+ 
+-@itemx PLUS_EXPR
++@item PLUS_EXPR
+ @itemx MINUS_EXPR
+ @itemx MULT_EXPR
+ These nodes represent various binary arithmetic operations.
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -4645,11 +4652,11 @@
+ @option{-fdump-rtl-ce3} enable dumping after the three
+ if conversion passes. 
+ 
+-@itemx -fdump-rtl-cprop_hardreg
++@item -fdump-rtl-cprop_hardreg
+ @opindex fdump-rtl-cprop_hardreg
+ Dump after hard register copy propagation.
+ 
+-@itemx -fdump-rtl-csa
++@item -fdump-rtl-csa
+ @opindex fdump-rtl-csa
+ Dump after combining stack adjustments.
+ 
+@@ -4660,11 +4667,11 @@
+ @option{-fdump-rtl-cse1} and @option{-fdump-rtl-cse2} enable dumping after
+ the two common sub-expression elimination passes.
+ 
+-@itemx -fdump-rtl-dce
++@item -fdump-rtl-dce
+ @opindex fdump-rtl-dce
+ Dump after the standalone dead code elimination passes.
+ 
+-@itemx -fdump-rtl-dbr
++@item -fdump-rtl-dbr
+ @opindex fdump-rtl-dbr
+ Dump after delayed branch scheduling.
+ 
+@@ -4709,7 +4716,7 @@
+ @opindex fdump-rtl-initvals
+ Dump after the computation of the initial value sets.
+ 
+-@itemx -fdump-rtl-into_cfglayout
++@item -fdump-rtl-into_cfglayout
+ @opindex fdump-rtl-into_cfglayout
+ Dump after converting to cfglayout mode.
+ 
+@@ -4739,7 +4746,7 @@
+ @opindex fdump-rtl-rnreg
+ Dump after register renumbering.
+ 
+-@itemx -fdump-rtl-outof_cfglayout
++@item -fdump-rtl-outof_cfglayout
+ @opindex fdump-rtl-outof_cfglayout
+ Dump after converting from cfglayout mode.
+ 
+@@ -4751,7 +4758,7 @@
+ @opindex fdump-rtl-postreload
+ Dump after post-reload optimizations.
+ 
+-@itemx -fdump-rtl-pro_and_epilogue
++@item -fdump-rtl-pro_and_epilogue
+ @opindex fdump-rtl-pro_and_epilogue
+ Dump after generating the function pro and epilogues.
+ 

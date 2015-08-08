@@ -1,0 +1,32 @@
+diff --git a/Makefile b/Makefile
+index fbbfd2c..b0e2490 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,14 +40,12 @@ SCRIPT_FILES+=git-flow-release
+ SCRIPT_FILES+=git-flow-support
+ SCRIPT_FILES+=git-flow-version
+ SCRIPT_FILES+=gitflow-common
+-SCRIPT_FILES+=gitflow-shFlags
+ 
+ all:
+ 	@echo "usage: make install"
+ 	@echo "       make uninstall"
+ 
+ install:
+-	@test -f gitflow-shFlags || (echo "Run 'git submodule init && git submodule update' first." ; exit 1 )
+ 	install -d -m 0755 $(prefix)/bin
+ 	install -m 0755 $(EXEC_FILES) $(prefix)/bin
+ 	install -m 0644 $(SCRIPT_FILES) $(prefix)/bin
+diff --git a/git-flow b/git-flow
+index 93e9f0f..7b643d3 100755
+--- a/git-flow
++++ b/git-flow
+@@ -78,7 +78,7 @@ main() {
+ 	export POSIXLY_CORRECT=1
+ 
+ 	# use the shFlags project to parse the command line arguments
+-	. "$GITFLOW_DIR/gitflow-shFlags"
++	. /usr/share/misc/shflags
+ 	FLAGS_PARENT="git flow"
+ 	FLAGS "$@" || exit $?
+ 	eval set -- "${FLAGS_ARGV}"

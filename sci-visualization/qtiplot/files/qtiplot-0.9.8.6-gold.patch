@@ -1,0 +1,15 @@
+ qtiplot/qtiplot.pro |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/qtiplot/qtiplot.pro b/qtiplot/qtiplot.pro
+index 99e0e36..b7cf373 100755
+--- a/qtiplot/qtiplot.pro
++++ b/qtiplot/qtiplot.pro
+@@ -20,6 +20,7 @@ LIBS         += $$MUPARSER_LIBS
+ LIBS         += $$QWT_LIBS
+ LIBS         += $$QWT3D_LIBS
+ LIBS         += $$GSL_LIBS
++LIBS         += -lz
+ 
+ #############################################################################
+ ###################### BASIC PROJECT PROPERTIES #############################

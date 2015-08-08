@@ -1,0 +1,28 @@
+--- opal-3.12.4.old/make/toplevel.mak.in	2013-06-22 21:14:01.536580887 +0200
++++ opal-3.12.4/make/toplevel.mak.in	2013-06-22 21:21:08.342565703 +0200
+@@ -407,9 +407,9 @@
+ ifeq ($(OPAL_JAVA), yes)
+ 
+ JAVA_SRCDIR      = $(OPAL_SRCDIR)/java
+-JAVA_WRAPPER     = $(JAVA_SRCDIR)/java_swig_wrapper.c
++JAVA_WRAPPER     = $(JAVA_SRCDIR)/java_swig_wrapper.cxx
+ 
+-VPATH_C         += $(JAVA_SRCDIR)
++VPATH_CXX       += $(JAVA_SRCDIR)
+ SOURCES         += $(JAVA_WRAPPER)
+ 
+ endif
+@@ -420,10 +420,10 @@
+ 
+ ifeq ($(OPAL_RUBY), yes)
+ 
+-RUBY_SRCDIR      = $(OPAL_SRCDIR)/ruby
+-RUBY_WRAPPER     = $(JAVA_SRCDIR)/ruby_swig_wrapper.c
++RUBY_SRCDIR      = $(OPAL_SRCDIR)/Ruby
++RUBY_WRAPPER     = $(JAVA_SRCDIR)/ruby_swig_wrapper.cxx
+ 
+-VPATH_C         += $(RUBY_SRCDIR)
++VPATH_CXX       += $(RUBY_SRCDIR)
+ SOURCES         += $(RUBY_WRAPPER)
+ 
+ endif

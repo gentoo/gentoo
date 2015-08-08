@@ -1,0 +1,49 @@
+The autoconf from upstream never built DBM even if you wanted it, because
+enable_build_dbm was never true with --enable-dbm. The only time you actually
+got it before was when you had selected the testsuite.
+
+Fixed up that, and the entire reversed logic, and just throw away the useless
+db_cv_build_dbm variable entirely.
+
+Correct logic is:
+if(--enable-dbm || --enable-test) { 
+	Build DBM
+}
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar db-5.0.21.orig//dist/aclocal/options.m4 db-5.0.21//dist/aclocal/options.m4
+--- db-5.0.21.orig//dist/aclocal/options.m4	2010-03-30 10:36:10.000000000 -0700
++++ db-5.0.21//dist/aclocal/options.m4	2010-05-13 13:49:23.889947877 -0700
+@@ -274,15 +274,11 @@
+ AC_MSG_RESULT($db_cv_test)
+ 
+ AC_MSG_CHECKING(if --enable-dbm option specified)
+-AC_ARG_ENABLE(build_dbm,
++AC_ARG_ENABLE(dbm,
+ 	[AC_HELP_STRING([--enable-dbm],
+ 			[Configure to enable the historic dbm interface.])],
+-	[db_cv_build_dbm="$enable_dbm"], enableval="$db_cv_test")
+-db_cv_build_dbm="$enableval"
+-case "$enableval" in
+- no) AC_MSG_RESULT(yes);;
+-yes) AC_MSG_RESULT(no);;
+-esac
++	[db_cv_dbm="$enable_dbm"], [db_cv_dbm="$db_cv_test"])
++AC_MSG_RESULT($db_cv_dbm)
+ 
+ AC_MSG_CHECKING(if --enable-dtrace option specified)
+ AC_ARG_ENABLE(dtrace,
+diff -Nuar db-5.0.21.orig//dist/configure.ac db-5.0.21//dist/configure.ac
+--- db-5.0.21.orig//dist/configure.ac	2010-05-13 13:41:26.415822427 -0700
++++ db-5.0.21//dist/configure.ac	2010-05-13 13:48:59.185822961 -0700
+@@ -973,7 +973,8 @@
+ fi
+ 
+ # The DBM API can be disabled.
+-if test "$db_cv_build_dbm" = "yes"; then
++
++if test "$db_cv_dbm" = "yes"; then
+ 	AC_DEFINE(HAVE_DBM)
+ 	AH_TEMPLATE(HAVE_DBM, [Define to 1 if building the DBM API.])
+ 	ADDITIONAL_OBJS="$ADDITIONAL_OBJS dbm${o} hsearch${o}"

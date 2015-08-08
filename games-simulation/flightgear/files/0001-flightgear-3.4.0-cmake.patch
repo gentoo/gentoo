@@ -1,0 +1,30 @@
+From 06a260822c0eb10f47533a2cbf5cbbc968878c17 Mon Sep 17 00:00:00 2001
+From: James Turner <zakalawe@mac.com>
+Date: Tue, 17 Mar 2015 23:33:57 +0000
+Subject: [PATCH] Make 3.2.1 fix: make thread check platform specific.
+
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8847614..c881c32 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -109,6 +109,8 @@ IF(APPLE)
+     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.7")
+ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR
+ 	${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
++    find_package(Threads REQUIRED)
++    
+     set(USE_DBUS_DEFAULT 1)
+ 
+     find_package(UDev)
+@@ -230,7 +232,6 @@ endif(EVENT_INPUT)
+ # check required dependencies
+ find_package(Boost   REQUIRED)
+ find_package(ZLIB    REQUIRED)
+-find_package(Threads REQUIRED)
+ find_package(OpenGL  REQUIRED)
+ find_package(OpenAL  REQUIRED)
+ find_package(OpenSceneGraph 3.2.0 REQUIRED

@@ -1,0 +1,18 @@
+From: Romain Perier <mrpouet@gentoo.org>
+Date: Wed, 4 Nov 2009 11:58:25 +0100
+Subject: Do not segfault when entry is NULL
+
+---
+ gconf/gconf-value.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+--- a/gconf/gconf-value.c
++++ b/gconf/gconf-value.c
+@@ -1609,6 +1609,7 @@ void
+ gconf_entry_set_value (GConfEntry  *entry,
+                        const GConfValue  *val)
+ {
++  g_return_if_fail (entry != NULL);
+   gconf_entry_set_value_nocopy (entry,
+                                 val ? gconf_value_copy (val) : NULL);
+ }

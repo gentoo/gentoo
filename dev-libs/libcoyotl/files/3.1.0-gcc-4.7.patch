@@ -1,0 +1,11 @@
+--- libcoyotl/maze_renderer.cpp.ORIG	2005-10-10 06:48:30.000000000 +0200
++++ libcoyotl/maze_renderer.cpp	2013-04-12 10:29:31.127689828 +0200
+@@ -36,6 +36,8 @@
+ #include "maze_renderer.h"
+ using namespace libcoyotl;
+ 
++#include <string.h>
++
+ #include <stdexcept>
+ using namespace std;
+ 

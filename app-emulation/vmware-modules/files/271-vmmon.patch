@@ -1,0 +1,44 @@
+diff -ru source900/vmmon-only/linux/hostif.c source/vmmon-only/linux/hostif.c
+--- source900/vmmon-only/linux/hostif.c		2012-07-23 18:18:55.000000000 +0900
++++ source/vmmon-only/linux/hostif.c	    2012-08-03 16:20:23.200420885 +0900
+@@ -48,6 +48,7 @@
+ #include <linux/smp_lock.h>
+ #endif
+ 
++#include <asm/asm.h>
+ #include <asm/io.h>
+ #include <asm/uaccess.h>
+ #include <linux/mc146818rtc.h>
+@@ -3586,31 +3587,14 @@
+ {
+    int ret;
+    unsigned low, high;
+-#if defined(VM_X86_64)
+    asm volatile("2: rdmsr ; xor %0,%0\n"
+                 "1:\n\t"
+                 ".section .fixup,\"ax\"\n\t"
+                 "3: mov %4,%0 ; jmp 1b\n\t"
+                 ".previous\n\t"
+-                ".section __ex_table,\"a\"\n\t"
+-                ".balign 8\n"
+-                ".quad 2b,3b\n"
+-                ".previous\n"
++                _ASM_EXTABLE(2b,3b)
+                 : "=r"(ret), "=a"(low), "=d"(high)
+                 : "c"(msr), "i"(-EFAULT), "1"(0), "2"(0)); // init eax/edx to 0
+-#else
+-   asm volatile("2: rdmsr ; xor %0,%0\n"
+-                "1:\n\t"
+-                ".section .fixup,\"ax\"\n\t"
+-                "3: mov %4,%0 ; jmp 1b\n\t"
+-                ".previous\n\t"
+-                ".section __ex_table,\"a\"\n"
+-                ".balign 4\n"
+-                ".long 2b,3b\n"
+-                ".previous\n"
+-                : "=r"(ret), "=a"(low), "=d"(high)
+-                : "c"(msr), "i"(-EFAULT), "1"(0), "2"(0)); // init eax/edx to 0
+-#endif // VM_X86_64
+    *val = (low | ((u64)(high) << 32));
+ 
+    return ret;

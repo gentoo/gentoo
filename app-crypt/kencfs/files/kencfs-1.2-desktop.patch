@@ -1,0 +1,11 @@
+--- /tmp/kencfs.desktop	2012-12-12 00:06:01.000000000 +1100
++++ kencfs.desktop	2012-12-12 00:07:54.000000000 +1100
+@@ -2,7 +2,7 @@
+ Name=KEncFS
+ Exec=kencfs
+ Icon=document-encrypt
+-Categories=System;Security
++Categories=Qt;KDE;System;Security;
+ Terminal=false
+ Type=Application
+ StartupNotify=false

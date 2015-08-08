@@ -1,0 +1,24 @@
+--- rtaudio-4.0.11/configure.ac
++++ rtaudio-4.0.11/configure.ac
+@@ -23,8 +23,8 @@
+ AC_MSG_CHECKING(whether to compile debug version)
+ AC_ARG_ENABLE(debug,
+   [  --enable-debug = enable various debug output],
+-  [AC_SUBST( cppflag, [-D__RTAUDIO_DEBUG__] ) AC_SUBST( cxxflag, [-g] ) AC_SUBST( object_path, [Debug] ) AC_MSG_RESULT(yes)],
+-  [AC_SUBST( cppflag, [] ) AC_SUBST( cxxflag, [-O2] ) AC_SUBST( object_path, [Release] ) AC_MSG_RESULT(no)])
++  [AC_SUBST( cppflag, [-D__RTAUDIO_DEBUG__] ) AC_SUBST( object_path, [Debug] ) AC_MSG_RESULT(yes)],
++  [AC_SUBST( cppflag, [] ) AC_SUBST( object_path, [Release] ) AC_MSG_RESULT(no)])
+ 
+ 
+ # Checks for functions
+@@ -33,10 +33,6 @@
+ # For -I and -D flags
+ CPPFLAGS="$CPPFLAGS $cppflag"
+ 
+-# For debugging and optimization ... overwrite default because it has both -g and -O2
+-#CXXFLAGS="$CXXFLAGS $cxxflag"
+-CXXFLAGS="$cxxflag"
+-
+ # Check compiler and use -Wall if gnu.
+ if [test $GXX = "yes" ;] then
+   AC_SUBST( cxxflag, [-Wall] )

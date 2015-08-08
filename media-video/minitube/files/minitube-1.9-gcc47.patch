@@ -1,0 +1,12 @@
+Index: minitube/src/qtsingleapplication/qtlocalpeer.cpp
+===================================================================
+--- minitube.orig/src/qtsingleapplication/qtlocalpeer.cpp
++++ minitube/src/qtsingleapplication/qtlocalpeer.cpp
+@@ -58,6 +58,7 @@ static PProcessIdToSessionId pProcessIdT
+ #endif
+ #if defined(Q_OS_UNIX)
+ #include <time.h>
++#include <unistd.h>
+ #endif
+ 
+ namespace QtLP_Private {

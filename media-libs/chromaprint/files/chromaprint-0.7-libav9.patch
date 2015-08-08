@@ -1,0 +1,44 @@
+diff -burN chromaprint-0.7.orig//src/fft_lib_avfft.h chromaprint-0.7/src/fft_lib_avfft.h
+--- chromaprint-0.7.orig//src/fft_lib_avfft.h	2012-09-05 20:05:36.000000000 +0200
++++ chromaprint-0.7/src/fft_lib_avfft.h	2013-02-16 17:34:08.682624779 +0100
+@@ -25,6 +25,7 @@
+ extern "C" {
+ #include <libavcodec/avcodec.h>
+ #include <libavcodec/avfft.h>
++#include <libavutil/mem.h>
+ }
+ #include "combined_buffer.h"
+ 
+diff -burN chromaprint-0.7.orig/examples/fpcalc.c chromaprint-0.7/work/chromaprint-0.7/examples/fpcalc.c
+--- chromaprint-0.7.orig/examples/fpcalc.c	2012-09-05 20:05:36.000000000 +0200
++++ chromaprint-0.7/examples/fpcalc.c	2013-02-16 17:40:09.947611629 +0100
+@@ -42,7 +42,7 @@
+ 		goto done;
+ 	}
+ 
+-	if (av_find_stream_info(format_ctx) < 0) {
++	if (avformat_find_stream_info(format_ctx, NULL) < 0) {
+ 		fprintf(stderr, "ERROR: couldn't find stream information in the file\n");
+ 		goto done;
+ 	}
+@@ -65,7 +65,7 @@
+ 		goto done;
+ 	}
+ 
+-	if (avcodec_open(codec_ctx, codec) < 0) {
++	if (avcodec_open2(codec_ctx, codec, NULL) < 0) {
+ 		fprintf(stderr, "ERROR: couldn't open the codec\n");
+ 		goto done;
+ 	}
+diff -burN chromaprint-0.7.orig/src/ext/ffmpeg_decoder.h chromaprint-0.7/src/ext/ffmpeg_decoder.h
+--- chromaprint-0.7.orig/src/ext/ffmpeg_decoder.h	2013-02-16 17:49:06.799592088 +0100
++++ chromaprint-0.7/src/ext/ffmpeg_decoder.h	2013-02-16 17:49:54.037590369 +0100
+@@ -124,7 +124,7 @@
+ 		return false;
+ 	}
+ 
+-	if (avcodec_open(m_codec_ctx, codec) < 0) {
++	if (avcodec_open2(m_codec_ctx, codec, NULL) < 0) {
+ 		m_error = "Couldn't open the codec.";
+ 		return false;
+ 	}

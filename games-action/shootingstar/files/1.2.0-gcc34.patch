@@ -1,0 +1,23 @@
+diff -ur shootingstar-1.2.0/src/engine/cTextureFont.cpp shootingstar-1.2.0.loz/src/engine/cTextureFont.cpp
+--- shootingstar-1.2.0/src/engine/cTextureFont.cpp	2003-07-06 19:31:10.000000000 +0100
++++ shootingstar-1.2.0.loz/src/engine/cTextureFont.cpp	2004-07-26 20:51:16.992768063 +0100
+@@ -31,6 +31,7 @@
+ #include <stdio.h>
+ #include <GL/gl.h>
+ #include <GL/glu.h>
++#include <math.h>
+ #include "cTextureManager.hpp"
+ #include "Debug.hpp"
+ //------------------------------------------------------------------------------
+diff -ur shootingstar-1.2.0/src/game/cOptions.cpp shootingstar-1.2.0.loz/src/game/cOptions.cpp
+--- shootingstar-1.2.0/src/game/cOptions.cpp	2003-12-22 05:09:06.000000000 +0000
++++ shootingstar-1.2.0.loz/src/game/cOptions.cpp	2004-07-26 21:00:25.265284270 +0100
+@@ -201,7 +201,7 @@
+ 			dbgError () << "Unable to read from options file\n";
+ 			throw runtime_error ("Unable to load options");
+ 		}
+-		int (keys.keys[i]) = key;	// IS THIS SAFE?
++		keys.keys[i] = (SDLKey)key;	// IS THIS SAFE?
+ 		
+ 		fin >> key;
+ 		keys.buttons[i] = key;

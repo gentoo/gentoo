@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">
+  DataShape is a language for describing data. It is an extension of
+  the NumPy dtype with an emphasis on cross language support.
+</longdescription>
+  <upstream>
+    <remote-id type="github">ContinuumIO/datashape</remote-id>
+  </upstream>
+</pkgmetadata>

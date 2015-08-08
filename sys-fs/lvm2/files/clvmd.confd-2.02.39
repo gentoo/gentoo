@@ -1,0 +1,9 @@
+# CLVMD_CLUSTER_TIMEOUT -- amount of time to wait for cluster quorum.
+
+CLVMD_CLUSTER_TIMEOUT=30
+
+
+# CLVMD_NODES_TIMEOUT -- amount of time to wait for the other nodes to
+# join the cluster.
+
+CLVMD_NODES_TIMEOUT=60

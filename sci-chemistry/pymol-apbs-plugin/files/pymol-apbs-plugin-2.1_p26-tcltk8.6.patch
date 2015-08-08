@@ -1,0 +1,176 @@
+--- pymol-apbs-plugin-2.1_p26.py.orig        2013-08-16 20:29:27.000000000 -0400
++++ pymol-apbs-plugin-2.1_p26.py        2013-08-16 20:31:35.000000000 -0400
+@@ -560,7 +560,8 @@
+         # Set up the Main page
+         page = self.notebook.add('Main')
+         group = Pmw.Group(page,tag_text='Main options')
+-        group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        group.grid(padx = 10, pady = 5, sticky=(N, S, E, W))
+         self.selection = Pmw.EntryField(group.interior(),
+                                         labelpos='w',
+                                         label_text='Selection to use: ',
+@@ -606,7 +607,8 @@
+         page = self.notebook.add('Configuration')
+ 
+         group = Pmw.Group(page,tag_text='Dielectric Constants')
+-        group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+         group.grid(column=0, row=0)
+         self.interior_dielectric = Pmw.EntryField(group.interior(),labelpos='w',
+                                    label_text = 'Protein Dielectric:',
+@@ -625,7 +627,8 @@
+             #entry.pack(side='left',fill='both',expand=1,padx=4) # side-by-side
+             entry.pack(fill='x',expand=1,padx=4,pady=1) # vertical
+         group = Pmw.Group(page,tag_text='Other')
+-        group.pack(fill='both',expand=1, padx=4, pady=5)
++        #group.pack(fill='both',expand=1, padx=4, pady=5)
++        group.grid(padx=4, pady=5, sticky=(N, S, E, W))
+         group.grid(column=1, row=1,columnspan=4)
+         self.max_mem_allowed = Pmw.EntryField(group.interior(),labelpos='w',
+                                               label_text = 'Maximum Memory Allowed (MB):',
+@@ -683,7 +686,8 @@
+ 
+ 
+         group = Pmw.Group(page,tag_text='Ions')
+-        group.pack(fill='both',expand=1, padx=4, pady=5)
++        #group.pack(fill='both',expand=1, padx=4, pady=5)
++        group.grid(padx=4, pady=5, sticky=(N, S, E, W))
+         group.grid(column=0, row=1, )
+         self.ion_plus_one_conc = Pmw.EntryField(group.interior(),
+                                                 labelpos='w',
+@@ -742,7 +746,8 @@
+             entry.pack(fill='x',expand=1,padx=4)
+ 
+         group = Pmw.Group(page,tag_text = 'Coarse Mesh Length')
+-        group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+         group.grid(column = 1, row = 0)
+         for coord in 'x y z'.split():
+             setattr(self,'grid_coarse_%s'%coord,Pmw.EntryField(group.interior(),
+@@ -757,7 +762,8 @@
+ 
+ 
+         group = Pmw.Group(page,tag_text = 'Fine Mesh Length')
+-        group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+         group.grid(column = 2, row = 0)
+         for coord in 'x y z'.split():
+             setattr(self,'grid_fine_%s'%coord,Pmw.EntryField(group.interior(),
+@@ -772,7 +778,8 @@
+ 
+ 
+         group = Pmw.Group(page,tag_text = 'Grid Center')
+-        group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+         group.grid(column = 3, row = 0)
+         for coord in 'x y z'.split():
+             setattr(self,'grid_center_%s'%coord,Pmw.EntryField(group.interior(),
+@@ -786,7 +793,8 @@
+             getattr(self,'grid_center_%s'%coord).pack(fill='x', expand=1, padx=4, pady=1)
+ 
+         group = Pmw.Group(page,tag_text = 'Grid Points')
+-        group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 4, pady = 5)
++        group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+         group.grid(column = 4, row = 0)
+         for coord in 'x y z'.split():
+             setattr(self,'grid_points_%s'%coord,Pmw.EntryField(group.interior(),
+@@ -804,7 +812,8 @@
+         page.grid_columnconfigure(5,weight=1)
+         page = self.notebook.add('Program Locations')
+         group = Pmw.Group(page,tag_text='Locations')
+-        group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        group.grid(padx = 10, pady = 5, sticky=(N, S, E, W))
+         def quickFileValidation(s):
+             if s == '': return Pmw.PARTIAL
+             elif os.path.isfile(s): return Pmw.OK
+@@ -867,7 +876,8 @@
+         
+         page = self.notebook.add('Temp File Locations')
+         group = Pmw.Group(page,tag_text='Locations')
+-        group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        group.grid(padx = 10, pady = 5, sticky=(N, S, E, W))
+         self.pymol_generated_pqr_filename = Pmw.EntryField(group.interior(),
+                                                            labelpos = 'w',
+                                                            label_pyclass = FileDialogButtonClassFactory.get(self.setPymolGeneratedPqrFilename),
+@@ -915,17 +925,20 @@
+         page = self.notebook.add('Visualization (1)')
+         group = VisualizationGroup(page,tag_text='Visualization',visgroup_num=1)
+         self.visualization_group_1 = group
+-        group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        group.grid(padx = 10, pady = 5, sticky=(N, S, E, W))
+ 
+         page = self.notebook.add('Visualization (2)')
+         group = VisualizationGroup(page,tag_text='Visualization',visgroup_num=2)
+         self.visualization_group_2 = group
+-        group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        group.grid(padx = 10, pady = 5, sticky=(N, S, E, W))
+ 
+         # Create a couple of other empty pages
+         page = self.notebook.add('About')
+         group = Pmw.Group(page, tag_text='About PyMOL APBS Tools')
+-        group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        #group.pack(fill = 'both', expand = 1, padx = 10, pady = 5)
++        group.grid(padx = 10, pady = 5, sticky=(N, S, E, W))
+         text = """This plugin integrates PyMOL (http://PyMOL.org/) with APBS (http://www.poissonboltzmann.org/apbs/).
+ 
+ Documentation may be found at
+@@ -2158,7 +2171,8 @@
+             self.update_buttonbox = Pmw.ButtonBox(self.mm_group.interior(), padx=0)
+             self.update_buttonbox.pack(side=LEFT)
+             self.update_buttonbox.add('Update',command=self.refresh)
+-            self.mm_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=TOP)
++            #self.mm_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=TOP)
++            self.mm_group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+ 
+             self.ms_group = Pmw.Group(self.interior(),tag_text='Molecular Surface')
+             self.ms_buttonbox = Pmw.ButtonBox(self.ms_group.interior(), padx=0)
+@@ -2209,7 +2223,8 @@
+             bars = (self.mol_surf_low,self.mol_surf_middle,self.mol_surf_high)
+             Pmw.alignlabels(bars)
+             for bar in bars: bar.pack(side=LEFT)
+-            self.ms_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=LEFT)
++            #self.ms_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=LEFT)
++            self.ms_group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+ 
+             self.fl_group = Pmw.Group(self.interior(),tag_text='Field Lines')
+             self.fl_buttonbox = Pmw.ButtonBox(self.fl_group.interior(), padx=0)
+@@ -2224,7 +2239,8 @@
+                                   text = """Follows same coloring as surface.""",
+                                   )
+             label.pack()
+-            self.fl_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=TOP)
++            #self.fl_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=TOP)
++            self.fl_group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+ 
+             self.pi_group = Pmw.Group(self.interior(),tag_text='Positive Isosurface')
+             self.pi_buttonbox = Pmw.ButtonBox(self.pi_group.interior(), padx=0)
+@@ -2243,7 +2259,8 @@
+                                             entryfield_validate = {'validator' : 'real', 'min':0}
+                                             )
+             self.pos_surf_val.pack(side=LEFT)
+-            self.pi_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=LEFT)
++            #self.pi_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=LEFT)
++            self.pi_group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+ 
+             self.ni_group = Pmw.Group(self.interior(),tag_text='Negative Isosurface')
+             self.ni_buttonbox = Pmw.ButtonBox(self.ni_group.interior(), padx=0)
+@@ -2262,7 +2279,8 @@
+                                             entryfield_validate = {'validator' : 'real', 'max':0}
+                                             )
+             self.neg_surf_val.pack(side=LEFT)
+-            self.ni_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=LEFT)
++            #self.ni_group.pack(fill = 'both', expand = 1, padx = 4, pady = 5, side=LEFT)
++            self.ni_group.grid(padx = 4, pady = 5, sticky=(N, S, E, W))
+ 
+ 
+ 

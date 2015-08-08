@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>qt</herd>
+  <use>
+    <flag name='exiv2'>
+      Use <pkg>media-gfx/exiv2</pkg> as optional dependency
+    </flag>
+    <flag name='graphicsmagick'>
+      Use <pkg>media-gfx/graphicsmagick</pkg> as optional dependency
+    </flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,131 @@
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Sun, 17 Feb 2013 19:28:06 +0000 (+0100)
+Subject: * [oyX1]: set xcalib to screen if XRandR >= 1.2
+X-Git-Url: http://www.oyranos.org/scm?p=oyranos.git;a=commitdiff_plain;h=505b3931d9de6c667566278c5b3a1713d43212a8
+
+* [oyX1]: set xcalib to screen if XRandR >= 1.2
+---
+
+diff --git a/src/modules/devices/oyranos_monitor_x11.c b/src/modules/devices/oyranos_monitor_x11.c
+index a090b14..a530a81 100644
+--- a/src/modules/devices/oyranos_monitor_x11.c
++++ b/src/modules/devices/oyranos_monitor_x11.c
+@@ -90,6 +90,8 @@ RROutput
+ XRROutputInfo *
+     oyX1Monitor_xrrOutputInfo_( oyX1Monitor_s * disp ) { return disp->output_info; }
+ int oyX1Monitor_activeOutputs_( oyX1Monitor_s * disp ) { return disp->active_outputs; }
++int oyX1Monitor_rrVersion_    ( oyX1Monitor_s * disp ) { return disp->rr_version; }
++int oyX1Monitor_rrScreen_     ( oyX1Monitor_s * disp ) { return disp->rr_screen; }
+ 
+ 
+ #endif
+@@ -680,7 +682,8 @@ int      oyX1MonitorProfileSetup     ( const char        * display_name,
+   char *text = 0;
+ 
+   DBG_PROG_START
+-  disp = oyX1Monitor_newFrom_( display_name, 0 );
++  /* XRandR needs a expensive initialisation */
++  disp = oyX1Monitor_newFrom_( display_name, 1 );
+   if(!disp)
+     return 1;
+ 
+@@ -721,6 +724,13 @@ int      oyX1MonitorProfileSetup     ( const char        * display_name,
+      */
+     sprintf(text,"xcalib -d %s -s %d %s \'%s\'", dpy_name, disp->geo[1],
+                  oy_debug?"-v":"", profile_fullname);
++    if(oyX1Monitor_infoSource_( disp ) == oyX11INFO_SOURCE_XRANDR)
++      sprintf(text,"xcalib -d %s -s %d %s \'%s\'", dpy_name, oyX1Monitor_rrScreen_(disp),
++              oy_debug?"-v":"", profile_fullname);
++    else
++      sprintf(text,"xcalib -d %s -s %d %s \'%s\'", dpy_name, disp->geo[1],
++              oy_debug?"-v":"", profile_fullname);
++
+     {
+       Display * display = oyX1Monitor_device_( disp );
+       int effective_screen = oyX1Monitor_screen_( disp );
+@@ -751,17 +761,21 @@ int      oyX1MonitorProfileSetup     ( const char        * display_name,
+ #endif
+ 
+       /* Check for incapabilities of X gamma table access */
+-      if(can_gamma || oyX1Monitor_screen_( disp ) == 0)
++      if(can_gamma || oyX1Monitor_screen_( disp ) == 0 || oyX1Monitor_infoSource_( disp ) == oyX11INFO_SOURCE_XRANDR )
+         error = system(text);
+       if(error &&
+          error != 65280)
+       { /* hack */
+-        WARNc2_S("%s %s", _("No monitor gamma curves by profile:"),
+-                oyNoEmptyName_m_(profil_basename) )
++        WARNc3_S("%s %s %d", _("No monitor gamma curves by profile:"),
++                oyNoEmptyName_m_(profil_basename), error )
+         error = -1;
+       } else
++      {
+         /* take xcalib error not serious, turn into a issue */
++        if(oy_debug)
++          DBG1_S("xcalib returned %d", error)
+         error = -1;
++      }
+     }
+ 
+     if(oy_debug)
+@@ -873,7 +887,8 @@ int      oyX1MonitorProfileUnset     ( const char        * display_name )
+ 
+   DBG_PROG_START
+ 
+-  disp = oyX1Monitor_newFrom_( display_name, 0 );
++  /* XRandR needs a expensive initialisation */
++  disp = oyX1Monitor_newFrom_( display_name, 1 );
+   if(!disp)
+   {
+     DBG_PROG_ENDE
+@@ -926,10 +941,16 @@ int      oyX1MonitorProfileUnset     ( const char        * display_name )
+           if( (ptr = strchr(ptr,'.')) != 0 )
+             ptr[0] = '\000';
+ 
+-        oySnprintf2_(command, 1024, "xgamma -gamma 1.0 -screen %d -display %s",
++        if(oyX1Monitor_infoSource_( disp ) == oyX11INFO_SOURCE_XRANDR)
++          oySnprintf2_(command, 1024, "xrandr -display %s --output %s --gamma .999999:.999999:.999999",
++                 dpy_name, oyX1Monitor_systemPort_(disp));
++        else
++          oySnprintf2_(command, 1024, "xgamma -gamma 1.0 -screen %d -display %s",
+                  disp->geo[1], dpy_name);
+ 
+-        if(screen == disp->geo[1])
++        if(oy_debug)
++          DBG3_S( "%d %d system: %s", screen, disp->geo[1], command )
++        if(screen == disp->geo[1] || oyX1Monitor_infoSource_( disp ) == oyX11INFO_SOURCE_XRANDR)
+           r = system( command );
+         if(r) WARNc2_S("%s %d", _("found issues"),r);
+ 
+@@ -1347,17 +1368,16 @@ oyX1Monitor_s* oyX1Monitor_newFrom_      ( const char        * display_name,
+ 
+           if(monitors == 0)
+           {
+-            if(strcmp("default", output_info->name) != 0)
+-            {
+-              disp->info_source = oyX11INFO_SOURCE_XRANDR;
+-
+-            } else
++            if(!XRRGetCrtcGammaSize( display, output_info->crtc ))
+             {
+               XRRFreeOutputInfo( output_info );
+               break;
+             }
+           }
+ 
++          if(XRRGetCrtcGammaSize( display, output_info->crtc ))
++            disp->info_source = oyX11INFO_SOURCE_XRANDR;
++
+           crtc_info = XRRGetCrtcInfo( disp->display, res_temp,
+                                       output_info->crtc );
+           if(crtc_info)
+@@ -1390,6 +1410,8 @@ oyX1Monitor_s* oyX1Monitor_newFrom_      ( const char        * display_name,
+             if(disp->output_info->name && oyStrlen_(disp->output_info->name))
+               disp->system_port = oyStringCopy_( disp->output_info->name,
+                                                  oyAllocateFunc_ );
++            disp->rr_version = major_versionp*100 + minor_versionp;
++            disp->rr_screen = xrand_screen;
+           }
+ 
+           ++ monitors;
+

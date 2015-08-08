@@ -1,0 +1,28 @@
+diff -ur cddl.old/sbin/zfs/Makefile cddl/sbin/zfs/Makefile
+--- cddl.old/sbin/zfs/Makefile	2011-11-04 10:01:46.000000000 +0000
++++ cddl/sbin/zfs/Makefile	2011-11-04 10:07:15.000000000 +0000
+@@ -21,8 +21,8 @@
+ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common/sys
+ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/common/zfs
+ 
+-DPADD=	${LIBBSDXML} ${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBSBUF} ${LIBUMEM} \
++DPADD=	${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBSBUF} ${LIBUMEM} \
+ 	${LIBUTIL} ${LIBUUTIL} ${LIBZFS}
+-LDADD=	-lbsdxml -lgeom -lm -lnvpair -lsbuf -lumem -lutil -luutil -lzfs
++LDADD=	-lgeom -lm -lnvpair -lsbuf -lumem -lutil -luutil -lzfs
+ 
+ .include <bsd.prog.mk>
+diff -ur cddl.old/sbin/zpool/Makefile cddl/sbin/zpool/Makefile
+--- cddl.old/sbin/zpool/Makefile	2011-11-04 10:01:46.000000000 +0000
++++ cddl/sbin/zpool/Makefile	2011-11-04 10:06:38.000000000 +0000
+@@ -26,8 +26,8 @@
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libzpool/common
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/cmd/stat/common
+ 
+-DPADD=	${LIBAVL} ${LIBBSDXML} ${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBSBUF} \
++DPADD=	${LIBAVL} ${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBSBUF} \
+ 	${LIBUMEM} ${LIBUTIL} ${LIBUUTIL} ${LIBZFS}
+-LDADD=	-lavl -lbsdxml -lgeom -lm -lnvpair -lsbuf -lumem -lutil -luutil -lzfs
++LDADD=	-lavl -lgeom -lm -lnvpair -lsbuf -lumem -lutil -luutil -lzfs
+ 
+ .include <bsd.prog.mk>

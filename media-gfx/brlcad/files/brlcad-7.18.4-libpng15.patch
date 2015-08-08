@@ -1,0 +1,42 @@
+http://bugs.gentoo.org/378273
+
+--- src/libged/png.c
++++ src/libged/png.c
+@@ -30,6 +30,8 @@
+ #include <string.h>
+ #include "bio.h"
+ 
++#include <zlib.h> /* Z_BEST_COMPRESSION */
++
+ #include "png.h"
+ #include "bu.h"
+ #include "vmath.h"
+--- src/fb/fb-png.c	2011-04-12 14:31:56.000000000 -0400
++++ src/fb/fb-png.c.new	2011-09-19 13:18:08.000000000 -0400
+@@ -38,13 +38,13 @@
+ #  include <unistd.h>
+ #endif
+ 
++#include "zlib.h"
+ #include "png.h"
+ #include "bu.h"
+ #include "fb.h"
+ 
+ #include "pkg.h"
+ 
+-
+ /* in cmap-crunch.c */
+ extern void cmap_crunch(RGBpixel (*scan_buf), int pixel_ct, ColorMap *colormap);
+ 
+--- src/util/pix-png.c	2011-04-12 14:34:24.000000000 -0400
++++ src/util/pix-png.c.new	2011-09-19 13:18:59.000000000 -0400
+@@ -36,7 +36,8 @@
+ #include "bio.h"
+ 
+ #include "zlib.h"
+-#include "pngconf.h"
++/* removed as png.h includes this and including it in the wrong order seems to cause bugs
++#include "pngconf.h" */
+ #include "png.h"
+ 
+ #include "bu.h"

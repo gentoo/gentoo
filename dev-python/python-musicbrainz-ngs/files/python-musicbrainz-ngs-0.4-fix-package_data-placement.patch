@@ -1,0 +1,20 @@
+diff --git a/setup.py b/setup.py
+index 57479d7..4f82328 100644
+--- a/setup.py
++++ b/setup.py
+@@ -52,15 +52,6 @@ setup(
+     author_email="alastair@porter.net.nz",
+     url="https://github.com/alastair/python-musicbrainz-ngs",
+     packages=['musicbrainzngs'],
+-    package_data={'musicbrainzngs': ['CHANGES',
+-                                     '../docs/*',
+-                                     '../examples/*',
+-                                     '../test/data/*.xml',
+-                                     '../test/data/artist/*',
+-                                     '../test/data/label/*',
+-                                     '../test/data/release/*',
+-                                     '../test/data/release-group/*',
+-                                     '../test/data/work/*']},
+     cmdclass={'test': test },
+     license='BSD 2-clause',
+     classifiers=[

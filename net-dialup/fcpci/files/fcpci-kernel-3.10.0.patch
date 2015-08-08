@@ -1,0 +1,22 @@
+--- fritz/src/driver.c.old	2013-07-15 18:29:24.311278403 +0200
++++ fritz/src/driver.c		2013-07-15 18:34:30.139297718 +0200
+@@ -37,6 +37,7 @@
+ #include <linux/ctype.h>
+ #include <linux/string.h>
+ #include <linux/list.h>
++#include <linux/proc_fs.h>
+ #include <linux/capi.h>
+ #include <linux/isdn/capilli.h>
+ #include <linux/isdn/capiutil.h>
+@@ -534,7 +535,10 @@ static int __kcapi ctr_info (struct seq_
+ 
+ static int ctr_proc_open(struct inode *inode, struct file *file)
+ {
+-	return single_open(file, ctr_info, PDE(inode)->data);
++	return single_open(file, ctr_info, PDE_DATA(inode));
++
++/* > = kernel 3.10.0 rename PDE to PDE_DATE without pointer to data in linux/proc_fs.h 
++       Arnd Feldmueller <arnd.feldmueller@web.de> */
+ }
+ 
+ const struct file_operations ctr_proc_fops = {

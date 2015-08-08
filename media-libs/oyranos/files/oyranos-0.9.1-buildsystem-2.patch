@@ -1,0 +1,22 @@
+--- oyranos-0.9.1/configure_tests.sh
++++ oyranos-0.9.1/configure_tests.sh
+@@ -612,8 +612,9 @@
+     ID_LIBS="$ID"_LIBS
+     if [ -z "$found" ]; then
+       pkg-config  --atleast-version=0.2 $pc_package
++      found=$?
+       if [ $? = 0 ]; then
+-        found=`pkg-config --cflags $pc_package`
++        xcm_cflags=`pkg-config --cflags $pc_package`
+         version=`pkg-config --modversion $pc_package`
+       fi
+     fi
+@@ -627,7 +628,7 @@
+       if [ -n "$MAKEFILE_DIR" ]; then
+         for i in $MAKEFILE_DIR; do
+           test -f "$ROOT_DIR/$i/makefile".in && echo "XCM = 1" >> "$i/makefile"
+-          test -f "$ROOT_DIR/$i/makefile".in && echo "XCM_H = $found" >> "$i/makefile"
++          test -f "$ROOT_DIR/$i/makefile".in && echo "XCM_H = $xcm_cflags" >> "$i/makefile"
+           test -f "$ROOT_DIR/$i/makefile".in && echo "$ID_LIBS = `pkg-config --libs $name | sed \"$STRIPOPT\"`" >> "$i/makefile"
+         done
+       fi

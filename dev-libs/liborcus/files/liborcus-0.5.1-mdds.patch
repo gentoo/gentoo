@@ -1,0 +1,12 @@
+diff -urN liborcus-0.5.1.old/src/spreadsheet/sheet.cpp liborcus-0.5.1/src/spreadsheet/sheet.cpp
+--- liborcus-0.5.1.old/src/spreadsheet/sheet.cpp	2013-05-27 19:07:41.712302036 +0200
++++ liborcus-0.5.1/src/spreadsheet/sheet.cpp	2013-05-27 19:08:51.432302028 +0200
+@@ -734,7 +734,7 @@
+         con.build_tree();
+ 
+     size_t index;
+-    if (!con.search_tree(col, index))
++    if (!con.search_tree(col, index).second)
+         return 0;
+ 
+     return index;

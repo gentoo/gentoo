@@ -1,0 +1,11 @@
+diff -Nur src.orig/configure src/configure
+--- src.orig/configure	2012-06-12 00:57:14.000000000 +0100
++++ src/configure	2012-06-12 18:19:56.000000000 +0100
+@@ -4598,6 +4598,7 @@
+ 		if test "$_readline" = yes || test "$_readline" = auto;
+ 		then
+ cat > $TMPC << EOF
++#include <stdio.h>
+ #include <readline/readline.h>
+ int main(void) { return 0; }
+ EOF

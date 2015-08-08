@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<longdescription lang="en">
+		Tellico is a KDE application for organizing your collections. It provides
+		default templates for books, bibliographies, videos, music, video games, coins,
+		stamps, trading cards, comic books, and wines.
+	</longdescription>
+	<use>
+		<flag name="addressbook">Add support for kdepim addressbook (kabc)</flag>
+		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
+	 </use>
+</pkgmetadata>

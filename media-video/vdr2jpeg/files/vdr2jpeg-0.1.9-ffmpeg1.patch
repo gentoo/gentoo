@@ -1,0 +1,238 @@
+Index: vdr2jpeg-0.1.9/ffm.cpp
+===================================================================
+--- vdr2jpeg-0.1.9.orig/ffm.cpp
++++ vdr2jpeg-0.1.9/ffm.cpp
+@@ -22,6 +22,7 @@
+ extern "C" {
+ #include <libavutil/avutil.h>
+ #include <libavutil/mathematics.h>
++#include <libavutil/pixdesc.h>
+ #include <libavcodec/avcodec.h>
+ #include <libavformat/avformat.h>
+ #include <libswscale/swscale.h>
+@@ -55,14 +56,12 @@ static int video_qdiff = 3;
+ static const char *video_rc_eq="tex^qComp";
+ static int me_method = ME_EPZS;
+ 
+-static int same_quality = 1;
+ 
+ static int top_field_first = -1;
+ 
+ 
+ 
+ 
+-static float mux_preload= 0.5;
+ static float mux_max_delay= 0.7;
+ 
+ static int64_t input_ts_offset = 0;
+@@ -150,7 +149,7 @@ static bool do_video_out(AVFormatContext
+                          int *frame_size)
+ {
+     int nb_frames, i, ret;
+-    AVFrame *final_picture, *formatted_picture, *resampling_dst, *padding_src;
++    AVFrame *final_picture, *formatted_picture, *resampling_dst;
+     AVFrame picture_crop_temp, picture_pad_temp;
+     AVCodecContext *enc, *dec;
+ 
+@@ -195,11 +194,9 @@ static bool do_video_out(AVFormatContext
+     }
+ 
+     final_picture = formatted_picture;
+-    padding_src = formatted_picture;
+     resampling_dst = &ost->pict_tmp;
+ 
+     if (ost->video_resample) {
+-        padding_src = NULL;
+         final_picture = &ost->pict_tmp;
+         sws_scale(ost->img_resample_ctx, formatted_picture->data, formatted_picture->linesize,
+               0, ost->resample_height, resampling_dst->data, resampling_dst->linesize);
+@@ -242,10 +239,7 @@ static bool do_video_out(AVFormatContext
+ 
+             /* handles sameq here. This is not correct because it may
+                not be a global option */
+-            if (same_quality) {
+-                big_picture.quality = (int)ist->st->quality;
+-            }else
+-                big_picture.quality = (int)ost->st->quality;
++            big_picture.quality = ist->st->codec->global_quality;
+                 big_picture.pict_type = (AVPictureType) 0;
+ //            big_picture.pts = AV_NOPTS_VALUE;
+             big_picture.pts= ost->sync_opts;
+@@ -328,7 +322,7 @@ static int output_packet(AVInputStream *
+ 
+                     ret = avcodec_decode_video2(ist->st->codec,
+                                                &picture, &got_picture, &pkt);
+-                    ist->st->quality= picture.quality;
++                    ist->st->codec->global_quality= picture.quality;
+                     if (ret < 0)
+                         goto fail_decode;
+                     if (!got_picture) {
+@@ -618,31 +612,6 @@ static bool av_encode(AVFormatContext **
+         codec = ost->st->codec;
+         icodec = ist->st->codec;
+ 
+-        if (ost->st->stream_copy) {
+-            /* if stream_copy is selected, no need to decode or encode */
+-            codec->codec_id = icodec->codec_id;
+-            codec->codec_type = icodec->codec_type;
+-            if(!codec->codec_tag) codec->codec_tag = icodec->codec_tag;
+-            codec->bit_rate = icodec->bit_rate;
+-            codec->extradata= icodec->extradata;
+-            codec->extradata_size= icodec->extradata_size;
+-            if(av_q2d(icodec->time_base) > av_q2d(ist->st->time_base) && av_q2d(ist->st->time_base) < 1.0/1000)
+-                codec->time_base = icodec->time_base;
+-            else
+-                codec->time_base = ist->st->time_base;
+-            switch(codec->codec_type) {
+-            case AVMEDIA_TYPE_VIDEO:
+-                codec->pix_fmt = icodec->pix_fmt;
+-                codec->width = icodec->width;
+-                codec->height = icodec->height;
+-                codec->has_b_frames = icodec->has_b_frames;
+-                break;
+-            case AVMEDIA_TYPE_SUBTITLE:
+-                break;
+-            default:
+-                return false;
+-            }
+-        } else {
+             switch(codec->codec_type) {
+             case AVMEDIA_TYPE_VIDEO:
+                 ost->video_resample = ((codec->width != icodec->width) ||
+@@ -675,7 +644,6 @@ static bool av_encode(AVFormatContext **
+             default:
+                 return false;
+             }
+-        }
+         if(codec->codec_type == AVMEDIA_TYPE_VIDEO){
+             int size= codec->width * codec->height;
+             bit_buffer_size= FFMAX(bit_buffer_size, 4*size);
+@@ -690,7 +658,7 @@ static bool av_encode(AVFormatContext **
+     /* dump the file output parameters - cannot be done before in case
+        of stream copy */
+     for(i=0;i<nb_output_files;i++) {
+-        dump_format(output_files[i], i, output_files[i]->filename, 1);
++        av_dump_format(output_files[i], i, output_files[i]->filename, 1);
+     }
+ 
+     /* open each encoder */
+@@ -749,7 +717,7 @@ static bool av_encode(AVFormatContext **
+     /* open files and write file headers */
+     for(i=0;i<nb_output_files;i++) {
+         os = output_files[i];
+-        if (av_write_header(os) < 0) {
++        if (avformat_write_header(os,NULL) < 0) {
+             fprintf(stderr, "Could not write header for output file #%d (incorrect codec parameters ?)\n", i);
+             ret = false; //AVERROR(EINVAL);
+             goto fail;
+@@ -941,36 +909,32 @@ void print_error(const char *filename, i
+ static bool opt_input_file(const char *filename)
+ {
+     AVFormatContext *ic;
+-    AVFormatParameters params, *ap = &params;
+     int err, ret, rfps, rfps_base;
+     unsigned int i;
+     int64_t timestamp;
++    AVDictionary *opts = NULL;
++    char buf[1024];
+ 
+     /* get default parameters from command line */
+     ic = avformat_alloc_context();
+ 
+-    memset(ap, 0, sizeof(*ap));
+-    ap->prealloced_context = 1;
+-    ap->time_base.den = frame_rate;
+-    ap->time_base.num = frame_rate_base;
+-    ap->width = frame_width + 0 + 0;
+-    ap->height = frame_height + 0 + 0;
+-    ap->pix_fmt = frame_pix_fmt;
+-    ap->channel = 0;
+-    ap->standard = 0;
++    snprintf(buf, sizeof(buf), "%d/%d", frame_rate, frame_rate_base);
++    av_dict_set(&opts, "framerate", buf, 0);
++    snprintf(buf, sizeof(buf), "%dx%d", frame_width, frame_height);
++    av_dict_set(&opts, "video_size", buf, 0);
++    av_dict_set(&opts, "pixel_format", av_get_pix_fmt_name(frame_pix_fmt), 0);
++
+     ic->video_codec_id = CODEC_ID_NONE;
+     if(pgmyuv_compatibility_hack)
+         ic->video_codec_id= CODEC_ID_PGMYUV;
+ 
+     /* open the input file with generic libav function */
+-    err = av_open_input_file(&ic, filename, file_iformat, 0, ap);
++    err = avformat_open_input(&ic, filename, file_iformat, &opts);
+     if (err < 0) {
+         print_error(filename, err);
+         return 0;
+     }
+ 
+-    ic->loop_input = 0;
+-
+     /* If not enough info to get the stream parameters, we decode the
+        first frames to get it. (used in mpeg case for example) */
+     ret = av_find_stream_info(ic);
+@@ -1027,7 +991,7 @@ static bool opt_input_file(const char *f
+     input_files_ts_offset[nb_input_files] = input_ts_offset - timestamp;
+     /* dump the file content */
+     if (verbose >= 0)
+-        dump_format(ic, nb_input_files, filename, 0);
++        av_dump_format(ic, nb_input_files, filename, 0);
+ 
+     nb_input_files++;
+     file_iformat = NULL;
+@@ -1133,11 +1097,8 @@ static bool new_video_stream(AVFormatCon
+ 
+ /*      if (intra_only)
+             video_enc->gop_size = 0;*/
+-        if (same_quality) {
+             video_enc->flags |= CODEC_FLAG_QSCALE;
+-            st->quality = FF_QP2LAMBDA;
+-            video_enc->global_quality= (int)st->quality;
+-        }
++            video_enc->global_quality= FF_QP2LAMBDA;
+ 
+         video_enc->max_qdiff = video_qdiff;
+         video_enc->rc_eq = video_rc_eq;
+@@ -1187,7 +1148,6 @@ static bool opt_output_file(const char *
+ {
+     AVFormatContext *oc;
+     int use_video, input_has_video = 0;
+-    AVFormatParameters params, *ap = &params;
+ 
+     oc = avformat_alloc_context();
+ 
+@@ -1219,8 +1179,6 @@ static bool opt_output_file(const char *
+                 return false;
+         }
+ 
+-        oc->timestamp = 0;
+-
+     }
+ 
+     output_files[nb_output_files++] = oc;
+@@ -1233,16 +1191,7 @@ static bool opt_output_file(const char *
+         }
+     }
+ 
+-    memset(ap, 0, sizeof(*ap));
+-    if (av_set_parameters(oc, ap) < 0) {
+-        fprintf(stderr, "%s: Invalid encoding parameters\n",
+-                oc->filename);
+-        return false;
+-    }
+-
+-    oc->preload= (int)(mux_preload*AV_TIME_BASE);
+     oc->max_delay= (int)(mux_max_delay*AV_TIME_BASE);
+-    oc->loop_output = AVFMT_NOOUTPUTLOOP;
+ 
+     /* reset some options */
+     file_oformat = NULL;
+@@ -1323,7 +1272,7 @@ bool decode (const char* szMPVfile, /* c
+         AVFormatContext *s = output_files[i];
+ 
+         if (!(s->oformat->flags & AVFMT_NOFILE))
+-	    url_fclose(s->pb);
++	    avio_close(s->pb);
+ 	for(j=0;j<s->nb_streams;j++)
+ 	    av_free(s->streams[j]);
+         av_free(s);

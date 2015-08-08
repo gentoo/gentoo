@@ -1,0 +1,32 @@
+--- setup.py.old	2012-07-01 17:31:24.000000000 +0400
++++ setup.py	2012-07-01 17:33:52.000000000 +0400
+@@ -22,6 +22,7 @@
+ 
+ import glob, os, re, setuptools, sys
+ from os.path import join, isfile
++from distutils.sysconfig import get_python_lib
+ 
+ # List all data files
+ def data():
+@@ -32,7 +33,7 @@ def data():
+                 files.append(os.path.join(root, filename))
+     d = {}
+     for v in files:
+-        k=os.path.dirname(v)
++        k=os.path.join(get_python_lib(prefix=''), os.path.dirname(v))
+         if k in d:
+             d[k].append(v)
+         else:
+@@ -41,9 +42,9 @@ def data():
+     if os.name == 'nt':
+         r.append(("Microsoft.VC90.CRT", glob.glob('C:\Microsoft.VC90.CRT\*.*')))
+ 
+-    import babel
+-    r.append(("localedata",
+-              glob.glob(os.path.join(os.path.dirname(babel.__file__), "localedata" , '*'))))
++#    import babel
++#    r.append(("localedata",
++#              glob.glob(os.path.join(os.path.dirname(babel.__file__), "localedata" , '*'))))
+ 
+     return r
+ 

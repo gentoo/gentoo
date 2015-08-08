@@ -1,0 +1,66 @@
+commit f777dadef601434550aa3fb411eebab04ad07103
+Author: David Leverton <levertond@googlemail.com>
+Date:   Wed Aug 27 21:10:59 2014 +0100
+
+    Fix build with -Werror=format-security
+    
+    Fixes: Gentoo#521326
+
+diff --git a/ruby/paludis_ruby.cc b/ruby/paludis_ruby.cc
+index 587601c..d58a8d0 100644
+--- a/ruby/paludis_ruby.cc
++++ b/ruby/paludis_ruby.cc
+@@ -173,19 +173,19 @@ void paludis::ruby::exception_to_ruby_exception(const std::exception & ee)
+         rb_raise(rb_eRuntimeError, "Unexpected paludis::InternalError: %s (%s)",
+                 dynamic_cast<const paludis::InternalError *>(&ee)->message().c_str(), ee.what());
+     else if (0 != dynamic_cast<const paludis::GotASetNotAPackageDepSpec *>(&ee))
+-        rb_raise(c_got_a_set_not_a_package_dep_spec, dynamic_cast<const paludis::GotASetNotAPackageDepSpec *>(&ee)->message().c_str());
++        rb_raise(c_got_a_set_not_a_package_dep_spec, "%s", dynamic_cast<const paludis::GotASetNotAPackageDepSpec *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::BadVersionSpecError *>(&ee))
+-        rb_raise(c_bad_version_spec_error, dynamic_cast<const paludis::BadVersionSpecError *>(&ee)->message().c_str());
++        rb_raise(c_bad_version_spec_error, "%s", dynamic_cast<const paludis::BadVersionSpecError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::SetNameError *>(&ee))
+-        rb_raise(c_set_name_error, dynamic_cast<const paludis::SetNameError *>(&ee)->message().c_str());
++        rb_raise(c_set_name_error, "%s", dynamic_cast<const paludis::SetNameError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::PackageNamePartError *>(&ee))
+-        rb_raise(c_package_name_part_error, dynamic_cast<const paludis::PackageNamePartError *>(&ee)->message().c_str());
++        rb_raise(c_package_name_part_error, "%s", dynamic_cast<const paludis::PackageNamePartError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::CategoryNamePartError *>(&ee))
+-        rb_raise(c_category_name_part_error, dynamic_cast<const paludis::CategoryNamePartError *>(&ee)->message().c_str());
++        rb_raise(c_category_name_part_error, "%s", dynamic_cast<const paludis::CategoryNamePartError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::NameError *>(&ee))
+-        rb_raise(c_name_error, dynamic_cast<const paludis::NameError *>(&ee)->message().c_str());
++        rb_raise(c_name_error, "%s", dynamic_cast<const paludis::NameError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::PackageDepSpecError *>(&ee))
+-        rb_raise(c_package_dep_spec_error, dynamic_cast<const paludis::PackageDepSpecError *>(&ee)->message().c_str());
++        rb_raise(c_package_dep_spec_error, "%s", dynamic_cast<const paludis::PackageDepSpecError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::AmbiguousPackageNameError *>(&ee))
+     {
+         VALUE ex_args[2];
+@@ -198,19 +198,19 @@ void paludis::ruby::exception_to_ruby_exception(const std::exception & ee)
+         rb_exc_raise(rb_class_new_instance(2, ex_args, c_ambiguous_package_name_error));
+     }
+     else if (0 != dynamic_cast<const paludis::NoSuchPackageError *>(&ee))
+-        rb_raise(c_no_such_package_error, dynamic_cast<const paludis::NoSuchPackageError *>(&ee)->message().c_str());
++        rb_raise(c_no_such_package_error, "%s", dynamic_cast<const paludis::NoSuchPackageError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::NoSuchRepositoryError *>(&ee))
+-        rb_raise(c_no_such_repository_error, dynamic_cast<const paludis::NoSuchRepositoryError *>(&ee)->message().c_str());
++        rb_raise(c_no_such_repository_error, "%s", dynamic_cast<const paludis::NoSuchRepositoryError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::ConfigFileError *>(&ee))
+-        rb_raise(c_config_file_error, dynamic_cast<const paludis::ConfigFileError *>(&ee)->message().c_str());
++        rb_raise(c_config_file_error, "%s", dynamic_cast<const paludis::ConfigFileError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::ConfigurationError *>(&ee))
+-        rb_raise(c_configuration_error, dynamic_cast<const paludis::ConfigurationError *>(&ee)->message().c_str());
++        rb_raise(c_configuration_error, "%s", dynamic_cast<const paludis::ConfigurationError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::ActionFailedError *>(&ee))
+-        rb_raise(c_action_failed_error, dynamic_cast<const paludis::ActionFailedError *>(&ee)->message().c_str());
++        rb_raise(c_action_failed_error, "%s", dynamic_cast<const paludis::ActionFailedError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::ActionAbortedError *>(&ee))
+-        rb_raise(c_action_aborted_error, dynamic_cast<const paludis::ActionAbortedError *>(&ee)->message().c_str());
++        rb_raise(c_action_aborted_error, "%s", dynamic_cast<const paludis::ActionAbortedError *>(&ee)->message().c_str());
+     else if (0 != dynamic_cast<const paludis::BadVersionOperatorError *>(&ee))
+-        rb_raise(c_bad_version_operator_error, dynamic_cast<const paludis::BadVersionOperatorError *>(&ee)->message().c_str());
++        rb_raise(c_bad_version_operator_error, "%s", dynamic_cast<const paludis::BadVersionOperatorError *>(&ee)->message().c_str());
+ 
+     else if (0 != dynamic_cast<const paludis::Exception *>(&ee))
+         rb_raise(rb_eRuntimeError, "Caught paludis::Exception: %s (%s)",

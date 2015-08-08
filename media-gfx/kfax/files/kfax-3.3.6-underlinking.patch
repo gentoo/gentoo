@@ -1,0 +1,12 @@
+diff -ruN kfax-3.3.6-kde4.4.0.orig/CMakeLists.txt kfax-3.3.6-kde4.4.0/CMakeLists.txt
+--- kfax-3.3.6-kde4.4.0.orig/CMakeLists.txt	2010-02-11 21:59:47.000000000 +0100
++++ kfax-3.3.6-kde4.4.0/CMakeLists.txt	2011-08-11 21:33:15.262295828 +0200
+@@ -12,7 +12,7 @@
+ 
+ kde4_add_executable(kfax ${kfax_SRCS})
+ 
+-target_link_libraries(kfax  ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY} )
++target_link_libraries(kfax  ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY} ${X11_LIBRARIES})
+ 
+ install(TARGETS kfax  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+ 

@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/457634
+
+From 1df8defbaa5712fe23d34f13d6aae7a568c720a1 Mon Sep 17 00:00:00 2001
+From: Kim Woelders <kim@woelders.dk>
+Date: Sun, 4 Aug 2013 08:05:27 +0200
+Subject: [PATCH] GIF loader: Fix for libgif version 5.
+
+---
+ src/modules/loaders/loader_gif.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/modules/loaders/loader_gif.c b/src/modules/loaders/loader_gif.c
+index 23b8fd0..d1c2ae2 100644
+--- a/src/modules/loaders/loader_gif.c
++++ b/src/modules/loaders/loader_gif.c
+@@ -36,7 +37,12 @@ load(ImlibImage * im, ImlibProgressFunction progress, char progress_granularity,
+ #endif
+    if (fd < 0)
+       return 0;
++
++#if GIFLIB_MAJOR >= 5
++   gif = DGifOpenFileHandle(fd, NULL);
++#else
+    gif = DGifOpenFileHandle(fd);
++#endif
+    if (!gif)
+      {
+         close(fd);
+-- 
+1.8.4.3
+

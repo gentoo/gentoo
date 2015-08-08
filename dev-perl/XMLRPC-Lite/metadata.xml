@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<upstream>
+		<remote-id type="cpan">XMLRPC-Lite</remote-id>
+		<remote-id type="cpan-module">Apache::XMLRPC::Lite</remote-id>
+		<remote-id type="cpan-module">My::PingPong</remote-id>
+		<remote-id type="cpan-module">XMLRPC</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Constants</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Data</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Deserializer</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Lite</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Serializer</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Server</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Server::Parameters</remote-id>
+		<remote-id type="cpan-module">XMLRPC::SOM</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Test</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Test::Server</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::HTTP</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::HTTP::Apache</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::HTTP::CGI</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::HTTP::Daemon</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::POP3</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::POP3::Server</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::TCP</remote-id>
+		<remote-id type="cpan-module">XMLRPC::Transport::TCP::Server</remote-id>
+	</upstream>
+</pkgmetadata>

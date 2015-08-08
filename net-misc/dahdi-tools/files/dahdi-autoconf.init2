@@ -1,0 +1,225 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Ultimate Linux Solutions CC
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before dahdi
+}
+
+dahdi_load_modules() {
+	local hwlist loc status mod mod_vname pciid desc
+
+	hwlist=$(/usr/sbin/dahdi_hardware)
+
+	if [ -z "${hwlist}" ]; then
+		einfo "No digium hardware found."
+		ebegin "Loading module dahdi_dummy"
+		/sbin/modprobe dahdi_dummy
+		eend $?
+		return
+	fi
+
+	echo "${hwlist}" | while read loc mod pciid desc; do
+		status="${mod:${#mod}-1:1}"
+		mod="${mod%[+-]}"
+		mod_vname="mod_${mod}"
+
+		einfo "Found $desc at $loc (module: $mod)"
+
+		if [ "${status}" = "-" -a "${!mod_vname-notloaded}" = "notloaded" ]; then
+			ebegin "Loading module $mod"
+			/sbin/modprobe $mod
+			eend
+
+			[ $? -eq 0 ] && eval "$mod_vname=loaded"
+		fi
+	done
+}
+
+dahdi_module_unload() {
+	local mod=$1 s
+	[ -d /sys/module/${mod} ] || return 0
+
+	for s in $(find /sys/module/${mod}/holders -type l); do
+		dahdi_module_unload $(basename $s)
+	done
+
+	ebegin "Removing dahdi module: $mod"
+	/sbin/rmmod $mod
+	eend $?
+}
+
+dahdi_gen_fxo_config() {
+	local port=$1
+
+	echo "fxs${DAHDI_FXO_SIGNALLING-ks}=${port}"
+	[ "${DAHDI_FXO_ECHOCAN-yes}" = yes ] && echo "echocanceller=${DAHDI_ECHOCAN-mg2},${port}"
+}
+
+dahdi_gen_fxs_config() {
+	local port=$1
+
+	echo "fxo${DAHDI_FXO_SIGNALLING-ks}=${port}"
+	[ "${DAHDI_FXS_ECHOCAN-yes}" = yes ] && echo "echocanceller=${DAHDI_ECHOCAN-mg2},${port}"
+}
+
+dahdi_gen_bri_te_config() {
+	span=$1
+	port=$2
+	basechan=$3
+
+	echo "span=${span},${port},0,${DAHDI_BRI_FRAMING-CSS},${DAHDI_BRI_CODING-AMI}"
+	echo "bchan=${basechan}-$(( basechan + 1 ))"
+	echo "hardhdlc=$(( basechan + 2 ))"
+	[ "${DAHDI_BRI_TE_ECHOCAN-yes}" = yes ] && echo "echocanceller=${DAHDI_ECHOCAN-mg2},${basechan}-$(( basechan + 1 ))"
+}
+
+dahdi_gen_bri_nt_config() {
+	span=$1
+	port=$2
+	basechan=$3
+
+	echo "span=${span},0,0,${DAHDI_BRI_FRAMING-CSS},${DAHDI_BRI_CODING-AMI}"
+	echo "bchan=${basechan}-$(( basechan + 1 ))"
+	echo "hardhdlc=$(( basechan + 2 ))"
+	[ "${DAHDI_BRI_NT_ECHOCAN-yes}" = yes ] && echo "echocanceller=${DAHDI_ECHOCAN-mg2},${basechan}-$(( basechan + 1 ))"
+}
+
+dahdi_gen_e1_cpe_config() {
+	span=$1
+	port=$2
+	basechan=$3
+
+	echo "span=${span},${port},0,${DAHDI_E1_FRAMING-CCS},${DAHDI_E1_CODING-HDB3,CRC4}"
+	bchans="${basechan}-$(( basechan + 14 )),$(( basechan + 16 ))-$(( basechan + 30 ))"
+	echo "bchan=${bchans}"
+	echo "dchan=$(( basechan + 15 ))"
+	[ "${DAHDI_E1_CPE_ECHOCAN-yes}" = yes ] && echo "echocanceller=${DAHDI_ECHOCAN-mg2},${bchans}"
+}
+
+dahdi_gen_e1_net_config() {
+	span=$1
+	port=$2
+	basechan=$3
+
+	echo "span=${span},0,0,${DAHDI_E1_FRAMING-CCS},${DAHDI_E1_CODING-HDB3,CRC4}"
+	bchans="${basechan}-$(( basechan + 14 )),$(( basechan + 16 ))-$(( basechan + 30 ))"
+	echo "bchan=${bchans}"
+	echo "dchan=$(( basechan + 15 ))"
+	[ "${DAHDI_E1_NET_ECHOCAN-yes}" = yes ] && echo "echocanceller=${DAHDI_ECHOCAN-mg2},${bchans}"
+}
+
+dahdi_conf_span() {
+	local span=$1
+	local type=$2
+	local desc=$3
+	local port=$4
+	local basechan=$5
+	local vname=""
+
+	# Analog we need to deal with on a port-by-port basis.
+	[ "${type}" = "analog" ] && return 0
+
+	echo -e "\n# ${desc}"
+	case "${type}" in
+		digital-TE)
+			dahdi_gen_bri_te_config "${span}" "${port}" "${basechan}"
+		;;
+		digital-NT)
+			dahdi_gen_bri_nt_config "${span}" "${port}" "${basechan}"
+		;;
+		digital-E1)
+			# Use CPE by default.  Unfortunately there is no easy
+			# way to detect CPE vs NET as far as I know and specifying
+			# in a config that you want NET mode seems the sanest way.
+			vname="PRI_SPAN_${span}_NET"
+			if [[ "${!vname}" = [Yy][Ee][Ss] ]]; then
+				dahdi_gen_e1_net_config "${span}" "${port}" "${basechan}"
+			else
+				dahdi_gen_e1_cpe_config "${span}" "${port}" "${basechan}"
+			fi
+		;;
+		*)
+			echo "# Don't know how to configure this (type=${type})."
+			echo "# Please file a bug on bugs.gentoo.org and add jaco@uls.co.za as CC."
+		;;
+	esac
+}
+
+dahdi_gen_config() {
+	local type manufacturer devicetype basechan aport atype
+	local span=
+	local tfile="$(mktemp)"
+	local sfile="$(mktemp)"
+	local plocation=""
+	local isdnport=0
+
+	/usr/sbin/dahdi_scan > "${sfile}" 
+	exec 3<"${sfile}"
+
+	echo "# Automatically dahdi-autoconf generated file ($(date))." >> "${tfile}"
+	echo "# This file WILL get regenerated whenever you restart dahdi-autoconf." >> "${tfile}"
+
+	while read LINE <&3; do
+		case "$LINE" in
+			[[]*[]])
+				[ -n "${span}" ] && dahdi_conf_span "${span}" "${type}" "${manufacturer} ${devicetype} (${name})" "${isdnport}" "${basechan}" >> "${tfile}"
+				span="${LINE%?}"
+				span="${span#?}"
+			;;
+			type=*|manufacturer=*|devicetype=*|basechan=*|name=*)
+				eval "${LINE%%=*}='${LINE#*=}'"
+			;;
+			location=*)
+				eval "${LINE%%=*}='${LINE#*=}'"
+				if [ "${location}" == "${plocation}" ]; then
+					(( ++isdnport ))
+				else
+					plocation="${location}"
+					isdnport=1
+				fi
+			;;
+			port=*)
+				# For analog cards only.
+				aport="${LINE#*=}"; aport="${aport%,*}"
+				atype="${LINE#*,}"
+				[ "${aport}" -eq "${basechan}" ] && echo -e "\n# ${manufacturer} ${devicetype} (${name})" >> "${tfile}"
+				case "${atype}" in
+					FXO)
+						dahdi_gen_fxo_config $aport >> "${tfile}"
+					;;
+					FXS)
+						dahdi_gen_fxs_config $aport >> "${tfile}"
+					;;
+				esac
+			;;
+		esac
+	done
+	
+	[ -n "${span}" ] && dahdi_conf_span "${span}" "${type}" "${manufacturer} ${devicetype} (${name})" "${isdnport}" "${basechan}" >> "${tfile}"
+
+	echo -e "\nloadzone = ${DAHDI_ZONE}\ndefaultzone = ${DAHDI_ZONE}\n## END OF AUTOCONFIGURED FILE ##" >> "${tfile}"
+
+	exec 3<&-
+
+	rm -f "${sfile}"
+	mv /etc/dahdi/system.conf /etc/dahdi/system.conf.bck
+	mv "${tfile}" /etc/dahdi/system.conf
+}
+
+start() {
+	dahdi_load_modules
+
+	if [ ! -r /dev/dahdi/ctl ]; then
+		eerror "No DAHDI compatible cards detected."
+		return 1
+	fi
+
+	ebegin "Generating DAHDI Configuration"
+	dahdi_gen_config
+	eend $?
+}
+
+stop() {
+	dahdi_module_unload dahdi
+}

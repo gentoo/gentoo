@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Parses Javascript into an Abstract Syntax Tree (AST).  Initially intended as frontend to hjsmin.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">alanz/language-javascript</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+
+	<longdescription>
+		Use the kernel tracer if you are debugging a system-wide performance problem or a kernel problem. This tracer comes with an instrumentation patch for most kernel subsystems, which is enough to debug many problems. This includes system calls, IRQs, traps, memory management, softIRQs, scheduling and many others. Of course, the kernel tracer allows you to add your own instrumentation anywhere in the kernel code.
+	</longdescription>
+</pkgmetadata>

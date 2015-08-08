@@ -1,0 +1,126 @@
+diff -Naurp rxvt-2.7.10.orig/AZZ-ChangeLog rxvt-2.7.10/AZZ-ChangeLog
+--- rxvt-2.7.10.orig/AZZ-ChangeLog	1969-12-31 19:00:00.000000000 -0500
++++ rxvt-2.7.10/AZZ-ChangeLog	2003-03-31 14:11:43.000000000 -0500
+@@ -0,0 +1,7 @@
++- Modified to support borderlessness with -nb and override-redirect with
++  -or (or resources borderless and overrideRedirect).
++- Modified to allow an arbitrary command to be run instead of the bell
++  with -bc.
++- Fixed buffer overflow in command.c (not that you should install this suid
++  root anyway)
++
+diff -Naurp rxvt-2.7.10.orig/src/command.c rxvt-2.7.10/src/command.c
+--- rxvt-2.7.10.orig/src/command.c	2003-03-26 01:01:23.000000000 -0500
++++ rxvt-2.7.10/src/command.c	2003-03-31 14:11:43.000000000 -0500
+@@ -3098,7 +3098,7 @@ rxvt_tt_printf(rxvt_t *r, const char *fm
+     unsigned char   buf[256];
+ 
+     va_start(arg_ptr, fmt);
+-    vsprintf((char *)buf, fmt, arg_ptr);
++    vsnprintf((char *)buf, sizeof buf, fmt, arg_ptr);
+     va_end(arg_ptr);
+     rxvt_tt_write(r, buf, (unsigned int)STRLEN(buf));
+ }
+diff -Naurp rxvt-2.7.10.orig/src/init.c rxvt-2.7.10/src/init.c
+--- rxvt-2.7.10.orig/src/init.c	2002-12-04 00:21:39.000000000 -0500
++++ rxvt-2.7.10/src/init.c	2003-03-31 14:11:43.000000000 -0500
+@@ -34,6 +34,7 @@
+ #include "../config.h"		/* NECESSARY */
+ #include "rxvt.h"		/* NECESSARY */
+ #include "init.h"
++#include <Xm/MwmUtil.h>
+ 
+ #include <signal.h>
+ 
+@@ -1126,6 +1127,24 @@ rxvt_Create_Windows(rxvt_t *r, int argc,
+ 					       r->PixColors[Color_border],
+ 					       r->PixColors[Color_fg]);
+ #endif
++     if (r->Options & Opt_borderless) {
++       Atom mwmatom;
++       MotifWmHints hints;
++ 
++       mwmatom = XInternAtom(r->Xdisplay, _XA_MOTIF_WM_HINTS, FALSE);
++       hints.flags = MWM_HINTS_DECORATIONS;
++       hints.decorations = 0;
++       XChangeProperty(r->Xdisplay, r->TermWin.parent[0], mwmatom, mwmatom,
++         32, PropModeReplace, (unsigned char *)&hints, 
++         sizeof(MotifWmHints)/sizeof(long));
++     }
++     if (r->Options & Opt_overrideredirect) {
++       XSetWindowAttributes attrib;
++ 
++       attrib.override_redirect = True;
++       XChangeWindowAttributes(r->Xdisplay, r->TermWin.parent[0],
++                               CWOverrideRedirect, &attrib);
++     }
+     rxvt_xterm_seq(r, XTerm_title, r->h->rs[Rs_title], CHAR_ST);
+     rxvt_xterm_seq(r, XTerm_iconName, r->h->rs[Rs_iconName], CHAR_ST);
+ 
+diff -Naurp rxvt-2.7.10.orig/src/rxvt.h rxvt-2.7.10/src/rxvt.h
+--- rxvt-2.7.10.orig/src/rxvt.h	2003-03-06 20:17:18.000000000 -0500
++++ rxvt-2.7.10/src/rxvt.h	2003-03-31 14:11:43.000000000 -0500
+@@ -581,6 +581,9 @@ enum {
+     Rs_modifier,
+     Rs_answerbackstring,
+     Rs_tripleclickwords,
++    Rs_borderless,
++    Rs_overrideRedirect,
++    Rs_bellCommand,
+     NUM_RESOURCES
+ } ;
+ 
+diff -Naurp rxvt-2.7.10.orig/src/rxvtlib.h.in rxvt-2.7.10/src/rxvtlib.h.in
+--- rxvt-2.7.10.orig/src/rxvtlib.h.in	2003-02-27 20:03:16.000000000 -0500
++++ rxvt-2.7.10/src/rxvtlib.h.in	2003-03-31 14:12:59.000000000 -0500
+@@ -218,6 +218,8 @@ typedef enum {
+ #define Opt_scrollWithBuffer	(1LU<<17)
+ #define Opt_jumpScroll		(1LU<<18)
+ #define Opt_mouseWheelScrollPage (1LU<<19)
++#define Opt_borderless		(1LU<<20)
++#define Opt_overrideredirect	(1LU<<21)
+ /* place holder used for parsing command-line options */
+ #define Opt_Reverse		(1LU<<30)
+ #define Opt_Boolean		(1LU<<31)
+diff -Naurp rxvt-2.7.10.orig/src/screen.c rxvt-2.7.10/src/screen.c
+--- rxvt-2.7.10.orig/src/screen.c	2003-03-23 11:56:06.000000000 -0500
++++ rxvt-2.7.10/src/screen.c	2003-03-31 14:11:43.000000000 -0500
+@@ -29,6 +29,7 @@
+ #include "screen.intpro"	/* PROTOS for internal routines */
+ 
+ #include <X11/Xmd.h>		/* get the typedef for CARD32 */
++#include <stdlib.h>
+ 
+ /* ------------------------------------------------------------------------- */
+ #ifdef MULTICHAR_SET
+@@ -1832,6 +1833,9 @@ rxvt_scr_changeview(rxvt_t *r, u_int16_t
+ void
+ rxvt_scr_bell(rxvt_t *r)
+ {
++	if (r->h->rs[Rs_bellCommand]) {
++		system(r->h->rs[Rs_bellCommand]);
++	} else {
+ #ifndef NO_BELL
+ # ifndef NO_MAPALERT
+ #  ifdef MAPALERT_OPTION
+@@ -1845,6 +1849,7 @@ rxvt_scr_bell(rxvt_t *r)
+     } else
+ 	XBell(r->Xdisplay, 0);
+ #endif
++	}
+ }
+ 
+ /* ------------------------------------------------------------------------- */
+diff -Naurp rxvt-2.7.10.orig/src/xdefaults.c rxvt-2.7.10/src/xdefaults.c
+--- rxvt-2.7.10.orig/src/xdefaults.c	2003-02-27 20:03:18.000000000 -0500
++++ rxvt-2.7.10/src/xdefaults.c	2003-03-31 14:11:43.000000000 -0500
+@@ -108,6 +108,9 @@ static const struct {
+ 	 "scroll-on-tty-output inhibit"),
+     BOOL(Rs_scrollTtyKeypress, "scrollTtyKeypress", "sk", Opt_scrollTtyKeypress,
+ 	 "scroll-on-keypress"),
++    BOOL(Rs_borderless, "borderless", "nb", Opt_borderless, "use MWM hints to remove the window border"),
++    BOOL(Rs_overrideRedirect, "overrideRedirect", "or", Opt_overrideredirect, "set the override_redirect flag"),
++    STRG(Rs_bellCommand, "bellCommand", "bc", "string", "command to execute instead of beeping"),
+     BOOL(Rs_scrollWithBuffer, "scrollWithBuffer", "sw", Opt_scrollWithBuffer,
+ 	 "scroll-with-buffer"),
+ #ifdef TRANSPARENT

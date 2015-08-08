@@ -1,0 +1,219 @@
+Allow to fully disable LTO
+
+--- ld64-236.3/src/ld/InputFiles.cpp
++++ ld64-236.3/src/ld/InputFiles.cpp
+@@ -59,7 +59,9 @@
+ #include "macho_relocatable_file.h"
+ #include "macho_dylib_file.h"
+ #include "archive_file.h"
++#ifdef LTO
+ #include "lto_file.h"
++#endif
+ #include "opaque_section_file.h"
+ #include "MachOFileAbstraction.hpp"
+ #include "Snapshot.h"
+@@ -187,9 +189,11 @@
+     if ( result != NULL  )
+ 		return result;
+ 
++#ifdef LTO
+ 	result = lto::archName(p, len);
+ 	if ( result != NULL  )
+ 		 return result;
++#endif
+ 	
+ 	if ( strncmp((const char*)p, "!<arch>\n", 8) == 0 )
+ 		return "archive";
+@@ -292,6 +296,7 @@
+ 		return objResult;
+ 	}
+ 
++#ifdef LTO
+ 	// see if it is an llvm object file
+ 	objResult = lto::parse(p, len, info.path, info.modTime, info.ordinal, _options.architecture(), _options.subArchitecture(), _options.logAllFiles(), _options.verboseOptimizationHints());
+ 	if ( objResult != NULL ) {
+@@ -299,6 +304,7 @@
+ 		OSAtomicIncrement32(&_totalObjectLoaded);
+ 		return objResult;
+ 	}
++#endif
+ 	
+ 	// see if it is a dynamic library
+ 	ld::dylib::File* dylibResult = mach_o::dylib::parse(p, len, info.path, info.modTime, _options, info.ordinal, info.options.fBundleLoader, indirectDylib);
+@@ -322,6 +328,7 @@
+ 		return archiveResult;
+ 	}
+ 	
++#ifdef LTO
+ 	// does not seem to be any valid linker input file, check LTO misconfiguration problems
+ 	if ( lto::archName((uint8_t*)p, len) != NULL ) {
+ 		if ( lto::libLTOisLoaded() ) {
+@@ -349,6 +356,7 @@
+ 			throwf("could not process llvm bitcode object file, because %s could not be loaded", libLTO);
+ 		}
+ 	}
++#endif
+ 
+ 	// error handling
+ 	if ( ((fat_header*)p)->magic == OSSwapBigToHostInt32(FAT_MAGIC) ) {
+--- ld64-236.3/src/ld/ld.cpp
++++ ld64-236.3/src/ld/ld.cpp
+@@ -91,7 +91,9 @@
+ #include "parsers/archive_file.h"
+ #include "parsers/macho_relocatable_file.h"
+ #include "parsers/macho_dylib_file.h"
++#ifdef LTO
+ #include "parsers/lto_file.h"
++#endif
+ #include "parsers/opaque_section_file.h"
+ 
+ 
+--- ld64-236.3/src/ld/Options.cpp
++++ ld64-236.3/src/ld/Options.cpp
+@@ -41,10 +41,13 @@
+ #include "MachOFileAbstraction.hpp"
+ #include "Snapshot.h"
+ 
++
++#ifdef LTO
+ // upward dependency on lto::version()
+ namespace lto {
+ 	extern const char* version();
+ }
++#endif
+ 
+ // magic to place command line in crash reports
+ const int crashreporterBufferSize = 2000;
+@@ -3179,9 +3182,11 @@
+ 			fprintf(stderr, "configured to support archs: %s\n", ALL_SUPPORTED_ARCHS);
+ 			 // if only -v specified, exit cleanly
+ 			 if ( argc == 2 ) {
++#ifdef LTO
+ 				const char* ltoVers = lto::version();
+ 				if ( ltoVers != NULL )
+ 					fprintf(stderr, "LTO support using: %s\n", ltoVers);
++#endif
+ 				exit(0);
+ 			}
+ 		}
+--- ld64-236.3/src/ld/parsers/archive_file.cpp
++++ ld64-236.3/src/ld/parsers/archive_file.cpp
+@@ -45,7 +45,9 @@
+ #include "Architectures.hpp"
+ 
+ #include "macho_relocatable_file.h"
++#ifdef LTO
+ #include "lto_file.h"
++#endif
+ #include "archive_file.h"
+ 
+ 
+@@ -97,8 +99,10 @@
+ private:
+ 	static bool										validMachOFile(const uint8_t* fileContent, uint64_t fileLength, 
+ 																	const mach_o::relocatable::ParserOptions& opts);
++#ifdef LTO
+ 	static bool										validLTOFile(const uint8_t* fileContent, uint64_t fileLength, 
+ 																	const mach_o::relocatable::ParserOptions& opts);
++#endif
+ 	static cpu_type_t								architecture();
+ 
+ 	class Entry : ar_hdr
+@@ -242,11 +246,13 @@
+ 	return mach_o::relocatable::isObjectFile(fileContent, fileLength, opts);
+ }
+ 
++#ifdef LTO
+ template <typename A>
+ bool File<A>::validLTOFile(const uint8_t* fileContent, uint64_t fileLength, const mach_o::relocatable::ParserOptions& opts)
+ {
+ 	return lto::isObjectFile(fileContent, fileLength, opts.architecture, opts.subType);
+ }
++#endif
+ 
+ 
+ 
+@@ -267,7 +273,11 @@
+ 		if ( (p==start) && ((strcmp(memberName, SYMDEF_SORTED) == 0) || (strcmp(memberName, SYMDEF) == 0)) )
+ 			continue;
+ 		// archive is valid if first .o file is valid
+-		return (validMachOFile(p->content(), p->contentSize(), opts) || validLTOFile(p->content(), p->contentSize(), opts));
++		return (validMachOFile(p->content(), p->contentSize(), opts)
++#ifdef LTO
++            || validLTOFile(p->content(), p->contentSize(), opts)
++#endif
++            );
+ 	}	
+ 	// empty archive
+ 	return true;
+@@ -388,6 +398,7 @@
+ 			_instantiatedEntries[member] = state;
+ 			return _instantiatedEntries[member];
+ 		}
++#ifdef LTO
+ 		// see if member is llvm bitcode file
+ 		result = lto::parse(member->content(), member->contentSize(), 
+ 								mPath, member->modificationTime(), ordinal, 
+@@ -397,6 +408,7 @@
+ 			_instantiatedEntries[member] = state;
+ 			return _instantiatedEntries[member];
+ 		}
++#endif
+ 			
+ 		throwf("archive member '%s' with length %d is not mach-o or llvm bitcode", memberName, member->contentSize());
+ 	}
+--- ld64-236.3/src/ld/Resolver.cpp
++++ ld64-236.3/src/ld/Resolver.cpp
+@@ -56,7 +56,9 @@
+ #include "InputFiles.h"
+ #include "SymbolTable.h"
+ #include "Resolver.h"
++#ifdef LTO
+ #include "parsers/lto_file.h"
++#endif
+ 
+ 
+ namespace ld {
+@@ -1438,6 +1440,7 @@
+ 
+ void Resolver::linkTimeOptimize()
+ {
++#ifdef LTO
+ 	// only do work here if some llvm obj files where loaded
+ 	if ( ! _haveLLVMObjs )
+ 		return;
+@@ -1535,6 +1538,9 @@
+ 		// check new code does not override some dylib
+ 		this->checkDylibSymbolCollisions();
+ 	}
++#else
++  return;
++#endif
+ }
+ 
+ 
+--- ld64-236.3/src/other/ObjectDump.cpp
++++ ld64-236.3/src/other/ObjectDump.cpp
+@@ -33,7 +33,9 @@
+ 
+ #include "MachOFileAbstraction.hpp"
+ #include "parsers/macho_relocatable_file.h"
++#ifdef LTO
+ #include "parsers/lto_file.h"
++#endif
+ 
+ static bool			sDumpContent= true;
+ static bool			sDumpStabs	= false;
+@@ -1249,10 +1251,12 @@
+ 	if ( objResult != NULL )
+ 		return objResult;
+ 
++#ifdef LTO
+ 	// see if it is an llvm object file
+ 	objResult = lto::parse(p, fileLen, path, stat_buf.st_mtime, ld::File::Ordinal::NullOrdinal(), sPreferredArch, sPreferredSubArch, false, true);
+ 	if ( objResult != NULL ) 
+ 		return objResult;
++#endif
+ 
+ 	throwf("not a mach-o object file: %s", path);
+ #else

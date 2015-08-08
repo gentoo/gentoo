@@ -1,0 +1,35 @@
+--- Makefile.unix.orig	2013-04-12 13:56:42.131113000 +0400
++++ Makefile.unix	2013-04-12 13:57:26.595946027 +0400
+@@ -2,18 +2,18 @@
+ VERTITLE := lines-$(VERSION)
+ ARCHIVE := lines_$(VERSION).tar.gz
+ 
+-CFLAGS:=-Wall -O2 $(shell sdl-config --cflags) 
++CFLAGS += $(shell sdl-config --cflags) 
+ #-DMAEMO
+ 
+-LDFLAGS:=$(shell sdl-config --libs) -lSDL_image -lSDL_mixer
++LIBS   := -lm $(shell sdl-config --libs) -lSDL_image -lSDL_mixer
+ 
+ SRC     := board.c graphics.c main.c sound.c
+ OBJ     := $(patsubst %.c, %.o, $(SRC))
+ 
+ all: color-lines
+-PREFIX:=/usr/local
++PREFIX:=/usr
+ 
+-BINDIR:=$(DESTDIR)/$(PREFIX)/games/
++BINDIR:=$(DESTDIR)$(PREFIX)/games/bin
+ GAMEDATADIR:=$(DESTDIR)/$(PREFIX)/share/games/color-lines/
+ 
+ svnclean:
+@@ -29,8 +29,7 @@
+ 
+ color-lines:  $(OBJ)
+ 	cat color-lines.desktop.in | sed -e "s|@BINDIR|$(BINDIR)|g" > color-lines.desktop
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(^) -o $(@) 
+-	strip color-lines
++	$(CC) $(CFLAGS) $(LDFLAGS) $(^) -o $(@) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o color-lines

@@ -1,0 +1,20 @@
+--- colorcvs.orig	2008-01-26 20:04:54 +0100
++++ colorcvs	2008-01-26 20:05:56 +0100
+@@ -54,7 +54,7 @@
+ 
+ sub initDefaults
+ {
+-	$cvsPath = "/usr/bin/cvs";
++	$cvsPath = "@GENTOO_PORTAGE_EPREFIX@/usr/bin/cvs";
+ 
+ 	$nocolor{"dumb"} = "true";
+ 
+@@ -118,7 +118,7 @@
+ initDefaults();
+ 
+ # Read the configuration files.
+-for my $configFile ('/etc/colorcvsrc', "$ENV{HOME}/.colorcvsrc") {
++for my $configFile ('@GENTOO_PORTAGE_EPREFIX@/etc/colorcvsrc', "$ENV{HOME}/.colorcvsrc") {
+ 	if (-f $configFile)
+ 	{
+ 		loadPreferences($configFile);

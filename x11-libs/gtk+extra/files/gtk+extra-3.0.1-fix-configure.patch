@@ -1,0 +1,173 @@
+--- configure.in	2011/05/01 09:17:38	1.14
++++ configure.in	2011/11/26 10:39:19	1.15
+@@ -1,4 +1,13 @@
+ # Process this file with autoconf to produce a configure script.
++#
++# Help for autoconf:
++# - http://www.linuxselfhelp.com/gnu/autoconf/html_chapter/autoconf_toc.html
++# Option Syntax:
++# - http://www.linuxselfhelp.com/gnu/autoconf/html_chapter/autoconf_12.html
++# Printing Messages:
++# - http://www.linuxselfhelp.com/gnu/autoconf/html_chapter/autoconf_7.html
++#
++
+ AC_INIT(gtkextra,3.0.1)
+ AC_LANG([C])
+ 
+@@ -109,12 +118,15 @@
+ AM_CONDITIONAL(MS_LIB_AVAILABLE, test x$ms_librarian = xyes)
+ 
+ # --enable-debug option
+-dnl Check if we have enable debug support.
+-AC_MSG_CHECKING(whether to enable debugging)
+-debug_default="no"
++
++AC_MSG_CHECKING([whether to enable debugging])
++
+ AC_ARG_ENABLE(debug, 
+-	[  --enable-debug=[no/yes]   turn on debugging [default=no]],, 
+-	enable_debug=$debug_default)
++	AC_HELP_STRING(
++		[--enable-debug=[no/yes]], 
++		[turn on debugging [default=no]]),
++	,
++	enable_debug=no)
+ 
+ if test "x$enable_debug" = "xyes"; then
+     test "$cflags_set" = set || CFLAGS="$CFLAGS -g -DDEBUG"
+@@ -237,31 +249,57 @@
+ 
+ # --enable-man option
+ 
++AC_MSG_CHECKING([whether to enable man pages])
++
+ AC_ARG_ENABLE(man,
+-              [AC_HELP_STRING([--enable-man],
+-                              [regenerate man pages from Docbook [default=no]])],enable_man=yes,
+-              enable_man=no)
++	AC_HELP_STRING(
++		[--enable-man],
++		[regenerate man pages from Docbook [default=no]])],
++	,
++	enable_man=no)
+ 
+ if test "${enable_man}" != no; then
+-  dnl
+-  dnl Check for xsltproc
+-  dnl
+-  AC_PATH_PROG([XSLTPROC], [xsltproc])
+-  if test -z "$XSLTPROC"; then
+-    enable_man=no
+-  fi
++    AC_MSG_RESULT(yes)
+ 
+-  dnl check for DocBook DTD and stylesheets in the local catalog.
+-  JH_CHECK_XML_CATALOG([-//OASIS//DTD DocBook XML V4.1.2//EN],
+-     [DocBook XML DTD V4.1.2],,enable_man=no)
+-  JH_CHECK_XML_CATALOG([http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl],
+-     [DocBook XSL Stylesheets],,enable_man=no)
++    AC_PATH_PROG([XSLTPROC], [xsltproc])
++    if test -z "$XSLTPROC"; then
++	enable_man=no
++    fi
++
++    if test "$enable_man" = "no" ; then
++	AC_MSG_WARN([xsltproc is missing - disabling man pages])
++    fi
++
++    #check for DocBook DTD and stylesheets in the local catalog
++
++    JH_CHECK_XML_CATALOG(
++	[-//OASIS//DTD DocBook XML V4.1.2//EN],
++	[DocBook XML DTD V4.1.2],
++	,
++	enable_man=no)
++
++    if test "$enable_man" = "no" ; then
++	AC_MSG_WARN([missing DocBook DTD - disabling man pages])
++    fi
++
++    JH_CHECK_XML_CATALOG(
++	[http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl],
++	[DocBook XSL Stylesheets],
++	,
++	enable_man=no)
++
++    if test "$enable_man" = "no" ; then
++	AC_MSG_WARN([missing DocBook XML stylesheets - disabling man pages])
++    fi
++else
++    AC_MSG_RESULT(no)
+ fi
+ AM_CONDITIONAL(ENABLE_MAN, test x$enable_man != xno)
+ 
+-dnl
+-dnl Start of pkg-config checks
+-dnl
++
++##################################################
++# Start of pkg-config checks
++##################################################
+ 
+ PKG_PROG_PKG_CONFIG
+ 
+@@ -275,13 +313,18 @@
+ 
+ # --enable-glade option
+ 
++AC_MSG_CHECKING([whether to enable glade integration])
++
+ AC_ARG_ENABLE(glade,
+-    [AC_HELP_STRING([--enable-glade],
+-    [build glade integration files [default=no]])],
+-    enable_glade=yes,
++    AC_HELP_STRING(
++	[--enable-glade],
++	[build glade integration files [default=no]]),
++    ,
+     enable_glade=no)
+ 
+ if test "x$enable_glade" != xno; then
++    AC_MSG_RESULT(yes)
++
+     PKG_CHECK_MODULES([GLADE], [gladeui-1.0 >= 3.6])
+ 
+     AC_SUBST(GLADE_CATALOG_DIR, `$PKG_CONFIG --variable=catalogdir gladeui-1.0`)
+@@ -290,24 +333,32 @@
+ 
+     #You must define GETTEXT_PACKAGE before including gi18n-lib.h
+     GETTEXT_PACKAGE=AC_PACKAGE_NAME
+-    AC_SUBST(GETTEXT_PACKAGE)                                                       
+-    AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of the gettext package.])
++    AC_SUBST(GETTEXT_PACKAGE)
++    AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", 
++	[Name of the gettext package.])
+     AM_GLIB_GNU_GETTEXT
++else
++    AC_MSG_RESULT(no)
+ fi
+ AM_CONDITIONAL(ENABLE_GLADE, test x$enable_glade != xno)
+ 
+ 
+ # --enable-introspection
+ 
++AC_MSG_CHECKING([whether to enable gobject-introspection])
++
+ AC_ARG_ENABLE(introspection,
+-    [AC_HELP_STRING([--enable-introspection],
+-    [build gobject-introspection [default=no]])],
+-    enable_introspection=yes,
++    AC_HELP_STRING(
++	[--enable-introspection],
++	[build gobject-introspection [default=no]]),
++    ,
+     enable_introspection=no)
+ 
+ if test "x$enable_introspection" != xno; then
++    AC_MSG_RESULT(yes)
+     GOBJECT_INTROSPECTION_CHECK([0.6.14])
+ else
++    AC_MSG_RESULT(no)
+     AM_CONDITIONAL(HAVE_INTROSPECTION, test 1=0)
+ fi
+ AM_CONDITIONAL(ENABLE_INTROSPECTION, test x$enable_introspection != xno)

@@ -1,0 +1,156 @@
+diff -wbBur ushare-1.1a/src/http.c ushare-1.1a.my/src/http.c
+--- ushare-1.1a/src/http.c	2007-12-09 13:03:36.000000000 +0000
++++ ushare-1.1a.my/src/http.c	2010-10-29 11:13:07.000000000 +0000
+@@ -77,8 +77,7 @@
+   info->content_type = ixmlCloneDOMString (content_type);
+ }
+ 
+-static int
+-http_get_info (const char *filename, struct File_Info *info)
++int http_get_info (const char *filename, struct File_Info *info)
+ {
+   extern struct ushare_t *ut;
+   struct upnp_entry_t *entry = NULL;
+@@ -197,8 +196,7 @@
+   return ((UpnpWebFileHandle) file);
+ }
+ 
+-static UpnpWebFileHandle
+-http_open (const char *filename, enum UpnpOpenFileMode mode)
++UpnpWebFileHandle http_open (const char *filename, enum UpnpOpenFileMode mode)
+ {
+   extern struct ushare_t *ut;
+   struct upnp_entry_t *entry = NULL;
+@@ -251,8 +249,7 @@
+   return ((UpnpWebFileHandle) file);
+ }
+ 
+-static int
+-http_read (UpnpWebFileHandle fh, char *buf, size_t buflen)
++int http_read (UpnpWebFileHandle fh, char *buf, size_t buflen)
+ {
+   struct web_file_t *file = (struct web_file_t *) fh;
+   ssize_t len = -1;
+@@ -286,8 +283,7 @@
+   return len;
+ }
+ 
+-static int
+-http_write (UpnpWebFileHandle fh __attribute__((unused)),
++int http_write (UpnpWebFileHandle fh __attribute__((unused)),
+             char *buf __attribute__((unused)),
+             size_t buflen __attribute__((unused)))
+ {
+@@ -296,8 +292,7 @@
+   return 0;
+ }
+ 
+-static int
+-http_seek (UpnpWebFileHandle fh, off_t offset, int origin)
++int http_seek (UpnpWebFileHandle fh, off_t offset, int origin)
+ {
+   struct web_file_t *file = (struct web_file_t *) fh;
+   off_t newpos = -1;
+@@ -371,8 +366,7 @@
+   return 0;
+ }
+ 
+-static int
+-http_close (UpnpWebFileHandle fh)
++int http_close (UpnpWebFileHandle fh)
+ {
+   struct web_file_t *file = (struct web_file_t *) fh;
+ 
+@@ -402,13 +396,3 @@
+ 
+   return 0;
+ }
+-
+-struct UpnpVirtualDirCallbacks virtual_dir_callbacks =
+-  {
+-    http_get_info,
+-    http_open,
+-    http_read,
+-    http_write,
+-    http_seek,
+-    http_close
+-  };
+diff -wbBur ushare-1.1a/src/http.h ushare-1.1a.my/src/http.h
+--- ushare-1.1a/src/http.h	2007-12-09 13:03:36.000000000 +0000
++++ ushare-1.1a.my/src/http.h	2010-10-29 11:13:11.000000000 +0000
+@@ -25,6 +25,13 @@
+ #include <upnp/upnp.h>
+ #include <upnp/upnptools.h>
+ 
+-struct UpnpVirtualDirCallbacks virtual_dir_callbacks;
++int http_close (UpnpWebFileHandle fh);
++int http_write (UpnpWebFileHandle fh __attribute__((unused)),
++            char *buf __attribute__((unused)),
++            size_t buflen __attribute__((unused)));
++int http_seek (UpnpWebFileHandle fh, off_t offset, int origin);
++UpnpWebFileHandle http_open (const char *filename, enum UpnpOpenFileMode mode);
++int http_read (UpnpWebFileHandle fh, char *buf, size_t buflen);
++int http_get_info (const char *filename, struct File_Info *info);
+ 
+ #endif /* _HTTP_H_ */
+diff -wbBur ushare-1.1a/src/ushare.c ushare-1.1a.my/src/ushare.c
+--- ushare-1.1a/src/ushare.c	2007-12-09 13:03:36.000000000 +0000
++++ ushare-1.1a.my/src/ushare.c	2010-10-29 11:17:45.000000000 +0000
+@@ -188,7 +188,7 @@
+   if (strcmp (request->DevUDN + 5, ut->udn))
+     return;
+ 
+-  ip = request->CtrlPtIPAddr.s_addr;
++  ip = (*(struct sockaddr_in*)&request->CtrlPtIPAddr).sin_addr.s_addr;
+   ip = ntohl (ip);
+   sprintf (val, "%d.%d.%d.%d",
+            (ip >> 24) & 0xFF, (ip >> 16) & 0xFF, (ip >> 8) & 0xFF, ip & 0xFF);
+@@ -348,7 +348,47 @@
+ 
+   UpnpEnableWebserver (TRUE);
+ 
+-  res = UpnpSetVirtualDirCallbacks (&virtual_dir_callbacks);
++  res = UpnpVirtualDir_set_WriteCallback(http_write);
++  if (res != UPNP_E_SUCCESS)
++  {
++    log_error (_("Cannot set virtual directory callbacks\n"));
++    free (description);
++    return -1;
++  }
++
++  res = UpnpVirtualDir_set_GetInfoCallback(http_get_info);
++  if (res != UPNP_E_SUCCESS)
++  {
++    log_error (_("Cannot set virtual directory callbacks\n"));
++    free (description);
++    return -1;
++  }
++
++  res = UpnpVirtualDir_set_ReadCallback(http_read);
++  if (res != UPNP_E_SUCCESS)
++  {
++    log_error (_("Cannot set virtual directory callbacks\n"));
++    free (description);
++    return -1;
++  }
++
++  res = UpnpVirtualDir_set_OpenCallback(http_open);
++  if (res != UPNP_E_SUCCESS)
++  {
++    log_error (_("Cannot set virtual directory callbacks\n"));
++    free (description);
++    return -1;
++  }
++
++  res = UpnpVirtualDir_set_SeekCallback(http_seek);
++  if (res != UPNP_E_SUCCESS)
++  {
++    log_error (_("Cannot set virtual directory callbacks\n"));
++    free (description);
++    return -1;
++  }
++
++  res = UpnpVirtualDir_set_CloseCallback(http_close);
+   if (res != UPNP_E_SUCCESS)
+   {
+     log_error (_("Cannot set virtual directory callbacks\n"));

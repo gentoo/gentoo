@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-electronics category contains electronics packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-electronics enthält Pakete aus dem Bereich
+		Elektronik.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-electronics contiene paquetes relacionados con la
+		electrónica.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-electronicsカテゴリーには電子工学のパッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-electronics categorie bevat aan electronica gerelateerde
+		pakketten.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-electronics chứa các phần mềm điện tử.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-electronics contiene programmi per l'elettronica.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-electronics contém programas relacionados a
+		eletrônica.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-electronics zawiera programy naukowe związane z
+		elektroniką.
+	</longdescription>
+</catmetadata>
+

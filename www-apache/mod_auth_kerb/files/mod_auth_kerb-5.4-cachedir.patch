@@ -1,0 +1,15 @@
+
+Per https://bugzilla.redhat.com//show_bug.cgi?id=796430
+switch the cache dir to be relative to runtimedir.
+
+--- mod_auth_kerb-5.4/src/mod_auth_kerb.c.cachedir
++++ mod_auth_kerb-5.4/src/mod_auth_kerb.c
+@@ -891,7 +891,7 @@ create_krb5_ccache(krb5_context kcontext
+    int ret;
+    krb5_ccache tmp_ccache = NULL;
+ 
+-   ccname = apr_psprintf(r->connection->pool, "FILE:%s/krb5cc_apache_XXXXXX", P_tmpdir);
++   ccname = apr_pstrdup(r->connection->pool, "FILE:/run/httpd/krbcache/krb5cc_apache_XXXXXX");
+    fd = mkstemp(ccname + strlen("FILE:"));
+    if (fd < 0) {
+       log_rerror(APLOG_MARK, APLOG_ERR, 0, r,

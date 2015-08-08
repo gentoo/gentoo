@@ -1,0 +1,21 @@
+--- httrack-3.44.1/src/minizip/ioapi.h
++++ httrack-3.44.1/src/minizip/ioapi.h
+@@ -9,6 +9,7 @@
+ #ifndef _ZLIBIOAPI_H
+ #define _ZLIBIOAPI_H
+ 
++#define OF(x) x
+ 
+ #define ZLIB_FILEFUNC_SEEK_CUR (1)
+ #define ZLIB_FILEFUNC_SEEK_END (2)
+--- httrack-3.44.1/src/minizip/zip.h
++++ httrack-3.44.1/src/minizip/zip.h
+@@ -42,6 +42,8 @@
+       ftp://ftp.pkware.com/probdesc.zip
+ */
+ 
++#define OF(x) x
++
+ #ifndef _zip_H
+ #define _zip_H
+ 

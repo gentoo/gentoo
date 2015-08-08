@@ -1,0 +1,23 @@
+#!/sbin/runscript
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting Flumotion"
+    if [ ! -d /var/run/flumotion ] ; then
+        mkdir /var/run/flumotion
+        chown flumotion:flumotion /var/run/flumotion
+        chmod 755 /var/run/flumotion
+    fi
+
+    start-stop-daemon -o --start --chuid flumotion:flumotion --exec /usr/sbin/flumotion start
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping Flumotion"
+    /usr/sbin/flumotion stop
+    eend $?
+}

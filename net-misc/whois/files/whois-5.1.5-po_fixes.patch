@@ -1,0 +1,22 @@
+--- whois-5.1.5/po/eu.po
++++ whois-5.1.5/po/eu.po
+@@ -11,7 +11,7 @@
+ "PO-Revision-Date: 2002-08-24 16:22+0200\n"
+ "Last-Translator: Aitor Ibaez <aitiba@gmail.com>\n"
+ "Language-Team: Euskara <Librezale@librezale.org>\n"
+-"Language: \n"
++"Language: eu\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- whois-5.1.5/po/pt_BR.po
++++ whois-5.1.5/po/pt_BR.po
+@@ -11,7 +11,7 @@
+ "PO-Revision-Date: 2006-04-26 21:03-0300\n"
+ "Last-Translator: Anderson Goulart <globalx@gmail.com>\n"
+ "Language-Team: Portuguese/Brazil\n"
+-"Language: \n"
++"Language: pt_BR\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=iso-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"

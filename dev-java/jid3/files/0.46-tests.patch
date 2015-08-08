@@ -1,0 +1,21 @@
+diff -ur src.old/org/blinkenlights/jid3/test/ID3V2Test.java src/org/blinkenlights/jid3/test/ID3V2Test.java
+--- src.old/org/blinkenlights/jid3/test/ID3V2Test.java	2007-05-05 14:15:53.000000000 +0300
++++ src/org/blinkenlights/jid3/test/ID3V2Test.java	2007-05-05 14:17:02.000000000 +0300
+@@ -2612,7 +2612,7 @@
+         throws Exception
+     {
+         File[] aoMP3File = getMP3FileList(oDirectory);
+-        for (int i=0; i < aoMP3File.length; i++)
++        for (int i=0; aoMP3File != null && i < aoMP3File.length; i++)
+         {
+             // mp3 file to read
+             MP3File oMP3File = new MP3File(aoMP3File[i]);
+@@ -2626,7 +2626,7 @@
+             }
+         }
+         File[] aoDirectory = getSubDirectories(oDirectory);
+-        for (int i=0; i < aoDirectory.length; i++)
++        for (int i=0; aoDirectory != null && i < aoDirectory.length; i++)
+         {
+             // subdirectory to recurse into
+             System.out.println("Recursing into subdirectory: " + aoDirectory[i].getAbsolutePath());

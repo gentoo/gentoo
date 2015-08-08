@@ -1,0 +1,274 @@
+Index: Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeaudio.c
+===================================================================
+--- Jubler-4.6.1.orig/resources/ffmpeg/ffdecode/decodeaudio.c
++++ Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeaudio.c
+@@ -67,19 +67,19 @@ jboolean decodeAudio(JNIEnv * env, jobje
+     AVStream *audio_st=NULL;
+     int got_audio, len, err=0, audio_index=-1, i=0, pack_duration=0, packsize=0, codec_is_open=-1, video_index=-1, codec_enc_is_open=-1;
+     jlong pack_pts=0;
+-    char *outbuf=NULL;
++    AVFrame *outbuf=NULL;
+     unsigned char *packptr;
+     jboolean ret = JNI_TRUE, nobrk = JNI_TRUE;
+     
+     av_register_all();
+     
+     /* Open the input/output files */
+-    err = av_open_input_file(&fcx, input_filename, NULL, 0, NULL);
++    err = avformat_open_input(&fcx, input_filename, NULL, NULL);
+     if(err<0){
+         DEBUG(env, this, "decodeAudio", "Could not open file '%s'.", input_filename);
+         ret = JNI_FALSE;
+     }
+-    outbuf = malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE);
++    outbuf = avcodec_alloc_frame();
+     if(outbuf==NULL) {
+         DEBUG(env, this, "decodeAudio", "Could not allocate memory for outbuf.");
+         ret = JNI_FALSE;
+@@ -129,7 +129,7 @@ jboolean decodeAudio(JNIEnv * env, jobje
+     }
+     else {
+         /* open it */
+-        if ((codec_is_open = avcodec_open(ccx, codec)) < 0) {
++        if ((codec_is_open = avcodec_open2(ccx, codec, NULL)) < 0) {
+             DEBUG(env, this, "decodeAudio", "Could not open codec.");
+             ret = JNI_FALSE;
+         }
+@@ -158,10 +158,10 @@ jboolean decodeAudio(JNIEnv * env, jobje
+                     }
+                     
+                     /* use wav as the output format of the file */
+-                    fmt = guess_format(NULL, output_filename, NULL);
++                    fmt = av_guess_format(NULL, output_filename, NULL);
+                     if (!fmt) {
+ 								DEBUG(env, this, "decodeAudio", "Could not deduce output format from file extension: using WAV.");
+-                        fmt = guess_format("wav", NULL, NULL);
++                        fmt = av_guess_format("wav", NULL, NULL);
+                     }
+                     if (!fmt) {
+                         DEBUG(env, this, "decodeAudio", "Could not find suitable output format.");
+@@ -182,35 +182,28 @@ jboolean decodeAudio(JNIEnv * env, jobje
+                             audio_st = add_audio_stream(env, this, ofcx, fmt->audio_codec, ccx->sample_rate, ccx->channels);
+                         }
+                         
+-                        /* set the output parameters (must be done even if no parameters) */
+-                        if (av_set_parameters(ofcx, NULL) < 0) {
+-                            DEBUG(env, this, "decodeAudio", "Invalid output format parameters.");
+-                            ret = JNI_FALSE;
+-                        }
+-                        else {
+                             codec_enc = avcodec_find_encoder(audio_st->codec->codec_id);
+                             if (!codec_enc) {
+                                 DEBUG(env, this, "decodeAudio", "Encoder codec not found.");
+                                 ret = JNI_FALSE;
+                             }
+                             else {
+-                                if ((codec_enc_is_open = avcodec_open(audio_st->codec, codec_enc)) < 0) {
++                                if ((codec_enc_is_open = avcodec_open2(audio_st->codec, codec_enc, NULL)) < 0) {
+                                     DEBUG(env, this, "decodeAudio", "Could not open encoder codec.");
+                                     ret = JNI_FALSE;
+                                 }
+                                 else {
+                                      if (!(fmt->flags & AVFMT_NOFILE)) {
+-                                         if (url_fopen(&ofcx->pb, output_filename, URL_WRONLY) < 0) {
++                                         if (avio_open(&ofcx->pb, output_filename, AVIO_FLAG_WRITE) < 0) {
+                                              DEBUG(env, this, "decodeAudio", "Could not open file '%s'", output_filename);
+                                              ret = JNI_FALSE;
+                                          }
+                                          else {
+-                                             av_write_header(ofcx);
++                                             avformat_write_header(ofcx,NULL);
+                                          }
+                                      }
+                                 }
+                             }
+-                        }
+                     }
+                 }
+                 else {
+@@ -243,7 +236,7 @@ jboolean decodeAudio(JNIEnv * env, jobje
+                     ccx->request_channels = 2;
+                 }
+                 got_audio = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+-                len = avcodec_decode_audio2(ccx, (short *)outbuf, &got_audio, packptr, packsize);
++                len = avcodec_decode_audio4(ccx, outbuf, &got_audio, &pkt);
+                 
+                 if (len < 0) {
+                     DEBUG(env, this, "decodeAudio", "Error while decoding.");
+@@ -258,7 +251,7 @@ jboolean decodeAudio(JNIEnv * env, jobje
+                      * this is the frame we want */
+                     if (pack_pts >= seek_time_start) {
+                         /* if a frame has been decoded, output it */
+-                        audio_enc_out(env, this, ofcx, audio_st, (short *)outbuf, got_audio);
++                        audio_enc_out(env, this, ofcx, audio_st, (short *)(outbuf->data[0]), av_samples_get_buffer_size(NULL, ccx->channels, outbuf->nb_samples, ccx->sample_fmt, 1));
+                         /* if the next frame gets past our stop time, we want to stop decoding */
+                         if ( pack_pts + pack_duration > seek_time_stop ) {
+                             av_free_packet(&pkt);
+@@ -269,7 +262,7 @@ jboolean decodeAudio(JNIEnv * env, jobje
+                     /* If the next frame will be past our start seek time, this is the frame we want */
+                     else if (pack_pts + pack_duration > seek_time_start) {
+                         /* if a frame has been decoded, output it */
+-                        audio_enc_out(env, this, ofcx, audio_st, (short *)outbuf, got_audio);
++                        audio_enc_out(env, this, ofcx, audio_st, (short *)(outbuf->data[0]), av_samples_get_buffer_size(NULL, ccx->channels, outbuf->nb_samples, ccx->sample_fmt, 1));
+                         /* if the next frame gets past our stop time, we want to stop decoding */
+                         if ( pack_pts + pack_duration > seek_time_stop ) {
+                             av_free_packet(&pkt);
+@@ -301,7 +294,7 @@ jboolean decodeAudio(JNIEnv * env, jobje
+ 
+     	/* close the output file */
+     	if (!(fmt->flags & AVFMT_NOFILE) && ofcx->pb != NULL) {
+-        	url_fclose(ofcx->pb);
++        	avio_close(ofcx->pb);
+     	}
+ 		
+     	/* free the stream */
+@@ -309,7 +302,7 @@ jboolean decodeAudio(JNIEnv * env, jobje
+ 	}
+ 
+     if(codec_is_open >= 0) avcodec_close(ccx);
+-    if(outbuf != NULL)     free(outbuf);
++    if(outbuf != NULL)     av_free(outbuf);
+     if(fcx != NULL)        av_close_input_file(fcx);
+     
+     return ret;
+Index: Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeframe.c
+===================================================================
+--- Jubler-4.6.1.orig/resources/ffmpeg/ffdecode/decodeframe.c
++++ Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeframe.c
+@@ -122,7 +122,7 @@ AVPicture* decodeFrame(JNIEnv * env, job
+     AVFrame *frame=avcodec_alloc_frame();
+     
+     /* Open the input file */
+-    err = av_open_input_file(&fcx, input_filename, NULL, 0, NULL);
++    err = avformat_open_input(&fcx, input_filename, NULL, NULL);
+     if(err<0){
+         DEBUG(env, this, "decodeFrame", "Could not open file '%s'.", input_filename);
+         retflag = FALSE;
+@@ -157,7 +157,7 @@ AVPicture* decodeFrame(JNIEnv * env, job
+     }
+     else {
+         // Open codec
+-        if((codec_is_open = avcodec_open(ccx, codec)) < 0 ) {
++        if((codec_is_open = avcodec_open2(ccx, codec, NULL)) < 0 ) {
+             DEBUG(env, this, "decodeFrame", "Could not open codec.");
+             retflag = FALSE;
+         }
+@@ -190,7 +190,7 @@ AVPicture* decodeFrame(JNIEnv * env, job
+             pack_duration = av_rescale_q(pkt.duration, fcx->streams[video_index]->time_base, AV_TIME_BASE_Q);
+             comp_pts += pkt.duration;
+             // Decode this packet
+-            len = avcodec_decode_video(ccx, frame, &got_picture, pkt.data, pkt.size);
++            len = avcodec_decode_video2(ccx, frame, &got_picture, &pkt);
+             if (len < 0) {
+                 DEBUG(env, this, "decodeFrame", "Error while decoding.");
+                 retflag = FALSE;
+@@ -265,7 +265,7 @@ int file_info(JNIEnv * env, jobject this
+     av_register_all();
+     
+     // Open the input file.
+-    err = av_open_input_file(&fcx, input_filename, NULL, 0, NULL);
++    err = avformat_open_input(&fcx, input_filename, NULL, NULL);
+     if(err<0){
+         DEBUG(env, this, "file_info", "Could not open file '%s'.", input_filename);
+         return 1;
+@@ -275,9 +275,9 @@ int file_info(JNIEnv * env, jobject this
+     err = av_find_stream_info(fcx);
+     
+     // Give us information about the file and exit
+-    dump_format(fcx, 0, input_filename, FALSE);
++    av_dump_format(fcx, 0, input_filename, FALSE);
+     
+-    av_close_input_file(fcx);
++    avformat_close_input(&fcx);
+     return 0;
+ }
+ 
+Index: Jubler-4.6.1/resources/ffmpeg/ffdecode/grabinfo.c
+===================================================================
+--- Jubler-4.6.1.orig/resources/ffmpeg/ffdecode/grabinfo.c
++++ Jubler-4.6.1/resources/ffmpeg/ffdecode/grabinfo.c
+@@ -82,7 +82,7 @@ void get_information(JNIEnv * env, jobje
+     av_register_all();
+     
+     // Open the input file.
+-    err = av_open_input_file(&fcx, video_c, NULL, 0, NULL);
++    err = avformat_open_input(&fcx, video_c, NULL, NULL);
+     if(err<0) {
+         DEBUG(env, this, "get_information", "Could not open file '%s'.", video_c);
+         ret = JNI_FALSE;
+Index: Jubler-4.6.1/resources/ffmpeg/ffdecode/makecache.c
+===================================================================
+--- Jubler-4.6.1.orig/resources/ffmpeg/ffdecode/makecache.c
++++ Jubler-4.6.1/resources/ffmpeg/ffdecode/makecache.c
+@@ -59,7 +59,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+     float ratewindow = 0;
+     unsigned int offset=0, maxbyte=0, sampledcounter=1;
+     FILE *cachefile=NULL;
+-    uint8_t *outbuf=NULL;
++    AVFrame *outbuf=NULL;
+     jboolean nobrk = JNI_TRUE;
+     
+     int ENDIANESS = isLittleEndian();
+@@ -81,7 +81,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+         ret = JNI_TRUE;
+         
+         // Open the input file.
+-        err = av_open_input_file(&fcx, audio_c, NULL, 0, NULL);
++        err = avformat_open_input(&fcx, audio_c, NULL, NULL);
+         cachefile = fopen(cache_c, "wb");
+         if(err<0){
+             DEBUG(env, this, "makeCache", "Could not open audio file '%s'.", audio_c);
+@@ -91,7 +91,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+             DEBUG(env, this, "makeCache", "Could not open cache file '%s'.", cache_c);
+             ret = JNI_FALSE;
+         }
+-        outbuf = malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE);
++        outbuf = avcodec_alloc_frame();
+         if(outbuf==NULL) {
+             DEBUG(env, this, "makeCache", "Could not allocate memory for outbuf.");
+             ret = JNI_FALSE;
+@@ -123,7 +123,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+         }
+         else {
+             /* open it */
+-            if ((codec_is_open = avcodec_open(ccx, codec)) < 0) {
++            if ((codec_is_open = avcodec_open2(ccx, codec,NULL)) < 0) {
+                 DEBUG(env, this, "makeCache", "Could not open codec.");
+                 ret = JNI_FALSE;
+             }
+@@ -175,7 +175,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+                     pack_pts = av_rescale_q(pkt.pts, fcx->streams[audio_index]->time_base, AV_TIME_BASE_Q);
+                     // Decode the paket
+                     got_audio = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+-                    len = avcodec_decode_audio2(ccx, (short *)outbuf, &got_audio, pkt.data, pkt.size);
++                    len = avcodec_decode_audio4(ccx, outbuf, &got_audio, &pkt);
+                     
+                     if (len < 0) {
+                         DEBUG(env, this, "makeCache", "Error while decoding.");
+@@ -196,7 +196,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+                             if (bytecounter+offset + step*channels >= maxbyte) {
+                                 for (j = 1; j <= channels ; j++) {
+                                     // actually sample is not the whole sample, but the data for one channel each time
+-                                    sample = (char)outbuf[bytecounter+ENDIANESS];
++                                    sample = (char)outbuf->data[0][bytecounter+ENDIANESS];
+                                     // min max averaging: only keep the highest and the lowest sample value
+                                     if (maxsample[j-1] < sample) maxsample[j-1] = sample;
+                                     if (minsample[j-1] > sample) minsample[j-1] = sample;
+@@ -215,7 +215,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+                             }
+                             else {
+                                 for (j = 1; j <= channels; j++) {
+-                                    sample = (char)outbuf[bytecounter+ENDIANESS];
++                                    sample = (char)outbuf->data[0][bytecounter+ENDIANESS];
+                                     // min max averaging
+                                     if (maxsample[j-1] < sample) maxsample[j-1] = sample;
+                                     if (minsample[j-1] > sample) minsample[j-1] = sample;
+@@ -254,7 +254,7 @@ JNIEXPORT jboolean JNICALL Java_com_pana
+     if(minsample != NULL)  free(minsample);
+     if(cachefile != NULL)  fclose(cachefile);
+     if(codec_is_open >= 0) avcodec_close(ccx);
+-    if(outbuf != NULL)     free(outbuf);
++    if(outbuf != NULL)     av_free(outbuf);
+     if(fcx != NULL)        av_close_input_file(fcx);
+     
+     return ret;

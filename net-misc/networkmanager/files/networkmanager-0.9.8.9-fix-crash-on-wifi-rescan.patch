@@ -1,0 +1,47 @@
+From 4099c9242b091604466dda081dc5f6909354258b Mon Sep 17 00:00:00 2001
+From: M. Vefa Bicakci <m.v.b@runbox.com>
+Date: Sat, 24 May 2014 23:37:00 +0000
+Subject: core: fix crash during Wi-Fi rescan by emitting NM_DEVICE_AUTH_REQUEST signal correctly
+
+Fixes regression introduced by commit da59b6d2229b85afbb9e14846931376340dc6030.
+
+https://mail.gnome.org/archives/networkmanager-list/2014-May/msg00038.html
+
+Backport-of: d9653484859c426f707b4759bc9882f7a57c1152
+[thaller@redhat.com: original patch modified in nm-device-wifi.c to pass no
+                     connection, as it is done on master]
+Signed-off-by: Thomas Haller <thaller@redhat.com>
+---
+diff --git a/src/nm-device-wifi.c b/src/nm-device-wifi.c
+index 8ca5278..052d68f 100644
+--- a/src/nm-device-wifi.c
++++ b/src/nm-device-wifi.c
+@@ -1563,6 +1563,7 @@ impl_device_request_scan (NMDeviceWifi *self,
+ 	g_signal_emit_by_name (device,
+ 	                       NM_DEVICE_AUTH_REQUEST,
+ 	                       context,
++	                       NULL,
+ 	                       NM_AUTH_PERMISSION_NETWORK_CONTROL,
+ 	                       TRUE,
+ 	                       request_scan_cb,
+diff --git a/src/nm-manager.c b/src/nm-manager.c
+index 9037e64..96bf3b4 100644
+--- a/src/nm-manager.c
++++ b/src/nm-manager.c
+@@ -1874,10 +1874,10 @@ device_auth_request_cb (NMDevice *device,
+ 	}
+ 
+ 	/* Ensure the subject has permissions for this connection */
+-	if (!nm_auth_uid_in_acl (connection,
+-	                         priv->session_monitor,
+-	                         sender_uid,
+-	                         &error_desc)) {
++	if (connection != NULL && !nm_auth_uid_in_acl (connection,
++	                                               priv->session_monitor,
++	                                               sender_uid,
++	                                               &error_desc)) {
+ 		error = g_error_new_literal (NM_MANAGER_ERROR,
+ 		                             NM_MANAGER_ERROR_PERMISSION_DENIED,
+ 		                             error_desc);
+--
+cgit v0.9.0.2-2-gbebe

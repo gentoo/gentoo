@@ -1,0 +1,1186 @@
+--- a/include//asio/detail/impl/descriptor_ops.ipp
++++ b/include//asio/detail/impl/descriptor_ops.ipp
+@@ -28,6 +28,7 @@ namespace asio {
+ namespace detail {
+ namespace descriptor_ops {
+ 
++ASIO_DECL
+ int open(const char* path, int flags, asio::error_code& ec)
+ {
+   errno = 0;
+@@ -37,6 +38,7 @@ int open(const char* path, int flags, asio::error_code& ec)
+   return result;
+ }
+ 
++ASIO_DECL
+ int close(int d, state_type& state, asio::error_code& ec)
+ {
+   int result = 0;
+@@ -64,6 +66,7 @@ int close(int d, state_type& state, asio::error_code& ec)
+   return result;
+ }
+ 
++ASIO_DECL
+ bool set_internal_non_blocking(int d,
+     state_type& state, asio::error_code& ec)
+ {
+@@ -96,6 +99,7 @@ bool set_internal_non_blocking(int d,
+   return false;
+ }
+ 
++ASIO_DECL
+ std::size_t sync_read(int d, state_type state, buf* bufs,
+     std::size_t count, bool all_empty, asio::error_code& ec)
+ {
+@@ -142,6 +146,7 @@ std::size_t sync_read(int d, state_type state, buf* bufs,
+   }
+ }
+ 
++ASIO_DECL
+ bool non_blocking_read(int d, buf* bufs, std::size_t count,
+     asio::error_code& ec, std::size_t& bytes_transferred)
+ {
+@@ -180,6 +185,7 @@ bool non_blocking_read(int d, buf* bufs, std::size_t count,
+   }
+ }
+ 
++ASIO_DECL
+ std::size_t sync_write(int d, state_type state, const buf* bufs,
+     std::size_t count, bool all_empty, asio::error_code& ec)
+ {
+@@ -219,6 +225,7 @@ std::size_t sync_write(int d, state_type state, const buf* bufs,
+   }
+ }
+ 
++ASIO_DECL
+ bool non_blocking_write(int d, const buf* bufs, std::size_t count,
+     asio::error_code& ec, std::size_t& bytes_transferred)
+ {
+@@ -250,6 +257,7 @@ bool non_blocking_write(int d, const buf* bufs, std::size_t count,
+   }
+ }
+ 
++ASIO_DECL
+ int ioctl(int d, state_type& state, long cmd,
+     ioctl_arg_type* arg, asio::error_code& ec)
+ {
+@@ -291,6 +299,7 @@ int ioctl(int d, state_type& state, long cmd,
+   return result;
+ }
+ 
++ASIO_DECL
+ int fcntl(int d, long cmd, asio::error_code& ec)
+ {
+   if (d == -1)
+@@ -306,6 +315,7 @@ int fcntl(int d, long cmd, asio::error_code& ec)
+   return result;
+ }
+ 
++ASIO_DECL
+ int fcntl(int d, long cmd, long arg, asio::error_code& ec)
+ {
+   if (d == -1)
+@@ -321,6 +331,7 @@ int fcntl(int d, long cmd, long arg, asio::error_code& ec)
+   return result;
+ }
+ 
++ASIO_DECL
+ int poll_read(int d, asio::error_code& ec)
+ {
+   if (d == -1)
+@@ -340,6 +351,7 @@ int poll_read(int d, asio::error_code& ec)
+   return result;
+ }
+ 
++ASIO_DECL
+ int poll_write(int d, asio::error_code& ec)
+ {
+   if (d == -1)
+--- a/include//asio/detail/impl/socket_ops.ipp
++++ b/include//asio/detail/impl/socket_ops.ipp
+@@ -77,6 +77,7 @@ inline socket_type call_accept(SockLenType msghdr::*,
+   return result;
+ }
+ 
++ASIO_DECL
+ socket_type accept(socket_type s, socket_addr_type* addr,
+     std::size_t* addrlen, asio::error_code& ec)
+ {
+@@ -108,6 +109,7 @@ socket_type accept(socket_type s, socket_addr_type* addr,
+   return new_s;
+ }
+ 
++ASIO_DECL
+ socket_type sync_accept(socket_type s, state_type state,
+     socket_addr_type* addr, std::size_t* addrlen, asio::error_code& ec)
+ {
+@@ -199,6 +201,7 @@ void complete_iocp_accept(socket_type s,
+ 
+ #else // defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ bool non_blocking_accept(socket_type s,
+     state_type state, socket_addr_type* addr, std::size_t* addrlen,
+     asio::error_code& ec, socket_type& new_socket)
+@@ -254,6 +257,7 @@ inline int call_bind(SockLenType msghdr::*,
+   return ::bind(s, addr, (SockLenType)addrlen);
+ }
+ 
++ASIO_DECL
+ int bind(socket_type s, const socket_addr_type* addr,
+     std::size_t addrlen, asio::error_code& ec)
+ {
+@@ -271,6 +275,7 @@ int bind(socket_type s, const socket_addr_type* addr,
+   return result;
+ }
+ 
++ASIO_DECL
+ int close(socket_type s, state_type& state,
+     bool destruction, asio::error_code& ec)
+ {
+@@ -322,6 +327,7 @@ int close(socket_type s, state_type& state,
+   return result;
+ }
+ 
++ASIO_DECL
+ bool set_internal_non_blocking(socket_type s,
+     state_type& state, asio::error_code& ec)
+ {
+@@ -357,6 +363,7 @@ bool set_internal_non_blocking(socket_type s,
+   return false;
+ }
+ 
++ASIO_DECL
+ int shutdown(socket_type s, int what, asio::error_code& ec)
+ {
+   if (s == invalid_socket)
+@@ -379,6 +386,7 @@ inline int call_connect(SockLenType msghdr::*,
+   return ::connect(s, addr, (SockLenType)addrlen);
+ }
+ 
++ASIO_DECL
+ int connect(socket_type s, const socket_addr_type* addr,
+     std::size_t addrlen, asio::error_code& ec)
+ {
+@@ -396,6 +404,7 @@ int connect(socket_type s, const socket_addr_type* addr,
+   return result;
+ }
+ 
++ASIO_DECL
+ void sync_connect(socket_type s, const socket_addr_type* addr,
+     std::size_t addrlen, asio::error_code& ec)
+ {
+@@ -424,6 +433,7 @@ void sync_connect(socket_type s, const socket_addr_type* addr,
+       asio::error::get_system_category());
+ }
+ 
++ASIO_DECL
+ bool non_blocking_connect(socket_type s, asio::error_code& ec)
+ {
+   // Get the error code from the connect operation.
+@@ -444,6 +454,7 @@ bool non_blocking_connect(socket_type s, asio::error_code& ec)
+   return true;
+ }
+ 
++ASIO_DECL
+ int socketpair(int af, int type, int protocol,
+     socket_type sv[2], asio::error_code& ec)
+ {
+@@ -463,6 +474,7 @@ int socketpair(int af, int type, int protocol,
+ #endif
+ }
+ 
++ASIO_DECL
+ bool sockatmark(socket_type s, asio::error_code& ec)
+ {
+   if (s == invalid_socket)
+@@ -493,6 +505,7 @@ bool sockatmark(socket_type s, asio::error_code& ec)
+   return ec ? false : value != 0;
+ }
+ 
++ASIO_DECL
+ size_t available(socket_type s, asio::error_code& ec)
+ {
+   if (s == invalid_socket)
+@@ -517,6 +530,7 @@ size_t available(socket_type s, asio::error_code& ec)
+   return ec ? static_cast<size_t>(0) : static_cast<size_t>(value);
+ }
+ 
++ASIO_DECL
+ int listen(socket_type s, int backlog, asio::error_code& ec)
+ {
+   if (s == invalid_socket)
+@@ -549,6 +563,7 @@ typedef WSABUF buf;
+ typedef iovec buf;
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ 
++ASIO_DECL
+ void init_buf(buf& b, void* data, size_t size)
+ {
+ #if defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+@@ -560,6 +575,7 @@ void init_buf(buf& b, void* data, size_t size)
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ }
+ 
++ASIO_DECL
+ void init_buf(buf& b, const void* data, size_t size)
+ {
+ #if defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+@@ -593,6 +609,7 @@ inline void init_msghdr_msg_name(T& name, const socket_addr_type* addr)
+   name = reinterpret_cast<T>(const_cast<socket_addr_type*>(addr));
+ }
+ 
++ASIO_DECL
+ int recv(socket_type s, buf* bufs, size_t count, int flags,
+     asio::error_code& ec)
+ {
+@@ -623,6 +640,7 @@ int recv(socket_type s, buf* bufs, size_t count, int flags,
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ }
+ 
++ASIO_DECL
+ size_t sync_recv(socket_type s, state_type state, buf* bufs,
+     size_t count, int flags, bool all_empty, asio::error_code& ec)
+ {
+@@ -670,6 +688,7 @@ size_t sync_recv(socket_type s, state_type state, buf* bufs,
+ 
+ #if defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ void complete_iocp_recv(state_type state,
+     const weak_cancel_token_type& cancel_token, bool all_empty,
+     asio::error_code& ec, size_t bytes_transferred)
+@@ -698,6 +717,7 @@ void complete_iocp_recv(state_type state,
+ 
+ #else // defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ bool non_blocking_recv(socket_type s,
+     buf* bufs, size_t count, int flags, bool is_stream,
+     asio::error_code& ec, size_t& bytes_transferred)
+@@ -738,6 +758,7 @@ bool non_blocking_recv(socket_type s,
+ 
+ #endif // defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ int recvfrom(socket_type s, buf* bufs, size_t count, int flags,
+     socket_addr_type* addr, std::size_t* addrlen,
+     asio::error_code& ec)
+@@ -774,6 +795,7 @@ int recvfrom(socket_type s, buf* bufs, size_t count, int flags,
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ }
+ 
++ASIO_DECL
+ size_t sync_recvfrom(socket_type s, state_type state, buf* bufs,
+     size_t count, int flags, socket_addr_type* addr,
+     std::size_t* addrlen, asio::error_code& ec)
+@@ -808,6 +830,7 @@ size_t sync_recvfrom(socket_type s, state_type state, buf* bufs,
+ 
+ #if defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ void complete_iocp_recvfrom(
+     const weak_cancel_token_type& cancel_token,
+     asio::error_code& ec)
+@@ -828,6 +851,7 @@ void complete_iocp_recvfrom(
+ 
+ #else // defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ bool non_blocking_recvfrom(socket_type s,
+     buf* bufs, size_t count, int flags,
+     socket_addr_type* addr, std::size_t* addrlen,
+@@ -862,6 +886,7 @@ bool non_blocking_recvfrom(socket_type s,
+ 
+ #endif // defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ int send(socket_type s, const buf* bufs, size_t count, int flags,
+     asio::error_code& ec)
+ {
+@@ -895,6 +920,7 @@ int send(socket_type s, const buf* bufs, size_t count, int flags,
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ }
+ 
++ASIO_DECL
+ size_t sync_send(socket_type s, state_type state, const buf* bufs,
+     size_t count, int flags, bool all_empty, asio::error_code& ec)
+ {
+@@ -935,6 +961,7 @@ size_t sync_send(socket_type s, state_type state, const buf* bufs,
+ 
+ #if defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ void complete_iocp_send(
+     const weak_cancel_token_type& cancel_token,
+     asio::error_code& ec)
+@@ -955,6 +982,7 @@ void complete_iocp_send(
+ 
+ #else // defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ bool non_blocking_send(socket_type s,
+     const buf* bufs, size_t count, int flags,
+     asio::error_code& ec, size_t& bytes_transferred)
+@@ -988,6 +1016,7 @@ bool non_blocking_send(socket_type s,
+ 
+ #endif // defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ int sendto(socket_type s, const buf* bufs, size_t count, int flags,
+     const socket_addr_type* addr, std::size_t addrlen,
+     asio::error_code& ec)
+@@ -1024,6 +1053,7 @@ int sendto(socket_type s, const buf* bufs, size_t count, int flags,
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ }
+ 
++ASIO_DECL
+ size_t sync_sendto(socket_type s, state_type state, const buf* bufs,
+     size_t count, int flags, const socket_addr_type* addr,
+     std::size_t addrlen, asio::error_code& ec)
+@@ -1058,6 +1088,7 @@ size_t sync_sendto(socket_type s, state_type state, const buf* bufs,
+ 
+ #if !defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ bool non_blocking_sendto(socket_type s,
+     const buf* bufs, size_t count, int flags,
+     const socket_addr_type* addr, std::size_t addrlen,
+@@ -1092,6 +1123,7 @@ bool non_blocking_sendto(socket_type s,
+ 
+ #endif // !defined(ASIO_HAS_IOCP)
+ 
++ASIO_DECL
+ socket_type socket(int af, int type, int protocol,
+     asio::error_code& ec)
+ {
+@@ -1147,6 +1179,7 @@ inline int call_setsockopt(SockLenType msghdr::*,
+       (const char*)optval, (SockLenType)optlen);
+ }
+ 
++ASIO_DECL
+ int setsockopt(socket_type s, state_type& state, int level, int optname,
+     const void* optval, std::size_t optlen, asio::error_code& ec)
+ {
+@@ -1235,6 +1268,7 @@ inline int call_getsockopt(SockLenType msghdr::*,
+   return result;
+ }
+ 
++ASIO_DECL
+ int getsockopt(socket_type s, state_type state, int level, int optname,
+     void* optval, size_t* optlen, asio::error_code& ec)
+ {
+@@ -1344,6 +1378,7 @@ inline int call_getpeername(SockLenType msghdr::*,
+   return result;
+ }
+ 
++ASIO_DECL
+ int getpeername(socket_type s, socket_addr_type* addr,
+     std::size_t* addrlen, bool cached, asio::error_code& ec)
+ {
+@@ -1396,6 +1431,7 @@ inline int call_getsockname(SockLenType msghdr::*,
+   return result;
+ }
+ 
++ASIO_DECL
+ int getsockname(socket_type s, socket_addr_type* addr,
+     std::size_t* addrlen, asio::error_code& ec)
+ {
+@@ -1413,6 +1449,7 @@ int getsockname(socket_type s, socket_addr_type* addr,
+   return result;
+ }
+ 
++ASIO_DECL
+ int ioctl(socket_type s, state_type& state, int cmd,
+     ioctl_arg_type* arg, asio::error_code& ec)
+ {
+@@ -1460,6 +1497,7 @@ int ioctl(socket_type s, state_type& state, int cmd,
+   return result;
+ }
+ 
++ASIO_DECL
+ int select(int nfds, fd_set* readfds, fd_set* writefds,
+     fd_set* exceptfds, timeval* timeout, asio::error_code& ec)
+ {
+@@ -1501,6 +1539,7 @@ int select(int nfds, fd_set* readfds, fd_set* writefds,
+ #endif
+ }
+ 
++ASIO_DECL
+ int poll_read(socket_type s, asio::error_code& ec)
+ {
+   if (s == invalid_socket)
+@@ -1537,6 +1576,7 @@ int poll_read(socket_type s, asio::error_code& ec)
+        // || defined(__SYMBIAN32__)
+ }
+ 
++ASIO_DECL
+ int poll_write(socket_type s, asio::error_code& ec)
+ {
+   if (s == invalid_socket)
+@@ -1573,6 +1613,7 @@ int poll_write(socket_type s, asio::error_code& ec)
+        // || defined(__SYMBIAN32__)
+ }
+ 
++ASIO_DECL
+ int poll_connect(socket_type s, asio::error_code& ec)
+ {
+   if (s == invalid_socket)
+@@ -1612,6 +1653,7 @@ int poll_connect(socket_type s, asio::error_code& ec)
+        // || defined(__SYMBIAN32__)
+ }
+ 
++ASIO_DECL
+ const char* inet_ntop(int af, const void* src, char* dest, size_t length,
+     unsigned long scope_id, asio::error_code& ec)
+ {
+@@ -1688,6 +1730,7 @@ const char* inet_ntop(int af, const void* src, char* dest, size_t length,
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ }
+ 
++ASIO_DECL
+ int inet_pton(int af, const char* src, void* dest,
+     unsigned long* scope_id, asio::error_code& ec)
+ {
+@@ -1774,6 +1817,7 @@ int inet_pton(int af, const char* src, void* dest,
+ #endif // defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+ }
+ 
++ASIO_DECL
+ int gethostname(char* name, int namelen, asio::error_code& ec)
+ {
+   clear_last_error();
+@@ -2667,6 +2711,7 @@ inline asio::error_code translate_addrinfo_error(int error)
+   }
+ }
+ 
++ASIO_DECL
+ asio::error_code getaddrinfo(const char* host,
+     const char* service, const addrinfo_type& hints,
+     addrinfo_type** result, asio::error_code& ec)
+@@ -2703,6 +2748,7 @@ asio::error_code getaddrinfo(const char* host,
+ #endif
+ }
+ 
++ASIO_DECL
+ asio::error_code background_getaddrinfo(
+     const weak_cancel_token_type& cancel_token, const char* host,
+     const char* service, const addrinfo_type& hints,
+@@ -2715,6 +2761,7 @@ asio::error_code background_getaddrinfo(
+   return ec;
+ }
+ 
++ASIO_DECL
+ void freeaddrinfo(addrinfo_type* ai)
+ {
+ #if defined(BOOST_WINDOWS) || defined(__CYGWIN__)
+@@ -2741,6 +2788,7 @@ void freeaddrinfo(addrinfo_type* ai)
+ #endif
+ }
+ 
++ASIO_DECL
+ asio::error_code getnameinfo(const socket_addr_type* addr,
+     std::size_t addrlen, char* host, std::size_t hostlen,
+     char* serv, std::size_t servlen, int flags, asio::error_code& ec)
+@@ -2788,6 +2836,7 @@ asio::error_code getnameinfo(const socket_addr_type* addr,
+ #endif
+ }
+ 
++ASIO_DECL
+ asio::error_code sync_getnameinfo(
+     const socket_addr_type* addr, std::size_t addrlen,
+     char* host, std::size_t hostlen, char* serv,
+@@ -2807,6 +2856,7 @@ asio::error_code sync_getnameinfo(
+   return ec;
+ }
+ 
++ASIO_DECL
+ asio::error_code background_getnameinfo(
+     const weak_cancel_token_type& cancel_token,
+     const socket_addr_type* addr, std::size_t addrlen,
+@@ -2834,21 +2884,25 @@ asio::error_code background_getnameinfo(
+   return ec;
+ }
+ 
++ASIO_DECL
+ u_long_type network_to_host_long(u_long_type value)
+ {
+   return ntohl(value);
+ }
+ 
++ASIO_DECL
+ u_long_type host_to_network_long(u_long_type value)
+ {
+   return htonl(value);
+ }
+ 
++ASIO_DECL
+ u_short_type network_to_host_short(u_short_type value)
+ {
+   return ntohs(value);
+ }
+ 
++ASIO_DECL
+ u_short_type host_to_network_short(u_short_type value)
+ {
+   return htons(value);
+--- a/include//asio/detail/impl/throw_error.ipp
++++ b/include//asio/detail/impl/throw_error.ipp
+@@ -25,12 +25,14 @@
+ namespace asio {
+ namespace detail {
+ 
++ASIO_DECL
+ void do_throw_error(const asio::error_code& err)
+ {
+   asio::system_error e(err);
+   boost::throw_exception(e);
+ }
+ 
++ASIO_DECL
+ void do_throw_error(const asio::error_code& err, const char* location)
+ {
+   asio::system_error e(err, location);
+--- a/include//asio/ip/detail/impl/endpoint.ipp
++++ b/include//asio/ip/detail/impl/endpoint.ipp
+@@ -31,6 +31,7 @@ namespace asio {
+ namespace ip {
+ namespace detail {
+ 
++ASIO_DECL
+ endpoint::endpoint()
+   : data_()
+ {
+@@ -39,6 +40,7 @@ endpoint::endpoint()
+   data_.v4.sin_addr.s_addr = INADDR_ANY;
+ }
+ 
++ASIO_DECL
+ endpoint::endpoint(int family, unsigned short port_num)
+   : data_()
+ {
+@@ -62,6 +64,7 @@ endpoint::endpoint(int family, unsigned short port_num)
+   }
+ }
+ 
++ASIO_DECL
+ endpoint::endpoint(const asio::ip::address& addr,
+     unsigned short port_num)
+   : data_()
+@@ -89,6 +92,7 @@ endpoint::endpoint(const asio::ip::address& addr,
+   }
+ }
+ 
++ASIO_DECL
+ void endpoint::resize(std::size_t size)
+ {
+   if (size > sizeof(asio::detail::sockaddr_storage_type))
+@@ -98,6 +102,7 @@ void endpoint::resize(std::size_t size)
+   }
+ }
+ 
++ASIO_DECL
+ unsigned short endpoint::port() const
+ {
+   if (is_v4())
+@@ -112,6 +117,7 @@ unsigned short endpoint::port() const
+   }
+ }
+ 
++ASIO_DECL
+ void endpoint::port(unsigned short port_num)
+ {
+   if (is_v4())
+@@ -126,6 +132,7 @@ void endpoint::port(unsigned short port_num)
+   }
+ }
+ 
++ASIO_DECL
+ asio::ip::address endpoint::address() const
+ {
+   using namespace std; // For memcpy.
+@@ -143,17 +150,20 @@ asio::ip::address endpoint::address() const
+   }
+ }
+ 
++ASIO_DECL
+ void endpoint::address(const asio::ip::address& addr)
+ {
+   endpoint tmp_endpoint(addr, port());
+   data_ = tmp_endpoint.data_;
+ }
+ 
++ASIO_DECL
+ bool operator==(const endpoint& e1, const endpoint& e2)
+ {
+   return e1.address() == e2.address() && e1.port() == e2.port();
+ }
+ 
++ASIO_DECL
+ bool operator<(const endpoint& e1, const endpoint& e2)
+ {
+   if (e1.address() < e2.address())
+@@ -164,6 +174,7 @@ bool operator<(const endpoint& e1, const endpoint& e2)
+ }
+ 
+ #if !defined(BOOST_NO_IOSTREAM)
++ASIO_DECL
+ std::string endpoint::to_string(asio::error_code& ec) const
+ {
+   std::string a = address().to_string(ec);
+--- a/include//asio/ip/impl/address.ipp
++++ b/include//asio/ip/impl/address.ipp
+@@ -28,6 +28,7 @@
+ namespace asio {
+ namespace ip {
+ 
++ASIO_DECL
+ address::address()
+   : type_(ipv4),
+     ipv4_address_(),
+@@ -35,6 +36,7 @@ address::address()
+ {
+ }
+ 
++ASIO_DECL
+ address::address(const asio::ip::address_v4& ipv4_address)
+   : type_(ipv4),
+     ipv4_address_(ipv4_address),
+@@ -42,6 +44,7 @@ address::address(const asio::ip::address_v4& ipv4_address)
+ {
+ }
+ 
++ASIO_DECL
+ address::address(const asio::ip::address_v6& ipv6_address)
+   : type_(ipv6),
+     ipv4_address_(),
+@@ -49,6 +52,7 @@ address::address(const asio::ip::address_v6& ipv6_address)
+ {
+ }
+ 
++ASIO_DECL
+ address::address(const address& other)
+   : type_(other.type_),
+     ipv4_address_(other.ipv4_address_),
+@@ -56,6 +60,7 @@ address::address(const address& other)
+ {
+ }
+ 
++ASIO_DECL
+ address& address::operator=(const address& other)
+ {
+   type_ = other.type_;
+@@ -64,6 +69,7 @@ address& address::operator=(const address& other)
+   return *this;
+ }
+ 
++ASIO_DECL
+ address& address::operator=(const asio::ip::address_v4& ipv4_address)
+ {
+   type_ = ipv4;
+@@ -72,6 +78,7 @@ address& address::operator=(const asio::ip::address_v4& ipv4_address)
+   return *this;
+ }
+ 
++ASIO_DECL
+ address& address::operator=(const asio::ip::address_v6& ipv6_address)
+ {
+   type_ = ipv6;
+@@ -80,6 +87,7 @@ address& address::operator=(const asio::ip::address_v6& ipv6_address)
+   return *this;
+ }
+ 
++ASIO_DECL
+ asio::ip::address_v4 address::to_v4() const
+ {
+   if (type_ != ipv4)
+@@ -90,6 +98,7 @@ asio::ip::address_v4 address::to_v4() const
+   return ipv4_address_;
+ }
+ 
++ASIO_DECL
+ asio::ip::address_v6 address::to_v6() const
+ {
+   if (type_ != ipv6)
+@@ -100,6 +109,7 @@ asio::ip::address_v6 address::to_v6() const
+   return ipv6_address_;
+ }
+ 
++ASIO_DECL
+ std::string address::to_string() const
+ {
+   if (type_ == ipv6)
+@@ -107,6 +117,7 @@ std::string address::to_string() const
+   return ipv4_address_.to_string();
+ }
+ 
++ASIO_DECL
+ std::string address::to_string(asio::error_code& ec) const
+ {
+   if (type_ == ipv6)
+@@ -114,6 +125,7 @@ std::string address::to_string(asio::error_code& ec) const
+   return ipv4_address_.to_string(ec);
+ }
+ 
++ASIO_DECL
+ address address::from_string(const char* str)
+ {
+   asio::error_code ec;
+@@ -122,6 +134,7 @@ address address::from_string(const char* str)
+   return addr;
+ }
+ 
++ASIO_DECL
+ address address::from_string(const char* str, asio::error_code& ec)
+ {
+   asio::ip::address_v6 ipv6_address =
+@@ -147,17 +160,20 @@ address address::from_string(const char* str, asio::error_code& ec)
+   return address();
+ }
+ 
++ASIO_DECL
+ address address::from_string(const std::string& str)
+ {
+   return from_string(str.c_str());
+ }
+ 
++ASIO_DECL
+ address address::from_string(const std::string& str,
+     asio::error_code& ec)
+ {
+   return from_string(str.c_str(), ec);
+ }
+ 
++ASIO_DECL
+ bool operator==(const address& a1, const address& a2)
+ {
+   if (a1.type_ != a2.type_)
+@@ -167,6 +183,7 @@ bool operator==(const address& a1, const address& a2)
+   return a1.ipv4_address_ == a2.ipv4_address_;
+ }
+ 
++ASIO_DECL
+ bool operator<(const address& a1, const address& a2)
+ {
+   if (a1.type_ < a2.type_)
+--- a/include//asio/ip/impl/address_v4.ipp
++++ b/include//asio/ip/impl/address_v4.ipp
+@@ -29,6 +29,7 @@
+ namespace asio {
+ namespace ip {
+ 
++ASIO_DECL
+ address_v4::address_v4(const address_v4::bytes_type& bytes)
+ {
+ #if UCHAR_MAX > 0xFF
+@@ -44,6 +45,7 @@ address_v4::address_v4(const address_v4::bytes_type& bytes)
+   memcpy(&addr_.s_addr, bytes.elems, 4);
+ }
+ 
++ASIO_DECL
+ address_v4::address_v4(unsigned long addr)
+ {
+ #if ULONG_MAX > 0xFFFFFFFF
+@@ -57,6 +59,7 @@ address_v4::address_v4(unsigned long addr)
+   addr_.s_addr = asio::detail::socket_ops::host_to_network_long(addr);
+ }
+ 
++ASIO_DECL
+ address_v4::bytes_type address_v4::to_bytes() const
+ {
+   using namespace std; // For memcpy.
+@@ -65,11 +68,13 @@ address_v4::bytes_type address_v4::to_bytes() const
+   return bytes;
+ }
+ 
++ASIO_DECL
+ unsigned long address_v4::to_ulong() const
+ {
+   return asio::detail::socket_ops::network_to_host_long(addr_.s_addr);
+ }
+ 
++ASIO_DECL
+ std::string address_v4::to_string() const
+ {
+   asio::error_code ec;
+@@ -78,6 +83,7 @@ std::string address_v4::to_string() const
+   return addr;
+ }
+ 
++ASIO_DECL
+ std::string address_v4::to_string(asio::error_code& ec) const
+ {
+   char addr_str[asio::detail::max_addr_v4_str_len];
+@@ -89,6 +95,7 @@ std::string address_v4::to_string(asio::error_code& ec) const
+   return addr;
+ }
+ 
++ASIO_DECL
+ address_v4 address_v4::from_string(const char* str)
+ {
+   asio::error_code ec;
+@@ -97,6 +104,7 @@ address_v4 address_v4::from_string(const char* str)
+   return addr;
+ }
+ 
++ASIO_DECL
+ address_v4 address_v4::from_string(
+     const char* str, asio::error_code& ec)
+ {
+@@ -107,42 +115,50 @@ address_v4 address_v4::from_string(
+   return tmp;
+ }
+ 
++ASIO_DECL
+ address_v4 address_v4::from_string(const std::string& str)
+ {
+   return from_string(str.c_str());
+ }
+ 
++ASIO_DECL
+ address_v4 address_v4::from_string(
+     const std::string& str, asio::error_code& ec)
+ {
+   return from_string(str.c_str(), ec);
+ }
+ 
++ASIO_DECL
+ bool address_v4::is_class_a() const
+ {
+   return IN_CLASSA(to_ulong());
+ }
+ 
++ASIO_DECL
+ bool address_v4::is_class_b() const
+ {
+   return IN_CLASSB(to_ulong());
+ }
+ 
++ASIO_DECL
+ bool address_v4::is_class_c() const
+ {
+   return IN_CLASSC(to_ulong());
+ }
+ 
++ASIO_DECL
+ bool address_v4::is_multicast() const
+ {
+   return IN_MULTICAST(to_ulong());
+ }
+ 
++ASIO_DECL
+ address_v4 address_v4::broadcast(const address_v4& addr, const address_v4& mask)
+ {
+   return address_v4(addr.to_ulong() | (mask.to_ulong() ^ 0xFFFFFFFF));
+ }
+ 
++ASIO_DECL
+ address_v4 address_v4::netmask(const address_v4& addr)
+ {
+   if (addr.is_class_a())
+--- a/include//asio/ip/impl/address_v6.ipp
++++ b/include//asio/ip/impl/address_v6.ipp
+@@ -30,6 +30,7 @@
+ namespace asio {
+ namespace ip {
+ 
++ASIO_DECL
+ address_v6::address_v6()
+   : scope_id_(0)
+ {
+@@ -37,6 +38,7 @@ address_v6::address_v6()
+   addr_ = tmp_addr;
+ }
+ 
++ASIO_DECL
+ address_v6::address_v6(const address_v6::bytes_type& bytes,
+     unsigned long scope_id)
+   : scope_id_(scope_id)
+@@ -56,12 +58,14 @@ address_v6::address_v6(const address_v6::bytes_type& bytes,
+   memcpy(addr_.s6_addr, bytes.elems, 16);
+ }
+ 
++ASIO_DECL
+ address_v6::address_v6(const address_v6& other)
+   : addr_(other.addr_),
+     scope_id_(other.scope_id_)
+ {
+ }
+ 
++ASIO_DECL
+ address_v6& address_v6::operator=(const address_v6& other)
+ {
+   addr_ = other.addr_;
+@@ -69,6 +73,7 @@ address_v6& address_v6::operator=(const address_v6& other)
+   return *this;
+ }
+ 
++ASIO_DECL
+ address_v6::bytes_type address_v6::to_bytes() const
+ {
+   using namespace std; // For memcpy.
+@@ -77,6 +82,7 @@ address_v6::bytes_type address_v6::to_bytes() const
+   return bytes;
+ }
+ 
++ASIO_DECL
+ std::string address_v6::to_string() const
+ {
+   asio::error_code ec;
+@@ -85,6 +91,7 @@ std::string address_v6::to_string() const
+   return addr;
+ }
+ 
++ASIO_DECL
+ std::string address_v6::to_string(asio::error_code& ec) const
+ {
+   char addr_str[asio::detail::max_addr_v6_str_len];
+@@ -96,6 +103,7 @@ std::string address_v6::to_string(asio::error_code& ec) const
+   return addr;
+ }
+ 
++ASIO_DECL
+ address_v6 address_v6::from_string(const char* str)
+ {
+   asio::error_code ec;
+@@ -104,6 +112,7 @@ address_v6 address_v6::from_string(const char* str)
+   return addr;
+ }
+ 
++ASIO_DECL
+ address_v6 address_v6::from_string(
+     const char* str, asio::error_code& ec)
+ {
+@@ -114,17 +123,20 @@ address_v6 address_v6::from_string(
+   return tmp;
+ }
+ 
++ASIO_DECL
+ address_v6 address_v6::from_string(const std::string& str)
+ {
+   return from_string(str.c_str());
+ }
+ 
++ASIO_DECL
+ address_v6 address_v6::from_string(
+     const std::string& str, asio::error_code& ec)
+ {
+   return from_string(str.c_str(), ec);
+ }
+ 
++ASIO_DECL
+ address_v4 address_v6::to_v4() const
+ {
+   if (!is_v4_mapped() && !is_v4_compatible())
+@@ -138,6 +150,7 @@ address_v4 address_v6::to_v4() const
+   return address_v4(v4_bytes);
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_loopback() const
+ {
+ #if defined(__BORLANDC__)
+@@ -155,6 +168,7 @@ bool address_v6::is_loopback() const
+ #endif
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_unspecified() const
+ {
+ #if defined(__BORLANDC__)
+@@ -172,66 +186,77 @@ bool address_v6::is_unspecified() const
+ #endif
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_link_local() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_LINKLOCAL(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_site_local() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_SITELOCAL(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_v4_mapped() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_V4MAPPED(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_v4_compatible() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_V4COMPAT(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_multicast() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_MULTICAST(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_multicast_global() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_MC_GLOBAL(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_multicast_link_local() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_MC_LINKLOCAL(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_multicast_node_local() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_MC_NODELOCAL(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_multicast_org_local() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_MC_ORGLOCAL(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool address_v6::is_multicast_site_local() const
+ {
+   using namespace asio::detail;
+   return IN6_IS_ADDR_MC_SITELOCAL(&addr_) != 0;
+ }
+ 
++ASIO_DECL
+ bool operator==(const address_v6& a1, const address_v6& a2)
+ {
+   using namespace std; // For memcmp.
+@@ -240,6 +265,7 @@ bool operator==(const address_v6& a1, const address_v6& a2)
+     && a1.scope_id_ == a2.scope_id_;
+ }
+ 
++ASIO_DECL
+ bool operator<(const address_v6& a1, const address_v6& a2)
+ {
+   using namespace std; // For memcmp.
+@@ -252,6 +278,7 @@ bool operator<(const address_v6& a1, const address_v6& a2)
+   return a1.scope_id_ < a2.scope_id_;
+ }
+ 
++ASIO_DECL
+ address_v6 address_v6::loopback()
+ {
+   address_v6 tmp;
+@@ -260,6 +287,7 @@ address_v6 address_v6::loopback()
+   return tmp;
+ }
+ 
++ASIO_DECL
+ address_v6 address_v6::v4_mapped(const address_v4& addr)
+ {
+   address_v4::bytes_type v4_bytes = addr.to_bytes();
+@@ -268,6 +296,7 @@ address_v6 address_v6::v4_mapped(const address_v4& addr)
+   return address_v6(v6_bytes);
+ }
+ 
++ASIO_DECL
+ address_v6 address_v6::v4_compatible(const address_v4& addr)
+ {
+   address_v4::bytes_type v4_bytes = addr.to_bytes();
+--- a/include//asio/ip/impl/host_name.ipp
++++ b/include//asio/ip/impl/host_name.ipp
+@@ -26,6 +26,7 @@
+ namespace asio {
+ namespace ip {
+ 
++ASIO_DECL
+ std::string host_name()
+ {
+   char name[1024];
+@@ -38,6 +39,7 @@ std::string host_name()
+   return std::string(name);
+ }
+ 
++ASIO_DECL
+ std::string host_name(asio::error_code& ec)
+ {
+   char name[1024];
+--- a/include//asio/local/detail/impl/endpoint.ipp
++++ b/include//asio/local/detail/impl/endpoint.ipp
+@@ -32,22 +32,26 @@ namespace asio {
+ namespace local {
+ namespace detail {
+ 
++ASIO_DECL
+ endpoint::endpoint()
+ {
+   init("", 0);
+ }
+ 
++ASIO_DECL
+ endpoint::endpoint(const char* path)
+ {
+   using namespace std; // For strlen.
+   init(path, strlen(path));
+ }
+ 
++ASIO_DECL
+ endpoint::endpoint(const std::string& path)
+ {
+   init(path.data(), path.length());
+ }
+ 
++ASIO_DECL
+ void endpoint::resize(std::size_t size)
+ {
+   if (size > sizeof(asio::detail::sockaddr_un_type))
+@@ -70,32 +74,38 @@ void endpoint::resize(std::size_t size)
+   }
+ }
+ 
++ASIO_DECL
+ std::string endpoint::path() const
+ {
+   return std::string(data_.local.sun_path, path_length_);
+ }
+ 
++ASIO_DECL
+ void endpoint::path(const char* p)
+ {
+   using namespace std; // For strlen.
+   init(p, strlen(p));
+ }
+ 
++ASIO_DECL
+ void endpoint::path(const std::string& p)
+ {
+   init(p.data(), p.length());
+ }
+ 
++ASIO_DECL
+ bool operator==(const endpoint& e1, const endpoint& e2)
+ {
+   return e1.path() == e2.path();
+ }
+ 
++ASIO_DECL
+ bool operator<(const endpoint& e1, const endpoint& e2)
+ {
+   return e1.path() < e2.path();
+ }
+ 
++ASIO_DECL
+ void endpoint::init(const char* path, std::size_t path_length)
+ {
+   if (path_length > sizeof(data_.local.sun_path) - 1)

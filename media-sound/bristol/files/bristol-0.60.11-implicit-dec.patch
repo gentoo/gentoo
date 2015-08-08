@@ -1,0 +1,10 @@
+--- bristol-0.60.11/bristol/bristolmemorymoog.c
++++ bristol-0.60.11/bristol/bristolmemorymoog.c
+@@ -33,6 +33,7 @@
+ #include "bristolmemorymoog.h"
+ 
+ extern int buildCurrentTable(Baudio *, float);
++extern void doPitchWheel(Baudio *);
+ 
+ /*
+  * Use of these memorymoog global buffers will be an issue with use of multiple

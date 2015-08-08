@@ -1,0 +1,4 @@
+# plplot libs dir
+PLPLOT_LIB="/usr/share/EMBOSS/"
+# ACD files location
+EMBOSS_ACDROOT="/usr/share/EMBOSS/acd"

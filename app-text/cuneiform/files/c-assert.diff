@@ -1,0 +1,83 @@
+Description: Use the standard C assert() macro, rather than custom Cuneiform
+  one.
+Author: Jakub Wilk <jwilk@debian.org>
+Forwarded: no
+Last-Update: 2011-04-30
+
+--- a/cuneiform_src/Kern/lns32/src/myassert.h
++++ b/cuneiform_src/Kern/lns32/src/myassert.h
+@@ -60,6 +60,8 @@
+ 	 BC++, v3.1 was used as base
+ */
+ 
++#include <assert.h>
++
+ #ifdef __MYASSERT_H
+ #	Error: Do not specify MYASSERT.H directly - use SLANG.H. Postnikov.
+ #else
+@@ -73,45 +75,3 @@
+ #else
+ #  define WRONG() (assert(0),FALSE)
+ #endif
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-#ifndef MY_DEBUG_LEVEL
+-   void   __assertfail( char  *__msg,
+-                                      char  *__cond,
+-                                      char  *__file,
+-         	                          int __line);
+-#else
+-   void   my_assert_fail(const char *cond, const char *__file, int __line);
+-#endif
+-
+-
+-#ifdef  __cplusplus
+-}
+-#endif
+-
+-#undef assert
+-
+-#ifdef NDEBUG
+-#  define assert(p)   ((void)0)
+-#else
+-#  ifdef _Windows
+-#    define _ENDL
+-#  else
+-#    define _ENDL "\n"
+-#  endif
+-	#ifdef MY_DEBUG_LEVEL
+-	#	define assert(p) 															\
+-				((p)) ?                                               \
+-					(void)0 :                                          \
+-					(void) my_assert_fail( #p, __FILE__, __LINE__)
+-	#else
+-	#  define assert(p) 															\
+-				((p) ?                                                \
+-					(void)0 :                                          \
+-					(void) __assertfail( "Assertion failed: %s, file %s, line %d" _ENDL, \
+-   	                 #p, __FILE__, __LINE__ ) )
+-	#endif
+-#endif
+--- a/cuneiform_src/Kern/std/CMakeLists.txt
++++ b/cuneiform_src/Kern/std/CMakeLists.txt
+@@ -3,7 +3,6 @@
+ add_library(std32 ${LIBTYPE}
+ src/std.cpp
+ #src/Std.rc
+-src/stdassrt.cpp
+ src/stdbits.cpp
+ src/stdconsl.cpp
+ src/stderror.cpp
+--- a/cuneiform_src/Kern/lns32/CMakeLists.txt
++++ b/cuneiform_src/Kern/lns32/CMakeLists.txt
+@@ -14,7 +14,6 @@
+ src/lns.cpp
+ src/lnscheck.cpp
+ src/lnsini.cpp
+-src/myassert.cpp
+ src/procline.cpp
+ src/puanso.cpp
+ src/rbambuk.cpp

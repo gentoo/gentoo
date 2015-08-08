@@ -1,0 +1,35 @@
+Drop -g from CFLAGS
+
+--- qcm/buildmodeapp.qcm	2011-10-19 14:38:55.621699641 +0200
++++ qcm/buildmodeapp.qcm	2011-10-19 14:39:11.868700486 +0200
+@@ -130,8 +130,6 @@
+ 		if(qc_buildmode_separate_debug_info)
+ 		{
+ 			opts += "separate_debug_info";
+-			other += "*-g++*:QMAKE_CFLAGS += -g\n";
+-			other += "*-g++*:QMAKE_CXXFLAGS += -g\n";
+ 		}
+ 
+ 		QString str = QString("CONFIG += ") + opts.join(" ") + '\n';
+--- iris/qcm/extra.qcm.old	2011-10-19 14:39:40.268701738 +0200
++++ iris/qcm/extra.qcm	2011-10-19 14:40:01.904699887 +0200
+@@ -55,8 +55,6 @@
+ 		if(debug_info)
+ 		{
+ 			str += QString("CONFIG += separate_debug_info\n");
+-			str += "QMAKE_CFLAGS += -g\n";
+-			str += "QMAKE_CXXFLAGS += -g\n";
+ 		}
+ 		if(universal)
+ 		{
+--- iris/qcm/buildmode.qcm.old	2011-10-19 14:40:23.794701147 +0200
++++ iris/qcm/buildmode.qcm	2011-10-19 14:40:42.157701302 +0200
+@@ -186,8 +186,6 @@
+ 		if(qc_buildmode_separate_debug_info)
+ 		{
+ 			opts += "separate_debug_info";
+-			other += "QMAKE_CFLAGS += -g\n";
+-			other += "QMAKE_CXXFLAGS += -g\n";
+ 		}
+ 
+ 		QString str = QString("CONFIG += ") + opts.join(" ") + '\n';

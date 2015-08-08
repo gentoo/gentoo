@@ -1,0 +1,40 @@
+diff --git a/math/unuran/Module.mk b/math/unuran/Module.mk
+index 00a530b..7cd22dc 100644
+--- a/math/unuran/Module.mk
++++ b/math/unuran/Module.mk
+@@ -31,7 +31,7 @@ UNRS         := $(wildcard $(UNRDIRS)/src/utils/*.c) \
+                 $(wildcard $(UNRDIRS)/src/uniform/*.c) \
+                 $(wildcard $(UNRDIRS)/src/urng/*.c)
+ else
+-UNRTARCONTENT:=$(subst $(UNRVERS),$(UNRDIRS),$(shell mkdir -p $(UNRDIR); cd $(UNRDIR); gunzip -c $(UNRSRCS) | tar tf -))
++UNRTARCONTENT:=
+ UNRS         := $(filter %.c, \
+                 $(filter $(UNRDIRS)/src/utils/%,$(UNRTARCONTENT)) \
+                 $(filter $(UNRDIRS)/src/methods/%,$(UNRTARCONTENT)) \
+@@ -81,10 +81,9 @@ INCLUDEFILES += $(UNURANDEP)
+ ##### local rules #####
+ .PHONY:         all-$(MODNAME) clean-$(MODNAME) distclean-$(MODNAME)
+ 
+-include/%.h: 	$(UNURANDIRI)/%.h $(UNURANETAG)
++include/%.h: 	$(UNURANDIRI)/%.h
+ 		cp $< $@
+ 
+-$(UNURANDEP):   $(UNRCFG)
+ $(UNRS):        $(UNURANETAG)
+ 
+ $(UNURANETAG):	$(UNRSRCS)
+@@ -137,12 +136,12 @@ $(UNRCFG):	$(UNURANETAG)
+ 		GNUMAKE=$(MAKE) ./configure  CC="$$ACC"  \
+ 		CFLAGS="$$ACFLAGS");
+ 
+-$(UNURANLIB):   $(UNRCFG) $(UNRO) $(UNURANO) $(UNURANDO) $(ORDER_) \
++$(UNURANLIB):   $(UNURANO) $(UNURANDO) $(ORDER_) \
+                 $(MAINLIBS) $(UNURANLIBDEP)
+ 		@$(MAKELIB) $(PLATFORM) $(LD) "$(LDFLAGS)"  \
+ 		   "$(SOFLAGS)" libUnuran.$(SOEXT) $@     \
+ 		   "$(UNURANO) $(UNURANDO)"             \
+-		   "$(UNURANLIBEXTRA) $(UNRO)"
++		   "$(UNURANLIBEXTRA) -lunuran"
+ 
+ $(UNURANDS):    $(UNRINIT) $(UNURANDH1) $(UNURANL) $(ROOTCINTTMPDEP)
+ 		$(MAKEDIR)

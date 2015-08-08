@@ -1,0 +1,63 @@
+--- a/Makefile
++++ b/Makefile
+@@ -6,12 +6,12 @@
+ XROOT = /usr/X11R6
+ 
+ # Uncomment to enable Shape extension support
+-#OPT_WMFLAGS += -DSHAPE
++OPT_WMFLAGS += -DSHAPE
+ #OPT_WMLIB += -lXext
+ 
+ # Uncomment to add Xft support
+-#OPT_WMFLAGS += -DXFT `pkg-config --cflags xft`
+-#OPT_WMLIB += `pkg-config --libs xft` -lXext
++OPT_WMFLAGS += -DXFT $(shell $(PKG_CONFIG) --cflags xft xext)
++OPT_WMLIB += $(shell $(PKG_CONFIG) --libs xft xext)
+ 
+ # Uncomment for debugging (abandon all hope, ye who enter here)
+ #OPT_WMFLAGS += -DDEBUG
+@@ -46,7 +46,7 @@
+ 
+ X11FLAGS = -I$(XROOT)/include
+ WMFLAGS = $(X11FLAGS) $(OPT_WMFLAGS)
+-GTKFLAGS = `pkg-config --cflags gtk+-2.0`
++GTKFLAGS = $(shell $(PKG_CONFIG) --cflags gtk+-2.0)
+ 
+ $(PLAINOBJ): %.o: %.c
+ 	$(CC) $(CFLAGS) -c $< -o $@
+@@ -60,28 +60,28 @@
+ $(GTKOBJ): %.o: %.c
+ 	$(CC) $(CFLAGS) $(GTKFLAGS) -c $< -o $@
+ 
+-X11LIB = -L$(XROOT)/lib -lX11
++X11LIB = $(shell $(PKG_CONFIG) --libs x11)
+ WMLIB = $(X11LIB) $(OPT_WMLIB)
+-GTKLIB = `pkg-config --libs gtk+-2.0`
++GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-2.0)
+ 
+ $(PLAINBIN): %: %.o
+-	$(CC) $^ -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+ 
+ $(X11BIN): %: %.o
+-	$(CC) $^ $(X11LIB) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(X11LIB) -o $@
+ 
+ $(WMBIN): %:
+-	$(CC) $^ $(WMLIB) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(WMLIB) -o $@
+ 
+ $(GTKBIN): %: %.o
+-	$(CC) $^ $(GTKLIB) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(GTKLIB) $(X11LIB) -o $@
+ 
+ AEMAN = aewm.1x aeclients.1x
+ AERC = aewmrc clientsrc
+ 
+ install: all
+ 	mkdir -p $(BINDIR) $(MANDIR) $(CFGDIR)
+-	install -s $(ALLBIN) $(BINDIR)
++	install $(ALLBIN) $(BINDIR)
+ 	for i in $(AEMAN); do \
+ 	    install -m 644 doc/$$i $(MANDIR); \
+ 	    gzip -9 $(MANDIR)/$$i; \

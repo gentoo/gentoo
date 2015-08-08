@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>dev-zero@gentoo.org</email>
+    <name>Tiziano Müller</name>
+  </maintainer>
+  <maintainer>
+    <email>bugs@bergstroem.nu</email>
+    <name>Johan Bergström</name>
+    <description>Co-maintainer, CC on bugs.</description>
+  </maintainer>
+  <use>
+    <flag name="aio">Enables file AIO support</flag>
+    <flag name="http">Enable HTTP core support</flag>
+    <flag name="http-cache">Enable HTTP cache support</flag>
+    <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
+    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg> for lua support when building the lua http module.</flag>
+    <flag name="pcre-jit">Enable JIT for pcre</flag>
+    <flag name="ssl">Enable HTTPS module for http. Enable SSL/TLS support for POP3/IMAP/SMTP for mail.</flag>
+    <flag name="rtmp">NGINX-based Media Streaming Server</flag>
+  </use>
+  <upstream>
+    <changelog>http://nginx.org/en/CHANGES</changelog>
+    <remote-id type="github">yaoweibin/nginx_ajp_module</remote-id>
+  </upstream>
+</pkgmetadata>

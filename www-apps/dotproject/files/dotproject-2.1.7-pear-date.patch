@@ -1,0 +1,39 @@
+diff -u -r dotproject/classes/date.class.php dotproject-patched/classes/date.class.php
+--- dotproject/classes/date.class.php	2011-03-10 06:11:25.000000000 +0100
++++ dotproject-patched/classes/date.class.php	2013-01-03 12:35:36.598020904 +0100
+@@ -8,7 +8,8 @@
+ }
+ 
+ 
+-require_once $AppUI->getLibraryClass('PEAR/Date');
++#require_once $AppUI->getLibraryClass('PEAR/Date');
++require_once 'Date.php';
+ 
+ define('FMT_DATEISO', '%Y%m%dT%H%M%S');
+ define('FMT_DATELDAP', '%Y%m%d%H%M%SZ');
+diff -u -r dotproject/modules/calendar/calendar.class.php dotproject-patched/modules/calendar/calendar.class.php
+--- dotproject/modules/calendar/calendar.class.php	2012-06-19 11:05:19.000000000 +0200
++++ dotproject-patched/modules/calendar/calendar.class.php	2013-01-03 12:36:10.898019883 +0100
+@@ -7,7 +7,8 @@
+ ## Calendar classes
+ ##
+ 
+-require_once ($AppUI->getLibraryClass('PEAR/Date'));
++#require_once ($AppUI->getLibraryClass('PEAR/Date'));
++require_once 'Date.php';
+ require_once ($AppUI->getSystemClass ('dp'));
+ require_once $AppUI->getSystemClass('libmail');
+ require_once $AppUI->getSystemClass('date');
+diff -u -r dotproject/modules/projects/projects.class.php dotproject-patched/modules/projects/projects.class.php
+--- dotproject/modules/projects/projects.class.php	2011-06-20 13:07:49.000000000 +0200
++++ dotproject-patched/modules/projects/projects.class.php	2013-01-03 12:36:12.709019829 +0100
+@@ -10,7 +10,8 @@
+ */
+ 
+ require_once ($AppUI->getSystemClass ('dp'));
+-require_once ($AppUI->getLibraryClass('PEAR/Date'));
++#require_once ($AppUI->getLibraryClass('PEAR/Date'));
++require_once 'Date.php';
+ require_once ($AppUI->getModuleClass('tasks'));
+ require_once ($AppUI->getModuleClass('companies'));
+ require_once ($AppUI->getModuleClass('departments'));

@@ -1,0 +1,29 @@
+--- src/pcpjtool.c.old	2014-10-17 08:38:21.547119790 +0200
++++ src/pcpjtool.c	2014-10-17 08:42:04.949035648 +0200
+@@ -45,7 +45,7 @@
+     int			nb_libre = 0;
+     const char*		separation_line = "+---+---+---+---+---+---+---+---+\n";
+ 
+-    fprintf( MainFD, separation_line );
++    fprintf( MainFD, "%s", separation_line );
+     for (i=7; i>=0; i--)
+     {
+ 	fputc( '|', MainFD );
+@@ -94,7 +94,7 @@
+ 	    fputc( '|', MainFD );
+ 	}
+ 	fputc('\n', MainFD);
+-	fprintf( MainFD, separation_line );
++	fprintf( MainFD, "%s", separation_line );
+ 	if (nb_libre)
+ 	{
+ 	    forsythe[nb_forsythe] = '0' + nb_libre;
+@@ -224,7 +224,7 @@
+ {
+     char		s[12];
+ 
+-    fprintf(MainFD, move_to_string(coup, s));
++    fprintf(MainFD, "%s", move_to_string(coup, s));
+ }
+ 
+ void

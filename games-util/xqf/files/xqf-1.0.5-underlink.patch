@@ -1,0 +1,10 @@
+--- src/Makefile.in.old	2011-06-14 21:32:28.929746563 +0200
++++ src/Makefile.in	2011-06-14 21:32:46.567818865 +0200
+@@ -311,6 +311,7 @@
+ 	    $(GEOIP_LIB) \
+ 	    $(PACKAGE_LIBS) \
+ 	    $(GDK_PIXBUF_LIBS) \
++	    -lX11 -ldl \
+ 	    -lz
+ 
+ xqf_LDFLAGS = -Wl,-rpath,$(pkglibdir) -Wl,--export-dynamic -Wl,--version-script=$(top_srcdir)/src/xqf.map

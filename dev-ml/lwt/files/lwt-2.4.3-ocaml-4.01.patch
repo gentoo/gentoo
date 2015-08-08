@@ -1,0 +1,36 @@
+commit 0df80f6d05625f80e1e3e05a46e355728881b38a
+Author: Anil Madhavapeddy <anil@recoil.org>
+Date:   Sat Aug 3 20:20:55 2013 +0100
+
+    OCaml 4.01.0dev has a Unix.O_CLOEXEC flag, so add this to Lwt_unix too.
+    
+    This was added quite recently in ocaml/ocaml@2207c45056e69d1ea5
+
+diff --git a/src/unix/lwt_unix.ml b/src/unix/lwt_unix.ml
+index 5115ffe..4222f7b 100644
+--- a/src/unix/lwt_unix.ml
++++ b/src/unix/lwt_unix.ml
+@@ -596,6 +596,9 @@ type open_flag =
+ #if ocaml_version >= (3, 13)
+   | O_SHARE_DELETE
+ #endif
++#if ocaml_version >= (4, 01)
++  | O_CLOEXEC
++#endif
+ 
+ #if windows
+ 
+diff --git a/src/unix/lwt_unix.mli b/src/unix/lwt_unix.mli
+index cc9df59..f85df52 100644
+--- a/src/unix/lwt_unix.mli
++++ b/src/unix/lwt_unix.mli
+@@ -315,6 +315,9 @@ type open_flag =
+ #if ocaml_version >= (3, 13)
+   | O_SHARE_DELETE
+ #endif
++#if ocaml_version >= (4, 01)
++  | O_CLOEXEC
++#endif
+ 
+ val openfile : string -> open_flag list -> file_perm -> file_descr Lwt.t
+   (** Wrapper for [Unix.openfile]. *)

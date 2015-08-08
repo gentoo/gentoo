@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-irc</herd>
+	<maintainer>
+		<email>radhermit@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>scarabeus@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="alias">Enable plugin for alias control.</flag>
+		<flag name="charset">Enable encoding conversions.</flag>
+		<flag name="exec">Enable exec plugin.</flag>
+		<flag name="fifo">Enable FIFO support (sh pipes).</flag>
+		<flag name="logger">Enable support for logging.</flag>
+		<flag name="relay">Enable relay plugin (experimental)</flag>
+		<flag name="scripts">Build infrastructure for scripting.</flag>
+		<flag name="trigger">Enable trigger plugin.</flag>
+		<flag name="xfer">Enable xfer plugin support.</flag>
+		<flag name="irc">Enable IRC protocol support.</flag>
+	</use>
+</pkgmetadata>

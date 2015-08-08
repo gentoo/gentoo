@@ -1,0 +1,13 @@
+--- src/Makefile.am.old	2011-06-21 14:39:14.404333493 +0200
++++ src/Makefile.am	2011-06-21 14:39:30.538340283 +0200
+@@ -1,8 +1,8 @@
+ bin_PROGRAMS = mures
+ 
+ mures_LDADD = \
+-	-llua -L./lua
+-	$(STATIC_LIBS)
++	-llua -L./lua \
++	$(STATIC_LIBS) -lm
+ 
+ SUBDIRS = lua gui images maps sounds textures
+ 

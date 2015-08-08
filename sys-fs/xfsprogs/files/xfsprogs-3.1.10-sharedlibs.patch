@@ -1,0 +1,120 @@
+ripped from PLD Linux
+
+--- xfsprogs-3.1.2/libdisk/Makefile
++++ xfsprogs-3.1.2/libdisk/Makefile
+@@ -25,8 +25,10 @@
+ include $(BUILDRULES)
+ 
+ install: default
++	$(INSTALL_LTLIB)
+ 
+ install-dev: default
++	$(INSTALL_LTLIB_DEV)
+ 
+ install-qa: install-dev
+ 
+--- xfsprogs-3.1.2/libxcmd/Makefile
++++ xfsprogs-3.1.2/libxcmd/Makefile
+@@ -32,6 +32,12 @@
+ 
+ include $(BUILDRULES)
+ 
+-install install-dev install-qa: default
++install: default
++	$(INSTALL_LTLIB)
++
++install-dev: default
++	$(INSTALL_LTLIB_DEV)
++
++install-qa: default
+ 
+ -include .dep
+--- xfsprogs-3.1.2/libxfs/Makefile
++++ xfsprogs-3.1.2/libxfs/Makefile
+@@ -41,7 +41,9 @@
+ include $(BUILDRULES)
+ 
+ install: default
++	$(INSTALL_LTLIB_ROOT)
+ 
+ install-dev: default
++	$(INSTALL_LTLIB_DEV)
+ 
+ install-qa: default
+--- xfsprogs-3.1.2/libxlog/Makefile
++++ xfsprogs-3.1.2/libxlog/Makefile
+@@ -12,6 +12,8 @@
+ 
+ CFILES = xfs_log_recover.c util.c
+ 
++LTLIBS = $(LIBUUID) $(LIBXFS)
++
+ # don't want to link xfs_repair with a debug libxlog.
+ DEBUG = -DNDEBUG
+ 
+@@ -19,6 +21,12 @@
+ 
+ include $(BUILDRULES)
+ 
+-install install-dev install-qa: default
++install: default
++	$(INSTALL_LTLIB_ROOT)
++
++install-dev: default
++	$(INSTALL_LTLIB_DEV)
++
++install-qa: default
+ 
+ -include .dep
+--- xfsprogs-3.1.2/Makefile
++++ xfsprogs-3.1.2/Makefile
+@@ -66,6 +66,8 @@
+ mkfs: libxfs
+ quota: libxcmd
+ repair: libxfs libxlog
++libxlog: libxfs
++libxlog-install-dev: libxfs-install-dev
+ 
+ ifneq ($(ENABLE_BLKID), yes)
+ mkfs: libdisk
+--- xfsprogs-3.1.2/include/buildmacros
++++ xfsprogs-3.1.2/include/buildmacros
+@@ -56,11 +56,13 @@
+ endif
+ 
+ ifeq ($(ENABLE_SHARED),yes)
+-INSTALL_LTLIB = \
++_INSTALL_LTLIB = set -e; \
+ 	cd $(TOPDIR)/$(LIBNAME)/.libs; \
+-	../$(INSTALL) -m 755 -d $(PKG_ROOT_LIB_DIR); \
+-	../$(INSTALL) -m 755 -T so_dot_version $(LIBNAME).lai $(PKG_ROOT_LIB_DIR); \
+-	../$(INSTALL) -T so_dot_current $(LIBNAME).lai $(PKG_ROOT_LIB_DIR)
++	../$(INSTALL) -m 755 -d $(1); \
++	../$(INSTALL) -m 755 -T so_dot_version $(LIBNAME).lai $(1); \
++	../$(INSTALL) -T so_dot_current $(LIBNAME).lai $(1)
++INSTALL_LTLIB_ROOT = $(call _INSTALL_LTLIB,$(PKG_ROOT_LIB_DIR))
++INSTALL_LTLIB = $(call _INSTALL_LTLIB,$(PKG_LIB_DIR))
+ endif
+ 
+ # Libtool thinks the static and shared libs should be in the same dir, so
+@@ -71,17 +71,9 @@
+ # /usr/lib.
+ ifeq ($(ENABLE_SHARED),yes)
+ INSTALL_LTLIB_DEV = \
+-	cd $(TOPDIR)/$(LIBNAME)/.libs; \
+-	../$(INSTALL) -m 755 -d $(PKG_LIB_DIR); \
+-	../$(INSTALL) -m 644 -T old_lib $(LIBNAME).lai $(PKG_LIB_DIR); \
+-	../$(INSTALL) -m 644 $(LIBNAME).lai $(PKG_LIB_DIR)/$(LIBNAME).la ; \
+-	../$(INSTALL) -m 755 -d $(PKG_ROOT_LIB_DIR); \
+-	../$(INSTALL) -T so_base $(LIBNAME).lai $(PKG_ROOT_LIB_DIR); \
+-	if test "x$(PKG_LIB_DIR)" != "x$(PKG_ROOT_LIB_DIR)" ; then \
+-	../$(INSTALL) -S $(PKG_LIB_DIR)/$(LIBNAME).a $(PKG_ROOT_LIB_DIR)/$(LIBNAME).a; \
+-	../$(INSTALL) -S $(PKG_LIB_DIR)/$(LIBNAME).la $(PKG_ROOT_LIB_DIR)/$(LIBNAME).la; \
+-	../$(INSTALL) -S $(PKG_ROOT_LIB_DIR)/$(LIBNAME).so $(PKG_LIB_DIR)/$(LIBNAME).so; \
+-	fi
++	set -e; cd $(TOPDIR)/$(LIBNAME); \
++	$(INSTALL) -m 755 -d $(PKG_LIB_DIR); \
++	env -uDIST_ROOT $(LTINSTALL) $(TOPDIR)/$(LIBNAME)/$(LIBNAME).la $(DIST_ROOT)$(PKG_LIB_DIR)/$(LIBNAME).la
+ else
+ INSTALL_LTLIB_DEV = $(INSTALL_LTLIB_STATIC)
+ endif

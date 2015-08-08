@@ -1,0 +1,14 @@
+https://github.com/QtCurve/qtcurve-gtk2/issues/3
+https://gist.github.com/anonymous/8e6e4ea32dabf03cf630
+
+--- qtcurve-1.8.18/gtk2/style/qtcurve.c
++++ qtcurve-1.8.18/gtk2/style/qtcurve.c
+@@ -372,7 +372,7 @@
+     } else if (!(qtSettings.app == GTK_APP_JAVA && widget &&
+                  GTK_IS_LABEL(widget))) {
+         if (state != GTK_STATE_PRELIGHT || opts.crHighlight ||
+-            strcmp(detail, "checkbutton") != 0) {
++            ( detail != NULL && strcmp(detail, "checkbutton") != 0 )) {
+             parent_class->draw_flat_box(style, window, state, shadow, area,
+                                         widget, detail, x, y, width, height);
+         }

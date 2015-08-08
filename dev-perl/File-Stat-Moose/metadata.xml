@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">File-Stat-Moose</remote-id>
+    <remote-id type="cpan-module">Exception::IO</remote-id>
+    <remote-id type="cpan-module">File::Stat::Moose</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::CacheFileHandle</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::OpenHandle</remote-id>
+  </upstream>
+</pkgmetadata>

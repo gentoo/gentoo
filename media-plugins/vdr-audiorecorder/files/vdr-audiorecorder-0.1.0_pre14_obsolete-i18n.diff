@@ -1,0 +1,28 @@
+fixed for obsolet i18n handling, up from vdr-1.7.27
+vdr-plugin-2.eclass will not help in this case
+
+signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2012/07/01)
+
+diff -Naur audiorecorder-0.1.0-pre14.orig/audiorecorder_i18n.h audiorecorder-0.1.0-pre14/audiorecorder_i18n.h
+--- audiorecorder-0.1.0-pre14.orig/audiorecorder_i18n.h	2012-07-01 12:49:17.000000000 +0200
++++ audiorecorder-0.1.0-pre14/audiorecorder_i18n.h	2012-07-01 12:49:59.000000000 +0200
+@@ -11,6 +11,6 @@
+ 
+ #include <vdr/i18n.h>
+ 
+-extern const tI18nPhrase Phrases[];
++//extern const tI18nPhrase Phrases[];
+ 
+ #endif //__I18N__H
+diff -Naur audiorecorder-0.1.0-pre14.orig/Makefile audiorecorder-0.1.0-pre14/Makefile
+--- audiorecorder-0.1.0-pre14.orig/Makefile	2012-07-01 12:49:17.000000000 +0200
++++ audiorecorder-0.1.0-pre14/Makefile	2012-07-01 12:49:44.000000000 +0200
+@@ -70,7 +70,7 @@
+ 
+ ### The object files (add further files here):
+ 
+-OBJS = $(PLUGIN).o mainmenu.o browse.o browse-item.o column.o dispatcher.o audioreceiver.o postdata.o trackinfo.o postproc.o rds.o convert.o cache.o xml-cache.o xml-base.o setup.o mpa-frame.o audiorecorder_
++OBJS = $(PLUGIN).o mainmenu.o browse.o browse-item.o column.o dispatcher.o audioreceiver.o postdata.o trackinfo.o postproc.o rds.o convert.o cache.o xml-cache.o xml-base.o setup.o mpa-frame.o
+ 
+ ### Implicit rules:
+ 

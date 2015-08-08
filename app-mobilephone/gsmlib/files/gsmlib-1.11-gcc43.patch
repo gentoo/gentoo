@@ -1,0 +1,67 @@
+diff -Naurp gsmlib-1.11-orig/gsmlib/gsm_me_ta.cc gsmlib-1.11/gsmlib/gsm_me_ta.cc
+--- gsmlib-1.11-orig/gsmlib/gsm_me_ta.cc	2003-08-26 02:01:36.000000000 -0600
++++ gsmlib-1.11/gsmlib/gsm_me_ta.cc	2008-02-24 15:09:58.000000000 -0600
+@@ -19,6 +19,8 @@
+ #include <gsmlib/gsm_parser.h>
+ #include <gsmlib/gsm_sysdep.h>
+ 
++#include <cstdlib>
++
+ using namespace std;
+ using namespace gsmlib;
+ 
+diff -Naurp gsmlib-1.11-orig/gsmlib/gsm_sms_codec.cc gsmlib-1.11/gsmlib/gsm_sms_codec.cc
+--- gsmlib-1.11-orig/gsmlib/gsm_sms_codec.cc	2004-10-27 17:06:06.000000000 -0600
++++ gsmlib-1.11/gsmlib/gsm_sms_codec.cc	2008-02-24 15:10:44.000000000 -0600
+@@ -23,6 +23,7 @@
+ #ifdef HAVE_STRING_H
+ #include <string.h>
+ #endif
++#include <climits>
+ #include <string>
+ using namespace std;
+ using namespace gsmlib;
+diff -Naurp gsmlib-1.11-orig/gsmlib/gsm_util.cc gsmlib-1.11/gsmlib/gsm_util.cc
+--- gsmlib-1.11-orig/gsmlib/gsm_util.cc	2004-10-27 17:05:53.000000000 -0600
++++ gsmlib-1.11/gsmlib/gsm_util.cc	2008-02-24 15:09:36.000000000 -0600
+@@ -35,6 +35,7 @@
+ #define __USE_GNU
+ #define _GNU_SOURCE
+ #endif
++#include <cstdlib>
+ #include <stdio.h>
+ #include <sys/stat.h>
+ 
+diff -Naurp gsmlib-1.11-orig/gsmlib/gsm_unix_serial.cc gsmlib-1.11/gsmlib/gsm_unix_serial.cc
+--- gsmlib-1.11-orig/gsmlib/gsm_unix_serial.cc	2004-10-27 16:57:35.000000000 -0600
++++ gsmlib-1.11/gsmlib/gsm_unix_serial.cc	2008-02-24 15:19:03.000000000 -0600
+@@ -28,6 +28,7 @@
+ #include <pthread.h>
+ #include <cassert>
+ #include <assert.h>
++#include <cstring>
+ 
+ using namespace std;
+ using namespace gsmlib;
+diff -Naurp gsmlib-1.11-orig/gsmlib/gsm_sorted_phonebook.cc gsmlib-1.11/gsmlib/gsm_sorted_phonebook.cc
+--- gsmlib-1.11-orig/gsmlib/gsm_sorted_phonebook.cc	2002-05-14 13:38:12.000000000 -0600
++++ gsmlib-1.11/gsmlib/gsm_sorted_phonebook.cc	2008-02-24 15:22:52.000000000 -0600
+@@ -20,6 +20,7 @@
+ #include <iostream>
+ #include <fstream>
+ #include <limits.h>
++#include <cstring>
+ 
+ const int MAX_LINE_SIZE = 1000;
+ 
+diff -Naurp gsmlib-1.11-orig/apps/gsmsmsd.cc gsmlib-1.11/apps/gsmsmsd.cc
+--- gsmlib-1.11-orig/apps/gsmsmsd.cc	2003-08-26 00:47:47.000000000 -0600
++++ gsmlib-1.11/apps/gsmsmsd.cc	2008-02-24 15:25:54.000000000 -0600
+@@ -40,6 +40,7 @@
+ #include <iostream>
+ #include <gsmlib/gsm_me_ta.h>
+ #include <gsmlib/gsm_event.h>
++#include <cstring>
+ 
+ using namespace std;
+ using namespace gsmlib;

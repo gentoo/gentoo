@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<longdescription lang="en">
+This is a clone of Evan Bailey's game Bubbles. Why did I reinvent the wheel? In
+this case, the wheel is made in Game Maker, so anyone who wants to do any
+serious programming would not be able to unless they A) ran Windows and B) ran a
+program that doesn't give the user very great power. OpenBubbles is written in
+C++ using SDL, so the programmer has some pretty powerful tools at his/her
+disposal; in addition, because SDL is cross-platform, OpenBubbles can be ported
+to any (major) platform, including Windows. Of course, I only run Unix, so I
+will only be producing Unix source code. Though it was a relatively minor issue,
+Evan's license is only semi-free because it doesn't permit commercial use of the
+source code. Now, you are free to make as much money as you want off of
+improvements of OpenBubbles (provided, of course, that you share them with me
+and everyone else under the GPL, too).
+</longdescription>
+</pkgmetadata>

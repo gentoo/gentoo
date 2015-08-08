@@ -1,0 +1,11 @@
+--- main/Makefile.am.old	2011-06-20 21:35:25.832460030 +0200
++++ main/Makefile.am	2011-06-20 21:36:29.490503981 +0200
+@@ -7,7 +7,7 @@
+ bin_PROGRAMS = @PROGRAM@
+ EXTRA_PROGRAMS = generator-svgalib generator-tcltk generator-allegro \
+                  generator-gtk generator-sdl
+-LDADD = ../cpu68k/lib68k.a ../ym2612/libym2612.a @MY_LIBS@ \
++LDADD = ../cpu68k/lib68k.a ../ym2612/libym2612.a @MY_LIBS@ -lm \
+         ../sn76496/libsn76496.a
+ 
+ ## this should be generator_tcltk_DATA but it won't let me do that

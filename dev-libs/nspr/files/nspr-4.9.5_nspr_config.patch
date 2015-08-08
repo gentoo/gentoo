@@ -1,0 +1,12 @@
+diff -urN a/mozilla/nsprpub/config/nspr-config.in b/mozilla/nsprpub/config/nspr-config.in
+--- a/mozilla/nsprpub/config/nspr-config.in	2012-03-06 07:13:39.000000000 -0600
++++ b/mozilla/nsprpub/config/nspr-config.in	2013-02-16 20:53:53.893489345 -0600
+@@ -126,7 +126,7 @@
+ fi
+ 
+ if test "$echo_libs" = "yes"; then
+-      libdirs=-L$libdir
++      libdirs=""
+       if test -n "$lib_plds"; then
+ 	libdirs="$libdirs -lplds${major_version}"
+       fi

@@ -1,0 +1,74 @@
+diff --git a/ffmpeg_movie.c b/ffmpeg_movie.c
+index 0ce2c0f..6b77eb5 100644
+--- a/ffmpeg_movie.c
++++ b/ffmpeg_movie.c
+@@ -39,6 +39,7 @@
+ #include "ext/standard/info.h"
+ 
+ #include <libavcodec/avcodec.h>
++#include <libavcodec/version.h>
+ #include <libavformat/avformat.h>
+ #include <libavutil/pixfmt.h>
+ #include <libavutil/pixdesc.h>
+@@ -252,17 +257,17 @@ static int _php_open_movie_file(ff_movie_context *ffmovie_ctx,
+         char* filename)
+ {
+     if (ffmovie_ctx->fmt_ctx) {
+-        av_close_input_file(ffmovie_ctx->fmt_ctx);
++        avformat_close_input(&ffmovie_ctx->fmt_ctx);
+         ffmovie_ctx->fmt_ctx = NULL;
+     }
+     
+     /* open the file with generic libav function */
+     if (avformat_open_input(&ffmovie_ctx->fmt_ctx, filename, NULL, NULL) < 0) {
+         return 1;
+     }
+ 
+     /* decode the first frames to get the stream parameters. */
+-    av_find_stream_info(ffmovie_ctx->fmt_ctx);
++    avformat_find_stream_info(ffmovie_ctx->fmt_ctx, NULL);
+ 
+     return 0;
+ }
+@@ -416,7 +421,7 @@ static void _php_free_ffmpeg_movie(zend_rsrc_list_entry *rsrc TSRMLS_DC)
+         }
+     }
+ 
+-    av_close_input_file(ffmovie_ctx->fmt_ctx);
++    avformat_close_input(&ffmovie_ctx->fmt_ctx);
+ 
+     efree(ffmovie_ctx);
+ }
+@@ -440,7 +445,7 @@ static void _php_free_ffmpeg_pmovie(zend_rsrc_list_entry *rsrc TSRMLS_DC)
+         }
+     }
+ 
+-    av_close_input_file(ffmovie_ctx->fmt_ctx);
++    avformat_close_input(&ffmovie_ctx->fmt_ctx);
+ 
+     free(ffmovie_ctx);
+ }
+@@ -512,7 +517,7 @@ static AVCodecContext* _php_get_decoder_context(ff_movie_context *ffmovie_ctx,
+             GET_CODEC_PTR(ffmovie_ctx->fmt_ctx->streams[stream_index]->codec);
+ 
+        /* open the decoder */
+-        if (avcodec_open(ffmovie_ctx->codec_ctx[stream_index], decoder) < 0) {
++        if (avcodec_open2(ffmovie_ctx->codec_ctx[stream_index], decoder, NULL) < 0) {
+             zend_error(E_WARNING, "Could not open codec for %s", _php_get_filename(ffmovie_ctx));
+             return NULL;
+         }
+@@ -966,12 +967,14 @@ static const char* _php_get_codec_name(ff_movie_context *ffmovie_ctx, int type)
+     /* Copied from libavcodec/utils.c::avcodec_string */
+     if (p) {
+         codec_name = p->name;
++#ifdef FF_API_SUB_ID
+         if (decoder_ctx->codec_id == CODEC_ID_MP3) {
+             if (decoder_ctx->sub_id == 2)
+                 codec_name = "mp2";
+             else if (decoder_ctx->sub_id == 1)
+                 codec_name = "mp1";
+         }
++#endif
+     } else if (decoder_ctx->codec_id == CODEC_ID_MPEG2TS) {
+         /* fake mpeg2 transport stream codec (currently not registered) */
+         codec_name = "mpeg2ts";

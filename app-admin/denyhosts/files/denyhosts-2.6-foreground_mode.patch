@@ -1,0 +1,137 @@
+From: Marco Bertorello <marco@bertorello.ns0.it>
+Date: Thu, 14 Apr 2011 00:11:35 +0200
+Subject: 08_foreground_mode
+
+Add a useful switch to denyhost for run in foreground/debugging mode
+---
+ DenyHosts/deny_hosts.py |    9 +++++++--
+ denyhosts.py            |   20 +++++++++++++-------
+ 2 files changed, 20 insertions(+), 9 deletions(-)
+
+diff --git a/DenyHosts/deny_hosts.py b/DenyHosts/deny_hosts.py
+index 7a985e6..f308264 100644
+--- a/DenyHosts/deny_hosts.py
++++ b/DenyHosts/deny_hosts.py
+@@ -41,7 +41,7 @@ error = logging.getLogger("denyhosts").error
+ class DenyHosts:
+     def __init__(self, logfile, prefs, lock_file,
+                  ignore_offset=0, first_time=0,
+-                 noemail=0, daemon=0):
++                 noemail=0, daemon=0, foreground=0):
+         self.__denied_hosts = {}
+         self.__prefs = prefs
+         self.__lock_file = lock_file
+@@ -49,6 +49,7 @@ class DenyHosts:
+         self.__noemail = noemail
+         self.__report = Report(prefs.get("HOSTNAME_LOOKUP"), is_true(prefs['SYSLOG_REPORT']))
+         self.__daemon = daemon
++        self.__foreground = foreground
+         self.__sync_server = prefs.get('SYNC_SERVER')
+         self.__sync_upload = is_true(prefs.get("SYNC_UPLOAD"))
+         self.__sync_download = is_true(prefs.get("SYNC_DOWNLOAD"))
+@@ -87,7 +88,7 @@ class DenyHosts:
+             info("Log file size has not changed.  Nothing to do.")
+ 
+             
+-        if daemon:
++        if daemon and not foreground:
+             info("launching DenyHosts daemon (version %s)..." % VERSION)
+             #logging.getLogger().setLevel(logging.WARN)
+ 
+@@ -101,6 +102,10 @@ class DenyHosts:
+                 self.runDaemon(logfile, last_offset)
+             else:
+                 die("Error creating daemon: %s (%d)" % (retCode[1], retCode[0]))
++        elif foreground:
++            info("launching DenyHosts (version %s)..." % VERSION)
++            self.__lock_file.remove()
++            self.runDaemon(logfile, last_offset)
+ 
+ 
+     def killDaemon(self, signum, frame):
+diff --git a/denyhosts.py b/denyhosts.py
+index 48bd837..727e565 100755
+--- a/denyhosts.py
++++ b/denyhosts.py
+@@ -34,6 +34,7 @@ def usage():
+     print " --migrate: migrate your HOSTS_DENY file so that it is suitable for --purge"
+     print " --purge: expire entries older than your PURGE_DENY setting"
+     print " --daemon: run DenyHosts in daemon mode"
++    print " --foreground: run DenyHosts in foreground mode"
+     print " --sync: run DenyHosts synchronization mode"
+     print " --version: Prints the version of DenyHosts and exits"
+     
+@@ -63,6 +64,7 @@ if __name__ == '__main__':
+     purge = 0
+     sync_mode = 0
+     daemon = 0
++    foreground = 0
+     enable_debug = 0
+     upgrade099 = 0
+     args = sys.argv[1:]
+@@ -70,8 +72,8 @@ if __name__ == '__main__':
+         (opts, getopts) = getopt.getopt(args, 'f:c:dinuvps?hV',
+                                         ["file=", "ignore", "verbose", "debug", 
+                                          "help", "noemail", "config=", "version",
+-                                         "migrate", "purge", "daemon", "sync",
+-                                         "upgrade099"])
++                                         "migrate", "purge", "daemon", "foreground",
++                                         "sync", "upgrade099"])
+     except:
+         print "\nInvalid command line option detected."
+         usage()
+@@ -101,6 +103,8 @@ if __name__ == '__main__':
+             sync_mode = 1
+         if opt == '--daemon':
+             daemon = 1
++        if opt == '--foreground':
++            foreground = 1
+         if opt == '--upgrade099':
+             upgrade099 = 1
+         if opt == '--version':
+@@ -131,21 +135,21 @@ if __name__ == '__main__':
+ 
+     lock_file.create()
+ 
+-    if upgrade099 and not daemon:
++    if upgrade099 and not (daemon or foreground):
+         if not prefs.get('PURGE_DENY'):
+             lock_file.remove()
+             die("You have supplied the --upgrade099 flag, however you have not set PURGE_DENY in your configuration file")
+         else:
+             u = UpgradeTo099(prefs.get("HOSTS_DENY"))
+ 
+-    if migrate and not daemon:
++    if migrate and not (daemon or foreground):
+         if not prefs.get('PURGE_DENY'):
+             lock_file.remove()
+             die("You have supplied the --migrate flag however you have not set PURGE_DENY in your configuration file.")
+         else:
+             m = Migrate(prefs.get("HOSTS_DENY"))
+ 
+-    if purge and not daemon:
++    if purge and not (daemon or foreground):
+         purge_time = prefs.get('PURGE_DENY')
+         if not purge_time:
+             lock_file.remove()
+@@ -162,7 +166,9 @@ if __name__ == '__main__':
+     try:
+         for f in logfiles:
+             dh = DenyHosts(f, prefs, lock_file, ignore_offset,
+-                           first_time, noemail, daemon)
++                           first_time, noemail, daemon, foreground)
++    except KeyboardInterrupt:
++        pass
+     except SystemExit, e:
+         pass
+     except Exception, e:
+@@ -170,7 +176,7 @@ if __name__ == '__main__':
+         print "\nDenyHosts exited abnormally"
+ 
+ 
+-    if sync_mode and not daemon:
++    if sync_mode and not (daemon or foreground):
+         if not prefs.get('SYNC_SERVER'):
+             lock_file.remove()
+             die("You have provided the --sync flag however your configuration file is missing a value for SYNC_SERVER.")
+-- 

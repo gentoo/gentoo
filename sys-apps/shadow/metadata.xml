@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>base-system</herd>
+<herd>pam</herd> <!-- only for USE=pam -->
+<use>
+ <flag name='audit'>Enable support for <pkg>sys-process/audit</pkg></flag>
+</use>
+<upstream>
+ <remote-id type="cpe">cpe:/a:debian:shadow</remote-id>
+</upstream>
+</pkgmetadata>

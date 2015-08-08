@@ -1,0 +1,51 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ea1c033..ae479ce 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -395,9 +395,6 @@ macro (CMAKE_BUILD_UTILITIES)
+   else ()
+     set(BUILD_CursesDialog 0)
+   endif ()
+-  if(BUILD_CursesDialog)
+-    add_subdirectory(Source/CursesDialog/form)
+-  endif()
+ endmacro ()
+ 
+ #-----------------------------------------------------------------------
+diff --git a/Source/CursesDialog/CMakeLists.txt b/Source/CursesDialog/CMakeLists.txt
+index 96e28b4..4102379 100644
+--- a/Source/CursesDialog/CMakeLists.txt
++++ b/Source/CursesDialog/CMakeLists.txt
+@@ -25,13 +25,16 @@ set( CURSES_SRCS
+               CursesDialog/ccmake
+    )
+ 
+-include_directories(${CMake_SOURCE_DIR}/Source/CursesDialog/form
+-                    ${CMake_BINARY_DIR}/Source/CursesDialog/form)
+ include_directories(${CURSES_INCLUDE_PATH})
+ 
+ 
+ add_executable(ccmake ${CURSES_SRCS} )
+ target_link_libraries(ccmake CMakeLib)
+-target_link_libraries(ccmake cmForm)
++TARGET_LINK_LIBRARIES(ccmake form)
++TARGET_LINK_LIBRARIES(ccmake ${CURSES_LIBRARY})
++IF(CURSES_EXTRA_LIBRARY)
++  TARGET_LINK_LIBRARIES(ccmake ${CURSES_EXTRA_LIBRARY})
++ENDIF(CURSES_EXTRA_LIBRARY)
++
+ 
+ install_targets(/bin ccmake)
+diff --git a/Source/CursesDialog/cmCursesStandardIncludes.h b/Source/CursesDialog/cmCursesStandardIncludes.h
+index b157a28..f131ea4 100644
+--- a/Source/CursesDialog/cmCursesStandardIncludes.h
++++ b/Source/CursesDialog/cmCursesStandardIncludes.h
+@@ -15,8 +15,6 @@
+  #define _MSE_INT_H
+ #endif
+ 
+-#include <cmFormConfigure.h>
+-
+ #if defined(__hpux)
+ # define _BOOL_DEFINED
+ # include <sys/time.h>

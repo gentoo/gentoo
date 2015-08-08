@@ -1,0 +1,67 @@
+From f30e2447944c5131b9c9502ca8054f847d1a9c0f Mon Sep 17 00:00:00 2001
+From: Albert Zeyer <albert.zeyer@rwth-aachen.de>
+Date: Tue, 22 Mar 2011 14:42:15 +0100
+Subject: [PATCH] rename UnicodeString to Unicode32String
+
+Seems that ICU (unicode/unistr.h) polutes the global namespace and uses this name. See http://bugs.gentoo.org/show_bug.cgi?id=359655 .
+---
+ include/Unicode.h      |    6 +++---
+ src/common/Unicode.cpp |    8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/include/Unicode.h b/include/Unicode.h
+index a523b46..5b976ab 100644
+--- a/include/Unicode.h
++++ b/include/Unicode.h
+@@ -15,7 +15,7 @@
+ #include <string>
+ 
+ typedef Uint32 UnicodeChar;
+-typedef std::basic_string<UnicodeChar> UnicodeString;
++typedef std::basic_string<UnicodeChar> Unicode32String;
+ #ifdef WIN32
+ typedef wchar_t Utf16Char;
+ typedef std::wstring Utf16String;
+@@ -158,8 +158,8 @@ char UnicodeCharToAsciiChar(UnicodeChar c);
+ std::string RemoveSpecialChars(const std::string &Utf8String);
+ std::string Utf16ToUtf8(const Utf16String& str);
+ Utf16String Utf8ToUtf16(const std::string& str);
+-std::string UnicodeToUtf8(const UnicodeString& str);
+-UnicodeString Utf8ToUnicode(const std::string& str);
++std::string UnicodeToUtf8(const Unicode32String& str);
++Unicode32String Utf8ToUnicode(const std::string& str);
+ std::string UnicodeToAscii(const std::string& utf8str);
+ std::string ISO88591ToUtf8(const std::string& isostr);
+ #ifdef WIN32
+diff --git a/src/common/Unicode.cpp b/src/common/Unicode.cpp
+index 5956289..5a58c30 100644
+--- a/src/common/Unicode.cpp
++++ b/src/common/Unicode.cpp
+@@ -1055,10 +1055,10 @@ Utf16String Utf8ToUtf16(const std::string& str)
+ 
+ //////////////////
+ // Convert a Unicode string to UTF8
+-std::string UnicodeToUtf8(const UnicodeString& str)
++std::string UnicodeToUtf8(const Unicode32String& str)
+ {
+ 	std::string result;
+-	for (UnicodeString::const_iterator i = str.begin(); i != str.end(); i++)  {
++	for (Unicode32String::const_iterator i = str.begin(); i != str.end(); i++)  {
+ 		result += GetUtf8FromUnicode(*i);
+ 	}
+ 
+@@ -1067,9 +1067,9 @@ std::string UnicodeToUtf8(const UnicodeString& str)
+ 
+ //////////////////
+ // Convert a UTF8 string to Unicode
+-UnicodeString Utf8ToUnicode(const std::string& str)
++Unicode32String Utf8ToUnicode(const std::string& str)
+ {
+-	UnicodeString result;
++	Unicode32String result;
+ 	for (std::string::const_iterator it = str.begin(); it != str.end();)
+ 		result += GetNextUnicodeFromUtf8(it, str.end());
+ 
+-- 
+1.7.3.4
+

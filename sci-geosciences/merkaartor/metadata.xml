@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-geosciences</herd>
+  <use>
+    <flag name="libproxy">
+    	Use <pkg>net-libs/libproxy</pkg> for getting the HTTP/HTTPS/SOCKS proxy configuration
+    	</flag>
+    <flag name="qrcode">
+    Enable QR code scanning with <pkg>media-gfx/zbar</pkg>
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">openstreetmap/merkaartor</remote-id>
+  </upstream>
+</pkgmetadata>

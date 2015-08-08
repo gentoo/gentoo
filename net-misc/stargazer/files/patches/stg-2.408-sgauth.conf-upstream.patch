@@ -1,0 +1,112 @@
+--- projects/sgauth/sgauth.conf.org	2013-01-08 15:43:09.000000000 +0200
++++ projects/sgauth/sgauth.conf	2013-01-09 13:41:53.000000000 +0200
+@@ -1,37 +1,72 @@
+-#Stargazer server ip
+-ServerName=192.168.1.2
++################################################################################
++#                           Sgauth Configuration file                          #
++################################################################################
++
++# Stargazer server
++# Parameter: required
++# Values: IP address or DNS name
++# Default:
++ServerName = 192.168.1.2
++
++# Port on which Stargazer interacts with sgauth
++# Parameter: optional
++# Value: 1 ... 65535
++# Default: 5555
++ServerPort = 5555
++
++# User's login in Stargazer
++# Parameter: required
++# Value: any
++# Default:
++Login = test
++
++# Port on which sgauth interacts with Stargazer
++# Parameter: optional
++# Value: 1 ... 65535
++# Default: 0
++LocalPort = 12345
++
++# User's password in Stargazer
++# Parameter: required
++# Value: any
++# Default:
++Password = 123456
++
++# Defines should sgauth try to reestablish connection to Stargazer
++# if it was lost
++# Parameter: optional
++# Value: yes, no
++# Default: yes
++Reconnect = yes
++
++# Defines should sgauth run as daemon
++# Parameter: optional
++# Value: yes, no
++# Default: yes
++Daemon = yes
++
++# Web-page refresh period in built-in webserver
++# Parameter: optional
++# Value: any numeric (minutes)
++# Default: 10
++RefreshPeriod = 10
++
++# Defines should sgauth use built-in webserver
++# Parameter: optional
++# Value: yes, no
++# Default: no
++DisableWeb = no
++
++# Defines address on which sgauth's built-in webserver will listen
++# Parameter: optional
++# Value: IP address or DNS name
++# Default: 127.0.0.1
++ListenWebIP = 127.0.0.1
++
++# Defines should sgauth show it process ID in process list
++# Parameter: optional
++# Value: yes, no
++# Default: no
++ShowPid = no
+ 
+-#Stargazer server port
+-#Default value 5555
+-ServerPort=5555
+-
+-#User's login
+-Login=test
+-
+-#
+-#
+-LocalPort=12345
+-
+-#User's password
+-Password=1234567
+-
+-#
+-#Default value yes
+-#Reconnect=no
+-
+-#
+-#Default value yes
+-#Daemon=yes
+-
+-#Refresh web page period
+-#Default value 10
+-#RefreshPeriod=10
+-
+-#
+-#Default value 127.0.0.1
+-ListenWebIP=127.0.0.1
+-
+-#Default value no
+-DisableWeb=no
+-
+-#ShowPid=no
++################################################################################
+\ No newline at end of file

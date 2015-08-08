@@ -1,0 +1,21 @@
+commit e1d5dfe3aebcb0d2669ec1534cb6eba25f07dbb7
+Author: Lucas De Marchi <lucas.demarchi@profusion.mobi>
+Date:   Wed Jan 16 19:11:24 2013 -0200
+
+    storage: Include sys/types.h for ssize_t
+    
+    src/storage.h:32:1: error: unknown type name 'ssize_t'
+    src/storage.h:36:1: error: unknown type name 'ssize_t'
+
+diff --git a/src/storage.h b/src/storage.h
+index c455bae..70446ad 100644
+--- a/src/storage.h
++++ b/src/storage.h
+@@ -26,6 +26,7 @@
+ #endif
+ 
+ #include <fcntl.h>
++#include <sys/types.h>
+ 
+ int create_dirs(const char *filename, const mode_t mode);
+ 

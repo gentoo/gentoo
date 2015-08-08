@@ -1,0 +1,19 @@
+Index: squidclamav-6.1/src/squidclamav.c
+===================================================================
+--- squidclamav-6.1.orig/src/squidclamav.c
++++ squidclamav-6.1/src/squidclamav.c
+@@ -427,8 +427,12 @@ int squidclamav_check_preview_handler(ch
+      } else {
+ 	data->user = NULL;
+      }
+-     data->clientip = ci_buffer_alloc(strlen(clientip)+1);
+-     strcpy(data->clientip, clientip);
++     if (clientip != NULL) {
++       data->clientip = ci_buffer_alloc(strlen(clientip)+1);
++       strcpy(data->clientip, clientip);
++     } else {
++       data->clientip = NULL;
++     }
+ 
+      data->body = ci_simple_file_new(MAX_OBJECT_SIZE);
+      if (SEND_PERCENT_BYTES >= 0 && START_SEND_AFTER == 0) {

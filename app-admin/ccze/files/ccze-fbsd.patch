@@ -1,0 +1,25 @@
+--- a/src/ccze-compat.h
++++ b/src/ccze-compat.h
+@@ -29,6 +29,11 @@
+ #include <stddef.h>
+ #include <stdio.h>
+ 
++# ifndef __error_t_defined
++typedef int error_t;
++#  define __error_t_defined     1
++# endif
++
+ #ifndef HAVE_STRNDUP
+ char *strndup (const char *s, size_t size);
+ #endif
+--- a/src/ccze-compat.c
++++ b/src/ccze-compat.c
+@@ -275,7 +275,7 @@
+ 		char **valuep)
+ {
+   int i = getsubopt (optionp, tokens, valuep);
+-#if HAVE_SUBOPTARg
++#if HAVE_SUBOPTARG
+   if (!*valuep && suboptarg)
+     *valuep = strdup (suboptarg);
+ #endif

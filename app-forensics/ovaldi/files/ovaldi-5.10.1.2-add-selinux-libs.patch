@@ -1,0 +1,11 @@
+--- project/linux/Makefile.orig	2012-01-02 12:08:20.400871287 +0100
++++ project/linux/Makefile	2012-01-02 12:08:48.966488826 +0100
+@@ -50,7 +50,7 @@
+ LIBDIR = -L/usr/local/lib -L/usr/lib
+ 
+ # What libraries do we need?
+-LIBS = -lxerces-c -lxalan-c -lpcre -lpopt -lgcrypt  -lblkid
++LIBS = -lxerces-c -lxalan-c -lpcre -lpopt -lgcrypt  -lblkid -lsepol -lselinux
+ 
+ # Determine what package management system is being used 
+ #PACKAGE_RPM  = $(shell /usr/bin/env rpm  --version 2>/dev/null)

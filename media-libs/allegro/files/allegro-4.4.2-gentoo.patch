@@ -1,0 +1,16 @@
+--- docs/CMakeLists.txt.old	2012-03-04 20:20:05.566881387 +0100
++++ docs/CMakeLists.txt	2012-03-04 20:20:50.659714153 +0100
+@@ -71,11 +71,12 @@
+     string(REGEX MATCH "[^/]*._tx" basename ${page})
+     string(REPLACE "._tx" "" basename ${basename})
+ 
+-    set(page ${CMAKE_CURRENT_SOURCE_DIR}/${page})
+     if(${page} MATCHES "/build/")
++    	set(page ${CMAKE_CURRENT_SOURCE_DIR}/${page})
+         set(txt_out ${CMAKE_CURRENT_BINARY_DIR}/build/${basename}.txt)
+         set(html_out ${CMAKE_CURRENT_BINARY_DIR}/build/${basename}.html)
+     else()
++    	set(page ${CMAKE_CURRENT_SOURCE_DIR}/${page})
+         set(txt_out ${CMAKE_CURRENT_BINARY_DIR}/txt/${basename}.txt)
+         set(html_out ${CMAKE_CURRENT_BINARY_DIR}/html/${basename}.html)
+     endif()

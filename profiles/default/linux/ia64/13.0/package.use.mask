@@ -1,0 +1,8 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Fabian Groffen <grobian@gentoo.org> (Sep 30, 2014)
+# redis needs dev-libs/hiredis, bug #489676
+mail-mta/exim redis
+

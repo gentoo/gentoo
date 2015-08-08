@@ -1,0 +1,25 @@
+#!/sbin/runscript
+
+pidfile="/run/murmur/murmur.pid"
+command="/usr/bin/murmurd"
+command_args="-ini \"${MURMUR_CONF}\""
+start_stop_daemon_args="-u \"${MURMUR_USER}\" --env HOME=\"${MURMUR_HOME}\" --wait 20"
+extra_started_commands="reload"
+
+depend() {
+	need localmount net
+	use dbus logger
+	after bootmisc mysql
+}
+
+start_pre() {
+	checkpath -d -o ${MURMUR_USER} ${pidfile%/*}
+}
+
+reload() {
+	ebegin "Reloading Murmur"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}" \
+		--exec ${command}
+	eend $?
+}
+

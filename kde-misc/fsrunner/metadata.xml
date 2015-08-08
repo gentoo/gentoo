@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<upstream>
+		<remote-id type="google-code">fsrunner</remote-id>
+		<bugs-to>https://code.google.com/p/fsrunner/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

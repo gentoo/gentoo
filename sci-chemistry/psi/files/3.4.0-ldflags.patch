@@ -1,0 +1,21 @@
+Respect LDFLAGS
+
+--- configure.ac
++++ configure.ac
+@@ -288,15 +288,13 @@
+ )
+ AC_SUBST(LDLIBS)
+ 
+-LDFLAGS=
+ LIBDIRS=
+ AC_ARG_WITH(libdirs,
+ [  --with-libdirs          Specifies library directories (-Ldir1 -Ldir2).],
+ LIBDIRS=$withval
+-LDFLAGS=$withval
+ AC_MSG_RESULT([Using extra library directories: $withval])
+ )
+-AC_SUBST(LDFLAGS)
++AC_SUBST(LIBDIRS)
+ 
+ AC_CHECK_PROGS(PERL,perl,perl) AC_SUBST(PERL)
+ 

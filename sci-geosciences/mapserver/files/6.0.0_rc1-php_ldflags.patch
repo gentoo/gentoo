@@ -1,0 +1,15 @@
+--- mapserver-6.0.0-rc1.old/mapscript/php/Makefile.in	2011-05-02 12:10:03.000000000 +0200
++++ mapserver-6.0.0-rc1/mapscript/php/Makefile.in	2011-05-02 23:43:15.000000000 +0200
+@@ -86,10 +86,10 @@
+ 
+ 
+ php_mapscript.so: $(PHPMS_OBJS) ../../libmapserver.a
+-	$(LD) -o $@ $(PHPMS_OBJS) $(MS_LIBS)
++	$(LD) -o $@ $(LDFLAGS) $(PHPMS_OBJS) $(MS_LIBS)
+ 
+ php_proj.so:  $(PHPPROJ_OBJS)
+-	$(LD) -o $@ $(PHPPROJ_OBJS) $(MS_LIBS)
++	$(LD) -o $@ $(LDFLAGS) $(PHPPROJ_OBJS) $(MS_LIBS)
+ 
+ %.o: %.c php_mapscript_util.h php_mapscript.h
+ 	$(CC) $(CFLAGS112) -c -o $@ $<

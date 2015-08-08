@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="Resource-specific view of processes"
+pidfile="/var/run/atop.pid"
+command="/usr/bin/atop"
+
+start() {
+	ebegin "Starting atop"
+	start-stop-daemon --start --pidfile ${pidfile} \
+		--exec /etc/atop/atop.daily
+	eend $?
+}

@@ -1,0 +1,88 @@
+--- ./g-octave-0.4.1/g_octave/package_manager.py	2010-10-23 23:37:26.000000000 +0200
++++ ./g-octave-0.4.1/g_octave/package_manager.py	2011-05-25 12:52:10.510019006 +0200
+@@ -15,6 +15,7 @@
+     'Portage',
+     'Pkgcore',
+     'Paludis',
++    'Cave',
+ ]
+ 
+ import grp
+@@ -243,3 +244,56 @@
+                 packages.append(line.strip())
+         return packages
+ 
++class Cave(Base):
++    
++    _client = '/usr/bin/cave'
++    _group = 'paludisbuild'
++    
++    post_uninstall = [
++        'You may want to remove the dependencies too, using:',
++        '# cave purge',
++    ]
++    
++    def __init__(self, ask=False, verbose=False, pretend=False, oneshot=False, nocolor=False):
++        self._fullcommand = [self._client]
++        self._cmd = ['-z']
++        oneshot and self._cmd.append('-1')
++        not pretend and self._cmd.append('-x')
++        #if verbose:
++        #    self._fullcommand += [
++        #        '--show-descriptions', 'all',
++        #        '--show-option-descriptions', 'all',
++        #    ]
++        #cave doesn't support '--ask'
++        #cave doesn't support '--no-color'
++    
++    def run_command(self, command):
++        return subprocess.call(self._fullcommand + command + self._cmd)
++    
++    def install_package(self, pkgatom, catpkg):
++        return self.run_command(['resolve'] + [pkgatom])
++
++    def uninstall_package(self, pkgatom, catpkg):
++        return self.run_command(['uninstall'] + [pkgatom])
++    
++    def update_package(self, pkgatom=None, catpkg=None):
++        cmd = ['-1','-K','s','-k','s']
++        if pkgatom is None:
++            pkgatom = self.installed_packages()
++        else:
++            pkgatom = [pkgatom]
++        self.do_ebuilds(pkgatom)
++        return self.run_command(['resolve'] + cmd + pkgatom)
++    
++    def installed_packages(self):
++        packages = []
++        p = subprocess.Popen([
++            'cave',
++            'print-ids',
++            '--matching', 'g-octave/*::installed',
++            '--format', '%c/%p\n',
++        ], stdout=subprocess.PIPE)
++        if p.wait() == os.EX_OK:
++            for line in p.stdout:
++                packages.append(line.strip())
++        return packages
+--- ./g-octave-0.4.1/scripts/g-octave	2011-05-25 12:00:25.740019020 +0200
++++ ./g-octave-0.4.1/scripts/g-octave	2011-05-25 12:00:39.434019008 +0200
+@@ -217,7 +217,7 @@
+             return os.EX_DATAERR
+         return os.EX_OK
+ 
+-    from g_octave.package_manager import Portage, Pkgcore, Paludis
++    from g_octave.package_manager import Portage, Pkgcore, Paludis, Cave
+ 
+     if conf_prefetch.package_manager == 'portage':
+         log.info('Your package manager is: Portage')
+@@ -228,6 +228,9 @@
+     elif conf_prefetch.package_manager == 'paludis':
+         log.info('Your package manager is: Paludis')
+         pkg_manager = Paludis(options.ask, options.verbose, options.pretend, options.oneshot, not options.colors)
++    elif conf_prefetch.package_manager == 'cave':
++        log.info('Your package manager is: Paludis (Cave)')
++        pkg_manager = Cave(options.ask, options.verbose, options.pretend, options.oneshot, not options.colors)
+     else:
+         log.error('Invalid package manager: %s' % conf_prefetch.package_manager)
+         out.eerror('Invalid package manager: %s' % conf_prefetch.package_manager)

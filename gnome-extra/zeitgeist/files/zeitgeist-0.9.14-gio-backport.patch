@@ -1,0 +1,18 @@
+From b1e82de434a7b63fe1290d0051de58350b069991 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <philip@tecnocode.co.uk>
+Date: Sun, 16 Feb 2014 15:08:49 +0000
+Subject: libzeitgeist: Add a missing dependency on gio-2.0
+
+This actually makes the zeitgeist vapi file usable.
+
+Signed-off-by: Seif Lotfy <seif@lotfy.com>
+---
+diff --git a/libzeitgeist/zeitgeist-2.0.deps b/libzeitgeist/zeitgeist-2.0.deps
+index ff8d39b..59eec5d 100644
+--- a/libzeitgeist/zeitgeist-2.0.deps
++++ b/libzeitgeist/zeitgeist-2.0.deps
+@@ -1 +1,2 @@
+ zeitgeist-datamodel-2.0
++gio-2.0
+--
+cgit v0.9.0.2-2-gbebe

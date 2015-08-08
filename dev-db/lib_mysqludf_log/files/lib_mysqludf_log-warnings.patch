@@ -1,0 +1,11 @@
+--- lib_mysqludf_log.c.orig	2008-07-07 01:17:06.000000000 +0200
++++ lib_mysqludf_log.c	2011-10-18 12:50:52.000000000 +0200
+@@ -159,7 +159,7 @@
+ 	} else {
+ 		fmt = (char *)initid->ptr;
+ 		memcpy(fmt, "%0.", 3);
+-		sprintf(fmt+3, "%d", args->lengths[0]<=9999? args->lengths[0]: 9999);
++		sprintf(fmt+3, "%d", (int)(args->lengths[0]<=9999? args->lengths[0]: 9999));
+ 		numDigits = strlen(fmt + 4);
+ 		memcpy(fmt + 4 + numDigits, "s\n\0", 3);
+ 		fprintf(stderr, fmt, args->args[0]);

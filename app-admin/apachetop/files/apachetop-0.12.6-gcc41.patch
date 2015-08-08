@@ -1,0 +1,13 @@
+--- src/resolver.h
++++ src/resolver.h
+@@ -10,8 +10,8 @@
+ class Resolver
+ {
+ 	public:
+-	Resolver::Resolver(void);
+-	Resolver::~Resolver(void);
++	Resolver(void);
++	~Resolver(void);
+ 	int add_request(char *request, enum resolver_action act);
+ 
+ 

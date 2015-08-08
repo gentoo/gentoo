@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription lang="en">
+		Approximate String Matching in Python: identifies typing and spelling
+		errors, closely related vocabularies, genetic mutations (GAG ACT),
+		abbreviations. While it implements the same algorithm as the agrep
+		program, Apse lets the user choose how many edits (substitutions,
+		deletions, additions) will be acceptable as 'match'.
+	</longdescription>
+	<longdescription lang="ja">
+		Python言語に近似した文字列の一致を判断させます。タイピング・エラー、スペリング・
+		エラー、ボキャブラリ的に近い単語、一般的な同意語(GAG ACT)、略語を同一視できます>。agrepプログラムと同一のアルゴリズムを用いて、Apseはユーザーに"一致する"と判断>した場合の処理(置換、削除、追加)を何回行うかを選ばせます。
+	</longdescription>
+</pkgmetadata>

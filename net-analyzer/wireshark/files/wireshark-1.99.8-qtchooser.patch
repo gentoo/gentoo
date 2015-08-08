@@ -1,0 +1,10 @@
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -2149,7 +2149,6 @@
+ 	# -qt={version} argument, otherwise we look for particular
+ 	# tool versions using tool name suffixes.
+ 	#
+-	AC_PATH_PROG(QTCHOOSER, qtchooser)
+ 	if test ! -z "$QTCHOOSER"; then
+ 		#
+ 		# We found qtchooser; we assume that means that

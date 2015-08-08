@@ -1,0 +1,24 @@
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 51471b1..81c57ff 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -635,6 +635,8 @@ AC_ARG_WITH(ncurses-headers, [AC_HELP_STRING([--with-ncurses-headers=DIR],
+ 		[compile finch against the ncurses includes in DIR])],
+ 		[ac_ncurses_includes="$withval"], [ac_ncurses_includes=""])
+ if test "x$enable_consoleui" = "xyes"; then
++	PKG_CHECK_MODULES([GNT], [ncursesw panelw], [], [
++	PKG_CHECK_MODULES([GNT], [ncurses panel], [], [
+ 	AC_CHECK_LIB(ncursesw, initscr, [GNT_LIBS="-lncursesw"], [enable_consoleui=no])
+ 	AC_CHECK_LIB(panelw, update_panels, [GNT_LIBS="$GNT_LIBS -lpanelw"],
+ 	    [enable_consoleui=no], [$GNT_LIBS])
+@@ -699,6 +701,7 @@ if test "x$enable_consoleui" = "xyes"; then
+ 			fi
+ 		fi
+ 	fi
++	])])
+ fi
+ 
+ if test "x$force_finch" = "xyes" -a "x$enable_consoleui" != "xyes"; then

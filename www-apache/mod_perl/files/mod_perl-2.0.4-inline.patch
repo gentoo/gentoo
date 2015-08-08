@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/550244
+
+taken from Fedora:
+http://pkgs.fedoraproject.org/cgit/mod_perl.git/tree/mod_perl-2.0.4-inline.patch?h=f22
+
+fixes building with gcc-5:
+apache2: Syntax error on line 148 of /etc/apache2/httpd.conf:
+Syntax error on line 2 of /etc/apache2/modules.d/75_mod_perl.conf:
+Cannot load modules/mod_perl.so into server:
+/usr/lib64/apache2/modules/mod_perl.so: undefined symbol: modperl_handler_name
+
+--- mod_perl-2.0.4/src/modules/perl/modperl_common_util.h.inline
++++ mod_perl-2.0.4/src/modules/perl/modperl_common_util.h
+@@ -22,7 +22,7 @@
+ #ifdef MP_DEBUG
+ #define MP_INLINE
+ #else
+-#define MP_INLINE APR_INLINE
++#define MP_INLINE
+ #endif
+ 
+ #ifdef CYGWIN

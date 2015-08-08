@@ -1,0 +1,33 @@
+http://bugs.gentoo.org/276571
+
+--- include/memcache.h.in
++++ include/memcache.h.in
+@@ -923,7 +923,7 @@ int	mcMemGet(mcFreeFunc *freeFunc, mcMallocFunc *mallocFunc,
+ 		 mcMallocFunc *mallocAtomicFunc, mcReallocFunc *reallocFunc);
+ 
+ /* Returns a pointer to the global context. */
+-inline struct memcache_ctxt *mc_global_ctxt(void);
++struct memcache_ctxt *mc_global_ctxt(void);
+ 
+ /* The next two functions are used to setup an error handler. */
+ int	mcErrSetup(mcErrFunc errFunc);
+--- include/memcache/buffer.h
++++ include/memcache/buffer.h
+@@ -63,14 +63,14 @@ struct memcache_buf	*mcm_buf_find_replace(struct memcache_ctxt *, struct memcach
+ struct memcache_buf	*mcm_buf_find_replace2(struct memcache_ctxt *, struct memcache_buf *,
+ 						    const char *, struct memcache_buf *);
+ int	 mcm_buf_free(struct memcache_ctxt *, struct memcache_buf **);
+-inline u_int32_t	 mcm_buf_len(const struct memcache_ctxt *, const struct memcache_buf *);
++u_int32_t	 mcm_buf_len(const struct memcache_ctxt *, const struct memcache_buf *);
+ struct memcache_buf	*mcm_buf_new(struct memcache_ctxt *);
+ struct memcache_buf	*mcm_buf_new2(struct memcache_ctxt *, const char *, const u_int32_t);
+ struct memcache_buf	*mcm_buf_new3(struct memcache_ctxt *, const char *);
+ size_t	 mcm_buf_read(struct memcache_ctxt *, struct memcache_buf *, int);
+ int	 mcm_buf_realloc(struct memcache_ctxt *, struct memcache_buf *, const u_int32_t);
+-inline size_t	 mcm_buf_remain(const struct memcache_ctxt *, const struct memcache_buf *);
+-inline size_t	 mcm_buf_remain_off(const struct memcache_ctxt *, const struct memcache_buf *);
++size_t	 mcm_buf_remain(const struct memcache_ctxt *, const struct memcache_buf *);
++size_t	 mcm_buf_remain_off(const struct memcache_ctxt *, const struct memcache_buf *);
+ int	 mcm_buf_replace(struct memcache_ctxt *, struct memcache_buf *, const char *, const u_int32_t);
+ int	 mcm_buf_replace2(struct memcache_ctxt *, struct memcache_buf *, const char *);
+ int	 mcm_buf_replace_buf(struct memcache_ctxt *, struct memcache_buf *, struct memcache_buf *);

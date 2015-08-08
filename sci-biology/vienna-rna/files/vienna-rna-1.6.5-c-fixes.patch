@@ -1,0 +1,22 @@
+diff -Naur ViennaRNA-1.6.5/Cluster/statgeom.c ViennaRNA-1.6.5.new/Cluster/statgeom.c
+--- ViennaRNA-1.6.5/Cluster/statgeom.c	2001-04-05 04:36:41.000000000 -0400
++++ ViennaRNA-1.6.5.new/Cluster/statgeom.c	2007-11-24 08:55:17.000000000 -0500
+@@ -5,6 +5,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <strings.h>
+ #include <ctype.h>
+ #include "utils.h"
+diff -Naur ViennaRNA-1.6.5/Readseq/readseq.c ViennaRNA-1.6.5.new/Readseq/readseq.c
+--- ViennaRNA-1.6.5/Readseq/readseq.c	1995-07-12 13:05:58.000000000 -0400
++++ ViennaRNA-1.6.5.new/Readseq/readseq.c	2007-11-24 08:56:16.000000000 -0500
+@@ -173,6 +173,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+ #include "ureadseq.h"
+ 

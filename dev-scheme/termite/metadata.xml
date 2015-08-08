@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>scheme</herd>
+	<longdescription lang="en">Termite Scheme is a variant of Scheme intended for distributed computing. 
+	It offers a simple and powerful concurrency model, inspired by the Erlang 
+	programming language, which is based on a message-passing model of 
+	concurrency.</longdescription>
+	<upstream>
+		<remote-id type="google-code">termite</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,35 @@
+use minizip from system zlib
+
+https://bugs.gentoo.org/383845
+
+--- a/Makefile
++++ b/Makefile
+@@ -101,8 +101,6 @@
+ 	main/plugin.o \
+ 	main/rom.o \
+ 	main/savestates.o \
+-	main/zip/ioapi.o \
+-	main/zip/unzip.o \
+ 	main/7zip/7zAlloc.o \
+ 	main/7zip/7zBuffer.o \
+ 	main/7zip/7zCrc.o \
+@@ -229,7 +227,7 @@
+ # set primary objects and libraries for all outputs
+ ALL = mupen64plus $(PLUGINS)
+ OBJECTS = $(OBJ_CORE) $(OBJ_DYNAREC) $(OBJ_OPENGL)
+-LIBS = $(SDL_LIBS) $(LIBGL_LIBS) $(LZMA_LIBS) -lbz2
++LIBS = $(SDL_LIBS) $(LIBGL_LIBS) $(LZMA_LIBS) -lbz2 -lminizip
+ STATIC_LIBS =
+ CFLAGS+= $(LZMA_FLAGS)
+ 
+--- a/main/rom.c
++++ b/main/rom.c
+@@ -27,7 +27,7 @@
+ #include <limits.h>
+ #include <zlib.h>
+ 
+-#include "zip/unzip.h"
++#include "minizip/unzip.h"
+ #include <bzlib.h>
+ #include <lzma.h>
+ #include "7zip/7zExtract.h"

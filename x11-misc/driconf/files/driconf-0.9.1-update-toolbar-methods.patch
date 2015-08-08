@@ -1,0 +1,108 @@
+http://cvs.fedoraproject.org/viewvc/rpms/driconf/devel/
+
+--- driconf_complexui.py
++++ driconf_complexui.py
+@@ -838,42 +838,73 @@ class MainWindow (gtk.Window):
+         self.paned.show()
+         self.toolbar = gtk.Toolbar ()
+         iconSize = self.toolbar.get_icon_size()
+-        self.saveButton = self.toolbar.insert_stock (
+-            "gtk-save", _("Save selected configuration file"),
+-            "priv", self.configTree.saveConfig, None, -1)
+-        self.reloadButton = self.toolbar.insert_stock (
+-            "gtk-revert-to-saved", _("Reload selected configuration file"),
+-            "priv", self.configTree.reloadConfig, None, -1)
+-        self.toolbar.append_space()
+-        self.newButton = self.toolbar.insert_stock (
+-            "gtk-new", _("Create a new device or application"),
+-            "priv", self.configTree.newItem, None, -1)
+-        self.removeButton = self.toolbar.insert_stock (
+-            "gtk-delete", _("Remove selected device or application"),
+-            "priv", self.configTree.removeItem, None, -1)
+-        self.upButton = self.toolbar.insert_stock (
+-            "gtk-go-up", _("Move selected item up"),
+-            "priv", self.configTree.moveUp, None, -1)
+-        self.downButton = self.toolbar.insert_stock (
+-            "gtk-go-down", _("Move selected item down"),
+-            "priv", self.configTree.moveDown, None, -1)
+-        self.propertiesButton = self.toolbar.insert_stock (
+-            "gtk-properties", _("Properties of selected device or application"),
+-            "priv", self.configTree.properties, None, -1)
+-        self.toolbar.append_space()
++
++        self.saveButton = gtk.ToolButton("gtk-save")
++        self.saveButton.set_tooltip_text(_("Save selected configuration file"))
++        self.saveButton.connect("clicked", self.configTree.saveConfig)
++        self.saveButton.show()
++        self.toolbar.insert(self.saveButton, -1)
++        self.reloadButton = gtk.ToolButton("gtk-revert-to-saved")
++        self.reloadButton.set_tooltip_text(_("Reload selected configuration file"))
++        self.reloadButton.connect("clicked", self.configTree.reloadConfig)
++        self.reloadButton.show()
++        self.toolbar.insert(self.reloadButton, -1)
++
++        separator = gtk.SeparatorToolItem()
++        separator.show()
++        self.toolbar.insert(separator, -1)
++
++        self.newButton = gtk.ToolButton("gtk-new")
++        self.newButton.set_tooltip_text(_("Create a new device or application"))
++        self.newButton.connect("clicked", self.configTree.newItem)
++        self.newButton.show()
++        self.toolbar.insert(self.newButton, -1)
++        self.removeButton = gtk.ToolButton("gtk-delete")
++        self.removeButton.set_tooltip_text(_("Remove selected device or application"))
++        self.removeButton.connect("clicked", self.configTree.removeItem)
++        self.removeButton.show()
++        self.toolbar.insert(self.removeButton, -1)
++        self.upButton = gtk.ToolButton("gtk-go-up")
++        self.upButton.set_tooltip_text(_("Move selected item up"))
++        self.upButton.connect("clicked", self.configTree.moveUp)
++        self.upButton.show()
++        self.toolbar.insert(self.upButton, -1)
++        self.downButton = gtk.ToolButton("gtk-go-down")
++        self.downButton.set_tooltip_text(_("Move selected item down"))
++        self.downButton.connect("clicked", self.configTree.moveDown)
++        self.downButton.show()
++        self.toolbar.insert(self.downButton, -1)
++        self.propertiesButton = gtk.ToolButton("gtk-properties")
++        self.propertiesButton.set_tooltip_text(_("Properties of selected device or application"))
++        self.propertiesButton.connect("clicked", self.configTree.properties)
++        self.propertiesButton.show()
++        self.toolbar.insert(self.propertiesButton, -1)
++
++        separator = gtk.SeparatorToolItem()
++        separator.show()
++        self.toolbar.insert(separator, -1)
++
+         # The gtk-about stock item is available with gtk >= 2.6.
+         # It's definitely not available with gtk 2.2. Not sure about 2.4.
+         if gtk.gtk_version[0] == 2 and gtk.gtk_version[1] < 6:
+             aboutStock = "gtk-dialog-info"
+         else:
+             aboutStock = "gtk-about"
+-        self.aboutButton = self.toolbar.insert_stock (
+-            aboutStock, _("About DRIconf"), "priv",
+-            self.aboutHandler, None, -1)
+-        self.toolbar.append_space()
+-        self.exitButton = self.toolbar.insert_stock (
+-            "gtk-quit", _("Exit DRIconf"), "priv",
+-            self.exitHandler, None, -1)
++        self.aboutButton = gtk.ToolButton(aboutStock)
++        self.aboutButton.set_tooltip_text(_("About DRIconf"))
++        self.aboutButton.connect("clicked", self.aboutHandler)
++        self.aboutButton.show()
++        self.toolbar.insert(self.aboutButton, -1)
++
++        separator = gtk.SeparatorToolItem()
++        separator.show()
++        self.toolbar.insert(separator, -1)
++
++        self.exitButton = gtk.ToolButton("gtk-quit")
++        self.exitButton.set_tooltip_text(_("Exit DRIconf"))
++        self.exitButton.connect("clicked", self.exitHandler)
++        self.exitButton.show()
++        self.toolbar.insert(self.exitButton, -1)
+         if len(configList) != 0:
+             self.activateConfigButtons (configList[0])
+         self.toolbar.show()

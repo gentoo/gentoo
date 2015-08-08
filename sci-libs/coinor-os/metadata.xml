@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  The objective of Optimization Services (OS) is to provide a set of
+  standards for representing optimization instances, results, solver
+  options, and communication between clients and solvers in a
+  distributed environment using Web Services.
+</longdescription>
+</pkgmetadata>

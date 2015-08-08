@@ -1,0 +1,3 @@
+ICMHOME=/opt/icm
+LM_LICENSE_FILE=/opt/icm/licenses/license.dat
+MANPATH=/opt/icm/man

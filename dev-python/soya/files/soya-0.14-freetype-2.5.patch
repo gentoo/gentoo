@@ -1,0 +1,16 @@
+diff -ru soya.old/include_freetype.h soya/include_freetype.h
+--- soya.old/include_freetype.h	2014-06-01 23:27:17.970830047 +0900
++++ soya/include_freetype.h	2014-06-01 23:27:35.320864678 +0900
+@@ -21,8 +21,8 @@
+ 
+ #include <ft2build.h>
+ #include FT_FREETYPE_H // this is not do-able in Pyrex
+-#include <freetype/freetype.h>
+-#include <freetype/ftoutln.h>
+-#include <freetype/ftimage.h>
+-#include <freetype/ftglyph.h>
++#include <freetype.h>
++#include <ftoutln.h>
++#include <ftimage.h>
++#include <ftglyph.h>
+ 

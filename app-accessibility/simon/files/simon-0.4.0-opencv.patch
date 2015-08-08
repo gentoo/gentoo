@@ -1,0 +1,11 @@
+--- simon-0.4.0/CMakeLists.txt
++++ simon-0.4.0/CMakeLists.txt
+@@ -68,7 +68,7 @@
+   "PocketSphinx is a small-footprint continuous speech recognition system"
+   "http://cmusphinx.sourceforge.net/" FALSE "" 
+   "Required to build Pocket Sphinx backend")
+-find_package(OpenCV)
++macro_optional_find_package(OpenCV)
+ macro_log_feature(OpenCV_FOUND "OpenCV"
+   "OpenCV (Open Source Computer Vision) is a library of programming functions for real time computer vision" "http://http://opencv.willowgarage.com/"
+   FALSE "" "Required for Simon Vision")

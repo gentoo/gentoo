@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>java</herd>
+  <longdescription lang="en">
+For Java developers writing GUI layouts by hand that wants simplicity, power and automatic per platform fidelity, that are dissatisfied with the current layout managers in Swing, JavaFX and SWT, MigLayout solves your layout problems. User interfaces created with MigLayout is easy to maintain, you will understand how the layout will look like just by looking at the source code.
+  </longdescription>
+  <use>
+    <flag name="swt">Add support for the SWT toolkit.</flag>
+  </use>
+</pkgmetadata>

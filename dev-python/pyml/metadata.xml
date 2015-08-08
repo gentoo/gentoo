@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci</herd>
+	<longdescription lang="en">
+  PyML is a flexible Python framework for using various classification
+  methods including Support Vector Machines (SVM).
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">pyml</remote-id>
+	</upstream>
+</pkgmetadata>

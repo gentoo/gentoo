@@ -1,0 +1,16 @@
+[Unit]
+Description=RIP routing daemon for IPv6
+Documentation=man:ripngd(8) man:zebra(8)
+BindTo=zebra.service
+After=network.target zebra.service
+ConditionPathExists=/etc/quagga/ripngd.conf
+
+[Service]
+Type=forking
+PIDFile=/run/quagga/ripngd.pid
+ExecStart=/usr/sbin/ripngd -d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

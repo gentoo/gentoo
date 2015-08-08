@@ -1,0 +1,12 @@
+diff -ur osm-gps-map-0.7.3/configure.ac osm-gps-map-0.7.3-new/configure.ac
+--- osm-gps-map-0.7.3/configure.ac	2011-03-19 10:55:04.000000000 +0000
++++ osm-gps-map-0.7.3-new/configure.ac	2011-10-20 22:55:59.392575220 +0000
+@@ -62,7 +62,7 @@
+ 
+ GOBJECT_INTROSPECTION_CHECK([0.6.7])
+ 
+-GNOME_COMPILE_WARNINGS([maximum])
++#GNOME_COMPILE_WARNINGS([maximum])
+ GNOME_MAINTAINER_MODE_DEFINES
+ 
+ AC_OUTPUT([

@@ -1,0 +1,73 @@
+--- plotutils-2.6.orig/configure.ac	2009-07-29 20:14:09.000000000 -0700
++++ plotutils-2.6/configure.ac	2010-10-18 01:46:57.328444564 -0700
+@@ -65,6 +65,8 @@
+ # SCO OpenServer 5 (i.e. *-*-sco3.2v5*), "-belf" is added.
+ AC_PROG_LIBTOOL
+ 
++AC_PROG_CXX
++
+ # Determine extension (e.g. ".exe") on executables, if any.
+ AC_EXEEXT
+ 
+--- plotutils-2.6.orig/doc/Makefile.am	2009-07-30 08:49:46.000000000 -0700
++++ plotutils-2.6/doc/Makefile.am	2010-10-18 01:57:50.525852285 -0700
+@@ -3,11 +3,3 @@
+ 
+ # files with nonstandard names in this directory
+ EXTRA_DIST = colors.txt h-fonts.txt h-glyphs.txt hershey.bib kana.txt kanji.txt
+-
+-# remove documentation files installed by previous versions of the package,
+-# with obsolete names
+-
+-OBSOLETEDOC = hershey-demo.c hershey-fonts hershey-number hershey.doc h-fonts.doc h-glyphs.doc kana.doc kanji.doc demo-page h-demo.c
+-
+-install-data-hook:
+-	-for f in $(OBSOLETEDOC) ; do rm -f $(datadir)/libplot/$$f; done
+--- plotutils-2.6.orig/graph/Makefile.am	2005-11-25 20:40:13.000000000 -0800
++++ plotutils-2.6/graph/Makefile.am	2010-10-18 01:23:07.194720342 -0700
+@@ -10,15 +10,5 @@
+ 
+ CLEANFILES = fontlist.c
+ 
+-# remove executables installed by previous versions of the package, and
+-# remove obsolete library versions too
+-
+-OBSOLETEBINS = graph-tek graph-hpgl graph-fig graph-ps graph-X
+-OBSOLETELIBS = libplottek.a libplothpgl.a libplotfig.a libplotps.a libplotX.a
+-
+-install-exec-hook:
+-	-for f in $(OBSOLETEBINS) ; do rm -f $(bindir)/$$f; done
+-	-for f in $(OBSOLETELIBS) ; do rm -f $(libdir)/$$f; done
+-
+ fontlist.c: $(top_srcdir)/lib/fontlist.c
+ 	@rm -f fontlist.c ; if $(LN_S) $(top_srcdir)/lib/fontlist.c fontlist.c ; then true ; else cp -p $(top_srcdir)/lib/fontlist.c fontlist.c ; fi
+--- plotutils-2.6.orig/plot/Makefile.am	2005-11-25 20:40:13.000000000 -0800
++++ plotutils-2.6/plot/Makefile.am	2010-10-18 01:23:37.714971379 -0700
+@@ -9,12 +9,5 @@
+ 
+ CLEANFILES = fontlist.c
+ 
+-# remove executables installed by previous versions of the package
+-
+-OBSOLETEBINS = plot2plot plot2tek plot2hpgl plot2fig plot2ps plot2X
+-
+-install-exec-hook:
+-	-for f in $(OBSOLETEBINS) ; do rm -f $(bindir)/$$f; done
+-
+ fontlist.c: $(top_srcdir)/lib/fontlist.c
+ 	@rm -f fontlist.c ; if $(LN_S) $(top_srcdir)/lib/fontlist.c fontlist.c ; then true ; else cp -p $(top_srcdir)/lib/fontlist.c fontlist.c ; fi
+--- plotutils-2.6.orig/tek2plot/Makefile.am	2005-11-25 20:40:13.000000000 -0800
++++ plotutils-2.6/tek2plot/Makefile.am	2010-10-18 01:23:48.011056089 -0700
+@@ -12,12 +12,5 @@
+ 
+ SUBDIRS = teksamples
+ 
+-# remove executables installed by previous versions of the package
+-
+-OBSOLETEBINS = tek2tek tek2hpgl tek2fig tek2ps tek2X
+-
+-install-exec-hook:
+-	-for f in $(OBSOLETEBINS) ; do rm -f $(bindir)/$$f; done
+-
+ fontlist.c: $(top_srcdir)/lib/fontlist.c
+ 	@rm -f fontlist.c ; if $(LN_S) $(top_srcdir)/lib/fontlist.c fontlist.c ; then true ; else cp -p $(top_srcdir)/lib/fontlist.c fontlist.c ; fi

@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/422789
+
+--- src/init_consts.cc
++++ src/init_consts.cc
+@@ -27,6 +27,10 @@
+ #include "debug.h"
+ #endif
+ 
++#if USE_MMAP
++#include <unistd.h> /* sysconf */
++#endif
++
+ #include "globals.h"
+ #include "superblock.h"
+ #include "forward_declarations.h"

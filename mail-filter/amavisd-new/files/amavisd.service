@@ -1,0 +1,13 @@
+[Unit]
+Description=Amavisd Daemon
+Wants=postfix.service
+Wants=spamassassin.service
+Wants=clamd.service
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/amavisd -c /etc/amavisd.conf foreground
+ExecReload=/usr/sbin/amavisd -c /etc/amavisd.conf reload
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+--- madt/madt.c.orig
++++ madt/madt.c
+@@ -46,7 +46,7 @@
+ {
+ 	size_t retval;
+ 
+-	if (verbose) printf("reading %d byte entry header\n", sizeof(acpi_table_entry_header));
++	if (verbose) printf("reading %ld byte entry header\n", sizeof(acpi_table_entry_header));
+ 	retval = fread((void *)entry_header, sizeof(acpi_table_entry_header), 1, stdin);
+ 	return retval;
+ }
+@@ -64,7 +64,7 @@
+ 
+ 	bytes_read = csum = 0;
+ 
+-	if (verbose) printf("reading %d madt header\n", sizeof(struct acpi_table_madt));
++	if (verbose) printf("reading %ld madt header\n", sizeof(struct acpi_table_madt));
+ 
+ 	retval = fread((void *)buffer, sizeof(struct acpi_table_madt), 1, stdin);
+ 	if (retval != 1) {

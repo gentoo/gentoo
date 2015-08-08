@@ -1,0 +1,30 @@
+From 3c25192ee90f843a2f84ff99d119b1cb45979bac Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
+Date: Wed, 25 Jun 2014 14:36:03 +0200
+Subject: server: don't assert on invalid client message
+
+Some users have been reaching this error:
+snd_receive: ASSERT n failed
+
+A misbehaving client could easily hit that condition by sending too big
+messages. Instead of assert(), replace with a warning. When a message
+too big to fit is received, it will simply disconnect the channel.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=962187
+
+diff --git a/server/snd_worker.c b/server/snd_worker.c
+index 7d52ded..70148b7 100644
+--- a/server/snd_worker.c
++++ b/server/snd_worker.c
+@@ -421,7 +421,7 @@ static void snd_receive(void* data)
+     for (;;) {
+         ssize_t n;
+         n = channel->receive_data.end - channel->receive_data.now;
+-        spice_assert(n);
++        spice_warn_if(n <= 0);
+         n = reds_stream_read(channel->stream, channel->receive_data.now, n);
+         if (n <= 0) {
+             if (n == 0) {
+-- 
+cgit v0.10.2
+

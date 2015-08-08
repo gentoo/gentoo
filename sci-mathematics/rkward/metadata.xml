@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <longdescription lang="en">
+RKWard aims to become an easy to use frontend to R. RKWard is still in
+development status. Right now it is most useful as an IDE to users
+with some experience in R, or willing to learn R.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">rkward</remote-id>
+  </upstream>
+</pkgmetadata>

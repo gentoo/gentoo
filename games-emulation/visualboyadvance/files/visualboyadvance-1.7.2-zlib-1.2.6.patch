@@ -1,0 +1,12 @@
+diff -ur VisualBoyAdvance-1.7.2.orig/src/Util.cpp VisualBoyAdvance-1.7.2/src/Util.cpp
+--- VisualBoyAdvance-1.7.2.orig/src/Util.cpp	2004-05-20 10:42:37.000000000 -0700
++++ VisualBoyAdvance-1.7.2/src/Util.cpp	2012-02-18 00:21:40.655194387 -0800
+@@ -984,7 +984,7 @@
+ 
+ gzFile utilGzOpen(const char *file, const char *mode)
+ {
+-  utilGzWriteFunc = (int (*)(void *,void * const, unsigned int))gzwrite;
++  utilGzWriteFunc = (int (*)(gzFile, void * const, unsigned int))gzwrite;
+   utilGzReadFunc = gzread;
+   utilGzCloseFunc = gzclose;
+ 

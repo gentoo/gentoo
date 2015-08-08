@@ -1,0 +1,26 @@
+diff --git a/fig.h b/fig.h
+index ca00aef..a3605b0 100644
+--- a/fig.h
++++ b/fig.h
+@@ -375,7 +375,7 @@ extern	double		drand48();
+ extern	long		random();
+ extern	void		srandom(unsigned int);
+ 
+-#elif !defined(__osf__) && !defined(__CYGWIN__) && !defined(linux) && !defined(__FreeBSD__) && !defined(__GLIBC__)
++#elif !defined(__osf__) && !defined(__CYGWIN__) && !defined(linux) && !defined(__FreeBSD__) && !defined(__DARWIN__) && !defined(__GLIBC__)
+ extern	void		srandom(int);
+ 
+ #endif
+diff --git a/w_keyboard.c b/w_keyboard.c
+index 427d60c..03a3f76 100644
+--- a/w_keyboard.c
++++ b/w_keyboard.c
+@@ -41,7 +41,7 @@
+ #define REG_NOERROR 0
+ #endif
+ 
+-#if defined(__FreeBSD__) && !defined(REG_NOERROR)
++#if (defined(__FreeBSD__) || defined(__DARWIN__)) && !defined(REG_NOERROR)
+ #define REG_NOERROR 0
+ #endif
+ 

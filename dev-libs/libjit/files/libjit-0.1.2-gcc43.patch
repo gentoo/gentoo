@@ -1,0 +1,11 @@
+--- libjit-0.1.2.orig/tools/gen-apply.c	2008/11/23 09:15:25	1.20
++++ libjit-0.1.2/tools/gen-apply.c	2009/01/30 19:46:01	1.21
+@@ -959,7 +959,7 @@
+ 	void run_detect_struct_##n(void) \
+ 	{ \
+ 		jit_nint *args; \
+-		jit_nint stack[1]; \
++		volatile jit_nint stack[1]; \
+ 		jit_nint buffer[64 / sizeof(jit_nint)]; \
+ 		void *apply_return; \
+ 		jit_builtin_apply_args(jit_nint *, args); \

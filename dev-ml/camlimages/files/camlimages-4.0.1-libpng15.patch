@@ -1,0 +1,67 @@
+# HG changeset patch
+# User Jun Furuse <jun.furuse@gmail.com>
+# Date 1329456902 -28800
+# Node ID 4ecc49e79369d413af732c4feeab7128e2f6f11a
+# Parent  9b5cbcd07ae5a88561fbaa4eec3938af5e8b7574
+png_ptr->jmpbuf => png_jmpbuf(png_ptr)
+
+diff -r 9b5cbcd07ae5 -r 4ecc49e79369 src/pngread.c
+--- a/src/pngread.c	Tue Jan 31 22:40:50 2012 +0900
++++ b/src/pngread.c	Fri Feb 17 13:35:02 2012 +0800
+@@ -69,7 +69,7 @@
+   }
+ 
+   /* error handling */
+-  if (setjmp(png_ptr->jmpbuf)) {
++  if (setjmp(png_jmpbuf(png_ptr))) {
+     /* Free all of the memory associated with the png_ptr and info_ptr */
+     png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+     fclose(fp);
+@@ -134,7 +134,7 @@
+     png_set_rows(png_ptr, info_ptr, row_pointers);
+ 
+     /* Later, we can return something */
+-    if (setjmp(png_ptr->jmpbuf)) {
++    if (setjmp(png_jmpbuf(png_ptr))) {
+       /* Free all of the memory associated with the png_ptr and info_ptr */
+       png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+       fclose(fp);
+@@ -243,7 +243,7 @@
+   }
+ 
+   /* error handling */
+-  if (setjmp(png_ptr->jmpbuf)) {
++  if (setjmp(png_jmpbuf(png_ptr))) {
+     /* Free all of the memory associated with the png_ptr and info_ptr */
+     png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+     fclose(fp);
+@@ -302,7 +302,7 @@
+     png_set_rows(png_ptr, info_ptr, row_pointers);
+ 
+     /* Later, we can return something */
+-    if (setjmp(png_ptr->jmpbuf)) {
++    if (setjmp(png_jmpbuf(png_ptr))) {
+       /* Free all of the memory associated with the png_ptr and info_ptr */
+       png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+       fclose(fp);
+diff -r 9b5cbcd07ae5 -r 4ecc49e79369 src/pngwrite.c
+--- a/src/pngwrite.c	Tue Jan 31 22:40:50 2012 +0900
++++ b/src/pngwrite.c	Fri Feb 17 13:35:02 2012 +0800
+@@ -62,7 +62,7 @@
+   }
+ 
+   /* error handling */
+-  if (setjmp(png_ptr->jmpbuf)) {
++  if (setjmp(png_jmpbuf(png_ptr))) {
+     /* Free all of the memory associated with the png_ptr and info_ptr */
+     png_destroy_write_struct(&png_ptr, &info_ptr);
+     fclose(fp);
+@@ -171,7 +171,7 @@
+   }
+ 
+   /* error handling */
+-  if (setjmp(png_ptr->jmpbuf)) {
++  if (setjmp(png_jmpbuf(png_ptr))) {
+     /* Free all of the memory associated with the png_ptr and info_ptr */
+     png_destroy_write_struct(&png_ptr, &info_ptr);
+     fclose(fp);

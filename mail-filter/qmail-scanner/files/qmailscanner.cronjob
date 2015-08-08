@@ -1,0 +1,2 @@
+#!/bin/bash
+/var/qmail/bin/qmail-scanner-queue -z

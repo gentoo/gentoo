@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. "${PM_FUNCTIONS}"
+
+case "$1" in
+	hibernate|suspend)
+		/etc/init.d/g15daemon stop
+		;;
+	thaw|resume)
+		/etc/init.d/g15daemon start
+		;;
+	*)
+		exit $NA
+		;;
+esac

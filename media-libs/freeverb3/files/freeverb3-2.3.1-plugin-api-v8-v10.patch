@@ -1,0 +1,125 @@
+From a5dbe75a4b2c26ff969ef0b8eb2acc0b39f477a7 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 3 Oct 2009 04:57:55 +0200
+Subject: [PATCH] Support Plugin API v8, v10 and later
+
+---
+ work/freeverb3-2.3.1/xmms/compressor.cpp |   12 ++++++++++++
+ work/freeverb3-2.3.1/xmms/filter.cpp     |    3 +++
+ work/freeverb3-2.3.1/xmms/freeverb3.cpp  |    3 +++
+ work/freeverb3-2.3.1/xmms/impulser.cpp   |    3 +++
+ work/freeverb3-2.3.1/xmms/impulser2.cpp  |    3 +++
+ work/freeverb3-2.3.1/xmms/revmodel.cpp   |    3 +++
+ work/freeverb3-2.3.1/xmms/stenh.cpp      |    3 +++
+ 7 files changed, 30 insertions(+), 0 deletions(-)
+
+diff --git a/work/freeverb3-2.3.1/xmms/compressor.cpp b/work/freeverb3-2.3.1/xmms/compressor.cpp
+index a02570f..a18eca3 100644
+--- a/work/freeverb3-2.3.1/xmms/compressor.cpp
++++ b/work/freeverb3-2.3.1/xmms/compressor.cpp
+@@ -1095,6 +1095,18 @@ static EffectPlugin epe = {
+   cleanup,
+   about,
+   configure,
++/*
++ * Compile fix for Audacious 2.2_alpha1
++ *
++ * Increase PAPI version.
++ * http://hg.atheme.org/audacious/annotate/74969c017b3e/src/audacious/plugin.h#64
++ *
++ * Shuffle some functors and fields around in plugin structures; Start of cleanup.
++ * http://hg.atheme.org/audacious/annotate/8554b25b0087/src/audacious/plugin.h#1025
++ */
++#if __AUDACIOUS_PLUGIN_API__ >= 10
++  NULL,
++#endif
+   FALSE,
+   mod_samples,
+   NULL,
+diff --git a/work/freeverb3-2.3.1/xmms/filter.cpp b/work/freeverb3-2.3.1/xmms/filter.cpp
+index 3b01e4d..b403124 100644
+--- a/work/freeverb3-2.3.1/xmms/filter.cpp
++++ b/work/freeverb3-2.3.1/xmms/filter.cpp
+@@ -462,6 +462,9 @@ static EffectPlugin epe = {
+   cleanup,
+   about,
+   configure,
++#if __AUDACIOUS_PLUGIN_API__ >= 10
++  NULL,
++#endif
+   FALSE,
+   mod_samples,
+   NULL,
+diff --git a/work/freeverb3-2.3.1/xmms/freeverb3.cpp b/work/freeverb3-2.3.1/xmms/freeverb3.cpp
+index f00bc8e..8bda2be 100644
+--- a/work/freeverb3-2.3.1/xmms/freeverb3.cpp
++++ b/work/freeverb3-2.3.1/xmms/freeverb3.cpp
+@@ -700,6 +700,9 @@ static EffectPlugin epe = {
+   cleanup,
+   about,
+   configure,
++#if __AUDACIOUS_PLUGIN_API__ >= 10
++  NULL,
++#endif
+   FALSE,
+   mod_samples,
+   NULL,
+diff --git a/work/freeverb3-2.3.1/xmms/impulser.cpp b/work/freeverb3-2.3.1/xmms/impulser.cpp
+index c1b6856..6341219 100644
+--- a/work/freeverb3-2.3.1/xmms/impulser.cpp
++++ b/work/freeverb3-2.3.1/xmms/impulser.cpp
+@@ -617,6 +617,9 @@ static EffectPlugin epe = {
+   cleanup,
+   about,
+   configure,
++#if __AUDACIOUS_PLUGIN_API__ >= 10
++  NULL,
++#endif
+   FALSE,
+   mod_samples,
+   NULL,
+diff --git a/work/freeverb3-2.3.1/xmms/impulser2.cpp b/work/freeverb3-2.3.1/xmms/impulser2.cpp
+index cf8e453..1385484 100644
+--- a/work/freeverb3-2.3.1/xmms/impulser2.cpp
++++ b/work/freeverb3-2.3.1/xmms/impulser2.cpp
+@@ -1538,6 +1538,9 @@ static EffectPlugin epe = {
+   cleanup,
+   about,
+   configure,
++#if __AUDACIOUS_PLUGIN_API__ >= 10
++  NULL,
++#endif
+   FALSE,
+   mod_samples,
+   NULL,
+diff --git a/work/freeverb3-2.3.1/xmms/revmodel.cpp b/work/freeverb3-2.3.1/xmms/revmodel.cpp
+index d596df4..bc808ae 100644
+--- a/work/freeverb3-2.3.1/xmms/revmodel.cpp
++++ b/work/freeverb3-2.3.1/xmms/revmodel.cpp
+@@ -592,6 +592,9 @@ static EffectPlugin epe = {
+   cleanup,
+   about,
+   configure,
++#if __AUDACIOUS_PLUGIN_API__ >= 10
++  NULL,
++#endif
+   FALSE,
+   mod_samples,
+   NULL,
+diff --git a/work/freeverb3-2.3.1/xmms/stenh.cpp b/work/freeverb3-2.3.1/xmms/stenh.cpp
+index 3eca478..d376896 100644
+--- a/work/freeverb3-2.3.1/xmms/stenh.cpp
++++ b/work/freeverb3-2.3.1/xmms/stenh.cpp
+@@ -905,6 +905,9 @@ static EffectPlugin epe = {
+   cleanup,
+   about,
+   configure,
++#if __AUDACIOUS_PLUGIN_API__ >= 10
++  NULL,
++#endif
+   FALSE,
+   mod_samples,
+   NULL,
+-- 
+1.6.4.4
+

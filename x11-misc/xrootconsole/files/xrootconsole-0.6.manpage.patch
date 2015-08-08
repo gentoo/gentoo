@@ -1,0 +1,22 @@
+--- xrootconsole.1.orig	2005-03-06 16:59:05.837673328 +0900
++++ xrootconsole.1	2005-03-06 17:04:36.493406016 +0900
+@@ -38,6 +38,9 @@
+ .Ar number
+ columns wide.  Text is written vertically down each column in the order in
+ which text is received from the input file.  The default is 1.
++.It Fl -solid
++This option makes the background a solid color.  The default is to use a
++shaded/transparent background.
+ .It Fl -topdown
+ Forces xrootconsole to display new lines from its input at the top of the
+ screen, scrolling previous lines down.  Default behavior is to insert new
+@@ -45,6 +48,9 @@
+ .It Fl -wrap
+ Rather than truncating long lines, this option specifies that xrootconsole
+ should wrap excess text to the following line or lines, as necessary.
++.It Fl -noversion
++Tells xrootconsole not to display its version as the first line of output in
++the root window.  Default behavior is to include version information.
+ .It Fl geometry Ar geometry
+ This option specifies the preferred size and position of the window; see
+ .Xr X 1 .

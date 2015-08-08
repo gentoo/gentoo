@@ -1,0 +1,140 @@
+diff -u -r a/doc/manual/en/manual-en.sgml b/doc/manual/en/manual-en.sgml
+--- a/doc/manual/en/manual-en.sgml	2005-05-16 14:38:51.000000000 +0200
++++ b/doc/manual/en/manual-en.sgml	2011-11-27 23:45:50.970890374 +0100
+@@ -191,6 +191,7 @@
+ 			<para>As mentioned above, there must be a small C program compiled. If you use Perl
+ 				5.8 and/or Linux, you could skip this step. For this, just execute 
+ 
++			</para>
+ 			<para>
+ 				<prompt>$ </prompt>
+ 				<userinput>make</userinput>
+@@ -278,7 +279,7 @@
+ 		
+ 			<para>You have to add or change following line in the file
+ 				<Filename>$HOME/.muttrc</Filename> or system wide in
+-				<FileName>##SYSCONFDIR##/Muttrc</FileName>:</para>
++				<FileName>/etc/Muttrc</FileName>:</para>
+ 
+ 			<ProgramListing>set print_command="muttprint"</ProgramListing>
+ 
+@@ -316,7 +317,7 @@
+ 			</ProgramListing>
+ 
+ 			<para>You'll find more information in the documentation of Mutt
+-				(<Filename>##DOCDIR##/mutt/manual.txt(.gz)</Filename>).</para>
++				(<Filename>/usr/share/doc/muttprint/mutt/manual.txt(.gz)</Filename>).</para>
+ 
+ 		</sect3>
+ 
+@@ -345,7 +346,7 @@
+ 			<para>In the dialogue <GUImenu>Misc</GUImenu>, <GUImenuItem>Config
+ 				Misc</GUImenuItem> you have to do an entry in <GUIlabel>Print
+ 				Command</GUIlabel>:
+-				<literal>##BINDIR##/muttprint -f $f</literal>.</para>
++				<literal>/usr/bin/muttprint -f $f</literal>.</para>
+ 
+ 			
+ 			<Note>				
+@@ -393,7 +394,7 @@
+ 			<para>You find the code in <filename>README.Gnus</filename> and I
+ 				would like to refer to this file in this manual. If you use
+ 				packages for the installation you should find this file in the
+-				<filename>##DOCDIR##/muttprint/</filename>
++				<filename>/usr/share/doc/muttprint/muttprint/</filename>
+ 				directory.</para>
+ 		</sect3>
+ 
+@@ -445,7 +446,7 @@
+ 		
+ 		<para>Some things could be configured in Muttprint. This is permanently
+ 			done in  the configuration files <filename>$HOME/.muttprintrc</filename>
+-			(only for the current user) or <filename>##SYSCONFDIR##/Muttprintrc</filename>
++			(only for the current user) or <filename>/etc/Muttprintrc</filename>
+ 			(global for all users). User settings override global settings.</para>
+ 			
+ 		<para>You can also specify an additional configuration file with the
+@@ -466,7 +467,7 @@
+ 		<para>An example for a configuration file is distributed with
+ 			Muttprint  (<filename>sample-muttprintrc</filename>). If you've
+ 			installed a RPM  or Debian package, you'll find it in
+-			<filename>##DOCDIR##/muttprint/</filename>.</para>
++			<filename>/usr/share/doc/muttprint/muttprint/</filename>.</para>
+ 			
+ 		<para>An example for a correct assignment:</para>
+ 		
+@@ -550,7 +551,7 @@
+ 				
+ 			<para>Additionally, Muttprint comes with some example pictures that 
+ 				are already converted into the EPS format. After the installation,
+-				you'll find this in <filename>##SHAREDIR##/muttprint</filename>.</para>
++				you'll find this in <filename>/usr/share/muttprint</filename>.</para>
+ 				
+ 			<para>If the printing of the graphic should turned off,
+ 				set <literal>PENGUIN</literal> to the value <literal>off</literal>.
+@@ -917,7 +918,7 @@
+ 				value. Possible are only <literal>A4</literal> and
+ 				<literal>letter</literal>.</para>
+ 				
+-			<para>If there exists a file <filename>##SYSCONFDIR##/papersize</filename> as
++			<para>If there exists a file <filename>/etc/papersize</filename> as
+ 				usually on Debian systems, it is evaluated, too. Own settings overwrite
+ 				this system settings.</para>
+ 
+@@ -1023,7 +1024,7 @@
+ 			<para>For this, you can assign the variable <literal>BACKGROUND</literal>
+ 				the value <literal>on</literal>. In the debug mode (see <xref
+ 				linkend="debug">) this option has no effect.</para>
+-		
++		</sect3>
+ 		<sect3 id="debug">
+ 			<title>Error messages</title>
+ 			
+diff -u -r a/doc/manual/it/manual-it.sgml b/doc/manual/it/manual-it.sgml
+--- a/doc/manual/it/manual-it.sgml	2005-05-16 14:38:51.000000000 +0200
++++ b/doc/manual/it/manual-it.sgml	2011-11-27 23:45:33.378110313 +0100
+@@ -264,7 +264,7 @@
+ 
+ 			<para>Puoi trovere maggiori informazioni nelle documentazione di
+ 				Mutt
+-				(<Filename>##DOCDIR##/mutt/manual.txt(.gz)</Filename>).</para>
++				(<Filename>/usr/share/doc/muttprint/mutt/manual.txt(.gz)</Filename>).</para>
+ 
+ 		</sect3>
+ 
+@@ -296,7 +296,7 @@
+ 			<para>Nel dialogo <GUImenu>Misc</GUImenu>, <GUImenuItem>Config
+ 				Misc</GUImenuItem> devi settare una entry in <GUIlabel>Print
+ 				Command</GUIlabel>:
+-				<literal>##BINDIR##/muttprint -f $f</literal>.</para>
++				<literal>/usr/bin/muttprint -f $f</literal>.</para>
+ 
+ 			
+ 			<Note>				
+@@ -345,7 +345,7 @@
+ 			<para>Poui trovare il codice in <filename>README.Gnus</filename> e
+ 				preferirei far riferimento a questo file per questo manuale.
+ 				Se usi i pacchetti per l'installazione dovresti trovare
+-				questo file in <filename>##DOCDIR##/muttprint/</filename>.</para>
++				questo file in <filename>/usr/share/doc/muttprint/muttprint/</filename>.</para>
+ 		</sect3>
+ 
+ 		<sect3>
+@@ -874,7 +874,7 @@
+ 				Sono possibili solo <literal>A4</literal> e <literal>letter</literal>.
+ 				</para>
+ 
+-            <para>Se è presente un file <filename>##SYSCONFDIR##/papersize</filename> come
++            <para>Se è presente un file <filename>/etc/papersize</filename> come
+                                 di soliuto nei sistemi Debian, viene anch'esso considerato.
+                                 Le proprie impostazione prevarranno su quelle di sistema.</para>
+ 				
+@@ -1079,7 +1079,7 @@
+             <row>
+               <entry>ISO-8859-4</entry>
+               <entry><literal>latin4</literal></entry>
+-              <entry>Lingue Europa sud-orientale ed altre lingue/entry>
++              <entry>Lingue Europa sud-orientale ed altre lingue</entry>
+             </row>
+             <row>
+               <entry>ISO-8859-9</entry>

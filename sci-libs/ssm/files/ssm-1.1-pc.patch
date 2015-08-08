@@ -1,0 +1,19 @@
+ ssm.pc.in |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ssm.pc.in b/ssm.pc.in
+index c5f8a6a..a6ac635 100644
+--- a/ssm.pc.in
++++ b/ssm.pc.in
+@@ -1,7 +1,7 @@
+-prefix=@SSM_PREFIX@
+-exec_prefix=@SSM_PREFIX@
+-libdir=@SSM_PREFIX@/lib
+-includedir=@SSM_PREFIX@/include
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@/ssm
+ 
+ Name: ssm
+ Description: Macromolecular superposition library

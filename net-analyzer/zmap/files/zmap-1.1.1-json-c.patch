@@ -1,0 +1,28 @@
+From 08c00b66555612ed69d7f253b277f44cf8da0c62 Mon Sep 17 00:00:00 2001
+From: Justin Lecher <jlec@gentoo.org>
+Date: Mon, 30 Dec 2013 10:50:34 +0100
+Subject: [PATCH] Fix name of josn-c pkg-config file
+
+Over 2 years ago json-c renamed its pc file from json.pc -> json-c.pc.
+
+Signed-off-by: Justin Lecher <jlec@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ebf9316..a9c8e5a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,7 +52,7 @@ endif()
+ 
+ if(WITH_JSON)
+ 	include(FindPkgConfig)
+-	pkg_check_modules(JSON json)
++	pkg_check_modules(JSON json-c)
+ 	if(JSON_FOUND)
+ 		include_directories(JSON_INCLUDE_DIRS)
+ 	else()
+-- 
+1.8.5.2
+

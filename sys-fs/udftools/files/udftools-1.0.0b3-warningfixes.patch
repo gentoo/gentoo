@@ -1,0 +1,94 @@
+taken from Fedora
+
+http://pkgs.fedoraproject.org/cgit/udftools.git/tree/udftools-1.0.0b3-warningfixes.patch?h=f22
+
+diff -Naupr udftools-1.0.0b3.orig/cdrwtool/cdrwtool.h udftools-1.0.0b3/cdrwtool/cdrwtool.h
+--- udftools-1.0.0b3.orig/cdrwtool/cdrwtool.h	2002-11-26 08:18:50.000000000 +0100
++++ udftools-1.0.0b3/cdrwtool/cdrwtool.h	2006-07-27 14:16:06.000000000 +0200
+@@ -226,6 +226,7 @@ int read_disc_info(int, disc_info_t *);
+ int read_track_info(int, track_info_t *, int);
+ int reserve_track(int, struct cdrw_disc *);
+ int close_track(int, unsigned int);
++int close_session(int, unsigned int);
+ int read_buffer_cap(int, struct cdrw_disc *);
+ int set_cd_speed(int, int);
+ void cdrom_close(int);
+@@ -236,5 +237,6 @@ int print_disc_track_info(int);
+ void make_write_page(write_params_t *, struct cdrw_disc *);
+ void print_params(write_params_t *);
+ void cdrw_init_disc(struct cdrw_disc *);
++int udf_set_version(struct udf_disc *, int);
+ 
+ #endif /* _CDRWTOOL_H */
+diff -Naupr udftools-1.0.0b3.orig/include/udf_endian.h udftools-1.0.0b3/include/udf_endian.h
+--- udftools-1.0.0b3.orig/include/udf_endian.h	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3/include/udf_endian.h	2006-07-27 14:09:30.000000000 +0200
+@@ -23,6 +23,8 @@
+ #ifndef __UDF_ENDIAN_H
+ #define __UDF_ENDIAN_H
+ 
++#include <string.h>
++
+ #include "bswap.h"
+ 
+ static inline lb_addr lelb_to_cpu(lb_addr in)
+diff -Naupr udftools-1.0.0b3.orig/libudffs/unicode.c udftools-1.0.0b3/libudffs/unicode.c
+--- udftools-1.0.0b3.orig/libudffs/unicode.c	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3/libudffs/unicode.c	2006-07-27 14:11:17.000000000 +0200
+@@ -169,8 +169,6 @@ error_out:
+ 
+ int decode_string(struct udf_disc *disc, char *in, char *out, int inlen)
+ {
+-	int i;
+-
+ 	if (disc->flags & FLAG_UTF8)
+ 		return decode_utf8(in, out, inlen);
+ 	else if (disc->flags & (FLAG_UNICODE8 | FLAG_UNICODE16))
+diff -Naupr udftools-1.0.0b3.orig/pktsetup/pktsetup.c udftools-1.0.0b3/pktsetup/pktsetup.c
+--- udftools-1.0.0b3.orig/pktsetup/pktsetup.c	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3/pktsetup/pktsetup.c	2006-07-27 14:18:24.000000000 +0200
+@@ -23,6 +23,7 @@
+ #include <getopt.h>
+ #include <bits/types.h>
+ #include <sys/types.h>
++#include <string.h>
+ 
+ #include <linux/cdrom.h>
+ 
+diff -Naupr udftools-1.0.0b3.orig/wrudf/Makefile.am udftools-1.0.0b3/wrudf/Makefile.am
+--- udftools-1.0.0b3.orig/wrudf/Makefile.am	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3/wrudf/Makefile.am	2006-07-27 14:21:24.000000000 +0200
+@@ -1,5 +1,5 @@
+ bin_PROGRAMS = wrudf
+ wrudf_LDADD = $(top_builddir)/libudffs/libudffs.la -lreadline -lncurses
+-wrudf_SOURCES = wrudf.c wrudf-cmnd.c wrudf-desc.c wrudf-cdrw.c wrudf-cdr.c ide-pc.c wrudf.h ide-pc.h ../include/ecma_167.h ../include/osta_udf.h ../include/bswap.h
++wrudf_SOURCES = wrudf.c wrudf-cmnd.c wrudf-desc.c wrudf-cdrw.c wrudf-cdr.c ide-pc.c wrudf.h ide-pc.h ../include/ecma_167.h ../include/osta_udf.h ../include/bswap.h ../include/libudffs.h
+ 
+ AM_CPPFLAGS = -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DDEBUG
+diff -Naupr udftools-1.0.0b3.orig/wrudf/Makefile.in udftools-1.0.0b3/wrudf/Makefile.in
+--- udftools-1.0.0b3.orig/wrudf/Makefile.in	2004-02-23 10:33:48.000000000 +0100
++++ udftools-1.0.0b3/wrudf/Makefile.in	2006-07-27 14:21:44.000000000 +0200
+@@ -85,7 +85,7 @@ am__quote = @am__quote@
+ install_sh = @install_sh@
+ bin_PROGRAMS = wrudf
+ wrudf_LDADD = $(top_builddir)/libudffs/libudffs.la -lreadline -lncurses
+-wrudf_SOURCES = wrudf.c wrudf-cmnd.c wrudf-desc.c wrudf-cdrw.c wrudf-cdr.c ide-pc.c wrudf.h ide-pc.h ../include/ecma_167.h ../include/osta_udf.h ../include/bswap.h
++wrudf_SOURCES = wrudf.c wrudf-cmnd.c wrudf-desc.c wrudf-cdrw.c wrudf-cdr.c ide-pc.c wrudf.h ide-pc.h ../include/ecma_167.h ../include/osta_udf.h ../include/bswap.h ../include/libudffs.h
+ 
+ AM_CPPFLAGS = -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -DDEBUG
+ subdir = wrudf
+diff -Naupr udftools-1.0.0b3.orig/wrudf/wrudf.h udftools-1.0.0b3/wrudf/wrudf.h
+--- udftools-1.0.0b3.orig/wrudf/wrudf.h	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3/wrudf/wrudf.h	2006-07-27 14:22:33.000000000 +0200
+@@ -23,9 +23,11 @@
+ #include <sys/time.h>
+ #include <time.h>
+ #include <stdint.h>
++#include <string.h>
+ 
+ #include "ecma_167.h"
+ #include "osta_udf.h"
++#include "libudffs.h"
+ 
+ struct generic_desc
+ {

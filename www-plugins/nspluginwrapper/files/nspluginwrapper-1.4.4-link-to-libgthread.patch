@@ -1,0 +1,15 @@
+diff --git a/configure b/configure
+index 5f3dd86..09c400a 100755
+--- a/configure
++++ b/configure
+@@ -499,8 +499,8 @@ fi
+ 
+ # check for Glib 2.0 compile CFLAGS
+ if $pkgconfig --exists glib-2.0; then
+-    GLIB_CFLAGS=`$pkgconfig --cflags glib-2.0`
+-    GLIB_LIBS=`$pkgconfig --libs glib-2.0`
++    GLIB_CFLAGS=`$pkgconfig --cflags glib-2.0 gthread-2.0`
++    GLIB_LIBS=`$pkgconfig --libs glib-2.0 gthread-2.0`
+     GLIB_VERSION=`$pkgconfig --modversion glib-2.0`
+ else
+     echo "GLIB 2.0 environment not found"

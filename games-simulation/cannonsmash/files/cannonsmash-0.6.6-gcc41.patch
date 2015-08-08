@@ -1,0 +1,22 @@
+--- BallView.h.old	2006-04-11 00:10:37.000000000 +0200
++++ BallView.h	2006-04-11 00:10:53.000000000 +0200
+@@ -32,7 +32,7 @@
+ 
+   static GLuint m_number[10];
+ private:
+-  void BallView::DrawTargetCircle();
++  void DrawTargetCircle();
+   GLUquadricObj *m_quad;
+ 
+   void DrawBall();
+--- matrix.old	2006-04-11 00:13:18.000000000 +0200
++++ matrix	2006-04-11 00:19:34.000000000 +0200
+@@ -42,7 +42,7 @@
+ 
+ /* __BEGIN__BEGIN__ */
+ //__NAMESPACE_BEGIN(ese);
+-#if (!defined __GNUG__) || (__GNUC__ == 3)
++#if (!defined __GNUG__) || (__GNUC__ >= 3)
+ template<typename T>
+ void swap(T& a, T& b)
+ {

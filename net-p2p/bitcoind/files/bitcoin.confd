@@ -1,0 +1,10 @@
+# Config file for /etc/init.d/bitcoin
+
+# owner of bitcoind process (don't change, must be existing)
+BITCOIN_USER="bitcoin"
+
+# See http://www.bitcoin.org/smf/index.php?topic=1063
+BITCOIN_OPTS="${BITCOIN_OPTS}"
+
+# nice level
+NICELEVEL="19"

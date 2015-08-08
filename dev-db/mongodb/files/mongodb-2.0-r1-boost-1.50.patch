@@ -1,0 +1,245 @@
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/db/db.cpp mongodb-src-r2.0.6-patched/db/db.cpp
+--- mongodb-src-r2.0.6/db/db.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/db/db.cpp	2012-07-10 22:27:16.496886220 +0200
+@@ -326,7 +326,7 @@
+         boost::filesystem::path path( dbpath );
+         for ( boost::filesystem::directory_iterator i( path );
+                 i != boost::filesystem::directory_iterator(); ++i ) {
+-            string fileName = boost::filesystem::path(*i).leaf();
++            string fileName = boost::filesystem::path(*i).leaf().string();
+             if ( boost::filesystem::is_directory( *i ) &&
+                     fileName.length() && fileName[ 0 ] == '$' )
+                 boost::filesystem::remove_all( *i );
+@@ -655,11 +655,6 @@
+     dbExecCommand = argv[0];
+ 
+     srand(curTimeMicros());
+-#if( BOOST_VERSION >= 104500 )
+-    boost::filesystem::path::default_name_check( boost::filesystem2::no_check );
+-#else
+-    boost::filesystem::path::default_name_check( boost::filesystem::no_check );
+-#endif
+ 
+     {
+         unsigned x = 0x12345678;
+@@ -976,7 +971,7 @@
+         if (params.count("shutdown")){
+             bool failed = false;
+ 
+-            string name = ( boost::filesystem::path( dbpath ) / "mongod.lock" ).native_file_string();
++            string name = ( boost::filesystem::path( dbpath ) / "mongod.lock" ).string();
+             if ( !boost::filesystem::exists( name ) || boost::filesystem::file_size( name ) == 0 )
+                 failed = true;
+ 
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/db/dur.cpp mongodb-src-r2.0.6-patched/db/dur.cpp
+--- mongodb-src-r2.0.6/db/dur.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/db/dur.cpp	2012-07-10 21:56:28.866778732 +0200
+@@ -692,7 +692,7 @@
+ 
+             bool samePartition = true;
+             try {
+-                const string dbpathDir = boost::filesystem::path(dbpath).native_directory_string();
++                const string dbpathDir = boost::filesystem::path(dbpath).string();
+                 samePartition = onSamePartition(getJournalDir().string(), dbpathDir);
+             }
+             catch(...) {
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/db/dur_journal.cpp mongodb-src-r2.0.6-patched/db/dur_journal.cpp
+--- mongodb-src-r2.0.6/db/dur_journal.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/db/dur_journal.cpp	2012-07-10 22:04:18.583472723 +0200
+@@ -169,7 +169,7 @@
+                 for ( boost::filesystem::directory_iterator i( getJournalDir() );
+                         i != boost::filesystem::directory_iterator();
+                         ++i ) {
+-                    string fileName = boost::filesystem::path(*i).leaf();
++                    string fileName = boost::filesystem::path(*i).leaf().string();
+                     if( str::startsWith(fileName, "j._") )
+                         return true;
+                 }
+@@ -185,7 +185,7 @@
+                 for ( boost::filesystem::directory_iterator i( getJournalDir() );
+                         i != boost::filesystem::directory_iterator();
+                         ++i ) {
+-                    string fileName = boost::filesystem::path(*i).leaf();
++                    string fileName = boost::filesystem::path(*i).leaf().string();
+                     if( str::startsWith(fileName, "j._") ) {
+                         try {
+                             removeOldJournalFile(*i);
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/db/dur_recover.cpp mongodb-src-r2.0.6-patched/db/dur_recover.cpp
+--- mongodb-src-r2.0.6/db/dur_recover.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/db/dur_recover.cpp	2012-07-10 22:02:18.226799055 +0200
+@@ -71,7 +71,7 @@
+                     i != filesystem::directory_iterator();
+                     ++i ) {
+                 filesystem::path filepath = *i;
+-                string fileName = filesystem::path(*i).leaf();
++                string fileName = filesystem::path(*i).leaf().string();
+                 if( str::startsWith(fileName, "j._") ) {
+                     unsigned u = str::toUnsigned( str::after(fileName, '_') );
+                     if( m.count(u) ) {
+@@ -84,7 +84,7 @@
+                 if( i != m.begin() && m.count(i->first - 1) == 0 ) {
+                     uasserted(13532,
+                     str::stream() << "unexpected file in journal directory " << dir.string()
+-                      << " : " << filesystem::path(i->second).leaf() << " : can't find its preceeding file");
++                      << " : " << filesystem::path(i->second).leaf().string() << " : can't find its preceeding file");
+                 }
+                 files.push_back(i->second);
+             }
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/db/instance.cpp mongodb-src-r2.0.6-patched/db/instance.cpp
+--- mongodb-src-r2.0.6/db/instance.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/db/instance.cpp	2012-07-10 22:08:55.213488817 +0200
+@@ -645,13 +645,13 @@
+                 i != boost::filesystem::directory_iterator(); ++i ) {
+             if ( directoryperdb ) {
+                 boost::filesystem::path p = *i;
+-                string dbName = p.leaf();
++                string dbName = p.leaf().string();
+                 p /= ( dbName + ".ns" );
+                 if ( MMF::exists( p ) )
+                     names.push_back( dbName );
+             }
+             else {
+-                string fileName = boost::filesystem::path(*i).leaf();
++                string fileName = boost::filesystem::path(*i).leaf().string();
+                 if ( fileName.length() > 3 && fileName.substr( fileName.length() - 3, 3 ) == ".ns" )
+                     names.push_back( fileName.substr( 0, fileName.length() - 3 ) );
+             }
+@@ -893,7 +893,7 @@
+     }
+ 
+     void acquirePathLock(bool doingRepair) {
+-        string name = ( boost::filesystem::path( dbpath ) / "mongod.lock" ).native_file_string();
++        string name = ( boost::filesystem::path( dbpath ) / "mongod.lock" ).string();
+ 
+         bool oldFile = false;
+ 
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/db/pdfile.cpp mongodb-src-r2.0.6-patched/db/pdfile.cpp
+--- mongodb-src-r2.0.6/db/pdfile.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/db/pdfile.cpp	2012-07-10 22:11:44.103498643 +0200
+@@ -1987,7 +1987,7 @@
+             virtual bool apply( const Path &p ) {
+                 if ( !boost::filesystem::exists( p ) )
+                     return false;
+-                boostRenameWrapper( p, newPath_ / ( p.leaf() + ".bak" ) );
++                boostRenameWrapper( p, newPath_ / ( p.leaf().string() + ".bak" ) );
+                 return true;
+             }
+             virtual const char * op() const {
+@@ -2093,7 +2093,7 @@
+             uniqueReservedPath( ( preserveClonedFilesOnFailure || backupOriginalFiles ) ?
+                                 "backup" : "$tmp" );
+         BOOST_CHECK_EXCEPTION( boost::filesystem::create_directory( reservedPath ) );
+-        string reservedPathString = reservedPath.native_directory_string();
++        string reservedPathString = reservedPath.string();
+ 
+         bool res;
+         {
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/dbtests/framework.cpp mongodb-src-r2.0.6-patched/dbtests/framework.cpp
+--- mongodb-src-r2.0.6/dbtests/framework.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/dbtests/framework.cpp	2012-07-10 22:29:20.610226773 +0200
+@@ -281,7 +281,7 @@
+                 boost::filesystem::create_directory(p);
+             }
+ 
+-            string dbpathString = p.native_directory_string();
++            string dbpathString = p.string();
+             dbpath = dbpathString.c_str();
+ 
+             cmdLine.prealloc = false;
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/pch.h mongodb-src-r2.0.6-patched/pch.h
+--- mongodb-src-r2.0.6/pch.h	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/pch.h	2012-07-10 21:35:57.133373738 +0200
+@@ -79,7 +79,7 @@
+ //#include <boost/any.hpp>
+ #include "boost/thread/once.hpp"
+ //#include <boost/archive/iterators/transform_width.hpp>
+-#define BOOST_FILESYSTEM_VERSION 2
++#define BOOST_FILESYSTEM_VERSION 3
+ #include <boost/filesystem/convenience.hpp>
+ #include <boost/filesystem/exception.hpp>
+ #include <boost/filesystem/operations.hpp>
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/shell/shell_utils.cpp mongodb-src-r2.0.6-patched/shell/shell_utils.cpp
+--- mongodb-src-r2.0.6/shell/shell_utils.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/shell/shell_utils.cpp	2012-07-10 22:38:58.443593723 +0200
+@@ -388,7 +388,7 @@
+ #endif
+                 }
+ 
+-                argv_.push_back( programPath.native_file_string() );
++                argv_.push_back( programPath.string() );
+ 
+                 port_ = -1;
+ 
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/tools/restore.cpp mongodb-src-r2.0.6-patched/tools/restore.cpp
+--- mongodb-src-r2.0.6/tools/restore.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/tools/restore.cpp	2012-07-10 22:45:00.046948094 +0200
+@@ -131,7 +131,7 @@
+         log(2) << "drillDown: " << root.string() << endl;
+ 
+         // skip hidden files and directories
+-        if (root.leaf()[0] == '.' && root.leaf() != ".")
++        if (root.leaf().string()[0] == '.' && root.leaf().string() != ".")
+             return;
+ 
+         if ( is_directory( root ) ) {
+@@ -210,7 +210,7 @@
+             ns += "." + _coll;
+         }
+         else {
+-            string l = root.leaf();
++            string l = root.leaf().string();
+             l = l.substr( 0 , l.find_last_of( "." ) );
+             ns += "." + l;
+         }
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/tools/tool.cpp mongodb-src-r2.0.6-patched/tools/tool.cpp
+--- mongodb-src-r2.0.6/tools/tool.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/tools/tool.cpp	2012-07-10 22:23:53.356874403 +0200
+@@ -113,12 +113,6 @@
+         // we want durability to be disabled.
+         cmdLine.dur = false;
+ 
+-#if( BOOST_VERSION >= 104500 )
+-    boost::filesystem::path::default_name_check( boost::filesystem2::no_check );
+-#else
+-    boost::filesystem::path::default_name_check( boost::filesystem::no_check );
+-#endif
+-
+         _name = argv[0];
+ 
+         /* using the same style as db.cpp */
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/util/background.cpp mongodb-src-r2.0.6-patched/util/background.cpp
+--- mongodb-src-r2.0.6/util/background.cpp	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/util/background.cpp	2012-07-10 21:47:40.420081320 +0200
+@@ -89,7 +89,7 @@
+             if ( msTimeOut ) {
+                 // add msTimeOut millisecond to current time
+                 boost::xtime xt;
+-                boost::xtime_get( &xt, boost::TIME_UTC );
++                boost::xtime_get( &xt, boost::TIME_UTC_ );
+ 
+                 unsigned long long ns = msTimeOut * 1000000ULL; // milli to nano
+                 if ( xt.nsec + ns < 1000000000 ) {
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/util/concurrency/mutex.h mongodb-src-r2.0.6-patched/util/concurrency/mutex.h
+--- mongodb-src-r2.0.6/util/concurrency/mutex.h	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/util/concurrency/mutex.h	2012-07-10 21:45:51.333408307 +0200
+@@ -29,7 +29,7 @@
+ 
+     inline boost::xtime incxtimemillis( long long s ) {
+         boost::xtime xt;
+-        boost::xtime_get(&xt, boost::TIME_UTC);
++        boost::xtime_get(&xt, boost::TIME_UTC_);
+         xt.sec += (int)( s / 1000 );
+         xt.nsec += (int)(( s % 1000 ) * 1000000);
+         if ( xt.nsec >= 1000000000 ) {
+diff -ru '--exclude=mongo_vstudio.cpp' mongodb-src-r2.0.6/util/queue.h mongodb-src-r2.0.6-patched/util/queue.h
+--- mongodb-src-r2.0.6/util/queue.h	2012-06-04 15:42:54.000000000 +0200
++++ mongodb-src-r2.0.6-patched/util/queue.h	2012-07-10 22:14:00.243506560 +0200
+@@ -82,7 +82,7 @@
+             Timer timer;
+ 
+             boost::xtime xt;
+-            boost::xtime_get(&xt, boost::TIME_UTC);
++            boost::xtime_get(&xt, boost::TIME_UTC_);
+             xt.sec += maxSecondsToWait;
+ 
+             scoped_lock l( _lock );

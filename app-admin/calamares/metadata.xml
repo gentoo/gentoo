@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
+	<longdescription>
+		Calamares is a distribution-independent system installer, with an
+		advanced partitioning feature for both manual and automated
+		partitioning operations. It is the first installer with an automated
+		“Replace Partition” option, which makes it easy to reuse a partition
+		over and over for distribution testing. Calamares is designed to be
+		customizable by distribution maintainers without need for cumbersome
+		patching, thanks to third party branding and external modules support.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">calamares/calamares</remote-id>
+	</upstream>
+</pkgmetadata>
+

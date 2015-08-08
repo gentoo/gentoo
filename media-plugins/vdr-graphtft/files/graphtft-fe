@@ -1,0 +1,33 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+. /etc/conf.d/vdr.graphtft
+
+export DISPLAY=${GRAPHTFT_DISPLAY}
+
+:   ${GRAPHTFT_USER:=root}
+
+OPTIONS="-h ${GRAPHTFT_HOST:=127.0.0.1}"
+OPTIONS="${OPTIONS} -p ${GRAPHTFT_PORT:=2039}"
+OPTIONS="${OPTIONS} -e ${GRAPHTFT_LOG_LEVEL:=0}"
+OPTIONS="${OPTIONS} -W ${GRAPHTFT_SCREEN_WIDTH:=800}"
+OPTIONS="${OPTIONS} -H ${GRAPHTFT_SCREEN_HEIGHT:=480}"
+[ "${GRAPHTFT_NO_FRAME}" = "yes" ] && OPTIONS="${OPTIONS} -n"
+[ "${GRAPHTFT_RESIZE_IMAGE}" = "yes" ] && OPTIONS="${OPTIONS} -r"
+
+# -d <file>       dump each image to file (default off)
+
+start() {
+		ebegin "starting graphtft-fe ..."
+		start-stop-daemon --make-pidfile --background --pidfile /var/run/graphtft-fe.pid \
+        --chuid ${GRAPHTFT_USER} --start --exec /usr/bin/graphtft-fe  -- ${OPTIONS}
+		eend $?
+}
+
+stop() {
+		ebegin "stopping graphtft ..."
+		start-stop-daemon --stop --pidfile /var/run/graphtft-fe.pid
+		eend $?
+}
+

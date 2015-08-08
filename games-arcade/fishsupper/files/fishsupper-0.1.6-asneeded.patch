@@ -1,0 +1,11 @@
+--- src/Makefile.am.old	2012-06-24 18:47:58.947143638 +0200
++++ src/Makefile.am	2012-06-24 18:51:35.738921904 +0200
+@@ -1,7 +1,7 @@
+ AM_CPPFLAGS = -DPKG_DATA_DIR=\"$(pkgdatadir)\" \
+ 			  @SDL_CFLAGS@ \
+ 			  -Wall
+-AM_LDFLAGS = @SDL_LIBS@ 
++LDADD = @SDL_LIBS@ 
+ 
+ bin_PROGRAMS = fishsupper
+ 

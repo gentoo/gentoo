@@ -1,0 +1,10 @@
+[Unit]
+Description=Tivoli Storage Manager (TSM) - dsmc
+After=network.target
+
+[Service]
+Nice=15
+ExecStart=/opt/tivoli/tsm/client/ba/bin/dsmc sched
+
+[Install]
+WantedBy=multi-user.target

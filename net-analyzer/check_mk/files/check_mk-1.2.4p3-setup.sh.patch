@@ -1,0 +1,36 @@
+--- check_mk-1.2.4p3.orig/setup.sh	2014-06-21 11:15:58.090225173 +0200
++++ check_mk-1.2.4p3/setup.sh	2014-06-22 09:57:51.658670398 +0200
+@@ -572,6 +572,11 @@
+            CONFIGURE_OPTS="--with-nagios4"
+         fi
+    fi
++   # disable stripping to get meaningful backtraces
++   sed -i -e 's/^INSTALL_STRIP_PROGRAM="\\\$(install_sh) -c -s"$/INSTALL_STRIP_PROGRAM="\\\$(install_sh) -c"/' configure
++   sed -i -e 's/install_sh_PROGRAM="\$(INSTALL_STRIP_PROGRAM)" INSTALL_STRIP_FLAG=-s \\$/install_sh_PROGRAM="\$(INSTALL_STRIP_PROGRAM)" \\/' Makefile.in
++   sed -i -e 's/install_sh_PROGRAM="\$(INSTALL_STRIP_PROGRAM)" INSTALL_STRIP_FLAG=-s \\$/install_sh_PROGRAM="\$(INSTALL_STRIP_PROGRAM)" \\/' src/Makefile.in
++   sed -i -e 's/\$(CXX) \$(LDFLAGS) -s -fPIC -shared \$(livestatus_so_OBJECTS) -o \$@ -lpthread -lstdc++/\$(CXX) \$(LDFLAGS) -fPIC -shared \$(livestatus_so_OBJECTS) -o \$@ -lpthread -lstdc++/' src/Makefile.in
+    ./configure --libdir=$libdir --bindir=$bindir $CONFIGURE_OPTS &&
+    make clean &&
+    cat <<EOF > src/livestatus.h &&
+@@ -581,7 +586,8 @@
+ #endif // livestatus_h
+ EOF
+    make -j 8  2>&1 &&
+-   strip src/livestatus.o &&
++   # disable stripping to get meaningful backtraces
++   #strip src/livestatus.o &&
+    mkdir -p $DESTDIR$libdir &&
+    install -m 755 src/livestatus.o $DESTDIR$libdir &&
+    mkdir -p $DESTDIR$bindir &&
+@@ -1018,8 +1024,9 @@
+            # WATO. Also create an empty and Apache-writable auth.serials
+            serials_file=$DESTDIR${htpasswd_file%/*}/auth.serials &&
+            touch "$serials_file" &&
+-           (chown $wwwuser "$serials_file" || true) &&
+-           (chown $wwwuser "$htpasswd_file" || true) &&
++           # Permissions will be set within src_install
++           #(chown $wwwuser "$serials_file" || true) &&
++           #(chown $wwwuser "$htpasswd_file" || true) &&
+ 	   create_sudo_configuration &&
+            if [ "$enable_mkeventd" = yes ]
+            then

@@ -1,0 +1,12 @@
+# fix file not found error during make depend
+--- src/tools/Makefile.in.orig	2012-09-20 20:42:54.000000000 +0200
++++ src/tools/Makefile.in	2012-09-20 20:35:46.000000000 +0200
+@@ -194,7 +194,7 @@
+ 	@$(MV) Makefile Makefile.bak
+ 	@$(SED) "/^# DO NOT DELETE:/,$$ d" Makefile.bak > Makefile
+ 	@$(ECHO) "# DO NOT DELETE: nice dependency list follows" >> Makefile
+-	@$(CXX) -S -M $(CPPFLAGS) $(PYTHON_INC) -I$(srcdir) -I$(basedir) *.c >> Makefile
++	@$(CXX) -S -M $(CPPFLAGS) $(PYTHON_INC) -I$(srcdir) -I$(basedir) -I../filed -I../dird -I../stored *.c >> Makefile
+ 	@if test -f Makefile ; then \
+ 	    $(RMF) Makefile.bak; \
+ 	else \

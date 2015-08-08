@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -37,7 +37,7 @@
+ 	ln -sf $(SHAREDLIB).$(VERSION) $(RPM_BUILD_ROOT)/$(LIBDIR)/$(SHAREDLIB).$(SOMAJOR)
+ 
+ $(SHAREDLIB): utmpintf.os
+-	$(CC) -o $@ -shared -Wl,-soname,$(SONAME) $^ -lc
++	$(CC) $(LDFLAGS) -o $@ -shared -Wl,-soname,$(SONAME) $^ -lc
+ 
+ utmpintf.o: utmpintf.c utempter.h
+ 

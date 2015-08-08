@@ -1,0 +1,26 @@
+Comply with standard KDE conventions so that linguas may be handled by the eclass,
+instead of implementing package-specific hacks.
+
+--- po/CMakeLists.txt
++++ po/CMakeLists.txt
+@@ -8,19 +8,7 @@
+     set(catalogname kcm_ufw)
+     add_custom_target(translations ALL)
+     
+-    if (UFW_ES_TRANSLATION)
+-        LIST(APPEND PO_FILES "${CMAKE_CURRENT_SOURCE_DIR}/es.po")
+-    endif (UFW_ES_TRANSLATION)
+-
+-    if (UFW_FR_TRANSLATION)
+-        LIST(APPEND PO_FILES "${CMAKE_CURRENT_SOURCE_DIR}/fr.po")
+-    endif (UFW_FR_TRANSLATION)
+-
+-    if (UFW_LT_TRANSLATION)
+-        LIST(APPEND PO_FILES "${CMAKE_CURRENT_SOURCE_DIR}/lt.po")
+-    endif (UFW_LT_TRANSLATION)
+-
+-    # file(GLOB PO_FILES *.po)
++    file(GLOB PO_FILES *.po)
+     foreach(_poFile ${PO_FILES})
+         get_filename_component(_poFileName ${_poFile} NAME)
+         string(REGEX REPLACE "^${catalogname}_?" "" _langCode ${_poFileName} )

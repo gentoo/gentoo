@@ -1,0 +1,10 @@
+--- bin/penguzzle
++++ bin/penguzzle
+@@ -1,4 +1,6 @@
+-#!/usr/bin/wishx
++#!/usr/bin/wish
++package require Tk
++package require Tclx
+ 
+ source ~/puzz/lib/init
+ 

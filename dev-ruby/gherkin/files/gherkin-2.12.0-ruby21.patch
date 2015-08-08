@@ -1,0 +1,42 @@
+commit 021309d273960bb5625f8072b8366eab7d077d25
+Author: Cédric Boutillier <boutil@debian.org>
+Date:   Fri Apr 25 13:34:41 2014 +0200
+
+    change regexp matchin Ruby versions to support Ruby2.1
+
+diff --git a/lib/gherkin/formatter/pretty_formatter.rb b/lib/gherkin/formatter/pretty_formatter.rb
+index 28c8b54..ff13c70 100644
+--- a/lib/gherkin/formatter/pretty_formatter.rb
++++ b/lib/gherkin/formatter/pretty_formatter.rb
+@@ -199,7 +199,7 @@ module Gherkin
+         end
+       end
+ 
+-      if(RUBY_VERSION =~ /^1\.9|2\.0/)
++      if(RUBY_VERSION =~ /^(1\.9|2\.)/)
+         START = /#{'^'.encode('UTF-8')}/
+         TRIPLE_QUOTES = /#{'"""'.encode('UTF-8')}/
+       else
+diff --git a/ragel/lexer.rb.rl.erb b/ragel/lexer.rb.rl.erb
+index 7fd85b4..4be053e 100644
+--- a/ragel/lexer.rb.rl.erb
++++ b/ragel/lexer.rb.rl.erb
+@@ -165,7 +165,7 @@ module Gherkin
+         utf8_pack(rest[0..rest.index(10)||-1]).strip # 10 is \n
+       end
+ 
+-      if (RUBY_VERSION =~ /^1\.9|2\.0/)
++      if (RUBY_VERSION =~ /^(1\.9|2\.)/)
+         def utf8_pack(array)
+           array.pack("c*").force_encoding("UTF-8")
+         end
+diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
+index 72333a7..0f6e3ae 100644
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -6,4 +6,4 @@ def silence_warnings(&block)
+-if RUBY_VERSION =~ /1\.9|2\.0/
++if RUBY_VERSION =~ /^(1\.9|2\.)/
+   Encoding.default_external = Encoding::UTF_8
+   Encoding.default_internal = Encoding::UTF_8
+ end

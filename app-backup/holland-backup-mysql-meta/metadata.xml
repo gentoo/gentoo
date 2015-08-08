@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>alunduil@gentoo.org</email>
+		<name>Alex Brandt</name>
+	</maintainer>
+	<longdescription lang="en">
+	</longdescription>
+	<use>
+		<flag name="lvm">Install Holland LVM Plugin</flag>
+		<flag name="mysqldump">Install Holland mysqldump Plugin</flag>
+		<flag name="mysqlhotcopy">Install Holland mysqlhotcopy Plugin</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,38 @@
+--- ltmain.sh.orig	2012-08-19 10:18:57.929178597 +0200
++++ ltmain.sh	2012-08-19 10:31:43.409388998 +0200
+@@ -5798,10 +5798,15 @@
+ 	IFS="$save_ifs"
+ 	func_stripname ' ' '' "$arg"
+ 	arg=$func_stripname_result
+ 	;;
+ 
++      -Wl,--as-needed|-Wl,--no-as-needed)
++	deplibs="$deplibs $arg"
++	continue
++	;;
++
+       -Wl,*)
+ 	func_stripname '-Wl,' '' "$arg"
+ 	args=$func_stripname_result
+ 	arg=
+ 	save_ifs="$IFS"; IFS=','
+@@ -6158,10 +6163,19 @@
+ 
+       for deplib in $libs; do
+ 	lib=
+ 	found=no
+ 	case $deplib in
++	-Wl,--as-needed|-Wl,--no-as-needed)
++	  if test "$linkmode,$pass" = "prog,link"; then
++	    compile_deplibs="$deplib $compile_deplibs"
++	    finalize_deplibs="$deplib $finalize_deplibs"
++	  else
++	    deplibs="$deplib $deplibs"
++	  fi
++	  continue
++	  ;;
+ 	-mt|-mthreads|-kthread|-Kthread|-pthread|-pthreads|--thread-safe \
+         |-threads|-fopenmp|-openmp|-mp|-xopenmp|-omp|-qsmp=*)
+ 	  if test "$linkmode,$pass" = "prog,link"; then
+ 	    compile_deplibs="$deplib $compile_deplibs"
+ 	    finalize_deplibs="$deplib $finalize_deplibs"

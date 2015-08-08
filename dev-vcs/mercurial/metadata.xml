@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>djc@gentoo.org</email>
+    <name>Dirkjan Ochtman</name>
+  </maintainer>
+  <maintainer>
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+  <maintainer>
+  	<email>skrattaren@yandex.ru</email>
+	<name>Nikolaj Sjujskij</name>
+	<description>Fallback maintaner, please CC on bugs</description>
+  </maintainer>
+  <use>
+    <flag name="bugzilla">Support bugzilla integration.</flag>
+    <flag name="gpg">Support signing with GnuPG.</flag>
+	<flag name="tk">Install dev-lang/tk for hgk script.</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+
+<maintainer>
+	<email>george@gentoo.org</email>
+	<name>George Shapovalov</name>
+	<description>
+		I'll be taking care of it. But since we need to have a herd in metadata
+		I've put sci there, as it seems the most related one.
+	</description>
+</maintainer>
+
+</pkgmetadata>

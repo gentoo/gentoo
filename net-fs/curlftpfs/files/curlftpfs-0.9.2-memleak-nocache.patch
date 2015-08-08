@@ -1,0 +1,60 @@
+Picked-from: http://pkgs.fedoraproject.org/cgit/curlftpfs.git/tree/curlftpfs-0.9.2-memleak-cached%23591299.patch?h=f18
+
+@@ -, +, @@ 
+---
+ cache.c    |    2 	1 +	1 -	0 !
+ ftpfs-ls.c |   19 	15 +	4 -	0 !
+ 2 files changed, 16 insertions(+), 5 deletions(-)
+--- b/cache.c	
++++ b/cache.c	
+@@ -25,7 +25,7 @@ struct cache {
+     time_t last_cleaned;
+ };
+ 
+-static struct cache cache;
++struct cache cache;
+ 
+ struct node {
+     struct stat stat;
+--- b/ftpfs-ls.c	
++++ b/ftpfs-ls.c	
+@@ -25,6 +25,13 @@ 
+ #include "charset_utils.h"
+ #include "ftpfs-ls.h"
+ 
++struct cache {
++    int on;
++    char incomplete[];
++};
++
++extern struct cache cache;
++
+ static int parse_dir_unix(const char *line,
+                           struct stat *sbuf,
+                           char *file,
+@@ -243,8 +250,10 @@ int parse_dir(const char* list, const ch
+           reallink = g_strdup(link);
+         }
+         int linksize = strlen(reallink);
+-        cache_add_link(full_path, reallink, linksize+1);
+-        DEBUG(1, "cache_add_link: %s %s\n", full_path, reallink);
++        if (cache.on) {
++          cache_add_link(full_path, reallink, linksize+1);
++          DEBUG(1, "cache_add_link: %s %s\n", full_path, reallink);
++        }
+         if (linkbuf && linklen) {
+           if (linksize > linklen) linksize = linklen - 1;
+           strncpy(linkbuf, reallink, linksize);
+@@ -257,8 +266,10 @@ int parse_dir(const char* list, const ch
+         DEBUG(1, "filler: %s\n", file);
+         filler(h, file, &stat_buf);
+       } else {
+-        DEBUG(1, "cache_add_attr: %s\n", full_path);
+-        cache_add_attr(full_path, &stat_buf);
++        if (cache.on) {
++          DEBUG(1, "cache_add_attr: %s\n", full_path);
++          cache_add_attr(full_path, &stat_buf);
++        }
+       }
+ 
+       DEBUG(2, "comparing %s %s\n", name, file);

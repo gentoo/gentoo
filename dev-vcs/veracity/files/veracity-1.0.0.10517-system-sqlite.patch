@@ -1,0 +1,45 @@
+# HG changeset patch
+# User Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+# Date 1314878981 0
+# Node ID 91ac9ba6484c95748fef02086619f9edeff7d434
+# Parent  6769293155a7f4f8f7744f38ba1a24e38a77128c
+Use system sqlite3 instead of bundled.
+
+diff -r 6769293155a7 -r 91ac9ba6484c common-CMakeLists.txt
+--- a/common-CMakeLists.txt	Thu Sep 01 04:07:58 2011 +0000
++++ b/common-CMakeLists.txt	Thu Sep 01 12:09:41 2011 +0000
+@@ -291,6 +291,11 @@
+ set(SG_THIRDPARTY_LIBRARIES ${SG_THIRDPARTY_LIBRARIES} ${NSPR_LIB})
+ MARK_AS_ADVANCED(NSPR_LIB)
+ 
++FIND_PACKAGE(PkgConfig REQUIRED)
++PKG_CHECK_MODULES(SQLITE REQUIRED sqlite3)
++SET(SG_THIRDPARTY_LIBRARIES ${SG_THIRDPARTY_LIBRARIES} ${SQLITE_LDFLAGS})
++SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SQLITE_CFLAGS}")
++
+ # Only look for libuuid on Linux.  OSX and Windows have this built in
+ IF("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+   FIND_PACKAGE(UUID REQUIRED)
+diff -r 6769293155a7 -r 91ac9ba6484c src/CMakeLists.txt
+--- a/src/CMakeLists.txt	Thu Sep 01 04:07:58 2011 +0000
++++ b/src/CMakeLists.txt	Thu Sep 01 12:09:41 2011 +0000
+@@ -33,8 +33,6 @@
+ add_subdirectory(winsync)
+ endif () # WIN32 AND NOT CMAKE_COMPILER_IS_GNUCC
+ 
+-add_subdirectory(thirdparty)
+-
+ INSTALL(
+ 	DIRECTORY server_files
+ 	DESTINATION "${Veracity_DATA_DEST}"
+diff -r 6769293155a7 -r 91ac9ba6484c src/libraries/ut/CMakeLists.txt
+--- a/src/libraries/ut/CMakeLists.txt	Thu Sep 01 04:07:58 2011 +0000
++++ b/src/libraries/ut/CMakeLists.txt	Thu Sep 01 12:09:41 2011 +0000
+@@ -161,6 +161,6 @@
+ source_group("Header Files" FILES ${HEADERS})
+ 
+ add_library(sglib STATIC ${ALL_SOURCE})
+-target_link_libraries(sglib sghash sgtemplates sqlite3 ${SG_THIRDPARTY_LIBRARIES} ${SG_OS_LIBS})
++target_link_libraries(sglib sghash sgtemplates ${SG_THIRDPARTY_LIBRARIES} ${SG_OS_LIBS})
+ 
+ set_target_properties(sglib PROPERTIES FOLDER "Libraries")

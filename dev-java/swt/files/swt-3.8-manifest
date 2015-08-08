@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Fragment-Host: org.eclipse.swt; bundle-version="[3.0.0,4.0.0)"
+Bundle-SymbolicName: org.eclipse.swt.gtk.linux.SWT_ARCH; singleton:=true
+Bundle-Version: 3.8
+Eclipse-PlatformFilter: (& (osgi.ws=gtk) (osgi.os=linux) (osgi.arch=SWT_ARCH))
+Export-Package: org.eclipse.swt.internal.accessibility.gtk; x-internal:=true,
+ org.eclipse.swt.internal.cairo; x-internal:=true,
+ org.eclipse.swt.internal.cde; x-internal:=true,
+ org.eclipse.swt.internal.gnome; x-internal:=true,
+ org.eclipse.swt.internal.gtk; x-internal:=true,
+ org.eclipse.swt.internal.opengl.glx; x-internal:=true
+ org.eclipse.swt.internal.webkit; x-internal:=true
+

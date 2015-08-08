@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>video</herd>
+  <maintainer>
+    <email>media-video@gentoo.org</email>
+  </maintainer>
+  <use>
+	<flag name="aacplus">AAC+ encoding via <pkg>media-libs/libaacplus</pkg>.</flag>
+	<flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
+	<flag name="amrenc">Enables Adaptive Multi-Rate Audio encoding support with <pkg>media-libs/vo-amrwbenc</pkg>.</flag>
+	<flag name="armv5te">Enables optimizations for armv5te processors.</flag>
+	<flag name="armv6">Enables optimizations for armv6 processors.</flag>
+	<flag name="armv6t2">Enables optimizations for armv6t2 processors.</flag>
+	<flag name="armvfp">Enables VFP optimizations for ARM processors.</flag>
+	<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
+	<flag name="bs2b">Enables <pkg>media-libs/libbs2b</pkg> based Bauer stereo-to-binaural filter.</flag>
+	<flag name="cdio">Enables audio CD grabbing with <pkg>dev-libs/libcdio</pkg>.</flag>
+	<flag name="celt">Adds Xiph CELT audio decoding support via <pkg>media-libs/celt</pkg></flag>
+	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
+	<flag name="faac">Use external faac library for AAC encoding</flag>
+	<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>
+	<flag name="flite">Adds a text-to-speech filter based on <pkg>app-accessibility/flite</pkg>.</flag>
+	<flag name="frei0r">Enable frei0r wrapping in libavfilter</flag>
+	<flag name="fribidi">Enables fribidi support in the drawtext filter.</flag>
+	<flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
+	<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
+	<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
+	<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
+	<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
+	<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
+	<flag name="mipsdspr1">Enables MIPS DSP ASE R1 optimizations.</flag>
+	<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
+	<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
+	<flag name="network">Enables network streaming support</flag>
+	<flag name="openssl">Enables <pkg>dev-libs/openssl</pkg> support. Adds support for encrypted network protocols (TLS/HTTPS).</flag>
+	<flag name="opus">Adds (decoding) support for the Opus codec via <pkg>media-libs/opus</pkg>.</flag>
+	<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>
+	<flag name="postproc">Build and install libpostproc.</flag>
+	<flag name="quvi">Adds support for playing media from Internet services using the quvi project.</flag>
+	<flag name="rtmp">Enable Real Time Messaging Protocol using librtmp</flag>
+	<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).</flag>
+	<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
+	<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
+	<flag name="twolame">Enables MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder.</flag>
+	<flag name="vpx">Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.</flag>
+	<flag name="webp">Enables WebP encoding with <pkg>media-libs/libwebp</pkg>.</flag>
+	<flag name="x265">Enables HEVC encoding with <pkg>media-libs/x265</pkg>.</flag>
+	<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -114,7 +114,7 @@
+ AC_SUBST(LIBRAL_LIBS)
+ AC_SUBST(LIBRAL_CFLAGS)
+ 
+-PKG_CHECK_MODULES(RUBRICA, gtk+-2.0 >= 2.6 glib-2.0 >= 2.6 libglade-2.0 gconf-2.0 libnotify)
++PKG_CHECK_MODULES(RUBRICA, gtk+-2.0 >= 2.6 glib-2.0 >= 2.6 gthread-2.0 libglade-2.0 gconf-2.0 libnotify)
+ AC_SUBST(RUBRICA_LIBS)
+ AC_SUBST(RUBRICA_CFLAGS)
+ 

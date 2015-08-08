@@ -1,0 +1,131 @@
+diff -Naur skkfep-0.87.orig/config.h skkfep-0.87/config.h
+--- skkfep-0.87.orig/config.h	2003-09-03 08:50:18.000000000 +0900
++++ skkfep-0.87/config.h	2008-11-01 09:53:22.000000000 +0900
+@@ -24,8 +24,8 @@
+ 					/* SKK server			  */
+ 
+ #define USER_DIC_NAME ".skk-jisyo"
+-/* #define SYSTEM_DIC_NAME "/usr/local/emacs/etc/SKK-JISYO.L" */
++#define SYSTEM_DIC_NAME "/usr/share/skk/SKK-JISYO.L"
+ 
+ #define NATIVECODE	euc	/* EUC Kanji code */
+ 
+-#define SKK_SERVER_HOST	"ei5nazha"	/* SKK server host */
++#define SKK_SERVER_HOST	"localhost"	/* SKK server host */
+diff -Naur skkfep-0.87.orig/connserv.c skkfep-0.87/connserv.c
+--- skkfep-0.87.orig/connserv.c	2003-09-03 08:49:30.000000000 +0900
++++ skkfep-0.87/connserv.c	2008-11-01 09:59:19.000000000 +0900
+@@ -5,6 +5,7 @@
+  */
+ #include "config.h"
+ #include <stdio.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include "skklib.h"
+ 
+diff -Naur skkfep-0.87.orig/connsh.c skkfep-0.87/connsh.c
+--- skkfep-0.87.orig/connsh.c	2003-09-03 08:49:30.000000000 +0900
++++ skkfep-0.87/connsh.c	2008-11-01 10:03:01.000000000 +0900
+@@ -1,5 +1,8 @@
+ #include	"config.h"
+ #include	<stdio.h>
++#include	<stdlib.h>
++#include	<string.h>
++#include	<unistd.h>
+ #include	<sys/types.h>
+ #include	<sys/file.h>
+ #include	<fcntl.h>
+diff -Naur skkfep-0.87.orig/fep.c skkfep-0.87/fep.c
+--- skkfep-0.87.orig/fep.c	2003-09-03 08:49:31.000000000 +0900
++++ skkfep-0.87/fep.c	2008-11-01 09:55:15.000000000 +0900
+@@ -1,6 +1,7 @@
+ #include "config.h"
+ #include "fep.h"
+ #include <stdlib.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include "kanjicode.h"
+diff -Naur skkfep-0.87.orig/jc.c skkfep-0.87/jc.c
+--- skkfep-0.87.orig/jc.c	2003-09-03 08:49:31.000000000 +0900
++++ skkfep-0.87/jc.c	2008-11-01 09:54:57.000000000 +0900
+@@ -33,6 +33,8 @@
+  */
+ 
+ #include	<stdio.h>
++#include	<stdlib.h>
++#include	<string.h>
+ #include	<ctype.h>
+ 
+ #include	"config.h"
+diff -Naur skkfep-0.87.orig/kkconv.c skkfep-0.87/kkconv.c
+--- skkfep-0.87.orig/kkconv.c	2003-09-03 08:49:31.000000000 +0900
++++ skkfep-0.87/kkconv.c	2008-11-01 09:58:26.000000000 +0900
+@@ -1,6 +1,7 @@
+ #include "config.h"
+ #include "fep.h"
+ #include "functions.h"
++#include <string.h>
+ #include <ctype.h>
+ 
+ #ifdef USE_SERVER
+diff -Naur skkfep-0.87.orig/protoMakefile skkfep-0.87/protoMakefile
+--- skkfep-0.87.orig/protoMakefile	2003-09-03 08:49:31.000000000 +0900
++++ skkfep-0.87/protoMakefile	2008-11-01 09:51:59.000000000 +0900
+@@ -1,5 +1,5 @@
+ CFLAGS=$(SYSINCLUDE) $(SYSDEFINE) $(DEFINE) $(OPTIMIZE)
+-LIBS  =$(SYSLIBS) $(EXTRALIBS) -ltermcap
++LIBS  =$(SYSLIBS) $(EXTRALIBS) -lncurses
+ 
+ OBJS=fep.o connsh.o readwrite.o terms.o stty.o keybind.o romkan.o etc.o\
+ 	kkconv.o keymap.o version.o
+diff -Naur skkfep-0.87.orig/readwrite.c skkfep-0.87/readwrite.c
+--- skkfep-0.87.orig/readwrite.c	2003-09-03 08:49:31.000000000 +0900
++++ skkfep-0.87/readwrite.c	2008-11-01 09:56:19.000000000 +0900
+@@ -1,5 +1,6 @@
+ #include "config.h"
+ #include "fep.h"
++#include <string.h>
+ #include <ctype.h>
+ #include "kanjicode.h"
+ #include "ctrlcode.h"
+diff -Naur skkfep-0.87.orig/romkan-org.c skkfep-0.87/romkan-org.c
+--- skkfep-0.87.orig/romkan-org.c	2003-09-03 08:49:32.000000000 +0900
++++ skkfep-0.87/romkan-org.c	2008-11-01 09:58:10.000000000 +0900
+@@ -1,5 +1,6 @@
+ #include "config.h"
+ #include "fep.h"
++#include <string.h>
+ #include <ctype.h>
+ #include "functions.h"
+ 
+diff -Naur skkfep-0.87.orig/skklib.c skkfep-0.87/skklib.c
+--- skkfep-0.87.orig/skklib.c	2003-09-03 08:49:32.000000000 +0900
++++ skkfep-0.87/skklib.c	2008-11-01 09:58:48.000000000 +0900
+@@ -6,6 +6,7 @@
+ 
+ #include "config.h"
+ #include <stdio.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include "skklib.h"
+diff -Naur skkfep-0.87.orig/stty.c skkfep-0.87/stty.c
+--- skkfep-0.87.orig/stty.c	2003-09-03 08:49:32.000000000 +0900
++++ skkfep-0.87/stty.c	2008-11-01 09:57:30.000000000 +0900
+@@ -1,5 +1,6 @@
+ #include "config.h"
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <signal.h>
+ #include <fcntl.h>
+ #include "fep.h"
+diff -Naur skkfep-0.87.orig/terms.c skkfep-0.87/terms.c
+--- skkfep-0.87.orig/terms.c	2003-09-03 08:49:32.000000000 +0900
++++ skkfep-0.87/terms.c	2008-11-01 09:56:59.000000000 +0900
+@@ -1,4 +1,5 @@
+ #include	"config.h"
++#include	<string.h>
+ #include	"fep.h"
+ 
+ /*#define SHOW_ESCSEQ		/* show escape sequences for debugging */

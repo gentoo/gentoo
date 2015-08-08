@@ -1,0 +1,27 @@
+Bug #445932
+--- cmulocal/sasl2.m4	2011-09-02 12:58:00.000000000 +0000
++++ cmulocal/sasl2.m4	2012-12-05 08:37:16.425811319 +0000
+@@ -268,7 +268,11 @@
+ 
+   cmu_save_LIBS="$LIBS"
+   LIBS="$LIBS $GSSAPIBASE_LIBS"
+-  AC_CHECK_FUNCS(gsskrb5_register_acceptor_identity)
++  AC_CHECK_FUNCS([gsskrb5_register_acceptor_identity], [],
++    [AC_CHECK_FUNCS([krb5_gss_register_acceptor_identity],
++      [AC_CHECK_HEADERS([gssapi/gssapi_krb5.h],
++         [AC_DEFINE([HAVE_GSSKRB5_REGISTER_ACCEPTOR_IDENTITY], [1])]
++  )])])
+   AC_CHECK_FUNCS(gss_decapsulate_token)
+   AC_CHECK_FUNCS(gss_encapsulate_token)
+   AC_CHECK_FUNCS(gss_oid_equal)
+--- plugins/gssapi.c	2012-12-05 09:03:31.000220161 +0000
++++ plugins/gssapi.c	2012-12-05 09:01:55.043380204 +0000
+@@ -50,7 +50,7 @@
+ #else
+ #include <gssapi/gssapi.h>
+ #endif
+-#ifdef KRB5_HEIMDAL
++#if defined (KRB5_HEIMDAL) || defined (HAVE_GSSAPI_GSSAPI_KRB5_H)
+ #include <gssapi/gssapi_krb5.h>
+ #endif
+ 

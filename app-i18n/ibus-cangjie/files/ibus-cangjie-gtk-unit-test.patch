@@ -1,0 +1,12 @@
+diff --git a/tests/test_prefs.py b/tests/test_prefs.py
+index d1bb438..e568939 100644
+--- a/tests/test_prefs.py
++++ b/tests/test_prefs.py
+@@ -37,6 +37,7 @@ class PrefsTestCase(unittest.TestCase):
+         except ET.ParseError as e:
+             raise AssertionError(e)
+ 
++    @unittest.skip("Importing Gtk doesn't raise a RuntimeError on recent Fedora")
+     def test_ui_file_is_valid_gtk_builder(self):
+         try:
+             from gi.repository import Gtk

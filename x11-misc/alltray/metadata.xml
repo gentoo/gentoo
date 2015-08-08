@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+	<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+With AllTray you can dock any application into the system tray/notification
+area. A high-light feature is that a click on the "close" button will minimize
+to system tray. It is written in C using GTK and Xlib. It works well with Gnome,
+KDE and XFCE 4.2.
+	</longdescription>
+</pkgmetadata>

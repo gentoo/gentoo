@@ -1,0 +1,16 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Sep  2 20:29:16 UTC 2013
+Subject: fix linking with newer glibc
+
+https://bugzilla.libsdl.org/show_bug.cgi?id=1401
+
+--- SDL2_ttf-2.0.12/Makefile.am
++++ SDL2_ttf-2.0.12/Makefile.am
+@@ -35,6 +35,7 @@
+ 	-release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ endif
++libSDL2_ttf_la_LIBADD = @MATHLIB@
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = SDL2_ttf.pc

@@ -1,0 +1,163 @@
+<!-- This is a DTD, but will be read as -*- sgml -*-   -->
+<!-- ================================================= -->
+
+<!-- ==== Title Elements ====-->
+    <!ENTITY % guide.title "title">
+    <!ENTITY % chapter.title "title">
+    <!ENTITY % sect.title "title">
+
+<!-- ==== List Elements ==== -->
+
+    <!ENTITY % list.class "ul|ol">
+
+<!-- ==== Elements which are admonitions. ==== -->
+
+    <!ENTITY % admon.class "note|warn|impo">
+
+<!-- ==== Elements which are "line specific". Spaces and line breaks are significant in line specific elements. ==== -->
+
+    <!ENTITY % linespecific.class "pre">
+    <!ENTITY % linespecific.sub.class "i|codenote">
+
+<!-- ==== Paragraph Elements ==== -->
+
+    <!ENTITY % para.class "p">
+
+<!-- ==== Formal objects (objects with titles). ==== -->
+
+    <!ENTITY % formal.class "figure|table">
+
+<!-- ==== Elements which are descriptive in nature. ==== -->
+
+    <!ENTITY % descobj.class "abstract">
+
+<!-- ==== The class of general inline elements. ==== -->
+
+    <!ENTITY % gen.class "e">
+
+    <!ENTITY % link.class "mail|link">
+
+    <!ENTITY % tech.class "c|path">
+
+    <!ENTITY % guideinfo.class "author|version|date">
+
+
+<!-- ===== ATTRIBUTE ENTITIES =====-->
+
+    <!ENTITY % link.attributes
+            "link  CDATA   #IMPLIED">
+
+    <!ENTITY % figure.attributes
+            "link       CDATA   #REQUIRED
+             short      CDATA   #IMPLIED
+             caption    CDATA   #IMPLIED">
+
+    <!ENTITY % author.attributes
+            "title   CDATA   #IMPLIED">
+
+<!-- ==== Mix Objects ==== -->
+
+    <!ENTITY % admon.mix
+            "%list.class;
+            |%linespecific.class;
+            |%para.class;
+            |%formal.class;">
+
+    <!ENTITY % para.mix
+            "#PCDATA
+            |%list.class;
+            |%gen.class;
+            |%link.class;
+            |%tech.class;">
+
+    <!ENTITY % list.mix
+            "#PCDATA
+            |%gen.class;
+            |%link.class;
+            |%tech.class;">
+
+    <!ENTITY % pre.mix
+            "#PCDATA
+            |%linespecific.sub.class;
+            |%gen.class;
+            |%link.class;
+            |%tech.class;">
+
+    <!ENTITY % title.mix
+            "#PCDATA
+            |%gen.class;
+            |%link.class;	|%tech.class;">
+
+    <!ENTITY % cptr.mix
+            "#PCDATA
+            |%link.class;	|%tech.class;">
+
+    <!ENTITY % smallcptr.mix "#PCDATA">
+
+    <!ENTITY % docinfo.mix
+            "#PCDATA
+            |%link.class;
+            |e">
+
+    <!ENTITY % body.mix
+            "%admon.class;
+            |%linespecific.class;
+            |%para.class;
+            |%formal.class;">
+
+
+<!-- ==== Objects ==== -->
+
+    <!ELEMENT title (%title.mix;)*>
+
+    <!ELEMENT ul (li+)>
+    <!ELEMENT ol (li+)>
+    <!ELEMENT li (%list.mix;)*>
+
+    <!ELEMENT note (%para.mix;)*>
+    <!ELEMENT warn (%para.mix;)*>
+    <!ELEMENT impo (%para.mix;)*>
+
+    <!ELEMENT pre (%pre.mix;)*>
+    <!ELEMENT codenote (#PCDATA)>
+    <!ELEMENT i (#PCDATA)>
+
+    <!ELEMENT p (%para.mix;)*>
+
+    <!ELEMENT figure EMPTY>
+    <!ATTLIST figure %figure.attributes;>
+
+    <!ELEMENT table (tr*)>
+    <!ELEMENT tr ((ti|th)*)>
+    <!ELEMENT ti (%para.mix;)*>
+    <!ELEMENT th (%para.mix;)*>
+
+
+    <!ELEMENT e (%smallcptr.mix;)>
+
+    <!ELEMENT link (#PCDATA)>
+    <!ATTLIST link %link.attributes;>
+
+    <!ELEMENT mail (#PCDATA)>
+    <!ATTLIST mail %link.attributes;>
+
+    <!ELEMENT c (%smallcptr.mix;)>
+
+    <!ELEMENT abstract (%para.mix;)*>
+
+    <!ELEMENT author (%smallcptr.mix;)>
+    <!ATTLIST author %author.attributes;>
+    <!ELEMENT version (%smallcptr.mix;)>
+    <!ELEMENT date (%smallcptr.mix;)>
+
+    <!ELEMENT chapter (%chapter.title;,(section)+)>
+
+    <!ELEMENT section (%sect.title;,body)>
+
+    <!ELEMENT body (%body.mix;)+>
+
+<!-- ==== The ARTICLE element ==== -->
+
+    <!ELEMENT guide ((%guide.title;), (%guideinfo.class;)*, (chapter)+)>
+
+

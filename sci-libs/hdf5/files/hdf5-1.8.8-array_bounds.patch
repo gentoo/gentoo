@@ -1,0 +1,22 @@
+--- a/perform/pio_engine.c
++++ b/perform/pio_engine.c
+@@ -454,7 +454,7 @@
+         subdir = (user ? user : login);
+ 
+         if (subdir) {
+-            for (i = 0; i < size && prefix[i]; i++)
++            for (i = 0; i < size-1 && prefix[i]; i++)
+                 fullname[i] = prefix[i];
+ 
+             fullname[i++] = '/';
+--- a/perform/sio_engine.c
++++ b/perform/sio_engine.c
+@@ -353,7 +353,7 @@
+     subdir = (user ? user : login);
+ 
+     if (subdir) {
+-        for (i = 0; i < size && prefix[i]; i++)
++        for (i = 0; i < size-1 && prefix[i]; i++)
+         fullname[i] = prefix[i];
+ 
+         fullname[i++] = '/';

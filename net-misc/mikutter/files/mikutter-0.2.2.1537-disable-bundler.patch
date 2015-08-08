@@ -1,0 +1,31 @@
+commit d2d55a4c463c43de4577b479b7717f7648005e5c
+Author: Toshiaki Asai <toshi.alternative@gmail.com>
+Date:   Sat Mar 15 23:31:59 2014 +0900
+
+    環境変数 DISABLE_BUNDLER_SETUP を空にセットすることで、bundlerを読みに行く挙動を抑制できるようにした refs #645
+
+diff --git a/mikutter.rb b/mikutter.rb
+index 3adcb90..695e2f5 100755
+--- a/mikutter.rb
++++ b/mikutter.rb
+@@ -13,12 +13,14 @@ You should have received a copy of the GNU General Public License along with thi
+ =end
+ mikutter_directory = File.expand_path(File.dirname(__FILE__))
+ 
+-begin
+-  ENV['BUNDLE_GEMFILE'] = File.expand_path(File.join(File.dirname($0), "Gemfile"))
+-  require 'bundler/setup'
+-rescue LoadError, SystemExit
+-  # bundlerがないか、依存関係の解決に失敗した場合
+-  # System の gem を使ってみる
++unless ENV['DISABLE_BUNDLER_SETUP']
++  begin
++    ENV['BUNDLE_GEMFILE'] = File.expand_path(File.join(File.dirname($0), "Gemfile"))
++    require 'bundler/setup'
++  rescue LoadError, SystemExit
++    # bundlerがないか、依存関係の解決に失敗した場合
++    # System の gem を使ってみる
++  end
+ end
+ 
+ Thread.abort_on_exception = true

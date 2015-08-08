@@ -1,0 +1,22 @@
+Description: Fix improper check for IPv6 family when sending multicast
+ This patch fixes the proper behavior of -T (hop-limit setting) when
+ sending IPv6 multicast packets. Due to this bug, it was always fixed to 1.
+ .
+ SetSocketOptions() is called before socket connection, thus sa_family is
+ still set to 0. This is causing the if-branch in the multicast check
+ to always assume a non-IPv6 socket.
+ Checking the remote-peer family works reliably, instead.
+Author: Luca Bruno <lucab@debian.org>
+Last-Update: 2012-05-24
+
+--- a/src/PerfSocket.cpp
++++ b/src/PerfSocket.cpp
+@@ -109,7 +109,7 @@ void SetSocketOptions( thread_Settings *
+     if ( isMulticast( inSettings ) && ( inSettings->mTTL > 0 ) ) {
+ 	int val = inSettings->mTTL;
+ #ifdef HAVE_MULTICAST
+-	if ( !SockAddr_isIPv6( &inSettings->local ) ) {
++	if ( !SockAddr_isIPv6( &inSettings->peer ) ) {
+ 	    int rc = setsockopt( inSettings->mSock, IPPROTO_IP, IP_MULTICAST_TTL,
+ 		    (const void*) &val, (Socklen_t) sizeof(val));
+ 

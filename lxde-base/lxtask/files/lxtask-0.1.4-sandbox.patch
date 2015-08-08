@@ -1,0 +1,21 @@
+diff -ua a/configure.ac b/configure.ac
+--- a/configure.ac	2013-09-19 15:10:33.339982117 -0700
++++ b/configure.ac	2013-09-19 15:12:09.759981997 -0700
+@@ -6,6 +6,8 @@
+ 
+ AM_CONFIG_HEADER(config.h)
+ 
++AC_CONFIG_MACRO_DIR([m4])
++
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AM_PROG_CC_C_O
+diff -ua a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2013-09-19 15:10:45.569982101 -0700
++++ b/Makefile.am	2013-09-19 15:12:19.639981985 -0700
+@@ -1,3 +1,5 @@
++ACLOCAL_AMFLAGS= -I m4
++
+ SUBDIRS =	po src
+ 
+ desktopdir = $(datadir)/applications

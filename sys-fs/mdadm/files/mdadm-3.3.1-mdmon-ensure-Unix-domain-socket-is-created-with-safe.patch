@@ -1,0 +1,34 @@
+From 120ec6f7b96455e42bdfa9131c0c9026c57eaf19 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Thu, 3 Jul 2014 17:06:45 +1000
+Subject: [PATCH 09/14] mdmon: ensure Unix domain socket is created with safe
+ permissions.
+
+In the unlikely case that mdmon is started with an overly
+permissive umask, we don't want to risk giving away world acccess.
+
+All other "mkdir" and  "O_CREAT" calls in mdmon and mdadm set
+a suitably restrictive permission mask.  'bind' don't take an
+explicit mask so it needs an implicit one.
+
+Reported-by: Vincent Berg <vberg@ioactive.com>
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ mdmon.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mdmon.c b/mdmon.c
+index b84d4d9..21221cd 100644
+--- a/mdmon.c
++++ b/mdmon.c
+@@ -232,6 +232,7 @@ static int make_control_sock(char *devname)
+ 
+ 	addr.sun_family = PF_LOCAL;
+ 	strcpy(addr.sun_path, path);
++	umask(077); /* ensure no world write access */
+ 	if (bind(sfd, &addr, sizeof(addr)) < 0) {
+ 		close(sfd);
+ 		return -1;
+-- 
+2.0.0
+

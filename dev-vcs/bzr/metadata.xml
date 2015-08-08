@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>bazaar</herd>
+  <longdescription lang="en">
+    Bazaar (``bzr``) is a decentralized revision control system, designed to be
+    easy for developers and end users alike.  Bazaar is part of the GNU project
+    to develop a complete free operating system.
+    Bazaar was formerly known as Bazaar-NG.  It's the successor to ``baz``, a
+    fork of GNU arch, but shares no code.  (To upgrade from Baz, use the
+    ``baz-import`` command in the bzrtools plugin.)
+  </longdescription>
+  <use>
+    <flag name="sftp">Enable sftp support</flag>
+  </use>
+  <upstream>
+    <remote-id type="launchpad">bzr</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+diff --git a/extract.c b/extract.c
+index 30bdf54..9639117 100755
+--- a/extract.c
++++ b/extract.c
+@@ -2110,7 +2110,6 @@ unsigned char *extract_exe(f_state *s, u_int64_t c_offset, unsigned char *founda
+ 	int				i = 0;
+ 	time_t			compile_time = 0;
+ 	struct tm		*ret_time;
+-	char			comment[32];
+ 	char			ascii_time[32];
+ 
+ 	if (buflen < 100)
+@@ -2145,8 +2144,7 @@ unsigned char *extract_exe(f_state *s, u_int64_t c_offset, unsigned char *founda
+ 			ret_time->tm_sec);
+ 	chop(ascii_time);
+ 
+-	sprintf(comment, ascii_time);
+-	strcat(needle->comment, comment);
++	strcat(needle->comment, ascii_time);
+ 	exe_char = htos(&foundat[22], FOREMOST_LITTLE_ENDIAN);
+ 	if (exe_char & 0x2000)
+ 		{

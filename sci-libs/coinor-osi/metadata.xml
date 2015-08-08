@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  The COIN-OR Open Solver Interface is a uniform API for interacting with
+  callable solver libraries. It supports linear programming solvers as
+  well as the ability to "finish off" a mixed-integer problem calling the
+  solver library's MIP solver.
+</longdescription>
+<use>
+  <flag name='glpk'>Enable GNU Linear Programming Kit
+  <pkg>sci-mathematics/glpk</pkg> support</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,398 @@
+From 1f56956ade3bd28ef192fba675e798db58b3ae40 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 22 Sep 2012 05:45:28 -0400
+Subject: [PATCH] Disable code not relevant for Gentoo
+
+Disable code that is only relevant for an RPM-based distro or that
+requires additional bugs.gentoo.org infrastructure support. Ensure that
+crashes still get analyzed even if they cannot be assigned to any
+package (since we lack any way of doing that at the moment).
+---
+ configure.ac                        |  1 -
+ doc/Makefile.am                     |  2 --
+ src/daemon/Makefile.am              | 18 ----------
+ src/daemon/abrt_event.conf          | 14 +++++---
+ src/plugins/Makefile.am             | 71 +------------------------------------
+ src/plugins/abrt-action-list-dsos   | 18 +++-------
+ src/plugins/ccpp_event.conf         | 29 +--------------
+ src/plugins/ccpp_retrace_event.conf |  8 +----
+ src/plugins/koops_event.conf        | 15 --------
+ src/plugins/python_event.conf       | 16 ---------
+ src/plugins/xorg_event.conf         |  2 +-
+ 11 files changed, 17 insertions(+), 177 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bb2b986..a78d9f8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -79,7 +79,6 @@ PKG_CHECK_MODULES([GTK], [gtk+-3.0])
+ PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.21])
+ PKG_CHECK_MODULES([DBUS], [dbus-1])
+ PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
+-PKG_CHECK_MODULES([RPM], [rpm])
+ PKG_CHECK_MODULES([LIBNOTIFY], [libnotify])
+ PKG_CHECK_MODULES([NSS], [nss])
+ PKG_CHECK_MODULES([BTPARSER], [btparser])
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 0a829d4..33cc8e6 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -16,11 +16,9 @@ MAN1_TXT += abrt-cli.txt
+ MAN1_TXT += abrt-action-save-package-data.txt
+ MAN1_TXT += abrt-install-ccpp-hook.txt
+ MAN1_TXT += abrt-action-analyze-vmcore.txt
+-MAN1_TXT += abrt-bodhi.txt
+ 
+ MAN5_TXT =
+ MAN5_TXT += abrt.conf.txt
+-MAN5_TXT += abrt-action-save-package-data.conf.txt
+ 
+ MAN8_TXT =
+ MAN8_TXT += abrtd.txt abrt-dbus.txt
+diff --git a/src/daemon/Makefile.am b/src/daemon/Makefile.am
+index 2e24403..777dfc4 100644
+--- a/src/daemon/Makefile.am
++++ b/src/daemon/Makefile.am
+@@ -6,9 +6,6 @@ dist_eventsconf_DATA = \
+ bin_SCRIPTS = \
+     abrt-handle-upload
+ 
+-bin_PROGRAMS = \
+-    abrt-action-save-package-data
+-
+ sbin_PROGRAMS = \
+     abrtd \
+     abrt-server
+@@ -55,21 +52,6 @@ abrt_handle_event_LDADD = \
+     $(LIBREPORT_LIBS) \
+     $(BTPARSER_LIBS)
+ 
+-abrt_action_save_package_data_SOURCES = \
+-    rpm.h rpm.c \
+-    abrt-action-save-package-data.c
+-abrt_action_save_package_data_CPPFLAGS = \
+-    -I$(srcdir)/../include \
+-    -I$(srcdir)/../lib \
+-    -DCONF_DIR=\"$(CONF_DIR)\" \
+-    $(GLIB_CFLAGS) \
+-    $(LIBREPORT_CFLAGS) \
+-    -D_GNU_SOURCE
+-abrt_action_save_package_data_LDADD = \
+-    $(RPM_LIBS) \
+-    $(LIBREPORT_LIBS) \
+-    ../lib/libabrt.la
+-
+ daemonconfdir = $(CONF_DIR)
+ dist_daemonconf_DATA = \
+     abrt.conf \
+diff --git a/src/daemon/abrt_event.conf b/src/daemon/abrt_event.conf
+index a1411e4..aab7dc0 100644
+--- a/src/daemon/abrt_event.conf
++++ b/src/daemon/abrt_event.conf
+@@ -44,7 +44,7 @@
+ 
+ 
+ # Determine in which package/component the crash happened (if not yet done):
+-EVENT=post-create component= remote!=1
++#EVENT=post-create component= remote!=1
+         abrt-action-save-package-data
+ 
+ 
+@@ -60,19 +60,19 @@ EVENT=post-create
+         if [ -f uid ]; then getent passwd "`cat uid`" | cut -d: -f1 >username; fi
+ 
+ 
+-EVENT=notify package!= uid!=
++EVENT=notify uid!=
+ 	dbus-send --system --type=signal /com/redhat/abrt com.redhat.abrt.Crash \
+ 	string:"`cat package`" string:"$DUMP_DIR" string:"`cat uid`"
+ 
+-EVENT=notify package!= uid=
++EVENT=notify uid=
+ 	dbus-send --system --type=signal /com/redhat/abrt com.redhat.abrt.Crash \
+ 	string:"`cat package`" string:"$DUMP_DIR"
+ 
+-EVENT=notify-dup package!= uid!=
++EVENT=notify-dup uid!=
+ 	dbus-send --system --type=signal /com/redhat/abrt com.redhat.abrt.Crash \
+ 	string:"`cat package`" string:"$DUMP_DIR" string:"`cat uid`"
+ 
+-EVENT=notify-dup package!= uid=
++EVENT=notify-dup uid=
+ 	dbus-send --system --type=signal /com/redhat/abrt com.redhat.abrt.Crash \
+ 	string:"`cat package`" string:"$DUMP_DIR"
+ 
+@@ -108,6 +108,10 @@ EVENT=notify-dup package!= uid=
+ #EVENT=post-create
+         reporter-upload -u scp://user:password@server.name/var/spool/abrt-upload || :
+ 
++#report-gui event is used for reporting by abrt-applet and abrt-gui
++
++EVENT=report-gui analyzer=CCpp
++        report-gtk -e analyze_LocalGDB -e report_Logger -- "$DUMP_DIR"
+ 
+ #open-gui event is used by abrt-gui's "Edit"->"Open problem data"
+ 
+diff --git a/src/plugins/Makefile.am b/src/plugins/Makefile.am
+index 10ab579..f0248b1 100644
+--- a/src/plugins/Makefile.am
++++ b/src/plugins/Makefile.am
+@@ -1,7 +1,6 @@
+ -include ../../config.mak
+ 
+ bin_SCRIPTS = \
+-    abrt-action-install-debuginfo \
+     abrt-action-analyze-core \
+     abrt-action-analyze-vmcore \
+     abrt-action-list-dsos
+@@ -16,12 +15,7 @@ bin_PROGRAMS = \
+     abrt-action-trim-files \
+     abrt-action-generate-backtrace \
+     abrt-action-generate-core-backtrace \
+-    abrt-action-analyze-backtrace \
+-    abrt-retrace-client \
+-    abrt-dedup-client \
+-    abrt-bodhi
+-
+-libexec_PROGRAMS = abrt-action-install-debuginfo-to-abrt-cache
++    abrt-action-analyze-backtrace
+ 
+ #dist_pluginsconf_DATA = Python.conf
+ 
+@@ -44,7 +38,6 @@ eventsconfdir = $(EVENTS_CONF_DIR)
+ 
+ dist_eventsconf_DATA = \
+     ccpp_event.conf \
+-    ccpp_retrace_event.conf \
+     koops_event.conf \
+     xorg_event.conf \
+     vmcore_event.conf \
+@@ -56,7 +49,6 @@ dist_eventsconf_DATA = \
+ 
+ 
+ PYTHON_FILES = \
+-    abrt-action-install-debuginfo.in \
+     abrt-action-list-dsos \
+     abrt-action-analyze-core \
+     abrt-action-analyze-vmcore.in
+@@ -69,7 +61,6 @@ EXTRA_DIST = \
+     collect_vimrc_user.xml.in \
+     collect_vimrc_system.xml.in \
+     analyze_LocalGDB.xml.in \
+-    analyze_RetraceServer.xml.in \
+     analyze_VMcore.xml.in \
+     abrt-action-analyze-vmcore \
+     https-utils.h \
+@@ -204,64 +195,4 @@ abrt_action_analyze_backtrace_LDADD = \
+     $(LIBREPORT_LIBS) \
+     $(BTPARSER_LIBS)
+ 
+-abrt_action_install_debuginfo_to_abrt_cache_SOURCES = \
+-    abrt-action-install-debuginfo-to-abrt-cache.c
+-abrt_action_install_debuginfo_to_abrt_cache_CPPFLAGS = \
+-    -I$(srcdir)/../include \
+-    -I$(srcdir)/../lib \
+-    -D_GNU_SOURCE \
+-    $(LIBREPORT_CFLAGS) \
+-    -Wall -Wwrite-strings
+-abrt_action_install_debuginfo_to_abrt_cache_LDADD = \
+-     $(LIBREPORT_LIBS) \
+-     ../lib/libabrt.la
+-
+-abrt_retrace_client_SOURCES = \
+-    abrt-retrace-client.c \
+-    https-utils.c
+- abrt_retrace_client_CFLAGS = \
+-    -I$(srcdir)/../include \
+-    -I$(srcdir)/../lib \
+-     $(NSS_CFLAGS) \
+-     $(GLIB_CFLAGS) \
+-     -D_GNU_SOURCE \
+-     $(LIBREPORT_CFLAGS)
+- abrt_retrace_client_LDADD = \
+-     $(LIBREPORT_LIBS) \
+-     $(BTPARSER_LIBS) \
+-     $(NSS_LIBS)
+-
+-abrt_dedup_client_SOURCES = \
+-    abrt-dedup-client.c \
+-    https-utils.c
+- abrt_dedup_client_CFLAGS = \
+-    -I$(srcdir)/../include \
+-    -I$(srcdir)/../lib \
+-     $(NSS_CFLAGS) \
+-     $(GLIB_CFLAGS) \
+-     -D_GNU_SOURCE \
+-     $(LIBREPORT_CFLAGS)
+- abrt_dedup_client_LDADD = \
+-     $(LIBREPORT_LIBS) \
+-     $(BTPARSER_LIBS) \
+-     $(NSS_LIBS)
+-
+-abrt_bodhi_SOURCES = \
+-    bodhi.c
+- abrt_bodhi_CPPFLAGS = \
+-    -I$(srcdir)/../include \
+-    -I$(srcdir)/../lib \
+-    $(GLIB_CFLAGS) \
+-    $(LIBREPORT_CFLAGS) \
+-    $(LIBREPORT_WEB_CFLAGS) \
+-    $(JSON_C_CFLAGS) \
+-    $(RPM_CFLAGS) \
+-    -D_GNU_SOURCE
+- abrt_bodhi_LDADD = \
+-    $(JSON_C_LIBS) \
+-    $(RPM_LIBS) \
+-    $(LIBREPORT_LIBS) \
+-    $(LIBREPORT_WEB_LIBS)
+-
+-
+ DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+diff --git a/src/plugins/abrt-action-list-dsos b/src/plugins/abrt-action-list-dsos
+index 81a9927..bf1491c 100644
+--- a/src/plugins/abrt-action-list-dsos
++++ b/src/plugins/abrt-action-list-dsos
+@@ -5,7 +5,6 @@
+ import sys
+ import os
+ import getopt
+-import rpm
+ 
+ def log(s):
+     sys.stderr.write("%s\n" % s)
+@@ -68,19 +67,10 @@ if __name__ == "__main__":
+         try:
+             dso_paths = parse_maps(memfile)
+             for path in dso_paths:
+-                ts = rpm.TransactionSet()
+-                mi = ts.dbMatch('basenames', path)
+-                if len(mi):
+-                    for h in mi:
+-                        if outname:
+-                            outfile = xopen(outname, "w")
+-                            outname = None
+-                        outfile.write("%s %s (%s) %s\n" %
+-                                    (path,
+-                                     h[rpm.RPMTAG_NEVRA],
+-                                     h[rpm.RPMTAG_VENDOR],
+-                                     h[rpm.RPMTAG_INSTALLTIME])
+-                                    )
++                if outname:
++                    outfile = xopen(outname, "w")
++                    outname = None
++                outfile.write(path)
+ 
+         except Exception, ex:
+             error_msg_and_die("Can't get the DSO list: %s" % ex)
+diff --git a/src/plugins/ccpp_event.conf b/src/plugins/ccpp_event.conf
+index 81b14d2..cda0b7d 100644
+--- a/src/plugins/ccpp_event.conf
++++ b/src/plugins/ccpp_event.conf
+@@ -31,31 +31,4 @@ EVENT=collect_xsession_errors analyzer=CCpp dso_list~=.*/libX11.*
+ # or was this ability lost with move to python installer?
+ EVENT=analyze_LocalGDB analyzer=CCpp
+         abrt-action-analyze-core --core=coredump -o build_ids &&
+-        /usr/libexec/abrt-action-install-debuginfo-to-abrt-cache --size_mb=4096 &&
+-        abrt-action-generate-backtrace &&
+-        abrt-action-analyze-backtrace &&
+-        (
+-            bug_id=$(reporter-bugzilla -h `cat duphash`) &&
+-            if test -n "$bug_id"; then
+-                abrt-bodhi -r -b $bug_id
+-            fi
+-        )
+-
+-
+-# Bugzilla requires nonempty duphash
+-EVENT=report_Bugzilla analyzer=CCpp duphash!=
+-        abrt-dedup-client
+-        test -f component || abrt-action-save-package-data
+-        reporter-bugzilla -b -c /etc/libreport/plugins/bugzilla.conf
+-
+-# Send micro report
+-EVENT=report_uReport analyzer=CCpp
+-        reporter-ureport
+-
+-# update ABRT database after successful report to bugzilla
+-EVENT=post_report analyzer=CCpp
+-        reporter-ureport -r
+-
+-# Reporting of C/Cpp problems
+-EVENT=report-gui analyzer=CCpp
+-        report-gtk -e report_uReport -e analyze_RetraceServer -e report_Bugzilla -e post_report -- "$DUMP_DIR"
++        abrt-action-generate-backtrace
+diff --git a/src/plugins/ccpp_retrace_event.conf b/src/plugins/ccpp_retrace_event.conf
+index 60e53d7..893502f 100644
+--- a/src/plugins/ccpp_retrace_event.conf
++++ b/src/plugins/ccpp_retrace_event.conf
+@@ -1,9 +1,3 @@
+ EVENT=analyze_RetraceServer analyzer=CCpp
+         abrt-retrace-client batch --dir "$DUMP_DIR" --status-delay 10 &&
+-        abrt-action-analyze-backtrace &&
+-        (
+-            bug_id=$(reporter-bugzilla -h `cat duphash`) &&
+-            if test -n "$bug_id"; then
+-                abrt-bodhi -r -b $bug_id
+-            fi
+-        )
++        abrt-action-analyze-backtrace
+diff --git a/src/plugins/koops_event.conf b/src/plugins/koops_event.conf
+index 91759b1..41708df 100644
+--- a/src/plugins/koops_event.conf
++++ b/src/plugins/koops_event.conf
+@@ -14,18 +14,3 @@ EVENT=post-create analyzer=Kerneloops
+ # report
+ #EVENT=report_Kerneloops analyzer=Kerneloops
+         reporter-kerneloops
+-
+-EVENT=report_Bugzilla analyzer=Kerneloops
+-        reporter-bugzilla -b
+-
+-# Send micro report
+-EVENT=report_uReport analyzer=Kerneloops
+-        reporter-ureport
+-
+-# update ABRT database after successful report to bugzilla
+-EVENT=post_report analyzer=Kerneloops
+-        reporter-ureport -r
+-
+-# Reporting of kernel oopses
+-EVENT=report-gui analyzer=Kerneloops
+-        report-gtk -e report_uReport -e report_Bugzilla -e post_report -- "$DUMP_DIR"
+diff --git a/src/plugins/python_event.conf b/src/plugins/python_event.conf
+index e60df11..66b41f2 100644
+--- a/src/plugins/python_event.conf
++++ b/src/plugins/python_event.conf
+@@ -1,19 +1,3 @@
+ EVENT=post-create analyzer=Python
+         abrt-action-analyze-python
+         abrt-action-generate-core-backtrace
+-
+-EVENT=report_Bugzilla analyzer=Python
+-        test -f component || abrt-action-save-package-data
+-        reporter-bugzilla -b -c /etc/libreport/plugins/bugzilla.conf
+-
+-# Send micro report
+-EVENT=report_uReport analyzer=Python
+-        reporter-ureport
+-
+-# update ABRT database after successful report to bugzilla
+-EVENT=post_report analyzer=Python
+-        reporter-ureport -r
+-
+-# Reporting of python exceptions
+-EVENT=report-gui analyzer=Python
+-        report-gtk -e report_uReport -e report_Bugzilla -e post_report -- "$DUMP_DIR"
+diff --git a/src/plugins/xorg_event.conf b/src/plugins/xorg_event.conf
+index b974a6b..5476230 100644
+--- a/src/plugins/xorg_event.conf
++++ b/src/plugins/xorg_event.conf
+@@ -33,4 +33,4 @@ EVENT=report_Bugzilla analyzer=xorg
+ 
+ # Reporting of xorg problems
+ EVENT=report-gui analyzer=xorg
+-    report-gtk -e report_Bugzilla -- "$DUMP_DIR"
++    report-gtk -e report_Logger -- "$DUMP_DIR"
+-- 
+1.7.12
+

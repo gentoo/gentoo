@@ -1,0 +1,49 @@
+--- unix/jkAudIO_alsa.c   2005-12-14 12:29:38.000000000 +0100
++++ unix/jkAudIO_alsa.c   2008-09-01 22:51:20.000000000 +0200
+@@ -49,6 +49,8 @@
+ 
+ static int minNumChan = 1;
+ 
++static snd_pcm_uframes_t hw_bufsize = 0;
++
+ int
+ SnackAudioOpen(ADesc *A, Tcl_Interp *interp, char *device, int mode, int freq,
+           int nchannels, int encoding)
+@@ -135,6 +137,9 @@
+     Tcl_AppendResult(interp, "Failed setting HW params.", NULL);
+     return TCL_ERROR;
+   }
++
++  snd_pcm_hw_params_get_buffer_size (hw_params, &hw_bufsize);
++
+   snd_pcm_hw_params_free(hw_params);
+   snd_pcm_prepare(A->handle);
+   if (A->mode == RECORD) {
+@@ -202,6 +207,8 @@
+   int i;
+   static char buf[64];
+ 
++  return;
++      
+   if (A->debug > 1) Snack_WriteLog("  Enter SnackAudioPost\n");
+ 
+   for (i = 0; i < 1000; i++) {
+@@ -267,12 +274,14 @@
+ long
+ SnackAudioPlayed(ADesc *A)
+ {
+-  long avail = _snd_pcm_mmap_hw_ptr(A->handle);
++  // FIX Here, _snd_pcm_mmap_hw_ptr is deprecated in new alsalib
++  long played = A->nWritten - (hw_bufsize - SnackAudioWriteable(A));
++  // long avail = _snd_pcm_mmap_hw_ptr(A->handle);
+   
+-  if (avail < 0)
+-    avail = 0;
++  if (played < 0)
++   return 0;
+ 
+-  return (avail+A->nPlayed);
++  return (played);
+ }
+ 
+ void 

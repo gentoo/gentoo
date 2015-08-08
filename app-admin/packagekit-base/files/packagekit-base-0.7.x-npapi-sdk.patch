@@ -1,0 +1,72 @@
+--- PackageKit-0.7.4.orig/configure
++++ PackageKit-0.7.4/configure
+@@ -20283,14 +20283,14 @@ if test -n "$PK_BROWSER_PLUGIN_CFLAGS";
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"\\
+-			  mozilla-plugin >= 8.0	\\
++			  npapi-sdk	\\
+ 			  gio-unix-2.0		\\
+ 			  nspr >= 4.8		\\
+ 			  cairo			\\
+ 			  pango			\\
+ 			  gtk+-2.0 >= 2.14.0\""; } >&5
+   ($PKG_CONFIG --exists --print-errors "\
+-			  mozilla-plugin >= 8.0	\
++			  npapi-sdk	\
+ 			  gio-unix-2.0		\
+ 			  nspr >= 4.8		\
+ 			  cairo			\
+@@ -20300,7 +20300,7 @@ if test -n "$PK_BROWSER_PLUGIN_CFLAGS";
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+   pkg_cv_PK_BROWSER_PLUGIN_CFLAGS=`$PKG_CONFIG --cflags "\
+-			  mozilla-plugin >= 8.0	\
++			  npapi-sdk	\
+ 			  gio-unix-2.0		\
+ 			  nspr >= 4.8		\
+ 			  cairo			\
+@@ -20317,14 +20317,14 @@ if test -n "$PK_BROWSER_PLUGIN_LIBS"; th
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"\\
+-			  mozilla-plugin >= 8.0	\\
++			  npapi-sdk	\\
+ 			  gio-unix-2.0		\\
+ 			  nspr >= 4.8		\\
+ 			  cairo			\\
+ 			  pango			\\
+ 			  gtk+-2.0 >= 2.14.0\""; } >&5
+   ($PKG_CONFIG --exists --print-errors "\
+-			  mozilla-plugin >= 8.0	\
++			  npapi-sdk	\
+ 			  gio-unix-2.0		\
+ 			  nspr >= 4.8		\
+ 			  cairo			\
+@@ -20334,7 +20334,7 @@ if test -n "$PK_BROWSER_PLUGIN_LIBS"; th
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+   pkg_cv_PK_BROWSER_PLUGIN_LIBS=`$PKG_CONFIG --libs "\
+-			  mozilla-plugin >= 8.0	\
++			  npapi-sdk	\
+ 			  gio-unix-2.0		\
+ 			  nspr >= 4.8		\
+ 			  cairo			\
+@@ -20360,7 +20360,7 @@ else
+ fi
+         if test $_pkg_short_errors_supported = yes; then
+ 	        PK_BROWSER_PLUGIN_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "\
+-			  mozilla-plugin >= 8.0	\
++			  npapi-sdk	\
+ 			  gio-unix-2.0		\
+ 			  nspr >= 4.8		\
+ 			  cairo			\
+@@ -20368,7 +20368,7 @@ fi
+ 			  gtk+-2.0 >= 2.14.0" 2>&1`
+         else
+ 	        PK_BROWSER_PLUGIN_PKG_ERRORS=`$PKG_CONFIG --print-errors "\
+-			  mozilla-plugin >= 8.0	\
++			  npapi-sdk	\
+ 			  gio-unix-2.0		\
+ 			  nspr >= 4.8		\
+ 			  cairo			\

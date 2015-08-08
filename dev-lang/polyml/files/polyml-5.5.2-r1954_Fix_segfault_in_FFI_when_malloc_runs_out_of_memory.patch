@@ -1,0 +1,112 @@
+Index: polyml/libpolyml/foreign.cpp
+===================================================================
+--- polyml/libpolyml/foreign.cpp	(revision 1953)
++++ polyml/libpolyml/foreign.cpp	(revision 1954)
+@@ -4,7 +4,7 @@
+ 
+     Copyright (c) 2000-7
+         Cambridge University Technical Services Limited
+-    Further development Copyright David C.J. Matthews 2008-2011.
++    Further development Copyright David C.J. Matthews 2008-2014.
+ 
+     This library is free software; you can redistribute it and/or
+     modify it under the terms of the GNU Lesser General Public
+@@ -251,6 +251,10 @@
+ 
+ static Volatile *vols;
+ static PLock volLock; // Mutex to protect vols.
++// TODO: There is a theoretical risk of deadlock if any ML allocation is made while this
++// lock is held.  An allocation can result in a GC which requires all threads to release
++// ML memory but another thread could block waiting for the mutex.
++// N.B. raising an exception involves an allocation.
+ 
+ #define FIRST_VOL 0
+ 
+@@ -268,24 +272,8 @@
+ static unsigned callBackEntries = 0;
+ static PLock callbackTableLock; // Mutex to protect table.
+ 
+-
+ /**********************************************************************
+  *
+- *  Malloc / Free Wrappers
+- *   
+- **********************************************************************/
+-
+-static POLYUNSIGNED malloc_count = 0;
+-#if 0
+-#define Vmalloc(where,size) {where = malloc(size); printf("malloc: %p,%d\n",where,size); fflush(stdout); malloc_count++;}
+-#else
+-#define Vmalloc(where,size) {where = malloc(size); malloc_count++;}
+-#endif
+-#define Vfree(p) { free(p);  malloc_count--;}
+-
+-
+-/**********************************************************************
+- *
+  *  Volatile Allocation
+  *   
+  **********************************************************************/
+@@ -349,8 +337,12 @@
+     PLocker plocker(&volLock);
+     Handle res = vol_alloc(taskData);
+     trace(("size= %" POLYUFMT "\n",size));
+-    Vmalloc( C_POINTER(UNVOLHANDLE(res)), size );
++    void *p = malloc(size);
++    if (p == 0)
++        RAISE_EXN("Insufficient memory");
++    C_POINTER(UNVOLHANDLE(res)) = p;
+     OWN_C_SPACE(UNVOLHANDLE(res)) = true;
++
+     return res;
+ }
+ 
+@@ -685,7 +677,7 @@
+             {
+                 // Can now free this.            
+                 trace(("Freeing malloc space of <%" POLYUFMT ">\n",from));
+-                Vfree(vols[from].C_pointer);
++                free(vols[from].C_pointer);
+                 vols[from].C_pointer = 0;
+                 vols[from].Own_C_space = false;
+             }
+@@ -702,7 +694,6 @@
+         }
+     }
+     next_vol = to;
+-    info(("unfreed mallocs=<%" POLYUFMT "> next_vol=<%" POLYUFMT ">\n", malloc_count, next_vol));
+     
+     /* Callback table.  Added DCJM 12/4/04.  We always process these as strong references.
+     For the time being at any rate we treat these as permanent entries so that once a
+@@ -910,8 +901,9 @@
+         RAISE_EXN("libffi error: ffi_prep_cif failed");
+ 
+     // malloc memory for the result
+-    void *result;
+-    Vmalloc(result, result_type->size);
++    void *result = malloc(result_type->size);
++    if (result == 0)
++        RAISE_EXN("Insufficient memory to allocate space for result");
+ 
+     processes->ThreadReleaseMLMemory(taskData);
+     ffi_call(&cif, sym, result, arg_values);
+@@ -1580,6 +1572,9 @@
+ 
+     unsigned num_args = length_list(argTypeList->Word());
+     ffi_type **arg_types = (ffi_type**)malloc(num_args * sizeof(ffi_type*));
++    if (arg_types == 0)
++        RAISE_EXN("Insufficient memory to allocate space for arguments");
++
+     PolyWord p = argTypeList->Word();
+     for (POLYUNSIGNED i=0; i<num_args; i++,p=Tail(p))
+         arg_types[i] = ctypeToFfiType(taskData, Head(p));
+@@ -1587,6 +1582,9 @@
+ 
+     // The cif needs to be on the heap so that it is available in the callback.
+     ffi_cif *cif = (ffi_cif *)malloc(sizeof(ffi_cif));
++    if (cif == 0)
++        RAISE_EXN("Insufficient memory to allocate space for cif");
++
+     if (ffi_prep_cif(cif, abi, num_args, result_type, arg_types) != FFI_OK)
+         RAISE_EXN("libffi error: ffi_prep_cif failed");
+ 

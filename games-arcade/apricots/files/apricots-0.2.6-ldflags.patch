@@ -1,0 +1,20 @@
+--- apricots/Makefile.am.old	2010-10-11 15:58:18.000000000 +0200
++++ apricots/Makefile.am	2010-10-11 15:59:21.000000000 +0200
+@@ -4,7 +4,8 @@
+ ## INCLUDES were found outside kdevelop specific part
+ 
+ apricots_SOURCES = SDLfont.cpp shape.cpp setup.cpp sampleio.cpp init.cpp game.cpp finish.cpp fall.cpp drawall.cpp drak.cpp collide.cpp apricots.cpp all.cpp ai.cpp 
+-apricots_LDADD   = 
++apricots_LDADD   = $(all_libraries) 
++                                                                                
+ 
+ SUBDIRS = docs 
+ 
+@@ -68,7 +69,3 @@
+ ####### kdevelop will overwrite this part!!! (end)############
+ # set the include path found by configure
+ INCLUDES= $(all_includes)
+- 
+-# the library search path.
+-apricots_LDFLAGS = $(all_libraries) 
+-                                                                                

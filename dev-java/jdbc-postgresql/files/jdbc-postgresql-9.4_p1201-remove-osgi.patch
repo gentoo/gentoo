@@ -1,0 +1,37 @@
+--- a/build.xml	2015-02-18 17:44:58.000000000 +0100
++++ b/build.xml	2015-03-23 02:19:03.951945663 +0100
+@@ -403,34 +403,6 @@
+         <attribute name="Implementation-Vendor" value="PostgreSQL Global Development Group" />
+       </manifest>
+     </jar>
+-
+-    <!-- add OSGi meta information -->
+-    <property name="osgidir" value="${builddir}/osgi"/>
+-    <mkdir dir="${osgidir}"/>
+-
+-    <!--   create a bnd file named after the JAR file so that bnd wrap tool find it -->
+-    <echo file="${osgidir}/${artifact.version.string}.bnd">
+-Bundle-ManifestVersion: 2
+-
+-Bundle-Name: PostgreSQL JDBC Driver ${jdbc.version.upper}
+-Bundle-SymbolicName: org.postgresql.${jdbc.version}
+-Bundle-Version: ${osgi.version}
+-
+-Bundle-Vendor: PostgreSQL Global Development Group
+-Bundle-Copyright: Copyright (c) 2003-2015, PostgreSQL Global Development Group
+-Bundle-License: http://www.postgresql.org/about/licence/
+-Bundle-DocURL: http://jdbc.postgresql.org/
+-
+-Bundle-Classpath: .
+-Bundle-Activator: org.postgresql.osgi.PGBundleActivator
+-Require-Capability: osgi.ee;filter:="(&amp;(|(osgi.ee=J2SE)(osgi.ee=JavaSE))(version>=${java.specification.version}))"
+-Export-Package: org.postgresql*; version=${fullversion}
+-Import-Package: javax.sql, javax.transaction.xa, javax.naming, *;resolution:=optional
+-    </echo>
+-
+-    <!--   run wrap task from bnd -->
+-    <taskdef resource="aQute/bnd/ant/taskdef.properties" classpathref="dependency.build.classpath"/> 
+-    <bndwrap jars="${artifact.jar.build}" output="${artifact.jar}" definitions="${osgidir}"/>
+   </target>
+ 
+   <!-- create a distribution with docs, dependencies, and driver jar -->

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Haskell 98 contravariant functors
+	</longdescription>
+	<use>
+		<flag name="semigroups">You can disable the use of the `semigroups`
+          package using `-f-semigroups`. Disabling this is an unsupported
+          configuration, but it may be useful for accelerating builds in
+          sandboxes for expert users.</flag>
+		<flag name="statevar">You can disable the use of the `StateVar`
+          package using `-f-StateVar`. Disabling this is an unsupported
+          configuration, but it may be useful for accelerating builds in
+          sandboxes for expert users.</flag>
+		<flag name="tagged">You can disable the use of the `tagged` package
+          on older versons of GHC using `-f-tagged`. Disabling this is an
+          unsupported configuration, but it may be useful for accelerating
+          builds in sandboxes for expert users.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/contravariant</remote-id>
+	</upstream>
+</pkgmetadata>

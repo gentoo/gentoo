@@ -1,0 +1,11 @@
+--- src/probes/linux/RPMInfoProbe.h.old	2010-10-22 15:12:50.000000000 +0200
++++ src/probes/linux/RPMInfoProbe.h	2010-10-22 15:13:02.000000000 +0200
+@@ -36,7 +36,7 @@
+ #include <rpm/rpmlib.h>
+ #include <rpm/rpmio.h>
+ #include <rpm/rpmts.h>
+-#include <rpm/rpmdb.h>
++#include "rpmdb.h"
+ #include <rpm/header.h>
+ #include <rpm/rpmcli.h> // added for rpm query function
+ #include <rpm/rpmds.h> // added for rpm query function

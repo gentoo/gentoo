@@ -1,0 +1,10 @@
+--- game.cpp.old	2004-12-31 01:02:13.351382184 +1100
++++ game.cpp	2004-12-31 01:02:26.415396152 +1100
+@@ -8,6 +8,7 @@
+ #include <windows.h>
+ #endif
+ 
++#define GL_GLEXT_PROTOTYPES 1
+ #include <GL/gl.h>
+ #include "SDL.h"
+ #include <string.h>

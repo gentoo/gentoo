@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/447482
+
+------------------------------------------------------------------------
+r41 | jwilliams@endpoint.com | 2012-02-21 17:17:32 -0500 (Tue, 21 Feb 2012) | 5 lines
+
+Unit test updates for Python 2.7 compatibility
+
+* Add "msg" parameter to our versions of the test functions
+* Change regex to match the updated 2.7 float() ValueError response
+
+
+Index: tests/gflags_googletest.py
+===================================================================
+--- tests/gflags_googletest.py	(revision 40)
++++ tests/gflags_googletest.py	(revision 41)
+@@ -88,22 +88,22 @@ def MultiLineEqual(expected, actual):
+ 
+ 
+ class TestCase(unittest.TestCase):
+-  def assertListEqual(self, list1, list2):
++  def assertListEqual(self, list1, list2, msg=None):
+     """Asserts that, when sorted, list1 and list2 are identical."""
+     # This exists in python 2.7, but not previous versions.  Use the
+     # built-in version if possible.
+     if hasattr(unittest.TestCase, "assertListEqual"):
+-      unittest.TestCase.assertListEqual(self, Sorted(list1), Sorted(list2))
++      unittest.TestCase.assertListEqual(self, Sorted(list1), Sorted(list2), msg)
+     else:
+-      self.assertEqual(Sorted(list1), Sorted(list2))
++      self.assertEqual(Sorted(list1), Sorted(list2), msg)
+ 
+-  def assertMultiLineEqual(self, expected, actual):
++  def assertMultiLineEqual(self, expected, actual, msg=None):
+     # This exists in python 2.7, but not previous versions.  Use the
+     # built-in version if possible.
+     if hasattr(unittest.TestCase, "assertMultiLineEqual"):
+-      unittest.TestCase.assertMultiLineEqual(self, expected, actual)
++      unittest.TestCase.assertMultiLineEqual(self, expected, actual, msg)
+     else:
+-      self.assertTrue(MultiLineEqual(expected, actual))
++      self.assertTrue(MultiLineEqual(expected, actual), msg)
+ 
+   def assertRaisesWithRegexpMatch(self, exception, regexp, fn, *args, **kwargs):
+     try:
+Index: tests/gflags_unittest.py
+===================================================================
+--- tests/gflags_unittest.py	(revision 40)
++++ tests/gflags_unittest.py	(revision 41)
+@@ -814,7 +814,7 @@ class MultiNumericalFlagsTest(googletest
+ 
+     self.assertRaisesWithRegexpMatch(
+         gflags.IllegalFlagValue,
+-        'flag --m_float2=abc: invalid literal for float\(\): abc',
++        'flag --m_float2=abc: (invalid literal for float\(\)||could not convert string to float): abc',
+         gflags.DEFINE_multi_float, 'm_float2', ['abc'], 'desc')
+ 
+     # Test non-parseable command line values.
+@@ -831,7 +831,7 @@ class MultiNumericalFlagsTest(googletest
+     argv = ('./program', '--m_float2=def')
+     self.assertRaisesWithRegexpMatch(
+         gflags.IllegalFlagValue,
+-        'flag --m_float2=def: invalid literal for float\(\): def',
++        'flag --m_float2=def: (invalid literal for float\(\)||could not convert string to float): def',
+         FLAGS, argv)
+ 
+ 
+
+------------------------------------------------------------------------

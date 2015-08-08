@@ -1,0 +1,12 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+eblit-perl-pkg_postrm(){
+	dual_scripts
+
+#	if [[ -e ${ARCH_LIB}/Encode/ConfigLocal.pm ]] ; then
+#		ebegin "Removing ConfigLocal.pm"
+#		rm "${ARCH_LIB}/Encode/ConfigLocal.pm"
+#	fi
+}

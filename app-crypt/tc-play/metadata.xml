@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>crypto</herd>
+  <use>
+    <flag name="openssl">
+      Use openssl crypto backend.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">bwalex/tc-play</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,52 @@
+From 1cb0ea6afd4bb76e5a1d759efe27ea0f18306a82 Mon Sep 17 00:00:00 2001
+From: Lee Johnson <lee@givengain.ch>
+Date: Thu, 1 Jan 2015 22:33:54 +0000
+Subject: [PATCH] resolve #1 - fix warnings new since perl 5.21.2
+
+Redundant argument in %s - this is because the various calls to the
+sprintf function offset the arrays by 1 (since the first element of
+the array is the sprintf string) but use @_ (the number of elements
+in the array) in the range: 1 .. @_
+
+since it's offset by 1 we are going beyond the end of the array and
+so sprintf consequently warns that we sent more arguments than it
+expected. fix this by using @_ -1 in the range (number of elements
+in the array minus 1)
+---
+ lib/Exception/Base.pm | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/Exception/Base.pm b/lib/Exception/Base.pm
+index 8dce19f..096e2a5 100644
+--- a/lib/Exception/Base.pm
++++ b/lib/Exception/Base.pm
+@@ -1362,7 +1362,7 @@ sub matches {   ## no critic qw(ProhibitExcessComplexity)
+                     local $_ = ref $self->{$key} eq 'ARRAY'
+                                ? sprintf(
+                                      @{$self->{$key}}[0],
+-                                     @{$self->{$key}}[1..@{$self->{$key}}]
++                                     @{$self->{$key}}[1..@{$self->{$key}}-1]
+                                  )
+                                : $self->{$key};
+                     if (ref $arrval eq 'CODE') {
+@@ -1393,7 +1393,7 @@ sub matches {   ## no critic qw(ProhibitExcessComplexity)
+             local $_ = ref $self->{$key} eq 'ARRAY'
+                        ? sprintf(
+                              @{$self->{$key}}[0],
+-                             @{$self->{$key}}[1..@{$self->{$key}}]
++                             @{$self->{$key}}[1..@{$self->{$key}}-1]
+                          )
+                        : $self->{$key};
+ 
+@@ -1613,7 +1613,7 @@ sub _string_attributes {
+     my ($self) = @_;
+ 
+     return map { ref $_ eq 'ARRAY'
+-                 ? sprintf(@$_[0], @$_[1..@$_])
++                 ? sprintf(@$_[0], @$_[1..@$_-1])
+                  : $_ }
+            grep { defined $_ and (ref $_ or $_ ne '') }
+            map { $self->{$_} }
+-- 
+2.4.5
+

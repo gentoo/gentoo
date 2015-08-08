@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer>
+		<email>alunduil@gentoo.org</email>
+		<name>Alex Brandt</name>
+	</maintainer>
+	<longdescription lang="en">
+    Python SDK for OpenStack/Rackspace APIs
+	pyrax should work with most OpenStack-based cloud deployments,
+	though it specifically targets the Rackspace public cloud.
+  </longdescription>
+	<upstream>
+		<remote-id type="pypi">pyrax</remote-id>
+		<remote-id type="github">rackspace/pyrax</remote-id>
+	</upstream>
+</pkgmetadata>

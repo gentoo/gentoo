@@ -1,0 +1,16 @@
+ src/main.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index f030fd5..5f8290e 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -702,7 +702,7 @@ input_init(const struct arg *operand, struct stat *sbuf)
+       return -1;
+     }
+ 
+-    if (OM_REGF == outmode && !S_ISREG(sbuf->st_mode)) {
++    if (!decompress && OM_REGF == outmode && !S_ISREG(sbuf->st_mode)) {
+       warn("skipping \"%s\": not a regular file", operand->val);
+       return -1;
+     }

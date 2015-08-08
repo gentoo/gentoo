@@ -1,0 +1,11 @@
+--- julius-4.2.2/jcontrol/Makefile.in
++++ julius-4.2.2/jcontrol/Makefile.in
+@@ -14,7 +14,7 @@
+ CC=@CC@
+ CFLAGS=@CFLAGS@
+ CPPFLAGS=@CPPFLAGS@ @DEFS@
+-LDFLAGS=@LIBS@ @EXTRALIB@
++LDFLAGS += @LIBS@ @EXTRALIB@
+ RM=@RM@ -f
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@

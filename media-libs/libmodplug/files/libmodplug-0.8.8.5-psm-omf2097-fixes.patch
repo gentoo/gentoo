@@ -1,0 +1,134 @@
+diff -uNr libmodplug-0.8.8.5.ORIG/src/load_psm.cpp libmodplug-0.8.8.5/src/load_psm.cpp
+--- libmodplug-0.8.8.5.ORIG/src/load_psm.cpp	2014-08-04 22:25:14.743262000 +0100
++++ libmodplug-0.8.8.5/src/load_psm.cpp	2014-08-04 22:26:56.907267088 +0100
+@@ -286,66 +286,49 @@
+ 		if ((Patterns[nPat] = AllocatePattern(nRows, m_nChannels)) == NULL) break;
+ 		MODCOMMAND *m = Patterns[nPat];
+ 		BYTE *p = pPsmPat->data;
++		MODCOMMAND *sp, dummy;
+ 		UINT pos = 0;
+ 		UINT row = 0;
+-		UINT oldch = 0;
+-		BOOL bNewRow = FALSE;
++		UINT rowlim;
+ 	#ifdef PSM_LOG
+ 		Log("Pattern %d at offset 0x%04X\n", nPat, (DWORD)(p - (BYTE *)lpStream));
+ 	#endif
++		UINT flags, ch;
++		rowlim = bswapLE16(pPsmPat->reserved1)-2;
+ 		while ((row < nRows) && (pos+1 < len))
+ 		{
+-			UINT flags = p[pos++];
+-			UINT ch = p[pos++];
+-			
+-		#ifdef PSM_LOG
+-			//Log("flags+ch: %02X.%02X\n", flags, ch);
+-		#endif
+-			if (((flags & 0xf0) == 0x10) && (ch <= oldch) /*&& (!bNewRow)*/)
+-			{
+-				if ((pos+1<len) && (!(p[pos] & 0x0f)) && (p[pos+1] < m_nChannels))
+-				{
+-				#ifdef PSM_LOG
+-					//if (!nPat) Log("Continuing on new row\n");
+-				#endif
+-					row++;
+-					m += m_nChannels;
+-					oldch = ch;
+-					continue;
+-				}
+-			}
+-			if ((pos >= len) || (row >= nRows)) break;
+-			if (!(flags & 0xf0))
+-			{
+-			#ifdef PSM_LOG
+-				//if (!nPat) Log("EOR(%d): %02X.%02X\n", row, p[pos], p[pos+1]);
+-			#endif
+-				row++;
++			if ((pos+1) >= rowlim) {
++				pos = rowlim;
++				rowlim = (((int)p[pos+1])<<8)
++					| ((int)p[pos+0]);
+ 				m += m_nChannels;
+-				bNewRow = TRUE;
+-				oldch = ch;
+-				continue;
+-			}
+-			bNewRow = FALSE;
+-			if (ch >= m_nChannels)
+-			{
+-			#ifdef PSM_LOG
+-				if (!nPat) Log("Invalid channel row=%d (0x%02X.0x%02X)\n", row, flags, ch);
+-			#endif
+-				ch = 0;
++				row++;
++				rowlim += pos;
++				pos += 2;
+ 			}
++			flags = p[pos++];
++			ch = p[pos++];
++			if (ch >= m_nChannels) {
++				sp = &dummy;
++                        } else {
++				sp = &m[ch];
++                        }
+ 			// Note + Instr
++                        if ((flags & 0x80) && (pos+1 < len))
++                        {
++                                UINT note = p[pos++];
++                                note = (note>>4)*12+(note&0x0f)+12+1;
++                                if (note > 0x80) note = 0;
++				m[ch].note = note;
++                        }
+ 			if ((flags & 0x40) && (pos+1 < len))
+ 			{
+-				UINT note = p[pos++];
+ 				UINT nins = p[pos++];
+ 			#ifdef PSM_LOG
+ 				//if (!nPat) Log("note+ins: %02X.%02X\n", note, nins);
+ 				if ((!nPat) && (nins >= m_nSamples)) Log("WARNING: invalid instrument number (%d)\n", nins);
+ 			#endif
+-				if ((note) && (note < 0x80)) note = (note>>4)*12+(note&0x0f)+12+1;
+ 				m[ch].instr = samplemap[nins];
+-				m[ch].note = note;
+ 			}
+ 			// Volume
+ 			if ((flags & 0x20) && (pos < len))
+@@ -362,13 +345,29 @@
+ 				switch(command)
+ 				{
+ 				// 01: fine volslide up
+-				case 0x01:	command = CMD_VOLUMESLIDE; param |= 0x0f; break;
++				case 0x01:	command = CMD_VOLUMESLIDE; param |= 0x0f;
++						if (param == 15) param=31;
++						break;
++                                // 02: volslide up
++                                case 0x02:      command = CMD_VOLUMESLIDE; param>>=1; param<<=4; break;
++                                // 03: fine volslide down
++                                case 0x03:	command = CMD_VOLUMESLIDE; param>>=4; param |= 0xf0;
++						if (param == 240) param=241;
++						break;
+ 				// 04: fine volslide down
+ 				case 0x04:	command = CMD_VOLUMESLIDE; param>>=4; param |= 0xf0; break;
+ 				// 0C: portamento up
+ 				case 0x0C:	command = CMD_PORTAMENTOUP; param = (param+1)/2; break;
+ 				// 0E: portamento down
+ 				case 0x0E:	command = CMD_PORTAMENTODOWN; param = (param+1)/2; break;
++				// 0F: tone portamento
++				case 0x0F:	command = CMD_TONEPORTAMENTO; param = param/4; break;
++				// 15: vibrato
++                                case 0x15:	command = CMD_VIBRATO; break;
++				// 29: sample offset
++				case 0x29:	pos += 2; break;
++				// 2A: retrigger note
++				case 0x2A:	command = CMD_RETRIG; break;
+ 				// 33: Position Jump
+ 				case 0x33:	command = CMD_POSITIONJUMP; break;
+ 				// 34: Pattern break
+@@ -387,7 +386,6 @@
+ 				m[ch].command = (BYTE)command;
+ 				m[ch].param = (BYTE)param;
+ 			}
+-			oldch = ch;
+ 		}
+ 	#ifdef PSM_LOG
+ 		if (pos < len)

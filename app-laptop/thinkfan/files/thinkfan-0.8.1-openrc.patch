@@ -1,0 +1,11 @@
+--- thinkfan-0.8.1/rcscripts/thinkfan.gentoo
++++ thinkfan-0.8.1/rcscripts/thinkfan.gentoo
+@@ -11,7 +11,7 @@
+ 
+ start() {
+ 	ebegin "Starting thinkfan"
+-	start-stop-daemon --start --exec /usr/sbin/thinkfan -- -q -s5
++	start-stop-daemon --start --exec /usr/sbin/thinkfan -- -q -s5 -c /etc/thinkfan.conf
+ 	eend $?
+ }
+ 

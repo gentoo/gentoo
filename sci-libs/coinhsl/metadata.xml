@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  HSL (formerly the Harwell Subroutine Library) is a collection of
+  state-of-the-art packages for large-scale scientific computation
+  such as the solution of sparse linear systems of equations and
+  sparse eigenvalue problems. This package is specific as a plugin for
+  Ipopt.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnome</herd>
+	<use>
+		<flag name="http">Enable webservice integration through <pkg>net-libs/libsoup</pkg></flag>
+		<flag name="json">Compile code that uses the libjson-glib library</flag>
+		<flag name="libsecret">Enable libsecret support to store login credentials</flag>
+		<flag name="slideshow">Enable slideshow plugin</flag>
+		<flag name="webp">Enable support for webp image format</flag>
+	</use>
+</pkgmetadata>

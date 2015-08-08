@@ -1,0 +1,13 @@
+--- calibre-0.8.60+dfsg.orig/src/calibre/gui2/main.py	2012-07-20 06:26:28.000000000 +0200
++++ calibre-0.8.60+dfsg/src/calibre/gui2/main.py	2012-07-21 17:53:13.944924329 +0200
+@@ -34,8 +34,8 @@
+                       help=_('Start minimized to system tray.'))
+     parser.add_option('-v', '--verbose', default=0, action='count',
+                       help=_('Log debugging information to console'))
+-    parser.add_option('--no-update-check', default=False, action='store_true',
+-            help=_('Do not check for updates'))
++    parser.add_option('--update-check', dest='no_update_check', default=True, action='store_false',
++            help=_('Check for updates'))
+     parser.add_option('--ignore-plugins', default=False, action='store_true',
+             help=_('Ignore custom plugins, useful if you installed a plugin'
+                 ' that is preventing calibre from starting'))

@@ -1,0 +1,196 @@
+From 3c6f698c12f455661807c4115feaa73007fc33d1 Mon Sep 17 00:00:00 2001
+From: Dennis Kasprzyk <onestone@compiz.org>
+Date: Mon, 06 Aug 2012 18:23:17 +0000
+Subject: KDE 4.9 support.
+
+Little modification for compatibility with KDE 4.8 patch was added by Sergey Popov
+
+---
+diff --git a/kde/window-decorator-kde4/window.cpp b/kde/window-decorator-kde4/window.cpp
+index a65f99f..78d1a47 100644
+--- a/kde/window-decorator-kde4/window.cpp
++++ b/kde/window-decorator-kde4/window.cpp
+@@ -768,6 +768,22 @@ KWD::Window::transparentRect () const
+     return QRect ();
+ }
+ 
++KDecorationDefines::WindowOperation
++KWD::Window::buttonToWindowOperation(Qt::MouseButtons button)
++{
++    Options::MouseCommand com = buttonToCommand (button);
++
++    if (com == Options::MouseOperationsMenu)
++	return KDecorationDefines::OperationsOp;
++
++    return KDecorationDefines::NoOp;
++}
++
++
++#endif
++
++#if KDE_IS_VERSION(4,3,90) && !KDE_IS_VERSION(4, 8, 80)
++
+ bool
+ KWD::Window::isClientGroupActive ()
+ {
+@@ -837,19 +853,82 @@ KWD::Window::displayClientMenu (int index, const QPoint& pos)
+     showWindowMenu (pos);
+ }
+ 
+-KDecorationDefines::WindowOperation
+-KWD::Window::buttonToWindowOperation(Qt::MouseButtons button)
++#endif
++
++#if KDE_IS_VERSION(4,8,80)
++QString 
++KWD::Window::caption(int idx) const
+ {
+-    Options::MouseCommand com = buttonToCommand (button);
++    return mName;
++}
+ 
+-    if (com == Options::MouseOperationsMenu)
+-	return KDecorationDefines::OperationsOp;
++void
++KWD::Window::closeTab(long id)
++{
++    closeWindow ();
++}
+ 
+-    return KDecorationDefines::NoOp;
++void
++KWD::Window::closeTabGroup()
++{
++    closeWindow ();
++}
++
++long
++KWD::Window::currentTabId() const
++{
++     return (long) mClientId;
++}
++
++QIcon
++KWD::Window::icon(int idx) const
++{
++    QIcon icon (mIcon);
++    icon.addPixmap (mMiniIcon);
++    return icon;
++}
++
++void
++KWD::Window::setCurrentTab(long id)
++{
++}
++
++void
++KWD::Window::showWindowMenu(const QPoint& pos, long id)
++{
++  showWindowMenu (pos);
++}
++
++void
++KWD::Window::tab_A_before_B(long A, long B)
++{
++}
++
++void
++KWD::Window::tab_A_behind_B(long A, long B)
++{
++}
++
++int
++KWD::Window::tabCount() const
++{
++    return 1;
++}
++
++long
++KWD::Window::tabId(int idx) const
++{
++    return (long) mClientId;
++}
++
++void
++KWD::Window::untab(long id, const QRect& newGeom)
++{
+ }
+ 
+ #endif
+ 
++
+ void
+ KWD::Window::createDecoration (void)
+ {
+@@ -987,14 +1066,14 @@ KWD::Window::updateBlurProperty (int topOffset,
+ 				 int leftOffset,
+ 				 int rightOffset)
+ {
+-    Atom    atom = Atoms::compizWindowBlurDecor;
+-    QRegion topQRegion, bottomQRegion, leftQRegion, rightQRegion;
+-    ::Region  topRegion = NULL;
+-    ::Region  bottomRegion = NULL;
+-    ::Region  leftRegion = NULL;
+-    ::Region  rightRegion = NULL;
+-    int     size = 0;
+-    int     w, h;
++    Atom      atom = Atoms::compizWindowBlurDecor;
++    QRegion   topQRegion, bottomQRegion, leftQRegion, rightQRegion;
++    _XRegion *topRegion = NULL;
++    _XRegion *bottomRegion = NULL;
++    _XRegion *leftRegion = NULL;
++    _XRegion *rightRegion = NULL;
++    int       size = 0;
++    int       w, h;
+ 
+     w = mGeometry.width () + mBorder.left + mBorder.right;
+     h = mGeometry.height () + mBorder.top + mBorder.bottom;
+diff --git a/kde/window-decorator-kde4/window.h b/kde/window-decorator-kde4/window.h
+index c2b274b..1ddfbd1 100644
+--- a/kde/window-decorator-kde4/window.h
++++ b/kde/window-decorator-kde4/window.h
+@@ -114,7 +114,10 @@ class Window: public QObject, public KDecorationBridgeUnstable {
+ 	virtual bool compositingActive () const;
+ #if KDE_IS_VERSION(4,3,90)
+ 	virtual QRect transparentRect () const;
+-
++	virtual WindowOperation
++	    buttonToWindowOperation(Qt::MouseButtons button);
++#endif
++#if KDE_IS_VERSION(4,3,90) && !KDE_IS_VERSION(4, 8, 80)
+ 	virtual bool isClientGroupActive ();
+ 	virtual QList<ClientGroupItem> clientGroupItems () const;
+ 	virtual long itemId (int index);
+@@ -126,10 +129,27 @@ class Window: public QObject, public KDecorationBridgeUnstable {
+ 	virtual void closeClientGroupItem (int index);
+ 	virtual void closeAllInClientGroup ();
+ 	virtual void displayClientMenu (int index, const QPoint& pos);
+-
+-	virtual WindowOperation
+-	    buttonToWindowOperation(Qt::MouseButtons button);
++	
++#endif
++#if KDE_IS_VERSION(4,8,80)
++	using KDecorationBridge::caption;
++	virtual QString caption(int idx) const;
++	virtual void closeTab(long id);
++	virtual void closeTabGroup();
++	virtual long currentTabId() const;
++	using KDecorationBridge::icon;
++	virtual QIcon icon(int idx) const;
++	virtual void setCurrentTab(long id);
++	using KDecorationBridge::showWindowMenu;
++	virtual void showWindowMenu(const QPoint& pos, long id);
++	virtual void tab_A_before_B(long A, long B);
++	virtual void tab_A_behind_B(long A, long B);
++	virtual int tabCount() const;
++	virtual long tabId(int idx) const;
++	virtual void untab(long id, const QRect& newGeom);
+ #endif
++	
++
+ 	virtual bool eventFilter (QObject* o, QEvent* e);
+ 
+ 	void handleActiveChange (void);
+--
+cgit v0.8.3.1-30-gff3a

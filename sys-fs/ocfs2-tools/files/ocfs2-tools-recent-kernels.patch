@@ -1,0 +1,19 @@
+# git diff  include/ocfs2-kernel/ocfs2_fs.h
+diff --git a/include/ocfs2-kernel/ocfs2_fs.h b/include/ocfs2-kernel/ocfs2_fs.h
+index 3eafb07..7bb954a 100644
+--- a/include/ocfs2-kernel/ocfs2_fs.h
++++ b/include/ocfs2-kernel/ocfs2_fs.h
+@@ -1681,11 +1681,11 @@ static inline int ocfs2_sprintf_system_inode_name(char *buf, int len,
+ 	return chars;
+ }
+ 
+-static inline void ocfs2_set_de_type(struct ocfs2_dir_entry *de,
++/*static inline void ocfs2_set_de_type(struct ocfs2_dir_entry *de,
+ 				    umode_t mode)
+ {
+ 	de->file_type = ocfs2_type_by_mode[(mode & S_IFMT)>>S_SHIFT];
+-}
++}*/
+ 
+ static inline int ocfs2_gd_is_discontig(struct ocfs2_group_desc *gd)
+ {

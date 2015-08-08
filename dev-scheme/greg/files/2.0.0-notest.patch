@@ -1,0 +1,12 @@
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 3cda45d..c61b34e 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -23,7 +23,6 @@
+ 
+ 
+ all:
+-	./test.sh
+ 
+ check:
+ 	./test.sh

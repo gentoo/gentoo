@@ -1,0 +1,15 @@
+Fix buffer overflow
+
+http://bugs.gentoo.org/show_bug.cgi?id=339901
+
+--- GUI/xephem/tools/lx200xed/liblx200.c
++++ GUI/xephem/tools/lx200xed/liblx200.c
+@@ -855,7 +855,7 @@
+      return(LX200_FALSE);  /*Probably ought to verify all characters are acceptable*/
+    szCmd[1]='L' + iSite;
+    szCmd[2]='\0';
+-   snprintf(szSite,6,"%3s",buf);
++   snprintf(szSite,4,"%3s",buf);
+    return(lx200_set_generic(fd,szCmd,szSite));   
+ }
+ 

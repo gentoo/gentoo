@@ -1,0 +1,43 @@
+diff -uNr src.orig/Makefile src/Makefile
+--- src.orig/Makefile	2013-10-10 19:35:27.354179645 +0100
++++ src/Makefile	2013-10-10 19:38:07.344184547 +0100
+@@ -8,11 +8,9 @@
+ #
+ FDISK=/dev/fd0
+ 
+-AS=as -32
+-CC=gcc
++ASFLAGS=-32
+ 
+-CFLAGS= -Wall -march=i486 -m32 -O1 -fomit-frame-pointer -fno-builtin \
+-	-ffreestanding -fPIC $(SMP_FL) -fno-stack-protector
++CFLAGS= -Wall -march=i486 -m32 -O1 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC -fno-stack-protector $(SMP_FL)
+ 
+ OBJS= head.o reloc.o main.o test.o init.o lib.o patn.o screen_buffer.o \
+       config.o memsize.o error.o smp.o cpuid.o vmem.o random.o
+@@ -23,7 +21,7 @@
+ # symbols and then link it dynamically so I have full
+ # relocation information
+ memtest_shared: $(OBJS) memtest_shared.lds Makefile
+-	$(LD) --warn-constructors --warn-common -static -T memtest_shared.lds \
++	$(LD) --warn-constructors --warn-common -static -T memtest_shared.lds -m elf_i386 \
+ 	-o $@ $(OBJS) && \
+ 	$(LD) -shared -Bsymbolic -T memtest_shared.lds -o $@ $(OBJS)
+ 
+@@ -50,7 +48,7 @@
+ 	$(CC) -c $(CFLAGS) -fno-strict-aliasing reloc.c
+ 
+ test.o: test.c
+-	$(CC) -c -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding test.c
++	$(CC) -c $(CFLAGS:-fPIC=) -o $@ $<
+ 
+ random.o: random.c
+ 	$(CC) -c -Wall -march=i486 -m32 -O3 -fomit-frame-pointer -fno-builtin -ffreestanding random.c
+@@ -72,3 +70,7 @@
+ dos: all
+ 	cat mt86+_loader memtest.bin > memtest.exe
+ 
++head.o: head.s
++bootsect.o: bootsect.s
++setup.o: setup.s
++

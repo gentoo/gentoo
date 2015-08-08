@@ -1,0 +1,21 @@
+diff -ur xar-1.5.2.orig/lib/Makefile.inc.in xar-1.5.2/lib/Makefile.inc.in
+--- xar-1.5.2.orig/lib/Makefile.inc.in	2007-12-29 20:49:57.000000000 +0200
++++ xar-1.5.2/lib/Makefile.inc.in	2010-04-07 01:18:59.027890429 +0300
+@@ -134,7 +134,7 @@
+ $(LIBRXAR_S) : $(LIBXAR_SRCS:@srcroot@%.c=@objroot@%.o)
+ 	@mkdir -p $(@D)
+ ifeq (elf, @abi@)
+-	$(CC) -shared -Wl,-soname,$(LIBXAR_SNAME) -o $@ $+ @LIBS@
++	$(CC) -shared -Wl,-soname,$(LIBXAR_SNAME) -o $@ $+ $(LDFLAGS) @LIBS@
+ endif
+ ifeq (macho, @abi@)
+ 	$(CC) -dynamiclib -compatibility_version @LIB_REV@ -current_version @LIB_REV@ -install_name @abs_objroot@$(LIBRXAR_S) -o $@ $+ $(LDFLAGS) @LIBS@
+@@ -150,7 +150,7 @@
+ $(LIBXAR_S) : $(LIBXAR_SRCS:@srcroot@%.c=@objroot@%.o)
+ 	@mkdir -p $(@D)
+ ifeq (elf, @abi@)
+-	$(CC) -shared -Wl,-soname,$(LIBXAR_SNAME) -o $@ $+ @LIBS@
++	$(CC) -shared -Wl,-soname,$(LIBXAR_SNAME) -o $@ $+ $(LDFLAGS) @LIBS@
+ endif
+ ifeq (macho, @abi@)
+ 	$(CC) -dynamiclib -compatibility_version @LIB_REV@ -current_version @LIB_REV@ -install_name $(LIBDIR)/$(LIBXAR_SNAME) -o $@ $+ $(LDFLAGS) @LIBS@

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <herd>python</herd>
+  <longdescription lang="en">
+  DyND-Python, a component of the Blaze project, is the Python
+  exposure of the DyND dynamic multi-dimensional array library.
+</longdescription>
+  <upstream>
+    <remote-id type="github">ContinuumIO/dynd-python</remote-id>
+  </upstream>
+</pkgmetadata>

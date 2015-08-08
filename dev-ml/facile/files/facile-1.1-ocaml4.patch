@@ -1,0 +1,29 @@
+Index: facile-1.1/src/facile.mli
+===================================================================
+--- facile-1.1.orig/src/facile.mli
++++ facile-1.1/src/facile.mli
+@@ -127,7 +127,7 @@ module Data :
+       module Hashtbl :
+ 	  sig
+ 	    type ('a, 'b) t
+-	    val create : int -> ('a, 'b) t
++	    val create : ?random:bool -> int -> ('a, 'b) t
+ 	    val get : ('a, 'b) t -> ('a, 'b) Hashtbl.t
+ 	    val add : ('a, 'b) t -> 'a -> 'b -> unit
+ 	    val find : ('a, 'b) t -> 'a -> 'b
+Index: facile-1.1/src/fcl_data.cmi
+===================================================================
+Binary files facile-1.1.orig/src/fcl_data.cmi and facile-1.1/src/fcl_data.cmi differ
+Index: facile-1.1/src/fcl_data.mli
+===================================================================
+--- facile-1.1.orig/src/fcl_data.mli
++++ facile-1.1/src/fcl_data.mli
+@@ -23,7 +23,7 @@ end
+ 
+ module Hashtbl : sig
+   type ('a, 'b) t
+-  val create : int -> ('a, 'b) t
++  val create : ?random:bool -> int -> ('a, 'b) t
+   val get : ('a, 'b) t -> ('a, 'b) Hashtbl.t
+   val add : ('a, 'b) t -> 'a -> 'b -> unit
+   val find : ('a, 'b) t -> 'a -> 'b

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">
+  NetworkX is a Python-based package for the creation, manipulation, and
+  study of the structure, dynamics, and functions of complex networks.
+  The structure of a graph or network is encoded in the edges (connections,
+  links, ties, arcs, bonds) between nodes (vertices, sites, actors). If
+  unqualified, by graph we mean a simple undirected graph, i.e. no
+  self-loops and no multiple edges are allowed. By a network we usually
+  mean a graph with weights (fields, properties) on nodes and/or edges.
+  The potential audience for NetworkX includes: mathematicians, physicists,
+  biologists, computer scientists, social scientists.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">networkx</remote-id>
+    <remote-id type="github">networkx/networkx</remote-id>
+  </upstream>
+</pkgmetadata>

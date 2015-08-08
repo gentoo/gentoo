@@ -1,0 +1,36 @@
+--- slrn/src/Makefile.in.orig
++++ slrn/src/Makefile.in
+@@ -152,7 +152,7 @@
+ 	$(MKINSDIR) $(DEST_SLRN_LIB_DIR)
+ 	$(MKINSDIR) $(DEST_SLRN_SLANG_DIR)
+ #	$(MKINSDIR) $(DEST_CONFDIR)
+-installdocs:
++installdocs: installdirs
+ 	@for i in $(MAN_FILES); \
+ 	do \
+ 		echo $(INSTALL_DATA) $$i $(DEST_MANDIR)/man1/; \
+@@ -185,7 +185,7 @@
+ 		  exit 1; \
+ 		fi; \
+ 	done
+-installslang:
++installslang: installdirs
+ 	@files=$(CONF_FILES); \
+ 	for i in $$files; \
+ 	do \
+@@ -203,11 +203,11 @@
+ 		  exit 1; \
+ 		fi; \
+ 	done
+-installlocales:
++installlocales: installdirs
+ 	cd ../po; $(MAKE) DESTDIR=$(DESTDIR) LOCALEDIR=$(LOCALEDIR) install 
+-installbin:
+-	$(INSTALL) -m 755 -s $(OBJDIR)/slrn $(DEST_BINDIR)
+-	-$(INSTALL) -m 755 -s $(OBJDIR)/slrnpull $(DEST_BINDIR)
++installbin: installdirs
++	$(INSTALL) -m 755 $(OBJDIR)/slrn $(DEST_BINDIR)
++	-$(INSTALL) -m 755 $(OBJDIR)/slrnpull $(DEST_BINDIR)
+ install: all installdirs installbin installdocs installslang installlocales
+ 
+ # The symlinks target is for my own private use.  It simply creates the object

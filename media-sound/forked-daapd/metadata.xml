@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>erikmack@gmail.com</email>
+		<name>Erik Mackdanz</name>
+	</maintainer>
+	<maintainer>
+		<email>alunduil@gentoo.org</email>
+		<name>Alex Brandt</name>
+	</maintainer>
+	<longdescription>
+		This is a much updated version of the original
+		forked-daapd 0.19 (non-gcd), a Linux/FreeBSD DAAP
+		(iTunes) media server with support for AirPlay
+		devices, Apple Remote (and compatibles), Spotify and
+		internet radio.
+	</longdescription>
+	<use>
+		<flag name="itunes">Enable support for iTunes library XML</flag>
+		<flag name="lastfm">Enable LastFM scrobbling support</flag>
+		<flag name="mpd">Enable streaming to mpd</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ejurgensen/forked-daapd</remote-id>
+	</upstream>
+</pkgmetadata>

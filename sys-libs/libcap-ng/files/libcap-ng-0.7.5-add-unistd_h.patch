@@ -1,0 +1,20 @@
+utils/proc-llist.c: include <unistd.h>
+
+proc-llist.c references pid_t and uid_t types but does not include <unistd.h>.  This
+works on glibc and uClibc because of the way their headers stack, but on musl (and
+possible other libc) this fails.  POSIX mandates that <unistd.h> provides these.  See
+Issue 6 at http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/unistd.h.html.
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+
+diff -Nuar libcap-ng-0.7.5.orig/utils/proc-llist.c libcap-ng-0.7.5/utils/proc-llist.c
+--- libcap-ng-0.7.5.orig/utils/proc-llist.c	2015-02-18 17:13:33.000000000 -0500
++++ libcap-ng-0.7.5/utils/proc-llist.c	2015-05-25 13:39:32.196624248 -0400
+@@ -24,6 +24,7 @@
+ #include "config.h"
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include "proc-llist.h"
+ 
+ void list_create(llist *l)

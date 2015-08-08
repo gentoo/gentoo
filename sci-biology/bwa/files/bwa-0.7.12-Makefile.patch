@@ -1,0 +1,27 @@
+--- Makefile
++++ Makefile
+@@ -1,8 +1,8 @@
+-CC=			gcc
++CC?=			gcc
+ #CC=			clang --analyze
+-CFLAGS=		-g -Wall -Wno-unused-function -O2
++CFLAGS?=		-g -Wall -Wno-unused-function -O2
+ WRAP_MALLOC=-DUSE_MALLOC_WRAPPERS
+-AR=			ar
++AR?=			ar
+ DFLAGS=		-DHAVE_PTHREAD $(WRAP_MALLOC)
+ LOBJS=		utils.o kthread.o kstring.o ksw.o bwt.o bntseq.o bwa.o bwamem.o bwamem_pair.o bwamem_extra.o malloc_wrap.o
+ AOBJS=		QSufSort.o bwt_gen.o bwashm.o bwase.o bwaseqio.o bwtgap.o bwtaln.o bamlite.o \
+@@ -26,10 +26,10 @@
+ all:$(PROG)
+ 
+ bwa:libbwa.a $(AOBJS) main.o
+-		$(CC) $(CFLAGS) $(DFLAGS) $(AOBJS) main.o -o $@ -L. -lbwa $(LIBS)
++		$(CC) $(CFLAGS) $(LDFLAGS) $(DFLAGS) $(AOBJS) main.o -o $@ -L. -lbwa $(LIBS)
+ 
+ bwamem-lite:libbwa.a example.o
+-		$(CC) $(CFLAGS) $(DFLAGS) example.o -o $@ -L. -lbwa $(LIBS)
++		$(CC) $(CFLAGS) $(LDFLAGS) $(DFLAGS) example.o -o $@ -L. -lbwa $(LIBS)
+ 
+ libbwa.a:$(LOBJS)
+ 		$(AR) -csru $@ $(LOBJS)

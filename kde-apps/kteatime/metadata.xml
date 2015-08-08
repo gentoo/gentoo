@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<longdescription>Kteatime alerts when the given time is over.
+	Different times for black tea, green tea, pizza and more.</longdescription>
+</pkgmetadata>

@@ -1,0 +1,84 @@
+diff -r 4d5e4fd7c1c2 CHANGELOG
+--- a/CHANGELOG	Mon Aug 11 20:56:45 2014 -0500
++++ b/CHANGELOG	Tue Feb 03 00:01:20 2015 +0100
+@@ -1,3 +1,7 @@
++Development:
++  - Add support for EdDSA key using Ed25519 signature scheme
++    (http://www.ietf.org/id/draft-koch-eddsa-for-openpgp-00.txt)
++
+ 1.1.5
+   - Fixes for machine-readable indices. Key expiration times are now read
+     from self-signatures on the key's UIDs. In addition, instead of 8-digit
+diff -r 4d5e4fd7c1c2 common.ml
+--- a/common.ml	Mon Aug 11 20:56:45 2014 -0500
++++ b/common.ml	Tue Feb 03 00:01:20 2015 +0100
+@@ -47,7 +47,7 @@
+ (* for Release versions, COMMONCAMLFLAGS in Makefile should include          *)
+ (* '-warn-error a'. Development work should use '-warn-error A' for stricter *)
+ (* language checking. This affects the Ocaml compiler beginning with v4.01.0 *)
+-let version_suffix = "" (* + for development branch *)
++let version_suffix = "+" (* + for development branch *)
+ let compatible_version_tuple = (0,1,5)
+ let version =
+   let (maj_version,min_version,release) = version_tuple in
+diff -r 4d5e4fd7c1c2 packet.ml
+--- a/packet.ml	Mon Aug 11 20:56:45 2014 -0500
++++ b/packet.ml	Tue Feb 03 00:01:20 2015 +0100
+@@ -163,6 +163,7 @@
+   | 19 -> "ECDSA (ECC)" (* RFC 6637 *)
+   | 20 -> "Elgamal (Encrypt or Sign)"
+   | 21 -> "Reserved for Diffie-Hellman (X9.42) as defined for IETF-S/MIME"
++  | 22 -> "EdDSA"
+   | x when x >= 100 && x <= 110 -> "Private/Experimental algorithm."
+   | _ -> "Unknown Public Key Algorithm"
+ 
+@@ -252,10 +253,11 @@
+   | 2 -> "r"  (* RSA encrypt *)
+   | 3 -> "s"  (* RSA sign *)
+   | 16 -> "g"  (* ElGamal encrypt *)
+-  | 20 -> "G"  (* ElGamal sign and encrypt *)
+   | 17 -> "D"  (* DSA *)
+   | 18 -> "e"  (* ECDH *)
+   | 19 -> "E"  (* ECDSA *)
++  | 20 -> "G"  (* ElGamal sign and encrypt *)
++  | 22 -> "E"  (* EdDSA *)
+   | _  -> "?"  (* NoClue *)
+ 
+ (** writes out packet, using old-style packets when possible *)
+diff -r 4d5e4fd7c1c2 parsePGP.ml
+--- a/parsePGP.ml	Mon Aug 11 20:56:45 2014 -0500
++++ b/parsePGP.ml	Tue Feb 03 00:01:20 2015 +0100
+@@ -150,6 +150,7 @@
+      | "\x2b\x24\x03\x03\x02\x08\x01\x01\x0b" -> 384 	(* brainpoolP384r1 *)
+      | "\x2b\x24\x03\x03\x02\x08\x01\x01\x0d" -> 512 	(* brainpoolP512r1 *)
+      | "\x2b\x81\x04\x00\x0a" -> 256         		(* secp256k1 *)
++     | "\x2b\x06\x01\x04\x01\xda\x47\x0f\x01" -> 256	(* Ed25519 *)  
+      | _ -> failwith "Unknown OID"
+    in
+    psize
+@@ -168,6 +169,7 @@
+    in
+    (mpi, psize)
+ 
++ (* Algorithm specific fields for ECDSA and EdDSA *)
+  let parse_ecdsa_pubkey cin =
+    let length = cin#read_int_size 1 in
+    let oid = cin#read_string length in
+@@ -185,7 +187,7 @@
+       let algorithm = cin#read_byte in
+       let (tmpmpi, tmpsize) =  match algorithm with
+         | 18 -> parse_ecdh_pubkey cin
+-        | 19 -> ( {mpi_bits = 0; mpi_data = ""}, (parse_ecdsa_pubkey cin))
++        | 19 | 22 -> ( {mpi_bits = 0; mpi_data = ""}, (parse_ecdsa_pubkey cin))
+         | _ -> ( {mpi_bits = 0; mpi_data = ""} , -1 )
+       in
+       let mpis = match algorithm with
+@@ -205,7 +207,7 @@
+     pk_ctime = creation_time;
+     pk_expiration = (match expiration with Some 0 -> None | x -> x);
+     pk_alg = algorithm;
+-    pk_keylen = (match algorithm with |18|19 -> psize | _ -> mpi.mpi_bits);
++    pk_keylen = (match algorithm with |18|19|22 -> psize | _ -> mpi.mpi_bits);
+   }
+ 
+ (********************************************************)

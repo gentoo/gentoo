@@ -1,0 +1,33 @@
+diff -Nuar passenger-2.2.15.orig/Rakefile passenger-2.2.15/Rakefile
+--- passenger-2.2.15.orig/Rakefile	2010-11-05 03:19:02.000000000 +0000
++++ passenger-2.2.15/Rakefile	2010-11-05 03:23:45.000000000 +0000
+@@ -744,7 +744,7 @@
+ 	extdir = "#{libdir}/#{CONFIG['arch']}"
+ 	bindir = "#{fakeroot}/usr/bin"
+   docdir = "#{fakeroot}/usr/share/doc/passenger-#{PACKAGE_VERSION}"
+-	libexecdir = "#{fakeroot}/usr/lib/phusion_passenger"
++	libexecdir = "#{fakeroot}/usr/libexec/phusion_passenger"
+ 	
+ 	sh "rm -rf #{fakeroot}"
+ 	sh "mkdir -p #{fakeroot}"
+diff -Nuar passenger-2.2.15.orig/ext/common/Utils.cpp passenger-2.2.15/ext/common/Utils.cpp
+--- passenger-2.2.15.orig/ext/common/Utils.cpp	2010-06-24 11:53:02.000000000 +0000
++++ passenger-2.2.15/ext/common/Utils.cpp	2010-11-05 03:22:39.000000000 +0000
+@@ -113,7 +113,7 @@
+ 			return path;
+ 		} else {
+ 			path.assign(root);
+-			path.append("lib/phusion_passenger/passenger-spawn-server");
++			path.append("libexec/phusion_passenger/passenger-spawn-server");
+ 			return path;
+ 		}
+ 		return path;
+@@ -152,7 +152,7 @@
+ 		return path;
+ 	} else {
+ 		path.assign(root);
+-		path.append("lib/phusion_passenger/ApplicationPoolServerExecutable");
++		path.append("libexec/phusion_passenger/ApplicationPoolServerExecutable");
+ 		return path;
+ 	}
+ }

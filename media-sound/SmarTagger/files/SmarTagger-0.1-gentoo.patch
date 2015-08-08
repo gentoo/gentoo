@@ -1,0 +1,12 @@
+diff -ur SmarTagger-0.1.orig/SmarTagger SmarTagger-0.1/SmarTagger
+--- SmarTagger-0.1.orig/SmarTagger	1999-11-23 10:10:54.000000000 +0200
++++ SmarTagger-0.1/SmarTagger	2007-07-28 18:29:38.000000000 +0300
+@@ -38,7 +38,7 @@
+ 	 $comilla = "";
+ }
+ 
+-use MPEG::MP3Info;
++use MP3::Info;
+ $product_name = "SmarTagger";
+ $version = "0.1";
+ %tags = ();

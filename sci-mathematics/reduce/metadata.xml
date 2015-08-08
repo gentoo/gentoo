@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <maintainer>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription lang="en">
+A general-purpose computer algebra system.
+Powerful, mature and efficient.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">reduce-algebra</remote-id>
+  </upstream>
+</pkgmetadata>

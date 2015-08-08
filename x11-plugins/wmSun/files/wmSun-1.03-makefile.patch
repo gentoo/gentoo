@@ -1,0 +1,45 @@
+--- Makefile.orig	1999-01-06 03:28:39.000000000 +0100
++++ Makefile	2008-01-28 14:58:36.000000000 +0100
+@@ -1,8 +1,9 @@
+-CC     = gcc
+-CFLAGS = -O2 -Wall
+-INCDIR = -I/usr/X11R6/include/X11
+-DESTDIR= /usr/X11R6
+-LIBDIR = -L/usr/X11R6/lib
++CC     ?= gcc
++CFLAGS += -Wall
++INCDIR = -I/usr/include/X11
++PREFIX = /usr
++LIBDIR ?= /usr/lib
++MANDIR = $(PREFIX)/share/man
+ 
+ 
+ 
+@@ -22,14 +23,14 @@
+ 
+ 
+ .c.o:
+-	$(CC) $(COPTS) -D$(shell echo `uname -s`) -c $< -o $*.o $(INCDIR)
++	$(CC) $(CFLAGS) -D$(shell echo `uname -s`) -c $< -o $*.o $(INCDIR)
+ 
+ 
+ all:	wmSun.o wmSun
+ 
+ wmSun.o: wmSun_master.xpm wmSun_mask.xbm 
+ wmSun:	$(OBJS) 
+-	$(CC) $(COPTS) $(SYSTEM) -lm -o wmSun $^ $(INCDIR) $(LIBDIR) $(LIBS)
++	$(CC) $(CFLAGS) -o wmSun $^ $(INCDIR) -L$(LIBDIR) $(LDFLAGS) $(LIBS) -lm
+ 
+ clean:
+ 	for i in $(OBJS) ; do \
+@@ -38,6 +39,8 @@
+ 	rm -f wmSun
+ 
+ install:: wmSun
+-	install -s -m 0755 wmSun $(DESTDIR)/bin
+-	install    -m 0644 wmSun.1 $(DESTDIR)/man/man1 
++	install -d $(DESTDIR)$(PREFIX)/bin
++	install -m 0755 wmSun $(DESTDIR)$(PREFIX)/bin
++	install -d $(DESTDIR)$(MANDIR)/man1
++	install    -m 0644 wmSun.1 $(DESTDIR)$(MANDIR)/man1 
+ 

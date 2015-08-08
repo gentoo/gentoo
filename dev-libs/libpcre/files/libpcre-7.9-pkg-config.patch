@@ -1,0 +1,48 @@
+diff -NrU5 pcre-7.9.orig/configure.ac pcre-7.9/configure.ac
+--- pcre-7.9.orig/configure.ac	2009-04-11 16:09:54.000000000 +0200
++++ pcre-7.9/configure.ac	2009-04-18 22:40:50.000000000 +0200
+@@ -598,10 +598,11 @@
+ 
+ # Produce these files, in addition to config.h.
+ AC_CONFIG_FILES(
+ 	Makefile
+ 	libpcre.pc
++	libpcreposix.pc
+ 	libpcrecpp.pc
+ 	pcre-config
+ 	pcre.h
+ 	pcre_stringpiece.h
+ 	pcrecpparg.h
+diff -NrU5 pcre-7.9.orig/libpcreposix.pc.in pcre-7.9/libpcreposix.pc.in
+--- pcre-7.9.orig/libpcreposix.pc.in	1970-01-01 01:00:00.000000000 +0100
++++ pcre-7.9/libpcreposix.pc.in	2009-04-18 22:38:02.000000000 +0200
+@@ -0,0 +1,13 @@
++# Package Information for pkg-config
++
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: libpcreposix
++Description: PCREPosix - Posix compatible regular expressions C library
++Version: @PACKAGE_VERSION@
++Libs: -L${libdir} -lpcreposix
++Cflags: -I${includedir}
++Requires.private: libpcre
+diff -NrU5 pcre-7.9.orig/Makefile.am pcre-7.9/Makefile.am
+--- pcre-7.9.orig/Makefile.am	2009-02-27 17:02:49.000000000 +0100
++++ pcre-7.9/Makefile.am	2009-04-18 22:40:00.000000000 +0200
+@@ -325,11 +325,11 @@
+ 	$(CC) -shared -o pcre.dll -Wl,"--strip-all" -Wl,"--export-all-symbols" $(DLL_OBJS)
+ 
+ 
+ # We have .pc files for pkg-config users.
+ pkgconfigdir = $(libdir)/pkgconfig
+-pkgconfig_DATA = libpcre.pc
++pkgconfig_DATA = libpcre.pc libpcreposix.pc
+ if WITH_PCRE_CPP
+ pkgconfig_DATA += libpcrecpp.pc
+ endif
+ 
+ dist_man_MANS = \

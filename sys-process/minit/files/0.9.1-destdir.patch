@@ -1,0 +1,16 @@
+--- Makefile.orig	2004-03-04 03:08:18.967017104 -0500
++++ Makefile	2004-03-04 03:10:11.445917712 -0500
+@@ -36,10 +36,12 @@
+ 	$(DIET) $(CROSS)$(CC) $(CFLAGS) -o $@ $^
+ 
+ install-files:
++	test -d $(DESTDIR)/sbin || mkdir -p $(DESTDIR)/sbin
+ 	install minit pidfilehack $(DESTDIR)/sbin
+ 	install write_proc hard-reboot $(DESTDIR)/sbin
++	test -d $(DESTDIR)/bin || mkdir -p $(DESTDIR)/bin
+ 	install msvc $(DESTDIR)/bin
+-	test -d $(DESTDIR)/etc/minit || mkdir $(DESTDIR)/etc/minit
++	test -d $(DESTDIR)/etc/minit || mkdir -p $(DESTDIR)/etc/minit
+ 
+ install-fifos:
+ 	-mkfifo -m 600 $(DESTDIR)/etc/minit/in $(DESTDIR)/etc/minit/out

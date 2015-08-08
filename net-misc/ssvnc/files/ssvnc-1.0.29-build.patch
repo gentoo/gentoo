@@ -1,0 +1,44 @@
+--- a/Makefile
++++ b/Makefile
+@@ -21,11 +21,11 @@
+ 
+ # N.B. ?= is gnu make specific.  Some of the subdir Makefiles are too. 
+ #
+-PREFIX  ?= /usr/local
+-ROOT    ?=
++PREFIX   = /usr
++ROOT     = $(DESTDIR)
+ BIN      = bin
+ LIB      = lib/ssvnc
+ MAN      = man
+-MANDIR  ?= $(MAN)
++MANDIR   = share/$(MAN)
+ APPS    ?= share/applications
+ BINNAME ?= ssvncviewer
+@@ -66,7 +66,6 @@
+ 
+ install: all
+ 	mkdir -p $(ROOT)$(PREFIX)/$(BIN) $(ROOT)$(PREFIX)/$(LIB) $(ROOT)$(PREFIX)/$(MANDIR)/man1
+-	strip $(VIEWER)
+ 	cp -p $(VIEWER) $(ROOT)$(PREFIX)/$(LIB)
+ 	cp -p $(VNCSPW) $(ROOT)$(PREFIX)/$(LIB)
+ 	cp -p $(UNWRAP) $(ROOT)$(PREFIX)/$(LIB)
+--- a/vncstorepw/Makefile
++++ b/vncstorepw/Makefile
+@@ -14,7 +14,6 @@
+ 
+ $(CMD): vncauth.o vncstorepw.o d3des.o
+ 	PATH=$$PATH:$(EPATH) $(CC) -o $(CMD) vncstorepw.o vncauth.o d3des.o
+-	PATH=$$PATH:$(EPATH) strip $(CMD)
+ 	@ls -l $(CMD)
+ 
+ $(UNWRAP): unwrap.c
+@@ -41,7 +40,6 @@
+ 	else \
+ 		PATH=$$PATH:$(EPATH) $(CC) -o $(ULTDSM) $(CPP_SSL) ultravnc_dsm_helper.c $(LD_SSL) -lcrypto; \
+ 	fi
+-	PATH=$$PATH:$(EPATH) strip $(ULTDSM)
+ 	@ls -l $(ULTDSM)
+ 
+ test: $(CMD)
+

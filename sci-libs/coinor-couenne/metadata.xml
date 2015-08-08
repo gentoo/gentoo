@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  Couenne (Convex Over and Under ENvelopes for Nonlinear Estimation)
+  is a spatial branch and bound algorithm that implements linearization, bound
+  reduction, and branching techniques for Mixed-integer, Nonlinear
+  Programming (MINLP) problems. The purpose of Couenne is to find global
+  optima of nonconvex MINLPs.
+</longdescription>
+</pkgmetadata>

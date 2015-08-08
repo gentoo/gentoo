@@ -1,0 +1,75 @@
+From 692f4d363033a419ea595f6be9ddda84dae4d20d Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Thu, 13 Dec 2012 18:04:50 +0100
+Subject: [PATCH] * [sources]: fix compiler warnings
+
+2013-03-30: Rip out typo patches, backport to oyranos-0.9.1
+
+---
+ API_generated/oyOption_s.c                  |    6 +++---
+ oyranos_io_core.c                           |    2 +-
+ oyranos_string.c                            |    4 +---
+ oyjl/oyjl_tree_parse.c                      |    2 +-
+
+diff --git a/API_generated/oyOption_s.c b/API_generated/oyOption_s.c
+index ea78f01..c2bbf66 100644
+--- a/API_generated/oyOption_s.c
++++ b/API_generated/oyOption_s.c
+@@ -372,7 +372,7 @@ const char *   oyOption_GetValueString(oyOption_s        * obj,
+ {
+   oyOption_s_ * s = (oyOption_s_*)obj;
+   int error = !s,
+-      n;
++      n = 0;
+   const char * result = 0;
+ 
+   if(!s)
+diff --git a/oyranos_io_core.c b/oyranos_io_core.c
+index d28068b..7ce1a94 100644
+--- a/oyranos_io_core.c
++++ b/oyranos_io_core.c
+@@ -262,7 +262,7 @@ char * oyReadUrlToMem_               ( const char        * url,
+ {
+   char * text = 0;
+   char * command = 0;
+-  FILE * fp;
++  FILE * fp = 0;
+ 
+   if(url && strlen(url) && size )
+   {
+diff --git a/oyranos_string.c b/oyranos_string.c
+index 26adbe7..d43b0dd 100644
+--- a/oyranos_string.c
++++ b/oyranos_string.c
+@@ -184,13 +184,11 @@ int                oyStringFromData_ ( const oyPointer     ptr,
+ {
+   const char * text = (const char*) ptr;
+   char * text_tmp = 0;
+-  int j,
++  int j = 0,
+       error = 0;
+ 
+   if(ptr && size)
+   {
+-    j = 0;
+-
+     while(j < size)
+       if(!isprint( text[j] ) && !isspace( text[j] ))
+       {
+diff --git a/oyjl/oyjl_tree_parse.c b/oyjl/oyjl_tree_parse.c
+index b969ede..78c9882 100644
+--- a/oyjl/oyjl_tree_parse.c
++++ b/oyjl/oyjl_tree_parse.c
+@@ -213,7 +213,7 @@ oyjl_tree_parse_context_s * oyjl_tree_parse_context_new( void )
+   if(!error)
+   {
+     memset(s, 0, sizeof(oyjl_tree_parse_context_s));
+-    strcpy(s->type,"yopc");
++    memcpy(s->type,"yopc",4);
+   }
+   return s;
+ }
+-- 
+1.5.6.5
+
+

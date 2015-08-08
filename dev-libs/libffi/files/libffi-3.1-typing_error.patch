@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/511752
+http://sourceware.org/ml/libffi-discuss/2014/msg00059.html
+
+--- include/ffi.h.in
++++ include/ffi.h.in
+@@ -221,7 +221,7 @@ typedef struct {
+ #endif
+ } ffi_cif;
+ 
+-#if HAVE_LONG_DOUBLE_VARIANT
++#if @HAVE_LONG_DOUBLE_VARIANT@
+ /* Used to adjust size/alignment of ffi types.  */
+ void ffi_prep_types (ffi_abi abi);
+ # endif

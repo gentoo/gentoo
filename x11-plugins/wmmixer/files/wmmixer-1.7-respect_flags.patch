@@ -1,0 +1,34 @@
+--- Makefile.orig	2012-08-21 11:03:31.028266807 +0200
++++ Makefile	2012-08-21 11:05:06.808876995 +0200
+@@ -1,19 +1,12 @@
+ # $Id$
+ 
+-prefix      = /usr/local
++prefix      = /usr
+ exec_prefix = ${prefix}
+ bindir      = ${exec_prefix}/bin
+ mandir      = ${prefix}/share/man
+ 
+-DESTDIR     =
+-
+-CXX	    = g++
+-CXXFLAGS    = -O -Wall
+-EXTRA_LIBS  = -L/usr/X11R6/lib -lX11 -lXpm -lXext
+-
+-
+-LD 	    = g++
+-LDFLAGS     = -o $(EXECUTABLE) $(CXXFLAGS)
++CXX	    ?= g++
++LIBS        = -lX11 -lXpm -lXext
+ 
+ EXECUTABLE  = wmmixer
+ OBJS	    = xhandler.o mixctl.o wmmixer.o exception.o
+@@ -26,7 +19,7 @@
+ 	$(CXX) $(CXXFLAGS) -c -o $@ $<
+ 
+ $(EXECUTABLE): $(OBJS)
+-	$(LD) $(LDFLAGS) $(OBJS) $(EXTRA_LIBDIRS) $(EXTRA_LIBS)
++	$(CXX) $(LDFLAGS) $(OBJS) $(LIBS) -o $(EXECUTABLE)
+ 
+ all: $(EXECUTABLE)
+ 

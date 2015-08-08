@@ -1,0 +1,17 @@
+--- ./CPP/7zip/Crypto/Sha1.cpp	2010-10-20 06:56:08.000000000 +0200
++++ CPP/7zip/Crypto/Sha1.cpp.new	2013-09-15 09:19:51.000000000 +0200
+@@ -148,10 +148,10 @@
+         for (int i = 0; i < kBlockSizeInWords; i++)
+         {
+           UInt32 d = _buffer[i];
+-          data[i * 4 + 0 - kBlockSize] = (Byte)(d);
+-          data[i * 4 + 1 - kBlockSize] = (Byte)(d >>  8);
+-          data[i * 4 + 2 - kBlockSize] = (Byte)(d >> 16);
+-          data[i * 4 + 3 - kBlockSize] = (Byte)(d >> 24);
++          data[(int)i * 4 + 0 - (int)kBlockSize] = (Byte)(d);
++          data[(int)i * 4 + 1 - (int)kBlockSize] = (Byte)(d >>  8);
++          data[(int)i * 4 + 2 - (int)kBlockSize] = (Byte)(d >> 16);
++          data[(int)i * 4 + 3 - (int)kBlockSize] = (Byte)(d >> 24);
+         }
+       returnRes = rar350Mode;
+     }

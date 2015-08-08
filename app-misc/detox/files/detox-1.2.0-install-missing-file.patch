@@ -1,0 +1,18 @@
+# Patch by Nelson A. de Oliveira <naoliv@debian.org>
+#
+# Patch upstream Makefile to install missing safe.tbl (#566785)
+
+--- detox-1.2.0/Makefile.in	2010-06-20 23:41:34.000000000 -0300
++++ detox-1.2.0/Makefile.in	2010-06-20 23:42:34.000000000 -0300
+@@ -147,6 +147,11 @@
+ 	else \
+ 		echo "${DESTDIR}${datadir}/detox/unicode.tbl exists, skipping"; \
+ 	fi
++	@if [ ! -f ${DESTDIR}${datadir}/detox/safe.tbl ]; then \
++		${INSTALL} -m 644 safe.tbl ${DESTDIR}${datadir}/detox; \
++	else \
++		echo "${DESTDIR}${datadir}/detox/safe.tbl exists, skipping"; \
++	fi
+ 
+ install-unsafe-config: install-base
+ 	${INSTALL} -m 644 detoxrc ${DESTDIR}${sysconfdir}

@@ -1,0 +1,59 @@
+# HG changeset patch
+# User Gabriel Jacobo <gabomdq@gmail.com>
+# Date 1400020960 10800
+# Node ID 3e2b3019a879f2efd846a6c04b55c20fc2752238
+# Parent  83077b1f989a44670a69286848034d7f4999b8fe
+Fixes #2541, build failure with Wayland enabled, OpenGL ES disabled
+
+Also includes an attempt at fixing building SDL on Ubuntu 13.10, which hopefully
+won't break 14.04
+
+diff -r 83077b1f989a -r 3e2b3019a879 configure.in
+--- a/configure.in	Tue May 13 12:10:37 2014 -0700
++++ b/configure.in	Tue May 13 19:42:40 2014 -0300
+@@ -1174,7 +1174,9 @@
+         AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+         AC_MSG_CHECKING(for Wayland support)
+         video_wayland=no
+-        if test x$PKG_CONFIG != xno; then
++        if  test x$PKG_CONFIG != xno && \
++            test x$video_opengl_egl = xyes && \
++            test x$video_opengles_v2 = xyes; then
+             if $PKG_CONFIG --exists wayland-client wayland-egl wayland-cursor egl xkbcommon ; then
+                 WAYLAND_CFLAGS=`$PKG_CONFIG --cflags wayland-client wayland-egl wayland-cursor xkbcommon`
+                 WAYLAND_LIBS=`$PKG_CONFIG --libs wayland-client wayland-egl wayland-cursor xkbcommon`
+@@ -1256,7 +1258,18 @@
+             if $PKG_CONFIG --exists mirclient egl xkbcommon ; then
+                 MIR_CFLAGS=`$PKG_CONFIG --cflags mirclient egl xkbcommon`
+                 MIR_LIBS=`$PKG_CONFIG --libs mirclient egl xkbcommon`
++                save_CFLAGS="$CFLAGS"
++                CFLAGS="$save_CFLAGS $MIR_CFLAGS"
++                
++                dnl This will disable Mir on Ubuntu < 14.04
++                AC_TRY_COMPILE([
++                #include <mir_toolkit/mir_client_library.h>
++                ],[
++                    MirMotionToolType tool = mir_motion_tool_type_mouse;
++                ],[
+                 video_mir=yes
++                ])
++                CFLAGS="$save_CFLAGS"
+             fi
+         fi
+         AC_MSG_RESULT($video_mir)
+@@ -2691,12 +2704,12 @@
+         CheckNAS
+         CheckSNDIO
+         CheckX11
+-        CheckWayland
+-        CheckMir
+         CheckDirectFB
+         CheckFusionSound
+         CheckOpenGLX11
+         CheckOpenGLESX11
++        CheckMir
++        CheckWayland
+         CheckLibUDev
+         CheckDBus
+         CheckInputEvents
+

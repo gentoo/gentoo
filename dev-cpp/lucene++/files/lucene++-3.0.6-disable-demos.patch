@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9217c21..d4e7b86 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -118,7 +118,7 @@ enable_testing()
+ 
+ add_subdirectory(src/core)
+ add_subdirectory(src/contrib)
+-add_subdirectory(src/demo)
++#add_subdirectory(src/demo)
+ add_subdirectory(src/test)
+ 
+ #################################

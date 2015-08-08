@@ -1,0 +1,30 @@
+--- cptutils-1.54/Makefile.in
++++ cptutils-1.54/Makefile.in
+@@ -8,23 +8,22 @@
+ RUBBISH   = *~
+ CONFFILES = config.cache config.log config.status configure Makefile
+ DIST      = cptutils-$(VERSION)
+-MAKE_SRC  = $(MAKE) -C src
+ 
+ # targets
+ 
+ default : all
+ 
+ all : 
+-	$(MAKE_SRC) all
++	$(MAKE) -C src all
+ 
+ install :
+-	$(MAKE_SRC) install
++	$(MAKE) -C src install
+ 
+ test check :
+-	$(MAKE_SRC) --quiet test
++	$(MAKE) -C src --quiet test
+ 
+ unit :
+-	$(MAKE_SRC) --quiet unit
++	$(MAKE) -C src --quiet unit
+ 
+ clean :
+ 	$(RM) $(RUBBISH)

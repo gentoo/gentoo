@@ -1,0 +1,11 @@
+--- src/Makefile.am	2014-09-05 10:26:56.000000000 -0400
++++ src/Makefile.am	2014-12-18 21:27:55.443335860 -0500
+@@ -29,7 +29,7 @@
+ 
+ klavaro_LDADD = @GTK_LIBS@ \
+ 		-lgmodule-2.0 \
+-	       	$(top_srcdir)/gtkdatabox/libgtkdataboks.la
++	       	$(top_builddir)/gtkdatabox/libgtkdataboks.la
+ 
+ if IS_POSIX
+ AM_CFLAGS += -export-dynamic

@@ -1,0 +1,19 @@
+commit 3c8bc686abf57e7e2037c4c191cb63a1a5172b5b
+Author: Andrew Savchenko <bircoph@gmail.com>
+Date:   Sun Feb 22 03:45:21 2015 +0300
+
+    root-5.32.00-prop-flags.patch -> root-5.34.26-prop-flags.patch
+
+diff --git a/config/Makefile.in b/config/Makefile.in
+index 89674e7..91d25b9 100644
+--- a/config/Makefile.in
++++ b/config/Makefile.in
+@@ -29,7 +29,7 @@ EXTRA_CFLAGS   := -Iinclude @cflags@
+ USERCONF_CFLAGS:= @usercflags@
+ EXTRA_CXXFLAGS := -Iinclude @cflags@
+ USERCONF_CXXFLAGS:= @usercxxflags@
+-EXTRA_LDFLAGS  := @ldflags@
++EXTRA_LDFLAGS  := @ldflags@ $(LDFLAGS)
+ WERROR         := @werror@
+ WINRTDEBUG     := @winrtdebug@
+ 

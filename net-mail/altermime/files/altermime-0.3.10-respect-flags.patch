@@ -1,0 +1,12 @@
+--- Makefile.orig	2008-11-16 08:45:45.000000000 +0000
++++ Makefile	2010-10-08 00:35:48.258944495 +0100
+@@ -11,3 +11,3 @@
+ ALTERMIME_OPTIONS=
+-CFLAGS=-Wall -Werror -g -I. -O2 $(ALTERMIME_OPTIONS)
++CFLAGS+=-Wall
+ OBJS= strstack.o mime_alter.o ffget.o pldstr.o filename-filters.o logger.o MIME_headers.o libmime-decoders.o boundary-stack.o qpe.o
+@@ -21,3 +21,3 @@
+ altermime: altermime.c ${OBJS}
+-	${CC} ${CFLAGS} altermime.c ${OBJS} -o altermime
++	${CC} ${CFLAGS} ${LDFLAGS} altermime.c ${OBJS} -o altermime
+ 

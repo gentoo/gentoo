@@ -1,0 +1,46 @@
+Author: Ralph Sennhauser <sera@gentoo.org>
+
+Don't reference non existing jar in taskdef. #351394
+Don't let user properties leak into build env.
+Don't bundle stuff from xml-commons-external.
+
+--- a/build.xml
++++ b/build.xml
+@@ -39,18 +39,13 @@ Authors:
+   <property name="tools.dir" value="./tools"/>
+ 
+   <!-- enable compilation under JDK 1.4 and above -->
+-  <taskdef name="xjavac" classname="org.apache.xerces.util.XJavac">
+-    <classpath>
+-      <pathelement location="${tools.dir}/bin/xjavac.jar"/>
+-    </classpath>
+-  </taskdef>
++  <taskdef name="xjavac" classname="org.apache.xerces.util.XJavac"/>
+ 
+   <!-- Allow properties following these statements to be overridden -->
+   <!-- Note that all of these don't have to exist.  They've just been defined
+        incase they are used. -->
+   <property file="build.properties"/>
+   <property file=".ant.properties"/>
+-  <property file="${user.home}/.ant.properties"/>
+   <property file="default.properties"/>  
+  
+   <target name="init">
+@@ -247,7 +242,7 @@ Authors:
+     <copy file="${src.dir}/org/apache/xerces/impl/xpath/regex/message.properties"
+       tofile="${build.src}/org/apache/xerces/impl/xpath/regex/message_en.properties"/>
+ 
+-    <!-- now deal with API's:  -->
++    <!-- now deal with API's:
+     <unzip src="${src.apis.zip}" dest="${build.src}">
+         <patternset
+             includes="org/xml/sax/** 
+@@ -269,7 +264,7 @@ Authors:
+                 org/w3c/dom/views/**
+                 org/w3c/dom/xpath/**"
+         />
+-    </unzip>
++    </unzip>  -->
+     
+     <!-- substitute tokens as needed -->
+     <replace file="${build.dir}/src/org/apache/xerces/impl/Version.java" 

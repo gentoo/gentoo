@@ -1,0 +1,41 @@
+=== modified file 'support/Makefile.in'
+--- support/Makefile.in	2011-09-01 06:33:22 +0000
++++ support/Makefile.in	2011-09-01 06:43:51 +0000
+@@ -1,9 +1,10 @@
+ DISTCLEAN_TARGETS = apxs apachectl dbmmanage log_server_status \
+-	logresolve.pl phf_abuse_log.cgi split-logfile envvars-std
++	logresolve.pl phf_abuse_log.cgi split-logfile
+ 
+ CLEAN_TARGETS = suexec
+ 
+-PROGRAMS = htpasswd htdigest rotatelogs logresolve ab htdbm htcacheclean httxt2dbm $(NONPORTABLE_SUPPORT)
++PROGRAMS = htpasswd htdigest rotatelogs logresolve ab htdbm htcacheclean httxt2dbm \
++	$(NONPORTABLE_SUPPORT) log_server_status split-logfile dbmmanage
+ TARGETS  = $(PROGRAMS)
+ 
+ PROGRAM_LDADD        = $(UTIL_LDFLAGS) $(PROGRAM_DEPENDENCIES) $(EXTRA_LIBS) $(AP_LIBS)
+@@ -12,22 +13,13 @@
+ include $(top_builddir)/build/rules.mk
+ 
+ install:
+-	@test -d $(DESTDIR)$(bindir) || $(MKINSTALLDIRS) $(DESTDIR)$(bindir)
+ 	@test -d $(DESTDIR)$(sbindir) || $(MKINSTALLDIRS) $(DESTDIR)$(sbindir)
+-	@test -d $(DESTDIR)$(libexecdir) || $(MKINSTALLDIRS) $(DESTDIR)$(libexecdir)
+-	@cp -p $(top_builddir)/server/httpd.exp $(DESTDIR)$(libexecdir)
+-	@for i in apxs apachectl dbmmanage; do \
++	@for i in $(PROGRAMS) ; do \
+ 	    if test -f "$(builddir)/$$i"; then \
+ 	        cp -p $$i $(DESTDIR)$(sbindir); \
+ 	        chmod 755 $(DESTDIR)$(sbindir)/$$i; \
+ 	    fi ; \
+ 	done
+-	@if test -f "$(builddir)/envvars-std"; then \
+-	    cp -p envvars-std $(DESTDIR)$(sbindir); \
+-	    if test ! -f $(DESTDIR)$(sbindir)/envvars; then \
+-	        cp -p envvars-std $(DESTDIR)$(sbindir)/envvars ; \
+-	    fi ; \
+-	fi
+ 
+ htpasswd_OBJECTS = htpasswd.lo
+ htpasswd: $(htpasswd_OBJECTS)
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>vmware</herd>
+	<longdescription>
+		VMWare Workstation is a virtual machine which can be used to install 
+		other operating systems in a virtual environment to run on top of Gentoo.
+	</longdescription>
+	<use>
+		<flag name="ovftool">Install OVF tool.</flag>
+		<flag name="server">Install VMware Workstation Server component.</flag>
+		<flag name="vix">Install VIX. The VIX API allows you to write programs and scripts
+		that automate virtual machine operations, and run programs or manipulate
+		files within guest operating systems.
+		</flag>
+		<flag name="vmware-tools">Install VMware Tools images</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">akhuettel/systemd-vmware</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- src/Makefile.am.old	2011-06-10 11:32:03.905618275 +0200
++++ src/Makefile.am	2011-06-10 11:32:15.539347083 +0200
+@@ -42,7 +42,7 @@
+ heroeslvl_SOURCES = heroeslvl.c
+ 
+ heroes_LDADD = lvl/libhlvl.a media/libhmcommon.a ../lib/libheroes.a \
+-	       $(INTLLIBS) $(LIBALT_LOCAL_XLDADD) $(LIBALT_XLDADD)
++	       $(INTLLIBS) $(LIBALT_LOCAL_XLDADD) $(LIBALT_XLDADD) -lm
+ heroes_LDFLAGS = $(LIBALT_XLDFLAGS)
+ 
+ ## Depend upon Makefile because the value of LIBALT_LOCAL_LDADD might

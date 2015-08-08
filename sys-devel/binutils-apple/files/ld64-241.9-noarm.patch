@@ -1,0 +1,1288 @@
+Fully conditionalise arm support so it can be disabled on 10.4.
+
+diff -ur ld64-241.9/src/abstraction/MachOFileAbstraction.hpp ld64-241.9/src/abstraction/MachOFileAbstraction.hpp
+--- ld64-241.9/src/abstraction/MachOFileAbstraction.hpp	2014-11-04 00:30:51.000000000 +0100
++++ ld64-241.9/src/abstraction/MachOFileAbstraction.hpp	2015-01-22 05:53:13.000000000 +0100
+diff -ur ld64-241.9/src/ld/HeaderAndLoadCommands.hpp ld64-241.9/src/ld/HeaderAndLoadCommands.hpp
+--- ld64-241.9/src/ld/HeaderAndLoadCommands.hpp	2014-09-11 00:24:46.000000000 +0200
++++ ld64-241.9/src/ld/HeaderAndLoadCommands.hpp	2015-01-22 06:46:10.000000000 +0100
+@@ -607,8 +607,12 @@
+ 
+ template <> uint32_t HeaderAndLoadCommandsAtom<x86>::cpuType() const	{ return CPU_TYPE_I386; }
+ template <> uint32_t HeaderAndLoadCommandsAtom<x86_64>::cpuType() const	{ return CPU_TYPE_X86_64; }
++#if SUPPORT_ARCH_arm_any
+ template <> uint32_t HeaderAndLoadCommandsAtom<arm>::cpuType() const	{ return CPU_TYPE_ARM; }
++#endif
++#if SUPPORT_ARCH_arm64
+ template <> uint32_t HeaderAndLoadCommandsAtom<arm64>::cpuType() const	{ return CPU_TYPE_ARM64; }
++#endif
+ 
+ 
+ 
+@@ -627,17 +631,21 @@
+ 		return _state.cpuSubType;
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ uint32_t HeaderAndLoadCommandsAtom<arm>::cpuSubType() const
+ {
+ 	return _state.cpuSubType;
+ }
++#endif
+ 
++#if SUPPORT_ARCH_arm64
+ template <>
+ uint32_t HeaderAndLoadCommandsAtom<arm64>::cpuSubType() const
+ {
+ 	return CPU_SUBTYPE_ARM64_ALL;
+ }
++#endif
+ 
+ 
+ 
+diff -ur ld64-241.9/src/ld/LinkEdit.hpp ld64-241.9/src/ld/LinkEdit.hpp
+--- ld64-241.9/src/ld/LinkEdit.hpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/ld/LinkEdit.hpp	2015-01-22 05:32:47.000000000 +0100
+@@ -1595,6 +1595,7 @@
+ 				for (ld::Fixup::iterator fit = atom->fixupsBegin(); fit != atom->fixupsEnd(); ++fit) {
+ 					if ( fit->kind != ld::Fixup::kindLinkerOptimizationHint) 
+ 						continue;
++#if SUPPORT_ARCH_arm64
+ 					ld::Fixup::LOH_arm64 extra;
+ 					extra.addend = fit->u.addend;
+ 					_encodedData.append_uleb128(extra.info.kind);
+@@ -1606,6 +1607,7 @@
+ 						_encodedData.append_uleb128((extra.info.delta3 << 2) + fit->offsetInAtom + address);
+ 					if ( extra.info.count > 2 )
+ 						_encodedData.append_uleb128((extra.info.delta4 << 2) + fit->offsetInAtom + address);
++#endif
+ 				}
+ 			}
+ 		}
+diff -ur ld64-241.9/src/ld/Options.cpp ld64-241.9/src/ld/Options.cpp
+--- ld64-241.9/src/ld/Options.cpp	2015-01-22 20:59:48.000000000 +0100
++++ ld64-241.9/src/ld/Options.cpp	2015-01-22 20:52:17.000000000 +0100
+@@ -580,8 +580,13 @@
+ 				#endif		
+ 					}
+ 					break;
++#if SUPPORT_ARCH_arm_any
+ 				case CPU_TYPE_ARM:
++#endif
++#if SUPPORT_ARCH_arm64
+ 				case CPU_TYPE_ARM64:
++#endif
++#if SUPPORT_ARCH_arm_any || SUPPORT_ARCH_arm64
+ 					if ( (fMacVersionMin == ld::macVersionUnset) && (fIOSVersionMin == ld::iOSVersionUnset) && (fOutputKind != Options::kObjectFile) ) {
+ 				#if defined(DEFAULT_IPHONEOS_MIN_VERSION)
+ 						warning("-ios_version_min not specified, assuming " DEFAULT_IPHONEOS_MIN_VERSION);
+@@ -592,6 +597,7 @@
+ 				#endif
+ 					}
+ 					break;
++#endif
+ 			}
+ #ifdef SUPPORT_SNAPSHOTS
+ 			fLinkSnapshot.recordArch(fArchitectureName);
+@@ -1683,9 +1689,11 @@
+ 						symbolStart = NULL;
+ 				}
+ 				else if ( strncmp(symbolStart, "arm:", 4) == 0 ) {
++#if SUPPORT_ARCH_arm_any
+ 					if ( fArchitecture == CPU_TYPE_ARM )
+ 						symbolStart = &symbolStart[4];
+ 					else
++#endif
+ 						symbolStart = NULL;
+ 				}
+ 				if ( symbolStart != NULL ) {
+@@ -3668,6 +3676,7 @@
+ 			#endif		
+ 					}
+ 					break;
++#if SUPPORT_ARCH_arm_any
+ 				case CPU_TYPE_ARM:
+ 					if ( (fOutputKind != Options::kObjectFile) && (fOutputKind != Options::kPreload) ) {
+ 			#if defined(DEFAULT_IPHONEOS_MIN_VERSION)
+@@ -3679,6 +3688,7 @@
+ 			#endif
+ 					}
+ 					break;
++#endif
+ 				default:
+ 					// architecture will be infered later by examining .o files
+ 					break;
+@@ -3701,12 +3711,14 @@
+ 				fMacVersionMin = ld::mac10_4;
+ 			}
+ 			break;
++#if SUPPORT_ARCH_arm64
+ 		case CPU_TYPE_ARM64:
+ 			if ( fIOSVersionMin < ld::iOS_7_0 ) {
+ 				//warning("-mios_version_min should be 7.0 or later for arm64");
+ 				fIOSVersionMin = ld::iOS_7_0;
+ 			}
+ 			break;
++#endif
+ 	}
+ 	
+ 	// default to adding functions start for dynamic code, static code must opt-in
+@@ -3746,6 +3758,7 @@
+ 				fAllowTextRelocs = true;
+ 				fUndefinedTreatment = kUndefinedDynamicLookup;
+ 				break;
++#if SUPPORT_ARCH_arm64
+ 			case CPU_TYPE_ARM64:
+ 				// arm64 uses new MH_KEXT_BUNDLE type
+ 				fMakeCompressedDyldInfo = false;
+@@ -3754,6 +3767,8 @@
+ 				fKextsUseStubs = true;
+ 				fUndefinedTreatment = kUndefinedDynamicLookup;
+ 				break;
++#endif
++#if SUPPORT_ARCH_arm_any
+ 			case CPU_TYPE_ARM:
+ 				if ( fIOSVersionMin >= ld::iOS_5_0 ) {
+                     // iOS 5.0 and later use new MH_KEXT_BUNDLE type
+@@ -3765,6 +3780,7 @@
+                     fUndefinedTreatment = kUndefinedDynamicLookup;
+ 					break;
+ 				}
++#endif
+ 				// else use object file
+ 			case CPU_TYPE_I386:
+ 				// use .o files
+@@ -3817,6 +3833,7 @@
+                 if ( fSplitSegs && (fBaseWritableAddress-fBaseAddress != 0x10000000) )
+                     fBaseWritableAddress = fBaseAddress + 0x10000000;
+                 break;
++#if SUPPORT_ARCH_arm_any
+             case CPU_TYPE_ARM:
+                 if ( fOutputKind != Options::kDynamicLibrary ) {
+                     fSplitSegs = false;
+@@ -3827,6 +3844,7 @@
+ 						fBaseWritableAddress = fBaseAddress + 0x08000000;
+ 				}
+                 break;
++#endif
+             default:
+                 fSplitSegs = false;
+                 fBaseAddress = 0;
+@@ -3841,6 +3859,7 @@
+ 			break;
+ 		case CPU_TYPE_X86_64:
+ 			break;
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			switch ( fOutputKind ) {
+ 				case Options::kDynamicExecutable:
+@@ -3863,6 +3882,7 @@
+ 				fBaseAddress = 0;
+ 			}
+ 			break;
++#endif
+ 	}
+ 
+ 	// <rdar://problem/6138961> -r implies no prebinding for all architectures
+@@ -3908,6 +3928,7 @@
+ 			case CPU_TYPE_X86_64:
+ 				fPrebind = false;
+ 				break;
++#if SUPPORT_ARCH_arm_any
+             case CPU_TYPE_ARM:
+ 				switch ( fOutputKind ) {
+ 					case Options::kDynamicExecutable:
+@@ -3925,6 +3946,7 @@
+ 						break;
+ 				}
+ 				break;
++#endif
+ 		}
+ 	}
+ 
+@@ -3951,10 +3973,12 @@
+ 			case CPU_TYPE_I386:
+ 				if ( fIOSVersionMin != ld::iOSVersionUnset ) // simulator never needs modules
+ 					break;
++#if SUPPORT_ARCH_arm_any
+ 			case CPU_TYPE_ARM:
+ 				if ( fPrebind )
+ 					fNeedsModuleTable = true; // redo_prebinding requires a module table
+ 				break;
++#endif
+ 		}
+ 	}
+ 	
+@@ -3993,7 +3993,9 @@
+ 	switch ( fArchitecture ) {
+ 		case CPU_TYPE_I386:		
+ 		case CPU_TYPE_X86_64:		
++#if SUPPORT_ARCH_arm64
+ 		case CPU_TYPE_ARM64:		
++#endif
+ 			switch ( fOutputKind ) {
+ 				case Options::kObjectFile:
+ 				case Options::kStaticExecutable:
+@@ -4010,10 +4012,12 @@
+ 					break;
+ 			}
+ 			break;
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			fAddCompactUnwindEncoding = false;
+ 			fRemoveDwarfUnwindIfCompactExists = false;
+ 			break;
++#endif
+ 		case 0:
+ 			// if -arch is missing, assume we don't want compact unwind info
+ 			fAddCompactUnwindEncoding = false;
+@@ -4015,7 +4043,15 @@
+ 				fEncryptable = false;
+ 			break;
+ 	}
+-	if ( (fArchitecture != CPU_TYPE_ARM) && (fArchitecture != CPU_TYPE_ARM64) )
++	if (
++#if SUPPORT_ARCH_arm_any
++		(fArchitecture != CPU_TYPE_ARM) &&
++#endif
++#if SUPPORT_ARCH_arm64
++		(fArchitecture != CPU_TYPE_ARM64) &&
++#endif
++		1
++		)
+ 		fEncryptable = false;
+ 
+ 	// don't move inits in dyld because dyld wants certain
+@@ -4067,11 +4103,15 @@
+ 
+ 	// only ARM and x86_64 enforces that cpu-sub-types must match
+ 	switch ( fArchitecture ) {
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
++#endif
+ 		case CPU_TYPE_X86_64:
+ 			break;
+ 		case CPU_TYPE_I386:
++#if SUPPORT_ARCH_arm64
+ 		case CPU_TYPE_ARM64:
++#endif
+ 			fAllowCpuSubtypeMismatches = true;
+ 			break;
+ 	}
+@@ -4117,6 +4157,7 @@
+ 			fPositionIndependentExecutable = true;
+ 	}
+ 
++#if SUPPORT_ARCH_arm_any
+ 	// armv7 for iOS4.3 defaults to PIE
+ 	if ( (fArchitecture == CPU_TYPE_ARM) 
+ 		&& fArchSupportsThumb2
+@@ -4124,6 +4165,7 @@
+ 		&& (fIOSVersionMin >= ld::iOS_4_3) ) {
+ 			fPositionIndependentExecutable = true;
+ 	}
++#endif
+ 
+ 	// Simulator defaults to PIE
+ 	if ( fTargetIOSSimulator && (fOutputKind == kDynamicExecutable) )
+@@ -4133,10 +4175,12 @@
+ 	if ( fDisablePositionIndependentExecutable )
+ 		fPositionIndependentExecutable = false;
+ 
++#if SUPPORT_ARCH_arm64
+ 	// arm64 is always PIE
+ 	if ( (fArchitecture == CPU_TYPE_ARM64) && (fOutputKind == kDynamicExecutable) ) {
+ 		fPositionIndependentExecutable = true;
+ 	}
++#endif
+ 
+ 	// set fOutputSlidable
+ 	switch ( fOutputKind ) {
+@@ -4162,9 +4206,11 @@
+ 	if ( fMacVersionMin >= ld::mac10_7 ) {
+ 		fTLVSupport = true;
+ 	}
++#if SUPPORT_ARCH_arm64
+ 	else if ( (fArchitecture == CPU_TYPE_ARM64) && (fIOSVersionMin >= ld::iOS_8_0) ) {
+ 		fTLVSupport = true;
+ 	}
++#endif
+ 
+ 	// default to adding version load command for dynamic code, static code must opt-in
+ 	switch ( fOutputKind ) {
+@@ -4369,9 +4415,15 @@
+ 	// <rdar://problem/12258065> ARM64 needs 16KB page size for user land code
+ 	// <rdar://problem/15974532> make armv7[s] use 16KB pages in user land code for iOS 8 or later
+ 	if ( fSegmentAlignment == 4096 ) {
+-		if ( (fArchitecture == CPU_TYPE_ARM64) 
+-		|| ((fArchitecture == CPU_TYPE_ARM) && (fIOSVersionMin >= ld::iOS_8_0) && 
+-			((fSubArchitecture == CPU_SUBTYPE_ARM_V7S) || (fSubArchitecture == CPU_SUBTYPE_ARM_V7))) ) {
++		if (
++#if SUPPORT_ARCH_arm64
++			(fArchitecture == CPU_TYPE_ARM64) ||
++#endif
++#if SUPPORT_ARCH_arm_any
++			((fArchitecture == CPU_TYPE_ARM) && (fIOSVersionMin >= ld::iOS_8_0) && 
++				((fSubArchitecture == CPU_SUBTYPE_ARM_V7S) || (fSubArchitecture == CPU_SUBTYPE_ARM_V7))) ||
++#endif
++			0) {
+ 			switch ( fOutputKind ) {
+ 				case Options::kDynamicExecutable:
+ 				case Options::kDynamicLibrary:
+@@ -4488,12 +4540,16 @@
+ 	if ( fStackAddr != 0 ) {
+ 		switch (fArchitecture) {
+ 			case CPU_TYPE_I386:
++#if SUPPORT_ARCH_arm_any
+             case CPU_TYPE_ARM:
++#endif
+ 				if ( fStackAddr > 0xFFFFFFFFULL )
+ 					throw "-stack_addr must be < 4G for 32-bit processes";
+ 				break;
+ 			case CPU_TYPE_X86_64:
++#if SUPPORT_ARCH_arm64
+ 			case CPU_TYPE_ARM64:
++#endif
+ 				break;
+ 		}
+ 		if ( (fStackAddr & -4096) != fStackAddr )
+@@ -4514,6 +4570,7 @@
+ 				if ( (fStackAddr > 0xB0000000ULL) && ((fStackAddr-fStackSize) < 0xB0000000ULL)  )
+ 					warning("custom stack placement overlaps and will disable shared region");
+ 				break;
++#if SUPPORT_ARCH_arm_any
+             case CPU_TYPE_ARM:
+ 				if ( fStackSize > 0x2F000000 )
+ 					throw "-stack_size must be < 752MB";
+@@ -4522,11 +4579,13 @@
+                 if ( fStackAddr > 0x30000000ULL)
+                     throw "-stack_addr must be < 0x30000000 for arm";
+ 				break;
++#endif
+ 			case CPU_TYPE_X86_64:
+ 				if ( fStackAddr == 0 ) {
+ 					fStackAddr = 0x00007FFF5C000000ULL;
+ 				}
+ 				break;
++#if SUPPORT_ARCH_arm64
+ 			case CPU_TYPE_ARM64:
+ 				if ( fStackSize > 0x20000000 )
+ 					throw "-stack_size must be < 512MB";
+@@ -4534,6 +4593,7 @@
+ 					fStackAddr = 0x120000000ULL;
+ 				}
+ 				break;
++#endif
+ 		}
+ 		if ( (fStackSize & -4096) != fStackSize )
+ 			throw "-stack_size must be multiples of 4K";
+@@ -4643,8 +4703,12 @@
+ 				alterObjC1ClassNamesToObjC2 = true;
+ 			break;
+ 		case CPU_TYPE_X86_64:
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
++#endif
++#if SUPPORT_ARCH_arm64
+ 		case CPU_TYPE_ARM64:
++#endif
+ 			alterObjC1ClassNamesToObjC2 = true;
+ 			break;
+ 	}
+@@ -4799,11 +4799,15 @@
+ 		// zero page size not specified on command line, set default
+ 		switch (fArchitecture) {
+ 			case CPU_TYPE_I386:
++#if SUPPORT_ARCH_arm_any
+             case CPU_TYPE_ARM:
++#endif
+ 				// first 4KB for 32-bit architectures
+ 				fZeroPageSize = 0x1000;
+ 				break;
++#if SUPPORT_ARCH_arm64
+ 			case CPU_TYPE_ARM64:
++#endif
+ 			case CPU_TYPE_X86_64:
+ 				// first 4GB for x86_64 on all OS's
+ 				fZeroPageSize = 0x100000000ULL;
+@@ -4842,9 +4910,11 @@
+ 	
+ 	// -force_cpusubtype_ALL is not supported for ARM
+ 	if ( fForceSubtypeAll ) {
++#if SUPPORT_ARCH_arm_any
+ 		if ( fArchitecture == CPU_TYPE_ARM ) {
+ 			warning("-force_cpusubtype_ALL will become unsupported for ARM architectures");
+ 		}
++#endif
+ 	}
+ 	
+ 	// -reexported_symbols_list can only be used with -dynamiclib
+diff -ur ld64-241.9/src/ld/OutputFile.cpp ld64-241.9/src/ld/OutputFile.cpp
+--- ld64-241.9/src/ld/OutputFile.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/ld/OutputFile.cpp	2015-01-22 20:16:24.000000000 +0100
+@@ -631,7 +631,12 @@
+ 		// is encoded in mach-o the same as:
+ 		//  .long _foo + 0x40000000
+ 		// so if _foo lays out to 0xC0000100, the first is ok, but the second is not.  
+-		if ( (_options.architecture() == CPU_TYPE_ARM) || (_options.architecture() == CPU_TYPE_I386) ) {
++		if (
++#if SUPPORT_ARCH_arm_any
++			(_options.architecture() == CPU_TYPE_ARM) ||
++#endif
++			(_options.architecture() == CPU_TYPE_I386) ||
++			0) {
+ 			// Unlikely userland code does funky stuff like this, so warn for them, but not warn for -preload or -static
+ 			if ( (_options.outputKind() != Options::kPreload) && (_options.outputKind() != Options::kStaticExecutable) ) {
+ 				warning("32-bit absolute address out of range (0x%08llX max is 4GB): from %s + 0x%08X (0x%08llX) to 0x%08llX", 
+@@ -1235,22 +1240,26 @@
+ 		return false;
+ 	const ld::Fixup* f;
+ 	switch ( fixup->kind ) {
++#if SUPPORT_ARCH_arm64
+ 		case ld::Fixup::kindStoreTargetAddressARM64Page21:
+ 			return !mustBeGOT;
+ 		case ld::Fixup::kindStoreTargetAddressARM64GOTLoadPage21:
+ 		case ld::Fixup::kindStoreTargetAddressARM64GOTLeaPage21:
+ 			return true;
++#endif
+ 		case ld::Fixup::kindSetTargetAddress:
+ 			f = fixup;
+ 			do { 
+ 				++f;
+ 			} while ( ! f->lastInCluster() );
+ 			switch (f->kind ) {
++#if SUPPORT_ARCH_arm64
+ 				case ld::Fixup::kindStoreARM64Page21:
+ 					return !mustBeGOT;
+ 				case ld::Fixup::kindStoreARM64GOTLoadPage21:
+ 				case ld::Fixup::kindStoreARM64GOTLeaPage21:
+ 					return true;
++#endif
+ 				default:
+ 					break;
+ 			}
+@@ -1267,22 +1276,26 @@
+ 		return false;
+ 	const ld::Fixup* f;
+ 	switch ( fixup->kind ) {
++#if SUPPORT_ARCH_arm64
+ 		case ld::Fixup::kindStoreTargetAddressARM64PageOff12:
+ 			return !mustBeGOT;
+ 		case ld::Fixup::kindStoreTargetAddressARM64GOTLoadPageOff12:
+ 		case ld::Fixup::kindStoreTargetAddressARM64GOTLeaPageOff12:
+ 			return true;
++#endif
+ 		case ld::Fixup::kindSetTargetAddress:
+ 			f = fixup;
+ 			do { 
+ 				++f;
+ 			} while ( ! f->lastInCluster() );
+ 			switch (f->kind ) {
++#if SUPPORT_ARCH_arm64
+ 				case ld::Fixup::kindStoreARM64PageOff12:
+ 					return !mustBeGOT;
+ 				case ld::Fixup::kindStoreARM64GOTLoadPageOff12:
+ 				case ld::Fixup::kindStoreARM64GOTLeaPageOff12:
+ 					return true;
++#endif
+ 				default:
+ 					break;
+ 			}
+@@ -1318,7 +1331,9 @@
+ 	std::map<uint32_t, const Fixup*> usedByHints;
+ 	for (ld::Fixup::iterator fit = atom->fixupsBegin(), end=atom->fixupsEnd(); fit != end; ++fit) {
+ 		uint8_t* fixUpLocation = &buffer[fit->offsetInAtom];
++#if SUPPORT_ARCH_arm64
+ 		ld::Fixup::LOH_arm64 lohExtra;
++#endif
+ 		switch ( (ld::Fixup::Kind)(fit->kind) ) { 
+ 			case ld::Fixup::kindNone:
+ 			case ld::Fixup::kindNoneFollowOn:
+@@ -1580,6 +1595,7 @@
+ 				break;
+ 			case ld::Fixup::kindLinkerOptimizationHint:
+ 				// expand table of address/offsets used by hints
++#if SUPPORT_ARCH_arm64
+ 				lohExtra.addend = fit->u.addend;
+ 				usedByHints[fit->offsetInAtom + (lohExtra.info.delta1 << 2)] = NULL;
+ 				if ( lohExtra.info.count > 0 )
+@@ -1588,6 +1604,7 @@
+ 					usedByHints[fit->offsetInAtom + (lohExtra.info.delta3 << 2)] = NULL;
+ 				if ( lohExtra.info.count > 2 )
+ 					usedByHints[fit->offsetInAtom + (lohExtra.info.delta4 << 2)] = NULL;
++#endif
+ 				break;
+ 			case ld::Fixup::kindStoreTargetAddressLittleEndian32:
+ 				accumulator = addressOf(state, fit, &toTarget);
+@@ -2095,6 +2112,7 @@
+ 			//uint8_t loadSize, destReg;
+ 			//uint32_t scaledOffset;
+ 			//uint32_t imm12;
++#if SUPPORT_ARCH_arm64
+ 			ld::Fixup::LOH_arm64 alt;
+ 			alt.addend = fit->u.addend;
+ 			setInfo(state, atom, buffer, usedByHints, fit->offsetInAtom, (alt.info.delta1 << 2), &infoA);
+@@ -2453,6 +2471,7 @@
+ 							fprintf(stderr, "unknown hint kind %d alt.info.kind at 0x%08llX\n", alt.info.kind, infoA.instructionAddress);
+ 					break;
+ 			}
++#endif
+ 		}
+ 		// apply hints pass 2
+ 		for (ld::Fixup::iterator fit = atom->fixupsBegin(), end=atom->fixupsEnd(); fit != end; ++fit) {
+@@ -2460,6 +2479,7 @@
+ 				continue;
+ 			InstructionInfo infoA;
+ 			InstructionInfo infoB;
++#if SUPPORT_ARCH_arm64
+ 			ld::Fixup::LOH_arm64 alt;
+ 			alt.addend = fit->u.addend;
+ 			setInfo(state, atom, buffer, usedByHints, fit->offsetInAtom, (alt.info.delta1 << 2), &infoA);
+@@ -2491,6 +2511,7 @@
+ 					}
+ 					break;
+ 			}				
++#endif
+ 		}
+ 	}
+ #endif // SUPPORT_ARCH_arm64
+@@ -2505,6 +2526,7 @@
+ 			for (uint8_t* p=from; p < to; ++p)
+ 				*p = 0x90;
+ 			break;
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			if ( thumb ) {
+ 				for (uint8_t* p=from; p < to; p += 2)
+@@ -2515,6 +2537,7 @@
+ 					OSWriteLittleInt32((uint32_t*)p, 0, 0xe1a00000);
+ 			}
+ 			break;
++#endif
+ 		default:
+ 			for (uint8_t* p=from; p < to; ++p)
+ 				*p = 0x00;
+@@ -2843,7 +2866,11 @@
+ 				
+ 			// in -r mode, clarify symbolTableNotInFinalLinkedImages
+ 			if ( _options.outputKind() == Options::kObjectFile ) {
+-				if ( (_options.architecture() == CPU_TYPE_X86_64) || (_options.architecture() == CPU_TYPE_ARM64) ) {
++				if ( (_options.architecture() == CPU_TYPE_X86_64) ||
++#if SUPPORT_ARCH_arm64
++					(_options.architecture() == CPU_TYPE_ARM64) ||
++#endif
++					0 ) {
+ 					// x86_64 .o files need labels on anonymous literal strings
+ 					if ( (sect->type() == ld::Section::typeCString) && (atom->combine() == ld::Atom::combineByNameAndContent) ) {
+ 						(const_cast<ld::Atom*>(atom))->setSymbolTableInclusion(ld::Atom::symbolTableIn);
+@@ -4071,8 +4098,10 @@
+ 		if ( _options.sharedRegionEligible() ) {
+ 			// <rdar://problem/13287063> when range checking, ignore high byte of arm64 addends
+ 			uint64_t checkAddend = addend;
++#if SUPPORT_ARCH_arm64
+ 			if ( _options.architecture() == CPU_TYPE_ARM64 )
+ 				checkAddend &= 0x0FFFFFFFFFFFFFFFULL;
++#endif
+ 			if ( checkAddend != 0 ) {
+ 				// make sure the addend does not cause the pointer to point outside the target's segment
+ 				// if it does, update_dyld_shared_cache will not be able to put this dylib into the shared cache
+@@ -4279,12 +4308,17 @@
+ 
+ bool OutputFile::useExternalSectionReloc(const ld::Atom* atom, const ld::Atom* target, ld::Fixup* fixupWithTarget)
+ {
+-	if ( (_options.architecture() == CPU_TYPE_X86_64) || (_options.architecture() == CPU_TYPE_ARM64) ) {
++	if ( (_options.architecture() == CPU_TYPE_X86_64) ||
++#if SUPPORT_ARCH_arm64
++		(_options.architecture() == CPU_TYPE_ARM64) ||
++#endif
++		0) {
+ 		// x86_64 and ARM64 use external relocations for everthing that has a symbol
+ 		return ( target->symbolTableInclusion() != ld::Atom::symbolTableNotIn );
+ 	}
+ 	
+ 	// <rdar://problem/9513487> support arm branch interworking in -r mode 
++#if SUPPORT_ARCH_arm_any
+ 	if ( (_options.architecture() == CPU_TYPE_ARM) && (_options.outputKind() == Options::kObjectFile) ) {
+ 		if ( atom->isThumb() != target->isThumb() ) {
+ 			switch ( fixupWithTarget->kind ) {
+@@ -4298,6 +4332,7 @@
+ 			}
+ 		}
+ 	}
++#endif
+ 	
+ 	if ( (_options.architecture() == CPU_TYPE_I386) && (_options.outputKind() == Options::kObjectFile) ) {
+ 		if ( target->contentType() == ld::Atom::typeTLV ) 
+@@ -4365,7 +4400,11 @@
+ 	bool minusTargetUsesExternalReloc = (minusTarget != NULL) && this->useExternalSectionReloc(atom, minusTarget, fixupWithMinusTarget);
+ 	
+ 	// in x86_64 and arm64 .o files an external reloc means the content contains just the addend
+-	if ( (_options.architecture() == CPU_TYPE_X86_64) ||(_options.architecture() == CPU_TYPE_ARM64)  ) {
++	if ( (_options.architecture() == CPU_TYPE_X86_64) ||
++#if SUPPORT_ARCH_arm64
++		(_options.architecture() == CPU_TYPE_ARM64) ||
++#endif
++		0 ) {
+ 		if ( targetUsesExternalReloc ) {
+ 			fixupWithTarget->contentAddendOnly = true;
+ 			fixupWithStore->contentAddendOnly = true;
+Only in ld64-241.9/src/ld: OutputFile.o
+diff -ur ld64-241.9/src/ld/Resolver.cpp ld64-241.9/src/ld/Resolver.cpp
+--- ld64-241.9/src/ld/Resolver.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/ld/Resolver.cpp	2015-01-22 20:30:28.000000000 +0100
+@@ -431,6 +431,7 @@
+ 		// update cpu-sub-type
+ 		cpu_subtype_t nextObjectSubType = file.cpuSubType();
+ 		switch ( _options.architecture() ) {
++#if SUPPORT_ARCH_arm_any
+ 			case CPU_TYPE_ARM:
+ 				if ( _options.subArchitecture() != nextObjectSubType ) {
+ 					if ( (_options.subArchitecture() == CPU_SUBTYPE_ARM_ALL) && _options.forceCpuSubtypeAll() ) {
+@@ -449,6 +450,7 @@
+ 					}
+ 				}
+ 				break;
++#endif
+ 			
+ 			case CPU_TYPE_I386:
+ 				_internal.cpuSubType = CPU_SUBTYPE_I386_ALL;
+diff -ur ld64-241.9/src/ld/parsers/archive_file.cpp ld64-241.9/src/ld/parsers/archive_file.cpp
+--- ld64-241.9/src/ld/parsers/archive_file.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/ld/parsers/archive_file.cpp	2015-01-22 05:57:03.000000000 +0100
+@@ -232,8 +232,12 @@
+ 
+ template <> cpu_type_t File<x86>::architecture()    { return CPU_TYPE_I386; }
+ template <> cpu_type_t File<x86_64>::architecture() { return CPU_TYPE_X86_64; }
++#if SUPPORT_ARCH_arm_any
+ template <> cpu_type_t File<arm>::architecture()    { return CPU_TYPE_ARM; }
++#endif
++#if SUPPORT_ARCH_arm64
+ template <> cpu_type_t File<arm64>::architecture()  { return CPU_TYPE_ARM64; }
++#endif
+ 
+ 
+ template <typename A>
+diff -ur ld64-241.9/src/ld/parsers/macho_dylib_file.cpp ld64-241.9/src/ld/parsers/macho_dylib_file.cpp
+--- ld64-241.9/src/ld/parsers/macho_dylib_file.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/ld/parsers/macho_dylib_file.cpp	2015-01-22 06:07:53.000000000 +0100
+@@ -258,11 +258,15 @@
+ bool File<A>::_s_logHashtable = false;
+ 
+ template <> const char* File<x86_64>::objCInfoSegmentName() { return "__DATA"; }
++#if SUPPORT_ARCH_arm_any
+ template <> const char* File<arm>::objCInfoSegmentName() { return "__DATA"; }
++#endif
+ template <typename A> const char* File<A>::objCInfoSegmentName() { return "__OBJC"; }
+ 
+ template <> const char* File<x86_64>::objCInfoSectionName() { return "__objc_imageinfo"; }
++#if SUPPORT_ARCH_arm_any
+ template <> const char* File<arm>::objCInfoSectionName() { return "__objc_imageinfo"; }
++#endif
+ template <typename A> const char* File<A>::objCInfoSectionName() { return "__image_info"; }
+ 
+ template <typename A>
+@@ -1020,6 +1024,7 @@
+ 	}
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ bool Parser<arm>::validFile(const uint8_t* fileContent, bool executableOrDyliborBundle)
+ {
+@@ -1046,9 +1051,11 @@
+ 			return false;
+ 	}
+ }
++#endif
+ 
+ 
+ 
++#if SUPPORT_ARCH_arm64
+ template <>
+ bool Parser<arm64>::validFile(const uint8_t* fileContent, bool executableOrDyliborBundle)
+ {
+@@ -1075,6 +1082,7 @@
+ 			return false;
+ 	}
+ }
++#endif
+ 
+ 
+ bool isDylibFile(const uint8_t* fileContent, cpu_type_t* result, cpu_subtype_t* subResult)
+@@ -1090,17 +1098,21 @@
+ 		*subResult = CPU_SUBTYPE_X86_ALL;
+ 		return true;
+ 	}
++#if SUPPORT_ARCH_arm_any
+ 	if ( Parser<arm>::validFile(fileContent, false) ) {
+ 		*result = CPU_TYPE_ARM;
+ 		const macho_header<Pointer32<LittleEndian> >* header = (const macho_header<Pointer32<LittleEndian> >*)fileContent;
+ 		*subResult = header->cpusubtype();
+ 		return true;
+ 	}
++#endif
++#if SUPPORT_ARCH_arm64
+ 	if ( Parser<arm64>::validFile(fileContent, false) ) {
+ 		*result = CPU_TYPE_ARM64;
+ 		*subResult = CPU_SUBTYPE_ARM64_ALL;
+ 		return true;
+ 	}
++#endif
+ 	return false;
+ }
+ 
+@@ -1126,6 +1138,7 @@
+ 	return "x86_64";
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ const char* Parser<arm>::fileKind(const uint8_t* fileContent)
+ {
+@@ -1141,6 +1154,7 @@
+ 	}
+ 	return "arm???";
+ }
++#endif
+ 
+ #if SUPPORT_ARCH_arm64
+ template <>
+@@ -1166,9 +1180,11 @@
+ 	if ( Parser<x86>::validFile(fileContent, true) ) {
+ 		return Parser<x86>::fileKind(fileContent);
+ 	}
++#if SUPPORT_ARCH_arm_any
+ 	if ( Parser<arm>::validFile(fileContent, true) ) {
+ 		return Parser<arm>::fileKind(fileContent);
+ 	}
++#endif
+ #if SUPPORT_ARCH_arm64
+ 	if ( Parser<arm64>::validFile(fileContent, false) ) {
+ 		return Parser<arm64>::fileKind(fileContent);
+diff -ur ld64-241.9/src/ld/parsers/macho_relocatable_file.cpp ld64-241.9/src/ld/parsers/macho_relocatable_file.cpp
+--- ld64-241.9/src/ld/parsers/macho_relocatable_file.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/ld/parsers/macho_relocatable_file.cpp	2015-01-22 20:38:57.000000000 +0100
+@@ -867,6 +867,7 @@
+ 	}
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ void Atom<arm>::verifyAlignment(const macho_section<P>&) const
+ {
+@@ -875,6 +876,7 @@
+ 			warning("ARM function not 4-byte aligned: %s from %s", this->name(), this->file()->path());
+ 	}
+ }
++#endif
+ 
+ #if SUPPORT_ARCH_arm64
+ template <>
+@@ -1262,6 +1264,7 @@
+ 	return true;
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ bool Parser<arm>::validFile(const uint8_t* fileContent, bool subtypeMustMatch, cpu_subtype_t subtype)
+ {
+@@ -1282,8 +1285,10 @@
+ 	}
+ 	return true;
+ }
++#endif
+ 
+ 
++#if SUPPORT_ARCH_arm64
+ template <>
+ bool Parser<arm64>::validFile(const uint8_t* fileContent, bool subtypeMustMatch, cpu_subtype_t subtype)
+ {
+@@ -1296,6 +1301,7 @@
+ 		return false;
+ 	return true;
+ }
++#endif
+ 
+ 
+ template <>
+@@ -1320,6 +1326,7 @@
+ 	return "x86_64";
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ const char* Parser<arm>::fileKind(const uint8_t* fileContent)
+ {
+@@ -1335,6 +1342,7 @@
+ 	}
+ 	return "arm???";
+ }
++#endif
+ 
+ #if SUPPORT_ARCH_arm64
+ template <>
+@@ -1599,11 +1607,13 @@
+ 	return false;
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ arm::P::uint_t Parser<arm>::realAddr(arm::P::uint_t addr)
+ {
+ 	return addr & (-2);
+ }
++#endif
+ 
+ template <typename A>
+ typename A::P::uint_t Parser<A>::realAddr(typename A::P::uint_t addr)
+@@ -1867,8 +1877,12 @@
+ 
+ template <> uint8_t Parser<x86>::loadCommandSizeMask()		{ return 0x03; }
+ template <> uint8_t Parser<x86_64>::loadCommandSizeMask()	{ return 0x07; }
++#if SUPPORT_ARCH_arm_any
+ template <> uint8_t Parser<arm>::loadCommandSizeMask()		{ return 0x03; }
++#endif
++#if SUPPORT_ARCH_arm64
+ template <> uint8_t Parser<arm64>::loadCommandSizeMask()	{ return 0x07; }
++#endif
+ 
+ template <typename A>
+ bool Parser<A>::parseLoadCommands()
+@@ -4065,12 +4079,14 @@
+ 		return 1 + (this->_machOSection - parser.firstMachOSection());
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ // arm does not have zero cost exceptions
+ template <> 
+ uint32_t CFISection<arm>::cfiCount(Parser<arm>& parser) 
+ {
+ 	return 0; 
+ }
++#endif
+ 
+ template <typename A>
+ uint32_t CFISection<A>::cfiCount(Parser<A>& parser)
+@@ -4198,6 +4214,7 @@
+ 
+ 
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ void CFISection<arm>::cfiParse(class Parser<arm>& parser, uint8_t* buffer, 
+ 									libunwind::CFI_Atom_Info<CFISection<arm>::OAS>::CFI_Atom_Info cfiArray[], 
+@@ -4206,6 +4223,7 @@
+ 	// arm does not use zero cost exceptions
+ 	assert(count == 0);
+ }
++#endif
+ 
+ 
+ 
+@@ -4310,8 +4328,12 @@
+ 
+ template <> bool CFISection<x86_64>::bigEndian() { return false; }
+ template <> bool CFISection<x86>::bigEndian() { return false; }
++#if SUPPORT_ARCH_arm_any
+ template <> bool CFISection<arm>::bigEndian() { return false; }
++#endif
++#if SUPPORT_ARCH_arm64
+ template <> bool CFISection<arm64>::bigEndian() { return false; }
++#endif
+ 
+ 
+ template <>
+@@ -5229,11 +5251,13 @@
+ 	return ld::Fixup::kindStoreLittleEndian32;
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ ld::Fixup::Kind NonLazyPointerSection<arm>::fixupKind()
+ {
+ 	return ld::Fixup::kindStoreLittleEndian32;
+ }
++#endif
+ 
+ template <>
+ ld::Fixup::Kind NonLazyPointerSection<arm64>::fixupKind()
+@@ -7346,10 +7370,14 @@
+ 			return ( mach_o::relocatable::Parser<x86_64>::validFile(fileContent) );
+ 		case CPU_TYPE_I386:
+ 			return ( mach_o::relocatable::Parser<x86>::validFile(fileContent) );
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			return ( mach_o::relocatable::Parser<arm>::validFile(fileContent, opts.objSubtypeMustMatch, opts.subType) );
++#endif
++#if SUPPORT_ARCH_arm64
+ 		case CPU_TYPE_ARM64:
+ 			return ( mach_o::relocatable::Parser<arm64>::validFile(fileContent, opts.objSubtypeMustMatch, opts.subType) );
++#endif
+ 	}
+ 	return false;
+ }
+@@ -7370,17 +7398,21 @@
+ 		*subResult = CPU_SUBTYPE_X86_ALL;
+ 		return true;
+ 	}
++#if SUPPORT_ARCH_arm_any
+ 	if ( mach_o::relocatable::Parser<arm>::validFile(fileContent, false, 0) ) {
+ 		*result = CPU_TYPE_ARM;
+ 		const macho_header<Pointer32<LittleEndian> >* header = (const macho_header<Pointer32<LittleEndian> >*)fileContent;
+ 		*subResult = header->cpusubtype();
+ 		return true;
+ 	}
++#endif
++#if SUPPORT_ARCH_arm_any
+ 	if ( mach_o::relocatable::Parser<arm64>::validFile(fileContent, false, 0) ) {
+ 		*result = CPU_TYPE_ARM64;
+ 		*subResult = CPU_SUBTYPE_ARM64_ALL;
+ 		return true;
+ 	}
++#endif
+ 	return false;
+ }					
+ 
+@@ -7395,9 +7427,11 @@
+ 	if ( mach_o::relocatable::Parser<x86>::validFile(fileContent) ) {
+ 		return mach_o::relocatable::Parser<x86>::fileKind(fileContent);
+ 	}
++#if SUPPORT_ARCH_arm_any
+ 	if ( mach_o::relocatable::Parser<arm>::validFile(fileContent, false, 0) ) {
+ 		return mach_o::relocatable::Parser<arm>::fileKind(fileContent);
+ 	}
++#endif
+ 	return NULL;
+ }
+ 
+@@ -7409,9 +7443,11 @@
+ 	if ( mach_o::relocatable::Parser<x86_64>::validFile(fileContent) ) {
+ 		return mach_o::relocatable::Parser<x86_64>::hasObjC2Categories(fileContent);
+ 	}
++#if SUPPORT_ARCH_arm_any
+ 	else if ( mach_o::relocatable::Parser<arm>::validFile(fileContent, false, 0) ) {
+ 		return mach_o::relocatable::Parser<arm>::hasObjC2Categories(fileContent);
+ 	}
++#endif
+ 	else if ( mach_o::relocatable::Parser<x86>::validFile(fileContent, false, 0) ) {
+ 		return mach_o::relocatable::Parser<x86>::hasObjC2Categories(fileContent);
+ 	}
+diff -ur ld64-241.9/src/ld/passes/branch_island.cpp ld64-241.9/src/ld/passes/branch_island.cpp
+--- ld64-241.9/src/ld/passes/branch_island.cpp	2014-09-11 00:24:46.000000000 +0200
++++ ld64-241.9/src/ld/passes/branch_island.cpp	2015-01-22 06:23:52.000000000 +0100
+@@ -285,6 +285,7 @@
+ static uint64_t textSizeWhenMightNeedBranchIslands(const Options& opts, bool seenThumbBranch)
+ {
+ 	switch ( opts.architecture() ) {
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			if ( ! seenThumbBranch )
+ 				return 32000000;  // ARM can branch +/- 32MB
+@@ -293,6 +294,7 @@
+ 			else
+ 				return  4000000;  // thumb1 can branch +/- 4MB
+ 			break;
++#endif
+ 	}
+ 	assert(0 && "unexpected architecture");
+ 	return 0x100000000LL;
+@@ -302,6 +304,7 @@
+ static uint64_t maxDistanceBetweenIslands(const Options& opts, bool seenThumbBranch)
+ {
+ 	switch ( opts.architecture() ) {
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			if ( ! seenThumbBranch )
+ 				return 30*1024*1024;	// 2MB of branch islands per 32MB
+@@ -310,6 +313,7 @@
+ 			else
+ 				return 3500000;			// 0.5MB of branch islands per 4MB
+ 			break;
++#endif
+ 	}
+ 	assert(0 && "unexpected architecture");
+ 	return 0x100000000LL;
+@@ -654,8 +658,10 @@
+ 	
+ 	// only ARM needs branch islands
+ 	switch ( opts.architecture() ) {
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			break;
++#endif
+ 		default:
+ 			return;
+ 	}
+diff -ur ld64-241.9/src/ld/passes/branch_shim.cpp ld64-241.9/src/ld/passes/branch_shim.cpp
+--- ld64-241.9/src/ld/passes/branch_shim.cpp	2014-09-11 00:24:46.000000000 +0200
++++ ld64-241.9/src/ld/passes/branch_shim.cpp	2015-01-22 06:33:01.000000000 +0100
+@@ -276,6 +276,9 @@
+ //
+ void doPass(const Options& opts, ld::Internal& state)
+ {	
++#if !SUPPORT_ARCH_arm_any
++	return;
++#else
+ 	// only make branch shims in final linked images
+ 	if ( opts.outputKind() == Options::kObjectFile )
+ 		return;
+@@ -386,6 +389,7 @@
+ 		// append all new shims to end of __text
+ 		sect->atoms.insert(sect->atoms.end(), shims.begin(), shims.end());
+ 	}
++#endif
+ }
+ 
+ 
+diff -ur ld64-241.9/src/ld/passes/dtrace_dof.cpp ld64-241.9/src/ld/passes/dtrace_dof.cpp
+--- ld64-241.9/src/ld/passes/dtrace_dof.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/ld/passes/dtrace_dof.cpp	2015-01-22 06:33:51.000000000 +0100
+@@ -179,8 +179,12 @@
+ 	switch ( opts.architecture() ) {
+ 		case CPU_TYPE_I386:
+ 		case CPU_TYPE_X86_64:
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
++#endif
++#if SUPPORT_ARCH_arm64
+ 		case CPU_TYPE_ARM64:
++#endif
+ 			storeKind = ld::Fixup::kindStoreLittleEndian32;
+ 			break;
+ 		default:
+diff -ur ld64-241.9/src/ld/passes/stubs/stubs.cpp ld64-241.9/src/ld/passes/stubs/stubs.cpp
+--- ld64-241.9/src/ld/passes/stubs/stubs.cpp	2014-09-11 00:24:46.000000000 +0200
++++ ld64-241.9/src/ld/passes/stubs/stubs.cpp	2015-01-22 06:34:56.000000000 +0100
+@@ -324,9 +324,11 @@
+ 				if ( _options.outputKind() != Options::kDynamicLibrary ) 
+ 					throwf("resolver functions (%s) can only be used in dylibs", atom->name());
+ 				if ( !_options.makeCompressedDyldInfo() ) {
++#if SUPPORT_ARCH_arm_any
+ 					if ( _options.architecture() == CPU_TYPE_ARM )
+ 						throwf("resolver functions (%s) can only be used when targeting iOS 4.2 or later", atom->name());
+ 					else
++#endif
+ 						throwf("resolver functions (%s) can only be used when targeting Mac OS X 10.6 or later", atom->name());
+ 				}
+ 				stubFor[atom] = NULL;	
+@@ -354,6 +356,7 @@
+ 		throw "symbol dyld_stub_binding_helper not found, normally in crt1.o/dylib1.o/bundle1.o";
+ 
+ 	// disable arm close stubs in some cases
++#if SUPPORT_ARCH_arm_any
+ 	if ( _architecture == CPU_TYPE_ARM ) {
+         if ( codeSize > 4*1024*1024 )
+             _largeText = true;
+@@ -377,6 +380,7 @@
+             }
+         }
+     }
++#endif
+ 	
+ 	// make stub atoms 
+ 	for (std::map<const ld::Atom*,ld::Atom*>::iterator it = stubFor.begin(); it != stubFor.end(); ++it) {
+diff -ur ld64-241.9/src/other/ObjectDump.cpp ld64-241.9/src/other/ObjectDump.cpp
+--- ld64-241.9/src/other/ObjectDump.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/other/ObjectDump.cpp	2015-01-22 05:32:46.000000000 +0100
+@@ -806,6 +806,7 @@
+ 		case ld::Fixup::kindStoreThumbHigh16:
+ 			printf(", then store high-16 in Thumb movt");
+ 			break;
++#if SUPPORT_ARCH_arm64
+ 		case ld::Fixup::kindStoreARM64Branch26:
+ 			printf(", then store as ARM64 26-bit pcrel branch");
+ 			break;
+@@ -845,6 +846,7 @@
+ 		case ld::Fixup::kindStoreARM64PCRelToGOT:
+ 			printf(", then store as 32-bit delta to GOT entry");
+ 			break;
++#endif
+ 		case ld::Fixup::kindDtraceExtra:
+ 			printf("dtrace static probe extra info");
+ 			break;
+@@ -989,6 +991,7 @@
+ 		case ld::Fixup::kindSetTargetTLVTemplateOffsetLittleEndian64:
+ 			printf("tlv template offset of %s", referenceTargetAtomName(ref));
+ 			break;
++#if SUPPORT_ARCH_arm64
+ 		case ld::Fixup::kindStoreTargetAddressARM64Branch26:
+ 			printf("ARM64 store 26-bit pcrel branch to %s", referenceTargetAtomName(ref));
+ 			break;
+@@ -1022,6 +1025,7 @@
+ 		case ld::Fixup::kindStoreTargetAddressARM64TLVPLoadNowLeaPageOff12:
+ 			printf("ARM64 store 12-bit page offset of lea for TLV of %s", referenceTargetAtomName(ref));
+ 			break;
++#endif
+ 		//default:
+ 		//	printf("unknown fixup");
+ 		//	break;
+diff -ur ld64-241.9/src/other/rebase.cpp ld64-241.9/src/other/rebase.cpp
+--- ld64-241.9/src/other/rebase.cpp	2014-09-11 00:24:46.000000000 +0200
++++ ld64-241.9/src/other/rebase.cpp	2015-01-22 05:46:29.000000000 +0100
+@@ -160,9 +160,11 @@
+ 					case CPU_TYPE_X86_64:
+ 						fRebasers.push_back(new Rebaser<x86_64>(&p[fileOffset]));
+ 						break;
++#if SUPPORT_ARCH_arm_any
+ 					case CPU_TYPE_ARM:
+ 						fRebasers.push_back(new Rebaser<arm>(&p[fileOffset]));
+ 						break;
++#endif
+ 					default:
+ 						throw "unknown file format";
+ 				}
+@@ -186,9 +188,11 @@
+ 			else if ( (OSSwapLittleToHostInt32(mh->magic) == MH_MAGIC_64) && (OSSwapLittleToHostInt32(mh->cputype) == CPU_TYPE_X86_64)) {
+ 				fRebasers.push_back(new Rebaser<x86_64>(mh));
+ 			}
++#if SUPPORT_ARCH_arm_any
+ 			else if ( (OSSwapLittleToHostInt32(mh->magic) == MH_MAGIC) && (OSSwapLittleToHostInt32(mh->cputype) == CPU_TYPE_ARM)) {
+ 				fRebasers.push_back(new Rebaser<arm>(mh));
+ 			}
++#endif
+ 			else {
+ 				throw "unknown file format";
+ 			}
+@@ -236,7 +240,9 @@
+ template <> cpu_type_t Rebaser<ppc64>::getArchitecture()  const { return CPU_TYPE_POWERPC64; }
+ template <> cpu_type_t Rebaser<x86>::getArchitecture()    const { return CPU_TYPE_I386; }
+ template <> cpu_type_t Rebaser<x86_64>::getArchitecture() const { return CPU_TYPE_X86_64; }
++#if SUPPORT_ARCH_arm_any
+ template <> cpu_type_t Rebaser<arm>::getArchitecture() const { return CPU_TYPE_ARM; }
++#endif
+ 
+ template <typename A>
+ uint64_t Rebaser<A>::getBaseAddress() const
+@@ -875,8 +881,10 @@
+ 			return "i386";
+ 		case CPU_TYPE_X86_64:
+ 			return "x86_64";
++#if SUPPORT_ARCH_arm_any
+ 		case CPU_TYPE_ARM:
+ 			return "arm";
++#endif
+ 	}
+ 	return "unknown";
+ }
+@@ -969,6 +977,7 @@
+ 		else if ( arch == CPU_TYPE_X86_64 ) {
+ 			return 0x200000000ULL;
+ 		}
++#if SUPPORT_ARCH_arm_any
+ 		else if ( arch == CPU_TYPE_ARM ) {
+ 			// place dylibs below dyld
+ 			uint64_t topAddr = 0x2FE00000;
+@@ -977,6 +986,7 @@
+ 				throwf("total size of images (0x%X) does not fit below 0x2FE00000", totalSize);
+ 			return topAddr - totalSize;
+ 		}
++#endif
+ 		else
+ 			throw "unknown architecture";
+ 	}
+@@ -1043,7 +1053,9 @@
+ 			onlyArchs.insert(CPU_TYPE_POWERPC64);
+ 			onlyArchs.insert(CPU_TYPE_I386);
+ 			onlyArchs.insert(CPU_TYPE_X86_64);
++#if SUPPORT_ARCH_arm_any
+ 			onlyArchs.insert(CPU_TYPE_ARM);
++#endif
+ 		}
+ 		
+ 		// scan files and collect sizes
+diff -ur ld64-241.9/src/other/unwinddump.cpp ld64-241.9/src/other/unwinddump.cpp
+--- ld64-241.9/src/other/unwinddump.cpp	2015-01-22 20:59:47.000000000 +0100
++++ ld64-241.9/src/other/unwinddump.cpp	2015-01-22 05:45:28.000000000 +0100
+@@ -97,7 +97,9 @@
+ 
+ template <>	 const char*	UnwindPrinter<x86>::archName()		{ return "i386"; }
+ template <>	 const char*	UnwindPrinter<x86_64>::archName()	{ return "x86_64"; }
++#if SUPPORT_ARCH_arm_any
+ template <>	 const char*	UnwindPrinter<arm>::archName()		{ return "arm"; }
++#endif
+ #if SUPPORT_ARCH_arm64
+ template <>	 const char*	UnwindPrinter<arm64>::archName()	{ return "arm64"; }
+ #endif
+@@ -1072,7 +1074,9 @@
+ #if SUPPORT_ARCH_arm64
+ 			onlyArchs.insert(CPU_TYPE_ARM64);
+ #endif
++#if SUPPORT_ARCH_arm_any
+ 			onlyArchs.insert(CPU_TYPE_ARM);
++#endif
+ 		}
+ 		
+ 		// process each file
+--- ld64-241.9/src/other/machochecker.cpp	2015-01-23 01:54:12.000000000 +0100
++++ ld64-241.9/src/other/machochecker.cpp	2015-01-23 01:57:11.000000000 +0100
+@@ -252,6 +252,7 @@
+ 	return false;
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ bool MachOChecker<arm>::validFile(const uint8_t* fileContent)
+ {	
+@@ -269,6 +270,7 @@
+ 	}
+ 	return false;
+ }
++#endif
+ 
+ #if SUPPORT_ARCH_arm64
+ template <>
+@@ -294,7 +296,9 @@
+ template <> uint8_t MachOChecker<ppc64>::loadCommandSizeMask()	{ return 0x07; }
+ template <> uint8_t MachOChecker<x86>::loadCommandSizeMask()	{ return 0x03; }
+ template <> uint8_t MachOChecker<x86_64>::loadCommandSizeMask() { return 0x07; }
++#if SUPPORT_ARCH_arm_any
+ template <> uint8_t MachOChecker<arm>::loadCommandSizeMask()	{ return 0x03; }
++#endif
+ #if SUPPORT_ARCH_arm64
+ template <> uint8_t MachOChecker<arm64>::loadCommandSizeMask()	{ return 0x07; }
+ #endif
+@@ -324,11 +328,13 @@
+ 	return threadInfo->thread_register(7);
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ arm::P::uint_t MachOChecker<arm>::getInitialStackPointer(const macho_thread_command<arm::P>* threadInfo)
+ {
+ 	return threadInfo->thread_register(13);
+ }
++#endif
+ 
+ #if SUPPORT_ARCH_arm64
+ template <>
+@@ -362,11 +368,13 @@
+ 	return threadInfo->thread_register(16);
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ arm::P::uint_t MachOChecker<arm>::getEntryPoint(const macho_thread_command<arm::P>* threadInfo)
+ {
+ 	return threadInfo->thread_register(15);
+ }
++#endif
+ 
+ #if SUPPORT_ARCH_arm64
+ template <>
+@@ -1025,6 +1033,7 @@
+ 	return fFirstWritableSegment->vmaddr();
+ }
+ 
++#if SUPPORT_ARCH_arm_any
+ template <>
+ arm::P::uint_t MachOChecker<arm>::relocBase()
+ {
+@@ -1033,6 +1042,7 @@
+ 	else
+ 		return fFirstSegment->vmaddr();
+ }
++#endif
+ 
+ #if SUPPORT_ARCH_arm64
+ template <>

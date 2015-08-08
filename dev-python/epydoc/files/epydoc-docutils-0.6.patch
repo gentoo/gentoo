@@ -1,0 +1,27 @@
+Make epydoc work with docutils-0.6.
+
+Patch created by Engelbert Gruber (grubert) and adjusted by Martin von Gagern.
+
+References:
+http://sourceforge.net/tracker/?func=detail&aid=2895197&group_id=32455&atid=405618
+http://thread.gmane.org/gmane.text.docutils.devel/4888/focus=4924
+http://bugs.gentoo.org/287546
+
+Index: epydoc-3.0.1/epydoc/markup/restructuredtext.py
+===================================================================
+--- epydoc-3.0.1.orig/epydoc/markup/restructuredtext.py
++++ epydoc-3.0.1/epydoc/markup/restructuredtext.py
+@@ -304,10 +304,11 @@ class _SummaryExtractor(NodeVisitor):
+         # Extract the first sentence.
+         for child in node:
+             if isinstance(child, docutils.nodes.Text):
+-                m = self._SUMMARY_RE.match(child.data)
++                data = child.astext()
++                m = self._SUMMARY_RE.match(data)
+                 if m:
+                     summary_pieces.append(docutils.nodes.Text(m.group(1)))
+-                    other = child.data[m.end():]
++                    other = data[m.end():]
+                     if other and not other.isspace():
+                         self.other_docs = True
+                     break

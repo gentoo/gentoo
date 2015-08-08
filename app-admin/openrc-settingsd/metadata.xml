@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>tetromino@gentoo.org</email>
+	<name>Alexandre Rostovtsev</name>
+</maintainer>
+<herd>gnome</herd>
+<use>
+	<flag name="systemd">Use the versions of dbus and polkit files provided by
+		<pkg>sys-apps/systemd</pkg></flag>
+</use>
+</pkgmetadata>

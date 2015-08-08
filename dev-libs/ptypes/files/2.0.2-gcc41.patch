@@ -1,0 +1,48 @@
+diff -Naur ptypes-2.0.2-orig/include/pstreams.h ptypes-2.0.2/include/pstreams.h
+--- ptypes-2.0.2-orig/include/pstreams.h	2006-06-09 09:41:51.000000000 -0400
++++ ptypes-2.0.2/include/pstreams.h	2006-06-09 09:42:30.000000000 -0400
+@@ -266,6 +266,9 @@
+ // internal class used in fdxstm
+ //
+ 
++class ptpublic fdxstm; 
++class unit_thread;
++
+ class ptpublic fdxoutstm: public outstm
+ {
+     friend class fdxstm;
+diff -Naur ptypes-2.0.2-orig/include/ptypes.h ptypes-2.0.2/include/ptypes.h
+--- ptypes-2.0.2-orig/include/ptypes.h	2006-06-09 09:41:51.000000000 -0400
++++ ptypes-2.0.2/include/ptypes.h	2006-06-09 09:42:30.000000000 -0400
+@@ -46,6 +46,10 @@
+ #  define VARIANT_TYPECAST_HACK
+ #endif
+ 
++#if (__GNUC__ == 4)
++#  define VARIANT_TYPECAST_HACK
++#endif
++
+ 
+ // -------------------------------------------------------------------- //
+ // --- string class --------------------------------------------------- //
+@@ -71,6 +75,8 @@
+ 
+ ptpublic extern char* emptystr;
+ 
++class ptpublic variant; 
++class ptpublic _varray;
+ 
+ class ptpublic string 
+ {
+diff -Naur ptypes-2.0.2-orig/src/pvariant.cxx ptypes-2.0.2/src/pvariant.cxx
+--- ptypes-2.0.2-orig/src/pvariant.cxx	2006-06-09 09:41:51.000000000 -0400
++++ ptypes-2.0.2/src/pvariant.cxx	2006-06-09 09:42:55.000000000 -0400
+@@ -38,7 +38,7 @@
+ protected:
+     int refcount;
+ 
+-    virtual int _varray::compare(const void* key, const void* item) const;
++    virtual int compare(const void* key, const void* item) const;
+ 
+     friend class variant;
+ 

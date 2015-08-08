@@ -1,0 +1,55 @@
+diff --git a/Makefile b/Makefile
+index 600e8db..afad025 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1072,16 +1072,7 @@ $(ROOTPCH): $(ROOTCLINGSTAGE1DEP) $(ALLHDRS) $(CLINGETCPCH) $(ORDER_) $(ALLLIBS)
+ 
+ ifeq ($(BUILDX11),yes)
+ ifeq ($(BUILDASIMAGE),yes)
+-html: rootexecs postbin changelog releasenotes
+-ifneq ($(USECONFIG),FALSE)
+-	@if [ "x`which root.exe`" != "x$(DESTDIR)$(BINDIR)/root.exe" ] \
+-	  || [ "`which root.exe`" -ot "bin/root.exe" ]; then \
+-	  echo 'ERROR: root.exe has not been installed by this build.'; \
+-	  echo '       Run "make install" before running "make html".'; \
+-	  exit 1; \
+-	fi
+-endif
+-	@$(MAKELOGHTML)
++html: compiledata releasenotes
+ 	@$(MAKEHTML)
+ else
+ html:
+diff --git a/build/unix/makehtml.sh b/build/unix/makehtml.sh
+index a94e790..8b4589d 100755
+--- a/build/unix/makehtml.sh
++++ b/build/unix/makehtml.sh
+@@ -1,16 +1,16 @@
+ #! /bin/sh
+ 
+ dir=`pwd`
+-ROOT=$dir/bin/root
++ROOT=root
+ cd tutorials
+ # we need tutorials/hsimple.root
+ if [ ! -f hsimple.root ]; then
+-   $ROOT -n -l -b -q hsimple.C
++   $ROOT -n -l -b -q hsimple.C && exit 1
+ fi
+ cd tree
+ # we need tutorials/tree/cernstaff.root
+ if [ ! -f cernstaff.root ]; then
+-   $ROOT -n -l -b -q cernbuild.C
++   $ROOT -n -l -b -q cernbuild.C || exit 1
+ fi
+ cd $dir
+ 
+@@ -20,7 +20,7 @@ echo ""
+ 
+ # To generate the full documentation, we do need to
+ # use the graphics engine, so do not use '-b'.
+-$ROOT -n -l <<makedoc
++$ROOT -n -l <<makedoc || exit 1
+     THtml h;
+     h.LoadAllLibs();
+     h.MakeAll();

@@ -1,0 +1,30 @@
+diff --git a/test/py/ganeti.hooks_unittest.py b/test/py/ganeti.hooks_unittest.py
+index 30e00d8..50f91fc 100755
+--- a/test/py/ganeti.hooks_unittest.py
++++ b/test/py/ganeti.hooks_unittest.py
+@@ -192,7 +192,7 @@ class TestHooksRunner(unittest.TestCase):
+       os.symlink("/usr/bin/env", fname)
+       self.torm.append((fname, False))
+       env_snt = {"PHASE": phase}
+-      env_exp = "PHASE=%s" % phase
++      env_exp = "LD_PRELOAD=libsandbox.so\\nPHASE=%s" % phase
+       self.failUnlessEqual(self.hr.RunHooks(self.hpath, phase, env_snt),
+                            [(self._rname(fname), HKR_SUCCESS, env_exp)])
+ 
+diff --git a/test/py/ganeti.utils.process_unittest.py b/test/py/ganeti.utils.process_unittest.py
+index 2e36cfa..e0392b2 100755
+--- a/test/py/ganeti.utils.process_unittest.py
++++ b/test/py/ganeti.utils.process_unittest.py
+@@ -341,10 +341,10 @@ class TestRunCmd(testutils.GanetiTestCase):
+   def testResetEnv(self):
+     """Test environment reset functionality"""
+     self.failUnlessEqual(utils.RunCmd(["env"], reset_env=True).stdout.strip(),
+-                         "")
++                         "LD_PRELOAD=libsandbox.so")
+     self.failUnlessEqual(utils.RunCmd(["env"], reset_env=True,
+                                       env={"FOO": "bar",}).stdout.strip(),
+-                         "FOO=bar")
++                         "LD_PRELOAD=libsandbox.so\nFOO=bar")
+ 
+   def testNoFork(self):
+     """Test that nofork raise an error"""

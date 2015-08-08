@@ -1,0 +1,55 @@
+--- gnu-efi-3.0a.orig/gnuefi/elf_ia32_efi.lds
++++ gnu-efi-3.0a/gnuefi/elf_ia32_efi.lds
+@@ -17,6 +17,7 @@
+    *(.rodata*)
+    *(.data)
+    *(.data1)
++   *(.data.*)
+    *(.sdata)
+    *(.got.plt)
+    *(.got)
+@@ -34,8 +35,13 @@
+   .rel :
+   {
+     *(.rel.data)
++    *(.rel.data.*)
+     *(.rel.got)
+     *(.rel.stab)
++    *(.data.rel.ro.local)
++    *(.data.rel.local)
++    *(.data.rel.ro)
++    *(.data.rel*)
+   }
+   . = ALIGN(4096);
+   .dynsym   : { *(.dynsym) }
+@@ -46,4 +52,9 @@
+   {
+     *(.rel.reloc)
+   }
++  .ignored :
++  {
++    *(.eh_frame)
++  }
+ }
++
+--- gnu-efi-3.0a.orig/gnuefi/elf_ia64_efi.lds
++++ gnu-efi-3.0a/gnuefi/elf_ia64_efi.lds
+@@ -28,8 +28,7 @@
+   {
+    *(.rodata*)
+    *(.ctors)
+-   *(.data)
+-   *(.data1)
++   *(.data*)
+    *(.gnu.linkonce.d*)
+    *(.plabel)	/* data whose relocs we want to ignore */
+    *(.IA_64.unwind)
+@@ -48,7 +47,7 @@
+   .rela :
+   {
+     *(.rela.text)
+-    *(.rela.data)
++    *(.rela.data*)
+     *(.rela.sdata)
+     *(.rela.got)
+     *(.rela.gnu.linkonce.d*)

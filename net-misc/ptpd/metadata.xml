@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jan.breuer@jaybee.cz</email>
+		<name>Jan Breuer</name>
+	</maintainer>
+	<use>
+		<flag name="debug">Enable debugging informations</flag>
+		<flag name="experimental">Enable experimental features</flag>
+		<flag name="ntp">Enable NTPD cooperation</flag>
+		<flag name="snmp">Require <pkg>net-analyzer/net-snmp</pkg> to enable SNMP configuration</flag>
+		<flag name="statistics">Enable compution of statistics</flag>
+		<flag name="pcap">Require <pkg>net-libs/libpcap</pkg> to allow layer 2 (raw Ethernet) transport</flag>
+		<flag name="slave-only">Enable slave only operation (remove master mode functionality)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ptpd</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,148 @@
+From b3815e96635c8f89c6161bdb6de53cd3c01c8535 Mon Sep 17 00:00:00 2001
+From: David Woodhouse <David.Woodhouse@intel.com>
+Date: Tue, 12 Aug 2014 14:55:39 +0100
+Subject: [PATCH 16/34] Add HOTP support
+
+This requires migrating the token_secret from a config item to a secret,
+which thankfully doesn't seem to be too diffcult.
+---
+ auth-dialog/main.c                  | 24 +++++++++++++++++++++++-
+ properties/nm-openconnect-dialog.ui |  6 ++++++
+ properties/nm-openconnect.c         | 18 ++++++++++++++----
+ 3 files changed, 43 insertions(+), 5 deletions(-)
+
+diff --git a/auth-dialog/main.c b/auth-dialog/main.c
+index 2133e52..b078d48 100644
+--- a/auth-dialog/main.c
++++ b/auth-dialog/main.c
+@@ -1194,7 +1194,9 @@ static int get_config (GHashTable *options, GHashTable *secrets,
+ 		openconnect_passphrase_from_fsid(vpninfo);
+ 
+ 	token_mode = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_TOKEN_MODE);
+-	token_secret = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_TOKEN_SECRET);
++	token_secret = g_hash_table_lookup (secrets, NM_OPENCONNECT_KEY_TOKEN_SECRET);
++	if (!token_secret || !token_secret[0])
++		token_secret = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_TOKEN_SECRET);
+ 	if (token_mode) {
+ 		int ret = 0;
+ 
+@@ -1204,6 +1206,10 @@ static int get_config (GHashTable *options, GHashTable *secrets,
+ 			ret = __openconnect_set_token_mode(vpninfo, OC_TOKEN_MODE_STOKEN, NULL);
+ 		else if (!strcmp(token_mode, "totp") && token_secret)
+ 			ret = __openconnect_set_token_mode(vpninfo, OC_TOKEN_MODE_TOTP, token_secret);
++#if OPENCONNECT_CHECK_VER(3,4)
++		else if (!strcmp(token_mode, "hotp") && token_secret)
++			ret = __openconnect_set_token_mode(vpninfo, OC_TOKEN_MODE_HOTP, token_secret);
++#endif
+ 
+ 		if (ret)
+ 			fprintf(stderr, "Failed to initialize software token: %d\n", ret);
+@@ -1229,6 +1235,17 @@ static void populate_vpnhost_combo(auth_ui_data *ui_data)
+ 	}
+ }
+ 
++#if OPENCONNECT_CHECK_VER(3,4)
++static int update_token(void *cbdata, const char *tok)
++{
++	auth_ui_data *ui_data = cbdata;
++	g_hash_table_insert (ui_data->secrets, g_strdup (NM_OPENCONNECT_KEY_TOKEN_SECRET),
++			     g_strdup(tok));
++
++	return 0;
++}
++#endif
++
+ static int write_new_config(void *cbdata, char *buf, int buflen)
+ {
+ 	auth_ui_data *ui_data = cbdata;
+@@ -1801,6 +1818,11 @@ int main (int argc, char **argv)
+ 		fprintf(stderr, "Failed to find VPN UUID %s\n", vpn_uuid);
+ 		return 1;
+ 	}
++
++#if OPENCONNECT_CHECK_VER(3,4)
++	openconnect_set_token_callbacks (_ui_data->vpninfo, _ui_data, NULL, update_token);
++#endif
++
+ 	build_main_dialog(_ui_data);
+ 
+ #ifdef OPENCONNECT_OPENSSL
+diff --git a/properties/nm-openconnect-dialog.ui b/properties/nm-openconnect-dialog.ui
+index b3401db..4643b73 100644
+--- a/properties/nm-openconnect-dialog.ui
++++ b/properties/nm-openconnect-dialog.ui
+@@ -766,6 +766,12 @@
+             <col id="2" translatable="no">totp</col>
+             <col id="3" translatable="no">True</col>
+           </row>
++          <row>
++            <col id="0" translatable="yes">HOTP - manually entered</col>
++            <col id="1" translatable="no">hotp</col>
++            <col id="2" translatable="no">hotp</col>
++            <col id="3" translatable="no">True</col>
++          </row>
+         </data>
+       </object>
+ </interface>
+diff --git a/properties/nm-openconnect.c b/properties/nm-openconnect.c
+index e00e757..dfd5f5c 100644
+--- a/properties/nm-openconnect.c
++++ b/properties/nm-openconnect.c
+@@ -214,7 +214,7 @@ import (NMVpnPluginUiInterface *iface, const char *path, GError **error)
+ 	/* Soft token secret */
+ 	buf = g_key_file_get_string (keyfile, "openconnect", "StokenString", NULL);
+ 	if (buf)
+-		nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET, buf);
++		nm_setting_vpn_add_secret (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET, buf);
+ 
+ 	return connection;
+ }
+@@ -297,9 +297,14 @@ export (NMVpnPluginUiInterface *iface,
+ 	if (value && strlen (value))
+ 		token_mode = value;
+ 
+-	value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET);
++	value = nm_setting_vpn_get_secret (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET);
+ 	if (value && strlen (value))
+ 		token_secret = value;
++	else {
++		value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET);
++		if (value && strlen (value))
++			token_secret = value;
++	}
+ 
+ 	fprintf (f,
+ 		 "[openconnect]\n"
+@@ -427,6 +432,9 @@ init_token_mode_options (GtkComboBox *token_mode)
+ 			iter_valid = gtk_list_store_remove (token_mode_list, &iter);
+ 		else if (!strcmp (token_type, "totp") && !openconnect_has_oath_support ())
+ 			iter_valid = gtk_list_store_remove (token_mode_list, &iter);
++		else if (!strcmp (token_type, "hotp") &&
++				 (!openconnect_has_oath_support () || !OPENCONNECT_CHECK_VER(3,4)))
++			iter_valid = gtk_list_store_remove (token_mode_list, &iter);
+ 		else {
+ 			iter_valid = gtk_tree_model_iter_next (model, &iter);
+ 			valid_rows++;
+@@ -492,7 +500,9 @@ init_token_ui (OpenconnectPluginUiWidget *self,
+ 	if (!buffer)
+ 		return FALSE;
+ 	if (s_vpn) {
+-		value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET);
++		value = nm_setting_vpn_get_secret (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET);
++		if (!value)
++			value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET);
+ 		if (value)
+ 			gtk_text_buffer_set_text (buffer, value, -1);
+ 	}
+@@ -653,7 +663,7 @@ update_connection (NMVpnPluginUiWidgetInterface *iface,
+ 		*dst = 0;
+ 
+ 		if (strlen (str))
+-			nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET, str);
++			nm_setting_vpn_add_secret (s_vpn, NM_OPENCONNECT_KEY_TOKEN_SECRET, str);
+ 	}
+ 
+ 	if (!check_validity (self, error))
+-- 
+2.2.0
+

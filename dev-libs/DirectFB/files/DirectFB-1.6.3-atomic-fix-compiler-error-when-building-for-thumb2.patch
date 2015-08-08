@@ -1,0 +1,50 @@
+From 253e1d0d10bdece158f8f68dc48c19ab57d2da29 Mon Sep 17 00:00:00 2001
+From: Mandeep Singh Baines <msb@chromium.org>
+Date: Mon, 18 Mar 2013 19:03:36 -0700
+Subject: [PATCH] atomic: fix compiler error when building for thumb2
+
+Fixed the following error:
+
+{standard input}: Assembler messages:
+{standard input}:179: Error: thumb conditional instruction should be in IT block
+-- `strexeq r4,r1,[r2]'
+{standard input}:283: Error: thumb conditional instruction should be in IT block
+-- `strexeq r1,r4,[r2]'
+{standard input}:379: Error: thumb conditional instruction should be in IT block
+-- `strexeq r1,r2,[r0]'
+make[4]: *** [fifo.lo] Error 1
+
+Fix was to add the appropriate it block.
+
+While I was at it, I optimized the code a bit by:
+
+1) Moved the mov instruction above the ldrex to minimize the number
+of instructions between the ldex and strex as recommeded here:
+http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0552a/BABFFBJB.html
+2) Saved 4 bytes by replacing mov with movs and teq with cmp.
+
+Signed-off-by: Mandeep Singh Baines <msb@chromium.org>
+---
+ lib/direct/atomic.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/lib/direct/atomic.h b/lib/direct/atomic.h
+index 94cb0c9..8dc0dfb 100644
+--- a/lib/direct/atomic.h
++++ b/lib/direct/atomic.h
+@@ -191,9 +191,10 @@ static inline int _D__atomic_cmpxchg(volatile int *ptr, int old, int _new)
+ 
+ 	do {
+ 		__asm__ __volatile__("@ atomic_cmpxchg\n"
++		"movs	%0, #0\n"
+ 		"ldrex	%1, [%2]\n"
+-		"mov	%0, #0\n"
+-		"teq	%1, %3\n"
++		"cmp	%1, %3\n"
++		"it	eq\n"
+ 		"strexeq %0, %4, [%2]\n"
+ 		    : "=&r" (res), "=&r" (oldval)
+ 		    : "r" (ptr), "Ir" (old), "r" (_new)
+-- 
+1.7.12.4
+

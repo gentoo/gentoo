@@ -1,0 +1,42 @@
+ Makefile | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index f6507b5..d080f2b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,12 @@
+ # See COPYING file for copyright and license details.
+-include config.mk
++VERSION = 1.0
++RELDATE = 2012-08-19
++PREFIX = /usr
++MANPREFIX = $(PREFIX)/share/man
++CFLAGS += -std=c99 -pedantic -Wall -Wextra \
++          -D_POSIX_C_SOURCE=200112L -DVERSION=\"$(VERSION)\"
++CC ?= cc
++LD = $(CC)
+ 
+ NAME = getxbook
+ 
+@@ -20,16 +27,16 @@ $(BIN): util.a
+ 
+ .o:
+ 	@echo LD $@
+-	@$(LD) -o $@ $< util.a $(LDFLAGS)
++	$(LD) $(LDFLAGS) -o $@ $< util.a
+ 
+ .c.o:
+ 	@echo CC $<
+-	@$(CC) -c $(CFLAGS) $<
++	$(CC) -c $(CFLAGS) $<
+ 
+ util.a: $(LIB)
+ 	@echo AR $@
+-	@$(AR) -r -c $@ $(LIB)
+-	@ranlib $@
++	$(AR) -r -c $@ $(LIB)
++	$(RANLIB) $@
+ 
+ install: all
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin

@@ -1,0 +1,43 @@
+--- oidentd.orig/src/kernel/linux.c	2006-05-22 06:58:53.000000000 +0300
++++ oidentd-2.0.8/src/kernel/linux.c	2007-07-11 21:28:56.000000000 +0300
+@@ -48,6 +48,7 @@
+ #define CFILE6		"/proc/net/tcp6"
+ #define MASQFILE	"/proc/net/ip_masquerade"
+ #define CONNTRACK	"/proc/net/ip_conntrack"
++#define NFCONNTRACK	"/proc/net/nf_conntrack"
+ 
+ static int netlink_sock;
+ extern struct sockaddr_storage proxy;
+@@ -82,7 +83,15 @@
+ 				debug("fopen: %s: %s", CONNTRACK, strerror(errno));
+ 				return false;
+ 			}
+-			masq_fp = fopen("/dev/null", "r");
++
++			masq_fp = fopen(NFCONNTRACK, "r");
++			if (masq_fp == NULL) {
++				if (errno != ENOENT) {
++					debug("fopen: %s: %s", NFCONNTRACK, strerror(errno));
++					return false;
++				}
++				masq_fp = fopen("/dev/null", "r");
++			}
+ 		}
+ 
+ 		netfilter = true;
+@@ -367,6 +376,15 @@
+ 				&nport_temp, &mport_temp);
+ 			}
+ 
++			if (ret != 21) {
++				ret = sscanf(buf,
++					"%*15s %*d %15s %*d %*d ESTABLISHED src=%d.%d.%d.%d dst=%d.%d.%d.%d sport=%d dport=%d packets=%*d bytes=%*d src=%d.%d.%d.%d dst=%d.%d.%d.%d sport=%d dport=%d",
++				proto, &l1, &l2, &l3, &l4, &r1, &r2, &r3, &r4,
++				&masq_lport_temp, &masq_fport_temp,
++				&nl1, &nl2, &nl3, &nl4, &nr1, &nr2, &nr3, &nr4,
++				&nport_temp, &mport_temp);
++			}
++
+ 			if (ret != 21)
+ 				continue;
+ 

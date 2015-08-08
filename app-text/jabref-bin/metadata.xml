@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<herd>sci</herd>
+	<maintainer>
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<longdescription lang="en">
+		JabRef is an open source bibliography reference manager. The native
+		file format used by JabRef is BibTeX, the standard LaTeX bibliography
+		format.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">jabref</remote-id>
+	</upstream>
+</pkgmetadata>

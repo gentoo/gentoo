@@ -1,0 +1,52 @@
+--- HDBC-odbc-2.3.1.0-orig/testsrc/TestSbasics.hs	2011-08-10 07:16:38.000000000 +1000
++++ HDBC-odbc-2.3.1.0/testsrc/TestSbasics.hs	2012-10-13 12:30:47.216363898 +1100
+@@ -1,9 +1,13 @@
++{-# LANGUAGE CPP, ScopedTypeVariables #-}
+ module TestSbasics(tests) where
+ import Test.HUnit
+ import Database.HDBC
+ import TestUtils
+ import System.IO
+-import Control.Exception hiding (catch)
++#if !MIN_VERSION_base(4,6,0)
++import Prelude hiding (catch)
++#endif
++import Control.Exception
+ 
+ openClosedb = sqlTestCase $ 
+     do dbh <- connectDB
+@@ -123,7 +127,7 @@
+        -- Let's try a rollback.
+        catch (withTransaction dbh (\_ -> do sExecuteMany sth rows
+                                             fail "Foo"))
+-             (\_ -> return ())
++             (\(_::IOException) -> return ())
+        sExecute qrysth []
+        sFetchAllRows qrysth >>= (assertEqual "rollback" [[Just "0"]])
+ 
+--- HDBC-odbc-2.3.1.0-orig/testsrc/Testbasics.hs	2011-08-10 07:16:38.000000000 +1000
++++ HDBC-odbc-2.3.1.0/testsrc/Testbasics.hs	2012-10-13 12:30:10.883415738 +1100
+@@ -1,9 +1,13 @@
++{-# LANGUAGE CPP, ScopedTypeVariables #-}
+ module Testbasics(tests) where
+ import Test.HUnit
+ import Database.HDBC
+ import TestUtils
+ import System.IO
+-import Control.Exception hiding (catch)
++#if !MIN_VERSION_base(4,6,0)
++import Prelude hiding (catch)
++#endif
++import Control.Exception
+ 
+ openClosedb = sqlTestCase $ 
+     do dbh <- connectDB
+@@ -140,7 +144,7 @@
+        -- Let's try a rollback.
+        catch (withTransaction dbh (\_ -> do executeMany sth rows
+                                             fail "Foo"))
+-             (\_ -> return ())
++             (\(_::IOException) -> return ())
+        execute qrysth []
+        fetchAllRows qrysth >>= (assertEqual "rollback" [[SqlString "0"]])
+ 

@@ -1,0 +1,14 @@
+diff -ru gpsbabel-1.4.2/Makefile.in gpsbabel-1.4.2-xmldoc/Makefile.in
+--- gpsbabel-1.4.2/Makefile.in	2011-01-11 17:57:47.075777307 +0100
++++ gpsbabel-1.4.2-xmldoc/Makefile.in	2011-01-11 17:58:53.134094491 +0100
+@@ -234,8 +234,8 @@
+ 	xsltproc \
+ 	  --output $@ \
+ 	  --stringparam toc.section.depth "1" \
+-	  --stringparam html.stylesheet \
+-	  "http://www.gpsbabel.org/style3.css" \
++	  --nonet \
++	  --stringparam html.stylesheet "gpsbabel.org-style3.css" \
+ 	  http://docbook.sourceforge.net/release/xsl/current/xhtml/docbook.xsl \
+ 	xmldoc/readme.xml
+ 

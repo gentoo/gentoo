@@ -1,0 +1,58 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+BASENAME=$(echo $SVCNAME | cut -d '-' -f 1)
+SERVERNAME=$(echo $SVCNAME | cut -d '-' -f 2)
+
+depend() {
+    need net 
+}
+
+checkconfig() {
+    if [ ! -r /etc/conf.d/$BASENAME ]; then
+        eerror "No cinder conf.d file found: /etc/conf.d/$BASENAME)"
+        return 1
+    fi
+    return 0
+}
+
+start() {
+    checkconfig || return $?
+    . /etc/conf.d/$BASENAME
+    
+    ebegin "Starting ${SVCNAME}"
+        if [ ! -d ${PID_PATH} ]; then
+                mkdir ${PID_PATH}
+        chown cinder:root ${PID_PATH}
+        fi
+
+    start-stop-daemon --start \
+              --quiet \
+              --user cinder \
+              --pidfile "${PID_PATH}/${SVCNAME}.pid" \
+              --make-pidfile \
+              --background \
+              --exec /usr/bin/cinder-${SERVERNAME} --  --config-file /etc/cinder/cinder.conf --log-file /var/log/cinder/cinder-${SERVERNAME}
+    
+    eend $? "Failed to start ${SVCNAME}"
+}
+
+stop() {
+    checkconfig || return $?
+    . /etc/conf.d/$BASENAME
+    
+    ebegin "Stopping ${SVCNAME}"
+    
+    start-stop-daemon --stop \
+              --quiet \
+              --user cinder \
+              --pidfile "${PID_PATH}/${SVCNAME}.pid" \
+              --exec /usr/bin/cinder-${SERVERNAME} --  --config-file /etc/cinder/cinder.conf
+
+    eend $? "Failed to stop ${SVCNAME}"
+}
+
+#restart() {
+#
+#}

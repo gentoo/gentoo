@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>xmw@gentoo.org</email>
+<name>Michael Weber</name>
+</maintainer>
+<longdescription lang="en">
+	Lookup is a simple graphical utility that can be used to query a network for domain name records. 
+	The tool understands DNSSEC and color-codes the results based on whether 
+	the record has been securely validated (green), is a 'trusted' answer but not validated (yellow), 
+	or fails DNSSEC validation (red).
+</longdescription>
+</pkgmetadata>
+

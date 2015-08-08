@@ -1,0 +1,34 @@
+commit b0cf3ab7a69b878a4335d21a347b56e4b0ca0b7b
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Mon Apr 14 19:06:24 2014 +0300
+
+    compiler/cmm/PprC.hs: constify local string literals
+    
+    Consider one-line module
+        module B (v) where v = "hello"
+    in -fvia-C mode it generates code like
+        static char gibberish_str[] = "hello";
+    
+    It uselessly eats data section (precious resource on ia64!).
+    The patch switches genrator to emit:
+        static const char gibberish_str[] = "hello";
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/compiler/cmm/PprC.hs b/compiler/cmm/PprC.hs
+index 2398981..fdb578d 100644
+--- a/compiler/cmm/PprC.hs
++++ b/compiler/cmm/PprC.hs
+@@ -112,6 +112,12 @@ pprTop (CmmProc infos clbl _ graph) =
+ 
+ -- We only handle (a) arrays of word-sized things and (b) strings.
+ 
++pprTop (CmmData ReadOnlyData (Statics lbl [CmmString str])) =
++  hcat [
++    pprLocalness lbl, ptext (sLit "const char "), ppr lbl,
++    ptext (sLit "[] = "), pprStringInCStyle str, semi
++  ]
++
+ pprTop (CmmData _section (Statics lbl [CmmString str])) =
+   hcat [
+     pprLocalness lbl, ptext (sLit "char "), ppr lbl,

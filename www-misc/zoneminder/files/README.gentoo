@@ -1,0 +1,27 @@
+1. If this is a new installation, you will need to create a MySQL
+   database for zoneminder to use
+   (see https://wiki.gentoo.org/wiki/MySQL/Startup_Guide).
+   E.g., when logged into mysql as root,
+     mysql> CREATE DATABASE \`zm\`;
+     mysql> GRANT ALL ON zm.* TO 'zmuser'@'localhost' IDENTIFIED BY 'topsecretpassword';
+   Once you completed that you should execute the following:
+     cd /usr/share/zoneminder
+     mysql -u zmuser -p < db/zm_create.sql
+
+2. Set your database settings in /etc/zm.conf, including above topsecretpassword
+
+3. Configure apache to use zoneminder, see /usr/share/doc/zoneminder*/10_zoneminder.conf
+   for an example configuration snippet.
+
+4. Enable PHP in your webserver configuration,
+   enable short_open_tags in php.ini,
+   set the time zone in php.ini,
+   and restart/reload the webserver.
+
+5. Start the zoneminder daemon:
+     /etc/init.d/zoneminder start
+
+6. Finally point your browser to http://your.webserver/zoneminder
+
+If you are upgrading, you will need to run the zmupdate.pl script:
+      /usr/bin/zmupdate.pl --version=oldversionnumber [--user=zmuser --pass=topsecretpassword]

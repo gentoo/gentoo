@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>x11</herd>
+<use>
+	<flag name="uuid">Use UUID for session identification instead of IP address
+		and system time.
+	</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+http://dev.gentoo.org/~vapier/scons-blows.txt
+
+--- SConstruct
++++ SConstruct
+@@ -85,6 +85,8 @@
+ opts.Add('LINKFLAGS', 'Linker Compiler flags')
+ opts.Add('CC', 'C Compiler')
+ opts.Add('CXX', 'C++ Compiler')
++opts.Add('AR', 'Archiver')
++opts.Add('RANLIB', 'Archive indexer')
+ opts.Add('BUILD', 'Build type: release, custom, development')
+ 
+ opts.Update(env)

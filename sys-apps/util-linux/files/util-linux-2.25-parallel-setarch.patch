@@ -1,0 +1,33 @@
+From 762b4d8691c46964dfc0d40dab772191538c807a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Sun, 3 May 2015 23:37:04 -0400
+Subject: [PATCH] build-sys: fix parallel builds w/setarch links
+
+The symlink generation tries to write to the sys-utils/ subdir but does
+not make sure that dir exists.  This can sometimes lead to parallel build
+failures when building out-of-tree like:
+...
+echo ".so man8/setarch.8" > sys-utils/linux64.8
+/bin/bash: sys-utils/linux64.8: No such file or directory
+Makefile:11503: recipe for target 'sys-utils/linux64.8' failed
+make: *** [sys-utils/linux64.8] Error 1
+
+URL: https://bugs.gentoo.org/511812
+Signed-off-by: Mike Frysinger <vapier@chromium.org>
+---
+ sys-utils/Makemodule.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -10806,6 +10806,7 @@ install-exec-hook:
+ @BUILD_VIPW_TRUE@	cd $(DESTDIR)$(usrsbin_execdir) && ln -sf vipw vigr
+ 
+ @BUILD_SETARCH_TRUE@$(SETARCH_MAN_LINKS):
++@BUILD_SETARCH_TRUE@	$(AM_V_at) test -d $(dir $@) || mkdir -p $(dir $@)
+ @BUILD_SETARCH_TRUE@	$(AM_V_GEN)echo ".so man8/setarch.8" > $@
+ 
+ @BUILD_SETARCH_TRUE@install-exec-hook-setarch:
+-- 
+2.4.0
+

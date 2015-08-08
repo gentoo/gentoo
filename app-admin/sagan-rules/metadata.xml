@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>andreis.vinogradovs@gmail.com</email>
+</maintainer>
+<maintainer>
+  <email>maksbotan@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name='lognorm'>Install normalize rules support with <pkg>dev-libs/liblognorm</pkg></flag>
+</use>
+</pkgmetadata>

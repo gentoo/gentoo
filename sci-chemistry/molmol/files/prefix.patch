@@ -1,0 +1,22 @@
+diff --git a/molmol b/molmol
+index e774abf..9f10558 100755
+--- a/molmol
++++ b/molmol
+@@ -57,7 +57,7 @@ if [ $ostype = "SunOS" ]; then
+ elif [ $ostype = "HP-UX" ]; then
+   xdpy=/usr/contrib/bin/X11/xdpyinfo
+ else
+-  xdpy=/usr/bin/X11/xdpyinfo
++  xdpy=@GENTOO_PORTAGE_EPREFIX@/usr/bin/xdpyinfo
+ fi
+ 
+ printUsage () {
+@@ -119,7 +119,7 @@ while [ -n "$*" ]; do
+   esac
+ done
+ 
+-magictmp=/tmp/molmol_magic$$
++magictmp=@GENTOO_PORTAGE_EPREFIX@/tmp/molmol_magic$$
+ 
+ if [ ! -d $HOME/molmol ]; then
+   mkdir $HOME/molmol

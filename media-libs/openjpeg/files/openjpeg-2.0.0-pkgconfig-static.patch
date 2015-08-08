@@ -1,0 +1,10 @@
+Upstream issue 223, http://code.google.com/p/openjpeg/issues/detail?id=223
+
+--- openjpeg-2.0.0/src/lib/openjp2/libopenjp2.pc.cmake.in
++++ openjpeg-2.0.0/src/lib/openjp2/libopenjp2.pc.cmake.in
+@@ -10,4 +10,5 @@
+ URL: http://www.openjpeg.org/
+ Version: @OPENJPEG_VERSION@
+ Libs: -L${libdir} -lopenjp2
++Libs.private: -L${libdir} -lopenjp2 -lm
+ Cflags: -I${includedir}

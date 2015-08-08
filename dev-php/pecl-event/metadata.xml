@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+<email>rrosmanov@gmail.com</email>
+<name>Ruslan Osmanov</name>
+<description>Maintainer. Assign bugs to him</description>
+</maintainer>
+<use>
+<flag name="extra">Add support of the Libevent extra API</flag>
+</use>
+</pkgmetadata>

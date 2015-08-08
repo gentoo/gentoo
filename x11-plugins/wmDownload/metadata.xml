@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+		wmDownload is a small WindowMaker dockapp that sits there and displays how much
+		data you've recieved on each eth and ppp device installed on your machine.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wmdownload</remote-id>
+	</upstream>
+</pkgmetadata>

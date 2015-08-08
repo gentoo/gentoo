@@ -1,0 +1,11 @@
+--- makefile.old	2011-06-16 08:25:35.000000000 +0200
++++ makefile	2011-06-16 08:25:57.000000000 +0200
+@@ -294,7 +294,7 @@
+    LIBS_DEBUG = -lz `allegro-config --libs ` `libpng-config --ldflags` 
+    LIBS_STATIC = -lz `allegro-config --static` `libpng-config --static --ldflags`
+ else
+-   LIBS = -lz `libpng-config --ldflags` 
++   LIBS = -lz -lm `libpng-config --ldflags` 
+    LIBS_DEBUG = -lz `libpng-config --ldflags`
+    LIBS_STATIC = -lz `libpng-config --static --ldflags`
+ endif

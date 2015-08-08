@@ -1,0 +1,11 @@
+--- tvision/Makefile.in
++++ tvision/Makefile.in
+@@ -31,7 +31,7 @@ examples:
+ 	$(MAKE) -C examples
+ 
+ rhtv-config$(EXE_EXT): rhtv-config.c include/tv/configtv.h
+-	@GCC@ -o rhtv-config$(EXE_EXT) -Iinclude rhtv-config.c
++	@GCC@ -o rhtv-config$(EXE_EXT) $(CFLAGS) $(LDFLAGS) -Iinclude rhtv-config.c
+ 
+ install-headers:
+ 	@install_headers@

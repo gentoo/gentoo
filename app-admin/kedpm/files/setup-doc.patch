@@ -1,0 +1,12 @@
+--- setup.py	2004-02-29 12:45:48.000000000 +0100
++++ setup.py	2004-03-29 08:47:15.886238864 +0200
+@@ -52,8 +52,7 @@
+         url="http://kedpm.sourceforge.net/",
+         packages=['kedpm', 'kedpm.plugins', 'kedpm.frontends', 'kedpm.frontends.gtk'],
+         scripts=['scripts/kedpm'],
+-        data_files=[(os.path.join('share', 'kedpm'), ['AUTHORS', 'COPYING', 'INSTALL']),
+-            (os.path.join('share', 'kedpm', 'glade'),
++        data_files=[(os.path.join('share', 'kedpm', 'glade'),
+                 [os.path.join('glade', 'kedpm.glade')] +
+                 glob(os.path.join('glade', '*.png'))
+                 )],

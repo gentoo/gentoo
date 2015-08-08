@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sound</herd>
+  <use>
+    <flag name="mac">Add support for Monkey's Audio files</flag>
+    <flag name="alac">Add support for Apple Lossless Audio Codec files</flag>
+  </use>
+</pkgmetadata>

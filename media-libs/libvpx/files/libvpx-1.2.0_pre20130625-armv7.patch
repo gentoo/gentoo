@@ -1,0 +1,41 @@
+commit af9dd50e42e0a7558d0d555ee12a1eb60e87a458
+Author: Luca Barbato <lu_zero@gentoo.org>
+Date:   Thu Jan 10 05:13:57 2013 +0100
+
+    configure: support hardfloat armv7 CHOSTS
+    
+    Many linux distribution for arm switched to armhf/hardfloat, support
+    them.
+    
+    Change-Id: I8ab39d34782b4f24b7028ac76342118166fd5905
+
+diff --git a/build/make/configure.sh b/build/make/configure.sh
+index e27af96..f69b6d7 100755
+--- a/build/make/configure.sh
++++ b/build/make/configure.sh
+@@ -597,8 +597,13 @@ process_common_toolchain() {
+             armv6*)
+                 tgt_isa=armv6
+                 ;;
++            armv7*-hardfloat*)
++                tgt_isa=armv7
++                float_abi=hard
++                ;;
+             armv7*)
+                 tgt_isa=armv7
++                float_abi=softfp
+                 ;;
+             armv5te*)
+                 tgt_isa=armv5te
+@@ -784,8 +789,9 @@ process_common_toolchain() {
+             check_add_asflags --defsym ARCHITECTURE=${arch_int}
+             tune_cflags="-mtune="
+             if [ ${tgt_isa} == "armv7" ]; then
+-                check_add_cflags  -march=armv7-a -mfloat-abi=softfp
+-                check_add_asflags -march=armv7-a -mfloat-abi=softfp
++                [ -z "${float_abi}" ] && float_abi=softfp
++                check_add_cflags  -march=armv7-a -mfloat-abi=${float_abi}
++                check_add_asflags -march=armv7-a -mfloat-abi=${float_abi}
+ 
+                 if enabled neon
+                 then

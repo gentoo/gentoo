@@ -1,0 +1,18 @@
+[Unit]
+Description=Webmin Administration Tool
+After=network.target remote-fs.target nss-lookup.target
+ConditionFileNotEmpty=%config%
+ConditionFileNotEmpty=%conf%
+
+[Service]
+RemainAfterExit=yes
+KillMode=mixed
+# Webmin is exiting with 1 on SIGTERM
+SuccessExitStatus=1
+ExecStart=%exe% %conf%
+PIDFile=%pid%
+Environment="PERLLIB=%perllib%" LANG= 
+ExecReload=/bin/kill -USR1 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

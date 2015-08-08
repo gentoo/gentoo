@@ -1,0 +1,12 @@
+diff -u -r sddm-0.9.0.orig/src/daemon/PowerManager.cpp sddm-0.9.0/src/daemon/PowerManager.cpp
+--- sddm-0.9.0.orig/src/daemon/PowerManager.cpp	2014-10-01 18:40:37.402683578 +0200
++++ sddm-0.9.0/src/daemon/PowerManager.cpp	2014-10-01 18:40:43.502618164 +0200
+@@ -197,7 +197,7 @@
+             m_backends << new Login1Backend();
+ 
+         // check if upower interface exists
+-        if (interface->isServiceRegistered(UPOWER_SERVICE))
++//        if (interface->isServiceRegistered(UPOWER_SERVICE))
+             m_backends << new UPowerBackend();
+     }
+ 

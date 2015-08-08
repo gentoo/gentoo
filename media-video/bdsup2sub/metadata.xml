@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>video</herd>
+	<longdescription lang="en">
+		BDSup2Sub - A tool to convert and tweak bitmap based subtitle streams.
+	</longdescription>
+</pkgmetadata>

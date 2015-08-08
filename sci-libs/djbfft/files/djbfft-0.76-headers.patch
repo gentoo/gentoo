@@ -1,0 +1,38 @@
+--- strerr.h.orig	1999-09-30 23:25:58.000000000 +0300
++++ strerr.h		2008-09-13 22:14:09.000000000 +0300
+@@ -1,3 +1,5 @@
++#include <errno.h>
++
+ #ifndef STRERR_H
+ #define STRERR_H
+ 
+--- substdio.h.orig	1999-09-30 23:25:58.000000000 +0300
++++ substdio.h		2008-09-13 22:13:41.000000000 +0300
+@@ -1,3 +1,5 @@
++#include <errno.h>
++
+ #ifndef SUBSTDIO_H
+ #define SUBSTDIO_H
+ 
+--- speed.c.orig	1999-09-30 23:25:58.000000000 +0300
++++ speed.c		2008-09-13 19:16:20.352525481 +0300
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "fftr4.h"
+ #include "fftr8.h"
+ #include "fftc4.h"
+--- accuracy2.c.orig	2008-10-10 20:51:06.000000000 +0100
++++ accuracy2.c	2008-10-10 20:51:55.000000000 +0100
+@@ -1,3 +1,4 @@
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <math.h>
+ #include "fftc4.h"
+--- accuracy.c.orig	2008-10-10 21:03:30.000000000 +0100
++++ accuracy.c	2008-10-10 21:03:43.000000000 +0100
+@@ -1,3 +1,4 @@
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <math.h>
+ #include "fftc4.h"

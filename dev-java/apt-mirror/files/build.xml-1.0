@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<project name="apt-mirror" default="jar" basedir=".">
+  <target name="compile">
+    <mkdir dir="build"/>
+    <javac debug="false" srcdir="." destdir="build" encoding="UTF-8"/>
+  </target>
+  <target name="jar" depends="compile">
+    <jar destfile="apt-mirror.jar">
+      <fileset dir="build" includes="**/*.class"/>
+    </jar>
+  </target>
+</project>

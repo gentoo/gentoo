@@ -1,0 +1,26 @@
+newer gnulib has rewritten these checks in a way that works for the x32,
+and for the targets we care about, these checks won't return false.  so
+just drop them to make our life simpler.
+
+https://sites.google.com/site/x32abi/x32-patches
+
+--- findutils-4.4.2/gnulib/lib/getdate.c.x32	2009-05-10 14:23:57.000000000 -0700
++++ findutils-4.4.2/gnulib/lib/getdate.c	2011-12-05 11:41:18.130675712 -0800
+@@ -114,7 +114,6 @@
+    wraps around, but there's no portable way to check for that at
+    compile-time.  */
+ verify (TYPE_IS_INTEGER (time_t));
+-verify (LONG_MIN <= TYPE_MINIMUM (time_t) && TYPE_MAXIMUM (time_t) <= LONG_MAX);
+ 
+ /* An integer value, and the number of digits in its textual
+    representation.  */
+--- findutils-4.4.2/gnulib/lib/mktime.c.x32	2009-05-10 14:25:13.000000000 -0700
++++ findutils-4.4.2/gnulib/lib/mktime.c	2011-12-05 11:49:38.368589386 -0800
+@@ -166,7 +166,5 @@ ydhms_diff (long int year1, long int yda
+ {
+   verify (C99_integer_division, -1 / 2 == 0);
+-  verify (long_int_year_and_yday_are_wide_enough,
+-	  INT_MAX <= LONG_MAX / 2 || TIME_T_MAX <= UINT_MAX);
+ 
+   /* Compute intervening leap days correctly even if year is negative.
+      Take care to avoid integer overflow here.  */

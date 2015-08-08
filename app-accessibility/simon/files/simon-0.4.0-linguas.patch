@@ -1,0 +1,84 @@
+--- simon-0.4.0/CMakeLists.txt
++++ simon-0.4.0/CMakeLists.txt
+@@ -14,6 +14,9 @@
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+ 
++# NLS
++option(ENABLE_NLS "Enable native language support" 1)
++
+ find_package(KDE4 "4.4" REQUIRED)
+ find_package(Qt4 COMPONENTS QtCore QtDbus QtGui QtTest QtXml QtScript QtConcurrent REQUIRED)
+ find_package(Qwt6 REQUIRED)
+@@ -143,4 +146,6 @@
+ macro_display_feature_log()
+ 
+ include(MacroOptionalAddSubdirectory)
+-macro_optional_add_subdirectory( po )
++if(ENABLE_NLS)
++	macro_optional_add_subdirectory( po )
++endif(ENABLE_NLS)
+--- simon-0.4.0/po/CMakeLists.txt
++++ simon-0.4.0/po/CMakeLists.txt
+@@ -11,24 +11,14 @@
+ if (NOT GETTEXT_MSGFMT_EXECUTABLE)
+ MESSAGE(FATAL_ERROR "Please install msgmerge binary")
+ endif (NOT GETTEXT_MSGFMT_EXECUTABLE)
+-add_subdirectory(cs)
+-add_subdirectory(de)
+-add_subdirectory(da)
+-add_subdirectory(fr)
+-add_subdirectory(nl)
+-add_subdirectory(uk)
+-add_subdirectory(pt_BR)
+-add_subdirectory(pl)
+-add_subdirectory(es)
+-add_subdirectory(ro)
+-add_subdirectory(ca)
+-add_subdirectory(sl)
+-add_subdirectory(pt)
+-add_subdirectory(hu)
+-add_subdirectory(gl)
+-add_subdirectory(sv)
+-add_subdirectory(el)
+-add_subdirectory(fi)
+-add_subdirectory(it)
+-add_subdirectory(zh_TW)
+-add_subdirectory(et)
++
++# gettext behavior
++execute_process(COMMAND sh -c "echo -n \${LINGUAS+x}"
++	OUTPUT_VARIABLE UNSETLINGUAS)
++set(langs cs de da fr nl uk pt_BR pl es ro ca sl pt hu gl sv el fi it zh_TW et)
++
++foreach(mylang ${langs})
++	if($ENV{LINGUAS} MATCHES "^.*${mylang}.*$" OR "${UNSETLINGUAS}" STREQUAL "")
++		add_subdirectory(${mylang})
++	endif()
++endforeach()
+--- simon-0.4.0/doc/CMakeLists.txt
++++ simon-0.4.0/doc/CMakeLists.txt
+@@ -1,9 +1,15 @@
++if(ENABLE_NLS)
++	# gettext behavior
++	execute_process(COMMAND sh -c "echo -n \${LINGUAS+x}"
++	OUTPUT_VARIABLE UNSETLINGUAS)
++set(langs pt_BR ca nl de it pt sv uk)
++
++	foreach(mylang ${langs})
++		if($ENV{LINGUAS} MATCHES "^.*${mylang}.*$" OR "${UNSETLINGUAS}" STREQUAL "")
++			add_subdirectory(${mylang})
++		endif()
++	endforeach()
++endif(ENABLE_NLS)
++
++# default doc
+ add_subdirectory(en_US)
+-add_subdirectory(pt_BR)
+-add_subdirectory(ca)
+-add_subdirectory(nl)
+-add_subdirectory(de)
+-add_subdirectory(it)
+-add_subdirectory(pt)
+-add_subdirectory(sv)
+-add_subdirectory(uk)

@@ -1,0 +1,58 @@
+From 54881f2bdfc3d18e1496b7739124311d8e7c394a Mon Sep 17 00:00:00 2001
+From: Christopher Harvey <chris@basementcode.com>
+Date: Sun, 7 Oct 2012 15:05:03 -0400
+Subject: [PATCH] Fix LilyPond clef exporting
+
+For example, sometimes NtEd would export "\clef \clef tenor" instead
+of just "\clef tenor"
+---
+ mainwindow.cpp |    4 +++-
+ resource.cpp   |   14 +++++++-------
+ 2 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index 7263565..3343526 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -3902,7 +3902,9 @@ void NedMainWindow::do_lily_export(FILE *fp, bool with_break, bool *selected_sta
+ 		if (m_staff_contexts[i].m_staff_short_name != NULL && strlen(m_staff_contexts[i].m_staff_short_name->getText()) > 0) {
+ 			fprintf(fp, " \\set Staff.shortInstrumentName = \"%s \"", m_staff_contexts[i].m_staff_short_name->getText());
+ 		}
+-		fprintf(fp, NedResource::getLilyPondClefName(m_staff_contexts[i].m_clef_number));
++		if (m_staff_contexts[i].m_clef_number != NEUTRAL_CLEF3) {
++			fprintf(fp, "\\clef %s", NedResource::getLilyPondClefName(m_staff_contexts[i].m_clef_number));
++		}
+ 		fprintf(fp, NedResource::getLilyPondKeySigName(m_staff_contexts[i].m_key_signature_number));
+ 		fprintf(fp, " \\time %d/%d", m_numerator, m_denominator);
+ 		if (m_upbeat_inverse != 0) {
+diff --git a/resource.cpp b/resource.cpp
+index 11c52b4..cff080f 100644
+--- a/resource.cpp
++++ b/resource.cpp
+@@ -3870,16 +3870,16 @@ int NedResource::determineLastLine(int treble_line, int clef) {
+ 
+ const char *NedResource::getLilyPondClefName(int clef_number) {
+ 	switch (clef_number) {
+-		case TREBLE_CLEF: return "\\clef treble";
+-		case BASS_CLEF: return "\\clef bass";
+-		case ALTO_CLEF: return "\\clef alto";
+-		case SOPRAN_CLEF: return "\\clef soprano";
+-		case TENOR_CLEF: return "\\clef tenor";
++		case TREBLE_CLEF: return "treble";
++		case BASS_CLEF: return "bass";
++		case ALTO_CLEF: return "alto";
++		case SOPRAN_CLEF: return "soprano";
++		case TENOR_CLEF: return "tenor";
+ 		case NEUTRAL_CLEF1: 
+-		case NEUTRAL_CLEF2: return "\\clef percussion";
++		case NEUTRAL_CLEF2: return "percussion";
+ 		case NEUTRAL_CLEF3: return "";
+ 	}
+-	return "\\clef treble";
++	return "treble";
+ }
+ const char *NedResource::getLilyPondKeySigName(int keysig_number) {
+ 	switch (keysig_number) {
+-- 
+1.7.8.6
+

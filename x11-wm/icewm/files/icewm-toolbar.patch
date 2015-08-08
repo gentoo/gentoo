@@ -1,0 +1,12 @@
+--- icewm-1.2.30/lib/toolbar.in.old	2007-01-18 18:51:55.000000000 +0200
++++ icewm-1.3.7/lib/toolbar.in	2012-06-10 09:36:00.000000000 +0200
+@@ -4,6 +4,6 @@
+ # since modifications to this file will be discarded when you
+ # (re)install icewm.
+ #
+-prog XTerm xterm xterm
+-prog FTE fte fte
+-prog Netscape netscape netscape
++prog xterm /usr/share/icons/gnome/16x16/apps/terminal.png xterm
++prog "Web browser" /usr/share/icons/gnome/16x16/apps/web-browser.png xdg-open about:blank
++

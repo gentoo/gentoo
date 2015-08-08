@@ -1,0 +1,19 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting pptpd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/pptpd -- ${PPTPD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pptpd"
+	start-stop-daemon --stop --quiet --pidfile /run/pptpd.pid
+	result=$?
+	killall -SIGTERM pptpctrl &>/dev/null
+	eend $result
+}

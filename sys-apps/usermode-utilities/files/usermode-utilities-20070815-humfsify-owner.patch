@@ -1,0 +1,12 @@
+diff '--exclude-from=/home/dang/.scripts/diffrc' -up -ruN tools-20070815.orig/humfsify/Makefile tools-20070815/humfsify/Makefile
+--- tools-20070815.orig/humfsify/Makefile	2006-05-25 14:37:01.000000000 -0400
++++ tools-20070815/humfsify/Makefile	2011-05-02 11:04:32.531034342 -0400
+@@ -4,7 +4,7 @@ all:
+ 
+ install:
+ 	install -d $(DESTDIR)$(BIN_DIR)
+-	install -o 0755 $(BIN) $(DESTDIR)$(BIN_DIR)
++	install -m 0755 $(BIN) $(DESTDIR)$(BIN_DIR)
+ 
+ clean:
+ 	rm -f *~

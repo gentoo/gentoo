@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+  <longdescription lang="en">
+		Lziprecover is a data recovery tool and decompressor for files in the lzip 
+		compressed data format (.lz), able to repair slightly damaged files, 
+		recover badly damaged files from two or more copies, extract data from 
+		damaged files, decompress files and test integrity of files.
+		The lzip file format is designed for long-term data archiving. It is clean, 
+		provides very safe 4 factor integrity checking, and is backed by the 
+		recovery capabilities of lziprecover.
+		Lziprecover is able to recover or decompress files produced by any of the 
+		compressors in the lzip family; lzip, plzip, minilzip/lzlib, clzip and 
+		pdlzip.
+		Lziprecover makes lzip files resistant to bit-flip (one of the most common 
+		forms of data corruption), and can safely merge multiple damaged backup 
+		copies.
+		If the cause of file corruption is damaged media, the combination GNU 
+		ddrescue + lziprecover is the best option for recovering data from multiple 
+		damaged copies.
+		If a file is too damaged for lziprecover to repair it, all the recoverable 
+		data in all members of the file can be extracted with the '-D' option.
+		Lziprecover is able to efficiently extract a range of bytes from a 
+		multi-member file, because it only decompresses the members containing the 
+		desired data.
+		Lziprecover can print correct total file sizes and ratios even for 
+		multi-member files.
+		When recovering data, lziprecover takes as arguments the names of the 
+		damaged files and writes zero or more recovered files depending on the 
+		operation selected and whether the recovery succeeded or not. The damaged 
+		files themselves are never modified.
+		When decompressing or testing file integrity, lziprecover behaves like lzip 
+		or lunzip.
+		To give you an idea of its possibilities, when merging two copies, each of 
+		them with one damaged area affecting 1 percent of the copy, the probability 
+		of obtaining a correct file is about 98 percent. With three such copies the 
+		probability rises to 99.97 percent. For large files (a few MB) with small 
+		errors (one sector damaged per copy), the probability approaches 100 percent 
+		even with only two copies.
+		Lziprecover is not a replacement for regular backups, but a last line of 
+		defense for the case where the backups are also damaged.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>chromium</herd>
+	<longdescription>Chromium is the open-source web browser project behind Google Chrome</longdescription>
+	<use>
+		<flag name="hidpi">Enable support for high-resolution screens (high dots per inch)</flag>
+		<flag name="hotwording">Enable voice-recognition support (Ok Google)</flag>
+		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
+		<flag name="proprietary-codecs">Enable proprietary codecs like H.264, MP3</flag>
+		<flag name="tcmalloc">Use bundled tcmalloc instead of system malloc</flag>
+	</use>
+</pkgmetadata>

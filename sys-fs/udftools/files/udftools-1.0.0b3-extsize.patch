@@ -1,0 +1,44 @@
+taken from Fedora, but with minor return type fixes: changed NULL to 0
+
+http://pkgs.fedoraproject.org/cgit/udftools.git/tree/udftools-1.0.0b3-extsize.patch?h=f22
+
+diff -up udftools-1.0.0b3/libudffs/extent.c.extsize udftools-1.0.0b3/libudffs/extent.c
+--- udftools-1.0.0b3/libudffs/extent.c.extsize	2012-01-26 09:45:22.217856499 +0100
++++ udftools-1.0.0b3/libudffs/extent.c	2012-01-26 09:45:43.142855067 +0100
+@@ -50,7 +50,7 @@ cont:
+ 	while (start_ext != NULL && start_ext->blocks < blocks)
+ 		start_ext = next_extent(start_ext->next, type);
+ 
+-	if (start_ext->start % offset)
++	if (start_ext != NULL && start_ext->start % offset)
+ 	{
+ 		inc = offset - (start_ext->start % offset);
+ 		if (start_ext->blocks - inc < blocks)
+@@ -62,7 +62,7 @@ cont:
+ 	else
+ 		inc = 0;
+ 
+-	return start_ext->start + inc;
++	return start_ext ? start_ext->start + inc : 0;
+ }
+ 
+ struct udf_extent *prev_extent(struct udf_extent *start_ext, enum udf_space_type type)
+@@ -81,7 +81,7 @@ cont:
+ 	while (start_ext != NULL && start_ext->blocks < blocks)
+ 		start_ext = prev_extent(start_ext->prev, type);
+ 
+-	if ((start_ext->start + start_ext->blocks) % offset)
++	if (start_ext != NULL && (start_ext->start + start_ext->blocks) % offset)
+ 	{
+ 		dec = (start_ext->start + start_ext->blocks) % offset;
+ 		if (start_ext->blocks - dec < blocks)
+@@ -93,7 +93,7 @@ cont:
+ 	else
+ 		dec = 0;
+ 
+-	return start_ext->start + start_ext->blocks - dec - blocks;
++	return start_ext ? start_ext->start + start_ext->blocks - dec - blocks : 0;
+ }
+ 
+ struct udf_extent *find_extent(struct udf_disc *disc, uint32_t start)
+

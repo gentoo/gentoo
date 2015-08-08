@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmweather displays your current local weather conditions. After supplying a 
+4-character METAR station identifier code (most major airports have one), it 
+shows station ID, time of the last update, temperature, dew point, pressure, 
+humidity, and wind speed. The various entries can be forced to display in a 
+variety of different units.
+</longdescription>
+</pkgmetadata>

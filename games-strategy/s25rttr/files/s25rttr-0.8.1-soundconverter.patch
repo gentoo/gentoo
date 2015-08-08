@@ -1,0 +1,17 @@
+From: hasufell <julian.ospald@googlemail.com>
+Date: Mon Apr 30 20:42:28 UTC 2012
+
+relocate executables sound-convert and s-c_resample which get installed
+into datadir by default
+
+--- libutil/src/files.h
++++ libutil/src/files.h
+@@ -140,7 +140,7 @@
+ 	/* 54 */RTTRDIR "",                               // unbenutzt
+ 	/* 55 */SETTINGSDIR "/LSTS/SOUND.LST",            // Die konvertierte sound.lst
+ 	/* 56 */RTTRDIR "/sound.scs",                     // Das konvertier-script
+-	/* 57 */RTTRDIR "",                               // Basispfad fürn Soundconverter
++	/* 57 */DRIVERDIR "",                             // Basispfad fürn Soundconverter
+ 	/* 58 */GAMEDIR "/DATA/MIS0BOBS.LST",
+ 	/* 59 */GAMEDIR "/DATA/MIS1BOBS.LST",
+ 	/* 60 */GAMEDIR "/DATA/MIS2BOBS.LST",

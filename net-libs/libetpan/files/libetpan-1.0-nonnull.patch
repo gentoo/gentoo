@@ -1,0 +1,12 @@
+http://sourceforge.net/mailarchive/forum.php?thread_name=k2vfc2c80ae1004051048n4a2b5ab0y85ab946c2a556544%40mail.gmail.com&forum_name=libetpan-devel
+--- src/low-level/nntp/Makefile.am	2011-06-14 15:37:14.511603732 +0300
++++ src/low-level/nntp/Makefile.am	2011-06-14 15:38:42.000000000 +0300
+@@ -35,6 +35,8 @@
+ AM_CPPFLAGS = -I$(top_builddir)/include \
+ 	-I$(top_srcdir)/src/data-types
+ 
++CFLAGS += -Wno-nonnull
++
+ noinst_LTLIBRARIES = libnntp.la
+ 
+ libnntp_la_SOURCES = \

@@ -1,0 +1,13 @@
+# Enable user restart.
+#
+# Author: Eric Hameleers <alien@slackware.com>
+#
+# KDE bug #344456
+# Gentoo bug #529186
+#
+[Allow all users to restart]
+Identity=unix-group:users
+Action=org.freedesktop.consolekit.system.restart-multiple-users;org.freedesktop.consolekit.system.restart
+ResultAny=yes
+ResultInactive=no
+ResultActive=yes

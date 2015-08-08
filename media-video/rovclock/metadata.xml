@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>se.witt@gmx.net</email>
+  <name>Sebastian Witt</name>
+</maintainer>
+<maintainer>
+  <email>maintainer-needed@gentoo.org</email>
+</maintainer>
+</pkgmetadata>

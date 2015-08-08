@@ -1,0 +1,16 @@
+g++ -c ../lib/mtp-libmtp.cpp -o mtp.o -Wall -I../lib `curl-config --cflags` `pkg-config --cflags libmtp` -DHAVE_LIBMTP
+../lib/mtp-libmtp.cpp: In member function ‘void Scrobble::mtp_iterate(bool)’:
+../lib/mtp-libmtp.cpp:104:30: error: ‘free’ was not declared in this scope
+
+http://bugs.gentoo.org/405667
+
+--- src/lib/mtp-libmtp.cpp
++++ src/lib/mtp-libmtp.cpp
+@@ -16,6 +16,7 @@
+  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
+  ***************************************************************************/
+ 
++#include <cstdlib> /* free */
+ #include <iostream>
+ #include "libscrobble.h"
+ 

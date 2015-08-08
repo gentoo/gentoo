@@ -1,0 +1,10 @@
+--- xgamer/share/applications/xgamer.desktop
++++ xgamer/share/applications/xgamer.desktop
+@@ -5,6 +5,6 @@
+ Icon=xgamer
+ StartupNotify=true
+ Terminal=false
+-Categories=GTK;Game
++Categories=GTK;Game;
+ Name=XGamer
+ Comment=X Game Launcher

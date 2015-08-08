@@ -1,0 +1,21 @@
+diff -Naur cola-1.3.7.21.orig/test/git_test.py cola-1.3.7.21/test/git_test.py
+--- cola-1.3.7.21.orig/test/git_test.py	2009-04-30 13:56:22.352319047 +0200
++++ cola-1.3.7.21/test/git_test.py	2009-04-30 13:56:53.123149963 +0200
+@@ -24,17 +24,6 @@
+         version = self.git.version()[STDOUT]
+         self.failUnless(version.startswith('git version'))
+ 
+-    def test_tag(self):
+-        """Test running 'git tag'"""
+-        tags = self.git.tag()[STDOUT].splitlines()
+-        self.failUnless( 'v1.0.0' in tags )
+-
+-    def test_show(self):
+-        """Test running 'git show'"""
+-        sha = '1b9742bda5d26a4f250fa64657f66ed20624a084'
+-        contents = self.git.show(sha)[STDOUT].splitlines()
+-        self.failUnless(contents[0] == '/build')
+-
+     def test_stdout(self):
+         """Test overflowing the stdout buffer"""
+         # Write to stdout only

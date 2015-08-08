@@ -1,0 +1,41 @@
+Path-fixings.
+
+http://bugs.gentoo.org/237366
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ PROJECT( multisyncgui C )
+ 
+-SET( MULTISYNCGUI_GLADE_DIR "${CMAKE_INSTALL_PREFIX}/usr/share/multisync-gui/" )
+-SET( MULTISYNCGUI_ICON_DIR "${CMAKE_INSTALL_PREFIX}/usr/share/pixmaps/multisync-gui/" )
++SET( MULTISYNCGUI_GLADE_DIR "${CMAKE_INSTALL_PREFIX}/share/multisync-gui/" )
++SET( MULTISYNCGUI_ICON_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/" )
+ 
+ SET( MULTISYNCGUI_VERSION "0.36" )
+ SET( MULTISYNCGUI_GLADE "${MULTISYNCGUI_GLADE_DIR}/multisyncgui.glade" )
+--- a/misc/CMakeLists.txt
++++ b/misc/CMakeLists.txt
+@@ -3,6 +3,6 @@ CONFIGURE_FILE( "${CMAKE_CURRENT_SOURCE_DIR}/multisyncgui.glade" "${CMAKE_CURREN
+ 
+ ###### INSTALL ################### 
+ 
+-INSTALL( FILES ${CMAKE_CURRENT_BINARY_DIR}/multisyncgui.desktop DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/share/applications/" )
++INSTALL( FILES ${CMAKE_CURRENT_BINARY_DIR}/multisyncgui.desktop DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications/" )
+ INSTALL( FILES "${CMAKE_CURRENT_BINARY_DIR}/multisyncgui.glade" DESTINATION "${MULTISYNCGUI_GLADE_DIR}" )
+ INSTALL( FILES multisync.png DESTINATION ${MULTISYNCGUI_ICON_DIR} ) 
+--- a/misc/multisyncgui.desktop
++++ b/misc/multisyncgui.desktop
+@@ -3,10 +3,10 @@ Encoding=UTF-8
+ Name=multisyncgui
+ Comment=Synchronization program for personal information such as calendars, addressbooks etc.
+ Comment[de]=Synchronisation von Organizern, PIMs und Mobiltelefonen
+-Exec=@PREFIX@/bin/multisync-gui
++Exec=@CMAKE_INSTALL_PREFIX@/bin/multisyncgui
+ Terminal=false
+ Type=Application
+-Icon=@MULTISYNC_ICON_DIR@/multisync.png
++Icon=@MULTISYNCGUI_ICON_DIR@/multisync.png
+ StartupWMClass=multisync
+ X-Desktop-File-Install-Version=0.3
+ Categories=Application;Utility;X-Red-Hat-Base;

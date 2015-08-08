@@ -1,0 +1,81 @@
+From 267feb2de49eed0823ca0c29f1cd5238537c7116 Mon Sep 17 00:00:00 2001
+From: Jan-Marek Glogowski <glogow@fbihome.de>
+Date: Thu, 6 Mar 2014 18:44:43 +0100
+Subject: Honor ExcludeSocketNotifiers in glib event loop
+
+Implements QEventLoop::ExcludeSocketNotifiers in the same way
+QEventLoop::X11ExcludeTimers is already implemented for the glib
+event loop.
+
+This prevents crashes when QClipboard checks for clipboard events
+and
+  qApp->clipboard()->setProperty( "useEventLoopWhenWaiting", true );
+is set.
+
+Task-number: QTBUG-34614
+Task-number: QTBUG-37380
+
+Change-Id: Id4e2a74c6bdf8c3b439a4e3813d24d11368b607d
+---
+ src/corelib/kernel/qeventdispatcher_glib.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/corelib/kernel/qeventdispatcher_glib.cpp b/src/corelib/kernel/qeventdispatcher_glib.cpp
+index 0b0e308..ba522fa 100644
+--- a/src/corelib/kernel/qeventdispatcher_glib.cpp
++++ b/src/corelib/kernel/qeventdispatcher_glib.cpp
+@@ -65,6 +65,7 @@ struct GPollFDWithQSocketNotifier
+ struct GSocketNotifierSource
+ {
+     GSource source;
++    QEventLoop::ProcessEventsFlags processEventsFlags;
+     QList<GPollFDWithQSocketNotifier *> pollfds;
+ };
+ 
+@@ -80,6 +81,9 @@ static gboolean socketNotifierSourceCheck(GSource *source)
+     GSocketNotifierSource *src = reinterpret_cast<GSocketNotifierSource *>(source);
+ 
+     bool pending = false;
++    if (src->processEventsFlags & QEventLoop::ExcludeSocketNotifiers)
++        return pending;
++
+     for (int i = 0; !pending && i < src->pollfds.count(); ++i) {
+         GPollFDWithQSocketNotifier *p = src->pollfds.at(i);
+ 
+@@ -103,6 +107,9 @@ static gboolean socketNotifierSourceDispatch(GSource *source, GSourceFunc, gpoin
+     QEvent event(QEvent::SockAct);
+ 
+     GSocketNotifierSource *src = reinterpret_cast<GSocketNotifierSource *>(source);
++    if (src->processEventsFlags & QEventLoop::ExcludeSocketNotifiers)
++        return true;
++
+     for (int i = 0; i < src->pollfds.count(); ++i) {
+         GPollFDWithQSocketNotifier *p = src->pollfds.at(i);
+ 
+@@ -331,6 +338,7 @@ QEventDispatcherGlibPrivate::QEventDispatcherGlibPrivate(GMainContext *context)
+         reinterpret_cast<GSocketNotifierSource *>(g_source_new(&socketNotifierSourceFuncs,
+                                                                sizeof(GSocketNotifierSource)));
+     (void) new (&socketNotifierSource->pollfds) QList<GPollFDWithQSocketNotifier *>();
++    socketNotifierSource->processEventsFlags = QEventLoop::AllEvents;
+     g_source_set_can_recurse(&socketNotifierSource->source, true);
+     g_source_attach(&socketNotifierSource->source, mainContext);
+ 
+@@ -416,6 +424,7 @@ bool QEventDispatcherGlib::processEvents(QEventLoop::ProcessEventsFlags flags)
+     // tell postEventSourcePrepare() and timerSource about any new flags
+     QEventLoop::ProcessEventsFlags savedFlags = d->timerSource->processEventsFlags;
+     d->timerSource->processEventsFlags = flags;
++    d->socketNotifierSource->processEventsFlags = flags;
+ 
+     if (!(flags & QEventLoop::EventLoopExec)) {
+         // force timers to be sent at normal priority
+@@ -427,6 +436,7 @@ bool QEventDispatcherGlib::processEvents(QEventLoop::ProcessEventsFlags flags)
+         result = g_main_context_iteration(d->mainContext, canWait);
+ 
+     d->timerSource->processEventsFlags = savedFlags;
++    d->socketNotifierSource->processEventsFlags = savedFlags;
+ 
+     if (canWait)
+         emit awake();
+-- 
+2.0.0
+

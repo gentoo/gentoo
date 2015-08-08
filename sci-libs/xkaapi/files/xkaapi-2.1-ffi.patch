@@ -1,0 +1,24 @@
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2be95ec..13e876b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1034,12 +1034,12 @@ dnl -----------------------------------------------------------------------
+ 
+ dnl we need to always configure imported-soft/libffi in order to be able
+ dnl to run "make dist"
+-#if test x"$use_ffi" = xinternal; then
++if test x"$use_ffi" = xinternal; then
+   mkdir -p "imported-soft/libffi"
+   AC_CONFIG_SUBDIRS([imported-soft/libffi])
+-#else
+-#  AC_MSG_NOTICE([Not compiling embedded copy of libffi])
+-#fi
++else
++  AC_MSG_NOTICE([Not compiling embedded copy of libffi])
++fi
+ 
+ dnl -----------------------------------------------------------------------
+ dnl Dependencies between libs

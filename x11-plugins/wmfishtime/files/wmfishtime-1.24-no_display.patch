@@ -1,0 +1,19 @@
+--- fishmon.c.orig	2010-06-27 18:38:42.000000000 +0200
++++ fishmon.c	2010-06-27 18:40:56.000000000 +0200
+@@ -152,6 +152,8 @@
+ 
+ int main(int argc, char **argv)
+ {
++    /* This is needed to proper dockapp work on >=GTK+-2.18 */
++    setenv("GDK_NATIVE_WINDOWS", "1", 0);
+     int ch;
+     GdkEvent *event;
+ #ifdef PRO
+@@ -694,6 +696,7 @@
+     gdk_window_show(bm.win);
+ 
+     XSetWMHints(GDK_WINDOW_XDISPLAY(bm.win), win, &wmhints);
++    gdk_window_show(bm.iconwin);
+ 
+ #undef MASK
+ }				/* make_new_fishmon_dockapp */

@@ -1,0 +1,13 @@
+--- po/Makefile.in.in.orig	2000-04-16 12:04:50.000000000 +0200
++++ po/Makefile.in.in	2013-07-24 04:14:20.698869858 +0200
+@@ -119,8 +119,8 @@
+ 	for cat in $$catalogs; do \
+ 	  cat=`basename $$cat`; \
+ 	  case "$$cat" in \
+-	    *.gmo) destdir=$(gnulocaledir);; \
+-	    *)     destdir=$(localedir);; \
++	    *.gmo) destdir=$(DESTDIR)/$(gnulocaledir);; \
++	    *)     destdir=$(DESTDIR)/$(localedir);; \
+ 	  esac; \
+ 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
+ 	  dir=$$destdir/$$lang/LC_MESSAGES; \

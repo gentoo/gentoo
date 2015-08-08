@@ -1,0 +1,11 @@
+--- fritz/src/driver.c_old	2012-05-21 20:58:44.000000000 +0200
++++ fritz/src/driver.c	2012-05-21 20:58:59.000000000 +0200
+@@ -23,7 +23,7 @@
+ #include <asm/io.h>
+ #include <asm/irq.h>
+ #include <asm/atomic.h>
+-#include <asm/system.h>
++#include <asm/switch_to.h>
+ #include <linux/version.h>
+ #include <linux/ioport.h>
+ #include <linux/sched.h>

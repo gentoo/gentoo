@@ -1,0 +1,26 @@
+disable the $PATH search for the PKG_CONFIG tool.  it isn't needed and just
+gets in the way when setting to a value that might not yet exist.
+
+disable the existence test for the PKG_CONFIG_LIBDIR dir.  it breaks when you
+cross-compile for an ABI that doesn't exist in the root dir (--build).
+
+--- a/configure
++++ b/configure
+@@ -3582,7 +3582,7 @@ fi
+ esac
+ 
+ test -z "$PKG_CONFIG" && PKG_CONFIG=none
+-if test "$PKG_CONFIG" != none ; then
++if false ; then
+ 
+ if test "x$prefix" != xNONE; then
+   cf_path_syntax="$prefix"
+@@ -3626,7 +3626,7 @@ echo $ECHO_N "checking if we should install .pc files for $PKG_CONFIG... $ECHO_C
+ 		PKG_CONFIG_LIBDIR=`echo "$PKG_CONFIG" | sed -e 's,/[^/]*/[^/]*$,,'`/lib/pkgconfig
+ 	fi
+ 	PKG_CONFIG_LIBDIR=`echo "$PKG_CONFIG_LIBDIR" | sed -e 's/^://' -e 's/:.*//'`
+-	if test -n "$PKG_CONFIG_LIBDIR" && test -d "$PKG_CONFIG_LIBDIR" ; then
++	if test -n "$PKG_CONFIG_LIBDIR" ; then
+ 
+ # Check whether --enable-pc-files or --disable-pc-files was given.
+ if test "${enable_pc_files+set}" = set; then

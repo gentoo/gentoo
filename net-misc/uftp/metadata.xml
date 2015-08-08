@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>azamat.hackimov@gmail.com</email>
+	<name>Azamat Hackimov</name>
+</maintainer>
+<use>
+	<flag name="server">Install uftp server daemon</flag>
+</use>
+</pkgmetadata>

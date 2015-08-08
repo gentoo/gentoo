@@ -1,0 +1,11 @@
+--- configure.orig	2015-05-10 19:25:43.365929384 +0200
++++ configure	2015-05-10 19:26:00.452648532 +0200
+@@ -12833,7 +12833,7 @@
+ if test "$enable_daemon" = "yes"; then :
+ 
+ 
+-if test "$enable_system" != "no"; then :
++if test "$enable_systemd" != "no"; then :
+ 
+   case $enable_systemd in #(
+   auto) :

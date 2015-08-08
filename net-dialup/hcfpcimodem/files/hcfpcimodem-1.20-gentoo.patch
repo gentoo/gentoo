@@ -1,0 +1,29 @@
+diff -Nru hcfpcimodem-1.20full.orig/diag/makefile hcfpcimodem-1.20full/diag/makefile
+--- hcfpcimodem-1.20full.orig/diag/makefile	2004-12-14 08:50:41.000000000 +0100
++++ hcfpcimodem-1.20full/diag/makefile	2009-11-29 10:35:05.000000000 +0100
+@@ -10,7 +10,7 @@
+ include $(TOP)/config.mak
+ -include $(TOP)/modules/imported/makeflags.mak
+ 
+-CFLAGS =	-I$(TOP)/modules/imported/include -I$(TOP)/modules/include
++CFLAGS +=	-I$(TOP)/modules/imported/include -I$(TOP)/modules/include
+ CFLAGS +=	$(IMPORTED_FRAMEWORK_DEFS) $(IMPORTED_GENERAL_DEFS)
+ CFLAGS +=	-DCNXTTARGET="\"$(CNXTTARGET)\""
+ 
+@@ -41,13 +41,13 @@
+ 	$(MKDIR) -p $@
+ 
+ $(CNXTTARGET)diag: diag.o modemexpert.o
+-	$(CC) -o $@ $^
++	$(CC) ${LDFLAGS} -o $@ $^
+ 
+ $(CNXTTARGET)scr: scr.o
+-	$(CC) -o $@ $^
++	$(CC) ${CFLAGS} ${LDFLAGS} -o $@ $^
+ 
+ $(CNXTTARGET)dmp: dmp.o
+-	$(CC) -o $@ $^
++	$(CC) ${CFLAGS} ${LDFLAGS} -o $@ $^
+ 
+ clean:
+ 	rm -f *.o $(ALL)

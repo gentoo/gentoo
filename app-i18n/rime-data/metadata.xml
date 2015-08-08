@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cjk</herd>
+  <maintainer>
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <email>chen.sst@gmail.com</email>
+      <name>Gong Chen</name>
+    </maintainer>
+    <bugs-to>http://code.google.com/p/rimeime/issues/list</bugs-to>
+    <remote-id type="google-code">rimeime</remote-id>
+  </upstream>
+</pkgmetadata>

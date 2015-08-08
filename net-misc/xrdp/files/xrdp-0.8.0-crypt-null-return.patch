@@ -1,0 +1,36 @@
+From 851c762ee722a84d15348b2512b3b578282e590b Mon Sep 17 00:00:00 2001
+From: Jay Sorg <jay.sorg@gmail.com>
+Date: Wed, 29 Oct 2014 17:54:11 -0700
+Subject: [PATCH] sesman: check for null from crypt()
+
+---
+ sesman/verify_user.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/sesman/verify_user.c b/sesman/verify_user.c
+index 98d3dd3..49c475c 100644
+--- a/sesman/verify_user.c
++++ b/sesman/verify_user.c
+@@ -51,6 +51,7 @@ long DEFAULT_CC
+ auth_userpass(char *user, char *pass, int *errorcode)
+ {
+     const char *encr;
++    const char *epass;
+     struct passwd *spw;
+     struct spwd *stp;
+ 
+@@ -84,8 +85,12 @@ auth_userpass(char *user, char *pass, int *errorcode)
+         /* old system with only passwd */
+         encr = spw->pw_passwd;
+     }
+-
+-    return (strcmp(encr, crypt(pass, encr)) == 0);
++    epass = crypt(pass, encr);
++    if (epass == 0)
++    {
++        return 0;
++    }
++    return (strcmp(encr, epass) == 0);
+ }
+ 
+ /******************************************************************************/

@@ -1,0 +1,16 @@
+ pyamg/amg_core/ruge_stuben.h |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/pyamg/amg_core/ruge_stuben.h b/pyamg/amg_core/ruge_stuben.h
+index 51cec80..d0ff9a9 100644
+--- a/pyamg/amg_core/ruge_stuben.h
++++ b/pyamg/amg_core/ruge_stuben.h
+@@ -7,6 +7,8 @@
+ #include <cassert>
+ #include <limits>
+ #include <algorithm>
++#include "graph.h"
++#include "linalg.h"
+ 
+ /*
+  *  Compute a strength of connection matrix using the classical strength

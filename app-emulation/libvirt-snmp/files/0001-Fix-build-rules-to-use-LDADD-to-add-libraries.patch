@@ -1,0 +1,81 @@
+From 810fef8fbf0c4f6383d870a21f729875a8e16f91 Mon Sep 17 00:00:00 2001
+From: Doug Goldstein <cardoe@cardoe.com>
+Date: Mon, 13 Aug 2012 00:18:04 -0500
+Subject: [libvirt-snmp] [PATCH] Fix build rules to use LDADD to add libraries
+
+Fix build rules to use LDADD to add libraries to support --as-needed.
+Also refactored some of the other automake variables in the same fashion
+of the libvirt's automake rules.
+
+Signed-off-by: Doug Goldstein <cardoe@cardoe.com>
+---
+ configure.ac    |    4 ++++
+ src/Makefile.am |   31 ++++++++++++++++---------------
+ 2 files changed, 20 insertions(+), 15 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a2bb1ac..9d7d03c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,6 +3,10 @@ AM_INIT_AUTOMAKE([-Wall -Werror])
+ AC_CONFIG_HEADERS([config.h])
+ 
+ AC_PREREQ([2.50])
++
++AC_PROG_CC
++AM_PROG_CC_C_O
++
+ AC_CHECK_FUNCS([memset])
+ AC_CHECK_FUNCS([strdup])
+ AC_CHECK_HEADERS([stdlib.h])
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6d27bf5..622a280 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,19 +1,5 @@
+ bin_PROGRAMS=libvirtMib_subagent
+ 
+-AM_CFLAGS =	\
+-		$(COVERAGE_CFLAGS) \
+-		$(DRIVER_MODULE_CFLAGS) \
+-		$(SNMP_CFLAGS)          \
+-		$(LIBVIRT_CFLAGS) \
+-		$(WARN_CFLAGS)          \
+-		$(LOCK_CHECKING_CFLAGS)
+-
+-AM_LDFLAGS = 	\
+-		$(COVERAGE_LDFLAGS) \
+-		$(PTHREAD_LIBS) \
+-		$(LIBVIRT_LIBS) \
+-		$(SNMP_LIBS)
+-
+ LIBVIRT_OLD_SRCS = \
+ 		threads.c \
+ 		event_poll.c \
+@@ -58,7 +44,22 @@ HDRS = \
+ 		libvirtGuestTable.h
+ 
+ libvirtMib_subagent_SOURCES=${SRCS} ${HDRS}
+-libvirtMib_subagent_LDFLAGS=${AM_LDFLAGS}
++
++libvirtMib_subagent_CFLAGS=		\
++	$(DRIVER_MODULE_CFLAGS)		\
++	$(SNMP_CFLAGS)				\
++	$(LIBVIRT_CFLAGS)			\
++	$(COVERAGE_CFLAGS)			\
++	$(WARN_CFLAGS)				\
++	$(LOCK_CHECKING_CFLAGS)
++
++libvirtMib_subagent_LDFLAGS=	\
++	$(COVERAGE_LDFLAGS)
++
++libvirtMib_subagent_LDADD=		\
++	$(PTHREAD_LIBS)				\
++	$(LIBVIRT_LIBS)				\
++	$(SNMP_LIBS)
+ 
+ if LIBVIRT_OLD
+ libvirtMib_subagent_SOURCES+=${LIBVIRT_OLD_SRCS} ${LIBVIRT_OLD_HDRS}
+-- 
+1.7.8.6
+

@@ -1,0 +1,17 @@
+generate a local copy of libtool for use in compiling
+
+https://bugs.gentoo.org/374355
+
+--- a/configure.in
++++ b/configure.in
+@@ -260,9 +260,7 @@ case $host in
+         fi
+     else
+     dnl libtoolize requires that the following not be indented
+-    dnl should become LT_INIT(win32-dll)
+-AC_LIBTOOL_WIN32_DLL
+-AC_PROG_LIBTOOL
++LT_INIT(win32-dll)
+         # get libtool's setting of shlibpath_var
+         eval `grep "^shlibpath_var=[[A-Z_]]*$" $apr_builddir/libtool`
+         if test "x$shlibpath_var" = "x"; then

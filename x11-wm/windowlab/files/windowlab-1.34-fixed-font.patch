@@ -1,0 +1,11 @@
+--- windowlab.h.orig    2006-09-01 23:47:36.000000000 +0200
++++ windowlab.h 2006-09-01 23:47:49.000000000 +0200
+@@ -49,7 +49,7 @@
+ #ifdef XFT
+ #define DEF_FONT "-bitstream-bitstream vera sans-medium-r-*-*-*-100-*-*-*-*-*-*"
+ #else
+-#define DEF_FONT "-b&h-lucida-medium-r-*-*-10-*-*-*-*-*-*-*"
++#define DEF_FONT "fixed"
+ #endif
+
+ // use named colours, #rgb, #rrggbb or #rrrgggbbb format

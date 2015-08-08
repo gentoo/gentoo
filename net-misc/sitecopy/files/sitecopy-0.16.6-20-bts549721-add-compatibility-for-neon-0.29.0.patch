@@ -1,0 +1,17 @@
+From: Sandro Tosi <morph@debian.org>
+Subject: Add support for libneon 0.29.0 and 0.30.0
+
+diff -urNad sitecopy~/configure.in sitecopy/configure.in
+--- sitecopy~/configure.in	2008-07-20 18:21:15.000000000 +0200
++++ sitecopy/configure.in	2009-10-05 23:44:00.764858219 +0200
+@@ -112,8 +112,8 @@
+    AC_LIBOBJ(lib/fnmatch)
+ fi
+ 
+-# Support neon 0.24 through 0.28
+-NE_REQUIRE_VERSIONS([0], [24 25 26 27 28])
++# Support neon 0.24 through 0.30
++NE_REQUIRE_VERSIONS([0], [24 25 26 27 28 29 30])
+ 
+ dnl But we don't use zlib or ACL support
+ NEON_WITHOUT_ZLIB

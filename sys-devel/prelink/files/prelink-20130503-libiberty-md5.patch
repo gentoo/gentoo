@@ -1,0 +1,61 @@
+From 8eeb9da6d017761037bf757780ea544dfeabbad8 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 31 Jul 2012 09:02:35 +0000
+Subject: [PATCH] libiberty/md5: fix strict alias warnings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Current libiberty md5 code triggers these warnings with gcc-4.7.1 for me:
+
+libiberty/md5.c: In function âmd5_finish_ctxâ:
+libiberty/md5.c:117:3: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+libiberty/md5.c:118:3: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+
+The change below fixes things for me.  The optimized output (-O2) is the same
+before/after my change on x86_64-linux.  I imagine it'll be the same for most
+targets.  It seems simpler than using a union on the md5_ctx buffer since these
+are the only two locations in the code where this occurs.
+---
+ libiberty/ChangeLog |  5 +++++
+ libiberty/md5.c     | 12 ++++++++----
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+
+2012-07-31  Mike Frysinger  <vapier@gentoo.org>
+
+	* md5.c (md5_finish_ctx): Declare swap_bytes.  Assign SWAP() output
+	to swap_bytes, and then call memcpy to move it to ctx->buffer.
+
+diff --git a/libiberty/md5.c b/libiberty/md5.c
+index 0db8fc8..8cc0cb5 100644
+--- a/src/md5.c
++++ b/src/md5.c
+@@ -103,6 +103,7 @@ md5_finish_ctx (struct md5_ctx *ctx, void *resbuf)
+ {
+   /* Take yet unprocessed bytes into account.  */
+   md5_uint32 bytes = ctx->buflen;
++  md5_uint32 swap_bytes;
+   size_t pad;
+ 
+   /* Now count remaining bytes.  */
+@@ -113,10 +114,13 @@ md5_finish_ctx (struct md5_ctx *ctx, void *resbuf)
+   pad = bytes >= 56 ? 64 + 56 - bytes : 56 - bytes;
+   memcpy (&ctx->buffer[bytes], fillbuf, pad);
+ 
+-  /* Put the 64-bit file length in *bits* at the end of the buffer.  */
+-  *(md5_uint32 *) &ctx->buffer[bytes + pad] = SWAP (ctx->total[0] << 3);
+-  *(md5_uint32 *) &ctx->buffer[bytes + pad + 4] = SWAP ((ctx->total[1] << 3) |
+-							(ctx->total[0] >> 29));
++  /* Put the 64-bit file length in *bits* at the end of the buffer.
++     Use memcpy to avoid aliasing problems.  On most systems, this
++     will be optimized away to the same code.  */
++  swap_bytes = SWAP (ctx->total[0] << 3);
++  memcpy (&ctx->buffer[bytes + pad], &swap_bytes, sizeof (swap_bytes));
++  swap_bytes = SWAP ((ctx->total[1] << 3) | (ctx->total[0] >> 29));
++  memcpy (&ctx->buffer[bytes + pad + 4], &swap_bytes, sizeof (swap_bytes));
+ 
+   /* Process last bytes.  */
+   md5_process_block (ctx->buffer, bytes + pad + 8, ctx);
+-- 
+1.8.2.1
+

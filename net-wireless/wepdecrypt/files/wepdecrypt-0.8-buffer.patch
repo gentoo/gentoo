@@ -1,0 +1,11 @@
+--- src/wepclient.c	2006-07-08 19:48:08.000000000 -0400
++++ src/wepclient.c.new	2010-12-10 13:16:32.000000000 -0500
+@@ -75,7 +75,7 @@
+ int server_connection(unsigned char * server_host, int port, char * packet_file, unsigned char * init_key, unsigned char * end_key, unsigned char * decrypted_key, unsigned char * bssid, unsigned char * mode ,int option){
+ 	int sd, read_bytes, write_bytes, i, fd;
+ 	char file[11]="local.dump";
+-	unsigned char buffer[149], digest[16];
++	unsigned char buffer[150], digest[16];
+ 	struct sockaddr_in dest;
+ 	struct in_addr *host_ip;
+ 	struct hostent *host;

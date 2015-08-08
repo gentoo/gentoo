@@ -1,0 +1,10 @@
+--- fim-0.4-trunk/configure.ac
++++ fim-0.4-trunk/configure.ac
+@@ -123,6 +123,7 @@
+   FIM_LIB_OBJECTS="$FIM_LIB_OBJECTS FbiStuffMagick.o";
+   LIBS="$LIBS `GraphicsMagick-config --cppflags --ldflags --libs|tr '\n' ' '` ";
+   CXXFLAGS="$CXXFLAGS `GraphicsMagick-config --cppflags |tr '\n' ' '` ";
++  CXXFLAGS="$CXXFLAGS -I`GraphicsMagick-config --prefix |tr -d '\n'`/include/GraphicsMagick ";
+   AC_DEFINE([HAVE_LIBGRAPHICSMAGICK],[1],[We have libGraphicsMagick])
+ fi
+   ], [])

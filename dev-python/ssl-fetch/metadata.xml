@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>tools-portage</herd>
+  <maintainer>
+    <email>dolsen@gentoo.org</email>
+    <name>Brian Dolbec</name>
+  </maintainer>
+  <maintainer>
+    <email>dastergon@gentoo.org</email>
+    <name>Pavlos Ratis</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">dol-sen/ssl-fetch</remote-id>
+  </upstream>
+</pkgmetadata>

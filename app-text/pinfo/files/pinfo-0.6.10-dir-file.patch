@@ -1,0 +1,11 @@
+--- a/src/filehandling_functions.c
++++ b/src/filehandling_functions.c
+@@ -742,7 +742,7 @@
+ 	int i, j;
+ 	char *tmpfilename;
+ 
+-	if (strncmp(filename, "dir", 3) == 0)
++	if (strncmp(filename, "dir", 3) == 0 && !isalnum(filename[3]))
+ 	{
+ 		xfree(buf);
+ 		return opendirfile(number);

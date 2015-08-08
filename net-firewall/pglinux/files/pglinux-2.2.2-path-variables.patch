@@ -1,0 +1,131 @@
+commit 07b4b464e18c763bf095214a73d0bcfa32c4f933
+Author: hasufell <hasufell@posteo.de>
+Date:   Sat Sep 7 00:33:42 2013 +0200
+
+    BUILD: do not expand path variables in configure.ac
+    
+    it is bad form and could cause unexpected behavior
+
+diff --git a/pgl/configure.ac b/pgl/configure.ac
+index 213baa5..6160956 100644
+--- a/pgl/configure.ac
++++ b/pgl/configure.ac
+@@ -45,21 +45,21 @@ AC_ARG_WITH([initddir],
+     [AS_HELP_STRING([--with-initddir=DIR],
+         [path to init script directory (default: sysconfdir/init.d)])],
+     [INITDDIR="$withval"],
+-    [INITDDIR="$sysconfdir/init.d"])
++    [INITDDIR='$(sysconfdir)/init.d'])
+ 
+ # let user specify LOGDIR
+ AC_ARG_WITH([logdir],
+     [AS_HELP_STRING([--with-logdir=DIR],
+         [path to log directory (default: localstatedir/log/pgl)])],
+     [LOGDIR="$withval"],
+-    [LOGDIR="$localstatedir/log/$PACKAGE"])
++    [LOGDIR='$(localstatedir)/log/'$PACKAGE])
+ 
+ # let user specify PIDDIR
+ AC_ARG_WITH([piddir],
+     [AS_HELP_STRING([--with-piddir=DIR],
+         [path to PID directory (default: localstatedir/run)])],
+     [PIDDIR="$withval"],
+-    [PIDDIR="$localstatedir/run"])
++    [PIDDIR='$(localstatedir)/run'])
+ 
+ # let user specify TMPDIR
+ AC_ARG_WITH([tmpdir],
+@@ -73,21 +73,21 @@ AC_ARG_WITH([blocklists],
+     [AS_HELP_STRING([--with-blocklists=DIR],
+         [path to blocklists directory (default: localstatedir/spool/pgl)])],
+     [BLOCKLISTS_DIR="$withval"],
+-    [BLOCKLISTS_DIR="$localstatedir/spool/$PACKAGE"])
++    [BLOCKLISTS_DIR='$(localstatedir)/spool/'$PACKAGE])
+ 
+ # let user specify LOCAL_BLOCKLIST_DIR
+ AC_ARG_WITH([localblocklist],
+     [AS_HELP_STRING([--with-localblocklist=DIR],
+         [path to local blocklist directory (default: sysconfdir/pgl/blocklists.local)])],
+     [LOCAL_BLOCKLIST_DIR="$withval"],
+-    [LOCAL_BLOCKLIST_DIR="$sysconfdir/$PACKAGE/blocklists.local"])
++    [LOCAL_BLOCKLIST_DIR='$(sysconfdir)'/$PACKAGE/blocklists.local])
+ 
+ # let user specify MASTER_BLOCKLIST_DIR
+ AC_ARG_WITH([masterblocklist],
+     [AS_HELP_STRING([--with-masterblocklist=DIR],
+         [path to master blocklist directory (default: localstatedir/lib/pgl)])],
+     [MASTER_BLOCKLIST_DIR="$withval"],
+-    [MASTER_BLOCKLIST_DIR="$localstatedir/lib/$PACKAGE"])
++    [MASTER_BLOCKLIST_DIR='$(localstatedir)/lib/'$PACKAGE])
+ 
+ # let user specify LSB
+ AC_ARG_WITH([lsb],
+@@ -137,7 +137,7 @@ AC_ARG_WITH([iconsdir],
+     [AS_HELP_STRING([--with-iconsdir=DIR],
+         [path where icons get installed (default: datadir/pixmaps)])],
+     [ICONSDIR="$withval"],
+-    [ICONSDIR="$datadir/pixmaps"])
++    [ICONSDIR='$(datadir)/pixmaps'])
+ 
+ 
+ 
+@@ -147,7 +147,7 @@ AC_ARG_WITH([iconsdir],
+ # pkg-config module check, generates $1_LIBS and $1_CFLAGS vars
+ PKG_CHECK_MODULES([libnetfilterqueue],[libnetfilter_queue])
+ PGLD_CFLAGS=""
+-PGLD_CPPFLAGS="$libnetfilterqueue_CFLAGS -DVERSION=\\\"$VERSION\\\" -DPACKAGE_NAME=\\\"$PACKAGE\\\" -DPIDFILE=\\\"${localstatedir}/run/${PACKAGE}d.pid\\\""
++PGLD_CPPFLAGS="$libnetfilterqueue_CFLAGS -DVERSION=\\\"$VERSION\\\" -DPACKAGE_NAME=\\\"$PACKAGE\\\""
+ PGLD_LDFLAGS=""
+ PGLD_LIBS="$libnetfilterqueue_LIBS"
+ 
+@@ -180,7 +180,7 @@ AS_IF([test "x$enable_dbus" = "xyes"],
+     [PKG_CHECK_MODULES([DBUS],
+         [dbus-1])]
+     [PGLD_CFLAGS="$PGLD_CFLAGS -fPIC"]
+-    [PGLD_CPPFLAGS="$PGLD_CPPFLAGS $DBUS_CFLAGS -DHAVE_DBUS -DPLUGINDIR=\\\"${libdir}/$PACKAGE\\\""]
++    [PGLD_CPPFLAGS="$PGLD_CPPFLAGS $DBUS_CFLAGS -DHAVE_DBUS"]
+     [PGLD_LDFLAGS="-Wl,-export-dynamic"]
+     [PGLD_LIBS="$PGLD_LIBS $DBUS_LIBS -ldl"])
+ 
+@@ -203,7 +203,7 @@ AS_IF([test "x$enable_lowmem" = "xyes"],
+ ##
+ # initial QT_flags
+ QT_CXXFLAGS=""
+-QT_CPPFLAGS="-DVERSION=\\\"$VERSION\\\" -DPGLCMDDEFAULTSPATH=\\\"${libdir}/${PACKAGE}/${PACKAGE}cmd.defaults\\\" -D_REENTRANT -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED"
++QT_CPPFLAGS="-DVERSION=\\\"$VERSION\\\" -D_REENTRANT -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED"
+ QT_LDFLAGS=""
+ QT_LIBS=""
+ 
+diff --git a/pgl/pgld/Makefile.am b/pgl/pgld/Makefile.am
+index ca7d509..91fc7db 100644
+--- a/pgl/pgld/Makefile.am
++++ b/pgl/pgld/Makefile.am
+@@ -1,6 +1,7 @@
+ # flags
+ AM_CFLAGS = @PGLD_CFLAGS@
+-AM_CPPFLAGS = @PGLD_CPPFLAGS@
++AM_CPPFLAGS = @PGLD_CPPFLAGS@ \
++			  -DPIDFILE=\"$(localstatedir)/run/${PACKAGE}d.pid\"
+ AM_LDFLAGS = @PGLD_LDFLAGS@
+ 
+ # sources for pgld binary
+@@ -14,6 +15,7 @@ sbin_PROGRAMS = pgld
+ 
+ # build dbus library for --enable-dbus
+ if DBUSMAKE
++AM_CPPFLAGS += -DPLUGINDIR=\"$(libdir)/$(PACKAGE)\"
+ libdbusdir = $(libdir)/$(PACKAGE_NAME)
+ libdbus_LTLIBRARIES = libdbus.la
+ libdbus_la_SOURCES = src/dbus.c src/dbus.h
+diff --git a/pgl/pglgui/Makefile.am b/pgl/pglgui/Makefile.am
+index 3a1757e..05c2a54 100644
+--- a/pgl/pglgui/Makefile.am
++++ b/pgl/pglgui/Makefile.am
+@@ -11,6 +11,7 @@ MOC = @MOC@
+ AM_CXXFLAGS = @QT_CXXFLAGS@
+ AM_CPPFLAGS = \
+ 	@QT_CPPFLAGS@ \
++	-DPGLCMDDEFAULTSPATH=\"$(libdir)/$(PACKAGE)/$(PACKAGE)cmd.defaults\" \
+ 	-I./ui
+ AM_LDFLAGS = @QT_LDFLAGS@
+ 

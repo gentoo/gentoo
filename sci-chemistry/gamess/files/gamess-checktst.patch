@@ -1,0 +1,21 @@
+--- gamess.orig/tools/checktst/checktst	2008-12-30 16:33:09.000000000 +0100
++++ gamess/tools/checktst/checktst	2011-10-11 22:06:26.019798622 +0200
+@@ -6,7 +6,6 @@
+ #
+ # Only the path name in the very next line needs to be customized.
+ #
+-set GMSPATH=~/gamess
+ 
+ # The Ntest outputs are assumed to be named exam01.log, exam02.log, ...
+ # but the user will be allowed to specify the directory containing them.
+@@ -66,8 +65,8 @@
+ setenv tolW 0.1
+ setenv tolX 0.00001
+ 
+-set script=$GMSPATH/tools/checktst/exam
+-setenv chkabs $GMSPATH/tools/checktst/chkabs
++set script=./exam
++setenv chkabs ./chkabs
+ 
+ #   If we don't see the message about GAMESS exiting normally,
+ #   then there is surely a mistake, and we want to focus the

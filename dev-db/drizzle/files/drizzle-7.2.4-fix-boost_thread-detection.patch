@@ -1,0 +1,18 @@
+--- m4/pandora_have_libboost_thread.m4.orig	2014-02-12 13:52:43.580001598 +0400
++++ m4/pandora_have_libboost_thread.m4	2014-02-12 13:53:24.288002974 +0400
+@@ -17,13 +17,13 @@
+   CXXFLAGS="${PTHREAD_CFLAGS} ${CXXFLAGS}"
+ 
+   AC_LANG_PUSH(C++)
+-  AC_LIB_HAVE_LINKFLAGS(boost_thread-mt,,[
++  AC_LIB_HAVE_LINKFLAGS(boost_thread-mt,boost_system-mt,[
+     #include <boost/thread.hpp>
+   ],[
+     boost::thread id;
+   ])
+   AS_IF([test "x${ac_cv_libboost_thread_mt}" = "xno"],[
+-    AC_LIB_HAVE_LINKFLAGS(boost_thread,,[
++    AC_LIB_HAVE_LINKFLAGS(boost_thread,boost_system,[
+       #include <boost/thread.hpp>
+     ],[
+       boost::thread id;

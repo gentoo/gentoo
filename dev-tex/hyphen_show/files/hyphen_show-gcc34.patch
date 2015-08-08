@@ -1,0 +1,78 @@
+--- hyphen-show-20000425/hyphen_show.c.orig	2002-01-29 00:08:12.000000000 +0100
++++ hyphen-show-20000425/hyphen_show.c	2005-09-29 09:34:01.000000000 +0200
+@@ -79,9 +79,9 @@
+ 		                  Linux (gcc),
+ 				  SGI IRIS 5.2                              */
+   #include <sys/fcntl.h>
+-  int close(int);
+-  int read(int,char *,unsigned);
+-  int isalpha(char);
++  #include <unistd.h>
++  #include <stdlib.h>
++  #include <ctype.h>
+ #endif
+ 
+ int gchar(unsigned char *);
+@@ -106,7 +106,6 @@
+ char zugelassen(char, unsigned char);
+ char* text_clear(char *, int *);
+ void eop(void);
+-long pow(int,int);
+ void eingabe(long *, unsigned char);
+ void right(unsigned char);
+ void w0(void);
+@@ -114,7 +113,7 @@
+ void x0(void);
+ void x(unsigned char);
+ void down(unsigned char);
+-void y0(void);
++void y_0(void);
+ void y(unsigned char);
+ void z0(void);
+ void z(unsigned char);
+@@ -491,24 +490,16 @@
+     s_p = 0;
+   }
+ 
+-long pow(int b,int p)
+-  { int w,k;
+-    w = b;
+-    for (k=1; k < p; k++) {w = w *b;};
+-    return w;
+-  }
+-
+ void eingabe(long* dd, unsigned char k)
+-  { char neg; unsigned char hk;
++  { unsigned char hk;
+     long hn,hw; 
+     hw = (int) e_inbyte();
+-    neg = FALSE;
+-    if (hw > 127) {neg = TRUE;};
++    if (hw > 127) hw -= 256;
+     for (hn = 2; hn <= (long) k; hn++) 
+     { hk = e_inbyte();
+       hw = hw*256+hk;
+     };
+-    if (neg == TRUE) {*dd = -(pow(2,k*8))+hw; } else *dd = hw;
++    *dd = hw;
+   }
+ 
+ void right(unsigned char code)
+@@ -544,7 +535,7 @@
+     if (d_v > v_grenze_zeile) a_outimage();
+   }
+ 
+-void y0(void)
++void y_0(void)
+   { if (d_y > y_grenze)  a_outimage();
+     if (abs(d_y) > y_grenze_zeile) a_outimage();
+   }
+@@ -698,7 +689,7 @@
+       else if (k == 152) {x0();}                /* x0                       */
+       else if (k <= 156) {x(k);}                /* x1 bis x4                */
+       else if (k <= 160) {down(k);}             /* down1 bis down4          */
+-      else if (k == 161) {y0();}                /* y0                       */
++      else if (k == 161) {y_0();}               /* y0                       */
+       else if (k <= 165) {y(k);}                /* y1 bis y4                */
+       else if (k == 166) {z0();}                /* z0                       */
+       else if (k <= 170) {z(k);}                /* z1 bis z4                */

@@ -1,0 +1,11 @@
+diff --exclude='*~' -Naur ots-0.5.0.orig/src/grader-tf.c ots-0.5.0/src/grader-tf.c
+--- ots-0.5.0.orig/src/grader-tf.c	2008-05-17 12:17:23.000000000 +0000
++++ ots-0.5.0/src/grader-tf.c	2008-05-17 12:17:37.000000000 +0000
+@@ -22,6 +22,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include "libots.h"
++#include <math.h>
+ 
+ /*Grader - using the Term frequency algorithm. Will give each line a score*/
+ 

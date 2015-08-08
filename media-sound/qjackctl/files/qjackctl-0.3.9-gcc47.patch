@@ -1,0 +1,12 @@
+Index: qjackctl-0.3.9/src/qjackctl.cpp
+===================================================================
+--- qjackctl-0.3.9.orig/src/qjackctl.cpp
++++ qjackctl-0.3.9/src/qjackctl.cpp
+@@ -27,6 +27,7 @@
+ #include <QLibraryInfo>
+ #include <QTranslator>
+ #include <QLocale>
++#include <unistd.h>
+ 
+ #if QT_VERSION < 0x040300
+ #define lighter(x)	light(x)

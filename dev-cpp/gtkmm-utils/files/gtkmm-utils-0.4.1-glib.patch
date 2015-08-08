@@ -1,0 +1,37 @@
+diff -urN a/glibmm-utils/date.cc b/glibmm-utils/date.cc
+--- a/glibmm-utils/date.cc	2008-01-16 18:22:26.000000000 +0100
++++ b/glibmm-utils/date.cc	2012-11-12 23:39:05.463659600 +0100
+@@ -25,7 +25,7 @@
+ 
+ #include <sys/time.h>
+ 
+-#include <glib/gmessages.h>
++#include <glib.h>
+ 
+ #include <glibmm/convert.h>
+ #include <glibmm/date.h>
+diff -urN a/glibmm-utils/log-stream.cc b/glibmm-utils/log-stream.cc
+--- a/glibmm-utils/log-stream.cc	2008-10-14 14:11:14.000000000 +0200
++++ b/glibmm-utils/log-stream.cc	2012-11-12 23:39:36.715665677 +0100
+@@ -29,7 +29,7 @@
+ #include <tr1/memory>
+ #include <glibmm.h>
+ #include <glibmm/thread.h>
+-#include <glib/gstdio.h>
++#include <glib.h>
+ 
+ #include "log-stream.h"
+ #include "exception.h"
+diff -urN a/glibmm-utils/ustring.cc b/glibmm-utils/ustring.cc
+--- a/glibmm-utils/ustring.cc	2008-06-19 15:12:29.000000000 +0200
++++ b/glibmm-utils/ustring.cc	2012-11-12 23:40:07.511671596 +0100
+@@ -20,8 +20,7 @@
+  */
+ 
+ #include <cstring> // for g++ 4.3
+-#include <glib/gmem.h>
+-#include <glib/gmessages.h>
++#include <glib.h>
+ #include "ustring.h"
+ 
+ namespace Glib {

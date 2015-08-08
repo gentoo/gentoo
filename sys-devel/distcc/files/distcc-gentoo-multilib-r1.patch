@@ -1,0 +1,146 @@
+diff -Naurp distcc-2.18.3.orig/src/distcc.c distcc-2.18.3/src/distcc.c
+--- distcc-2.18.3.orig/src/distcc.c	2004-10-01 17:47:07.000000000 -0700
++++ distcc-2.18.3/src/distcc.c	2005-01-30 22:15:43.883870942 -0800
+@@ -135,7 +135,106 @@ static void dcc_client_catch_signals(voi
+     signal(SIGHUP, &dcc_client_signalled);
+ }
+ 
++#define MAXNEWFLAGS 32
++#define MAXFLAGLEN  127
+ 
++static char **getNewArgv(char **argv, const char *newflagsStr) {
++	char **newargv;
++	char newflags[MAXNEWFLAGS][MAXFLAGLEN + 1];
++	unsigned newflagsCount = 0;
++	unsigned argc;
++	unsigned i;
++	char **p;
++
++	unsigned s, f; /* start/finish of each flag. f points to
++	                * the char AFTER the end (ie the space/\0
++	                */
++
++	/* Tokenize the flag list */
++	for(s=0; s < strlen(newflagsStr); s=f+1) {
++		/* Put s at the start of the next flag */
++		while(newflagsStr[s] == ' ' || 
++		      newflagsStr[s] == '\t')
++			s++;
++		if(s == strlen(newflagsStr))
++			break;
++
++		f = s + 1;
++		while(newflagsStr[f] != ' ' && 
++		      newflagsStr[f] != '\t' &&
++		      newflagsStr[f] != '\0')
++			f++;
++
++		/* Detect overrun */
++		if(MAXFLAGLEN < f - s || MAXNEWFLAGS == newflagsCount)
++			return NULL;
++
++		strncpy(newflags[newflagsCount], newflagsStr + s, f - s);
++		newflags[newflagsCount][f - s]='\0';
++		newflagsCount++;
++	}
++
++	/* Calculate original argc and see if it contains -m{abi,32,64} */
++	for(argc=0, p=argv; *p; p++, argc++) {
++		if(newflagsCount && (strncmp(*p, "-m32", 4) == 0 ||
++		                     strncmp(*p, "-m64", 4) == 0 ||
++		                     strncmp(*p, "-mabi", 5) == 0)) {
++			/* Our command line sets the ABI, warn the user about this and ignore 
++		     newArgs by setting newflagsCount to 0.
++			 */
++			newflagsCount = 0;
++			fprintf(stderr, "%s: %s detected on the command line overrides implicit %s added by the wrapper.\n", argv[0], *p, newflagsStr);
++		}
++	}
++
++	/* Allocate our array */
++	newargv = (char **)malloc(sizeof(char *) * (argc + newflagsCount + 1));
++
++	/* Make room for the original, new ones, and the NULL terminator */
++	if(!newargv)
++		return NULL;
++
++	/* Build argv */
++	newargv[0] = argv[0];
++
++	/* The newFlags come first since we want the environment to override them. */
++	for(i=1; i - 1 < newflagsCount; i++) {
++		newargv[i] = newflags[i - 1];
++	}
++
++	/* We just use the existing argv[i] as the start. */
++	for(; i - newflagsCount < argc; i++) {
++		newargv[i] = argv[i - newflagsCount];
++	}
++
++	/* And now cap it off... */
++	newargv[i] = NULL;
++
++	return newargv;
++}
++
++static char **getNewArgvFromEnv(char **argv) {
++	char **newargv = argv;
++
++	if(getenv("ABI")) {
++		char *envar = (char *)malloc(sizeof(char) * (strlen("CFLAGS_") + strlen(getenv("ABI")) + 1 ));
++
++		if(!envar)
++			return NULL;
++
++		/* We use CFLAGS_${ABI} for gcc, g++, g77, etc as they are
++		 * the same no matter which compiler we are using.
++		 */
++		sprintf(envar, "CFLAGS_%s", getenv("ABI"));
++
++		if(getenv(envar))
++			newargv = getNewArgv(argv, getenv(envar));
++
++		free(envar);
++	}
++
++	return newargv;
++}
+ 
+ /**
+  * distcc client entry point.
+@@ -150,6 +249,7 @@ int main(int argc, char **argv)
+     int status, sg_level, tweaked_path = 0;
+     char **compiler_args;
+     char *compiler_name;
++    char **newargv;
+     int ret;
+ 
+     dcc_client_catch_signals();
+@@ -183,7 +283,12 @@ int main(int argc, char **argv)
+             goto out;
+         }
+         
+-        dcc_find_compiler(argv, &compiler_args);
++        if(!(newargv = getNewArgvFromEnv(argv))) {
++            ret = EXIT_OUT_OF_MEMORY;
++            goto out;
++        }
++        dcc_find_compiler(newargv, &compiler_args);
++        if (newargv != argv) free(newargv);
+         /* compiler_args is now respectively either "cc -c hello.c" or
+          * "gcc -c hello.c" */
+ 
+@@ -200,7 +305,12 @@ int main(int argc, char **argv)
+                                           &tweaked_path)) != 0)
+             goto out;
+         
+-        dcc_copy_argv(argv, &compiler_args, 0);
++        if(!(newargv = getNewArgvFromEnv(argv))) {
++            ret = EXIT_OUT_OF_MEMORY;
++            goto out;
++        }
++        dcc_copy_argv(newargv, &compiler_args, 0);
++        if (newargv != argv) free(newargv);
+         compiler_args[0] = compiler_name;
+     }
+ 

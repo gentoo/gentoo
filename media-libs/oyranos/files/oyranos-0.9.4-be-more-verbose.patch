@@ -1,0 +1,51 @@
+From 80fd8efab3f56c698b4182846d8707916849cad9 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Sat, 9 Feb 2013 18:21:47 +0100
+Subject: [PATCH] * [tools]: add more verbosity to oy-monitor -v
+
+Here to the profile assignment part.
+---
+ src/tools/oyranos_gamma.c |   16 ++++++++++++++++
+ 1 files changed, 16 insertions(+), 0 deletions(-)
+
+diff --git a/src/tools/oyranos_gamma.c b/src/tools/oyranos_gamma.c
+index f2206a5..005bdd2 100644
+--- a/src/tools/oyranos_gamma.c
++++ b/src/tools/oyranos_gamma.c
+@@ -747,16 +747,32 @@ int main( int argc , char** argv )
+ 
+       if(monitor_profile)
+       {
++        if(verbose)
++          fprintf( stdout, "oyDeviceSetProfile()\n" );
+         oyDeviceSetProfile( device, monitor_profile );
++        if(verbose)
++          fprintf( stdout, "oyDeviceUnset()\n" );
+         oyDeviceUnset( device );
+       } else
+       if(erase || unset)
++      {
++        if(verbose)
++          fprintf( stdout, "oyDeviceUnset()\n" );
+         oyDeviceUnset( device );
++      }
+       if(erase)
++      {
++        if(verbose)
++          fprintf( stdout, "oyConfig_EraseFromDB()\n" );
+         oyConfig_EraseFromDB( device );
++      }
+ 
+       if(setup)
++      {
++        if(verbose)
++          fprintf( stdout, "oyDeviceSetup()\n" );
+         oyDeviceSetup( device );
++      }
+ 
+       oyConfig_Release( &device );
+     }
+-- 
+1.5.6.5
+
+

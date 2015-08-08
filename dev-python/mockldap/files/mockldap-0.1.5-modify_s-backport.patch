@@ -1,0 +1,21 @@
+# HG changeset patch
+# User Peter Sagerson <psagers.hg@ignorare.net>
+# Date 1392920906 28800
+# Node ID 6433fd7dc97473150114c06a90d189a62a39951f
+# Parent  f298b032a25ef6c2bcc6749d9bf096352a49f37d
+Fix tests to match the recent modify_s change.
+
+diff --git a/src/mockldap/tests.py b/src/mockldap/tests.py
+--- a/src/mockldap/tests.py
++++ b/src/mockldap/tests.py
+@@ -453,8 +453,8 @@
+ 
+         self.ldapobj.modify_s(manager[0], mod_list)
+ 
+-        self.assertNotIn('objectClass',
+-                         self.ldapobj.directory[manager[0]].keys())
++        self.assertEqual(self.ldapobj.directory[manager[0]]['objectClass'],
++                         [])
+ 
+     def test_modify_s_invalid_dn(self):
+         mod_list = [(ldap.MOD_DELETE, 'objectClass', None)]

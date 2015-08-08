@@ -1,0 +1,541 @@
+From 091f0e00bae058d384fbc9834a402192bbf192a6 Mon Sep 17 00:00:00 2001
+From: Matthew Barnes <mbarnes@redhat.com>
+Date: Sat, 29 Dec 2012 21:14:51 +0100
+Subject: [PATCH] Adapt to Evolution-Data-Server API changes
+
+    Closes: https://bugzilla.gnome.org/show_bug.cgi?id=680927
+---
+ configure.in                                  |   2 +-
+ cut-n-paste/e-contact-entry/e-contact-entry.c | 168 +++++++++++---------------
+ cut-n-paste/e-contact-entry/e-contact-entry.h |   8 +-
+ libgsm/phonemgr-utils.c                       |   2 +-
+ src/e-phone-entry.c                           |  38 +++---
+ 5 files changed, 96 insertions(+), 122 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index be5e729..73e7aec 100644
+--- a/configure.in
++++ b/configure.in
+@@ -47,7 +47,7 @@ PKG_CHECK_MODULES(LIBGSM, glib-2.0 gobject-2.0 $GNOKII_REQS gthread-2.0 bluez $e
+ 
+ PKG_CHECK_MODULES(PHONEMGR, gtk+-3.0 >= 3.0 glib-2.0 >= 2.31.0
+ 	libcanberra-gtk3 gconf-2.0
+-	$GNOME_BLUETOOTH_REQS $evo_pc_file libedataserverui-3.0
++	$GNOME_BLUETOOTH_REQS $evo_pc_file libedataserver-1.2 >= 3.6
+ 	gmodule-2.0 dbus-glib-1 gnome-icon-theme >= 2.19.1
+ )
+ 
+diff --git a/cut-n-paste/e-contact-entry/e-contact-entry.c b/cut-n-paste/e-contact-entry/e-contact-entry.c
+index dc8e2e3..bbd4e6a 100644
+--- a/cut-n-paste/e-contact-entry/e-contact-entry.c
++++ b/cut-n-paste/e-contact-entry/e-contact-entry.c
+@@ -1,4 +1,4 @@
+-/* 
++/*
+  * Copyright (C) 2004 Ross Burton <ross@burtonini.com
+  *
+  * e-contact-entry.c
+@@ -38,11 +38,6 @@
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ 
+-#include <libedataserver/e-source.h>
+-#include <libebook/e-book.h>
+-#include <libebook/e-book-view.h>
+-#include <libebook/e-contact.h>
+-
+ #include "e-contact-entry.h"
+ #include "econtactentry-marshal.h"
+ 
+@@ -59,7 +54,7 @@ static int signals[LAST_SIGNAL] = { 0 };
+ /* Properties */
+ enum {
+   PROP_0, /* TODO: why? */
+-  PROP_SOURCE_LIST,
++  PROP_REGISTRY,
+   PROP_COMPLETE_LENGTH,
+ };
+ 
+@@ -70,7 +65,7 @@ enum {
+ struct EContactEntryPriv {
+   GtkEntryCompletion *completion;
+   GtkListStore *store;
+-  ESourceList *source_list;
++  ESourceRegistry *registry;
+   /* A list of EntryLookup structs we are searching */
+   GList *lookup_entries;
+   /* Number of characters to start searching at */
+@@ -227,7 +222,7 @@ e_contact_entry_display_func (EContact *contact)
+   emails = e_contact_get (contact, E_CONTACT_EMAIL);
+   for (l = emails; l != NULL; l = l->next) {
+     item = g_new0 (EContactEntyItem, 1);
+-    item->identifier = item->identifier = g_strdup (l->data);
++    item->identifier = g_strdup (l->data);
+     item->display_string = g_strdup_printf ("%s <%s>", (char*)e_contact_get_const (contact, E_CONTACT_NAME_OR_ORG), item->identifier);
+ 
+     items = g_list_prepend (items, item);
+@@ -276,22 +271,13 @@ view_contacts_added_cb (EBook *book, GList *contacts, gpointer user_data)
+       return;
+ 
+     photo = e_contact_get (contact, E_CONTACT_PHOTO);
+-#ifndef HAVE_ECONTACTPHOTOTYPE
+-    if (photo) {
+-#else
+     if (photo && photo->type == E_CONTACT_PHOTO_TYPE_INLINED) {
+-#endif
+       GdkPixbufLoader *loader;
+ 
+       loader = gdk_pixbuf_loader_new ();
+ 
+-#ifndef HAVE_ECONTACTPHOTOTYPE
+-      if (gdk_pixbuf_loader_write (loader, (guchar *)photo->data,
+-			      photo->length, NULL))
+-#else
+       if (gdk_pixbuf_loader_write (loader, (guchar *)photo->data.inlined.data,
+ 			      photo->data.inlined.length, NULL))
+-#endif
+         pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
+ 
+       if (pixbuf) {
+@@ -339,16 +325,15 @@ view_contacts_added_cb (EBook *book, GList *contacts, gpointer user_data)
+  * The query on the EBookView has completed.
+  */
+ static void
+-view_completed_cb (EBookView *book_view, EBookViewStatus status, gpointer user_data)
++view_completed_cb (EBookView *book_view, EBookViewStatus status, const gchar *message, gpointer user_data)
+ {
+   EntryLookup *lookup;
+   g_return_if_fail (user_data != NULL);
+-  /* TODO: handle status != OK */
+-  g_return_if_fail (status == E_BOOK_ERROR_OK);
+   g_return_if_fail (book_view != NULL);
+ 
+   lookup = (EntryLookup*)user_data;
+   g_object_unref (lookup->bookview);
++  lookup->bookview = NULL;
+ }
+ 
+ /**
+@@ -361,9 +346,9 @@ bookview_cb (EBook *book, EBookStatus status, EBookView *book_view, gpointer clo
+   /* TODO: handle status != OK */
+   g_return_if_fail (status == E_BOOK_ERROR_OK);
+   g_return_if_fail (closure != NULL);
+-  
++
+   lookup = (EntryLookup*)closure;
+-  
++
+   g_object_ref (book_view);
+   /* This shouldn't happen of course */
+   if (lookup->bookview) {
+@@ -372,10 +357,10 @@ bookview_cb (EBook *book, EBookStatus status, EBookView *book_view, gpointer clo
+   }
+   lookup->bookview = book_view;
+   g_object_add_weak_pointer ((GObject*)book_view, (gpointer*)&lookup->bookview);
+-  
+-  g_signal_connect (book_view, "contacts_added", (GCallback)view_contacts_added_cb, lookup);
+-  g_signal_connect (book_view, "sequence_complete", (GCallback)view_completed_cb, lookup);
+-  
++
++  g_signal_connect (book_view, "contacts-added", (GCallback)view_contacts_added_cb, lookup);
++  g_signal_connect (book_view, "view_complete", (GCallback)view_completed_cb, lookup);
++
+   e_book_view_start (book_view);
+ }
+ 
+@@ -396,9 +381,10 @@ entry_changed_cb (GtkEditable *editable, gpointer user_data)
+       if (lookup->bookview) {
+         e_book_view_stop (lookup->bookview);
+         g_object_unref (lookup->bookview);
++        lookup->bookview = NULL;
+       }
+     }
+-    
++
+     gtk_list_store_clear (entry->priv->store);
+ 
+     query = create_query (entry, gtk_editable_get_chars (editable, 0, -1));
+@@ -409,8 +395,8 @@ entry_changed_cb (GtkEditable *editable, gpointer user_data)
+       /* If the book isn't open yet, skip this source */
+       if (!lookup->open)
+         continue;
+-      
+-      if (e_book_async_get_book_view (lookup->book, query, NULL, 11, (EBookBookViewCallback)bookview_cb, lookup) != 0) {
++
++      if (e_book_async_get_book_view (lookup->book, query, NULL, MAX_ENTRIES, (EBookBookViewCallback)bookview_cb, lookup) == FALSE) {
+         g_signal_emit (entry, signals[ERROR], 0, _("Cannot create searchable view."));
+       }
+     }
+@@ -441,7 +427,7 @@ book_opened_cb (EBook *book, EBookStatus status, gpointer data)
+         return;
+       }
+     }
+-    
++
+     g_signal_emit (lookup->entry, signals[STATE_CHANGE], 0, FALSE);
+     g_signal_emit (lookup->entry, signals[ERROR], 0, stringify_ebook_error (status));
+     return;
+@@ -458,11 +444,12 @@ book_opened_cb (EBook *book, EBookStatus status, gpointer data)
+  */
+ 
+ void
+-e_contact_entry_set_source_list (EContactEntry *entry,
+-    				  ESourceList *source_list)
++e_contact_entry_set_registry (EContactEntry *entry,
++                              ESourceRegistry *registry)
+ {
++  GList *list, *link;
++  const gchar *extension_name;
+   GError *error = NULL;
+-  GSList *list, *l;
+ 
+   g_return_if_fail (E_IS_CONTACT_ENTRY (entry));
+ 
+@@ -471,58 +458,48 @@ e_contact_entry_set_source_list (EContactEntry *entry,
+     g_list_foreach (entry->priv->lookup_entries, (GFunc)lookup_entry_free, NULL);
+     g_list_free (entry->priv->lookup_entries);
+   }
+-  if (entry->priv->source_list) {
+-    g_object_unref (entry->priv->source_list);
++  if (entry->priv->registry) {
++    g_object_unref (entry->priv->registry);
+   }
+ 
+   /* If we have no new sources, disable and return here */
+-  if (source_list == NULL) {
++  if (registry == NULL) {
+     g_signal_emit (entry, signals[STATE_CHANGE], 0, FALSE);
+-    entry->priv->source_list = NULL;
++    entry->priv->registry = NULL;
+     entry->priv->lookup_entries = NULL;
+     return;
+   }
+ 
+-  entry->priv->source_list = source_list;
+-  /* So that the list isn't going away underneath us */
+-  g_object_ref (entry->priv->source_list);
++  entry->priv->registry = registry;
++  /* So that the registry isn't going away underneath us */
++  g_object_ref (entry->priv->registry);
+ 
+-  /* That gets us a list of ESourceGroup */
+-  list = e_source_list_peek_groups (source_list);
+   entry->priv->lookup_entries = NULL;
+ 
+-  for (l = list; l != NULL; l = l->next) {
+-    ESourceGroup *group = l->data;
+-    GSList *sources = NULL, *m;
+-    /* That should give us a list of ESource */
+-    sources = e_source_group_peek_sources (group);
+-    for (m = sources; m != NULL; m = m->next) {
+-      ESource *source = m->data;
+-      ESource *s = e_source_copy (source);
+-      EntryLookup *lookup;
+-      char *uri;
++  extension_name = E_SOURCE_EXTENSION_ADDRESS_BOOK;
++  list = e_source_registry_list_sources (registry, extension_name);
+ 
+-      uri = g_strdup_printf("%s/%s", e_source_group_peek_base_uri (group), e_source_peek_relative_uri (source));
+-      e_source_set_absolute_uri (s, uri);
+-      g_free (uri);
++  for (link = list; link != NULL; link = g_list_next (link)) {
++    ESource *source = E_SOURCE (link->data);
++    EntryLookup *lookup;
+ 
+-      /* Now add those to the lookup entries list */
+-      lookup = g_new0 (EntryLookup, 1);
+-      lookup->entry = entry;
+-      lookup->status = E_BOOK_ERROR_OK;
+-      lookup->open = FALSE;
++    /* Now add those to the lookup entries list */
++    lookup = g_new0 (EntryLookup, 1);
++    lookup->entry = entry;
++    lookup->status = E_BOOK_ERROR_OK;
++    lookup->open = FALSE;
+ 
+-      if ((lookup->book = e_book_new (s, &error)) == NULL) {
+-        /* TODO handle this better, fire the error signal I guess */
++    if ((lookup->book = e_book_new (source, &error)) == NULL) {
++      /* TODO handle this better, fire the error signal I guess */
++      if (error) {
+         g_warning ("%s", error->message);
+-	g_error_free (error);
+-	g_free (lookup);
+-      } else {
+-        entry->priv->lookup_entries = g_list_append (entry->priv->lookup_entries, lookup);
+-	e_book_async_open(lookup->book, TRUE, (EBookCallback)book_opened_cb, lookup);
++        g_error_free (error);
++        error = NULL;
+       }
+-
+-      g_object_unref (s);
++      g_free (lookup);
++    } else {
++      entry->priv->lookup_entries = g_list_append (entry->priv->lookup_entries, lookup);
++      e_book_async_open(lookup->book, TRUE, (EBookCallback)book_opened_cb, lookup);
+     }
+   }
+ 
+@@ -530,12 +507,12 @@ e_contact_entry_set_source_list (EContactEntry *entry,
+     g_signal_emit (entry, signals[STATE_CHANGE], 0, FALSE);
+ }
+ 
+-ESourceList *
+-e_contact_entry_get_source_list (EContactEntry *entry)
++ESourceRegistry *
++e_contact_entry_get_registry (EContactEntry *entry)
+ {
+   g_return_val_if_fail (E_IS_CONTACT_ENTRY (entry), NULL);
+ 
+-  return entry->priv->source_list;
++  return entry->priv->registry;
+ }
+ 
+ void
+@@ -552,7 +529,7 @@ int
+ e_contact_entry_get_complete_length (EContactEntry *entry)
+ {
+   g_return_val_if_fail (E_IS_CONTACT_ENTRY (entry), 3); /* TODO: from paramspec? */
+-  
++
+   return entry->priv->lookup_length;
+ }
+ 
+@@ -564,7 +541,7 @@ e_contact_entry_set_display_func (EContactEntry *entry, EContactEntryDisplayFunc
+   if (entry->priv->display_destroy) {
+     entry->priv->display_destroy (entry->priv->display_func);
+   }
+-  
++
+   entry->priv->display_func = func;
+   entry->priv->display_data = func_data;
+   entry->priv->display_destroy = destroy;
+@@ -596,13 +573,13 @@ static void
+ e_contact_entry_set_property (GObject *object, guint property_id, const GValue *value, GParamSpec *pspec)
+ {
+   EContactEntry *entry;
+-  
++
+   g_return_if_fail (E_IS_CONTACT_ENTRY (object));
+   entry = E_CONTACT_ENTRY (object);
+-  
++
+   switch (property_id) {
+-  case PROP_SOURCE_LIST:
+-    e_contact_entry_set_source_list (entry, g_value_get_object (value));
++  case PROP_REGISTRY:
++    e_contact_entry_set_registry (entry, g_value_get_object (value));
+     break;
+   case PROP_COMPLETE_LENGTH:
+     e_contact_entry_set_complete_length (entry, g_value_get_int (value));
+@@ -618,10 +595,10 @@ e_contact_entry_get_property (GObject *object, guint property_id, GValue *value,
+   EContactEntry *entry;
+   g_return_if_fail (E_IS_CONTACT_ENTRY (object));
+   entry = E_CONTACT_ENTRY (object);
+-  
++
+   switch (property_id) {
+-  case PROP_SOURCE_LIST:
+-    g_value_set_object (value, e_contact_entry_get_source_list (entry));
++  case PROP_REGISTRY:
++    g_value_set_object (value, e_contact_entry_get_registry (entry));
+     break;
+   case PROP_COMPLETE_LENGTH:
+     g_value_set_int (value, e_contact_entry_get_complete_length (entry));
+@@ -644,7 +621,7 @@ e_contact_entry_finalize (GObject *object)
+     g_list_free (entry->priv->lookup_entries);
+     g_object_unref (entry->priv->completion);
+     g_object_unref (entry->priv->store);
+-    g_object_unref (entry->priv->source_list);
++    g_object_unref (entry->priv->registry);
+ 
+     if (entry->priv->display_destroy) {
+       entry->priv->display_destroy (entry->priv->display_func);
+@@ -657,7 +634,7 @@ e_contact_entry_finalize (GObject *object)
+ static void
+ reset_search_fields (EContactEntry *entry)
+ {
+-  EContactField fields[] = { E_CONTACT_FULL_NAME, E_CONTACT_EMAIL, E_CONTACT_NICKNAME, E_CONTACT_ORG, 0 };
++  EContactField fields[] = { E_CONTACT_FULL_NAME, E_CONTACT_EMAIL, E_CONTACT_NICKNAME, 0 };
+ 
+   g_free (entry->priv->search_fields);
+   entry->priv->search_fields = g_new0 (EContactField, G_N_ELEMENTS (fields));
+@@ -707,23 +684,23 @@ static void
+ e_contact_entry_class_init (EContactEntryClass *klass)
+ {
+   GObjectClass *object_class;
+-  
++
+   object_class = (GObjectClass *) klass;
+-  
++
+   /* GObject */
+   object_class->set_property = e_contact_entry_set_property;
+   object_class->get_property = e_contact_entry_get_property;
+   object_class->finalize = e_contact_entry_finalize;
+ 
+   /* Properties */
+-  g_object_class_install_property (object_class, PROP_SOURCE_LIST,
+-                                   g_param_spec_object ("source-list", "Source List", "The source list to search for contacts.",
+-                                                        E_TYPE_SOURCE_LIST, G_PARAM_READWRITE));
+-  
++  g_object_class_install_property (object_class, PROP_REGISTRY,
++                                   g_param_spec_object ("registry", "Registry", "Data source registry.",
++                                                        E_TYPE_SOURCE_REGISTRY, G_PARAM_READWRITE));
++
+   g_object_class_install_property (object_class, PROP_COMPLETE_LENGTH,
+                                    g_param_spec_int ("complete-length", "Complete length", "Number of characters to start a search on.",
+                                                      2, 99, 3, G_PARAM_READWRITE));
+-  
++
+   /* Signals */
+   signals[CONTACT_SELECTED] = g_signal_new ("contact-selected",
+                                             G_TYPE_FROM_CLASS (object_class),
+@@ -732,7 +709,7 @@ e_contact_entry_class_init (EContactEntryClass *klass)
+                                             NULL, NULL,
+                                             econtactentry_marshal_VOID__OBJECT_STRING,
+                                             G_TYPE_NONE, 2, E_TYPE_CONTACT, G_TYPE_STRING);
+-  
++
+   signals[ERROR] = g_signal_new ("error",
+                                  G_TYPE_FROM_CLASS (object_class),
+                                  G_SIGNAL_RUN_LAST,
+@@ -771,6 +748,7 @@ lookup_entry_free (EntryLookup *lookup)
+   if (lookup->bookview) {
+     g_warning("EBookView still around");
+     g_object_unref (lookup->bookview);
++    lookup->bookview = NULL;
+   }
+   if (lookup->book) {
+     g_object_unref (lookup->book);
+@@ -789,11 +767,11 @@ split_query_string (const gchar *str)
+   GArray *parts = g_array_sized_new (FALSE, FALSE, sizeof (char *), 2);
+   PangoLogAttr *attrs;
+   guint str_len = strlen (str), word_start = 0, i;
+-  
+-  attrs = g_new0 (PangoLogAttr, str_len + 1);  
++
++  attrs = g_new0 (PangoLogAttr, str_len + 1);
+   /* TODO: do we need to specify a particular language or is NULL ok? */
+   pango_get_log_attrs (str, -1, -1, NULL, attrs, str_len + 1);
+-  
++
+   for (i = 0; i < str_len + 1; i++) {
+     char *start_word, *end_word, *word;
+     if (attrs[i].is_word_end) {
+diff --git a/cut-n-paste/e-contact-entry/e-contact-entry.h b/cut-n-paste/e-contact-entry/e-contact-entry.h
+index bf6b39b..6fedef7 100644
+--- a/cut-n-paste/e-contact-entry/e-contact-entry.h
++++ b/cut-n-paste/e-contact-entry/e-contact-entry.h
+@@ -23,10 +23,8 @@
+ #ifndef CONTACT_ENTRY_H
+ #define CONTACT_ENTRY_H
+ 
+-#include <libedataserver/e-source-group.h>
+-#include <libedataserver/e-source-list.h>
+-#include <libebook/e-contact.h>
+ #include <gtk/gtk.h>
++#include <libebook/libebook.h>
+ 
+ G_BEGIN_DECLS
+ 
+@@ -71,8 +69,8 @@ GType e_contact_entry_get_type (void);
+ 
+ GtkWidget *e_contact_entry_new (void);
+ 
+-void e_contact_entry_set_source_list (EContactEntry *entry, ESourceList *list);
+-ESourceList *e_contact_entry_get_source_list (EContactEntry *entry);
++void e_contact_entry_set_registry (EContactEntry *entry, ESourceRegistry *registry);
++ESourceRegistry *e_contact_entry_get_registry (EContactEntry *entry);
+ 
+ void e_contact_entry_set_complete_length(EContactEntry *entry, int length);
+ int e_contact_entry_get_complete_length(EContactEntry *entry);
+diff --git a/libgsm/phonemgr-utils.c b/libgsm/phonemgr-utils.c
+index 4e62e10..baef34f 100644
+--- a/libgsm/phonemgr-utils.c
++++ b/libgsm/phonemgr-utils.c
+@@ -27,7 +27,7 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <glib-object.h>
+-#include <libebook/e-contact.h>
++#include <libebook/libebook.h>
+ #include <gnokii.h>
+ 
+ #include <bluetooth/bluetooth.h>
+diff --git a/src/e-phone-entry.c b/src/e-phone-entry.c
+index 5d25622..5c10155 100644
+--- a/src/e-phone-entry.c
++++ b/src/e-phone-entry.c
+@@ -1,5 +1,5 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+-/* 
++/*
+  * Copyright (C) 2005 Bastien Nocera <hadess@hadess.net>
+  *
+  * e-phone-entry.c
+@@ -31,8 +31,6 @@
+ 
+ #include <gtk/gtk.h>
+ #include <string.h>
+-#include <libedataserver/e-source-list.h>
+-#include <libedataserverui/e-client-utils.h>
+ #include "e-phone-entry.h"
+ 
+ #define CONTACT_FORMAT "%s (%s)"
+@@ -181,25 +179,25 @@ e_phone_entry_finalize (GObject *object)
+ }
+ 
+ static void
+-add_sources (EContactEntry *entry)
+-{
+-	ESourceList *source_list;
+-
+-	if (e_client_utils_get_sources (&source_list,
+-					E_CLIENT_SOURCE_TYPE_CONTACTS,
+-					NULL)) {
+-		e_contact_entry_set_source_list (E_CONTACT_ENTRY (entry),
+-						 source_list);
+-		g_object_unref (source_list);
+-	}
+-}
+-
+-static void
+ e_phone_entry_init (EPhoneEntry *entry)
+ {
+ 	EContactField fields[] = { E_CONTACT_FULL_NAME, E_CONTACT_NICKNAME, E_CONTACT_ORG, E_CONTACT_PHONE_MOBILE, 0 };
++	ESourceRegistry *registry;
++	GError *error = NULL;
++
++	/* XXX This call blocks while a D-Bus connection is made, possibly
++	 *     requiring activation.  Might be better to create the registry
++	 *     in main(), pass it to ui_init(), and have e_phone_entry_new()
++	 *     take it as an argument.  Calling this from main() means if it
++	 *     fails you can abort cleanly with a console error message. */
++	registry = e_source_registry_new_sync (NULL, &error);
++	if (registry == NULL) {
++		g_error ("%s: %s", G_STRFUNC, error->message);
++		g_assert_not_reached ();
++	}
++	e_contact_entry_set_registry (E_CONTACT_ENTRY (entry), registry);
++	g_object_unref (registry);
+ 
+-	add_sources (E_CONTACT_ENTRY (entry));
+ 	e_contact_entry_set_search_fields (E_CONTACT_ENTRY (entry), (const EContactField *)fields);
+ 	e_contact_entry_set_display_func (E_CONTACT_ENTRY (entry), test_display_func, NULL, NULL);
+ 	g_signal_connect (G_OBJECT (entry), "contact_selected",
+@@ -212,9 +210,9 @@ static void
+ e_phone_entry_class_init (EPhoneEntryClass *klass)
+ {
+   GObjectClass *object_class;
+-  
++
+   object_class = (GObjectClass *) klass;
+-  
++
+   /* GObject */
+   object_class->finalize = e_phone_entry_finalize;
+ 
+-- 
+1.8.0.2
+

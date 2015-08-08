@@ -1,0 +1,40 @@
+From ecbfe88cf77863c7c925f61d0e69d11474059cb8 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Tue, 26 Mar 2013 12:09:01 +0100
+Subject: [PATCH] * [source]: omit profile with error
+
+a proper return value would be more helpful
+---
+ API_generated/oyProfile_s_.c                  |    7 +++++--
+
+diff --git a/API_generated/oyProfile_s_.c b/API_generated/oyProfile_s_.c
+index 83629fe..338ed08 100644
+--- a/API_generated/oyProfile_s_.c
++++ b/API_generated/oyProfile_s_.c
+@@ -8,12 +8,12 @@
+  *  Oyranos is an open source Colour Management System
+  *
+  *  @par Copyright:
+- *            2004-2012 (C) Kai-Uwe Behrmann
++ *            2004-2013 (C) Kai-Uwe Behrmann
+  *
+  *  @author   Kai-Uwe Behrmann <ku.b@gmx.de>
+  *  @par License:
+  *            new BSD - see: http://www.opensource.org/licenses/bsd-license.php
+- *  @date     2012/10/31
++ *  @date     2013/03/26
+  */
+ 
+ 
+@@ -724,6 +724,9 @@ oyProfile_s_ *  oyProfile_FromFile_  ( const char        * name,
+     }
+   }
+ 
++  if(error >= 1 && s)
++    oyProfile_Release( (oyProfile_s**)&s );
++
+   oyHash_Release_( &entry );
+ 
+   return s;
+-- 
+1.5.6.5

@@ -1,0 +1,42 @@
+=== modified file 'Ambiance/gtk-3.0/gtk-widgets.css'
+--- Ambiance/gtk-3.0/gtk-widgets.css	2013-02-19 13:06:53 +0000
++++ Ambiance/gtk-3.0/gtk-widgets.css	2013-03-01 23:35:05 +0000
+@@ -44,7 +44,6 @@
+     -GtkToolbar-internal-padding: 0;
+     -GtkTreeView-expander-size: 8;
+     -GtkTreeView-vertical-separator: 0;
+-    -GtkWidget-wide-separators: true;
+     -GtkWidget-separator-width: 2;
+     -GtkWidget-separator-height: 2;
+     -GtkWidget-focus-padding: 0;
+@@ -1567,6 +1566,8 @@
+ 
+ .menuitem.separator {
+     -GtkMenuItem-horizontal-padding: 0;
++    border: none;
++    color: @dark_bg_color;
+ }
+ 
+ GtkTreeMenu .menuitem.separator,
+
+=== modified file 'Radiance/gtk-3.0/gtk-widgets.css'
+--- Radiance/gtk-3.0/gtk-widgets.css	2013-02-19 13:06:53 +0000
++++ Radiance/gtk-3.0/gtk-widgets.css	2013-03-01 23:35:05 +0000
+@@ -44,7 +44,6 @@
+     -GtkToolbar-internal-padding: 0;
+     -GtkTreeView-expander-size: 8;
+     -GtkTreeView-vertical-separator: 0;
+-    -GtkWidget-wide-separators: true;
+     -GtkWidget-separator-width: 2;
+     -GtkWidget-separator-height: 2;
+     -GtkWidget-focus-padding: 0;
+@@ -1567,6 +1566,8 @@
+ 
+ .menuitem.separator {
+     -GtkMenuItem-horizontal-padding: 0;
++    border: none;
++    color: @dark_bg_color;
+ }
+ 
+ GtkTreeMenu .menuitem.separator,
+

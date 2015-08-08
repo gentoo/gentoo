@@ -1,0 +1,40 @@
+diff --git a/macros/ac_python_devel.m4 b/macros/ac_python_devel.m4
+index d67842b..f3a3a3b 100644
+--- a/macros/ac_python_devel.m4
++++ b/macros/ac_python_devel.m4
+@@ -29,13 +29,10 @@ AC_DEFUN([AC_PYTHON_DEVEL],[
+ 
+         # Check for Python include path
+         AC_MSG_CHECKING([for Python include path])
+-        for i in "$base_python_path/include/python$PYTHON_VERSION/" "$base_python_path/include/python/" "$base_python_path/include/" "$base_python_path/" ; do
+-                python_path=`find $i -type f -name Python.h -print 2> /dev/null | sed "1q"`
+-                if test -n "$python_path" ; then
+-                        break
+-                fi
+-        done
+-        python_path=`echo $python_path | sed "s,/Python.h$,,"`
++        python_path="${base_python_path}/include/python$PYTHON_VERSION/"
++        if test ! -f "${python_path}"/Python.h ; then
++                python_path=""
++        fi
+         AC_MSG_RESULT([$python_path])
+         if test -z "$python_path" ; then
+                 AC_MSG_ERROR([cannot find Python include path])
+@@ -44,13 +41,10 @@ AC_DEFUN([AC_PYTHON_DEVEL],[
+ 
+         # Check for Python library path
+         AC_MSG_CHECKING([for Python library path])
+-        for i in "$base_python_path/lib/python$PYTHON_VERSION/config/" "$base_python_path/lib/python$PYTHON_VERSION/" "$base_python_path/lib/python/config/" "$base_python_path/lib/python/" "$base_python_path/" "$base_python_path/libs/" ; do
+-                python_path=`find $i -name libpython$PYTHON_VERSION.* -print 2> /dev/null | sed "1q"`
+-                if test -n "$python_path" ; then
+-                        break
+-                fi
+-        done
+-        python_path=`echo $python_path | sed "s,/libpython.*$,,"`
++        python_path=`python$PYTHON_VERSION -c 'import distutils.sysconfig; print(distutils.sysconfig.get_config_var("LIBDIR"))'`
++        if test ! -f "${python_path}"/libpython$PYTHON_VERSION.so ; then
++                python_path=""
++        fi
+         AC_MSG_RESULT([$python_path])
+         if test -z "$python_path" ; then
+                 AC_MSG_ERROR([cannot find Python library path])

@@ -1,0 +1,16 @@
+http://bugs.gentoo.org/show_bug.cgi?id=318937
+http://boxster.ghz.cc/projects/nut/changeset/2407
+
+Respun from nut-2.4.3-lowspeed-buffer-size.patch
+
+Index: /trunk/drivers/libhid.c
+===================================================================
+--- /trunk/drivers/libhid.c (revision 2336)
++++ /trunk/drivers/libhid.c (revision 2407)
+@@ -142,5 +142,5 @@
+ 	int	id = pData->ReportID;
+ 	int	r;
+-	unsigned char	buf[SMALLBUF];
++	unsigned char	buf[8];	/* Maximum size for low-speed USB devices */
+ 
+ 	if (rbuf->ts[id] + age > time(NULL)) {

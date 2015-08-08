@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/420239
+
+https://sourceforge.net/tracker/?func=detail&aid=3533795&group_id=303195&atid=1278160
+
+--- configure
++++ configure
+@@ -33,7 +33,11 @@ case "$host_os" in
+   linux*)
+     case "$host_cpu" in
+       x86_64)
+-        objfmt='ELF64'
++        if echo __ILP32__ | $CC $CFLAGS -E - | grep __ILP32__ > /dev/null; then
++          objfmt='ELF64'
++        else
++          objfmt='ELFX32'
++        fi
+         ;;
+       *)
+         objfmt='ELF'
+@@ -94,6 +98,7 @@ case "$objfmt" in
+   a.out)      NAFLAGS='-faout -DAOUT';;
+   BSD-a.out)  NAFLAGS='-faoutb -DAOUT';;
+   ELF)        NAFLAGS='-felf -DELF';;
++  ELFX32)     NAFLAGS='-felfx32 -DELF -D__x86_64__';;
+   ELF64)      NAFLAGS='-felf64 -DELF -D__x86_64__';;
+   RDF)        NAFLAGS='-frdf -DRDF';;
+   Mach-O)     NAFLAGS='-fmacho -DMACHO';;
+--- simd/nasm_lt.sh
++++ simd/nasm_lt.sh
+@@ -11,7 +11,7 @@ while [ $# -gt 0 ]; do
+                 pic=yes
+             fi
+             ;;
+-        -f|-fbin|-faout|-faoutb|-fcoff|-felf|-felf64|-fas86| \
++        -f|-fbin|-faout|-faoutb|-fcoff|-felf|-felf64|-felfx32|-fas86| \
+         -fobj|-fwin32|-fwin64|-frdf|-fieee|-fmacho|-fmacho64)
+             # it's a file format specifier for nasm.
+             command="$command $1"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>idella4@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>witold.pilat@gmail.com</email>
+		<name>Witold Pilat</name>
+		<description>Proxy maintainer</description>
+	</maintainer>
+	<longdescription>Lyvi is a lyrics, artist info and guitar tabs
+	viewer. On supported terminals, Lyvi can also show artist photos and
+	cover images.
+	</longdescription>
+	<use>
+		<flag name="mpris">Enable MPRIS support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ok100/lyvi</remote-id>
+	</upstream>
+</pkgmetadata>

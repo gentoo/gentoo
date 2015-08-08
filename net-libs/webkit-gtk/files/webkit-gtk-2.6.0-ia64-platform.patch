@@ -1,0 +1,26 @@
+From d98ac8c1040318e648f8417fa5ca6df66cc00b35 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 19 Oct 2014 19:38:18 +0200
+Subject: [PATCH 2/4] Fix support for IA64
+
+---
+ Source/WTF/wtf/Platform.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Source/WTF/wtf/Platform.h b/Source/WTF/wtf/Platform.h
+index 65f1379..d9afcd7 100644
+--- a/Source/WTF/wtf/Platform.h
++++ b/Source/WTF/wtf/Platform.h
+@@ -87,6 +87,9 @@
+ #if !defined(__LP64__)
+ #define WTF_CPU_IA64_32 1
+ #endif
++#define ENABLE_JIT 0
++#define ENABLE_YARR_JIT 0
++#define ENABLE_ASSEMBLER 0
+ #endif
+ 
+ /* CPU(MIPS) - MIPS 32-bit */
+-- 
+2.1.2
+

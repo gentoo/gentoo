@@ -1,0 +1,43 @@
+X-Gentoo-Bugzilla: https://bugs.gentoo.org/show_bug.cgi?id=443666
+X-Git-Url: http://lxde.git.sourceforge.net/git/gitweb.cgi?p=lxde/lxdm;a=patch;h=902438eb83b4ae97d774e4e5f38b46f2d826df2f
+X-Git-Url: http://lxde.git.sourceforge.net/git/gitweb.cgi?p=lxde/lxdm;a=patch;h=371b018474217bdff1d5108b384fbf0f45aa873d
+
+Signed-off-by: Markos Chandras <hwoarang@gentoo.org>
+
+Index: lxdm-0.4.1/configure.ac
+===================================================================
+--- lxdm-0.4.1.orig/configure.ac
++++ lxdm-0.4.1/configure.ac
+@@ -28,8 +28,6 @@ if test "x$USE_PAM" != "xno" ; then
+ 		 fi])
+ fi
+ 
+-AC_CHECK_LIB([ck-connector],[ck_connector_open_session])
+-
+ # Checks for header files.
+ AC_PATH_X
+ AC_CHECK_HEADERS([shadow.h stdlib.h string.h unistd.h utmpx.h])
+@@ -89,11 +87,22 @@ PKG_CHECK_MODULES(GTK, [$pkg_modules])
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
+-PKG_CHECK_MODULES(CONSOLEKIT, "ck-connector",[
++
++AC_ARG_ENABLE(consolekit,
++	AC_HELP_STRING([--disable-consolekit],[disable ConsoleKit support]),
++	[enable_consolekit=$enableval],
++	[enable_consolekit=yes]
++)
++
++if test "x$enable_consolekit" = "xyes" ; then
++  AC_CHECK_LIB([ck-connector],[ck_connector_open_session])
++  PKG_CHECK_MODULES(CONSOLEKIT, "ck-connector",[
+ 	AC_SUBST(CONSOLEKIT_CFLAGS)
+ 	AC_SUBST(CONSOLEKIT_LIBS)],[
+ 	echo "ConsoleKit devel package not found"
+ 	])
++fi
++
+ 
+ AC_ARG_ENABLE(password,
+ AC_HELP_STRING([--enable-password],[enable to load autologin password store at config file]),

@@ -1,0 +1,46 @@
+fix dns lookups timeout
+https://bugs.gentoo.org/show_bug.cgi?id=493358
+
+diff -u openntpd-20080406p-orig/ntpd.c openntpd-20080406p/ntpd.c
+--- openntpd-20080406p-orig/ntpd.c	2013-12-04 20:12:02.562857933 -0800
++++ openntpd-20080406p/ntpd.c	2013-12-04 20:22:55.617577783 -0800
+@@ -34,6 +34,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <time.h>
+ #include <unistd.h>
+ 
+ #include "ntpd.h"
+@@ -95,6 +96,7 @@
+ 	int			 ch, nfds, timeout = INFTIM;
+ 	int			 pipe_chld[2];
+ 	extern char		*__progname;
++	time_t			start_time;
+ 
+ 	__progname = _compat_get_progname(argv[0]);
+ 
+@@ -197,6 +199,8 @@
+ 		fatal(NULL);
+ 	imsg_init(ibuf, pipe_chld[0]);
+ 
++	start_time = getmonotime();
++
+ 	while (quit == 0) {
+ 		pfd[PFD_PIPE].fd = ibuf->fd;
+ 		pfd[PFD_PIPE].events = POLLIN;
+@@ -209,11 +213,12 @@
+ 				quit = 1;
+ 			}
+ 
+-		if (nfds == 0 && lconf.settime) {
++		if (lconf.settime &&
++		    (nfds == 0 || getmonotime() > start_time+SETTIME_TIMEOUT)) {
+ 			lconf.settime = 0;
+ 			timeout = INFTIM;
+ 			log_init(lconf.debug);
+-			log_debug("no reply received in time, skipping initial "
++			log_warnx("no reply received in time, skipping initial "
+ 			    "time setting");
+ 			if (!lconf.debug) {
+ 				if (daemon(1, 0))

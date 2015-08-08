@@ -1,0 +1,30 @@
+--- innoextract-1.4/CMakeLists.txt
++++ innoextract-1.4/CMakeLists.txt
+@@ -6,6 +6,7 @@
+ # Define configuration options
+ 
+ option(USE_LZMA "Build lzma decompression support." ON)
++option(WITH_DEBUG "Debug build" OFF)
+ option(DEBUG_EXTRA "Expensive debug options" OFF)
+ option(SET_WARNING_FLAGS "Adjust compiler warning flags" ON)
+ option(SET_OPTIMIZATION_FLAGS "Adjust compiler optimization flags" ON)
+--- innoextract-1.4/cmake/BuildType.cmake
++++ innoextract-1.4/cmake/BuildType.cmake
+@@ -8,7 +8,7 @@
+ if(CMAKE_BUILD_TYPE STREQUAL "")
+ 	set(CMAKE_BUILD_TYPE "Release")
+ endif()
+-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
++if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR WITH_DEBUG)
+ 	add_definitions(-DDEBUG)
+ 	set(DEBUG 1)
+ endif()
+@@ -64,7 +64,7 @@
+ 		# Specifically, the need for libboost_system depends on the Boost version
+ 		add_ldflag("-Wl,--as-needed")
+ 		
+-		if(CMAKE_BUILD_TYPE STREQUAL "Debug")
++		if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR WITH_DEBUG)
+ 			
+ 			# set debug symbol level to -g3
+ 			check_compiler_flag(RESULT "-g3")

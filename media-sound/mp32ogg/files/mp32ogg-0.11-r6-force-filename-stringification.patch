@@ -1,0 +1,16 @@
+http://bugs.gentoo.org/328953
+http://qa.mandriva.com/53477
+
+--- mp32ogg
++++ mp32ogg
+@@ -167,7 +167,9 @@
+ }
+ 
+ sub ConvertFile() {
+-	my $mp3file = shift(@_);
++    # force arg stringfication to get actual filename, not getopt::long
++    # callback
++	my $mp3file = "" . shift(@_);
+ 	my $delete = $opt_delete;
+ 	my $filename = $opt_rename;
+ 	my $lowercase = $opt_lowercase;

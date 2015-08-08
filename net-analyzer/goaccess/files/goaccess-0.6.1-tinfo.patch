@@ -1,0 +1,32 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,22 +19,20 @@
+ AC_ARG_ENABLE(geoip,--enable-geoip Enable GeoIP country lookup, USE_GEOIP="yes")
+ AC_ARG_ENABLE(utf8,--enable-utf8 Enable UTF-8 support for wide characters, USE_UTF8="yes")
+ 
+-if test "$USE_GEOIP" = "yes"; then
+-   AC_CHECK_LIB([GeoIP], [GeoIP_new], [], [AC_MSG_ERROR([libgeoip-dev is missing])])
+-   CFLAGS="-lGeoIP"
++if test x"$USE_GEOIP" = "xyes"; then
++   AC_CHECK_LIB([GeoIP], [GeoIP_new], , [AC_MSG_ERROR([libgeoip-dev is missing])])
+ fi
+ 
+-if test "$USE_UTF8" = "yes"; then
+-   AC_CHECK_LIB([ncursesw], [mvaddwstr], [], [AC_MSG_ERROR([libncursesw5-dev is missing])])
+-   CFLAGS="-lncursesw"
++if test x"$USE_UTF8" = "xyes"; then
++   AC_CHECK_LIB([ncursesw], [mvaddwstr], , [AC_MSG_ERROR([libncursesw5-dev is missing])])
++   AC_SEARCH_LIBS([stdscr], [tinfow], ,[AC_MSG_ERROR([Cannot find a library providing stdscr])])
+ else
+-   AC_CHECK_LIB([ncurses], [refresh], [], [AC_MSG_ERROR([libncurses5-dev is missing])])
+-   CFLAGS="-lncurses"
++   AC_CHECK_LIB([ncurses], [refresh], , [AC_MSG_ERROR([libncurses5-dev is missing])])
++   AC_SEARCH_LIBS([stdscr], [tinfo], ,[AC_MSG_ERROR([Cannot find a library providing stdscr])])
+ fi
+ 
+ # pthread
+ AC_CHECK_LIB([pthread], [pthread_create], [], [AC_MSG_ERROR([pthread is missing])])
+-CFLAGS="-pthread"
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB([glib-2.0], [g_free], [], [AC_MSG_ERROR([glib-2.x is missing])])

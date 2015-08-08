@@ -1,0 +1,13 @@
+diff --git a/dbind/dbtest.c b/dbind/dbtest.c
+index e8bbb63..9843c3d 100644
+--- a/dbind/dbtest.c
++++ b/dbind/dbtest.c
+@@ -417,7 +417,7 @@ int main (int argc, char **argv)
+ 
+     test_helpers ();
+     test_marshalling ();
+-    test_teamspaces (bus);
++    /* test_teamspaces (bus); */
+ 
+     return 0;
+ }

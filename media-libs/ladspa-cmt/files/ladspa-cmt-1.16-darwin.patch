@@ -1,0 +1,12 @@
+diff -u src-org/makefile src/makefile
+--- src-org/makefile	Thu Oct 28 19:22:56 2004
++++ src/makefile	Thu Oct 28 19:28:16 2004
+@@ -68,7 +68,7 @@
+ targets:	$(PLUGIN_LIB)
+ 
+ $(PLUGIN_LIB):	$(PLUGIN_OBJECTS)
+-	$(CXX)	-shared							\
++	$(CXX)	-dynamiclib -ldl						\
+ 		-o $(PLUGIN_LIB)					\
+ 		$(PLUGIN_OBJECTS)					
+ 

@@ -1,0 +1,14 @@
+--- src/wl/sys/wl_linux.c.old	2013-05-02 21:00:51.000000000 +0200
++++ src/wl/sys/wl_linux.c	2013-05-02 21:04:00.000000000 +0200
+@@ -385,7 +385,11 @@
+ #endif
+ 	.ndo_get_stats = wl_get_stats,
+ 	.ndo_set_mac_address = wl_set_mac_address,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 2, 0)
+ 	.ndo_set_multicast_list = wl_set_multicast_list,
++#else
++	.ndo_set_rx_mode = wl_set_multicast_list,
++#endif
+ 	.ndo_do_ioctl = wl_ioctl
+ };
+ 

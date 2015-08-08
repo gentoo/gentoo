@@ -1,0 +1,21 @@
+diff -urN gejengel-0.1.4.old/src/AudioDecoder/ffmpegdecoder.cpp gejengel-0.1.4/src/AudioDecoder/ffmpegdecoder.cpp
+--- gejengel-0.1.4.old/src/AudioDecoder/ffmpegdecoder.cpp	2013-06-22 18:48:46.176890946 +0200
++++ gejengel-0.1.4/src/AudioDecoder/ffmpegdecoder.cpp	2013-06-22 18:50:04.516888158 +0200
+@@ -88,7 +88,7 @@
+         throw logic_error("Could not open input file: " + m_Filepath);
+     }
+ 
+-    if (av_find_stream_info(m_pFormatContext) < 0)
++    if (avformat_find_stream_info(m_pFormatContext, NULL) < 0)
+     {
+         throw logic_error("Could not find stream information in " + m_Filepath);
+     }
+@@ -134,7 +134,7 @@
+     m_pFormatContext->flags |= AVFMT_FLAG_GENPTS;
+     m_pFormatContext->streams[m_AudioStream]->discard = AVDISCARD_DEFAULT;
+ 
+-    if (avcodec_open(m_pAudioCodecContext, m_pAudioCodec) < 0)
++    if (avcodec_open2(m_pAudioCodecContext, m_pAudioCodec, NULL) < 0)
+     {
+         throw logic_error("Could not open audio codec for " + m_Filepath);
+     }

@@ -1,0 +1,151 @@
+--- projects/stargazer/inst/linux/etc/stargazer/OnChange.org	2013-01-09 14:30:32.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/OnChange	2013-01-09 15:50:01.000000000 +0200
+@@ -1,8 +1,20 @@
+ #! /bin/sh
+ 
+-login=$1
+-param=$2
+-oldValue=$3
+-newValue=$4
++# About: This script is called when user account is changed.
++# Common Task: Notify about various events.
++# Priority: optional
+ 
+-#echo "User: '$login'. Parameter $param changed from '$oldValue' to '$newValue'" >> /var/stargazer/users.chg.log
+\ No newline at end of file
++# User login
++LOGIN=$1
++
++# User parameter
++PARAMETER=$2
++
++# User parameter old value
++OLDVALUE=$3
++
++# User parameter new value
++NEWVALUE=$4
++
++# Usage examples:
++#echo "User: '$LOGIN'. Parameter $PARAMETER changed from '$OLDVALUE' to '$NEWVALUE'" >> /var/stargazer/user.change.log
+\ No newline at end of file
+--- projects/stargazer/inst/linux/etc/stargazer/OnConnect.org	2013-01-09 14:39:51.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/OnConnect	2013-01-09 15:11:49.000000000 +0200
+@@ -1,24 +1,23 @@
+ #! /bin/sh
+ 
+-#Этот скрипт вызывается в момент, когда пользователь
+-#успешно прошел авторизацию на сервере. Задача скрипта - перестроить 
+-#файрвол так, что бы пользователь получил доступ в интернет
++# About: This script is called when the user successfully authenticated on the server.
++# Common Task: Rebuild firewall to allow user to access the Internet.
++# Priority: required
+ 
+-# Login
++# User login
+ LOGIN=$1
+ 
+-#user IP
++# User IP
+ IP=$2
+ 
+-#cash
++# User cash
+ CASH=$3
+ 
+-#user ID
++# User ID
+ ID=$4
+ 
+-#Selected dirs to connect
++# Selected DIRs (from rules file) to connect
+ DIRS=$5
+ 
+-
+-#echo "C `date +%Y.%m.%d-%H.%M.%S` $IP $CASH" >> /var/stargazer/users/$LOGIN/connect.log
+-
++# Usage examples:
++#echo "Connected `date +%Y.%m.%d-%H.%M.%S` $IP $CASH" >> /var/stargazer/users/$LOGIN/connect.log
+\ No newline at end of file
+--- projects/stargazer/inst/linux/etc/stargazer/OnDisconnect.org	2013-01-09 14:54:36.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/OnDisconnect	2013-01-09 15:11:33.000000000 +0200
+@@ -1,24 +1,23 @@
+ #! /bin/sh
+ 
+-# Этот скрипт вызывается в момент, когда пользователь
+-# желает отключится от интернета или вышел таймаут у пользователя
+-# и сервер сам отключает пользователя
+-# Задача скрипта подобна задаче скрипта OnConnect - перестроить 
+-# файрвол так, что бы пользователю закрыть доступ в интернет
++# About: This script is called when the user wants to disconnect or authorization timeout has passed.
++# Common task: Rebuild firewall to disallow user to access to the Internet.
++# Priority: required
+ 
+-# Login
++# User login
+ LOGIN=$1
+ 
+-#user IP
++# User IP
+ IP=$2
+ 
+-#cash
++# User cash
+ CASH=$3
+ 
+-#user ID
++# User ID
+ ID=$4
+ 
+-#Selected dirs to disconnect
++# Selected DIRs (from rules file) to disconnect
+ DIRS=$5
+ 
+-#echo "D `date +%Y.%m.%d-%H.%M.%S` $IP $CASH" >> /var/stargazer/users/$LOGIN/connect.log
++# Usage examples:
++#echo "Disconnected `date +%Y.%m.%d-%H.%M.%S` $IP $CASH" >> /var/stargazer/users/$LOGIN/connect.log
+\ No newline at end of file
+--- projects/stargazer/inst/linux/etc/stargazer/OnUserAdd.org	2013-01-09 15:01:57.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/OnUserAdd	2013-01-09 15:10:55.000000000 +0200
+@@ -1,14 +1,12 @@
+ #! /bin/sh
+ 
+-# Использование (неиспользование) этого скрипта дело вкуса.
+-# Он не выполняет критических функций. Его задача автматизировать
+-# действия характерные при добавлении пользователя сети, например добавлекние 
+-# пользователю почты
+-
+-# Login
+-login=$1
+-
+-#echo "added user $login" >> /var/stargazer/add_del.log
+-
++# About: This script is called when the user is added to the Stargazer.
++# Common task: Automate typical actions on adding user to the network,
++#              such as creating email or IM account.
++# Priority: optional
+ 
++# User login
++LOGIN=$1
+ 
++# Usage examples:
++#echo "Added user $login" >> /var/stargazer/add_del.log
+\ No newline at end of file
+--- projects/stargazer/inst/linux/etc/stargazer/OnUserDel.org	2013-01-09 15:12:32.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/OnUserDel	2013-01-09 15:14:10.000000000 +0200
+@@ -1,7 +1,13 @@
+ #! /bin/sh
+ 
+-# Login
+-login=$1
++# About: This script is called when the user is removed from the Stargazer.
++# Common task: Automate typical actions on removing user from the network,
++#              such as removing email or IM account.
++# Priority: optional
+ 
+-#echo "deleted user $login" >> /var/stargazer/add_del.log
++# User login
++LOGIN=$1
++
++# Usage examples:
++#echo "Deleted user $LOGIN" >> /var/stargazer/add_del.log
+ 

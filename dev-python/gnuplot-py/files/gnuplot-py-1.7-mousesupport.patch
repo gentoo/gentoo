@@ -1,0 +1,75 @@
+--- _Gnuplot.py.orig	2003-10-17 16:28:10.000000000 +0200
++++ _Gnuplot.py	2004-10-28 14:39:20.000000000 +0200
+@@ -18,6 +18,27 @@
+ 
+ import gp, PlotItems, termdefs
+ 
++def test_mouse():
++    """Return whether mouse support is present or not.
++
++    The detection is done by calling gnuplot with a file containing only the
++    "set mouse" command.  If gnuplot does have mouse support, it should simply
++    execute the file silently, producing no output."""
++
++    import os,tempfile,commands
++    
++    tmpname = tempfile.mktemp()
++    tfile = open(tmpname,"w")
++    tfile.write("set mouse")
++    tfile.close()
++    msg = commands.getoutput(gp.GnuplotOpts.gnuplot_command + " " +
++                             tmpname)
++    os.unlink(tmpname)
++    if msg:  # Gnuplot won"t print anything if it has mouse support
++        has_mouse = 0
++    else:
++        has_mouse = 1
++    return has_mouse
+ 
+ class _GnuplotFile:
+     """A file to which gnuplot commands can be written.
+@@ -152,7 +173,7 @@
+         'output' : 'string',
+         }
+ 
+-    def __init__(self, filename=None, persist=None, debug=0):
++    def __init__(self, filename=None, persist=None, debug=0, mouse=None):
+         """Create a Gnuplot object.
+ 
+         Create a 'Gnuplot' object.  By default, this starts a gnuplot
+@@ -172,8 +193,19 @@
+           'debug=1' -- echo the gnuplot commands to stderr as well as
+               sending them to gnuplot.
+ 
++          "mouse=1" -- activate mouse support (officially available as of
++          gnuplot 4.0 under certain platforms).
++
+         """
+ 
++        # The mouse check must be done first, so we can decide whether to use
++        # inline data and fifos or not (they break mouse support)
++        if mouse is None:
++            mouse = test_mouse()
++        if mouse:
++            gp.GnuplotOpts.prefer_inline_data = 0
++            gp.GnuplotOpts.prefer_fifo_data = 0
++            
+         if filename is None:
+             self.gnuplot = gp.GnuplotProcess(persist=persist)
+         else:
+@@ -182,10 +214,14 @@
+                     'Gnuplot with output to file does not allow '
+                     'persist option.')
+             self.gnuplot = _GnuplotFile(filename)
++	    
+         self._clear_queue()
+         self.debug = debug
+         self.plotcmd = 'plot'
+-        self('set terminal %s' % (gp.GnuplotOpts.default_term,))
++	# The "set mouse" command MUST be the VERY FIRST command passed to gnuplot
++	if mouse:
++            self("set mouse")
++	self("set terminal %s" % gp.GnuplotOpts.default_term)
+ 
+     def __call__(self, s):
+         """Send a command string to gnuplot.

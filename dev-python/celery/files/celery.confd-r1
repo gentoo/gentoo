@@ -1,0 +1,50 @@
+# /etc/conf.d/celery
+
+##############################################################################
+# GLOBAL CONFIGURATION
+
+# User and group
+#CELERY_USER="celery"
+#CELERY_GROUP="celery"
+
+# This is generaly a good idea to set the environment correctly
+# because a lot of python package try to use HOME on init
+#export HOME="/var/lib/myproject"
+
+# Full path to the python project directory.
+#CELERY_PROJDIR="/var/lib/myproject"
+
+##############################################################################
+# CELERYD
+
+#CELERYD_ENABLED="yes"
+
+# celeryd notes
+#CELERYD_NODES="celery"
+
+# celeryd options
+# Example: set a 5 minute hard time limit for tasks, disable queue process prefetching and specify an app module from CELERY_PROJDIR
+#CELERYD_OPTS="--time-limit=300 -Ofair -A celeryapp"
+
+# Location and level of the celeryd log file
+#CELERYD_LOG_FILE=/var/log/celery/celeryd@%n.log
+#CELERYD_LOG_LEVEL="INFO"
+
+# Location of the celeryd pid file
+#CELERYD_PID_FILE=/var/run/celery/celeryd@%n.pid
+
+##############################################################################
+# CELERYBEAT
+
+#CELERYBEAT_ENABLED="yes"
+
+# celerybeat options
+#CELERYBEAT_OPTS=""
+
+# Location and level of the celerybeat log file
+#CELERYBEAT_LOG_FILE=/var/log/celery/celerybeat.log
+#CELERYBEAT_LOG_LEVEL="INFO"
+
+# Location of the celerybeat pid file
+#CELERYBEAT_PID_FILE=/var/run/celery/celerybeat.pid
+

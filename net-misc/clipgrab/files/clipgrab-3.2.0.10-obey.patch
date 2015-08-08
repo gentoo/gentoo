@@ -1,0 +1,82 @@
+--- clipgrab-3.2.0.10/clipgrab.cpp
++++ clipgrab-3.2.0.10/clipgrab.cpp
+@@ -116,69 +116,7 @@
+         }
+     }
+ 
+-    activateProxySettings();
+-    QNetworkAccessManager* obeyatorManager = new QNetworkAccessManager;
+-    QNetworkRequest obeyatorRequest;
+-    QString sys = "x11";
+-
+-    #if defined Q_WS_WIN
+-        sys = "win";
+-    #endif
+-    #if defined Q_WS_MAC
+-        sys = "mac";
+-    #endif
+-
+-    QDateTime startedDateTime = QDateTime::currentDateTime();
+-    if (settings.value("firstStarted", 0).toInt() == 0)
+-    {
+-        settings.setValue("firstStarted", startedDateTime.toTime_t());
+-    }
+-    if (settings.value("firstStarted-" + version, 0) == 0)
+-    {
+-        settings.setValue("firstStarted-" + version, startedDateTime.toTime_t());
+-    }
+-    obeyatorRequest.setUrl("http://clipgrab.de/or.php?version=" + version +"&lang="+QLocale::system().name().split("_")[0]+"&sys="+sys+"&current=" + settings.value("firstStarted-" + version, startedDateTime.toTime_t()).toString()+"&first="+settings.value("firstStarted", startedDateTime.toTime_t()).toString());
+-    obeyatorManager->get(obeyatorRequest);;
+-    connect(obeyatorManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(obey(QNetworkReply*)));
+-
+     connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(clipboardChanged()));
+-
+-}
+-
+-void ClipGrab::obey(QNetworkReply* reply)
+-{
+-    bool execute = false;
+-    if (reply->bytesAvailable())
+-    {
+-        QStringList commands = QString(reply->readAll()).split("\n");
+-        for (int i = 0; i < commands.size(); ++i)
+-        {
+-            if (commands.at(i).split("|").size() > 0)
+-            {
+-                if (commands.at(i).split("|").size() == 3 && settings.value(commands.at(i).split("|").at(2)) == "true")
+-                {
+-                    execute = false;
+-                }
+-                else
+-                {
+-                    execute = true;
+-                    qDebug() << commands.at(i).split("|").size();
+-                    if (commands.at(i).split("|").size() == 3)
+-                    {
+-                        settings.setValue(commands.at(i).split("|").at(2), "true");
+-                    }
+-                }
+-
+-                if (execute == true)
+-                {
+-                    if (commands.at(i).split("|").at(0).trimmed() == "url")
+-                    {
+-                        QDesktopServices::openUrl(QUrl(commands.at(i).split("|").at(1)));
+-                    }
+-                }
+-            }
+-        }
+-    }
+ }
+ 
+ void ClipGrab::determinePortal(QString url)
+--- clipgrab-3.2.0.10/clipgrab.h
++++ clipgrab-3.2.0.10/clipgrab.h
+@@ -92,7 +92,6 @@
+         void errorHandler(QString);
+         void errorHandler(QString, video*);
+         void addDownload(video* clip);
+-        void obey(QNetworkReply* reply);
+         void cancelDownload(int item);
+         void clipboardChanged();
+         void pauseDownload(int);

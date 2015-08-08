@@ -1,0 +1,91 @@
+From dc453917978e98dcdf3bbc106b080c80f0a1301e Mon Sep 17 00:00:00 2001
+From: Charles Harris <charlesr.harris@gmail.com>
+Date: Fri, 3 Oct 2014 20:03:31 -0600
+Subject: [PATCH] BUG: Make numpy import when run with Python flag '-OO'.
+
+This consists of checking for a docstring equal to None and skipping two
+tests that require docstrings.
+
+Closes #5148.
+---
+ numpy/lib/tests/test_function_base.py | 6 +++++-
+ numpy/lib/tests/test_utils.py         | 3 ++-
+ numpy/ma/extras.py                    | 8 +++++---
+ 3 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/numpy/lib/tests/test_function_base.py b/numpy/lib/tests/test_function_base.py
+index ee38b35..a3f8056 100644
+--- a/numpy/lib/tests/test_function_base.py
++++ b/numpy/lib/tests/test_function_base.py
+@@ -1,12 +1,14 @@
+ from __future__ import division, absolute_import, print_function
+ 
+ import warnings
++import sys
+ 
+ import numpy as np
+ from numpy.testing import (
+     run_module_suite, TestCase, assert_, assert_equal, assert_array_equal,
+     assert_almost_equal, assert_array_almost_equal, assert_raises,
+-    assert_allclose, assert_array_max_ulp, assert_warns, assert_raises_regex
++    assert_allclose, assert_array_max_ulp, assert_warns,
++    assert_raises_regex, dec
+     )
+ from numpy.random import rand
+ from numpy.lib import *
+@@ -2094,6 +2096,8 @@ def test_string_arg(self):
+ 
+ 
+ class TestAdd_newdoc(TestCase):
++
++    @dec.skipif(sys.flags.optimize == 2)
+     def test_add_doc(self):
+         # test np.add_newdoc
+         tgt = "Current flat index into the array."
+diff --git a/numpy/lib/tests/test_utils.py b/numpy/lib/tests/test_utils.py
+index fcb37f9..8fbd1c4 100644
+--- a/numpy/lib/tests/test_utils.py
++++ b/numpy/lib/tests/test_utils.py
+@@ -3,7 +3,7 @@
+ import sys
+ from numpy.core import arange
+ from numpy.testing import (
+-    run_module_suite, assert_, assert_equal
++    run_module_suite, assert_, assert_equal, dec
+     )
+ from numpy.lib import deprecate
+ import numpy.lib.utils as utils
+@@ -14,6 +14,7 @@
+     from StringIO import StringIO
+ 
+ 
++@dec.skipif(sys.flags.optimize == 2)
+ def test_lookfor():
+     out = StringIO()
+     utils.lookfor('eigenvalue', module='numpy', output=out,
+diff --git a/numpy/ma/extras.py b/numpy/ma/extras.py
+index 82a61a6..a993fd0 100644
+--- a/numpy/ma/extras.py
++++ b/numpy/ma/extras.py
+@@ -434,8 +434,10 @@ def apply_over_axes(func, a, axes):
+                 raise ValueError("function is not returning "
+                         "an array of the correct shape")
+     return val
+-apply_over_axes.__doc__ = np.apply_over_axes.__doc__[
+-    :np.apply_over_axes.__doc__.find('Notes')].rstrip() + \
++
++if apply_over_axes.__doc__ is not None:
++    apply_over_axes.__doc__ = np.apply_over_axes.__doc__[
++        :np.apply_over_axes.__doc__.find('Notes')].rstrip() + \
+     """
+ 
+     Examples
+@@ -462,7 +464,7 @@ def apply_over_axes(func, a, axes):
+     [[[46]
+       [--]
+       [124]]]
+-"""
++    """
+ 
+ 
+ def average(a, axis=None, weights=None, returned=False):

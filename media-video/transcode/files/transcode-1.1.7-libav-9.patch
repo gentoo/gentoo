@@ -1,0 +1,31 @@
+--- ./import/probe_ffmpeg.c.original	2013-04-22 20:04:51.058081388 +0200
++++ ./import/probe_ffmpeg.c	2013-04-22 20:05:25.744081897 +0200
+@@ -109,7 +109,7 @@ void probe_ffmpeg(info_t *ipipe)
+         return;
+     }
+ 
+-    ret = av_find_stream_info(lavf_dmx_context);
++    ret = avformat_find_stream_info(lavf_dmx_context, NULL);
+     if (ret < 0) {
+         tc_log_error(__FILE__, "unable to fetch informations from '%s'"
+                                " (libavformat failure)",
+--- ./import/decode_lavc.c.original	2013-04-22 20:06:17.260082652 +0200
++++ ./import/decode_lavc.c	2013-04-22 20:07:47.564083975 +0200
+@@ -170,7 +170,7 @@ void decode_lavc(decode_t *decode)
+ 
+   // Set these to the expected values so that ffmpeg's decoder can
+   // properly detect interlaced input.
+-  lavc_dec_context = avcodec_alloc_context();
++  lavc_dec_context = avcodec_alloc_context3(NULL);
+   if (lavc_dec_context == NULL) {
+       tc_log_error(__FILE__, "Could not allocate enough memory.");
+       goto decoder_error;
+@@ -186,7 +186,7 @@ void decode_lavc(decode_t *decode)
+   lavc_dec_context->error_concealment = 3;
+   lavc_dec_context->workaround_bugs = FF_BUG_AUTODETECT;
+ 
+-  if (avcodec_open(lavc_dec_context, lavc_dec_codec) < 0) {
++  if (avcodec_open2(lavc_dec_context, lavc_dec_codec, NULL) < 0) {
+       tc_log_error(__FILE__, "Could not initialize the '%s' codec.",
+ 		   codec->name);
+       goto decoder_error;

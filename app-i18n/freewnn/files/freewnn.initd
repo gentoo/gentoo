@@ -1,0 +1,22 @@
+#!/sbin/runscript
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting up ${SERVICE}"
+	/usr/bin/Wnn4/jserver &>/dev/null
+	if [ $? -eq 15 ]; then
+		true;
+	else
+		false;
+	fi
+	eend 0
+}
+
+stop() {
+	ebegin "Stopping ${SERVICE}"
+	/usr/bin/Wnn4/wnnkill &> /dev/null
+	eend $? "Failed to stop ${SERVICE}"
+}

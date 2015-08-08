@@ -1,0 +1,78 @@
+Need to add libraries after object files, or solaris
+linker might not see library's symbols to be needed
+when added to LDFLAGS.
+
+Take strndup from gnulib too, this decl breaks on Linux (#361417).
+
+VERSION is defined in gnulib's config.h.
+
+--- src/Makefile.orig	2011-03-30 13:15:56 +0200
++++ src/Makefile	2011-03-30 13:16:52 +0200
+@@ -30,10 +30,10 @@
+ 	$(CC) $(CFLAGS) -c -o $@ $^
+ 
+ runscript: runscript.o rs-misc.o
+-	$(LD) $(LDFLAGS) -o $@ $^ $(LDFLAGS_RS)
++	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS) $(LDFLAGS_RS)
+ 
+ start-stop-daemon: start-stop-daemon.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LDFLAGS_SSD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS) $(LDFLAGS_SSD)
+ 
+ install: $(TARGET)
+ 	install -m 0755 -d $(DESTDIR)/bin
+--- src/core/misc.c.orig	2011-03-31 17:46:46 +0200
++++ src/core/misc.c	2011-03-31 17:47:03 +0200
+@@ -86,31 +86,6 @@
+ 	return new_path;
+ }
+ 
+-char *strndup(const char *str, size_t size) {
+-	char *new_str = NULL;
+-	size_t len;
+-
+-	if (NULL == str) {
+-		DBG_MSG("Invalid argument passed!\n");
+-		errno = EINVAL;
+-		return NULL;
+-	}
+-
+-	/* Check lenght of str without breaching the size limit */
+-	for (len = 0;(len < size) && ('\0' != str[len]);len++);
+-
+-	new_str = malloc(len + 1);
+-	if (NULL == new_str) {
+-		DBG_MSG("Failed to allocate buffer!\n");
+-		return NULL;
+-	}
+-
+-	/* Make sure our string is NULL terminated */
+-	new_str[len] = '\0';
+-	
+-	return (char *)memcpy(new_str, str, len);
+-}
+-
+ char *gbasename(const char *path) {
+ 	char *new_path = NULL;
+ 	
+--- src/core/misc.h.orig	2011-03-31 17:46:43 +0200
++++ src/core/misc.h	2011-03-31 18:06:58 +0200
+@@ -246,8 +246,6 @@
+  * with the malloc() call. */
+ char *strcatpaths(const char *pathname1, const char *pathname2);
+ 
+-/* Compat functions for GNU extensions */
+-char *strndup(const char *str, size_t size);
+ /* Same as basename(3), but do not modify path */
+ char *gbasename(const char *path);
+ 
+--- src/start-stop-daemon.c.orig	2011-03-31 18:11:02 +0200
++++ src/start-stop-daemon.c	2011-03-31 18:11:03 +0200
+@@ -31,6 +31,7 @@
+  * 
+  */
+ 
++#undef VERSION
+ #define VERSION "1.13.11+gentoo"
+ 
+ #define NONRETURNPRINTFFORMAT(x, y) \

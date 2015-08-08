@@ -1,0 +1,30 @@
+diff -ruN owfs-2.7p21.orig/module/ownet/perl5/Makefile.am owfs-2.7p21/module/ownet/perl5/Makefile.am
+--- owfs-2.7p21.orig/module/ownet/perl5/Makefile.am	2008-06-12 16:24:30.000000000 +0200
++++ owfs-2.7p21/module/ownet/perl5/Makefile.am	2012-05-20 15:45:07.340529762 +0200
+@@ -7,9 +7,9 @@
+ # Can't really install the perl-modules under prefix-directory.. it should be site-global.
+ OWNet/Makefile: OWNet/Makefile.PL
+ if HAVE_DEBIAN
+-	( cd OWNet; $(PERL) Makefile.PL PREFIX=@prefix@ )
++	( cd OWNet; $(PERL) Makefile.PL PREFIX=@prefix@ INSTALLDIRS=vendor )
+ else
+-	( cd OWNet; $(PERL) Makefile.PL )
++	( cd OWNet; $(PERL) Makefile.PL INSTALLDIRS=vendor )
+ endif
+ 
+ install-data-local: OWNet/Makefile
+diff -ruN owfs-2.7p21.orig/module/swig/perl5/Makefile.am owfs-2.7p21/module/swig/perl5/Makefile.am
+--- owfs-2.7p21.orig/module/swig/perl5/Makefile.am	2008-06-12 16:24:30.000000000 +0200
++++ owfs-2.7p21/module/swig/perl5/Makefile.am	2012-05-20 15:44:04.519526274 +0200
+@@ -17,9 +17,9 @@
+ 	( cd OW; $(PERL) Makefile.PL )
+ else
+ if HAVE_DEBIAN
+-	( cd OW; $(PERL) Makefile.PL PREFIX=@prefix@ )
++	( cd OW; $(PERL) Makefile.PL PREFIX=@prefix@ INSTALLDIRS=vendor )
+ else
+-	( cd OW; $(PERL) Makefile.PL )
++	( cd OW; $(PERL) Makefile.PL INSTALLDIRS=vendor )
+ endif
+ endif
+ 

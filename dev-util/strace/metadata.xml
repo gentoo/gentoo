@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>base-system</herd>
+  <use>
+    <flag name="aio">
+      Enable <pkg>dev-libs/libaio</pkg> support for tracing Asynchronous I/O operations
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">strace</remote-id>
+  </upstream>
+</pkgmetadata>

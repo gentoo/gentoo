@@ -1,0 +1,14 @@
+--- acpica-unix-20140214/generate/unix/Makefile.config
++++ acpica-unix-20140214/generate/unix/Makefile.config
+@@ -211,9 +211,9 @@
+ #YACC=      byacc
+ #YFLAGS +=
+ #
+-YACC=       bison
++YACC=       LC_ALL=C bison
+ YFLAGS +=   -y
+ 
+-LEX=        flex
++LEX=        LC_ALL=C flex
+ LFLAGS +=   -i -s
+ 

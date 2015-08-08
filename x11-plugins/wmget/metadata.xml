@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmget lets you run multiple downloads and monitor or control them from within a 
+dockapp. This makes it easy to see their progress without keeping extra windows 
+open. wmget uses the libcurl library to support HTTP and FTP downloads.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,65 @@
+Source: http://www.linuxfromscratch.org/blfs/view/svn/pst/cups-filters.html
+
+Submitted By:            Armin K. <krejzi at email dot com>
+Date:                    2015-02-10
+Initial Package Version: 1.0.62
+Upstream Status:         Submitted
+Origin:                  Self
+Description:             Fixes building when using Poppler 0.31.x.
+
+--- a/filter/pdftoijs.cxx	2013-12-10 22:20:15.000000000 +0100
++++ b/filter/pdftoijs.cxx	2015-02-10 21:51:32.700190378 +0100
+@@ -436,7 +436,11 @@
+   }
+ 
+   out = new SplashOutputDev(cmode,rowpad/* row padding */,
+-    reverseVideo,paperColor,gTrue,gFalse);
++    reverseVideo,paperColor,gTrue
++#if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR <= 30
++    ,gFalse
++#endif
++    );
+ #if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR >= 19
+   out->startDoc(doc);
+ #else
+--- a/filter/pdftoopvp/OPVPOutputDev.cxx	2014-03-10 12:19:19.000000000 +0100
++++ b/filter/pdftoopvp/OPVPOutputDev.cxx	2015-02-10 21:52:09.092847693 +0100
+@@ -278,7 +278,11 @@
+ 				    gFalse,
+                                     gFalse,
+ #endif
++#if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR <= 30
+ 				    globalParams->getAntialias());
++#else
++                                    gFalse);
++#endif
+   for (i = 0; i < nT3Fonts; ++i) {
+     delete t3FontCache[i];
+   }
+--- a/filter/pdftoopvp/pdftoopvp.cxx	2013-12-10 22:20:15.000000000 +0100
++++ b/filter/pdftoopvp/pdftoopvp.cxx	2015-02-10 21:51:32.701190397 +0100
+@@ -614,7 +614,9 @@
+       ok = gFalse;
+     }
+   }
++#if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR <= 30
+   globalParams->setAntialias("no");
++#endif
+   if (quiet) {
+     globalParams->setErrQuiet(quiet);
+   }
+--- a/filter/pdftoraster.cxx	2014-09-26 18:23:04.000000000 +0200
++++ b/filter/pdftoraster.cxx	2015-02-10 21:51:32.701190397 +0100
+@@ -2100,7 +2100,11 @@
+   }
+ 
+   out = new SplashOutputDev(cmode,rowpad/* row padding */,
+-    gFalse,paperColor,gTrue,gFalse);
++    gFalse,paperColor,gTrue
++#if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR <= 30
++    ,gFalse
++#endif
++    );
+ #if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR >= 19
+   out->startDoc(doc);
+ #else

@@ -1,0 +1,29 @@
+From 11b369b69c4637431b139960391bded531a9f652 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Sun, 6 Oct 2013 20:25:14 +0200
+Subject: [PATCH] don't run submake
+
+---
+ Makefile.am | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 5b2caec..b2285a0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -139,11 +139,6 @@ install-exec-hook:
+ 	mkdir -p $(DESTDIR)$(SHAREDIR)/messages
+ 	cd share/messages ; $(RM) -f *~ ; cp -f Messages* $(DESTDIR)$(SHAREDIR)/messages
+ 	chmod -R a+r $(DESTDIR)$(SHAREDIR)/
+-	cd util ; make ; make install DESTDIR=$(DESTDIR)$
+ 
+ clean-local:
+ 	rm -f xaw_incdir
+-	cd util ; make clean
+-
+-distclean-local:
+-	cd util ; make distclean
+\ No newline at end of file
+-- 
+1.8.3.2
+

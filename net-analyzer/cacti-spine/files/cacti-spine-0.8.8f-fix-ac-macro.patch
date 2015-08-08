@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -10,7 +10,7 @@
+ AC_LANG(C)
+ 
+ AM_INIT_AUTOMAKE(spine, 0.8.8f)
+-AM_CONFIG_HEADER(config/config.h)
++AC_CONFIG_HEADERS(config/config.h)
+ 
+ # static libraries
+ AC_ARG_WITH(static,

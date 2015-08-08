@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  CHiPPS is the COIN-OR High-Performance Parallel Search Framework, a
+  framework for implementing parallel algorithms based on tree
+  search. The current CHiPPS architecture consists of three
+  layers. The BiCePS Linear Integer Solver (BLIS) is a concretization
+  of the BiCePS layer for solving mixed-integer linear programs.
+</longdescription>
+</pkgmetadata>

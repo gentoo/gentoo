@@ -1,0 +1,50 @@
+--- XalanDOMString.cpp	2008-03-21 09:50:39.000000000 +0100
++++ xalan-c-1.10.0/work/xml-xalan/c/src/xalanc/XalanDOM/XalanDOMString.cpp	2008-03-21 09:51:06.000000000 +0100
+@@ -26,6 +26,7 @@
+ 
+ 
+ #include <cstdlib>
++#include <cstring>
+ 
+ 
+ 
+--- FormatterToHTML.cpp	2008-03-21 09:56:31.000000000 +0100
++++ xalan-c-1.10.0/work/xml-xalan/c/src/xalanc/XMLSupport/FormatterToHTML.cpp	2008-03-21 09:56:54.000000000 +0100
+@@ -26,6 +26,7 @@
+ 
+ 
+ #include <cassert>
++#include <cstring>
+ 
+ 
+
+--- ElemNumber.cpp	2008-03-21 10:09:56.000000000 +0100
++++ xalan-c-1.10.0/work/xml-xalan/c/src/xalanc/XSLT/ElemNumber.cpp	2008-03-21 10:10:15.000000000 +0100
+@@ -14,6 +14,7 @@
+  * limitations under the License.
+  */
+ #include "ElemNumber.hpp"
++#include <cstring>
+ 
+ 
+ 
+--- DirectoryEnumerator.hpp	2008-03-21 10:19:13.000000000 +0100
++++ xalan-c-1.10.0/work/xml-xalan/c/src/xalanc/PlatformSupport/DirectoryEnumerator.hpp	2008-03-21 10:19:41.000000000 +0100
+@@ -36,6 +36,7 @@
+ 
+ #include <functional>
+ #include <iterator>
++#include <cstring>
+ 
+ 
+ #include "xercesc/framework/MemoryManager.hpp"
+--- XalanExe.cpp	2008-03-21 12:11:08.000000000 +0100
++++ xalan-c-1.10.0/work/xml-xalan/c/src/xalanc/XalanExe/XalanExe.cpp	2008-03-21 12:11:44.000000000 +0100
+@@ -19,6 +19,7 @@
+ 
+ 
+ #include <cstdlib>
++#include <cstring>
+ #if defined(XALAN_CLASSIC_IOSTREAMS)
+ #include <iostream.h>
+ #else

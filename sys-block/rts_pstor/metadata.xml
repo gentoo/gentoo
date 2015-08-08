@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>vikraman@gentoo.org</email>
+		<name>Vikraman Choudhury</name>
+	</maintainer>
+	<longdescription lang="en">
+		PCIE RTS5209 card reader driver for Linux.
+	</longdescription>
+</pkgmetadata>
+

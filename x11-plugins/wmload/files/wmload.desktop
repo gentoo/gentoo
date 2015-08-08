@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WmLoad
+Comment=Simple network monitor
+Comment[pl]=Prosty monitor sieci
+Exec=wmload
+Type=Application
+Terminal=false
+Categories=System;

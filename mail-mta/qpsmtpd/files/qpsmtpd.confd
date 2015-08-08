@@ -1,0 +1,25 @@
+# Config file for /etc/init.d/qpsmtpd
+#
+
+QPSMTPD_CONFIG="/etc/qpsmtpd"
+QPSMTPD_NICELEVEL="0"
+
+# Select QPSMTPD server type
+#  - async
+#    Not all plugins work without problems with the async mode.
+#  - forkserver (default)
+#  - prefork
+#    Does not work 100%. Use at your own risk.
+QPSMTPD_SERVER_TYPE="forkserver"
+
+# QPSMTPD options. This can be different depending on
+# what QPSMTPD server you run.
+#
+# Typical forkserver
+QPSMTPD_OPTIONS="-l 0.0.0.0 -p 25 -u smtpd"
+#
+# Typical prefork
+# QPSMTPD_OPTIONS="--interface 0.0.0.0 --port 25 --user smtpd"
+#
+# Typical async
+# QPSMTPD_OPTIONS="-l 0.0.0.0 -p 25 -u smtpd"

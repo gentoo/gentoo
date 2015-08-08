@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>media-tv</herd>
+<herd>proxy-maintainers</herd>
+
+<maintainer>
+<email>christian.gmeiner@gmail.com</email>
+<name>Christian Gmeiner</name>
+<description>Proxied maintainer</description>
+</maintainer>
+
+<maintainer>
+<email>vdr@gentoo.org</email>
+<name>Gentoo VDR Project</name>
+<description>Proxying maintainer</description>
+</maintainer>
+
+</pkgmetadata>
+

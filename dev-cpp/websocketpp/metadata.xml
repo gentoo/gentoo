@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
+	<use>
+    	<flag name="boost">Use <pkg>dev-libs/boost</pkg> instead of C++11</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zaphoyd/websocketpp</remote-id>
+	</upstream>
+</pkgmetadata>
+

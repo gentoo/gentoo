@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sound</herd>
+  <use>
+    <flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">mp3blaster</remote-id>
+  </upstream>
+</pkgmetadata>

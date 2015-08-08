@@ -1,0 +1,13 @@
+Index: xrmap-2.33/Makefile.noimake
+===================================================================
+--- xrmap-2.33.orig/Makefile.noimake
++++ xrmap-2.33/Makefile.noimake
+@@ -20,7 +20,7 @@ LDOPTIONS=-O6 -g -Wall  -lXpm -lX11 -ljp
+ ## LDOPTIONS=-O6 -g -Wall libxpm/libXpm.a -lX11 -lz -lm -L/usr/X11R6/lib
+ 
+ all: explorer.o image.o xrmap.o
+-	gcc $(LDOPTIONS) -o xrmap explorer.o image.o xrmap.o
++	gcc -o xrmap explorer.o image.o xrmap.o $(LDOPTIONS)
+ 	cd editkit ; make -f Makefile.kit DESTDIR=$(DESTDIR)
+ 	cd earthview ; make DESTDIR=$(DESTDIR)	
+ 	@cat EXTRADATA

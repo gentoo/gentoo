@@ -1,0 +1,18 @@
+ lemon/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lemon/CMakeLists.txt b/lemon/CMakeLists.txt
+index 8011833..0209acf 100644
+--- a/lemon/CMakeLists.txt
++++ b/lemon/CMakeLists.txt
+@@ -61,8 +61,8 @@ ENDIF()
+ 
+ INSTALL(
+   TARGETS lemon
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib
++  ARCHIVE DESTINATION lib${LIB_SUFFIX}
++  LIBRARY DESTINATION lib${LIB_SUFFIX}
+   COMPONENT library
+ )
+ 

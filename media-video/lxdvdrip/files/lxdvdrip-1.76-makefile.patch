@@ -1,0 +1,28 @@
+Index: lxdvdrip/Makefile
+===================================================================
+--- lxdvdrip.orig/Makefile
++++ lxdvdrip/Makefile
+@@ -3,13 +3,16 @@ HINWEIS0 = 'Bitte Konfigdatei in /etc mi
+ HINWEIS1 = 'Check the configuration file in /etc with the Changelog'
+ HINWEIS2 = 'Comparez le fichier de config. en /etc avec le Changelog'
+ 
+-all:
+-	gcc -g -lm -ldvdread -lpthread -o lxdvdrip lxdvdrip.c streamanalyze.c ifo.c dvdinfo.c dvdbackup.c dvdcell.c systools.c vaporize.c dvdtools.c dvdcopy.c requant.c cputest.c tcmemcpy.c dvdformat.c badsect.c mpeg2dec.c
+-	gcc -g -lm -o lxac3scan lxac3scan.c
+-	cd vamps && make && cd ..
+-	cd dvdbackup && make && cd ..
+-	cd requant && make && cd ..
+-	cd buffer && make && cd ..
++LXDVDRIP_SOURCES = lxdvdrip.c streamanalyze.c ifo.c dvdinfo.c dvdbackup.c dvdcell.c systools.c vaporize.c dvdtools.c dvdcopy.c requant.c cputest.c tcmemcpy.c dvdformat.c badsect.c mpeg2dec.c
++LXDVDRIP_OBJS = $(LXDVDRIP_SOURCES:%.c=%.o)
++
++all: lxdvdrip lxac3scan
++
++lxdvdrip: $(LXDVDRIP_OBJS)
++	$(CC) $(LDFLAGS) -o $@ $^ -lm -ldvdread -lpthread
++
++lxac3scan: lxac3scan.o
++	$(CC) $(LDFLAGS) -o $@ $^ -lm
+ 
+ clean: 
+ 	rm -f lxdvdrip lxac3scan *.o

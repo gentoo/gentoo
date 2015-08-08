@@ -1,0 +1,14 @@
+Index: cmix-1.6/Makefile
+===================================================================
+--- cmix-1.6.orig/Makefile
++++ cmix-1.6/Makefile
+@@ -3,8 +3,7 @@ CC=gcc
+ #CFLAGS=-Wall -O2
+ 
+ cmix: mix.c
+-	$(CC) $(CFLAGS) mix.c -o $@
+-	strip $@
++	$(CC) $(CFLAGS) $(LDFLAGS) mix.c -o $@
+ 
+ install: 
+ 

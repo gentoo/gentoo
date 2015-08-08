@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>openstack</herd>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+    Python bindings to the OpenStack Object Storage API
+  </longdescription>
+	<upstream>
+		<remote-id type="pypi">python-swiftclient</remote-id>
+		<remote-id type="launchpad">python-swiftclient</remote-id>
+	</upstream>
+</pkgmetadata>

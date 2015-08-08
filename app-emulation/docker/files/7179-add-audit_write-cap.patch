@@ -1,0 +1,29 @@
+From 29ecc95c31ecfe15e3b3d8db94cea1c555e526a3 Mon Sep 17 00:00:00 2001
+From: Alexandr Morozov <lk4d4math@gmail.com>
+Date: Wed, 23 Jul 2014 09:57:41 +0400
+Subject: [PATCH] Add AUDIT_WRITE cap
+
+Fixes #6345
+
+Thanks @larsks for outstanding investigation
+
+Docker-DCO-1.1-Signed-off-by: Alexandr Morozov <lk4d4math@gmail.com> (github: LK4D4)
+---
+ daemon/execdriver/native/template/default_template.go | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/daemon/execdriver/native/template/default_template.go b/daemon/execdriver/native/template/default_template.go
+index cc5cc4f..be3dd5a 100644
+--- a/daemon/execdriver/native/template/default_template.go
++++ b/daemon/execdriver/native/template/default_template.go
+@@ -23,6 +23,7 @@ func New() *libcontainer.Config {
+ 			"NET_BIND_SERVICE",
+ 			"SYS_CHROOT",
+ 			"KILL",
++			"AUDIT_WRITE",
+ 		},
+ 		Namespaces: map[string]bool{
+ 			"NEWNS":  true,
+-- 
+2.0.3
+

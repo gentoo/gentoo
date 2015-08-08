@@ -1,0 +1,60 @@
+ Scribus.pro            |    4 ----
+ scribus/CMakeLists.txt |    2 --
+ 2 files changed, 0 insertions(+), 6 deletions(-)
+
+diff --git a/Scribus.pro b/Scribus.pro
+index 17b5417..0cc23c9 100644
+--- a/Scribus.pro
++++ b/Scribus.pro
+@@ -276,7 +276,6 @@ HEADERS += scribus/about.h \
+            scribus/insertaframe.h \
+            scribus/insertTable.h \
+            scribus/inspage.h \
+-           scribus/ioapi.h \
+            scribus/javadocs.h \
+            scribus/KarbonCurveFit.h \
+            scribus/langmgr.h \
+@@ -496,7 +495,6 @@ HEADERS += scribus/about.h \
+            scribus/undostate.h \
+            scribus/unicodesearch.h \
+            scribus/units.h \
+-           scribus/unzip.h \
+            scribus/updatemanager.h \
+            scribus/upgradechecker.h \
+            scribus/urllauncher.h \
+@@ -933,7 +931,6 @@ SOURCES += scribus/about.cpp \
+            scribus/insertaframe.cpp \
+            scribus/insertTable.cpp \
+            scribus/inspage.cpp \
+-           scribus/ioapi.c \
+            scribus/javadocs.cpp \
+            scribus/KarbonCurveFit.cpp \
+            scribus/langmgr.cpp \
+@@ -1143,7 +1140,6 @@ SOURCES += scribus/about.cpp \
+            scribus/undostate.cpp \
+            scribus/unicodesearch.cpp \
+            scribus/units.cpp \
+-           scribus/unzip.c \
+            scribus/updatemanager.cpp \
+            scribus/upgradechecker.cpp \
+            scribus/urllauncher.cpp \
+diff --git a/scribus/CMakeLists.txt b/scribus/CMakeLists.txt
+index dcd7e10..3aca69b 100644
+--- a/scribus/CMakeLists.txt
++++ b/scribus/CMakeLists.txt
+@@ -405,7 +405,6 @@ SET(SCRIBUS_SOURCES
+   insertTable.cpp
+   insertaframe.cpp
+   inspage.cpp
+-  ioapi.c
+   javadocs.cpp
+   KarbonCurveFit.cpp
+   langmgr.cpp
+@@ -613,7 +612,6 @@ SET(SCRIBUS_SOURCES
+   undostate.cpp
+   unicodesearch.cpp
+   units.cpp
+-  unzip.c
+   updatemanager.cpp
+   upgradechecker.cpp
+   urllauncher.cpp

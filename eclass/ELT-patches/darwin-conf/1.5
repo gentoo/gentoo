@@ -1,0 +1,24 @@
+In Gentoo Prefix we go by Apple's convention to give modules the .bundle
+extension.
+http://developer.apple.com/documentation/DeveloperTools/Conceptual/XcodeBuildSystem/500-Linking/bs_linking.html
+(Above link was removed by Apple, the link below contains a copy:
+http://disanji.net/iOS_Doc/#documentation/DeveloperTools/Conceptual/XcodeBuildSystem/500-Linking/bs_linking.html,
+in case it disappears also, the relevant quote:
+
+Bundle. Bundles are executable files that can be loaded at runtime by
+other products. Plug-ins are implemented using bundles. The term bundle
+in this context refers to the binary itself, not to a structured
+hierarchy. Bundles have the .bundle extension; for example,
+MyBundle.bundle.)
+
+--- configure.orig	2009-05-22 12:05:31 +0200
++++ configure	2009-05-22 12:05:39 +0200
+@@ -15461,7 +15461,7 @@
+   soname_spec='${libname}${release}${major}$shared_ext'
+   shlibpath_overrides_runpath=yes
+   shlibpath_var=DYLD_LIBRARY_PATH
+-  shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
++  shrext_cmds='`test .$module = .yes && echo .bundle || echo .dylib`'
+   # Apple's gcc prints 'gcc -print-search-dirs' doesn't operate the same.
+   if test "$GCC" = yes; then
+     sys_lib_search_path_spec=`$CC -print-search-dirs | tr "\n" "$PATH_SEPARATOR" | sed -e 's/libraries:/@libraries:/' | tr "@" "\n" | grep "^libraries:" | sed -e "s/^libraries://" -e "s,=/,/,g" -e "s,$PATH_SEPARATOR, ,g" -e "s,.*,& /lib /usr/lib /usr/local/lib,g"`

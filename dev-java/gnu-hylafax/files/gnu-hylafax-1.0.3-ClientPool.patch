@@ -1,0 +1,70 @@
+--- gnu-hylafax-pool/main/java/gnu/hylafax/pool/ClientPool.java.orig	2015-04-14 18:20:17.113435400 +0000
++++ gnu-hylafax-pool/main/java/gnu/hylafax/pool/ClientPool.java	2015-04-14 18:20:58.310438791 +0000
+@@ -32,7 +32,7 @@
+ import org.apache.commons.logging.Log;
+ import org.apache.commons.logging.LogFactory;
+ 
+-import EDU.oswego.cs.dl.util.concurrent.LinkedQueue;
++import java.util.concurrent.ConcurrentLinkedQueue;
+ 
+ public class ClientPool implements gnu.hylafax.ClientPool {
+ 
+@@ -42,7 +42,7 @@
+ 
+     private HashMap clientMap;
+ 
+-    private LinkedQueue clients;
++    private ConcurrentLinkedQueue clients;
+ 
+     private ClientPoolConfiguration configuration;
+ 
+@@ -66,7 +66,7 @@
+ 
+     public ClientPool(ClientPoolConfiguration configuration) {
+ 	this.configuration = configuration;
+-	clients = new LinkedQueue();
++	clients = new ConcurrentLinkedQueue();
+ 	clientMap = new HashMap();
+ 	workingClients = new HashSet();
+ 	workingClientsToClose = new HashSet();
+@@ -163,8 +163,7 @@
+ 			    blocked = true;
+ 			}
+ 
+-			client = (PooledClient) clients.poll(getConfiguration()
+-				.getRetryInterval());
++			client = (PooledClient) clients.poll();
+ 			if (client == null)
+ 			    log.warn("No Clients Available.");
+ 			else if (!clientAdded)
+@@ -172,10 +171,10 @@
+ 		    }
+ 
+ 		} else {
+-		    client = (PooledClient) clients.take();
++		    client = (PooledClient) clients.poll();
+ 		}
+ 	    }
+-	} catch (InterruptedException e) {
++	} catch (Exception e) {
+ 	    throw new ClientPoolException(
+ 		    "Interrupted Thread and No Free Connection Available.");
+ 	}
+@@ -294,7 +293,7 @@
+ 		    destroyClient(client);
+ 		    addClient();
+ 		} else {
+-		    clients.put(client);
++		    clients.offer(client);
+ 		    size++;
+ 		}
+ 	    }
+@@ -306,7 +305,7 @@
+ 
+ 	    log.debug("Released Client.");
+ 
+-	} catch (InterruptedException e) {
++	} catch (Exception e) {
+ 	    log.warn("Was Interrupted.", e);
+ 	    destroyClient(client);
+ 	} finally {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+ZMap is an open-source network scanner that enables researchers to easily 
+perform Internet-wide network studies. With a single machine and a well 
+provisioned network uplink, ZMap is capable of performing a complete scan of 
+the IPv4 address space in under 45 minutes, approaching the theoretical limit 
+of gigabit Ethernet.
+
+ZMap can be used to study protocol adoption over time, monitor service 
+availability, and help us better understand large systems distributed 
+across the Internet.
+</longdescription>
+  <use>
+    <flag name="redis">
+		Add support for storing in a redis DB via <pkg>dev-libs/hiredis</pkg>
+	</flag>
+    <flag name="json">Add support to store results JSON based</flag>
+  </use>
+</pkgmetadata>

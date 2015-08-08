@@ -1,0 +1,51 @@
+http://bugs.gentoo.org/show_bug.cgi?id=383799#c13
+Upstream: http://www.avasys.jp/cgi-bin/lx/bbs/en/scanner-bbs/hyperbbs.cgi?mode=view;Code=5197
+
+--- lib/pngstream.cc
++++ lib/pngstream.cc
+@@ -76,7 +76,12 @@
+         set_error_handler (_png, _info);
+ 
+         lib->write_flush (_png);
++/* when not interlacing (ie, only one pass), number of rows is image height:  _v_sz */
++#if PNG_LIBPNG_VER > 10499
++        if (!_footer && _v_sz == lib->get_current_row_number(_png))
++#else
+         if (!_footer && _png->num_rows == _png->flush_rows)
++#endif
+           {
+             lib->write_end (_png, _info);
+             _footer = true;
+@@ -161,6 +166,9 @@
+     funcsym (write_row);
+     funcsym (write_flush);
+     funcsym (write_end);
++#if PNG_LIBPNG_VER > 10499
++    funcsym (get_current_row_number);
++#endif
+ 
+     if (lib->access_version_number
+         && lib->create_write_struct
+@@ -170,6 +178,9 @@
+         && lib->set_IHDR
+         && lib->set_pHYs
+         && lib->set_invert_mono
++#if PNG_LIBPNG_VER > 10499
++	&& lib->get_current_row_number
++#endif
+         && lib->write_info
+         && lib->write_row
+         && lib->write_flush
+--- lib/pngstream.hh
++++ lib/pngstream.hh
+@@ -108,6 +108,10 @@
+                png_structp);
+       fundecl (void, write_end,
+                png_structp, png_infop);
++#if PNG_LIBPNG_VER > 10499
++      fundecl (png_uint_32, get_current_row_number,
++               png_structp);
++#endif
+ #endif /* HAVE_PNG_H */
+     };
+     static png_lib_handle *lib;

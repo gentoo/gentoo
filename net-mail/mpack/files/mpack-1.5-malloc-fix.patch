@@ -1,0 +1,33 @@
+--- mpack/xmalloc.c	2005-03-11 10:51:39.000000000 +0100
++++ mpack/xmalloc.c	2005-03-11 10:51:39.000000000 +0100
+@@ -24,7 +24,7 @@
+  */
+ #include <stdio.h>
+ #include <string.h>
+-extern char *malloc(), *realloc();
++extern void *malloc(), *realloc();
+ 
+ char *xmalloc (size)
+ int size;
+--- mpack/unixos.c	2005-03-11 10:51:27.000000000 +0100
++++ mpack/unixos.c	2005-03-11 10:51:27.000000000 +0100
+@@ -37,7 +37,7 @@
+ #endif
+ 
+ extern int errno;
+-extern char *malloc();
++extern void *malloc();
+ extern char *getenv();
+ 
+ int overwrite_files = 0;
+--- mpack/unixpk.c	2005-03-11 10:53:22.000000000 +0100
++++ mpack/unixpk.c	2005-03-11 10:53:22.000000000 +0100
+@@ -165,7 +165,7 @@
+ 	    strcpy(fnamebuf, "/tmp");
+ 	}
+ 	strcat(fnamebuf, "/mpackXXXXXX");
+-	mktemp(fnamebuf);
++	mkstemp(fnamebuf);
+ 	outfname = strsave(fnamebuf);
+     }
+ 

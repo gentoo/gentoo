@@ -1,0 +1,77 @@
+commit 7abf37ed186701f0170bded26df8cbb8a99a21e1
+Author: hasufell <hasufell@gentoo.org>
+Date:   Wed Jul 31 03:35:46 2013 +0200
+
+    BUILD: add various cmake options
+    
+    to control building client/server/odalaunch
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f49a1e8..ca01bba 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,15 @@ project(Odamex)
+ cmake_minimum_required(VERSION 2.8)
+ 
+ # cmake modules
++include( CMakeDependentOption )
+ include( GNUInstallDirs )
++
++# options
++option(BUILD_CLIENT "Build client target" 1)
++option(BUILD_SERVER "Build server target" 1)
++option(BUILD_MASTER "Build master server target" 1)
++cmake_dependent_option( BUILD_ODALAUNCH "Build odalaunch target" 1 BUILD_CLIENT 0 )
++cmake_dependent_option( ENABLE_PORTMIDI "Enable portmidi support" 1 BUILD_CLIENT 0 )
+ set(PROJECT_VERSION 0.6.4)
+ set(PROJECT_COPYRIGHT "2006-2013")
+ 
+@@ -56,10 +64,22 @@ endmacro(define_platform)
+ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+ 
+ # Subdirectories for individual projects
+-add_subdirectory(client)
+-add_subdirectory(server)
+-add_subdirectory(master)
+-add_subdirectory(odalaunch)
++if(BUILD_CLIENT)
++	add_subdirectory(client)
++endif()
++if(BUILD_SERVER)
++	add_subdirectory(server)
++endif()
++if(BUILD_MASTER)
++	add_subdirectory(master)
++endif()
++if(BUILD_ODALAUNCH)
++	add_subdirectory(odalaunch)
++endif()
++
++if(NOT BUILD_CLIENT AND NOT BUILD_SERVER AND NOT BUILD_MASTER)
++	message(FATAL_ERROR "No target chosen, doing nothing.")
++endif()
+ 
+ # Disable the ag-odalaunch target completely: -DNO_AG-ODALAUNCH_TARGET
+ # This is only really useful when setting up a universal build.
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index 1fde0ff..9f06fa6 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -48,7 +48,7 @@ endif()
+ 
+ # PortMidi configuration
+ find_package(PortMidi)
+-if(PORTMIDI_FOUND)
++if(PORTMIDI_FOUND AND ENABLE_PORTMIDI)
+   include_directories(${PORTMIDI_INCLUDE_DIR})
+   add_definitions(-DPORTMIDI)
+ else()
+@@ -95,7 +95,7 @@ if(SDL_FOUND AND SDLMIXER_FOUND)
+   target_link_libraries(odamex ${SDL_LIBRARY})
+   target_link_libraries(odamex ${SDLMIXER_LIBRARY})
+ 
+-  if(PORTMIDI_FOUND)
++  if(PORTMIDI_FOUND AND ENABLE_PORTMIDI)
+     target_link_libraries(odamex ${PORTMIDI_LIBRARIES})
+   endif()
+ 

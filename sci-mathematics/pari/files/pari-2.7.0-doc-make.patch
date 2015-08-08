@@ -1,0 +1,89 @@
+diff -Naur pari-2.7.0/config/DOC_Make.SH pari-2.7.0_a/config/DOC_Make.SH
+--- pari-2.7.0/config/DOC_Make.SH	2014-03-20 21:59:28.000000000 +1300
++++ pari-2.7.0_a/config/DOC_Make.SH	2014-05-05 13:20:09.119923587 +1200
+@@ -23,7 +23,8 @@
+ 
+ doc all: develop.dvi libpari.dvi parallel.dvi users.dvi refcard.ps tutorial.dvi
+ docps: develop.ps libpari.ps parallel.ps refcard.ps tutorial.ps users.ps INSTALL.ps
+-docpdf: develop.pdf libpari.pdf parallel.pdf users.pdf tutorial.pdf refcard.pdf INSTALL.pdf
++#docpdf: develop.pdf libpari.pdf parallel.pdf users.pdf tutorial.pdf refcard.pdf INSTALL.pdf
++docpdf: \$(PARI_TEX) \$(MACROS) pass1 pass2 indexing refcard.pdf INSTALL.pdf
+ 
+ .SUFFIXES: .tex .ipf .pod .inf .dumbpod .3 .html
+ 
+@@ -39,38 +40,60 @@
+ %.dvi: %.tex \$(MACROS)
+ 	\$(TEX) \$<
+ 
++pass1: \$(PARI_TEX) \$(USERS_TEX) develop.tex tutorial.tex \$(MACROS)
++	-rm -f *.std
++	pdftex libpari
++	pdftex develop
++	pdftex tutorial
++	pdftex users
++
++pass2: pass1
++	pdftex libpari
++	pdftex develop
++	pdftex tutorial
++	pdftex users
++
++indexing: pass2
++	\$(MAKE) libpari.std
++	\$(MAKE) develop.std
++	\$(MAKE) users.std
++	pdftex libpari
++	pdftex develop
++	pdftex users
++	-rm -f *.std
++
+ libpari.pdf: \$(PARI_TEX) \$(MACROS)
+ 	-rm -f libpari.std
+ 	\$(PDFTEX) libpari
+ 	\$(PDFTEX) libpari
+-	make libpari.std; \$(PDFTEX) libpari; rm -f libpari.std
++	\$(MAKE) libpari.std; \$(PDFTEX) libpari; rm -f libpari.std
+ libpari.dvi: \$(PARI_TEX) \$(MACROS)
+ 	-rm -f libpari.std
+ 	\$(TEX) libpari
+ 	\$(TEX) libpari
+-	make libpari.std; \$(TEX) libpari; rm -f libpari.std
++	\$(MAKE) libpari.std; \$(TEX) libpari; rm -f libpari.std
+ 
+ develop.pdf: develop.tex \$(MACROS)
+ 	-rm -f develop.std
+ 	\$(PDFTEX) develop
+ 	\$(PDFTEX) develop
+-	make develop.std; \$(PDFTEX) develop; rm -f develop.std
++	\$(MAKE) develop.std; \$(PDFTEX) develop; rm -f develop.std
+ develop.dvi: develop.tex \$(MACROS)
+ 	-rm -f develop.std
+ 	\$(TEX) develop
+ 	\$(TEX) develop
+-	make develop.std; \$(TEX) develop; rm -f develop.std
++	\$(MAKE) develop.std; \$(TEX) develop; rm -f develop.std
+ 
+ parallel.pdf: parallel.tex \$(MACROS)
+ 	-rm -f parallel.std
+ 	\$(PDFTEX) parallel
+ 	\$(PDFTEX) parallel
+-	make parallel.std; \$(PDFTEX) parallel; rm -f parallel.std
++	\$(MAKE) parallel.std; \$(PDFTEX) parallel; rm -f parallel.std
+ parallel.dvi: parallel.tex \$(MACROS)
+ 	-rm -f parallel.std
+ 	\$(TEX) parallel
+ 	\$(TEX) parallel
+-	make parallel.std; \$(TEX) parallel; rm -f parallel.std
++	\$(MAKE) parallel.std; \$(TEX) parallel; rm -f parallel.std
+ 
+ tutorial.pdf: tutorial.tex \$(MACROS)
+ 	-rm -f tutorial.std
+@@ -104,7 +127,7 @@
+ 	-rm -f users.std
+ 	\$(PDFTEX) users
+ 	\$(PDFTEX) users
+-	make users.std; \$(PDFTEX) users; rm -f users.std
++	\$(MAKE) users.std; \$(PDFTEX) users; rm -f users.std
+ 
+ gpman: gp.1
+ 	nroff -man gp.1 | unix2dos -ascii > gp.man

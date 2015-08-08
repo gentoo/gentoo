@@ -1,0 +1,257 @@
+--- build.xml.orig	2015-07-05 18:20:19.947000000 +0000
++++ build.xml	2015-07-05 18:20:34.996000000 +0000
+@@ -42,12 +42,20 @@
+ <property name="src" value="."/>
+ <property name="ext" value="ext"/>
+ <property name="ldap" value="ldap"/>
++<property name="jldap" value ="jldap"/>
++
++
+ 
+ <property name="lib" value="lib"/>
+ <property name="lib.debug" value="lib_debug"/>
+ 
+ <property name="build" value="classes"/>
+ <property name="build.debug" value="classes_debug"/>
++<property name="build.testDir" value="tests/junit/"/>
++<property name="build.testOutputDir" value="${build.testDir}/test-classes"/>
++<property name="build.testResourceDir" value="src/test/resources"/>
++
++<property name="test.reports" value="${build}/test-reports"/>
+ 
+ <property name="doc" value="doc"/>
+ <property name="ietfdoc" value="ietfdoc"/>
+@@ -60,6 +68,9 @@
+ <property name="pkg.ietfdoc" value="${pkg}/${ietfdoc}"/>
+ <property name="pkg.wars" value="${pkg}/wars"/>
+ 
++<path id="build.test.classpath">
++</path>
++
+     <!-- =================================================================== -->
+     <!-- Initialization                                                      -->
+     <!-- =================================================================== -->
+@@ -166,12 +177,12 @@
+     <!-- =================================================================== -->
+     <!-- build Servlets                                                       -->
+     <!-- =================================================================== -->
+-    <target name="servlet_stream" depends="debug, release">
++    <target name="servlet_stream" depends="debug">
+         <ant dir="${basedir}/com/novell/services/dsml/stream" target="all">
+             <property name="top" location="."/>
+         </ant>
+     </target>
+-    <target name="servlet_dom" depends="debug, release">
++    <target name="servlet_dom" depends="debug">
+         <ant dir="${basedir}/com/novell/services/dsml/dom" target="all">
+             <property name="top" location="."/>
+         </ant>
+@@ -201,42 +212,152 @@
+     
+     <target name="clone_wars" depends="wars"/>
+ 
++    <!-- Imported from javac.xml -->
++    <!-- START -->
++
+     <!-- =================================================================== -->
+     <!-- build debug classes                                                 -->
+     <!-- =================================================================== -->
+-    <target name="debug" depends="init">
+-        <ant antfile="javac.xml" target="debug">
+-            <property name="DEBUG_VALUE" value="true"/>
+-        </ant>
++    <target name="debug" >
++
++        <echo message="DEBUG compile in com/novell"/>
++        <mkdir dir="${build.debug}"/>
++        <javac
++                srcdir="${src}"
++                includes="com/novell/**/*.java,jldap/com/novell/security/sasl/*.java,org/ietf/**/*.java"
++                excludes="com/novell/services/**/*.java,${exclude.dsmlconnection},${exclude.spmlconnection}"
++                destdir="${build.debug}"
++                target="1.2"
++                deprecation="off"
++                debug="on"
++                optimize="off">
++                <classpath>
++                	<pathelement location="external/ssl/domestic/nssl1.2_dom.jar"/>
++					<pathelement location="external/jsse/lib/jcert.jar"/>
++					<pathelement location="external/jsse/lib/jnet.jar"/>
++					<pathelement location="external/jsse/lib/jsse.jar"/>
++					
++					<!-- Take care of optional components -->
++					<fileset dir="${ext}">
++						<include name="commons-httpclient-*.jar"/>	
++						<include name="openspml*.jar"/>	
++					</fileset>
++                </classpath>
++        </javac>
++
++        <echo message="Creating DEBUG ${lib.debug}/${ldap}.jar file"/>
++        <mkdir dir="${lib.debug}"/>
++        <jar
++            jarfile="${lib.debug}/${ldap}.jar"
++            basedir="${build.debug}"
++        />
+     </target>
+ 
+     <!-- =================================================================== -->
+     <!-- build release classes                                               -->
+     <!-- =================================================================== -->
+-    <target name="release" depends="init">
+-        <ant antfile="javac.xml" target="release">
+-            <property name="DEBUG_VALUE" value="false"/>
+-        </ant>
++    <target name="release">
++
++        <echo message="RELEASE compile in com/novell"/>
++        <mkdir dir="${build}"/>
++        <javac
++                srcdir="."
++                includes="com/novell/**/*.java,jldap/com/novell/security/sasl/*.java,org/ietf/**/*.java"
++                excludes="com/novell/services/**/*.java"
++                destdir="${build}"
++                encoding="UTF-8"
++                target="1.6"
++                source="1.6"
++                deprecation="off"
++                debug="off"
++                optimize="on">
++                <classpath>
++                	<pathelement location="external/ssl/domestic/nssl1.2_dom.jar"/>
++					<pathelement location="external/jsse/lib/jcert.jar"/>
++					<pathelement location="external/jsse/lib/jnet.jar"/>
++					<pathelement location="external/jsse/lib/jsse.jar"/>
++					<pathelement location="external/commons-httpclient-2.0-rc2.jar"/>
++                </classpath>
++        </javac>
++
++        <echo message="Creating RELEASE ${lib}/${ldap}.jar file"/>
++        <mkdir dir="${lib}"/>
++        <jar jarfile="${lib}/${jldap}.jar"
++            basedir="${build}"
++        />
+     </target>
+ 
+-    <!-- =================================================================== -->
+-    <!-- setup for javadoc                                                   -->
+-    <!-- =================================================================== -->
+-    <target name="setupDoc" depends="init">
+-        <ant antfile="javac.xml" target="setupDebug">
+-            <property name="DEBUG_VALUE" value="true"/>
+-        </ant>
++    <!-- ====================================================================== -->
++    <!-- Test-compilation target                                                -->
++    <!-- ====================================================================== -->
++
++    <target name="compile-tests" 
++        description="Compile the test code">
++        <mkdir dir="${build.testOutputDir}"/>
++        <mkdir dir="${build.testResourceDir}"/>
++        <javac destdir="${build.testOutputDir}" 
++            encoding="UTF-8" 
++            nowarn="false" 
++            debug="true" 
++            optimize="false" 
++            deprecation="true" 
++            target="1.6" 
++            verbose="false" 
++            fork="false" 
++            source="1.6">
++            <src>
++                <pathelement location="${build.testDir}"/>
++            </src>
++            <classpath>
++                <path refid="build.test.classpath"/>
++                <pathelement location="${build.outputDir}"/>
++            </classpath>
++        </javac>
++        <copy todir="${build.testOutputDir}">
++            <fileset dir="${build.testResourceDir}"/>
++        </copy>
+     </target>
+ 
+-    <!-- =================================================================== -->
+-    <!-- final is synonym for build release classes                          -->
+-    <!-- =================================================================== -->
+-    <target name="final" depends="release" />
++    <!-- ====================================================================== -->
++    <!-- Run all tests                                                          -->
++    <!-- ====================================================================== -->
++
++    <target name="test" 
++        depends="compile-tests"
++        description="Run the test cases">
++        <mkdir dir="${test.reports}"/>
++        <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
++            <sysproperty key="basedir" value="."/>
++            <formatter type="xml"/>
++            <formatter type="plain" usefile="false"/>
++            <classpath>
++                <path refid="build.test.classpath"/>
++                <pathelement location="${build.outputDir}"/>
++                <pathelement location="${build.testOutputDir}"/>
++            </classpath>
++            <batchtest todir="${test.reports}" unless="test">
++                <fileset dir="${build.testDir}">
++                    <include name="**/Test*.java"/>
++                    <include name="**/*Test.java"/>
++                    <include name="**/*TestCase.java"/>
++                    <exclude name="**/*Abstract*Test.java"/>
++                </fileset>
++            </batchtest>
++            <batchtest todir="${test.reports}" if="test">
++                <fileset dir="${build.testDir}">
++                    <include name="**/${test}.java"/>
++                    <exclude name="**/*Abstract*Test.java"/>
++                </fileset>
++            </batchtest>
++        </junit>
++    </target>
++
++    <!-- END -->
+ 
+     <!-- =================================================================== -->
+     <!-- build lib files                                                     -->
+     <!-- =================================================================== -->
+-    <target name="lib" depends="debug, release"/>
++    <target name="lib" depends="debug"/>
+ 
+     <!-- =================================================================== -->
+     <!-- jar is synonym for build lib files                                  -->
+@@ -284,7 +405,7 @@
+     <!-- =================================================================== -->
+     <!-- create javadoc for Novell ldap classes                              -->
+     <!-- =================================================================== -->
+-    <target name="docnovellldap" depends="init, setupDoc">
++    <target name="docnovellldap" depends="init">
+         <delete dir="${pkg.doc}"/>
+         <echo message="Creating distribution ldap javadoc"/>
+         <mkdir dir="${pkg.doc}"/>
+@@ -305,7 +426,7 @@
+     <!-- =================================================================== -->
+     <!-- create javadoc for IETF ldap classes                                -->
+     <!-- =================================================================== -->
+-    <target name="docietfldap" depends="init, setupDoc">
++    <target name="docietfldap" depends="init">
+         <delete dir="${pkg.ietfdoc}"/>
+         <echo message="Creating distribution ldap javadoc"/>
+         <mkdir dir="${pkg.ietfdoc}"/>
+@@ -326,7 +447,7 @@
+     <!-- =================================================================== -->
+     <!-- create javadoc for all LDAP classes for internal developer use only -->
+     <!-- =================================================================== -->
+-    <target name="docdeveloper" depends="init, setupDoc">
++    <target name="docdeveloper" depends="init">
+         <delete dir="${pkg.developer}"/>
+         <echo message="Creating internal developer ldap javadoc"/>
+         <mkdir dir="${doc.developer}"/>
+@@ -335,6 +456,8 @@
+             destdir="${doc.developer}"
+             classpath="${lib.debug}/${ldap}.jar;external/jsse/lib/jcert.jar;external/jsse/lib/jnet.jar;external/jsse/lib/jsse.jar;external/jaxp/jaxp.jar;external/jaxp/xerces.jar"
+             packagenames="org.ietf.ldap,com.novell.security.sasl,com.novell.sasl.client,com.novell.ldap.asn1,com.novell.ldap.client,com.novell.ldap.rfc2251,com.novell.ldap.resources,com.novell.ldap.extensions,com.novell.ldap.controls,com.novell.ldap.util,com.novell.ldap"
++            encoding="UTF-8"
++            failonerror="no"
+             Windowtitle="LDAP Classes"
+             Splitindex="true"
+             Private="true"

@@ -1,0 +1,17 @@
+Fails in UTF-8 locales with grep-2.6
+
+https://bugs.gentoo.org/322151
+https://savannah.gnu.org/bugs/index.php?31068
+
+--- a/makeinfo/tests/accentenc
++++ b/makeinfo/tests/accentenc
+@@ -1,7 +1,8 @@
+ #!/bin/sh
+ # Test encoded accent info output.
+ 
+-unset TEXINFO_OUTPUT
++unset TEXINFO_OUTPUT LANG LANGUAGE
++LC_ALL=POSIX; export LC_ALL
+ : ${srcdir=.}
+ input=`basename $0`.txi
+ output=`basename $0`.info

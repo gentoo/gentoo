@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+    Numdisplay provides the capability to visualize numarray array objects
+    using astronomical image display tools such as DS9 or XIMTOOL
+    directly from the Python command line.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">CGI-Simple</remote-id>
+    <remote-id type="cpan-module">CGI::Simple</remote-id>
+    <remote-id type="cpan-module">CGI::Simple::Cookie</remote-id>
+    <remote-id type="cpan-module">CGI::Simple::Standard</remote-id>
+    <remote-id type="cpan-module">CGI::Simple::Util</remote-id>
+  </upstream>
+</pkgmetadata>

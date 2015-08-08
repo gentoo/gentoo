@@ -1,0 +1,121 @@
+#!/sbin/runscript
+
+extra_started_commands="reload slow fast info"
+
+MLDONKEY_BINARY=${MLDONKEY_BINARY:-/usr/bin/mlnet}
+MLDONKEY_TIMEOUT=${TIMEOUT:-10}
+
+depend() {
+	need localmount net
+	${USE_LOGGER} && use logger
+}
+
+start() {
+	if [ -z "${MLDONKEY_DIR}" ]; then
+		ewarn "mldonkey's start script has been changed. You should remove"
+		ewarn "BASEDIR and SUBDIR from /etc/conf.d/mldonkey and set MLDONKEY_DIR"
+		ewarn "to the correct value (you probably want"
+		ewarn "MLDONKEY_DIR=${BASEDIR}/${SUBDIR})"
+		MLDONKEY_DIR="${BASEDIR}/${SUBDIR}"
+		einfo "Using ${MLDONKEY_DIR} as working directory"
+	fi
+
+	if [ ! -d "${MLDONKEY_DIR}" ]; then
+		ebegin "Directory ${MLDONKEY_DIR} not existing, trying to create..."
+		mkdir -p "${MLDONKEY_DIR}" && chown ${USER}:users "${MLDONKEY_DIR}"
+		eend $? || return 1
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	cd "${MLDONKEY_DIR}"
+	export MLDONKEY_DIR
+	start-stop-daemon --start --user "${USER}" --nice "${NICE}" \
+		--exec "${MLDONKEY_BINARY}" --pidfile /var/run/"${SVCNAME}".pid \
+		--background --make-pidfile
+	eend $?
+}
+
+setup_uri() {
+	BASE="http://"
+	if [ -n "${USERNAME}" -a -n "${PASSWORD}" ]; then
+		BASE="${BASE}${USERNAME}:${PASSWORD}@"
+	fi
+	BASE="${BASE}${SERVER}:${PORT}"
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME} -- please wait"
+
+	setup_uri
+	wget --spider --timeout="${MLDONKEY_TIMEOUT}" "${BASE}"/submit?q=close_fds -q
+	wget --spider --timeout="${MLDONKEY_TIMEOUT}" "${BASE}"/submit?q=save -q
+	wget --spider --timeout="${MLDONKEY_TIMEOUT}" "${BASE}"/submit?q=kill -q
+
+	# give it a chance to die:
+	local timeout=${MLDONKEY_TIMEOUT}
+	while [ $timeout -gt 0 ]; do
+		if ! start-stop-daemon --test --quiet --stop \
+			--exec "${MLDONKEY_BINARY}" \
+			--pidfile /var/run/"${SVCNAME}".pid ; then
+			eend 0
+			return 0
+		fi
+		sleep 1
+		timeout=$((${timeout} - 1))
+	done
+
+	eend 1 "Failed to cleanly stop ${SVCNAME}"
+	ebegin "Forcing ${SVCNAME} to stop"
+	start-stop-daemon --stop --exec "${MLDONKEY_BINARY}" \
+		--pidfile /var/run/"${SVCNAME}".pid
+	eend $?
+}
+
+# This doesn't work for baselayout-2
+restart() {
+	svc_stop
+	sleep 5
+	svc_start
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --stop --signal HUP --oknodo \
+		--exec "${MLDONKEY_BINARY}" --pidfile /var/run/"${SVCNAME}".pid
+	eend $?
+}
+
+slow() {
+	ebegin "Reducing bandwidth to ${LOW_DOWN}k/${LOW_UP}k"
+	setup_uri
+	wget --spider --timeout="${MLDONKEY_TIMEOUT}" \
+		"${BASE}/submit?q=set+max_hard_download_rate+${LOW_DOWN}" -q
+	wget --spider --timeout=${MLDONKEY_TIMEOUT} \
+		"${BASE}/submit?q=set+max_hard_upload_rate+${LOW_UP}" -q
+	eend $?
+}
+
+fast() {
+	ebegin "Increasing bandwidth to ${HIGH_DOWN}k/${HIGH_UP}k"
+
+	setup_uri
+	wget --spider --timeout="${MLDONKEY_TIMEOUT}" \
+		"${BASE}/submit?q=set+max_hard_upload_rate+${HIGH_UP}" -q
+	wget --spider --timeout="${MLDONKEY_TIMEOUT}" \
+		"${BASE}/submit?q=set+max_hard_download_rate+${HIGH_DOWN}" -q
+	eend $?
+}
+
+
+info() {
+	setup_uri
+	local result=$(wget --timeout="${MLDONKEY_TIMEOUT}" \
+		-O - "${BASE}"/submit?q=vo 2>/dev/null | \
+		grep -C1 max_hard_upload | \
+		grep value=\" | cut -d\" -f2)
+	if [ "${result}" = "${LOW_UP}" ]; then
+		einfo "${SVCNAME} runs slow"
+	else
+		einfo "${SVCNAME} runs fast"
+	fi
+}

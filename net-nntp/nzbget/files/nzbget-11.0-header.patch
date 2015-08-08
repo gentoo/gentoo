@@ -1,0 +1,10 @@
+--- nzbget-11.0/ParCoordinator.cpp
++++ nzbget-11.0/ParCoordinator.cpp
+@@ -35,6 +35,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <ctype.h>
+ #ifdef WIN32
+ #include <direct.h>
+ #else

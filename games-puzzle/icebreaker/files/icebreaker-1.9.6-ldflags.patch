@@ -1,0 +1,28 @@
+--- Makefile.orig	2010-10-11 12:20:01.274684641 -0400
++++ Makefile	2010-10-11 12:22:02.256897083 -0400
+@@ -1,5 +1,3 @@
+-CC=gcc
+-
+ SDLCONFIG=sdl-config
+ 
+ ifndef prefix
+@@ -177,7 +175,7 @@
+ 	[ -d win32.build ] && rm -rf win32.build || true
+ 
+ icebreaker:	$(SRC:.c=.o)
+-	$(CC) $(CFLAGS) $^ -o icebreaker $(SDL_LIB)
++	$(CC) $(LDFLAGS) $(CFLAGS) $^ -o icebreaker $(SDL_LIB)
+ 
+ man: icebreaker.6
+ 
+@@ -202,8 +200,8 @@
+ 	install -m 644 *.wav *.bmp $(datadir)/icebreaker
+ 
+ install-bin: icebreaker
+-	install -s -g games -m 2755 icebreaker $(bindir) || \
+-	  install -s -m 755 icebreaker $(bindir)
++	install -g games -m 2755 icebreaker $(bindir) || \
++	  install -m 755 icebreaker $(bindir)
+ 	@test -g $(bindir)/icebreaker || \
+ 	  echo -e '*** Note: icebreaker binary not installed set-group-ID "games" -- shared\n*** highscores may be impossible. (Try installing as root.)'
+ 

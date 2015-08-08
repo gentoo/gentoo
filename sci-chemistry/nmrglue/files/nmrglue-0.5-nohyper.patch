@@ -1,0 +1,33 @@
+From ba1eee9e71623110511545c058afe2a92e139aa5 Mon Sep 17 00:00:00 2001
+From: Jonathan Helmus <jjhelmus@gmail.com>
+Date: Tue, 3 Mar 2015 19:47:05 -0600
+Subject: [PATCH] pipe_proc.py tp function correctly sets FDSIZE.
+
+Fixes issue #27
+---
+ nmrglue/process/pipe_proc.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/nmrglue/process/pipe_proc.py b/nmrglue/process/pipe_proc.py
+index 79b6303..8c1271c 100644
+--- a/nmrglue/process/pipe_proc.py
++++ b/nmrglue/process/pipe_proc.py
+@@ -1527,13 +1527,16 @@ def tp(dic, data, hyper=False, nohyper=False, auto=False, nohdr=False):
+         data = np.array(p.tp_hyper(data), dtype="complex64")
+     else:
+         data = p.tp(data)
+-        if dic[fn2 + "QUADFLAG"] != 1 and nohyper is not True:
++        if dic[fn2 + "QUADFLAG"] != 1 and nohyper is False:
+             # unpack complex as needed
+             data = np.array(p.c2ri(data), dtype="complex64")
+ 
+     # update the dimentionality and order
+     dic["FDSLICECOUNT"] = data.shape[0]
+-    if data.dtype == 'float32':
++    if (data.dtype == 'float32') and (nohyper is True):
++        # when nohyper is True and the new last dimension was complex
++        # prior to transposing then FDSIZE is set as if the dimension was
++        # converted to complex data, that is half the actual size.
+         dic["FDSIZE"] = data.shape[1] / 2
+     else:
+         dic["FDSIZE"] = data.shape[1]

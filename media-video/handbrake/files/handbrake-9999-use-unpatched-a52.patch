@@ -1,0 +1,26 @@
+https://github.com/rbrito/pkg-handbrake/blob/master/debian/patches/0014-Use-unpatched-a52.patch
+
+Author: Reinhard Tartler <siretart@tauware.de>
+Description: Use unpatched a52
+
+In upstream liba52, the state field is private.
+
+Forwarded: no
+--- a/libhb/deca52.c
++++ b/libhb/deca52.c
+@@ -387,12 +387,15 @@ static hb_buffer_t* Decode(hb_work_objec
+                                                  pv->channel_layout,
+                                                  pv->nchannels);
+         }
++#if 0
++        // FIXME: debian uses an unpatched liba52
+         if (pv->use_mix_levels)
+         {
+             hb_audio_resample_set_mix_levels(pv->resample,
+                                              (double)pv->state->slev,
+                                              (double)pv->state->clev);
+         }
++#endif
+         if (hb_audio_resample_update(pv->resample))
+         {
+             hb_log("deca52: hb_audio_resample_update() failed");

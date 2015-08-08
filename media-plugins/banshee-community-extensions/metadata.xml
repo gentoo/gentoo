@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>dotnet</herd>
+  <herd>gstreamer</herd>
+  <use>
+	  <flag name="lastfmfingerprint">Enable support to ientify your
+	  music automatically, using the Last.fm online service.</flag>
+	  <flag name="lirc">Enable the remote control plugin (uses
+		  <pkg>app-misc/lirc</pkg>)</flag>
+	  <flag name="lyrics">Enable support for automatically fetching
+		  lyrics</flag>
+	  <flag name="mirage">Enable the Mirage plugin which automatically, and
+		  intelligently generates playlists for you</flag>
+	  <flag name="telepathy">Enables the Telepathy plugin which lets you to
+		  share and stream music with IM buddies</flag>
+	  <flag name="zeitgeist">Build the plugin to inject events to <pkg>gnome-extra/zeitgeist</pkg></flag>
+  </use>
+</pkgmetadata>

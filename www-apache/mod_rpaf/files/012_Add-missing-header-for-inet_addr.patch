@@ -1,0 +1,17 @@
+Description: Add missing header for inet_addr
+Author: Sergey B Kirpichev <skirpichev@gmail.com>
+
+---
+ mod_rpaf-2.0.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/mod_rpaf-2.0.c
++++ b/mod_rpaf-2.0.c
+@@ -64,6 +64,7 @@
+  * 
+  */ 
+ 
++#include <arpa/inet.h>
+ #include "httpd.h"
+ #include "http_config.h"
+ #include "http_core.h"

@@ -1,0 +1,76 @@
+--- openssl-1.0.0r/Configure
++++ openssl-1.0.0r/Configure
+@@ -353,6 +353,7 @@ my %table=(
+ "linux-ia64-ecc","ecc:-DL_ENDIAN -DTERMIO -O2 -Wall -no_cpprt::-D_REENTRANT::-ldl:SIXTY_FOUR_BIT_LONG RC4_CHUNK DES_INT:${ia64_asm}:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+ "linux-ia64-icc","icc:-DL_ENDIAN -DTERMIO -O2 -Wall -no_cpprt::-D_REENTRANT::-ldl:SIXTY_FOUR_BIT_LONG RC4_CHUNK DES_RISC1 DES_INT:${ia64_asm}:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+ "linux-x86_64",	"gcc:-m64 -DL_ENDIAN -DTERMIO -O3 -Wall -DMD32_REG_T=int::-D_REENTRANT::-ldl:SIXTY_FOUR_BIT_LONG RC4_CHUNK DES_INT DES_UNROLL:${x86_64_asm}:elf:dlfcn:linux-shared:-fPIC:-m64:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::64",
++"linux-x32",	"gcc:-DL_ENDIAN 	-DTERMIO -O2 -pipe -g -feliminate-unused-debug-types -Wall::-D_REENTRANT::-ldl:SIXTY_FOUR_BIT RC4_CHUNK DES_INT DES_UNROLL:${x86_64_asm}:elf:dlfcn:linux-shared:-fPIC:-mx32:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+ "linux-s390x",	"gcc:-m64 -DB_ENDIAN -DTERMIO -O3 -Wall::-D_REENTRANT::-ldl:SIXTY_FOUR_BIT_LONG RC4_CHAR RC4_CHUNK DES_INT DES_UNROLL:${s390x_asm}:dlfcn:linux-shared:-fPIC:-m64:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::64",
+ #### SPARC Linux setups
+ # Ray Miller <ray.miller@computing-services.oxford.ac.uk> has patiently
+--- openssl-1.0.0r/crypto/bn/asm/x86_64-gcc.c
++++ openssl-1.0.0r/crypto/bn/asm/x86_64-gcc.c
+@@ -55,7 +55,7 @@
+  *    machine.
+  */
+ 
+-# ifdef _WIN64
++# if defined _WIN64 || !defined __LP64__
+ #  define BN_ULONG unsigned long long
+ # else
+ #  define BN_ULONG unsigned long
+@@ -211,9 +211,9 @@ BN_ULONG bn_add_words(BN_ULONG *rp, cons
+ 
+     asm volatile ("       subq    %2,%2           \n"
+                   ".p2align 4                     \n"
+-                  "1:     movq    (%4,%2,8),%0    \n"
+-                  "       adcq    (%5,%2,8),%0    \n"
+-                  "       movq    %0,(%3,%2,8)    \n"
++                  "1:     movq    (%q4,%2,8),%0   \n"
++                  "       adcq    (%q5,%2,8),%0   \n"
++                  "       movq    %0,(%q3,%2,8)   \n"
+                   "       leaq    1(%2),%2        \n"
+                   "       loop    1b              \n"
+                   "       sbbq    %0,%0           \n":"=&a" (ret), "+c"(n),
+@@ -235,9 +235,9 @@ BN_ULONG bn_sub_words(BN_ULONG *rp, cons
+ 
+     asm volatile ("       subq    %2,%2           \n"
+                   ".p2align 4                     \n"
+-                  "1:     movq    (%4,%2,8),%0    \n"
+-                  "       sbbq    (%5,%2,8),%0    \n"
+-                  "       movq    %0,(%3,%2,8)    \n"
++                  "1:     movq    (%q4,%2,8),%0   \n"
++                  "       sbbq    (%q5,%2,8),%0   \n"
++                  "       movq    %0,(%q3,%2,8)   \n"
+                   "       leaq    1(%2),%2        \n"
+                   "       loop    1b              \n"
+                   "       sbbq    %0,%0           \n":"=&a" (ret), "+c"(n),
+--- openssl-1.0.0r/crypto/bn/bn_exp.c
++++ openssl-1.0.0r/crypto/bn/bn_exp.c
+@@ -564,7 +564,7 @@ static int MOD_EXP_CTIME_COPY_FROM_PREBU
+  * multiple.
+  */
+ #define MOD_EXP_CTIME_ALIGN(x_) \
+-        ((unsigned char*)(x_) + (MOD_EXP_CTIME_MIN_CACHE_LINE_WIDTH - (((BN_ULONG)(x_)) & (MOD_EXP_CTIME_MIN_CACHE_LINE_MASK))))
++        ((unsigned char*)(x_) + (MOD_EXP_CTIME_MIN_CACHE_LINE_WIDTH - (((BN_ADDR)(x_)) & (MOD_EXP_CTIME_MIN_CACHE_LINE_MASK))))
+ 
+ /*
+  * This variant of BN_mod_exp_mont() uses fixed windows and the special
+--- openssl-1.0.0r/crypto/bn/bn.h
++++ openssl-1.0.0r/crypto/bn/bn.h
+@@ -174,6 +174,15 @@ extern "C" {
+ # endif
+ 
+ /*
++ * Address type.
++ */
++#ifdef _WIN64
++#define BN_ADDR unsigned long long
++#else
++#define BN_ADDR unsigned long
++#endif
++
++/*
+  * assuming long is 64bit - this is the DEC Alpha unsigned long long is only
+  * 64 bits :-(, don't define BN_LLONG for the DEC Alpha
+  */

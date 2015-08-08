@@ -1,0 +1,10 @@
+--- Csound5.17.11/frontends/CsoundAC/CMakeLists.txt
++++ Csound5.17.11/frontends/CsoundAC/CMakeLists.txt
+@@ -29,7 +29,6 @@
+ 	allegrowr.cpp
+ 	Cell.cpp
+ 	ChordLindenmayer.cpp
+-	cmake_install.cmake
+ 	Composition.cpp
+ 	Conversions.cpp
+ 	Counterpoint.cpp

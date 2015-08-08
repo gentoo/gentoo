@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+	  <email>i92guboj@gentoo.org</email>
+	  <description>Proxied committer, assign bugs</description>
+  </maintainer>
+  <longdescription lang="en">
+		fvwm is an ICCCM-compliant X window manager providing a 3D look for
+		window decorations, multiple discontiguous virtual desktops, a high
+		degree of configurability, and an external module interface for
+		implementing functional extensions.
+	</longdescription>
+  <use>
+    <flag name="gtk2-perl">Enable GTK2 Perl bindings</flag>
+    <flag name="lock">Enable screen locking</flag>
+    <flag name="netpbm">Enable NetPBM support (used by FvwmScript-ScreenDump)</flag>
+    <flag name="rplay">Enable rplay support</flag>
+    <flag name="stroke">Mouse Gesture support</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,70 @@
+--- fingerprint-gui-1.04/src/UserSettings.cpp
++++ fingerprint-gui-1.04/src/UserSettings.cpp
+@@ -30,6 +30,7 @@
+ 
+ #include <syslog.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <sys/mount.h>
+ #include <errno.h>
+ 
+--- fingerprint-gui-1.04/src/IdentifierGUI.cpp
++++ fingerprint-gui-1.04/src/IdentifierGUI.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include <string>
+ #include <iostream>
++#include <unistd.h>
+ #include "IdentifierGUI.h"
+ 
+ #define KEEP_ON_TOP \
+--- fingerprint-gui-1.04/src/FingerprintPAM.cpp
++++ fingerprint-gui-1.04/src/FingerprintPAM.cpp
+@@ -37,6 +37,7 @@
+ #include <errno.h>
+ #include <pwd.h>
+ #include <string>
++#include <unistd.h>
+ 
+ #include "../include/Globals.h"
+ 
+--- fingerprint-gui-1.04/src/PluginDialog.cpp
++++ fingerprint-gui-1.04/src/PluginDialog.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include <sys/poll.h>
+ #include <string>
++#include <unistd.h>
+ #include <qt4/QtCore/qthread.h>
+ 
+ #include "../include/PluginDialog.h"
+--- fingerprint-gui-1.04/src/PamGUI.cpp
++++ fingerprint-gui-1.04/src/PamGUI.cpp
+@@ -23,6 +23,7 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++#include <unistd.h>
+ #include "PamGUI.h"
+ #include "FingerprintHelper.h"
+ 
+--- fingerprint-gui-1.04/src/PamNonGUI.cpp
++++ fingerprint-gui-1.04/src/PamNonGUI.cpp
+@@ -23,6 +23,7 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++#include <unistd.h>
+ #include "PamNonGUI.h"
+ #include "FingerprintHelper.h"
+ 
+--- fingerprint-gui-1.04/src/FingerprintPlugin.cpp
++++ fingerprint-gui-1.04/src/FingerprintPlugin.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include <syslog.h>
+ #include <string>
++#include <unistd.h>
+ #include <qt4/QtGui/qwidget.h>
+ 
+ #include "PluginDialog.h"

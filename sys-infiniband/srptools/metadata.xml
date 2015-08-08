@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cluster</herd>
+	<longdescription>
+srptools is a package of tools for discovering and connecting to SRP
+SCSI targets on InfiniBand fabrics.  These targets can be accessed
+with the InfiniBand SRP initiator module, "ib_srp," included in Linux
+kernels 2.6.15 and newer.
+</longdescription>
+</pkgmetadata>

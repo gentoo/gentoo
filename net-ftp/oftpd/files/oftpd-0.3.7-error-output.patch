@@ -1,0 +1,20 @@
+fix writing of the error message to stderr by processing the varargs
+
+--- a/src/error.c
++++ b/src/error.c
+@@ -23,7 +23,6 @@ void error_init(error_t *err, int error_code, const char *desc_fmt, ...)
+ {
+     va_list args;
+ 
+-    fprintf(stderr, "error_init: %d %s", error_code, desc_fmt);
+     daemon_assert(err != NULL);
+     daemon_assert(error_code >= 0);
+     daemon_assert(desc_fmt != NULL);
+@@ -32,6 +31,7 @@ void error_init(error_t *err, int error_code, const char *desc_fmt, ...)
+     va_start(args, desc_fmt);
+     vsnprintf(err->desc, sizeof(err->desc), desc_fmt, args);
+     va_end(args);
++    fprintf(stderr, "error_init: %d %s\n", error_code, err->desc);
+ 
+     daemon_assert(invariant(err));
+ }

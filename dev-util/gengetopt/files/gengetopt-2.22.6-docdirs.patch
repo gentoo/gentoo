@@ -1,0 +1,16 @@
+--- gengetopt-2.22.6/configure.ac
++++ gengetopt-2.22.6/configure.ac
+@@ -27,11 +27,11 @@
+ 
+ dnl directory for docs (html)
+ AC_SUBST(gengetoptdocdir)
+-gengetoptdocdir=$docdir
++gengetoptdocdir=$docdir/html
+ 
+ dnl directory for examples
+ AC_SUBST(gengetoptexamplesdir)
+-gengetoptexamplesdir=$gengetoptdocdir/examples
++gengetoptexamplesdir=$docdir/examples
+ 
+ dnl Checks for C compiler.
+ AC_PROG_CC

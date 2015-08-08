@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>php</herd>
+	<maintainer>
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="igbinary">Enable support for the igbinary serializer</flag>
+		<flag name="json">Enable support for json serialization</flag>
+	</use>
+</pkgmetadata>

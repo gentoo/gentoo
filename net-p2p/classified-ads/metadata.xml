@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <herd>proxy-maintainers</herd>
+        <maintainer>
+                <email>idella4@gentoo.org</email>
+        </maintainer>
+	<maintainer>
+		<email>antti.jarvinen@katiska.org</email>
+		<name>Antti Järvinen</name>
+		<description>proxy maintainer</description>
+	</maintainer>
+	<longdescription lang="en">
+   Classified ads is an attempt to re-produce parts of the functionality
+   that went away when Usenet news ceased to exist. This attempt tries to
+   fix the problem of disappearing news-servers so that there is no servers
+   required and no service-providers needed for any operation ;
+   data storage is implemented inside client applications that
+   users are running. Features of the program currently include:
+
+ * Posting of ads online. Ads have a category ; there are some 
+   pre-defined categories but more can be invented just by typing 
+   over the suggested categories.
+ * Replying to ads either in public or privately to operator.
+ * (Small-sized) binary attachments to posts.
+ * Providing basic data of operators - data that operator may enter 
+   himself, or leave blank.
+ * Basic searching of content based on words.
+	</longdescription>
+	<upstream>
+                <maintainer status="active">
+                        <email>antti.jarvinen@katiska.org</email>
+                </maintainer>
+                <changelog>https://github.com/operatornormal/classified-ads/commits/master</changelog>
+		<bugs-to>https://github.com/operatornormal/classified-ads/issues</bugs-to>
+		<remote-id type="github">operatornormal/classified-ads</remote-id>
+	</upstream>
+</pkgmetadata>

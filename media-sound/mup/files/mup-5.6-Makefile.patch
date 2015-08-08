@@ -1,0 +1,407 @@
+diff -urN mup-5.6.orig/Makefile mup-5.6/Makefile
+--- mup-5.6.orig/Makefile	1970-01-01 00:00:00.000000000 +0000
++++ mup-5.6/Makefile	2010-05-05 18:11:13.000000000 +0000
+@@ -0,0 +1,148 @@
++PREFIX = /usr
++BINDIR = $(PREFIX)/bin
++MANDIR = $(PREFIX)/share/man/man1
++CC = gcc
++CXX = g++
++CFLAGS = -O2 -pipe
++CXXFLAGS = -O2 -pipe
++X_LOCATION = /usr
++FLTK_LIB_LOCATION = -L/usr/lib/fltk-1
++X_LIBS = -lXext -lX11 -lXpm
++FLTK_INCLUDE = $(X_LOCATION)/include/fltk-1
++JPEGLIB = jpeg
++PNGLIB = png
++ZLIB = z
++
++MUP_SRC =  \
++	mup/abshorz.c \
++	mup/absvert.c \
++	mup/assign.c \
++	mup/beaming.c \
++	mup/beamstem.c \
++	mup/brac.c \
++	mup/charinfo.c \
++	mup/check.c \
++	mup/debug.c \
++	mup/errors.c \
++	mup/extchtbl.c \
++	mup/font.c \
++	mup/fontdata.c \
++	mup/globals.c \
++	mup/grpsyl.c \
++	mup/ifgram.c \
++	mup/lex.c \
++	mup/locvar.c \
++	mup/lyrics.c \
++	mup/macros.c \
++	mup/main.c \
++	mup/mainlist.c \
++	mup/map.c \
++	mup/midi.c \
++	mup/midiutil.c \
++	mup/mkchords.c \
++	mup/muschtbl.c \
++	mup/nxtstrch.c \
++	mup/parstssv.c \
++	mup/parstuff.c \
++	mup/phrase.c \
++	mup/plutils.c \
++	mup/print.c \
++	mup/prntdata.c \
++	mup/prntmisc.c \
++	mup/prnttab.c \
++	mup/prolog.c \
++	mup/range.c \
++	mup/rational.c \
++	mup/relvert.c \
++	mup/restsyl.c \
++	mup/roll.c \
++	mup/setgrps.c \
++	mup/setnotes.c \
++	mup/ssv.c \
++	mup/stuff.c \
++	mup/symtbl.c \
++	mup/tie.c \
++	mup/trantab.c \
++	mup/trnspose.c \
++	mup/undrscre.c \
++	mup/utils.c \
++	mup/ytab.c
++
++MUP_HDRS = \
++	mup/defines.h \
++	mup/extchar.h \
++	mup/globals.h \
++	mup/muschar.h \
++	mup/rational.h \
++	mup/ssvused.h \
++	mup/structs.h \
++	mup/ytab.h
++
++MUPDISP_SRC = \
++	mupdisp/at386.c \
++	mupdisp/do_cmd.c \
++	mupdisp/dos.c \
++	mupdisp/genfile.c \
++	mupdisp/init.c \
++	mupdisp/linvga.c \
++	mupdisp/mupdisp.c \
++	mupdisp/xterm.c
++
++MUPDISP_HDRS = mupdisp/dispttyp.h mupdisp/mupdisp.h
++MUPDISP_BITMAPS = mupdisp/help.bm mupdisp/waitmsg.bm
++MKMUPFNT_SRC = mkmupfnt/mkmupfnt.c
++
++MUPMATE_SRC = \
++	mupmate/Config.C \
++	mupmate/Edit.C \
++	mupmate/File.C \
++	mupmate/Help.C \
++	mupmate/Main.C \
++	mupmate/Preferences.C \
++	mupmate/Run.C \
++	mupmate/utils.C \
++	mupmate/license.C \
++	mupmate/regform.C \
++	mupmate/template.C
++
++MUPMATE_HDRS = \
++	mup/defines.h \
++	mupmate/Config.H \
++	mupmate/Edit.H \
++	mupmate/File.H \
++	mupmate/Help.H \
++	mupmate/Main.H \
++	mupmate/Preferences.H \
++	mupmate/Run.H \
++	mupmate/utils.H \
++	mupmate/globals.H \
++	mupmate/resource.h
++
++MUPMATE_OTHER_FILES = \
++	mupmate/mup32.xpm
++
++all: mup/mup mupdisp/mupdisp mkmupfnt/mkmupfnt mupmate/mupmate
++
++mup/mup: $(MUP_HDRS) $(MUP_SRC)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(MUP_SRC) -lm
++
++mupdisp/mupdisp: $(MUPDISP_HDRS) $(MUPDISP_BITMAPS) $(MUPDISP_SRC)
++	$(CC) $(CFLAGS) $(LDFLAGS) -L$(X_LOCATION)/lib -o $@ -DNO_VGA_LIB $(MUPDISP_SRC) -lX11
++
++mkmupfnt/mkmupfnt: $(MKMUPFNT_SRC)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(MKMUPFNT_SRC)
++
++mupmate/mupmate: $(MUPMATE_SRC) $(MUPMATE_HDRS) $(MUPMATE_OTHER_FILES)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(MUPMATE_SRC) \
++	-I$(FLTK_INCLUDE) -Imup -L$(X_LOCATION)/lib \
++	$(FLTK_LIB_LOCATION) -lfltk -lfltk_images $(X_LIBS) \
++	-l$(JPEGLIB) -l$(PNGLIB) -l$(ZLIB) -lm
++
++install:	all
++	mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)
++	cp mup/mup $(DESTDIR)$(BINDIR)/mup
++	cp mkmupfnt/mkmupfnt $(DESTDIR)$(BINDIR)/mkmupfnt
++	cp mupdisp/mupdisp $(DESTDIR)$(BINDIR)/mupdisp
++	cp mupmate/mupmate $(DESTDIR)$(BINDIR)/mupmate
++	cp mupprnt $(DESTDIR)$(BINDIR)/mupprnt
++	cp docs/*.1 $(DESTDIR)$(MANDIR)
+diff -urN mup-5.6.orig/makefile mup-5.6/makefile
+--- mup-5.6.orig/makefile	2010-05-05 18:10:57.000000000 +0000
++++ mup-5.6/makefile	1970-01-01 00:00:00.000000000 +0000
+@@ -1,251 +0,0 @@
+-
+-# Makefile for Mup (and auxiliary programs mupdisp, mkmupfnt, and mupmate).
+-# This is not an optimal makefile; instead it tries to be very simple,
+-# and easy to understand, so it can be easily modified, if needed.
+-
+-# On most Linux/Unix type systems, just doing
+-#	make install
+-# as root will probably work.
+-# (You really only need to be root to copy the products into
+-# the system directories. If you change PREFIX
+-# to point to some other writeable area, you wouldn't need to be root.)
+-# For Apple Mac OX X, see the notes for what to change (CLFAGS and X_LIBS)
+-# If you only want the Mup program itself, you can do
+-#	make mup/mup
+-# The other programs are optional:
+-# - mupdisp runs Mup and then runs GhostScript on the result.
+-#   You can run Mup directly, and use gv, GSview, ghostview or any other
+-#   PostScript viewer on the Mup output, as an alternative to mupdisp.
+-# - mkmupfnt is only needed if you want to use fonts beyond the basic
+-#   standard PostScript fonts.
+-# - mupmate is a graphical user interface front end for Mup.
+-#   It is not needed if you intend to only use Mup via command line interface.
+-
+-# The mupdisp and mupmate programs require X libraries and headers (www.x.org).
+-# The mupmate program requires FLTK libraries and headers (www.fltk.org).
+-
+-# If you want mupdisp to support Linux console mode, make sure you have
+-# the svgalib package installed, then find the two commented-out lines below
+-# related to Linux console support, and uncomment them.
+-
+-# If you are building on a system that does not support make,
+-# you can look at what this makefile does for how to build.
+-# Mup itself is generally easy to build.
+-# You just go to the mup directory and run your C compiler on
+-# all the .c files in directory, and link with the math library,
+-# Typically this is done using a command something like:
+-#	cc *.c -lm
+-# For more information on building Mup, see:
+-#	http://www.arkkra.com/doc/dosbld.html
+-#	http://www.arkkra.com/doc/otherbld.html
+-#	http://www.arkkra.com/doc/unixbld.html
+-
+-# Lines you might conceivably want to change have comments by them,
+-# explaining how you might want to change them.
+-# Any line without any comment by it is very unlikely to ever need changing.
+-
+-#-----------------------------------------------------------------------
+-
+-# These define where to put the Mup products.
+-# You could change this to /usr/local or your own space if you like.
+-PREFIX = /usr
+-BINDIR = $(PREFIX)/bin
+-MANDIR = $(PREFIX)/man/man1
+-DOCDIR = $(PREFIX)/share/doc/packages/mup
+-
+-# This is the name of your C compiler.
+-# cc would be another common choice.
+-CCOMPILER = gcc
+-
+-# This is the name of your C++ compiler.
+-# CC would be another common choice.
+-CPPCOMPILER = g++
+-
+-# -O option turns on optimization for most C compilers.
+-# You can add other options, if you like, as appropriate for your C compiler.
+-# Another common addition would be -g to get debugging information.
+-# For Mac OS X, you should probably add
+-#	-Dunix
+-# and if you want universal binaries, add
+-#	-arch i386 -arch ppc
+-# and if you want backward compatibility to older versions, add something like
+-#	-mmacosx-version-min=10.1
+-CFLAGS = -O
+-
+-# You can change this if your X libraries and headers are somewhere else
+-# (like /usr/X11R6).
+-X_LOCATION = /usr/X11
+-
+-# If you installed fltk somewhere other than $(X_LOCATION)/lib
+-# set this to find them, as in
+-# FLTK_LIB_LOCATION = -L/usr/local/lib
+-FLTK_LIB_LOCATION =
+-
+-# The X libraries to link with Mupmate.
+-X_LIBS = -lXext -lX11 -lXpm
+-# On Mac OS X replace that with
+-# X_LIBS = -framework Carbon
+-
+-# The FLTK header files are under $(FLTK_INCLUDE)/FL
+-FLTK_INCLUDE = $(X_LOCATION)/include
+-
+-# You can use fltk_jpeg or jpeg library, whichever you have
+-JPEGLIB = fltk_jpeg
+-
+-# You can use fltk_png or png library, whichever you have
+-PNGLIB = fltk_png
+-
+-# You can use fltk_z or z library, whichever you have
+-ZLIB = fltk_z
+-
+-#-----------------------------------------------------------------------
+-
+-MUP_SRC =  \
+-	mup/abshorz.c \
+-	mup/absvert.c \
+-	mup/assign.c \
+-	mup/beaming.c \
+-	mup/beamstem.c \
+-	mup/brac.c \
+-	mup/charinfo.c \
+-	mup/check.c \
+-	mup/debug.c \
+-	mup/errors.c \
+-	mup/extchtbl.c \
+-	mup/font.c \
+-	mup/fontdata.c \
+-	mup/globals.c \
+-	mup/grpsyl.c \
+-	mup/ifgram.c \
+-	mup/lex.c \
+-	mup/locvar.c \
+-	mup/lyrics.c \
+-	mup/macros.c \
+-	mup/main.c \
+-	mup/mainlist.c \
+-	mup/map.c \
+-	mup/midi.c \
+-	mup/midiutil.c \
+-	mup/mkchords.c \
+-	mup/muschtbl.c \
+-	mup/nxtstrch.c \
+-	mup/parstssv.c \
+-	mup/parstuff.c \
+-	mup/phrase.c \
+-	mup/plutils.c \
+-	mup/print.c \
+-	mup/prntdata.c \
+-	mup/prntmisc.c \
+-	mup/prnttab.c \
+-	mup/prolog.c \
+-	mup/range.c \
+-	mup/rational.c \
+-	mup/relvert.c \
+-	mup/restsyl.c \
+-	mup/roll.c \
+-	mup/setgrps.c \
+-	mup/setnotes.c \
+-	mup/ssv.c \
+-	mup/stuff.c \
+-	mup/symtbl.c \
+-	mup/tie.c \
+-	mup/trantab.c \
+-	mup/trnspose.c \
+-	mup/undrscre.c \
+-	mup/utils.c \
+-	mup/ytab.c
+-
+-MUP_HDRS = \
+-	mup/defines.h \
+-	mup/extchar.h \
+-	mup/globals.h \
+-	mup/muschar.h \
+-	mup/rational.h \
+-	mup/ssvused.h \
+-	mup/structs.h \
+-	mup/ytab.h
+-
+-MUPDISP_SRC = \
+-	mupdisp/at386.c \
+-	mupdisp/do_cmd.c \
+-	mupdisp/dos.c \
+-	mupdisp/genfile.c \
+-	mupdisp/init.c \
+-	mupdisp/linvga.c \
+-	mupdisp/mupdisp.c \
+-	mupdisp/xterm.c
+-
+-MUPDISP_HDRS = mupdisp/dispttyp.h mupdisp/mupdisp.h
+-
+-MUPDISP_BITMAPS = mupdisp/help.bm mupdisp/waitmsg.bm
+-
+-MKMUPFNT_SRC = mkmupfnt/mkmupfnt.c
+-
+-MUPMATE_SRC = \
+-	mupmate/Config.C \
+-	mupmate/Edit.C \
+-	mupmate/File.C \
+-	mupmate/Help.C \
+-	mupmate/Main.C \
+-	mupmate/Preferences.C \
+-	mupmate/Run.C \
+-	mupmate/utils.C \
+-	mupmate/license.C \
+-	mupmate/regform.C \
+-	mupmate/template.C
+-
+-MUPMATE_HDRS = \
+-	mup/defines.h \
+-	mupmate/Config.H \
+-	mupmate/Edit.H \
+-	mupmate/File.H \
+-	mupmate/Help.H \
+-	mupmate/Main.H \
+-	mupmate/Preferences.H \
+-	mupmate/Run.H \
+-	mupmate/utils.H \
+-	mupmate/globals.H \
+-	mupmate/resource.h
+-
+-MUPMATE_OTHER_FILES = \
+-	mupmate/mup32.xpm
+-#---------------------------------------------------------------
+-
+-all: mup/mup mupdisp/mupdisp mkmupfnt/mkmupfnt mupmate/mupmate
+-
+-mup/mup: $(MUP_HDRS) $(MUP_SRC)
+-	$(CCOMPILER) $(CFLAGS) -o $@ $(MUP_SRC) -lm
+-
+-mupdisp/mupdisp: $(MUPDISP_HDRS) $(MUPDISP_BITMAPS) $(MUPDISP_SRC)
+-	$(CCOMPILER) $(CFLAGS) -L$(X_LOCATION)/lib -o $@ -DNO_VGA_LIB $(MUPDISP_SRC) -lX11
+-	# For Linux console mode support, comment out the previous line
+-	# and uncomment the following line
+-	# $(CCOMPILER) $(CFLAGS) -L$(X_LOCATION)/lib -o $@ $(MUPDISP_SRC) -lvga -lX11 -lm
+-
+-mkmupfnt/mkmupfnt: $(MKMUPFNT_SRC)
+-	$(CCOMPILER) $(CFLAGS) -o $@ $(MKMUPFNT_SRC)
+-
+-mupmate/mupmate: $(MUPMATE_SRC) $(MUPMATE_HDRS) $(MUPMATE_OTHER_FILES)
+-	$(CPPCOMPILER) $(CFLAGS) -o $@ $(MUPMATE_SRC) \
+-	-I$(FLTK_INCLUDE) -Imup -L$(X_LOCATION)/lib \
+-	$(FLTK_LIB_LOCATION) -lfltk -lfltk_images $(X_LIBS) \
+-	-l$(JPEGLIB) -l$(PNGLIB) -l$(ZLIB) -lm
+-
+-install:	all
+-	mkdir -p $(BINDIR) $(MANDIR) $(DOCDIR)/uguide
+-	cp mup/mup $(BINDIR)/mup
+-	cp mkmupfnt/mkmupfnt $(BINDIR)/mkmupfnt
+-	cp mupdisp/mupdisp $(BINDIR)/mupdisp
+-	# For Linux console mode support, uncomment the following line
+-	# chown root $(BINDIR)/mupdisp ; chmod 4755 $(BINDIR)/mupdisp
+-	cp mupmate/mupmate $(BINDIR)/mupmate
+-	cp mupprnt $(BINDIR)/mupprnt
+-	cp docs/*.1 $(MANDIR)
+-	cp docs/README* docs/*.txt docs/*.ps docs/*.mup $(DOCDIR)
+-	cp docs/uguide/* $(DOCDIR)/uguide
+-
+-clean:
+-	rm -f mup/*.o mupdisp/*.o mkmupfnt/*.o mupmate/*.o
+-
+-clobber:	clean
+-	rm -f mup/mup mupdisp/mupdisp mkmupfnt/mkmupfnt mupmate/mupmate

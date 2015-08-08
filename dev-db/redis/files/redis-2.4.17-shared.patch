@@ -1,0 +1,22 @@
+See https://github.com/antirez/redis/pull/137
+
+--- src/Makefile	2011-10-17 10:46:00.000000000 +0200
++++ src/Makefile.2	2011-10-17 13:47:53.000000000 +0200
+@@ -49,7 +49,16 @@
+ ifeq ($(USE_JEMALLOC),yes)
+   ALLOC_DEP=../deps/jemalloc/lib/libjemalloc.a
+   ALLOC_LINK=$(ALLOC_DEP) -ldl
+-  ALLOC_FLAGS=-DUSE_JEMALLOC -I../deps/jemalloc/include
++  ALLOC_FLAGS=-DUSE_JEMALLOC
++   ifdef JEMALLOC_SHARED
++       ALLOC_DEP=
++       ALLOC_LINK=-ljemalloc
++       ALLOC_FLAGS=-DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE -I/usr/include
++   else
++       ALLOC_DEP=../deps/jemalloc/lib/libjemalloc.a
++       ALLOC_LINK=$(ALLOC_DEP) -ldl
++       ALLOC_FLAGS=-DUSE_JEMALLOC -I../deps/jemalloc/include
++   endif
+ endif
+
+ CCOPT= $(CFLAGS) $(ARCH) $(PROF)

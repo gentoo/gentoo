@@ -1,0 +1,93 @@
+# libdkim makefile for UNIX
+#
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+prefix	=	@prefix@
+exec_prefix =	@exec_prefix@
+bindir =	@bindir@
+libdir =	@libdir@
+includedir =	@includedir@
+
+OBJEXT = @OBJEXT@
+LIBS    = @LIBS@ @libcrypto_LIBS@
+
+CC = @CC@
+CXX = @CXX@
+
+CFLAGS = @CFLAGS@
+CXXFLAGS = @CXXFLAGS@
+CPPFLAGS = @CPPFLAGS@
+
+INCL	= 
+LDFLAGS = @LDFLAGS@
+
+libdkim_SOURCES = dkim.cpp dns.cpp dkimbase.cpp dkimsign.cpp dkimverify.cpp
+HEADERS = dkim.h dns.h dkimbase.h dkimsign.h dkimverify.h
+
+libdkim_OBJS = $(libdkim_SOURCES:.cpp=.$(OBJEXT))
+libdkim_PURE_OBJS = $(libdkim_SOURCES:.cpp=.p$(OBJEXT))
+
+libdkimtest_SOURCES = libdkimtest.cpp
+libdkimtest_OBJS = libdkimtest.$(OBJEXT)
+
+SHLIBFORLINK = libdkim.so
+SHLIBSONAME = $(SHLIBFORLINK).$(SHLIBMAJOR)
+SHLIBTARGET = $(SHLIBFORLINK)
+SHLIBLINK = $(CXX) $(LDFLAGS) -shared -Wl,-soname=$(SHLIBSONAME) -Wl,-version-script=libdkim.ver
+SHLIBMAJOR = 1d
+SHLIBMINOR = 1
+SHLIBFILE = $(SHLIBSONAME).$(SHLIBMINOR)
+SHLIBCFLAGS = -fPIC
+
+ARFLAGS = crs
+
+TARGETS = libdkim.a $(SHLIBTARGET) libdkimtest
+
+all: $(TARGETS)
+
+libdkim.a: $(libdkim_OBJS)
+	-rm -f $@
+	$(AR) $(ARFLAGS) $@ $(libdkim_OBJS)
+
+$(SHLIBFORLINK): $(libdkim_PURE_OBJS)
+	$(SHLIBLINK) -o $@ $(libdkim_PURE_OBJS) $(LIBS)
+	-mkdir .lib 2>/dev/null
+	[ -z "$(SHLIBSONAME)" ] || (cd .lib \
+          && ln -sf ../$(SHLIBFORLINK) $(SHLIBSONAME))
+
+libdkimtest: $(libdkimtest_OBJS) $(SHLIBFORLINK)
+	$(CXX) ${LDFLAGS} -L. -o $@ libdkimtest.o -ldkim $(LIBS)
+
+libdkimtest.o: $(libdkimtest_SOURCES) $(HDRS)
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+%.$(OBJEXT): %.cpp $(HDRS)
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+%.p$(OBJEXT): %.cpp $(HDRS)
+	$(CXX) $(SHLIBCFLAGS) $(CXXFLAGS) -o $@ -c $<
+
+clean:
+	-rm -f *.$(OBJEXT) *.p$(OBJEXT) $(TARGETS)
+	-rm -rf .lib
+
+distclean: clean
+	-rm -f config.status config.log Makefile libdkim.pc
+
+install: all
+	install -m 755 -d $(DESTDIR)$(libdir)
+	install -m 755 -d $(DESTDIR)$(libdir)/pkgconfig
+	install -m 755 -d $(DESTDIR)$(includedir)
+	install -m 644 libdkim.a $(DESTDIR)$(libdir)
+	install -m 755 $(SHLIBFORLINK) $(DESTDIR)$(libdir)/$(SHLIBFILE)
+	[ -z "$(SHLIBSONAME)" ] \
+                || (cd $(DESTDIR)$(libdir) \
+		&& ln -sf $(SHLIBFILE) $(SHLIBSONAME) \
+		&& ln -sf $(SHLIBFILE) $(SHLIBFORLINK) )
+	install -m 644 $(srcdir)/dkim.h $(DESTDIR)$(includedir)
+	install -m 644 libdkim.pc $(DESTDIR)$(libdir)/pkgconfig
+	install -m 755 -d $(DESTDIR)$(bindir)
+	install -m 755 libdkimtest $(DESTDIR)$(bindir)
+
+.PHONY: all install clean distclean

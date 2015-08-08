@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>vdr@gentoo.org</email>
+  <name>gentoo-vdr-project</name>
+</maintainer>
+<longdescription lang="en">
+  This package provides Graphical LCD Driver.
+</longdescription>
+<use>
+  <flag name='g15'>Add support for <pkg>app-misc/g15daemon</pkg> driver
+    (e.g. Logitech G15 Keybord)</flag>
+</use>
+</pkgmetadata>

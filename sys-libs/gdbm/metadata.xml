@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>base-system</herd>
+<use>
+ <flag name='berkdb'>enable compatibility layer for UNIX-like dbm and ndbm interfaces</flag>
+ <flag name='exporter'>enable gdbmexport binary for exporting data from gdbm-1.8 databases into gdbm-1.9</flag>
+</use>
+</pkgmetadata>

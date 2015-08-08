@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Catching all exceptions raised within an enclosed computation,
+		while remaining responsive to (external) asynchronous exceptions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jcristovao/enclosed-exceptions</remote-id>
+	</upstream>
+</pkgmetadata>

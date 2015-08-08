@@ -1,0 +1,88 @@
+From 53dc4e4d1551750905e6b6f1407eb3ee0b0e2a82 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Mon, 13 Jul 2015 22:13:57 +0200
+Subject: Do not create Contacts source for GMail accounts
+
+The Contacts part requires OAUTH2, which will be supported once
+bug #749974 is done. Till then, do not allow auto-adding Contacts
+source for GMail accounts, to not confuse users with error message
+about it not being able to open.
+
+diff --git a/modules/mail-config/e-mail-config-google-summary.c b/modules/mail-config/e-mail-config-google-summary.c
+index c5ac1ba..164aae4 100644
+--- a/modules/mail-config/e-mail-config-google-summary.c
++++ b/modules/mail-config/e-mail-config-google-summary.c
+@@ -29,12 +29,17 @@
+ #define GOOGLE_HELP_URI \
+ 	"http://support.google.com/mail/bin/answer.py?hl=en&answer=77695"
+ 
++/* Once EDS will directly support OAUTH2, this can be enabled/removed again */
++/* #define EDS_SUPPORTS_OAUTH2 */
++
+ struct _EMailConfigGoogleSummaryPrivate {
+ 	ESource *collection_source;
+ 
+ 	/* Widgets (not referenced) */
+ 	GtkWidget *calendar_toggle;
++#ifdef EDS_SUPPORTS_OAUTH2
+ 	GtkWidget *contacts_toggle;
++#endif
+ 
+ 	gboolean applicable;
+ };
+@@ -130,8 +135,12 @@ mail_config_google_summary_commit_changes_cb (EMailConfigSummaryPage *page,
+ 	toggle_button = GTK_TOGGLE_BUTTON (extension->priv->calendar_toggle);
+ 	calendar_active = gtk_toggle_button_get_active (toggle_button);
+ 
++#ifdef EDS_SUPPORTS_OAUTH2
+ 	toggle_button = GTK_TOGGLE_BUTTON (extension->priv->contacts_toggle);
+ 	contacts_active = gtk_toggle_button_get_active (toggle_button);
++#else
++	contacts_active = FALSE;
++#endif
+ 
+ 	/* If the user declined both Calendar and Contacts, do nothing. */
+ 	if (!calendar_active && !contacts_active)
+@@ -264,6 +273,7 @@ mail_config_google_summary_constructed (GObject *object)
+ 	extension->priv->calendar_toggle = widget;  /* not referenced */
+ 	gtk_widget_show (widget);
+ 
++#ifdef EDS_SUPPORTS_OAUTH2
+ 	text = _("Add Google Con_tacts to this account");
+ 	widget = gtk_check_button_new_with_mnemonic (text);
+ 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
+@@ -271,11 +281,16 @@ mail_config_google_summary_constructed (GObject *object)
+ 	gtk_grid_attach (GTK_GRID (container), widget, 0, 2, 1, 1);
+ 	extension->priv->contacts_toggle = widget;  /* not referenced */
+ 	gtk_widget_show (widget);
++#endif
+ 
+ 	text = _("You may need to enable IMAP access");
+ 	widget = gtk_link_button_new_with_label (GOOGLE_HELP_URI, text);
+ 	gtk_widget_set_margin_left (widget, 12);
++#ifdef EDS_SUPPORTS_OAUTH2
+ 	gtk_grid_attach (GTK_GRID (container), widget, 0, 3, 1, 1);
++#else
++	gtk_grid_attach (GTK_GRID (container), widget, 0, 2, 1, 1);
++#endif
+ 	gtk_widget_show (widget);
+ 
+ 	source = extension->priv->collection_source;
+@@ -291,10 +306,14 @@ mail_config_google_summary_constructed (GObject *object)
+ 		collection_extension, "calendar-enabled",
+ 		G_BINDING_SYNC_CREATE);
+ 
++#ifdef EDS_SUPPORTS_OAUTH2
+ 	e_binding_bind_property (
+ 		extension->priv->contacts_toggle, "active",
+ 		collection_extension, "contacts-enabled",
+ 		G_BINDING_SYNC_CREATE);
++#else
++	g_object_set (G_OBJECT (collection_extension), "contacts-enabled", FALSE, NULL);
++#endif
+ }
+ 
+ static void
+-- 
+cgit v0.10.2
+

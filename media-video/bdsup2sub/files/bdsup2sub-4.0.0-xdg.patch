@@ -1,0 +1,40 @@
+--- src/deadbeef/SupTools/Core.java	2010-07-29 13:01:48.000000000 +0200
++++ src/deadbeef/SupTools/Core.java	2010-08-01 02:19:25.215473885 +0200
+@@ -22,6 +22,8 @@
+ import deadbeef.Tools.Props;
+ import deadbeef.Tools.ToolBox;
+ 
++import xdg.*;
++
+ /*
+  * Copyright 2009 Volker Oth (0xdeadbeef)
+  *
+@@ -750,6 +752,7 @@
+ 			cliMode = false;
+ 			String s = c.getClass().getName().replace('.','/') + ".class";
+ 			URL url = c.getClass().getClassLoader().getResource(s);
++			/*
+ 			int pos;
+ 			try {
+ 				fnameProps = URLDecoder.decode(url.getPath(),"UTF-8");
+@@ -767,6 +770,8 @@
+ 					fnameProps = fnameProps.substring(0,pos+1);
+ 			}
+ 			fnameProps += Core.iniName;
++			*/
++			fnameProps = xdg.config_home() + "/" + Core.iniName;
+ 
+ 			// read properties from ini file
+ 			props = new Props();
+@@ -905,8 +910,10 @@
+ 	 * Write properties
+ 	 */
+ 	public static void storeProps() {
+-		if (props != null)
++		if (props != null) {
++			xdg.mkdirs_file(fnameProps);
+ 			props.save(fnameProps);
++		}
+ 	}
+ 	
+ 	/**

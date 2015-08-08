@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">Meta package for the scikits. Include a standard example as well.</longdescription>
+  <upstream>
+    <remote-id type="pypi">scikits.example</remote-id>
+  </upstream>
+</pkgmetadata>

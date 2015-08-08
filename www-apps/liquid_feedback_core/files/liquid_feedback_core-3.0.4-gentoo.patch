@@ -1,0 +1,30 @@
+--- Makefile.old	2014-11-29 22:38:43.200509267 +0100
++++ Makefile	2014-11-29 22:39:16.392199651 +0100
+@@ -1,22 +1,10 @@
+ all:: lf_update lf_update_issue_order lf_update_suggestion_order
+ 
+-lf_update: lf_update.c
+-	cc	-Wall -O2 \
+-		-I "`pg_config --includedir`" \
+-		-L "`pg_config --libdir`" \
+-		-o lf_update lf_update.c -lpq
+-
+-lf_update_issue_order: lf_update_issue_order.c
+-	cc	-Wall -O2 \
+-		-I "`pg_config --includedir`" \
+-		-L "`pg_config --libdir`" \
+-		-o lf_update_issue_order lf_update_issue_order.c -lpq
+-
+-lf_update_suggestion_order: lf_update_suggestion_order.c
+-	cc	-Wall -O2 \
+-		-I "`pg_config --includedir`" \
+-		-L "`pg_config --libdir`" \
+-		-o lf_update_suggestion_order lf_update_suggestion_order.c -lpq
++CPPFLAGS=-I `pg_config --includedir`
++LDFLAGS=-L `pg_config --libdir`
++CFLAGS=-Wall -O2
++CC=cc
++LDLIBS=-lpq
+ 
+ clean::
+ 	rm -f lf_update lf_update_issue_order lf_update_suggestion_order

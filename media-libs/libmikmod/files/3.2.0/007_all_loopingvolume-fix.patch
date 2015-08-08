@@ -1,0 +1,21 @@
+Yi-Huang Han (24 Oct 2001)
+ * Fixed MOD music volume when looping
+
+Samuli Suominen (17 Nov 2012)
+ * Refresh the patch against libmikmod 3.2.0 release since it didn't make it upstream
+   $ wget http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.12.tar.gz
+   $ tar -vzxf SDL_mixer-1.2.12.tar.gz (or "tar xf" with GNU tar)
+   $ unzip libmikmod-3.1.12.zip
+   $ ls -l libmikmod-3.1.12-loopingvolume-fix.diff
+
+--- playercode/mplayer.c
++++ playercode/mplayer.c
+@@ -3013,7 +3013,7 @@
+ {
+ 	MUTEX_LOCK(vars);
+ 	if (pf)
+-		pf->volume=(volume<0)?0:(volume>128)?128:volume;
++		pf->volume=pf->initvolume=(volume<0)?0:(volume>128)?128:volume;
+ 	MUTEX_UNLOCK(vars);
+ }
+ 

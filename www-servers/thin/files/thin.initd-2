@@ -1,0 +1,83 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+SERVER=${SVCNAME#*.}
+if [ ${SERVER} != thin ]; then
+	CONFIG=${CONFIG:-/etc/thin/${SERVER}.yml}
+else
+	CONFIG=${CONFIG:-/etc/thin/}
+fi
+NOCONFIG=${NOCONFIG:-0}
+RUBY=${RUBY:-/usr/bin/ruby}
+DO_BUNDLER=${DO_BUNDLER:-0}
+CHDIR=${CHDIR:-}
+THIN_USER=${THIN_USER:-root}
+THIN_GROUP=${THIN_GROUP:-root}
+THIN_PID=${THIN_PID:-/var/run/thin/thin.pid}
+THIN_OPTS=${THIN_OPTS:-}
+
+depend() {
+	need localmount
+}
+
+checkconfig() {
+	if [ -n ${CHDIR} ]; then
+		cd "${CHDIR}"
+
+		if [ $? -ne 0 ]; then
+			eerror "Cannot cd into requested directory"
+			return 1
+		fi
+	fi
+
+	[ ${SERVER} = thin -o ${NOCONFIG} != 0 ] && return 0
+
+	if [ ! -f ${CONFIG} ]; then
+		eerror "Unable to find the server configuration."
+		eerror "Please set the CONFIG variable in /etc/conf.d/${SVCNAME} or"
+		eerror "set NOCONFIG there to 1 to disable looking for a config file."
+		return 1
+	fi
+}
+
+buildargs() {
+	if [ ${NOCONFIG} = 0 -a ${SERVER} != thin ]; then
+		echo -n "-C ${CONFIG} "
+	fi
+
+	echo -n "${THIN_OPTS}"
+}
+
+action() {
+	checkconfig || return 1
+
+	[ ${DO_BUNDLER} -ne 0 ] && RUBY="${RUBY} /usr/bin/bundle exec"
+
+	if [ ${SERVER} = thin ]; then
+		ebegin "$2 all thin servers in ${CONFIG}"
+		${RUBY} /usr/bin/thin $1 $(buildargs) --all ${CONFIG}
+		eend $?
+	else
+		ebegin "$2 thin server ${SERVER}"
+		${RUBY} /usr/bin/thin $(buildargs) --tag ${SERVER} $1
+		eend $?
+	fi
+}
+
+start() {
+	action start 'Starting'
+}
+
+stop() {
+	action stop 'Stopping'
+}
+
+restart() {
+	action restart 'Restarting'
+}
+
+start_pre() {
+	checkpath -d -m 0775 -o ${THIN_USER}:${THIN_GROUP} $(dirname ${THIN_PID})
+}

@@ -1,0 +1,32 @@
+Index: zita-convolver-2.0.0/libs/Makefile
+===================================================================
+--- zita-convolver-2.0.0.orig/libs/Makefile
++++ zita-convolver-2.0.0/libs/Makefile
+@@ -28,9 +28,7 @@ VERSION = $(MAJVERS).$(MINVERS)
+ DISTDIR = zita-convolver-$(VERSION)
+ 
+ 
+-CPPFLAGS += -Wall -I. -fPIC -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -O3
+-CPPFLAGS += -mmmx -msse -mfpmath=sse -ffast-math -funroll-loops -fpermissive
+-CPPFLAGS += -march=i686
++CPPFLAGS += -Wall -I. -fPIC -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+ #CPPFLAGS += -DVECTORIZE 
+ 
+ LDLFAGS += 
+@@ -46,7 +44,7 @@ ZITA-CONVOLVER_H = zita-convolver.h
+ 
+ 
+ $(ZITA-CONVOLVER_MIN):	$(ZITA-CONVOLVER_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(ZITA-CONVOLVER_MAJ) -o $(ZITA-CONVOLVER_MIN) $(ZITA-CONVOLVER_O) $(ZITA-CONVOLVER_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(ZITA-CONVOLVER_MAJ) -o $(ZITA-CONVOLVER_MIN) $(ZITA-CONVOLVER_O) $(ZITA-CONVOLVER_DEP)
+ 
+ 
+ install:	$(ZITA-CONVOLVER_MIN)
+@@ -54,7 +52,6 @@ install:	$(ZITA-CONVOLVER_MIN)
+ 	install -d $(PREFIX)/$(LIBDIR)
+ 	install -m 644 $(ZITA-CONVOLVER_H) $(PREFIX)/include
+ 	install -m 755 $(ZITA-CONVOLVER_MIN) $(PREFIX)/$(LIBDIR)
+-	ldconfig
+ 	ln -sf $(ZITA-CONVOLVER_MIN) $(PREFIX)/$(LIBDIR)/$(ZITA-CONVOLVER_SO)
+ 
+ 

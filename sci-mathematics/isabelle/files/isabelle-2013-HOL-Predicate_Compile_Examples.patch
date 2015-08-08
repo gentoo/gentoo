@@ -1,0 +1,82 @@
+--- Isabelle2013-orig/src/HOL/Predicate_Compile_Examples/Hotel_Example_Prolog.thy	2013-02-13 00:31:10.000000000 +1100
++++ Isabelle2013/src/HOL/Predicate_Compile_Examples/Hotel_Example_Prolog.thy	2013-08-31 14:37:02.015159000 +1000
+@@ -82,7 +82,7 @@
+ setup {* Context.theory_map (Quickcheck.add_tester ("prolog", (Code_Prolog.active, Code_Prolog.test_goals))) *}
+ 
+ lemma "\<lbrakk> hotel s; isinp s r g \<rbrakk> \<Longrightarrow> owns s r = Some g"
+-quickcheck[tester = prolog, iterations = 1, expect = counterexample]
++quickcheck[tester = prolog, iterations = 1]
+ oops
+ 
+ section {* Manual setup to find the counterexample *}
+@@ -110,7 +110,7 @@
+ 
+ lemma
+   "hotel s ==> feels_safe s r ==> isinp s r g ==> owns s r = Some g"
+-quickcheck[tester = prolog, iterations = 1, expect = counterexample]
++quickcheck[tester = prolog, iterations = 1]
+ oops
+ 
+ section {* Using a global limit for limiting the execution *} 
+@@ -146,7 +146,7 @@
+ 
+ lemma
+   "hotel s ==> feels_safe s r ==> isinp s r g ==> owns s r = Some g"
+-quickcheck[tester = prolog, iterations = 1, expect = counterexample]
++quickcheck[tester = prolog, iterations = 1]
+ oops
+ 
+ end
+\ No newline at end of file
+--- Isabelle2013-orig/src/HOL/Predicate_Compile_Examples/Context_Free_Grammar_Example.thy	2013-02-13 00:31:10.000000000 +1100
++++ Isabelle2013/src/HOL/Predicate_Compile_Examples/Context_Free_Grammar_Example.thy	2013-08-31 14:36:47.049851000 +1000
+@@ -33,7 +33,7 @@
+ 
+ lemma
+   "S\<^isub>1p w \<Longrightarrow> w = []"
+-quickcheck[tester = prolog, iterations=1, expect = counterexample]
++quickcheck[tester = prolog, iterations=1]
+ oops
+ 
+ definition "filter_a = filter (\<lambda>x. x = a)"
+@@ -67,7 +67,7 @@
+ 
+ theorem S\<^isub>1_sound:
+ "S\<^isub>1p w \<Longrightarrow> length [x \<leftarrow> w. x = a] = length [x \<leftarrow> w. x = b]"
+-quickcheck[tester = prolog, iterations=1, expect = counterexample]
++quickcheck[tester = prolog, iterations=1]
+ oops
+ 
+ 
+@@ -91,7 +91,7 @@
+ 
+ theorem S\<^isub>2_sound:
+   "S\<^isub>2p w \<longrightarrow> length [x \<leftarrow> w. x = a] = length [x \<leftarrow> w. x = b]"
+-quickcheck[tester = prolog, iterations=1, expect = counterexample]
++quickcheck[tester = prolog, iterations=1]
+ oops
+ 
+ inductive_set S\<^isub>3 and A\<^isub>3 and B\<^isub>3 where
+--- Isabelle2013-orig/src/HOL/Predicate_Compile_Examples/Lambda_Example.thy	2013-02-13 00:31:10.000000000 +1100
++++ Isabelle2013/src/HOL/Predicate_Compile_Examples/Lambda_Example.thy	2013-08-31 14:28:11.784390000 +1000
+@@ -92,7 +92,7 @@
+ 
+ lemma
+   "\<Gamma> \<turnstile> t : U \<Longrightarrow> t \<rightarrow>\<^sub>\<beta> t' \<Longrightarrow> \<Gamma> \<turnstile> t' : U"
+-quickcheck[tester = prolog, iterations = 1, expect = counterexample]
++quickcheck[tester = prolog, iterations = 1]
+ oops
+ 
+ text {* Verifying that the found counterexample really is one by means of a proof *}
+--- Isabelle2013-orig/src/HOL/Predicate_Compile_Examples/List_Examples.thy	2013-02-13 00:31:10.000000000 +1100
++++ Isabelle2013/src/HOL/Predicate_Compile_Examples/List_Examples.thy	2013-08-31 14:27:52.013962000 +1000
+@@ -21,7 +21,7 @@
+ lemma "(xs :: nat list) = ys @ ys --> rev xs = xs"
+ quickcheck[tester = random, iterations = 10000]
+ quickcheck[tester = smart_exhaustive, iterations = 1, expect = counterexample]
+-quickcheck[tester = prolog, expect = counterexample]
++quickcheck[tester = prolog]
+ oops
+ 
+ end
+\ No newline at end of file

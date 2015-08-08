@@ -1,0 +1,20 @@
+diff -Nura mt-daapd-0.2.3/src/mp3-scanner.c mt-daapd-0.2.3.sparc/src/mp3-scanner.c
+--- mt-daapd-0.2.3/src/mp3-scanner.c	2005-02-05 18:22:47.000000000 -0300
++++ mt-daapd-0.2.3.sparc/src/mp3-scanner.c	2006-01-03 16:39:50.000000000 -0300
+@@ -1663,14 +1663,14 @@
+     /* now check for an XING header */
+     if(strncasecmp((char*)&buffer[index+fi.xing_offset+4],"XING",4) == 0) {
+ 	DPRINTF(E_DBG,L_SCAN,"Found Xing header\n");
+-	xing_flags=*((int*)&buffer[index+fi.xing_offset+4+4]);
++	memcpy (&xing_flags, &buffer[index+fi.xing_offset+4+4], sizeof(int));
+ 	xing_flags=ntohs(xing_flags);
+ 
+ 	DPRINTF(E_DBG,L_SCAN,"Xing Flags: %02X\n",xing_flags);
+ 
+ 	if(xing_flags & 0x1) {
+ 	    /* Frames field is valid... */
+-	    fi.number_of_frames=*((int*)&buffer[index+fi.xing_offset+4+8]);
++	    memcpy (&fi.number_of_frames, &buffer[index+fi.xing_offset+4+8], sizeof(int));
+ 	    fi.number_of_frames=ntohs(fi.number_of_frames);
+ 	}
+     }

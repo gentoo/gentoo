@@ -1,0 +1,15 @@
+diff --git a/cdemu-client/CMakeLists.txt b/cdemu-client/CMakeLists.txt
+index 6f33b7c..3c61daa 100644
+--- a/cdemu-client/CMakeLists.txt
++++ b/cdemu-client/CMakeLists.txt
+@@ -41,8 +41,8 @@ install (
+ 
+ install (
+     FILES data/cdemu-bashcomp
+-    DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/bash_completion.d
+-    RENAME cdemu-client
++    DESTINATION ${GENTOO_BASHCOMPDIR}
++    RENAME cdemu
+ )
+ 
+ intltool_merge ("-d" po data/cdemu-client.desktop.in cdemu-client.desktop)

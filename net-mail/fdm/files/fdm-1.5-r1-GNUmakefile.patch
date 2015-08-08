@@ -1,0 +1,35 @@
+--- GNUmakefile	2010-09-16 16:52:24.770218555 +0200
++++ GNUmakefile	2010-09-16 16:53:45.316542956 +0200
+@@ -62,7 +62,7 @@
+ endif
+ 
+ OBJS= $(patsubst %.c,%.o,$(SRCS))
+-CPPFLAGS+= $(DEFS) -I. -I- $(INCDIRS)
++CPPFLAGS+= $(DEFS) -I. -iquote $(INCDIRS)
+ ifdef DEBUG
+ CFLAGS+= -g -ggdb -DDEBUG
+ LDFLAGS+= -rdynamic
+@@ -89,7 +89,7 @@
+ all: fdm
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(LDFLAGS) $(LIBS) -o $@ $+
++	$(CC) $(LDFLAGS) -o $@ $+ $(LIBS)
+ 
+ depend: $(SRCS)
+ 	$(CC) $(CPPFLAGS) -MM $(SRCS) > .depend
+@@ -97,10 +97,12 @@
+ y.tab.c y.tab.h: parse.y
+ 	$(YACC) $(YFLAGS) $<
+ 
++lex.o: y.tab.h
++
+ install:
+ 	$(INSTALLBIN) $(PROG) $(DESTDIR)$(PREFIX)/bin/$(PROG)
+-	$(INSTALLMAN) $(PROG).1 $(DESTDIR)$(PREFIX)/man/man1/$(PROG).1
+-	$(INSTALLMAN) $(PROG).conf.5 $(DESTDIR)$(PREFIX)/man/man5/$(PROG).conf.5
++	$(INSTALLMAN) $(PROG).1 $(DESTDIR)$(PREFIX)/share/man/man1/$(PROG).1
++	$(INSTALLMAN) $(PROG).conf.5 $(DESTDIR)$(PREFIX)/share/man/man5/$(PROG).conf.5
+ 
+ clean:
+ 	rm -f $(CLEANFILES)

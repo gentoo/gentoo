@@ -1,0 +1,62 @@
+diff -Naur wrapper_3.5.14_src/src/c/Makefile-linux-x86-32.make wrapper_3.5.14_src_patched/src/c/Makefile-linux-x86-32.make
+--- wrapper_3.5.14_src/src/c/Makefile-linux-x86-32.make	2012-02-08 21:14:51.000000000 +1300
++++ wrapper_3.5.14_src_patched/src/c/Makefile-linux-x86-32.make	2012-04-18 23:47:55.000000000 +1200
+@@ -7,7 +7,7 @@
+ # license agreement you entered into with Tanuki Software.
+ # http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
+ 
+-COMPILE = gcc -O3 -fPIC -Wall --pedantic -DLINUX -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE 
++COMPILE = $(CC) -DLINUX -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE 
+ 
+ INCLUDE=$(JAVA_HOME)/include
+ 
+@@ -33,14 +33,14 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper -lm
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared -fPIC -o $(LIB)/libwrapper.so $(libwrapper_so_OBJECTS) -lm
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+diff -Naur wrapper_3.5.14_src/src/c/Makefile-linux-x86-64.make wrapper_3.5.14_src_patched/src/c/Makefile-linux-x86-64.make
+--- wrapper_3.5.14_src/src/c/Makefile-linux-x86-64.make	2012-02-08 21:14:51.000000000 +1300
++++ wrapper_3.5.14_src_patched/src/c/Makefile-linux-x86-64.make	2012-04-18 23:50:06.000000000 +1200
+@@ -7,7 +7,7 @@
+ # license agreement you entered into with Tanuki Software.
+ # http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
+ 
+-COMPILE = gcc -O3 -fPIC -Wall --pedantic -DLINUX -DJSW64 -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++COMPILE = $(CC) -fPIC -DLINUX -DJSW64 -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
+ 
+ INCLUDE=$(JAVA_HOME)/include
+ 
+@@ -33,14 +33,14 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper -lm
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared -o $(LIB)/libwrapper.so  $(libwrapper_so_OBJECTS) -lm
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \

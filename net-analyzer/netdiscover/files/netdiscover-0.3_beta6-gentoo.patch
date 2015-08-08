@@ -1,0 +1,41 @@
+--- a/configure.in
++++ b/configure.in
+@@ -5,7 +5,7 @@
+ 
+ AC_INIT(configure.in)
+ AM_INIT_AUTOMAKE(netdiscover, 0.3-beta6)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_MAINTAINER_MODE
+ 
+ dnl get system information
+@@ -35,7 +35,6 @@
+ 
+ AC_ISC_POSIX
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
+ AM_PROG_LIBTOOL
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,8 +5,8 @@
+ 
+ SUBDIRS = src doc
+ 
+-netdiscoverdocdir = ${prefix}/doc/netdiscover
+-netdiscoverdoc_DATA = \
++noinstdir = ${prefix}/doc/netdiscover
++noinst_DATA = \
+ 	README\
+ 	COPYING\
+ 	AUTHORS\
+@@ -15,7 +15,7 @@
+ 	NEWS\
+ 	TODO
+ 
+-EXTRA_DIST = $(netdiscoverdoc_DATA)
++EXTRA_DIST = $(noinst_DATA)
+ 
+ 
+ 

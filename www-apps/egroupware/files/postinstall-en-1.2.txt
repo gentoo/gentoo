@@ -1,0 +1,12 @@
+You are almost done!
+
+0. Restart your webserver and your database daemon.
+
+1. Point your browser to the URL http://${VHOST_HOSTNAME}/egroupware/setup
+and follow the install/upgrade script.
+
+Don't forget to read the installation manual, available from
+http://community.egroupware.org/index.php?page_name=wiki&lang=&wikipage=ManualSetupCheck_install
+It describes the rest of the installation process.
+
+Enjoy eGroupWare!

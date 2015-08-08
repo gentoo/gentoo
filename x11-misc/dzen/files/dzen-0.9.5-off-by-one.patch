@@ -1,0 +1,11 @@
+--- a/main.c
++++ b/main.c
+@@ -109,7 +109,7 @@
+ 		rem = NULL;
+ 	}
+ 	while(off < len) {
+-		if(i > MAX_LINE_LEN) {
++		if(i == MAX_LINE_LEN - 1) {
+ 			outbuf[i] = '\0';
+ 			return ++off;
+ 		}

@@ -1,0 +1,12 @@
+--- libgag/include/StreamBackend.h.old
++++ libgag/include/StreamBackend.h
+@@ -28,6 +28,9 @@
+ #ifdef putc
+ #undef putc
+ #endif
++#ifdef getc
++#undef getc
++#endif
+ 
+ namespace GAGCore
+ {

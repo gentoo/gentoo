@@ -1,0 +1,11 @@
+--- Makefile	2004-08-02 13:18:22.780070984 +0200
++++ Makefile	2004-08-02 13:19:07.776230528 +0200
+@@ -3,7 +3,7 @@
+ LIBDIR += -L/usr/X11R6/lib
+ LDFLAGS += -lXpm -lXext -lX11 -lm -s
+ #CFLAGS = -g #-DMONDEBUG
+-CFLAGS += ${GENTOO_CFLAGS} -W -Wall -pedantic -I/usr/X11R6/include #-DHI_INTS #undefine HI_INTS if your x86 SMP or alpha
++CFLAGS += ${GENTOO_CFLAGS} -W -Wall -pedantic -I/usr/X11R6/include -DHI_INTS #undefine HI_INTS if your x86 SMP or alpha
+ 
+ BIN = wmsysmon
+ OBJS =	wmgeneral.o \

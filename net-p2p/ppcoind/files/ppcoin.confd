@@ -1,0 +1,10 @@
+# Config file for /etc/init.d/ppcoind
+
+# owner of ppciond process (don't change, must be existing)
+PPCOIN_USER="ppcoin"
+
+# See http://www.bitcoin.org/smf/index.php?topic=1063
+PPCOIN_OPTS="${PPCOIN_OPTS}"
+
+# nice level
+NICELEVEL="19"

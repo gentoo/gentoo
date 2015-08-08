@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-p2p category contains peer-to-peer networking applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-p2p enthält Peer-to-Peer-Software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-p2p contiene aplicaciones peer-to-peer.
+	</longdescription>
+	<longdescription lang="ja">
+		net-p2pカテゴリーにはピア・トゥ・ピアの
+		ネットワーキング・アプリケーションが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-p2p categorie bevat peer-to-peer netwerkapplicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-p2p chứa các phần mềm mạng ngang hàng (peer-to-peer).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-p2p contiene applicazioni peer-to-peer.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-p2p contém aplicações de rede peer-to-peer.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-p2p zawiera programy służące do wymiany plików w sieciach
+		peer-to-peer.
+	</longdescription>
+</catmetadata>
+

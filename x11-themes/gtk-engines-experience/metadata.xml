@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnome</herd>
+  <longdescription>
+    This engine is a very flexible pixmap based GTK-Engine. It is able
+    to draw widgets as a stack of multiple images. Each of the images
+    can be manipulated in different ways before being drawn. You can,
+    for example, change the color, rotate and mirror images.
+  </longdescription>
+</pkgmetadata>

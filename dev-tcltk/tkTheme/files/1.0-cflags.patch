@@ -1,0 +1,18 @@
+ configure |    4 +---
+ 1 files changed, 1 insertions(+), 3 deletions(-)
+
+diff --git a/configure b/configure
+index 373c332..6fc1a14 100755
+--- a/configure
++++ b/configure
+@@ -3341,9 +3341,7 @@ fi
+ 
+ 
+ if test "${SHARED_BUILD}" = "1" ; then
+-    CFLAGS='${CFLAGS_DEFAULT} ${CFLAGS_WARNING} ${SHLIB_CFLAGS}'
+-else
+-    CFLAGS='${CFLAGS_DEFAULT} ${CFLAGS_WARNING}'
++    CFLAGS+=' ${SHLIB_CFLAGS}'
+ fi
+ 
+ #--------------------------------------------------------------------

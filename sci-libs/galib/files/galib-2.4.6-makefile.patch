@@ -1,0 +1,12 @@
+--- galib246/ga/makefile.sources	2000-02-03 14:00:46.000000000 -0600
++++ galib246-new/ga/makefile.sources	2006-04-30 09:30:13.000000000 -0500
+@@ -8,7 +8,8 @@
+  GA1DBinStrGenome.h GA2DBinStrGenome.h GA3DBinStrGenome.h GABin2DecGenome.h \
+  GA1DArrayGenome.h GA2DArrayGenome.h GA3DArrayGenome.h \
+  GAStringGenome.h GARealGenome.h \
+- GATreeBASE.h GATree.h GATreeGenome.h GAListBASE.h GAList.h GAListGenome.h 
++ GATreeBASE.h GATree.h GATreeGenome.h GAListBASE.h GAList.h GAListGenome.h \
++ std_stream.h
+ SRCS= garandom.C gaerror.C GAParameter.C GAStatistics.C \
+  GABaseGA.C GASStateGA.C GASimpleGA.C GAIncGA.C GADemeGA.C GADCrowdingGA.C \
+  GASelector.C GAScaling.C GAPopulation.C GAGenome.C \

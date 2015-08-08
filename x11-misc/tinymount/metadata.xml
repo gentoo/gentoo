@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>qt</herd>
+  <herd>desktop-misc</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>limanski@narod.ru</email>
+    <name>Mike Limansky</name>
+    <description>Both upstream and ebuild author</description>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">limansky/tinymount</remote-id>
+  </upstream>
+</pkgmetadata>

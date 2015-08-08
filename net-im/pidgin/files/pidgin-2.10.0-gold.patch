@@ -1,0 +1,30 @@
+ pidgin/Makefile.am |    2 +-
+ pidgin/Makefile.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pidgin/Makefile.am b/pidgin/Makefile.am
+index b6a5bd4..96d207d 100644
+--- a/pidgin/Makefile.am
++++ b/pidgin/Makefile.am
+@@ -158,7 +158,7 @@ pidgin_LDADD = \
+ 	$(GTKSPELL_LIBS) \
+ 	$(LIBXML_LIBS) \
+ 	$(GTK_LIBS) \
+-	$(top_builddir)/libpurple/libpurple.la
++	$(top_builddir)/libpurple/libpurple.la -lm
+ 
+ if USE_INTERNAL_LIBGADU
+ INTGG_CFLAGS = -DUSE_INTERNAL_LIBGADU
+diff --git a/pidgin/Makefile.in b/pidgin/Makefile.in
+index 615c196..0293e5c 100644
+--- a/pidgin/Makefile.in
++++ b/pidgin/Makefile.in
+@@ -607,7 +607,7 @@ EXTRA_DIST = \
+ @ENABLE_GTK_TRUE@	$(GTKSPELL_LIBS) \
+ @ENABLE_GTK_TRUE@	$(LIBXML_LIBS) \
+ @ENABLE_GTK_TRUE@	$(GTK_LIBS) \
+-@ENABLE_GTK_TRUE@	$(top_builddir)/libpurple/libpurple.la
++@ENABLE_GTK_TRUE@	$(top_builddir)/libpurple/libpurple.la -lm
+ 
+ @ENABLE_GTK_TRUE@@USE_INTERNAL_LIBGADU_TRUE@INTGG_CFLAGS = -DUSE_INTERNAL_LIBGADU
+ @ENABLE_GTK_TRUE@AM_CPPFLAGS = \

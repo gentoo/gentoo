@@ -1,0 +1,9 @@
+diff -durN safecat-1.11.orig/maildir.sh safecat-1.11/maildir.sh
+--- safecat-1.11.orig/maildir.sh	2003-04-14 16:03:09.000000000 +0200
++++ safecat-1.11/maildir.sh	2003-04-14 16:03:56.000000000 +0200
+@@ -1,4 +1,4 @@
+ # Copyright (c) 2000, Len Budney. See COPYING for details.
+ 
+ exec \
+-HOME/bin/safecat "$1"/tmp "$1"/new
++/usr/bin/safecat "$1"/tmp "$1"/new

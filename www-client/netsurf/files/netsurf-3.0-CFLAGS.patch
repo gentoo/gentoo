@@ -1,0 +1,77 @@
+--- netsurf-3.0/Makefile.defaults
++++ netsurf-3.0/Makefile.defaults
+@@ -93,7 +93,6 @@
+ NETSURF_USE_LIBICONV_PLUG := YES
+ 
+ # Initial CFLAGS. Optimisation level etc. tend to be target specific.
+-CFLAGS :=
+ 
+ # Default installation/execution prefix
+ PREFIX ?= /usr/local
+--- netsurf-3.0/framebuffer/Makefile.defaults
++++ netsurf-3.0/framebuffer/Makefile.defaults
+@@ -3,7 +3,6 @@
+ # ----------------------------------------------------------------------------
+ 
+   # Optimisation levels
+-  CFLAGS += -O2
+ 
+   # Framebuffer default surface provider.
+   # Valid values are: x, sdl, linux, vnc, able, 
+--- netsurf-3.0/framebuffer/Makefile.target
++++ netsurf-3.0/framebuffer/Makefile.target
+@@ -47,12 +47,12 @@
+ $(eval $(call pkg_config_find_and_add_enabled,MOZJS,mozjs185,JavaScript))
+ $(eval $(call pkg_config_find_and_add_enabled,JS,mozilla-js,JavaScript))
+ 
+-CFLAGS += -std=c99 -g -Dsmall $(WARNFLAGS) 	\
++CFLAGS += -std=c99 -Dsmall $(WARNFLAGS) 	\
+ 	  -D_BSD_SOURCE \
+ 	  -D_XOPEN_SOURCE=600 \
+ 	  -D_POSIX_C_SOURCE=200112L \
+ 	  $(shell $(PKG_CONFIG) --cflags libnsfb libhubbub libcss openssl) \
+-	  $(shell xml2-config --cflags)
++	  $(shell ${PKG_CONFIG} libxml-2.0 --cflags)
+ 
+ LDFLAGS += -lm -Wl,--whole-archive $(shell $(PKG_CONFIG) --libs libnsfb) -Wl,--no-whole-archive 
+ 
+--- netsurf-3.0/gtk/Makefile.defaults
++++ netsurf-3.0/gtk/Makefile.defaults
+@@ -31,4 +31,3 @@
+   NETSURF_GTK_MAJOR := 2
+ 
+   # Optimisation levels
+-  CFLAGS += -O2
+--- netsurf-3.0/gtk/Makefile.target
++++ netsurf-3.0/gtk/Makefile.target
+@@ -51,7 +51,7 @@
+ 		-D_POSIX_C_SOURCE=200112L \
+ 		-D_NETBSD_SOURCE \
+ 		-DGTK_RESPATH=\"$(NETSURF_GTK_RESOURCES)\" \
+-		$(WARNFLAGS) -g
++		$(WARNFLAGS)
+ 
+ # non optional pkg-configed libs
+ $(eval $(call pkg_config_find_and_add,libcss,CSS))
+--- netsurf-3.0/test/Makefile
++++ netsurf-3.0/test/Makefile
+@@ -1,8 +1,8 @@
+-CFLAGS := -std=c99 -g -O0 -D_BSD_SOURCE -D_POSIX_C_SOURCE -I.. \
++CFLAGS := -std=c99 -D_BSD_SOURCE -D_POSIX_C_SOURCE -I.. \
+ 		$(shell pkg-config --cflags libcurl)
+ LDFLAGS := $(shell pkg-config --libs libcurl) -lz
+ 
+-llcache_CFLAGS := $(shell pkg-config --cflags libparserutils libwapcaplet libdom) -O2
++llcache_CFLAGS := $(shell pkg-config --cflags libparserutils libwapcaplet libdom)
+ llcache_LDFLAGS := $(shell pkg-config --libs libparserutils libwapcaplet libdom)
+ 
+ llcache_SRCS := content/fetch.c content/fetchers/curl.c \
+@@ -19,7 +19,7 @@
+ 		utils/filename.c utils/nsurl.c utils/corestrings.c \
+ 		test/urldbtest.c
+ 
+-urldbtest_CFLAGS := $(shell pkg-config --cflags libwapcaplet libdom) -O2
++urldbtest_CFLAGS := $(shell pkg-config --cflags libwapcaplet libdom)
+ urldbtest_LDFLAGS := $(shell pkg-config --libs libwapcaplet libdom)
+ 
+ nsurl_SRCS := utils/log.c utils/nsurl.c test/nsurl.c

@@ -1,0 +1,20 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# The host to bind to (defaults to "localhost").
+VBOXWEBSRV_HOST="localhost"
+
+# Which port to on the host (defaults to 18083).
+VBOXWEBSRV_PORT="18083"
+
+# Session timeout, in seconds. (defaults to 20).
+VBOXWEBSRV_TIMEOUT=20
+
+# The interval in which the webservice checks for 
+# timed-out clients, in seconds. Normally does not
+# need to be changed (defaults to 5).
+VBOXWEBSRV_INTERVAL=5
+
+# User under which vboxwebsrv is running
+VBOXWEBSRV_USER="root"

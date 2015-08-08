@@ -1,0 +1,21 @@
+commit 459f460cfd4a166d5108c3e88c2cad294b32fb74
+Author: jre <jre-phoenix@users.sourceforge.net>
+Date:   Mon May 20 19:26:25 2013 +0200
+
+    fix: install systemd file only if configured
+
+diff --git a/pgl/pglcmd/Makefile.am b/pgl/pglcmd/Makefile.am
+index 132a475..c7f34a5 100644
+--- a/pgl/pglcmd/Makefile.am
++++ b/pgl/pglcmd/Makefile.am
+@@ -48,8 +48,10 @@ pgllib_DATA = \
+ 	pglcmd.lib \
+ 	pglcmd.main
+ 
++if HAVE_SYSTEMD
+ systemdsystemunit_DATA = \
+ 	init/pgl.service
++endif
+ 
+ # Don't update PATH here anymore, because on user's make it doesn't contain
+ # [/usr]/sbin

@@ -1,0 +1,11 @@
+--- src/init.cpp
++++ src/init.cpp
+@@ -26,6 +26,8 @@
+ #include "scorescreen.h"
+ #include <fstream>
+ #include <iostream>
++#include <cstdlib>
++#include <cstring>
+ using namespace std; 
+ 
+ 

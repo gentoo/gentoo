@@ -1,0 +1,49 @@
+diff --git a/wscript b/wscript
+index dc1866e..c5b800c 100644
+--- a/wscript
++++ b/wscript
+@@ -6,18 +6,21 @@ out = 'build'
+ 
+ import Options
+ import sys
++import os
+ 
+ subdirs = 'src tools'
+ 
+ def options(opt):
+   opt.load('compiler_cxx')
+   opt.load('unittest_gtest')
++  opt.load('gnu_dirs')
+   
+   opt.recurse(subdirs)
+ 
+ def configure(conf):
+   conf.check_tool('compiler_cxx')
+   conf.check_tool('unittest_gtest')
++  conf.check_tool('gnu_dirs')
+ 
+   conf.env.append_unique(
+     'CXXFLAGS',
+@@ -28,6 +31,8 @@ def configure(conf):
+   conf.recurse(subdirs)
+ 
+   conf.define('PFICOMMON_VERSION', VERSION)
++
++  conf.env['VERSION'] = VERSION
+   
+   conf.write_config_header('src/pfi-config.h')
+   
+@@ -72,11 +77,11 @@ def build(bld):
+   bld(source = 'pficommon.pc.in',
+       prefix = bld.env['PREFIX'],
+       exec_prefix = '${prefix}',
+-      libdir = '${prefix}/lib',
++      libdir = bld.env['LIBDIR'],
+       includedir = '${prefix}/include',
+       PACKAGE = APPNAME,
+       VERSION = VERSION)
+ 
+-  bld.install_files('${PREFIX}/lib/pkgconfig', 'pficommon.pc')
++  bld.install_files(os.path.join(bld.env['LIBDIR'], 'pkgconfig'), 'pficommon.pc')
+   
+   bld.recurse(subdirs)

@@ -1,0 +1,66 @@
+#!/sbin/runscript
+
+description='Start/stop the preload daemon'
+extra_started_commands='dump reload'
+description_dump='Dump the config and state of the daemon (to the logfile)'
+description_reload='Reload the daemon'
+
+PIDFILE="/var/run/preload.pid"
+
+depend() {
+	after localmount
+	use netmount ntpd
+}
+
+dump() {
+	local pid
+	pid=$(cat ${PIDFILE})
+
+	ebegin "Dumping the config and state of preload"
+	if [ -n "${pid}" ]; then
+		kill -USR1 ${pid}
+		kill -USR2 ${pid}
+	fi
+	eend ${?} && \
+	einfo "These should have been written to ${PRELOAD_LOGFILE:-/var/log/preload.log}"
+}
+
+reload() {
+	ebegin "Reloading preload"
+	kill -HUP $(cat ${PIDFILE})
+	eend ${?}
+}
+
+start() {
+	local ionice
+
+	ebegin "Starting preload"
+
+	#MIN_MEMORY=${MIN_MEMORY:-256}
+	# Check for > MIN_MEMORY MB
+	#free -m | awk '/Mem:/ {exit ($2 >= ('"$MIN_MEMORY"'))?0:1}' || exit 0
+
+	# First try to start with ionice; if that fails, try without.
+	for ionice in "ionice ${IONICE_OPTS:--c3}" ''; do
+		# Avoid 'ionice not found' errors
+		${ionice:-true} >/dev/null 2>&1 || continue
+
+		${ionice} start-stop-daemon --start --quiet --background \
+			--make-pidfile --pidfile ${PIDFILE} \
+			--exec /usr/sbin/preload -- \
+			-l ${PRELOAD_LOGFILE:-/var/log/preload.log} \
+			-V ${PRELOAD_VERBOSITY:-1} \
+			-n ${PRELOAD_NICE:-15} \
+			-s ${PRELOAD_STATEFILE:-""} \
+			${PRELOAD_OPTS} -f \
+			&& break
+	done
+
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping preload (this may take a while)"
+	start-stop-daemon --stop --retry 120 --quiet --pidfile ${PIDFILE}
+	eend ${?}
+}

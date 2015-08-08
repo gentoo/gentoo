@@ -1,0 +1,39 @@
+From 5b8f4e58b4e54bcdfa6f287e01f91d9dfd4e5a14 Mon Sep 17 00:00:00 2001
+From: Justin Lecher <jlec@gentoo.org>
+Date: Sun, 25 Mar 2012 14:12:21 +0200
+Subject: [PATCH] Correct path for multilib installation.
+
+Libraries should go into lib64 not lib on native 64bit. Therefore we can use the LIBDIR detected by cmake.
+---
+ CMakeLists.txt |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 940ebf4..7eb3db4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -426,8 +426,8 @@ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
+ ## These variables are used in all install-targets
+ IF (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ 	SET(BALL_RUNTIME_INSTALL_DIRECTORY "bin")
+-	SET(BALL_LIBRARY_INSTALL_DIRECTORY "lib")
+-	SET(BALL_ARCHIVE_INSTALL_DIRECTORY "lib")
++	SET(BALL_LIBRARY_INSTALL_DIRECTORY ${CMAKE_INSTALL_LIBDIR})
++	SET(BALL_ARCHIVE_INSTALL_DIRECTORY ${CMAKE_INSTALL_LIBDIR})
+ 	SET(BALL_HEADER_INSTALL_DIRECTORY   ".")
+ 	SET(BALL_DATA_INSTALL_DIRECTORY    "share/BALL")
+ 	SET(BALL_DOCUMENTATION_INSTALL_DIRECTORY    "share/BALL/doc")
+@@ -435,8 +435,8 @@ IF (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ 		SET(BALL_PYTHON_INSTALL_DIRECTORY  "bin")
+ 		SET(BALL_PLUGIN_INSTALL_DIRECTORY  "bin")
+ 	ELSE()
+-		SET(BALL_PYTHON_INSTALL_DIRECTORY  "lib")
+-		SET(BALL_PLUGIN_INSTALL_DIRECTORY  "lib")
++		SET(BALL_PYTHON_INSTALL_DIRECTORY  ${CMAKE_INSTALL_LIBDIR})
++		SET(BALL_PLUGIN_INSTALL_DIRECTORY  ${CMAKE_INSTALL_LIBDIR})
+ 	ENDIF()
+ ELSE()
+ 	SET(BALL_BUNDLE_INSTALL_DIRECTORY  					"Applications")
+-- 
+1.7.8.5
+

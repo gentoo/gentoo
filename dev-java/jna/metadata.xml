@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>java</herd>
+  <use>
+    <flag name="awt">Enables support for Java AWT</flag>
+    <flag name="nio-buffers">Enables support for NIO buffers</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">twall/jna#readme</remote-id>
+  </upstream>
+</pkgmetadata>

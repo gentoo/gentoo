@@ -1,0 +1,11 @@
+# Set the log level (0-5)
+#LOG_LEVEL=2
+
+# Specify the log domains.  Comma-separated, choose from: config,
+# daap, db, httpd, main, mdns, misc, rsp, scan, xcode, event, remote,
+# dacp, ffmpeg, artwork, player, raop, laudio, dmap, dbperf, spotify,
+# lastfm, cache
+#LOG_DOMAINS=main,config
+
+# ffid to be broadcast in mDNS records
+#FFID=homeserver

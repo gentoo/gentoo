@@ -1,0 +1,159 @@
+--- lshw-B.02.17.orig/src/Makefile
++++ lshw-B.02.17/src/Makefile
+@@ -21,11 +21,11 @@
+ CXX?=c++
+ INCLUDES=-I./core/
+ DEFINES=-DPREFIX=\"$(PREFIX)\" -DSBINDIR=\"$(SBINDIR)\" -DMANDIR=\"$(MANDIR)\" -DDATADIR=\"$(DATADIR)\"
+-CXXFLAGS=-g -Wall -g $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
++CXXFLAGS += -Wall $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
+ ifeq ($(SQLITE), 1)
+ 	CXXFLAGS+= -DSQLITE $(shell pkg-config --cflags sqlite3)
+ endif
+-LDFLAGS=-L./core/ -g
++LDFLAGS += -L./core/
+ ifneq ($(shell $(LD) --help 2| grep -- --as-needed), )
+ 	LDFLAGS+= -Wl,--as-needed
+ endif
+@@ -39,27 +39,25 @@
+ export LIBS
+ export LDFLAGS
+ 
+-DATAFILES = pci.ids usb.ids oui.txt manuf.txt
+-
+-all: $(PACKAGENAME) $(PACKAGENAME).1 $(DATAFILES)
++all: $(PACKAGENAME) $(PACKAGENAME).1
+ 
+ .cc.o:
+ 	$(CXX) $(CXXFLAGS) -c $< -o $@
+ 
+ .PHONY: core
+ core:
+-	+make -C core all
++	$(MAKE) -C core all
+ 
+ $(PACKAGENAME): core $(PACKAGENAME).o
+ 	$(CXX) $(LDFLAGS) -o $@ $(PACKAGENAME).o $(LIBS)
+ 
+ .PHONY: po
+ po:
+-	+make -C po all
++	$(MAKE) -C po all
+ 
+ .PHONY: gui
+ gui: core
+-	+make -C gui all
++	$(MAKE) -C gui all
+ 
+ .PHONY: nologo
+ nologo:
+@@ -70,7 +68,6 @@
+ 
+ $(PACKAGENAME)-static: core core/lib$(PACKAGENAME).a $(PACKAGENAME).o
+ 	$(CXX) $(LDSTATIC) $(LDFLAGS) -o $@ $(PACKAGENAME).o $(LIBS)
+-	$(STRIP) $@
+ 
+ .PHONY: compressed
+ compressed: $(PACKAGENAME)-compressed
+@@ -93,14 +90,13 @@
+ manuf.txt:
+ 	wget -O $@ http://anonsvn.wireshark.org/wireshark/trunk/manuf
+ 
+-install: all
++install:
+ 	$(INSTALL) -d -m 0755 $(DESTDIR)/$(SBINDIR)
+ 	$(INSTALL) -m 0755 $(PACKAGENAME) $(DESTDIR)/$(SBINDIR)
+ 	$(INSTALL) -d -m 0755 $(DESTDIR)/$(MANDIR)/man1
+ 	$(INSTALL) -m 0644 $(PACKAGENAME).1 $(DESTDIR)/$(MANDIR)/man1
+ 	$(INSTALL) -d -m 0755 $(DESTDIR)/$(DATADIR)/$(PACKAGENAME)
+-	$(INSTALL) -m 0644 $(DATAFILES) $(DESTDIR)/$(DATADIR)/$(PACKAGENAME)
+-	make -C po install
++	$(MAKE) -C po install
+ 
+ install-gui: gui
+ 	$(INSTALL) -d -m 0755 $(DESTDIR)/$(SBINDIR)
+@@ -112,8 +108,8 @@
+ 	
+ clean:
+ 	rm -f $(PACKAGENAME).o $(PACKAGENAME) $(PACKAGENAME)-static $(PACKAGENAME)-compressed
+-	make -C core clean
+-	make -C gui clean
++	$(MAKE) -C core clean
++	$(MAKE) -C gui clean
+ 
+ .timestamp:
+ 	date --utc +%Y%m%d%H%M%S > $@
+--- lshw-B.02.17.orig/src/core/Makefile
++++ lshw-B.02.17/src/core/Makefile
+@@ -1,10 +1,9 @@
+ PACKAGENAME?=lshw
+ 
+-CXX=c++
++CXX?=c++
+ INCLUDES=
+ DEFINES=-DPREFIX=\"$(PREFIX)\" -DSBINDIR=\"$(SBINDIR)\" -DMANDIR=\"$(MANDIR)\" -DDATADIR=\"$(DATADIR)\"
+-CXXFLAGS?=-g -Wall $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
+-LDFLAGS=
++CXXFLAGS += -Wall $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
+ LDSTATIC=
+ LIBS=
+ 
+--- lshw-B.02.17.orig/src/core/pci.cc
++++ lshw-B.02.17/src/core/pci.cc
+@@ -17,7 +17,7 @@
+ 
+ #define PROC_BUS_PCI "/proc/bus/pci"
+ #define SYS_BUS_PCI "/sys/bus/pci"
+-#define PCIID_PATH DATADIR"/pci.ids:/usr/share/lshw/pci.ids:/usr/local/share/pci.ids:/usr/share/pci.ids:/etc/pci.ids:/usr/share/hwdata/pci.ids:/usr/share/misc/pci.ids"
++#define PCIID_PATH "/usr/share/misc/pci.ids"
+ 
+ #define PCI_CLASS_REVISION      0x08              /* High 24 bits are class, low 8 revision */
+ #define PCI_VENDOR_ID           0x00    /* 16 bits */
+--- lshw-B.02.17.orig/src/core/usb.cc
++++ lshw-B.02.17/src/core/usb.cc
+@@ -27,7 +27,7 @@
+ 
+ #define PROCBUSUSBDEVICES "/proc/bus/usb/devices"
+ #define SYSKERNELDEBUGUSBDEVICES "/sys/kernel/debug/usb/devices"
+-#define USBID_PATH DATADIR"/usb.ids:/usr/share/lshw/usb.ids:/usr/local/share/usb.ids:/usr/share/usb.ids:/etc/usb.ids:/usr/share/hwdata/usb.ids:/usr/share/misc/usb.ids"
++#define USBID_PATH "/usr/share/misc/usb.ids"
+ 
+ #define USB_CLASS_PER_INTERFACE         0         /* for DeviceClass */
+ #define USB_CLASS_AUDIO                 1
+--- lshw-B.02.17.orig/src/gui/Makefile
++++ lshw-B.02.17/src/gui/Makefile
+@@ -1,5 +1,7 @@
+ PACKAGENAME?=lshw
+ 
++SQLITE?=0
++
+ CXX?=c++
+ CC?=cc
+ STRIP?=strip
+@@ -8,13 +10,14 @@
+ DEFINES=-DPREFIX=\"$(PREFIX)\" -DSBINDIR=\"$(SBINDIR)\" -DMANDIR=\"$(MANDIR)\" -DDATADIR=\"$(DATADIR)\"
+ GTKINCLUDES=$(shell pkg-config gtk+-2.0 --cflags)
+ INCLUDES=-I../core $(GTKINCLUDES)
+-CXXFLAGS=-g -Wall $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
++CXXFLAGS += -Wall $(INCLUDES) $(DEFINES) $(RPM_OPT_FLAGS)
+ CFLAGS=$(CXXFLAGS) $(DEFINES)
+ GTKLIBS=$(shell pkg-config gtk+-2.0 gmodule-2.0 --libs)
+-LIBS=-L../core -llshw -lresolv -lsqlite3 $(GTKLIBS)
+-LDFLAGS=
+-ifneq ($(shell $(LD) --help 2| grep -- --as-needed), )
+-	LDFLAGS+= -Wl,--as-needed
++LIBS=-L../core -llshw -lresolv $(GTKLIBS)
++
++ifeq ($(SQLITE), 1)
++	CXXFLAGS+= -DSQLITE $(shell pkg-config --cflags sqlite3)
++	LIBS+= $(shell pkg-config --libs sqlite3)
+ endif
+ 
+ OBJS = gtk-lshw.o callbacks.o engine.o print-gui.o stock.o
+@@ -39,7 +42,6 @@
+ 	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ install: all
+-	$(STRIP) gtk-$(PACKAGENAME)
+ 	
+ clean:
+ 	rm -f $(OBJS) gtk-$(PACKAGENAME) gtk-lshw.glade.bak gtk-lshw.gladep.bak callbacks.c.bak callbacks.h.bak Makefile.bak

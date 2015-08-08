@@ -1,0 +1,118 @@
+Originally from https://github.com/mate-desktop/mate-desktop/commit/fcede97471263b7f145ceeb988f569d4aa9129b8
+Ported to gnome-desktop by Matthew Turnbull <sparky@bluefang-logic.com>
+
+Fixes nautilus-2 thumbnailing with >=glib-2.34
+
+https://bugs.gentoo.org/show_bug.cgi?id=450930
+
+diff -rupN a/libgnome-desktop/gnome-desktop-thumbnail.c b/libgnome-desktop/gnome-desktop-thumbnail.c
+--- a/libgnome-desktop/gnome-desktop-thumbnail.c
++++ b/libgnome-desktop/gnome-desktop-thumbnail.c
+@@ -526,8 +526,13 @@ gnome_desktop_thumbnail_factory_lookup (
+ 
+   file = g_strconcat (g_checksum_get_string (checksum), ".png", NULL);
+   
++#if GLIB_CHECK_VERSION (2, 34, 0)
++  path = g_build_filename (g_get_user_cache_dir (),
++			   "thumbnails",
++#else
+   path = g_build_filename (g_get_home_dir (),
+ 			   ".thumbnails",
++#endif
+ 			   (priv->size == GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL)?"normal":"large",
+ 			   file,
+ 			   NULL);
+@@ -587,8 +592,13 @@ gnome_desktop_thumbnail_factory_has_vali
+ 
+   file = g_strconcat (g_checksum_get_string (checksum), ".png", NULL);
+ 
++#if GLIB_CHECK_VERSION (2, 34, 0)
++  path = g_build_filename (g_get_user_cache_dir (),
++			   "thumbnails/fail",
++#else
+   path = g_build_filename (g_get_home_dir (),
+ 			   ".thumbnails/fail",
++#endif
+ 			   appname,
+ 			   file,
+ 			   NULL);
+@@ -917,12 +927,17 @@ make_thumbnail_dirs (GnomeDesktopThumbna
+ 
+   res = FALSE;
+ 
++#if GLIB_CHECK_VERSION (2, 34, 0)
++  thumbnail_dir = g_build_filename (g_get_user_cache_dir (),
++				    "thumbnails",
++#else
+   thumbnail_dir = g_build_filename (g_get_home_dir (),
+ 				    ".thumbnails",
++#endif
+ 				    NULL);
+   if (!g_file_test (thumbnail_dir, G_FILE_TEST_IS_DIR))
+     {
+-      g_mkdir (thumbnail_dir, 0700);
++      g_mkdir_with_parents (thumbnail_dir, 0700);
+       res = TRUE;
+     }
+ 
+@@ -951,12 +966,17 @@ make_thumbnail_fail_dirs (GnomeDesktopTh
+ 
+   res = FALSE;
+ 
++#if GLIB_CHECK_VERSION (2, 34, 0)
++  thumbnail_dir = g_build_filename (g_get_user_cache_dir (),
++				    "thumbnails",
++#else
+   thumbnail_dir = g_build_filename (g_get_home_dir (),
+ 				    ".thumbnails",
++#endif
+ 				    NULL);
+   if (!g_file_test (thumbnail_dir, G_FILE_TEST_IS_DIR))
+     {
+-      g_mkdir (thumbnail_dir, 0700);
++      g_mkdir_with_parents (thumbnail_dir, 0700);
+       res = TRUE;
+     }
+ 
+@@ -1025,8 +1045,13 @@ gnome_desktop_thumbnail_factory_save_thu
+ 
+   file = g_strconcat (g_checksum_get_string (checksum), ".png", NULL);
+ 
++#if GLIB_CHECK_VERSION (2, 34, 0)
++  path = g_build_filename (g_get_user_cache_dir (),
++			   "thumbnails",
++#else
+   path = g_build_filename (g_get_home_dir (),
+ 			   ".thumbnails",
++#endif
+ 			   (priv->size == GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL)?"normal":"large",
+ 			   file,
+ 			   NULL);
+@@ -1129,8 +1154,13 @@ gnome_desktop_thumbnail_factory_create_f
+ 
+   file = g_strconcat (g_checksum_get_string (checksum), ".png", NULL);
+ 
++#if GLIB_CHECK_VERSION (2, 34, 0)
++  path = g_build_filename (g_get_user_cache_dir (),
++			   "thumbnails/fail",
++#else
+   path = g_build_filename (g_get_home_dir (),
+ 			   ".thumbnails/fail",
++#endif
+ 			   appname,
+ 			   file,
+ 			   NULL);
+@@ -1221,8 +1251,13 @@ gnome_desktop_thumbnail_path_for_uri (co
+   file = g_strconcat (md5, ".png", NULL);
+   g_free (md5);
+   
++#if GLIB_CHECK_VERSION (2, 34, 0)
++  path = g_build_filename (g_get_user_cache_dir (),
++			   "thumbnails",
++#else
+   path = g_build_filename (g_get_home_dir (),
+ 			   ".thumbnails",
++#endif
+ 			   (size == GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL)?"normal":"large",
+ 			   file,
+ 			   NULL);

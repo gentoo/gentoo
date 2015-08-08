@@ -1,0 +1,43 @@
+ wrap.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/wrap.c b/wrap.c
+index 7c89dc8..745d1ec 100644
+--- a/wrap.c
++++ b/wrap.c
+@@ -105,7 +105,7 @@ int main(int argc, char **argv)
+ 	{
+ 	*wp = 0;
+ 	putchar('\n');
+-	printf(wbuf);
++	printf("%s", wbuf);
+ 	putchar(c);
+ 	putchar('\n');
+ 	wp = wbuf, ll = wl = 0;
+@@ -123,7 +123,7 @@ int main(int argc, char **argv)
+ 	{
+ 	*wp = 0;
+ 	if(ll) putchar(' '), ll++;
+-	printf(wbuf);
++	printf("%s", wbuf);
+ 	ll += wl;
+ 	wl = 0,	wp = wbuf;
+ 	}
+@@ -131,7 +131,7 @@ int main(int argc, char **argv)
+ 	{
+ 	*wp = 0;
+ 	putchar('\n');
+-	printf(wbuf);
++	printf("%s", wbuf);
+ 	ll = wl;
+ 	wl = 0, wp = wbuf;
+ 	}
+@@ -148,7 +148,7 @@ int main(int argc, char **argv)
+       if(ll) putchar(' ');
+       }
+     else putchar('\n');
+-    printf(wbuf);
++    printf("%s", wbuf);
+     }
+   putchar('\n');
+   free(wbuf);

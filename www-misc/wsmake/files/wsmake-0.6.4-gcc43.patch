@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/show_bug.cgi?id=251745
+https://sourceforge.net/tracker/index.php?func=detail&aid=2520894&group_id=5982&atid=105982
+
+--- libwsmake/wsSubTag.cpp
++++ libwsmake/wsSubTag.cpp.new
+@@ -22,6 +22,7 @@
+  ***********************************************************************/
+ #include <cstdio>
+ #include <cstring>
++#include <cstdlib>
+ 
+ #include <unistd.h>
+ #ifdef HAVE_SYS_WAIT_H
+--- libwsmake/wsWebPage.cpp
++++ libwsmake/wsWebPage.cpp.new
+@@ -23,6 +23,7 @@
+ #include <cassert>
+ #include <cerrno>
+ #include <ctime>
++#include <cstdlib>
+ 
+ #include "wsmake.h"
+ 
+--- libwsmake/wsUtil.cpp
++++ libwsmake/wsUtil.cpp.new
+@@ -28,6 +28,7 @@
+ #include <cassert>
+ #include <cerrno>
+ #include <cstring>
++#include <cstdlib>
+ 
+ #ifdef HAVE_UTIME_H
+ #include <utime.h>

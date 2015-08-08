@@ -1,0 +1,39 @@
+--- SConstruct
++++ SConstruct
+@@ -36,12 +36,25 @@
+ 
+ ### Options exposed via SCons
+ opts = Options('custom.py')
+-opts.Add('opt', 'Compiler flags for optimization/debugging', "-g -O3")
++opts.Add('opt', 'Compiler flags for optimization/debugging', "")
+ opts.Add('warn', 'Compiler flags for warnings', "-Wall -D__warn_unused_result__=__far__")
+ opts.Add('prefix', 'The installation root for iulib', "/usr/local")
+ 
++env = Environment(options=opts)
++
++import SCons.Util
++if os.environ.has_key('CC'):
++	env['CC'] = os.environ['CC']
++if os.environ.has_key('CFLAGS'):
++	env['CCFLAGS'] += SCons.Util.CLVar(os.environ['CFLAGS'])
++if os.environ.has_key('CXX'):
++	env['CXX'] = os.environ['CXX']
++if os.environ.has_key('CXXFLAGS'):
++	env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++if os.environ.has_key('LDFLAGS'):
++	env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
++
+ ### globals
+-env = Environment(options=opts, CXXFLAGS="${opt} ${warn}")
+ Help(opts.GenerateHelpText(env))
+ conf = Configure(env)
+ if "-DUNSAFE" in env["opt"]:
+@@ -134,7 +147,7 @@
+                   src_suffix = '')
+ progs.Append(BUILDERS={'Test':test_builder})
+ 
+-if True: #"test" in COMMAND_LINE_TARGETS:
++if "test" in COMMAND_LINE_TARGETS:
+     for file in glob.glob("*/test-*.cc") + glob.glob("*/*/test-*.cc"):
+         if not file.startswith('vidio'):
+             progs.Program(file[:-3],file)

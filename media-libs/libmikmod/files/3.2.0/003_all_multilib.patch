@@ -1,0 +1,35 @@
+http://pkgs.fedoraproject.org/cgit/libmikmod.git/tree/libmikmod-multilib.patch
+
+--- libmikmod-config.in
++++ libmikmod-config.in
+@@ -5,7 +5,7 @@
+ exec_prefix_set=no
+ 
+ usage="\
+-Usage: libmikmod-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--libs] [--cflags] [--ldadd]"
++Usage: libmikmod-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--libs] [--libs32] [--libs64] [--cflags] [--ldadd]"
+ 
+ if test $# -eq 0 ; then
+ 	echo "${usage}" 1>&2
+@@ -49,9 +49,21 @@
+ 		echo @LIB_LDADD@
+ 	;;
+ 	--libs)
++		if [ -d /usr/lib64 ]; then
++    		    libdir=-L${exec_prefix}/lib64
++    		else
++    		    libdir=-L${exec_prefix}/lib
++    		fi
++		echo $libdir -lmikmod @LIBRARY_LIB@
++	;;
++	--libs32)
+ 		libdir=-L${exec_prefix}/lib
+ 		echo $libdir -lmikmod @LIBRARY_LIB@
+ 	;;
++	--libs64)
++		libdir=-L${exec_prefix}/lib64
++		echo $libdir -lmikmod @LIBRARY_LIB@
++	;;
+ 	*)
+ 		echo "${usage}" 1>&2
+ 		exit 1

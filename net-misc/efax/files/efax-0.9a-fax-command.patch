@@ -1,0 +1,10 @@
+--- fax	2010/07/11 02:05:19	1.1
++++ fax	2010/07/11 02:05:37
+@@ -773,6 +773,7 @@
+ 		$GS -q -sDEVICE=tiffg3 -r$RES -dNOPAUSE -dSAFER \
+ 		-sOutputFile=$BASENAME.%03d \
+ 		-sPAPERSIZE=$PAGE \
++		-dMaxStripSize=0 \
+ 		$BASENAME </dev/null >/dev/null )
+ 		;;
+ 	II*|MM*|P4*)

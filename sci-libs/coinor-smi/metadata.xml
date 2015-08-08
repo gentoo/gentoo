@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  The COIN-OR Stochastic Modeling Interface (SMI) is an interface for
+  problems in which uncertainty and optimization appear
+  together. There are many modeling and algorithmic approaches that
+  could belong here, like: recourse programming, chance constrained
+  programming, stochastic control and dynamic programming, robust
+  optimization, etc, etc. SMI is intended to be like OSI in the sense
+  that an SmiXX object is an implementation derived from a base class
+  that takes care of a number of commonly encountered programming
+  issues, like handling probability distributions, managing problem
+  generation, interacting with solvers to obtain solution information,
+  etc.
+</longdescription>
+</pkgmetadata>

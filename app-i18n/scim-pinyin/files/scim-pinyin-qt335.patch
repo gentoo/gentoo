@@ -1,0 +1,25 @@
+Index: scim-pinyin-0.5.91/skim/setupui/smartpinyinui.ui
+===================================================================
+--- scim-pinyin-0.5.91.orig/skim/setupui/smartpinyinui.ui
++++ scim-pinyin-0.5.91/skim/setupui/smartpinyinui.ui
+@@ -863,20 +863,4 @@
+     <tabstop>kcfg__IMEngine_Pinyin_DisablePhraseKey</tabstop>
+ </tabstops>
+ <layoutdefaults spacing="6" margin="11"/>
+-<includehints>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>skimeditshortcutbutton.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-</includehints>
+ </UI>

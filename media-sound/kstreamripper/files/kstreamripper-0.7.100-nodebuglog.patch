@@ -1,0 +1,11 @@
+diff -ruN kstreamripper.orig/src/version.h.cmake kstreamripper/src/version.h.cmake
+--- kstreamripper.orig/src/version.h.cmake	2011-09-07 19:54:40.000000000 +0200
++++ kstreamripper/src/version.h.cmake	2011-12-18 20:17:53.521611664 +0100
+@@ -21,6 +21,6 @@
+ 
+ /** This macro indicates that
+   * #myMessageOutput() should be included in the binary. */
+-#define CUSTOMMESSAGEHANDLER
++/* #define CUSTOMMESSAGEHANDLER */
+ 
+ #endif

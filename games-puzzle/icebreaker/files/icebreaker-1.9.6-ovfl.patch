@@ -1,0 +1,20 @@
+--- menu.c.old	2013-06-24 22:09:11.606750080 +0200
++++ menu.c	2013-06-24 22:25:51.635735351 +0200
+@@ -522,7 +522,7 @@
+ 		{ // "random", at the end/beginning of the list
+ 			
+ 			strcpy(options.theme,"random");
+-			snprintf(options.theme,MAXMENUVALUELENGTH,"random");
++			snprintf(options.theme,MAXTHEMENAMELENGTH,"random");
+ 			
+ 			settheme("linux"); // just for pretty
+ 			
+@@ -544,7 +544,7 @@
+ 			{
+ 				if (t<0) t=themecount;
+ 				strncpy(val,themelist[(t-1)%themecount],MAXMENUVALUELENGTH);
+-				snprintf(options.theme,MAXMENUVALUELENGTH,themelist[(t-1)%themecount]);
++				snprintf(options.theme,MAXTHEMENAMELENGTH,themelist[(t-1)%themecount]);
+ 			}
+ 			
+ 			settheme(options.theme);

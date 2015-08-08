@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<longdescription lang="en">
+		Normally, xteddy just sits around doing nothing. After all, that's what
+		teddy bears are for. Look at him, talk to him, place heavy windows on
+		top of him, zap him around until he becomes dizzy, do what you like; he
+		will always be your true (albeit virtual) friend. Now you can load other
+		pixmaps than the nice teddy, too.
+	</longdescription>
+</pkgmetadata>

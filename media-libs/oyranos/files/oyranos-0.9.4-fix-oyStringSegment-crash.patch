@@ -1,0 +1,25 @@
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Wed, 13 Mar 2013 13:59:19 +0000 (+0100)
+Subject: * [core]: fix oyStringSegment_() crash
+X-Git-Url: http://www.oyranos.org/scm?p=oyranos.git;a=commitdiff_plain;h=cf495d5ede29f7211e498217c4d06428f944bac3
+
+2013-04-21: backport to oyranos-0.9.1, remove unrelated oyStringReplace_ hunk
+
+* [core]: fix oyStringSegment_() crash
+---
+
+diff --git a/src/liboyranos_core/oyranos_string.c b/src/liboyranos_core/oyranos_string.c
+index 525ce7e..1d214c0 100644
+--- a/src/liboyranos_core/oyranos_string.c
++++ b/src/liboyranos_core/oyranos_string.c
+@@ -499,7 +499,7 @@ char *             oyStringSegment_  ( char              * text,
+   for(; i < segment; ++i)
+   {
+     t = oyStrchr_( t, delimiter );
+-    ++t;
++    if(t) ++t;
+   }
+ 
+   end_pos = (uintptr_t) oyStrchr_(t, delimiter);
+-- 
+1.5.6.5

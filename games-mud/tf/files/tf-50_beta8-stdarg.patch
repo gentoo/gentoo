@@ -1,0 +1,30 @@
+diff -U5 -r tf-50b8.orig/src/tfio.c tf-50b8/src/tfio.c
+--- src/tfio.c.orig	2007-01-13 18:12:39.000000000 -0500
++++ src/tfio.c	2007-02-02 16:50:12.000000000 -0500
+@@ -495,10 +495,11 @@
+     const char *q, *sval;
+     char *specptr, quote;
+     const conString *Sval;
+     int len, min, max, leftjust, stars;
+     attr_t attrs = buf->attrs;
++    va_list aq;
+ 
+     if (!(flags & SP_APPEND) && buf->data) Stringtrunc(buf, 0);
+     while (*fmt) {
+         if (*fmt != '%' || *++fmt == '%') {
+             for (q = fmt + 1; *q && *q != '%'; q++);
+@@ -520,11 +521,13 @@
+         switch (*fmt) {
+         case 'd': case 'i':
+         case 'x': case 'X': case 'u': case 'o':
+         case 'f': case 'e': case 'E': case 'g': case 'G':
+         case 'p':
+-            vsprintf(tempbuf, spec, ap);
++            va_copy(aq, ap);
++            vsprintf(tempbuf, spec, aq);
++            va_end(aq);
+             Stringcat(buf, tempbuf);
+             /* eat the arguments used by vsprintf() */
+             while (stars--) (void)va_arg(ap, int);
+             switch (*fmt) {
+             case 'd': case 'i':

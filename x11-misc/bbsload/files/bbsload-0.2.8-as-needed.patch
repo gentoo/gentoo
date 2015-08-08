@@ -1,0 +1,23 @@
+diff -NrU5 bbsload-0.2.8.orig/configure.in bbsload-0.2.8/configure.in
+--- bbsload-0.2.8.orig/configure.in	2008-12-18 00:44:23.000000000 +0100
++++ bbsload-0.2.8/configure.in	2008-12-18 00:46:33.000000000 +0100
+@@ -87,16 +87,16 @@
+ AC_PATH_X
+ AC_PATH_XTRA
+ 
+ CFLAGS="$CFLAGS $X_CFLAGS"
+ CXXFLAGS="$CXXFLAGS $X_CFLAGS"
+-LDFLAGS="$LDFLAGS $X_LIBS $X_PRE_LIBS"
++LIBS="$X_LIBS $X_PRE_LIBS"
+ dnl Checks for X libraries.
+-AC_CHECK_LIB(X11, XOpenDisplay, LDFLAGS="$LDFLAGS -lX11",
++AC_CHECK_LIB(X11, XOpenDisplay, LIBS="$LIBS -lX11",
+              AC_MSG_ERROR(XOpenDisplay not found in -lX11))
+ 
+-LDFLAGS="$LDFLAGS $X_EXTRA_LIBS"
++LIBS="$LIBS $X_EXTRA_LIBS"
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS(malloc.h)
+ 

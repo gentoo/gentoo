@@ -1,0 +1,180 @@
+diff -Naurw a/pgpool.conf.sample b/pgpool.conf.sample
+--- a/pgpool.conf.sample	2012-07-19 03:06:21.000000000 -0400
++++ b/pgpool.conf.sample	2012-08-14 07:33:39.200695855 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -43,10 +41,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -176,10 +172,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '@PGPOOL_SOCKETDIR@'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+diff -Naurw a/pgpool.conf.sample-master-slave b/pgpool.conf.sample-master-slave
+--- a/pgpool.conf.sample-master-slave	2012-07-16 22:56:37.000000000 -0400
++++ b/pgpool.conf.sample-master-slave	2012-08-14 07:33:39.201695842 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -43,10 +41,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -176,10 +172,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '@PGPOOL_SOCKETDIR@'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+diff -Naurw a/pgpool.conf.sample-replication b/pgpool.conf.sample-replication
+--- a/pgpool.conf.sample-replication	2012-07-16 22:56:37.000000000 -0400
++++ b/pgpool.conf.sample-replication	2012-08-14 07:33:39.202695830 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -43,10 +41,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -176,10 +172,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '@PGPOOL_SOCKETDIR@'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+diff -Naurw a/pgpool.conf.sample-stream b/pgpool.conf.sample-stream
+--- a/pgpool.conf.sample-stream	2012-07-16 22:56:37.000000000 -0400
++++ b/pgpool.conf.sample-stream	2012-08-14 07:33:39.203695818 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -43,10 +41,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -176,10 +172,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '@PGPOOL_SOCKETDIR@'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+diff -Naurw a/pool.h b/pool.h
+--- a/pool.h	2012-07-02 00:09:18.000000000 -0400
++++ b/pool.h	2012-08-14 07:26:56.005764702 -0400
+@@ -61,13 +61,13 @@
+ #define HBA_CONF_FILE_NAME "pool_hba.conf"
+ 
+ /* pid file directory */
+-#define DEFAULT_LOGDIR "/tmp"
++#define DEFAULT_LOGDIR "@PGPOOL_SOCKETDIR@"
+ 
+ /* Unix domain socket directory */
+-#define DEFAULT_SOCKET_DIR "/tmp"
++#define DEFAULT_SOCKET_DIR "@PGSQL_SOCKETDIR@"
+ 
+ /* pid file name */
+-#define DEFAULT_PID_FILE_NAME "/var/run/pgpool/pgpool.pid"
++#define DEFAULT_PID_FILE_NAME "@PGPOOL_SOCKETDIR@/pgpool.pid"
+ 
+ /* status file name */
+ #define STATUS_FILE_NAME "pgpool_status"

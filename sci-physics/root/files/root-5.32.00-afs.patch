@@ -1,0 +1,33 @@
+--- root/net/auth/src/TAFS.cxx.orig	2011-12-04 00:56:29.405007770 +0400
++++ root/net/auth/src/TAFS.cxx	2011-12-04 00:56:35.534709259 +0400
+@@ -138,7 +138,7 @@
+       } else {
+          if (isatty(0) != 0 && isatty(1) != 0) {
+             Gl_config("noecho", 1);
+-            pw = Getline((char *) prompt.Data());
++            pw = const_cast<char *>( Getline((char *) prompt.Data()) );
+             Gl_config("noecho", 0);
+          } else {
+             Warning("TAFS", "not tty: cannot prompt for passwd: failure");
+--- root/core/clib/src/strlcat.c.orig	2011-12-04 01:49:26.495179487 +0400
++++ root/core/clib/src/strlcat.c	2011-12-04 01:50:41.407524763 +0400
+@@ -38,7 +38,7 @@
+  * Returns strlen(src) + MIN(siz, strlen(initial dst)).
+  * If retval >= siz, truncation occurred.
+  */
+-size_t
++size_t __attribute__((weak))
+ strlcat(char *dst, const char *src, size_t siz)
+ {
+         register char *d = dst;
+--- root/core/clib/src/strlcpy.c.orig	2011-12-04 01:49:34.329797251 +0400
++++ root/core/clib/src/strlcpy.c	2011-12-04 01:50:49.051151843 +0400
+@@ -36,7 +36,7 @@
+  * will be copied.  Always NUL terminates (unless siz == 0).
+  * Returns strlen(src); if retval >= siz, truncation occurred.
+  */
+-size_t
++size_t __attribute__((weak))
+ strlcpy(char *dst, const char *src, size_t siz)
+ {
+         register char *d = dst;

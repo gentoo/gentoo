@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-lua category contains libraries, utilities or
+		bindings written in or for the Lua programming language. 
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-lua enthält Bibliotheken und Werkzeuge für die
+		Programmiersprache Lua.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-lua contiene librerias y utilidades referentes al
+		lenguaje de programación Lua.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-lua zawiera biblioteki oraz narzędzia związane
+		z językiem programowania Lua.
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-lua categorie bevat bibliotheken en hulpmiddelen voor het
+		gebruik	van de programmeertaal Lua.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-lua chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Lua.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-lua contiene librerie ed utilità per il linguaggio
+		di programmazione Lua.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-lua contém bibliotecas, utilitários e
+		bindings escritos em ou para a linguagem de programação Lua.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-lua zawiera biblioteki, narzędzia i powiązania
+		(bindings) napisane w lub stworzone do pisania w języku programowania
+		Lua.
+	</longdescription>
+</catmetadata>
+

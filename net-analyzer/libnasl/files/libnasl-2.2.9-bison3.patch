@@ -1,0 +1,29 @@
+--- a/nasl/nasl_grammar.y
++++ b/nasl/nasl_grammar.y
+@@ -1,4 +1,6 @@
+-%pure_parser
++%pure-parser
++%parse-param {naslctxt * parm}
++%lex-param {naslctxt * parm}
+ %expect 1
+ %{
+ /* Nessus Attack Scripting Language version 2
+@@ -31,7 +33,7 @@
+ #include "nasl_lex_ctxt.h"
+ #include "nasl_debug.h"
+ 
+-static void naslerror(const char *);
++static void naslerror(naslctxt *, const char *);
+ #define YYERROR_VERBOSE
+ %}
+ 
+@@ -465,8 +467,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-static void 
+-naslerror(const char *s)
++static void naslerror(naslctxt *parm, const char *s)
+ {
+   fputs(s, stderr);
+ }

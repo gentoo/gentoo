@@ -1,0 +1,23 @@
+--- configure.ac	2013-07-12 19:43:26.000000000 +0200
++++ configure.ac2	2013-07-25 13:58:48.294091861 +0200
+@@ -10,20 +10,6 @@
+ 
+ AM_INIT_AUTOMAKE
+ 
+-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES(yes)])
+-
+-if make --help 2>&1 | grep -q no-print-directory; then
+-   AM_MAKEFLAGS="$AM_MAKEFLAGS --no-print-directory";
+-fi
+-
+-if make --help 2>&1 | grep -q quiet; then
+-   AM_MAKEFLAGS="$AM_MAKEFLAGS --quiet"
+-fi
+-
+-if libtool --help 2>&1 | grep -q quiet; then
+-   AM_LIBTOOLFLAGS="--quiet";
+-fi
+-
+ AC_CONFIG_HEADERS([config.h])
+ 
+ AC_CONFIG_FILES([Makefile

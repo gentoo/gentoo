@@ -1,0 +1,12 @@
+diff -up ots-0.5.0/configure.in.automake-1_13 ots-0.5.0/configure.in
+--- ots-0.5.0/configure.in.automake-1_13	2007-04-08 20:12:42.000000000 +0200
++++ ots-0.5.0/configure.in	2013-01-09 02:31:52.690211708 +0100
+@@ -34,7 +34,7 @@ PACKAGE=ots
+ 
+ dnl Specify a configuration file
+ dnl Initialize automake stuff
+-AM_CONFIG_HEADER(ots-config.h)
++AC_CONFIG_HEADERS(ots-config.h)
+ AM_INIT_AUTOMAKE($PACKAGE, $OTS_VERSION)
+ AM_MAINTAINER_MODE
+ 

@@ -1,0 +1,55 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,7 +25,7 @@ iftop_SOURCES = addr_hash.c edline.c hash.c iftop.c ns_hash.c \
+ #		 addrs_ioctl.c addrs_dlpi.c dlcommon.c \
+ #		 stringmap.c cfgfile.c 
+ 
+-
++iftop_LDADD = $(ncurses_LIBS)
+ 
+ noinst_HEADERS = addr_hash.h ether.h ethertype.h extract.h hash.h iftop.h \
+                  integers.h ip.h llc.h ns_hash.h options.h resolver.h \
+--- a/configure.ac
++++ b/configure.ac
+@@ -348,29 +348,27 @@
+ dnl AC_SEARCH_LIBS....
+ dnl
+ 
+-AC_MSG_CHECKING([for a curses library containing mvchgat])
+-oldLIBS=$LIBS
+-for curseslib in ncursesw curses ncurses ; do
+-    LIBS="$oldLIBS -l$curseslib"
+-    AC_TRY_LINK([
++PKG_CHECK_MODULES([ncurses], [ncursesw], [foundcurseslib="$ncurses_LIBS"], [
++    PKG_CHECK_MODULES([ncurses], [ncurses], [foundcurseslib="$ncurses_LIBS"], [
++    AC_MSG_CHECKING([for a curses library containing mvchgat])
++    oldLIBS=$LIBS
++    for curseslib in ncursesw curses ncurses ; do
++        LIBS="$oldLIBS -l$curseslib"
++        AC_TRY_LINK([
+ #include <$curseslib.h>
+         ], [
+         mvchgat(0, 0, 1, A_REVERSE, 0, NULL)
+         ], [
+-        foundcurseslib=$curseslib
++        foundcurseslib=-l$curseslib
+         break
+         ])
+-done
+-
+-if test x$foundcurseslib = x ; then
+-    AC_MSG_RESULT([none found])
++    done
++	],
+     AC_MSG_ERROR([Curses! Foiled again!
+   (Can't find a curses library supporting mvchgat.)
+   Consider installing ncurses.])
+-else
+-    AC_MSG_RESULT([-l$foundcurseslib])
+-fi
+-
++	)
++])
+ 
+ dnl
+ dnl POSIX threads. Different systems like different combinations of flags,

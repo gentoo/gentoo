@@ -1,0 +1,22 @@
+--- configure.in.orig	2014-02-19 12:22:46.954651117 -0800
++++ configure.in	2014-02-19 12:22:37.211604308 -0800
+@@ -171,11 +171,6 @@
+ 
+   fi
+ 
+-  dnl Do not strip symbols from developer object files.
+-  INSTALL_STRIP_FLAG=""
+-else
+-  dnl Make sure to strip symbols from non-developer object files.
+-  INSTALL_STRIP_FLAG="-s"
+ fi
+ dnl }}}
+ 
+@@ -322,7 +317,6 @@
+ 
+ dnl link against libm
+ LIBS="$LIBS -lm"
+-AC_SUBST(INSTALL_STRIP_FLAG)
+ 
+ AC_CONFIG_FILES([Makefile src/Makefile include/Makefile])
+ AC_OUTPUT

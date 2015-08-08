@@ -1,0 +1,28 @@
+--- ybin/ofpath.bak	2012-05-09 12:24:51.709911981 -0400
++++ ybin/ofpath	2012-05-09 12:32:19.661560544 -0400
+@@ -85,11 +85,20 @@
+ [ "$DEBUG" = 1 ] && echo "Devpath is: $DEVPATH"
+ 
+ ### Get the OF Path of the controller
+-case ${DISK_NAME} in
+-	sd*|sg*|sr*) CONTROLLER_PATH=$(cat ${DEVPATH}/../../../devspec) ;;
+-	hd*) CONTROLLER_PATH=$(cat ${DEVPATH}/../../devspec) ;;
+-	*) CONTROLLER_PATH="" ;;
+-esac
++if [ -e  "${DEVPATH}/../../devspec" ]; then
++	### /dev/hd*
++	CONTROLLER_PATH=$(cat ${DEVPATH}/../../devspec);
++elif [ -e "${DEVPATH}/../../../devspec" ]; then
++	### /dev/sd* on kernel <3.3
++	CONTROLLER_PATH=$(cat ${DEVPATH}/../../../devspec);
++elif [ -e "${DEVPATH}/../../../../devspec" ]; then
++	### /dev/sd* on kernel 3.3+	
++	CONTROLLER_PATH=$(cat ${DEVPATH}/../../../../devspec);
++else
++	### None of the above...
++	CONTROLLER_PATH="";
++fi
++
+ if [ -z "$CONTROLLER_PATH" ]; then
+ 	echo "Unable to determine controller path!"
+ 	exit 1

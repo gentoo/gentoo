@@ -1,0 +1,14 @@
+https://sourceforge.net/tracker/?func=detail&aid=3175466&group_id=6389&atid=306389
+https://bugs.gentoo.org/354051
+
+--- a/configure
++++ b/configure
+@@ -292,7 +292,7 @@
+ # ---------------------------------------------------------------
+ AC_MSG_CHECKING([link options])
+ ZZIPLIB_LDFLAGS=""
+-test ".$can_build_shared" != ".no" && ZZIPLIB_LDFLAGS="--export-dynamic"
++test ".$can_build_shared" != ".no" && ZZIPLIB_LDFLAGS="-export-dynamic"
+ RESOLVES=" # "
+ case "$host_os" in mingw*)
+     ZZIPLIB_LDFLAGS="-no-undefined -export-all-symbols -mconsole"

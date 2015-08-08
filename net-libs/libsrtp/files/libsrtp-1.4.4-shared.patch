@@ -1,0 +1,52 @@
+--- srtp/Makefile.in
++++ srtp/Makefile.in
+@@ -65,11 +65,11 @@
+ 
+ 
+ # implicit rules for object files and test apps
+ 
+ %.o: %.c
+-	$(COMPILE) -c $< -o $@
++	$(COMPILE) -fPIC -c $< -o $@
+ 
+ %$(EXE): %.c
+ 	$(COMPILE) $(LDFLAGS) $< -o $@ $(SRTPLIB) $(LIBS)
+ 
+ 
+@@ -103,10 +103,16 @@
+ 
+ libsrtp.a: $(srtpobj) $(cryptobj) $(gdoi)
+ 	ar cr libsrtp.a $^
+ 	$(RANLIB) libsrtp.a
+ 
++libsrtp.so: $(srtpobj) $(cryptobj) $(gdoi)
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,libsrtp.so.1 -o libsrtp.so.1.0  $^
++
++libsrtp.dylib: $(srtpobj) $(cryptobj) $(gdoi)
++	$(CC) $(LDFLAGS) -dynamiclib -install_name $(libdir)/libsrtp.1.dylib -o libsrtp.1.0.dylib  $^
++
+ # libcryptomath.a contains general-purpose routines that are used to
+ # generate tables and verify cryptoalgorithm implementations - this
+ # library is not meant to be included in production code
+ 
+ cryptomath = crypto/math/math.o crypto/math/gf2_8.o 
+@@ -195,10 +198,20 @@
+ 	$(INSTALL) -d $(DESTDIR)$(includedir)/srtp
+ 	$(INSTALL) -d $(DESTDIR)$(libdir)
+ 	cp include/*.h $(DESTDIR)$(includedir)/srtp  
+ 	cp crypto/include/*.h $(DESTDIR)$(includedir)/srtp
+ 	if [ -f libsrtp.a ]; then cp libsrtp.a $(DESTDIR)$(libdir)/; fi
++	if [ -f libsrtp.so.1.0 ]; then \
++		cp libsrtp.so.1.0 $(DESTDIR)$(libdir)/; \
++		ln -s libsrtp.so.1.0 $(DESTDIR)$(libdir)/libsrtp.so.1; \
++		ln -s libsrtp.so.1.0 $(DESTDIR)$(libdir)/libsrtp.so; \
++	fi
++	if [ -f libsrtp.1.0.dylib ]; then \
++		cp libsrtp.1.0.dylib $(DESTDIR)$(libdir)/; \
++		ln -s libsrtp.1.0.dylib $(DESTDIR)$(libdir)/libsrtp.1.dylib; \
++		ln -s libsrtp.1.0.dylib $(DESTDIR)$(libdir)/libsrtp.dylib; \
++	fi
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(includedir)/srtp
+ 	rm -rf $(DESTDIR)$(libdir)/libsrtp.a

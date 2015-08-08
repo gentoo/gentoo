@@ -1,0 +1,22 @@
+diff --git a/configure.in b/configure.in
+index 63172e4..6c2afcc 100644
+--- a/configure.in
++++ b/configure.in
+@@ -132,7 +132,7 @@ fi
+ AC_SUBST(ZHCON_LOCALE_DIR)
+ 
+ AC_CHECK_LIB(util, forkpty)
+-AC_CHECK_LIB(curses, main)
++AC_SEARCH_LIBS([tgetent], [cursesw curses ncursesw ncurses], [break;])
+ 
+ dnl for freebsd
+ dnl AC_CHECK_LIB(c, i386_set_ioperm)
+@@ -172,7 +172,7 @@ dnl Checks for gpm
+ dnl-----------------------------------------------------------------------
+ usegpm="yes"
+ AC_CHECK_HEADERS(gpm.h,,usegpm="no")
+-AC_CHECK_LIB(gpm,main,,usegpm="no")
++AC_CHECK_LIB(gpm,Gpm_Open,,usegpm="no")
+ 
+ dnl-----------------------------------------------------------------------
+ dnl Checks for libggi

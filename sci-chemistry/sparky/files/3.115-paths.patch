@@ -1,0 +1,13 @@
+diff --git a/c++/paths.h b/c++/paths.h
+index 2a21366..38aff52 100644
+--- a/c++/paths.h
++++ b/c++/paths.h
+@@ -19,7 +19,7 @@
+ // Installation subdirectories and files
+ //
+ #define SPARKY_MANUAL		"manual"
+-#define SPARKY_LIB		"lib"
++#define SPARKY_LIB		"."
+ #define SPARKY_PRINT		"print-prolog.ps"	// under lib directory
+ #define SPARKY_RESOURCE		"Sparky"		// under lib directory
+ #define SPARKY_SAMPLE_DATA	"example"

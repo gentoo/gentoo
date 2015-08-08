@@ -1,0 +1,20 @@
+--- lib_mysqludf_stat.c.orig	2011-10-19 04:30:24.000000000 +0200
++++ lib_mysqludf_stat.c	2011-10-19 04:31:21.000000000 +0200
+@@ -550,7 +550,7 @@
+ ,	char *error
+ ){
+ 	PEARSON* pearson_struct = (PEARSON *)initid->ptr;
+-	double result; 
++	double result=0.0; 
+ 	if (pearson_struct->n==0){
+ 		*is_null = 1;
+ 	} else if (
+@@ -700,7 +700,7 @@
+ 	POINT_BISERIAL_GROUP* X0;
+ 	POINT_BISERIAL_GROUP* X1;
+ 	double s;
+-	double result;
++	double result=0.0;
+ 
+ 	point_biserial_struct = (POINT_BISERIAL *)initid->ptr;
+ 	X  = &point_biserial_struct->X;

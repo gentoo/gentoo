@@ -1,0 +1,10 @@
+--- comparing.c
++++ comparing.c
+@@ -4,6 +4,7 @@
+ 
+    */
+ 
++#include <string.h> /* strcmp(), memcmp() */
+ #include "proplistP.h"
+ 
+ /* forward prototype */

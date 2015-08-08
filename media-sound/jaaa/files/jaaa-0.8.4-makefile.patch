@@ -1,0 +1,20 @@
+--- jaaa-0.8.4/source/Makefile
++++ jaaa-0.8.4/source/Makefile
+@@ -24,15 +24,14 @@
+ LIBDIR = lib$(SUFFIX)
+ VERSION = 0.8.4
+ CPPFLAGS += -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I/usr/include/freetype2
+-CXXFLAGS += -O2 -Wall -MMD -MP
+-CXXFLAGS += -march=native
++CXXFLAGS += -Wall -MMD -MP
+ LDFLAGS += -L/usr/X11R6/$(LIBDIR)
+ LDLIBS += -lzita-alsa-pcmi -lclthreads -lclxclient -lpthread -lfftw3f -ljack -lasound -lpthread -lXft -lX11 -lrt
+ 
+ 
+ JAAA_O = jaaa.o styles.o spectwin.o audio.o rngen.o
+ jaaa:	$(JAAA_O)
+-	g++ $(LDFLAGS) -o $@ $(JAAA_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(JAAA_O) $(LDLIBS)
+ 
+ $(JAAA_O):
+ -include $(JAAA_O:%.o=%.d)

@@ -1,0 +1,92 @@
+============================================================
+--- src/database.cc	87efeeff2d3263ba98af684a4022f1897434ed2d
++++ src/database.cc	39ab2644b936e09a536b99ebd28b93f6e0d7c162
+@@ -92,7 +92,7 @@ using boost::shared_ptr;
+ using std::accumulate;
+ 
+ using boost::shared_ptr;
+-using boost::shared_dynamic_cast;
++using boost::dynamic_pointer_cast;
+ using boost::lexical_cast;
+ using boost::get;
+ using boost::tuple;
+@@ -3430,7 +3430,7 @@ database::encrypt_rsa(key_id const & pub
+ 
+   shared_ptr<X509_PublicKey> x509_key(Botan::X509::load_key(pub_block));
+   shared_ptr<RSA_PublicKey> pub_key
+-    = shared_dynamic_cast<RSA_PublicKey>(x509_key);
++    = dynamic_pointer_cast<RSA_PublicKey>(x509_key);
+   if (!pub_key)
+     throw recoverable_failure(origin::system,
+                               "Failed to get RSA encrypting key");
+@@ -3481,7 +3481,7 @@ database::check_signature(key_id const &
+       L(FL("building verifier for %d-byte pub key") % pub_block.size());
+       shared_ptr<X509_PublicKey> x509_key(Botan::X509::load_key(pub_block));
+       shared_ptr<RSA_PublicKey> pub_key
+-        = boost::shared_dynamic_cast<RSA_PublicKey>(x509_key);
++        = boost::dynamic_pointer_cast<RSA_PublicKey>(x509_key);
+ 
+       E(pub_key, id.inner().made_from,
+         F("failed to get RSA verifying key for %s") % id);
+============================================================
+--- src/key_store.cc	b7859345f7c665914d16357409bdff24a48b7996
++++ src/key_store.cc	1ca13b7ee527bc2872d9fc325cf5ef327ca053c2
+@@ -43,7 +43,7 @@ using boost::shared_ptr;
+ 
+ using boost::scoped_ptr;
+ using boost::shared_ptr;
+-using boost::shared_dynamic_cast;
++using boost::dynamic_pointer_cast;
+ 
+ using Botan::RSA_PrivateKey;
+ using Botan::RSA_PublicKey;
+@@ -641,7 +641,7 @@ key_store_state::decrypt_private_key(key
+   I(pkcs8_key);
+ 
+   shared_ptr<RSA_PrivateKey> priv_key;
+-  priv_key = shared_dynamic_cast<RSA_PrivateKey>(pkcs8_key);
++  priv_key = dynamic_pointer_cast<RSA_PrivateKey>(pkcs8_key);
+   E(priv_key, origin::no_fault,
+     F("failed to extract RSA private key from PKCS#8 keypair"));
+ 
+@@ -879,7 +879,8 @@ key_store::make_signature(database & db,
+         L(FL("make_signature: building %d-byte pub key") % pub_block.size());
+         shared_ptr<X509_PublicKey> x509_key =
+           shared_ptr<X509_PublicKey>(Botan::X509::load_key(pub_block));
+-        shared_ptr<RSA_PublicKey> pub_key = shared_dynamic_cast<RSA_PublicKey>(x509_key);
++        shared_ptr<RSA_PublicKey> pub_key =
++          dynamic_pointer_cast<RSA_PublicKey>(x509_key);
+ 
+         if (!pub_key)
+           throw recoverable_failure(origin::system,
+@@ -1092,7 +1093,7 @@ key_store_state::migrate_old_key_pair
+         continue;
+       }
+ 
+-  priv_key = shared_dynamic_cast<RSA_PrivateKey>(pkcs8_key);
++  priv_key = dynamic_pointer_cast<RSA_PrivateKey>(pkcs8_key);
+   I(priv_key);
+ 
+   // now we can write out the new key
+============================================================
+--- src/ssh_agent.cc	4a0dcab873559e934e41c5f220b5434d35600d9b
++++ src/ssh_agent.cc	6313ee3cdfca4112ba3957dc4a5f318472289dfa
+@@ -32,7 +32,7 @@ using boost::shared_ptr;
+ using std::vector;
+ 
+ using boost::shared_ptr;
+-using boost::shared_dynamic_cast;
++using boost::dynamic_pointer_cast;
+ 
+ using Botan::RSA_PublicKey;
+ using Botan::RSA_PrivateKey;
+@@ -391,7 +391,8 @@ ssh_agent::has_key(const keypair & key)
+   L(FL("has_key: building %d-byte pub key") % pub_block.size());
+   shared_ptr<X509_PublicKey> x509_key =
+     shared_ptr<X509_PublicKey>(Botan::X509::load_key(pub_block));
+-  shared_ptr<RSA_PublicKey> pub_key = shared_dynamic_cast<RSA_PublicKey>(x509_key);
++  shared_ptr<RSA_PublicKey> pub_key = 
++    dynamic_pointer_cast<RSA_PublicKey>(x509_key);
+ 
+   if (!pub_key)
+     throw recoverable_failure(origin::system,

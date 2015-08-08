@@ -1,0 +1,28 @@
+--- sbcl-1.2.7-orig/make.sh	2015-01-01 06:09:07.000000000 +1100
++++ sbcl-1.2.7/make.sh	2015-01-31 13:06:09.652480932 +1100
+@@ -24,7 +24,7 @@
+ # thing" when run on the target machine, with the minor caveat that
+ # any --xc-host parameter should be suitable for the host machine
+ # instead of the target.
+-sh make-config.sh "$@" || exit $?
++sh -x make-config.sh "$@" || exit $?
+ 
+ . output/prefix.def
+ . output/build-config
+@@ -64,11 +64,11 @@
+ # Or, if you can set up the files somewhere shared (with NFS, AFS, or
+ # whatever) between the host machine and the target machine, the basic
+ # procedure above should still work, but you can skip the "copy" steps.
+-time sh make-host-1.sh
+-time sh make-target-1.sh
+-time sh make-host-2.sh
+-time sh make-target-2.sh
+-time sh make-target-contrib.sh
++time sh -x make-host-1.sh
++time sh -x make-target-1.sh
++time sh -x make-host-2.sh
++time sh -x make-target-2.sh
++time sh -x make-target-contrib.sh
+ 
+ NCONTRIBS=`find contrib -name Makefile -print | wc -l`
+ NPASSED=`find obj/asdf-cache -name test-passed.test-report -print | wc -l`

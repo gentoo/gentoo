@@ -1,0 +1,20 @@
+--- xbase-2.0.0/ltconfig.foo	2007-05-04 18:14:42.000000000 -0400
++++ xbase-2.0.0/ltconfig	2007-05-04 18:15:39.000000000 -0400
+@@ -1664,16 +1664,7 @@ linux-gnu*)
+   shlibpath_var=LD_LIBRARY_PATH
+   check_shared_deplibs_method='file_magic ELF 32-bit LSB shared object'
+   sys_lib_search_path="/lib /usr/lib /usr/local/lib `echo $LD_LIBRARY_PATH | sed -e 's/:/ /g'`"
+-
+-  if test -f /lib/ld.so.1; then
+-    dynamic_linker='GNU ld.so'
+-  else
+-    # Only the GNU ld.so supports shared libraries on MkLinux.
+-    case "$host_cpu" in
+-    powerpc*) dynamic_linker=no ;;
+-    *) dynamic_linker='Linux ld.so' ;;
+-    esac
+-  fi
++  dynamic_linker='GNU ld.so'
+   ;;
+ 
+ netbsd* | openbsd*)

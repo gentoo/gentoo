@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>idella4@gentoo.org</email>
+		<name>Ian Delaney</name>
+	</maintainer>
+	<maintainer>
+		<email>geert.braekmans@gmail.com</email>
+		<name>Geert Braekmans</name>
+		<description>Proxy maintainer</description>
+        </maintainer>
+</pkgmetadata>
+

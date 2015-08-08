@@ -1,0 +1,11 @@
+--- coccinelle-1.0.0-rc16/setup/cocci.m4
++++ coccinelle-1.0.0-rc16/setup/cocci.m4
+@@ -285,7 +285,7 @@
+     AC_SUBST([$1], [no])
+   ],
+   [dnl  find the tool
+-    AC_COCCI_FINDTOOL([$1],[[$]$1])
++    AC_COCCI_FINDTOOL([$1],[$2])
+   ])
+ 
+   AS_IF([test -z "[$]$1" -o "x[$]$1" = xno],

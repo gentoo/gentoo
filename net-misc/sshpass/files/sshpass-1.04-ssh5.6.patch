@@ -1,0 +1,16 @@
+--- main.c.orig	2011-02-01 10:00:45.571260395 +0000
++++ main.c	2011-02-01 11:14:48.571421997 +0000
+@@ -311,6 +311,11 @@
+ 
+     int numread=read(fd, buffer, sizeof(buffer) );
+ 
++    // New versions of ssh probably set the terminal to non-blocking, so we get lots of unused or empty responses.
++    if( numread<0 && errno ==5 ) {
++        return 0;
++    }
++
+     if( numread<0 ) {
+         // Comment no. 3.1416
+         // Select is doing a horrid job of waking us up at the right time - it wakes up with "read ready" when the slave
+
+

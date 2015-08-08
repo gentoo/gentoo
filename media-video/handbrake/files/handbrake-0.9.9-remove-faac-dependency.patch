@@ -1,0 +1,203 @@
+Forward ported version of https://github.com/rbrito/pkg-handbrake/blob/master/debian/patches/0010-Remove-FAAC-dependency.patch
+
+diff -ur a/gtk/src/audiohandler.c b/gtk/src/audiohandler.c
+--- a/gtk/src/audiohandler.c	2013-05-05 15:39:27.715401407 +0200
++++ b/gtk/src/audiohandler.c	2013-05-05 15:42:09.312067074 +0200
+@@ -70,10 +70,7 @@
+         if (hb_audio_encoders[ii].encoder == fallback &&
+             !(hb_audio_encoders[ii].muxers & mux))
+         {
+-            if ( mux == HB_MUX_MKV )
+-                fallback = HB_ACODEC_LAME;
+-            else
+-                fallback = HB_ACODEC_FAAC;
++            fallback = HB_ACODEC_LAME;
+             break;
+         }
+     }
+@@ -130,7 +127,7 @@
+             return HB_ACODEC_LAME;
+ 
+         case HB_ACODEC_AAC_PASS:
+-            return HB_ACODEC_FAAC;
++            return HB_ACODEC_FFAAC;
+ 
+         case HB_ACODEC_AC3_PASS:
+             return HB_ACODEC_AC3;
+diff -ur a/gtk/src/hb-backend.c b/gtk/src/hb-backend.c
+--- a/gtk/src/hb-backend.c	2013-05-05 15:39:27.738734740 +0200
++++ b/gtk/src/hb-backend.c	2013-05-05 15:43:13.702066676 +0200
+@@ -3767,7 +3767,7 @@
+ gint
+ ghb_get_default_acodec()
+ {
+-    return HB_ACODEC_FAAC;
++    return HB_ACODEC_LAME;
+ }
+ 
+ static void
+@@ -4505,13 +4505,9 @@
+             {
+                 codec = HB_ACODEC_AC3;
+             }
+-            else if (mux == HB_MUX_MKV)
+-            {
+-                codec = HB_ACODEC_LAME;
+-            }
+             else
+             {
+-                codec = HB_ACODEC_FAAC;
++                codec = HB_ACODEC_LAME;
+             }
+             value = ghb_lookup_acodec_value(codec);
+             ghb_settings_take_value(asettings, "AudioEncoder", value);
+@@ -4525,7 +4521,7 @@
+             if (codec == HB_ACODEC_VORBIS)
+             {
+                 a_unsup = "Vorbis";
+-                codec = HB_ACODEC_FAAC;
++                codec = HB_ACODEC_LAME;
+             }
+         }
+         if (a_unsup)
+diff -ur a/gtk/src/preset_xlat.c b/gtk/src/preset_xlat.c
+--- a/gtk/src/preset_xlat.c	2013-05-05 15:39:27.775401407 +0200
++++ b/gtk/src/preset_xlat.c	2013-05-05 15:43:34.888733211 +0200
+@@ -260,7 +260,6 @@
+ 
+ static value_map_t acodec_xlat[] =
+ {
+-    {"AAC (faac)", "faac"},
+     {"AC3 Passthru", "ac3"},
+     {"MP3 (lame)", "lame"},
+     {"Vorbis (vorbis)", "vorbis"},
+diff -ur a/gtk/src/presets.c b/gtk/src/presets.c
+--- a/gtk/src/presets.c	2013-05-05 15:39:27.778734740 +0200
++++ b/gtk/src/presets.c	2013-05-05 15:43:59.888733056 +0200
+@@ -2029,8 +2029,6 @@
+ 
+ static value_map_t acodec_xlat_compat[] =
+ {
+-    {"AAC (CoreAudio)", "faac"},
+-    {"HE-AAC (CoreAudio)", "faac"},
+     {"AC3 (ffmpeg)", "ac3"},
+     {"AC3", "ac3"},
+     {"MP3 Passthru", "mp3pass"},
+diff -ur a/libhb/common.c b/libhb/common.c
+--- a/libhb/common.c	2013-05-05 15:39:27.788734740 +0200
++++ b/libhb/common.c	2013-05-05 15:45:02.782066001 +0200
+@@ -126,7 +126,6 @@
+     { "AAC (CoreAudio)",    "ca_aac",     HB_ACODEC_CA_AAC,       HB_MUX_MP4|HB_MUX_MKV },
+     { "HE-AAC (CoreAudio)", "ca_haac",    HB_ACODEC_CA_HAAC,      HB_MUX_MP4|HB_MUX_MKV },
+ #endif
+-    { "AAC (faac)",         "faac",       HB_ACODEC_FAAC,         HB_MUX_MP4|HB_MUX_MKV },
+ #ifdef USE_FDK_AAC
+     { "AAC (FDK)",          "fdk_aac",    HB_ACODEC_FDK_AAC,      HB_MUX_MP4|HB_MUX_MKV },
+     { "HE-AAC (FDK)",       "fdk_haac",   HB_ACODEC_FDK_HAAC,     HB_MUX_MP4|HB_MUX_MKV },
+diff -ur a/libhb/common.h b/libhb/common.h
+--- a/libhb/common.h	2013-05-05 15:39:27.788734740 +0200
++++ b/libhb/common.h	2013-05-05 15:45:23.358732540 +0200
+@@ -945,7 +945,6 @@
+ extern hb_work_object_t hb_decavcodeca;
+ extern hb_work_object_t hb_decavcodecv;
+ extern hb_work_object_t hb_declpcm;
+-extern hb_work_object_t hb_encfaac;
+ extern hb_work_object_t hb_enclame;
+ extern hb_work_object_t hb_encvorbis;
+ extern hb_work_object_t hb_muxer;
+diff -ur a/libhb/encfaac.c b/libhb/encfaac.c
+--- a/libhb/encfaac.c	2013-05-05 15:39:27.802068073 +0200
++++ b/libhb/encfaac.c	2013-05-05 15:45:51.798732364 +0200
+@@ -1,3 +1,4 @@
++#if 0
+ /* encfaac.c
+ 
+    Copyright (c) 2003-2013 HandBrake Team
+@@ -287,3 +288,4 @@
+     return HB_WORK_OK;
+ }
+ 
++#endif /* 0 */
+\ No newline at end of file
+diff -ur a/libhb/hb.c b/libhb/hb.c
+--- a/libhb/hb.c	2013-05-05 15:39:27.805401407 +0200
++++ b/libhb/hb.c	2013-05-05 15:46:21.548732180 +0200
+@@ -487,7 +487,6 @@
+ 	hb_register( &hb_decavcodeca );
+ 	hb_register( &hb_decavcodecv );
+ 	hb_register( &hb_declpcm );
+-	hb_register( &hb_encfaac );
+ 	hb_register( &hb_enclame );
+ 	hb_register( &hb_encvorbis );
+ 	hb_register( &hb_muxer );
+@@ -588,7 +587,6 @@
+ 	hb_register( &hb_decavcodeca );
+ 	hb_register( &hb_decavcodecv );
+ 	hb_register( &hb_declpcm );
+-	hb_register( &hb_encfaac );
+ 	hb_register( &hb_enclame );
+ 	hb_register( &hb_encvorbis );
+ 	hb_register( &hb_muxer );
+diff -ur a/libhb/internal.h b/libhb/internal.h
+--- a/libhb/internal.h	2013-05-05 15:39:27.805401407 +0200
++++ b/libhb/internal.h	2013-05-05 15:46:28.215398806 +0200
+@@ -409,7 +409,6 @@
+     WORK_DECAVCODEC,
+     WORK_DECAVCODECV,
+     WORK_DECLPCM,
+-    WORK_ENCFAAC,
+     WORK_ENCLAME,
+     WORK_ENCVORBIS,
+     WORK_ENC_CA_AAC,
+diff -ur a/libhb/module.defs b/libhb/module.defs
+--- a/libhb/module.defs	2013-05-05 15:39:27.808734740 +0200
++++ b/libhb/module.defs	2013-05-05 15:46:41.458732057 +0200
+@@ -1,4 +1,4 @@
+-__deps__ := A52DEC BZIP2 FAAC FFMPEG FONTCONFIG FREETYPE LAME LIBASS LIBDCA \
++__deps__ := A52DEC BZIP2 FFMPEG FONTCONFIG FREETYPE LAME LIBASS LIBDCA \
+     LIBDVDREAD LIBDVDNAV LIBICONV LIBMKV LIBOGG LIBSAMPLERATE LIBTHEORA LIBVORBIS LIBXML2 \
+     MP4V2 MPEG2DEC PTHREADW32 X264 ZLIB LIBBLURAY FDKAAC
+ 
+@@ -95,7 +95,7 @@
+ LIBHB.lib = $(LIBHB.build/)hb.lib
+ 
+ LIBHB.dll.libs = $(foreach n, \
+-        a52 ass avcodec avformat avutil avresample dvdnav dvdread faac \
++        a52 ass avcodec avformat avutil avresample dvdnav dvdread \
+         fontconfig freetype mkv mpeg2 mp3lame mp4v2 \
+         ogg samplerate swscale theora vorbis vorbisenc x264 xml2 bluray, \
+         $(CONTRIB.build/)lib/lib$(n).a )
+diff -ur a/libhb/muxmkv.c b/libhb/muxmkv.c
+--- a/libhb/muxmkv.c	2013-05-05 15:39:27.808734740 +0200
++++ b/libhb/muxmkv.c	2013-05-05 15:47:03.052065256 +0200
+@@ -256,7 +256,6 @@
+                 }
+                 track->codecID = MK_ACODEC_FLAC;
+                 break;
+-            case HB_ACODEC_FAAC:
+             case HB_ACODEC_FFAAC:
+             case HB_ACODEC_CA_AAC:
+             case HB_ACODEC_CA_HAAC:
+diff -ur a/libhb/work.c b/libhb/work.c
+--- a/libhb/work.c	2013-05-05 15:39:27.818734740 +0200
++++ b/libhb/work.c	2013-05-05 15:47:14.658731851 +0200
+@@ -135,7 +135,6 @@
+     switch (codec)
+     {
+         case HB_ACODEC_AC3:     return hb_get_work(WORK_ENCAVCODEC_AUDIO);
+-        case HB_ACODEC_FAAC:    return hb_get_work(WORK_ENCFAAC);
+         case HB_ACODEC_LAME:    return hb_get_work(WORK_ENCLAME);
+         case HB_ACODEC_VORBIS:  return hb_get_work(WORK_ENCVORBIS);
+         case HB_ACODEC_CA_AAC:  return hb_get_work(WORK_ENC_CA_AAC);
+diff -ur a/test/module.defs b/test/module.defs
+--- a/test/module.defs	2013-05-05 15:39:27.975401406 +0200
++++ b/test/module.defs	2013-05-05 15:47:35.322065057 +0200
+@@ -14,7 +14,7 @@
+ TEST.libs = $(LIBHB.a)
+ 
+ TEST.GCC.l = \
+-        a52 ass avcodec avformat avutil avresample dvdnav dvdread faac \
++        a52 ass avcodec avformat avutil avresample dvdnav dvdread \
+         fontconfig freetype fribidi mkv mpeg2 mp3lame mp4v2 ogg \
+         samplerate swscale theoraenc theoradec vorbis vorbisenc x264 \
+         bluray xml2 bz2 z

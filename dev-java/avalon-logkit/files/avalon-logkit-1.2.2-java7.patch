@@ -1,0 +1,30 @@
+diff -Nur avalon-logkit-2.1/src/java/org/apache/log/output/db/DefaultDataSource.java avalon-logkit-2.1_patched//src/java/org/apache/log/output/db/DefaultDataSource.java
+--- avalon-logkit-2.1/src/java/org/apache/log/output/db/DefaultDataSource.java	2005-08-30 05:03:49.000000000 +0300
++++ avalon-logkit-2.1_patched//src/java/org/apache/log/output/db/DefaultDataSource.java	2011-09-27 08:27:49.313005212 +0300
+@@ -20,7 +20,9 @@
+ import java.sql.Connection;
+ import java.sql.DriverManager;
+ import java.sql.SQLException;
++import java.sql.SQLFeatureNotSupportedException;
+ import javax.sql.DataSource;
++import java.util.logging.Logger;
+ 
+ /**
+  * A basic datasource that doesn't do any pooling but just wraps
+@@ -111,4 +113,16 @@
+     {
+         m_logWriter = logWriter;
+     }
++
++    public boolean isWrapperFor(Class cls) {
++        return false;
++    }
++ 
++    public Object unwrap(Class cls) throws SQLException {
++        throw new SQLException("Not a wrapper for " + cls);
++    }
++    
++    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
++        throw new SQLFeatureNotSupportedException("Not a supported feature");
++    }
+ }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>graphics</herd>
+<longdescription lang="en">
+YafaRay is a raytracing open source render engine. Raytracing is a rendering technique for generating realistic images by tracing the path of light through a 3D scene.
+An render engine consists of a "faceless" computer program that interacts with a host 3D application to provide very specific raytracing capabilties "on demand". Blender 3D is the host application of YafaRay.
+</longdescription>
+<use>
+	<flag name="blender">install <pkg>media-gfx/blender</pkg> scripts</flag>
+</use>
+</pkgmetadata>
+

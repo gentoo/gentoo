@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+    Cliff is a framework for building command line programs.
+	It uses setuptools entry points to provide subcommands,
+	output formatters, and other extensions.
+  </longdescription>
+	<upstream>
+		<remote-id type="pypi">cliff</remote-id>
+		<remote-id type="github">dreamhost/cliff</remote-id>
+	</upstream>
+</pkgmetadata>

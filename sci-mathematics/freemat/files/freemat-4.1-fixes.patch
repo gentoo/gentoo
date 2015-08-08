@@ -1,0 +1,21 @@
+--- libs/libGraphics/VTKWindow.cpp.orig	2012-01-27 19:54:55.000000000 +0100
++++ libs/libGraphics/VTKWindow.cpp	2012-01-27 19:54:49.000000000 +0100
+@@ -3,6 +3,7 @@
+ #include "VTKWrap.hpp"
+ #include "VTKWindow.hpp"
+ 
++#include <QObject>
+ #include <QtCore/QString>
+ #include <QtGui/QLabel>
+ #include <QtGui/QMenu>
+--- libs/libGraphics/GLRenderEngine.cpp.orig	2011-11-27 00:27:43.000000000 +0000
++++ libs/libGraphics/GLRenderEngine.cpp	2012-01-29 03:57:48.453433954 +0000
+@@ -16,6 +16,8 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  *
+  */
++
++#include <GL/glu.h>
+ #include "GLRenderEngine.hpp"
+ #include <qimage.h>
+ #include <qpainter.h>

@@ -1,0 +1,16 @@
+--- a/src/backends/Makefile.am	2010-04-27 09:17:25.000000000 +0200
++++ b/src/backends/Makefile.am	2013-03-30 15:34:36.406336274 +0100
+@@ -7,13 +7,7 @@
+ 	cd $(DESTDIR)$(backenddir) && \
+ 	test -L libelektra-default.so || \
+ 	$(LN_S) libelektra-@default_backend@.so libelektra-default.so
+-	cd $(DESTDIR)$(backenddir) && \
+-	test -L libelektra-ddefault.so || \
+-	$(LN_S) libelektra-@default_dbackend@.so libelektra-ddefault.so
+ 
+ uninstall-hook:
+ 	-cd $(DESTDIR)$(backenddir) && \
+ 	rm -f libelektra-default.so
+-	-cd $(DESTDIR)$(backenddir) && \
+-	rm -f libelektra-ddefault.so
+-

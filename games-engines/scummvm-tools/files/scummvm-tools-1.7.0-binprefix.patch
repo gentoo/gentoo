@@ -1,0 +1,11 @@
+--- scummvm-tools-1.7.0.orig/Makefile.common
++++ scummvm-tools-1.7.0/Makefile.common
+@@ -312,7 +312,7 @@
+ install: $(TARGETS)
+ 	$(INSTALL) -p -m 0755 -d $(DESTDIR)$(BINDIR)
+ 	$(INSTALL) -p -m 0755 -d $(DESTDIR)$(DATADIR)/scummvm-tools
+-	for i in $^ ; do $(INSTALL) -p -m 0755 $$i $(DESTDIR)$(BINDIR) ; done
++	for i in $^ ; do $(INSTALL) -p -m 0755 $$i $(DESTDIR)$(BINDIR)/$(EXEPREFIX)$$i ; done
+ 	$(INSTALL) -m 0755 -d $(DESTDIR)$(DATADIR)/scummvm-tools
+ 	$(INSTALL) -p -m 0644 $(srcdir)/gui/media/*.* $(DESTDIR)$(DATADIR)/scummvm-tools
+ 

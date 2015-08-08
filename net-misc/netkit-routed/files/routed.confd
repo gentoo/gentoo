@@ -1,0 +1,16 @@
+# /etc/conf.d/routed
+
+# Normally routed is simply run as "/usr/sbin/routed".  Set this
+# option to run routed with additional parameters, for example:
+#
+#   -d  Enable additional debugging information
+#   -s  Force routed to supply routing information
+#   -q  Opposite of the -s option
+#
+# Additional options are listed in the routed(8) manual page.
+#
+# Our default configuration is to run quietly, i.e. don't publish
+# routes.  This is to keep from catching users unaware since routed
+# will publish routes if there's more than one interface configured on
+# the machine.
+ROUTED_OPTS="-q"

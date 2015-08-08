@@ -1,0 +1,12 @@
+diff -urNp prelink_orig/src/arch-arm.c prelink/src/arch-arm.c
+--- prelink_orig/src/arch-arm.c	2011-08-26 03:20:49.000000000 -0400
++++ prelink/src/arch-arm.c	2012-11-28 23:59:28.030164736 -0500
+@@ -832,7 +832,7 @@ PL_ARCH = {
+   .R_COPY = R_ARM_COPY,
+   .R_RELATIVE = R_ARM_RELATIVE,
+   .rtype_class_valid = RTYPE_CLASS_VALID,
+-  .dynamic_linker = "/lib/ld-linux.so.3",
++  .dynamic_linker = "/lib/ld-linux-armhf.so.3",
+   .adjust_dyn = arm_adjust_dyn,
+   .adjust_rel = arm_adjust_rel,
+   .adjust_rela = arm_adjust_rela,

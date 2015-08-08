@@ -1,0 +1,18 @@
+Index: src/sd-none/sound.c
+===================================================================
+RCS file: /cvsroot/uaedev/uae/src/sd-none/sound.c,v
+retrieving revision 1.4
+diff -u -r1.4 sound.c
+--- src/sd-none/sound.c	15 Feb 2007 04:47:38 -0000	1.4
++++ src/sd-none/sound.c	25 May 2007 14:47:35 -0000
+@@ -30,10 +30,6 @@
+ {
+ }
+ 
+-void update_sound (int freq)
+-{
+-}
+-
+ void reset_sound (void)
+ {
+ }

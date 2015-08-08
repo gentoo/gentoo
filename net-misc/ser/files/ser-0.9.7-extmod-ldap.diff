@@ -1,0 +1,11 @@
+--- ser-0.9.7/modules/ldap/Makefile.orig	2008-01-09 00:52:06.000000000 +0100
++++ ser-0.9.7/modules/ldap/Makefile	2008-01-09 00:52:13.000000000 +0100
+@@ -8,7 +8,7 @@
+ include ../../Makefile.defs
+ auto_gen=
+ NAME=ldap.so
+-LIBS=-lssl -lsasl -lcrypto -lcrypt -lldap -llber
++LIBS=-lssl -lsasl2 -lcrypto -lcrypt -lldap -llber
+ CFLAGS=-Wall -g
+ 
+ include ../../Makefile.modules

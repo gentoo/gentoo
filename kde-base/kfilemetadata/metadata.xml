@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="epub">Adds support for reading EPUB ebook metadata</flag>
+		<flag name="mobi">Adds support for reading MOBI ebook metadata</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,69 @@
+use pkg-config to locate zlib rather than hardcoding system -L/-I paths
+
+for pthreads, just hardcode it enabled
+
+for gnutls, don't hardcode -L/-I all the time to the host paths
+
+--- a/lib/configure.ac
++++ b/lib/configure.ac
+@@ -70,26 +70,23 @@ AC_ARG_WITH(zlib, AS_HELP_STRING([--without-zlib],
+ AC_MSG_CHECKING([whether to include zlib compression support])
+ if test x$ac_zlib != xno; then
+  AC_MSG_RESULT(yes)
+- AC_LIB_HAVE_LINKFLAGS(z,, [#include <zlib.h>], [compress (0, 0, 0, 0);])
+- if test "$ac_cv_libz" != yes; then
+-   AC_MSG_WARN(
+-*** 
+-*** ZLIB was not found. You will not be able to use ZLIB compression.)
+- fi
+ else
+  AC_MSG_RESULT(no)
+ fi
+ 
+-PKG_CHECK_EXISTS(zlib, ZLIB_HAS_PKGCONFIG=y, ZLIB_HAS_PKGCONFIG=n)
+-
+ if test x$ac_zlib != xno; then
++  PKG_CHECK_MODULES(ZLIB, zlib, ZLIB_HAS_PKGCONFIG=y, ZLIB_HAS_PKGCONFIG=n)
+   if test "$ZLIB_HAS_PKGCONFIG" = "y" ; then
++    LTLIBZ=$ZLIB_LIBS
++    AC_DEFINE([HAVE_LIBZ], [1], [zlib is enabled])
++    AC_SUBST(LTLIBZ)
+     if test "x$GNUTLS_REQUIRES_PRIVATE" = "x"; then
+       GNUTLS_REQUIRES_PRIVATE="Requires.private: zlib"
+     else
+       GNUTLS_REQUIRES_PRIVATE="$GNUTLS_REQUIRES_PRIVATE , zlib"
+     fi
+   else
++    AC_LIB_HAVE_LINKFLAGS(z,, [#include <zlib.h>], [compress (0, 0, 0, 0);])
+     GNUTLS_ZLIB_LIBS_PRIVATE="$LTLIBZ"
+   fi
+ fi
+@@ -124,10 +121,12 @@ fi
+ lgl_INIT
+ 
+ AC_CHECK_FUNCS(getrusage,,)
+-AC_LIB_HAVE_LINKFLAGS(pthread,, [#include <pthread.h>], [pthread_mutex_lock (0);])
++LTLIBPTHREAD='-pthread'
++AC_DEFINE([HAVE_LIBPTHREAD], [1], [pthread enabled])
++AC_SUBST(LTLIBPTHREAD)
+ 
+-LIBGNUTLS_LIBS="-L${libdir} -lgnutls $LIBS"
+-LIBGNUTLS_CFLAGS="-I${includedir}"
++LIBGNUTLS_LIBS="-lgnutls $LIBS"
++LIBGNUTLS_CFLAGS=""
+ AC_SUBST(LIBGNUTLS_LIBS)
+ AC_SUBST(LIBGNUTLS_CFLAGS)
+ 
+--- a/libextra/configure.ac
++++ b/libextra/configure.ac
+@@ -41,8 +41,8 @@ LIBGNUTLS_EXTRA_HOOKS
+ 
+ xgl_INIT
+ 
+-LIBGNUTLS_EXTRA_LIBS="-L${libdir} -lgnutls-extra $LZO_LIBS $LIBGNUTLS_LIBS"
+-LIBGNUTLS_EXTRA_CFLAGS="-I${includedir}"
++LIBGNUTLS_EXTRA_LIBS="-lgnutls-extra $LZO_LIBS $LIBGNUTLS_LIBS"
++LIBGNUTLS_EXTRA_CFLAGS=""
+ AC_SUBST(LIBGNUTLS_EXTRA_LIBS)
+ AC_SUBST(LIBGNUTLS_EXTRA_CFLAGS)
+ 

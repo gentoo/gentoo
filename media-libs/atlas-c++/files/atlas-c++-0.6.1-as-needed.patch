@@ -1,0 +1,63 @@
+--- Atlas/Makefile.am.old	2008-11-20 08:45:41.000000000 +0100
++++ Atlas/Makefile.am	2008-11-20 08:45:52.000000000 +0100
+@@ -1,4 +1,4 @@
+-SUBDIRS = Message Codecs Filters Net Objects Funky
++SUBDIRS = . Message Codecs Filters Net Objects Funky
+ 
+ INCLUDES = -I$(top_srcdir)
+ 
+--- Atlas/Message/Makefile.am.old	2008-11-20 08:47:01.000000000 +0100
++++ Atlas/Message/Makefile.am	2008-11-20 08:47:29.000000000 +0100
+@@ -5,6 +5,8 @@
+ 
+ libAtlasMessage_0_6_la_LDFLAGS = $(INTERFACE_VERSION)
+ 
++libAtlasMessage_0_6_la_LIBADD = ../libAtlas-0.6.la
++
+ libAtlasMessage_0_6_la_SOURCES = \
+ 	Element.cpp MEncoder.cpp DecoderBase.cpp QueuedDecoder.cpp
+ 
+--- Atlas/Codecs/Makefile.am.old	2008-11-20 08:49:49.000000000 +0100
++++ Atlas/Codecs/Makefile.am	2008-11-20 08:52:45.000000000 +0100
+@@ -5,6 +5,8 @@
+ 
+ libAtlasCodecs_0_6_la_LDFLAGS = $(INTERFACE_VERSION)
+ 
++libAtlasCodecs_0_6_la_LIBADD = ../libAtlas-0.6.la
++
+ libAtlasCodecs_0_6_la_SOURCES = \
+ 	Utility.cpp XML.cpp Packed.cpp Bach.cpp
+ 
+--- Atlas/Filters/Makefile.am.old	2008-11-20 08:53:58.000000000 +0100
++++ Atlas/Filters/Makefile.am	2008-11-20 08:55:21.000000000 +0100
+@@ -5,6 +5,8 @@
+ 
+ libAtlasFilters_0_6_la_LDFLAGS = $(INTERFACE_VERSION)
+ 
++libAtlasFilters_0_6_la_LIBADD = ../libAtlas-0.6.la -lz -lbz2
++
+ libAtlasFilters_0_6_la_SOURCES = \
+         Bzip2.cpp Bzip2.h \
+ 	Gzip.cpp Gzip.h
+--- Atlas/Net/Makefile.am.old	2008-11-19 15:10:38.000000000 +0100
++++ Atlas/Net/Makefile.am	2008-11-19 15:11:13.000000000 +0100
+@@ -5,6 +5,8 @@
+ 
+ libAtlasNet_0_6_la_LDFLAGS = $(INTERFACE_VERSION)
+ 
++libAtlasNet_0_6_la_LIBADD = ../Codecs/libAtlasCodecs-0.6.la ../libAtlas-0.6.la
++
+ libAtlasNetincludedir = $(includedir)/Atlas-C++-0.6/Atlas/Net
+ 
+ libAtlasNet_0_6_la_SOURCES = \
+--- Atlas/Objects/Makefile.am.old	2008-11-20 08:57:39.000000000 +0100
++++ Atlas/Objects/Makefile.am	2008-11-20 08:58:56.000000000 +0100
+@@ -5,6 +5,8 @@
+ 
+ libAtlasObjects_0_6_la_LDFLAGS = $(INTERFACE_VERSION)
+ 
++libAtlasObjects_0_6_la_LIBADD = ../libAtlas-0.6.la ../Message/libAtlasMessage-0.6.la ../Codecs/libAtlasCodecs-0.6.la
++
+ REAL_GENERATED_CPP = Root.cpp Decoder.cpp Dispatcher.cpp objectFactory.cpp \
+ 	RootEntity.cpp RootEntityChildren.cpp \
+ 	RootOperation.cpp RootOperationChildren1.cpp \

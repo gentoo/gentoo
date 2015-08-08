@@ -1,0 +1,29 @@
+Resolve patch overlaps.
+--- a/meshlab/src/meshlab/meshlab.pro
++++ b/meshlab/src/meshlab/meshlab.pro
+@@ -129,10 +129,8 @@ win32-g++:LIBS        	+= -L../external/lib/win32-gcc -L../distrib -lcommon
+ #	win32-g++:release:LIBS 			+= -L../common/release -lcommon
+ #}
+ 
+-linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
++linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLEW -lGLU
+ linux-g++:QMAKE_RPATHDIR += /usr/lib/meshlab
+-linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -L../distrib -lcommon -lGLU
+-linux-g++-64:LIBS += -L../external/lib/linux-g++-64 -L../distrib -lcommon -lGLU
+ 
+ # uncomment in your local copy only in emergency cases.
+ # We should never be too permissive
+--- a/meshlab/src/meshlabserver/meshlabserver.pro
++++ b/meshlab/src/meshlabserver/meshlabserver.pro
+@@ -25,10 +25,8 @@ win32-msvc2005:  LIBS += -L../distrib -lcommon
+ win32-msvc2008:  LIBS += -L../distrib -lcommon
+ win32-msvc2010:  LIBS += -L../distrib -lcommon
+ win32-g++:  LIBS += -L../distrib -lcommon
+-linux-g++:  LIBS += -L../distrib -lcommon
++linux-g++:  LIBS += -L../distrib -lcommon -lGLEW
+ linux-g++:QMAKE_RPATHDIR += /usr/lib/meshlab
+-linux-g++-32:  LIBS += -L../distrib -lcommon
+-linux-g++-64:  LIBS += -L../distrib -lcommon
+ #CONFIG (release,debug | release) {
+ #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon
+ #	win32-msvc2008:release:  LIBS += -L../common/release -lcommon

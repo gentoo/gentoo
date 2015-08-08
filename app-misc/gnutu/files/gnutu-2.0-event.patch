@@ -1,0 +1,11 @@
+--- src/Widgets/DateEdit.cs.old	2005-09-08 04:52:07.195144232 +0900
++++ src/Widgets/DateEdit.cs	2005-09-08 04:53:34.173921448 +0900
+@@ -74,7 +74,7 @@
+ 		}
+ 		
+ 		
+-		private void on_CalendarWindow_focus_out (object obj, EventArgs args)
++		private void on_CalendarWindow_focus_out (object obj, Gtk.FocusOutEventArgs args)
+ 		{
+ 			CalendarWindow.Hide ();
+ 			SelectBtn.Active = false;

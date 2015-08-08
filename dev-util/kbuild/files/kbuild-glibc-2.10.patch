@@ -1,0 +1,33 @@
+diff -ruN kBuild-0.1.5-orig/src/ash/output.c kBuild-0.1.5/src/ash/output.c
+--- kBuild-0.1.5-orig/src/ash/output.c	2009-04-08 18:21:26.000000000 -0400
++++ kBuild-0.1.5/src/ash/output.c	2009-05-22 20:11:49.000000000 -0400
+@@ -230,6 +230,7 @@
+ 	va_end(ap);
+ }
+ 
++#if 0
+ void
+ dprintf(const char *fmt, ...)
+ {
+@@ -240,6 +241,7 @@
+ 	va_end(ap);
+ 	flushout(out2);
+ }
++#endif
+ 
+ void
+ fmtstr(char *outbuf, size_t length, const char *fmt, ...)
+diff -ruN kBuild-0.1.5-orig/src/ash/output.h kBuild-0.1.5/src/ash/output.h
+--- kBuild-0.1.5-orig/src/ash/output.h	2009-04-08 18:21:26.000000000 -0400
++++ kBuild-0.1.5/src/ash/output.h	2009-05-22 20:12:28.000000000 -0400
+@@ -65,8 +65,10 @@
+     __attribute__((__format__(__printf__,2,3)));
+ void out1fmt(const char *, ...)
+     __attribute__((__format__(__printf__,1,2)));
++#if 0
+ void dprintf(const char *, ...)
+     __attribute__((__format__(__printf__,1,2)));
++#endif
+ void fmtstr(char *, size_t, const char *, ...)
+     __attribute__((__format__(__printf__,3,4)));
+ void doformat(struct output *, const char *, va_list);

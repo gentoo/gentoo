@@ -1,0 +1,64 @@
+Respect CC, CFLAGS, LDFLAGS
+Fix install paths
+Fix parallel build
+Drop DEPRECATED flags, bug #391099
+
+--- Makefile
++++ Makefile
+@@ -1,6 +1,5 @@
+-CC := gcc
+-CFLAGS := `pkg-config --cflags gtk+-2.0` -I. -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED
+-LIBS :=`pkg-config --libs gtk+-2.0`
++CFLAGS += `pkg-config --cflags gtk+-2.0` -I.
++LIBS +=`pkg-config --libs gtk+-2.0`
+ bindir ?= /usr/bin
+ datadir ?= /usr/share
+ enable_nls ?= 1
+@@ -8,12 +7,11 @@
+ .c.o:
+ 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
+ 
+-all: 
+-	make gperiodic
+-	make -C po/ all enable_nls=$(enable_nls)
++all: gperiodic
++	$(MAKE) -C po/ all enable_nls=$(enable_nls)
+ 
+ gperiodic: gperiodic.o
+-	$(CC) $(CFLAGS) -o gperiodic gperiodic.o $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o gperiodic gperiodic.o $(LIBS)
+ ifeq ($(strip),1)
+ 	strip gperiodic
+ endif
+@@ -23,24 +21,21 @@
+ gperiodic.o: gperiodic.c gperiodic.h table_data.h
+ 
+ install:
+-	mkdir -p $(DESTDIR)$(bindir)
+-	install -m 755 gperiodic $(DESTDIR)$(bindir)
+-	mkdir -p $(DESTDIR)$(datadir)/applications
+-	install -m 644 gperiodic.desktop $(DESTDIR)$(datadir)/applications
+-	mkdir -p $(DESTDIR)$(datadir)/pixmaps
+-	install -m 644 gperiodic.png $(DESTDIR)$(datadir)/pixmaps
+-	install -m 644 gperiodic-crystal.png $(DESTDIR)$(datadir)/pixmaps
+-	make -C po/ install enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
++	install -D -m 755 gperiodic $(DESTDIR)$(bindir)/gperiodic
++	install -D -m 644 gperiodic.desktop $(DESTDIR)$(datadir)/applications/gperiodic.desktop
++	install -D -m 644 gperiodic.png $(DESTDIR)$(datadir)/pixmaps/gperiodic.png
++	install -m 644 gperiodic-crystal.png $(DESTDIR)$(datadir)/pixmaps/gperiodic-crystal.png
++	$(MAKE) -C po/ install enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
+ 
+ uninstall:
+ 	rm -f $(bindir)/gperiodic \
+ 	      $(datadir)/applications/gperiodic.desktop
+ 	      $(datadir)/pixmaps/gperiodic.png \
+ 	      $(datadir)/pixmaps/gperiodic-crystal.png
+-	make -C po/ uninstall enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
++	$(MAKE) -C po/ uninstall enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
+ 
+ clean:
+ 	rm -f *.o gperiodic
+-	make -C po/ clean
++	$(MAKE) -C po/ clean
+ 
+ .PHONY: install uninstall clean

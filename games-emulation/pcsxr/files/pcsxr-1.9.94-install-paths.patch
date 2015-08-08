@@ -1,0 +1,223 @@
+From a5b0086e76672083f91ddb4d0350cc99c19604fb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 11 Dec 2013 17:12:58 +0100
+Subject: [PATCH 1/2] Fix install paths for Gentoo.
+
+---
+ data/Makefile.am              | 2 +-
+ gui/Makefile.am               | 6 +++---
+ libpcsxcore/Makefile.am       | 2 +-
+ pixmaps/Makefile.am           | 2 +-
+ plugins/bladesio1/Makefile.am | 6 +++---
+ plugins/dfcdrom/Makefile.am   | 6 +++---
+ plugins/dfinput/Makefile.am   | 6 +++---
+ plugins/dfnet/Makefile.am     | 6 +++---
+ plugins/dfsound/Makefile.am   | 6 +++---
+ plugins/dfxvideo/Makefile.am  | 6 +++---
+ plugins/peopsxgl/Makefile.am  | 8 ++++----
+ 11 files changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 8f1ce6a..9df8e87 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -1,7 +1,7 @@
+ glade_DATA = pcsxr.ui
+ gladedir = $(datadir)/pcsxr
+ 
+-desktopdir = $(datadir)/applications
++desktopdir = $(datarootdir)/applications
+ desktop_DATA = pcsxr.desktop
+ 
+ EXTRA_DIST = $(glade_DATA) pcsxr.desktop
+diff --git a/gui/Makefile.am b/gui/Makefile.am
+index 5feb39e..6146ef0 100644
+--- a/gui/Makefile.am
++++ b/gui/Makefile.am
+@@ -1,10 +1,10 @@
+ AM_CPPFLAGS = -DPACKAGE_DATA_DIR=\"${datadir}/pcsxr/\" \
+-	-DPIXMAPDIR=\"${datadir}/pixmaps/\" \
+-	-DLOCALE_DIR=\"${datadir}/locale/\" \
++	-DPIXMAPDIR=\"${datarootdir}/pixmaps/\" \
++	-DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	$(GTK3_CFLAGS) \
+ 	-I$(top_srcdir)/libpcsxcore -I$(top_srcdir)/include \
+ 	-DPSEMU_DATA_DIR=\"${datadir}/psemu\" \
+-	-DDEF_PLUGIN_DIR=\"${libdir}/games/psemu\"
++	-DDEF_PLUGIN_DIR=\"${libdir}/psemu\"
+ 
+ bin_PROGRAMS = pcsxr
+ 
+diff --git a/libpcsxcore/Makefile.am b/libpcsxcore/Makefile.am
+index 1ae5389..9571ea3 100644
+--- a/libpcsxcore/Makefile.am
++++ b/libpcsxcore/Makefile.am
+@@ -1,4 +1,4 @@
+-AM_CPPFLAGS = -DLOCALE_DIR=\"${datadir}/locale/\" \
++AM_CPPFLAGS = -DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-I$(top_srcdir)/include
+ 
+ noinst_LIBRARIES = libpcsxcore.a
+diff --git a/pixmaps/Makefile.am b/pixmaps/Makefile.am
+index e77fda4..f7e10da 100644
+--- a/pixmaps/Makefile.am
++++ b/pixmaps/Makefile.am
+@@ -1,7 +1,7 @@
+ pixmapdir = "$(datadir)/pcsxr"
+ pixmap_DATA = pcsxr.png iso-open.png iso-reopen.png cd.png cdr.png gpu.png memcard.png pad.png play.png sio1.png spu.png
+ 
+-icondir = "$(datadir)/pixmaps"
++icondir = "$(datarootdir)/pixmaps"
+ icon_DATA = pcsxr-icon.png
+ 
+ EXTRA_DIST = pcsxr.png iso-open.png iso-reopen.png cd.png cdr.png gpu.png memcard.png pad.png play.png sio1.png spu.png pcsxr-icon.png
+diff --git a/plugins/bladesio1/Makefile.am b/plugins/bladesio1/Makefile.am
+index 5b7fee4..75d9588 100644
+--- a/plugins/bladesio1/Makefile.am
++++ b/plugins/bladesio1/Makefile.am
+@@ -1,12 +1,12 @@
+-bindir = @libdir@/games/psemu/
+-libdir = @libdir@/games/psemu/
++bindir = @libdir@/psemu/
++libdir = @libdir@/psemu/
+ 
+ lib_LTLIBRARIES = libBladeSio1.la
+ 
+ libBladeSio1_la_SOURCES = cfg.c sio1.c sio1.h fifo.c fifo.h connection.c connection.h
+ libBladeSio1_la_LDFLAGS = -module -avoid-version
+ 
+-AM_CPPFLAGS = -DLOCALE_DIR=\"${datadir}/locale/\" \
++AM_CPPFLAGS = -DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-DDATADIR=\"${datadir}/psemu/\" \
+ 	$(GTK3_CFLAGS) \
+ 	-I../../libpcsxcore -I../../include
+diff --git a/plugins/dfcdrom/Makefile.am b/plugins/dfcdrom/Makefile.am
+index b4c729f..297b4f9 100644
+--- a/plugins/dfcdrom/Makefile.am
++++ b/plugins/dfcdrom/Makefile.am
+@@ -1,5 +1,5 @@
+-bindir = @libdir@/games/psemu/
+-libdir = @libdir@/games/psemu/
++bindir = @libdir@/psemu/
++libdir = @libdir@/psemu/
+ 
+ lib_LTLIBRARIES = libDFCdrom.la
+ 
+@@ -21,7 +21,7 @@ libDFCdrom_la_CFLAGS += -DUSE_LIBCDIO=1 $(LIBCDIO_CFLAGS)
+ libDFCdrom_la_LIBADD += $(LIBCDIO_LIBS)
+ endif
+ 
+-AM_CPPFLAGS = -DLOCALE_DIR=\"${datadir}/locale/\" \
++AM_CPPFLAGS = -DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-DDATADIR=\"${datadir}/psemu/\" \
+ 	$(GTK3_CFLAGS) \
+ 	-I../../libpcsxcore -I../../include
+diff --git a/plugins/dfinput/Makefile.am b/plugins/dfinput/Makefile.am
+index f270ca7..0f7f9b5 100644
+--- a/plugins/dfinput/Makefile.am
++++ b/plugins/dfinput/Makefile.am
+@@ -1,5 +1,5 @@
+-bindir = @libdir@/games/psemu/
+-libdir = @libdir@/games/psemu/
++bindir = @libdir@/psemu/
++libdir = @libdir@/psemu/
+ 
+ lib_LTLIBRARIES = libDFInput.la
+ 
+@@ -7,7 +7,7 @@ libDFInput_la_SOURCES = cfg.c pad.c pad.h sdljoy.c xkb.c analog.c util.c util.h
+ libDFInput_la_LDFLAGS = -module -avoid-version 
+ libDFInput_la_LIBADD = -lpthread -lX11 $(SDL2_LIBS) $(SDL_LIBS)
+ 
+-AM_CPPFLAGS = -DLOCALE_DIR=\"${datadir}/locale/\" \
++AM_CPPFLAGS = -DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-DDATADIR=\"${datadir}/psemu/\" \
+ 	$(GTK3_CFLAGS) \
+ 	-I../../include -I../../libpcsxcore $(SDL2_CFLAGS) $(SDL_CFLAGS)
+diff --git a/plugins/dfnet/Makefile.am b/plugins/dfnet/Makefile.am
+index 004df63..fff3dba 100644
+--- a/plugins/dfnet/Makefile.am
++++ b/plugins/dfnet/Makefile.am
+@@ -1,12 +1,12 @@
+-bindir = @libdir@/games/psemu/
+-libdir = @libdir@/games/psemu/
++bindir = @libdir@/psemu/
++libdir = @libdir@/psemu/
+ 
+ lib_LTLIBRARIES = libDFNet.la
+ 
+ libDFNet_la_SOURCES = dfnet.c dfnet.h unix.c cfg.c
+ libDFNet_la_LDFLAGS = -module -avoid-version
+ 
+-AM_CPPFLAGS = -DLOCALE_DIR=\"${datadir}/locale/\" \
++AM_CPPFLAGS = -DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-DDATADIR=\"${datadir}/psemu/\" \
+ 	$(GTK3_CFLAGS) \
+ 	-I../../libpcsxcore -I../../include
+diff --git a/plugins/dfsound/Makefile.am b/plugins/dfsound/Makefile.am
+index 5325555..15515b8 100644
+--- a/plugins/dfsound/Makefile.am
++++ b/plugins/dfsound/Makefile.am
+@@ -1,7 +1,7 @@
+ AM_CPPFLAGS = -I../../include
+ 
+-bindir = @libdir@/games/psemu/
+-libdir = @libdir@/games/psemu/
++bindir = @libdir@/psemu/
++libdir = @libdir@/psemu/
+ 
+ lib_LTLIBRARIES = libDFSound.la
+ 
+@@ -46,7 +46,7 @@ libDFSound_la_CPPFLAGS += -DUSENULL=1
+ endif
+ 
+ bin_PROGRAMS = cfgDFSound
+-cfgDFSound_CPPFLAGS = -DLOCALE_DIR=\"${datadir}/locale/\" \
++cfgDFSound_CPPFLAGS = -DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-DDATADIR=\"${datadir}/psemu/\" \
+ 	$(GTK3_CFLAGS) $(AM_CPPFLAGS)
+ cfgDFSound_SOURCES = spucfg-0.1df/main.c
+diff --git a/plugins/dfxvideo/Makefile.am b/plugins/dfxvideo/Makefile.am
+index 2af76fd..0515690 100644
+--- a/plugins/dfxvideo/Makefile.am
++++ b/plugins/dfxvideo/Makefile.am
+@@ -6,14 +6,14 @@ SUFFIXES = .asm
+ 	$(LIBTOOL) --tag=CC --mode=compile \
+ 	$(STRIP_FPIC) $(NASM) -f elf -d ELF -I${srcdir}/ $<
+ 
+-AM_CPPFLAGS = -DLOCALE_DIR=\"${datadir}/locale/\" \
++AM_CPPFLAGS = -DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-DDATADIR=\"${datadir}/psemu/\" \
+ 	$(GTK3_CFLAGS)\
+ 	-I../../libpcsxcore \
+ 	-I../../include
+ 
+-bindir = @libdir@/games/psemu/
+-libdir = @libdir@/games/psemu/
++bindir = @libdir@/psemu/
++libdir = @libdir@/psemu/
+ 
+ lib_LTLIBRARIES = libDFXVideo.la
+ 
+diff --git a/plugins/peopsxgl/Makefile.am b/plugins/peopsxgl/Makefile.am
+index 99c9554..e3af49f 100644
+--- a/plugins/peopsxgl/Makefile.am
++++ b/plugins/peopsxgl/Makefile.am
+@@ -1,11 +1,11 @@
+-AM_CPPFLAGS = -DPIXMAPDIR=\"${datadir}/pixmaps/\" \
+-	-DLOCALE_DIR=\"${datadir}/locale/\" \
++AM_CPPFLAGS = -DPIXMAPDIR=\"${datarootdir}/pixmaps/\" \
++	-DLOCALE_DIR=\"${datarootdir}/locale/\" \
+ 	-DDATADIR=\"${datadir}/psemu/\" \
+ 	$(GTK3_CFLAGS) \
+ 	-I../../libpcsxcore -I../../include
+ 
+-bindir = @libdir@/games/psemu/
+-libdir = @libdir@/games/psemu/
++bindir = @libdir@/psemu/
++libdir = @libdir@/psemu/
+ 
+ lib_LTLIBRARIES = libpeopsxgl.la
+ 
+-- 
+1.8.5.1
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		At its most general, Top is a framework for constructing abstract interpretations
+		which focuses on giving good feedback on why an abstract interpretation does not give
+		any useful information. In a mathematical notation this is usually made explicit by
+		returning the top element of a (complete) lattice. This is also one of the reasons
+		for the name of the project.
+	</longdescription>
+</pkgmetadata>

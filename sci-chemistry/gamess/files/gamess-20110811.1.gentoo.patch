@@ -1,0 +1,263 @@
+diff -urN gamess.orig/comp gamess/comp
+--- gamess.orig/comp	2011-08-11 17:37:48.000000000 +0200
++++ gamess/comp	2011-10-11 15:17:23.349829478 +0200
+@@ -1444,7 +1444,7 @@
+ #   g77 does not support FORTRAN logical units above 99, or 128 bit math.
+ #
+    case g77:
+-   set OPT = '-O2'
++   set gentoo-OPT = '-O2'
+    if ($MODULE == ormas1) set OPT='-O2 -fno-move-all-movables' # RH9, g77 3.3
+    if ($MODULE == zheev)  set OPT='-O0'  # defensive compiling
+    if (($MODULE == qeigen) || ($MODULE == int2c)) then
+@@ -1474,7 +1474,7 @@
+ #      -std=legacy  suppresses warnings about use of f77 constructs.
+ #
+    case gfortran:
+-   set OPT='-O2'
++   set gentoo-OPT = '-O2'
+    if ($MODULE == zheev)  set OPT='-O0'  # defensive compiling
+    if ($MODULE == pcmcv2) set OPT='-O1'  # EFP+CPCM, ala Francois, v4.1.2
+    if (($MODULE == qeigen) || ($MODULE == int2c)) then
+@@ -1500,7 +1500,7 @@
+ #    optimizations in 32 bit mode, as a function of the ifort version.
+ #
+    case ifort:
+-   set OPT = '-O3'
++   set gentoo-OPT = '-O2'
+    if ($MODULE == delocl) set OPT='-O0'  # from Cheol
+    if ($MODULE == prpamm) set OPT='-O0'  # for exam13
+    if ($MODULE == zheev)  set OPT='-O0'
+@@ -1617,7 +1617,7 @@
+    case gfortran:
+ #           -finit-real=<zero|inf|-inf|nan>  could be interesting debug opt
+ #           -fno-automatic forces static storage of all local variables
+-      set OPT='-O2'
++      set gentoo-OPT = '-O2'
+       if (".$GMS_DEBUG_FLAGS" != .) set OPT="$GMS_DEBUG_FLAGS"
+       if ($MODULE == zheev)  set OPT='-O0'  # defensive compiling
+       if (($MODULE == qeigen) || ($MODULE == int2c)) then
+@@ -1648,7 +1648,7 @@
+ #     -WB means warn but don't fail on out-of-bounds array references
+ #     -ftz flushes underflow results to zero
+ #
+-      set OPT = '-O2'
++      set gentoo-OPT = '-O2'
+       if (".$GMS_DEBUG_FLAGS" != .) set OPT="$GMS_DEBUG_FLAGS"
+ #       alas, I'm so tired of hearing about so many versions failing to
+ #       diagonalize, that this time critical code is run w/o optimization.
+diff -urN gamess.orig/compall gamess/compall
+--- gamess.orig/compall	2011-05-17 22:53:33.000000000 +0200
++++ gamess/compall	2011-10-11 12:13:30.041087251 +0200
+@@ -84,12 +84,11 @@
+    endif
+ endif
+ if ($TARGET == linux32)      set extraflags='-DLINUX32'
+-if ($TARGET == linux64)      then
++if ($TARGET == linux64) then
++	set chip=`uname -m`
+ #      Ubuntu uses the non-standard -m flag, its -p replies "unknown"
+-                         set chip=`uname -p`
+-   if ($chip == unknown) set chip=`uname -m`
+-   if ($chip == x86_64) set extraflags='-DLINUX64 -m64'
+-   if ($chip == ia64)   set extraflags='-DLINUX64'  # this always 64 bits
++   	if ($chip == x86_64) set extraflags='-DLINUX64 -m64'
++   	if ($chip == ia64)   set extraflags='-DLINUX64'  # this always 64 bits
+ endif
+ if ($TARGET == mac32)        set extraflags='-DLINUX32'
+ if ($TARGET == mac64)    set extraflags='-DLINUX64 -m64 -I/usr/include/malloc'
+diff -urN gamess.orig/ddi/compddi gamess/ddi/compddi
+--- gamess.orig/ddi/compddi	2011-02-15 21:31:30.000000000 +0100
++++ gamess/ddi/compddi	2011-10-11 12:23:45.513796580 +0200
+@@ -634,7 +634,7 @@
+ 
+      set FORTRAN=$GMS_FORTRAN   # might be g77, gfortran, ifort, pgf77, f2c
+ 
+-     set CC = 'gcc'
++     set gentoo-CC = 'gcc'
+      set CFLAGS = "-DLINUX -O3 -fstrict-aliasing -I./"
+      set CLIBS  = "-lpthread"
+ 
+@@ -687,7 +687,7 @@
+                              set ARCH='-m64'
+      if (`uname -p` == ia64) set ARCH=''
+ 
+-     set CC = 'gcc'
++     set gentoo-CC = 'gcc'
+      set CFLAGS = "-DLINUX $ARCH -O3 -fstrict-aliasing -I./"
+      set CLIBS  = "-lpthread"
+ 
+diff -urN gamess.orig/ddi/kickoff/ddikick.c gamess/ddi/kickoff/ddikick.c
+--- gamess.orig/ddi/kickoff/ddikick.c	2008-05-06 12:16:12.000000000 +0200
++++ gamess/ddi/kickoff/ddikick.c	2011-10-11 12:25:11.862714681 +0200
+@@ -105,7 +105,7 @@
+           remoteshell = argv[++i];
+        } else {
+           if((remoteshell = getenv("DDI_RSH")) == NULL) {
+-              remoteshell = (char *) strdup("rsh");
++              remoteshell = (char *) strdup("ssh");
+           }
+        }
+ 
+diff -urN gamess.orig/lked gamess/lked
+--- gamess.orig/lked	2011-08-11 17:41:02.000000000 +0200
++++ gamess/lked	2011-10-11 12:26:38.564634821 +0200
+@@ -53,7 +53,7 @@
+ #
+ #   3. optional Nuclear-Electronic Orbital method, using NEO code
+ #
+-set NEO=false
++set NEO=true
+ #
+ #   4. optional Nvidia/CUDA code, for closed shell SCF Fock construction 
+ #         see ~/gamess/libcchem/aaa.readme.1st for more information
+@@ -356,17 +356,17 @@
+    switch ($GMS_FORTRAN)
+      case g77:
+         set LDR='g77'
+-        set LDOPTS=' '  # add '-Wl,-M' to see load map
++        set gentoo-LDOPTS=' '  # add '-Wl,-M' to see load map
+         set FORTLIBS=' '
+         breaksw
+      case gfortran:
+         set LDR='gfortran'
+-        set LDOPTS=' '
++        set gentoo-LDOPTS=' '
+         set FORTLIBS=' '
+         breaksw
+      case ifort:
+         set LDR='ifort'
+-        set LDOPTS=' '  # add '-Wl,-M' to see load map
++        set gentoo-LDOPTS=' '  # add '-Wl,-M' to see load map
+         set FORTLIBS='-Vaxlib'
+         breaksw
+      case pgf77:
+@@ -376,7 +376,7 @@
+         breaksw
+      case f2c:
+         set LDR='gcc'
+-        set LDOPTS=' '
++        set gentoo-LDOPTS=' '
+         set FORTLIBS='-lf2c -lm'
+         breaksw
+      default:
+@@ -427,12 +427,7 @@
+       #     Otherwise, attempt a link against shared object libs.
+       #     See the 64 bit Atlas below for a way to fix the linker's
+       #     not being able to locate -lf77blas, if that happens.
+-      if (-e $GMS_MATHLIB_PATH/libf77blas.a) then
+-         set MATHLIBS="$GMS_MATHLIB_PATH/libf77blas.a"
+-         set MATHLIBS="$MATHLIBS $GMS_MATHLIB_PATH/libatlas.a"
+-      else
+-         set MATHLIBS="-L$GMS_MATHLIB_PATH -lf77blas -latlas"
+-      endif
++      set MATHLIBS=`${PKG_CONFIG} --libs blas`
+       set BLAS=' '
+       breaksw
+ 
+@@ -466,12 +461,12 @@
+    switch ($GMS_FORTRAN)
+       case gfortran:
+          set LDR='gfortran'
+-         set LDOPTS=' '
++         set gentoo-LDOPTS=' '
+          set FORTLIBS=' '
+          breaksw
+       case ifort:
+          set LDR='ifort'
+-         set LDOPTS='-i8'  # -Wl,-M generates a load map
++         set gentoo-LDOPTS=' '  # -Wl,-M generates a load map
+ #            this auxiliary library seems to have disappeared in ifort 10
+          set FORTLIBS=' '
+          if($GMS_IFORT_VERNO < 10) set FORTLIBS='-Vaxlib'
+@@ -556,12 +551,7 @@
+       #          ln -s liblapack_atlas.so.3.0 liblapack.so
+       #          ln -s liblapack.so.3.0       liblapack.so
+       #     It is strange the RPM's don't do these soft links for us.
+-      if (-e $GMS_MATHLIB_PATH/libf77blas.a) then
+-         set MATHLIBS="$GMS_MATHLIB_PATH/libf77blas.a"
+-         set MATHLIBS="$MATHLIBS $GMS_MATHLIB_PATH/libatlas.a"
+-      else
+-         set MATHLIBS="-L$GMS_MATHLIB_PATH -lf77blas -latlas"
+-      endif
++      set MATHLIBS=`${PKG_CONFIG} --libs blas`
+       set BLAS=' '
+       breaksw
+ 
+diff -urN gamess.orig/runall gamess/runall
+--- gamess.orig/runall	2009-02-28 00:57:18.000000000 +0100
++++ gamess/runall	2011-10-11 12:27:32.195586568 +0200
+@@ -10,7 +10,6 @@
+ #
+ #  Only the following two lines need to be customized:
+ #
+-chdir /u1/mike/gamess
+ set VERNO=00
+ #
+ #  Loop over all Ntest jobs supplied with GAMESS
+@@ -27,7 +26,7 @@
+      gms -v $VERNO -q ti -l exam$NUM.log exam$NUM
+      sleep 5
+   else
+-     ./rungms exam$NUM $VERNO 1  >&  exam$NUM.log
++     rungms exam$NUM $VERNO 1  >&  exam$NUM.log
+   endif
+   @ i++
+ end
+diff -urN gamess.orig/rungms gamess/rungms
+--- gamess.orig/rungms	2011-08-04 21:03:11.000000000 +0200
++++ gamess/rungms	2011-10-11 12:30:05.244448126 +0200
+@@ -55,7 +55,7 @@
+ #       one for LoadLeveler "ll-gms" on the IBM SP line.
+ #
+ set TARGET=sockets
+-set SCR=/scr/$USER
++set SCR=`pwd`
+ #
+ set JOB=$1      # name of the input file xxx.inp, give only the xxx part
+ set VERNO=$2    # revision number of the executable created by 'lked' step
+@@ -144,7 +144,7 @@
+ #     used by the NEO method.  See NEO's documentation for more details.
+ #
+ set echo
+-setenv AUXDATA ~mike/gamess/auxdata
++setenv AUXDATA /usr/share/gamess
+ setenv  EXTBAS /dev/null
+ setenv  NUCBAS /dev/null
+ setenv  POSBAS /dev/null
+@@ -153,12 +153,12 @@
+ setenv MCPPATH $AUXDATA/MCP
+ setenv BASPATH $AUXDATA/BASES
+ setenv QUANPOL $AUXDATA/QUANPOL
+-setenv  MAKEFP ~$USER/scr/$JOB.efp
+-setenv   GAMMA ~$USER/scr/$JOB.gamma
+-setenv TRAJECT ~$USER/scr/$JOB.trj
+-setenv RESTART ~$USER/scr/$JOB.rst
++setenv  MAKEFP $SCR/$JOB.efp
++setenv   GAMMA $SCR/$JOB.gamma
++setenv TRAJECT $SCR/$JOB.trj
++setenv RESTART $SCR/$JOB.rst
+ setenv   INPUT $SCR/$JOB.F05
+-setenv   PUNCH ~$USER/scr/$JOB.dat
++setenv   PUNCH $SCR/$JOB.dat
+ setenv  AOINTS $SCR/$JOB.F08
+ setenv  MOINTS $SCR/$JOB.F09
+ setenv DICTNRY $SCR/$JOB.F10
+@@ -347,7 +347,7 @@
+     if (null$4 == null) set ELGNAME=ELGFILE
+     set echo
+     setenv AOINTS   $SCR/$ELGNAME.F08
+-    setenv ELGDOS   ~$USER/scr/$JOB.ldos
++    setenv ELGDOS   $SCR/$JOB.ldos
+     setenv ELGDAT   $SCR/$ELGNAME.F71
+     setenv ELGPAR   $SCR/$ELGNAME.F72
+     setenv ELGCUT   $SCR/$ELGNAME.F74
+@@ -500,7 +500,7 @@
+    if ($os == AIX)     set GMSPATH=/u1/mike/gamess
+    if ($os == Darwin)  set GMSPATH=/Users/mike/desktop/gamess
+    if ($os == HP-UX)   set GMSPATH=/zr/mike/gamess
+-   if ($os == Linux)   set GMSPATH=/cu/mike/gamess
++   if ($os == Linux)   set GMSPATH=/usr/bin
+    if ($os == OSF1)    set GMSPATH=/in/mike/gamess
+    if ($os == SunOS)   set GMSPATH=/hf/mike/gamess
+ #       special compilation for Sun E450 uSPARC       (uname also= SunOS)

@@ -1,0 +1,16 @@
+Patch added by neurogeek@gentoo.org
+Patch added 03/01/2010
+Taken from: http://www.freebsd.org/cgi/cvsweb.cgi/ports/net/py-xmlrpc/files/
+Thanks to sobomax @ FreeBSD
+
+--- src/rpcDate.c
++++ src/rpcDate.c
+@@ -75,7 +75,7 @@
+ 	if (dp->value) {
+ 		Py_DECREF(dp->value);
+ 	}
+-	PyMem_DEL(dp);
++	PyObject_DEL(dp);
+ }
+ 
+ 

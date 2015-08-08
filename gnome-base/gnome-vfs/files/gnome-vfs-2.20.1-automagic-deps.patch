@@ -1,0 +1,19 @@
+--- configure.in.	2007-11-30 04:15:01.000000000 +0100
++++ configure.in	2007-11-30 04:16:21.000000000 +0100
+@@ -1102,6 +1102,7 @@
+ 	    AS_HELP_STRING([--disable-acl],[Don't use libacl support]),
+ 	    [],[enable_acl=yes])
+ 
++if test "x$enable_acl" = "xyes"; then
+ AC_CHECK_LIB(attr,getxattr,[ACL_LIBS="$ACL_LIBS -lattr"])
+ AC_CHECK_LIB(acl,acl_get_file,[ACL_LIBS="$ACL_LIBS -lacl"])
+ AC_CHECK_LIB(sec,acl,[ACL_LIBS="$ACL_LIBS -lsec"])
+@@ -1189,6 +1190,8 @@
+ fi
+ 
++fi
+ AC_SUBST(ACL_LIBS)
++
+ AM_CONDITIONAL(HAVE_POSIX_ACL, test x"$have_posix_acl_support" = x"yes")
+ AM_CONDITIONAL(HAVE_SOLARIS_ACL, test x"$have_solaris_acl_support" = x"yes")
+ 

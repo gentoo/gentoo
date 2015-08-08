@@ -1,0 +1,30 @@
+Fix runtime with ffmpeg-1.
+https://bugs.gentoo.org/show_bug.cgi?id=461438
+
+Index: php5.3/ffmpeg-php.c
+===================================================================
+--- php5.3.orig/ffmpeg-php.c
++++ php5.3/ffmpeg-php.c
+@@ -90,9 +90,6 @@ PHP_INI_END()
+  */
+ PHP_MINIT_FUNCTION(ffmpeg)
+ {
+-    /* must be called before using avcodec libraries. */ 
+-    avcodec_init();
+-
+     /* register all codecs */
+     av_register_all();
+     
+Index: php5.3/ffmpeg_movie.c
+===================================================================
+--- php5.3.orig/ffmpeg_movie.c
++++ php5.3/ffmpeg_movie.c
+@@ -259,7 +259,7 @@ static int _php_open_movie_file(ff_movie
+     }
+     
+     /* open the file with generic libav function */
+-    if (av_open_input_file(&ffmovie_ctx->fmt_ctx, filename, NULL, 0, NULL) < 0) {
++    if (avformat_open_input(&ffmovie_ctx->fmt_ctx, filename, NULL, NULL) < 0) {
+         return 1;
+     }
+ 

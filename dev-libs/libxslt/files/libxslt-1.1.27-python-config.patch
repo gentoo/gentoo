@@ -1,0 +1,26 @@
+From 4514fed897ab0911097e54715e7936048bf43dd9 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 22 Sep 2012 16:37:36 -0400
+Subject: [PATCH] Gentoo uses /usr/bin/python-config with automatic version
+ detection
+
+---
+ configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index 0d7ba86..3c8a5ad 100644
+--- a/configure.in
++++ b/configure.in
+@@ -353,7 +353,7 @@ except: print 0"`
+ 		    PYTHON_SITE_PACKAGES=`$PYTHON -c "from distutils import sysconfig; print sysconfig.get_python_lib()"`
+ 	    fi
+ 	fi
+-        PYTHON_LIBS=`python$PYTHON_VERSION-config --libs`
++        PYTHON_LIBS=`python-config --libs`
+     fi
+     if test "$with_python" != ""
+     then
+-- 
+1.7.12
+

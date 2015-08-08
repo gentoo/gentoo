@@ -1,0 +1,62 @@
+--- Isabelle2012-orig/etc/settings	2012-05-23 03:07:38.000000000 +1000
++++ Isabelle2012/etc/settings	2012-05-27 18:07:26.502878614 +1000
+@@ -16,17 +16,24 @@
+ # Only one of the sections below should be activated.
+ 
+ # Poly/ML default (automated settings)
+-ML_PLATFORM="$ISABELLE_PLATFORM"
+-ML_HOME="$(choosefrom \
+-  "$ISABELLE_HOME/contrib/polyml/$ML_PLATFORM" \
+-  "$ISABELLE_HOME/../polyml/$ML_PLATFORM" \
+-  "/usr/local/polyml/$ML_PLATFORM" \
+-  "/usr/share/polyml/$ML_PLATFORM" \
+-  "/opt/polyml/$ML_PLATFORM" \
+-  "")"
+-ML_SYSTEM=$("$ISABELLE_HOME/lib/scripts/polyml-version")
+-ML_OPTIONS="-H 200"
+-ML_SOURCES="$ML_HOME/../src"
++# ML_PLATFORM="$ISABELLE_PLATFORM"
++# ML_HOME="$(choosefrom \
++#   "$ISABELLE_HOME/contrib/polyml/$ML_PLATFORM" \
++#   "$ISABELLE_HOME/../polyml/$ML_PLATFORM" \
++#   "/usr/local/polyml/$ML_PLATFORM" \
++#   "/usr/share/polyml/$ML_PLATFORM" \
++#   "/opt/polyml/$ML_PLATFORM" \
++#   "")"
++# ML_SYSTEM=$("$ISABELLE_HOME/lib/scripts/polyml-version")
++# ML_OPTIONS="-H 200"
++# ML_SOURCES="$ML_HOME/../src"
++
++# Poly/ML Gentoo (x86_64)
++ML_PLATFORM=x86_64-linux
++ML_HOME="/usr/bin"
++ML_SYSTEM=polyml-5.4.0
++ML_OPTIONS="-H 1000"
++ML_SOURCES="/usr/src/debug/dev-lang/polyml-5.4.0"
+ 
+ # Poly/ML 32 bit (manual settings)
+ #ML_SYSTEM=polyml-5.4.1
+@@ -102,7 +109,7 @@
+ ISABELLE_TMP_PREFIX="/tmp/isabelle-$USER"
+ 
+ # Heap input locations. ML system identifier is included in lookup.
+-ISABELLE_PATH="$ISABELLE_HOME_USER/heaps:$ISABELLE_HOME/heaps"
++ISABELLE_PATH="$ISABELLE_HOME_USER/heaps:/usr/lib64/Isabelle2012/heaps"
+ 
+ # Heap output location. ML system identifier is appended automatically later on.
+ ISABELLE_OUTPUT="$ISABELLE_HOME_USER/heaps"
+@@ -161,13 +168,7 @@
+ ###
+ 
+ # Proof General home, look in a variety of places
+-PROOFGENERAL_HOME="$(choosefrom \
+-  "$ISABELLE_HOME/contrib/ProofGeneral" \
+-  "$ISABELLE_HOME/../ProofGeneral" \
+-  "/usr/local/ProofGeneral" \
+-  "/usr/share/ProofGeneral" \
+-  "/opt/ProofGeneral" \
+-  "")"
++PROOFGENERAL_HOME="/usr/share/emacs/site-lisp/ProofGeneral"
+ 
+ PROOFGENERAL_OPTIONS=""
+ #PROOFGENERAL_OPTIONS="-m no_brackets -m no_type_brackets"

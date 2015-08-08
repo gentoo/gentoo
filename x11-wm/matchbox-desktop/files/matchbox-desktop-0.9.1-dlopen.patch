@@ -1,0 +1,11 @@
+diff -uarN matchbox-desktop-0.9.1.orig/configure.ac matchbox-desktop-0.9.1/configure.ac
+--- matchbox-desktop-0.9.1.orig/configure.ac	2005-01-24 09:11:02.000000000 -0500
++++ matchbox-desktop-0.9.1/configure.ac	2014-10-29 14:08:54.882668438 -0400
+@@ -12,6 +12,7 @@
+ AC_PROG_CC
+ AC_LIBTOOL_DLOPEN
+ AC_PROG_LIBTOOL
++LT_LIB_DLLOAD
+ 
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC

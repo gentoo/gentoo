@@ -1,0 +1,22 @@
+Nasty workaround for
+http://bugs.gentoo.org/show_bug.cgi?id=287426
+
+--- src/auths/call_radius.c
++++ src/auths/call_radius.c
+@@ -10,6 +10,16 @@
+ /* This file was originally supplied by Ian Kirk. The libradius support came
+ from Alex Kiernan. */
+ 
++/* ugly hack to work around redefinition of ENV by radiusclient.h and
++ * db.h: define _DB_H_ so the db.h include thinks it's already included,
++ * we can get away with it like this, since this file doesn't use any db
++ * functions. */
++#ifndef _DB_H_
++#define _DB_H_ 1
++#define _DB_EXT_PROT_IN_ 1
++#define DB void
++#endif
++
+ #include "../exim.h"
+ 
+ /* This module contains functions that call the Radius authentication

@@ -1,0 +1,11 @@
+--- htmldoc/ps-pdf.cxx	2006-08-01 18:58:50.000000000 +0200
++++ htmldoc/ps-pdf.cxx	2008-04-26 21:19:49.000000000 +0200
+@@ -3624,7 +3624,7 @@
+   * Get the width of the page number, leave room for three dots...
+   */
+ 
+-  if (heading >= 0)
++  if (heading >= 0 && heading < num_headings)
+   {
+     hpage       = heading_pages[heading];
+     numberwidth = get_width((uchar *)pages[hpage].page_text,

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+		<description>Please assign bugs to me</description>
+	</maintainer>
+	<maintainer>
+		<email>cardoe@gentoo.org</email>
+		<name>Doug Goldstein</name>
+	</maintainer>
+	<herd>virtualization</herd>
+	<use>
+		<flag name='gui'>Builds and installs GUI configurator and GTK+ applet</flag>
+	</use>
+</pkgmetadata>
+

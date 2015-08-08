@@ -1,0 +1,25 @@
+# /etc/conf.d/ocsigenserver : config file for /etc/init.d/ocsigenserver
+
+# Path for the ocsigen binary (add opt for native executable)
+
+#DAEMON=/usr/bin/ocsigenserver.opt
+DAEMON=/usr/bin/ocsigenserver
+
+# Name for ocsigen daemon
+
+NAME=ocsigenserver
+
+# Locstion of Ocsigen config file
+
+CONF=/etc/$NAME/ocsigenserver.conf
+
+# PID file location
+
+PIDFILE=/var/run/$NAME.pid
+
+# Add here any additional aptions for ocsigen
+
+OCSIGEN_OPTS=""
+
+# Command pipe
+COMMANDPIPE=/var/run/ocsigenserver_command

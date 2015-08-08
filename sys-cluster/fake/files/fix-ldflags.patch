@@ -1,0 +1,12 @@
+diff -Naur fake-1.1.10.old/send_arp.patch fake-1.1.10/send_arp.patch
+--- fake-1.1.10.old/send_arp.patch	2002-10-21 08:06:12.000000000 +0200
++++ fake-1.1.10/send_arp.patch	2010-09-27 13:17:02.000000000 +0200
+@@ -29,7 +29,7 @@
+ +all: $(BIN)
+ +
+ +$(BIN): $(SRC)
+-+	$(CC) $(SRC) -o $(BIN)
+++	$(CC) $(LDFLAGS) $(SRC) -o $(BIN)
+ +
+ +clean:
+ +	rm -f $(BIN) core $(SRC).*

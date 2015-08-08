@@ -1,0 +1,16 @@
+--- octave-4.0.0-orig/configure.ac	2015-05-27 02:16:39.000000000 +1000
++++ octave-4.0.0/configure.ac	2015-07-06 18:11:43.461136517 +1000
+@@ -1086,11 +1086,11 @@
+ MAGICK_LIBS=
+ 
+ PKG_CHECK_EXISTS([$magick++], [
+-  ## Make sure we only get -I, -L, and -l flags.  Some Graphics/ImageMagick++
++  ## Make sure we only get -I, -D, -L, and -l flags.  Some Graphics/ImageMagick++
+   ## packages add extra flags that are useful when building
+   ## Graphics/ImageMagick++ extentions.  These extra flags break the
+   ## Octave build.
+-  MAGICK_CPPFLAGS=`$PKG_CONFIG --cflags-only-I $magick++`
++  MAGICK_CPPFLAGS=`$PKG_CONFIG --cflags $magick++ | sed -e 's/\(-@<:@DI@:>@@<:@^ \t@:>@*\)\|\(-@<:@^ \t@:>@*\)/\1/g'`
+   MAGICK_LDFLAGS=`$PKG_CONFIG --libs-only-L $magick++`
+   MAGICK_LIBS=`$PKG_CONFIG --libs-only-l $magick++`
+ 

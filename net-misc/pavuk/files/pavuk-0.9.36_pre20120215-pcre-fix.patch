@@ -1,0 +1,12 @@
+--- src/re.c~	2009-01-21 16:37:40.000000000 +0800
++++ src/re.c	2012-02-18 13:46:30.986959223 +0800
+@@ -193,8 +193,7 @@ int re_subexpr_info(re_entry *ree, int *
+     {
+         if (nr)
+         {
+-            pcre_fullinfo(ree->preg, ree->preg_extra, PCRE_INFO_CAPTURECOUNT, &pmatch_nr);
+-            *nr = pmatch_nr;
++            pcre_fullinfo(ree->preg, ree->preg_extra, PCRE_INFO_CAPTURECOUNT, nr);
+         }
+     }
+ #endif

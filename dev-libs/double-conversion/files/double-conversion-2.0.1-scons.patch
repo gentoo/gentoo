@@ -1,0 +1,12 @@
+--- SConstruct.orig	2014-03-31 12:40:22.186757814 -0700
++++ SConstruct	2014-03-31 12:46:21.726024868 -0700
+@@ -18,7 +18,8 @@
+ # for shared lib, requires scons 2.3.0
+ env['SHLIBVERSION'] = '1.0.0'
+ 
+-CCFLAGS = []
++CCFLAGS = [os.environ['CXXFLAGS']]
++
+ if int(debug):
+   CCFLAGS.append(ARGUMENTS.get('CXXFLAGS', '-g -Wall -Werror'))
+ if int(optimize):

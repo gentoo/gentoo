@@ -1,0 +1,34 @@
+--- a/SConstruct	2015-03-23 10:36:42.328921927 +0100
++++ b/SConstruct	2015-03-23 10:37:37.599310414 +0100
+@@ -828,7 +828,6 @@
+     # -Winvalid-pch Warn if a precompiled header (see Precompiled Headers) is found in the search path but can't be used.
+     env.Append( CCFLAGS=["-fPIC",
+                          "-fno-strict-aliasing",
+-                         "-ggdb",
+                          "-pthread",
+                          "-Wall",
+                          "-Wsign-compare",
+@@ -836,13 +835,13 @@
+                          "-Winvalid-pch"] )
+     # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
+     if linux or darwin:
+-        env.Append( CCFLAGS=["-pipe"] )
+         if not has_option("disable-warnings-as-errors"):
+             env.Append( CCFLAGS=["-Werror"] )
+ 
+     env.Append( CPPDEFINES=["_FILE_OFFSET_BITS=64"] )
+-    env.Append( CXXFLAGS=["-Wnon-virtual-dtor", "-Woverloaded-virtual"] )
+     env.Append( LINKFLAGS=["-fPIC", "-pthread"] )
++    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
++    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
+ 
+     # SERVER-9761: Ensure early detection of missing symbols in dependent libraries at program
+     # startup.
+@@ -938,7 +937,6 @@
+ if not use_system_version_of_library("snappy"):
+     env.Prepend(CPPPATH=['$BUILD_DIR/third_party/snappy'])
+ 
+-env.Prepend(CPPPATH=['$BUILD_DIR/third_party/gtest-1.7.0/include'])
+ 
+ env.Append( CPPPATH=['$EXTRACPPPATH'],
+             LIBPATH=['$EXTRALIBPATH'] )

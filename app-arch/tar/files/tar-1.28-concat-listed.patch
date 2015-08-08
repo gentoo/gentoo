@@ -1,0 +1,117 @@
+https://bugs.gentoo.org/546294
+https://lists.gnu.org/archive/html/bug-tar/2015-04/msg00006.html
+
+From 15c02c2b9d383446b3ea35dbea5a048e136b020d Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org.ua>
+Date: Thu, 16 Apr 2015 13:02:10 +0300
+Subject: [PATCH] Fix extraction from concatenated incremental archives.
+
+* src/common.h (remove_delayed_set_stat): New proto.
+* src/extract.c (free_delayed_set_stat)
+(remove_delayed_set_stat): New function.
+(apply_nonancestor_delayed_set_stat): Use free_delayed_set_stat.
+* src/misc.c (safer_rmdir): Remove delayed_set_stat entry
+corresponding to the removed directory.
+* tests/incr10.at: New test case.
+* tests/Makefile.am: Add new test.
+* tests/testsuite.at: Likewise.
+---
+ src/common.h       |  2 ++
+ src/extract.c      | 38 +++++++++++++++++++++++++++-----
+ src/misc.c         |  7 +++++-
+ tests/Makefile.am  |  1 +
+ tests/incr10.at    | 64 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ tests/testsuite.at |  1 +
+ 6 files changed, 107 insertions(+), 6 deletions(-)
+ create mode 100644 tests/incr10.at
+
+diff --git a/src/common.h b/src/common.h
+index 20cbb64..2904183 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -523,6 +523,8 @@ void extract_archive (void);
+ void extract_finish (void);
+ bool rename_directory (char *src, char *dst);
+ 
++void remove_delayed_set_stat (const char *fname);
++
+ /* Module delete.c.  */
+ 
+ void delete_archive_members (void);
+diff --git a/src/extract.c b/src/extract.c
+index ca25603..5aaeb1b 100644
+--- a/src/extract.c
++++ b/src/extract.c
+@@ -537,6 +537,38 @@ repair_delayed_set_stat (char const *dir,
+ 	  quotearg_colon (dir)));
+ }
+ 
++static void
++free_delayed_set_stat (struct delayed_set_stat *data)
++{
++  xheader_xattr_free (data->xattr_map, data->xattr_map_size);
++  free (data->cntx_name);
++  free (data->acls_a_ptr);
++  free (data->acls_d_ptr);
++  free (data);
++}
++
++void
++remove_delayed_set_stat (const char *fname)
++{
++  struct delayed_set_stat *data, *next, *prev = NULL;
++  for (data = delayed_set_stat_head; data; data = next)
++    {
++      next = data->next;
++      if (chdir_current == data->change_dir
++	  && strcmp (data->file_name, fname) == 0)
++	{
++	  free_delayed_set_stat (data);
++	  if (prev)
++	    prev->next = next;
++	  else
++	    delayed_set_stat_head = next;
++	  return;
++	}
++      else
++	prev = data;
++    }
++}
++
+ /* After a file/link/directory creation has failed, see if
+    it's because some required directory was not present, and if so,
+    create all required directories.  Return zero if all the required
+@@ -846,11 +878,7 @@ apply_nonancestor_delayed_set_stat (char const *file_name, bool after_links)
+ 	}
+ 
+       delayed_set_stat_head = data->next;
+-      xheader_xattr_free (data->xattr_map, data->xattr_map_size);
+-      free (data->cntx_name);
+-      free (data->acls_a_ptr);
+-      free (data->acls_d_ptr);
+-      free (data);
++      free_delayed_set_stat (data);
+     }
+ }
+ 
+diff --git a/src/misc.c b/src/misc.c
+index 8e66643..d263c07 100644
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -586,7 +586,12 @@ safer_rmdir (const char *file_name)
+       return -1;
+     }
+ 
+-  return unlinkat (chdir_fd, file_name, AT_REMOVEDIR);
++  if (unlinkat (chdir_fd, file_name, AT_REMOVEDIR) == 0)
++    {
++      remove_delayed_set_stat (file_name);
++      return 0;
++    }
++  return -1;
+ }
+ 
+ /* Remove FILE_NAME, returning 1 on success.  If FILE_NAME is a directory,
+-- 
+2.3.5
+

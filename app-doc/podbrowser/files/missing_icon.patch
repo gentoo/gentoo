@@ -1,0 +1,32 @@
+X-Description: Provide alternative icons if those expected not in current theme
+X-Author:      Jeffrey Ratcliffe <Jeffrey.Ratcliffe@gmail.com>
+X-Bugs-Gentoo: https://bugs.gentoo.org/319573
+
+--- podbrowser-0.12/podbrowser.pl
++++ podbrowser-0.12/podbrowser.pl
+@@ -60,9 +60,22 @@
+ my $APP			= Gtk2::GladeXML->new($GLADE_FILE);
+ my $THEME		= get_an_icon_theme();
+ my $TIPS		= Gtk2::Tooltips->new;
+-my $IDX_PBF		= Gtk2::Gdk::Pixbuf->new_from_file($THEME->lookup_icon('stock_bookmark', 16, 'force-svg')->get_filename)->scale_simple(16, 16, 'bilinear');
+-my $PAGE_PBF		= Gtk2::Gdk::Pixbuf->new_from_file($THEME->lookup_icon('stock_new-text', 16, 'force-svg')->get_filename)->scale_simple(16, 16, 'bilinear');
+-my $FOLDER_PBF		= Gtk2::Gdk::Pixbuf->new_from_file($THEME->lookup_icon('gnome-fs-directory', 16, 'force-svg')->get_filename)->scale_simple(16, 16, 'bilinear');
++my ( $IDX_PBF, $PAGE_PBF, $FOLDER_PBF );
++if ($THEME->lookup_icon('stock_bookmark', 16, 'force-svg')) {
++  $IDX_PBF		= Gtk2::Gdk::Pixbuf->new_from_file($THEME->lookup_icon('stock_bookmark', 16, 'force-svg')->get_filename)->scale_simple(16, 16, 'bilinear');
++} else {
++  $IDX_PBF              = Gtk2::Image->new->render_icon( 'gtk-index', 'menu' );
++}
++if ($THEME->lookup_icon('stock_new-text', 16, 'force-svg')) {
++  $PAGE_PBF		= Gtk2::Gdk::Pixbuf->new_from_file($THEME->lookup_icon('stock_new-text', 16, 'force-svg')->get_filename)->scale_simple(16, 16, 'bilinear');
++} else {
++  $PAGE_PBF            = Gtk2::Image->new->render_icon( 'gtk-new', 'menu' );
++}
++if ($THEME->lookup_icon('gnome-fs-directory', 16, 'force-svg')) {
++  $FOLDER_PBF		= Gtk2::Gdk::Pixbuf->new_from_file($THEME->lookup_icon('gnome-fs-directory', 16, 'force-svg')->get_filename)->scale_simple(16, 16, 'bilinear');
++} else {
++  $FOLDER_PBF          = Gtk2::Image->new->render_icon( 'gtk-directory', 'menu' );
++}
+ my $NORMAL_CURSOR	= Gtk2::Gdk::Cursor->new('left_ptr');
+ my $BUSY_CURSOR		= Gtk2::Gdk::Cursor->new('watch');
+ my $ITEMS		= {};

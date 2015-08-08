@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index dcb8aa0..7d7ab76 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -796,7 +796,7 @@ fi
+ 
+ AC_SUBST(SOCAT_USE_COMPRESS)
+ 
+-if man --help | grep -q -e --warnings
++if man --help |& grep -q -e --warnings
+ then
+   MAN_HAS_WARNINGS=1
+ else

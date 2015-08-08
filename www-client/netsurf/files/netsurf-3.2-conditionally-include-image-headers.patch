@@ -1,0 +1,67 @@
+--- netsurf-3.2/image/image.c
++++ netsurf-3.2/image/image.c
+@@ -28,15 +28,42 @@
+ #include "content/content.h"
+ #include "image/bitmap.h"
+ 
++#ifdef WITH_BMP
+ #include "image/bmp.h"
+-#include "image/gif.h"
+ #include "image/ico.h"
++#endif
++
++#ifdef WITH_GIF
++#include "image/gif.h"
++#endif
++
++#ifdef WITH_JPEG
+ #include "image/jpeg.h"
+-#include "image/nssprite.h"
++#endif
++
++#ifdef WITH_MNG
++#include "image/mng.h"
++#endif
++
++#ifdef WITH_PNG
+ #include "image/png.h"
+-#include "image/rsvg.h"
++#endif
++
++#ifdef WITH_NSSPRITE
++#include "image/nssprite.h"
++#endif
++
++#ifdef WITH_NS_SVG
+ #include "image/svg.h"
++#endif
++
++#ifdef WITH_RSVG
++#include "image/rsvg.h"
++#endif
++
++#ifdef WITH_WEBP
+ #include "image/webp.h"
++#endif
+ 
+ #include "image/image.h"
+ 
+@@ -73,7 +100,18 @@
+ 		return error;
+ #endif
+ 
++#ifdef WITH_MNG
++	error = nsmng_init();
++	if (error != NSERROR_OK)
++		return error;
++
++	error = nsjpng_init();
++	if (error != NSERROR_OK)
++		return error;
++#endif
++
+ #ifdef WITH_PNG
++	/* Prefer libpng over libmng for pngs by registering later */
+ 	error = nspng_init();
+ 	if (error != NSERROR_OK)
+ 		return error;

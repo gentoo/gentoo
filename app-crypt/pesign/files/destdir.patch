@@ -1,0 +1,10 @@
+diff --git a/Make.defaults b/Make.defaults
+index 864f98b..e2c967b 100644
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -1,4 +1,4 @@
+-INSTALLROOT:= /
++INSTALLROOT:= $(DESTDIR)
+ PREFIX := /usr
+ 
+ HOSTARCH   = $(shell uname -m | sed s,i[3456789]86,ia32,)

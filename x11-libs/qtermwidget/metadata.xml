@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<longdescription lang="en">
+	QTermWidget is an opensource project based on KDE4 Konsole application.
+	The main goal of this project is to provide unicode-enabled, embeddable
+	Qt widget for using as a built-in console or terminal emulation widget.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">qterminal/qtermwidget</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,87 @@
+commit 8fdba0f09df00d69618858c70d11ddbeecd30026
+Author: Dirkjan Ochtman <dirkjan@ochtman.nl>
+Date:   Thu Jul 24 11:43:52 2014 +0200
+
+    Use a single pyexec() utility function to fix compatibility issues
+    
+    While the current setup (where 2.x uses the exec statement and 3.x uses the
+    exec() function) works at run-time, it causes problem while byte-compiling
+    the util modules for their non-appropriate interpreter versions:
+    
+    File "/usr/lib64/python2.7/site-packages/couchdb/util3.py", line 17
+      pyexec = exec
+                  ^
+    SyntaxError: invalid syntax
+    
+    File "/usr/lib64/python3.3/site-packages/couchdb/util2.py", line 19
+      exec code in gns, lns
+              ^
+    SyntaxError: invalid syntax
+    
+    There doesn't appear to be an easy way to exclude some files from installation
+    based on the installing Python version, but it turns out the 2.x exec
+    statement can also take its arguments as a tuple, such that the 2.x and 3.x
+    versions can be used with the same syntax.
+    
+    However, Python 2.7 has a bug (#21591) that prevents this from working in the
+    context we use exec in (in a function that also contains a nested function),
+    due to a bad implementation that enables the arguments-as-tuple functionality.
+    We thus need a helper function after all, to pull it out of that context.
+
+diff --git a/couchdb/util.py b/couchdb/util.py
+index bdd52f3..d111a6b 100644
+--- a/couchdb/util.py
++++ b/couchdb/util.py
+@@ -4,3 +4,7 @@ if sys.version_info[0] < 3:
+     from couchdb.util2 import *
+ else:
+     from couchdb.util3 import *
++
++def pyexec(code, gns, lns):
++    # http://bugs.python.org/issue21591
++    exec(code, gns, lns)
+diff --git a/couchdb/util2.py b/couchdb/util2.py
+index ad1b0a8..03fd558 100644
+--- a/couchdb/util2.py
++++ b/couchdb/util2.py
+@@ -1,8 +1,7 @@
+ 
+ __all__ = [
+     'StringIO', 'urlsplit', 'urlunsplit', 'urlquote', 'urlunquote',
+-    'urlencode', 'utype', 'ltype', 'pyexec', 'strbase', 'funcode',
+-    'urlparse',
++    'urlencode', 'utype', 'ltype', 'strbase', 'funcode', 'urlparse',
+ ]
+ 
+ utype = unicode
+@@ -15,8 +14,5 @@ from urllib import quote as urlquote
+ from urllib import unquote as urlunquote
+ from urllib import urlencode
+ 
+-def pyexec(code, gns, lns):
+-    exec code in gns, lns
+-
+ def funcode(fun):
+     return fun.func_code
+diff --git a/couchdb/util3.py b/couchdb/util3.py
+index c2e46d6..6bf84f0 100644
+--- a/couchdb/util3.py
++++ b/couchdb/util3.py
+@@ -1,8 +1,7 @@
+ 
+ __all__ = [
+     'StringIO', 'urlsplit', 'urlunsplit', 'urlquote', 'urlunquote',
+-    'urlencode', 'utype', 'ltype', 'pyexec', 'strbase', 'funcode',
+-    'urlparse',
++    'urlencode', 'utype', 'ltype', 'strbase', 'funcode', 'urlparse',
+ ]
+ 
+ utype = str
+@@ -14,7 +13,5 @@ from urllib.parse import urlsplit, urlunsplit, urlencode, urlparse
+ from urllib.parse import quote as urlquote
+ from urllib.parse import unquote as urlunquote
+ 
+-pyexec = exec
+-
+ def funcode(fun):
+     return fun.__code__

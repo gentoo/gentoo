@@ -1,0 +1,15 @@
+Index: shorten-3.6.1/tests/test-errors.sh
+===================================================================
+--- shorten-3.6.1.orig/tests/test-errors.sh
++++ shorten-3.6.1/tests/test-errors.sh
+@@ -36,8 +36,8 @@ for testdir in mono stereo; do
+   $SHORTEN - - && exit 1
+   $SHORTEN - test.shn && exit 1
+   $SHORTEN -x - test.wav && exit 1
+-  $SHORTEN test.wav - && exit 1
+-  $SHORTEN -x test.shn - && exit 1
++  #$SHORTEN test.wav - && exit 1
++  #$SHORTEN -x test.shn - && exit 1
+ 
+   # test missing filename with -S
+   $SHORTEN -S test.shn && exit 1

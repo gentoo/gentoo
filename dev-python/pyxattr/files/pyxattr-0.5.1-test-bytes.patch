@@ -1,0 +1,19 @@
+commit ea7421018090b7099c5e0a6bd88180f41ebb7bce
+Author: Mike Gilbert <floppym@gentoo.org>
+Date:   Fri Dec 21 16:33:18 2012 -0500
+
+    Python 2.5 can't parse byte literals, so use bytes() instead.
+
+diff --git a/test/test_xattr.py b/test/test_xattr.py
+index 8df00b9..0bca576 100644
+--- a/test/test_xattr.py
++++ b/test/test_xattr.py
+@@ -12,7 +12,7 @@ from xattr import NS_USER, XATTR_CREATE, XATTR_REPLACE
+ 
+ if sys.hexversion >= 0x03000000:
+     PY3K = True
+-    EMPTY_NS = b''
++    EMPTY_NS = bytes()
+ else:
+     PY3K = False
+     EMPTY_NS = ''

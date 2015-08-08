@@ -1,0 +1,10 @@
+--- source/geometry/CMakeLists.txt.orig	2011-01-17 05:09:38.046080303 +0000
++++ source/geometry/CMakeLists.txt	2011-01-17 05:09:59.636215548 +0000
+@@ -12,7 +12,6 @@
+ #
+ #------------------------------------------------------------------------------
+ 
+-add_subdirectory(benchmarks)
+ add_subdirectory(biasing)
+ add_subdirectory(divisions)
+ add_subdirectory(magneticfield)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jlec@gentoo.org</email>
+		<description>Tree Proxy</description>
+	</maintainer>
+	<maintainer>
+		<email>flo@geekplace.eu</email>
+		<description>Maintainer, CC him on bugs</description>
+	</maintainer>
+	<use>
+		<flag name="unac">Removing accents and ligatures before search</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">pdfgrep</remote-id>
+	</upstream>
+</pkgmetadata>

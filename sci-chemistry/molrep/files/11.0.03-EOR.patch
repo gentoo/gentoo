@@ -1,0 +1,16 @@
+ src/molrep.f |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/molrep.f b/src/molrep.f
+index eac0cfc..94f74c6 100755
+--- a/src/molrep.f
++++ b/src/molrep.f
+@@ -1257,7 +1257,7 @@ C         CHECK_DENS_FILE( 2 )
+         LEN1 = 1
+         IF(LEN.GT.60) LEN1 = LEN - 59
+         WRITE(LINE,'(''Input MODEL_2(fixed)_file:'',A)') 
+-     *                                 NAME2(LEN11:LEN)
++     *                                 NAME2(LEN1:LEN)
+         CALL MSGDOC(MDoc,LINE)
+ 
+       ENDIF

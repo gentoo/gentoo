@@ -1,0 +1,17 @@
+--- configure.ac.orig	2006-07-29 11:38:43.000000000 +0200
++++ configure.ac	2006-07-29 11:40:52.000000000 +0200
+@@ -40,14 +40,6 @@
+         ;;
+     *)
+         MATHLIB="-lm"
+-        AC_PATH_X
+-        AC_PATH_XTRA
+-        if test x$have_x = xyes; then
+-            CFLAGS="$CFLAGS $X_CFLAGS"
+-            SYS_GL_LIBS="$X_LIBS -lGL"
+-        else
+-            SYS_GL_LIBS="-lGL"
+-        fi
+         ;;
+ esac
+ AC_SUBST(MATHLIB)

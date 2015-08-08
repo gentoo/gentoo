@@ -1,0 +1,11 @@
+--- a/sendEmail	2013-03-25 08:59:12.000000000 +0000
++++ b/sendEmail	2013-03-25 08:59:22.000000000 +0000
+@@ -1903,7 +1903,7 @@
+     if ($conf{'tls_server'} == 1 and $conf{'tls_client'} == 1 and $opt{'tls'} =~ /^(yes|auto)$/) {
+         printmsg("DEBUG => Starting TLS", 2);
+         if (SMTPchat('STARTTLS')) { quit($conf{'error'}, 1); }
+-        if (! IO::Socket::SSL->start_SSL($SERVER, SSL_version => 'SSLv3 TLSv1')) {
++        if (! IO::Socket::SSL->start_SSL($SERVER, SSL_version => 'SSLv3')) {
+             quit("ERROR => TLS setup failed: " . IO::Socket::SSL::errstr(), 1);
+         }
+         printmsg("DEBUG => TLS: Using cipher: ". $SERVER->get_cipher(), 3);

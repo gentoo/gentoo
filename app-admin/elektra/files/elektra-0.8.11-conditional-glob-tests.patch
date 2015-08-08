@@ -1,0 +1,22 @@
+--- a/src/libtools/tests/CMakeLists.txt	2014-08-22 20:52:14.634898037 +0200
++++ b/src/libtools/tests/CMakeLists.txt	2014-08-22 21:19:25.770506035 +0200
+@@ -4,10 +4,12 @@
+ add_cppheaders (HDR_FILES)
+ add_toolheaders(HDR_FILES)
+ 
+-include (LibAddTest)
++if (ENABLE_TESTING)
++	include (LibAddTest)
+ 
+-file (GLOB TESTS testtool_*.cpp)
+-foreach (file ${TESTS})
+-	get_filename_component (name ${file} NAME_WE)
+-	add_gtest (${name})
+-endforeach (file ${TESTS})
+\ No newline at end of file
++	file (GLOB TESTS testtool_*.cpp)
++	foreach (file ${TESTS})
++		get_filename_component (name ${file} NAME_WE)
++		add_gtest (${name})
++	endforeach (file ${TESTS})
++endif (ENABLE_TESTING)

@@ -1,0 +1,1 @@
+LOGSTASH_FORWARDER_ARGS="-quiet -syslog=true"

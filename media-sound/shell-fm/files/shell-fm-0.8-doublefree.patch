@@ -1,0 +1,24 @@
+Fix double free crash: http://bugs.gentoo.org/392413
+
+--- source/sckif.c
++++ source/sckif.c
+@@ -39,6 +39,8 @@
+ 
+ #include "split.h"
+ 
++#include "ropen.h" /* fshutdown */
++
+ struct hash track;
+ 
+ static int stcpsck = -1, sunixsck = -1;
+@@ -191,9 +193,7 @@
+ 
+ 	if(disconnect) {
+ 		debug("removing client\n");
+-		shutdown(SHUT_RDWR, client_socket);
+-		close(client_socket);
+-		fclose(fd);
++		fshutdown(& fd);
+ 
+ 		remove_handle(client_socket);
+ 	}

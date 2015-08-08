@@ -1,0 +1,34 @@
+diff --git a/Makefile.am b/Makefile.am
+index e407dab..6404618 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-
++AM_CPPFLAGS = @libmpd_CFLAGS@
+ AM_CFLAGS = -O3 -Wall @CFLAGS@ -I$(top_builddir) -I$(top_srcdir) 
+ METASOURCES = AUTO
+ bin_PROGRAMS = g15mpd
+@@ -6,7 +6,7 @@ bin_PROGRAMS = g15mpd
+ docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
+ doc_DATA = README ChangeLog AUTHORS NEWS COPYING
+ 
+-LIBS = -lg15daemon_client -lg15render -lX11 -lXtst -lmpd 
++LIBS = -lg15daemon_client -lg15render -lX11 -lXtst @libmpd_LIBS@
+ IMCLUDES = -I
+ g15mpd_LDFLAGS = -avoid-version
+ g15mpd_SOURCES =  g15mpd.c
+diff --git a/configure.in b/configure.in
+index aaa361c..83281d0 100644
+--- a/configure.in
++++ b/configure.in
+@@ -18,7 +18,9 @@ AC_HEADER_SYS_WAIT
+ AC_CHECK_HEADERS(g15daemon_client.h libg15render.h,,AC_MSG_ERROR(["libg15daemon_client (or its devel package) could not be found.  please install it"]))
+ AC_CHECK_HEADERS(X11/Xlib.h X11/XF86keysym.h,,AC_MSG_ERROR(["Xorg development files could not be found.  please install the devel package"]))
+ AC_CHECK_HEADERS(X11/extensions/XTest.h,,AC_MSG_ERROR(["Xorg XTEST Extension devel headers could not be found. please install the devel package"]))
+-AC_CHECK_HEADERS(libmpd/libmpd.h,,AC_MSG_ERROR(["libmpd development files could not be found.  please install the libmpd devel package"]))
++PKG_CHECK_MODULES([libmpd], [libmpd])
++AC_SUBST(libmpd_LIBS)
++AC_SUBST(libmpd_CFLAGS)
+ AC_PATH_X
+ 
+ AC_OUTPUT(Makefile)

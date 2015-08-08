@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-physics</herd>
+<maintainer>
+  <email>sci-physics@gentoo.org</email>
+  <description>Feel free to maintain/fix</description>
+</maintainer>
+<longdescription lang='en'>
+  SoXt is an alternative to SGIs InventorXt library, which is a GUI
+  binding for using Open Inventor with Xt/Motif. While SoXt has been developed
+  for use with Coin, it is also possible to compile it against Open Inventor
+  from SGI or TGS.
+</longdescription>
+</pkgmetadata>

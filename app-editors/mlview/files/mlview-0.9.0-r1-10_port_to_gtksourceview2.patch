@@ -1,0 +1,218 @@
+Downloaded from http://patch-tracker.debian.org/patch/series/view/mlview/0.9.0-2.2/10_port_to_gtksourceview2.patch
+
+diff -Nur -x '*.orig' -x '*~' mlview-0.9.0/configure.in mlview-0.9.0.new/configure.in
+--- mlview-0.9.0/configure.in	2005-08-07 09:42:07.000000000 +0200
++++ mlview-0.9.0.new/configure.in	2009-08-18 02:45:29.000000000 +0200
+@@ -29,7 +29,7 @@
+ LIBGNOME2_VERSION=2.4.1
+ GCONF2_VERSION=2.6.2
+ SEWFOX_VERSION=0.0.1
+-GTKSOURCEVIEW_VERSION=1.0
++GTKSOURCEVIEW_VERSION=2.0
+ VTE_VERSION=0.11.12
+ DBUS_VERSION=0.22
+ GTKMM2_VERSION=2.4.0
+@@ -306,7 +306,7 @@
+ dnl **********************
+ dnl libgtksourceview
+ dnl **********************
+-PKG_CHECK_MODULES(GTKSOURCEVIEW, gtksourceview-1.0 >= $GTKSOURCEVIEW_VERSION)
++PKG_CHECK_MODULES(GTKSOURCEVIEW, gtksourceview-2.0 >= $GTKSOURCEVIEW_VERSION)
+ 
+ dnl **********************
+ dnl vte
+diff -Nur -x '*.orig' -x '*~' mlview-0.9.0/src/mlview-source-view.cc mlview-0.9.0.new/src/mlview-source-view.cc
+--- mlview-0.9.0/src/mlview-source-view.cc	2005-08-07 09:42:28.000000000 +0200
++++ mlview-0.9.0.new/src/mlview-source-view.cc	2009-08-18 02:44:12.000000000 +0200
+@@ -25,9 +25,10 @@
+ 
+ #include <string.h>
+ #include <gtk/gtk.h>
++#include "config.h"
+ #include <gtksourceview/gtksourceview.h>
+ #include <gtksourceview/gtksourcelanguage.h>
+-#include <gtksourceview/gtksourcelanguagesmanager.h>
++#include <gtksourceview/gtksourcelanguagemanager.h>
+ #include <gtksourceview/gtksourcebuffer.h>
+ #include "mlview-safe-ptr-utils.h"
+ #include "mlview-source-view.h"
+@@ -36,6 +37,7 @@
+ #include "mlview-prefs.h"
+ #include "mlview-prefs-category-sourceview.h"
+ 
++
+ namespace mlview
+ {
+ struct SourceViewPriv
+@@ -48,7 +50,7 @@
+ 	SafePtr<GtkSourceView, GtkSourceViewRef, GtkSourceViewUnref> native_sv_ptr ;
+ 	SafePtr<Gtk::Widget, GtkWidgetMMRef, GtkWidgetMMUnref> native_sv_wrapper_ptr ;
+ 	/* The language manager, used by native_sv */
+-	GtkSourceLanguagesManager *languages_manager ;
++	GtkSourceLanguageManager *languages_manager ;
+ 
+ 	GtkUIManager *ui_manager ;
+ 
+@@ -165,8 +167,8 @@
+ 	gtk_source_view_set_show_line_numbers (source_view,
+ 	                                       m_prefs->show_line_numbers ());
+ 
+-	gtk_source_view_set_tabs_width (source_view,
+-	                                m_prefs->get_tabs_width ());
++	gtk_source_view_set_tab_width (source_view,
++	                               m_prefs->get_tabs_width ());
+ 
+ 	gtk_source_view_set_auto_indent (source_view,
+ 	                                 m_prefs->auto_indent ());
+@@ -175,11 +177,11 @@
+ 	(source_view,
+ 	 m_prefs->replace_tabs_with_spaces ());
+ 
+-	gtk_source_view_set_show_margin (source_view,
+-	                                 m_prefs->show_margin ());
++	gtk_source_view_set_show_right_margin (source_view,
++	                                       m_prefs->show_margin ());
+ 
+-	gtk_source_view_set_margin (source_view,
+-	                            m_prefs->get_margin_position ());
++	gtk_source_view_set_right_margin_position (source_view,
++	                                           m_prefs->get_margin_position ());
+ 
+ 	const char* fontname = const_cast<char*> (
+ 	                           m_prefs->get_font_name ().c_str ());
+@@ -240,8 +242,8 @@
+ {
+ 	GtkSourceView *source_view = (GtkSourceView*)native_sv_ptr;
+ 
+-	gtk_source_view_set_tabs_width (source_view,
+-	                                m_prefs->get_tabs_width ());
++	gtk_source_view_set_tab_width (source_view,
++	                               m_prefs->get_tabs_width ());
+ }
+ 
+ void
+@@ -268,8 +270,8 @@
+ {
+ 	GtkSourceView *source_view = (GtkSourceView*)native_sv_ptr;
+ 
+-	gtk_source_view_set_show_margin (source_view,
+-	                                 m_prefs->show_margin ());
++	gtk_source_view_set_show_right_margin (source_view,
++	                                       m_prefs->show_margin ());
+ }
+ 
+ void
+@@ -277,8 +279,8 @@
+ {
+ 	GtkSourceView *source_view = (GtkSourceView*)native_sv_ptr;
+ 
+-	gtk_source_view_set_margin (source_view,
+-	                            m_prefs->get_margin_position ());
++	gtk_source_view_set_right_margin_position (source_view,
++	                                           m_prefs->get_margin_position ());
+ }
+ 
+ void
+@@ -469,14 +471,13 @@
+ 	return false;
+ }
+ 
+-GtkSourceLanguagesManager *
++GtkSourceLanguageManager *
+ SourceView::get_languages_manager ()
+ {
+ 	THROW_IF_FAIL (m_priv) ;
+ 
+ 	if (!m_priv->languages_manager) {
+-		m_priv->languages_manager =
+-		    gtk_source_languages_manager_new () ;
++		m_priv->languages_manager = gtk_source_language_manager_new () ;
+ 		THROW_IF_FAIL (m_priv->languages_manager) ;
+ 	}
+ 	return m_priv->languages_manager ;
+@@ -492,7 +493,7 @@
+ 	                (gtk_text_view_get_buffer (GTK_TEXT_VIEW (m_priv->native_sv_ptr.get ()))) ;
+ 	THROW_IF_FAIL (source_buffer) ;
+ 
+-	gtk_source_buffer_set_highlight (source_buffer, TRUE) ;
++	gtk_source_buffer_set_highlight_syntax (source_buffer, TRUE) ;
+ 	gtk_source_buffer_set_language (source_buffer, a_language) ;
+ 
+ 	return MLVIEW_OK ;
+@@ -501,22 +502,22 @@
+ enum MlViewStatus
+ SourceView::set_language_from_mime_type (const UString &a_mime_type)
+ {
+-	GtkSourceLanguagesManager *lm = NULL ;
++	GtkSourceLanguageManager *lm = NULL ;
+ 	GtkSourceLanguage *language = NULL ;
+ 
+ 	THROW_IF_FAIL (m_priv) ;
+ 	lm = get_languages_manager () ;
+ 	THROW_IF_FAIL (lm) ;
+-	language = gtk_source_languages_manager_get_language_from_mime_type
+-	           (lm, a_mime_type.c_str ()) ;
++	language = gtk_source_language_manager_guess_language
++	           (lm, NULL, a_mime_type.c_str ()) ;
+ 	LOG_TO_ERROR_STREAM ("language associated to '"
+ 	                     << a_mime_type
+ 	                     <<"'mime type: "
+ 	                     << language) ;
+ 	if (!language) {
+ 		language =
+-		    gtk_source_languages_manager_get_language_from_mime_type
+-		    (lm,"text/xml") ;
++		    gtk_source_language_manager_guess_language
++		    (lm, NULL, "text/xml") ;
+ 		THROW_IF_FAIL (language) ;
+ 		LOG_TO_ERROR_STREAM ("falling back to the language associated to"
+ 		                     "mime type 'text/xml'") ;
+@@ -1305,7 +1306,7 @@
+ 	 m_priv->show_line_numbers) ;
+ 
+ 	m_priv->tabs_width = 4 ;
+-	gtk_source_view_set_tabs_width
++	gtk_source_view_set_tab_width
+ 	(m_priv->native_sv_ptr,
+ 	 m_priv->tabs_width) ;
+ 
+@@ -1314,11 +1315,11 @@
+ 	                                 m_priv->set_autoindent) ;
+ 
+ 	m_priv->set_show_margin = FALSE ;
+-	gtk_source_view_set_show_margin (m_priv->native_sv_ptr,
+-	                                 m_priv->set_show_margin) ;
++	gtk_source_view_set_show_right_margin (m_priv->native_sv_ptr,
++	                                       m_priv->set_show_margin) ;
+ 	m_priv->margin = 2 ;
+-	gtk_source_view_set_margin (m_priv->native_sv_ptr,
+-	                            m_priv->margin) ;
++	gtk_source_view_set_right_margin_position (m_priv->native_sv_ptr,
++	                                           m_priv->margin) ;
+ 
+ 	set_default_language () ;
+ 
+diff -Nur -x '*.orig' -x '*~' mlview-0.9.0/src/mlview-source-view.h mlview-0.9.0.new/src/mlview-source-view.h
+--- mlview-0.9.0/src/mlview-source-view.h	2005-08-07 09:42:28.000000000 +0200
++++ mlview-0.9.0.new/src/mlview-source-view.h	2009-08-18 02:39:22.000000000 +0200
+@@ -25,9 +25,10 @@
+ #ifndef __MLVIEW_SOURCE_VIEW_H
+ #define __MLVIEW_SOURCE_VIEW_H
+ 
++#include "config.h"
+ #include <gtksourceview/gtksourceview.h>
+ #include <gtksourceview/gtksourcelanguage.h>
+-#include <gtksourceview/gtksourcelanguagesmanager.h>
++#include <gtksourceview/gtksourcelanguagemanager.h>
+ #include <gtksourceview/gtksourcebuffer.h>
+ #include "mlview-view-adapter.h"
+ #include "mlview-xml-document.h"
+@@ -112,7 +113,7 @@
+ 
+ 	enum MlViewStatus build_edit_menu_body (const UString &a_menu_root_path) ;
+ 
+-	GtkSourceLanguagesManager * get_languages_manager () ;
++	GtkSourceLanguageManager * get_languages_manager () ;
+ 
+ 	enum MlViewStatus set_language (GtkSourceLanguage *a_language) ;
+ 

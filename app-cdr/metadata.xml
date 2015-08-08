@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-cdr category contains software for writing CDs and DVDs, and for
+		working with .iso files.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-cdr enthält Software für das Erstellen von CDs und DVDs, 
+		sowie für das Arbeiten mit ISO-Dateien.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-cdr contiene programas para escribir CDs y DVDs, y para
+		trabajar con archivos .iso.
+	</longdescription>
+	<longdescription lang="ja">
+		app-cdrカテゴリにはCDとDVDを書込んで、.isoファイルツールソフトウェアが
+		含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-cdr categorie bevat applicaties om CD's en DVD's te branden en om
+		.iso bestanden te bewerken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-cdr chứa các phần mềm để ghi CD và DVD, làm
+		việc với các tập tin .iso.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-cdr contiene programmi per scrivere CD e DVD e lavorare con file .iso .
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-cdr contém software para gravar CDs e DVDs, e para
+		trabalhar com arquivos .iso.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-cdr zawiera programy służące do zapisywania danych na
+		płyty CD i DVD oraz służące do manipulowania plikami .iso.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,30 @@
+ Readseq/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Readseq/Makefile b/Readseq/Makefile
+index f073aaa..05f2edd 100644
+--- a/Readseq/Makefile
++++ b/Readseq/Makefile
+@@ -6,11 +6,11 @@
+ #
+ 
+ # pick an ANSI C compiler (the default Sun CC is not ANSI)
+-CC=gcc  # Gnu C Compiler
++CC?=gcc  # Gnu C Compiler
+ #CC=cc  # SGI Irix
+ #CC=vcc # some DEC Ultrix
+ 
+-CFLAGS=
++CFLAGS?=
+ #CFLAGS= -DSMALLCHECKSUM  # if you prefer to use a GCG-standard 13 bit checksum
+ #    instead of a full 32 bit checksum. This may enhance compatibility w/ GCG software
+ 
+@@ -40,7 +40,7 @@ all: build test
+ 
+ build: $(SOURCES)
+ 	@echo "Compiling readseq..."
+-	$(CC) $(LDFLAGS) $(CFLAGS) -o readseq readseq.c ureadseq.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o readseq readseq.c ureadseq.c ureadasn.c
+ 
+ # if using NCBI, uncomment these lines in place of build: above
+ #build: $(SOURCES)

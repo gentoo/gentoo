@@ -1,0 +1,22 @@
+--- src/main/java/org/apache/felix/gogo/runtime/activator/EventAdminListener.java	2013-05-13 13:40:57.071766332 +0200
++++ src/main/java/org/apache/felix/gogo/runtime/activator/EventAdminListener.java.2	2013-05-13 13:41:30.725096685 +0200
+@@ -18,7 +18,7 @@
+  */
+ package org.apache.felix.gogo.runtime.activator;
+ 
+-import java.util.Properties;
++import java.util.HashMap;
+ 
+ import org.apache.felix.gogo.api.CommandSessionListener;
+ import org.apache.felix.service.command.CommandSession;
+@@ -43,8 +43,8 @@
+     public void beforeExecute(CommandSession session, CharSequence command) {
+         EventAdmin admin = (EventAdmin) tracker.getService();
+         if (admin != null) {
+-            Properties props = new Properties();
+-            props.setProperty("command", command.toString());
++            HashMap<String, String> props = new HashMap<String, String>();
++            props.put(new String("command"), command.toString());
+             Event event = new Event("org/apache/felix/service/command/EXECUTING", props);
+             admin.postEvent(event);
+         }

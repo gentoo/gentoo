@@ -1,0 +1,184 @@
+Support >=free-rdp-1.1.0.
+
+https://git.reviewboard.kde.org/r/115059/
+
+diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
+index 0d14e04691549e084b58501cd10ca2382ef25c63..9062ba5fa060284a679f0c9bc211ab7dd6972c0a 100644
+--- a/rdp/rdpview.cpp
++++ b/rdp/rdpview.cpp
+@@ -158,71 +158,58 @@ bool RdpView::start()
+         width = this->parentWidget()->size().width();
+         height = this->parentWidget()->size().height();
+     }
+-    arguments << "-g" << QString::number(width) + 'x' + QString::number(height);
++    arguments << "-decorations";  // put this option first so we can detect xfreerdp < 1.1
++    arguments << "/w:" + QString::number(width);
++    arguments << "/h:" + QString::number(height);
+ 
+-    arguments << "-k" << keymapToXfreerdp(m_hostPreferences->keyboardLayout());
++    arguments << "/kbd:" + keymapToXfreerdp(m_hostPreferences->keyboardLayout());
+ 
+     if (!m_url.userName().isEmpty()) {
+         // if username contains a domain, it needs to be set with another parameter
+         if (m_url.userName().contains('\\')) {
+             const QStringList splittedName = m_url.userName().split('\\');
+-            arguments << "-d" << splittedName.at(0);
+-            arguments << "-u" << splittedName.at(1);
++            arguments << "/d:" + splittedName.at(0);
++            arguments << "/u:" + splittedName.at(1);
+         } else {
+-            arguments << "-u" << m_url.userName();
++            arguments << "/u:" + m_url.userName();
+         }
+     } else {
+-        arguments << "-u" << "";
++        arguments << "-u:";
+     }
+ 
+-    if (!m_url.password().isNull())
+-        arguments << "-p" << m_url.password();
+-
+-    arguments << "-D";  // request the window has no decorations
+-    arguments << "-X" << QString::number(m_container->winId());
+-    arguments << "-a" << QString::number((m_hostPreferences->colorDepth() + 1) * 8);
+-
+-    switch (m_hostPreferences->sound()) {
+-    case 1:
+-        arguments << "-o";
+-        break;
+-    case 0:
+-        arguments << "--plugin" << "rdpsnd";
+-        break;
+-    case 2:
+-    default:
+-        break;
+-    }
++    arguments << "/parent-window:" + QString::number(m_container->winId());
++    arguments << "/bpp:" + QString::number((m_hostPreferences->colorDepth() + 1) * 8);
++    arguments << "/audio-mode:" + m_hostPreferences->sound();
+ 
+     if (!m_hostPreferences->shareMedia().isEmpty()) {
+         QStringList shareMedia;
+-        shareMedia << "--plugin" << "rdpdr" << "--data" << "disk:media:" + m_hostPreferences->shareMedia() << "--";
++        shareMedia << "/drive:media," + m_hostPreferences->shareMedia();
+         arguments += shareMedia;
+     }
+ 
+     QString performance;
+     switch (m_hostPreferences->performance()) {
+     case 0:
+-        performance = 'm';
++        performance = "modem";
+         break;
+     case 1:
+-        performance = 'b';
++        performance = "broadband";
+         break;
+     case 2:
+-        performance = 'l';
++        performance = "lan";
+         break;
+     default:
+         break;
+     }
+ 
+-    arguments << "-x" << performance;
++    arguments << "/network:" + performance;
+ 
+     if (m_hostPreferences->console()) {
+-        arguments << "-0";
++        arguments << "/admin";
+     }
+ 
+     if (m_hostPreferences->remoteFX()) {
+-        arguments << "--rfx";
++        arguments << "/rfx";
+     }
+ 
+     if (!m_hostPreferences->extraOptions().isEmpty()) {
+@@ -233,16 +220,21 @@ bool RdpView::start()
+     // krdc has no support for certificate management yet; it would not be possbile to connect to any host:
+     // "The host key for example.com has changed" ...
+     // "Add correct host key in ~/.freerdp/known_hosts to get rid of this message."
+-    arguments << "--ignore-certificate";
++    arguments << "/cert-ignore";
+ 
+     // clipboard sharing is activated in KRDC; user can disable it at runtime
+-    arguments << "--plugin" << "cliprdr";
++    arguments << "/clipboard";
+ 
+-    arguments << "-t" << QString::number(m_port);
+-    arguments << m_host;
++    arguments << "/port:" + QString::number(m_port);
++    arguments << "/v:" + m_host;
+ 
+     kDebug(5012) << "Starting xfreerdp with arguments:" << arguments;
+ 
++    //avoid printing the password in debug
++    if (!m_url.password().isNull()) {
++        arguments << "/p:" + m_url.password();
++    }
++
+     setStatus(Connecting);
+ 
+     connect(m_process, SIGNAL(error(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
+@@ -302,7 +294,7 @@ void RdpView::connectionError()
+ 
+ void RdpView::processError(QProcess::ProcessError error)
+ {
+-    kDebug(5012) << "processError:" << error;
++    kDebug(5012) << error;
+     if (m_quitFlag) // do not try to show error messages while quitting (prevent crashes)
+         return;
+ 
+@@ -319,33 +311,13 @@ void RdpView::processError(QProcess::ProcessError error)
+ void RdpView::receivedStandardError()
+ {
+     const QString output(m_process->readAllStandardError());
+-    kDebug(5012) << "receivedStandardError:" << output;
+-    QString line;
+-    int i = 0;
+-    while (!(line = output.section('\n', i, i)).isEmpty()) {
+-        
+-        // the following error is issued by freerdp because of a bug in freerdp 1.0.1 and below;
+-        // see: https://github.com/FreeRDP/FreeRDP/pull/576
+-        //"X Error of failed request:  BadWindow (invalid Window parameter)
+-        //   Major opcode of failed request:  7 (X_ReparentWindow)
+-        //   Resource id in failed request:  0x71303348
+-        //   Serial number of failed request:  36
+-        //   Current serial number in output stream:  36"
+-        if (line.contains(QLatin1String("X_ReparentWindow"))) {
+-            KMessageBox::error(0, i18n("The version of \"xfreerdp\" you are using is too old.\n"
+-                                       "xfreerdp 1.0.2 or greater is required."),
+-                               i18n("RDP Failure"));
+-            connectionError();
+-            return;
+-        }
+-        i++;
+-    }
++    kDebug(5012) << output;
+ }
+ 
+ void RdpView::receivedStandardOutput()
+ {
+     const QString output(m_process->readAllStandardOutput());
+-    kDebug(5012) << "receivedStandardOutput:" << output;
++    kDebug(5012) << output;
+     QString line;
+     int i = 0;
+     while (!(line = output.section('\n', i, i)).isEmpty()) {
+@@ -373,6 +345,14 @@ void RdpView::receivedStandardOutput()
+             return;
+         }
+ 
++        // we no longer support freerdp < 1.1, we only support versions with the new interface
++        if (line.contains(QLatin1String("invalid option: -decorations"))) {
++            KMessageBox::error(0, i18n("The version of \"xfreerdp\" you are using is too old.\n"
++                                       "xfreerdp 1.1 or greater is required."),
++                               i18n("RDP Failure"));
++            connectionError();
++            return;
++        }
+         i++;
+     }
+ }

@@ -1,0 +1,20 @@
+--- libgfx/src/raster-png.cxx
++++ libgfx/src/raster-png.cxx
+@@ -39,7 +39,7 @@
+    // Because we didn't set up any error handlers, we need to be
+    // prepared to handle longjmps out of the library on error
+    // conditions.
+-   if( setjmp(png_ptr->jmpbuf) )
++   if( setjmp(png_jmpbuf(png_ptr)) )
+    {
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+       fclose(fp);
+@@ -129,7 +129,7 @@
+       return false;
+    }
+ 
+-   if( setjmp(png_ptr->jmpbuf) )
++   if( setjmp(png_jmpbuf(png_ptr)) )
+    {
+       fclose(fp);
+       png_destroy_write_struct(&png_ptr,  (png_infopp)NULL);

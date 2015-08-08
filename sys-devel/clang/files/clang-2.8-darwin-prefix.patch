@@ -1,0 +1,127 @@
+This code looks as if it is written by Apple, lots of assumptions that
+only hold for them and their scenario.
+
+--- tools/clang/lib/Driver/ToolChains.cpp
++++ tools/clang/lib/Driver/ToolChains.cpp
+@@ -131,7 +131,7 @@
+   GCCVersion[2] = 1;
+ 
+   // Set up the tool chain paths to match gcc.
+-  ToolChainDir = "i686-apple-darwin";
++  ToolChainDir = "@GENTOO_PORTAGE_CHOST@";
+   ToolChainDir += llvm::utostr(DarwinVersion[0]);
+   ToolChainDir += "/";
+   ToolChainDir += llvm::utostr(GCCVersion[0]);
+@@ -141,9 +141,9 @@
+   ToolChainDir += llvm::utostr(GCCVersion[2]);
+ 
+   // Try the next major version if that tool chain dir is invalid.
+-  std::string Tmp = "/usr/lib/gcc/" + ToolChainDir;
++  std::string Tmp = "@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + ToolChainDir;
+   if (!llvm::sys::Path(Tmp).exists()) {
+-    std::string Next = "i686-apple-darwin";
++    std::string Next = "@GENTOO_PORTAGE_CHOST_ARCH@";
+     Next += llvm::utostr(DarwinVersion[0] + 1);
+     Next += "/";
+     Next += llvm::utostr(GCCVersion[0]);
+@@ -155,7 +155,7 @@
+     // Use that if it exists, otherwise hope the user isn't linking.
+     //
+     // FIXME: Drop dependency on gcc's tool chain.
+-    Tmp = "/usr/lib/gcc/" + Next;
++    Tmp = "@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + Next;
+     if (llvm::sys::Path(Tmp).exists())
+       ToolChainDir = Next;
+   }
+@@ -168,7 +168,7 @@
+     Path += "/x86_64";
+     getFilePaths().push_back(Path);
+ 
+-    Path = "/usr/lib/gcc/";
++    Path = "@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/";
+     Path += ToolChainDir;
+     Path += "/x86_64";
+     getFilePaths().push_back(Path);
+@@ -179,7 +179,7 @@
+   Path += ToolChainDir;
+   getFilePaths().push_back(Path);
+ 
+-  Path = "/usr/lib/gcc/";
++  Path = "@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/";
+   Path += ToolChainDir;
+   getFilePaths().push_back(Path);
+ 
+@@ -188,7 +188,7 @@
+   Path += ToolChainDir;
+   getProgramPaths().push_back(Path);
+ 
+-  Path = "/usr/libexec/gcc/";
++  Path = "@GENTOO_PORTAGE_EPREFIX@/usr/libexec/gcc/";
+   Path += ToolChainDir;
+   getProgramPaths().push_back(Path);
+ 
+@@ -291,14 +291,14 @@
+ 
+   // FIXME: Derive these correctly.
+   if (getArchName() == "x86_64") {
+-    CmdArgs.push_back(Args.MakeArgString("-L/usr/lib/gcc/" + ToolChainDir +
++    CmdArgs.push_back(Args.MakeArgString("-L@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + ToolChainDir +
+                                          "/x86_64"));
+     // Intentionally duplicated for (temporary) gcc bug compatibility.
+-    CmdArgs.push_back(Args.MakeArgString("-L/usr/lib/gcc/" + ToolChainDir +
++    CmdArgs.push_back(Args.MakeArgString("-L@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + ToolChainDir +
+                                          "/x86_64"));
+   }
+ 
+-  CmdArgs.push_back(Args.MakeArgString("-L/usr/lib/" + ToolChainDir));
++  CmdArgs.push_back(Args.MakeArgString("-L@GENTOO_PORTAGE_EPREFIX@/usr/lib/" + ToolChainDir));
+ 
+   Tmp = getDriver().Dir + "/../lib/gcc/" + ToolChainDir;
+   if (llvm::sys::Path(Tmp).exists())
+@@ -306,18 +306,18 @@
+   Tmp = getDriver().Dir + "/../lib/gcc";
+   if (llvm::sys::Path(Tmp).exists())
+     CmdArgs.push_back(Args.MakeArgString("-L" + Tmp));
+-  CmdArgs.push_back(Args.MakeArgString("-L/usr/lib/gcc/" + ToolChainDir));
++  CmdArgs.push_back(Args.MakeArgString("-L@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + ToolChainDir));
+   // Intentionally duplicated for (temporary) gcc bug compatibility.
+-  CmdArgs.push_back(Args.MakeArgString("-L/usr/lib/gcc/" + ToolChainDir));
++  CmdArgs.push_back(Args.MakeArgString("-L@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + ToolChainDir));
+   Tmp = getDriver().Dir + "/../lib/" + ToolChainDir;
+   if (llvm::sys::Path(Tmp).exists())
+     CmdArgs.push_back(Args.MakeArgString("-L" + Tmp));
+   Tmp = getDriver().Dir + "/../lib";
+   if (llvm::sys::Path(Tmp).exists())
+     CmdArgs.push_back(Args.MakeArgString("-L" + Tmp));
+-  CmdArgs.push_back(Args.MakeArgString("-L/usr/lib/gcc/" + ToolChainDir +
++  CmdArgs.push_back(Args.MakeArgString("-L@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + ToolChainDir +
+                                        "/../../../" + ToolChainDir));
+-  CmdArgs.push_back(Args.MakeArgString("-L/usr/lib/gcc/" + ToolChainDir +
++  CmdArgs.push_back(Args.MakeArgString("-L@GENTOO_PORTAGE_EPREFIX@/usr/lib/gcc/" + ToolChainDir +
+                                        "/../../.."));
+ }
+ 
+@@ -386,22 +386,7 @@
+   P.eraseComponent(); // .../usr/bin -> ../usr
+   P.appendComponent("lib");
+   P.appendComponent("gcc");
+-  switch (getTriple().getArch()) {
+-  default:
+-    assert(0 && "Invalid Darwin arch!");
+-  case llvm::Triple::x86:
+-  case llvm::Triple::x86_64:
+-    P.appendComponent("i686-apple-darwin10");
+-    break;
+-  case llvm::Triple::arm:
+-  case llvm::Triple::thumb:
+-    P.appendComponent("arm-apple-darwin10");
+-    break;
+-  case llvm::Triple::ppc:
+-  case llvm::Triple::ppc64:
+-    P.appendComponent("powerpc-apple-darwin10");
+-    break;
+-  }
++  P.appendComponent("@GENTOO_PORTAGE_CHOST@");
+   P.appendComponent("4.2.1");
+ 
+   // Determine the arch specific GCC subdirectory.

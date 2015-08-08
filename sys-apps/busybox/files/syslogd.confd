@@ -1,0 +1,9 @@
+# Config file for /etc/init.d/busybox-sysklogd
+
+# run "/sbin/syslogd --help" to see all possible options.
+
+# activate if you need remote logging
+#rc_need="net"
+
+# Log to shared mem buffer (use logread to read it)
+SYSLOGD_OPTS="-C128"

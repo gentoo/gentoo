@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gstreamer</herd>
+	<use>
+		<flag name="orc">Disable some PaX memory protections to allow plugins
+			that use <pkg>dev-lang/orc</pkg> for runtime optimization to be
+			used on hardened PaX systems</flag>
+	</use>
+</pkgmetadata>

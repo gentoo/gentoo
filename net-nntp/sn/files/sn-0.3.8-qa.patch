@@ -1,0 +1,21 @@
+--- lib/readln.c
++++ lib/readln.c
+@@ -9,6 +9,7 @@
+  * Get a single line from an fd.
+  */
+ 
++#include <string.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+
+--- lib/cmdopen.c
++++ lib/cmdopen.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <unistd.h>
++#include <stdlib.h>
+ #include <fcntl.h>
+ #include <sys/wait.h>
+ 

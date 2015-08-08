@@ -1,0 +1,21 @@
+--- src/Makefile	2010-08-09 01:17:29.000000000 +0200
++++ src/Makefile	2010-08-09 01:21:13.000000000 +0200
+@@ -42,15 +42,15 @@
+ OBJS += $(TR_OBJ)
+ TESTS +=  t_range
+ 
+-TE_OBJ = t_elf.o Elf.o Range.o
++TE_OBJ = t_elf.o Elf.o Range.o ../jutil/Pcre.o
+ OBJS += $(TE_OBJ)
+ TESTS +=  t_elf
+ 
+-TP_OBJ = t_pcre.o
++TP_OBJ = t_pcre.o ../jutil/Pcre.o
+ OBJS += $(TP_OBJ)
+ TESTS +=  t_pcre
+ 
+-TX_OBJ = t_exmap.o $(EXMAP_OBJ)
++TX_OBJ = t_exmap.o ../jutil/Pcre.o $(EXMAP_OBJ)
+ OBJS += $(TX_OBJ)
+ TESTS +=  t_exmap
+ 

@@ -1,0 +1,10 @@
+--- filemembers.h.old	2009-02-10 22:48:49.000000000 -0500
++++ filemembers.h	2009-02-10 22:49:00.000000000 -0500
+@@ -80,6 +80,7 @@
+ 
+ #include "config.h"
+ 
++#include <deque>
+ #include <ptlib/sound.h>
+ #include <opalwavfile.h>
+ #include "conference.h"

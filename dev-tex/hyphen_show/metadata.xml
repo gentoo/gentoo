@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>tex</herd>
+<maintainer>
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription>
+  hyphen_show scans a DVI file, tries to find all hyphenations and writes them
+  to stdout. It is useful to check whether TeX's hyphenation algorithm really
+  did the good job it is supposed to do.
+</longdescription>
+</pkgmetadata>

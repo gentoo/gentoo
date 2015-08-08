@@ -1,0 +1,12 @@
+diff -u popt-1.16.orig/Makefile.in popt-1.16/Makefile.in
+--- popt-1.16.orig/Makefile.in	2010-05-04 16:55:59.000000000 -0400
++++ popt-1.16/Makefile.in	2010-12-23 22:45:42.843131000 -0500
+@@ -370,7 +370,7 @@
+ libpopt_la_SOURCES = popt.c poptparse.c poptconfig.c popthelp.c poptint.c
+ libpopt_la_LDFLAGS = -no-undefined @LTLIBINTL@ @LTLIBICONV@ \
+ 	$(am__append_1)
+-pkgconfigdir = $(prefix)/lib/pkgconfig
++pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = popt.pc
+ man_MANS = popt.3
+ BUILT_SOURCES = popt.pc # popt.lcd

@@ -1,0 +1,35 @@
+From 282a352dff49c13e185d826af2a248b55988bc32 Mon Sep 17 00:00:00 2001
+From: Michael Biebl <biebl@debian.org>
+Date: Tue, 29 Apr 2014 20:20:51 +0000
+Subject: Fix ambiguity between `GLib.Notification' and `Notify.Notification'
+
+Notification is both defined by Notify and the latest GLib, resulting in
+a build failure. Use Notify.Notification instead to avoid this
+ambiguity.
+
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=746130
+---
+diff --git a/src/gnome-ask-password-agent.vala b/src/gnome-ask-password-agent.vala
+index 571cd94..f3887dd 100644
+--- a/src/gnome-ask-password-agent.vala
++++ b/src/gnome-ask-password-agent.vala
+@@ -80,7 +80,7 @@ public class MyStatusIcon : StatusIcon {
+         string socket;
+ 
+         PasswordDialog password_dialog;
+-        Notification n;
++        Notify.Notification n;
+ 
+         public MyStatusIcon() throws GLib.Error {
+                 GLib.Object(icon_name : "dialog-password");
+@@ -183,7 +183,7 @@ public class MyStatusIcon : StatusIcon {
+                 }
+                 set_from_icon_name(icon);
+ 
+-                n = new Notification(title, message, icon);
++                n = new Notify.Notification(title, message, icon);
+                 n.set_timeout(5000);
+                 n.closed.connect(() => {
+                         set_visible(true);
+--
+cgit v0.9.0.2-2-gbebe

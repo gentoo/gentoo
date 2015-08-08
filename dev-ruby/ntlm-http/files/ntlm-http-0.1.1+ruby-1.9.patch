@@ -1,0 +1,24 @@
+Index: ntlm-http-0.1.1/lib/net/ntlm_http.rb
+===================================================================
+--- ntlm-http-0.1.1.orig/lib/net/ntlm_http.rb
++++ ntlm-http-0.1.1/lib/net/ntlm_http.rb
+@@ -45,6 +45,7 @@
+ require 'base64'
+ require 'openssl'
+ require 'openssl/digest'
++require 'kconv'
+ 
+ module Net  #:nodoc:
+   module NTLM
+Index: ntlm-http-0.1.1/lib/net/ntlm.rb
+===================================================================
+--- ntlm-http-0.1.1.orig/lib/net/ntlm.rb
++++ ntlm-http-0.1.1/lib/net/ntlm.rb
+@@ -45,6 +45,7 @@
+ require 'base64'
+ require 'openssl'
+ require 'openssl/digest'
++require 'kconv'
+ 
+ module Net  #:nodoc:
+   module NTLM

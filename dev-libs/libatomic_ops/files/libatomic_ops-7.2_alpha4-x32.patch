@@ -1,0 +1,43 @@
+http://git.yoctoproject.org/cgit/cgit.cgi/poky/commit/?id=e3a384578f677c05d812d99c2c92aa13670bd06a
+
+Upstream-Status: Pending
+
+Remove the `q' suffix on x86-64 atomic instructions.
+
+We don't need the `q' suffix on x86_64 atomic instructions for AO_t,
+which is defined as "unsigned long".  "unsigned long" is 32bit for x32
+and 64bit for x86-64. The register operand in x86-64 atomic instructions
+is sufficient to properly determine the register size.
+
+Received this patch from H.J. Lu <hjl.tools@gmail.com>
+Signed-Off-By: Nitin A Kamble <nitin.a.kamble@intel.com> 2011/12/02
+
+--- a/src/atomic_ops/sysdeps/gcc/x86_64.h
++++ b/src/atomic_ops/sysdeps/gcc/x86_64.h
+@@ -56,7 +56,7 @@ AO_fetch_and_add_full (volatile AO_t *p,
+ {
+   AO_t result;
+ 
+-  __asm__ __volatile__ ("lock; xaddq %0, %1" :
++  __asm__ __volatile__ ("lock; xadd %0, %1" :
+                         "=r" (result), "=m" (*p) : "0" (incr), "m" (*p)
+                         : "memory");
+   return result;
+@@ -106,7 +106,7 @@ AO_int_fetch_and_add_full (volatile unsi
+ AO_INLINE void
+ AO_or_full (volatile AO_t *p, AO_t incr)
+ {
+-  __asm__ __volatile__ ("lock; orq %1, %0" :
++  __asm__ __volatile__ ("lock; or %1, %0" :
+                         "=m" (*p) : "r" (incr), "m" (*p) : "memory");
+ }
+ 
+@@ -131,7 +131,7 @@ AO_compare_and_swap_full(volatile AO_t *
+                          AO_t old, AO_t new_val)
+ {
+   char result;
+-  __asm__ __volatile__("lock; cmpxchgq %3, %0; setz %1"
++  __asm__ __volatile__("lock; cmpxchg %3, %0; setz %1"
+                        : "=m"(*addr), "=q"(result)
+                        : "m"(*addr), "r" (new_val), "a"(old) : "memory");
+   return (int) result;

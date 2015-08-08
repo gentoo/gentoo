@@ -1,0 +1,11 @@
+diff -ruN blogilo-4.4.10.orig/CMakeLists.txt blogilo-4.4.10/CMakeLists.txt
+--- blogilo-4.4.10.orig/CMakeLists.txt	2011-04-03 18:14:58.341187979 +0200
++++ blogilo-4.4.10/CMakeLists.txt	2011-04-03 18:15:16.281187974 +0200
+@@ -208,7 +208,6 @@
+ #DONOTCOMPILE     macro_optional_add_subdirectory(ksendemail)
+ #DONOTCOMPILE     macro_optional_add_subdirectory(korganizer)
+ 
+-    include( SopranoAddOntology )
+ #DONOTCOMPILE     add_subdirectory( ontologies )
+ #    add_subdirectory( nepomuk_email_feeder )
+   endif(QGPGME_FOUND)

@@ -1,0 +1,14 @@
+diff -ruN kalarm-4.4.11.1.orig/kalarm/CMakeLists.txt kalarm-4.4.11.1/kalarm/CMakeLists.txt
+--- kalarm-4.4.11.1.orig/kalarm/CMakeLists.txt	2011-04-20 22:03:31.000000000 +0200
++++ kalarm-4.4.11.1/kalarm/CMakeLists.txt	2011-08-11 22:03:27.096295681 +0200
+@@ -130,7 +130,9 @@
+ 
+ set_target_properties(kalarm_bin PROPERTIES OUTPUT_NAME kalarm)
+ 
+-target_link_libraries(kalarm_bin ${KDE4_KUTILS_LIBS} kalarm_resources kalarm_calendar ${KDEPIMLIBS_KCAL_LIBS} ${KDE4_KABC_LIBRARY} ${KDE4_KMIME_LIBRARY} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_MAILTRANSPORT_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} ${KDE4_PHONON_LIBS} ${X11_X11_LIB} kdepim)
++target_link_libraries(kalarm_bin ${KDE4_KUTILS_LIBS} kalarm_resources kalarm_calendar ${KDEPIMLIBS_KCAL_LIBS} ${KDE4_KABC_LIBRARY} 
++                      ${KDE4_KMIME_LIBRARY} ${KDEPIMLIBS_KPIMIDENTITIES_LIBS} ${KDEPIMLIBS_MAILTRANSPORT_LIBS} ${KDEPIMLIBS_KHOLIDAYS_LIBS} 
++                      ${KDEPIMLIBS_AKONADI_LIBS} ${KDEPIMLIBS_KPIMUTILS_LIBS} ${KDE4_PHONON_LIBS} ${X11_X11_LIB} kdepim)
+ 
+ install(TARGETS kalarm_bin ${INSTALL_TARGETS_DEFAULT_ARGS} )
+ #endif (UNIX)

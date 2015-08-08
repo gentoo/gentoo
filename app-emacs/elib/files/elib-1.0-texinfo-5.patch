@@ -1,0 +1,14 @@
+--- elib-1.0-orig/elib.texi
++++ elib-1.0/elib.texi
+@@ -33,9 +33,9 @@
+ @sp 4
+ @comment The title is printed in a large font.
+ @center @titlefont{User's Guide}
+-@sp
++@sp 1
+ @center @titlefont{to}
+-@sp
++@sp 1
+ @center @titlefont{Elib - The Emacs Lisp Library}
+ @sp 2
+ @center version 1.0

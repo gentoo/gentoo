@@ -1,0 +1,38 @@
+From 0db65e148dcb4d5e5b98475f207d41a287c401a1 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Wed, 28 May 2014 00:22:55 -0400
+Subject: [PATCH] Cleanlooks style: Fix floating point exception
+
+In QCleanlooksStyle::drawControl, if indeterminate == true and
+rect.width() == 4, we will end up with slideWidth of zero, and
+take a mod by zero when calculating the value of step.
+
+This causes a crash in Quassel 0.10; see
+https://bugs.gentoo.org/show_bug.cgi?id=507124
+
+Instead, calculate slideWidth based on max(width, minWidth) where
+minWidth was already set as 4, ensuring that slideWidth >= 2.
+
+Change-Id: I6678789105e359fa26c99409f449cad0ba3bd0ae
+(cherry picked from qtstyleplugins/8ff2ac6035fb1d01f5c0054ba14afb949410e3a7)
+Reviewed-by: Giuseppe D'Angelo <giuseppe.dangelo@kdab.com>
+---
+ src/gui/styles/qcleanlooksstyle.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gui/styles/qcleanlooksstyle.cpp b/src/gui/styles/qcleanlooksstyle.cpp
+index 504734a..3f665ca 100644
+--- a/src/gui/styles/qcleanlooksstyle.cpp
++++ b/src/gui/styles/qcleanlooksstyle.cpp
+@@ -1773,7 +1773,7 @@ void QCleanlooksStyle::drawControl(ControlElement element, const QStyleOption *o
+                 }
+             } else {
+                 Q_D(const QCleanlooksStyle);
+-                int slideWidth = ((rect.width() - 4) * 2) / 3;
++                int slideWidth = (qMax(rect.width() - 4, minWidth) * 2) / 3;
+                 int step = ((d->animateStep * slideWidth) / d->animationFps) % slideWidth;
+                 if ((((d->animateStep * slideWidth) / d->animationFps) % (2 * slideWidth)) >= slideWidth)
+                     step = slideWidth - step;
+-- 
+2.0.0
+

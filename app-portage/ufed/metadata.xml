@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>yamakuzure@gmx.net</email>
+		<name>Sven Eden</name>
+		<description>Current maintainer, assign bugs</description>
+	</maintainer>
+	<maintainer>
+		<email>fuzzyray@gentoo.org</email>
+		<description>Proxy committer, CC bugs</description>
+	</maintainer>
+</pkgmetadata>

@@ -1,0 +1,27 @@
+#!/sbin/runscript
+command=/usr/sbin/arno-iptables-firewall
+description="Single- & multi-homed firewall script with DSL/ADSL support"
+
+extra_started_commands="reload"
+description_reload="Reload blocked hosts (blackhole) file"
+
+depend() {
+  before net
+  use logger
+}
+
+start() {
+  ${command} start
+}
+
+stop() {
+  ${command} stop
+}
+
+restart() {
+  ${command} restart
+}
+
+reload() {
+  ${command} force-reload
+}

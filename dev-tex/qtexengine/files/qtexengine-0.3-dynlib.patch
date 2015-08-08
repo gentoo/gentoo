@@ -1,0 +1,21 @@
+--- config.pri
++++ config.pri
+@@ -2,7 +2,7 @@
+ CONFIG      += release
+ 
+ # Comment the lines bellow if you want to build QTeXEngine statically
+-#CONFIG      += QTeXEngineDll
++CONFIG      += QTeXEngineDll
+ 
+ 	    
+ 	    
+--- test/test.pro
++++ test/test.pro
+@@ -7,6 +7,6 @@
+ DESTDIR      = ./
+ 
+ INCLUDEPATH += ../src
+-LIBS        += ../libQTeXEngine.a
++LIBS        += ../libQTeXEngine.so
+ 
+ SOURCES += test.cpp

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>slis@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    LibFlatArray is a multi-dimensional C++ array class which provides
+    an object-oriented view (a.k.a. array of structs, AoS) while
+    internally storing data in a struct of arrays (SoA) manner. It
+    comes with utilities to move data to CUDA enabled GPUs.
+  </longdescription>
+  <use>
+    <flag name="cuda">
+      Enables plugins for NVIDIA GPUs (e.g. CUDAAllocator)
+    </flag>
+  </use>
+</pkgmetadata>

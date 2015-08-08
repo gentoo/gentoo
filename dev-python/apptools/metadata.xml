@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">
+    The Enthought Tool Suite AppTools project includes a set of
+    packages that Enthought has found useful in creating a number of
+    applications. They implement functionality that is commonly needed
+    by many applications.
+  </longdescription>
+</pkgmetadata>

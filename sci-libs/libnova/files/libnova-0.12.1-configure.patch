@@ -1,0 +1,17 @@
+--- configure.in.orig	2007-11-25 19:24:54.503391146 +0000
++++ configure.in	2007-11-25 19:26:16.736077320 +0000
+@@ -54,7 +54,6 @@
+ AC_STRUCT_TM
+ 
+ LIBS="$LIBS -lm"
+-CFLAGS=-Wall
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+@@ -74,5 +73,6 @@
+ src/libnova/Makefile
+ lntest/Makefile
+ doc/Makefile
++doc/doxyfile
+ examples/Makefile
+ ])

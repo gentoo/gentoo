@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<herd>video</herd>
+	<upstream>
+		<remote-id type="sourceforge">smplayer</remote-id>
+	</upstream>
+</pkgmetadata>

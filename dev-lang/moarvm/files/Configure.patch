@@ -1,0 +1,14 @@
+--- Configure.pl        2013-12-06 10:13:34.000000000 +0800
++++ Configure.pl.new    2013-12-06 10:22:28.360040309 +0800
+@@ -38,11 +38,6 @@
+ 
+ print "Welcome to MoarVM!\n\n";
+ 
+-print dots("Updating submodules");
+-my $msg = qx{git submodule --quiet update --init 2>&1};
+-if ($? >> 8 == 0) { print "OK\n" }
+-else { softfail("git error: $msg") }
+-
+ # fiddle with flags
+ $args{debug}      //= 0 + !$args{optimize};
+ $args{optimize}   //= 0 + !$args{debug};

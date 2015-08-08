@@ -1,0 +1,27 @@
+From 0f9eb0b8455f843daebf0f3dababeee7f3cde48b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 4 Aug 2012 15:46:38 -0400
+Subject: [PATCH] add prototype for lerrsf_fatal
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ flexdef.h |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/flexdef.h b/flexdef.h
+index 0e81410..046dd9a 100644
+--- a/flexdef.h
++++ b/flexdef.h
+@@ -908,6 +908,9 @@ extern void lerrif PROTO ((const char *, int));
+ /* Report an error message formatted with one string argument. */
+ extern void lerrsf PROTO ((const char *, const char *));
+ 
++/* Like lerrsf, but also exit after displaying message. */
++extern void lerrsf_fatal PROTO ((const char *, const char *));
++
+ /* Spit out a "#line" statement. */
+ extern void line_directive_out PROTO ((FILE *, int));
+ 
+-- 
+1.7.9.7
+

@@ -1,0 +1,30 @@
+Gentoo bug: #494240
+Upstream: #64503
+
+--- Zend/zend_language_parser.y.orig	2013-12-14 12:25:43.528989017 +0100
++++ Zend/zend_language_parser.y	2013-12-14 12:26:30.088988957 +0100
+@@ -38,10 +38,6 @@
+ 
+ #define YYERROR_VERBOSE
+ #define YYSTYPE znode
+-#ifdef ZTS
+-# define YYPARSE_PARAM tsrm_ls
+-# define YYLEX_PARAM tsrm_ls
+-#endif
+ 
+ 
+ %}
+@@ -49,6 +45,13 @@
+ %pure_parser
+ %expect 2
+ 
++%code requires {
++#ifdef ZTS
++# define YYPARSE_PARAM tsrm_ls
++# define YYLEX_PARAM tsrm_ls
++#endif
++}
++
+ %left T_INCLUDE T_INCLUDE_ONCE T_EVAL T_REQUIRE T_REQUIRE_ONCE
+ %left ','
+ %left T_LOGICAL_OR

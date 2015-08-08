@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>pyxlcy@gmail.com</email>
+	<description>Please assign bugs</description>
+</maintainer>
+<maintainer>
+	<email>pacho@gentoo.org</email>
+	<description>proxy-maintainer, please CC on bugs</description>
+</maintainer>
+<use>
+<flag name="hammer">Turn on chunky/hammer mode (DoS) in pavuk: when
+	specified, pavuk will include features to stress test web sites using an
+	ultrahigh performancereplay mechanism</flag>
+</use>
+</pkgmetadata>

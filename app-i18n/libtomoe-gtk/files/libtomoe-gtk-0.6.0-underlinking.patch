@@ -1,0 +1,15 @@
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 4f4206e..4a21629 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -42,8 +42,8 @@ LDADDS =							\
+ 
+ noinst_PROGRAMS = testtomoegtk testtomoegtkedit
+ 
+-testtomoegtk_LDADD = $(LDADDS)
++testtomoegtk_LDADD = $(LDADDS) -lm
+ testtomoegtk_SOURCES = testtomoegtk.c
+ 
+-testtomoegtkedit_LDADD = $(LDADDS)
++testtomoegtkedit_LDADD = $(LDADDS) -lm
+ testtomoegtkedit_SOURCES = testtomoegtkedit.c

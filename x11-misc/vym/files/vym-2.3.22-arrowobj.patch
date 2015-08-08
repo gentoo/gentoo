@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,6 +69,7 @@
+       aboutdialog.h
+       taskfiltermodel.h
+       animpoint.h
++      arrowobj.h
+       attribute.h
+       attributeitem.h
+       #   attributedelegate.h
+@@ -156,6 +157,7 @@
+       aboutdialog.cpp
+       taskfiltermodel.cpp
+       animpoint.cpp
++      arrowobj.cpp
+       attribute.cpp
+       attributeitem.cpp
+       #   attributedelegate.cpp

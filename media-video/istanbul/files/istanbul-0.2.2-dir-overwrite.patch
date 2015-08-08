@@ -1,0 +1,31 @@
+From: Luca Bruno <lucab@debian.org>
+Subject: istanbul: saving screencasts can overwrite directories
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=592258
+
+diff --git a/istanbul/main/save_window.py b/istanbul/main/save_window.py
+index dc79ce8..87e5ab0 100644
+--- a/istanbul/main/save_window.py
++++ b/istanbul/main/save_window.py
+@@ -256,7 +256,7 @@ class SaveWindow(gtk.Window):
+             try:
+                 trysave = gnomevfs.xfer_uri(gnomevfs.URI("file://%s" % self.location), 
+                     gnomevfs.URI(self.filechooser.get_uri()), 
+-                    gnomevfs.XFER_DELETE_ITEMS,
++                    gnomevfs.XFER_REMOVESOURCE,
+                     gnomevfs.XFER_ERROR_MODE_ABORT, 
+                     gnomevfs.XFER_OVERWRITE_MODE_ABORT)
+             except gnomevfs.FileExistsError:
+@@ -272,10 +272,12 @@ class SaveWindow(gtk.Window):
+                 dialog.hide()
+                 if res == gtk.RESPONSE_YES:
+                     try:
++                        if os.path.isdir(self.filechooser.get_uri()[7:]):
++                            raise Exception()
+                         trysave = gnomevfs.xfer_uri(
+                         gnomevfs.URI("file://%s" % self.location), 
+                         gnomevfs.URI(self.filechooser.get_uri()), 
+-                        gnomevfs.XFER_DELETE_ITEMS,
++                        gnomevfs.XFER_REMOVESOURCE,
+                         gnomevfs.XFER_ERROR_MODE_ABORT, 
+                         gnomevfs.XFER_OVERWRITE_MODE_REPLACE)
+                     except Exception:

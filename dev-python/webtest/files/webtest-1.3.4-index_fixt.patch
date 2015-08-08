@@ -1,0 +1,13 @@
+--- /dev/null	2012-05-03 18:34:53.288000099 +0800
++++ docs/index_fixt.py	2012-05-07 00:07:55.392854158 +0800
+@@ -0,0 +1,10 @@
++# -*- coding: utf-8 -*-
++from doctest import ELLIPSIS
++
++
++def setup_test(test):
++    for example in test.examples:
++        example.options.setdefault(ELLIPSIS, 1)
++
++setup_test.__test__ = False
++

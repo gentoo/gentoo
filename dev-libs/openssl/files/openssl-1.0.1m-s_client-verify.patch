@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/472584
+http://rt.openssl.org/Ticket/Display.html?id=2387&user=guest&pass=guest
+
+fix verification handling in s_client.  when loading paths, make sure
+we properly fallback to setting the default paths.
+
+Forward-ported from openssl-1.0.1e-s_client-verify.patch
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
+--- openssl-1.0.1m/apps/s_client.c
++++ openssl-1.0.1m/apps/s_client.c
+@@ -1177,7 +1177,7 @@ int MAIN(int argc, char **argv)
+     if (!set_cert_key_stuff(ctx, cert, key))
+         goto end;
+ 
+-    if ((!SSL_CTX_load_verify_locations(ctx, CAfile, CApath)) ||
++    if ((!SSL_CTX_load_verify_locations(ctx, CAfile, CApath)) &&
+         (!SSL_CTX_set_default_verify_paths(ctx))) {
+         /*
+          * BIO_printf(bio_err,"error setting default verify locations\n");

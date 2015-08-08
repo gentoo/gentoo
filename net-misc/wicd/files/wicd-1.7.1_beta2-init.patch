@@ -1,0 +1,11 @@
+--- in/init=gentoo=wicd.in	2010-10-29 11:36:55.000000000 -0400
++++ in/init=gentoo=wicd.in.new	2011-03-28 09:40:27.245339002 -0400
+@@ -15,7 +15,7 @@
+ start() {
+ 	ebegin "Starting wicd daemon"
+ 	# fix Gentoo bug 296197
+-	sed -i 's/^\[\]$//' /etc/wicd/wired-settings.conf
++	[ -f /etc/wicd/wired-settings.conf ] && sed -i 's/^\[\]$//' /etc/wicd/wired-settings.conf
+ 	"${WICD_DAEMON}" >/dev/null 2>&1
+ 	eend $?
+ }

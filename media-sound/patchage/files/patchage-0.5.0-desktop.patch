@@ -1,0 +1,8 @@
+--- patchage-0.5.0/patchage.desktop.in
++++ patchage-0.5.0/patchage.desktop.in
+@@ -6,4 +6,4 @@
+ Terminal=false
+ Icon=@APP_INSTALL_NAME@
+ Type=Application
+-Categories=Application;AudioVideo;Audio
++Categories=AudioVideo;Audio;

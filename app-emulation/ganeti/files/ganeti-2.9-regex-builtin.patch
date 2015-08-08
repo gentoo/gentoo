@@ -1,0 +1,22 @@
+--- configure.ac.orig	2013-11-13 01:56:03.819694900 +0000
++++ configure.ac	2013-11-13 01:56:34.350116602 +0000
+@@ -493,8 +493,8 @@
+ has_confd=False
+ if test "$enable_confd" != no; then
+   CONFD_PKG=
+-  AC_GHC_PKG_CHECK([regex-pcre], [HS_REGEX_PCRE=],
+-                   [CONFD_PKG="$CONFD_PKG regex-pcre"])
++  AC_GHC_PKG_CHECK([regex-pcre-builtin], [HS_REGEX_PCRE=],
++                   [CONFD_PKG="$CONFD_PKG regex-pcre-builtin"])
+   AC_GHC_PKG_CHECK([Crypto], [], [CONFD_PKG="$CONFD_PKG Crypto"])
+   AC_GHC_PKG_CHECK([text], [], [CONFD_PKG="$CONFD_PKG text"])
+   AC_GHC_PKG_CHECK([hinotify], [], [CONFD_PKG="$CONFD_PKG hinotify"])
+@@ -578,7 +578,7 @@
+ AC_GHC_PKG_CHECK([vector], [], [HS_NODEV=1])
+ AC_GHC_PKG_CHECK([process], [], [HS_NODEV=1])
+ AC_GHC_PKG_CHECK([snap-server], [], [HS_NODEV=1])
+-AC_GHC_PKG_CHECK([regex-pcre], [], [HS_NODEV=1])
++AC_GHC_PKG_CHECK([regex-pcre-builtin], [], [HS_NODEV=1])
+ AC_GHC_PKG_CHECK([Crypto], [], [HS_NODEV=1])
+ AC_GHC_PKG_CHECK([text], [], [HS_NODEV=1])
+ AC_GHC_PKG_CHECK([hinotify], [], [HS_NODEV=1])

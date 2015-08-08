@@ -1,0 +1,16 @@
+--- wmswallow.c.orig	2015-04-01 17:12:29.420177608 +0200
++++ wmswallow.c	2015-04-01 17:13:14.947182921 +0200
+@@ -445,11 +445,11 @@
+ int printlist(FILE * stream, char * string, char **stringlist) {
+   int i=0;
+ 
+-  fprintf(stream, string);
++  fprintf(stream, "%s", string);
+   if (stringlist!=NULL) {
+     while (stringlist[i]!=NULL) {
+       fprintf(stream, " §");
+-      fprintf(stream, stringlist[i]);
++      fprintf(stream, "%s", stringlist[i]);
+       fprintf(stream, "§ ");
+       ++i;
+     }

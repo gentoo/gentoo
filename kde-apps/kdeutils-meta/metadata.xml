@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="floppy">Install <pkg>kde-base/kfloppy</pkg> to format and create DOS or ext2fs filesystems in a floppy.</flag>
+	</use>
+</pkgmetadata>

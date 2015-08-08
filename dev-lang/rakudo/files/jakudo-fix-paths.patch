@@ -1,0 +1,23 @@
+commit b9f993b86acf0f1ca3108d1b799ca35c21e726c7
+Author: Tobias Leich <email@froggs.de>
+Date:   Tue May 26 20:27:50 2015 +0200
+
+    dont create dirs when instanciating CUR
+    
+    But also do not skip non-existing locations, because we might be
+    creating them when installing into.
+
+diff --git a/src/core/CompUnitRepo/Locally.pm b/src/core/CompUnitRepo/Locally.pm
+index 72a7eca..5acffca 100644
+--- a/src/core/CompUnitRepo/Locally.pm
++++ b/src/core/CompUnitRepo/Locally.pm
+@@ -7,9 +7,7 @@ role CompUnitRepo::Locally {
+ 
+     method new(CompUnitRepo::Locally: $dir) {
+         my $abspath := $*SPEC.rel2abs($dir);
+-        try mkdir $abspath;
+         my $IO      := IO::Path.new-from-absolute-path($abspath);
+-        return Nil unless $IO.d and $IO.r;
+ 
+         %instances{$abspath} //=
+           self.bless(:$IO,:lock(Lock.new),:WHICH(self.^name ~ '|' ~ $abspath));

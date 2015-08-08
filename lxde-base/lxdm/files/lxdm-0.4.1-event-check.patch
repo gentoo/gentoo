@@ -1,0 +1,25 @@
+From d4e41ecb36a1ea29482b75674d804bb0f05540b2 Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 25 Dec 2011 15:23:19 +0800
+Subject: [PATCH 1/1] fix event check bug caused cpu 100%
+
+---
+ src/lxcom.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/lxcom.c b/src/lxcom.c
+index 02763eb..18ee12e 100644
+--- a/src/lxcom.c
++++ b/src/lxcom.c
+@@ -89,7 +89,7 @@ static gboolean lxcom_prepare (GSource *source,gint *timeout)
+ 
+ static gboolean lxcom_check(GSource *source)
+ {
+-	return TRUE;
++	return (((LXComSource*)source)->poll.revents&G_IO_IN)?TRUE:FALSE;
+ }
+ 
+ static gboolean lxcom_dispatch (GSource *source,GSourceFunc callback,gpointer user_data)
+-- 
+1.7.4.1
+

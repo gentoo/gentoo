@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>ml</herd>
+  <longdescription lang="en">
+	  Core_kernel is the system-independent part of Core.  It is aimed for
+	  cases when the full Core is not available, such as in Javascript.  It
+	  provides an overlay on the usual namespace, so the best way to use
+	  Core is to start your file with:
+
+	     open Core_kernel.Std
+  </longdescription>
+</pkgmetadata>

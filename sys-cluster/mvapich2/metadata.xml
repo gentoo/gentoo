@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cluster</herd>
+  <longdescription>
+MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB.
+</longdescription>
+  <use>
+    <flag name="large-cluster">Automatically generated description for large-cluster</flag>
+    <flag name="medium-cluster">Automatically generated description for medium-cluster</flag>
+    <flag name="romio">Automatically generated description for romio</flag>
+  </use>
+</pkgmetadata>

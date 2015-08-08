@@ -1,0 +1,32 @@
+--- LibRaw-0.16.0-Alpha2/CMakeLists.txt
++++ LibRaw-0.16.0-Alpha2/CMakeLists.txt
+@@ -565,14 +565,14 @@
+ # Install Shared binary files.
+ INSTALL(TARGETS raw
+         RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib
+-        ARCHIVE DESTINATION lib
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        )
+ 
+ INSTALL(TARGETS raw_r
+         RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib
+-        ARCHIVE DESTINATION lib
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        )
+ 
+ # Install find cmake script to the system for client applications.
+@@ -626,8 +626,8 @@
+ 
+     INSTALL(TARGETS ${_target}
+             RUNTIME DESTINATION bin
+-            LIBRARY DESTINATION lib
+-            ARCHIVE DESTINATION lib)
++            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDMACRO(LIBRAW_BUILD_SAMPLES)
+ 

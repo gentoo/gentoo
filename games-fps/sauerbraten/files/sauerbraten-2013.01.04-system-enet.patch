@@ -1,0 +1,64 @@
+--- sauerbraten/src/Makefile
++++ sauerbraten/src/Makefile
+@@ -4,7 +4,7 @@
+ PLATFORM= $(shell uname -s)
+ PLATFORM_PREFIX= native
+ 
+-INCLUDES= -Ishared -Iengine -Ifpsgame -Ienet/include
++INCLUDES= -Ishared -Iengine -Ifpsgame
+ 
+ STRIP=
+ ifeq (,$(findstring -g,$(CXXFLAGS)))
+@@ -36,8 +36,8 @@
+ endif
+ CLIENT_LIBS= -mwindows $(STD_LIBS) -L$(WINBIN) -L$(WINLIB) -lSDL -lSDL_image -lSDL_mixer -lzlib1 -lopengl32 -lenet -lws2_32 -lwinmm
+ else	
+-CLIENT_INCLUDES= $(INCLUDES) -I/usr/X11R6/include `sdl-config --cflags`
+-CLIENT_LIBS= -Lenet/.libs -lenet -L/usr/X11R6/lib -lX11 `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL
++CLIENT_INCLUDES= $(INCLUDES) `sdl-config --cflags`
++CLIENT_LIBS= -lenet -lX11 `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL
+ endif
+ ifeq ($(PLATFORM),Linux)
+ CLIENT_LIBS+= -lrt
+@@ -106,7 +106,7 @@
+ MASTER_LIBS= $(STD_LIBS) -L$(WINBIN) -L$(WINLIB) -lzlib1 -lenet -lws2_32 -lwinmm
+ else
+ SERVER_INCLUDES= -DSTANDALONE $(INCLUDES)
+-SERVER_LIBS= -Lenet/.libs -lenet -lz
++SERVER_LIBS= -lenet -lz
+ MASTER_LIBS= $(SERVER_LIBS)
+ endif
+ SERVER_OBJS= \
+@@ -135,15 +135,6 @@
+ 
+ all: client server
+ 
+-enet/Makefile:
+-	cd enet; ./configure --enable-shared=no --enable-static=yes
+-	
+-libenet: enet/Makefile
+-	$(MAKE)	-C enet/ all
+-
+-clean-enet: enet/Makefile
+-	$(MAKE) -C enet/ clean
+-
+ clean:
+ 	-$(RM) $(CLIENT_PCH) $(CLIENT_OBJS) $(SERVER_OBJS) $(MASTER_OBJS) sauer_client sauer_server sauer_master
+ 
+@@ -176,13 +167,13 @@
+ 
+ install: all
+ else
+-client:	libenet $(CLIENT_OBJS)
++client:	$(CLIENT_OBJS)
+ 	$(CXX) $(CXXFLAGS) -o sauer_client $(CLIENT_OBJS) $(CLIENT_LIBS)
+ 
+-server:	libenet $(SERVER_OBJS)
++server:	$(SERVER_OBJS)
+ 	$(CXX) $(CXXFLAGS) -o sauer_server $(SERVER_OBJS) $(SERVER_LIBS)  
+ 	
+-master: libenet $(MASTER_OBJS)
++master: $(MASTER_OBJS)
+ 	$(CXX) $(CXXFLAGS) -o sauer_master $(MASTER_OBJS) $(MASTER_LIBS)  
+ 
+ shared/cube2font.o: shared/cube2font.c

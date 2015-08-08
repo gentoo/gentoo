@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<maintainer>
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
+	</maintainer>
+	<longdescription lang="en">
+		QXmlEdit is a simple XML editor written in Qt4. Its main
+		features are unusual data visualization modes, it has some
+		nice XML manipulation and presentation features and it is
+		multi-platform. This is one of the few graphical Open Source
+		XSD viewer.
+	</longdescription>
+	<upstream>
+		<remote-id type="google-code">qxmledit</remote-id>
+	</upstream>
+</pkgmetadata>

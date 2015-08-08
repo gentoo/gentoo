@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
+  <longdescription lang="en">
+    wmii is a dynamic window manager for X11. It is highly customizable and
+    usable with keyboard and mouse. It supports conventional, tabbed and
+    tiled window management and has a small memory footprint. It is highly
+    modularized and uses an inter-process communication interface which
+    conforms to the 9P2000 protocol introduced by the Plan 9 operating
+    system.
+  </longdescription>
+</pkgmetadata>
+

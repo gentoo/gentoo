@@ -1,0 +1,12 @@
+diff -ruN kpovmodeler-1.1.3-kde4.1.1.orig/CMakeLists.txt kpovmodeler-1.1.3-kde4.1.1/CMakeLists.txt
+--- kpovmodeler-1.1.3-kde4.1.1.orig/CMakeLists.txt	2008-08-28 20:05:05.000000000 +0200
++++ kpovmodeler-1.1.3-kde4.1.1/CMakeLists.txt	2011-08-06 22:37:50.471609939 +0200
+@@ -306,7 +306,7 @@
+ 
+ kde4_add_executable(kpovmodeler ${kpovmodeler_SRCS})
+ 
+-target_link_libraries(kpovmodeler  ${KDE4_KDECORE_LIBS} lkpovmodeler )
++target_link_libraries(kpovmodeler ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} lkpovmodeler )
+ 
+ install(TARGETS kpovmodeler  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+ 

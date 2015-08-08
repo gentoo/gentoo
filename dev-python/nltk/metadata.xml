@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>clabbe.montjoie@gmail.com</email>
+    <name>LABBE Corentin (Montjoie)</name>
+    <description>Maintainer. Assign bugs to him</description>
+  </maintainer>
+  <herd>python</herd>
+  <use>
+    <flag name="numpy">Use numpy for the saved word tokenizer</flag>
+  </use>
+  <upstream>
+    <remote-id type="google-code">nltk</remote-id>
+    <remote-id type="pypi">nltk</remote-id>
+  </upstream>
+</pkgmetadata>

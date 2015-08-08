@@ -1,0 +1,11 @@
+--- ccp4-6.0.1.orig/lib/src/library_f.c	2006-06-12 07:06:22.000000000 -0700
++++ ccp4-6.0.1/lib/src/library_f.c	2006-06-12 07:21:56.000000000 -0700
+@@ -716,7 +716,7 @@
+ 
+ #endif /* end of apple xlf support */
+ 
+-#if ( defined (__linux__) && defined (_CALL_SYSV) )
++#if ( defined (__linux__) && defined (_CALL_SYSV) && ! defined(G95) && ! defined (GFORTRAN) )
+ /* linuxppc xlf support */
+ void gerror_ (str, Lstr)
+ char *str;

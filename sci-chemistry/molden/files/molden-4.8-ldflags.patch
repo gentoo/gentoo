@@ -1,0 +1,26 @@
+diff --git a/makefile b/makefile
+index 81147a3..9e2353e 100644
+--- a/makefile
++++ b/makefile
+@@ -224,10 +224,10 @@ all:	molden gmolden ambfor/ambfor ambfor/ambmd surf/surf
+ 
+ 
+ molden:	$(OBJS) mpdum.o xwin.o 
+-	$(LDR) -o molden $(OBJS) mpdum.o xwin.o $(LIBS)
++	$(LDR) $(LDFLAGS) -o molden $(OBJS) mpdum.o xwin.o $(LIBS)
+ 
+ gmolden:	$(OBJS) mpdum.o xwingl.o 
+-	$(LDR) -o gmolden $(OBJS) mpdum.o xwingl.o $(LIBSG)
++	$(LDR) $(LDFLAGS)  -o gmolden $(OBJS) mpdum.o xwingl.o $(LIBSG)
+ 
+ ambfor/ambfor:	ambfor/*.f ambfor/*.c
+ 	$(MAKE) -C ambfor FC=${FC} FFLAGS="${FFLAGS}" LDR="${LDR}" CFLAGS="${CFLAGS}"
+@@ -269,7 +269,7 @@ short_wrl:	short_wrl.o
+ # Moldens OpenGL helper program
+ 
+ moldenogl:	oglmol.o silly.o
+-	$(CC) -o moldenogl oglmol.o silly.o $(LIBSOGL)
++	$(CC) $(LDFLAGS) -o moldenogl oglmol.o silly.o $(LIBSOGL)
+ 
+ # conversion of CADPAC output to molden format
+ 

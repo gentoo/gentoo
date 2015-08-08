@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<longdescription lang="en">The package contains general Table engine for IBus platform.</longdescription>
+	<upstream>
+		<remote-id type="google-code">ibus</remote-id>
+	</upstream>
+</pkgmetadata>

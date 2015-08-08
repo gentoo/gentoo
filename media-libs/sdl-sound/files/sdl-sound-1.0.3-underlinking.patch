@@ -1,0 +1,18 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Aug 21 12:42:14 UTC 2012
+Subject: build system
+
+fix underlinking
+
+--- SDL_sound-1.0.3/Makefile.am
++++ SDL_sound-1.0.3/Makefile.am
+@@ -32,7 +32,8 @@
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ libSDL_sound_la_LIBADD =	\
+ 	decoders/libdecoders.la	\
+-	$(TIMIDITY_LIB) $(MPGLIB_LIB)
++	$(TIMIDITY_LIB) $(MPGLIB_LIB) \
++	-lm
+ 
+ EXTRA_DIST =	\
+ 	CREDITS \

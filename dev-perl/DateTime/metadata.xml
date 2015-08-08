@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">DateTime</remote-id>
+    <remote-id type="cpan-module">DateTime</remote-id>
+    <remote-id type="cpan-module">DateTime::Duration</remote-id>
+    <remote-id type="cpan-module">DateTime::Helpers</remote-id>
+    <remote-id type="cpan-module">DateTime::Infinite</remote-id>
+    <remote-id type="cpan-module">DateTime::Infinite::Future</remote-id>
+    <remote-id type="cpan-module">DateTime::Infinite::Past</remote-id>
+    <remote-id type="cpan-module">DateTime::LeapSecond</remote-id>
+  </upstream>
+</pkgmetadata>

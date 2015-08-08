@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>dev-embedded</herd>
+<use>
+ <flag name='ftdi'>Enable drivers that need libftdi</flag>
+ <flag name='serial'>Enable drivers that are serial (RS232) based</flag>
+</use>
+</pkgmetadata>

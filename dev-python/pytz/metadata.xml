@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">
+  pytz brings the Olson tz database into Python. This library allows
+  accurate and cross platform timezone calculations using Python 2.3
+  or higher. It also solves the issue of ambiguous times at the end of
+  daylight savings, which you can read more about in the Python
+  Library Reference (datetime.tzinfo).
+  Amost all (over 540) of the Olson timezones are supported.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">pytz</remote-id>
+  </upstream>
+</pkgmetadata>

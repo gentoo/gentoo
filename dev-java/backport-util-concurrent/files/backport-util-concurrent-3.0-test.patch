@@ -1,0 +1,11 @@
+--- build.xml.original	2007-02-10 02:03:52.000000000 +0100
++++ build.xml	2007-02-10 02:04:02.000000000 +0100
+@@ -107,7 +107,7 @@
+     -Djunit.ui=swingui property.
+      -->
+ 
+-    <target name="test" depends="jdeps,make"
++    <target name="test" depends="jdeps"
+             description="runs TCK unit tests on the backport">
+ 
+         <property name="junit.ui" value="textui"/>

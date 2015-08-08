@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<longdescription lang="en">
+		An I/O performance measurement and load generation tool. Writes
+		and/or reads generated data to or from a character device, block
+		device, or regular file.
+	</longdescription>
+</pkgmetadata>

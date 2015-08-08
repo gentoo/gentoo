@@ -1,0 +1,40 @@
+# Autofoo of this package is just insane, need to rewrite it someday.
+# Don't touch LDFLAGS, there is no need to
+--- a/configure.in	2008-06-15 21:27:45.000000000 +0200
++++ b/configure.in	2008-06-15 21:34:45.000000000 +0200
+@@ -120,7 +120,7 @@
+     [
+      want_croco=yes
+      CROCO_FLAGS="-DENABLE_CROCO $CROCO_CFLAGS"
+-     LDFLAGS="$LDFLAGS $want_croco_path"
++     #LDFLAGS="$LDFLAGS $want_croco_path"
+     ],
+     [
+      want_croco=no
+@@ -178,7 +179,7 @@
+ 	      have_tidy=yes
+ 	      TIDY_FLAGS="$TIDY_FLAGS -DHAVE_TIDY_H_IN_SUBDIR -DENABLE_TIDY"
+         TIDY_LIBS="-ltidy"
+-        LDFLAGS="$LDFLAGS $want_tidy_path"
++        #LDFLAGS="$LDFLAGS $want_tidy_path"
+ 	     ],
+        [have_tidy=no]
+ 	   )
+@@ -238,7 +240,7 @@
+ 	      have_clamav=yes
+ 	      CLAMAV_FLAGS="$CLAMAV_FLAGS -DENABLE_CLAMAV"
+         CLAMAV_LIBS="-lclamav"
+-        LDFLAGS="$LDFLAGS $want_clamav_path"
++        #LDFLAGS="$LDFLAGS $want_clamav_path"
+ 	     ],
+        [have_clamav=no]
+ 	   )
+@@ -298,7 +300,7 @@
+ 	      have_clamav=yes
+ 	      GNUTLS_FLAGS="$GNUTLS_FLAGS -DENABLE_GNUTLS"
+         GNUTLS_LIBS="-lgnutls"
+-        LDFLAGS="$LDFLAGS $want_gnutls_path"
++        #LDFLAGS="$LDFLAGS $want_gnutls_path"
+ 	     ],
+ 	     [
+ 	      have_clamav=yes

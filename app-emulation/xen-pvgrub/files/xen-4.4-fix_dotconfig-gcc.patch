@@ -1,0 +1,171 @@
+diff -ur xen-4.4.0.orig/Config.mk xen-4.4.0/Config.mk
+--- xen-4.4.0.orig/Config.mk	2014-03-10 18:47:38.000000000 +0800
++++ xen-4.4.0/Config.mk	2014-03-23 21:54:07.327717400 +0800
+@@ -13,8 +13,6 @@
+ # fallback for older make
+ realpath = $(wildcard $(foreach file,$(1),$(shell cd -P $(dir $(file)) && echo "$$PWD/$(notdir $(file))")))
+ 
+--include $(XEN_ROOT)/.config
+-
+ # A debug build of Xen and tools?
+ debug ?= n
+ debug_symbols ?= $(debug)
+@@ -36,7 +34,7 @@
+ 
+ # Tools to run on system hosting the build
+ HOSTCC      = gcc
+-HOSTCFLAGS  = -Wall -Werror -Wstrict-prototypes -O2 -fomit-frame-pointer
++HOSTCFLAGS  = -Wstrict-prototypes -O2 -fomit-frame-pointer
+ HOSTCFLAGS += -fno-strict-aliasing
+ 
+ DISTDIR     ?= $(XEN_ROOT)/dist
+@@ -187,7 +185,7 @@
+ 
+ CFLAGS += -std=gnu99
+ 
+-CFLAGS += -Wall -Wstrict-prototypes
++CFLAGS += -Wstrict-prototypes
+ 
+ # Clang complains about macros that expand to 'if ( ( foo == bar ) ) ...'
+ # and is over-zealous with the printf format lint
+diff -ur xen-4.4.0.orig/extras/mini-os/minios.mk xen-4.4.0/extras/mini-os/minios.mk
+--- xen-4.4.0.orig/extras/mini-os/minios.mk	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/extras/mini-os/minios.mk	2014-03-23 21:48:41.110722054 +0800
+@@ -6,7 +6,7 @@
+ 
+ # Define some default flags.
+ # NB. '-Wcast-qual' is nasty, so I omitted it.
+-DEF_CFLAGS += -fno-builtin -Wall -Werror -Wredundant-decls -Wno-format -Wno-redundant-decls
++DEF_CFLAGS += -fno-builtin -Wall -Wredundant-decls -Wno-format -Wno-redundant-decls
+ DEF_CFLAGS += $(call cc-option,$(CC),-fno-stack-protector,)
+ DEF_CFLAGS += $(call cc-option,$(CC),-fgnu89-inline)
+ DEF_CFLAGS += -Wstrict-prototypes -Wnested-externs -Wpointer-arith -Winline
+diff -ur xen-4.4.0.orig/tools/blktap2/drivers/Makefile xen-4.4.0/tools/blktap2/drivers/Makefile
+--- xen-4.4.0.orig/tools/blktap2/drivers/Makefile	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/blktap2/drivers/Makefile	2014-03-23 21:55:52.215715903 +0800
+@@ -9,7 +9,7 @@
+ LOCK_UTIL  = lock-util
+ INST_DIR   = $(SBINDIR)
+ 
+-CFLAGS    += -Werror -g
++CFLAGS    += -g
+ CFLAGS    += -Wno-unused
+ CFLAGS    += -fno-strict-aliasing
+ CFLAGS    += -I$(BLKTAP_ROOT)/include -I$(BLKTAP_ROOT)/drivers
+diff -ur xen-4.4.0.orig/tools/debugger/gdbsx/Rules.mk xen-4.4.0/tools/debugger/gdbsx/Rules.mk
+--- xen-4.4.0.orig/tools/debugger/gdbsx/Rules.mk	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/debugger/gdbsx/Rules.mk	2014-03-23 21:56:21.399715487 +0800
+@@ -1,4 +1,4 @@
+ include $(XEN_ROOT)/tools/Rules.mk
+ 
+-CFLAGS   += -Werror -Wmissing-prototypes 
++CFLAGS   += -Wmissing-prototypes 
+ # (gcc 4.3x and later)   -Wconversion -Wno-sign-conversion
+diff -ur xen-4.4.0.orig/tools/firmware/Rules.mk xen-4.4.0/tools/firmware/Rules.mk
+--- xen-4.4.0.orig/tools/firmware/Rules.mk	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/firmware/Rules.mk	2014-03-23 22:30:36.056686174 +0800
+@@ -11,7 +11,7 @@
+ CFLAGS += -DNDEBUG
+ endif
+ 
+-CFLAGS += -Werror
++CFLAGS +=
+ 
+ $(call cc-options-add,CFLAGS,CC,$(EMBEDDED_EXTRA_CFLAGS))
+ 
+diff -ur xen-4.4.0.orig/tools/libfsimage/Rules.mk xen-4.4.0/tools/libfsimage/Rules.mk
+--- xen-4.4.0.orig/tools/libfsimage/Rules.mk	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/libfsimage/Rules.mk	2014-03-23 21:57:21.767714626 +0800
+@@ -1,7 +1,7 @@
+ include $(XEN_ROOT)/tools/Rules.mk
+ 
+ CFLAGS += -Wno-unknown-pragmas -I$(XEN_ROOT)/tools/libfsimage/common/ -DFSIMAGE_FSDIR=\"$(FSDIR)\"
+-CFLAGS += -Werror -D_GNU_SOURCE
++CFLAGS += -D_GNU_SOURCE
+ LDFLAGS += -L../common/
+ 
+ PIC_OBJS := $(patsubst %.c,%.opic,$(LIB_SRCS-y))
+diff -ur xen-4.4.0.orig/tools/libxc/Makefile xen-4.4.0/tools/libxc/Makefile
+--- xen-4.4.0.orig/tools/libxc/Makefile	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/libxc/Makefile	2014-03-23 21:49:37.919721243 +0800
+@@ -87,7 +87,7 @@
+ 
+ -include $(XEN_TARGET_ARCH)/Makefile
+ 
+-CFLAGS   += -Werror -Wmissing-prototypes
++CFLAGS   += -Wmissing-prototypes
+ CFLAGS   += -I. $(CFLAGS_xeninclude)
+ 
+ # Needed for posix_fadvise64() in xc_linux.c
+diff -ur xen-4.4.0.orig/tools/libxl/Makefile xen-4.4.0/tools/libxl/Makefile
+--- xen-4.4.0.orig/tools/libxl/Makefile	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/libxl/Makefile	2014-03-23 21:58:09.983713938 +0800
+@@ -11,7 +11,7 @@
+ XLUMAJOR = 4.3
+ XLUMINOR = 0
+ 
+-CFLAGS += -Werror -Wno-format-zero-length -Wmissing-declarations \
++CFLAGS += -Wno-format-zero-length -Wmissing-declarations \
+ 	-Wno-declaration-after-statement -Wformat-nonliteral
+ CFLAGS += -I. -fPIC
+ 
+diff -ur xen-4.4.0.orig/tools/qemu-xen/pc-bios/optionrom/Makefile xen-4.4.0/tools/qemu-xen/pc-bios/optionrom/Makefile
+--- xen-4.4.0.orig/tools/qemu-xen/pc-bios/optionrom/Makefile	2014-02-06 00:59:14.000000000 +0800
++++ xen-4.4.0/tools/qemu-xen/pc-bios/optionrom/Makefile	2014-03-23 21:59:13.175713036 +0800
+@@ -9,7 +9,7 @@
+ 
+ .PHONY : all clean build-all
+ 
+-CFLAGS := -Wall -Wstrict-prototypes -Werror -fomit-frame-pointer -fno-builtin
++CFLAGS := -Wall -Wstrict-prototypes -fomit-frame-pointer -fno-builtin
+ CFLAGS += -I$(SRC_PATH)
+ CFLAGS += $(call cc-option, $(CFLAGS), -fno-stack-protector)
+ QEMU_CFLAGS = $(CFLAGS)
+diff -ur xen-4.4.0.orig/tools/tests/mce-test/tools/Makefile xen-4.4.0/tools/tests/mce-test/tools/Makefile
+--- xen-4.4.0.orig/tools/tests/mce-test/tools/Makefile	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/tests/mce-test/tools/Makefile	2014-03-23 22:28:45.160687756 +0800
+@@ -1,7 +1,7 @@
+ XEN_ROOT=$(CURDIR)/../../../..
+ include $(XEN_ROOT)/tools/Rules.mk
+ 
+-CFLAGS += -Werror
++CFLAGS +=
+ CFLAGS += $(CFLAGS_libxenctrl)
+ CFLAGS += $(CFLAGS_libxenguest)
+ CFLAGS += $(CFLAGS_libxenstore) 
+diff -ur xen-4.4.0.orig/tools/tests/mem-sharing/Makefile xen-4.4.0/tools/tests/mem-sharing/Makefile
+--- xen-4.4.0.orig/tools/tests/mem-sharing/Makefile	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/tests/mem-sharing/Makefile	2014-03-23 22:29:15.472687324 +0800
+@@ -1,7 +1,7 @@
+ XEN_ROOT=$(CURDIR)/../../..
+ include $(XEN_ROOT)/tools/Rules.mk
+ 
+-CFLAGS += -Werror
++CFLAGS +=
+ 
+ CFLAGS += $(CFLAGS_libxenctrl)
+ CFLAGS += $(CFLAGS_xeninclude)
+diff -ur xen-4.4.0.orig/tools/tests/xen-access/Makefile xen-4.4.0/tools/tests/xen-access/Makefile
+--- xen-4.4.0.orig/tools/tests/xen-access/Makefile	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/tests/xen-access/Makefile	2014-03-23 22:30:02.064686659 +0800
+@@ -1,8 +1,6 @@
+ XEN_ROOT=$(CURDIR)/../../..
+ include $(XEN_ROOT)/tools/Rules.mk
+ 
+-CFLAGS += -Werror
+-
+ CFLAGS += $(CFLAGS_libxenctrl)
+ CFLAGS += $(CFLAGS_libxenguest)
+ CFLAGS += $(CFLAGS_xeninclude)
+diff -ur xen-4.4.0.orig/tools/xenstat/xentop/Makefile xen-4.4.0/tools/xenstat/xentop/Makefile
+--- xen-4.4.0.orig/tools/xenstat/xentop/Makefile	2014-03-10 18:43:57.000000000 +0800
++++ xen-4.4.0/tools/xenstat/xentop/Makefile	2014-03-23 22:23:59.944691825 +0800
+@@ -18,7 +18,7 @@
+ all install xentop:
+ else
+ 
+-CFLAGS += -DGCC_PRINTF -Wall -Werror $(CFLAGS_libxenstat)
++CFLAGS += -DGCC_PRINTF -Wall $(CFLAGS_libxenstat)
+ LDLIBS += $(LDLIBS_libxenstat) $(CURSES_LIBS) $(SOCKET_LIBS)
+ CFLAGS += -DHOST_$(XEN_OS)
+ 

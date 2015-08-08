@@ -1,0 +1,15 @@
+Respect LDFLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=327335
+
+--- config/autoconf.mk.in
++++ config/autoconf.mk.in
+@@ -117,7 +117,7 @@
+ 
+ MKSHLIB		= @MKSHLIB@
+ DSO_CFLAGS	= @DSO_CFLAGS@
+-DSO_LDOPTS	= @DSO_LDOPTS@
++DSO_LDOPTS	= @LDFLAGS@ @DSO_LDOPTS@
+ 
+ RESOLVE_LINK_SYMBOLS = @RESOLVE_LINK_SYMBOLS@
+ 

@@ -1,0 +1,11 @@
+--- src/3rdparty/webkit/Source/JavaScriptCore/wtf/Platform.h.orig	2012-07-17 15:06:26.692276108 +0000
++++ src/3rdparty/webkit/Source/JavaScriptCore/wtf/Platform.h	2012-07-17 15:06:54.480928701 +0000
+@@ -993,7 +993,7 @@
+ #endif
+ 
+ #if !defined(WTF_USE_JSVALUE64) && !defined(WTF_USE_JSVALUE32_64)
+-#if (CPU(X86_64) && (OS(UNIX) || OS(WINDOWS))) \
++#if (CPU(X86_64) && defined(__LP64__) && (OS(UNIX) || OS(WINDOWS))) \
+     || (CPU(IA64) && !CPU(IA64_32)) \
+     || CPU(ALPHA) \
+     || CPU(SPARC64) \

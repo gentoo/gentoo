@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <use>
+    <flag name="ccp4">Link superpose with libccp4</flag>
+  </use>
+  <upstream>
+    <remote-id type="launchpad">ssm</remote-id>
+  </upstream>
+</pkgmetadata>

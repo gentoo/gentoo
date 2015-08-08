@@ -1,0 +1,5 @@
+# Sample mail config file
+# See info mail for more options
+
+# no debug
+debug { };

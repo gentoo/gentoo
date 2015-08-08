@@ -1,0 +1,46 @@
+From 4ab6ab1b78617c51a6d9db4d03be2b3d75e7acc5 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 14 Apr 2015 10:50:00 +0200
+Subject: [PATCH] allow changing the dbus config file name
+
+on some distributions the generic name of the dbus config might be provided
+by more than one display manager, so always installing with the generic
+name would require distributions to hard-patch the cmake code.
+allowing to change it through a cmake cache variable enables distributions
+to simply parameterize in their cmake call.
+
+this for example affects Ubuntu where the config would be provided by both
+SDDM and LightDM.
+---
+ CMakeLists.txt      | 1 +
+ data/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7ceed6e..cf21dc9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -141,6 +141,7 @@ set(SESSION_COMMAND             "${DATA_INSTALL_DIR}/scripts/Xsession"
+ 
+ set(CONFIG_FILE                 "${CMAKE_INSTALL_FULL_SYSCONFDIR}/sddm.conf"        CACHE PATH      "Path of the sddm config file")
+ set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/sddm.log"  CACHE PATH      "Path of the sddm log file")
++set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the sddm config file")
+ set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations"                  CACHE PATH      "Components translations directory")
+ 
+ # Add subdirectories
+diff --git a/data/CMakeLists.txt b/data/CMakeLists.txt
+index 918892f..335f4e7 100644
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ install(DIRECTORY   "faces"                             DESTINATION "${DATA_INSTALL_DIR}")
+ install(DIRECTORY   "flags"                             DESTINATION "${DATA_INSTALL_DIR}")
+ 
+-install(FILES "org.freedesktop.DisplayManager.conf"       DESTINATION "${DBUS_CONFIG_DIR}")
++install(FILES "org.freedesktop.DisplayManager.conf"     DESTINATION "${DBUS_CONFIG_DIR}" RENAME ${DBUS_CONFIG_FILENAME})
+ 
+ install(FILES "scripts/Xsession" "scripts/Xsetup" "scripts/Xstop" DESTINATION "${DATA_INSTALL_DIR}/scripts"
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
+-- 
+2.3.6
+

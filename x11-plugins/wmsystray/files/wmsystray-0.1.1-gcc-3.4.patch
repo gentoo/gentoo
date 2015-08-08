@@ -1,0 +1,10 @@
+--- wmsystray/ui.c.orig	2004-08-25 11:14:51.265675224 +0000
++++ wmsystray/ui.c	2004-08-25 11:09:56.676459592 +0000
+@@ -28,6 +28,7 @@
+ int width, height, pos_x, pos_y;
+ Pixmap bg_pixmap;
+ char *bg_data;
++void draw_ui_elements();
+ 
+ int wmaker = 1;
+ int loop_program = 1;

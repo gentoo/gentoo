@@ -1,0 +1,16 @@
+[Unit]
+Description=GNU Zebra routing manager
+Documentation=man:zebra(8)
+After=network.target
+ConditionPathExists=/etc/quagga/zebra.conf
+
+[Service]
+Type=forking
+PIDFile=/run/quagga/zebra.pid
+ExecStartPre=/bin/ip route flush proto zebra
+ExecStart=/usr/sbin/zebra -d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

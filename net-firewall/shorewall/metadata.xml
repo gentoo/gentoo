@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>netmon</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>whissi@whissi.de</email>
+    <name>Thomas D. (Whissi)</name>
+  </maintainer>
+  <use>
+    <flag name="init">Adds the capability to place the firewall in a safe state prior to bringing up the network interfaces</flag>
+    <flag name="ipv4">Installs everything needed to create a full IPv4 firewall</flag>
+    <flag name="ipv6">Adds the capability to create a full IPv6 firewall (requires <pkg>net-firewall/shorewall[ipv4]</pkg>)</flag>
+    <flag name="lite4">Installs everything needed to just *run* an IPv4 compiled firewall script created with <pkg>net-firewall/shorewall[ipv4]</pkg></flag>
+    <flag name="lite6">Installs everything needed to just *run* an IPv6 compiled firewall script created with <pkg>net-firewall/shorewall[ipv6]</pkg></flag>
+  </use>
+</pkgmetadata>

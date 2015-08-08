@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+		<description>maintainer</description>
+	</maintainer>
+	<maintainer>
+		<email>steev@gentoo.org</email>
+		<name>Steev Klimaszewski</name>
+		<description>co-maintainer, CC him on bugs</description>
+	</maintainer>
+	<use>
+		<flag name="client">Build the ncurses-based user interface</flag>
+		<flag name="suid">
+			Install a setuid root helper binary with limited functionality;
+			this allows running kismet as a normal user, significantly
+			reducing security risks
+		</flag>
+		<flag name="pcre">Build with pcre support</flag>
+		<flag name="speech">Audio support using <pkg>app-accessibility/flite</pkg></flag>
+		<flag name="plugin-autowep">Build the autowep plugin</flag>
+		<flag name="plugin-btscan">Build the btscan plugin</flag>
+		<flag name="plugin-dot15d4">Build the dot15d4 plugin</flag>
+		<flag name="plugin-ptw">Build the ptw plugin</flag>
+		<flag name="plugin-spectools">Build the spectools plugin. This uses <pkg>net-wireless/spectools</pkg></flag>
+		<flag name="plugin-syslog">Build the syslog plugin.</flag>
+		<flag name="ruby">Build extras which are written in ruby, example plugins and the like.</flag>
+	</use>
+</pkgmetadata>

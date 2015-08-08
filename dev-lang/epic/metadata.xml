@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<maintainer>
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Epic is a simple functional language which compiles to
+		reasonably efficient C code, using the Boehm-Demers-Weiser
+		garbage collector (&lt;http://www.hpl.hp.com/personal/Hans_Boehm/gc/&gt;).
+		It is intended as a compiler back end, and is currently used
+		as a back end for Epigram (&lt;http://www.e-pig.org&gt;) and Idris
+		(&lt;http://idris-lang.org/&gt;).
+		It can be invoked either as a library or an application.
+	</longdescription>
+</pkgmetadata>

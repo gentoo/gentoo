@@ -1,0 +1,11 @@
+--- dist/Makefile.am
++++ dist/Makefile.am
+@@ -6,8 +6,6 @@
+ 	/bin/chmod 0600 ${DESTDIR}/@sysconfdir@/tcsd.conf
+ 
+ install-exec-hook:
+-	/usr/sbin/groupadd tss || true
+-	/usr/sbin/useradd -r tss -g tss || true
+ 	/bin/sh -c 'if [ ! -e ${DESTDIR}/@localstatedir@/lib/tpm ];then mkdir -p ${DESTDIR}/@localstatedir@/lib/tpm; fi'
+ 	/bin/chown tss:tss ${DESTDIR}/@localstatedir@/lib/tpm || true
+ 	/bin/chmod 0700 ${DESTDIR}/@localstatedir@/lib/tpm

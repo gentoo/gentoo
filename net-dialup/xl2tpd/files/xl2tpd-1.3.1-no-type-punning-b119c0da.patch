@@ -1,0 +1,23 @@
+commit b119c0daf006dcf9d960e5a98902d619cdfdf485
+Author: Ted Phelps <phelps@gnusto.com>
+Date:   Thu Dec 20 17:53:54 2012 +1100
+
+    Avoid type punning: it makes gcc grumpy.
+    
+    Compilers don't like it when we write to memory as one type and read from it
+    as another.  Use memcpy instead of typecast games to avoid doing that.
+
+diff --git a/md5.c b/md5.c
+index 175edcc..cb056da 100644
+--- a/md5.c
++++ b/md5.c
+@@ -161,8 +161,7 @@ void MD5Final (unsigned char digest[16], struct MD5Context *ctx)
+     byteReverse (ctx->in, 14);
+ 
+     /* Append length in bits and transform */
+-    ((uint32 *) ctx->in)[14] = ctx->bits[0];
+-    ((uint32 *) ctx->in)[15] = ctx->bits[1];
++    memcpy(ctx->in + 14 * sizeof(uint32), ctx->bits, sizeof(ctx->bits));
+ 
+     MD5Transform (ctx->buf, (uint32 *) ctx->in);
+     byteReverse ((unsigned char *) ctx->buf, 4);

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+<herd>java</herd>
+
+<longdescription>
+GNU Classpath inetlib is an extension library to provide extra network
+protocol support for GNU Classpath and ClasspathX project, but it can
+also used standalone to make adding http, imap, pop3 and smtp client
+support to applictions.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cluster</herd>
+	<maintainer>
+		<email>jsbronder@gentoo.org</email>
+		<name>Justin Bronder</name>
+	</maintainer>
+	<maintainer>
+		<email>balaji@mcs.anl.gov</email>
+		<name>Pavan Balaji</name>
+		<description>Upstream Contact</description>
+	</maintainer>
+	<use>
+		<flag name="mpi-threads">Enable MPI_THREAD_MULTIPLE</flag>
+		<flag name="romio">Build the ROMIO MPI-IO component</flag>
+	</use>
+</pkgmetadata>

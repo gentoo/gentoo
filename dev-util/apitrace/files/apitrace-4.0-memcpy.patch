@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/465504
+http://github.com/apitrace/apitrace/issues/118
+
+--- a/image/image_png.cpp
++++ b/image/image_png.cpp
+@@ -31,6 +31,7 @@
+ #include <assert.h>
+ #include <stdint.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include <fstream>
+ 

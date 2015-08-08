@@ -1,0 +1,145 @@
+--- src/gb/GB.cpp.old	2011-12-12 11:28:33.412463305 +0100
++++ src/gb/GB.cpp	2011-12-12 11:29:09.592463481 +0100
+@@ -29,7 +29,6 @@
+ #include "gbMemory.h"
+ #include "gbSGB.h"
+ #include "gbSound.h"
+-#include "../unzip.h"
+ #include "../Util.h"
+ 
+ #ifdef __GNUC__
+--- src/sdl/TestEmu.cpp.old	2011-12-12 11:49:42.802469335 +0100
++++ src/sdl/TestEmu.cpp	2011-12-12 11:49:57.682469414 +0100
+@@ -28,7 +28,7 @@
+ #include "GBA.h"
+ #include "debugger.h"
+ #include "Sound.h"
+-#include "unzip.h"
++#include <minizip/unzip.h>
+ #include "Util.h"
+ #include "gb/GB.h"
+ #include "gb/gbGlobals.h"
+--- ./src/sdl/SDL.cpp.old	2011-12-12 11:29:45.072463639 +0100
++++ ./src/sdl/SDL.cpp	2011-12-12 11:29:56.372463698 +0100
+@@ -34,7 +34,7 @@
+ #include "RTC.h"
+ #include "Sound.h"
+ #include "Text.h"
+-#include "unzip.h"
++#include <minizip/unzip.h>
+ #include "Util.h"
+ #include "gb/GB.h"
+ #include "gb/gbGlobals.h"
+--- ./src/System.h.old	2011-12-12 11:27:56.382463126 +0100
++++ ./src/System.h	2011-12-12 11:28:13.202463209 +0100
+@@ -20,7 +20,7 @@
+ #ifndef VBA_SYSTEM_H
+ #define VBA_SYSTEM_H
+ 
+-#include "unzip.h"
++#include <minizip/unzip.h>
+ 
+ #ifndef NULL
+ #define NULL 0
+--- src/memgzio.c.old	2011-12-12 11:37:12.912465774 +0100
++++ src/memgzio.c	2011-12-12 11:42:25.682467264 +0100
+@@ -66,13 +66,13 @@
+ } mem_stream;
+ 
+ 
+-local gzFile gz_open      OF((char *memory, const int available, const char *mode));
+-local int do_flush        OF((gzFile file, int flush));
+-local int    get_byte     OF((mem_stream *s));
+-local void   check_header OF((mem_stream *s));
+-local int    destroy      OF((mem_stream *s));
+-local void   putLong      OF((MEMFILE *file, uLong x));
+-local uLong  getLong      OF((mem_stream *s));
++local gzFile gz_open      _Z_OF((char *memory, const int available, const char *mode));
++local int do_flush        _Z_OF((gzFile file, int flush));
++local int    get_byte     _Z_OF((mem_stream *s));
++local void   check_header _Z_OF((mem_stream *s));
++local int    destroy      _Z_OF((mem_stream *s));
++local void   putLong      _Z_OF((MEMFILE *file, uLong x));
++local uLong  getLong      _Z_OF((mem_stream *s));
+ 
+ local MEMFILE *memOpen(char *memory, int available, char mode)
+ {
+--- src/GBA.cpp.old	2011-12-12 11:30:35.262463885 +0100
++++ src/GBA.cpp	2011-12-12 11:30:47.402463941 +0100
+@@ -31,7 +31,7 @@
+ #include "Sound.h"
+ #include "Sram.h"
+ #include "bios.h"
+-#include "unzip.h"
++#include <minizip/unzip.h>
+ #include "Cheats.h"
+ #include "NLS.h"
+ #include "elf.h"
+--- win32/include/zlib/zutil.h.old	2011-12-12 11:35:21.282465241 +0100
++++ win32/include/zlib/zutil.h	2011-12-12 12:00:51.712472515 +0100
+@@ -207,10 +207,10 @@
+ #endif
+ 
+ 
+-typedef uLong (ZEXPORT *check_func) OF((uLong check, const Bytef *buf,
++typedef uLong (ZEXPORT *check_func) _Z_OF((uLong check, const Bytef *buf,
+ 				       uInt len));
+-voidpf zcalloc OF((voidpf opaque, unsigned items, unsigned size));
+-void   zcfree  OF((voidpf opaque, voidpf ptr));
++voidpf zcalloc _Z_OF((voidpf opaque, unsigned items, unsigned size));
++void   zcfree  _Z_OF((voidpf opaque, voidpf ptr));
+ 
+ #define ZALLOC(strm, items, size) \
+            (*((strm)->zalloc))((strm)->opaque, (items), (size))
+--- src/sdl/Makefile.am.old	2011-12-12 12:09:53.442475093 +0100
++++ src/sdl/Makefile.am	2011-12-12 12:10:31.582475274 +0100
+@@ -71,11 +71,9 @@
+ 	../remote.cpp		\
+ 	../scanline.cpp		\
+ 	../simple2x.cpp		\
+-	../thumb.h		\
+-	../unzip.cpp		\
+-	../unzip.h
++	../thumb.h
+ 
+-VisualBoyAdvance_LDADD = @VBA_LIBS@ @SDL_LIBS@
++VisualBoyAdvance_LDADD = @VBA_LIBS@ @SDL_LIBS@ -lminizip
+ 
+ VisualBoyAdvance_DEPENDENCIES = @VBA_LIBS@
+ 
+@@ -143,11 +141,9 @@
+ 	../remote.cpp		\
+ 	../scanline.cpp		\
+ 	../simple2x.cpp		\
+-	../thumb.h		\
+-	../unzip.cpp		\
+-	../unzip.h
++	../thumb.h
+ 
+-TestEmu_LDADD = @VBA_LIBS@ @SDL_LIBS@
++TestEmu_LDADD = @VBA_LIBS@ @SDL_LIBS@ -lminizip
+ 
+ TestEmu_DEPENDENCIES = @VBA_LIBS@
+ 
+--- src/gtk/Makefile.am.old	2011-12-12 12:13:42.552476181 +0100
++++ src/gtk/Makefile.am	2011-12-12 12:14:20.272476359 +0100
+@@ -26,7 +26,7 @@
+ 	window.cpp		\
+ 	window.h
+ 
+-gvba_LDADD = libgba.a @VBA_LIBS@ @GTKMM_LIBS@ @LIBINTL@ @SDL_LIBS@
++gvba_LDADD = libgba.a @VBA_LIBS@ @GTKMM_LIBS@ @LIBINTL@ @SDL_LIBS@ -lminizip
+ 
+ gvba_DEPENDENCIES = libgba.a @VBA_LIBS@
+ 
+@@ -99,9 +99,7 @@
+ 	../remote.cpp		\
+ 	../scanline.cpp		\
+ 	../simple2x.cpp		\
+-	../thumb.h		\
+-	../unzip.cpp		\
+-	../unzip.h
++	../thumb.h
+ 
+ libgba_a_CPPFLAGS = -DSDL
+ 

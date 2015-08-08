@@ -1,0 +1,16 @@
+diff --git a/configure.in b/configure.in
+index 1cfbcba..5363c05 100644
+--- a/configure.in
++++ b/configure.in
+@@ -54,9 +54,8 @@ if test "x$with_gtk" != "x1" -a "$gtkmorph_gtk" = ""  ; then
+   AC_MSG_NOTICE([ Testing for GTK 2 skipped])
+ fi
+ if test "x$with_gtk" != "x2"  -a "$version_of_gtk" = "" ; then
+-  AM_PATH_GTK(1.0.1, , [AC_MSG_ERROR([Cannot find proper GTK+ version])])
+-  version_of_gtk=gtk1
+-  AC_DEFINE(HAVE_GTK1,1,"compiled with GTK 1 and GtkGLArea ")
++  AC_MSG_ERROR([Cannot find proper GTK+ version])
++  exit 1
+ fi
+ 
+ AM_CONDITIONAL(COND_GTK1, test "$version_of_gtk" = "gtk1" )

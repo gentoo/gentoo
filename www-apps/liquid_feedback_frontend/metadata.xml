@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>tupone@gentoo.org</email>
+<name>Alfredo Tupone</name>
+</maintainer>
+<longdescription lang="en">
+LiquidFeedback is an open-source software, powering internet platforms for proposition development and decision making.
+LiquidFeedback is an independent open source project published under MIT license by the Public Software Group of Berlin, Germany.
+The developers of LiquidFeedback have joined together in the Interaktive Demokratie association to promote the use of electronic media for democratic processes.
+</longdescription>
+</pkgmetadata>

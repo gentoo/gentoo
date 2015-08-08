@@ -1,0 +1,49 @@
+diff --git a/configure.ac b/configure.ac
+index 80518db..64221e0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,8 @@
+ # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+-AC_INIT(src/thread.cpp)
++AC_INIT
++AC_CONFIG_SRCDIR([src/thread.cpp])
+ AC_CONFIG_MACRO_DIR([m4])
+ m4_pattern_allow(LT_VERSION)
+ 
+@@ -81,17 +82,17 @@ fi
+ AC_SUBST(ccincludedir)
+ 
+ AC_CONFIG_AUX_DIR(autoconf)
+-AC_CANONICAL_SYSTEM
++AC_CANONICAL_TARGET
+ AC_PROG_CPP
+ AC_PROG_CC
+ AC_PROG_CXXCPP
+ AC_PROG_CXX
+ OST_PROG_CC_POSIX
+ NP_PROG_MSC
+-AC_LIBTOOL_WIN32_DLL
+-AM_PROG_LIBTOOL
++
++LT_INIT([win32-dll,disable-static])
+ AM_INIT_AUTOMAKE(commoncpp2, [$VERSION])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ AC_C_RESTRICT
+ AC_C_VOLATILE
+@@ -408,10 +409,11 @@ LIB_MAJOR=`echo $LT_VERSION | sed -e 's/[:].*$//'`
+ AC_SUBST(LIB_VERSION)
+ AC_SUBST(LIB_MAJOR)
+ 
+-AC_OUTPUT([src/ccgnu2-config src/libccext2.pc src/libccgnu2.pc
++AC_CONFIG_FILES([src/ccgnu2-config src/libccext2.pc src/libccgnu2.pc
+ src/Makefile w32/Makefile w32/vs2008/Makefile w32/vs2008/ccext2.vcproj w32/vs2008/ccgnu2.vcproj w32/vs2008/common.sln m4/Makefile doc/Doxyfile
+ doc/Makefile demo/Makefile inc/Makefile inc/cc++/Makefile Makefile
+ commoncpp2.spec tests/Makefile commoncpp2.list w32/ccgnu2.dsp w32/ccext2.dsp w32/ccgnu2.vcproj w32/ccext2.vcproj])
++AC_OUTPUT
+ 
+ # if test ! -f inc/cc++/thread.h ; then
+ #   cp ${srcdir}/inc/cc++/*.h inc/cc++ ; fi

@@ -1,0 +1,10 @@
+diff --git a/modules/Makefile b/modules/Makefile
+index 4ecbd6a..6a17540 100644
+--- a/modules/Makefile
++++ b/modules/Makefile
+@@ -114,4 +114,4 @@ lookup_ldap.so: lookup_ldap.c dclist.o base64.o $(SASL_OBJ)
+ 
+ mount_nfs.so: mount_nfs.c replicated.o
+ 	$(CC) $(LDFLAGS) $(SOLDFLAGS) $(CFLAGS) -o mount_nfs.so \
+-		mount_nfs.c replicated.o $(AUTOFS_LIB) $(LIBNSL)
++		mount_nfs.c replicated.o $(AUTOFS_LIB) $(LIBNSL) $(TIRPCLIB)

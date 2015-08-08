@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>ppurka@gmail.com</email>
+	<name>Punarbasu 'ppurka' Purkayastha</name>
+	<description>Primary Maintainer, Assign bugs</description>
+</maintainer>
+<maintainer>
+	<email>forestmoonsilence@gmail.com</email>
+	<name>sitquietly</name>
+	<description>Co Maintainer, CC bugs</description>
+</maintainer>
+<upstream>
+	<maintainer status="active">
+		<email>talex5@gmail.com</email>
+		<name>Thomas Leonard</name>
+		<description>Primary Author</description>
+	</maintainer>
+	<bugs-to>http://rox.sourceforge.net/desktop/lists</bugs-to>
+	<remote-id type="sourceforge">rox</remote-id>
+</upstream>
+<longdescription lang="en">
+	ROX-Filer is a fast and powerful graphical file manager for the
+	X Window System. You can use it as a small and fast filer within your
+	current desktop, or get it to manage your pinboard, panels and
+	applications. It is also the core component of the ROX Desktop.
+	Many of the filer's features were inspired by RISC OS. `ROX'
+	stands for `RISC OS–On–X'. The latest development for ROX-Filer can be
+	found in GitHub: https://github.com/rox-desktop/rox-filer
+</longdescription>
+</pkgmetadata>

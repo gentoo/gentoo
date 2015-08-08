@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">MLDBM-Sync</remote-id>
+    <remote-id type="cpan-module">MLDBM::Sync</remote-id>
+    <remote-id type="cpan-module">MLDBM::Sync::SDBM_File</remote-id>
+  </upstream>
+</pkgmetadata>

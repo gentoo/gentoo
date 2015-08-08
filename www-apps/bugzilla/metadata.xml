@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>andrew@ahamilto.net</email>
+		<name>Andrew Hamilton</name>
+		<description>Maintainer. Assign bugs to him.</description>
+	</maintainer>
+	<maintainer>
+		<email>creffett@gentoo.org</email>
+		<name>Chris Reffett</name>
+		<description>Proxy maintainer. CC him on bugs.</description>
+	</maintainer>
+	<herd>web-apps</herd>
+    <herd>proxy-maintainers</herd>
+	<use>
+		<flag name="extras">Optional Perl modules</flag>
+		<flag name="modperl">Enable <pkg>www-apache/mod_perl</pkg> support</flag>
+	</use>
+</pkgmetadata>

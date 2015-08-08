@@ -1,0 +1,19 @@
+--- configure.in	2007-01-16 14:52:56.000000000 -0500
++++ configure.in.new	2008-06-10 15:40:14.000000000 -0400
+@@ -12,7 +12,7 @@
+ AM_INIT_AUTOMAKE([libgii],[1.0.2],[-])
+ 
+ AM_MAINTAINER_MODE
+-
++AC_PROG_LIBTOOL
+ 
+ AC_CANONICAL_BUILD
+ AC_CANONICAL_HOST
+@@ -100,7 +100,6 @@
+ dnl Make Objective-C work with automake >= 1.7.x
+ AM_CONDITIONAL([am__fastdepOBJC], false)
+ 
+-LT_INIT([win32-dll])
+ 
+ 
+ dnl ========================================================================

@@ -1,0 +1,4 @@
+# .bash_profile
+case "`tty`" in
+	*tty8) startx; logout ;;
+esac

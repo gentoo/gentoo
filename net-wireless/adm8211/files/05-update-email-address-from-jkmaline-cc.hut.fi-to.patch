@@ -1,0 +1,81 @@
+From 3e2d468ee087e4d60c007746b68731e08346d620 Mon Sep 17 00:00:00 2001
+From: Jouni Malinen <j@w1.fi>
+Date: Sat, 24 Mar 2007 17:15:30 -0700
+Subject: [PATCH] [PATCH] Update my email address from jkmaline@cc.hut.fi to j@w1.fi
+
+After 13 years of use, it looks like my email address is finally going
+to disappear. While this is likely to drop the amount of incoming spam
+greatly ;-), it may also affect more appropriate messages, so let's
+update my email address in various places. In addition, Host AP mailing
+list is subscribers-only and linux-wireless can also be used for
+discussing issues related to this driver which is now shown in
+MAINTAINERS.
+
+Signed-off-by: Jouni Malinen <j@w1.fi>
+Signed-off-by: John W. Linville <linville@tuxdriver.com>
+---
+ drivers/net/wireless/adm8211/adm8211_hw.c    |    6 +++---
+ adm8211/adm8211_ioctl.c |    2 +-
+ adm8211/ieee80211_sta.c |    2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/adm8211/adm8211_hw.c b/adm8211/adm8211_hw.c
+index a33d239..2ec950d 100644
+--- a/adm8211/adm8211_hw.c
++++ b/adm8211/adm8211_hw.c
+@@ -2,7 +2,7 @@
+ /*
+  * Linux device driver for ADMtek ADM8211 (IEEE 802.11b MAC/BBP)
+  *
+- * Copyright (c) 2003, Jouni Malinen <jkmaline@cc.hut.fi>
++ * Copyright (c) 2003, Jouni Malinen <j@w1.fi>
+  * Copyright (c) 2004-2005, Michael Wu <flamingice@sourmilk.net>
+  * Some parts copyright (c) 2003 by David Young <dyoung@pobox.com>
+  * and used with permission.
+@@ -43,7 +43,7 @@
+ 
+ #define RELEASE_DATE "20060414"
+ 
+-MODULE_AUTHOR("Jouni Malinen <jkmaline@cc.hut.fi>, Michael Wu <flamingice@sourmilk.net>");
++MODULE_AUTHOR("Jouni Malinen <j@w1.fi>, Michael Wu <flamingice@sourmilk.net>");
+ MODULE_DESCRIPTION("Driver for IEEE 802.11b wireless LAN cards based on ADMtek"
+ 		   " ADM8211");
+ MODULE_SUPPORTED_DEVICE("ADM8211");
+@@ -58,7 +58,7 @@ module_param(rx_ring_size, uint, 0);
+ module_param(debug, int, 0);
+ 
+ static const char *version = KERN_INFO "adm8211: " 
+-"Copyright 2003, Jouni Malinen <jkmaline@cc.hut.fi>; "
++"Copyright 2003, Jouni Malinen <j@w1.fi>; "
+ "Copyright 2004-2005, Michael Wu <flamingice@sourmilk.net>\n";
+ 
+ 
+diff --git a/adm8211/adm8211_ioctl.c b/adm8211/adm8211_ioctl.c
+index 7c0f6b6..7009dae 100644
+--- a/adm8211/adm8211_ioctl.c
++++ b/adm8211/adm8211_ioctl.c
+@@ -1,7 +1,7 @@
+ /*
+  * Linux driver for ADMtek ADM8211 (IEEE 802.11b wireless LAN card)
+  *
+- * Copyright (c) 2003, Jouni Malinen <jkmaline@cc.hut.fi>
++ * Copyright (c) 2003, Jouni Malinen <j@w1.fi>
+  * Copyright (c) 2004-2005, Michael Wu <flamingice@sourmilk.net>
+  *
+  * This program is free software; you can redistribute it and/or modify
+diff --git a/adm8211/ieee80211_sta.c b/adm8211/ieee80211_sta.c
+index 940f742..3b57915 100644
+--- a/adm8211/ieee80211_sta.c
++++ b/adm8211/ieee80211_sta.c
+@@ -1,7 +1,7 @@
+ /*
+  * IEEE 802.11 station / management functionality
+  *
+- * Copyright (c) 2003, Jouni Malinen <jkmaline@cc.hut.fi>
++ * Copyright (c) 2003, Jouni Malinen <j@w1.fi>
+  * Copyright (c) 2004-2005, Michael Wu <flamingice@sourmilk.net>
+  *
+  * This program is free software; you can redistribute it and/or modify
+-- 
+1.5.2.1
+

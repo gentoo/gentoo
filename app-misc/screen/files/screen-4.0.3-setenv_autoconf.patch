@@ -1,0 +1,79 @@
+--- configure.in.DIST	2006-10-31 21:39:07.010473000 -0800
++++ configure.in	2006-10-31 21:43:05.630162000 -0800
+@@ -1211,15 +1211,32 @@
+ AC_HEADER_DIRENT
+ 
+ AC_MSG_CHECKING(for setenv)
+-AH_TEMPLATE([USESETENV], [If your system has setenv() and unsetenv() define USESETENV])
+-AC_TRY_LINK(,[setenv((char *)0,(char *)0);unsetenv((char *)0);], AC_MSG_RESULT(yes);AC_DEFINE(USESETENV),
+-AC_MSG_RESULT(no)
+-AC_MSG_CHECKING(for putenv)
+-AH_TEMPLATE([NEEDPUTENV],
+-[If your system does not come with a setenv()/putenv()/getenv()
+- functions, you may bring in our own code by defining NEEDPUTENV.])
+-AC_TRY_LINK(,[putenv((char *)0);unsetenv((char *)0);], AC_MSG_RESULT(yes) ,  AC_MSG_RESULT(no);AC_DEFINE(NEEDPUTENV)
+-))
++if test -z "$ac_setenv_args"; then
++    AC_TRY_LINK(
++    [#include <stdlib.h>],
++    [
++        setenv((char *) 0, (char *) 0, 0);
++    ], ac_setenv_args=3)
++fi
++if test -z "$ac_setenv_args"; then
++    AC_TRY_LINK(
++    [#include <stdlib.h>],
++    [
++        setenv((char *) 0, (char *) 0);
++    ], ac_setenv_args=2)
++fi
++if test -n "$ac_setenv_args"; then
++    AC_DEFINE(USESETENV)
++    if test "$ac_setenv_args" = 3; then
++        AC_DEFINE(HAVE_SETENV_3)
++    elif test "$ac_setenv_args" = 2; then
++        AC_DEFINE(HAVE_SETENV_2)
++    fi
++else
++    AC_MSG_RESULT(no)
++    AC_MSG_CHECKING(for putenv)
++    AC_TRY_LINK(,[putenv((char *)0);unsetenv((char *)0);], AC_MSG_RESULT(yes) ,  AC_MSG_RESULT(no);AC_DEFINE(NEEDPUTENV))
++fi
+ AC_MSG_CHECKING([for nl_langinfo(CODESET)])
+ AH_TEMPLATE([HAVE_NL_LANGINFO],
+ [define HAVE_NL_LANGINFO if your system has the nl_langinfo() call
+--- config.h.in.DIST	2006-10-31 21:43:23.233714000 -0800
++++ config.h.in	2006-10-31 21:44:27.346275000 -0800
+@@ -548,6 +548,16 @@
+ #undef USESETENV
+ 
+ /*
++ * If setenv() takes 3 arguments define HAVE_SETENV_3
++ */
++#undef HAVE_SETENV_3
++
++/*
++ * If setenv() takes 2 arguments define HAVE_SETENV_2
++ */
++#undef HAVE_SETENV_2
++
++/*
+  * If your system does not come with a setenv()/putenv()/getenv()
+  * functions, you may bring in our own code by defining NEEDPUTENV.
+  */
+--- misc.c.DIST	2006-10-31 20:55:42.481760000 -0800
++++ misc.c	2006-10-31 21:53:24.143551000 -0800
+@@ -613,11 +613,11 @@
+    */
+ # endif /* NEEDSETENV */
+ #else /* USESETENV */
+-# if defined(linux) || defined(__convex__) || (BSD >= 199103)
++# if HAVE_SETENV_3
+   setenv(var, value, 1);
+ # else
+   setenv(var, value);
+-# endif /* linux || convex || BSD >= 199103 */
++# endif /* HAVE_SETENV_3 */
+ #endif /* USESETENV */
+ }
+ 

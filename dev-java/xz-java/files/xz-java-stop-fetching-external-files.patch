@@ -1,0 +1,16 @@
+--- build.xml	2011-10-22 12:16:36.000000000 +0200
++++ build.xml.new	2012-06-01 17:54:41.000000000 +0200
+@@ -35,12 +35,9 @@
+             description="Generates HTML documentation with javadoc">
+         <mkdir dir="${doc_dir}"/>
+         <mkdir dir="${extdoc_dir}"/>
+-        <get src="${extdoc_url}/package-list"
+-             dest="${extdoc_dir}/package-list" skipexisting="true"/>
+         <javadoc sourcepath="${src_dir}" destdir="${doc_dir}"
+                  source="${sourcever}" packagenames="org.tukaani.xz"
+-                 windowtitle="XZ data compression"
+-                 linkoffline="${extdoc_url} ${extdoc_dir}"/>
++                 windowtitle="XZ data compression"/>
+     </target>
+ 
+     <target name="compile" description="Compiles the classes">

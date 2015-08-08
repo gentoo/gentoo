@@ -1,0 +1,90 @@
+newer magick libraries, use pkg-config, add possibility to link with
+graphicsmagick, fix for as-needed
+
+--- dx-4.4.4.orig/src/exec/dxmods/_im_image.c
++++ dx-4.4.4/src/exec/dxmods/_im_image.c
+@@ -329,7 +329,7 @@
+             DestroyImageInfo(new_frame_info);
+             DestroyImageInfo(image_info);
+ #if MagickLibVersion > 0x0537
+-            DestroyConstitute();
++            ConstituteComponentTerminus();
+ #endif
+              DXSetError(ERROR_INTERNAL, "reason = %s, description = %s",
+                         image->exception.reason,
+@@ -346,7 +346,7 @@
+             DestroyImageInfo(new_frame_info);
+             DestroyImageInfo(image_info);
+ #if MagickLibVersion > 0x0537
+-            DestroyConstitute();
++            ConstituteComponentTerminus();
+ #endif
+             DXErrorReturn( ERROR_INTERNAL , "out of memory allocating buffer _im_image.c");
+         }
+@@ -375,7 +375,7 @@
+         DestroyImageInfo(image_info);
+         DestroyImageInfo(new_frame_info);
+ #if MagickLibVersion > 0x0537
+-        DestroyConstitute();
++        ConstituteComponentTerminus();
+ #endif
+         
+         DEBUGMESSAGE("back from DestroyImage");
+@@ -491,7 +491,7 @@
+         DestroyImage(image);
+         DestroyImageInfo(image_info);
+ #if MagickLibVersion > 0x0537
+-        DestroyConstitute();
++        ConstituteComponentTerminus();
+ #endif
+     }
+     return (OK);
+--- dx-4.4.4.orig/configure.ac
++++ dx-4.4.4/configure.ac
+@@ -799,7 +799,29 @@
+ LIB_MAGICK=''
+ if test "$with_magick" != 'no'
+ then
+-    AS_MESSAGE([checking for ImageMagick support ......])
++    found=0
++    static_lib="libGraphicsMagick.a"
++    PKG_CHECK_MODULES(GraphicsMagick, GraphicsMagick, [found=1], [found=0])
++    MAGICK_CFLAGS="$GraphicsMagick_CFLAGS"
++    MAGICK_LIBS="$GraphicsMagick_LIBS"
++    if test $found -eq 0
++    then
++        static_lib="libMagick.a"
++        PKG_CHECK_MODULES(ImageMagick, ImageMagick, [found=1], [found=0])
++        MAGICK_CFLAGS="$ImageMagick_CFLAGS"
++        MAGICK_LIBS="$ImageMagick_LIBS"
++    fi
++    if test $found -eq 1
++    then
++	CFLAGS="$CFLAGS $MAGICK_CFLAGS"
++dnl UNIQUIFY will remove duplicate library tokens leaving the last instance.
++	AC_UTILS_UNIQUIFY([$LIBS $MAGICK_LIBS], LIBS)
++	FMT_LIBS="$FMT_LIBS $static_lib"
++	AC_DEFINE(HAVE_LIBMAGICK, 1, [Define to 1 if you have the ImageMagick libraries])
++        have_magick='yes'
++dnl legacy checks installations without pkg-config
++    else
++    AS_MESSAGE([checking for ImageMagick support (no pkg-config) ......])
+     AC_CHECK_PROG(HAVE_MC, Magick-config, yes, no)
+ 
+     failed=0;
+@@ -866,6 +888,7 @@
+   fi
+ fi
+ fi
++fi
+ 
+ AC_LANG([C++])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[int a = true;]])],
+--- dx-4.4.4.orig/src/exec/dxmods/Makefile.am
++++ dx-4.4.4/src/exec/dxmods/Makefile.am
+@@ -113,4 +113,5 @@
+ 	$(SOURCES6) \
+ 	$(SOURCES7)
+ 
++libDXMODS_la_LIBADD = @MAGICK_LIBS@
+ @LOCALMAKE@

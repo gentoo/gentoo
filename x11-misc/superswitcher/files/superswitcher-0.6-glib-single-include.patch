@@ -1,0 +1,27 @@
+Index: superswitcher-0.6/src/dbus-object.h
+===================================================================
+--- superswitcher-0.6.orig/src/dbus-object.h
++++ superswitcher-0.6/src/dbus-object.h
+@@ -4,7 +4,7 @@
+ #ifndef SUPERSWITCHER_DBUS_OBJECT_H
+ #define SUPERSWITCHER_DBUS_OBJECT_H
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #include "forward_declarations.h"
+ 
+Index: superswitcher-0.6/src/forward_declarations.h
+===================================================================
+--- superswitcher-0.6.orig/src/forward_declarations.h
++++ superswitcher-0.6/src/forward_declarations.h
+@@ -18,8 +18,7 @@ typedef struct _SSXineramaScreen SSXiner
+ #define ABNORMAL_EXIT_CODE_ANOTHER_INSTANCE_IS_RUNNING  1
+ #define ABNORMAL_EXIT_CODE_UNKNOWN_COMMAND_LINE_OPTION  2
+ 
+-#include <glib/gerror.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ gboolean   superswitcher_hide_popup     (void *, GError **);
+ gboolean   superswitcher_show_popup     (void *, GError **);
+ gboolean   superswitcher_toggle_popup   (void *, GError **);

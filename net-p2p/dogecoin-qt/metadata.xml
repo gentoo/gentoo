@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>sdamashek@gentoo.org</email>
+		<name>Samuel Damashek</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a client for the Dogecoin cryptocurrency.
+		Dogecoin is a scrypt-based alternative to Bitcoin.
+	</longdescription>
+	<use>
+		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dogecoin/dogecoin</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,91 @@
+diff -ur nspluginwrapper-1.4.2.orig//Makefile nspluginwrapper-1.4.2/Makefile
+--- nspluginwrapper-1.4.2.orig//Makefile	2011-06-04 14:41:40.000000000 -0400
++++ nspluginwrapper-1.4.2/Makefile	2011-06-16 22:11:07.059551179 -0400
+@@ -14,7 +14,7 @@
+ endif
+ 
+ ifeq ($(INSTALL),)
+-INSTALL = install
++INSTALL = install -D
+ ifneq (,$(findstring $(OS),solaris))
+ INSTALL = $(SRC_PATH)/utils/install.sh
+ endif
+@@ -236,44 +236,40 @@
+ uninstall.mkruntime:
+ 	rm -f $(DESTDIR)$(npcommondir)/mkruntime
+ 
+-install: install.dirs install.player install.wrapper install.viewer install.libnoxshm install.loader install.config
+-install.dirs:
+-	mkdir -p $(DESTDIR)$(npcommondir) || :
+-	mkdir -p $(DESTDIR)$(nphostdir) || :
+-	mkdir -p $(DESTDIR)$(nptargetdir) || :
++install: install.player install.wrapper install.viewer install.libnoxshm install.loader install.config
+ ifeq ($(build_player),yes)
+-install.player: install.dirs $(npplayer_PROGRAM)
++install.player: $(npplayer_PROGRAM)
+ 	$(INSTALL) -m 755 $(STRIP_OPT) $(npplayer_PROGRAM) $(DESTDIR)$(nphostdir)/$(npplayer_PROGRAM)
+ 	mkdir -p $(DESTDIR)$(bindir)
+ 	$(LN_S) $(nphostdir)/$(npplayer_PROGRAM) $(DESTDIR)$(bindir)/nspluginplayer
+ else
+ install.player:
+ endif
+-install.wrapper: install.dirs $(npwrapper_LIBRARY)
++install.wrapper: $(npwrapper_LIBRARY)
+ 	$(INSTALL) -m 755 $(STRIP_OPT) $(npwrapper_LIBRARY) $(DESTDIR)$(nphostdir)/$(npwrapper_LIBRARY)
+ ifeq ($(build_viewer),yes)
+-install.viewer: install.dirs install.viewer.bin install.viewer.glue
+-install.libnoxshm: install.dirs do.install.libnoxshm
++install.viewer: install.viewer.bin install.viewer.glue
++install.libnoxshm: do.install.libnoxshm
+ else
+ install.viewer:
+ install.libnoxshm:
+ endif
+-install.viewer.bin: install.dirs $(npviewer_PROGRAM)
++install.viewer.bin: $(npviewer_PROGRAM)
+ 	$(INSTALL) -m 755 $(STRIP_OPT) $(npviewer_PROGRAM) $(DESTDIR)$(nptargetdir)/$(npviewer_PROGRAM)
+-install.viewer.glue:: install.dirs
++install.viewer.glue:: install.viewer.bin
+ 	p=$(DESTDIR)$(nptargetdir)/$(npviewer_PROGRAM:%.bin=%);	\
+ 	echo "#!/bin/sh" > $$p;								\
+ 	echo "TARGET_OS=$(TARGET_OS)" >> $$p;						\
+ 	echo "TARGET_ARCH=$(TARGET_ARCH)" >> $$p;					\
+ 	echo ". $(npcommondir)/$(nploader_PROGRAM)" >> $$p;			\
+ 	chmod 755 $$p
+-do.install.libnoxshm: install.dirs $(libnoxshm_LIBRARY)
++do.install.libnoxshm: $(libnoxshm_LIBRARY)
+ 	$(INSTALL) -m 755 $(STRIP_OPT) $(libnoxshm_LIBRARY) $(DESTDIR)$(nptargetdir)/$(libnoxshm_LIBRARY)
+-install.config: install.dirs $(npconfig_PROGRAM)
++install.config: $(npconfig_PROGRAM)
+ 	$(INSTALL) -m 755 $(STRIP_OPT) $(npconfig_PROGRAM) $(DESTDIR)$(nphostdir)/$(npconfig_PROGRAM)
+ 	mkdir -p $(DESTDIR)$(bindir)
+ 	$(LN_S) $(nphostdir)/$(npconfig_PROGRAM) $(DESTDIR)$(bindir)/nspluginwrapper
+-install.loader: install.dirs $(nploader_PROGRAM)
++install.loader: $(nploader_PROGRAM)
+ 	$(INSTALL) -m 755 $(nploader_PROGRAM) $(DESTDIR)$(npcommondir)/$(nploader_PROGRAM)
+ install.mkruntime: $(SRC_PATH)/utils/mkruntime.sh
+ 	$(INSTALL) -m 755 $< $(DESTDIR)$(npcommondir)/mkruntime
+Only in nspluginwrapper-1.4.4: .Makefile.swp
+diff -ur nspluginwrapper-1.4.4.orig//Makefile nspluginwrapper-1.4.4/Makefile
+--- nspluginwrapper-1.4.4.orig//Makefile	2011-06-30 23:18:57.000000000 -0400
++++ nspluginwrapper-1.4.4/Makefile	2011-07-14 11:56:52.674790086 -0400
+@@ -333,16 +333,16 @@
+ 	sed -e 's|%NPW_VIEWER_DIR%|$(nptargetdir_var)|' $< > $@
+ 	chmod 755 $@
+ 
+-$(LSB_OBJ_DIR)::
++$(LSB_OBJ_DIR):
+ 	@[ -d $(LSB_OBJ_DIR) ] || mkdir $(LSB_OBJ_DIR) > /dev/null 2>&1
+ 
+-$(LSB_OBJ_DIR)/%.o: $(LSB_SRC_DIR)/%.c
++$(LSB_OBJ_DIR)/%.o: $(LSB_SRC_DIR)/%.c $(LSB_OBJ_DIR)
+ 	$(CC) $(CFLAGS_32) -nostdinc -fno-builtin -I. -I$(LSB_INC_DIR) -c $< -o $@
+ 
+ $(LSB_OBJ_DIR)/%.a: $(LSB_OBJ_DIR)/%.o
+ 	$(AR) rc $@ $<
+ 
+-$(LSB_OBJ_DIR)/libc.so: $(LSB_OBJ_DIR)/libc_main.so $(LSB_OBJ_DIR)/libc_nonshared.a
++$(LSB_OBJ_DIR)/libc.so: $(LSB_OBJ_DIR)/libc_main.so $(LSB_OBJ_DIR)/libc_nonshared.a $(LSB_OBJ_DIR)
+ 	@echo "OUTPUT_FORMAT($(TARGET_ELF_ARCH))" > $@
+ 	@echo "GROUP ( $(LSB_OBJ_DIR)/libc_main.so $(LSB_OBJ_DIR)/libc_nonshared.a )" >> $@
+ 

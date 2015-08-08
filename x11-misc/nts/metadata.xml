@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		nts is an acronym for Note Taking Simplified. It provides a simple,
+		intuitive format for using plain text files to store notes, a command
+		line interface for viewing notes in a variety of convenient ways and a
+		cross-platform, wx(python)-based GUI for creating and modifying notes as
+		well as viewing them. Displayed items can be grouped by path or tag and
+		can be filtered in various ways.
+	</longdescription>
+</pkgmetadata>
+

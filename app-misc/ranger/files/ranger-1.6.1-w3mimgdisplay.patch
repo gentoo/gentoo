@@ -1,0 +1,11 @@
+--- ranger-1.6.1/ranger/ext/img_display.py
++++ ranger-1.6.1/ranger/ext/img_display.py
+@@ -13,7 +13,7 @@
+ import termios, fcntl, struct, sys, os
+ from subprocess import Popen, PIPE
+ 
+-W3MIMGDISPLAY_PATH = '/usr/lib/w3m/w3mimgdisplay'
++W3MIMGDISPLAY_PATH = '/usr/libexec/w3m/w3mimgdisplay'
+ W3MIMGDISPLAY_OPTIONS = []
+ 
+ class ImgDisplayUnsupportedException(Exception):

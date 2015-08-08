@@ -1,0 +1,118 @@
+diff -Naur pyaimt-0.8.0.1/src/avatar.py pyaimt-0.8.0.1-py26//src/avatar.py
+--- pyaimt-0.8.0.1/src/avatar.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-py26//src/avatar.py	2011-08-24 20:30:06.146311346 +0200
+@@ -6,7 +6,7 @@
+ from twisted.words.xish.domish import Element
+ from debug import LogEvent, INFO, WARN, ERROR
+ import lang
+-import sha
++from hashlib import sha1
+ import base64
+ import os
+ import os.path
+@@ -46,7 +46,7 @@
+ class Avatar:
+ 	""" Represents an Avatar. Does not store the image in memory. """
+ 	def __init__(self, imageData, avatarCache):
+-		self.__imageHash = sha.sha(imageData).hexdigest()
++		self.__imageHash = sha1(imageData).hexdigest()
+ 		self.__avatarCache = avatarCache
+ 
+ 	def getImageHash(self):
+diff -Naur pyaimt-0.8.0.1/src/contact.py pyaimt-0.8.0.1-py26//src/contact.py
+--- pyaimt-0.8.0.1/src/contact.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-py26//src/contact.py	2011-08-24 20:30:06.146311346 +0200
+@@ -8,7 +8,6 @@
+ import config
+ from debug import LogEvent, INFO, WARN, ERROR
+ import lang
+-import sha
+ import legacy
+ import globals
+ import base64
+diff -Naur pyaimt-0.8.0.1/src/legacy/aimt.py pyaimt-0.8.0.1-py26//src/legacy/aimt.py
+--- pyaimt-0.8.0.1/src/legacy/aimt.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-py26//src/legacy/aimt.py	2011-08-24 20:32:28.187361518 +0200
+@@ -11,7 +11,6 @@
+ import re
+ import time
+ import binascii
+-import md5
+ import imgmanip
+ 
+ 
+diff -Naur pyaimt-0.8.0.1/src/legacy/buddies.py pyaimt-0.8.0.1-py26//src/legacy/buddies.py
+--- pyaimt-0.8.0.1/src/legacy/buddies.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-py26//src/legacy/buddies.py	2011-08-24 20:30:06.147311326 +0200
+@@ -12,7 +12,7 @@
+ import os.path
+ import binascii
+ import os.path
+-import md5
++from hashlib import md5
+ 
+ X = os.path.sep
+ 
+@@ -138,7 +138,7 @@
+ 				avatarData = avatar.AvatarCache().setAvatar(imgmanip.convertToPNG(iconData))
+ 				c.updateAvatar(avatarData, push=True)
+ 				if not md5Hash:
+-					m = md5.new()
++					m = md5()
+ 					m.update(iconData)
+ 					md5Hash = m.digest()
+ 				if not numHash:
+diff -Naur pyaimt-0.8.0.1/src/legacy/glue.py pyaimt-0.8.0.1-py26//src/legacy/glue.py
+--- pyaimt-0.8.0.1/src/legacy/glue.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-py26//src/legacy/glue.py	2011-08-24 20:31:20.066825898 +0200
+@@ -19,7 +19,7 @@
+ import time
+ import binascii
+ import avatar
+-import md5
++from hashlib import md5
+ 
+ # The name of the transport
+ name = "AIM Transport"
+@@ -450,7 +450,7 @@
+ 			try:
+ 				self.myavatar = imgmanip.convertToJPG(imageData)
+ 				self.myavatarlen = len(self.myavatar)
+-				m=md5.new()
++				m=md5()
+ 				m.update(self.myavatar)
+ 				self.myavatarsum = m.digest()
+ 				self.myavatarstamp = time.time()
+diff -Naur pyaimt-0.8.0.1/src/tlib/oscar.py pyaimt-0.8.0.1-py26//src/tlib/oscar.py
+--- pyaimt-0.8.0.1/src/tlib/oscar.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-py26//src/tlib/oscar.py	2011-08-24 20:30:22.415200813 +0200
+@@ -20,7 +20,7 @@
+ from scheduler import Scheduler
+ 
+ import struct
+-import md5
++from hashlib import md5
+ import string
+ import socket
+ import random
+@@ -106,9 +106,9 @@
+     return dict,data
+ 
+ def encryptPasswordMD5(password,key):
+-    m=md5.new()
++    m=md5()
+     m.update(key)
+-    m.update(md5.new(password).digest())
++    m.update(md5(password).digest())
+     m.update("AOL Instant Messenger (SM)")
+     return m.digest()
+ 
+@@ -534,7 +534,7 @@
+         self.iconSum = tlvs.get(0xd5,"")
+ 
+     def updateIcon(self, iconData):
+-        m=md5.new()
++        m=md5()
+         m.update(iconData)
+         self.iconSum = m.digest()
+         log.msg("icon sum is %s" % binascii.hexlify(self.iconSum))

@@ -1,0 +1,53 @@
+--- accelerator.py.old	2006-04-18 21:51:28.000000000 +0200
++++ accelerator.py	2006-04-18 22:07:28.000000000 +0200
+@@ -72,7 +72,7 @@
+ 	# default parameters on it (min/mag filters, wrapping).
+ 	def __init__(self,texfile,mipmap = False):
+ 		global activeTexture
+-		filename = os.path.join('gfx',texfile)
++		filename = os.path.join('@GENTOO_DATADIR@',texfile)
+ 		image = pygame.image.load(filename)
+ 		data = pygame.image.tostring(image,'RGBX')
+ 		self.__texref = glGenTextures(1)
+@@ -599,8 +599,8 @@
+ 			for i in xrange(len(self.__menu[j][0])):
+ 				font.addString(self.__menu[j][0][i])
+ 		if (soundon):
+-			self.__browsesound = pygame.mixer.Sound(os.path.join('snd','menu_browse.wav'))
+-			self.__selectsound = pygame.mixer.Sound(os.path.join('snd','menu_select.wav'))
++			self.__browsesound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','menu_browse.wav'))
++			self.__selectsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','menu_select.wav'))
+ 
+ 	def doLoop(self):
+ 		global elapsed, z_increment, font
+@@ -792,19 +792,19 @@
+ 
+ 		# sound!
+ 		if soundon:
+-			self.__shootsound = pygame.mixer.Sound(os.path.join('snd','shoot.wav'))
+-			self.__cluonsound = pygame.mixer.Sound(os.path.join('snd','cluon.wav'))
+-			self.__bogonsound = pygame.mixer.Sound(os.path.join('snd','bogon.wav'))
+-			self.__shipdeadsound = pygame.mixer.Sound(os.path.join('snd','ship_explode.wav'))
+-			self.__shocksound = pygame.mixer.Sound(os.path.join('snd','electricshock.wav'))
+-			self.__thudsound = pygame.mixer.Sound(os.path.join('snd','thud.wav'))
+-			self.__enginesound = pygame.mixer.Sound(os.path.join('snd','engine.wav'))
+-			self.__chargesound = pygame.mixer.Sound(os.path.join('snd','neon.wav'))
++			self.__shootsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','shoot.wav'))
++			self.__cluonsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','cluon.wav'))
++			self.__bogonsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','bogon.wav'))
++			self.__shipdeadsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','ship_explode.wav'))
++			self.__shocksound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','electricshock.wav'))
++			self.__thudsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','thud.wav'))
++			self.__enginesound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','engine.wav'))
++			self.__chargesound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','neon.wav'))
+ 			self.__chargeplaying = False
+-			self.__scrapesound = pygame.mixer.Sound(os.path.join('snd','scrape.wav'))
++			self.__scrapesound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','scrape.wav'))
+ 			self.__scrapeplaying = False
+-			self.__slamsound = pygame.mixer.Sound(os.path.join('snd','slam.wav'))
+-			self.__phlogsound = pygame.mixer.Sound(os.path.join('snd','phlogiston.wav'))
++			self.__slamsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','slam.wav'))
++			self.__phlogsound = pygame.mixer.Sound(os.path.join('@GENTOO_DATADIR@','phlogiston.wav'))
+ 
+ 			# reserve channel 0 for bullet sounds
+ 			pygame.mixer.set_reserved(2)

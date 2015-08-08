@@ -1,0 +1,30 @@
+--- a/src/preferences.h
++++ b/src/preferences.h
+@@ -85,6 +85,7 @@
+ 
+ gboolean preferences_init();
+ void preferences_finalise();
++int preferences_get_default_backend();
+ 
+ gchar *preferences_get_copy_data_cd_image();
+ gchar *preferences_get_copy_dvd_image();
+--- a/src/backend.h
++++ b/src/backend.h
+@@ -30,6 +30,7 @@
+ 
+  
+ gboolean backend_is_backend_supported(enum backend b);
++gboolean backend_does_prog_exist(gchar* program);
+ 
+ 
+ #endif /* _BACKEND_H_ */
+--- a/src/gnomebaker.c
++++ b/src/gnomebaker.c
+@@ -32,6 +32,7 @@
+ #include "splashdlg.h"
+ #include "gbcommon.h"
+ #include <libgnomevfs/gnome-vfs-mime-utils.h>
++#include <libgnomevfs/gnome-vfs-ops.h>
+ #include <gst/gst.h>
+ #include "media.h"
+ #include "dataproject.h"

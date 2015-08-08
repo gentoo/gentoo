@@ -1,0 +1,34 @@
+commit b1bbab1348f924635daba2739ab0882f7f976957
+Author: jre <jre-phoenix@users.sourceforge.net>
+Date:   Mon May 20 14:39:29 2013 +0200
+
+    systemd fixes: don't wait for pgl dbus, but fork instead
+    
+    necessary to prevent timeout, because on start pglcmd first downloads
+    all missing blocklists (may take quite long) and then starts pgld,
+    which just then registers with dbus
+    
+    editorial change
+    
+    Thanks again Pierre Buard
+
+diff --git a/pgl/pglcmd/init/pgl.service.in b/pgl/pglcmd/init/pgl.service.in
+index 55779bd..5279404 100644
+--- a/pgl/pglcmd/init/pgl.service.in
++++ b/pgl/pglcmd/init/pgl.service.in
+@@ -1,12 +1,13 @@
+ [Unit]
+ Description=PeerGuardian Linux - an IP Blocker
+-Documentation=man:pgld(1) file://@data_root_dir@/doc/pgl/README.blocklists
++Documentation=man:pgld(1)
++Documentation=file://@data_root_dir@/doc/pgl/README.blocklists
+ After=network.target
+ ConditionPathExists=|@CONF_DIR@/pgl/blocklists.list
+ ConditionDirectoryNotEmpty=|@LIB_DIR@/pgl
+ 
+ [Service]
+-BusName=org.netfilter.pgl
++Type=forking
+ ExecStart=@BIN_DIR@/pglcmd start
+ ExecStop=@BIN_DIR@/pglcmd stop
+ PIDFile=@PID_DIR@/pgld.pid

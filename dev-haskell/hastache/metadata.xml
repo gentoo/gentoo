@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Haskell implementation of Mustache templates (&lt;http://mustache.github.com/&gt;).
+		
+		See homepage for examples of usage: &lt;http://github.com/lymar/hastache&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lymar/hastache</remote-id>
+	</upstream>
+</pkgmetadata>

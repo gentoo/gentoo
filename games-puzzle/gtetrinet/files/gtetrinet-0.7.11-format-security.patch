@@ -1,0 +1,16 @@
+Author: Jordi Mallach <jordi@debian.org>
+Description: Fix build when using -Werror=format-security, now default
+ on Debian.
+Status: committed-upstream
+
+--- gtetrinet-0.7.11.orig/src/tetrinet.c
++++ gtetrinet-0.7.11/src/tetrinet.c
+@@ -232,7 +232,7 @@
+             dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL,
+                                              GTK_MESSAGE_ERROR,
+                                              GTK_BUTTONS_OK,
+-                                             buf);
++                                             "%s", buf);
+             gtk_dialog_run (GTK_DIALOG(dialog));
+             gtk_widget_destroy (dialog);
+             g_free (data_utf8);

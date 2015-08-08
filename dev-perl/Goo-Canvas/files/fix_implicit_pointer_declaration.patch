@@ -1,0 +1,14 @@
+Index: Goo-Canvas-0.06/goocanvas-perl.h
+===================================================================
+--- Goo-Canvas-0.06.orig/goocanvas-perl.h
++++ Goo-Canvas-0.06/goocanvas-perl.h
+@@ -9,6 +9,9 @@
+ #include "cairo-perl.h"
+ #include "goocanvas.h"
+ 
++cairo_surface_t * goo_canvas_cairo_pattern_from_pixbuf(GdkPixbuf *pixbuf);
++cairo_surface_t * goo_canvas_cairo_surface_from_pixbuf(GdkPixbuf *pixbuf);
++
+ /* FIXME: How to avoid compile error in autogen.h */
+ #define GooCairoPattern cairo_pattern_t
+ #define GooCairoMatrix cairo_matrix_t

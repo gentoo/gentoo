@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>vim</herd>
+  <use>
+    <flag name='demos'>Install demos, which pulls in <pkg>dev-libs/glib</pkg></flag>
+  </use>
+</pkgmetadata>

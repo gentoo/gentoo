@@ -1,0 +1,43 @@
+From 14b0f33ebf33d3d08427fd4d9fd4bda3cc107bd0 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 26 Oct 2010 01:42:32 -0400
+Subject: [PATCH] crond: write a pid file
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile |    2 +-
+ main.c   |    5 +++++
+ 2 files changed, 6 insertions(+), 1 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index dc5b78f..e278312 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,7 +38,7 @@ DEFS =  -DVERSION='"$(VERSION)"' \
+ 		-DTIMESTAMP_FMT='"$(TIMESTAMP_FMT)"'
+ 
+ # save variables needed for `make install` in config
+-all: $(PROTOS) crond crontab ;
++all: crond crontab ;
+ 	rm -f config
+ 	echo "PREFIX = $(PREFIX)" >> config
+ 	echo "SBINDIR = $(SBINDIR)" >> config
+diff --git a/main.c b/main.c
+index e4a742e..6313213 100644
+--- a/main.c
++++ b/main.c
+@@ -227,6 +227,11 @@ main(int ac, char **av)
+ 			exit(1);
+ 		} else if (pid > 0) {
+ 			/* parent */
++			FILE *fp;
++			if ((fp = fopen("/var/run/cron.pid", "w")) != NULL) {
++				fprintf(fp, "%d\n", pid);
++				fclose(fp);
++			}
+ 			exit(0);
+ 		}
+ 		/* child continues */
+-- 
+1.7.3.1
+

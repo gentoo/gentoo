@@ -1,0 +1,42 @@
+From fdc83183263e04bee56672e9d9922cc9457146cb Mon Sep 17 00:00:00 2001
+From: Rajesh Amaravathi <rajesh@redhat.com>
+Date: Fri, 21 Jun 2013 14:58:23 +0530
+Subject: [PATCH 1/1] nfs: exit when all volumes are disabled
+
+Instead of triggering 4-5 error logs, when nfs is
+disabled for all volumes, exit the process.
+
+Change-Id: Ib286f143c4f74ba22f502aca0e7dcd0907db6563
+BUG: 976750
+Signed-off-by: Rajesh Amaravathi <rajesh@redhat.com>
+Reviewed-on: http://review.gluster.org/5245
+Reviewed-by: Santosh Pradhan <spradhan@redhat.com>
+Tested-by: Gluster Build System <jenkins@build.gluster.com>
+Reviewed-by: Vijay Bellur <vbellur@redhat.com>
+---
+ xlators/nfs/server/src/nfs.c |    9 +++++----
+ 1 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/xlators/nfs/server/src/nfs.c b/xlators/nfs/server/src/nfs.c
+index 6cd0594..c3a76c6 100644
+--- a/xlators/nfs/server/src/nfs.c
++++ b/xlators/nfs/server/src/nfs.c
+@@ -533,10 +533,11 @@ nfs_init_state (xlator_t *this)
+         if (!this)
+                 return NULL;
+ 
+-        if ((!this->children) || (!this->children->xlator)) {
+-                gf_log (GF_NFS, GF_LOG_ERROR, "nfs must have at least one"
+-                        " child subvolume");
+-                return NULL;
++        if (!this->children) {
++                gf_log (GF_NFS, GF_LOG_INFO,
++                        "NFS is manually disabled: Exiting");
++                /* Nothing for nfs process to do, exit cleanly */
++                kill (getpid (), SIGTERM);
+         }
+ 
+         nfs = GF_CALLOC (1, sizeof (*nfs), gf_nfs_mt_nfs_state);
+-- 
+1.7.4.1
+

@@ -1,0 +1,40 @@
+http://bugs.gentoo.org/306881
+
+--- configure.in
++++ configure.in
+@@ -33,7 +33,12 @@
+ AC_CHECK_DECLS([MP4Create, MP4MetadataDelete],
+                AC_CHECK_LIB(mp4v2, MP4MetadataDelete, external_mp4v2=yes,
+                             external_mp4v2=no, -lstdc++),
+-               external_mp4v2=no, [#include <mp4v2/mp4v2.h>])
++               external_mp4v2=no, [
++	       #if defined(__ALTIVEC__)
++	       #undef bool
++	       #endif
++	       #include <mp4v2/mp4v2.h>
++	       ])
+ 
+ if test x$external_mp4v2 = xyes; then
+   AC_MSG_NOTICE([*** Building with external mp4v2 ***])
+--- frontend/main.c
++++ frontend/main.c
+@@ -30,6 +30,9 @@
+ #endif
+ 
+ #ifdef HAVE_LIBMP4V2
++#if defined(__ALTIVEC__)
++# undef bool
++#endif
+ # include <mp4v2/mp4v2.h>
+ #endif
+ 
+--- common/mp4v2/mpeg4ip.h
++++ common/mp4v2/mpeg4ip.h
+@@ -123,7 +123,6 @@
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+-char *strcasestr(const char *haystack, const char *needle);
+ #ifdef __cplusplus
+ }
+ #endif

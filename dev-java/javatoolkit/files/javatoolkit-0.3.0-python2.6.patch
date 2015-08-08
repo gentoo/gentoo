@@ -1,0 +1,12 @@
+diff -uNr py.orig/maven-helper.py py/maven-helper.py
+--- src/py.orig/maven-helper.py	2009-03-07 10:36:10.000000000 -0430
++++ src/py/maven-helper.py	2009-03-07 10:35:25.000000000 -0430
+@@ -21,7 +21,7 @@
+ import sys
+ import StringIO
+ from optparse import OptionParser, make_option
+-from javatoolkit.maven import MavenPom
++from javatoolkit.maven.MavenPom import MavenPom
+ 
+ __version__ = "$Revision: 1.1 $"[11:-2]
+ 

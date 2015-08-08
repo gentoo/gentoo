@@ -1,0 +1,9 @@
+--- environ.c	2007-06-19 12:44:09 +0200
++++ environ.c.new	2007-06-19 12:44:37 +0200
+@@ -437,7 +437,6 @@
+ #endif
+ 
+ extern struct tm *localtime();
+-extern time_t time();
+ extern char   *strcpy();
+ extern voidp  *malloc();

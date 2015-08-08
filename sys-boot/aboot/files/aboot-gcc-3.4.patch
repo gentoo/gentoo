@@ -1,0 +1,31 @@
+--- aboot-1.0_pre20040408/cons.c
++++ aboot-1.0_pre20040408/cons.c
+@@ -20,7 +20,6 @@
+ #endif
+ 
+ long cons_dev;			/* console device */
+-extern long int dispatch();	/* Need the full 64 bit return here...*/
+ 
+ long
+ cons_puts(const char *str, long len)
+--- aboot-1.0_pre20040408/fs/ext2.c
++++ aboot-1.0_pre20040408/fs/ext2.c
+@@ -6,6 +6,7 @@
+  * This file has been ported from the DEC 32-bit Linux version
+  * by David Mosberger (davidm@cs.arizona.edu).
+  */
++#include <string.h>
+ #include <linux/stat.h>
+ #include <linux/types.h>
+ #include <linux/version.h>
+--- aboot-1.0_pre20040408/include/cons.h
++++ aboot-1.0_pre20040408/include/cons.h
+@@ -3,7 +3,7 @@
+ 
+ extern long cons_dev;		/* console device */
+ 
+-extern long dispatch(long proc, ...);
++extern long int dispatch(long proc, ...);
+ 
+ #ifdef TESTING
+ #define STRINGIFY(sym) #sym

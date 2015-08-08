@@ -1,0 +1,35 @@
+# Fix forgotten #ifdef if hamlib not available
+--- src/rotar.c.orig	2012-03-13 14:35:34.000000000 +0100
++++ src/rotar.c	2012-06-04 17:26:54.000000000 +0200
+@@ -20,12 +20,13 @@
+ 
+ gpointer rot_hamlib_main(gpointer xxx);
+ 
++#ifdef HAVE_HAMLIB
+ static int rot_print_model_list(const struct rot_caps *caps, void *data)
+ {
+     log_addf("%-6d %-14s  %-20s  %s\n", caps->rot_model, caps->mfg_name, caps->model_name, caps->version);
+     return 1;  /* !=0, we want them all ! */
+ }
+-
++#endif
+ 
+ struct rotar *init_rotar(struct config_rotar *crot, int rotchar){
+     struct rotar *rot;
+@@ -117,13 +118,15 @@
+ }
+ 
+ void free_rotar(struct rotar *rot){
+-	if (rot->hl_thread){
++#ifdef HAVE_HAMLIB
++    if (rot->hl_thread){
+         rot->hl_thread_break = 1;
+         dbg("join hamlib rotar...\n");
+         g_thread_join(rot->hl_thread);
+         dbg("done\n");
+         rot->hl_thread=0;
+     }
++#endif
+     g_free(rot->desc);
+     g_free(rot->netid);
+     g_free(rot->rem_rotstr);

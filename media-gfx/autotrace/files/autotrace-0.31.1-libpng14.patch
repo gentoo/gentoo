@@ -1,0 +1,17 @@
+http://bugs.gentoo.org/321525
+
+--- configure.in
++++ configure.in
+@@ -188,9 +188,9 @@
+ 		HAVE_LIBPNG=yes ,,-lz -lm)
+ 	if test "x$HAVE_LIBPNG" = "xyes" ; then
+ 		LIBPNG_LDFLAGS="-lpng -lz -lm"
+-                PKGCONFIG_REQS="$PKGCONFIG_REQS, libpng12"
+-                if pkg-config --exists libpng12 ; then
+-                   LIBPNG_LDFLAGS="`pkg-config --libs libpng12`"
++                PKGCONFIG_REQS="$PKGCONFIG_REQS, libpng"
++                if pkg-config --exists libpng ; then
++                   LIBPNG_LDFLAGS="`pkg-config --libs libpng`"
+                 fi
+ 		AC_SUBST(LIBPNG_LDFLAGS)
+ 		AC_DEFINE(HAVE_LIBPNG)

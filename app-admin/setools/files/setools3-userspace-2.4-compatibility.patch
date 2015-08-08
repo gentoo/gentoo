@@ -1,0 +1,114 @@
+From f1e5b208d507171968ca4d2eeefd7980f1004a3c Mon Sep 17 00:00:00 2001
+From: Chris PeBenito <cpebenito@tresys.com>
+Date: Thu, 12 Feb 2015 08:55:12 -0500
+Subject: [PATCH] Update for 2015-02-02 Userspace release (2.4)
+
+SETools now requires libsepol 2.4 and libselinux 2.4.
+---
+ configure.ac                 | 6 +++---
+ libqpol/src/policy_define.c  | 4 ++--
+ libqpol/src/policy_extend.c  | 4 ++--
+ libqpol/src/syn_rule_query.c | 6 +++---
+ secmds/replcon.cc            | 2 +-
+ 5 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 80395e6..ae20da7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,9 +25,9 @@ libseaudit_version=4.5
+ setoolsdir='${prefix}/share/setools-3.3'
+ javadir='${prefix}/share/java'
+ 
+-version_min_sepol_major=1
+-version_min_sepol_minor=12
+-version_min_sepol_patch=27
++version_min_sepol_major=2
++version_min_sepol_minor=4
++version_min_sepol_patch=0
+ 
+ dnl *** end of tunable values ***
+ 
+diff --git a/libqpol/src/policy_define.c b/libqpol/src/policy_define.c
+index 229779c..15f70ba 100644
+--- a/libqpol/src/policy_define.c
++++ b/libqpol/src/policy_define.c
+@@ -1661,7 +1661,7 @@ int define_compute_type_helper(int which, avrule_t ** rule)
+ 				goto bad;
+ 			}
+ 			class_perm_node_init(perm);
+-			perm->class = i + 1;
++			perm->tclass = i + 1;
+ 			perm->data = datum->s.value;
+ 			perm->next = avrule->perms;
+ 			avrule->perms = perm;
+@@ -1901,7 +1901,7 @@ int define_te_avtab_helper(int which, avrule_t ** rule)
+ 			goto out;
+ 		}
+ 		class_perm_node_init(cur_perms);
+-		cur_perms->class = i + 1;
++		cur_perms->tclass = i + 1;
+ 		if (!perms)
+ 			perms = cur_perms;
+ 		if (tail)
+diff --git a/libqpol/src/policy_extend.c b/libqpol/src/policy_extend.c
+index 5325a87..1417271 100644
+--- a/libqpol/src/policy_extend.c
++++ b/libqpol/src/policy_extend.c
+@@ -843,7 +843,7 @@ static int qpol_syn_rule_table_insert_sepol_avrule(qpol_policy_t * policy, qpol_
+ 			for (class_node = rule->perms; class_node; class_node = class_node->next) {
+ 				key.rule_type = rule->specified;
+ 				key.source_val = key.target_val = i + 1;
+-				key.class_val = class_node->class;
++				key.class_val = class_node->tclass;
+ 				key.cond = cond;
+ 				if (qpol_syn_rule_table_insert_entry(policy, table, &key, new_rule))
+ 					goto err;
+@@ -856,7 +856,7 @@ static int qpol_syn_rule_table_insert_sepol_avrule(qpol_policy_t * policy, qpol_
+ 				key.rule_type = rule->specified;
+ 				key.source_val = i + 1;
+ 				key.target_val = j + 1;
+-				key.class_val = class_node->class;
++				key.class_val = class_node->tclass;
+ 				key.cond = cond;
+ 				if (qpol_syn_rule_table_insert_entry(policy, table, &key, new_rule))
+ 					goto err;
+diff --git a/libqpol/src/syn_rule_query.c b/libqpol/src/syn_rule_query.c
+index 3e63204..d7578f1 100644
+--- a/libqpol/src/syn_rule_query.c
++++ b/libqpol/src/syn_rule_query.c
+@@ -67,7 +67,7 @@ static void *syn_rule_class_state_get_cur(const qpol_iterator_t * iter)
+ 		return NULL;
+ 	}
+ 
+-	return db->class_val_to_struct[srcs->cur->class - 1];
++	return db->class_val_to_struct[srcs->cur->tclass - 1];
+ }
+ 
+ static int syn_rule_class_state_next(qpol_iterator_t * iter)
+@@ -465,10 +465,10 @@ int qpol_syn_avrule_get_perm_iter(const qpol_policy_t * policy, const qpol_syn_a
+ 	}
+ 
+ 	for (node = internal_rule->perms; node; node = node->next) {
+-		for (i = 0; i < db->class_val_to_struct[node->class - 1]->permissions.nprim; i++) {
++		for (i = 0; i < db->class_val_to_struct[node->tclass - 1]->permissions.nprim; i++) {
+ 			if (!(node->data & (1 << i)))
+ 				continue;
+-			tmp = sepol_av_to_string(db, node->class, (sepol_access_vector_t) (1 << i));
++			tmp = sepol_av_to_string(db, node->tclass, (sepol_access_vector_t) (1 << i));
+ 			if (tmp) {
+ 				tmp++; /* remove prepended space */
+ 				for (cur = 0; cur < perm_list_sz; cur++)
+diff --git a/secmds/replcon.cc b/secmds/replcon.cc
+index 34f7c1a..307c39f 100644
+--- a/secmds/replcon.cc
++++ b/secmds/replcon.cc
+@@ -60,7 +60,7 @@ static struct option const longopts[] = {
+ 	{NULL, 0, NULL, 0}
+ };
+ 
+-extern int lsetfilecon_raw(const char *, security_context_t) __attribute__ ((weak));
++extern int lsetfilecon_raw(const char *, const char *) __attribute__ ((weak));
+ 
+ /**
+  * As that setools must work with older libselinux versions that may

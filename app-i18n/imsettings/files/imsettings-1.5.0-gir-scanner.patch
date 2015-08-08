@@ -1,0 +1,29 @@
+From 75e1ec9cea4bb9f108c0637a4b62cabfa500ed61 Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Wed, 3 Apr 2013 19:37:15 +0900
+Subject: [PATCH] Fix a build issue with the latest gobject-introspection
+
+---
+ imsettings/Makefile.am | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/imsettings/Makefile.am b/imsettings/Makefile.am
+index 574480a..8e5999a 100644
+--- a/imsettings/Makefile.am
++++ b/imsettings/Makefile.am
+@@ -117,9 +117,11 @@ IMSettings_1_3_gir_INCLUDES =		\
+ 	GObject-2.0			\
+ 	Gio-2.0				\
+ 	$(NULL)
++IMSettings_1_3_gir_SCANNERFLAGS =	\
++	--symbol-prefix=imsettings	\
++	$(NULL)
+ IMSettings_1_3_gir_CFLAGS =		\
+ 	$(INCLUDES)			\
+-	--symbol-prefix=imsettings	\
+ 	$(NULL)
+ IMSettings_1_3_gir_LIBS = libimsettings.la
+ IMSettings_1_3_gir_FILES = $(introspection_sources)
+-- 
+1.8.5.2
+

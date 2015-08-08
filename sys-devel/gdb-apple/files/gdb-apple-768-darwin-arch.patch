@@ -1,0 +1,15 @@
+* configure checks for /usr/bin/arch to determine whether "arch" is ok
+  to use, so don't rely on the path at runtime, since GNU arch doesn't
+  understand -arch at all (and only returns the current arch name)
+
+--- src/gdb/fork-child.c
++++ src/gdb/fork-child.c
+@@ -243,7 +243,7 @@
+ 	  arch_string = "x86_64";
+ #endif
+ 	if (arch_string != NULL)
+-	  sprintf (shell_command, "%s exec arch -arch %s ", shell_command, arch_string);
++	  sprintf (shell_command, "%s exec /usr/bin/arch -arch %s ", shell_command, arch_string);
+ 	else
+ 	  strcat (shell_command, "exec ");
+       }

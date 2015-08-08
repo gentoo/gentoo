@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+<herd>java</herd>
+
+<longdescription>
+ Apache Jakarta Commons Primitives provides a collection of types and
+ utilities optimized for working with Java primitives (boolean, byte,
+ char, double, float, int, long, short). Generally, the
+ Commons-Primitives classes are smaller, faster and easier to work with
+ than their purely Object based alternatives.
+</longdescription>
+</pkgmetadata>

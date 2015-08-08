@@ -1,0 +1,14 @@
+diff -Naur varnish-4.0.1.orig/man/Makefile.am varnish-4.0.1/man/Makefile.am
+--- varnish-4.0.1.orig/man/Makefile.am	2014-06-23 09:43:06.000000000 -0400
++++ varnish-4.0.1/man/Makefile.am	2014-06-25 08:40:43.498765372 -0400
+@@ -86,8 +86,8 @@
+ 	$(top_srcdir)/doc/sphinx/include/varnishhist_synopsis.rst
+ 	${RST2MAN} $(RST2ANY_FLAGS) $(top_srcdir)/doc/sphinx/reference/varnishhist.rst $@
+ 
+-vmod_std.3: $(top_srcdir)/lib/libvmod_std/vmod_std.man.rst
++vmod_std.3: $(top_builddir)/lib/libvmod_std/vmod_std.man.rst
+ 	${RST2MAN} $(RST2ANY_FLAGS) $? $@
+ 
+-vmod_directors.3: $(top_srcdir)/lib/libvmod_directors/vmod_directors.man.rst
++vmod_directors.3: $(top_builddir)/lib/libvmod_directors/vmod_directors.man.rst
+ 	${RST2MAN} $(RST2ANY_FLAGS) $? $@

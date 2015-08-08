@@ -1,0 +1,17 @@
+--- freenet-0.7.5_p1384/src/freenet/support/LibraryLoader.java.orig	2011-07-29 17:32:37.000000000 +0200
++++ freenet-0.7.5_p1384/src/freenet/support/LibraryLoader.java	2011-07-29 17:35:02.000000000 +0200
+@@ -48,12 +48,11 @@
+ 		final String libraryNameWithPrefixAndArchAndSuffix = libraryNameWithPrefixAndArch + prefix;
+ 		String resourceName = path + libraryNameWithPrefixAndArchAndSuffix;
+ 
+-		File nativeLib = new File((System.getProperty("java.library.path")) + "/lib" + libraryName + prefix);
+-		if (nativeLib.exists()) {
++		try {
+ 			System.out.println("Attempting to load the NativeThread library ["+libraryName+']');
+ 			System.loadLibrary(libraryName);
+ 			success = true;
+-		} else {
++		} catch(UnsatisfiedLinkError ule) {
+ 			try {
+ 				// Get the resource
+ 				URL resource = LibraryLoader.class.getResource(resourceName);

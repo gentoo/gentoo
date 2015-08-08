@@ -1,0 +1,14 @@
+--- configure.ac.old	2012-03-11 17:02:27.000000000 +0100
++++ configure.ac	2012-03-11 17:02:37.000000000 +0100
+@@ -1252,11 +1252,6 @@
+ if test -d $srcdir/doc; then
+    AC_CONFIG_FILES(doc/Makefile)
+ fi
+-if test -d $srcdir/doc/gs; then
+-   AC_CONFIG_FILES(doc/gs/Makefile)
+-   AC_CONFIG_FILES(doc/gs/gafrc)
+-   AC_CONFIG_FILES(doc/gs/gschemrc)
+-fi
+ if test -d $srcdir/example; then
+    AC_CONFIG_FILES(example/Makefile)
+    AC_CONFIG_FILES(example/libraries/Makefile)

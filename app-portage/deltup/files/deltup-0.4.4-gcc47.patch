@@ -1,0 +1,11 @@
+diff -u deltup-0.4.4.old/tmpstore.cpp deltup-0.4.4/tmpstore.cpp
+--- deltup-0.4.4.old/tmpstore.cpp	2007-03-24 23:45:29.000000000 +0100
++++ deltup-0.4.4/tmpstore.cpp	2012-08-11 14:45:31.380739060 +0200
+@@ -19,6 +19,7 @@
+ using namespace std;
+ #include "file.h"
+ #include "system.h"
++#include "unistd.h"
+ #include <openssl/md5.h>
+ 
+ string tmpdir;

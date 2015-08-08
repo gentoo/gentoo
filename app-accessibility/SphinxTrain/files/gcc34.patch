@@ -1,0 +1,11 @@
+--- SphinxTrain/src/programs/count_3phone/phone_word_io.c~	2001-04-05 16:00:33.000000000 -0400
++++ SphinxTrain/src/programs/count_3phone/phone_word_io.c	2005-05-01 12:48:42.000000000 -0400
+@@ -71,7 +71,7 @@
+ #ifdef __alpha
+ void *malloc();
+ #else
+-char *malloc();
++//char *malloc();
+ #endif
+ 
+ extern int      Num_Phones, Num_Words;

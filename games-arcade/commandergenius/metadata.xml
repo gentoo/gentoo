@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<use>
+		<flag name="tremor">
+			Use <pkg>media-libs/tremor</pkg> as ogg decoder
+			instead of <pkg>media-libs/libvorbis</pkg>
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">clonekeenplus</remote-id>
+	</upstream>
+</pkgmetadata>

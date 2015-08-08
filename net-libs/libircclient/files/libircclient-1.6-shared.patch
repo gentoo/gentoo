@@ -1,0 +1,53 @@
+--- libircclient-1.6/src/Makefile.in
++++ libircclient-1.6/src/Makefile.in
+@@ -1,10 +1,13 @@
+ # $Id$
+ CC = @CC@
+-CFLAGS = -Wall -DIN_BUILDING_LIBIRC @CFLAGS@
++CFLAGS = -fPIC -Wall -DIN_BUILDING_LIBIRC @CFLAGS@
+ AR=@AR@ cr
+ RANLIB=@RANLIB@
++INSTALL = install
++LN = ln -sf
+ INCLUDES=-I../include
+ DESTDIR=
++APIVERSION = 1
+ 
+ OBJS = libircclient.o
+ 
+@@ -14,19 +17,24 @@
+ shared: libircclient.so
+ shared_mingw: libircclient.dll
+ 
+-install: lib
+-	-mkdir -p $(DESTDIR)@prefix@/include
+-	-mkdir -p $(DESTDIR)@prefix@/lib
+-	cp ../include/libircclient.h $(DESTDIR)@prefix@/include/libircclient.h
+-	cp ../include/libirc_errors.h $(DESTDIR)@prefix@/include/libirc_errors.h
+-	cp ../include/libirc_events.h  $(DESTDIR)@prefix@/include/libirc_events.h 
+-	cp ../include/libirc_options.h  $(DESTDIR)@prefix@/include/libirc_options.h 
+-	cp ../include/libirc_rfcnumeric.h  $(DESTDIR)@prefix@/include/libirc_rfcnumeric.h 
+-	cp libircclient.so $(DESTDIR)@prefix@/lib/
+-	cp libircclient.a $(DESTDIR)@prefix@/lib/
++install: install-headers install-static install-shared
++install-headers:
++	$(INSTALL) -d $(DESTDIR)@prefix@/include
++	$(INSTALL) -m0644 ../include/libircclient.h $(DESTDIR)@prefix@/include/libircclient.h
++	$(INSTALL) -m0644 ../include/libirc_errors.h $(DESTDIR)@prefix@/include/libirc_errors.h
++	$(INSTALL) -m0644 ../include/libirc_events.h  $(DESTDIR)@prefix@/include/libirc_events.h 
++	$(INSTALL) -m0644 ../include/libirc_options.h  $(DESTDIR)@prefix@/include/libirc_options.h 
++	$(INSTALL) -m0644 ../include/libirc_rfcnumeric.h  $(DESTDIR)@prefix@/include/libirc_rfcnumeric.h 
++install-shared:
++	$(INSTALL) -d $(DESTDIR)@libdir@
++	$(INSTALL) -m0755 libircclient.so $(DESTDIR)@libdir@/libircclient.so.$(APIVERSION)
++	$(LN) libircclient.so.$(APIVERSION) $(DESTDIR)@libdir@/libircclient.so
++install-static:
++	$(INSTALL) -d $(DESTDIR)@libdir@
++	$(INSTALL) -m0644 libircclient.a $(DESTDIR)@libdir@/libircclient.a
+ 
+ libircclient.so: libircclient.o
+-	$(CC) -shared -s -o libircclient.so libircclient.o @LIBS@
++	$(CC) $(CFLAGS) -shared -Wl,-soname,libircclient.so.$(APIVERSION) -o libircclient.so libircclient.o $(LDFLAGS) @LIBS@
+ 
+ libircclient.dll: libircclient.o
+ 	$(CC) -shared -s -o libircclient.dll -Wl,-out-implib,libircclient.lib libircclient.o libircclient.def -lkernel32 -lwsock32 @LIBS@

@@ -1,0 +1,27 @@
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sat Dec 28 23:52:03 2013 +0100
+
+    * INCLUDES is deprecated, use AM_CPPFLAGS instead
+    * add missing SVG_CFLAGS
+
+--- a/interfaces/IDirectFBImageProvider/Makefile.am
++++ b/interfaces/IDirectFBImageProvider/Makefile.am
+@@ -77,15 +77,14 @@ else
+ FFMPEG_PROVIDER_LTLIB =
+ endif
+ 
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	-I$(top_builddir)/include	\
+ 	-I$(top_builddir)/lib	\
+ 	-I$(top_builddir)/src	\
+ 	-I$(top_srcdir)/include	\
+ 	-I$(top_srcdir)/lib	\
+-	-I$(top_srcdir)/src
+-
+-AM_CPPFLAGS = -DDATADIR=\"${RUNTIME_SYSROOT}@DATADIR@\" $(LIBJPEG_CFLAGS) $(LIBPNG_CFLAGS) $(FFMPEG_CFLAGS)
++	-I$(top_srcdir)/src \
++	-DDATADIR=\"${RUNTIME_SYSROOT}@DATADIR@\" $(LIBJPEG_CFLAGS) $(LIBPNG_CFLAGS) $(FFMPEG_CFLAGS) $(SVG_CFLAGS)
+ 
+ idirectfbimageprovider_LTLIBRARIES = \
+ 	libidirectfbimageprovider_dfiff.la	\

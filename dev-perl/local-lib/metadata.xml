@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>perl</herd>
+    <upstream>
+        <remote-id type="cpan">local-lib</remote-id>
+        <remote-id type="cpan-module">lib::core::only</remote-id>
+        <remote-id type="cpan-module">local::lib</remote-id>
+    </upstream>
+</pkgmetadata>

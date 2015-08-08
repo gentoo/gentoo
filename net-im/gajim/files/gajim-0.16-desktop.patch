@@ -1,0 +1,16 @@
+ data/gajim.desktop.in.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/gajim.desktop.in.in b/data/gajim.desktop.in.in
+index 8a93ee8..ea0b1da 100644
+--- a/data/gajim.desktop.in.in
++++ b/data/gajim.desktop.in.in
+@@ -3,7 +3,7 @@ Categories=Network;InstantMessaging;GTK;GNOME;
+ _Name=Gajim
+ _GenericName=Jabber IM Client
+ _Comment=A GTK+ Jabber client
+-_Keywords=chat;messaging;im;jabber;xmpp;bonjour;voip
++_Keywords=chat;messaging;im;jabber;xmpp;bonjour;voip;
+ Version=1.0
+ Exec=gajim
+ Icon=gajim

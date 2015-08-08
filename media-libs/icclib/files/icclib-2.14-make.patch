@@ -1,0 +1,114 @@
+--- icclib_V2.14/Makefile
++++ icclib_V2.14/Makefile
+@@ -3,13 +3,13 @@
+ # by uncommenting the appropriate line:
+ 
+ # Microsoft C++, WinNT setup
+-include Makefile.WNT
++#include Makefile.WNT
+ 
+ # IBM C++, WinNT setup
+ #include Makefile.IBMNT
+ 
+ # Generic UNIX setup
+-#include Makefile.UNIX
++include Makefile.UNIX
+ 
+ # Apple OSX
+ #include Makefile.OSX
+@@ -32,7 +32,7 @@
+ 
+ 
+ icc$(SUFOBJ): icc.c icc.h
+-	$(CC) $(CCOF)icc$(SUFOBJ) icc.c
++	$(CC) $(CFLAGS) $(CCOF)icc$(SUFOBJ) icc.c
+ 
+ libicc$(SUFLIB): icc$(SUFOBJ)
+ 	$(LIBU) $(LIBOF)libicc$(SUFLIB) icc$(SUFOBJ)
+@@ -41,39 +41,39 @@
+ 
+ # Separate for executables
+ iccstd$(SUFOBJ): iccstd.c icc.h
+-	$(CC) $(CCOF)iccstd$(SUFOBJ) iccstd.c
++	$(CC) $(CFLAGS) $(CCOF)iccstd$(SUFOBJ) iccstd.c
+ 
+ 
+ icctest$(SUFOBJ): icctest.c icc.h
+-	$(CC) $(CCOF)icctest$(SUFOBJ) icctest.c
++	$(CC) $(CFLAGS) $(CCOF)icctest$(SUFOBJ) icctest.c
+ 
+ icctest$(SUFEXE): icctest$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 	$(LINK) $(LINKOF)icctest$(SUFEXE) icctest$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 
+ 
+ lutest$(SUFOBJ): lutest.c icc.h
+-	$(CC) $(CCOF)lutest$(SUFOBJ) lutest.c
++	$(CC) $(CFLAGS) $(CCOF)lutest$(SUFOBJ) lutest.c
+ 
+ lutest$(SUFEXE): lutest$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 	$(LINK) $(LINKOF)lutest$(SUFEXE) lutest$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 
+ 
+ icclu$(SUFOBJ): icclu.c icc.h
+-	$(CC) $(CCOF)icclu$(SUFOBJ) icclu.c
++	$(CC) $(CFLAGS) $(CCOF)icclu$(SUFOBJ) icclu.c
+ 
+ icclu$(SUFEXE): icclu$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 	$(LINK) $(LINKOF)icclu$(SUFEXE) icclu$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 
+ 
+ iccdump$(SUFOBJ): iccdump.c icc.h
+-	$(CC) $(CCOF)iccdump$(SUFOBJ) iccdump.c
++	$(CC) $(CFLAGS) $(CCOF)iccdump$(SUFOBJ) iccdump.c
+ 
+ iccdump$(SUFEXE): iccdump$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 	$(LINK) $(LINKOF)iccdump$(SUFEXE) iccdump$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 
+ 
+ iccrw$(SUFOBJ): iccrw.c icc.h
+-	$(CC) $(CCOF)iccrw$(SUFOBJ) iccrw.c
++	$(CC) $(CFLAGS) $(CCOF)iccrw$(SUFOBJ) iccrw.c
+ 
+ iccrw$(SUFEXE): iccrw$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+ 	$(LINK) $(LINKOF)iccrw$(SUFEXE) iccrw$(SUFOBJ) iccstd$(SUFOBJ) libicc$(SUFLIB)
+--- icclib_V2.14/Makefile.UNIX
++++ icclib_V2.14/Makefile.UNIX
+@@ -1,7 +1,7 @@
+ # Generic UNIX setup
+ 
+ SLASH     = /
+-SUFLIB    = .a
++SUFLIB    = .so
+ SUFOBJ    = .o
+ SUFEXE    = 
+ CMDSEP    = ;
+@@ -18,21 +18,22 @@
+ STDHDRSDEF = /usr/include
+ 
+ MAKEU     = make
+-LIBU      = ar -r
+-LIBOF     = -o
++LIBOF     = 
+ RANLIB    = echo
+ AS        = as
+-CCFLAGSDEF   = -DUNIX -c
+-CC        = cc $(CCFLAGS) $(INCFLAG)$(STDHDRS)
++CCFLAGSDEF = -DUNIX -fPIC -c
++CFLAGS    += $(CCFLAGSDEF) $(INCFLAG)$(STDHDRS)
++CC        = cc
+ CCOF      = -o 
+-LINKFLAGSDEF = -lm
++LINKFLAGSDEF = -shared
+ LINKLIBS  = 
+-LINK      = cc $(LINKFLAGS) $(LINKLIBS)
++LINK      = $(CC) $(LINKFLAGSDEF) $(LDFLAGS) $(LINKLIBS)
+ LINKOF    = -o 
++LIBU      = $(CC) $(LINKFLAGSDEF) $(LDFLAGS) -Wl,-soname,libicc.so.$(ICCLIB_SOVERSION) $(LINKLIBS) -o
+ 
+ .SUFFIXES:
+ .SUFFIXES: .c $(SUFLIB) $(SUFOBJ) $(SUFEXE)
+ 
+ .c$(SUFOBJ):
+-	$(CC) $(CCOF)$*$(SUFOBJ) $<
++	$(CC) $(CFLAGS) $(CCOF)$*$(SUFOBJ) $<
+ 	

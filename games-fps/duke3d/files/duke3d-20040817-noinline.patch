@@ -1,0 +1,18 @@
+--- source/buildengine/engine.c.old     2009-02-06 09:11:54.000000000 +0100
++++ source/buildengine/engine.c 2009-02-06 09:19:12.000000000 +0100
+@@ -391,6 +391,7 @@
+            modify exact [eax ebx ecx]\
+ 
+     #elif (defined __GNUC__) || (defined __ICC)
++       __attribute__ ((noinline))
+         static long nsqrtasm(int i1)
+         {
+             long retval;
+@@ -601,6 +602,7 @@
+ 
+     #elif (defined __GNUC__) || (defined __ICC)
+ 
++       __attribute__ ((noinline))
+         int setgotpic(long i1)
+         {
+             int retval = 0;

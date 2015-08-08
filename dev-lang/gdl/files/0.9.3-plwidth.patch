@@ -1,0 +1,158 @@
+diff -up gdl-0.9.3/CMakeLists.txt.plwidth gdl-0.9.3/CMakeLists.txt
+--- gdl-0.9.3/CMakeLists.txt.plwidth	2013-08-27 16:55:33.806600443 -0600
++++ gdl-0.9.3/CMakeLists.txt	2013-08-27 16:55:36.589590528 -0600
+@@ -23,6 +23,7 @@ include(CheckLibraryExists)
+ include(CheckFunctionExists)
+ include(CheckSymbolExists)
+ include(CheckCSourceRuns)
++include(CheckCXXSourceCompiles)
+ include(FindPkgConfig)
+ include(FindPackageHandleStandardArgs)
+ 
+@@ -302,6 +303,18 @@ if(PLPLOT_FOUND)
+ 	  message(STATUS "warning, due to old plplot library, [XYZ]TICKFORMAT option for plot axis will not be supported.\n"
+ 	    "you should upgrade to plplot version > 5.9.6")
+ 	endif(HAVE_PLPLOT_SLABELFUNC)
++	set(CMAKE_REQUIRED_INCLUDES "${PLPLOT_INCLUDE_DIR}")
++	set(CMAKE_REQUIRED_LIBRARIES "${PLPLOT_LIBRARIES}")
++	check_cxx_source_compiles("
++#include <plplot/plstream.h>
++int main(int argc, char **argv) {
++  plstream *p = new plstream();
++  PLFLT w = 0.5;
++  p->width(w);
++}" HAVE_PLPLOT_WIDTH)
++	if(HAVE_PLPLOT_WIDTH)
++	  set(HAVE_PLPLOT_WIDTH 1)
++	endif(HAVE_PLPLOT_WIDTH)
+ 	check_library_exists("${PLPLOT_LIBRARIES}" plstrl "" PLPLOT_PRIVATE_NOT_HIDDEN)
+ 	if(PLPLOT_PRIVATE_NOT_HIDDEN)
+ 	  set(PLPLOT_PRIVATE_NOT_HIDDEN 1)
+diff -up gdl-0.9.3/config.h.cmake.plwidth gdl-0.9.3/config.h.cmake
+--- gdl-0.9.3/config.h.cmake.plwidth	2013-08-27 16:55:33.808600436 -0600
++++ gdl-0.9.3/config.h.cmake	2013-08-27 16:55:36.589590528 -0600
+@@ -28,6 +28,7 @@
+ #cmakedefine HAVE_NEXTTOWARD 1
+ #cmakedefine HAVE_OLDPLPLOT 1
+ #cmakedefine HAVE_PLPLOT_SLABELFUNC 1
++#cmakedefine HAVE_PLPLOT_WIDTH 1
+ #cmakedefine PLPLOT_PRIVATE_NOT_HIDDEN 1
+ #cmakedefine PLPLOT_HAS_LEGEND
+ #ifndef HAVE_STDINT_H
+diff -up gdl-0.9.3/src/plotting_contour.cpp.plwidth gdl-0.9.3/src/plotting_contour.cpp
+--- gdl-0.9.3/src/plotting_contour.cpp.plwidth	2013-08-27 16:55:33.883600169 -0600
++++ gdl-0.9.3/src/plotting_contour.cpp	2013-08-27 16:55:36.590590524 -0600
+@@ -705,7 +705,11 @@ namespace lib
+               actStream->pat(1,&ori,&spa);
+ 
+               if (docolors) actStream->Color ( ( *colors )[i%colors->N_Elements ( )], decomposed, (PLINT)colorindex_table_0_color );
++#if (HAVE_PLPLOT_WIDTH)
++              if (dothick) actStream->width ( static_cast<PLFLT>(( *thick )[i%thick->N_Elements ( )]));
++#else
+               if (dothick) actStream->wid ( ( *thick )[i%thick->N_Elements ( )]);
++#endif
+               if (dostyle) gdlLineStyle(actStream, ( *style )[i%style->N_Elements ( )]);
+               actStream->shade( map, xEl, yEl, isLog?doIt:NULL, xStart, xEnd, yStart, yEnd,
+               clevel[i], clevel[i+1],
+@@ -788,7 +792,11 @@ namespace lib
+               actStream->stransform(gdl3dTo2dTransformContour, &Data3d);
+             }
+             if (docolors) actStream->Color ( ( *colors )[i%colors->N_Elements ( )], decomposed, 2);
++#if (HAVE_PLPLOT_WIDTH)
++            if (dothick) actStream->width ( static_cast<PLFLT>(( *thick )[i%thick->N_Elements ( )]));
++#else
+             if (dothick) actStream->wid ( ( *thick )[i%thick->N_Elements ( )]);
++#endif
+             if (dostyle) gdlLineStyle(actStream, ( *style )[i%style->N_Elements ( )]);
+             if (dolabels) actStream->setcontlabelparam ( LABELOFFSET, (PLFLT) label_size, LABELSPACING,
+                                                         (PLINT)(*labels)[i%labels->N_Elements()] );
+diff -up gdl-0.9.3/src/plotting.cpp.plwidth gdl-0.9.3/src/plotting.cpp
+--- gdl-0.9.3/src/plotting.cpp.plwidth	2013-08-27 16:55:33.886600158 -0600
++++ gdl-0.9.3/src/plotting.cpp	2013-08-27 16:58:33.707952697 -0600
+@@ -1891,7 +1891,11 @@ namespace lib
+       DFloatGDL* charthickVect=e->GetKWAs<DFloatGDL>( charthickIx );
+       charthick=(*charthickVect)[0];
+     }
++#if (HAVE_PLPLOT_WIDTH)
++    a->width(static_cast<PLFLT>(charthick));
++#else
+     a->wid(charthick);
++#endif
+   }
+ 
+   void gdlSetAxisCharsize(EnvT *e, GDLGStream *a, string axis)
+@@ -1919,7 +1923,11 @@ namespace lib
+ 
+     e->AssureFloatScalarKWIfPresent("THICK", thick);
+     if ( thick<=0.0 ) thick=1.0;
++#if (HAVE_PLPLOT_WIDTH)
++    a->width(static_cast<PLFLT>(thick));
++#else
+     a->wid(static_cast<PLINT>(floor(thick-0.5)));
++#endif
+   }
+ 
+   //LINESTYLE
+@@ -2932,7 +2940,11 @@ namespace lib
+         a->smaj((PLFLT)OtherAxisSizeInMm, 1.0); //set base ticks to default 0.02 viewport converted to mm.
+         a->smin((PLFLT)OtherAxisSizeInMm/2.0,1.0); //idem min (plplt defaults)
+         //thick for box and ticks.
++#if (HAVE_PLPLOT_WIDTH)
++        a->width(static_cast<PLFLT>(Thick));
++#else
+         a->wid(Thick);
++#endif
+         //ticks or grid eventually with style and length:
+         if (abs(TickLen)<1e-6) Opt=""; else Opt="st"; //remove ticks if ticklen=0
+         if (TickLen<0) {Opt+="i"; TickLen=-TickLen;}
+@@ -2977,7 +2989,11 @@ namespace lib
+         else if (axis=="Y") a->box("", 0.0, 0 , Opt.c_str(), 0.0, 0);
+       }
+       //reset charsize & thick
++#if (HAVE_PLPLOT_WIDTH)
++      a->width(1.0);
++#else
+       a->wid(1);
++#endif
+       a->sizeChar(1.0);
+     }
+ 	return 0;
+@@ -3120,7 +3136,11 @@ namespace lib
+         a->smaj((PLFLT)OtherAxisSizeInMm, 1.0); //set base ticks to default 0.02 viewport converted to mm.
+         a->smin((PLFLT)OtherAxisSizeInMm/2.0,1.0); //idem min (plplt defaults)
+         //thick for box and ticks.
++#if (HAVE_PLPLOT_WIDTH)
++        a->width(static_cast<PLFLT>(Thick));
++#else
+         a->wid(Thick);
++#endif
+         //ticks or grid eventually with style and length:
+         if (abs(TickLen)<1e-6) Opt=""; else Opt="st"; //remove ticks if ticklen=0
+         if (TickLen<0) {Opt+="i"; TickLen=-TickLen;}
+@@ -3145,7 +3165,11 @@ namespace lib
+         else if (axis=="Z") a->box3("","",0,0,"","",0,0, Opt.c_str(), "", TickInterval, Minor);
+       }
+       //reset charsize & thick
++#if (HAVE_PLPLOT_WIDTH)
++      a->width(1.0);
++#else
+       a->wid(1);
++#endif
+       a->sizeChar(1.0);
+     }
+ 	return 0;
+diff -up gdl-0.9.3/src/plotting_xyouts.cpp.plwidth gdl-0.9.3/src/plotting_xyouts.cpp
+--- gdl-0.9.3/src/plotting_xyouts.cpp.plwidth	2013-08-27 16:55:33.892600137 -0600
++++ gdl-0.9.3/src/plotting_xyouts.cpp	2013-08-27 16:55:36.591590521 -0600
+@@ -339,7 +339,11 @@ namespace lib
+         //plot!
+         if (docharsize) actStream->sizeChar(( *size )[i%size->N_Elements ( )]);
+         if (docolor) actStream->Color ( ( *color )[i%color->N_Elements ( )], decomposed, 2);
++#if (HAVE_PLPLOT_WIDTH)
++        if (docharthick) actStream->width ( static_cast<PLFLT>(( *charthick )[i%charthick->N_Elements ( )]));
++#else
+         if (docharthick) actStream->wid ( ( *charthick )[i%charthick->N_Elements ( )]);
++#endif
+         //orientation word is not orientation page depending on axes increment direction [0..1] vs. [1..0]
+         PLFLT oriD=(( *orientation )[i%orientation->N_Elements ( )]); //ori DEVICE
+         PLFLT oriW=oriD; //ori WORLD

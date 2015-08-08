@@ -1,0 +1,60 @@
+http://lists.gnu.org/archive/html/bug-bash/2015-02/msg00075.html
+
+assign_array_var_from_word_list: after assignment, mark variable as no
+longer invisible
+
+assign_array_var_from_string: after assignment, mark variable as no
+longer invisible
+
+diff --git a/arrayfunc.c b/arrayfunc.c
+index c2ea0e5..6dab71c 100644
+--- a/arrayfunc.c
++++ b/arrayfunc.c
+@@ -407,6 +407,9 @@ assign_array_var_from_word_list (var, list, flags)
+       (*var->assign_func) (var, l->word->word, i, 0);
+     else
+       array_insert (a, i, l->word->word);
++
++  VUNSETATTR (var, att_invisible);	/* no longer invisible */
++
+   return var;
+ }
+ 
+@@ -639,6 +642,10 @@ assign_array_var_from_string (var, value, flags)
+ 
+   if (nlist)
+     dispose_words (nlist);
++
++  if (var)
++    VUNSETATTR (var, att_invisible);	/* no longer invisible */
++
+   return (var);
+ }
+ 
+
+bind_int_variable: make sure `v' is non-null before making it visible
+
+diff --git a/variables.c b/variables.c
+index 2f07ebb..cbe7806 100644
+--- a/variables.c
++++ b/variables.c
+@@ -2872,10 +2872,12 @@ bind_int_variable (lhs, rhs)
+ #endif
+     v = bind_variable (lhs, rhs, 0);
+ 
+-  if (v && isint)
+-    VSETATTR (v, att_integer);
+-
+-  VUNSETATTR (v, att_invisible);
++  if (v)
++    {
++      if (isint)
++	VSETATTR (v, att_integer);
++      VUNSETATTR (v, att_invisible);
++    }
+ 
+   return (v);
+ }
+-- 
+2.3.0
+

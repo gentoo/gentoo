@@ -1,0 +1,14 @@
+--- screen-4.0.2/pty.c.orig	2004-07-29 23:53:45.313533536 -0400
++++ screen-4.0.2/pty.c	2004-07-29 23:53:59.011451136 -0400
+@@ -33,11 +33,6 @@
+ # include <sys/ioctl.h>
+ #endif
+ 
+-/* for solaris 2.1, Unixware (SVR4.2) and possibly others */
+-#ifdef HAVE_SVR4_PTYS
+-# include <sys/stropts.h>
+-#endif
+-
+ #if defined(sun) && defined(LOCKPTY) && !defined(TIOCEXCL)
+ # include <sys/ttold.h>
+ #endif

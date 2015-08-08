@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>anthoine.bourgeois@gmail.com</email>
+		<name>Anthoine Bourgeois</name>
+	</maintainer>
+	<maintainer>
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<longdescription>
+		The spnavcfg is the GTK-based configuration GUI for
+		<pkg>sys-libs/spacenavd</pkg>.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">spacenav</remote-id>
+	</upstream>
+</pkgmetadata>

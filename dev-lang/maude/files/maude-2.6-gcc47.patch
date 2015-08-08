@@ -1,0 +1,25 @@
+Get maude to compile on amd64 with g++ 4.7
+bicatali@gentoo.org nov 2013
+
+--- Maude-2.6.orig/src/Mixfix/lexerAux.cc	2013-11-06 09:41:00.821049550 -0800
++++ Maude-2.6/src/Mixfix/lexerAux.cc	2013-11-06 09:41:33.174247429 -0800
+@@ -35,7 +35,7 @@
+ bool fakeNewlineStack[MAX_IN_DEPTH];
+ 
+ void
+-getInput(char* buf, int& result, int max_size)
++getInput(char* buf, size_t& result, int max_size)
+ {
+   result = YY_NULL;
+   if (UserLevelRewritingContext::interrupted())
+--- Maude-2.6.orig/src/Mixfix/lexerAux.hh	2013-11-06 09:41:00.821049550 -0800
++++ Maude-2.6/src/Mixfix/lexerAux.hh	2013-11-06 09:41:23.466187406 -0800
+@@ -27,7 +27,7 @@
+ //extern int inStackPtr;
+ //extern YY_BUFFER_STATE inStack[];
+ 
+-void getInput(char* buf, int& result, int max_size);
++void getInput(char* buf, size_t& result, int max_size);
+ void lexerIdMode();
+ void lexerTokenTreeMode(int terminatingTokens);
+ void lexerCmdMode();

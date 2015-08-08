@@ -1,0 +1,30 @@
+ src/Makefile.am |    2 +-
+ src/Makefile.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 2052baa..e5d9693 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -12,7 +12,7 @@ INCLUDES = \
+ 
+ lib_LTLIBRARIES = libgoocanvas-2.0.la
+ 
+-libgoocanvas_2_0_la_LIBADD = @PACKAGE_LIBS@ $(INTLLIBS)
++libgoocanvas_2_0_la_LIBADD = @PACKAGE_LIBS@ $(INTLLIBS) -lm
+ 
+ if PLATFORM_WIN32
+ no_undefined = -no-undefined
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 1d927b9..15b9316 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -297,7 +297,7 @@ INCLUDES = \
+ #	-DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED \
+ #	-DGTK_DISABLE_DEPRECATED
+ lib_LTLIBRARIES = libgoocanvas-2.0.la
+-libgoocanvas_2_0_la_LIBADD = @PACKAGE_LIBS@ $(INTLLIBS)
++libgoocanvas_2_0_la_LIBADD = @PACKAGE_LIBS@ $(INTLLIBS) -lm
+ @PLATFORM_WIN32_TRUE@no_undefined = -no-undefined
+ libtool_opts = \
+   -version-info $(LT_VERSION_INFO)	\

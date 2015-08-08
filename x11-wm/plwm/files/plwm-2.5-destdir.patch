@@ -1,0 +1,33 @@
+diff -ur plwm-2.5.orig/Makefile.in plwm-2.5/Makefile.in
+--- plwm-2.5.orig/Makefile.in	2007-06-29 13:30:28.000000000 +0200
++++ plwm-2.5/Makefile.in	2007-06-29 14:07:42.000000000 +0200
+@@ -24,19 +24,16 @@
+ all:
+ 
+ install:
+-	-$(INSTALL) -d $(bindir)
+-	-$(INSTALL) -d $(PLWM_PATH)
+-	$(INSTALL) -m 644 $(PLWM_MODULES) $(PLWM_PATH)
+-	echo >> $(PLWM_PATH)/__init__.py
+-	echo "__version__ = '$(VERSION)'" >> $(PLWM_PATH)/__init__.py
+-	echo >> $(PLWM_PATH)/__init__.py
+-
+-# Compile .pyc and .pyo-files
+-	$(PYTHON) -c 'import sys; sys.path.insert(0, "$(PYTHON_SITE_PATH)"); import plwm.xlibpath; from plwm import *'
+-	$(PYTHON) -O -c 'import sys; sys.path.insert(0, "$(PYTHON_SITE_PATH)"); import plwm.xlibpath; from plwm import *'
+-	./install-plwm.sh "$(PLWM)" $(bindir)/plwm
+-	./install-plwm.sh "$(WMM)" $(bindir)/wmm
+-	./install-plwm.sh "$(INSPECT_PLWM)" $(bindir)/inspect_plwm
++	-$(INSTALL) -d $(DESTDIR)$(bindir)
++	-$(INSTALL) -d $(DESTDIR)$(PLWM_PATH)
++	$(INSTALL) -m 644 $(PLWM_MODULES) $(DESTDIR)$(PLWM_PATH)
++	echo >> $(DESTDIR)$(PLWM_PATH)/__init__.py
++	echo "__version__ = '$(VERSION)'" >> $(DESTDIR)$(PLWM_PATH)/__init__.py
++	echo >> $(DESTDIR)$(PLWM_PATH)/__init__.py
++
++	./install-plwm.sh "$(PLWM)" $(DESTDIR)$(bindir)/plwm
++	./install-plwm.sh "$(WMM)" $(DESTDIR)$(bindir)/wmm
++	./install-plwm.sh "$(INSPECT_PLWM)" $(DESTDIR)$(bindir)/inspect_plwm
+ 
+ clean:
+ 

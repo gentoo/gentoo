@@ -1,0 +1,31 @@
+From 626f79dcfb1f26997f2807829c6fa19f6c3303f5 Mon Sep 17 00:00:00 2001
+From: Sobhan Mohammadpour <sobhanmohammadpour1@yahoo.fr>
+Date: Sun, 20 Jan 2013 20:25:13 +0330
+Subject: [PATCH] glib-2.35.4-external-gdbus-codegen
+
+---
+ gio/gdbus-2.0/codegen/gdbus-codegen.in | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/gio/gdbus-2.0/codegen/gdbus-codegen.in b/gio/gdbus-2.0/codegen/gdbus-codegen.in
+index 253d151..2295481 100644
+--- a/gio/gdbus-2.0/codegen/gdbus-codegen.in
++++ b/gio/gdbus-2.0/codegen/gdbus-codegen.in
+@@ -29,13 +29,7 @@ srcdir = os.getenv('UNINSTALLED_GLIB_SRCDIR', None)
+ 
+ if srcdir is not None:
+     path = os.path.join(srcdir, 'gio', 'gdbus-2.0')
+-elif os.name == 'nt':
+-    # Makes gdbus-codegen 'relocatable' at runtime on Windows.
+-    path = os.path.join(os.path.dirname(__file__), '..', 'share', 'glib-2.0')
+ else:
+-    path = os.path.join('@datadir@', 'glib-2.0')
+-
+-sys.path.insert(0, os.path.abspath(path))
+-from codegen import codegen_main
++    from gdbus_codegen import codegen_main
+ 
+ sys.exit(codegen_main.codegen_main())
+-- 
+1.8.1
+

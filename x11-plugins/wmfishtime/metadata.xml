@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+WMFishTime is a silly little dockapp that displays current time, date, and day
+of the week. It features alpha-blended bubbles, anti-aliased clock hands, and
+fish swimming behind the clock face.
+</longdescription>
+</pkgmetadata>

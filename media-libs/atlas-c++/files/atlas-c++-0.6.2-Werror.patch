@@ -1,0 +1,15 @@
+--- configure.ac.old	2011-05-02 11:16:53.851733207 +0200
++++ configure.ac	2011-05-02 11:17:18.489283901 +0200
+@@ -35,10 +35,10 @@
+         if test "$enableval" = "yes"; then
+             CXXFLAGS="$CXXFLAGS -Wall -Werror -DDEBUG"
+         else
+-            CXXFLAGS="$CXXFLAGS -Wall -Werror -DNDEBUG"
++            CXXFLAGS="$CXXFLAGS -Wall -DNDEBUG"
+         fi
+     ],[
+-        CXXFLAGS="$CXXFLAGS -Wall -Werror -DNDEBUG"
++        CXXFLAGS="$CXXFLAGS -Wall -DNDEBUG"
+     ]
+ )
+ 

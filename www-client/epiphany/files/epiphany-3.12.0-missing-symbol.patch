@@ -1,0 +1,39 @@
+From 267ec3e2d7ca0f1881cb76d702ac673727f7507a Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Tue, 22 Apr 2014 21:15:42 +0200
+Subject: [PATCH] Add missing files to webextension library
+
+Otherwise, results in:
+
+avril 22 21:09:36 kanae epiphany.desktop[32013]: Error loading module
+'/usr/lib64/epiphany/3.12/web-extensions/libephywebextension.so':
+/usr/lib64/epiphany/3.12/web-extensions/libephywebextension.so:
+undefined symbol: ephy_profile_utils_set_migration_version
+---
+ embed/web-extension/Makefile.am | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/embed/web-extension/Makefile.am b/embed/web-extension/Makefile.am
+index 5bdb174..be4b08f 100644
+--- a/embed/web-extension/Makefile.am
++++ b/embed/web-extension/Makefile.am
+@@ -22,6 +22,8 @@ libephywebextension_la_SOURCES = \
+ 	$(top_srcdir)/lib/ephy-file-helpers.h \
+ 	$(top_srcdir)/lib/ephy-form-auth-data.c \
+ 	$(top_srcdir)/lib/ephy-form-auth-data.h \
++	$(top_srcdir)/lib/ephy-profile-utils.c \
++	$(top_srcdir)/lib/ephy-profile-utils.h \
+ 	$(top_srcdir)/lib/ephy-settings.c \
+ 	$(top_srcdir)/lib/ephy-settings.h \
+ 	$(top_srcdir)/lib/ephy-string.c \
+@@ -39,6 +41,7 @@ libephywebextension_la_CPPFLAGS = \
+ libephywebextension_la_CFLAGS = \
+ 	-DSHARE_DIR=\"$(pkgdatadir)\" \
+ 	-DTOP_SRC_DATADIR=\"$(top_srcdir)/data\" \
++	-DABS_TOP_BUILD_DIR=\"$(abs_top_builddir)\" \
+ 	$(WEB_EXTENSION_CFLAGS)
+ 
+ libephywebextension_la_LIBADD = \
+-- 
+1.9.0
+

@@ -1,0 +1,30 @@
+Fix build failure on gentoo's gcc:
+
+In file included from ./inttypes.h:34:0,
+ from ./stdint.h:65,
+ from /usr/include/netinet/in.h:23,
+ from /usr/include/netdb.h:27,
+ from getaddrinfo.h:30,
+ from canon-host.c:27:
+     /usr/include/inttypes.h:297:1: error: unknown type name 'intmax_t'
+     /usr/include/inttypes.h:297:26: error: unknown type name 'intmax_t'
+     /usr/include/inttypes.h:300:27: error: unknown type name 'intmax_t'
+     /usr/include/inttypes.h:300:45: error: unknown type name 'intmax_t'
+diff --git a/lib/stdint_.h b/lib/stdint_.h
+index adab4d7..3a8db19 100644
+--- a/lib/stdint_.h
++++ b/lib/stdint_.h
+@@ -43,7 +43,12 @@
+      Include it before <inttypes.h>, since any "#include <stdint.h>"
+      in <inttypes.h> would reinclude us, skipping our contents because
+      _GL_STDINT_H is defined.  */
+-# include @ABSOLUTE_STDINT_H@
++# include "config.h"
++# if HAVE_INCLUDE_NEXT
++#  include_next <stdint.h>
++# else
++#  include @ABSOLUTE_STDINT_H@
++# endif
+ #endif
+ 
+ /* <sys/types.h> defines some of the stdint.h types as well, on glibc,

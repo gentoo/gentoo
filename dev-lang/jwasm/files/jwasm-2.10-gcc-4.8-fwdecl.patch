@@ -1,0 +1,41 @@
+From c2b789403a1ca833bcabada5347bb18d7bd095c2 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Wed, 15 May 2013 22:04:01 +0300
+Subject: [PATCH] fix build failure on gcc-4.8 (missing forward declaration)
+
+Fixes the following build error:
+> gcc -c -IH -D__UNIX__ -DNDEBUG -O2 -o GccUnixR/parser.o parser.c
+> In file included from parser.c:35:0:
+> H/parser.h:305:48: warning: 'struct expr' declared inside parameter list [enabled by default]
+>  extern void       EmitConstError( const struct expr * );
+>                                                 ^
+> H/parser.h:305:48: warning: its scope is only this definition or declaration, which is probably not what you want [enabled by default]
+> parser.c:790:6: error: conflicting types for 'EmitConstError'
+>  void EmitConstError( const struct expr *opnd )
+>       ^
+> In file included from parser.c:35:0:
+> H/parser.h:305:19: note: previous declaration of 'EmitConstError' was here
+>  extern void       EmitConstError( const struct expr * );
+>                    ^
+> make: *** [GccUnixR/parser.o] Error 1
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ H/parser.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/H/parser.h b/H/parser.h
+index 1744f0d..c2c7b99 100644
+--- a/H/parser.h
++++ b/H/parser.h
+@@ -302,6 +302,7 @@ extern int        SizeFromMemtype( enum memtype, int, struct asym * );
+ extern ret_code   MemtypeFromSize( int, enum memtype * );
+ extern int        SizeFromRegister( int );
+ extern ret_code   GetLangType( int *, struct asm_tok[], enum lang_type * );
++struct expr;
+ extern void       EmitConstError( const struct expr * );
+ 
+ extern void       sym_add_table( struct symbol_queue *, struct dsym * );
+-- 
+1.8.2.1
+

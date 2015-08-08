@@ -1,0 +1,22 @@
+diff -ruN OpenCV-2.4.3.orig/modules/highgui/src/grfmt_tiff.cpp OpenCV-2.4.3/modules/highgui/src/grfmt_tiff.cpp
+--- OpenCV-2.4.3.orig/modules/highgui/src/grfmt_tiff.cpp	2012-10-12 00:55:12.000000000 +0200
++++ OpenCV-2.4.3/modules/highgui/src/grfmt_tiff.cpp	2012-11-05 21:37:40.000000000 +0100
+@@ -47,6 +47,7 @@
+ 
+ #include "precomp.hpp"
+ #include "grfmt_tiff.hpp"
++#include "unistd.h"
+ 
+ namespace cv
+ {
+diff -ruN OpenCV-2.4.3.orig/modules/highgui/src/window_QT.h OpenCV-2.4.3/modules/highgui/src/window_QT.h
+--- OpenCV-2.4.3.orig/modules/highgui/src/window_QT.h	2012-10-18 00:55:38.000000000 +0200
++++ OpenCV-2.4.3/modules/highgui/src/window_QT.h	2012-11-05 21:38:41.000000000 +0100
+@@ -41,6 +41,7 @@
+ #define __OPENCV_HIGHGUI_QT_H__
+ 
+ #include "precomp.hpp"
++#include "unistd.h"
+ 
+ #if defined( HAVE_QT_OPENGL )
+ #include <QtOpenGL>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>laurento.frittella@gmail.com</email>
+    <description>Proxy Maintainer (please CC on bugs)</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">nzjrs/python-gudev</remote-id>
+  </upstream>
+</pkgmetadata>

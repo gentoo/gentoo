@@ -1,0 +1,21 @@
+diff -urN gpsd-2.96.old/Makefile.am gpsd-2.96/Makefile.am
+--- gpsd-2.96.old/Makefile.am	2011-05-16 11:41:11.763256750 +0200
++++ gpsd-2.96/Makefile.am	2011-05-16 11:44:02.742119221 +0200
+@@ -130,7 +130,7 @@
+ libgps_VERSION_REVISION = 0
+ libgps_VERSION_AGE = 0
+ libgps_VERSION_NUMBER = $(libgps_VERSION_CURRENT):$(libgps_VERSION_REVISION):$(libgps_VERSION_AGE)
+-libgps_la_LDFLAGS = -version-number $(libgps_VERSION_NUMBER)
++libgps_la_LDFLAGS = $(LDFLAGS) -version-number $(libgps_VERSION_NUMBER)
+ lib_LTLIBRARIES = libgps.la libgpsd.la
+ 
+ libgps_SONAME = $(shell expr $(libgps_VERSION_CURRENT) - $(libgps_VERSION_AGE))
+@@ -425,7 +425,7 @@
+ # Build test_qgpsmm
+ #
+ test_qgpsmm_SOURCES = test_gpsmm.cpp
+-test_qgpsmm_LDFLAGS = -Wl,-rpath,$(srcdir)/libQgpsmm/binaries
++test_qgpsmm_LDFLAGS = $(LDFLAGS) -Wl,-rpath,$(srcdir)/libQgpsmm/binaries
+ test_qgpsmm_LDADD = $(LIBC) $(LIBUSB) $(QtNetwork_LIBS) libgps.la -LlibQgpsmm/binaries -lQgpsmm
+ test_qgpsmm_DEPENDENCIES = libQgpsmm/binaries/libQgpsmm.so
+ endif

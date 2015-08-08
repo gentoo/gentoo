@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>netmon</herd>
+	<maintainer>
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<maintainer>
+		<email>ago@gentoo.org</email>
+		<name>Agostino Sarubbo</name>
+	</maintainer>
+	<use>
+		<flag name="plugins">Install ettercap plugins (et_*.so)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Ettercap/ettercap</remote-id>
+	</upstream>
+</pkgmetadata>

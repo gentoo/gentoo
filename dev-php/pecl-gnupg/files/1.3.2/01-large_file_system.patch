@@ -1,0 +1,9 @@
+--- config.m4	2007-05-04 13:23:41.000000000 +0000
++++ config.m4.new	2010-03-28 01:13:10.000000000 +0000
+@@ -41,4 +41,6 @@
+   PHP_SUBST(GNUPG_SHARED_LIBADD)
+ 
+   PHP_NEW_EXTENSION(gnupg, [gnupg.c gnupg_keylistiterator.c], $ext_shared)
++
++  AC_SYS_LARGEFILE
+ fi

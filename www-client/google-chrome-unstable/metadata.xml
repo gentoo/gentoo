@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>chromium</herd>
+	<maintainer>
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<maintainer>
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<longdescription>
+		Google Chrome is a browser that combines a minimal design with
+		sophisticated technology to make the web faster, safer, and easier.
+	</longdescription>
+	<use>
+		<flag name="plugins">Add system plugins path to launcher</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,60 @@
+--- yatex1.76-orig/docs/yahtmle.tex
++++ yatex1.76/docs/yahtmle.tex
+@@ -1,9 +1,10 @@
+ \def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+-@setfilename yahtmle
++@setfilename yahtml.info
+ @settitle Yet Another html-mode for Emacs
++@dircategory Emacs
+ @direntry
+-* yahtml-e: (yahtmle).  Yet Another html-mode for Emacs (English).
++* yahtml: (yahtml).     Yet Another html-mode for Emacs (English).
+ @end direntry
+ 
+ @iftex
+--- yatex1.76-orig/docs/yahtmlj.tex
++++ yatex1.76/docs/yahtmlj.tex
+@@ -1,9 +1,10 @@
+ \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+-@setfilename yahtmlj
++@setfilename yahtml-ja.info
+ @settitle Yet Another html-mode for Emacs
++@dircategory Emacs
+ @direntry
+-* yahtml: (yahtmlj).    Yet Another html-mode for Emacs (Japanese).
++* yahtml-ja: (yahtml-ja).       Yet Another html-mode for Emacs (Japanese).
+ @end direntry
+ 
+ @iftex
+--- yatex1.76-orig/docs/yatexe.tex
++++ yatex1.76/docs/yatexe.tex
+@@ -1,9 +1,10 @@
+ \def\lang{jp} % -*- texinfo -*-
+ \input texinfo.tex
+-@setfilename yatexe
++@setfilename yatex.info
+ @settitle Yet Another tex-mode for Emacs
++@dircategory Emacs
+ @direntry
+-* YaTeX-e: (yatexe).    Yet Another tex-mode for Emacs (English).
++* YaTeX: (yatex).       Yet Another tex-mode for Emacs (English).
+ @end direntry
+ 
+ @iftex
+--- yatex1.76-orig/docs/yatexj.tex
++++ yatex1.76/docs/yatexj.tex
+@@ -1,9 +1,10 @@
+ \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+-@setfilename yatexj
++@setfilename yatex-ja.info
+ @settitle Yet Another tex-mode for Emacs
++@dircategory Emacs
+ @direntry
+-* YaTeX: (yatexj).      Yet Another tex-mode for Emacs (Japanese).
++* YaTeX-ja: (yatex-ja). Yet Another tex-mode for Emacs (Japanese).
+ @end direntry
+ 
+ @iftex

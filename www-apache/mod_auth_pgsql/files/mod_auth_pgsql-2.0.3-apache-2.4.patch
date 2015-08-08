@@ -1,0 +1,341 @@
+From: Marco Nenciarini <mnencia@debian.org>
+Date: Sat, 20 Jul 2013 18:47:04 +0200
+Subject: apache 2.4
+
+---
+ mod_auth_pgsql.c | 196 ++++++++++++-------------------------------------------
+ 1 file changed, 41 insertions(+), 155 deletions(-)
+
+diff --git a/mod_auth_pgsql.c b/mod_auth_pgsql.c
+index 639537d..26d7f90 100644
+--- a/mod_auth_pgsql.c
++++ b/mod_auth_pgsql.c
+@@ -109,6 +109,8 @@
+ #include "http_request.h"
+ #include "util_script.h"
+ 
++#include "mod_auth.h"
++
+ #ifdef WIN32
+ #define crypt apr_password_validate
+ #else
+@@ -191,7 +193,7 @@ module AP_MODULE_DECLARE_DATA auth_pgsql_module;
+ 
+ 
+ static int pg_log_auth_user(request_rec * r, pg_auth_config_rec * sec, 
+-		char *user, char *sent_pw);
++		const char *user, const char *sent_pw);
+ static char *do_pg_query(request_rec * r, char *query, 
+ 		pg_auth_config_rec * sec);
+ 
+@@ -442,9 +444,8 @@ static char pg_errstr[MAX_STRING_LEN];
+ 		  * failures separately
+ 		  */
+ 
+-static char *auth_pg_md5(char *pw)
++static char *auth_pg_md5(const char *pw)
+ {
+-	apr_md5_ctx_t ctx;
+ 	unsigned char digest[APR_MD5_DIGESTSIZE];
+ 	static unsigned char md5hash[APR_MD5_DIGESTSIZE * 2 + 1];
+ 	int i;
+@@ -459,14 +460,15 @@ static char *auth_pg_md5(char *pw)
+ }
+ 
+ 
+-static char *auth_pg_base64(char *pw)
++static char *auth_pg_base64(const char *pw)
+ {
+ 	if (auth_pgsql_pool_base64 == NULL)
+ 		apr_pool_create_ex(&auth_pgsql_pool_base64, NULL, NULL, NULL);
+ 	if (auth_pgsql_pool == NULL)
+ 		return NULL;
+ 
+-	return ap_pbase64encode(auth_pgsql_pool, pw);
++	/* NOTE: ap_pbase64encode is no change arg2. so removable const. */
++	return ap_pbase64encode(auth_pgsql_pool, (char *)pw);
+ }
+ 
+ 
+@@ -557,7 +559,8 @@ char *do_pg_query(request_rec * r, char *query, pg_auth_config_rec * sec)
+ 
+ 		if (!check || strcmp(sec->auth_pg_charset, check)) {
+ 			apr_snprintf(pg_errstr, MAX_STRING_LEN,
+-						 "mod_auth_pgsql database character set encoding %s");
++						 "mod_auth_pgsql database character set encoding %s",
++						 check);
+ 			PQfinish(pg_conn);
+ 			return NULL;
+ 		}
+@@ -614,7 +617,7 @@ char *do_pg_query(request_rec * r, char *query, pg_auth_config_rec * sec)
+ 	return result;
+ }
+ 
+-char *get_pg_pw(request_rec * r, char *user, pg_auth_config_rec * sec)
++char *get_pg_pw(request_rec * r, const char *user, pg_auth_config_rec * sec)
+ {
+ 	char query[MAX_STRING_LEN];
+ 	char *safe_user;
+@@ -755,19 +758,20 @@ static char *get_pg_grp(request_rec * r, char *group, char *user,
+ }
+ 
+ /* Process authentication request from Apache*/
+-static int pg_authenticate_basic_user(request_rec * r)
++static authn_status check_password(request_rec *r, const char *user,
++                                   const char *password)
+ {
++	
+ 	pg_auth_config_rec *sec =
+ 		(pg_auth_config_rec *) ap_get_module_config(r->per_dir_config,
+ 													&auth_pgsql_module);
+-	char *val = NULL;
+-	char *sent_pw, *real_pw;
+-	int res;
+-	char *user;
++	const char *val = NULL;
++	const char *sent_pw;
++	const char *real_pw;
++	authn_status auth_res;
++	
++	sent_pw = password;
+ 
+-	if ((res = ap_get_basic_auth_pw(r, (const char **) &sent_pw)))
+-		return res;
+-	user = r->user;
+ 
+ #ifdef DEBUG_AUTH_PGSQL
+ 	ap_log_rerror(APLOG_MARK, APLOG_WARNING, 0, r,
+@@ -784,7 +788,7 @@ static int pg_authenticate_basic_user(request_rec * r)
+ 	if ((!sec->auth_pg_pwd_table) && (!sec->auth_pg_pwd_field)) {
+ 		ap_log_rerror(APLOG_MARK, APLOG_WARNING, 0, r,
+ 					  "[mod_auth_pgsql.c] - missing configuration parameters");
+-		return DECLINED;
++		return AUTH_GENERAL_ERROR;
+ 	}
+ 	pg_errstr[0] = '\0';
+ 
+@@ -809,22 +813,16 @@ static int pg_authenticate_basic_user(request_rec * r)
+ 
+ 	if (!real_pw) {
+ 		if (pg_errstr[0]) {
+-			res = HTTP_INTERNAL_SERVER_ERROR;
++			auth_res = AUTH_GENERAL_ERROR;
+ 		} else {
+-			if (sec->auth_pg_authoritative) {
+ 				/* force error and access denied */
+ 				apr_snprintf(pg_errstr, MAX_STRING_LEN,
+ 							 "mod_auth_pgsql: Password for user %s not found (PG-Authoritative)",
+ 							 user);
+-				ap_note_basic_auth_failure(r);
+-				res = HTTP_UNAUTHORIZED;
+-			} else {
+-				/* allow fall through to another module */
+-				return DECLINED;
+-			}
++			auth_res = AUTH_USER_NOT_FOUND;
+ 		}
+ 		ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+-		return res;
++		return auth_res;
+ 	}
+ 
+ 	/* allow no password, if the flag is set and the password
+@@ -836,7 +834,7 @@ static int pg_authenticate_basic_user(request_rec * r)
+ 					 user);
+ 		ap_log_rerror(APLOG_MARK, APLOG_WARNING, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+ 		pg_log_auth_user(r, sec, user, sent_pw);
+-		return OK;
++		return AUTH_GRANTED;
+ 	};
+ 
+ 	/* if the flag is off however, keep that kind of stuff at
+@@ -847,8 +845,7 @@ static int pg_authenticate_basic_user(request_rec * r)
+ 					 "[mod_auth_pgsql.c] - Empty password rejected for user \"%s\"",
+ 					 user);
+ 		ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+-		ap_note_basic_auth_failure(r);
+-		return HTTP_UNAUTHORIZED;
++		return AUTH_DENIED;
+ 	};
+ 
+ 	if (sec->auth_pg_encrypted)
+@@ -877,8 +874,7 @@ static int pg_authenticate_basic_user(request_rec * r)
+ 			apr_snprintf(pg_errstr, MAX_STRING_LEN,
+ 						 "PG user %s: password mismatch", user);
+ 			ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+-			ap_note_basic_auth_failure(r);
+-			return HTTP_UNAUTHORIZED;
++			return AUTH_DENIED;
+ 		}
+ 
+ 	/*  store password in the cache */
+@@ -891,130 +887,13 @@ static int pg_authenticate_basic_user(request_rec * r)
+ 	}
+ 
+ 	pg_log_auth_user(r, sec, user, sent_pw);
+-	return OK;
+-}
+-
+-/* Checking ID */
+-
+-static int pg_check_auth(request_rec * r)
+-{
+-	pg_auth_config_rec *sec =
+-		(pg_auth_config_rec *) ap_get_module_config(r->per_dir_config,
+-													&auth_pgsql_module);
+-	char *user = r->user;
+-	int m = r->method_number;
+-	int group_result = DECLINED;
+-
+-
+-
+-	apr_array_header_t *reqs_arr = (apr_array_header_t *) ap_requires(r);
+-	require_line *reqs = reqs_arr ? (require_line *) reqs_arr->elts : NULL;
+-
+-	register int x, res;
+-	const char *t;
+-	char *w;
+-
+-	pg_errstr[0] = '\0';
+-
+-#ifdef DEBUG_AUTH_PGSQL
+-	ap_log_rerror(APLOG_MARK, APLOG_WARNING, 0, r,
+-				  "[mod_auth_pgsql.c] - pg_check_auth - going to check auth for user \"%s\" ",
+-				  user);
+-#endif							/* DEBUG_AUTH_PGSQL */
+-
+-
+-	if (!pg_conn) {
+-		if (!(pg_conn = pg_connect(sec))) {
+-			ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - cannot connect to database");
+-			ap_note_basic_auth_failure(r);
+-			return HTTP_UNAUTHORIZED;
+-		}
+-	}
+-
+-	/* if we cannot do it; leave it to some other guy 
+-	 */
+-	if ((!sec->auth_pg_grp_table) && (!sec->auth_pg_grp_group_field)
+-		&& (!sec->auth_pg_grp_user_field))
+-		return DECLINED;
+-
+-	if (!reqs_arr) {
+-		if (sec->auth_pg_authoritative) {
+-			/* force error and access denied */
+-			apr_snprintf(pg_errstr, MAX_STRING_LEN,
+-						 "mod_auth_pgsql: user %s denied, no access rules specified (PG-Authoritative)",
+-						 user);
+-			ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+-			ap_note_basic_auth_failure(r);
+-			res = HTTP_UNAUTHORIZED;
+-		} else {
+-			return DECLINED;
+-		}
+-	}
+-
+-	for (x = 0; x < reqs_arr->nelts; x++) {
+-
+-		if (!(reqs[x].method_mask & (1 << m)))
+-			continue;
+-
+-		t = reqs[x].requirement;
+-		w = ap_getword(r->pool, &t, ' ');
+-
+-		if (!strcmp(w, "valid-user"))
+-			return OK;
+-
+-		if (!strcmp(w, "user")) {
+-			while (t[0]) {
+-				w = ap_getword_conf(r->pool, &t);
+-				if (!strcmp(user, w))
+-					return OK;
+-			}
+-			if (sec->auth_pg_authoritative) {
+-				/* force error and access denied */
+-				apr_snprintf(pg_errstr, MAX_STRING_LEN,
+-							 "mod_auth_pgsql: user %s denied, no access rules specified (PG-Authoritative)",
+-							 user);
+-				ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+-				ap_note_basic_auth_failure(r);
+-				return HTTP_UNAUTHORIZED;
+-			}
+-
+-		} else if (!strcmp(w, "group")) {
+-			/* look up the membership for each of the groups in the table */
+-			pg_errstr[0] = '\0';
+-
+-			while (t[0]) {
+-				if (get_pg_grp(r, ap_getword(r->pool, &t, ' '), user, sec)) {
+-					group_result = OK;
+-				};
+-			};
+-
+-			if (pg_errstr[0]) {
+-				ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+-				return HTTP_INTERNAL_SERVER_ERROR;
+-			}
+-
+-			if (group_result == OK)
+-				return OK;
+-
+-			if (sec->auth_pg_authoritative) {
+-				apr_snprintf(pg_errstr, MAX_STRING_LEN,
+-							 "[mod_auth_pgsql.c] - user %s not in right groups (PG-Authoritative)",
+-							 user);
+-				ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r, "[mod_auth_pgsql.c] - ERROR - %s", pg_errstr);
+-				ap_note_basic_auth_failure(r);
+-				return HTTP_UNAUTHORIZED;
+-			};
+-		}
+-	}
+-
+-	return DECLINED;
++	return AUTH_GRANTED;
+ }
+ 
+-
+ /* Send the authentication to the log table */
+ int
+-pg_log_auth_user(request_rec * r, pg_auth_config_rec * sec, char *user,
+-				 char *sent_pw)
++pg_log_auth_user(request_rec * r, pg_auth_config_rec * sec, const char *user,
++				 const char *sent_pw)
+ {
+ 	char sql[MAX_STRING_LEN];
+ 	char *s;
+@@ -1087,7 +966,7 @@ pg_log_auth_user(request_rec * r, pg_auth_config_rec * sec, char *user,
+ 					 sec->auth_pg_log_addrs_field);
+ 		strncat(fields, sql, MAX_STRING_LEN - strlen(fields) - 1);
+ 		apr_snprintf(sql, MAX_STRING_LEN, ", '%s'",
+-					 r->connection->remote_ip);
++					 r->connection->client_ip);
+ 		strncat(values, sql, MAX_STRING_LEN - strlen(values) - 1);
+ 	}
+ 	if (sec->auth_pg_log_pwd_field) {	/* Password field , clear WARNING */
+@@ -1140,15 +1019,22 @@ static void *pg_auth_server_config(apr_pool_t * p, server_rec * s)
+ }
+ 
+ 
++static const authn_provider authn_pgsql_provider =
++{
++    &check_password,
++    NULL,
++};
++
+ static void register_hooks(apr_pool_t * p)
+ {
+ 	ap_hook_post_config(pg_auth_init_handler, NULL, NULL, APR_HOOK_MIDDLE);
+-	ap_hook_auth_checker(pg_check_auth, NULL, NULL, APR_HOOK_MIDDLE);
+-	ap_hook_check_user_id(pg_authenticate_basic_user, NULL, NULL,
+-						  APR_HOOK_MIDDLE);
++
++	ap_register_auth_provider(p, AUTHN_PROVIDER_GROUP, "pgsql",
++								AUTHN_PROVIDER_VERSION,
++								&authn_pgsql_provider, AP_AUTH_INTERNAL_PER_CONF);
+ };
+ 
+-module AP_MODULE_DECLARE_DATA auth_pgsql_module = {
++AP_DECLARE_MODULE(auth_pgsql) = {
+ 	STANDARD20_MODULE_STUFF,
+ 	create_pg_auth_dir_config,	/* dir config creater */
+ 	NULL,						/* dir merger --- default is to override */

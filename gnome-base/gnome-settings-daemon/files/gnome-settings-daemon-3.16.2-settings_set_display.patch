@@ -1,0 +1,47 @@
+From 804a75e86c8aafa46ff3c99933d1c8cd54ba7fcc Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 25 May 2015 12:35:13 -0400
+Subject: [PATCH] common: settings_set_display(): fix segfault when output ==
+ NULL
+
+If settings_set_display() was called with output == NULL, edid remained
+initialized to NULLs, but an array of NULLs is an illegal value for
+KEY_DISPLAY settings, which has type "as".
+
+https://bugzilla.gnome.org/show_bug.cgi?id=749844
+---
+ plugins/common/gsd-device-mapper.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/common/gsd-device-mapper.c b/plugins/common/gsd-device-mapper.c
+index ce70fd0..c8a1a1a 100644
+--- a/plugins/common/gsd-device-mapper.c
++++ b/plugins/common/gsd-device-mapper.c
+@@ -365,7 +365,8 @@ static void
+ settings_set_display (GSettings	    *settings,
+ 		      GnomeRROutput *output)
+ {
+-	gchar **prev, *edid[4] = { NULL, NULL, NULL, NULL };
++	/* KEY_DISPLAY is type "as", so edid[0..2] must not be NULL */
++	gchar **prev, *edid[4] = { "", "", "", NULL };
+ 	GVariant *value;
+ 	gsize nvalues;
+ 
+@@ -384,9 +385,11 @@ settings_set_display (GSettings	    *settings,
+ 		g_settings_set_value (settings, KEY_DISPLAY, value);
+ 	}
+ 
+-	g_free (edid[0]);
+-	g_free (edid[1]);
+-	g_free (edid[2]);
++	if (output) {
++		g_free (edid[0]);
++		g_free (edid[1]);
++		g_free (edid[2]);
++	}
+ 	g_strfreev (prev);
+ }
+ 
+-- 
+2.4.1
+

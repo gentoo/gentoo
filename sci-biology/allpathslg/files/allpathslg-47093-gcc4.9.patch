@@ -1,0 +1,16 @@
+ src/paths/long/VariantCallTools.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/paths/long/VariantCallTools.cc b/src/paths/long/VariantCallTools.cc
+index dfe2787..725878b 100644
+--- a/src/paths/long/VariantCallTools.cc
++++ b/src/paths/long/VariantCallTools.cc
+@@ -1674,7 +1674,7 @@ void EdgesOnRef::FindAllPathsNoLoop(const GraphT& dg, int entrace_edge, int exit
+     int n1 = to_right2[entrace_edge];
+     int n2 = to_left2[exit_edge];
+ 
+-    PartialPath start = {{n1},{}};
++    PartialPath start{{n1},vec<int>{}};
+     stack<PartialPath> visited;
+     visited.push(start);
+     while (! visited.empty()) {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>openstack@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+    The Oslo messaging API supports RPC and notifications over a number of different messaging transports.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">oslo.vmware</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,71 @@
+--- /src/include/bcmutils.h~	2011-10-22 18:55:54.000000000 +0200
++++ /src/include/bcmutils.h	2013-02-21 09:08:19.947034424 +0100
+@@ -555,7 +555,11 @@ extern void printbig(char *buf);
+ extern void prhex(const char *msg, uchar *buf, uint len);
+ 
+ extern bcm_tlv_t *BCMROMFN(bcm_next_tlv)(bcm_tlv_t *elt, int *buflen);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0)
+ extern bcm_tlv_t *BCMROMFN(bcm_parse_tlvs)(void *buf, int buflen, uint key);
++#else
++extern bcm_tlv_t *BCMROMFN(bcm_parse_tlvs)(const void *buf, int buflen, uint key);
++#endif
+ extern bcm_tlv_t *BCMROMFN(bcm_parse_ordered_tlvs)(void *buf, int buflen, uint key);
+ 
+ extern const char *bcmerrorstr(int bcmerror);
+--- /src/wl/sys/wl_cfg80211.c~	2013-02-21 09:06:18.971297216 +0100
++++ /src/wl/sys/wl_cfg80211.c	2013-02-21 09:10:56.682019739 +0100
+@@ -744,7 +744,11 @@ wl_cfg80211_join_ibss(struct wiphy *wiph
+ 	else
+ 		memset(&join_params.params.bssid, 0, ETHER_ADDR_LEN);
+ 
+-	wl_ch_to_chanspec(params->channel, &join_params, &join_params_size);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0)
++ 	wl_ch_to_chanspec(params->channel, &join_params, &join_params_size);
++#else
++	wl_ch_to_chanspec(params->chandef.chan, &join_params, &join_params_size);
++#endif
+ 
+ 	err = wl_dev_ioctl(dev, WLC_SET_SSID, &join_params, join_params_size);
+ 	if (err) {
+@@ -2047,9 +2051,14 @@ static s32 wl_update_bss_info(struct wl_
+ 	struct bcm_tlv *tim;
+ 	u16 beacon_interval;
+ 	s32 dtim_period;
+-	size_t ie_len;
+-	u8 *ie;
+ 	s32 err = 0;
++ 	size_t ie_len;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0)
++ 	u8 *ie;
++#else
++	const u8 *ie;
++	const struct cfg80211_bss_ies *ies;
++#endif
+ 
+ 	ssid = &wl->profile->ssid;
+ 	bss = cfg80211_get_bss(wl_to_wiphy(wl), NULL, (s8 *)&wl->bssid,
+@@ -2079,8 +2088,22 @@ static s32 wl_update_bss_info(struct wl_
+ 		beacon_interval = cpu_to_le16(bi->beacon_period);
+ 	} else {
+ 		WL_DBG(("Found the AP in the list - BSSID %pM\n", bss->bssid));
+-		ie = bss->information_elements;
+-		ie_len = bss->len_information_elements;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0)
++ 		ie = bss->information_elements;
++ 		ie_len = bss->len_information_elements;
++#else
++		rcu_read_lock();
++		ies = (const struct cfg80211_bss_ies*)rcu_dereference(bss->ies);
++		if (!ies) {
++			/* This should never happen */
++			rcu_read_unlock();
++			err = -EIO;
++			goto update_bss_info_out;
++		}
++		ie = ies->data;
++		ie_len = (size_t)(ies->len);
++		rcu_read_unlock();
++#endif
+ 		beacon_interval = bss->beacon_interval;
+ 		cfg80211_put_bss(bss);
+ 	}

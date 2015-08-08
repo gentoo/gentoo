@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription lang="en">A Python implementation of Textile, Dean Allen's Human Text Generator. 
+  Textile simplifies the work of creating (X)HTML.</longdescription>
+  <upstream>
+    <remote-id type="pypi">textile</remote-id>
+    <remote-id type="github">textile/python-textile</remote-id>
+  </upstream>
+</pkgmetadata>

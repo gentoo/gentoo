@@ -1,0 +1,53 @@
+Index: sslsniff/SSLConnectionManager.cpp
+===================================================================
+--- sslsniff.orig/SSLConnectionManager.cpp	2011-12-31 09:25:04.000000000 +0100
++++ sslsniff/SSLConnectionManager.cpp	2011-12-31 09:26:14.394534948 +0100
+@@ -44,7 +44,7 @@
+ }
+ 
+ void SSLConnectionManager::acceptIncomingConnection() {
+-  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor.io_service()));
++  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor.get_io_service()));
+ 
+   acceptor.async_accept(*socket, boost::bind(&SSLConnectionManager::handleClientConnection,
+ 					     this, socket, placeholders::error));
+@@ -76,7 +76,7 @@
+ 					     ip::tcp::endpoint &destination)
+ 
+ {
+-  Bridge::ptr bridge = RawBridge::create(clientSocket, destination, acceptor.io_service());
++  Bridge::ptr bridge = RawBridge::create(clientSocket, destination, acceptor.get_io_service());
+   bridge->shuttle();
+ }
+ 
+@@ -134,7 +134,7 @@
+ 					ip::tcp::endpoint &destination,
+ 					bool wildcardOK)
+ {
+-  ip::tcp::socket serverSocket(acceptor.io_service());
++  ip::tcp::socket serverSocket(acceptor.get_io_service());
+   boost::system::error_code error;
+   serverSocket.connect(destination, error);
+ 
+Index: sslsniff/http/HttpConnectionManager.cpp
+===================================================================
+--- sslsniff.orig/http/HttpConnectionManager.cpp	2011-05-14 11:37:52.000000000 +0200
++++ sslsniff/http/HttpConnectionManager.cpp	2011-12-31 09:26:28.442534999 +0100
+@@ -53,7 +53,7 @@
+ }
+ 
+ void HttpConnectionManager::acceptIncomingConnection() {
+-  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor_.io_service()));
++  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor_.get_io_service()));
+ 
+   acceptor_.async_accept(*socket, boost::bind(&HttpConnectionManager::handleClientConnection,
+ 					      this, socket, placeholders::error));
+@@ -63,7 +63,7 @@
+ void HttpConnectionManager::bridgeHttpRequest(boost::shared_ptr<ip::tcp::socket> socket,
+ 					      ip::tcp::endpoint destination)
+ {
+-  Bridge::ptr bridge = HttpBridge::create(socket, acceptor_.io_service(), 
++  Bridge::ptr bridge = HttpBridge::create(socket, acceptor_.get_io_service(), 
+ 					  FingerprintManager::getInstance());
+   
+   bridge->getServerSocket().

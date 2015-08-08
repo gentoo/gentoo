@@ -1,0 +1,47 @@
+--- conf/example.conf.in
++++ conf/example.conf.in
+@@ -50,7 +50,9 @@
+ 
+ 
+     # By default we accept every block device:
+-    filter = [ "a/.*/" ]
++    # Gentoo: we exclude /dev/nbd by default, because it makes a lot of kernel
++    # noise when you probed while not available.
++    filter = [ "r|/dev/nbd.*|", "a/.*/" ]
+ 
+     # Exclude the cdrom drive
+     # filter = [ "r|/dev/cdrom|" ]
+@@ -259,6 +261,8 @@
+     # the new lvm2 on-disk metadata format.
+     # The default value is set when the tools are built.
+     # fallback_to_lvm1 = 0
++    # Gentoo: the LVM tools are a seperate package.
++    fallback_to_lvm1 = 0
+ 
+     # The default metadata format that commands should use - "lvm1" or "lvm2".
+     # The command line override is -M1 or -M2.
+@@ -449,12 +453,12 @@
+ 
+ # Metadata settings
+ #
+-# metadata {
++metadata {
+     # Default number of copies of metadata to hold on each PV.  0, 1 or 2.
+     # You might want to override it from the command line with 0 
+     # when running pvcreate on new PVs which are to be added to large VGs.
+-
+-    # pvmetadatacopies = 1
++    # Gentoo: enable for data safety, but PV resize is then disabled.
++    #pvmetadatacopies = 2
+ 
+     # Approximate default size of on-disk metadata areas in sectors.
+     # You should increase this if you have large volume groups or
+@@ -476,7 +480,7 @@
+     # the supplied toolset to make changes (e.g. vgcfgrestore).
+ 
+     # dirs = [ "/etc/lvm/metadata", "/mnt/disk2/lvm/metadata2" ]
+-#}
++}
+ 
+ # Event daemon
+ #

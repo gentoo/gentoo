@@ -1,0 +1,10 @@
+--- cctools/include/mach/machine.h
++++ cctools/include/mach/machine.h
+@@ -306,6 +306,7 @@
+ #define CPU_SUBTYPE_ARM_V6		((cpu_subtype_t) 6)
+ #define CPU_SUBTYPE_ARM_V5TEJ		((cpu_subtype_t) 7)
+ #define CPU_SUBTYPE_ARM_XSCALE		((cpu_subtype_t) 8)
++#define CPU_SUBTYPE_ARM_V7			((cpu_subtype_t) 9)
+ 
+ /*
+  *	MC88000 subtypes

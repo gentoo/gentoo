@@ -1,0 +1,47 @@
+diff -Naur cgminer-4.3.5.orig/compat/Makefile.am cgminer-4.3.5/compat/Makefile.am
+--- cgminer-4.3.5.orig/compat/Makefile.am	2013-11-30 16:24:45.000000000 -0500
++++ cgminer-4.3.5/compat/Makefile.am	2014-06-10 09:50:07.363965296 -0400
+@@ -1,8 +1,5 @@
+-
+-SUBDIRS	= jansson-2.5
+-
+ if WANT_USBUTILS
+ if WANT_STATIC_LIBUSB
+-SUBDIRS += libusb-1.0
++SUBDIRS = libusb-1.0
+ endif
+ endif
+diff -Naur cgminer-4.3.5.orig/configure.ac cgminer-4.3.5/configure.ac
+--- cgminer-4.3.5.orig/configure.ac	2014-06-09 21:40:35.000000000 -0400
++++ cgminer-4.3.5/configure.ac	2014-06-10 09:49:42.306964156 -0400
+@@ -405,8 +405,7 @@
+ 
+ AM_CONDITIONAL([WANT_STATIC_LIBUSB], [test x$dlibusb = xno])
+ 
+-AC_CONFIG_SUBDIRS([compat/jansson-2.5])
+-JANSSON_LIBS="compat/jansson-2.5/src/.libs/libjansson.a"
++JANSSON_LIBS="-ljansson"
+ 
+ PKG_PROG_PKG_CONFIG()
+ 
+diff -Naur cgminer-4.3.5.orig/Makefile.am cgminer-4.3.5/Makefile.am
+--- cgminer-4.3.5.orig/Makefile.am	2014-06-09 20:29:40.000000000 -0400
++++ cgminer-4.3.5/Makefile.am	2014-06-10 09:49:56.153964786 -0400
+@@ -1,8 +1,6 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-JANSSON_CPPFLAGS= -I$(top_builddir)/compat/jansson-2.5/src -I$(top_srcdir)/compat/jansson-2.5/src
+-
+ if WANT_USBUTILS
+ USBUTILS_CPPFLAGS = -I$(top_builddir)/compat/libusb-1.0/libusb -I$(top_srcdir)/compat/libusb-1.0/libusb
+ else
+@@ -18,7 +16,7 @@
+ 
+ SUBDIRS		= lib compat ccan
+ 
+-cgminer_CPPFLAGS = $(PTHREAD_FLAGS) -fno-strict-aliasing $(JANSSON_CPPFLAGS) $(USBUTILS_CPPFLAGS)
++cgminer_CPPFLAGS = $(PTHREAD_FLAGS) -fno-strict-aliasing $(USBUTILS_CPPFLAGS)
+ 
+ bin_PROGRAMS	= cgminer
+ 

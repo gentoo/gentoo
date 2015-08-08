@@ -1,0 +1,22 @@
+diff -urNp pth-2.0.6.old/aclocal.m4 pth-2.0.6/aclocal.m4
+--- pth-2.0.6.old/aclocal.m4	2004-12-31 21:33:19.000000000 +0200
++++ pth-2.0.6/aclocal.m4	2006-09-20 14:46:59.000000000 +0300
+@@ -1522,6 +1522,7 @@ int main(int argc, char *argv[])
+     int sksize;
+     char result[1024];
+     int i;
++exit (1);
+     sksize = 32768;
+     skbuf = (char *)malloc(sksize*2+2*sizeof(union alltypes));
+     if (skbuf == NULL)
+diff -urNp pth-2.0.6.old/configure pth-2.0.6/configure
+--- pth-2.0.6.old/configure	2005-11-22 09:49:21.000000000 +0200
++++ pth-2.0.6/configure	2006-09-20 14:55:23.000000000 +0300
+@@ -24735,6 +24735,7 @@ int main(int argc, char *argv[])
+     int sksize;
+     char result[1024];
+     int i;
++exit (1);
+     sksize = 32768;
+     skbuf = (char *)malloc(sksize*2+2*sizeof(union alltypes));
+     if (skbuf == NULL)

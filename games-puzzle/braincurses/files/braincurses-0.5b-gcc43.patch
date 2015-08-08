@@ -1,0 +1,10 @@
+--- braincurses.h
++++ braincurses.h
+@@ -12,6 +12,7 @@
+ #include <cstddef>
+ #include <cstdlib>
+ #include <ctime>
++#include <cstring>
+ #include <iostream>
+ #include <map>
+ #include <string>

@@ -1,0 +1,14 @@
+--- demo.c	2011-11-25 00:25:28.000000000 +0800
++++ demo.c.new	2012-11-30 16:46:50.417333847 +0800
+@@ -81,9 +81,8 @@
+ /*--------------------------------------------------------------------*/
+ void print_usage(char *progname) {
+ 
+-	printf("\nMsieve v. %d.%02d (SVN %s)\n", MSIEVE_MAJOR_VERSION, 
+-					MSIEVE_MINOR_VERSION,
+-					MSIEVE_SVN_VERSION);
++	printf("\nMsieve v. %d.%02d\n", MSIEVE_MAJOR_VERSION, 
++					MSIEVE_MINOR_VERSION);
+ 
+ 	printf("\nusage: %s [options] [one_number]\n", progname);
+ 	printf("\nnumbers starting with '0' are treated as octal,\n"

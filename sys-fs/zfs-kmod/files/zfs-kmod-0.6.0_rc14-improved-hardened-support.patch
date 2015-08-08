@@ -1,0 +1,473 @@
+From ead579050140bfa010d06f6e0fea3f680c781b38 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Thu, 14 Feb 2013 18:54:04 -0500
+Subject: [PATCH] Eliminate runtime function pointer modifications in
+ autotools checks
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+PaX/GrSecurity patched kernels implement a dialect of C that relies on a
+GCC plugin for enforcement. A basic idea in this dialect is that
+function pointers in structures should not change during runtime.
+This causes code that modifies function pointers at runtime to fail to
+compile in many instances. The autotools checks rely on whether or
+not small test cases compile against a given kernel. Some
+autotools checks assume some default case if other cases fail. When one
+of these autotools checks tests a PaX/GrSecurity patched kernel by
+modifying a function pointer at runtime, the default case will be used.
+
+Early detection of such situations is possible by relying on compiler
+warnings, which are compiler errors when --enable-debug is used.
+Unfortunately, very few people build ZFS with --enable-debug. The more
+common situation is that these issues manifest themselves as runtime
+failures in the form of NULL pointer exceptions.
+
+Previous patches that addressed such issues with PaX/GrSecurity
+compatibility largely relied on rewriting autotools checks to avoid
+runtime function pointer modification or the addition of PaX/GrSecurity
+specific checks. This patch takes the previous work to its logical
+conclusion by eliminating the use of runtime function pointer
+modification. This permits the removal of PaX-specific autotools checks
+in favor of ones that work across all supported kernels.
+
+This should resolve issues that were reported to occur with
+PaX/GrSecurity-patched Linux 3.7.5 kernels on Gentoo Linux.
+
+https://bugs.gentoo.org/show_bug.cgi?id=457176
+
+We should be able to prevent future regressions in PaX/GrSecurity
+compatibility by ensuring that all changes to ZFSOnLinux avoid runtime
+function pointer modification. At the same time, this does not solve the
+issue of silent failures triggering default cases in the autotools
+check, which is what permitted these regressions to become runtime
+failures in the first place. This will need to be addressed in a future
+patch.
+
+Reported-by: Marcin Mirosław <bug@mejor.pl>
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+---
+ config/kernel-bdev-block-device-operations.m4 |   21 +++----
+ config/kernel-bio-end-io-t-args.m4            |    6 +-
+ config/kernel-create-nameidata.m4             |   12 ++--
+ config/kernel-dentry-operations.m4            |    6 +-
+ config/kernel-dirty-inode.m4                  |    8 +--
+ config/kernel-fallocate.m4                    |   37 +++--------
+ config/kernel-fsync.m4                        |   84 ++++---------------------
+ config/kernel-lookup-nameidata.m4             |    9 +--
+ config/kernel-mkdir-umode-t.m4                |    7 ++-
+ config/kernel-shrink.m4                       |   21 +++----
+ 10 files changed, 62 insertions(+), 149 deletions(-)
+
+diff --git a/config/kernel-bdev-block-device-operations.m4 b/config/kernel-bdev-block-device-operations.m4
+index 28c3032..1674af0 100644
+--- a/config/kernel-bdev-block-device-operations.m4
++++ b/config/kernel-bdev-block-device-operations.m4
+@@ -7,24 +7,21 @@ AC_DEFUN([ZFS_AC_KERNEL_BDEV_BLOCK_DEVICE_OPERATIONS], [
+ 	EXTRA_KCFLAGS="${NO_UNUSED_BUT_SET_VARIABLE}"
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/blkdev.h>
+-	],[
+-		int (*blk_open) (struct block_device *, fmode_t) = NULL;
+-		int (*blk_release) (struct gendisk *, fmode_t) = NULL;
+-		int (*blk_ioctl) (struct block_device *, fmode_t,
+-		                  unsigned, unsigned long) = NULL;
+-		int (*blk_compat_ioctl) (struct block_device *, fmode_t,
+-                                         unsigned, unsigned long) = NULL;
+-		struct block_device_operations blk_ops = {
++
++		int blk_open (struct block_device *bdev, fmode_t mode) { return 0; }
++		int blk_release (struct gendisk *g, fmode_t mode) { return 0; }
++		int blk_ioctl (struct block_device *bdev, fmode_t mode,
++		                  unsigned x, unsigned long y) { return 0; }
++		int blk_compat_ioctl (struct block_device * bdev, fmode_t mode,
++                                         unsigned x, unsigned long y) { return 0; }
++		static struct block_device_operations blk_ops __attribute__ ((unused)) = {
+ 			.open		= blk_open,
+ 			.release	= blk_release,
+ 			.ioctl		= blk_ioctl,
+ 			.compat_ioctl	= blk_compat_ioctl,
+ 		};
++	],[
+ 		
+-		blk_ops.open(NULL, 0);
+-		blk_ops.release(NULL, 0);
+-		blk_ops.ioctl(NULL, 0, 0, 0);
+-		blk_ops.compat_ioctl(NULL, 0, 0, 0);
+ 	],[
+ 		AC_MSG_RESULT(struct block_device)
+ 		AC_DEFINE(HAVE_BDEV_BLOCK_DEVICE_OPERATIONS, 1,
+diff --git a/config/kernel-bio-end-io-t-args.m4 b/config/kernel-bio-end-io-t-args.m4
+index ced4861..fe5707a 100644
+--- a/config/kernel-bio-end-io-t-args.m4
++++ b/config/kernel-bio-end-io-t-args.m4
+@@ -13,11 +13,9 @@ AC_DEFUN([ZFS_AC_KERNEL_BIO_END_IO_T_ARGS], [
+ 	EXTRA_KCFLAGS="-Werror"
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/bio.h>
++		void wanted_end_io(struct bio * bio, int x) { return; }
+ 	],[
+-		void (*wanted_end_io)(struct bio *, int) = NULL;
+-		bio_end_io_t *local_end_io __attribute__ ((unused));
+-
+-		local_end_io = wanted_end_io;
++		bio_end_io_t *local_end_io __attribute__ ((unused)) = wanted_end_io;
+ 	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_2ARGS_BIO_END_IO_T, 1,
+diff --git a/config/kernel-create-nameidata.m4 b/config/kernel-create-nameidata.m4
+index 100f077..c779715 100644
+--- a/config/kernel-create-nameidata.m4
++++ b/config/kernel-create-nameidata.m4
+@@ -5,18 +5,18 @@ AC_DEFUN([ZFS_AC_KERNEL_CREATE_NAMEIDATA], [
+ 	AC_MSG_CHECKING([whether iops->create() takes struct nameidata])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+ 		#ifdef HAVE_MKDIR_UMODE_T
+-		int (*inode_create) (struct inode *,struct dentry *,
+-		                     umode_t, struct nameidata *) = NULL;
++		int inode_create (struct inode *inode ,struct dentry *dentry,
++		                     umode_t umode, struct nameidata *nidata) { return 0; }
+ 		#else
+-		int (*inode_create) (struct inode *,struct dentry *,
+-		                     int, struct nameidata *) = NULL;
++		int inode_create (struct inode *inode,struct dentry *dentry,
++		                     int umode, struct nameidata * nidata) { return 0; }
+ 		#endif
+-		struct inode_operations iops __attribute__ ((unused)) = {
++		static struct inode_operations iops __attribute__ ((unused)) = {
+ 			.create		= inode_create,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_CREATE_NAMEIDATA, 1,
+ 		          [iops->create() operation takes nameidata])
+diff --git a/config/kernel-dentry-operations.m4 b/config/kernel-dentry-operations.m4
+index dfbea7d..b89c51d 100644
+--- a/config/kernel-dentry-operations.m4
++++ b/config/kernel-dentry-operations.m4
+@@ -5,12 +5,12 @@ AC_DEFUN([ZFS_AC_KERNEL_D_REVALIDATE_NAMEIDATA], [
+ 	AC_MSG_CHECKING([whether dops->d_revalidate() takes struct nameidata])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/dcache.h>
+-	],[
+-		int (*revalidate) (struct dentry *, struct nameidata *) = NULL;
+-		struct dentry_operations dops __attribute__ ((unused)) = {
++		int revalidate (struct dentry *dentry, struct nameidata *nidata) { return 0; }
++		static struct dentry_operations dops __attribute__ ((unused)) = {
+ 			.d_revalidate		= revalidate,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_D_REVALIDATE_NAMEIDATA, 1,
+ 		          [dops->d_revalidate() operation takes nameidata])
+diff --git a/config/kernel-dirty-inode.m4 b/config/kernel-dirty-inode.m4
+index 2ededf1..86e3425 100644
+--- a/config/kernel-dirty-inode.m4
++++ b/config/kernel-dirty-inode.m4
+@@ -8,11 +8,11 @@ AC_DEFUN([ZFS_AC_KERNEL_DIRTY_INODE_WITH_FLAGS], [
+ 	AC_MSG_CHECKING([whether sops->dirty_inode() wants flags])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
++		void dirty_inode (struct inode * a, int b) { return; }
++		static struct super_operations sops __attribute__ ((unused)) = {
++			.dirty_inode = dirty_inode,
++		};
+ 	],[
+-		void (*dirty_inode) (struct inode *, int) = NULL;
+-		struct super_operations sops __attribute__ ((unused));
+-
+-		sops.dirty_inode = dirty_inode;
+ 	],[
+ 		AC_MSG_RESULT([yes])
+ 		AC_DEFINE(HAVE_DIRTY_INODE_WITH_FLAGS, 1,
+diff --git a/config/kernel-fallocate.m4 b/config/kernel-fallocate.m4
+index 6ac5ae6..0041ef2 100644
+--- a/config/kernel-fallocate.m4
++++ b/config/kernel-fallocate.m4
+@@ -5,12 +5,12 @@ AC_DEFUN([ZFS_AC_KERNEL_FILE_FALLOCATE], [
+ 	AC_MSG_CHECKING([whether fops->fallocate() exists])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+-		long (*fallocate) (struct file *, int, loff_t, loff_t) = NULL;
+-		struct file_operations fops __attribute__ ((unused)) = {
+-			.fallocate = fallocate,
++		long test_fallocate(struct file *file, int mode, loff_t offset, loff_t len) { return 0; }
++		static const struct file_operations fops __attribute__ ((unused)) = {
++			.fallocate = test_fallocate,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_FILE_FALLOCATE, 1, [fops->fallocate() exists])
+ 	],[
+@@ -25,34 +25,14 @@ AC_DEFUN([ZFS_AC_KERNEL_INODE_FALLOCATE], [
+ 	AC_MSG_CHECKING([whether iops->fallocate() exists])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+-		long (*fallocate) (struct inode *, int, loff_t, loff_t) = NULL;
+-		struct inode_operations fops __attribute__ ((unused)) = {
+-			.fallocate = fallocate,
++		long test_fallocate (struct inode *inode, int mode, loff_t offset, loff_t len) { return 0; }
++		static const struct inode_operations fops __attribute__ ((unused)) = {
++			.fallocate = test_fallocate,
+ 		};
+ 	],[
+-		AC_MSG_RESULT(yes)
+-		AC_DEFINE(HAVE_INODE_FALLOCATE, 1, [fops->fallocate() exists])
+-	],[
+-		AC_MSG_RESULT(no)
+-	])
+-])
+-
+-dnl #
+-dnl # PaX Linux 2.6.38 - 3.x API
+-dnl #
+-AC_DEFUN([ZFS_AC_PAX_KERNEL_FILE_FALLOCATE], [
+-	AC_MSG_CHECKING([whether fops->fallocate() exists])
+-	ZFS_LINUX_TRY_COMPILE([
+-		#include <linux/fs.h>
+-	],[
+-		long (*fallocate) (struct file *, int, loff_t, loff_t) = NULL;
+-		struct file_operations_no_const fops __attribute__ ((unused)) = {
+-			.fallocate = fallocate,
+-		};
+ 	],[
+ 		AC_MSG_RESULT(yes)
+-		AC_DEFINE(HAVE_FILE_FALLOCATE, 1, [fops->fallocate() exists])
++		AC_DEFINE(HAVE_INODE_FALLOCATE, 1, [fops->fallocate() exists])
+ 	],[
+ 		AC_MSG_RESULT(no)
+ 	])
+@@ -65,5 +45,4 @@ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_FALLOCATE], [
+ 	ZFS_AC_KERNEL_FILE_FALLOCATE
+ 	ZFS_AC_KERNEL_INODE_FALLOCATE
+-	ZFS_AC_PAX_KERNEL_FILE_FALLOCATE
+ ])
+diff --git a/config/kernel-fsync.m4 b/config/kernel-fsync.m4
+index ca00d93..9ac0c79 100644
+--- a/config/kernel-fsync.m4
++++ b/config/kernel-fsync.m4
+@@ -4,11 +4,11 @@ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_FSYNC_WITH_DENTRY], [
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
++		int test_fsync (struct file *f, struct dentry *dentry, int x) { return 0; }
++		static const struct file_operations fops __attribute__ ((unused)) = {
++			.fsync = test_fsync,
++		};
+ 	],[
+-		int (*fsync) (struct file *, struct dentry *, int) = NULL;
+-		struct file_operations fops __attribute__ ((unused));
+-
+-		fops.fsync = fsync;
+ 	],[
+ 		AC_MSG_RESULT([dentry])
+ 		AC_DEFINE(HAVE_FSYNC_WITH_DENTRY, 1,
+@@ -23,11 +23,11 @@ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_FSYNC_WITHOUT_DENTRY], [
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
++		int test_fsync (struct file *f, int x) { return 0; }
++		static const struct file_operations fops __attribute__ ((unused)) = {
++			.fsync = test_fsync,
++		};
+ 	],[
+-		int (*fsync) (struct file *, int) = NULL;
+-		struct file_operations fops __attribute__ ((unused));
+-
+-		fops.fsync = fsync;
+ 	],[
+ 		AC_MSG_RESULT([no dentry])
+ 		AC_DEFINE(HAVE_FSYNC_WITHOUT_DENTRY, 1,
+@@ -42,68 +42,11 @@ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_FSYNC_RANGE], [
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
++		int test_fsync (struct file *f, loff_t a, loff_t b, int c) { return 0; }
++		static const struct file_operations fops __attribute__ ((unused)) = {
++			.fsync = test_fsync,
++		};
+ 	],[
+-		int (*fsync) (struct file *, loff_t, loff_t, int) = NULL;
+-		struct file_operations fops __attribute__ ((unused));
+-
+-		fops.fsync = fsync;
+-	],[
+-		AC_MSG_RESULT([range])
+-		AC_DEFINE(HAVE_FSYNC_RANGE, 1,
+-			[fops->fsync() with range])
+-	],[
+-	])
+-])
+-
+-dnl #
+-dnl # PaX Linux 2.6.x - 2.6.34 API
+-dnl #
+-AC_DEFUN([ZFS_AC_PAX_KERNEL_FSYNC_WITH_DENTRY], [
+-	ZFS_LINUX_TRY_COMPILE([
+-		#include <linux/fs.h>
+-	],[
+-		int (*fsync) (struct file *, struct dentry *, int) = NULL;
+-		file_operations_no_const fops __attribute__ ((unused));
+-
+-		fops.fsync = fsync;
+-	],[
+-		AC_MSG_RESULT([dentry])
+-		AC_DEFINE(HAVE_FSYNC_WITH_DENTRY, 1,
+-			[fops->fsync() with dentry])
+-	],[
+-	])
+-])
+-
+-dnl #
+-dnl # PaX Linux 2.6.35 - Linux 3.0 API
+-dnl #
+-AC_DEFUN([ZFS_AC_PAX_KERNEL_FSYNC_WITHOUT_DENTRY], [
+-	ZFS_LINUX_TRY_COMPILE([
+-		#include <linux/fs.h>
+-	],[
+-		int (*fsync) (struct file *, int) = NULL;
+-		file_operations_no_const fops __attribute__ ((unused));
+-
+-		fops.fsync = fsync;
+-	],[
+-		AC_MSG_RESULT([no dentry])
+-		AC_DEFINE(HAVE_FSYNC_WITHOUT_DENTRY, 1,
+-			[fops->fsync() without dentry])
+-	],[
+-	])
+-])
+-
+-dnl #
+-dnl # PaX Linux 3.1 - 3.x API
+-dnl #
+-AC_DEFUN([ZFS_AC_PAX_KERNEL_FSYNC_RANGE], [
+-	ZFS_LINUX_TRY_COMPILE([
+-		#include <linux/fs.h>
+-	],[
+-		int (*fsync) (struct file *, loff_t, loff_t, int) = NULL;
+-		file_operations_no_const fops __attribute__ ((unused));
+-
+-		fops.fsync = fsync;
+ 	],[
+ 		AC_MSG_RESULT([range])
+ 		AC_DEFINE(HAVE_FSYNC_RANGE, 1,
+@@ -117,7 +60,4 @@ AC_DEFUN([ZFS_AC_KERNEL_FSYNC], [
+ 	ZFS_AC_KERNEL_FSYNC_WITH_DENTRY
+ 	ZFS_AC_KERNEL_FSYNC_WITHOUT_DENTRY
+ 	ZFS_AC_KERNEL_FSYNC_RANGE
+-	ZFS_AC_PAX_KERNEL_FSYNC_WITH_DENTRY
+-	ZFS_AC_PAX_KERNEL_FSYNC_WITHOUT_DENTRY
+-	ZFS_AC_PAX_KERNEL_FSYNC_RANGE
+ ])
+diff --git a/config/kernel-lookup-nameidata.m4 b/config/kernel-lookup-nameidata.m4
+index 5e30be4..20b8cca 100644
+--- a/config/kernel-lookup-nameidata.m4
++++ b/config/kernel-lookup-nameidata.m4
+@@ -5,13 +5,14 @@ AC_DEFUN([ZFS_AC_KERNEL_LOOKUP_NAMEIDATA], [
+ 	AC_MSG_CHECKING([whether iops->lookup() takes struct nameidata])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+-		struct dentry * (*inode_lookup) (struct inode *,struct dentry *,
+-		                     struct nameidata *) = NULL;
+-		struct inode_operations iops __attribute__ ((unused)) = {
++		struct dentry * inode_lookup (struct inode * inode,
++			struct dentry * dentry, struct nameidata * nidata)
++			{ return NULL; }
++		static struct inode_operations iops __attribute__ ((unused)) = {
+ 			.lookup		= inode_lookup,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_LOOKUP_NAMEIDATA, 1,
+ 		          [iops->lookup() operation takes nameidata])
+diff --git a/config/kernel-mkdir-umode-t.m4 b/config/kernel-mkdir-umode-t.m4
+index dd5d94b..ce8aa8f 100644
+--- a/config/kernel-mkdir-umode-t.m4
++++ b/config/kernel-mkdir-umode-t.m4
+@@ -10,12 +10,13 @@ AC_DEFUN([ZFS_AC_KERNEL_MKDIR_UMODE_T], [
+ 	AC_MSG_CHECKING([whether iops->create()/mkdir()/mknod() take umode_t])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+-		int (*mkdir) (struct inode *,struct dentry *,umode_t) = NULL;
+-		struct inode_operations iops __attribute__ ((unused)) = {
++		int mkdir (struct inode * inode, struct dentry * dentry, umode_t umode)
++			{ return 0; }
++		static struct inode_operations iops __attribute__ ((unused)) = {
+ 			.mkdir = mkdir,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_MKDIR_UMODE_T, 1,
+ 		    [iops->create()/mkdir()/mknod() take umode_t])
+diff --git a/config/kernel-shrink.m4 b/config/kernel-shrink.m4
+index ea748c9..ce4b965 100644
+--- a/config/kernel-shrink.m4
++++ b/config/kernel-shrink.m4
+@@ -8,15 +8,14 @@ AC_DEFUN([ZFS_AC_KERNEL_SHRINK], [
+ 	AC_MSG_CHECKING([whether super_block has s_shrink])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+-		int (*shrink)(struct shrinker *, struct shrink_control *sc)
+-			__attribute__ ((unused)) = NULL;
+-		struct super_block sb __attribute__ ((unused)) = {
++		int shrink(struct shrinker * s, struct shrink_control *sc) { return 0; }
++		static struct super_block sb __attribute__ ((unused)) = {
+ 			.s_shrink.shrink = shrink,
+ 			.s_shrink.seeks = DEFAULT_SEEKS,
+ 			.s_shrink.batch = 0,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_SHRINK, 1, [struct super_block has s_shrink])
+ 
+@@ -29,13 +28,12 @@ AC_DEFUN([ZFS_AC_KERNEL_NR_CACHED_OBJECTS], [
+ 	AC_MSG_CHECKING([whether sops->nr_cached_objects() exists])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+-		int (*nr_cached_objects)(struct super_block *)
+-			__attribute__ ((unused)) = NULL;
+-		struct super_operations sops __attribute__ ((unused)) = {
++		int nr_cached_objects(struct super_block * sb) { return 0; }
++		static struct super_operations sops __attribute__ ((unused)) = {
+ 			.nr_cached_objects = nr_cached_objects,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_NR_CACHED_OBJECTS, 1,
+ 			[sops->nr_cached_objects() exists])
+@@ -48,13 +46,12 @@ AC_DEFUN([ZFS_AC_KERNEL_FREE_CACHED_OBJECTS], [
+ 	AC_MSG_CHECKING([whether sops->free_cached_objects() exists])
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/fs.h>
+-	],[
+-		void (*free_cached_objects)(struct super_block *, int)
+-			__attribute__ ((unused)) = NULL;
+-		struct super_operations sops __attribute__ ((unused)) = {
++		void free_cached_objects(struct super_block * sb, int x) { return; }
++		static struct super_operations sops __attribute__ ((unused)) = {
+ 			.free_cached_objects = free_cached_objects,
+ 		};
+ 	],[
++	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_FREE_CACHED_OBJECTS, 1,
+ 			[sops->free_cached_objects() exists])
+-- 
+1.7.10
+

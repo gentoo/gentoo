@@ -1,0 +1,25 @@
+From 2fece6b29c9f3eefa523c8131cce02f724e437f3 Mon Sep 17 00:00:00 2001
+Message-Id: <2fece6b29c9f3eefa523c8131cce02f724e437f3.1330934918.git.jlec@gentoo.org>
+From: martin <martin@think.(none)>
+Date: Sun, 19 Feb 2012 10:43:39 -0500
+Subject: [PATCH] FIX: don't wrap vtkQt classes
+
+---
+ tvtk/code_gen.py |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/tvtk/code_gen.py b/tvtk/code_gen.py
+index f0b0b60..377801e 100644
+--- a/tvtk/code_gen.py
++++ b/tvtk/code_gen.py
+@@ -92,6 +92,7 @@ class TVTKGenerator:
+         #classes = dir(vtk)
+         classes = [x.name for x in wrap_gen.get_tree() \
+                    if x.name.startswith('vtk') and \
++                   not x.name.startswith('vtkQt') and \
+                    not issubclass(getattr(vtk, x.name), object) ]
+         for nodes in tree:
+             for node in nodes:
+-- 
+1.7.8.5
+

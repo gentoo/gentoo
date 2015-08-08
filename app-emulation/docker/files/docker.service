@@ -1,0 +1,12 @@
+[Unit]
+Description=Easily create lightweight, portable, self-sufficient containers from any application!
+Requires=network.target
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/mount --make-rprivate /
+ExecStart=/usr/bin/docker -d
+
+[Install]
+WantedBy=multi-user.target

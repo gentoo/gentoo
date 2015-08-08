@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>nikoli@gmx.us</email>
+    <name>Nikoli</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">subliminal</remote-id>
+    <remote-id type="github">Diaoul/subliminal</remote-id>
+  </upstream>
+</pkgmetadata>

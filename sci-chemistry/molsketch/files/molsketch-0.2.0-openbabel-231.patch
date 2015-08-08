@@ -1,0 +1,54 @@
+ CMakeLists.txt                        |   12 ++++++------
+ libmolsketch/src/stereocenteritem.cpp |    2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a4b5d29..f472b40 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,10 +12,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+ # compiler issues are fixed and more warnings are issued. #
+ ###########################################################
+ if (CMAKE_COMPILER_IS_GNUCXX)
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align")
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror-implicit-function-declaration -Wchar-subscripts")
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security")
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-format-attribute -fno-common")
++#   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align")
++#   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror-implicit-function-declaration -Wchar-subscripts")
++#   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security")
++#   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-format-attribute -fno-common")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align") 
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions -fno-check-new -fno-common")
+@@ -32,7 +32,7 @@ set(CPACK_SOURCE_IGNORE_FILES "/build;/.git")
+ include(CPack)
+ 
+ # Unit testing, mainly useful for developers and so defaults to off
+-option(ENABLE_TESTS "Enable unit testing" ON)
++option(ENABLE_TESTS "Enable unit testing" OFF)
+ if(ENABLE_TESTS)
+   set(QT_USE_QTTEST TRUE)
+   enable_testing()
+@@ -48,7 +48,7 @@ configure_file("${CMAKE_MODULE_PATH}/cmake_uninstall.cmake.in"
+ add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+ 
+ # Enabling debugging symbols
+-set(CMAKE_BUILD_TYPE Debug)
++# set(CMAKE_BUILD_TYPE Debug)
+ 
+ # Enabling shared libraries
+ set(BUILD_SHARED_LIBS OFF)
+diff --git a/libmolsketch/src/stereocenteritem.cpp b/libmolsketch/src/stereocenteritem.cpp
+index 44a8015..20f2a4a 100644
+--- a/libmolsketch/src/stereocenteritem.cpp
++++ b/libmolsketch/src/stereocenteritem.cpp
+@@ -63,7 +63,7 @@ namespace Molsketch {
+     graphsym.GetSymmetry(symmetry_classes);
+ 
+     //std::vector<unsigned long> atomIds = FindTetrahedralAtoms(obmol, symmetry_classes);
+-    std::vector<OpenBabel::StereogenicUnit> units = FindStereogenicUnits(obmol, symmetry_classes);
++    OpenBabel::OBStereoUnitSet units = FindStereogenicUnits(obmol, symmetry_classes);
+     
+     for (unsigned int i = 0; i < units.size(); ++i) {
+       if (units.at(i).type == OpenBabel::OBStereo::Tetrahedral) {

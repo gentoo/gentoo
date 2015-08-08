@@ -1,0 +1,57 @@
+From 497ad9c27385c02f4f038b6e787ada9c7b6f8373 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Wed, 9 Oct 2013 18:24:28 +0200
+Subject: [PATCH] fix underlinking
+
+---
+ configure.ac    | 20 ++++++++++++++++++++
+ src/Makefile.am |  2 +-
+ 2 files changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9f402bd..4b923a9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -893,6 +893,26 @@ fi
+ 
+ AM_CONDITIONAL(BUILD_TESTS,test x$found_cunit = xyes)
+ 
++dnl Check for clock_gettime, in libc for FreeBSD, in rt for linux,
++dnl in rt for Solaris 7, in posix4 for Solaris 2.5.1
++LIB_CLOCK_GETTIME=
++clk_saved_libs=$LIBS
++AC_SEARCH_LIBS([clock_gettime], [rt posix4],
++    [test "$ac_cv_search_clock_gettime" = "none required" ||
++    LIB_CLOCK_GETTIME=$ac_cv_search_clock_gettime])
++AC_SUBST([LIB_CLOCK_GETTIME])
++
++AC_MSG_CHECKING([for working clock_gettime])
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <time.h>]],
++    [[clock_gettime(CLOCK_REALTIME, 0);]])], [gnupg_cv_clock_gettime=yes], [gnupg_cv_clock_gettime=no])
++AC_MSG_RESULT($gnupg_cv_clock_gettime)
++
++if test x"$gnupg_cv_clock_gettime" = xyes; then
++    AC_DEFINE([HAVE_CLOCK_GETTIME], 1,
++    [Define to 1 if you have the `clock_gettime' function.])
++fi
++LIBS=$clk_saved_libs
++
+ 
+ dnl ##################################################
+ dnl # Check for doxygen
+diff --git a/src/Makefile.am b/src/Makefile.am
+index a315e92..a5e144c 100755
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -266,7 +266,7 @@ voipdescs.h:	Makefile $(libmediastreamer_voip_la_SOURCES)
+ 	awk 'BEGIN { print("MSFilterDesc * ms_voip_filter_descs[]={") } { printf("&%s,\n",$$1) } END{ print("NULL\n};\n") } ' $$builddir/voipdescs.txt >> $$builddir/$@
+ 
+ 
+-libmediastreamer_base_la_LIBADD=	$(ORTP_LIBS)
++libmediastreamer_base_la_LIBADD=	$(ORTP_LIBS) @LIB_CLOCK_GETTIME@
+ libmediastreamer_base_la_LDFLAGS= -no-undefined -version-info $(LIBMEDIASTREAMER_SO_VERSION)
+ 
+ if !BUILD_WIN32
+-- 
+1.8.3.2
+

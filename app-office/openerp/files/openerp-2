@@ -1,0 +1,23 @@
+#!/sbin/runscript
+
+# Additional options that are passed to the daemon.
+DAEMON_OPTS="-c ${CONFIGFILE}"
+
+depend() {
+	after postgresql
+}
+
+start() {
+	checkpath -q -d -m 0755 -o openerp:openerp /run/openerp
+	ebegin "Starting openerp server"
+	start-stop-daemon --start --quiet --pidfile "${PIDFILE}" --exec /usr/bin/openerp-server \
+		--make-pidfile --user "${USER}" --background -- ${DAEMON_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping openerp server"
+	start-stop-daemon --stop --quiet --pidfile "${PIDFILE}" --signal 9
+	rm -f "${PIDFILE}"
+	eend $?
+}

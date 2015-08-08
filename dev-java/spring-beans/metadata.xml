@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		The Spring Framework provides a comprehensive programming and configuration model for
+		modern Java-based enterprise applications - on any kind of deployment platform. A key
+		element of Spring is infrastructural support at the application level: Spring focuses
+		on the "plumbing" of enterprise applications so that teams can focus on application-level
+		business logic, without unnecessary ties to specific deployment environments.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">SpringSource/spring-framework</remote-id>
+	</upstream>
+</pkgmetadata>
+

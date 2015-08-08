@@ -1,0 +1,12 @@
+diff -Nur a/configure.in b/configure.in
+--- a/configure.in	2011-11-21 17:06:56.000000000 +0100
++++ b/configure.in	2013-05-01 13:48:30.599978971 +0200
+@@ -6,7 +6,7 @@
+ AC_CONFIG_SRCDIR([src/tw/tw.cpp])
+ AC_CANONICAL_TARGET([])
+ AM_INIT_AUTOMAKE(tripwire, 2.4.2.2)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ dnl #################################
+ dnl Cleanup Cruft Leftover From Patch

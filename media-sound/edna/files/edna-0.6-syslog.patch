@@ -1,0 +1,83 @@
+--- edna.py.orig	2007-01-27 18:53:24.000000000 +0000
++++ edna.py	2007-01-27 18:58:38.000000000 +0000
+@@ -42,6 +42,7 @@
+ import socket
+ import re
+ import stat
++import syslog
+ import random
+ import time
+ import struct
+@@ -144,6 +145,12 @@
+           self.log = open(log, 'a')
+         except IOError:
+           pass
++    else:
++      try:
++        syslog.openlog('edna')
++        self.log = True
++      except:
++        pass
+     
+     template_path = config.get('server', 'template-dir')
+     template_file = config.get('server', 'template')
+@@ -254,7 +261,7 @@
+             (config.get('server', 'binding-hostname'), self.port),
+             EdnaRequestHandler)
+     except socket.error, value:
+-        self.log_message( "edna: bind(): %s" % str(value[1]) )
++        self.log_message( "bind(): %s" % str(value[1]) )
+         raise SystemExit
+ 
+   def server_bind(self):
+@@ -290,12 +297,17 @@
+     return 0
+ 
+   def log_message(self, msg):
+-    if self.log:
+-      try:
+-        self.log.write(msg + '\n')
+-        self.log.flush()
+-      except IOError:
+-        pass
++      if self.log == True:
++        try:
++           syslog.syslog(msg)
++        except:
++           pass
++      elif self.log:
++        try:
++           self.log.write('edna: ' + msg + '\n')
++           self.log.flush()
++        except IOError:
++           pass
+ 
+   def debug_message(self, msg):
+     if debug_level<1:
+@@ -1125,21 +1137,21 @@
+ 
+   svr = Server(fname)
+   if oggSupport == 'yes':
+-    svr.log_message('edna: Ogg Vorbis support enabled')
++    svr.log_message('Ogg Vorbis support enabled')
+   else:
+-    svr.log_message('edna: Ogg Vorbis support disabled, to enable it you will need to install the "pyogg" and the "pyvorbis" modules')
++    svr.log_message('Ogg Vorbis support disabled, to enable it you will need to install the "pyogg" and the "pyvorbis" modules')
+ 
+-  svr.log_message("edna: serving on port %d..." % svr.port)
++  svr.log_message("serving on port %d..." % svr.port)
+   try:
+     while running:
+ #      print 'waiting ... '
+       if config_needed:
+-        svr.log_message('edna: Reloading config %s' % fname)
++        svr.log_message('Reloading config %s' % fname)
+         svr.server_close()
+         svr = Server(fname)
+         config_needed  = None
+       svr.handle_request()
+-    svr.log_message ("edna: exiting")
++    svr.log_message ("exiting")
+     sys.exit(0)
+   except KeyboardInterrupt:
+     print "\nCaught ctr-c, taking down the server"

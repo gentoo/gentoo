@@ -1,0 +1,11 @@
+--- src/FbTk/ImagePNG.cc
++++ src/FbTk/ImagePNG.cc
+@@ -88,7 +88,7 @@
+     // check header
+     unsigned char tag[4];
+     fread(tag, 1, 4, fp);
+-    if (!png_check_sig(tag, 4)) {
++    if (png_sig_cmp(tag, 0, 4)) {
+         fclose(fp);
+         return 0;
+     }

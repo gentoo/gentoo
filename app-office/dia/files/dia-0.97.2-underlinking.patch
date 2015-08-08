@@ -1,0 +1,27 @@
+From 2f853bab67b087605a10f544a7df780ac98b8583 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <gentoo@mgorny.alt.pl>
+Date: Sat, 7 Jul 2012 17:28:59 +0200
+Subject: [PATCH] Fix missing linkage with gmodule-2.0.
+
+Fixes: https://bugzilla.gnome.org/show_bug.cgi?id=678761
+Fixes: https://bugs.gentoo.org/show_bug.cgi?id=420685
+---
+ dia-0.97.2/configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dia-0.97.2/configure.in b/dia-0.97.2/configure.in
+index 72830de..6b7394a 100644
+--- a/dia-0.97.2/configure.in
++++ b/dia-0.97.2/configure.in
+@@ -55,7 +55,7 @@ AC_SUBST(GMODULE_CFLAGS)
+ AC_SUBST(GMODULE_LIBS)
+ AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+ 
+-GTK_MODULES="gtk+-2.0 >= 2.6.0 glib-2.0 >= 2.6.0 libxml-2.0 gdk-pixbuf-2.0 gthread-2.0"
++GTK_MODULES="gtk+-2.0 >= 2.6.0 glib-2.0 >= 2.6.0 libxml-2.0 gdk-pixbuf-2.0 gthread-2.0 gmodule-2.0"
+ PKG_CHECK_MODULES(PANGOVERSION, pango >= 1.8.0, , 
+                   AC_MSG_ERROR([Need Pango version 1.8.0 or higher]))
+ 
+-- 
+1.7.11.1
+

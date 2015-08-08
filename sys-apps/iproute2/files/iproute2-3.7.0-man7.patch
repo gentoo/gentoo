@@ -1,0 +1,55 @@
+From 18c1de8d742792d43ff81ebff9af5389e5be7cae Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 11 Jan 2013 11:34:08 -0500
+Subject: [PATCH] [iproute2] add man7 to subdirs list
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The man dir misses the man7 as a subdir which means none of the pages
+get installed.
+
+URL: https://bugs.gentoo.org/451166
+Reported-by: Marcin Mirosław <bug@mejor.pl>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ man/Makefile      |  2 +-
+ man/man7/Makefile | 13 +++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+ create mode 100644 man/man7/Makefile
+
+diff --git a/man/Makefile b/man/Makefile
+index 67fea05..9a60fa7 100644
+--- a/man/Makefile
++++ b/man/Makefile
+@@ -2,7 +2,7 @@ INSTALL=install
+ INSTALLDIR=install -m 0755 -d
+ INSTALLMAN=install -m 0644
+ 
+-SUBDIRS = man3 man8
++SUBDIRS = man3 man7 man8
+ 
+ all:
+ 	@for subdir in $(SUBDIRS); do $(MAKE) -C $$subdir; done
+diff --git a/man/man7/Makefile b/man/man7/Makefile
+new file mode 100644
+index 0000000..ccfd839
+--- /dev/null
++++ b/man/man7/Makefile
+@@ -0,0 +1,13 @@
++MAN7PAGES = tc-hfsc.7
++
++all:
++
++distclean: clean
++
++clean:
++
++install:
++	$(INSTALLDIR) $(DESTDIR)$(MANDIR)/man7
++	$(INSTALLMAN) $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
++
++.PHONY: install clean distclean
+-- 
+1.8.0.2
+

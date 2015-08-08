@@ -1,0 +1,58 @@
+--- data/Makefile.old	2015-01-07 14:22:34.852150894 +0100
++++ data/Makefile	2015-01-07 14:57:44.079822614 +0100
+@@ -15,20 +15,29 @@
+ 	ar r libdata.a $(OBJS)
+ 	ranlib libdata.a
+ 
+-$(SOURCES):
+-	cd ../utils/; $(MAKE)
++monos_fnt.c:
+ 	../utils/ttf2font ttfs/mono.ttf monos.fnt 30 30
+ 	../utils/data2c monos.fnt monos_fnt
++	rm monos.fnt
++monob_fnt.c:
+ 	../utils/ttf2font ttfs/mono.ttf monob.fnt 45 45
+ 	../utils/data2c monob.fnt monob_fnt
+-	rm *.fnt
++	rm monob.fnt
++title_jpg.c:
+ 	../utils/data2c jpgs/title.jpg title_jpg
++board_jpg.c:
+ 	../utils/data2c jpgs/board.jpg board_jpg
++logo_jpg.c:
+ 	../utils/data2c jpgs/logo.jpg logo_jpg
++pad_png.c: pngs/pad.png
+ 	../utils/data2c pngs/pad.png pad_png
++puck_png.c: pngs/puck.png
+ 	../utils/data2c pngs/puck.png puck_png
++scoreboard_png.c:
+ 	../utils/data2c pngs/scoreboard.png scoreboard_png
++mousebar_png.c:
+ 	../utils/data2c pngs/mousebar.png mousebar_png
++glass_png.c:
+ 	../utils/data2c pngs/glass.png glass_png
+ 	../utils/data2c pngs/piece1.png piece1_png
+ 	../utils/data2c pngs/piece2.png piece2_png
+@@ -37,15 +46,22 @@
+ 	../utils/data2c pngs/piece5.png piece5_png
+ 	mv glass_png.c temp; cat temp piece?_png.c > glass_png.c
+ 	rm piece?_png.c temp
++crash_ogg.c:
+ 	../utils/data2c sounds/crash.ogg crash_ogg
++nock_ogg.c:
+ 	../utils/data2c sounds/nock.ogg nock_ogg
++tux_eyes_spr.c:
+ 	# Tux
+ 	../utils/anim tux/eyes.ac tux_eyes.spr
+ 	../utils/data2c tux_eyes.spr tux_eyes_spr
+ 	rm tux_eyes.spr
++tux_png.c: tux/tux.png
+ 	../utils/data2c tux/tux.png tux_png
++tux_apps_ogg.c:
+ 	../utils/data2c tux/apps.ogg tux_apps_ogg
++tux_boos_ogg.c:
+ 	../utils/data2c tux/boos.ogg tux_boos_ogg
++arcana_png.c:
+ 	# Arcana
+ 	../utils/data2c arcana/arcana.png arcana_png
+ clean :

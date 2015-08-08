@@ -1,0 +1,701 @@
+diff -ur bootpd-2.4.orig/bootpd.c bootpd-2.4/bootpd.c
+--- bootpd-2.4.orig/bootpd.c	1995-02-19 17:53:02.000000000 +0200
++++ bootpd-2.4/bootpd.c	2010-07-07 14:55:03.000000000 +0300
+@@ -117,14 +117,14 @@
+ extern void dumptab P((char *));
+ 
+ PRIVATE void catcher P((int));
+-PRIVATE int chk_access P((char *, int32 *));
++PRIVATE int chk_access P((char *, int32_t *));
+ #ifdef VEND_CMU
+ PRIVATE void dovend_cmu P((struct bootp *, struct host *));
+ #endif
+-PRIVATE void dovend_rfc1048 P((struct bootp *, struct host *, int32));
++PRIVATE void dovend_rfc1048 P((struct bootp *, struct host *, int32_t));
+ PRIVATE void handle_reply P((void));
+ PRIVATE void handle_request P((void));
+-PRIVATE void sendreply P((int forward, int32 dest_override));
++PRIVATE void sendreply P((int forward, int32_t dest_override));
+ PRIVATE void usage P((void));
+ 
+ #undef	P
+@@ -185,7 +185,7 @@
+  * main server loop is started.
+  */
+ 
+-void
++int
+ main(argc, argv)
+ 	int argc;
+ 	char **argv;
+@@ -339,7 +339,7 @@
+ 						"%s: invalid timeout specification\n", progname);
+ 				break;
+ 			}
+-			actualtimeout.tv_sec = (int32) (60 * n);
++			actualtimeout.tv_sec = (int32_t) (60 * n);
+ 			/*
+ 			 * If the actual timeout is zero, pass a NULL pointer
+ 			 * to select so it blocks indefinitely, otherwise,
+@@ -559,9 +559,9 @@
+ 			break;
+ 		}
+ 	}
++	return(0);
+ }
+ 
+-
+ 
+ 
+ /*
+@@ -616,9 +616,9 @@
+ 	struct bootp *bp = (struct bootp *) pktbuf;
+ 	struct host *hp = NULL;
+ 	struct host dummyhost;
+-	int32 bootsize = 0;
++	int32_t bootsize = 0;
+ 	unsigned hlen, hashcode;
+-	int32 dest;
++	int32_t dest;
+ 	char realpath[1024] = {""};
+ 	char *clntpath;
+ 	char *homedir, *bootfile;
+@@ -726,7 +726,7 @@
+ 	 * with a timestamp lower than the threshold.
+ 	 */
+ 	if (hp->flags.min_wait) {
+-		u_int32 t = (u_int32) ntohs(bp->bp_secs);
++		uint32_t t = (uint32_t) ntohs(bp->bp_secs);
+ 		if (t < hp->min_wait) {
+ 			if (debug > 1)
+ 				report(LOG_INFO,
+@@ -997,7 +997,7 @@
+ PRIVATE void
+ sendreply(forward, dst_override)
+ 	int forward;
+-	int32 dst_override;
++	int32_t dst_override;
+ {
+ 	struct bootp *bp = (struct bootp *) pktbuf;
+ 	struct in_addr dst;
+@@ -1110,12 +1110,12 @@
+ PRIVATE int
+ chk_access(path, filesize)
+ 	char *path;
+-	int32 *filesize;
++	int32_t *filesize;
+ {
+ 	struct stat st;
+ 
+ 	if ((stat(path, &st) == 0) && (st.st_mode & (S_IREAD >> 6))) {
+-		*filesize = (int32) st.st_size;
++		*filesize = (int32_t) st.st_size;
+ 		return 0;
+ 	} else {
+ 		return -1;
+@@ -1211,7 +1211,7 @@
+ dovend_rfc1048(bp, hp, bootsize)
+ 	struct bootp *bp;
+ 	struct host *hp;
+-	int32 bootsize;
++	int32_t bootsize;
+ {
+ 	int bytesleft, len;
+ 	byte *vp;
+diff -ur bootpd-2.4.orig/bootpd.c-org bootpd-2.4/bootpd.c-org
+--- bootpd-2.4.orig/bootpd.c-org	1994-11-27 15:36:21.000000000 +0200
++++ bootpd-2.4/bootpd.c-org	2010-07-07 14:55:03.000000000 +0300
+@@ -117,14 +117,14 @@
+ extern void dumptab P((char *));
+ 
+ PRIVATE void catcher P((int));
+-PRIVATE int chk_access P((char *, int32 *));
++PRIVATE int chk_access P((char *, int32_t *));
+ #ifdef VEND_CMU
+ PRIVATE void dovend_cmu P((struct bootp *, struct host *));
+ #endif
+-PRIVATE void dovend_rfc1048 P((struct bootp *, struct host *, int32));
++PRIVATE void dovend_rfc1048 P((struct bootp *, struct host *, int32_t));
+ PRIVATE void handle_reply P((void));
+ PRIVATE void handle_request P((void));
+-PRIVATE void sendreply P((int forward, int32 dest_override));
++PRIVATE void sendreply P((int forward, int32_t dest_override));
+ PRIVATE void usage P((void));
+ 
+ #undef	P
+@@ -339,7 +339,7 @@
+ 						"%s: invalid timeout specification\n", progname);
+ 				break;
+ 			}
+-			actualtimeout.tv_sec = (int32) (60 * n);
++			actualtimeout.tv_sec = (int32_t) (60 * n);
+ 			/*
+ 			 * If the actual timeout is zero, pass a NULL pointer
+ 			 * to select so it blocks indefinitely, otherwise,
+@@ -606,9 +606,9 @@
+ 	struct bootp *bp = (struct bootp *) pktbuf;
+ 	struct host *hp = NULL;
+ 	struct host dummyhost;
+-	int32 bootsize = 0;
++	int32_t bootsize = 0;
+ 	unsigned hlen, hashcode;
+-	int32 dest;
++	int32_t dest;
+ 	char realpath[1024];
+ 	char *clntpath;
+ 	char *homedir, *bootfile;
+@@ -716,7 +716,7 @@
+ 	 * with a timestamp lower than the threshold.
+ 	 */
+ 	if (hp->flags.min_wait) {
+-		u_int32 t = (u_int32) ntohs(bp->bp_secs);
++		uint32_t t = (uint32_t) ntohs(bp->bp_secs);
+ 		if (t < hp->min_wait) {
+ 			if (debug > 1)
+ 				report(LOG_INFO,
+@@ -987,7 +987,7 @@
+ PRIVATE void
+ sendreply(forward, dst_override)
+ 	int forward;
+-	int32 dst_override;
++	int32_t dst_override;
+ {
+ 	struct bootp *bp = (struct bootp *) pktbuf;
+ 	struct in_addr dst;
+@@ -1100,12 +1100,12 @@
+ PRIVATE int
+ chk_access(path, filesize)
+ 	char *path;
+-	int32 *filesize;
++	int32_t *filesize;
+ {
+ 	struct stat st;
+ 
+ 	if ((stat(path, &st) == 0) && (st.st_mode & (S_IREAD >> 6))) {
+-		*filesize = (int32) st.st_size;
++		*filesize = (int32_t) st.st_size;
+ 		return 0;
+ 	} else {
+ 		return -1;
+@@ -1201,7 +1201,7 @@
+ dovend_rfc1048(bp, hp, bootsize)
+ 	struct bootp *bp;
+ 	struct host *hp;
+-	int32 bootsize;
++	int32_t bootsize;
+ {
+ 	int bytesleft, len;
+ 	byte *vp;
+diff -ur bootpd-2.4.orig/bootpd.h bootpd-2.4/bootpd.h
+--- bootpd-2.4.orig/bootpd.h	1994-11-27 15:36:13.000000000 +0200
++++ bootpd-2.4/bootpd.h	2010-07-07 14:55:03.000000000 +0300
+@@ -180,8 +180,8 @@
+ 			    htype,  /* RFC826 says this should be 16-bits but
+ 				       RFC951 only allocates 1 byte. . . */
+ 			    haddr[MAXHADDRLEN];
+-    int32		    time_offset;
+-    unsigned int32	    bootsize,
++    int32_t		    time_offset;
++    uint32_t	    bootsize,
+ 			    msg_size,
+ 			    min_wait;
+     struct in_addr	    bootserver,
+diff -ur bootpd-2.4.orig/Bootpd-linux.diffs bootpd-2.4/Bootpd-linux.diffs
+--- bootpd-2.4.orig/Bootpd-linux.diffs	1995-02-28 02:14:29.000000000 +0200
++++ bootpd-2.4/Bootpd-linux.diffs	2010-07-07 14:55:03.000000000 +0300
+@@ -21,17 +21,17 @@
+ --- 494,499 ----
+ ***************
+ *** 619,625 ****
+-  	int32 bootsize = 0;
++  	int32_t bootsize = 0;
+   	unsigned hlen, hashcode;
+-  	int32 dest;
++  	int32_t dest;
+ ! 	char realpath[1024] = {""};
+   	char *clntpath;
+   	char *homedir, *bootfile;
+   	int n;
+ --- 609,615 ----
+-  	int32 bootsize = 0;
++  	int32_t bootsize = 0;
+   	unsigned hlen, hashcode;
+-  	int32 dest;
++  	int32_t dest;
+ ! 	char realpath[1024];
+   	char *clntpath;
+   	char *homedir, *bootfile;
+diff -ur bootpd-2.4.orig/bootpef.c bootpd-2.4/bootpef.c
+--- bootpd-2.4.orig/bootpef.c	1994-11-27 15:36:13.000000000 +0200
++++ bootpd-2.4/bootpef.c	2010-07-07 14:55:03.000000000 +0300
+@@ -97,7 +97,7 @@
+ #define P(args) ()
+ #endif
+ 
+-static void dovend_rfc1048 P((struct bootp *, struct host *, int32));
++static void dovend_rfc1048 P((struct bootp *, struct host *, int32_t));
+ static void mktagfile P((struct host *));
+ static void usage P((void));
+ 
+@@ -139,7 +139,7 @@
+  * Initialization such as command-line processing is done and then the
+  * main server loop is started.
+  */
+-void
++int
+ main(argc, argv)
+ 	int argc;
+ 	char **argv;
+@@ -275,6 +275,7 @@
+ 		mktagfile(hp);
+ 		hp = (struct host *) hash_NextEntry(nmhashtable);
+ 	}
++	return(0);
+ }
+ 
+ 
+diff -ur bootpd-2.4.orig/bootpgw.c bootpd-2.4/bootpgw.c
+--- bootpd-2.4.orig/bootpgw.c	1994-11-27 15:36:21.000000000 +0200
++++ bootpd-2.4/bootpgw.c	2010-07-07 14:55:03.000000000 +0300
+@@ -139,7 +139,7 @@
+ int pktlen;
+ char *progname;
+ char *servername;
+-int32 server_ipa;				/* Real server IP address, network order. */
++int32_t server_ipa;				/* Real server IP address, network order. */
+ 
+ char myhostname[64];
+ struct in_addr my_ip_addr;
+@@ -152,7 +152,7 @@
+  * main server loop is started.
+  */
+ 
+-void
++int
+ main(argc, argv)
+ 	int argc;
+ 	char **argv;
+@@ -298,7 +298,7 @@
+ 						"%s: invalid timeout specification\n", progname);
+ 				break;
+ 			}
+-			actualtimeout.tv_sec = (int32) (60 * n);
++			actualtimeout.tv_sec = (int32_t) (60 * n);
+ 			/*
+ 			 * If the actual timeout is zero, pass a NULL pointer
+ 			 * to select so it blocks indefinitely, otherwise,
+@@ -481,6 +481,7 @@
+ 			break;
+ 		}
+ 	}
++	return(0);
+ }
+ 
+ 
+diff -ur bootpd-2.4.orig/bootp.h bootpd-2.4/bootp.h
+--- bootpd-2.4.orig/bootp.h	1994-11-27 15:36:13.000000000 +0200
++++ bootpd-2.4/bootp.h	2010-07-07 14:55:03.000000000 +0300
+@@ -31,7 +31,7 @@
+  *
+  */
+ 
+-#include "bptypes.h"	/* for int32, u_int32 */
++#include "bptypes.h"	/* for int32_t, uint32_t */
+ 
+ #define BP_CHADDR_LEN	 16
+ #define BP_SNAME_LEN	 64
+@@ -44,7 +44,7 @@
+     unsigned char    bp_htype;			/* hardware addr type */
+     unsigned char    bp_hlen;			/* hardware addr length */
+     unsigned char    bp_hops;			/* gateway hops */
+-    unsigned int32   bp_xid;			/* transaction ID */
++    uint32_t   bp_xid;			/* transaction ID */
+     unsigned short   bp_secs;			/* seconds since boot began */
+     unsigned short   bp_flags;			/* RFC1532 broadcast, etc. */
+     struct in_addr   bp_ciaddr;			/* client IP address */
+@@ -133,13 +133,13 @@
+ 
+ struct cmu_vend {
+ 	char		v_magic[4];	/* magic number */
+-	unsigned int32	v_flags;	/* flags/opcodes, etc. */
++	uint32_t	v_flags;	/* flags/opcodes, etc. */
+ 	struct in_addr 	v_smask;	/* Subnet mask */
+ 	struct in_addr 	v_dgate;	/* Default gateway */
+ 	struct in_addr	v_dns1, v_dns2; /* Domain name servers */
+ 	struct in_addr	v_ins1, v_ins2; /* IEN-116 name servers */
+ 	struct in_addr	v_ts1, v_ts2;	/* Time servers */
+-	int32		v_unused[6];	/* currently unused */
++	int32_t		v_unused[6];	/* currently unused */
+ };
+ 
+ 
+diff -ur bootpd-2.4.orig/bootptest.c bootpd-2.4/bootptest.c
+--- bootpd-2.4.orig/bootptest.c	1994-11-27 15:36:19.000000000 +0200
++++ bootpd-2.4/bootptest.c	2010-07-07 14:55:03.000000000 +0300
+@@ -125,12 +125,12 @@
+ 	char *servername = NULL;
+ 	char *vendor_file = NULL;
+ 	char *bp_file = NULL;
+-	int32 server_addr;			/* inet addr, network order */
++	int32_t server_addr;			/* inet addr, network order */
+ 	int s;						/* Socket file descriptor */
+ 	int n, tolen, fromlen, recvcnt;
+ 	int use_hwa = 0;
+-	int32 vend_magic;
+-	int32 xid;
++	int32_t vend_magic;
++	int32_t xid;
+ 
+ 	progname = strrchr(argv[0], '/');
+ 	if (progname)
+@@ -286,8 +286,8 @@
+ 	bp = (struct bootp *) sndbuf;
+ 	bzero(bp, sizeof(*bp));
+ 	bp->bp_op = BOOTREQUEST;
+-	xid = (int32) getpid();
+-	bp->bp_xid = (u_int32) htonl(xid);
++	xid = (int32_t) getpid();
++	bp->bp_xid = (uint32_t) htonl(xid);
+ 	if (bp_file)
+ 		strncpy(bp->bp_file, bp_file, BP_FILE_LEN);
+ 
+diff -ur bootpd-2.4.orig/bptypes.h bootpd-2.4/bptypes.h
+--- bootpd-2.4.orig/bptypes.h	1994-11-27 15:36:14.000000000 +0200
++++ bootpd-2.4/bptypes.h	2010-07-07 14:55:03.000000000 +0300
+@@ -1,18 +1,10 @@
+ /* bptypes.h */
++#include <sys/types.h>
+ 
+ #ifndef	BPTYPES_H
+ #define	BPTYPES_H
+ 
+ /*
+- * 32 bit integers are different types on various architectures
+- */
+-
+-#ifndef	int32
+-#define int32 long
+-#endif
+-typedef unsigned int32 u_int32;
+-
+-/*
+  * Nice typedefs. . .
+  */
+ 
+diff -ur bootpd-2.4.orig/dovend.c bootpd-2.4/dovend.c
+--- bootpd-2.4.orig/dovend.c	1994-11-27 15:36:19.000000000 +0200
++++ bootpd-2.4/dovend.c	2010-07-07 14:55:03.000000000 +0300
+@@ -385,7 +385,7 @@
+ 
+ void
+ insert_u_long(value, dest)
+-	u_int32 value;
++	uint32_t value;
+ 	byte **dest;
+ {
+ 	byte *temp;
+diff -ur bootpd-2.4.orig/dovend.h bootpd-2.4/dovend.h
+--- bootpd-2.4.orig/dovend.h	1994-11-27 15:36:14.000000000 +0200
++++ bootpd-2.4/dovend.h	2010-07-07 14:55:03.000000000 +0300
+@@ -8,6 +8,6 @@
+ 
+ extern int dovend_rfc1497 P((struct host *hp, u_char *buf, int len));
+ extern int insert_ip P((int, struct in_addr_list *, u_char **, int *));
+-extern void insert_u_long P((u_int32, u_char **));
++extern void insert_u_long P((uint32_t, u_char **));
+ 
+ #undef P
+diff -ur bootpd-2.4.orig/getether.c bootpd-2.4/getether.c
+--- bootpd-2.4.orig/getether.c	1994-11-27 15:36:20.000000000 +0200
++++ bootpd-2.4/getether.c	2010-07-07 14:58:09.000000000 +0300
+@@ -14,6 +14,8 @@
+ #include <ctype.h>
+ #include <syslog.h>
+ 
++#include <string.h> /* bzero and strcpy */
++
+ #include "report.h"
+ #define EALEN 6
+ 
+@@ -340,7 +342,7 @@
+ 	if (ioctl(fd, SIOCGIFHWADDR, &phys) < 0) {
+ 		report(LOG_ERR, "getether: ioctl SIOCGIFHWADDR failed");
+ 	} else {
+-		bcopy(phys.ifr_hwaddr, eap, EALEN);
++		bcopy(&phys.ifr_hwaddr, eap, EALEN);
+ 		rc = 0;
+ 	}
+ 	close(fd);
+diff -ur bootpd-2.4.orig/lookup.c bootpd-2.4/lookup.c
+--- bootpd-2.4.orig/lookup.c	1994-11-27 15:36:15.000000000 +0200
++++ bootpd-2.4/lookup.c	2010-07-07 14:55:03.000000000 +0300
+@@ -69,7 +69,7 @@
+ int
+ lookup_ipa(hostname, result)
+ 	char *hostname;
+-	u_int32 *result;
++	uint32_t *result;
+ {
+ 	struct hostent *hp;
+ 	hp = gethostbyname(hostname);
+@@ -90,10 +90,10 @@
+  */
+ int
+ lookup_netmask(addr, result)
+-	u_int32 addr;				/* both in network order */
+-	u_int32 *result;
++	uint32_t addr;				/* both in network order */
++	uint32_t *result;
+ {
+-	int32 m, a;
++	int32_t m, a;
+ 
+ 	a = ntohl(addr);
+ 	m = 0;
+diff -ur bootpd-2.4.orig/lookup.h bootpd-2.4/lookup.h
+--- bootpd-2.4.orig/lookup.h	1994-11-27 15:36:15.000000000 +0200
++++ bootpd-2.4/lookup.h	2010-07-07 14:55:03.000000000 +0300
+@@ -1,6 +1,6 @@
+ /* lookup.h */
+ 
+-#include "bptypes.h"	/* for int32, u_int32 */
++#include "bptypes.h"	/* for int32_t, uint32_t */
+ 
+ #ifdef	__STDC__
+ #define P(args) args
+@@ -9,7 +9,7 @@
+ #endif
+ 
+ extern u_char *lookup_hwa P((char *hostname, int htype));
+-extern int lookup_ipa P((char *hostname, u_int32 *addr));
+-extern int lookup_netmask P((u_int32 addr, u_int32 *mask));
++extern int lookup_ipa P((char *hostname, uint32_t *addr));
++extern int lookup_netmask P((uint32_t addr, uint32_t *mask));
+ 
+ #undef P
+diff -ur bootpd-2.4.orig/Makefile bootpd-2.4/Makefile
+--- bootpd-2.4.orig/Makefile	1995-02-28 12:59:19.000000000 +0200
++++ bootpd-2.4/Makefile	2010-07-07 14:57:07.000000000 +0300
+@@ -40,7 +40,7 @@
+ BINDIR=/usr/etc
+ MANDIR=/usr/local/man
+ 
+-CFLAGS= $(OPTDEFS) $(SYSDEFS) $(FILEDEFS) $(MOREDEFS)
++CFLAGS+= $(OPTDEFS) $(SYSDEFS) $(FILEDEFS) $(MOREDEFS)
+ PROGS= bootpd bootpef bootpgw bootptest
+ TESTS= trylook trygetif trygetea
+ 
+@@ -86,7 +86,7 @@
+ 
+ # DEC/OSF1 on the Alpha
+ alpha:
+-	$(MAKE) SYSDEFS="-DETC_ETHERS -Dint32=int -D_SOCKADDR_LEN" \
++	$(MAKE) SYSDEFS="-DETC_ETHERS -Dint32_t=int -D_SOCKADDR_LEN" \
+ 		STRERROR=strerror.o
+ 
+ # Control Data EP/IX 1.4.3 system, BSD 4.3 mode
+@@ -124,7 +124,7 @@
+ # Linux
+ ###
+ linux:
+-	$(MAKE) CC="gcc -O2" \
++	$(MAKE) CC="${CC}" \
+ 		SYSDEFS="-Dlinux" \
+ 		SYSLIBS="" \
+ 		LOG_FACILITY="-DLOG_BOOTP=LOG_LOCAL2" \
+@@ -143,36 +143,36 @@
+ OBJ_D=	bootpd.o dovend.o readfile.o hash.o dumptab.o \
+ 	 lookup.o getif.o hwaddr.o tzone.o report.o $(STRERROR)
+ bootpd: $(OBJ_D)
+-	$(CC) -o $@ $(OBJ_D) $(SYSLIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJ_D) $(SYSLIBS)
+ 
+ OBJ_EF=	bootpef.o dovend.o readfile.o hash.o dumptab.o \
+ 	 lookup.o hwaddr.o tzone.o report.o $(STRERROR)
+ bootpef: $(OBJ_EF)
+-	$(CC) -o $@ $(OBJ_EF) $(SYSLIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJ_EF) $(SYSLIBS)
+ 
+ OBJ_GW= bootpgw.o getif.o hwaddr.o report.o $(STRERROR)
+ bootpgw: $(OBJ_GW)
+-	$(CC) -o $@ $(OBJ_GW) $(SYSLIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJ_GW) $(SYSLIBS)
+ 
+ OBJ_TEST= bootptest.o print-bootp.o getif.o getether.o \
+ 	 report.o $(STRERROR)
+ bootptest: $(OBJ_TEST)
+-	$(CC) -o $@ $(OBJ_TEST) $(SYSLIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJ_TEST) $(SYSLIBS)
+ 
+ # This is just for testing the lookup functions.
+ TRYLOOK= trylook.o lookup.o report.o $(STRERROR)
+ trylook : $(TRYLOOK)
+-	$(CC) -o $@ $(TRYLOOK) $(SYSLIBS)
++	$(CC) $(LDFLAGS) -o $@ $(TRYLOOK) $(SYSLIBS)
+ 
+ # This is just for testing getif.
+ TRYGETIF= trygetif.o getif.o report.o $(STRERROR)
+ trygetif : $(TRYGETIF)
+-	$(CC) -o $@ $(TRYGETIF) $(SYSLIBS)
++	$(CC) $(LDFLAGS) -o $@ $(TRYGETIF) $(SYSLIBS)
+ 
+ # This is just for testing getether.
+ TRYGETEA= trygetea.o getether.o report.o $(STRERROR)
+ trygetea : $(TRYGETEA)
+-	$(CC) -o $@ $(TRYGETEA) $(SYSLIBS)
++	$(CC) $(LDFLAGS) -o $@ $(TRYGETEA) $(SYSLIBS)
+ 
+ # This rule just keeps the LOG_BOOTP define localized.
+ report.o : report.c
+diff -ur bootpd-2.4.orig/print-bootp.c bootpd-2.4/print-bootp.c
+--- bootpd-2.4.orig/print-bootp.c	1994-11-27 15:36:21.000000000 +0200
++++ bootpd-2.4/print-bootp.c	2010-07-07 14:55:03.000000000 +0300
+@@ -170,9 +170,9 @@
+ 
+ 	TCHECK(bp->bp_vend[0], vdlen);
+ 	printf(" vend");
+-	if (!bcmp(bp->bp_vend, vm_rfc1048, sizeof(u_int32)))
++	if (!bcmp(bp->bp_vend, vm_rfc1048, sizeof(uint32_t)))
+ 		rfc1048_print(bp->bp_vend, vdlen);
+-	else if (!bcmp(bp->bp_vend, vm_cmu, sizeof(u_int32)))
++	else if (!bcmp(bp->bp_vend, vm_cmu, sizeof(uint32_t)))
+ 		cmu_print(bp->bp_vend, vdlen);
+ 	else
+ 		other_print(bp->bp_vend, vdlen);
+@@ -192,7 +192,7 @@
+  * a: ASCII
+  * b: byte (8-bit)
+  * i: inet address
+- * l: int32
++ * l: int32_t
+  * s: short (16-bit)
+  */
+ char *
+@@ -281,7 +281,7 @@
+ 	u_char tag;
+ 	u_char *ep;
+ 	register int len, j;
+-	u_int32 ul;
++	uint32_t ul;
+ 	u_short us;
+ 	struct in_addr ia;
+ 	char *optstr;
+@@ -289,7 +289,7 @@
+ 	printf("-rfc1395");
+ 
+ 	/* Step over magic cookie */
+-	bp += sizeof(int32);
++	bp += sizeof(int32_t);
+ 	/* Setup end pointer */
+ 	ep = bp + length;
+ 	while (bp < ep) {
+diff -ur bootpd-2.4.orig/readfile.c bootpd-2.4/readfile.c
+--- bootpd-2.4.orig/readfile.c	1994-11-27 15:36:22.000000000 +0200
++++ bootpd-2.4/readfile.c	2010-07-07 14:55:03.000000000 +0300
+@@ -149,7 +149,7 @@
+ 
+ PRIVATE int nhosts;				/* Number of hosts (/w hw or IP address) */
+ PRIVATE int nentries;			/* Total number of entries */
+-PRIVATE int32 modtime = 0;		/* Last modification time of bootptab */
++PRIVATE int32_t modtime = 0;		/* Last modification time of bootptab */
+ PRIVATE char *current_hostname;	/* Name of the current entry. */
+ PRIVATE char current_tagname[8];
+ 
+@@ -260,7 +260,7 @@
+ 	get_shared_string P((char **));
+ PRIVATE char *
+ 	get_string P((char **, char *, u_int *));
+-PRIVATE u_int32
++PRIVATE uint32_t
+ 	get_u_long P((char **));
+ PRIVATE boolean
+ 	goodname P((char *));
+@@ -279,7 +279,7 @@
+ PRIVATE byte *
+ 	prs_haddr P((char **, u_int));
+ PRIVATE int
+-	prs_inetaddr P((char **, u_int32 *));
++	prs_inetaddr P((char **, uint32_t *));
+ PRIVATE void
+ 	read_entry P((FILE *, char *, u_int *));
+ PRIVATE char *
+@@ -415,7 +415,7 @@
+ 		 */
+ 		if (goodname(hp->hostname->string)) {
+ 			char *hn = hp->hostname->string;
+-			u_int32 value;
++			uint32_t value;
+ 			if (hp->flags.iaddr == 0) {
+ 				if (lookup_ipa(hn, &value)) {
+ 					report(LOG_ERR, "can not get IP addr for %s", hn);
+@@ -798,8 +798,8 @@
+ 	byte *tmphaddr;
+ 	struct shared_string *ss;
+ 	struct symbolmap *symbolptr;
+-	u_int32 value;
+-	int32 timeoff;
++	uint32_t value;
++	int32_t timeoff;
+ 	int i, numsymbols;
+ 	unsigned len;
+ 	int optype;					/* Indicates boolean, addition, or deletion */
+@@ -1674,11 +1674,11 @@
+ PRIVATE int
+ prs_inetaddr(src, result)
+ 	char **src;
+-	u_int32 *result;
++	uint32_t *result;
+ {
+ 	char tmpstr[MAXSTRINGLEN];
+-	register u_int32 value;
+-	u_int32 parts[4], *pp;
++	register uint32_t value;
++	uint32_t parts[4], *pp;
+ 	int n;
+ 	char *s, *t;
+ 
+@@ -1862,11 +1862,11 @@
+  * point to the first illegal character.
+  */
+ 
+-PRIVATE u_int32
++PRIVATE uint32_t
+ get_u_long(src)
+ 	char **src;
+ {
+-	register u_int32 value, base;
++	register uint32_t value, base;
+ 	char c;
+ 
+ 	/*
+diff -ur bootpd-2.4.orig/report.c bootpd-2.4/report.c
+--- bootpd-2.4.orig/report.c	1994-11-27 15:36:16.000000000 +0200
++++ bootpd-2.4/report.c	2010-07-07 14:55:03.000000000 +0300
+@@ -10,6 +10,7 @@
+ 
+ #include <stdio.h>
+ #include <syslog.h>
++#include <errno.h>
+ 
+ #include "report.h"
+ 
+diff -ur bootpd-2.4.orig/tzone.c bootpd-2.4/tzone.c
+--- bootpd-2.4.orig/tzone.c	1994-11-27 15:36:17.000000000 +0200
++++ bootpd-2.4/tzone.c	2010-07-07 14:55:03.000000000 +0300
+@@ -19,7 +19,7 @@
+ #include "tzone.h"
+ 
+ /* This is what other modules use. */
+-int32 secondswest;
++int32_t secondswest;
+ 
+ /*
+  * Get our timezone offset so we can give it to clients if the
+diff -ur bootpd-2.4.orig/tzone.h bootpd-2.4/tzone.h
+--- bootpd-2.4.orig/tzone.h	1994-11-27 15:36:17.000000000 +0200
++++ bootpd-2.4/tzone.h	2010-07-07 14:55:03.000000000 +0300
+@@ -1,3 +1,3 @@
+ /* tzone.h */
+-extern int32 secondswest;
++extern int32_t secondswest;
+ extern void tzone_init();

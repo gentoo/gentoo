@@ -1,0 +1,64 @@
+diff -Naur iscan-2.25.0.orig//backend/Makefile.am iscan-2.25.0/backend/Makefile.am
+--- iscan-2.25.0.orig//backend/Makefile.am	2010-05-19 07:51:55.000000000 +0200
++++ iscan-2.25.0/backend/Makefile.am	2010-07-21 22:49:08.579705272 +0200
+@@ -56,7 +56,6 @@
+ 
+ libepkowa_la_CPPFLAGS = \
+ 	$(AM_CPPFLAGS) \
+-	$(LTDLINCL) \
+ 	-I$(top_srcdir)/include \
+ 	-I$(top_srcdir)/non-free \
+ 	$(XML_CFLAGS) \
+@@ -66,7 +65,7 @@
+ libepkowa_la_LIBADD = \
+ 	-lm \
+ 	$(XML_LIBS) \
+-	$(LIBLTDL)
++	-lltdl
+ libepkowa_la_SOURCES = \
+ 	$(sane_backends_files) \
+ 	marshal.c \
+diff -Naur iscan-2.25.0.orig//configure.ac iscan-2.25.0/configure.ac
+--- iscan-2.25.0.orig//configure.ac	2010-07-21 22:48:11.411332268 +0200
++++ iscan-2.25.0/configure.ac	2010-07-21 22:49:58.918332411 +0200
+@@ -261,13 +261,10 @@
+ dnl  The somewhat obscure LT_AC_PROG_SED is here to make sure that the
+ dnl  SED environment variable gets set before it's used by the libtool
+ dnl  machinery.  This works around buggy libtool versions.
+-LT_AC_PROG_SED
+-AC_LIBLTDL_INSTALLABLE
+-AC_LIBTOOL_DLOPEN
+ AC_PROG_LIBTOOL
+-AC_LIB_LTDL
+-AC_SUBST(LTDLINCL)
+-AC_SUBST(LIBLTDL)
++AC_LTDL_SHLIBPATH
++AC_LTDL_SHLIBEXT
++AC_LTDL_SYSSEARCHPATH
+ 
+ 
+ dnl  Graphic file format options
+diff -Naur iscan-2.25.0.orig//frontend/Makefile.am iscan-2.25.0/frontend/Makefile.am
+--- iscan-2.25.0.orig//frontend/Makefile.am	2010-05-19 07:51:54.000000000 +0200
++++ iscan-2.25.0/frontend/Makefile.am	2010-07-21 22:50:53.965581385 +0200
+@@ -34,7 +34,7 @@
+ iscan_LDADD = \
+ 	$(top_builddir)/lib/libimage-stream.la \
+ 	-lsane \
+-	@LIBLTDL@ \
++	-lltdl \
+ 	@GTK_LIBS@ \
+ 	@GDK_IMLIB_LIBS@ \
+ 	$(top_builddir)/non-free/libesmod.so
+diff -Naur iscan-2.25.0.orig//lib/Makefile.am iscan-2.25.0/lib/Makefile.am
+--- iscan-2.25.0.orig//lib/Makefile.am	2010-05-19 07:51:56.000000000 +0200
++++ iscan-2.25.0/lib/Makefile.am	2010-07-21 22:51:29.794329919 +0200
+@@ -29,7 +29,7 @@
+ libimage_stream_la_CPPFLAGS = -I$(top_srcdir)/include
+ libimage_stream_la_LDFLAGS = -static
+ libimage_stream_la_LIBADD  = \
+-	$(LIBLTDL) \
++	-lltdl \
+ 	$(top_builddir)/lib/pdf/libpdf.la
+ libimage_stream_la_SOURCES = \
+ 	$(libimage_stream_la_files)

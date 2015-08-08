@@ -1,0 +1,12 @@
+diff -urp rasmol-2.7.5-23Jul09/src/rasmol.h rasmol-2.7.5-23Jul09-64b/src/rasmol.h
+--- rasmol-2.7.5-23Jul09/src/rasmol.h	2009-07-20 21:08:43.000000000 +0700
++++ rasmol-2.7.5-23Jul09-64b/src/rasmol.h	2013-02-22 14:40:00.378574163 +0700
+@@ -125,6 +125,8 @@
+ #define VECTOR_FAR 
+ #endif
+ 
++#define _LONGLONG
++
+ /*========================*/
+ /*  Default User Options! */
+ /*========================*/

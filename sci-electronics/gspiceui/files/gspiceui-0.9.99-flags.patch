@@ -1,0 +1,27 @@
+diff -urN gspiceui-v0.9.99.orig/src/Makefile gspiceui-v0.9.99/src/Makefile
+--- gspiceui-v0.9.99.orig/src/Makefile	2010-04-16 10:43:59.000000000 +0200
++++ gspiceui-v0.9.99/src/Makefile	2010-11-01 00:25:32.000000000 +0100
+@@ -59,13 +59,7 @@
+ INSTALLDIR = /usr/local/bin
+ 
+ # Compiler options
+-ifeq ($(GSPICEUI_DBG),0)
+-  # Options for release (not using -Wall since it's GCC specific)
+-  CXXFLAGS := -O -pipe $(shell $(WXCFG) --cxxflags)
+-else
+-  # Options for development
+-  CXXFLAGS := -Wall -g -pipe $(shell $(WXCFG) --cxxflags)
+-endif
++CXXFLAGS += $(shell $(WXCFG) --cxxflags)
+ 
+ # Includes
+ INCLUDES = -I/usr/include -I/usr/X11R6/include -I.
+@@ -108,7 +102,7 @@
+ #   -o     specify the output file name
+ 
+ $(BINDIR)/$(PROG) : $(OBJS)
+-	$(CC) -pipe -o $(BINDIR)/$(PROG) obj/*.o $(LIBS)
++	$(CC) -pipe -o $(BINDIR)/$(PROG) obj/*.o $(LDFLAGS) $(LIBS)
+ ifeq ($(ROOT)/GSpiceUI.app,$(wildcard $(ROOT)/GSpiceUI.app))
+ 	cp $(BINDIR)/$(PROG) $(ROOT)/GSpiceUI.app/Contents/MacOS/gspiceui
+ endif

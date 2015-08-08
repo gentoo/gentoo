@@ -1,0 +1,10 @@
+[Unit]
+Description=Network Time Service
+After=ntpdate.service sntp.service
+
+[Service]
+ExecStart=/usr/sbin/ntpd -g -n
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

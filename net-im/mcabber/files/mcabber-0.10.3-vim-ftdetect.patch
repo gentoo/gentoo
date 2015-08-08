@@ -1,0 +1,12 @@
+diff -urN mcabber-a18e1b488f1c.orig/mcabber/contrib/vim/mcabber_log-ftdetect.vim mcabber-a18e1b488f1c/mcabber/contrib/vim/mcabber_log-ftdetect.vim
+--- mcabber-a18e1b488f1c.orig/mcabber/contrib/vim/mcabber_log-ftdetect.vim	2013-10-25 22:20:23.000000000 +0200
++++ mcabber-a18e1b488f1c/mcabber/contrib/vim/mcabber_log-ftdetect.vim	2014-03-30 14:41:31.975129825 +0200
+@@ -1,7 +1,7 @@
+ "
+ " Save this file in your ~/.vim/ftdetect/ folder
+ 
+-function MCabber_log_ftdetect()
++function! MCabber_log_ftdetect()
+     if getline(1) =~ '^\u. \d\{8}T\d\d:\d\d:\d\dZ \d\{3} '
+       setlocal filetype=mcabber_log
+     endif

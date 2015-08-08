@@ -1,0 +1,22 @@
+--- hdf5/CMakeLists.txt.orig	2014-02-05 16:55:55.001344161 -0800
++++ hdf5/CMakeLists.txt	2014-02-05 16:57:03.767739650 -0800
+@@ -23,16 +23,16 @@
+ 
+ # install
+ install(FILES blosc_filter.h DESTINATION include COMPONENT HDF5_FILTER_DEV)
+-install(TARGETS blosc_filter_static DESTINATION lib COMPONENT HDF5_FILTER)
++install(TARGETS blosc_filter_shared DESTINATION lib${LIB_SUFFIX} COMPONENT HDF5_FILTER)
+ if(BUILD_STATIC)
+     install(
+-        TARGETS blosc_filter_shared DESTINATION lib COMPONENT HDF5_FILTER_DEV)
++        TARGETS blosc_filter_static DESTINATION lib${LIB_SUFFIX} COMPONENT HDF5_FILTER_DEV)
+ endif(BUILD_STATIC)
+ 
+ 
+ # test
+ if(BUILD_TESTS)
+     add_executable(example example.c)
+-    target_link_libraries(example blosc_filter_static ${HDF5_LIBRARIES})
++    target_link_libraries(example blosc_filter_shared ${HDF5_LIBRARIES})
+     add_test(test_hdf5_filter example)
+ endif(BUILD_TESTS)

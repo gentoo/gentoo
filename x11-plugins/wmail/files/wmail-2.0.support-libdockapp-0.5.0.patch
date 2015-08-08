@@ -1,0 +1,26 @@
+--- configure	2002-08-12 22:59:48.000000000 +0200
++++ configure	2004-08-31 15:42:52.979115744 +0200
+@@ -2386,8 +2386,8 @@
+ fi
+ 
+ echo $ac_n "checking for DAInitialize in -ldockapp""... $ac_c" 1>&6
+-echo "configure:2390: checking for DAInitialize in -ldockapp" >&5
+-ac_lib_var=`echo dockapp'_'DAInitialize | sed 'y%./+-%__p_%'`
++echo "configure:2390: checking for DAOpenDisplay in -ldockapp" >&5
++ac_lib_var=`echo dockapp'_'DAOpenDisplay | sed 'y%./+-%__p_%'`
+ if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+@@ -2399,10 +2399,10 @@
+ /* Override any gcc2 internal prototype to avoid an error.  */
+ /* We use char because int might match the return type of a gcc2
+     builtin and then its argument prototype would still apply.  */
+-char DAInitialize();
++char DAOpenDisplay();
+ 
+ int main() {
+-DAInitialize()
++DAOpenDisplay()
+ ; return 0; }
+ EOF
+ if { (eval echo configure:2409: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then

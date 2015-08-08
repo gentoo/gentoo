@@ -1,0 +1,63 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+SERVER=${SVCNAME#*.}
+if [ ${SERVER} != thin ]; then
+        CONFIG=${CONFIG:-/etc/thin/${SERVER}.yml}
+else
+        CONFIG=${CONFIG:-/etc/thin/}
+fi
+NOCONFIG=${NOCONFIG:-0}
+RUBY=${RUBY:-/usr/bin/ruby}
+THIN_OPTS=${THIN_OPTS:-}
+
+depend() {
+        need net localmount
+}
+
+checkconfig() {
+        [ ${SERVER} = thin -o ${NOCONFIG} != 0 ] && return 0
+
+        if [ ! -f ${CONFIG} ]; then
+                eerror "Unable to find the server configuration."
+                eerror "Please set the CONFIG variable in /etc/conf.d/${SVCNAME} or"
+                eerror "set NOCONFIG there to 1 to disable looking for a config file."
+                return 1
+        fi
+}
+
+buildargs() {
+        if [ ${NOCONFIG} = 0 -a ${SERVER} != thin ]; then
+                echo -n "-C ${CONFIG} "
+        fi
+
+        echo -n "${THIN_OPTS}"
+}
+
+action() {
+        checkconfig || return 1
+
+        if [ ${SERVER} = thin ]; then
+                ebegin "$2 all thin servers in ${CONFIG}"
+                ${RUBY} /usr/bin/thin $1 $(buildargs) --all ${CONFIG}
+                eend $?
+        else
+                ebegin "$2 thin server ${SERVER}"
+                ${RUBY} /usr/bin/thin $(buildargs) --tag ${SERVER} $1
+                eend $?
+        fi
+}
+
+start() {
+        action start 'Starting'
+}
+
+stop() {
+        action stop 'Stopping'
+}
+
+restart() {
+        action restart 'Restarting'
+}

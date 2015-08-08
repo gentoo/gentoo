@@ -1,0 +1,13 @@
+--- SConstruct
++++ SConstruct
+@@ -345,8 +345,8 @@
+   ### there is probably a better way to run/capture output.
+   ### env.ParseConfig() may be handy for getting this stuff into the build
+   if CALLOUT_OKAY:
+-    apr_libs = os.popen(env.subst('$APR --link-libtool --libs')).read().strip()
+-    apu_libs = os.popen(env.subst('$APU --link-libtool --libs')).read().strip()
++    apr_libs = os.popen(env.subst('$APR --link-ld')).read().strip()
++    apu_libs = os.popen(env.subst('$APU --link-ld')).read().strip()
+   else:
+     apr_libs = ''
+     apu_libs = ''

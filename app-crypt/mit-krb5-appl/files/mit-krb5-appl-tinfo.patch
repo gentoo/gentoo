@@ -1,0 +1,12 @@
+--- configure.ac	2011-07-11 22:34:17.000000000 +0300
++++ configure.ac	2013-02-28 15:12:24.693841664 +0200
+@@ -152,7 +152,8 @@
+              [AC_DEFINE(TERMCAP,1,[Define if termcap library is available])
+               LIBS="$LIBS -ltermcap"])
+ AC_CHECK_LIB(curses,setupterm,LIBS="$LIBS -lcurses",
+-             [AC_CHECK_LIB(ncurses,setupterm,LIBS="$LIBS -lncurses")])
++             [AC_CHECK_LIB(ncurses,setupterm,LIBS="$LIBS -lncurses",
++	     	[AC_CHECK_LIB(tinfo,setupterm,LIBS="$LIBS -lncurses")])])
+ AC_CHECK_FUNCS(setupterm)
+ TELNET_LIBS="$LIBS"
+ TELNETD_LIBS="$LIBS"

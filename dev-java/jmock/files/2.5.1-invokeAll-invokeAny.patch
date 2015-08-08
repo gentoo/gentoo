@@ -1,0 +1,30 @@
+diff --git a/jmock-2.5.1/src/org/jmock/lib/concurrent/DeterministicScheduler.java b/jmock-2.5.1/src/org/jmock/lib/concurrent/DeterministicScheduler.java
+index 6dbc020..0dce41c 100644
+--- a/jmock-2.5.1/src/org/jmock/lib/concurrent/DeterministicScheduler.java
++++ b/jmock-2.5.1/src/org/jmock/lib/concurrent/DeterministicScheduler.java
+@@ -110,21 +110,21 @@ public class DeterministicScheduler implements ScheduledExecutorService {
+         throw blockingOperationsNotSupported();
+     }
+ 
+-    public <T> List<Future<T>> invokeAll(Collection<Callable<T>> tasks) throws InterruptedException {
++    public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks) throws InterruptedException {
+         throw blockingOperationsNotSupported();
+     }
+ 
+-    public <T> List<Future<T>> invokeAll(Collection<Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException {
++    public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException {
+         throw blockingOperationsNotSupported();
+     }
+     
+-    public <T> T invokeAny(Collection<Callable<T>> tasks)
++    public <T> T invokeAny(Collection<? extends Callable<T>> tasks)
+         throws InterruptedException, ExecutionException 
+     {
+         throw blockingOperationsNotSupported();
+     }
+ 
+-    public <T> T invokeAny(Collection<Callable<T>> tasks, long timeout, TimeUnit unit) 
++    public <T> T invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) 
+         throws InterruptedException, ExecutionException, TimeoutException 
+     {
+         throw blockingOperationsNotSupported();

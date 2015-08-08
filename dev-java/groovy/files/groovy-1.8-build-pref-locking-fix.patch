@@ -1,0 +1,12 @@
+diff --git a/build.xml b/build.xml
+index ffca39c..07d93b9 100644
+--- a/build.xml
++++ b/build.xml
+@@ -830,6 +830,7 @@ $Date: 2012/01/28 09:43:04 $
+                 <path refid="toolsPath"/>
+                 <pathelement path="${mainClassesDirectory}"/>
+             </classpath>
++	    <jvmarg value="-Duser.home=${user.home}" />
+             <arg value="org.codehaus.groovy.runtime.DefaultGroovyMethods"/>
+             <arg value="org.codehaus.groovy.runtime.SqlGroovyMethods"/>
+             <arg value="org.codehaus.groovy.runtime.SwingGroovyMethods"/>

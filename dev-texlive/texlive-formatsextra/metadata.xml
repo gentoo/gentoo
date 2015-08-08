@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>tex</herd>
+	<maintainer>
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+<longdescription lang="en">
+Collected TeX `formats', i.e., large-scale macro packages
+designed to be dumped into .fmt files -- excluding the most common
+ones, such as latex and context, which have their own package(s).
+</longdescription>
+</pkgmetadata>

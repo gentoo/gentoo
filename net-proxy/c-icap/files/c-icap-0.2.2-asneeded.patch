@@ -1,0 +1,27 @@
+Index: c_icap-0.2.1/Makefile.am
+===================================================================
+--- c_icap-0.2.1.orig/Makefile.am
++++ c_icap-0.2.1/Makefile.am
+@@ -37,7 +37,7 @@ c_icap_SOURCES = aserver.c request.c cfg
+ # libicapapi ......
+ libicapapi_la_CFLAGS= -Iinclude/ @ZLIB_ADD_FLAG@ -DCI_BUILD_LIB
+ 
+-libicapapi_la_LIBADD = @ZLIB_ADD_LDADD@
++libicapapi_la_LIBADD = @ZLIB_ADD_LDADD@ @DL_ADD_FLAG@ @THREADS_LDADD@
+ libicapapi_la_LDFLAGS= -shared -version-info @CICAPLIB_VERSION@
+ 
+ 
+@@ -47,10 +47,10 @@ c_icap_CFLAGS= -Iinclude/ -DCONFDIR=\"$(
+                           -DSERVDIR=\"$(SERVICESDIR)\" -DLOGDIR=\"$(LOGDIR)\"  \
+                           -DDATADIR=\"$(DATADIR)\"
+ 
+-c_icap_LDADD = libicapapi.la @DL_ADD_FLAG@ @THREADS_LDADD@
+-c_icap_LDFLAGS = -rdynamic -rpath @libdir@ @THREADS_LDFLAGS@
++c_icap_LDADD = libicapapi.la
++c_icap_LDFLAGS = -rdynamic @THREADS_LDFLAGS@
+ 
+-EXT_PROGRAMS_MKLIB = -licapapi @DL_ADD_FLAG@ @THREADS_LDADD@
++EXT_PROGRAMS_MKLIB = -licapapi
+ 
+ 
+ INCS = access.h body.h cfg_param.h c-icap-conf.h c-icap.h ci_threads.h \

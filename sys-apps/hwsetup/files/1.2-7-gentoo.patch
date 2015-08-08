@@ -1,0 +1,20 @@
+--- a/hwsetup.c
++++ b/hwsetup.c
+@@ -388,7 +388,7 @@
+          sprintf(fullpath,"%.90s%.32s",xpath,server[i]);
+          if(!exists(fullpath)) continue;
+          strncpy(xi.xserver,server[i],sizeof(xi.xserver));
+-	}
++        }
+       }
+     }
+    if((xpos=strstr(d->driver,xorg))!=NULL) /* Check for Xorg */
+@@ -653,7 +653,7 @@
+ int writeconfig(char *name,struct device *d,int verbose)
+ {
+  FILE *f,*k;
+- const char *kconfig="/etc/sysconfig/knoppix";
++ const char *kconfig="/etc/sysconfig/gentoo";
+  char *desc;
+  unlink(name);
+  if((f=fopen(name,"w"))==NULL)

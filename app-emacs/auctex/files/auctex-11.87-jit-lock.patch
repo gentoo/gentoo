@@ -1,0 +1,31 @@
+commit 5b5ef6eeb0468c273a329a05d31b3788fd46b5d7
+Author: Mosè Giordano <giordano.mose@libero.it>
+Date:   Sun May 12 12:01:37 2013 +0200
+
+    Temporary fix for font-latex-jit-lock-force-redisplay.
+    
+    * font-latex.el (font-latex-jit-lock-force-redisplay): Don't rely
+    on existing `jit-lock-force-redisplay' because recent bzr Emacs
+    broke compatibility changing the number of arguments.  Reported by
+    Robert Goldman.
+
+--- auctex-11.87-orig/font-latex.el
++++ auctex-11.87/font-latex.el
+@@ -1220,8 +1220,6 @@
+ 
+ (defun font-latex-jit-lock-force-redisplay (buf start end)
+   "Compatibility for Emacsen not offering `jit-lock-force-redisplay'."
+-  (if (fboundp 'jit-lock-force-redisplay)
+-      (jit-lock-force-redisplay buf start end)
+     ;; The following block is an expansion of `jit-lock-force-redisplay'
+     ;; and involved macros taken from CVS Emacs on 2007-04-28.
+     (with-current-buffer buf
+@@ -1236,7 +1234,7 @@
+ 		  buffer-file-truename)
+ 	      (put-text-property start end 'fontified t))
+ 	  (unless modified
+-	    (restore-buffer-modified-p nil)))))))
++	    (restore-buffer-modified-p nil))))))
+ 
+ (defun font-latex-fontify-region (beg end &optional loudly)
+   "Fontify region from BEG to END.

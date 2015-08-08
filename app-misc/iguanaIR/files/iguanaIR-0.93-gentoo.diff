@@ -1,0 +1,34 @@
+diff -Naur iguanaIR-0.93.orig/iguanaIR.gentoo.init iguanaIR-0.93/iguanaIR.gentoo.init
+--- iguanaIR-0.93.orig/iguanaIR.gentoo.init	2008-03-20 15:34:46.000000000 +0100
++++ iguanaIR-0.93/iguanaIR.gentoo.init	2008-03-20 15:38:06.000000000 +0100
+@@ -1,7 +1,7 @@
+ #!/sbin/runscript
+ 
+ # load the settings
+-[ -f /etc/default/iguanaIR ] && . /etc/default/iguanaIR
++[ -f /etc/iguanaIR/iguanaIR ] && . /etc/iguanaIR/iguanaIR
+ 
+ # common defaults
+ IGPATH=/usr/bin/igdaemon
+diff -Naur iguanaIR-0.93.orig/Makefile.in iguanaIR-0.93/Makefile.in
+--- iguanaIR-0.93.orig/Makefile.in	2008-03-20 15:34:46.000000000 +0100
++++ iguanaIR-0.93/Makefile.in	2008-03-20 15:36:49.000000000 +0100
+@@ -79,12 +79,12 @@
+ 	install -D igclient $(DESTDIR)/usr/bin/igclient
+ 	install -D igdaemon $(DESTDIR)/usr/bin/igdaemon
+ 	install -D libiguanaIR.so $(DESTDIR)/usr/$(LIBDIR)/libiguanaIR.so
+-	install -D iguanaIR.init $(DESTDIR)/etc/rc.d/init.d/iguanaIR
+-	install -D --mode=0644 iguanaIR.options $(DESTDIR)/etc/default/iguanaIR
+-	install -D iguanaIR.h $(DESTDIR)/usr/include/iguanaIR.h
+-	install -D --mode 644 plug-trigger/udev/iguanaIR.rules \
+-	                      $(DESTDIR)/etc/udev/rules.d/iguanaIR.rules
+-	install --mode 755 -d $(DESTDIR)/etc/udev/devices/iguanaIR
++	install -D iguanaIR.gentoo.init $(DESTDIR)/etc/init.d/iguanaIR
++	install -D --mode=0644 iguanaIR.options $(DESTDIR)/etc/iguanaIR/iguanaIR
++	install -D --mode=0644 iguanaIR.h $(DESTDIR)/usr/include/iguanaIR.h
++#	install -D --mode=644 plug-trigger/udev/iguanaIR.rules \
++#	                      $(DESTDIR)/etc/udev/rules.d/iguanaIR.rules
++#	install --mode 755 -d $(DESTDIR)/etc/udev/devices/iguanaIR
+ # This is for fairly old versions of Fedora....
+ #	install -D --mode 644 plug-trigger/hotplug/iguanaIR.usermap \
+ #	                      $(DESTDIR)/etc/hotplug/usb/iguanaIR.usermap

@@ -1,0 +1,11 @@
+diff -Nur lib.orig/libncp/Makefile lib/libncp/Makefile
+--- lib.orig/libncp/Makefile	2012-12-25 20:35:16.000000000 +0900
++++ lib/libncp/Makefile	2012-12-25 20:36:23.000000000 +0900
+@@ -6,6 +6,7 @@
+ 
+ DPADD=		${LIBIPX}
+ LDADD=		-lipx
++LDFLAGS+=-L${.OBJDIR}/../libipx
+ 
+ SRCS=	ncpl_subr.c ncpl_bind.c ncpl_queue.c ncpl_file.c ncpl_misc.c \
+ 	ncpl_net.c ncpl_rcfile.c ncpl_conn.c ncpl_nls.c ncpl_msg.c \

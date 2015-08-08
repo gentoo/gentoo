@@ -1,0 +1,12 @@
+diff -ru xine-0.9.0-orig/xineLib.c xine-0.9.0/xineLib.c
+--- xine-0.9.0-orig/xineLib.c	2009-01-18 17:40:13.228935882 +0100
++++ xine-0.9.0/xineLib.c	2009-01-18 17:41:28.815595331 +0100
+@@ -2118,7 +2118,7 @@
+ 
+   bool cXineLib::readNoSignalStream(const int index, const string &suffix)
+   {
+-    string noSignalFileName = m_plugin->ConfigDirectory(PLUGIN_NAME_I18N);
++    string noSignalFileName = "/usr/share/vdr/xine";
+ //    noSignalFileName += "/noSignal.pes";
+     noSignalFileName += "/noSignal" + suffix + ".mpg";
+ 

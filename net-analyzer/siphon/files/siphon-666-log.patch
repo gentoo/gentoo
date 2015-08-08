@@ -1,0 +1,46 @@
+--- a/main.c
++++ b/main.c
+@@ -98,7 +98,7 @@
+    pti_parse.pti_pd[1] = pd_parse2log[1];
+ 
+    pthread_create (&parse_thread, NULL, (void *) parse, &pti_parse);
+-   pthread_create(&log_thread,NULL,(void *)log, (void *)pd_parse2log[0]);
++   pthread_create(&log_thread,NULL,(void *)siphon_log, (void *)pd_parse2log[0]);
+    pthread_create (&sniff_thread, NULL, (void *) sniff_network,
+ 		   &pd_sniff2parse[1]);
+ 
+--- a/log.c
++++ b/log.c
+@@ -19,7 +19,7 @@
+ 
+ int tag = 0;
+ 
+-void *log(void *pipe)
++void *siphon_log(void *pipe)
+ {
+   struct parse2log *info;
+   char hashed[100], buf[1024], *os, *proto = NULL, *df;
+@@ -137,10 +137,10 @@
+   FILE *osprints;
+   static char line[80], *oswin, *osttl, *osdf, *os, hexed[10];
+   static int check = 0;
+-  osprints = fopen("osprints.conf","r");
++  osprints = fopen("/etc/osprints.conf","r");
+ 
+   if(!osprints) {
+-    perror("Unable to find osprints.conf\n");
++    perror("Unable to find /etc/osprints.conf\n");
+     return "Unknown";
+   }
+ 
+--- a/siphon.h
++++ b/siphon.h
+@@ -49,7 +49,7 @@
+ 
+ void *sniff_network (void *);
+ void *parse (void *);
+-void *log(void *);
++void *siphon_log(void *);
+ 
+ char *device, *logfile;
+ int verbose, back;

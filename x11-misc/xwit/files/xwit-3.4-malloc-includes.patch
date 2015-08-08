@@ -1,0 +1,49 @@
+--- a/dsimple.c	1995-10-19 00:59:17.000000000 +0100
++++ b/dsimple.c	2013-08-03 18:27:16.670506562 +0200
+@@ -5,6 +5,8 @@
+ #include <X11/Xutil.h>
+ #include <X11/cursorfont.h>
+ #include <stdio.h>
++#include <stdlib.h> /* malloc() */
++#include <unistd.h> /* exit() */
+ /*
+  * Other_stuff.h: Definitions of routines in other_stuff.
+  *
+@@ -46,7 +48,7 @@
+ char *Malloc(size)
+      unsigned size;
+ {
+-	char *data, *malloc();
++	char *data; /*, *malloc(); */
+ 
+ 	if (!(data = malloc(size)))
+ 	  Fatal_Error("Out of memory!");
+@@ -62,7 +64,7 @@
+         char *ptr;
+         int size;
+ {
+-	char *new_ptr, *realloc();
++	char *new_ptr; /*, *realloc(); */
+ 
+ 	if (!ptr)
+ 	  return(Malloc(size));
+--- a/xwit.c	1997-10-21 03:32:54.000000000 +0200
++++ b/xwit.c	2013-08-03 18:38:52.075456902 +0200
+@@ -31,6 +31,8 @@
+ #include <X11/Xutil.h>
+ #include <X11/Xproto.h>
+ #include <stdio.h>
++#include <stdlib.h> /* atoi() */
++#include <sys/select.h> /* select() */                                                                                              
+ #include <sys/time.h>
+ #include "dsimple.h"
+ 
+@@ -134,7 +136,7 @@
+     struct timeval tv;
+     tv.tv_sec = ms/1000;
+     tv.tv_usec = (ms%1000)*1000;
+-    select(0,(int*)0,(int*)0,(int*)0,&tv);
++    select(0,0,0,0,&tv);
+ }
+ 
+ /*

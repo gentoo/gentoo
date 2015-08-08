@@ -1,0 +1,17 @@
+Index: porthole/backends/portagelib.py
+===================================================================
+--- porthole/backends/portagelib.py	(revision 1209)
++++ porthole/backends/portagelib.py	(working copy)
+@@ -452,7 +452,11 @@
+ 
+ 
+ def get_masking_status(ebuild):
+-    return portage.getmaskingstatus(ebuild)
++    try:
++        status = portage.getmaskingstatus(ebuild)
++    except KeyError:
++        status = ['deprecated']
++    return status
+ 
+ 
+ def get_masking_reason(ebuild):

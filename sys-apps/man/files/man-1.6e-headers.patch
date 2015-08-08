@@ -1,0 +1,13 @@
+--- gencat/genlib.c
++++ gencat/genlib.c
+@@ -49,10 +49,8 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-#ifdef SYSV
+ #include <sys/types.h>
+ #include <unistd.h>
+-#endif
+ 
+ #if !defined(__linux__) && !defined(__FreeBSD__)
+ #include <memory.h>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+WMitime is an (overglorified) clock for the Windowmaker/Afterstep dock. It 
+displays standard 12/24 hour time and date, as well as Swatch's new internet 
+time.
+</longdescription>
+</pkgmetadata>

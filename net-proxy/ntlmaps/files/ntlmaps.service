@@ -1,0 +1,10 @@
+[Unit]
+Description=NTLM proxy Authentication against MS proxy/web server
+Wants=network.target
+Before=network.target
+
+[Service]
+ExecStart=/usr/bin/ntlmaps
+
+[Install]
+WantedBy=multi-user.target

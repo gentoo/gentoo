@@ -1,0 +1,36 @@
+From 918d6d8e5bac3981126cb01e673430cb7c96ec02 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 9 Feb 2012 16:51:24 -0500
+Subject: [PATCH] always install the man pages
+
+Since we maintain local copies, don't require xmlto/xsltproc in
+order to install them.  This makes packaging simpler.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ SConstruct |    9 ++++-----
+ 1 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index ab85b7d..fb08779 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1186,11 +1186,10 @@ if qt_env:
+ 
+ 
+ maninstall = []
+-if manbuilder:
+-    for manpage in base_manpages.keys() + python_manpages.keys():
+-        section = manpage.split(".")[1]
+-        dest = os.path.join(installdir('mandir'), "man"+section, manpage)
+-        maninstall.append(env.InstallAs(source=manpage, target=dest))
++for manpage in base_manpages.keys() + python_manpages.keys():
++    section = manpage.split(".")[1]
++    dest = os.path.join(installdir('mandir'), "man"+section, manpage)
++    maninstall.append(env.InstallAs(source=manpage, target=dest))
+ install = env.Alias('install', binaryinstall + maninstall + python_install + pc_install + headerinstall)
+ 
+ def Uninstall(nodes):
+-- 
+1.7.8.4
+

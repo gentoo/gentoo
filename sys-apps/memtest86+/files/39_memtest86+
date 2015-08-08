@@ -1,0 +1,33 @@
+#!/bin/sh
+
+. /usr/share/grub/grub-mkconfig_lib
+
+memtest=/boot/memtest86plus/memtest
+
+if [ -f "${memtest}" ]; then
+	device="$("${grub_probe}" --target=device "${memtest}")"
+	path="$(make_system_path_relative_to_its_root "${memtest}")"
+	cat <<EOF
+menuentry "Memtest86+" {
+EOF
+	prepare_grub_to_access_device "${device}" | grub_add_tab
+	cat <<EOF
+	linux16 "${path}"
+}
+EOF
+fi
+
+memtest=/boot/memtest86plus/memtest.netbsd
+
+if [ -f "${memtest}" ]; then
+	device="$("${grub_probe}" --target=device "${memtest}")"
+	path="$(make_system_path_relative_to_its_root "${memtest}")"
+	cat <<EOF
+menuentry "Memtest86+ (netbsd)" {
+EOF
+	prepare_grub_to_access_device "${device}" | grub_add_tab
+	cat <<EOF
+	knetbsd "${path}"
+}
+EOF
+fi

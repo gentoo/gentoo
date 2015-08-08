@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Test-Warn</remote-id>
+    <remote-id type="cpan-module">Test::Warn</remote-id>
+    <remote-id type="cpan-module">Test::Warn::Categorization</remote-id>
+    <remote-id type="cpan-module">Test::Warn::DAG_Node_Tree</remote-id>
+  </upstream>
+</pkgmetadata>

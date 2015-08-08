@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>tupone@gentoo.org</email>
+<name>Alfredo Tupone</name>
+</maintainer>
+<longdescription lang="en">
+WebMCP is web application framework written in Lua and C. Instead of using the classical Model-View-Controller (MVC) concept, WebMCP makes use of a so-called Model-View-Action concept. The database is accessed through the Model layer, which provides an Object-Relational Mapping (ORM). HTTP-GET requests are handled by Views, which process the request data, query the database, and render the result. HTTP-POST requests are handled by Actions, which can write to the database and redirect to a View, dependent on success or failure.
+</longdescription>
+</pkgmetadata>

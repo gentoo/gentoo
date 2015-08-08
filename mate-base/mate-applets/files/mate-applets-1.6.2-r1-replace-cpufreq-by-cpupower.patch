@@ -1,0 +1,79 @@
+Obtained from: http://pkgs.fedoraproject.org/cgit/mate-applets.git/plain/cpufreq.patch
+
+diff -upr mate-applets-1.5.0-orig/configure.ac mate-applets-1.5.0/configure.ac
+--- mate-applets-1.5.0-orig/configure.ac	2012-12-08 22:37:32.000000000 +0100
++++ mate-applets-1.5.0/configure.ac	2013-01-14 18:04:15.726598991 +0100
+@@ -506,13 +506,13 @@ if test "x$HAVE_POLKIT" = "xyes"; then
+ fi
+ 
+ AC_CHECK_HEADER(cpufreq.h, have_libcpufreq=yes, have_libcpufreq=no)
+-LIBCPUFREQ_LIBS=
+-if test "x$have_libcpufreq" = "xyes"; then
+-   AC_DEFINE([HAVE_LIBCPUFREQ], [1], [Have libcpufreq.])
+-   LIBCPUFREQ_LIBS=-lcpufreq
++LIBCPUPOWER_LIBS=
++if test "x$have_libcpupower" = "xyes"; then
++   AC_DEFINE([HAVE_LIBCPUPOWER], [1], [Have libcpupower.])
++   LIBCPUPOWER_LIBS=-lcpupower
+ fi
+-AM_CONDITIONAL(HAVE_LIBCPUFREQ, test x$have_libcpufreq = xyes)
+-AC_SUBST(LIBCPUFREQ_LIBS)
++AM_CONDITIONAL(HAVE_LIBCPUPOWER, test x$have_libcpupower = xyes)
++AC_SUBST(LIBCPUPOWER_LIBS)
+ 
+ build_cpufreq_applet=no
+ 
+diff -upr mate-applets-1.5.0-orig/cpufreq/src/cpufreq-selector/cpufreq-selector-factory.c mate-applets-1.5.0/cpufreq/src/cpufreq-selector/cpufreq-selector-factory.c
+--- mate-applets-1.5.0-orig/cpufreq/src/cpufreq-selector/cpufreq-selector-factory.c	2012-12-08 22:37:32.000000000 +0100
++++ mate-applets-1.5.0/cpufreq/src/cpufreq-selector/cpufreq-selector-factory.c	2013-01-14 19:15:28.432366287 +0100
+@@ -24,7 +24,7 @@
+ #include "cpufreq-selector-factory.h"
+ #include "cpufreq-selector-sysfs.h"
+ #include "cpufreq-selector-procfs.h"
+-#ifdef HAVE_LIBCPUFREQ
++#ifdef HAVE_LIBCPUPOWER
+ #include "cpufreq-selector-libcpufreq.h"
+ #endif
+ 
+@@ -33,7 +33,7 @@ cpufreq_selector_factory_create_selector
+ {
+ 	CPUFreqSelector *selector = NULL;
+ 	
+-#ifdef HAVE_LIBCPUFREQ
++#ifdef HAVE_LIBCPUPOWER
+ 	selector = cpufreq_selector_libcpufreq_new (cpu);
+ #else
+ 	if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
+@@ -41,7 +41,7 @@ cpufreq_selector_factory_create_selector
+ 	} else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
+ 		selector = cpufreq_selector_procfs_new (cpu);
+ 	}
+-#endif /* HAVE_LIBCPUFREQ */
++#endif /* HAVE_LIBCPUPOWER */
+ 
+ 	return selector;
+ }
+diff -upr mate-applets-1.5.0-orig/cpufreq/src/cpufreq-selector/Makefile.am mate-applets-1.5.0/cpufreq/src/cpufreq-selector/Makefile.am
+--- mate-applets-1.5.0-orig/cpufreq/src/cpufreq-selector/Makefile.am	2012-12-08 22:37:32.000000000 +0100
++++ mate-applets-1.5.0/cpufreq/src/cpufreq-selector/Makefile.am	2013-01-14 19:13:27.223180712 +0100
+@@ -16,7 +16,7 @@ if CPUFREQ_SELECTOR_SUID
+ endif
+ 
+ 
+-if HAVE_LIBCPUFREQ
++if HAVE_LIBCPUPOWER
+ cpufreq_files=cpufreq-selector-libcpufreq.c        cpufreq-selector-libcpufreq.h
+ endif
+ 
+diff -upr mate-applets-1.5.0-orig/cpufreq/src/Makefile.am mate-applets-1.5.0/cpufreq/src/Makefile.am
+--- mate-applets-1.5.0-orig/cpufreq/src/Makefile.am	2012-12-08 22:37:32.000000000 +0100
++++ mate-applets-1.5.0/cpufreq/src/Makefile.am	2013-01-14 19:14:01.647517888 +0100
+@@ -12,7 +12,7 @@ INCLUDES = \
+ 
+ libexec_PROGRAMS = mate-cpufreq-applet
+ 
+-if HAVE_LIBCPUFREQ
++if HAVE_LIBCPUPOWER
+ cpufreq_files=cpufreq-monitor-libcpufreq.c    cpufreq-monitor-libcpufreq.h
+ endif
+ 

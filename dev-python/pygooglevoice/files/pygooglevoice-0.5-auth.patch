@@ -1,0 +1,121 @@
+--- pygooglevoice-0.5.orig/bin/asterisk-gvoice-setup
++++ pygooglevoice-0.5/bin/asterisk-gvoice-setup
+@@ -66,6 +66,7 @@
+ exten => _X.,n,System(gvoice -b -e \${ACCTNAME} -p \${ACCTPASS} call \${EXTEN} \${RINGBACK})
+ exten => _X.,n,Set(PARKINGEXTEN=\${CALLPARK})
+ exten => _X.,n,Park()
++exten => _X.,n,ParkAndAnnounce(pbx-transfer:PARKED|45|Console/dsp)
+ 
+ [custom-park]
+ exten => s,1,Wait(4)
+--- pygooglevoice-0.5.orig/googlevoice/settings.py
++++ pygooglevoice-0.5/googlevoice/settings.py
+@@ -19,7 +19,8 @@
+ """
+ 
+ DEBUG = False
+-LOGIN = 'https://www.google.com/accounts/ServiceLoginAuth?service=grandcentral'
++LOGIN = 'https://www.google.com/accounts/ClientLogin'
++SERVICE = 'grandcentral'
+ FEEDS = ('inbox', 'starred', 'all', 'spam', 'trash', 'voicemail', 'sms',
+         'recorded', 'placed', 'received', 'missed')
+ 
+@@ -50,4 +51,4 @@
+ XML_RECORDED = XML_RECENT + 'recorded/'
+ XML_PLACED = XML_RECENT + 'placed/'
+ XML_RECEIVED = XML_RECENT + 'received/'
+-XML_MISSED = XML_RECENT + 'missed/'
+\ No newline at end of file
++XML_MISSED = XML_RECENT + 'missed/'
+--- pygooglevoice-0.5.orig/googlevoice/util.py
++++ pygooglevoice-0.5/googlevoice/util.py
+@@ -6,11 +6,11 @@
+ from pprint import pprint
+ try:
+     from urllib2 import build_opener,install_opener, \
+-        HTTPCookieProcessor,Request,urlopen
++        HTTPCookieProcessor,Request,urlopen,HTTPError
+     from urllib import urlencode,quote
+ except ImportError:
+     from urllib.request import build_opener,install_opener, \
+-        HTTPCookieProcessor,Request,urlopen
++        HTTPCookieProcessor,Request,urlopen,HTTPError
+     from urllib.parse import urlencode,quote
+ try:
+     from http.cookiejar import LWPCookieJar as CookieJar
+--- pygooglevoice-0.5.orig/googlevoice/voice.py
++++ pygooglevoice-0.5/googlevoice/voice.py
+@@ -39,7 +39,8 @@
+         except NameError:
+             regex = r"('_rnr_se':) '(.+)'"
+         try:
+-            sp = re.search(regex, urlopen(settings.INBOX).read()).group(2)
++            response = self.__do_page('inbox', data=None, headers = {'Authorization': 'GoogleLogin auth=%s' % self._auth })
++            sp = re.search(regex, response.read()).group(2)
+         except AttributeError:
+             sp = None
+         self._special = sp
+@@ -65,12 +66,19 @@
+             from getpass import getpass
+             passwd = getpass()
+ 
+-        content = self.__do_page('login').read()
+-        # holy hackjob
+-        galx = re.search(r"name=\"GALX\"\s+value=\"(.+)\"", content).group(1)
+-        self.__do_page('login', {'Email': email, 'Passwd': passwd, 'GALX': galx})
+-        
+-        del email, passwd
++        response = self.__do_page('login', {'accountType': 'HOSTED_OR_GOOGLE' ,'Email': email, 'Passwd': passwd, 'service': 'grandcentral' })
++
++        respMap = dict( line.strip().split('=', 1) for line in response.readlines() )
++        response.close()
++
++        if respMap.has_key('Auth'):
++            self._auth = respMap['Auth']
++        elif respMap.has_key('Error'):
++            if respMap['Error'] == 'CaptchaRequired':
++                raise LoginError('Clear the captcha at: %s' % respMap['Url'])
++            raise LoginError(respMap['Error'])
++
++        del email, passwd, respMap
+         
+         try:
+             assert self.special
+@@ -84,7 +92,7 @@
+         Logs out an instance and makes sure it does not still have a session
+         """
+         self.__do_page('logout')
+-        del self._special 
++        del self._special, self._auth 
+         assert self.special == None
+         return self
+         
+@@ -200,7 +208,11 @@
+             return urlopen(Request(getattr(settings, page) + data, None, headers))
+         if data:
+             headers.update({'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'})
+-        return urlopen(Request(getattr(settings, page), data, headers))
++            headers.update({'Content-length': '%d' % len(data)})
++        try:
++            return urlopen(Request(getattr(settings, page), data, headers))
++        except (HTTPError), e:
++            return e
+ 
+     def __validate_special_page(self, page, data={}, **kwargs):
+         """
+@@ -215,11 +227,14 @@
+         """
+         Add self.special to request data
+         """
+-        assert self.special, 'You must login before using this page'
++        assert self.special and self._auth, 'You must login before using this page'
+         if isinstance(data, tuple):
+             data += ('_rnr_se', self.special)
+         elif isinstance(data, dict):
+             data.update({'_rnr_se': self.special})
++
++        headers.update({'Authorization': 'GoogleLogin auth=%s' % self._auth})
++
+         return self.__do_page(page, data, headers)
+         
+     _Phone__do_special_page = __do_special_page

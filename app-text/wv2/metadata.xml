@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<herd>tex</herd>
+	<upstream>
+		<remote-id type="sourceforge">wvware</remote-id>
+		<bugs-to>http://sourceforge.net/tracker/?group_id=10501</bugs-to>
+	</upstream>
+</pkgmetadata>

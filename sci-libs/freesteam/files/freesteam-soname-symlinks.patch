@@ -1,0 +1,39 @@
+From dd03d6b29fd29f9978022291f0c023e4fe5dd345 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <gentoo@mgorny.alt.pl>
+Date: Sat, 26 Nov 2011 23:18:37 +0100
+Subject: [PATCH] Fix SONAME symlinks - make them relative.
+
+---
+ SConstruct |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 1794691..d84a13a 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -5,7 +5,7 @@
+ # We don't currently propose to support building freesteam from MSVS but
+ # that shouldn't be necessary, as you should be able to use the MinGW-generated
+ # DLL even with MSVS, because it only uses C code.
+-import platform, sys, distutils.sysconfig, os 
++import platform, sys, distutils.sysconfig, os, os.path
+ 
+ #version number for this copy of freesteam
+ version = "2.1"
+@@ -436,11 +436,11 @@ else:
+ 
+ 	install_link1 = None
+ 	if env.subst(link1) != env.subst(libname):
+-		install_link1 = env.Command("${INSTALL_ROOT}"+link1,install_lib,"ln -s %s $TARGET" % libname)
++		install_link1 = env.Command("${INSTALL_ROOT}"+link1,install_lib,"ln -s %s $TARGET" % os.path.basename(libname))
+ 
+ 	install_link2 = None
+ 	if env.get("SONAME_MINOR"):
+-		install_link2 = env.Command("${INSTALL_ROOT}"+link2,install_lib,"ln -s %s $TARGET"%libname)
++		install_link2 = env.Command("${INSTALL_ROOT}"+link2,install_lib,"ln -s %s $TARGET"%os.path.basename(libname))
+ 	
+ 	env['installedfiles'] += [install_link1, install_link2]
+ 
+-- 
+1.7.8.rc3.31.g017d.dirty
+

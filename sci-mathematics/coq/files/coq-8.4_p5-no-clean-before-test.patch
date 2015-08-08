@@ -1,0 +1,12 @@
+--- coq-8.4pl5-orig/Makefile.build	2015-02-15 12:06:48.044999959 +1100
++++ coq-8.4pl5/Makefile.build	2015-02-15 16:41:06.521892146 +1100
+@@ -395,8 +395,7 @@
+ 
+ check:: validate test-suite
+ 
+-test-suite: world $(ALLSTDLIB).v
+-	$(MAKE) $(MAKE_TSOPTS) clean
++test-suite: $(ALLSTDLIB).v
+ 	$(MAKE) $(MAKE_TSOPTS) all
+ 	$(HIDE)if grep -F 'Error!' test-suite/summary.log ; then false; fi
+ 

@@ -1,0 +1,61 @@
+Description: Fix crash when closing a dock tool within the first 5 seconds
+ (a NULL pointer dereference caused by a race condition between the user
+ closing the tool and the timer setting the initial positions, prevented by
+ using a QWeakPointer instead of a raw QWidget *)
+Author: Kevin Kofler <kevin.kofler@chello.at>
+Bug-Fedora: https://bugzilla.redhat.com/show_bug.cgi?id=722986
+Forwarded: no
+Last-Update: 2011-10-06
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+diff -ur qtoctave-0.10.1/qtoctave/src/main.cpp qtoctave-0.10.1-initialposition/qtoctave/src/main.cpp
+--- qtoctave-0.10.1/qtoctave/src/main.cpp	2011-01-06 22:48:07.000000000 +0100
++++ qtoctave-0.10.1-initialposition/qtoctave/src/main.cpp	2011-10-06 20:17:03.000000000 +0200
+@@ -595,7 +595,7 @@
+ 						initPos.maximized=maximized;
+ 						initPos.minimized=minimized;
+ 						initPos.widget=bw->parentWidget();
+-						if(initPos.widget!=NULL)
++						if(!initPos.widget.isNull())
+ 							initialPositionList.append(initPos);
+ 						//bw->show();
+ 						//bw->move(x,y);
+@@ -694,10 +694,14 @@
+ {
+ 	foreach(InitialPosition i, initialPositionList)
+ 	{
+-		i.widget->move(i.x,i.y);
+-		i.widget->resize(i.width, i.height);
+-		if(i.maximized) i.widget->showMaximized();
+-		if(i.minimized) i.widget->showMinimized();
++		QWidget *widget = i.widget.data();
++		if (widget)
++		{
++			widget->move(i.x,i.y);
++			widget->resize(i.width, i.height);
++			if(i.maximized) widget->showMaximized();
++			if(i.minimized) widget->showMinimized();
++		}
+ 	}
+ }
+ 
+diff -ur qtoctave-0.10.1/qtoctave/src/main.h qtoctave-0.10.1-initialposition/qtoctave/src/main.h
+--- qtoctave-0.10.1/qtoctave/src/main.h	2011-01-06 22:48:08.000000000 +0100
++++ qtoctave-0.10.1-initialposition/qtoctave/src/main.h	2011-10-06 20:12:55.000000000 +0200
+@@ -27,6 +27,7 @@
+ #include <QListWidget>
+ #include <QTimer>
+ #include <QVector>
++#include <QWeakPointer>
+ #include "mainwindow.h"
+ #include "octave_connection.h"
+ #include "terminal.h"
+@@ -41,7 +42,7 @@
+ struct InitialPosition
+ {
+ 	int x, y, width, height;
+-	QWidget *widget;
++	QWeakPointer<QWidget> widget;
+ 	bool maximized, minimized;
+ };
+ 

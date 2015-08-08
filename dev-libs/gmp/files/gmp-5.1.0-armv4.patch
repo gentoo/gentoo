@@ -1,0 +1,12 @@
+fix missing __gmpn_invert_limb symbols w/armv4 targets
+
+--- a/configure
++++ b/configure
+@@ -582,6 +582,7 @@ case $host in
+     # options fail.
+     case $host_cpu in
+       armsa1 | armv4*)
++	path="arm"
+ 	;;
+       armxscale | arm9te | arm10 | armv5*)
+ 	path="arm/v5 arm"

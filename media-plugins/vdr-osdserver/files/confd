@@ -1,0 +1,7 @@
+# /etc/conf.d/vdr.osdserver
+# $Id$
+
+### Listening port for osdserver plugin
+#   default: 2010
+#OSDSERVER_PORT="2010"
+

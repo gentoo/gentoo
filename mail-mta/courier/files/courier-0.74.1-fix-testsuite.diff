@@ -1,0 +1,12 @@
+--- courier-0.74.1-plain/libs/maildrop/testsuite2	2013-08-30 02:36:07.000000000 +0200
++++ courier-0.74.1/libs/maildrop/testsuite2	2015-02-16 13:22:37.455698929 +0100
+@@ -232,7 +232,8 @@
+ 
+ for f in testsuite?.filter
+ do
+-    echo 'xfilter "cat"' >t
++    echo "SHELL=/bin/sh" > t
++    echo 'xfilter "cat"' >>t
+     cat $f >>t
+     chmod 600 t
+     mv -f t $f

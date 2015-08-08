@@ -1,0 +1,54 @@
+From cf054cd92dfac55f3920e805d01c11dcfc2cd4fa Mon Sep 17 00:00:00 2001
+From: jsquyres <jsquyres@cisco.com>
+Date: Mon, 28 Mar 2011 12:44:06 -0400
+Subject: [PATCH] Fix some fairly-important typos (!)
+
+Upstream commit r24328.
+---
+ test/datatype/ddt_lib.c      |    2 +-
+ test/datatype/ddt_raw.c      |    2 +-
+ test/datatype/opal_ddt_lib.c |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/datatype/ddt_lib.c b/test/datatype/ddt_lib.c
+index 015419d..c349384 100644
+--- a/test/datatype/ddt_lib.c
++++ b/test/datatype/ddt_lib.c
+@@ -209,7 +209,7 @@ int mpich_typeub2( void )
+ 
+ int mpich_typeub3( void )
+ {
+-   int blocklen[2], err = 0, idisp[3];
++   int blocklen[3], err = 0, idisp[3];
+    size_t sz;
+    MPI_Aint disp[3], lb, ub, ex;
+    ompi_datatype_t *types[3], *dt1, *dt2, *dt3, *dt4, *dt5;
+diff --git a/test/datatype/ddt_raw.c b/test/datatype/ddt_raw.c
+index eea9004..7effe65 100644
+--- a/test/datatype/ddt_raw.c
++++ b/test/datatype/ddt_raw.c
+@@ -45,7 +45,7 @@ static int test_upper( unsigned int length )
+ {
+     ompi_datatype_t *pdt;
+     opal_convertor_t * pConv;
+-    int rc;
++    int rc = OMPI_SUCCESS;
+     unsigned int i, iov_count, split_chunk, total_length;
+     size_t max_data;
+     struct iovec iov[5];
+diff --git a/test/datatype/opal_ddt_lib.c b/test/datatype/opal_ddt_lib.c
+index e05bb06..dffd86c 100644
+--- a/test/datatype/opal_ddt_lib.c
++++ b/test/datatype/opal_ddt_lib.c
+@@ -759,7 +759,7 @@ int mpich_typeub2( void )
+ 
+ int mpich_typeub3( void )
+ {
+-   int blocklen[2], err = 0, idisp[3];
++   int blocklen[3], err = 0, idisp[3];
+    size_t sz;
+    OPAL_PTRDIFF_TYPE disp[3], lb, ub, ex;
+    opal_datatype_t *types[3], *dt1, *dt2, *dt3, *dt4, *dt5;
+-- 
+1.7.3.4
+

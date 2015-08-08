@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>java</herd>
+  <maintainer>
+    <email>gnu_andrew@member.fsf.org</email>
+    <name>Andrew John Hughes</name>
+    <description>Proxy Maintainer</description>
+  </maintainer>
+  <longdescription>
+    Plugins for javax.sound, including the PulseAudio support formerly bundled with IcedTea.
+  </longdescription>
+</pkgmetadata>

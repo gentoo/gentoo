@@ -1,0 +1,36 @@
+From: Torsten Veller <tove@gentoo.org>
+Subject: [PATCH] gentoo/enc2xs
+
+Tweak enc2xs to ignore missing @INC directories
+
+https://bugs.gentoo.org/show_bug.cgi?id=338802
+http://git.debian.org/?p=perl/perl-5.12.git;a=blob;h=227dc105;hb=9d9ed099
+
+---
+ cpan/Encode/bin/enc2xs |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cpan/Encode/bin/enc2xs b/cpan/Encode/bin/enc2xs
+index 773c0a0..b95507b 100644
+--- a/cpan/Encode/bin/enc2xs
++++ b/cpan/Encode/bin/enc2xs
+@@ -924,7 +924,7 @@ use vars qw(
+ sub find_e2x{
+     eval { require File::Find; };
+     my (@inc, %e2x_dir);
+-    for my $inc (@INC){
++    for my $inc (grep -d, @INC){
+     push @inc, $inc unless $inc eq '.'; #skip current dir
+     }
+     File::Find::find(
+@@ -1005,7 +1005,7 @@ sub make_configlocal_pm {
+ 	    $LocalMod{$enc} ||= $mod;
+ 	}
+     };
+-    File::Find::find({wanted => $wanted}, @INC);
++    File::Find::find({wanted => $wanted}, grep -d, @INC);
+     $_ModLines = "";
+     for my $enc ( sort keys %LocalMod ) {
+         $_ModLines .=
+-- 
+tg: (e5b15fe..) gentoo/enc2xs (depends on: upstream)

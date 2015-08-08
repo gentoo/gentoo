@@ -1,0 +1,36 @@
+fix building w/libav-10
+
+https://wiki.libav.org/Migration/10
+
+--- a/filter/filter_resample.c
++++ b/filter/filter_resample.c
+@@ -37,6 +37,7 @@
+ #include "libtc/optstr.h"
+ #include "libtc/tcavcodec.h"
+ #include "libtc/tcmodule-plugin.h"
++#include <libavresample/avresample.h>
+ 
+ 
+ typedef struct {
+@@ -45,7 +46,7 @@ typedef struct {
+ 
+     int bytes_per_sample;
+ 
+-    ReSampleContext *resample_ctx;
++    AVAudioResampleContext *resample_ctx;
+ } ResamplePrivateData;
+ 
+ static const char resample_help[] = ""
+--- a/import/probe_ffmpeg.c
++++ b/import/probe_ffmpeg.c
+@@ -51,8 +51,8 @@ static void translate_info(const AVFormatContext *ctx, ProbeInfo *info)
+             info->bitrate = st->codec->bit_rate / 1000;
+             info->width = st->codec->width;
+             info->height = st->codec->height;
+-            if (st->r_frame_rate.num > 0 && st->r_frame_rate.den > 0) {
+-                info->fps = av_q2d(st->r_frame_rate);
++            if (st->avg_frame_rate.num > 0 && st->avg_frame_rate.den > 0) {
++                info->fps = av_q2d(st->avg_frame_rate);
+             } else {
+                 /* watch out here */
+                 info->fps = 1.0/av_q2d(st->codec->time_base);

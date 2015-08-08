@@ -1,0 +1,175 @@
+diff -Nru mgetty-1.1.37.orig/doc/Makefile mgetty-1.1.37/doc/Makefile
+--- mgetty-1.1.37.orig/doc/Makefile	2006-02-22 18:35:02.000000000 +0100
++++ mgetty-1.1.37/doc/Makefile	2009-08-31 20:31:01.000000000 +0200
+@@ -64,7 +64,7 @@
+ 
+ install: $(MANSRC) mgetty.info
+ 	for D in `dirname $(MAN1DIR)` $(MAN1DIR) $(MAN4DIR) $(MAN5DIR) $(MAN8DIR) ; do \
+-		if [ ! -d $$D ] ; then mkdir $$D || exit 1 ; fi ; \
++		if [ ! -d $$D ] ; then mkdir -p $$D || exit 1 ; fi ; \
+ 	done
+ 	for i in $(MAN1PAGES) ; do \
+ 		$(INSTALL) -m 644 $$i $(MAN1DIR) ; \
+@@ -122,16 +122,16 @@
+ #
+ .SUFFIXES: .1in .4in .5in .8in .1 .4 .5 .8
+ 
+-.1in.1:
++.1in.1: ../sedscript
+ 	../sedscript <$< >$*.1
+ 
+-.4in.4:
++.4in.4: ../sedscript
+ 	../sedscript <$< >$*.4
+ 
+-.5in.5:
++.5in.5: ../sedscript
+ 	../sedscript <$< >$*.5
+ 
+-.8in.8:
++.8in.8: ../sedscript
+ 	../sedscript <$< >$*.8
+ 
+ #
+diff -Nru mgetty-1.1.37.orig/fax/Makefile mgetty-1.1.37/fax/Makefile
+--- mgetty-1.1.37.orig/fax/Makefile	2006-02-22 18:25:30.000000000 +0100
++++ mgetty-1.1.37/fax/Makefile	2009-08-31 20:31:01.000000000 +0200
+@@ -36,7 +36,7 @@
+ 	@cd .. ; $(MAKE) sedscript
+ 
+ faxq-helper: faxq-helper.o 
+-	$(CC) $(CFLAGS) -o faxq-helper faxq-helper.o
++	$(CC) $(LDLAGS) -o faxq-helper faxq-helper.o
+ 
+ faxq-helper.o: faxq-helper.c ../sedscript
+ 	$(CC) $(CFLAGS) -DFAX_SPOOL_OUT=\"$(FAX_SPOOL_OUT)\" \
+diff -Nru mgetty-1.1.37.orig/fax_lib.h mgetty-1.1.37/fax_lib.h
+--- mgetty-1.1.37.orig/fax_lib.h	2007-06-15 08:44:36.000000000 +0200
++++ mgetty-1.1.37/fax_lib.h	2009-08-31 20:31:01.000000000 +0200
+@@ -41,6 +41,7 @@
+ int fax_set_fdcc _PROTO(( int fd, int fine, int maxsp, int minsp ));
+ int fax_set_bor  _PROTO(( int fd, int bit_order ));
+ int fax_set_flowcontrol _PROTO(( int fd, int hw_flow ));
++void fax_init_swaptable _PROTO(( int direct, unsigned char byte_tab[] ));
+ int mdm_identify _PROTO(( int fd ));
+ void fax2_incoming_nsf _PROTO(( char * nsf_hex ));
+ void fax1_incoming_nsf _PROTO(( uch * nsf_bin, int len ));
+diff -Nru mgetty-1.1.37.orig/frontends/www/Makefile mgetty-1.1.37/frontends/www/Makefile
+--- mgetty-1.1.37.orig/frontends/www/Makefile	2006-02-22 18:25:32.000000000 +0100
++++ mgetty-1.1.37/frontends/www/Makefile	2009-08-31 20:31:01.000000000 +0200
+@@ -125,12 +125,12 @@
+ #
+ .SUFFIXES: .in .cgi .html
+ 
+-.in.cgi:
++.in.cgi: ../../sedscript
+ 	rm -f $*.cgi
+ 	../../sedscript <$< >$*.cgi
+ 	chmod +x $*.cgi
+ 
+-.in.html:
++.in.html: ../../sedscript
+ 	rm -f $*.html
+ 	../../sedscript <$< | \
+ 		sed -e "s!@CGI_HREF@!$(CGI_HREF)!" >$*.html
+diff -Nru mgetty-1.1.37.orig/logfile.c mgetty-1.1.37/logfile.c
+--- mgetty-1.1.37.orig/logfile.c	2005-11-26 14:48:16.000000000 +0100
++++ mgetty-1.1.37/logfile.c	2009-08-31 20:31:01.000000000 +0200
+@@ -58,10 +58,10 @@
+ /* Most systems have these variables but do not declare them. On many
+    of those systems that _do_ declare them, it won't hurt */
+ 
+-#if !defined(__NetBSD__) && !defined( __FreeBSD__ ) && !defined(__OpenBSD__) && !defined(__GLIBC__) && !defined(__MACH__)
++/*#if !defined(__NetBSD__) && !defined( __FreeBSD__ ) && !defined(__OpenBSD__) && !defined(__GLIBC__) && !defined(__MACH__)
+ extern int sys_nerr;
+ extern char *sys_errlist[];
+-#endif
++#endif*/
+ 
+ /* Interactive Unix is a little bit braindead - does not have atexit(),
+  */
+@@ -211,6 +211,7 @@
+ va_list pvar;
+ int     errnr;
+ char * p;
++char *error_string;
+ static int first_open = TRUE;
+ 
+     if ( level > log_level )	/* log level high enough? */
+@@ -327,12 +328,20 @@
+     }
+     else		/* ERROR or FATAL */
+     {
++	error_string = strerror (errnr);
++	if ( error_string == NULL )
++	{
++		if ( errno == EINVAL )
++			error_string = "<error not in list>";
++		else
++			error_string = "<error calling strerror()>";
++	}
++	
+ 	fprintf(log_fp, "\n%02d/%02d %02d:%02d:%02d %s %s: %s",
+ 		             tm->tm_mon+1,  tm->tm_mday,
+ 			     tm->tm_hour, tm->tm_min, tm->tm_sec,
+ 		             log_infix, ws,
+-			     ( errnr <= sys_nerr ) ? sys_errlist[errnr]:
+-			     "<error not in list>" );
++			     strerror (errnr));
+ #ifdef SYSLOG
+ 	syslog( level == L_FATAL? LOG_ALERT: LOG_ERR, "%s: %m", ws );
+ #endif
+diff -Nru mgetty-1.1.37.orig/Makefile mgetty-1.1.37/Makefile
+--- mgetty-1.1.37.orig/Makefile	2009-08-31 20:30:33.000000000 +0200
++++ mgetty-1.1.37/Makefile	2009-08-31 20:32:08.000000000 +0200
+@@ -368,7 +368,7 @@
+ 
+ # subdirectories...
+ 
+-subdirs:
++subdirs: sedscript
+ 	cd g3 &&    $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+ 	cd tools && $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+ 	cd fax &&   $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" "FAX_SPOOL_OUT=$(FAX_SPOOL_OUT)" "FAX_OUT_USER=$(FAX_OUT_USER)" "CONFDIR=$(CONFDIR)" all
+@@ -633,15 +633,15 @@
+ # fax spool directories
+ #
+ 	test -d $(spool) || \
+-		( mkdir $(spool) && chmod 755 $(spool) )
++		( ./mkidirs $(spool) && chmod 755 $(spool) )
+ 	test -d $(FAX_SPOOL) || \
+-		( mkdir $(FAX_SPOOL) && \
++		( ./mkidirs $(FAX_SPOOL) && \
+ 		  chown $(FAX_OUT_USER) $(FAX_SPOOL) && \
+ 		  chmod 755 $(FAX_SPOOL) )
+ 	test -d $(FAX_SPOOL_IN) || \
+-		( mkdir $(FAX_SPOOL_IN) && chmod 755 $(FAX_SPOOL_IN) )
++		( ./mkidirs $(FAX_SPOOL_IN) && chmod 755 $(FAX_SPOOL_IN) )
+ 	test -d $(FAX_SPOOL_OUT) || \
+-		  mkdir $(FAX_SPOOL_OUT)
++		  ./mkidirs $(FAX_SPOOL_OUT)
+ 	chown $(FAX_OUT_USER) $(FAX_SPOOL_OUT)
+ 	chmod 755 $(FAX_SPOOL_OUT)
+ #
+diff -Nru mgetty-1.1.37.orig/t/t_g3f_c.c mgetty-1.1.37/t/t_g3f_c.c
+--- mgetty-1.1.37.orig/t/t_g3f_c.c	2007-05-05 14:03:03.000000000 +0200
++++ mgetty-1.1.37/t/t_g3f_c.c	2009-08-31 20:31:01.000000000 +0200
+@@ -19,6 +19,7 @@
+ #include "fax_lib.h"
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ #include <signal.h>
+ #include <errno.h>
+ #include <stdlib.h>
+diff -Nru mgetty-1.1.37.orig/t/t_ring.c mgetty-1.1.37/t/t_ring.c
+--- mgetty-1.1.37.orig/t/t_ring.c	2005-03-23 10:56:21.000000000 +0100
++++ mgetty-1.1.37/t/t_ring.c	2009-08-31 20:31:01.000000000 +0200
+@@ -24,6 +24,7 @@
+ 
+ #include "mgetty.h"
+ #include <stdio.h>
++#include <string.h>
+ #include <signal.h>
+ #include <errno.h>
+ #ifdef T_LOG_VERBOSE

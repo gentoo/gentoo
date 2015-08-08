@@ -1,0 +1,10 @@
+--- lib/inline.rb.~1~	2010-08-28 14:49:06.866480357 +0200
++++ lib/inline.rb	2010-08-28 15:05:14.553732182 +0200
+@@ -577,6 +577,7 @@
+                   "-L#{Config::CONFIG['libdir']}",
+                   '-o', so_name.inspect,
+                   File.expand_path(src_name).inspect,
++                  Config::CONFIG['LIBRUBYARG_SHARED'],
+                   libs,
+                   crap_for_windoze ].join(' ')
+ 

@@ -1,0 +1,13 @@
+--- makemkv-oss-1.8.10/makemkvgui/src/api_linux.cpp.orig	2014-04-13 14:01:36.000000000 +0100
++++ makemkv-oss-1.8.10/makemkvgui/src/api_linux.cpp	2014-05-08 00:09:52.863784998 +0100
+@@ -36,9 +36,7 @@
+ }
+ 
+ static const char* const app_locations[]={
+-    "/bin",
+-    "/usr/bin",
+-    "/usr/local/bin",
++    "/opt/bin",
+     NULL };
+ 
+ const char* const* ApGetAppLocations()

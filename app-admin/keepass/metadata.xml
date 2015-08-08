@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>ale@clearmind.me</email>
+		<description>Maintainer. Assign bugs to him.</description>
+	</maintainer>
+	<maintainer>
+		<email>kensington@gentoo.org</email>
+		<description>Proxy maintainer. CC him on bugs.</description>
+	</maintainer>
+	<herd>proxy-maintainers</herd>
+	<use>
+		<flag name="aot">Generate native code at build time, rather than runtime.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">keepass</remote-id>
+		<bugs-to>http://sourceforge.net/p/keepass/bugs/</bugs-to>
+	</upstream>
+</pkgmetadata>

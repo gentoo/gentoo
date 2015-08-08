@@ -1,0 +1,90 @@
+diff -cr freeverb3-2.3.0/libsamplerate2/samplerate.c freeverb3/libsamplerate2/samplerate.c
+*** freeverb3-2.3.0/libsamplerate2/samplerate.c	2008-09-18 22:52:39.000000000 +0900
+--- freeverb3/libsamplerate2/samplerate.c	2009-03-03 20:23:52.000000000 +0900
+***************
+*** 20,30 ****
+  #include <stdlib.h>
+  #include <string.h>
+  
+! #include "config.h"
+! 
+  #include "samplerate2.h"
+  #include "common.h"
+- #include "float_cast.h"
+  
+  static long SR2_(psrc_set_converter) (SR2_(SRC_PRIVATE)	*psrc, long converter_type);
+  
+--- 20,28 ----
+  #include <stdlib.h>
+  #include <string.h>
+  
+! #include "float_cast.h"
+  #include "samplerate2.h"
+  #include "common.h"
+  
+  static long SR2_(psrc_set_converter) (SR2_(SRC_PRIVATE)	*psrc, long converter_type);
+  
+diff -cr freeverb3-2.3.0/libsamplerate2/samplerate_common.c freeverb3/libsamplerate2/samplerate_common.c
+*** freeverb3-2.3.0/libsamplerate2/samplerate_common.c	2008-09-18 22:50:26.000000000 +0900
+--- freeverb3/libsamplerate2/samplerate_common.c	2009-03-03 20:23:39.000000000 +0900
+***************
+*** 19,28 ****
+  #include	<stdio.h>
+  #include	<stdlib.h>
+  #include	<string.h>
+! #include	"config.h"
+  #include	"common_c.h"
+  #include	"samplerate2_common.h"
+- #include	"float_cast.h"
+  
+  const char * src_get_name (long converter_type)
+  {
+--- 19,27 ----
+  #include	<stdio.h>
+  #include	<stdlib.h>
+  #include	<string.h>
+! #include	"float_cast.h"
+  #include	"common_c.h"
+  #include	"samplerate2_common.h"
+  
+  const char * src_get_name (long converter_type)
+  {
+diff -cr freeverb3-2.3.0/libsamplerate2/src_linear.c freeverb3/libsamplerate2/src_linear.c
+*** freeverb3-2.3.0/libsamplerate2/src_linear.c	2008-09-18 21:11:55.000000000 +0900
+--- freeverb3/libsamplerate2/src_linear.c	2009-03-03 20:24:07.000000000 +0900
+***************
+*** 20,26 ****
+  #include <stdlib.h>
+  #include <string.h>
+  
+- #include "config.h"
+  #include "float_cast.h"
+  #include "samplerate2.h"
+  #include "common.h"
+--- 20,25 ----
+diff -cr freeverb3-2.3.0/libsamplerate2/src_sinc.c freeverb3/libsamplerate2/src_sinc.c
+*** freeverb3-2.3.0/libsamplerate2/src_sinc.c	2008-09-18 23:31:00.000000000 +0900
+--- freeverb3/libsamplerate2/src_sinc.c	2009-03-03 20:24:11.000000000 +0900
+***************
+*** 20,26 ****
+  #include <stdlib.h>
+  #include <string.h>
+  
+- #include "config.h"
+  #include "float_cast.h"
+  #include "samplerate2.h"
+  #include "common.h"
+--- 20,25 ----
+diff -cr freeverb3-2.3.0/libsamplerate2/src_zoh.c freeverb3/libsamplerate2/src_zoh.c
+*** freeverb3-2.3.0/libsamplerate2/src_zoh.c	2008-09-18 23:21:46.000000000 +0900
+--- freeverb3/libsamplerate2/src_zoh.c	2009-03-03 20:24:15.000000000 +0900
+***************
+*** 20,26 ****
+  #include <stdlib.h>
+  #include <string.h>
+  
+- #include "config.h"
+  #include "float_cast.h"
+  #include "samplerate2.h"
+  #include "common.h"
+--- 20,25 ----

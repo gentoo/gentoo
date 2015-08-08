@@ -1,0 +1,33 @@
+From 7d5633e67db8160b77df5e14bdcfb8cd579a9003 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 26 Oct 2010 02:11:12 -0400
+Subject: [PATCH] prune-cronstamps: reformat for cron.d usage
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ extra/prune-cronstamps |    5 ++---
+ 1 files changed, 2 insertions(+), 3 deletions(-)
+ mode change 100755 => 100644 extra/prune-cronstamps
+
+diff --git a/extra/prune-cronstamps b/extra/prune-cronstamps
+old mode 100755
+new mode 100644
+index c2973a5..9ce82a0
+--- a/extra/prune-cronstamps
++++ b/extra/prune-cronstamps
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++# /etc/cron.d/prune-cronstamps
+ 
+ # Prunes any files in /var/spool/cron/cronstamps that haven't been used in ninety days.
+ # We check that both mtime and atime are greater than this:
+@@ -10,5 +10,4 @@
+ #	and so its atime won't be updated. At least its mtime will be updated when
+ #	it's modified.
+ 
+-find /var/spool/cron/cronstamps -mtime +90 -atime +90 -delete
+-
++@weekly ID=prune-cronstamps find /var/spool/cron/cronstamps -mtime +90 -atime +90 -delete
+-- 
+1.7.3.1
+

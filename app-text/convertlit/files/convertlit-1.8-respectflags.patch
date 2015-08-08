@@ -1,0 +1,28 @@
+Index: clit18/Makefile
+===================================================================
+--- clit18/Makefile.orig
++++ clit18/Makefile
+@@ -1,9 +1,9 @@
+ all: clit
+ 
+-CFLAGS=-funsigned-char -Wall -O2 -I ../libtommath-0.30/ -I ../lib -I ../lib/des -I .
++CFLAGS+=-funsigned-char -I ../lib -I ../lib/des -I . 
+ clean:
+ 	rm -f *.o clit
+ 
+ clit: clit.o hexdump.o drm5.o explode.o transmute.o display.o utils.o manifest.o ../lib/openclit.a 
+-	gcc -o clit $^  ../libtommath-0.30/libtommath.a
++	$(CC) $(LDFLAGS) -o clit $^ -ltommath
+ 
+Index: lib/Makefile
+===================================================================
+--- lib/Makefile.orig
++++ lib/Makefile
+@@ -1,6 +1,6 @@
+ all: openclit.a
+ 
+-CFLAGS=-O3 -Wall -Ides -Isha -Inewlzx -I.
++CFLAGS+=-Ides -Isha -Inewlzx -I.
+ clean:
+ 	rm -f *.o openclit.a des/*.o lzx/*.o sha/*.o
+ 

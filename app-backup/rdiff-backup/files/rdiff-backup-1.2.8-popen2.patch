@@ -1,0 +1,16 @@
+diff -urNad rdiff-backup-1.2.8~/rdiff_backup/SetConnections.py rdiff-backup-1.2.8/rdiff_backup/SetConnections.py
+--- rdiff-backup-1.2.8~/rdiff_backup/SetConnections.py	2009-03-16 15:36:21.000000000 +0100
++++ rdiff-backup-1.2.8/rdiff_backup/SetConnections.py	2009-10-03 19:27:54.935647306 +0200
+@@ -135,10 +135,10 @@
+ 	if not remote_cmd: return Globals.local_connection
+ 
+ 	Log("Executing " + remote_cmd, 4)
+-	if os.name == "nt":
++	if map(int, sys.version.split()[0].split('.')[:2]) >= [2, 6]:
+ 		import subprocess
+ 		try:
+-			process = subprocess.Popen(remote_cmd, shell=False, bufsize=0,
++			process = subprocess.Popen(remote_cmd, shell=True, bufsize=0,
+ 								stdin=subprocess.PIPE, 
+ 								stdout=subprocess.PIPE)
+ 			(stdin, stdout) = (process.stdin, process.stdout)

@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/283534
+
+--- configure.in
++++ configure.in
+@@ -223,7 +223,7 @@ if test "${swf_header_found}" = yes ; then
+ 	AC_CHECK_LIB(ming, Ming_init, 
+ 		     HAVE_LIBSWF=yes,,-lm)
+ 	if test "$HAVE_LIBSWF" = "yes" ; then
+-                PKGCONFIG_REQS="$PKGCONFIG_REQS, ming"
++                PKGCONFIG_REQS="$PKGCONFIG_REQS, libming"
+ 		LIBSWF_LDFLAGS="-lming -lm"
+ 		AC_SUBST(LIBSWF_LDFLAGS)
+ 		AC_DEFINE(HAVE_LIBSWF)

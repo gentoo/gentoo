@@ -1,0 +1,20 @@
+--- src/common/image/ImageJpgFactory.cpp.old	2014-12-03 09:52:03.306552513 +0100
++++ src/common/image/ImageJpgFactory.cpp	2014-12-03 09:53:22.117786304 +0100
+@@ -79,7 +79,7 @@
+ 	src->next_input_byte = FakeEOI;
+ 	src->bytes_in_buffer = 2;
+ 
+-	return TRUE;
++	return (boolean)TRUE;
+ }
+ 
+ METHODDEF(void)
+@@ -166,7 +166,7 @@
+ 	src->bytes_in_buffer = buffer.getBufferUsed();
+ 	src->next_input_byte = (JOCTET *) buffer.getBuffer();
+ 
+-	jpeg_read_header(&cinfo, TRUE);
++	jpeg_read_header(&cinfo, (boolean)TRUE);
+ 	jpeg_start_decompress(&cinfo);
+ 
+ 	if ((cinfo.output_components == 3 && !readalpha) ||

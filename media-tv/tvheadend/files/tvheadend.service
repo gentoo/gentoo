@@ -1,0 +1,14 @@
+[Unit]
+Description=tvheadend
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/tvheadend.pid
+ExecStart=/usr/bin/tvheadend -f -p /run/tvheadend.pid -C -c /etc/tvheadend -u tvheadend -g video
+ExecStop=/usr/bin/rm /run/tvheadend.pid
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

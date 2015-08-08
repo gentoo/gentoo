@@ -1,0 +1,26 @@
+Author: Fabian Fagerholm <fabbe@debian.org>
+Description: Rename the testsuite program to sasltestsuite and use /etc/sasldb2
+instead of ./sasldb as default path for the sasldb database file.
+--- trunk.orig/utils/testsuite.c
++++ trunk/utils/testsuite.c
+@@ -464,9 +464,9 @@
+ 	    *len = (unsigned) strlen("sasldb");
+ 	return SASL_OK;
+     } else if (!strcmp(option, "sasldb_path")) {
+-	*result = "./sasldb";
++	*result = "/etc/sasldb2";
+ 	if (len)
+-	    *len = (unsigned) strlen("./sasldb");
++	    *len = (unsigned) strlen("/etc/sasldb2");
+ 	return SASL_OK;
+     } else if (!strcmp(option, "canon_user_plugin")) {
+ 	*result = cu_plugin;
+@@ -2925,7 +2925,7 @@
+ void usage(void)
+ {
+     printf("Usage:\n" \
+-           " testsuite [-g name] [-s seed] [-r tests] -a -M\n" \
++           " sasltestsuite [-g name] [-s seed] [-r tests] -a -M\n" \
+            "    g -- gssapi service name to use (default: host)\n" \
+ 	   "    r -- # of random tests to do (default: 25)\n" \
+ 	   "    a -- do all corruption tests (and ignores random ones unless -r specified)\n" \

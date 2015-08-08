@@ -1,0 +1,23 @@
+OSX Lion has wcscasecmp, but is not GNU
+
+--- configure.in
++++ configure.in
+@@ -67,6 +67,7 @@
+ dnl Checks for library functions.
+ AC_CHECK_FUNCS(strstr)
+ AC_CHECK_FUNCS(strcasecmp)
++AC_CHECK_FUNCS(wcscasecmp)
+ 
+ dnl create testsuite
+ dnl AC_CONFIG_TESTDIR([tests])
+--- src/html.c
++++ src/html.c
+@@ -40,7 +40,7 @@
+ 	link_inline[DEF_STR_LEN]; /* Link of a HTML-Tag */
+ 
+ /* ------------------------------------------------ */
+-#if defined(MULTIBYTE) && ! defined(__GNU_LIBRARY__)
++#if defined(MULTIBYTE) && ! defined(HAVE_WCSCASECMP)
+ #include <wchar.h>
+ static int wcscasecmp(const wchar_t *s1, const wchar_t *s2)
+ {

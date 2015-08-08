@@ -1,0 +1,11 @@
+diff -Naur Lrzip.h.orig Lrzip.h
+--- Lrzip.h.orig	2013-11-30 20:07:27.343086997 +0000
++++ Lrzip.h	2013-11-30 20:07:44.072641056 +0000
+@@ -22,6 +22,7 @@
+ 
+ #include <stdbool.h>
+ #include <stdio.h>
++#include <stdarg.h>
+ #ifdef _WIN32
+ # include <stddef.h>
+ #else

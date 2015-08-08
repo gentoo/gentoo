@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-misc</herd>
+<maintainer>
+<email>jer@gentoo.org</email>
+</maintainer>
+<use>
+<flag name='kde'>Install a KCM plugin for configuring flash player preferences</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+diff -uNtr adodb-220.orig/setup.py adodb-220/setup.py
+--- adodb-220.orig/setup.py	2008-07-16 15:28:26.000000000 -0430
++++ adodb-220/setup.py	2009-09-19 00:01:24.000000000 -0430
+@@ -25,17 +25,3 @@
+     except:
+         pass
+ 
+-
+-for p in sys.path:
+-    if p.find('site-packages')>0:
+-        trydel(p+os.sep+'adodb.py')
+-        trydel(p+os.sep+'adodb_access.py')
+-        trydel(p+os.sep+'adodb_mssql.py')
+-        trydel(p+os.sep+'adodb_mxodbc.py')
+-        trydel(p+os.sep+'adodb_mxoracle.py')
+-        trydel(p+os.sep+'adodb_mysql.py')
+-        trydel(p+os.sep+'adodb_oci8.py')
+-        trydel(p+os.sep+'adodb_odbc.py')
+-        trydel(p+os.sep+'adodb_odbc_mssql.py')
+-        trydel(p+os.sep+'adodb_postgres.py')
+-        trydel(p+os.sep+'adodb_vfp.py')
+\ No newline at end of file

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>kernel</herd>
+<maintainer>
+	<email>gregkh@gentoo.org</email>
+	<name>Greg Kroah-Hartman</name>
+</maintainer>
+<maintainer>
+	<email>chithanh@gentoo.org</email>
+	<name>Chí-Thanh Christopher Nguyễn</name>
+</maintainer>
+<maintainer>
+	<email>zerochaos@gentoo.org</email>
+	<name>Rick Farina</name>
+</maintainer>
+<use>
+	<flag name='savedconfig'>Allows individual selection of firmware files</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>lxqt</herd>
+  <use>
+    <flag name="admin">Install <pkg>app-admin/lxqt-admin</pkg></flag>
+    <flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>
+    file manager</flag>
+    <flag name="icons">Install an icon theme</flag>
+    <flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>
+    display manager</flag>
+    <flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>
+    image viewer</flag>
+    <flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>
+    window manager</flag>
+    <flag name="oxygen">Prefer <pkg>kde-apps/oxygen-icons</pkg> (default)</flag>
+    <flag name="powermanagement">Install
+    <pkg>lxqt-base/lxqt-powermanagement</pkg> package</flag>
+    <flag name="sddm">Install <pkg>x11-misc/sddm</pkg>
+    display manager</flag>
+    <flag name="ssh-askpass">Install <pkg>net-misc/lxqt-openssh-askpass</pkg>
+    user password prompt tool</flag>
+  </use>
+</pkgmetadata>

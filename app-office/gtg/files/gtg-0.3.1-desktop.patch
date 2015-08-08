@@ -1,0 +1,13 @@
+Fix desktop-file-validate warning.
+
+--- a/gtg.desktop	2014-11-01 11:23:31.101881704 +0100
++++ b/gtg.desktop	2014-11-01 11:23:37.349775014 +0100
+@@ -14,7 +14,7 @@
+ StartupNotify=true
+ X-Ayatana-Desktop-Shortcuts=NewTask
+ 
+-[NewTask Shortcut Group]
++[X-NewTask Shortcut Group]
+ Name=New Task
+ Exec=gtg_new_task
+ TargetEnvironment=Unity

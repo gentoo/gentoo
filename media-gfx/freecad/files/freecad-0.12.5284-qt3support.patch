@@ -1,0 +1,36 @@
+diff -ruN FreeCAD-0.12.5284.orig/src/Mod/Arch/Resources/ui/archprefs-base.ui FreeCAD-0.12.5284/src/Mod/Arch/Resources/ui/archprefs-base.ui
+--- FreeCAD-0.12.5284.orig/src/Mod/Arch/Resources/ui/archprefs-base.ui	2012-01-03 13:26:11.000000000 +0100
++++ FreeCAD-0.12.5284/src/Mod/Arch/Resources/ui/archprefs-base.ui	2012-01-07 17:15:29.000000000 +0100
+@@ -133,7 +133,7 @@
+   </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11"/>
+- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
++ <pixmapfunction></pixmapfunction>
+  <customwidgets>
+   <customwidget>
+    <class>Gui::ColorButton</class>
+diff -ruN FreeCAD-0.12.5284.orig/src/Mod/Draft/Resources/ui/userprefs-base.ui FreeCAD-0.12.5284/src/Mod/Draft/Resources/ui/userprefs-base.ui
+--- FreeCAD-0.12.5284.orig/src/Mod/Draft/Resources/ui/userprefs-base.ui	2012-01-03 13:25:30.000000000 +0100
++++ FreeCAD-0.12.5284/src/Mod/Draft/Resources/ui/userprefs-base.ui	2012-01-07 17:15:11.000000000 +0100
+@@ -957,7 +957,7 @@
+   </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11"/>
+- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
++ <pixmapfunction></pixmapfunction>
+  <customwidgets>
+   <customwidget>
+    <class>Gui::FileChooser</class>
+diff -ruN FreeCAD-0.12.5284.orig/src/Mod/Draft/Resources/ui/userprefs-import.ui FreeCAD-0.12.5284/src/Mod/Draft/Resources/ui/userprefs-import.ui
+--- FreeCAD-0.12.5284.orig/src/Mod/Draft/Resources/ui/userprefs-import.ui	2012-01-03 13:25:30.000000000 +0100
++++ FreeCAD-0.12.5284/src/Mod/Draft/Resources/ui/userprefs-import.ui	2012-01-07 17:14:50.000000000 +0100
+@@ -411,7 +411,7 @@
+   </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11"/>
+- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
++ <pixmapfunction></pixmapfunction>
+  <customwidgets>
+   <customwidget>
+    <class>Gui::FileChooser</class>

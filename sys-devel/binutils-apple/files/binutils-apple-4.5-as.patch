@@ -1,0 +1,100 @@
+Allow to disable build of as backends for obsolete architectures.
+
+diff --git a/as/Makefile b/as/Makefile
+index a4b016e..9e8bcc3 100644
+--- a/as/Makefile
++++ b/as/Makefile
+@@ -1,3 +1,4 @@
++BUILD_OBSOLETE_ARCH = yes
+ export USE_APPLE_PB_SUPPORT = all
+ 
+ ifneq "" "$(SDKROOT)"
+@@ -20,28 +21,36 @@ SRCROOT = .
+ SYMROOT = .
+ OBJROOT = .
+ SYM_DIRS = $(SYMROOT)/driver_dir \
+-	   $(SYMROOT)/a68_dir \
+-	   $(SYMROOT)/a88_dir \
+ 	   $(SYMROOT)/a386_dir \
+  	   $(SYMROOT)/ax86_64_dir \
+ 	   $(SYMROOT)/appc_dir \
+ 	   $(SYMROOT)/appc64_dir \
++	   $(SYMROOT)/aarm_dir 
++
++ifeq "yes" "$(BUILD_OBSOLETE_ARCH)"
++SYM_DIRS += \
++	   $(SYMROOT)/a68_dir \
++	   $(SYMROOT)/a88_dir \
+ 	   $(SYMROOT)/a860_dir \
+ 	   $(SYMROOT)/ahppa_dir \
+-	   $(SYMROOT)/asparc_dir \
+-	   $(SYMROOT)/aarm_dir 
++	   $(SYMROOT)/asparc_dir
++endif
+ 
+ OFILE_DIRS = $(OBJROOT)/driver_dir \
+-	     $(OBJROOT)/a68_dir \
+-	     $(OBJROOT)/a88_dir \
+ 	     $(OBJROOT)/a386_dir \
+  	     $(OBJROOT)/ax86_64_dir \
+ 	     $(OBJROOT)/appc_dir \
+ 	     $(OBJROOT)/appc64_dir \
++	     $(OBJROOT)/aarm_dir
++
++ifeq "yes" "$(BUILD_OBSOLETE_ARCH)"
++OFILE_DIRS += \
++	     $(OBJROOT)/a68_dir \
++	     $(OBJROOT)/a88_dir \
+ 	     $(OBJROOT)/a860_dir \
+ 	     $(OBJROOT)/ahppa_dir \
+-	     $(OBJROOT)/asparc_dir \
+-	     $(OBJROOT)/aarm_dir
++	     $(OBJROOT)/asparc_dir
++endif
+ 
+ BINDIR = /bin
+ USRBINDIR = /usr/bin
+@@ -88,9 +97,13 @@ OBJS_hppa = $(CFILES_hppa:.c=.o)
+ OBJS_sparc = $(CFILES_sparc:.c=.o)
+ OBJS_arm = $(CFILES_arm:.c=.o)
+ 
+-all:	$(OFILE_DIRS) $(SYM_DIRS) driver_build a68_build a88_build a386_build \
+-	ax86_64_build a860_build appc_build appc64_build ahppa_build \
+-	aarm_build asparc_build
++all:	$(OFILE_DIRS) $(SYM_DIRS) driver_build a386_build \
++	ax86_64_build appc_build appc64_build aarm_build
++
++ifeq "yes" "$(BUILD_OBSOLETE_ARCH)"
++all: 	a68_build a88_build a860_build ahppa_build asparc_build
++endif
++
+ 
+ all_test:	a68_test a88_test a860_test a386_test appc_test ahppa_test
+ 
+@@ -406,15 +419,18 @@ install: all
+ 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/ppc64
+ 	install -c -s -m 555 $(SYMROOT)/appc64_dir/as \
+ 		$(DSTROOT)$(LOCLIBDIR)/ppc64/as
++ifeq "yes" "$(BUILD_OBSOLETE_ARCH)"
+ 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/m68k
+ 	install -c -s -m 555 $(SYMROOT)/a68_dir/as \
+ 		$(DSTROOT)$(LOCLIBDIR)/m68k/as
+ 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/sparc 
+ 	install -c -s -m 555 $(SYMROOT)/asparc_dir/as \
+ 		$(DSTROOT)$(LOCLIBDIR)/sparc/as
++endif
+ 	$(MKDIRS) $(DSTROOT)$(LIBDIR)/arm
+ 	install -c -s -m 555 $(SYMROOT)/aarm_dir/as \
+ 		$(DSTROOT)$(LIBDIR)/arm/as
++ifeq "yes" "$(BUILD_OBSOLETE_ARCH)"
+ 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/m88k
+ 	install -c -s -m 555 $(SYMROOT)/a88_dir/as \
+ 		$(DSTROOT)$(LOCLIBDIR)/m88k/as
+@@ -424,6 +440,7 @@ install: all
+ 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/i860
+ 	install -s -m 555 $(SYMROOT)/a860_dir/as \
+ 		$(DSTROOT)$(LOCLIBDIR)/i860/as
++endif
+ 
+ $(OFILE_DIRS) $(SYM_DIRS):
+ 	$(MKDIRS) $@

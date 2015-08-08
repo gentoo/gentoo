@@ -1,0 +1,20 @@
+diff --git a/Makefile b/Makefile
+index 10e9ba2..b9a349b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -303,14 +303,7 @@ tests:		$(LIB) $(BIN) $(BIN)/CPPMain $(BIN)/CPPNearTreeTest \
+ 			$(BIN)/CMain 3458923 > $(TESTDATA)/CMain.lst
+ 			$(BIN)/CPPNearTreeTest
+ 			$(BIN)/CNearTreeTest
+-ifneq ($(MSYSTEM),MINGW32)
+-			diff -b -c $(TESTDATA)/CPPMain_orig.lst $(TESTDATA)/CPPMain.lst
+-			diff -b -c $(TESTDATA)/CMain_orig.lst $(TESTDATA)/CMain.lst
+-else
+-			diff -b -c $(TESTDATA)/CPPMain_MINGW_orig.lst $(TESTDATA)/CPPMain.lst
+-			diff -b -c $(TESTDATA)/CMain_MINGW_orig.lst $(TESTDATA)/CMain.lst
+-endif
+-			
++
+ #
+ # Remove all non-source files
+ #

@@ -1,0 +1,29 @@
+From 5142992b465e87181a4674ac614bf7d2fd7110c4 Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kristian.fiskerstrand@sumptuouscapital.com>
+Date: Sun, 26 Jul 2015 21:25:53 +0200
+Subject: [PATCH] (Makefile) Disable warn-error A
+
+warn-error A is set for development versions (tagged with +) upstream,
+however it is not intended to actually be fatal errors for released
+versions. We want to keep EdDSA support, i.e it is actually one
+commit past 1.1.5, so just disabling making warnings fatal.
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 543c531..d4a1222 100644
+--- a/Makefile
++++ b/Makefile
+@@ -49,7 +49,7 @@ SKSVS=$(shell grep 'version_suffix = "+"' common.ml)
+ ifeq ($(strip $(SKSVS)),)
+ WARNERR=
+ else
+-WARNERR=-warn-error A
++WARNERR=
+ endif
+ 
+ CAMLP4=-pp $(CAMLP4O)
+-- 
+2.3.6
+

@@ -1,0 +1,27 @@
+From 79a41ed3f12749df4a3a82f73e33aabeafa1a32f Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 7 Oct 2014 21:15:43 +0200
+Subject: [PATCH] Support mplayer 1.x without FriBiDi support
+
+---
+ src/core.cpp | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/core.cpp b/src/core.cpp
+index ef6f806..f5dfceb 100644
+--- a/src/core.cpp
++++ b/src/core.cpp
+@@ -1819,10 +1819,6 @@ void Core::startMplayer( QString file, double seek ) {
+ 		proc->addArgument( "-ass-font-scale");
+ 		proc->addArgument( QString::number(mset.sub_scale_ass) );
+ 
+-		if (!pref->mplayer_is_mplayer2) {
+-			proc->addArgument( "-noflip-hebrew" ); // It seems to be necessary to display arabic subtitles correctly when using -ass
+-		}
+-
+ 		if (!pref->force_ass_styles) {
+ 			// Load the styles.ass file
+ 			if (!QFile::exists(Paths::subtitleStyleFile())) {
+-- 
+2.1.1
+

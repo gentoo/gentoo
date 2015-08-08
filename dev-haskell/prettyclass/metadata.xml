@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Pretty printing class similar to Show, based on the HughesPJ
+		pretty printing library.  Provides the pretty printing class
+		and instances for the Prelude types.
+	</longdescription>
+</pkgmetadata>

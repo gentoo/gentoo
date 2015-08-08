@@ -1,0 +1,16 @@
+ ARB_GDE/GDE_HGLfile.cxx |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/ARB_GDE/GDE_HGLfile.cxx b/ARB_GDE/GDE_HGLfile.cxx
+index e353a89..f69635a 100644
+--- a/ARB_GDE/GDE_HGLfile.cxx
++++ b/ARB_GDE/GDE_HGLfile.cxx
+@@ -494,7 +494,7 @@ void ReadGDE(char *filename,NA_Alignment *dataset,int type)
+             if(this_elem->id[0] == '\0')
+                 strncpy(this_elem->id,uniqueID(),79);
+             if(this_elem->short_name[0] == '\0')
+-                strncpy(this_elem->short_name,this_elem->id,79);
++                strncpy(this_elem->short_name,this_elem->id,31);
+             if(this_elem->seqlen == 0)
+                 this_elem->protect=
+                     PROT_BASE_CHANGES+

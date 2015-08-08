@@ -1,0 +1,21 @@
+Description: Fix: stonith-ng: Reset mainloop source IDs after removing them
+
+Origin: upstream, commit: 0326f05c9e26f39a394fa30830e31a76306f49c7
+Author: Andrew Beekhof <andrew@beekhof.net>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1412962
+Last-Update: 2015-01-20
+
+--- a/lib/fencing/st_client.c
++++ b/lib/fencing/st_client.c
+@@ -663,9 +663,11 @@ stonith_action_async_done(mainloop_child
+ 
+     if (action->timer_sigterm > 0) {
+         g_source_remove(action->timer_sigterm);
++        action->timer_sigterm = 0;
+     }
+     if (action->timer_sigkill > 0) {
+         g_source_remove(action->timer_sigkill);
++        action->timer_sigkill = 0;
+     }
+ 
+     if (action->last_timeout_signo) {

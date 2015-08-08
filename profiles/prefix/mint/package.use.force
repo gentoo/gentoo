@@ -1,0 +1,6 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+#364789
+app-arch/libarchive static static-libs

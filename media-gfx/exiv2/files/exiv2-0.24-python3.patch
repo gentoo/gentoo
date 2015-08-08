@@ -1,0 +1,27 @@
+diff -ub -r exiv2-0.23.org/doc/templates/gen.py exiv2-0.23/doc/templates/gen.py
+--- exiv2-0.23.org/doc/templates/gen.py	2005-05-28 19:35:08.000000000 +0400
++++ exiv2-0.23/doc/templates/gen.py	2013-12-21 03:03:54.000000000 +0400
+@@ -7,9 +7,9 @@
+ # ----------------------------------------------------------------------
+ # functions
+ def usage():
+-   print """Usage: gen.py file.in [...]
++   print("""Usage: gen.py file.in [...]
+    Substitute placeholders in input files with content
+-   """
++   """)
+ 
+ def gen_html(file):
+    """Replace variables in the file with their content"""
+@@ -49,9 +49,9 @@
+ vars.sort()
+ 
+ # Substitute variables in all input files
+-print "Substituting variables", vars
++print("Substituting variables {0}".format(vars))
+ for file in input:
+-   print "Processing", file, "..."
++   print("Processing {0}...".format(file))
+    text = gen_html(file)
+    file = file.replace(".in", "")
+    open(file, 'w').write(text)

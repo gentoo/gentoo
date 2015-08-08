@@ -1,0 +1,49 @@
+Added by: Jesus Rivero (Neurogeek)
+On: 25 Jul 2009
+Per Upstream bug: https://bugs.launchpad.net/ubuntu/+source/ruledispatch/+bug/342916
+
+diff -uNr RuleDispatch.orig/src/dispatch/__init__.py RuleDispatch/src/dispatch/__init__.py
+--- RuleDispatch.orig/src/dispatch/__init__.py  2009-07-25 13:25:08.000000000 +0000
++++ RuleDispatch/src/dispatch/__init__.py   2009-07-25 13:27:19.000000000 +0000
+@@ -95,7 +95,7 @@
+     return decorate_assignment(callback)
+ 
+ 
+-def as(*decorators):
++def as_(*decorators):
+     """Use Python 2.4 decorators w/Python 2.2+
+ 
+     Example:
+Files RuleDispatch.orig/src/dispatch/__init__.pyc and RuleDispatch/src/dispatch/__init__.pyc differ
+Files RuleDispatch.orig/src/dispatch/interfaces.pyc and RuleDispatch/src/dispatch/interfaces.pyc differ
+diff -uNr RuleDispatch.orig/src/dispatch/predicates.py RuleDispatch/src/dispatch/predicates.py
+--- RuleDispatch.orig/src/dispatch/predicates.py    2009-07-25 13:25:08.000000000 +0000
++++ RuleDispatch/src/dispatch/predicates.py 2009-07-25 13:27:58.000000000 +0000
+@@ -236,7 +236,7 @@
+ 
+         return or_, (EXPR_GETTER_ID,)
+ 
+-    [as(classmethod)]
++    [as_(classmethod)]
+     def immediate(klass,seq):
+         for item in seq:
+             if item:
+@@ -260,7 +260,7 @@
+ 
+         return and_, (EXPR_GETTER_ID,)
+ 
+-    [as(classmethod)]
++    [as_(classmethod)]
+     def immediate(klass,seq):
+         for item in seq:
+             if not item:
+@@ -278,7 +278,7 @@
+             return get(argIds[2])
+         return ifelse, (EXPR_GETTER_ID,)
+ 
+-    [as(classmethod)]
++    [as_(classmethod)]
+     def immediate(klass,seq):
+         if seq[1]: return seq[0]
+         return seq[2]
+

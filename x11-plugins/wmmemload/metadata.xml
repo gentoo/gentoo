@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmmemload is a simple dockapp for WindowMaker that displays memory and swap 
+space usage. It is very heavily based on WMMemMon and WMCPULoad.
+</longdescription>
+</pkgmetadata>

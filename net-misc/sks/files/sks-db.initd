@@ -1,0 +1,25 @@
+#!/sbin/runscript
+source /etc/conf.d/sks
+
+command=/usr/bin/sks
+command_args="db ${SKS_ARGS}"
+command_background=1
+description="SKS database thread"
+name="SKS db"
+pidfile="/var/run/sks-db.pid"
+required_files="${SKS_DIR}/sksconf"
+start_stop_daemon_args="--chdir ${SKS_DIR} --user sks"
+
+
+depend()
+{
+	use net
+}
+
+start_pre()
+{
+    checkpath --owner sks:sks --directory \
+        ${SKS_DIR} ${SKS_DIR}/KDB ${SKS_DIR}/PTree
+    checkpath --owner sks:sks --file \
+        ${SKS_DIR}/*.log ${SKS_DIR}/KDB/* ${SKS_DIR}/PTree/*
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>azamat.hackimov@gmail.com</email>
+		<name>Azamat Hackimov</name>
+		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<longdescription lang="en">
+		A handy shell-like interface for browsing LDAP servers and editing their
+		content. It keeps command history, has sane autocompletes, credential caching,
+		site-wide and individual configs, and it's fun to say.
+	</longdescription>
+</pkgmetadata>
+

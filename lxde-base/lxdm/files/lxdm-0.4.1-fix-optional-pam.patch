@@ -1,0 +1,31 @@
+diff --git a/Makefile.am b/Makefile.am
+index bfac56b..40710fc 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,10 +2,13 @@ NULL =
+ SUBDIRS= \
+ 	src \
+ 	po \
+-	pam \
+ 	data \
+ 	$(NULL)
+ 
++if HAVE_PAM
++SUBDIRS += pam
++endif
++
+ rpm: dist @PACKAGE_NAME@.spec
+ 	rpmbuild -bb \
+ 	--define "_sourcedir `pwd`" \
+diff --git a/configure.ac b/configure.ac
+index ae5177f..aaa1bad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,6 +27,7 @@ if test "x$USE_PAM" != "xno" ; then
+ 			AC_MSG_ERROR(["PAM support requested, but pam_open_session not found."])
+ 		 fi])
+ fi
++AM_CONDITIONAL(HAVE_PAM, [test -n "$USE_PAM" -a "x$USE_PAM" != xno ])
+ 
+ # Checks for header files.
+ AC_PATH_X

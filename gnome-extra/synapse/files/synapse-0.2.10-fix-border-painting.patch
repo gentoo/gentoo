@@ -1,0 +1,74 @@
+Index: synapse-0.2.10/src/ui/widgets.vala
+===================================================================
+--- synapse-0.2.10.orig/src/ui/widgets.vala
++++ synapse-0.2.10/src/ui/widgets.vala
+@@ -232,7 +232,7 @@ namespace Synapse.Gui
+         real_size = real_size - 1;
+         a.value = this.size_to_scale[real_size];
+         layout.context_changed ();
+-        requistion_for_size (out req, null, real_size, true);
++        requisition_for_size (out req, null, real_size, true);
+ 
+         if (allocation.width >= req.width)
+         {
+@@ -306,10 +306,9 @@ namespace Synapse.Gui
+       return true;
+     }
+ 
+-    protected void requistion_for_size (out Requisition req, out int char_width, Size s, bool return_only_width = false)
++    protected void requisition_for_size (out Requisition req, out int char_width, Size s, bool return_only_width = false)
+     {
+-      req.width = this.xpad * 2;
+-      req.height = this.ypad * 2;
++      req = { this.xpad * 2, this.ypad * 2 };
+ 
+       Pango.Rectangle logical_rect;
+       layout.set_width (-1);
+@@ -334,7 +333,7 @@ namespace Synapse.Gui
+     {
+       layout.set_markup ("<span size=\"%s\">%s</span>".printf (size_to_string[_size], this.text), -1);
+       int char_width;
+-      this.requistion_for_size (out req, out char_width, this._size);
++      this.requisition_for_size (out req, out char_width, this._size);
+       last_req.width = req.width;
+       last_req.height = req.height;
+       if (!this.natural_requisition && (this.ellipsize != Pango.EllipsizeMode.NONE || animate))
+@@ -755,6 +754,10 @@ namespace Synapse.Gui
+         ctx.set_operator (Cairo.Operator.OVER);
+         ctx.set_line_width (1.25);
+ 
++        Gdk.cairo_rectangle (ctx, event.area);
++        ctx.clip ();
++        ctx.save ();
++
+         double x = this.allocation.x + this.left_padding,
+                y = this.allocation.y + this.top_padding,
+                w = this.allocation.width - this.left_padding - this.right_padding - 3.0,
+@@ -764,16 +767,13 @@ namespace Synapse.Gui
+           ch.set_source_rgba (ctx, input_alpha, ch.StyleType.BG, StateType.NORMAL, ch.Mod.DARKER);
+         else
+           ch.set_source_rgba (ctx, input_alpha, ch.StyleType.FG, StateType.NORMAL, ch.Mod.INVERTED);
+-        Cairo.Path path = ctx.copy_path ();
+-        ctx.save ();
+-        ctx.clip ();
+-        ctx.paint ();
++        ctx.fill_preserve ();
+         var pat = new Cairo.Pattern.linear (0, y, 0, y + shadow_height);
+         ch.add_color_stop_rgba (pat, 0, 0.6 * input_alpha, ch.StyleType.FG, StateType.NORMAL);
+         ch.add_color_stop_rgba (pat, 0.3, 0.25 * input_alpha, ch.StyleType.FG, StateType.NORMAL);
+         ch.add_color_stop_rgba (pat, 1.0, 0, ch.StyleType.FG, StateType.NORMAL);
+         ctx.set_source (pat);
+-        ctx.paint ();
++        ctx.fill ();
+         if (_focus_widget != null)
+         {
+           /*
+@@ -818,7 +818,7 @@ namespace Synapse.Gui
+           ctx.paint ();
+         }
+         ctx.restore ();
+-        ctx.append_path (path);
++        Utils.cairo_rounded_rect (ctx, x, y, w, h, border_radius);
+         ch.set_source_rgba (ctx, 0.6 * input_alpha, ch.StyleType.FG, StateType.NORMAL);
+         ctx.stroke ();
+       }

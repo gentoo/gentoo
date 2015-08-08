@@ -1,0 +1,11 @@
+--- tests/test-readlink.h
++++ tests/test-readlink.h
+@@ -38,7 +38,7 @@
+   ASSERT (errno == ENOENT);
+   errno = 0;
+   ASSERT (func ("", buf, sizeof buf) == -1);
+-  ASSERT (errno == ENOENT);
++  ASSERT (errno == ENOENT || errno == EINVAL);
+   errno = 0;
+   ASSERT (func (".", buf, sizeof buf) == -1);
+   ASSERT (errno == EINVAL);

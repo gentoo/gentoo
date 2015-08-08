@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<upstream>
+		<remote-id type="sourceforge">smb4k</remote-id>
+		<bugs-to>http://sourceforge.net/p/smb4k/tickets/</bugs-to>
+	</upstream>
+</pkgmetadata>

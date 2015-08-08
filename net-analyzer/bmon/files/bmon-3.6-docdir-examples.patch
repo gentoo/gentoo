@@ -1,0 +1,10 @@
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -1,6 +1,6 @@
+ # -*- Makefile -*-
+ 
+-exampledir = $(datarootdir)/doc/@PACKAGE@/examples
++exampledir = $(docdir)/examples
+ example_DATA = bmon.conf
+ 
+ EXTRA_DIST = $(example_DATA)

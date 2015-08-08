@@ -1,0 +1,217 @@
+diff --git a/src/gpm-engine.c b/src/gpm-engine.c
+index fe458e3..56d19e2 100644
+--- a/src/gpm-engine.c
++++ b/src/gpm-engine.c
+@@ -84,7 +84,29 @@ static UpDevice *gpm_engine_get_composite_device (GpmEngine *engine, UpDevice *o
+ static UpDevice *gpm_engine_update_composite_device (GpmEngine *engine, UpDevice *original_device);
+ #if UP_CHECK_VERSION (0, 99, 0)
+ static void gpm_engine_device_changed_cb (UpDevice *device, GParamSpec *pspec, GpmEngine *engine);
+-#endif
++
++#define GPM_ENGINE_WARNING_NONE UP_DEVICE_LEVEL_NONE
++#define GPM_ENGINE_WARNING_DISCHARGING UP_DEVICE_LEVEL_DISCHARGING
++#define GPM_ENGINE_WARNING_LOW UP_DEVICE_LEVEL_LOW
++#define GPM_ENGINE_WARNING_CRITICAL UP_DEVICE_LEVEL_CRITICAL
++#define GPM_ENGINE_WARNING_ACTION UP_DEVICE_LEVEL_ACTION
++
++/**
++ * gpm_engine_get_warning:
++ *
++ * This gets the possible engine state for the device according to the
++ * policy, which could be per-percent, or per-time.
++ *
++ * Return value: A GpmEngine state, e.g. GPM_ENGINE_WARNING_DISCHARGING
++ **/
++static UpDeviceLevel
++gpm_engine_get_warning (GpmEngine *engine, UpDevice *device)
++{
++	UpDeviceLevel warning;
++	g_object_get (device, "warning-level", &warning, NULL);
++	return warning;
++}
++#else
+ 
+ typedef enum {
+ 	GPM_ENGINE_WARNING_NONE = 0,
+@@ -226,6 +248,7 @@ gpm_engine_get_warning (GpmEngine *engine, UpDevice *device)
+  out:
+ 	return warning_type;
+ }
++#endif
+ 
+ /**
+  * gpm_engine_get_summary:
+@@ -282,12 +305,20 @@ gpm_engine_get_summary (GpmEngine *engine)
+  * Returns the icon
+  **/
+ static gchar *
++#if UP_CHECK_VERSION (0, 99, 0)
++gpm_engine_get_icon_priv (GpmEngine *engine, UpDeviceKind device_kind, UpDeviceLevel warning, gboolean use_state)
++#else
+ gpm_engine_get_icon_priv (GpmEngine *engine, UpDeviceKind device_kind, GpmEngineWarning warning, gboolean use_state)
++#endif
+ {
+ 	guint i;
+ 	GPtrArray *array;
+ 	UpDevice *device;
++#if UP_CHECK_VERSION (0, 99, 0)
++	UpDeviceLevel warning_temp;
++#else
+ 	GpmEngineWarning warning_temp;
++#endif
+ 	UpDeviceKind kind;
+ 	UpDeviceState state;
+ 	gboolean is_present;
+@@ -572,6 +603,9 @@ gpm_engine_device_check_capacity (GpmEngine *engine, UpDevice *device)
+ static UpDevice *
+ gpm_engine_get_composite_device (GpmEngine *engine, UpDevice *original_device)
+ {
++#if UP_CHECK_VERSION (0, 99, 0)
++	return engine->priv->battery_composite;
++#else
+ 	guint battery_devices = 0;
+ 	GPtrArray *array;
+ 	UpDevice *device;
+@@ -601,6 +635,7 @@ gpm_engine_get_composite_device (GpmEngine *engine, UpDevice *original_device)
+ out:
+ 	/* return composite device or original device */
+ 	return device;
++#endif
+ }
+ 
+ /**
+@@ -609,6 +644,18 @@ gpm_engine_get_composite_device (GpmEngine *engine, UpDevice *original_device)
+ static UpDevice *
+ gpm_engine_update_composite_device (GpmEngine *engine, UpDevice *original_device)
+ {
++#if UP_CHECK_VERSION (0, 99, 0)
++	gchar *text;
++
++	text = up_device_to_text (engine->priv->battery_composite);
++	egg_debug ("composite:\n%s", text);
++	g_free (text);
++
++	/* force update of icon */
++	gpm_engine_recalculate_state_icon (engine);
++
++	return engine->priv->battery_composite;
++#else
+ 	guint i;
+ 	gdouble percentage = 0.0;
+ 	gdouble energy = 0.0;
+@@ -720,6 +767,7 @@ gpm_engine_update_composite_device (GpmEngine *engine, UpDevice *original_device
+ out:
+ 	/* return composite device or original device */
+ 	return device;
++#endif
+ }
+ 
+ /**
+@@ -728,7 +776,11 @@ gpm_engine_update_composite_device (GpmEngine *engine, UpDevice *original_device
+ static void
+ gpm_engine_device_add (GpmEngine *engine, UpDevice *device)
+ {
++#if UP_CHECK_VERSION (0, 99, 0)
++	UpDeviceLevel warning;
++#else
+ 	GpmEngineWarning warning;
++#endif
+ 	UpDeviceState state;
+ 	UpDeviceKind kind;
+ 	UpDevice *composite;
+@@ -762,9 +814,9 @@ gpm_engine_device_add (GpmEngine *engine, UpDevice *device)
+ 	}
+ 
+ #if UP_CHECK_VERSION (0, 99, 0)
+-	if (kind == UP_DEVICE_KIND_BATTERY || kind == UP_DEVICE_KIND_UPS || kind == UP_DEVICE_KIND_LINE_POWER)
+-		return;
+ 	g_signal_connect (device, "notify", G_CALLBACK (gpm_engine_device_changed_cb), engine);
++	g_ptr_array_add (engine->priv->array, g_object_ref (device));
++	gpm_engine_recalculate_state (engine);
+ #endif
+ 
+ }
+@@ -820,10 +872,14 @@ gpm_engine_coldplug_idle_cb (GpmEngine *engine)
+ static void
+ gpm_engine_device_added_cb (UpClient *client, UpDevice *device, GpmEngine *engine)
+ {
++#if UP_CHECK_VERSION (0, 99, 0)
++	gpm_engine_device_add (engine, device);
++#else
+ 	/* add to list */
+ 	g_ptr_array_add (engine->priv->array, g_object_ref (device));
+ 
+ 	gpm_engine_recalculate_state (engine);
++#endif
+ }
+ 
+ /**
+@@ -866,15 +922,17 @@ gpm_engine_device_changed_cb (UpDevice *device, GParamSpec *pspec, GpmEngine *en
+ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *engine)
+ #endif
+ {
+-#if !UP_CHECK_VERSION(0, 99, 0)
+ 	UpDeviceKind kind;
+-#endif
+ 	UpDeviceState state;
+ 	UpDeviceState state_old;
++#if UP_CHECK_VERSION(0, 99, 0)
++	UpDeviceLevel warning_old;
++	UpDeviceLevel warning;
++#else
+ 	GpmEngineWarning warning_old;
+ 	GpmEngineWarning warning;
++#endif
+ 
+-#if !UP_CHECK_VERSION(0, 99, 0)
+ 	/* get device properties */
+ 	g_object_get (device,
+ 		      "kind", &kind,
+@@ -885,7 +943,6 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
+ 		egg_debug ("updating because %s changed", up_device_get_object_path (device));
+ 		device = gpm_engine_update_composite_device (engine, device);
+ 	}
+-#endif
+ 
+ 	/* get device properties (may be composite) */
+ 	g_object_get (device,
+@@ -1070,22 +1127,10 @@ gpm_engine_init (GpmEngine *engine)
+ 	g_signal_connect (engine->priv->phone, "device-refresh",
+ 			  G_CALLBACK (phone_device_refresh_cb), engine);
+ 
+-#if UP_CHECK_VERSION(0, 99, 0)
+-	/* coldplug */
+-	array = up_client_get_devices(engine->priv->client);
+-	if (array) {
+-		for (i = 0; i < array->len; i++) {
+-			UpDevice *device = g_ptr_array_index (array, i);
+-			gpm_engine_device_added_cb(engine->priv->client, device, engine);
+-		}
+-		g_ptr_array_free (array, TRUE);
+-	}
+-#endif
+-
+ 	/* create a fake virtual composite battery */
+ #if UP_CHECK_VERSION(0, 99, 0)
+ 	engine->priv->battery_composite = up_client_get_display_device (engine->priv->client);
+-	g_signal_connect (engine->priv->client, "notify",
++	g_signal_connect (engine->priv->battery_composite, "notify",
+ 			  G_CALLBACK (gpm_engine_device_changed_cb), engine);
+ #else
+ 	engine->priv->battery_composite = up_device_new ();
+diff --git a/src/gpm-manager.c b/src/gpm-manager.c
+index df84cac..09bd0c0 100644
+--- a/src/gpm-manager.c
++++ b/src/gpm-manager.c
+@@ -1858,7 +1858,9 @@ gpm_manager_init (GpmManager *manager)
+ 			  G_CALLBACK (gpm_manager_settings_changed_cb), manager);
+ 	manager->priv->client = up_client_new ();
+ #if UP_CHECK_VERSION(0, 99, 0)
+-	g_signal_connect (manager->priv->client, "notify",
++	g_signal_connect (manager->priv->client, "notify::lid-is-closed",
++			  G_CALLBACK (gpm_manager_client_changed_cb), manager);
++	g_signal_connect (manager->priv->client, "notify::on-battery",
+ 			  G_CALLBACK (gpm_manager_client_changed_cb), manager);
+ #else
+ 	g_signal_connect (manager->priv->client, "changed",
+

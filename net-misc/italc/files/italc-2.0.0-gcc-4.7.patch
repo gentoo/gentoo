@@ -1,0 +1,15 @@
+ lib/src/LocalSystem.cpp |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/lib/src/LocalSystem.cpp b/lib/src/LocalSystem.cpp
+index fd40609..5827634 100644
+--- a/lib/src/LocalSystem.cpp
++++ b/lib/src/LocalSystem.cpp
+@@ -30,6 +30,7 @@
+ #include <QtGui/QWidget>
+ #include <QtNetwork/QHostInfo>
+ 
++#include <unistd.h>
+ 
+ #ifdef ITALC_BUILD_WIN32
+ 

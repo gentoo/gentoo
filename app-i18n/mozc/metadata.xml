@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<longdescription lang="en">
+Mozc is a Japanese Input Method Editor (IME) designed for multi-platform such as Chromium OS, Windows, Mac and Linux. This open-source project originates from Google Japanese Input.
+</longdescription>
+	<use>
+		<flag name="fcitx">Enable support for <pkg>app-i18n/fcitx</pkg></flag>
+		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
+		<flag name="renderer">Enable native candidate window.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">jsoncpp</remote-id>
+	</upstream>
+</pkgmetadata>

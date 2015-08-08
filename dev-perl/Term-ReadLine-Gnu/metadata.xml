@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Term-ReadLine-Gnu</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Gnu</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Gnu::AU</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Gnu::Var</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Gnu::XS</remote-id>
+  </upstream>
+</pkgmetadata>

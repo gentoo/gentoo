@@ -1,0 +1,33 @@
+From 29796d1f24a0a1ab2a463a9b1c33e05014d68132 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 16 Jun 2015 23:04:32 -0400
+Subject: [PATCH] EogMetadataSidebar: fix --without-libexif build
+
+https://bugzilla.gnome.org/show_bug.cgi?id=751007
+---
+ src/eog-metadata-sidebar.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/eog-metadata-sidebar.c b/src/eog-metadata-sidebar.c
+index bf07830..a08c617 100644
+--- a/src/eog-metadata-sidebar.c
++++ b/src/eog-metadata-sidebar.c
+@@ -408,6 +408,7 @@ eog_metadata_sidebar_class_init (EogMetadataSidebarClass *klass)
+ 	gtk_widget_class_bind_template_child_private (widget_class,
+ 						      EogMetadataSidebar,
+ 						      folder_label);
++#if HAVE_EXIF
+ 	gtk_widget_class_bind_template_child_private (widget_class,
+ 						      EogMetadataSidebar,
+ 						      aperture_label);
+@@ -432,6 +433,7 @@ eog_metadata_sidebar_class_init (EogMetadataSidebarClass *klass)
+ 	gtk_widget_class_bind_template_child_private (widget_class,
+ 						      EogMetadataSidebar,
+ 						      time_label);
++#endif /* HAVE_EXIF */
+ }
+ 
+ 
+-- 
+2.4.3
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>openoffice</herd>
+	<use>
+		<flag name="offlinehelp">Install help files locally instead of using the LibreOffice Wiki</flag>
+		<flag name="linguas_ca_valencia">Catalan locale (Valencia)</flag>
+		<flag name="linguas_kmr_Latn">kmr_Latn localization</flag>
+		<flag name="linguas_sid">sid localization</flag>
+		<flag name="linguas_sr_Latn">Serbian (Latin) locale</flag>
+	</use>
+</pkgmetadata>

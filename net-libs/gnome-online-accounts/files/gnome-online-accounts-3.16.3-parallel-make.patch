@@ -1,0 +1,34 @@
+From 8de9eb8f452ee7e6d780c29ebb946567d900c181 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 13 Jun 2015 12:41:15 -0400
+Subject: [PATCH] build: fix webextension parallel install failure
+
+libgoa-backend-1.0 must be installed before libgoawebextension; unpleasant
+automake syntax required.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=750897
+---
+ src/goabackend/Makefile.am | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/goabackend/Makefile.am b/src/goabackend/Makefile.am
+index 8c14774..06467ec 100644
+--- a/src/goabackend/Makefile.am
++++ b/src/goabackend/Makefile.am
+@@ -166,6 +166,13 @@ libgoawebextension_la_LDFLAGS =						\
+ 	-no-undefined							\
+ 	$(NULL)
+ 
++# Force installation order: libgoa-backend-1.0 must be installed first, othwerwise
++# libtool will incorrectly relink libgoawebextension.la under parallel make install.
++# Requires ugly automake syntax - see http://debbugs.gnu.org/cgi/bugreport.cgi?bug=7328
++
++installwebextensionLTLIBRARIES = install-webextensionLTLIBRARIES
++$(installwebextensionLTLIBRARIES): install-libLTLIBRARIES
++
+ # ----------------------------------------------------------------------------------------------------
+ 
+ BUILT_SOURCES =								\
+-- 
+2.4.3
+

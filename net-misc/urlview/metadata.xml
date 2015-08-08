@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>nimiux@gentoo.org</email>
+    <name>Chema Alonso</name>
+  </maintainer>
+  <longdescription lang="en">
+    urlview is a screen oriented program for extracting URLs from text
+    files and displaying a menu from which you may launch a command to view
+    a specific item.
+  </longdescription>
+  <longdescription lang="es">
+    urlview es un programa orientado a terminal para la extracción de URLs
+    desde ficheros de texto. El programa muestra un menú desde el que se
+    puede lanzar una orden para ver un elemento en particular.
+  </longdescription>
+</pkgmetadata>

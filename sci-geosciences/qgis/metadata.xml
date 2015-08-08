@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-geosciences</herd>
+  <longdescription lang="en">
+  Quantum GIS (QGIS) is a user friendly Open Source Geographic
+  Information System (GIS). QGIS supports vector, raster, and database
+  formats. QGIS lets you browse and create map data on your
+  computer. It supports many common spatial data formats (e.g. ESRI
+  ShapeFile, geotiff). QGIS supports plugins to do things like display
+  tracks from your GPS. 
+</longdescription>
+  <use>
+    <flag name="bundled-libs">Use internal copy of <pkg>x11-libs/qwtpolar</pkg></flag>
+    <flag name="grass">Add support for <pkg>sci-geosciences/grass</pkg></flag>
+    <flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>
+  </use>
+</pkgmetadata>

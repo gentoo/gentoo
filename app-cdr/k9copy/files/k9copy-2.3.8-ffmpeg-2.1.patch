@@ -1,0 +1,20 @@
+See: https://bugs.gentoo.org/show_bug.cgi?id=505196
+
+Generated from: https://505196.bugs.gentoo.org/attachment.cgi?id=373958
+- Split out the existing two patches already applied in the ebuild.
+- Version check to keep compatibility with older ffmpeg.
+diff -u k9copy-2.3.8-Source/src/import/k9avidecode.h k9copy-2.3.8-Source/src/import/k9avidecode.h
+--- k9copy-2.3.8-Source/src/import/k9avidecode.h	2012-11-23 10:12:56.000000000 +0100
++++ k9copy-2.3.8-Source/src/import/k9avidecode.h	2014-03-31 07:47:35.119092120 +0100
+@@ -40,7 +40,11 @@
+ #else
+ typedef int (*av_find_stream_info_t)(AVFormatContext *);
+ #endif
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ typedef AVCodec* (*avcodec_find_decoder_t)(enum CodecID);
++#else
++typedef AVCodec* (*avcodec_find_decoder_t)(enum AVCodecID);
++#endif
+ #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
+ typedef int (*avcodec_open2_t)(AVCodecContext *, AVCodec *, AVDictionary **);
+ #else

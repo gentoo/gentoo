@@ -1,0 +1,59 @@
+Original report: https://bugs.gentoo.org/attachment.cgi?id=244509
+
+The patch is not ideal as lvm/src/configure runs
+compiler tests without those flags enabled, but
+they are broken anyways.
+
+Added CFLAGS, LDFLAGS, remover STRIP call in C part of lvm.
+diff --git a/lvm/src/configure b/lvm/src/configure
+index 9aa1a1d..2789828 100755
+--- a/helium-1.6/lvm/src/configure
++++ b/helium-1.6/lvm/src/configure
+@@ -647,7 +647,7 @@ fi
+ echo "CC=$ccomp" >> makefile
+ echo "LINK=$link" >> makefile
+ echo "STRIP=$strip" >> makefile
+-echo "LINKOPTS=$cclinkopts" >> makefile
++echo "LINKOPTS=$cclinkopts \$(LDFLAGS)" >> makefile
+ echo "EXE=$exe" >> makefile
+ echo "DLL=$dll" >> makefile
+ echo "CP=cp" >> makefile
+@@ -662,7 +662,7 @@ case "$config" in
+      echo "CONFIGPATH=../config" >> makefile;;
+ esac
+ 
+-echo "CCOPTS=$cccompopts -I\$(CONFIGPATH)" >> makefile
++echo "CCOPTS=$cccompopts -I\$(CONFIGPATH) \$(CFLAGS)" >> makefile
+  
+ rm -f tst$exe hasgot.c *.obj
+ 
+diff --git a/lvm/src/lib/makefile b/lvm/src/lib/makefile
+index d9a0004..78cce0f 100644
+--- a/helium-1.6/lvm/src/lib/makefile
++++ b/helium-1.6/lvm/src/lib/makefile
+@@ -55,7 +55,6 @@ OBJS = $(SRCS:.hs=.o)
+ # The main target
+ $(MAIN)$(EXE): $(OBJS)
+ 	  $(HC)	-o $@ $(HC_OPTS) $(OBJS)
+-	  $(STRIP) $@
+ 
+ common/ghc/Special.hi: common/ghc/Special.hs
+ 	$(HC) -c $< -cpp -fglasgow-exts $(HC_OPTS) 
+diff --git a/lvm/src/runtime/makefile b/lvm/src/runtime/makefile
+index 310a7b6..bde3550 100644
+--- a/helium-1.6/lvm/src/runtime/makefile
++++ b/helium-1.6/lvm/src/runtime/makefile
+@@ -47,11 +47,10 @@ OBJS	= $(SRCS:.c=.o)
+ 
+ 
+ #lvmrun$(EXE): $(OBJS)
+-#	$(LINK) -o $@ $(LINKOPT) $(OBJS) -g
++#	$(LINK) -o $@ $(OBJS) -g  $(LINKOPT)
+ 
+ lvmrun$(EXE): $(OBJS)
+-	$(LINK) -o $@ $(LINKOPT) $(OBJS)
+-	$(STRIP) $@
++	$(LINK) -o $@ $(OBJS) $(LINKOPT)
+ 
+ core/evaluator.o: core/evaluator.c
+ 	$(CC) -o $@ -c $< $(CCOPT_FAST)

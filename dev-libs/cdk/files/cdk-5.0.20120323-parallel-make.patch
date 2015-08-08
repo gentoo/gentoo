@@ -1,0 +1,12 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -269,7 +269,7 @@
+
+ all sources :: $(AUTO_SRC)
+
+-$(OBJECTS) :	include/cdk_config.h
++$(OBJECTS) :	$(MY_HDR)
+
+ #
+ # Standard library directive.
+

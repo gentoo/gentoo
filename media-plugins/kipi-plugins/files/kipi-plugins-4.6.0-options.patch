@@ -1,0 +1,24 @@
+diff -ruN digikam-4.6.0.orig/extra/kipi-plugins/CMakeLists.txt digikam-4.6.0/extra/kipi-plugins/CMakeLists.txt
+--- digikam-4.6.0.orig/extra/kipi-plugins/CMakeLists.txt	2014-12-16 08:54:40.000000000 +0100
++++ digikam-4.6.0/extra/kipi-plugins/CMakeLists.txt	2014-12-21 21:50:39.901188497 +0100
+@@ -370,7 +370,11 @@
+         add_subdirectory(picasawebexport)
+         add_subdirectory(smug)
+         add_subdirectory(printimages)
++
++        if(ENABLE_expoblending)
+         add_subdirectory(expoblending)
++        endif()
++
+         add_subdirectory(kopete)
+         add_subdirectory(batchprocessimages)
+         add_subdirectory(rajceexport)
+@@ -451,7 +455,7 @@
+             add_subdirectory(mediawiki)
+         endif()
+ 
+-        if(FLEX_FOUND AND BISON_FOUND)
++        if(FLEX_FOUND AND BISON_FOUND AND ENABLE_panorama)
+             add_subdirectory(panorama)
+         endif()
+ 

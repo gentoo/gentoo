@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<use>
+		<flag name="egl">Use EGL instead of default GLX to manage OpenGL
+			contexts on the desktop</flag>
+		<flag name="exceptions">Add support for exceptions - like catching them
+			inside the event loop (recommended by upstream)</flag>
+		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
+		<flag name="qt3support">Enable the Qt3Support libraries for Qt4</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>http://doc.qt.io/</doc>
+	</upstream>
+</pkgmetadata>

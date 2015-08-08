@@ -1,0 +1,18 @@
+commit b9c0e87c74956196cf0d5042c8c13e9a381ba4e8
+Author: Gilles Caulier <caulier.gilles@gmail.com>
+Date:   Thu Oct 10 16:11:18 2013 +0200
+
+    apply patch #82764 to not install libPropertiesBrowser
+    BUGS: 319664
+
+diff --git a/photolayoutseditor/extra/qtpropertybrowser/CMakeLists.txt b/photolayoutseditor/extra/qtpropertybrowser/CMakeLists.txt
+index 03cf1bd..46e158c 100644
+--- a/photolayoutseditor/extra/qtpropertybrowser/CMakeLists.txt
++++ b/photolayoutseditor/extra/qtpropertybrowser/CMakeLists.txt
+@@ -119,4 +119,5 @@ ADD_DEFINITIONS(${QT_DEFINITIONS})
+ ADD_DEFINITIONS(-DQT_DLL)
+ ADD_DEFINITIONS(-DQT_PLUGIN)
+ 
+-INSTALL( TARGETS PropertyBrowser ARCHIVE DESTINATION lib ${INSTALL_TARGETS_DEFAULT_ARGS} )
++# Do not install (yet), see https://bugs.kde.org/show_bug.cgi?id=319664
++# INSTALL( TARGETS PropertyBrowser ARCHIVE DESTINATION lib ${INSTALL_TARGETS_DEFAULT_ARGS} )

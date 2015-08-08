@@ -1,0 +1,28 @@
+From bfb0d952d111929174c3326dbc69ab65a808a235 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gmail.com>
+Date: Sat, 4 Jun 2011 05:59:46 -0400
+Subject: [PATCH] Prevent file collision with gda-browser-4.0's gtk-doc files
+
+---
+ tools/browser/doc/Makefile.am                      |    2 +-
+ ...browser-docs.sgml => gda-browser-5.0-docs.sgml} |    0
+ ...r-sections.txt => gda-browser-5.0-sections.txt} |    0
+ .../{gda-browser.types => gda-browser-5.0.types}   |    0
+ 4 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/tools/browser/doc/Makefile.am b/tools/browser/doc/Makefile.am
+index 971fa79..cf6637a 100644
+--- a/tools/browser/doc/Makefile.am
++++ b/tools/browser/doc/Makefile.am
+@@ -3,7 +3,7 @@
+ AUTOMAKE_OPTIONS = 1.6
+ 
+ # The name of the module.
+-DOC_MODULE=gda-browser
++DOC_MODULE=gda-browser-5.0
+ 
+ # The top-level SGML file.
+ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
+-- 
+1.7.5.3
+

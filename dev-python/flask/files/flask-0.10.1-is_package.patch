@@ -1,0 +1,13 @@
+https://github.com/mitsuhiko/flask/issues/487
+diff -ur Flask-0.10.1.orig/flask/helpers.py Flask-0.10.1/flask/helpers.py
+--- flask/helpers.py	2013-06-14 06:35:43.000000000 +0800
++++ flask/helpers.py	2013-08-16 16:18:36.194006290 +0800
+@@ -679,7 +679,7 @@
+             filename = sys.modules[import_name].__file__
+         package_path = os.path.abspath(os.path.dirname(filename))
+         # package_path ends with __init__.py for a package
+-        if loader.is_package(root_mod_name):
++        if package_path.endswith('__init__.py'):
+             package_path = os.path.dirname(package_path)
+ 
+     site_parent, site_folder = os.path.split(package_path)

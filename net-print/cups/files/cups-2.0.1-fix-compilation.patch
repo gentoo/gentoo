@@ -1,0 +1,25 @@
+From 7bb9184b40bea3c4b9f46362642e5d40053a3ae1 Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@kyomu.43-1.org>
+Date: Wed, 19 Nov 2014 18:44:33 +0100
+Subject: [PATCH] fix compilation
+
+---
+ test/ippserver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/ippserver.c b/test/ippserver.c
+index c785e5f..1c64668 100644
+--- a/test/ippserver.c
++++ b/test/ippserver.c
+@@ -421,7 +421,7 @@ static int		valid_job_attributes(_ipp_client_t *client);
+ 
+ #  ifdef HAVE_DNSSD
+ static DNSServiceRef	DNSSDMaster = NULL;
+-#  else /* HAVE_AVAHI */
++#  elif defined(HAVE_AVAHI)
+ static AvahiThreadedPoll *DNSSDMaster = NULL;
+ static AvahiClient	*DNSSDClient = NULL;
+ #  endif /* HAVE_DNSSD */
+-- 
+2.0.4
+

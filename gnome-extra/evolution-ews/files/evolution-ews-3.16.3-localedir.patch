@@ -1,0 +1,25 @@
+From 6f6bdc4b755ff2089d645ce1b2d09114fa72a1f9 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Thu, 11 Jun 2015 10:11:15 +0200
+Subject: configure.ac: Do not override localedir variable
+
+It could place locale files into $PREFIX/locale, instead of $PREFIX/share/locale.
+The change follows bug 703732.
+
+diff --git a/configure.ac b/configure.ac
+index 1d4d746..ede1ef2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -199,9 +199,6 @@ GETTEXT_PACKAGE=evolution-ews
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Package name for gettext])
+ 
+-localedir='$(prefix)/$(DATADIRNAME)/locale'
+-AC_SUBST(localedir)
+-
+ dnl ****************************
+ dnl Initialize libtool
+ dnl ****************************
+-- 
+cgit v0.10.2
+

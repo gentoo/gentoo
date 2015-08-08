@@ -1,0 +1,42 @@
+diff -burN a/plugins/housekeeping/msd-disk-space.c b/plugins/housekeeping/msd-disk-space.c
+--- a/plugins/housekeeping/msd-disk-space.c	2012-07-11 03:54:10.000000000 +0200
++++ b/plugins/housekeeping/msd-disk-space.c	2012-08-07 22:54:59.872216471 +0200
+@@ -309,19 +309,38 @@
+          * purpose
+          */
+                  
++        /* We also ignore network filesystems */
++        
+         const gchar *ignore_fs[] = {
++                "adfs",
++                "afs",
+                 "auto",
+                 "autofs",
++                "autofs4",
++                "cifs",
++                "cxfs",
+                 "devfs",
+                 "devpts",
+                 "ecryptfs",
++                "gfs",
++                "gfs2",
+                 "kernfs",
+                 "linprocfs",
++                "linsysfs",
++                "lustre",
++                "lustre_lite",
++                "ncpfs",
++                "nfs",
++                "nfs4",
++                "nfsd",
++                "ocfs2",
+                 "proc",
+                 "procfs",
+                 "ptyfs",
++                "rpc_pipefs",
+                 "selinuxfs",
+                 "linsysfs",
++                "smbfs",
+                 "sysfs",
+                 "tmpfs",
+                 "usbfs",

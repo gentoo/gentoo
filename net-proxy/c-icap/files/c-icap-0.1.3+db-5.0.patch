@@ -1,0 +1,13 @@
+Index: c_icap-0.1.3/modules/bdb_tables.c
+===================================================================
+--- c_icap-0.1.3.orig/modules/bdb_tables.c
++++ c_icap-0.1.3/modules/bdb_tables.c
+@@ -108,7 +108,7 @@ int bdb_table_do_real_open(struct ci_loo
+     }
+ 
+ 
+-#if(DB_VERSION_MINOR>=1)
++#if (DB_VERSION_MAJOR > 4) || (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1)
+     if ((ret = dbdata->db->open( dbdata->db, NULL, table->path, NULL,
+ 				 DB_BTREE, DB_RDONLY|DB_THREAD, 0)) != 0) {
+ #else

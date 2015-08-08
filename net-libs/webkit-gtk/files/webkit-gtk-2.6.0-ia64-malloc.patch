@@ -1,0 +1,31 @@
+From 9348d1c7fbbd9fcbb1702c0c6d81c723ec0b6879 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 19 Oct 2014 19:40:21 +0200
+Subject: [PATCH 3/4] Use system malloc for IA64
+
+https://bugs.webkit.org/show_bug.cgi?id=129542
+---
+ Source/WTF/wtf/Platform.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Source/WTF/wtf/Platform.h b/Source/WTF/wtf/Platform.h
+index d9afcd7..c4cf1d2 100644
+--- a/Source/WTF/wtf/Platform.h
++++ b/Source/WTF/wtf/Platform.h
+@@ -662,6 +662,13 @@
+ #endif
+ #endif /* !defined(WTF_USE_JSVALUE64) && !defined(WTF_USE_JSVALUE32_64) */
+ 
++/* FIXME: The fast malloc implementation is broken on Itanium / IA64 because
++   some memory barriers are missing in the thread-unsafe code around the
++   pagemap_cache_ object. */
++#if CPU(IA64) || CPU(IA64_32)
++#define USE_SYSTEM_MALLOC 1
++#endif
++
+ /* The JIT is enabled by default on all x86, x86-64, ARM & MIPS platforms except ARMv7k and Windows. */
+ #if !defined(ENABLE_JIT) \
+     && (CPU(X86) || CPU(X86_64) || CPU(ARM) || CPU(ARM64) || CPU(MIPS)) \
+-- 
+2.1.2
+

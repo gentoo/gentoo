@@ -1,0 +1,119 @@
+diff --git a/glade/playlist3.ui b/glade/playlist3.ui
+index fedb627..452f3ec 100644
+--- a/glade/playlist3.ui
++++ b/glade/playlist3.ui
+@@ -436,16 +436,17 @@
+                                 <child>
+                                   <object class="GtkButton" id="button_previous">
+                                     <property name="visible">True</property>
++                                    <property name="use_action_appearance">False</property>
+                                     <property name="related-action">MPDPrevious</property>
+                                     <property name="can_focus">True</property>
+                                     <property name="receives_default">False</property>
+                                     <property name="relief">none</property>
+                                     <property name="use_action_appearance">False</property>
+                                     <child>
+-                                      <object class="GtkImage" id="image10">
++                                        <object class="GtkImage" id="button_previous_image">
+                                         <property name="visible">True</property>
+                                         <property name="stock">gtk-media-previous</property>
+-                                      </object>
++                                        </object>
+                                     </child>
+                                   </object>
+                                   <packing>
+@@ -455,18 +456,18 @@
+                                   </packing>
+                                 </child>
+                                 <child>
+-                                  <object class="GtkButton" id="top_button">
++                                  <object class="GtkButton" id="stop_button">
+                                     <property name="visible">True</property>
++                                    <property name="use_action_appearance">False</property>
+                                     <property name="related-action">MPDStop</property>
+                                     <property name="can_focus">True</property>
+                                     <property name="receives_default">True</property>
+                                     <property name="relief">none</property>
+-                                    <property name="use_action_appearance">False</property>
+                                     <child>
+-                                      <object class="GtkImage" id="stop_button_image">
++                                        <object class="GtkImage" id="button_stop_image">
+                                         <property name="visible">True</property>
+                                         <property name="stock">gtk-media-stop</property>
+-                                      </object>
++                                        </object>
+                                     </child>
+                                   </object>
+                                   <packing>
+@@ -478,15 +479,16 @@
+                                 <child>
+                                   <object class="GtkButton" id="play_button">
+                                     <property name="visible">True</property>
++                                    <property name="use_action_appearance">False</property>
+                                     <property name="related-action">MPDPlayPause</property>
+                                     <property name="can_focus">True</property>
+                                     <property name="receives_default">False</property>
+                                     <property name="relief">none</property>
+                                     <child>
+-                                      <object class="GtkImage" id="play_button_image">
++                                        <object class="GtkImage" id="play_button_image">
+                                         <property name="visible">True</property>
+                                         <property name="stock">gtk-media-play</property>
+-                                      </object>
++                                        </object>
+                                     </child>
+                                   </object>
+                                   <packing>
+@@ -498,13 +500,13 @@
+                                 <child>
+                                   <object class="GtkButton" id="next_button">
+                                     <property name="visible">True</property>
++                                    <property name="use_action_appearance">False</property>
+                                     <property name="related-action">MPDNext</property>
+                                     <property name="can_focus">True</property>
+                                     <property name="receives_default">False</property>
+-                                    <property name="use_action_appearance">False</property>
+                                     <property name="relief">none</property>
+                                     <child>
+-                                      <object class="GtkImage" id="image11">
++                                      <object class="GtkImage" id="next_button_image">
+                                         <property name="visible">True</property>
+                                         <property name="stock">gtk-media-next</property>
+                                       </object>
+diff --git a/src/playlist3.c b/src/playlist3.c
+index 72b4ef7..3dac409 100644
+--- a/src/playlist3.c
++++ b/src/playlist3.c
+@@ -1632,7 +1632,8 @@ static void playlist_status_changed(MpdObj * mi, ChangedStatusType what, void *u
+                 gtk_action_set_stock_id(GTK_ACTION(gtk_builder_get_object(pl3_xml, "MPDPlayPause")), "gtk-media-pause");
+                 gtk_image_set_from_stock(GTK_IMAGE
+                     (gtk_builder_get_object
+-                    (pl3_xml, "play_button_image")), "gtk-media-pause", GTK_ICON_SIZE_BUTTON);
++                    (pl3_xml, "play_button_image")), "gtk-media-pause",
++					GTK_ICON_SIZE_MENU);
+ 
+                 /**
+                  * Update window title
+@@ -1669,8 +1670,8 @@ static void playlist_status_changed(MpdObj * mi, ChangedStatusType what, void *u
+                 gtk_action_set_stock_id(GTK_ACTION(gtk_builder_get_object(pl3_xml, "MPDPlayPause")), "gtk-media-play");
+                 gtk_image_set_from_stock(GTK_IMAGE
+                     (gtk_builder_get_object
+-                    (pl3_xml, "play_button_image")), "gtk-media-play", GTK_ICON_SIZE_BUTTON);
+-
++                    (pl3_xml, "play_button_image")), "gtk-media-play",
++					GTK_ICON_SIZE_MENU);
+                 /**
+                  * Set paused in Window string
+                  */
+@@ -1704,8 +1705,8 @@ static void playlist_status_changed(MpdObj * mi, ChangedStatusType what, void *u
+ 
+                 gtk_image_set_from_stock(GTK_IMAGE
+                     (gtk_builder_get_object
+-                    (pl3_xml, "play_button_image")), "gtk-media-play", GTK_ICON_SIZE_BUTTON);
+-
++                    (pl3_xml, "play_button_image")), "gtk-media-play",
++					GTK_ICON_SIZE_MENU);
+                 if (gmpc_profiles_get_number_of_profiles(gmpc_profiles) > 1)
+                 {
+                     gchar *id = gmpc_profiles_get_current(gmpc_profiles);
+-- 

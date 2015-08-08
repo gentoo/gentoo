@@ -1,0 +1,50 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -16,22 +16,22 @@
+ 	$(CC) $(CFLAGS) $(INC) wpscrack.c *.o $(LDFLAGS) -o reaver
+ 
+ libwps.o:
+-	(cd $(LIBWPS_DIR) && make)
++	(cd $(LIBWPS_DIR) && $(MAKE))
+ 
+ wps: libutils libcrypto
+-	(cd wps && make)
++	(cd wps && $(MAKE))
+ 
+ libutils:
+-	(cd utils && make)
++	(cd utils && $(MAKE))
+ 
+ libcrypto: libtls
+-	(cd crypto && make)
++	(cd crypto && $(MAKE))
+ 
+ libtls:
+-	(cd tls && make)
++	(cd tls && $(MAKE))
+ 
+ libiw:
+-	(cd lwe && make BUILD_STATIC=y libiw.a)
++	(cd lwe && $(MAKE) BUILD_STATIC=y libiw.a)
+ 
+ init.o:
+ 	$(CC) $(CFLAGS) init.c -c
+@@ -93,12 +93,12 @@
+ clean:
+ 	rm -f *~ *.o reaver wash
+ 	rm -rf *.cache config.status config.log
+-	(cd utils && make clean)
+-	(cd tls && make clean)
+-	(cd crypto && make clean)
+-	(cd wps && make clean)
+-	(cd lwe && make realclean)
+-	(cd $(LIBWPS_DIR) && make clean)
++	(cd utils && $(MAKE) clean)
++	(cd tls && $(MAKE) clean)
++	(cd crypto && $(MAKE) clean)
++	(cd wps && $(MAKE) clean)
++	(cd lwe && $(MAKE) realclean)
++	(cd $(LIBWPS_DIR) && $(MAKE) clean)
+ 	rm -f Makefile config.h
+ 
+ cleanbin: 

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=GLosung - Herrnhut's Watchwords
+Name[de]=GLosung - Herrnhuter Losungen
+Name[hu]=GLosung - Herrnhuter-i Útmutató
+Comment=Gods Word for every day
+Comment[de]=Gottes Wort für jeden Tag
+Comment[hu]=Isten igéje minden napra
+Exec=glosung
+Icon=/usr/share/glosung/glosung.png
+Terminal=false
+Type=Application
+Categories=Utility;X-Red-Hat-Extra;Spirituality;

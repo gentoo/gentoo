@@ -1,0 +1,72 @@
+--- zlib-1.2.1/Makefile.in
++++ zlib-1.2.1/Makefile.in
+@@ -49,6 +49,8 @@
+ OBJS = adler32.o compress.o crc32.o gzio.o uncompr.o deflate.o trees.o \
+        zutil.o inflate.o infback.o inftrees.o inffast.o
+ 
++PIC_OBJS = $(OBJS:%.o=%.lo)
++
+ OBJA =
+ # to use the asm code: make OBJA=match.o
+ 
+@@ -77,8 +79,11 @@
+ 	mv _match.o match.o
+ 	rm -f _match.s
+ 
+-$(SHAREDLIBV): $(OBJS)
+-	$(LDSHARED) -o $@ $(OBJS) -lc
++%.lo: %.c
++	$(CC) $(CFLAGS) -DPIC -fPIC -c $< -o $@
++
++$(SHAREDLIBV): $(PIC_OBJS)
++	$(LDSHARED) -o $@ $(PIC_OBJS) -lc
+ 	rm -f $(SHAREDLIB) $(SHAREDLIBM)
+ 	ln -s $@ $(SHAREDLIB)
+ 	ln -s $@ $(SHAREDLIBM)
+@@ -89,13 +94,10 @@
+ minigzip$(EXE): minigzip.o $(LIBS)
+ 	$(CC) $(CFLAGS) -o $@ minigzip.o $(LDFLAGS)
+ 
+-install: $(LIBS)
++install-libs: $(LIBS)
+ 	-@if [ ! -d $(exec_prefix) ]; then mkdir -p $(exec_prefix); fi
+-	-@if [ ! -d $(includedir)  ]; then mkdir -p $(includedir); fi
+ 	-@if [ ! -d $(libdir)      ]; then mkdir -p $(libdir); fi
+ 	-@if [ ! -d $(man3dir)     ]; then mkdir -p $(man3dir); fi
+-	cp zlib.h zconf.h $(includedir)
+-	chmod 644 $(includedir)/zlib.h $(includedir)/zconf.h
+ 	cp $(LIBS) $(libdir)
+ 	cd $(libdir); chmod 755 $(LIBS)
+ 	-@(cd $(libdir); $(RANLIB) libz.a || true) >/dev/null 2>&1
+@@ -110,6 +112,11 @@
+ # The ranlib in install is needed on NeXTSTEP which checks file times
+ # ldconfig is for Linux
+ 
++install: install-libs
++	-@if [ ! -d $(includedir)  ]; then mkdir $(includedir); fi
++	cp zlib.h zconf.h $(includedir)
++	chmod 644 $(includedir)/zlib.h $(includedir)/zconf.h
++
+ uninstall:
+ 	cd $(includedir); \
+ 	cd $(libdir); rm -f libz.a; \
+@@ -127,7 +127,7 @@
+ 
+ mostlyclean: clean
+ clean:
+-	rm -f *.o *~ example$(EXE) minigzip$(EXE) \
++	rm -f *.lo *.o *~ example$(EXE) minigzip$(EXE) \
+ 	   libz.* foo.gz so_locations \
+ 	   _match.s maketree contrib/infback9/*.o
+ 
+--- zlib-1.2.1/configure
++++ zlib-1.2.1/configure
+@@ -160,7 +160,7 @@
+   if test "`($CC -c $SFLAGS $test.c) 2>&1`" = "" &&
+      test "`($LDSHARED -o $test$shared_ext $test.o) 2>&1`" = ""; then
+     CFLAGS="$SFLAGS"
+-    LIBS="$SHAREDLIBV"
++    LIBS="$LIBS $SHAREDLIBV"
+     echo Building shared library $SHAREDLIBV with $CC.
+   elif test -z "$old_cc" -a -z "$old_cflags"; then
+     echo No shared library support.

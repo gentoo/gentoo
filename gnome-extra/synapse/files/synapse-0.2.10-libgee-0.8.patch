@@ -1,0 +1,87 @@
+diff -Naur synapse-0.2.10.orig/configure.ac synapse-0.2.10/configure.ac
+--- synapse-0.2.10.orig/configure.ac	2012-03-18 20:11:39.000000000 +0100
++++ synapse-0.2.10/configure.ac	2014-08-12 02:52:44.447243355 +0200
+@@ -59,7 +59,7 @@
+   gtk+-2.0 >= $MIN_GTK_VERSION \
+   gtkhotkey-1.0 \
+   gobject-2.0 \
+-  gee-1.0 >= $MIN_GEE_VERSION \
++  gee-0.8 >= $MIN_GEE_VERSION \
+   gio-unix-2.0 \
+   json-glib-1.0 >= $MIN_JSON_VERSION \
+   libnotify \
+diff -Naur synapse-0.2.10.orig/src/core/Makefile.am synapse-0.2.10/src/core/Makefile.am
+--- synapse-0.2.10.orig/src/core/Makefile.am	2012-03-18 20:02:58.000000000 +0100
++++ synapse-0.2.10/src/core/Makefile.am	2014-08-12 02:53:07.964488996 +0200
+@@ -7,7 +7,7 @@
+ 
+ libsynapsecore_la_VALAFLAGS = \
+ 	--pkg gtk+-2.0 \
+-	--pkg gee-1.0 \
++	--pkg gee-0.8 \
+ 	--pkg json-glib-1.0 \
+ 	--pkg dbus-glib-1 \
+ 	--pkg gio-unix-2.0 \
+diff -Naur synapse-0.2.10.orig/src/core/result-set.vala synapse-0.2.10/src/core/result-set.vala
+--- synapse-0.2.10.orig/src/core/result-set.vala	2012-03-18 20:02:41.000000000 +0100
++++ synapse-0.2.10/src/core/result-set.vala	2014-08-12 02:52:44.447243355 +0200
+@@ -20,7 +20,7 @@
+ 
+ namespace Synapse
+ {
+-  public class ResultSet : Object, Gee.Iterable <Gee.Map.Entry <Match, int>>
++  public class ResultSet : Object, Gee.Traversable<Match>, Gee.Iterable <Gee.Map.Entry <Match, int>>
+   {
+     protected Gee.Map<Match, int> matches;
+     protected Gee.Set<unowned string> uris;
+@@ -88,6 +88,11 @@
+       return uri in uris;
+     }
+ 
++    public bool foreach (Gee.ForallFunc<Match> func)
++    {
++      return matches.keys.foreach (func);
++    }
++
+     public Gee.List<Match> get_sorted_list ()
+     {
+       var l = new Gee.ArrayList<Gee.Map.Entry<Match, int>> ();
+diff -Naur synapse-0.2.10.orig/src/plugins/Makefile.am synapse-0.2.10/src/plugins/Makefile.am
+--- synapse-0.2.10.orig/src/plugins/Makefile.am	2012-03-18 20:04:17.000000000 +0100
++++ synapse-0.2.10/src/plugins/Makefile.am	2014-08-12 02:53:26.878288046 +0200
+@@ -8,7 +8,7 @@
+ 
+ libplugins_la_VALAFLAGS = \
+ 	--pkg gtk+-2.0 \
+-	--pkg gee-1.0 \
++	--pkg gee-0.8 \
+ 	--pkg json-glib-1.0 \
+ 	--pkg dbus-glib-1 \
+ 	--pkg gio-unix-2.0 \
+diff -Naur synapse-0.2.10.orig/src/ui/keybindings.vala synapse-0.2.10/src/ui/keybindings.vala
+--- synapse-0.2.10.orig/src/ui/keybindings.vala	2012-03-18 20:02:41.000000000 +0100
++++ synapse-0.2.10/src/ui/keybindings.vala	2014-08-12 02:52:44.463910433 +0200
+@@ -82,9 +82,9 @@
+           this.cmd = cmd;
+           this.mods = mods;
+         }
+-        public static int compare (void* a, void* b)
++        public static int compare (ModCmd a, ModCmd b)
+         {
+-          return (int)(((ModCmd)a).mods) - (int)(((ModCmd)b).mods);
++          return (int)(a.mods) - (int)(b.mods);
+         }
+       }
+  
+diff -Naur synapse-0.2.10.orig/src/ui/Makefile.am synapse-0.2.10/src/ui/Makefile.am
+--- synapse-0.2.10.orig/src/ui/Makefile.am	2012-03-18 20:05:19.000000000 +0100
++++ synapse-0.2.10/src/ui/Makefile.am	2014-08-12 02:53:46.262098738 +0200
+@@ -12,7 +12,7 @@
+ 	--pkg gio-2.0 \
+ 	--pkg gio-unix-2.0 \
+ 	--pkg zeitgeist-1.0 \
+-	--pkg gee-1.0 \
++	--pkg gee-0.8 \
+ 	--pkg json-glib-1.0 \
+ 	--pkg unique-1.0 \
+ 	--pkg libnotify \

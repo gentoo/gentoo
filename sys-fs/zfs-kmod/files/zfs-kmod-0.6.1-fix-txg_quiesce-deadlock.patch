@@ -1,0 +1,73 @@
+From 57f5a2008e2e6acf58934cf43c5fdca0faffa73e Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Thu, 25 Apr 2013 16:29:22 -0700
+Subject: [PATCH] Fix txg_quiesce thread deadlock
+
+A deadlock was accidentally introduced by commit e95853a which
+can occur when the system is under memory pressure.  What happens
+is that while the txg_quiesce thread is holding the tx->tx_cpu
+locks it enters memory reclaim.  In the context of this memory
+reclaim it then issues synchronous I/O to a ZVOL swap device.
+Because the txg_quiesce thread is holding the tx->tx_cpu locks
+a new txg cannot be opened to handle the I/O.  Deadlock.
+
+The fix is straight forward.  Move the memory allocation outside
+the critical region where the tx->tx_cpu locks are held.  And for
+good measure change the offending allocation to KM_PUSHPAGE to
+ensure it never attempts to issue I/O during reclaim.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #1274
+---
+ module/zfs/dsl_pool.c |  2 +-
+ module/zfs/txg.c      | 14 +++++++-------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/module/zfs/dsl_pool.c b/module/zfs/dsl_pool.c
+index 704f034..771b265 100644
+--- a/module/zfs/dsl_pool.c
++++ b/module/zfs/dsl_pool.c
+@@ -143,7 +143,7 @@
+ {
+ 	txg_history_t *th, *rm;
+ 
+-	th = kmem_zalloc(sizeof(txg_history_t), KM_SLEEP);
++	th = kmem_zalloc(sizeof(txg_history_t), KM_PUSHPAGE);
+ 	mutex_init(&th->th_lock, NULL, MUTEX_DEFAULT, NULL);
+ 	th->th_kstat.txg = txg;
+ 	th->th_kstat.state = TXG_STATE_OPEN;
+diff --git a/module/zfs/txg.c b/module/zfs/txg.c
+index c7c3df3..7c820af 100644
+--- a/module/zfs/txg.c
++++ b/module/zfs/txg.c
+@@ -367,6 +367,13 @@
+ 	tx->tx_open_txg++;
+ 
+ 	/*
++	 * Now that we've incremented tx_open_txg, we can let threads
++	 * enter the next transaction group.
++	 */
++	for (c = 0; c < max_ncpus; c++)
++		mutex_exit(&tx->tx_cpu[c].tc_lock);
++
++	/*
+ 	 * Measure how long the txg was open and replace the kstat.
+ 	 */
+ 	th = dsl_pool_txg_history_get(dp, txg);
+@@ -376,13 +383,6 @@
+ 	dsl_pool_txg_history_add(dp, tx->tx_open_txg);
+ 
+ 	/*
+-	 * Now that we've incremented tx_open_txg, we can let threads
+-	 * enter the next transaction group.
+-	 */
+-	for (c = 0; c < max_ncpus; c++)
+-		mutex_exit(&tx->tx_cpu[c].tc_lock);
+-
+-	/*
+ 	 * Quiesce the transaction group by waiting for everyone to txg_exit().
+ 	 */
+ 	start = gethrtime();
+-- 
+1.8.1.6
+

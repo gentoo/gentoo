@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/show_bug.cgi?id=376451
+
+--- a/src/wmapp.cc
++++ b/src/wmapp.cc
+@@ -337,7 +337,7 @@
+             char ** fontPath(XGetFontPath(xapp->display(), &ndirs));
+ 
+             char ** newFontPath = new char *[ndirs + 1];
+-            newFontPath[ndirs] = fontsdir;
++            newFontPath[ndirs] = (char *)fontsdir;
+ 
+             if (fontPath)
+                 memcpy(newFontPath, fontPath, ndirs * sizeof (char *));

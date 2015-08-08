@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+		wmSun shows rise/set times for the Sun. The user needs to supply his/her
+		latitude and longitude. wmSun works for all latitudes (when Sun does not rise
+		or set, a --:-- is shown for the relevant entry).
+	</longdescription>
+</pkgmetadata>

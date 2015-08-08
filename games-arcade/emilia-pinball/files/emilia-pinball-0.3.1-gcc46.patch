@@ -1,0 +1,30 @@
+--- base/SignalSender.cpp.old	2011-04-26 09:39:24.303339444 +0200
++++ base/SignalSender.cpp	2011-04-26 09:39:51.261063162 +0200
+@@ -11,6 +11,7 @@
+ #include "SignalSender.h"
+ #include "Group.h"
+ #include "Behavior.h"
++#include <cstddef>
+ 
+ SignalSender * SignalSender::p_SignalSender = NULL;
+ 
+--- base/Behavior.cpp.old	2011-04-26 09:36:27.129006665 +0200
++++ base/Behavior.cpp	2011-04-26 09:36:48.855396752 +0200
+@@ -9,6 +9,7 @@
+ #include "Private.h"
+ #include "Behavior.h"
+ #include "Group.h"
++#include <cstddef>
+ 
+ Behavior::Behavior() {
+ 	//EM_COUT("Behavior::Behavior", 1);
+--- base/BehaviorVisitor.cpp.old	2011-04-26 09:37:39.759653248 +0200
++++ base/BehaviorVisitor.cpp	2011-04-26 09:37:54.481594952 +0200
+@@ -9,6 +9,7 @@
+ #include "BehaviorVisitor.h"
+ #include "Behavior.h"
+ #include "Group.h"
++#include <cstddef>
+ 
+ BehaviorVisitor * BehaviorVisitor::p_BehaviorVisitor = NULL;
+ 

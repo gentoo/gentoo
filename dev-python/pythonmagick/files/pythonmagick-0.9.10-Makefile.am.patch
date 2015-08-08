@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -27,7 +27,7 @@
+ _PythonMagick_la_LDFLAGS = -avoid-version -module $(BOOST_LDFLAGS)
+ 
+ # And the libraries to include
+-_PythonMagick_la_LIBADD = pythonmagick_src/libpymagick.la helpers_src/libhelper.la $(BOOST_LDFLAGS) -lboost_python $(MAGICKPP_LIBS) $(MAGICK_LIBS)
++_PythonMagick_la_LIBADD = pythonmagick_src/libpymagick.la helpers_src/libhelper.la $(BOOST_LDFLAGS) $(BOOST_PYTHON_LIB) $(MAGICKPP_LIBS) $(MAGICK_LIBS)
+ 
+ EXTRA_DIST = autogen.pl SConstruct pyste_src LICENSE
+ 

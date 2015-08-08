@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,7 +6,7 @@
+ ##
+ # Setup automake to be silent and in foreign mode.
+ ##
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects dist-xz])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects dist-xz])
+ AM_SILENT_RULES([yes])
+ 
+ ##

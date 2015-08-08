@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-electronics</herd>
+	<longdescription>
+		``gsch2pcb`` is a command-line tool, part of the gEDA suite, which is used
+		to generate and update a PCB layout.  It works with schematics created
+		by ``gschem``, part of the gEDA suite, and layouts created by ``pcb``, a
+		PCB layout system commonly used with gEDA.
+
+		``xgsch2pcb`` provides an intuitive, user-friendly graphical interface to
+		``gsch2pcb``.
+	</longdescription>
+</pkgmetadata>
+

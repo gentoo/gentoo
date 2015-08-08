@@ -1,0 +1,72 @@
+--- Makefile.orig	2012-08-21 12:19:01.344696519 +0400
++++ Makefile	2012-08-21 12:19:23.506696348 +0400
+@@ -164,7 +164,6 @@
+ NDIR=$(MOUNT_DIR)/null
+ UIDIR=$(MOUNT_DIR)/ui
+ Q3UIDIR=$(MOUNT_DIR)/q3_ui
+-JPDIR=$(MOUNT_DIR)/jpeg-6b
+ SPEEXDIR=$(MOUNT_DIR)/libspeex
+ Q3ASMDIR=$(MOUNT_DIR)/tools/asm
+ LBURGDIR=$(MOUNT_DIR)/tools/lcc/lburg
+@@ -297,7 +296,7 @@
+   SHLIBLDFLAGS=-shared $(LDFLAGS)
+ 
+   THREAD_LIBS=-lpthread
+-  LIBS=-ldl -lm
++  LIBS=-ldl -lm -ljpeg
+ 
+   CLIENT_LIBS=$(shell sdl-config --libs) -lGL
+ 
+@@ -1297,42 +1296,6 @@
+   $(B)/client/l_script.o \
+   $(B)/client/l_struct.o \
+   \
+-  $(B)/client/jcapimin.o \
+-  $(B)/client/jcapistd.o \
+-  $(B)/client/jccoefct.o  \
+-  $(B)/client/jccolor.o \
+-  $(B)/client/jcdctmgr.o \
+-  $(B)/client/jchuff.o   \
+-  $(B)/client/jcinit.o \
+-  $(B)/client/jcmainct.o \
+-  $(B)/client/jcmarker.o \
+-  $(B)/client/jcmaster.o \
+-  $(B)/client/jcomapi.o \
+-  $(B)/client/jcparam.o \
+-  $(B)/client/jcphuff.o \
+-  $(B)/client/jcprepct.o \
+-  $(B)/client/jcsample.o \
+-  $(B)/client/jdapimin.o \
+-  $(B)/client/jdapistd.o \
+-  $(B)/client/jdatasrc.o \
+-  $(B)/client/jdcoefct.o \
+-  $(B)/client/jdcolor.o \
+-  $(B)/client/jddctmgr.o \
+-  $(B)/client/jdhuff.o \
+-  $(B)/client/jdinput.o \
+-  $(B)/client/jdmainct.o \
+-  $(B)/client/jdmarker.o \
+-  $(B)/client/jdmaster.o \
+-  $(B)/client/jdpostct.o \
+-  $(B)/client/jdsample.o \
+-  $(B)/client/jdtrans.o \
+-  $(B)/client/jerror.o \
+-  $(B)/client/jfdctflt.o \
+-  $(B)/client/jidctflt.o \
+-  $(B)/client/jmemmgr.o \
+-  $(B)/client/jmemnobs.o \
+-  $(B)/client/jutils.o \
+-  \
+   $(B)/client/tr_animation.o \
+   $(B)/client/tr_backend.o \
+   $(B)/client/tr_bsp.o \
+@@ -1921,9 +1884,6 @@
+ $(B)/client/%.o: $(BLIBDIR)/%.c
+ 	$(DO_BOT_CC)
+ 
+-$(B)/client/%.o: $(JPDIR)/%.c
+-	$(DO_CC)
+-
+ $(B)/client/%.o: $(SPEEXDIR)/%.c
+ 	$(DO_CC)
+ 

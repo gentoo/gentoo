@@ -1,0 +1,40 @@
+--- octave-3.8.0-orig/scripts/pkg/private/install.m	2013-12-28 08:57:42.000000000 +1100
++++ octave-3.8.0/scripts/pkg/private/install.m	2014-02-10 00:59:40.747194765 +1100
+@@ -63,6 +63,14 @@
+       tgz = files{i};
+ 
+       if (exist (tgz, "file"))
++      ## The filename pointed to an uncompressed package to begin with.
++      if (exist (tgz, "dir"))
++        if (tgz(1) == '/')
++          packdir = tgz;
++        else
++          packdir = fullfile (pwd(), tgz);
++        endif
++      elseif (exist (tgz, "file"))
+         ## Create a temporary directory.
+         tmpdir = tmpnam ();
+         tmpdirs{end+1} = tmpdir;
+@@ -89,20 +97,12 @@
+         if (length (dirlist) > 3)
+           error ("bundles of packages are not allowed");
+         endif
+-      endif
+ 
+-      ## The filename pointed to an uncompressed package to begin with.
+-      if (exist (tgz, "dir"))
+-        dirlist = {".", "..", tgz};
++        ## The two first entries of dirlist are "." and "..".
++        packdir = fullfile (tmpdir, dirlist{3});
+       endif
+ 
+       if (exist (tgz, "file") || exist (tgz, "dir"))
+-        ## The two first entries of dirlist are "." and "..".
+-        if (exist (tgz, "file"))
+-          packdir = fullfile (tmpdir, dirlist{3});
+-        else
+-          packdir = fullfile (pwd (), dirlist{3});
+-        endif
+         packdirs{end+1} = packdir;
+ 
+         ## Make sure the package contains necessary files.

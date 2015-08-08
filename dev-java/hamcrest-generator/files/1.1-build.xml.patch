@@ -1,0 +1,93 @@
+diff --git a/hamcrest-1.1/build.xml b/hamcrest-1.1/build.xml
+index f819d3d..18fba83 100644
+--- a/hamcrest-1.1/build.xml
++++ b/hamcrest-1.1/build.xml
+@@ -28,18 +28,6 @@
+                      classpath="
+                        lib/generator/qdox-1.6.1.jar;
+                      "/>
+-        <taskdef name="jarjar"
+-                 classname="com.tonicsystems.jarjar.JarJarTask"
+-                 classpath="lib/generator/jarjar-1.0rc3.jar"/>
+-        <!-- Bundle QDox classes in hamcrest-generator.jar so user doesn't need to care
+-             about it's existence. Uses JarJar to place classes under a different package
+-             to prevent conflict. -->
+-        <jarjar jarfile="build/hamcrest-generator-${version}.jar">
+-            <zipfileset src="build/temp/hamcrest-generator-${version}-nodeps.jar"/>
+-            <zipfileset src="lib/generator/qdox-1.6.1.jar"/>
+-            <rule pattern="com.thoughtworks.qdox.**"
+-                  result="org.hamcrest.generator.qdox.@1"/>
+-        </jarjar>
+     </target>
+ 
+     <target name="core"
+@@ -94,16 +82,16 @@
+                      classpath="build/hamcrest-core-${version}.jar"/>
+     </target>
+ 
+-    <target name="text"
+-            depends="core, library"
+-            description="Build text pattern matcher">
+-        <java-to-jar srcdir="hamcrest-text/src/main/java"
+-                     destjar="build/hamcrest-text-${version}.jar"
+-                     classpath="
+-                        build/hamcrest-core-${version}.jar;
+-                        build/hamcrest-library-${version}.jar"/>
+-    </target>
+-	
++    <target name="text"
++            depends="core, library"
++            description="Build text pattern matcher">
++        <java-to-jar srcdir="hamcrest-text/src/main/java"
++                     destjar="build/hamcrest-text-${version}.jar"
++                     classpath="
++                        build/hamcrest-core-${version}.jar;
++                        build/hamcrest-library-${version}.jar"/>
++    </target>
++	
+     <target name="integration"
+             depends="core, library"
+             description="Build integration with external tools">
+@@ -121,7 +109,7 @@
+                      destjar="build/hamcrest-unit-test-${version}.jar"
+                      classpath="
+                         build/hamcrest-core-${version}.jar;
+-                        build/hamcrest-library-${version}.jar;
++                        build/hamcrest-library-${version}.jar;
+         				build/hamcrest-text-${version}.jar;
+                         build/hamcrest-integration-${version}.jar;
+                         build/hamcrest-generator-${version}.jar"/>
+@@ -164,7 +152,7 @@
+         <jar jarfile="build/hamcrest-all-${version}.jar" duplicate="preserve">
+             <zipfileset src="build/hamcrest-core-${version}.jar"/>
+             <zipfileset src="build/hamcrest-library-${version}.jar"/>
+-            <zipfileset src="build/hamcrest-text-${version}.jar"/>
++            <zipfileset src="build/hamcrest-text-${version}.jar"/>
+             <zipfileset src="build/hamcrest-generator-${version}.jar"/>
+             <zipfileset src="build/hamcrest-integration-${version}.jar"/>
+         </jar>
+@@ -221,7 +209,7 @@
+ 
+ 			<packageset dir="hamcrest-core/src/main/java"/>
+ 			<packageset dir="hamcrest-library/src/main/java" excludes="org/hamcrest/internal"/>
+-			<packageset dir="hamcrest-text/src/main/java" excludes="**/internal/**"/>
++			<packageset dir="hamcrest-text/src/main/java" excludes="**/internal/**"/>
+ 			<packageset dir="hamcrest-integration/src/main/java"/>
+ 			<packageset dir="build/generated-code"/>
+ 			
+@@ -251,14 +239,10 @@
+                 </classpath>
+             </javac>
+             <copy file="LICENSE.txt" todir="build/temp/@{destjar}.contents"/>
+-            <!-- Put Java source in Jars for user's convenience. -->
+-            <copy todir="build/temp/@{destjar}.contents">
+-                <fileset dir="@{srcdir}"/>
+-            </copy>
+             <jar jarfile="@{destjar}">
+                 <fileset dir="build/temp/@{destjar}.contents"/>
+             </jar>
+         </sequential>
+     </macrodef>
+ 
+-</project>
++</project>

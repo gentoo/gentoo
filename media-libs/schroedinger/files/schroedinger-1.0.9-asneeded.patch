@@ -1,0 +1,11 @@
+--- testsuite/Makefile.am
++++ testsuite/Makefile.am
+@@ -34,7 +34,7 @@
+ 
+ AM_CFLAGS = $(SCHRO_CFLAGS) $(ERROR_CFLAGS) $(ORC_CFLAGS) \
+ 	    -DSCHRO_ENABLE_UNSTABLE_API
+-LDADD = $(LIBM) libschrotest.la $(SCHRO_LIBS)
++LDADD = $(LIBM) libschrotest.la $(SCHRO_LIBS) -lorc-test-0.4
+ 
+ libschrotest_la_SOURCES = common.c
+ libschrotest_la_LIBADD = $(SCHRO_LIBS) $(ORC_LIBS) -lorc-test-0.4 $(LIBM)

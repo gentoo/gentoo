@@ -1,0 +1,120 @@
+--- Makefile	2010-06-28 22:19:55.000000000 -0400
++++ myMakefile	2010-06-28 22:20:03.000000000 -0400
+@@ -47,7 +47,6 @@
+ BLOCK=-DBLOCKSIZE=50
+ 
+ #full optimization
+-CFLAGS =  -O3 -fforce-addr -funroll-loops -fomit-frame-pointer -ffast-math 
+ 
+ 
+ 
+@@ -203,8 +202,8 @@
+ 	@echo
+ 	@echo  "Core 1 (password <= 12) : Cracking \"hack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -s abcdefghijklmnopqrstuvwxyz0123456789 d78b6f30225cdc811adfe8d4e7c9fd34 
+-	bin/mdcrack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 c1f9e5db622135eaca09665555b308da 
++	`echo 1 | bin/mdcrack -s abcdefghijklmnopqrstuvwxyz0123456789 d78b6f30225cdc811adfe8d4e7c9fd34 > out1`
++	`echo 1 | bin/mdcrack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 c1f9e5db622135eaca09665555b308da > out2`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -213,8 +212,8 @@
+ 	@echo
+ 	@echo  "Core 1 with ending string (password <= 12) : Cracking \"bbbhack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -e ack -s abcdefghijklmnopqrstuvwxyz0123456789 afd3256209cb976c40495ea15548faca   
+-	bin/mdcrack -e ack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 0b3128de2dd2d37ea87cc4eaedde68e1   
++	`echo 1 | bin/mdcrack -e ack -s abcdefghijklmnopqrstuvwxyz0123456789 afd3256209cb976c40495ea15548faca > out3`
++	`echo 1 | bin/mdcrack -e ack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 0b3128de2dd2d37ea87cc4eaedde68e1 > out4`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -224,8 +223,8 @@
+ 	@echo
+ 	@echo  "Core 2 with ending string (password <= 28) : Cracking \"bbbbbbbbbbbbbbbhack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -e bbbbbbbbbbhack -s abcdefghijklmnopqrstuvwxyz0123456789  a22fcc8c0fbd42bc44c956ee64a93ef6    
+-	bin/mdcrack -e bbbbbbbbbbhack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789  18acb3389f68c92df3d0cd713ef3ab84    
++	`echo 1 | bin/mdcrack -e bbbbbbbbbbhack -s abcdefghijklmnopqrstuvwxyz0123456789  a22fcc8c0fbd42bc44c956ee64a93ef6 > out5` 
++	`echo 1 | bin/mdcrack -e bbbbbbbbbbhack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789  18acb3389f68c92df3d0cd713ef3ab84 > out6`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -236,8 +235,8 @@
+ 	@echo
+ 	@echo  "Core 3 with ending string (password <= 56) : Cracking \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbhack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -e bbbbbbbbbbbbbbbbbbbbbbbhack -s abcdefghijklmnopqrstuvwxyz0123456789 e9a2926c5540d4a853f463e3fbc4aba7 
+-	bin/mdcrack -e bbbbbbbbbbbbbbbbbbbbbbbhack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 f85cb507b9f0fb1f181854394892610a 
++	`echo 1 | bin/mdcrack -e bbbbbbbbbbbbbbbbbbbbbbbhack -s abcdefghijklmnopqrstuvwxyz0123456789 e9a2926c5540d4a853f463e3fbc4aba7 > out7`
++	`echo 1 | bin/mdcrack -e bbbbbbbbbbbbbbbbbbbbbbbhack -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 f85cb507b9f0fb1f181854394892610a > out8`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -247,8 +246,8 @@
+ 	@echo
+ 	@echo  "Core 1 with beginning string (password <= 12) : Cracking \"aaahack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -b aaa -s abcdefghijklmnopqrstuvwxyz0123456789 16522beac358f4f75eafdda40180ff79 
+-	bin/mdcrack -b aaa -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 3a0d395696a13d7633de725746f7c164 
++	`echo 1 | bin/mdcrack -b aaa -s abcdefghijklmnopqrstuvwxyz0123456789 16522beac358f4f75eafdda40180ff79 > out9`
++	`echo 1 | bin/mdcrack -b aaa -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 3a0d395696a13d7633de725746f7c164 > out10`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -258,8 +257,8 @@
+ 	@echo
+ 	@echo  "Core 1 with beginning/ending string (password <= 12) : Cracking \"aaahack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -b aa -e k -s abcdefghijklmnopqrstuvwxyz0123456789 16522beac358f4f75eafdda40180ff79
+-	bin/mdcrack -b aa -M MD4 -e k -s abcdefghijklmnopqrstuvwxyz0123456789 3a0d395696a13d7633de725746f7c164 
++	`echo 1 | bin/mdcrack -b aa -e k -s abcdefghijklmnopqrstuvwxyz0123456789 16522beac358f4f75eafdda40180ff79 > out11`
++	`echo 1 | bin/mdcrack -b aa -M MD4 -e k -s abcdefghijklmnopqrstuvwxyz0123456789 3a0d395696a13d7633de725746f7c164 > out12`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -269,8 +268,8 @@
+ 	@echo
+ 	@echo  "Core 2 with beginning string (password <= 28) : Cracking \"aaaaaaaaaaaaaaahack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -b aaaaaaaaaaaaaaa -s abcdefghijklmnopqrstuvwxyz0123456789 707d4f8220ed0b6980cf74c190e95186 
+-	bin/mdcrack -b aaaaaaaaaaaaaaa -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 ea5544cae8ac6fdfdc69a1fab32da03d 
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaaa -s abcdefghijklmnopqrstuvwxyz0123456789 707d4f8220ed0b6980cf74c190e95186 > out13`
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaaa -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 ea5544cae8ac6fdfdc69a1fab32da03d > out14`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -280,8 +279,8 @@
+ 	@echo
+ 	@echo  "Core 2 with beginning/ending string (password <= 28) : Cracking \"aaaaaaaaaaaaaaahack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -b aaaaaaaaaaaaaa -e k -s abcdefghijklmnopqrstuvwxyz0123456789 707d4f8220ed0b6980cf74c190e95186
+-	bin/mdcrack -b aaaaaaaaaaaaaa -M MD4 -e k -s abcdefghijklmnopqrstuvwxyz0123456789 ea5544cae8ac6fdfdc69a1fab32da03d 
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaa -e k -s abcdefghijklmnopqrstuvwxyz0123456789 707d4f8220ed0b6980cf74c190e95186 > out15`
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaa -M MD4 -e k -s abcdefghijklmnopqrstuvwxyz0123456789 ea5544cae8ac6fdfdc69a1fab32da03d > out16`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -292,8 +291,8 @@
+ 	@echo
+ 	@echo  "Core 3 with beginning string (password <= 56) : Cracking \"aaaaaaaaaaaaaaaaaaaaaaaaaaaahack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaaa -s abcdefghijklmnopqrstuvwxyz0123456789 6067f9a5081e0abadf5e01315f3dad17
+-	bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaaa -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 c486a682f42e083e298677a4af6f62be 
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaaa -s abcdefghijklmnopqrstuvwxyz0123456789 6067f9a5081e0abadf5e01315f3dad17 > out17`
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaaa -M MD4 -s abcdefghijklmnopqrstuvwxyz0123456789 c486a682f42e083e298677a4af6f62be > out18`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo
+@@ -303,8 +302,8 @@
+ 	@echo
+ 	@echo  "Core 3 with beginning/ending string (password <= 56) : Cracking \"aaaaaaaaaaaaaaaaaaaaaaaaaaaahack\" string with [a-z0-9] charset."
+ 	@echo
+-	bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaa -e k -s abcdefghijklmnopqrstuvwxyz0123456789 6067f9a5081e0abadf5e01315f3dad17
+-	bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaa -M MD4 -e k -s abcdefghijklmnopqrstuvwxyz0123456789 c486a682f42e083e298677a4af6f62be 
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaa -e k -s abcdefghijklmnopqrstuvwxyz0123456789 6067f9a5081e0abadf5e01315f3dad17 > out19`
++	`echo 1 | bin/mdcrack -b aaaaaaaaaaaaaaaaaaaaaaaaaaa -M MD4 -e k -s abcdefghijklmnopqrstuvwxyz0123456789 c486a682f42e083e298677a4af6f62be > out20`
+ 	@echo
+ 	@echo  "ok."
+ 	@echo

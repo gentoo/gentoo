@@ -1,0 +1,68 @@
+diff --git a/pithos/data/ui/PithosWindow.ui b/pithos/data/ui/PithosWindow.ui
+index 711892f..722dad0 100644
+--- a/pithos/data/ui/PithosWindow.ui
++++ b/pithos/data/ui/PithosWindow.ui
+@@ -48,7 +48,7 @@
+                           <object class="GtkImage" id="playpause_image">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+-                            <property name="icon_name">media-playback-start-symbolic</property>
++                            <property name="icon_name">media-playback-start</property>
+                             <property name="icon_size">2</property>
+                           </object>
+                         </child>
+@@ -69,7 +69,7 @@
+                           <object class="GtkImage" id="skip_image">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+-                            <property name="icon_name">media-skip-forward-symbolic</property>
++                            <property name="icon_name">media-skip-forward</property>
+                             <property name="icon_size">2</property>
+                           </object>
+                         </child>
+@@ -88,10 +88,10 @@
+                         <property name="relief">none</property>
+                         <property name="focus_on_click">False</property>
+                         <property name="orientation">vertical</property>
+-                        <property name="icons">audio-volume-muted-symbolic
+-audio-volume-high-symbolic
+-audio-volume-low-symbolic
+-audio-volume-medium-symbolic</property>
++                        <property name="icons">audio-volume-muted
++audio-volume-high
++audio-volume-low
++audio-volume-medium</property>
+                         <signal name="value-changed" handler="on_volume_change_event" swapped="no"/>
+                         <child internal-child="plus_button">
+                           <object class="GtkButton" id="volumebutton-plus_button2">
+@@ -160,7 +160,7 @@ audio-volume-medium-symbolic</property>
+                           <object class="GtkImage" id="image14">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+-                            <property name="icon_name">dialog-information-symbolic</property>
++                            <property name="icon_name">dialog-information</property>
+                           </object>
+                         </child>
+                       </object>
+diff --git a/pithos/pithos.py b/pithos/pithos.py
+index e7e0c97..8076b7e 100755
+--- a/pithos/pithos.py
++++ b/pithos/pithos.py
+@@ -489,7 +489,7 @@ class PithosWindow(Gtk.ApplicationWindow):
+             self.playing = True
+         self.player.set_state(Gst.State.PLAYING)
+         GLib.timeout_add_seconds(1, self.update_song_row)
+-        self.playpause_image.set_from_icon_name('media-playback-pause-symbolic', Gtk.IconSize.SMALL_TOOLBAR)
++        self.playpause_image.set_from_icon_name('media-playback-pause', Gtk.IconSize.SMALL_TOOLBAR)
+         self.update_song_row()
+         self.emit('play-state-changed', True)
+ 
+@@ -500,7 +500,7 @@ class PithosWindow(Gtk.ApplicationWindow):
+     def pause(self):
+         self.playing = False
+         self.player.set_state(Gst.State.PAUSED)
+-        self.playpause_image.set_from_icon_name('media-playback-start-symbolic', Gtk.IconSize.SMALL_TOOLBAR)
++        self.playpause_image.set_from_icon_name('media-playback-start', Gtk.IconSize.SMALL_TOOLBAR)
+         self.update_song_row()
+         self.emit('play-state-changed', False)
+ 

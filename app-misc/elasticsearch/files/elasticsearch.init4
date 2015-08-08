@@ -1,0 +1,87 @@
+#!/sbin/runscript
+
+name="Elasticsearch"
+description=""
+
+ES_USER=${ES_USER:="elasticsearch"}
+ES_INSTANCE=${SVCNAME#*.}
+
+if [ -n "${ES_INSTANCE}" ] && [ ${SVCNAME} != "elasticsearch" ]; then
+	PIDFILE="/run/elasticsearch/elasticsearch.${ES_INSTANCE}.pid"
+	ES_BASE_PATH="/var/lib/elasticsearch/${ES_INSTANCE}"
+	ES_CONF_PATH="/etc/elasticsearch/${ES_INSTANCE}"
+	ES_LOG_PATH="/var/log/elasticsearch/${ES_INSTANCE}"
+else
+	PIDFILE="/run/elasticsearch/elasticsearch.pid"
+	ES_BASE_PATH="/var/lib/elasticsearch/_default"
+	ES_CONF_PATH="/etc/elasticsearch"
+	ES_LOG_PATH="/var/log/elasticsearch/_default"
+fi
+
+ES_DATA_PATH="${ES_BASE_PATH}/data"
+ES_WORK_PATH="${ES_BASE_PATH}/work"
+
+export ES_INCLUDE="/usr/share/elasticsearch/bin/elasticsearch.in.sh"
+export JAVA_OPTS
+export ES_JAVA_OPTS
+export ES_HEAP_SIZE
+export ES_HEAP_NEWSIZE
+export ES_DIRECT_SIZE
+export ES_USE_IPV4
+
+server_command="/usr/share/elasticsearch/bin/elasticsearch"
+server_args=" -p ${PIDFILE} -Des.default.path.conf=\"${ES_CONF_PATH}\" -Des.default.path.data=\"${ES_DATA_PATH}\" -Des.default.path.work=\"${ES_WORK_PATH}\" -Des.default.path.logs=\"${ES_LOG_PATH}\""
+
+depend() {
+	use net
+}
+
+start() {
+	# elasticsearch -Des.config=/path/to/config/file
+	# elasticsearch -Des.network.host=10.0.0.4
+	
+	[ ! -f "${ES_INCLUDE}" ] && {
+		eerror "${ES_INCLUDE} must be copied into place"
+		return 1
+	}
+
+	local conf
+	local conf_file
+	for conf in elasticsearch.yml logging.yml; do
+		conf_file="${ES_CONF_PATH}/${conf}"
+		if [ ! -f "${conf_file}" ]; then
+			eerror "${conf_file} must be copied into place"
+			return 1
+		fi
+	done
+
+	ebegin "Starting ${SVCNAME}"
+
+	if [ -n "${ES_MAX_FD}" ]; then
+		ulimit -n ${ES_MAX_FD}
+		einfo "Max open filedescriptors  : ${ES_MAX_FD}"
+	fi
+
+	checkpath -d -o "${ES_USER}" -m750 "/var/lib/elasticsearch"
+	checkpath -d -o "${ES_USER}" -m750 "/var/log/elasticsearch"
+	checkpath -d -o "${ES_USER}" -m750 "$(dirname "${PIDFILE}")"
+	checkpath -d -o "${ES_USER}" -m750 "${ES_BASE_PATH}"
+	checkpath -d -o "${ES_USER}" -m750 "${ES_LOG_PATH}"
+	
+	start-stop-daemon --start \
+		--background \
+		--chdir "${ES_BASE_PATH}" \
+		--user="${ES_USER}" \
+		--pidfile="${PIDFILE}" \
+		--exec ${server_command} -- ${server_args}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop \
+		--pidfile=${PIDFILE} \
+		--user="${ES_USER}" \
+		--retry=TERM/20/KILL/5
+	eend $?
+}

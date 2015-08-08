@@ -1,0 +1,22 @@
+--- cddl/usr.sbin/dtrace/Makefile.old	2011-07-06 00:09:01.000000000 +0000
++++ cddl/usr.sbin/dtrace/Makefile	2011-07-06 00:09:48.000000000 +0000
+@@ -24,6 +24,8 @@
+ #CFLAGS+=	-DNEED_ERRLOC
+ #YFLAGS+=	-d
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libdtrace -L${.CURDIR}/../../lib/libctf
++
+ DPADD=		${LIBPTHREAD} ${LIBDTRACE} ${LIBY} ${LIBL} ${LIBPROC} \
+ 		${LIBCTF} ${LIBELF} ${LIBZ} ${LIBUTIL} ${LIBRTLD_DB}
+ LDADD=		-lpthread -ldtrace -ly -lfl -lproc -lctf -lelf -lz -lutil \
+--- cddl/usr.sbin/lockstat/Makefile.old	2011-07-06 00:10:33.000000000 +0000
++++ cddl/usr.sbin/lockstat/Makefile	2011-07-06 00:10:57.000000000 +0000
+@@ -23,6 +23,8 @@
+ 
+ CFLAGS+=	-DNEED_ERRLOC -g
+ 
++LDFLAGS+=-L${.CURDIR}/../../lib/libdtrace -L${.CURDIR}/../../lib/libctf
++
+ #YFLAGS+=	-d
+ 
+ DPADD=		${LIBPTHREAD} ${LIBDTRACE} ${LIBY} ${LIBL} ${LIBPROC} \

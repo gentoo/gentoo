@@ -1,0 +1,26 @@
+# The address to serve the rendered files to the wiki
+NSLAVE_ADDRESS="localhost"
+
+# The port to serve the rendered files to the wiki
+NSLAVE_PORT=8898
+
+# The url to serve the rendered files to the wiki
+NSLAVE_URL="http://${NSLAVE_ADDRESS}:${NSLAVE_PORT}/cache"
+
+# The directory to save the rendered PDFs to
+NSLAVE_CACHEDIR="/var/cache/mwlib/"
+
+# The umask to create files in NSLAVE_CACHEDIR
+NSLAVE_UMASK=027
+
+# How many greenlets are allowed to run in parallel
+NSLAVE_NUMPROCS=10
+
+# The user running the nserve service, defaults to 'mwlib'
+# NSLAVE_USER="mwlib"
+
+# The group running the nserve service, defaults to 'mwlib'
+# NSLAVE_GROUP="mwlib"
+
+# The logfile collecting all output from stdout and stderr, comment out for no logging
+NSLAVE_LOGFILE="/var/log/mwlib/nslave.log"

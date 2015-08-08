@@ -1,0 +1,10 @@
+--- backtrace-symbols.c	2009-09-30 00:30:08.000000000 +0300
++++ backtrace-symbols.c	2013-10-20 19:54:47.273470222 +0300
+@@ -49,6 +49,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <execinfo.h>
++#include "config.h"
+ #include <bfd.h>
+ #include <libiberty.h>
+ #include <dlfcn.h>

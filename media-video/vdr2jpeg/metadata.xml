@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>video</herd>
+		<maintainer>
+			<email>hd_brummy@gentoo.org</email>
+			<name>Joerg Bornkessel</name>
+		</maintainer>
+		<longdescription lang="en">
+			Addon needed for XXV - WWW Admin for the Video Disk Recorder
+			Creating jpeg pics from *.vdr files			
+		</longdescription>
+</pkgmetadata>

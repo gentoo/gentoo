@@ -1,0 +1,22 @@
+diff -Naur usr.orig/share/tribler/Tribler/Player/swarmplayer.py usr/share/tribler/Tribler/Player/swarmplayer.py
+--- usr.orig/share/tribler/Tribler/Player/swarmplayer.py	2012-02-11 11:54:10.000000000 -0500
++++ usr/share/tribler/Tribler/Player/swarmplayer.py	2012-02-11 11:53:15.000000000 -0500
+@@ -438,9 +438,9 @@
+ 
+     s_play = status.get_or_create_status_element("playable", False)
+     if playable:
++        global START_TIME
+         if preprogress < 1.0:
+             if s_play.get_value() == True:
+-                global START_TIME
+                 status.create_and_add_event("failed_after", [time.time() - START_TIME])
+                 START_TIME = time.time()
+                 
+@@ -448,7 +448,6 @@
+ 
+         elif s_play.get_value() == False:
+             s_play.set_value(True)
+-            global START_TIME
+             status.create_and_add_event("playable_in", [time.time() - START_TIME])
+             START_TIME = time.time()
+ 

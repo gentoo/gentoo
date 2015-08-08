@@ -1,0 +1,33 @@
+--- Makefile
++++ Makefile
+@@ -26,8 +26,8 @@
+ 
+ # makemake variables
+ 
+-LINKER       := g++
+-DEPENDFLAGS  := -g  ${SEARCHDIRS}
++LINKER = $(CXX) $(CXXFLAGS)
++DEPENDFLAGS  := ${SEARCHDIRS}
+ TOUCHHEADERS := ${MYCODEDIR}/*.h
+ 
+ # C
+@@ -37,8 +37,8 @@
+ 
+ # C++
+ 
+-CXX      := g++
+-CXXFLAGS  = ${DEPENDFLAGS} -O9 -funroll-loops -fomit-frame-pointer -ffast-math -Wcast-align
++CXX      ?= g++
++CXXFLAGS  += ${DEPENDFLAGS}
+ 
+ %.o : %.cpp
+ 	${CXX} ${CPPFLAGS} -c $< ${CXXFLAGS} -o $@
+@@ -66,7 +66,7 @@
+     LOADLIBES := $(LOADLIBES) -lXpm -lXt
+ endif
+ 
+-LDFLAGS   = -L/usr/lib -L/usr/local/lib -L/usr/X11R6/lib 
++LDFLAGS   += -L/usr/lib -L/usr/local/lib -L/usr/X11R6/lib 
+ 
+ .PHONY : default
+ default : amph

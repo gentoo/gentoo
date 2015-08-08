@@ -1,0 +1,16 @@
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 2c0c126..1448eb1 100755
+--- a/setup.py
++++ b/setup.py
+@@ -768,7 +768,7 @@ if 'BLOSC' not in optional_libs:
+             CFLAGS.append(ff)
+             break
+ else:
+-    ADDLIBS += ['blosc']
++    ADDLIBS += ['blosc', 'blosc_filter']
+ 
+ 
+ utilsExtension_libs = LIBS + ADDLIBS

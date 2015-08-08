@@ -1,0 +1,59 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="depend checkconfig reload"
+
+depend() {
+	need net
+	use logger
+	after bootmist
+}
+
+
+checkconfig() {
+	if [ ! -f "$DAEMON" ] ; then
+		ewarn "Unable to find $DAEMON"
+		return 1
+	fi
+	if [ ! -f "$CONF" ] ; then
+		ewarn $CONF " does not exist."
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Creating command pipe (${COMMANDPIPE})"
+	mkfifo -m 660 "${COMMANDPIPE}"
+	chown ocsigenserver:ocsigenserver "${COMMANDPIPE}"
+	eend $?
+
+	ebegin "Starting ocsigen"
+	start-stop-daemon --start --exec $DAEMON -- \
+			--pidfile $PIDFILE \
+			--daemon \
+			$OCSIGEN_OPTS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ocsigen"
+	start-stop-daemon --stop --pidfile $PIDFILE
+	eend $?
+	ebegin "Removing command pipe (${COMMANDPIPE})"
+	rm -f "${COMMANDPIPE}"
+	eend $?
+}
+
+reload() {
+	if [ ! -f "$PIDFILE" ] ; then
+		ewarn "$PIDFILE not found!!"
+		ewarn "Ocsigen is not running. Not reloading."
+		return 1
+	fi
+	ebegin "Reloading ocsigen"
+	echo reload > /var/run/ocsigen_command
+	eend $?
+}

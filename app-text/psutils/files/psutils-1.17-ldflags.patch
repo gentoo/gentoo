@@ -1,0 +1,44 @@
+Index: psutils/Makefile.unix
+===================================================================
+--- psutils.orig/Makefile.unix
++++ psutils/Makefile.unix
+@@ -39,7 +39,7 @@ MANEXT = 1
+ MANDIR = /usr/local/share/man/man$(MANEXT)
+ 
+ CC = gcc
+-CFLAGS = -DPAPER=\"$(PAPER)\" -DUNIX -O -Wall
++CFLAGS += -DPAPER=\"$(PAPER)\" -DUNIX -Wall
+ 
+ BIN = psbook psselect pstops epsffit psnup \
+ 	psresize
+@@ -65,30 +65,24 @@ pserror.o: psutil.h patchlev.h pserror.h
+ epsffit.o: epsffit.c pserror.h patchlev.h
+ 
+ epsffit: epsffit.o pserror.o
+-	$(CC) $(CCFLAGS) -o epsffit pserror.o epsffit.o
+ 
+ psnup: psnup.o psutil.o psspec.o pserror.o
+-	$(CC) $(CCFLAGS) -o psnup psutil.o psspec.o pserror.o psnup.o
+ 
+ psnup.o: psutil.h patchlev.h psspec.h pserror.h psnup.c
+ 
+ psresize: psresize.o psutil.o pserror.o psspec.o
+-	$(CC) $(CCFLAGS) -o psresize psutil.o psspec.o pserror.o psresize.o
+ 
+ psresize.o: psutil.h patchlev.h psspec.h pserror.h psresize.c
+ 
+ psbook: psbook.o psutil.o pserror.o
+-	$(CC) $(CCFLAGS) -o psbook psutil.o pserror.o psbook.o
+ 
+ psbook.o: psutil.h patchlev.h pserror.h psbook.c
+ 
+ psselect: psselect.o psutil.o pserror.o
+-	$(CC) $(CCFLAGS) -o psselect psutil.o pserror.o psselect.o
+ 
+ psselect.o: psutil.h patchlev.h pserror.h psselect.c
+ 
+ pstops: pstops.o psutil.o psspec.o pserror.o
+-	$(CC) $(CCFLAGS) -o pstops psutil.o psspec.o pserror.o pstops.o
+ 
+ pstops.o: psutil.h patchlev.h psspec.h pserror.h pstops.c
+ 

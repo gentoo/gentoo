@@ -1,0 +1,14 @@
+Description: Don't directly include glib2 header files.
+Author: Kyrill Detinov <lazy.kent@opensuse.org>
+Index: src/xpad-undo.c
+===================================================================
+--- a/src/xpad-undo.c
++++ b/src/xpad-undo.c
+@@ -23,7 +23,6 @@ Foundation, Inc., 59 Temple Place, Suite
+ #include "../config.h"
+ #include <stdlib.h>
+ #include <glib.h>
+-#include <glib/glist.h>
+ #include "xpad-undo.h"
+ #include "xpad-text-buffer.h"
+ 

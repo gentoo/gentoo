@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>graphics</herd>
+  <longdescription>
+  These are additional stamps for the Tux Paint drawing program.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">tuxpaint</remote-id>
+  </upstream>
+</pkgmetadata>

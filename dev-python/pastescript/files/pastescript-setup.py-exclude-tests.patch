@@ -1,0 +1,19 @@
+# HG changeset patch
+# User Mike Gilbert <floppym@gentoo.org>
+# Date 1353179174 18000
+# Node ID 814fbc493e7a9999086127f64c2406ecb1794990
+# Parent  510ff7d7627750eb0dbbc0d36fa63c72ffa6b303
+Exclude subpackages of tests.
+
+diff --git a/setup.py b/setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -61,7 +61,7 @@
+     url="http://pythonpaste.org/script/",
+     namespace_packages=['paste'],
+     license='MIT',
+-    packages=find_packages(exclude='tests'),
++    packages=find_packages(exclude=['tests','tests.*']),
+     package_data={
+       'paste.script': ['paster-templates/basic_package/setup.*',
+                        'paster-templates/basic_package/tests/*.py',

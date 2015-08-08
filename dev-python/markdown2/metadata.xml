@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>maksbotan@gentoo.org</email>
+    <name>Maxim Koltsov</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <email/>
+      <name>Trent Mick</name>
+    </maintainer>
+    <bugs-to>http://github.com/trentm/python-markdown2/issues</bugs-to>
+    <remote-id type="pypi">markdown2</remote-id>
+    <remote-id type="github">trentm/python-markdown2</remote-id>
+  </upstream>
+</pkgmetadata>

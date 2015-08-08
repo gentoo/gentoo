@@ -1,0 +1,34 @@
+ stdhash.hh |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/stdhash.hh b/stdhash.hh
+index eaf98af..16cd1a3 100644
+--- a/stdhash.hh
++++ b/stdhash.hh
+@@ -412,7 +412,7 @@ public:
+ 	inline bool insert(const keytype_t &key) {
+ 		__lh3_hash_base_class<keytype_t>::rehash();
+ 		hashint_t i;
+-		int ret = direct_insert_aux(key, this->n_capacity, this->keys, this->flags, &i);
++		int ret = this->direct_insert_aux(key, this->n_capacity, this->keys, this->flags, &i);
+ 		if (ret == 0) return true;
+ 		if (ret == 1) { ++(this->n_size); ++(this->n_occupied); }
+ 		else ++(this->n_size); // then ret == 2
+@@ -493,7 +493,7 @@ public:
+ 	inline bool insert(const keytype_t &key, const valtype_t &val) {
+ 		rehash();
+ 		hashint_t i;
+-		int ret = direct_insert_aux(key, this->n_capacity, this->keys, this->flags, &i);
++		int ret = this->direct_insert_aux(key, this->n_capacity, this->keys, this->flags, &i);
+ 		vals[i] = val;
+ 		if (ret == 0) return true;
+ 		if (ret == 1) { ++(this->n_size); ++(this->n_occupied); }
+@@ -503,7 +503,7 @@ public:
+ 	inline bool insert(const keytype_t &key, valtype_t **q) {
+ 		rehash();
+ 		hashint_t i;
+-		int ret = direct_insert_aux(key, this->n_capacity, this->keys, this->flags, &i);
++		int ret = this->direct_insert_aux(key, this->n_capacity, this->keys, this->flags, &i);
+ 		*q = vals + i;
+ 		if (ret == 0) return true;
+ 		if (ret == 1) { ++(this->n_size); ++(this->n_occupied); }

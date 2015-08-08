@@ -1,0 +1,16 @@
+This is tomoyo-tools-2.2.0_p20090727-gentoo.patch blindly ported to 2.3.0.
+Every other change is included by now.
+
+--- usr_lib_tomoyo/init_policy.c	2011-01-17 22:50:05.241899861 +0100
++++ usr_lib_tomoyo/init_policy.c	2011-01-17 22:51:00.172806713 +0100
+@@ -1106,6 +1106,10 @@
+ 	echo("file_pattern /etc/gshadow.\\$");
+ 	echo("file_pattern /etc/passwd.\\$");
+ 	echo("file_pattern /etc/shadow.\\$");
++	echo("file_pattern /etc/group.edit");
++	echo("file_pattern /etc/gshadow.edit");
++	echo("file_pattern /etc/passwd.edit");
++	echo("file_pattern /etc/shadow.edit");
+ 	echo("file_pattern /var/cache/logwatch/logwatch.\\*/");
+ 	echo("file_pattern /var/cache/logwatch/logwatch.\\*/\\*");
+ 	echo("file_pattern /var/tmp/sqlite_\\*");

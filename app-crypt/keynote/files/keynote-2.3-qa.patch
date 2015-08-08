@@ -1,0 +1,44 @@
+Respect CFLAGS, LDFLAGS, and AR.
+
+The better way to fix AR would be to patch configure.in,
+but it is sufficiently old to fail with current autotools.
+--- Makefile.in
++++ Makefile.in
+@@ -27,7 +27,6 @@
+ YACC = @YACC@
+ SSLEAY = @SSLEAY@
+ RM = @RM@
+-AR = @AR@
+ NROFF = @NROFF@
+ TAR = @TAR@
+ TRUE = @TRUE@
+@@ -41,10 +40,10 @@
+ YACCFLAGS = -d -p kn -b k
+ LEXFLAGS2 = -Pkv -s -i
+ LEXFLAGS = -Cr -Pkn -s -i
+-CFLAGS = -O2 -Wall # -g
+ RMFLAGS2 = -rf
+ RMFLAGS = -f
+ NROFFFLAGS = -mandoc
++LDFLAGS = @LDFLAGS@
+ 
+ SSLCONF = testsuite/openssl.cnf
+ SSLCERT = testsuite/test.cert.pem
+@@ -83,7 +82,7 @@
+ 	$(RANLIB) $(TARGET)
+ 
+ $(TARGET2): $(TARGET) $(OBJS2)
+-	$(CC) $(CFLAGS) -o $(TARGET2) $(OBJS2) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TARGET2) $(OBJS2) $(LIBS)
+ 
+ k.tab.c: keynote.y header.h keynote.h assertion.h config.h
+ 	$(YACC) $(YACCFLAGS) keynote.y
+@@ -131,7 +130,7 @@
+ 	-keyout $(SSLKEY)
+ 
+ test-sample: all $(OBJS3)
+-	$(CC) $(CFLAGS) -o $(TARGET3) $(OBJS3) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TARGET3) $(OBJS3) $(LIBS)
+ 
+ test-sig: all $(SSLCERT) $(SSLKEY)
+ 	$(SED) -e 's/--.*//' < $(SSLCERT) > $(SSLCERT).1

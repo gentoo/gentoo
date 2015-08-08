@@ -1,0 +1,42 @@
+--- Makefile.PL	2013-11-05 18:07:13.000000000 +0000
++++ Makefile.PL	2013-12-23 15:21:32.582135695 +0000
+@@ -37,6 +37,10 @@
+ DEATH
+ 
+ my $cwd;
++
++{ # GENTOO
++  last;
++
+ BEGIN {
+   $cwd = Cwd::cwd();
+   # watch out for fancy dashes. these can wind up in our @ARGV if the user is
+@@ -176,6 +180,8 @@
+   }
+ }
+ 
++} # END GENTOO
++
+ use inc::Module::Install;
+ 
+ name 'local-lib';
+@@ -185,6 +191,9 @@
+ requires 'ExtUtils::Install' => '1.43'; # version INSTALL_BASE was added
+ requires 'Module::Build' => '0.36'; # PERL_MB_OPT
+ 
++{ # GENTOO
++  last;
++
+ # don't bother fixing CPAN.pm if bootstrapped from cpanminus
+ unless ($ENV{PERL5_CPANM_IS_RUNNING}) {
+     my $required_CPAN = '1.82';
+@@ -251,6 +260,9 @@
+   auto_install;
+ }
+ chdir($cwd);
++
++} # END GENTOO
++
+ resources(
+   # r/w: p5sagit@git.shadowcat.co.uk:local-lib.git
+   repository => 'git://git.shadowcat.co.uk/p5sagit/local-lib.git',

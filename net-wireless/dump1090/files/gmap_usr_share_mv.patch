@@ -1,0 +1,14 @@
+diff -Naur dump1090-orig/dump1090.c dump1090/dump1090.c
+--- dump1090-orig/dump1090.c	2014-11-17 13:23:59.518047332 -0500
++++ dump1090/dump1090.c	2014-11-17 13:24:33.876048252 -0500
+@@ -2233,8 +2233,8 @@
+         struct stat sbuf;
+         int fd = -1;
+ 
+-        if (stat("gmap.html",&sbuf) != -1 &&
+-            (fd = open("gmap.html",O_RDONLY)) != -1)
++        if (stat("/usr/share/dump1090/gmap.html",&sbuf) != -1 &&
++            (fd = open("/usr/share/dump1090/gmap.html",O_RDONLY)) != -1)
+         {
+             content = malloc(sbuf.st_size);
+             if (read(fd,content,sbuf.st_size) == -1) {

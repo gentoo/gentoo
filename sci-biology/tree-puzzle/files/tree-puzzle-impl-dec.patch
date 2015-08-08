@@ -1,0 +1,14 @@
+ src/sprng/primes-lcg64.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/src/sprng/primes-lcg64.c b/src/sprng/primes-lcg64.c
+index 8e5a7c9..fb04373 100644
+--- a/src/sprng/primes-lcg64.c
++++ b/src/sprng/primes-lcg64.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "primes-lcg64.h"
+ #include "primelist-lcg64.h"
+ 

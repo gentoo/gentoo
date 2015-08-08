@@ -1,0 +1,13 @@
+--- Makefile.in.orig	2012-06-11 23:31:11.416075337 +0400
++++ Makefile.in	2012-06-11 23:31:21.247324839 +0400
+@@ -86,9 +86,7 @@
+ 
+ install_config: 
+ 	$(INSTALL) -d -m 755 $(INSTALL_OWNER) $(DESTDIR)$(ETC_DIR)
+-	if [ ! -f $(ETC_DIR)/vtund.conf ]; then \
+-	  $(INSTALL) -m 600 $(INSTALL_OWNER) vtund.conf $(DESTDIR)$(ETC_DIR); \
+-	fi
++	$(INSTALL) -m 600 $(INSTALL_OWNER) vtund.conf $(DESTDIR)$(ETC_DIR); \
+ 
+ install: vtund install_config install_man
+ 	$(INSTALL) -d -m 755 $(INSTALL_OWNER) $(DESTDIR)$(VAR_DIR)/run

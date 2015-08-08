@@ -1,0 +1,24 @@
+diff -ur pyalsa-1.0.29.orig/setup.py pyalsa-1.0.29/setup.py
+--- setup.py	2015-02-26 20:36:18.000000000 +0800
++++ setup.py	2015-03-22 12:53:26.941401236 +0800
+@@ -58,20 +58,3 @@
+     packages=['pyalsa'],
+     scripts=[]
+ )
+-
+-uname = os.uname()
+-a = 'build/lib.%s-%s-%s' % (uname[0].lower(), uname[4], sys.version[:3])
+-for f in ['alsacard.so', 'alsacontrol.so', 'alsahcontrol.so',
+-          'alsamixer.so', 'alsaseq.so']:
+-  if not os.path.exists('pyalsa/%s' % f):
+-    a = '../build/lib.%s-%s-%s/pyalsa/%s' % \
+-                    (uname[0].lower(), uname[4], sys.version[:3], f)
+-    print a, f
+-    p = 'pyalsa/' + f
+-    try:
+-      st = os.lstat(p)
+-      if stat.S_ISLNK(st.st_mode):
+-        os.remove(p)
+-    except:
+-      pass
+-    os.symlink(a, 'pyalsa/%s' % f)

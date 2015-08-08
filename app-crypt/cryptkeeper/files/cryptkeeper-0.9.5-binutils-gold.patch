@@ -1,0 +1,15 @@
+Description: Fixes a build failure using binutils-gold
+Author: Franceco Namuri <francesco@namuri.it>
+Index: cryptkeeper-0.9.5/configure
+===================================================================
+--- cryptkeeper-0.9.5.orig/configure	2009-10-18 13:58:01.000000000 +0200
++++ cryptkeeper-0.9.5/configure	2011-12-11 12:04:13.045285159 +0100
+@@ -6707,7 +6707,7 @@
+ 
+ CFLAGS="$CFLAGS $DEP_CFLAGS $GNOME_KEYRING_CFLAGS"
+ CXXFLAGS="$CFLAGS"
+-LIBS="$DEP_LIBS $GNOME_KEYRING_LIBS"
++LIBS="-lX11 $DEP_LIBS $GNOME_KEYRING_LIBS"
+ 
+ #AC_PROG_LIBTOOL
+ 

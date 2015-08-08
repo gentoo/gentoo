@@ -1,0 +1,45 @@
+http://bugs.gentoo.org/284403
+
+From 20f68fb1abe862a98bc0378e5bb54d94bb98b8fe Mon Sep 17 00:00:00 2001
+From: Paolo Bonzini <bonzini@gnu.org>
+Date: Thu, 15 Oct 2009 19:56:12 +0200
+Subject: [PATCH] handle incomplete sequences as if they were invalid
+
+2009-10-15  Paolo Bonzini  <bonzini@gnu.org>
+	    WANG Yunfeng  <uhuruh@gmail.com>
+
+	* sed/execute.c (str_append, str_append_modified): Handle incomplete
+	sequences as if they were invalid.
+---
+ ChangeLog     |    6 ++++++
+ NEWS          |    4 +++-
+ sed/execute.c |    6 +++---
+ 3 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/sed/execute.c b/sed/execute.c
+index 66cb809..d5903be 100644
+--- a/sed/execute.c
++++ b/sed/execute.c
+@@ -254,8 +254,8 @@ str_append(to, string, length)
+       {
+         size_t n = MBRLEN (string, length, &to->mbstate);
+ 
+-        /* An invalid sequence is treated like a singlebyte character. */
+-        if (n == (size_t) -1)
++        /* An invalid or imcomplete sequence is treated like a singlebyte character. */
++        if (n == (size_t) -1 || n == (size_t) -2)
+ 	  {
+ 	    memset (&to->mbstate, 0, sizeof (to->mbstate));
+ 	    n = 1;
+@@ -341,7 +341,7 @@ str_append_modified(to, string, length, type)
+       /* Copy the new wide character to the end of the string. */
+       n = WCRTOMB (to->active + to->length, wc, &to->mbstate);
+       to->length += n;
+-      if (n == -1)
++      if (n == -1 || n == -2)
+ 	{
+ 	  fprintf (stderr, "Case conversion produced an invalid character!");
+ 	  abort ();
+-- 
+1.7.3.1
+

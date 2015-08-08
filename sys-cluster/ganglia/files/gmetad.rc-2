@@ -1,0 +1,28 @@
+#!/sbin/runscript
+
+PIDFILE=/var/run/gmetad.pid
+
+depend() {
+	need net
+	after ntp-client ntpd
+}
+
+start() {
+	ebegin "Starting GANGLIA gmetad: "
+	start-stop-daemon \
+		--start --quiet \
+		--exec /usr/sbin/gmetad \
+		--pidfile ${PIDFILE} \
+		-- \
+		--pid-file=${PIDFILE}
+	eend $? "Failed to start gmetad"
+}
+
+stop() {
+	ebegin "Shutting down GANGLIA gmetad: "
+	start-stop-daemon \
+		--stop --quiet \
+		--pidfile ${PIDFILE} \
+		--exec /usr/sbin/gmetad
+	eend $? "Failed to stop gmetad"
+}

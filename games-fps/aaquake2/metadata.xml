@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<longdescription>
+aaquake2 - Text Mode Quake II
+
+What?
+Just what you heard - text mode Quake II.
+
+Why?
+Why not? You can watch TV in text mode, you can play DVDs in text mode, 
+you can play Quake 1 in text mode. Quake II is the logical next step.
+
+Or, as the author of ttyquake put it, "If you have to ask why, you're 
+not a member of the intended audience." 
+</longdescription>
+</pkgmetadata>

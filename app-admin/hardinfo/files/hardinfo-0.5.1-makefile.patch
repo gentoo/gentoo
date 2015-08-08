@@ -1,0 +1,64 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sat May 26 01:30:39 UTC 2012
+Subject: build system
+
+respect CC and LDFLAGS
+
+--- Makefile.in
++++ Makefile.in
+@@ -1,8 +1,6 @@
+ 
+-CCFLAGS = -fPIC -pipe -Wall -g 
+-CFLAGS = $(GTK_CFLAGS) $(SOUP_CFLAGS) -I.
+-CC = gcc $(ARCHOPTS) -g
+-CCSLOW = gcc -O0 -g
++CFLAGS+=-fPIC $(GTK_CFLAGS) $(SOUP_CFLAGS) -I.
++CC?=gcc
+ 
+ # ----------------------------------------------------------------------------
+ 
+@@ -14,35 +12,35 @@
+ MODULES = computer.so devices.so benchmark.so network.so
+ 
+ all:	$(OBJECTS) $(MODULES)
+-	$(CC) $(CCFLAGS) -o hardinfo -Wl,-export-dynamic $(OBJECTS) $(GTK_LIBS) \
++	$(CC) $(CFLAGS) $(LDFLAGS) -o hardinfo -Wl,-export-dynamic $(OBJECTS) $(GTK_LIBS) \
+ 		$(SOUP_LIBS)
+ 
+ md5.o:
+-	$(CCSLOW) $(CCFLAGS) $(CFLAGS) -c md5.c -o $@
++	$(CC) $(CFLAGS) -c md5.c -o $@
+ 
+ blowfish.o:
+-	$(CCSLOW) $(CCFLAGS) $(CFLAGS) -c blowfish.c -o $@
++	$(CC) $(CFLAGS) -c blowfish.c -o $@
+ 
+ sha1.o:
+-	$(CCSLOW) $(CCFLAGS) $(CFLAGS) -c sha1.c -o $@
++	$(CC) $(CFLAGS) -c sha1.c -o $@
+ 
+ fbench.o:
+-	$(CCSLOW) $(CCFLAGS) $(CFLAGS) -c fbench.c -o $@
++	$(CC) $(CFLAGS) -c fbench.c -o $@
+ 
+ fftbench.o:
+-	$(CCSLOW) $(CCFLAGS) $(CFLAGS) -c fftbench.c -o $@
++	$(CC) $(CFLAGS) -c fftbench.c -o $@
+ 
+ nqueens.o:
+-	$(CCSLOW) $(CCFLAGS) $(CFLAGS) -c nqueens.c -o $@
++	$(CC) $(CFLAGS) -c nqueens.c -o $@
+ 
+ benchmark.so:	benchmark.c
+ 	make $(BENCHMARK_OBJECTS)
+-	$(CCSLOW) $(CCFLAGS) $(CFLAGS) -o $@ -shared $< $(BENCHMARK_OBJECTS) \
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -shared $< $(BENCHMARK_OBJECTS) \
+ 		$(GTK_FLAGS) $(GTK_LIBS)
+ 	ln -sf ../$@ modules
+ 
+ %.so:	%.c
+-	$(CC) $(CCFLAGS) $(CFLAGS) -o $@ -shared $< $(GTK_FLAGS) $(GTK_LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -shared $< $(GTK_FLAGS) $(GTK_LIBS)
+ 	ln -sf ../$@ modules
+ 	
+ clean:

@@ -1,0 +1,43 @@
+Based on Debian patch, see http://patch-tracker.debian.org/patch/series/view/pdftk/2.01-1/customise_build_parameters
+
+diff -ruN pdftk-2.01-dist/pdftk/Makefile.Base pdftk-2.01-dist/pdftk/Makefile.Base
+--- pdftk-2.01-dist/pdftk/Makefile.Base	2012-12-06 19:57:36.000000000 +0100
++++ pdftk-2.01-dist/pdftk/Makefile.Base	2013-03-24 18:32:52.669492230 +0100
+@@ -43,7 +43,7 @@
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -I$(JAVALIBPATH) pdftk.cc -c
+ 
+ pdftk : pdftk.o attachments.o report.o passwords.o $(JAVALIB) $(LIBGCJ_SUPPLEMENT_FULL_O)
+-	$(CXX) $(CXXFLAGS) attachments.o report.o passwords.o pdftk.o $(JAVALIB) $(LIBGCJ_SUPPLEMENT_FULL_O) $(LDLIBS) -o pdftk
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) attachments.o report.o passwords.o pdftk.o $(JAVALIB) $(LIBGCJ_SUPPLEMENT_FULL_O) $(LDLIBS) -o pdftk
+ 
+ install:
+ 	/usr/bin/install pdftk /usr/local/bin 
+diff -ruN pdftk-2.01-dist/pdftk/Makefile.Debian pdftk-2.01-dist/pdftk/Makefile.Debian
+--- pdftk-2.01-dist/pdftk/Makefile.Debian	2012-12-06 19:58:44.000000000 +0100
++++ pdftk-2.01-dist/pdftk/Makefile.Debian	2013-03-24 18:34:39.034540850 +0100
+@@ -21,7 +21,7 @@
+ # tools
+ # need direct path to libgcj for gcjh (starting in gcj 4.1.2 per Aurélien GÉRÔME)
+ TOOLPATH=
+-export VERSUFF=-4.6
++export VERSUFF=
+ export CPP= $(TOOLPATH)cpp$(VERSUFF)
+ export CXX= $(TOOLPATH)g++$(VERSUFF)
+ export GCJ= $(TOOLPATH)gcj$(VERSUFF)
+@@ -64,13 +64,12 @@
+ # only effects libraries following option on the command line
+ #
+ #  
+-export CPPFLAGS= -DPATH_DELIM=0x2f -DASK_ABOUT_WARNINGS=false -DUNBLOCK_SIGNALS -fdollars-in-identifiers
+-export CXXFLAGS= -Wall -Wextra -Weffc++ -O2
+-export GCJFLAGS= -fsource=1.3 -O2
+-export GCJHFLAGS= -force
++export CPPFLAGS+= -DPATH_DELIM=0x2f -DASK_ABOUT_WARNINGS=false -DUNBLOCK_SIGNALS -fdollars-in-identifiers
++export GCJFLAGS+= -fsource=1.3
++export GCJHFLAGS+= -force
+ export LDLIBS= -lgcj
+ 
+ include Makefile.Base
+ 
+ # required packages (xubuntu 12.04)
+ # gcj-jdk, g++

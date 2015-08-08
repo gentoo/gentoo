@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a small Python module that determines and returns standardized
+		names for platforms, where the "standard" is Trent Mick's reasoning :)
+		from experience building ActivePython on a fairly large number of
+		platforms.
+
+		The driving goal is to provide platform names that are:
+		- relatively short
+		- readable (as much as possible making matching the given name to an
+		actually machine self-explanatory)
+		- be capable enough to produce all names needed to distinguish all
+		platform-specific application builds
+		- generally safe for usage in filenames
+		- not ugly (e.g. "MSWin32" is ugly) 
+	</longdescription>
+</pkgmetadata>
+

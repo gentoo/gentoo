@@ -1,0 +1,14 @@
+--- Makefile.in	2013-05-22 12:38:10.685814374 +0200
++++ Makefile.in.new	2013-05-22 12:40:30.484539547 +0200
+@@ -186,10 +186,7 @@
+ 
+ EXTRA_DIST = easy-rsa
+ SUBDIRS = doc distro
+-dist_doc_DATA = \
+-	COPYRIGHT.GPL \
+-	COPYING
+-
++dist_doc_DATA = 
+ dist_easyrsa_DATA = 
+ all: all-recursive
+ 

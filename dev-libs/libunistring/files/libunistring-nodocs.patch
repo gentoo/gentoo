@@ -1,0 +1,12 @@
+diff -Naur libunistring-0.9.3.orig/Makefile.in libunistring-0.9.3/Makefile.in
+--- libunistring-0.9.3.orig/Makefile.in	2010-05-02 18:28:21.000000000 -0300
++++ libunistring-0.9.3/Makefile.in	2010-09-24 12:45:40.000000000 -0300
+@@ -773,7 +773,7 @@
+ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = 1.5 gnu no-dependencies
+ ACLOCAL_AMFLAGS = -I m4 -I gnulib-m4
+-SUBDIRS = doc gnulib-local lib tests
++SUBDIRS = gnulib-local lib tests
+ 
+ # Allow users to use "gnulib-tool --update".
+ 

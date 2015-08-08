@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>dotnet</herd>
+	<maintainer>
+		<email>suka@gentoo.org</email>
+		<name>Andreas Proschofsky</name>
+	</maintainer>
+	<use>
+		<flag name='rememberthemilk'>
+			Allows you to use http://www.rememberthemilk.com/ as your storage backend.
+		</flag>
+		<flag name='hiveminder'>
+			Allows you to use http://www.hiveminder.com/ as your storage backend.
+		</flag>
+	</use>
+</pkgmetadata>

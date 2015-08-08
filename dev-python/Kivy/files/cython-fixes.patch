@@ -1,0 +1,42 @@
+--- kivy/lib/gstplayer/_gstplayer.pyx.orig	2014-01-29 17:45:32.000000000 +0100
++++ kivy/lib/gstplayer/_gstplayer.pyx	2015-01-01 21:24:55.480191418 +0100
+@@ -207,7 +207,7 @@
+             self.eos_cb()
+ 
+     def load(self):
+-        cdef char *c_uri
++        cdef bytes py_uri
+ 
+         # if already loaded before, clean everything.
+         if self.pipeline != NULL:
+@@ -256,8 +256,8 @@
+ 
+         # configure playbin
+         g_object_set_int(self.pipeline, 'async-handling', 1)
+-        c_uri = <bytes>self.uri.encode('utf-8')
+-        g_object_set_void(self.playbin, 'uri', c_uri)
++        py_uri = <bytes>self.uri.encode('utf-8')
++        g_object_set_void(self.playbin, 'uri', <char *>py_uri)
+ 
+         # attach the callback
+         # NOTE no need to create a weakref here, as we manage to grab/release
+--- kivy/graphics/shader.pyx.orig	2014-01-20 03:49:50.000000000 +0100
++++ kivy/graphics/shader.pyx	2015-01-01 21:25:01.446858150 +0100
+@@ -421,6 +421,7 @@
+     cdef void bind_vertex_format(self, VertexFormat vertex_format):
+         cdef unsigned int i
+         cdef vertex_attr_t *attr
++        cdef bytes name
+ 
+         # if the current vertex format used in the shader is the current one, do
+         # nothing.
+@@ -445,7 +446,8 @@
+                 attr = &vertex_format.vattr[i]
+                 if attr.per_vertex == 0:
+                     continue
+-                attr.index = glGetAttribLocation(self.program, <char *><bytes>attr.name)
++                name = <bytes>attr.name
++                attr.index = glGetAttribLocation(self.program, <char *>name)
+                 glEnableVertexAttribArray(attr.index)
+ 
+         # save for the next run.

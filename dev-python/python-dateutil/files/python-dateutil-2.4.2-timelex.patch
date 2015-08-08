@@ -1,0 +1,13 @@
+diff --git dateutil/parser.py~ dateutil/parser.py
+index 8b6c2d28b8..75453ef49e 100644
+--- dateutil/parser.py~
++++ dateutil/parser.py
+@@ -32,7 +32,7 @@ __all__ = ["parse", "parserinfo"]
+ class _timelex(object):
+ 
+     def __init__(self, instream):
+-        if isinstance(instream, text_type):
++        if not hasattr(instream, 'read'):
+             instream = StringIO(instream)
+         self.instream = instream
+         self.wordchars = ('abcdfeghijklmnopqrstuvwxyz'

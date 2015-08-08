@@ -1,0 +1,32 @@
+The extension magics for oct2py and rpy live now in the oct2py and rpy2 package. The tests shipped with ipython are broken. We should disable 
+those tests and remove the magics files:
+
+IPython/extensions/rmagic.py -> rpy/ipython/rmagic.py
+IPython/extension/octavemagic.py -> oct2py/ipython/octavemagic.py
+
+deleted:    IPython/extensions/octavemagic.py
+deleted:    IPython/extensions/rmagic.py
+modified:   IPython/testing/iptest.py
+
+diff --git a/IPython/testing/iptest.py b/IPython/testing/iptest.py
+index 45d2c78..db0bdfe 100644
+--- a/IPython/testing/iptest.py
++++ b/IPython/testing/iptest.py
+@@ -250,12 +250,10 @@ sec = test_sections['extensions']
+ if not have['cython']:
+     sec.exclude('cythonmagic')
+     sec.exclude('tests.test_cythonmagic')
+-if not have['oct2py']:
+-    sec.exclude('octavemagic')
+-    sec.exclude('tests.test_octavemagic')
+-if not have['rpy2'] or not have['numpy']:
+-    sec.exclude('rmagic')
+-    sec.exclude('tests.test_rmagic')
++sec.exclude('octavemagic')
++sec.exclude('tests.test_octavemagic')
++sec.exclude('rmagic')
++sec.exclude('tests.test_rmagic')
+ # autoreload does some strange stuff, so move it to its own test section
+ sec.exclude('autoreload')
+ sec.exclude('tests.test_autoreload')
+

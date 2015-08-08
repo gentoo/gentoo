@@ -1,0 +1,12 @@
+diff -Naur unbound-1.4.12.orig/doc/example.conf.in unbound-1.4.12/doc/example.conf.in
+--- unbound-1.4.12.orig/doc/example.conf.in	2011-07-14 17:33:37.000000000 +0900
++++ unbound-1.4.12/doc/example.conf.in	2011-07-16 10:01:06.644402341 +0900
+@@ -334,7 +334,7 @@
+ 	# with several entries, one file per entry.
+ 	# Zone file format, with DS and DNSKEY entries.
+ 	# Note this gets out of date, use auto-trust-anchor-file please.
+-	# trust-anchor-file: ""
++	# trust-anchor-file: "@UNBOUND_ROOTKEY_FILE@"
+ 	
+ 	# Trusted key for validation. DS or DNSKEY. specify the RR on a
+ 	# single line, surrounded by "". TTL is ignored. class is IN default.

@@ -1,0 +1,30 @@
+commit bccbda88a6bc53ac20091bb6aefd2f1b501ba31a
+Author: Christoph Feck <christoph@maxiom.de>
+Date:   Fri Mar 23 23:35:09 2012 +0100
+
+    Fix includes
+
+diff --git a/input/linux/detectlinux.cpp b/input/linux/detectlinux.cpp
+index 632249a..6ae85a4 100644
+--- a/input/linux/detectlinux.cpp
++++ b/input/linux/detectlinux.cpp
+@@ -26,6 +26,7 @@
+ 
+ #include <QtCore/QDir>
+ 
++#include <unistd.h>
+ // #include <libudev.h>
+ 
+ using namespace GluonInput;
+diff --git a/input/linux/inputthread.cpp b/input/linux/inputthread.cpp
+index f92b104..202745e 100644
+--- a/input/linux/inputthread.cpp
++++ b/input/linux/inputthread.cpp
+@@ -30,6 +30,7 @@
+ // #include <QtCore/QStringList>
+ 
+ #include <fcntl.h>
++#include <unistd.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <linux/input.h>

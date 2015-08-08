@@ -1,0 +1,96 @@
+Addresing multiple QA issues:
+ - fixing CFLAGS, LDFLAGS, CC
+ - fixing parallel build
+ - fixing as-needed issues
+ - making static libs optional
+ - introducing make DESTDIR compatibility
+ - removing Makefile.PLATFORM bits, as they violate sandbox
+
+http://bugs.gentoo.org/show_bug.cgi?id=313673
+
+Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,13 +1,13 @@
+ # Makefile for libmba
+ # Supported flags: -DVARRAY_INIT_SIZE=N -DUSE_WCHAR
+ 
+-MFLAGS     = -g -W1 -Isrc
++MFLAGS     = -Isrc
+ MKTOOL     = ./mktool
+ 
+-prefix     = /usr/local
++prefix     = $(DESTDIR)/usr
+ includedir = $(prefix)/include
+-libdir     = $(prefix)/lib
+-mandir     = $(prefix)/man
++libdir     = $(prefix)/$(LIBDIR)
++mandir     = $(prefix)/share/man
+ LIBNAME    = mba
+ LIBVERS    = 0.9.1
+ ARNAME     = lib$(LIBNAME).a
+@@ -19,39 +19,49 @@
+ MAN        = diff.3m bitset.3m allocator.3m cfg.3m pool.3m varray.3m csv.3m text.3m path.3m suba.3m msgno.3m stack.3m linkedlist.3m hashmap.3m hexdump.3m shellout.3m eval.3m svsem.3m svcond.3m time.3m
+ MANGZ      = $(MAN:.3m=.3m.gz)
+ 
++.PHONY: all clean install uninstall install-ar uninstall-ar
+ .SUFFIXES: .pic.o .3m .3m.gz
+ 
+-all: mktool so ar
++ifeq ($(STATIC),1)
++all: $(MKTOOL) so ar
++install-ar: $(ARNAME)
++	-$(MKTOOL) -i $(ARNAME) $(libdir)
++uninstall-ar:
++	$(MKTOOL) -u $(ARNAME) $(libdir)
++else
++all: $(MKTOOL) so
++install-ar:
++uninstall-ar:
++endif
+ 
+-mktool:
++$(MKTOOL): mktool.c
+ 	$(CC) -g -o mktool mktool.c
+ 
+-ar: mktool $(OBJS)
++$(PICOBJS): $(MKTOOL)
++$(OBJS): $(MKTOOL)
++
++ar: $(OBJS)
+ 	ar $(ARFLAGS) $(ARNAME) $(OBJS)
+ 	ranlib $(ARNAME)
+-so: mktool $(PICOBJS)
+-	@$(MKTOOL) -l -v -libname $(LIBNAME) -libvers $(LIBVERS) -shared -soname -lutil $(PICOBJS)
++so: $(PICOBJS)
++	@$(MKTOOL) -l -v -libname $(LIBNAME) -libvers $(LIBVERS) -shared -soname $(LDFLAGS) $(PICOBJS) -lutil
+ 
+ .c.pic.o:
+-	@$(MKTOOL) -c -v $(MFLAGS) -fpic -c -o $*.pic.o $<
++	@$(MKTOOL) -c -v $(CFLAGS) $(MFLAGS) -fpic -c -o $*.pic.o $<
+ .c.o:
+-	@$(MKTOOL) -c -v $(MFLAGS) -c -o $*.o $<
++	@$(MKTOOL) -c -v $(CFLAGS) $(MFLAGS) -c -o $*.o $<
+ 
+-install: mktool
+-	-$(MKTOOL) -i $(ARNAME) $(libdir)
+-	-$(MKTOOL) -i -libname $(LIBNAME) -libvers $(LIBVERS) $(libdir)
++install: install-ar
++	$(MKTOOL) -i -libname $(LIBNAME) -libvers $(LIBVERS) $(libdir)
+ 	$(MKTOOL) -i $(HDRS) $(includedir)/mba
+ 	$(MKTOOL) -i docs/man/*.3m.gz $(mandir)/man3
+-	@-libdir=$(libdir) mandir="$(mandir)" MAN="$(MAN)" MANGZ="$(MANGZ)" $(MKTOOL) -m -v platform_specific_install
+ 	@echo
+ 	@echo installation successful
+-uninstall: mktool
+-	$(MKTOOL) -u $(ARNAME) $(libdir)
++uninstall: uninstall-ar
+ 	$(MKTOOL) -u -libname $(LIBNAME) -libvers $(LIBVERS) $(libdir)
+ 	$(MKTOOL) -u $(HDRS) $(includedir)/mba
+ 	rm -rf $(includedir)/mba
+ 	$(MKTOOL) -u $(MANGZ) $(mandir)/man3
+-	-@libdir=$(libdir) mandir="$(mandir)" MAN="$(MAN)" MANGZ="$(MANGZ)" $(MKTOOL) -m -v platform_specific_uninstall
+ 	@echo
+ 	@echo de-installation successful
+ 

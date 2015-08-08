@@ -1,0 +1,31 @@
+ Makefile |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ae12602..dd68657 100644
+--- a/Makefile
++++ b/Makefile
+@@ -16,12 +16,12 @@ OCPP     := ocpp
+ FORT := fort 
+ AWK  := gawk
+ 
+-MNOCYGWIN     ?= $(shell $(OCAMLC) -verbose foo.c 2>&1 | $(AWK) "NR==1 { print \$$3 }")	
++MNOCYGWIN     ?= $(shell $(OCAMLC) -verbose foo.c 2>&1 | $(AWK) 'NR==1 { print $3 }')	
+ ifeq ($(MNOCYGWIN),-mnocygwin)
+ OCAML_BACKEND := mingw
+ endif
+ 
+-OCAML_BACKEND ?= $(shell $(OCAMLC) -verbose foo.c 2>&1 | $(AWK) "NR==1 { print \$$2 }")
++OCAML_BACKEND ?= $(shell $(OCAMLC) -verbose foo.c 2>&1 | $(AWK) 'NR==1 { print $2 }')
+ OCAML_VERSION ?= $(shell $(OCAMLC) -version)
+ 
+ OCAMLBCFLAGS := -g 
+@@ -94,7 +94,7 @@ SRC := wrappers.h gsl_misc.ml io.h \
+ ifeq ($(OCAML_BACKEND),cl)
+ include msvc.mak
+ else
+-ifeq ($(OCAML_BACKEND),gcc)
++ifneq (,$(findstring gcc,$(OCAML_BACKEND))) 
+ include gcc.mak
+ else
+ include mingw.mak

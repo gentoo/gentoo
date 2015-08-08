@@ -1,0 +1,30 @@
+From 5aae9ccfda6dfc680403b4a5ff9a36dcd5331dfd Mon Sep 17 00:00:00 2001
+From: Michael Marineau <mike@marineau.org>
+Date: Tue, 11 Nov 2014 15:17:46 -0800
+Subject: [PATCH] linux 3.18
+
+http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=5bc8c1f2b070bab82ed738f98ecfac725e33c57f
+---
+ src/wl/sys/wl_cfg80211_hybrid.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/wl/sys/wl_cfg80211_hybrid.c b/src/wl/sys/wl_cfg80211_hybrid.c
+index 514a892..e3ebef2 100644
+--- a/src/wl/sys/wl_cfg80211_hybrid.c
++++ b/src/wl/sys/wl_cfg80211_hybrid.c
+@@ -2010,7 +2010,11 @@ static s32 wl_inform_single_bss(struct wl_cfg80211_priv *wl, struct wl_bss_info
+ 
+ 	notify_ie = (u8 *)bi + le16_to_cpu(bi->ie_offset);
+ 	notify_ielen = le32_to_cpu(bi->ie_length);
+-	cbss = cfg80211_inform_bss(wiphy, channel, (const u8 *)(bi->BSSID.octet),
++	cbss = cfg80211_inform_bss(wiphy, channel,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0)
++		CFG80211_BSS_FTYPE_UNKNOWN,
++#endif
++		(const u8 *)(bi->BSSID.octet),
+ 		0, beacon_proberesp->capab_info, beacon_proberesp->beacon_int,
+ 		(const u8 *)notify_ie, notify_ielen, signal, GFP_KERNEL);
+ 
+-- 
+2.0.4
+

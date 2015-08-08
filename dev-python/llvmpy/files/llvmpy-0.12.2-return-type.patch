@@ -1,0 +1,13 @@
+gentoo qa: type conversion on return triggered by gcc warnings
+bicatali - feb 2014
+--- llvmpy/include/llvm_binding/conversion.h.orig	2014-02-10 08:45:29.516304878 -0800
++++ llvmpy/include/llvm_binding/conversion.h	2014-02-10 08:45:58.190474249 -0800
+@@ -101,7 +101,7 @@
+         val = PyInt_AsLong(intobj);
+     }
+     if (PyErr_Occurred()){
+-        return NULL;
++        return 1;
+     }
+     // success
+     return 1;

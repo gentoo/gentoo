@@ -1,0 +1,100 @@
+From ac48583654e97ef04e8cbb52c2ae77a617c7add3 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 7 Jun 2015 01:08:39 -0400
+Subject: [PATCH] reenable dynamic libs
+
+Upstream decided to staticly link their own programs against their libs
+instead of using the shared ones.  Restore dynamic linking to save space
+and such.
+---
+ SConstruct | 64 ++++++++++++++++++++++++++++++++++----------------------------
+ 1 file changed, 35 insertions(+), 29 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 28cebf0..a050f38 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -961,6 +961,9 @@ if qt_env:
+ gpsflags = ["-lm"] + rtlibs + dbusflags
+ gpsdflags = usbflags + bluezflags + gpsflags
+ 
++gpslibs = ["-lgps"] + gpsflags
++gpsdlibs = ["-lgpsd"] + gpsdflags + gpslibs
++
+ # Source groups
+ 
+ gpsd_sources = ['gpsd.c','timehint.c', 'shmexport.c','dbusexport.c']
+@@ -983,38 +986,41 @@ gpsmon_sources = [
+ ## Production programs
+ 
+ gpsd = env.Program('gpsd', gpsd_sources,
+-                   LIBS=['gpsd', 'gps_static'], LIBPATH='.',
+-                   parse_flags=gpsdflags+gpsflags)
++                   LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs)
++env.Depends(gpsd, [compiled_gpslib])
++
+ gpsdecode = env.Program('gpsdecode', ['gpsdecode.c'],
+-                        LIBS=['gpsd', 'gps_static'], LIBPATH='.',
+-                        parse_flags=gpsdflags+gpsflags)
++                        LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs)
++env.Depends(gpsdecode, [compiled_gpslib])
++
+ gpsctl = env.Program('gpsctl', ['gpsctl.c'],
+-                     LIBS=['gpsd', 'gps_static'], LIBPATH='.',
+-                     parse_flags=gpsdflags+gpsflags)
++                     LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs)
++env.Depends(gpsctl, [compiled_gpslib])
++
+ gpsmon = env.Program('gpsmon', gpsmon_sources,
+-                     LIBS=['gpsd', 'gps_static'], LIBPATH='.',
+-                     parse_flags=gpsdflags + gpsflags + ncurseslibs)
+-gpsdctl = env.Program('gpsdctl', ['gpsdctl.c'],
+-                      LIBS=['gps_static'], LIBPATH='.',
+-                      parse_flags=gpsflags)
+-gpspipe = env.Program('gpspipe', ['gpspipe.c'],
+-                      LIBS=['gps_static'], LIBPATH='.',
+-                      parse_flags=gpsflags)
+-gps2udp = env.Program('gps2udp', ['gps2udp.c'],
+-                      LIBS=['gps_static'], LIBPATH='.',
+-                      parse_flags=gpsflags)
+-gpxlogger = env.Program('gpxlogger', ['gpxlogger.c'],
+-                        LIBS=['gps_static'], LIBPATH='.',
+-                        parse_flags=gpsflags)
+-lcdgps = env.Program('lcdgps', ['lcdgps.c'],
+-                     LIBS=['gps_static'], LIBPATH='.',
+-                     parse_flags=gpsflags)
+-cgps = env.Program('cgps', ['cgps.c'],
+-                   LIBS=['gps_static'], LIBPATH='.',
+-                   parse_flags=gpsflags + ncurseslibs)
+-ntpshmmon = env.Program('ntpshmmon', ['ntpshmmon.c'],
+-                        LIBS=['gps_static'], LIBPATH='.',
+-                        parse_flags=gpsflags)
++                     LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs + ncurseslibs)
++env.Depends(gpsmon, [compiled_gpslib])
++
++gpsdctl = env.Program('gpsdctl', ['gpsdctl.c'], parse_flags=gpslibs)
++env.Depends(gpsdctl, compiled_gpslib)
++
++gpspipe = env.Program('gpspipe', ['gpspipe.c'], parse_flags=gpslibs)
++env.Depends(gpspipe, compiled_gpslib)
++
++gps2udp = env.Program('gps2udp', ['gps2udp.c'], parse_flags=gpslibs)
++env.Depends(gps2udp, compiled_gpslib)
++
++gpxlogger = env.Program('gpxlogger', ['gpxlogger.c'], parse_flags=gpslibs)
++env.Depends(gpxlogger, compiled_gpslib)
++
++lcdgps = env.Program('lcdgps', ['lcdgps.c'], parse_flags=gpslibs)
++env.Depends(lcdgps, compiled_gpslib)
++
++cgps = env.Program('cgps', ['cgps.c'], parse_flags=gpslibs + ncurseslibs)
++env.Depends(cgps, compiled_gpslib)
++
++ntpshmmon = env.Program('ntpshmmon', ['ntpshmmon.c'], parse_flags=gpslibs)
++env.Depends(ntpshmmon, compiled_gpslib)
+ 
+ binaries = [gpsd, gpsdecode, gpsctl, gpsdctl, gpspipe, gps2udp, gpxlogger, lcdgps, ntpshmmon]
+ if env["ncurses"]:
+-- 
+2.4.1
+

@@ -1,0 +1,70 @@
+From 916b13aa2b86eb7e14f539293a0059a95c936393 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 11 Jan 2015 20:50:13 +0100
+Subject: [PATCH 4/5] Use wheel group instead of sudo
+
+from Fedora/Arch
+
+https://github.com/linuxmint/Cinnamon/issues/3576
+---
+ .../cinnamon-settings-users/cinnamon-settings-users.py  | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
+
+diff --git a/files/usr/lib/cinnamon-settings-users/cinnamon-settings-users.py b/files/usr/lib/cinnamon-settings-users/cinnamon-settings-users.py
+index c4de658..d9062dc 100755
+--- a/files/usr/lib/cinnamon-settings-users/cinnamon-settings-users.py
++++ b/files/usr/lib/cinnamon-settings-users/cinnamon-settings-users.py
+@@ -145,12 +145,11 @@ class EditableEntry (Gtk.Notebook):
+ 
+ class PasswordDialog(Gtk.Dialog):
+ 
+-    def __init__ (self, user, password_mask, group_mask):            
++    def __init__ (self, user, password_mask):
+         super(PasswordDialog, self).__init__()
+ 
+         self.user = user
+         self.password_mask = password_mask
+-        self.group_mask = group_mask
+ 
+         self.set_modal(True)
+         self.set_skip_taskbar_hint(True)
+@@ -216,12 +215,6 @@ class PasswordDialog(Gtk.Dialog):
+     def change_password(self):        
+         newpass = self.new_password.get_text()
+         self.user.set_password(newpass, "")
+-        os.system("gpasswd -d '%s' nopasswdlogin" % self.user.get_user_name())
+-        mask = self.group_mask.get_text()
+-        mask = mask.split(", ")
+-        mask.remove("nopasswdlogin")
+-        mask = ", ".join(mask)
+-        self.group_mask.set_text(mask)        
+         self.password_mask.set_text(u'\u2022\u2022\u2022\u2022\u2022\u2022')
+         self.destroy()  
+ 
+@@ -516,7 +509,7 @@ class Module:
+         model, treeiter = self.users_treeview.get_selection().get_selected()
+         if treeiter != None:
+             user = model[treeiter][INDEX_USER_OBJECT]       
+-            dialog = PasswordDialog(user, self.password_mask, self.groups_label)                
++            dialog = PasswordDialog(user, self.password_mask)
+             response = dialog.run()
+ 
+     def _on_groups_button_clicked(self, widget): 
+@@ -753,11 +746,11 @@ class Module:
+             pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/cinnamon/faces/user-generic.png", 48, 48)
+             description = "<b>%s</b>\n%s" % (fullname, username)
+             piter = self.users.append(None, [new_user, pixbuf, description])
+-            # Add the user to his/her own group and sudo if Administrator was selected
++            # Add the user to his/her own group and wheel if Administrator was selected
+             if dialog.account_type_combo.get_active() == 1:
+-                os.system("usermod %s -G %s,sudo,nopasswdlogin" % (username, username)) 
++                os.system("usermod %s -G %s,wheel" % (username, username))
+             else:
+-                os.system("usermod %s -G %s,nopasswdlogin" % (username, username))
++                os.system("usermod %s -G %s" % (username, username))
+             self.load_groups()
+         dialog.destroy()
+ 
+-- 
+2.2.1
+

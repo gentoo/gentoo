@@ -1,0 +1,84 @@
+From 2a9ea11f4dea51f9e75036aab8e7a23f0eb4bd1f Mon Sep 17 00:00:00 2001
+From: aavit <eirik.aavitsland@digia.com>
+Date: Tue, 10 Sep 2013 11:46:51 +0200
+Subject: Compilation fix for libjpeg release 9
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In the latest libjpeg version, the "boolean" type is changed so that
+true and false no longer can be used instead of TRUE and FALSE.
+
+Also, purge some ancient code remains meant to support a now defunct
+OS´s idea about the boolean type.
+
+Task-number: QTBUG-33166
+Change-Id: Iebbdf300cfdc22775954de65f985358424ed2b49
+Reviewed-by: Gunnar Sletta <gunnar.sletta@digia.com>
+(cherry picked from qtbase/fad6aa619bf6eb048821a58065433f6b598c10e4)
+---
+ src/gui/image/qjpeghandler.cpp | 27 +++++----------------------
+ 1 file changed, 5 insertions(+), 22 deletions(-)
+
+diff --git a/src/gui/image/qjpeghandler.cpp b/src/gui/image/qjpeghandler.cpp
+index a8700b7..ba5c469 100644
+--- a/src/gui/image/qjpeghandler.cpp
++++ b/src/gui/image/qjpeghandler.cpp
+@@ -157,11 +157,7 @@ static boolean qt_fill_input_buffer(j_decompress_ptr cinfo)
+     } else {
+         src->bytes_in_buffer = num_read;
+     }
+-#if defined(Q_OS_UNIXWARE)
+-    return B_TRUE;
+-#else
+-    return true;
+-#endif
++    return TRUE;
+ }
+ 
+ static void qt_skip_input_data(j_decompress_ptr cinfo, long num_bytes)
+@@ -489,11 +485,7 @@ static boolean qt_empty_output_buffer(j_compress_ptr cinfo)
+     dest->next_output_byte = dest->buffer;
+     dest->free_in_buffer = max_buf;
+ 
+-#if defined(Q_OS_UNIXWARE)
+-    return B_TRUE;
+-#else
+-    return true;
+-#endif
++    return TRUE;
+ }
+ 
+ static void qt_term_destination(j_compress_ptr cinfo)
+@@ -584,13 +576,8 @@ static bool write_jpeg_image(const QImage &image, QIODevice *device, int sourceQ
+ 
+ 
+         int quality = sourceQuality >= 0 ? qMin(sourceQuality,100) : 75;
+-#if defined(Q_OS_UNIXWARE)
+-        jpeg_set_quality(&cinfo, quality, B_TRUE /* limit to baseline-JPEG values */);
+-        jpeg_start_compress(&cinfo, B_TRUE);
+-#else
+-        jpeg_set_quality(&cinfo, quality, true /* limit to baseline-JPEG values */);
+-        jpeg_start_compress(&cinfo, true);
+-#endif
++        jpeg_set_quality(&cinfo, quality, TRUE /* limit to baseline-JPEG values */);
++        jpeg_start_compress(&cinfo, TRUE);
+ 
+         row_pointer[0] = new uchar[cinfo.image_width*cinfo.input_components];
+         int w = cinfo.image_width;
+@@ -751,11 +738,7 @@ bool QJpegHandlerPrivate::readJpegHeader(QIODevice *device)
+         err.error_exit = my_error_exit;
+ 
+         if (!setjmp(err.setjmp_buffer)) {
+-    #if defined(Q_OS_UNIXWARE)
+-            (void) jpeg_read_header(&info, B_TRUE);
+-    #else
+-            (void) jpeg_read_header(&info, true);
+-    #endif
++            (void) jpeg_read_header(&info, TRUE);
+ 
+             int width = 0;
+             int height = 0;
+-- 
+2.0.0
+

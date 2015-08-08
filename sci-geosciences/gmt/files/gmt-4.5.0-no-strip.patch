@@ -1,0 +1,62 @@
+Drop manipulation of several flags:
+
+* stripping of -g from CFLAGS, as it interferes with deliberate
+  generation of debug symbols and breaks on flags like -ggdb.
+* Addition of -s resp. -Wl,-x to LDFLAGS, as stipping of binaries is
+  done as a separate step on Gentoo (and many other distros) in order
+  to faciliate retention or splitting of debug symbols.
+* Setting of optimization flags, as the user should be free to choose
+  them.
+
+2009-07-27 Martin von Gagern
+
+Reference: http://bugs.gentoo.org/279268
+
+Index: GMT4.5.0/configure
+===================================================================
+--- GMT4.5.0.orig/configure
++++ GMT4.5.0/configure
+@@ -10665,19 +10665,6 @@ if test "X$enable_debug" = "Xyes" ; then
+ echo "${ECHO_T}yes" >&6; }
+ 	CFLAGS="$CFLAGS -g"
+ else
+-	CFLAGS=`echo $CFLAGS | sed 's/-g//'`
+-	if test "$os" = "Darwin" ; then
+-		LDFLAGS="$LDFLAGS -Wl,-x"
+-	else
+-		LDFLAGS="$LDFLAGS -s"
+-	fi
+-	if test "$GCC" = "yes" || test "$os" = "Linux" || test "$os" = "AIX"; then
+-		CFLAGS="$CFLAGS -O2"
+-	elif test "$chip" = "alpha" || test "$os" = "AUX" || test "$os" = "HP-UX"; then
+-		CFLAGS="$CFLAGS"
+-	else
+-		CFLAGS="$CFLAGS -O"
+-	fi
+ 	{ echo "$as_me:$LINENO: result: no" >&5
+ echo "${ECHO_T}no" >&6; }
+ fi
+Index: GMT4.5.0/configure.ac
+===================================================================
+--- GMT4.5.0.orig/configure.ac
++++ GMT4.5.0/configure.ac
+@@ -527,19 +527,6 @@ if test "X$enable_debug" = "Xyes" ; then
+ 	AC_MSG_RESULT(yes)
+ 	CFLAGS="$CFLAGS -g"
+ else
+-	CFLAGS=`echo $CFLAGS | sed 's/-g//'`
+-	if test "$os" = "Darwin" ; then
+-		LDFLAGS="$LDFLAGS -Wl,-x"
+-	else
+-		LDFLAGS="$LDFLAGS -s"
+-	fi
+-	if test "$GCC" = "yes" || test "$os" = "Linux" || test "$os" = "AIX"; then
+-		CFLAGS="$CFLAGS -O2"
+-	elif test "$chip" = "alpha" || test "$os" = "AUX" || test "$os" = "HP-UX"; then
+-		CFLAGS="$CFLAGS"
+-	else
+-		CFLAGS="$CFLAGS -O"
+-	fi
+ 	AC_MSG_RESULT(no)
+ fi
+ dnl -----------------------------------------------------------------

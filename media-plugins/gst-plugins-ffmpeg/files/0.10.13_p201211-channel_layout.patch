@@ -1,0 +1,29 @@
+Include correct header with correct version. Fixes build with ffmpeg-0.10.
+
+
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcodecmap.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegcodecmap.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcodecmap.c
+@@ -25,10 +25,20 @@
+ #include <gst/gst.h>
+ #ifdef HAVE_FFMPEG_UNINSTALLED
+ #include <avcodec.h>
+-#include <channel_layout.h>>
++#include <avutil.h>
++#if (LIBAVUTIL_VERSION_INT > AV_VERSION_INT(52,6,0) || (LIBAVUTIL_VERSION_MICRO < 100 && LIBAVUTIL_VERSION_INT > AV_VERSION_INT(52,2,0)))
++#include <channel_layout.h>
++#else
++#include <audioconvert.h>
++#endif
+ #else
+ #include <libavcodec/avcodec.h>
++#include <libavutil/avutil.h>
++#if (LIBAVUTIL_VERSION_INT > AV_VERSION_INT(52,6,0) || (LIBAVUTIL_VERSION_MICRO < 100 && LIBAVUTIL_VERSION_INT > AV_VERSION_INT(52,2,0)))
+ #include <libavutil/channel_layout.h>
++#else
++#include <libavutil/audioconvert.h>
++#endif
+ #endif
+ #include <string.h>
+ 

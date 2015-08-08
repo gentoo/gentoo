@@ -1,0 +1,61 @@
+From 96e60a4ea242d2decf109835981ae186cc36f642 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Fri, 29 Aug 2014 07:57:41 +1000
+Subject: Include xorg-server.h to fix build errors on newest glibc
+
+In file included from /usr/include/string.h:634:0,
+                 from /usr/include/xorg/os.h:53,
+                 from /usr/include/xorg/misc.h:115,
+                 from /usr/include/xorg/xf86str.h:37,
+                 from /usr/include/xorg/xf86Xinput.h:54,
+                 from synproto.h:36,
+                 from synproto.c:24:
+/usr/include/xorg/os.h:579:1: error: expected identifier or '(' before '__extension__'
+ strndup(const char *str, size_t n);
+
+See http://lists.freedesktop.org/archives/xorg-devel/2014-July/043070.html
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+
+diff --git a/src/eventcomm.h b/src/eventcomm.h
+index 4d759ff..e0f8743 100644
+--- a/src/eventcomm.h
++++ b/src/eventcomm.h
+@@ -27,6 +27,8 @@
+ #ifndef _EVENTCOMM_H_
+ #define _EVENTCOMM_H_
+ 
++#include <xorg-server.h>
++
+ #include <linux/input.h>
+ #include <linux/version.h>
+ #include <xf86Xinput.h>
+diff --git a/src/ps2comm.h b/src/ps2comm.h
+index 2be55e4..fa71d10 100644
+--- a/src/ps2comm.h
++++ b/src/ps2comm.h
+@@ -22,6 +22,8 @@
+ #ifndef _PS2COMM_H_
+ #define _PS2COMM_H_
+ 
++#include <xorg-server.h>
++
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include "xf86_OSproc.h"
+diff --git a/src/synproto.h b/src/synproto.h
+index c52838c..6ba6740 100644
+--- a/src/synproto.h
++++ b/src/synproto.h
+@@ -31,6 +31,8 @@
+ #include "config.h"
+ #endif
+ 
++#include <xorg-server.h>
++
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <xf86Xinput.h>
+-- 
+cgit v0.10.2
+

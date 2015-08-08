@@ -1,0 +1,58 @@
+https://bugs.gentoo.org/show_bug.cgi?id=464168
+
+commit 935f85422863b42b6fbca30885885e3fa28eea36
+Author: Nick Clifton <nickc@redhat.com>
+Date:   Mon Jan 7 12:11:11 2013 +0000
+
+    	* ld.texinfo: Replace @ with @@ when it is part of the text.
+    	Correct ordering of M68HC11 entry.
+    
+    	* doc/binutils.texi: Fix ordering of top level nodes.
+    	Replace erroneous uses of @itemx with @item.
+    
+    	* bfd.texinfo: Replace @ with @@ when it is part of the text.
+
+diff --git a/bfd/doc/bfd.texinfo b/bfd/doc/bfd.texinfo
+index 45ffa73..3aa3300 100644
+--- a/bfd/doc/bfd.texinfo
++++ b/bfd/doc/bfd.texinfo
+@@ -322,7 +324,7 @@ All of BFD lives in one directory.
+ @printindex cp
+ 
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
++% I think something like @@colophon should be in texinfo.  In the
+ % meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+@@ -333,7 +335,7 @@ All of BFD lives in one directory.
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 28mar91.
++% Blame: doc@@cygnus.com, 28mar91.
+ @end tex
+ 
+ @bye
+diff --git a/ld/ld.texinfo b/ld/ld.texinfo
+index c7ae2a5..4777ad5 100644
+--- a/ld/ld.texinfo
++++ b/ld/ld.texinfo
+@@ -7877,7 +7879,7 @@ If you have more than one @code{SECT} statement for the same
+ @printindex cp
+ 
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
++% I think something like @@colophon should be in texinfo.  In the
+ % meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+@@ -7888,7 +7890,7 @@ If you have more than one @code{SECT} statement for the same
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 28mar91.
++% Blame: doc@@cygnus.com, 28mar91.
+ @end tex
+ 
+ @bye

@@ -1,0 +1,126 @@
+diff -Naur distcc-2.18.3-vanilla/src/distcc.c distcc-2.18.3/src/distcc.c
+--- distcc-2.18.3-vanilla/src/distcc.c	2004-10-01 17:47:07.000000000 -0700
++++ distcc-2.18.3/src/distcc.c	2004-12-28 01:04:51.017574246 -0800
+@@ -135,7 +135,86 @@
+     signal(SIGHUP, &dcc_client_signalled);
+ }
+ 
++#define MAXNEWFLAGS 32
++#define MAXFLAGLEN  127
+ 
++static char **getNewArgv(char **argv) {
++    char **newargv;
++    char newflags[MAXNEWFLAGS][MAXFLAGLEN + 1];
++    unsigned newflagsCount = 0;
++    unsigned argc;
++    unsigned i;
++    char **p;
++
++    if(getenv("ABI")) {
++        char *envar = (char *)malloc(sizeof(char) * 
++                                     (strlen("CFLAGS_") + strlen(getenv("ABI")) + 1 ));
++        if(!envar)
++            return NULL;
++
++        /* We use CFLAGS_${ABI} for gcc, g++, g77, etc as they are
++         * the same no matter which compiler we are using.
++         */
++        sprintf(envar, "CFLAGS_%s", getenv("ABI"));
++
++        if(getenv(envar)) {
++            const char *newflagsStr = getenv(envar);
++            unsigned s, f; /* start/finish of each flag. f points to
++                            * the char AFTER the end (ie the space/\0
++                            */
++
++            /* Tokenize the flag list */
++            for(s=0; s < strlen(newflagsStr); s=f+1) {
++                /* Put s at the start of the next flag */
++                while(newflagsStr[s] == ' ' || 
++                      newflagsStr[s] == '\t')
++                    s++;
++                if(s == strlen(newflagsStr))
++                    break;
++
++                f = s + 1;
++                while(newflagsStr[f] != ' ' && 
++                      newflagsStr[f] != '\t' &&
++                      newflagsStr[f] != '\0')
++                    f++;
++
++                /* Detect overrun */
++                if(MAXFLAGLEN < f - s || MAXNEWFLAGS == newflagsCount)
++                    return NULL;
++
++                strncpy(newflags[newflagsCount], newflagsStr + s, f - s);
++                newflagsCount++;
++            }
++        }
++
++        free(envar);
++    }
++
++    /* Calculate argc */
++    for(argc=0, p=argv; *p; p++, argc++);
++
++    /* Allocate our array */
++    newargv = (char **)malloc(sizeof(char *) * (argc + newflagsCount + 1));
++
++    /* Make room for the original, new ones, and the NULL terminator */
++    if(!newargv)
++        return NULL;
++
++    /* We just use the existing argv[i] as the start. */
++    for(i=0; i < argc; i++) {
++        newargv[i] = argv[i];
++    }
++
++    /* Now we want to append our newflags list. */
++    for(; i < argc + newflagsCount; i++) {
++        newargv[i] = newflags[i - argc];
++    }
++
++    /* And now cap it off... */
++    newargv[i] = NULL;
++
++    return newargv;
++}
+ 
+ /**
+  * distcc client entry point.
+@@ -150,6 +229,7 @@
+     int status, sg_level, tweaked_path = 0;
+     char **compiler_args;
+     char *compiler_name;
++    char **newargv;
+     int ret;
+ 
+     dcc_client_catch_signals();
+@@ -183,7 +263,12 @@
+             goto out;
+         }
+         
+-        dcc_find_compiler(argv, &compiler_args);
++        if(!(newargv = getNewArgv(argv))) {
++            ret = EXIT_OUT_OF_MEMORY;
++            goto out;
++        }
++        dcc_find_compiler(newargv, &compiler_args);
++        free(newargv);
+         /* compiler_args is now respectively either "cc -c hello.c" or
+          * "gcc -c hello.c" */
+ 
+@@ -200,7 +285,12 @@
+                                           &tweaked_path)) != 0)
+             goto out;
+         
+-        dcc_copy_argv(argv, &compiler_args, 0);
++        if(!(newargv = getNewArgv(argv))) {
++            ret = EXIT_OUT_OF_MEMORY;
++            goto out;
++        }
++        dcc_copy_argv(newargv, &compiler_args, 0);
++        free(newargv);
+         compiler_args[0] = compiler_name;
+     }
+ 

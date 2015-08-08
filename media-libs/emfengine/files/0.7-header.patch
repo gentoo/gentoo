@@ -1,0 +1,13 @@
+diff --git a/src/EmfEngine.h b/src/EmfEngine.h
+index 12b1e5b..0573083 100644
+--- a/src/EmfEngine.h
++++ b/src/EmfEngine.h
+@@ -52,7 +52,7 @@
+ 	using namespace Gdiplus;
+ #else
+ 	#ifdef Q_WS_X11
+-		#include <emf.h>
++		#include <libEMF/emf.h>
+ 	#endif
+ 
+ 	#ifdef Q_WS_MAC

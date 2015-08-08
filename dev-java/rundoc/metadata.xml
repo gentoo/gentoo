@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+
+	<longdescription lang="en">
+		rundoc is an Ant task designed to help with the single-sourcing of
+		program documentation. This task replaces special commands embedded
+		within text files with their output in a specified format. Currently,
+		only docbook format is supported.
+	</longdescription>
+</pkgmetadata>

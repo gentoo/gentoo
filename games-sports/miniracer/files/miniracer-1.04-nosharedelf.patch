@@ -1,0 +1,23 @@
+--- miniracer.old	2010-02-27 21:05:11.000000000 +0100
++++ miniracer	2010-02-27 21:10:34.000000000 +0100
+@@ -12,10 +12,6 @@
+ fi
+ 
+ #checks for files
+-if ! [ -f $HOME/.MiniRacer/engine.glx ]; then
+-	ln -s $MINIRACERDIR/engine.glx $HOME/.MiniRacer
+-fi
+-
+ if ! [ -f $HOME/.MiniRacer/data/pak0.pak ]; then
+ 	ln -s $MINIRACERDIR/data/pak0.pak $HOME/.MiniRacer/data
+ fi
+@@ -35,7 +31,4 @@
+ 
+ # change directory and start MiniRacer
+ cd $HOME/.MiniRacer
+-./engine.glx $*
+-
+-exit 0
+-      
+\ No newline at end of file
++exec @GAMES_LIBDIR@/engine.glx $*

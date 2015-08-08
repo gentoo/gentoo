@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>ruby</herd>
+  <use>
+    <flag name="asset-pipeline">
+      Also install the default components for the asset pipeline.
+      These are not required but they are activated automatically
+      in new Rails projects by default.
+    </flag>
+  </use>
+</pkgmetadata>

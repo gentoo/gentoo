@@ -1,0 +1,40 @@
+--- a/common/usr/share/doc/fglrx/examples/etc/acpi/ati-powermode.sh	2012-08-17 22:39:05.077984979 +0800
++++ b/common/usr/share/doc/fglrx/examples/etc/acpi/ati-powermode.sh	2012-08-17 22:41:15.919976149 +0800
+@@ -4,6 +4,8 @@
+ # Control script for ACPI lid state and AC adapter state
+ #
+ 
++aticonfig='/opt/bin/aticonfig'
++
+ getXuser() {
+         user=`who| grep -m1 ":$displaynum " | awk '{print $1}'`
+         if [ x"$user" = x"" ]; then
+@@ -47,7 +49,7 @@
+ done
+ 
+ #If PPLIB is enabled
+-su $user -c '/usr/bin/aticonfig --pplib-cmd="get version"' | grep PPLIB
++su $user -c "$aticonfig --pplib-cmd='get version'" | grep PPLIB
+ if [ $? = 0 ]; then
+    echo "Has PPLIB"
+    has_pplib=1
+@@ -61,15 +63,15 @@
+ if [ ${lid_closed} -eq 1 -o ${on_dc} -eq 1 ]; then
+     echo "Low power"
+     if [ ${has_pplib} -eq 1 ]; then
+-        su $user -c '/usr/bin/aticonfig --pplib-cmd="notify psrc dc"'
++        su $user -c "$aticonfig --pplib-cmd='notify psrc dc'"
+     else
+-        su $user -c "/usr/bin/aticonfig --set-powerstate=1 --effective=now"
++        su $user -c "$aticonfig --set-powerstate=1 --effective=now"
+     fi
+ else
+     echo "high power"
+     if [ ${has_pplib} -eq 1 ]; then
+-        su $user -c '/usr/bin/aticonfig --pplib-cmd="notify psrc ac"'
++        su $user -c "$aticonfig --pplib-cmd='notify psrc ac'"
+     else
+-        su $user -c "/usr/bin/aticonfig --set-powerstate=3 --effective=now"
++	su $user -c "$aticonfig --set-powerstate=3 --effective=now"
+     fi
+ fi

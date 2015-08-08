@@ -1,0 +1,20 @@
+--- linksys-tftp-1.2.1/main.c
++++ linksys-tftp-1.2.1/main.c
+@@ -40,6 +40,8 @@
+ #include <setjmp.h>
+ #include <ctype.h>
+ #include <netdb.h>
++#include <stdlib.h>
++#include <strings.h>
+ 
+ #define	TIMEOUT		5		/* secs between rexmt's */
+ 
+@@ -110,7 +112,7 @@
+ char	*index();
+ char	*rindex();
+ 
+-main(argc, argv)
++int main(argc, argv)
+ 	char *argv[];
+ {
+ 	struct sockaddr_in sin;

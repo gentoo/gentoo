@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>leho@kraav.com</email>
+    <name>Leho Kraav</name>
+  </maintainer>
+  <use>
+    <flag name='xmltv'>Use <pkg>media-tv/xmltv</pkg></flag>
+    <flag name='ccache'>Use <pkg>dev-util/ccache</pkg></flag>
+    <flag name='dvbscan'>Use <pkg>media-tv/linuxtv-dvb-apps</pkg></flag>
+    <flag name='imagecache'>Enable support for image caching</flag>
+    <flag name='uriparser'>Use <pkg>dev-libs/uriparser</pkg></flag>
+  </use>
+</pkgmetadata>

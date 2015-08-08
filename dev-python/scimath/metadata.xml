@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <herd>sci</herd>
+  <longdescription lang="en">
+    The SciMath project from the Enthought Tool Suite includes
+    packages to support scientific and mathematical calculations,
+    beyond the capabilities offered by SciPy:
+    * enthought.interpolate
+    * enthought.mathematics
+    * enthought.units
+  </longdescription>
+</pkgmetadata>

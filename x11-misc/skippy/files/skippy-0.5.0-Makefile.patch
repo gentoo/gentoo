@@ -1,0 +1,32 @@
+Don't use LDFLAGS to pass libraries.
+
+--- Makefile
++++ Makefile
+@@ -1,14 +1,12 @@
+-PREFIX = /usr/local
++PREFIX = /usr
+ BINDIR = ${PREFIX}/bin
+ 
+-X11PREFIX = /usr/X11R6
+-
+-CFLAGS += -I${X11PREFIX}/include `imlib2-config --cflags` `pkg-config xft --cflags` -g -pedantic -Wall
+-LDFLAGS += -L${X11PREFIX}/lib -lX11 -lm `imlib2-config --libs` `pkg-config xft --libs`
++CFLAGS += `imlib2-config --cflags` `pkg-config xft --cflags` -pedantic -Wall
++LDLIBS = -lX11 -lm `imlib2-config --libs` `pkg-config xft --libs`
+ 
+ # Comment these out to disable Xinerama support
+ CFLAGS += -DXINERAMA
+-LDFLAGS += -lXext -lXinerama
++LDLIBS += -lXext -lXinerama
+ 
+ # Uncomment this for Xinerama debugging
+ #CFLAGS += -DDEBUG
+@@ -21,7 +19,7 @@
+ all: skippy${EXESUFFIX}
+ 
+ skippy${EXESUFFIX}: Makefile ${SOURCES} ${HEADERS}
+-	gcc ${CFLAGS} -o skippy${EXESUFFIX} ${SOURCES} ${LDFLAGS}
++	${CC} ${LDFLAGS} ${CFLAGS} -o skippy${EXESUFFIX} ${SOURCES} ${LDLIBS}
+ 
+ clean:
+ 	rm -f skippy${EXESUFFIX}

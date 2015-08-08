@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>lang-misc</herd>
+<maintainer>
+<email>djc@gentoo.org</email>
+<name>Dirkjan Ochtman</name>
+</maintainer>
+ <use>
+    <flag name="hipe">HIgh Performance Erlang extension</flag>
+    <flag name="halfword">Enable halfword emulator</flag>
+    <flag name="kpoll">Enable kernel polling support</flag>
+    <flag name="sctp">Support for Stream Control Transmission Protocol</flag>
+    <flag name="compat-ethread">Enable compatibility with pre-pentium 4 CPUs in the ethread library.</flag>
+  </use>
+<longdescription>
+Erlang is a programming language designed at the Ericsson 
+Computer Science Laboratory. Open-source Erlang is being 
+released to help encourage the spread of Erlang outside 
+Ericsson.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,6 @@
+ACTION=="add", DEVPATH=="/module/nvidia", SUBSYSTEM=="module", RUN+="nvidia-udev.sh $env{ACTION}"
+# Previously the ACTION was "add|remove" but one user on bug #376527 had a
+# problem until he recompiled udev-171-r5, which is one of the versions I
+# tested with and it was fine. I'm breaking the rules out just to be safe
+# so someone else doesn't have an issue
+ACTION=="remove", DEVPATH=="/module/nvidia", SUBSYSTEM=="module", RUN+="nvidia-udev.sh $env{ACTION}"

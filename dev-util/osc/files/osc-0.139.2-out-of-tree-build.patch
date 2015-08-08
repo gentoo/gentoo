@@ -1,0 +1,20 @@
+--- setup.py.orig	2013-05-27 13:51:06.143039789 +0000
++++ setup.py	2013-05-27 13:53:27.814034661 +0000
+@@ -25,7 +25,7 @@
+         """
+         """
+         import gzip
+-        man_path = os.path.join('build', 'osc.1.gz')
++        man_path = 'osc.1.gz'
+         distutils.log.info('generating %s' % man_path)
+         outfile = gzip.open(man_path, 'w')
+         osccli = commandline.Osc(stdout=outfile)
+@@ -48,7 +48,7 @@
+ 
+ data_files = []
+ if sys.platform[:3] != 'win':
+-    data_files.append((os.path.join('share', 'man', 'man1'), [os.path.join('build', 'osc.1.gz')]))
++    data_files.append((os.path.join('share', 'man', 'man1'), ['osc.1.gz']))
+ 
+ setup(name='osc',
+       version = osc.core.__version__,

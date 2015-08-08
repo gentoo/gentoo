@@ -1,0 +1,13 @@
+diff --git a/Wnn/pubdicplus/Makefile.in b/Wnn/pubdicplus/Makefile.in
+index 41c868d..e9ffc28 100644
+--- a/Wnn/pubdicplus/Makefile.in
++++ b/Wnn/pubdicplus/Makefile.in
+@@ -422,7 +422,7 @@ fzk.master-.c: fzk.master
+ 	$(LN) $? $@
+ 
+ std.fzk: fzk.master-.c $(FZK_SRC)
+-	$(CPP) $(FZK_FLAG) fzk.master-.c | egrep -v '^(# |#line |#pragma |$$)' | $(ATOF) -h $(HINSI) $@
++	$(CPP) -P $(FZK_FLAG) fzk.master-.c | egrep -v '^(# |#line |#pragma |$$)' | $(ATOF) -h $(HINSI) $@
+ 
+ full.fzk: $(FZK_SRC)
+ 	$(MAKE) FZK_FLAG=-DKANSAI std.fzk

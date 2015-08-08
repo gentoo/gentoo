@@ -1,0 +1,18 @@
+commit 09ba248d3fc6afbebb784edfaf5e61413cd05255
+Author: Tom Rondeau <tom@trondeau.com>
+Date:   Sun Jul 27 10:50:17 2014 -0400
+
+    volk: adding string.h to puppet for memset calls.
+
+diff --git a/volk/kernels/volk/volk_8u_conv_k7_r2puppet_8u.h b/volk/kernels/volk/volk_8u_conv_k7_r2puppet_8u.h
+index fef9db5..8d31e46 100644
+--- a/volk/kernels/volk/volk_8u_conv_k7_r2puppet_8u.h
++++ b/volk/kernels/volk/volk_8u_conv_k7_r2puppet_8u.h
+@@ -3,6 +3,7 @@
+ 
+ #include <volk/volk.h>
+ #include <volk/volk_8u_x4_conv_k7_r2_8u.h>
++#include <string.h>
+ 
+ typedef union {
+   //decision_t is a BIT vector

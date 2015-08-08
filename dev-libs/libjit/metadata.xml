@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>dotnet</herd>
+<use>
+  <flag name='interpreter'>Enable the libjit interpreter</flag>
+  <flag name='long-double'>Enable the use of long double for jit_nfloat</flag>
+</use>
+</pkgmetadata>

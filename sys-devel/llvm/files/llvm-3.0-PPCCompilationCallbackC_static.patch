@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/show_bug.cgi?id=403519
+http://llvm.org/viewvc/llvm-project?view=rev&revision=153938
+
+--- llvm/trunk/lib/Target/PowerPC/PPCJITInfo.cpp	2011/06/15 15:29:47	133059
++++ llvm/trunk/lib/Target/PowerPC/PPCJITInfo.cpp	2012/04/03 06:59:28	153938
+@@ -291,9 +291,10 @@
+ }
+ #endif
+ 
+-extern "C" void *PPCCompilationCallbackC(unsigned *StubCallAddrPlus4,
+-                                         unsigned *OrigCallAddrPlus4,
+-                                         bool is64Bit) {
++extern "C" {
++static void* LLVM_ATTRIBUTE_USED PPCCompilationCallbackC(unsigned *StubCallAddrPlus4,
++                                                         unsigned *OrigCallAddrPlus4,
++                                                         bool is64Bit) {
+   // Adjust the pointer to the address of the call instruction in the stub
+   // emitted by emitFunctionStub, rather than the instruction after it.
+   unsigned *StubCallAddr = StubCallAddrPlus4 - 1;
+@@ -337,6 +338,7 @@
+   // stack after we restore all regs.
+   return Target;
+ }
++}
+ 
+ 
+ 

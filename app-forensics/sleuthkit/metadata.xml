@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>forensics</herd>
+  <use>
+    <flag name="aff">Enable extra aff formats</flag>
+    <flag name="ewf">Enable libewf support</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">sleuthkit</remote-id>
+  </upstream>
+</pkgmetadata>

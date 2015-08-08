@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<longdescription>
+  This package provides visible, buffer local, bookmarks and the ability to
+  jump forward and backward to the next bookmark.
+</longdescription>
+</pkgmetadata>

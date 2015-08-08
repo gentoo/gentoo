@@ -1,0 +1,139 @@
+--- octave-4.0.0-orig/libinterp/dldfcn/__magick_read__.cc	2015-05-24 00:21:53.000000000 +1000
++++ octave-4.0.0/libinterp/dldfcn/__magick_read__.cc	2015-07-06 18:17:52.263146804 +1000
+@@ -38,8 +38,15 @@
+ #include "gripes.h"
+ 
+ #ifdef HAVE_MAGICK
+-
++#define MAGICKCORE_EXCLUDE_DEPRECATED 1
+ #include <Magick++.h>
++#if !defined(QuantumRange) && defined(MaxRGB)
++#define QuantumRange MaxRGB
++#endif
++#if !defined(MAGICKCORE_QUANTUM_DEPTH) && defined(QuantumDepth)
++#define MAGICKCORE_QUANTUM_DEPTH QuantumDepth
++#endif
++
+ #include <clocale>
+ 
+ // In theory, it should be enough to check the class:
+@@ -121,12 +128,18 @@
+ get_depth (Magick::Image& img)
+ {
+   octave_idx_type depth = img.depth ();
++#if defined(MagickLibVersion) && (MagickLibVersion <= 0x686)
++#define Magick MagickCore
++#endif
+   if (depth == 8
+       && img.channelDepth (Magick::RedChannel)     == 1
+       && img.channelDepth (Magick::CyanChannel)    == 1
+       && img.channelDepth (Magick::OpacityChannel) == 1
+       && img.channelDepth (Magick::GrayChannel)    == 1)
+     depth = 1;
++#if defined(MagickLibVersion) && (MagickLibVersion <= 0x686)
++#undef Magick
++#endif
+ 
+   return depth;
+ }
+@@ -350,7 +363,10 @@
+   if (imvec[def_elem].depth () == 32)
+     divisor = std::numeric_limits<uint32_t>::max ();
+   else
+-    divisor = MaxRGB / ((uint64_t (1) << imvec[def_elem].depth ()) - 1);
++  {
++    using namespace Magick;
++    divisor = QuantumRange / ((uint64_t (1) << imvec[def_elem].depth ()) - 1);
++  }
+ 
+   // FIXME: this workaround should probably be fixed in GM by creating a
+   //        new ImageType BilevelMatteType
+@@ -484,7 +500,8 @@
+                 for (octave_idx_type row = 0; row < nRows; row++)
+                   {
+                     img_fvec[idx] = pix->red / divisor;
+-                    a_fvec[idx]   = (MaxRGB - pix->opacity) / divisor;
++                    using namespace Magick;
++                    a_fvec[idx]   = (QuantumRange - pix->opacity) / divisor;
+                     pix += row_shift;
+                     idx++;
+                   }
+@@ -563,7 +580,8 @@
+                     rbuf[idx]     = pix->red     / divisor;
+                     gbuf[idx]     = pix->green   / divisor;
+                     bbuf[idx]     = pix->blue    / divisor;
+-                    a_fvec[a_idx++] = (MaxRGB - pix->opacity) / divisor;
++                    using namespace Magick;
++                    a_fvec[a_idx++] = (QuantumRange - pix->opacity) / divisor;
+                     pix += row_shift;
+                     idx++;
+                   }
+@@ -650,7 +668,8 @@
+                     mbuf[idx]     = pix->green   / divisor;
+                     ybuf[idx]     = pix->blue    / divisor;
+                     kbuf[idx]     = pix->opacity / divisor;
+-                    a_fvec[a_idx++] = (MaxRGB - *apix) / divisor;
++                    using namespace Magick;
++                    a_fvec[a_idx++] = (QuantumRange - *apix) / divisor;
+                     pix += row_shift;
+                     idx++;
+                   }
+@@ -709,10 +728,11 @@
+       // Restore locale from before GraphicsMagick initialisation
+       setlocale (LC_ALL, locale.c_str ());
+ 
+-      if (QuantumDepth < 32)
++      using namespace Magick;
++      if (MAGICKCORE_QUANTUM_DEPTH < 32)
+         warning_with_id ("Octave:GraphicsMagic-Quantum-Depth",
+                          "your version of %s limits images to %d bits per pixel",
+-                         MagickPackageName, QuantumDepth);
++                         MagickPackageName, MAGICKCORE_QUANTUM_DEPTH);
+ 
+       initialized = true;
+     }
+@@ -1087,8 +1107,9 @@
+   // From GM documentation:
+   //  Color arguments are must be scaled to fit the Quantum size according to
+   //  the range of MaxRGB
++  using namespace Magick;
+   const double divisor = static_cast<double>((uint64_t (1) << bitdepth) - 1)
+-                         / MaxRGB;
++                         / QuantumRange;
+ 
+   const P *img_fvec = img.fortran_vec ();
+   const P *a_fvec   = alpha.fortran_vec ();
+@@ -1140,8 +1161,9 @@
+                 for (octave_idx_type row = 0; row < nRows; row++)
+                   {
+                     double grey = double (*img_fvec) / divisor;
++                    using namespace Magick;
+                     Magick::Color c (grey, grey, grey,
+-                                     MaxRGB - (double (*a_fvec) / divisor));
++                                     QuantumRange - (double (*a_fvec) / divisor));
+                     pix[GM_idx] = c;
+                     img_fvec++;
+                     a_fvec++;
+@@ -1209,10 +1231,11 @@
+               {
+                 for (octave_idx_type row = 0; row < nRows; row++)
+                   {
++                    using namespace Magick;
+                     Magick::Color c (double (*img_fvec)          / divisor,
+                                      double (img_fvec[G_offset]) / divisor,
+                                      double (img_fvec[B_offset]) / divisor,
+-                                     MaxRGB - (double (*a_fvec) / divisor));
++                                     QuantumRange - (double (*a_fvec) / divisor));
+                     pix[GM_idx] = c;
+                     img_fvec++;
+                     a_fvec++;
+@@ -1290,7 +1313,8 @@
+                                      double (img_fvec[Y_offset]) / divisor,
+                                      double (img_fvec[K_offset]) / divisor);
+                     pix[GM_idx] = c;
+-                    ind[GM_idx] = MaxRGB - (double (*a_fvec) / divisor);
++                    using namespace Magick;
++                    ind[GM_idx] = QuantumRange - (double (*a_fvec) / divisor);
+                     img_fvec++;
+                     a_fvec++;
+                     GM_idx += nCols;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+	<longdescription lang="en">
+ 		rplay is a flexible network audio system that allows sounds to be played
+		to and from local and remote Unix systems. Sounds can be played with or
+		without sending audio data over the network using either UDP or TCP.
+		rplay audio servers can be configured to share sound files with each
+		other.
+	</longdescription>
+</pkgmetadata>

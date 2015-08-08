@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<maintainer>
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
+	</maintainer>
+	<use>
+		<flag name="gnome">Use the gksu sudo GUI for managing the devices</flag>
+		<flag name="icoutils">Enable icoutils support</flag>
+		<flag name="kde">Use the kdesu sudo GUI for managing the devices</flag>
+		<flag name="wineappdb">Enable Win AppDB browser subsystem</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">q4wine</remote-id>
+	</upstream>
+</pkgmetadata>

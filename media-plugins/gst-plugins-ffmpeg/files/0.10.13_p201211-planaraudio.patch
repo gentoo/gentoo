@@ -1,0 +1,187 @@
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcodecmap.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegcodecmap.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcodecmap.c
+@@ -1925,6 +1925,10 @@ gst_ffmpeg_smpfmt_to_caps (enum AVSample
+   gboolean integer = TRUE;
+   gboolean signedness = FALSE;
+ 
++#if LIBAVUTIL_VERSION_INT > AV_VERSION_INT(51,46,0)
++  sample_fmt = av_get_packed_sample_fmt (sample_fmt);
++#endif
++
+   switch (sample_fmt) {
+     case AV_SAMPLE_FMT_S16:
+       signedness = TRUE;
+@@ -2009,7 +2013,7 @@ gst_ffmpeg_codectype_to_audio_caps (AVCo
+ 
+     ctx.channels = -1;
+     caps = gst_caps_new_empty ();
+-    for (i = 0; i <= AV_SAMPLE_FMT_DBL; i++) {
++    for (i = 0; i < AV_SAMPLE_FMT_NB; i++) {
+       temp =
+           gst_ffmpeg_smpfmt_to_caps (i, encode ? &ctx : NULL, codec_id, encode);
+       if (temp != NULL) {
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegutils.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegutils.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegutils.c
+@@ -47,6 +47,9 @@ gint
+ av_smp_format_depth (enum AVSampleFormat smp_fmt)
+ {
+   gint depth = -1;
++#if LIBAVUTIL_VERSION_INT > AV_VERSION_INT(51,46,0)
++  smp_fmt = av_get_packed_sample_fmt (smp_fmt);
++#endif
+   switch (smp_fmt) {
+     case AV_SAMPLE_FMT_U8:
+       depth = 1;
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegdec.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegdec.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegdec.c
+@@ -2044,16 +2044,49 @@ out_of_segment:
+   }
+ }
+ 
++static void copy_samples_planar(unsigned bps, 
++    unsigned nb_samples,
++    unsigned nb_channels,
++    unsigned char *dst,
++    unsigned char **src)
++{
++  unsigned s, c, o = 0;
++
++  for (s = 0; s < nb_samples; s++) {
++      for (c = 0; c < nb_channels; c++) {
++          memcpy(dst, src[c] + o, bps);
++	   dst += bps;
++      }
++      o += bps;
++  }
++}
++
++static int copy_samples(AVCodecContext *avc, AVFrame *frame,
++	unsigned char *buf, int max_size)
++{
++	int channels = avc->channels;
++	int sample_size = av_get_bytes_per_sample(avc->sample_fmt);
++	int size = channels * sample_size * frame->nb_samples;
++	if (size > max_size) {
++		return -1;
++	}
++	if (av_sample_fmt_is_planar(avc->sample_fmt))
++		copy_samples_planar(sample_size, frame->nb_samples, channels, buf, frame->extended_data);
++	else memcpy(buf, frame->data[0], size);
++	return size;
++}
++
+ static gint
+ gst_ffmpegdec_audio_frame (GstFFMpegDec * ffmpegdec,
+     AVCodec * in_plugin, guint8 * data, guint size,
+     const GstTSInfo * dec_info, GstBuffer ** outbuf, GstFlowReturn * ret)
+ {
+-  gint len = -1;
++  gint len = -1, got_frame;
+   gint have_data = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+   GstClockTime out_timestamp, out_duration;
+   gint64 out_offset;
+   AVPacket packet;
++  AVFrame *frame;
+ 
+   GST_DEBUG_OBJECT (ffmpegdec,
+       "size:%d, offset:%" G_GINT64_FORMAT ", ts:%" GST_TIME_FORMAT ", dur:%"
+@@ -2061,15 +2094,28 @@ gst_ffmpegdec_audio_frame (GstFFMpegDec
+       dec_info->offset, GST_TIME_ARGS (dec_info->timestamp),
+       GST_TIME_ARGS (dec_info->duration), GST_TIME_ARGS (ffmpegdec->next_out));
+ 
++  frame = avcodec_alloc_frame();
++  if (!frame) {
++      *outbuf = NULL;
++      len = -1;
++      goto beach;
++  }
++
+   *outbuf =
+       new_aligned_buffer (AVCODEC_MAX_AUDIO_FRAME_SIZE,
+       GST_PAD_CAPS (ffmpegdec->srcpad));
+ 
+   gst_avpacket_init (&packet, data, size);
+-  len = avcodec_decode_audio3 (ffmpegdec->context,
+-      (int16_t *) GST_BUFFER_DATA (*outbuf), &have_data, &packet);
++  len = avcodec_decode_audio4 (ffmpegdec->context, frame, &got_frame, &packet);
+   GST_DEBUG_OBJECT (ffmpegdec,
+-      "Decode audio: len=%d, have_data=%d", len, have_data);
++      "Decode audio: ret=%d, got_frame=%d", len, got_frame);
++  if (!got_frame) {
++      gst_buffer_unref (*outbuf);
++      *outbuf = NULL;
++      len = -1;
++      goto beach;
++  }
++  if (len >= 0) have_data = copy_samples(ffmpegdec->context, frame, GST_BUFFER_DATA (*outbuf), AVCODEC_MAX_AUDIO_FRAME_SIZE);
+ 
+   if (len >= 0 && have_data > 0) {
+     GST_DEBUG_OBJECT (ffmpegdec, "Creating output buffer");
+@@ -2145,6 +2191,7 @@ gst_ffmpegdec_audio_frame (GstFFMpegDec
+   }
+ 
+ beach:
++  av_free(frame);
+   GST_DEBUG_OBJECT (ffmpegdec, "return flow %d, out %p, len %d",
+       *ret, *outbuf, len);
+   return len;
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegenc.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegenc.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegenc.c
+@@ -843,12 +843,30 @@ gst_ffmpegenc_chain_video (GstPad * pad,
+   return gst_pad_push (ffmpegenc->srcpad, outbuf);
+ }
+ 
++static void copy_samples_to_planar(unsigned bps, 
++    unsigned nb_samples,
++    unsigned nb_channels,
++    unsigned char *dst,
++    unsigned char *src)
++{
++  unsigned s, c, o = 0;
++
++  for (s = 0; s < nb_samples; s++) {
++      for (c = 0; c < nb_channels; c++) {
++          memcpy(dst + nb_samples * c, src + o, bps);
++      	   o += bps;
++      }
++      dst += bps;
++  }
++}
++
+ static GstFlowReturn
+ gst_ffmpegenc_encode_audio (GstFFMpegEnc * ffmpegenc, guint8 * audio_in,
+     guint in_size, guint max_size, GstClockTime timestamp,
+     GstClockTime duration, gboolean discont)
+ {
+   GstBuffer *outbuf;
++  GstBuffer *inbuf2;
+   AVCodecContext *ctx;
+   guint8 *audio_out;
+   gint res;
+@@ -864,7 +882,18 @@ gst_ffmpegenc_encode_audio (GstFFMpegEnc
+   if (ffmpegenc->buffer_size != max_size)
+     ffmpegenc->buffer_size = max_size;
+ 
++  if (av_sample_fmt_is_planar(ctx->sample_fmt)) {
++  	guint8 * audio_in2;
++	inbuf2 = gst_buffer_new_and_alloc (in_size + FF_MIN_BUFFER_SIZE);
++	audio_in2 = GST_BUFFER_DATA (inbuf2);
++	copy_samples_to_planar(av_get_bytes_per_sample(ctx->sample_fmt), in_size / (av_get_bytes_per_sample(ctx->sample_fmt) * ctx->channels),
++		ctx->channels, audio_in2, audio_in);
++	audio_in = audio_in2;
++  }
+   res = avcodec_encode_audio (ctx, audio_out, max_size, (short *) audio_in);
++  if (av_sample_fmt_is_planar(ctx->sample_fmt)) {
++    gst_buffer_unref (inbuf2);
++  }
+ 
+   if (res < 0) {
+     GST_ERROR_OBJECT (ffmpegenc, "Failed to encode buffer: %d", res);

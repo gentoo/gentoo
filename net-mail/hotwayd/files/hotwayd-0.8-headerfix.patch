@@ -1,0 +1,24 @@
+--- hotwayd-0.8.orig/commands.c	2004-02-07 06:44:05.000000000 -0500
++++ hotwayd-0.8/commands.c	2004-10-03 15:53:25.636497904 -0400
+@@ -1037,12 +1037,16 @@
+ 
+ char *grow_and_copy(char *dest, int curpos, char *src, int i)
+ {
+-  if(!(dest = realloc(dest, curpos+i+1)))
++  char* temp = 0;
++  if(!(temp = malloc(curpos+i+1)))
+     return NULL;
+-
+-  strlcat(dest, src, curpos+i+1);
+-
+-  return dest;
++ 
++  memcpy(temp, dest, curpos);
++  memcpy(temp+curpos, src, i);
++  temp[curpos+i] = '\0';
++ 
++  free(dest);
++  return temp;
+ }
+ 
+ int proxy_sanity_check(void) {

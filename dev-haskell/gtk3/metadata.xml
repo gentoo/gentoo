@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This is the core library of the Gtk2Hs suite of libraries for Haskell
+		based on Gtk+. Gtk+ is an extensive and mature multi-platform toolkit
+		for creating graphical user interfaces.
+	</longdescription>
+	<use>
+		<flag name="gio">Depend on GIO package, thereby enabling certain features.</flag>
+		<flag name="fmode-binary">Set the default file translation mode for file I/O operations to _O_BINARY.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+Gentoo bug: 498374
+
+diff -Nru freetds-0.91/src/odbc/odbc.c freetds-0.91/src/odbc/odbc.c
+--- freetds-0.91/src/odbc/odbc.c.orig	2010-03-22 09:42:16.000000000 -0500
++++ freetds-0.91/src/odbc/odbc.c	2010-05-06 16:00:00.000000000 -0500
+@@ -3012,12 +3012,9 @@
+ 
+ 		odbc_set_sql_type_info(col, drec, stmt->dbc->env->attr.odbc_version);
+ 
+-		if (!col->table_column_name) {
+-			if (!tds_dstr_copyn(&drec->sql_desc_name, col->column_name, col->column_namelen))
+-				return SQL_ERROR;
+-		} else {
+-			if (!tds_dstr_copy(&drec->sql_desc_name, col->table_column_name))
+-				return SQL_ERROR;
++		if (!tds_dstr_copyn(&drec->sql_desc_name, col->column_name, col->column_namelen))
++			return SQL_ERROR;
++		if (col->table_column_name) {
+ 			if (!tds_dstr_copy(&drec->sql_desc_base_column_name, col->table_column_name))
+ 				return SQL_ERROR;
+ 		}

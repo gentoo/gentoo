@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-haskell category contains libraries and utilities relevant to the
+		Haskell programming language.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-haskell contiene librerias y utilidades referentes
+		al lenguaje de programación Haskell.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-haskell カテゴリーには Haskellプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-haskell enthält Bibliotheken und Werkzeuge für die 
+		Programmiersprache Haskell.
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-haskell categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal Haskell.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-haskell chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Haskell.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-haskell contiene librerie ed utilità per il linguaggio Haskell.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-haskell contém bibliotecas e utilitários
+		referentes à linguagem de programação Haskell.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-haskell zawiera biblioteki i narzędzia związane z
+		językiem programowania Haskell.
+	</longdescription>
+</catmetadata>
+

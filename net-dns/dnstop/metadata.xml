@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>hendrik@consetetur.de</email>
+  <name>Hendrik v. Raven</name>
+</maintainer>
+<maintainer>
+  <email>xmw@gentoo.org</email>
+  <name>Michael Weber</name>
+</maintainer>
+<upstream>
+  <changelog>http://dns.measurement-factory.com/tools/dnstop/src/CHANGES</changelog>
+  <doc>http://dns.measurement-factory.com/tools/dnstop/dnstop.8.html</doc>
+</upstream>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+From 916b00af31981a0729e05a92ae212f05279e730f Mon Sep 17 00:00:00 2001
+From: Gilles Caulier <caulier.gilles@gmail.com>
+Date: Sat, 21 Mar 2015 14:57:53 +0100
+Subject: [PATCH] apply patch #91657 to fix libkface histogram DB table grawing
+ at each registration of data. CCBUGS: 338176
+
+---
+ libkface/recognition-opencv-lbph/lbphfacemodel.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libkface/recognition-opencv-lbph/lbphfacemodel.cpp b/libkface/recognition-opencv-lbph/lbphfacemodel.cpp
+index 72a3635..af8c6a5 100644
+--- a/libkface/recognition-opencv-lbph/lbphfacemodel.cpp
++++ b/libkface/recognition-opencv-lbph/lbphfacemodel.cpp
+@@ -160,9 +160,12 @@ void LBPHFaceModel::setHistograms(const QList<OpenCVMatData>& histograms, const
+         newHistograms.push_back(histogram.toMat());
+     }
+ 
++    m_histogramMetadata.clear();
++
+     foreach (const LBPHistogramMetadata& metadata, histogramMetadata)
+     {
+         newLabels.push_back(metadata.identity);
++        m_histogramMetadata << metadata;
+     }
+ 
+     std::vector<cv::Mat> currentHistograms = ptr()->get<std::vector<cv::Mat> >("histograms");
+-- 
+2.3.6
+

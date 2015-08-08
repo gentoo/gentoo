@@ -1,0 +1,16 @@
+diff -Nuar open-iscsi-2.0-872.orig/usr/Makefile open-iscsi-2.0-872/usr/Makefile
+--- open-iscsi-2.0-872.orig/usr/Makefile	2012-02-09 08:25:13.656604152 +0000
++++ open-iscsi-2.0-872/usr/Makefile	2012-02-09 08:26:28.960171260 +0000
+@@ -53,10 +53,10 @@
+ 
+ iscsid: $(ISCSI_LIB_SRCS) $(IPC_OBJ) $(INITIATOR_SRCS) $(DISCOVERY_SRCS) \
+ 	iscsid.o session_mgmt.o discoveryd.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -L../utils/open-isns -lisns -lcrypto
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -L../utils/open-isns -lisns $(SLP_LIBS) -lcrypto
+ 
+ iscsiadm: $(ISCSI_LIB_SRCS) $(DISCOVERY_SRCS) iscsiadm.o session_mgmt.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -L../utils/open-isns -lisns -lcrypto
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -L../utils/open-isns -lisns $(SLP_LIBS) -lcrypto
+ 
+ iscsistart: $(IPC_OBJ) $(ISCSI_LIB_SRCS) $(INITIATOR_SRCS) $(FW_BOOT_SRCS) \
+ 		iscsistart.o statics.o

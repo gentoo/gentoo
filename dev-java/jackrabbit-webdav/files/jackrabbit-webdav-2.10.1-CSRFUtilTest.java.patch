@@ -1,0 +1,21 @@
+--- src/test/java/org/apache/jackrabbit/webdav/util/CSRFUtilTest.java.orig	2015-07-03 09:36:45.804000000 +0000
++++ src/test/java/org/apache/jackrabbit/webdav/util/CSRFUtilTest.java	2015-07-03 09:36:59.498000000 +0000
+@@ -281,6 +281,18 @@
+         public void removeAttribute(String name) {
+ 
+         }
++        public int getRemotePort() {
++            return 0;
++        }
++        public String getLocalName() {
++            return null;
++        }
++        public String getLocalAddr() {
++            return null;
++        }
++        public int getLocalPort() {
++            return 0;
++        }
+         public Locale getLocale() {
+             return null;
+         }

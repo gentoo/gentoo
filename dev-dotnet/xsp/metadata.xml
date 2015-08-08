@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>dotnet</herd>
+	<longdescription lang="en">
+		XSP is a standalone web server written in C# that can be used to run
+		your ASP.NET applications.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+--- tools/timer/Makefile.orig	2011-11-14 18:58:13.000000000 -0800
++++ tools/timer/Makefile	2011-11-14 19:00:41.000000000 -0800
+@@ -8,8 +8,8 @@
+ default: $(ETC)/$(PGM)
+ 
+ $(ETC)/$(PGM): main.c
+-	$(CC) -c $<
+-	$(CC) -o $(ETC)/$(PGM) $<
++	$(CC) $(CFLAGS) -c $<
++	$(CC) $(LDFLAGS) -o $(ETC)/$(PGM) $<
+ 
+ clean:
+ 	\rm -f $(ETC)/$(PGM) main.o

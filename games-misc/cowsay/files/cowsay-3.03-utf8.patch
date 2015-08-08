@@ -1,0 +1,17 @@
+diff -Naur cowsay-3.03.orig//cowsay cowsay-3.03/cowsay
+--- cowsay-3.03.orig//cowsay	2011-04-21 16:36:03.581377699 +0200
++++ cowsay-3.03/cowsay	2011-04-21 16:37:07.968430100 +0200
+@@ -12,6 +12,13 @@
+ use Getopt::Std;
+ use Cwd;
+ 
++if (${^UTF8LOCALE}) {
++    binmode STDIN, ':utf8';
++    binmode STDOUT, ':utf8';
++    require Encode;
++    eval { $_ = Encode::decode_utf8($_,1) } for @ARGV;
++}
++
+ $VERSION = "3.03";
+ $progname = basename($0);
+ $eyes = "oo";

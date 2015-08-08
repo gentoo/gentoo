@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <use>
+    <flag name="memcached">Installs dependencies needed for using memcached as a backend</flag>
+    <flag name="mongo">Installs dependencies needed for using mongo as a backend</flag>
+  </use>
+  <herd>openstack</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+    Keystone is the Openstack authentication, authorization, and service
+	catalog written in Python.
+  </longdescription>
+  <upstream>
+    <remote-id type="launchpad">keystone</remote-id>
+  </upstream>
+</pkgmetadata>

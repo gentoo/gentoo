@@ -1,0 +1,22 @@
+--- backgammon/common_source/fancy.c.old	2007-05-16 20:16:46.000000000 +0200
++++ backgammon/common_source/fancy.c	2007-05-16 20:19:00.000000000 +0200
+@@ -58,7 +58,7 @@
+ int     lUP;			/* length of UP */
+ int     CO;			/* number of columns */
+ int     LI;			/* number of lines */
+-int    *linect;			/* array of lengths of lines on screen (the
++static int linect[25];		/* array of lengths of lines on screen (the
+ 				 * actual screen is not stored) */
+ 
+  /* two letter codes */
+@@ -728,10 +728,5 @@
+ 		lND = strlen(ND);
+ 	if (LI < 24 || CO < 72 || !(CL && UP && ND))
+ 		return (0);
+-	linect = (int *) calloc(LI + 1, sizeof(int));
+-	if (linect == NULL) {
+-		write(2, "\r\nOut of memory!\r\n", 18);
+-		getout(0);
+-	}
+ 	return (1);
+ }

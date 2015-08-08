@@ -1,0 +1,46 @@
+The "really fix cipher none" patch has been merged to release/2.3 and master:
+
+commit 785838614afc20d362b64907b0212e9a779e2287 (release/2.3)
+commit 98156e90e1e83133a6a6a020db8e7333ada6156b (master)
+
+diff --git a/src/openvpn/crypto_backend.h b/src/openvpn/crypto_backend.h
+index 8749878..4e45df0 100644
+--- a/src/openvpn/crypto_backend.h
++++ b/src/openvpn/crypto_backend.h
+@@ -237,8 +237,7 @@ int cipher_kt_mode (const cipher_kt_t *cipher_kt);
+  *
+  * @return		true iff the cipher is a CBC mode cipher.
+  */
+-bool cipher_kt_mode_cbc(const cipher_kt_t *cipher)
+-  __attribute__((nonnull));
++bool cipher_kt_mode_cbc(const cipher_kt_t *cipher);
+ 
+ /**
+  * Check if the supplied cipher is a supported OFB or CFB mode cipher.
+@@ -247,8 +246,7 @@ bool cipher_kt_mode_cbc(const cipher_kt_t *cipher)
+  *
+  * @return		true iff the cipher is a OFB or CFB mode cipher.
+  */
+-bool cipher_kt_mode_ofb_cfb(const cipher_kt_t *cipher)
+-  __attribute__((nonnull));
++bool cipher_kt_mode_ofb_cfb(const cipher_kt_t *cipher);
+ 
+ 
+ /**
+diff --git a/tests/t_lpback.sh b/tests/t_lpback.sh
+index 8f88ad9..d7792cd 100755
+--- a/tests/t_lpback.sh
++++ b/tests/t_lpback.sh
+@@ -35,6 +35,9 @@ CIPHERS=$(${top_builddir}/src/openvpn/openvpn --show-ciphers | \
+ # GD, 2014-07-06 do not test RC5-* either (fails on NetBSD w/o libcrypto_rc5)
+ CIPHERS=$(echo "$CIPHERS" | egrep -v '^(DES-EDE3-CFB1|DES-CFB1|RC5-)' )
+ 
++# Also test cipher 'none'
++CIPHERS=${CIPHERS}$(printf "\nnone")
++
+ "${top_builddir}/src/openvpn/openvpn" --genkey --secret key.$$
+ set +e
+ 
+-- 
+1.9.1
+

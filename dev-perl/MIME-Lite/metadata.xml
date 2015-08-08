@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<upstream>
+		<remote-id type="cpan">MIME-Lite</remote-id>
+		<remote-id type="cpan-module">MIME::Lite</remote-id>
+		<remote-id type="cpan-module">MIME::Lite::IO_Handle</remote-id>
+		<remote-id type="cpan-module">MIME::Lite::IO_Scalar</remote-id>
+		<remote-id type="cpan-module">MIME::Lite::IO_ScalarArray</remote-id>
+		<remote-id type="cpan-module">MIME::Lite::SMTP</remote-id>
+		<remote-id type="cpan-module">MailTool</remote-id>
+	</upstream>
+</pkgmetadata>

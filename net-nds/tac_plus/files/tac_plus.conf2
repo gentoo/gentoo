@@ -1,0 +1,41 @@
+# You must configure tac_plus before use.  At a minimum, you need a server
+# key and a user block, such as below.
+#
+# Please see tac_plus.conf(5) for more information.
+
+#key = kEy4U
+
+#user = youruser {
+#  login = des ndkKAzNoc37VA 
+#  enable = des ndkKAzNoc37VA
+#}
+
+#user = youruser {
+#	default service = permit
+#	login = PAM
+#	member = yourgroup
+#}
+
+# Cisco admins
+#group = ciscoadmins {
+#	default service = permit
+#	service = exec {
+#	priv-lvl = 15
+#	}
+#}
+
+
+# Cisco admins using an acl to allow specific devices
+#group = ciscoadmins {
+#	default service = permit
+#	acl = ciscodevices
+#	service = exec {
+#		priv-lvl = 15
+#	}
+#}
+
+# Allows devices with specified IP address to talk to this TACACS+ server
+#acl = ciscodevices {
+#	permit = 1.2.3.4$
+#	deny = .*
+#}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>gregkh@gentoo.org</email>
+	<name>Greg Kroah-Hartman</name>
+</maintainer>
+<maintainer>
+	<email>radhermit@gentoo.org</email>
+	<name>Tim Harder</name>
+</maintainer>
+<use>
+	<flag name='perl'>Install scripts written in Perl</flag>
+</use>
+</pkgmetadata>

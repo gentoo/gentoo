@@ -1,0 +1,12 @@
+Index: ath_hal/Makefile
+===================================================================
+--- ath_hal/Makefile	(revision 1648)
++++ ath_hal/Makefile	(working copy)
+@@ -61,6 +61,7 @@
+ ath_hal-objs	:= ah_osdep.o ${TARGET}.hal.o
+ 
+ hostprogs-y	:= uudecode
++uudecode-objs	:= uudecode.o
+ 
+ # For older 2.6 kernels
+ host-progs	:= $(hostprogs-y)

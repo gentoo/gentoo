@@ -1,0 +1,20 @@
+ configure.ac |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 7b09153..9c22ea0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -192,10 +192,10 @@ if test "x$use_gconf" = "xyes"; then
+   if test x"$GCONFTOOL" = xno; then
+     AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
+   fi
++else
++  AM_CONDITIONAL(GCONF_SCHEMAS_INSTALL, test "x$use_gconf" = "xyes")
+ fi
+ 
+-AM_GCONF_SOURCE_2
+-
+ AM_CONDITIONAL(USE_GCONF, test "x$use_gconf" = "xyes")
+ if test "$use_gconf" = yes; then
+   AC_DEFINE(USE_GCONF, 1, [Build gconf plugin])

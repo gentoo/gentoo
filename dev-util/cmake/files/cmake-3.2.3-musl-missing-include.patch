@@ -1,0 +1,28 @@
+From c775072ad5a93306183f83f4396268b1690bb392 Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Wed, 22 Apr 2015 09:58:46 -0400
+Subject: [PATCH] cmGeneratorExpressionEvaluationFile: Add missing sys/types.h
+ include
+
+This is needed for 'mode_t', and on mingw-w64 in particular.  We added
+use of 'mode_t' in commit v3.2.0-rc1~421^2 (file(GENERATE): Use
+permissions of input file if present, 2014-07-22).
+---
+ Source/cmGeneratorExpressionEvaluationFile.h |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Source/cmGeneratorExpressionEvaluationFile.h b/Source/cmGeneratorExpressionEvaluationFile.h
+index 4424bec..5d8b54c 100644
+--- a/Source/cmGeneratorExpressionEvaluationFile.h
++++ b/Source/cmGeneratorExpressionEvaluationFile.h
+@@ -13,6 +13,7 @@
+ #define cmGeneratorExpressionEvaluationFile_h
+ 
+ #include "cmStandardIncludes.h"
++#include <sys/types.h>
+ #include <cmsys/auto_ptr.hxx>
+ 
+ #include "cmGeneratorExpression.h"
+-- 
+1.7.10.4
+

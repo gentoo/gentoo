@@ -1,0 +1,27 @@
+From 17667fa3450470f7c89fc2ba4631d908cf510749 Mon Sep 17 00:00:00 2001
+From: Tom Stellard <thomas.stellard@amd.com>
+Date: Wed, 14 Mar 2012 11:19:35 -0400
+Subject: [PATCH 2/2] r600: Add get_global_size and get_local_size intrinsics
+
+---
+ include/llvm/IntrinsicsR600.td |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/include/llvm/IntrinsicsR600.td b/include/llvm/IntrinsicsR600.td
+index 789fecb..0473acb 100644
+--- a/include/llvm/IntrinsicsR600.td
++++ b/include/llvm/IntrinsicsR600.td
+@@ -26,6 +26,10 @@ multiclass R600ReadPreloadRegisterIntrinsic_xyz<string prefix> {
+   def _z : R600ReadPreloadRegisterIntrinsic<!strconcat(prefix, "_z")>;
+ }
+ 
++defm int_r600_read_global_size : R600ReadPreloadRegisterIntrinsic_xyz <
++                                       "__builtin_r600_read_global_size">;
++defm int_r600_read_local_size : R600ReadPreloadRegisterIntrinsic_xyz <
++                                       "__builtin_r600_read_local_size">;
+ defm int_r600_read_ngroups : R600ReadPreloadRegisterIntrinsic_xyz <
+                                        "__builtin_r600_read_ngroups">;
+ defm int_r600_read_tgid : R600ReadPreloadRegisterIntrinsic_xyz <
+-- 
+1.7.7.6
+

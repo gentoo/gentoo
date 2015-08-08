@@ -1,0 +1,23 @@
+"Could not load fastresume data: invalid literal for int() with base 10: '1300250602.1'
+Will perform full hash check."
+
+--- a/BitTorrent/Storage.py
++++ b/BitTorrent/Storage.py
+@@ -213,7 +213,7 @@ class Storage(object):
+         resumefile.write(str(amount_done) + '\n')
+         for x, x, filename in self.ranges:
+             resumefile.write(str(os.path.getsize(filename)) + ' ' +
+-                             str(os.path.getmtime(filename)) + '\n')
++                             str(int(os.path.getmtime(filename))) + '\n')
+ 
+     def check_fastresume(self, resumefile, return_filelist=False,
+                          piece_size=None, numpieces=None, allfiles=None):
+@@ -237,7 +237,7 @@ class Storage(object):
+             else:
+                 raise BTFailure(_("Another program appears to have moved, renamed, or deleted the file, "
+                                   "or %s may have crashed last time it was run.") % app_name)
+-            if fsize > 0 and mtime != os.path.getmtime(filename):
++            if fsize > 0 and mtime != int(os.path.getmtime(filename)):
+                 raise BTFailure(_("Another program appears to have modified the file, "
+                                   "or %s may have crashed last time it was run.") % app_name)
+             if size != fsize:

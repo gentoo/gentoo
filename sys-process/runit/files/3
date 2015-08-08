@@ -1,0 +1,14 @@
+#!/bin/sh
+exec >/dev/console 2>&1
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+echo 'Waiting for getties to stop...'
+sv shutdown -w 10 /var/service/getty-*
+
+echo 'Waiting for services to stop...'
+sv shutdown -w 300 /var/service/*
+
+echo 'Shutdown...'
+test -x /etc/runit/reboot && LAST=6    || LAST=0
+test -x /etc/runit/reboot && RC=reboot || RC=shutdown
+RUNLEVEL=$LAST /sbin/rc $RC

@@ -1,0 +1,53 @@
+https://bugs.gentoo.org/414637
+
+From 302e8ec6cd62912a3cd6494ce6702f4ad8dae0e2 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 4 May 2012 19:30:59 -0400
+Subject: [PATCH] util: fix building when glibc has a stub process_vm_readv
+
+If you have a newer glibc which provides process_vm_readv, but it is built
+against older kernel headers which lack __NR_process_vm_readv, the library
+will contain a stub implementation that just returns ENOSYS.  Autoconf
+checks for this case explicitly and will declare it as unavailable.  So we
+end up in a case where the headers provide the prototype, but autoconf has
+not defined HAVE_PROCESS_VM_READV, so we hit the same build failure again:
+
+util.c:738:16: error: static declaration of 'process_vm_readv' follows non-static declaration
+/usr/include/bits/uio.h:58:16: note: previous declaration of 'process_vm_readv' was here
+
+So rename our local function to something unique, and add a define so the
+callers all hit the right place.
+
+* util.c (strace_process_vm_readv): Rename from process_vm_readv.
+(process_vm_readv): Define to strace_process_vm_readv.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ util.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/util.c b/util.c
+index d347bd8..f27acdf 100644
+--- a/util.c
++++ b/util.c
+@@ -735,7 +735,8 @@ static bool process_vm_readv_not_supported = 0;
+ 
+ #if defined(__NR_process_vm_readv)
+ static bool process_vm_readv_not_supported = 0;
+-static ssize_t process_vm_readv(pid_t pid,
++/* Have to avoid duplicating with the C library headers. */
++static ssize_t strace_process_vm_readv(pid_t pid,
+ 		 const struct iovec *lvec,
+ 		 unsigned long liovcnt,
+ 		 const struct iovec *rvec,
+@@ -744,6 +745,7 @@ static ssize_t process_vm_readv(pid_t pid,
+ {
+ 	return syscall(__NR_process_vm_readv, (long)pid, lvec, liovcnt, rvec, riovcnt, flags);
+ }
++#define process_vm_readv strace_process_vm_readv
+ #else
+ static bool process_vm_readv_not_supported = 1;
+ # define process_vm_readv(...) (errno = ENOSYS, -1)
+-- 
+1.7.9.7
+

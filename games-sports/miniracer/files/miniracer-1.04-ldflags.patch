@@ -1,0 +1,48 @@
+--- Makefile.old	2010-10-13 12:41:01.000000000 +0200
++++ Makefile	2010-10-13 12:56:04.000000000 +0200
+@@ -10,13 +10,12 @@
+ 
+ BUILDDIR=obj
+ 
+-CC=gcc
+ DEFS=-DVIDMODEXT_GAMMA_RAMP -DSOUND
+-INCLUDES= -I. -I/usr/X11R6/include -I/usr/include/SDL
+-CFLAGS=$(DEFS) $(INCLUDES) -O3 -march=i486 -ffast-math -fexpensive-optimizations
++INCLUDES= -I. -I/usr/X11R6/include $(shell sdl-config --cflags)
++CFLAGS=$(DEFS) $(INCLUDES) @CFLAGS@
+ 
+ GL_LDFLAGS=-L/usr/X11R6/lib -lGL -lXxf86dga -lXxf86vm -lX11 -lXext -lm
+-LDFLAGS=$(GL_LDFLAGS) -ldl -lSDL -lSDL_mixer -lpthread
++LDLIBS=$(GL_LDFLAGS) -ldl -lSDL_mixer $(shell sdl-config --libs)
+ 
+ #############################################################################
+ # SETUP AND BUILD
+@@ -43,15 +42,16 @@
+ build_release: engine.glx
+ 
+ install:
+-	install -d $(DESTDIR)/usr/bin
++	install -d $(DESTDIR)@GAMES_BINDIR@
+ 	install -d $(DESTDIR)/usr/share/man/man6
+ 	install -d $(DESTDIR)/usr/share/games/MiniRacer
+ 	install -d $(DESTDIR)/usr/share/games/MiniRacer/data
+ 	install -d $(DESTDIR)/usr/share/games/MiniRacer/data/maps
+-	install -m 755 engine.glx $(DESTDIR)/usr/share/games/MiniRacer
++	install -d $(DESTDIR)@GAMES_LIBDIR@
++	install -m 755 engine.glx $(DESTDIR)@GAMES_LIBDIR@
+ 	install -m 644 data/pak0.pak $(DESTDIR)/usr/share/games/MiniRacer/data
+ 	install -m 644 data/config.cfg $(DESTDIR)/usr/share/games/MiniRacer/data
+-	install -m 755 miniracer $(DESTDIR)/usr/bin/miniracer
++	install -m 755 miniracer $(DESTDIR)@GAMES_BINDIR@/miniracer
+ 	install -m 644 miniracer.6 $(DESTDIR)/usr/share/man/man6
+ 	install -m 644 data/maps/*.bsp $(DESTDIR)/usr/share/games/MiniRacer/data/maps
+ 	install -m 644 data/maps/maps1.lst $(DESTDIR)/usr/share/games/MiniRacer/data/maps
+@@ -145,7 +145,7 @@
+ 	$(CC) $(CFLAGS) $(GLCFLAGS) -o $@ -c $<
+ 
+ engine.glx : $(GLMR_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(GLMR_OBJS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(GLMR_OBJS) $(LDLIBS)
+ 
+ #############################################################################
+ # MISC

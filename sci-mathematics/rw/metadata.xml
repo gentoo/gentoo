@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <herd>sci</herd>
+
+  <maintainer>
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+
+  <maintainer>
+    <email>francois.bissey@canterbury.ac.nz</email>
+    <name>François Bissey</name>
+  </maintainer>
+
+  <longdescription lang="en">
+    rw is a program that calculates rank-width and rank-decompositions.
+    It is based on ideas from "Computing rank-width exactly" by Sang-il Oum,
+    "Sopra una formula numerica" by Ernesto Pascal, "Generation of a Vector
+    from the Lexicographical Index" by B.P. Buckles and M. Lybanon and "Fast
+    additions on masked integers" by Michael D. Adams and David S. Wise.
+  </longdescription>
+
+  <use>
+    <flag name='executable'>Build the 'rw' program.</flag>
+  </use>
+</pkgmetadata>

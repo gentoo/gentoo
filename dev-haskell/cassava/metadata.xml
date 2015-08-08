@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A CSV parsing and encoding library optimized for ease of use and high
+		performance.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">tibbe/cassava</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,6 @@
+--- unrtf-0.21.8/charmaps/Makefile.am
++++ unrtf-0.21.8/charmaps/Makefile.am
+@@ -1,2 +1,2 @@
+-outputsdir = ${libdir}/${PACKAGE}
++outputsdir = ${pkgdatadir}
+ dist_outputs_DATA = SYMBOL.charmap

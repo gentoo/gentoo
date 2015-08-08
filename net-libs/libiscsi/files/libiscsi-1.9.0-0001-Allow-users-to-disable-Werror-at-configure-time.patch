@@ -1,0 +1,35 @@
+From 2d43a056a9e7b57bc03d580a850a8dca534e61d5 Mon Sep 17 00:00:00 2001
+From: Doug Goldstein <doug.goldstein@pikewerks.com>
+Date: Wed, 5 Jun 2013 14:28:48 -0500
+Subject: [PATCH] Allow users to disable -Werror at configure time
+
+Some users and distro packagers might not want to build with -Werror,
+this allows them to disable using -Werror but enables it in the default
+case so as to maintain the current behavior.
+---
+ configure.ac | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9d06e3a..6dce230 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -11,8 +11,14 @@ AC_CANONICAL_HOST
+ AM_CONDITIONAL(LD_ISCSI,
+                [expr "$host_os" : linux > /dev/null 2>&1])
+ 
++AC_ARG_ENABLE([werror], [AS_HELP_STRING([--disable-werror],
++              [Disables building with -Werror by default])])
++
+ if test "$ac_cv_prog_gcc" = yes; then
+-   WARN_CFLAGS="-Wall -W -Wshadow -Wstrict-prototypes -Wpointer-arith -Wcast-align -Wwrite-strings -Werror -Wno-strict-aliasing"
++   WARN_CFLAGS="-Wall -W -Wshadow -Wstrict-prototypes -Wpointer-arith -Wcast-align -Wwrite-strings -Wno-strict-aliasing"
++   if test "x$enable_werror" != "xno"; then
++       WARN_CFLAGS="$WARN_CFLAGS -Werror"
++   fi
+ fi
+ AC_SUBST(WARN_CFLAGS)
+ 
+-- 
+1.8.2.1
+

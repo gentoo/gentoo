@@ -1,0 +1,3 @@
+# config what port to listen for telnet connections on
+BLINKPORT="10001"
+

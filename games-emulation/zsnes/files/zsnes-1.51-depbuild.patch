@@ -1,0 +1,24 @@
+--- src/tools/depbuild.cpp.orig
++++ src/tools/depbuild.cpp
+@@ -130,7 +130,20 @@
+ void dependency_calculate_asm(const char *filename)
+ {
+   string command = nasm + " " + nflags + " -M " + filename;
+-  system(command.c_str());
++  FILE *fp = popen(command.c_str(), "r");
++  if (fp)
++  {
++    char line[256];
++    while (fgets(line, sizeof(line), fp)) //Process all lines of output
++    {
++      cout << line;
++    }
++    pclose(fp);
++  }
++  else
++  {
++    cerr << "Failed on: " << filename << "\n";
++  }
+ }
+ 
+ void dependency_calculate_psr(const char *filename)

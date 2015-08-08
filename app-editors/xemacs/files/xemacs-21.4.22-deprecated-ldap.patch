@@ -1,0 +1,18 @@
+Patch to include depracated LDAP symbols, specifically
+ldap_open. Without the proper prototype the call will almost surely
+lead to crashes on 64-bit arches otherwise. Thanks to hwoareng for the
+initial bug report.
+
+Not reported upstream since bug tracker is down.
+
+--- src/eldap.h.~1~	2001-04-12 20:23:36.000000000 +0200
++++ src/eldap.h	2010-09-28 19:53:34.148472315 +0200
+@@ -21,6 +21,8 @@
+ #ifndef INCLUDED_eldap_h_
+ #define INCLUDED_eldap_h_
+ 
++#define LDAP_DEPRECATED 1
++
+ #include <lber.h>
+ #include <ldap.h>
+ 

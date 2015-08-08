@@ -1,0 +1,21 @@
+http://bugs.gentoo.org/334653
+
+--- protoMakefile
++++ protoMakefile
+@@ -13,13 +13,13 @@
+ 	./jc -`./jc -c romkan-org.c`P romkan-org.c > romkan.c
+ 
+ jc: jc.o
+-	$(CC) $(CFLAGS) -o jc jc.o
++	$(CC) $(LDFLAGS) $(CFLAGS) -o jc jc.o
+ 
+ $(SKKFEP): $(OBJS) $(SKKOBJS)
+-	$(CC) $(CFLAGS) -o $(SKKFEP) $(OBJS) $(SKKOBJS) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(SKKFEP) $(OBJS) $(SKKOBJS) $(LIBS)
+ 
+ simpledic: $(SDICOBJS) $(SKKOBJS)
+-	$(CC) $(CFLAGS) -o simpledic $(SDICOBJS) $(SKKOBJS) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o simpledic $(SDICOBJS) $(SKKOBJS) $(LIBS)
+ 
+ clean:
+ 	-rm -rf $(OBJS) $(SKKOBJS) $(SDICOBJS) romkan.c

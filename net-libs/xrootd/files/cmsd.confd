@@ -1,0 +1,9 @@
+# conf.d file for cmsd daemon
+
+# User to run as (default is root)
+CMSD_USER="root"
+
+#
+# Please refer to the cmsd(1) man(1) page for more
+# information on command line parameters. 
+CMSD_OPTS=""

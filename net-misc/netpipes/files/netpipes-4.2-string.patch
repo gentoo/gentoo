@@ -1,0 +1,10 @@
+--- a/timelimit.c
++++ b/timelimit.c
+@@ -30,6 +30,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <errno.h>
++#include <string.h>
+ extern int errno;
+ #include "common.h"
+ 

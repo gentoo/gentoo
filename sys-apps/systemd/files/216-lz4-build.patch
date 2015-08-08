@@ -1,0 +1,19 @@
+commit 10893a5cfa7d792ba171282c2ec46b85ed6aae0c
+Author: Gustavo Sverzut Barbieri <gustavo.barbieri@intel.com>
+Date:   Thu Sep 25 18:08:02 2014 -0300
+
+    journal: build fix when LZ4 is enabled but XZ is not
+
+diff --git a/src/journal/journal-file.h b/src/journal/journal-file.h
+index da2ef3b..6b4bf0d 100644
+--- a/src/journal/journal-file.h
++++ b/src/journal/journal-file.h
+@@ -78,7 +78,7 @@ typedef struct JournalFile {
+ 
+         Hashmap *chain_cache;
+ 
+-#ifdef HAVE_XZ
++#if defined(HAVE_XZ) || defined(HAVE_LZ4)
+         void *compress_buffer;
+         size_t compress_buffer_size;
+ #endif

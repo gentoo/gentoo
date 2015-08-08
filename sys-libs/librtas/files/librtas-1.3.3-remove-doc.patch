@@ -1,0 +1,14 @@
+--- librtas-1.3.3.orig/Makefile	2007-04-12 15:01:01.000000000 -0500
++++ librtas-1.3.3/Makefile	2007-05-29 11:55:54.000000000 -0500
+@@ -15,11 +15,9 @@
+ 	@$(foreach d,$(SUBDIRS), $(MAKE) -C $d;) 
+ 
+ install:
+-	@$(call install_doc,$(FILES),$(DESTDIR))
+ 	@$(foreach d,$(SUBDIRS), $(MAKE) -C $d install;) 
+ 
+ uninstall:
+-	@$(call uninstall_doc,$(FILES),$(DESTDIR))
+ 	@$(foreach d,$(SUBDIRS), $(MAKE) -C $d uninstall;) 
+ 
+ rpm: all

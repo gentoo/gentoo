@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<maintainer>
+		<email>tgurr@gentoo.org</email>
+		<name>Timo Gurr</name>
+	</maintainer>
+	<longdescription lang="en">
+		KDing is a KDE port of Ding, a dictionary lookup program. It is
+		a simple program sitting in KDE's system tray that can translate
+		the current clipboard content.
+	</longdescription>
+</pkgmetadata>

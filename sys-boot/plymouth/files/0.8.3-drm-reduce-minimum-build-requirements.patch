@@ -1,0 +1,422 @@
+drm: reduce minimum build requirements
+
+This patch adds the respective configure options to make it possible to disable
+libdrm_intel, libdrm_radeon, libdrm_nouveau independently from each other.
+
+NOTE:
+
+The patch is based on work of Lucian Muresan <lucianm@users.sourceforge.net>
+that fixes bug report:
+
+  https://bugs.freedesktop.org/show_bug.cgi?id=29804
+
+This one is adjusted to version 0.8.3 which doesn't support libkms yet.
+
+---
+diff -Naur plymouth-0.8.3/configure.ac plymouth-0.8.3.new/configure.ac
+--- plymouth-0.8.3/configure.ac	2010-05-06 19:32:20.000000000 +0200
++++ plymouth-0.8.3.new/configure.ac	2011-02-03 18:45:11.749557708 +0100
+@@ -56,49 +56,150 @@
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
+-PKG_CHECK_MODULES(DRM, [libdrm libdrm_intel libdrm_radeon libdrm_nouveau])
++AC_ARG_ENABLE(libdrm_intel, AS_HELP_STRING([--enable-libdrm_intel],[enable building with libdrm_intel support]),enable_libdrm_intel=$enableval,enable_libdrm_intel=yes)
++AM_CONDITIONAL(ENABLE_LIBDRM_INTEL,  [test "$enable_libdrm_intel" = yes])
+ 
+-OLD_CFLAGS="$CFLAGS"
+-CFLAGS="$CFLAGS $DRM_CFLAGS"
+-AC_MSG_CHECKING([if i915_drm.h, radeon_drm.h and nouveau_drm.h are in include path])
+-AC_COMPILE_IFELSE(AC_LANG_PROGRAM(
+-[[
+-  #include <stdint.h>
+-  #include <stdlib.h>
+-  #include "i915_drm.h"
+-  #include "radeon_drm.h"
+-  #include "nouveau_drm.h"
+-]],[[]]),[found_drm_kernel_headers=yes],[found_drm_kernel_headers=no])
+-
+-if test "$found_drm_kernel_headers" = "yes"; then
+-  AC_MSG_RESULT([yes])
+-else
+-  AC_MSG_RESULT([no])
+-  AC_MSG_CHECKING([if we can find them anyway])
++if test x$enable_libdrm_intel = xyes; then
++  PKG_CHECK_MODULES(DRM_INTEL, [libdrm libdrm_intel])
++  OLD_CFLAGS="$CFLAGS"
++  CFLAGS="$CFLAGS $DRM_INTEL_CFLAGS"
++  AC_MSG_CHECKING([if i915_drm.h is in include path])
++  AC_COMPILE_IFELSE(AC_LANG_PROGRAM(
++  [[
++    #include <stdint.h>
++    #include <stdlib.h>
++    #include "i915_drm.h"
++  ]],[[]]),[found_drm_intel_kernel_headers=yes],[found_drm_intel_kernel_headers=no])
++
++  if test "$found_drm_intel_kernel_headers" = "yes"; then
++    AC_MSG_RESULT([yes])
++  else
++    AC_MSG_RESULT([no])
++    AC_MSG_CHECKING([if we can find them anyway])
++
++    MORE_DRM_CFLAGS="-I`$PKG_CONFIG --variable includedir libdrm`/drm"
++    CFLAGS="$CFLAGS $MORE_DRM_CFLAGS"
++    AC_COMPILE_IFELSE(AC_LANG_PROGRAM(
++    [[
++      #include <stdint.h>
++      #include <stdlib.h>
++      #include "i915_drm.h"
++    ]],[[]]),[found_drm_intel_kernel_headers=yes],[found_drm_intel_kernel_headers=no])
++
++    if test "$found_drm_intel_kernel_headers" = "yes"; then
++      AC_MSG_RESULT([yes])
++      DRM_INTEL_CFLAGS="$DRM_INTEL_CFLAGS $MORE_DRM_CFLAGS"
++    else
++      AC_MSG_RESULT([no])
++      AC_MSG_ERROR([Could not find i915_drm.h])
++    fi
++  fi
++
++  AC_SUBST(DRM_INTEL_CFLAGS)
++  AC_SUBST(DRM_INTEL_LIBS)
++  AC_DEFINE(PLY_ENABLE_LIBDRM_INTEL, 1, [Enable support for libdrm_intel driver])
++fi
++
++AC_ARG_ENABLE(libdrm_radeon, AS_HELP_STRING([--enable-libdrm_radeon],[enable building with libdrm_radeon support]),enable_libdrm_radeon=$enableval,enable_libdrm_radeon=yes)
++AM_CONDITIONAL(ENABLE_LIBDRM_RADEON,  [test "$enable_libdrm_radeon" = yes])
+ 
+-  MORE_DRM_CFLAGS="-I`$PKG_CONFIG --variable includedir libdrm`/drm"
+-  CFLAGS="$CFLAGS $MORE_DRM_CFLAGS"
++if test x$enable_libdrm_radeon = xyes; then
++  PKG_CHECK_MODULES(DRM_RADEON, [libdrm libdrm_radeon])
++  OLD_CFLAGS="$CFLAGS"
++  CFLAGS="$CFLAGS $DRM_RADEON_CFLAGS"
++  AC_MSG_CHECKING([if radeon_drm.h is in include path])
+   AC_COMPILE_IFELSE(AC_LANG_PROGRAM(
+   [[
+     #include <stdint.h>
+     #include <stdlib.h>
+     #include "i915_drm.h"
+     #include "radeon_drm.h"
++  ]],[[]]),[found_drm_radeon_kernel_headers=yes],[found_drm_radeon_kernel_headers=no])
++
++  if test "$found_drm_radeon_kernel_headers" = "yes"; then
++    AC_MSG_RESULT([yes])
++  else
++    AC_MSG_RESULT([no])
++    AC_MSG_CHECKING([if we can find them anyway])
++
++    MORE_DRM_CFLAGS="-I`$PKG_CONFIG --variable includedir libdrm`/drm"
++    CFLAGS="$CFLAGS $MORE_DRM_RADEON_CFLAGS"
++    AC_COMPILE_IFELSE(AC_LANG_PROGRAM(
++    [[
++      #include <stdint.h>
++      #include <stdlib.h>
++      #include "radeon_drm.h"
++    ]],[[]]),[found_drm_radeon_kernel_headers=yes],[found_drm_radeon_kernel_headers=no])
++
++    if test "$found_drm_radeon_kernel_headers" = "yes"; then
++      AC_MSG_RESULT([yes])
++      DRM_RADEON_CFLAGS="$DRM_RADEON_CFLAGS $MORE_DRM_CFLAGS"
++    else
++      AC_MSG_RESULT([no])
++      AC_MSG_ERROR([Could not find radeon_drm.h])
++    fi
++  fi
++
++  AC_SUBST(DRM_RADEON_CFLAGS)
++  AC_SUBST(DRM_RADEON_LIBS)
++  AC_DEFINE(PLY_ENABLE_LIBDRM_RADEON, 1, [Enable support for libdrm_radeon driver])
++fi
++
++AC_ARG_ENABLE(libdrm_nouveau, AS_HELP_STRING([--enable-libdrm_nouveau],[enable building with libdrm_nouveau support]),enable_libdrm_nouveau=$enableval,enable_libdrm_nouveau=yes)
++AM_CONDITIONAL(ENABLE_LIBDRM_NOUVEAU,  [test "$enable_libdrm_nouveau" = yes])
++
++if test x$enable_libdrm_nouveau = xyes; then
++  PKG_CHECK_MODULES(DRM_NOUVEAU, [libdrm libdrm_nouveau])
++  OLD_CFLAGS="$CFLAGS"
++  CFLAGS="$CFLAGS $DRM_NOUVEAU_CFLAGS"
++  AC_MSG_CHECKING([if nouveau_drm.h is in include path])
++  AC_COMPILE_IFELSE(AC_LANG_PROGRAM(
++  [[
++    #include <stdint.h>
++    #include <stdlib.h>
+     #include "nouveau_drm.h"
+-  ]],[[]]),[found_drm_kernel_headers=yes],[found_drm_kernel_headers=no])
++  ]],[[]]),[found_drm_nouveau_kernel_headers=yes],[found_drm_nouveau_kernel_headers=no])
+ 
+-  if test "$found_drm_kernel_headers" = "yes"; then
++  if test "$found_drm_nouveau_kernel_headers" = "yes"; then
+     AC_MSG_RESULT([yes])
+     DRM_CFLAGS="$DRM_CFLAGS $MORE_DRM_CFLAGS"
+   else
+     AC_MSG_RESULT([no])
+-    AC_MSG_ERROR([Could not find i915_drm.h, radeon_drm.h and/or nouveau_drm.h])
++    AC_MSG_CHECKING([if we can find them anyway])
++
++    MORE_DRM_CFLAGS="-I`$PKG_CONFIG --variable includedir libdrm`/drm"
++    CFLAGS="$CFLAGS $MORE_DRM_CFLAGS"
++    AC_COMPILE_IFELSE(AC_LANG_PROGRAM(
++    [[
++      #include <stdint.h>
++      #include <stdlib.h>
++      #include "nouveau_drm.h"
++    ]],[[]]),[found_drm_nouveau_kernel_headers=yes],[found_drm_nouveau_kernel_headers=no])
++
++    if test "$found_drm_nouveau_kernel_headers" = "yes"; then
++      AC_MSG_RESULT([yes])
++      DRM_NOUVEAU_CFLAGS="$DRM_NOUVEAU_CFLAGS $MORE_DRM_CFLAGS"
++    else
++      AC_MSG_RESULT([no])
++      AC_MSG_ERROR([Could not find nouveau_drm.h])
++    fi
+   fi
++
++  AC_SUBST(DRM_NOUVEAU_CFLAGS)
++  AC_SUBST(DRM_NOUVEAU_LIBS)
++  AC_DEFINE(PLY_ENABLE_LIBDRM_NOUVEAU, 1, [Enable support for libdrm_nouveau driver])
+ fi
+-CFLAGS="$OLD_CFLAGS"
++
++DRM_CFLAGS="$DRM_INTEL_CFLAGS $DRM_RADEON_CFLAGS $DRM_NOUVEAU_CFLAGS"
++DRM_LIBS="$DRM_INTEL_LIBS $DRM_RADEON_LIBS $DRM_NOUVEAU_LIBS"
+ AC_SUBST(DRM_CFLAGS)
+ AC_SUBST(DRM_LIBS)
+ 
++AM_CONDITIONAL(ENABLE_DRM_RENDERER,
++               [test x$enable_libdrm_intel = xyes   \
++                  -o x$enable_libdrm_radeon = xyes  \
++                  -o x$enable_libdrm_nouveau = xyes])
++
+ AC_ARG_ENABLE(tracing, AS_HELP_STRING([--enable-tracing],[enable verbose tracing code]),enable_tracing=$enableval,enable_tracing=yes)
+ 
+ if test x$enable_tracing = xyes; then
+diff -Naur plymouth-0.8.3/scripts/plymouth-populate-initrd.in plymouth-0.8.3.new/scripts/plymouth-populate-initrd.in
+--- plymouth-0.8.3/scripts/plymouth-populate-initrd.in	2010-05-06 19:32:20.000000000 +0200
++++ plymouth-0.8.3.new/scripts/plymouth-populate-initrd.in	2011-02-03 19:14:06.316946754 +0100
+@@ -97,7 +97,7 @@
+ 
+ inst ${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so $INITRDDIR
+ 
+-inst ${PLYMOUTH_PLUGIN_PATH}/renderers/drm.so $INITRDDIR
++[ -f "${PLYMOUTH_PLUGIN_PATH}/renderers/drm.so" ] && inst ${PLYMOUTH_PLUGIN_PATH}/renderers/drm.so $INITRDDIR
+ inst ${PLYMOUTH_PLUGIN_PATH}/renderers/frame-buffer.so $INITRDDIR
+ 
+ if [ -d ${PLYMOUTH_DATADIR}/plymouth/themes/${PLYMOUTH_THEME_NAME} ]; then
+diff -Naur plymouth-0.8.3/scripts/plymouth-populate-initrd.in.orig plymouth-0.8.3.new/scripts/plymouth-populate-initrd.in.orig
+--- plymouth-0.8.3/scripts/plymouth-populate-initrd.in.orig	1970-01-01 01:00:00.000000000 +0100
++++ plymouth-0.8.3.new/scripts/plymouth-populate-initrd.in.orig	2010-05-06 19:32:20.000000000 +0200
+@@ -0,0 +1,114 @@
++#!/bin/bash
++
++[ -z "$DESTDIR" ] || exit 0
++
++[ -z "$PLYMOUTH_LIBEXECDIR" ] && PLYMOUTH_LIBEXECDIR="@PLYMOUTH_LIBEXECDIR@"
++[ -z "$PLYMOUTH_DATADIR" ] && PLYMOUTH_DATADIR="@PLYMOUTH_DATADIR@"
++[ -z "$PLYMOUTH_PLUGIN_PATH" ] && PLYMOUTH_PLUGIN_PATH="$(plymouth --get-splash-plugin-path)"
++[ -z "$PLYMOUTH_LOGO_FILE" ] && PLYMOUTH_LOGO_FILE="@logofile@"
++[ -z "$PLYMOUTH_THEME_NAME" ] && PLYMOUTH_THEME_NAME=$(plymouth-set-default-theme)
++[ -z "$PLYMOUTH_CONFDIR" ] && PLYMOUTH_CONFDIR="@PLYMOUTH_CONF_DIR@"
++[ -z "$PLYMOUTH_POLICYDIR" ] && PLYMOUTH_POLICYDIR="@PLYMOUTH_POLICY_DIR@"
++
++if [ -z "$PLYMOUTH_POPULATE_SOURCE_FUNCTIONS" ]; then
++
++    if [ -f "${PLYMOUTH_LIBEXECDIR}/initrd-functions" ]; then
++        PLYMOUTH_POPULATE_SOURCE_FUNCTIONS="${PLYMOUTH_LIBEXECDIR}/initrd-functions"
++    fi
++
++    if [ -f "${PLYMOUTH_DATADIR}/dracut/dracut-functions" ]; then
++        PLYMOUTH_POPULATE_SOURCE_FUNCTIONS="${PLYMOUTH_DATADIR}/dracut/dracut-functions"
++    fi
++fi
++
++if [ -n "$PLYMOUTH_POPULATE_SOURCE_FUNCTIONS" ]; then
++    source $PLYMOUTH_POPULATE_SOURCE_FUNCTIONS
++fi
++
++if [ " $(type -t inst) " != " function " ]; then
++    echo "Need 'inst' function, try setting PLYMOUTH_POPULATE_SOURCE_FUNCTIONS to a file that defines it" 1>&2
++    exit 1
++fi
++
++if [ " $(type -t set_verbose) " != " function " ]; then
++    function set_verbose { true; }
++fi
++
++function usage() {
++    local output="/dev/stdout"
++    local rc=0
++    if [ "$1" == "error" ]; then
++        output="/dev/stderr"
++        rc=1
++    fi
++
++    echo "usage: plymouth [ --verbose | -v ] { --targetdir | -t } <initrd_directory>" > $output
++    exit $rc
++}
++
++verbose=false
++INITRDDIR=""
++while [ $# -gt 0 ]; do
++    case $1 in
++        --verbose|-v)
++            verbose=true
++            ;;
++        --targetdir|-t)
++            shift
++            INITRDDIR="$1"
++            ;;
++        --help|-h)
++            usage normal
++            ;;
++        *)
++            usage error
++            break
++            ;;
++    esac
++    shift
++done
++set_verbose $verbose || :
++
++[ -z "$INITRDDIR" ] && usage error
++
++mkdir -p ${INITRDDIR}${PLYMOUTH_DATADIR}/plymouth/themes
++inst /sbin/plymouthd $INITRDDIR /bin/plymouthd
++inst /bin/plymouth $INITRDDIR
++inst ${PLYMOUTH_DATADIR}/plymouth/themes/text/text.plymouth $INITRDDIR
++inst ${PLYMOUTH_PLUGIN_PATH}/text.so $INITRDDIR
++inst ${PLYMOUTH_DATADIR}/plymouth/themes/details/details.plymouth $INITRDDIR
++inst ${PLYMOUTH_PLUGIN_PATH}/details.so $INITRDDIR
++inst ${PLYMOUTH_LOGO_FILE} $INITRDDIR
++inst @RELEASE_FILE@ $INITRDDIR
++inst ${PLYMOUTH_POLICYDIR}/plymouthd.defaults $INITRDDIR
++inst ${PLYMOUTH_CONFDIR}/plymouthd.conf $INITRDDIR
++
++if [ -z "$PLYMOUTH_THEME_NAME" ]; then
++    echo "No default plymouth plugin is set" > /dev/stderr
++    exit 1
++fi
++
++PLYMOUTH_MODULE_NAME=$(grep "ModuleName *= *" ${PLYMOUTH_DATADIR}/plymouth/themes/${PLYMOUTH_THEME_NAME}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ModuleName *= *//')
++
++if [ ! -f ${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so ]; then
++    echo "The default plymouth plugin (${PLYMOUTH_MODULE_NAME}) doesn't exist" > /dev/stderr
++    exit 1
++fi
++
++inst ${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so $INITRDDIR
++
++inst ${PLYMOUTH_PLUGIN_PATH}/renderers/drm.so $INITRDDIR
++inst ${PLYMOUTH_PLUGIN_PATH}/renderers/frame-buffer.so $INITRDDIR
++
++if [ -d ${PLYMOUTH_DATADIR}/plymouth/themes/${PLYMOUTH_THEME_NAME} ]; then
++    for x in ${PLYMOUTH_DATADIR}/plymouth/themes/${PLYMOUTH_THEME_NAME}/* ; do
++        [ ! -f "$x" ] && break
++        inst $x $INITRDDIR
++    done
++fi
++
++if [ -L ${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth ]; then
++    cp -a ${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth $INITRDDIR${PLYMOUTH_DATADIR}/plymouth/themes
++fi
++
++# vim:ts=8:sw=4:sts=4:et
+diff -Naur plymouth-0.8.3/src/plugins/renderers/drm/Makefile.am plymouth-0.8.3.new/src/plugins/renderers/drm/Makefile.am
+--- plymouth-0.8.3/src/plugins/renderers/drm/Makefile.am	2010-05-06 19:32:20.000000000 +0200
++++ plymouth-0.8.3.new/src/plugins/renderers/drm/Makefile.am	2011-02-03 19:07:04.811686193 +0100
+@@ -1,3 +1,4 @@
++if ENABLE_DRM_RENDERER
+ INCLUDES = -I$(top_srcdir)                                                    \
+            -I$(srcdir)/../../../libply                                        \
+            -I$(srcdir)/../../../libply-splash-core                            \
+@@ -16,12 +17,22 @@
+                          ../../../libply/libply.la                            \
+                          ../../../libply-splash-core/libply-splash-core.la
+ drm_la_SOURCES = $(srcdir)/plugin.c                                           \
+-		 $(srcdir)/ply-renderer-driver.h                              \
+-		 $(srcdir)/ply-renderer-i915-driver.h                         \
+-		 $(srcdir)/ply-renderer-i915-driver.c                         \
+-		 $(srcdir)/ply-renderer-radeon-driver.h                       \
+-		 $(srcdir)/ply-renderer-radeon-driver.c                       \
+-		 $(srcdir)/ply-renderer-nouveau-driver.h                      \
+-		 $(srcdir)/ply-renderer-nouveau-driver.c
++                 $(srcdir)/ply-renderer-driver.h
++if ENABLE_LIBDRM_INTEL
++drm_la_SOURCES += $(srcdir)/ply-renderer-i915-driver.h                        \
++                  $(srcdir)/ply-renderer-i915-driver.c
++endif
++
++if ENABLE_LIBDRM_RADEON
++drm_la_SOURCES += $(srcdir)/ply-renderer-radeon-driver.h                      \
++                  $(srcdir)/ply-renderer-radeon-driver.c
++endif
++
++if ENABLE_LIBDRM_NOUVEAU
++drm_la_SOURCES += $(srcdir)/ply-renderer-nouveau-driver.h                     \
++                  $(srcdir)/ply-renderer-nouveau-driver.c
++endif
++
++endif
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+diff -Naur plymouth-0.8.3/src/plugins/renderers/drm/plugin.c plymouth-0.8.3.new/src/plugins/renderers/drm/plugin.c
+--- plymouth-0.8.3/src/plugins/renderers/drm/plugin.c	2010-05-06 19:32:20.000000000 +0200
++++ plymouth-0.8.3.new/src/plugins/renderers/drm/plugin.c	2011-02-03 19:13:35.083078444 +0100
+@@ -57,9 +57,15 @@
+ #include "ply-renderer.h"
+ #include "ply-renderer-plugin.h"
+ #include "ply-renderer-driver.h"
++#ifdef PLY_ENABLE_LIBDRM_INTEL
+ #include "ply-renderer-i915-driver.h"
++#endif
++#ifdef PLY_ENABLE_LIBDRM_RADEON
+ #include "ply-renderer-radeon-driver.h"
++#endif
++#ifdef PLY_ENABLE_LIBDRM_NOUVEAU
+ #include "ply-renderer-nouveau-driver.h"
++#endif
+ 
+ #define BYTES_PER_PIXEL (4)
+ 
+@@ -443,22 +449,29 @@
+       free (driver_name);
+       return false;
+     }
+-
+-  if (strcmp (driver_name, "i915") == 0)
++  backend->driver_interface = NULL;
++#ifdef PLY_ENABLE_LIBDRM_INTEL
++  if (backend->driver_interface == NULL && strcmp (driver_name, "i915") == 0)
+     {
+       backend->driver_interface = ply_renderer_i915_driver_get_interface ();
+       backend->driver_supports_mapping_console = true;
+     }
+-  else if (strcmp (driver_name, "radeon") == 0)
++#endif
++#ifdef PLY_ENABLE_LIBDRM_RADEON
++  if (backend->driver_interface == NULL && strcmp (driver_name, "radeon") == 0)
+     {
+       backend->driver_interface = ply_renderer_radeon_driver_get_interface ();
+       backend->driver_supports_mapping_console = false;
+     }
+-  else if (strcmp (driver_name, "nouveau") == 0)
++#endif
++#ifdef PLY_ENABLE_LIBDRM_NOUVEAU
++  if (backend->driver_interface == NULL && strcmp (driver_name, "nouveau") == 0)
+     {
+       backend->driver_interface = ply_renderer_nouveau_driver_get_interface ();
+       backend->driver_supports_mapping_console = false;
+     }
++#endif
++
+   free (driver_name);
+ 
+   if (backend->driver_interface == NULL)
+diff -Naur plymouth-0.8.3/src/plugins/renderers/Makefile.am plymouth-0.8.3.new/src/plugins/renderers/Makefile.am
+--- plymouth-0.8.3/src/plugins/renderers/Makefile.am	2010-05-06 19:32:20.000000000 +0200
++++ plymouth-0.8.3.new/src/plugins/renderers/Makefile.am	2011-02-03 19:14:06.316946754 +0100
+@@ -1,2 +1,3 @@
+-SUBDIRS = frame-buffer drm x11
++SUBDIRS = frame-buffer x11 drm
++
+ MAINTAINERCLEANFILES = Makefile.in

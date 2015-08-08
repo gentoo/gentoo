@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="lzmajio" default="jar" basedir=".">
+	<target name="init">
+		<mkdir dir="build"/>
+		<mkdir dir="docs"/>
+	</target>
+	<target name="compile" depends="init">
+		<javac srcdir="SevenZip" destdir="build"/>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="lzma.jar" basedir="build"/>
+	</target>
+
+	<target name="javadoc" depends="init">
+		<javadoc sourcepath="." destdir="docs"/>
+	</target>
+</project>

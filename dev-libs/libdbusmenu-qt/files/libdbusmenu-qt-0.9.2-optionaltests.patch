@@ -1,0 +1,17 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -59,8 +59,13 @@
+     DESTINATION lib${LIB_SUFFIX}/pkgconfig
+     )
+ 
++
++option(BUILD_TESTS "Build tests" ON)
++
+ add_subdirectory(src)
+-add_subdirectory(tests)
++if(BUILD_TESTS)
++    add_subdirectory(tests)
++endif(BUILD_TESTS)
+ add_subdirectory(tools)
+ 
+ if(WITH_DOC)

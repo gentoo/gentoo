@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+		<description>Primary Maintainer</description>
+	</maintainer>
+	<longdescription>
+		XMMS2-Scrobbler is a client for XMMS2 that feeds information about the songs
+		you played to last.fm, formerly known as AudioScrobbler.
+		XMMS2-Scrobbler supports "multi-scrobbling", i.e. it can talk to more than
+		one AudioScrobbler server.
+	</longdescription>
+</pkgmetadata>

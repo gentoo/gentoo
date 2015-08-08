@@ -1,0 +1,39 @@
+From 2fd545b77c3a2c5f0bc1b0fc5f851857127cc2f3 Mon Sep 17 00:00:00 2001
+From: Jean-Philippe Menil <jpmenil@gmail.com>
+Date: Fri, 28 Nov 2014 17:08:16 +0000
+Subject: [PATCH] Fix RDP initialization with recent FreeRDP
+
+https://bugzilla.gnome.org/show_bug.cgi?id=740868
+---
+ plugins/rdp/vinagre-rdp-tab.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/rdp/vinagre-rdp-tab.c b/plugins/rdp/vinagre-rdp-tab.c
+index 02f5e4e..770fe99 100644
+--- a/plugins/rdp/vinagre-rdp-tab.c
++++ b/plugins/rdp/vinagre-rdp-tab.c
+@@ -27,7 +27,6 @@
+ #include <freerdp/api.h>
+ #include <freerdp/types.h>
+ #include <freerdp/freerdp.h>
+-#include <freerdp/utils/event.h>
+ #include <freerdp/gdi/gdi.h>
+ #if HAVE_FREERDP_1_1
+ #include <freerdp/locale/keyboard.h>
+@@ -363,7 +362,15 @@ frdp_post_connect (freerdp *instance)
+   rdpGdi               *gdi;
+   int                   stride;
+ 
+-  gdi_init (instance, CLRBUF_24BPP, NULL);
++  gdi_init (instance,
++#if defined(FREERDP_VERSION_MAJOR) && defined(FREERDP_VERSION_MINOR) && \
++    !(FREERDP_VERSION_MAJOR > 1 || (FREERDP_VERSION_MAJOR == 1 && \
++    FREERDP_VERSION_MINOR >= 2))
++                    CLRBUF_24BPP,
++#else
++                    CLRBUF_32BPP,
++#endif
++                    NULL);
+   gdi = instance->context->gdi;
+ 
+   instance->update->BeginPaint = frdp_begin_paint;

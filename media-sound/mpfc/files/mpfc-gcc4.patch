@@ -1,0 +1,13 @@
+--- mpfc-1.3.7/plugins/input/audiocd/audiocd.c.old	2006-11-05 21:13:25.000000000 +0100
++++ mpfc-1.3.7/plugins/input/audiocd/audiocd.c	2006-11-05 21:13:35.000000000 +0100
+@@ -60,8 +60,8 @@
+ /* Tracks information array */
+ struct acd_trk_info_t acd_tracks_info[ACD_MAX_TRACKS];
+ int acd_num_tracks = 0;
+-static int acd_cur_track = -1;
+-static bool_t acd_info_read = FALSE;
++int acd_cur_track = -1;
++bool_t acd_info_read = FALSE;
+ 
+ /* Current time */
+ static int acd_time = 0;

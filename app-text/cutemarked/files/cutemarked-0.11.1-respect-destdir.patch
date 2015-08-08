@@ -1,0 +1,24 @@
+diff -ru CuteMarkEd-0.11.1/app/app.pro CuteMarkEd-0.11.1-sane/app/app.pro
+--- CuteMarkEd-0.11.1/app/app.pro	2015-07-06 12:02:22.000000000 +0200
++++ CuteMarkEd-0.11.1-sane/app/app.pro	2015-07-09 14:53:29.398899757 +0200
+@@ -243,7 +243,7 @@
+ ## INSTALLATION
+ 
+ unix {
+-   isEmpty(PREFIX): PREFIX = /usr
++   isEmpty(PREFIX): PREFIX = $${ROOT}/usr
+    DATADIR = $${PREFIX}/share
+ 
+    # install desktop file
+diff -ru CuteMarkEd-0.11.1/fontawesomeicon/fontawesomeicon.pro CuteMarkEd-0.11.1-sane/fontawesomeicon/fontawesomeicon.pro
+--- CuteMarkEd-0.11.1/fontawesomeicon/fontawesomeicon.pro	2015-07-06 12:02:22.000000000 +0200
++++ CuteMarkEd-0.11.1-sane/fontawesomeicon/fontawesomeicon.pro	2015-07-09 14:52:45.867901697 +0200
+@@ -39,7 +39,7 @@
+ 
+ unix {
+    # install plugin
+-   target.path = $$[QT_INSTALL_PLUGINS]/iconengines
++   target.path = $${ROOT}/$$[QT_INSTALL_PLUGINS]/iconengines
+    INSTALLS += target
+    message("The project will be installed in $$[QT_INSTALL_PLUGINS]/iconengines")
+ }

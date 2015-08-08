@@ -1,0 +1,26 @@
+diff -Naur spew-1.0.8.orig/man/Makefile.am spew-1.0.8/man/Makefile.am
+--- spew-1.0.8.orig/man/Makefile.am	2008-05-13 00:47:28.000000000 -0400
++++ spew-1.0.8/man/Makefile.am	2011-04-05 09:39:32.000000000 -0400
+@@ -10,11 +10,5 @@
+ 	sed -e 's!SPEW_VERSION!$(VERSION)!' \
+ 	    -e 's!SYSCONFDIR!$(sysconfdir)!' $< >$@
+ 
+-install-data-am:	install-man install-man-local
+-
+-install-man-local:
+-	(cd $(DESTDIR)$(mandir)/man1 && $(LN_S) -f spew.1 gorge.1)
+-	(cd $(DESTDIR)$(mandir)/man1 && $(LN_S) -f spew.1 regorge.1)
+-
+ help2man:
+ 	help2man --section=1 --no-info --name="measures I/O performance and/or generates I/O load" --include="spew.1.include" --output=spew.1.in ../src/spew
+diff -Naur spew-1.0.8.orig/src/Makefile.am spew-1.0.8/src/Makefile.am
+--- spew-1.0.8.orig/src/Makefile.am	2008-05-13 00:47:20.000000000 -0400
++++ spew-1.0.8/src/Makefile.am	2011-04-05 09:35:16.000000000 -0400
+@@ -38,7 +38,3 @@
+                SpewTuiStatusWindow.cpp SpewTuiStatusWindow.h
+ 
+ spew_LDFLAGS = $(STATIC_LINK)
+-
+-install-exec-local:
+-	(cd $(DESTDIR)$(bindir) && $(LN_S) -f spew gorge)
+-	(cd $(DESTDIR)$(bindir) && $(LN_S) -f spew regorge)

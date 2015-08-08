@@ -1,0 +1,27 @@
+commit e41cf68206eb16be678eeaa1dc998d94d2f93d57
+Author: hasufell <hasufell@gentoo.org>
+Date:   Tue Aug 27 01:40:58 2013 +0200
+
+    respect system CFLAGS
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 5202b99..949d494 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -471,16 +471,8 @@ set(CFLAGS
+     -DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"
+     -DLANGUAGE_SUPPORT_DIRECTORY=\"${LANGUAGE_SUPPORT_DIRECTORY}\"
+     -DGCR_API_SUBJECT_TO_CHANGE
+-    -g
+ )
+ 
+-if (NOT DEBUG)
+-    set(CFLAGS
+-        ${CFLAGS}
+-        -O2
+-    )    
+-endif ()
+-
+ if (REF_TRACKING)
+     message(STATUS "Reference tracking: ON")
+     set(EXTRA_VALA_OPTIONS

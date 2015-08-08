@@ -1,0 +1,104 @@
+diff -Naur l7-filter-userspace-0.11-orig/l7-conntrack.cpp l7-filter-userspace-0.11-ptch/l7-conntrack.cpp
+--- l7-filter-userspace-0.11-orig/l7-conntrack.cpp	2009-02-26 21:40:28.000000000 +0000
++++ l7-filter-userspace-0.11-ptch/l7-conntrack.cpp	2009-10-19 17:40:42.000000000 +0000
+@@ -121,25 +121,10 @@
+   return (char *)buffer;
+ }
+ 
+-static int sprintf_conntrack_key(char *buf, struct nfct_conntrack *ct, 
+-                          unsigned int flags) 
+-{
+-  int size = 0;
+-
+-  size += nfct_sprintf_protocol(buf, ct);
+-  size += nfct_sprintf_address(buf+size, &ct->tuple[NFCT_DIR_ORIGINAL]);
+-  size += nfct_sprintf_proto(buf+size, &ct->tuple[NFCT_DIR_ORIGINAL]);
+-
+-  /* Delete the last blank space */
+-  buf[size-1] = '\0';
+-
+-  return size;
+-}
+-
+-static string make_key(nfct_conntrack* ct, int flags)
++static string make_key(nfct_conntrack* ct, int flags, int type)
+ {
+   char key[512];
+-  int keysize = sprintf_conntrack_key(key, ct, flags);
++  int keysize = nfct_snprintf(key, sizeof(key), (const nf_conntrack *)ct, type, NFCT_O_DEFAULT, flags);
+   if(keysize >= 512){
+     cerr << "Yike! Overflowed key!\n";
+     exit(1);
+@@ -148,28 +133,28 @@
+   return key;
+ }
+ 
+-static int l7_handle_conntrack_event(void *arg, unsigned int flags, int type, 
++static int l7_handle_conntrack_event(enum nf_conntrack_msg_type type, struct nf_conntrack* arg,
+ 					void *data)
+ {
+   l7_conntrack * l7_conntrack_handler = (l7_conntrack *) data;
+ 
+   nfct_conntrack* ct = (nfct_conntrack*)arg;
++  u_int8_t protonum = *(u_int8_t *)nfct_get_attr((const nf_conntrack *)ct, ATTR_ORIG_L4PROTO);
+ 
+   // I don't think there is any demand for ICMP. These are enough work for now.
+-  if(ct->tuple[0].protonum != IPPROTO_TCP && 
+-     ct->tuple[0].protonum != IPPROTO_UDP) return 0;
++  if(protonum != IPPROTO_TCP && protonum != IPPROTO_UDP) return 0;
+ 
+-  if(type == NFCT_MSG_DESTROY) l7printf(3, "Got event: NFCT_MSG_DESTROY\n");
+-  if(type == NFCT_MSG_NEW)     l7printf(3, "Got event: NFCT_MSG_NEW\n");
+-  if(type == NFCT_MSG_UPDATE)  l7printf(3, "Got event: NFCT_MSG_UPDATE\n");
+-  if(type == NFCT_MSG_UNKNOWN) l7printf(3, "Got event: NFCT_MSG_UNKNOWN\n");
++  if(type == NFCT_T_DESTROY) l7printf(3, "Got event: NFCT_T_DESTROY\n");
++  if(type == NFCT_T_NEW)     l7printf(3, "Got event: NFCT_T_NEW\n");
++  if(type == NFCT_T_UPDATE)  l7printf(3, "Got event: NFCT_T_UPDATE\n");
++  if(type == NFCT_T_UNKNOWN) l7printf(3, "Got event: NFCT_T_UNKNOWN\n");
+ 
+   // On the first packet, create the connection buffer, etc.
+-  if(type == NFCT_MSG_NEW){
+-    string key = make_key(ct, flags);
++  if(type == NFCT_T_NEW){
++    string key = make_key(ct, 0, NFCT_T_NEW);
+     if (l7_conntrack_handler->get_l7_connection(key)){
+       // this happens sometimes
+-      cerr << "Received NFCT_MSG_NEW but already have a connection. Packets = " 
++      cerr << "Received NFCT_T_NEW but already have a connection. Packets = " 
+            << l7_conntrack_handler->get_l7_connection(key)->get_num_packets() 
+            << endl;
+       l7_conntrack_handler->remove_l7_connection(key);
+@@ -179,9 +164,9 @@
+     l7_conntrack_handler->add_l7_connection(thisconnection, key);
+     thisconnection->key = key;
+   }
+-  else if(type == NFCT_MSG_DESTROY){
++  else if(type == NFCT_T_DESTROY){
+     // clean up the connection buffer, etc.
+-    string key = make_key(ct, flags);
++    string key = make_key(ct, 0, NFCT_T_DESTROY);
+     if(l7_conntrack_handler->get_l7_connection(key)){
+       l7_conntrack_handler->remove_l7_connection(key);
+     }
+@@ -193,7 +178,7 @@
+ 
+ l7_conntrack::~l7_conntrack() 
+ {
+-  nfct_conntrack_free(ct);
++  free(ct);
+   nfct_close(cth);
+ }
+ 
+@@ -230,9 +215,9 @@
+ {
+   int ret;
+ 
+-  nfct_register_callback(cth, l7_handle_conntrack_event, (void *)this);
+-  ret = nfct_event_conntrack(cth); // this is the main loop
++  nfct_callback_register(cth, NFCT_T_NEW, l7_handle_conntrack_event, (void *)this);
++  ret = nfct_catch(cth); // this is the main loop
+   
+   nfct_close(cth);
+-  nfct_conntrack_free(ct);
++  free(ct);
+ }

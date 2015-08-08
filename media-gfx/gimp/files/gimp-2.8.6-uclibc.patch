@@ -1,0 +1,45 @@
+From 4fb7a436bca3e11abfda8bc23818af0f09714b9d Mon Sep 17 00:00:00 2001
+From: Michael Natterer <mitch@gimp.org>
+Date: Fri, 02 Aug 2013 14:50:00 +0000
+Subject: Bug 704980 - uclibc - base-utils.c: execinfo.h: No such file or directory
+
+Apply patch from Amadeusz Slawinski that checks for execinfo.h and
+builds the code that needs it conditionally.
+---
+diff --git a/app/base/base-utils.c b/app/base/base-utils.c
+index 757f58d..44a9e89 100644
+--- a/app/base/base-utils.c
++++ b/app/base/base-utils.c
+@@ -29,7 +29,7 @@
+ #include <process.h>
+ #endif
+ 
+-#ifdef G_OS_UNIX
++#if defined(G_OS_UNIX) && defined(HAVE_EXECINFO_H)
+ /* For get_backtrace() */
+ #include <stdlib.h>
+ #include <string.h>
+@@ -112,7 +112,7 @@ get_physical_memory_size (void)
+ char *
+ get_backtrace (void)
+ {
+-#ifdef G_OS_UNIX
++#if defined(G_OS_UNIX) && defined(HAVE_EXECINFO_H)
+   void     *functions[MAX_FUNC];
+   char    **function_names;
+   int       n_functions;
+diff --git a/configure.ac b/configure.ac
+index 0bbcbc7..15c7cc6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -416,7 +416,7 @@ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+ AC_HEADER_TIME
+ 
+-AC_CHECK_HEADERS(sys/param.h sys/time.h sys/times.h sys/wait.h unistd.h)
++AC_CHECK_HEADERS(execinfo.h sys/param.h sys/time.h sys/times.h sys/wait.h unistd.h)
+ 
+ AC_TYPE_PID_T
+ AC_FUNC_VPRINTF
+--
+cgit v0.9.2

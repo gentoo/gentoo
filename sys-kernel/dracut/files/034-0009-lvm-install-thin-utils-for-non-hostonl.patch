@@ -1,0 +1,41 @@
+From bd3303000b32cb500b2d769c6852784a807cee47 Mon Sep 17 00:00:00 2001
+From: Harald Hoyer <harald@redhat.com>
+Date: Tue, 8 Oct 2013 10:30:00 +0200
+Subject: [PATCH 09/12] lvm: install thin utils for non-hostonly
+
+---
+ modules.d/90lvm/module-setup.sh | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/modules.d/90lvm/module-setup.sh b/modules.d/90lvm/module-setup.sh
+index f98ffff..514addc 100755
+--- a/modules.d/90lvm/module-setup.sh
++++ b/modules.d/90lvm/module-setup.sh
+@@ -52,13 +52,17 @@ install() {
+ 
+     inst lvm
+ 
+-    get_host_lvs | while read line; do
+-        printf "%s" " rd.lvm.lv=$line"
+-        if ! [[ $_needthin ]]; then
+-            [[ "$(lvs --noheadings -o segtype ${line%%/*} 2>/dev/null)" == *thin* ]] && _needthin=1
+-        fi
+-    done >> "${initdir}/etc/cmdline.d/90lvm.conf"
+-    echo >> "${initdir}/etc/cmdline.d/90lvm.conf"
++    if [[ $hostonly ]]; then
++        get_host_lvs | while read line; do
++            printf "%s" " rd.lvm.lv=$line"
++            if ! [[ $_needthin ]]; then
++                [[ "$(lvs --noheadings -o segtype ${line%%/*} 2>/dev/null)" == *thin* ]] && _needthin=1
++            fi
++        done >> "${initdir}/etc/cmdline.d/90lvm.conf"
++        echo >> "${initdir}/etc/cmdline.d/90lvm.conf"
++    else
++        _needthin=1
++    fi
+ 
+     inst_rules "$moddir/64-lvm.rules"
+ 
+-- 
+1.8.4.3
+

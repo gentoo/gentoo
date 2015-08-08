@@ -1,0 +1,22 @@
+X-Bug-Debian: http://bugs.debian.org/357908
+X-Bug-Gentoo: https://bugs.gentoo.org/295895
+--- b/Makefile
++++ a/Makefile
+@@ -29,7 +29,7 @@
+ 	@for mdir in $(SUBDIRS); do \
+ 	  if test -d $$mdir; then \
+ 	    if test -f $$mdir/Makefile.PL -a ! -f $$mdir/Makefile; then \
+-	      cd $$mdir; $(PERL) Makefile.PL PREFIX=$(prefix); cd ..; \
++	      cd $$mdir; $(PERL) Makefile.PL PREFIX=$(prefix) INSTALLDIRS=vendor; cd ..; \
+ 	    fi; \
+ 	    $(MAKE) -C $$mdir PREFIX=$(prefix); \
+ 	  fi; \
+@@ -46,7 +46,7 @@
+ 	@for mdir in $(SUBDIRS); do \
+ 	  if test -d $$mdir; then \
+ 	    if test -f $$mdir/Makefile.PL -a ! -f $$mdir/Makefile; then \
+-	      cd $$mdir; $(PERL) Makefile.PL PREFIX=$(prefix); cd ..; \
++	      cd $$mdir; $(PERL) Makefile.PL PREFIX=$(prefix) INSTALLDIRS=vendor; cd ..; \
+ 	    fi; \
+ 	    $(MAKE) -C $$mdir PREFIX=$(prefix) install; \
+ 	  fi; \

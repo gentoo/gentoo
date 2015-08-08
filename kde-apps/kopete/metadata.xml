@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<!-- PLUGINS -->
+		<flag name="addbookmarks">Automatically add incoming urls to bookmarks.</flag>
+		<flag name="autoreplace">Automatically replace selected text</flag>
+		<flag name="contactnotes">Enables writing personal notes for contacts.</flag>
+		<flag name="highlight">Allows you to specify highlights on specific events.</flag>
+		<flag name="history">Enables saving chat history.</flag>
+		<flag name="latex">Embed latex formatted text into messages.</flag>
+		<flag name="nowlistening">Shows song you currently listen to in your status/etc. Bindings for many players.</flag>
+		<flag name="otr">Allows crypting your chat (drugs and talking nonsense are considered as good alternatives ;]).</flag>
+		<flag name="pipes">Send messages to external pipe.</flag>
+		<flag name="privacy">Filter for incoming messages</flag>
+		<flag name="statistics">Everybody loves statistic graphs, especially cake ones. ;]</flag>
+		<flag name="texteffect">Various fancy text effects for your messages (don't ever consider writing us with this enabled ;]).</flag>
+		<flag name="translator">Translate incoming and outgoing messages.</flag>
+		<flag name="urlpicpreview">Enables in conversation pictures preview.</flag>
+		<flag name="webpresence">Show your status and some more information on web.</flag>
+		<!-- PROTOCOLS -->
+		<flag name="gadu">Enable the Gadu protocol handler.</flag>
+		<flag name="groupwise">Enable the Groupwise protocol handler.</flag>
+		<!-- uncomment this when enabled in ebuild
+		<flag name="irc">Enable the IRC protocol handler.</flag>
+		-->
+		<flag name="meanwhile">Enable the Sametime protocol handler.</flag>
+		<flag name="skype">Enable Skype protocol handler (not fully functional yet).</flag>
+		<!-- uncomment this when enabled in ebuild
+		<flag name="telepathy">Enable support for the real-time communication framework telepathy.</flag>
+		-->
+		<flag name="sms">Enable SMS sendinge functionality.</flag>
+		<flag name="testbed">Enable the testbed protocol.</flag>
+		<flag name="winpopup">Enable pop-up messages sending on windows. (same as good old "net send" messages ;])</flag>
+		<flag name="yahoo">Enable yahoo protocol support.</flag>
+		<flag name="zeroconf">Enable Link-Local Messaging via the bonjour protocol.</flag>
+	</use>
+	<herd>kde</herd>
+</pkgmetadata>

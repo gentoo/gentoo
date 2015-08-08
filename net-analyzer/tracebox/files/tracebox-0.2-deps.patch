@@ -1,0 +1,30 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,15 +32,11 @@
+ 	])
+ ])
+ 
+-# Make sure libcrafter build a static library by adding the --disable-shared
+-# argument to the configure script.
+-ac_configure_args_pre="$ac_configure_args"
+-ac_configure_args_post="$ac_configure_args --disable-shared"
+-ac_configure_args="$ac_configure_args_post"
++# check for libcrafter
++PKG_CHECK_MODULES(crafter, crafter, LIBS="$LIBS $crafter_LIBS",AC_MSG_ERROR([libcrafter is required]))
+ 
+-AC_CONFIG_COMMANDS_PRE([ac_configure_args="$ac_configure_args_pre"])
+-AC_CONFIG_COMMANDS_POST([ac_configure_args="$ac_configure_args_post"])
+-AC_CONFIG_SUBDIRS(noinst/libcrafter/libcrafter)
++# check for libpcap
++AC_CHECK_LIB(pcap,pcap_open_offline,LIBS="$LIBS -lpcap",AC_MSG_ERROR([libpcap is required]))
+ 
+ # Enable click submodule
+ AS_IF([test "x$enable_tests" = "xyes"], [
+@@ -50,7 +46,6 @@
+ 
+ 	AC_CONFIG_COMMANDS_PRE([ac_configure_args="$ac_configure_args_pre"])
+ 	AC_CONFIG_COMMANDS_POST([ac_configure_args="$ac_configure_args_post"])
+-	AC_CONFIG_SUBDIRS(tests/tools/click)
+ 
+ 	AC_PATH_PROG([FAKEROOT], [fakeroot])
+ 	AS_IF([test -z "$FAKEROOT"], [

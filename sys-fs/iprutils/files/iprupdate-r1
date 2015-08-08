@@ -1,0 +1,11 @@
+#!/sbin/runscript
+
+depend() {
+	need logger iprinit
+}
+
+start() {
+	ebegin "Checking ipr microcode levels"
+	/usr/sbin/iprupdate 2>&1 > /dev/null
+	eend $? "Failed to complete ipr microcode updates"
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-mathematics</herd>
+	<longdescription lang="en">
+  gf2x is a C/C++ software package containing routines for fast
+  arithmetic in GF(2)[x] (multiplication, squaring, GCD) and searching
+  for irreducible/primitive trinomials.
+</longdescription>
+<use>
+  <flag name="bindist">Disable automatic fine-tuning to local
+  processor features like pclmul or sse2.</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+Fixes build failnure on gnome-base/gnome-settings-daemon-3.2.2
+
+ gsd-pointing-device-plugin.c:59:1: warning: 'gsd_pointing_device_plugin_class_finalize' used but never defined [enabled by default]
+  CCLD   libpointing-device.la
+  ld: .libs/libpointing_device_la-gsd-pointing-device-plugin.o: relocation R_X86_64_PC32 against undefined symbol `gsd_pointing_device_plugin_class_finalize'
+
+Gentoo-bug: http://bugs.gentoo.org/384001
+Patch-by: battle.jerboa@gmail.com
+--- a/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c	2012-02-02 13:32:20.000000000 +0400
++++ b/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c	2012-02-02 13:32:04.000000000 +0400
+@@ -214,6 +214,11 @@
+     plugin_class->activate = activate;
+     plugin_class->deactivate = deactivate;
+ }
++
++static void
++gsd_pointing_device_plugin_class_finalize (GsdPointingDevicePluginClass *klass)
++{
++}
+ /*
+ vi:ts=4:nowrap:ai:expandtab:sw=4
+ */

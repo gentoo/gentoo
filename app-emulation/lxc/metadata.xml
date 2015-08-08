@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>virtualization</herd>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>dev-zero@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>hwoarang@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="cgmanager">Enable support for cgroup management using <pkg>app-admin/cgmanager</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">lxc/lxc</remote-id>
+  </upstream>
+</pkgmetadata>

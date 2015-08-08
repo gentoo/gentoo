@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<longdescription>
+Emacs Muse is an authoring and publishing environment for Emacs. It
+simplifies the process of writing documents and publishing them to
+various output formats.
+
+Muse consists of two main parts: an enhanced text-mode for authoring
+documents and navigating within Muse projects, and a set of publishing
+styles for generating different kinds of output.
+
+This idea is not in any way new. Numerous systems exist - even one
+other for Emacs itself (Bhl Mode). What Muse adds to the picture is a
+more modular environment, with a rather simple core, in which "styles"
+are derived from to create new styles. Much of Muse's overall
+functionality is optional. For example, you can use the publisher
+without the major-mode, or the mode without doing any publishing; or
+if you don't load the Texinfo or LaTeX modules, those styles won't be
+available.
+
+The Muse codebase is a departure from emacs-wiki.el version 2.44. The
+code has been restructured and rewritten, especially its publishing
+functions. The focus in this revision is on the authoring and
+publishing aspects, and the "wikiness" has been removed as a default
+behavior (available as the optional module muse-wiki.el). CamelCase
+words are no longer special by default.
+</longdescription>
+</pkgmetadata>

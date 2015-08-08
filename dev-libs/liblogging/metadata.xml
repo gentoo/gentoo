@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>ultrabug@gentoo.org</email>
+		<name>Ultrabug</name>
+	</maintainer>
+	<maintainer>
+		<email>whissi@whissi.de</email>
+		<name>Thomas D. (Whissi)</name>
+		<description>Proxy-Maintainer, CC. bugs</description>
+	</maintainer>
+	<use>
+		<flag name="rfc3195">
+			Enables RFC 3195 protocol (aka syslog-reliable) support.
+			If you don't know what this is, you don't need it!
+		</flag>
+		<flag name="stdlog">
+			Enables liblogging's core component (think of it as a the next version of the syslog(3) API).
+		</flag>
+	</use>
+</pkgmetadata>

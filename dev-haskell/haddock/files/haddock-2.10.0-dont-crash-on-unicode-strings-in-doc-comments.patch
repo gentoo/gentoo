@@ -1,0 +1,22 @@
+--- haddock-2.10.0-orig/src/Haddock/Lex.x	2012-03-04 03:21:18.000000000 +1100
++++ haddock-2.10.0/src/Haddock/Lex.x	2012-05-30 22:19:31.858259148 +1000
+@@ -181,7 +181,7 @@
+     go inp@(pos, _, str) sc =
+ 	  case alexScan inp sc of
+ 		AlexEOF -> []
+-		AlexError _ -> error "lexical error"
++		AlexError _ -> []
+ 		AlexSkip  inp' _       -> go inp' sc
+ 		AlexToken inp'@(pos',_,_) len act -> act pos (take len str) sc (\sc -> go inp' sc) dflags
+ 
+--- haddock-2.10.0-orig/dist/build/haddock/haddock-tmp/Haddock/Lex.hs	2012-03-04 03:21:21.000000000 +1100
++++ haddock-2.10.0/dist/build/haddock/haddock-tmp/Haddock/Lex.hs	2012-05-30 22:23:40.209770708 +1000
+@@ -131,7 +131,7 @@
+     go inp@(pos, _, str) sc =
+ 	  case alexScan inp sc of
+ 		AlexEOF -> []
+-		AlexError _ -> error "lexical error"
++		AlexError _ -> []
+ 		AlexSkip  inp' _       -> go inp' sc
+ 		AlexToken inp'@(pos',_,_) len act -> act pos (take len str) sc (\sc -> go inp' sc) dflags
+ 

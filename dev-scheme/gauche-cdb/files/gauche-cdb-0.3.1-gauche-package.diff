@@ -1,0 +1,133 @@
+--- Gauche-cdb-0.3.1.orig/Makefile.in
++++ Gauche-cdb-0.3.1/Makefile.in
+@@ -10,76 +10,57 @@
+ VPATH       = $(srcdir)
+ 
+ # These may be overridden by make invocators
+-DESTDIR  =
+-OPTFLAGS = @OPTFLAGS@
+-CC       = @CC@
+-LIBS     = @LIBS@
+-CFLAGS   = @CFLAGS@
+-CPPFLAGS = @CPPFLAGS@  # AC_LIB_LINKFLAGS adds to this..
+-LDFLAGS  = @LDFLAGS@
+-INSTALL  = @INSTALL@
+-INSTALL_TYPE = @INSTALL_TYPE@
+-
+-# Set by configure
+-GOSH     = @GOSH@
+-GAUCHE_CONFIG = @GAUCHE_CONFIG@
++DESTDIR        =
++CPPFLAGS       = @CPPFLAGS@  # AC_LIB_LINKFLAGS adds to this..
++GOSH           = "@GOSH@"
++GAUCHE_CONFIG  = "@GAUCHE_CONFIG@"
++GAUCHE_PACKAGE = "@GAUCHE_PACKAGE@"
++INSTALL        = "@GAUCHE_INSTALL@"
++
++# Other parameters
++SOEXT    = @SOEXT@
+ OBJEXT   = @OBJEXT@
+-DSOEXT   = @SOEXT@
++EXEEXT   = @EXEEXT@
+ 
+-MODULE   = cdb
++# Module-specific stuff
++PACKAGE   = cdb
+ 
+-ARCHFILES = $(MODULE).$(DSOEXT)
+-SCMFILES  = $(MODULE).scm
++ARCHFILES = $(PACKAGE).$(SOEXT)
++SCMFILES  = $(PACKAGE).scm
+ HEADERS   =
+ 
+ TARGET    = $(ARCHFILES)
+-OBJS      = $(MODULE)_head.$(OBJEXT) \
+-            cdb.$(OBJEXT) \
+-            $(MODULE)_tail.$(OBJEXT)
+-GENERATED = cdb.c $(MODULE)_head.c $(MODULE)_tail.c
++GENERATED =
+ CONFIG_GENERATED = Makefile config.cache config.log config.status \
+-		   configure.lineno autom4te*.cache
+-
+-HEADER_INSTALL_DIR  = $(DESTDIR)/`$(GAUCHE_CONFIG) --$(INSTALL_TYPE)incdir`
+-SCM_INSTALL_DIR     = $(DESTDIR)/`$(GAUCHE_CONFIG) --$(INSTALL_TYPE)libdir`/dbm
+-ARCH_INSTALL_DIR    = $(DESTDIR)/`$(GAUCHE_CONFIG) --$(INSTALL_TYPE)archdir`
+-
+-all : $(TARGET)
+-
+-.SUFFIXES: .o .stub
++		   configure.lineno autom4te*.cache @PACKAGE_NAME@.gpd
+ 
+-.c.o:
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
++HEADER_INSTALL_DIR  = "$(DESTDIR)`$(GAUCHE_CONFIG) --siteincdir`"
++SCM_INSTALL_DIR     = "$(DESTDIR)`$(GAUCHE_CONFIG) --sitelibdir`"
++ARCH_INSTALL_DIR    = "$(DESTDIR)`$(GAUCHE_CONFIG) --sitearchdir`"
+ 
+-.stub.c:
+-	$(GOSH) genstub $<
++cdb_SRCS = cdb.stub
++cdb_LIBS = @LIBCDB@
+ 
+-$(MODULE).$(DSOEXT): $(OBJS)
+-	$(CC) -Wl,-rpath -Wl,`gauche-config --sysarchdir` $(LDFLAGS) $(MODULE).$(DSOEXT) $(OBJS) $(LIBS) @LIBCDB@
++all : $(TARGET)
+ 
+-$(MODULE)_head.c $(MODULE)_tail.c :
+-	$(GAUCHE_CONFIG) --fixup-extension $(MODULE)
++$(PACKAGE).$(SOEXT): $(cdb_SRCS)
++	$(GAUCHE_PACKAGE) compile --verbose \
++	    --libs="$(cdb_LIBS)" --cppflags="$(CPPFLAGS)" \
++	    $(PACKAGE) $(cdb_SRCS)
+ 
+ check : all
+ 	@rm -f test.log
+ 	$(GOSH) -I. test.scm > test.log
+ 
+ install : all
+-	if test ! -z "$(HEADERS)"; then \
+-	  $(INSTALL) -d $(HEADER_INSTALL_DIR); \
+-	  $(INSTALL) -m 444 $(HEADERS) $(HEADER_INSTALL_DIR); \
+-	fi
+-	if test ! -z "$(SCMFILES)"; then \
+-	  $(INSTALL) -d $(SCM_INSTALL_DIR); \
+-	  $(INSTALL) -m 444 $(SCMFILES) $(SCM_INSTALL_DIR); \
+-	fi
+-	if test ! -z "$(ARCHFILES)"; then \
+-	  $(INSTALL) -d $(ARCH_INSTALL_DIR); \
+-	  $(INSTALL) -m 555 $(ARCHFILES) $(ARCH_INSTALL_DIR); \
+-	fi
++	$(INSTALL) -m 444 -T $(HEADER_INSTALL_DIR) $(HEADERS)
++	$(INSTALL) -m 444 -T $(SCM_INSTALL_DIR)/dbm $(SCMFILES)
++	$(INSTALL) -m 555 -T $(ARCH_INSTALL_DIR) $(ARCHFILES)
++	$(INSTALL) -m 444 -T $(SCM_INSTALL_DIR)/.packages @PACKAGE_NAME@.gpd
+ 
+ clean :
+-	rm -rf core $(TARGET) $(OBJS) $(GENERATED) *~ test.log so_locations
++	$(GAUCHE_PACKAGE) compile --clean $(PACKAGE) $(cdb_SRCS)
++	rm -rf core $(TARGET) $(GENERATED) *~ test.log so_locations
+ 
+ distclean : clean
+ 	rm -rf $(CONFIG_GENERATED)
+--- Gauche-cdb-0.3.1.orig/configure.ac
++++ Gauche-cdb-0.3.1/configure.ac
+@@ -4,18 +4,11 @@
+ AC_INIT(Gauche-cdb, 0.3.1)
+ AC_CONFIG_SRCDIR(cdb.stub)
+ 
+-AC_CANONICAL_SYSTEM
+-
+ AC_GAUCHE_INIT_EXT
+-AC_GAUCHE_INSTALL_TYPE(site)
+ AC_GAUCHE_CC
+-AC_GAUCHE_FLAGS
+-
+-AC_PROG_INSTALL
+ 
+ AC_LIB_LINKFLAGS(cdb)
+ 
+-AC_GAUCHE_FIX_LIBS
+-
++AC_GAUCHE_MAKE_GPD
+ echo $PACKAGE_VERSION > VERSION
+ AC_OUTPUT(Makefile)

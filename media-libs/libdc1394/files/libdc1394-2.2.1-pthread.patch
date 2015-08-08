@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/514008
+
+--- dc1394/usb/Makefile.am
++++ dc1394/usb/Makefile.am
+@@ -8,7 +8,7 @@
+ endif
+ 
+ AM_CFLAGS = -I$(top_srcdir) -I$(top_srcdir)/dc1394 $(LIBUSB_CFLAGS)
+-libdc1394_usb_la_LIBADD = $(LIBUSB_LIBS)
++libdc1394_usb_la_LIBADD = $(LIBUSB_LIBS) -lpthread
+ libdc1394_usb_la_SOURCES =  \
+ 	control.c \
+ 	usb.h \

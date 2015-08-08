@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <maintainer>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription>
+  GLE (Graphics Layout Engine) is a high-quality graphics package for
+  scientists, combining a user-friendly scripting language with a full
+  range of facilities for producing publication-quality graphs,
+  diagrams, posters and slides.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">glx</remote-id>
+  </upstream>
+</pkgmetadata>

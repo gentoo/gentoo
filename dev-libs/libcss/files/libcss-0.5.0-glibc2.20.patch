@@ -1,0 +1,17 @@
+--- libcss-0.5.0/Makefile
++++ libcss-0.5.0/Makefile
+@@ -15,13 +15,7 @@
+ WARNFLAGS := -Wall -W -Wundef -Wpointer-arith -Wcast-align \
+ 	-Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes \
+ 	-Wmissing-declarations -Wnested-externs
+-# BeOS/Haiku/AmigaOS4 standard library headers create warnings
+-ifneq ($(HOST),i586-pc-haiku)
+-  ifneq ($(findstring amigaos,$(HOST)),amigaos)
+-    WARNFLAGS := $(WARNFLAGS) -Werror
+-  endif
+-endif
+-CFLAGS := -D_BSD_SOURCE -I$(CURDIR)/include/ \
++CFLAGS := -D_DEFAULT_SOURCE -I$(CURDIR)/include/ \
+ 	-I$(CURDIR)/src $(WARNFLAGS) $(CFLAGS)
+ ifneq ($(GCCVER),2)
+   CFLAGS := $(CFLAGS) -std=c99

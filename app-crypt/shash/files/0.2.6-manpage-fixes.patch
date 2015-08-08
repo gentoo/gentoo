@@ -1,0 +1,30 @@
+diff -pruN shash-0.2.6/doc/shash.1 shash-0.2.6-r1/doc/shash.1
+--- shash-0.2.6/doc/shash.1	2004-09-18 09:51:04.004647112 +0100
++++ shash-0.2.6-r1/doc/shash.1	2004-09-18 09:57:26.062565480 +0100
+@@ -31,7 +31,7 @@ Because of this shash also supports HMAC
+ a mechanism for message authentication using cryptographic hash functions.
+ So shash can use a key with a hash algorithm to produce hashes that can only
+ be verified with the key. This way you can securely check (i.e. you are sure
+-that nobody can modify the mac, without beeing detected)
++that nobody can modify the mac, without being detected)
+ if files in a filesystem were altered. 
+ 
+ If the list of files and digests, that shash produces, is stored as
+@@ -72,7 +72,7 @@ Suppress some not critical warnings.
+ .TP
+ .B \-b
+ Use binary mode. In unix environment, only difference between this and
+-the normal mode is an asterix preceding the filename in the output.
++the normal mode is an asterisk preceding the filename in the output.
+ .TP
+ .B \-c
+ Check the checksum of all files listed in
+@@ -94,7 +94,7 @@ Enter the keyword via the command line. 
+ keyword instead of prompting for it. Keep in mind that someone
+ may see the command you are executing and so your key.
+ .TP
+-.B \-c --config FILE
++.B \-i --config FILE
+ Use the specified configuration file. The default is .shashrc
+ in your home directory. The format of the configuration
+ file is the same as the parameters. An example file is:

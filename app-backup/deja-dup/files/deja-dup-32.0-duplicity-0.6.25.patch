@@ -1,0 +1,41 @@
+=== modified file 'AUTHORS'
+--- AUTHORS	2014-04-29 02:38:47 +0000
++++ AUTHORS	2014-10-23 06:41:44 +0000
+@@ -12,6 +12,10 @@
+ Comment: For specific author information, see the bzr logs
+ License: GPL-3+
+ 
++Files: libdeja/tools/duplicity/DuplicityPlugin.vala
++Copyright: 2014 Adrien Bak <adrien.bak@gmail.com>
++Licence: GPL-3+
++
+ Files: po/*.po
+ Copyright: 2008–2013 Rosetta Contributors and Canonical Ltd
+ License: GPL-3+
+
+=== modified file 'libdeja/tools/duplicity/DuplicityPlugin.vala'
+--- libdeja/tools/duplicity/DuplicityPlugin.vala	2014-01-24 16:07:59 +0000
++++ libdeja/tools/duplicity/DuplicityPlugin.vala	2014-10-23 06:41:44 +0000
+@@ -35,13 +35,17 @@
+   {
+     string output;
+     Process.spawn_command_line_sync("duplicity --version", out output, null, null);
++    var tokens = output.split(" ");
+ 
+-    var tokens = output.split(" ", 2);
+-    if (tokens == null || tokens[0] == null || tokens[1] == null)
++    if (tokens == null || tokens.length < 2 )
+       throw new SpawnError.FAILED(_("Could not understand duplicity version."));
+ 
+-    // First token is 'duplicity' and is ignorable.  Second looks like '0.5.03'
+-    var version_string = tokens[1].strip();
++    // in version 0.6.25, the output fro duplicity --version changed and the string
++    // "duplicity major.minor.micro" is not preceded by a deprecation warning
++    // as a consequence, the substring "major.minor.micro" is now
++    // always the penultimate token (the last one always being null)
++
++    var version_string = tokens[tokens.length - 1].strip();
+     int major, minor, micro;
+     if (!DejaDup.parse_version(version_string, out major, out minor, out micro))
+       throw new SpawnError.FAILED(_("Could not understand duplicity version ‘%s’.").printf(version_string));
+

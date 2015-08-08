@@ -1,0 +1,39 @@
+http://git.pld-linux.org/gitweb.cgi?p=packages/libgnomeprint.git;a=blob;f=bison3.patch
+
+--- libgnomeprint-2.18.8/libgnomeprint/grammar.y.orig	2010-02-09 13:32:51.000000000 +0100
++++ libgnomeprint-2.18.8/libgnomeprint/grammar.y	2013-11-03 21:44:59.859877696 +0100
+@@ -6,8 +6,6 @@
+ #include <libgnomeprint/types.h>
+ #include <libgnomeprint/gnome-print-filter.h>
+ 
+-#define YYPARSE_PARAM graph
+-
+ static void
+ set_value_from_string (GParamSpec *pspec, GValue *v, const gchar *s)
+ {
+@@ -99,7 +97,7 @@
+ }
+ 
+ static int yylex (void *lvalp);
+-static int yyerror (const char *s);
++static int yyerror (graph_t *g, const char *s);
+ %}
+ 
+ %union {
+@@ -117,6 +115,7 @@
+ %type <p> pool
+ 
+ %pure_parser
++%parse-param { graph_t *graph }
+ 
+ %start graph
+ %%
+@@ -185,7 +184,7 @@
+ %%
+ 
+ static int
+-yyerror (const char *s)
++yyerror (graph_t *g, const char *s)
+ {
+ 	return -1;
+ }

@@ -1,0 +1,37 @@
+From 984dec0ed1c52087a4a32e181a1c09817881de39 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Tue, 23 Jun 2015 11:31:56 +0200
+Subject: [PATCH] Add missing includes for *stat
+
+---
+ src/evdev.c | 1 +
+ src/path.c  | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/evdev.c b/src/evdev.c
+index 7e1e5c8..cfcdc34 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -29,6 +29,7 @@
+ #include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <sys/stat.h>
+ #include "linux/input.h"
+ #include <unistd.h>
+ #include <fcntl.h>
+diff --git a/src/path.c b/src/path.c
+index 92535cd..ab4d065 100644
+--- a/src/path.c
++++ b/src/path.c
+@@ -26,6 +26,7 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <string.h>
++#include <sys/stat.h>
+ #include <libudev.h>
+ 
+ #include "path.h"
+-- 
+2.4.3
+

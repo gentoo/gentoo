@@ -1,0 +1,30 @@
+changeset:   1792:99a2017746c0
+tag:         tip
+user:        Michael Palimaka <kensington@gentoo.org>
+date:        Wed Jan 30 05:28:12 2013 +1100
+summary:     Fix underlinking.
+
+diff -r e150672a54ad -r 99a2017746c0 OpenGTL/GTLCore/CMakeLists.txt
+--- a/OpenGTL/GTLCore/CMakeLists.txt	Sat Dec 29 12:27:12 2012 +0100
++++ b/OpenGTL/GTLCore/CMakeLists.txt	Wed Jan 30 05:28:12 2013 +1100
+@@ -10,6 +10,10 @@
+ 
+ ## GTLCore library ##
+ 
++if(PTHREAD_FOUND)
++  set(GTLCore_Thread_LIBS pthread)
++endif(PTHREAD_FOUND)
++
+ set(GTLCore_SRCS
+   AbstractColorConverter.cpp
+   AbstractImage.cpp
+@@ -110,7 +114,7 @@
+ set(EXTRA_GTLCORE_LINK_OPTIONS -Wl,-u,__ZTVN4llvm3JITE )
+ endif()
+ 
+-target_link_libraries(GTLCore ${LLVM_LDFLAGS} ${LLVM_LIBS} ${EXTRA_GTLCORE_LINK_OPTIONS})
++target_link_libraries(GTLCore ${LLVM_LDFLAGS} ${LLVM_LIBS} ${GTLCore_Thread_LIBS} ${EXTRA_GTLCORE_LINK_OPTIONS})
+ 
+ # Set the ABI version of the library
+ set_target_properties(GTLCore PROPERTIES VERSION ${OPENGTL_LIB_VERSION} SOVERSION ${OPENGTL_LIB_SOVERSION} )
+

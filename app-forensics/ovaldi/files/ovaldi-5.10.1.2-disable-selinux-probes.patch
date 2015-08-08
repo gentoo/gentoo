@@ -1,0 +1,94 @@
+--- ./src/linux/ProbeFactory.cpp.old	2011-08-18 14:45:11.314556346 +0200
++++ ./src/linux/ProbeFactory.cpp	2011-08-18 14:45:23.151011753 +0200
+@@ -101,10 +101,6 @@
+ #endif
+ 	} else if (objectName.compare("partition_object") == 0) {
+ 		probe = PartitionProbe::Instance();
+-	} else if (objectName.compare("selinuxsecuritycontext_object") == 0) {
+-		probe = SelinuxSecurityContextProbe::Instance();
+-	} else if (objectName.compare("selinuxboolean_object") == 0) {
+-		probe = SelinuxBooleanProbe::Instance();
+ 	} else if (objectName.compare("iflisteners_object") == 0) {
+ 		probe = IfListenersProbe::Instance();
+ 	} else {
+--- src/linux/ProbeFactory.h.old	2011-08-18 14:47:23.226501075 +0200
++++ src/linux/ProbeFactory.h	2011-08-18 14:47:34.183998019 +0200
+@@ -71,8 +71,6 @@
+ #include "InetdProbe.h"
+ 
+ #include "PartitionProbe.h"
+-#include "SelinuxSecurityContextProbe.h"
+-#include "SelinuxBooleanProbe.h"
+ #include "IfListenersProbe.h"
+ 
+ class AbsProbe;
+--- src/probes/unix/Process58Probe.cpp.old	2012-05-22 10:09:52.980828398 +0200
++++ src/probes/unix/Process58Probe.cpp	2012-05-22 10:11:06.266468168 +0200
+@@ -29,10 +29,10 @@
+ //****************************************************************************************//
+ 
+ #ifdef LINUX
+-#  include <selinux/selinux.h>
+-#  include <selinux/context.h>
++/*#  include <selinux/selinux.h>
++#  include <selinux/context.h>*/
+ #  include <sys/capability.h>
+-#  include <SecurityContextGuard.h>
++/*#  include <SecurityContextGuard.h>*/
+ #endif
+ 
+ #include <fstream>
+@@ -328,7 +328,7 @@
+ 	pid_t sessionId;
+ 	uid_t loginuid;
+ 	uint64_t effCap, *effCapp=&effCap;
+-	string selinuxDomainLabel;
++/*	string selinuxDomainLabel;*/
+ 
+ 	Process58Probe::ProcStatus statStatus, statusStatus, ttyStatus, loginuidStatus;
+ 
+@@ -423,10 +423,10 @@
+ 	}
+ 
+ 	// this one doesn't require reading anything in /proc
+-	if (!RetrieveSelinuxDomainLabel(pid, &selinuxDomainLabel, &errMsg)) {
++/*	if (!RetrieveSelinuxDomainLabel(pid, &selinuxDomainLabel, &errMsg)) {
+ 		item->AppendMessage(new OvalMessage(errMsg, OvalEnum::LEVEL_ERROR));
+ 		item->SetStatus(OvalEnum::STATUS_ERROR);
+-	}
++	}*/
+ 
+ 	// The Linux start time is represented as the number of jiffies (1/100 sec)
+ 	// that the application was started after the last system reboot.  To get an
+@@ -491,10 +491,10 @@
+ 		// aren't any.
+ 		item->AppendElement(new ItemEntity("posix_capability", "", OvalEnum::DATATYPE_STRING, false, OvalEnum::STATUS_ERROR));
+ 
+-	if (selinuxDomainLabel.empty())
++/*	if (selinuxDomainLabel.empty())*/
+ 		item->AppendElement(new ItemEntity("selinux_domain_label", "", OvalEnum::DATATYPE_STRING, false, OvalEnum::STATUS_ERROR));
+-	else
+-		item->AppendElement(new ItemEntity("selinux_domain_label", selinuxDomainLabel));
++/*	else
++		item->AppendElement(new ItemEntity("selinux_domain_label", selinuxDomainLabel));*/
+ 
+ 	if (statStatus == PROC_OK)
+ 		item->AppendElement(new ItemEntity("session_id", Common::ToString(sessionId), OvalEnum::DATATYPE_INTEGER));
+@@ -709,7 +709,7 @@
+ 											   capMap[capEnum]));
+ 	}
+ }
+-
++/*
+ bool Process58Probe::RetrieveSelinuxDomainLabel(pid_t pid, string *label, string *err) {
+ 	security_context_t sctx;
+ 	int ec = getpidcon(pid, &sctx);
+@@ -732,7 +732,7 @@
+ 	*label = tmp;
+ 	return true;
+ }
+-
++*/
+ #elif defined SUNOS
+ 
+ void Process58Probe::GetPSInfo(string command, string pidStr, ItemVector* items) {

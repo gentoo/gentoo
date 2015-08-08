@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proaudio</herd>
+  <use>
+    <flag name="coreaudio">Build the CoreAudio driver on Mac OS X systems</flag>
+    <flag name="cpudetection">Enables runtime cpudetection</flag>
+	<flag name="pam">Add basic realime configuration via <pkg>sys-auth/realtime-base</pkg></flag>
+  </use>
+</pkgmetadata>

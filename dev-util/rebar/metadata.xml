@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>djc@gentoo.org</email>
+    <name>Dirkjan Ochtman</name>
+  </maintainer>
+  <maintainer>
+    <email>aranea@aixah.de</email>
+    <name>Luis Ressel</name>
+    <description>Proxy-maintainer, assign bugs</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">rebar/rebar</remote-id>
+  </upstream>
+</pkgmetadata>

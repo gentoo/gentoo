@@ -1,0 +1,12 @@
+--- scripts/Makefile.am.orig	2012-07-05 14:10:56.725746439 +0200
++++ scripts/Makefile.am	2012-07-05 14:12:00.840861325 +0200
+@@ -1,7 +1,8 @@
+ spooldir = @localstatedir@/spool/capisuite
+ pkgsysconfdir = @sysconfdir@/capisuite
+ 
+-dist_pkglib_DATA = idle.py incoming.py README
++scriptdatadir=$(pkglibdir)
++dist_scriptdata_DATA = idle.py incoming.py README
+ python_module_DATA = cs_helpers.py
+ EXTRA_DIST = cs_helpers.pyin fax.confin answering_machine.confin capisuitefax.in
+ 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>mschiff@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name='maps'>Installs additional GSHHS maps for high resolution coastline data and cities</flag>
+	</use>
+</pkgmetadata>
+

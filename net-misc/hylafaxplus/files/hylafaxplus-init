@@ -1,0 +1,176 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Author Geaaru
+# Distributed under the terms of the GNU General Public License v2
+
+opts="zap"
+
+depend() {
+	use lo
+}
+
+checkconfig() {
+	ebegin "Check hylafax server configuration..."
+
+	if [ x$spooldir == x ] ; then
+		eerror "No spooldir directory defined"
+		return 1
+	else
+		SPOOL=$spooldir
+		einfo "Use spool directory $SPOOL"
+	fi
+
+	if [ x$mode == x ] ; then
+		eerror "No mode defined"
+		return 1
+	fi
+
+	if [ ! -f $SPOOL/etc/setup.cache ] ; then
+		eerror "No $SPOOL/etc/setup.cache file founded. Use faxsetup command"
+		return 1
+	fi
+
+	if [[ x$hfaxd == x || ! -f $hfaxd ]] ; then
+		eerror "No hfaxd daemon founded"
+		return 1
+	fi
+
+	if [[ x$faxq == x || ! -f $faxq ]] ; then
+		eerror "No faxq program founded"
+		return 1
+	fi
+
+	if [[ x$faxgetty == x || ! -f $faxgetty ]] ; then
+		eerror "No faxgetty program founded"
+		return 1
+	fi
+
+	if [ x$faxbind == x ] ; then
+		eerror "No binding address supply"
+		return 1
+	fi
+
+	if [ x$piddir == x ] ; then
+		PIDDIR=$SPOOL
+	else
+		PIDDIR=$piddir
+	fi
+
+
+	hfaxd_args="-l $faxbind -q $SPOOL"
+
+	case $mode in
+		newproto)
+			if [[ x$faxport == x ]] ; then
+				eerror "No faxport defined"
+				return 1
+			fi
+			hfaxd_args="$hfaxd_args -i $faxport"
+			;;
+		oldproto)
+			if [[ x$oldprotoport == x ]] ; then
+				eerror "No oldprotoport defined"
+				return 1
+			fi
+			hfaxd_args="$hfaxd_args -o $oldprotoport"
+			;;
+		snpp)
+			if [[ x$snppport == x ]] ; then
+				eerror "No snppport defined"
+				return 1
+			fi
+			hfaxd_args="$hfaxd_args -s $snppport"
+			;;
+		any)
+			if [[ x$faxport == x || x$snppport == x || x$oldprotoport == x ]] ; then
+				eerror "No port data founded for old services"
+				return 1
+			fi
+			hfaxd_args="$hfaxd_args -i $faxport -s $snppport -o $oldprotoport"
+			;;
+		*)
+			eerror "Invalid mode"
+			return 1
+			;;
+
+	esac
+
+	faxq_args="-q $SPOOL"
+
+	# workaround for manage save of pidfile with start-stop-daemon
+	hfaxd_args="$hfaxd_args -d"
+	faxq_args="$faxq_args -D"
+		
+	return 0
+}
+
+start() {
+	local result
+
+	checkconfig || return 1
+
+	ebegin "Starting HylaFAX server daemons"
+
+	start_faxq
+	result=$?
+
+	if [ $result -ne 0 ]  ; then
+		eerror "Error on start $faxq daemon"
+		return 1
+	fi
+
+	start_hfaxd
+	result=$?
+
+	eend $result
+}
+
+start_hfaxd() {
+	local arguments="--start \
+			 --make-pidfile --pidfile $PIDDIR/hfaxd.pid"
+	
+	einfo "Starting $hfaxd with args $hfaxd_args"
+
+	start-stop-daemon -b ${arguments} --exec $hfaxd -- $hfaxd_args > /dev/null 2>&1
+
+	return $?;
+}
+
+start_faxq() {
+	local arguments="--start \
+			 --make-pidfile --pidfile $PIDDIR/faxq.pid"
+	einfo "Starting $faxq ... "
+
+	start-stop-daemon -b ${arguments} --exec $faxq -- $faxq_args > /dev/null 2>&1
+	
+	return $?
+}
+
+stop() {
+	checkconfig || return 1
+
+	ebegin "Stopping HylaFAX server daemons"
+	
+	start-stop-daemon --stop --quiet --pidfile $PIDDIR/hfaxd.pid
+	start-stop-daemon --stop --quiet --pidfile $PIDDIR/faxq.pid
+	eend $?
+}
+
+zap() {
+	checkconfig || return 1
+
+	ebegin "Zap HylaFAX server daemon files"
+
+	if [ -f $PIDFILE/hfaxd.pid ] ; then
+		rm -f $PIDFILE/hfaxd.pid
+	fi
+
+	if [ -f $PIDFILE/faxq.pid ] ; then
+		rm -f $PIDFILE/faxq.pid
+	fi
+}
+
+restart() {
+	stop
+	start
+}

@@ -1,0 +1,14 @@
+--- src/Makefile.old	2009-02-15 16:12:16.750885874 +0100
++++ src/Makefile	2009-02-15 16:16:24.560106442 +0100
+@@ -12,10 +12,7 @@ ifneq ($(UGLY),1)
+ endif
+ 
+ $(APP): $(OBJS)
+-	$(V_L)$(LD) $(LIBS) -o $@ $(OBJS)
+-ifeq ($(DEBUG),0)
+-	$(V_S)strip -s $(APP)
+-endif
++	$(V_L)$(LD) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ $(BUILDDIR)/src/%.o: src/%.c .mk/config.mk
+ 	$(V_C)$(CC) -c -MMD $(CFLAGS) $< -o $@

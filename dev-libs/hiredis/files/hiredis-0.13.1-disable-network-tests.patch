@@ -1,0 +1,36 @@
+diff --git test.c test.c
+index 8fde554..89ed6a0 100644
+--- test.c
++++ test.c
+@@ -343,6 +343,7 @@ static void test_free_null(void) {
+ static void test_blocking_connection_errors(void) {
+     redisContext *c;
+ 
++#if 0
+     test("Returns error when host cannot be resolved: ");
+     c = redisConnect((char*)"idontexist.test", 6379);
+     test_cond(c->err == REDIS_ERR_OTHER &&
+@@ -353,6 +354,7 @@ static void test_blocking_connection_errors(void) {
+          strcmp(c->errstr,"Temporary failure in name resolution") == 0 ||
+          strcmp(c->errstr,"no address associated with name") == 0));
+     redisFree(c);
++#endif
+ 
+     test("Returns error when the port is not open: ");
+     c = redisConnect((char*)"localhost", 1);
+@@ -773,6 +775,7 @@ int main(int argc, char **argv) {
+     test_blocking_connection_errors();
+     test_free_null();
+ 
++#if 0
+     printf("\nTesting against TCP connection (%s:%d):\n", cfg.tcp.host, cfg.tcp.port);
+     cfg.type = CONN_TCP;
+     test_blocking_connection(cfg);
+@@ -781,6 +784,7 @@ int main(int argc, char **argv) {
+     test_invalid_timeout_errors(cfg);
+     test_append_formatted_commands(cfg);
+     if (throughput) test_throughput(cfg);
++#endif
+ 
+     printf("\nTesting against Unix socket connection (%s):\n", cfg.unix.path);
+     cfg.type = CONN_UNIX;

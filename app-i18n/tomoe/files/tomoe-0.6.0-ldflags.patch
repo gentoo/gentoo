@@ -1,0 +1,24 @@
+diff -Naur tomoe-0.6.0.orig/module/dict/Makefile.am tomoe-0.6.0/module/dict/Makefile.am
+--- tomoe-0.6.0.orig/module/dict/Makefile.am	2007-06-18 10:35:40.000000000 +0900
++++ tomoe-0.6.0/module/dict/Makefile.am	2011-05-26 08:47:24.279701286 +0900
+@@ -34,7 +34,7 @@
+ 
+ LIBADD = $(TOMOE_LIBS)			\
+ 	$(top_builddir)/lib/libtomoe.la
+-LDFLAGS =							\
++LDFLAGS +=							\
+   -rpath $(dict_moduledir) -avoid-version -module		\
+   -export-dynamic $(no_undefined) $(LIBTOOL_EXPORT_OPTIONS)
+ 
+diff -Naur tomoe-0.6.0.orig/module/recognizer/Makefile.am tomoe-0.6.0/module/recognizer/Makefile.am
+--- tomoe-0.6.0.orig/module/recognizer/Makefile.am	2007-04-10 16:24:20.000000000 +0900
++++ tomoe-0.6.0/module/recognizer/Makefile.am	2011-05-26 08:47:36.502740712 +0900
+@@ -23,7 +23,7 @@
+ AM_CPPFLAGS =
+ INCLUDES = $(TOMOE_CFLAGS)
+ 
+-LDFLAGS =							\
++LDFLAGS +=							\
+   -rpath $(recognizer_moduledir) -avoid-version -module		\
+   -export-dynamic $(no_undefined) $(LIBTOOL_EXPORT_OPTIONS)
+ 

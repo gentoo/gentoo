@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/334847
+
+--- intl/Makefile.in
++++ intl/Makefile.in
+@@ -202,12 +202,12 @@
+ # The dependency for intlh.inst is different in gettext and all other
+ # packages.  Because we cannot you GNU make features we have to solve
+ # the problem while rewriting Makefile.in.
+-@GT_YES@intlh.inst: intlh.inst.in ../config.status
+-@GT_YES@	cd .. \
+-@GT_YES@	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= \
+-@GT_YES@	  $(SHELL) ./config.status
+-@GT_NO@.PHONY: intlh.inst
+-@GT_NO@intlh.inst:
++intlh.inst: intlh.inst.in ../config.status
++	cd .. \
++	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= \
++	  $(SHELL) ./config.status
++.PHONY: intlh.inst
++intlh.inst:
+ 
+ # Tell versions [3.59,3.63) of GNU make not to export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

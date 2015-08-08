@@ -1,0 +1,279 @@
+David Reitz writes:
+
+I created this so that I could specify a feedurl parameter in the config file,
+which allows me to use the public RSS feeds at showRSS (http://showrss.karmorra.info/).
+This patch will ONLY work for seasonepisode. I made no modifications for other types.
+
+Simply apply this patch and then modify your config like so:
+
+[Weeds]
+feedurl = http://showrss.karmorra.info/feeds/68.rss
+episode = 4
+season = 5
+show_type = seasonepisode
+human_name = Weeds
+
+http://sourceforge.net/tracker/index.php?func=detail&aid=2818315&group_id=203642&atid=986413
+
+--- pytvshows.orig	2009-06-20 15:46:23.000000000 -0400
++++ pytvshows	2009-07-07 20:41:39.000000000 -0400
+@@ -83,11 +83,14 @@ config = {
+     'output_dir2': None,
+     'quality_matches': {
+         "[HD": 1,
++        "HDTV": 1,
+         "[DSRIP": 1,
+         "[TVRIP": 1,
+         "[PDTV": 1,
+         "[DVD": 1,
+         "[HR": 2,
++        "720p": 3,
++        "720P": 3,
+         "[720p": 3,
+         "[720P": 3,
+     },
+@@ -189,6 +192,7 @@ class Show(object):
+         self.show_type = args['show_type']
+         self.season = args['season']
+         self.episode = args['episode']
++	self.feedurl = args['feedurl']
+         #YYYY-MM-DD HH:MM:SS
+         if args['date']:
+             self.date = datetime.datetime(*(time.strptime(
+@@ -290,7 +294,10 @@ class Show(object):
+     
+     def _get_rss_feed(self):
+         """Gets the feedparser object."""
+-        url = config['feed'] % self.exact_name
++	if self.feedurl:
++	  url = self.feedurl
++	else:
++          url = config['feed'] % self.exact_name
+         if config['verbose']:
+             print "Downloading and processing %s..." % url
+         r = feedparser.parse(url)
+@@ -335,50 +342,21 @@ class Show(object):
+         if not self.rss:
+             return False
+         episodes = {}
+-        for episode in self.rss['entries']:
+-            if self.show_type == 'seasonepisode':
+-                r = re.compile('Season\s*: ([0-9]*?);')
+-                season_match = r.search(episode.description)
+-                r = re.compile('Episode\s*:\ ([0-9]*?)$')
+-                episode_match = r.search(episode.description)
+-                if not season_match or not episode_match:
+-                    # This might be a special with a title
+-                    r = re.compile('Show\s*Title\s*:\s*(.*?);')
+-                    title_match = r.search(episode.description)
+-                    if title_match and title_match.group(1) != 'n/a' \
+-                                        and title_match.group(1) != '':
+-                        title = title_match.group(1)
+-                        if config["verbose"]:
+-                            print "Found episode with title %s and no " \
+-                            "season or episode in seasonepisode show." % title
+-                        quality = 0
+-                        for key, value in config["quality_matches"].items():
+-                            if key in episode.title:
+-                                quality = value
+-                                break
+-                        date = datetime.datetime(* episode.updated_parsed[:6])
+-                        obj = EpisodeWithTitle(
+-                            self,
+-                            episode.link,
+-                            date,
+-                            title,
+-                            quality)
+-                        last_key = 0
+-                        for key in episodes.keys():
+-                            if key[0] == 0 and key[1] > last_key:
+-                                last_key = key[1]
+-                        episodes[0, last_key] = [obj]
+-                    elif not self.ignoremissingdetails:
+-                        print >> warn, 'W: Could not match season and/or ' \
+-                            'episode in %s' % episode.description
+-                else:
++	# we've defined a feedurl in the config file...
++	if self.feedurl:
++	    for episode in self.rss['entries']:
++	        if self.show_type == 'seasonepisode':
++		    r = re.compile('S([0-9]+)E([0-9]+)')
++		    match = r.search( episode.title )
++		    season_num = int(match.group(1))
++		    episode_num = int(match.group(2))
++                    if config["verbose"]:
++		        print "Found Show:  Season %i, Episode %i" % (season_num, episode_num)
+                     quality = 0
+                     for key, value in config["quality_matches"].items():
+                         if key in episode.title:
+                             quality = value
+                             break
+-                    season_num = int(season_match.group(1))
+-                    episode_num = int(episode_match.group(1))
+                     if season_num != 0 and episode_num != 0:
+                         obj = EpisodeWithSeasonAndEpisode(
+                             self,
+@@ -394,57 +372,117 @@ class Show(object):
+                     elif config['verbose']:
+                         print 'Season or episode number is 0 in %s' \
+                                 % episode.description
+-            elif self.show_type == 'date':
+-                r = re.compile('Episode\s*Date:\s*([0-9\-]+)$')
+-                date_match = r.search(episode.description)
+-                if not date_match:
+-                    if not self.ignoremissingdetails:
+-                        print >>warn, 'W: Could not match date in %s' % \
+-                            episode.description
+-                else:
++	else:
++            for episode in self.rss['entries']:
++                if self.show_type == 'seasonepisode':
++                    r = re.compile('Season\s*: ([0-9]*?);')
++                    season_match = r.search(episode.description)
++                    r = re.compile('Episode\s*:\ ([0-9]*?)$')
++                    episode_match = r.search(episode.description)
++                    if not season_match or not episode_match:
++                        # This might be a special with a title
++                        r = re.compile('Show\s*Title\s*:\s*(.*?);')
++                        title_match = r.search(episode.description)
++                        if title_match and title_match.group(1) != 'n/a' \
++                                            and title_match.group(1) != '':
++                            title = title_match.group(1)
++                            if config["verbose"]:
++                                print "Found episode with title %s and no " \
++                                "season or episode in seasonepisode show." % title
++                            quality = 0
++                            for key, value in config["quality_matches"].items():
++                                if key in episode.title:
++                                    quality = value
++                                    break
++                            date = datetime.datetime(* episode.updated_parsed[:6])
++                            obj = EpisodeWithTitle(
++                                self,
++                                episode.link,
++                                date,
++                                title,
++                                quality)
++                            last_key = 0
++                            for key in episodes.keys():
++                                if key[0] == 0 and key[1] > last_key:
++                                    last_key = key[1]
++                            episodes[0, last_key] = [obj]
++                        elif not self.ignoremissingdetails:
++                            print >> warn, 'W: Could not match season and/or ' \
++                                'episode in %s' % episode.description
++                    else:
++                        quality = 0
++                        for key, value in config["quality_matches"].items():
++                            if key in episode.title:
++                                quality = value
++                                break
++                        season_num = int(season_match.group(1))
++                        episode_num = int(episode_match.group(1))
++                        if season_num != 0 and episode_num != 0:
++                            obj = EpisodeWithSeasonAndEpisode(
++                                self,
++                                episode.link,
++                                datetime.datetime(* episode.updated_parsed[:6]),
++                                season_num,
++                                episode_num,
++                                quality)
++                            try:
++                                episodes[season_num, episode_num].append(obj)
++                            except KeyError:
++                                episodes[season_num, episode_num] = [obj]
++                        elif config['verbose']:
++                            print 'Season or episode number is 0 in %s' \
++                                    % episode.description
++                elif self.show_type == 'date':
++                    r = re.compile('Episode\s*Date:\s*([0-9\-]+)$')
++                    date_match = r.search(episode.description)
++                    if not date_match:
++                        if not self.ignoremissingdetails:
++                            print >>warn, 'W: Could not match date in %s' % \
++                                episode.description
++                    else:
++                        quality = 0
++                        for key, value in config["quality_matches"].items():
++                            if key in episode.title:
++                                quality = value
++                                break
++                        date = datetime.datetime(*(time.strptime(
++                            date_match.group(1), "%Y-%m-%d")[0:6])).date()
++                        obj = EpisodeWithDate(
++                            self,
++                            episode.link,
++                            datetime.datetime(* episode.updated_parsed[:6]),
++                            date,
++                            quality)
++                        try:
++                            episodes[date].append(obj)
++                        except KeyError:
++                            episodes[date] = [obj]
++                elif self.show_type == 'time':
++                    r = re.compile('Show\s*Title\s*:\s*(.*?);')
++                    title_match = r.search(episode.description)
++                    if not title_match:
++                        if not self.ignoremissingdetails:
++                            print >>warn, 'W: Could not match title in %s' % \
++                                episode.description
++                        title = ""
++                    else:
++                        title = title_match.group(1)
+                     quality = 0
+                     for key, value in config["quality_matches"].items():
+                         if key in episode.title:
+                             quality = value
+                             break
+-                    date = datetime.datetime(*(time.strptime(
+-                        date_match.group(1), "%Y-%m-%d")[0:6])).date()
+-                    obj = EpisodeWithDate(
++                    date = datetime.datetime(* episode.updated_parsed[:6])
++                    obj = EpisodeWithTitle(
+                         self,
+                         episode.link,
+-                        datetime.datetime(* episode.updated_parsed[:6]),
+                         date,
++                        title,
+                         quality)
+                     try:
+                         episodes[date].append(obj)
+                     except KeyError:
+                         episodes[date] = [obj]
+-            elif self.show_type == 'time':
+-                r = re.compile('Show\s*Title\s*:\s*(.*?);')
+-                title_match = r.search(episode.description)
+-                if not title_match:
+-                    if not self.ignoremissingdetails:
+-                        print >>warn, 'W: Could not match title in %s' % \
+-                            episode.description
+-                    title = ""
+-                else:
+-                    title = title_match.group(1)
+-                quality = 0
+-                for key, value in config["quality_matches"].items():
+-                    if key in episode.title:
+-                        quality = value
+-                        break
+-                date = datetime.datetime(* episode.updated_parsed[:6])
+-                obj = EpisodeWithTitle(
+-                    self,
+-                    episode.link,
+-                    date,
+-                    title,
+-                    quality)
+-                try:
+-                    episodes[date].append(obj)
+-                except KeyError:
+-                    episodes[date] = [obj]
+         self.episodes = episodes
+         return episodes
+ 
+@@ -597,6 +635,7 @@ def main(argv=None):
+             'date': None,
+             'time': None, 
+             'ignoremissingdetails': False,
++	    'feedurl': None,
+         }
+         for key in args.keys():
+             if f.has_option(exact_name, key):

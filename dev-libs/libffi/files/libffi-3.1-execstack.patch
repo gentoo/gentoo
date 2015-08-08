@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/511634
+http://sourceware.org/ml/libffi-discuss/2014/msg00058.html
+
+--- src/x86/win32.S
++++ src/x86/win32.S
+@@ -1304,3 +1304,6 @@
+ 
+ #endif /* !_MSC_VER */
+ 
++#if defined __ELF__ && defined __linux__
++	.section        .note.GNU-stack,"",@progbits
++#endif

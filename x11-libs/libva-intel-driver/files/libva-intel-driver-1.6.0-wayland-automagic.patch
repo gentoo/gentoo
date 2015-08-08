@@ -1,0 +1,37 @@
+From 405437e31d3faf6adc32d887ae1945b8d93f7846 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 24 Jul 2015 17:01:23 +0200
+Subject: [PATCH] Do not require wayland-scanner if wayland is disabled
+
+Do not perform fatal wayland-scanner checks if wayland is disabled
+(either by --disable-wayland or wayland check failure) even if
+wayland-scanner macros are installed on the system.
+---
+ configure.ac | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6e73059..70eb275 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -168,9 +168,14 @@ if test "$enable_wayland" = "yes"; then
+ fi
+ AM_CONDITIONAL(USE_WAYLAND, test "$USE_WAYLAND" = "yes")
+ 
+-m4_ifdef([WAYLAND_SCANNER_RULES],
+-    [WAYLAND_SCANNER_RULES(['$(top_builddir)/src/wayland'])],
+-    [wayland_scanner_rules=""; AC_SUBST(wayland_scanner_rules)])
++if test "$USE_WAYLAND" = "yes"; then
++    m4_ifdef([WAYLAND_SCANNER_RULES],
++        [WAYLAND_SCANNER_RULES(['$(top_builddir)/src/wayland'])],
++        [wayland_scanner_rules=/dev/null; AC_SUBST_FILE(wayland_scanner_rules)])
++else
++    wayland_scanner_rules=/dev/null
++    AC_SUBST_FILE(wayland_scanner_rules)
++fi
+ 
+ AC_OUTPUT([
+     Makefile
+-- 
+2.4.6
+

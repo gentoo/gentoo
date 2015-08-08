@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="keybinder">Enable support for global hotkeys using <pkg>dev-libs/keybdiner</pkg>.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">andrzej-r/xfce4-pulseaudio-plugin</remote-id>
+	</upstream>
+</pkgmetadata>

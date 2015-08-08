@@ -1,0 +1,38 @@
+From 5afe6345d8ca1c673cbddcf8c7bc3af7709d5454 Mon Sep 17 00:00:00 2001
+From: Gwenole Beauchesne <gwenole.beauchesne@intel.com>
+Date: Tue, 10 Jul 2012 14:43:37 +0200
+Subject: [PATCH] vaapi: fix build with recent VA-API versions.
+
+---
+ src/vaapi.c        |    2 ++
+ src/vaapi_compat.h |    5 +++++
+ 2 files changed, 7 insertions(+), 0 deletions(-)
+
+Index: hwdecode-demos-0.9.5/src/vaapi.c
+===================================================================
+--- hwdecode-demos-0.9.5.orig/src/vaapi.c
++++ hwdecode-demos-0.9.5/src/vaapi.c
+@@ -92,7 +92,9 @@ static const char *string_of_VADisplayAt
+         TYPE(Hue);
+         TYPE(Saturation);
+         TYPE(BackgroundColor);
++#if !VA_CHECK_VERSION(0,34,0)
+         TYPE(DirectSurface);
++#endif
+ #undef TYPE
+     default: break;
+     }
+Index: hwdecode-demos-0.9.5/src/vaapi_compat.h
+===================================================================
+--- hwdecode-demos-0.9.5.orig/src/vaapi_compat.h
++++ hwdecode-demos-0.9.5/src/vaapi_compat.h
+@@ -91,4 +91,9 @@ typedef struct _VASliceParameterBufferBa
+       (VA_MINOR_VERSION == 31 &&                          \
+        VA_MICRO_VERSION == 0 && VA_SDS_VERSION < 5)))
+ 
++#if VA_CHECK_VERSION(0,34,0)
++/* New vaCreateSurfaces() API with surface attributes */
++# include <va/va_compat.h>
++#endif
++
+ #endif /* VAAPI_COMPAT_H */

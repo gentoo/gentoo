@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription lang="en">pyudev is a Python binding to libudev, the hardware management
+		library and service found in modern linux systems.</longdescription>
+	<use>
+		<flag name="pygobject">Install PyGobject binding</flag>
+		<flag name="pyqt4">Install PyQt4 binding</flag>
+		<flag name="pyside">Install PySide binding</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">pyudev</remote-id>
+		<remote-id type="github">pyudev/pyudev</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,56 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -377,7 +377,7 @@
+ case "${host_os}"
+ in
+    linux*|gnu*|openbsd*|freebsd*|kfreebsd*|netbsd*|*qnx*|cygwin*|mingw*|elf*)
+-      brltty_mkmod_ld_make="-shared"
++      brltty_mkmod_ld_make="-shared ${LDFLAGS}"
+       ;;
+    solaris*)
+       brltty_mkmod_ld_make="-G"
+@@ -404,7 +404,7 @@
+ esac
+ if test "${GCC}" = "yes"
+ then
+-   brltty_cv_prog_mkmod="\$(CC) ${brltty_mkmod_gcc_make=-shared} BRLTTY_OPTIONS_LD2CC([${brltty_mkmod_ld_options}]) -o"
++   brltty_cv_prog_mkmod="\$(CC) ${brltty_mkmod_gcc_make=-shared} ${LDFLAGS} BRLTTY_OPTIONS_LD2CC([${brltty_mkmod_ld_options}]) -o"
+ else
+    brltty_cv_prog_mkmod="\$(LD) ${brltty_mkmod_ld_make} ${brltty_mkmod_ld_options} -o"
+ fi])
+@@ -414,7 +414,7 @@
+ case "${host_os}"
+ in
+    linux*|gnu*|openbsd*|freebsd*|kfreebsd*|netbsd*|*qnx*|elf*)
+-      brltty_mklib_ld_make="-shared"
++      brltty_mklib_ld_make="-shared ${LDFLAGS}"
+       brltty_mklib_ld_options="-soname"
+       ;;
+    solaris*)
+@@ -449,7 +449,7 @@
+ esac
+ if test "${GCC}" = "yes"
+ then
+-   brltty_cv_prog_mklib="\$(CC) ${brltty_mklib_gcc_make=-shared} BRLTTY_OPTIONS_LD2CC([${brltty_mklib_ld_options+${brltty_mklib_ld_options} <name>}]) -o"
++   brltty_cv_prog_mklib="\$(CC) ${brltty_mklib_gcc_make=-shared} ${LDFLAGS} BRLTTY_OPTIONS_LD2CC([${brltty_mklib_ld_options+${brltty_mklib_ld_options} <name>}]) -o"
+ else
+    brltty_cv_prog_mklib="\$(LD) ${brltty_mklib_ld_make} ${brltty_mklib_ld_options+${brltty_mklib_ld_options} <name>} -o"
+ fi])
+--- a/Bindings/OCaml/Makefile.in
++++ b/Bindings/OCaml/Makefile.in
+@@ -55,13 +55,13 @@
+ all : $(OCAML_FILES)
+ 
+ $(OCAML_CLIBS) : brlapi_stubs.$O brlapi
+-	$(OCAMLMKLIB) $(API_LDFLAGS) -oc $(OCAML_LIB)_stubs brlapi_stubs.$O
++	$(OCAMLMKLIB) -ldopt "$(LDFLAGS)"  $(API_LDFLAGS) -oc $(OCAML_LIB)_stubs brlapi_stubs.$O
+ 
+ $(OCAML_BCLIB) : $(OCAML_CLIBS) brlapi.cmo
+ 	$(OCAMLC) -a $(OCAMLMKLIB_FLAGS) -o $(OCAML_LIB).cma brlapi.cmo
+ 
+ $(OCAML_NCLIB) : $(OCAML_CLIBS) brlapi.cmx
+-	$(OCAMLMKLIB) $(OCAMLMKLIBOPT_FLAGS) -o $(OCAML_LIB) brlapi.cmx
++	$(OCAMLMKLIB) -ldopt "$(LDFLAGS)"  $(OCAMLMKLIBOPT_FLAGS) -o $(OCAML_LIB) brlapi.cmx
+ 
+ brlapi.cmi: brlapi.mli
+ 	$(OCAMLC) -o $@ -c brlapi.mli

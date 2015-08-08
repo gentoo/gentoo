@@ -1,0 +1,34 @@
+codeblocks crashes when a wxChartCtrl is added with wxSmith
+
+https://bugs.gentoo.org/show_bug.cgi?id=372837
+https://developer.berlios.de/bugs/?func=detailbug&bug_id=18182&group_id=5358
+
+
+--- a/src/plugins/contrib/wxSmithContribItems/wxchart/wxchart-1.0/src/chartwindow.cpp
++++ b/src/plugins/contrib/wxSmithContribItems/wxchart/wxchart-1.0/src/chartwindow.cpp
+@@ -156,7 +156,13 @@ void wxChartWindow::DrawHLines(
+         }
+         
+         wxChartSizes *sizes = GetSizes();
+-        
++
++	// sizes may be NULL, in this case do nothing 
++	// not sure if this is the right way to do things 
++	//  gw.fossdev@gmail.com 
++	if (!sizes) 
++		return; 
++
+         hp->SetPen( *wxBLACK_DASHED_PEN );
+         
+         double current = lower;
+@@ -188,6 +194,10 @@ ChartValue wxChartWindow::GetVirtualWidth() const
+     int iNodes = static_cast<int>(ceil( GetVirtualMaxX() ));
+     wxChartSizes *sizes = GetSizes();
+     
++    /// sizes may be NULL, in this case return a fixes value 
++    if (!sizes) 
++	    return 1; 
++    
+     ChartValue x = 0;
+ 
+     for ( int iNode = 0; iNode <= iNodes; ++ iNode )

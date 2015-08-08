@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>mysql</herd>
+	<use>
+		<flag name="openssl">Use OpenSSL for md5 and sha1 support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">pam-mysql</remote-id>
+	</upstream>
+</pkgmetadata>

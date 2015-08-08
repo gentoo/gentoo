@@ -1,0 +1,127 @@
+From bf065f3e892e0a94e442de9a7155a7ac170f2add Mon Sep 17 00:00:00 2001
+From: eroen <eroen@falcon.eroen.eu>
+Date: Thu, 21 Nov 2013 11:35:53 +0100
+Subject: [PATCH 1/3] ffmpeg-2 -- AVCODEC_MAX_AUDIO_FRAME_SIZE
+
+deprecated:
+http://git.videolan.org/?p=ffmpeg.git;a=commit;h=0eea212943544d40f99b05571aa7159d78667154
+
+broken with libavcodec 54
+---
+ channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c b/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
+index adf8e04..0d5b956 100644
+--- a/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
++++ b/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
+@@ -43,6 +43,12 @@
+ #define AVMEDIA_TYPE_AUDIO 1
+ #endif
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 54
++#define MAX_AUDIO_FRAME_SIZE AVCODEC_MAX_AUDIO_FRAME_SIZE
++#else
++#define MAX_AUDIO_FRAME_SIZE 192000
++#endif
++
+ typedef struct _TSMFFFmpegDecoder
+ {
+ 	ITSMFDecoder iface;
+@@ -351,7 +357,7 @@ static BOOL tsmf_ffmpeg_decode_audio(ITSMFDecoder* decoder, const BYTE* data, UI
+ #endif
+ 
+ 	if (mdecoder->decoded_size_max == 0)
+-		mdecoder->decoded_size_max = AVCODEC_MAX_AUDIO_FRAME_SIZE + 16;
++		mdecoder->decoded_size_max = MAX_AUDIO_FRAME_SIZE + 16;
+ 	mdecoder->decoded_data = malloc(mdecoder->decoded_size_max);
+ 	ZeroMemory(mdecoder->decoded_data, mdecoder->decoded_size_max);
+ 	/* align the memory for SSE2 needs */
+@@ -363,7 +369,7 @@ static BOOL tsmf_ffmpeg_decode_audio(ITSMFDecoder* decoder, const BYTE* data, UI
+ 	while (src_size > 0)
+ 	{
+ 		/* Ensure enough space for decoding */
+-		if (mdecoder->decoded_size_max - mdecoder->decoded_size < AVCODEC_MAX_AUDIO_FRAME_SIZE)
++		if (mdecoder->decoded_size_max - mdecoder->decoded_size < MAX_AUDIO_FRAME_SIZE)
+ 		{
+ 			mdecoder->decoded_size_max = mdecoder->decoded_size_max * 2 + 16;
+ 			mdecoder->decoded_data = realloc(mdecoder->decoded_data, mdecoder->decoded_size_max);
+-- 
+1.8.4
+
+
+From cbcf0de3fac985afaeeef7daf104c94ad8cdca26 Mon Sep 17 00:00:00 2001
+From: eroen <eroen@falcon.eroen.eu>
+Date: Thu, 21 Nov 2013 13:14:04 +0100
+Subject: [PATCH 2/3] ffmpeg-2 -- dsp_mask
+
+deprecated:
+http://git.videolan.org/?p=ffmpeg.git;a=commit;h=95510be8c35753da8f48062b28b65e7acdab965f
+
+broken with libavcodec 55
+---
+ channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c b/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
+index 0d5b956..1f99ec3 100644
+--- a/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
++++ b/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
+@@ -104,6 +104,7 @@ static BOOL tsmf_ffmpeg_init_audio_stream(ITSMFDecoder* decoder, const TS_AM_MED
+ 	mdecoder->codec_context->channels = media_type->Channels;
+ 	mdecoder->codec_context->block_align = media_type->BlockAlign;
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ #ifdef AV_CPU_FLAG_SSE2
+ 	mdecoder->codec_context->dsp_mask = AV_CPU_FLAG_SSE2 | AV_CPU_FLAG_MMX2;
+ #else
+@@ -113,6 +114,13 @@ static BOOL tsmf_ffmpeg_init_audio_stream(ITSMFDecoder* decoder, const TS_AM_MED
+ 	mdecoder->codec_context->dsp_mask = FF_MM_SSE2 | FF_MM_MMX2;
+ #endif
+ #endif
++#else  /* LIBAVCODEC_VERSION_MAJOR < 55 */
++#ifdef AV_CPU_FLAG_SSE2
++	av_set_cpu_flags_mask(AV_CPU_FLAG_SSE2 | AV_CPU_FLAG_MMX2);
++#else
++	av_set_cpu_flags_mask(FF_MM_SSE2 | FF_MM_MMX2);
++#endif
++#endif /* LIBAVCODEC_VERSION_MAJOR < 55 */
+ 
+ 	return TRUE;
+ }
+-- 
+1.8.4
+
+
+From 6fe23e1a3860528a8ecdfc8e9ccfdbd0e3945869 Mon Sep 17 00:00:00 2001
+From: eroen <eroen@falcon.eroen.eu>
+Date: Thu, 21 Nov 2013 13:26:03 +0100
+Subject: [PATCH 3/3] ffmpeg-2 -- CodecID
+
+deprecated:
+http://git.videolan.org/?p=ffmpeg.git;a=commit;h=104e10fb426f903ba9157fdbfe30292d0e4c3d72
+
+broken with libavcodec 55
+---
+ channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c b/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
+index 1f99ec3..09b4f68 100644
+--- a/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
++++ b/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
+@@ -54,7 +54,11 @@
+ 	ITSMFDecoder iface;
+ 
+ 	int media_type;
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ 	enum CodecID codec_id;
++#else
++	enum AVCodecID codec_id;
++#endif
+ 	AVCodecContext* codec_context;
+ 	AVCodec* codec;
+ 	AVFrame* frame;
+-- 
+1.8.4
+

@@ -1,0 +1,180 @@
+Author: Ralph Sennhauser <sera@gentoo.org>
+
+Set JRUBY_HOME, JRUBY_CP, CP and JAVACMD as appropriate for Gentoo.
+Remove JFFI_OPTS as the system jar knows where to look for the native lib.
+
+diff --git a/bin/jruby.bash b/bin/jruby.bash
+index 731f85e..8299557 100755
+--- a/bin/jruby.bash
++++ b/bin/jruby.bash
+@@ -25,31 +25,7 @@ if [ -z "$JAVA_VM" ]; then
+   JAVA_VM=-client
+ fi
+ 
+-## resolve links - $0 may be a link to  home
+-PRG=$0
+-progname=`basename "$0"`
+-
+-while [ -h "$PRG" ] ; do
+-  ls=`ls -ld "$PRG"`
+-  link=`expr "$ls" : '.*-> \(.*\)$'`
+-  if expr "$link" : '.*/.*' > /dev/null; then
+-    if expr "$link" : '/' > /dev/null; then
+-      PRG="$link"
+-    else
+-      PRG="`dirname ${PRG}`/${link}"
+-    fi
+-  else
+-    PRG="`dirname $PRG`/$link"
+-  fi
+-done
+-
+-JRUBY_HOME_1=`dirname "$PRG"`           # the ./bin dir
+-if [ "$JRUBY_HOME_1" = '.' ] ; then
+-  cwd=`pwd`
+-  JRUBY_HOME=`dirname $cwd` # JRUBY-2699
+-else
+-  JRUBY_HOME=`dirname "$JRUBY_HOME_1"`  # the . dir
+-fi
++JRUBY_HOME="${JRUBY_HOME:-/usr/share/jruby}"
+ 
+ if [ -z "$JRUBY_OPTS" ] ; then
+   JRUBY_OPTS=""
+@@ -81,17 +57,7 @@ for opt in ${JRUBY_OPTS[@]}; do
+ done
+ JRUBY_OPTS=${JRUBY_OPTS_TEMP}
+ 
+-if [ -z "$JAVACMD" ] ; then
+-  if [ -z "$JAVA_HOME" ] ; then
+-    JAVACMD='java'
+-  else
+-    if $cygwin; then
+-      JAVACMD="`cygpath -u "$JAVA_HOME"`/bin/java"
+-    else
+-      JAVACMD="$JAVA_HOME/bin/java"
+-    fi
+-  fi
+-fi
++JAVACMD=java
+ 
+ if [ -z "$JAVA_MEM" ] ; then
+   JAVA_MEM=-Xmx500m
+@@ -132,21 +98,7 @@ JRUBY_SHELL=/bin/sh
+ 
+ CP_DELIMITER=":"
+ 
+-# add main jruby jar to the bootclasspath
+-for j in "$JRUBY_HOME"/lib/jruby.jar "$JRUBY_HOME"/lib/jruby-complete.jar; do
+-    if [ ! -e "$j" ]; then
+-      continue
+-    fi
+-    if [ "$JRUBY_CP" ]; then
+-        JRUBY_CP="$JRUBY_CP$CP_DELIMITER$j"
+-        else
+-        JRUBY_CP="$j"
+-    fi
+-    if [ $JRUBY_ALREADY_ADDED ]; then
+-        echo "WARNING: more than one JRuby JAR found in lib directory"
+-    fi
+-    JRUBY_ALREADY_ADDED=true
+-done
++JRUBY_CP="$(java-config-2 -d -p jruby)"
+ 
+ if $cygwin; then
+     JRUBY_CP=`cygpath -p -w "$JRUBY_CP"`
+@@ -154,29 +106,7 @@ fi
+ 
+ # ----- Set Up The System Classpath -------------------------------------------
+ 
+-if [ "$JRUBY_PARENT_CLASSPATH" != "" ]; then
+-    # Use same classpath propagated from parent jruby
+-    CP=$JRUBY_PARENT_CLASSPATH
+-else
+-    # add other jars in lib to CP for command-line execution
+-    for j in "$JRUBY_HOME"/lib/*.jar; do
+-        if [ "$j" == "$JRUBY_HOME"/lib/jruby.jar ]; then
+-          continue
+-        fi
+-        if [ "$j" == "$JRUBY_HOME"/lib/jruby-complete.jar ]; then
+-          continue
+-        fi
+-        if [ "$CP" ]; then
+-            CP="$CP$CP_DELIMITER$j"
+-            else
+-            CP="$j"
+-        fi
+-    done
+-
+-    if $cygwin; then
+-        CP=`cygpath -p -w "$CP"`
+-    fi
+-fi
++CP="${JRUBY_PARENT_CLASSPATH}"
+ 
+ if $cygwin; then
+     # switch delimiter only after building Unix style classpaths
+@@ -254,15 +184,7 @@ do
+         java_args=("${java_args[@]}" "-Djava.awt.headless=true") ;;
+      # Run under JDB
+      --jdb)
+-        if [ -z "$JAVA_HOME" ] ; then
+-          JAVACMD='jdb'
+-        else
+-          if $cygwin; then
+-            JAVACMD="`cygpath -u "$JAVA_HOME"`/bin/jdb"
+-          else
+-            JAVACMD="$JAVA_HOME/bin/jdb"
+-          fi
+-        fi 
++        JAVACMD='jdb'
+         java_args=("${java_args[@]}" "-sourcepath" "$JRUBY_HOME/lib/ruby/1.8:.")
+         JRUBY_OPTS=("${JRUBY_OPTS[@]}" "-X+C") ;;
+      --client)
+@@ -310,18 +232,6 @@ set -- "${ruby_args[@]}"
+ 
+ JAVA_OPTS="$JAVA_OPTS $JAVA_MEM $JAVA_MEM_MIN $JAVA_STACK"
+ 
+-JFFI_BOOT=""
+-if [ -d "$JRUBY_HOME/lib/native/" ]; then
+-  for d in $JRUBY_HOME/lib/native/*`uname -s`; do
+-    if [ -z "$JFFI_BOOT" ]; then
+-      JFFI_BOOT="$d"
+-    else
+-      JFFI_BOOT="$JFFI_BOOT:$d"
+-    fi
+-  done
+-fi
+-JFFI_OPTS="-Djffi.boot.library.path=$JFFI_BOOT"
+-
+ if $cygwin; then
+   JRUBY_HOME=`cygpath --mixed "$JRUBY_HOME"`
+   JRUBY_SHELL=`cygpath --mixed "$JRUBY_SHELL"`
+@@ -354,7 +264,8 @@ if [ "$VERIFY_JRUBY" != "" ]; then
+       echo "Running with instrumented profiler"
+   fi
+ 
+-  "$JAVACMD" $PROFILE_ARGS $JAVA_OPTS "$JFFI_OPTS" "${java_args[@]}" -classpath "$JRUBY_CP$CP_DELIMITER$CP$CP_DELIMITER$CLASSPATH" \
++  "$JAVACMD" $PROFILE_ARGS $JAVA_OPTS "${java_args[@]}" -classpath "$JRUBY_CP$CP_DELIMITER$CP$CP_DELIMITER$CLASSPATH" \
+     "-Djruby.home=$JRUBY_HOME" \
++    "-Djruby.bindir=/usr/bin" \
+     "-Djruby.lib=$JRUBY_HOME/lib" -Djruby.script=jruby \
+     "-Djruby.shell=$JRUBY_SHELL" \
+@@ -377,7 +287,7 @@ if [ "$VERIFY_JRUBY" != "" ]; then
+ else
+   if $cygwin; then
+     # exec doed not work correctly with cygwin bash
+-    "$JAVACMD" $JAVA_OPTS "$JFFI_OPTS" "${java_args[@]}" -Xbootclasspath/a:"$JRUBY_CP" -classpath "$CP$CP_DELIMITER$CLASSPATH" \
++    "$JAVACMD" $JAVA_OPTS "${java_args[@]}" -Xbootclasspath/a:"$JRUBY_CP" -classpath "$CP$CP_DELIMITER$CLASSPATH" \
+       "-Djruby.home=$JRUBY_HOME" \
+       "-Djruby.lib=$JRUBY_HOME/lib" -Djruby.script=jruby \
+       "-Djruby.shell=$JRUBY_SHELL" \
+@@ -390,7 +300,8 @@ else
+ 
+     exit $JRUBY_STATUS
+   else
+-    exec "$JAVACMD" $JAVA_OPTS "$JFFI_OPTS" "${java_args[@]}" -Xbootclasspath/a:"$JRUBY_CP" -classpath "$CP$CP_DELIMITER$CLASSPATH" \
++    exec "$JAVACMD" $JAVA_OPTS "${java_args[@]}" -Xbootclasspath/a:"$JRUBY_CP" -classpath "$CP$CP_DELIMITER$CLASSPATH" \
+       "-Djruby.home=$JRUBY_HOME" \
++      "-Djruby.bindir=/usr/bin" \
+       "-Djruby.lib=$JRUBY_HOME/lib" -Djruby.script=jruby \
+       "-Djruby.shell=$JRUBY_SHELL" \

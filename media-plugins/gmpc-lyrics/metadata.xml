@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+	<maintainer>
+		<email>angelos@gentoo.org</email>
+		<name>Christoph Mende</name>
+	</maintainer>
+	<longdescription>
+This plugin fetches lyrics from the internet. It uses the following websites as sources:
+    * LyricWiki
+    * LeosLyrics
+    * Lyrics Tracker
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">musicpd</remote-id>
+	</upstream>
+</pkgmetadata>

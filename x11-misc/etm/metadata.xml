@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		etm is an acronym for Event and Task Manager. It provides a simple,
+		intuitive format for using plain text files to store data, a command
+		line interface for viewing stored information in a variety of convenient
+		ways and a cross-platform, wx(python)-based GUI for creating and
+		modifying items as well as viewing them.
+	</longdescription>
+	<use>
+		<flag name="ical">Enable export of ical format files by depending on
+			<pkg>dev-python/icalendar</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">etmeventandtask</remote-id>
+	</upstream>
+</pkgmetadata>

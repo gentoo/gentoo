@@ -1,0 +1,32 @@
+--- vittk-1.3/configure.in.orig
++++ vittk-1.3/configure.in
+@@ -14,11 +14,11 @@
+ fi
+ AC_SUBST(BASH)
+ 
+-AC_PATH_PROG(WISH, wish, NOT_FOUND)
+-if test "$WISH" = "NOT_FOUND"; then
+-  AC_MSG_ERROR([can not continue: wish not found])
++AC_PATH_PROG(TCLSH, tclsh, NOT_FOUND)
++if test "$TCLSH" = "NOT_FOUND"; then
++  AC_MSG_ERROR([can not continue: tclsh not found])
+ fi
+-AC_SUBST(WISH)
++AC_SUBST(TCLSH)
+ 
+ AC_PATH_PROG(TASK, task, NOT_FOUND)
+ if test "$TASK" = "NOT_FOUND"; then
+@@ -30,12 +30,9 @@
+ AC_SUBST(FONT)
+ 
+ AC_OUTPUT(task-startstop task-undo Makefile vittk.man vittk)
+-chmod 755 task-startstop
+-chmod 755 task-undo
+-chmod 755 vittk
+ 
+ echo creating ./tclIndex
+-echo "auto_mkindex `pwd`; exit" | $WISH
++echo "auto_mkindex `pwd`; exit" | $TCLSH
+ 
+ echo "./configure is done"
+ echo "now do \"sudo make install\" or \"make install\""

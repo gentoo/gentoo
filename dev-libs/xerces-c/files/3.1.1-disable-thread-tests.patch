@@ -1,0 +1,74 @@
+diff --git a/scripts/sanityTest_ExpectedResult.log b/scripts/sanityTest_ExpectedResult.log
+index 3588d84..9a45457 100644
+--- a/scripts/sanityTest_ExpectedResult.log
++++ b/scripts/sanityTest_ExpectedResult.log
+@@ -1146,42 +1146,7 @@ Options:
+ 1Test Run Successfully
+ 2Test Run Successfully
+ 3Test Run Successfully
+-No input XML file specified on command line.
+-usage:  ThreadTest [-v] [-threads nnn] [-time nnn] [-quiet] [-verbose] xmlfile...
+-     -v=xxx         Validation scheme [always | never | auto].  Default is AUTO.
+-     -n             Enable namespace processing. Defaults to off.
+-     -s             Enable schema processing. Defaults to off.
+-     -f             Enable full schema constraint checking. Defaults to off.
+-     -parser=xxx    Parser Type [dom | sax | sax2].  Default is SAX (SAX1).
+-     -p             Enable namespace prefixes. Defaults to off.
+-                    (Only used with -parser=sax2, ignored otherwise.)
+-     -quiet         Suppress periodic status display.
+-     -verbose       Display extra messages.
+-     -reuse         Retain and reuse parser.  Default creates new for each parse.
+-     -threads nnn   Number of threads.  Default is 2.
+-     -time nnn      Total time to run, in seconds.  Default is forever.
+-     -parses nnn    Run for nnn parses instead of time.  Default is to use time
+-     -dump          Dump DOM tree on error.
+-     -mem           Read files into memory once only, and parse them from there.
+-     -gc            Enable grammar caching (i.e. grammar cached and used in subsequent parses). Defaults to off.
+-     -init          Perform an initial parse of the file(s) before starting up the individual threads.
+-
+-1Test Run Successfully
+-2Test Run Successfully
+-3Test Run Successfully
+-4Test Run Successfully
+-5Test Run Successfully
+-6Test Run Successfully
+-7Test Run Successfully
+-8Test Run Successfully
+-9Test Run Successfully
+-10Test Run Successfully
+-11Test Run Successfully
+-12Test Run Successfully
+-13Test Run Successfully
+-14Test Run Successfully
+-15Test Run Successfully
+-
++123456789101112131415
+ Usage:
+     MemHandlerTest [options] <XML file | List file>
+ 
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 177c1c8..f333700 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -84,8 +84,6 @@ NetAccessorTest_SOURCES =                       src/NetAccessorTest/NetAccessorT
+ #                                               src/ParserTest/ParserTest_Parser.cpp \
+ #                                               src/ParserTest/ParserTest_Parser.hpp
+ 
+-testprogs +=                                    ThreadTest
+-ThreadTest_SOURCES =                            src/ThreadTest/ThreadTest.cpp
+ 
+ # Fails to compile under gcc 4 (ambiguous calls to NullPointerException)
+ # dcargill says this is obsolete and we can delete it.
+diff --git a/tests/Makefile.in b/tests/Makefile.in
+index d1df240..c4749fd 100644
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -92,7 +92,7 @@ am__EXEEXT_1 = DOMTest$(EXEEXT) DOMMemTest$(EXEEXT) \
+ 	DOMTraversalTest$(EXEEXT) DOMTypeInfoTest$(EXEEXT) \
+ 	EncodingTest$(EXEEXT) InitTermTest$(EXEEXT) \
+ 	MemHandlerTest$(EXEEXT) NetAccessorTest$(EXEEXT) \
+-	ThreadTest$(EXEEXT) XSerializerTest$(EXEEXT) \
++	XSerializerTest$(EXEEXT) \
+ 	XSTSHarness$(EXEEXT) XSValueTest$(EXEEXT)
+ am__dirstamp = $(am__leading_dot)dirstamp
+ am_DOMMemTest_OBJECTS = src/DOM/DOMMemTest/DOMMemTest.$(OBJEXT)

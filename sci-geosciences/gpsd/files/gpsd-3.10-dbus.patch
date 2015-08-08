@@ -1,0 +1,32 @@
+From efaf7972ca95ff52464dedfe30bafa45095d299e Mon Sep 17 00:00:00 2001
+From: Bernd Zeimetz <bernd@bzed.de>
+Date: Sat, 23 Nov 2013 02:56:22 +0100
+Subject: [PATCH] Make it build abain with dbus enabled.
+
+This reverts a bad change to SConstruct in 57e9bdea.
+
+It still leaves the issue that scons links all file sstaically now.
+---
+ SConstruct | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/SConstruct b/SConstruct
+index 290910b..51b07e1 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -968,7 +968,11 @@ gpsdlibs = ["-lgpsd"] + usblibs + bluezlibs + gpslibs
+ #          linking
+ # The final executable will build but not be portable.
+ 
+-env.StaticLibrary(target = 'libgps.a', source = libgps_sources)
++env.StaticLibrary(target='libgps.a',
++                  source=libgps_sources,
++                  parse_flags=dbus_libs + rtlibs)
++
++
+ 
+ # Source groups
+ 
+-- 
+1.8.4.3
+

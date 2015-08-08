@@ -1,0 +1,42 @@
+--- denemo-0.9.6/src/audiointerface.c
++++ denemo-0.9.6/src/audiointerface.c
+@@ -14,6 +14,7 @@
+ #include "audiointerface.h"
+ #include "eventqueue.h"
+ #include "dummybackend.h"
++#include "sourceaudio.h"
+ 
+ #ifdef _HAVE_JACK_
+   #include "jackbackend.h"
+--- denemo-0.9.6/src/audiointerface.h
++++ denemo-0.9.6/src/audiointerface.h
+@@ -228,6 +228,9 @@
+ gboolean read_event_from_queue(backend_type_t backend, unsigned char *event_buffer, size_t *event_length,
+                                double *event_time, double until_time);
+ 
++gboolean read_event_from_mixer_queue(backend_type_t backend, unsigned char *event_buffer, size_t *event_length,
++                               double *event_time, double until_time);
++
+ /**
+  * Called by a backend to notify the audio subsystem that the current playback
+  * time changed. Usually this is called once per period during playback.
+--- denemo-0.9.6/src/eventqueue.c
++++ denemo-0.9.6/src/eventqueue.c
+@@ -13,6 +13,7 @@
+ 
+ #include "eventqueue.h"
+ #include "midi.h"
++#include "moveviewport.h"
+ 
+ #include <glib.h>
+ #include <string.h>
+--- denemo-0.9.6/src/portaudiobackend.c
++++ denemo-0.9.6/src/portaudiobackend.c
+@@ -16,6 +16,7 @@
+ #include "portaudioutil.h"
+ #include "midi.h"
+ #include "fluid.h"
++#include "audiointerface.h"
+ 
+ #include <portaudio.h>
+ #include <glib.h>

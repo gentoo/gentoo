@@ -1,0 +1,13 @@
+Allow odbc to be used with unicode builds.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1217,7 +1217,7 @@ ODBCDLL_CXXFLAGS = $(__odbcdll_PCH_INC) -D__WX$(TOOLKIT)__ \
+ 	$(__WXUNIV_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) $(__RTTI_DEFINE_p) \
+ 	$(__THREAD_DEFINE_p) -DWXBUILDING $(__INC_TIFF_p) $(__INC_JPEG_p) \
+ 	$(__INC_PNG_p) $(__INC_ZLIB_p) $(__INC_ODBC_p) $(__INC_REGEX_p) \
+-	$(__INC_EXPAT_p) -DwxUSE_GUI=0 -DWXUSINGDLL -DWXMAKINGDLL_ODBC $(PIC_FLAG) \
++	$(__INC_EXPAT_p) -DwxUSE_GUI=0 -DWXUSINGDLL -DWXMAKINGDLL_ODBC -DSQL_WCHART_CONVERT $(PIC_FLAG) \
+ 	$(CPPFLAGS) $(CXXFLAGS)
+ ODBCDLL_OBJECTS =  \
+ 	$(__odbcdll___win32rc) \

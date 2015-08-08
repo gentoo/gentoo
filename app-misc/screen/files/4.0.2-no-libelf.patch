@@ -1,0 +1,18 @@
+--- screen-4.0.2/configure.in	2005-05-22 19:55:06.559874997 +0000
++++ screen-4.0.2-no-libelf/configure.in	2005-05-22 19:56:05.895801017 +0000
+@@ -195,15 +195,6 @@
+ #endif
+ ], LIBS="$LIBS -lsocket -linet";seqptx=1)
+ 
+-oldlibs="$LIBS"
+-LIBS="$LIBS -lelf"
+-AC_CHECKING(SVR4)
+-AC_TRY_LINK([#include <utmpx.h>
+-],,
+-[AC_CHECK_HEADER(dwarf.h, AC_DEFINE(SVR4) AC_DEFINE(BUGGYGETLOGIN),
+-[AC_CHECK_HEADER(elf.h, AC_DEFINE(SVR4) AC_DEFINE(BUGGYGETLOGIN))])]
+-,LIBS="$oldlibs")
+-
+ AC_CHECKING(for Solaris 2.x)
+ AC_EGREP_CPP(yes,
+ [#if defined(SVR4) && defined(sun)

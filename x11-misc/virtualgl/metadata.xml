@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<maintainer>
+		<email>mva@mva.name</email>
+		<name>Vadim A. Misbakh-Soloviov</name>
+	</maintainer>
+	<maintainer>
+		<email>rei4dan@gmail.com</email>
+		<name>My Th</name>
+	</maintainer>
+	<longdescription>
+	An open source package that gives any Unix or Linux remote display software
+	the ability to run OpenGL applications with full 3D hardware acceleration.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">virtualgl</remote-id>
+	</upstream>
+</pkgmetadata>

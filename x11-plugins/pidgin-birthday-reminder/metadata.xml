@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-im</herd>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer>
+		<email>mrueg@gentoo.org</email>
+		<name>Manuel Rüger</name>
+		<description>Maintainer. CC him on bugs</description>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.launchpad.net/pidgin-birthday-reminder</bugs-to>
+		<remote-id type="launchpad">pidgin-birthday-reminder</remote-id>
+	</upstream>
+</pkgmetadata>

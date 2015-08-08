@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>accessibility</herd>
+<maintainer>
+  <email>williamh@gentoo.org</email>
+</maintainer>
+<longdescription>
+Espeakup is a small lightweight connector which makes it possible for
+speakup to use espeak as its synthesizer.
+</longdescription>
+</pkgmetadata>

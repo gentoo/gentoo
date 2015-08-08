@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE rdf:RDF [
+        <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+        <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+        <!ENTITY dc 'http://purl.org/dc/elements/1.1/'>
+        <!ENTITY ladspa 'http://ladspa.org/ontology#'>
+]>
+<rdf:RDF xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;"
+         xmlns:dc="&dc;"
+         xmlns:ladspa="&ladspa;">
+
+  <!-- New classes needed by CMT -->
+  <rdfs:Class rdf:about="&ladspa;AmbisonicPlugin" ladspa:hasLabel="Ambisonic">
+    <rdfs:subClassOf rdf:resource="&ladspa;UtilityPlugin" />
+  </rdfs:Class>
+
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1092"/>
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1091"/>
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1090"/>
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1093"/>
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1087"/>
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1094"/>
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1089"/>
+  <ladspa:AmbisonicPlugin rdf:about="&ladspa;1088"/>
+
+  <ladspa:AmplifierPlugin rdf:about="&ladspa;1067"/>
+  <ladspa:AmplifierPlugin rdf:about="&ladspa;1068"/>
+  <ladspa:ModulatorPlugin rdf:about="&ladspa;1070"/>
+
+  <ladspa:DistortionPlugin rdf:about="&ladspa;1846"/>
+  <ladspa:DistortionPlugin rdf:about="&ladspa;1227"/>
+  <ladspa:WaveshaperPlugin rdf:about="&ladspa;1097"/>
+
+  <ladspa:DelayPlugin rdf:about="&ladspa;1225"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1053"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1054"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1055"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1056"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1057"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1058"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1059"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1060"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1061"/>
+  <ladspa:DelayPlugin rdf:about="&ladspa;1062"/>
+
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1080"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1081"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1078"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1079"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1098"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1099"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1849"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1071"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1083"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1084"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1085"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1086"/>
+  <ladspa:UtilityPlugin rdf:about="&ladspa;1082"/>
+
+  <ladspa:ReverbPlugin rdf:about="&ladspa;1123"/>
+
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1221"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1096"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1069"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1222"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1226"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1841"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1844"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1843"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1063"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1064"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1065"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1066"/>
+  <ladspa:GeneratorPlugin rdf:about="&ladspa;1223"/>
+
+  <ladspa:GatePlugin rdf:about="&ladspa;1845"/>
+  <ladspa:LimiterPlugin rdf:about="&ladspa;1848"/>
+  <ladspa:LimiterPlugin rdf:about="&ladspa;1842"/>
+  <ladspa:LimiterPlugin rdf:about="&ladspa;1076"/>
+  <ladspa:LimiterPlugin rdf:about="&ladspa;1077"/>
+  <ladspa:CompressorPlugin rdf:about="&ladspa;1072"/>
+  <ladspa:CompressorPlugin rdf:about="&ladspa;1073"/>
+  <ladspa:ExpanderPlugin rdf:about="&ladspa;1074"/>
+  <ladspa:ExpanderPlugin rdf:about="&ladspa;1075"/>
+
+  <ladspa:LowpassPlugin rdf:about="&ladspa;1051"/>
+  <ladspa:LowpassPlugin rdf:about="&ladspa;1224"/>
+  <ladspa:HighpassPlugin rdf:about="&ladspa;1052"/>
+
+</rdf:RDF>

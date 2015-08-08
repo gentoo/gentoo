@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Optimized edit distances for fuzzy matching, including Levenshtein and restricted Damerau-Levenshtein algorithms.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">batterseapower/edit-distance</remote-id>
+	</upstream>
+</pkgmetadata>

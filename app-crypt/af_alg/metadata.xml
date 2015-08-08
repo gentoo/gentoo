@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>robbat2@gentoo.org</email>
+<name>Robin H. Johnson</name>
+</maintainer>
+<longdescription lang="en">
+af_alg implements an OpenSSL engine that uses the AF_ALG functionailty found in
+kernel >= 2.6.38 for crypto offload. Be sure to actually check if it's faster,
+as for many modern systems, userspace software implementations are actually
+faster, as they avoid a kernel context switch. However, on embedded systems and
+others with crypto hardware, AF_ALG may be faster.  The homepage has more
+details.
+</longdescription>
+</pkgmetadata>
+

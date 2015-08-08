@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<longdescription lang="en">
+C-Dogs is an arcade shoot-em-up which lets players work alone and
+cooperatively during missions or fight against each other in the "dogfight"
+deathmatch mode. The DOS version of C-Dogs came with severla built in missions
+and dogfight maps. This version does too.
+</longdescription>
+</pkgmetadata>

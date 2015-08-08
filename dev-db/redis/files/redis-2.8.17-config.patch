@@ -1,0 +1,46 @@
+--- a/redis.conf	2014-12-02 16:22:38.722433643 +0100
++++ b/redis.conf	2014-12-02 16:22:16.252249350 +0100
+@@ -38,7 +38,7 @@
+ 
+ # When running daemonized, Redis writes a pid file in /var/run/redis.pid by
+ # default. You can specify a custom pid file location here.
+-pidfile /var/run/redis.pid
++pidfile /run/redis/redis.pid
+ 
+ # Accept connections on the specified port, default is 6379.
+ # If port 0 is specified Redis will not listen on a TCP socket.
+@@ -61,7 +61,7 @@
+ # Examples:
+ #
+ # bind 192.168.1.100 10.0.0.1
+-# bind 127.0.0.1
++bind 127.0.0.1
+ 
+ # Specify the path for the Unix socket that will be used to listen for
+ # incoming connections. There is no default, so Redis will not listen
+@@ -100,7 +100,7 @@
+ # Specify the log file name. Also the empty string can be used to force
+ # Redis to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
++logfile /var/log/redis/redis.log
+ 
+ # To enable logging to the system logger, just set 'syslog-enabled' to yes,
+ # and optionally update the other syslog parameters to suit your needs.
+@@ -184,7 +184,7 @@
+ # The Append Only File will also be created inside this directory.
+ # 
+ # Note that you must specify a directory here, not a file name.
+-dir ./
++dir /var/lib/redis/
+ 
+ ################################# REPLICATION #################################
+ 
+@@ -403,6 +403,7 @@
+ # output buffers (but this is not needed if the policy is 'noeviction').
+ #
+ # maxmemory <bytes>
++maxmemory 67108864
+ 
+ # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
+ # is reached. You can select among five behaviors:

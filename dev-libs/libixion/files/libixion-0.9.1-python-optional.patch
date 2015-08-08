@@ -1,0 +1,56 @@
+commit 59c360c9fe438a2805d65decc6c7889bc99a7747
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun May 31 10:14:17 2015 +0200
+
+    python: Make it optional
+    
+    python bindings are built unless disabled
+
+diff --git a/configure.ac b/configure.ac
+index 03f6120..1c7d8b2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,6 @@ AC_PREREQ([2.63])
+ AC_INIT([libixion], [ixion_version])
+ AC_CONFIG_HEADERS([config.h])
+ AM_INIT_AUTOMAKE([1.11 foreign dist-bzip2 dist-xz])
+-AM_PATH_PYTHON(2.7.0)
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+ 
+ AC_ARG_WITH(hash-container-compat,
+@@ -28,6 +27,9 @@ AC_ARG_WITH(mdds-include-path,
+     AS_HELP_STRING([--with-mdds-include-path], [specify include path for mdds headers.])
+ ,)
+ 
++AC_ARG_ENABLE([python],
++    AS_HELP_STRING([--disable-python], [Disable python bindings]))
++
+ IXION_API_VERSION=ixion_api_version
+ IXION_MAJOR_VERSION=ixion_major_version
+ IXION_MINOR_VERSION=ixion_minor_version
+@@ -82,7 +84,11 @@ fi
+ PKG_CHECK_MODULES([MDDS],[mdds >= 0.12.0])
+ 
+ # Check for python.
+-PKG_CHECK_MODULES([PYTHON], [python >= 0.27.1])
++AS_IF([test "x$enable_python" != "xno"], [
++    AM_PATH_PYTHON(2.7.0)
++    PKG_CHECK_MODULES([PYTHON], [python >= 0.27.1])
++])
++AM_CONDITIONAL([PYTHON], [test "x$enable_python" != "xno"])
+ 
+ CPPFLAGS="$CPPFLAGS -g -Os -fvisibility=hidden"
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6e138a4..cd912ab 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,4 +1,7 @@
+-SUBDIRS = libixion python
++SUBDIRS = libixion
++if PYTHON
++	SUBDIRS += python
++endif
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/include $(MDDS_CFLAGS)
+ 

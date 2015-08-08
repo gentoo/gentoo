@@ -1,0 +1,64 @@
+=== modified file 'src/cpp/core/include/core/http/AsyncServer.hpp'
+--- src/cpp/core/include/core/http/AsyncServer.hpp	2013-07-09 12:02:58 +0000
++++ src/cpp/core/include/core/http/AsyncServer.hpp	2013-07-09 12:03:34 +0000
+@@ -264,7 +264,7 @@
+          
+          // convert to cannonical HttpConnection
+          boost::shared_ptr<AsyncConnection> pAsyncConnection =
+-             boost::shared_static_cast<AsyncConnection>(pConnection);
++             boost::static_pointer_cast<AsyncConnection>(pConnection);
+ 
+          // call the appropriate handler to generate a response
+          std::string uri = pRequest->uri();
+
+=== modified file 'src/cpp/core/include/core/http/LocalStreamAsyncClient.hpp'
+--- src/cpp/core/include/core/http/LocalStreamAsyncClient.hpp	2013-07-09 12:02:58 +0000
++++ src/cpp/core/include/core/http/LocalStreamAsyncClient.hpp	2013-07-09 12:03:36 +0000
+@@ -87,7 +87,7 @@
+       boost::shared_ptr<AsyncClient<boost::asio::local::stream_protocol::socket> >
+                                     ptrShared = shared_from_this();
+ 
+-      return boost::shared_static_cast<LocalStreamAsyncClient>(ptrShared);
++      return boost::static_pointer_cast<LocalStreamAsyncClient>(ptrShared);
+    }
+ 
+ private:
+
+=== modified file 'src/cpp/core/include/core/http/TcpIpAsyncClient.hpp'
+--- src/cpp/core/include/core/http/TcpIpAsyncClient.hpp	2013-07-09 12:02:58 +0000
++++ src/cpp/core/include/core/http/TcpIpAsyncClient.hpp	2013-07-09 12:03:32 +0000
+@@ -74,7 +74,7 @@
+       boost::shared_ptr<AsyncClient<boost::asio::ip::tcp::socket> > ptrShared
+                                                 = shared_from_this();
+ 
+-      return boost::shared_static_cast<TcpIpAsyncClient>(ptrShared);
++      return boost::static_pointer_cast<TcpIpAsyncClient>(ptrShared);
+    }
+ 
+ private:
+
+=== modified file 'src/cpp/core/include/core/http/TcpIpAsyncClientSsl.hpp'
+--- src/cpp/core/include/core/http/TcpIpAsyncClientSsl.hpp	2013-07-09 12:02:58 +0000
++++ src/cpp/core/include/core/http/TcpIpAsyncClientSsl.hpp	2013-07-09 12:03:39 +0000
+@@ -109,7 +109,7 @@
+       boost::shared_ptr<AsyncClient<boost::asio::ssl::stream<boost::asio::ip::tcp::socket> > > ptrShared
+                                                  = shared_from_this();
+ 
+-      return boost::shared_static_cast<TcpIpAsyncClientSsl>(ptrShared);
++      return boost::static_pointer_cast<TcpIpAsyncClientSsl>(ptrShared);
+    }
+ 
+    virtual bool isShutdownError(const boost::system::error_code& ec)
+
+=== modified file 'src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp'
+--- src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp	2013-07-09 12:02:58 +0000
++++ src/cpp/session/http/SessionHttpConnectionListenerImpl.hpp	2013-07-09 12:03:29 +0000
+@@ -256,7 +256,7 @@
+    {
+       // convert to cannonical HttpConnection
+       boost::shared_ptr<HttpConnection> ptrHttpConnection =
+-            boost::shared_static_cast<HttpConnection>(ptrConnection);
++            boost::static_pointer_cast<HttpConnection>(ptrConnection);
+ 
+       if (!authenticate(ptrHttpConnection))
+       {

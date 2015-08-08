@@ -1,0 +1,36 @@
+http://pkgs.fedoraproject.org/gitweb/?p=cvs.git;a=blob;f=cvs-1.11.23-getline64.patch;h=99942e0589e4ff26e87a927c1a54662954876e64;hb=HEAD
+
+--- cvs-1.11.23/lib/getline.c
++++ cvs-1.11.23/lib/getline.c
+@@ -154,7 +154,7 @@
+   return ret;
+ }
+ 
+-int
++ssize_t
+ getline (lineptr, n, stream)
+      char **lineptr;
+      size_t *n;
+@@ -163,7 +163,7 @@
+   return getstr (lineptr, n, stream, '\n', 0, GETLINE_NO_LIMIT);
+ }
+ 
+-int
++ssize_t
+ getline_safe (lineptr, n, stream, limit)
+      char **lineptr;
+      size_t *n;
+--- cvs-1.11.23/lib/getline.h
++++ cvs-1.11.23/lib/getline.h
+@@ -11,9 +11,9 @@
+ 
+ #define GETLINE_NO_LIMIT -1
+ 
+-int
++ssize_t
+   getline __PROTO ((char **_lineptr, size_t *_n, FILE *_stream));
+-int
++ssize_t
+   getline_safe __PROTO ((char **_lineptr, size_t *_n, FILE *_stream,
+                          int limit));
+ int

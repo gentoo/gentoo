@@ -1,0 +1,12 @@
+Index: jfsutils-1.1.15/libfs/devices.h
+===================================================================
+--- jfsutils-1.1.15.orig/libfs/devices.h
++++ jfsutils-1.1.15/libfs/devices.h
+@@ -42,6 +42,7 @@
+ 
+ struct stat;
+ 
++#include <stdint.h>
+ int ujfs_get_dev_size(FILE *, int64_t * size);
+ int ujfs_rw_diskblocks(FILE *, int64_t, int32_t, void *, int32_t);
+ int ujfs_flush_dev(FILE *);

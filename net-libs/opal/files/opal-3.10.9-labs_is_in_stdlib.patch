@@ -1,0 +1,11 @@
+diff -uNr opal-3.10.8.orig/plugins/audio/G.722.2/AMR-WB/dec_lpc.c opal-3.10.8/plugins/audio/G.722.2/AMR-WB/dec_lpc.c
+--- opal-3.10.8.orig/plugins/audio/G.722.2/AMR-WB/dec_lpc.c	2012-10-22 07:50:37.000000000 -0400
++++ opal-3.10.8/plugins/audio/G.722.2/AMR-WB/dec_lpc.c	2012-10-22 10:20:49.000000000 -0400
+@@ -3,6 +3,7 @@
+  *  3GPP AMR Wideband Floating-point Speech Codec
+  *===================================================================
+  */
++#include <stdlib.h>
+ #include <math.h>
+ #include "typedef.h"
+ #include "dec_util.h"

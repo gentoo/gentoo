@@ -1,0 +1,11 @@
+--- com/novell/ldap/client/Debug.java.orig	2015-07-05 13:50:26.469000000 +0000
++++ com/novell/ldap/client/Debug.java	2015-07-05 13:53:12.456000000 +0000
+@@ -80,7 +80,7 @@
+      * The value for this variable is set during compile time
+      *  TRUE = Debug build, FALSE = Release build
+      */
+-    public static final boolean LDAP_DEBUG = true;
++    public static final boolean LDAP_DEBUG = false;
+ 
+     /**
+      * The string value used to enable all debug tracing.

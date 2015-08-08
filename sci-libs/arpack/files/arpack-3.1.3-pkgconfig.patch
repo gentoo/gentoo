@@ -1,0 +1,14 @@
+ arpack.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arpack.pc.in b/arpack.pc.in
+index 83739bd..996275e 100644
+--- a/arpack.pc.in
++++ b/arpack.pc.in
+@@ -5,5 +5,5 @@ libdir=@libdir@
+ Name: arpack
+ Description: ARPACK-NG 
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -larpack -lblas -latlas
++Libs: -L${libdir} -larpack @LAPACK_LIBS@ @BLAS_LIBS@
+ Cflags: 

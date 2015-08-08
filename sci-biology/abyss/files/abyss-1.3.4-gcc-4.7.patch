@@ -1,0 +1,15 @@
+ ParseAligns/abyss-fixmate.cc |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/ParseAligns/abyss-fixmate.cc b/ParseAligns/abyss-fixmate.cc
+index 1a169cf..36cc05b 100644
+--- a/ParseAligns/abyss-fixmate.cc
++++ b/ParseAligns/abyss-fixmate.cc
+@@ -16,6 +16,7 @@
+ #include <iterator>
+ #include <sstream>
+ #include <string>
++#include <unistd.h>
+ 
+ using namespace std;
+ 

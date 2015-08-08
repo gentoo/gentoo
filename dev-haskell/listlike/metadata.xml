@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Generic support for list-like structures in Haskell.
+		
+		The ListLike module provides a common interface to the various Haskell
+		types that are list-like.  Predefined interfaces include standard
+		Haskell lists, Arrays, ByteStrings, and lazy ByteStrings.  Custom
+		types can easily be made ListLike instances as well.
+		
+		ListLike also provides for String-like types, such as String and
+		ByteString, for types that support input and output, and for types that can handle
+		infinite lists.
+	</longdescription>
+</pkgmetadata>

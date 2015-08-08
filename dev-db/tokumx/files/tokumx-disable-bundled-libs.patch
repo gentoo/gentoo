@@ -1,0 +1,11 @@
+diff -auwrN a/src/third_party/ft-index/CMakeLists.txt b/src/third_party/ft-index/CMakeLists.txt
+--- a/src/third_party/ft-index/CMakeLists.txt	2014-08-01 04:37:33.000000000 -0400
++++ b/src/third_party/ft-index/CMakeLists.txt	2014-08-01 10:38:28.134869689 -0400
+@@ -35,7 +35,6 @@
+ include(TokuFeatureDetection)
+ include(TokuSetupCompiler)
+ include(TokuSetupCTest)
+-include(TokuThirdParty)
+ 
+ set(TOKU_CMAKE_SCRIPT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ include(TokuMergeLibs)

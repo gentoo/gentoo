@@ -1,0 +1,220 @@
+revno: 160 [merge]
+author: Jelmer Vernooij <jelmer@samba.org>
+committer: Guillermo Gonzalez <guillo.gonzo@gmail.com>
+branch nick: trunk
+timestamp: Mon 2011-12-19 18:45:35 -0300
+message:
+  Removes the use of relative imports and avoids using lazy_import in a few places we're it doesn't make a difference.
+
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=418969
+Upstream bug: https://bugs.launchpad.net/bzr-xmloutput/+bug/955329
+Commit: http://bazaar.launchpad.net/~verterok/bzr-xmloutput/trunk/revision/160
+
+--- cmds.py	2011-03-09 23:19:41 +0000
++++ cmds.py	2011-12-12 15:11:38 +0000
+@@ -22,36 +22,39 @@
+ 
+ import info
+ import bzrlib
++from bzrlib.option import Option
++from bzrlib.commands import (
++    Command,
++    display_command,
++    )
+ from bzrlib.lazy_import import lazy_import
+ lazy_import(globals(), """
+ import sys
+ from bzrlib import (
+     builtins,
+     bzrdir,
+-    commands,
+-    option,
+     log,
+     workingtree,
+     errors
+     )
+ 
+-from bzrlib.option import Option, custom_help
+-from bzrlib.commands import display_command
+-import logxml
+-import service
++from bzrlib.plugins.xmloutput import (
++    logxml,
++    service,
++    )
+ import socket
+-from xml_errors import handle_error_xml
+ """)
+ 
++from bzrlib.plugins.xmloutput.xml_errors import handle_error_xml
+ 
+ version_info = info.bzr_plugin_version
+ plugin_name = info.bzr_plugin_name
+ 
+-null_option = option.Option('null',
+-                            help='Write an ascii NUL (\\0) as the final char.')
+-
+-
+-class cmd_xmlstatus(commands.Command):
++null_option = Option('null',
++                     help='Write an ascii NUL (\\0) as the final char.')
++
++
++class cmd_xmlstatus(Command):
+     """Display status summary.
+ 
+     This reports on versioned and unknown files, reporting them
+@@ -118,7 +121,7 @@
+         self.outf.write('\n')
+ 
+ 
+-class cmd_xmlannotate(commands.Command):
++class cmd_xmlannotate(Command):
+     """Show the origin of each line in a file.
+ 
+     This prints out the given file with an annotation on the left side
+@@ -176,7 +179,7 @@
+                 branch.unlock()
+ 
+ 
+-class cmd_xmlmissing(commands.Command):
++class cmd_xmlmissing(Command):
+     """Show unmerged/unpulled revisions between two branches.
+ 
+     OTHER_BRANCH may be local or remote.
+@@ -212,7 +215,7 @@
+         self.outf.write('\n')
+ 
+ 
+-class cmd_xmlinfo(commands.Command):
++class cmd_xmlinfo(Command):
+     """Show information about a working tree, branch or repository.
+ 
+     This command will show all known locations and formats associated to the
+@@ -247,7 +250,7 @@
+         self.outf.write('\n')
+ 
+ 
+-class cmd_xmlplugins(commands.Command):
++class cmd_xmlplugins(Command):
+     """List the installed plugins.
+ 
+     This command displays the list of installed plugins including
+@@ -284,7 +287,7 @@
+         self.outf.write('\n')
+ 
+ 
+-class cmd_xmlversion(commands.Command):
++class cmd_xmlversion(Command):
+     """Show version of bzr."""
+     hidden = True
+     encoding_type = 'replace'
+@@ -383,7 +386,7 @@
+             self.outf.write('\0')
+         self.outf.write('\n')
+ 
+-class cmd_start_xmlrpc(commands.Command):
++class cmd_start_xmlrpc(Command):
+     """Start the xmlrpc service."""
+ 
+     hidden = True
+@@ -413,7 +416,7 @@
+             self.server.shutdown()
+ 
+ 
+-class cmd_stop_xmlrpc(commands.Command):
++class cmd_stop_xmlrpc(Command):
+     """Stops a xmlrpc service."""
+ 
+     hidden = True
+
+--- infoxml.py	2009-07-28 03:43:56 +0000
++++ infoxml.py	2011-12-12 15:11:38 +0000
+@@ -27,6 +27,7 @@
+ 
+ __all__ = ['show_bzrdir_info_xml']
+ 
++from bzrlib import info
+ from bzrlib.lazy_import import lazy_import
+ lazy_import(globals(), """
+ import os, sys, time
+@@ -36,7 +37,6 @@
+     errors,
+     osutils,
+     urlutils,
+-    info,
+     missing,
+     )
+ """)
+
+--- logxml.py	2010-12-15 18:27:12 +0000
++++ logxml.py	2011-12-12 15:11:38 +0000
+@@ -1,14 +1,12 @@
+ # -*- encoding: utf-8 -*-
+ 
+-import os
+-
++from bzrlib import log
+ from bzrlib.lazy_import import lazy_import
+ lazy_import(globals(), """
+ import bzrlib
+ from bzrlib import (
+     debug,
+     osutils,
+-    log,
+     )
+ """)
+ 
+
+--- lsxml.py	2011-03-09 23:41:22 +0000
++++ lsxml.py	2011-12-12 15:11:38 +0000
+@@ -19,8 +19,6 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
+ #
+ 
+-import os
+-
+ from bzrlib.lazy_import import lazy_import
+ lazy_import(globals(), """
+ from bzrlib import bzrdir, errors, osutils
+
+--- service.py	2010-02-23 23:38:02 +0000
++++ service.py	2011-12-12 15:11:38 +0000
+@@ -20,6 +20,8 @@
+ #
+ """ xmlrpc service module """
+ 
++import os
++
+ from bzrlib.lazy_import import lazy_import
+ lazy_import(globals(), """
+ import bzrlib
+@@ -30,14 +32,13 @@
+     osutils
+     )
+ import sys
+-import os
+ import codecs
+ import logging
+ import traceback
+ from cStringIO import StringIO
+ """)
+ 
+-from xml_errors import XMLError
++from bzrlib.plugins.xmloutput.xml_errors import XMLError
+ from xmlrpclib import Fault, Binary
+ from SimpleXMLRPCServer import SimpleXMLRPCServer
+ 
+
+--- statusxml.py	2010-12-15 18:27:12 +0000
++++ statusxml.py	2011-12-12 15:11:38 +0000
+@@ -33,7 +33,7 @@
+     trace,
+     )
+ 
+-import logxml
++from bzrlib.plugins.xmloutput import logxml
+ """)
+ 
+ from writer import _escape_cdata
+

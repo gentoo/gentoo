@@ -1,0 +1,51 @@
+--- encode/encode_lavc.c
++++ encode/encode_lavc.c
+@@ -955,8 +955,6 @@
+     /* 
+      * context *transcode* (not libavcodec) defaults
+      */
+-    pd->ff_vcontext.mb_qmin                 = 2;
+-    pd->ff_vcontext.mb_qmax                 = 31;
+     pd->ff_vcontext.max_qdiff               = 3;
+     pd->ff_vcontext.max_b_frames            = 0;
+     pd->ff_vcontext.me_range                = 0;
+@@ -1116,8 +1114,6 @@
+         //  handled by transcode core
+         //  { "vqmax", PCTX(qmax), TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 60 },
+         //  handled by transcode core
+-        { "mbqmin", PCTX(mb_qmin), TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 60 },
+-        { "mbqmax", PCTX(mb_qmax), TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 60 },
+         { "lmin", PAUX(lmin), TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0 },
+         { "lmax", PAUX(lmax), TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0 },
+         { "vqdiff", PCTX(max_qdiff), TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31 },
+--- export/ffmpeg_cfg.c
++++ export/ffmpeg_cfg.c
+@@ -34,8 +34,6 @@
+ //int lavc_param_vqscale = 0;
+ //int lavc_param_vqmin = 2;
+ //int lavc_param_vqmax = 31;
+-int lavc_param_mb_qmin = 2;
+-int lavc_param_mb_qmax = 31;
+ int lavc_param_lmin = 2;
+ int lavc_param_lmax = 31;
+ int lavc_param_vqdiff = 3;
+@@ -143,8 +141,6 @@
+ //    {"vqscale", &lavc_param_vqscale, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31},
+ //    {"vqmin", &lavc_param_vqmin, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31},
+ //    {"vqmax", &lavc_param_vqmax, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31},
+-    {"mbqmin", &lavc_param_mb_qmin, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31},
+-    {"mbqmax", &lavc_param_mb_qmax, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31},
+     {"lmin", &lavc_param_lmin, TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0},
+     {"lmax", &lavc_param_lmax, TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0},
+     {"vqdiff", &lavc_param_vqdiff, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31},
+--- export/ffmpeg_cfg.h
++++ export/ffmpeg_cfg.h
+@@ -13,8 +13,6 @@
+ //extern int lavc_param_vqscale;
+ //extern int lavc_param_vqmin;
+ //extern int lavc_param_vqmax;
+-extern int lavc_param_mb_qmin;
+-extern int lavc_param_mb_qmax;
+ extern int lavc_param_lmin;
+ extern int lavc_param_lmax;
+ extern int lavc_param_vqdiff;

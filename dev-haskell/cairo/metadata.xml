@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Cairo is a library to render high quality vector graphics. There
+		exist various backends that allows rendering to Gtk windows, PDF,
+		PS, PNG and SVG documents, amongst others.
+	</longdescription>
+</pkgmetadata>

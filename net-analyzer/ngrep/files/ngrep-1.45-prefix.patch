@@ -1,0 +1,17 @@
+* refrain from doing an absolutely insane check (to see if pcap is
+  installed in more than one place)
+
+--- a/configure.in
++++ b/configure.in
+@@ -268,10 +268,7 @@
+ 
+ AC_MSG_CHECKING(for a complete set of pcap headers)
+ 
+-possible_dirs="`eval echo -n ${includedir}` \
+-	       /usr/include /usr/include/pcap \
+-               /usr/local/include /usr/local/include/pcap \
+-               /usr/share/include /usr/share/include/pcap"
++possible_dirs="`eval echo -n ${includedir}`"
+ 
+ AC_ARG_WITH(pcap-includes,
+ [  --with-pcap-includes        specify the pcap include directory],

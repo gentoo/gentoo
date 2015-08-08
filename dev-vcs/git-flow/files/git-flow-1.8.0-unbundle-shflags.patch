@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+index 0718bbb..f488922 100644
+--- a/Makefile
++++ b/Makefile
+@@ -43,7 +43,6 @@ SCRIPT_FILES+=git-flow-version
+ SCRIPT_FILES+=git-flow-log
+ SCRIPT_FILES+=git-flow-config
+ SCRIPT_FILES+=gitflow-common
+-SCRIPT_FILES+=gitflow-shFlags
+ 
+ # Hook files
+ HOOK_FILES=$(wildcard hooks/*)
+diff --git a/git-flow b/git-flow
+index 7a962d2..2ba70ba 100755
+--- a/git-flow
++++ b/git-flow
+@@ -111,7 +111,7 @@ main() {
+ 	fi
+ 
+ 	# Use the shFlags project to parse the command line arguments
+-	. "$GITFLOW_DIR/gitflow-shFlags"
++	. /usr/share/misc/shflags
+ 	FLAGS_PARENT="git flow"
+ 
+ 	# Load common functionality

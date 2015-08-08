@@ -1,0 +1,28 @@
+--- mysql_udf_ipv6.c.orig	2011-08-10 10:45:49.000000000 +0200
++++ mysql_udf_ipv6.c	2011-10-18 16:27:58.000000000 +0200
+@@ -282,7 +282,7 @@
+ {
+     unsigned long length = args->lengths[0];
+     long long mask = *((long long *) args->args[1]);
+-    unsigned char mask8, i;
++    unsigned char i;
+ 
+     if (!args->args[0] || !length)
+     {
+@@ -299,7 +299,7 @@
+ 
+     // my ugly get-the-job-done 128-bit masking
+     memset(result, 0, INET6_ADDRLEN);
+-    for (i = 0; i < INET6_ADDRLEN, mask >= 8; i++, mask -= 8)
++    for (i = 0; i < INET6_ADDRLEN && mask >= 8; i++, mask -= 8)
+     {
+         result[i] = args->args[0][i];
+     }
+@@ -347,7 +347,6 @@
+ {
+     struct addrinfo *info;
+     char *addr;
+-    ushort i;
+ 
+     if (!args->args[0] || !args->lengths[0])
+     {

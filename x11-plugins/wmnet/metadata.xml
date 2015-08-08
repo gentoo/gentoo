@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmnet polls network statistics and does a few things with the data it gets. It 
+has small blinking lights for the rx and tx of ip packets, a digital 
+speedometer of your tcp/ip stack's current speed and neatest of all, a bar 
+graph like xload et. al which has a tx speed graph from bottom-up and rx speed 
+graph from the top-down. The speedometer keeps track of the current speed per 
+second and shows it in a color corresponding to which of rx or tx that has the 
+highest speed at the moment.
+</longdescription>
+</pkgmetadata>

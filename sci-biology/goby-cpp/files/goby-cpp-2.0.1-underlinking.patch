@@ -1,0 +1,16 @@
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 1033382..33ca906 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -84,7 +84,7 @@ GobyReadsStats_LDADD = libgoby.la ${BOOST_LDFLAGS} ${BOOST_SYSTEM_LIB} ${BOOST_D
+ GobyReadsStats_SOURCES = \
+ 	GobyReadsStats.cc
+ 
+-GobyFastaToCompact_LDADD = libgoby.la ${BOOST_LDFLAGS} ${BOOST_SYSTEM_LIB} ${BOOST_DATE_TIME_LIB} ${BOOST_FILESYSTEM_LIB} ${BOOST_PROGRAM_OPTIONS_LIB}
++GobyFastaToCompact_LDADD = libgoby.la ${BOOST_LDFLAGS} ${BOOST_SYSTEM_LIB} ${BOOST_DATE_TIME_LIB} ${BOOST_FILESYSTEM_LIB} ${BOOST_PROGRAM_OPTIONS_LIB} -lz
+ GobyFastaToCompact_SOURCES = \
+ 	GobyFastaToCompact.cc
+ 

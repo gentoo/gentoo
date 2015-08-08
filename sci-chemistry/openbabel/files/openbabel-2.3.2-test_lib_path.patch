@@ -1,0 +1,27 @@
+diff -ru old/openbabel-2.3.0/test/CMakeLists.txt new/openbabel-2.3.0/test/CMakeLists.txt
+--- old/openbabel-2.3.0/test/CMakeLists.txt	2010-10-26 17:39:01.000000000 +0300
++++ new/openbabel-2.3.0/test/CMakeLists.txt	2010-11-14 18:13:32.000000000 +0200
+@@ -2,7 +2,7 @@
+ add_definitions(-DTESTDATADIR="\\"${CMAKE_SOURCE_DIR}/test/files/\\"")
+ 
+ # define FORMATDIR for location of format plugin binaries
+-add_definitions(-DFORMATDIR="\\"${openbabel_BINARY_DIR}/lib/\\"")
++add_definitions(-DFORMATDIR="\\"${openbabel_BINARY_DIR}/lib${LIB_SUFFIX}/\\"")
+ 
+ ###########################################################
+ #  new tests using obtest.h
+@@ -32,12 +35,12 @@ set(tests
+     uniqueid
+   )
+ 
+-if (EIGEN2_FOUND)
++if(EIGEN2_FOUND OR EIGEN3_FOUND)
+ set(tests
+         align
+         ${tests}
+ )
+-endif (EIGEN2_FOUND)
++endif()
+ 
+ set(TEST_PATH ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+ 

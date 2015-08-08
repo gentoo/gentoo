@@ -1,0 +1,17 @@
+--- gio-0.12.3-orig/System/GIO/Async/AsyncResult.chs	2012-03-09 10:32:58.000000000 +1100
++++ gio-0.12.3/System/GIO/Async/AsyncResult.chs	2012-10-11 10:04:03.686864483 +1100
+@@ -47,12 +47,12 @@
+ {#pointer GAsyncReadyCallback#}
+ 
+ foreign import ccall "wrapper" mkAsyncReadyCallback :: 
+-    (Ptr GObject -> Ptr AsyncResult -> Ptr () -> IO ()) -> IO GAsyncReadyCallback
++    (Ptr () -> Ptr AsyncResult -> Ptr () -> IO ()) -> IO GAsyncReadyCallback
+ 
+ marshalAsyncReadyCallback :: AsyncReadyCallback -> IO GAsyncReadyCallback
+ marshalAsyncReadyCallback asyncReadyCallback = 
+     mkAsyncReadyCallback $ \ cObject cAsyncResult cCallback -> do
+-      object <- (makeNewGObject mkGObject . return) cObject
++      object <- (makeNewGObject mkGObject . return) (castPtr cObject)
+       asyncResult <- (makeNewGObject mkAsyncResult . return) cAsyncResult
+       asyncReadyCallback object asyncResult
+       freeHaskellFunPtr (castPtrToFunPtr cCallback)

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>ultrabug@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>bugs@bergstroem.nu</email>
+    <name>Johan Bergström</name>
+    <description>Proxy-Maintainer, assign bugs</description>
+  </maintainer>
+  <use>
+    <flag name="jemalloc">
+      Use <pkg>dev-libs/jemalloc</pkg> for allocations.
+    </flag>
+    <flag name="tcmalloc">
+      Use tcmalloc from <pkg>dev-util/google-perftools</pkg> for allocations.
+    </flag>
+  </use>
+</pkgmetadata>

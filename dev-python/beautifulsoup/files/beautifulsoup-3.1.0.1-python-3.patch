@@ -1,0 +1,949 @@
+--- BeautifulSoup.py
++++ BeautifulSoup.py
+@@ -76,7 +76,7 @@
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE, DAMMIT.
+ 
+ """
+-from __future__ import generators
++
+ 
+ __author__ = "Leonard Richardson (leonardr@segfault.org)"
+ __version__ = "3.1.0.1"
+@@ -84,12 +84,12 @@
+ __license__ = "New-style BSD"
+ 
+ import codecs
+-import markupbase
++import _markupbase
+ import types
+ import re
+-from HTMLParser import HTMLParser, HTMLParseError
++from html.parser import HTMLParser, HTMLParseError
+ try:
+-    from htmlentitydefs import name2codepoint
++    from html.entities import name2codepoint
+ except ImportError:
+     name2codepoint = {}
+ try:
+@@ -98,18 +98,18 @@
+     from sets import Set as set
+ 
+ #These hacks make Beautiful Soup able to parse XML with namespaces
+-markupbase._declname_match = re.compile(r'[a-zA-Z][-_.:a-zA-Z0-9]*\s*').match
++_markupbase._declname_match = re.compile(r'[a-zA-Z][-_.:a-zA-Z0-9]*\s*').match
+ 
+ DEFAULT_OUTPUT_ENCODING = "utf-8"
+ 
+ # First, the classes that represent markup elements.
+ 
+-def sob(unicode, encoding):
++def sob(str, encoding):
+     """Returns either the given Unicode string or its encoding."""
+     if encoding is None:
+-        return unicode
++        return str
+     else:
+-        return unicode.encode(encoding)
++        return str.encode(encoding)
+ 
+ class PageElement:
+     """Contains the navigational information for some part of the page
+@@ -178,8 +178,8 @@
+         return lastChild
+ 
+     def insert(self, position, newChild):
+-        if (isinstance(newChild, basestring)
+-            or isinstance(newChild, unicode)) \
++        if (isinstance(newChild, str)
++            or isinstance(newChild, str)) \
+             and not isinstance(newChild, NavigableString):
+             newChild = NavigableString(newChild)
+ 
+@@ -334,7 +334,7 @@
+         g = generator()
+         while True:
+             try:
+-                i = g.next()
++                i = g.__next__()
+             except StopIteration:
+                 break
+             if i:
+@@ -385,22 +385,22 @@
+     def toEncoding(self, s, encoding=None):
+         """Encodes an object to a string in some encoding, or to Unicode.
+         ."""
+-        if isinstance(s, unicode):
++        if isinstance(s, str):
+             if encoding:
+                 s = s.encode(encoding)
+         elif isinstance(s, str):
+             if encoding:
+                 s = s.encode(encoding)
+             else:
+-                s = unicode(s)
++                s = str(s)
+         else:
+             if encoding:
+                 s  = self.toEncoding(str(s), encoding)
+             else:
+-                s = unicode(s)
++                s = str(s)
+         return s
+ 
+-class NavigableString(unicode, PageElement):
++class NavigableString(str, PageElement):
+ 
+     def __new__(cls, value):
+         """Create a new NavigableString.
+@@ -410,12 +410,12 @@
+         passed in to the superclass's __new__ or the superclass won't know
+         how to handle non-ASCII characters.
+         """
+-        if isinstance(value, unicode):
+-            return unicode.__new__(cls, value)
+-        return unicode.__new__(cls, value, DEFAULT_OUTPUT_ENCODING)
++        if isinstance(value, str):
++            return str.__new__(cls, value)
++        return str.__new__(cls, value, DEFAULT_OUTPUT_ENCODING)
+ 
+     def __getnewargs__(self):
+-        return (unicode(self),)
++        return (str(self),)
+ 
+     def __getattr__(self, attr):
+         """text.string gives you text. This is for backwards
+@@ -424,7 +424,7 @@
+         if attr == 'string':
+             return self
+         else:
+-            raise AttributeError, "'%s' object has no attribute '%s'" % (self.__class__.__name__, attr)
++            raise AttributeError("'%s' object has no attribute '%s'" % (self.__class__.__name__, attr))
+ 
+     def encode(self, encoding=DEFAULT_OUTPUT_ENCODING):
+         return self.decode().encode(encoding)
+@@ -435,23 +435,23 @@
+ class CData(NavigableString):
+ 
+     def decodeGivenEventualEncoding(self, eventualEncoding):
+-        return u'<![CDATA[' + self + u']]>'
++        return '<![CDATA[' + self + ']]>'
+ 
+ class ProcessingInstruction(NavigableString):
+ 
+     def decodeGivenEventualEncoding(self, eventualEncoding):
+         output = self
+-        if u'%SOUP-ENCODING%' in output:
++        if '%SOUP-ENCODING%' in output:
+             output = self.substituteEncoding(output, eventualEncoding)
+-        return u'<?' + output + u'?>'
++        return '<?' + output + '?>'
+ 
+ class Comment(NavigableString):
+     def decodeGivenEventualEncoding(self, eventualEncoding):
+-        return u'<!--' + self + u'-->'
++        return '<!--' + self + '-->'
+ 
+ class Declaration(NavigableString):
+     def decodeGivenEventualEncoding(self, eventualEncoding):
+-        return u'<!' + self + u'>'
++        return '<!' + self + '>'
+ 
+ class Tag(PageElement):
+ 
+@@ -460,7 +460,7 @@
+     def _invert(h):
+         "Cheap function to invert a hash."
+         i = {}
+-        for k,v in h.items():
++        for k,v in list(h.items()):
+             i[v] = k
+         return i
+ 
+@@ -479,23 +479,23 @@
+         escaped."""
+         x = match.group(1)
+         if self.convertHTMLEntities and x in name2codepoint:
+-            return unichr(name2codepoint[x])
++            return chr(name2codepoint[x])
+         elif x in self.XML_ENTITIES_TO_SPECIAL_CHARS:
+             if self.convertXMLEntities:
+                 return self.XML_ENTITIES_TO_SPECIAL_CHARS[x]
+             else:
+-                return u'&%s;' % x
++                return '&%s;' % x
+         elif len(x) > 0 and x[0] == '#':
+             # Handle numeric entities
+             if len(x) > 1 and x[1] == 'x':
+-                return unichr(int(x[2:], 16))
++                return chr(int(x[2:], 16))
+             else:
+-                return unichr(int(x[1:]))
++                return chr(int(x[1:]))
+ 
+         elif self.escapeUnrecognizedEntities:
+-            return u'&amp;%s;' % x
++            return '&amp;%s;' % x
+         else:
+-            return u'&%s;' % x
++            return '&%s;' % x
+ 
+     def __init__(self, parser, name, attrs=None, parent=None,
+                  previous=None):
+@@ -524,7 +524,7 @@
+                 return kval
+             return (k, re.sub("&(#\d+|#x[0-9a-fA-F]+|\w+);",
+                               self._convertEntities, val))
+-        self.attrs = map(convert, self.attrs)
++        self.attrs = list(map(convert, self.attrs))
+ 
+     def get(self, key, default=None):
+         """Returns the value of the 'key' attribute for the tag, or
+@@ -533,7 +533,7 @@
+         return self._getAttrMap().get(key, default)
+ 
+     def has_key(self, key):
+-        return self._getAttrMap().has_key(key)
++        return key in self._getAttrMap()
+ 
+     def __getitem__(self, key):
+         """tag[key] returns the value of the 'key' attribute for the tag,
+@@ -551,7 +551,7 @@
+     def __contains__(self, x):
+         return x in self.contents
+ 
+-    def __nonzero__(self):
++    def __bool__(self):
+         "A tag is non-None even if it has no contents."
+         return True
+ 
+@@ -577,14 +577,14 @@
+                 #We don't break because bad HTML can define the same
+                 #attribute multiple times.
+             self._getAttrMap()
+-            if self.attrMap.has_key(key):
++            if key in self.attrMap:
+                 del self.attrMap[key]
+ 
+     def __call__(self, *args, **kwargs):
+         """Calling a tag like a function is the same as calling its
+         findAll() method. Eg. tag('a') returns a list of all the A tags
+         found within this tag."""
+-        return apply(self.findAll, args, kwargs)
++        return self.findAll(*args, **kwargs)
+ 
+     def __getattr__(self, tag):
+         #print "Getattr %s.%s" % (self.__class__, tag)
+@@ -592,7 +592,7 @@
+             return self.find(tag[:-3])
+         elif tag.find('__') != 0:
+             return self.find(tag)
+-        raise AttributeError, "'%s' object has no attribute '%s'" % (self.__class__, tag)
++        raise AttributeError("'%s' object has no attribute '%s'" % (self.__class__, tag))
+ 
+     def __eq__(self, other):
+         """Returns true iff this tag has the same name, the same attributes,
+@@ -868,7 +868,7 @@
+         if isinstance(markupName, Tag):
+             markup = markupName
+             markupAttrs = markup
+-        callFunctionWithTagData = callable(self.name) \
++        callFunctionWithTagData = hasattr(self.name, '__call__') \
+                                 and not isinstance(markupName, Tag)
+ 
+         if (not self.name) \
+@@ -880,7 +880,7 @@
+             else:
+                 match = True
+                 markupAttrMap = None
+-                for attr, matchAgainst in self.attrs.items():
++                for attr, matchAgainst in list(self.attrs.items()):
+                     if not markupAttrMap:
+                          if hasattr(markupAttrs, 'get'):
+                             markupAttrMap = markupAttrs
+@@ -921,16 +921,16 @@
+             if self._matches(markup, self.text):
+                 found = markup
+         else:
+-            raise Exception, "I don't know how to match against a %s" \
+-                  % markup.__class__
++            raise Exception("I don't know how to match against a %s" \
++                  % markup.__class__)
+         return found
+ 
+     def _matches(self, markup, matchAgainst):
+         #print "Matching %s against %s" % (markup, matchAgainst)
+         result = False
+-        if matchAgainst == True and type(matchAgainst) == types.BooleanType:
++        if matchAgainst == True and type(matchAgainst) == bool:
+             result = markup != None
+-        elif callable(matchAgainst):
++        elif hasattr(matchAgainst, '__call__'):
+             result = matchAgainst(markup)
+         else:
+             #Custom match methods take the tag as an argument, but all
+@@ -938,7 +938,7 @@
+             if isinstance(markup, Tag):
+                 markup = markup.name
+             if markup is not None and not isString(markup):
+-                markup = unicode(markup)
++                markup = str(markup)
+             #Now we know that chunk is either a string, or None.
+             if hasattr(matchAgainst, 'match'):
+                 # It's a regexp object.
+@@ -947,10 +947,10 @@
+                   and (markup is not None or not isString(matchAgainst))):
+                 result = markup in matchAgainst
+             elif hasattr(matchAgainst, 'items'):
+-                result = markup.has_key(matchAgainst)
++                result = matchAgainst in markup
+             elif matchAgainst and isString(markup):
+-                if isinstance(markup, unicode):
+-                    matchAgainst = unicode(matchAgainst)
++                if isinstance(markup, str):
++                    matchAgainst = str(matchAgainst)
+                 else:
+                     matchAgainst = str(matchAgainst)
+ 
+@@ -971,13 +971,13 @@
+     """Convenience method that works with all 2.x versions of Python
+     to determine whether or not something is listlike."""
+     return ((hasattr(l, '__iter__') and not isString(l))
+-            or (type(l) in (types.ListType, types.TupleType)))
++            or (type(l) in (list, tuple)))
+ 
+ def isString(s):
+     """Convenience method that works with all 2.x versions of Python
+     to determine whether or not something is stringlike."""
+     try:
+-        return isinstance(s, unicode) or isinstance(s, basestring)
++        return isinstance(s, str) or isinstance(s, str)
+     except NameError:
+         return isinstance(s, str)
+ 
+@@ -989,7 +989,7 @@
+     for portion in args:
+         if hasattr(portion, 'items'):
+             #It's a map. Merge it.
+-            for k,v in portion.items():
++            for k,v in list(portion.items()):
+                 built[k] = v
+         elif isList(portion) and not isString(portion):
+             #It's a list. Map each item to the default.
+@@ -1034,7 +1034,7 @@
+         object, possibly one with a %SOUP-ENCODING% slot into which an
+         encoding will be plugged later."""
+         if text[:3] == "xml":
+-            text = u"xml version='1.0' encoding='%SOUP-ENCODING%'"
++            text = "xml version='1.0' encoding='%SOUP-ENCODING%'"
+         self._toStringSubclass(text, ProcessingInstruction)
+ 
+     def handle_comment(self, text):
+@@ -1044,7 +1044,7 @@
+     def handle_charref(self, ref):
+         "Handle character references as data."
+         if self.soup.convertEntities:
+-            data = unichr(int(ref))
++            data = chr(int(ref))
+         else:
+             data = '&#%s;' % ref
+         self.handle_data(data)
+@@ -1056,7 +1056,7 @@
+         data = None
+         if self.soup.convertHTMLEntities:
+             try:
+-                data = unichr(name2codepoint[ref])
++                data = chr(name2codepoint[ref])
+             except KeyError:
+                 pass
+ 
+@@ -1147,7 +1147,7 @@
+                        lambda x: '<!' + x.group(1) + '>')
+                       ]
+ 
+-    ROOT_TAG_NAME = u'[document]'
++    ROOT_TAG_NAME = '[document]'
+ 
+     HTML_ENTITIES = "html"
+     XML_ENTITIES = "xml"
+@@ -1236,14 +1236,14 @@
+     def _feed(self, inDocumentEncoding=None, isHTML=False):
+         # Convert the document to Unicode.
+         markup = self.markup
+-        if isinstance(markup, unicode):
++        if isinstance(markup, str):
+             if not hasattr(self, 'originalEncoding'):
+                 self.originalEncoding = None
+         else:
+             dammit = UnicodeDammit\
+                      (markup, [self.fromEncoding, inDocumentEncoding],
+                       smartQuotesTo=self.smartQuotesTo, isHTML=isHTML)
+-            markup = dammit.unicode
++            markup = dammit.str
+             self.originalEncoding = dammit.originalEncoding
+             self.declaredHTMLEncoding = dammit.declaredHTMLEncoding
+         if markup:
+@@ -1269,8 +1269,8 @@
+     def isSelfClosingTag(self, name):
+         """Returns true iff the given string is the name of a
+         self-closing tag according to this parser."""
+-        return self.SELF_CLOSING_TAGS.has_key(name) \
+-               or self.instanceSelfClosingTags.has_key(name)
++        return name in self.SELF_CLOSING_TAGS \
++               or name in self.instanceSelfClosingTags
+ 
+     def reset(self):
+         Tag.__init__(self, self, self.ROOT_TAG_NAME)
+@@ -1305,7 +1305,7 @@
+ 
+     def endData(self, containerClass=NavigableString):
+         if self.currentData:
+-            currentData = u''.join(self.currentData)
++            currentData = ''.join(self.currentData)
+             if (currentData.translate(self.STRIP_ASCII_SPACES) == '' and
+                 not set([tag.name for tag in self.tagStack]).intersection(
+                     self.PRESERVE_WHITESPACE_TAGS)):
+@@ -1368,7 +1368,7 @@
+ 
+         nestingResetTriggers = self.NESTABLE_TAGS.get(name)
+         isNestable = nestingResetTriggers != None
+-        isResetNesting = self.RESET_NESTING_TAGS.has_key(name)
++        isResetNesting = name in self.RESET_NESTING_TAGS
+         popTo = None
+         inclusive = True
+         for i in range(len(self.tagStack)-1, 0, -1):
+@@ -1381,7 +1381,7 @@
+             if (nestingResetTriggers != None
+                 and p.name in nestingResetTriggers) \
+                 or (nestingResetTriggers == None and isResetNesting
+-                    and self.RESET_NESTING_TAGS.has_key(p.name)):
++                    and p.name in self.RESET_NESTING_TAGS):
+ 
+                 #If we encounter one of the nesting reset triggers
+                 #peculiar to this tag, or we encounter another tag
+@@ -1399,7 +1399,7 @@
+         if self.quoteStack:
+             #This is not a real tag.
+             #print "<%s> is not real!" % name
+-            attrs = ''.join(map(lambda(x, y): ' %s="%s"' % (x, y), attrs))
++            attrs = ''.join([' %s="%s"' % (x_y[0], x_y[1]) for x_y in attrs])
+             self.handle_data('<%s%s>' % (name, attrs))
+             return
+         self.endData()
+@@ -1493,7 +1493,7 @@
+     BeautifulStoneSoup before writing your own subclass."""
+ 
+     def __init__(self, *args, **kwargs):
+-        if not kwargs.has_key('smartQuotesTo'):
++        if 'smartQuotesTo' not in kwargs:
+             kwargs['smartQuotesTo'] = self.HTML_ENTITIES
+         kwargs['isHTML'] = True
+         BeautifulStoneSoup.__init__(self, *args, **kwargs)
+@@ -1677,7 +1677,7 @@
+             parent._getAttrMap()
+             if (isinstance(tag, Tag) and len(tag.contents) == 1 and
+                 isinstance(tag.contents[0], NavigableString) and
+-                not parent.attrMap.has_key(tag.name)):
++                tag.name not in parent.attrMap):
+                 parent[tag.name] = tag.contents[0]
+         BeautifulStoneSoup.popTag(self)
+ 
+@@ -1751,9 +1751,9 @@
+                      self._detectEncoding(markup, isHTML)
+         self.smartQuotesTo = smartQuotesTo
+         self.triedEncodings = []
+-        if markup == '' or isinstance(markup, unicode):
++        if markup == '' or isinstance(markup, str):
+             self.originalEncoding = None
+-            self.unicode = unicode(markup)
++            self.str = str(markup)
+             return
+ 
+         u = None
+@@ -1766,7 +1766,7 @@
+                 if u: break
+ 
+         # If no luck and we have auto-detection library, try that:
+-        if not u and chardet and not isinstance(self.markup, unicode):
++        if not u and chardet and not isinstance(self.markup, str):
+             u = self._convertFrom(chardet.detect(self.markup)['encoding'])
+ 
+         # As a last resort, try utf-8 and windows-1252:
+@@ -1775,7 +1775,7 @@
+                 u = self._convertFrom(proposed_encoding)
+                 if u: break
+ 
+-        self.unicode = u
++        self.str = u
+         if not u: self.originalEncoding = None
+ 
+     def _subMSChar(self, match):
+@@ -1783,7 +1783,7 @@
+         entity."""
+         orig = match.group(1)
+         sub = self.MS_CHARS.get(orig)
+-        if type(sub) == types.TupleType:
++        if type(sub) == tuple:
+             if self.smartQuotesTo == 'xml':
+                 sub = '&#x'.encode() + sub[1].encode() + ';'.encode()
+             else:
+@@ -1804,7 +1804,7 @@
+         if self.smartQuotesTo and proposed.lower() in("windows-1252",
+                                                       "iso-8859-1",
+                                                       "iso-8859-2"):
+-            smart_quotes_re = "([\x80-\x9f])"
++            smart_quotes_re = b"([\x80-\x9f])"
+             smart_quotes_compiled = re.compile(smart_quotes_re)
+             markup = smart_quotes_compiled.sub(self._subMSChar, markup)
+ 
+@@ -1813,7 +1813,7 @@
+             u = self._toUnicode(markup, proposed)
+             self.markup = u
+             self.originalEncoding = proposed
+-        except Exception, e:
++        except Exception as e:
+             # print "That didn't work!"
+             # print e
+             return None
+@@ -1842,7 +1842,7 @@
+         elif data[:4] == '\xff\xfe\x00\x00':
+             encoding = 'utf-32le'
+             data = data[4:]
+-        newdata = unicode(data, encoding)
++        newdata = str(data, encoding)
+         return newdata
+ 
+     def _detectEncoding(self, xml_data, isHTML=False):
+@@ -1855,41 +1855,41 @@
+             elif xml_data[:4] == '\x00\x3c\x00\x3f':
+                 # UTF-16BE
+                 sniffed_xml_encoding = 'utf-16be'
+-                xml_data = unicode(xml_data, 'utf-16be').encode('utf-8')
++                xml_data = str(xml_data, 'utf-16be').encode('utf-8')
+             elif (len(xml_data) >= 4) and (xml_data[:2] == '\xfe\xff') \
+                      and (xml_data[2:4] != '\x00\x00'):
+                 # UTF-16BE with BOM
+                 sniffed_xml_encoding = 'utf-16be'
+-                xml_data = unicode(xml_data[2:], 'utf-16be').encode('utf-8')
++                xml_data = str(xml_data[2:], 'utf-16be').encode('utf-8')
+             elif xml_data[:4] == '\x3c\x00\x3f\x00':
+                 # UTF-16LE
+                 sniffed_xml_encoding = 'utf-16le'
+-                xml_data = unicode(xml_data, 'utf-16le').encode('utf-8')
++                xml_data = str(xml_data, 'utf-16le').encode('utf-8')
+             elif (len(xml_data) >= 4) and (xml_data[:2] == '\xff\xfe') and \
+                      (xml_data[2:4] != '\x00\x00'):
+                 # UTF-16LE with BOM
+                 sniffed_xml_encoding = 'utf-16le'
+-                xml_data = unicode(xml_data[2:], 'utf-16le').encode('utf-8')
++                xml_data = str(xml_data[2:], 'utf-16le').encode('utf-8')
+             elif xml_data[:4] == '\x00\x00\x00\x3c':
+                 # UTF-32BE
+                 sniffed_xml_encoding = 'utf-32be'
+-                xml_data = unicode(xml_data, 'utf-32be').encode('utf-8')
++                xml_data = str(xml_data, 'utf-32be').encode('utf-8')
+             elif xml_data[:4] == '\x3c\x00\x00\x00':
+                 # UTF-32LE
+                 sniffed_xml_encoding = 'utf-32le'
+-                xml_data = unicode(xml_data, 'utf-32le').encode('utf-8')
++                xml_data = str(xml_data, 'utf-32le').encode('utf-8')
+             elif xml_data[:4] == '\x00\x00\xfe\xff':
+                 # UTF-32BE with BOM
+                 sniffed_xml_encoding = 'utf-32be'
+-                xml_data = unicode(xml_data[4:], 'utf-32be').encode('utf-8')
++                xml_data = str(xml_data[4:], 'utf-32be').encode('utf-8')
+             elif xml_data[:4] == '\xff\xfe\x00\x00':
+                 # UTF-32LE with BOM
+                 sniffed_xml_encoding = 'utf-32le'
+-                xml_data = unicode(xml_data[4:], 'utf-32le').encode('utf-8')
++                xml_data = str(xml_data[4:], 'utf-32le').encode('utf-8')
+             elif xml_data[:3] == '\xef\xbb\xbf':
+                 # UTF-8 with BOM
+                 sniffed_xml_encoding = 'utf-8'
+-                xml_data = unicode(xml_data[3:], 'utf-8').encode('utf-8')
++                xml_data = str(xml_data[3:], 'utf-8').encode('utf-8')
+             else:
+                 sniffed_xml_encoding = 'ascii'
+                 pass
+@@ -1954,41 +1954,41 @@
+                     250,251,252,253,254,255)
+             import string
+             c.EBCDIC_TO_ASCII_MAP = string.maketrans( \
+-            ''.join(map(chr, range(256))), ''.join(map(chr, emap)))
++            ''.join(map(chr, list(range(256)))), ''.join(map(chr, emap)))
+         return s.translate(c.EBCDIC_TO_ASCII_MAP)
+ 
+-    MS_CHARS = { '\x80' : ('euro', '20AC'),
+-                 '\x81' : ' ',
+-                 '\x82' : ('sbquo', '201A'),
+-                 '\x83' : ('fnof', '192'),
+-                 '\x84' : ('bdquo', '201E'),
+-                 '\x85' : ('hellip', '2026'),
+-                 '\x86' : ('dagger', '2020'),
+-                 '\x87' : ('Dagger', '2021'),
+-                 '\x88' : ('circ', '2C6'),
+-                 '\x89' : ('permil', '2030'),
+-                 '\x8A' : ('Scaron', '160'),
+-                 '\x8B' : ('lsaquo', '2039'),
+-                 '\x8C' : ('OElig', '152'),
+-                 '\x8D' : '?',
+-                 '\x8E' : ('#x17D', '17D'),
+-                 '\x8F' : '?',
+-                 '\x90' : '?',
+-                 '\x91' : ('lsquo', '2018'),
+-                 '\x92' : ('rsquo', '2019'),
+-                 '\x93' : ('ldquo', '201C'),
+-                 '\x94' : ('rdquo', '201D'),
+-                 '\x95' : ('bull', '2022'),
+-                 '\x96' : ('ndash', '2013'),
+-                 '\x97' : ('mdash', '2014'),
+-                 '\x98' : ('tilde', '2DC'),
+-                 '\x99' : ('trade', '2122'),
+-                 '\x9a' : ('scaron', '161'),
+-                 '\x9b' : ('rsaquo', '203A'),
+-                 '\x9c' : ('oelig', '153'),
+-                 '\x9d' : '?',
+-                 '\x9e' : ('#x17E', '17E'),
+-                 '\x9f' : ('Yuml', ''),}
++    MS_CHARS = { b'\x80' : ('euro', '20AC'),
++                 b'\x81' : ' ',
++                 b'\x82' : ('sbquo', '201A'),
++                 b'\x83' : ('fnof', '192'),
++                 b'\x84' : ('bdquo', '201E'),
++                 b'\x85' : ('hellip', '2026'),
++                 b'\x86' : ('dagger', '2020'),
++                 b'\x87' : ('Dagger', '2021'),
++                 b'\x88' : ('circ', '2C6'),
++                 b'\x89' : ('permil', '2030'),
++                 b'\x8A' : ('Scaron', '160'),
++                 b'\x8B' : ('lsaquo', '2039'),
++                 b'\x8C' : ('OElig', '152'),
++                 b'\x8D' : '?',
++                 b'\x8E' : ('#x17D', '17D'),
++                 b'\x8F' : '?',
++                 b'\x90' : '?',
++                 b'\x91' : ('lsquo', '2018'),
++                 b'\x92' : ('rsquo', '2019'),
++                 b'\x93' : ('ldquo', '201C'),
++                 b'\x94' : ('rdquo', '201D'),
++                 b'\x95' : ('bull', '2022'),
++                 b'\x96' : ('ndash', '2013'),
++                 b'\x97' : ('mdash', '2014'),
++                 b'\x98' : ('tilde', '2DC'),
++                 b'\x99' : ('trade', '2122'),
++                 b'\x9a' : ('scaron', '161'),
++                 b'\x9b' : ('rsaquo', '203A'),
++                 b'\x9c' : ('oelig', '153'),
++                 b'\x9d' : '?',
++                 b'\x9e' : ('#x17E', '17E'),
++                 b'\x9f' : ('Yuml', ''),}
+ 
+ #######################################################################
+ 
+@@ -1997,4 +1997,4 @@
+ if __name__ == '__main__':
+     import sys
+     soup = BeautifulSoup(sys.stdin)
+-    print soup.prettify()
++    print(soup.prettify())
+--- BeautifulSoupTests.py
++++ BeautifulSoupTests.py
+@@ -82,7 +82,7 @@
+     def testFindAllText(self):
+         soup = BeautifulSoup("<html>\xbb</html>")
+         self.assertEqual(soup.findAll(text=re.compile('.*')),
+-                         [u'\xbb'])
++                         ['\xbb'])
+ 
+     def testFindAllByRE(self):
+         import re
+@@ -215,7 +215,7 @@
+         soup = BeautifulSoup(self.x, parseOnlyThese=strainer)
+         self.assertEquals(len(soup), 10)
+ 
+-        strainer = SoupStrainer(text=lambda(x):x[8]=='3')
++        strainer = SoupStrainer(text=lambda x:x[8]=='3')
+         soup = BeautifulSoup(self.x, parseOnlyThese=strainer)
+         self.assertEquals(len(soup), 3)
+ 
+@@ -256,7 +256,7 @@
+         self.assertEqual(copied.decode(), self.soup.decode())
+ 
+     def testUnicodePickle(self):
+-        import cPickle as pickle
++        import pickle as pickle
+         html = "<b>" + chr(0xc3) + "</b>"
+         soup = BeautifulSoup(html)
+         dumped = pickle.dumps(soup, pickle.HIGHEST_PROTOCOL)
+@@ -586,23 +586,23 @@
+         self.assertEquals(soup.decode(), "<<sacr&eacute; bleu!>>")
+ 
+         soup = BeautifulStoneSoup(text, convertEntities=htmlEnt)
+-        self.assertEquals(soup.decode(), u"<<sacr\xe9 bleu!>>")
++        self.assertEquals(soup.decode(), "<<sacr\xe9 bleu!>>")
+ 
+         # Make sure the "XML", "HTML", and "XHTML" settings work.
+         text = "&lt;&trade;&apos;"
+         soup = BeautifulStoneSoup(text, convertEntities=xmlEnt)
+-        self.assertEquals(soup.decode(), u"<&trade;'")
++        self.assertEquals(soup.decode(), "<&trade;'")
+ 
+         soup = BeautifulStoneSoup(text, convertEntities=htmlEnt)
+-        self.assertEquals(soup.decode(), u"<\u2122&apos;")
++        self.assertEquals(soup.decode(), "<\u2122&apos;")
+ 
+         soup = BeautifulStoneSoup(text, convertEntities=xhtmlEnt)
+-        self.assertEquals(soup.decode(), u"<\u2122'")
++        self.assertEquals(soup.decode(), "<\u2122'")
+ 
+     def testNonBreakingSpaces(self):
+         soup = BeautifulSoup("<a>&nbsp;&nbsp;</a>",
+                              convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
+-        self.assertEquals(soup.decode(), u"<a>\xa0\xa0</a>")
++        self.assertEquals(soup.decode(), "<a>\xa0\xa0</a>")
+ 
+     def testWhitespaceInDeclaration(self):
+         self.assertSoupEquals('<! DOCTYPE>', '<!DOCTYPE>')
+@@ -617,27 +617,27 @@
+         self.assertSoupEquals('<b>hello&nbsp;there</b>')
+ 
+     def testEntitiesInAttributeValues(self):
+-        self.assertSoupEquals('<x t="x&#241;">', '<x t="x\xc3\xb1"></x>',
++        self.assertSoupEquals('<x t="x&#241;">', b'<x t="x\xc3\xb1"></x>',
+                               encoding='utf-8')
+-        self.assertSoupEquals('<x t="x&#xf1;">', '<x t="x\xc3\xb1"></x>',
++        self.assertSoupEquals('<x t="x&#xf1;">', b'<x t="x\xc3\xb1"></x>',
+                               encoding='utf-8')
+ 
+         soup = BeautifulSoup('<x t="&gt;&trade;">',
+                              convertEntities=BeautifulStoneSoup.HTML_ENTITIES)
+-        self.assertEquals(soup.decode(), u'<x t="&gt;\u2122"></x>')
++        self.assertEquals(soup.decode(), '<x t="&gt;\u2122"></x>')
+ 
+         uri = "http://crummy.com?sacr&eacute;&amp;bleu"
+         link = '<a href="%s"></a>' % uri
+ 
+         soup = BeautifulSoup(link, convertEntities=BeautifulSoup.HTML_ENTITIES)
+         self.assertEquals(soup.decode(),
+-                          link.replace("&eacute;", u"\xe9"))
++                          link.replace("&eacute;", "\xe9"))
+ 
+         uri = "http://crummy.com?sacr&eacute;&bleu"
+         link = '<a href="%s"></a>' % uri
+         soup = BeautifulSoup(link, convertEntities=BeautifulSoup.HTML_ENTITIES)
+         self.assertEquals(soup.a['href'],
+-                          uri.replace("&eacute;", u"\xe9"))
++                          uri.replace("&eacute;", "\xe9"))
+ 
+     def testNakedAmpersands(self):
+         html = {'convertEntities':BeautifulStoneSoup.HTML_ENTITIES}
+@@ -663,13 +663,13 @@
+     smart quote fixes."""
+ 
+     def testUnicodeDammitStandalone(self):
+-        markup = "<foo>\x92</foo>"
++        markup = b"<foo>\x92</foo>"
+         dammit = UnicodeDammit(markup)
+-        self.assertEquals(dammit.unicode, "<foo>&#x2019;</foo>")
++        self.assertEquals(dammit.str, "<foo>&#x2019;</foo>")
+ 
+-        hebrew = "\xed\xe5\xec\xf9"
++        hebrew = b"\xed\xe5\xec\xf9"
+         dammit = UnicodeDammit(hebrew, ["iso-8859-8"])
+-        self.assertEquals(dammit.unicode, u'\u05dd\u05d5\u05dc\u05e9')
++        self.assertEquals(dammit.str, '\u05dd\u05d5\u05dc\u05e9')
+         self.assertEquals(dammit.originalEncoding, 'iso-8859-8')
+ 
+     def testGarbageInGarbageOut(self):
+@@ -677,13 +677,13 @@
+         asciiSoup = BeautifulStoneSoup(ascii)
+         self.assertEquals(ascii, asciiSoup.decode())
+ 
+-        unicodeData = u"<foo>\u00FC</foo>"
++        unicodeData = "<foo>\u00FC</foo>"
+         utf8 = unicodeData.encode("utf-8")
+-        self.assertEquals(utf8, '<foo>\xc3\xbc</foo>')
++        self.assertEquals(utf8, b'<foo>\xc3\xbc</foo>')
+ 
+         unicodeSoup = BeautifulStoneSoup(unicodeData)
+         self.assertEquals(unicodeData, unicodeSoup.decode())
+-        self.assertEquals(unicodeSoup.foo.string, u'\u00FC')
++        self.assertEquals(unicodeSoup.foo.string, '\u00FC')
+ 
+         utf8Soup = BeautifulStoneSoup(utf8, fromEncoding='utf-8')
+         self.assertEquals(utf8, utf8Soup.encode('utf-8'))
+@@ -696,18 +696,18 @@
+ 
+     def testHandleInvalidCodec(self):
+         for bad_encoding in ['.utf8', '...', 'utF---16.!']:
+-            soup = BeautifulSoup(u"Räksmörgås".encode("utf-8"),
++            soup = BeautifulSoup("Räksmörgås".encode("utf-8"),
+                                  fromEncoding=bad_encoding)
+             self.assertEquals(soup.originalEncoding, 'utf-8')
+ 
+     def testUnicodeSearch(self):
+-        html = u'<html><body><h1>Räksmörgås</h1></body></html>'
++        html = '<html><body><h1>Räksmörgås</h1></body></html>'
+         soup = BeautifulSoup(html)
+-        self.assertEqual(soup.find(text=u'Räksmörgås'),u'Räksmörgås')
++        self.assertEqual(soup.find(text='Räksmörgås'),'Räksmörgås')
+ 
+     def testRewrittenXMLHeader(self):
+-        euc_jp = '<?xml version="1.0 encoding="euc-jp"?>\n<foo>\n\xa4\xb3\xa4\xec\xa4\xcfEUC-JP\xa4\xc7\xa5\xb3\xa1\xbc\xa5\xc7\xa5\xa3\xa5\xf3\xa5\xb0\xa4\xb5\xa4\xec\xa4\xbf\xc6\xfc\xcb\xdc\xb8\xec\xa4\xce\xa5\xd5\xa5\xa1\xa5\xa4\xa5\xeb\xa4\xc7\xa4\xb9\xa1\xa3\n</foo>\n'
+-        utf8 = "<?xml version='1.0' encoding='utf-8'?>\n<foo>\n\xe3\x81\x93\xe3\x82\x8c\xe3\x81\xafEUC-JP\xe3\x81\xa7\xe3\x82\xb3\xe3\x83\xbc\xe3\x83\x87\xe3\x82\xa3\xe3\x83\xb3\xe3\x82\xb0\xe3\x81\x95\xe3\x82\x8c\xe3\x81\x9f\xe6\x97\xa5\xe6\x9c\xac\xe8\xaa\x9e\xe3\x81\xae\xe3\x83\x95\xe3\x82\xa1\xe3\x82\xa4\xe3\x83\xab\xe3\x81\xa7\xe3\x81\x99\xe3\x80\x82\n</foo>\n"
++        euc_jp = b'<?xml version="1.0 encoding="euc-jp"?>\n<foo>\n\xa4\xb3\xa4\xec\xa4\xcfEUC-JP\xa4\xc7\xa5\xb3\xa1\xbc\xa5\xc7\xa5\xa3\xa5\xf3\xa5\xb0\xa4\xb5\xa4\xec\xa4\xbf\xc6\xfc\xcb\xdc\xb8\xec\xa4\xce\xa5\xd5\xa5\xa1\xa5\xa4\xa5\xeb\xa4\xc7\xa4\xb9\xa1\xa3\n</foo>\n'
++        utf8 = b"<?xml version='1.0' encoding='utf-8'?>\n<foo>\n\xe3\x81\x93\xe3\x82\x8c\xe3\x81\xafEUC-JP\xe3\x81\xa7\xe3\x82\xb3\xe3\x83\xbc\xe3\x83\x87\xe3\x82\xa3\xe3\x83\xb3\xe3\x82\xb0\xe3\x81\x95\xe3\x82\x8c\xe3\x81\x9f\xe6\x97\xa5\xe6\x9c\xac\xe8\xaa\x9e\xe3\x81\xae\xe3\x83\x95\xe3\x82\xa1\xe3\x82\xa4\xe3\x83\xab\xe3\x81\xa7\xe3\x81\x99\xe3\x80\x82\n</foo>\n"
+         soup = BeautifulStoneSoup(euc_jp)
+         if soup.originalEncoding != "euc-jp":
+             raise Exception("Test failed when parsing euc-jp document. "
+@@ -718,12 +718,12 @@
+         self.assertEquals(soup.originalEncoding, "euc-jp")
+         self.assertEquals(soup.renderContents('utf-8'), utf8)
+ 
+-        old_text = "<?xml encoding='windows-1252'><foo>\x92</foo>"
++        old_text = b"<?xml encoding='windows-1252'><foo>\x92</foo>"
+         new_text = "<?xml version='1.0' encoding='utf-8'?><foo>&rsquo;</foo>"
+         self.assertSoupEquals(old_text, new_text)
+ 
+     def testRewrittenMetaTag(self):
+-        no_shift_jis_html = '''<html><head>\n<meta http-equiv="Content-language" content="ja" /></head><body><pre>\n\x82\xb1\x82\xea\x82\xcdShift-JIS\x82\xc5\x83R\x81[\x83f\x83B\x83\x93\x83O\x82\xb3\x82\xea\x82\xbd\x93\xfa\x96{\x8c\xea\x82\xcc\x83t\x83@\x83C\x83\x8b\x82\xc5\x82\xb7\x81B\n</pre></body></html>'''
++        no_shift_jis_html = b'''<html><head>\n<meta http-equiv="Content-language" content="ja" /></head><body><pre>\n\x82\xb1\x82\xea\x82\xcdShift-JIS\x82\xc5\x83R\x81[\x83f\x83B\x83\x93\x83O\x82\xb3\x82\xea\x82\xbd\x93\xfa\x96{\x8c\xea\x82\xcc\x83t\x83@\x83C\x83\x8b\x82\xc5\x82\xb7\x81B\n</pre></body></html>'''
+         soup = BeautifulSoup(no_shift_jis_html)
+ 
+         # Beautiful Soup used to try to rewrite the meta tag even if the
+@@ -733,16 +733,16 @@
+         soup = BeautifulSoup(no_shift_jis_html, parseOnlyThese=strainer)
+         self.assertEquals(soup.contents[0].name, 'pre')
+ 
+-        meta_tag = ('<meta content="text/html; charset=x-sjis" '
+-                    'http-equiv="Content-type" />')
++        meta_tag = (b'<meta content="text/html; charset=x-sjis" '
++                    b'http-equiv="Content-type" />')
+         shift_jis_html = (
+-            '<html><head>\n%s\n'
+-            '<meta http-equiv="Content-language" content="ja" />'
+-            '</head><body><pre>\n'
+-            '\x82\xb1\x82\xea\x82\xcdShift-JIS\x82\xc5\x83R\x81[\x83f'
+-            '\x83B\x83\x93\x83O\x82\xb3\x82\xea\x82\xbd\x93\xfa\x96{\x8c'
+-            '\xea\x82\xcc\x83t\x83@\x83C\x83\x8b\x82\xc5\x82\xb7\x81B\n'
+-            '</pre></body></html>') % meta_tag
++            b'<html><head>\n' + meta_tag + b'\n'
++            b'<meta http-equiv="Content-language" content="ja" />'
++            b'</head><body><pre>\n'
++            b'\x82\xb1\x82\xea\x82\xcdShift-JIS\x82\xc5\x83R\x81[\x83f'
++            b'\x83B\x83\x93\x83O\x82\xb3\x82\xea\x82\xbd\x93\xfa\x96{\x8c'
++            b'\xea\x82\xcc\x83t\x83@\x83C\x83\x8b\x82\xc5\x82\xb7\x81B\n'
++            b'</pre></body></html>')
+         soup = BeautifulSoup(shift_jis_html)
+         if soup.originalEncoding != "shift-jis":
+             raise Exception("Test failed when parsing shift-jis document "
+@@ -755,59 +755,59 @@
+         content_type_tag = soup.meta['content']
+         self.assertEquals(content_type_tag[content_type_tag.find('charset='):],
+                           'charset=%SOUP-ENCODING%')
+-        content_type = str(soup.meta)
++        content_type = soup.meta.decode()
+         index = content_type.find('charset=')
+         self.assertEqual(content_type[index:index+len('charset=utf8')+1],
+                          'charset=utf-8')
+         content_type = soup.meta.encode('shift-jis')
+-        index = content_type.find('charset=')
++        index = content_type.find(b'charset=')
+         self.assertEqual(content_type[index:index+len('charset=shift-jis')],
+                          'charset=shift-jis'.encode())
+ 
+         self.assertEquals(soup.encode('utf-8'), (
+-                '<html><head>\n'
+-                '<meta content="text/html; charset=utf-8" '
+-                'http-equiv="Content-type" />\n'
+-                '<meta http-equiv="Content-language" content="ja" />'
+-                '</head><body><pre>\n'
+-                '\xe3\x81\x93\xe3\x82\x8c\xe3\x81\xafShift-JIS\xe3\x81\xa7\xe3'
+-                '\x82\xb3\xe3\x83\xbc\xe3\x83\x87\xe3\x82\xa3\xe3\x83\xb3\xe3'
+-                '\x82\xb0\xe3\x81\x95\xe3\x82\x8c\xe3\x81\x9f\xe6\x97\xa5\xe6'
+-                '\x9c\xac\xe8\xaa\x9e\xe3\x81\xae\xe3\x83\x95\xe3\x82\xa1\xe3'
+-                '\x82\xa4\xe3\x83\xab\xe3\x81\xa7\xe3\x81\x99\xe3\x80\x82\n'
+-                '</pre></body></html>'))
++                b'<html><head>\n'
++                b'<meta content="text/html; charset=utf-8" '
++                b'http-equiv="Content-type" />\n'
++                b'<meta http-equiv="Content-language" content="ja" />'
++                b'</head><body><pre>\n'
++                b'\xe3\x81\x93\xe3\x82\x8c\xe3\x81\xafShift-JIS\xe3\x81\xa7\xe3'
++                b'\x82\xb3\xe3\x83\xbc\xe3\x83\x87\xe3\x82\xa3\xe3\x83\xb3\xe3'
++                b'\x82\xb0\xe3\x81\x95\xe3\x82\x8c\xe3\x81\x9f\xe6\x97\xa5\xe6'
++                b'\x9c\xac\xe8\xaa\x9e\xe3\x81\xae\xe3\x83\x95\xe3\x82\xa1\xe3'
++                b'\x82\xa4\xe3\x83\xab\xe3\x81\xa7\xe3\x81\x99\xe3\x80\x82\n'
++                b'</pre></body></html>'))
+         self.assertEquals(soup.encode("shift-jis"),
+                           shift_jis_html.replace('x-sjis'.encode(),
+                                                  'shift-jis'.encode()))
+ 
+-        isolatin = """<html><meta http-equiv="Content-type" content="text/html; charset=ISO-Latin-1" />Sacr\xe9 bleu!</html>"""
++        isolatin = b"""<html><meta http-equiv="Content-type" content="text/html; charset=ISO-Latin-1" />Sacr\xe9 bleu!</html>"""
+         soup = BeautifulSoup(isolatin)
+ 
+         utf8 = isolatin.replace("ISO-Latin-1".encode(), "utf-8".encode())
+-        utf8 = utf8.replace("\xe9", "\xc3\xa9")
++        utf8 = utf8.replace(b"\xe9", b"\xc3\xa9")
+         self.assertSoupEquals(soup.encode("utf-8"), utf8, encoding='utf-8')
+ 
+     def testHebrew(self):
+-        iso_8859_8= '<HEAD>\n<TITLE>Hebrew (ISO 8859-8) in Visual Directionality</TITLE>\n\n\n\n</HEAD>\n<BODY>\n<H1>Hebrew (ISO 8859-8) in Visual Directionality</H1>\n\xed\xe5\xec\xf9\n</BODY>\n'
+-        utf8 = '<head>\n<title>Hebrew (ISO 8859-8) in Visual Directionality</title>\n</head>\n<body>\n<h1>Hebrew (ISO 8859-8) in Visual Directionality</h1>\n\xd7\x9d\xd7\x95\xd7\x9c\xd7\xa9\n</body>\n'
++        iso_8859_8= b'<HEAD>\n<TITLE>Hebrew (ISO 8859-8) in Visual Directionality</TITLE>\n\n\n\n</HEAD>\n<BODY>\n<H1>Hebrew (ISO 8859-8) in Visual Directionality</H1>\n\xed\xe5\xec\xf9\n</BODY>\n'
++        utf8 = b'<head>\n<title>Hebrew (ISO 8859-8) in Visual Directionality</title>\n</head>\n<body>\n<h1>Hebrew (ISO 8859-8) in Visual Directionality</h1>\n\xd7\x9d\xd7\x95\xd7\x9c\xd7\xa9\n</body>\n'
+         soup = BeautifulStoneSoup(iso_8859_8, fromEncoding="iso-8859-8")
+         self.assertEquals(soup.encode('utf-8'), utf8)
+ 
+     def testSmartQuotesNotSoSmartAnymore(self):
+-        self.assertSoupEquals("\x91Foo\x92 <!--blah-->",
++        self.assertSoupEquals(b"\x91Foo\x92 <!--blah-->",
+                               '&lsquo;Foo&rsquo; <!--blah-->')
+ 
+     def testDontConvertSmartQuotesWhenAlsoConvertingEntities(self):
+-        smartQuotes = "Il a dit, \x8BSacr&eacute; bl&#101;u!\x9b"
++        smartQuotes = b"Il a dit, \x8BSacr&eacute; bl&#101;u!\x9b"
+         soup = BeautifulSoup(smartQuotes)
+         self.assertEquals(soup.decode(),
+                           'Il a dit, &lsaquo;Sacr&eacute; bl&#101;u!&rsaquo;')
+         soup = BeautifulSoup(smartQuotes, convertEntities="html")
+         self.assertEquals(soup.encode('utf-8'),
+-                          'Il a dit, \xe2\x80\xb9Sacr\xc3\xa9 bleu!\xe2\x80\xba')
++                          b'Il a dit, \xe2\x80\xb9Sacr\xc3\xa9 bleu!\xe2\x80\xba')
+ 
+     def testDontSeeSmartQuotesWhereThereAreNone(self):
+-        utf_8 = "\343\202\261\343\203\274\343\202\277\343\202\244 Watch"
++        utf_8 = b"\343\202\261\343\203\274\343\202\277\343\202\244 Watch"
+         self.assertSoupEquals(utf_8, encoding='utf-8')
+ 
+ 
+--- setup.py
++++ setup.py
+@@ -19,19 +19,19 @@
+ suite = loader.loadTestsFromModule(BeautifulSoupTests)
+ suite.run(result)
+ if not result.wasSuccessful():
+-    print "Unit tests have failed!"
++    print("Unit tests have failed!")
+     for l in result.errors, result.failures:
+         for case, error in l:
+-            print "-" * 80
++            print("-" * 80)
+             desc = case.shortDescription()
+             if desc:
+-                print desc
+-            print error        
+-    print '''If you see an error like: "'ascii' codec can't encode character...", see\nthe Beautiful Soup documentation:\n http://www.crummy.com/software/BeautifulSoup/documentation.html#Why%20can't%20Beautiful%20Soup%20print%20out%20the%20non-ASCII%20characters%20I%20gave%20it?'''
+-    print "This might or might not be a problem depending on what you plan to do with\nBeautiful Soup."
++                print(desc)
++            print(error)        
++    print('''If you see an error like: "'ascii' codec can't encode character...", see\nthe Beautiful Soup documentation:\n http://www.crummy.com/software/BeautifulSoup/documentation.html#Why%20can't%20Beautiful%20Soup%20print%20out%20the%20non-ASCII%20characters%20I%20gave%20it?''')
++    print("This might or might not be a problem depending on what you plan to do with\nBeautiful Soup.")
+     if sys.argv[1] == 'sdist':
+-        print
+-        print "I'm not going to make a source distribution since the tests don't pass."
++        print()
++        print("I'm not going to make a source distribution since the tests don't pass.")
+         sys.exit(1)
+ 
+ setup(name="BeautifulSoup",

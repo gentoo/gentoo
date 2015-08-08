@@ -1,0 +1,47 @@
+--- conf/config.pl.formatted	2013-09-23 23:12:30.708129365 +0300
++++ conf/config.pl	2013-09-23 23:12:39.448043656 +0300
+@@ -1322,6 +1322,8 @@
+   '--times',
+   '--block-size=2048',
+   '--recursive',
++  '--specials',
++  '--checksum-seed=32761',
+ ];
+ 
+ #
+@@ -1388,6 +1390,8 @@
+   '--relative',
+   '--ignore-times',
+   '--recursive',
++  '--specials',
++  '--checksum-seed=32761',
+ ];
+ 
+ ###########################################################################
+@@ -2018,7 +2022,7 @@
+ #    --> administrative users are only craig and celia'.
+ #
+ $Conf{CgiAdminUserGroup} = '';
+-$Conf{CgiAdminUsers}     = '';
++$Conf{CgiAdminUsers}     = 'backuppc';
+ 
+ #
+ # URL of the BackupPC_Admin CGI script.  Used for email messages.
+@@ -2065,7 +2069,7 @@
+ # dates (MM/DD), a value of 2 uses full YYYY-MM-DD format, and zero
+ # for international dates (DD/MM).
+ #
+-$Conf{CgiDateFormatMMDD} = 1;
++$Conf{CgiDateFormatMMDD} = 2;
+ 
+ #
+ # If set, the complete list of hosts appears in the left navigation
+@@ -2251,7 +2255,7 @@
+   ClientTimeout => 1,
+   MaxOldPerPCLogFiles => 1,
+   CompressLevel => 1,
+-  ClientNameAlias => 1,
++  ClientNameAlias => 0,
+   DumpPreUserCmd => 0,
+   DumpPostUserCmd => 0,
+   RestorePreUserCmd => 0,

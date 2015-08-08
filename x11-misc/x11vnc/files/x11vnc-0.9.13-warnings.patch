@@ -1,0 +1,42 @@
+--- x11vnc-0.9.13.orig/x11vnc/remote.c
++++ x11vnc-0.9.13/x11vnc/remote.c
+@@ -5860,7 +5860,7 @@
+ 		}
+ 		if (!strcmp(p, "vncdisplay")) {
+ 			snprintf(buf, bufn, "aro=%s:%s", p,
+-			    NONUL(vnc_desktop_name));
++			    vnc_desktop_name);
+ 			goto qry;
+ 		}
+ 		if (!strcmp(p, "icon_mode")) {
+@@ -6062,7 +6062,7 @@
+ 		if (!strcmp(p, "h") || !strcmp(p, "help") ||
+ 		    !strcmp(p, "V") || !strcmp(p, "version") ||
+ 		    !strcmp(p, "lastmod")) {
+-			snprintf(buf, bufn, "aro=%s:%s", p, NONUL(lastmod));
++			snprintf(buf, bufn, "aro=%s:%s", p, lastmod);
+ 			goto qry;
+ 		}
+ 		if (!strcmp(p, "bg")) {
+--- x11vnc-0.9.13.orig/x11vnc/sslhelper.c
++++ x11vnc-0.9.13/x11vnc/sslhelper.c
+@@ -4041,7 +4041,7 @@
+ 				strncpy(last_get, rcookie, 100);
+ 				if (db) fprintf(stderr, "last_get: '%s'\n", last_get);
+ 			}
+-			if (rcookie && strstr(rcookie, "VncViewer.class")) {
++			if (strstr(rcookie, "VncViewer.class")) {
+ 				rfbLog("\n");
+ 				rfbLog("helper[%d]:\n", pid);
+ 				rfbLog("***********************************************************\n");
+--- x11vnc-0.9.13.orig/x11vnc/userinput.c
++++ x11vnc-0.9.13/x11vnc/userinput.c
+@@ -1305,7 +1305,7 @@
+ 	int font_size = 15;
+ 	int win_y, scr_y, loc_cut = 4*font_size, y_cut = 10*font_size;
+ 	
+-	if (!xrecord_set_by_keys || !xrecord_name_info) {
++	if (!xrecord_set_by_keys) {
+ 		return 0;
+ 	}
+ 	if (xrecord_name_info[0] == '\0') {

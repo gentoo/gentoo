@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<herd>tex</herd>
+	<longdescription lang="en">
+		XDVIK is a dvi previewer on X with kpathsea support.  It also supports
+		multibyte character rendering via Xft2 (or VFlib2).
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">xdvi</remote-id>
+	</upstream>
+</pkgmetadata>

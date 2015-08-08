@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<longdescription>
+3d Destkop is an OpenGL program for switching virtual desktops in a seamless
+3-dimensional manner. The current desktop is mapped into a 3D space where you
+may choose other screens. Several different visualization modes are available.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">desk3d</remote-id>
+	</upstream>
+</pkgmetadata>

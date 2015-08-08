@@ -1,0 +1,205 @@
+--- xoscope-2.0/configure.in
++++ xoscope-2.0/configure.in
+@@ -17,7 +17,7 @@
+ 
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.2)
+ 
+-#PKG_CHECK_MODULES(GTKDATABOX, gtkdatabox)
++PKG_CHECK_MODULES(GTKDATABOX, gtkdatabox)
+ #AC_CONFIG_SUBDIRS(gtkdatabox-0.6.0.0)
+ 
+ dnl Set PACKAGE_DATA_DIR in config.h.
+@@ -106,5 +106,4 @@
+ AC_OUTPUT([
+ operl
+ Makefile
+-gtkdatabox-0.6.0.0/gtk/Makefile
+ ])
+--- xoscope-2.0/Makefile.am
++++ xoscope-2.0/Makefile.am
+@@ -40,9 +40,6 @@
+ comedisrc =
+ endif
+ 
+-GTKDATABOX_CFLAGS = -I $(top_srcdir)/gtkdatabox-0.6.0.0/gtk
+-GTKDATABOX_LIBS = $(top_builddir)/gtkdatabox-0.6.0.0/gtk/libgtkdatabox.a
+-
+ # Some bit of explaination is needed here for GUI_LIB.  automake won't
+ # let us include source files in a subdirectory on a _SOURCES line,
+ # and we do want all the auto-magically generated glade stuff confined
+@@ -52,7 +49,6 @@
+ # trick used in things like comedi.c (see comments there) won't work
+ # for a library.  So we put .o files in.
+ 
+-SUBDIRS = gtkdatabox-0.6.0.0/gtk
+ INCLUDES = @GTK_CFLAGS@ $(GTKDATABOX_CFLAGS)
+ GUI_LIB = callbacks.c callbacks.h interface.c interface.h support.c support.h
+ 
+--- xoscope-2.0/Makefile.in
++++ xoscope-2.0/Makefile.in
+@@ -232,8 +232,6 @@
+ 
+ @COMEDI_FALSE@comedisrc = 
+ @COMEDI_TRUE@comedisrc = comedi.c
+-GTKDATABOX_CFLAGS = -I $(top_srcdir)/gtkdatabox-0.6.0.0/gtk
+-GTKDATABOX_LIBS = $(top_builddir)/gtkdatabox-0.6.0.0/gtk/libgtkdatabox.a
+ 
+ # Some bit of explaination is needed here for GUI_LIB.  automake won't
+ # let us include source files in a subdirectory on a _SOURCES line,
+@@ -243,7 +241,6 @@
+ # they get built as one, because then the weak attribute override
+ # trick used in things like comedi.c (see comments there) won't work
+ # for a library.  So we put .o files in.
+-SUBDIRS = gtkdatabox-0.6.0.0/gtk
+ INCLUDES = @GTK_CFLAGS@ $(GTKDATABOX_CFLAGS)
+ INCLUDES = @GTK_CFLAGS@
+ GUI_LIB = callbacks.c callbacks.h interface.c interface.h support.c support.h
+--- xoscope-2.0/display.c
++++ xoscope-2.0/display.c
+@@ -27,7 +27,7 @@
+ #include <gtkdatabox_points.h>
+ #include <gtkdatabox_lines.h>
+ #include <gtkdatabox_grid.h>
+-#include <gtkdatabox_marker.h>
++#include <gtkdatabox_markers.h>
+ 
+ extern GtkWidget *databox;
+ 
+--- xoscope-2.0/display.c
++++ xoscope-2.0/display.c
+@@ -56,7 +56,7 @@
+ gboolean clear_message_callback(gpointer ignored)
+ {
+   gtk_databox_graph_remove (GTK_DATABOX(databox), databox_message);
+-  gtk_databox_redraw (GTK_DATABOX (databox));
++  gtk_widget_queue_draw (databox);
+   return FALSE;
+ }
+ 
+@@ -66,15 +66,15 @@
+   if (databox_message == NULL) {
+     GdkColor gcolor;
+     gcolor.red = gcolor.green = gcolor.blue = 65535;
+-    databox_message = gtk_databox_marker_new(1, &databox_message_X,
++    databox_message = gtk_databox_markers_new(1, &databox_message_X,
+ 					     &databox_message_Y, &gcolor, 0,
+-					     GTK_DATABOX_MARKER_NONE);
++					     GTK_DATABOX_MARKERS_NONE);
+   }
+ 
+-  gtk_databox_marker_set_label(GTK_DATABOX_MARKER(databox_message), 0,
+-			       GTK_DATABOX_TEXT_N, message, FALSE);
++  gtk_databox_markers_set_label(GTK_DATABOX_MARKERS(databox_message), 0,
++			       GTK_DATABOX_MARKERS_TEXT_N, message, FALSE);
+   gtk_databox_graph_add (GTK_DATABOX(databox), databox_message);
+-  gtk_databox_redraw (GTK_DATABOX (databox));
++  gtk_widget_queue_draw (databox);
+ 
+   g_timeout_add (2000, clear_message_callback, NULL);
+ }
+@@ -620,10 +620,10 @@
+   graticule_minor_graph = gtk_databox_grid_new (9, 9, &gcolor, 1);
+   graticule_major_graph = gtk_databox_grid_new (1, 1, &gcolor, 1);
+ 
+-  gtk_databox_grid_set_line_style(GTK_DATABOX_GRID(graticule_major_graph),
+-				  GTK_DATABOX_GRID_SOLID_LINES);
+-  gtk_databox_grid_set_line_style(GTK_DATABOX_GRID(graticule_minor_graph),
+-				  GTK_DATABOX_GRID_DOTTED_LINES);
++  //gtk_databox_grid_set_line_style(GTK_DATABOX_GRID(graticule_major_graph),
++  //				  GTK_DATABOX_GRID_SOLID_LINES);
++  //gtk_databox_grid_set_line_style(GTK_DATABOX_GRID(graticule_minor_graph),
++  //				  GTK_DATABOX_GRID_DOTTED_LINES);
+ 
+   recompute_graticule();
+ }
+@@ -675,7 +675,7 @@
+ 
+ void configure_databox(void)
+ {
+-   GtkDataboxValue topleft, bottomright;
++   GtkDataboxValueRectangle rect;
+    gfloat upper_time_limit;
+    int j;
+ 
+@@ -723,24 +723,26 @@
+ 
+    /* Now set the total canvas size of the databox */
+ 
+-   topleft.x = 0;
+-   topleft.y = 1;
++   rect.x1 = 0;
++   rect.y1 = 1;
+ 
+-   bottomright.x = total_horizontal_divisions
++   rect.x2 = total_horizontal_divisions
+      * 0.001 * (gfloat) scope.div / scope.scale;
+-   bottomright.y = -1;
++   rect.y2 = -1;
+ 
+-   gtk_databox_set_canvas(GTK_DATABOX(databox), topleft, bottomright);
++   gtk_databox_set_total_limits(GTK_DATABOX(databox), 
++     rect.x1, rect.x2, rect.y1, rect.y2);
+ 
+    /* A slight adjustment gets us our visible area.  Note that this
+     * call also resets the databox viewport to its left most position.
+     */
+ 
+-   bottomright.x = 10 * 0.001 * (gfloat) scope.div / scope.scale;
+-   gtk_databox_set_visible_canvas(GTK_DATABOX(databox), topleft, bottomright);
++   rect.x2 = 10 * 0.001 * (gfloat) scope.div / scope.scale;
++   gtk_databox_set_visible_limits(GTK_DATABOX(databox), 
++     rect.x1, rect.x2, rect.y1, rect.y2);
+ 
+    /* Temporary message is always centered on screen */
+-   databox_message_X = bottomright.x / 2;
++   databox_message_X = rect.x2 / 2;
+ 
+    /* Decide if we need a scrollbar or not */
+ 
+@@ -1208,7 +1210,7 @@
+     draw_graticule();
+   }
+ 
+-  gtk_databox_redraw (GTK_DATABOX (databox));
++  gtk_widget_queue_draw (databox);
+ }
+ 
+ /* animate() - get and plot some data
+--- xoscope-2.0/gr_gtk.c
++++ xoscope-2.0/gr_gtk.c
+@@ -1049,7 +1049,7 @@
+   l = p->signal->delay * num / 10000;
+ 
+   if (scope.curs) {
+-#if 1
++#if 0
+     GtkDataboxCoord coord;
+     GtkDataboxValue value;
+     coord.x = event->x;
+@@ -1057,7 +1057,7 @@
+     value = gtk_databox_value_from_coord (GTK_DATABOX(databox), coord);
+     x = value.x;
+ #else
+-    x = gtk_databox_pixel_to_value_x (databox, event->x);
++    x = gtk_databox_pixel_to_value_x (GTK_DATABOX(databox), event->x);
+ #endif
+     cursor = rintf((x - l) / num) + 1;
+ #if 0
+@@ -1205,7 +1205,7 @@
+ 
+   glade_window = create_main_window();
+ 
+-  setup_help_text(glade_window);
++  //setup_help_text(glade_window);
+ 
+ #if 0
+   gtk_signal_connect(GTK_OBJECT(window), "delete_event",
+@@ -1217,7 +1217,7 @@
+   gtk_box_reorder_child(GTK_BOX(LU("vbox1")), menubar, 0);
+   gtk_widget_show(menubar);
+ 
+-  gtk_databox_set_hadjustment (GTK_DATABOX (databox),
++  gtk_databox_set_adjustment_x (GTK_DATABOX (databox),
+ 			       gtk_range_get_adjustment (GTK_RANGE (LU("databox_hscrollbar"))));
+ 
+   gtk_widget_show(glade_window);

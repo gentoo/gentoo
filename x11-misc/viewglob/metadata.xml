@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>shell-tools</herd>
+  <longdescription lang="en">
+		Viewglob is a package that graphically displays the results of a shell
+		glob, helping beginners of shell usage become acclimitised to filename
+		generation. In addition, it acts as a basic replacement for ls, by
+		tracking shell directory changes. It is compatible with zsh and bash,
+		and helper files and documentation are provided.
+	</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">viewglob</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>xmw@gentoo.org</email>
+	<name>Michael Weber</name>
+</maintainer>
+<upstream>
+	<bugs-to>http://bugs.pwmt.org/</bugs-to>
+</upstream>
+<longdescription>
+jumanji is a highly customizable and functional web browser based on the libwebkit web content engine and the gtk+ toolkit. The idea behind jumanji is a web browser that provides a minimalistic and space saving interface as well as an easy usage that mainly focuses on keyboard interaction like vimperator does.
+</longdescription>
+</pkgmetadata>

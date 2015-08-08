@@ -1,0 +1,12 @@
+Index: scim-bridge-0.4.16/agent/scim-bridge-agent-application.cpp
+===================================================================
+--- scim-bridge-0.4.16.orig/agent/scim-bridge-agent-application.cpp
++++ scim-bridge-0.4.16/agent/scim-bridge-agent-application.cpp
+@@ -24,6 +24,7 @@
+ #include <unistd.h>
+ 
+ #include <iostream>
++#include <cstdio>
+ 
+ #include "scim-bridge-agent.h"
+ 

@@ -1,0 +1,21 @@
+--- usr.bin/ar/Makefile.old	2010-03-12 14:50:30 +0100
++++ usr.bin/ar/Makefile	2010-03-12 14:50:53 +0100
+@@ -1,6 +1,6 @@
+ # $FreeBSD: src/usr.bin/ar/Makefile,v 1.22.2.1.2.1 2009/10/25 01:10:29 kensmith Exp $
+ 
+-PROG=	ar
++PROG=	freebsd-ar
+ SRCS=	ar.c acplex.l acpyacc.y read.c util.c write.c y.tab.h
+ 
+ WARNS?=	5
+@@ -10,8 +10,7 @@
+ 
+ CFLAGS+=-I. -I${.CURDIR}
+ 
+-NO_SHARED?=	yes
+-LINKS=	${BINDIR}/ar ${BINDIR}/ranlib
+-MLINKS= ar.1 ranlib.1
++LINKS=	${BINDIR}/freebsd-ar ${BINDIR}/freebsd-ranlib
++MLINKS= freebsd-ar.1 freebsd-ranlib.1
+ 
+ .include <bsd.prog.mk>

@@ -1,0 +1,33 @@
+diff -urN gegl-0.1.6.old//operations/external/ff-load.c gegl-0.1.6/operations/external/ff-load.c
+--- gegl-0.1.6.old//operations/external/ff-load.c   2011-01-24 19:03:30.000000000 -0300
++++ gegl-0.1.6/operations/external/ff-load.c    2011-05-04 09:59:48.910379742 -0300
+@@ -69,17 +69,17 @@
+ {
+   switch (err)
+     {
+-    case AVERROR_NUMEXPECTED:
++    case AVERROR(EDOM):
+       g_warning ("%s: Incorrect image filename syntax.\n"
+                  "Use '%%d' to specify the image number:\n"
+                  "  for img1.jpg, img2.jpg, ..., use 'img%%d.jpg';\n"
+                  "  for img001.jpg, img002.jpg, ..., use 'img%%03d.jpg'.\n",
+                  filename);
+       break;
+-    case AVERROR_INVALIDDATA:
++    case AVERROR(EINVAL):
+       g_warning ("%s: Error while parsing header\n", filename);
+       break;
+-    case AVERROR_NOFMT:
++    case AVERROR(EILSEQ):
+       g_warning ("%s: Unknown format\n", filename);
+       break;
+     default:
+@@ -278,7 +278,7 @@
+       for (i = 0; i< p->ic->nb_streams; i++)
+         {
+           AVCodecContext *c = p->ic->streams[i]->codec;
+-          if (c->codec_type == CODEC_TYPE_VIDEO)
++          if (c->codec_type == AVMEDIA_TYPE_VIDEO)
+             {
+               p->video_st = p->ic->streams[i];
+               p->video_stream = i;

@@ -1,0 +1,68 @@
+--- softgun-0.21/config.mk
++++ softgun-0.21/config.mk
+@@ -9,7 +9,7 @@ bindir=$(prefix)/bin
+ libdir=$(prefix)/lib/softgun/
+ 
+ #CFLAGS=-Wall -pg -O1 -g   
+-CFLAGS=-Wall -O9 -g -fomit-frame-pointer -fno-strict-overflow -Wstrict-overflow=3 -Wno-unused-but-set-variable 
++CFLAGS+=-fno-strict-overflow -Wstrict-overflow=3 -Wno-unused-but-set-variable
+ DEFS=-D_GNU_SOURCE
+ INCLUDES:=-I$(top_srcdir) -I.
+ 
+@@ -19,13 +19,13 @@
+ SHAREDLDFLAGS=-nostdlib -shared
+ CYGWIN=$(findstring CYGWIN,$(shell uname))
+ ifeq ($(shell uname),Linux)
+-LDFLAGS=-lpthread -lrt -lm -lz -lasound
++LDLIBS=-lpthread -ldl -lrt -lm -lz -lasound
+ else
+  ifeq ($(shell uname),FreeBSD)
+- LDFLAGS=-lpthread -lm -lz -lSDL
++ LDLIBS=-lpthread -lm -lz -lSDL
+  else
+   ifeq ($(CYGWIN),CYGWIN)
+-   LDFLAGS=-lpthread -lrt -lm -lz 
++   LDLIBS=-lpthread -lrt -lm -lz
+   else
+    $(error "Unknown architecture $(shell uname)")
+   endif
+--- softgun-0.21/Makefile
++++ softgun-0.21/Makefile
+@@ -116,7 +116,7 @@
+ 
+ 
+ softgun: $(OBJS) 
+-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+ 
+ boards/libboards.a:
+ 	$(MAKE) -C boards libboards.a
+--- softgun-0.21/printer/module.mk
++++ softgun-0.21/printer/module.mk
+@@ -5,5 +5,5 @@
+ INSTALL_BINS += pcl3gui2png
+ 
+ pcl3gui2png: $(PRINTER_OBJS) printer/pcl3gui2png.c 
+-	$(CC) -o $@ $(PRINTER_OBJS) printer/pcl3gui2png.c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
+ 
+--- softgun-0.21/tools/Makefile
++++ softgun-0.21/tools/Makefile
+@@ -2,7 +2,7 @@ include ../config.mk
+ 
+ ifeq ($(shell uname),Linux) 
+ sg_tunctl: tunctl.c
+-	$(CC) $(CFLAGS) tunctl.c -o sg_tunctl
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ install:
+ 	install -m 0755 sg_tunctl $(bindir)	
+@@ -14,7 +14,7 @@ install:
+ endif
+ 
+ to_c_array: to_c_array.c
+-	$(CC) $(CFLAGS) to_c_array.c -o to_c_array 
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ 
+ clean:

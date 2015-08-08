@@ -1,0 +1,26 @@
+Allows user to access /dev/net/tun
+--- twisted/pair/test/test_tuntap.py.orig	2014-05-27 22:55:56.230232748 -0400
++++ twisted/pair/test/test_tuntap.py		2014-05-27 23:30:02.769956742 -0400
+@@ -10,7 +10,7 @@
+ import os
+ import struct
+ import socket
+-from errno import EPERM, EBADF, EINVAL, EAGAIN, EWOULDBLOCK, ENOENT, ENODEV
++from errno import EPERM, EBADF, EINVAL, EAGAIN, EWOULDBLOCK, ENOENT, ENODEV, EACCES
+ from random import randrange
+ from collections import deque
+ from itertools import cycle
+@@ -582,8 +582,11 @@
+         except OSError as e:
+             # The device file may simply be missing.  The device file may also
+             # exist but be unsupported by the kernel.
+-            if e.errno in (ENOENT, ENODEV) and filename == b"/dev/net/tun":
+-                raise SkipTest("Platform lacks /dev/net/tun")
++            if filename == b"/dev/net/tun":
++                if e.errno in (ENOENT, ENODEV):
++                    raise SkipTest("Platform lacks /dev/net/tun")
++                elif e.errno == EACCES:
++                    raise SkipTest("Access denied opening /dev/net/tun")
+             raise
+ 
+ 

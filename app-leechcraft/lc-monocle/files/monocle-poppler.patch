@@ -1,0 +1,19 @@
+commit cbc0455a366739cf7911cf80de517aab6152da98
+Author: 0xd34df00d <0xd34df00d@gmail.com>
+Date:   Fri Jul 13 08:13:27 2012 +0400
+
+    Monocle PDF: fixed include dir.
+
+diff --git a/src/plugins/monocle/plugins/pdf/links.h b/src/plugins/monocle/plugins/pdf/links.h
+index 1ca7ee3..b7f6c1d 100644
+--- a/src/plugins/monocle/plugins/pdf/links.h
++++ b/src/plugins/monocle/plugins/pdf/links.h
+@@ -19,7 +19,7 @@
+ #pragma once
+ 
+ #include <QObject>
+-#include <poppler-link.h>
++#include <poppler-qt4.h>
+ #include <interfaces/monocle/ilink.h>
+ 
+ namespace LeechCraft

@@ -1,0 +1,10 @@
+[Unit]
+Description=Linux Infrared Remote Control
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0
+
+[Install]
+WantedBy=multi-user.target
+

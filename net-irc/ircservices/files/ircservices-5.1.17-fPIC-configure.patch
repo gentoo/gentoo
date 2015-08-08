@@ -1,0 +1,14 @@
+--- ircservices-5.1.12/configure	2008-09-22 17:35:52.000000000 +0000
++++ ircservices-5.1.12.orig/configure	2008-09-22 17:33:51.000000000 +0000
+@@ -1296,9 +1296,9 @@
+             fi
+             if [ "$OK" ] ; then
+                 if [ "x`uname -s`" = "xOSF1" ] ; then
+-                    CC_SHARED="$CC -shared -Wl,-expect_unresolved"
++                    CC_SHARED="$CC -shared -Wl,-expect_unresolved -fPIC"
+                 else
+-                    CC_SHARED="$CC -shared"
++                    CC_SHARED="$CC -shared -fPIC"
+                 fi
+                 if run $CC_SHARED $CC_FLAGS $CC_LIBS $CONFTMP/test-lib.c -o $CONFTMP/test-lib.so && run $CC_SHARED $CC_FLAGS $CC_LIBS $CONFTMP/test-lib2.c -o $CONFTMP/test-lib2.so ; then
+                     log "-shared works"

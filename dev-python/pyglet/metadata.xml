@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>sci@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">This library provides an object-oriented programming interface
+  for developing games and other visually-rich applications with Python.
+  pyglet has virtually no external dependencies. For most applications
+  and game requirements, pyglet needs nothing else besides Python,
+  simplifying distribution and installation. It also handles
+  multiple windows and fully aware of multi-monitor setups.
+  pyglet might be seen as an alternative to PyGame.</longdescription>
+  <upstream>
+    <remote-id type="google-code">pyglet</remote-id>
+    <remote-id type="pypi">pyglet</remote-id>
+  </upstream>
+</pkgmetadata>

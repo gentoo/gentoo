@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>exa.exa@gmail.com</email>
+		<name>Mirek Kratochvil</name>
+		<description>Proxied Maintainer</description>
+	</maintainer>
+	<longdescription lang="en">
+		This is a GnuPG-like unix program for encryption and signing
+		that uses only quantum-computer-resistant algorithms
+	</longdescription>
+	<use>
+		<flag name='cryptopp'>
+			Build algorithms that need Crypto++ support
+			<pkg>dev-libs/crypto++</pkg>
+		</flag>
+	</use>
+</pkgmetadata>
+

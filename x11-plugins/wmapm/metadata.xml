@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+		wmapm is a small dock-app for WindowMaker that shows
+		continually-updated APM statistics. It's a must have for Laptop
+		users. Features include status of power supply, percentage of
+		battery remaining, battery charging, time left to battery depletion
+		and high/low/critical battery status.
+	</longdescription>
+</pkgmetadata>

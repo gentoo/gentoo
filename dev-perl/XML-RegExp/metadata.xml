@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <longdescription>
+		This package contains regular expressions for the following XML tokens:
+		BaseChar, Ideographic, Letter, Digit, Extender, CombiningChar, NameChar,
+		EntityRef, CharRef, Reference, Name, NmToken, and AttValue.
+	</longdescription>
+  <upstream>
+    <remote-id type="cpan">XML-RegExp</remote-id>
+    <remote-id type="cpan-module">XML::RegExp</remote-id>
+  </upstream>
+</pkgmetadata>

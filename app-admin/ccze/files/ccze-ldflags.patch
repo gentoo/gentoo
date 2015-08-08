@@ -1,0 +1,11 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -75,7 +75,7 @@
+ ${PROGRAM}: ${OBJECTS} ${PLUGIN_SOBJS}
+ 	${CC} -rdynamic ${ALL_CFLAGS} -o $@ $^ ${ALL_LDFLAGS}
+ ccze-dump ccze-cssdump: %: %.o ccze-compat.o ccze-color.c
+-	${CC} ${ALL_CFLAGS} -o $@ $@.o ccze-compat.o
++	${CC} ${ALL_CFLAGS} ${ALL_LDFLAGS} -o $@ $@.o ccze-compat.o
+ ccze-builtins.c: Makefile
+ 	echo '#include <ccze.h>' >$@
+ 	echo '#include "ccze-private.h"' >>$@

@@ -1,0 +1,80 @@
+From cafa47147fdc503103cda1e67e736ab95051e44a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 23 Aug 2011 18:01:36 -0400
+Subject: [PATCH] use right flag names
+
+CFLAGS for the C compiler, CXXFLAGS for the C++ compiler, and
+CPPFLAGS for preprocessor flags.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile |   20 ++++++++++++--------
+ 1 files changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b0b6cb7..bf9b79a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,9 +2,13 @@ all: powertop  po/powertop.pot
+ 
+ VERSION := 1.98
+ 
+-CFLAGS += -Wall -O2 -g -fno-omit-frame-pointer -fstack-protector -Wshadow -Wformat -D_FORTIFY_SOURCE=2
+-CPPFLAGS += -Wall -O2 -g -fno-omit-frame-pointer
+-CXXFLAGS += -Wall -O2 -g -fno-omit-frame-pointer -fstack-protector -Wshadow -Wformat -D_FORTIFY_SOURCE=2
++WFLAGS = -Wall -Wshadow -Wformat
++COMMON_FLAGS = -O2 -g -fno-omit-frame-pointer -fstack-protector
++CFLAGS ?= $(COMMON_FLAGS)
++CFLAGS += $(WFLAGS)
++CXXFLAGS ?= $(COMMON_FLAGS)
++CXXFLAGS += $(WFLAGS)
++CPPFLAGS += -D_FORTIFY_SOURCE=2
+ PKG_CONFIG ?= pkg-config
+ 
+ OBJS := lib.o main.o display.o html.o devlist.o
+@@ -31,13 +35,13 @@ NLLIBNAME = libnl-1
+ endif
+ 
+ ifeq ($(NL2FOUND),Y)
+-CFLAGS += -DCONFIG_LIBNL20
++CPPFLAGS += -DCONFIG_LIBNL20
+ LIBS += -lnl-genl
+ NLLIBNAME = libnl-2.0
+ endif
+ 
+ ifeq ($(NL3FOUND),Y)
+-CFLAGS += -DCONFIG_LIBNL20
++CPPFLAGS += -DCONFIG_LIBNL20
+ LIBS += -lnl-genl
+ NLLIBNAME = libnl-3.0
+ endif
+@@ -47,7 +51,7 @@ $(error Cannot find development files for any supported version of libnl)
+ endif
+ 
+ LIBS += $(shell $(PKG_CONFIG) --libs $(NLLIBNAME))
+-CFLAGS += $(shell $(PKG_CONFIG) --cflags $(NLLIBNAME))
++CPPFLAGS += $(shell $(PKG_CONFIG) --cflags $(NLLIBNAME))
+ 
+ 
+ 
+@@ -70,7 +74,7 @@ clean:
+ 	rm -f *.o *~ powertop DEADJOE core.* */*.o */*~ csstoh css.h
+ 	
+ powertop: $(OBJS) $(HEADERS)
+-	$(CXX) $(OBJS) $(LIBS) -o powertop
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o powertop
+ 	@(cd po/ && $(MAKE))
+ 	
+ install: powertop
+@@ -90,7 +94,7 @@ css.h: csstoh powertop.css
+ %.o: %.cpp lib.h css.h Makefile
+ 	@echo "  CC  $<"
+ 	@[ -x /usr/bin/cppcheck ] && /usr/bin/cppcheck -q $< || :
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
+ 
+ uptrans:
+-- 
+1.7.8.5
+

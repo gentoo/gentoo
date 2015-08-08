@@ -1,0 +1,24 @@
+From c56dfdd0f208a5a9413ad90f40c4a25ebb961598 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 25 Apr 2013 22:35:09 +0200
+Subject: [PATCH] Replace deprecated AM_CONFIG_HEADER by AC_CONFIG_HEADERS
+
+---
+ configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index e132eef..71b3458 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1,6 +1,6 @@
+ AC_INIT(src/httrack.c)
+ AC_CONFIG_MACRO_DIR([m4])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(httrack, 3.47.2)
+ VERSION_INFO="2:47:0"
+ AM_MAINTAINER_MODE
+-- 
+1.8.1.5
+

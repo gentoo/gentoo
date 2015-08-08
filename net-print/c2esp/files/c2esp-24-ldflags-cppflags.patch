@@ -1,0 +1,32 @@
+--- a/Makefile
++++ b/Makefile
+@@ -166,16 +166,16 @@
+ 	@echo 
+ 
+ c2esp: c2esp.o c2espcommon.o $(LIBJBG85)
+-	$(CC) $(CFLAGS) -o $@ c2esp.o c2espcommon.o -lcupsimage -lcups -lcupsdriver $(LIBJBG85)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ c2esp.o c2espcommon.o -lcupsimage -lcups -lcupsdriver $(LIBJBG85)
+ 
+ c2espC: c2espC.o c2espcommon.o 
+-	$(CC) $(CFLAGS) -o $@ c2espC.o c2espcommon.o -lcupsimage -lcups -lcupsdriver -lz
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ c2espC.o c2espcommon.o -lcupsimage -lcups -lcupsdriver -lz
+ 
+ command2esp: command2esp.o c2espcommon.o
+-	$(CC) $(CFLAGS) -o $@ command2esp.o  c2espcommon.o -lcups -lcupsdriver
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ command2esp.o  c2espcommon.o -lcups -lcupsdriver
+ 
+ myopldecode: myopldecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ $@.o $(LIBJBG) -lz
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $@.o $(LIBJBG) -lz
+ 
+ #
+ # Installation rules
+@@ -326,3 +326,8 @@
+ 	#
+ 	ppdc KodakESP_10.drv
+ 	ppdc KodakESP_C_06.drv
++
++# Respect CPPFLAGS.
++.SUFFIXES: .c .o
++.c.o:
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o '$@' '$<'

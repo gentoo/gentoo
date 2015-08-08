@@ -1,0 +1,44 @@
+diff -aurN a/ffmpeg_movie.c b/ffmpeg_movie.c
+--- a/ffmpeg_movie.c	2015-06-22 19:46:01.220498329 -0400
++++ b/ffmpeg_movie.c	2015-06-22 20:44:26.802671398 -0400
+@@ -697,7 +697,16 @@
+       return rate;
+     }
+ 
+-#if LIBAVCODEC_BUILD > 4753 
++#if LIBAVCODEC_BUILD > 3604480 /* libav-10 */
++    if (GET_CODEC_FIELD(st->codec, codec_type) == AVMEDIA_TYPE_VIDEO){
++        if (st->avg_frame_rate.den && st->avg_frame_rate.num) {
++            rate = av_q2d(st->avg_frame_rate);
++        } else {
++            rate = 1 / av_q2d(GET_CODEC_FIELD(st->codec, time_base));
++        }
++    }
++    return (float)rate;
++#elif LIBAVCODEC_BUILD > 4753 
+     if (GET_CODEC_FIELD(st->codec, codec_type) == AVMEDIA_TYPE_VIDEO){
+         if (st->r_frame_rate.den && st->r_frame_rate.num) {
+             rate = av_q2d(st->r_frame_rate);
+@@ -980,14 +980,22 @@
+     if (p) {
+         codec_name = p->name;
+ #ifdef FF_API_SUB_ID
++#if LIBAVCODEC_BUILD > 3604480 /* libav-10 */
++        if (decoder_ctx->codec_id == AV_CODEC_ID_MP3) {
++#else
+         if (decoder_ctx->codec_id == CODEC_ID_MP3) {
++#endif
+             if (decoder_ctx->sub_id == 2)
+                 codec_name = "mp2";
+             else if (decoder_ctx->sub_id == 1)
+                 codec_name = "mp1";
+         }
+ #endif
++#if LIBAVCODEC_BUILD > 3604480 /* libav-10 */
++    } else if (decoder_ctx->codec_id == AV_CODEC_ID_MPEG2TS) {
++#else
+     } else if (decoder_ctx->codec_id == CODEC_ID_MPEG2TS) {
++#endif
+         /* fake mpeg2 transport stream codec (currently not registered) */
+         codec_name = "mpeg2ts";
+     } else if (decoder_ctx->codec_name[0] != '\0') {

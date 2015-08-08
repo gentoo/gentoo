@@ -1,0 +1,233 @@
+diff --git a/boost/fusion/adapted/struct/detail/define_struct.hpp b/boost/fusion/adapted/struct/detail/define_struct.hpp
+index 2554292..ce3737e 100644
+--- a/boost/fusion/adapted/struct/detail/define_struct.hpp
++++ b/boost/fusion/adapted/struct/detail/define_struct.hpp
+@@ -69,7 +69,7 @@
+     ATTRIBUTES_SEQ, ATTRIBUTE_TUPEL_SIZE)                                       \
+                                                                                 \
+     template<typename Seq>                                                      \
+-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED                              \
++    BOOST_FUSION_GPU_ENABLED                                                    \
+     self_type&                                                                  \
+     operator=(Seq const& seq)                                                   \
+     {                                                                           \
+@@ -128,7 +128,7 @@
+         ATTRIBUTE_TUPEL_SIZE,                                                   \
+         ATTRIBUTES_SEQ)                                                         \
+                                                                                 \
+-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                    \
++    BOOST_FUSION_GPU_ENABLED                                                    \
+     NAME()                                                                      \
+       : BOOST_PP_SEQ_FOR_EACH_I_R(                                              \
+             1,                                                                  \
+@@ -137,7 +137,7 @@
+             ATTRIBUTES_SEQ)                                                     \
+     {}                                                                          \
+                                                                                 \
+-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                    \
++    BOOST_FUSION_GPU_ENABLED                                                    \
+     NAME(self_type const& other_self)                                           \
+       : BOOST_PP_SEQ_FOR_EACH_I_R(                                              \
+             1,                                                                  \
+@@ -147,7 +147,7 @@
+     {}                                                                          \
+                                                                                 \
+     template<typename Seq>                                                      \
+-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                    \
++    BOOST_FUSION_GPU_ENABLED                                                    \
+     NAME(Seq const& seq                                                         \
+         BOOST_PP_IF(                                                            \
+             BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(ATTRIBUTES_SEQ)),                    \
+@@ -167,7 +167,7 @@
+ #define BOOST_FUSION_DEFINE_STRUCT_CTOR_1(                                      \
+         NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPEL_SIZE)                             \
+                                                                                 \
+-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
++        BOOST_FUSION_GPU_ENABLED                                                \
+         explicit                                                                \
+         NAME(boost::call_traits<                                                \
+                 BOOST_PP_TUPLE_ELEM(                                            \
+@@ -180,7 +180,7 @@
+ #define BOOST_FUSION_DEFINE_TPL_STRUCT_CTOR_1(                                  \
+         TEMPLATE_PARAMS_SEQ, NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPEL_SIZE)        \
+                                                                                 \
+-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
++        BOOST_FUSION_GPU_ENABLED                                                \
+         explicit                                                                \
+         NAME(typename boost::call_traits<                                       \
+                 typename boost::fusion::detail::get_first_arg<                  \
+@@ -217,7 +217,7 @@
+ #define BOOST_FUSION_DEFINE_TPL_STRUCT_CTOR_N(                                  \
+     TEMPLATE_PARAMS_SEQ, NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPEL_SIZE)            \
+                                                                                 \
+-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
++        BOOST_FUSION_GPU_ENABLED                                                \
+         NAME(BOOST_PP_SEQ_FOR_EACH_I_R(                                         \
+                 1,                                                              \
+                 BOOST_FUSION_DEFINE_TPL_STRUCT_CTOR_ARG_I,                      \
+@@ -245,7 +245,7 @@
+ #define BOOST_FUSION_DEFINE_STRUCT_CTOR_N(                                      \
+     NAME, ATTRIBUTES_SEQ, ATTRIBUTE_TUPEL_SIZE)                                 \
+                                                                                 \
+-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
++        BOOST_FUSION_GPU_ENABLED                                \
+         NAME(BOOST_PP_SEQ_FOR_EACH_I_R(                                         \
+                 1,                                                              \
+                 BOOST_FUSION_DEFINE_STRUCT_CTOR_ARG_I,                          \
+diff --git a/boost/fusion/adapted/struct/detail/define_struct_inline.hpp b/boost/fusion/adapted/struct/detail/define_struct_inline.hpp
+index a5a3ae0..a037ffe 100644
+--- a/boost/fusion/adapted/struct/detail/define_struct_inline.hpp
++++ b/boost/fusion/adapted/struct/detail/define_struct_inline.hpp
+@@ -66,7 +66,7 @@
+ #define BOOST_FUSION_IGNORE_2(ARG1, ARG2)
+ 
+ #define BOOST_FUSION_MAKE_COPY_CONSTRUCTOR(NAME, ATTRIBUTES_SEQ)                \
+-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                    \
++    BOOST_FUSION_GPU_ENABLED                                                    \
+     NAME(BOOST_PP_SEQ_FOR_EACH_I(                                               \
+             BOOST_FUSION_MAKE_CONST_REF_PARAM,                                  \
+             ~,                                                                  \
+@@ -337,7 +337,7 @@
+         typedef boost::mpl::int_<N> index;                                      \
+         typedef boost_fusion_detail_Seq sequence_type;                          \
+                                                                                 \
+-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED                                \
++        BOOST_FUSION_GPU_ENABLED                                                \
+         BOOST_FUSION_ITERATOR_NAME(NAME)(boost_fusion_detail_Seq& seq)          \
+             : seq_(seq)                                                         \
+               BOOST_FUSION_DEFINE_ITERATOR_WKND_INIT_LIST_ENTRIES(              \
+diff --git a/libs/fusion/test/sequence/adapt_struct.cpp b/libs/fusion/test/sequence/adapt_struct.cpp
+index c0cd304..121827f 100644
+--- a/libs/fusion/test/sequence/adapt_struct.cpp
++++ b/libs/fusion/test/sequence/adapt_struct.cpp
+@@ -67,6 +67,17 @@ namespace ns
+         foo foo_;
+         int y;
+     };
++
++
++    // Testing non-constexpr compatible types
++    struct employee {
++      std::string name;
++      std::string nickname;
++
++      employee(std::string name, std::string nickname)
++        : name(name), nickname(nickname) 
++      {}
++    };
+ }
+ 
+ #if BOOST_PP_VARIADICS
+@@ -96,6 +107,13 @@ namespace ns
+         y
+     )
+ 
++    BOOST_FUSION_ADAPT_STRUCT(
++        ns::employee,
++        name,
++        nickname
++    )
++        
++
+ #else // BOOST_PP_VARIADICS
+ 
+     BOOST_FUSION_ADAPT_STRUCT(
+@@ -123,6 +141,12 @@ namespace ns
+         (BOOST_FUSION_ADAPT_AUTO, y)
+     )
+ 
++    BOOST_FUSION_ADAPT_STRUCT(
++        ns::employee,
++        (std::string, name)
++        (BOOST_FUSION_ADAPT_AUTO, nickname)
++    )
++
+ #endif
+ 
+ int
+@@ -224,6 +248,15 @@ main()
+         BOOST_TEST(v2 >= v1);
+     }
+ 
++    {
++        ns::employee emp("John Doe", "jdoe"); 
++        std::cout << at_c<0>(emp) << std::endl;
++        std::cout << at_c<1>(emp) << std::endl;
++
++        fusion::vector<std::string, std::string> v1("John Doe", "jdoe");
++        BOOST_TEST(emp == v1);
++    } 
++
+     return boost::report_errors();
+ }
+ 
+diff --git a/libs/fusion/test/sequence/define_struct.cpp b/libs/fusion/test/sequence/define_struct.cpp
+index 795fdf6..63b5a19 100644
+--- a/libs/fusion/test/sequence/define_struct.cpp
++++ b/libs/fusion/test/sequence/define_struct.cpp
+@@ -26,6 +26,14 @@ BOOST_FUSION_DEFINE_STRUCT(
+ 
+ BOOST_FUSION_DEFINE_STRUCT(BOOST_PP_EMPTY(), s, (int, m))
+ 
++// Testing non-constexpr compatible types
++BOOST_FUSION_DEFINE_STRUCT(
++    (ns),
++    employee, 
++    (std::string, name)
++    (std::string, nickname)
++)
++
+ int
+ main()
+ {
+@@ -100,6 +108,14 @@ main()
+         BOOST_TEST(p == make_vector(3,5));
+     }
+ 
++    {
++        ns::employee emp = make_list("John Doe", "jdoe"); 
++        std::cout << at_c<0>(emp) << std::endl;
++        std::cout << at_c<1>(emp) << std::endl;
++
++        BOOST_TEST(emp == make_vector("John Doe", "jdoe"));
++    }
++
+     return boost::report_errors();
+ }
+ 
+diff --git a/libs/fusion/test/sequence/define_struct_inline.cpp b/libs/fusion/test/sequence/define_struct_inline.cpp
+index e849ce9..d34a142 100644
+--- a/libs/fusion/test/sequence/define_struct_inline.cpp
++++ b/libs/fusion/test/sequence/define_struct_inline.cpp
+@@ -41,6 +41,13 @@ namespace ns
+     BOOST_FUSION_DEFINE_STRUCT_INLINE(s, (int, m))
+             
+     BOOST_FUSION_DEFINE_STRUCT_INLINE(empty_struct, )
++
++    // Testing non-constexpr compatible types
++    BOOST_FUSION_DEFINE_STRUCT_INLINE(
++        employee, 
++        (std::string, name)
++        (std::string, nickname)
++    )
+ }
+ 
+ template <typename Point>
+@@ -128,6 +135,17 @@ main()
+ {
+     run_test<cls::point>();        // test with non-template enclosing class
+     run_test<tpl_cls<>::point>();  // test with template enclosing class
++
++    {
++        using namespace boost::fusion;
++
++        ns::employee emp = make_list("John Doe", "jdoe"); 
++        std::cout << at_c<0>(emp) << std::endl;
++        std::cout << at_c<1>(emp) << std::endl;
++
++        BOOST_TEST(emp == make_vector("John Doe", "jdoe"));
++    }
++
+     return boost::report_errors();
+ 
+ }

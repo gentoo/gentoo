@@ -1,0 +1,33 @@
+From ab59be7bc752481db64df07c821e2ae6bf2ae71b Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Wed, 1 May 2013 16:20:28 -0700
+Subject: [PATCH] Fix delay()
+
+Somewhat amazingly it went unnoticed that the delay() function
+doesn't actually cause the task to block.  Since the task state
+is never changed from TASK_RUNNING before schedule_timeout() the
+scheduler allows to task to continue running without any delay.
+Using schedule_timeout_interruptible() resolves the issue by
+correctly setting TASK_UNINTERRUPTIBLE.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+---
+ include/sys/timer.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/sys/timer.h b/include/sys/timer.h
+index 13ef404..2542510 100644
+--- a/include/sys/timer.h
++++ b/include/sys/timer.h
+@@ -35,7 +35,7 @@
+ #define ddi_get_lbolt()			((clock_t)jiffies)
+ #define ddi_get_lbolt64()		((int64_t)get_jiffies_64())
+ 
+-#define delay(ticks)			schedule_timeout((long)(ticks))
++#define delay(ticks)			schedule_timeout_uninterruptible(ticks)
+ 
+ #define SEC_TO_TICK(sec)		((sec) * HZ)
+ #define MSEC_TO_TICK(ms)		msecs_to_jiffies(ms)
+-- 
+1.8.1.6
+

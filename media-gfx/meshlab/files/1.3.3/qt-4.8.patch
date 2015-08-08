@@ -1,0 +1,11 @@
+diff -Nur meshlab.orig/src/meshlab/meshlab.pro meshlab/src/meshlab/meshlab.pro
+--- meshlab.orig/src/meshlab/meshlab.pro	2011-02-15 20:39:47.000000000 +1100
++++ meshlab/src/meshlab/meshlab.pro	2012-01-07 11:57:18.055586086 +1100
+@@ -85,6 +85,7 @@
+ QT += xmlpatterns
+ QT += network
+ QT += script
++unix:LIBS += -lGLU
+ 
+ 
+ # the following line is needed to avoid mismatch between

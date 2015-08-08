@@ -1,0 +1,207 @@
+*** wmmon.c	Tue May 19 14:13:16 1998
+--- wmmon.c.patched	Tue May 10 12:31:40 2005
+***************
+*** 101,107 ****
+  /********************/
+  
+  char	*ProgName;
+! int	stat_current = 0; /* now global */
+  FILE	*fp_meminfo;
+  FILE	*fp_stat;
+  FILE	*fp_loadavg;
+--- 101,108 ----
+  /********************/
+  
+  char	*ProgName;
+! int	stat_current  = 0; /* now global */
+! int	minus_buffers = 1; /* do we want to subtract buffers and cache from memory usage? */
+  FILE	*fp_meminfo;
+  FILE	*fp_stat;
+  FILE	*fp_loadavg;
+*************** void main(int argc, char *argv[]) {
+*** 146,151 ****
+--- 147,155 ----
+  			case 's' :
+  				stat_current = 2;
+  				break;
++ 			case 'b' :
++ 				minus_buffers = 0;
++ 				break;
+  			default:
+  				usage();
+  				exit(0);
+*************** void DrawActive(char *);
+*** 188,194 ****
+  void update_stat_cpu(stat_dev *);
+  void update_stat_io(stat_dev *);
+  void update_stat_mem(stat_dev *st, stat_dev *st2);
+- void update_stat_swp(stat_dev *);
+  
+  void wmmon_routine(int argc, char **argv) {
+  
+--- 192,197 ----
+*************** void wmmon_routine(int argc, char **argv
+*** 298,304 ****
+  
+  		if(stat_current == 2) {
+  			update_stat_mem(&stat_device[2], &stat_device[3]);
+- //			update_stat_swp(&stat_device[3]);
+  		}
+  
+  		if (stat_current < 2) {
+--- 301,306 ----
+*************** void wmmon_routine(int argc, char **argv
+*** 320,341 ****
+  			copyXPMArea(0, 64, 32, 12, 28+64, 4);
+  			copyXPMArea(0, 64, 32, 12, 28+64, 18);
+  
+! 			j = stat_device[2].rt_idle;
+! 			if (j != 0) {
+! 				j = (stat_device[2].rt_stat * 100) / j;
+! 			}
+! 			j = j * 0.32;
+! 			if (j > 32) j = 32;
+! 			copyXPMArea(32, 64, j, 12, 28+64, 4);
+! 			/*---------------------           ------------------*/
+! 			j = stat_device[3].rt_idle;
+! 			if (j != 0) {
+! 				j = (stat_device[3].rt_stat * 100) / j;
+  			}
+- 			j = j * 0.32;
+- 			if (j > 32) j = 32;
+- 			copyXPMArea(32, 64, j, 12, 28+64, 18);
+- 
+  			/*----------- online tijd neerzetten! ----------*/
+  			
+  			cnt_time = time(0) - ref_time + online_time;
+--- 322,335 ----
+  			copyXPMArea(0, 64, 32, 12, 28+64, 4);
+  			copyXPMArea(0, 64, 32, 12, 28+64, 18);
+  
+! 			for (i = 2; i <= 3; i++) {
+! 				j = stat_device[i].rt_stat != 0
+! 					? 100 * ( stat_device[i].rt_stat - stat_device[i].rt_idle ) / stat_device[i].rt_stat
+! 					: 0 ;
+! 				j = j * 0.32;
+! 				if (j > 32) j = 32;
+! 				copyXPMArea(32, 64, j, 12, 28+64, 4+(14*(i-2)) );
+  			}
+  			/*----------- online tijd neerzetten! ----------*/
+  			
+  			cnt_time = time(0) - ref_time + online_time;
+*************** void wmmon_routine(int argc, char **argv
+*** 430,436 ****
+  						}
+  					case 1:
+  						stat_current++;
+- 						printf("current stat is :%d\n", stat_current);
+  						if (stat_current == stat_online)
+  							stat_current = 0;
+  
+--- 424,429 ----
+*************** void update_stat_io(stat_dev *st) {
+*** 499,541 ****
+  
+  void update_stat_mem(stat_dev *st, stat_dev *st2) {
+  
+! 	char	temp[128];
+! 	unsigned long free, shared, buffers, cached;
+  
+  	freopen("/proc/meminfo", "r", fp_meminfo);
+  	while (fgets(temp, 128, fp_meminfo)) {
+! 		if (strstr(temp, "Mem:")) {
+! 			sscanf(temp, "Mem: %ld %ld %ld %ld %ld %ld",
+! 			       &st->rt_idle, &st->rt_stat,
+! 			       &free, &shared, &buffers, &cached);
+! 			st->rt_idle >>= 10;
+! 			st->rt_stat -= buffers+cached;
+! 			st->rt_stat >>= 10;
+! //			break;
+  		}
+! 		if (strstr(temp, "Swap:")) {
+! 			sscanf(temp, "Swap: %ld %ld", &st2->rt_idle, &st2->rt_stat);
+! 			st2->rt_idle >>= 10;
+! 			st2->rt_stat >>= 10;
+! 			break;
+  		}
+! 	}
+! }
+! 
+! void update_stat_swp(stat_dev *st) {
+! 
+! 	char	temp[128];
+! 
+! 	fseek(fp_meminfo, 0, SEEK_SET);
+! 	while (fgets(temp, 128, fp_meminfo)) {
+! 		if (strstr(temp, "Swap:")) {
+! 			sscanf(temp, "Swap: %ld %ld", &st->rt_idle, &st->rt_stat);
+! 			st->rt_idle >>= 10;
+! 			st->rt_stat >>= 10;
+! 			break;
+  		}
+  	}
+- 
+  }
+  
+  /*******************************************************************************\
+--- 492,523 ----
+  
+  void update_stat_mem(stat_dev *st, stat_dev *st2) {
+  
+! 	char     temp[128], stat[20];
+! 	unsigned long amount;
+  
+  	freopen("/proc/meminfo", "r", fp_meminfo);
++ 	st->rt_idle = 0; /* zero this out so we can +/- appropriately */
+  	while (fgets(temp, 128, fp_meminfo)) {
+! 		sscanf(temp, "%s %ld", &stat, &amount);
+! 		if      (! strcmp(stat, "MemFree:")  ) {
+! 			st->rt_idle  += (amount >> 10);
+  		}
+! 		else if (! strcmp(stat, "MemTotal:")   ) {
+! 			st->rt_stat  = (amount >> 10);
+  		}
+! 		else if (! strcmp(stat, "Buffers:") && minus_buffers ) {
+! 			st->rt_idle  += (amount >> 10);
+! 		}
+! 		else if (! strcmp(stat, "Cached:")  && minus_buffers ) {
+! 			st->rt_idle  += (amount >> 10);
+! 		}
+! 		else if (! strcmp(stat, "SwapFree:") ) {
+! 			st2->rt_idle = (amount >> 10);
+! 		}
+! 		else if (! strcmp(stat, "SwapTotal:")  ) {
+! 			st2->rt_stat = (amount >> 10);
+  		}
+  	}
+  }
+  
+  /*******************************************************************************\
+*************** int checksysdevs(void) {
+*** 599,605 ****
+  
+  	strcpy(stat_device[0].name, "cpu0");
+  	strcpy(stat_device[1].name, "i/o");
+! 	strcpy(stat_device[2].name, "sys");
+  
+  	return 3;
+  }
+--- 581,588 ----
+  
+  	strcpy(stat_device[0].name, "cpu0");
+  	strcpy(stat_device[1].name, "i/o");
+! 	strcpy(stat_device[2].name, "mem");
+! 	strcpy(stat_device[3].name, "swap");
+  
+  	return 3;
+  }
+*************** void usage(void) {
+*** 724,729 ****
+--- 707,713 ----
+  	fprintf(stderr, "\t-v\tprint the version number\n");
+  	fprintf(stderr, "\t-i\tstartup in DiskIO mode\n");
+  	fprintf(stderr, "\t-s\tstartup in SysInfo mode\n");
++ 	fprintf(stderr, "\t-b\tdo not subtract buffer and cache from memory usage\n");
+  	fprintf(stderr, "\n");
+  }
+  

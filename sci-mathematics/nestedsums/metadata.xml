@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-mathematics</herd>
+<maintainer>
+  <email>grozin@gentoo.org</email>
+  <name>Andrey Grozin</name>
+</maintainer>
+<longdescription lang="en">
+A GiNaC-based library for symbolic expansion of certain transcendental functions.
+</longdescription>
+</pkgmetadata>

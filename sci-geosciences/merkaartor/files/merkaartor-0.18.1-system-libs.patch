@@ -1,0 +1,43 @@
+From e4cda9c42c049577caf126e8849c4b9eba62b31b Mon Sep 17 00:00:00 2001
+From: Nikoli <nikoli@gmx.us>
+Date: Thu, 10 Oct 2013 16:28:02 +0400
+Subject: [PATCH] Support for building with system qtsingleapplication and
+ quazip
+
+---
+ INSTALL     | 1 +
+ src/src.pro | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/INSTALL b/INSTALL
+index a828c17..022e8d0 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -33,6 +33,7 @@ TRANSDIR_MERKAARTOR=<path>	- where will the Merkaartor translations be installed
+ TRANSDIR_SYSTEM=<path>		- where your global Qt translation directory is
+ NODEBUG=1			- release target
+ NOUSEWEBKIT                 	- disable use of WebKit (Yahoo adapter)
++SYSTEM_QTSA			- use system copy of qtsingleapplication instead of internal
+ 
+ see http://wiki.openstreetmap.org/wiki/Merkaartor/Compiling for the complete list
+ 
+diff --git a/src/src.pro b/src/src.pro
+index f23e05e..ff228b6 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -6,7 +6,11 @@ include (Config.pri)
+ #Custom config
+ include(Custom.pri)
+ 
+-include(../3rdparty/qtsingleapplication-2.6_1-opensource/src/qtsingleapplication.pri)
++isEmpty(SYSTEM_QTSA) {
++  include(../3rdparty/qtsingleapplication-2.6_1-opensource/src/qtsingleapplication.pri)
++} else {
++  CONFIG += qtsingleapplication
++}
+ include(../3rdparty/qttoolbardialog-2.2_1-opensource/src/qttoolbardialog.pri)
+ 
+ #Qt Version
+-- 
+2.0.5
+

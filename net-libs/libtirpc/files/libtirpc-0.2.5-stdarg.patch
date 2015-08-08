@@ -1,0 +1,29 @@
+From d26607bade0893fe8652e1a0983f9fae59c64649 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 12 Aug 2014 03:11:41 -0400
+Subject: [PATCH libtirpc] include stdarg.h when used
+
+The debug.h header uses va_list but doesn't include stdarg.h which
+can lead to random build failures.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/debug.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/debug.h b/src/debug.h
+index afc8d57..c971ac3 100644
+--- a/src/debug.h
++++ b/src/debug.h
+@@ -21,6 +21,8 @@
+ 
+ #ifndef _DEBUG_H
+ #define _DEBUG_H
++
++#include <stdarg.h>
+ #include <syslog.h>
+ 
+ extern int libtirpc_debug_level;
+-- 
+2.0.0
+

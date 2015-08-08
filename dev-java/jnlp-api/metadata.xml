@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+	JNLP API classes (javax/jnlp), repackaged from the icedtea-web fork of netx.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+--- altermime-0.3.11.orig/Makefile
++++ altermime-0.3.11/Makefile
+@@ -9,7 +9,7 @@
+ #								opposite of a disclaimer.
+ ALTERMIME_OPTIONS=-DALTERMIME_PRETEXT
+ #ALTERMIME_OPTIONS=
+-CFLAGS=-Wall -Werror -g -I. -O2 $(ALTERMIME_OPTIONS)
++CFLAGS+=-Wall $(ALTERMIME_OPTIONS)
+ OBJS= strstack.o mime_alter.o ffget.o pldstr.o filename-filters.o logger.o MIME_headers.o libmime-decoders.o boundary-stack.o qpe.o
+ 
+ 
+@@ -19,7 +19,7 @@
+ all: altermime
+ 
+ altermime: altermime.c ${OBJS}
+-	${CC} ${CFLAGS} altermime.c ${OBJS} -o altermime
++	${CC} ${CFLAGS} ${LDFLAGS} altermime.c ${OBJS} -o altermime
+ 
+ 
+ # Build Install

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<herd>3dprint</herd>
+<maintainer>
+	<email>amynka@gentoo.org</email>
+</maintainer>
+<longdescription>
+lib3ds is an overall software library for managing 3D-Studio Release 3 and 4 ".3DS" files.
+</longdescription>
+</pkgmetadata>

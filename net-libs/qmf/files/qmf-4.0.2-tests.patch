@@ -1,0 +1,13 @@
+diff -Naur qmf-9999.orig/tests/tests.pri qmf-9999/tests/tests.pri
+--- qmf-9999.orig/tests/tests.pri	2013-04-13 12:05:32.323423194 -0700
++++ qmf-9999/tests/tests.pri	2013-04-13 12:09:25.068513480 -0700
+@@ -11,7 +11,8 @@
+ INCLUDEPATH += . $$QMFPATH $$QMFPATH/support
+ LIBS += -L$$QMFPATH/build
+ macx:LIBS += -F$$QMFPATH/build
+-QMAKE_LFLAGS += -Wl,-rpath,$$QMFPATH
++QMAKE_LFLAGS += -Wl,-rpath,\\\$$ORIGIN/$$QMFPATH/build
+ 
+ include(../common.pri)
+ 
++DESTDIR =

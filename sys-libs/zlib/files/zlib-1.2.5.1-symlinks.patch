@@ -1,0 +1,33 @@
+From e41d99c135935b849e1e639632937829ff2000d8 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 11 Sep 2011 14:32:53 -0400
+Subject: [PATCH] use relative symlinks for shared libs
+
+The DESTDIR should not be encoded into symlinks as it is only a
+temporary path.  Further, since we install the symlinks into the
+same dir as the files, let's use relative links so that they can
+always resolve.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile.in |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 861970d..299bd1d 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -176,8 +176,8 @@ install-libs: $(LIBS)
+ 	  chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV); \
+ 	  echo "chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV)"; \
+ 	  rm -f $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBM); \
+-	  ln -s $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB); \
+-	  ln -s $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBM); \
++	  ln -s $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB); \
++	  ln -s $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBM); \
+ 	  ($(LDCONFIG) || true)  >/dev/null 2>&1; \
+ 	fi
+ 	cp zlib.3 $(DESTDIR)$(man3dir)
+-- 
+1.7.6
+

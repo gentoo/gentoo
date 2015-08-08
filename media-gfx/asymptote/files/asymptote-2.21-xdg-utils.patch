@@ -1,0 +1,22 @@
+Index: asymptote-2.21/settings.cc
+===================================================================
+--- asymptote-2.21.orig/settings.cc
++++ asymptote-2.21/settings.cc
+@@ -90,14 +90,14 @@ bool msdos=false;
+ string HOME="HOME";
+ string docdir=ASYMPTOTE_DOCDIR;
+ const char pathSeparator=':';
+-string defaultPSViewer="gv";
++string defaultPSViewer="xdg-open";
+ #ifdef __APPLE__
+ string defaultPDFViewer="open";
+ #else  
+-string defaultPDFViewer="acroread";
++string defaultPDFViewer="xdg-open";
+ #endif  
+ string defaultGhostscript="gs";
+-string defaultDisplay="display";
++string defaultDisplay="xdg-open";
+ string defaultAnimate="animate";
+ void queryRegistry() {}
+ const string dirsep="/";

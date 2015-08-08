@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/show_bug.cgi?id=393023
+http://llvm.org/bugs/show_bug.cgi?id=11177
+
+Index: llvm-3.0-3.0/bindings/ocaml/llvm/Makefile
+===================================================================
+--- llvm-3.0-3.0.orig/bindings/ocaml/llvm/Makefile	2011-11-15 12:17:02.785987852 +0100
++++ llvm-3.0-3.0/bindings/ocaml/llvm/Makefile	2011-11-15 12:20:12.661983615 +0100
+@@ -30,7 +30,7 @@
+ $(OcamlDir)/META.llvm: META.llvm
+ 	$(Verb) $(CP) -f $< $@
+ 
+-install-meta:: $(ObjDir)/META.llvm
++install-meta:: $(ObjDir)/../META.llvm
+ 	$(Echo) "Install $(BuildMode) $(DestMETA)"
+ 	$(Verb) $(MKDIR) $(PROJ_libocamldir)
+ 	$(Verb) $(DataInstall) META.llvm "$(DestMETA)"

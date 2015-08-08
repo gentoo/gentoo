@@ -1,0 +1,156 @@
+
+--- src/c/Makefile-linux-armel-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ src/c/Makefile-linux-armel-32.make	2014-07-21 10:50:11.000000000 +0200
+@@ -33,14 +33,14 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+--- src/c/Makefile-linux-armhf-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ src/c/Makefile-linux-armhf-32.make	2014-07-21 10:51:05.000000000 +0200
+@@ -33,14 +33,14 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+--- src/c/Makefile-linux-ia-64.make.old	2014-07-21 10:48:31.000000000 +0200
++++ src/c/Makefile-linux-ia-64.make	2014-07-21 10:51:37.000000000 +0200
+@@ -33,14 +33,14 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -lm -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -lm -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+--- src/c/Makefile-linux-ppc-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ src/c/Makefile-linux-ppc-32.make	2014-07-21 10:52:05.000000000 +0200
+@@ -33,14 +33,14 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+--- src/c/Makefile-linux-ppc-64.make.old	2014-07-21 10:48:31.000000000 +0200
++++ src/c/Makefile-linux-ppc-64.make	2014-07-21 10:52:45.000000000 +0200
+@@ -33,14 +33,14 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+--- src/c/Makefile-linux-x86-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ src/c/Makefile-linux-x86-32.make	2014-07-21 10:53:39.000000000 +0200
+@@ -36,17 +36,17 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
+ 
+ testsuite: $(testsuite_SOURCE)
+-	$(COMPILE) -DCUNIT $(testsuite_SOURCE) -lm -pthread -L/usr/local/lib -lncurses -lcunit -o $(TEST)/testsuite
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -DCUNIT $(testsuite_SOURCE) -lm -pthread -L/usr/local/lib -lncurses -lcunit -o $(TEST)/testsuite
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+--- src/c/Makefile-linux-x86-64.make.old	2014-07-21 10:48:31.000000000 +0200
++++ src/c/Makefile-linux-x86-64.make	2014-07-21 10:54:16.000000000 +0200
+@@ -36,17 +36,17 @@
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -pthread $(wrapper_SOURCE) -lm -o $(BIN)/wrapper
+ 
+ testsuite: $(testsuite_SOURCE)
+-	$(COMPILE) -DCUNIT $(testsuite_SOURCE) -lm -pthread -L/usr/local/lib -lncurses -lcunit -o $(TEST)/testsuite
++	$(COMPILE) $(CFLAGS) $(LDFLAGS) -DCUNIT $(testsuite_SOURCE) -lm -pthread -L/usr/local/lib -lncurses -lcunit -o $(TEST)/testsuite
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} $(LDFLAGS) -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c 
+-	@echo '$(COMPILE) -c $<'; \
+-	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@echo '$(COMPILE) $(CFLAGS) -c $<'; \
++	$(COMPILE) $(CFLAGS) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
+ 	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+ 	tr ' ' '\012' < .deps/$(*F).pp \
+ 	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \

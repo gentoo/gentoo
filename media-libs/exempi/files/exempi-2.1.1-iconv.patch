@@ -1,0 +1,22 @@
+http://bugs.gentoo.org/show_bug.cgi?id=242812
+
+--- configure.ac
++++ configure.ac
+@@ -104,6 +104,8 @@
+ AC_CHECK_HEADER(zlib.h, ,
+ 	 AC_MSG_ERROR([zlib headers missing]))
+ 
++AM_ICONV_LINK
++
+ dnl Blatently copied from iconv.m4 to remove the crack about libtool
+ dnl But check for constness of the iconv parameters.
+ AC_MSG_CHECKING([for iconv declaration])
+--- source/XMPFiles/Makefile.am
++++ source/XMPFiles/Makefile.am
+@@ -62,5 +62,5 @@
+ 
+ 
+ libXMPFiles_la_LIBADD = ./FileHandlers/libxmpfilehandlers.la \
+-	./FormatSupport/libformatsupport.la
++	./FormatSupport/libformatsupport.la @LTLIBICONV@
+ #libXMPFiles_la_LDFLAGS = -version-info @LIBXMPCORE_VERSION_INFO@

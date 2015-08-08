@@ -1,0 +1,117 @@
+This is a minimal patch that does not keep indentation consistent in tcl.m4
+Updating indentation would make the patch much bigger and less readable.
+
+Signed-off-by: Gilles Espinasse <g.esp@free.fr>
+
+Index: INSTALL
+===================================================================
+RCS file: /cvsroot/expect/expect/INSTALL,v
+retrieving revision 5.30
+diff -u -r5.30 INSTALL
+--- INSTALL	21 Jun 1999 18:41:41 -0000	5.30
++++ INSTALL	30 May 2009 11:51:21 -0000
+@@ -152,6 +152,7 @@
+ 
+ 	--with-tk=...		Specifies the directory containing Tk's
+ 				configure file (tkConfig.sh).
++				--with-tk=no disable Tk usage in expect
+ 
+ 	--with-tkinclude=...	Specifies the directory containing Tk's
+ 				private include files (such as tkInt.h)
+Index: Makefile.in
+===================================================================
+RCS file: /cvsroot/expect/expect/Makefile.in,v
+retrieving revision 5.45
+diff -u -r5.45 Makefile.in
+--- Makefile.in	3 Oct 2008 17:05:14 -0000	5.45
++++ Makefile.in	30 May 2009 11:51:21 -0000
+@@ -103,7 +103,11 @@
+ PKG_STUB_LIB_FILE = @PKG_STUB_LIB_FILE@
+ 
+ lib_BINARIES	= $(PKG_LIB_FILE)
+-bin_BINARIES	= expect expectk
++bin_BINARIES	= expect
++ifneq ($(TK_BIN_DIR),)
++  bin_BINARIES	+= expectk
++endif
++
+ BINARIES	= $(lib_BINARIES) $(bin_BINARIES)
+ 
+ SHELL		= @SHELL@
+Index: tclconfig/tcl.m4
+===================================================================
+RCS file: /cvsroot/expect/expect/tclconfig/tcl.m4,v
+retrieving revision 1.3
+diff -u -r1.3 tcl.m4
+--- tclconfig/tcl.m4	25 Jan 2006 21:52:11 -0000	1.3
++++ tclconfig/tcl.m4	30 May 2009 11:51:23 -0000
+@@ -181,10 +181,12 @@
+ #
+ #	Adds the following arguments to configure:
+ #		--with-tk=...
++#		--with-tk=no disable Tk usage
+ #
+ #	Defines the following vars:
+ #		TK_BIN_DIR	Full path to the directory containing
+ #				the tkConfig.sh file
++#				Empty if Tk is disabled
+ #------------------------------------------------------------------------
+ 
+ AC_DEFUN(TEA_PATH_TKCONFIG, [
+@@ -201,6 +203,12 @@
+ 	    AC_HELP_STRING([--with-tk],
+ 		[directory containing tk configuration (tkConfig.sh)]),
+ 	    with_tkconfig=${withval})
++
++	if test x"${with_tkconfig}" = x"no" ; then
++	    AC_MSG_RESULT([Tk is disabled by --with-tk=no])
++	    unset TK_BIN_DIR
++	else
++
+ 	AC_MSG_CHECKING([for Tk configuration])
+ 	AC_CACHE_VAL(ac_cv_c_tkconfig,[
+ 
+@@ -309,6 +317,7 @@
+ 	    TK_BIN_DIR=${ac_cv_c_tkconfig}
+ 	    AC_MSG_RESULT([found ${TK_BIN_DIR}/tkConfig.sh])
+ 	fi
++	fi
+     fi
+ ])
+ 
+@@ -420,6 +429,7 @@
+ #------------------------------------------------------------------------
+ 
+ AC_DEFUN(TEA_LOAD_TKCONFIG, [
++    if test x"${with_tkconfig}" != x"no" ; then
+     AC_MSG_CHECKING([for existence of ${TK_BIN_DIR}/tkConfig.sh])
+ 
+     if test -f "${TK_BIN_DIR}/tkConfig.sh" ; then
+@@ -501,6 +511,7 @@
+ 
+     AC_SUBST(TK_LIBS)
+     AC_SUBST(TK_XINCLUDES)
++    fi
+ ])
+ 
+ #------------------------------------------------------------------------
+@@ -3528,6 +3539,11 @@
+ #------------------------------------------------------------------------
+ 
+ AC_DEFUN(TEA_PUBLIC_TK_HEADERS, [
++    if test x"${with_tkconfig}" = x"no" ; then
++	TK_INCLUDES=""
++	AC_SUBST(TK_INCLUDES)
++    else
++
+     AC_MSG_CHECKING([for Tk public headers])
+ 
+     AC_ARG_WITH(tkinclude, [  --with-tkinclude      directory containing the public Tk header files.], with_tkinclude=${withval})
+@@ -3608,6 +3624,7 @@
+ 	fi
+ 	AC_MSG_RESULT([${INCLUDE_DIR_NATIVE}])
+     fi
++    fi
+ ])
+ 
+ #------------------------------------------------------------------------

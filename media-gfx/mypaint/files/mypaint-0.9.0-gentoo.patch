@@ -1,0 +1,26 @@
+Index: mypaint-0.9.0/SConstruct
+===================================================================
+--- mypaint-0.9.0.orig/SConstruct
++++ mypaint-0.9.0/SConstruct
+@@ -64,6 +64,21 @@ if env['debug']:
+     env.Append(CPPDEFINES='HEAVY_DEBUG')
+     env.Append(CCFLAGS='-O0', LINKFLAGS='-O0')
+ 
++# Respect cxxflags,ldflags and cxx
++# Code found on
++# http://http://dev.gentoo.org/~vapier/scons-blows.txt
++import SCons.Util
++if os.environ.has_key('CC'):
++	env['CC'] = os.environ['CC']
++if os.environ.has_key('CFLAGS'):
++	env['CCFLAGS'] += SCons.Util.CLVar(os.environ['CFLAGS'])
++if os.environ.has_key('CXX'):
++	env['CXX'] = os.environ['CXX']
++if os.environ.has_key('CXXFLAGS'):
++	env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++if os.environ.has_key('LDFLAGS'):
++	env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
++
+ Export('env')
+ module = SConscript('lib/SConscript')
+ SConscript('brushlib/SConscript')

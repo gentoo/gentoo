@@ -1,0 +1,24 @@
+From 43eca622cd49b58c87157e1ff1a2fcfdfba0934e Mon Sep 17 00:00:00 2001
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+Date: Sun, 13 Jan 2013 13:42:13 +0000
+Subject: configure.ac: Use AC_CONFIG_HEADERS
+
+AM_CONFIG_HEADER is obsolete, use AC_CONFIG_HEADERS instead of it.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=59320
+---
+diff --git a/configure.ac b/configure.ac
+index 6737256..978ef0d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,7 +2,7 @@ AC_INIT([libfprint], [0.5.0])
+ AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz check-news])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR([libfprint/core.c])
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ # Enable silent build when available (Automake 1.11)
+ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+--
+cgit v0.9.0.2-2-gbebe

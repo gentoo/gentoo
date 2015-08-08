@@ -1,0 +1,597 @@
+package goby;
+
+option java_package = "edu.cornell.med.icb.goby.alignments";
+
+option optimize_for = SPEED;
+
+/*
+  This message is written to 'basename'.entries as a very large chunked collection.
+*/
+message AlignmentCollection {
+    repeated AlignmentEntry alignment_entries = 1;
+}
+
+
+message AlignmentEntry {
+    /* Multiplicity of this entry. The number of times this  alignment entry would be repeated exactly the same if
+     query redundancy had not been removed by read factorization.
+    */
+    optional uint32 multiplicity = 7;
+
+    /*
+      Compressed stream of data. Removed since Goby 2.0 supports chunk codecs. Do not reuse field index 23
+      optional bytes compressed_data = 23;
+    */
+
+    /* An integer that uniquely identifies the query (a short read) in a set of alignment runs. When several
+      alignment runs are made with the same set of query sequences, equality of query index means that the query
+      sequences were the same. (Comparing integers for equality is much faster than comparing strings.)
+      This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 query_index = 1;
+    /* An integer that uniquely identifies the target (e.g., a chromosome) in a set of alignment runs. When several
+      alignment runs are made with the same set of target sequences, equality of target index means that the target
+      sequence was the same across the runs. (Comparing integers for equality is much faster than comparing strings.)
+      This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 target_index = 2;
+    /*
+     The position on the target of the start of the alignment between the query and the target.
+     In the following example, position is 3 because the third base of the query 'C' was aligned with
+     position 3 of the reference (two read bases were soft clipped: "ct"). This example shows that the
+     alignment can start at a mismatch if it was so constructed by the aligner.
+
+     0123456789
+     AAAAGTCAAA  target
+      ctCGTC     query
+    This field is required (enforced by semantic validation in Goby 2.0+).
+   */
+    optional uint32 position = 3;
+
+    /*
+       True when the query matches the target on the reverse strand
+    */
+    optional bool matching_reverse_strand = 6;
+
+    /*
+     The position on the query where the alignment starts. This value is different from zero
+     when some bases/residues of the query could not be aligned with the target.
+     TODO: Rename this to left_trim. Add a right_trim property.
+    */
+    optional uint32 query_position = 5;
+
+    /*
+     The score of the alignment, where larger scores indicate better matches between the query and the target.
+     If an aligner outputs only the number of mismatches between query and target, the score is taken to be
+     -(#mismatches(query,target)).
+    */
+    optional float score = 4;
+
+    /*
+      Number of bases/residues that differ in the alignment between query and target sequences.
+    */
+    optional uint32 number_of_mismatches = 8;
+
+    /*
+     Cumulative number of insertions and/or deletions present in the alignment.
+    */
+    optional uint32 number_of_indels = 9;
+
+    /*
+     Number of bases that have been aligned for the query. Please note that query_aligned_length must be
+     less or equal to query_length.
+    */
+    optional uint32 query_aligned_length = 11;
+
+    /*
+     Number of bases that have been aligned for the target.
+    */
+    optional uint32 target_aligned_length = 12;
+
+    repeated SequenceVariation sequence_variations = 13;
+
+    /*
+     Length of the query sequence.
+    */
+    optional uint32 query_length = 10;
+    /*
+      Mapping Quality (phred-scaled posterior probability that the mapping
+      position of this read is incorrect). Please note that different aligners
+      may estimate mapping quality with different approaches, resulting in aligner
+      specific differences in the distribution of mapping quality. It is recommended
+      to condition mapping quality on the aligner that produced the specific alignment
+      being processed. See aligner name and version in the header.
+      Note that the following description is preliminary. A clear specification is
+      needed:
+      The mapping quality should be proportional to the
+      log of the probability that the given mapping is the "correct" one.
+      So if there are five equally good mappings of a read to the genome,
+      the probability of each would be 0.2, and the mapping quality would be
+      something like -10*log10(1-0.2) = 1.  If a mapping is highly likely,
+      say a 1e-4 of it being wrong, then the mapping quality would be
+      -10*log10(1e-4) = 40.
+    */
+    optional int32 mapping_quality = 14;
+
+    /*
+       If this read was aligned with a pair, the flags for the pair alignment (based on SAM):
+          000000001    paired
+          000000010    properly paired
+          000000100    read unmapped
+          000001000    mate unmapped
+          000010000    read reverse strand
+          000100000    mate reverse strand
+          001000000    first in pair
+          010000000    second in pair
+          100000000    not primary alignment
+    */
+    optional uint32 pair_flags = 15;
+
+    /*
+     If there is an alignment entry for the paired read (the paired read was mapped), a link to the entry is given.
+    */
+    optional RelatedAlignmentEntry pair_alignment_link = 16;
+
+    /* Index of the read fragment from which this alignment was obtained. */
+    optional uint32 fragment_index = 17;
+
+    /* If a read spans exon-exon junctions some aligners (e.g., GSNAP) will output two or more
+      alignment entries, one for each matching part of the read, and link these entries with
+      spliced_alignment_links. The field spliced_forward_alignment_link points to the next
+      AlignmentEntry in the chain of spliced alignments.
+    */
+    optional RelatedAlignmentEntry spliced_forward_alignment_link = 18;
+
+    /* If a read spans exon-exon junctions some aligners (e.g., GSNAP) will output two or more
+      alignment entries, one for each matching part of the read, and link these entries with
+      spliced_alignment_links. The field spliced_backward_alignment_link points to the previous
+      AlignmentEntry in the chain of spliced alignments.
+    */
+    optional RelatedAlignmentEntry spliced_backward_alignment_link = 22;
+
+    /*
+      If a read spans exon-exon junctions some aligners (e.g., GSNAP) will output two alignment entries, one for each
+      matching part of the read, and flag describes the spliced_alignment_link with these
+      binary flags:
+        000000001    normal
+        000000010    novel
+    */
+    optional uint32 spliced_flags = 19;
+
+    /* The size of the insert used when making the sequence library. This is the total size of the DNA
+    fragment to sequence, without the adapters. This is not the length of sequence that separates the reads.
+    See http://seqanswers.com/forums/showthread.php?t=8730 for details. Insert size is inferred for each pair
+    of reads by the aligner and is recorded here if was estimated (i.e., for paired-end reads).
+    */
+    optional sint32 insert_size = 20;
+
+    /*
+       The sample index. Uniquely identifies the aligned sample this read was read from. Storing the sample index in the
+       alignment entry makes it possible to concat alignments from different origins and track what sample originally
+       contained each entry.
+    */
+    optional uint32 sample_index = 21;
+    /*
+        The total number of times the query index associated with this entry occurs across the entire alignment file.
+
+        This field is used to purge queryIndex->smallIndex associations after all instances of a queryindex have
+        been seen (see QueryIndexPermutation class). When each entry has a value for this field, the header field
+        query_index_occurrences is true.
+        This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 query_index_occurrences = 25;
+    /*
+        The total number of times the read matches the reference across the entire alignment file. This differs from
+        query_index_occurrences because reads that are matching through splice and pair links count as one for ambiguity.
+        The field can be used to filter by ambiguity-threshold on the fly after an alignment has been done (to restrict
+        entries to more smaller thresholds). When each entry has a value for this field, the header field
+        ambiguity_stored_in_entries is true.
+
+        This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 ambiguity = 27;
+    /*
+        List of BAM attributes, if the alignment was imported from BAM. The attributes are stored in exactly the format
+        allowed for BAM. For instance, X0:i:9  X1:i:1  MD:Z:68 RG:Z:SRR084825 will be stored as four strings:
+        "X0:i:9", "X1:i:1", "MD:Z:68", "RG:Z:SRR084825". Note that sam-to-compact will interpret some BAM attributes
+        and populate goby native fields. Such tags do not appear in bam_attributes, and are instead re-generated from
+        the corresponding goby native fields.
+        Since Goby 2.0.
+    */
+    repeated string bam_attributes = 50;
+    /*
+        Quality scores for all bases of the read.
+        Since Goby 2.0.
+    */
+    optional bytes read_quality_scores = 55;
+
+    /*
+        Origin index. An integer that references a ReadOriginInfo message in the alignment header and
+        makes it possible to track the origin of the read (especially useful after several alignments
+        have been merged/concatenated).
+        (Since Goby 2.0).
+    */
+    optional uint32 read_origin_index = 26;
+    /*
+    Bases that an aligner considered do not belong to the alignment of the read to the reference. Potentially
+    erroneous bases, or bases that belong to a different part of the reference genome. Left clipped bases are
+    stored in this field as character bases, or as an equal sign character '=' when the clipped base did match
+    the reference base. For instance "A=G" for three soft-clipped bases, the middle one matching the genome at
+    this position. The number of bases in softClippedBasesLeft is exactly equal to queryPosition.
+    */
+    optional string softClippedBasesLeft = 30;
+    /*
+    Bases that an aligner considered do not belong to the alignment of the read to the reference. Potentially
+    erroneous bases, or bases that belong to a different part of the reference genome. Right clipped bases are
+    stored in this field as character bases, or as an equal sign character '=' when the clipped base did match
+    the reference base. The number of bases in softClippedBasesRight is exactly equal
+    to  queryLength - queryAlignedLength - queryPosition.
+    */
+    optional string softClippedBasesRight = 31;
+
+    /*
+    Quality scores for bases in softClippedBasesLeft.  Stored in Phred Units.
+    */
+    optional bytes softClippedQualityLeft = 32;
+   /*
+    Quality scores for bases in softClippedBasesRight.  Stored in Phred Units.
+    */
+    optional bytes softClippedQualityRight = 33;
+    /*
+     Sequence for a read placed near this entry, but unmapped to the reference sequence. For instance, used to record
+     the sequence of a mate that did not map to the reference. We know that the mate maps in the proximity of this entry
+     (it is placed) but are unable to map it to a specific genomic position. The sequence is always given as obtained
+     from the reads file.
+    */
+    optional string placedUnmappedSequence=40;
+    /*
+    Quality scores for a read placed near this entry.  Phred units.
+    */
+    optional bytes placedUnmappedQuality=41;
+
+    /*
+    Read name. In SAM/BAM this is referred to as QNAME. Paired and segmented reads will have the same Read name.
+    */
+    optional string readName=42;
+}
+
+/* A link to another alignment entry. This message type is used to represent relations
+   between alignments, such as the relation between the two read fragments in a paired-end protocol,
+   or the relation between parts of reads that align through an exon exon junction and map in
+   different locations of the genome.
+  */
+message RelatedAlignmentEntry {
+    /* Target index of the location where the other alignment entry is mapped.
+      This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 target_index = 1;
+
+    /* Position on the reference where the other alignment entry is mapped. *
+       This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 position = 2;
+
+    /* Index of the fragment for the related alignment entry. This index
+       makes it possible to identify which of the read fragments mapped to the given
+       location is related to the source alignment entry.
+       This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 fragment_index = 3;
+
+    optional uint32 optimized_index=50;
+}
+
+/*
+   Represents sequence variations between the query and the reference sequences. Many variations can be represented.
+   For instance, an insertion at position 5 in the reference would be represented as from="A", to="" position=5.
+   A mutation T->G at position 6 would be rendered as from="T", to="G" position=6. Padded alignments (see SAM description)
+   can be described by a combination of pair-wise alignments, where the gap character '-' is used to indicate that no
+   base exists in the sequence considered for the alignment position, for instance:
+
+   - Padding example:
+
+    123 (<-positions)
+ref A-C
+    A-T [from="-" to=""  position=2] [from="C" to="T"  position=3]
+    ACT [from=""  to="C" position=2] [from="C" to="T"  position=3]
+    A-T [from="-" to=""  position=2] [from="C" to="T"  position=3]
+
+   - Mutation example:
+    123 (<-positions)
+ref ATT
+    ACT [from="T"  to="C" position=2]
+
+    -- Example of deletion in a read:
+    123 (<-positions)
+ref ATT
+    A-T [from="T"  to="-" position=2]
+
+    -- Example of insertion of two base pairs in a read:
+    12345 (<-positions)
+ref A--TT
+    ACCTT [from=""  to="CC" position=2]
+
+  */
+message SequenceVariation {
+    /* The reference bases. Can include one or more gap characters '-', to indicate that the reference sequence has
+     no base at this alignment position.
+     This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional string from = 2;
+    /* The read bases that differ from the reference sequence.  Can include one or more gap characters '-', to indicate
+     that the query sequence has no base at this alignment position.
+     This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional string to = 1;
+    /*
+    The position of the variation on the read, as if the read always matched on the forward strand.
+    Adding position to the index where the reference starts aligning the read yields the position of the variation
+    in reference/target sequence space. Since position starts at one the resulting position will also be one based.
+    This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 position = 3;
+    /*
+    The position of the variation, starting from the beginning of the aligned read (position 1), and up to the length
+    of the read (inclusive). Use this index if you need to know  how far the variation is observed from the beginning
+    of the sequenced read. When the read has an insertion, this index records the position immediately before the base
+    where the bases are inserted (these bases are in the to field).
+    When the read has a deletion, read_index records the position in the read after which the bases that would align
+    in the reference are missing (these bases are in the from field).
+    This field is required (enforced by semantic validation in Goby 2.0+).
+    */
+    optional uint32 read_index = 5;
+
+    /**
+      The read base quality scores for those bases that are given in the to field. This field
+      is populated when the reads used to perform the search include quality scores, and when
+      the alignment parser can extract the information from the aligner's output.
+      (this option is currently not implemented in Goby.)
+    */
+    optional bytes to_quality = 4;
+
+}
+/*
+  This message is written to 'basename'.header
+*/
+
+message AlignmentHeader {
+    /*
+     The smallest possible query index in this alignment. Data stored as an array where
+     queryIndex is the array index will be stored with only the elements in the inclusive
+     range [smallestSplitQueryIndex largestSplitQueryIndex]
+     Such data structures include queryLength and some arrays in the TooManyHits data
+     structure.
+    */
+    optional uint32 smallest_split_query_index = 9;
+    /*
+     The largest possible query index in this alignment. Data stored as an array where
+     queryIndex is the array index will be stored with only the elements in the inclusive
+     range [smallestSplitQueryIndex largestSplitQueryIndex]
+     Such data structures include queryLength and some arrays in the TooManyHits data
+     structure.
+    */
+    optional uint32 largest_split_query_index = 11;
+
+    /* Mapping from query identifier name to query index (as used in alignment entries).
+    */
+    optional IdentifierMapping query_name_mapping = 1;
+
+    /* Mapping from target identifier name to target index (as used in alignment entries).
+    */
+    optional IdentifierMapping target_name_mapping = 2;
+
+    /*
+     The number of query sequences
+    */
+    optional uint32 number_of_queries = 5;
+    /*
+      The number of target sequences
+    */
+    optional uint32 number_of_targets = 6;
+    /*
+      The number of reads that were aligned to the reference and are represented in this alignment archive.
+    */
+    optional uint32 number_of_aligned_reads = 7;
+
+    /*
+      Length of the query sequences. One number per query, in the order of increasing query index.
+      This information has been moved to the individual alignment entries.
+    */
+    repeated uint32 query_length = 3 [deprecated = true];
+    /*
+       If query length is constant across all the queries, this field contains the constant length.
+       In such cases, query_length will be empty.
+    */
+    optional uint32 constant_query_length = 10;
+
+    /*
+      Length of the target sequences. One number per target, in the order of increasing target index.
+      The target indexes must be 0..(number of targets - 1).
+    */
+    repeated uint32 target_length = 8;
+    /*
+       Indicates whether this alignment is sorted by position. True: the alignment entries occur in sorted
+       order, such that entry a occurs before entry b if a.targetIndex< b.targetIndex or, when entries
+       have the same target, when a.position < b.position.
+    */
+    optional bool sorted = 13;
+
+    /*
+       Indicates whether this alignment is indexed by position. When this attribute is true, a file called
+      'basename'.index exists that contains the AlignmentIndex message (GZip compressed).
+    */
+    optional bool indexed = 14;
+    /*
+      True when query lengths are stored in alignment entries (Goby 1.7+).
+    */
+    optional bool query_lengths_stored_in_entries = 15;
+    /*
+      Name of the aligner that produced this alignment.
+    */
+    optional string aligner_name = 17;
+    /*
+      Version number for the aligner implementation that produced this alignment.
+    */
+    optional string aligner_version = 18;
+    /*
+       The version of Goby that created this alignment file.
+    */
+    optional string version = 25;
+
+    /*
+      Sample basenames, in the order of increasing sampleIndex, starting with sampleIndex=0.
+    */
+
+    repeated string sample_basename = 30;
+
+    /*
+       This field is true when the query indices of alignment entries were permuted to smaller indices. Only sorted
+       alignments can have query_indices_were_permuted=true. When the field is true, and you need to retrieve the
+       original query-index of an alignment (because you want to retrieve the specific read(s) from a read file for
+       instance), you will need the information in the permutation file (extension basename.perm) and transform back
+       each small index of interest to the original query index.
+    */
+    optional bool query_indices_were_permuted = 26;
+    /*
+       This field is true when entries in the alignment .entries file all have the query_index_occurrences field populated
+       (Since Goby 2.0).
+    */
+    optional bool query_index_occurrences = 35;
+
+    /*
+       This field is true when entries in the alignment .entries file all have the ambiguity field populated
+       (Since Goby 2.0).
+    */
+    optional bool ambiguity_stored_in_entries = 36;
+    /*
+       This field is true when entries in the alignment .entries file all have the read_quality_score field populated.
+       (Since Goby 2.0).
+    */
+    optional bool all_read_quality_scores = 40;
+    /*
+      A description of the origin of sets of reads. Serves a similar function to BAM read groups, but more flexible and
+      efficient. Instead of storing strings, we use integers in the entries.
+      Alignemnt entries will link to a specific ReadOriginInfo with the origin_index field.
+      (Since Goby 2.0).
+    */
+    repeated ReadOriginInfo read_origin = 27;
+}
+
+message IdentifierMapping {
+    repeated IdentifierInfo mappings = 1;
+}
+
+message IdentifierInfo {
+    required string name = 1;
+    required uint32 index = 2;
+}
+
+
+/*
+     A description of the origin of sets of reads. Stored in the Goby alignment header and linked
+     from alignment entries. Goby makes it possible to adapt origin equivalence rules on the fly
+     efficiently. To do this, it is sufficient to read the header of the alignment, decide which
+     ReadOriginInfo instances are equivalent (e.g., by looking at sample, platform, library, or
+     other fields in the message), then construct a function e(a):int. This function takes
+     one originIndex parameter and returns another integer that maps to an equivalent class. The
+     equivalence class can be used to estimate error models for entries that belong to each class,
+     for instance.
+     (Since Goby 2.0).
+ */
+message ReadOriginInfo {
+    /*
+       Origin index. An integer that links alignment entries to their origin information.
+    */
+    required uint32 origin_index = 1;
+    /*
+       Identifier that describes the origin of the reads. This field is compatible with the ID/platform field of BAM read
+       groups. Free text.
+    */
+    required string origin_id = 2;
+    /*
+       The sample from which the reads were sequenced. This field is compatible with the SM/sample field of BAM read
+       groups. Free text.
+    */
+    optional string sample = 4;
+    /*
+       The platform on which the reads were sequenced. This field is compatible with the PL/platform field of BAM read
+       groups. Valid values: ILLUMINA, SOLID, LS454, HELICOS and PACBIO.
+    */
+    optional string platform = 5;
+    /*
+       The library from which the reads were sequenced. This field is compatible with the LB/library field of BAM read
+       groups. Free text.
+    */
+    optional string library = 8;
+    /*
+       The platform unit on which the reads were sequenced. This field for compatibility with samtools.
+    */
+    optional string platform_unit = 12;
+    /*
+       The date the reads were sequenced. Useful to identify batch effects, in the format dd:MMM:yyyy.
+       The month is Jan, Feb, etc. to avoid all confusion with days when day<=12.
+    */
+    optional string run_date = 6;
+}
+
+/*
+  This message is written to 'basename'.tmh
+*/
+
+message AlignmentTooManyHits {
+    /*
+    The threshold used by the aligner to determine that a query is ambiguous and should be dropped.
+    Referred to as parameter k below.
+    */
+    required uint32 aligner_threshold = 2;
+    /*
+     The hits that are assigned to several (>k) reference location.
+    */
+    repeated AmbiguousLocation hits = 1;
+
+}
+
+message AmbiguousLocation {
+    /*
+     The index of the query that matched too many times.
+    */
+    required uint32 query_index = 1;
+    /*
+     The number of hits that triggered membership in the too many hits list. The query may hit more
+     locations than reported here, since some alignment tools will just drop queries that match above
+     a threshold and stop counting. This number can be >=k.
+    */
+    required uint32 at_least_number_of_hits = 2;
+    /**
+The length of the part of the query sequence that could be matched to the target (also called depth).
+May be less than the length of the query sequence, in which case the match was not perfect. When merging
+alignments produced by searching different reference sequences, consider only at_least_number_of_hits
+from alignments that have exactly the longer depth for the query. */
+    optional uint32 length_of_match = 3;
+}
+
+/*
+      This message is written to 'basename'.index
+  */
+message AlignmentIndex {
+    /*
+      Stores one element by target sequence. Each element is the cumulative target length for the target
+      stored at index i. Assume there are four target sequences, with lengths {10, 12, 15, 34}. The field
+      targetPositionOffsets will contain: {0,10,22,37}. Such offsets can be used to calculate the absolute
+      position of a genomic location. Given targetIndex and positionOnReference, the absolute location
+      is defined as  targetPositionOffsets[targetIndex]+positionOnReference.
+    */
+    repeated uint32 target_position_offsets = 1 [packed = true];
+    /*
+     The byte offsets into the compressed entries file. Byte offsets are matched with absolute position
+     by index. There should be as many elements in offsets as there are in absolutePosition
+     where chunks start which represent entries whose absolute positions are less than
+    */
+    repeated uint64 offsets = 2 [packed = true];
+    /*
+      The absolute positions of the first entry in the chunk that immediately start at offset. One element
+      per chunk in the 'basename'.entries file.
+    */
+    repeated uint64 absolute_positions = 3 [packed = true];
+
+}

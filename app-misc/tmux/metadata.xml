@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>shell-tools</herd>
+  <maintainer>
+    <email>wired@gentoo.org</email>
+    <name>Alex Alexander</name>
+  </maintainer>
+  <longdescription>
+		tmux is a "terminal multiplexer", it enables a number of terminals
+		(or windows) to be accessed and controlled from a single terminal.
+		tmux is intended to be a simple, modern, BSD-licensed alternative to
+		programs such as <pkg>app-misc/screen</pkg>.
+	</longdescription>
+</pkgmetadata>

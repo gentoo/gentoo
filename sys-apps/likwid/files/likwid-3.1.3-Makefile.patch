@@ -1,0 +1,42 @@
+--- Makefile.org	2015-03-04 16:25:59.942213571 +0800
++++ Makefile	2015-03-04 16:46:05.640278082 +0800
+@@ -87,7 +87,7 @@
+ 
+ LIKWID_LIB = liblikwid
+ ifeq ($(SHARED_LIBRARY),true)
+-CFLAGS += $(SHARED_CFLAGS) -ggdb
++CFLAGS += $(SHARED_CFLAGS) -g -Wa,--noexecstack
+ DYNAMIC_TARGET_LIB := $(LIKWID_LIB).so
+ TARGET_LIB := $(DYNAMIC_TARGET_LIB)
+ LIBS += -L. -llikwid
+@@ -307,28 +307,8 @@
+ 			echo "Only root can adjust the privileges of the daemon applications in $(PREFIX)/sbin"; \
+ 		fi; \
+ 	done
+-	@echo "===> INSTALL man pages to $(MANPREFIX)/man1"
+-	@mkdir -p $(MANPREFIX)/man1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-topology.1 > $(MANPREFIX)/man1/likwid-topology.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-features.1 > $(MANPREFIX)/man1/likwid-features.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-perfctr.1 > $(MANPREFIX)/man1/likwid-perfctr.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-powermeter.1 > $(MANPREFIX)/man1/likwid-powermeter.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-pin.1 > $(MANPREFIX)/man1/likwid-pin.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-setFrequencies.1 > $(MANPREFIX)/man1/likwid-setFrequencies.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-bench.1 > $(MANPREFIX)/man1/likwid-bench.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/feedGnuplot.1 > $(MANPREFIX)/man1/feedGnuplot.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-accessD.1 > $(MANPREFIX)/man1/likwid-accessD.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-genCfg.1 > $(MANPREFIX)/man1/likwid-genCfg.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-memsweeper.1 > $(MANPREFIX)/man1/likwid-memsweeper.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-mpirun.1 > $(MANPREFIX)/man1/likwid-mpirun.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-perfscope.1 > $(MANPREFIX)/man1/likwid-perfscope.1
+-	@sed -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" < $(DOC_DIR)/likwid-setFreq.1 > $(MANPREFIX)/man1/likwid-setFreq.1
+-	@chmod 644 $(MANPREFIX)/man1/likwid-*
+-	@echo "===> INSTALL headers to $(PREFIX)/include"
+-	@mkdir -p $(PREFIX)/include/likwid
+-	@cp -f src/includes/likwid*.h  $(PREFIX)/include/
+-	@cp -f src/includes/*  $(PREFIX)/include/likwid
+-	@cp -f GCC/perfmon_group_types.h  $(PREFIX)/include/likwid
++	@echo "===> INSTALL man pages"
++	@mkdir -p $(PREFIX)/include/
+ 	$(FORTRAN_INSTALL)
+ 	@echo "===> INSTALL libraries to $(PREFIX)/lib"
+ 	@mkdir -p $(PREFIX)/lib

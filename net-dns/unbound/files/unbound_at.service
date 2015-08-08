@@ -1,0 +1,13 @@
+[Unit]
+Description=Unbound recursive Domain Name Server
+After=network.target
+Before=nss-lookup.target
+Wants=nss-lookup.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/sbin/unbound-checkconf /etc/unbound/%i.conf
+ExecStart=/usr/sbin/unbound -d -c /etc/unbound/%i.conf
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD polkit Policy Configuration 1.0//EN"
+    "http://www.freedesktop.org/software/polkit/policyconfig-1.dtd">
+<policyconfig>
+	<vendor>Gentoo</vendor>
+	<vendor_url>http://www.gentoo.org/</vendor_url>
+	<action id="org.gentoo.pkexec.dnetstats">
+		<message>Authentication is required to run the DNetStats</message>
+		<defaults>
+			<allow_any>auth_admin</allow_any>
+			<allow_inactive>auth_admin</allow_inactive>
+			<allow_active>auth_admin</allow_active>
+		</defaults>
+		<annotate key="org.freedesktop.policykit.exec.path">/usr/bin/dnetstats</annotate>
+		<annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+	</action>
+</policyconfig>

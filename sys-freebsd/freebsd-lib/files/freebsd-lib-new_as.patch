@@ -1,0 +1,68 @@
+--- lib/msun/i387/fenv.c.orig	2007-01-05 04:15:26 -0300
++++ lib/msun/i387/fenv.c	2008-06-14 00:49:30 -0300
+@@ -152,7 +152,8 @@
+ int
+ feupdateenv(const fenv_t *envp)
+ {
+-	int mxcsr, status;
++	int mxcsr;
++	short status;
+ 
+ 	__fnstsw(&status);
+ 	if (__HAS_SSE())
+--- lib/msun/i387/fenv.h.orig	2007-01-06 18:46:23 -0300
++++ lib/msun/i387/fenv.h	2008-06-14 01:06:40 -0300
+@@ -134,7 +134,8 @@
+ static __inline int
+ fegetexceptflag(fexcept_t *__flagp, int __excepts)
+ {
+-	int __mxcsr, __status;
++	int __mxcsr;
++	short __status;
+ 
+ 	__fnstsw(&__status);
+ 	if (__HAS_SSE())
+@@ -151,7 +152,8 @@
+ static __inline int
+ fetestexcept(int __excepts)
+ {
+-	int __mxcsr, __status;
++	int __mxcsr;
++	short __status;
+ 
+ 	__fnstsw(&__status);
+ 	if (__HAS_SSE())
+--- lib/msun/amd64/fenv.c.orig	2007-01-05 04:15:26 -0300
++++ lib/msun/amd64/fenv.c	2008-06-14 01:02:41 -0300
+@@ -101,7 +101,8 @@
+ int
+ feupdateenv(const fenv_t *envp)
+ {
+-	int mxcsr, status;
++	int mxcsr;
++	short status;
+ 
+ 	__fnstsw(&status);
+ 	__stmxcsr(&mxcsr);
+--- lib/msun/amd64/fenv.h.orig	2007-01-06 18:46:23 -0300
++++ lib/msun/amd64/fenv.h	2008-06-14 01:08:23 -0300
+@@ -110,7 +110,8 @@
+ static __inline int
+ fegetexceptflag(fexcept_t *__flagp, int __excepts)
+ {
+-	int __mxcsr, __status;
++	int __mxcsr;
++	short __status;
+ 
+ 	__stmxcsr(&__mxcsr);
+ 	__fnstsw(&__status);
+@@ -124,7 +125,8 @@
+ static __inline int
+ fetestexcept(int __excepts)
+ {
+-	int __mxcsr, __status;
++	int __mxcsr;
++	short __status;
+ 
+ 	__stmxcsr(&__mxcsr);
+ 	__fnstsw(&__status);

@@ -1,0 +1,10 @@
+iconv
+nls
+nis
+
+-uclibc
+
+-elibc_uclibc
+elibc_glibc
+
+-hardened

@@ -1,0 +1,39 @@
+From 89a4f490bd974e454d82942100f241bb1a2270f3 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 24 Sep 2014 10:52:17 +0200
+Subject: [PATCH [alsa-utils]] =?UTF-8?q?alsactl:=20coverity=20-=20missing?=
+ =?UTF-8?q?=5Fva=5Fend=20=E2=80=93=20va=5Fend=20was=20not=20called=20for?=
+ =?UTF-8?q?=20"ap"?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ alsactl/utils.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/alsactl/utils.c b/alsactl/utils.c
+index b5d183c..304df7c 100644
+--- a/alsactl/utils.c
++++ b/alsactl/utils.c
+@@ -157,8 +157,8 @@ void cerror_(const char *fcn, long line, int cond, const char *fmt, ...)
+ 		fprintf(stderr, "%s: %s:%ld: ", command, fcn, line);
+ 		vfprintf(stderr, fmt, ap);
+ 		putc('\n', stderr);
+-		va_end(ap);
+ 	}
++	va_end(ap);
+ }
+ 
+ void dbg_(const char *fcn, long line, const char *fmt, ...)
+@@ -174,6 +174,6 @@ void dbg_(const char *fcn, long line, const char *fmt, ...)
+ 		fprintf(stderr, "%s: %s:%ld: ", command, fcn, line);
+ 		vfprintf(stderr, fmt, ap);
+ 		putc('\n', stderr);
+-		va_end(ap);
+ 	}
++	va_end(ap);
+ }
+-- 
+2.1.3
+

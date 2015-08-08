@@ -1,0 +1,13 @@
+diff --git a/src/Database/Esqueleto.hs b/src/Database/Esqueleto.hs
+index 5900c5d..340cd7d 100644
+--- a/src/Database/Esqueleto.hs
++++ b/src/Database/Esqueleto.hs
+@@ -289,7 +289,7 @@ import qualified Database.Persist.Store
+ --
+ -- @
+ -- do 'update' $ \\p -> do
+---      'set' p [ PersonName '=.' val \"João\" ]
++--      'set' p [ PersonName '=.' val \"Joao\" ]
+ --      where_ (p ^. PersonName ==. val \"Joao\")
+ --    'delete' $
+ --      from $ \\p -> do

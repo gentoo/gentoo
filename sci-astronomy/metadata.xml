@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-astronomy category contains software that can be used
+		in astronomical and related scientific environments.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-astronomy enthält Software, die in astronomischen
+		und verwandten wissenschaftlichen Umfeldern genutzt wird.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-astronomy contiene programas que pueden ser utilizados
+		en entornos relacionados con la astronomía.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-astronomyカテゴリーには天文学の科学的な分野に利用される
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-astronomy categorie bevat software, die in astronomische
+		en gerelateerde wetenschappelijke omgevingen wordt gebruikt.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-astronomy chứa các phần mềm dùng trong thiên văn 
+		và liên quan đến khoa học.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-astronomy contiene programmi per l'astronomia.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-astronomy contém programas que podem ser usados
+		em ambientes relacionados a astronomia.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-astronomy zawiera programy naukowe związane z astronomią.
+	</longdescription>
+</catmetadata>
+

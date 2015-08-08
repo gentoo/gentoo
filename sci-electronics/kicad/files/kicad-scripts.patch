@@ -1,0 +1,25 @@
+From 065491b83fb7f82606150aa89e70ac99738992e0 Mon Sep 17 00:00:00 2001
+From: Denis Dupeyron <calchan@gentoo.org>
+Date: Wed, 5 Jun 2013 14:03:07 -0600
+Subject: [PATCH] Fix install location of scripts directory
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 59fe7c3..3f3bb14 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -428,7 +428,7 @@ install(FILES resources/freeroute.jnlp
+ ###
+ if(UNIX)
+     install(DIRECTORY scripts
+-            DESTINATION ${KICAD_DOCS}
++            DESTINATION ${KICAD_DATA}
+             COMPONENT resources
+             PATTERN ".svn" EXCLUDE)
+ endif()
+-- 
+1.8.2.1
+

@@ -1,0 +1,73 @@
+From be673c7afd7a86b89fbe2e09c758f2de3482d19b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 17 Jan 2010 17:07:24 -0500
+Subject: [PATCH] unify LE/BE 32/64bit logic and add more arches
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/libaio.h |   36 +++++++++++++++---------------------
+ 1 files changed, 15 insertions(+), 21 deletions(-)
+
+diff --git a/src/libaio.h b/src/libaio.h
+index ffe8259..4a6c9fb 100644
+--- a/src/libaio.h
++++ b/src/libaio.h
+@@ -49,40 +49,34 @@ typedef enum io_iocb_cmd {
+ 	IO_CMD_PWRITEV = 8,
+ } io_iocb_cmd_t;
+ 
+-#if defined(__i386__) /* little endian, 32 bits */
++/* little endian, 32 bits */
++#if defined(__i386__) || defined(__sh__) || defined(__bfin__) || \
++    defined(__ARMEL__) || defined(__MIPSEL__) || defined(__cris__)
+ #define PADDED(x, y)	x; unsigned y
+ #define PADDEDptr(x, y)	x; unsigned y
+ #define PADDEDul(x, y)	unsigned long x; unsigned y
++
++/* little endian, 64 bits */
+ #elif defined(__ia64__) || defined(__x86_64__) || defined(__alpha__)
+ #define PADDED(x, y)	x, y
+ #define PADDEDptr(x, y)	x
+ #define PADDEDul(x, y)	unsigned long x
+-#elif defined(__powerpc64__) /* big endian, 64 bits */
+-#define PADDED(x, y)	unsigned y; x
+-#define PADDEDptr(x,y)	x
+-#define PADDEDul(x, y)	unsigned long x
+-#elif defined(__PPC__)  /* big endian, 32 bits */
+-#define PADDED(x, y)	unsigned y; x
+-#define PADDEDptr(x, y)	unsigned y; x
+-#define PADDEDul(x, y)	unsigned y; unsigned long x
+-#elif defined(__s390x__) /* big endian, 64 bits */
++
++/* big endian, 64 bits */
++#elif defined(__powerpc64__) || defined(__s390x__) || \
++      (defined(__sparc__) && defined(__arch64__))
+ #define PADDED(x, y)	unsigned y; x
+ #define PADDEDptr(x,y)	x
+ #define PADDEDul(x, y)	unsigned long x
+-#elif defined(__s390__) /* big endian, 32 bits */
+-#define PADDED(x, y)	unsigned y; x
+-#define PADDEDptr(x, y) unsigned y; x
+-#define PADDEDul(x, y)	unsigned y; unsigned long x
+-#elif defined(__arm__)
+-#  if defined (__ARMEB__) /* big endian, 32 bits */
++
++/* big endian, 32 bits */
++#elif defined(__PPC__) || defined(__s390__) || defined(__ARMEB__) || \
++      defined(__MIPSEB__) || defined(__sparc__) || defined(__m68k__) || \
++      defined(__hppa__) || defined(__frv__) || defined(__avr32__)
+ #define PADDED(x, y)	unsigned y; x
+ #define PADDEDptr(x, y)	unsigned y; x
+ #define PADDEDul(x, y)	unsigned y; unsigned long x
+-#  else                   /* little endian, 32 bits */
+-#define PADDED(x, y)	x; unsigned y
+-#define PADDEDptr(x, y)	x; unsigned y
+-#define PADDEDul(x, y)	unsigned long x; unsigned y
+-#  endif
++
+ #else
+ #error	endian?
+ #endif
+-- 
+1.7.3.1
+

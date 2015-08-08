@@ -1,0 +1,31 @@
+--- vm-8.2.0b-orig/lisp/Makefile.in
++++ vm-8.2.0b/lisp/Makefile.in
+@@ -96,7 +96,10 @@
+ datadir= @datadir@
+ datarootdir= @datarootdir@
+ lispdir = @lispdir@
++etcdir= @etcdir@
+ pixmapdir= @pixmapdir@
++docdir = @docdir@
++infodir = @infodir@
+ 
+ EMACS_PROG = @EMACS_PROG@
+ EMACS_FLAVOR = @EMACS_FLAVOR@
+@@ -137,7 +140,7 @@
+ 	 "$(EMACS_PROG)" $(FLAGS) -l autoload \
+ 		-f vm-built-autoloads "@abs_builddir@/$@" "`pwd`")
+ 	echo "(custom-add-load 'vm 'vm-cus-load)" | tr -d '\015' >> $@
+-	echo "(setq vm-configure-datadir \"${datadir}/vm\")" | tr -d '\015' >> $@
++	echo "(setq vm-configure-datadir \"${etcdir}\")" | tr -d '\015' >> $@
+ 	echo "(setq vm-configure-pixmapdir \"${pixmapdir}\")" | tr -d '\015' >> $@
+ 	echo "(setq vm-configure-docdir \"${docdir}\")" | tr -d '\015' >> $@
+ 	echo "(setq vm-configure-infodir \"${infodir}\")" | tr -d '\015' >> $@
+@@ -168,7 +171,7 @@
+ 	cat $@.tmp >> $@
+ 	echo "(setq features (delete 'vm-autoloads features))" >> $@
+ 	echo "(require 'vm-vars)" >> $@
+-	echo "(setq vm-configure-datadir \"${datadir}\")" >> $@
++	echo "(setq vm-configure-datadir \"${etcdir}\")" >> $@
+ 	echo "(setq vm-configure-pixmapdir \"${pixmapdir}\")" >> $@
+ 	$(RM) $@.tmp
+ 

@@ -1,0 +1,13 @@
+--- llvm/trunk/lib/Support/Host.cpp	2012/04/23 22:22:46	155401
++++ llvm/trunk/lib/Support/Host.cpp	2012/04/23 22:41:39	155402
+@@ -230,6 +230,10 @@
+       case 45:
+         return "corei7-avx";
+ 
++      // Ivy Bridge:
++      case 58:
++        return "core-avx-i";
++
+       case 28: // Intel Atom processor. All processors are manufactured using
+                // the 45 nm process
+         return "atom";

@@ -1,0 +1,11 @@
+--- configure.in.orig	2009-11-17 15:32:05.846189916 +0200
++++ configure.in	2009-11-17 15:33:11.111187610 +0200
+@@ -277,7 +276,7 @@
+ 		fi				
+ 		;;
+ 	*-gentoo-freebsd*)
+-		EXPAT_LIB=-lexpa
++		EXPAT_LIB=-lexpat
+ 		;;
+ 	*-*-freebsd*)
+ 		if test -f /usr/local/lib/libexpat.a ; then

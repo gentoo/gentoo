@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>graphics</herd>
+	<longdescription>
+		DirectFB is a thin library that provides hardware graphics
+		acceleration, input device handling and abstraction, integrated
+		windowing system with support for translucent windows and
+		multiple display layers on top of the Linux Framebuffer Device.
+		It is a complete hardware abstraction layer with software
+		fallbacks for every graphics operation that is not supported
+		by the underlying hardware. DirectFB adds graphical power to
+		embedded systems and sets a new standard for graphics under
+		Linux.
+	</longdescription>
+	<use>
+		<flag name="bmp">build BMP image provider</flag>
+		<flag name="divine">enable DiVine</flag>
+		<flag name="drmkms">build with DRM/KMS support</flag>
+		<flag name="dynload">enable dynload support</flag>
+		<flag name="egl">build with EGL support</flag>
+		<flag name="fusiondale">enable FusionDale</flag>
+		<flag name="fusionsound">enable FusionSound</flag>
+		<flag name="gles2">build gles2 gfxdriver</flag>
+		<flag name="imlib2">build Imlib2 image provider</flag>
+		<flag name="input_hub">provides an asynchronous interface
+			to the input devices available and those being
+			added/removed</flag>
+		<flag name="mpeg2">build MPEG2 image provider</flag>
+		<flag name="mpeg3">build Libmpeg3 video provider</flag>
+		<flag name="multicore">enable multicore support</flag>
+		<flag name="pnm">build PNM (PBM/PGM/PPM) image provider</flag>
+		<flag name="sawman">enable SaWMan (window manager and
+			application manager)</flag>
+		<flag name="swfdec">build Swfdec (Flash decoder) video
+			provider</flag>
+		<flag name="tremor">build Ogg/Vorbis music provider using
+			Tremor</flag>
+		<flag name="webp">build WebP image provider</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+diff -NrU5 MuSE-0.9.2.orig/src/libmpeg/mpegtoraw.cc MuSE-0.9.2/src/libmpeg/mpegtoraw.cc
+--- MuSE-0.9.2.orig/src/libmpeg/mpegtoraw.cc	2008-04-22 20:39:47.000000000 +0200
++++ MuSE-0.9.2/src/libmpeg/mpegtoraw.cc	2008-04-22 20:53:44.000000000 +0200
+@@ -417,11 +417,11 @@
+   if(loader->eof())return seterrorcode(SOUND_ERROR_FINISH);
+ 
+   return true;
+ }
+ 
+-#include <iostream.h>
++#include <iostream>
+ // Convert mpeg to raw
+ bool Mpegtoraw::run(int frames) {
+   clearrawdata();
+   if(frames<0)lastfrequency=0;
+ 

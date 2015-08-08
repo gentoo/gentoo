@@ -1,0 +1,69 @@
+commit e2a8801b9779949010f30db6f6ef66f3c3a70776
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Thu Sep 4 17:50:45 2014 +0300
+
+    pprC: declare extern cmm primitives as functions, not data
+    
+    Summary:
+      The commit fixes incorrect code generation of
+      integer-gmp package on ia64 due to C prototype mismatch.
+      Before patch prototype was
+          StgWord poizh[];
+      After patch it became
+          StgFunPtr poizh();
+    
+    Long story:
+    
+    Consider the following simple example:
+    
+        {-# LANGUAGE MagicHash, GHCForeignImportPrim, UnliftedFFITypes #-}
+        module M where
+        import GHC.Prim -- Int#
+        foreign import prim "poizh" poi# :: Int# -> Int#
+    
+    Before the patch Unregisterised build generated the
+    following 'poizh' reference:
+        EI_(poizh); /* StgWord poizh[]; */
+        FN_(M_poizh_entry) {
+        // ...
+        JMP_((W_)&poizh);
+        }
+    
+    After the patch it looks this way:
+        EF_(poizh); /* StgFunPtr poizh(); */
+        FN_(M_poizh_entry) {
+        // ...
+        JMP_((W_)&poizh);
+        }
+    
+    On ia64 it leads to different relocation types being generated:
+      incorrect one:
+        addl r14 = @ltoffx(poizh#)
+        ld8.mov r14 = [r14], poizh#
+      correct one:
+        addl r14 = @ltoff(@fptr(poizh#)), gp
+        ld8 r14 = [r14]
+    
+    '@fptr(poizh#)' basically instructs assembler to creates
+    another obect consisting of real address to 'poizh' instructions
+    and module address. That '@fptr' object is used as a function "address".
+    This object is different for every module referencing 'poizh' symbol.
+    
+    All indirect function calls expect '@fptr' object. That way
+    call site can read real destination address and set destination
+    module address in 'gp' register.
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/compiler/cmm/CLabel.hs b/compiler/cmm/CLabel.hs
+index 02ad026..0f2c0ae 100644
+--- a/compiler/cmm/CLabel.hs
++++ b/compiler/cmm/CLabel.hs
+@@ -813,6 +813,7 @@ labelType (CmmLabel _ _ CmmClosure)             = GcPtrLabel
+ labelType (CmmLabel _ _ CmmCode)                = CodeLabel
+ labelType (CmmLabel _ _ CmmInfo)                = DataLabel
+ labelType (CmmLabel _ _ CmmEntry)               = CodeLabel
++labelType (CmmLabel _ _ CmmPrimCall)            = CodeLabel
+ labelType (CmmLabel _ _ CmmRetInfo)             = DataLabel
+ labelType (CmmLabel _ _ CmmRet)                 = CodeLabel
+ labelType (RtsLabel (RtsSelectorInfoTable _ _)) = DataLabel

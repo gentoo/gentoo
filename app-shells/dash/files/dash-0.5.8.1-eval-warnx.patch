@@ -1,0 +1,12 @@
+fix one of the Debian patches -- it uses warnx but doesn't include err.h.
+
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -36,6 +36,7 @@
+ #include <signal.h>
+ #include <unistd.h>
+ #include <sys/types.h>
++#include <err.h>
+ 
+ /*
+  * Evaluate a command.

@@ -1,0 +1,13 @@
+diff -Naur mp3ng-0.9.13-MKIV-pre3.orig/Makefile mp3ng-0.9.13-MKIV-pre3/Makefile
+--- mp3ng-0.9.13-MKIV-pre3.orig/Makefile	2008-10-25 12:43:59.000000000 +0200
++++ mp3ng-0.9.13-MKIV-pre3/Makefile	2008-10-25 12:44:59.000000000 +0200
+@@ -122,7 +122,8 @@
+ 
+ ifdef HAVE_MAGICK
+   DEFINES += -DHAVE_MAGICK
+-  LIBS += -lMagick -lMagick++
++  LIBS += -lMagickWand -lMagickCore -lMagick++
++  INCLUDES += -I/usr/include/ImageMagick
+ endif
+ 
+ ifdef HAVE_XPM

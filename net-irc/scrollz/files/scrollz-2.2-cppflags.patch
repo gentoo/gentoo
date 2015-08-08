@@ -1,0 +1,26 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Subject: [PATCH] Respect CPPFLAGS.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -68,7 +68,7 @@
+ IRCDOC = ${IRCSHARE}/doc
+ 
+ CC = @CC@
+-DEFS = @DEFS@
++DEFS = @DEFS@ @CPPFLAGS@
+ LIBS = @LIBS@
+ 
+ # Set this to -g if you want to be able to debug the client, otherwise
+
+--- a/source/Makefile.in
++++ b/source/Makefile.in
+@@ -11,7 +11,7 @@
+ LDFLAGS	= @LDFLAGS@
+ LEX	= @LEX@
+ LEXLIB	= @LEXLIB@
+-DEFS	= @DEFS@
++DEFS	= @DEFS@ @CPPFLAGS@
+ LN	= @LN@
+ RM	= @RM@
+ 

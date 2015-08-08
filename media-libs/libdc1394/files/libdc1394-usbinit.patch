@@ -1,0 +1,39 @@
+diff --git a/libdc1394/dc1394/control.c b/libdc1394/dc1394/control.c
+index c62e0e2..f250f6a 100644
+--- a/libdc1394/dc1394/control.c
++++ b/libdc1394/dc1394/control.c
+@@ -1955,7 +1955,7 @@ dc1394_new (void)
+     windows_init (d);
+ #endif
+ #ifdef HAVE_LIBUSB
+-    usb_init (d);
++    dc1394_usb_init (d);
+ #endif
+ 
+     int i;
+diff --git a/libdc1394/dc1394/internal.h b/libdc1394/dc1394/internal.h
+index b4d295a..c59e5d3 100644
+--- a/libdc1394/dc1394/internal.h
++++ b/libdc1394/dc1394/internal.h
+@@ -74,7 +74,7 @@ void juju_init(dc1394_t *d);
+ void linux_init(dc1394_t *d);
+ void macosx_init(dc1394_t *d);
+ void windows_init(dc1394_t *d);
+-void usb_init(dc1394_t *d);
++void dc1394_usb_init(dc1394_t *d);
+ 
+ void register_platform (dc1394_t * d, const platform_dispatch_t * dispatch,
+         const char * name);
+diff --git a/libdc1394/dc1394/usb/control.c b/libdc1394/dc1394/usb/control.c
+index 6509452..19a21a6 100644
+--- a/libdc1394/dc1394/usb/control.c
++++ b/libdc1394/dc1394/usb/control.c
+@@ -378,7 +378,7 @@ usb_dispatch = {
+ };
+ 
+ void
+-usb_init(dc1394_t * d)
++dc1394_usb_init(dc1394_t * d)
+ {
+     register_platform (d, &usb_dispatch, "usb");
+ }

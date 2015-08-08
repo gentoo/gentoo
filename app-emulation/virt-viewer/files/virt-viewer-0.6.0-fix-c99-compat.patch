@@ -1,0 +1,29 @@
+diff --git a/src/virt-viewer-session.c b/src/virt-viewer-session.c
+index 20d5fb1..b600481 100644
+--- a/src/virt-viewer-session.c
++++ b/src/virt-viewer-session.c
+@@ -395,13 +395,14 @@ virt_viewer_session_on_monitor_geometry_changed(VirtViewerSession* self,
+     gboolean all_fullscreen = TRUE;
+     guint nmonitors = 0;
+     GdkRectangle *monitors = NULL;
++    GList *l;
+ 
+     klass = VIRT_VIEWER_SESSION_GET_CLASS(self);
+     if (!klass->apply_monitor_geometry)
+         return;
+ 
+     /* find highest monitor ID so we can create the sparse array */
+-    for (GList *l = self->priv->displays; l; l = l->next) {
++    for (l = self->priv->displays; l; l = l->next) {
+         VirtViewerDisplay *d = VIRT_VIEWER_DISPLAY(l->data);
+         guint nth = 0;
+         g_object_get(d, "nth-display", &nth, NULL);
+@@ -410,7 +411,7 @@ virt_viewer_session_on_monitor_geometry_changed(VirtViewerSession* self,
+     }
+ 
+     monitors = g_new0(GdkRectangle, nmonitors);
+-    for (GList *l = self->priv->displays; l; l = l->next) {
++    for (l = self->priv->displays; l; l = l->next) {
+         VirtViewerDisplay *d = VIRT_VIEWER_DISPLAY(l->data);
+         guint nth = 0;
+         GdkRectangle *rect = NULL;

@@ -1,0 +1,12 @@
+diff -ruN bombono-dvd-1.0.1.orig/SConstruct bombono-dvd-1.0.1/SConstruct
+--- bombono-dvd-1.0.1.orig/SConstruct	2011-02-12 14:47:56.000000000 +0100
++++ bombono-dvd-1.0.1/SConstruct	2011-04-24 16:59:04.149229947 +0200
+@@ -56,7 +56,7 @@
+ common_warn_flags = []
+ cxx_warn_flags    = []
+ debug_flags   = ['-g', '-O0']
+-release_flags = ['-O2']
++release_flags = []
+ defines       = []
+ 
+ def CalcCommonFlags():

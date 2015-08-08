@@ -1,0 +1,59 @@
+ makefile | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/makefile b/makefile
+index ccb7dc2..9488c2a 100644
+--- a/makefile
++++ b/makefile
+@@ -7,10 +7,10 @@ NO_PDF = -DNO_PDF
+ #PDFLIB = -L$(PDF) -lpdf
+ 
+ # c compiler and linker
+-CC = gcc
++CC ?= gcc
+ 
+ # Vibrant top directory
+-VIBRANT = /banques0/ncbiJun04
++VIBRANT = /usr/include/ncbi
+ 
+ 
+ # X11 include directory
+@@ -24,15 +24,15 @@ OBJECTS = njplot-vib.o
+ OBJUNROOTED = unrooted-vib.o preptree.o
+ 
+ 
+-CFLAGS  = -c -DWIN_MOTIF -Dunix -I$(VIBRANT)/include -I$(VIBRANT)/vibrant -I$(VIBRANT)/corelib \
++CFLAGS  += -c -DWIN_MOTIF -Dunix -I$(VIBRANT)/include -I$(VIBRANT)/vibrant -I$(VIBRANT)/corelib \
+ 	-I$(VIBRANT) -I$(PDF) -I$(X11INCL) -I$(MOTIFINCL) $(HELPFILENAME) $(NO_PDF) \
+-	-Wimplicit-function-declaration -g
++	-Wimplicit-function-declaration
+ 	
+ all: njplot  unrooted newicktops newicktotxt
+ 
+ 
+ njplot : $(OBJECTS)
+-	$(CC) -g -o njplot $(OBJECTS) \
++	$(CC) $(LDFLAGS) -o njplot $(OBJECTS) \
+         -L$(VIBRANT)/lib \
+         -lvibrant -lncbi \
+         $(PDFLIB)   \
+@@ -40,16 +40,16 @@ njplot : $(OBJECTS)
+         -L/usr/X11R6/lib -lXmu -lXt -lX11 -lm
+         
+ unrooted : $(OBJUNROOTED)
+-	$(CC) -g -o unrooted $(OBJUNROOTED) \
++	$(CC) $(LDFLAGS) -o unrooted $(OBJUNROOTED) \
+         -L$(VIBRANT)/lib -lvibrant -lncbi \
+         -L$(MOTIFLIB) -lXm \
+         -L/usr/X11R6/lib -lXmu -lXt -lX11  -lm
+ 
+ newicktops: njplot-vib.c
+-	$(CC) -DNO_GUI  -DNO_PDF -o $@ njplot-vib.c -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -DNO_GUI  -DNO_PDF -o $@ njplot-vib.c -lm
+ 
+ newicktotxt: njplot-vib.c
+-	$(CC) -DTTY  -o $@ njplot-vib.c -lm
++	$(CC) -DTTY $(LDFLAGS) $(CFLAGS) -o $@ njplot-vib.c -lm
+ 
+ 
+ .c.o : 

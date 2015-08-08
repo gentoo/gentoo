@@ -1,0 +1,41 @@
+From 192694ed9f70447317bd54e427a17208bddf03be Mon Sep 17 00:00:00 2001
+From: John Szakmeister <john@szakmeister.net>
+Date: Sat, 15 Mar 2014 06:15:42 -0400
+Subject: [PATCH] Fix #783: try_run is broken with Python 3.4
+
+It turns out that we expected inspect.getargspec() to only work on
+functions (versus classes that are callable).  Python 3.4 has changed
+this behavior and now happily returns the arg spec.  Let's try to detect
+this situation by checking the __call__() method to if it's actually the
+method of a class.  If so, pop the 'self' argument off of args--similar
+to what's done in the exceptional case below.
+---
+ CHANGELOG    | 1 +
+ nose/util.py | 4 +++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/nose/util.py b/nose/util.py
+index 7995700..dcb5fef 100644
+--- a/nose/util.py
++++ b/nose/util.py
+@@ -8,7 +8,7 @@
+ import sys
+ import types
+ import unittest
+-from nose.pyversion import ClassType, TypeType, isgenerator
++from nose.pyversion import ClassType, TypeType, isgenerator, ismethod
+ 
+ 
+ log = logging.getLogger('nose')
+@@ -449,6 +449,8 @@ def try_run(obj, names):
+                 # py.test compatibility
+                 try:
+                     args, varargs, varkw, defaults = inspect.getargspec(func)
++                    if hasattr(func, '__call__') and ismethod(func.__call__):
++                        args.pop(0)
+                 except TypeError:
+                     # Not a function. If it's callable, call it anyway
+                     if hasattr(func, '__call__'):
+-- 
+1.8.5.5
+

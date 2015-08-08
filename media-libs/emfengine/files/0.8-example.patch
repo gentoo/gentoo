@@ -1,0 +1,12 @@
+diff --git a/EmfEngine.pro b/EmfEngine.pro
+index 4615ffa..032c8b9 100644
+--- a/EmfEngine.pro
++++ b/EmfEngine.pro
+@@ -3,5 +3,4 @@ include( config.pri )
+ TEMPLATE = subdirs
+ 
+ SUBDIRS = \
+-    src \
+-    example
+\ No newline at end of file
++    src

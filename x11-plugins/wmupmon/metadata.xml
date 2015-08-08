@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmUpMon is a dockapp for WindowMaker and 
+compatible WMs that displays your system uptime. 
+It is based on wmMemLoad. 
+</longdescription>
+</pkgmetadata>

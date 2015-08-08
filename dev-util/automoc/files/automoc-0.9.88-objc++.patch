@@ -1,0 +1,48 @@
+Please refer to
+  http://websvn.kde.org/?view=revision&revision=934696
+
+Adds support for objc++ in automoc, so that running moc on .mm-files will work.
+
+--- trunk/kdesupport/automoc/Automoc4Config.cmake	2009/03/03 15:40:57	934695
++++ trunk/kdesupport/automoc/Automoc4Config.cmake	2009/03/03 15:42:18	934696
+@@ -105,9 +105,9 @@
+       if(NOT  _generated  AND NOT  _skip)
+          get_filename_component(_suffix "${_current_FILE}" EXT)
+          # skip every source file that's not C++
+-         if(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C")
++         if(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C" OR _suffix STREQUAL ".mm")
+              list(APPEND _moc_files ${_abs_current_FILE})
+-         endif(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C")
++         endif(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C" OR _suffix STREQUAL ".mm")
+       endif(NOT  _generated  AND NOT  _skip)
+    endforeach (_current_FILE)
+ 
+@@ -156,7 +156,7 @@
+       if(NOT  _generated  AND NOT  _skip)
+          get_filename_component(_suffix "${_current_FILE}" EXT)
+          # skip every source file that's not C++
+-         if(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C")
++         if(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C" OR _suffix STREQUAL ".mm")
+              get_filename_component(_basename "${_current_FILE}" NAME_WE)
+              get_filename_component(_abs_path "${_abs_current_FILE}" PATH)
+              set(_header "${_abs_path}/${_basename}.h")
+@@ -168,7 +168,7 @@
+                 list(APPEND _moc_headers ${_pheader})
+              endif(EXISTS "${_pheader}")
+              list(APPEND _moc_files ${_abs_current_FILE})
+-         endif(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C")
++         endif(_suffix STREQUAL ".cpp" OR _suffix STREQUAL ".cc" OR _suffix STREQUAL ".cxx" OR _suffix STREQUAL ".C" OR _suffix STREQUAL ".mm")
+       endif(NOT  _generated  AND NOT  _skip)
+    endforeach (_current_FILE)
+ 
+--- trunk/kdesupport/automoc/kde4automoc.cpp	2009/03/03 15:40:57	934695
++++ trunk/kdesupport/automoc/kde4automoc.cpp	2009/03/03 15:42:18	934696
+@@ -326,7 +326,7 @@
+     foreach (const QString &absFilename, sourceFiles) {
+         //qDebug() << absFilename;
+         const QFileInfo sourceFileInfo(absFilename);
+-        if (absFilename.endsWith(".cpp") || absFilename.endsWith(".cc") ||
++        if (absFilename.endsWith(".cpp") || absFilename.endsWith(".cc") || absFilename.endsWith(".mm") ||
+                 absFilename.endsWith(".cxx") || absFilename.endsWith(".C")) {
+             //qDebug() << "check .cpp file";
+             QFile sourceFile(absFilename);

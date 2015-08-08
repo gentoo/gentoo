@@ -1,0 +1,12 @@
+diff --git a/src/gw/spectrum-spec.scm b/src/gw/spectrum-spec.scm
+index 253464c..605796c 100644
+--- a/src/gw/spectrum-spec.scm
++++ b/src/gw/spectrum-spec.scm
+@@ -30,6 +30,7 @@
+         "#include <painter_gdk.h>\n"
+         "#include <burrow/nih.h>\n"
+         "#include <hosbackingsim.h>\n"
++        "#include <guile-cairo/guile-cairo-smob-types.h>\n"
+         "\n"))
+ 
+         ; couple of disabled sources

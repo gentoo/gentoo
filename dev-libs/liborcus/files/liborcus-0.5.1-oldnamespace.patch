@@ -1,0 +1,11 @@
+diff -urN liborcus-0.5.1.old/src/orcus_xml_main.cpp liborcus-0.5.1/src/orcus_xml_main.cpp
+--- liborcus-0.5.1.old/src/orcus_xml_main.cpp	2013-05-27 19:07:41.713302036 +0200
++++ liborcus-0.5.1/src/orcus_xml_main.cpp	2013-05-27 20:01:44.007301649 +0200
+@@ -36,6 +36,7 @@
+ 
+ #include <cstdlib>
+ #include <cstring>
++#include <iostream>
+ #include <fstream>
+ 
+ using namespace orcus;

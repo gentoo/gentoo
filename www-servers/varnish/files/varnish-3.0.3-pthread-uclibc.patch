@@ -1,0 +1,35 @@
+Refine header check in bin/varnishd/mgt/mgt.h, mgt_main.c for uClibc
+
+Because of the difference in how uClibc and glibc stack their header
+files, stdio.h indirectly brings in PTHREAD_CANCELED from pthread.h
+on a uClibc system, whereas it does not on a glibc system.  This happens
+in mgt.h and mgt_main.c.  This patch refines the check in those files
+to take this fact into consideration.
+
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/444294
+---
+
+diff --git a/bin/varnishd/mgt.h b/bin/varnishd/mgt.h
+index 905fbcc..5d3ab09 100644
+--- a/bin/varnishd/mgt.h
++++ b/bin/varnishd/mgt.h
+@@ -126,6 +126,6 @@ extern unsigned mgt_vcc_unsafe_path;
+ 		syslog(pri, fmt, __VA_ARGS__);		\
+ 	} while (0)
+ 
+-#if defined(PTHREAD_CANCELED) || defined(PTHREAD_MUTEX_DEFAULT)
++#if (defined(PTHREAD_CANCELED) && !defined(__UCLIBC__)) || defined(PTHREAD_MUTEX_DEFAULT)
+ #error "Keep pthreads out of in manager process"
+ #endif
+diff --git a/bin/varnishd/varnishd.c b/bin/varnishd/varnishd.c
+index 1b7f1e3..dce42d9 100644
+--- a/bin/varnishd/varnishd.c
++++ b/bin/varnishd/varnishd.c
+@@ -656,6 +656,6 @@ main(int argc, char * const *argv)
+ 	exit(exit_status);
+ }
+ 
+-#if defined(PTHREAD_CANCELED) || defined(PTHREAD_MUTEX_DEFAULT)
++#if (defined(PTHREAD_CANCELED) && !defined(__UCLIBC__)) || defined(PTHREAD_MUTEX_DEFAULT)
+ #error "Keep pthreads out of in manager process"
+ #endif

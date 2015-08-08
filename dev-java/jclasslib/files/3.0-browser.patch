@@ -1,0 +1,12 @@
+diff -ur jclasslib.old/src/org/gjt/jclasslib/browser/BrowserMDIFrame.java jclasslib/src/org/gjt/jclasslib/browser/BrowserMDIFrame.java
+--- jclasslib.old/src/org/gjt/jclasslib/browser/BrowserMDIFrame.java	2007-02-27 22:37:56.000000000 +0200
++++ jclasslib/src/org/gjt/jclasslib/browser/BrowserMDIFrame.java	2007-02-27 22:47:48.000000000 +0200
+@@ -633,7 +633,7 @@
+         if (System.getProperty("os.name").startsWith("Windows")) {
+             commandLine = "rundll32.exe url.dll,FileProtocolHandler " + urlSpec;
+         } else {
+-            commandLine = "netscape " + urlSpec;
++            commandLine = System.getProperty("gentoo.browser", "firefox") + " " + urlSpec;
+         }
+         try {
+             Runtime.getRuntime().exec(commandLine);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>x11</herd>
+<use>
+	<flag name="loongson2f">Enable Loongson2f MMI optimizations.</flag>
+</use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:pixman:pixman</remote-id>
+</upstream>
+</pkgmetadata>

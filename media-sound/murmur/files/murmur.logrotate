@@ -1,0 +1,8 @@
+/var/log/murmur/*.log {
+	missingok
+	notifempty
+	sharedscripts
+	postrotate
+		/etc/init.d/murmur reload > /dev/null
+	endscript
+}

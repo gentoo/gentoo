@@ -1,0 +1,32 @@
+commit 2da9df1e67004c3cfa879578c351300a99f23da1
+Author: Christoph Pfister <christophpfister@gmail.com>
+Date:   Wed Apr 4 21:22:09 2012 +0200
+
+    fix build for gcc 4.7
+
+diff --git a/src/dvb/dvbepg.cpp b/src/dvb/dvbepg.cpp
+index 7fc8f68..e70d8b8 100644
+--- a/src/dvb/dvbepg.cpp
++++ b/src/dvb/dvbepg.cpp
+@@ -690,15 +690,15 @@ void AtscEpgFilter::processEitSection(const char *data, int size)
+ 	// 1980-01-06T000000 minus 15 secs (= UTC - GPS in 2011)
+ 	QDateTime baseDateTime = QDateTime(QDate(1980, 1, 5), QTime(23, 59, 45), Qt::UTC);
+ 
+-	for (AtscEitSectionEntry entry = eitSection.entries(); (entryCount > 0) && entry.isValid();
+-	     --entryCount, entry.advance()) {
++	for (AtscEitSectionEntry eitEntry = eitSection.entries();
++	     (entryCount > 0) && eitEntry.isValid(); --entryCount, eitEntry.advance()) {
+ 		DvbEpgEntry epgEntry;
+ 		epgEntry.channel = channel;
+-		epgEntry.begin = baseDateTime.addSecs(entry.startTime());
+-		epgEntry.duration = QTime().addSecs(entry.duration());
+-		epgEntry.title = entry.title();
++		epgEntry.begin = baseDateTime.addSecs(eitEntry.startTime());
++		epgEntry.duration = QTime().addSecs(eitEntry.duration());
++		epgEntry.title = eitEntry.title();
+ 
+-		quint32 id = ((quint32(fakeChannel.networkId) << 16) | quint32(entry.eventId()));
++		quint32 id = ((quint32(fakeChannel.networkId) << 16) | quint32(eitEntry.eventId()));
+ 		DvbSharedEpgEntry entry = epgEntries.value(id);
+ 
+ 		if (entry.isValid() && (entry->channel == epgEntry.channel) &&

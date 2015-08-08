@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>php</herd>
+<maintainer>
+<email>olemarkus@gentoo.org</email>
+<name>Ole Markus With</name>
+</maintainer>
+<longdescription lang="en">
+PHP_CodeBrowser generates a html view for code browsing with higlighted and colored errors, parsed from xml reports generated from codesniffer or phpunit.
+</longdescription>
+</pkgmetadata>
+

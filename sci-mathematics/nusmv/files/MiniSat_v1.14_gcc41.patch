@@ -1,0 +1,92 @@
+Index: MiniSat/MiniSat_v1.14/SolverTypes.h
+===================================================================
+--- MiniSat/MiniSat_v1.14/SolverTypes.h	(revision 1040)
++++ MiniSat/MiniSat_v1.14/SolverTypes.h	(working copy)
+@@ -42,19 +42,32 @@
+ public:
+     Lit() : x(2*var_Undef) {}   // (lit_Undef)
+     explicit Lit(Var var, bool sign = false) : x((var+var) + (int)sign) { }
+-    friend Lit operator ~ (Lit p) { Lit q; q.x = p.x ^ 1; return q; }
++    friend Lit operator ~ (Lit p);
+ 
+-    friend bool sign  (Lit p) { return p.x & 1; }
+-    friend int  var   (Lit p) { return p.x >> 1; }
+-    friend int  index (Lit p) { return p.x; }                // A "toInt" method that guarantees small, positive integers suitable for array indexing.
+-    friend Lit  toLit (int i) { Lit p; p.x = i; return p; }  // Inverse of 'index()'.
+-    friend Lit  unsign(Lit p) { Lit q; q.x = p.x & ~1; return q; }
+-    friend Lit  id    (Lit p, bool sgn) { Lit q; q.x = p.x ^ (int)sgn; return q; }
++    friend bool sign  (Lit p);
++    friend int  var   (Lit p);
++    friend int  index (Lit p); // A "toInt" method that guarantees small, positive integers suitable for array indexing.
++    friend Lit  toLit (int i); // Inverse of 'index()'.
++    friend Lit  unsign(Lit p);
++    friend Lit  id    (Lit p, bool sgn);
+ 
+-    friend bool operator == (Lit p, Lit q) { return index(p) == index(q); }
+-    friend bool operator <  (Lit p, Lit q) { return index(p)  < index(q); }  // '<' guarantees that p, ~p are adjacent in the ordering.
++    friend bool operator == (Lit p, Lit q);
++    friend bool operator <  (Lit p, Lit q); // '<' guarantees that p, ~p are adjacent in the ordering.
+ };
+ 
++inline Lit operator ~ (Lit p) { Lit q; q.x = p.x ^ 1; return q; }
++
++inline bool sign  (Lit p) { return p.x & 1; }
++inline int  var   (Lit p) { return p.x >> 1; }
++inline int  index (Lit p) { return p.x; }                // A "toInt" method that guarantees small, positive integers suitable for array indexing.
++inline Lit  toLit (int i) { Lit p; p.x = i; return p; }  // Inverse of 'index()'.
++inline Lit  unsign(Lit p) { Lit q; q.x = p.x & ~1; return q; }
++inline Lit  id    (Lit p, bool sgn) { Lit q; q.x = p.x ^ (int)sgn; return q; }
++
++inline bool operator == (Lit p, Lit q) { return index(p) == index(q); }
++inline bool operator <  (Lit p, Lit q) { return index(p)  < index(q); }  // '<' guarantees that p, ~p are adjacent in the ordering.
++
++
+ const Lit lit_Undef(var_Undef, false);  // }- Useful special constants.
+ const Lit lit_Error(var_Undef, true );  // }
+ 
+@@ -79,11 +92,7 @@
+         if (learnt) activity() = 0; }
+ 
+     // -- use this function instead:
+-    friend Clause* Clause_new(bool learnt, const vec<Lit>& ps) {
+-        assert(sizeof(Lit)      == sizeof(uint));
+-        assert(sizeof(float)    == sizeof(uint));
+-        void*   mem = xmalloc<char>(sizeof(Clause) + sizeof(uint)*(ps.size() + (int)learnt));
+-        return new (mem) Clause(learnt, ps); }
++    friend Clause* Clause_new(bool learnt, const vec<Lit>& ps);
+ 
+     int       size        ()      const { return size_learnt >> 1; }
+     bool      learnt      ()      const { return size_learnt & 1; }
+@@ -92,6 +101,12 @@
+     float&    activity    ()      const { return *((float*)&data[size()]); }
+ };
+ 
++inline Clause* Clause_new(bool learnt, const vec<Lit>& ps) {
++        assert(sizeof(Lit)      == sizeof(uint));
++        assert(sizeof(float)    == sizeof(uint));
++        void*   mem = xmalloc<char>(sizeof(Clause) + sizeof(uint)*(ps.size() + (int)learnt));
++        return new (mem) Clause(learnt, ps); 
++}
+ 
+ //=================================================================================================
+ // GClause -- Generalize clause:
+@@ -102,8 +117,8 @@
+     void*   data;
+     GClause(void* d) : data(d) {}
+ public:
+-    friend GClause GClause_new(Lit p)     { return GClause((void*)((index(p) << 1) + 1)); }
+-    friend GClause GClause_new(Clause* c) { assert(((uintp)c & 1) == 0); return GClause((void*)c); }
++    friend GClause GClause_new(Lit p);
++    friend GClause GClause_new(Clause* c); 
+ 
+     bool        isLit    () const { return ((uintp)data & 1) == 1; }
+     bool        isNull   () const { return data == NULL; }
+@@ -114,6 +129,8 @@
+ };
+ #define GClause_NULL GClause_new((Clause*)NULL)
+ 
++inline GClause GClause_new(Lit p) { return GClause((void*)((index(p) << 1) + 1)); }
++inline GClause GClause_new(Clause* c) { assert(((uintp)c & 1) == 0); return GClause((void*)c); }
+ 
+ //=================================================================================================
+ #endif

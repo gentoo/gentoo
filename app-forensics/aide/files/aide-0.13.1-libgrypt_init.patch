@@ -1,0 +1,49 @@
+diff -urp aide-0.13.1.orig/doc/aide.1 aide-0.13.1/doc/aide.1
+--- aide-0.13.1.orig/doc/aide.1	2009-04-14 15:46:20.000000000 -0700
++++ aide-0.13.1/doc/aide.1	2009-04-14 15:49:18.000000000 -0700
+@@ -67,6 +67,7 @@ conditions:
+ .IP "16 Unimplemented function error"
+ .IP "17 Invalid configureline error"
+ .IP "18 IO error"
++.IP "19 Version mismatch error"
+ .PP
+ .SH NOTES
+ Please note that due to mmap issues, aide cannot be terminated with
+diff -urp aide-0.13.1.orig/doc/aide.1.in aide-0.13.1/doc/aide.1.in
+--- aide-0.13.1.orig/doc/aide.1.in	2009-04-14 15:46:20.000000000 -0700
++++ aide-0.13.1/doc/aide.1.in	2009-04-14 15:49:56.000000000 -0700
+@@ -67,6 +67,7 @@ conditions:
+ .IP "16 Unimplemented function error"
+ .IP "17 Invalid configureline error"
+ .IP "18 IO error"
++.IP "19 Version mismatch error"
+ .PP
+ .SH NOTES
+ Please note that due to mmap issues, aide cannot be terminated with
+diff -urp aide-0.13.1.orig/include/report.h aide-0.13.1/include/report.h
+--- aide-0.13.1.orig/include/report.h	2009-04-14 15:46:20.000000000 -0700
++++ aide-0.13.1/include/report.h	2009-04-14 15:46:28.000000000 -0700
+@@ -31,6 +31,7 @@
+ #define UNIMPLEMENTED_FUNCTION_ERROR 16
+ #define INVALID_CONFIGURELINE_ERROR 17
+ #define IO_ERROR 18
++#define VERSION_MISMATCH_ERROR 19
+ 
+ /* Errorcodes */
+ #define HASH_ALGO_ERROR 30
+diff -urp aide-0.13.1.orig/src/md.c aide-0.13.1/src/md.c
+--- aide-0.13.1.orig/src/md.c	2009-04-14 15:46:20.000000000 -0700
++++ aide-0.13.1/src/md.c	2009-04-14 15:46:28.000000000 -0700
+@@ -201,6 +201,12 @@ int init_md(struct md_container* md) {
+ #endif 
+ #ifdef WITH_GCRYPT
+   error(255,"Gcrypt library initialization\n");
++  	if(!gcry_check_version(GCRYPT_VERSION)) {
++		error(0,"libgcrypt version mismatch\n");
++		exit(VERSION_MISMATCH_ERROR);
++	}
++	gcry_control(GCRYCTL_DISABLE_SECMEM, 0);
++	gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);
+ 	if(gcry_md_open(&md->mdh,0,0)!=GPG_ERR_NO_ERROR){
+ 		error(0,"gcrypt_md_open failed\n");
+ 		exit(IO_ERROR);

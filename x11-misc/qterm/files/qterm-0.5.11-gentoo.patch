@@ -1,0 +1,11 @@
+--- src/qterm.desktop	2009-01-07 03:11:15.000000000 +0900
++++ src/qterm.desktop	2009-10-03 01:30:27.000000000 +0900
+@@ -3,7 +3,7 @@
+ Encoding=UTF-8
+ Type=Application
+ Name=QTerm
+-Exec=qterm -caption "%c" %i %m %u
++Exec=QTerm -caption "%c" %i %m %u
+ GenericName=BBS Client
+ GenericName[zh_CN]=BBS 客户端程序
+ GenericName[zh_TW]=BBS 客戶端程式

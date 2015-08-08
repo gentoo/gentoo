@@ -1,0 +1,4 @@
+# purge mw-serve cache directory 
+# --cache-dir=DIR: the NSLAVE_CACHEDIR directory specified in /etc/conf.d/nslave
+# --purge-cache=HOURS: remove cache files that have not been touched for at east HOURS hours
+00 23 * * *  sudo -u mwlib mw-serve-ctl --cache-dir=/var/cache/mwlib --purge-cache=24

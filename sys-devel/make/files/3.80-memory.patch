@@ -1,0 +1,77 @@
+Index: variable.h
+===================================================================
+RCS file: /cvsroot/make/make/variable.h,v
+retrieving revision 1.24
+diff -u -B -b -r1.24 variable.h
+--- variable.h	8 Aug 2002 00:11:19 -0000	1.24
++++ variable.h	25 Oct 2002 21:37:32 -0000
+@@ -107,6 +107,8 @@
+ extern char *expand_argument PARAMS ((char *str, char *end));
+ extern char *variable_expand_string PARAMS ((char *line, char *string,
+                                              long length));
++extern void install_variable_buffer PARAMS ((char **bufp, unsigned int *lenp));
++extern void restore_variable_buffer PARAMS ((char *buf, unsigned int len));
+ 
+ /* function.c */
+ extern int handle_function PARAMS ((char **op, char **stringp));
+Index: expand.c
+===================================================================
+RCS file: /cvsroot/make/make/expand.c,v
+retrieving revision 1.33
+diff -u -B -b -r1.33 expand.c
+--- expand.c	14 Oct 2002 21:54:04 -0000	1.33
++++ expand.c	25 Oct 2002 21:37:32 -0000
+@@ -545,3 +545,28 @@
+ 
+   return value;
+ }
++
++/* Install a new variable_buffer context, returning the current one for
++   safe-keeping.  */
++
++void
++install_variable_buffer (char **bufp, unsigned int *lenp)
++{
++  *bufp = variable_buffer;
++  *lenp = variable_buffer_length;
++
++  variable_buffer = 0;
++  initialize_variable_output ();
++}
++
++/* Restore a previously-saved variable_buffer setting (free the current one).
++ */
++
++void
++restore_variable_buffer (char *buf, unsigned int len)
++{
++  free (variable_buffer);
++
++  variable_buffer = buf;
++  variable_buffer_length = len;
++}
+Index: function.c
+===================================================================
+RCS file: /cvsroot/make/make/function.c,v
+retrieving revision 1.71
+diff -u -B -b -r1.71 function.c
+--- function.c	14 Oct 2002 21:54:04 -0000	1.71
++++ function.c	25 Oct 2002 21:37:32 -0000
+@@ -1196,7 +1196,17 @@
+ static char *
+ func_eval (char *o, char **argv, const char *funcname)
+ {
++  char *buf;
++  unsigned int len;
++
++  /* Eval the buffer.  Pop the current variable buffer setting so that the
++     eval'd code can use its own without conflicting.  */
++
++  install_variable_buffer (&buf, &len);
++
+   eval_buffer (argv[0]);
++
++  restore_variable_buffer (buf, len);
+ 
+   return o;
+ }

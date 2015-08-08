@@ -1,0 +1,11 @@
+--- setup.py	2011-09-06 09:04:33.000000000 +0200
++++ setup.py.NEW	2012-07-07 15:33:13.295906002 +0200
+@@ -33,7 +33,7 @@
+         platforms        = ["Unix"],
+ 	package_dir	 = { '': 'lib' },
+ 	py_modules	 = ["yenc"],
+-	ext_modules	 = [Extension("_yenc",["src/_yenc.c"],extra_compile_args=["-O2","-g"])],
++	ext_modules	 = [Extension("_yenc",["src/_yenc.c"])],
+         classifiers      = [
+             "Programming Language :: Python",
+             "Programming Language :: Python :: 2.5",

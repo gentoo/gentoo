@@ -1,0 +1,675 @@
+http://bugs.gentoo.org/435394
+
+port to libextractor-0.6.x
+
+patch by Mike Frysinger <vapier@gentoo.org>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -1631,7 +1631,7 @@ MT_CHECK_OPTIONAL_PACKAGE([lastfmlib], [disable],
+ ######## extractor
+ 
+ if test "x$LIBEXTRACTOR_OPTION_ENABLED" = xyes; then
+-    MT_CHECK_PACKAGE([libextractor], [extractor], [extractor], [EXTRACTOR_getKeywords])
++    MT_CHECK_PACKAGE([libextractor], [extractor], [extractor], [EXTRACTOR_extract])
+ fi
+ 
+ if test "x$LIBEXTRACTOR_STATUS" = xyes; then
+--- a/src/metadata/extractor_handler.cc
++++ b/src/metadata/extractor_handler.cc
+@@ -55,322 +55,344 @@ ExtractorHandler::ExtractorHandler() : MetadataHandler()
+ {
+ }
+ 
+-static EXTRACTOR_KeywordType getTagFromString(String tag)
++static EXTRACTOR_MetaType getTagFromString(String tag)
+ {
+-    if (tag == "EXTRACTOR_UNKNOWN")
+-        return EXTRACTOR_UNKNOWN;
+-    if (tag == "EXTRACTOR_FILENAME")
+-        return EXTRACTOR_FILENAME;
+-    if (tag == "EXTRACTOR_MIMETYPE")
+-        return EXTRACTOR_MIMETYPE;
+-    if (tag == "EXTRACTOR_TITLE")
+-        return EXTRACTOR_TITLE;
+-    if (tag == "EXTRACTOR_AUTHOR")
+-        return EXTRACTOR_AUTHOR;
+-    if (tag == "EXTRACTOR_ARTIST")
+-        return EXTRACTOR_ARTIST;
+-    if (tag == "EXTRACTOR_DESCRIPTION")
+-        return EXTRACTOR_DESCRIPTION;
+-    if (tag == "EXTRACTOR_COMMENT")
+-        return EXTRACTOR_COMMENT;
+-    if (tag == "EXTRACTOR_DATE")
+-        return EXTRACTOR_DATE;
+-    if (tag == "EXTRACTOR_PUBLISHER")
+-        return EXTRACTOR_PUBLISHER;
+-    if (tag == "EXTRACTOR_LANGUAGE")
+-        return EXTRACTOR_LANGUAGE;
+-    if (tag == "EXTRACTOR_ALBUM")
+-        return EXTRACTOR_ALBUM;
+-    if (tag == "EXTRACTOR_GENRE")
+-        return EXTRACTOR_GENRE;
+-    if (tag == "EXTRACTOR_LOCATION")
+-        return EXTRACTOR_LOCATION;
+-    if (tag == "EXTRACTOR_VERSIONNUMBER")
+-        return EXTRACTOR_VERSIONNUMBER;
+-    if (tag == "EXTRACTOR_ORGANIZATION")
+-        return EXTRACTOR_ORGANIZATION;
+-    if (tag == "EXTRACTOR_COPYRIGHT")
+-        return EXTRACTOR_COPYRIGHT;
+-    if (tag == "EXTRACTOR_SUBJECT")
+-        return EXTRACTOR_SUBJECT;
+-    if (tag == "EXTRACTOR_KEYWORDS")
+-        return EXTRACTOR_KEYWORDS;
+-    if (tag == "EXTRACTOR_CONTRIBUTOR")
+-        return EXTRACTOR_CONTRIBUTOR;
+-    if (tag == "EXTRACTOR_RESOURCE_TYPE")
+-        return EXTRACTOR_RESOURCE_TYPE;
+-    if (tag == "EXTRACTOR_FORMAT")
+-        return EXTRACTOR_FORMAT;
+-    if (tag == "EXTRACTOR_RESOURCE_IDENTIFIER")
+-        return EXTRACTOR_RESOURCE_IDENTIFIER;
+-    if (tag == "EXTRACTOR_SOURCE")
+-        return EXTRACTOR_SOURCE;
+-    if (tag == "EXTRACTOR_RELATION")
+-        return EXTRACTOR_RELATION;
+-    if (tag == "EXTRACTOR_COVERAGE")
+-        return EXTRACTOR_COVERAGE;
+-    if (tag == "EXTRACTOR_SOFTWARE")
+-        return EXTRACTOR_SOFTWARE;
+-    if (tag == "EXTRACTOR_DISCLAIMER")
+-        return EXTRACTOR_DISCLAIMER;
+-    if (tag == "EXTRACTOR_WARNING")
+-        return EXTRACTOR_WARNING;
+-    if (tag == "EXTRACTOR_TRANSLATED")
+-        return EXTRACTOR_TRANSLATED;
+-    if (tag == "EXTRACTOR_CREATION_DATE")
+-        return EXTRACTOR_CREATION_DATE;
+-    if (tag == "EXTRACTOR_MODIFICATION_DATE")
+-        return EXTRACTOR_MODIFICATION_DATE;
+-    if (tag == "EXTRACTOR_CREATOR")
+-        return EXTRACTOR_CREATOR;
+-    if (tag == "EXTRACTOR_PRODUCER")
+-        return EXTRACTOR_PRODUCER;
+-    if (tag == "EXTRACTOR_PAGE_COUNT")
+-        return EXTRACTOR_PAGE_COUNT;
+-    if (tag == "EXTRACTOR_PAGE_ORIENTATION")
+-        return EXTRACTOR_PAGE_ORIENTATION;
+-    if (tag == "EXTRACTOR_PAPER_SIZE")
+-        return EXTRACTOR_PAPER_SIZE;
+-    if (tag == "EXTRACTOR_USED_FONTS")
+-        return EXTRACTOR_USED_FONTS;
+-    if (tag == "EXTRACTOR_PAGE_ORDER")
+-        return EXTRACTOR_PAGE_ORDER;
+-    if (tag == "EXTRACTOR_CREATED_FOR")
+-        return EXTRACTOR_CREATED_FOR;
+-    if (tag == "EXTRACTOR_MAGNIFICATION")
+-        return EXTRACTOR_MAGNIFICATION;
+-    if (tag == "EXTRACTOR_RELEASE")
+-        return EXTRACTOR_RELEASE;
+-    if (tag == "EXTRACTOR_GROUP")
+-        return EXTRACTOR_GROUP;
+-    if (tag == "EXTRACTOR_SIZE")
+-        return EXTRACTOR_SIZE;
+-    if (tag == "EXTRACTOR_SUMMARY")
+-        return EXTRACTOR_SUMMARY;
+-    if (tag == "EXTRACTOR_PACKAGER")
+-        return EXTRACTOR_PACKAGER;
+-    if (tag == "EXTRACTOR_VENDOR")
+-        return EXTRACTOR_VENDOR;
+-    if (tag == "EXTRACTOR_LICENSE")
+-        return EXTRACTOR_LICENSE;
+-    if (tag == "EXTRACTOR_DISTRIBUTION")
+-        return EXTRACTOR_DISTRIBUTION;
+-    if (tag == "EXTRACTOR_BUILDHOST")
+-        return EXTRACTOR_BUILDHOST;
+-    if (tag == "EXTRACTOR_OS")
+-        return EXTRACTOR_OS;
+-    if (tag == "EXTRACTOR_DEPENDENCY")
+-        return EXTRACTOR_DEPENDENCY;
+-    if (tag == "EXTRACTOR_HASH_MD4")
+-        return EXTRACTOR_HASH_MD4;
+-    if (tag == "EXTRACTOR_HASH_MD5")
+-        return EXTRACTOR_HASH_MD5;
+-    if (tag == "EXTRACTOR_HASH_SHA0")
+-        return EXTRACTOR_HASH_SHA0;
+-    if (tag == "EXTRACTOR_HASH_SHA1")
+-        return EXTRACTOR_HASH_SHA1;
+-    if (tag == "EXTRACTOR_HASH_RMD160")
+-        return EXTRACTOR_HASH_RMD160;
+-    if (tag == "EXTRACTOR_RESOLUTION")
+-        return EXTRACTOR_RESOLUTION;
+-    if (tag == "EXTRACTOR_CATEGORY")
+-        return EXTRACTOR_CATEGORY;
+-    if (tag == "EXTRACTOR_BOOKTITLE")
+-        return EXTRACTOR_BOOKTITLE;
+-    if (tag == "EXTRACTOR_PRIORITY")
+-        return EXTRACTOR_PRIORITY;
+-    if (tag == "EXTRACTOR_CONFLICTS")
+-        return EXTRACTOR_CONFLICTS;
+-    if (tag == "EXTRACTOR_REPLACES")
+-        return EXTRACTOR_REPLACES;
+-    if (tag == "EXTRACTOR_PROVIDES")
+-        return EXTRACTOR_PROVIDES;
+-    if (tag == "EXTRACTOR_CONDUCTOR")
+-        return EXTRACTOR_CONDUCTOR;
+-    if (tag == "EXTRACTOR_INTERPRET")
+-        return EXTRACTOR_INTERPRET;
+-    if (tag == "EXTRACTOR_OWNER")
+-        return EXTRACTOR_OWNER;
+-    if (tag == "EXTRACTOR_LYRICS")
+-        return EXTRACTOR_LYRICS;
+-    if (tag == "EXTRACTOR_MEDIA_TYPE")
+-        return EXTRACTOR_MEDIA_TYPE;
+-    if (tag == "EXTRACTOR_CONTACT")
+-        return EXTRACTOR_CONTACT;
+-    if (tag == "EXTRACTOR_THUMBNAIL_DATA")
+-        return EXTRACTOR_THUMBNAIL_DATA;
+-
+-#ifdef EXTRACTOR_GE_0_5_2
+-    if (tag == "EXTRACTOR_PUBLICATION_DATE")
+-        return EXTRACTOR_PUBLICATION_DATE;
+-    if (tag == "EXTRACTOR_CAMERA_MAKE")
+-        return EXTRACTOR_CAMERA_MAKE;
+-    if (tag == "EXTRACTOR_CAMERA_MODEL")
+-        return EXTRACTOR_CAMERA_MODEL;
+-    if (tag == "EXTRACTOR_EXPOSURE")
+-        return EXTRACTOR_EXPOSURE;
+-    if (tag == "EXTRACTOR_APERTURE")
+-        return EXTRACTOR_APERTURE;
+-    if (tag == "EXTRACTOR_EXPOSURE_BIAS")
+-        return EXTRACTOR_EXPOSURE_BIAS;
+-    if (tag == "EXTRACTOR_FLASH")
+-        return EXTRACTOR_FLASH;
+-    if (tag == "EXTRACTOR_FLASH_BIAS")
+-        return EXTRACTOR_FLASH_BIAS;
+-    if (tag == "EXTRACTOR_FOCAL_LENGTH")
+-        return EXTRACTOR_FOCAL_LENGTH;
+-    if (tag == "EXTRACTOR_FOCAL_LENGTH_35MM")
+-        return EXTRACTOR_FOCAL_LENGTH_35MM;
+-    if (tag == "EXTRACTOR_ISO_SPEED")
+-        return EXTRACTOR_ISO_SPEED;
+-    if (tag == "EXTRACTOR_EXPOSURE_MODE")
+-        return EXTRACTOR_EXPOSURE_MODE;
+-    if (tag == "EXTRACTOR_METERING_MODE")
+-        return EXTRACTOR_METERING_MODE;
+-    if (tag == "EXTRACTOR_MACRO_MODE")
+-        return EXTRACTOR_MACRO_MODE;
+-    if (tag == "EXTRACTOR_IMAGE_QUALITY")
+-        return EXTRACTOR_IMAGE_QUALITY;
+-    if (tag == "EXTRACTOR_WHITE_BALANCE")
+-        return EXTRACTOR_WHITE_BALANCE;
+-    if (tag == "EXTRACTOR_ORIENTATION")
+-        return EXTRACTOR_ORIENTATION;
+-#endif // EXTRACTOR_GE_0_5_2
++#define T(x) [EXTRACTOR_METATYPE_##x] = "EXTRACTOR_METATYPE_"#x,
++    /* XXX: should convert to EXTRACTOR_metatype_to_string() somehow */
++    const char *types[] =
++    {
++        T(RESERVED)
++        T(MIMETYPE)
++        T(FILENAME)
++        T(COMMENT)
++
++        T(TITLE)
++        T(BOOK_TITLE)
++        T(BOOK_EDITION)
++        T(BOOK_CHAPTER_NUMBER)
++        T(JOURNAL_NAME)
++        T(JOURNAL_VOLUME)
++        T(JOURNAL_NUMBER)
++        T(PAGE_COUNT)
++        T(PAGE_RANGE)
++        T(AUTHOR_NAME)
++        T(AUTHOR_EMAIL)
++        T(AUTHOR_INSTITUTION)
++        T(PUBLISHER)
++        T(PUBLISHER_ADDRESS)
++        T(PUBLISHER_INSTITUTION)
++        T(PUBLISHER_SERIES)
++        T(PUBLICATION_TYPE)
++        T(PUBLICATION_YEAR)
++        T(PUBLICATION_MONTH)
++        T(PUBLICATION_DAY)
++        T(PUBLICATION_DATE)
++        T(BIBTEX_EPRINT)
++        T(BIBTEX_ENTRY_TYPE)
++        T(LANGUAGE)
++        T(CREATION_TIME)
++        T(URL)
++
++        T(URI)
++        T(ISRC)
++        T(HASH_MD4)
++        T(HASH_MD5)
++        T(HASH_SHA0)
++        T(HASH_SHA1)
++        T(HASH_RMD160)
++
++        T(GPS_LATITUDE_REF)
++        T(GPS_LATITUDE)
++        T(GPS_LONGITUDE_REF)
++        T(GPS_LONGITUDE)
++        T(LOCATION_CITY)
++        T(LOCATION_SUBLOCATION)
++        T(LOCATION_COUNTRY)
++        T(LOCATION_COUNTRY_CODE)
++
++        T(UNKNOWN)
++        T(DESCRIPTION)
++        T(COPYRIGHT)
++        T(RIGHTS)
++        T(KEYWORDS)
++        T(ABSTRACT)
++        T(SUMMARY)
++        T(SUBJECT)
++        T(CREATOR)
++        T(FORMAT)
++        T(FORMAT_VERSION)
++
++        T(CREATED_BY_SOFTWARE)
++        T(UNKNOWN_DATE)
++        T(CREATION_DATE)
++        T(MODIFICATION_DATE)
++        T(LAST_PRINTED)
++        T(LAST_SAVED_BY)
++        T(TOTAL_EDITING_TIME)
++        T(EDITING_CYCLES)
++        T(MODIFIED_BY_SOFTWARE)
++        T(REVISION_HISTORY)
++
++        T(EMBEDDED_FILE_SIZE)
++        T(FINDER_FILE_TYPE)
++        T(FINDER_FILE_CREATOR)
++
++        T(PACKAGE_NAME)
++        T(PACKAGE_VERSION)
++        T(SECTION)
++        T(UPLOAD_PRIORITY)
++        T(PACKAGE_DEPENDENCY)
++        T(PACKAGE_CONFLICTS)
++        T(PACKAGE_REPLACES)
++        T(PACKAGE_PROVIDES)
++        T(PACKAGE_RECOMMENDS)
++        T(PACKAGE_SUGGESTS)
++        T(PACKAGE_MAINTAINER)
++        T(PACKAGE_INSTALLED_SIZE)
++        T(PACKAGE_SOURCE)
++        T(PACKAGE_ESSENTIAL)
++        T(TARGET_ARCHITECTURE)
++        T(PACKAGE_PRE_DEPENDENCY)
++        T(LICENSE)
++        T(PACKAGE_DISTRIBUTION)
++        T(BUILDHOST)
++        T(VENDOR)
++        T(TARGET_OS)
++        T(SOFTWARE_VERSION)
++        T(TARGET_PLATFORM)
++        T(RESOURCE_TYPE)
++        T(LIBRARY_SEARCH_PATH)
++        T(LIBRARY_DEPENDENCY)
++
++        T(CAMERA_MAKE)
++        T(CAMERA_MODEL)
++        T(EXPOSURE)
++        T(APERTURE)
++        T(EXPOSURE_BIAS)
++        T(FLASH)
++        T(FLASH_BIAS)
++        T(FOCAL_LENGTH)
++        T(FOCAL_LENGTH_35MM)
++        T(ISO_SPEED)
++        T(EXPOSURE_MODE)
++        T(METERING_MODE)
++        T(MACRO_MODE)
++        T(IMAGE_QUALITY)
++        T(WHITE_BALANCE)
++        T(ORIENTATION)
++        T(MAGNIFICATION)
++
++        T(IMAGE_DIMENSIONS)
++        T(PRODUCED_BY_SOFTWARE)
++        T(THUMBNAIL)
++        T(IMAGE_RESOLUTION)
++        T(SOURCE)
++
++        T(CHARACTER_SET)
++        T(LINE_COUNT)
++        T(PARAGRAPH_COUNT)
++        T(WORD_COUNT)
++        T(CHARACTER_COUNT)
++        T(PAGE_ORIENTATION)
++        T(PAPER_SIZE)
++        T(TEMPLATE)
++        T(COMPANY)
++        T(MANAGER)
++        T(REVISION_NUMBER)
++
++        T(DURATION)
++        T(ALBUM)
++        T(ARTIST)
++        T(GENRE)
++        T(TRACK_NUMBER)
++        T(DISC_NUMBER)
++        T(PERFORMER)
++        T(CONTACT_INFORMATION)
++        T(SONG_VERSION)
++        T(PICTURE)
++        T(COVER_PICTURE)
++        T(CONTRIBUTOR_PICTURE)
++        T(EVENT_PICTURE)
++        T(LOGO)
++        T(BROADCAST_TELEVISION_SYSTEM)
++        T(SOURCE_DEVICE)
++        T(DISCLAIMER)
++        T(WARNING)
++        T(PAGE_ORDER)
++        T(WRITER)
++        T(PRODUCT_VERSION)
++        T(CONTRIBUTOR_NAME)
++        T(MOVIE_DIRECTOR)
++        T(NETWORK_NAME)
++        T(SHOW_NAME)
++        T(CHAPTER_NAME)
++        T(SONG_COUNT)
++        T(STARTING_SONG)
++        T(PLAY_COUNTER)
++        T(CONDUCTOR)
++        T(INTERPRETATION)
++        T(COMPOSER)
++        T(BEATS_PER_MINUTE)
++        T(ENCODED_BY)
++        T(ORIGINAL_TITLE)
++        T(ORIGINAL_ARTIST)
++        T(ORIGINAL_WRITER)
++        T(ORIGINAL_RELEASE_YEAR)
++        T(ORIGINAL_PERFORMER)
++        T(LYRICS)
++        T(POPULARITY_METER)
++        T(LICENSEE)
++        T(MUSICIAN_CREDITS_LIST)
++        T(MOOD)
++        T(SUBTITLE)
++
++        T(GNUNET_DISPLAY_TYPE)
++        T(GNUNET_FULL_DATA)
++        T(RATING)
++        T(ORGANIZATION)
++        T(RIPPER)
++        T(PRODUCER)
++        T(GROUP)
++        T(GNUNET_ORIGINAL_FILENAME)
++    };
++#undef T
++    size_t i;
++
++    for (i = 0; i < sizeof(types) / sizeof(types[0]); ++i)
++        if (!strcmp(types[i], tag.c_str()))
++            return (EXTRACTOR_MetaType) i;
+ 
+     log_warning("Ignoring unknown libextractor tag: %s\n", tag.c_str());
+-    return EXTRACTOR_UNKNOWN;
++    return EXTRACTOR_METATYPE_UNKNOWN;
+ }
+ 
+-static void addMetaField(metadata_fields_t field, EXTRACTOR_KeywordList *keywords, Ref<CdsItem> item, Ref<StringConverter> sc)
++struct field_state {
++    Ref<CdsItem> item;
++    Ref<StringConverter> sc;
++    Ref<Array<StringBase> > aux;
++};
++
++static int addField(void *cls, const char *plugin_name, enum EXTRACTOR_MetaType type,
++                    enum EXTRACTOR_MetaFormat format, const char *data_mime_type,
++                    const char *data, size_t data_len)
+ {
+-    String value;
+-    const char *temp = NULL;
+- 
++    metadata_fields_t field = M_MAX;
++    resource_attributes_t attr = R_MAX;
++
++    if (!data)
++        return 0;
++
++    log_debug("metadata %zu [%s] -> %s\n", (size_t)type, EXTRACTOR_metatype_to_string(type), data);
++
+     /// \todo check if UTF-8 conversion is needed, may already be in UTF-8
+-    
+-    switch (field)
++
++    switch (type)
+     {
+-        case M_TITLE:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_TITLE, keywords);
++        case EXTRACTOR_METATYPE_TITLE:
++            field = M_TITLE;
+             break;
+-        case M_ARTIST:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_ARTIST, keywords);
++        case EXTRACTOR_METATYPE_ARTIST:
++            field = M_ARTIST;
+             break;
+-        case M_ALBUM:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_ALBUM, keywords);
++        case EXTRACTOR_METATYPE_ALBUM:
++            field = M_ALBUM;
+             break;
+-        case M_DATE:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_DATE, keywords);
++        case EXTRACTOR_METATYPE_PUBLICATION_YEAR:
++            field = M_DATE;
+             break;
+-        case M_GENRE:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_GENRE, keywords);
++        case EXTRACTOR_METATYPE_GENRE:
++            field = M_GENRE;
+             break;
+-        case M_DESCRIPTION:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_DESCRIPTION, keywords);
+-
+-            if (temp == NULL)
+-                temp = EXTRACTOR_extractLast(EXTRACTOR_COMMENT, keywords);
++        case EXTRACTOR_METATYPE_DESCRIPTION:
++            field = M_DESCRIPTION;
++            break;
++        case EXTRACTOR_METATYPE_COMMENT:
++            field = M_DESCRIPTION;
++            break;
++        case EXTRACTOR_METATYPE_IMAGE_DIMENSIONS:
++            attr = R_RESOLUTION;
+             break;
+-        default:
+-            return;
+     }
+ 
+-    if (temp != NULL)
+-        value = temp;
++    String value;
++    struct field_state *field_state = (struct field_state *)cls;
++    Ref<CdsItem> item = field_state->item;
++    Ref<StringConverter> sc = field_state->sc;
++    Ref<Array<StringBase> > aux = field_state->aux;
++
++    if (field == M_MAX && attr == R_MAX && aux == nil)
++    {
++        log_debug("no match\n");
++        return 0;
++    }
+ 
++    value = data;
+     value = trim_string(value);
+-    
+-    if (string_ok(value))
++    if (!string_ok(value))
++        return 0;
++
++    if (field != M_MAX)
+     {
+         item->setMetadata(MT_KEYS[field].upnp, sc->convert(value));
+-//        log_debug("Setting metadata on item: %d, %s\n", field, sc->convert(value).c_str());
++        log_debug("Setting metadata on item: %d, %s\n", field, sc->convert(value).c_str());
+     }
+-}
+ 
+-static void addResourceField(resource_attributes_t attr, EXTRACTOR_KeywordList *keywords, Ref<CdsItem> item, Ref<StringConverter> sc)
+-{
+-    String value;
+-    const char *temp = NULL;
+-    
+-    switch (attr)
++    if (attr != R_MAX)
+     {
+-        case R_RESOLUTION:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_SIZE, keywords);
+-            break;
+-/*        case R_SIZE:
+-            temp = EXTRACTOR_extractLast(EXTRACTOR_SIZE, keywords);
+-            break;
+-*/
+-        default:
+-            return;
++        item->getResource(0)->addAttribute(MetadataHandler::getResAttrName(attr), value);
++        log_debug("Setting attribute on item: %d, %s\n", attr, value.c_str());
+     }
+ 
+-    if (temp != NULL)
+-        value = temp;
+-
+-    if (string_ok(value))
++    if (aux != nil)
+     {
+-          item->getResource(0)->addAttribute(MetadataHandler::getResAttrName(attr), value);
++        String tmp;
++        for (int j = 0; j < aux->size(); j++)
++        {
++            tmp = aux->get(j);
++            if (string_ok(tmp))
++            {
++                if (type == getTagFromString(tmp))
++                {
++                    value = sc->convert(value);
++                    item->setAuxData(tmp, value);
++                    log_debug(("Adding tag: %s with value %s\n", tmp.c_str(), value.c_str()));
++                }
++            }
++        }
+     }
++
++    return 0;
+ }
+ 
+ 
+ 
+-Ref<RExp> ReAudioFormat;
+-EXTRACTOR_ExtractorList *extractors = NULL;
+-bool load_libraries_failed = false;
++static Ref<RExp> ReAudioFormat;
++static EXTRACTOR_PluginList *plugins = NULL;
++static bool load_libraries_failed = false;
+ 
+ void ExtractorHandler::fillMetadata(Ref<CdsItem> item)
+ {
+     if (load_libraries_failed)
+         return;
+-    Ref<Array<StringBase> > aux;
+-    Ref<StringConverter> sc = StringConverter::i2i();
+-        
+-    if (! extractors)
++    if (! plugins)
+     {
+-        extractors = EXTRACTOR_loadDefaultLibraries();
+-        if (! extractors)
++        plugins = EXTRACTOR_plugin_add_defaults(EXTRACTOR_OPTION_DEFAULT_POLICY);
++        if (! plugins)
++        {
+             load_libraries_failed = true;
++            return;
++        }
+     }
+-    EXTRACTOR_KeywordList *keywords = EXTRACTOR_getKeywords(extractors, item->getLocation().c_str());
+-
+-    //EXTRACTOR_printKeywords(stdout, keywords);
+ 
+-    for (int i = 0; i < M_MAX; i++)
+-        addMetaField((metadata_fields_t)i, keywords, item, sc);
+-    
+-    for (int i = 0; i < R_MAX; i++)
+-        addResourceField((resource_attributes_t)i, keywords, item, sc);
++    log_debug("processing %s\n", item->getLocation().c_str());
+ 
+     Ref<ConfigManager> cm = ConfigManager::getInstance();
+-    aux = cm->getStringArrayOption(CFG_IMPORT_LIBOPTS_EXTRACTOR_AUXDATA_TAGS_LIST);
+-    if (aux != nil)
+-    {
+-        String value;
+-        String tmp;
+-        const char *temp = NULL;
+-        
+-        for (int j = 0; j < aux->size(); j++)
+-        {
+-
+-            tmp = aux->get(j);
+-            if (string_ok(tmp))
+-            {
+-                temp = EXTRACTOR_extractLast(getTagFromString(tmp), keywords);
+-                if (temp != NULL)
+-                {
+-                    value = temp; 
+-                    if (string_ok(value))
+-                    {
+-                        value = sc->convert(value);
+-                        item->setAuxData(tmp, value);
+-//                      log_debug(("Adding tag: %s with value %s\n", tmp.c_str(), value.c_str()));
+-                    }
+-                }
+-            }
+-        }
+-    }
++    struct field_state field_state = {
++        .item = item,
++        .sc = StringConverter::i2i(),
++        .aux = cm->getStringArrayOption(CFG_IMPORT_LIBOPTS_EXTRACTOR_AUXDATA_TAGS_LIST),
++    };
++    EXTRACTOR_extract(plugins, item->getLocation().c_str(), NULL, 0, addField, &field_state);
+ 
+     if (ReAudioFormat == nil)
+     {
+@@ -379,35 +401,9 @@ void ExtractorHandler::fillMetadata(Ref<CdsItem> item)
+         ReAudioFormat->compile(_("([0-9]+)\\s+kbps,\\s*([0-9]+)\\s+hz,\\s*"
+                                  "(([0-9]+)h)?([0-9]+)m([0-9]+)\\s(\\S+)"), "i");
+     }
+-   
+-    /*
+-    temp = EXTRACTOR_extractLast(EXTRACTOR_FORMAT, keywords);
+-    log_debug("EXTRACTOR_FORMAT: %s\n", temp);
+-
+-    if (temp)
+-    {
+-        Ref<Matcher> matcher = ReAudioFormat->match((char *)temp);
+-        if (matcher != nil)
+-        {
+-            log_debug(("BR:%s FR:%s H:%s M:%s S:%s TYPE:%s\n",
+-                       matcher->group(1).c_str(),
+-                       matcher->group(2).c_str(),
+-                       matcher->group(4).c_str(),
+-                       matcher->group(5).c_str(),
+-                       matcher->group(6).c_str(),
+-                       matcher->group(7).c_str()));
+-        }
+-        else
+-        {
+-            log_debug(("format pattern unmatched!"));
+-        }
+-    }
+-
+-    */
+-    EXTRACTOR_freeKeywords(keywords);
+ 
+     // commented out for the sake of efficiency
+-    // EXTRACTOR_removeAll(extractors);
++    // EXTRACTOR_plugin_remove_all(plugins);
+ }
+ 
+ Ref<IOHandler> ExtractorHandler::serveContent(Ref<CdsItem> item, int resNum, off_t *data_size)

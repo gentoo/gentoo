@@ -1,0 +1,39 @@
+http://paraview.org/Bug/view.php?id=13656
+
+---
+ ParaViewCore/ServerImplementation/Core/CMakeLists.txt | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/ParaViewCore/ServerImplementation/Core/CMakeLists.txt b/ParaViewCore/ServerImplementation/Core/CMakeLists.txt
+index 5ca5168..2a7ff4b 100644
+--- a/ParaViewCore/ServerImplementation/Core/CMakeLists.txt
++++ b/ParaViewCore/ServerImplementation/Core/CMakeLists.txt
+@@ -82,15 +82,23 @@ set (${vtk-module}_HDRS
+ #------------------------------------------------------------------------------
+ # Generate the protbuf message file.
+ #------------------------------------------------------------------------------
++if (VTK_USE_SYSTEM_PROTOBUF)
++    set (_PROTOC_COMPILER protoc)
++    set (_PROTOC_DEPEND "")
++else()
++    set (_PROTOC_COMPILER protoc_compiler)
++    set (_PROTOC_DEPEND ${_PROTOC_COMPILER})
++endif()
++
+ add_custom_command(
+     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/vtkPVMessage.pb.h
+            ${CMAKE_CURRENT_BINARY_DIR}/vtkPVMessage.pb.cc
+     
+-    COMMAND protoc_compiler
++    COMMAND ${_PROTOC_COMPILER}
+            "--cpp_out=dllexport_decl=VTKPVSERVERIMPLEMENTATIONCORE_EXPORT:${CMAKE_CURRENT_BINARY_DIR}"
+            --proto_path "${CMAKE_CURRENT_SOURCE_DIR}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/vtkPVMessage.proto"
+-    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/vtkPVMessage.proto protoc_compiler
++    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/vtkPVMessage.proto ${_PROTOC_DEPEND}
+     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+ )
+ 
+-- 
+2.0.5
+

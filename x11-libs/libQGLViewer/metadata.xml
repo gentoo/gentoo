@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>aballier@gentoo.org</email>
+<name>Alexis Ballier</name>
+</maintainer>
+  <use>
+    <flag name="designer">Installs <pkg>dev-qt/designer</pkg> plugin.</flag>
+  </use>
+</pkgmetadata>

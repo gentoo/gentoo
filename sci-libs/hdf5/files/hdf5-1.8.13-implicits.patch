@@ -1,0 +1,35 @@
+--- a/test/cache_common.h
++++ b/test/cache_common.h
+@@ -702,5 +702,8 @@ void validate_mdc_config(hid_t file_id,
+                          hbool_t compare_init,
+                          int test_num);
+ 
++hbool_t resize_configs_are_equal(const H5C_auto_size_ctl_t *a,
++                                 const H5C_auto_size_ctl_t *b,
++                                 hbool_t compare_init);
+ #endif /* _CACHE_COMMON_H */
+ 
+--- a/testpar/t_span_tree.c
++++ b/testpar/t_span_tree.c
+@@ -37,6 +37,9 @@
+ #include "hdf5.h"
+ #include "H5private.h"
+ #include "testphdf5.h"
++#define H5S_PACKAGE
++#define H5S_TESTING
++#include "H5Spkg.h"
+ 
+ 
+ static void coll_write_test(int chunk_factor);
+--- a/configure.ac
++++ b/configure.ac
+@@ -1504,6 +1504,9 @@ case "$host_cpu-$host_vendor-$host_os" in
+     ## however, we do not do this since it breaks the big test on some 
+     ## older platforms.
+     AM_CPPFLAGS="-D_BSD_SOURCE $AM_CPPFLAGS"
++    
++    ## _GNU_SOURCE is needed for vasprintf
++    AM_CPPFLAGS="-D_GNU_SOURCE $AM_CPPFLAGS"
+     ;;
+ esac
+ 

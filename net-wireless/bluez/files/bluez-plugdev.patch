@@ -1,0 +1,14 @@
+diff -Nurp bluez-4.39.orig/src/bluetooth.conf bluez-4.39/src/bluetooth.conf
+--- bluez-4.39.orig/src/bluetooth.conf	2008-12-20 20:18:10.000000000 +0100
++++ bluez-4.39/src/bluetooth.conf	2009-09-05 13:30:34.411581498 +0200
+@@ -17,6 +17,10 @@
+     <allow send_destination="org.bluez"/>
+   </policy>
+ 
++  <policy group="plugdev">
++    <allow send_destination="org.bluez"/>
++  </policy>
++
+   <policy context="default">
+     <deny send_destination="org.bluez"/>
+   </policy>

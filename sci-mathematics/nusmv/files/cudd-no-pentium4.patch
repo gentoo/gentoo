@@ -1,0 +1,11 @@
+--- Makefile.orig	2010-07-12 02:54:26.000000000 +0200
++++ Makefile	2010-07-12 02:54:49.000000000 +0200
+@@ -69,7 +69,7 @@
+ # Gcc 2.8.1 or higher on i686.
+ #XCFLAGS	= -mcpu=pentiumpro -malign-double -DHAVE_IEEE_754 -DBSD
+ # Gcc 3.2.2 or higher on i686.
+-XCFLAGS	= -mcpu=pentium4 -malign-double -DHAVE_IEEE_754 -DBSD -DSIZEOF_VOID_P=4 -DSIZEOF_LONG=4 -DSIZEOF_INT=4
++XCFLAGS	= -malign-double -DHAVE_IEEE_754 -DBSD -DSIZEOF_VOID_P=4 -DSIZEOF_LONG=4 -DSIZEOF_INT=4
+ # Icc on i686.
+ #XCFLAGS	= -ansi -align -ip -DHAVE_IEEE_754 -DBSD
+ # Gcc on ia64.

@@ -1,0 +1,53 @@
+commit 86b960a528df7118ab43b629bbd906db7459300d
+Author: Jon Dowland <jmtd@debian.org>
+Date:   Sun May 22 12:48:39 2011 +0100
+
+    fix is_mounted (memory leaks and NULL access)
+    
+    Ensure that the return of realpath is checked for NULL before
+    access.  Ensure that the return value is free'd before it falls
+    out of scope.  Related tidying up.
+
+diff --git a/src/encfs_wrapper.cpp b/src/encfs_wrapper.cpp
+index 347337b..961818b 100644
+--- a/src/encfs_wrapper.cpp
++++ b/src/encfs_wrapper.cpp
+@@ -33,24 +33,24 @@
+ 
+ bool is_mounted(const char *mount_dir)
+ {
++	struct mntent *m;
+ 	FILE *f = setmntent("/etc/mtab", "r");
+- 	char *mount_dir_expanded = realpath(mount_dir, NULL);
+-	if (mount_dir_expanded == NULL) {
+-		// no such file or dir, ...
+-		// so: not mounted
+-		//	  perror("cryptkeeper, is_mounted");
++ 	char *mount_dir_expanded, *mnt_dir_expanded;
++
++	if (!(mount_dir_expanded = realpath(mount_dir, NULL)))
+ 		return false;
+-	}
+-	for (;;) {
+- 	        char *mnt_dir_expanded;
+-		struct mntent *m = getmntent(f);
+-		if (!m) break;
+- 		mnt_dir_expanded = realpath(m->mnt_dir, NULL);
+- 		if (strcmp(mount_dir_expanded, mnt_dir_expanded)==0) {
++
++	while(m = getmntent(f)) {
++ 	        if(mnt_dir_expanded = realpath(m->mnt_dir, NULL)) {
++			if (strcmp(mount_dir_expanded, mnt_dir_expanded)==0) {
++				free(mnt_dir_expanded);
++				free(mount_dir_expanded);
++				return true;
++			}
+ 			free(mnt_dir_expanded);
+- 			return true;
+- 		}
++		}
+ 	}
++	free(mount_dir_expanded);
+ 	return false;
+ }
+ 

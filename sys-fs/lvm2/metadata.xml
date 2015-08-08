@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<maintainer>
+		<email>agk@redhat.com</email>
+		<name>Alasdair Kergon</name>
+		<description>Upstream Maintainer (please CC on bugs)</description>
+	</maintainer>
+	<use>
+		<flag name='clvm'>Allow users to build clustered lvm2</flag>
+		<flag name='cman'>Cman support for clustered lvm</flag>
+		<flag name='lvm1'>Allow users to build lvm2 with lvm1 support</flag>
+		<flag name='lvm2create_initrd'>Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
+		<flag name='thin'>Support for thin volumes</flag>
+		<flag name='device-mapper-only'>Build only device-mapper and not the rest of LVM2 (UNSUPPORTED)</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:heinz_mauelshagen:lvm2</remote-id>
+	</upstream>
+</pkgmetadata>

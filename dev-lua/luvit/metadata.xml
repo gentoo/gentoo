@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<use>
+		<flag name='bundled-libs'>Use bundled versions of some libraries.</flag>
+		<flag name='system-libs'>Use system version of <pkg>dev-libs/yajl</pkg>.</flag>
+	</use>
+</pkgmetadata>
+

@@ -1,0 +1,22 @@
+Index: xlockmore-5.31/configure.in
+===================================================================
+--- xlockmore-5.31.orig/configure.in
++++ xlockmore-5.31/configure.in
+@@ -8,17 +8,7 @@ AC_CANONICAL_HOST
+ canonical=$host
+ 
+ AC_PROG_CC
+-dnl Check if C++ compiler is present. If not set CXX to the C-compiler used
+-dnl for the other compilations.
+-if test "$CC" = gcc; then
+-  AC_CHECK_PROGS(CXX, $CCC g++ CC C++ c++ cxx cc++ xlC $CC, gcc)
+-else
+-  AC_CHECK_PROGS(CXX, $CCC CC C++ g++ c++ cxx cc++ xlC $CC, gcc)
+-fi
+ AC_PROG_CXX
+-if test "${CXX}" = "xlC" ; then
+-  CXXFLAGS="${CXXFLAGS} -+"
+-fi
+ 
+ dnl If you're using g++-2.95 or later and have old X11 includes, you may need
+ dnl to use "g++ -fpermissive" in the Makefiles

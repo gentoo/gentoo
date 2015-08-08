@@ -1,0 +1,23 @@
+conf.CheckCHeader lrdf.h check fails because of missing -I/usr/include/raptor2, use pkg-config instead
+
+--- Sconstruct
++++ Sconstruct
+@@ -268,7 +268,8 @@
+ 		env.Append( LIBPATH = 'C:\Program Files\GnuWin32\lib' )
+ 		env.Append( LIBS = [ "pthread" ] )
+ 	
+-        if str(env['lrdf']) == "1": env.Append( LIBS = ["lrdf"] )
++        if str(env['lrdf']) == "1":
++		env.ParseConfig('pkg-config --cflags --libs lrdf')
+ 	if str(env['jack']) == "1": env.Append( LIBS = ["jack"])
+ 	if str(env['alsa']) == "1": env.Append( LIBS = ["asound"])
+ 	if str(env['libarchive']) == "1": env.Append( LIBS = ["archive"])
+@@ -449,7 +450,7 @@
+    Exit(1)
+ 
+ #lrdf: categorizing of ladspa effects
+-if str(env['lrdf']) == "1" and not conf.CheckCHeader('lrdf.h'):
++if str(env['lrdf']) == "1" and not conf.CheckPKG('lrdf >= 0.4.0'):
+     print 'lrdf must be installed!'
+     Exit(1)
+ 

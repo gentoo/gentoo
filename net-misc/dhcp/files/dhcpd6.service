@@ -1,0 +1,11 @@
+[Unit]
+Description=DHCPv6 Server Daemon
+Documentation=man:dhcpd(8) man:dhcpd.conf(5)
+After=network.target
+After=time-sync.target
+
+[Service]
+ExecStart=/usr/sbin/dhcpd -f -s -6 -cf /etc/dhcp/dhcpd.conf -user dhcp -group dhcp --no-pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,49 @@
+From 7f793442316599ca25014a3d39c5de56c384990f Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Fri, 23 May 2014 18:10:20 +1000
+Subject: [PATCH] Fix tests with Python 3.
+
+Change-Id: Ibbf54406ba33dd1f645a46d63c04269868288768
+---
+ tests/minimalbinding/typedef_test.py | 2 +-
+ tests/samplebinding/overflow_test.py | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/minimalbinding/typedef_test.py b/tests/minimalbinding/typedef_test.py
+index 089b279..b5535fb 100644
+--- a/tests/minimalbinding/typedef_test.py
++++ b/tests/minimalbinding/typedef_test.py
+@@ -30,7 +30,7 @@ from py3kcompat import IS_PY3K
+ 
+ try:
+     import numpy as np
+-except ImportError, e:
++except ImportError:
+     np = None
+ 
+ 
+diff --git a/tests/samplebinding/overflow_test.py b/tests/samplebinding/overflow_test.py
+index 5020872..c294c13 100644
+--- a/tests/samplebinding/overflow_test.py
++++ b/tests/samplebinding/overflow_test.py
+@@ -45,7 +45,7 @@ class OverflowTest(unittest.TestCase):
+         '''C++ function receives an long long argument and raise OverflowError if the value is negative.'''
+         val = 100
+         self.assertEqual(doubleLongLong(val), 2 * val)
+-        val = long(100)
++        val = int(100)
+         self.assertEqual(doubleLongLong(val), 2 * val)
+         val = (2 << 64) + 1
+         self.assertRaises(OverflowError, doubleLongLong, val)
+@@ -54,7 +54,7 @@ class OverflowTest(unittest.TestCase):
+         '''C++ function receives an unsigned long long argument and raise OverflowError if the value is negative.'''
+         val = 100
+         self.assertEqual(doubleUnsignedLongLong(val), 2 * val)
+-        val = long(100)
++        val = int(100)
+         self.assertEqual(doubleUnsignedLongLong(val), 2 * val)
+         val *= -1
+         self.assertRaises(OverflowError, doubleUnsignedLongLong, val)
+-- 
+2.1.0
+

@@ -1,0 +1,11 @@
+--- GWMetadata/MDFinder/GNUmakefile.preamble.orig	2013-04-04 11:05:53.208502021 +0200
++++ GWMetadata/MDFinder/GNUmakefile.preamble	2013-04-04 11:05:55.012501940 +0200
+@@ -13,7 +13,7 @@
+ 
+ ADDITIONAL_LIB_DIRS += -L../MDKit/MDKit.framework/Versions/Current/$(GNUSTEP_TARGET_LDIR) 
+ ADDITIONAL_LIB_DIRS += -L../../FSNode/FSNode.framework/Versions/Current/$(GNUSTEP_TARGET_LDIR)
+-ADDITIONAL_LIB_DIRS += -L../../DBKit/$(GNUSTEP_OBJ_DIR)
++ADDITIONAL_LIB_DIRS += -Wl,-rpath-link ../../DBKit/$(GNUSTEP_OBJ_DIR)
+ 
+ # Additional LDFLAGS to pass to the linker
+ # ADDITIONAL_LDFLAGS += 

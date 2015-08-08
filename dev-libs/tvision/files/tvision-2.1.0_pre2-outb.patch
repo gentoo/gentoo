@@ -1,0 +1,41 @@
+Recent kernel headers no longer provide asm/io.h.
+
+--- tvision/classes/linux/linuxdis.cc
++++ tvision/classes/linux/linuxdis.cc
+@@ -300,7 +300,11 @@
+ *****************************************************************************/
+ 
+ #ifdef h386LowLevel
++#if HAVE_OUTB_IN_SYS
++#include <sys/io.h>
++#else
+ #include <asm/io.h>
++#endif
+ 
+ static inline
+ unsigned char I(unsigned char i)
+--- tvision/classes/linux/linuxscr.cc
++++ tvision/classes/linux/linuxscr.cc
+@@ -123,7 +123,11 @@
+ #include <tv/linux/log.h>
+ 
+ #ifdef h386LowLevel
++ #if HAVE_OUTB_IN_SYS
++ #include <sys/io.h>
++ #else
+  #include <asm/io.h>
++ #endif
+ #endif
+ 
+ // What a hell is that?!
+--- tvision/config.pl
++++ tvision/config.pl
+@@ -77,7 +77,7 @@
+    # glibc I use but the fact is that the needed tricks make it very Linux
+    # dependent.
+    LookForPThread() if $OSf eq 'Linux';
+-   #LookForOutB();
++   LookForOutB();
+   }
+ if ($Compf eq 'Cygwin')
+   {# Cygwin incorporates a XFree86 port

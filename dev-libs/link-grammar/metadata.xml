@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnome-office</herd>
+	<longdescription lang="en">
+		The Link Grammar Parser is a syntactic parser of English, based on link
+		grammar, an original theory of English syntax. The system is written in
+		generic C code, and runs on any platform with a C compiler.
+	</longdescription>
+	<use>
+		<flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
+		<flag name="hunspell">Adds support for <pkg>app-text/hunspell</pkg> spell checker</flag>
+	</use>
+</pkgmetadata>

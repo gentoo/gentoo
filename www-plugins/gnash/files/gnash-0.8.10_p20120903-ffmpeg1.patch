@@ -1,0 +1,252 @@
+commit 4b3dae970549d42723c2528c250a1f95248145c7
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Wed Feb 13 14:38:44 2013 -0300
+
+    Fix build with latest FFmpeg (second attempt)
+    
+    Add ifdefery to be compatible with older versions.
+    See ticket #38122
+    
+    Signed-off-by: Sandro Santilli <strk@keybit.net>
+
+diff --git a/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp b/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp
+index 067e418..5c8e1ad 100644
+--- a/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp
++++ b/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp
+@@ -84,8 +84,10 @@ AudioDecoderFfmpeg::~AudioDecoderFfmpeg()
+ 
+ void AudioDecoderFfmpeg::setup(SoundInfo& info)
+ {
+-    // Init the avdecoder-decoder
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(52,6,2)
++    // Starting from this version avcodec_register calls avcodec_init
+     avcodec_init();
++#endif
+     avcodec_register_all();// change this to only register need codec?
+ 
+     enum CodecID codec_id;
+@@ -158,14 +160,14 @@ void AudioDecoderFfmpeg::setup(SoundInfo& info)
+             case CODEC_ID_PCM_U16LE:
+                 _audioCodecCtx->channels = (info.isStereo() ? 2 : 1);
+                 _audioCodecCtx->sample_rate = info.getSampleRate();
+-                _audioCodecCtx->sample_fmt = SAMPLE_FMT_S16; // ?! arbitrary ?
++                _audioCodecCtx->sample_fmt = AV_SAMPLE_FMT_S16; // ?! arbitrary ?
+                 _audioCodecCtx->frame_size = 1; 
+                 break;
+ 
+             default:
+                 _audioCodecCtx->channels = (info.isStereo() ? 2 : 1);
+                 _audioCodecCtx->sample_rate = info.getSampleRate();
+-                _audioCodecCtx->sample_fmt = SAMPLE_FMT_S16; // ?! arbitrary ?
++                _audioCodecCtx->sample_fmt = AV_SAMPLE_FMT_S16; // ?! arbitrary ?
+                 break;
+     }
+ }
+@@ -173,7 +175,10 @@ void AudioDecoderFfmpeg::setup(SoundInfo& info)
+ void AudioDecoderFfmpeg::setup(const AudioInfo& info)
+ {
+     // Init the avdecoder-decoder
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(52,6,2)
++    // Starting from this version avcodec_register calls avcodec_init
+     avcodec_init();
++#endif
+     avcodec_register_all();// change this to only register need codec?
+ 
+     enum CodecID codec_id = CODEC_ID_NONE;
+@@ -297,7 +302,7 @@ void AudioDecoderFfmpeg::setup(const AudioInfo& info)
+                 _audioCodecCtx->channels = (info.stereo ? 2 : 1);
+                 _audioCodecCtx->sample_rate = info.sampleRate;
+                 // was commented out (why?):
+-                _audioCodecCtx->sample_fmt = SAMPLE_FMT_S16; 
++                _audioCodecCtx->sample_fmt = AV_SAMPLE_FMT_S16;
+                 break;
+     }
+ 
+diff --git a/libmedia/ffmpeg/MediaParserFfmpeg.cpp b/libmedia/ffmpeg/MediaParserFfmpeg.cpp
+index d6e6902..136cc08 100644
+--- a/libmedia/ffmpeg/MediaParserFfmpeg.cpp
++++ b/libmedia/ffmpeg/MediaParserFfmpeg.cpp
+@@ -344,8 +344,10 @@ MediaParserFfmpeg::initializeParser()
+ {
+     av_register_all(); // TODO: needs to be invoked only once ?
+ 
++#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(52,107,0)
+     _byteIOCxt.buffer = NULL;
+-    
++#endif
++
+     _inputFmt = probeStream();
+ 
+ #ifdef GNASH_ALLOW_VCODEC_ENV	
+@@ -366,7 +368,11 @@ MediaParserFfmpeg::initializeParser()
+     // which isn't needed.
+     _byteIOBuffer.reset(new unsigned char[byteIOBufferSize]);
+ 
++#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(52,107,0)
+     init_put_byte(&_byteIOCxt,
++#else
++    _avIOCxt = avio_alloc_context(
++#endif
+ 		  _byteIOBuffer.get(), // buffer
+ 		  byteIOBufferSize, // buffer size
+ 		  0, // write flags
+@@ -376,7 +382,11 @@ MediaParserFfmpeg::initializeParser()
+ 		  MediaParserFfmpeg::seekMediaWrapper // seeker callback
+ 		  );
+     
++#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(52,107,0)
+     _byteIOCxt.is_streamed = 1;
++#else
++    _avIOCxt->seekable = 0;
++#endif
+ 
+ #if !defined(LIBAVCODEC_VERSION_MAJOR) || LIBAVCODEC_VERSION_MAJOR < 52
+     // Needed for Lenny.
+@@ -387,12 +397,19 @@ MediaParserFfmpeg::initializeParser()
+ 
+     assert(_formatCtx);
+ 
++#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(52,107,0)
+     // Otherwise av_open_input_stream will reallocate the context.
+     AVFormatParameters ap;
+     std::memset(&ap, 0, sizeof ap);
+     ap.prealloced_context = 1;
+ 
+     if (av_open_input_stream(&_formatCtx, &_byteIOCxt, "", _inputFmt, &ap) < 0)
++#else
++
++    _formatCtx->pb = _avIOCxt;
++
++    if (avformat_open_input(&_formatCtx, "", _inputFmt, NULL) < 0)
++#endif
+     {
+         throw IOException("MediaParserFfmpeg couldn't open input stream");
+     }
+@@ -400,10 +417,17 @@ MediaParserFfmpeg::initializeParser()
+ #if defined(LIBAVCODEC_VERSION_MAJOR) && LIBAVCODEC_VERSION_MAJOR >= 52
+     // Note: in at least some versions of ffmpeg, av_open_input_stream does
+     // not parse metadata; not sure why.
++#if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(51,5,0)
+     AVMetadata* md = _formatCtx->metadata;
+     if (md) {
+         AVMetadataTag* tag = av_metadata_get(md, "album", 0,
+                 AV_METADATA_MATCH_CASE);
++#else
++    AVDictionary* md = _formatCtx->metadata;
++    if (md) {
++        AVDictionaryEntry* tag = av_dict_get(md, "album", 0,
++                AV_DICT_MATCH_CASE);
++#endif
+         if (tag && tag->value) {
+             setId3Info(&Id3Info::album, std::string(tag->value),
+                     _id3Object);
+@@ -620,27 +644,27 @@ MediaParserFfmpeg::seekMedia(boost::int64_t offset, int whence)
+ }
+ 
+ boost::uint16_t
+-MediaParserFfmpeg::SampleFormatToSampleSize(SampleFormat fmt)
++MediaParserFfmpeg::SampleFormatToSampleSize(AVSampleFormat fmt)
+ {
+ 	switch (fmt)
+ 	{
+-		case SAMPLE_FMT_U8: // unsigned 8 bits
++		case AV_SAMPLE_FMT_U8: // unsigned 8 bits
+ 			return 1;
+ 
+-		case SAMPLE_FMT_S16: // signed 16 bits
+-		case SAMPLE_FMT_FLT: // float
++		case AV_SAMPLE_FMT_S16: // signed 16 bits
++		case AV_SAMPLE_FMT_FLT: // float
+ 			return 2;
+ 
+ #if !defined (LIBAVCODEC_VERSION_MAJOR) || LIBAVCODEC_VERSION_MAJOR < 52
+ // Was dropped for version 52.0.0
+-		case SAMPLE_FMT_S24: // signed 24 bits
++		case AV_SAMPLE_FMT_S24: // signed 24 bits
+ 			return 3;
+ #endif
+ 
+-		case SAMPLE_FMT_S32: // signed 32 bits
++		case AV_SAMPLE_FMT_S32: // signed 32 bits
+ 			return 4;
+ 
+-		case SAMPLE_FMT_NONE:
++		case AV_SAMPLE_FMT_NONE:
+ 		default:
+ 			return 8; // arbitrary value
+ 	}
+diff --git a/libmedia/ffmpeg/MediaParserFfmpeg.h b/libmedia/ffmpeg/MediaParserFfmpeg.h
+index 4e410d8..a14cfb6 100644
+--- a/libmedia/ffmpeg/MediaParserFfmpeg.h
++++ b/libmedia/ffmpeg/MediaParserFfmpeg.h
+@@ -154,7 +154,13 @@ private:
+ 	AVStream* _audioStream;
+ 
+ 	/// ?
+-	ByteIOContext _byteIOCxt;
++#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(52,107,0)
++// AVIOContext was introduced a bit earlier but without version bump, so let's
++// be safe
++        ByteIOContext _byteIOCxt;
++#else
++        AVIOContext* _avIOCxt;
++#endif
+ 
+ 	/// Size of the ByteIO context buffer
+ 	//
+@@ -172,7 +178,7 @@ private:
+ 	//
+ 	/// TODO: move somewhere in ffmpeg utils..
+ 	///
+-	boost::uint16_t SampleFormatToSampleSize(SampleFormat fmt);
++	boost::uint16_t SampleFormatToSampleSize(AVSampleFormat fmt);
+ 
+ 	/// Make an EncodedVideoFrame from an AVPacket and push to buffer
+ 	//
+diff --git a/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp b/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp
+index 40a5c80..eeefafe 100644
+--- a/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp
++++ b/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp
+@@ -171,7 +171,10 @@ VideoDecoderFfmpeg::init(enum CodecID codecId, int /*width*/, int /*height*/,
+         boost::uint8_t* extradata, int extradataSize)
+ {
+     // Init the avdecoder-decoder
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(52,6,2)
++    // Starting from this version avcodec_register calls avcodec_init
+     avcodec_init();
++#endif
+     avcodec_register_all();// change this to only register need codec?
+ 
+     _videoCodec = avcodec_find_decoder(codecId); 
+@@ -529,7 +532,11 @@ get_buffer(AVCodecContext* avctx, AVFrame* pic)
+ 
+     static unsigned int pic_num = 0;
+     pic->type = FF_BUFFER_TYPE_USER;
++#if LIBAVCODEC_VERSION_MAJOR < 54
++    // This field has been unused for longer but has been removed with
++    // libavcodec 54.
+     pic->age  = ++pic_num - surface->getPicNum();
++#endif
+     surface->setPicNum(pic_num);
+     return 0;
+ #endif
+diff --git a/libmedia/ffmpeg/ffmpegHeaders.h b/libmedia/ffmpeg/ffmpegHeaders.h
+index 65a8d0c..7710121 100644
+--- a/libmedia/ffmpeg/ffmpegHeaders.h
++++ b/libmedia/ffmpeg/ffmpegHeaders.h
+@@ -83,5 +83,15 @@ extern "C" {
+ #define HAVE_SWSCALE_H 1
+ #endif
+ 
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(52,94,1)
++#define AV_SAMPLE_FMT_NONE SAMPLE_FMT_NONE
++#define AV_SAMPLE_FMT_U8   SAMPLE_FMT_U8
++#define AV_SAMPLE_FMT_S16  SAMPLE_FMT_S16
++#define AV_SAMPLE_FMT_S32  SAMPLE_FMT_S32
++#define AV_SAMPLE_FMT_FLT  SAMPLE_FMT_FLT
++#define AV_SAMPLE_FMT_DBL  SAMPLE_FMT_DBL
++
++#define AVSampleFormat SampleFormat
++#endif
+ 
+ #endif // GNASH_MEDIA_FFMPEG_HEADERS_H

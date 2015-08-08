@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
+  <maintainer>
+    <email>jesse@boldandbusted.com</email>
+    <name>Jesse Adelman</name>
+  </maintainer>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+	<name>Manuel Rüger</name>
+  </maintainer>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+fix building when readline is disabled
+
+--- a/builtins/complete.def
++++ b/builtins/complete.def
+@@ -49,6 +49,8 @@ $END
+ 
+ #include <config.h>
+ 
++#ifdef READLINE
++
+ #include <stdio.h>
+ 
+ #include "../bashtypes.h"
+@@ -867,3 +869,5 @@ compopt_builtin (list)
+ 
+   return (ret);
+ }
++
++#endif

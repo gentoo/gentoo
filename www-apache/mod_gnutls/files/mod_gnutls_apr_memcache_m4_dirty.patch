@@ -1,0 +1,31 @@
+--- mod_gnutls-0.5.10/m4/apr_memcache.m4	2011-07-08 23:29:46.000000000 +0200
++++ mod_gnutls-0.5.10/m4/apr_memcache.m4.new	2011-09-15 20:04:00.117806214 +0200
+@@ -40,21 +40,20 @@
+ if test -n "$apr_memcache_includes"; then
+     apr_memcache_includedir=$apr_memcache_includes
+ elif test -n "$apr_memcache_prefix"; then
+-    apr_memcache_includedir=$apr_memcache_prefix/include/apr_memcache-0
++    apr_memcache_includedir=$apr_memcache_prefix/include/aprutil-1
+ else
+-    apr_memcache_includedir=$includedir/apr_memcache-0
++    apr_memcache_includedir=$includedir/aprutil-1
+ fi
++
+ CFLAGS="-I$apr_memcache_includedir $CFLAGS"
+ 
++
+ AC_CHECK_LIB(
+-    apr_memcache,
++    aprutil-1,
+     apr_memcache_create,
+     [
+-	APR_MEMCACHE_LIBS="-lapr_memcache"
+-	if test -n "$apr_memcache_libdir"; then
+-	    APR_MEMCACHE_LIBS="-R$apr_memcache_libdir -L$apr_memcache_libdir $APR_MEMCACHE_LIBS"
+-	fi
+-	APR_MEMCACHE_CFLAGS="-I$apr_memcache_includedir"
++    APR_MEMCACHE_LIBS="`apu-1-config --link-ld`"
++    APR_MEMCACHE_CFLAGS="`apu-1-config --includes`"
+     ]
+ )
+ CFLAGS=$save_CFLAGS

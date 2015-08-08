@@ -1,0 +1,24 @@
+diff -Naur xmbmon205.orig/configure xmbmon205/configure
+--- xmbmon205.orig/configure	2004-08-13 16:22:18.000000000 +0900
++++ xmbmon205/configure	2005-02-05 11:02:02.496163477 +0900
+@@ -3489,7 +3489,7 @@
+ 	i?86-*-freebsd*)
+   		CC=cc
+ 		;;
+-	i?86-*-linux-*)
++	i?86-*-linux-* | x86_64-*-linux-*)
+   		CC=gcc
+ 		HOSTDEF="-DLINUX"
+ 		;;
+diff -Naur xmbmon205.orig/configure.in xmbmon205/configure.in
+--- xmbmon205.orig/configure.in	2004-08-13 16:06:31.000000000 +0900
++++ xmbmon205/configure.in	2005-02-05 11:01:35.414957216 +0900
+@@ -19,7 +19,7 @@
+ 	i?86-*-freebsd*)
+   		CC=cc
+ 		;;
+-	i?86-*-linux-*)
++	i?86-*-linux-* | x86_64-*-linux-*)
+   		CC=gcc
+ 		HOSTDEF="-DLINUX"
+ 		;;

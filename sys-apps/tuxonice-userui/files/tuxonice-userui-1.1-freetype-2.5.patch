@@ -1,0 +1,38 @@
+From ed1b73cf2f073f39200be79c633deb292cb8d4af Mon Sep 17 00:00:00 2001
+From: Damjan Georgievski <gdamjan@gmail.com>
+Date: Mon, 6 Jan 2014 03:06:18 +0100
+Subject: [PATCH] fix #includes for recent freetype versions
+
+---
+ fbsplash/ttf.c | 3 +--
+ fbsplash/ttf.h | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/fbsplash/ttf.c b/fbsplash/ttf.c
+index 384f400..1dd841c 100644
+--- a/fbsplash/ttf.c
++++ b/fbsplash/ttf.c
+@@ -27,8 +27,7 @@
+ #include <assert.h>
+ 
+ #include <ft2build.h>
+-#include <freetype/ftoutln.h>
+-#include <freetype/ttnameid.h>
++#include FT_FREETYPE_H
+ 
+ #include "splash.h"
+ 
+diff --git a/fbsplash/ttf.h b/fbsplash/ttf.h
+index 034bb9e..6a4da9d 100644
+--- a/fbsplash/ttf.h
++++ b/fbsplash/ttf.h
+@@ -1,8 +1,7 @@
+ #ifndef _TTF_H
+ #define _TTF_H
+ #include <ft2build.h>
+-#include <freetype/ftoutln.h>
+-#include <freetype/ttnameid.h>
++#include FT_FREETYPE_H
+ 
+ #define CACHED_METRICS  0x10
+ #define CACHED_BITMAP   0x01

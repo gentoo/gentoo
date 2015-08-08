@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<project name="jaxb" default="jar" basedir=".">
+  <target name="compile">
+    <mkdir dir="build"/>
+    <javac debug="false" srcdir="src" destdir="build">
+      <classpath>
+        <fileset dir="lib" includes="**/*.jar"/>
+      </classpath>
+    </javac>
+    <copy todir="build">
+      <fileset dir="src" includes="**/*.properties"/>
+    </copy>
+  </target>
+  <target name="jar" depends="compile">
+    <jar destfile="jaxb-api.jar">
+      <fileset dir="build" includes="javax/**/*.class"/>
+      <fileset dir="build" includes="javax/**/*.properties"/>
+    </jar>
+    <jar destfile="jaxb-impl.jar">
+      <fileset dir="build" includes="com/**/*.class"/>
+      <fileset dir="build" includes="com/**/*.properties"/>
+    </jar>
+  </target>
+</project>

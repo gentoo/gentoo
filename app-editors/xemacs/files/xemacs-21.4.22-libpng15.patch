@@ -1,0 +1,66 @@
+diff -ur xemacs-21.4.22.orig/src/glyphs-eimage.c xemacs-21.4.22/src/glyphs-eimage.c
+--- xemacs-21.4.22.orig/src/glyphs-eimage.c	2011-09-26 19:44:57.889720996 +0300
++++ xemacs-21.4.22/src/glyphs-eimage.c	2011-09-26 19:48:07.026226254 +0300
+@@ -946,8 +946,8 @@
+     int y;
+     unsigned char **row_pointers;
+     UINT_64_BIT pixels_sq;
+-    height = info_ptr->height;
+-    width = info_ptr->width;
++    height = png_get_image_height(png_ptr, info_ptr);
++    width = png_get_image_width(png_ptr, info_ptr);
+     pixels_sq = (UINT_64_BIT) width * (UINT_64_BIT) height;
+     if (pixels_sq > ((size_t) -1) / 3)
+       signal_image_error ("PNG image too large to instantiate", instantiator);
+@@ -1002,22 +1002,22 @@
+     /* Now that we're using EImage, ask for 8bit RGB triples for any type
+        of image*/
+     /* convert palette images to full RGB */
+-    if (info_ptr->color_type == PNG_COLOR_TYPE_PALETTE)
++    if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_PALETTE)
+       png_set_expand (png_ptr);
+     /* send grayscale images to RGB too */
+-    if (info_ptr->color_type == PNG_COLOR_TYPE_GRAY ||
+-	info_ptr->color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
++    if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_GRAY ||
++	png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_GRAY_ALPHA)
+       png_set_gray_to_rgb (png_ptr);
+     /* we can't handle alpha values */
+-    if (info_ptr->color_type & PNG_COLOR_MASK_ALPHA)
++    if (png_get_color_type(png_ptr, info_ptr) & PNG_COLOR_MASK_ALPHA)
+       png_set_strip_alpha (png_ptr);
+     /* tell libpng to strip 16 bit depth files down to 8 bits */
+-    if (info_ptr->bit_depth == 16)
++    if (png_get_bit_depth(png_ptr, info_ptr) == 16)
+       png_set_strip_16 (png_ptr);
+     /* if the image is < 8 bits, pad it out */
+-    if (info_ptr->bit_depth < 8)
++    if (png_get_bit_depth(png_ptr, info_ptr) < 8)
+       {
+-	if (info_ptr->color_type == PNG_COLOR_TYPE_GRAY)
++	if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_GRAY)
+ 	  png_set_expand (png_ptr);
+ 	else
+ 	  png_set_packing (png_ptr);
+@@ -1036,16 +1036,18 @@
+      */
+     {
+       int i;
++      png_textp text;
++      int num_text;
+ 
+-      for (i = 0 ; i < info_ptr->num_text ; i++)
++      for (i = 0 ; i < num_text ; i++)
+ 	{
+ 	  /* How paranoid do I have to be about no trailing NULLs, and
+ 	     using (int)info_ptr->text[i].text_length, and strncpy and a temp
+ 	     string somewhere? */
+ 
+ 	  warn_when_safe (Qpng, Qinfo, "%s - %s",
+-			  info_ptr->text[i].key,
+-			  info_ptr->text[i].text);
++			  text[i].key,
++			  text[i].text);
+ 	}
+     }
+ #endif

@@ -1,0 +1,18 @@
+diff --git a/Makefile.am b/Makefile.am
+index 567aaf9..281c782 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -60,10 +60,10 @@ endif
+ # Global flags
+ ##################################################
+ 
+-CPPFLAGS = -I$(top_srcdir)/include/ -I$(top_srcdir)/src/dbxml -I$(top_srcdir)/src/common \
++CPPFLAGS += -I$(top_srcdir)/include/ -I$(top_srcdir)/src/dbxml -I$(top_srcdir)/src/common \
+   $(berkeleydb_include) $(xqilla_include) $(xerces_include) $(zlib_include)
+-LDFLAGS = -L$(berkeleydb_lib) -R$(berkeleydb_lib) -L$(xqilla_lib) -R$(xqilla_lib) \
+-  -L$(xerces_lib) -R$(xerces_lib) $(zlib_lib) -l$(berkeleydb_library) -lxqilla -lxerces-c $(zlib_library)
++LDFLAGS += -L$(berkeleydb_lib) -L$(xqilla_lib) \
++  -L$(xerces_lib) $(zlib_lib) -l$(berkeleydb_library) -lxqilla -lxerces-c $(zlib_library)
+ LDADD = libdbxml.la
+ 
+ ##################################################

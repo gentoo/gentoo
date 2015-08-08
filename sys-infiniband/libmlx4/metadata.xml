@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>cluster</herd>
+<longdescription>
+libibverbs is a library that allows programs to use InfiniBand "verbs"
+for direct access to IB hardware from userspace.  For more information
+on verbs, see the InfiniBand Architecture Specification vol. 1,
+especially chapter 11.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,8 @@
+MSF_DATABASE_CONFIG=/usr/lib/metasploit/config/database.yml
+
+# needed because MSF ships an old version of metasm 
+# which isn't compatible with the new one
+MSF_LOCAL_LIB="/usr/lib/metasploit/lib/metasm"
+
+# needed because MSF doesn't know where it is since the alzheimer's
+MSF_ROOT=/usr/lib/metasploit

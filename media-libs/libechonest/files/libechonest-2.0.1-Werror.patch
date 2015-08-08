@@ -1,0 +1,43 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu Dec 27 22:58:59 UTC 2012
+Subject: build system
+
+	only enable Werror for development
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -5,6 +5,10 @@
+ 
+ cmake_minimum_required( VERSION 2.6 )
+ 
++# options
++option(WERROR "enable -Werror for development" OFF)
++option(ECHONEST_BUILD_TESTS "Build all unit tests" ON)
++
+ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII" )
+ 
+@@ -32,8 +36,12 @@
+     endif()
+ 
+     # disable -Werror on ARM since Qt containers cause a lot of alignment warnings
+-    if ( NOT CMAKE_SYSTEM_PROCESSOR MATCHES "arm" )
+-        add_definitions( -Werror )
++    if (WERROR)
++        if ( NOT CMAKE_SYSTEM_PROCESSOR MATCHES "arm" )
++            add_definitions( -Werror )
++	else()
++            message( STATUS "-Werror breaks this package on ARM, disabled!" )
++        endif()
+     endif()
+ 
+ # to be added:
+@@ -48,8 +56,6 @@
+ endif(MSVC)
+ 
+ 
+-option(ECHONEST_BUILD_TESTS "Build all unit tests" ON)
+-
+ if(ECHONEST_BUILD_TESTS)
+   enable_testing()
+ endif(ECHONEST_BUILD_TESTS)

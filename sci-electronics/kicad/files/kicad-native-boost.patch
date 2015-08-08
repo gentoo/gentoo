@@ -1,0 +1,27 @@
+From 50a62d296e803b75ae46c964173e8b2be0661618 Mon Sep 17 00:00:00 2001
+From: Denis Dupeyron <calchan@gentoo.org>
+Date: Thu, 18 Apr 2013 08:01:43 -0600
+Subject: [PATCH] Use native Boost
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e3c6ae2..9e6e29a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -260,8 +260,8 @@ check_find_package_result(OPENGL_FOUND "OpenGL")
+ # kicad now includes needed boost files.
+ # the two next lines can be uncommented to use the native boost lib.
+ # but this is not a good idea
+-#find_package(Boost 1.36 QUIET)
+-#check_find_package_result(Boost_FOUND "Boost")
++find_package(Boost 1.36 QUIET)
++check_find_package_result(Boost_FOUND "Boost")
+ 
+ ##########################
+ # Find wxWidgets library #
+-- 
+1.8.2.1
+

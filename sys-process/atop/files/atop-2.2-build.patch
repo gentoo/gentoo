@@ -1,0 +1,27 @@
+--- atop-2.2-3/Makefile
++++ atop-2.2-3/Makefile
+@@ -19,7 +19,7 @@
+ PMPATH2  = /usr/lib64/pm-utils/sleep.d
+ PMPATHD  = /usr/lib/systemd/system-sleep
+ 
+-CFLAGS  += -O2 -I. -Wall  	 # -DHTTPSTATS
++CFLAGS  += -I. -Wall  	 # -DHTTPSTATS
+ OBJMOD0  = version.o
+ OBJMOD1  = various.o  deviate.o   procdbase.o
+ OBJMOD2  = acctproc.o photoproc.o photosyst.o  rawlog.o ifprop.o parseable.o
+@@ -32,13 +32,13 @@
+ all: 		atop atopsar atopacctd
+ 
+ atop:		atop.o    $(ALLMODS) Makefile
+-		$(CC) atop.o $(ALLMODS) -o atop -lncurses -lz -lm -lrt $(LDFLAGS)
++		$(CC) $(CFLAGS) $(LDFLAGS) atop.o $(ALLMODS) -o atop $(shell ${PKG_CONFIG} --libs ncurses) -lz -lm -lrt
+ 
+ atopsar:	atop
+ 		ln -sf atop atopsar
+ 
+ atopacctd:	atopacctd.o netlink.o
+-		$(CC) atopacctd.o netlink.o -o atopacctd $(LDFLAGS)
++		$(CC) $(CFLAGS) $(LDFLAGS) atopacctd.o netlink.o -o atopacctd
+ 
+ netlink.o:	netlink.c
+ 		$(CC) -I. -Wall -c netlink.c

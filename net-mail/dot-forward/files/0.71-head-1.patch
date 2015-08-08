@@ -1,0 +1,22 @@
+--- Makefile.orig	2003-09-03 12:02:43.275729368 -0400
++++ Makefile	2003-09-03 12:02:52.751288864 -0400
+@@ -19,8 +19,8 @@
+ auto-ccld.sh: \
+ conf-cc conf-ld warn-auto.sh
+ 	( cat warn-auto.sh; \
+-	echo CC=\'`head -1 conf-cc`\'; \
+-	echo LD=\'`head -1 conf-ld`\' \
++	echo CC=\'`head -n 1 conf-cc`\'; \
++	echo LD=\'`head -n 1 conf-ld`\' \
+ 	) > auto-ccld.sh
+ 
+ auto-str: \
+@@ -33,7 +33,7 @@
+ 
+ auto_qmail.c: \
+ auto-str conf-qmail
+-	./auto-str auto_qmail `head -1 conf-qmail` > auto_qmail.c
++	./auto-str auto_qmail `head -n 1 conf-qmail` > auto_qmail.c
+ 
+ auto_qmail.o: \
+ compile auto_qmail.c

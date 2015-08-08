@@ -1,0 +1,166 @@
+diff -Nur casacore-1.3.0.orig/casa/HDF5/HDF5DataSet.cc casacore-1.3.0/casa/HDF5/HDF5DataSet.cc
+--- casacore-1.3.0.orig/casa/HDF5/HDF5DataSet.cc	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/casa/HDF5/HDF5DataSet.cc	2011-05-16 17:29:12.000000000 +0100
+@@ -174,7 +174,7 @@
+     H5Pset_chunk(itsPLid, rank, cs.storage());
+     // Create the data set.
+     setHid (H5Dcreate(parentHid, name.chars(), itsDataType.getHidFile(),
+-		      itsDSid, NULL, itsPLid, NULL));
++		      itsDSid, 0, itsPLid, 0));
+     if (! isValid()) {
+       throw HDF5Error("Data set array " + name + " could not be created");
+     }
+@@ -185,7 +185,7 @@
+     itsParent = &parentHid;
+     setName (name);
+     // Open the dataset.
+-    setHid (H5Dopen(parentHid, name.chars(), NULL));
++    setHid (H5Dopen(parentHid, name.chars(), 0));
+     if (! isValid()) {
+       throw HDF5Error("Data set array " + name + " does not exist");
+     }
+@@ -271,7 +271,7 @@
+ 
+   DataType HDF5DataSet::getDataType (hid_t parentHid, const String& name)
+   {
+-    hid_t id = H5Dopen(parentHid, name.chars(), NULL);
++    hid_t id = H5Dopen(parentHid, name.chars(), 0);
+     if (id < 0) {
+       throw HDF5Error("Data set array " + name + " does not exist");
+     }
+diff -Nur casacore-1.3.0.orig/casa/HDF5/test/tHDF5.cc casacore-1.3.0/casa/HDF5/test/tHDF5.cc
+--- casacore-1.3.0.orig/casa/HDF5/test/tHDF5.cc	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/casa/HDF5/test/tHDF5.cc	2011-05-16 17:29:12.000000000 +0100
+@@ -126,7 +126,7 @@
+   H5Pset_chunk (plId, rank, chunkShp);
+   // Create the data set.
+   setId = H5Dcreate (fileId, "dataset", typeIdFile,
+-                     dsId, NULL, plId, NULL);
++                     dsId, 0, plId, 0);
+   check (setId, "Failed to create dataset");
+ }
+ 
+@@ -136,7 +136,7 @@
+   typeIdFile = H5Tcopy (H5T_NATIVE_FLOAT);
+   typeIdMem  = H5Tcopy (typeIdFile);
+   // Open the dataset.
+-  setId = H5Dopen (fileId, "dataset", NULL);
++  setId = H5Dopen (fileId, "dataset", 0);
+   check (setId, "Failed to open dataset");
+   // Get the data space (for the shape).
+   dsId = H5Dget_space(setId);
+diff -Nur casacore-1.3.0.orig/mirlib/bug.c casacore-1.3.0/mirlib/bug.c
+--- casacore-1.3.0.orig/mirlib/bug.c	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/bug.c	2011-05-16 17:29:12.000000000 +0100
+@@ -12,6 +12,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++void habort_c();
+ 
+ static char *errmsg_c();
+ void bug_c();
+diff -Nur casacore-1.3.0.orig/mirlib/dio.c casacore-1.3.0/mirlib/dio.c
+--- casacore-1.3.0.orig/mirlib/dio.c	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/dio.c	2011-05-16 17:29:12.000000000 +0100
+@@ -45,6 +45,7 @@
+   extern int errno;
+ #endif
+ #include <errno.h>
++void bug_c();
+ 
+ #define MAXPATH 128
+ 
+diff -Nur casacore-1.3.0.orig/mirlib/hio.c casacore-1.3.0/mirlib/hio.c
+--- casacore-1.3.0.orig/mirlib/hio.c	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/hio.c	2011-05-16 17:29:12.000000000 +0100
+@@ -36,7 +36,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
+-
++#include "sysdep.h"
+ #include "hio.h"
+ 
+ #define private static
+diff -Nur casacore-1.3.0.orig/mirlib/maskio.c casacore-1.3.0/mirlib/maskio.c
+--- casacore-1.3.0.orig/mirlib/maskio.c	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/maskio.c	2011-05-16 17:29:12.000000000 +0100
+@@ -25,7 +25,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-
++void bug_c();
++void bugno_c();
+ 
+ private void mkfill();
+ void mkflush_c();
+diff -Nur casacore-1.3.0.orig/mirlib/scrio.c casacore-1.3.0/mirlib/scrio.c
+--- casacore-1.3.0.orig/mirlib/scrio.c	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/scrio.c	2011-05-16 17:29:12.000000000 +0100
+@@ -9,6 +9,8 @@
+ /************************************************************************/
+ 
+ #include "io.h"
++void bug_c();
++void bugno_c();
+ 
+ /* char *sprintf(); */
+ #include <stdio.h>
+@@ -100,7 +102,7 @@
+ /************************************************************************/
+ void scrwrite_c(handle,buffer,offset,length)
+ int handle,offset,length;
+-float *buffer;
++Const float *buffer;
+ /**scrwrite -- Write real data to the scratch file.			*/
+ /*:scratch-i/o								*/
+ /*+  FORTRAN call sequence:
+diff -Nur casacore-1.3.0.orig/mirlib/sysdep.h casacore-1.3.0/mirlib/sysdep.h
+--- casacore-1.3.0.orig/mirlib/sysdep.h	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/sysdep.h	2011-05-16 17:41:07.000000000 +0100
+@@ -131,5 +131,13 @@
+ #  define unpackd_c(a,b,c)  memcpy((char *)(b),(a),sizeof(double)*(c))
+ #  define pack32_c(a,b,c)   memcpy((b),(char *)(a),sizeof(int)*(c))
+ #  define unpack32_c(a,b,c) memcpy((char *)(b),(a),sizeof(int)*(c))
++#else
++void pack32_c(int* in, char* out, int n);
++void unpack32_c(char* in, int* out,int n);
++void packr_c(float* in, char* out, int n);
++void unpackr_c(char* in, float* out, int n);
++void packd_c(double* in, char* out, int n);
++void unpackd_c(char* in, double* out, int n);
+ #endif
++
+ #endif
+diff -Nur casacore-1.3.0.orig/mirlib/xyio.c casacore-1.3.0/mirlib/xyio.c
+--- casacore-1.3.0.orig/mirlib/xyio.c	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/xyio.c	2011-05-16 17:29:12.000000000 +0100
+@@ -37,7 +37,7 @@
+ #define Strcpy (void)strcpy
+ void bug_c(),bugno_c();
+ void rdhdi_c(),wrhdi_c();
+-void mkclose_c(),mkwrite_c();
++void mkclose_c(),mkwrite_c(),mkflush_c();
+ char *mkopen_c();
+ int mkread_c();
+ static void xymkopen_c();
+diff -Nur casacore-1.3.0.orig/mirlib/xyzio.c casacore-1.3.0/mirlib/xyzio.c
+--- casacore-1.3.0.orig/mirlib/xyzio.c	2011-05-16 02:24:06.000000000 +0100
++++ casacore-1.3.0/mirlib/xyzio.c	2011-05-16 17:29:12.000000000 +0100
+@@ -55,6 +55,14 @@
+ #include <string.h>
+ #include <stdlib.h>
+ void    bug_c();
++void bugno_c();
++char *mkopen_c(int tno, char* name, char* status);
++void mkclose_c(char *handle);
++int mkread_c(char* handle, int mode, int* flags, int offset, int n, int nsize);
++void mkwrite_c(char* handle, int mode, int* flags, int offset, int n, int nsize);
++void mkflush_c(char* handle);
++int limprint(char *string, int lower[], int upper[]);
++int ferr(char* string, char arg );
+ #define check(x) if(x)bugno_c('f',x)
+ 
+ 

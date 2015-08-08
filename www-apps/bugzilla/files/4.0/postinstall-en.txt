@@ -1,0 +1,13 @@
+0. Bugzilla has been installed into ${MY_INSTALLDIR}
+
+1. To finish the installation, please read
+   http://www.bugzilla.org/docs/${MY_PB}/en/html/installing-bugzilla.html
+   You will need to run ${MY_INSTALLDIR}/checksetup.pl
+
+2. Please read the Release Notes, especially if you are upgrading:
+   http://www.bugzilla.org/releases/${MY_PB}/release-notes.html
+
+3. Please note that Apache2 sets AllowOverride None by default. You may have
+   to edit it to process the .htaccess file provided by Bugzilla. Please see
+   http://httpd.apache.org/docs/2.2/mod/core.html#allowoverride and
+   http://www.bugzilla.org/docs/${MY_PB}/en/html/configuration.html#http for more info.

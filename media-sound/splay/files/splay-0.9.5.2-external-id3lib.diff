@@ -1,0 +1,17 @@
+--- splay.cc~	2005-04-03 19:56:37.000000000 -0300
++++ splay.cc	2005-04-03 19:58:24.000000000 -0300
+@@ -184,9 +184,11 @@
+ 	delete mytag;
+ 	
+       }
+-      catch(ID3_Error &err){
+-	cout << err.GetErrorFile() << " (" << err.GetErrorLine() << "): "
+-	     << err.GetErrorType() << ": " << err.GetErrorDesc() << endl;
++//      catch(ID3_Error &err){
++      catch(...){
++	cout << "Error found (GetError functions disabled)" << endl;
++//	cout << err.GetErrorFile() << " (" << err.GetErrorLine() << "): "
++//	     << err.GetErrorType() << ": " << err.GetErrorDesc() << endl;
+       }
+ #endif /* HAVE_LIBID3 */        
+     }

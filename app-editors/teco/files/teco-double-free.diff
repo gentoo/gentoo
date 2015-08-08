@@ -1,0 +1,20 @@
+--- te_exec2.c	1993-11-12 21:12:47.000000000 +0000
++++ te_exec2.c.new	2005-08-21 18:31:26.495907720 +0100
+@@ -197,7 +197,7 @@
+ 		{
+ 		if (eisw)       /* if ending a file execute, restore the previous "old command string" */
+ 		    {
+-		    fclose(eisw);               /* return the file descriptor */
++		    fclose(eisw), eisw = NULL;     /* return the file descriptor */
+ 		    dly_free_blist(cbuf.f);     /* return the command string used by the file (after execution done) */
+ 		    cbuf.f = oldcstring.f;
+ 		    cbuf.z = oldcstring.z;
+@@ -214,7 +214,7 @@
+ 		oldcstring.z = cbuf.z;
+ 		cbuf.f = NULL;              /* and make it inaccessible to "rdcmd" */
+ 		}
+-	    if (eisw) fclose(eisw);         /* if a command file had been open, close it */
++	    if (eisw) fclose(eisw), eisw = NULL;  /* if a command file had been open, close it */
+ 	    esp->val1 = (eisw = t_eisw) ? -1 : 0;
+ 	    esp->flag1 = colonflag;
+ 	    colonflag = 0;

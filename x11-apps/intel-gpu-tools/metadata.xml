@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>x11</herd>
+<use>
+ <flag name='python'>Install python based register dumper utilities</flag>
+ <flag name='test-programs'>Install test programs for DRM driver development</flag>
+ <flag name='unwind'>Provide automatic stack traces on test failures</flag>
+</use>
+</pkgmetadata>

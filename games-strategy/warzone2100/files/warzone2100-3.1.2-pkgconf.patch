@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/show_bug.cgi?id=428494
+
+should be obsolete with >=dev-util/pkgconf-0.8.4
+
+--- warzone2100-3.1.0/configure.ac
++++ warzone2100-3.1.0/configure.ac
+@@ -89,7 +89,6 @@
+ 
+ # Check for pkg-config
+ PKG_PROG_PKG_CONFIG
+-AC_PROG_VERSION_CHECK([pkg-config], [0.9])
+ 
+ AC_MSG_CHECKING([for backend])
+ AC_ARG_WITH([backend],

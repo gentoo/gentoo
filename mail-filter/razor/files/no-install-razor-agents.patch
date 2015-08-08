@@ -1,0 +1,11 @@
+--- razor-agents-2.36/Makefile.old	2003-12-20 21:27:37.000000000 -0500
++++ razor-agents-2.36/Makefile	2003-12-20 21:27:55.000000000 -0500
+@@ -816,7 +816,7 @@
+ 
+ # begin razor-agents
+ install_razor_agents ::
+-	$(INST_SCRIPT)/razor-client
++#	$(INST_SCRIPT)/razor-client
+ # end razor-agents
+ 
+ 

@@ -1,0 +1,12 @@
+--- plugins/migration/CMakeLists.txt.~1~	2015-02-25 09:08:47.000000000 +0100
++++ plugins/migration/CMakeLists.txt	2015-03-07 07:28:56.745378152 +0100
+@@ -10,7 +10,8 @@
+ if (UNIX)
+   configure_file(wbcopytables.in wbcopytables)
+   install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/wbcopytables DESTINATION ${WB_INSTALL_BIN_DIR})
+-  
++
++  SET(CMAKE_INSTALL_RPATH "${WB_INSTALL_LIB_DIR}")
+   add_executable(wbcopytables-bin
+       copytable/copytable.cpp
+       copytable/python_copy_data_source.cpp

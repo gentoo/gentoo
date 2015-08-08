@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<project name="jettison" default="jar" basedir=".">
+	<!-- some properties -->
+	<property name="src.dir" value="org/codehaus/jettison" />
+	<property name="build.dir" value="build" />
+	<property name="docs.dir" value="docs" />
+	<property name="lib.dir" value="lib"/>
+	<property name="dist.dir" value="dist" />
+	<property name="jarfile" value="${dist.dir}/jettison.jar" />
+	<property name="pkg" value="${package.name}"/>
+	<property name="target.jdk" value="1.5" />
+
+
+	<available file="${lib}" type="dir" property="libdir.exists"/>
+
+
+	<!-- init -->
+	<target name="init">		
+		<tstamp/>
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${docs.dir}" />
+  	</target>
+
+	<!-- compile everything -->
+	<target name="compile" depends="init">
+		<mkdir dir="${build.dir}" />
+		<javac srcdir="${src.dir}" 
+			destdir="${build.dir}"
+			source="${target.jdk}"
+			target="${target.jdk}"
+			classpath="${gentoo.classpath}">
+		</javac>
+	</target>
+
+	<!-- build the jar file -->
+	<target name="jar" depends="compile">
+		<jar jarfile="${jarfile}" basedir="${build.dir}" />
+	</target>
+	
+	<!-- generate javadocs -->
+	<target name="javadoc" depends="compile">
+		<javadoc packagenames="org.*"
+			sourcepath="${src.dir}"
+			defaultexcludes="yes"
+			destdir="./${docs.dir}"
+           		author="true"
+           		version="true"
+           		use="true"
+			windowtitle="${ant.project.name} API" >
+			<fileset dir="${src.dir}"/>
+		</javadoc>	
+	</target>
+	
+	<!-- clean up -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+</project>

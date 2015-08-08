@@ -1,0 +1,10 @@
+--- yar/sgw.hxx
++++ yar/sgw.hxx
+@@ -24,6 +24,7 @@
+ 
+ #include <iostream>
+ #include <string>
++#include <cstdlib>
+ 
+ #define DEFAULT_SCX		(1024)					// Default Screen Size and Depth
+ #define DEFAULT_SCY		(768)

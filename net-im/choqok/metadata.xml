@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="telepathy">Enable support for the real-time communication framework telepathy</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">choqok</remote-id>
+	</upstream>
+</pkgmetadata>

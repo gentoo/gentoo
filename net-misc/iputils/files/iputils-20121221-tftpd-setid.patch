@@ -1,0 +1,34 @@
+From d81a44625b04d487c895473aa77af13420b7afdd Mon Sep 17 00:00:00 2001
+From: YOSHIFUJI Hideaki <hideaki.yoshifuji@miraclelinux.com>
+Date: Thu, 19 Jun 2014 17:25:49 +0900
+Subject: [PATCH iputils] tftpd: Exit if setuid()/setgid() failed.
+
+Signed-off-by: YOSHIFUJI Hideaki <hideaki.yoshifuji@miraclelinux.com>
+---
+ tftpd.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/tftpd.c b/tftpd.c
+index 2a39ec4..e3af2f4 100644
+--- a/tftpd.c
++++ b/tftpd.c
+@@ -111,8 +111,14 @@ int main(int ac, char **av)
+ 
+ 	/* Sanity. If parent forgot to setuid() on us. */
+ 	if (geteuid() == 0) {
+-		setgid(65534);
+-		setuid(65534);
++		if (setgid(65534)) {
++			syslog(LOG_ERR, "setgid");
++			exit(1);
++		}
++		if (setuid(65534)) {
++			syslog(LOG_ERR, "setuid");
++			exit(1);
++		}
+ 	}
+ 
+ 	ac--; av++;
+-- 
+2.3.5
+

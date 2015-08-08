@@ -1,0 +1,21 @@
+diff -uNr mod_auth_radius-1.5.8.ORIG/mod_auth_radius-2.0.c mod_auth_radius-1.5.8/mod_auth_radius-2.0.c
+--- mod_auth_radius-1.5.8.ORIG/mod_auth_radius-2.0.c	2013-05-08 14:18:02.746322816 +0100
++++ mod_auth_radius-1.5.8/mod_auth_radius-2.0.c	2013-05-08 14:19:03.589323729 +0100
+@@ -683,7 +683,7 @@
+    * benefit here.
+    */  
+   apr_snprintf(one, COOKIE_SIZE, "%s%s%s%s%s%08x", scr->secret,
+-	      r->user, passwd, c->remote_ip, hostname, expires);
++	      r->user, passwd, c->client_ip, hostname, expires);
+ 
+   /* if you're REALLY worried about what's going on */
+ 
+@@ -691,7 +691,7 @@
+   ap_log_error(APLOG_MARK, APLOG_NOERRNO | APLOG_DEBUG, 0, r->server," secret     = %s\n", scr->secret);
+   ap_log_error(APLOG_MARK, APLOG_NOERRNO | APLOG_DEBUG, 0, r->server," user       = %s\n", r->user);
+   ap_log_error(APLOG_MARK, APLOG_NOERRNO | APLOG_DEBUG, 0, r->server," passwd     = %s\n", passwd);
+-  ap_log_error(APLOG_MARK, APLOG_NOERRNO | APLOG_DEBUG, 0, r->server," remote ip  = %s\n", c->remote_ip);
++  ap_log_error(APLOG_MARK, APLOG_NOERRNO | APLOG_DEBUG, 0, r->server," remote ip  = %s\n", c->client_ip);
+   ap_log_error(APLOG_MARK, APLOG_NOERRNO | APLOG_DEBUG, 0, r->server," hostname   = %s\n", hostname);
+   ap_log_error(APLOG_MARK, APLOG_NOERRNO | APLOG_DEBUG, 0, r->server," expiry     = %08x\n", expires);
+ #endif

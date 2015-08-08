@@ -1,0 +1,12 @@
+diff -Naur gegl-0.1.6/docs/Makefile.am gegl-0.1.6-1//docs/Makefile.am
+--- gegl-0.1.6/docs/Makefile.am	2010-10-08 18:51:41.000000000 +0200
++++ gegl-0.1.6-1//docs/Makefile.am	2011-02-16 20:05:30.458043758 +0100
+@@ -6,7 +6,7 @@
+ # is very small, and should probably be documented in a tutorial.
+ #
+ 
+-gtkdochtmldir = $(DESTDIR)$(datadir)/gtk-doc/html/gegl
++gtkdochtmldir = $(datadir)/gtk-doc/html/gegl
+ 
+ HTML_FILES = \
+ 	operations.html		\

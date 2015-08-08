@@ -1,0 +1,11 @@
+--- src/shell/log4sh.orig	2005-06-20 13:35:51.583341280 +0100
++++ src/shell/log4sh	2005-06-20 13:37:45.120081072 +0100
+@@ -357,7 +357,7 @@
+ {
+   _file=$1
+ 
+-  _tmpFile="/tmp/log4sh.$$"
++  _tmpFile=`mktemp /tmp/log4sh.XXXXXX` 
+   grep "^log4sh\." $_file >$_tmpFile
+   _rp_count=`wc -l $_tmpFile |awk '{print $1}'`
+   _rp_i=1

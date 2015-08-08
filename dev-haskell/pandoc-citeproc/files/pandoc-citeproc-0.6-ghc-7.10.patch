@@ -1,0 +1,115 @@
+--- pandoc-citeproc-0.6-orig/src/Text/CSL/Pandoc.hs	2014-09-22 14:04:21.000000000 +1000
++++ pandoc-citeproc-0.6/src/Text/CSL/Pandoc.hs	2015-01-10 11:57:26.900041860 +1100
+@@ -201,10 +201,10 @@
+                                        && isEndPunct c -> True
+                               (c:_) | isEndPunct c     -> True
+                                     | otherwise        -> False
+-  where isEndPunct c = c `elem` ".,;:!?"
++  where isEndPunct c = c `elem` (".,;:!?" :: String)
+ 
+ startWithPunct :: [Inline] -> Bool
+-startWithPunct = and . map (`elem` ".,;:!?") . headInline
++startWithPunct = and . map (`elem` (".,;:!?" :: String)) . headInline
+ 
+ deNote :: Pandoc -> Pandoc
+ deNote = topDown go
+@@ -324,7 +324,7 @@
+   sp <- option "" (pSpace >> return " ")
+   r <- many1 (notFollowedBy pSpace >> notFollowedBy pLocatorPunct >> anyToken)
+   let s = stringify r
+-  guard $ any isDigit s || all (`elem` "IVXLCM") s
++  guard $ any isDigit s || all (`elem` ("IVXLCM" :: String)) s
+   return $ punct ++ sp ++ s
+ 
+ pDigit :: Parsec [Inline] st ()
+--- pandoc-citeproc-0.6-orig/src/Text/CSL/Proc.hs	2014-09-22 14:04:21.000000000 +1000
++++ pandoc-citeproc-0.6/src/Text/CSL/Proc.hs	2015-01-10 11:56:18.797456065 +1100
+@@ -288,7 +288,7 @@
+         case ys of
+              Formatted [] -> xs
+              Formatted (Note _ : _) -> xs <> ys
+-             Formatted (Str [c]:_) | c `elem` ", ;:" -> xs <> ys
++             Formatted (Str [c]:_) | c `elem` (", ;:" :: String) -> xs <> ys
+              _ -> xs <> Formatted [Space] <> ys
+       formatAuth   = formatOutput . localMod
+       formatCits   = (if isNote then toNote else id) .
+@@ -328,7 +328,7 @@
+     | otherwise        = id
+     where
+       isPunct' [] = False
+-      isPunct' xs = all (`elem` ".,;:!? ") xs
++      isPunct' xs = all (`elem` (".,;:!? " :: String)) xs
+       check o = case cleanOutput o of
+                   [] -> ONull
+                   x  -> case trim' x of
+--- pandoc-citeproc-0.6-orig/src/Text/CSL/Eval/Names.hs	2014-09-22 14:04:21.000000000 +1000
++++ pandoc-citeproc-0.6/src/Text/CSL/Eval/Names.hs	2015-01-10 11:55:41.839119783 +1100
+@@ -1,4 +1,4 @@
+-{-# LANGUAGE PatternGuards #-}
++{-# LANGUAGE PatternGuards, FlexibleContexts #-}
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  Text.CSL.Eval.Names
+--- pandoc-citeproc-0.6-orig/src/Text/CSL/Eval.hs	2014-09-22 14:04:21.000000000 +1000
++++ pandoc-citeproc-0.6/src/Text/CSL/Eval.hs	2015-01-10 11:55:23.090597159 +1100
+@@ -1,4 +1,4 @@
+-{-# LANGUAGE PatternGuards #-}
++{-# LANGUAGE PatternGuards, FlexibleContexts #-}
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  Text.CSL.Eval
+--- pandoc-citeproc-0.6-orig/src/Text/CSL/Parser.hs	2014-09-22 14:04:21.000000000 +1000
++++ pandoc-citeproc-0.6/src/Text/CSL/Parser.hs	2015-01-10 11:54:59.755477862 +1100
+@@ -144,7 +144,7 @@
+ 
+ parseCslTerm :: Cursor -> CslTerm
+ parseCslTerm cur =
+-    let body = unpack $ T.dropAround (`elem` " \t\r\n") $
++    let body = unpack $ T.dropAround (`elem` (" \t\r\n" :: String)) $
+                   T.concat $ cur $/ content
+     in CT
+       { cslTerm        = stringAttr "name" cur
+--- pandoc-citeproc-0.6-orig/src/Text/CSL/Style.hs	2014-09-22 14:04:21.000000000 +1000
++++ pandoc-citeproc-0.6/src/Text/CSL/Style.hs	2015-01-10 11:53:23.641828264 +1100
+@@ -130,7 +130,7 @@
+   -- this is needed for versions of pandoc that don't turn
+   -- a span with font-variant:small-caps into a SmallCaps element:
+   where handleSmallCapsSpans (Span ("",[],[("style",sty)]) ils)
+-            | filter (`notElem` " \t;") sty == "font-variant:small-caps" =
++            | filter (`notElem` (" \t;" :: String)) sty == "font-variant:small-caps" =
+               SmallCaps ils
+         handleSmallCapsSpans x = x
+ 
+@@ -206,15 +206,15 @@
+ appendWithPunct (Formatted left) (Formatted right) =
+   Formatted $
+   case concat [lastleft, firstright] of
+-       [' ',d] | d `elem` ",.:;" -> initInline left ++ right
+-       [c,d] | c `elem` " ,.:;", d == c -> left ++ tailInline right
+-       [c,'.'] | c `elem` ",.!:;?" -> left ++ tailInline right
+-       [c,':'] | c `elem` ",!:;?" -> left ++ tailInline right  -- Mich.: 2005
+-       [c,'!'] | c `elem` ",.!:;?" -> left ++ tailInline right
+-       [c,'?'] | c `elem` ",.!:;?" -> left ++ tailInline right
+-       [c,';'] | c `elem` ",:;" -> left ++ tailInline right -- et al.;
+-       [':',c] | c `elem` ",.!:;?" -> left ++ tailInline right
+-       [';',c] | c `elem` ",.!:;?" -> left ++ tailInline right
++       [' ',d] | d `elem` (",.:;" :: String) -> initInline left ++ right
++       [c,d] | c `elem` (" ,.:;" :: String), d == c -> left ++ tailInline right
++       [c,'.'] | c `elem` (",.!:;?" :: String) -> left ++ tailInline right
++       [c,':'] | c `elem` (",!:;?" :: String) -> left ++ tailInline right  -- Mich.: 2005
++       [c,'!'] | c `elem` (",.!:;?" :: String) -> left ++ tailInline right
++       [c,'?'] | c `elem` (",.!:;?" :: String) -> left ++ tailInline right
++       [c,';'] | c `elem` (",:;" :: String) -> left ++ tailInline right -- et al.;
++       [':',c] | c `elem` (",.!:;?" :: String) -> left ++ tailInline right
++       [';',c] | c `elem` (",.!:;?" :: String) -> left ++ tailInline right
+        -- ".;" -> right  -- e.g. et al.;
+        _    -> left ++ right
+   where lastleft     = lastInline left
+--- pandoc-citeproc-0.6-orig/src/Text/CSL/Util.hs	2014-09-22 14:04:21.000000000 +1000
++++ pandoc-citeproc-0.6/src/Text/CSL/Util.hs	2015-01-10 11:51:31.789057499 +1100
+@@ -1,4 +1,4 @@
+-{-# LANGUAGE ScopedTypeVariables, PatternGuards #-}
++{-# LANGUAGE ScopedTypeVariables, PatternGuards, FlexibleContexts #-}
+ module Text.CSL.Util
+   ( safeRead
+   , readNum

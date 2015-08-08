@@ -1,0 +1,30 @@
+--- ./rup/err.c.orig	1997-04-06 00:13:31.000000000 +0200
++++ ./rup/err.c	2010-12-31 19:29:41.000000000 +0100
+@@ -8,6 +8,7 @@
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <err.h>
++#include <stdlib.h> /* exit() */
+ 
+ void err(int eval, const char *fmt, ...) {
+     va_list ap;
+--- ./rpc.rusersd/rusers_proc.c.orig	2000-07-23 05:11:56.000000000 +0200
++++ ./rpc.rusersd/rusers_proc.c	2010-12-31 19:27:50.000000000 +0100
+@@ -40,6 +40,7 @@
+ #include <sys/socket.h>
+ #include <sys/param.h>
+ #include <sys/stat.h>
++#include <time.h> /* time() */
+ #ifdef XIDLE
+ #include <setjmp.h>
+ #include <X11/Xlib.h>
+--- ./rusers/rusers.c.orig	1999-12-12 20:32:05.000000000 +0100
++++ ./rusers/rusers.c	2010-12-31 19:30:33.000000000 +0100
+@@ -44,6 +44,7 @@
+ #include <utmp.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <time.h> /* ctime() */
+ 
+ #include "../version.h"
+ 

@@ -1,0 +1,124 @@
+diff -uNr festival.orig/config/systems/GentooLinux.mak festival/config/systems/GentooLinux.mak
+--- festival.orig/config/systems/GentooLinux.mak	1969-12-31 19:00:00.000000000 -0500
++++ festival/config/systems/GentooLinux.mak	2011-02-09 10:43:28.000000000 -0500
+@@ -0,0 +1,42 @@
++ ###########################################################################
++ ##                                                                       ##
++ ##                Centre for Speech Technology Research                  ##
++ ##                     University of Edinburgh, UK                       ##
++ ##                         Copyright (c) 1996                            ##
++ ##                        All Rights Reserved.                           ##
++ ##                                                                       ##
++ ##  Permission is hereby granted, free of charge, to use and distribute  ##
++ ##  this software and its documentation without restriction, including   ##
++ ##  without limitation the rights to use, copy, modify, merge, publish,  ##
++ ##  distribute, sublicense, and/or sell copies of this work, and to      ##
++ ##  permit persons to whom this work is furnished to do so, subject to   ##
++ ##  the following conditions:                                            ##
++ ##   1. The code must retain the above copyright notice, this list of    ##
++ ##      conditions and the following disclaimer.                         ##
++ ##   2. Any modifications must be clearly marked as such.                ##
++ ##   3. Original authors' names are not deleted.                         ##
++ ##   4. The authors' names are not used to endorse or promote products   ##
++ ##      derived from this software without specific prior written        ##
++ ##      permission.                                                      ##
++ ##                                                                       ##
++ ##  THE UNIVERSITY OF EDINBURGH AND THE CONTRIBUTORS TO THIS WORK        ##
++ ##  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      ##
++ ##  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   ##
++ ##  SHALL THE UNIVERSITY OF EDINBURGH NOR THE CONTRIBUTORS BE LIABLE     ##
++ ##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    ##
++ ##  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   ##
++ ##  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          ##
++ ##  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       ##
++ ##  THIS SOFTWARE.                                                       ##
++ ##                                                                       ##
++ ###########################################################################
++ ##                                                                       ##
++ ##                 Author: William Hubbs <williamh@gentoo.org>           ##
++ ## --------------------------------------------------------------------  ##
++ ## Settings for Gentoo Linux distributions.                              ##
++ ##                                                                       ##
++ ###########################################################################
++
++MANDIR=$(INSTALL_PREFIX)/share/man
++# Gentoo does not use termcap
++OS_LIBS = $(LDFLAGS) -ldl -lncurses
+diff -uNr festival.orig/config/systems/Makefile festival/config/systems/Makefile
+--- festival.orig/config/systems/Makefile	2011-02-09 10:41:01.000000000 -0500
++++ festival/config/systems/Makefile	2011-02-09 10:44:22.000000000 -0500
+@@ -41,6 +41,7 @@
+ 	Linux.mak				\
+ 	RedHatLinux.mak				\
+ 	DebianGNULinux.mak			\
++	GentooLinux.mak			\
+ 	alpha_Linux.mak				\
+ 	alpha_OSF1V4.0.mak			\
+ 	alpha_RedHatLinux.mak			\
+@@ -94,6 +95,7 @@
+ 	sparc_SunOS5.8.mak			\
+ 	sparc_SunOS5.mak			\
+ 	unknown_DebianGNULinux.mak		\
++	unknown_GentooLinux.mak		\
+ 	unknown_Linux.mak			\
+ 	unknown_RedHatLinux.mak			\
+ 	power_macintosh_Darwin.mak		\
+diff -uNr festival.orig/config/systems/unknown_GentooLinux.mak festival/config/systems/unknown_GentooLinux.mak
+--- festival.orig/config/systems/unknown_GentooLinux.mak	1969-12-31 19:00:00.000000000 -0500
++++ festival/config/systems/unknown_GentooLinux.mak	2011-02-09 10:45:34.000000000 -0500
+@@ -0,0 +1,41 @@
++###########################################################################
++##                                                                       ##
++##                Centre for Speech Technology Research                  ##
++##                     University of Edinburgh, UK                       ##
++##                         Copyright (c) 1996                            ##
++##                        All Rights Reserved.                           ##
++##                                                                       ##
++##  Permission is hereby granted, free of charge, to use and distribute  ##
++##  this software and its documentation without restriction, including   ##
++##  without limitation the rights to use, copy, modify, merge, publish,  ##
++##  distribute, sublicense, and/or sell copies of this work, and to      ##
++##  permit persons to whom this work is furnished to do so, subject to   ##
++##  the following conditions:                                            ##
++##   1. The code must retain the above copyright notice, this list of    ##
++##      conditions and the following disclaimer.                         ##
++##   2. Any modifications must be clearly marked as such.                ##
++##   3. Original authors' names are not deleted.                         ##
++##   4. The authors' names are not used to endorse or promote products   ##
++##      derived from this software without specific prior written        ##
++##      permission.                                                      ##
++##                                                                       ##
++##  THE UNIVERSITY OF EDINBURGH AND THE CONTRIBUTORS TO THIS WORK        ##
++##  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      ##
++##  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   ##
++##  SHALL THE UNIVERSITY OF EDINBURGH NOR THE CONTRIBUTORS BE LIABLE     ##
++##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    ##
++##  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   ##
++##  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          ##
++##  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       ##
++##  THIS SOFTWARE.                                                       ##
++##                                                                       ##
++###########################################################################
++##                                                                       ##
++##                 Author: William Hubbs <williamh@gentoo.org>           ##
++## --------------------------------------------------------------------  ##
++## Settings for Gentoo Linux distributions.                              ##
++##                                                                       ##
++###########################################################################
++
++include $(EST)/config/systems/Linux.mak
++include $(EST)/config/systems/GentooLinux.mak
+diff -uNr festival.orig/config/system.sh festival/config/system.sh
+--- festival.orig/config/system.sh	2011-02-09 10:41:01.000000000 -0500
++++ festival/config/system.sh	2011-02-09 10:42:10.000000000 -0500
+@@ -70,6 +70,10 @@
+ 	then
+ 	OSTYPE=DebianGNULinux
+ 	OSREV=`cat /etc/debian_version`
++    elif [ -f "/etc/gentoo-release" ]
++    then
++    OSTYPE=GentooLinux
++    OSREV=""
+     else
+ 	# Generic unknown GNU/Linux system.
+ 	OSTYPE=Linux

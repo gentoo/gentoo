@@ -1,0 +1,73 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 90_prefermenu-0.6.6-1.5.3.dpatch by Thomas Günther <tom@toms-cafe.de>
+## http://toms-cafe.de/vdr/download/prefermenu-0.6.6-1.5.3.diff
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Changes for VDR >= 1.5.3.
+
+@DPATCH@
+--- prefermenu-0.6.6/prefermenu.c
++++ prefermenu-0.6.6/prefermenu.c
+@@ -75,6 +75,7 @@
+   }
+   // Clean up the file with current VDR channels.conf
+   PreferedChannelsList.Save();
++  const int LINEHEIGHT = cFont::GetFont(fontOsd)->Height();
+   config.height= (config.lines * (LINEHEIGHT+BORDERSIZE+2))+BORDERSIZE;
+   return new cPreferOsd;
+ }
+--- prefermenu-0.6.6/preferosd.c
++++ prefermenu-0.6.6/preferosd.c
+@@ -60,6 +60,7 @@
+   }
+   osd=cOsdProvider::NewOsd(config.originx, config.originy);
+   if (osd) {
++    const int LINEHEIGHT = cFont::GetFont(fontOsd)->Height();
+     tArea Area = { 0, 0, config.width+LINEHEIGHT, config.height-1, 4};
+     osd->SetAreas(&Area, 1);
+     DrawPreferMenu(0,0);
+@@ -168,6 +169,7 @@
+ {
+   if (current > 1) {
+     current -= 1;
++    const int LINEHEIGHT = cFont::GetFont(fontOsd)->Height();
+     DrawPreferMenu(-LINEHEIGHT,1);
+     DisplayPreferMenu();
+     //DrawPreferMneu(-10,1);
+@@ -181,6 +183,7 @@
+ {
+   if (current < number) {
+     current += 1;     
++    const int LINEHEIGHT = cFont::GetFont(fontOsd)->Height();
+     DrawPreferMenu(+LINEHEIGHT,-1);
+     DisplayPreferMenu();
+     //DrawPreferMenu(+10,-1);
+@@ -315,6 +318,8 @@
+ 
+ void cPreferOsd::DrawPreferMenu(int delta, int highlight)
+ {
++  const cFont *font = cFont::GetFont(fontOsd);
++  const int LINEHEIGHT = font->Height();
+   
+   int middle = int(config.height/2) + config.height%2;
+ 
+@@ -390,6 +395,8 @@
+ 
+ void cPreferOsd::DrawChannelsNames(int delta)
+ {
++  const cFont *font = cFont::GetFont(fontOsd);
++  const int LINEHEIGHT = font->Height();
+ 
+   // XXX The margin is hardcoded for now
+   // TODO: make it more flexible
+--- prefermenu-0.6.6/preferosd.h
++++ prefermenu-0.6.6/preferosd.h
+@@ -4,8 +4,6 @@
+ #include <vdr/plugin.h>
+ 
+ static const int BORDERSIZE = 2;
+-static const cFont *font = cFont::GetFont(fontOsd);
+-static const int LINEHEIGHT = font->Height();
+ 
+ 
+ class cPreferOsd : public cOsdObject {

@@ -1,0 +1,13 @@
+diff --git a/hsql.cabal b/hsql.cabal
+index 6595eee..7e198e9 100644
+--- a/hsql.cabal
++++ b/hsql.cabal
+@@ -19,7 +19,7 @@ exposed-modules:
+ 	Database.HSQL.Types
+ build-depends:	base==4.*, old-time
+ extensions: CPP, ForeignFunctionInterface, DeriveDataTypeable, RankNTypes,
+-			ScopedTypeVariables
++			ScopedTypeVariables, FlexibleInstances
+ build-type: Simple
+ license-file: LICENSE
+ cabal-version: >= 1.6

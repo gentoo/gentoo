@@ -1,0 +1,20 @@
+--- codegroup-20080907/work/Makefile
++++ codegroup-20080907/work/Makefile
+@@ -1,6 +1,7 @@
+  
+ PROGS = codegroup
+-CFLAGS = -O -Wall
++CFLAGS = 
++LDFLAGS = 
+ PAGER = more
+ 
+ all:	$(PROGS)
+@@ -9,7 +10,7 @@
+ 	rm -f $(PROGS) *.o *.bak *.zip core code.* *.out
+ 
+ codegroup: codegroup.o
+-	$(CC) codegroup.o -o codegroup $(CFLAGS)
++	$(CC) codegroup.o -o codegroup $(CFLAGS) $(LDFLAGS)
+ 
+ #   Create zipped archive
+ 

@@ -1,0 +1,38 @@
+From 49767a66e27a1cb61abb8f812b2e61eba03a9594 Mon Sep 17 00:00:00 2001
+From: Lance Albertson <lance@osuosl.org>
+Date: Wed, 25 Jul 2012 16:21:21 -0700
+Subject: [PATCH 2/2] Check if process is already running and skip if so
+
+Gentoo uses a modified version of start-stop-daemon which returns an error if it
+sees another process running with the same name. This happens during cluster
+initialization since ganeti-noded gets fired off first.
+---
+ daemons/daemon-util.in |   12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/daemons/daemon-util.in b/daemons/daemon-util.in
+index c19daa7..7be9d8b 100644
+--- a/daemons/daemon-util.in
++++ b/daemons/daemon-util.in
+@@ -222,11 +222,13 @@ start() {
+   @PKGLIBDIR@/ensure-dirs
+ 
+   if type -p start-stop-daemon >/dev/null; then
+-    start-stop-daemon --start --quiet \
+-      --pidfile $pidfile \
+-      --exec $daemonexec \
+-      --user $usergroup \
+-      -- $args "$@"
++    if ! ret=$(/usr/bin/pgrep $name) ; then
++      start-stop-daemon --start --quiet \
++        --pidfile $pidfile \
++        --exec $daemonexec \
++        --user $usergroup \
++        -- $args "$@"
++    fi
+   else
+     # TODO: Find a way to start daemon with a group, until then the group must
+     # be removed
+-- 
+1.7.9.5
+

@@ -1,0 +1,15 @@
+--- bobotpp-2.2.2.orig/configure.ac	2006-06-29 02:02:46.000000000 +0200
++++ bobotpp-2.2.2/configure.ac	2009-10-15 19:31:42.058285332 +0200
+@@ -58,9 +58,9 @@
+ AC_CPP_STL_IOSBASE
+ 
+ dnl Checks for libraries.
+-AC_CHECK_LIB(crypt, crypt, [LDFLAGS="-lcrypt $LDFLAGS]")
+-AC_CHECK_LIB(socket, socket, [LDFLAGS="-lsocket $LDFLAGS]")
+-AC_CHECK_LIB(nsl, connect, [LDFLAGS="-lnsl $LDFLAGS]")
++AC_CHECK_LIB(crypt, crypt)
++AC_CHECK_LIB(socket, socket)
++AC_CHECK_LIB(nsl, connect)
+ 
+ dnl CC++ is special (no function to check_lib on
+ dnl AC_CHECK_PROG(CCGNU_FOUND, [ccgnu2-config],

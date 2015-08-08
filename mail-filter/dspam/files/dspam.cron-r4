@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# See dspam_maintenance --help for a list additional parameters
+
+/usr/bin/dspam_maintenance --verbose --purgescriptdir=/usr/share/dspam 1> /dev/null

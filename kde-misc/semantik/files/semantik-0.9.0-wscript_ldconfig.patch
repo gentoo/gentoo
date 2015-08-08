@@ -1,0 +1,17 @@
+--- wscript.old	2013-12-23 00:56:28.623714186 +0100
++++ wscript	2013-12-23 00:56:39.592714596 +0100
+@@ -226,14 +226,6 @@
+ 	opt.add_option('--noldconfig', action='store_true', default=False, help='do not run lconfig when installing')
+ 
+ def post_build(bld):
+-	if bld.cmd == 'install':
+-		if not Options.options.noldconfig:
+-			try: bld.exec_command('/sbin/ldconfig 2> /dev/null')
+-			except Exception: pass
+-		if not Options.options.nomimes:
+-			try: bld.exec_command('update-mime-database %s' % os.path.split(bld.env.MIME_DIR)[0])
+-			except Exception: pass
+-
+ 	if Options.options.exe:
+ 		#os.popen('export LD_LIBRARY_PATH=out/default/:$LD_LIBRARY_PATH; PATH=plugins:$PATH out/default/src/semantik')
+ 		bld.exec_command('LD_LIBRARY_PATH=build/:$LD_LIBRARY_PATH build/src/semantik --style plastique', stdout=None, stderr=None)

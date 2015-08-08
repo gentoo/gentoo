@@ -1,0 +1,64 @@
+Description: Optional jpeg/tiff/fftw/png dependencies
+Forwarded: not-needed
+Last-Update: 2013-12-11
+
+Index: vigra-1.10.0/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/CMakeLists.txt
++++ vigra-1.10.0/CMakeLists.txt
+@@ -59,11 +59,24 @@ ENDIF ()
+ ##################################################
+ 
+ INCLUDE(VigraFindPackage)
+-VIGRA_FIND_PACKAGE(TIFF NAMES libtiff)
+-VIGRA_FIND_PACKAGE(JPEG NAMES libjpeg)
+-VIGRA_FIND_PACKAGE(PNG)
+-VIGRA_FIND_PACKAGE(FFTW3 NAMES libfftw3-3 libfftw-3.3)
+-VIGRA_FIND_PACKAGE(FFTW3F NAMES libfftw3f-3 libfftwf-3.3)
++OPTION(WITH_TIFF "Enable tiff support" ON)
++OPTION(WITH_JPEG "Enable jpeg support" ON)
++OPTION(WITH_PNG "Enable png support" ON)
++OPTION(WITH_FFTW3 "Enable fftw support" ON)
++OPTION(ENABLE_DOC "Build documentation" ON)
++IF(WITH_TIFF)
++	VIGRA_FIND_PACKAGE(TIFF NAMES libtiff)
++ENDIF()
++IF(WITH_JPEG)
++	VIGRA_FIND_PACKAGE(JPEG NAMES libjpeg)
++ENDIF()
++IF(WITH_PNG)
++	VIGRA_FIND_PACKAGE(PNG)
++ENDIF()
++IF(WITH_FFTW3)
++	VIGRA_FIND_PACKAGE(FFTW3 NAMES libfftw3-3 libfftw-3.3)
++	VIGRA_FIND_PACKAGE(FFTW3F NAMES libfftw3f-3 libfftwf-3.3)
++ENDIF()
+ 
+ IF(WITH_OPENEXR)
+     VIGRA_FIND_PACKAGE(OpenEXR)
+@@ -85,9 +98,11 @@ IF(WITH_LEMON)
+     VIGRA_FIND_PACKAGE(LEMON)
+ ENDIF()
+ 
+-SET(DOXYGEN_SKIP_DOT TRUE)
+-FIND_PACKAGE(Doxygen)
+-FIND_PACKAGE(PythonInterp)
++IF(ENABLE_DOC)
++	SET(DOXYGEN_SKIP_DOT TRUE)
++	FIND_PACKAGE(Doxygen)
++	FIND_PACKAGE(PythonInterp)
++ENDIF()
+ 
+ IF(WITH_VIGRANUMPY)
+     FIND_PACKAGE( VIGRANUMPY_DEPENDENCIES )
+@@ -388,10 +403,4 @@ ELSE()
+   MESSAGE( STATUS "  vigranumpy will NOT be installed" )
+ ENDIF()
+ 
+-IF(NOT TIFF_FOUND OR NOT JPEG_FOUND OR NOT PNG_FOUND OR NOT FFTW3_FOUND OR
+-   NOT HDF5_FOUND OR NOT VIGRANUMPY_DEPENDENCIES_FOUND)
+-  MESSAGE( STATUS "" )
+-  MESSAGE( STATUS "Consider setting DEPENDENCY_SEARCH_PREFIX to find missing libraries" )
+-ENDIF()
+-
+ MESSAGE( STATUS "---------------------------------------------------------" )

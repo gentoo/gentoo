@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Conkeror
+GenericName=Web Browser
+Comment=Conkeror is a Mozilla-based web browser whose design is inspired by GNU Emacs
+Icon=conkeror
+TryExec=/usr/bin/conkeror
+Exec=/usr/bin/conkeror %u
+Terminal=false
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;
+StartupNotify=true
+StartupWMClass=Conkeror

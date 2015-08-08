@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		Commons Configuration provides a generic configuration interface
+		which enables an application to read configuration data from
+		a variety of sources.
+	</longdescription>
+</pkgmetadata>

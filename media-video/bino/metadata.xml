@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>cuchac@email.cz</email>
+		<name>Jožka Kejzlar (cuchac)</name>
+		<description>Maintainer. Assign bugs on him</description>
+	</maintainer>
+	<maintainer>
+		<email>robbat2@gentoo.org</email>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+</pkgmetadata>

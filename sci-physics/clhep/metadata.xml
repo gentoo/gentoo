@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-physics</herd>
+<longdescription lang="en">
+  A Class Library for High Energy Physics is intended to be a set of
+  HEP-specific foundation and utility classes such as random
+  generators, physics vectors, geometry and linear algebra.
+</longdescription>
+<use>
+  <flag name="exceptions">Enable zoom exceptions for user intervention</flag>
+</use>
+</pkgmetadata>

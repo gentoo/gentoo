@@ -1,0 +1,35 @@
+--- impl/src/main/java/org/apache/taglibs/standard/tag/common/core/ImportSupport.java.orig	2015-06-01 22:34:34.882000000 +0000
++++ impl/src/main/java/org/apache/taglibs/standard/tag/common/core/ImportSupport.java	2015-06-01 22:35:29.078000000 +0000
+@@ -36,6 +36,7 @@
+ import javax.servlet.ServletContext;
+ import javax.servlet.ServletException;
+ import javax.servlet.ServletOutputStream;
++import javax.servlet.WriteListener;
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;
+ import javax.servlet.http.HttpServletResponseWrapper;
+@@ -430,6 +431,24 @@
+             public void write(int b) throws IOException {
+                 bos.write(b);
+             }
++
++            @Override
++            public boolean isReady() {
++                return true;
++            }
++
++            @Override
++            public void setWriteListener(WriteListener writeListener) {
++            }
++
++            @Override
++            public void close() throws IOException {
++            }
++
++            @Override
++            public void flush() throws IOException {
++            }
++
+         };
+ 
+         /**

@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/show_bug.cgi?id=476530
+
+--- src/engine/cDeviceModelDef.h	2013-06-19 18:22:52.000000000 +0200
++++ src/engine/cDeviceModelDef.h	2013-07-21 14:11:48.014827071 +0200
+@@ -64,6 +64,11 @@
+     #include <libavformat/avformat.h>
+     #include <libavformat/avio.h>
+ 
++    #if (LIBAVCODEC_VERSION_INT>=AV_VERSION_INT(55,18,0))
++        typedef AVCodecID CodecID;
++        #define AVCODEC_MAX_AUDIO_FRAME_SIZE 192
++    #endif
++
+     #if ((LIBAVUTIL_VERSION_INT>=AV_VERSION_INT(51,73,0))&&(LIBAVCODEC_VERSION_INT>=AV_VERSION_INT(54,31,0))&&(LIBAVFORMAT_VERSION_INT>=AV_VERSION_INT(54,19,0)))
+         #define LIBAV_09
+         #if defined(USELIBAVRESAMPLE)
+
+--- src/engine/cBaseMediaFile.cpp	2013-06-19 18:22:52.000000000 +0200
++++ src/engine/cBaseMediaFile.cpp	2013-07-21 14:15:18.754228717 +0200
+@@ -2167,7 +2167,11 @@
+         }
+ 
+     #else
+-        int Ret=av_buffersrc_add_frame(VideoFilterIn,FrameBufferYUV,0);
++        #if (LIBAVFILTER_VERSION_INT < AV_VERSION_INT(3,79,0))
++            int Ret=av_buffersrc_add_frame(VideoFilterIn,FrameBufferYUV,0);
++        #else
++            int Ret=av_buffersrc_add_frame(VideoFilterIn,FrameBufferYUV);
++        #endif
+         if (Ret<0) {
+             ToLog(LOGMSG_CRITICAL,QString("Error in cVideoFile::VideoFilter_Process : av_buffersrc_add_frame"));
+             return VC_ERROR;

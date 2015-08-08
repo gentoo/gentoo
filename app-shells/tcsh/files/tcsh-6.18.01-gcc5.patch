@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/545176
+http://mx.gw.com/pipermail/tcsh-bugs/2015-May/000945.html
+https://github.com/tcsh-org/tcsh/commit/624d3aebb6e6afadb4f35e894d11b5ebe290cd87
+
+From 624d3aebb6e6afadb4f35e894d11b5ebe290cd87 Mon Sep 17 00:00:00 2001
+From: christos <christos>
+Date: Thu, 28 May 2015 11:47:03 +0000
+Subject: [PATCH] avoid gcc-5 optimization malloc + memset = calloc (Fridolin
+ Pokorny)
+
+---
+ tc.alloc.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/tc.alloc.c
++++ b/tc.alloc.c
+@@ -348,10 +348,13 @@ calloc(size_t i, size_t j)
+ {
+ #ifndef lint
+     char *cp;
++    volatile size_t k;
+ 
+     i *= j;
+     cp = xmalloc(i);
+-    memset(cp, 0, i);
++    /* Stop gcc 5.x from optimizing malloc+memset = calloc */
++    k = i;
++    memset(cp, 0, k);
+ 
+     return ((memalign_t) cp);
+ #else

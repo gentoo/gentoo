@@ -1,0 +1,66 @@
+From 284afcb4a01996bb1a56f87da1e7c541fd0a903c Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 4 Apr 2015 18:34:51 -0400
+Subject: [PATCH] test: fix bashisms
+
+These test scripts use #!/bin/sh, but then try to use bash-specific
+[[...]] tests.  Change them to [...] instead.
+
+Reported-by: Paolo Pedroni <paolo.pedroni@iol.it>
+URL: https://bugs.gentoo.org/531020
+
+* find/testsuite/binary_locations.sh: Change [[...]] to [...].
+* find/testsuite/sv-34079.sh: Likewise.
+---
+ find/testsuite/binary_locations.sh | 6 +++---
+ find/testsuite/sv-34079.sh         | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/find/testsuite/binary_locations.sh b/find/testsuite/binary_locations.sh
+index 96943a0..238d57f 100644
+--- a/find/testsuite/binary_locations.sh
++++ b/find/testsuite/binary_locations.sh
+@@ -1,15 +1,15 @@
+ # Source this file, don't execute it.
+ 
+-if [[ -z "${testname}" ]]; then
++if [ -z "${testname}" ]; then
+     echo 'Please set $testname before sourcing binary_locations.sh.' >&2
+     exit 1
+ fi
+ 
+ parent="$(cd .. && pwd)"
+-if [[ -f "${parent}/ftsfind" ]]; then
++if [ -f "${parent}/ftsfind" ]; then
+     ftsfind="${parent}/ftsfind"
+     oldfind="${parent}/find"
+-elif [[ -f "${parent}/oldfind" ]]; then
++elif [ -f "${parent}/oldfind" ]; then
+     ftsfind="${parent}/find"
+     oldfind="${parent}/oldfind"
+ else
+diff --git a/find/testsuite/sv-34079.sh b/find/testsuite/sv-34079.sh
+index 5773a3f..928a9af 100755
+--- a/find/testsuite/sv-34079.sh
++++ b/find/testsuite/sv-34079.sh
+@@ -41,7 +41,7 @@ make_test_data() {
+ }
+ 
+ 
+-if [[ -n "${RUN_VERY_EXPENSIVE_TESTS}" ]]; then
++if [ -n "${RUN_VERY_EXPENSIVE_TESTS}" ]; then
+     if outdir=$(mktemp -d); then
+ 	# Create some test files.
+ 	bad=""
+@@ -64,7 +64,7 @@ if [[ -n "${RUN_VERY_EXPENSIVE_TESTS}" ]]; then
+ 	    bad="failed to set up the test in ${outdir}"
+ 	fi
+ 	rm -rf "${outdir}" || exit 1
+-	if [[ -n "${bad}" ]]; then
++	if [ -n "${bad}" ]; then
+ 	    echo "${bad}" >&2
+ 	    exit 1
+ 	fi
+-- 
+2.3.5
+

@@ -1,0 +1,29 @@
+From e3e91245e730f0532e913fde910054f464085241 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sun, 6 May 2012 22:40:47 -0400
+Subject: [PATCH] Version glade documentation
+
+Rename gnome help files to prevent collision with other versions.
+
+Avoid loading glade-3.8's devhelp files.
+---
+ help/Makefile.am   |    5 ++++-
+ src/glade-window.c |    2 +-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/glade-window.c b/src/glade-window.c
+index 89a4549..4eb8be5 100644
+--- a/src/glade-window.c
++++ b/src/glade-window.c
+@@ -2041,7 +2041,7 @@ show_developer_manual_cb (GtkAction * action, GladeWindow * window)
+ {
+   if (glade_util_have_devhelp ())
+     {
+-      glade_util_search_devhelp ("gladeui", NULL, NULL);
++      glade_util_search_devhelp ("gladeui-2", NULL, NULL);
+       return;
+     }
+ 
+-- 
+1.7.8.6
+

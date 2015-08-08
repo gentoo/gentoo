@@ -1,0 +1,30 @@
+--- include/ldap_pvt_thread.h	2009-04-03 08:51:30.000000000 -0400
++++ include/ldap_pvt_thread.h	2009-04-03 08:56:36.000000000 -0400
+@@ -57,12 +57,12 @@
+ 
+ #ifndef LDAP_PVT_THREAD_H_DONE
+ #define	LDAP_PVT_THREAD_SET_STACK_SIZE
+-#ifndef LDAP_PVT_THREAD_STACK_SIZE
+-	/* LARGE stack. Will be twice as large on 64 bit machine. */
+-#define LDAP_PVT_THREAD_STACK_SIZE	( 1 * 1024 * 1024 * sizeof(void *) )
+ /* May be explicitly defined to zero to disable it */
+-#elif LDAP_PVT_THREAD_STACK_SIZE == 0
++#if defined( LDAP_PVT_THREAD_STACK_SIZE ) && LDAP_PVT_THREAD_STACK_SIZE == 0
+ #undef LDAP_PVT_THREAD_SET_STACK_SIZE
++#elif !defined(LDAP_PVT_THREAD_STACK_SIZE)
++	/* LARGE stack. Will be twice as large on 64 bit machine. */
++#define LDAP_PVT_THREAD_STACK_SIZE	( 1 * 1024 * 1024 * sizeof(void *) )
+ #endif
+ #endif /* !LDAP_PVT_THREAD_H_DONE */
+ 
+--- libraries/libldap/os-ip.c	2009-04-03 08:51:30.000000000 -0400
++++ libraries/libldap/os-ip.c	2009-04-03 08:54:47.000000000 -0400
+@@ -652,7 +652,7 @@
+ 		char *herr;
+ #ifdef NI_MAXHOST
+ 		char hbuf[NI_MAXHOST];
+-#elif defined( MAXHOSTNAMELEN
++#elif defined( MAXHOSTNAMELEN )
+ 		char hbuf[MAXHOSTNAMELEN];
+ #else
+ 		char hbuf[256];

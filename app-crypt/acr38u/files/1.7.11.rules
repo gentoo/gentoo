@@ -1,0 +1,12 @@
+# udev rules to set the access rights of non CCID ACR38u smart card readers
+# so they can be used by pcscd
+
+ACTION!="add", GOTO="pcscd_acr38u_rules_end"
+SUBSYSTEM!="usb", GOTO="pcscd_acr38u_rules_end"
+ENV{DEVTYPE}!="usb_device", GOTO="pcscd_acr38u_rules_end"
+
+ATTRS{idVendor}=="072f", ATTRS{idProduct}=="9000", ENV{PCSCD}="1"
+ATTRS{idVendor}=="072f", ATTRS{idProduct}=="9006", ENV{PCSCD}="1"
+ATTRS{idVendor}=="072f", ATTRS{idProduct}=="90CF", ENV{PCSCD}="1"
+
+LABEL="pcscd_acr38u_rules_end"

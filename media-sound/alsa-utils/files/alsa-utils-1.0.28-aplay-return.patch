@@ -1,0 +1,45 @@
+http://crbug.com/433899
+
+From 8f361d83cfcb39887f5fc591633e68d9448e3425 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 1 Oct 2014 15:43:57 +0200
+Subject: [PATCH [alsa-utils]] Revert "aplay: fix pcm_read() return value"
+
+This reverts commit 8aa13eec80eac312e4b99423909387660fb99b8f.
+
+The semantics for pcm_read() and pcm_readv() was changed, but the
+callers expect the exact frame count as requested. It's possible
+to fix callers, but the fix is more complicated than to revert the
+change. Note that '-d' processing was broken in some cases.
+
+Note: The reverted commit allows that the return value might be
+greater than requested (see the first condition in read routines).
+---
+ aplay/aplay.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/aplay/aplay.c b/aplay/aplay.c
+index 30d3f31..e58e1bc 100644
+--- a/aplay/aplay.c
++++ b/aplay/aplay.c
+@@ -2039,7 +2039,7 @@ static ssize_t pcm_read(u_char *data, size_t rcount)
+ 			data += r * bits_per_frame / 8;
+ 		}
+ 	}
+-	return result;
++	return rcount;
+ }
+ 
+ static ssize_t pcm_readv(u_char **data, unsigned int channels, size_t rcount)
+@@ -2084,7 +2084,7 @@ static ssize_t pcm_readv(u_char **data, unsigned int channels, size_t rcount)
+ 			count -= r;
+ 		}
+ 	}
+-	return result;
++	return rcount;
+ }
+ 
+ /*
+-- 
+2.1.3
+

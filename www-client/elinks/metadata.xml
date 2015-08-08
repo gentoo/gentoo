@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>kondor6c@toshers.org</email>
+		<name>Kevin Faulkner</name>
+	</maintainer>
+	<use>
+		<flag name='bittorrent'>Enable support for the BitTorrent protocol</flag>
+		<flag name='finger'>Enable support for the finger protocol</flag>
+		<flag name='gopher'>Enable support for the gopher protocol</flag>
+		<flag name='mouse'>Make elinks to grab all mouse events</flag>
+	</use>
+</pkgmetadata>

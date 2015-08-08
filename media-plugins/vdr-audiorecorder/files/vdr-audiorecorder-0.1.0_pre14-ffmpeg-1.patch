@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/show_bug.cgi?id=443248
+
+Index: audiorecorder-0.1.0-pre14/audiorecorder.c
+===================================================================
+--- audiorecorder-0.1.0-pre14.orig/audiorecorder.c
++++ audiorecorder-0.1.0-pre14/audiorecorder.c
+@@ -176,7 +176,9 @@ bool cPluginAudiorecorder::Initialize(vo
+ bool cPluginAudiorecorder::Start(void)
+ {
+         /* initialize libavcodec */
++#if LIBAVCODEC_VERSION_MAJOR < 54
+         avcodec_init();
++#endif
+         avcodec_register_all();
+ 
+         probe_audio_codecs();

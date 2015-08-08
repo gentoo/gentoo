@@ -1,0 +1,34 @@
+fix implicit function decl warnings
+
+by David J Cozatt
+
+--- bin86-0.16.18/ld/catimage.c	
++++ bin86-0.16.18/ld/catimage.c	
+@@ -21,6 +21,8 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "x86_aout.h"
+ 
+ #ifndef __OUT_OK
+--- bin86-0.16.18/ld/dumps.c	
++++ bin86-0.16.18/ld/dumps.c
+@@ -6,6 +6,7 @@
+ #include "obj.h"
+ #include "type.h"
+ #include "globvar.h"
++#include <string.h>
+ 
+ /* print list of modules and whether they are loaded */
+ 
+--- bin86-0.16.18/ld/objchop.c	
++++ bin86-0.16.18/ld/objchop.c	
+@@ -1,5 +1,6 @@
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "x86_aout.h"
+ 
+ #ifndef __OUT_OK

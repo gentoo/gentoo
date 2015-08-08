@@ -1,0 +1,37 @@
+--- Lib/distutils/command/build_py.py
++++ Lib/distutils/command/build_py.py
+@@ -418,6 +418,10 @@
+ 
+ 
+     def byte_compile (self, files):
++        if os.environ.get("PYTHONDONTWRITEBYTECODE") is not None:
++            self.warn('byte-compiling is disabled, skipping.')
++            return
++
+         from distutils.util import byte_compile
+         prefix = self.build_lib
+         if prefix[-1] != os.sep:
+--- Lib/distutils/command/install_lib.py
++++ Lib/distutils/command/install_lib.py
+@@ -121,6 +121,10 @@
+         return outfiles
+ 
+     def byte_compile (self, files):
++        if os.environ.get("PYTHONDONTWRITEBYTECODE") is not None:
++            self.warn('byte-compiling is disabled, skipping.')
++            return
++
+         from distutils.util import byte_compile
+ 
+         # Get the "--root" directory supplied to the "install" command,
+--- Lib/distutils/errors.py
++++ Lib/distutils/errors.py
+@@ -76,6 +76,8 @@
+ class DistutilsTemplateError (DistutilsError):
+     """Syntax error in a file list template."""
+ 
++class DistutilsByteCompileError(DistutilsError):
++    """Byte compile error."""
+ 
+ # Exception classes used by the CCompiler implementation classes
+ class CCompilerError (Exception):

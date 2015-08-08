@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>video</herd>
+	<longdescription lang="en">
+		Subcheck is a perl script which checks srt (SubRip) subtitle files for
+		errors. Such as overlapping, negative duration, to short displaytime,
+		rewrite subtitle lines with another character length (useful for Yamada,
+		KISS and other hardware divxplayers), etc. It is highly configurable.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">subcheck</remote-id>
+	</upstream>
+</pkgmetadata>

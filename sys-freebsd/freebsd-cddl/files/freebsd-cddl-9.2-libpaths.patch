@@ -1,0 +1,220 @@
+diff --git a/lib/libzfs/Makefile b/lib/libzfs/Makefile
+index 5b6b47d..c8549b4 100644
+--- a/lib/libzfs/Makefile
++++ b/lib/libzfs/Makefile
+@@ -55,6 +55,11 @@ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/head
+ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libnvpair
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libuutil/common
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libuutil
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs_core
++
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libzfs/common
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libzfs_core/common
+ 
+diff --git a/lib/libzfs_core/Makefile b/lib/libzfs_core/Makefile
+index a470fbc..ae8c649 100644
+--- a/lib/libzfs_core/Makefile
++++ b/lib/libzfs_core/Makefile
+@@ -34,4 +34,6 @@ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libuutil/common
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libzfs_core/common
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libzfs/common
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++
+ .include <bsd.lib.mk>
+diff --git a/lib/libzpool/Makefile b/lib/libzpool/Makefile
+index 417c1cc..838cdb5 100644
+--- a/lib/libzpool/Makefile
++++ b/lib/libzpool/Makefile
+@@ -56,6 +56,10 @@ CFLAGS+=	-I${.CURDIR}/../../../lib/libpthread/thread
+ CFLAGS+=	-I${.CURDIR}/../../../lib/libpthread/sys
+ CFLAGS+=	-I${.CURDIR}/../../../lib/libthr/arch/${MACHINE_CPUARCH}/include
+ 
++LDFLAGS+=	-L${.CURDIR}/../../lib/libavl
++LDFLAGS+=	-L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+=	-L${.CURDIR}/../../lib/libumem
++
+ DPADD=		${LIBMD} ${LIBPTHREAD} ${LIBZ}
+ LDADD=		-lmd -lpthread -lz
+ 
+diff --git a/sbin/zfs/Makefile b/sbin/zfs/Makefile
+index a49d278..b22442e 100644
+--- a/sbin/zfs/Makefile
++++ b/sbin/zfs/Makefile
+@@ -22,6 +22,12 @@ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common/fs/zfs
+ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common/sys
+ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/common/zfs
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libuutil
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs_core
++
+ DPADD=	${LIBGEOM} ${LIBJAIL} ${LIBNVPAIR} ${LIBUMEM} \
+ 	${LIBUTIL} ${LIBUUTIL} ${LIBZFS_CORE} ${LIBZFS}
+ LDADD=	-lgeom -ljail -lnvpair -lumem -lutil -luutil -lzfs_core -lzfs
+diff --git a/sbin/zpool/Makefile b/sbin/zpool/Makefile
+index 1884d24..5f06d5f 100644
+--- a/sbin/zpool/Makefile
++++ b/sbin/zpool/Makefile
+@@ -26,6 +26,13 @@ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common/sys
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/lib/libzpool/common
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/cmd/stat/common
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libavl
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libuutil
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs_core
++
+ DPADD=	${LIBAVL} ${LIBGEOM} ${LIBNVPAIR} \
+ 	${LIBUMEM} ${LIBUTIL} ${LIBUUTIL} ${LIBZFS_CORE} ${LIBZFS}
+ LDADD=	-lavl -lgeom -lnvpair -lumem -lutil -luutil -lzfs_core -lzfs
+diff --git a/usr.bin/ctfconvert/Makefile b/usr.bin/ctfconvert/Makefile
+index 7e4a05a..72327ad 100644
+--- a/usr.bin/ctfconvert/Makefile
++++ b/usr.bin/ctfconvert/Makefile
+@@ -36,6 +36,8 @@ CFLAGS+=	-I${.CURDIR}/../../../sys/cddl/compat/opensolaris \
+ 		-I${OPENSOLARIS_USR_DISTDIR}/tools/ctf/cvt \
+ 		-I${OPENSOLARIS_SYS_DISTDIR}/uts/common
+ 
++LDFLAGS+=	-L${.CURDIR}/../../lib/libctf
++
+ DPADD=		${LIBCTF} ${LIBDWARF} ${LIBELF} ${LIBZ} ${LIBPTHREAD}
+ LDADD=		-lctf -ldwarf -lelf -lz -lpthread
+ 
+diff --git a/usr.bin/ctfmerge/Makefile b/usr.bin/ctfmerge/Makefile
+index ba4840e..845d28c 100644
+--- a/usr.bin/ctfmerge/Makefile
++++ b/usr.bin/ctfmerge/Makefile
+@@ -33,6 +33,8 @@ CFLAGS+=	-I${.CURDIR}/../../../sys/cddl/compat/opensolaris \
+ 		-I${OPENSOLARIS_USR_DISTDIR}/tools/ctf/cvt \
+ 		-I${OPENSOLARIS_SYS_DISTDIR}/uts/common
+ 
++LDFLAGS+=	-L${.CURDIR}/../../lib/libctf
++
+ DPADD=		${LIBCTF} ${LIBDWARF} ${LIBELF} ${LIBZ} ${LIBPTHREAD}
+ LDADD=		-lctf -ldwarf -lelf -lz -lpthread
+ 
+diff --git a/usr.bin/zinject/Makefile b/usr.bin/zinject/Makefile
+index 8c5c141..3db2b29 100644
+--- a/usr.bin/zinject/Makefile
++++ b/usr.bin/zinject/Makefile
+@@ -19,6 +19,14 @@ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common
+ CFLAGS+= -I${.CURDIR}/../../contrib/opensolaris/head
+ CFLAGS+= -I${.CURDIR}/../../lib/libumem
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libavl
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libuutil
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs
++LDFLAGS+= -L${.CURDIR}/../../lib/libzpool
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs_core
++
+ DPADD=	${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBUMEM} ${LIBUUTIL} \
+ 	${LIBZFS_CORE} ${LIBZFS} ${LIBZPOOL}
+ LDADD=	-lgeom -lm -lnvpair -lumem -luutil -lzfs_core -lzfs -lzpool
+diff --git a/usr.bin/zstreamdump/Makefile b/usr.bin/zstreamdump/Makefile
+index 304ff7c..5f0b00e 100644
+--- a/usr.bin/zstreamdump/Makefile
++++ b/usr.bin/zstreamdump/Makefile
+@@ -18,6 +18,11 @@ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common
+ CFLAGS+= -I${.CURDIR}/../../contrib/opensolaris/head
+ CFLAGS+= -I${.CURDIR}/../../lib/libumem
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libavl
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libzpool
++
+ DPADD=	${LIBM} ${LIBNVPAIR} ${LIBUMEM} ${LIBZPOOL} \
+ 	${LIBPTHREAD} ${LIBZ} ${LIBAVL}
+ LDADD=	-lm -lnvpair -lumem -lzpool -lpthread -lz -lavl
+diff --git a/usr.bin/ztest/Makefile b/usr.bin/ztest/Makefile
+index 965300e..ad40a92 100644
+--- a/usr.bin/ztest/Makefile
++++ b/usr.bin/ztest/Makefile
+@@ -18,6 +18,14 @@ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/uts/common
+ CFLAGS+= -I${.CURDIR}/../../contrib/opensolaris/head
+ CFLAGS+= -I${.CURDIR}/../../lib/libumem
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libavl
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libuutil
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs
++LDFLAGS+= -L${.CURDIR}/../../lib/libzpool
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs_core
++
+ DPADD=	${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBUMEM} ${LIBZPOOL} \
+ 	${LIBPTHREAD} ${LIBAVL} ${LIBZFS_CORE} ${LIBZFS} ${LIBUUTIL}
+ LDADD=	-lgeom -lm -lnvpair -lumem -lzpool -lpthread -lavl -lzfs_core -lzfs \
+diff --git a/usr.sbin/dtrace/Makefile b/usr.sbin/dtrace/Makefile
+index 3930f01..4bdbd1a 100644
+--- a/usr.sbin/dtrace/Makefile
++++ b/usr.sbin/dtrace/Makefile
+@@ -25,4 +25,7 @@ DPADD=		${LIBPTHREAD} ${LIBDTRACE} ${LIBY} ${LIBL} ${LIBPROC} \
+ LDADD=		-lpthread -ldtrace -ly -ll -lproc -lctf -lelf -lz -lutil \
+ 		-lrtld_db
+ 
++LDFLAGS+=	-L${.CURDIR}/../../lib/libdtrace
++LDFLAGS+=	-L${.CURDIR}/../../lib/libctf
++
+ .include <bsd.prog.mk>
+diff --git a/usr.sbin/lockstat/Makefile b/usr.sbin/lockstat/Makefile
+index 70515ef..d65e4c3 100644
+--- a/usr.sbin/lockstat/Makefile
++++ b/usr.sbin/lockstat/Makefile
+@@ -20,6 +20,9 @@ CFLAGS+=	-I${.CURDIR}/../../../sys/cddl/compat/opensolaris \
+ 
+ CFLAGS+=	-DNEED_ERRLOC -g
+ 
++LDFLAGS+=	-L${.CURDIR}/../../lib/libdtrace
++LDFLAGS+=	-L${.CURDIR}/../../lib/libctf
++
+ #YFLAGS+=	-d
+ 
+ DPADD=		${LIBPTHREAD} ${LIBDTRACE} ${LIBY} ${LIBFL} ${LIBPROC} \
+diff --git a/usr.sbin/zdb/Makefile b/usr.sbin/zdb/Makefile
+index 8068385..337e324 100644
+--- a/usr.sbin/zdb/Makefile
++++ b/usr.sbin/zdb/Makefile
+@@ -23,6 +23,14 @@ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/common/zfs
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/head
+ CFLAGS+= -I${.CURDIR}/../../lib/libumem
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libavl
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libuutil
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs
++LDFLAGS+= -L${.CURDIR}/../../lib/libzpool
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs_core
++
+ DPADD=	${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBPTHREAD} ${LIBUMEM} \
+ 	${LIBUUTIL} ${LIBZFS_CORE} ${LIBZFS} ${LIBZPOOL}
+ LDADD=	-lgeom -lm -lnvpair -lpthread -lumem -luutil -lzfs_core -lzfs -lzpool
+diff --git a/usr.sbin/zhack/Makefile b/usr.sbin/zhack/Makefile
+index f09d2d8..fc3d7a4 100644
+--- a/usr.sbin/zhack/Makefile
++++ b/usr.sbin/zhack/Makefile
+@@ -22,6 +22,13 @@ CFLAGS+= -I${.CURDIR}/../../../sys/cddl/contrib/opensolaris/common/zfs
+ CFLAGS+= -I${.CURDIR}/../../../cddl/contrib/opensolaris/head
+ CFLAGS+= -I${.CURDIR}/../../lib/libumem
+ 
++LDFLAGS+= -L${.CURDIR}/../../lib/libnvpair
++LDFLAGS+= -L${.CURDIR}/../../lib/libumem
++LDFLAGS+= -L${.CURDIR}/../../lib/libuutil
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs
++LDFLAGS+= -L${.CURDIR}/../../lib/libzpool
++LDFLAGS+= -L${.CURDIR}/../../lib/libzfs_core
++
+ DPADD=	${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBPTHREAD} ${LIBUMEM} \
+ 	${LIBUUTIL} ${LIBZFS_CORE} ${LIBZFS} ${LIBZPOOL}
+ LDADD=	-lgeom -lm -lnvpair -lpthread -lumem -luutil -lzfs_core -lzfs -lzpool

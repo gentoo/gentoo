@@ -1,0 +1,100 @@
+diff -Naur nx-libs-3.5.0.17.orig/nxcomp/Makefile.in nx-libs-3.5.0.17/nxcomp/Makefile.in
+--- nx-libs-3.5.0.17.orig/nxcomp/Makefile.in	2013-01-09 15:03:33.152952758 +0100
++++ nx-libs-3.5.0.17/nxcomp/Makefile.in	2013-01-09 15:05:39.771898159 +0100
+@@ -243,8 +243,8 @@
+ 
+ $(LIBARCHIVE):	 $(CXXOBJ) $(COBJ)
+ 		 rm -f  $(LIBARCHIVE)
+-		 ar clq $(LIBARCHIVE) $(CXXOBJ) $(COBJ)
+-		 ranlib $(LIBARCHIVE)
++		 $(AR) $(LIBARCHIVE) $(CXXOBJ) $(COBJ)
++		 $(RANLIB) $(LIBARCHIVE)
+ 
+ $(LIBCYGSHARED): $(LIBARCHIVE)
+ 		 $(CC) -shared -o $(LIBCYGSHARED) \
+diff -Naur nx-libs-3.5.0.17.orig/nxcomp/configure.in nx-libs-3.5.0.17/nxcomp/configure.in
+--- nx-libs-3.5.0.17.orig/nxcomp/configure.in	2013-01-09 15:03:33.151952758 +0100
++++ nx-libs-3.5.0.17/nxcomp/configure.in	2013-01-09 15:04:03.312940892 +0100
+@@ -7,8 +7,7 @@
+ 
+ dnl Set our default compilation flags.
+ 
+-CXXFLAGS="$CXXFLAGS -O3 -fno-rtti -fno-exceptions"
+-CFLAGS="$CFLAGS -O3"
++CXXFLAGS="$CXXFLAGS -fno-rtti -fno-exceptions"
+ 
+ dnl Reset default linking directives.
+ 
+diff -Naur nx-libs-3.5.0.17.orig/nxcompext/Makefile.in nx-libs-3.5.0.17/nxcompext/Makefile.in
+--- nx-libs-3.5.0.17.orig/nxcompext/Makefile.in	2013-01-09 15:03:33.164952753 +0100
++++ nx-libs-3.5.0.17/nxcompext/Makefile.in	2013-01-09 15:06:08.747879052 +0100
+@@ -125,8 +125,8 @@
+ 
+ $(LIBARCHIVE):	 $(CXXOBJ) $(COBJ)
+ 		 rm -f  $(LIBARCHIVE)
+-		 ar clq $(LIBARCHIVE) $(CXXOBJ) $(COBJ)
+-		 ranlib $(LIBARCHIVE)
++		 $(AR) $(LIBARCHIVE) $(CXXOBJ) $(COBJ)
++		 $(RANLIB) $(LIBARCHIVE)
+ 
+ $(LIBCYGSHARED): $(LIBARCHIVE)
+ 		 $(CC) -shared -o $(LIBCYGSHARED) \
+diff -Naur nx-libs-3.5.0.17.orig/nxcompext/configure.in nx-libs-3.5.0.17/nxcompext/configure.in
+--- nx-libs-3.5.0.17.orig/nxcompext/configure.in	2013-01-09 15:03:33.164952753 +0100
++++ nx-libs-3.5.0.17/nxcompext/configure.in	2013-01-09 15:04:16.247935801 +0100
+@@ -5,11 +5,6 @@
+ AC_INIT(NXlib.h)
+ AC_PREREQ(2.13)
+ 
+-dnl Reset default compilation flags.
+-
+-CXXFLAGS="$CXXFLAGS -O3"
+-CFLAGS="$CFLAGS -O3"
+-
+ dnl Reset default linking directives.
+ 
+ LIBSTATIC=""
+diff -Naur nx-libs-3.5.0.17.orig/nxcompshad/Makefile.in nx-libs-3.5.0.17/nxcompshad/Makefile.in
+--- nx-libs-3.5.0.17.orig/nxcompshad/Makefile.in	2013-01-09 15:03:33.163952754 +0100
++++ nx-libs-3.5.0.17/nxcompshad/Makefile.in	2013-01-09 15:06:16.933873660 +0100
+@@ -158,8 +158,8 @@
+ 
+ $(LIBARCHIVE):	$(CXXOBJ) $(COBJ)
+ 		rm -f  $(LIBARCHIVE)
+-		ar clq $(LIBARCHIVE) $(CXXOBJ) $(COBJ)
+-		ranlib $(LIBARCHIVE)
++		$(AR) $(LIBARCHIVE) $(CXXOBJ) $(COBJ)
++		$(RANLIB) $(LIBARCHIVE)
+ 
+ $(LIBDLL): $(LIBARCHIVE)
+ 		$(CC) -o $@ \
+diff -Naur nx-libs-3.5.0.17.orig/nxcompshad/configure.in nx-libs-3.5.0.17/nxcompshad/configure.in
+--- nx-libs-3.5.0.17.orig/nxcompshad/configure.in	2013-01-09 15:03:33.163952754 +0100
++++ nx-libs-3.5.0.17/nxcompshad/configure.in	2013-01-09 15:04:20.073934295 +0100
+@@ -5,11 +5,6 @@
+ AC_INIT(Shadow.h)
+ AC_PREREQ(2.13)
+ 
+-dnl Reset default compilation flags.
+-
+-CXXFLAGS="$CXXFLAGS -O3"
+-CPPFLAGS="$CPPFLAGS -O3"
+-
+ dnl Reset default linking directives.
+ 
+ LIBSTATIC=""
+diff -Naur nx-libs-3.5.0.17.orig/nxproxy/configure.in nx-libs-3.5.0.17/nxproxy/configure.in
+--- nx-libs-3.5.0.17.orig/nxproxy/configure.in	2013-01-09 15:03:33.163952754 +0100
++++ nx-libs-3.5.0.17/nxproxy/configure.in	2013-01-09 15:04:24.842932418 +0100
+@@ -5,11 +5,6 @@
+ AC_INIT(Main.c)
+ AC_PREREQ(2.13)
+ 
+-dnl Reset default compilation flags.
+-
+-CXXFLAGS="$CXXFLAGS -O3"
+-CPPFLAGS="$CPPFLAGS -O3"
+-
+ dnl Prefer headers and libraries from nx-X11 if present.
+ 
+ if test -d "../nx-X11/exports/include" ; then

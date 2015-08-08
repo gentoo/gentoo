@@ -1,0 +1,45 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 24_PIC_precision.dpatch by Roger Leigh <rleigh@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Change the precision of PIC floating point output from %.2f to %.3f.
+## DP: (Closes: #611948)
+
+@DPATCH@
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2dev/dev/genpic.c transfig/fig2dev/dev/genpic.c
+--- transfig~/fig2dev/dev/genpic.c
++++ transfig/fig2dev/dev/genpic.c
+@@ -229,9 +229,9 @@
+ 
+     /* Should have a #define somewhere for the # of fill patterns */
+     if (l->fill_style != UNFILLED)
+-      fprintf(tfp, " fill %.2f", ((double) l->fill_style ) / (double) BLACK_FILL);
++      fprintf(tfp, " fill %.3f", ((double) l->fill_style ) / (double) BLACK_FILL);
+ 
+-    fprintf(tfp, " with .sw at (%.2f,%.2f) ",
++    fprintf(tfp, " with .sw at (%.3f,%.3f) ",
+ 	    minx / ppi, convy(maxy / ppi));
+ 
+     width = (maxx - minx) / ppi;
+@@ -239,10 +239,10 @@
+     height = convy(maxy / ppi) - convy(miny / ppi);
+     if (height < 0.0) height = -height;
+ 
+-    fprintf(tfp, "width %.2f height %.2f", width, height);
++    fprintf(tfp, "width %.3f height %.3f", width, height);
+ 
+     if (OptArcBox && l->type == T_ARC_BOX)
+-      fprintf(tfp, " rad %.2f", l->radius/ppi);
++      fprintf(tfp, " rad %.3f", l->radius/ppi);
+ 
+     AddThickness();
+ 
+@@ -411,7 +411,7 @@
+ 		2 * e->radiuses.x/ppi, 2 * e->radiuses.y/ppi);
+ 
+ 	if ( OptEllipseFill && e->fill_style != UNFILLED)
+-	  fprintf(tfp, " fill %.2f", (double)e->fill_style / (double) BLACK_FILL);
++	  fprintf(tfp, " fill %.3f", (double)e->fill_style / (double) BLACK_FILL);
+ 
+ 	AddThickness();
+ 

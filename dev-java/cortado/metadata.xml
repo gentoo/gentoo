@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<maintainer>
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		Cortado is an open-source cross-browser and cross-platform video
+		playback solution based upon Java technology. Leveraging the huge
+		installation base of Java it allows web-authors to deliver Ogg Theora
+		content without having to worry about the media playback setup
+		installed on customers' machines. This enables e.g. Wikipedia to
+		deliver Ogg Theora video content embedded into articles to millions of
+		users. Originally developed at Fluendo, Cortado's latest versions are
+		now maintained by Xiph.org. If you're interested in using free media
+		delivery technology, e.g. to avoid the costs adjunctive to non-free
+		technologies like H.264, and want to reach a big potential user base,
+		Cortado may be the solution you've been looking for. 
+	</longdescription>
+</pkgmetadata>

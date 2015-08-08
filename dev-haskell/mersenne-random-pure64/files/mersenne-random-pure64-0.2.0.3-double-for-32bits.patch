@@ -1,0 +1,67 @@
+diff -rN -u old-mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/Base.hsc mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/Base.hsc
+--- old-mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/Base.hsc	2008-10-16 11:01:29.000000000 +0200
++++ mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/Base.hsc	2008-10-16 11:01:29.000000000 +0200
+@@ -48,6 +48,9 @@
+ foreign import ccall unsafe "mix_bits"
+     c_mix_word64 :: Word64 -> Word64
+ 
++foreign import ccall unsafe "double_from_long_long"
++    c_double_from_long_long :: Word64 -> Double
++
+ foreign import ccall unsafe "seed_genrand64_block"
+     c_seed_genrand64_block :: Ptr a -> Word64 -> IO ()
+ 
+diff -rN -u old-mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/MTBlock.hs mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/MTBlock.hs
+--- old-mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/MTBlock.hs	2008-10-16 11:01:29.000000000 +0200
++++ mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64/MTBlock.hs	2008-10-16 11:01:29.000000000 +0200
+@@ -27,6 +27,7 @@
+     -- * Misc functions
+     blockLen,
+     mixWord64,
++    word64ToDouble,
+ ) where
+ 
+ import GHC.Exts
+@@ -92,3 +93,8 @@
+   in
+     W64# x4
+ -}
++
++word64ToDouble :: Word64 -> Double
++word64ToDouble = c_double_from_long_long
++
++-- word64ToDouble i = fromIntegral (i `div` 2048) / 9007199254740992
+diff -rN -u old-mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64.hs mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64.hs
+--- old-mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64.hs	2008-10-16 11:01:29.000000000 +0200
++++ mersenne-random-pure64-0.2.0.2/System/Random/Mersenne/Pure64.hs	2008-10-16 11:01:29.000000000 +0200
+@@ -98,7 +98,7 @@
+ 
+ -- | Efficiently yield a new 53-bit precise 'Double' value, and a new generator.
+ randomDouble :: PureMT -> (Double,PureMT)
+-randomDouble g = (fromIntegral (i `div` 2048) / 9007199254740992, g')
++randomDouble g = (word64ToDouble i, g')
+         where (i, g') = randomWord64 g
+ {-# INLINE randomDouble #-}
+ 
+diff -rN -u old-mersenne-random-pure64-0.2.0.2/cbits/mt19937-64-block.c mersenne-random-pure64-0.2.0.2/cbits/mt19937-64-block.c
+--- old-mersenne-random-pure64-0.2.0.2/cbits/mt19937-64-block.c	2008-10-16 11:01:29.000000000 +0200
++++ mersenne-random-pure64-0.2.0.2/cbits/mt19937-64-block.c	2008-10-16 11:01:29.000000000 +0200
+@@ -97,3 +97,8 @@
+     x ^= (x >> 43);
+     return x;
+ }
++
++double double_from_long_long(unsigned long long x)
++{
++    return (x >> 11) * (1.0L/9007199254740992.0);
++}
+diff -rN -u old-mersenne-random-pure64-0.2.0.2/include/mt19937-64-block.h mersenne-random-pure64-0.2.0.2/include/mt19937-64-block.h
+--- old-mersenne-random-pure64-0.2.0.2/include/mt19937-64-block.h	2008-10-16 11:01:29.000000000 +0200
++++ mersenne-random-pure64-0.2.0.2/include/mt19937-64-block.h	2008-10-16 11:01:29.000000000 +0200
+@@ -71,3 +71,5 @@
+ void next_genrand64_block(mt_block st, mt_block newst);
+ 
+ unsigned long long mix_bits(unsigned long long x);
++
++double double_from_long_long(unsigned long long x);
+

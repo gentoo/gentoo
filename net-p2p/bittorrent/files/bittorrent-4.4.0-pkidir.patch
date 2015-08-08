@@ -1,0 +1,13 @@
+Install public key in standard place.
+
+--- a/BitTorrent/NewVersion.py
++++ b/BitTorrent/NewVersion.py
+@@ -163,7 +163,7 @@ class Updater(object):
+             self.threadwrap(self.errorfunc, WARNING, '\n'.join(terrors))
+ 
+         if torrentfile and signature:
+-            public_key_file = open(os.path.join(doc_root, 'public.key'), 'rb')
++            public_key_file = open('/etc/pki/bittorrent/public.key', 'rb')
+             public_key = pickle.load(public_key_file)
+             h = sha(torrentfile).digest()
+             if public_key.verify(h, signature):

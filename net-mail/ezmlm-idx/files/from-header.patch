@@ -1,0 +1,209 @@
+--- Makefile.orig	Mon Nov 27 19:20:43 2000
++++ Makefile	Mon Nov 27 18:41:29 2000
+@@ -350,9 +350,9 @@
+ ezmlm-gate: \
+ load ezmlm-gate.o subdb.a auto_bin.o getopt.a getln.a env.a sig.a strerr.a \
+ stralloc.a alloc.a error.a str.a case.a wait.a substdio.a open.a lock.a \
+-fs.a getconf.o slurpclose.o slurp.o seek.a conf-sqlld
++fs.a getconf.o slurpclose.o slurp.o seek.a conf-sqlld get_header.a
+ 	./load ezmlm-gate subdb.a getconf.o slurpclose.o slurp.o \
+-	getopt.a getln.a auto_bin.o env.a sig.a fs.a \
++	getopt.a getln.a auto_bin.o env.a sig.a fs.a get_header.a \
+ 	strerr.a substdio.a stralloc.a alloc.a error.a str.a case.a wait.a \
+ 	open.a lock.a seek.a ${SQLLD}
+ 
+@@ -362,7 +362,7 @@
+ 
+ ezmlm-gate.o: \
+ compile ezmlm-gate.c idx.h errtxt.h subscribe.h auto_bin.h \
+-sgetopt.h subgetopt.h substdio.h getconf.h \
++sgetopt.h subgetopt.h substdio.h getconf.h get_header.h substdio.h \
+ env.h sig.h strerr.h stralloc.h alloc.h error.h str.h case.h \
+ fork.h wait.h exit.h getln.h open.h
+ 	./compile ezmlm-gate.c
+@@ -469,19 +469,20 @@
+ 
+ ezmlm-issubn: \
+ load ezmlm-issubn.o subdb.a getconf.o slurpclose.o slurp.o \
+-env.a fs.a strerr.a getln.a getopt.a conf-sqlld \
+-substdio.a stralloc.a alloc.a error.a str.a case.a open.a lock.a
++env.a fs.a strerr.a getln.a getopt.a conf-sqlld get_header.a \
++substdio.a stralloc.a alloc.a error.a str.a case.a open.a lock.a get_header.a
+ 	./load ezmlm-issubn subdb.a getconf.o slurpclose.o slurp.o \
+-	getopt.a env.a fs.a strerr.a \
++	getopt.a env.a fs.a strerr.a get_header.a substdio.a \
+ 	getln.a substdio.a stralloc.a alloc.a error.a str.a case.a \
+-	open.a lock.a ${SQLLD}
++	open.a lock.a get_header.a ${SQLLD}
+ 
+ ezmlm-issubn.0: \
+ ezmlm-issubn.1
+ 	nroff -man ezmlm-issubn.1 > ezmlm-issubn.0
+ 
+ ezmlm-issubn.o: \
+-compile ezmlm-issubn.c strerr.h subscribe.h env.h errtxt.h sgetopt.h idx.h
++compile ezmlm-issubn.c strerr.h subscribe.h env.h errtxt.h sgetopt.h idx.h \
++substdio.h readwrite.h
+ 	./compile ezmlm-issubn.c
+ 
+ ezmlm-limit: \
+@@ -1280,6 +1281,14 @@
+ stralloc.0: \
+ stralloc.3
+ 	nroff -man stralloc.3 > stralloc.0
++
++get_header.o: \
++compile get_header.c get_header.h substdio.h seek.h stralloc.h strerr.h \
++	./compile get_header.c
++
++get_header.a: \
++makelib get_header.o
++	./makelib get_header.a get_header.o stralloc.a seek_set.o strerr.a 
+ 
+ stralloc.a: \
+ makelib stralloc_eady.o stralloc_pend.o stralloc_copy.o \
+--- ezmlm-gate.c.orig	Mon Nov 27 19:20:49 2000
++++ ezmlm-gate.c	Mon Nov 27 19:04:57 2000
+@@ -17,12 +17,18 @@
+ #include "errtxt.h"
+ #include "idx.h"
+ #include "subscribe.h"
++#include "get_header.h"
++#include "substdio.h"
++#include "readwrite.h"
+ 
+ #define FATAL "ezmlm-gate: fatal: "
+ 
++char buf0[256];
++substdio ssin = SUBSTDIO_FDBUF(read,0,buf0,(int) sizeof(buf0));
++
+ void die_usage()
+ {
+-  strerr_die1x(100,"ezmlm-gate: usage: ezmlm-gate [-cCmMpPqrRsSvV] "
++  strerr_die1x(100,"ezmlm-gate: usage: ezmlm-gate [-fFcCmMpPqrRsSvV] "
+ 			"dir [moddir [...]]");
+ }
+ void die_nomem() { strerr_die2x(111,FATAL,ERR_NOMEM); }
+@@ -89,6 +95,9 @@
+   int opt;
+   int ret = 0;
+   unsigned int i,j,k;
++  int usefrom = 0;
++
++  char *from_addr = (char *)0;
+ 
+   umask(022);
+   sig_pipeignore();
+@@ -98,7 +107,7 @@
+   if (!stralloc_copys(&storeopt," -")) die_nomem();
+ 
+   while ((opt = getopt(argc,argv,
+-      "cCmMpPq:Q:sSrRt:T:vV")) != opteof)
++      "fFcCmMpPq:Q:sSrRt:T:vV")) != opteof)
+     switch(opt) {	/* pass on unrecognized options */
+       case 'c':			/* ezmlm-send flags */
+       case 'C':
+@@ -116,6 +125,8 @@
+         szchar[0] = opt;
+         if (!stralloc_append(&storeopt,szchar)) die_nomem();
+         break;
++      case 'f': usefrom = 1; break;
++      case 'F': usefrom = 0; break;
+       case 'q':			/* allow both qQ to be nice */
+       case 'Q': if (optarg) queryext = optarg; break;
+       case 'v':
+@@ -124,6 +135,10 @@
+         die_usage();
+     }
+ 
++  if (usefrom) {
++    from_addr = get_from(&ssin);
++  }
++
+   dir = argv[optind++];
+   if (!dir) die_usage();
+   if (chdir(dir) == -1)
+@@ -155,8 +170,12 @@
+   moddir = argv[optind++];
+   if (moddir && !ret) {			/* if exit 0 and moddir, add issub */
+     pmod = (char *) 0;
+-    while (moddir && !pmod && sender) {
+-      pmod = issub(moddir,sender,(char *) 0,FATAL);
++    while (moddir && !pmod && (sender || from_addr)) {
++      if (sender)
++        pmod = issub(moddir,sender,(char *) 0,FATAL);
++      if (!pmod && from_addr)
++        pmod = issub(moddir,from_addr,(char *) 0,FATAL);
++
+       closesql();
+       moddir = argv[optind++];
+     }
+--- ezmlm-issubn.c.orig	Mon Nov 27 19:20:54 2000
++++ ezmlm-issubn.c	Mon Nov 27 19:05:59 2000
+@@ -6,14 +6,21 @@
+ #include "sgetopt.h"
+ #include "errtxt.h"
+ #include "idx.h"
++#include "get_header.h"
++#include "substdio.h"
++#include "readwrite.h"
+ 
+ #define FATAL "ezmlm-issubn: fatal: "
+ 
++char buf0[256];
++substdio ssin = SUBSTDIO_FDBUF(read,0,buf0,(int) sizeof(buf0));
++
+ void *psql = (void *) 0;
+ 
+ void die_usage()
+ {
+-  strerr_die1x(100,"ezmlm-issubn: usage: ezmlm-issubn [-nN] dir [dir1 ...]");
++  strerr_die1x(100,
++      "ezmlm-issubn: usage: ezmlm-issubn [-fF] [-nN] dir [dir1 ...]");
+ }
+ 
+ void die_sender()
+@@ -28,15 +35,19 @@
+   char *dir;
+   char *addr;
+   int flagsub = 0;
++  int usefrom = 0;
+   int opt;
++  char *from_addr = (char *)0;
+ 
+   addr = env_get("SENDER");
+   if (!addr) die_sender();	/* REQUIRE sender */
+ 
+-  while ((opt = getopt(argc,argv,"nNvV")) != opteof)
++  while ((opt = getopt(argc,argv,"fFnNvV")) != opteof)
+     switch(opt) {
+       case 'n': flagsub = 99; break;
+       case 'N': flagsub = 0; break;
++      case 'f': usefrom = 1; break;
++      case 'F': usefrom = 0; break;
+       case 'v':
+       case 'V': strerr_die2x(0,
+ 		"ezmlm-issubn version: ezmlm-0.53+",EZIDX_VERSION);
+@@ -44,6 +55,11 @@
+ 	die_usage();
+     }
+ 
++
++  if (usefrom) {
++    from_addr = get_from(&ssin);
++  }
++
+   dir = argv[optind];
+   if (chdir(dir) == -1)
+     strerr_die4sys(111,FATAL,ERR_SWITCH,dir,": ");
+@@ -54,6 +70,9 @@
+     if (issub(dir,addr,(char *) 0,FATAL)) {
+       closesql();
+       _exit(flagsub);		/* subscriber */
++    } else if (from_addr && issub(dir, from_addr, (char *) 0, FATAL)) {
++      closesql();
++      _exit(flagsub);
+     }
+   }
+   closesql();
+

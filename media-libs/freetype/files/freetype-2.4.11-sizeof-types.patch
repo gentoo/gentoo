@@ -1,0 +1,31 @@
+From 8af7b9e403240c2c3ace1005f5a91fa2f1625ac9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 11 Mar 2013 22:13:34 +0100
+Subject: [PATCH] Prevent apps from using the autoconf sizeof branch.
+
+Use #error to make sure that any app trying to enable that branch fails
+miserably. This guarantees the code to be multilib-friendly and also
+removes the header differences triggering QA errors.
+---
+ builds/unix/ftconfig.in | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/builds/unix/ftconfig.in b/builds/unix/ftconfig.in
+index 9531afd..457cbfc 100644
+--- a/builds/unix/ftconfig.in
++++ b/builds/unix/ftconfig.in
+@@ -78,10 +78,7 @@ FT_BEGIN_HEADER
+ #undef FT_USE_AUTOCONF_SIZEOF_TYPES
+ #ifdef FT_USE_AUTOCONF_SIZEOF_TYPES
+ 
+-#undef SIZEOF_INT
+-#undef SIZEOF_LONG
+-#define FT_SIZEOF_INT  SIZEOF_INT
+-#define FT_SIZEOF_LONG SIZEOF_LONG
++#error "Unsupported code branch enabled. Please report a bug to bugs.gentoo.org."
+ 
+ #else /* !FT_USE_AUTOCONF_SIZEOF_TYPES */
+ 
+-- 
+1.8.1.5
+

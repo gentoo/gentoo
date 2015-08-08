@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+	    <email>nimiux@gentoo.org</email>
+	    <name>Chema Alonso</name>
+    </maintainer>
+    <longdescription lang="en">
+        An HP-42S Calculator Simulator
+    </longdescription>
+    <longdescription lang="es">
+        Un simulador de la calculadora HP-42S
+    </longdescription>
+	<use>
+		<flag name="alsa">
+		   Adds support for Advanced Linux Sound Architecture
+		</flag>
+	</use>
+</pkgmetadata>

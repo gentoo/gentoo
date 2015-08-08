@@ -1,0 +1,29 @@
+Remove test from jar target and set the encoding for javadocs.
+
+--- build.xml	2006-06-03 05:48:22.000000000 +0200
++++ build.xml	2011-04-20 17:04:49.000000000 +0200
+@@ -56,7 +56,7 @@
+       </fileset>
+     </copy>
+   </target>
+-  <target name="jar" description="o Create the jar" depends="compile,test">
++  <target name="jar" description="o Create the jar" depends="compile">
+     <jar jarfile="${defaulttargetdir}/${final.name}.jar" excludes="**/package.html" basedir="${classesdir}">
+     </jar>
+   </target>
+@@ -100,7 +100,7 @@
+     </property>
+     <property name="title" value="jakarta-bcel 5.2 API">
+     </property>
+-    <javadoc use="true" private="true" destdir="${javadocdir}" author="true" version="true" sourcepath="src/java" packagenames="org.apache.bcel.*">
++    <javadoc use="true" private="true" destdir="${javadocdir}" author="true" version="true" sourcepath="src/java" packagenames="org.apache.bcel.*" encoding="ISO-8859-1">
+       <classpath>
+         <path refid="build.classpath">
+         </path>
+@@ -121,4 +121,4 @@
+     <unjar dest="${maven.home}" src="${user.home}/maven-install-latest.jar">
+     </unjar>
+   </target>
+-</project>
+\ No newline at end of file
++</project>

@@ -1,0 +1,16 @@
+--- bindfs-1.10.7/configure.ac
++++ bindfs-1.10.7/configure.ac
+@@ -15,13 +15,6 @@
+ AC_ARG_WITH([core-foundation],
+ 	AS_HELP_STRING([--with-core-foundation], [link against Core Foundation (OS X only) @<:@default=no@:>@]))
+ 
+-
+-if test x"$enable_debug" == "xyes" ; then
+-	my_CFLAGS="-g -O0"
+-else
+-	my_CFLAGS="-O2"
+-fi
+-
+ if test x"$enable_debug_output" == "xyes" ; then
+ 	AC_DEFINE([BINDFS_DEBUG], [1], [Define to 1 to enable debugging messages])
+ fi

@@ -1,0 +1,20 @@
+avahi-gobject fails to build under et_EE and possibly other locales.
+
+The regex for a sed in avahi-gobject/Makefile fails under various locales.
+Forcing LC_ALL=C fixes the issue.
+
+X-Gentoo-Bug: 501664
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/501664
+
+diff -Naur avahi-0.6.31.orig/avahi-gobject/Makefile.am avahi-0.6.31/avahi-gobject/Makefile.am
+--- avahi-0.6.31.orig/avahi-gobject/Makefile.am	2010-08-25 20:51:39.007153001 -0400
++++ avahi-0.6.31/avahi-gobject/Makefile.am	2014-09-07 19:00:05.485657990 -0400
+@@ -76,7 +76,7 @@
+ 
+ signals-marshal.list: $(CORE_SOURCES) Makefile.am
+ 	$(AM_V_GEN)( cd $(srcdir) && \
+-	sed -n -e 's/.*_ga_signals_marshal_\([A-Z]*__[A-Z_]*\).*/\1/p' \
++	LC_ALL=C sed -n -e 's/.*_ga_signals_marshal_\([A-Z]*__[A-Z_]*\).*/\1/p' \
+ 		$(CORE_SOURCES) ) \
+ 		| sed -e 's/__/:/' -e 'y/_/,/' | sort -u > $@.tmp && \
+ 	if cmp -s $@.tmp $@; then \

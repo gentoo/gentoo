@@ -1,0 +1,27 @@
+--- shorewall-init.old	2013-09-08 23:25:36.364924304 +0200
++++ shorewall-init	2013-09-08 23:29:27.418736392 +0200
+@@ -79,10 +79,6 @@
+       fi
+   done
+ 
+-  if [ -n "$SAVE_IPSETS" -a -f "$SAVE_IPSETS" ]; then
+-      ipset -R < "$SAVE_IPSETS"
+-  fi
+-
+   return 0
+ }
+ 
+@@ -100,13 +96,6 @@
+       fi
+   done
+ 
+-  if [ -n "$SAVE_IPSETS" ]; then
+-      mkdir -p $(dirname "$SAVE_IPSETS")
+-      if ipset -S > "${SAVE_IPSETS}.tmp"; then
+-	  grep -qE -- '^(-N|create )' "${SAVE_IPSETS}.tmp" && mv -f "${SAVE_IPSETS}.tmp" "$SAVE_IPSETS"
+-      fi
+-  fi
+-
+   return 0
+ }
+ 

@@ -1,0 +1,118 @@
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/cin/big5/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/cin/big5/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/cin/big5/Makefile.in	2001-09-07 00:41:32.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/cin/big5/Makefile.in	2011-11-21 00:44:20.979695505 +0900
+@@ -9,43 +9,43 @@
+ all: all-$(OS_TYPE)
+ 
+ all-LINUX:
+-	( BIG5ENC=big5 BIG5HKENC=big5hkscs make -f Rules make-big5 make-big5hkscs )
++	( BIG5ENC=big5 BIG5HKENC=big5hkscs $(MAKE) -f Rules make-big5 make-big5hkscs )
+ 
+ all-FREEBSD:
+-	( BIG5ENC=big5 make -f Rules make-big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules make-big5 )
+ 
+ all-OPENBSD:
+-	( BIG5ENC=big5 make -f Rules make-big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules make-big5 )
+ 
+ all-NETBSD:
+-	( BIG5ENC=big5 make -f Rules make-big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules make-big5 )
+ 
+ all-HPUX:
+-	( BIG5ENC=big5 BIG5HKENC=hkbig5 make -f Rules make-big5 make-big5hkscs )
++	( BIG5ENC=big5 BIG5HKENC=hkbig5 $(MAKE) -f Rules make-big5 make-big5hkscs )
+ 
+ all-SOLARIS:
+-	( BIG5ENC=big5 make -f Rules make-big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules make-big5 )
+ 
+ 
+ install: all install-$(OS_TYPE)
+ 
+ install-LINUX:
+-	( BIG5ENC=big5 BIG5HKENC=big5hkscs make -f Rules install_big5 install_big5hkscs )
++	( BIG5ENC=big5 BIG5HKENC=big5hkscs $(MAKE) -f Rules install_big5 install_big5hkscs )
+ 
+ install-FREEBSD:
+-	( BIG5ENC=big5 make -f Rules install_big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules install_big5 )
+ 
+ install-OPENBSD:
+-	( BIG5ENC=big5 make -f Rules install_big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules install_big5 )
+ 
+ install-NETBSD:
+-	( BIG5ENC=big5 make -f Rules install_big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules install_big5 )
+ 
+ install-HPUX:
+-	( BIG5ENC=big5 BIG5HKENC=hkbig5 make -f Rules install_big5 install_big5hkscs )
++	( BIG5ENC=big5 BIG5HKENC=hkbig5 $(MAKE) -f Rules install_big5 install_big5hkscs )
+ 
+ install-SOLARIS:
+-	( BIG5ENC=big5 make -f Rules install_big5 )
++	( BIG5ENC=big5 $(MAKE) -f Rules install_big5 )
+ 
+ 
+ clean:
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/cin/gb/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/cin/gb/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/cin/gb/Makefile.in	2001-09-07 00:41:33.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/cin/gb/Makefile.in	2011-11-21 00:44:07.491653510 +0900
+@@ -9,43 +9,43 @@
+ all: all-$(OS_TYPE)
+ 
+ all-LINUX:
+-	( GB2312ENC=gb2312 GBKENC=gbk make -f Rules make-gb2312 make-gbk )
++	( GB2312ENC=gb2312 GBKENC=gbk $(MAKE) -f Rules make-gb2312 make-gbk )
+ 
+ all-FREEBSD:
+-	( GB2312ENC=euc make -f Rules make-gb2312 )
++	( GB2312ENC=euc $(MAKE) -f Rules make-gb2312 )
+ 
+ all-OPENBSD:
+-	( GB2312ENC=euc make -f Rules make-gb2312 )
++	( GB2312ENC=euc $(MAKE) -f Rules make-gb2312 )
+ 
+ all-NETBSD:
+-	( GB2312ENC=euccn make -f Rules make-gb2312 )
++	( GB2312ENC=euccn $(MAKE) -f Rules make-gb2312 )
+ 
+ all-HPUX:
+-	( GB2312ENC=hp15cn make -f Rules make-gb2312 )
++	( GB2312ENC=hp15cn $(MAKE) -f Rules make-gb2312 )
+ 
+ all-SOLARIS:
+-	( GB2312ENC=euc make -f Rules make-gb2312 )
++	( GB2312ENC=euc $(MAKE) -f Rules make-gb2312 )
+ 
+ 
+ install: all install-$(OS_TYPE)
+ 
+ install-LINUX:
+-	( GB2312ENC=gb2312 GBKENC=gbk make -f Rules install_gb2312 install_gbk )
++	( GB2312ENC=gb2312 GBKENC=gbk $(MAKE) -f Rules install_gb2312 install_gbk )
+ 
+ install-FREEBSD:
+-	( GB2312ENC=euc make -f Rules install_gb2312 )
++	( GB2312ENC=euc $(MAKE) -f Rules install_gb2312 )
+ 
+ install-OPENBSD:
+-	( GB2312ENC=euc make -f Rules install_gb2312 )
++	( GB2312ENC=euc $(MAKE) -f Rules install_gb2312 )
+ 
+ install-NETBSD:
+-	( GB2312ENC=euccn make -f Rules install_gb2312 )
++	( GB2312ENC=euccn $(MAKE) -f Rules install_gb2312 )
+ 
+ install-HPUX:
+-	( GB2312ENC=hp15cn make -f Rules install_gb2312 )
++	( GB2312ENC=hp15cn $(MAKE) -f Rules install_gb2312 )
+ 
+ install-SOLARIS:
+-	( GB2312ENC=euc make -f Rules install_gb2312 )
++	( GB2312ENC=euc $(MAKE) -f Rules install_gb2312 )
+ 
+ clean:
+ 	rm -f *.tab* core

@@ -1,0 +1,27 @@
+diff --git a/uip/inc.c b/uip/inc.c
+index cf12ab8..b8384cd 100644
+--- a/uip/inc.c
++++ b/uip/inc.c
+@@ -496,8 +496,7 @@ main (int argc, char **argv)
+      * a POP server?
+      */
+     if (inc_type == INC_POP) {
+-	if (user == NULL)
+-	    user = getusername ();
++
+ 	if ( strcmp( POPSERVICE, "kpop" ) == 0 ) {
+ 	    kpop = 1;
+ 	}
+@@ -506,6 +505,12 @@ main (int argc, char **argv)
+ 	else
+ 	    ruserpass (host, &user, &pass);
+ 
++	/* 
++	 * Do this _after_ ruserpass, otherwise the login field will be unusable
++	 */
++	if (user == NULL)
++	    user = getusername ();
++
+ 	/*
+ 	 * initialize POP connection
+ 	 */

@@ -1,0 +1,25 @@
+From 74fd172db4961ab07f134a60cd88955fb170f11d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 8 Jan 2012 17:39:51 +0100
+Subject: [PATCH 2/2] Mention parameter -t in usage output
+
+---
+ unixunpk.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/unixunpk.c b/unixunpk.c
+index 0f5fa85..1320b70 100644
+--- a/unixunpk.c
++++ b/unixunpk.c
+@@ -101,7 +101,7 @@ int main(int argc, char **argv)
+ 
+ void usage(void) {
+     fprintf(stderr, "munpack version %s\n", MPACK_VERSION);
+-    fprintf(stderr, "usage: munpack [-f] [-q] [-C directory] [files...]\n");
++    fprintf(stderr, "usage: munpack [-f] [-q] [-t] [-C directory] [files...]\n");
+     exit(1);
+ }
+ 
+-- 
+1.7.8.3
+

@@ -1,0 +1,24 @@
+diff -urp cronolog-1.6.2/src/cronolog.c cronolog-1.6.2/src/cronolog.c
+--- cronolog-1.6.2/src/cronolog.c	2001-05-03 09:42:48.000000000 -0700
++++ cronolog-1.6.2/src/cronolog.c	2008-01-05 23:54:53.000000000 -0800
+@@ -139,7 +139,8 @@ struct option long_options[] =
+     { "delay",		required_argument,	NULL, 'd' },
+     { "once-only", 	no_argument,       	NULL, 'o' },
+     { "help",      	no_argument,       	NULL, 'h' },
+-    { "version",   	no_argument,       	NULL, 'V' }
++    { "version",   	no_argument,       	NULL, 'V' },
++    { NULL,		0,			NULL, 0 }
+ };
+ #endif
+ 
+diff -urp cronolog-1.6.2/src/cronotest.c cronolog-1.6.2/src/cronotest.c
+--- cronolog-1.6.2/src/cronotest.c	2001-05-03 09:26:44.000000000 -0700
++++ cronolog-1.6.2/src/cronotest.c	2008-01-06 00:02:24.000000000 -0800
+@@ -112,7 +112,8 @@ struct option   long_options[] =
+     { "test-subdirs",	required_argument,	NULL, 'D' },
+     { "help",       	no_argument,		NULL, 'h' },
+     { "version",	no_argument,		NULL, 'V' },
+-    { "verbose",	no_argument,		NULL, 'v' }
++    { "verbose",	no_argument,		NULL, 'v' },
++    { NULL,		0,			NULL, 0 }
+ };

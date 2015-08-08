@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>polynomial-c@gentoo.org</email>
+  <name>Lars Wendler</name>
+</maintainer>
+<longdescription>The libsmbios project aims towards providing access to as much
+BIOS information as possible. It does this by providing a library of functions
+that can be used as well as sample binaries.</longdescription>
+</pkgmetadata>

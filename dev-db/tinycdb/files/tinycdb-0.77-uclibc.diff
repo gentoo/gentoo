@@ -1,0 +1,15 @@
+--- tinycdb-0.77.orig/cdb.c
++++ tinycdb-0.77/cdb.c
+@@ -31,6 +31,12 @@
+ # define HAVE_PROGRAM_INVOCATION_SHORT_NAME
+ #endif
+
++#ifdef __UCLIBC__
++# ifndef __UCLIBC_HAS_PROGRAM_INVOCATION_NAME__
++#  undef HAVE_PROGRAM_INVOCATION_SHORT_NAME
++# endif
++#endif
++
+ #ifdef HAVE_PROGRAM_INVOCATION_SHORT_NAME
+ # define progname program_invocation_short_name
+ #else

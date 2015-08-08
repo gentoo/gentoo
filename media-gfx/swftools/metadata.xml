@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>dblaci@dblaci.hu</email>
+	<description>Please assign bugs</description>
+</maintainer>
+<maintainer>
+	<email>pacho@gentoo.org</email>
+	<description>proxy-maintainer, please CC on bugs</description>
+</maintainer>
+</pkgmetadata>

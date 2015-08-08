@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Automatically discover and run Hspec tests
+		
+		&lt;http://hspec.github.io/hspec-discover.html&gt;
+	</longdescription>
+</pkgmetadata>

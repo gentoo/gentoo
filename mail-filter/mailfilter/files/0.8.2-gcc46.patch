@@ -1,0 +1,20 @@
+Fix building with gcc-4.6
+
+https://bugs.gentoo.org/show_bug.cgi?id=366191
+
+Part of debian patch by Ricardo Mones <mones@debian.org>
+Fix invalid conversion and addded Ubuntu patch (thanks Ilya Barygin <barygin@gmail.com>)
+
+--- a/src/preferences.cc
++++ b/src/preferences.cc
+@@ -82,8 +82,8 @@
+ 
+ void Preferences :: init (void)
+ {
+-  ((Size_score)(Preferences :: size_score)).score = 0;
+-  ((Size_score)(Preferences :: size_score)).size  = 0;
++  size_score.score = 0;
++  size_score.size  = 0;
+ }
+   
+ void Preferences :: kill (void)

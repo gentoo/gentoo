@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_started_commands="pause unpause"
+
+start() {
+	ebegin "Starting nzbget"
+	checkpath -d -m 0755 -o "${NZBGET_USER}:${NZBGET_GROUP}" /run/nzbget
+	start-stop-daemon --quiet --start --user "${NZBGET_USER}" \
+		--group "${NZBGET_GROUP}" --exec /usr/bin/nzbget -- \
+		--configfile "${NZBGET_CONFIGFILE}" --daemon \
+		${NZBGET_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping nzbget"
+	/usr/bin/nzbget --configfile "${NZBGET_CONFIGFILE}" --quit >/dev/null
+	eend $?
+}
+
+pause() {
+	ebegin "Pausing nzbget"
+	/usr/bin/nzbget --configfile "${NZBGET_CONFIGFILE}" --pause >/dev/null
+	eend $?
+}
+
+unpause() {
+	ebegin "Unpausing nzbget"
+	/usr/bin/nzbget --configfile "${NZBGET_CONFIGFILE}" --unpause >/dev/null
+	eend $?
+}

@@ -1,0 +1,484 @@
+From a4c9d09d7a89d3c80b4465a5c2ae0efa24158b24 Mon Sep 17 00:00:00 2001
+From: Giovanni Campagna <gcampagna@src.gnome.org>
+Date: Tue, 6 May 2014 18:53:21 +0200
+Subject: Parse and expose ownership transfer for instance parameters
+
+Knowing the ownership transfer for instance parameters is
+necessary for correct memory management of functions which
+"eat" their instance argument, such as g_dbus_method_invocation_return_*.
+Parse this information from the gir file and store in the
+typelib, and then provide new API on GICallableInfo to
+retrieve this.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=729662
+
+diff --git a/girepository/gicallableinfo.c b/girepository/gicallableinfo.c
+index e69e3e9..702e16c 100644
+--- a/girepository/gicallableinfo.c
++++ b/girepository/gicallableinfo.c
+@@ -276,6 +276,32 @@ g_callable_info_get_caller_owns (GICallableInfo *info)
+ }
+ 
+ /**
++ * g_callable_info_get_instance_ownership_transfer:
++ * @info: a #GICallableInfo
++ *
++ * Obtains the ownership transfer for the instance argument.
++ * #GITransfer contains a list of possible transfer values.
++ *
++ * Returns: the transfer
++ */
++GITransfer
++g_callable_info_get_instance_ownership_transfer (GICallableInfo *info)
++{
++  GIRealInfo *rinfo = (GIRealInfo*) info;
++  SignatureBlob *blob;
++
++  g_return_val_if_fail (info != NULL, -1);
++  g_return_val_if_fail (GI_IS_CALLABLE_INFO (info), -1);
++
++  blob = (SignatureBlob *)&rinfo->typelib->data[signature_offset (info)];
++
++  if (blob->instance_transfer_ownership)
++    return GI_TRANSFER_EVERYTHING;
++  else
++    return GI_TRANSFER_NOTHING;
++}
++
++/**
+  * g_callable_info_get_n_args:
+  * @info: a #GICallableInfo
+  *
+diff --git a/girepository/gicallableinfo.h b/girepository/gicallableinfo.h
+index 71f9d0c..f273d29 100644
+--- a/girepository/gicallableinfo.h
++++ b/girepository/gicallableinfo.h
+@@ -73,6 +73,8 @@ gboolean               g_callable_info_invoke          (GICallableInfo   *info,
+                                                         gboolean          is_method,
+                                                         gboolean          throws,
+                                                         GError          **error);
++GITransfer             g_callable_info_get_instance_ownership_transfer (GICallableInfo *info);
++
+ G_END_DECLS
+ 
+ 
+diff --git a/girepository/girepository.symbols b/girepository/girepository.symbols
+index 5f01adf..48fb0d9 100644
+--- a/girepository/girepository.symbols
++++ b/girepository/girepository.symbols
+@@ -26,6 +26,7 @@ g_info_new
+ g_callable_info_can_throw_gerror
+ g_callable_info_get_arg
+ g_callable_info_get_caller_owns
++g_callable_info_get_instance_ownership_transfer
+ g_callable_info_get_n_args
+ g_callable_info_get_return_attribute
+ g_callable_info_get_return_type
+diff --git a/girepository/girnode.c b/girepository/girnode.c
+index 53385c2..a7a77e3 100644
+--- a/girepository/girnode.c
++++ b/girepository/girnode.c
+@@ -1664,6 +1664,7 @@ _g_ir_node_build_typelib (GIrNode         *node,
+ 	blob2->caller_owns_return_value = function->result->transfer;
+ 	blob2->caller_owns_return_container = function->result->shallow_transfer;
+ 	blob2->skip_return = function->result->skip;
++        blob2->instance_transfer_ownership = function->instance_transfer_full;
+ 	blob2->reserved = 0;
+ 	blob2->n_arguments = n;
+ 
+@@ -1762,6 +1763,7 @@ _g_ir_node_build_typelib (GIrNode         *node,
+ 	blob2->may_return_null = signal->result->nullable;
+ 	blob2->caller_owns_return_value = signal->result->transfer;
+ 	blob2->caller_owns_return_container = signal->result->shallow_transfer;
++        blob2->instance_transfer_ownership = signal->instance_transfer_full;
+ 	blob2->reserved = 0;
+ 	blob2->n_arguments = n;
+ 
+@@ -1820,6 +1822,7 @@ _g_ir_node_build_typelib (GIrNode         *node,
+ 	blob2->may_return_null = vfunc->result->nullable;
+ 	blob2->caller_owns_return_value = vfunc->result->transfer;
+ 	blob2->caller_owns_return_container = vfunc->result->shallow_transfer;
++        blob2->instance_transfer_ownership = vfunc->instance_transfer_full;
+ 	blob2->reserved = 0;
+ 	blob2->n_arguments = n;
+ 
+diff --git a/girepository/girnode.h b/girepository/girnode.h
+index 4beef7f..02196e7 100644
+--- a/girepository/girnode.h
++++ b/girepository/girnode.h
+@@ -100,6 +100,7 @@ struct _GIrNodeFunction
+   gboolean is_constructor;
+   gboolean wraps_vfunc;
+   gboolean throws;
++  gboolean instance_transfer_full;
+ 
+   gchar *symbol;
+ 
+@@ -188,6 +189,7 @@ struct _GIrNodeSignal
+   gboolean detailed;
+   gboolean action;
+   gboolean no_hooks;
++  gboolean instance_transfer_full;
+ 
+   gboolean has_class_closure;
+   gboolean true_stops_emit;
+@@ -208,6 +210,7 @@ struct _GIrNodeVFunc
+   gboolean must_not_be_implemented;
+   gboolean is_class_closure;
+   gboolean throws;
++  gboolean instance_transfer_full;
+ 
+   char *invoker;
+ 
+diff --git a/girepository/girparser.c b/girepository/girparser.c
+index 6c76866..f928c2e 100644
+--- a/girepository/girparser.c
++++ b/girepository/girparser.c
+@@ -1047,6 +1047,71 @@ parse_param_transfer (GIrNodeParam *param, const gchar *transfer, const gchar *n
+ }
+ 
+ static gboolean
++start_instance_parameter (GMarkupParseContext *context,
++                          const gchar         *element_name,
++                          const gchar        **attribute_names,
++                          const gchar        **attribute_values,
++                          ParseContext        *ctx,
++                          GError             **error)
++{
++  const gchar *transfer;
++  gboolean transfer_full;
++
++  if (!(strcmp (element_name, "instance-parameter") == 0 &&
++	ctx->state == STATE_FUNCTION_PARAMETERS))
++    return FALSE;
++
++  transfer = find_attribute ("transfer-ownership", attribute_names, attribute_values);
++
++  state_switch (ctx, STATE_PASSTHROUGH);
++
++  if (strcmp (transfer, "full") == 0)
++    transfer_full = TRUE;
++  else if (strcmp (transfer, "none") == 0)
++    transfer_full = FALSE;
++  else
++    {
++      g_set_error (error, G_MARKUP_ERROR,
++		   G_MARKUP_ERROR_INVALID_CONTENT,
++		   "invalid value for 'transfer-ownership' for instance parameter: %s", transfer);
++      return FALSE;
++    }
++
++  switch (CURRENT_NODE (ctx)->type)
++    {
++    case G_IR_NODE_FUNCTION:
++    case G_IR_NODE_CALLBACK:
++      {
++	GIrNodeFunction *func;
++
++	func = (GIrNodeFunction *)CURRENT_NODE (ctx);
++        func->instance_transfer_full = transfer_full;
++      }
++      break;
++    case G_IR_NODE_SIGNAL:
++      {
++	GIrNodeSignal *signal;
++
++	signal = (GIrNodeSignal *)CURRENT_NODE (ctx);
++        signal->instance_transfer_full = transfer_full;
++      }
++      break;
++    case G_IR_NODE_VFUNC:
++      {
++	GIrNodeVFunc *vfunc;
++
++	vfunc = (GIrNodeVFunc *)CURRENT_NODE (ctx);
++        vfunc->instance_transfer_full = transfer_full;
++      }
++      break;
++    default:
++      g_assert_not_reached ();
++    }
++
++  return TRUE;
++}
++
++static gboolean
+ start_parameter (GMarkupParseContext *context,
+ 		 const gchar         *element_name,
+ 		 const gchar        **attribute_names,
+@@ -2848,11 +2913,10 @@ start_element_handler (GMarkupParseContext *context,
+ 				 attribute_names, attribute_values,
+ 				 ctx, error))
+ 	goto out;
+-      else if (strcmp (element_name, "instance-parameter") == 0)
+-        {
+-          state_switch (ctx, STATE_PASSTHROUGH);
+-          goto out;
+-        }
++      else if (start_instance_parameter (context, element_name,
++				attribute_names, attribute_values,
++				ctx, error))
++	goto out;
+       else if (strcmp (element_name, "c:include") == 0)
+ 	{
+ 	  state_switch (ctx, STATE_C_INCLUDE);
+diff --git a/girepository/gitypelib-internal.h b/girepository/gitypelib-internal.h
+index 93d621b..5ccb617 100644
+--- a/girepository/gitypelib-internal.h
++++ b/girepository/gitypelib-internal.h
+@@ -465,6 +465,8 @@ typedef struct {
+  *   freeing the container, but not its contents.
+  * @skip_return: Indicates that the return value is only useful in C and should
+  *   be skipped.
++ * @instance_transfer_ownership: When calling, the function assumes ownership of
++ *   the instance parameter.
+  * @reserved: Reserved for future use.
+  * @n_arguments: The number of arguments that this function expects, also the
+  *   length of the array of ArgBlobs.
+@@ -479,7 +481,8 @@ typedef struct {
+   guint16        caller_owns_return_value     : 1;
+   guint16        caller_owns_return_container : 1;
+   guint16        skip_return                  : 1;
+-  guint16        reserved                     :12;
++  guint16        instance_transfer_ownership  : 1;
++  guint16        reserved                     :11;
+ 
+   guint16        n_arguments;
+ 
+diff --git a/tests/repository/gitypelibtest.c b/tests/repository/gitypelibtest.c
+index 565c95c..7b9cb35 100644
+--- a/tests/repository/gitypelibtest.c
++++ b/tests/repository/gitypelibtest.c
+@@ -276,6 +276,34 @@ test_signal_array_len (GIRepository * repo)
+   g_base_info_unref (testobj_info);
+ }
+ 
++static void
++test_instance_transfer_ownership (GIRepository * repo)
++{
++  GIObjectInfo *testobj_info;
++  GIFunctionInfo *func_info;
++  GITransfer transfer;
++
++  g_assert (g_irepository_require (repo, "Regress", NULL, 0, NULL));
++  testobj_info = g_irepository_find_by_name (repo, "Regress", "TestObj");
++  g_assert (testobj_info != NULL);
++
++  func_info = g_object_info_find_method (testobj_info, "instance_method");
++  g_assert (func_info != NULL);
++  transfer = g_callable_info_get_instance_ownership_transfer ((GICallableInfo*) func_info);
++  g_assert_cmpint (GI_TRANSFER_NOTHING, ==, transfer);
++
++  g_base_info_unref (func_info);
++
++  func_info = g_object_info_find_method (testobj_info, "instance_method_full");
++  g_assert (func_info != NULL);
++  transfer = g_callable_info_get_instance_ownership_transfer ((GICallableInfo*) func_info);
++  g_assert_cmpint (GI_TRANSFER_EVERYTHING, ==, transfer);
++
++  g_base_info_unref (func_info);
++
++  g_base_info_unref (testobj_info);
++}
++
+ int
+ main (int argc, char **argv)
+ {
+@@ -292,6 +320,7 @@ main (int argc, char **argv)
+   test_hash_with_cairo_typelib (repo);
+   test_char_types (repo);
+   test_signal_array_len (repo);
++  test_instance_transfer_ownership (repo);
+ 
+   exit (0);
+ }
+diff --git a/tests/scanner/Regress-1.0-C-expected/Regress.TestObj.instance_method_full.page b/tests/scanner/Regress-1.0-C-expected/Regress.TestObj.instance_method_full.page
+new file mode 100644
+index 0000000..2222bec
+--- /dev/null
++++ b/tests/scanner/Regress-1.0-C-expected/Regress.TestObj.instance_method_full.page
+@@ -0,0 +1,38 @@
++<?xml version="1.0"?>
++<page id="Regress.TestObj.instance_method_full"
++      type="topic"
++      style="method"
++      xmlns="http://projectmallard.org/1.0/"
++      xmlns:api="http://projectmallard.org/experimental/api/"
++      xmlns:ui="http://projectmallard.org/1.0/ui/">
++  <info>
++    <link xref="Regress.TestObj" group="method" type="guide"/>
++    <api:function>
++      <api:returns>
++        <api:type>void</api:type>
++      </api:returns>
++      <api:name>regress_test_obj_instance_method_full</api:name>
++      <api:arg>
++        <api:type>RegressTestObj*</api:type>
++        <api:name>obj</api:name>
++      </api:arg>
++    </api:function>
++  </info>
++  <title>regress_test_obj_instance_method_full</title>
++  <synopsis><code mime="text/x-csrc">
++void regress_test_obj_instance_method_full (RegressTestObj* obj);
++  </code></synopsis>
++
++
++<terms>
++<item>
++<title><code>obj</code></title>
++
++</item>
++<item>
++<title><code>Returns</code></title>
++
++</item>
++</terms>
++
++</page>
+diff --git a/tests/scanner/Regress-1.0-Gjs-expected/Regress.TestObj.instance_method_full.page b/tests/scanner/Regress-1.0-Gjs-expected/Regress.TestObj.instance_method_full.page
+new file mode 100644
+index 0000000..5b7e1c9
+--- /dev/null
++++ b/tests/scanner/Regress-1.0-Gjs-expected/Regress.TestObj.instance_method_full.page
+@@ -0,0 +1,26 @@
++<?xml version="1.0"?>
++<page id="Regress.TestObj.instance_method_full"
++      type="topic"
++      style="method"
++      xmlns="http://projectmallard.org/1.0/"
++      xmlns:api="http://projectmallard.org/experimental/api/"
++      xmlns:ui="http://projectmallard.org/1.0/ui/">
++  <info>
++    <link xref="Regress.TestObj" group="method" type="guide"/>
++    <api:function>
++      <api:returns>
++        <api:type>void</api:type>
++      </api:returns>
++      <api:name>regress_test_obj_instance_method_full</api:name>
++    </api:function>
++  </info>
++  <title>Regress.TestObj.prototype.instance_method_full</title>
++  <synopsis><code mime="text/x-gjs">
++function instance_method_full(): void {
++    // Gjs wrapper for regress_test_obj_instance_method_full()
++}
++  </code></synopsis>
++
++
++
++</page>
+diff --git a/tests/scanner/Regress-1.0-Python-expected/Regress.TestObj.instance_method_full.page b/tests/scanner/Regress-1.0-Python-expected/Regress.TestObj.instance_method_full.page
+new file mode 100644
+index 0000000..2b5c1dc
+--- /dev/null
++++ b/tests/scanner/Regress-1.0-Python-expected/Regress.TestObj.instance_method_full.page
+@@ -0,0 +1,37 @@
++<?xml version="1.0"?>
++<page id="Regress.TestObj.instance_method_full"
++      type="topic"
++      style="method"
++      xmlns="http://projectmallard.org/1.0/"
++      xmlns:api="http://projectmallard.org/experimental/api/"
++      xmlns:ui="http://projectmallard.org/1.0/ui/">
++  <info>
++    <link xref="Regress.TestObj" group="method" type="guide"/>
++    <api:function>
++      <api:returns>
++        <api:type>none</api:type>
++      </api:returns>
++      <api:name>regress_test_obj_instance_method_full</api:name>
++      <api:arg>
++        <api:type>Regress.TestObj</api:type>
++        <api:name>self</api:name>
++      </api:arg>
++    </api:function>
++  </info>
++  <title>Regress.TestObj.instance_method_full</title>
++  <synopsis><code mime="text/x-python">
++@accepts(Regress.TestObj)
++@returns(none)
++def instance_method_full(self):
++    # Python wrapper for regress_test_obj_instance_method_full()
++  </code></synopsis>
++
++
++<terms>
++<item>
++<title><code>self</code></title>
++
++</item>
++</terms>
++
++</page>
+diff --git a/tests/scanner/Regress-1.0-expected.gir b/tests/scanner/Regress-1.0-expected.gir
+index 1c9c300..89ecaa4 100644
+--- a/tests/scanner/Regress-1.0-expected.gir
++++ b/tests/scanner/Regress-1.0-expected.gir
+@@ -3057,6 +3057,17 @@ case.</doc>
+           </parameter>
+         </parameters>
+       </method>
++      <method name="instance_method_full"
++              c:identifier="regress_test_obj_instance_method_full">
++        <return-value transfer-ownership="none">
++          <type name="none" c:type="void"/>
++        </return-value>
++        <parameters>
++          <instance-parameter name="obj" transfer-ownership="full">
++            <type name="TestObj" c:type="RegressTestObj*"/>
++          </instance-parameter>
++        </parameters>
++      </method>
+       <method name="set_bare" c:identifier="regress_test_obj_set_bare">
+         <return-value transfer-ownership="none">
+           <type name="none" c:type="void"/>
+diff --git a/tests/scanner/Regress-1.0-sections-expected.txt b/tests/scanner/Regress-1.0-sections-expected.txt
+index c9ff60a..187aa16 100644
+--- a/tests/scanner/Regress-1.0-sections-expected.txt
++++ b/tests/scanner/Regress-1.0-sections-expected.txt
+@@ -334,6 +334,7 @@ regress_test_obj_emit_sig_with_uint64
+ regress_forced_method
+ regress_test_obj_instance_method
+ regress_test_obj_instance_method_callback
++regress_test_obj_instance_method_full
+ regress_test_obj_set_bare
+ regress_test_obj_skip_inout_param
+ regress_test_obj_skip_out_param
+diff --git a/tests/scanner/regress.c b/tests/scanner/regress.c
+index 1bad36e..b42e0cd 100644
+--- a/tests/scanner/regress.c
++++ b/tests/scanner/regress.c
+@@ -2679,6 +2679,17 @@ regress_test_obj_instance_method (RegressTestObj *obj)
+     return -1;
+ }
+ 
++/**
++ * regress_test_obj_instance_method_full:
++ * @obj: (transfer full):
++ *
++ */
++void
++regress_test_obj_instance_method_full (RegressTestObj *obj)
++{
++  g_object_unref (obj);
++}
++
+ double
+ regress_test_obj_static_method (int x)
+ {
+diff --git a/tests/scanner/regress.h b/tests/scanner/regress.h
+index e2e645b..667f129 100644
+--- a/tests/scanner/regress.h
++++ b/tests/scanner/regress.h
+@@ -527,6 +527,7 @@ void       regress_test_obj_emit_sig_with_foreign_struct (RegressTestObj *obj);
+ void       regress_test_obj_emit_sig_with_int64 (RegressTestObj *obj);
+ void       regress_test_obj_emit_sig_with_uint64 (RegressTestObj *obj);
+ int        regress_test_obj_instance_method (RegressTestObj *obj);
++void       regress_test_obj_instance_method_full (RegressTestObj *obj);
+ double     regress_test_obj_static_method (int x);
+ void       regress_forced_method (RegressTestObj *obj);
+ 
+-- 
+cgit v0.10.1
+

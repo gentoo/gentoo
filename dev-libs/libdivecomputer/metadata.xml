@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>me@bearsh.org</email>
+		<name>Martin Gysel</name>
+		<description>Proxied maintainer. Assign bugs to him.</description>
+	</maintainer>
+	<maintainer>
+		<email>aaron@flappyport.com</email>
+		<name>Aaron Bauman</name>
+		<description>Proxied maintainer. CC him on bugs.</description>
+	</maintainer>
+	<longdescription lang="en">
+		Library for communication with dive computers from various manufacturers.
+	</longdescription>
+	<use>
+		<flag name="tools">Install tools that can be used to test the library.</flag>
+	</use>
+</pkgmetadata>

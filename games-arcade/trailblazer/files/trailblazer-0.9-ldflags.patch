@@ -1,0 +1,11 @@
+--- Makefile.old	2010-09-30 23:56:21.000000000 +0200
++++ Makefile	2010-09-30 23:56:35.000000000 +0200
+@@ -9,7 +9,7 @@
+ bdir = /tmp/trailblazer-$(version)
+ 
+ all:
+-	$(CC) $(sources) -o trailblazer $(cflags) $(libs) 
++	$(CC) $(LDFLAGS) $(sources) -o trailblazer $(cflags) $(libs) 
+ 
+ install:
+ 	cp trailblazer /usr/bin

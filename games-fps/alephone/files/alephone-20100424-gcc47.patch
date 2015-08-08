@@ -1,0 +1,11 @@
+--- Source_Files/Lua/lua_templates.h.old	2012-10-15 09:55:32.395310163 +0200
++++ Source_Files/Lua/lua_templates.h	2012-10-15 09:56:14.991129122 +0200
+@@ -496,7 +496,7 @@
+ 	static index_t ToIndex(lua_State *L, int index) {
+ 		index_t to;
+ 		if(lua_isnil(L, index)) return -1;
+-		else if(_lookup(L, index, to)) return to;
++		else if(L_LazyEnum::_lookup(L, index, to)) return to;
+ 		else {
+ 			std::string error;
+ 			if(lua_isnumber(L, index) || lua_isstring(L, index))

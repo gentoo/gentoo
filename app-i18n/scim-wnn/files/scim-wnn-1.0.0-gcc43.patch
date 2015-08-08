@@ -1,0 +1,22 @@
+diff -Naur scim-wnn-1.0.0.orig/src/scim_wnn_imengine_setup.cpp scim-wnn-1.0.0/src/scim_wnn_imengine_setup.cpp
+--- scim-wnn-1.0.0.orig/src/scim_wnn_imengine_setup.cpp	2006-03-28 12:07:31.000000000 +0900
++++ scim-wnn-1.0.0/src/scim_wnn_imengine_setup.cpp	2009-12-08 19:32:27.000000000 +0900
+@@ -26,6 +26,7 @@
+ 
+ #define Uses_SCIM_CONFIG_BASE
+ 
++#include <cstring>
+ #include <gtk/gtk.h>
+ 
+ #ifdef HAVE_CONFIG_H
+diff -Naur scim-wnn-1.0.0.orig/src/wnnconversion.cpp scim-wnn-1.0.0/src/wnnconversion.cpp
+--- scim-wnn-1.0.0.orig/src/wnnconversion.cpp	2006-03-28 11:34:46.000000000 +0900
++++ scim-wnn-1.0.0/src/wnnconversion.cpp	2009-12-08 19:50:26.000000000 +0900
+@@ -17,6 +17,7 @@
+  *   Free Software Foundation, Inc.,                                       *
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
++#include <cstring>
+ #include "wnnconversion.h"
+ #include <scim_wnn_def.h>
+ 

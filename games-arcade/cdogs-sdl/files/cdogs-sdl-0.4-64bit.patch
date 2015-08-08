@@ -1,0 +1,48 @@
+--- src/grafx.c
++++ src/grafx.c
+@@ -216,12 +216,6 @@
+ 	SDL_VideoQuit();		
+ }
+ 
+-typedef struct _Pic {
+-	short int w;
+-	short int h;
+-	char *data;
+-} Pic;
+-
+ int ReadPics(const char *filename, void **pics, int maxPics,
+ 	     color * palette)
+ {
+@@ -241,12 +235,12 @@
+ 			fread(&size, sizeof(size), 1, f);
+ 			swap16(&size);
+ 			if (size) {
+-				Pic *p = sys_mem_alloc(size);
++				unsigned char *p = sys_mem_alloc(size);
+ 				
+-				f_read16(f, &p->w, 2);
+-				f_read16(f, &p->h, 2);
++				f_read16(f, &p[0], 2); // w
++				f_read16(f, &p[2], 2); // h
+ 
+-				f_read(f, &p->data, size - 4);
++				f_read(f, &p[4], size - 4); // data
+ 
+ 				pics[i] = p;
+ 
+@@ -278,11 +272,11 @@
+ 			fread(&size, sizeof(size), 1, f);
+ 			swap16(&size);
+ 			if (size) {
+-				Pic *p = sys_mem_alloc(size);
++				unsigned char *p = sys_mem_alloc(size);
+ 
+-				f_read16(f, &p->w, 2);
+-				f_read16(f, &p->h, 2);
+-				f_read(f, &p->data, size - 4);
++				f_read16(f, &p[0], 2); // w
++				f_read16(f, &p[2], 2); // h
++				f_read(f, &p[4], size - 4); // data
+ 
+ 				pics[i] = p;
+ 

@@ -1,0 +1,11 @@
+--- configure.ac.orig	2015-07-12 17:31:49.673817375 -0400
++++ configure.ac	2015-07-12 17:32:18.567700880 -0400
+@@ -54,7 +54,7 @@
+   AC_DEFINE(USE_MALLOC_WRAPPER, 1, Define to use a malloc wrapper)
+   CFLAGS="-Wall -Werror -pedantic -Wextra -std=gnu99 -g $CFLAGS"
+ else
+-  CFLAGS="-O3 -Wall -Wextra -std=gnu99 $CFLAGS"
++  CFLAGS="$CFLAGS -Wall -Wextra -std=gnu99"
+ fi
+ 
+ dnl  Check for SDL_mixer

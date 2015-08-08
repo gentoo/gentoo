@@ -1,0 +1,291 @@
+--- src/audio.cc
++++ src/audio.cc
+@@ -22,7 +22,7 @@
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <string.h>
+ 
+ #include "audio.h"
+@@ -57,7 +57,7 @@
+   char PathFile[512];
+ 
+   if(Mix_OpenAudio(22050,AUDIO_S16,1,1024)) {
+-    cerr <<"Enable to init Sound card ! "<<SDL_GetError()<<endl;
++    std::cerr <<"Enable to init Sound card ! "<<SDL_GetError()<<std::endl;
+     return false;
+   }
+   
+--- src/ecran.cc
++++ src/ecran.cc
+@@ -21,7 +21,7 @@
+ //    with this program; if not, write to the Free Software Foundation, Inc.,
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <math.h>
+--- src/editeur.cc
++++ src/editeur.cc
+@@ -25,7 +25,7 @@
+ #include <windows.h>
+ #endif
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -374,7 +374,7 @@
+     
+     // Sauve le niveau
+     if(Niveau.Save()==false) {
+-      cerr <<"ERREUR Saving levels!"<<endl;
++      std::cerr <<"ERREUR Saving levels!"<<std::endl;
+       exit(-1);
+     }
+     
+--- src/jeux.cc
++++ src/jeux.cc
+@@ -25,7 +25,7 @@
+ #include <windows.h>
+ #endif
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- src/loco.cc
++++ src/loco.cc
+@@ -21,7 +21,7 @@
+ //    with this program; if not, write to the Free Software Foundation, Inc.,
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- src/main.cc
++++ src/main.cc
+@@ -23,7 +23,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <string.h>
+ #include <SDL/SDL.h>
+ #include <SDL/SDL_mixer.h>
+@@ -115,7 +115,7 @@
+  
+   // Initilise SDL
+   if( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER|SDL_INIT_AUDIO|SDL_INIT_NOPARACHUTE) < 0 ) {
+-    cerr <<"Impossible d'initialiser SDL:"<<SDL_GetError()<<endl;
++    std::cerr <<"Impossible d'initialiser SDL:"<<SDL_GetError()<<std::endl;
+     exit(-1);
+   }
+   // Ferme le programme correctement quant quit
+@@ -125,7 +125,7 @@
+   sdlVideoInfo=(SDL_VideoInfo*)SDL_GetVideoInfo();
+ 
+   if(sdlVideoInfo->vfmt->BitsPerPixel==8) {
+-    cerr <<"Impossible d'utiliser 8bits pour la vidéo !"<<endl;
++    std::cerr <<"Impossible d'utiliser 8bits pour la vidéo !"<<std::endl;
+     exit(-1);
+   }
+   
+@@ -145,7 +145,7 @@
+   sdlVideo=SDL_SetVideoMode(800,600,sdlVideoInfo->vfmt->BitsPerPixel,vOption);
+ 
+   if(sdlVideo==NULL) {
+-    cerr <<"Impossible de passer dans le mode vidéo 800x600 !"<<endl;
++    std::cerr <<"Impossible de passer dans le mode vidéo 800x600 !"<<std::endl;
+     exit(-1);
+   }
+   // Change le nom de la fenetre
+--- src/menu.cc
++++ src/menu.cc
+@@ -21,7 +21,7 @@
+ //    with this program; if not, write to the Free Software Foundation, Inc.,
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -92,7 +92,7 @@
+   // Teste la resolution video
+   sdlVideoInfo=(SDL_VideoInfo*)SDL_GetVideoInfo();
+   if(sdlVideoInfo->vfmt->BitsPerPixel==8) {
+-    cerr <<"Impossible d'utiliser 8bits pour la vidéo !"<<endl;
++    std::cerr <<"Impossible d'utiliser 8bits pour la vidéo !"<<std::endl;
+     exit(-1);
+   }
+   
+@@ -112,7 +112,7 @@
+   if(Pref.FullScreen) vOption|=SDL_FULLSCREEN;
+   sdlVideo=SDL_SetVideoMode(800,600,sdlVideoInfo->vfmt->BitsPerPixel,vOption);
+   if(sdlVideo==NULL) {
+-    cerr <<"Impossible de passer dans le mode vidéo 800x600 !"<<endl;
++    std::cerr <<"Impossible de passer dans le mode vidéo 800x600 !"<<std::endl;
+     exit(-1);
+   }
+   
+--- src/mouse.cc
++++ src/mouse.cc
+@@ -21,7 +21,7 @@
+ //    with this program; if not, write to the Free Software Foundation, Inc.,
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include "mouse.h"
+ #include "preference.h"
+--- src/sprite.cc
++++ src/sprite.cc
+@@ -21,7 +21,7 @@
+ //    with this program; if not, write to the Free Software Foundation, Inc.,
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -84,7 +84,7 @@
+   strcpy(PathFile,Langue[Pref.Langue]);
+   GetPath(PathFile);
+   if(FileExiste(PathFile)==false) {
+-    cerr <<"Impossible de trouver "<<Langue[Pref.Langue]<<endl;
++    std::cerr <<"Impossible de trouver "<<Langue[Pref.Langue]<<std::endl;
+     return false;
+   }
+   L=ChargeFichier(PathFile,Buf);
+@@ -128,7 +128,7 @@
+   // *** Charge le fichier des langues ***
+   // *************************************
+   if(FileExiste(PathFile)==false) {
+-    cerr <<"Impossible de trouver 'language.dat'"<<endl;
++    std::cerr <<"Impossible de trouver 'language.dat'"<<std::endl;
+     return false;
+   }
+   L=ChargeFichier(PathFile,Buf);
+@@ -163,7 +163,7 @@
+   strcpy(PathFile,"sprites.dat");
+   GetPath(PathFile);
+   if(FileExiste(PathFile)==false) {
+-    cerr <<"Impossible de trouver 'sprites.dat'"<<endl;
++    std::cerr <<"Impossible de trouver 'sprites.dat'"<<std::endl;
+     return false;
+   }
+   L=ChargeFichier(PathFile,Buf);
+@@ -352,7 +352,7 @@
+     Image[i]=SDL_CreateRGBSurface((Dim[i].bpp-3)*SDL_SRCALPHA,Dim[i].L,Dim[i].H,Dim[i].bpp*8,
+ 				  0xff,0xff00,0xff0000,0xff000000*(Dim[i].bpp-3));
+     if(Image[i]<=NULL) {
+-      cerr <<"Impossible de créer une Surface SDL!"<<endl;
++      std::cerr <<"Impossible de créer une Surface SDL!"<<std::endl;
+       return false;
+     }
+     
+@@ -486,7 +486,7 @@
+   Image[0]=SDL_CreateRGBSurface((Dim[0].bpp-3)*SDL_SRCALPHA,Dim[0].L,Dim[0].H,Dim[0].bpp*8,
+ 				0xff,0xff00,0xff0000,0xff000000*(Dim[0].bpp-3));
+   if(Image[0]<=NULL) {
+-    cerr <<"Impossible de créer une Surface SDL!"<<endl;
++    std::cerr <<"Impossible de créer une Surface SDL!"<<std::endl;
+     return false;
+   }
+   return true;
+--- src/tableau.cc
++++ src/tableau.cc
+@@ -21,7 +21,7 @@
+ //    with this program; if not, write to the Free Software Foundation, Inc.,
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "preference.h"
+--- src/utils.cc
++++ src/utils.cc
+@@ -21,7 +21,7 @@
+ //    with this program; if not, write to the Free Software Foundation, Inc.,
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -77,7 +77,7 @@
+ 
+   file=fopen(Path,"r");
+   if(!file) {
+-    cerr <<"ERREUR: Impossible d'ouvrir '"<<Path<<"'"<<endl;
++    std::cerr <<"ERREUR: Impossible d'ouvrir '"<<Path<<"'"<<std::endl;
+     perror("fopen");
+     return -1;
+   }
+@@ -93,7 +93,7 @@
+ 
+   Buf=new unsigned char [L+1];
+   if(Buf==NULL) {
+-    cerr <<"ERREUR: Memoire insuffisante!"<<endl;
++    std::cerr <<"ERREUR: Memoire insuffisante!"<<std::endl;
+     fclose(file);
+     return -1;
+   }
+@@ -104,7 +104,7 @@
+   while(Compt>1024) {
+     AfficheChargeur();
+     if( fread(Po,1,1024,file) != 1024 ) {
+-      cerr <<"ERREUR de lecture du fichier '"<<Path<<"'"<<endl;
++      std::cerr <<"ERREUR de lecture du fichier '"<<Path<<"'"<<std::endl;
+       perror("fread");
+       fclose(file);
+       delete [] Buf;
+@@ -169,14 +169,14 @@
+   
+   file=fopen(Path,"w");
+   if(!file) {
+-    cerr <<"ERREUR: Impossible d'ouvrir '"<<Path<<"'"<<endl;
++    std::cerr <<"ERREUR: Impossible d'ouvrir '"<<Path<<"'"<<std::endl;
+     perror("fopen");
+     return false;
+   }
+   
+   while(L>512) {
+     if( fwrite(Buf,1,512,file) != 512 ) {
+-      cerr <<"ERREUR d'ecriture du fichier '"<<Path<<"'"<<endl;
++      std::cerr <<"ERREUR d'ecriture du fichier '"<<Path<<"'"<<std::endl;
+       perror("fwrite");
+       fclose(file);
+       return false;
+@@ -187,7 +187,7 @@
+ 
+   if(L>0) {
+     if( fwrite(Buf,1,(size_t)L,file) != (size_t)L ) {
+-      cerr <<"ERREUR d'ecriture du fichier '"<<Path<<"'"<<endl;
++      std::cerr <<"ERREUR d'ecriture du fichier '"<<Path<<"'"<<std::endl;
+       perror("fwrite");
+       fclose(file);
+       return false;
+@@ -250,7 +250,7 @@
+   sprintf(Path,"/usr/share/games/Ri-li/%s",Provi);
+   if(FileExiste(Path)) return;
+   
+-  cerr <<"Impossible de trouver le fichier '"<<Provi<<endl;
++  std::cerr <<"Impossible de trouver le fichier '"<<Provi<<std::endl;
+   exit(-1);
+ }
+ #endif

@@ -1,0 +1,10 @@
+diff -Naur kismet-2011-03-R2-orig/Makefile.inc.in kismet-2011-03-R2/Makefile.inc.in
+--- kismet-2011-03-R2-orig/Makefile.inc.in	2009-11-05 21:43:30.000000000 -0500
++++ kismet-2011-03-R2/Makefile.inc.in	2011-06-01 00:13:13.000000000 -0400
+@@ -38,5 +38,5 @@
+ MAN 		= ${DESTDIR}@mandir@
+ WAV 		= ${SHARE}/wav/
+ 
+-PLUGINLDFLAGS = @PLUGINLDFLAGS@
++PLUGINLDFLAGS = @LDFLAGS@ @PLUGINLDFLAGS@
+

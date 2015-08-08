@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cluster</herd>
+	<maintainer>
+		<email>jsbronder@gentoo.org</email>
+		<name>Justin Bronder</name>
+	</maintainer>
+	<use>
+		<flag name="romio">Enable romio, a high-performance portable MPI-IO
+	implementation</flag>
+		<flag name="mpi-threads">Enable MPI_THREAD_MULTIPLE</flag>
+	</use>
+</pkgmetadata>

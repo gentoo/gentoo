@@ -1,0 +1,10 @@
+diff --git a/Utils/Makefile.am b/Utils/Makefile.am
+index f42ebf4..d84a0f1 100644
+--- a/Utils/Makefile.am
++++ b/Utils/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgbindir = $(pkgdatadir)/bin
++pkgbindir = $(prefix)/bin
+ pkgbin_PROGRAMS = b2ct popt
+ 
+ pscript = b2mt.pl ct2b.pl dpzoom.pl mountain.pl relplot.pl rotate_ss.pl cmount.pl colorrna.pl coloraln.pl refold.pl

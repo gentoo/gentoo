@@ -1,0 +1,30 @@
+--- dist/aclocal_java/ac_jni_include_dirs.m4	2003-10-06 20:41:38.000000000 +0200
++++ dist/aclocal_java/ac_jni_include_dirs.m4	2005-09-23 21:31:26.000000000 +0200
+@@ -43,14 +43,19 @@
+ *)	AC_MSG_ERROR([$_ACJNI_JAVAC is not an absolute path name]);;
+ esac
+ 
+-_ACJNI_FOLLOW_SYMLINKS("$_ACJNI_JAVAC")
+-_JTOPDIR=`echo "$_ACJNI_FOLLOWED" | sed -e 's://*:/:g' -e 's:/[[^/]]*$::'`
+-case "$host_os" in
+-	darwin*)	_JTOPDIR=`echo "$_JTOPDIR" | sed -e 's:/[[^/]]*$::'`
+-			_JINC="$_JTOPDIR/Headers";;
+-	*)		_JINC="$_JTOPDIR/include";;
+-esac
+-
++# If JAVAPREFIX is defined, look there first
++if test -r "$JAVAPREFIX/include/jni.h"; then
++	_JTOPDIR="$JAVAPREFIX"
++	_JINC="$JAVAPREFIX/include"
++else
++	_ACJNI_FOLLOW_SYMLINKS("$_ACJNI_JAVAC")
++	_JTOPDIR=`echo "$_ACJNI_FOLLOWED" | sed -e 's://*:/:g' -e 's:/[[^/]]*$::'`
++	case "$host_os" in
++		darwin*)	_JTOPDIR=`echo "$_JTOPDIR" | sed -e 's:/[[^/]]*$::'`
++				_JINC="$_JTOPDIR/Headers";;
++		*)		_JINC="$_JTOPDIR/include";;
++	esac
++fi
+ # If we find jni.h in /usr/include, then it's not a java-only tree, so
+ # don't add /usr/include or subdirectories to the list of includes.
+ # An extra -I/usr/include can foul things up with newer gcc's.

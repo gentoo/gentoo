@@ -1,0 +1,35 @@
+Index: gogoc-1_2-RELEASE/gogoc-config/src/gogocvalidation.cc
+===================================================================
+--- gogoc-1_2-RELEASE.orig/gogoc-config/src/gogocvalidation.cc
++++ gogoc-1_2-RELEASE/gogoc-config/src/gogocvalidation.cc
+@@ -512,7 +512,7 @@ bool Validate_ClientV4( const string& sC
+   if( sClientV4 != STR_AUTO )
+   {
+     struct in_addr address;
+-    unsigned long net;
++    in_addr_t net;
+ 
+     net = inet_addr( sClientV4.c_str() );
+     memcpy(&address, &net, sizeof(net));
+@@ -535,7 +535,7 @@ bool Validate_DSLite( const string& sDSL
+ 
+   {
+     struct in_addr address;
+-    unsigned long net;
++    in_addr_t net;
+ 
+     net = inet_addr( sDSLite.c_str() );
+     memcpy(&address, &net, sizeof(net));
+Index: gogoc-1_2-RELEASE/gogoc-config/src/haccessdevicemappingconfig.cc
+===================================================================
+--- gogoc-1_2-RELEASE.orig/gogoc-config/src/haccessdevicemappingconfig.cc
++++ gogoc-1_2-RELEASE/gogoc-config/src/haccessdevicemappingconfig.cc
+@@ -265,7 +265,7 @@ bool HACCESSDeviceMappingConfig::Validat
+   // Check if IPv4 or IPv6 address
+   struct in6_addr addressv6;
+   struct in_addr  addressv4;
+-  unsigned long net;
++  in_addr_t net;
+ 
+   net = inet_addr( aIPAddress.c_str() );
+   memcpy(&addressv4, &net, sizeof(net));

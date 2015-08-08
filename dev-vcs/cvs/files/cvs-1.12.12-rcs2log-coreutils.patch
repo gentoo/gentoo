@@ -1,0 +1,14 @@
+X-Gentoo-bug: 144114
+
+diff -Nuar cvs-1.12.12.orig//contrib/rcs2log.sh cvs-1.12.12//contrib/rcs2log.sh
+--- cvs-1.12.12.orig//contrib/rcs2log.sh	2003-02-25 21:32:51.000000000 +0000
++++ cvs-1.12.12//contrib/rcs2log.sh	2010-12-06 21:14:33.831532212 +0000
+@@ -620,7 +620,7 @@
+ # Sort the log entries, first by date+time (in reverse order),
+ # then by author, then by log entry, and finally by file name and revision
+ # (just in case).
+-sort -t"$SOH" +2 -4r +4 +0 |
++sort -t"$SOH" -k 3,4r -k 5 -k 1,2 |
+ 
+ # Finally, reformat the sorted log entries.
+ $AWK -F"$SOH" '

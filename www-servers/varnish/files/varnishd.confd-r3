@@ -1,0 +1,22 @@
+# /etc/conf.d/varnishd
+
+VARNISHD="/usr/sbin/varnishd"
+VARNISHADM="/usr/bin/varnishadm"
+
+#CONFIGFILES="/etc/varnish/${SVCNAME}.vcl"
+CONFIGFILE="/etc/varnish/default.vcl"
+
+# Listen on 127.0.0.1:8080 and connect to backend 127.0.0.1:80
+#VARNISHD_OPTS="-a 127.0.0.1:8080 -a 127.0.0.1:8080"
+
+# Alternatively, don't listen to a backend
+VARNISHD_OPTS="-a 127.0.0.1:8080"
+
+
+# User/Group
+VARNISHD_OPTS="${VARNISHD_OPTS} -u varnish -g varnish"
+
+# You may need to increase the number of open files (-n)
+# and the maximum amount off locked memory (-l)
+# See bug #459142
+#rc_ulimit="-n 32786 -l 82000"

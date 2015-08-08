@@ -1,0 +1,11 @@
+--- urljr/test/test_fetchers.py.orig	2007-05-31 09:16:31.000000000 -0700
++++ urljr/test/test_fetchers.py	2007-05-31 09:17:47.000000000 -0700
+@@ -8,6 +8,8 @@
+ # XXX: make these separate test cases
+ 
+ def failUnlessResponseExpected(expected, actual):
++    expected.final_url = expected.final_url.replace("localhost", "127.0.0.1")
++    actual.final_url = actual.final_url.replace("localhost", "127.0.0.1")
+     assert expected.final_url == actual.final_url
+     assert expected.status == actual.status
+     assert expected.body == actual.body

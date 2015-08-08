@@ -1,0 +1,31 @@
+--- ansi.c.orig	2003-09-08 10:24:44.000000000 -0400
++++ ansi.c	2003-11-29 10:41:15.000000000 -0500
+@@ -559,7 +559,7 @@
+ 	    {
+ 	    case '0': case '1': case '2': case '3': case '4':
+ 	    case '5': case '6': case '7': case '8': case '9':
+-	      if (curr->w_NumArgs < MAXARGS)
++	      if (curr->w_NumArgs >= 0 && curr->w_NumArgs < MAXARGS)
+ 		{
+ 		  if (curr->w_args[curr->w_NumArgs] < 100000000)
+ 		    curr->w_args[curr->w_NumArgs] =
+--- resize.c.orig	2003-09-08 10:26:31.000000000 -0400
++++ resize.c	2003-11-29 10:41:50.000000000 -0500
+@@ -682,6 +682,17 @@
+   if (wi == 0)
+     he = hi = 0;
+ 
++  if (wi > 1000)
++    {
++      Msg(0, "Window width too large, truncated");
++      wi = 1000;
++    }
++  if (he > 1000)
++    {
++      Msg(0, "Window height too large, truncated");
++      he = 1000;
++    }
++
+   if (p->w_width == wi && p->w_height == he && p->w_histheight == hi)
+     {
+       debug("ChangeWindowSize: No change.\n");

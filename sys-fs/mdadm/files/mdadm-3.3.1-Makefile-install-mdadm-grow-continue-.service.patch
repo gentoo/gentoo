@@ -1,0 +1,28 @@
+From 616f197f9d6d044afb9e27ddc9cd087d21d610f0 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Tue, 10 Jun 2014 20:34:40 +1000
+Subject: [PATCH 01/14] Makefile: install mdadm-grow-continue@.service
+
+Forgot to add this to install-systemd target
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index c7e7a42..1a4a5dc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -290,7 +290,7 @@ install-udev: udev-md-raid-arrays.rules udev-md-raid-assembly.rules
+ 
+ install-systemd: systemd/mdmon@.service
+ 	@for file in mdmon@.service mdmonitor.service mdadm-last-resort@.timer \
+-		mdadm-last-resort@.service ; \
++		mdadm-last-resort@.service mdadm-grow-continue@.service; \
+ 	do sed -e 's,BINDIR,$(BINDIR),g' systemd/$$file > .install.tmp && \
+ 	   echo $(INSTALL) -D -m 644 systemd/$$file $(DESTDIR)$(SYSTEMD_DIR)/$$file ; \
+ 	   $(INSTALL) -D -m 644 .install.tmp $(DESTDIR)$(SYSTEMD_DIR)/$$file ; \
+-- 
+2.0.0
+

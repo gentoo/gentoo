@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>php</herd>
+	<use>
+		<flag name="lock_semaphore">Enable semaphore locks instead of fcntl</flag>
+		<flag name="lock_pthreadmutex">Enable pthread mutex locking</flag>
+		<flag name="lock_pthreadrw">Enable pthread read/write locking</flag>
+		<flag name="lock_spinlock">Enable spin locks (EXPERIMENTAL)</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- root/html/src/THtml.cxx.orig	2012-05-25 16:18:10.000000000 +0400
++++ root/html/src/THtml.cxx	2012-05-29 19:22:40.810563296 +0400
+@@ -1913,6 +1913,9 @@
+ void THtml::CreateStyleSheet() const {
+    // Write the default ROOT style sheet.
+    CopyFileFromEtcDir("ROOT.css");
++   CopyFileFromEtcDir("info.png");
++   CopyFileFromEtcDir("root-banner.png");
++   CopyFileFromEtcDir("rootdrawing-logo.png");
+    CopyFileFromEtcDir("shadowAlpha.png");
+    CopyFileFromEtcDir("shadow.gif");
+ }

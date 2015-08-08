@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-im</herd>
+	<longdescription>
+A plugin for Pidgin which translates LaTeX code into images in your IM and Chat
+conversations. 
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">pidgin-latex</remote-id>
+	</upstream>
+</pkgmetadata>

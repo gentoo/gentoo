@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>Ameretat.Reith@gmail.com</email>
+    <name>Ameretat 'reith' Reith</name>
+    <description>Primary Maintainer, Assign bugs</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">jjwhitney/Deltup</remote-id>
+  </upstream>
+</pkgmetadata>

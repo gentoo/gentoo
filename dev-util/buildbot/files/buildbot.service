@@ -1,0 +1,16 @@
+[Unit]
+Description=buildbot master daemon
+After=local-fs.target network.target
+
+[Service]
+Type=forking
+User=buildbot
+WorkingDirectory=/var/lib/buildmaster
+# The following assume there is a 'master' directory
+# in $WorkingDirectory with the master configuration files
+ExecStartPre=/usr/bin/buildbot checkconfig master
+ExecStart=/usr/bin/buildbot start master
+ExecStop=/usr/bin/buildbot stop master
+
+[Install]
+WantedBy=multi-user.target

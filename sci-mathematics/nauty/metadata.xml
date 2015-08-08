@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>tomka@gentoo.org</email>
+    <name>Thomas Kahle</name>
+  </maintainer>
+  <herd>sci-mathematics</herd>
+  <longdescription lang="en">
+nauty is a program for computing automorphism groups of graphs and digraphs. It can also produce a
+canonical labelling.
+
+nauty is written in a portable subset of C, and runs on a considerable number of different systems.
+</longdescription>
+</pkgmetadata>

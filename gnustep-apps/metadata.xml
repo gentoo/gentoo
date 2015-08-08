@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gnustep-apps category contains GNUstep applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gnustep-apps enthält Applikationen für die
+		GNUstep-Umgebung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría gnustep-apps contiene aplicaciones de GNUstep.
+	</longdescription>
+	<longdescription lang="ja">
+		gnustep-appsカテゴリーにはGNUstepアプリケーションが含まれています
+	</longdescription>
+	<longdescription lang="nl">
+		De gnusteps-apps categorie bevat GNUstep applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm gnustep-apps chứa các ứng dụng GNUstep.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria gnustep-apps contiene applicazioni per GNUstep.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria gnustep-apps contém aplicações de GNUstep.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria gnustep-apps zawiera programy GNUstep.
+	</longdescription>
+</catmetadata>
+

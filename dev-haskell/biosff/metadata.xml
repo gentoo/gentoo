@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		The library contains the functionality for reading and writing
+		SFF files (sequencing data from 454 and Ion Torrent).  It duplicates
+		code from (and is incompatible with) the &quot;bio&quot; library.
+	</longdescription>
+	<use>
+		<flag name="fclip">Build the fclip executable.</flag>
+		<flag name="flower">Build the flower executable.</flag>
+		<flag name="frecover">Build the frecover executable.</flag>
+	</use>
+</pkgmetadata>

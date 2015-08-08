@@ -1,0 +1,45 @@
+ CMakeLists.txt             | 2 +-
+ src/CMakeLists.txt         | 4 ++--
+ zmap_conf_install.cmake.in | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bea62ab..0378f44 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,4 +67,4 @@ add_subdirectory(src)
+ FILE(GLOB CONF_FILES RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/conf" "conf/*")
+ message(STATUS "${CONF_FILES}")
+ configure_file(zmap_conf_install.cmake.in zmap_conf_install.cmake)
+-install(SCRIPT zmap_conf_install.cmake)
++install(SCRIPT "${CMAKE_CURRENT_BINARY_DIR}/zmap_conf_install.cmake")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6e51f12..2c1ae5a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -75,11 +75,11 @@ add_custom_command(OUTPUT zopt.h
+ 	)
+ 
+ add_custom_command(OUTPUT lexer.c
+-	COMMAND flex -o "${CMAKE_CURRENT_BINARY_DIR}/lexer.c" --header-file="${CMAKE_CURRENT_BINARY_DIR}/lexer.h" lexer.l
++	COMMAND flex -o "${CMAKE_CURRENT_BINARY_DIR}/lexer.c" --header-file="${CMAKE_CURRENT_BINARY_DIR}/lexer.h" "${CMAKE_CURRENT_SOURCE_DIR}/lexer.l"
+ 	)
+ 
+ add_custom_command(OUTPUT parser.c
+-	COMMAND byacc -d -o parser.c parser.y
++	COMMAND byacc -d -o "${CMAKE_CURRENT_BINARY_DIR}/parser.c" "${CMAKE_CURRENT_SOURCE_DIR}/parser.y"
+ 	)
+ 
+ add_executable(zmap ${SOURCES})
+diff --git a/zmap_conf_install.cmake.in b/zmap_conf_install.cmake.in
+index 358a97d..aba7a60 100644
+--- a/zmap_conf_install.cmake.in
++++ b/zmap_conf_install.cmake.in
+@@ -1,6 +1,6 @@
+ foreach(conf_file ${CONF_FILES})
+ 	message(STATUS "${conf_file}")
+ 	if(NOT EXISTS "/etc/zmap/${conf_file}")
+-		file(INSTALL "conf/${conf_file}" DESTINATION "/etc/zmap")
++		file(INSTALL "${CMAKE_CURRENT_SOURCE_DIR}/conf/${conf_file}" DESTINATION "/etc/zmap")
+ 	endif()
+ endforeach()

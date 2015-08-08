@@ -1,0 +1,12 @@
+#!/bin/bash
+
+die() {
+	echo "#####"
+	echo $1
+	echo "#####"
+	exit 1
+}
+
+if [ $1 = "install" ]; then
+	sed -e "s|/your/path/to/public_html/polarblog|${MY_INSTALLDIR}|" -i ${MY_INSTALLDIR}/config/config.php.dist || die "sed failed"
+fi

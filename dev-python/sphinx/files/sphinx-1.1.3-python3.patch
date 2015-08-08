@@ -1,0 +1,45 @@
+# HG changeset patch
+# User Rob Reilink <r.reilink@science-applied.nl>
+# Date 1331657734 -3600
+# Node ID 8aba132b1337fc351fe1464f3a4b61f21f55e64e
+# Parent  4a6d33249418befdf587603fc31db58fb863fee4
+fixed encoding for hashing functions for Python 3
+
+diff -r 4a6d33249418befdf587603fc31db58fb863fee4 -r 8aba132b1337fc351fe1464f3a4b61f21f55e64e sphinx/ext/graphviz.py
+--- a/sphinx/ext/graphviz.py	Sat Mar 10 22:24:59 2012 +0100
++++ b/sphinx/ext/graphviz.py	Tue Mar 13 17:55:34 2012 +0100
+@@ -121,9 +121,11 @@
+ 
+ def render_dot(self, code, options, format, prefix='graphviz'):
+     """Render graphviz code into a PNG or PDF output file."""
+-    hashkey = code.encode('utf-8') + str(options) + \
++    hashkey = (code + str(options) + \
+               str(self.builder.config.graphviz_dot) + \
+               str(self.builder.config.graphviz_dot_args)
++              ).encode('utf-8')
++              
+     fname = '%s-%s.%s' % (prefix, sha(hashkey).hexdigest(), format)
+     if hasattr(self.builder, 'imgpath'):
+         # HTML
+diff -r 4a6d33249418befdf587603fc31db58fb863fee4 -r 8aba132b1337fc351fe1464f3a4b61f21f55e64e sphinx/ext/inheritance_diagram.py
+--- a/sphinx/ext/inheritance_diagram.py	Sat Mar 10 22:24:59 2012 +0100
++++ b/sphinx/ext/inheritance_diagram.py	Tue Mar 13 17:55:34 2012 +0100
+@@ -39,7 +39,7 @@
+ import re
+ import sys
+ import inspect
+-import __builtin__
++import __builtin__ as __builtin__ # as __builtin__ is for lib2to3 compatibility
+ try:
+     from hashlib import md5
+ except ImportError:
+@@ -314,7 +314,8 @@
+ 
+ 
+ def get_graph_hash(node):
+-    return md5(node['content'] + str(node['parts'])).hexdigest()[-10:]
++    encoded = (node['content'] + str(node['parts'])).encode('utf-8')
++    return md5(encoded).hexdigest()[-10:]
+ 
+ 
+ def html_visit_inheritance_diagram(self, node):

@@ -1,0 +1,39 @@
+Index: support/devel/sak/validate/syntax.tcl
+==================================================================
+--- support/devel/sak/validate/syntax.tcl
++++ support/devel/sak/validate/syntax.tcl
+@@ -192,11 +192,13 @@
+ 	if {[string equal $c rename]}    continue
+ 	if {[string equal $c namespace]} continue
+ 	interp eval $ip [list ::rename $c {}]
+     }
+ 
+-    interp eval $ip [list ::namespace delete ::tcl]
++    if {![package vsatisfies [package present Tcl] 8.6]} {
++	interp eval $ip [list ::namespace delete ::tcl]
++    }
+     interp eval $ip [list ::rename namespace {}]
+     interp eval $ip [list ::rename rename    {}]
+ 
+     foreach m {
+ 	pcx::register unknown
+
+Index: support/devel/sak/validate/testsuites.tcl
+==================================================================
+--- support/devel/sak/validate/testsuites.tcl
++++ support/devel/sak/validate/testsuites.tcl
+@@ -137,11 +137,13 @@
+ 	if {[string equal $c rename]}    continue
+ 	if {[string equal $c namespace]} continue
+ 	interp eval $ip [list ::rename $c {}]
+     }
+ 
+-    interp eval $ip [list ::namespace delete ::tcl]
++    if {![package vsatisfies [package present Tcl] 8.6]} {
++	interp eval $ip [list ::namespace delete ::tcl]
++    }
+     interp eval $ip [list ::rename namespace {}]
+     interp eval $ip [list ::rename rename    {}]
+ 
+     foreach m {
+ 	testing unknown useLocal useLocalKeep useAccel

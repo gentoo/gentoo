@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>andrew.cremins@gmail.com</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">roadnav</remote-id>
+	</upstream>
+</pkgmetadata>

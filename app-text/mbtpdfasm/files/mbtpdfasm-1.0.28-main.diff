@@ -1,0 +1,11 @@
+--- main.cpp.orig	2007-07-30 15:25:27.000000000 +0200
++++ main.cpp	2007-10-05 22:49:29.000000000 +0200
+@@ -52,7 +52,7 @@
+ char tc[1000];
+ int i;
+ 
+-   fprintf(output, "mbtPdfAsm %s\r\nusing PCRE 4.4 (http://www.pcre.org)\r\nsee at %s", strVersion, strMPAURL);
++   fprintf(output, "mbtPdfAsm %s\r\nusing PCRE 4.4 (http://www.pcre.org)\r\nsee at %s\n", strVersion, strMPAURL);
+ 
+    return 0;
+ }

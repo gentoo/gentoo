@@ -1,0 +1,12 @@
+diff -ru Confix-2.3.0.orig/libconfix/plugins/automake/out_automake.py Confix-2.3.0/libconfix/plugins/automake/out_automake.py
+--- Confix-2.3.0.orig/libconfix/plugins/automake/out_automake.py	2010-07-12 13:15:49.254867387 +0200
++++ Confix-2.3.0/libconfix/plugins/automake/out_automake.py	2010-07-12 13:17:29.755908602 +0200
+@@ -170,7 +170,7 @@
+ 
+ 
+         # our minimum required automake version is 1.9
+-        self.makefile_am().add_automake_options('1.9')
++        # self.makefile_am().add_automake_options('1.9')
+ 
+ 
+         # enable dist'ing in the following formats

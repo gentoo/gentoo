@@ -1,0 +1,11 @@
+Index: fuse-zip-0.2.13/Makefile
+===================================================================
+--- fuse-zip-0.2.13.orig/Makefile
++++ fuse-zip-0.2.13/Makefile
+@@ -1,5 +1,5 @@
+ DEST=fuse-zip
+-LIBS=$(shell pkg-config fuse --libs) $(shell pkg-config libzip --libs) -Llib -lfusezip
++LIBS=-lfusezip $(shell pkg-config fuse --libs) $(shell pkg-config libzip --libs) -Llib
+ LIB=lib/libfusezip.a
+ CXXFLAGS=-g -O2 -Wall -Wextra
+ RELEASE_CXXFLAGS=-O2 -Wall -Wextra

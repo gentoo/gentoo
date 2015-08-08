@@ -1,0 +1,43 @@
+Respect CFLAGS (bug #377353) -JeR
+
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -199,18 +199,6 @@
+     #XXX make sure compiling with compiler options works
+ esac
+ 
+-AC_MSG_CHECKING([for support for -pipe compiler flag])
+-oCFLAGS=$CFLAGS
+-CFLAGS="$CFLAGS -pipe"
+-AC_TRY_RUN([
+-int main()
+-{
+-	return 0;
+-}], [AC_MSG_RESULT([yes])
+-     comp_flags="${comp_flags} -pipe"],
+-    AC_MSG_RESULT([no]))
+-CFLAGS="$oCFLAGS"
+-
+ AC_MSG_CHECKING([for support for -Wbounded compiler flag])
+ oCFLAGS=$CFLAGS
+ CFLAGS="$CFLAGS -Wbounded"
+@@ -233,18 +221,11 @@
+  fi])
+ 
+ if test x$debug_enabled = xt; then
+-    #no optimization wanted
+-    if test $ac_cv_prog_cc_g = yes; then
+-	CFLAGS="$CFLAGS -g"
+-    fi
+     CPPFLAGS="$CPPFLAGS${CPPFLAGS:+ }-DDEBUG=1"
+     AC_MSG_RESULT([yes])
+ else
+     AC_MSG_RESULT([no])
+-    #autoconf_compflags is set to "-g -O2" with GCC
+-    #override CFLAGS when running configure to avoid this
+     CPPFLAGS="$CPPFLAGS${CPPFLAGS:+ }-DDEBUG=0"
+-    CFLAGS="$CFLAGS $autoconf_compflags"
+ fi
+ 
+ #-Wall ?

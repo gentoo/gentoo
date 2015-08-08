@@ -1,0 +1,35 @@
+--- qtools/qtextcodec.cpp.orig	2003-12-14 14:00:57.000000000 -0800
++++ qtools/qtextcodec.cpp	2005-05-29 19:13:17.000000000 -0700
+@@ -1321,7 +1321,7 @@
+ 
+ 
+ 
+-#ifndef QT_NO_CODECS
++// #ifndef QT_NO_CODECS
+ 
+ class QSimpleTextCodec: public QTextCodec
+ {
+@@ -1948,7 +1948,7 @@
+ }
+ 
+ 
+-#endif // QT_NO_CODECS
++// #endif // QT_NO_CODECS
+ 
+ class QLatin1Codec: public QTextCodec
+ {
+@@ -2048,12 +2048,13 @@
+ {
+     (void)new QLatin1Codec;
+ 
+-#ifndef QT_NO_CODECS
++
+     int i = 0;
+     do {
+         (void)new QSimpleTextCodec( i );
+     } while( unicodevalues[i++].mib != LAST_MIB );
+ 
++#ifndef QT_NO_CODECS
+     (void)new QEucJpCodec;
+     (void)new QSjisCodec;
+     (void)new QJisCodec;

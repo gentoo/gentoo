@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>openstack</herd>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+	Python implementation of SAML Version 2 to be used in a WSGI environment
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">pysaml2</remote-id>
+		<remote-id type="github">rohe/pysaml2</remote-id>
+	</upstream>
+</pkgmetadata>

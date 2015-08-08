@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Date-Simple</remote-id>
+    <remote-id type="cpan-module">Date::Simple</remote-id>
+    <remote-id type="cpan-module">Date::Simple::D8</remote-id>
+    <remote-id type="cpan-module">Date::Simple::Fmt</remote-id>
+    <remote-id type="cpan-module">Date::Simple::ISO</remote-id>
+  </upstream>
+</pkgmetadata>

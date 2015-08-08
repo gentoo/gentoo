@@ -1,0 +1,103 @@
+Only in molmol_rh9: makedef
+diff -ru molmol_rh9_unpatched/makedef.lnx molmol_rh9/makedef.lnx
+--- molmol_rh9_unpatched/makedef.lnx	2003-01-20 16:10:18.000000000 -0500
++++ molmol_rh9/makedef.lnx	2003-05-06 10:40:08.000000000 -0400
+@@ -1,31 +1,38 @@
+ # definitions for Linux
+ 
+-MISSFUNC = -Dsqrtf=sqrt -Dexpf=exp -Dlogf=log -Dpowf=pow \
+-           -Dsinf=sin -Dcosf=cos -Dtanf=tan \
+-           -Dasinf=asin -Dacosf=acos -Datanf=atan -Datan2f=atan2 \
+-           -Dfabsf=fabs -Dceilf=ceil
+-MCPPFLAGS = $(MISSFUNC)
+-MCFLAGS = -O2
+-
+-RANLIB = /bin/true
+-WAIT   = /usr/bin/sleep 2
+-SHELL  = /bin/sh
+-CPP    = /lib/cpp
+-CC     = /usr/bin/gcc
++#TIFFDIR = $(TOP)/tiff-v3.4/libtiff
++#JPEGDIR = $(TOP)/../libjpeg/jpeg-6a
++#PNGDIR = $(TOP)/../libpng/libpng-0.89c
++#ZLIBDIR = $(TOP)/../libpng/zlib-1.0.2
++
++IMGDEF  = -DTIFF_SUPPORT -DJPEG_SUPPORT -DPNG_SUPPORT
++IMGLIB  = -ltiff -ljpeg -lpng -lz
++IMGINCL = # -I$(TIFFDIR) -I$(JPEGDIR) -I$(PNGDIR) -I$(ZLIBDIR)
++
++XINCL   = -I/usr/X11R6/include
++
++CC=gcc
++MCPPFLAGS =
++MCFLAGS =-pipe -O3 -ffast-math -march=i686 -mcpu=i686
++
++RANLIB   = /bin/true
++WAIT     = sleep 2
++SHELL    = /bin/sh
++CPP      = /lib/cpp
+ 
+-SGDEVDIR = x11 no pov rib vrml1 vrml2 ps fm
+-
+-SGDEVDEF = -DSG_DEV_X11 -DSG_DEV_NO -DSG_DEV_POV -DSG_DEV_RIB -DSG_DEV_VRML1 -DSG_DEV_VRML2 -DSG_DEV_PS -DSG_DEV_CPS -DSG_DEV_FM3 -DSG_DEV_FM4
++SGDEVDIR = ogl x11 no pov rib vrml1 vrml2 ps fm
++SGDEVDEF = -DSG_DEV_OGL -DSG_DEV_X11 -DSG_DEV_NO -DSG_DEV_POV -DSG_DEV_RIB -DSG_DEV_VRML1 -DSG_DEV_VRML2 -DSG_DEV_PS -DSG_DEV_CPS -DSG_DEV_FM3 -DSG_DEV_FM4
+ 
+ PUDEVDIR = motif tty
+ PUDEVDEF = -DPU_DEV_MOTIF -DPU_DEV_TTY
+ 
+-IODEVDIR = motx11 ttyno
+-IODEVDEF = -DIO_DEV_MOTIF_X11 -DIO_DEV_TTY_NO
++IODEVDIR = motogl motx11 ttyno
++IODEVDEF = -DIO_DEV_MOTIF_OGL -DIO_DEV_MOTIF_X11 -DIO_DEV_TTY_NO
+ 
++OPENGLDEF = -DOPENGL_SGI_STEREO
+ MOTIFDEF = -DFUNCPROTO
+ 
+-SYSLIB   = -L/usr/X11R6/lib -lXm -lXt -lXpm -lX11 -lm -lc -lieee
++SYSLIB   = -lGLw -lGLU -lGL -lXm -lXpm -lXt -lXext -lX11 -lm
+ 
+ TOOLSDIR = $(TOP)/tools
+-SGDIR    = $(TOP)/sg
++SGDIR   = $(TOP)/sg
+diff -ru molmol_rh9_unpatched/src/motogl/MotOGL.c molmol_rh9/src/motogl/MotOGL.c
+--- molmol_rh9_unpatched/src/motogl/MotOGL.c	2000-05-29 12:31:51.000000000 -0400
++++ molmol_rh9/src/motogl/MotOGL.c	2003-05-06 11:51:05.000000000 -0400
+@@ -31,7 +31,7 @@
+ #include <Xm/XmStrDefs.h>
+ 
+ #define BOOL MOTIF_BOOL  /* hack to avoid naming conflict */
+-#include <X11/GLw/GLwMDrawA.h>
++#include <GL/GLwMDrawA.h>
+ #undef BOOL
+ 
+ #include <sg.h>
+diff -ru molmol_rh9_unpatched/src/os/GFile.c molmol_rh9/src/os/GFile.c
+--- molmol_rh9_unpatched/src/os/GFile.c	2001-06-17 14:59:17.000000000 -0400
++++ molmol_rh9/src/os/GFile.c	2003-05-06 12:34:34.000000000 -0400
+@@ -30,6 +30,7 @@
+ #include <string.h>
+ #include <memory.h>
+ #include <ctype.h>
++#include <errno.h>
+ 
+ #include <linlist.h>
+ 
+@@ -38,7 +39,7 @@
+ const INT32 GFMagic = 0x3b7a12f9;
+ 
+ #ifndef __linux__
+-extern char *sys_errlist[];
++extern char *strerror();
+ #endif
+ extern int errno;
+ 
+@@ -81,7 +82,7 @@
+ {
+   if (msg == NULL) {
+     if (NextMsg == NULL)
+-      msg = sys_errlist[errno];
++      msg = strerror(errno);
+     else
+       msg = NextMsg;
+   }

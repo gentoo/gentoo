@@ -1,0 +1,15 @@
+--- contrib/virt.te	2012-11-25 21:35:09.181247450 +0100
++++ contrib/virt.te	2012-11-25 21:34:09.223216815 +0100
+@@ -281,7 +281,11 @@
+ userdom_search_user_home_dirs(virt_domain)
+ userdom_read_all_users_state(virt_domain)
+ 
+-qemu_exec(virt_domain)
++ifdef(`distro_gentoo',`
++	optional_policy(`
++		qemu_exec(virt_domain)
++	')
++')
+ 
+ tunable_policy(`virt_use_execmem',`
+ 	allow virt_domain self:process { execmem execstack };

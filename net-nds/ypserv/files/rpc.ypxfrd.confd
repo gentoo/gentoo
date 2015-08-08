@@ -1,0 +1,3 @@
+# Command line options to pass to rpc.ypxfrd
+# eg: you can pass --port <number> to use a non-standard port
+YPXFRD_OPTS=""

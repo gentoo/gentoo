@@ -1,0 +1,22 @@
+--- src/csrc/Makefile.bak	2010-02-27 00:51:38.000000000 +1300
++++ src/csrc/Makefile	2010-02-27 00:56:06.000000000 +1300
+@@ -21,7 +21,8 @@
+ 	$(CC) $(CFLAGS) -DGF_BITS=8 -o fec fec8.o test.c
+ 
+ libfec8.so: fec8.o fec8-jinterf.o
+-	$(CC) $(LDFLAGS) -shared fec8-jinterf.o fec8.o -o libfec8.so
++	$(CC) $(LDFLAGS) -shared fec8-jinterf.o fec8.o -o libfec8.so \
++		-Wl,-soname=libfec8.so
+ 
+ fec8-jinterf.o: fec-jinterf.c
+ 	$(CC) $(CFLAGS) -DGF_BITS=8 -c \
+@@ -35,7 +36,8 @@
+ 	$(CC) $(CFLAGS) -DGF_BITS=8 -S -o fec8.S fec.c
+ 
+ libfec16.so: fec16.o fec16-jinterf.o
+-	$(CC) $(LDFLAGS) -shared fec16-jinterf.o fec16.o -o libfec16.so
++	$(CC) $(LDFLAGS) -shared fec16-jinterf.o fec16.o -o libfec16.so \
++		-Wl,-soname=libfec16.so
+ 
+ fec16-jinterf.o: fec-jinterf.c
+ 	$(CC) $(CFLAGS) -DGF_BITS=16 -c \

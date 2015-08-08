@@ -1,0 +1,15 @@
+diff --git a/wmlib/Makefile.am b/wmlib/Makefile.am
+index 0f8201f..7b95d1f 100644
+--- a/wmlib/Makefile.am
++++ b/wmlib/Makefile.am
+@@ -2,6 +2,7 @@
+ AUTOMAKE_OPTIONS = no-dependencies
+ 
+ libWMaker_la_LDFLAGS = -version-info 1:1:0
++libWMaker_la_LIBADD = @LIBRARY_SEARCH_PATH@ @XLIBS@
+ lib_LTLIBRARIES = libWMaker.la
+ 
+ include_HEADERS = WMaker.h
+-- 
+1.7.8.6
+

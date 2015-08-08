@@ -1,0 +1,28 @@
+ src/ui/gui/automake.mk | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/ui/gui/automake.mk b/src/ui/gui/automake.mk
+index 47a3215..24f5b0b 100644
+--- a/src/ui/gui/automake.mk
++++ b/src/ui/gui/automake.mk
+@@ -333,16 +333,16 @@ PHONY += yelp-check
+ AM_CPPFLAGS += -Isrc
+ 
+ src/ui/gui/pspp.desktop: src/ui/gui/gen-dot-desktop.sh $(POFILES)
+-	POFILES="$(POFILES)" top_builddir="$(top_builddir)" $(SHELL) $< > $@
++	POFILES="$(POFILES)" top_builddir="$(top_builddir)" $(SHELL) $< > ${top_srcdir}/$@
+ 
+ CLEANFILES+=src/ui/gui/pspp.desktop
+ 
+ src/ui/gui/psppire-marshal.c: src/ui/gui/marshaller-list
+-	echo '#include <config.h>' > $@
+-	$(GLIB_GENMARSHAL) --body --prefix=psppire_marshal $? >> $@
++	echo '#include <config.h>' > ${top_srcdir}/$@
++	$(GLIB_GENMARSHAL) --body --prefix=psppire_marshal $? >> ${top_srcdir}/$@
+ 
+ src/ui/gui/psppire-marshal.h: src/ui/gui/marshaller-list
+-	$(GLIB_GENMARSHAL) --header --prefix=psppire_marshal $? > $@
++	$(GLIB_GENMARSHAL) --header --prefix=psppire_marshal $? > ${top_srcdir}/$@
+ 
+ desktopdir = $(datadir)/applications
+ desktop_DATA = src/ui/gui/pspp.desktop

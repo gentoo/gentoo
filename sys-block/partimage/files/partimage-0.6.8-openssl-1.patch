@@ -1,0 +1,30 @@
+http://bugs.gentoo.org/326879
+
+--- src/client/netclient.h
++++ src/client/netclient.h
+@@ -35,7 +35,11 @@
+ #ifdef HAVE_SSL
+   SSL_CTX * ctx;
+   X509 * server_cert;
++  #if OPENSSL_VERSION_NUMBER >= 0x10000000L
++  const SSL_METHOD * meth;
++  #else
+   SSL_METHOD * meth;
++  #endif
+ #endif
+   bool m_bUseSSL;
+   bool m_bMustLogin;
+--- src/server/netserver.h
++++ src/server/netserver.h
+@@ -41,7 +41,11 @@
+ #ifdef HAVE_SSL
+   SSL_CTX * ctx;
+   X509 * client_cert;
++  #if OPENSSL_VERSION_NUMBER >= 0x10000000L
++  const SSL_METHOD * meth;
++  #else
+   SSL_METHOD * meth; 
++  #endif
+   int err;
+ #endif
+ 

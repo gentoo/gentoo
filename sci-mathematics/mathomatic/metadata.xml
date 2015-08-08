@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-mathematics</herd>
+	<longdescription>
+    Mathomatic is a small, portable symbolic math program that can
+    automatically solve, simplify, differentiate, combine, and compare
+    algebraic equations, perform polynomial and complex arithmetic,
+    etc.
+  </longdescription>
+</pkgmetadata>

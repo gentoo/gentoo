@@ -1,0 +1,23 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,6 +35,7 @@
+ stdlib.h \
+ sys/socket.h \
+ time.h \
++grp.h \
+ sys/time.h \
+ sys/types.h \
+ sys/capability.h \
+--- a/src/arping.c
++++ b/src/arping.c
+@@ -98,6 +98,10 @@
+ #endif
+ #include <pcap.h>
+ 
++#if HAVE_GRP_H
++#include <grp.h>
++#endif
++
+ #include "arping.h"
+ 
+ #ifndef ETH_ALEN

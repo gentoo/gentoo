@@ -1,0 +1,47 @@
+ pygraphviz/__init__.py |  2 --
+ pygraphviz/agraph.py   | 25 -------------------------
+ 2 files changed, 27 deletions(-)
+
+diff --git a/pygraphviz/__init__.py b/pygraphviz/__init__.py
+index a807801..33f727e 100644
+--- a/pygraphviz/__init__.py
++++ b/pygraphviz/__init__.py
+@@ -68,5 +68,3 @@ def version():
+     neato=_get_prog('neato')
+     os.system(neato+' -V')
+ 
+-# import tests: run as pygraphviz.test()
+-from tests import run as test
+diff --git a/pygraphviz/agraph.py b/pygraphviz/agraph.py
+index c9f735b..90a661e 100644
+--- a/pygraphviz/agraph.py
++++ b/pygraphviz/agraph.py
+@@ -1771,28 +1771,3 @@ class ItemAttribute(Attribute):
+                        value.decode(self.encoding))
+             except KeyError: # gv.agxget returned KeyError, skip
+                 continue
+-
+-
+-
+-def _test_suite():
+-    import doctest
+-    suite = doctest.DocFileSuite('tests/graph.txt',
+-                                 'tests/attributes.txt',
+-                                 'tests/layout_draw.txt',
+-                                 'tests/subgraph.txt',
+-                                 package='pygraphviz')
+-    doctest.testmod() # test docstrings in module
+-    return suite
+-
+-
+-if __name__ == "__main__":
+-    import os
+-    import sys
+-    import unittest
+-    if sys.version_info[:2] < (2, 4):
+-        print "Python version 2.4 or later required for tests (%d.%d detected)." %  sys.version_info[:2]
+-        sys.exit(-1)
+-    # directory of package (relative to this)
+-    nxbase=sys.path[0]+os.sep+os.pardir
+-    sys.path.insert(0,nxbase) # prepend to search path
+-    unittest.TextTestRunner().run(_test_suite())

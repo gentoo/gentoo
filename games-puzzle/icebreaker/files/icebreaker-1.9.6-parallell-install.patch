@@ -1,0 +1,34 @@
+--- Makefile.old	2010-10-19 10:26:18.000000000 +0200
++++ Makefile	2010-10-19 10:38:28.000000000 +0200
+@@ -196,26 +196,30 @@
+ themes-install: install-themes
+ 
+ install-themes:
++	mkdir -p $(datadir)/icebreaker
+ 	install -m 644 *.ibt $(datadir)/icebreaker
+ 	install -m 644 *.wav *.bmp $(datadir)/icebreaker
+ 
+ install-bin: icebreaker
++	mkdir -p $(bindir)
+ 	install -g games -m 2755 icebreaker $(bindir) || \
+ 	  install -m 755 icebreaker $(bindir)
+ 	@test -g $(bindir)/icebreaker || \
+ 	  echo -e '*** Note: icebreaker binary not installed set-group-ID "games" -- shared\n*** highscores may be impossible. (Try installing as root.)'
+ 
+ install-man: icebreaker.6
++	mkdir -p $(mandir)/man6
+ 	install -m 644 icebreaker.6 $(mandir)/man6
+ 
+ install-scorefile:
++	mkdir -p $(highscoredir)
+ 	touch $(highscoredir)/icebreaker.scores
+ 	chown -f games:games $(highscoredir)/icebreaker.scores && \
+ 	chmod 664 $(highscoredir)/icebreaker.scores || \
+ 	chmod 644 $(highscoredir)/icebreaker.scores
+ 
+ 
+-install: all install-mkdirs install-themes install-bin install-man install-scorefile
++install: install-themes install-bin install-man install-scorefile
+ 
+ %.d: %.c
+ 	set -e; $(CC) -M $(CFLAGS) $< \

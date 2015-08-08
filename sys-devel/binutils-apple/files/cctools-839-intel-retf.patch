@@ -1,0 +1,14 @@
+diff --git a/as/i386-opcode.h b/as/i386-opcode.h
+index 4ba397f..862449a 100644
+--- a/as/i386-opcode.h
++++ b/as/i386-opcode.h
+@@ -415,6 +415,9 @@ static const template i386_optab[] =
+ {"ret",	   1,	0xc2, X, Cpu64,  wq_Suf|DefaultSize|NoRex64,{ Imm16, 0, 0} },
+ {"lret",   0,	0xcb, X, 0,	 wlq_Suf|DefaultSize,	{ 0, 0, 0} },
+ {"lret",   1,	0xca, X, 0,	 wlq_Suf|DefaultSize,	{ Imm16, 0, 0} },
++// intel syntax
++{"retf",   0,	0xcb, X, 0,	 wlq_Suf|DefaultSize,	{ 0, 0, 0} },
++{"retf",   1,	0xca, X, 0,	 wlq_Suf|DefaultSize,	{ Imm16, 0, 0} },
+ {"enter",  2,	0xc8, X, Cpu186|CpuNo64, wl_Suf|DefaultSize,	{ Imm16, Imm8, 0} },
+ {"enter",  2,	0xc8, X, Cpu64,  wq_Suf|DefaultSize|NoRex64,	{ Imm16, Imm8, 0} },
+ {"leave",  0,	0xc9, X, Cpu186|CpuNo64, wl_Suf|DefaultSize,	{ 0, 0, 0} },

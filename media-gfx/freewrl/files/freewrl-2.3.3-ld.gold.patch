@@ -1,0 +1,35 @@
+commit 57d2d3b900c7d57e167fb7c90b36ca8c9c80b8bd
+Author: Ian Stakenvicius <axs@gentoo.org>
+Date:   Mon Apr 28 10:53:57 2014 -0400
+
+    autotools: fixed underlinking issue with libm
+    
+    Signed-off-by: Ian Stakenvicius <axs@gentoo.org>
+
+diff --git a/freex3d/configure.ac b/freex3d/configure.ac
+index 49db07c..48b09c8 100644
+--- a/freex3d/configure.ac
++++ b/freex3d/configure.ac
+@@ -73,6 +73,8 @@ AC_PROG_GCC_TRADITIONAL
+ dnl AC_FUNC_MALLOC
+ AC_CHECK_FUNCS([strchr strrchr strdup strndup strerror getopt getopt_long getopt_long_only malloc calloc realloc usleep gettimeofday])
+ 
++# Check for math
++AC_CHECK_LIBM
+ 
+ # ====================================================
+ # FreeWRL specific configuration: target system
+diff --git a/freex3d/src/lib/Makefile.am b/freex3d/src/lib/Makefile.am
+index ae7fb05..1b1af8a 100644
+--- a/freex3d/src/lib/Makefile.am
++++ b/freex3d/src/lib/Makefile.am
+@@ -40,7 +40,8 @@ EXTERNAL_LIBS = \
+ 				$(PNG_LIBS) \
+ 				$(LIBCURL_LIBS) \
+ 				$(IMLIB2_LIBS) \
+-				$(LIBLO_LIBS)
++				$(LIBLO_LIBS) \
++				$(LIBM)
+ 
+ 
+ # X11 flags specific to x11 target (default on Linux -- optional on Mac)

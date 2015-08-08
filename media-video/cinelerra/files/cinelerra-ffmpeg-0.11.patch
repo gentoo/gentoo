@@ -1,0 +1,156 @@
+Let it build with ffmpeg-0.11
+
+Index: cinelerra-20111223/cinelerra/ffmpeg.C
+===================================================================
+--- cinelerra-20111223.orig/cinelerra/ffmpeg.C
++++ cinelerra-20111223/cinelerra/ffmpeg.C
+@@ -23,7 +23,6 @@ FFMPEG::FFMPEG(Asset *asset) {
+ 
+ int FFMPEG::init(char *codec_string) {
+ 
+-	avcodec_init();
+ 	avcodec_register_all();
+ 
+ 	CodecID id = codec_id(codec_string);
+Index: cinelerra-20111223/cinelerra/fileac3.C
+===================================================================
+--- cinelerra-20111223.orig/cinelerra/fileac3.C
++++ cinelerra-20111223/cinelerra/fileac3.C
+@@ -84,7 +84,6 @@ int FileAC3::open_file(int rd, int wr)
+ 
+ 	if(wr)
+ 	{
+-  		avcodec_init();
+ 		avcodec_register_all();
+ 		codec = avcodec_find_encoder(CODEC_ID_AC3);
+ 		if(!codec)
+Index: cinelerra-20111223/configure.in
+===================================================================
+--- cinelerra-20111223.orig/configure.in
++++ cinelerra-20111223/configure.in
+@@ -338,7 +338,7 @@ AC_SUBST(CPU_CFLAGS)
+ AC_ARG_WITH([external-ffmpeg], AC_HELP_STRING([--with-external-ffmpeg], [use external ffmpeg library]))
+ 
+ if test "x$with_external_ffmpeg" = "xyes"; then
+-     PKG_CHECK_MODULES([FFMPEG_TEMP], [libavcodec libpostproc])
++     PKG_CHECK_MODULES([FFMPEG_TEMP], [libavcodec libpostproc libavutil])
+      FFMPEG_FOLDER=""
+      FFMPEG_EXTERNALTEXT="External ffmpeg"
+ 		   
+@@ -356,10 +356,10 @@ if test "x$with_external_ffmpeg" = "xyes
+      AC_MSG_RESULT($enable_ffmpeg_swscale)
+      if test x"$enable_ffmpeg_swscale" = xyes; then
+ 	     dnl AC_DEFINE(HAVE_SWSCALER)
+-	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc libswscale])
++	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc libswscale libavutil])
+ 	     FFMPEG_CFLAGS="$FFMPEG_CFLAGS -I/usr/include/libavcodec -I/usr/include/libswscale -DHAVE_SWSCALER"
+      else
+-	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc])
++	     PKG_CHECK_MODULES([FFMPEG], [libavcodec libpostproc libavutil])
+      fi
+      FFMPEG_EXTERNALTEXT="External ffmpeg"
+ else
+Index: cinelerra-20111223/quicktime/mpeg4.c
+===================================================================
+--- cinelerra-20111223.orig/quicktime/mpeg4.c
++++ cinelerra-20111223/quicktime/mpeg4.c
+@@ -8,6 +8,7 @@
+ 
+ 
+ #include "libavcodec/avcodec.h"
++#include "libavutil/dict.h"
+ #include "colormodels.h"
+ #include "funcprotos.h"
+ #include "qtffmpeg.h"
+@@ -624,12 +625,12 @@ static int encode(quicktime_t *file, uns
+ 		else
+ // ffmpeg section
+ 		{
++			AVDictionary ** opts = NULL;
+ 			static char *video_rc_eq="tex^qComp";
+ 			codec->encode_initialized[current_field] = 1;
+ 			if(!ffmpeg_initialized)
+ 			{
+ 				ffmpeg_initialized = 1;
+-  				avcodec_init();
+ 				avcodec_register_all();
+ 			}
+ 
+@@ -673,8 +674,10 @@ static int encode(quicktime_t *file, uns
+         	context->b_quant_offset = 1.25;
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+ 			context->error_resilience = FF_ER_CAREFUL;
+-#else
++#elif LIBAVCODEC_VERSION_INT < ((54<<16)+(0<<8)+0)
+ 			context->error_recognition = FF_ER_CAREFUL;
++#else
++			context->err_recognition |= AV_EF_CAREFUL;
+ #endif
+ 			context->error_concealment = 3;
+ 			context->frame_skip_cmp = FF_CMP_DCTMAX;
+@@ -699,7 +702,7 @@ static int encode(quicktime_t *file, uns
+         	context->profile= FF_PROFILE_UNKNOWN;
+ 			context->rc_buffer_aggressivity = 1.0;
+         	context->level= FF_LEVEL_UNKNOWN;
+-			context->flags |= CODEC_FLAG_H263P_UMV;
++			av_dict_set(opts, "umv", "1", 0);
+ 			context->flags |= CODEC_FLAG_AC_PRED;
+ 
+ // All the forbidden settings can be extracted from libavcodec/mpegvideo.c of ffmpeg...
+@@ -717,10 +720,8 @@ static int encode(quicktime_t *file, uns
+ 				(codec->ffmpeg_id == CODEC_ID_MPEG4 ||
+ 			         codec->ffmpeg_id == CODEC_ID_MPEG1VIDEO ||
+ 			         codec->ffmpeg_id == CODEC_ID_MPEG2VIDEO ||
+-			         codec->ffmpeg_id == CODEC_ID_H263P || 
+-			         codec->ffmpeg_id == CODEC_FLAG_H263P_SLICE_STRUCT))
++			         codec->ffmpeg_id == CODEC_ID_H263P ))
+ 			{
+-				avcodec_thread_init(context, file->cpus);
+ 				context->thread_count = file->cpus;
+ 			}
+ 
+@@ -740,7 +741,7 @@ static int encode(quicktime_t *file, uns
+  * codec->fix_bitrate,
+  * codec->quantizer);
+  */
+-			avcodec_open(context, codec->encoder[current_field]);
++			avcodec_open2(context, codec->encoder[current_field], opts);
+ 
+    			avcodec_get_frame_defaults(&codec->picture[current_field]);
+ 
+Index: cinelerra-20111223/quicktime/qtffmpeg.c
+===================================================================
+--- cinelerra-20111223.orig/quicktime/qtffmpeg.c
++++ cinelerra-20111223/quicktime/qtffmpeg.c
+@@ -54,7 +54,6 @@ quicktime_ffmpeg_t* quicktime_new_ffmpeg
+ 	if(!ffmpeg_initialized)
+ 	{
+ 		ffmpeg_initialized = 1;
+-  		avcodec_init();
+ 		avcodec_register_all();
+ 	}
+ 
+@@ -90,10 +89,8 @@ quicktime_ffmpeg_t* quicktime_new_ffmpeg
+ 				(ffmpeg_id == CODEC_ID_MPEG4 ||
+ 			         ffmpeg_id == CODEC_ID_MPEG1VIDEO ||
+ 			         ffmpeg_id == CODEC_ID_MPEG2VIDEO ||
+-			         ffmpeg_id == CODEC_ID_H263P || 
+-			         ffmpeg_id == CODEC_FLAG_H263P_SLICE_STRUCT))
++			         ffmpeg_id == CODEC_ID_H263P ))
+ 		{
+-			avcodec_thread_init(context, cpus);
+ 			context->thread_count = cpus;
+ 		}
+ 		if(avcodec_open(context, 
+Index: cinelerra-20111223/quicktime/wma.c
+===================================================================
+--- cinelerra-20111223.orig/quicktime/wma.c
++++ cinelerra-20111223/quicktime/wma.c
+@@ -67,7 +67,6 @@ static int init_decode(quicktime_audio_m
+ 		if(!ffmpeg_initialized)
+ 		{
+ 			ffmpeg_initialized = 1;
+-			avcodec_init();
+ 			avcodec_register_all();
+ 		}
+ 

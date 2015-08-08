@@ -1,0 +1,14 @@
+--- a/drivers/lirc_atiusb/lirc_atiusb.c	2012-07-17 16:04:39.000000000 -0400
++++ b/drivers/lirc_atiusb/lirc_atiusb.c	2012-07-17 16:19:06.000000000 -0400
+@@ -1050,7 +1050,11 @@
+ 		goto new_irctl_failure_check;
+ 	}
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 38)
+ 	if (lirc_buffer_init(driver->rbuf, dclen, 1)) {
++#else
++	if (lirc_buffer_init(driver->rbuf, dclen, 2)) {
++#endif
+ 		mem_failure = 4;
+ 		goto new_irctl_failure_check;
+ 	}

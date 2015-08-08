@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/548024
+
+From 9c2b57232e3bc2e5ba85387560bcdd851849a128 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Mon, 5 Jan 2015 20:24:18 -0800
+Subject: [PATCH] tar: port xattr-at.c to Solaris 10
+
+* lib/xattr-at.c (setxattrat, lsetxattrat, getxattrat, lgetxattrat)
+(listxattrat, llistxattrat): Compile only if HAVE_XATTRS, so that
+the code doesn't call functions that are not declared.
+---
+ lib/xattr-at.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/xattr-at.c b/lib/xattr-at.c
+index 443ccae..66427e9 100644
+--- a/lib/xattr-at.c
++++ b/lib/xattr-at.c
+@@ -31,6 +31,8 @@
+ 
+ #include "openat-priv.h"
+ 
++#ifdef HAVE_XATTRS
++
+ /* setxattrat */
+ #define AT_FUNC_NAME setxattrat
+ #define AT_FUNC_F1 setxattr
+@@ -108,3 +110,5 @@
+ #undef AT_FUNC_RESULT
+ #undef AT_FUNC_POST_FILE_PARAM_DECLS
+ #undef AT_FUNC_POST_FILE_ARGS
++
++#endif /* HAVE_XATTRS */
+-- 
+2.4.0
+

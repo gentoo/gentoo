@@ -1,0 +1,47 @@
+ Makefile |   12 ++++++------
+ 1 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 270d7e1..578884e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -60,16 +60,16 @@ BINSRCS = $(addsuffix .c,$(BINS))
+ VERSION := $(shell sh mk-version)
+ RELEASE_VERSION := $(shell cat VERSION)
+ 
+-CC=gcc
++CC?=gcc
+ CFLAGS ?= -O3 -g
+ CFLAGS += -W -Wall -Wmissing-declarations -Wwrite-strings
+ CFLAGS +=  $(shell libgcrypt-config --cflags) $(CRYPTO_CFLAGS)
+ CPPFLAGS += -DVERSION=\"$(VERSION)\"
+ LDFLAGS ?= -g
+-LDFLAGS += $(shell libgcrypt-config --libs) $(CRYPTO_LDADD)
++LIBS += $(shell libgcrypt-config --libs) $(CRYPTO_LDADD)
+ 
+ ifeq ($(shell uname -s), SunOS)
+-LDFLAGS += -lnsl -lresolv -lsocket
++LIBS += -lnsl -lresolv -lsocket
+ endif
+ ifneq (,$(findstring Apple,$(shell $(CC) --version)))
+ # enabled in FSF GCC, disabled by default in Apple GCC
+@@ -79,16 +79,16 @@ endif
+ all : $(BINS) vpnc.8
+ 
+ vpnc : $(OBJS) vpnc.o
+-	$(CC) -o $@ $^ $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ vpnc.8 : vpnc.8.template makeman.pl vpnc
+ 	./makeman.pl
+ 
+ cisco-decrypt : cisco-decrypt.o decrypt-utils.o
+-	$(CC) -o $@ $^ $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ test-crypto : sysdep.o test-crypto.o crypto.o $(CRYPTO_OBJS)
+-	$(CC) -o $@ $^ $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ .depend: $(SRCS) $(BINSRCS)
+ 	$(CC) -MM $(SRCS) $(BINSRCS) $(CFLAGS) $(CPPFLAGS) > $@

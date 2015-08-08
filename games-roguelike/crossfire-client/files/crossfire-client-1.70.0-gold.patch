@@ -1,0 +1,16 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Jan 28 08:14:23 UTC 2013
+Subject: fix underlinking
+
+--- crossfire-client-1.70.0/configure.ac
++++ crossfire-client-1.70.0/configure.ac
+@@ -242,6 +242,9 @@
+ AC_PROG_CPP
+ AC_PROG_RANLIB
+ 
++# Check for X11
++PKG_CHECK_MODULES([X], [x11])
++
+ AC_SUBST(X_LIBS)
+ AC_SUBST(X_CFLAGS)
+ 

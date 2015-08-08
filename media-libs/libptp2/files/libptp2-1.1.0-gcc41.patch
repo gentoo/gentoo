@@ -1,0 +1,35 @@
+--- libptp2-1.1.0.orig/src/ptp-pack.c	2006-01-07 19:38:52.000000000 -0200
++++ libptp2-1.1.0/src/ptp-pack.c	2006-01-07 19:56:26.000000000 -0200
+@@ -440,7 +440,7 @@
+ 		case PTP_DTC_STR:
+ 		{
+ 			uint8_t len;
+-			(char *)(*value)=ptp_unpack_string(params,data,0,&len);
++			(*value)=(char *)ptp_unpack_string(params,data,0,&len);
+ 			break;
+ 		}
+ 	}
+@@ -513,10 +513,10 @@
+ 		/* XXX: other int types are unimplemented */
+ 		/* XXX: int arrays are unimplemented also */
+ 		case PTP_DTC_STR:
+-			(char *)dpd->FactoryDefaultValue = ptp_unpack_string
++			dpd->FactoryDefaultValue = (char *)ptp_unpack_string
+ 				(params,data,PTP_dpd_FactoryDefaultValue,&len);
+ 			totallen=len*2+1;
+-			(char *)dpd->CurrentValue = ptp_unpack_string
++			dpd->CurrentValue = (char *)ptp_unpack_string
+ 				(params, data, PTP_dpd_FactoryDefaultValue + 
+ 				totallen, &len);
+ 			totallen+=len*2+1;
+@@ -598,8 +598,8 @@
+ 			int i;
+ 			for(i=0;i<N;i++)
+ 			{
+-				(char *)dpd->FORM.Enum.SupportedValue[i]=
+-					ptp_unpack_string
++				dpd->FORM.Enum.SupportedValue[i]=
++					(char *)ptp_unpack_string
+ 					(params,data,PTP_dpd_FactoryDefaultValue
+ 					+totallen,&len);
+ 				totallen+=len*2+1;

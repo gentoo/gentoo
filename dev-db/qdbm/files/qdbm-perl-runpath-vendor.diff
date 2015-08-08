@@ -1,0 +1,22 @@
+diff -ur qdbm-1.8.62.orig/perl/Makefile.in qdbm-1.8.62/perl/Makefile.in
+--- qdbm-1.8.62.orig/perl/Makefile.in
++++ qdbm-1.8.62/perl/Makefile.in
+@@ -42,15 +42,15 @@
+ all :
+ 	cd depot && [ -f Makefile ] || \
+ 	  $(RUNENV) perl Makefile.PL CC="$(CC)" INC="$(INC)" OPTIMIZE="$(OPTIMIZE)" \
+-	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" ; \
++	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" INSTALLDIRS=vendor ; \
+ 	  $(RUNENV) make
+ 	cd curia && [ -f Makefile ] || \
+ 	  $(RUNENV) perl Makefile.PL CC="$(CC)" INC="$(INC)" OPTIMIZE="$(OPTIMIZE)" \
+-	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" ; \
++	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" INSTALLDIRS=vendor ; \
+ 	  $(RUNENV) make
+ 	cd villa && [ -f Makefile ] || \
+ 	  $(RUNENV) perl Makefile.PL CC="$(CC)" INC="$(INC)" OPTIMIZE="$(OPTIMIZE)" \
+-	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" ; \
++	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" INSTALLDIRS=vendor ; \
+ 	  $(RUNENV) make
+ 	@printf '\n'
+ 	@printf '#================================================================\n'

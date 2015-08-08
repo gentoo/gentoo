@@ -1,0 +1,9 @@
+--- a/trunk/libhb/muxmkv.c
++++ b/trunk/libhb/muxmkv.c
+@@ -348,5 +348,5 @@
+                 track->codecPrivate = NULL;
+                 track->codecPrivateSize = 0;
+-                track->codecID = MK_SUBTITLE_PGS;
++                track->codecID = "S_HDMV/PGS";
+                 break;
+             case SSASUB:

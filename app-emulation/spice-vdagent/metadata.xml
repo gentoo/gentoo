@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>virtualization</herd>
+	<maintainer>
+		<email>dev-zero@gentoo.org</email>
+		<name>Tiziano Müller</name>
+	</maintainer>
+	<use>
+		<flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> to determine the
+			master vdagentd in case of multiple running vdagentds (highly
+			recommended)</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- groff-1.22.3/Makefile.in
++++ groff-1.22.3/Makefile.in
+@@ -864,7 +864,7 @@
+ 	  -f $(top_srcdir)/Makefile.ccpg \
+ 	  -f Makefile.dep $(do)
+ 
+-$(DEVDIRS) $(XDEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS): FORCE \
++$(DEVDIRS) $(XDEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS) $(SHPROGDIRS): FORCE \
+ 		$(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS)
+ 	@$(ENVSETUP); \
+ 	if test $(srcdir) = .; then \

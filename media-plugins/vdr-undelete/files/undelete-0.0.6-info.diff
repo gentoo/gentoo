@@ -1,0 +1,25 @@
+--- undelete-0.0.6/menuundelete.c.orig	2006-03-22 01:18:57.000000000 -0800
++++ undelete-0.0.6/menuundelete.c	2006-03-22 01:19:54.000000000 -0800
+@@ -422,7 +422,7 @@
+     case 7:   recording = GetRecording(item);
+ #if VDRVERSNUM >= 10325
+               if (recording && recording->Info() && recording->Info()->Description() && *recording->Info()->Description())
+-                state = AddSubMenu(new cMenuText(tr("Summary"), recording->Info()->Description()));
++                state = AddSubMenu(new cMenuText(tr("Info"), recording->Info()->Description()));
+ #else 
+               if (recording && recording->Summary() && *recording->Summary())
+                 state = AddSubMenu(new cMenuText(tr("Summary"), recording->Summary()));
+--- undelete-0.0.6/undelete.c.orig	2006-03-22 01:20:06.000000000 -0800
++++ undelete-0.0.6/undelete.c	2006-03-22 01:23:58.000000000 -0800
+@@ -282,7 +282,11 @@
+     FunctionHotKey[4] = tr("Display$purge all");
+     FunctionHotKey[5] = tr("Display$salvage all");
+     FunctionHotKey[6] = tr("Open");
++#if VDRVERSNUM >= 10325
++    FunctionHotKey[7] = tr("Info");
++#else
+     FunctionHotKey[7] = tr("Summary");
++#endif
+     FunctionHotKey[8] = tr("Display$<--1");
+     FunctionHotKey[9] = tr("Display$2-->");
+     FunctionHotKey[10] = tr("Display$disp. keys");

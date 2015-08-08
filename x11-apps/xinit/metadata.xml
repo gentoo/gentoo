@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>x11</herd>
+	<use>
+		<flag name='minimal'>
+			Control dependencies on legacy apps (xterm, twm, ...). Safe to
+			enable if you use a modern desktop environment.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:x.org:xinit</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-misc</herd>
+<longdescription>
+hsetroot is a tool which allows you to compose wallpapers ("root pixmaps") for X. It has a lot of options like rendering gradients, solids, images but it also allows you to perform manipulations on those things, or chain them together. You could use one standard background image for isntance, and using tint to make it fit your current theme. And yes, of course it is compatible with semi-translucent applications like aterm and xchat :)
+	 
+ At this time, hsetroot can render: gradients (multi-color with variable distance), solids (rectangles) and images (centered, tiled, fullscreen, or maximum aspect). It supports the following manipulations: tinting (overlaying a color mask), blurring, sharpening, flipping (horizontally, diagonally, vertically) it also allows you to adjust brightness, contrast and gamma-level. hsetroot also supports alpha-channels when rendering things.
+</longdescription>
+</pkgmetadata>

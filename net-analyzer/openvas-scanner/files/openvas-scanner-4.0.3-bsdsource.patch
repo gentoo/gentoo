@@ -1,0 +1,12 @@
+diff -ru openvas-scanner-4.0.1/CMakeLists.txt openvas-scanner-4.0.1.bsdsource/CMakeLists.txt
+--- openvas-scanner-4.0.1/CMakeLists.txt	2014-04-23 16:00:47.000000000 +0200
++++ openvas-scanner-4.0.1.bsdsource/CMakeLists.txt	2014-05-26 16:11:23.018940789 +0200
+@@ -235,7 +235,7 @@
+ set (HARDENING_FLAGS            "-Wformat -Wformat-security -O2 -D_FORTIFY_SOURCE=2 -fstack-protector -Wl,-z,relro -Wl,-z,now")
+ 
+ set (CMAKE_C_FLAGS_DEBUG        "${CMAKE_C_FLAGS_DEBUG} -Werror")
+-set (CMAKE_C_FLAGS              "${CMAKE_C_FLAGS} ${HARDENING_FLAGS} -Wall -D_BSD_SOURCE -D_ISOC99_SOURCE -D_SVID_SOURCE")
++set (CMAKE_C_FLAGS              "${CMAKE_C_FLAGS} ${HARDENING_FLAGS} -Wall -D_DEFAULT_SOURCE -D_ISOC99_SOURCE")
+ 
+ add_subdirectory (src)
+ 

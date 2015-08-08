@@ -1,0 +1,44 @@
+Accept messages with no body.
+
+If a message has no body, there is nothing in the RFC spec that says it
+needs to have a trailing \n for a blank line after the headers.
+
+Thumderbird 10 generates some emails like this, which will always cause
+plugin errors when $transaction->header is accessed otherwise, as there
+is almost no checking that $transaction->header is defined before usage.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+Thanks-To: Jack Bates <ms419@freezone.co.uk>
+
+--- qpsmtpd-0.83.orig/lib/Qpsmtpd/SMTP.pm	2009-04-03 06:24:21.000000000 +0000
++++ qpsmtpd-0.83/lib/Qpsmtpd/SMTP.pm	2012-02-25 05:52:14.000000000 +0000
+@@ -632,7 +632,7 @@
+ 
+   my $timeout = $self->config('timeout');
+   while (defined($_ = $self->getline($timeout))) {
+-    $complete++, last if $_ eq ".\r\n";
++    $complete++, $_ = '' if $_ eq ".\r\n";
+     $i++;
+ 
+     # should probably use \012 and \015 in these checks instead of \r and \n ...
+@@ -648,7 +648,7 @@
+     unless (($max_size and $size > $max_size)) {
+       s/\r\n$/\n/;
+       s/^\.\./\./;
+-      if ($in_header and m/^$/) {
++      if ($in_header and (m/^$/ or $complete > 0)) {
+         $in_header = 0;
+         my @headers = split /^/m, $buffer;
+ 
+@@ -691,9 +691,10 @@
+ 
+       # copy all lines into the spool file, including the headers
+       # we will create a new header later before sending onwards
+-      $self->transaction->body_write($_);
++      $self->transaction->body_write($_) unless $complete;
+       $size += length $_;
+     }
++    last if $complete > 0;
+     #$self->log(LOGDEBUG, "size is at $size\n") unless ($i % 300);
+   }
+ 

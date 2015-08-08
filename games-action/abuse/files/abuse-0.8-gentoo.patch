@@ -1,0 +1,24 @@
+diff -ru abuse-0.8.orig/Makefile.am abuse-0.8/Makefile.am
+--- abuse-0.8.orig/Makefile.am	2011-05-09 03:58:04.000000000 -0400
++++ abuse-0.8/Makefile.am	2011-05-16 22:22:51.642655295 -0400
+@@ -2,8 +2,6 @@
+ 
+ SUBDIRS = src data doc
+ 
+-EXTRA_DIST = COPYING.GPL COPYING.WTFPL PACKAGERS bootstrap
+-
+ dist-hook:
+ 	@echo ""
+ 	@echo "          ===================================================="
+diff -ru abuse-0.8.orig/configure.ac abuse-0.8/configure.ac
+--- abuse-0.8.orig/configure.ac	2011-05-09 03:58:04.000000000 -0400
++++ abuse-0.8/configure.ac	2011-05-16 22:22:35.771824632 -0400
+@@ -90,8 +90,6 @@
+ fi
+ AM_CONDITIONAL(HAVE_NONFREE, test "${ac_cv_have_nonfree}" = "yes")
+ 
+-# Optimizations
+-CXXFLAGS="${CXXFLAGS} ${OPT} ${REL}"
+ # Code qui fait des warnings == code de porc == deux baffes dans ta gueule
+ CXXFLAGS="${CXXFLAGS} -Wall -Wpointer-arith -Wcast-align -Wcast-qual -Wsign-compare"
+ 

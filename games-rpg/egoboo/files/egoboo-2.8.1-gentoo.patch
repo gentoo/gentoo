@@ -1,0 +1,56 @@
+--- src/game/platform/file_linux.c.old	2012-04-29 21:45:29.627419281 +0200
++++ src/game/platform/file_linux.c	2012-04-29 21:45:29.628419211 +0200
+@@ -79,9 +79,9 @@
+     strncpy( linux_dataPath,   PREFIX "/share/games/egoboo-2.x", SDL_arraysize( linux_dataPath ) );
+ #else
+     // these are read-only directories
+-    strncpy( linux_configPath, "/etc/egoboo-2.x/",         SDL_arraysize( linux_configPath ) );
++    strncpy( linux_configPath, "@GENTOO_CONFDIR@",         SDL_arraysize( linux_configPath ) );
+     strncpy( linux_binaryPath, "/games/",                  SDL_arraysize( linux_binaryPath ) );
+-    strncpy( linux_dataPath,   "/share/games/egoboo-2.x/", SDL_arraysize( linux_dataPath ) );
++    strncpy( linux_dataPath,   "@GENTOO_DATADIR@", SDL_arraysize( linux_dataPath ) );
+ #endif
+ 
+     // the log file cannot be started until there is a user data path to dump the file into
+--- src/game/network.c.old	2012-04-29 20:14:31.482179973 +0200
++++ src/game/network.c	2012-04-29 20:14:52.077730184 +0200
+@@ -37,7 +37,7 @@
+ #include "egoboo_setup.h"
+ #include "egoboo.h"
+ 
+-#include "enet/enet.h"
++#include <enet/enet.h>
+ #include "file_common.h"
+ 
+ #include <stdarg.h>
+--- src/game/Makefile.old	2012-04-29 20:17:09.303070070 +0200
++++ src/game/Makefile	2012-04-29 20:18:21.047023847 +0200
+@@ -33,8 +33,7 @@
+ # the compiler options
+ 
+-CC      := gcc
+-INC     := -I. -I.. -I../enet/include ${SDLCONF_I} -I./extensions -I./file_formats -I./platform
+-LDFLAGS := ${SDLCONF_L} -L../enet/lib -lSDL_ttf -lSDL_mixer -lGL -lGLU -lSDL_image -lphysfs -lenet
++INC     := -I. -I.. ${SDLCONF_I} -I./extensions -I./file_formats -I./platform
++LDLIBS := ${SDLCONF_L} -lSDL_ttf -lSDL_mixer -lGL -lGLU -lSDL_image -lphysfs -lenet -lm
+ 
+ # use different options if the environmental variable PREFIX is defined
+ ifdef ($(PREFIX),"")
+@@ -43,7 +43,7 @@
+ 	OPT := -Os -Wall -DPREFIX=\"${PREFIX}\" -D_NIX_PREFIX
+ endif
+ 
+-CFLAGS  := ${OPT} ${INC}
++CFLAGS  += ${INC} -DENET11
+ 
+ #------------------------------------
+ # definitions of the target projects
+@@ -52,7 +52,7 @@
+ all: ${EGO_BIN}
+ 
+ ${EGO_BIN}: ${EGO_OBJ} 
+-	${CC} -o $@ $^ ${LDFLAGS} ${CFLAGS}
++	${CC} -o $@ $^ ${LDFLAGS} ${CFLAGS} ${LDLIBS}
+ 
+ clean:
+ 	rm -f ${ENET_OBJ} ${EGO_OBJ} ${EGO_BIN}

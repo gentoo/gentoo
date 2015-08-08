@@ -1,0 +1,17 @@
+--- Makefile.in.orig	2012-06-12 00:20:24.359206241 +0400
++++ Makefile.in	2012-06-12 00:22:46.735301510 +0400
+@@ -60,10 +60,12 @@
+ vtund: $(OBJS)
+ 	$(CC) $(CFLAGS) -o vtund $(OBJS) $(LFD_OBJS) $(LDFLAGS)
+ 
+-cfg_file.tab.c: cfg_file.y cfg_kwords.h config.h
++cfg_file.tab.h:
+ 	$(YACC) $(YACCFLAGS) -b cfg_file cfg_file.y
+ 
+-cfg_file.lex.c: cfg_file.l cfg_kwords.h config.h
++cfg_file.tab.c: cfg_file.y cfg_kwords.h config.h cfg_file.tab.h
++
++cfg_file.lex.c: cfg_file.l cfg_kwords.h config.h cfg_file.tab.h
+ 	$(LEX) $(LEXFLAGS) cfg_file.l > cfg_file.lex.c 
+ 
+ depend:

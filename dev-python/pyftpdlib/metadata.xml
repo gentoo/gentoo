@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>phajdan.jr@gentoo.org</email>
+    <name>Pawel Hajdan jr</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="google-code">pyftpdlib</remote-id>
+    <remote-id type="pypi">pyftpdlib</remote-id>
+    <remote-id type="github">giampaolo/pyftpdlib</remote-id>
+  </upstream>
+</pkgmetadata>

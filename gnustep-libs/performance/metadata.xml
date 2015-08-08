@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnustep</herd>
+	<longdescription>A collection of classes to help improve/tune performance of your software </longdescription>
+</pkgmetadata>

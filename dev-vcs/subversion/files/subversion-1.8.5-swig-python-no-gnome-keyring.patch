@@ -1,0 +1,495 @@
+https://trac.macports.org/browser/trunk/dports/devel/subversion-python27bindings/files/patch-swig-python-core.diff
+
+diff -u -d -b -w -r subversion-1.8.0-orig/subversion/bindings/swig/python/core.c subversion-1.8.0-python/subversion/bindings/swig/python/core.c
+--- subversion/bindings/swig/python/core.c	2013-06-13 05:07:20.000000000 -0400
++++ subversion/bindings/swig/python/core.c	2013-07-12 16:11:05.000000000 -0400
+@@ -2958,140 +2958,139 @@
+ #define SWIGTYPE_p_apr_size_t swig_types[15]
+ #define SWIGTYPE_p_char swig_types[16]
+ #define SWIGTYPE_p_f_p_apr_getopt_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[17]
+-#define SWIGTYPE_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t swig_types[18]
+-#define SWIGTYPE_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void swig_types[19]
+-#define SWIGTYPE_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[20]
+-#define SWIGTYPE_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[21]
+-#define SWIGTYPE_p_f_p_p_svn_auth_cred_ssl_client_cert_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[22]
+-#define SWIGTYPE_p_f_p_p_svn_auth_cred_ssl_server_trust_t_p_void_p_q_const__char_apr_uint32_t_p_q_const__svn_auth_ssl_server_cert_info_t_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[23]
+-#define SWIGTYPE_p_f_p_p_svn_auth_cred_username_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[24]
+-#define SWIGTYPE_p_f_p_p_svn_stream_t_p_void_p_apr_pool_t_p_apr_pool_t__p_svn_error_t swig_types[25]
+-#define SWIGTYPE_p_f_p_p_void_p_p_void_p_void_p_apr_hash_t_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[26]
+-#define SWIGTYPE_p_f_p_p_void_p_void_p_void_p_apr_hash_t_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[27]
+-#define SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_void__int swig_types[28]
+-#define SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_void_p_apr_pool_t__int swig_types[29]
+-#define SWIGTYPE_p_f_p_q_const__char_p_void__int swig_types[30]
+-#define SWIGTYPE_p_f_p_q_const__char_p_void_p_apr_pool_t__int swig_types[31]
+-#define SWIGTYPE_p_f_p_q_const__svn_commit_info_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[32]
+-#define SWIGTYPE_p_f_p_svn_boolean_t_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t swig_types[33]
+-#define SWIGTYPE_p_f_p_svn_boolean_t_p_void_p_q_const__char_p_q_const__char_p_apr_hash_t_p_apr_pool_t__p_svn_error_t swig_types[34]
+-#define SWIGTYPE_p_f_p_svn_boolean_t_p_void_p_void_p_apr_hash_t_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[35]
+-#define SWIGTYPE_p_f_p_svn_location_segment_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[36]
+-#define SWIGTYPE_p_f_p_void__p_svn_error_t swig_types[37]
+-#define SWIGTYPE_p_f_p_void_apr_size_t__p_svn_error_t swig_types[38]
+-#define SWIGTYPE_p_f_p_void_p_apr_hash_t_svn_revnum_t_p_q_const__char_p_q_const__char_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[39]
+-#define SWIGTYPE_p_f_p_void_p_char_p_apr_size_t__p_svn_error_t swig_types[40]
+-#define SWIGTYPE_p_f_p_void_p_p_svn_stream_mark_t_p_apr_pool_t__p_svn_error_t swig_types[41]
+-#define SWIGTYPE_p_f_p_void_p_q_const__char_p_apr_size_t__p_svn_error_t swig_types[42]
+-#define SWIGTYPE_p_f_p_void_p_q_const__char_p_q_const__apr_finfo_t_p_apr_pool_t__p_svn_error_t swig_types[43]
+-#define SWIGTYPE_p_f_p_void_p_q_const__svn_stream_mark_t__p_svn_error_t swig_types[44]
+-#define SWIGTYPE_p_f_p_void_p_svn_log_entry_t_p_apr_pool_t__p_svn_error_t swig_types[45]
+-#define SWIGTYPE_p_f_svn_revnum_t_p_q_const__char_p_q_const__char_p_void__p_svn_error_t swig_types[46]
+-#define SWIGTYPE_p_f_void__p_svn_version_t swig_types[47]
+-#define SWIGTYPE_p_int swig_types[48]
+-#define SWIGTYPE_p_long swig_types[49]
+-#define SWIGTYPE_p_p_apr_array_header_t swig_types[50]
+-#define SWIGTYPE_p_p_apr_file_t swig_types[51]
+-#define SWIGTYPE_p_p_apr_hash_t swig_types[52]
+-#define SWIGTYPE_p_p_char swig_types[53]
+-#define SWIGTYPE_p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t swig_types[54]
+-#define SWIGTYPE_p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void swig_types[55]
+-#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[56]
+-#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[57]
+-#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_ssl_client_cert_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[58]
+-#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_ssl_server_trust_t_p_void_p_q_const__char_apr_uint32_t_p_q_const__svn_auth_ssl_server_cert_info_t_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[59]
+-#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_username_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[60]
+-#define SWIGTYPE_p_p_f_p_p_svn_stream_t_p_void_p_apr_pool_t_p_apr_pool_t__p_svn_error_t swig_types[61]
+-#define SWIGTYPE_p_p_f_p_q_const__char_p_q_const__char_p_void__int swig_types[62]
+-#define SWIGTYPE_p_p_f_p_q_const__char_p_q_const__char_p_void_p_apr_pool_t__int swig_types[63]
+-#define SWIGTYPE_p_p_f_p_q_const__char_p_void__int swig_types[64]
+-#define SWIGTYPE_p_p_f_p_q_const__char_p_void_p_apr_pool_t__int swig_types[65]
+-#define SWIGTYPE_p_p_f_p_q_const__svn_commit_info_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[66]
+-#define SWIGTYPE_p_p_f_p_svn_boolean_t_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t swig_types[67]
+-#define SWIGTYPE_p_p_f_p_svn_boolean_t_p_void_p_q_const__char_p_q_const__char_p_apr_hash_t_p_apr_pool_t__p_svn_error_t swig_types[68]
+-#define SWIGTYPE_p_p_f_p_svn_location_segment_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[69]
+-#define SWIGTYPE_p_p_f_p_void__p_svn_error_t swig_types[70]
+-#define SWIGTYPE_p_p_f_p_void_apr_size_t__p_svn_error_t swig_types[71]
+-#define SWIGTYPE_p_p_f_p_void_p_apr_hash_t_svn_revnum_t_p_q_const__char_p_q_const__char_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[72]
+-#define SWIGTYPE_p_p_f_p_void_p_char_p_apr_size_t__p_svn_error_t swig_types[73]
+-#define SWIGTYPE_p_p_f_p_void_p_p_svn_stream_mark_t_p_apr_pool_t__p_svn_error_t swig_types[74]
+-#define SWIGTYPE_p_p_f_p_void_p_q_const__char_p_apr_size_t__p_svn_error_t swig_types[75]
+-#define SWIGTYPE_p_p_f_p_void_p_q_const__char_p_q_const__apr_finfo_t_p_apr_pool_t__p_svn_error_t swig_types[76]
+-#define SWIGTYPE_p_p_f_p_void_p_q_const__svn_stream_mark_t__p_svn_error_t swig_types[77]
+-#define SWIGTYPE_p_p_f_p_void_p_svn_log_entry_t_p_apr_pool_t__p_svn_error_t swig_types[78]
+-#define SWIGTYPE_p_p_f_svn_revnum_t_p_q_const__char_p_q_const__char_p_void__p_svn_error_t swig_types[79]
+-#define SWIGTYPE_p_p_f_void__p_svn_version_t swig_types[80]
+-#define SWIGTYPE_p_p_svn_auth_baton_t swig_types[81]
+-#define SWIGTYPE_p_p_svn_auth_cred_simple_t swig_types[82]
+-#define SWIGTYPE_p_p_svn_auth_cred_ssl_client_cert_pw_t swig_types[83]
+-#define SWIGTYPE_p_p_svn_auth_cred_ssl_client_cert_t swig_types[84]
+-#define SWIGTYPE_p_p_svn_auth_cred_ssl_server_trust_t swig_types[85]
+-#define SWIGTYPE_p_p_svn_auth_cred_username_t swig_types[86]
+-#define SWIGTYPE_p_p_svn_auth_iterstate_t swig_types[87]
+-#define SWIGTYPE_p_p_svn_auth_provider_object_t swig_types[88]
+-#define SWIGTYPE_p_p_svn_checksum_t swig_types[89]
+-#define SWIGTYPE_p_p_svn_config_t swig_types[90]
+-#define SWIGTYPE_p_p_svn_io_dirent2_t swig_types[91]
+-#define SWIGTYPE_p_p_svn_stream_mark_t swig_types[92]
+-#define SWIGTYPE_p_p_svn_stream_t swig_types[93]
+-#define SWIGTYPE_p_p_svn_string_t swig_types[94]
+-#define SWIGTYPE_p_p_svn_stringbuf_t swig_types[95]
+-#define SWIGTYPE_p_p_void swig_types[96]
+-#define SWIGTYPE_p_svn_auth_baton_t swig_types[97]
+-#define SWIGTYPE_p_svn_auth_cred_simple_t swig_types[98]
+-#define SWIGTYPE_p_svn_auth_cred_ssl_client_cert_pw_t swig_types[99]
+-#define SWIGTYPE_p_svn_auth_cred_ssl_client_cert_t swig_types[100]
+-#define SWIGTYPE_p_svn_auth_cred_ssl_server_trust_t swig_types[101]
+-#define SWIGTYPE_p_svn_auth_cred_username_t swig_types[102]
+-#define SWIGTYPE_p_svn_auth_iterstate_t swig_types[103]
+-#define SWIGTYPE_p_svn_auth_provider_object_t swig_types[104]
+-#define SWIGTYPE_p_svn_auth_provider_t swig_types[105]
+-#define SWIGTYPE_p_svn_auth_ssl_server_cert_info_t swig_types[106]
+-#define SWIGTYPE_p_svn_checksum_ctx_t swig_types[107]
+-#define SWIGTYPE_p_svn_checksum_kind_t swig_types[108]
+-#define SWIGTYPE_p_svn_checksum_t swig_types[109]
+-#define SWIGTYPE_p_svn_commit_info_t swig_types[110]
+-#define SWIGTYPE_p_svn_config_t swig_types[111]
+-#define SWIGTYPE_p_svn_depth_t swig_types[112]
+-#define SWIGTYPE_p_svn_dirent_t swig_types[113]
+-#define SWIGTYPE_p_svn_errno_t swig_types[114]
+-#define SWIGTYPE_p_svn_error_t swig_types[115]
+-#define SWIGTYPE_p_svn_io_dirent2_t swig_types[116]
+-#define SWIGTYPE_p_svn_io_dirent_t swig_types[117]
+-#define SWIGTYPE_p_svn_io_file_del_t swig_types[118]
+-#define SWIGTYPE_p_svn_location_segment_t swig_types[119]
+-#define SWIGTYPE_p_svn_lock_t swig_types[120]
+-#define SWIGTYPE_p_svn_log_changed_path2_t swig_types[121]
+-#define SWIGTYPE_p_svn_log_changed_path_t swig_types[122]
+-#define SWIGTYPE_p_svn_log_entry_t swig_types[123]
+-#define SWIGTYPE_p_svn_merge_range_t swig_types[124]
+-#define SWIGTYPE_p_svn_mergeinfo_inheritance_t swig_types[125]
+-#define SWIGTYPE_p_svn_node_kind_t swig_types[126]
+-#define SWIGTYPE_p_svn_opt_revision_range_t swig_types[127]
+-#define SWIGTYPE_p_svn_opt_revision_t swig_types[128]
+-#define SWIGTYPE_p_svn_opt_revision_value_t swig_types[129]
+-#define SWIGTYPE_p_svn_opt_subcommand_desc2_t swig_types[130]
+-#define SWIGTYPE_p_svn_opt_subcommand_desc2_t_desc_overrides swig_types[131]
+-#define SWIGTYPE_p_svn_opt_subcommand_desc_t swig_types[132]
+-#define SWIGTYPE_p_svn_prop_inherited_item_t swig_types[133]
+-#define SWIGTYPE_p_svn_prop_kind swig_types[134]
+-#define SWIGTYPE_p_svn_prop_t swig_types[135]
+-#define SWIGTYPE_p_svn_stream_mark_t swig_types[136]
+-#define SWIGTYPE_p_svn_stream_t swig_types[137]
+-#define SWIGTYPE_p_svn_string_t swig_types[138]
+-#define SWIGTYPE_p_svn_stringbuf_t swig_types[139]
+-#define SWIGTYPE_p_svn_tristate_t swig_types[140]
+-#define SWIGTYPE_p_svn_version_checklist_t swig_types[141]
+-#define SWIGTYPE_p_svn_version_ext_linked_lib_t swig_types[142]
+-#define SWIGTYPE_p_svn_version_ext_loaded_lib_t swig_types[143]
+-#define SWIGTYPE_p_svn_version_extended_t swig_types[144]
+-#define SWIGTYPE_p_svn_version_t swig_types[145]
+-#define SWIGTYPE_p_svn_wc_external_item2_t swig_types[146]
+-#define SWIGTYPE_p_unsigned_char swig_types[147]
+-#define SWIGTYPE_p_unsigned_long swig_types[148]
+-#define SWIGTYPE_p_void swig_types[149]
+-static swig_type_info *swig_types[151];
+-static swig_module_info swig_module = {swig_types, 150, 0, 0, 0, 0};
++#define SWIGTYPE_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void swig_types[18]
++#define SWIGTYPE_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[19]
++#define SWIGTYPE_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[20]
++#define SWIGTYPE_p_f_p_p_svn_auth_cred_ssl_client_cert_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[21]
++#define SWIGTYPE_p_f_p_p_svn_auth_cred_ssl_server_trust_t_p_void_p_q_const__char_apr_uint32_t_p_q_const__svn_auth_ssl_server_cert_info_t_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[22]
++#define SWIGTYPE_p_f_p_p_svn_auth_cred_username_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[23]
++#define SWIGTYPE_p_f_p_p_svn_stream_t_p_void_p_apr_pool_t_p_apr_pool_t__p_svn_error_t swig_types[24]
++#define SWIGTYPE_p_f_p_p_void_p_p_void_p_void_p_apr_hash_t_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[25]
++#define SWIGTYPE_p_f_p_p_void_p_void_p_void_p_apr_hash_t_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[26]
++#define SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_void__int swig_types[27]
++#define SWIGTYPE_p_f_p_q_const__char_p_q_const__char_p_void_p_apr_pool_t__int swig_types[28]
++#define SWIGTYPE_p_f_p_q_const__char_p_void__int swig_types[29]
++#define SWIGTYPE_p_f_p_q_const__char_p_void_p_apr_pool_t__int swig_types[30]
++#define SWIGTYPE_p_f_p_q_const__svn_commit_info_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[31]
++#define SWIGTYPE_p_f_p_svn_boolean_t_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t swig_types[32]
++#define SWIGTYPE_p_f_p_svn_boolean_t_p_void_p_q_const__char_p_q_const__char_p_apr_hash_t_p_apr_pool_t__p_svn_error_t swig_types[33]
++#define SWIGTYPE_p_f_p_svn_boolean_t_p_void_p_void_p_apr_hash_t_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[34]
++#define SWIGTYPE_p_f_p_svn_location_segment_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[35]
++#define SWIGTYPE_p_f_p_void__p_svn_error_t swig_types[36]
++#define SWIGTYPE_p_f_p_void_apr_size_t__p_svn_error_t swig_types[37]
++#define SWIGTYPE_p_f_p_void_p_apr_hash_t_svn_revnum_t_p_q_const__char_p_q_const__char_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[38]
++#define SWIGTYPE_p_f_p_void_p_char_p_apr_size_t__p_svn_error_t swig_types[39]
++#define SWIGTYPE_p_f_p_void_p_p_svn_stream_mark_t_p_apr_pool_t__p_svn_error_t swig_types[40]
++#define SWIGTYPE_p_f_p_void_p_q_const__char_p_apr_size_t__p_svn_error_t swig_types[41]
++#define SWIGTYPE_p_f_p_void_p_q_const__char_p_q_const__apr_finfo_t_p_apr_pool_t__p_svn_error_t swig_types[42]
++#define SWIGTYPE_p_f_p_void_p_q_const__svn_stream_mark_t__p_svn_error_t swig_types[43]
++#define SWIGTYPE_p_f_p_void_p_svn_log_entry_t_p_apr_pool_t__p_svn_error_t swig_types[44]
++#define SWIGTYPE_p_f_svn_revnum_t_p_q_const__char_p_q_const__char_p_void__p_svn_error_t swig_types[45]
++#define SWIGTYPE_p_f_void__p_svn_version_t swig_types[46]
++#define SWIGTYPE_p_int swig_types[47]
++#define SWIGTYPE_p_long swig_types[48]
++#define SWIGTYPE_p_p_apr_array_header_t swig_types[49]
++#define SWIGTYPE_p_p_apr_file_t swig_types[50]
++#define SWIGTYPE_p_p_apr_hash_t swig_types[51]
++#define SWIGTYPE_p_p_char swig_types[52]
++#define SWIGTYPE_p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void swig_types[53]
++#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[54]
++#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[55]
++#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_ssl_client_cert_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[56]
++#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_ssl_server_trust_t_p_void_p_q_const__char_apr_uint32_t_p_q_const__svn_auth_ssl_server_cert_info_t_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[57]
++#define SWIGTYPE_p_p_f_p_p_svn_auth_cred_username_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t swig_types[58]
++#define SWIGTYPE_p_p_f_p_p_svn_stream_t_p_void_p_apr_pool_t_p_apr_pool_t__p_svn_error_t swig_types[59]
++#define SWIGTYPE_p_p_f_p_q_const__char_p_q_const__char_p_void__int swig_types[60]
++#define SWIGTYPE_p_p_f_p_q_const__char_p_q_const__char_p_void_p_apr_pool_t__int swig_types[61]
++#define SWIGTYPE_p_p_f_p_q_const__char_p_void__int swig_types[62]
++#define SWIGTYPE_p_p_f_p_q_const__char_p_void_p_apr_pool_t__int swig_types[63]
++#define SWIGTYPE_p_p_f_p_q_const__svn_commit_info_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[64]
++#define SWIGTYPE_p_p_f_p_svn_boolean_t_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t swig_types[65]
++#define SWIGTYPE_p_p_f_p_svn_boolean_t_p_void_p_q_const__char_p_q_const__char_p_apr_hash_t_p_apr_pool_t__p_svn_error_t swig_types[66]
++#define SWIGTYPE_p_p_f_p_svn_location_segment_t_p_void_p_apr_pool_t__p_svn_error_t swig_types[67]
++#define SWIGTYPE_p_p_f_p_void__p_svn_error_t swig_types[68]
++#define SWIGTYPE_p_p_f_p_void_apr_size_t__p_svn_error_t swig_types[69]
++#define SWIGTYPE_p_p_f_p_void_p_apr_hash_t_svn_revnum_t_p_q_const__char_p_q_const__char_p_q_const__char_p_apr_pool_t__p_svn_error_t swig_types[70]
++#define SWIGTYPE_p_p_f_p_void_p_char_p_apr_size_t__p_svn_error_t swig_types[71]
++#define SWIGTYPE_p_p_f_p_void_p_p_svn_stream_mark_t_p_apr_pool_t__p_svn_error_t swig_types[72]
++#define SWIGTYPE_p_p_f_p_void_p_q_const__char_p_apr_size_t__p_svn_error_t swig_types[73]
++#define SWIGTYPE_p_p_f_p_void_p_q_const__char_p_q_const__apr_finfo_t_p_apr_pool_t__p_svn_error_t swig_types[74]
++#define SWIGTYPE_p_p_f_p_void_p_q_const__svn_stream_mark_t__p_svn_error_t swig_types[75]
++#define SWIGTYPE_p_p_f_p_void_p_svn_log_entry_t_p_apr_pool_t__p_svn_error_t swig_types[76]
++#define SWIGTYPE_p_p_f_svn_revnum_t_p_q_const__char_p_q_const__char_p_void__p_svn_error_t swig_types[77]
++#define SWIGTYPE_p_p_f_void__p_svn_version_t swig_types[78]
++#define SWIGTYPE_p_p_svn_auth_baton_t swig_types[79]
++#define SWIGTYPE_p_p_svn_auth_cred_simple_t swig_types[80]
++#define SWIGTYPE_p_p_svn_auth_cred_ssl_client_cert_pw_t swig_types[81]
++#define SWIGTYPE_p_p_svn_auth_cred_ssl_client_cert_t swig_types[82]
++#define SWIGTYPE_p_p_svn_auth_cred_ssl_server_trust_t swig_types[83]
++#define SWIGTYPE_p_p_svn_auth_cred_username_t swig_types[84]
++#define SWIGTYPE_p_p_svn_auth_iterstate_t swig_types[85]
++#define SWIGTYPE_p_p_svn_auth_provider_object_t swig_types[86]
++#define SWIGTYPE_p_p_svn_checksum_t swig_types[87]
++#define SWIGTYPE_p_p_svn_config_t swig_types[88]
++#define SWIGTYPE_p_p_svn_io_dirent2_t swig_types[89]
++#define SWIGTYPE_p_p_svn_stream_mark_t swig_types[90]
++#define SWIGTYPE_p_p_svn_stream_t swig_types[91]
++#define SWIGTYPE_p_p_svn_string_t swig_types[92]
++#define SWIGTYPE_p_p_svn_stringbuf_t swig_types[93]
++#define SWIGTYPE_p_p_void swig_types[94]
++#define SWIGTYPE_p_svn_auth_baton_t swig_types[95]
++#define SWIGTYPE_p_svn_auth_cred_simple_t swig_types[96]
++#define SWIGTYPE_p_svn_auth_cred_ssl_client_cert_pw_t swig_types[97]
++#define SWIGTYPE_p_svn_auth_cred_ssl_client_cert_t swig_types[98]
++#define SWIGTYPE_p_svn_auth_cred_ssl_server_trust_t swig_types[99]
++#define SWIGTYPE_p_svn_auth_cred_username_t swig_types[100]
++#define SWIGTYPE_p_svn_auth_gnome_keyring_unlock_prompt_func_t swig_types[101]
++#define SWIGTYPE_p_svn_auth_iterstate_t swig_types[102]
++#define SWIGTYPE_p_svn_auth_provider_object_t swig_types[103]
++#define SWIGTYPE_p_svn_auth_provider_t swig_types[104]
++#define SWIGTYPE_p_svn_auth_ssl_server_cert_info_t swig_types[105]
++#define SWIGTYPE_p_svn_checksum_ctx_t swig_types[106]
++#define SWIGTYPE_p_svn_checksum_kind_t swig_types[107]
++#define SWIGTYPE_p_svn_checksum_t swig_types[108]
++#define SWIGTYPE_p_svn_commit_info_t swig_types[109]
++#define SWIGTYPE_p_svn_config_t swig_types[110]
++#define SWIGTYPE_p_svn_depth_t swig_types[111]
++#define SWIGTYPE_p_svn_dirent_t swig_types[112]
++#define SWIGTYPE_p_svn_errno_t swig_types[113]
++#define SWIGTYPE_p_svn_error_t swig_types[114]
++#define SWIGTYPE_p_svn_io_dirent2_t swig_types[115]
++#define SWIGTYPE_p_svn_io_dirent_t swig_types[116]
++#define SWIGTYPE_p_svn_io_file_del_t swig_types[117]
++#define SWIGTYPE_p_svn_location_segment_t swig_types[118]
++#define SWIGTYPE_p_svn_lock_t swig_types[119]
++#define SWIGTYPE_p_svn_log_changed_path2_t swig_types[120]
++#define SWIGTYPE_p_svn_log_changed_path_t swig_types[121]
++#define SWIGTYPE_p_svn_log_entry_t swig_types[122]
++#define SWIGTYPE_p_svn_merge_range_t swig_types[123]
++#define SWIGTYPE_p_svn_mergeinfo_inheritance_t swig_types[124]
++#define SWIGTYPE_p_svn_node_kind_t swig_types[125]
++#define SWIGTYPE_p_svn_opt_revision_range_t swig_types[126]
++#define SWIGTYPE_p_svn_opt_revision_t swig_types[127]
++#define SWIGTYPE_p_svn_opt_revision_value_t swig_types[128]
++#define SWIGTYPE_p_svn_opt_subcommand_desc2_t swig_types[129]
++#define SWIGTYPE_p_svn_opt_subcommand_desc2_t_desc_overrides swig_types[130]
++#define SWIGTYPE_p_svn_opt_subcommand_desc_t swig_types[131]
++#define SWIGTYPE_p_svn_prop_inherited_item_t swig_types[132]
++#define SWIGTYPE_p_svn_prop_kind swig_types[133]
++#define SWIGTYPE_p_svn_prop_t swig_types[134]
++#define SWIGTYPE_p_svn_stream_mark_t swig_types[135]
++#define SWIGTYPE_p_svn_stream_t swig_types[136]
++#define SWIGTYPE_p_svn_string_t swig_types[137]
++#define SWIGTYPE_p_svn_stringbuf_t swig_types[138]
++#define SWIGTYPE_p_svn_tristate_t swig_types[139]
++#define SWIGTYPE_p_svn_version_checklist_t swig_types[140]
++#define SWIGTYPE_p_svn_version_ext_linked_lib_t swig_types[141]
++#define SWIGTYPE_p_svn_version_ext_loaded_lib_t swig_types[142]
++#define SWIGTYPE_p_svn_version_extended_t swig_types[143]
++#define SWIGTYPE_p_svn_version_t swig_types[144]
++#define SWIGTYPE_p_svn_wc_external_item2_t swig_types[145]
++#define SWIGTYPE_p_unsigned_char swig_types[146]
++#define SWIGTYPE_p_unsigned_long swig_types[147]
++#define SWIGTYPE_p_void swig_types[148]
++static swig_type_info *swig_types[150];
++static swig_module_info swig_module = {swig_types, 149, 0, 0, 0, 0};
+ #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
+ #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
+ 
+@@ -3834,29 +3833,6 @@
+ 
+ 
+ 
+-/* Helper function to set the gnome-keyring unlock prompt function. This
+- * C function accepts an auth baton, a function and a prompt baton, but
+- * the below callback_typemap uses both the function and the prompt
+- * baton, so the resulting binding has just two arguments: The auth
+- * baton and the prompt function.
+- * The prompt function should again have two arguments: The keyring name
+- * (string) and a pool (except for the ruby version, which doesn't have
+- * the pool argument). It should return the entered password (string).
+- * This binding generated for this function generates a reference to the
+- * prompt function that was passed into this. The caller should store
+- * that reference somewhere, to prevent the function from being garbage
+- * collected...
+- */
+-static void svn_auth_set_gnome_keyring_unlock_prompt_func(svn_auth_baton_t *ab,
+-                                                          svn_auth_gnome_keyring_unlock_prompt_func_t prompt_func,
+-                                                          void *prompt_baton) {
+-    svn_auth_set_parameter(ab, SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_FUNC,
+-                           prompt_func);
+-    svn_auth_set_parameter(ab, SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_BATON,
+-                           prompt_baton);
+-}
+-
+-
+ static svn_error_t *
+ svn_swig_mergeinfo_merge(apr_hash_t **mergeinfo_inout,
+                          apr_hash_t *changes,
+@@ -17674,7 +17650,7 @@
+ SWIGINTERN PyObject *svn_auth_gnome_keyring_unlock_prompt_func_t_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+   PyObject *obj;
+   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+-  SWIG_TypeNewClientData(SWIGTYPE_p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t, SWIG_NewClientData(obj));
++  SWIG_TypeNewClientData(SWIGTYPE_p_svn_auth_gnome_keyring_unlock_prompt_func_t, SWIG_NewClientData(obj));
+   return SWIG_Py_Void();
+ }
+ 
+@@ -32562,40 +32538,6 @@
+   return SWIG_Py_Void();
+ }
+ 
+-SWIGINTERN PyObject *_wrap_svn_auth_set_gnome_keyring_unlock_prompt_func(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+-  PyObject *resultobj = 0;
+-  svn_auth_baton_t *arg1 = (svn_auth_baton_t *) 0 ;
+-  svn_auth_gnome_keyring_unlock_prompt_func_t arg2 = (svn_auth_gnome_keyring_unlock_prompt_func_t) 0 ;
+-  void *arg3 = (void *) 0 ;
+-  PyObject * obj0 = 0 ;
+-  PyObject * obj1 = 0 ;
+-  
+-  if (!PyArg_ParseTuple(args,(char *)"OO:svn_auth_set_gnome_keyring_unlock_prompt_func",&obj0,&obj1)) SWIG_fail;
+-  {
+-    arg1 = (svn_auth_baton_t *)svn_swig_MustGetPtr(obj0, SWIGTYPE_p_svn_auth_baton_t, svn_argnum_obj0);
+-    if (PyErr_Occurred()) {
+-      SWIG_fail;
+-    }
+-  }
+-  {
+-    arg2 = svn_swig_py_auth_gnome_keyring_unlock_prompt_func;
+-    arg3 = obj1;
+-  }
+-  {
+-    svn_swig_py_release_py_lock();
+-    
+-    svn_auth_set_gnome_keyring_unlock_prompt_func(arg1,arg2,arg3);
+-    
+-    svn_swig_py_acquire_py_lock();
+-    
+-  }
+-  resultobj = SWIG_Py_Void();
+-  return resultobj;
+-fail:
+-  return NULL;
+-}
+-
+-
+ SWIGINTERN PyObject *_wrap_svn_swig_py_set_application_pool(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+   PyObject *resultobj = 0;
+   PyObject *arg1 = (PyObject *) 0 ;
+@@ -33902,7 +33844,6 @@
+ 	 { (char *)"svn_checksum_is_empty_checksum", _wrap_svn_checksum_is_empty_checksum, METH_VARARGS, (char *)"svn_checksum_is_empty_checksum(svn_checksum_t checksum) -> svn_boolean_t"},
+ 	 { (char *)"svn_checksum_mismatch_err", _wrap_svn_checksum_mismatch_err, METH_VARARGS, (char *)"svn_checksum_mismatch_err(svn_checksum_t expected, svn_checksum_t actual, apr_pool_t scratch_pool, char const * fmt) -> svn_error_t"},
+ 	 { (char *)"svn_checksum_ctx_t_swigregister", svn_checksum_ctx_t_swigregister, METH_VARARGS, NULL},
+-	 { (char *)"svn_auth_set_gnome_keyring_unlock_prompt_func", _wrap_svn_auth_set_gnome_keyring_unlock_prompt_func, METH_VARARGS, (char *)"svn_auth_set_gnome_keyring_unlock_prompt_func(svn_auth_baton_t * ab, svn_auth_gnome_keyring_unlock_prompt_func_t prompt_func)"},
+ 	 { (char *)"svn_swig_py_set_application_pool", _wrap_svn_swig_py_set_application_pool, METH_VARARGS, (char *)"svn_swig_py_set_application_pool(PyObject * py_pool, apr_pool_t pool)"},
+ 	 { (char *)"svn_swig_py_clear_application_pool", _wrap_svn_swig_py_clear_application_pool, METH_VARARGS, (char *)"svn_swig_py_clear_application_pool()"},
+ 	 { (char *)"apr_array_header_t_swigregister", apr_array_header_t_swigregister, METH_VARARGS, NULL},
+@@ -33937,7 +33878,6 @@
+ static swig_type_info _swigt__p_apr_size_t = {"_p_apr_size_t", "apr_size_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_f_p_apr_getopt_t_p_void_p_apr_pool_t__p_svn_error_t = {"_p_f_p_apr_getopt_t_p_void_p_apr_pool_t__p_svn_error_t", "svn_opt_subcommand_t *|struct svn_error_t *(*)(apr_getopt_t *,void *,apr_pool_t *)", 0, 0, (void*)0, 0};
+-static swig_type_info _swigt__p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t = {"_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t", "svn_auth_gnome_keyring_unlock_prompt_func_t|struct svn_error_t *(*)(char **,char const *,void *,apr_pool_t *)", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void = {"_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void", "svn_auth_simple_provider_func_t|svn_auth_ssl_client_cert_pw_provider_func_t|void (*)(struct svn_auth_provider_object_t **,apr_pool_t *)", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t = {"_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t", "svn_auth_simple_prompt_func_t|struct svn_error_t *(*)(svn_auth_cred_simple_t **,void *,char const *,char const *,svn_boolean_t,apr_pool_t *)", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t = {"_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t", "svn_auth_ssl_client_cert_pw_prompt_func_t|struct svn_error_t *(*)(svn_auth_cred_ssl_client_cert_pw_t **,void *,char const *,svn_boolean_t,apr_pool_t *)", 0, 0, (void*)0, 0};
+@@ -33973,7 +33913,6 @@
+ static swig_type_info _swigt__p_p_apr_file_t = {"_p_p_apr_file_t", "apr_file_t **", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_p_apr_hash_t = {"_p_p_apr_hash_t", "apr_hash_t **|svn_mergeinfo_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
+-static swig_type_info _swigt__p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t = {"_p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t", "struct svn_error_t *(**)(char **,char const *,void *,apr_pool_t *)|svn_auth_gnome_keyring_unlock_prompt_func_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void = {"_p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void", "void (**)(struct svn_auth_provider_object_t **,apr_pool_t *)|svn_auth_simple_provider_func_t *|svn_auth_ssl_client_cert_pw_provider_func_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t = {"_p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t", "struct svn_error_t *(**)(svn_auth_cred_simple_t **,void *,char const *,char const *,svn_boolean_t,apr_pool_t *)|svn_auth_simple_prompt_func_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t = {"_p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t", "struct svn_error_t *(**)(svn_auth_cred_ssl_client_cert_pw_t **,void *,char const *,svn_boolean_t,apr_pool_t *)|svn_auth_ssl_client_cert_pw_prompt_func_t *", 0, 0, (void*)0, 0};
+@@ -34022,6 +33961,7 @@
+ static swig_type_info _swigt__p_svn_auth_cred_ssl_client_cert_t = {"_p_svn_auth_cred_ssl_client_cert_t", "struct svn_auth_cred_ssl_client_cert_t *|svn_auth_cred_ssl_client_cert_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_svn_auth_cred_ssl_server_trust_t = {"_p_svn_auth_cred_ssl_server_trust_t", "struct svn_auth_cred_ssl_server_trust_t *|svn_auth_cred_ssl_server_trust_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_svn_auth_cred_username_t = {"_p_svn_auth_cred_username_t", "struct svn_auth_cred_username_t *|svn_auth_cred_username_t *", 0, 0, (void*)0, 0};
++static swig_type_info _swigt__p_svn_auth_gnome_keyring_unlock_prompt_func_t = {"_p_svn_auth_gnome_keyring_unlock_prompt_func_t", "svn_auth_gnome_keyring_unlock_prompt_func_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_svn_auth_iterstate_t = {"_p_svn_auth_iterstate_t", "struct svn_auth_iterstate_t *|svn_auth_iterstate_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_svn_auth_provider_object_t = {"_p_svn_auth_provider_object_t", "struct svn_auth_provider_object_t *|svn_auth_provider_object_t *", 0, 0, (void*)0, 0};
+ static swig_type_info _swigt__p_svn_auth_provider_t = {"_p_svn_auth_provider_t", "struct svn_auth_provider_t *|svn_auth_provider_t *", 0, 0, (void*)0, 0};
+@@ -34089,7 +34029,6 @@
+   &_swigt__p_apr_size_t,
+   &_swigt__p_char,
+   &_swigt__p_f_p_apr_getopt_t_p_void_p_apr_pool_t__p_svn_error_t,
+-  &_swigt__p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t,
+   &_swigt__p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void,
+   &_swigt__p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+   &_swigt__p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+@@ -34125,7 +34064,6 @@
+   &_swigt__p_p_apr_file_t,
+   &_swigt__p_p_apr_hash_t,
+   &_swigt__p_p_char,
+-  &_swigt__p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t,
+   &_swigt__p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void,
+   &_swigt__p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+   &_swigt__p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+@@ -34174,6 +34112,7 @@
+   &_swigt__p_svn_auth_cred_ssl_client_cert_t,
+   &_swigt__p_svn_auth_cred_ssl_server_trust_t,
+   &_swigt__p_svn_auth_cred_username_t,
++  &_swigt__p_svn_auth_gnome_keyring_unlock_prompt_func_t,
+   &_swigt__p_svn_auth_iterstate_t,
+   &_swigt__p_svn_auth_provider_object_t,
+   &_swigt__p_svn_auth_provider_t,
+@@ -34241,7 +34180,6 @@
+ static swig_cast_info _swigc__p_apr_size_t[] = {  {&_swigt__p_apr_size_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_f_p_apr_getopt_t_p_void_p_apr_pool_t__p_svn_error_t[] = {  {&_swigt__p_f_p_apr_getopt_t_p_void_p_apr_pool_t__p_svn_error_t, 0, 0, 0},{0, 0, 0, 0}};
+-static swig_cast_info _swigc__p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t[] = {  {&_swigt__p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void[] = {  {&_swigt__p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t[] = {  {&_swigt__p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t[] = {  {&_swigt__p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t, 0, 0, 0},{0, 0, 0, 0}};
+@@ -34277,7 +34215,6 @@
+ static swig_cast_info _swigc__p_p_apr_file_t[] = {  {&_swigt__p_p_apr_file_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_p_apr_hash_t[] = {  {&_swigt__p_p_apr_hash_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+-static swig_cast_info _swigc__p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t[] = {  {&_swigt__p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void[] = {  {&_swigt__p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t[] = {  {&_swigt__p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t[] = {  {&_swigt__p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t, 0, 0, 0},{0, 0, 0, 0}};
+@@ -34326,6 +34263,7 @@
+ static swig_cast_info _swigc__p_svn_auth_cred_ssl_client_cert_t[] = {  {&_swigt__p_svn_auth_cred_ssl_client_cert_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_svn_auth_cred_ssl_server_trust_t[] = {  {&_swigt__p_svn_auth_cred_ssl_server_trust_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_svn_auth_cred_username_t[] = {  {&_swigt__p_svn_auth_cred_username_t, 0, 0, 0},{0, 0, 0, 0}};
++static swig_cast_info _swigc__p_svn_auth_gnome_keyring_unlock_prompt_func_t[] = {  {&_swigt__p_svn_auth_gnome_keyring_unlock_prompt_func_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_svn_auth_iterstate_t[] = {  {&_swigt__p_svn_auth_iterstate_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_svn_auth_provider_object_t[] = {  {&_swigt__p_svn_auth_provider_object_t, 0, 0, 0},{0, 0, 0, 0}};
+ static swig_cast_info _swigc__p_svn_auth_provider_t[] = {  {&_swigt__p_svn_auth_provider_t, 0, 0, 0},{0, 0, 0, 0}};
+@@ -34393,7 +34331,6 @@
+   _swigc__p_apr_size_t,
+   _swigc__p_char,
+   _swigc__p_f_p_apr_getopt_t_p_void_p_apr_pool_t__p_svn_error_t,
+-  _swigc__p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t,
+   _swigc__p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void,
+   _swigc__p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+   _swigc__p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+@@ -34429,7 +34366,6 @@
+   _swigc__p_p_apr_file_t,
+   _swigc__p_p_apr_hash_t,
+   _swigc__p_p_char,
+-  _swigc__p_p_f_p_p_char_p_q_const__char_p_void_p_apr_pool_t__p_svn_error_t,
+   _swigc__p_p_f_p_p_struct_svn_auth_provider_object_t_p_apr_pool_t__void,
+   _swigc__p_p_f_p_p_svn_auth_cred_simple_t_p_void_p_q_const__char_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+   _swigc__p_p_f_p_p_svn_auth_cred_ssl_client_cert_pw_t_p_void_p_q_const__char_svn_boolean_t_p_apr_pool_t__p_svn_error_t,
+@@ -34478,6 +34414,7 @@
+   _swigc__p_svn_auth_cred_ssl_client_cert_t,
+   _swigc__p_svn_auth_cred_ssl_server_trust_t,
+   _swigc__p_svn_auth_cred_username_t,
++  _swigc__p_svn_auth_gnome_keyring_unlock_prompt_func_t,
+   _swigc__p_svn_auth_iterstate_t,
+   _swigc__p_svn_auth_provider_object_t,
+   _swigc__p_svn_auth_provider_t,
+@@ -35638,8 +35575,6 @@
+   SWIG_Python_SetConstant(d, "SVN_AUTH_PARAM_CONFIG",SWIG_FromCharPtr("svn:auth:config-category-servers"));
+   SWIG_Python_SetConstant(d, "SVN_AUTH_PARAM_SERVER_GROUP",SWIG_FromCharPtr("svn:auth:server-group"));
+   SWIG_Python_SetConstant(d, "SVN_AUTH_PARAM_CONFIG_DIR",SWIG_FromCharPtr("svn:auth:config-dir"));
+-  SWIG_Python_SetConstant(d, "SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_FUNC",SWIG_FromCharPtr("gnome-keyring-unlock-prompt-func"));
+-  SWIG_Python_SetConstant(d, "SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_BATON",SWIG_FromCharPtr("gnome-keyring-unlock-prompt-baton"));
+   SWIG_Python_SetConstant(d, "SVN_CONFIG_CATEGORY_SERVERS",SWIG_FromCharPtr("servers"));
+   SWIG_Python_SetConstant(d, "SVN_CONFIG_SECTION_GROUPS",SWIG_FromCharPtr("groups"));
+   SWIG_Python_SetConstant(d, "SVN_CONFIG_SECTION_GLOBAL",SWIG_FromCharPtr("global"));
+diff -u -d -b -w -r subversion-1.8.0-orig/subversion/bindings/swig/python/core.py subversion-1.8.0-python/subversion/bindings/swig/python/core.py
+--- subversion/bindings/swig/python/core.py	2013-06-13 05:07:20.000000000 -0400
++++ subversion/bindings/swig/python/core.py	2013-07-12 16:11:04.000000000 -0400
+@@ -3316,8 +3316,6 @@
+ def svn_auth_get_platform_specific_client_providers(*args):
+   """svn_auth_get_platform_specific_client_providers(svn_config_t * config, apr_pool_t pool) -> svn_error_t"""
+   return _core.svn_auth_get_platform_specific_client_providers(*args)
+-SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_FUNC = _core.SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_FUNC
+-SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_BATON = _core.SVN_AUTH_PARAM_GNOME_KEYRING_UNLOCK_PROMPT_BATON
+ 
+ def svn_auth_get_username_provider(*args):
+   """svn_auth_get_username_provider(apr_pool_t pool)"""
+@@ -6336,10 +6334,6 @@
+ svn_checksum_ctx_t_swigregister(svn_checksum_ctx_t)
+ 
+ 
+-def svn_auth_set_gnome_keyring_unlock_prompt_func(*args):
+-  """svn_auth_set_gnome_keyring_unlock_prompt_func(svn_auth_baton_t * ab, svn_auth_gnome_keyring_unlock_prompt_func_t prompt_func)"""
+-  return _core.svn_auth_set_gnome_keyring_unlock_prompt_func(*args)
+-
+ def svn_swig_py_set_application_pool(*args):
+   """svn_swig_py_set_application_pool(PyObject * py_pool, apr_pool_t pool)"""
+   return _core.svn_swig_py_set_application_pool(*args)

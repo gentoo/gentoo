@@ -1,0 +1,115 @@
+Incldue properly FFmpeg headers.
+https://bugs.gentoo.org/show_bug.cgi?id=461438
+
+Index: php5.3/config.m4
+===================================================================
+--- php5.3.orig/config.m4
++++ php5.3/config.m4
+@@ -31,15 +31,8 @@ if test "$PHP_FFMPEG" != "no"; then
+       FFMPEG_INC_FOUND=$i/include
+       break
+     elif test -f $i/include/libavcodec/avcodec.h; then
+-      dnl ffmpeg svn revision 12194 and newer put each header in its own dir
+-      dnl so we have to include them all.
+-      PHP_ADD_INCLUDE($i/include/libavcodec/)
+-      PHP_ADD_INCLUDE($i/include/libavformat/)
+-      PHP_ADD_INCLUDE($i/include/libavutil/)
+-      PHP_ADD_INCLUDE($i/include/libswscale/)
+-      PHP_ADD_INCLUDE($i/include/libavfilter/)
+-      PHP_ADD_INCLUDE($i/include/libavdevice/)
+-      FFMPEG_INC_FOUND=$i/include/libavcodec
++      PHP_ADD_INCLUDE($i/include)
++      FFMPEG_INC_FOUND=$i/include
+       break
+     fi
+   done
+Index: php5.3/ffmpeg-php.c
+===================================================================
+--- php5.3.orig/ffmpeg-php.c
++++ php5.3/ffmpeg-php.c
+@@ -39,11 +39,11 @@
+ 
+ #include "php.h"
+ 
+-#include <avcodec.h>
+-#include <avformat.h>
++#include <libavcodec/avcodec.h>
++#include <libavformat/avformat.h>
+ 
+ #if HAVE_SWSCALER
+-#include <swscale.h>
++#include <libswscale/swscale.h>
+ #endif
+ 
+ #include "php_ini.h"
+Index: php5.3/ffmpeg_errorhandler.c
+===================================================================
+--- php5.3.orig/ffmpeg_errorhandler.c
++++ php5.3/ffmpeg_errorhandler.c
+@@ -34,7 +34,7 @@
+  */
+ 
+ #include "php.h"
+-#include <avcodec.h>
++#include <libavcodec/avcodec.h>
+ 
+ /* {{{ ffmpeg_errorhandler()
+  */
+Index: php5.3/ffmpeg_frame.h
+===================================================================
+--- php5.3.orig/ffmpeg_frame.h
++++ php5.3/ffmpeg_frame.h
+@@ -38,8 +38,8 @@
+ 
+ #include "php_version.h"
+ 
+-#include <avcodec.h>
+-#include <avformat.h>
++#include <libavcodec/avcodec.h>
++#include <libavformat/avformat.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+Index: php5.3/ffmpeg_movie.c
+===================================================================
+--- php5.3.orig/ffmpeg_movie.c
++++ php5.3/ffmpeg_movie.c
+@@ -34,9 +34,9 @@
+ #include "php_globals.h"
+ #include "ext/standard/info.h"
+ 
+-#include <avcodec.h>
+-#include <avformat.h>
+-#include <pixdesc.h>
++#include <libavcodec/avcodec.h>
++#include <libavformat/avformat.h>
++#include <libavutil/pixdesc.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+Index: php5.3/ffmpeg_tools.c
+===================================================================
+--- php5.3.orig/ffmpeg_tools.c
++++ php5.3/ffmpeg_tools.c
+@@ -42,7 +42,7 @@
+ #include "ffmpeg_tools.h"
+ 
+ #ifdef HAVE_SWSCALER
+-#include <swscale.h>
++#include <libswscale/swscale.h>
+ #endif
+ 
+ /* {{{ ffmpeg_img_convert() 
+Index: php5.3/ffmpeg_tools.h
+===================================================================
+--- php5.3.orig/ffmpeg_tools.h
++++ php5.3/ffmpeg_tools.h
+@@ -36,7 +36,7 @@
+ #ifndef FFMPEG_TOOLS_H
+ #define FFMPEG_TOOLS_H
+ 
+-#include <avcodec.h>
++#include <libavcodec/avcodec.h>
+ 
+ int ffmpeg_img_convert(
+         AVPicture *dst, int dst_pix_fmt,

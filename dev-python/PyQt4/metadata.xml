@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<use>
+		<flag name="X">Build bindings for the QtGui module</flag>
+		<flag name="dbus">Build bindings for the QtDBus module</flag>
+		<flag name="declarative">Build bindings for the QtDeclarative module</flag>
+		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
+		<flag name="help">Build bindings for the QtHelp module</flag>
+		<flag name="kde">Select <pkg>media-libs/phonon</pkg> as Phonon variant (needed for KDE)</flag>
+		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
+		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
+		<flag name="phonon">Build bindings for the phonon module</flag>
+		<flag name="script">Build bindings for the QtScript module</flag>
+		<flag name="scripttools">Build bindings for the QtScriptTools module</flag>
+		<flag name="sql">Build bindings for the QtSql module</flag>
+		<flag name="svg">Build bindings for the QtSvg module</flag>
+		<flag name="testlib">Build bindings for the QtTest module</flag>
+		<flag name="webkit">Build bindings for the QtWebKit module</flag>
+		<flag name="xmlpatterns">Build bindings for the QtXmlPatterns module</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>phil@riverbankcomputing.com</email>
+			<name>Phil Thompson</name>
+		</maintainer>
+		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<remote-id type="pypi">PyQt4</remote-id>
+		<remote-id type="sourceforge">pyqt</remote-id>
+	</upstream>
+</pkgmetadata>

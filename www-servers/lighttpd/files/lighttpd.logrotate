@@ -1,0 +1,17 @@
+# $Id$
+# lighttpd logrotate script for Gentoo
+
+/var/log/lighttpd/*.log {
+        daily
+        missingok
+		copytruncate
+        rotate 7
+        compress
+        notifempty
+        sharedscripts
+        postrotate
+           if [ -f /var/run/lighttpd.pid ]; then \
+                /etc/init.d/lighttpd reload > /dev/null 2>&1 || true ; \
+           fi;
+        endscript
+}

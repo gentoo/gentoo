@@ -1,0 +1,503 @@
+Index: src/databasehandler.cpp
+===================================================================
+--- src/databasehandler.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/databasehandler.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -46,6 +46,7 @@
+ class DatabaseInfoHandler: public URIHandler
+ {
+ public:
++    DatabaseInfoHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+Index: src/gui/RestoreFrame.cpp
+===================================================================
+--- src/gui/RestoreFrame.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/RestoreFrame.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -258,7 +258,7 @@
+     sizerFilename->Add(styleguide().getBrowseButtonMargin(), 0);
+     sizerFilename->Add(button_browse, 0, wxALIGN_CENTER_VERTICAL);
+ 
+-    wxGridSizer* sizerChecks = new wxGridSizer(2, 2,
++    wxGridSizer* sizerChecks = new wxGridSizer(3, 2,
+         styleguide().getCheckboxSpacing(),
+         styleguide().getUnrelatedControlMargin(wxHORIZONTAL));
+     sizerChecks->Add(checkbox_replace, 0, wxEXPAND);
+Index: src/gui/ReorderFieldsDialog.cpp
+===================================================================
+--- src/gui/ReorderFieldsDialog.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/ReorderFieldsDialog.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -215,6 +215,7 @@
+ class ReorderFieldsHandler: public URIHandler
+ {
+ public:
++    ReorderFieldsHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+Index: src/gui/FieldPropertiesDialog.cpp
+===================================================================
+--- src/gui/FieldPropertiesDialog.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/FieldPropertiesDialog.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -690,7 +690,7 @@
+             + wxT("  IF (NEW.") + fNameSql + wxT(" IS NULL) THEN\n")
+             + wxT("    NEW.") + fNameSql + wxT(" = GEN_ID(")
+             + generator.getQuoted() + wxT(", 1);\n")
+-            + wxT("  ELSE\n  BEGIN\n    tmp = GEN_ID(") +
++            + wxT("  ELSE\n  BEGIN\n    tmp = GEN_ID(")
+             + generator.getQuoted() + wxT(", 0);\n    if (tmp < new.")
+             + fNameSql + wxT(") then\n      tmp = GEN_ID(")
+             + generator.getQuoted() + wxT(", new.") + fNameSql
+@@ -816,6 +816,7 @@
+ class ColumnPropertiesHandler: public URIHandler
+ {
+ public:
++    ColumnPropertiesHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+Index: src/gui/controls/DBHTreeControl.cpp
+===================================================================
+--- src/gui/controls/DBHTreeControl.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/controls/DBHTreeControl.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -261,6 +261,8 @@
+             id = ART_View; break;
+         case ntViews:
+             id = ART_Views; break;
++        default:
++            break;
+     }
+     return getImageIndex(id);
+ }
+Index: src/gui/controls/TextControl.cpp
+===================================================================
+--- src/gui/controls/TextControl.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/controls/TextControl.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -40,8 +40,8 @@
+ 
+ #include "gui/controls/TextControl.h"
+ //-----------------------------------------------------------------------------
+-TextControl::TextControl(wxWindow *parent, wxWindowID id, long style)
+-    : wxStyledTextCtrl(parent, id, wxDefaultPosition, wxDefaultSize, style)
++TextControl::TextControl(wxWindow *parent, wxWindowID id)
++    : wxStyledTextCtrl(parent, id)
+ {
+     SetWrapMode(wxSTC_WRAP_WORD);
+     // wxStyledTextCtrl uses black on white initially -> use system defaults
+Index: src/gui/controls/LogTextControl.cpp
+===================================================================
+--- src/gui/controls/LogTextControl.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/controls/LogTextControl.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -40,8 +40,8 @@
+ 
+ #include "gui/controls/LogTextControl.h"
+ //-----------------------------------------------------------------------------
+-LogTextControl::LogTextControl(wxWindow *parent, wxWindowID id, long style)
+-    : TextControl(parent, id, style)
++LogTextControl::LogTextControl(wxWindow *parent, wxWindowID id)
++    : TextControl(parent, id)
+ {
+     setDefaultStyles();
+ }
+Index: src/gui/controls/TextControl.h
+===================================================================
+--- src/gui/controls/TextControl.h	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/controls/TextControl.h	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -61,8 +61,7 @@
+ 
+     DECLARE_EVENT_TABLE()
+ public:
+-    TextControl(wxWindow *parent, wxWindowID id = wxID_ANY,
+-        long style = wxSUNKEN_BORDER);
++    TextControl(wxWindow *parent, wxWindowID id = wxID_ANY);
+ };
+ //-----------------------------------------------------------------------------
+ #endif
+Index: src/gui/controls/LogTextControl.h
+===================================================================
+--- src/gui/controls/LogTextControl.h	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/controls/LogTextControl.h	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -38,8 +38,7 @@
+     enum LogStyle { logStyleDefault, logStyleImportant, logStyleError };
+     void addStyledText(const wxString& message, LogStyle style);
+ public:
+-    LogTextControl(wxWindow *parent, wxWindowID id = wxID_ANY,
+-        long style = wxSUNKEN_BORDER);
++    LogTextControl(wxWindow *parent, wxWindowID id = wxID_ANY);
+ 
+     void logErrorMsg(const wxString& message);
+     void logImportantMsg(const wxString& message);
+Index: src/gui/UserDialog.cpp
+===================================================================
+--- src/gui/UserDialog.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/UserDialog.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -222,6 +222,7 @@
+ class UserPropertiesHandler: public URIHandler
+ {
+ public:
++    UserPropertiesHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+@@ -300,6 +301,7 @@
+ class DropUserHandler: public URIHandler
+ {
+ public:
++    DropUserHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+Index: src/gui/CreateIndexDialog.cpp
+===================================================================
+--- src/gui/CreateIndexDialog.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/CreateIndexDialog.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -209,6 +209,7 @@
+ class TableIndicesHandler: public URIHandler
+ {
+ public:
++    TableIndicesHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+Index: src/gui/BackupFrame.cpp
+===================================================================
+--- src/gui/BackupFrame.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/BackupFrame.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -241,7 +241,7 @@
+     sizerFilename->Add(styleguide().getBrowseButtonMargin(), 0);
+     sizerFilename->Add(button_browse, 0, wxALIGN_CENTER_VERTICAL);
+ 
+-    wxGridSizer* sizerChecks = new wxGridSizer(2, 2,
++    wxGridSizer* sizerChecks = new wxGridSizer(3, 2,
+         styleguide().getCheckboxSpacing(),
+         styleguide().getUnrelatedControlMargin(wxHORIZONTAL));
+     sizerChecks->Add(checkbox_checksum, 0, wxEXPAND);
+Index: src/gui/PrivilegesDialog.cpp
+===================================================================
+--- src/gui/PrivilegesDialog.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/PrivilegesDialog.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -583,6 +583,7 @@
+ class ManagePrivilegesHandler: public URIHandler
+ {
+ public:
++    ManagePrivilegesHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+Index: src/gui/MainFrame.cpp
+===================================================================
+--- src/gui/MainFrame.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/MainFrame.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -380,6 +380,7 @@
+     EVT_MENU(Cmds::Menu_Reconnect, MainFrame::OnMenuReconnect)
+     EVT_UPDATE_UI(Cmds::Menu_Reconnect, MainFrame::OnMenuUpdateIfDatabaseConnected)
+     EVT_MENU(Cmds::Menu_RecreateDatabase, MainFrame::OnMenuRecreateDatabase)
++    EVT_UPDATE_UI(Cmds::Menu_RecreateDatabase, MainFrame::OnMenuUpdateIfDatabaseConnected)
+     EVT_MENU(Cmds::Menu_DropDatabase, MainFrame::OnMenuDropDatabase)
+     EVT_UPDATE_UI(Cmds::Menu_DropDatabase, MainFrame::OnMenuUpdateIfDatabaseConnected)
+     EVT_MENU(Cmds::Menu_Query, MainFrame::OnMenuQuery)
+@@ -540,8 +541,10 @@
+ }
+ //-----------------------------------------------------------------------------
+ //! handle double-click on item (or press Enter)
+-void MainFrame::OnTreeItemActivate(wxTreeEvent& WXUNUSED(event))
++void MainFrame::OnTreeItemActivate(wxTreeEvent& event)
+ {
++    event.Skip();
++
+     wxTreeItemId item = treeMainM->GetSelection();
+     if (!item.IsOk())
+         return;
+Index: src/gui/TriggerWizardDialog.cpp
+===================================================================
+--- src/gui/TriggerWizardDialog.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/TriggerWizardDialog.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -178,6 +178,7 @@
+ class CreateTriggerHandler: public URIHandler
+ {
+ public:
++    CreateTriggerHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const CreateTriggerHandler handlerInstance;
+Index: src/gui/EventWatcherFrame.cpp
+===================================================================
+--- src/gui/EventWatcherFrame.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/EventWatcherFrame.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -55,15 +55,13 @@
+ class EventLogControl: public LogTextControl
+ {
+ public:
+-    EventLogControl(wxWindow* parent, wxWindowID id = wxID_ANY,
+-        long style = wxSUNKEN_BORDER);
++    EventLogControl(wxWindow* parent, wxWindowID id = wxID_ANY);
+     void logAction(const wxString& action);
+     void logEvent(const wxString& name, int count);
+ };
+ //-----------------------------------------------------------------------------
+-EventLogControl::EventLogControl(wxWindow* parent, wxWindowID id,
+-        long style)
+-    : LogTextControl(parent, id, style)
++EventLogControl::EventLogControl(wxWindow* parent, wxWindowID id)
++    : LogTextControl(parent, id)
+ {
+ }
+ //-----------------------------------------------------------------------------
+Index: src/gui/MetadataItemPropertiesFrame.cpp
+===================================================================
+--- src/gui/MetadataItemPropertiesFrame.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/MetadataItemPropertiesFrame.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -360,6 +360,8 @@
+             case ntDatabase:
+             case ntRole:
+                 pages.push_back(wxT("DDL"));
++            default:
++                break;
+         };
+         wxString page = loadEntireFile(config().getHtmlTemplatesPath()
+             + wxT("header.html"));
+@@ -1290,6 +1292,7 @@
+ class PageHandler: public URIHandler
+ {
+ public:
++    PageHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const PageHandler handlerInstance;   // singleton; registers itself on creation.
+@@ -1327,6 +1330,7 @@
+ class PropertiesHandler: public URIHandler
+ {
+ public:
++    PropertiesHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const PropertiesHandler handlerInstance; // singleton; registers itself on creation.
+Index: src/gui/ExecuteSqlFrame.cpp
+===================================================================
+--- src/gui/ExecuteSqlFrame.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/gui/ExecuteSqlFrame.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -2749,6 +2749,7 @@
+ class DropColumnHandler: public URIHandler
+ {
+ public:
++    DropColumnHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const DropColumnHandler handlerInstance;
+@@ -2806,6 +2807,7 @@
+ class DropColumnsHandler: public URIHandler
+ {
+ public:
++    DropColumnsHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const DropColumnsHandler handlerInstance;
+@@ -2842,6 +2844,7 @@
+ class DropObjectHandler: public URIHandler
+ {
+ public:
++    DropObjectHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const DropObjectHandler handlerInstance;
+@@ -2878,6 +2881,7 @@
+ class EditDDLHandler: public URIHandler
+ {
+ public:
++    EditDDLHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const EditDDLHandler handlerInstance;
+@@ -2919,6 +2923,7 @@
+ class EditProcedureHandler: public URIHandler
+ {
+ public:
++    EditProcedureHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+@@ -2947,6 +2952,7 @@
+ class AlterViewHandler: public URIHandler
+ {
+ public:
++    AlterViewHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+@@ -2973,6 +2979,7 @@
+ class EditTriggerHandler: public URIHandler
+ {
+ public:
++    EditTriggerHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+@@ -2999,6 +3006,7 @@
+ class EditGeneratorValueHandler: public URIHandler
+ {
+ public:
++    EditGeneratorValueHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+@@ -3041,6 +3049,7 @@
+ class EditExceptionHandler: public URIHandler
+ {
+ public:
++    EditExceptionHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+@@ -3067,6 +3076,7 @@
+ class IndexActionHandler: public URIHandler
+ {
+ public:
++    IndexActionHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+@@ -3113,6 +3123,7 @@
+ class ActivateTriggersHandler: public URIHandler
+ {
+ public:
++    ActivateTriggersHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const ActivateTriggersHandler handlerInstance;
+@@ -3160,6 +3171,7 @@
+ class ActivateTriggerHandler: public URIHandler
+ {
+ public:
++    ActivateTriggerHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     static const ActivateTriggerHandler handlerInstance;
+Index: src/images.cpp
+===================================================================
+--- src/images.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/images.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -68,6 +68,8 @@
+             return wxArtProvider::GetIcon(ART_Trigger, wxART_OTHER, sz);
+         case ntView:
+             return wxArtProvider::GetIcon(ART_View, wxART_OTHER, sz);
++        default:
++            break;
+     }
+     return wxArtProvider::GetIcon(ART_FlameRobin, wxART_OTHER, sz);
+ }
+Index: src/objectdescriptionhandler.cpp
+===================================================================
+--- src/objectdescriptionhandler.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/objectdescriptionhandler.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -46,6 +46,7 @@
+ class ObjectDescriptionHandler: public URIHandler
+ {
+ public:
++    ObjectDescriptionHandler() {};
+     bool handleURI(URI& uri);
+ private:
+     // singleton; registers itself on creation.
+Index: src/addconstrainthandler.cpp
+===================================================================
+--- src/addconstrainthandler.cpp	(.../rel_0_9_2/src)	(révision 2085)
++++ src/addconstrainthandler.cpp	(.../rel_0_9_2-1/src)	(révision 2085)
+@@ -1,5 +1,5 @@
+ /*
+-  Copyright (c) 2004-2009 The FlameRobin Development Team
++  Copyright (c) 2004-2011 The FlameRobin Development Team
+ 
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+@@ -51,6 +51,8 @@
+ class AddConstraintHandler: public URIHandler
+ {
+ public:
++    AddConstraintHandler() {};
++
+     bool handleURI(URI& uri);
+ private:
+     static const AddConstraintHandler handlerInstance;    // singleton; registers itself on creation.

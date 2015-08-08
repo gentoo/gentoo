@@ -1,0 +1,21 @@
+From a2485424bd0f184700dd0a4f0823fb4c4cf25f66 Mon Sep 17 00:00:00 2001
+From: Arnaud Fontaine <arnau@debian.org>
+Date: Thu, 07 Jun 2012 10:33:28 +0000
+Subject: Fix program name in usage information, transset instead of transset-df.
+
+---
+diff --git a/transSet.c b/transSet.c
+index 899c14a..ea591bc 100644
+--- a/transSet.c
++++ b/transSet.c
+@@ -44,7 +44,7 @@ Window target_win;
+ void
+ Usage (void)
+ {
+-    fprintf (stderr, "usage: transset-df [-options ...] [opacity]\n");
++    fprintf (stderr, "usage: transset [-options ...] [opacity]\n");
+     fprintf (stderr, "options:\n");
+ 
+     fprintf (stderr,
+--
+cgit v0.9.0.2-2-gbebe

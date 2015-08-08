@@ -1,0 +1,10 @@
+--- liboglappth-0.96.orig/src/base_wcl.cpp	2008-07-07 23:49:10.000000000 -0700
++++ liboglappth-0.96/src/base_wcl.cpp	2008-07-07 23:49:26.000000000 -0700
+@@ -11,6 +11,7 @@
+ 
+ #include "base_app.h"
+ #include <stdlib.h>	// the definition for NULL...
++#include <cstring>
+ 
+ #include <GL/glut.h>
+ 

@@ -1,0 +1,56 @@
+From 8e44b1f5543f6d36c33c743f1ba2143514f8afbf Mon Sep 17 00:00:00 2001
+From: Chris Wilson <chris@chris-wilson.co.uk>
+Date: Thu, 24 Oct 2013 13:05:16 +0100
+Subject: [PATCH] sna: Fix canonical mode name to correctly use asprintf
+
+Whoops. Only the kernel sprintf() accepts NULL as a valid target string,
+not libc's.
+
+Reported-by: Jay Little <jaylittle@jaylittle.com>
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=70835
+Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
+---
+ src/sna/sna_display.c | 23 ++++++-----------------
+ 1 file changed, 6 insertions(+), 17 deletions(-)
+
+diff --git a/src/sna/sna_display.c b/src/sna/sna_display.c
+index 7fcade6..3c39305 100644
+--- a/src/sna/sna_display.c
++++ b/src/sna/sna_display.c
+@@ -2095,27 +2095,16 @@ sna_output_panel_edid(xf86OutputPtr output, DisplayModePtr modes)
+ 	return xf86ModesAdd(modes, m);
+ }
+ 
+-static int _canonical_mode_name(DisplayModePtr mode, char *str)
+-{
+-	return sprintf(str, "%dx%d%s",
+-		       mode->HDisplay, mode->VDisplay,
+-		       mode->Flags & V_INTERLACE ? "i" : "");
+-}
+-
+ static char *canonical_mode_name(DisplayModePtr mode)
+ {
+-	 char *str;
+-	 int len;
+-
+-	 len = _canonical_mode_name(mode, NULL);
+-	 if (len < 0)
+-		 return NULL;
++	char *str;
+ 
+-	 str = malloc(len + 1);
+-	 if (str != NULL)
+-		 _canonical_mode_name(mode, str);
++	if (asprintf(&str, "%dx%d%s",
++		     mode->HDisplay, mode->VDisplay,
++		     mode->Flags & V_INTERLACE ? "i" : "") < 0)
++		return NULL;
+ 
+-	 return str;
++	return str;
+ }
+ 
+ static DisplayModePtr
+-- 
+1.8.4.2
+

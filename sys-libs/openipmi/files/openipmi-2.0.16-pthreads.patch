@@ -1,0 +1,12 @@
+diff -ruN OpenIPMI-2.0.16.orig/OpenIPMIpthread.pc.in OpenIPMI-2.0.16/OpenIPMIpthread.pc.in
+--- OpenIPMI-2.0.16.orig/OpenIPMIpthread.pc.in	2005-08-17 05:56:02.000000000 +0200
++++ OpenIPMI-2.0.16/OpenIPMIpthread.pc.in	2010-10-31 21:35:56.126933520 +0100
+@@ -6,6 +6,6 @@
+ Name: OpenIPMIpthread
+ Description: Pthread OS handler for OpenIPMI
+ Version: @VERSION@
+-Requires: OpenIPMI pthread
+-Libs: -L${libdir} -lOpenIPMIutils -lOpenIPMIpthread
++Requires: OpenIPMI
++Libs: -L${libdir} -lOpenIPMIutils -lOpenIPMIpthread -lpthread
+ Cflags: -I${includedir}

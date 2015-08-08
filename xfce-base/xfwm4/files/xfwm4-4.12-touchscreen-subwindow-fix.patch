@@ -1,0 +1,17 @@
+diff -ur xfwm4-4.10.1/src/events.c b/src/events.c
+--- xfwm4-4.10.1/src/events.c	2014-10-31 14:19:18.012757936 -0600
++++ b/src/events.c	2014-10-31 14:18:54.901758349 -0600
+@@ -888,6 +888,13 @@
+     {
+         state = ev->state & MODIFIER_MASK;
+         win = ev->subwindow;
++        if (!win) {
++            Window root_ret;
++            int rx,ry,wx,wy;
++            unsigned int mask_ret;
++            XQueryPointer(display_info->dpy, ev->window,
++                &root_ret, &win, &rx, &ry, &wx, &wy, &mask_ret);
++        }
+         screen_info = c->screen_info;
+ 
+         if ((ev->button == Button1) && (state) && (state == screen_info->params->easy_click))

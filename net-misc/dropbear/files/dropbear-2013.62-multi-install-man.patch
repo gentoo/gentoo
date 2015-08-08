@@ -1,0 +1,13 @@
+only install man pages that exist as things like scp.1 do not
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -136,7 +136,7 @@ insmulti%: dropbearmulti
+ 	-rm -f $(DESTDIR)$(bindir)/$*$(EXEEXT) 
+ 	-ln -s $(bindir)/dropbearmulti$(EXEEXT) $(DESTDIR)$(bindir)/$*$(EXEEXT) 
+ 	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
+-	$(INSTALL) -m 644 $*.1  $(DESTDIR)$(mandir)/man1/$*.1
++	if test -e $*.1; then $(INSTALL) -m 644 $*.1 $(DESTDIR)$(mandir)/man1/$*.1; fi
+ 
+ # dropbear should go in sbin, so it needs a seperate rule
+ inst_dropbear: dropbear

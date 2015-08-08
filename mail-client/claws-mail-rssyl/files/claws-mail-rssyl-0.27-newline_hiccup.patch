@@ -1,0 +1,16 @@
+Index: src/strreplace.c
+===================================================================
+RCS file: /home/claws-mail/plugins/rssyl/src/Attic/strreplace.c,v
+retrieving revision 1.1.2.7
+diff -u -B -r1.1.2.7 strreplace.c
+--- src/strreplace.c	28 Oct 2009 08:28:43 -0000	1.1.2.7
++++ src/strreplace.c	13 Jul 2010 19:23:32 -0000
+@@ -112,7 +112,7 @@
+ 	memset(new, '\0', strlen(str) + 1);
+ 
+ 	while( *c != '\0' ) {
+-		if( !isspace(*c) || *c == ' ' ) {
++		if( !isspace(*c) || *c == ' ' || *c == '\n' ) {
+ 			*new_ptr = *c;
+ 			new_ptr++;
+ 		}

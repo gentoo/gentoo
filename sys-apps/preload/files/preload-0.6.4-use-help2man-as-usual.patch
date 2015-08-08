@@ -1,0 +1,31 @@
+--- src/Makefile.am~	2009-04-15 23:46:04.000000000 +0200
++++ src/Makefile.am	2010-04-09 12:56:45.000000000 +0200
+@@ -54,23 +54,11 @@
+ 
+ dist_man_MANS = preload.8
+ 
+-$(srcdir)/preload.8: cmdline.c ../configure.ac preload.8.i
+-	$(MAKE) $(AM_MAKEFLAGS) preload
+-	@echo "Creating $@ using help2man(1)"
+-	@$(top_builddir)/missing --run \
+-	   help2man --no-info --section=8 --include=preload.8.i \
+-	   	    --help-option="-H" --output="$@.tmp" \
+-		    --name 'Adaptive readahead daemon' ./preload \
+-	 && mv "$@.tmp" "$@" \
+-	  || ($(RM) "$@"; \
+-	      echo Failed to update preload.8, the man page may be outdated >&2; \
+-	      (test -f "$@" || echo help2man is required to generate this file. >> "$@"));
+-
+-install-data-hook:
+-	@cd "$(DESTDIR)$(man8dir)" && gzip -c preload.8 > preload.8.gz.tmp && mv preload.8.gz.tmp preload.8.gz && $(RM) preload.8
+-
+-uninstall-hook:
+-	$(RM) "$(DESTDIR)$(man8dir)/preload.8.gz"
++preload.8: preload preload.8.i
++	help2man \
++		--no-info --section=8 --include=preload.8.i \
++		--help-option="-H" --output="$@" \
++		--name 'Adaptive readahead daemon' ./preload
+ 
+ ######################################################################
+ 

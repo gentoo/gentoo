@@ -1,0 +1,82 @@
+https://bugs.gentoo.org/355291
+
+--- a/opensync/Makefile.am
++++ b/opensync/Makefile.am
+@@ -77,5 +77,5 @@ CLEANFILES = \
+ 	*.bbg \
+ 	*.da
+ 
+-libopensync_la_LDFLAGS = @PACKAGE_LIBS@ @GCOV_LDFLAGS@
+-libopensync_la_LIBADD = @XML_LIBS@
++libopensync_la_LDFLAGS = @GCOV_LDFLAGS@
++libopensync_la_LIBADD = @PACKAGE_LIBS@ @XML_LIBS@
+--- a/osengine/Makefile.am
++++ b/osengine/Makefile.am
+@@ -43,5 +43,5 @@ CLEANFILES = \
+ 	*.bbg \
+ 	*.da
+ 
+-libosengine_la_LDFLAGS = $(PACKAGE_LIBS) -R $(libdir) @GCOV_LDFLAGS@
+-libosengine_la_LIBADD = $(top_builddir)/opensync/libopensync.la
++libosengine_la_LDFLAGS = @GCOV_LDFLAGS@
++libosengine_la_LIBADD = $(top_builddir)/opensync/libopensync.la $(PACKAGE_LIBS)
+--- a/osplugin/Makefile.am
++++ b/osplugin/Makefile.am
+@@ -9,8 +9,8 @@ libexec_PROGRAMS = osplugin
+ ospluginincludedir = @OPENSYNC_HEADERDIR@
+ 
+ osplugin_SOURCES = osplugin.c
+-osplugin_LDFLAGS = @PACKAGE_LIBS@ @XML_LIBS@ -R $(libdir) @GCOV_LDFLAGS@
+-osplugin_LDADD = $(top_builddir)/opensync/libopensync.la
++osplugin_LDFLAGS = @GCOV_LDFLAGS@
++osplugin_LDADD = $(top_builddir)/opensync/libopensync.la @PACKAGE_LIBS@ @XML_LIBS@
+ 
+ CLEANFILES = \
+ 	*.bb \
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -9,24 +9,24 @@ bin_PROGRAMS = osyncdump osyncstress osyncplugin osynctest osyncbinary
+ endif
+ 
+ osyncdump_SOURCES = osyncdump.c
+-osyncdump_LDFLAGS = @PACKAGE_LIBS@ @XML_LIBS@ -R $(libdir) @GCOV_LDFLAGS@
+-osyncdump_LDADD = $(top_builddir)/opensync/libopensync.la
++osyncdump_LDFLAGS = @GCOV_LDFLAGS@
++osyncdump_LDADD = $(top_builddir)/opensync/libopensync.la @PACKAGE_LIBS@ @XML_LIBS@
+ 
+ osyncstress_SOURCES = osyncstress.c
+-osyncstress_LDFLAGS = @PACKAGE_LIBS@ -R $(libdir) @GCOV_LDFLAGS@
+-osyncstress_LDADD = $(top_builddir)/osengine/libosengine.la $(top_builddir)/opensync/libopensync.la
++osyncstress_LDFLAGS = @GCOV_LDFLAGS@
++osyncstress_LDADD = $(top_builddir)/osengine/libosengine.la $(top_builddir)/opensync/libopensync.la @PACKAGE_LIBS@
+ 
+ osyncplugin_SOURCES = osyncplugin.c
+-osyncplugin_LDFLAGS = @PACKAGE_LIBS@ -R $(libdir) @GCOV_LDFLAGS@
+-osyncplugin_LDADD = $(top_builddir)/opensync/libopensync.la
++osyncplugin_LDFLAGS = @GCOV_LDFLAGS@
++osyncplugin_LDADD = $(top_builddir)/opensync/libopensync.la @PACKAGE_LIBS@
+ 
+ osynctest_SOURCES = osynctest.c
+-osynctest_LDFLAGS = @PACKAGE_LIBS@ -R $(libdir) @GCOV_LDFLAGS@
+-osynctest_LDADD = $(top_builddir)/osengine/libosengine.la $(top_builddir)/opensync/libopensync.la
++osynctest_LDFLAGS = @GCOV_LDFLAGS@
++osynctest_LDADD = $(top_builddir)/osengine/libosengine.la $(top_builddir)/opensync/libopensync.la @PACKAGE_LIBS@
+ 
+ osyncbinary_SOURCES = osyncbinary.c
+-osyncbinary_LDFLAGS = @PACKAGE_LIBS@ -R $(libdir)
+-osyncbinary_LDADD = $(top_builddir)/opensync/libopensync.la
++osyncbinary_LDFLAGS =
++osyncbinary_LDADD = $(top_builddir)/opensync/libopensync.la @PACKAGE_LIBS@
+ 
+ CLEANFILES = \
+ 	*.bb \
+--- a/wrapper/Makefile.am
++++ b/wrapper/Makefile.am
+@@ -22,5 +22,5 @@ osbindings_LTLIBRARIES = _opensync.la
+ endif
+ 
+ nodist__opensync_la_SOURCES = opensync_wrap.c
+-_opensync_la_LDFLAGS = @PACKAGE_LIBS@ @XML_LIBS@ $(PYTHON_LDFLAGS) -R $(libdir) -module -avoid-version
+-_opensync_la_LIBADD = $(top_builddir)/opensync/libopensync.la
++_opensync_la_LDFLAGS = -module -avoid-version
++_opensync_la_LIBADD = $(top_builddir)/opensync/libopensync.la $(PYTHON_LDFLAGS) @PACKAGE_LIBS@ @XML_LIBS@

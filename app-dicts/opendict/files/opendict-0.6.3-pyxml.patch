@@ -1,0 +1,144 @@
+Use native python instead of external pyxml dependency.  Patch from Debian.
+
+https://bugs.gentoo.org/367733
+
+
+--- a/README.txt
++++ b/README.txt
+@@ -15,9 +15,8 @@ universal and easy to use for desktop users and developers.
+ Requirements
+ ~~~~~~~~~~~~
+ 
+-   - Python >= 2.3
+-   - wxPython 2.6
+-   - python-xml (PyXML)
++   - Python >= 2.4
++   - wxPython >= 2.6
+    - gettext >= 0.14
+ 
+ 
+--- a/lib/xmltools.py
++++ b/lib/xmltools.py
+@@ -20,7 +20,6 @@
+ #
+ 
+ import xml.dom.minidom
+-import xml.dom.ext
+ 
+ from lib import meta
+ 
+@@ -30,7 +29,7 @@ def _textData(element):
+ 
+     text = ''
+     for node in element.childNodes:
+-        text = node.data
++        text = node.data.strip()
+ 
+     return text
+ 
+@@ -99,7 +98,7 @@ class RegisterConfigGenerator:
+                                                    or ''))
+ 
+         return doc
+-    
++
+ 
+ def generatePlainDictConfig(**args):
+     """Generate configuration and return DOM object"""
+@@ -113,10 +112,11 @@ def generatePlainDictConfig(**args):
+ def writePlainDictConfig(doc, path):
+     """Write XML file"""
+ 
+-    fd = open(path, 'w')
+-    xml.dom.ext.PrettyPrint(doc, fd)
++    import codecs
++    fd = codecs.open(path, 'w', 'utf-8')
++    doc.writexml(fd, addindent = "  ", newl = "\n", encoding = "UTF-8")
+     fd.close()
+-    
++
+ 
+ 
+ class RegisterConfigParser:
+@@ -144,32 +144,32 @@ class RegisterConfigParser:
+         
+         for nameElement in registerElement.getElementsByTagName('name'):
+             for node in nameElement.childNodes:
+-                name = node.data
++                name = node.data.strip()
+ 
+         for formatElement in registerElement.getElementsByTagName('format'):
+             for node in formatElement.childNodes:
+-                format = node.data
++                format = node.data.strip()
+ 
+         for pathElement in registerElement.getElementsByTagName('path'):
+             for node in pathElement.childNodes:
+-                path = node.data
++                path = node.data.strip()
+ 
+         for versionElement in registerElement.getElementsByTagName('version'):
+             for node in versionElement.childNodes:
+                 version = node.data.strip()
+ 
+         for authorElement in registerElement.getElementsByTagName('author'):
+-            authors.append({'name': authorElement.getAttribute('name'),
+-                            'email': authorElement.getAttribute('email')})
++            authors.append({'name': authorElement.getAttribute('name').strip(),
++                            'email': authorElement.getAttribute('email').strip()})
+ 
+         for md5Element in registerElement.getElementsByTagName('md5'):
+             for node in md5Element.childNodes:
+-                md5 = node.data
++                md5 = node.data.strip()
+ 
+         for encodingElement in \
+                 registerElement.getElementsByTagName('encoding'):
+             for node in encodingElement.childNodes:
+-                encoding = node.data
++                encoding = node.data.strip()
+ 
+         for licenceElement in \
+                 registerElement.getElementsByTagName('licence'):
+@@ -241,8 +241,9 @@ def generateIndexFile(index):
+ def writeIndexFile(doc, path):
+     """Write XML file"""
+ 
+-    fd = open(path, 'wb')
+-    xml.dom.ext.PrettyPrint(doc, fd)
++    import codecs
++    fd = codecs.open(path, 'wb', 'utf-8')
++    doc.writexml(fd, addindent = "  ", newl = "\n", encoding = "UTF-8")
+     fd.close()
+ 
+ 
+@@ -511,7 +512,8 @@ def generateMainConfig(props):
+ def writeConfig(doc, path):
+     """Write XML file"""
+ 
+-    fd = open(path, 'w')
+-    xml.dom.ext.PrettyPrint(doc, fd)
++    import codecs
++    fd = codecs.open(path, 'w', 'utf-8')
++    doc.writexml(fd, addindent = "  ", newl = "\n", encoding = "UTF-8")
+     fd.close()
+ 
+--- a/opendict.py
++++ b/opendict.py
+@@ -53,16 +53,6 @@ except ImportError:
+     print >> sys.stderr, "**"
+     sys.exit(1)
+ 
+-
+-try:
+-    import xml.dom.ext
+-except ImportError:
+-    print >> sys.stderr, "**"
+-    print >> sys.stderr, "** Error: Python/XML library not found"
+-    print >> sys.stderr, "** Please install python-xml (PyXML) to run OpenDict"
+-    print >> sys.stderr, "**"
+-    sys.exit(1)
+-
+ # get_main_dir() returns the directory name of the script or the
+ # directory name of the exe
+ def get_main_dir():

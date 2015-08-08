@@ -1,0 +1,55 @@
+diff -uNr dmidecode-2.12.ORIG/dmidecode.c dmidecode-2.12/dmidecode.c
+--- dmidecode-2.12.ORIG/dmidecode.c	2014-05-06 14:24:27.703057950 +0100
++++ dmidecode-2.12/dmidecode.c	2014-05-06 14:24:43.136058719 +0100
+@@ -69,7 +69,7 @@
+ #define out_of_spec "<OUT OF SPEC>"
+ static const char *bad_index = "<BAD INDEX>";
+ 
+-#define SUPPORTED_SMBIOS_VER 0x0207
++#define SUPPORTED_SMBIOS_VER 0x0208
+ 
+ /*
+  * Type-independant Stuff
+@@ -712,7 +712,6 @@
+ 		{ 0x3D, "Opteron 6200" },
+ 		{ 0x3E, "Opteron 4200" },
+ 		{ 0x3F, "FX" },
+-
+ 		{ 0x40, "MIPS" },
+ 		{ 0x41, "MIPS R4000" },
+ 		{ 0x42, "MIPS R4200" },
+@@ -729,7 +728,6 @@
+ 		{ 0x4D, "Opteron 6300" },
+ 		{ 0x4E, "Opteron 3300" },
+ 		{ 0x4F, "FirePro" },
+-
+ 		{ 0x50, "SPARC" },
+ 		{ 0x51, "SuperSPARC" },
+ 		{ 0x52, "MicroSPARC II" },
+@@ -1176,7 +1174,7 @@
+ 		"Socket LGA1356-3" /* 0x2C */
+ 	};
+ 
+-	if (code >= 0x01 && code <= 0x2A)
++	if (code >= 0x01 && code <= 0x2C)
+ 		return upgrade[code - 0x01];
+ 	return out_of_spec;
+ }
+@@ -2236,7 +2234,7 @@
+ 	if (code == 0)
+ 		printf(" Unknown");
+ 	else
+-		printf(" %.3f V", (float)(i16)code / 1000);
++		printf(" %.3f V", (float)code / 1000);
+ }
+ 
+ static const char *dmi_memory_device_form_factor(u8 code)
+@@ -2338,7 +2336,7 @@
+ 	{
+ 		int i;
+ 
+-		for (i = 1; i <= 14; i++)
++		for (i = 1; i <= 15; i++)
+ 			if (code & (1 << i))
+ 				printf(" %s", detail[i - 1]);
+ 	}

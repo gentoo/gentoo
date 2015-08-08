@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/show_bug.cgi?id=437018
+
+Index: ZynAddSubFX-2.4.3/src/main.cpp
+===================================================================
+--- ZynAddSubFX-2.4.3.orig/src/main.cpp
++++ ZynAddSubFX-2.4.3/src/main.cpp
+@@ -37,8 +37,6 @@
+ #include "Misc/Dump.h"
+ extern Dump dump;
+ 
+-#include <FL/Fl.H>
+-
+ //Nio System
+ #include "Nio/Nio.h"
+ 
+@@ -51,6 +49,8 @@ QApplication *app;
+ 
+ #elif defined FLTK_GUI
+ 
++#include <FL/Fl.H>
++
+ #include "UI/MasterUI.h"
+ #endif // FLTK_GUI
+ 

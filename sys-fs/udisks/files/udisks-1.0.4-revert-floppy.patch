@@ -1,0 +1,18 @@
+This change was done upstream to prevent UDisks1 from polling for floppy drive so often but broke
+mounting floppies while at it.
+
+http://bugs.freedesktop.org/show_bug.cgi?id=30283
+http://bugs.gentoo.org/show_bug.cgi?id=338185
+
+--- src/device.c
++++ src/device.c
+@@ -4485,7 +4485,8 @@ update_info (Device *device)
+         }
+       else
+         {
+-          if (g_udev_device_get_property_as_boolean (device->priv->d, "ID_CDROM_MEDIA"))
++          if (g_udev_device_get_property_as_boolean (device->priv->d, "ID_CDROM_MEDIA") ||
++              g_udev_device_get_property_as_boolean (device->priv->d, "ID_DRIVE_FLOPPY"))
+             {
+               media_available = TRUE;
+             }

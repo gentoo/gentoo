@@ -1,0 +1,80 @@
+ density/density.c    | 1 +
+ utility/g94cub2pl.c  | 1 +
+ utility/gamess2plt.c | 1 +
+ utility/gcube2plt.c  | 1 +
+ utility/jaguar2plt.c | 1 +
+ vss/vssmod.c         | 1 +
+ 6 files changed, 6 insertions(+)
+
+diff --git a/density/density.c b/density/density.c
+index 130a48e..ee218c5 100755
+--- a/density/density.c
++++ b/density/density.c
+@@ -13,6 +13,7 @@
+ #include <string.h>
+ #include <sys/types.h>
+ #include <malloc.h>
++#include <stdlib.h>
+ 
+ #define VERBOSE    0
+ #define BUFF_LEN 500
+diff --git a/utility/g94cub2pl.c b/utility/g94cub2pl.c
+index e773ab2..94fbcfd 100755
+--- a/utility/g94cub2pl.c
++++ b/utility/g94cub2pl.c
+@@ -315,6 +315,7 @@ which can be read by gOpenMol or SCARECROW.
+ #include <sys/types.h>
+ #include <malloc.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #define BUFF_LEN        256
+ #define BOHR_RADIUS     0.52917715  /* conversion constant */
+diff --git a/utility/gamess2plt.c b/utility/gamess2plt.c
+index 3f6108e..5da481d 100755
+--- a/utility/gamess2plt.c
++++ b/utility/gamess2plt.c
+@@ -86,6 +86,7 @@ which can be read by gOpenMol or SCARECROW.
+ #include <sys/types.h>
+ #include <malloc.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #define BUFF_LEN        256
+ #define BOHR_RADIUS     0.52917715  /* conversion constant */
+diff --git a/utility/gcube2plt.c b/utility/gcube2plt.c
+index c5f7b5e..711bad3 100755
+--- a/utility/gcube2plt.c
++++ b/utility/gcube2plt.c
+@@ -306,6 +306,7 @@ which can be read by gOpenMol or SCARECROW.
+ #include <sys/types.h>
+ #include <malloc.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #define BUFF_LEN        256
+ #define BOHR_RADIUS     0.52917715  /* conversion constant */
+diff --git a/utility/jaguar2plt.c b/utility/jaguar2plt.c
+index 657128c..96d6ac1 100755
+--- a/utility/jaguar2plt.c
++++ b/utility/jaguar2plt.c
+@@ -26,6 +26,7 @@ fastes running coordinate.
+ #include <sys/types.h>
+ #include <malloc.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #define BUFF_LEN        256
+ #define BOHR_RADIUS     0.52917715  /* conversion constant */
+diff --git a/vss/vssmod.c b/vss/vssmod.c
+index 957d2e5..9d73978 100755
+--- a/vss/vssmod.c
++++ b/vss/vssmod.c
+@@ -20,6 +20,7 @@ C- for the potentials
+ #include <math.h>
+ #include <string.h>
+ #include <malloc.h>
++#include <stdlib.h>
+ 
+ #define LINE_LEN 80
+ #define BUFF_LEN 500

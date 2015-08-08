@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmCalClock is a calendar clock with anti-aliased text and drop shadows. Colors 
+and fonts in the time field are user configurable. It displays local time, 
+universal time and sidereal time.
+</longdescription>
+</pkgmetadata>

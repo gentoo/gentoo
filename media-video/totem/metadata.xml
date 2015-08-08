@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnome</herd>
+	<herd>video</herd>
+	<herd>gstreamer</herd>
+	<longdescription>
+Totem is movie player for the GNOME desktop. It features a playlist, fullscreen mode, seek and volume controls, as well as a pretty complete keyboard navigation. It comes with added functionality such as a video thumbnailer for Nautilus, Nautilus properties tab and a webcam utility.
+	</longdescription>
+	<use>
+		<flag name="lirc">Enable support for controlling Totem with a remote control
+			using <pkg>app-misc/lirc</pkg></flag>
+		<flag name="nautilus">Enable the nautilus extension</flag>
+		<flag name="python">Build support for <pkg>dev-lang/python</pkg> plugins</flag>
+		<flag name="zeitgeist">Build the plugin to inject events to <pkg>gnome-extra/zeitgeist</pkg></flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>idella4@gentoo.org</email>
+    <name>Ian Delaney</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">socketpool</remote-id>
+    <remote-id type="github">benoitc/socketpool</remote-id>
+  </upstream>
+</pkgmetadata>

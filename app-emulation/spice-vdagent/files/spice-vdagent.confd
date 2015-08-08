@@ -1,0 +1,7 @@
+
+# The virtual communication port provided by the hypervisor/vm
+PORT="/dev/virtio-ports/com.redhat.spice.0"
+
+# extra arguments for spice-vdagentd
+SPICE_VDAGENT_ARGS=""
+

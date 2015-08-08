@@ -1,0 +1,29 @@
+From 8b9acc9bd4ac9be12317f24c7ecafc4200e19609 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 12 Feb 2013 00:27:41 -0500
+Subject: [PATCH] Fix link_protocol_is_local_ipv46 for ipv4 on some
+ ipv6-enabled machines
+
+Ensure that saddr is compared to an ipv4 local_addr, not to an ipv6 one,
+by setting hints.ai_family before calling getaddrinfo().
+
+https://bugzilla.gnome.org/show_bug.cgi?id=693636
+---
+ linc2/src/linc-protocols.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/linc2/src/linc-protocols.c b/linc2/src/linc-protocols.c
+index e6895f4..22a77aa 100644
+--- a/linc2/src/linc-protocols.c
++++ b/linc2/src/linc-protocols.c
+@@ -383,6 +383,7 @@ link_protocol_is_local_ipv46 (const LinkProtocolInfo *proto,
+ 		memset(&hints, 0, sizeof(hints));
+ 		hints.ai_socktype = SOCK_STREAM;
+ 		hints.ai_flags = AI_CANONNAME;
++		hints.ai_family = proto->family;
+ 
+ 		if (getaddrinfo(link_get_local_hostname(), NULL, &hints, &local_addr) != 0) {
+ 			if (!warned++)
+-- 
+1.8.1.2
+

@@ -1,0 +1,158 @@
+--- doomsday/plugins/openal/src/driver_openal.cpp	2012-05-15 06:01:38.000000000 +0200
++++ doomsday/plugins/openal/src/driver_openal.cpp	2012-05-29 07:37:21.170639342 +0200
+@@ -66,6 +66,7 @@ ALenum(*EAXGet) (const struct _GUID* pro
+ ALenum(*EAXSet) (const struct _GUID* propertySetID, ALuint prop, ALuint source, ALvoid* value, ALuint size);
+ #endif
+ 
++extern "C" {
+ int DS_Init(void);
+ void DS_Shutdown(void);
+ void DS_Event(int type);
+@@ -83,6 +84,7 @@ void DS_SFX_Setv(sfxbuffer_t* buf, int p
+ void DS_SFX_Listener(int prop, float value);
+ void DS_SFX_Listenerv(int prop, float* values);
+ int DS_SFX_Getv(int prop, void* values);
++}
+ 
+ #ifdef WIN32
+ // EAX 2.0 GUIDs
+@@ -134,14 +136,14 @@ static void loadExtensions(void)
+ #endif
+ }
+ 
+-int DS_Init(void)
++extern "C" int DS_Init(void)
+ {
+     // Already initialized?
+     if(initOk) return true;
+ 
+     // Open a playback device.
+     /// @todo Shouldn't we use the system default device?
+-    device = alcOpenDevice((ALCchar*) "DirectSound3D");
++    device = alcOpenDevice((ALCchar*) NULL);
+     if(!device)
+     {
+         Con_Message("OpenAL init failed (device: DirectSound3D).\n");
+@@ -167,7 +169,7 @@ int DS_Init(void)
+     return true;
+ }
+ 
+-void DS_Shutdown(void)
++extern "C" void DS_Shutdown(void)
+ {
+     if(!initOk) return;
+ 
+@@ -185,12 +187,12 @@ void DS_Event(int /*type*/)
+     // Not supported.
+ }
+ 
+-int DS_SFX_Init(void)
++extern "C" int DS_SFX_Init(void)
+ {
+     return true;
+ }
+ 
+-sfxbuffer_t* DS_SFX_CreateBuffer(int flags, int bits, int rate)
++extern "C" sfxbuffer_t* DS_SFX_CreateBuffer(int flags, int bits, int rate)
+ {
+     sfxbuffer_t* buf;
+     ALuint bufName, srcName;
+@@ -236,7 +238,7 @@ sfxbuffer_t* DS_SFX_CreateBuffer(int fla
+     return buf;
+ }
+ 
+-void DS_SFX_DestroyBuffer(sfxbuffer_t* buf)
++extern "C" void DS_SFX_DestroyBuffer(sfxbuffer_t* buf)
+ {
+     ALuint srcName, bufName;
+ 
+@@ -251,7 +253,7 @@ void DS_SFX_DestroyBuffer(sfxbuffer_t* b
+     Z_Free(buf);
+ }
+ 
+-void DS_SFX_Load(sfxbuffer_t* buf, struct sfxsample_s* sample)
++extern "C" void DS_SFX_Load(sfxbuffer_t* buf, struct sfxsample_s* sample)
+ {
+     if(!buf || !sample) return;
+ 
+@@ -277,7 +279,7 @@ void DS_SFX_Load(sfxbuffer_t* buf, struc
+ /**
+  * Stops the buffer and makes it forget about its sample.
+  */
+-void DS_SFX_Reset(sfxbuffer_t* buf)
++extern "C" void DS_SFX_Reset(sfxbuffer_t* buf)
+ {
+     if(!buf) return;
+ 
+@@ -285,7 +287,7 @@ void DS_SFX_Reset(sfxbuffer_t* buf)
+     buf->sample = NULL;
+ }
+ 
+-void DS_SFX_Play(sfxbuffer_t* buf)
++extern "C" void DS_SFX_Play(sfxbuffer_t* buf)
+ {
+     ALuint source;
+ 
+@@ -310,7 +312,7 @@ void DS_SFX_Play(sfxbuffer_t* buf)
+     buf->flags |= SFXBF_PLAYING;
+ }
+ 
+-void DS_SFX_Stop(sfxbuffer_t* buf)
++extern "C" void DS_SFX_Stop(sfxbuffer_t* buf)
+ {
+     if(!buf || !buf->sample) return;
+ 
+@@ -318,7 +320,7 @@ void DS_SFX_Stop(sfxbuffer_t* buf)
+     buf->flags &= ~SFXBF_PLAYING;
+ }
+ 
+-void DS_SFX_Refresh(sfxbuffer_t* buf)
++extern "C" void DS_SFX_Refresh(sfxbuffer_t* buf)
+ {
+     ALint state;
+ 
+@@ -368,7 +370,7 @@ static void setPan(ALuint source, float
+     alSourcefv(source, AL_POSITION, pos);
+ }
+ 
+-void DS_SFX_Set(sfxbuffer_t* buf, int prop, float value)
++extern "C" void DS_SFX_Set(sfxbuffer_t* buf, int prop, float value)
+ {
+     ALuint source;
+ 
+@@ -411,7 +413,7 @@ void DS_SFX_Set(sfxbuffer_t* buf, int pr
+     }
+ }
+ 
+-void DS_SFX_Setv(sfxbuffer_t* buf, int prop, float* values)
++extern "C" void DS_SFX_Setv(sfxbuffer_t* buf, int prop, float* values)
+ {
+     ALuint source;
+ 
+@@ -435,7 +437,7 @@ void DS_SFX_Setv(sfxbuffer_t* buf, int p
+     }
+ }
+ 
+-void DS_SFX_Listener(int prop, float value)
++extern "C" void DS_SFX_Listener(int prop, float value)
+ {
+     switch(prop)
+     {
+@@ -451,7 +453,7 @@ void DS_SFX_Listener(int prop, float val
+     }
+ }
+ 
+-void DS_SFX_Listenerv(int prop, float* values)
++extern "C" void DS_SFX_Listenerv(int prop, float* values)
+ {
+     float ori[6];
+ 
+@@ -489,7 +491,7 @@ void DS_SFX_Listenerv(int prop, float* v
+     }
+ }
+ 
+-int DS_SFX_Getv(int /*prop*/, void* /*values*/)
++extern "C" int DS_SFX_Getv(int /*prop*/, void* /*values*/)
+ {
+     // Stub.
+     return 0;

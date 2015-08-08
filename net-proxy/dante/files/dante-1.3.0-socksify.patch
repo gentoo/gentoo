@@ -1,0 +1,26 @@
+--- dante-1.3.0/bin/socksify.in.orig
++++ dante-1.3.0/bin/socksify.in
+@@ -53,8 +53,6 @@
+     exit 1
+ fi
+ 
+-SOCKSIFY_PRELOAD_LIBS="@SOCKSIFY_PRELOAD_LIBS@"
+-
+ SOCKS_LIBDIR="${SOCKS_LIBDIR:-@LIBRARY_PREFIX@}"
+ 
+ if test x`uname` = xDarwin; then
+@@ -80,8 +78,12 @@
+ @PRELOAD_VARIABLE@="${LIBRARY}${SOCKSIFY_PRELOAD_LIBS:+${PRELOAD_SEPERATOR}}${SOCKSIFY_PRELOAD_LIBS}${PRELOAD_POSTFIX:+${PRELOAD_SEPERATOR}}${PRELOAD_POSTFIX}"
+ export @PRELOAD_VARIABLE@
+ 
+-LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}${SOCKS_LIBDIR}"
+-export LD_LIBRARY_PATH
++# There is no reason to set LD_LIBRARY_PATH, at least on Linux, where
++# LD_PRELOAD can contain a full path to the library.  Setting the
++# following breaks socksify on Linux/Alpha at least with
++# binutils-2.14.90.0.7-r3 (08 Dec 2003 agriffis)
++#LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}${LIBDIR}"
++#export LD_LIBRARY_PATH
+ 
+ if test x"@ISA64DIR@" != x; then
+     SOCKS_LIB64DIR="${LIB64DIR:-${SOCKS_LIBDIR}/@ISA64DIR@}"

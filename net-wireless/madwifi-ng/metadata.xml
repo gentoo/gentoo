@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>steev@gentoo.org</email>
+		<name>Steev Klimaszewski</name>
+	</maintainer>
+	<maintainer>
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<use>
+		<flag name="injection">Adds support for <pkg>net-wireless/aircrack-ng</pkg>
+		 aireplay-ng packet injection</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">madwifi</remote-id>
+	</upstream>
+</pkgmetadata>
