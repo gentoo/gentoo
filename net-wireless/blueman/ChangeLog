@@ -1,6 +1,15 @@
 # ChangeLog for net-wireless/blueman
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueman/ChangeLog,v 1.34 2015/04/04 08:52:43 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueman/ChangeLog,v 1.36 2015/08/08 15:11:45 mgorny Exp $
+
+  08 Aug 2015; Michał Górny <mgorny@gentoo.org> blueman-9999.ebuild:
+  Fix USE=appindicator and deps for USE=pulseaudio.
+
+  08 Aug 2015; Michał Górny <mgorny@gentoo.org>
+  -files/blueman-9999-plugins-conf-file.patch, blueman-9999.ebuild,
+  files/blueman-9999-set-codeset-for-gettext-to-UTF-8-always.patch,
+  metadata.xml:
+  Update and clean up the live ebuild and patches.
 
   04 Apr 2015; Michał Górny <mgorny@gentoo.org> blueman-9999.ebuild:
   Sync -9999. Remove conf file path patch and GConf magic, GSettings are used

@@ -1,26 +1,28 @@
-From aebfe594584e7c5cca30062d643618fc2ab8144b Mon Sep 17 00:00:00 2001
+From a28a982ba05a3b84dcfed43e5bd6801067b5d0c5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
-Date: Sun, 1 Mar 2015 23:08:02 +0100
-Subject: [PATCH] set codeset for gettext to utf-8
+Date: Sat, 8 Aug 2015 14:57:51 +0200
+Subject: [PATCH] Always set codeset for gettext to utf8
 
 ---
- apps/blueman-adapters                |  2 ++
- apps/blueman-assistant               |  2 ++
- apps/blueman-manager                 |  2 ++
- apps/blueman-sendto                  |  2 ++
- apps/blueman-services                |  2 ++
- blueman/gui/GsmSettings.py           |  2 ++
- blueman/gui/applet/PluginDialog.py   |  4 +++-
- blueman/plugins/applet/NetUsage.py   |  3 ++-
- blueman/plugins/services/Network.py  |  3 ++-
- blueman/plugins/services/Transfer.py |  2 ++
- 11 files changed, 29 insertions(+), 6 deletions(-)
+ apps/blueman-adapters                    | 2 ++
+ apps/blueman-assistant                   | 2 ++
+ apps/blueman-manager                     | 2 ++
+ apps/blueman-sendto                      | 2 ++
+ apps/blueman-services                    | 2 ++
+ blueman/gui/GsmSettings.py               | 3 +++
+ blueman/gui/applet/PluginDialog.py       | 3 +++
+ blueman/gui/manager/ManagerDeviceMenu.py | 2 ++
+ blueman/main/applet/BluezAgent.py        | 2 ++
+ blueman/plugins/applet/NetUsage.py       | 3 ++-
+ blueman/plugins/services/Network.py      | 2 ++
+ blueman/plugins/services/Transfer.py     | 3 +++
+ 12 files changed, 27 insertions(+), 1 deletion(-)
 
 diff --git a/apps/blueman-adapters b/apps/blueman-adapters
-index a961480..3759ba8 100755
+index 4ac81fe..c8d8c06 100755
 --- a/apps/blueman-adapters
 +++ b/apps/blueman-adapters
-@@ -6,6 +6,7 @@ from gi.repository import Pango
+@@ -11,6 +11,7 @@ from gi.repository import Pango
  import os.path
  import sys
  import signal
@@ -28,7 +30,7 @@ index a961480..3759ba8 100755
  
  #support running uninstalled
  _dirname = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-@@ -36,6 +37,7 @@ class BluemanAdapters:
+@@ -40,6 +41,7 @@ class BluemanAdapters:
  
          builder = Gtk.Builder()
          builder.set_translation_domain("blueman")
@@ -37,18 +39,18 @@ index a961480..3759ba8 100755
          self.dialog = builder.get_object("dialog")
  
 diff --git a/apps/blueman-assistant b/apps/blueman-assistant
-index 7d96ec7..c322256 100755
+index 0b8544b..b23150f 100755
 --- a/apps/blueman-assistant
 +++ b/apps/blueman-assistant
-@@ -16,6 +16,7 @@ import random
+@@ -19,6 +19,7 @@ import os
+ import sys
  import signal
- import dbus.glib
  from optparse import OptionParser
 +from locale import bind_textdomain_codeset
  
  #support running uninstalled
  _dirname = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-@@ -62,6 +63,7 @@ class Assistant:
+@@ -60,6 +61,7 @@ class Assistant:
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
@@ -57,18 +59,18 @@ index 7d96ec7..c322256 100755
          self.assistant = self.Builder.get_object("assistant")
          self.assistant.set_title(_("Bluetooth Assistant"))
 diff --git a/apps/blueman-manager b/apps/blueman-manager
-index 666f16c..af23015 100755
+index d276692..e272528 100755
 --- a/apps/blueman-manager
 +++ b/apps/blueman-manager
-@@ -8,6 +8,7 @@ from dbus.mainloop.glib import DBusGMainLoop
- from blueman.Constants import *
+@@ -14,6 +14,7 @@ from blueman.Constants import *
  import gi
  gi.require_version("Gtk", "3.0")
-+from locale import bind_textdomain_codeset
  from gi.repository import Gtk
- from gi.repository import GObject
- from blueman.bluez.BlueZInterface import BlueZInterface
-@@ -46,6 +47,7 @@ class Blueman:
++from locale import bind_textdomain_codeset
+ 
+ #support running uninstalled
+ _dirname = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+@@ -47,6 +48,7 @@ class Blueman:
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
@@ -77,10 +79,10 @@ index 666f16c..af23015 100755
  
          self.window = self.Builder.get_object("window")
 diff --git a/apps/blueman-sendto b/apps/blueman-sendto
-index 06ad626..a7099ab 100755
+index 54e30b4..3f99d1e 100755
 --- a/apps/blueman-sendto
 +++ b/apps/blueman-sendto
-@@ -13,6 +13,7 @@ from optparse import OptionParser
+@@ -17,6 +17,7 @@ from optparse import OptionParser
  import gettext
  import urllib
  import time
@@ -88,7 +90,7 @@ index 06ad626..a7099ab 100755
  
  from blueman.Constants import *
  import gi
-@@ -48,6 +49,7 @@ class Sender(GObject.GObject):
+@@ -52,6 +53,7 @@ class Sender(GObject.GObject):
          GObject.GObject.__init__(self)
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
@@ -97,10 +99,10 @@ index 06ad626..a7099ab 100755
          self.window = self.Builder.get_object("window")
  
 diff --git a/apps/blueman-services b/apps/blueman-services
-index fb1428d..e3e708b 100755
+index 3e343ca..5e41261 100755
 --- a/apps/blueman-services
 +++ b/apps/blueman-services
-@@ -2,6 +2,7 @@
+@@ -7,6 +7,7 @@ from __future__ import unicode_literals
  
  import os
  import sys
@@ -108,27 +110,28 @@ index fb1428d..e3e708b 100755
  #support running uninstalled
  _dirname = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
  if os.path.exists(os.path.join(_dirname, "CHANGELOG.md")):
-@@ -29,6 +30,7 @@ class BluemanServices:
+@@ -35,6 +36,7 @@ class BluemanServices:
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
 +        bind_textdomain_codeset("blueman", "UTF-8")
          self.Builder.add_from_file(UI_PATH + "/services.ui")
  
-         self.Config = Config()
+         self.Config = Config("org.blueman.general")
 diff --git a/blueman/gui/GsmSettings.py b/blueman/gui/GsmSettings.py
-index b12f77f..cc80492 100644
+index 2919a69..3cb7057 100644
 --- a/blueman/gui/GsmSettings.py
 +++ b/blueman/gui/GsmSettings.py
-@@ -3,6 +3,7 @@ from blueman.Functions import *
- from blueman.Constants import *
+@@ -3,6 +3,8 @@ from __future__ import division
+ from __future__ import absolute_import
+ from __future__ import unicode_literals
  
- from gi.repository import Gtk
 +from locale import bind_textdomain_codeset
- 
- 
- class GsmSettings(Gtk.Dialog):
-@@ -13,6 +14,7 @@ class GsmSettings(Gtk.Dialog):
++
+ from blueman.main.Config import Config
+ from blueman.Functions import *
+ from blueman.Constants import *
+@@ -20,6 +22,7 @@ class GsmSettings(Gtk.Dialog):
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
@@ -137,30 +140,71 @@ index b12f77f..cc80492 100644
  
          vbox = self.Builder.get_object("vbox1")
 diff --git a/blueman/gui/applet/PluginDialog.py b/blueman/gui/applet/PluginDialog.py
-index 71dd742..3a1f932 100644
+index eb70b45..def7e48 100644
 --- a/blueman/gui/applet/PluginDialog.py
 +++ b/blueman/gui/applet/PluginDialog.py
-@@ -1,4 +1,5 @@
- from gi.repository import Gtk
-+from locale import bind_textdomain_codeset
- from blueman.Constants import *
- from blueman.Functions import *
+@@ -3,6 +3,8 @@ from __future__ import division
+ from __future__ import absolute_import
+ from __future__ import unicode_literals
  
-@@ -97,7 +98,8 @@ class PluginDialog(Gtk.Dialog):
++from locale import bind_textdomain_codeset
++
+ import gi
+ gi.require_version("Gtk", "3.0")
+ from gi.repository import Gtk
+@@ -105,6 +107,7 @@ class PluginDialog(Gtk.Dialog):
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
--        self.Builder.add_from_file(UI_PATH + "/applet-plugins-widget.ui")
 +        bind_textdomain_codeset("blueman", "UTF-8")
-+        self.Builder.add_from_file(UI_PATH + "/applet-plugins-widget.ui")
+         self.Builder.add_from_file(UI_PATH + "/applet-plugins-widget.ui")
  
          self.set_title(_("Plugins"))
-         self.props.icon_name = "blueman"
+diff --git a/blueman/gui/manager/ManagerDeviceMenu.py b/blueman/gui/manager/ManagerDeviceMenu.py
+index f0dea5a..031b456 100644
+--- a/blueman/gui/manager/ManagerDeviceMenu.py
++++ b/blueman/gui/manager/ManagerDeviceMenu.py
+@@ -3,6 +3,7 @@ from __future__ import division
+ from __future__ import absolute_import
+ from __future__ import unicode_literals
+ 
++from locale import bind_textdomain_codeset
+ from operator import itemgetter
+ from blueman.Sdp import uuid128_to_uuid16, SERIAL_PORT_SVCLASS_ID, OBEX_OBJPUSH_SVCLASS_ID, OBEX_FILETRANS_SVCLASS_ID
+ from blueman.Functions import *
+@@ -312,6 +313,7 @@ class ManagerDeviceMenu(Gtk.Menu):
+ 
+             builder = Gtk.Builder()
+             builder.set_translation_domain("blueman")
++            bind_textdomain_codeset("blueman", "UTF-8")
+             builder.add_from_file(UI_PATH + "/rename-device.ui")
+             dialog = builder.get_object("dialog")
+             dialog.set_transient_for(self.Blueman.window)
+diff --git a/blueman/main/applet/BluezAgent.py b/blueman/main/applet/BluezAgent.py
+index f49946d..e930963 100644
+--- a/blueman/main/applet/BluezAgent.py
++++ b/blueman/main/applet/BluezAgent.py
+@@ -6,6 +6,7 @@ from __future__ import unicode_literals
+ import dbus
+ from dbus.mainloop.glib import DBusGMainLoop
+ import dbus.service
++from locale import bind_textdomain_codeset
+ from blueman.Functions import get_icon, dprint
+ 
+ import gi
+@@ -68,6 +69,7 @@ class BluezAgent(_GObjectAgent, Agent, GObject.GObject):
+         builder = Gtk.Builder()
+         builder.add_from_file(UI_PATH + "/applet-passkey.ui")
+         builder.set_translation_domain("blueman")
++        bind_textdomain_codeset("blueman", "UTF-8")
+         dialog = builder.get_object("dialog")
+ 
+         dialog.props.icon_name = "blueman"
 diff --git a/blueman/plugins/applet/NetUsage.py b/blueman/plugins/applet/NetUsage.py
-index f6acb1f..5545112 100644
+index 1f3ad04..a498f98 100644
 --- a/blueman/plugins/applet/NetUsage.py
 +++ b/blueman/plugins/applet/NetUsage.py
-@@ -17,7 +17,7 @@ import dbus
+@@ -24,7 +24,7 @@ import dbus
  import time
  import datetime
  import gettext
@@ -169,7 +213,7 @@ index f6acb1f..5545112 100644
  
  class MonitorBase(GObject.GObject):
      __gsignals__ = {
-@@ -134,6 +134,7 @@ class Dialog:
+@@ -135,6 +135,7 @@ class Dialog:
          builder = Gtk.Builder()
          builder.add_from_file(UI_PATH + "/net-usage.ui")
          builder.set_translation_domain("blueman")
@@ -178,35 +222,39 @@ index f6acb1f..5545112 100644
          self.dialog = builder.get_object("dialog")
          self.dialog.connect("response", self.on_response)
 diff --git a/blueman/plugins/services/Network.py b/blueman/plugins/services/Network.py
-index 278121e..e688e68 100644
+index 59e1da3..f36691a 100644
 --- a/blueman/plugins/services/Network.py
 +++ b/blueman/plugins/services/Network.py
-@@ -1,4 +1,5 @@
- from gi.repository import Gtk
+@@ -18,6 +18,7 @@ from blueman.main.Mechanism import Mechanism
+ from blueman.main.AppletService import AppletService
+ from blueman.gui.Dialogs import NetworkErrorDialog
+ from random import randint
 +from locale import bind_textdomain_codeset
- from blueman.Constants import *
- from blueman.Functions import have, dprint, mask_ip4_address
- from blueman.Lib import get_net_interfaces, get_net_address, get_net_netmask
-@@ -19,7 +20,7 @@ class Network(ServicePlugin):
+ 
+ 
+ class Network(ServicePlugin):
+@@ -27,6 +28,7 @@ class Network(ServicePlugin):
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
--        self.Builder.add_from_file(UI_PATH + "/services-network.ui")
-+        bind_textdomain_codeset("blueman", "UTF-8")        self.Builder.add_from_file(UI_PATH + "/services-network.ui")
++        bind_textdomain_codeset("blueman", "UTF-8")
+         self.Builder.add_from_file(UI_PATH + "/services-network.ui")
          self.widget = self.Builder.get_object("network")
  
-         self.ignored_keys = []
 diff --git a/blueman/plugins/services/Transfer.py b/blueman/plugins/services/Transfer.py
-index d14d0eb..c3e71ad 100644
+index 61b9db1..4474e93 100644
 --- a/blueman/plugins/services/Transfer.py
 +++ b/blueman/plugins/services/Transfer.py
-@@ -1,4 +1,5 @@
- from gi.repository import Gtk
-+from locale import bind_textdomain_codeset
- from blueman.Constants import *
- from blueman.plugins.ServicePlugin import ServicePlugin
+@@ -3,6 +3,8 @@ from __future__ import division
+ from __future__ import absolute_import
+ from __future__ import unicode_literals
  
-@@ -14,6 +15,7 @@ class Transfer(ServicePlugin):
++from locale import bind_textdomain_codeset
++
+ import gi
+ gi.require_version("Gtk", "3.0")
+ from gi.repository import Gtk
+@@ -21,6 +23,7 @@ class Transfer(ServicePlugin):
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
@@ -215,5 +263,5 @@ index d14d0eb..c3e71ad 100644
          self.widget = self.Builder.get_object("transfer")
  
 -- 
-2.3.1
+2.5.0
 
