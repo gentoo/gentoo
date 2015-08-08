@@ -1,6 +1,19 @@
 # ChangeLog for dev-java/qdox
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/qdox/ChangeLog,v 1.48 2015/07/11 09:22:21 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/qdox/ChangeLog,v 1.51 2015/08/07 23:30:38 sping Exp $
+
+  07 Aug 2015; Sebastian Pipping <sping@gentoo.org> qdox-1.6.3.ebuild,
+  qdox-1.12-r1.ebuild, qdox-1.12.1.ebuild:
+  Fix homepage (exists but has HTTP auth)
+
+*qdox-1.12.1 (07 Aug 2015)
+
+  07 Aug 2015; Sebastian Pipping <sping@gentoo.org> +qdox-1.12.1.ebuild:
+  Bump to 1.12.1 (bug #503918)
+
+  07 Aug 2015; Sebastian Pipping <sping@gentoo.org> qdox-1.12-r1.ebuild:
+  Fix file removal path for USE=-test (bug #503918, reported by Andreas
+  Sturmlechner)
 
   11 Jul 2015; James Le Cuirot <chewi@gentoo.org> qdox-1.6.3.ebuild:
   Drop java on ia64.

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/cron/cron-0-r1.ebuild,v 1.2 2015/07/24 09:09:48 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/virtual/cron/cron-0-r1.ebuild,v 1.3 2015/08/07 22:34:50 rich0 Exp $
 
 EAPI=4
 
@@ -18,4 +18,5 @@ RDEPEND="|| ( sys-process/cronie
 		sys-process/vixie-cron
 		sys-process/bcron
 		sys-process/dcron
-		sys-process/fcron )"
+		sys-process/fcron
+		sys-process/systemd-cron )"
