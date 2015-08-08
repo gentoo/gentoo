@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/pbr-1.4.0.ebuild,v 1.1 2015/08/04 05:44:06 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/pbr-1.4.0.ebuild,v 1.2 2015/08/08 09:11:16 patrick Exp $
 
 EAPI=5
 
@@ -14,7 +14,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~amd64-linux ~x86-linux"
+#KEYWORDS="~amd64 ~hppa ~amd64-linux ~x86-linux"
+KEYWORDS=""
 IUSE="test"
 
 DEPEND="

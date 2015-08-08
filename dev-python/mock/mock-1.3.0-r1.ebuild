@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mock/mock-1.3.0.ebuild,v 1.1 2015/07/30 18:25:59 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mock/mock-1.3.0-r1.ebuild,v 1.1 2015/08/08 09:10:57 patrick Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
@@ -16,10 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~m68k ~mips ~s390 ~sh ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc test"
 
-CDEPEND="$(python_gen_cond_dep 'dev-python/funcsigs[${PYTHON_USEDEP}]' 'python2_7')"
+CDEPEND="$(python_gen_cond_dep 'dev-python/funcsigs[${PYTHON_USEDEP}]' 'python2_7')
+	>=dev-python/pbr-1.3[${PYTHON_USEDEP}]"
 DEPEND="
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]
-	>=dev-python/pbr-1.3[${PYTHON_USEDEP}]
 	test? (
 		${CDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
