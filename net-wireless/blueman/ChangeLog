@@ -1,6 +1,23 @@
 # ChangeLog for net-wireless/blueman
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueman/ChangeLog,v 1.36 2015/08/08 15:11:45 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueman/ChangeLog,v 1.39 2015/08/08 16:16:09 mgorny Exp $
+
+  08 Aug 2015; Michał Górny <mgorny@gentoo.org> blueman-2.0.ebuild,
+  blueman-9999.ebuild:
+  Add additional deps and kernel checks for USE=network. Bug #487378.
+
+  08 Aug 2015; Michał Górny <mgorny@gentoo.org> -blueman-1.23-r1.ebuild,
+  -blueman-1.23.ebuild, -blueman-1.23_p20140717-r1.ebuild,
+  -files/blueman-1.23_p20140717-set-codeset-for-gettext-to-UTF-8-always.patch,
+  blueman-1.23-r2.ebuild, blueman-1.98_p20150105.ebuild:
+  Clean up old. Update HOMEPAGE in the remaining ebuilds.
+
+*blueman-2.0 (08 Aug 2015)
+
+  08 Aug 2015; Michał Górny <mgorny@gentoo.org> +blueman-2.0.ebuild,
+  +files/blueman-2.0-set-codeset-for-gettext-to-UTF-8-always.patch,
+  blueman-9999.ebuild:
+  Version bump with schema install fix to the live ebuild.
 
   08 Aug 2015; Michał Górny <mgorny@gentoo.org> blueman-9999.ebuild:
   Fix USE=appindicator and deps for USE=pulseaudio.
