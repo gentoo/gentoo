@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/antlr/antlr-3.1.3-r3.ebuild,v 1.2 2015/07/11 09:19:56 chewi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/antlr/antlr-3.1.3-r3.ebuild,v 1.3 2015/08/08 01:55:34 sping Exp $
 
 EAPI="2"
 JAVA_PKG_IUSE="source"
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 	>=virtual/jdk-1.5"
 
 java_prepare() {
+	epatch "${FILESDIR}"/${P}-jdk-8.patch || die
+
 	rm -v lib/*.jar lib/.*.jar || die
 	rm -v runtime/ActionScript/project/lib/*.jar || die
 	# We must bundle this as we can't depend on ourselves

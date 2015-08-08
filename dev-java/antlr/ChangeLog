@@ -1,6 +1,10 @@
 # ChangeLog for dev-java/antlr
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/antlr/ChangeLog,v 1.120 2015/07/19 08:22:24 monsieurp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/antlr/ChangeLog,v 1.121 2015/08/08 01:55:34 sping Exp $
+
+  08 Aug 2015; Sebastian Pipping <sping@gentoo.org> antlr-3.1.3-r3.ebuild,
+  +files/antlr-3.1.3-jdk-8.patch:
+  Fix compilation with oracle-jdk-bin-1.8 (bug #506678)
 
 *antlr-2.7.7-r6 (19 Jul 2015)
 
