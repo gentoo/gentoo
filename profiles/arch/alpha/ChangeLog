@@ -1,6 +1,9 @@
 # ChangeLog for Gentoo/Alpha profile directory
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/ChangeLog,v 1.234 2015/08/07 08:09:06 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/ChangeLog,v 1.235 2015/08/08 11:16:22 klausman Exp $
+
+  08 Aug 2015; Tobias Klausmann <klausman@gentoo.org> package.use.mask:
+  Mask USE=gevent for pyzor due to unavailability of greenlets
 
   07 Aug 2015; Tobias Klausmann <klausman@gentoo.org> package.use.mask,
   use.mask:

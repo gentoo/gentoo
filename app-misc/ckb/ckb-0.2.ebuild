@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ckb/ckb-0.1.6.ebuild,v 1.1 2015/07/30 11:17:35 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ckb/ckb-0.2.ebuild,v 1.1 2015/08/08 11:00:51 mrueg Exp $
 
 EAPI=5
 

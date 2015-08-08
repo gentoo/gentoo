@@ -1,6 +1,18 @@
 # ChangeLog for sci-mathematics/cgal
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/cgal/ChangeLog,v 1.26 2015/02/22 11:15:16 pacho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/cgal/ChangeLog,v 1.28 2015/08/08 10:57:06 xmw Exp $
+
+*cgal-4.6.1 (08 Aug 2015)
+
+  08 Aug 2015; Michael Weber <xmw@gentoo.org> +cgal-4.6.1.ebuild:
+  Version bump (thanks Helmut Jarausch, bug 555732).
+
+*cgal-4.3-r1 (08 Aug 2015)
+
+  08 Aug 2015; Michael Weber <xmw@gentoo.org> +cgal-4.3-r1.ebuild,
+  +files/cgal-4.3-cmake-3.3.patch, cgal-4.3.ebuild:
+  Revbump to cmakeargs variable name, adjust policy for cmake-3.3 and fix subdir
+  walking (bugs 556258, 556130). Add slot on mpfr.
 
   22 Feb 2015; Pacho Ramos <pacho@gentoo.org> cgal-4.3.ebuild:
   amd64/x86 stable, bug #540522

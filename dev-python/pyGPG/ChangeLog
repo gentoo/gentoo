@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/pyGPG
 # Copyright 2012-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyGPG/ChangeLog,v 1.13 2015/06/07 15:21:34 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyGPG/ChangeLog,v 1.14 2015/08/08 11:23:52 klausman Exp $
+
+  08 Aug 2015; Tobias Klausmann <klausman@gentoo.org> pyGPG-0.1.ebuild:
+  Keyworded on alpha, bug 539366
 
   07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   Add github to remote-id in metadata.xml

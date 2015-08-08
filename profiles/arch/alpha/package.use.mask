@@ -1,6 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.192 2015/08/07 08:09:06 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.193 2015/08/08 11:16:22 klausman Exp $
+
+# Tobias Klausmann <klausman@gentoo.org> (08 Aug 2015)
+# It's unlikely that greenlet will ever be ported to Alpha. Mask USE=gevent for
+# pyzor to avoid that dependency. See bug 538510
+>=dev-python/pyzor-1.0.0 gevent
 
 # Tobias Klausmann <klausman@gentoo.org> (11 Jul 2015)
 # The test suite has ridiculous (transitive) requirements like

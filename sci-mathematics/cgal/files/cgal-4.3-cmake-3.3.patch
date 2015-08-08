@@ -1,0 +1,24 @@
+--- CGAL-4.3/CMakeLists.txt
++++ CGAL-4.3/CMakeLists.txt
+@@ -19,6 +19,10 @@
+   cmake_policy(VERSION 2.6)
+ endif()
+ 
++if(POLICY  CMP0026)
++  cmake_policy(SET  CMP0026  OLD)
++endif()
++
+ #--------------------------------------------------------------------------------------------------
+ #
+ #                                    -= PACKAGE SETUP =-
+--- CGAL-4.3/src/CMakeLists.txt
++++ CGAL-4.3/src/CMakeLists.txt
+@@ -116,7 +116,7 @@
+   file(GLOB CONFIGURED_LIBS_IN_PACKAGE ${package}/src/CGAL_*/CMakeLists.txt)
+   foreach (libconfigfile ${CONFIGURED_LIBS_IN_PACKAGE})
+     string(REPLACE "${package}/src/" "" libconfigfile ${libconfigfile})
+-    string(REPLACE "//CMakeLists.txt" "" CGAL_CONFIGURED_LIBRARY_NAME ${libconfigfile})
++    string(REPLACE "/CMakeLists.txt" "" CGAL_CONFIGURED_LIBRARY_NAME ${libconfigfile})
+     if (NOT ${CGAL_CONFIGURED_LIBRARY_NAME} STREQUAL "CGAL")
+ 
+      message(STATUS "Sources for CGAL component library '${CGAL_CONFIGURED_LIBRARY_NAME}' detected")

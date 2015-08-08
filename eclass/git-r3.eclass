@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/git-r3.eclass,v 1.51 2015/08/08 09:32:50 mgorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/git-r3.eclass,v 1.52 2015/08/08 10:52:29 mgorny Exp $
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
@@ -771,7 +771,7 @@ git-r3_checkout() {
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
 
-	einfo "Checking out \e[1m${repos[0]}\e[22m to \e[1m${out_dir}\[e22m ..."
+	einfo "Checking out \e[1m${repos[0]}\e[22m to \e[1m${out_dir}\e[22m ..."
 
 	if ! git cat-file -e refs/git-r3/"${local_id}"/__main__; then
 		if [[ ${EVCS_OFFLINE} ]]; then
