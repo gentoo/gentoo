@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/arel/arel-6.0.2.ebuild,v 1.1 2015/07/11 17:58:27 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/arel/arel-6.0.2.ebuild,v 1.2 2015/08/08 07:29:39 graaff Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
@@ -28,5 +28,6 @@ ruby_add_bdepend "
 	)"
 
 all_ruby_prepare() {
-	sed -i -e "/[Bb]undler/d" Rakefile || die
+	sed -i -e "/[Bb]undler/d" \
+		-e '/specname/,$ s:^:#:' Rakefile || die
 }

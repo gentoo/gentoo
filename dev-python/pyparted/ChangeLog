@@ -1,6 +1,10 @@
 # ChangeLog for dev-python/pyparted
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyparted/ChangeLog,v 1.104 2015/07/30 12:36:44 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyparted/ChangeLog,v 1.105 2015/08/08 06:56:00 jer Exp $
+
+  08 Aug 2015; Jeroen Roovers <jer@gentoo.org> -pyparted-3.10.ebuild,
+  -pyparted-3.10-r1.ebuild, -pyparted-3.10.2.ebuild, -pyparted-3.10.3.ebuild:
+  Old.
 
   30 Jul 2015; Agostino Sarubbo <ago@gentoo.org> pyparted-3.10.3-r1.ebuild:
   Stable for sparc, wrt bug #543038

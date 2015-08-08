@@ -1,6 +1,9 @@
 # ChangeLog for dev-ruby/arel
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/arel/ChangeLog,v 1.55 2015/07/11 17:58:27 mrueg Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/arel/ChangeLog,v 1.56 2015/08/08 07:29:39 graaff Exp $
+
+  08 Aug 2015; Hans de Graaff <graaff@gentoo.org> arel-6.0.2.ebuild:
+  Avoid dependency on dev-vcs/git.
 
 *arel-6.0.2 (11 Jul 2015)
 

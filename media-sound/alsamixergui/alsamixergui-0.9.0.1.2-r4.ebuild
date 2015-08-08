@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsamixergui/alsamixergui-0.9.0.1.2-r4.ebuild,v 1.21 2013/02/27 07:51:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsamixergui/alsamixergui-0.9.0.1.2-r4.ebuild,v 1.22 2015/08/08 06:52:13 jer Exp $
 
 EAPI=4
 inherit autotools eutils flag-o-matic
@@ -36,7 +36,7 @@ src_prepare() {
 
 src_configure() {
 	append-ldflags "-L$(dirname $(fltk-config --libs))"
-	append-flags "-I/usr/include/fltk-1"
+	append-flags "-I/usr/include/fltk"
 	econf
 }
 
