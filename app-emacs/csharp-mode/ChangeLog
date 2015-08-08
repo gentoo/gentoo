@@ -1,6 +1,10 @@
 # ChangeLog for app-emacs/csharp-mode
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/csharp-mode/ChangeLog,v 1.15 2014/11/19 17:27:02 ulm Exp $
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/csharp-mode/ChangeLog,v 1.16 2015/08/08 12:31:56 ulm Exp $
+
+  08 Aug 2015; Ulrich Müller <ulm@gentoo.org>
+  files/csharp-mode-0.7.0-emacs-24.4.patch:
+  Fix build failure with Emacs 24.5, bug 557002.
 
   19 Nov 2014; Ulrich Müller <ulm@gentoo.org> csharp-mode-0.7.0-r1.ebuild,
   +files/csharp-mode-0.7.0-emacs-24.4.patch:
