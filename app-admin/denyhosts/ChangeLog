@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/denyhosts
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/ChangeLog,v 1.95 2015/08/06 15:22:54 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/denyhosts/ChangeLog,v 1.96 2015/08/08 14:16:14 maekke Exp $
+
+  08 Aug 2015; Markus Meier <maekke@gentoo.org> denyhosts-2.9.ebuild:
+  arm stable, bug #556522
 
   06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> denyhosts-2.9.ebuild:
   Stable on alpha, bug 556522

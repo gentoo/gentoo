@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/emacs
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/ChangeLog,v 1.686 2015/08/04 13:16:49 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/ChangeLog,v 1.687 2015/08/08 14:15:31 maekke Exp $
+
+  08 Aug 2015; Markus Meier <maekke@gentoo.org> emacs-24.5.ebuild:
+  arm stable, bug #556288
 
   04 Aug 2015; Mikle Kolyada <zlogene@gentoo.org> emacs-24.5.ebuild:
   ia64 stable wrt bug #556288

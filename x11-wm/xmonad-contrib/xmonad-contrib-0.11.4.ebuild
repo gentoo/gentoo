@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/xmonad-contrib/xmonad-contrib-0.11.4.ebuild,v 1.2 2015/08/01 14:40:24 slyfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/xmonad-contrib/xmonad-contrib-0.11.4.ebuild,v 1.3 2015/08/08 13:45:49 slyfox Exp $
 
 EAPI=5
 
@@ -21,6 +21,8 @@ IUSE="+xft"
 
 RDEPEND="dev-haskell/extensible-exceptions:=[profile?]
 	>=dev-haskell/mtl-1:=[profile?] <dev-haskell/mtl-3:=[profile?]
+	dev-haskell/old-locale:=[profile?]
+	dev-haskell/old-time:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
 	>=dev-haskell/x11-1.6.1:=[profile?] <dev-haskell/x11-1.7:=[profile?]

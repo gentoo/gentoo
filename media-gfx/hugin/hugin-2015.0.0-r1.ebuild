@@ -1,17 +1,17 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/hugin-2015.0.0_rc3.ebuild,v 1.1 2015/07/28 16:31:52 maekke Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/hugin-2015.0.0-r1.ebuild,v 1.1 2015/08/08 14:12:42 maekke Exp $
 
 EAPI=5
 
-WX_GTK_VER="2.8"
+WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit base python-single-r1 wxwidgets versionator cmake-utils
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
-SRC_URI="https://launchpad.net/${PN}/2015.0/2015.0rc3/+download/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 SIFT"
 SLOT="0"
@@ -39,7 +39,7 @@ CDEPEND="
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
-	x11-libs/wxGTK:2.8=[X,opengl,-odbc]
+	x11-libs/wxGTK:3.0=[X,opengl]
 	lapack? ( virtual/blas virtual/lapack )
 	sift? ( media-gfx/autopano-sift-C )"
 RDEPEND="${CDEPEND}

@@ -1,6 +1,9 @@
 # ChangeLog for dev-python/decorator
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/decorator/ChangeLog,v 1.82 2015/08/06 15:40:22 klausman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/decorator/ChangeLog,v 1.83 2015/08/08 14:19:02 maekke Exp $
+
+  08 Aug 2015; Markus Meier <maekke@gentoo.org> decorator-3.4.2.ebuild:
+  arm stable, bug #556704
 
   06 Aug 2015; Tobias Klausmann <klausman@gentoo.org> decorator-3.4.2.ebuild:
   Stable on alpha, bug 556704
