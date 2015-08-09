@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pxml</remote-id>
+		<remote-id type="github">metagriffin/pxml</remote-id>
 	</upstream>
 </pkgmetadata>

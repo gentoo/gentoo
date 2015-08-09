@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/prompt_toolkit-0.41[${PYTHON_USEDEP}]
+	>=dev-python/prompt_toolkit-0.46[${PYTHON_USEDEP}]
 	>=dev-python/jedi-0.9.0[${PYTHON_USEDEP}]
 	dev-python/docopt[${PYTHON_USEDEP}]
 "

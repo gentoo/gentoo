@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">passwordmeter</remote-id>
+		<remote-id type="github">cadithealth/passwordmeter</remote-id>
 	</upstream>
 </pkgmetadata>

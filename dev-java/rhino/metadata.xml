@@ -7,4 +7,7 @@
 		It is typically embedded into Java applications to provide scripting
 		to end users.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">mozilla/rhino</remote-id>
+	</upstream>
 </pkgmetadata>

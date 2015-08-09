@@ -4,4 +4,7 @@
 	<maintainer>
 		<email>amadio@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">VcDevel/Vc</remote-id>
+	</upstream>
 </pkgmetadata>

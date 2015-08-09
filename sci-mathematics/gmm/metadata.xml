@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer>
-  <email>maintainer-needed@gentoo.org</email>
+  <email>amynka@gentoo.org</email>
 </maintainer>
 <longdescription lang='en'>
   Gmm++ is a generic C++ template library for sparse, dense and

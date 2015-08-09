@@ -16,4 +16,7 @@
 		<flag name="gnome">Install the sendto-plugin for <pkg>gnome-base/nautilus</pkg></flag>
 		<flag name="thunar">Install the sendto-plugin for <pkg>xfce-base/thunar</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">blueman-project/blueman</remote-id>
+	</upstream>
 </pkgmetadata>
