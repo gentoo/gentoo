@@ -4,6 +4,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python{3_3,3_4} )
+AUTOTOOLS_AUTORECONF=yes
 
 inherit autotools-utils python-r1
 
