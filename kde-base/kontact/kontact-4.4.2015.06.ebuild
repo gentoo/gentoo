@@ -9,7 +9,7 @@ KDE_HANDBOOK=optional
 inherit kde4-meta
 
 DESCRIPTION="KDE personal information manager (noakonadi branch)"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
