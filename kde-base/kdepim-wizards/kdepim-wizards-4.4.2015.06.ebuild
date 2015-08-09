@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="KDE PIM wizards (noakonadi branch)"
 IUSE="debug"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	$(add_kdebase_dep kdepimlibs '' 4.6)
