@@ -16,5 +16,6 @@
     implemented, light on server resources, and fairly speedy. </longdescription>
 	<upstream>
 		<remote-id type="pypi">gunicorn</remote-id>
+		<remote-id type="github">benoitc/gunicorn</remote-id>
 	</upstream>
 </pkgmetadata>
