@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+# $Id $
 
 EAPI=4
 
@@ -8,7 +8,7 @@ inherit autotools eutils linux-mod multilib toolchain-funcs udev
 
 DESCRIPTION="Open-MX - Myrinet Express over Generic Ethernet Hardware"
 HOMEPAGE="http://open-mx.gforge.inria.fr/"
-SRC_URI="http://gforge.inria.fr/frs/download.php/30245/${P}.tar.gz"
+SRC_URI="http://gforge.inria.fr/frs/download.php/34371/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
