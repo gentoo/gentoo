@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">asset</remote-id>
+		<remote-id type="github">metagriffin/asset</remote-id>
 	</upstream>
 </pkgmetadata>
