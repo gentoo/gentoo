@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/bsd/package.use.mask,v 1.2 2014/01/16 17:45:58 jer Exp $
+# $Id$
 
 # Michael Haubenwallner <haubi@gentoo.org> (30 Sep 2009)
 # *bsd do have a uuid implementation in libc (#230981).

@@ -1,5 +1,5 @@
 # Copyright 2003 Gentoo Technologies, Inc
-# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/files/1.1.13/conf,v 1.1 2007/03/31 19:03:18 robbat2 Exp $
+# $Id$
 # memcached config file
 
 MEMCACHED_BINARY="/usr/bin/memcached"

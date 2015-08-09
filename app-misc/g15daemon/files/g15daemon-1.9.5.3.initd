@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/g15daemon/files/g15daemon-1.9.5.3.initd,v 1.3 2014/08/03 11:23:31 polynomial-c Exp $
+# $Id$
 
 # Init script for g15daemon
 

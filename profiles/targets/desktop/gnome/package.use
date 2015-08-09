@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/gnome/package.use,v 1.31 2015/05/25 05:23:13 tetromino Exp $
+# $Id$
 
 # Needed by mutter defaults, bug #547300
 >=media-libs/clutter-1.20 egl

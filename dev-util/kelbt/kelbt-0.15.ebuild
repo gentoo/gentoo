@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kelbt/kelbt-0.15.ebuild,v 1.2 2012/06/24 07:56:56 flameeyes Exp $
+# $Id$
 
 EAPI=4
 

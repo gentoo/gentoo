@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.4.36.ebuild,v 1.2 2013/03/09 21:07:33 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

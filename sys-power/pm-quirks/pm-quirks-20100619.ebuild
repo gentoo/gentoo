@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/pm-quirks/pm-quirks-20100619.ebuild,v 1.8 2012/05/19 12:42:11 blueness Exp $
+# $Id$
 
 EAPI=3
 inherit multilib

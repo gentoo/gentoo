@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/files/4.6/shorewall6-lite.initd,v 1.2 2015/01/04 09:49:46 jlec Exp $
+# $Id$
 
 description='The Shoreline Firewall 6 Lite, more commonly known as "Shorewall6 Lite", is'
 description="${description} a high-level tool for configuring Netfilter."

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/netkit-ftpd/netkit-ftpd-0.17-r8.ebuild,v 1.7 2012/12/06 20:20:23 ulm Exp $
+# $Id$
 
 inherit eutils ssl-cert toolchain-funcs
 

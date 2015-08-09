@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-imagick/pecl-imagick-3.2.0_rc1.ebuild,v 1.3 2014/09/30 02:01:49 grknight Exp $
+# $Id$
 
 EAPI=5
 

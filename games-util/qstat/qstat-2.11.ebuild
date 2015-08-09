@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/qstat/qstat-2.11.ebuild,v 1.12 2014/12/04 17:03:29 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 DESCRIPTION="Server statics collector supporting many FPS games"

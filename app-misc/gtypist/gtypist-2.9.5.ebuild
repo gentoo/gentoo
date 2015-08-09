@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gtypist/gtypist-2.9.5.ebuild,v 1.4 2015/01/26 09:44:09 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils elisp-common

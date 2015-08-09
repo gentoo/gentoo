@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/uglygs/uglygs-0_rc11.ebuild,v 1.14 2015/03/12 20:35:51 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

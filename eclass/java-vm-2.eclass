@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-vm-2.eclass,v 1.49 2015/05/09 22:20:44 chewi Exp $
+# $Id$
 
 # @ECLASS: java-vm-2.eclass
 # @MAINTAINER:

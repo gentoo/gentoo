@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/tar/tar-1.28-r1.ebuild,v 1.2 2015/05/05 06:38:42 vapier Exp $
+# $Id$
 
 EAPI=4
 

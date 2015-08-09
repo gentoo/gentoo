@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/elfkickers/elfkickers-3.0-r1.ebuild,v 1.8 2011/09/24 17:23:55 armin76 Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/alex/alex-3.1.3.ebuild,v 1.7 2014/06/28 18:27:59 slyfox Exp $
+# $Id$
 
 EAPI=5
 

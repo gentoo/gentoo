@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/jubler/jubler-4.6.1-r3.ebuild,v 1.12 2015/07/07 03:00:36 patrick Exp $
+# $Id$
 
 EAPI="2"
 WANT_ANT_TASKS="ant-nodeps ant-contrib"

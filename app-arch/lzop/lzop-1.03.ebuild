@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/lzop/lzop-1.03.ebuild,v 1.11 2014/01/18 01:50:41 vapier Exp $
+# $Id$
 
 EAPI=2
 

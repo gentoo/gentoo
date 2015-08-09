@@ -1,5 +1,5 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/cygwin/1.7/package.provided,v 1.1 2010/08/31 06:55:40 grobian Exp $
+# $Id$
 
 sys-cygwin/libc-1.7

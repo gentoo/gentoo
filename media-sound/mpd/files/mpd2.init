@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/files/mpd2.init,v 1.1 2014/04/15 16:35:25 angelos Exp $
+# $Id$
 
 depend() {
 	need localmount

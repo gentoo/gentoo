@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/queue-repair/queue-repair-0.9.0.ebuild,v 1.14 2011/07/11 15:15:31 aballier Exp $
+# $Id$
 
 inherit eutils
 

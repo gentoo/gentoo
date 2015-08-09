@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/glance_store/glance_store-0.5.0.ebuild,v 1.1 2015/05/12 06:18:00 prometheanfire Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

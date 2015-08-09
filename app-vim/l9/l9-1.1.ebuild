@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/l9/l9-1.1.ebuild,v 1.3 2010/11/14 10:57:34 maekke Exp $
+# $Id$
 
 EAPI=3
 

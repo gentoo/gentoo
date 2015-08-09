@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/sparc/experimental/multilib/profile.bashrc,v 1.2 2009/01/01 22:15:42 bluebird Exp $
+# $Id$
 
 if [[ "${EBUILD_PHASE}" == "setup" ]]
 then

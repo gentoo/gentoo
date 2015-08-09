@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/flow-tools/flow-tools-0.68.5.1-r4.ebuild,v 1.3 2014/12/28 16:03:48 titanofold Exp $
+# $Id$
 
 EAPI=5
 inherit eutils user

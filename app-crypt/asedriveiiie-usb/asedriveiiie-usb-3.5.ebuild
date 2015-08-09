@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/asedriveiiie-usb/asedriveiiie-usb-3.5.ebuild,v 1.3 2012/05/03 18:16:40 jdhore Exp $
+# $Id$
 
 DESCRIPTION="ASEDriveIIIe USB Card Reader"
 HOMEPAGE="http://www.athena-scs.com"

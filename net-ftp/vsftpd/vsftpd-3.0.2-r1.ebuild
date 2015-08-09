@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/vsftpd-3.0.2-r1.ebuild,v 1.10 2013/09/06 18:35:11 ago Exp $
+# $Id$
 
 EAPI="4"
 

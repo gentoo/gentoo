@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/heirloom-tools/heirloom-tools-070715.ebuild,v 1.6 2013/06/10 05:20:53 ryao Exp $
+# $Id$
 
 EAPI="5"
 

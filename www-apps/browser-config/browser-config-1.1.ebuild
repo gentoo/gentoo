@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/browser-config/browser-config-1.1.ebuild,v 1.3 2008/02/17 19:04:46 hollow Exp $
+# $Id$
 
 DESCRIPTION="A lightweight modular configurable http url handler/browser launcher"
 HOMEPAGE="http://www.gentoo.org/"

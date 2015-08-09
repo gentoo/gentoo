@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dmalloc/dmalloc-5.5.2-r6.ebuild,v 1.9 2015/07/15 20:47:58 zlogene Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils multilib toolchain-funcs

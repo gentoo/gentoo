@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-ra3/quake3-ra3-1.76-r1.ebuild,v 1.5 2013/01/24 06:55:38 tupone Exp $
+# $Id$
 
 EAPI=2
 

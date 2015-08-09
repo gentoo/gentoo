@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/bfm/bfm-0.6.4-r1.ebuild,v 1.13 2015/02/25 15:42:38 ago Exp $
+# $Id$
 
 EAPI=5
 inherit multilib toolchain-funcs

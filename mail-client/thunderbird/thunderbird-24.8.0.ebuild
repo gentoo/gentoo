@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/thunderbird/thunderbird-24.8.0.ebuild,v 1.8 2015/07/16 19:14:42 axs Exp $
+# $Id$
 
 EAPI=5
 WANT_AUTOCONF="2.1"

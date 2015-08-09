@@ -1,10 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	golang-build	a2128e58ed9724a40d815e35697d32dd	golang-base	59e300a2d8836a6e8d508276da0d570f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	golang-vcs	3de627db08ae30e4d8d150773c49fd53	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4c9b687e2587240299a7efd61f8aa475
+SLOT=0
 DEFINED_PHASES=compile install prepare test unpack
+EAPI=5
 DEPEND=dev-go/go-net:= >=dev-lang/go-1.4.2:=
 DESCRIPTION=Go Tools
-EAPI=5
-HOMEPAGE=https://godoc.org/golang.org/x/tools
 LICENSE=BSD
-SLOT=0
 SRC_URI=http://golang.org/favicon.ico -> go-favicon.ico
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	golang-base	b27bb70124fa06118fd307e9f8df50b9	golang-build	347dcb77455fa2a3c30668a127d9b4dc	golang-vcs	616e88d5c2fef1e6db0ea78912c863bf	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=02a4a3251c60d1bac933ea3e9ddd3898
+HOMEPAGE=https://godoc.org/golang.org/x/tools

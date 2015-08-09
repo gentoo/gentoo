@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/g-ctan/g-ctan-2011.1.ebuild,v 1.1 2011/09/24 19:28:59 fauli Exp $
+# $Id$
 
 EAPI=2
 

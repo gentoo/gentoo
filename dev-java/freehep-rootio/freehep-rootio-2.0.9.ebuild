@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/freehep-rootio/freehep-rootio-2.0.9.ebuild,v 1.1 2010/01/28 17:51:04 weaver Exp $
+# $Id$
 
 JAVA_PKG_IUSE=""
 GROUP_ID="org.freehep"

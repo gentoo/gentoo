@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ehcache/ehcache-1.2.4-r3.ebuild,v 1.4 2015/03/27 10:28:18 ago Exp $
+# $Id$
 
 EAPI=5
 

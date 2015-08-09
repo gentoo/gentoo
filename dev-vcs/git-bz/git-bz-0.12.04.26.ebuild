@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-bz/git-bz-0.12.04.26.ebuild,v 1.2 2014/07/06 13:19:32 mgorny Exp $
+# $Id$
 
 EAPI=4
 PYTHON_DEPEND=2

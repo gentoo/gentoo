@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-2.12.23-r6.ebuild,v 1.14 2015/05/16 08:52:41 vapier Exp $
+# $Id$
 
 EAPI=5
 

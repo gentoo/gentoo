@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/rkhunter/files/rkhunter-1.3.cron,v 1.2 2009/12/19 19:21:00 williamh Exp $
+# $Id$
 # original author: Aaron Walker <ka0ttic@gentoo.org>
 
 ########################## Begin Configuration ###############################

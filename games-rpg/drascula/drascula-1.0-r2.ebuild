@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/drascula/drascula-1.0-r2.ebuild,v 1.3 2014/08/10 17:37:05 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

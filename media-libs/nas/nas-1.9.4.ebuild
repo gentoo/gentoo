@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/nas/nas-1.9.4.ebuild,v 1.11 2014/06/18 19:52:13 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib toolchain-funcs multilib-minimal

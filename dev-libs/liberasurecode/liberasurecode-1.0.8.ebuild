@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/liberasurecode/liberasurecode-1.0.8.ebuild,v 1.3 2015/08/02 18:47:37 ago Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

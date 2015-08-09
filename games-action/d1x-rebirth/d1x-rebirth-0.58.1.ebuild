@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/d1x-rebirth/d1x-rebirth-0.58.1.ebuild,v 1.2 2015/04/19 09:47:40 pacho Exp $
+# $Id$
 
 EAPI=5
 CDROM_OPTIONAL="yes"

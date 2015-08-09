@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas/openvas-7.0.10.ebuild,v 1.1 2015/05/19 09:05:18 jlec Exp $
+# $Id$
 
 EAPI=5
 

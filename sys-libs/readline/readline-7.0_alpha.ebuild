@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/readline/readline-7.0_alpha.ebuild,v 1.1 2015/07/13 04:29:49 vapier Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/pam-1.1.5.ebuild,v 1.9 2012/07/05 16:17:52 flameeyes Exp $
+# $Id$
 
 EAPI="4"
 

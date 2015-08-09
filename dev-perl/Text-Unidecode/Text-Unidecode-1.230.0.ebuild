@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Unidecode/Text-Unidecode-1.230.0.ebuild,v 1.1 2015/03/22 16:55:49 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

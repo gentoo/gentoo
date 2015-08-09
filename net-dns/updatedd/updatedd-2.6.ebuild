@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/updatedd/updatedd-2.6.ebuild,v 1.8 2012/02/16 19:02:27 phajdan.jr Exp $
+# $Id$
 
 inherit eutils
 

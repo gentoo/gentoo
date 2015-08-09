@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/axtls/axtls-1.5.2.ebuild,v 1.1 2015/04/14 11:27:43 blueness Exp $
+# $Id$
 
 EAPI="5"
 

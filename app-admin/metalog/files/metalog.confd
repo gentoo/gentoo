@@ -1,5 +1,5 @@
 # /etc/conf.d/metalog
-# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/files/metalog.confd,v 1.7 2006/02/08 01:04:02 vapier Exp $
+# $Id$
 
 # Some useful options:
 #  -a   Log with buffering

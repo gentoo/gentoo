@@ -1,9 +1,0 @@
-# ChangeLog for kde-misc/krunner-googletranslate
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/krunner-googletranslate/ChangeLog,v 1.1 2013/06/18 01:22:57 creffett Exp $
-
-*krunner-googletranslate-0.1 (18 Jun 2013)
-
-  18 Jun 2013; Chris Reffett <creffett@gentoo.org>
-  +krunner-googletranslate-0.1.ebuild, +metadata.xml:
-  Add to tree from kde overlay

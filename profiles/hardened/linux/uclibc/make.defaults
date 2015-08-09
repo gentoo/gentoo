@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/uclibc/make.defaults,v 1.6 2014/08/16 21:10:37 blueness Exp $
+# $Id$
 
 USE="${USE} hardened pax_kernel pic -jit -orc"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened pax_kernel pic -jit -orc"

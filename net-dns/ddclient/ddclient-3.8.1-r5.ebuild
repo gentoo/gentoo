@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/ddclient/ddclient-3.8.1-r5.ebuild,v 1.8 2013/12/22 14:45:17 ago Exp $
+# $Id$
 
 EAPI="4"
 inherit eutils systemd user

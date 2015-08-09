@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/flumotion/flumotion-0.8.1-r1.ebuild,v 1.1 2015/01/05 23:35:15 eva Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

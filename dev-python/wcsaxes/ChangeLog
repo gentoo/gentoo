@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/wcsaxes
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wcsaxes/ChangeLog,v 1.2 2015/01/18 20:01:06 xarthisius Exp $
-
-*wcsaxes-0.3 (18 Jan 2015)
-
-  18 Jan 2015; Kacper Kowalik <xarthisius@gentoo.org> +metadata.xml,
-  +wcsaxes-0.3.ebuild:
-  Initial import, ebuild written by me

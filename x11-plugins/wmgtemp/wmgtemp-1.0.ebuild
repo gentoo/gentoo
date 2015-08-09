@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmgtemp/wmgtemp-1.0.ebuild,v 1.3 2010/09/15 10:22:18 s4t4n Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/lodgeit/lodgeit-0.3_p20120507.ebuild,v 1.4 2013/04/28 13:25:39 ulm Exp $
+# $Id$
 
 EAPI="4"
 

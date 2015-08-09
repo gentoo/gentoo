@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/corebird/corebird-1.0.ebuild,v 1.2 2015/06/30 08:07:18 idella4 Exp $
+# $Id$
 
 EAPI=5
 VALA_MIN_API_VERSION=0.26

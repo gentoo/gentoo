@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/noad/noad-0.7.3-r1.ebuild,v 1.5 2013/05/14 09:38:01 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/protobuf/protobuf-2.5.0-r2.ebuild,v 1.8 2015/05/15 12:28:13 pacho Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1

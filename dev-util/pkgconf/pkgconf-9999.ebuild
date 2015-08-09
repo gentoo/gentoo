@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/pkgconf/pkgconf-9999.ebuild,v 1.13 2014/03/30 09:16:07 mgorny Exp $
+# $Id$
 
 EAPI=5
 

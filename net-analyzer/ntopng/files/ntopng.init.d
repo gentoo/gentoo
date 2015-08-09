@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntopng/files/ntopng.init.d,v 1.1 2015/02/03 06:40:01 slis Exp $
+# $Id$
 
 depend() {
     need net redis

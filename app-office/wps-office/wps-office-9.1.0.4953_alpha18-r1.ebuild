@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/wps-office/wps-office-9.1.0.4953_alpha18-r1.ebuild,v 1.1 2015/05/26 20:39:35 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit fdo-mime font gnome2-utils unpacker versionator

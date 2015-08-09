@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/epkg/epkg-0.4.ebuild,v 1.1 2015/03/14 18:50:32 jdhore Exp $
+# $Id$
 
 EAPI=5
 

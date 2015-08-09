@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-osdserver/files/rc-addon.sh,v 1.1 2007/12/02 16:02:37 hd_brummy Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-osdserver
 #

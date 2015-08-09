@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/express/express-0.9.5.ebuild,v 1.3 2012/11/09 14:39:17 jlec Exp $
+# $Id$
 
 EAPI=4
 

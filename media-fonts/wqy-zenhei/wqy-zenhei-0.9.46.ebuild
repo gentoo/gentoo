@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/wqy-zenhei/wqy-zenhei-0.9.46.ebuild,v 1.2 2015/04/28 10:07:38 yngwin Exp $
+# $Id$
 
 EAPI=5
 DISABLE_AUTOFORMATTING=true

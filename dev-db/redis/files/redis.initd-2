@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/files/redis.initd-2,v 1.1 2013/05/06 08:45:00 djc Exp $
+# $Id$
 
 REDIS_DIR=${REDIS_DIR:-/var/lib/redis}
 REDIS_CONF=${REDIS_CONF:-/etc/redis.conf}

@@ -1,7 +1,8 @@
+_eclasses_=
+_md5_=81296ca8de3a95c860f8ded69a02b68
+SLOT=0
 DEFINED_PHASES=-
-DESCRIPTION=Virtual for LeechCraft plugins providing a tray area
 EAPI=4
+DESCRIPTION=Virtual for LeechCraft plugins providing a tray area
 KEYWORDS=amd64 x86
 RDEPEND=app-leechcraft/lc-sb2
-SLOT=0
-_md5_=011aec14f7fc2498b1d44e68e07aa3da

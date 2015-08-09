@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/packages,v 1.9 2012/03/12 09:13:37 phajdan.jr Exp $
+# $Id$
 
 -*virtual/dev-manager
 -*sys-fs/e2fsprogs

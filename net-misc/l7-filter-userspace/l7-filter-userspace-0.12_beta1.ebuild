@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/l7-filter-userspace/l7-filter-userspace-0.12_beta1.ebuild,v 1.3 2012/10/21 08:54:04 maekke Exp $
+# $Id$
 
 EAPI=4
 

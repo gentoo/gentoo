@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/liveice/liveice-2000530-r1.ebuild,v 1.4 2012/12/08 22:10:15 ulm Exp $
+# $Id$
 
 EAPI="2"
 

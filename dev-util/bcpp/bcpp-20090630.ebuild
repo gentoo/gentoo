@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bcpp/bcpp-20090630.ebuild,v 1.1 2010/07/01 17:13:58 phajdan.jr Exp $
+# $Id$
 
 EAPI="2"
 

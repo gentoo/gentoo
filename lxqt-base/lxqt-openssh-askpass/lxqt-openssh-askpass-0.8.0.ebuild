@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/lxqt-base/lxqt-openssh-askpass/lxqt-openssh-askpass-0.8.0.ebuild,v 1.1 2015/02/10 13:23:13 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils

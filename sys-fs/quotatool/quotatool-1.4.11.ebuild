@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/quotatool/quotatool-1.4.11.ebuild,v 1.1 2011/01/13 13:51:25 flameeyes Exp $
+# $Id$
 
 EAPI=2
 

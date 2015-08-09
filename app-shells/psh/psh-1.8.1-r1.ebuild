@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/psh/psh-1.8.1-r1.ebuild,v 1.4 2013/12/24 12:55:32 ago Exp $
+# $Id$
 
 EAPI=5
 

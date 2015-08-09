@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/zita-convolver/zita-convolver-2.0.0.ebuild,v 1.1 2011/01/24 11:53:03 aballier Exp $
+# $Id$
 
 EAPI=3
 

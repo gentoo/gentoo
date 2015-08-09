@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/tic98/tic98-1.01-r3.ebuild,v 1.6 2012/10/04 15:57:42 ottxor Exp $
+# $Id$
 
 EAPI=4
 

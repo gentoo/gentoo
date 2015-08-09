@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/rgmanager-2.03.09-r1.ebuild,v 1.5 2011/05/17 07:52:33 phajdan.jr Exp $
+# $Id$
 
 EAPI=2
 

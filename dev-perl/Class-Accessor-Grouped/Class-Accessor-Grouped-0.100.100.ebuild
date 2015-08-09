@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Accessor-Grouped/Class-Accessor-Grouped-0.100.100.ebuild,v 1.2 2014/07/26 14:32:30 zlogene Exp $
+# $Id$
 
 EAPI=5
 

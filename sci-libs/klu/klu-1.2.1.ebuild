@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/klu/klu-1.2.1.ebuild,v 1.2 2013/06/24 23:55:38 bicatali Exp $
+# $Id$
 
 EAPI=5
 

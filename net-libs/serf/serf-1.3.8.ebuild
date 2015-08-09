@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/serf/serf-1.3.8.ebuild,v 1.12 2015/01/13 22:01:06 floppym Exp $
+# $Id$
 
 EAPI="5"
 

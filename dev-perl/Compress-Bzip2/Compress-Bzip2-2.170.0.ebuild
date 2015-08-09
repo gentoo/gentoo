@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Compress-Bzip2/Compress-Bzip2-2.170.0.ebuild,v 1.2 2013/12/01 19:47:43 zlogene Exp $
+# $Id$
 
 EAPI=5
 

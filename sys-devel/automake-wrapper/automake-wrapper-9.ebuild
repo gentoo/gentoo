@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/automake-wrapper/automake-wrapper-9.ebuild,v 1.11 2014/01/17 04:23:05 vapier Exp $
+# $Id$
 
 DESCRIPTION="wrapper for automake to manage multiple automake versions"
 HOMEPAGE="http://www.gentoo.org/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.mask,v 1.193 2015/08/08 11:16:22 klausman Exp $
+# $Id$
 
 # Tobias Klausmann <klausman@gentoo.org> (08 Aug 2015)
 # It's unlikely that greenlet will ever be ported to Alpha. Mask USE=gevent for

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cvs2cl/cvs2cl-2.71.ebuild,v 1.5 2012/03/18 15:45:27 armin76 Exp $
+# $Id$
 
 DESCRIPTION="produces a GNU-style ChangeLog for CVS-controlled sources"
 HOMEPAGE="http://www.red-bean.com/cvs2cl/"

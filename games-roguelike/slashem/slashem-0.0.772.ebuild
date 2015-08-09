@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/slashem/slashem-0.0.772.ebuild,v 1.9 2014/08/10 21:20:58 slyfox Exp $
+# $Id$
 
 inherit eutils flag-o-matic games
 

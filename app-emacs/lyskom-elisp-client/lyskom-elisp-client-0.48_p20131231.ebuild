@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/lyskom-elisp-client/lyskom-elisp-client-0.48_p20131231.ebuild,v 1.5 2014/05/14 14:20:23 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/assp/files/asspd.init,v 1.2 2010/08/26 15:22:19 patrick Exp $
+# $Id$
 
 depend() {
         need net

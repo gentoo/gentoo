@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmnd/wmnd-0.4.16.ebuild,v 1.5 2012/07/29 18:36:14 armin76 Exp $
+# $Id$
 
 EAPI=4
 

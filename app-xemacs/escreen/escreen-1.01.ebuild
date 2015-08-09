@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/escreen/escreen-1.01.ebuild,v 1.4 2008/04/28 18:02:40 armin76 Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

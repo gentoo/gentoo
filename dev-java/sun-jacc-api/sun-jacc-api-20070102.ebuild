@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jacc-api/sun-jacc-api-20070102.ebuild,v 1.4 2010/01/03 21:35:27 fauli Exp $
+# $Id$
 
 inherit java-pkg-2 java-ant-2
 

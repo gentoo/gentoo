@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bcrypt-ruby/bcrypt-ruby-3.1.9.ebuild,v 1.1 2014/10/24 14:49:02 mrueg Exp $
+# $Id$
 
 EAPI=5
 

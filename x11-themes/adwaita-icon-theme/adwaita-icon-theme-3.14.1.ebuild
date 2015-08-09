@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/adwaita-icon-theme/adwaita-icon-theme-3.14.1.ebuild,v 1.12 2015/07/26 03:08:59 tetromino Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

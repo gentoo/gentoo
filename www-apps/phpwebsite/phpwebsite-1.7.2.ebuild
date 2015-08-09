@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpwebsite/phpwebsite-1.7.2.ebuild,v 1.4 2012/08/21 16:04:22 xmw Exp $
+# $Id$
 
 EAPI=4
 

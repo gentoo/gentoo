@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/set_opacity/set_opacity-9999.ebuild,v 1.2 2012/02/14 21:41:19 ulm Exp $
+# $Id$
 
 EAPI="4"
 

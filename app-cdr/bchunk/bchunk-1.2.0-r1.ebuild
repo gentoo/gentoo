@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/bchunk/bchunk-1.2.0-r1.ebuild,v 1.5 2012/07/29 16:02:53 armin76 Exp $
+# $Id$
 
 inherit toolchain-funcs
 

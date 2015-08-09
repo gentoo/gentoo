@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-magnatune/gmpc-magnatune-11.8.16.ebuild,v 1.5 2012/08/21 10:07:49 xmw Exp $
+# $Id$
 
 EAPI=4
 

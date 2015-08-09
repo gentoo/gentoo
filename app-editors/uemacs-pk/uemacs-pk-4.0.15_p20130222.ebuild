@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/uemacs-pk/uemacs-pk-4.0.15_p20130222.ebuild,v 1.4 2014/03/02 21:40:04 ulm Exp $
+# $Id$
 
 EAPI=4
 

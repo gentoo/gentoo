@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libesmtp/libesmtp-1.0.6.ebuild,v 1.11 2014/06/09 23:50:22 vapier Exp $
+# $Id$
 
 EAPI=3
 inherit libtool

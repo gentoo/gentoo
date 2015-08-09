@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/idb/idb-13.0.0.079.ebuild,v 1.2 2013/02/14 10:33:41 jlec Exp $
+# $Id$
 
 EAPI=4
 INTEL_DPN=parallel_studio_xe

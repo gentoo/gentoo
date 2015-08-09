@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-package-manager/eselect-package-manager-20110108.ebuild,v 1.1 2015/03/31 16:53:22 ulm Exp $
+# $Id$
 
 DESCRIPTION="Manages PACKAGE_MANAGER environment variable"
 HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"

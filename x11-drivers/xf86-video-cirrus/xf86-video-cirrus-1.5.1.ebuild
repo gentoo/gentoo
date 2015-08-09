@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-cirrus/xf86-video-cirrus-1.5.1.ebuild,v 1.7 2013/01/08 17:49:25 chithanh Exp $
+# $Id$
 
 EAPI=4
 inherit xorg-2

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ifenslave/ifenslave-1.1.0-r6.ebuild,v 1.8 2014/08/28 09:19:42 kumba Exp $
+# $Id$
 
 EAPI=4
 

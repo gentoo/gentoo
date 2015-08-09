@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.vcd:
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-vcd/files/confd,v 1.1 2006/03/05 10:28:43 zzam Exp $
+# $Id$
 
 # Config file for vdr plugin vcd
 

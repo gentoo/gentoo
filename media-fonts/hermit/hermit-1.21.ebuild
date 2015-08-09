@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/hermit/hermit-1.21.ebuild,v 1.1 2014/01/20 13:31:46 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit font

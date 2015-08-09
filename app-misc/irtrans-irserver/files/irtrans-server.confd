@@ -1,5 +1,5 @@
 # Config for irtrans-server
-# $Header: /var/cvsroot/gentoo-x86/app-misc/irtrans-irserver/files/irtrans-server.confd,v 1.1 2007/08/16 14:07:42 hd_brummy Exp $
+# $Id$
 
 # Controls which information is logged. Standard is loglevel 1.
 # Possible values are 0-4. 0=Nothing is logged. 4=debug output.

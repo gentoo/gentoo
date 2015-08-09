@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/drbd/files/drbd-8.0.rc,v 1.9 2014/12/02 15:00:25 ultrabug Exp $
+# $Id$
 
 extra_started_commands="reload"
 

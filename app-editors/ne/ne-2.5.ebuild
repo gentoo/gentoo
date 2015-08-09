@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/ne/ne-2.5.ebuild,v 1.7 2014/11/01 17:50:27 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

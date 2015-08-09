@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/suite3270/suite3270-3.4_p4.ebuild,v 1.1 2015/06/22 05:46:20 vapier Exp $
+# $Id$
 
 EAPI="5"
 

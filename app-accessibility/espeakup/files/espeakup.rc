@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/espeakup/files/espeakup.rc,v 1.4 2009/11/01 18:50:32 eva Exp $
+# $Id$
 
 depend() {
 	after modules

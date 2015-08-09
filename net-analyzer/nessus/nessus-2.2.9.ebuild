@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus/nessus-2.2.9.ebuild,v 1.5 2011/04/20 11:09:25 jlec Exp $
+# $Id$
 
 DESCRIPTION="A remote security scanner"
 HOMEPAGE="http://www.nessus.org/"

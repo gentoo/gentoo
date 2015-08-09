@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/advancemame/advancemame-1.2.ebuild,v 1.6 2014/08/13 09:14:45 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic games

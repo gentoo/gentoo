@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/parsec/parsec-3.1.3.ebuild,v 1.9 2012/12/30 15:02:33 ago Exp $
+# $Id$
 
 EAPI=4
 

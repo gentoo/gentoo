@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/pdmenu/pdmenu-1.3.2-r1.ebuild,v 1.1 2012/12/05 13:05:28 polynomial-c Exp $
+# $Id$
 
 EAPI=4
 

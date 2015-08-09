@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-gnutella/files/cacheupdate.sh,v 1.10 2007/08/17 22:56:50 coldwind Exp $
+# $Id$
 
 CACHE_LIST="g2.tjtech.org/g2/
 	gwc1c.olden.ch.3557.nyud.net:8080/gwc/

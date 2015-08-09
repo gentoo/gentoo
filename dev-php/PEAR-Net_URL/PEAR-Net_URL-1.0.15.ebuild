@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_URL/PEAR-Net_URL-1.0.15.ebuild,v 1.11 2014/01/26 18:37:48 olemarkus Exp $
+# $Id$
 
 inherit php-pear-r1
 

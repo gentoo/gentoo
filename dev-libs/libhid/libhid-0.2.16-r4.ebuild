@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhid/libhid-0.2.16-r4.ebuild,v 1.2 2014/12/28 19:11:47 floppym Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

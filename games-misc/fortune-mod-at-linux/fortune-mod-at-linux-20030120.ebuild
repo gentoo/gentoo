@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-at-linux/fortune-mod-at-linux-20030120.ebuild,v 1.14 2015/02/03 21:08:35 tupone Exp $
+# $Id$
 EAPI=5
 MY_P="fortune-mod-at.linux-${PV}"
 DESCRIPTION="Quotes from at.linux"

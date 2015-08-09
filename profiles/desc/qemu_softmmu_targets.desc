@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/qemu_softmmu_targets.desc,v 1.7 2014/04/22 00:22:21 vapier Exp $
+# $Id$
 
 # This file contains descriptions of QEMU_SOFTMMU_TARGETS USE_EXPAND flags.
 

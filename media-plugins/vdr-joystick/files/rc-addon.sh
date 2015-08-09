@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-joystick/files/rc-addon.sh,v 1.1 2007/12/03 20:47:02 hd_brummy Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-joystick
 #

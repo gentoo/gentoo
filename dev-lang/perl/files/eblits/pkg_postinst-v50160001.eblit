@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/pkg_postinst-v50160001.eblit,v 1.1 2012/06/05 17:52:35 tove Exp $
+# $Id$
 
 eblit-perl-pkg_postinst() {
 	dual_scripts

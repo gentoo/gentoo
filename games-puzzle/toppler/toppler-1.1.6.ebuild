@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/toppler/toppler-1.1.6.ebuild,v 1.5 2014/08/28 07:43:13 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

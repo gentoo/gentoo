@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/ctdb/ctdb-1.13-r1.ebuild,v 1.12 2015/03/31 07:45:48 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmp/gmp-5.1.3-r1.ebuild,v 1.19 2014/05/14 14:41:58 ago Exp $
+# $Id$
 
 EAPI="4"
 

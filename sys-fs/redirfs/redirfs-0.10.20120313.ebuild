@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/redirfs/redirfs-0.10.20120313.ebuild,v 1.1 2012/10/30 14:27:18 bicatali Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,9 +1,10 @@
-DEFINED_PHASES=-
-DESCRIPTION=SCSI sysfs query tool
-EAPI=4
-HOMEPAGE=http://sg.danny.cz/scsi/lsscsi.html
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
-LICENSE=GPL-2
+_eclasses_=
+_md5_=a06f2ab3db7669bcf29e89aa979438a4
 SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DESCRIPTION=SCSI sysfs query tool
+LICENSE=GPL-2
 SRC_URI=http://sg.danny.cz/scsi/lsscsi-0.26.tgz
-_md5_=7ecd63e710db27863b4b4ff2be710650
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
+HOMEPAGE=http://sg.danny.cz/scsi/lsscsi.html

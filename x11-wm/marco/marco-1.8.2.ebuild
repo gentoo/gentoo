@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/marco/marco-1.8.2.ebuild,v 1.2 2015/07/12 00:06:54 np-hardass Exp $
+# $Id$
 
 EAPI="5"
 

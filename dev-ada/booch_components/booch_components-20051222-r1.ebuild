@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/booch_components/booch_components-20051222-r1.ebuild,v 1.8 2015/03/31 18:34:59 ulm Exp $
+# $Id$
 
 IUSE="doc"
 

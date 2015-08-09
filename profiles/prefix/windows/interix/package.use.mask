@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/package.use.mask,v 1.4 2014/01/03 03:24:23 creffett Exp $
+# $Id$
 
 # Markus Duft <mduft@gentoo.org> (9 Aug 2011)
 # mask git flag from gettext, as gettext's build tries to munge

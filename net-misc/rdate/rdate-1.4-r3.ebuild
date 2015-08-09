@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rdate/rdate-1.4-r3.ebuild,v 1.15 2011/04/24 04:17:43 vapier Exp $
+# $Id$
 
 inherit flag-o-matic toolchain-funcs
 

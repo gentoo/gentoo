@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/mesa-progs/mesa-progs-8.1.0.ebuild,v 1.13 2013/10/08 05:02:43 ago Exp $
+# $Id$
 
 EAPI=5
 

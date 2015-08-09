@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/ripole/ripole-0.2.2.ebuild,v 1.10 2015/05/29 05:24:47 jmorgan Exp $
+# $Id$
 
 EAPI=4
 

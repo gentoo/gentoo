@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuned/files/tuned.initd,v 1.1 2014/08/29 04:08:59 dlan Exp $
+# $Id$
 
 TUNED_PIDFILE="/run/tuned.pid"
 TUNED_LOGFILE="/var/log/tuned.log"

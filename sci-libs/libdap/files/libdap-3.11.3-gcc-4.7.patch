@@ -5,7 +5,7 @@ diff --git a/ResponseBuilder.cc b/ResponseBuilder.cc
 index 1135678..0356172 100644
 --- a/ResponseBuilder.cc
 +++ b/ResponseBuilder.cc
-@@ -41,6 +41,7 @@ static char rcsid[] not_used = { "$Id: ResponseBuilder.cc 23477 2010-09-02 21:02
+@@ -41,6 +41,7 @@ static char rcsid[] not_used = { "$Id
  #include <string>
  #include <sstream>
  #include <cstring>

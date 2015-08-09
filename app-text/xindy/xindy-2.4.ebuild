@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xindy/xindy-2.4.ebuild,v 1.8 2011/10/05 19:21:01 aballier Exp $
+# $Id$
 
 EAPI=3
 

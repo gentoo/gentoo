@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup test unpack
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=425d3332e4518d258b6b58d9f9e02645
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+EAPI=4
 DEPEND=media-libs/allegro:0[X,jpeg,png,vorbis] media-libs/libogg media-libs/libpng:0 media-libs/libvorbis sys-libs/zlib virtual/jpeg sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A free open-source game based on the Sonic the Hedgehog universe
-EAPI=4
-HOMEPAGE=http://opensnc.sourceforge.net/
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=games-misc/games-envd
 RESTRICT=fetch
-SLOT=0
 SRC_URI=opensnc-src-0.1.4.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=d8dbc4198d115a30e0f6e1996116a730
+KEYWORDS=amd64 x86
+HOMEPAGE=http://opensnc.sourceforge.net/
+RDEPEND=games-misc/games-envd

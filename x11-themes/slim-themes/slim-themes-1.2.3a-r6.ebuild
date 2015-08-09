@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/slim-themes/slim-themes-1.2.3a-r6.ebuild,v 1.7 2015/03/02 19:28:28 axs Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

@@ -1,14 +1,14 @@
+_eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=7796a1182c76594c5f571456bcde4973
+SLOT=6.1.2
 DEFINED_PHASES=install postinst prerm setup unpack
+EAPI=4
 DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=Project management and coordination system
-EAPI=4
-HOMEPAGE=http://www.phprojekt.com/
-IUSE=postgres mysql vhosts
-KEYWORDS=~amd64 ppc x86
 LICENSE=GPL-3
-RDEPEND=virtual/httpd-php dev-lang/php[gd,imap,mysql?,pdo,postgres?,session,zlib] >=app-admin/webapp-config-1.50.15
+IUSE=postgres mysql vhosts
 REQUIRED_USE=|| ( mysql postgres )
-SLOT=6.1.2
 SRC_URI=https://github.com/Mayflower/PHProjekt/tarball/6.1.2 -> phprojekt-6.1.2.tar.gz
-_eclasses_=vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66	webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=71e04dcc4b516e1890e8337449a2f775
+KEYWORDS=~amd64 ppc x86
+HOMEPAGE=http://www.phprojekt.com/
+RDEPEND=virtual/httpd-php dev-lang/php[gd,imap,mysql?,pdo,postgres?,session,zlib] >=app-admin/webapp-config-1.50.15

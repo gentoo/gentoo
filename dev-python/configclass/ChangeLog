@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/configclass
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/configclass/ChangeLog,v 1.1 2015/06/12 14:06:30 idella4 Exp $
-
-*configclass-0.1.0 (12 Jun 2015)
-
-  12 Jun 2015; Ian Delaney <idella4@gentoo.org> +configclass-0.1.0.ebuild,
-  +metadata.xml:
-  ebuild written by me, new dep to dev-python/doit-py

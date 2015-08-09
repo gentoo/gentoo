@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use,v 1.32 2015/07/26 10:20:33 pacho Exp $
+# $Id$
 
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2015)
 # Set here proper defaults to make the packages buildable by default, 

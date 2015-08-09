@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/connman/connman-1.21.ebuild,v 1.6 2014/03/14 10:15:46 ago Exp $
+# $Id$
 
 EAPI="5"
 inherit base systemd

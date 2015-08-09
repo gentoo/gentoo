@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/xfwm4-themes/xfwm4-themes-4.10.0.ebuild,v 1.7 2012/11/28 12:37:20 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

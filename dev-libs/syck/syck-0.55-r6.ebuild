@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/syck/syck-0.55-r6.ebuild,v 1.1 2015/02/13 06:08:23 idella4 Exp $
+# $Id$
 
 EAPI=5
 

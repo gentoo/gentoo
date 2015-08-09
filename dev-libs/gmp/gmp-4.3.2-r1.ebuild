@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmp/gmp-4.3.2-r1.ebuild,v 1.2 2014/06/06 19:27:06 vapier Exp $
+# $Id$
 
 # this ebuild is only for the libgmp.so.3 ABI SONAME
 

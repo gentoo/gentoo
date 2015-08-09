@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/hourglass/hourglass-0.7.2.ebuild,v 1.5 2014/07/26 18:51:36 mrueg Exp $
+# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"

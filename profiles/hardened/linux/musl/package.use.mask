@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/package.use.mask,v 1.2 2015/06/14 18:07:57 blueness Exp $
+# $Id$
 
 # See bug #504200
 sys-devel/gcc sanitize 

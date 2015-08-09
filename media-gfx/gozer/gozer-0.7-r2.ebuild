@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gozer/gozer-0.7-r2.ebuild,v 1.6 2012/12/22 13:50:31 ulm Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pymad/pymad-0.6.ebuild,v 1.8 2011/01/29 16:40:08 armin76 Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

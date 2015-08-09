@@ -1,4 +1,4 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.4/ppc/package.mask,v 1.4 2010/04/06 19:17:26 darkside Exp $
+# $Id$
 

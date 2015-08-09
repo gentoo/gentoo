@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/soap/soap-2.3.1-r3.ebuild,v 1.3 2012/06/21 01:11:24 jdhore Exp $
+# $Id$
 
 EAPI=4
 

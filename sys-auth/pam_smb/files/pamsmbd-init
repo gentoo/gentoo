@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_smb/files/pamsmbd-init,v 1.1 2005/07/02 14:17:41 flameeyes Exp $
+# $Id$
 
 depend() {
 	need net

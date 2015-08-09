@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/xcursor-neutral/xcursor-neutral-1.20.ebuild,v 1.8 2014/08/10 19:59:43 slyfox Exp $
+# $Id$
 
 MY_P="48837-Neutral_Plus_1.2.tar.bz2"
 MY_PN="Neutral_Plus"

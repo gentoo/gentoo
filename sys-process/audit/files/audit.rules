@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/files/audit.rules,v 1.1 2006/06/22 07:41:46 robbat2 Exp $
+# $Id$
 #
 # This file contains the auditctl rules that are loaded
 # whenever the audit daemon is started via the initscripts.

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/localshell/localshell-1.3.4.ebuild,v 1.5 2014/08/10 18:21:29 slyfox Exp $
+# $Id$
 
 EAPI=4
 

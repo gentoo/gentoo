@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukitwo-shell/zukitwo-shell-2013.12.10.ebuild,v 1.5 2014/03/09 12:05:29 pacho Exp $
+# $Id$
 
 EAPI=5
 

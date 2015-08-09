@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/wgs-assembler/wgs-assembler-7.0-r1.ebuild,v 1.3 2012/11/13 19:19:00 nativemad Exp $
+# $Id$
 
 EAPI=4
 

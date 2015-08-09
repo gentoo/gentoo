@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dialog/dialog-1.2.20150528.ebuild,v 1.9 2015/08/02 18:44:52 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib versionator

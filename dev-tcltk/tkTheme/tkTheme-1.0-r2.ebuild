@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkTheme/tkTheme-1.0-r2.ebuild,v 1.10 2012/03/18 18:34:57 armin76 Exp $
+# $Id$
 
 EAPI=4
 

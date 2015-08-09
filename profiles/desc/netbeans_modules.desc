@@ -1,6 +1,6 @@
 # Copyright 2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/netbeans_modules.desc,v 1.5 2013/10/16 09:36:55 fordfrog Exp $
+# $Id$
 
 # This file contains descriptions of NETBEANS_MODULES USE_EXPAND flags.
 

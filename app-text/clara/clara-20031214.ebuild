@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/clara/clara-20031214.ebuild,v 1.24 2010/01/02 10:56:57 fauli Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

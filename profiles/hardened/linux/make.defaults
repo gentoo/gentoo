@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/make.defaults,v 1.20 2014/09/22 16:35:51 blueness Exp $
+# $Id$
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (16 Nov 2011)
 # Rename STAGE1_USE to BOOTSTRAP_USE and stack it to the parent value

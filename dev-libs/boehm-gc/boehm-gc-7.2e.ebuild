@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boehm-gc/boehm-gc-7.2e.ebuild,v 1.10 2014/02/19 19:06:07 sera Exp $
+# $Id$
 
 EAPI=5
 

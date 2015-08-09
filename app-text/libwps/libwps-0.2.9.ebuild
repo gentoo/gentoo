@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libwps/libwps-0.2.9.ebuild,v 1.10 2014/04/19 17:43:22 ago Exp $
+# $Id$
 
 EAPI=5
 

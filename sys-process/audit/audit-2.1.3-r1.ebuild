@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/audit-2.1.3-r1.ebuild,v 1.18 2013/03/03 10:25:39 vapier Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="python? 2"

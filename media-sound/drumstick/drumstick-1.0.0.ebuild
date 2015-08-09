@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/drumstick/drumstick-1.0.0.ebuild,v 1.1 2014/12/03 07:54:40 kensington Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnaural/gnaural-1.0.20110606.ebuild,v 1.4 2014/11/22 16:43:48 pacho Exp $
+# $Id$
 
 EAPI=5
 GCONF_DEBUG="no"

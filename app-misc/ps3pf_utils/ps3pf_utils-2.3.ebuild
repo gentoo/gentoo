@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ps3pf_utils/ps3pf_utils-2.3.ebuild,v 1.3 2012/02/20 01:25:26 floppym Exp $
+# $Id$
 
 inherit flag-o-matic
 

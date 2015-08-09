@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/files/3.6/smbusers,v 1.1 2011/06/30 15:50:28 dagger Exp $
+# $Id$
 
 # Syntax:
 #   Unix_name = SMB_name1 SMB_name2 ...

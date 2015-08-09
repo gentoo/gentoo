@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libotf/libotf-0.9.13.ebuild,v 1.12 2013/03/01 12:44:33 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

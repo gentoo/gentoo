@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg2theora/ffmpeg2theora-0.29-r2.ebuild,v 1.1 2015/02/01 23:02:10 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs scons-utils

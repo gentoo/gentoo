@@ -95,7 +95,7 @@ diff -Nru rp-pppoe-3.10.orig/src/plugin.c rp-pppoe-3.10/src/plugin.c
 +++ rp-pppoe-3.10/src/plugin.c	2008-06-30 22:27:18.000000000 +0200
 @@ -27,7 +27,6 @@
  static char const RCSID[] =
- "$Id: rp-pppoe-3.10-autotools.patch,v 1.2 2008/09/10 20:56:43 mrness Exp $";
+ "$Id$";
  
 -#define _GNU_SOURCE 1
  #include "pppoe.h"
@@ -106,7 +106,7 @@ diff -Nru rp-pppoe-3.10.orig/src/relay.c rp-pppoe-3.10/src/relay.c
 +++ rp-pppoe-3.10/src/relay.c	2008-06-30 22:27:18.000000000 +0200
 @@ -17,8 +17,6 @@
  static char const RCSID[] =
- "$Id: rp-pppoe-3.10-autotools.patch,v 1.2 2008/09/10 20:56:43 mrness Exp $";
+ "$Id$";
  
 -#define _GNU_SOURCE 1 /* For SA_RESTART */
 -

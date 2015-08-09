@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-player/files/vmware-3.0.rc,v 1.1 2011/03/27 15:23:48 vadimk Exp $
+# $Id$
 
 depend() {
 	need localmount

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/include-what-you-use/include-what-you-use-3.4.ebuild,v 1.1 2014/02/05 21:01:40 slyfox Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils flag-o-matic

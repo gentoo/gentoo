@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/molecule/molecule-0.9.24.6.ebuild,v 1.1 2012/09/11 14:05:57 lxnay Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="*"

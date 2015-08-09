@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-defrag/quake3-defrag-1.91.21.ebuild,v 1.1 2013/01/26 08:49:07 mr_bones_ Exp $
+# $Id$
 
 EAPI=2
 

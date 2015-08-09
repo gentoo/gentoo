@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/stem/stem-1.3.0.ebuild,v 1.1 2014/12/22 22:43:08 mrueg Exp $
+# $Id$
 
 EAPI=5
 # Python3.3 fails to execute the test script

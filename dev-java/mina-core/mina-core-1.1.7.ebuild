@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mina-core/mina-core-1.1.7.ebuild,v 1.6 2011/03/25 19:28:22 xarthisius Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

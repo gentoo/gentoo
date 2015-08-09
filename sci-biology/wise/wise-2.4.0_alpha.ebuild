@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/wise/wise-2.4.0_alpha.ebuild,v 1.6 2015/04/19 10:02:55 ago Exp $
+# $Id$
 
 EAPI=5
 

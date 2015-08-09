@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/fcitx-configtool/fcitx-configtool-0.4.8.ebuild,v 1.4 2015/05/09 13:21:40 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils

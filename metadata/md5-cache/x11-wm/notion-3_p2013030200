@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2236eb9d52e4dcdced8ad0f86e2dd653
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare
+EAPI=5
 DEPEND=>=dev-lang/lua-5.1:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXext nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr ) virtual/pkgconfig
 DESCRIPTION=Notion is a tiling, tabbed window manager for the X window system
-EAPI=5
-HOMEPAGE=http://notion.sourceforge.net
-IUSE=nls xinerama +xrandr
-KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
-RDEPEND=>=dev-lang/lua-5.1:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXext nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr )
+IUSE=nls xinerama +xrandr
 RESTRICT=test
-SLOT=0
 SRC_URI=mirror://sourceforge/notion/files/notion-3-2013030200-src.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=652bd59b68c95cf9a99f35b6d08a20f5
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://notion.sourceforge.net
+RDEPEND=>=dev-lang/lua-5.1:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXext nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr )

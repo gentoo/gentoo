@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/opal/opal-3.12.4.ebuild,v 1.3 2014/05/15 12:05:02 ulm Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ImageInfo/ImageInfo-1.360.0.ebuild,v 1.5 2014/03/06 10:34:03 ago Exp $
+# $Id$
 
 EAPI=5
 

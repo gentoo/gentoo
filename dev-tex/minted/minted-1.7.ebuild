@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/minted/minted-1.7.ebuild,v 1.1 2013/01/11 14:40:46 jlec Exp $
+# $Id$
 
 EAPI=5
 

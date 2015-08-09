@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/closetag/closetag-0.9.1.ebuild,v 1.7 2010/10/07 03:01:09 leio Exp $
+# $Id$
 
 inherit vim-plugin
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/kyocera-mita-ppds/kyocera-mita-ppds-8.4.ebuild,v 1.1 2011/01/26 12:43:18 flameeyes Exp $
+# $Id$
 
 DESCRIPTION="PPD description files for (some) Kyocera Mita Printers"
 HOMEPAGE="http://www.kyoceramita.it/"

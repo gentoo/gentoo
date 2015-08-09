@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_ssh/pam_ssh-1.98.ebuild,v 1.9 2013/12/23 09:14:48 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit pam eutils flag-o-matic readme.gentoo

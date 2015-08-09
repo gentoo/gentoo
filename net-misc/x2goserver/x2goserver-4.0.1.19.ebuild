@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/x2goserver/x2goserver-4.0.1.19.ebuild,v 1.3 2015/04/19 08:57:08 ago Exp $
+# $Id$
 
 EAPI=4
 inherit eutils multilib systemd toolchain-funcs user

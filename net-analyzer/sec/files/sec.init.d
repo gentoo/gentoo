@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sec/files/sec.init.d,v 1.2 2015/02/15 09:59:01 jer Exp $
+# $Id$
 
 depend() {
 	use logger

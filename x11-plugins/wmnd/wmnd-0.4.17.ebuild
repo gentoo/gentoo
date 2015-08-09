@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmnd/wmnd-0.4.17.ebuild,v 1.1 2012/08/21 08:35:19 voyageur Exp $
+# $Id$
 
 EAPI=4
 

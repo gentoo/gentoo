@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ruby-ng-gnome2.eclass,v 1.17 2014/10/27 19:48:35 graaff Exp $
+# $Id$
 
 # @ECLASS: ruby-ng-gnome2.eclass
 # @MAINTAINER:

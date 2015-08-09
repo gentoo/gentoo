@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/bglibs/bglibs-1.106-r1.ebuild,v 1.2 2010/09/29 09:59:30 xmw Exp $
+# $Id$
 
 EAPI="2"
 

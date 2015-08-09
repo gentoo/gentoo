@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/btpd/btpd-0.15.ebuild,v 1.2 2012/03/13 12:02:54 phajdan.jr Exp $
+# $Id$
 
 DESCRIPTION="BitTorrent client consisting of a daemon and client"
 HOMEPAGE="http://www.murmeldjur.se/btpd/"

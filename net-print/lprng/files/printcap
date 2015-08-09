@@ -1,5 +1,5 @@
 # /etc/printcap: printer capability database.
-# $Header: /var/cvsroot/gentoo-x86/net-print/lprng/files/printcap,v 1.2 2004/07/18 04:19:01 dragonheart Exp $
+# $Id$
 #
 # You can use the filter entries df, tf, cf, gf etc. for your
 # own filters. See the printcap(5) manpage for more details.

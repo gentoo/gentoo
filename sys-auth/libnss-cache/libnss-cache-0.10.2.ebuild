@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/libnss-cache/libnss-cache-0.10.2.ebuild,v 1.2 2014/08/10 20:22:04 slyfox Exp $
+# $Id$
 
 EAPI=3
 

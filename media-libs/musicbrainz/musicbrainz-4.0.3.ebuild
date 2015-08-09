@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/musicbrainz/musicbrainz-4.0.3.ebuild,v 1.1 2012/05/19 16:24:43 ssuominen Exp $
+# $Id$
 
 EAPI=4
 CMAKE_IN_SOURCE_BUILD=1

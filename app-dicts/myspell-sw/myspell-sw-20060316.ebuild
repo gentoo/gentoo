@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-sw/myspell-sw-20060316.ebuild,v 1.18 2012/05/17 18:30:03 aballier Exp $
+# $Id$
 
 MYSPELL_SPELLING_DICTIONARIES=(
 "sw,KE,sw_KE,Kiswahili (Africa),sw_KE.zip"

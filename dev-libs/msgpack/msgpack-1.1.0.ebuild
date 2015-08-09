@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/msgpack/msgpack-1.1.0.ebuild,v 1.1 2015/04/26 01:49:38 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-multilib

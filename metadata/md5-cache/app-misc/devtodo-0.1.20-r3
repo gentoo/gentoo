@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ca367544946600e1a786448f83df7474
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
 DEPEND=>=sys-libs/ncurses-5.2 >=sys-libs/readline-4.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A nice command line todo list for developers
-EAPI=5
-HOMEPAGE=http://swapoff.org/DevTodo
-KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/ncurses-5.2 >=sys-libs/readline-4.1
-SLOT=0
 SRC_URI=http://swapoff.org/files/devtodo/devtodo-0.1.20.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2754dd9b810ae2d497752fe819852280
+KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://swapoff.org/DevTodo
+RDEPEND=>=sys-libs/ncurses-5.2 >=sys-libs/readline-4.1

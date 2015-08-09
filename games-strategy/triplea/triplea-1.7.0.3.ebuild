@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/triplea/triplea-1.7.0.3.ebuild,v 1.4 2014/01/18 18:39:21 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils java-pkg-2 java-ant-2 versionator games

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unadf/unadf-0.7.12.ebuild,v 1.1 2013/12/29 00:26:30 robbat2 Exp $
+# $Id$
 
 EAPI=5
 

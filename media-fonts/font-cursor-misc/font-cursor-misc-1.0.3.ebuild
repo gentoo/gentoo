@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-cursor-misc/font-cursor-misc-1.0.3.ebuild,v 1.12 2015/03/03 08:15:18 dlan Exp $
+# $Id$
 
 EAPI=3
 inherit xorg-2

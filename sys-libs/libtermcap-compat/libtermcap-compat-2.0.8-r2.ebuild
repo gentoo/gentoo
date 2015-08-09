@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libtermcap-compat/libtermcap-compat-2.0.8-r2.ebuild,v 1.14 2010/02/19 14:11:46 ulm Exp $
+# $Id$
 
 # we only want this for binary-only packages, so we will only be installing
 # the lib used at runtime; no headers and no files to link against

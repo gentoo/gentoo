@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libindicator/libindicator-12.10.1-r301.ebuild,v 1.1 2015/05/07 18:32:21 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic virtualx multilib-minimal

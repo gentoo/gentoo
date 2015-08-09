@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/hicolor-icon-theme/hicolor-icon-theme-0.15.ebuild,v 1.10 2015/04/28 09:27:48 zlogene Exp $
+# $Id$
 
 EAPI=5
 inherit gnome2-utils

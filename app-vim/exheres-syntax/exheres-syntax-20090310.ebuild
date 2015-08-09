@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/exheres-syntax/exheres-syntax-20090310.ebuild,v 1.1 2009/03/10 22:28:09 gentoofan23 Exp $
+# $Id$
 
 inherit vim-plugin
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/aalib/aalib-1.4_rc5-r6.ebuild,v 1.9 2015/03/31 20:21:49 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 

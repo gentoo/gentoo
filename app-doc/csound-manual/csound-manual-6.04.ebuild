@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/csound-manual/csound-manual-6.04.ebuild,v 1.1 2014/12/08 01:34:50 radhermit Exp $
+# $Id$
 
 EAPI=5
 

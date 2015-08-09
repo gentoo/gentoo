@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/qcustomplot/qcustomplot-1.2.1.ebuild,v 1.1 2014/09/29 07:17:26 jlec Exp $
+# $Id$
 
 EAPI=5
 

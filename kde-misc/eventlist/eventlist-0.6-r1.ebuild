@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/eventlist/eventlist-0.6-r1.ebuild,v 1.2 2014/04/24 14:10:28 johu Exp $
+# $Id$
 
 EAPI=5
 

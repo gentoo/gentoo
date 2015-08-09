@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/tvheadend/tvheadend-3.4.27.ebuild,v 1.3 2014/07/06 00:58:47 twitch153 Exp $
+# $Id$
 
 EAPI=5
 

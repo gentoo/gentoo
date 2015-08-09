@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-iptv/vdr-iptv-2.1.3.ebuild,v 1.1 2015/02/20 06:42:03 hd_brummy Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/shoutcast2vdr/shoutcast2vdr-0.0.8.ebuild,v 1.3 2014/03/02 09:38:19 pacho Exp $
+# $Id$
 
 DESCRIPTION="VDR script: generate shoutcast playlists"
 HOMEPAGE="http://www.vdr-portal.de/board/thread.php?threadid=19478"

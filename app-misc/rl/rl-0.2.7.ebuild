@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/rl/rl-0.2.7.ebuild,v 1.6 2011/01/05 16:30:03 jlec Exp $
+# $Id$
 
 DESCRIPTION="Randomize lines from text files or stdin"
 HOMEPAGE="http://ch.tudelft.nl/~arthur/rl/"

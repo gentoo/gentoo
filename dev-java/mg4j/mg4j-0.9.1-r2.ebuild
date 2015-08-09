@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mg4j/mg4j-0.9.1-r2.ebuild,v 1.4 2014/08/10 20:21:29 slyfox Exp $
+# $Id$
 
 EAPI="4"
 

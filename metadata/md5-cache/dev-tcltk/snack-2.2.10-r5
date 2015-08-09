@@ -1,14 +1,14 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	distutils	def8c8eb435ec28fd9315114640f6c84
+_md5_=4dd6bea75b9bc4abd15bd476b2c3284
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare setup
+EAPI=4
 DEPEND=>dev-lang/tcl-8.4.3:0 >dev-lang/tk-8.4.3:0 alsa? ( media-libs/alsa-lib ) vorbis? ( media-libs/libvorbis ) python? ( =dev-lang/python-2* )
 DESCRIPTION=The Snack Sound Toolkit (Tcl)
-EAPI=4
-HOMEPAGE=http://www.speech.kth.se/snack/
-IUSE=alsa examples python threads vorbis
-KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
-RDEPEND=>dev-lang/tcl-8.4.3:0 >dev-lang/tk-8.4.3:0 alsa? ( media-libs/alsa-lib ) vorbis? ( media-libs/libvorbis ) python? ( =dev-lang/python-2* )
+IUSE=alsa examples python threads vorbis
 RESTRICT=test
-SLOT=0
 SRC_URI=http://www.speech.kth.se/snack/dist/snack2.2.10.tar.gz
-_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=12646bcff2e768e3a3a083c8ccd6f8a5
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+HOMEPAGE=http://www.speech.kth.se/snack/
+RDEPEND=>dev-lang/tcl-8.4.3:0 >dev-lang/tk-8.4.3:0 alsa? ( media-libs/alsa-lib ) vorbis? ( media-libs/libvorbis ) python? ( =dev-lang/python-2* )

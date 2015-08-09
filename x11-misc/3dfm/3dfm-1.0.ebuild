@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/3dfm/3dfm-1.0.ebuild,v 1.10 2012/10/10 16:16:30 ken69267 Exp $
+# $Id$
 
 DESCRIPTION="OpenGL-based 3D File Manager"
 HOMEPAGE="http://sourceforge.net/projects/innolab/"

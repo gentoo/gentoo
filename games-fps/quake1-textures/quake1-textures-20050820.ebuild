@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake1-textures/quake1-textures-20050820.ebuild,v 1.10 2015/01/31 07:14:24 tupone Exp $
+# $Id$
 EAPI=5
 inherit eutils games
 

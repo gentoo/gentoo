@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/dovecot_deleted_to_trash/dovecot_deleted_to_trash-0.6.ebuild,v 1.1 2014/06/05 08:34:49 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

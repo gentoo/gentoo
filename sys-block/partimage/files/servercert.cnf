@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/files/servercert.cnf,v 1.1 2005/03/06 17:58:39 ciaranm Exp $
+# $Id$
 # Robin H. Johnson <robbat2@gentoo.org> - October 17, 2003
 # This is the openssl config file to generate keys for partimage
 # It is read by mkservercert

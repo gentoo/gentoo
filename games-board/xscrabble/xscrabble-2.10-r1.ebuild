@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/xscrabble/xscrabble-2.10-r1.ebuild,v 1.11 2014/10/28 06:29:09 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib games

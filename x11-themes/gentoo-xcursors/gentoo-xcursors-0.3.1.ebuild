@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gentoo-xcursors/gentoo-xcursors-0.3.1.ebuild,v 1.18 2010/10/17 03:07:26 leio Exp $
+# $Id$
 
 DESCRIPTION="A high quality set of animated mouse cursors"
 HOMEPAGE="http://www.gentoo.org/"

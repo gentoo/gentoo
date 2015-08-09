@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/geant-docs/geant-docs-4.9.6.ebuild,v 1.1 2013/07/02 17:16:00 bicatali Exp $
+# $Id$
 
 EAPI=5
 

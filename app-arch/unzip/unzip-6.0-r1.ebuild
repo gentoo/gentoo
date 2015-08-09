@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unzip/unzip-6.0-r1.ebuild,v 1.13 2010/08/14 20:10:09 truedfx Exp $
+# $Id$
 
 inherit eutils toolchain-funcs flag-o-matic
 

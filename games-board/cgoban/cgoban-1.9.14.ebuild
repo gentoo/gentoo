@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/cgoban/cgoban-1.9.14.ebuild,v 1.12 2014/10/30 16:52:52 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools games

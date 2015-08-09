@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmp3splt/libmp3splt-0.7.3.ebuild,v 1.5 2014/08/10 21:09:45 slyfox Exp $
+# $Id$
 
 EAPI=2
 inherit versionator autotools eutils multilib

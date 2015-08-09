@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/sys-power/athcool/files/athcool,v 1.2 2007/10/01 10:57:44 uberlord Exp $
+# $Id$
 
 start() {
 	ebegin "Starting ${SVCNAME}"

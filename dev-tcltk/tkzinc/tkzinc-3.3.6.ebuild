@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkzinc/tkzinc-3.3.6.ebuild,v 1.3 2014/08/10 21:26:29 slyfox Exp $
+# $Id$
 
 EAPI=5
 

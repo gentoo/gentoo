@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmlaunch/gkrellmlaunch-0.5.ebuild,v 1.18 2015/04/02 18:35:45 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gkrellm-plugin toolchain-funcs

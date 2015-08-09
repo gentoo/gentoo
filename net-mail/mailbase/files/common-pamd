@@ -1,6 +1,6 @@
 # Provided by mailbase (dont remove this line!)
 # Standard pam.d file for mail service packages.
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailbase/files/common-pamd,v 1.1 2005/02/10 21:44:24 ferdy Exp $
+# $Id$
 
 auth       required     pam_nologin.so
 auth       required     pam_stack.so service=system-auth

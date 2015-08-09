@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/libnasl/libnasl-2.2.9-r1.ebuild,v 1.6 2015/03/16 06:42:41 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/blas-docs/blas-docs-3.1.1.ebuild,v 1.15 2014/03/04 19:53:33 vincent Exp $
+# $Id$
 
 DESCRIPTION="Documentation reference and man pages for blas implementations"
 HOMEPAGE="http://www.netlib.org/blas"

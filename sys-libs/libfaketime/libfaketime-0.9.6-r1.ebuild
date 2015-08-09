@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libfaketime/libfaketime-0.9.6-r1.ebuild,v 1.2 2015/01/13 00:42:16 radhermit Exp $
+# $Id$
 
 EAPI=5
 

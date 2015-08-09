@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/smartirc4net/smartirc4net-0.4.5.1.ebuild,v 1.5 2013/05/25 12:22:34 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit mono-env

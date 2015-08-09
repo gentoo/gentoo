@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/nvidia-cg-toolkit/files/80cgc-opt-3,v 1.1 2012/11/16 09:43:27 jlec Exp $
+# $Id$
 
 # Configures the CG Runtime environment for Bourne shell and compatible shells
 CG_COMPILER_EXE=@GENTOO_PORTAGE_EPREFIX@/opt/bin/cgc

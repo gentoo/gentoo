@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/agda-stdlib/agda-stdlib-0.9.ebuild,v 1.1 2014/12/14 10:46:53 gienah Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/files/dmeventd.initd-2.02.67-r1,v 1.3 2014/02/08 21:17:46 robbat2 Exp $
+# $Id$
 
 PIDFILE=/run/dmeventd.pid
 BIN=/sbin/dmeventd

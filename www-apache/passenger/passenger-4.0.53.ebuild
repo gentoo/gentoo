@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/passenger/passenger-4.0.53.ebuild,v 1.4 2015/04/19 10:16:50 ago Exp $
+# $Id$
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"

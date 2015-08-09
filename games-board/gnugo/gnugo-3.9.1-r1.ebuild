@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/gnugo/gnugo-3.9.1-r1.ebuild,v 1.7 2015/06/03 04:14:43 jmorgan Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

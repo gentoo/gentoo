@@ -1,9 +1,0 @@
-# ChangeLog for media-libs/SoXt
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/SoXt/ChangeLog,v 1.1 2013/06/17 18:56:43 bicatali Exp $
-
-*SoXt-1.3.0 (17 Jun 2013)
-
-  17 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +SoXt-1.3.0.ebuild,
-  +files/SoXt-1.3.0-pkgconfig-partial.patch, +metadata.xml:
-  Initial import

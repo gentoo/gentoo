@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/files/qemu-binfmt.initd-r1,v 1.5 2014/08/04 06:47:22 vapier Exp $
+# $Id$
 
 # enable automatic i386/ARM/M68K/MIPS/SPARC/PPC/s390 program execution by the kernel
 

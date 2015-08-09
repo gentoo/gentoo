@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-adobe-utopia-75dpi/font-adobe-utopia-75dpi-1.0.4.ebuild,v 1.9 2012/05/15 13:59:44 aballier Exp $
+# $Id$
 
 EAPI=3
 inherit xorg-2

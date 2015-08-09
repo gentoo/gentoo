@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/jbig2dec/jbig2dec-0.11-r1.ebuild,v 1.25 2014/06/10 00:48:12 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

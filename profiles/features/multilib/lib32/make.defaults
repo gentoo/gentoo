@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/multilib/lib32/make.defaults,v 1.2 2011/03/21 04:39:31 vapier Exp $
+# $Id$
 
 # Let baselayout create the lib symlink.
 SYMLINK_LIB="yes"

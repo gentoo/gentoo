@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/package.mask,v 1.48 2015/06/30 08:16:35 grobian Exp $
+# $Id$
 
 
 # Fabian Groffen <grobian@gentoo.org> (31 May 2015)

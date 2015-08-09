@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/64ul/package.use.mask,v 1.22 2015/06/04 18:47:17 kensington Exp $
+# $Id$
 
 # Agostino Sarubbo <ago@gentoo.org> (31 Jan 2012)
 # Mask because requires a lot of unstable depends not ready for the stabilization

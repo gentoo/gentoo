@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libebml/libebml-1.3.0.ebuild,v 1.10 2014/03/24 15:04:17 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/hello/hello-2.8.ebuild,v 1.1 2012/07/16 01:44:45 abcd Exp $
+# $Id$
 
 EAPI="4"
 

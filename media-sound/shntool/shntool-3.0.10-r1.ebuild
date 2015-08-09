@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/shntool/shntool-3.0.10-r1.ebuild,v 1.6 2012/05/14 10:31:31 radhermit Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the BSD license
-# $Header: /var/cvsroot/gentoo-x86/dev-python/celery/files/celery.initd-r1,v 1.1 2014/04/09 10:52:50 idella4 Exp $
+# $Id$
 
 extra_started_commands="reload"
 

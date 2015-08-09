@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/bcrypt/bcrypt-1.1.1.ebuild,v 1.3 2015/08/06 11:47:49 ago Exp $
+# $Id$
 
 EAPI=5
 

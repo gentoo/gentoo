@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/package.mask,v 1.23 2014/02/17 23:03:41 vapier Exp $
+# $Id$
 
 # glib-2.x requires working locale/iconv which
 # isn't available atm in uclibc

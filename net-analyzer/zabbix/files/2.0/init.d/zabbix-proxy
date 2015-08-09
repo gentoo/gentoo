@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix/files/2.0/init.d/zabbix-proxy,v 1.2 2013/07/19 04:27:55 mattm Exp $
+# $Id$
 
 pid_file="/var/run/zabbix/zabbix_proxy.pid"
 

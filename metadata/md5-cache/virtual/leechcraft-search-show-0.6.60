@@ -1,7 +1,8 @@
+_eclasses_=
+_md5_=59fc876cc2e02a22cde867e22b196469
+SLOT=0
 DEFINED_PHASES=-
-DESCRIPTION=Virtual for LeechCraft plugins providing UI for search plugins
 EAPI=4
+DESCRIPTION=Virtual for LeechCraft plugins providing UI for search plugins
 KEYWORDS=amd64 x86
 RDEPEND=app-leechcraft/lc-summary
-SLOT=0
-_md5_=1faac31b85f7fb3273aa5d2588ea5c43

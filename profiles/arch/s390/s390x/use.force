@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/s390/s390x/use.force,v 1.3 2014/04/05 15:38:48 vapier Exp $
+# $Id$
 
 # Force the flag corresponding to the only ABI.
 -abi_s390_32

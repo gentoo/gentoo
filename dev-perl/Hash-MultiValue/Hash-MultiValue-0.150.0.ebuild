@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Hash-MultiValue/Hash-MultiValue-0.150.0.ebuild,v 1.2 2014/07/07 18:52:09 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

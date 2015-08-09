@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/dawn/dawn-3.90b.ebuild,v 1.6 2011/02/13 12:41:37 armin76 Exp $
+# $Id$
 
 EAPI=2
 inherit eutils toolchain-funcs versionator

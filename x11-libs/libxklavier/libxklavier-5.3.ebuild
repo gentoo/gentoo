@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxklavier/libxklavier-5.3.ebuild,v 1.11 2015/05/27 13:59:22 zlogene Exp $
+# $Id$
 
 EAPI=4
 inherit eutils gnome.org libtool

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	waf-utils	ad1dd5b59c523843eebd3a9934c509ca	base	84d9f879f57a8316ff02be0373a3d6f9	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=72974941cf186fca7a3adcb10a911f58
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test unpack
+EAPI=4
 DEPEND=media-libs/lv2 >=media-libs/sratom-0.4.0 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0 || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=Library to make the use of LV2 plugins as simple as possible for applications
-EAPI=4
-HOMEPAGE=http://drobilla.net/software/lilv/
-IUSE=doc +dyn-manifest static-libs test
-KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=ISC
-RDEPEND=media-libs/lv2 >=media-libs/sratom-0.4.0 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0
-SLOT=0
+IUSE=doc +dyn-manifest static-libs test
 SRC_URI=http://download.drobilla.net/lilv-0.18.0.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
-_md5_=0fa72f2fd85d7dbc732fd2e0fb54e201
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://drobilla.net/software/lilv/
+RDEPEND=media-libs/lv2 >=media-libs/sratom-0.4.0 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/ddclient/files/ddclient.initd-r1,v 1.1 2011/08/12 12:29:42 titanofold Exp $
+# $Id$
 
 # Default location if not specified in /etc/conf.d/ddclient
 PIDFILE=${PIDFILE:-/var/run/ddclient/ddclient.pid}

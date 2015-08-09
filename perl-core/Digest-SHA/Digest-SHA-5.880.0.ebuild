@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/Digest-SHA/Digest-SHA-5.880.0.ebuild,v 1.1 2014/11/28 23:59:42 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

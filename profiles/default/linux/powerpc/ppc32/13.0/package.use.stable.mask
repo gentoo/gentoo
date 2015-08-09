@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/powerpc/ppc32/13.0/package.use.stable.mask,v 1.5 2015/04/19 06:45:35 yngwin Exp $
+# $Id$
 
 # Patrick Lauer <patrick@gentoo.org> (17 Apr 2014)
 # Mask dbus-python[test] until #494132 maybe gets fixed

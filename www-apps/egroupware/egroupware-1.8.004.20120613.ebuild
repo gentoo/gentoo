@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/egroupware/egroupware-1.8.004.20120613.ebuild,v 1.6 2012/10/06 16:55:20 armin76 Exp $
+# $Id$
 
 EAPI=4
 

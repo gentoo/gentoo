@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/ut2004-ded/files/ut2004-ded.initd,v 1.2 2009/10/12 00:54:17 nyhm Exp $
+# $Id$
 
 depend() {
 	need net

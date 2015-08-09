@@ -2,7 +2,7 @@ scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 
 " Default configuration file for gvim
-" $Header: /var/cvsroot/gentoo-x86/app-editors/gvim/files/gvimrc-r1,v 1.2 2010/04/15 19:49:14 darkside Exp $
+" $Id$
 "
 " Written by Aron Griffis <agriffis@gentoo.org>
 "

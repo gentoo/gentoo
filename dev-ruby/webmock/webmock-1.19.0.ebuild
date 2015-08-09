@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/webmock/webmock-1.19.0.ebuild,v 1.6 2015/02/20 11:23:20 ago Exp $
+# $Id$
 
 EAPI=5
 

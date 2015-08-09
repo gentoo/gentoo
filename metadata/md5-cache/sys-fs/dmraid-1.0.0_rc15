@@ -1,12 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ece6cddc54c36eb41b60dfeddd297df8
+SLOT=0
 DEFINED_PHASES=compile install postinst setup unpack
+EAPI=0
 DEPEND=>=sys-fs/lvm2-2.02.45 selinux? ( sys-libs/libselinux sys-libs/libsepol )
 DESCRIPTION=Device-mapper RAID tool and library
-HOMEPAGE=http://people.redhat.com/~heinzm/sw/dmraid/
-IUSE=static selinux
-KEYWORDS=~amd64 ppc ~x86
 LICENSE=GPL-2
-RDEPEND=>=sys-fs/lvm2-2.02.45 selinux? ( sys-libs/libselinux sys-libs/libsepol )
-SLOT=0
+IUSE=static selinux
 SRC_URI=http://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-1.0.0.rc15.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=aa751c331ac1f6115f1ff22e691c8b5c
+KEYWORDS=~amd64 ppc ~x86
+HOMEPAGE=http://people.redhat.com/~heinzm/sw/dmraid/
+RDEPEND=>=sys-fs/lvm2-2.02.45 selinux? ( sys-libs/libselinux sys-libs/libsepol )

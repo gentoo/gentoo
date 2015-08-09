@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/packagekit-qt4/packagekit-qt4-0.8.8.ebuild,v 1.2 2014/03/10 14:26:35 kensington Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/hashcat-bin/hashcat-bin-0.46.ebuild,v 1.1 2013/09/20 23:17:12 zerochaos Exp $
+# $Id$
 
 EAPI=4
 

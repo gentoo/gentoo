@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/vlorb/vlorb-1.2.ebuild,v 1.6 2007/01/05 20:21:52 flameeyes Exp $
+# $Id$
 
 DESCRIPTION="a high quality Audio CD to audio file encoder"
 HOMEPAGE="http://jk.yazzy.org/projects/vlorb/"

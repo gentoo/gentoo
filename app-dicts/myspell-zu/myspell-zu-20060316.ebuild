@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-zu/myspell-zu-20060316.ebuild,v 1.18 2012/05/17 18:31:50 aballier Exp $
+# $Id$
 
 MYSPELL_SPELLING_DICTIONARIES=(
 "zu,ZA,zu_ZA,Zulu (Africa),zu_ZA.zip"

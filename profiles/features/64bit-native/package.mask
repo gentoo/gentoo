@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/package.mask,v 1.105 2015/06/27 17:54:43 tetromino Exp $
+# $Id$
 
 # Andreas K. Huettel <dilfridge@gentoo.org>
 # Novell Groupwise Client sadly needs a 32bit java vm (bundled)

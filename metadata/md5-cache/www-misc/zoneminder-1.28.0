@@ -1,14 +1,14 @@
+_eclasses_=unpacker	1ca344bd9b922a7f8084a3fa02933b79	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	depend.php	c595f1a83ba4052bfe96c06daee20004	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	cmake-utils	f474224ef49d530640a43a04ae94928e	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	depend.apache	e3c541cb90838388f81620d630c28f41	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=a0070f30f91fc57a9ee2d0f3d1d05ffd
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+EAPI=5
 DEPEND=app-eselect/eselect-php[apache2] dev-lang/perl:= dev-lang/php[apache2,cgi,curl,inifile,pdo,mysql,mysqli,sockets] dev-libs/libpcre dev-perl/Archive-Zip dev-perl/DateManip dev-perl/DBD-mysql dev-perl/DBI dev-perl/URI-Encode dev-perl/libwww-perl sys-auth/polkit sys-libs/zlib virtual/ffmpeg virtual/jpeg virtual/mysql virtual/perl-ExtUtils-MakeMaker virtual/perl-Getopt-Long virtual/perl-Sys-Syslog virtual/perl-Time-HiRes www-servers/apache curl? ( net-misc/curl ) gcrypt? ( dev-libs/libgcrypt ) gnutls? ( net-libs/gnutls ) mmap? ( dev-perl/Sys-Mmap ) openssl? ( dev-libs/openssl ) vlc? ( media-video/vlc[live] ) =www-servers/apache-2* virtual/httpd-php dev-lang/perl:=[-build(-)] sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-EAPI=5
-HOMEPAGE=http://www.zoneminder.com/
-IUSE=curl gcrypt gnutls +mmap +openssl vlc
-KEYWORDS=~amd64
 LICENSE=GPL-2
-RDEPEND=app-eselect/eselect-php[apache2] dev-lang/perl:= dev-lang/php[apache2,cgi,curl,inifile,pdo,mysql,mysqli,sockets] dev-libs/libpcre dev-perl/Archive-Zip dev-perl/DateManip dev-perl/DBD-mysql dev-perl/DBI dev-perl/URI-Encode dev-perl/libwww-perl sys-auth/polkit sys-libs/zlib virtual/ffmpeg virtual/jpeg virtual/mysql virtual/perl-ExtUtils-MakeMaker virtual/perl-Getopt-Long virtual/perl-Sys-Syslog virtual/perl-Time-HiRes www-servers/apache curl? ( net-misc/curl ) gcrypt? ( dev-libs/libgcrypt ) gnutls? ( net-libs/gnutls ) mmap? ( dev-perl/Sys-Mmap ) openssl? ( dev-libs/openssl ) vlc? ( media-video/vlc[live] ) =www-servers/apache-2* virtual/httpd-php dev-lang/perl:=[-build(-)]
+IUSE=curl gcrypt gnutls +mmap +openssl vlc
 REQUIRED_USE=|| ( openssl gnutls )
-SLOT=0
 SRC_URI=https://github.com/ZoneMinder/ZoneMinder/archive/v1.28.0.tar.gz -> zoneminder-1.28.0.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	depend.php	9ad63283ebea79851f4521028c019da6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=64a9888da1cacf56ea26565f25ea401b
+KEYWORDS=~amd64
+HOMEPAGE=http://www.zoneminder.com/
+RDEPEND=app-eselect/eselect-php[apache2] dev-lang/perl:= dev-lang/php[apache2,cgi,curl,inifile,pdo,mysql,mysqli,sockets] dev-libs/libpcre dev-perl/Archive-Zip dev-perl/DateManip dev-perl/DBD-mysql dev-perl/DBI dev-perl/URI-Encode dev-perl/libwww-perl sys-auth/polkit sys-libs/zlib virtual/ffmpeg virtual/jpeg virtual/mysql virtual/perl-ExtUtils-MakeMaker virtual/perl-Getopt-Long virtual/perl-Sys-Syslog virtual/perl-Time-HiRes www-servers/apache curl? ( net-misc/curl ) gcrypt? ( dev-libs/libgcrypt ) gnutls? ( net-libs/gnutls ) mmap? ( dev-perl/Sys-Mmap ) openssl? ( dev-libs/openssl ) vlc? ( media-video/vlc[live] ) =www-servers/apache-2* virtual/httpd-php dev-lang/perl:=[-build(-)]

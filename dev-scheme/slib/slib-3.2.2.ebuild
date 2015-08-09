@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/slib/slib-3.2.2.ebuild,v 1.3 2010/11/14 16:11:56 jlec Exp $
+# $Id$
 
 EAPI="3"
 

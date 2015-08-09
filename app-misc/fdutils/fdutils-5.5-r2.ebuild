@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/fdutils/fdutils-5.5-r2.ebuild,v 1.1 2010/09/09 18:24:17 flameeyes Exp $
+# $Id$
 
 inherit eutils flag-o-matic
 

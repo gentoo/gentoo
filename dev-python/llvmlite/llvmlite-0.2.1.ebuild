@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/llvmlite/llvmlite-0.2.1.ebuild,v 1.4 2015/03/17 06:02:58 patrick Exp $
+# $Id$
 
 EAPI=5
 

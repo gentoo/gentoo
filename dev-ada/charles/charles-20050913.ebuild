@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/charles/charles-20050913.ebuild,v 1.4 2008/01/26 23:59:51 george Exp $
+# $Id$
 
 inherit gnat
 

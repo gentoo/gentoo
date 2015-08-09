@@ -1,7 +1,7 @@
 diff -rupN dvbsnoop-1.4.50-origdeb/src/misc/crc32.c dvbsnoop-1.4.50/src/misc/crc32.c
 --- dvbsnoop-1.4.50-origdeb/src/misc/crc32.c	2006-01-02 21:24:04.000000000 +0200
 +++ dvbsnoop-1.4.50/src/misc/crc32.c	2010-01-19 13:21:37.000000000 +0200
-@@ -17,14 +17,14 @@ $Id: crc32.c,v 1.2 2006/01/02 18:24:04 r
+@@ -17,14 +17,14 @@  $Id$
  
  
  
@@ -34,7 +34,7 @@ diff -rupN dvbsnoop-1.4.50-origdeb/src/misc/crc32.c dvbsnoop-1.4.50/src/misc/crc
 diff -rupN dvbsnoop-1.4.50-origdeb/src/misc/crc32.h dvbsnoop-1.4.50/src/misc/crc32.h
 --- dvbsnoop-1.4.50-origdeb/src/misc/crc32.h	2006-01-02 21:24:04.000000000 +0200
 +++ dvbsnoop-1.4.50/src/misc/crc32.h	2010-01-19 13:21:37.000000000 +0200
-@@ -19,8 +19,9 @@ $Id: crc32.h,v 1.2 2006/01/02 18:24:04 r
+@@ -19,8 +19,9 @@  $Id$
  #ifndef __CRC32_H
  #define __CRC32_H
  

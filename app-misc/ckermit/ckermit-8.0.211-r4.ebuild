@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ckermit-8.0.211-r4.ebuild,v 1.6 2015/08/03 20:51:09 sping Exp $
+# $Id$
 
 EAPI="4"
 

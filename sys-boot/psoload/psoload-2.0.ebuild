@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/psoload/psoload-2.0.ebuild,v 1.2 2009/06/15 15:51:42 flameeyes Exp $
+# $Id$
 
 QA_PRESTRIPPED="/opt/bin/psoload2
 	/opt/bin/psoload2_static"

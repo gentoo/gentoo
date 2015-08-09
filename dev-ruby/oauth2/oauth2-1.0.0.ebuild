@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/oauth2/oauth2-1.0.0.ebuild,v 1.5 2015/04/18 07:36:47 graaff Exp $
+# $Id$
 
 EAPI=5
 

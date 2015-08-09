@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-15.03-r1.ebuild,v 1.1 2015/04/14 03:39:56 radhermit Exp $
+# $Id$
 
 EAPI=5
 

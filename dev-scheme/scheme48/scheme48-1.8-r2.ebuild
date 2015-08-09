@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/scheme48/scheme48-1.8-r2.ebuild,v 1.4 2014/08/10 21:25:35 slyfox Exp $
+# $Id$
 
 EAPI=4
 inherit elisp-common multilib eutils flag-o-matic

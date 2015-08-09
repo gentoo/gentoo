@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/haematite-xcursors/haematite-xcursors-1.0.ebuild,v 1.2 2009/04/27 19:32:43 maekke Exp $
+# $Id$
 
 MY_PN=${PN/-xcursors/}
 DESCRIPTION="A simple crispy dark-grey xcursor theme"

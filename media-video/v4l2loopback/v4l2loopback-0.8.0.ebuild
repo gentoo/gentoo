@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/v4l2loopback/v4l2loopback-0.8.0.ebuild,v 1.1 2014/03/04 21:42:45 naota Exp $
+# $Id$
 
 EAPI=4
 

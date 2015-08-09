@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker/files/docker-r3.initd,v 1.1 2015/07/04 23:14:50 alunduil Exp $
+# $Id$
 
 DOCKER_LOGFILE=${DOCKER_LOGFILE:-/var/log/${SVCNAME}.log}
 DOCKER_PIDFILE=${DOCKER_PIDFILE:-/run/${SVCNAME}.pid}

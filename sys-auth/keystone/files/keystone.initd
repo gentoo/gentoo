@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/keystone/files/keystone.initd,v 1.4 2014/01/20 06:08:12 prometheanfire Exp $
+# $Id$
 
 description="Starts both the service and administrative APIs in a single process to provide catalog, authorization, and authentication services for OpenStack"
 

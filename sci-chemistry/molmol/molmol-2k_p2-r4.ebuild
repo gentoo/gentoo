@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molmol/molmol-2k_p2-r4.ebuild,v 1.1 2013/05/02 10:17:43 jlec Exp $
+# $Id$
 
 EAPI=5
 

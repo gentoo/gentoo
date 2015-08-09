@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/vaal/vaal-46233.ebuild,v 1.3 2015/03/24 17:23:36 ago Exp $
+# $Id$
 
 EAPI=5
 

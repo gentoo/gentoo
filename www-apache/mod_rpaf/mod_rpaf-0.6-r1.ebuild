@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_rpaf/mod_rpaf-0.6-r1.ebuild,v 1.1 2015/05/09 11:55:19 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit apache-module eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/atop/atop-2.1.ebuild,v 1.1 2014/11/30 13:47:18 polynomial-c Exp $
+# $Id$
 
 EAPI="4"
 

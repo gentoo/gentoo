@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-wikipedia/gmpc-wikipedia-11.8.16.ebuild,v 1.4 2012/05/05 08:27:20 jdhore Exp $
+# $Id$
 
 EAPI=4
 

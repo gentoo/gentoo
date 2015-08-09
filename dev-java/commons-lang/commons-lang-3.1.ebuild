@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-lang/commons-lang-3.1.ebuild,v 1.2 2013/08/14 11:15:44 patrick Exp $
+# $Id$
 
 EAPI="5"
 JAVA_PKG_IUSE="doc source test"

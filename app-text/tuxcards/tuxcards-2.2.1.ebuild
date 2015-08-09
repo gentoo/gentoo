@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tuxcards/tuxcards-2.2.1.ebuild,v 1.6 2013/03/02 19:46:00 hwoarang Exp $
+# $Id$
 
 EAPI=3
 inherit eutils qt4-r2

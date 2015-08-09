@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/qalculate-gtk/qalculate-gtk-0.9.7.ebuild,v 1.10 2012/08/04 21:46:11 bicatali Exp $
+# $Id$
 
 EAPI=4
 GCONF_DEBUG=no

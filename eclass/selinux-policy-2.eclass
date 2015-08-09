@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/selinux-policy-2.eclass,v 1.32 2015/04/21 11:19:10 perfinion Exp $
+# $Id$
 
 # Eclass for installing SELinux policy, and optionally
 # reloading the reference-policy based modules.

@@ -1,7 +1,7 @@
 --- a/src/Makefile.in
 +++ b/src/Makefile.in
 @@ -2,8 +2,8 @@
- # $Id: lanmap-81-make.patch,v 1.2 2014/10/26 11:07:31 jer Exp $
+ # $Id$
  
  # complation
 -CFLAGS = -W -Wall -Wno-unused -DLINUX -DLANMAP_DATADIR=$(LANMAP_DATADIR)

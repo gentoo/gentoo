@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-gladexml/gtk2-gladexml-1.7.0-r1.ebuild,v 1.3 2015/05/01 12:31:23 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

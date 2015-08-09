@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/dhcp-4.2.5_p1-r2.ebuild,v 1.9 2014/11/02 09:07:17 swift Exp $
+# $Id$
 
 EAPI="4"
 

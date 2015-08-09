@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/pkg_postrm-v50220001.eblit,v 1.1 2015/06/16 13:18:31 dilfridge Exp $
+# $Id$
 
 eblit-perl-pkg_postrm(){
 	dual_scripts

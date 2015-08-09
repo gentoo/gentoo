@@ -1,12 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	horde	dba235af1dc9c840cedcdb610bb52067	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=dc15565ba5828147302e725c3514393b
+SLOT=2.3.5
 DEFINED_PHASES=install postinst prerm setup unpack
+EAPI=0
 DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=Turba is the Horde address book / contact management program
-HOMEPAGE=http://www.horde.org/turba
-IUSE=ldap vhosts vhosts
-KEYWORDS=amd64 hppa ppc x86
 LICENSE=LGPL-2
-RDEPEND=>=www-apps/horde-3 ldap? ( dev-php/PEAR-Net_LDAP ) >=app-admin/webapp-config-1.50.15
-SLOT=2.3.5
+IUSE=ldap vhosts vhosts
 SRC_URI=http://ftp.horde.org/pub/turba/turba-h3-2.3.5.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	horde	5fe15e259af40c5eaa0846126359198f	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=5565b488e125d19f2965ea484756b1f5
+KEYWORDS=amd64 hppa ppc x86
+HOMEPAGE=http://www.horde.org/turba
+RDEPEND=>=www-apps/horde-3 ldap? ( dev-php/PEAR-Net_LDAP ) >=app-admin/webapp-config-1.50.15

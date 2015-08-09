@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-misc/spacenavd/files/99-space-navigator.rules,v 1.1 2012/02/09 03:46:36 sping Exp $
+# $Id$
 
 # Start daemon on insertion of a SpaceNavigator device
 SUBSYSTEM=="usb", ACTION=="add", ATTRS{manufacturer}=="3Dconnexion", ATTRS{product}=="Space Navigator", RUN+="/etc/init.d/spacenavd --quiet start"

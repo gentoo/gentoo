@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtdemo/qtdemo-4.8.5-r1.ebuild,v 1.7 2014/12/31 13:11:33 kensington Exp $
+# $Id$
 
 EAPI=4
 

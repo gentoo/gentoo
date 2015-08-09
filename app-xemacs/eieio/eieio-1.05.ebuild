@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/eieio/eieio-1.05.ebuild,v 1.3 2007/06/03 18:15:16 graaff Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-icon-theme-extras/gnome-icon-theme-extras-3.12.0.ebuild,v 1.5 2014/12/24 17:20:29 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

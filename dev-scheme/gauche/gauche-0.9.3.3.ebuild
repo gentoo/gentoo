@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche/gauche-0.9.3.3.ebuild,v 1.6 2014/09/07 03:29:55 hattya Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_python/mod_python-3.5.0.ebuild,v 1.8 2015/06/02 05:18:18 jmorgan Exp $
+# $Id$
 
 EAPI=5
 

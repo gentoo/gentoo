@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyasn1-modules/pyasn1-modules-0.0.7.ebuild,v 1.1 2015/08/07 07:47:42 patrick Exp $
+# $Id$
 
 EAPI=5
 

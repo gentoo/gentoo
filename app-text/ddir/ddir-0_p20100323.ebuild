@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ddir/ddir-0_p20100323.ebuild,v 1.2 2010/03/27 16:17:35 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="A perl implementation of the tree(1) program"
 HOMEPAGE="http://freshmeat.net/projects/ddir"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/moneta/moneta-0.7.20.ebuild,v 1.1 2014/12/29 12:45:10 naota Exp $
+# $Id$
 
 EAPI="4"
 USE_RUBY="ruby19 ruby20"

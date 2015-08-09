@@ -1,6 +1,6 @@
 # Copyright 2006-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/32bit-native/packages,v 1.1 2008/04/01 17:41:06 wolf31o2 Exp $
+# $Id$
 
 # We don't need kgcc64 to build kernels.
 -*sys-devel/kgcc64

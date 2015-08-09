@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mercurial.eclass,v 1.24 2014/07/25 23:18:34 ottxor Exp $
+# $Id$
 
 # @ECLASS: mercurial.eclass
 # @MAINTAINER:

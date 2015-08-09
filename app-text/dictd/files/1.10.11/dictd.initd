@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dictd/files/1.10.11/dictd.initd,v 1.4 2010/08/01 10:48:21 pva Exp $
+# $Id$
 
 DICTD_PID="/var/run/dictd.pid"
 

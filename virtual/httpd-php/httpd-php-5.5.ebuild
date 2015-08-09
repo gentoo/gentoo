@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/httpd-php/httpd-php-5.5.ebuild,v 1.11 2013/08/23 16:08:56 jer Exp $
+# $Id$
 
 EAPI="5"
 

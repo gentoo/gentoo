@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gqview/gqview-2.1.5-r1.ebuild,v 1.6 2014/12/05 10:17:33 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools

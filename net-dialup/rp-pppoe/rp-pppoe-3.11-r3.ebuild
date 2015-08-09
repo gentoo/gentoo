@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/rp-pppoe/rp-pppoe-3.11-r3.ebuild,v 1.3 2015/03/03 09:21:24 dlan Exp $
+# $Id$
 
 EAPI=5
 

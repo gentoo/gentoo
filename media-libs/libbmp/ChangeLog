@@ -1,9 +1,0 @@
-# ChangeLog for media-libs/libbmp
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libbmp/ChangeLog,v 1.1 2013/06/09 22:54:48 xmw Exp $
-
-*libbmp-0.1.3 (09 Jun 2013)
-
-  09 Jun 2013; Michael Weber <xmw@gentoo.org> +libbmp-0.1.3.ebuild,
-  +metadata.xml:
-  Initial import (dep for bug 472674)

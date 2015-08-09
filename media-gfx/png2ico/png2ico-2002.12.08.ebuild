@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/png2ico/png2ico-2002.12.08.ebuild,v 1.2 2013/04/30 06:47:27 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

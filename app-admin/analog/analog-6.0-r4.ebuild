@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/analog/analog-6.0-r4.ebuild,v 1.10 2012/03/04 10:27:52 pacho Exp $
+# $Id$
 
 EAPI=4
 

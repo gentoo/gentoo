@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-0.19.4.ebuild,v 1.1 2015/03/17 02:20:24 vapier Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-graphtft/vdr-graphtft-0.3.7.ebuild,v 1.2 2013/06/17 20:08:39 scarabeus Exp $
+# $Id$
 
 EAPI="5"
 

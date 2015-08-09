@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.63 2015/07/23 19:29:21 johu Exp $
+# $Id$
 
 # Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
 # SystemD has no support in the SELinux policy at the moment.

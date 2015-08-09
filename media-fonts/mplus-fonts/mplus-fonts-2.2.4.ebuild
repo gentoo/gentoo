@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/mplus-fonts/mplus-fonts-2.2.4.ebuild,v 1.14 2007/07/22 07:49:53 dirtyepic Exp $
+# $Id$
 
 IUSE="X"
 

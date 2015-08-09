@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/aaphoto/aaphoto-0.43.1.ebuild,v 1.2 2013/12/13 14:21:18 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

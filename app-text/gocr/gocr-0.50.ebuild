@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gocr/gocr-0.50.ebuild,v 1.2 2013/08/06 18:07:16 maekke Exp $
+# $Id$
 
 EAPI=4
 

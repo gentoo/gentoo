@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgtop/libgtop-2.30.0.ebuild,v 1.9 2014/10/11 12:13:51 maekke Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="yes"

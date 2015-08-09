@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/barrage/barrage-1.0.4.ebuild,v 1.7 2014/12/31 09:26:32 tupone Exp $
+# $Id$
 
 EAPI=4
 inherit eutils games

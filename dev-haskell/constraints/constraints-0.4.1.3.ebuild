@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/constraints/constraints-0.4.1.3.ebuild,v 1.1 2015/03/11 12:32:13 gienah Exp $
+# $Id$
 
 EAPI=5
 

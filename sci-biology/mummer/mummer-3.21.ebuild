@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mummer/mummer-3.21.ebuild,v 1.6 2009/08/05 21:12:52 maekke Exp $
+# $Id$
 
 inherit eutils
 

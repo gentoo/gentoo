@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/bareos-fastlzlib/bareos-fastlzlib-0_pre20140912.ebuild,v 1.1 2014/09/16 19:38:49 mschiff Exp $
+# $Id$
 
 EAPI=5
 

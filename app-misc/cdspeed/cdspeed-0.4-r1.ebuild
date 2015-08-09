@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdspeed/cdspeed-0.4-r1.ebuild,v 1.7 2012/03/18 18:47:07 armin76 Exp $
+# $Id$
 
 EAPI="2"
 

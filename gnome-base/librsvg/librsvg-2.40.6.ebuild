@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/librsvg-2.40.6.ebuild,v 1.11 2015/03/03 07:55:01 dlan Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

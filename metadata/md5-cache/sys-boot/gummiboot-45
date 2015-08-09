@@ -1,12 +1,12 @@
+_eclasses_=linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=a4d56ecb0d9bba8db4c190487826247
+SLOT=0
 DEFINED_PHASES=prepare pretend setup
+EAPI=5
 DEPEND=sys-apps/util-linux app-arch/xz-utils app-text/docbook-xsl-stylesheets dev-libs/libxslt >=sys-boot/gnu-efi-3.0.2
 DESCRIPTION=Minimalistic UEFI bootloader
-EAPI=5
-HOMEPAGE=http://freedesktop.org/wiki/Software/gummiboot/
-KEYWORDS=~amd64
 LICENSE=LGPL-2.1+
-RDEPEND=sys-apps/util-linux
-SLOT=0
 SRC_URI=http://dev.gentoo.org/~mgorny/dist/gummiboot-45.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=644b06dcf06ebe14b2838c2c073bc749
+KEYWORDS=~amd64
+HOMEPAGE=http://freedesktop.org/wiki/Software/gummiboot/
+RDEPEND=sys-apps/util-linux

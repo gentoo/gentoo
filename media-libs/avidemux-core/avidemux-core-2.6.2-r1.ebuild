@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/avidemux-core/avidemux-core-2.6.2-r1.ebuild,v 1.10 2015/01/29 17:24:24 mgorny Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libecap/libecap-1.0.0.ebuild,v 1.11 2015/05/13 06:34:48 jmorgan Exp $
+# $Id$
 
 EAPI="5"
 

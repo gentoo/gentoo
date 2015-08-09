@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/rubberband/rubberband-1.7.0.ebuild,v 1.3 2012/05/05 08:02:38 jdhore Exp $
+# $Id$
 
 EAPI=4
 inherit multilib

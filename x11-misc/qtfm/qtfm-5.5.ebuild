@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/qtfm/qtfm-5.5.ebuild,v 1.4 2013/07/04 12:18:09 ago Exp $
+# $Id$
 
 EAPI=4
 inherit fdo-mime qt4-r2

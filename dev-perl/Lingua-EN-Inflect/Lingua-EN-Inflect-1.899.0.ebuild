@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lingua-EN-Inflect/Lingua-EN-Inflect-1.899.0.ebuild,v 1.1 2015/07/11 20:12:02 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

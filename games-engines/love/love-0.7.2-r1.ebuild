@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/love/love-0.7.2-r1.ebuild,v 1.8 2015/05/15 10:39:18 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

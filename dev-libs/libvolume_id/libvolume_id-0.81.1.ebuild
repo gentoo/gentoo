@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libvolume_id/libvolume_id-0.81.1.ebuild,v 1.1 2009/07/01 14:47:54 aballier Exp $
+# $Id$
 
 DESCRIPTION="Library to provide file system information"
 HOMEPAGE="http://www.marcuscom.com"

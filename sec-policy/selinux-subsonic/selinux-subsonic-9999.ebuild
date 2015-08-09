@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-subsonic/selinux-subsonic-9999.ebuild,v 1.1 2015/07/14 09:54:24 perfinion Exp $
+# $Id$
 EAPI="5"
 
 IUSE=""

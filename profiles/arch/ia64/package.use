@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use,v 1.1 2014/02/15 09:02:19 pacho Exp $
+# $Id$
 
 # Pacho Ramos <pacho@gentoo.org> (15 Feb 2014)
 # libev isn't supported on this arch, use another default (#499498)

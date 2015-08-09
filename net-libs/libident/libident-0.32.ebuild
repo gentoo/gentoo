@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libident/libident-0.32.ebuild,v 1.9 2007/08/13 21:39:40 dertobi123 Exp $
+# $Id$
 
 DESCRIPTION="A small library to interface to the Ident protocol server"
 HOMEPAGE="http://www.simphalempin.com/dev/libident/"

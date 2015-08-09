@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes-extra/fvwm-themes-extra-0.7.0.ebuild,v 1.14 2011/11/11 17:19:12 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="Extra themes for fvwm-themes"
 HOMEPAGE="http://fvwm-themes.sourceforge.net/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol-plugins-dssp/pymol-plugins-dssp-110430.ebuild,v 1.1 2011/05/01 09:45:37 jlec Exp $
+# $Id$
 
 EAPI="3"
 

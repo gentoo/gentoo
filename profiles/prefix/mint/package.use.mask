@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/mint/package.use.mask,v 1.6 2014/03/11 12:50:01 grobian Exp $
+# $Id$
 
 # Alan Hourihane <alanh@fairlite.co.uk> (11 Mar 2014)
 # plays havoc with GNU pth bug #503764

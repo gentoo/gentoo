@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3info/mp3info-0.8.5a.ebuild,v 1.11 2014/10/28 11:28:20 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

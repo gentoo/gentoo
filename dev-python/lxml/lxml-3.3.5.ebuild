@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/lxml/lxml-3.3.5.ebuild,v 1.16 2015/05/13 09:00:54 jlec Exp $
+# $Id$
 
 EAPI=5
 

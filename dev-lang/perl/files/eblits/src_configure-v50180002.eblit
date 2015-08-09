@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/src_configure-v50180002.eblit,v 1.3 2014/09/26 11:00:50 grobian Exp $
+# $Id$
 
 myconf() {
 	# the myconf array is declared in src_configure

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn-data/nwn-data-1.29-r5.ebuild,v 1.6 2014/10/16 22:56:26 calchan Exp $
+# $Id$
 
 EAPI=5
 

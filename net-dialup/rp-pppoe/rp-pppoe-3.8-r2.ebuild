@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/rp-pppoe/rp-pppoe-3.8-r2.ebuild,v 1.13 2013/05/12 04:00:43 patrick Exp $
+# $Id$
 
 inherit eutils flag-o-matic autotools
 

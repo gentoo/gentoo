@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-TreePP/XML-TreePP-0.430.0.ebuild,v 1.1 2014/12/06 19:53:53 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

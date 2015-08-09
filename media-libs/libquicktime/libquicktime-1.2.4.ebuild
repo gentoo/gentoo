@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libquicktime/libquicktime-1.2.4.ebuild,v 1.13 2015/01/29 17:40:48 mgorny Exp $
+# $Id$
 
 EAPI=4
 inherit libtool eutils

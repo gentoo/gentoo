@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwinfo/hwinfo-21.4.ebuild,v 1.4 2015/05/27 11:18:08 ago Exp $
+# $Id$
 
 EAPI=5
 

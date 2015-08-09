@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jgoodies-looks/jgoodies-looks-1.2.2-r1.ebuild,v 1.6 2010/04/21 20:24:59 caster Exp $
+# $Id$
 
 inherit java-pkg-2 java-ant-2
 

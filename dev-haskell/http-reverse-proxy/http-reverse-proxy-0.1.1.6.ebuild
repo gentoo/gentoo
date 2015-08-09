@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-reverse-proxy/http-reverse-proxy-0.1.1.6.ebuild,v 1.1 2013/08/26 12:38:42 qnikst Exp $
+# $Id$
 
 EAPI=5
 

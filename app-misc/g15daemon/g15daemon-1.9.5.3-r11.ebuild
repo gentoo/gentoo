@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/g15daemon/g15daemon-1.9.5.3-r11.ebuild,v 1.1 2014/11/09 11:49:18 zlogene Exp $
+# $Id$
 
 EAPI=5
 GENTOO_DEPEND_ON_PERL="no"

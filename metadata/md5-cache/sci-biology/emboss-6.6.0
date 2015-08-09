@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	emboss-r1	3a35d39ed2170438e28672a85b806260	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=338ee9ec2eeebb1545d347d711ca28e2
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
 DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( media-libs/gd[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt )
 DESCRIPTION=The European Molecular Biology Open Software Suite - A sequence analysis package
-EAPI=5
-HOMEPAGE=http://emboss.sourceforge.net/
-IUSE=minimal mysql pdf png postgres static-libs X
-KEYWORDS=~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=LGPL-2 GPL-2 Apache-2.0 GPL-3+ CC-BY-3.0
+IUSE=minimal mysql pdf png postgres static-libs X
 PDEPEND=!minimal? ( sci-biology/aaindex sci-biology/cutg sci-biology/primer3 sci-biology/prints sci-biology/prosite sci-biology/rebase )
-RDEPEND=!sys-devel/cons dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( media-libs/gd[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt )
-SLOT=0
 SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-6.6.0.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	emboss-r1	b861812061b20c645094834b803a1eea	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=39cbffdbdcf4d9b9d9d94ab995806122
+KEYWORDS=~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://emboss.sourceforge.net/
+RDEPEND=!sys-devel/cons dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( media-libs/gd[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt )

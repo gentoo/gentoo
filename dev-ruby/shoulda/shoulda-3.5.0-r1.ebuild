@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/shoulda/shoulda-3.5.0-r1.ebuild,v 1.6 2014/10/10 23:40:57 mrueg Exp $
+# $Id$
 
 EAPI=5
 

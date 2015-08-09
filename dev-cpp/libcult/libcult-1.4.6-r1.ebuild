@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libcult/libcult-1.4.6-r1.ebuild,v 1.7 2013/04/02 20:55:56 ago Exp $
+# $Id$
 
 EAPI="4"
 

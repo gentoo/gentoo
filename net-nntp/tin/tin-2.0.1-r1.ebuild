@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/tin/tin-2.0.1-r1.ebuild,v 1.5 2013/03/28 16:59:22 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils toolchain-funcs versionator

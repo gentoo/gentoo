@@ -1,11 +1,11 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=de91e124be9c5c8aa46897473f60410f
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare setup unpack
+EAPI=5
 DEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) ssl? ( dev-libs/openssl:0[zlib?] ) zlib? ( sys-libs/zlib ) dev-vcs/git virtual/pkgconfig
 DESCRIPTION=A TCP/HTTP reverse proxy for high availability environments
-EAPI=5
-HOMEPAGE=http://haproxy.1wt.eu
-IUSE=+crypt examples +pcre pcre-jit ssl tools vim-syntax +zlib
 LICENSE=GPL-2 LGPL-2.1
+IUSE=+crypt examples +pcre pcre-jit ssl tools vim-syntax +zlib
+HOMEPAGE=http://haproxy.1wt.eu
 RDEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) ssl? ( dev-libs/openssl:0[zlib?] ) zlib? ( sys-libs/zlib )
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=bfa635fd14fab2ea34299a4c2f435e66

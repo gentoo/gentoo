@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-frontends/sane-frontends-1.0.14.ebuild,v 1.13 2014/08/30 12:03:13 mgorny Exp $
+# $Id$
 
 inherit eutils
 

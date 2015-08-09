@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/aften/aften-0.0.8.ebuild,v 1.7 2013/06/01 23:42:47 radhermit Exp $
+# $Id$
 
 EAPI=5
 

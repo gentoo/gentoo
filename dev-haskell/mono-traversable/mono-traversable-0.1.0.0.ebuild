@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/mono-traversable/mono-traversable-0.1.0.0.ebuild,v 1.1 2013/12/11 06:15:06 gienah Exp $
+# $Id$
 
 EAPI=5
 

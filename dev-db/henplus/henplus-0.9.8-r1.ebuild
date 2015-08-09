@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/henplus/henplus-0.9.8-r1.ebuild,v 1.2 2015/04/06 01:25:19 patrick Exp $
+# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"

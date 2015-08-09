@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/shhopt/shhopt-1.1.7-r2.ebuild,v 1.7 2009/07/30 19:14:44 mr_bones_ Exp $
+# $Id$
 
 inherit eutils
 

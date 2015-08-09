@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/files/rpc.yppasswdd-r1,v 1.4 2004/07/24 06:26:28 eradicator Exp $
+# $Id$
 
 depend() {
 	need net portmap ypserv

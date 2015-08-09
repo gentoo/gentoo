@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/3.5/package.mask,v 1.5 2010/04/06 19:17:27 darkside Exp $
+# $Id$
 
 # Markus Duft <mduft@gentoo.org> 31 Jul 2009
 # Does not build on Interix 3.5 because some functions

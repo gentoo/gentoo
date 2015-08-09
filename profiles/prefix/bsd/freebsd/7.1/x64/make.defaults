@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/bsd/freebsd/7.1/x64/make.defaults,v 1.1 2009/06/06 03:54:39 solar Exp $
+# $Id$
 
 # retain backwards compatability for freebsd keywords/conditionals
 ARCH="amd64-fbsd"

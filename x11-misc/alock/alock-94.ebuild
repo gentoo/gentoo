@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/alock/alock-94.ebuild,v 1.6 2011/07/13 19:49:48 maekke Exp $
+# $Id$
 
 EAPI=2
 inherit eutils toolchain-funcs

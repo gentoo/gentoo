@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64-fbsd/clang/packages.build,v 1.2 2015/03/14 14:00:21 mgorny Exp $
+# $Id$
 
 # This file describes the packages needed to build a stage 1 based on this
 # profile.  Packages in this file are built in order.

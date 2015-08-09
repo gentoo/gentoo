@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-mplayer/files/rc-addon-0.9.15.sh,v 1.1 2007/05/15 12:51:41 zzam Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-mplayer
 #

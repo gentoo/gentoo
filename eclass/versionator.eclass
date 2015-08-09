@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/versionator.eclass,v 1.25 2014/07/11 08:21:58 ulm Exp $
+# $Id$
 
 # @ECLASS: versionator.eclass
 # @MAINTAINER:

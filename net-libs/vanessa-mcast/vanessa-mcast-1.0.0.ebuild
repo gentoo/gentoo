@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/vanessa-mcast/vanessa-mcast-1.0.0.ebuild,v 1.6 2010/10/28 14:39:33 ssuominen Exp $
+# $Id$
 
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrootconsole/xrootconsole-0.6.ebuild,v 1.10 2011/07/15 08:17:22 xarthisius Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

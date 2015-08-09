@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/clusterssh/clusterssh-9999.ebuild,v 1.9 2015/06/13 19:40:09 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

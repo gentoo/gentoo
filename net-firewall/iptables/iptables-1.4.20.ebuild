@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/iptables/iptables-1.4.20.ebuild,v 1.12 2014/01/18 19:48:53 ago Exp $
+# $Id$
 
 EAPI="4"
 

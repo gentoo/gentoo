@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Term-Screen/Term-Screen-1.30.0-r1.ebuild,v 1.2 2015/06/24 14:24:11 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

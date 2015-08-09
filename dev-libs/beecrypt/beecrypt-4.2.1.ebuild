@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/beecrypt/beecrypt-4.2.1.ebuild,v 1.18 2012/06/07 16:43:17 kensington Exp $
+# $Id$
 
 EAPI=4
 PYTHON_DEPEND="python? 2"

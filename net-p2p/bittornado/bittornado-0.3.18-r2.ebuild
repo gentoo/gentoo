@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bittornado/bittornado-0.3.18-r2.ebuild,v 1.5 2012/08/12 22:07:25 ottxor Exp $
+# $Id$
 
 # note: wxGTK interface has been removed wrt #391685. this ebuild is only for
 # cmdline tools as is.

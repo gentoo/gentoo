@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/vblade/files/conf.d-vblade,v 1.1 2006/01/25 06:17:55 robbat2 Exp $
+# $Id$
 
 # If you intent to run only one vblade, you should edit config_vblade0
 # SYNTAX: SHELF SLOT NETIF SOURCE

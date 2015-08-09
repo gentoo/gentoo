@@ -2,7 +2,7 @@
 # description: SWAT is the Samba Web Admin Tool. Use swat \
 #	       to configure your Samba server. To use SWAT, \
 #	       connect to port 901 with your favorite web browser.
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/files/3.6/swat.xinetd,v 1.1 2011/06/30 15:50:28 dagger Exp $
+# $Id$
 
 service swat
 {

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/tests/tests-common.sh,v 1.15 2015/05/11 17:34:39 ulm Exp $
+# $Id$
 
 if ! source /lib/gentoo/functions.sh ; then
 	echo "Missing functions.sh.  Please install sys-apps/gentoo-functions!" 1>&2

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-menus/gnome-menus-3.10.1-r1.ebuild,v 1.10 2015/06/07 10:45:55 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libjpeg-turbo/libjpeg-turbo-1.4.1.ebuild,v 1.2 2015/07/30 08:06:04 vapier Exp $
+# $Id$
 
 EAPI=5
 

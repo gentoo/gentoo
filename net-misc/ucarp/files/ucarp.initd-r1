@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ucarp/files/ucarp.initd-r1,v 1.1 2013/03/25 10:32:03 dev-zero Exp $
+# $Id$
 
 description="UCARP is a portable implementation of the CARP protocol"
 description_logstatus="Logs the status of ${SVCNAME} to syslog"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langcyrillic/texlive-langcyrillic-2013.ebuild,v 1.2 2013/07/07 22:17:51 aballier Exp $
+# $Id$
 
 EAPI="5"
 

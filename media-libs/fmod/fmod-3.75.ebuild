@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/fmod/fmod-3.75.ebuild,v 1.4 2014/11/30 12:31:23 pacho Exp $
+# $Id$
 
 MY_P="fmodapi${PV/.}linux"
 S=${WORKDIR}/${MY_P}

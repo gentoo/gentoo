@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-gio/gst-plugins-gio-0.10.36.ebuild,v 1.12 2013/02/24 17:58:00 ago Exp $
+# $Id$
 
 EAPI="5"
 

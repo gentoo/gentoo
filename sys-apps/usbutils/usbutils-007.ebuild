@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbutils/usbutils-007.ebuild,v 1.11 2014/04/07 16:50:55 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

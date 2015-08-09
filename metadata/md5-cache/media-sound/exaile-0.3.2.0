@@ -1,14 +1,14 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=71f2b5f0ac23b6eab7c2d1e6e67091db
+SLOT=0
 DEFINED_PHASES=compile install postinst postrm prepare setup
+EAPI=3
 DEPEND=nls? ( dev-util/intltool sys-devel/gettext ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) || ( =dev-lang/python-2.7*[sqlite] =dev-lang/python-2.6*[sqlite] )
 DESCRIPTION=a media player aiming to be similar to AmaroK, but for GTK+
-EAPI=3
-HOMEPAGE=http://www.exaile.org/
-IUSE=cddb libnotify nls
-KEYWORDS=amd64 ppc ~sparc x86
 LICENSE=GPL-2 GPL-3
-RDEPEND=dev-python/dbus-python >=media-libs/mutagen-1.10 >=dev-python/pygtk-2.17 >=dev-python/pygobject-2.18:2 dev-python/gst-python:0.10 media-libs/gst-plugins-good:0.10 media-plugins/gst-plugins-meta:0.10 libnotify? ( dev-python/notify-python ) cddb? ( dev-python/cddb-py ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) || ( =dev-lang/python-2.7*[sqlite] =dev-lang/python-2.6*[sqlite] )
+IUSE=cddb libnotify nls
 RESTRICT=test
-SLOT=0
 SRC_URI=http://launchpad.net/exaile/0.3.2/0.3.2.0/+download/exaile-0.3.2.0.tar.gz
-_eclasses_=fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=be36fcbe4cf1f61ad383b8859895612f
+KEYWORDS=amd64 ppc ~sparc x86
+HOMEPAGE=http://www.exaile.org/
+RDEPEND=dev-python/dbus-python >=media-libs/mutagen-1.10 >=dev-python/pygtk-2.17 >=dev-python/pygobject-2.18:2 dev-python/gst-python:0.10 media-libs/gst-plugins-good:0.10 media-plugins/gst-plugins-meta:0.10 libnotify? ( dev-python/notify-python ) cddb? ( dev-python/cddb-py ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) || ( =dev-lang/python-2.7*[sqlite] =dev-lang/python-2.6*[sqlite] )

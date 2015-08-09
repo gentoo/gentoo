@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/jasper/jasper-1.900.1-r9.ebuild,v 1.11 2015/03/03 08:37:42 dlan Exp $
+# $Id$
 
 EAPI=5
 

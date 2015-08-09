@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hashed-storage/hashed-storage-0.5.10.ebuild,v 1.6 2014/07/25 09:16:25 slyfox Exp $
+# $Id$
 
 EAPI=5
 

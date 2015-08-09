@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cns/cns-1.3_p7-r1.ebuild,v 1.1 2013/10/09 14:33:46 jlec Exp $
+# $Id$
 
 EAPI=5
 

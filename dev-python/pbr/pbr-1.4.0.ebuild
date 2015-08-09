@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pbr/pbr-1.4.0.ebuild,v 1.2 2015/08/08 09:11:16 patrick Exp $
+# $Id$
 
 EAPI=5
 

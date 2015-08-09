@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jax-ws/jax-ws-2.0.1-r1.ebuild,v 1.3 2010/02/09 19:18:21 josejx Exp $
+# $Id$
 
 EAPI=2
 JAVA_PKG_IUSE="source"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/stax2-api/stax2-api-4.0.0.ebuild,v 1.1 2015/03/05 22:51:53 chewi Exp $
+# $Id$
 
 EAPI=5
 

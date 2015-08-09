@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pydot/pydot-1.0.28-r2.ebuild,v 1.13 2015/08/02 09:32:40 pacho Exp $
+# $Id$
 
 EAPI=5
 

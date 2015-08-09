@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.14.9.ebuild,v 1.11 2014/12/22 14:30:13 pinkbyte Exp $
+# $Id$
 
 EAPI="5"
 inherit eutils multilib systemd toolchain-funcs user

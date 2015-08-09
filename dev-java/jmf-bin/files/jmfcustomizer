@@ -2,7 +2,7 @@
 # jmfcustomizer
 # Author: Dylan Carlson
 # May 2003
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jmf-bin/files/jmfcustomizer,v 1.2 2004/11/25 13:44:28 axxo Exp $
+# $Id$
 
 JAVA_HOME=`/usr/bin/java-config --jdk-home`
 if [ -z "${JAVA_HOME}" ] ; then

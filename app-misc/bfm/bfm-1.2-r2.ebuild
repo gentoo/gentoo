@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/bfm/bfm-1.2-r2.ebuild,v 1.3 2013/08/28 11:14:24 ago Exp $
+# $Id$
 
 EAPI="5"
 

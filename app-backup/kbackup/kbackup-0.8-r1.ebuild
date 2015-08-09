@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/kbackup/kbackup-0.8-r1.ebuild,v 1.2 2014/04/25 19:55:58 johu Exp $
+# $Id$
 
 EAPI=5
 

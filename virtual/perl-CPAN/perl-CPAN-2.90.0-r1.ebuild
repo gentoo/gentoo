@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-CPAN/perl-CPAN-2.90.0-r1.ebuild,v 1.10 2015/04/11 17:40:52 zlogene Exp $
+# $Id$
 
 EAPI=5
 

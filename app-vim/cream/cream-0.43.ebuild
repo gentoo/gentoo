@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/cream/cream-0.43.ebuild,v 1.7 2012/03/06 14:12:34 ranger Exp $
+# $Id$
 
 EAPI=4
 

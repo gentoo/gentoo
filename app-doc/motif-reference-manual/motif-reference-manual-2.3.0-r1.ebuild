@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/motif-reference-manual/motif-reference-manual-2.3.0-r1.ebuild,v 1.2 2013/08/03 15:28:36 ulm Exp $
+# $Id$
 
 EAPI=4
 

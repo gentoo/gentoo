@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/apt-proxy/apt-proxy-1.3.0.ebuild,v 1.8 2012/10/25 19:22:34 ago Exp $
+# $Id$
 
 EAPI=4
 

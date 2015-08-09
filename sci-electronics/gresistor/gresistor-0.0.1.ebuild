@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gresistor/gresistor-0.0.1.ebuild,v 1.7 2011/04/09 21:40:51 arfrever Exp $
+# $Id$
 
 EAPI=3
 PYTHON_DEPEND="2:2.5"

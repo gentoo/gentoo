@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/coccinelle/coccinelle-1.0.1.ebuild,v 1.2 2015/07/08 05:52:00 patrick Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

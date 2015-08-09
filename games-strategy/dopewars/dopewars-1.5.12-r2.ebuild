@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/dopewars/dopewars-1.5.12-r2.ebuild,v 1.8 2015/03/25 15:19:31 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnee/xnee-3.19.ebuild,v 1.3 2014/10/10 15:23:25 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

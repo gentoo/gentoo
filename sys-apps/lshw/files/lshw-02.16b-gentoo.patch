@@ -139,7 +139,7 @@
  	date --utc +%Y%m%d%H%M%S > $@
 --- lshw-B.02.16.orig/src/core/pci.cc
 +++ lshw-B.02.16/src/core/pci.cc
-@@ -17,7 +17,7 @@ __ID("@(#) $Id: pci.cc 2433 2012-01-10 2
+@@ -17,7 +17,7 @@ __ID("@(#) $Id
  
  #define PROC_BUS_PCI "/proc/bus/pci"
  #define SYS_BUS_PCI "/sys/bus/pci"

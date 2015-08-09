@@ -2,7 +2,7 @@
 # Copyright 1999-2011 Pavel Stratil, senbonzakura.eu
 # Some functions were taken from debian init script. Licensed under GPL-2
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/drizzle/files/drizzle.init.d,v 1.4 2011/01/10 01:22:32 flameeyes Exp $
+# $Id$
 
 #########################
 ### Construct vars ######

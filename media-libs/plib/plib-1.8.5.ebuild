@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/plib/plib-1.8.5.ebuild,v 1.10 2014/10/14 11:30:17 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit flag-o-matic eutils autotools

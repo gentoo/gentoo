@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/irtrans-irclient/irtrans-irclient-6.01.05.ebuild,v 1.2 2011/02/02 11:54:04 hd_brummy Exp $
+# $Id$
 
 EAPI="2"
 

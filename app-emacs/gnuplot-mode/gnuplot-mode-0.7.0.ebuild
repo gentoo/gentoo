@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuplot-mode/gnuplot-mode-0.7.0.ebuild,v 1.16 2014/09/19 09:28:00 ago Exp $
+# $Id$
 
 EAPI=5
 

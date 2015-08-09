@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/tomoe/tomoe-0.6.0-r2.ebuild,v 1.2 2014/12/27 13:47:52 mgorny Exp $
+# $Id$
 
 EAPI=5
 

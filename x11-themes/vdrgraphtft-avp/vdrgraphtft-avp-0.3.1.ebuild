@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/vdrgraphtft-avp/vdrgraphtft-avp-0.3.1.ebuild,v 1.2 2014/02/21 20:43:47 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

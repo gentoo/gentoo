@@ -23,7 +23,7 @@ diff -Nur prng-3.0.2.orig/examples/Makefile.am prng-3.0.2/examples/Makefile.am
 +++ prng-3.0.2/examples/Makefile.am	2010-10-16 18:48:08.000000000 +0100
 @@ -1,11 +1,11 @@
  ## Process this file with automake to produce Makefile.in
- # $Id: prng-3.0.2-shared.patch,v 1.1 2010/12/17 22:36:07 bicatali Exp $
+ # $Id$
  
 -LDADD = $(top_builddir)/src/libprng.a -lm
 +LDADD = $(top_builddir)/src/libprng.la -lm

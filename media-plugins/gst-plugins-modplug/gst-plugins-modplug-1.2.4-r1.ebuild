@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-modplug/gst-plugins-modplug-1.2.4-r1.ebuild,v 1.7 2015/01/19 10:32:50 jer Exp $
+# $Id$
 
 EAPI="5"
 

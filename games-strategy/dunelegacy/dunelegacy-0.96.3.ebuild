@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/dunelegacy/dunelegacy-0.96.3.ebuild,v 1.6 2014/05/15 17:02:46 ulm Exp $
+# $Id$
 
 # do not use autotools related stuff in stable ebuilds
 # unless you like random breakage: 469796, 469798, 424041

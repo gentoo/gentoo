@@ -3,7 +3,7 @@
 # Script for launching virtualjaguar 
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/virtualjaguar/files/virtualjaguar,v 1.7 2014/12/21 14:20:45 mgorny Exp $
+# $Id$
 
 source /lib/gentoo/functions.sh || exit 1
 

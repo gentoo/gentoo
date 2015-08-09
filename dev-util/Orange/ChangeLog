@@ -1,9 +1,0 @@
-# ChangeLog for dev-util/Orange
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/Orange/ChangeLog,v 1.1 2015/07/27 08:34:12 amynka Exp $
-
-*Orange-2.7.2 (27 Jul 2015)
-
-  27 Jul 2015; Amy Winston <amynka@gentoo.org> +Orange-2.7.2.ebuild,
-  +metadata.xml:
-  Initial commit.New package for data mining.

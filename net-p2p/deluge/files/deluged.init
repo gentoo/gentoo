@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/deluge/files/deluged.init,v 1.11 2013/04/01 08:30:44 heroxbd Exp $
+# $Id$
 
 depend() {
 	need net

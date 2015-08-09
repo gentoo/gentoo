@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/prefsmodule/prefsmodule-1.1.1_pre20061204-r1.ebuild,v 1.5 2014/08/10 21:18:21 slyfox Exp $
+# $Id$
 
 inherit gnustep-2
 

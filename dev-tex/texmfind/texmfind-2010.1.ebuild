@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/texmfind/texmfind-2010.1.ebuild,v 1.5 2012/04/17 17:29:54 nativemad Exp $
+# $Id$
 
 DESCRIPTION="Locate the ebuild providing a certain texmf file through regexp"
 HOMEPAGE="https://launchpad.net/texmfind/

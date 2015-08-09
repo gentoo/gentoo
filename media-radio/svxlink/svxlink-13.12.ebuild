@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/svxlink/svxlink-13.12.ebuild,v 1.5 2015/03/25 15:59:59 jlec Exp $
+# $Id$
 
 EAPI=4
 inherit eutils multilib qt4-r2 user

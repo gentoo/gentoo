@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.dvd:
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-dvd/files/confd,v 1.1 2005/12/22 20:39:11 hd_brummy Exp $
+# $Id$
 
 # Global config file for vdr rc-scripts
 

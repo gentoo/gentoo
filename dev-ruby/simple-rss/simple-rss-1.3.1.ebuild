@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/simple-rss/simple-rss-1.3.1.ebuild,v 1.9 2015/04/26 17:04:27 mrueg Exp $
+# $Id$
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"

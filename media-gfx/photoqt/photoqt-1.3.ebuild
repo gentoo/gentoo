@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/photoqt/photoqt-1.3.ebuild,v 1.1 2015/07/29 13:02:13 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils

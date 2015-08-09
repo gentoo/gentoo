@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-defaultplugin/lineak-defaultplugin-0.9.0.ebuild,v 1.7 2011/03/23 16:39:14 signals Exp $
+# $Id$
 
 inherit eutils multilib
 

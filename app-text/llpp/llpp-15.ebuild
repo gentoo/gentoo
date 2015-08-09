@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/llpp/llpp-15.ebuild,v 1.11 2014/01/19 08:51:00 pacho Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbv/fbv-1.0b.ebuild,v 1.16 2012/03/04 09:16:22 pacho Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

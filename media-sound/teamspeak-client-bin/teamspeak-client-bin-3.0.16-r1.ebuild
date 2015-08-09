@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-client-bin/teamspeak-client-bin-3.0.16-r1.ebuild,v 1.1 2015/05/13 15:09:35 mgorny Exp $
+# $Id$
 
 EAPI="5"
 

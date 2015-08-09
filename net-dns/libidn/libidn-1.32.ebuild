@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/libidn-1.32.ebuild,v 1.1 2015/08/03 08:55:42 jer Exp $
+# $Id$
 
 EAPI=5
 inherit elisp-common java-pkg-opt-2 mono-env multilib-minimal

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/megaglest/megaglest-3.9.1-r1.ebuild,v 1.4 2015/01/28 21:59:38 mgorny Exp $
+# $Id$
 
 # google-breakpad
 # TODO: fribidi, libvorbis static

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/beansbinding/beansbinding-1.2.1-r1.ebuild,v 1.1 2015/08/01 20:59:18 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

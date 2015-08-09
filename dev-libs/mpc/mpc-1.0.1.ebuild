@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mpc/mpc-1.0.1.ebuild,v 1.16 2014/08/10 20:38:23 slyfox Exp $
+# $Id$
 
 # Unconditional dependency of gcc.  Keep this set to 0.
 EAPI="0"

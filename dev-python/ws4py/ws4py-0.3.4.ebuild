@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ws4py/ws4py-0.3.4.ebuild,v 1.5 2015/06/07 10:05:46 maekke Exp $
+# $Id$
 
 # We could depend on dev-python/cherrypy when USE=server, but
 # that is an optional component ...

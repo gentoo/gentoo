@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/dclock/dclock-2.2.2_p4-r1.ebuild,v 1.2 2014/08/10 20:01:52 slyfox Exp $
+# $Id$
 
 EAPI=4
 inherit eutils flag-o-matic toolchain-funcs

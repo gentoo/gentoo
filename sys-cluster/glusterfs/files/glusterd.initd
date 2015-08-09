@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/glusterfs/files/glusterd.initd,v 1.1 2010/11/21 18:56:20 xarthisius Exp $
+# $Id$
 
 PIDFILE=/var/run/glusterd.pid
 

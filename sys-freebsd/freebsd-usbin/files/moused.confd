@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/moused.confd,v 1.2 2006/10/03 14:43:39 uberlord Exp $
+# $Id$
 
 # See the moused man page for available settings.
 

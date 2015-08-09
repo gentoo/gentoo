@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/apt-cacher-ng/apt-cacher-ng-0.8.5.ebuild,v 1.1 2015/08/08 07:17:03 jer Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils eutils toolchain-funcs user

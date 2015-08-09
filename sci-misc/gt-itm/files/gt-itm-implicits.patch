@@ -10,7 +10,7 @@
  #include <assert.h>
 @@ -31,6 +32,9 @@
  
- static char geogId[]="$Id: gt-itm-implicits.patch,v 1.1 2010/10/12 15:32:45 xarthisius Exp $";
+ static char geogId[]="$Id$";
  
 +long fdiam(Graph *g);
 +void die(s);

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/dot-forward/dot-forward-0.71-r2.ebuild,v 1.13 2014/01/08 06:40:53 vapier Exp $
+# $Id$
 
 inherit eutils toolchain-funcs user
 

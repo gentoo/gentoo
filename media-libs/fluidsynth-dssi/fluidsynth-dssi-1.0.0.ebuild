@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/fluidsynth-dssi/fluidsynth-dssi-1.0.0.ebuild,v 1.4 2012/05/05 08:02:33 jdhore Exp $
+# $Id$
 
 EAPI=2
 

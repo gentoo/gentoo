@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsrtp/libsrtp-1.4.4-r1.ebuild,v 1.14 2012/05/20 12:12:28 halcy0n Exp $
+# $Id$
 
 EAPI="2"
 

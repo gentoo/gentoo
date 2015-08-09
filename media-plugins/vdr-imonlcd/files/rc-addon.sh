@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-imonlcd/files/rc-addon.sh,v 1.3 2011/01/28 23:14:02 idl0r Exp $
+# $Id$
 
 plugin_pre_vdr_start() {
 	add_plugin_param "${IMONLCD_DEVICE:+--device ${IMONLCD_DEVICE}}"

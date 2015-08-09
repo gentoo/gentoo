@@ -1,5 +1,5 @@
 #
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/files/su.1.pamd,v 1.1 2008/02/19 12:04:06 flameeyes Exp $
+# $Id$
 #
 # PAM configuration for the "su" service
 #

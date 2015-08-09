@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-hcidump/bluez-hcidump-2.5.ebuild,v 1.6 2013/12/22 13:22:47 ago Exp $
+# $Id$
 
 EAPI=5
 

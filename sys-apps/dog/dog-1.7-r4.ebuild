@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dog/dog-1.7-r4.ebuild,v 1.7 2011/01/06 21:30:46 jlec Exp $
+# $Id$
 
 EAPI="3"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/skstream/skstream-0.3.9.ebuild,v 1.4 2012/12/25 03:59:52 jdhore Exp $
+# $Id$
 
 EAPI=2
 inherit base eutils

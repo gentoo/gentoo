@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snort/snort-2.9.7.5.ebuild,v 1.1 2015/07/26 12:59:42 patrick Exp $
+# $Id$
 
 EAPI="5"
 inherit autotools multilib user

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwox/netwox-5.39.0.ebuild,v 1.4 2014/07/14 23:16:34 jer Exp $
+# $Id$
 
 # NOTE: netwib, netwox and netwag go together, bump all or bump none
 

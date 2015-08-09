@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/npadmin/npadmin-0.8.7.ebuild,v 1.5 2009/09/23 19:47:18 patrick Exp $
+# $Id$
 
 inherit eutils
 DESCRIPTION="Network printer command-line adminstration tool"

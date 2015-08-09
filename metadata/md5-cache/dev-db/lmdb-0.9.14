@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile configure install prepare
-DESCRIPTION=An ultra-fast, ultra-compact key-value embedded data store
-EAPI=5
-HOMEPAGE=http://symas.com/mdb/
-IUSE=static-libs
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
-LICENSE=OPENLDAP
-RDEPEND=!=net-nds/openldap-2.4.40
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=2137bd175d142cb43e970020504fb107
 SLOT=0
+DEFINED_PHASES=compile configure install prepare
+EAPI=5
+DESCRIPTION=An ultra-fast, ultra-compact key-value embedded data store
+LICENSE=OPENLDAP
+IUSE=static-libs
 SRC_URI=https://gitorious.org/mdb/mdb/archive/2f587ae081d076e3707360c5db086520c219d3ea.tar.gz -> lmdb-0.9.14.tar.gz
-_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=01f47c05e52f984b0e32205daf6e5d55
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+HOMEPAGE=http://symas.com/mdb/
+RDEPEND=!=net-nds/openldap-2.4.40

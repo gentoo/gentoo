@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/atokx2/atokx2-17.0-r2.ebuild,v 1.11 2013/04/21 09:47:32 lxnay Exp $
+# $Id$
 
 EAPI="1"
 

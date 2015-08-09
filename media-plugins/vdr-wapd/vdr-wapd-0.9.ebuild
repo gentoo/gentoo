@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-wapd/vdr-wapd-0.9.ebuild,v 1.3 2014/02/23 21:03:35 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/live-2013.02.11.ebuild,v 1.11 2015/08/04 11:58:42 zlogene Exp $
+# $Id$
 
 EAPI=3
 inherit flag-o-matic eutils toolchain-funcs multilib

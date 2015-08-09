@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ethtool/ethtool-2.6.39.ebuild,v 1.1 2011/06/09 00:55:48 radhermit Exp $
+# $Id$
 
 EAPI=4
 

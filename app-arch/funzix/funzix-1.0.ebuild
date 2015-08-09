@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/funzix/funzix-1.0.ebuild,v 1.4 2008/10/23 02:38:38 flameeyes Exp $
+# $Id$
 
 inherit toolchain-funcs
 

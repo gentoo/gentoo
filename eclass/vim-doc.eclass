@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vim-doc.eclass,v 1.17 2011/12/27 17:55:12 fauli Exp $
+# $Id$
 #
 # This eclass is used by vim.eclass and vim-plugin.eclass to update
 # the documentation tags.  This is necessary since vim doesn't look in

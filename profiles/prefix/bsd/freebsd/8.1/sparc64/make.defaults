@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/bsd/freebsd/8.1/sparc64/make.defaults,v 1.1 2010/12/14 20:13:53 grobian Exp $
+# $Id$
 
 # retain backwards compatability for freebsd keywords/conditionals
 ARCH="sparc64-fbsd"

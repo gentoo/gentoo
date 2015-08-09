@@ -1,9 +1,0 @@
-# ChangeLog for dev-haskell/psqueue
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/psqueue/ChangeLog,v 1.1 2015/05/07 04:28:36 gienah Exp $
-
-*psqueue-1.1-r1 (07 May 2015)
-
-  07 May 2015; Mark Wright <gienah@gentoo.org> +metadata.xml,
-  +psqueue-1.1-r1.ebuild:
-  Add psqueue for app-emulation/ganeti

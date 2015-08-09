@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-dvbhddevice/vdr-dvbhddevice-0.0.8_p20130302.ebuild,v 1.1 2013/03/31 11:53:35 hd_brummy Exp $
+# $Id$
 
 EAPI="5"
 

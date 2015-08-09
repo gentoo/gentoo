@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgee/libgee-0.14.0.ebuild,v 1.9 2014/10/11 11:45:40 maekke Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

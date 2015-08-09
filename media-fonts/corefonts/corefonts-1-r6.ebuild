@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/corefonts/corefonts-1-r6.ebuild,v 1.4 2015/03/29 14:22:51 yngwin Exp $
+# $Id$
 
 inherit font
 

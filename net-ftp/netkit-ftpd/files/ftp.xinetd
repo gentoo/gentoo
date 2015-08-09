@@ -1,5 +1,5 @@
 # default: off
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/netkit-ftpd/files/ftp.xinetd,v 1.1 2007/01/21 18:54:47 vapier Exp $
+# $Id$
 # description: The netkit ftp daemon with optional SSL support.
 
 service ftp

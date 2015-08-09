@@ -131,7 +131,7 @@
 +++ ldap-pwd.c		2008-12-06 00:37:30.216966282 +0100
 @@ -21,7 +21,10 @@
  static char rcsId[] =
-   "$Id: nss_ldap-265-fbsd.patch,v 1.1 2014/02/17 05:41:10 prometheanfire Exp $";
+   "$Id$";
  
 +#include <sys/types.h>
 +#include <unistd.h>

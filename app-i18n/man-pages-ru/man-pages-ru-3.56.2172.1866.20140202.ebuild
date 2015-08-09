@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-ru/man-pages-ru-3.56.2172.1866.20140202.ebuild,v 1.8 2015/01/24 17:18:40 zlogene Exp $
+# $Id$
 
 EAPI="5"
 

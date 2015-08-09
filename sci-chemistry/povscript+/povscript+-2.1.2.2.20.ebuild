@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/povscript+/povscript+-2.1.2.2.20.ebuild,v 1.1 2013/07/12 06:03:17 jlec Exp $
+# $Id$
 
 EAPI=5
 

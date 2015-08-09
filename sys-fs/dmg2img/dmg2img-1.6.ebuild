@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmg2img/dmg2img-1.6.ebuild,v 1.2 2009/09/07 19:10:30 dirtyepic Exp $
+# $Id$
 
 EAPI=2
 inherit toolchain-funcs

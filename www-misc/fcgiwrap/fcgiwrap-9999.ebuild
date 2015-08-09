@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/fcgiwrap/fcgiwrap-9999.ebuild,v 1.6 2014/07/04 19:36:27 hasufell Exp $
+# $Id$
 
 EAPI="4"
 

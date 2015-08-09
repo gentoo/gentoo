@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/cgal/cgal-4.6.1.ebuild,v 1.1 2015/08/08 10:57:06 xmw Exp $
+# $Id$
 
 EAPI=5
 

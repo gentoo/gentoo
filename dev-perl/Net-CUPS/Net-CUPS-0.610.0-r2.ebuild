@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-CUPS/Net-CUPS-0.610.0-r2.ebuild,v 1.1 2014/08/24 13:01:13 axs Exp $
+# $Id$
 
 EAPI=5
 

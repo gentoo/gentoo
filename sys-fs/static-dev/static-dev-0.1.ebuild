@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/static-dev/static-dev-0.1.ebuild,v 1.16 2014/11/17 02:19:23 vapier Exp $
+# $Id$
 
 DESCRIPTION="A skeleton, statically managed /dev"
 HOMEPAGE="http://bugs.gentoo.org/107875"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/cs2d/cs2d-0123.ebuild,v 1.5 2015/06/01 22:05:45 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 

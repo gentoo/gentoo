@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsca/nsca-2.7.2-r103.ebuild,v 1.8 2012/10/14 18:42:57 armin76 Exp $
+# $Id$
 
 EAPI=4
 

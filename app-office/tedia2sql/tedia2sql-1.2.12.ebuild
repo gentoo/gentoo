@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/tedia2sql/tedia2sql-1.2.12.ebuild,v 1.3 2014/08/10 18:18:06 slyfox Exp $
+# $Id$
 
 DESCRIPTION="Convert database ERD designed in Dia into SQL DDL scripts"
 HOMEPAGE="http://tedia2sql.tigris.org"

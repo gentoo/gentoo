@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mepl/mepl-0.45.ebuild,v 1.13 2012/10/29 08:39:25 ago Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

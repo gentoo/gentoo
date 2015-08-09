@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/transcode-1.1.7-r3.ebuild,v 1.13 2015/02/17 03:26:28 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit eutils libtool multilib

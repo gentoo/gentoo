@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/stimg/stimg-0.1.0.ebuild,v 1.13 2013/01/08 23:39:41 ulm Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

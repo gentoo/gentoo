@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict-quick-ru-en/stardict-quick-ru-en-2.4.2.ebuild,v 1.2 2009/10/30 09:46:58 maekke Exp $
+# $Id$
 
 FROM_LANG="Russian"
 TO_LANG="English"

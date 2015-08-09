@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/fortran-2.eclass,v 1.20 2013/07/29 20:13:57 jlec Exp $
+# $Id$
 
 # @ECLASS: fortran-2.eclass
 # @MAINTAINER:

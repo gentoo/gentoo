@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/AnyEvent-I3/AnyEvent-I3-0.150.0.ebuild,v 1.3 2014/12/21 18:03:16 zlogene Exp $
+# $Id$
 
 EAPI=5
 

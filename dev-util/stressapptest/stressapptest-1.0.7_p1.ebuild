@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/stressapptest/stressapptest-1.0.7_p1.ebuild,v 1.1 2014/08/05 02:23:08 vapier Exp $
+# $Id$
 
 # This is the 1.0.7 release:
 #  https://code.google.com/p/stressapptest/source/detail?r=44

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/calc/calc-2.12.4.13.ebuild,v 1.1 2014/01/13 05:10:11 mrueg Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-menuorg/vdr-menuorg-0.5.1.ebuild,v 1.1 2013/03/31 18:10:02 hd_brummy Exp $
+# $Id$
 
 EAPI="5"
 

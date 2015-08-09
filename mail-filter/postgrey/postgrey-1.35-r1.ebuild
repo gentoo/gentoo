@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/postgrey-1.35-r1.ebuild,v 1.1 2014/08/13 14:10:06 hasufell Exp $
+# $Id$
 
 EAPI=5
 

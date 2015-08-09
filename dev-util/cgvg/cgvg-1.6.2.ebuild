@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cgvg/cgvg-1.6.2.ebuild,v 1.4 2010/10/19 05:20:15 leio Exp $
+# $Id$
 
 DESCRIPTION="A tiny version of cscope that is much more useful in certian instances"
 HOMEPAGE="http://uzix.org/cgvg.html"

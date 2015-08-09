@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xsynth-dssi/xsynth-dssi-0.9.2.ebuild,v 1.3 2012/05/05 08:27:19 jdhore Exp $
+# $Id$
 
 DESCRIPTION="A software synthesizer plugin for the DSSI Soft Synth Interface"
 HOMEPAGE="http://dssi.sourceforge.net/download.html#Xsynth-DSSI"

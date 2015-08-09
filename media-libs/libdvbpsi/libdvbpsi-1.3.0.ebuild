@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvbpsi/libdvbpsi-1.3.0.ebuild,v 1.1 2015/06/25 09:00:03 aballier Exp $
+# $Id$
 
 EAPI=4
 

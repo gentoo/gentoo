@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/upx-bin/upx-bin-3.91.ebuild,v 1.1 2014/06/09 07:35:59 patrick Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Provided by ftpbase (dont remove this line!)
 # Standard pam.d file for ftp service packages.
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftpbase/files/ftp-pamd-include,v 1.1 2005/06/28 14:52:26 uberlord Exp $
+# $Id$
 
 auth     required  pam_listfile.so item=user sense=deny file=/etc/ftpusers onerr=succeed
 auth     include   system-auth

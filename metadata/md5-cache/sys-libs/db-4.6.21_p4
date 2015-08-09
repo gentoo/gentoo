@@ -1,12 +1,13 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	flag-o-matic	2090c5a622458303e6bf68837ac6b96	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	db	e5f865c95187e1780da112c7f90527d	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	libtool	7f78cd7d403808a350c9ae23f5821fb4	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3900d5f8cbcc319ceaa2ba5824313896
+SLOT=4.6
 DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+EAPI=0
 DEPEND=tcl? ( >=dev-lang/tcl-8.4 ) java? ( >=virtual/jdk-1.4 ) >=sys-devel/binutils-2.16.1 test? ( >=dev-lang/tcl-8.4 ) java? ( >=dev-java/java-config-2.2.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Oracle Berkeley DB
-HOMEPAGE=http://www.oracle.com/technology/software/products/berkeley-db/index.html
-IUSE=tcl java doc cxx rpc doc test examples elibc_FreeBSD java
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd
 LICENSE=Sleepycat
-RDEPEND=tcl? ( dev-lang/tcl ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.2.0 )
-SLOT=4.6
+IUSE=tcl java doc cxx rpc doc test examples elibc_FreeBSD java
 SRC_URI=http://download.oracle.com/berkeley-db/db-4.6.21.tar.gz http://www.oracle.com/technology/products/berkeley-db/db/update/4.6.21/patch.4.6.21.1 http://www.oracle.com/technology/products/berkeley-db/db/update/4.6.21/patch.4.6.21.2 http://www.oracle.com/technology/products/berkeley-db/db/update/4.6.21/patch.4.6.21.3 http://www.oracle.com/technology/products/berkeley-db/db/update/4.6.21/patch.4.6.21.4
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	db	217d1394b8ade73a6a416da2b3be3332	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	240e3f28c6b42b9f36d3c36b8b27fbb2	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=f62d123e39a77daa47d8d3ea57ad24db
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd
+HOMEPAGE=http://www.oracle.com/technology/software/products/berkeley-db/index.html
+RDEPEND=tcl? ( dev-lang/tcl ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.2.0 )

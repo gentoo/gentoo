@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/jwhois/jwhois-3.2.3-r1.ebuild,v 1.4 2010/10/17 09:30:28 leio Exp $
+# $Id$
 
 inherit eutils
 

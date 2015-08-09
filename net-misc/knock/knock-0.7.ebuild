@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/knock/knock-0.7.ebuild,v 1.5 2015/04/19 09:42:35 pacho Exp $
+# $Id$
 
 EAPI=4
 

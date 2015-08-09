@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan-plugin-perfection-v370/iscan-plugin-perfection-v370-1.0.0.2.ebuild,v 1.2 2014/08/10 21:15:01 slyfox Exp $
+# $Id$
 
 EAPI=5
 

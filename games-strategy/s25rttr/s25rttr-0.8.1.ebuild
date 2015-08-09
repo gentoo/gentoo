@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/s25rttr/s25rttr-0.8.1.ebuild,v 1.4 2015/02/25 15:56:39 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils gnome2-utils games

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/batteries/batteries-2.1.ebuild,v 1.2 2013/08/19 19:37:02 aballier Exp $
+# $Id$
 
 EAPI=5
 

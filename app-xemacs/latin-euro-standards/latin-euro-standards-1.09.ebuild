@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/latin-euro-standards/latin-euro-standards-1.09.ebuild,v 1.7 2014/08/10 19:09:41 slyfox Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

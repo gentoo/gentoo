@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gl2ps/gl2ps-1.3.6.ebuild,v 1.8 2012/09/30 17:57:40 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit cmake-utils multilib

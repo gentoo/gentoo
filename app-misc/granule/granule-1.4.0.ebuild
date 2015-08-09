@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/granule/granule-1.4.0.ebuild,v 1.7 2014/03/22 19:33:59 angelos Exp $
+# $Id$
 
 EAPI="2"
 inherit eutils

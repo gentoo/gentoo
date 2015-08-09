@@ -1,13 +1,13 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=a0169a03413324387ad01d930cd4b08
+SLOT=0
 DEFINED_PHASES=configure install postinst pretend setup
+EAPI=5
 DEPEND=>=sys-kernel/linux-headers-3 virtual/pkgconfig
 DESCRIPTION=Daemon for Advanced Configuration and Power Interface
-EAPI=5
-HOMEPAGE=http://sourceforge.net/projects/acpid2
-IUSE=selinux
-KEYWORDS=amd64 ia64 x86
 LICENSE=GPL-2
-RDEPEND=selinux? ( sec-policy/selinux-apm )
-SLOT=0
+IUSE=selinux
 SRC_URI=mirror://sourceforge/acpid2/acpid-2.0.23.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=cd7faf64af664c7173dc74fa6db43c8d
+KEYWORDS=amd64 ia64 x86
+HOMEPAGE=http://sourceforge.net/projects/acpid2
+RDEPEND=selinux? ( sec-policy/selinux-apm )

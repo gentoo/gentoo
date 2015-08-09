@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.9-r3.ebuild,v 1.17 2014/08/05 16:09:26 ottxor Exp $
+# $Id$
 
 EAPI="4"
 inherit eutils flag-o-matic toolchain-funcs multilib-minimal

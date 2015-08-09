@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/firefox/firefox-31.8.0.ebuild,v 1.5 2015/07/20 08:27:39 ago Exp $
+# $Id$
 
 EAPI="5"
 VIRTUALX_REQUIRED="pgo"
@@ -29,7 +29,8 @@ PATCH="${PN}-31.0-patches-0.3"
 PATCHFF="${PATCH}"
 # Upstream ftp release URI that's used by mozlinguas.eclass
 # We don't use the http mirror because it deletes old tarballs.
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases"
+#MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases"
+MOZ_FTP_URI="http://archive.mozilla.org/pub/${PN}/releases"
 MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1

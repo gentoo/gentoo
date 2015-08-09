@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/grive/grive-0.2.0-r1.ebuild,v 1.3 2014/03/01 22:09:38 mgorny Exp $
+# $Id$
 
 EAPI=5
 

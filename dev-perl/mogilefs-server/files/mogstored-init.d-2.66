@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/mogilefs-server/files/mogstored-init.d-2.66,v 1.1 2013/06/25 04:20:45 robbat2 Exp $
+# $Id$
 
 NAME="mogstored"
 BINARY="/usr/bin/mogstored"

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jvyamlb/jvyamlb-0.2.5.ebuild,v 1.5 2010/01/03 21:16:23 fauli Exp $
+# $Id$
 
 EAPI=2
 JAVA_PKG_IUSE="source test"

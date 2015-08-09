@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/zoneminder/files/init.d,v 1.5 2014/04/25 14:43:40 dilfridge Exp $
+# $Id$
 
 depend() {
 	need mysql

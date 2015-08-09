@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-crossfire/ut2004-crossfire-1.95.ebuild,v 1.1 2010/04/18 05:10:17 mr_bones_ Exp $
+# $Id$
 
 EAPI=2
 

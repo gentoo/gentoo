@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-radio/files/rc-addon.sh,v 1.3 2006/11/17 13:23:19 zzam Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-radio
 # 

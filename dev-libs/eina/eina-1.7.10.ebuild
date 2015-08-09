@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/eina/eina-1.7.10.ebuild,v 1.1 2015/03/16 23:23:55 vapier Exp $
+# $Id$
 
 EAPI="4"
 

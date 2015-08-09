@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arpwatch/arpwatch-2.1.15-r7.ebuild,v 1.1 2014/09/24 13:01:51 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils user versionator

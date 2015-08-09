@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dtc/dtc-1.4.1.ebuild,v 1.8 2015/05/30 10:55:59 maekke Exp $
+# $Id$
 
 EAPI="4"
 

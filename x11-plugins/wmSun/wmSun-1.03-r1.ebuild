@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmSun/wmSun-1.03-r1.ebuild,v 1.6 2012/02/15 09:54:07 voyageur Exp $
+# $Id$
 
 inherit eutils multilib toolchain-funcs
 

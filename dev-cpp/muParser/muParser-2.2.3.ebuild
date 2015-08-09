@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/muParser/muParser-2.2.3.ebuild,v 1.1 2013/06/17 16:16:00 bicatali Exp $
+# $Id$
 
 EAPI=5
 

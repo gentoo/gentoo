@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmudmount/wmudmount-2.0.ebuild,v 1.1 2014/02/09 23:51:51 voyageur Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnome2-utils

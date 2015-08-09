@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/xtables-addons-1.37.ebuild,v 1.7 2011/09/25 15:49:11 swegener Exp $
+# $Id$
 
 EAPI="4"
 inherit eutils linux-info linux-mod multilib

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/sh-script/sh-script-1.24.ebuild,v 1.7 2014/08/10 19:30:44 slyfox Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

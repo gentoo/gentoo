@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vcdgear/vcdgear-1.76-r2.ebuild,v 1.8 2014/04/17 15:45:26 ulm Exp $
+# $Id$
 
 EAPI=2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-tcp/ucspi-tcp-0.88-r17.ebuild,v 1.12 2012/05/13 11:18:54 swift Exp $
+# $Id$
 
 inherit eutils fixheadtails flag-o-matic qmail
 

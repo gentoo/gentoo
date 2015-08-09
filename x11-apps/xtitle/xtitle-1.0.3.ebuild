@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xtitle/xtitle-1.0.3.ebuild,v 1.1 2014/05/31 14:11:16 zlogene Exp $
+# $Id$
 
 EAPI=5
 

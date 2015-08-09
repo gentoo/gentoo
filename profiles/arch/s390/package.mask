@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/s390/package.mask,v 1.8 2013/08/11 16:55:41 aballier Exp $
+# $Id$
 
 # Alexis Ballier <aballier@gentoo.org> (27 Jun 2013)
 # TeX Live 2013 mask.

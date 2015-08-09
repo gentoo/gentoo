@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-latex/pidgin-latex-1.5.0.ebuild,v 1.3 2014/08/25 16:20:27 mrueg Exp $
+# $Id$
 
 EAPI=5
 inherit multilib toolchain-funcs

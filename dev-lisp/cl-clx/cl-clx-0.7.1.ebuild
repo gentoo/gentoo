@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-clx/cl-clx-0.7.1.ebuild,v 1.2 2012/09/29 16:56:32 ulm Exp $
+# $Id$
 
 inherit common-lisp eutils
 

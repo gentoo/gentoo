@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/semi/semi-1.14.6-r2.ebuild,v 1.7 2014/04/21 13:29:34 ulm Exp $
+# $Id$
 
 EAPI=5
 

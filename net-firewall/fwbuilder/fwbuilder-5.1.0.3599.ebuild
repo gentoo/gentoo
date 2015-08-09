@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwbuilder/fwbuilder-5.1.0.3599.ebuild,v 1.4 2013/03/02 22:49:59 hwoarang Exp $
+# $Id$
 
 EAPI="4"
 

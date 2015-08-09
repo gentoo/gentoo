@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/comix-xcursors/comix-xcursors-0.8.2.ebuild,v 1.4 2014/08/03 18:39:25 ago Exp $
+# $Id$
 
 EAPI=5
 

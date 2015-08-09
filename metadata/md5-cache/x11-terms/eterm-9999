@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ffb5a32a81e8213afc21a76180214b3b
+SLOT=0
 DEFINED_PHASES=configure install preinst prepare unpack
+EAPI=3
 DEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libICE x11-libs/libSM x11-proto/xextproto x11-proto/xproto >=x11-libs/libast-0.6.1 media-libs/imlib2[X] media-fonts/font-misc-misc escreen? ( app-misc/screen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=A vt102 terminal emulator for X
-EAPI=3
-HOMEPAGE=http://www.eterm.org/
-IUSE=escreen minimal cpu_flags_x86_mmx cpu_flags_x86_sse2 unicode +utempter
 LICENSE=BSD
+IUSE=escreen minimal cpu_flags_x86_mmx cpu_flags_x86_sse2 unicode +utempter
+HOMEPAGE=http://www.eterm.org/
 RDEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libICE x11-libs/libSM x11-proto/xextproto x11-proto/xproto >=x11-libs/libast-0.6.1 media-libs/imlib2[X] media-fonts/font-misc-misc escreen? ( app-misc/screen )
-SLOT=0
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c268e5d014efbc75b488b2e626d8e7aa

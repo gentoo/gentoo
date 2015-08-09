@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-sp-fortunes/fortune-mod-sp-fortunes-0.2.ebuild,v 1.7 2015/03/29 16:35:29 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 MY_P=${P/fortune-mod-sp-fortunes/SP}

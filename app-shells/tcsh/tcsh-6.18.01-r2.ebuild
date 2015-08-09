@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.18.01-r2.ebuild,v 1.11 2015/02/17 15:03:26 haubi Exp $
+# $Id$
 
 EAPI="3"
 

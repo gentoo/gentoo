@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/freeze/freeze-2.5.0-r1.ebuild,v 1.9 2013/01/13 11:31:59 ago Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

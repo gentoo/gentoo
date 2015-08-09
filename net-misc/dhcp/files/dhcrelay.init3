@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/files/dhcrelay.init3,v 1.3 2012/11/11 21:42:02 vapier Exp $
+# $Id$
 
 depend() {
 	need net

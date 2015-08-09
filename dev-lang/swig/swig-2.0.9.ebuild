@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/swig-2.0.9.ebuild,v 1.13 2014/04/06 14:59:01 vapier Exp $
+# $Id$
 
 EAPI=4
 

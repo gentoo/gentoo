@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-gnomevfs/gst-plugins-gnomevfs-0.10.36-r1.ebuild,v 1.10 2014/10/11 13:14:28 maekke Exp $
+# $Id$
 
 EAPI="5"
 

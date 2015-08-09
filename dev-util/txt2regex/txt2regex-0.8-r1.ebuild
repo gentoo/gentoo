@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/txt2regex/txt2regex-0.8-r1.ebuild,v 1.7 2011/01/06 21:19:20 jlec Exp $
+# $Id$
 
 inherit eutils
 

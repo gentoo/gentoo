@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/kbd/kbd-1.15.5-r1.ebuild,v 1.12 2014/01/26 12:19:59 ago Exp $
+# $Id$
 
 EAPI="4"
 

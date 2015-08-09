@@ -1,9 +1,0 @@
-# ChangeLog for x11-plugins/pidgin-indicator
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-indicator/ChangeLog,v 1.1 2015/05/07 21:00:17 mrueg Exp $
-
-*pidgin-indicator-0.9 (07 May 2015)
-
-  07 May 2015; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
-  +pidgin-indicator-0.9.ebuild:
-  Initial version.

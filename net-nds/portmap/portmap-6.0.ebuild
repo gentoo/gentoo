@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/portmap/portmap-6.0.ebuild,v 1.18 2014/11/02 09:25:14 swift Exp $
+# $Id$
 
 inherit eutils toolchain-funcs user
 

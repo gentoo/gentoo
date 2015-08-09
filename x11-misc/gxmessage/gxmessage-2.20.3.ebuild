@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gxmessage/gxmessage-2.20.3.ebuild,v 1.1 2015/05/23 04:53:57 jer Exp $
+# $Id$
 
 EAPI=5
 inherit gnome2-utils

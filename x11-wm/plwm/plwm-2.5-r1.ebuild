@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/plwm/plwm-2.5-r1.ebuild,v 1.9 2014/08/10 19:59:47 slyfox Exp $
+# $Id$
 
 PYTHON_DEPEND="2"
 

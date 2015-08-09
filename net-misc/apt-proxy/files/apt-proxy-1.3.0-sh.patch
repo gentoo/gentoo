@@ -7,5 +7,5 @@
 +### I really modified it (was /bin/ash)
 +### Radek Podgorny <radek@podgorny.cz> (for Gentoo)
  #
- # $Id: apt-proxy-1.3.0-sh.patch,v 1.1 2004/04/22 18:12:31 mholzer Exp $
+ # $Id$
  # Copyright Paul Russell <rusty@samba.org>

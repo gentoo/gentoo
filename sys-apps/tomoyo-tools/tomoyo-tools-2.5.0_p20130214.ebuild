@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tomoyo-tools/tomoyo-tools-2.5.0_p20130214.ebuild,v 1.2 2014/11/23 10:09:06 jer Exp $
+# $Id$
 
 EAPI=5
 

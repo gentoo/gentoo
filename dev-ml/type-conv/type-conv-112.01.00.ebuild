@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/type-conv/type-conv-112.01.00.ebuild,v 1.1 2014/12/01 11:10:54 aballier Exp $
+# $Id$
 
 EAPI="5"
 

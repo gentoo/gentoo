@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vco-plugins/vco-plugins-0.3.0.ebuild,v 1.8 2011/06/28 00:01:31 radhermit Exp $
+# $Id$
 
 EAPI=4
 

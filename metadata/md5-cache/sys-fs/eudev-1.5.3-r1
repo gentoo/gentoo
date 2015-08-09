@@ -1,15 +1,15 @@
+_eclasses_=multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=8d4ad9ca9d4343dbe381230d3f28e98c
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup test
+EAPI=5
 DEPEND=gudev? ( >=dev-libs/glib-2.34.3:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) kmod? ( sys-apps/kmod ) introspection? ( >=dev-libs/gobject-introspection-1.31.1 ) selinux? ( sys-libs/libselinux ) >=sys-apps/util-linux-2.20 !<sys-libs/glibc-2.11 abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r7 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) keymap? ( dev-util/gperf ) >=dev-util/intltool-0.40.0 virtual/pkgconfig virtual/os-headers !<sys-kernel/linux-headers-2.6.31 doc? ( dev-util/gtk-doc ) app-text/docbook-xsl-stylesheets dev-libs/libxslt test? ( app-text/tree dev-lang/perl ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Linux dynamic and persistent device naming support (aka userspace devfs)
-EAPI=5
-HOMEPAGE=https://github.com/gentoo/eudev
-IUSE=doc gudev +hwdb kmod introspection +keymap +modutils +openrc +rule-generator selinux static-libs test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha
 LICENSE=LGPL-2.1 MIT GPL-2
-PDEPEND=hwdb? ( >=sys-apps/hwids-20130717-r1[udev] ) keymap? ( >=sys-apps/hwids-20130717-r1[udev] ) openrc? ( >=sys-fs/udev-init-scripts-18 )
-RDEPEND=gudev? ( >=dev-libs/glib-2.34.3:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) kmod? ( sys-apps/kmod ) introspection? ( >=dev-libs/gobject-introspection-1.31.1 ) selinux? ( sys-libs/libselinux ) >=sys-apps/util-linux-2.20 !<sys-libs/glibc-2.11 abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r7 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) !sys-fs/udev !sys-apps/coldplug !sys-apps/systemd !<sys-fs/lvm2-2.02.97 !sys-fs/device-mapper !<sys-fs/udev-init-scripts-18 gudev? ( !dev-libs/libgudev )
+IUSE=doc gudev +hwdb kmod introspection +keymap +modutils +openrc +rule-generator selinux static-libs test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 REQUIRED_USE=keymap? ( hwdb )
-SLOT=0
+PDEPEND=hwdb? ( >=sys-apps/hwids-20130717-r1[udev] ) keymap? ( >=sys-apps/hwids-20130717-r1[udev] ) openrc? ( >=sys-fs/udev-init-scripts-18 )
 SRC_URI=http://dev.gentoo.org/~blueness/eudev/eudev-1.5.3.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=014833c4e1eb295cfad19bac9509c433
+KEYWORDS=alpha
+HOMEPAGE=https://github.com/gentoo/eudev
+RDEPEND=gudev? ( >=dev-libs/glib-2.34.3:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) kmod? ( sys-apps/kmod ) introspection? ( >=dev-libs/gobject-introspection-1.31.1 ) selinux? ( sys-libs/libselinux ) >=sys-apps/util-linux-2.20 !<sys-libs/glibc-2.11 abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r7 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) !sys-fs/udev !sys-apps/coldplug !sys-apps/systemd !<sys-fs/lvm2-2.02.97 !sys-fs/device-mapper !<sys-fs/udev-init-scripts-18 gudev? ( !dev-libs/libgudev )

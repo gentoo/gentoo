@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/no-multilib/package.use.force,v 1.1 2013/05/16 19:29:27 zorry Exp $
+# $Id$
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (24 Jun 2012)
 # Force 64-bit parts of wine, bug #351436

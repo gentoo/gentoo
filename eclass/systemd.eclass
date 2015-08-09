@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/systemd.eclass,v 1.32 2014/05/31 10:23:36 mgorny Exp $
+# $Id$
 
 # @ECLASS: systemd.eclass
 # @MAINTAINER:

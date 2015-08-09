@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/Kivy/Kivy-1.8.0.ebuild,v 1.9 2015/06/03 20:04:07 jlec Exp $
+# $Id$
 
 EAPI="5"
 

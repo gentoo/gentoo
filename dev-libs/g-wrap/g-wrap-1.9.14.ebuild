@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/g-wrap/g-wrap-1.9.14.ebuild,v 1.3 2012/08/27 17:57:52 armin76 Exp $
+# $Id$
 
 EAPI=4
 

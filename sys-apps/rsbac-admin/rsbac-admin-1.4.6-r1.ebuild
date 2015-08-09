@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rsbac-admin/rsbac-admin-1.4.6-r1.ebuild,v 1.1 2012/05/15 18:31:08 blueness Exp $
+# $Id$
 
 EAPI="4"
 

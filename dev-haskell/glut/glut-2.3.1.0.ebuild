@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/glut/glut-2.3.1.0.ebuild,v 1.2 2013/01/03 21:08:02 slyfox Exp $
+# $Id$
 
 EAPI=5
 

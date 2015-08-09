@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-eyes-plugin/xfce4-eyes-plugin-4.4.2.ebuild,v 1.5 2013/04/12 15:05:59 ago Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

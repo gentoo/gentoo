@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # (Written  by Phillip Berndt <phillip.berndt at gmail dot com>)
 # (Modified by Steven Brudenell <steven dot brudenell at gmail>)
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nstx/files/nstxd.init,v 1.1 2009/12/06 19:37:38 robbat2 Exp $
+# $Id$
 
 depend() {
     if [ ! -z "${BIND_INTERFACE}" ] ; then

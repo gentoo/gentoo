@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libwebp/libwebp-0.3.0.ebuild,v 1.2 2014/01/16 16:00:38 blueness Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib-minimal

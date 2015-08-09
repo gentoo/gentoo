@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ec01dcc0bf614a1db68bd51b505cb3d2
+SLOT=0
 DEFINED_PHASES=compile configure install prepare
+EAPI=4
 DEPEND=ncurses? ( sys-libs/ncurses ) gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) >=x11-libs/pango-1.8.0 dev-libs/atk dev-libs/glib media-libs/fontconfig media-libs/freetype x11-libs/cairo ) !gtk? ( sys-libs/ncurses ) app-text/grutatxt iconv? ( virtual/libiconv ) nls? ( sys-devel/gettext ) pcre? ( dev-libs/libpcre ) app-text/grutatxt virtual/pkgconfig dev-lang/perl
 DESCRIPTION=Minimum Profit: A text editor for programmers
-EAPI=4
-HOMEPAGE=http://www.triptico.com/software/mp.html
-IUSE=gtk iconv kde ncurses nls pcre qt4 linguas_de linguas_es linguas_it linguas_nl linguas_ru linguas_sv
-KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-interix ~ppc-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
-RDEPEND=ncurses? ( sys-libs/ncurses ) gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) >=x11-libs/pango-1.8.0 dev-libs/atk dev-libs/glib media-libs/fontconfig media-libs/freetype x11-libs/cairo ) !gtk? ( sys-libs/ncurses ) app-text/grutatxt iconv? ( virtual/libiconv ) nls? ( sys-devel/gettext ) pcre? ( dev-libs/libpcre )
-SLOT=0
+IUSE=gtk iconv kde ncurses nls pcre qt4 linguas_de linguas_es linguas_it linguas_nl linguas_ru linguas_sv
 SRC_URI=http://www.triptico.com/download/mp-5.2.2.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=f2006f41e8ba5a0dca67ab0fa5895a67
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-interix ~ppc-macos ~sparc-solaris ~x86-solaris
+HOMEPAGE=http://www.triptico.com/software/mp.html
+RDEPEND=ncurses? ( sys-libs/ncurses ) gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) >=x11-libs/pango-1.8.0 dev-libs/atk dev-libs/glib media-libs/fontconfig media-libs/freetype x11-libs/cairo ) !gtk? ( sys-libs/ncurses ) app-text/grutatxt iconv? ( virtual/libiconv ) nls? ( sys-devel/gettext ) pcre? ( dev-libs/libpcre )

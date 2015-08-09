@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/chntpw/chntpw-140201.ebuild,v 1.1 2015/03/16 16:48:43 alonbl Exp $
+# $Id$
 
 EAPI=5
 

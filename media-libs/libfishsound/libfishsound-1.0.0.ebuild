@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libfishsound/libfishsound-1.0.0.ebuild,v 1.7 2012/05/23 16:21:03 johu Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

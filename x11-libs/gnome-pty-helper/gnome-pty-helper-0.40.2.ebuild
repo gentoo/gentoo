@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gnome-pty-helper/gnome-pty-helper-0.40.2.ebuild,v 1.1 2015/06/09 09:41:54 eva Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

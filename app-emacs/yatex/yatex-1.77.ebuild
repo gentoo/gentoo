@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/yatex/yatex-1.77.ebuild,v 1.4 2013/08/07 13:26:32 ago Exp $
+# $Id$
 
 EAPI=5
 

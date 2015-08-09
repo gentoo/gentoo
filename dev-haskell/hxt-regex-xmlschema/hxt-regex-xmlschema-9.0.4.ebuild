@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt-regex-xmlschema/hxt-regex-xmlschema-9.0.4.ebuild,v 1.2 2012/09/12 15:16:12 qnikst Exp $
+# $Id$
 
 EAPI=4
 

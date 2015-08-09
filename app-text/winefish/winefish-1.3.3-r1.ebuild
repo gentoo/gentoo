@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/winefish/winefish-1.3.3-r1.ebuild,v 1.3 2012/05/04 03:33:14 jdhore Exp $
+# $Id$
 
 EAPI=3
 

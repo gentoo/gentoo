@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-csdp/coinor-csdp-6.1.1-r1.ebuild,v 1.1 2014/02/04 09:31:09 jlec Exp $
+# $Id$
 
 EAPI=5
 

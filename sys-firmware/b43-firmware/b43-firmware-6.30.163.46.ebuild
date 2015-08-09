@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-firmware/b43-firmware/b43-firmware-6.30.163.46.ebuild,v 1.2 2014/06/06 15:11:26 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

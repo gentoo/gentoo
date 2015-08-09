@@ -1,9 +1,0 @@
-# ChangeLog for app-crypt/fcrackzip
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/fcrackzip/ChangeLog,v 1.1 2010/06/05 18:53:14 ssuominen Exp $
-
-*fcrackzip-1.0 (05 Jun 2010)
-
-  05 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +fcrackzip-1.0.ebuild:
-  Initial commit wrt #146363 by René Neumann.
-

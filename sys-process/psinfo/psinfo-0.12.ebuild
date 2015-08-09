@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/psinfo/psinfo-0.12.ebuild,v 1.1 2011/04/25 15:48:10 jlec Exp $
+# $Id$
 
 EAPI="4"
 

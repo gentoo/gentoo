@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/replex/replex-0.1.4.ebuild,v 1.3 2006/12/31 18:11:41 beandog Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/x86/make.defaults,v 1.13 2012/10/15 15:58:18 chithanh Exp $
+# $Id$
 
 ARCH="x86"
 ACCEPT_KEYWORDS="x86"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpstat/tcpstat-1.5-r1.ebuild,v 1.4 2014/12/29 06:57:24 jer Exp $
+# $Id$
 
 inherit eutils autotools flag-o-matic
 

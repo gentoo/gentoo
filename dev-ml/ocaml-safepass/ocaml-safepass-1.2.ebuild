@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-safepass/ocaml-safepass-1.2.ebuild,v 1.2 2013/03/03 14:28:02 aballier Exp $
+# $Id$
 
 EAPI=5
 

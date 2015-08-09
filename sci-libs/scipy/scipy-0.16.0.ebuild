@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/scipy-0.16.0.ebuild,v 1.1 2015/07/29 09:54:50 jlec Exp $
+# $Id$
 
 EAPI=5
 

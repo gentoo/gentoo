@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/hypre/hypre-2.9.0b.ebuild,v 1.4 2014/06/09 03:17:04 bicatali Exp $
+# $Id$
 
 EAPI=5
 

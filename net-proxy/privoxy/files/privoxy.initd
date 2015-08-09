@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/privoxy/files/privoxy.initd,v 1.2 2007/11/14 05:14:56 mrness Exp $
+# $Id$
 
 CONFFILE=/etc/${SVCNAME}/config
 PIDFILE=/var/run/${SVCNAME}.pid

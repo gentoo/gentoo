@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/polkit/polkit-0.112-r2.ebuild,v 1.17 2015/02/11 03:45:06 patrick Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib pam pax-utils systemd user

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fast_gettext/fast_gettext-0.9.0.ebuild,v 1.2 2015/03/11 16:54:33 ago Exp $
+# $Id$
 
 EAPI=5
 

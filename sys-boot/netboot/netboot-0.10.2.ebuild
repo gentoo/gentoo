@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/netboot/netboot-0.10.2.ebuild,v 1.2 2011/11/28 11:54:00 phajdan.jr Exp $
+# $Id$
 
 EAPI="2"
 

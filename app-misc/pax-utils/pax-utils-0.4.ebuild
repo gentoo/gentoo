@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pax-utils/pax-utils-0.4.ebuild,v 1.8 2012/07/10 18:05:58 ranger Exp $
+# $Id$
 
 inherit eutils toolchain-funcs unpacker
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-timer-plugin/xfce4-timer-plugin-1.6.0.ebuild,v 1.7 2015/07/25 12:21:31 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit multilib xfconf

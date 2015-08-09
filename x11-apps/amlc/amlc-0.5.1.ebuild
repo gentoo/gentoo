@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/amlc/amlc-0.5.1.ebuild,v 1.8 2015/01/26 18:55:40 jer Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

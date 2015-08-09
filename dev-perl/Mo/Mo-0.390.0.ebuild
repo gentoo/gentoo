@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mo/Mo-0.390.0.ebuild,v 1.1 2015/06/26 09:17:07 monsieurp Exp $
+# $Id$
 EAPI=5
 
 MODULE_AUTHOR=INGY

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lcd4linux/files/lcd4linux-0.10.1_rc2.initd,v 1.1 2007/04/30 19:10:56 rbu Exp $
+# $Id$
 
 PIDFILE=/var/run/lcd4linux.pid
 DAEMON=/usr/bin/lcd4linux

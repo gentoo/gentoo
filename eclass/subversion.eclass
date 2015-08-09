@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/subversion.eclass,v 1.87 2014/01/07 01:59:10 floppym Exp $
+# $Id$
 
 # @ECLASS: subversion.eclass
 # @MAINTAINER:

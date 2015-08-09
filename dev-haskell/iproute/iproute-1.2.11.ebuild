@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/iproute/iproute-1.2.11.ebuild,v 1.1 2013/08/26 03:45:15 qnikst Exp $
+# $Id$
 
 EAPI=5
 

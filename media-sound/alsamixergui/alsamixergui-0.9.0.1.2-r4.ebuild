@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsamixergui/alsamixergui-0.9.0.1.2-r4.ebuild,v 1.22 2015/08/08 06:52:13 jer Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils flag-o-matic

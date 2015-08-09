@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64-fbsd/package.use.mask,v 1.28 2015/01/28 00:35:01 johu Exp $
+# $Id$
 
 # Johannes Huber <johu@gentoo.org> (28 Jan 2015)
 # Missing keyword on dev-libs/botan,dev-libs/pkcs11-helper

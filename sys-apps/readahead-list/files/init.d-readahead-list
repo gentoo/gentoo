@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2005 Robin H. Johnson <robbat2@orbis-terrarum.net>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/readahead-list/files/init.d-readahead-list,v 1.1 2009/09/21 02:03:32 robbat2 Exp $
+# $Id$
 
 depend() {
 	after localmount

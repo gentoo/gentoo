@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/abrt/files/abrt-2.0.12-r1-init,v 1.1 2012/10/25 07:30:12 tetromino Exp $
+# $Id$
 
 description="Automated crash detection service"
 

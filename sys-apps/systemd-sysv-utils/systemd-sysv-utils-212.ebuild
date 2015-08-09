@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd-sysv-utils/systemd-sysv-utils-212.ebuild,v 1.2 2014/04/16 02:12:32 floppym Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,4 +1,4 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/sparc/13.0/use.stable.mask,v 1.2 2014/02/02 11:30:33 pacho Exp $
+# $Id$
 

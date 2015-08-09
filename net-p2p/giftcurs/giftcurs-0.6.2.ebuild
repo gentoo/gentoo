@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/giftcurs/giftcurs-0.6.2.ebuild,v 1.16 2012/05/04 06:33:34 jdhore Exp $
+# $Id$
 
 MY_P="giFTcurs-${PV}"
 S="${WORKDIR}/${MY_P}"

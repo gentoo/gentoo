@@ -60,4 +60,4 @@ particular service and module type may result in surprising behaviour.
 To get the intended semantics, add a "required" entry listing the
 pam_deny module at the end of the chain.
 
-$Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-pam-modules/files/README.pamd,v 1.1 2009/01/22 21:03:18 the_paya Exp $
+$Id$

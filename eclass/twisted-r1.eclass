@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/eclass/twisted-r1.eclass,v 1.2 2014/01/05 10:12:49 mgorny Exp $
+# $Id$
 
 # @ECLASS: twisted-r1.eclass
 # @MAINTAINER:

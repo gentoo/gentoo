@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ethercard-diag/ethercard-diag-20050321.1g-r1.ebuild,v 1.1 2015/08/07 05:19:56 vapier Exp $
+# $Id$
 
 EAPI="5"
 

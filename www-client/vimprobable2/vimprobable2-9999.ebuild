@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/vimprobable2/vimprobable2-9999.ebuild,v 1.4 2014/07/19 04:53:56 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs savedconfig

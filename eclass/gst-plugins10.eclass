@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gst-plugins10.eclass,v 1.12 2014/04/05 09:19:19 tetromino Exp $
+# $Id$
 
 # @ECLASS: gst-plugins10.eclass
 # @MAINTAINER:

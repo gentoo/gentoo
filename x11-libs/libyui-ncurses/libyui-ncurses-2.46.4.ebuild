@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libyui-ncurses/libyui-ncurses-2.46.4.ebuild,v 1.3 2014/10/03 05:41:36 patrick Exp $
+# $Id$
 
 EAPI=5
 

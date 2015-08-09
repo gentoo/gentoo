@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/hgsubversion/hgsubversion-1.6.3.ebuild,v 1.1 2014/08/18 20:06:20 djc Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

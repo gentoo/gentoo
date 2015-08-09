@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/nylon/nylon-1.21-r1.ebuild,v 1.6 2013/12/24 12:49:01 ago Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/blaze-html/blaze-html-0.7.0.3.ebuild,v 1.1 2014/12/13 13:27:14 gienah Exp $
+# $Id$
 
 EAPI=5
 

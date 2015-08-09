@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/dbhub/dbhub-0.451-r1.ebuild,v 1.1 2011/01/19 20:18:41 sochotnicky Exp $
+# $Id$
 
 EAPI=2
 inherit autotools eutils

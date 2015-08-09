@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/split2flac/split2flac-9999.ebuild,v 1.5 2013/10/21 07:56:37 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

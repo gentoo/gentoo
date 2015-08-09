@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/istanbul/istanbul-0.2.2.1_pre20120909.ebuild,v 1.4 2015/03/15 13:41:53 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

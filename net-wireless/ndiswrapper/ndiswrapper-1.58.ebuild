@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ndiswrapper/ndiswrapper-1.58.ebuild,v 1.4 2013/05/19 16:54:31 angelos Exp $
+# $Id$
 
 EAPI=4
 inherit base linux-mod toolchain-funcs

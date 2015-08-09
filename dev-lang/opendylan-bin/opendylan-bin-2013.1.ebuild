@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/opendylan-bin/opendylan-bin-2013.1.ebuild,v 1.2 2013/07/12 03:00:14 patrick Exp $
+# $Id$
 EAPI=4
 
 DESCRIPTION="OpenDylan language runtime environment (prebuilt)"

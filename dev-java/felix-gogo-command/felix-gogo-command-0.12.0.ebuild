@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/felix-gogo-command/felix-gogo-command-0.12.0.ebuild,v 1.1 2013/10/15 23:23:21 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

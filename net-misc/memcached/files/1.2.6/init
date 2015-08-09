@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/files/1.2.6/init,v 1.2 2011/12/31 20:36:20 idl0r Exp $
+# $Id$
 
 CONF="${SVCNAME#*.}"
 CONFBASE="/etc/conf.d/memcached"

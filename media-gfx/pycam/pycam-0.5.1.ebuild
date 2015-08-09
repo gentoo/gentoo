@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pycam/pycam-0.5.1.ebuild,v 1.2 2013/11/05 09:00:14 slis Exp $
+# $Id$
 
 EAPI=5
 

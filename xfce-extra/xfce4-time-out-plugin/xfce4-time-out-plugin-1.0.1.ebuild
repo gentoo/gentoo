@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-time-out-plugin/xfce4-time-out-plugin-1.0.1.ebuild,v 1.8 2012/11/28 12:24:00 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

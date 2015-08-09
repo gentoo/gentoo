@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/paklib/paklib-0.3.ebuild,v 1.4 2015/02/19 09:42:13 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

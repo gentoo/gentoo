@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unzip/unzip-5.52-r2.ebuild,v 1.8 2008/10/23 02:46:26 flameeyes Exp $
+# $Id$
 
 inherit eutils toolchain-funcs flag-o-matic
 

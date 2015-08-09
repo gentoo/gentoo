@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/dot2tex/dot2tex-2.8.7.ebuild,v 1.21 2013/09/12 22:33:06 mgorny Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

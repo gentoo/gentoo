@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/octomap/octomap-9999.ebuild,v 1.2 2014/10/29 12:45:10 aballier Exp $
+# $Id$
 
 EAPI=5
 

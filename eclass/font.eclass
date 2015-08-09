@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/font.eclass,v 1.58 2015/02/21 07:20:22 yngwin Exp $
+# $Id$
 
 # @ECLASS: font.eclass
 # @MAINTAINER:

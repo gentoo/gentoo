@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/dfarc/dfarc-3.10.ebuild,v 1.4 2013/09/14 20:13:45 hasufell Exp $
+# $Id$
 
 EAPI=5
 

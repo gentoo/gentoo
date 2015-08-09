@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/nwipe/nwipe-0.14.ebuild,v 1.1 2013/02/22 23:13:27 chutzpah Exp $
+# $Id$
 
 EAPI=5
 

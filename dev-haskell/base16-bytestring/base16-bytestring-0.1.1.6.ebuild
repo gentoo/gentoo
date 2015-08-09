@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/base16-bytestring/base16-bytestring-0.1.1.6.ebuild,v 1.1 2014/07/02 00:44:14 gienah Exp $
+# $Id$
 
 EAPI=5
 

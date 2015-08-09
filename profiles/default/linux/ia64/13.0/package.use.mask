@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/ia64/13.0/package.use.mask,v 1.1 2014/09/30 19:08:56 grobian Exp $
+# $Id$
 
 # Fabian Groffen <grobian@gentoo.org> (Sep 30, 2014)
 # redis needs dev-libs/hiredis, bug #489676

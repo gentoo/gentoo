@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	waf-utils	ad1dd5b59c523843eebd3a9934c509ca	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2c80e8b085309419096a8a3517e6d975
+SLOT=0
 DEFINED_PHASES=compile configure install setup
+EAPI=4
 DEPEND=media-libs/alsa-lib media-sound/jack-audio-connection-kit dbus? ( sys-apps/dbus ) virtual/pkgconfig =dev-lang/python-2* dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
-EAPI=4
-HOMEPAGE=http://home.gna.org/a2jmidid/
-IUSE=dbus
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=media-libs/alsa-lib media-sound/jack-audio-connection-kit dbus? ( sys-apps/dbus ) =dev-lang/python-2*
-SLOT=0
+IUSE=dbus
 SRC_URI=http://download.gna.org/a2jmidid/a2jmidid-8.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	f8e7e7df15097b4ca1d9945c2653b783
-_md5_=b7d28f5645f158547b471872aad3c9b5
+KEYWORDS=amd64 x86
+HOMEPAGE=http://home.gna.org/a2jmidid/
+RDEPEND=media-libs/alsa-lib media-sound/jack-audio-connection-kit dbus? ( sys-apps/dbus ) =dev-lang/python-2*

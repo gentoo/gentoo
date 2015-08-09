@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/kaffeine-mozilla-plugin/kaffeine-mozilla-plugin-0.2-r1.ebuild,v 1.1 2014/09/04 15:18:29 kensington Exp $
+# $Id$
 
 EAPI=5
 

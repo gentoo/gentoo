@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-cbc/coinor-cbc-2.8.9.ebuild,v 1.3 2014/02/04 10:32:12 jlec Exp $
+# $Id$
 
 EAPI=5
 

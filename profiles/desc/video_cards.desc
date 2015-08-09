@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/video_cards.desc,v 1.36 2015/01/29 16:47:20 chithanh Exp $
+# $Id$
 
 # This file contains descriptions of VIDEO_CARDS USE_EXPAND flags.
 

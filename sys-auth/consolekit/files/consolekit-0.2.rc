@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/files/consolekit-0.2.rc,v 1.1 2011/10/20 19:14:47 axs Exp $
+# $Id$
 
 depend() {
 	need dbus

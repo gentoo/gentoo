@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinxcontrib-cheeseshop/sphinxcontrib-cheeseshop-0.2.ebuild,v 1.1 2014/10/21 02:33:16 alunduil Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy)

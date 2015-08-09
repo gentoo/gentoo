@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/ccollect/ccollect-0.8.ebuild,v 1.5 2012/02/23 17:21:51 ranger Exp $
+# $Id$
 
 EAPI="2"
 

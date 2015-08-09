@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/munge/files/munged.initd,v 1.2 2012/04/18 12:14:00 alexxy Exp $
+# $Id$
 
 depend() {
 	after localmount

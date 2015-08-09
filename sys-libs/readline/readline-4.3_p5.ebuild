@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/readline/readline-4.3_p5.ebuild,v 1.2 2009/10/03 23:38:24 vapier Exp $
+# $Id$
 
 # This version is just for the ABI .4 library
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/temporary/temporary-1.2.0.1.ebuild,v 1.1 2014/03/09 07:48:12 gienah Exp $
+# $Id$
 
 EAPI=5
 

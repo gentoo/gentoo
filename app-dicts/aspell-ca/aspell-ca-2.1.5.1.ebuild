@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-ca/aspell-ca-2.1.5.1.ebuild,v 1.9 2012/05/17 19:49:39 aballier Exp $
+# $Id$
 
 ASPELL_LANG="Catalan"
 ASPOSTFIX="6"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/java-virtuals/transaction-api/transaction-api-1.1.ebuild,v 1.5 2014/12/02 14:28:08 mrueg Exp $
+# $Id$
 
 EAPI=5
 

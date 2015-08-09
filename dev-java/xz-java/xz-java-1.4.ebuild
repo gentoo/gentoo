@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xz-java/xz-java-1.4.ebuild,v 1.3 2014/03/12 05:12:53 phajdan.jr Exp $
+# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc examples source"

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_loadavg/mod_loadavg-0.0.1.ebuild,v 1.2 2012/10/12 08:21:26 patrick Exp $
+# $Id$
 
 inherit apache-module eutils
 

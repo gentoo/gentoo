@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/vlna/vlna-1.5.ebuild,v 1.10 2012/05/09 17:28:12 aballier Exp $
+# $Id$
 
 DESCRIPTION="Add nonbreakable spaces after some prepositions in Czech texts"
 HOMEPAGE="http://math.feld.cvut.cz/olsak/cstex/"

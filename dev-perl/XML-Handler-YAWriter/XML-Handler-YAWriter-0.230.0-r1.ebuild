@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Handler-YAWriter/XML-Handler-YAWriter-0.230.0-r1.ebuild,v 1.2 2015/04/03 10:38:12 dlan Exp $
+# $Id$
 
 EAPI=5
 

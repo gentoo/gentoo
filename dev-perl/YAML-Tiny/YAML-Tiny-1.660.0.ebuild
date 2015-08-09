@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/YAML-Tiny/YAML-Tiny-1.660.0.ebuild,v 1.1 2015/03/22 16:40:25 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

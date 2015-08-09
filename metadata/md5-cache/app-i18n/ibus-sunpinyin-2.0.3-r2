@@ -1,12 +1,12 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	scons-utils	b7d634f772db55c8af429f50aeec6ee0
+_md5_=9e8a1e51b1f2dc3cd3291ab3019b1af2
+SLOT=0
 DEFINED_PHASES=compile install prepare setup
+EAPI=5
 DEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.3 sys-devel/gettext || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) dev-util/scons
 DESCRIPTION=The SunPinYin IMEngine for IBus Framework
-EAPI=5
-HOMEPAGE=http://sunpinyin.googlecode.com
-KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1 CDDL
-RDEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.3 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
-SLOT=0
 SRC_URI=http://sunpinyin.googlecode.com/files/ibus-sunpinyin-2.0.3.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2f53960af9a4c44a2d57d7189fd52d51
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://sunpinyin.googlecode.com
+RDEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.3 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )

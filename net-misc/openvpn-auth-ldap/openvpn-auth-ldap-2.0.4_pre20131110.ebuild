@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn-auth-ldap/openvpn-auth-ldap-2.0.4_pre20131110.ebuild,v 1.1 2013/11/12 17:42:23 ercpe Exp $
+# $Id$
 
 EAPI=5
 

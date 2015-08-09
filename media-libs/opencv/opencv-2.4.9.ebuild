@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/opencv-2.4.9.ebuild,v 1.15 2015/07/25 08:43:27 amynka Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

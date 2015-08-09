@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/lha/lha-114i-r7.ebuild,v 1.11 2013/05/24 20:23:44 aballier Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils flag-o-matic

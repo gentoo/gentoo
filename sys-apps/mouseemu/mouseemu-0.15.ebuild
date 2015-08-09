@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/mouseemu/mouseemu-0.15.ebuild,v 1.2 2006/02/21 00:58:48 vapier Exp $
+# $Id$
 
 inherit eutils
 

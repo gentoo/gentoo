@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sge/sge-030809.ebuild,v 1.13 2015/02/19 09:21:35 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib toolchain-funcs

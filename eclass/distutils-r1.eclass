@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/distutils-r1.eclass,v 1.116 2015/07/18 00:07:01 floppym Exp $
+# $Id$
 
 # @ECLASS: distutils-r1
 # @MAINTAINER:

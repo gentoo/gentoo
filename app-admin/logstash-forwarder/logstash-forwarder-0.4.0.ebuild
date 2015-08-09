@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-forwarder/logstash-forwarder-0.4.0.ebuild,v 1.2 2015/07/03 19:39:22 aidecoe Exp $
+# $Id$
 
 EAPI=5
 

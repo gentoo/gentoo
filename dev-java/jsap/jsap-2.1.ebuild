@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jsap/jsap-2.1.ebuild,v 1.8 2010/04/24 15:29:43 grobian Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 inherit eutils java-pkg-2 java-ant-2

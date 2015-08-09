@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/librpcsecgss/librpcsecgss-0.19.ebuild,v 1.2 2012/05/05 02:54:24 jdhore Exp $
+# $Id$
 
 DESCRIPTION="implementation of rpcsec_gss (RFC 2203) for secure rpc communication"
 HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux/"

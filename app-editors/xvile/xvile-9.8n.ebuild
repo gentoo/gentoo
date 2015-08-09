@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xvile/xvile-9.8n.ebuild,v 1.1 2014/08/26 15:17:48 radhermit Exp $
+# $Id$
 
 EAPI="5"
 

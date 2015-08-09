@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/phex/phex-3.2.0.102-r1.ebuild,v 1.2 2010/07/10 15:18:22 sochotnicky Exp $
+# $Id$
 
 EAPI=2
 

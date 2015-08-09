@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/tunapie/tunapie-2.1.17.ebuild,v 1.2 2011/07/29 13:37:22 neurogeek Exp $
+# $Id$
 
 EAPI=3
 PYTHON_DEPEND="2"

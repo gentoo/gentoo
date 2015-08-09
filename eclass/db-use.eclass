@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/db-use.eclass,v 1.12 2014/08/08 17:57:28 ottxor Exp $
+# $Id$
 # This is a common location for functions that aid the use of sys-libs/db
 #
 # Bugs: maintainer-needed@gentoo.org

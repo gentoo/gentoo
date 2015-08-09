@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.powermate:
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-powermate/files/confd,v 1.1 2005/12/13 20:59:06 hd_brummy Exp $
+# $Id$
 
 # Set to powermat device (/dev/input/event?)
 # Only needed to change if autodetect fails.

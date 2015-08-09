@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/UUID/UUID-0.50.0.ebuild,v 1.1 2014/12/05 21:01:52 dilfridge Exp $
+# $Id$
 
 EAPI=5
 MODULE_AUTHOR=LZAP

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rename/rename-1.3.ebuild,v 1.27 2015/02/23 20:29:27 mgorny Exp $
+# $Id$
 
 inherit toolchain-funcs eutils
 

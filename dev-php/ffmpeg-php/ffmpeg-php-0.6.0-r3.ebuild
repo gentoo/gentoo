@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/ffmpeg-php/ffmpeg-php-0.6.0-r3.ebuild,v 1.7 2015/06/24 01:02:47 grknight Exp $
+# $Id$
 
 EAPI="5"
 

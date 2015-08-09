@@ -1,8 +1,0 @@
-# ChangeLog for java-virtuals/ejb-api
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/java-virtuals/ejb-api/ChangeLog,v 1.1 2013/10/23 17:49:48 tomwij Exp $
-
-*ejb-api-0 (23 Oct 2013)
-
-  23 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +ejb-api-0.ebuild, +metadata.xml:
-  New virtual for the Enterprise JavaBeans API, a dependency of spring-context.

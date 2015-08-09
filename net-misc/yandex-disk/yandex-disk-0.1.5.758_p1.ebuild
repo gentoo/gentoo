@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/yandex-disk/yandex-disk-0.1.5.758_p1.ebuild,v 1.2 2015/01/27 12:36:56 zlogene Exp $
+# $Id$
 
 EAPI=5
 

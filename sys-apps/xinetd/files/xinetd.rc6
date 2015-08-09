@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/xinetd/files/xinetd.rc6,v 1.24 2011/10/11 01:26:08 vapier Exp $
+# $Id$
 
 extra_started_commands="reload dump check"
 

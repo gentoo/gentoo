@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-libpinyin/ibus-libpinyin-1.6.92.ebuild,v 1.2 2015/02/16 05:00:44 dlan Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

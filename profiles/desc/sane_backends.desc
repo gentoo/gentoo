@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/sane_backends.desc,v 1.5 2012/10/06 21:46:56 phosphan Exp $
+# $Id$
 
 # This file contains descriptions of SANE_BACKENDS USE_EXPAND flags for media-gfx/sane-backends.
 

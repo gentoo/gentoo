@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fastinfoset/fastinfoset-1.2.1-r1.ebuild,v 1.3 2012/02/16 17:59:45 phajdan.jr Exp $
+# $Id$
 
 JAVA_PKG_IUSE="source"
 

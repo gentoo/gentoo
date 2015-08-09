@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/gnake/gnake-0.94b.ebuild,v 1.9 2014/11/19 06:12:36 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit games

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/osmosis/osmosis-0.35.1.ebuild,v 1.1 2011/06/01 13:08:38 scarabeus Exp $
+# $Id$
 
 EAPI=4
 

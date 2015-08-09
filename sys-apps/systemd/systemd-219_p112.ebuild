@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/systemd/systemd-219_p112.ebuild,v 1.5 2015/06/10 02:29:34 floppym Exp $
+# $Id$
 
 EAPI=5
 

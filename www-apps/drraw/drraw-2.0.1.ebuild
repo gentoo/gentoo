@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/drraw/drraw-2.0.1.ebuild,v 1.6 2015/06/13 17:19:47 dilfridge Exp $
+# $Id$
 
 inherit webapp
 

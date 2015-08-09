@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/pound/pound-2.7f.ebuild,v 1.1 2014/12/30 04:54:38 patrick Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

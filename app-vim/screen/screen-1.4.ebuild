@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/screen/screen-1.4.ebuild,v 1.1 2011/04/29 00:20:24 radhermit Exp $
+# $Id$
 
 EAPI="3"
 

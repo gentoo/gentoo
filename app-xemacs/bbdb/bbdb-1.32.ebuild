@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/bbdb/bbdb-1.32.ebuild,v 1.6 2008/05/12 13:52:11 corsair Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

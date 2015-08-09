@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/xkaapi/xkaapi-3.0.3.ebuild,v 1.2 2014/12/22 15:51:53 jlec Exp $
+# $Id$
 
 EAPI=5
 

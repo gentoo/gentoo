@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-whiskermenu-plugin/xfce4-whiskermenu-plugin-1.3.2.ebuild,v 1.3 2014/04/20 08:50:28 ago Exp $
+# $Id$
 
 EAPI=5
 

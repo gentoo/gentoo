@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/r10k/r10k-1.5.1.ebuild,v 1.1 2015/05/24 22:58:40 robbat2 Exp $
+# $Id$
 
 EAPI=5
 

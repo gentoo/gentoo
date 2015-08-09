@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/hgview/hgview-1.8.0.ebuild,v 1.1 2014/02/03 04:15:24 radhermit Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

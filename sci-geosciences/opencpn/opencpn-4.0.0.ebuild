@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/opencpn/opencpn-4.0.0.ebuild,v 1.1 2015/01/11 22:35:05 mschiff Exp $
+# $Id$
 
 EAPI=5
 

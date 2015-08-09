@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libseccomp/libseccomp-1.0.0.ebuild,v 1.2 2012/11/12 21:21:36 vapier Exp $
+# $Id$
 
 # Note: USE=static-libs isn't great -- only PIC objects are provided.
 

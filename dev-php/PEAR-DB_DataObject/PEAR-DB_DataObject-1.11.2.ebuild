@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-DB_DataObject/PEAR-DB_DataObject-1.11.2.ebuild,v 1.10 2014/03/19 15:21:14 ago Exp $
+# $Id$
 
 EAPI="4"
 

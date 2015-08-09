@@ -1,13 +1,13 @@
+_eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=801f4a86eb873d61ba4734f7c6e13874
+SLOT=20140929d-r1
 DEFINED_PHASES=install postinst prepare prerm setup
+EAPI=5
 DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
-EAPI=5
-HOMEPAGE=http://wiki.splitbrain.org/wiki:dokuwiki
-IUSE=gd vhosts
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] media-gfx/imagemagick ) ) >=app-admin/webapp-config-1.50.15
-SLOT=20140929d-r1
+IUSE=gd vhosts
 SRC_URI=http://download.dokuwiki.org/src/dokuwiki/dokuwiki-2014-09-29d.tgz
-_eclasses_=webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=5c18ccc219de0dc09554028d3449f80c
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+HOMEPAGE=http://wiki.splitbrain.org/wiki:dokuwiki
+RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] media-gfx/imagemagick ) ) >=app-admin/webapp-config-1.50.15

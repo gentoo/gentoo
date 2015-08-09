@@ -1,9 +1,0 @@
-# ChangeLog for sci-mathematics/rw
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/rw/ChangeLog,v 1.1 2015/06/22 15:12:57 mjo Exp $
-
-*rw-0.7 (22 Jun 2015)
-
-  22 Jun 2015; Michael Orlitzky <mjo@gentoo.org> +metadata.xml, +rw-0.7.ebuild:
-  New package sci-mathematics/rw to compute rank-width decompositions of graphs.
-  Bug #552586.

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTP-BrowserDetect/HTTP-BrowserDetect-1.500.0.ebuild,v 1.6 2015/06/13 22:51:27 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

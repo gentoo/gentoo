@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/bash-completion.eclass,v 1.29 2013/07/05 17:39:10 ulm Exp $
+# $Id$
 
 # DEPRECATED
 # This eclass has been superseded by bash-completion-r1 eclass.

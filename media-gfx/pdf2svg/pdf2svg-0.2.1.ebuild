@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pdf2svg/pdf2svg-0.2.1.ebuild,v 1.7 2013/03/17 13:20:46 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

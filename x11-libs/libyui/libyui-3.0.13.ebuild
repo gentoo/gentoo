@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libyui/libyui-3.0.13.ebuild,v 1.1 2014/09/23 17:12:04 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

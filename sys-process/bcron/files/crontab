@@ -1,5 +1,5 @@
 # for bcron
-# $Header: /var/cvsroot/gentoo-x86/sys-process/bcron/files/crontab,v 1.3 2009/05/12 09:07:55 bangert Exp $
+# $Id$
 
 # Global variables
 SHELL=/bin/bash

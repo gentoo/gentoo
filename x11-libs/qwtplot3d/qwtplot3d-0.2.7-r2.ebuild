@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qwtplot3d/qwtplot3d-0.2.7-r2.ebuild,v 1.5 2013/03/02 23:46:42 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

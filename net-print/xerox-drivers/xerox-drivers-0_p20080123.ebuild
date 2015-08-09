@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/xerox-drivers/xerox-drivers-0_p20080123.ebuild,v 1.3 2010/07/01 21:15:08 tgurr Exp $
+# $Id$
 
 EAPI="2"
 

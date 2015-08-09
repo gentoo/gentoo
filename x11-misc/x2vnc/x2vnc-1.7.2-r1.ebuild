@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/x2vnc/x2vnc-1.7.2-r1.ebuild,v 1.5 2010/05/23 18:49:07 pacho Exp $
+# $Id$
 
 inherit eutils
 

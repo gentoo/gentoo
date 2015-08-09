@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gentoo-artwork/gentoo-artwork-0.4.2-r1.ebuild,v 1.9 2015/05/09 23:21:34 hwoarang Exp $
+# $Id$
 
 EAPI="5"
 

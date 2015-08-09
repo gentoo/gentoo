@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/ghex/ghex-3.10.1.ebuild,v 1.3 2014/05/04 12:09:20 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

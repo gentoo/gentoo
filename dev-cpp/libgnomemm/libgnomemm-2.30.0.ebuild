@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libgnomemm/libgnomemm-2.30.0.ebuild,v 1.10 2013/04/09 16:41:19 ago Exp $
+# $Id$
 
 EAPI=4
 GNOME2_LA_PUNT="yes"

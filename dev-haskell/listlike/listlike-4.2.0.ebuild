@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/listlike/listlike-4.2.0.ebuild,v 1.1 2015/08/01 16:45:17 slyfox Exp $
+# $Id$
 
 EAPI=5
 

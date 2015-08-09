@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-wget/emacs-wget-0.5.0-r1.ebuild,v 1.6 2014/04/20 11:20:23 ago Exp $
+# $Id$
 
 EAPI=5
 

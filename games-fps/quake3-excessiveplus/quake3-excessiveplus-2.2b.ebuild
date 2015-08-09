@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-excessiveplus/quake3-excessiveplus-2.2b.ebuild,v 1.2 2014/04/18 07:08:53 ulm Exp $
+# $Id$
 
 EAPI=2
 

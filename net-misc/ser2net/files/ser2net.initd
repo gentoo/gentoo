@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ser2net/files/ser2net.initd,v 1.4 2012/07/17 19:44:24 sbriesen Exp $
+# $Id$
 
 description="Serial to network proxy (${RC_SVCNAME#*.})"
 pidfile="/var/run/${RC_SVCNAME}.pid"

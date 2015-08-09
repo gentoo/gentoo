@@ -1,9 +1,10 @@
-DEFINED_PHASES=compile install unpack
-DESCRIPTION=library for calling real mode BIOS routines under Linux
-HOMEPAGE=http://www.sourceforge.net/projects/lrmi/
-KEYWORDS=x86
-LICENSE=MIT
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f54cd2d8d539b0aad4ad23741ad0a316
 SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=library for calling real mode BIOS routines under Linux
+LICENSE=MIT
 SRC_URI=mirror://sourceforge/lrmi/lrmi-0.10.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=3a0f6de77258b7f531d9016f67c171a9
+KEYWORDS=x86
+HOMEPAGE=http://www.sourceforge.net/projects/lrmi/

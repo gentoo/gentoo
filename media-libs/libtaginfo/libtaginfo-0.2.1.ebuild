@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libtaginfo/libtaginfo-0.2.1.ebuild,v 1.5 2014/07/27 10:40:01 phajdan.jr Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_IN_SOURCE_BUILD=1

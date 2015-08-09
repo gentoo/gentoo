@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jss/jss-4.3-r1.ebuild,v 1.4 2015/05/23 21:40:39 monsieurp Exp $
+# $Id$
 
 EAPI="5"
 

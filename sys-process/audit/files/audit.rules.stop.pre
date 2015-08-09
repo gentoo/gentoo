@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/files/audit.rules.stop.pre,v 1.2 2011/09/11 02:58:55 robbat2 Exp $
+# $Id$
 #
 # This file contains the auditctl rules that are loaded immediately before the
 # audit deamon is stopped via the initscripts.

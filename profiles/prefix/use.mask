@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/use.mask,v 1.9 2014/01/18 02:01:21 redlizard Exp $
+# $Id$
 
 # Mask all glibc/linux combination, unmasked in the appropriate profiles
 elibc_glibc

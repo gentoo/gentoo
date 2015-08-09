@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/7plus/7plus-2.25.ebuild,v 1.8 2010/10/02 13:12:23 tomjbe Exp $
+# $Id$
 
 inherit toolchain-funcs
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/rtl-sdr/rtl-sdr-0.5.3_p20150730.ebuild,v 1.1 2015/07/31 01:10:58 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

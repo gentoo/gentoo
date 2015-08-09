@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-commander/gnome-commander-1.4.6.ebuild,v 1.1 2015/06/01 06:59:34 idella4 Exp $
+# $Id$
 
 EAPI=5
 

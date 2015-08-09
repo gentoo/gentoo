@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/ksokoban/ksokoban-0.5.0_pre20120725.ebuild,v 1.2 2015/01/10 04:15:32 bircoph Exp $
+# $Id$
 
 EAPI=5
 

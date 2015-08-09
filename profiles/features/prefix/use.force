@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/prefix/use.force,v 1.1 2014/01/18 02:01:20 redlizard Exp $
+# $Id$
 
 # force prefix flag to be set
 prefix

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/yacpi/yacpi-3.0.1.ebuild,v 1.1 2010/07/08 14:00:40 ssuominen Exp $
+# $Id$
 
 EAPI=3
 inherit toolchain-funcs

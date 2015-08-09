@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/microba/microba-0.4.4.ebuild,v 1.4 2007/11/25 14:40:00 ranger Exp $
+# $Id$
 
 JAVA_PKG_BSFIX="off"
 JAVA_PKG_IUSE="doc source"

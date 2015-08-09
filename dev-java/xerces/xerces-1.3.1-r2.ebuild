@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xerces/xerces-1.3.1-r2.ebuild,v 1.8 2008/01/17 14:39:12 caster Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

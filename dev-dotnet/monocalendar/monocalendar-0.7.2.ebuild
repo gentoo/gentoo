@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/monocalendar/monocalendar-0.7.2.ebuild,v 1.4 2012/06/04 07:10:44 zmedico Exp $
+# $Id$
 
 inherit mono eutils multilib
 

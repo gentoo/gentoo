@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi/dahdi-2.10.0.1-r1.ebuild,v 1.1 2015/02/12 16:09:35 chainsaw Exp $
+# $Id$
 
 EAPI=5
 

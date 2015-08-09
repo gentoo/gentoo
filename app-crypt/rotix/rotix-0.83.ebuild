@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/rotix/rotix-0.83.ebuild,v 1.19 2014/08/10 02:27:00 patrick Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic

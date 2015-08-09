@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libeXosip/libeXosip-3.5.0.ebuild,v 1.6 2013/03/05 16:47:49 chithanh Exp $
+# $Id$
 
 EAPI="2"
 

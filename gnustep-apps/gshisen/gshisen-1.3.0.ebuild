@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gshisen/gshisen-1.3.0.ebuild,v 1.4 2011/08/07 12:17:04 xarthisius Exp $
+# $Id$
 
 inherit eutils gnustep-2
 

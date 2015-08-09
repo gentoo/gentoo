@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/slang/slang-2.2.4-r1.ebuild,v 1.12 2015/03/03 10:08:14 dlan Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib-minimal

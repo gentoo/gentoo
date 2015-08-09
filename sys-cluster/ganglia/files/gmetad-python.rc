@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/files/gmetad-python.rc,v 1.1 2015/08/05 14:27:13 jsbronder Exp $
+# $Id$
 
 PIDFILE=/var/run/gmetad-python.pid
 

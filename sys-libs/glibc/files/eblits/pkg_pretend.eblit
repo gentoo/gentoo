@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/pkg_pretend.eblit,v 1.2 2015/05/27 14:02:58 vapier Exp $
+# $Id$
 
 glibc_compile_test() {
 	local ret save_cflags=${CFLAGS}

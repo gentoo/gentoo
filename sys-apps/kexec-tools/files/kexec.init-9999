@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/kexec-tools/files/kexec.init-9999,v 1.2 2013/12/28 20:27:31 jlec Exp $
+# $Id$
 
 depend() {
 	need localmount

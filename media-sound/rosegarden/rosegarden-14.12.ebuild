@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rosegarden/rosegarden-14.12.ebuild,v 1.1 2015/01/04 05:21:56 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils fdo-mime gnome2-utils multilib

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/389-ds-base/files/389-ds.initd,v 1.3 2010/11/12 12:26:37 lxnay Exp $
+# $Id$
 
 DIRSRV_EXEC="/usr/sbin/ns-slapd"
 PID_DIRECTORY="/var/run/dirsrv"

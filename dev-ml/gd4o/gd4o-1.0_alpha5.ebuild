@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/gd4o/gd4o-1.0_alpha5.ebuild,v 1.3 2013/03/10 10:46:45 aballier Exp $
+# $Id$
 
 EAPI=5
 

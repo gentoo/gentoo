@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/jreen/jreen-1.2.0.ebuild,v 1.4 2014/07/18 11:42:25 nimiux Exp $
+# $Id$
 
 EAPI=5
 

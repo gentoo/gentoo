@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libsvg-cairo/libsvg-cairo-0.1.6.ebuild,v 1.27 2012/05/05 03:52:29 jdhore Exp $
+# $Id$
 
 DESCRIPTION="Render SVG content using cairo"
 HOMEPAGE="http://cairographics.org"

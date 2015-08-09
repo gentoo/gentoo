@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=25d91ca508b2a0f36f7d7dbdc706275d
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare setup test
+EAPI=5
 DEPEND=mpi? ( virtual/mpi ) doc? ( >=app-text/poppler-0.12.3-r3[utils] dev-tex/latex2html virtual/tex-base || ( ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-python/beautifulsoup-4[python_targets_python2_7(-),python_single_target_python2_7(+)] dev-python/lxml[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ( dev-lang/python:3.4 >=dev-python/beautifulsoup-4[python_targets_python3_4(-),python_single_target_python3_4(+)] dev-python/lxml[python_targets_python3_4(-),python_single_target_python3_4(+)] ) ( >=dev-lang/python-3.3.2-r2:3.3 >=dev-python/beautifulsoup-4[python_targets_python3_3(-),python_single_target_python3_3(+)] dev-python/lxml[python_targets_python3_3(-),python_single_target_python3_3(+)] ) ) media-libs/netpbm || ( >=dev-lang/python-2.7.5-r2:2.7 dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) ) virtual/fortran
 DESCRIPTION=Message-passing parallel language and runtime system
-EAPI=5
-HOMEPAGE=http://charm.cs.uiuc.edu/
-IUSE=charmdebug charmtracing charmproduction cmkopt doc examples mlogft mpi numa smp static-libs syncft tcp
-KEYWORDS=~amd64 ~x86
 LICENSE=charm
-RDEPEND=mpi? ( virtual/mpi ) virtual/fortran
+IUSE=charmdebug charmtracing charmproduction cmkopt doc examples mlogft mpi numa smp static-libs syncft tcp
 REQUIRED_USE=doc? ( ) cmkopt? ( !charmdebug !charmtracing ) charmproduction? ( !charmdebug !charmtracing )
-SLOT=0
 SRC_URI=http://charm.cs.uiuc.edu/distrib/charm-6.6.0.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ae31fe99ee833ef5b37df206051c0499
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://charm.cs.uiuc.edu/
+RDEPEND=mpi? ( virtual/mpi ) virtual/fortran

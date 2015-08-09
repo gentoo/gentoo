@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/slf4j-nop/slf4j-nop-1.5.11.ebuild,v 1.5 2010/10/14 17:01:55 ranger Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source"

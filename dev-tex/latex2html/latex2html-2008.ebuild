@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2html/latex2html-2008.ebuild,v 1.10 2010/06/12 12:31:43 aballier Exp $
+# $Id$
 
 inherit eutils multilib
 

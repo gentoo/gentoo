@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/nilfs-utils/nilfs-utils-2.1.5-r1.ebuild,v 1.8 2015/02/13 04:50:46 naota Exp $
+# $Id$
 
 EAPI=5
 

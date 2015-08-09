@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/python-whiteboard/python-whiteboard-20101012.ebuild,v 1.1 2011/02/01 22:04:50 lxnay Exp $
+# $Id$
 
 EAPI="3"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/vigra/vigra-1.9.0.ebuild,v 1.7 2014/12/29 16:32:04 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

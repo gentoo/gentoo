@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/constantine/constantine-0.7.ebuild,v 1.3 2010/07/17 09:05:49 fauli Exp $
+# $Id$
 
 JAVA_PKG_IUSE="source test"
 inherit base java-pkg-2 java-ant-2

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/hengband/hengband-1.6.2-r1.ebuild,v 1.7 2015/01/04 21:31:19 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools games

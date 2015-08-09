@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/mythplugins/mythplugins-0.26.0_p20130922.ebuild,v 1.3 2014/01/26 18:59:07 ago Exp $
+# $Id$
 
 EAPI=5
 

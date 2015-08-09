@@ -1,14 +1,14 @@
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	font	cd7790315ca5b8c505e1e0513df6acce	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9b543db8e098eb3af69a8fdb8a8b759c
+SLOT=0
 DEFINED_PHASES=configure install postinst postrm prepare setup
+EAPI=5
 DEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 X? ( x11-apps/mkfontdir media-fonts/encodings )
 DESCRIPTION=Window Maker Dock Applet Library
-EAPI=5
-HOMEPAGE=http://windowmaker.org/dockapps/?name=wmclock
-IUSE=+X X
-KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MIT public-domain
-RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm
+IUSE=+X X
 REQUIRED_USE=X
-SLOT=0
 SRC_URI=http://dev.gentoo.org/~voyageur/distfiles/libdockapp-0.6.4.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=cce4f83c5d568bd7e864aea0bfaa4b54
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+HOMEPAGE=http://windowmaker.org/dockapps/?name=wmclock
+RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm

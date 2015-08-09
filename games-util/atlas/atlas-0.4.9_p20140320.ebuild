@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/atlas/atlas-0.4.9_p20140320.ebuild,v 1.1 2014/08/12 23:52:12 reavertm Exp $
+# $Id$
 
 EAPI=5
 

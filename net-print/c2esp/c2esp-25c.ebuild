@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/c2esp/c2esp-25c.ebuild,v 1.1 2012/07/25 03:27:45 binki Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-gpe/libopensync-plugin-gpe-0.22.ebuild,v 1.1 2007/03/28 20:20:23 peper Exp $
+# $Id$
 
 DESCRIPTION="OpenSync Gpe Plugin"
 HOMEPAGE="http://www.opensync.org/"

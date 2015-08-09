@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Types-Path-Tiny/MooseX-Types-Path-Tiny-0.2.0.ebuild,v 1.1 2013/02/19 16:11:48 tove Exp $
+# $Id$
 
 EAPI=5
 

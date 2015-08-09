@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/mkcdtoc/mkcdtoc-1.0.ebuild,v 1.3 2010/09/05 13:58:13 sbriesen Exp $
+# $Id$
 
 DESCRIPTION="command-line utility to create toc-files for cdrdao"
 HOMEPAGE="http://sourceforge.net/projects/mkcdtoc/"

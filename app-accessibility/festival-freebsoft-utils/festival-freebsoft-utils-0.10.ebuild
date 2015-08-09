@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival-freebsoft-utils/festival-freebsoft-utils-0.10.ebuild,v 1.2 2012/10/20 09:38:07 ago Exp $
+# $Id$
 
 EAPI="4"
 

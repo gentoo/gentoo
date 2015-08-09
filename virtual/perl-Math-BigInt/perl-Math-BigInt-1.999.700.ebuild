@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Math-BigInt/perl-Math-BigInt-1.999.700.ebuild,v 1.1 2015/06/07 14:36:34 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

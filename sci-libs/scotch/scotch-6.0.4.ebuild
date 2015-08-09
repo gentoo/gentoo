@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/scotch/scotch-6.0.4.ebuild,v 1.1 2015/07/21 02:47:44 patrick Exp $
+# $Id$
 
 EAPI=5
 

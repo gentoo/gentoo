@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/kacst-fonts/kacst-fonts-1.6.2.ebuild,v 1.11 2008/02/24 12:09:49 armin76 Exp $
+# $Id$
 
 inherit font
 

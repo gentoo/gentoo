@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-kresources/kdepim-kresources-4.14.8.ebuild,v 1.4 2015/07/25 12:07:11 pacho Exp $
+# $Id$
 
 EAPI=5
 

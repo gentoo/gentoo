@@ -30,7 +30,7 @@ diff -ruN cups-1.7.2.orig/config-scripts/cups-systemd.m4 cups-1.7.2/config-scrip
 +++ cups-1.7.2/config-scripts/cups-systemd.m4	2014-04-15 13:24:45.592054459 +0200
 @@ -0,0 +1,36 @@
 +dnl
-+dnl "$Id: cups-1.7.2-systemd-socket-2.patch,v 1.1 2014/04/15 11:34:10 dilfridge Exp $"
++dnl "$Id$"
 +dnl
 +dnl   systemd stuff for CUPS.
 +
@@ -63,7 +63,7 @@ diff -ruN cups-1.7.2.orig/config-scripts/cups-systemd.m4 cups-1.7.2/config-scrip
 +AC_SUBST(SDLIBS)
 +
 +dnl
-+dnl "$Id: cups-1.7.2-systemd-socket-2.patch,v 1.1 2014/04/15 11:34:10 dilfridge Exp $"
++dnl "$Id$"
 +dnl
 diff -ruN cups-1.7.2.orig/config.h.in cups-1.7.2/config.h.in
 --- cups-1.7.2.orig/config.h.in	2014-02-27 16:57:59.000000000 +0100

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bumblebee/bumblebee-3.2.1.ebuild,v 1.4 2014/05/10 17:46:23 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib readme.gentoo systemd user

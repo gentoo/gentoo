@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/fastforward/fastforward-0.51-r1.ebuild,v 1.9 2012/12/22 16:51:13 ulm Exp $
+# $Id$
 
 inherit eutils fixheadtails
 

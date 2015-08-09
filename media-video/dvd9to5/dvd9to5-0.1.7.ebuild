@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvd9to5/dvd9to5-0.1.7.ebuild,v 1.8 2006/08/30 14:19:53 zzam Exp $
+# $Id$
 
 DESCRIPTION="Perl script to backup the main feature of a DVD-9 on DVD-5"
 HOMEPAGE="http://lakedaemon.netmindz.net/dvd9to5/"

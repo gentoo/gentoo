@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/levee/levee-3.5a.ebuild,v 1.8 2013/10/13 16:24:08 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs eutils

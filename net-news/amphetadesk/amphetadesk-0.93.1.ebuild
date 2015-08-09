@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-news/amphetadesk/amphetadesk-0.93.1.ebuild,v 1.6 2009/07/19 17:59:03 tove Exp $
+# $Id$
 
 DESCRIPTION="AmphetaDesk is a free syndicated news aggregator"
 HOMEPAGE="http://www.disobey.com/amphetadesk/"

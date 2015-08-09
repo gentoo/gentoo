@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/votca-tools/votca-tools-1.2.2.ebuild,v 1.6 2012/12/26 23:22:22 ottxor Exp $
+# $Id$
 
 EAPI="3"
 

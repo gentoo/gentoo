@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libyahoo2/libyahoo2-1.0.1.ebuild,v 1.1 2011/02/06 18:18:46 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit autotools eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/powermanga/powermanga-0.91.ebuild,v 1.7 2014/09/05 20:44:28 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools games

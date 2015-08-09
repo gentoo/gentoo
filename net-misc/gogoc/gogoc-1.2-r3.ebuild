@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gogoc/gogoc-1.2-r3.ebuild,v 1.3 2014/04/13 18:07:51 pacho Exp $
+# $Id$
 
 EAPI=4
 

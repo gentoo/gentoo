@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/httpush/httpush-0.9_beta11-r1.ebuild,v 1.1 2008/12/14 14:28:01 mrness Exp $
+# $Id$
 
 inherit eutils
 

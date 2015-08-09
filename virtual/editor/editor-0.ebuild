@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/editor/editor-0.ebuild,v 1.32 2014/03/26 08:54:45 ulm Exp $
+# $Id$
 
 EAPI=5
 

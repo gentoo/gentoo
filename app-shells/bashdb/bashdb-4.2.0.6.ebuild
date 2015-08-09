@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bashdb/bashdb-4.2.0.6.ebuild,v 1.1 2011/02/15 03:39:06 vapier Exp $
+# $Id$
 
 MY_P="${PN}-${PV:0:3}-${PV:4}"
 DESCRIPTION="bash source code debugging"

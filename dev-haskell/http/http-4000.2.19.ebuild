@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http/http-4000.2.19.ebuild,v 1.1 2014/12/22 04:49:27 gienah Exp $
+# $Id$
 
 EAPI=5
 

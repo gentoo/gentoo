@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lcms/lcms-2.7.ebuild,v 1.1 2015/07/26 12:34:53 polynomial-c Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_PRUNE_LIBTOOL_FILES="modules"

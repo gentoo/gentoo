@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=690ce89c8a4b81e90f3be7c6977b8a9e
+SLOT=0/4.4.2
 DEFINED_PHASES=compile configure install prepare test
+EAPI=5
 DEPEND=>=sci-libs/netcdf-4:=[dap=,tools] gsl? ( sci-libs/gsl:= ) udunits? ( >=sci-libs/udunits-2 ) ncap2? ( dev-java/antlr:0 ) test? ( >=sci-libs/netcdf-4[tools] )
 DESCRIPTION=Command line utilities for operating on netCDF files
-EAPI=5
-HOMEPAGE=http://nco.sourceforge.net/
-IUSE=dap doc gsl ncap2 static-libs test udunits
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
-RDEPEND=>=sci-libs/netcdf-4:=[dap=,tools] gsl? ( sci-libs/gsl:= ) udunits? ( >=sci-libs/udunits-2 )
-SLOT=0/4.4.2
+IUSE=dap doc gsl ncap2 static-libs test udunits
 SRC_URI=http://nco.sf.net/src/nco-4.4.2.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=fd220ba4e9a60368390756dc0fd77805
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://nco.sourceforge.net/
+RDEPEND=>=sci-libs/netcdf-4:=[dap=,tools] gsl? ( sci-libs/gsl:= ) udunits? ( >=sci-libs/udunits-2 )

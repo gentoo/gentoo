@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/ucpp/ucpp-1.3.4.ebuild,v 1.3 2013/01/29 14:58:18 scarabeus Exp $
+# $Id$
 
 EAPI=5
 

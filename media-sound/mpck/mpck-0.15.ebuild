@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpck/mpck-0.15.ebuild,v 1.3 2009/06/30 08:32:23 fauli Exp $
+# $Id$
 
 MY_P=checkmate-${PV}
 

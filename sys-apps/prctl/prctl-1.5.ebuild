@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/prctl/prctl-1.5.ebuild,v 1.7 2013/01/27 23:28:09 mattst88 Exp $
+# $Id$
 
 EAPI=4
 inherit toolchain-funcs

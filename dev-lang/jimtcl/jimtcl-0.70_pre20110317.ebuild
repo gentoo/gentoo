@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/jimtcl/jimtcl-0.70_pre20110317.ebuild,v 1.2 2012/05/05 16:51:29 hwoarang Exp $
+# $Id$
 
 EAPI="2"
 

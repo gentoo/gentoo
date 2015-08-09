@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXTrap/libXTrap-1.0.0-r1.ebuild,v 1.10 2013/08/20 17:00:05 hasufell Exp $
+# $Id$
 
 EAPI=4
 inherit xorg-2

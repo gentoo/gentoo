@@ -1,6 +1,6 @@
 # Copyright 2006-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/pftop/pftop-0.5.ebuild,v 1.3 2006/10/22 21:17:41 the_paya Exp $
+# $Id$
 
 inherit bsdmk
 DESCRIPTION="Pftop: curses-based utility for real-time display of active states and rule statistics for pf"

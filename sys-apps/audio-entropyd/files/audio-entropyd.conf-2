@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/audio-entropyd/files/audio-entropyd.conf-2,v 1.1 2014/03/22 15:00:29 angelos Exp $
+# $Id$
 
 # /etc/conf.d/audio-entropyd
 

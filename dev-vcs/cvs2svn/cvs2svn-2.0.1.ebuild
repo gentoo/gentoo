@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cvs2svn/cvs2svn-2.0.1.ebuild,v 1.3 2011/03/25 21:25:47 arfrever Exp $
+# $Id$
 
 EAPI="2"
 PYTHON_DEPEND="2"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.use.force,v 1.4 2015/03/17 01:36:02 vapier Exp $
+# $Id$
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs dev-lang/luajit tested #499974

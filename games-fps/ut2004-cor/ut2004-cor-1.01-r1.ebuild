@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-cor/ut2004-cor-1.01-r1.ebuild,v 1.1 2009/10/07 15:45:25 nyhm Exp $
+# $Id$
 
 EAPI=2
 

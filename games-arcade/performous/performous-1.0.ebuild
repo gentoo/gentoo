@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/performous/performous-1.0.ebuild,v 1.4 2015/06/02 01:28:32 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 CMAKE_REMOVE_MODULES="yes"

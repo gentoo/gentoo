@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/enca/enca-1.14-r1.ebuild,v 1.8 2014/07/28 13:42:17 ago Exp $
+# $Id$
 
 EAPI="4"
 

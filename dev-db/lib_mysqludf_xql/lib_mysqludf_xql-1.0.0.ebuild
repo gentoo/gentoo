@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/lib_mysqludf_xql/lib_mysqludf_xql-1.0.0.ebuild,v 1.1 2011/10/19 12:37:20 sbriesen Exp $
+# $Id$
 
 EAPI=4
 

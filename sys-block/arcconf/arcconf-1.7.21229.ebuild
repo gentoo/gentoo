@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/arcconf/arcconf-1.7.21229.ebuild,v 1.1 2015/02/26 17:46:30 dev-zero Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/qjson/qjson-0.8.1-r1.ebuild,v 1.2 2015/03/10 16:20:57 kensington Exp $
+# $Id$
 
 EAPI=5
 

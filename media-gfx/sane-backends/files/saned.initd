@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/files/saned.initd,v 1.1 2013/03/15 08:15:52 phosphan Exp $
+# $Id$
 
 pidfile="/var/run/saned/saned.pid"
 command="/usr/sbin/saned"

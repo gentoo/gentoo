@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/automake/automake-1.12.6.ebuild,v 1.20 2014/11/15 06:07:49 vapier Exp $
+# $Id$
 
 EAPI="4"
 

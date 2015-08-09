@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-weather-plugin/xfce4-weather-plugin-0.8.3-r2.ebuild,v 1.1 2014/10/29 17:06:08 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

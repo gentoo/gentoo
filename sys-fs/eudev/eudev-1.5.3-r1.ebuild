@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/eudev/eudev-1.5.3-r1.ebuild,v 1.16 2015/06/10 02:33:47 floppym Exp $
+# $Id$
 
 EAPI="5"
 

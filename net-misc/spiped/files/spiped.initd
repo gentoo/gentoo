@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/spiped/files/spiped.initd,v 1.1 2015/03/05 16:24:03 monsieurp Exp $
+# $Id$
 
 KEYFILE=${KEYFILE:="/etc/spiped/keyfile"}
 SPIPED_USER=${SPIPED_USER:="nobody"}

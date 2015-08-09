@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jbitcollider-core/jbitcollider-core-0.8.ebuild,v 1.4 2012/03/24 17:24:05 phajdan.jr Exp $
+# $Id$
 
 EAPI=4
 JAVA_PKG_IUSE="doc source"

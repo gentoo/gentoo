@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/driconf/driconf-0.9.1-r1.ebuild,v 1.8 2014/08/10 20:02:12 slyfox Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

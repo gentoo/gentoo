@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/sgb/sgb-20030623.ebuild,v 1.10 2012/06/07 21:47:16 zmedico Exp $
+# $Id$
 
 inherit eutils multilib
 

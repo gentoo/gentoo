@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/afl/afl-1.80b.ebuild,v 1.1 2015/06/01 22:15:04 hanno Exp $
+# $Id$
 
 EAPI=5
 

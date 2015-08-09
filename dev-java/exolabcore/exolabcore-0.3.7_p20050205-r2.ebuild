@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/exolabcore/exolabcore-0.3.7_p20050205-r2.ebuild,v 1.4 2008/12/21 10:47:49 maekke Exp $
+# $Id$
 
 EAPI=1
 WANT_ANT_TASKS="dev-java/exolabtools:0"

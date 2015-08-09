@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ocsync/ocsync-0.91.4.ebuild,v 1.4 2014/02/24 13:55:54 voyageur Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openrdate/openrdate-1.2.ebuild,v 1.7 2012/05/21 19:15:30 xarthisius Exp $
+# $Id$
 
 WANT_AUTOMAKE=1.9
 

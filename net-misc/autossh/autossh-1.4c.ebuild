@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/autossh/autossh-1.4c.ebuild,v 1.4 2013/03/27 16:14:02 josejx Exp $
+# $Id$
 
 EAPI=4
 

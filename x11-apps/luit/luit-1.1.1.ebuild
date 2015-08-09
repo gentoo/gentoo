@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/luit/luit-1.1.1.ebuild,v 1.11 2013/04/12 12:05:43 chithanh Exp $
+# $Id$
 
 EAPI=4
 XORG_EAUTORECONF=yes

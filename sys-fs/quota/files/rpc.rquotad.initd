@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/quota/files/rpc.rquotad.initd,v 1.1 2007/03/25 12:09:39 vapier Exp $
+# $Id$
 
 [ -e /etc/conf.d/nfs ] && source /etc/conf.d/nfs
 

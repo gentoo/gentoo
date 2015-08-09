@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cmatrix/cmatrix-1.2a-r1.ebuild,v 1.10 2009/06/19 22:10:18 ranger Exp $
+# $Id$
 
 inherit autotools eutils
 

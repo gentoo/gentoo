@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmikmod/libmikmod-3.3.6-r1.ebuild,v 1.11 2015/01/29 17:39:01 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib-minimal

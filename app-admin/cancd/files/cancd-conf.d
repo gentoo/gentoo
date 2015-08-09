@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/cancd/files/cancd-conf.d,v 1.1 2005/11/14 21:15:54 robbat2 Exp $
+# $Id$
 
 # user to run as, root strongly discouraged
 # user should have /bin/false for a shell

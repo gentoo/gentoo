@@ -10,7 +10,7 @@
 #       Removed phase hooks because Portage does proper env saving now.
 #       <betelgeuse@gentoo.org>
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-pkg-opt-2.eclass,v 1.16 2012/07/21 12:00:17 sera Exp $
+# $Id$
 
 # @ECLASS: java-pkg-opt-2.eclass
 # @MAINTAINER:

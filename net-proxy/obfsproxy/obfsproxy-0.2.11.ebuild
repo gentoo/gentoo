@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/obfsproxy/obfsproxy-0.2.11.ebuild,v 1.2 2015/07/05 14:17:30 blueness Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

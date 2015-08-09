@@ -1,7 +1,7 @@
 --- a/bin/henplus	2004-02-02 14:53:28.000000000 +0100
 +++ b/bin/henplus	2004-07-23 11:21:11.518166136 +0200
 @@ -2,6 +2,7 @@
- # $Id: henplus.patch,v 1.5 2008/11/17 20:54:11 flameeyes Exp $
+ # $Id$
  ##
  
 +echo $(dirname $0)

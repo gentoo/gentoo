@@ -1,9 +1,10 @@
-DEFINED_PHASES=-
-DESCRIPTION=Interface for GDB to Atmel AVR JTAGICE in circuit emulator
-EAPI=4
-HOMEPAGE=http://avarice.sourceforge.net/
-KEYWORDS=~amd64 ~x86
-LICENSE=GPL-2
+_eclasses_=
+_md5_=82db418bb6b960f64e6664df47073afa
 SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DESCRIPTION=Interface for GDB to Atmel AVR JTAGICE in circuit emulator
+LICENSE=GPL-2
 SRC_URI=mirror://sourceforge/avarice/avarice-2.13.tar.bz2
-_md5_=56cd12557c82a3ce8da9faf7f241cc46
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://avarice.sourceforge.net/

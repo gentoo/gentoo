@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnomad/gnomad-2.9.6.ebuild,v 1.7 2014/07/24 18:43:39 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

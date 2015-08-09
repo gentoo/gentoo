@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gtk2-Ex-PodViewer/Gtk2-Ex-PodViewer-0.180.0-r1.ebuild,v 1.1 2014/08/25 02:10:08 axs Exp $
+# $Id$
 
 EAPI=5
 MODULE_AUTHOR=GBROWN

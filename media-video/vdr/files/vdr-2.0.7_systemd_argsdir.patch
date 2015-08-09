@@ -96,7 +96,7 @@ diff -Naur vdr-2.0.7.orig/args.c vdr-2.0.7/args.c
 + *
 + * Original version written by Lars Hanisch <dvb@flensrocker.de>.
 + *
-+ * $Id: vdr-2.0.7_systemd_argsdir.patch,v 1.1 2015/01/23 08:28:14 hd_brummy Exp $
++ * $Id$
 + */
 +
 +#include "args.h"
@@ -229,7 +229,7 @@ diff -Naur vdr-2.0.7.orig/args.h vdr-2.0.7/args.h
 + *
 + * Original version written by Lars Hanisch <dvb@flensrocker.de>.
 + *
-+ * $Id: vdr-2.0.7_systemd_argsdir.patch,v 1.1 2015/01/23 08:28:14 hd_brummy Exp $
++ * $Id$
 + */
 +
 +#ifndef __ARGS_H

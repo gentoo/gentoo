@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/sshlpr/sshlpr-1.ebuild,v 1.2 2011/10/12 01:23:21 radhermit Exp $
+# $Id$
 
 EAPI="4"
 

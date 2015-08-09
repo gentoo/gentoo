@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/pybitmessage/pybitmessage-0.4.3.ebuild,v 1.1 2014/08/24 18:24:43 hasufell Exp $
+# $Id$
 
 EAPI=5
 

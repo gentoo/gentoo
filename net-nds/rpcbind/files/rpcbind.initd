@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/rpcbind/files/rpcbind.initd,v 1.1 2007/12/29 09:13:55 vapier Exp $
+# $Id$
 
 depend() {
 	use net

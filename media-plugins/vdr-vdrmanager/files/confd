@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-vdrmanager/files/confd,v 1.5 2012/12/02 08:39:56 hd_brummy Exp $
+# $Id$
 # /etc/conf.d/vdr.vdrmanager
 
 # Parameters for vdr-plugin-vdrmanager

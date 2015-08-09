@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/jhead/jhead-3.00.ebuild,v 1.1 2015/02/15 02:56:52 radhermit Exp $
+# $Id$
 
 EAPI=5
 

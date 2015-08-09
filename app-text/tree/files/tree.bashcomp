@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tree/files/tree.bashcomp,v 1.2 2012/05/27 23:17:52 mr_bones_ Exp $
+# $Id$
 
 # bash command-line completion for tree
 # Author: Aaron Walker <ka0ttic@gentoo.org>

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/haveged/haveged-1.7a.ebuild,v 1.1 2013/02/24 06:41:10 flameeyes Exp $
+# $Id$
 
 EAPI=5
 

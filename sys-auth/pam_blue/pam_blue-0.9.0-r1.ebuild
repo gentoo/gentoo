@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_blue/pam_blue-0.9.0-r1.ebuild,v 1.1 2015/07/08 06:45:46 vapier Exp $
+# $Id$
 
 EAPI="5"
 

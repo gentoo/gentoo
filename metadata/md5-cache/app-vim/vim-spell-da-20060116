@@ -1,11 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	vim-spell	d51083e5d2b7bf16ad5c237ef037d62d
+_md5_=326e1d90e6e4698de14451c54fbbbf2d
+SLOT=0
 DEFINED_PHASES=install postinst
+EAPI=0
 DEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )
 DESCRIPTION=vim spell files: Danish (da)
-HOMEPAGE=http://www.vim.org/
-KEYWORDS=~alpha ~amd64 ~ia64 ppc sparc x86
 LICENSE=GPL-2
-RDEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )
-SLOT=0
 SRC_URI=mirror://gentoo/vim-spell-da-20060116.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vim-spell	931d44d9a5a1e08c9a8a1e3a1f9155e7
-_md5_=3f1b760195d250eaaac6e118c84da114
+KEYWORDS=~alpha ~amd64 ~ia64 ppc sparc x86
+HOMEPAGE=http://www.vim.org/
+RDEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-sl/aspell-sl-0.50.0.ebuild,v 1.9 2012/05/17 20:08:56 aballier Exp $
+# $Id$
 
 ASPELL_LANG="Slovenian"
 

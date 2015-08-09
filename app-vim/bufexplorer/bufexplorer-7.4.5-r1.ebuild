@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/bufexplorer/bufexplorer-7.4.5-r1.ebuild,v 1.1 2014/10/25 19:04:50 radhermit Exp $
+# $Id$
 
 EAPI=5
 

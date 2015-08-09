@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/profile.bashrc,v 1.12 2012/05/29 13:42:41 aballier Exp $
+# $Id$
 
 alias make=gmake
 alias patch=gpatch

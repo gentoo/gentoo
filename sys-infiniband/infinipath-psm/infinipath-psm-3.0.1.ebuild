@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/infinipath-psm/infinipath-psm-3.0.1.ebuild,v 1.3 2012/12/11 15:37:27 ssuominen Exp $
+# $Id$
 
 EAPI="4"
 

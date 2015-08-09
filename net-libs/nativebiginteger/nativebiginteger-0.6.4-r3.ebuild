@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/nativebiginteger/nativebiginteger-0.6.4-r3.ebuild,v 1.1 2010/12/28 12:34:30 tommy Exp $
+# $Id$
 
 EAPI=2
 

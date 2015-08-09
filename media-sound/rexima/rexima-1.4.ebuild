@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rexima/rexima-1.4.ebuild,v 1.17 2014/08/10 21:11:03 slyfox Exp $
+# $Id$
 
 inherit toolchain-funcs
 

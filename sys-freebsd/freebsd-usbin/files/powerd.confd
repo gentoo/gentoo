@@ -1,6 +1,6 @@
 # Copyright 2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/powerd.confd,v 1.2 2006/10/12 14:59:48 uberlord Exp $
+# $Id$
 
 # Mode allowed: maximum, minimum, adaptive
 # Default unless specified is adaptive

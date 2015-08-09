@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-dimp/horde-dimp-1.1.5.ebuild,v 1.6 2010/10/22 04:08:28 jer Exp $
+# $Id$
 
 HORDE_PHP_FEATURES="imap"
 HORDE_MAJ="-h3"

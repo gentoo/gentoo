@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/spideroak-bin/spideroak-bin-5.2.0.ebuild,v 1.1 2015/04/26 23:40:25 blueness Exp $
+# $Id$
 
 EAPI="5"
 

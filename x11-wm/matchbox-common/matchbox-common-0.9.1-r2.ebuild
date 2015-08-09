@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/matchbox-common/matchbox-common-0.9.1-r2.ebuild,v 1.7 2012/06/04 00:22:58 xmw Exp $
+# $Id$
 
 inherit eutils versionator
 

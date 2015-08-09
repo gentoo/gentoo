@@ -9,7 +9,7 @@
 # Modified by:  Mike Frysinger, <vapier@gentoo.org>
 # Modified by:  Robin H. Johnson, <robbat2@gentoo.org>
 #
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysvinit/files/inittab-2.87,v 1.2 2013/04/20 03:51:26 vapier Exp $
+# $Id$
 
 # Default runlevel.
 id:3:initdefault:

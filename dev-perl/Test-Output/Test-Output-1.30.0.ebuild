@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Output/Test-Output-1.30.0.ebuild,v 1.2 2015/06/13 11:28:52 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

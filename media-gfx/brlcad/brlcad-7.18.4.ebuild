@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/brlcad/brlcad-7.18.4.ebuild,v 1.3 2012/06/08 02:11:41 zmedico Exp $
+# $Id$
 
 EAPI=3
 inherit eutils java-pkg-opt-2 multilib

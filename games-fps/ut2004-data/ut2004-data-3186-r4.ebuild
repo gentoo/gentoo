@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-data/ut2004-data-3186-r4.ebuild,v 1.6 2012/02/05 06:10:53 vapier Exp $
+# $Id$
 
 inherit eutils unpacker cdrom portability games
 

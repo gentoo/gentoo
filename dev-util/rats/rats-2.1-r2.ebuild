@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rats/rats-2.1-r2.ebuild,v 1.10 2011/04/10 03:10:17 abcd Exp $
+# $Id$
 
 EAPI=3
 inherit eutils

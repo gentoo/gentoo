@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mcelog/mcelog-1.0_pre3.ebuild,v 1.4 2013/02/16 18:47:19 vapier Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

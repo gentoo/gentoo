@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/th-expand-syns/th-expand-syns-0.3.0.4.ebuild,v 1.2 2015/01/04 04:49:53 gienah Exp $
+# $Id$
 
 EAPI=5
 

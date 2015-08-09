@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/glances/glances-2.2.1.ebuild,v 1.1 2014/12/31 04:03:30 idella4 Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sslh/sslh-1.16.ebuild,v 1.1 2014/02/14 17:54:46 kensington Exp $
+# $Id$
 
 EAPI=5
 

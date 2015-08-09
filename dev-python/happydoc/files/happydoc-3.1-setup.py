@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# $Id: happydoc-3.1-setup.py,v 1.1 2009/02/25 20:59:36 neurogeek Exp $
+# $Id$
 #
 # Time-stamp: <02/02/05 10:00:12 dhellmann>
 #
@@ -35,7 +35,7 @@ __rcs_info__ = {
     #  Creation Information
     #
     'module_name'  : '$RCSfile: happydoc-3.1-setup.py,v $',
-    'rcs_id'       : '$Id: happydoc-3.1-setup.py,v 1.1 2009/02/25 20:59:36 neurogeek Exp $',
+    'rcs_id'       : '$Id$',
     'creator'      : 'Doug Hellmann <doug@hellfly.net>',
     'project'      : 'HappyDoc',
     'created'      : 'Sat, 03-Feb-2001 12:51:26 EST',

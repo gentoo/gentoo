@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/pictureframe/pictureframe-1.0.0.ebuild,v 1.3 2008/03/22 18:26:51 coldwind Exp $
+# $Id$
 
 inherit gnustep-2
 

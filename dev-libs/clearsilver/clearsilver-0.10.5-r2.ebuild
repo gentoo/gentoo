@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/clearsilver/clearsilver-0.10.5-r2.ebuild,v 1.2 2014/11/17 23:26:59 dilfridge Exp $
+# $Id$
 
 # Please note: apache, java, mono and ruby support disabled for now.
 # Fill a bug if you need it.

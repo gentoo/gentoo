@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/goomwwm/goomwwm-1.0.0.ebuild,v 1.3 2013/11/02 17:27:04 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

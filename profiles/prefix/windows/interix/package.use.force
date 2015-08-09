@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/package.use.force,v 1.2 2010/11/16 08:16:36 mduft Exp $
+# $Id$
 
 # Markus Duft <mduft@gentoo.org> (28 Oct 2010)
 # really need them statically, as long as portage uses coreutils

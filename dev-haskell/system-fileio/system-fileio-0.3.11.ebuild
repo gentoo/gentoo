@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/system-fileio/system-fileio-0.3.11.ebuild,v 1.1 2013/08/26 11:00:45 qnikst Exp $
+# $Id$
 
 EAPI=5
 

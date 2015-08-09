@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=1a90e954c90cd5450599e948d1183ad7
+SLOT=0
 DEFINED_PHASES=configure
+EAPI=4
 DEPEND=amd64? ( >=dev-lang/yasm-1 ) x86? ( >=dev-lang/yasm-1 ) x86-fbsd? ( >=dev-lang/yasm-1 )
 DESCRIPTION=A free library for encoding X264/AVC streams
-EAPI=4
-HOMEPAGE=http://www.videolan.org/developers/x264.html
-IUSE=10bit custom-cflags debug +interlaced pic static-libs +threads
-KEYWORDS=~alpha ~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
-SLOT=0
+IUSE=10bit custom-cflags debug +interlaced pic static-libs +threads
 SRC_URI=http://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20120327-2245.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=31f4549f25ac9a4a99f243d8aad6f33a
+KEYWORDS=~alpha ~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+HOMEPAGE=http://www.videolan.org/developers/x264.html

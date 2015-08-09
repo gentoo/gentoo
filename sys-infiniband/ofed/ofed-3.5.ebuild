@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/ofed/ofed-3.5.ebuild,v 1.3 2012/12/11 19:19:44 axs Exp $
+# $Id$
 
 EAPI="4"
 

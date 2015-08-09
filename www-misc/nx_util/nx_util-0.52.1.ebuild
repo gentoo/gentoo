@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/nx_util/nx_util-0.52.1.ebuild,v 1.2 2014/08/10 20:10:26 slyfox Exp $
+# $Id$
 
 EAPI=5
 

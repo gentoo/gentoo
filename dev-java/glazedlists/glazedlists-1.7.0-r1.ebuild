@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/glazedlists/glazedlists-1.7.0-r1.ebuild,v 1.4 2010/05/22 04:55:20 ken69267 Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

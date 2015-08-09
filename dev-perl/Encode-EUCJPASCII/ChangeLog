@@ -1,9 +1,0 @@
-# ChangeLog for dev-perl/Encode-EUCJPASCII
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Encode-EUCJPASCII/ChangeLog,v 1.1 2013/08/04 01:11:35 mrueg Exp $
-
-*Encode-EUCJPASCII-0.03 (04 Aug 2013)
-
-  04 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +Encode-EUCJPASCII-0.03.ebuild,
-  +metadata.xml:
-  Initial version.

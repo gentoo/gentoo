@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-indicator/pidgin-indicator-0.9.ebuild,v 1.1 2015/05/07 21:00:17 mrueg Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,5 +1,5 @@
 # for dcron 
-# $Header: /var/cvsroot/gentoo-x86/sys-process/dcron/files/crontab,v 1.3 2009/12/19 14:47:30 vapier Exp $
+# $Id$
 
 # dcron:
 # This is NOT the system crontab! dcron does not support a system crontab.

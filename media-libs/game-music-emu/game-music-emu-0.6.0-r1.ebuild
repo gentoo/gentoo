@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/game-music-emu/game-music-emu-0.6.0-r1.ebuild,v 1.8 2015/02/24 08:43:36 ago Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-multilib

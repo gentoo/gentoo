@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-lib/freebsd-lib-9.1-r11.ebuild,v 1.5 2015/06/14 18:05:45 mgorny Exp $
+# $Id$
 
 EAPI=5
 

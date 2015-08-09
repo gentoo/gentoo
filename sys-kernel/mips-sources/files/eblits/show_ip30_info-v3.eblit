@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/show_ip30_info-v3.eblit,v 1.1 2015/01/18 07:44:14 kumba Exp $
+# $Id$
 
 # Eblit with information/warnings for IP30 (Octane) users.
 #

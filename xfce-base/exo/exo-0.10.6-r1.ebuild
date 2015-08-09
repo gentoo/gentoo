@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/exo/exo-0.10.6-r1.ebuild,v 1.3 2015/07/19 12:37:00 klausman Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

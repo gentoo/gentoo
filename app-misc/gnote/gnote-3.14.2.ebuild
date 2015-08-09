@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gnote/gnote-3.14.2.ebuild,v 1.4 2015/05/16 05:46:34 tetromino Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rsh/netkit-rsh-0.17-r9.ebuild,v 1.20 2012/03/08 11:14:24 naota Exp $
+# $Id$
 
 inherit eutils pam toolchain-funcs
 

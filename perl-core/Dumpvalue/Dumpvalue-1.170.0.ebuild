@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/Dumpvalue/Dumpvalue-1.170.0.ebuild,v 1.9 2014/04/24 17:45:37 zlogene Exp $
+# $Id$
 
 EAPI=5
 

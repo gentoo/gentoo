@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/agda-executable/agda-executable-2.3.0.1-r2.ebuild,v 1.1 2013/09/13 06:56:08 gienah Exp $
+# $Id$
 
 EAPI=5
 

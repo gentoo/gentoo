@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/vblade/vblade-20.ebuild,v 1.5 2012/03/08 08:52:59 phajdan.jr Exp $
+# $Id$
 
 EAPI=4
 

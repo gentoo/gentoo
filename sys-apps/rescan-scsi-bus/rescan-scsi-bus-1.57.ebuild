@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rescan-scsi-bus/rescan-scsi-bus-1.57.ebuild,v 1.2 2014/01/14 23:35:40 vapier Exp $
+# $Id$
 
 EAPI=5
 

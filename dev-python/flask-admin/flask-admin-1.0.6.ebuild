@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-admin/flask-admin-1.0.6.ebuild,v 1.5 2015/07/29 06:33:55 jlec Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/esh/esh-0.8.5-r2.ebuild,v 1.5 2015/01/16 11:20:02 jer Exp $
+# $Id$
 
 EAPI=5
 inherit flag-o-matic toolchain-funcs

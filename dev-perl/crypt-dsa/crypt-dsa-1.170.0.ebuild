@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/crypt-dsa/crypt-dsa-1.170.0.ebuild,v 1.4 2014/07/31 11:32:09 zlogene Exp $
+# $Id$
 
 EAPI=5
 

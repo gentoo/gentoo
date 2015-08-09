@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/liblscp/liblscp-0.5.5.ebuild,v 1.3 2014/08/10 21:09:12 slyfox Exp $
+# $Id$
 
 DESCRIPTION="a C++ library for the Linux Sampler control protocol"
 HOMEPAGE="http://www.linuxsampler.org"

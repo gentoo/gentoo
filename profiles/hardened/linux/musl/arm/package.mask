@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/arm/package.mask,v 1.1 2015/05/08 12:31:15 blueness Exp $
+# $Id$
 
 # Anthony G. Basile <blueness@gentoo.org> (08 May 2015)
 # Mask gcc 4.8 and above pending the fix of bug #518598

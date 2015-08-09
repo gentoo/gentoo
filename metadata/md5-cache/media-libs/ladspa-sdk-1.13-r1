@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=b67470e873c2d2d52bfce77ca634e8de
+SLOT=0
 DEFINED_PHASES=compile install prepare
+EAPI=4
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=The Linux Audio Developer's Simple Plugin API
-EAPI=4
-HOMEPAGE=http://www.ladspa.org/
-KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=LGPL-2.1
-SLOT=0
 SRC_URI=http://www.ladspa.org/download/ladspa_sdk_1.13.tgz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=1469fe5b25efd353ae4b8bff82c0e904
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+HOMEPAGE=http://www.ladspa.org/

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/ceres-solver/ceres-solver-1.8.0.ebuild,v 1.1 2013/11/14 01:49:00 bicatali Exp $
+# $Id$
 
 EAPI=5
 

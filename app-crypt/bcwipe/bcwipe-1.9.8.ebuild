@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/bcwipe/bcwipe-1.9.8.ebuild,v 1.5 2011/04/24 17:52:31 armin76 Exp $
+# $Id$
 
 EAPI="3"
 

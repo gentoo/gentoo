@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/java-virtuals/jmx/jmx-1.0-r3.ebuild,v 1.6 2012/10/04 17:37:57 sera Exp $
+# $Id$
 
 EAPI=4
 

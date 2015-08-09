@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libatasmart/libatasmart-0.19.ebuild,v 1.9 2012/11/28 18:00:54 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

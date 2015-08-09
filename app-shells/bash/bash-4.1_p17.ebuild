@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-4.1_p17.ebuild,v 1.4 2014/10/08 06:21:18 armin76 Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/bootsplash-themes/bootsplash-themes-20060913.ebuild,v 1.8 2010/06/24 10:42:04 spock Exp $
+# $Id$
 
 DESCRIPTION="A collection of Bootsplash themes"
 HOMEPAGE="http://dev.gentoo.org/~spock/repos/bootsplash/"

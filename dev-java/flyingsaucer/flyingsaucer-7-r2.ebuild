@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/flyingsaucer/flyingsaucer-7-r2.ebuild,v 1.2 2015/04/02 18:30:46 mr_bones_ Exp $
+# $Id$
 
 EAPI="5"
 

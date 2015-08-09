@@ -1,14 +1,14 @@
+_eclasses_=multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	autotools	8056957fdccf2b3cd6e282a4b4551d1a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	user	906f3c8eb3a2350a4f1191a89baa3e46	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	udev	37ef89be271b9ae8aa64be024ddb39b5	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	systemd	6b4f0cefa642270eded7e6ca816fd181	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools-multilib	b47cfc5bc6e355200e256e42f54fb09	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=cb7304bed384850f2fc359955afb6174
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup test
+EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] libusb? ( virtual/libusb:1 ) udev? ( virtual/udev ) policykit? ( >=sys-auth/polkit-0.111 ) virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=PC/SC Architecture smartcard middleware library
-EAPI=5
-HOMEPAGE=http://pcsclite.alioth.debian.org/
-IUSE=libusb policykit selinux +udev python_targets_python2_7 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=BSD ISC MIT GPL-3+ GPL-2
-RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] libusb? ( virtual/libusb:1 ) udev? ( virtual/udev ) policykit? ( >=sys-auth/polkit-0.111 ) !<app-crypt/ccid-1.4.1-r1 !<sys-apps/baselayout-2 !<sys-apps/openrc-0.11.8 selinux? ( sec-policy/selinux-pcscd )
+IUSE=libusb policykit selinux +udev python_targets_python2_7 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 REQUIRED_USE=^^ ( udev libusb )
-SLOT=0
 SRC_URI=http://alioth.debian.org/download.php/file/4126/pcsc-lite-1.8.13.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-multilib	037c4046d25f29e78dd44dccabd5d66b	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	e733e978b7fa70607cc221fd9c070db6	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=a087f59b5ea611a5e5e54a6172d64c08
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+HOMEPAGE=http://pcsclite.alioth.debian.org/
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] libusb? ( virtual/libusb:1 ) udev? ( virtual/udev ) policykit? ( >=sys-auth/polkit-0.111 ) !<app-crypt/ccid-1.4.1-r1 !<sys-apps/baselayout-2 !<sys-apps/openrc-0.11.8 selinux? ( sec-policy/selinux-pcscd )

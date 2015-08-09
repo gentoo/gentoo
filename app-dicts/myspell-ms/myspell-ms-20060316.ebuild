@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-ms/myspell-ms-20060316.ebuild,v 1.18 2012/05/17 18:23:35 aballier Exp $
+# $Id$
 
 MYSPELL_SPELLING_DICTIONARIES=(
 "ms,MY,ms_MY,Malay (Malaysia),ms_MY.zip"

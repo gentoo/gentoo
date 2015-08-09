@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-shares-plugin/thunar-shares-plugin-0.2.0_p20101105.ebuild,v 1.9 2013/10/20 14:09:33 ssuominen Exp $
+# $Id$
 
 EAPI=5
 EAUTORECONF=yes

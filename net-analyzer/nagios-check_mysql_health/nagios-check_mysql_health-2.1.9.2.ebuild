@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-check_mysql_health/nagios-check_mysql_health-2.1.9.2.ebuild,v 1.1 2015/06/22 14:53:45 mjo Exp $
+# $Id$
 
 EAPI=5
 

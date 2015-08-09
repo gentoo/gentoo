@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/carbon-c-relay/files/carbon-c-relay.initd,v 1.2 2015/05/06 19:30:43 grobian Exp $
+# $Id$
 
 extra_commands="configtest"
 extra_started_commands="reload"

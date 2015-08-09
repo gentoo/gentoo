@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/protux/protux-0.50.100.ebuild,v 1.5 2010/05/05 16:24:36 mr_bones_ Exp $
+# $Id$
 
 inherit java-pkg-2
 

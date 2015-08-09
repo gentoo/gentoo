@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wai-app-static/wai-app-static-3.0.0.5.ebuild,v 1.1 2014/12/22 08:16:47 gienah Exp $
+# $Id$
 
 EAPI=5
 

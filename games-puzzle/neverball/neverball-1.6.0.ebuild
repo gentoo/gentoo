@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/neverball/neverball-1.6.0.ebuild,v 1.4 2015/04/21 17:38:15 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnome2-utils games

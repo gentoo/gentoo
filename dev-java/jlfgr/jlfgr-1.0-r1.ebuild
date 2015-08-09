@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jlfgr/jlfgr-1.0-r1.ebuild,v 1.5 2013/04/16 18:48:03 ulm Exp $
+# $Id$
 
 inherit versionator java-pkg-2
 

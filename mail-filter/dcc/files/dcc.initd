@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/dcc/files/dcc.initd,v 1.2 2011/01/25 04:24:43 robbat2 Exp $
+# $Id$
 
 depend() {
 	use logger

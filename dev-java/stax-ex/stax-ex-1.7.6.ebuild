@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/stax-ex/stax-ex-1.7.6.ebuild,v 1.4 2015/04/10 22:43:25 chewi Exp $
+# $Id$
 
 EAPI=5
 

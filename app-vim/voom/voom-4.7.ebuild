@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/voom/voom-4.7.ebuild,v 1.2 2013/02/07 21:47:26 ulm Exp $
+# $Id$
 
 EAPI=5
 

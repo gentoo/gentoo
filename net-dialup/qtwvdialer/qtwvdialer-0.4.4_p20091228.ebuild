@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/qtwvdialer/qtwvdialer-0.4.4_p20091228.ebuild,v 1.6 2013/03/02 22:47:54 hwoarang Exp $
+# $Id$
 
 EAPI=2
 inherit eutils qt4-r2

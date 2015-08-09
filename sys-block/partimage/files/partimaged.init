@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/files/partimaged.init,v 1.2 2008/01/15 12:12:05 xmerlin Exp $
+# $Id$
 
 PARTIMAGED="/usr/sbin/partimaged"
 

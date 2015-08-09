@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mac-fdisk/mac-fdisk-0.1-r7.ebuild,v 1.4 2012/05/15 19:52:34 halcy0n Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

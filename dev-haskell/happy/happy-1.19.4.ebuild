@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/happy-1.19.4.ebuild,v 1.2 2015/05/05 21:13:55 slyfox Exp $
+# $Id$
 
 EAPI=5
 

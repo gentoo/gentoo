@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsb2hs/hsb2hs-0.3.1.ebuild,v 1.1 2015/07/20 18:28:46 slyfox Exp $
+# $Id$
 
 EAPI=5
 

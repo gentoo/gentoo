@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/yacas/yacas-1.3.4.ebuild,v 1.3 2014/06/29 13:20:50 jer Exp $
+# $Id$
 
 EAPI=5
 

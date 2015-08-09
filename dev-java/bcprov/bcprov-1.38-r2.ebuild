@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcprov/bcprov-1.38-r2.ebuild,v 1.3 2013/09/01 11:35:53 grobian Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

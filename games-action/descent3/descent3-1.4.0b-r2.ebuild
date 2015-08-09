@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/descent3/descent3-1.4.0b-r2.ebuild,v 1.2 2015/06/01 22:05:44 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils unpacker cdrom multilib games

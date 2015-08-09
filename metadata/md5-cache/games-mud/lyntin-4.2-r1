@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=f52e6f3c145aeea9a95d6be23de72255
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+EAPI=5
 DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk?] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=tintin mud client clone implemented in Python
-EAPI=5
-HOMEPAGE=http://lyntin.sourceforge.net/
-IUSE=tk python_targets_python2_7
-KEYWORDS=amd64 ppc x86
 LICENSE=GPL-3
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk?] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] games-misc/games-envd
+IUSE=tk python_targets_python2_7
 REQUIRED_USE=|| ( python_targets_python2_7 )
-SLOT=0
 SRC_URI=mirror://sourceforge/lyntin/lyntin-4.2.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=937ac7d2bb7ef8dfae596b85db611c95
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://lyntin.sourceforge.net/
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk?] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] games-misc/games-envd

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr223/jsr223-1.0-r1.ebuild,v 1.4 2010/06/24 21:07:43 pacho Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE=""

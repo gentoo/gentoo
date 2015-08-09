@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/lastpass/lastpass-3.1.61.ebuild,v 1.4 2014/10/19 06:41:17 robbat2 Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

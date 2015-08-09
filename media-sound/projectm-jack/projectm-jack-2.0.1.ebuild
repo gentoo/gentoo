@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/projectm-jack/projectm-jack-2.0.1.ebuild,v 1.6 2014/08/10 21:10:15 slyfox Exp $
+# $Id$
 EAPI=5
 
 inherit cmake-utils

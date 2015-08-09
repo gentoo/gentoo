@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/eix/eix-0.30.4.ebuild,v 1.11 2015/06/07 18:05:19 sping Exp $
+# $Id$
 
 EAPI=5
 

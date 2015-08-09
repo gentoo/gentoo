@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/flvstreamer/flvstreamer-2.1c.ebuild,v 1.4 2011/02/27 10:24:50 xarthisius Exp $
+# $Id$
 
 EAPI="2"
 

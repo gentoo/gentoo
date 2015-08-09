@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/src_install-v50160001.eblit,v 1.3 2013/03/14 12:46:31 tove Exp $
+# $Id$
 
 eblit-perl-src_install() {
 	local i

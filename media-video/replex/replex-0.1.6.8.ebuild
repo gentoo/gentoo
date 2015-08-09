@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/replex/replex-0.1.6.8.ebuild,v 1.1 2008/01/13 18:20:15 aballier Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

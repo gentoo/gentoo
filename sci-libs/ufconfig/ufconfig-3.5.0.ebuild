@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/ufconfig/ufconfig-3.5.0.ebuild,v 1.10 2010/07/25 14:27:19 jer Exp $
+# $Id$
 
 inherit multilib toolchain-funcs
 

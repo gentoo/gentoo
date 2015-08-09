@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/xsl-syntax/xsl-syntax-0.3.11-r1.ebuild,v 1.10 2010/11/14 06:57:03 radhermit Exp $
+# $Id$
 
 inherit vim-plugin
 

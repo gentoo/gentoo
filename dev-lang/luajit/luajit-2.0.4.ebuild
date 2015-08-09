@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/luajit/luajit-2.0.4.ebuild,v 1.1 2015/05/21 09:01:30 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

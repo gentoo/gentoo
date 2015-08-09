@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx/sphinx-1.1.3-r7.ebuild,v 1.17 2014/11/23 17:29:39 floppym Exp $
+# $Id$
 
 EAPI=5
 

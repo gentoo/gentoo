@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/multvals/multvals-3.10.ebuild,v 1.7 2010/10/07 03:25:42 leio Exp $
+# $Id$
 
 inherit vim-plugin
 

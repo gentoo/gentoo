@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/resid/resid-0.16_p2.ebuild,v 1.8 2011/03/06 12:10:47 klausman Exp $
+# $Id$
 
 EAPI=2
 inherit autotools versionator

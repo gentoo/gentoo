@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/package.use.stable.mask,v 1.12 2015/08/04 08:13:32 alonbl Exp $
+# $Id$
 
 # Ben de Groot <yngwin@gentoo.org (19 Apr 2015)
 # >=opus-1.0.3 is still not stable (bug 500868)

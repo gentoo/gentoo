@@ -1,5 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Id: profile.bashrc,v 1.1 2011/03/29 20:19:15 haubi Exp $
+# $Id$
 
 # When x86-linux runs on an amd64 host having /lib32,
 # we need to have binutils to search there too (#360197).

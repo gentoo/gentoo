@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/binutils-config-2-r1.ebuild,v 1.7 2011/07/10 23:39:04 halcy0n Exp $
+# $Id$
 
 DESCRIPTION="Utility to change the binutils version being used"
 HOMEPAGE="http://www.gentoo.org/"

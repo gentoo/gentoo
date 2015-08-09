@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jre-bin/ibm-jre-bin-1.6.0.9_p2-r1.ebuild,v 1.5 2014/11/02 08:19:39 swift Exp $
+# $Id$
 
 EAPI="4"
 

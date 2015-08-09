@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Carp-Assert/Carp-Assert-0.210.0.ebuild,v 1.1 2015/04/18 19:09:55 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

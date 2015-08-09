@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyao/pyao-0.82-r2.ebuild,v 1.7 2012/02/21 08:49:16 patrick Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

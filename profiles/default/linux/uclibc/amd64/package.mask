@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/amd64/package.mask,v 1.9 2015/06/18 12:36:02 blueness Exp $
+# $Id$
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib

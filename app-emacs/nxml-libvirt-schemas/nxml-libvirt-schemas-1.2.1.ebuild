@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/nxml-libvirt-schemas/nxml-libvirt-schemas-1.2.1.ebuild,v 1.2 2014/06/07 11:26:49 ulm Exp $
+# $Id$
 
 EAPI=5
 

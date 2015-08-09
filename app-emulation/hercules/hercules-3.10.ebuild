@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/hercules/hercules-3.10.ebuild,v 1.1 2014/02/02 01:51:58 vapier Exp $
+# $Id$
 
 EAPI="4"
 

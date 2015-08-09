@@ -1,9 +1,0 @@
-# ChangeLog for dev-perl/LWP-UserAgent-Cached
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/LWP-UserAgent-Cached/ChangeLog,v 1.1 2015/05/19 22:50:35 dilfridge Exp $
-
-*LWP-UserAgent-Cached-0.60.0 (19 May 2015)
-
-  19 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
-  +LWP-UserAgent-Cached-0.60.0.ebuild, +metadata.xml:
-  New package, neeed for net-misc/youtube-viewer, bug 549218

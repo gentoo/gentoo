@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/unordered-containers/unordered-containers-0.2.3.3.ebuild,v 1.4 2015/08/02 11:01:02 slyfox Exp $
+# $Id$
 
 EAPI=5
 

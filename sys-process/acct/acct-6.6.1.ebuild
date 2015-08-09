@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/acct-6.6.1.ebuild,v 1.2 2014/08/13 03:59:48 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit autotools base systemd

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/dbmeasure/dbmeasure-0.0.20100217.ebuild,v 1.3 2013/05/06 14:04:22 ssuominen Exp $
+# $Id$
 
 EAPI=5
 GIT_COMMITID="ed8105083ab72f9afac9d18b7563fbc3d6c1c925"

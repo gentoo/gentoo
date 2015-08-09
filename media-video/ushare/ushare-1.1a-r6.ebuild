@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ushare/ushare-1.1a-r6.ebuild,v 1.3 2013/09/30 17:14:42 ago Exp $
+# $Id$
 
 EAPI=4
 inherit eutils multilib readme.gentoo toolchain-funcs user systemd

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/noexec/noexec-1.1.0.ebuild,v 1.7 2010/05/21 23:46:31 hwoarang Exp $
+# $Id$
 
 DESCRIPTION="a package for preventing processes from using exec system calls"
 HOMEPAGE="http://noexec.sourceforge.net/"

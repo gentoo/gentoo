@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/xdvik-22.85-r1.ebuild,v 1.19 2013/04/25 21:25:51 ago Exp $
+# $Id$
 
 EAPI=4
 inherit eutils flag-o-matic elisp-common toolchain-funcs multilib

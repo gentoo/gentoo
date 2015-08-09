@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gtkvncviewer/gtkvncviewer-0.4.ebuild,v 1.2 2012/09/05 08:07:06 jlec Exp $
+# $Id$
 
 EAPI=4
 PYTHON_DEPEND="2"

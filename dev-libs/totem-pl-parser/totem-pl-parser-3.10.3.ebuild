@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/totem-pl-parser/totem-pl-parser-3.10.3.ebuild,v 1.3 2014/12/19 13:36:12 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/viewmol/viewmol-2.4.1-r2.ebuild,v 1.4 2012/10/24 19:34:04 ulm Exp $
+# $Id$
 
 EAPI=3
 

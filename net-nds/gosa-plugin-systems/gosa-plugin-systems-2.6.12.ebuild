@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/gosa-plugin-systems/gosa-plugin-systems-2.6.12.ebuild,v 1.1 2011/03/01 06:48:16 dev-zero Exp $
+# $Id$
 
 EAPI=4
 

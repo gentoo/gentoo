@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Filesys-Notify-Simple/Filesys-Notify-Simple-0.80.0.ebuild,v 1.3 2014/09/03 18:37:55 zlogene Exp $
+# $Id$
 
 EAPI=5
 

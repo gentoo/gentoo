@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/typehashlib/typehashlib-109.15.02.ebuild,v 1.2 2014/11/28 17:50:56 aballier Exp $
+# $Id$
 
 EAPI="5"
 

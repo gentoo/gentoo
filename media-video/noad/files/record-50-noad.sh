@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-video/noad/files/record-50-noad.sh,v 1.1 2012/07/04 21:33:43 hd_brummy Exp $
+# $Id$
 #
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 # Mathias Schwarzott <zzam@gentoo.org>

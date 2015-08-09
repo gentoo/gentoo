@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/lksctp-tools/lksctp-tools-1.0.13.ebuild,v 1.8 2013/05/25 07:44:59 ago Exp $
+# $Id$
 
 EAPI=5
 

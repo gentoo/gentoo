@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-fontutils/texlive-fontutils-2013.ebuild,v 1.1 2013/06/28 16:12:05 aballier Exp $
+# $Id$
 
 EAPI="5"
 

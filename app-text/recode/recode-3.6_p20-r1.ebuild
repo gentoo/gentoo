@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/recode/recode-3.6_p20-r1.ebuild,v 1.11 2015/03/03 05:59:35 dlan Exp $
+# $Id$
 
 EAPI=5
 

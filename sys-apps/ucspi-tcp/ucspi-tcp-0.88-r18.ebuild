@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-tcp/ucspi-tcp-0.88-r18.ebuild,v 1.1 2014/12/30 22:28:36 vapier Exp $
+# $Id$
 
 EAPI="4"
 

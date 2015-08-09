@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/crossfire-server/crossfire-server-1.70.0.ebuild,v 1.4 2013/02/14 22:05:28 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

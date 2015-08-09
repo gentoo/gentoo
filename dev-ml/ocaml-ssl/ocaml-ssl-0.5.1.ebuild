@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-ssl/ocaml-ssl-0.5.1.ebuild,v 1.1 2015/06/01 09:04:27 aballier Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/atkmm/atkmm-2.22.7.ebuild,v 1.14 2015/03/06 05:04:40 tetromino Exp $
+# $Id$
 
 EAPI=5
 GCONF_DEBUG="no"

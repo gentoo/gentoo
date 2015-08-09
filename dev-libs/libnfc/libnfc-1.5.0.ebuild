@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnfc/libnfc-1.5.0.ebuild,v 1.1 2011/04/29 21:28:13 ikelos Exp $
+# $Id$
 
 EAPI="4"
 

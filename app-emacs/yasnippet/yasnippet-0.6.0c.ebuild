@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/yasnippet/yasnippet-0.6.0c.ebuild,v 1.1 2009/08/28 16:11:04 ulm Exp $
+# $Id$
 
 inherit elisp
 

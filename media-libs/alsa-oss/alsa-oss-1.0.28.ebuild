@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-oss/alsa-oss-1.0.28.ebuild,v 1.9 2015/03/28 17:32:20 dlan Exp $
+# $Id$
 
 EAPI=5
 

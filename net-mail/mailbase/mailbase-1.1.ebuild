@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailbase/mailbase-1.1.ebuild,v 1.15 2014/01/18 04:15:22 vapier Exp $
+# $Id$
 
 inherit pam eutils user
 

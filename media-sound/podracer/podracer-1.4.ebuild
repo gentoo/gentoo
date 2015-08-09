@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/podracer/podracer-1.4.ebuild,v 1.2 2012/12/04 16:22:08 ulm Exp $
+# $Id$
 
 # EAPI=4 is not allowed unless somone re-works the sample.subscriptions logic
 # (because it gets compressed with EAPI=4). To test this, start podracer without

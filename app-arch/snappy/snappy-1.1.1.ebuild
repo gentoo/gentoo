@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/snappy/snappy-1.1.1.ebuild,v 1.6 2014/09/26 03:58:07 patrick Exp $
+# $Id$
 
 EAPI="5"
 

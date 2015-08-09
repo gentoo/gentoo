@@ -1,6 +1,6 @@
 # Copyright 2007-2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/apache2_modules.desc,v 1.4 2010/12/02 06:43:07 robbat2 Exp $
+# $Id$
 
 # This file contains descriptions of APACHE2_MODULES USE_EXPAND flags.
 

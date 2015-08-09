@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxtask/lxtask-0.1.4-r1.ebuild,v 1.5 2013/12/26 14:40:26 maekke Exp $
+# $Id$
 
 EAPI="4"
 

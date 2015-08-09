@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/skyutils/skyutils-2.8-r2.ebuild,v 1.8 2014/07/22 20:26:16 mrueg Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic autotools

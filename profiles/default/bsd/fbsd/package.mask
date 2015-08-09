@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/package.mask,v 1.19 2013/08/27 22:10:19 aballier Exp $
+# $Id$
 
 # Diego Pettenò <flameeyes@gentoo.org> (27 May 2005)
 # SGI's FAM is dead upstream, and requires mayor changes.

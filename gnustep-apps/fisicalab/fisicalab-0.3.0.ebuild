@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/fisicalab/fisicalab-0.3.0.ebuild,v 1.1 2012/10/11 13:05:59 voyageur Exp $
+# $Id$
 
 EAPI=4
 inherit gnustep-2

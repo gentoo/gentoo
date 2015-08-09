@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/nicotine+/nicotine+-1.2.16-r1.ebuild,v 1.1 2015/03/26 23:58:39 idella4 Exp $
+# $Id$
 
 EAPI=5
 

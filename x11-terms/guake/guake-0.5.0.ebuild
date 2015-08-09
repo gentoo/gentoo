@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/guake/guake-0.5.0.ebuild,v 1.5 2014/12/28 12:09:48 ago Exp $
+# $Id$
 
 EAPI=5
 

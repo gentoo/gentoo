@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/phpvirtualbox/phpvirtualbox-4.1.7-r2.ebuild,v 1.4 2013/09/11 20:29:44 hwoarang Exp $
+# $Id$
 
 EAPI="2"
 

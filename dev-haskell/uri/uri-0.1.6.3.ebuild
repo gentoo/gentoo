@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/uri/uri-0.1.6.3.ebuild,v 1.1 2015/03/05 21:57:56 slyfox Exp $
+# $Id$
 
 EAPI=5
 

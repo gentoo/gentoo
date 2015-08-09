@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/nfs-utils/files/rpc.gssd.initd,v 1.11 2008/10/26 09:02:47 vapier Exp $
+# $Id$
 
 [ -e /etc/conf.d/nfs ] && . /etc/conf.d/nfs
 

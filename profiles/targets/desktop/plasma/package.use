@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/plasma/package.use,v 1.10 2015/07/26 21:36:03 mgorny Exp $
+# $Id$
 
 # Not required, but makes life easier with Qt; bug 457934
 app-arch/unzip natspec

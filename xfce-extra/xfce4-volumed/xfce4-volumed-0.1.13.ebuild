@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-volumed/xfce4-volumed-0.1.13.ebuild,v 1.8 2013/10/29 01:38:05 blueness Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

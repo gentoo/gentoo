@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/pipelight/pipelight-0.2.7.3.ebuild,v 1.1 2014/08/09 17:37:00 ryao Exp $
+# $Id$
 
 EAPI=5
 

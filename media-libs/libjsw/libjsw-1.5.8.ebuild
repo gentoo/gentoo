@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libjsw/libjsw-1.5.8.ebuild,v 1.8 2015/03/16 06:06:44 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tokyodystopia/tokyodystopia-0.9.15.ebuild,v 1.1 2010/08/13 10:59:38 patrick Exp $
+# $Id$
 
 EAPI="2"
 

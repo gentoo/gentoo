@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/libstdc++/libstdc++-3.3.ebuild,v 1.19 2013/09/30 20:05:41 vapier Exp $
+# $Id$
 
 DESCRIPTION="Virtual for the GNU Standard C++ Library for <gcc-3.4"
 HOMEPAGE=""

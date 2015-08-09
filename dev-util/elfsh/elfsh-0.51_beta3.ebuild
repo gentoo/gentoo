@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/elfsh/elfsh-0.51_beta3.ebuild,v 1.9 2012/06/07 21:29:50 zmedico Exp $
+# $Id$
 
 inherit eutils multilib toolchain-funcs
 

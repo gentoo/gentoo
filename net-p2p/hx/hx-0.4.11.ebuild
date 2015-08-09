@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/hx/hx-0.4.11.ebuild,v 1.7 2015/01/31 01:51:51 patrick Exp $
+# $Id$
 
 inherit autotools
 

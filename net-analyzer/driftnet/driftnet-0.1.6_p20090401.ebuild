@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/driftnet/driftnet-0.1.6_p20090401.ebuild,v 1.12 2014/09/17 15:51:34 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic toolchain-funcs

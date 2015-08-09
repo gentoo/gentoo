@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvbsnoop/dvbsnoop-1.4.50-r1.ebuild,v 1.3 2014/03/03 23:50:07 pacho Exp $
+# $Id$
 
 EAPI=5
 

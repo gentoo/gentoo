@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/pork/pork-0.99.8.1.ebuild,v 1.18 2014/11/10 10:37:48 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

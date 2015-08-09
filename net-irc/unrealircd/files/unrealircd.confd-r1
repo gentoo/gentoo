@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/files/unrealircd.confd-r1,v 1.1 2011/07/27 12:41:19 binki Exp $
+# $Id$
 
 # user to run unrealircd as
 UNREALIRCD_USER="unrealircd"

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-aiptek/xf86-input-aiptek-1.4.1.ebuild,v 1.7 2011/10/03 18:00:43 josejx Exp $
+# $Id$
 
 EAPI=4
 

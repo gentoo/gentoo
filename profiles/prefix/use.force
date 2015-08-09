@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/use.force,v 1.2 2014/01/18 02:01:21 redlizard Exp $
+# $Id$
 
 # unforce the GNU/Linux ELIBC, KERNEL, and USERLAND
 # flags that come from the base profile

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/elementary-xfce-icon-theme/elementary-xfce-icon-theme-0.4_p20150327.ebuild,v 1.1 2015/04/22 04:11:02 calchan Exp $
+# $Id$
 
 EAPI=5
 inherit gnome2-utils

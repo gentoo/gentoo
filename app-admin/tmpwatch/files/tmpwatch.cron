@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Header: /var/cvsroot/gentoo-x86/app-admin/tmpwatch/files/tmpwatch.cron,v 1.4 2007/01/27 16:51:37 masterdriverz Exp $
+# $Id$
 # vim: ft=sh
 
 # This cron script contains several (commented out) examples.  You may use

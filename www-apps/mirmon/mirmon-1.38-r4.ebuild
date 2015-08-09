@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mirmon/mirmon-1.38-r4.ebuild,v 1.2 2010/05/22 23:12:12 darkside Exp $
+# $Id$
 
 inherit webapp eutils
 WEBAPP_MANUAL_SLOT="yes"

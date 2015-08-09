@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/yafaray/yafaray-0.1.1.ebuild,v 1.6 2013/03/03 02:21:13 pesa Exp $
+# $Id$
 
 EAPI=2
 MY_PN="YafaRay"

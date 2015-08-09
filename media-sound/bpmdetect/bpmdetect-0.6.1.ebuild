@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/bpmdetect/bpmdetect-0.6.1.ebuild,v 1.4 2013/03/02 21:53:36 hwoarang Exp $
+# $Id$
 
 EAPI=2
 inherit eutils multilib

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/tree/tree-2.81.ebuild,v 1.2 2011/12/18 16:48:29 jlec Exp $
+# $Id$
 
 EAPI=4
 

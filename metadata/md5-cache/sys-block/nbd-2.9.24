@@ -1,11 +1,12 @@
+_eclasses_=
+_md5_=6d76d4b16925306b45d722052a55fae2
+SLOT=0
 DEFINED_PHASES=compile configure install
+EAPI=4
 DEPEND=>=dev-libs/glib-2.0 virtual/pkgconfig
 DESCRIPTION=Userland client/server for kernel network block device
-EAPI=4
-HOMEPAGE=http://nbd.sourceforge.net/
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2.0
-SLOT=0
 SRC_URI=mirror://sourceforge/nbd/nbd-2.9.24.tar.bz2
-_md5_=20448b294bcf7ea3cef21a8b22a54b86
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+HOMEPAGE=http://nbd.sourceforge.net/
+RDEPEND=>=dev-libs/glib-2.0

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/hyphen/hyphen-2.8.8.ebuild,v 1.3 2015/07/22 19:33:40 ago Exp $
+# $Id$
 
 EAPI=4
 

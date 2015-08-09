@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gramofile/gramofile-1.6-r1.ebuild,v 1.8 2009/07/02 19:30:05 maekke Exp $
+# $Id$
 
 EAPI=2
 PATCH_LEVEL=8

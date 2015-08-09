@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/falcon/falcon-0.9.6.4.ebuild,v 1.1 2010/05/25 05:44:04 reavertm Exp $
+# $Id$
 
 EAPI="2"
 

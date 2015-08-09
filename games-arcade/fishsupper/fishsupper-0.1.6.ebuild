@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/fishsupper/fishsupper-0.1.6.ebuild,v 1.7 2015/01/04 14:58:56 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools games

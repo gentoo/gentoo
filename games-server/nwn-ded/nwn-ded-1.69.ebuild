@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/nwn-ded/nwn-ded-1.69.ebuild,v 1.5 2014/09/04 07:41:03 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit games

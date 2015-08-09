@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse-sharing/seahorse-sharing-3.8.0.ebuild,v 1.3 2013/12/08 17:38:59 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="yes" # disable asserts

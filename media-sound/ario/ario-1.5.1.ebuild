@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ario/ario-1.5.1.ebuild,v 1.8 2014/03/22 12:15:59 angelos Exp $
+# $Id$
 
 EAPI=5
 GNOME2_LA_PUNT=yes

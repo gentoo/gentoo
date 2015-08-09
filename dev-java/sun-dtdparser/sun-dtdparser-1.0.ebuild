@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-dtdparser/sun-dtdparser-1.0.ebuild,v 1.7 2008/04/05 21:49:19 caster Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/pan/pan-0.139.ebuild,v 1.6 2014/02/22 22:34:58 pacho Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=8b6b6fd151dec325e8360d8ce015a657
+SLOT=0.5.5
 DEFINED_PHASES=install postinst prepare prerm setup
+EAPI=4
 DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=gnopaste is a nopaste script based on PHP with MySQL
-EAPI=4
-HOMEPAGE=http://gnopaste.sf.net/
-IUSE=vhosts
-KEYWORDS=~x86 ~amd64
 LICENSE=GPL-2
-RDEPEND=virtual/httpd-php dev-lang/php[mysql] >=app-admin/webapp-config-1.50.15
-SLOT=0.5.5
+IUSE=vhosts
 SRC_URI=mirror://sourceforge/gnopaste/gnopaste-0.5.5.tgz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=30b9fd167e508dd05e3cac52b1e3821c
+KEYWORDS=~x86 ~amd64
+HOMEPAGE=http://gnopaste.sf.net/
+RDEPEND=virtual/httpd-php dev-lang/php[mysql] >=app-admin/webapp-config-1.50.15

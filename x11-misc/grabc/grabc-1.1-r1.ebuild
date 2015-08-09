@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/grabc/grabc-1.1-r1.ebuild,v 1.6 2012/03/06 21:51:35 ranger Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

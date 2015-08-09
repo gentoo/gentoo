@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/madplay/madplay-0.15.2b-r1.ebuild,v 1.14 2012/01/11 10:21:22 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

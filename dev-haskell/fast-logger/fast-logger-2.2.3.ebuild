@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/fast-logger/fast-logger-2.2.3.ebuild,v 1.1 2014/12/13 14:04:05 gienah Exp $
+# $Id$
 
 EAPI=5
 

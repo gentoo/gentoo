@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avinfo/avinfo-1.0_alpha15.ebuild,v 1.7 2006/07/03 04:32:07 tcort Exp $
+# $Id$
 
 inherit eutils
 

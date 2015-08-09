@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ltrace/ltrace-0.5.3.1.ebuild,v 1.7 2010/05/24 14:44:58 armin76 Exp $
+# $Id$
 
 inherit eutils autotools
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gputils/gputils-0.13.7.ebuild,v 1.2 2010/10/12 16:57:48 armin76 Exp $
+# $Id$
 
 EAPI="2"
 

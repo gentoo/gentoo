@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.44.1.ebuild,v 1.1 2015/06/08 22:45:27 eva Exp $
+# $Id$
 
 # Until bug #537330 glib is a reverse dependency of pkgconfig and, then
 # adding new dependencies end up making stage3 to grow. Every addition needs

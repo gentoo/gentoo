@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pointless/pointless-1.6.14.ebuild,v 1.3 2012/10/19 15:19:34 jlec Exp $
+# $Id$
 
 EAPI="3"
 

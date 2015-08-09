@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lmctfy/lmctfy-0.5.0.ebuild,v 1.2 2015/03/10 21:40:30 vapier Exp $
+# $Id$
 
 EAPI=5
 

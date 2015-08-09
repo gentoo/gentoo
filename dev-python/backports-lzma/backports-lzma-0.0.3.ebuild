@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/backports-lzma/backports-lzma-0.0.3.ebuild,v 1.6 2015/06/22 07:27:26 jlec Exp $
+# $Id$
 
 EAPI=5
 

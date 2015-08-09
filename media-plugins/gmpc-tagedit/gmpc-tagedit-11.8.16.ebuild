@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-tagedit/gmpc-tagedit-11.8.16.ebuild,v 1.4 2012/05/05 08:27:16 jdhore Exp $
+# $Id$
 
 EAPI=4
 

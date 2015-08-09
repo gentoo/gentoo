@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/formido/formido-1.0.1.ebuild,v 1.3 2014/12/31 14:13:21 tupone Exp $
+# $Id$
 EAPI=4
 inherit eutils toolchain-funcs games
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/jdcal/jdcal-1.0.ebuild,v 1.5 2015/02/16 15:48:17 pacho Exp $
+# $Id$
 
 EAPI="5"
 

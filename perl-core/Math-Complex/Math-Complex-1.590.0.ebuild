@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/Math-Complex/Math-Complex-1.590.0.ebuild,v 1.9 2014/04/24 17:46:06 zlogene Exp $
+# $Id$
 
 EAPI=5
 

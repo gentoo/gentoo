@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pps-tools/pps-tools-0.0.20120407.ebuild,v 1.4 2012/12/23 23:09:03 vapier Exp $
+# $Id$
 
 EAPI="4"
 

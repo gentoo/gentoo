@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/cronyx-fonts/cronyx-fonts-2.3.1-r2.ebuild,v 1.12 2007/07/22 07:52:58 dirtyepic Exp $
+# $Id$
 
 DESCRIPTION="Cronyx Cyrillic bitmap fonts for X"
 HOMEPAGE="http://koi8.pp.ru/frame.html?xwin.html#xwin_fonts"

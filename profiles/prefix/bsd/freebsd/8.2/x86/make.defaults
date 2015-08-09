@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/bsd/freebsd/8.2/x86/make.defaults,v 1.1 2011/08/04 22:04:27 abcd Exp $
+# $Id$
 
 # retain backwards compatability for freebsd keywords/conditionals
 ARCH="x86-fbsd"

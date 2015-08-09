@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/comparator/comparator-2.9.ebuild,v 1.8 2013/02/12 19:34:27 ago Exp $
+# $Id$
 
 EAPI="4"
 PYTHON_DEPEND="2"

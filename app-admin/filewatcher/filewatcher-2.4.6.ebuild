@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/filewatcher/filewatcher-2.4.6.ebuild,v 1.2 2010/03/05 07:24:15 ulm Exp $
+# $Id$
 
 DESCRIPTION="This is a configuration file control system and IDS"
 HOMEPAGE="http://sourceforge.net/projects/filewatcher/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-gnome-shell-extensions/eselect-gnome-shell-extensions-20120911.ebuild,v 1.1 2015/03/31 16:49:11 ulm Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/moreutils/moreutils-0.55.ebuild,v 1.1 2015/01/29 06:40:31 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

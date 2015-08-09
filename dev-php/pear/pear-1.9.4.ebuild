@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pear/pear-1.9.4.ebuild,v 1.11 2015/01/14 16:16:01 grknight Exp $
+# $Id$
 
 EAPI=5
 

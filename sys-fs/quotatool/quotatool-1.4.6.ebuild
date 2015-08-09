@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/quotatool/quotatool-1.4.6.ebuild,v 1.3 2005/08/07 13:07:35 hansmi Exp $
+# $Id$
 
 DESCRIPTION="command-line utility for filesystem quotas"
 HOMEPAGE="http://quotatool.ekenberg.se/"

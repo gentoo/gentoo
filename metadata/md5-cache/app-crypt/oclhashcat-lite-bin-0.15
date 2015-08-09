@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	pax-utils	a472fe09c2264598d61d4887809e6016	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=cf7996f90b4f289b4da531dc651b4d6e
+SLOT=0
 DEFINED_PHASES=install preinst prepare test
+EAPI=5
 DEPEND=sys-libs/zlib video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-310.32 ) video_cards_fglrx? ( >=x11-drivers/ati-drivers-13.1 ) app-arch/p7zip
 DESCRIPTION=An opencl hash cracker
-EAPI=5
-HOMEPAGE=http://hashcat.net/oclhashcat-lite/
-IUSE=virtualcl video_cards_fglrx video_cards_nvidia
-KEYWORDS=-* ~amd64 ~x86
 LICENSE=hashcat
-RDEPEND=sys-libs/zlib video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-310.32 ) video_cards_fglrx? ( >=x11-drivers/ati-drivers-13.1 )
+IUSE=virtualcl video_cards_fglrx video_cards_nvidia
 RESTRICT=strip
-SLOT=0
 SRC_URI=http://hashcat.net/files/oclHashcat-lite-0.15.7z
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=89530c36ef61421d6edb1b6c0ff5f01c
+KEYWORDS=-* ~amd64 ~x86
+HOMEPAGE=http://hashcat.net/oclhashcat-lite/
+RDEPEND=sys-libs/zlib video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-310.32 ) video_cards_fglrx? ( >=x11-drivers/ati-drivers-13.1 )

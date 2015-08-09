@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ipadic/ipadic-2.7.0-r2.ebuild,v 1.6 2015/03/02 09:32:50 ago Exp $
+# $Id$
 
 EAPI="4"
 inherit autotools eutils

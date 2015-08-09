@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/freedict.eclass,v 1.21 2014/01/05 11:39:48 pacho Exp $
+# $Id$
 
 # @ECLASS: freedict.eclass
 # @MAINTAINER:

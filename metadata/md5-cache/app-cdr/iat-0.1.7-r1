@@ -1,9 +1,10 @@
-DEFINED_PHASES=configure install
-DESCRIPTION=BIN, MDF, PDI, CDI, NRG, and B5I converters
-EAPI=2
-HOMEPAGE=http://iat.berlios.de
-KEYWORDS=amd64 arm x86
-LICENSE=GPL-2
+_eclasses_=
+_md5_=5b889c8fbf558de3a44fff96c547a6b6
 SLOT=0
+DEFINED_PHASES=configure install
+EAPI=2
+DESCRIPTION=BIN, MDF, PDI, CDI, NRG, and B5I converters
+LICENSE=GPL-2
 SRC_URI=mirror://berlios/iat/iat-0.1.7.tar.bz2
-_md5_=23d755bee34dbd9dfc845a9b01c6ffb4
+KEYWORDS=amd64 arm x86
+HOMEPAGE=http://iat.berlios.de

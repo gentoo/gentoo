@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/pkg_setup-v50160001.eblit,v 1.2 2013/11/22 08:56:13 haubi Exp $
+# $Id$
 
 eblit-perl-pkg_setup() {
 	case ${CHOST} in

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/libftd2xx/libftd2xx-0.4.16-r1.ebuild,v 1.4 2013/04/12 22:53:34 ulm Exp $
+# $Id$
 
 EAPI=5
 inherit multilib

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/qshare/qshare-2.1.5-r1.ebuild,v 1.3 2013/08/02 01:33:08 zlogene Exp $
+# $Id$
 
 EAPI=5
 

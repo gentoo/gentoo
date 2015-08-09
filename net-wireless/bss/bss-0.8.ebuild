@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bss/bss-0.8.ebuild,v 1.3 2010/06/11 11:00:39 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit toolchain-funcs

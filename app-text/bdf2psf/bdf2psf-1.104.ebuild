@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/bdf2psf/bdf2psf-1.104.ebuild,v 1.7 2015/02/20 13:14:47 armin76 Exp $
+# $Id$
 
 EAPI=5
 

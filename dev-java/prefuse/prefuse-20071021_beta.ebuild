@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/prefuse/prefuse-20071021_beta.ebuild,v 1.5 2014/11/25 08:41:16 ago Exp $
+# $Id$
 
 EAPI=5
 

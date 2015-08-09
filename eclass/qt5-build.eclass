@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt5-build.eclass,v 1.23 2015/08/07 02:05:19 pesa Exp $
+# $Id$
 
 # @ECLASS: qt5-build.eclass
 # @MAINTAINER:

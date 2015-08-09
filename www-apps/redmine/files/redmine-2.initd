@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/redmine/files/redmine-2.initd,v 1.4 2013/09/02 14:13:44 pva Exp $
+# $Id$
 
 RAILS_ENV=${RAILS_ENV:-production}
 REDMINE_DIR=${REDMINE_DIR:-/var/lib/redmine}

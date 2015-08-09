@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozlinguas.eclass,v 1.10 2015/07/16 17:42:19 axs Exp $
+# $Id$
 
 # @ECLASS: mozlinguas.eclass
 # @MAINTAINER:

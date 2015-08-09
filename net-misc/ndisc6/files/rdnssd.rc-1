@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ndisc6/files/rdnssd.rc-1,v 1.1 2010/11/01 03:44:51 xmw Exp $
+# $Id$
 
 depend() {
 	need localmount

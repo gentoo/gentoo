@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlidl/camlidl-1.05-r1.ebuild,v 1.2 2014/01/15 23:57:22 bicatali Exp $
+# $Id$
 
 EAPI=5
 

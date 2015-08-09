@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-systeminfo/files/rc-addon.sh,v 1.1 2008/11/17 17:56:13 hd_brummy Exp $
+# $Id$
 #
 # rc-addon-script for plugin systeminfo
 #

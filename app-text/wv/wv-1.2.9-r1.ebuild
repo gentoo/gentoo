@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/wv/wv-1.2.9-r1.ebuild,v 1.14 2013/09/13 21:45:53 eva Exp $
+# $Id$
 
 EAPI="3"
 

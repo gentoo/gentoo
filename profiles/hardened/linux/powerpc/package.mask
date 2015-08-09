@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/powerpc/package.mask,v 1.13 2011/03/31 08:31:25 scarabeus Exp $
+# $Id$
 
 # Wulf C. Krueger <philantrop@gentoo.org> (22 Sep 2007)
 # Needs OOo.

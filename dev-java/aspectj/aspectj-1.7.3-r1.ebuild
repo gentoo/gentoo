@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/aspectj/aspectj-1.7.3-r1.ebuild,v 1.2 2014/11/01 07:19:12 ercpe Exp $
+# $Id$
 
 EAPI="5"
 

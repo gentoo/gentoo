@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn-shadowlordsdreamcatcherdemon/nwn-shadowlordsdreamcatcherdemon-1.ebuild,v 1.2 2014/04/18 22:36:15 ulm Exp $
+# $Id$
 
 inherit games
 

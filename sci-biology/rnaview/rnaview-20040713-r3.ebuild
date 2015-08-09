@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/rnaview/rnaview-20040713-r3.ebuild,v 1.1 2012/08/03 15:04:03 jlec Exp $
+# $Id$
 
 EAPI=4
 

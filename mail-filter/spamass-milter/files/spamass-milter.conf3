@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamass-milter/files/spamass-milter.conf3,v 1.1 2008/06/15 09:28:02 dertobi123 Exp $
+# $Id$
 
 DAEMON=/usr/sbin/spamass-milter
 SOCKET=/var/run/milter/spamass-milter.sock

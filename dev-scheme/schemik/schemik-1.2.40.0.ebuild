@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/schemik/schemik-1.2.40.0.ebuild,v 1.2 2010/09/16 14:10:03 chiiph Exp $
+# $Id$
 
 EAPI="2"
 

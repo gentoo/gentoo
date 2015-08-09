@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/crosstex/crosstex-0.6.ebuild,v 1.2 2010/06/12 20:25:13 arfrever Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

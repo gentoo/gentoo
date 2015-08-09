@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/c3p0/c3p0-0.9.1.2.ebuild,v 1.4 2010/02/09 14:49:47 josejx Exp $
+# $Id$
 
 EAPI=2
 JAVA_PKG_IUSE="doc source"

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/zemberek/zemberek-2.1.1.ebuild,v 1.8 2012/02/14 11:54:08 naota Exp $
+# $Id$
 
 EAPI=2
 JAVA_PKG_IUSE="source doc test"

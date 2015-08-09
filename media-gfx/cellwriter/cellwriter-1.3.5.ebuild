@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/cellwriter/cellwriter-1.3.5.ebuild,v 1.5 2014/06/08 11:05:50 ago Exp $
+# $Id$
 
 EAPI=5
 inherit gnome2-utils

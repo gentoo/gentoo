@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-compressor/django-compressor-1.4.ebuild,v 1.7 2015/04/09 23:01:12 idella4 Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/disspam/disspam-0.14.ebuild,v 1.10 2014/08/10 21:15:59 slyfox Exp $
+# $Id$
 
 DESCRIPTION="A Perl script that removes spam from POP3 mailboxes based on RBLs"
 HOMEPAGE="http://www.topfx.com/"

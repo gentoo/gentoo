@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/jsmath-extra-dark/jsmath-extra-dark-1.0.ebuild,v 1.2 2009/12/14 17:22:09 bicatali Exp $
+# $Id$
 
 inherit font
 

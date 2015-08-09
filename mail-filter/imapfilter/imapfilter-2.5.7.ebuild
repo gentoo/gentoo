@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/imapfilter/imapfilter-2.5.7.ebuild,v 1.2 2015/07/07 16:58:53 grobian Exp $
+# $Id$
 
 EAPI=5
 

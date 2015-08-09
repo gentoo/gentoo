@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-cddl/freebsd-cddl-10.1.ebuild,v 1.2 2015/06/05 16:43:55 mgorny Exp $
+# $Id$
 
 EAPI=5
 

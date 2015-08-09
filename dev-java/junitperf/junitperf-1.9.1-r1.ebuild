@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/junitperf/junitperf-1.9.1-r1.ebuild,v 1.20 2015/07/11 09:22:10 chewi Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc test source"
 

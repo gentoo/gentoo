@@ -1,12 +1,13 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gkrellm-plugin	d8a7ae1368b3384fb89d1cbcb650415	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=201109e6e1376a6b3636f9ca3c3a9e8a
+SLOT=2
 DEFINED_PHASES=compile install setup
+EAPI=0
 DEPEND=lirc? ( app-misc/lirc ) =app-admin/gkrellm-2* virtual/pkgconfig
 DESCRIPTION=A minimalistic GKrellM2 plugin to control radio tuners
-HOMEPAGE=http://gkrellm.luon.net/gkrellm-radio.php
-IUSE=lirc
-KEYWORDS=ppc sparc x86
 LICENSE=GPL-2
-RDEPEND=lirc? ( app-misc/lirc ) =app-admin/gkrellm-2*
-SLOT=2
+IUSE=lirc
 SRC_URI=http://gkrellm.luon.net/files/gkrellm-radio-2.0.4.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gkrellm-plugin	4599c73f33aed9a9988a7031f60d2ed8	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=9659d6a0941b1272b5a4960334a66fc7
+KEYWORDS=ppc sparc x86
+HOMEPAGE=http://gkrellm.luon.net/gkrellm-radio.php
+RDEPEND=lirc? ( app-misc/lirc ) =app-admin/gkrellm-2*

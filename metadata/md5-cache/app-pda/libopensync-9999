@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f58f5afc8dbddf9ee4ec30571ea77593
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare test unpack
+EAPI=3
 DEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.12:2 dev-libs/libxml2 dev-libs/libxslt virtual/pkgconfig doc? ( app-doc/doxygen media-gfx/graphviz ) python? ( >=dev-lang/swig-1.3.17 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=OpenSync synchronisation framework library
-EAPI=3
-HOMEPAGE=http://www.opensync.org/
-IUSE=debug doc python
-KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
 LICENSE=LGPL-2.1
-RDEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.12:2 dev-libs/libxml2 dev-libs/libxslt
+IUSE=debug doc python
 RESTRICT=test
-SLOT=0
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=f9605b1303899da56c56e803e86aa01d
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
+HOMEPAGE=http://www.opensync.org/
+RDEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.12:2 dev-libs/libxml2 dev-libs/libxslt

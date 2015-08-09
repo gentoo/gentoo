@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircmap/ircmap-0.99.ebuild,v 1.13 2011/05/15 01:25:56 binki Exp $
+# $Id$
 
 DESCRIPTION="Scripts to treate diagrams of IRC networks using the LINKS command"
 HOMEPAGE="http://pasky.or.cz/~pasky/irc/"

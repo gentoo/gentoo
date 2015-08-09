@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/l7-protocols/l7-protocols-2009.05.28.ebuild,v 1.7 2014/03/14 10:15:59 ago Exp $
+# $Id$
 
 inherit eutils fixheadtails toolchain-funcs
 

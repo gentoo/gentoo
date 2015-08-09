@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-evdev/xf86-input-evdev-2.9.2.ebuild,v 1.1 2015/03/30 12:34:56 chithanh Exp $
+# $Id$
 
 EAPI=5
 inherit linux-info xorg-2

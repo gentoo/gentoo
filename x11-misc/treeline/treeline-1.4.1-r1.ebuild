@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-1.4.1-r1.ebuild,v 1.7 2015/04/08 17:27:16 mgorny Exp $
+# $Id$
 
 EAPI=5
 

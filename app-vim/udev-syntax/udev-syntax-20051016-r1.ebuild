@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/udev-syntax/udev-syntax-20051016-r1.ebuild,v 1.6 2011/05/22 23:43:19 josejx Exp $
+# $Id$
 
 inherit vim-plugin eutils
 

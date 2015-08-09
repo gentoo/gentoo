@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/cado-nfs/cado-nfs-2.0.ebuild,v 1.2 2014/01/23 02:45:28 patrick Exp $
+# $Id$
 
 EAPI=4
 DESCRIPTION="Number Field Sieve (NFS) implementation for factoring integers"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kdiff3/kdiff3-0.9.97-r2.ebuild,v 1.5 2015/05/05 09:19:38 voyageur Exp $
+# $Id$
 
 EAPI=5
 

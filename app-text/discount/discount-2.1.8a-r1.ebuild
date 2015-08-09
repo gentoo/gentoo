@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/discount/discount-2.1.8a-r1.ebuild,v 1.1 2015/07/13 02:01:14 binki Exp $
+# $Id$
 
 EAPI=5
 

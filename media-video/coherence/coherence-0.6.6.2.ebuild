@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/coherence/coherence-0.6.6.2.ebuild,v 1.12 2014/04/06 10:45:13 eva Exp $
+# $Id$
 
 EAPI=2
 PYTHON_DEPEND="2:2.5"

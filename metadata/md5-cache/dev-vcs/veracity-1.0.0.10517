@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=9e775bc5cef6f9de5fdc46de28eeb2ab
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test
+EAPI=4
 DEPEND=dev-libs/icu net-misc/curl dev-libs/nspr sys-apps/util-linux dev-db/sqlite:3 sys-libs/zlib virtual/pkgconfig test? ( app-arch/unzip ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A modern and featureful DVCS (distributed version control system)
-EAPI=4
-HOMEPAGE=http://veracity-scm.com/
-IUSE=test
-KEYWORDS=~amd64 ~x86 ~x86-linux
 LICENSE=Apache-2.0
-RDEPEND=dev-libs/icu net-misc/curl dev-libs/nspr sys-apps/util-linux dev-db/sqlite:3 sys-libs/zlib
+IUSE=test
 RESTRICT=test
-SLOT=0
 SRC_URI=http://download.sourcegear.com/Veracity/release/1.0.0.10517/veracity-source-1.0.0.10517.tar.gz ftp://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz http://ftp.mozilla.org/pub/mozilla.org/js/js-1.8.0-rc1.tar.gz
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=da71cc44f49f09a8bf477d1051016ffd
+KEYWORDS=~amd64 ~x86 ~x86-linux
+HOMEPAGE=http://veracity-scm.com/
+RDEPEND=dev-libs/icu net-misc/curl dev-libs/nspr sys-apps/util-linux dev-db/sqlite:3 sys-libs/zlib

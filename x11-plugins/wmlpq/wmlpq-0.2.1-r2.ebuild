@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmlpq/wmlpq-0.2.1-r2.ebuild,v 1.2 2012/09/05 08:19:40 jlec Exp $
+# $Id$
 
 inherit eutils flag-o-matic toolchain-funcs
 

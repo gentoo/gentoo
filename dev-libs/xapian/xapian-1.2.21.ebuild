@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xapian/xapian-1.2.21.ebuild,v 1.1 2015/05/23 14:59:08 blueness Exp $
+# $Id$
 
 EAPI="5"
 

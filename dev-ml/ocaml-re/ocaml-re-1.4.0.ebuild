@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-re/ocaml-re-1.4.0.ebuild,v 1.1 2015/05/16 09:37:28 aballier Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/gasgano/gasgano-2.4.3-r2.ebuild,v 1.1 2012/12/07 17:14:23 bicatali Exp $
+# $Id$
 
 EAPI=4
 inherit eutils java-pkg-2

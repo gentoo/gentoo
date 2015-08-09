@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/markdown-mode/markdown-mode-2.0.ebuild,v 1.2 2014/04/07 22:42:01 bicatali Exp $
+# $Id$
 
 EAPI=5
 

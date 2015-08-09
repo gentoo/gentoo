@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-udf-ipv6/mysql-udf-ipv6-0.4.ebuild,v 1.1 2011/10/19 12:04:55 sbriesen Exp $
+# $Id$
 
 EAPI=4
 

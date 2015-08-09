@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-fu/gtk2-fu-0.110.0-r2.ebuild,v 1.3 2015/06/13 22:21:28 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

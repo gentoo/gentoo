@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-omapfb/xf86-video-omapfb-0.1.1.1_p1.ebuild,v 1.2 2015/03/14 14:07:28 maekke Exp $
+# $Id$
 
 EAPI="5"
 

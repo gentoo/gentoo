@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/fakenes/fakenes-0.5.8-r2.ebuild,v 1.4 2013/02/24 12:14:24 ago Exp $
+# $Id$
 
 EAPI=5
 

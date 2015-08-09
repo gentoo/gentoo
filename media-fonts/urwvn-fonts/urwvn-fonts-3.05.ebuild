@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/urwvn-fonts/urwvn-fonts-3.05.ebuild,v 1.7 2015/02/21 17:24:15 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit font

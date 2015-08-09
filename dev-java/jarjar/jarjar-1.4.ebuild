@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jarjar/jarjar-1.4.ebuild,v 1.4 2015/05/27 09:47:54 monsieurp Exp $
+# $Id$
 EAPI=5
 
 JAVA_PKG_IUSE="doc source test"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/jmeter/jmeter-2.0.1-r5.ebuild,v 1.2 2014/08/05 07:59:55 patrick Exp $
+# $Id$
 
 EAPI=5
 

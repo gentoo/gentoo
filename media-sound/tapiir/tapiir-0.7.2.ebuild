@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/tapiir/tapiir-0.7.2.ebuild,v 1.9 2011/03/20 20:06:58 jlec Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

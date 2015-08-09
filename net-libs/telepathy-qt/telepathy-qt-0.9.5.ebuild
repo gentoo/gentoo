@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/telepathy-qt/telepathy-qt-0.9.5.ebuild,v 1.8 2015/05/14 16:17:13 pesa Exp $
+# $Id$
 
 EAPI=5
 

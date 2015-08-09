@@ -1,7 +1,7 @@
 #:CoLo:#
 # Example configuration file for CoLo, version 1.16 or above.
 # 
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/colo/files/menu.colo,v 1.1 2005/12/07 07:33:43 redhatter Exp $
+# $Id$
 
 # Turn on the serial port; if possible.  - means to ignore the error and keep
 # going.  Without this, execution would halt here if this command failed (e.g.

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-2.3.1-r1.ebuild,v 1.12 2012/07/29 16:52:55 armin76 Exp $
+# $Id$
 
 EAPI="3"
 

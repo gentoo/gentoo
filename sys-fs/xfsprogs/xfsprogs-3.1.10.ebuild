@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/xfsprogs-3.1.10.ebuild,v 1.12 2013/05/15 03:59:06 vapier Exp $
+# $Id$
 
 EAPI="4"
 

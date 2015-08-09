@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libg15render/libg15render-9999.ebuild,v 1.1 2012/10/12 20:16:27 robbat2 Exp $
+# $Id$
 
 EAPI=4
 ESVN_PROJECT=g15tools/trunk

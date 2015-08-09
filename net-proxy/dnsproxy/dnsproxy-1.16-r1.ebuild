@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dnsproxy/dnsproxy-1.16-r1.ebuild,v 1.6 2013/03/04 16:41:51 dastergon Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep-2.eclass,v 1.7 2012/05/29 08:05:05 phajdan.jr Exp $
+# $Id$
 
 # @ECLASS: gnustep-2.eclass
 # @MAINTAINER:

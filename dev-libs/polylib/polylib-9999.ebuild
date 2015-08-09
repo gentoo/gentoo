@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/polylib/polylib-9999.ebuild,v 1.2 2011/09/21 08:22:33 mgorny Exp $
+# $Id$
 
 EGIT_REPO_URI="git://repo.or.cz/${PN}.git
 	http://repo.or.cz/r/${PN}.git"

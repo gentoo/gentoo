@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/bcron/bcron-0.09.ebuild,v 1.13 2011/04/20 17:52:34 ulm Exp $
+# $Id$
 
 CRON_SYSTEM_CRONTAB="yes"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/joblib/joblib-0.8.1.ebuild,v 1.1 2014/06/15 04:09:28 idella4 Exp $
+# $Id$
 
 EAPI=5
 

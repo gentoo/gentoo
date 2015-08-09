@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/verne-backgrounds/verne-backgrounds-15.91.0.1.ebuild,v 1.2 2013/02/07 23:09:32 ulm Exp $
+# $Id$
 
 EAPI=3
 

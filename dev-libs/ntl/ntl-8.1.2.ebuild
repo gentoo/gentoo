@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ntl/ntl-8.1.2.ebuild,v 1.1 2015/03/26 10:19:22 tomka Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs eutils multilib flag-o-matic

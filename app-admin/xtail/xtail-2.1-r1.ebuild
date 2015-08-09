@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/xtail/xtail-2.1-r1.ebuild,v 1.6 2012/11/22 21:19:54 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/cb2bib/cb2bib-1.5.0.ebuild,v 1.1 2014/12/25 15:18:16 pesa Exp $
+# $Id$
 
 EAPI=5
 

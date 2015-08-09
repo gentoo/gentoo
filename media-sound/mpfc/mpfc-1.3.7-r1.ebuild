@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpfc/mpfc-1.3.7-r1.ebuild,v 1.9 2010/10/25 09:06:15 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit autotools eutils

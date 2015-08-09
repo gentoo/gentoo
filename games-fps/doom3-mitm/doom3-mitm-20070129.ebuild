@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-mitm/doom3-mitm-20070129.ebuild,v 1.4 2014/04/03 19:56:55 ulm Exp $
+# $Id$
 
 EAPI=2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-15.0.2.164.ebuild,v 1.1 2015/02/12 08:22:40 jlec Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/lwm/lwm-1.2.1.ebuild,v 1.8 2008/08/22 09:11:27 omp Exp $
+# $Id$
 
 IUSE=""
 

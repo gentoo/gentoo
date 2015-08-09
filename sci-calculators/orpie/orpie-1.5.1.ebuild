@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/orpie/orpie-1.5.1.ebuild,v 1.9 2010/06/23 20:03:22 bicatali Exp $
+# $Id$
 
 DESCRIPTION="A fullscreen RPN calculator for the console"
 HOMEPAGE="http://pessimization.com/software/orpie/"

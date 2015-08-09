@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/ocfs2-tools/files/ocfs2.confd,v 1.1 2011/08/31 17:15:18 alexxy Exp $
+# $Id$
 
 # Put your cluster names here, separated by space, ie.
 # OCFS2_CLUSTER="cluster1 admincluster cluster2" 

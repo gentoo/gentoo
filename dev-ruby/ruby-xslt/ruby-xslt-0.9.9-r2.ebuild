@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-xslt/ruby-xslt-0.9.9-r2.ebuild,v 1.5 2014/04/24 16:50:56 mrueg Exp $
+# $Id$
 
 EAPI=5
 USE_RUBY="ruby19 ruby20"

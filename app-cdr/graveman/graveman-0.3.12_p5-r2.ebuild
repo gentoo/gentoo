@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/graveman/graveman-0.3.12_p5-r2.ebuild,v 1.5 2014/10/19 23:47:51 blueness Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

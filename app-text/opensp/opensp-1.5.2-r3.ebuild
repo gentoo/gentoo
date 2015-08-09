@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/opensp/opensp-1.5.2-r3.ebuild,v 1.18 2014/06/25 19:55:40 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic

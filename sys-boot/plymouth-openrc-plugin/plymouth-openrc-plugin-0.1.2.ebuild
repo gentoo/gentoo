@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/plymouth-openrc-plugin/plymouth-openrc-plugin-0.1.2.ebuild,v 1.9 2013/04/29 10:43:43 lxnay Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux-standalone/amd64/make.defaults,v 1.2 2015/01/03 03:32:53 redlizard Exp $
+# $Id$
 
 ARCH="amd64"
 CHOST="x86_64-pc-linux-gnu"

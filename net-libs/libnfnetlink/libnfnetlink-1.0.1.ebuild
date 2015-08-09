@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnfnetlink/libnfnetlink-1.0.1.ebuild,v 1.9 2014/08/01 18:48:38 tgall Exp $
+# $Id$
 
 EAPI=4
 inherit linux-info eutils

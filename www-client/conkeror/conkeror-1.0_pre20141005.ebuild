@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/conkeror/conkeror-1.0_pre20141005.ebuild,v 1.1 2014/10/11 11:42:04 ulm Exp $
+# $Id$
 
 EAPI=5
 

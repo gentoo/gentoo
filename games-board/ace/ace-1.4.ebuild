@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/ace/ace-1.4.ebuild,v 1.9 2014/09/12 02:18:18 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils games

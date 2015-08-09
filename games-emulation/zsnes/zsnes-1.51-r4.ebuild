@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/zsnes/zsnes-1.51-r4.ebuild,v 1.13 2015/07/08 05:36:10 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools flag-o-matic toolchain-funcs multilib pax-utils games

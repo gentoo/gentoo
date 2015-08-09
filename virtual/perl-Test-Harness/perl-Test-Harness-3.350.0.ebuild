@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Test-Harness/perl-Test-Harness-3.350.0.ebuild,v 1.1 2015/06/12 22:25:14 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

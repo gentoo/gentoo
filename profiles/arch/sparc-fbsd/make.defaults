@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc-fbsd/make.defaults,v 1.2 2012/06/16 11:44:12 jlec Exp $
+# $Id$
 # System-wide defaults for the G/FBSD Portage system
 
 ARCH="sparc-fbsd"

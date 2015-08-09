@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/aspell-0.60.6.1-r1.ebuild,v 1.10 2015/04/14 10:52:32 ago Exp $
+# $Id$
 
 EAPI=5
 

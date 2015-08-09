@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/radeox/radeox-1.0_beta2-r1.ebuild,v 1.5 2007/07/22 19:43:46 philantrop Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

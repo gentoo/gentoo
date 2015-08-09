@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/clustalw-mpi/clustalw-mpi-0.13-r1.ebuild,v 1.1 2011/06/19 10:00:09 jlec Exp $
+# $Id$
 
 EAPI=4
 

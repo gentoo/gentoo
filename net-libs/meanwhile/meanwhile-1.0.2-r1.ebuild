@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/meanwhile/meanwhile-1.0.2-r1.ebuild,v 1.9 2013/03/14 07:09:39 ago Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

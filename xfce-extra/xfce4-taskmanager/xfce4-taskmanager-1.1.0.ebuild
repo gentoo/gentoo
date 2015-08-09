@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-taskmanager/xfce4-taskmanager-1.1.0.ebuild,v 1.8 2015/08/06 14:59:17 zlogene Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

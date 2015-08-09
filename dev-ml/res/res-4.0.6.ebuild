@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/res/res-4.0.6.ebuild,v 1.1 2014/10/29 09:48:19 aballier Exp $
+# $Id$
 
 EAPI=5
 

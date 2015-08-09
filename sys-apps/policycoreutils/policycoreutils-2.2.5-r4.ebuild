@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/policycoreutils/policycoreutils-2.2.5-r4.ebuild,v 1.2 2014/05/10 12:54:21 swift Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=8e678fd99170733f45adc29151161b30
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
 DEPEND=dev-libs/expat media-libs/flac >=media-libs/libsdl-1.2.10 media-libs/sdl-ttf sys-libs/zlib X? ( x11-libs/libX11 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) app-arch/unzip virtual/pkgconfig X? ( x11-proto/xineramaproto )
 DESCRIPTION=Set of development tools shared between sdlmame and sdlmess
-EAPI=5
-HOMEPAGE=http://mamedev.org/
-IUSE=X debug
-KEYWORDS=amd64 ~ppc x86
 LICENSE=XMAME
-RDEPEND=dev-libs/expat media-libs/flac >=media-libs/libsdl-1.2.10 media-libs/sdl-ttf sys-libs/zlib X? ( x11-libs/libX11 ) games-misc/games-envd
+IUSE=X debug
 REQUIRED_USE=debug? ( X )
-SLOT=0
 SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/sdlmame0148u1_diff.zip http://dev.gentoo.org/~hasufell/distfiles/mame0148s.zip
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=85393f951bc23b599d2c057d149f5c4b
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://mamedev.org/
+RDEPEND=dev-libs/expat media-libs/flac >=media-libs/libsdl-1.2.10 media-libs/sdl-ttf sys-libs/zlib X? ( x11-libs/libX11 ) games-misc/games-envd

@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/checkservice/checkservice-1.2.0.ebuild,v 1.4 2006/02/13 15:09:15 mcummings Exp $
+# $Id$
 
 DESCRIPTION="Check the status of services running on local/remote machines"
 HOMEPAGE="http://www.linvision.com/checkservice/"

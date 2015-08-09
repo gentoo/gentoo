@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/schroot/schroot-1.6.10-r3.ebuild,v 1.1 2015/08/06 00:00:43 jcallen Exp $
+# $Id$
 
 EAPI="5"
 

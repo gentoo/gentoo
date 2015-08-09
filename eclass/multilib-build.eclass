@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/multilib-build.eclass,v 1.66 2015/06/26 20:43:13 mgorny Exp $
+# $Id$
 
 # @ECLASS: multilib-build.eclass
 # @MAINTAINER:

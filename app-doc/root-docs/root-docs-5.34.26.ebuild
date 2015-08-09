@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/root-docs/root-docs-5.34.26.ebuild,v 1.4 2015/06/14 19:25:46 bircoph Exp $
+# $Id$
 
 EAPI=5
 

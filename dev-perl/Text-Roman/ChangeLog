@@ -1,9 +1,0 @@
-# ChangeLog for dev-perl/Text-Roman
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Roman/ChangeLog,v 1.1 2015/04/23 00:40:49 mrueg Exp $
-
-*Text-Roman-3.500.0 (23 Apr 2015)
-
-  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +Text-Roman-3.500.0.ebuild,
-  +metadata.xml:
-  Initial version.

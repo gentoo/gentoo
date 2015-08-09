@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/astroid/astroid-1.3.7.ebuild,v 1.2 2015/07/27 20:36:24 jlec Exp $
+# $Id$
 
 EAPI=5
 

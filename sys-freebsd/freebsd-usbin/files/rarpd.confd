@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/rarpd.confd,v 1.1 2006/11/19 17:02:29 flameeyes Exp $
+# $Id$
 
 # Configuration file for /etc/init.d/rarpd
 

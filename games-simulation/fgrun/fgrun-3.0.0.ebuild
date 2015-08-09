@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/fgrun/fgrun-3.0.0.ebuild,v 1.1 2014/08/13 00:23:06 reavertm Exp $
+# $Id$
 
 EAPI=5
 

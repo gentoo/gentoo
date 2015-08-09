@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/gfifteen/gfifteen-1.0.3.ebuild,v 1.4 2015/01/19 16:35:46 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnome2-utils games

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/uget/uget-1.10.3-r1.ebuild,v 1.3 2013/11/05 21:04:22 wired Exp $
+# $Id$
 
 EAPI="4"
 

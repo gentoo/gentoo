@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/package.use,v 1.45 2015/06/10 12:40:51 floppym Exp $
+# $Id$
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
 # Set reasonable default toolkit for all desktops to prevent emerge error

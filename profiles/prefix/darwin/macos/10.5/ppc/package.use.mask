@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.5/ppc/package.use.mask,v 1.10 2013/06/13 18:24:25 ulm Exp $
+# $Id$
 
 
 # flag returns compile errors

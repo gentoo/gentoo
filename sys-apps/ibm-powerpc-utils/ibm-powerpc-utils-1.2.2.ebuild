@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ibm-powerpc-utils/ibm-powerpc-utils-1.2.2.ebuild,v 1.2 2010/03/22 21:46:22 ranger Exp $
+# $Id$
 
 inherit eutils
 

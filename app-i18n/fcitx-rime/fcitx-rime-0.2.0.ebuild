@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/fcitx-rime/fcitx-rime-0.2.0.ebuild,v 1.4 2015/04/19 11:46:20 blueness Exp $
+# $Id$
 
 EAPI=5
 

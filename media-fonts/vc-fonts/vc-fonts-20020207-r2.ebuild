@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/vc-fonts/vc-fonts-20020207-r2.ebuild,v 1.8 2007/12/11 10:13:39 vapier Exp $
+# $Id$
 
 inherit font font-ebdftopcf
 

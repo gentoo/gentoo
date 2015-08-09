@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/openipmi/openipmi-2.0.18.ebuild,v 1.4 2014/01/29 13:36:56 jer Exp $
+# $Id$
 
 inherit eutils autotools python
 

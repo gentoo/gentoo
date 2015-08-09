@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/macopix/macopix-1.7.4.ebuild,v 1.9 2014/08/10 20:02:56 slyfox Exp $
+# $Id$
 
 EAPI=2
 DESCRIPTION="MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system"

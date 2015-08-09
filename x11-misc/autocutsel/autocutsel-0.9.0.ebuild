@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/autocutsel/autocutsel-0.9.0.ebuild,v 1.8 2012/06/23 23:31:39 xmw Exp $
+# $Id$
 
 DESCRIPTION="Synchronise the two copy/paste buffers mainly used by X applications"
 HOMEPAGE="http://www.nongnu.org/autocutsel/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/opendnssec/files/opendnssec.confd,v 1.5 2013/07/24 09:38:18 mschiff Exp $
+# $Id$
 
 # Variables containing default binaries used in the opendnssec
 # initscript. You can alter them to another applications/paths

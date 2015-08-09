@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsat/nsat-1.5-r3.ebuild,v 1.3 2014/08/02 11:45:08 armin76 Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils toolchain-funcs

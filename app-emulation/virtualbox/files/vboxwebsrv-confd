@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/virtualbox/files/vboxwebsrv-confd,v 1.2 2012/03/16 22:36:03 hwoarang Exp $
+# $Id$
 
 # The host to bind to (defaults to "localhost").
 VBOXWEBSRV_HOST="localhost"

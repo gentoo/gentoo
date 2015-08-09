@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/lightweight-cvs-toolkit/lightweight-cvs-toolkit-1.ebuild,v 1.1 2015/02/08 08:55:56 mgorny Exp $
+# $Id$
 
 EAPI=5
 

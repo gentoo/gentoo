@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/dssi/dssi-1.1.1.ebuild,v 1.7 2013/03/02 21:42:29 hwoarang Exp $
+# $Id$
 
 EAPI=2
 inherit autotools

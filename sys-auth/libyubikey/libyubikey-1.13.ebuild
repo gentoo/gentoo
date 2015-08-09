@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/libyubikey/libyubikey-1.13.ebuild,v 1.1 2015/04/14 07:36:29 jlec Exp $
+# $Id$
 
 EAPI=5
 

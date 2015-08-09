@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/userspace-rcu/userspace-rcu-0.8.6.ebuild,v 1.2 2015/05/15 13:11:31 blueness Exp $
+# $Id$
 
 EAPI=5
 

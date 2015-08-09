@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/sml-mode/sml-mode-6.4.ebuild,v 1.5 2013/12/21 16:12:46 ago Exp $
+# $Id$
 
 EAPI=5
 NEED_EMACS=24

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gkrellm-plugin.eclass,v 1.4 2012/05/02 18:31:42 jdhore Exp $
+# $Id$
 
 #
 # Original Author: Jim Ramsay <lack@gentoo.org>

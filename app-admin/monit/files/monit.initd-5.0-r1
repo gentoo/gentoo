@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-admin/monit/files/monit.initd-5.0-r1,v 1.2 2011/12/31 16:28:50 idl0r Exp $
+# $Id$
 
 extra_commands="configtest"
 extra_started_commands="reload"

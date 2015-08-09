@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/wis-go7007/wis-go7007-0.9.8-r3.ebuild,v 1.5 2013/01/21 22:34:15 ssuominen Exp $
+# $Id$
 
 inherit eutils linux-mod udev
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/KochMorse/KochMorse-0.99.6.ebuild,v 1.4 2011/03/11 18:39:07 arfrever Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/pacemaker/files/pacemaker.initd,v 1.2 2013/01/18 11:51:54 ultrabug Exp $
+# $Id$
 
 PIDFILE=/var/run/pacemaker.pid
 

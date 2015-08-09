@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/apcupsd/files/apcupsd.powerfail.init,v 1.2 2009/03/22 15:22:28 flameeyes Exp $
+# $Id$
 
 description='Signal the UPS to kill power in a power failure condition'
 

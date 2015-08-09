@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/xor-analyze/xor-analyze-0.5.ebuild,v 1.2 2011/03/21 00:11:03 vapier Exp $
+# $Id$
 
 inherit toolchain-funcs
 

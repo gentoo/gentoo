@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmemcache/libmemcache-1.4.0_rc2-r1.ebuild,v 1.13 2011/11/20 09:39:09 xarthisius Exp $
+# $Id$
 
 EAPI=3
 inherit autotools eutils toolchain-funcs

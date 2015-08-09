@@ -1,11 +1,11 @@
+_eclasses_=rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5728285dba334b2bb5b7f6ac3c5f5cd4
+SLOT=0
 DEFINED_PHASES=prepare unpack
+EAPI=5
 DEPEND=>=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=Print out increasing, decreasing, random, or redundant data
-EAPI=5
-HOMEPAGE=http://freshmeat.net/projects/bsd-jot/
-KEYWORDS=amd64 ~ppc x86
 LICENSE=BSD
-SLOT=0
 SRC_URI=http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=5f632633aff348b04df53a4784c3e124
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://freshmeat.net/projects/bsd-jot/

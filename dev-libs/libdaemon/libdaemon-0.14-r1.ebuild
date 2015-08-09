@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdaemon/libdaemon-0.14-r1.ebuild,v 1.9 2014/07/11 21:46:04 tgall Exp $
+# $Id$
 
 EAPI=4
 

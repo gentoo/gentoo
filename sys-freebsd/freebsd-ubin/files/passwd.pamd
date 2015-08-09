@@ -1,5 +1,5 @@
 #
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/files/passwd.pamd,v 1.1 2006/04/01 16:43:51 flameeyes Exp $
+# $Id$
 #
 # PAM configuration for the "passwd" service
 #

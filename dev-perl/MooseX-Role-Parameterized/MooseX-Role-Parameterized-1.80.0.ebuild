@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Role-Parameterized/MooseX-Role-Parameterized-1.80.0.ebuild,v 1.2 2015/03/15 18:15:19 zlogene Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2f17c76855d1aa717bfb88186f97b45d
+SLOT=0
 DEFINED_PHASES=prepare unpack
+EAPI=5
 DEPEND=app-text/xmlto >=sys-libs/libsepol-9999 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=SELinux Common Intermediate Language (CIL) Compiler
-EAPI=5
-HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/libsepol-9999
 RESTRICT=test
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=97aaabb64f9594b04ceced2cdd7567d6
+HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
+RDEPEND=>=sys-libs/libsepol-9999

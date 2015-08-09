@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/cpu_flags_x86.desc,v 1.4 2015/01/29 22:10:18 mgorny Exp $
+# $Id$
 
 # Whenever the flag name does not correspond to /proc/cpuinfo flags,
 # please put the cpuinfo flag in square brackets. If more than one flag

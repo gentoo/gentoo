@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/dlm/dlm-2.03.09.ebuild,v 1.5 2009/09/06 21:16:27 robbat2 Exp $
+# $Id$
 
 inherit eutils linux-mod versionator
 

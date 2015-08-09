@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/qprint/qprint-1.0.ebuild,v 1.8 2012/10/23 23:02:28 ulm Exp $
+# $Id$
 
 DESCRIPTION="MIME quoted-printable data encoding and decoding utility"
 HOMEPAGE="http://www.fourmilab.ch/webtools/qprint/"

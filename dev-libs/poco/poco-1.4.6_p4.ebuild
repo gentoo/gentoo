@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/poco/poco-1.4.6_p4.ebuild,v 1.4 2015/01/08 20:40:46 maekke Exp $
+# $Id$
 
 EAPI="5"
 

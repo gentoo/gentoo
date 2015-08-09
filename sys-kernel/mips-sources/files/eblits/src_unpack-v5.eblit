@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/src_unpack-v5.eblit,v 1.1 2015/02/16 09:48:49 kumba Exp $
+# $Id$
 
 # Eblit to handle src_unpack.
 

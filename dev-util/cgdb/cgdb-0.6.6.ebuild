@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cgdb/cgdb-0.6.6.ebuild,v 1.6 2012/10/14 20:10:39 maekke Exp $
+# $Id$
 
 EAPI=4
 

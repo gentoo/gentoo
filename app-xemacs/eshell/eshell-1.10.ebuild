@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/eshell/eshell-1.10.ebuild,v 1.3 2007/06/03 18:21:09 graaff Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

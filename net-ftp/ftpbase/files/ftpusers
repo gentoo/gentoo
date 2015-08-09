@@ -1,6 +1,6 @@
 # Provided by ftpbase (dont remove this line!)
 # /etc/ftpusers: list of users disallowed FTP access
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftpbase/files/ftpusers,v 1.1 2005/06/28 14:52:26 uberlord Exp $
+# $Id$
 
 halt
 operator

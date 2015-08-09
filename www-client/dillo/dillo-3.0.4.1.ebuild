@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/dillo/dillo-3.0.4.1.ebuild,v 1.1 2014/12/27 10:17:45 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib toolchain-funcs

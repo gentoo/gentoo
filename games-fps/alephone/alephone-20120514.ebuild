@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/alephone/alephone-20120514.ebuild,v 1.1 2013/02/18 20:40:12 hasufell Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils games

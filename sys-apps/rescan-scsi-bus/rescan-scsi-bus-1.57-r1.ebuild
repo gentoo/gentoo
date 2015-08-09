@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rescan-scsi-bus/rescan-scsi-bus-1.57-r1.ebuild,v 1.13 2015/08/05 12:04:13 zlogene Exp $
+# $Id$
 
 EAPI=5
 

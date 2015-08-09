@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/htmltidy/htmltidy-20090325-r1.ebuild,v 1.4 2012/05/29 17:01:06 aballier Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xnoise/xnoise-9999.ebuild,v 1.18 2014/03/22 12:22:16 angelos Exp $
+# $Id$
 
 EAPI=4
 VALA_MIN_API_VERSION=0.20

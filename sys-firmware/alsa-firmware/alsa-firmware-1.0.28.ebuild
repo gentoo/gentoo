@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-firmware/alsa-firmware/alsa-firmware-1.0.28.ebuild,v 1.3 2014/11/08 18:53:23 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit udev

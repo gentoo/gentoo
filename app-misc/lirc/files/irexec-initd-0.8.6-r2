@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/files/irexec-initd-0.8.6-r2,v 1.1 2009/11/15 10:04:21 zzam Exp $
+# $Id$
 
 : ${IREXEC_USER:=root}
 

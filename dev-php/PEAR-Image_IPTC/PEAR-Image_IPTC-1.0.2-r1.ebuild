@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Image_IPTC/PEAR-Image_IPTC-1.0.2-r1.ebuild,v 1.15 2007/12/06 00:31:56 jokey Exp $
+# $Id$
 
 inherit php-pear-r1
 

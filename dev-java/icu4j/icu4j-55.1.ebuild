@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icu4j/icu4j-55.1.ebuild,v 1.2 2015/08/04 09:58:38 monsieurp Exp $
+# $Id$
 
 EAPI="5"
 

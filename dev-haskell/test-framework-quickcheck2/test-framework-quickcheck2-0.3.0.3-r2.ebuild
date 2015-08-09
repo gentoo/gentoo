@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/test-framework-quickcheck2/test-framework-quickcheck2-0.3.0.3-r2.ebuild,v 1.1 2015/04/06 00:48:27 gienah Exp $
+# $Id$
 
 EAPI=5
 

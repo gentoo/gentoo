@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/grun/grun-0.9.3-r1.ebuild,v 1.9 2014/09/03 08:23:00 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

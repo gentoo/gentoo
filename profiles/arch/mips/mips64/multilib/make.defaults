@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/mips64/multilib/make.defaults,v 1.10 2013/07/30 01:33:44 mattst88 Exp $
+# $Id$
 
 PROFILE_ARCH="mips64"
 

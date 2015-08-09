@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/ja-ipafonts/ja-ipafonts-003.02-r1.ebuild,v 1.7 2014/04/04 10:27:19 hattya Exp $
+# $Id$
 
 EAPI="5"
 

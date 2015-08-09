@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/scikits_optimization/scikits_optimization-0.3.ebuild,v 1.4 2015/04/08 18:49:16 mgorny Exp $
+# $Id$
 
 EAPI=5
 

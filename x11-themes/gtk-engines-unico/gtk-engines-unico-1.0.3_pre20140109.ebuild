@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-unico/gtk-engines-unico-1.0.3_pre20140109.ebuild,v 1.3 2015/06/26 09:24:34 ago Exp $
+# $Id$
 
 EAPI=5
 

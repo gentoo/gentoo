@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_rpaf/mod_rpaf-0.6.ebuild,v 1.4 2012/10/12 08:30:58 patrick Exp $
+# $Id$
 
 inherit apache-module
 

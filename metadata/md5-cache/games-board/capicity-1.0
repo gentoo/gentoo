@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=da03eb10913c5da7f576b4f8362ba266
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+EAPI=5
 DEPEND=dev-qt/qtcore:4 dev-qt/qtscript:4 !dedicated? ( dev-qt/qtgui:4 ) >=sys-apps/sed-4
 DESCRIPTION=A monopd compatible boardgame to play Monopoly-like games (previously named capitalism)
-EAPI=5
-HOMEPAGE=http://linux-ecke.de/CapiCity/
-IUSE=dedicated
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=dev-qt/qtcore:4 dev-qt/qtscript:4 !dedicated? ( dev-qt/qtgui:4 ) games-misc/games-envd
-SLOT=0
+IUSE=dedicated
 SRC_URI=dedicated? ( mirror://sourceforge/project/capitalism/Capi%20City/1.0/Capid_1.0.tar.gz ) !dedicated? ( mirror://sourceforge/project/capitalism/Capi%20City/1.0/CapiCity_1.0.tar.gz )
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=33827f0d902cd024cdacd4f09eecf595
+KEYWORDS=amd64 x86
+HOMEPAGE=http://linux-ecke.de/CapiCity/
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtscript:4 !dedicated? ( dev-qt/qtgui:4 ) games-misc/games-envd

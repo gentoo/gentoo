@@ -1,13 +1,13 @@
+_eclasses_=gnustep-base	707840264bcc460d4e700dcc8c6aa746	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=76d797dc9e304307b51a2df8022e5c4d
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup
+EAPI=5
 DEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=sys-devel/make-3.75 libobjc2? ( gnustep-base/libobjc2 >=sys-devel/clang-2.9 ) !libobjc2? ( >=sys-devel/gcc-3.3:=[objc] !!gnustep-base/libobjc2 )
 DESCRIPTION=GNUstep Makefile Package
-EAPI=5
-HOMEPAGE=http://www.gnustep.org
-IUSE=libobjc2 native-exceptions debug doc
-KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
-RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=sys-devel/make-3.75 libobjc2? ( gnustep-base/libobjc2 >=sys-devel/clang-2.9 ) !libobjc2? ( >=sys-devel/gcc-3.3:=[objc] !!gnustep-base/libobjc2 )
-SLOT=0
+IUSE=libobjc2 native-exceptions debug doc
 SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-2.6.6.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnustep-base	87d599af9a09a523d6d233e462f3758e	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=fa5775e85bc08196a6d83ccd29b7ee5b
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+HOMEPAGE=http://www.gnustep.org
+RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=sys-devel/make-3.75 libobjc2? ( gnustep-base/libobjc2 >=sys-devel/clang-2.9 ) !libobjc2? ( >=sys-devel/gcc-3.3:=[objc] !!gnustep-base/libobjc2 )

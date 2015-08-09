@@ -1,5 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/make.defaults,v 1.27 2014/09/16 17:25:37 chithanh Exp $
+# $Id$
 
 USE="a52 aac acpi alsa bluetooth branding cairo cdda cdr consolekit cups dbus dri dts dvd dvdr emboss encode exif fam firefox flac gif glamor gpm gtk jpeg lcms ldap libnotify mad mng mp3 mp4 mpeg ogg opengl pango pdf png policykit ppds qt3support qt4 sdl spell startup-notification svg tiff truetype vorbis udev udisks unicode upower usb wxwidgets X xcb x264 xml xv xvid"

@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2ecb3a7b84f3c895b33bcfceda0e2e71
+SLOT=0
 DEFINED_PHASES=compile install prepare setup
+EAPI=5
 DEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae dev-lang/cfortran virtual/latex-base x11-misc/imake x11-misc/makedepend virtual/fortran
 DESCRIPTION=CERN's Physics Analysis Workstation data analysis program
-EAPI=5
-HOMEPAGE=https://paw.web.cern.ch/paw/
-KEYWORDS=~amd64 ~hppa ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2 LGPL-2 BSD
-RDEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae virtual/fortran
-SLOT=0
 SRC_URI=mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2.orig.tar.gz mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2-9.debian.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c10479c94877d7024bfaa88a225b93e9
+KEYWORDS=~amd64 ~hppa ~sparc ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=https://paw.web.cern.ch/paw/
+RDEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae virtual/fortran

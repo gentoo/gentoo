@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/parsedatetime
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/parsedatetime/ChangeLog,v 1.1 2015/08/08 12:49:45 mrueg Exp $
-
-*parsedatetime-1.5 (08 Aug 2015)
-
-  08 Aug 2015; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
-  +parsedatetime-1.5.ebuild:
-  Initial version. Fixes bug #258898.

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/collectd/files/collectd.initd,v 1.7 2013/09/08 14:33:06 hwoarang Exp $
+# $Id$
 
 : ${COLLECTD_PIDFILE:='/var/run/collectd/collectd.pid'}
 : ${COLLECTD_CFGFILE:='/etc/collectd.conf'}

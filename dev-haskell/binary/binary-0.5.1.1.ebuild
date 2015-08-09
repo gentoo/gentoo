@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/binary/binary-0.5.1.1.ebuild,v 1.8 2013/03/31 10:02:19 ago Exp $
+# $Id$
 
 EAPI=5
 

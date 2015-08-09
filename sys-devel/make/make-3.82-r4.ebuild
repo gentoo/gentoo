@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/make/make-3.82-r4.ebuild,v 1.16 2014/01/18 03:11:00 vapier Exp $
+# $Id$
 
 EAPI="2"
 

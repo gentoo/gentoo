@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/notify-sharp/notify-sharp-0.4.0_pre20090305.ebuild,v 1.8 2013/10/12 12:07:49 pacho Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils mono

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/subtitleripper/subtitleripper-0.3.4-r4.ebuild,v 1.6 2012/03/25 15:49:53 armin76 Exp $
+# $Id$
 
 inherit versionator eutils toolchain-funcs
 

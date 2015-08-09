@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/use.stable.mask,v 1.7 2014/07/04 11:43:07 pacho Exp $
+# $Id$
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask

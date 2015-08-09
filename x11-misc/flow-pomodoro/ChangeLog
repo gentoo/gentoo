@@ -1,9 +1,0 @@
-# ChangeLog for x11-misc/flow-pomodoro
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/flow-pomodoro/ChangeLog,v 1.1 2015/07/05 10:53:06 mrueg Exp $
-
-*flow-pomodoro-1.1.1 (05 Jul 2015)
-
-  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +flow-pomodoro-1.1.1.ebuild,
-  +metadata.xml:
-  Initial version.

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/light-locker/light-locker-1.6.0.ebuild,v 1.2 2015/05/27 17:27:12 calchan Exp $
+# $Id$
 
 EAPI=5
 

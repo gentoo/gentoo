@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-File/PEAR-File-1.4.1.ebuild,v 1.12 2014/01/26 18:29:47 olemarkus Exp $
+# $Id$
 
 EAPI="4"
 

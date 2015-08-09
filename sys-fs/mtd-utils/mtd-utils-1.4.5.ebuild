@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtd-utils/mtd-utils-1.4.5.ebuild,v 1.7 2011/11/07 00:27:43 ranger Exp $
+# $Id$
 
 EAPI="3"
 

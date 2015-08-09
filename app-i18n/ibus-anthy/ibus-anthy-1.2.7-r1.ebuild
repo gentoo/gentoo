@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-anthy/ibus-anthy-1.2.7-r1.ebuild,v 1.5 2013/01/09 13:05:12 naota Exp $
+# $Id$
 
 EAPI=3
 PYTHON_DEPEND="2:2.5"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cunit/cunit-2.1-r1.ebuild,v 1.12 2013/05/21 17:24:43 jer Exp $
+# $Id$
 
 EAPI=3
 inherit eutils autotools

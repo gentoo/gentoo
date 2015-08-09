@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/mawk/mawk-1.3.4_p20100625.ebuild,v 1.6 2011/12/17 17:52:37 armin76 Exp $
+# $Id$
 
 EAPI="2"
 

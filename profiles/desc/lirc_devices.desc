@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/lirc_devices.desc,v 1.13 2013/08/27 18:20:14 axs Exp $
+# $Id$
 
 # This file contains descriptions of LIRC_DEVICES USE_EXPAND flags.
 

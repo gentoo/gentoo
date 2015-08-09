@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/abcde/abcde-2.6.ebuild,v 1.2 2015/05/13 05:30:08 jer Exp $
+# $Id$
 
 EAPI=5
 

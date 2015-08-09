@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jax-ws-api/jax-ws-api-2.0.ebuild,v 1.5 2008/03/28 18:11:57 nixnut Exp $
+# $Id$
 
 JAVA_PKG_IUSE="source"
 

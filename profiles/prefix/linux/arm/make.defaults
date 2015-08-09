@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux/arm/make.defaults,v 1.6 2012/12/09 15:39:57 grobian Exp $
+# $Id$
 
 ARCH="arm"
 # This is a pretty specific profile to the armv7 arch, we can change that later

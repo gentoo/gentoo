@@ -1,7 +1,7 @@
 /*
  * Copyright 1999-2011 Gentoo Foundation
  * Distributed under the terms of the GNU General Public License v2
- * $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-config/files/wrapper-1.5.2.c,v 1.2 2011/06/18 18:46:23 vapier Exp $
+ * $Id$
  * Author: Martin Schlemmer <azarah@gentoo.org>
  * az's lackey: Mike Frysinger <vapier@gentoo.org>
  */

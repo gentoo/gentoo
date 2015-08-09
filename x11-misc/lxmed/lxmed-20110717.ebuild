@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lxmed/lxmed-20110717.ebuild,v 1.4 2011/10/26 19:06:38 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils java-utils-2

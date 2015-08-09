@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-gnutella/gift-gnutella-0.0.11.ebuild,v 1.12 2012/05/04 06:33:35 jdhore Exp $
+# $Id$
 
 inherit eutils
 

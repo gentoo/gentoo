@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimageview/gimageview-0.2.27-r3.ebuild,v 1.5 2014/01/28 07:38:23 ssuominen Exp $
+# $Id$
 
 # TODO: USE xine could be restored if support for xine-lib-1.2.x
 # is patched in wrt #397639

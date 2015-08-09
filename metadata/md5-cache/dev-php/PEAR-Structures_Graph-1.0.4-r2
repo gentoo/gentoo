@@ -1,12 +1,13 @@
+_eclasses_=
+_md5_=7fd14b745eab618b9c44f20f29830ea9
+SLOT=0
 DEFINED_PHASES=install
+EAPI=5
 DEPEND=dev-lang/php:*[pcre(+)] >=dev-php/PEAR-PEAR-1.8.1
 DESCRIPTION=Graph datastructure manipulation library
-EAPI=5
-HOMEPAGE=http://pear.php.net/package/Structures_Graph
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=LGPL-2.1
 PDEPEND=dev-php/pear
-RDEPEND=dev-lang/php:*[pcre(+)] >=dev-php/PEAR-PEAR-1.8.1
-SLOT=0
 SRC_URI=http://pear.php.net/get/Structures_Graph-1.0.4.tgz
-_md5_=967a43eca592b47887945bff53de929a
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+HOMEPAGE=http://pear.php.net/package/Structures_Graph
+RDEPEND=dev-lang/php:*[pcre(+)] >=dev-php/PEAR-PEAR-1.8.1

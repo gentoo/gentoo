@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/boot0/boot0-9.1.ebuild,v 1.4 2015/02/18 17:09:17 mgorny Exp $
+# $Id$
 
 EAPI=2
 

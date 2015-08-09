@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-xvdr/vdr-xvdr-9999.ebuild,v 1.6 2013/01/16 20:04:34 hd_brummy Exp $
+# $Id$
 
 EAPI="5"
 

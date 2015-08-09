@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/dmenu/dmenu-9999.ebuild,v 1.2 2014/06/30 13:53:58 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils git-r3 savedconfig toolchain-funcs

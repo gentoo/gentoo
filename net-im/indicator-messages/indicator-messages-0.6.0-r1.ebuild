@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/indicator-messages/indicator-messages-0.6.0-r1.ebuild,v 1.1 2015/04/05 16:09:44 mgorny Exp $
+# $Id$
 
 EAPI=4
 inherit eutils gnome2-utils

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/wnn-ldic/wnn-ldic-1.04.ebuild,v 1.6 2013/05/04 16:15:53 ulm Exp $
+# $Id$
 
 DESCRIPTION="Wnn dictionary for librarian"
 

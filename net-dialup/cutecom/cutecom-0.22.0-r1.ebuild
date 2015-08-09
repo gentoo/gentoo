@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/cutecom/cutecom-0.22.0-r1.ebuild,v 1.5 2013/03/10 09:03:46 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

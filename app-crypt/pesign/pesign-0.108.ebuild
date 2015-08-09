@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/pesign/pesign-0.108.ebuild,v 1.6 2015/06/05 12:08:31 jlec Exp $
+# $Id$
 
 EAPI=5
 

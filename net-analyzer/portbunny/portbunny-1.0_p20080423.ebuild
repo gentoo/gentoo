@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/portbunny/portbunny-1.0_p20080423.ebuild,v 1.1 2008/04/25 10:45:14 wschlich Exp $
+# $Id$
 
 inherit eutils linux-mod
 

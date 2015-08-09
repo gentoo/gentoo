@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxp/jaxp-1.4-r1.ebuild,v 1.6 2012/10/19 08:24:29 ottxor Exp $
+# $Id$
 
 EAPI=4
 JAVA_PKG_IUSE="doc source"

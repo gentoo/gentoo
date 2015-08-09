@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/xvnkb/xvnkb-0.2.9a-r1.ebuild,v 1.6 2012/06/14 09:14:59 ago Exp $
+# $Id$
 
 inherit eutils multilib toolchain-funcs
 

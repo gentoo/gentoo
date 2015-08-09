@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gearman-Server/files/gearmand-init.d-1.09,v 1.2 2007/05/13 08:10:05 robbat2 Exp $
+# $Id$
 
 NAME="gearmand"
 BINARY="/usr/bin/gearmand"

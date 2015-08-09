@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/lhapdf/lhapdf-5.8.4.ebuild,v 1.5 2011/03/09 20:03:41 bicatali Exp $
+# $Id$
 
 EAPI=2
 

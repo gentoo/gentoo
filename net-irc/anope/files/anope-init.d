@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/anope/files/anope-init.d,v 1.2 2013/02/18 08:25:51 gurligebis Exp $
+# $Id$
 
 PIDFILE=/run/anope/services.pid
 

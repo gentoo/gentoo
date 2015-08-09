@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/hercules/hercules-3.08.ebuild,v 1.2 2013/07/28 12:01:18 grobian Exp $
+# $Id$
 
 EAPI="4"
 

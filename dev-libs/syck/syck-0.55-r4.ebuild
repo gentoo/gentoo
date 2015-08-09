@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/syck/syck-0.55-r4.ebuild,v 1.18 2014/08/10 20:39:40 slyfox Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="python? 2"

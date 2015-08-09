@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/joy2key/joy2key-1.6.3.ebuild,v 1.5 2009/10/24 11:40:53 nixnut Exp $
+# $Id$
 
 DESCRIPTION="An application that translates joystick events to keyboard events"
 HOMEPAGE="http://sourceforge.net/projects/joy2key"

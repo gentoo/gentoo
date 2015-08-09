@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/culmus-latex/culmus-latex-0.7.ebuild,v 1.15 2010/12/29 09:10:33 pva Exp $
+# $Id$
 
 EAPI="2"
 inherit latex-package

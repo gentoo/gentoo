@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/curve/curve-1.16.ebuild,v 1.4 2012/03/06 14:24:40 ranger Exp $
+# $Id$
 
 EAPI=2
 

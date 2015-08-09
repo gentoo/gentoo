@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/atomic/atomic-1.1.16.ebuild,v 1.3 2014/08/12 21:27:21 blueness Exp $
+# $Id$
 
 EAPI=5
 # jruby → there is code for this in ext but that requires compiling java.

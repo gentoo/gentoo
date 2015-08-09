@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/photivo/photivo-0_pre20121006.ebuild,v 1.2 2013/03/02 21:38:52 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

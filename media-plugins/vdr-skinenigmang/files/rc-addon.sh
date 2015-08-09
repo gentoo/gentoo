@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-skinenigmang/files/rc-addon.sh,v 1.2 2007/04/17 12:41:34 zzam Exp $
+# $Id$
 #
 # rc-addon-script for plugin skinenigmang
 #

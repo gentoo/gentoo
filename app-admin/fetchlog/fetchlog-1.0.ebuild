@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fetchlog/fetchlog-1.0.ebuild,v 1.9 2009/05/09 19:48:26 pvdabeel Exp $
+# $Id$
 
 inherit toolchain-funcs
 

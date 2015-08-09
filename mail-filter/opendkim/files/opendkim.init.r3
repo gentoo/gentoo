@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/opendkim/files/opendkim.init.r3,v 1.1 2013/01/18 13:44:00 eras Exp $
+# $Id$
 
 CONFFILE=/etc/opendkim/${SVCNAME}.conf
 

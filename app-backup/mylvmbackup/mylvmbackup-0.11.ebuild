@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/mylvmbackup/mylvmbackup-0.11.ebuild,v 1.2 2010/05/23 18:25:52 idl0r Exp $
+# $Id$
 
 DESCRIPTION="mylvmbackup is a tool for quickly creating backups of MySQL server's data files using LVM snapshots"
 HOMEPAGE="http://lenzg.net/mylvmbackup/"

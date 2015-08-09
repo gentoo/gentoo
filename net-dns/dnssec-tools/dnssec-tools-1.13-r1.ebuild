@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-tools/dnssec-tools-1.13-r1.ebuild,v 1.1 2012/07/05 12:21:40 xmw Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/xanim-export/xanim-export-2.80.1-r5.ebuild,v 1.6 2012/12/29 14:33:04 ago Exp $
+# $Id$
 
 inherit flag-o-matic eutils toolchain-funcs
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/cvsweb/cvsweb-1.112.ebuild,v 1.1 2010/03/05 18:11:28 ulm Exp $
+# $Id$
 
 DESCRIPTION="WWW interface to a CVS tree"
 HOMEPAGE="http://www.freebsd.org/projects/cvsweb.html"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/llvm/llvm-3.1-r2.ebuild,v 1.10 2015/03/19 09:28:02 voyageur Exp $
+# $Id$
 
 EAPI="4"
 PYTHON_DEPEND="2"

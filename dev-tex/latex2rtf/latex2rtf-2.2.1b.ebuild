@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2rtf/latex2rtf-2.2.1b.ebuild,v 1.8 2014/12/03 16:22:45 aballier Exp $
+# $Id$
 
 EAPI=4
 

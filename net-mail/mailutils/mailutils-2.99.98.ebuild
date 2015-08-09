@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailutils/mailutils-2.99.98.ebuild,v 1.9 2014/12/28 16:37:50 titanofold Exp $
+# $Id$
 
 EAPI=5
 PYTHON_DEPEND="python? 2"

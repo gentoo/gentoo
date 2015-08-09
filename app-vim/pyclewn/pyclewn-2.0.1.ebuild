@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/pyclewn/pyclewn-2.0.1.ebuild,v 1.1 2015/03/29 09:33:28 maksbotan Exp $
+# $Id$
 
 EAPI=5
 

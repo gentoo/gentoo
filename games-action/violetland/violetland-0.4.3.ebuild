@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/violetland/violetland-0.4.3.ebuild,v 1.11 2014/08/10 21:21:57 slyfox Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib toolchain-funcs flag-o-matic cmake-utils games

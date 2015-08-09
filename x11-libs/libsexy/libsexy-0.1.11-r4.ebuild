@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libsexy/libsexy-0.1.11-r4.ebuild,v 1.1 2013/04/30 12:09:02 jlec Exp $
+# $Id$
 
 EAPI=5
 

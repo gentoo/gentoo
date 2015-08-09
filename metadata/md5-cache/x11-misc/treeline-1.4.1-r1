@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=7ecd638dd0e9e07e5741b28e9ecb7534
+SLOT=0
 DEFINED_PHASES=install prepare setup unpack
+EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7[xml] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 DESCRIPTION=TreeLine is a structured information storage program
-EAPI=5
-HOMEPAGE=http://treeline.bellz.org/
-IUSE=linguas_de linguas_fr python_targets_python2_7
-KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[xml] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/PyQt4[X]
-SLOT=0
+IUSE=linguas_de linguas_fr python_targets_python2_7
 SRC_URI=mirror://sourceforge/treeline/treeline-1.4.1.tar.gz linguas_de? ( mirror://sourceforge/treeline/treeline-i18n-1.4.1a.tar.gz ) linguas_fr? ( mirror://sourceforge/treeline/treeline-i18n-1.4.1a.tar.gz )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=bd62797ed6af080099eda073c397edaf
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://treeline.bellz.org/
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[xml] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/PyQt4[X]

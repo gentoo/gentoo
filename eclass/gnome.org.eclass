@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnome.org.eclass,v 1.15 2011/09/12 15:54:53 pacho Exp $
+# $Id$
 
 # @ECLASS: gnome.org.eclass
 # @MAINTAINER:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi-otr/irssi-otr-0.3-r1.ebuild,v 1.6 2015/04/08 18:01:55 mgorny Exp $
+# $Id$
 
 EAPI=5
 

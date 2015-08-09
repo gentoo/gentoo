@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-skinsoppalusikka/files/rc-addon-1.0.2.sh,v 1.3 2007/04/17 12:44:48 zzam Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-skinsoppalusikka
 #

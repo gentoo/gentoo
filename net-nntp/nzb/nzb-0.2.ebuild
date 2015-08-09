@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/nzb/nzb-0.2.ebuild,v 1.2 2013/03/02 23:08:15 hwoarang Exp $
+# $Id$
 
 EAPI=4
 inherit eutils qt4-r2

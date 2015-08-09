@@ -1,10 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4a282f29fc5938f5a1b16c102e5f3012
+SLOT=0
 DEFINED_PHASES=compile install unpack
+EAPI=5
 DEPEND=app-text/asciidoc >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A bash script for working with MediaCrush from a shell
-EAPI=5
-HOMEPAGE=https://github.com/MediaCrush/MediaCrush-cli
 LICENSE=MIT
+HOMEPAGE=https://github.com/MediaCrush/MediaCrush-cli
 RDEPEND=net-misc/curl sys-apps/file sys-apps/sed
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=1d9b116cf106aa0abc78a065a57714bc

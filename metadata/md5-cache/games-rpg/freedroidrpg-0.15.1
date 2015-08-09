@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=2fac2b14e481fceac2073a305e3216a6
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+EAPI=5
 DEPEND=media-libs/libsdl[opengl?,video] dev-lang/lua virtual/jpeg media-libs/libpng:0 media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis?] >=media-libs/sdl-gfx-2.0.21 vorbis? ( media-libs/libogg media-libs/libvorbis ) x11-libs/libX11 opengl? ( virtual/opengl ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) >=sys-apps/sed-4
 DESCRIPTION=A modification of the classical Freedroid engine into an RPG
-EAPI=5
-HOMEPAGE=http://freedroid.sourceforge.net/
-IUSE=opengl vorbis
-KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=media-libs/libsdl[opengl?,video] dev-lang/lua virtual/jpeg media-libs/libpng:0 media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis?] >=media-libs/sdl-gfx-2.0.21 vorbis? ( media-libs/libogg media-libs/libvorbis ) x11-libs/libX11 opengl? ( virtual/opengl ) games-misc/games-envd
-SLOT=0
+IUSE=opengl vorbis
 SRC_URI=mirror://sourceforge/freedroid/freedroidRPG-0.15.1.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=90522f0b4a9cd239b28fd13c4c4bdb5f
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://freedroid.sourceforge.net/
+RDEPEND=media-libs/libsdl[opengl?,video] dev-lang/lua virtual/jpeg media-libs/libpng:0 media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis?] >=media-libs/sdl-gfx-2.0.21 vorbis? ( media-libs/libogg media-libs/libvorbis ) x11-libs/libX11 opengl? ( virtual/opengl ) games-misc/games-envd

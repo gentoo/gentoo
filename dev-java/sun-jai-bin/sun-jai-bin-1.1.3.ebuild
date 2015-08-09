@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jai-bin/sun-jai-bin-1.1.3.ebuild,v 1.12 2014/08/10 20:24:29 slyfox Exp $
+# $Id$
 
 inherit java-pkg-2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/methane/methane-1.5.1.ebuild,v 1.5 2013/01/18 09:40:41 mr_bones_ Exp $
+# $Id$
 
 EAPI=4
 inherit eutils games

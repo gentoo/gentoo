@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/anki/anki-2.0.31-r1.ebuild,v 1.2 2015/04/08 07:30:31 mgorny Exp $
+# $Id$
 
 EAPI=5
 

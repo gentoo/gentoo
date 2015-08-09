@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: mod-mono-server-r1.initd,v 1.2 2013/09/26 14:15:11 tomwij Exp $
+# $Id$
 
 depend() {
 	use net

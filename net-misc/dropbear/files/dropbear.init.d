@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/files/dropbear.init.d,v 1.3 2014/05/30 20:04:55 vapier Exp $
+# $Id$
 
 depend() {
 	use logger dns

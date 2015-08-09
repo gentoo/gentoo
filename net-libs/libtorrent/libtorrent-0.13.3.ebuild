@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libtorrent/libtorrent-0.13.3.ebuild,v 1.6 2014/10/27 16:07:03 ago Exp $
+# $Id$
 
 EAPI=4
 

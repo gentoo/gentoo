@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/x48/x48-0.6.4.ebuild,v 1.8 2012/07/08 15:15:42 armin76 Exp $
+# $Id$
 
 EAPI=4
 

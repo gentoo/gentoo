@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rej/rej-0.16.ebuild,v 1.7 2011/03/15 19:23:57 abcd Exp $
+# $Id$
 
 DESCRIPTION="A utility for solving diff/patch rejects"
 HOMEPAGE="http://ftp.suse.com/pub/people/mason/rej/"

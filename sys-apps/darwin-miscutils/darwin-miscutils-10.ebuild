@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/darwin-miscutils/darwin-miscutils-10.ebuild,v 1.1 2012/08/04 09:39:29 grobian Exp $
+# $Id$
 
 EAPI="4"
 

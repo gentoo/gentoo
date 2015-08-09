@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gnulib/gnulib-2013.10.28.22.33.52.ebuild,v 1.1 2014/12/27 20:11:22 grobian Exp $
+# $Id$
 
 EAPI=5
 

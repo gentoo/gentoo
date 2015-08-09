@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itk/itk-4.0.1.ebuild,v 1.1 2015/03/12 09:59:49 jlec Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/usermin/files/init.d.usermin,v 1.6 2005/08/17 21:02:30 eradicator Exp $
+# $Id$
 
 depend() {
 	use net logger

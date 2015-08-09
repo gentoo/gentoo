@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/files/mms-agent.initd,v 1.3 2013/01/18 11:19:27 ultrabug Exp $
+# $Id$
 
 ROOTDIR=/opt/mms-agent
 PIDFILE=/var/run/mm-agent.pid

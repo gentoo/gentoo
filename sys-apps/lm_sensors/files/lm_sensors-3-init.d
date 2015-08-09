@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/files/lm_sensors-3-init.d,v 1.1 2008/03/17 07:59:28 dberkholz Exp $
+# $Id$
 
 checkconfig() {
 	if [ ! -f /etc/conf.d/lm_sensors ]; then

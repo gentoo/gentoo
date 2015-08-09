@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/hiawatha/hiawatha-9.8.ebuild,v 1.1 2014/10/10 20:52:19 hasufell Exp $
+# $Id$
 
 # ssl USE flag currently broken, unconditionally enabled
 # rproxy USE flag broken too, unconditionally enabled

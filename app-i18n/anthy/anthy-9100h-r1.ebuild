@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/anthy/anthy-9100h-r1.ebuild,v 1.11 2015/01/04 03:43:04 heroxbd Exp $
+# $Id$
 
 EAPI=3
 inherit elisp-common eutils

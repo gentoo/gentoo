@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=1fd638cd2b16b2bf1d175074f7097d2c
+SLOT=1.0.2-r2
 DEFINED_PHASES=compile install postinst prepare prerm setup
+EAPI=5
 DEPEND=>=dev-php/awl-0.51 sys-devel/gettext =dev-lang/php-5* || ( virtual/httpd-basic virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=A CalDAV and CardDAV Server
-EAPI=5
-HOMEPAGE=http://davical.org/
-IUSE=doc vhosts
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/DBI dev-perl/DBD-Pg dev-perl/yaml >=dev-php/awl-0.51 www-servers/apache =dev-lang/php-5* >=app-admin/webapp-config-1.50.15
-SLOT=1.0.2-r2
+IUSE=doc vhosts
 SRC_URI=http://debian.mcmillan.net.nz/packages/davical/davical-1.0.2.tar.gz
-_eclasses_=depend.php	9ad63283ebea79851f4521028c019da6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=400f905f97a0f91b2918d8a475e10d2e
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://davical.org/
+RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/DBI dev-perl/DBD-Pg dev-perl/yaml >=dev-php/awl-0.51 www-servers/apache =dev-lang/php-5* >=app-admin/webapp-config-1.50.15

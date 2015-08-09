@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cgicc/cgicc-3.2.10.ebuild,v 1.1 2013/02/05 12:35:55 dev-zero Exp $
+# $Id$
 
 EAPI=5
 

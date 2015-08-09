@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dfc/dfc-3.0.5-r1.ebuild,v 1.1 2015/05/08 07:22:40 dlan Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils

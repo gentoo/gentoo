@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/xcmiscproto/xcmiscproto-1.2.2.ebuild,v 1.11 2015/03/03 12:42:39 dlan Exp $
+# $Id$
 
 EAPI=4
 

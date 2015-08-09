@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/mupdf/mupdf-1.3_p20140118.ebuild,v 1.11 2014/12/09 05:48:03 zlogene Exp $
+# $Id$
 
 EAPI=5
 

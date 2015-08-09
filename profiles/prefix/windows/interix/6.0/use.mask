@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/6.0/use.mask,v 1.3 2009/08/14 15:31:30 mduft Exp $
+# $Id$
 
 # Markus Duft <mduft@gentoo.org> (7 Jul 2009)
 # Unmask the globally masked i6fork USE flag to allow

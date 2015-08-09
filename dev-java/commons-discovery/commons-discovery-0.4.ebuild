@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-discovery/commons-discovery-0.4.ebuild,v 1.7 2011/12/19 12:52:20 sera Exp $
+# $Id$
 
 inherit eutils java-pkg-2 java-ant-2
 

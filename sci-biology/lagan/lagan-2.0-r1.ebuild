@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/lagan/lagan-2.0-r1.ebuild,v 1.1 2009/07/21 08:12:46 weaver Exp $
+# $Id$
 
 EAPI="2"
 

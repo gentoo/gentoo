@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/yum/yum-3.4.3_p20130218-r1.ebuild,v 1.2 2015/07/11 06:56:11 jer Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

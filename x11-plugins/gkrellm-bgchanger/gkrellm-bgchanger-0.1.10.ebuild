@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-bgchanger/gkrellm-bgchanger-0.1.10.ebuild,v 1.2 2012/08/30 00:21:20 lack Exp $
+# $Id$
 
 EAPI=4
 inherit gkrellm-plugin

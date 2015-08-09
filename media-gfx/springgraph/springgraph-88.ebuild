@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/springgraph/springgraph-88.ebuild,v 1.9 2011/02/06 07:45:39 leio Exp $
+# $Id$
 
 inherit eutils
 

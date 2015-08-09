@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/files/dhcpd.init5,v 1.7 2015/07/13 03:15:56 vapier Exp $
+# $Id$
 
 extra_commands="configtest"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-docs/python-docs-2.7.6-r1.ebuild,v 1.1 2014/09/04 03:11:17 idella4 Exp $
+# $Id$
 
 EAPI="5"
 

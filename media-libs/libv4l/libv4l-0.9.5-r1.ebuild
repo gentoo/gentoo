@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libv4l/libv4l-0.9.5-r1.ebuild,v 1.9 2014/06/18 19:51:15 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit eutils linux-info udev multilib-minimal

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/asn1-types/asn1-types-0.2.2.ebuild,v 1.1 2013/12/10 14:42:21 gienah Exp $
+# $Id$
 
 EAPI=5
 

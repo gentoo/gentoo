@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/files/dante-sockd-init,v 1.7 2011/10/04 20:14:21 robbat2 Exp $
+# $Id$
 
 SOCKD_OPT="-D"
 [ "${SOCKD_FORKDEPTH:-1}" -gt 1 ] && SOCKD_OPT="${SOCKD_OPT} -N ${SOCKD_FORKDEPTH}"

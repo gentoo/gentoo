@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/glassfish-servlet-api/glassfish-servlet-api-2_beta44.ebuild,v 1.4 2011/02/10 17:57:36 tomka Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

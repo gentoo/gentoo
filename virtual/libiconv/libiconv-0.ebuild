@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/libiconv/libiconv-0.ebuild,v 1.13 2014/01/24 20:09:01 blueness Exp $
+# $Id$
 
 DESCRIPTION="Virtual for the GNU conversion library"
 HOMEPAGE=""

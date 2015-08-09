@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/mkgallery/mkgallery-1.1.ebuild,v 1.12 2010/01/07 22:20:24 fauli Exp $
+# $Id$
 
 DESCRIPTION="Creates thumbnails and a HTML index file for a directory of jpg files"
 HOMEPAGE="http://mkgallery.sourceforge.net/"

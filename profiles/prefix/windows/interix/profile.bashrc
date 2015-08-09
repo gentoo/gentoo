@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/profile.bashrc,v 1.5 2010/10/22 07:30:09 mduft Exp $
+# $Id$
 
 # use bash as config shell. this avoids _big_ problems with new libtool (>=2.2.10),
 # as wrong asumptions about the shell arise when checking against /bin/sh.

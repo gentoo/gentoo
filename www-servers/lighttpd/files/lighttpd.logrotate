@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/www-servers/lighttpd/files/lighttpd.logrotate,v 1.2 2006/05/30 19:49:29 bangert Exp $
+# $Id$
 # lighttpd logrotate script for Gentoo
 
 /var/log/lighttpd/*.log {

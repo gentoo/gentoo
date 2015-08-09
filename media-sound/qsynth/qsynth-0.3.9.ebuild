@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qsynth/qsynth-0.3.9.ebuild,v 1.3 2015/05/28 15:22:37 jmorgan Exp $
+# $Id$
 
 EAPI=5
 LANGS="cs de fr ru sr"

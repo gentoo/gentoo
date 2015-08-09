@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/sqlgrey/sqlgrey-1.7.6-r1.ebuild,v 1.2 2014/07/20 12:08:47 pacho Exp $
+# $Id$
 
 inherit eutils systemd user
 

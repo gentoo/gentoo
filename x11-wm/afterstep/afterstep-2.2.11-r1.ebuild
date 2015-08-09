@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/afterstep/afterstep-2.2.11-r1.ebuild,v 1.4 2015/01/28 22:25:35 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils flag-o-matic

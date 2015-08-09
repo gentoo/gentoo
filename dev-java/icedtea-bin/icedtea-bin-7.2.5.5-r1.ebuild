@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/icedtea-bin/icedtea-bin-7.2.5.5-r1.ebuild,v 1.1 2015/06/28 22:58:52 chewi Exp $
+# $Id$
 
 EAPI="5"
 

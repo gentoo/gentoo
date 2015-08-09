@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/taglib/taglib-1.9.1-r2.ebuild,v 1.11 2014/08/27 09:05:26 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

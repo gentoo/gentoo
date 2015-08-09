@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/fb2edit/fb2edit-0.0.9.ebuild,v 1.1 2014/10/19 11:50:04 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

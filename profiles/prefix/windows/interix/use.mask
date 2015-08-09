@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/use.mask,v 1.13 2015/06/02 09:15:36 ulm Exp $
+# $Id$
 
 # Re-add Interix libc
 -elibc_Interix

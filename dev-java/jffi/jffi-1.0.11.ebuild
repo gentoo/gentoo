@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/jffi-1.0.11.ebuild,v 1.6 2013/08/31 15:01:48 pacho Exp $
+# $Id$
 
 EAPI="4"
 

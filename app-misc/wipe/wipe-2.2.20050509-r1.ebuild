@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/wipe/wipe-2.2.20050509-r1.ebuild,v 1.4 2012/07/29 17:54:24 armin76 Exp $
+# $Id$
 
 EAPI="2"
 

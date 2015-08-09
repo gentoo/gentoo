@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/foobillard/foobillard-3.0a.ebuild,v 1.18 2015/03/08 19:24:26 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools games

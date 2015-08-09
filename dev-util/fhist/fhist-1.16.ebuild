@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/fhist/fhist-1.16.ebuild,v 1.7 2012/10/27 17:18:55 armin76 Exp $
+# $Id$
 
 DESCRIPTION="File history and comparison tools"
 HOMEPAGE="http://fhist.sourceforge.net/fhist.html"

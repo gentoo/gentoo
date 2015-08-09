@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-newmail/claws-mail-newmail-0.0.16.ebuild,v 1.5 2013/05/08 03:57:54 fauli Exp $
+# $Id$
 
 MY_P="${P#claws-mail-}"
 

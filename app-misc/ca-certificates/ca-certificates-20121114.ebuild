@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ca-certificates/ca-certificates-20121114.ebuild,v 1.2 2013/02/19 02:38:32 zmedico Exp $
+# $Id$
 
 EAPI="3"
 

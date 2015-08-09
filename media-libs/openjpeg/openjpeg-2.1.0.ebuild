@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openjpeg/openjpeg-2.1.0.ebuild,v 1.12 2014/11/01 17:46:51 ago Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils multilib

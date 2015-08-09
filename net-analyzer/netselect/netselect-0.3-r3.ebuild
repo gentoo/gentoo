@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netselect/netselect-0.3-r3.ebuild,v 1.15 2014/08/10 20:59:38 slyfox Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic toolchain-funcs

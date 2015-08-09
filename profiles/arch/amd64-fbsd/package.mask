@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64-fbsd/package.mask,v 1.4 2015/05/11 01:52:23 pesa Exp $
+# $Id$
 
 # Davide Pesavento <pesa@gentoo.org> (20 Nov 2014)
 # Qt4 multilib ebuilds, masked until dev-qt/qtchooser

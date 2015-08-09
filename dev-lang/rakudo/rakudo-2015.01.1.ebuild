@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/rakudo/rakudo-2015.01.1.ebuild,v 1.1 2015/01/26 04:13:44 patrick Exp $
+# $Id$
 
 EAPI=5
 

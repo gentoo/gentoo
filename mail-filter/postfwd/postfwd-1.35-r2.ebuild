@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/postfwd/postfwd-1.35-r2.ebuild,v 1.1 2015/01/30 12:14:01 mschiff Exp $
+# $Id$
 
 EAPI=5
 

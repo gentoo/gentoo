@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/wnn7sdk/wnn7sdk-20011017-r1.ebuild,v 1.3 2010/07/08 17:50:44 hwoarang Exp $
+# $Id$
 
 inherit eutils multilib toolchain-funcs
 

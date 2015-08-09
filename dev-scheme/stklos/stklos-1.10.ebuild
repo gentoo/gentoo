@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/stklos/stklos-1.10.ebuild,v 1.2 2012/06/21 06:29:22 hkbst Exp $
+# $Id$
 
 EAPI="3"
 

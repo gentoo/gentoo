@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmtp/gmtp-1.3.9.ebuild,v 1.1 2015/07/27 20:55:08 polynomial-c Exp $
+# $Id$
 
 EAPI=5
 inherit gnome2-utils

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Attribute-Handlers/perl-Attribute-Handlers-0.970.0.ebuild,v 1.1 2015/06/04 16:00:18 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/files/1.8.0/asterisk.confd,v 1.1 2011/09/01 14:09:56 chainsaw Exp $
+# $Id$
 
 #
 # Additional options for asterisk

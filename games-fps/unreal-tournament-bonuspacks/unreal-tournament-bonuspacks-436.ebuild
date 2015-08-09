@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-bonuspacks/unreal-tournament-bonuspacks-436.ebuild,v 1.10 2014/05/05 20:59:24 ulm Exp $
+# $Id$
 
 inherit games
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/solid-actions-kcm/solid-actions-kcm-4.11.14.ebuild,v 1.6 2015/06/04 18:48:01 kensington Exp $
+# $Id$
 
 EAPI=5
 

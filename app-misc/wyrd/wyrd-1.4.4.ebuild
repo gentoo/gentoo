@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/wyrd/wyrd-1.4.4.ebuild,v 1.6 2012/07/29 17:16:50 armin76 Exp $
+# $Id$
 
 EAPI=2
 

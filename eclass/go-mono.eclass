@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/go-mono.eclass,v 1.15 2013/07/27 16:18:00 pacho Exp $
+# $Id$
 
 # @ECLASS: go-mono.eclass
 # @MAINTAINER:

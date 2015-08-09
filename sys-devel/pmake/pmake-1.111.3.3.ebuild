@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/pmake/pmake-1.111.3.3.ebuild,v 1.10 2014/01/26 12:19:32 ago Exp $
+# $Id$
 
 EAPI=4
 

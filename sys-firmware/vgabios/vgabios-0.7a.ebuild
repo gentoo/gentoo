@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-firmware/vgabios/vgabios-0.7a.ebuild,v 1.4 2014/04/30 21:06:47 vapier Exp $
+# $Id$
 
 EAPI=4
 

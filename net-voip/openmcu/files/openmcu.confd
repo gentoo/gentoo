@@ -1,6 +1,6 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-voip/openmcu/files/openmcu.confd,v 1.1 2006/09/14 01:03:20 genstef Exp $
+# $Id$
 
 OPTIONS="-u openmcu -g openmcu"

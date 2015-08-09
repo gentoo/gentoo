@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.7/x86/package.mask,v 1.2 2012/04/30 13:32:58 grobian Exp $
+# $Id$
 
 # The Carbon interface has been removed entirely in Lion, only tk-8.6
 # will come with Cocoa support.  If you must have tk, you'll have to

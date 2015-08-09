@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/pbbuttonsd/pbbuttonsd-0.8.1-r3.ebuild,v 1.3 2014/08/10 17:53:05 slyfox Exp $
+# $Id$
 
 inherit autotools flag-o-matic eutils
 

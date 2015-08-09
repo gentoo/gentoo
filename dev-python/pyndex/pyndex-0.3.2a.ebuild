@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyndex/pyndex-0.3.2a.ebuild,v 1.12 2014/08/10 21:17:01 slyfox Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/polymake/polymake-2.13.ebuild,v 1.2 2015/03/03 09:34:22 tomka Exp $
+# $Id$
 
 EAPI=5
 

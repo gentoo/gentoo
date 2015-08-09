@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gpc/gpc-20070904.ebuild,v 1.5 2012/02/06 15:32:10 george Exp $
+# $Id$
 
 inherit eutils flag-o-matic versionator toolchain-funcs
 

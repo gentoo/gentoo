@@ -148,7 +148,7 @@ diff -urpN a/src/metadata/flac_handler.cc b/src/metadata/flac_handler.cc
 +    version 2 along with MediaTomb; if not, write to the Free Software
 +    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 +    
-+    $Id: mediatomb-0.12.1-flac-metadata.patch,v 1.1 2013/12/17 23:39:27 thev00d00 Exp $
++    # $Id$
 +*/
 +
 +/// \file flac_handler.cc
@@ -356,7 +356,7 @@ diff -urpN a/src/metadata/flac_handler.h b/src/metadata/flac_handler.h
 +    version 2 along with MediaTomb; if not, write to the Free Software
 +    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 +    
-+    $Id: mediatomb-0.12.1-flac-metadata.patch,v 1.1 2013/12/17 23:39:27 thev00d00 Exp $
++    # $Id$
 +*/
 +
 +/// \file flac_handler.h

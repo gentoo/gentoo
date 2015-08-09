@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-ffnetdev/files/rc-addon.sh,v 1.3 2009/06/13 09:57:49 zzam Exp $
+# $Id$
 #
 # rc-addon-script for plugin ffnetdev
 #

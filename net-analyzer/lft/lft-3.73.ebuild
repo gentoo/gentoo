@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/lft/lft-3.73.ebuild,v 1.4 2014/11/01 17:51:09 ago Exp $
+# $Id$
 
 EAPI=5
 

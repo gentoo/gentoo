@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-UTF8simple/Unicode-UTF8simple-1.60.0.ebuild,v 1.3 2014/10/19 20:19:21 zlogene Exp $
+# $Id$
 
 EAPI=5
 

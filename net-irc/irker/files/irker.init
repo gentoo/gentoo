@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irker/files/irker.init,v 1.1 2012/10/13 05:53:35 patrick Exp $
+# $Id$
 
 command="/usr/bin/irkerd"
 command_args="${IRKERD_OPTS}"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/dcron/dcron-4.5-r1.ebuild,v 1.10 2014/01/18 03:47:10 vapier Exp $
+# $Id$
 
 EAPI=4
 

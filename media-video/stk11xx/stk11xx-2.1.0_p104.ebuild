@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/stk11xx/stk11xx-2.1.0_p104.ebuild,v 1.1 2011/07/26 07:31:14 mgorny Exp $
+# $Id$
 
 EAPI=4
 inherit base linux-mod

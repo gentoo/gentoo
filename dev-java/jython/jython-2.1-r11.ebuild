@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jython/jython-2.1-r11.ebuild,v 1.11 2012/01/01 12:24:17 sera Exp $
+# $Id$
 
 inherit base java-pkg-2
 

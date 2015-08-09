@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-smf-utils/jack-smf-utils-1.0.ebuild,v 1.4 2012/05/05 09:02:02 mgorny Exp $
+# $Id$
 
 DESCRIPTION="Utilities for MIDI streams and files using Jack MIDI"
 HOMEPAGE="http://pin.if.uz.zgora.pl/~trasz/jack-smf-utils/"

@@ -1,9 +1,0 @@
-# ChangeLog for dev-java/commons-chain
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-chain/ChangeLog,v 1.1 2015/07/16 16:16:08 monsieurp Exp $
-
-*commons-chain-1.2 (16 Jul 2015)
-
-  16 Jul 2015; Patrice Clement <monsieurp@gentoo.org> +commons-chain-1.2.ebuild,
-  +files/commons-chain-1.2-build.xml, +metadata.xml:
-  Introduce commons-chain to the tree. Fix bug 152233.

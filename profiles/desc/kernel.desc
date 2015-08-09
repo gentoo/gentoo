@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/kernel.desc,v 1.6 2011/12/18 09:04:46 grobian Exp $
+# $Id$
 
 # This file contains descriptions of KERNEL USE_EXPAND flags.
 

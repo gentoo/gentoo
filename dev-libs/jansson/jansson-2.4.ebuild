@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/jansson/jansson-2.4.ebuild,v 1.8 2014/06/06 11:30:25 blueness Exp $
+# $Id$
 
 EAPI="4"
 AUTOTOOLS_AUTORECONF=1

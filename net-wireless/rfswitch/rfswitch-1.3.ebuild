@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/rfswitch/rfswitch-1.3.ebuild,v 1.1 2012/11/28 21:23:57 ssuominen Exp $
+# $Id$
 
 inherit linux-mod
 

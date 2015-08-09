@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/mule-ucs/mule-ucs-1.18.ebuild,v 1.7 2014/08/10 19:16:46 slyfox Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

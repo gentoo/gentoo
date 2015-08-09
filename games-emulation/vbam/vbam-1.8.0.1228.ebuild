@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/vbam/vbam-1.8.0.1228.ebuild,v 1.6 2015/07/16 00:20:53 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 WX_GTK_VER="3.0"

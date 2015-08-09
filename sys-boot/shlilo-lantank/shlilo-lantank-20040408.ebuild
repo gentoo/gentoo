@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/shlilo-lantank/shlilo-lantank-20040408.ebuild,v 1.2 2012/11/16 08:30:22 ulm Exp $
+# $Id$
 
 inherit mount-boot
 

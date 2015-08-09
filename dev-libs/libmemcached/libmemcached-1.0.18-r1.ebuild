@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmemcached/libmemcached-1.0.18-r1.ebuild,v 1.1 2014/12/09 02:02:35 prometheanfire Exp $
+# $Id$
 
 EAPI=5
 

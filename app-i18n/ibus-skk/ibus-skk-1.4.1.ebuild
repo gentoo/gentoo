@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-skk/ibus-skk-1.4.1.ebuild,v 1.1 2012/07/08 21:29:28 naota Exp $
+# $Id$
 
 EAPI=4
 PYTHON_DEPEND="2:2.5"

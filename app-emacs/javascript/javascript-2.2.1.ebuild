@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/javascript/javascript-2.2.1.ebuild,v 1.2 2011/06/11 14:30:47 ulm Exp $
+# $Id$
 
 inherit elisp
 

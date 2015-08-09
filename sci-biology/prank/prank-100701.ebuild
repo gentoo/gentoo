@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/prank/prank-100701.ebuild,v 1.4 2015/03/29 13:52:32 jlec Exp $
+# $Id$
 
 EAPI=4
 

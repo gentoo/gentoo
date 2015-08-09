@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/bibutils/bibutils-4.12.ebuild,v 1.1 2011/05/03 17:11:01 jlec Exp $
+# $Id$
 
 EAPI=2
 inherit toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cal10n/cal10n-0.8.1.ebuild,v 1.1 2014/01/13 18:03:51 ercpe Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-woody-allen-it/fortune-mod-woody-allen-it-0.1.ebuild,v 1.6 2015/02/05 17:47:28 tupone Exp $
+# $Id$
 EAPI=5
 DESCRIPTION="Fortune database for Woody Allen quotes (in Italian)"
 HOMEPAGE="http://somemixedstuff.blogspot.com/2007/04/set-of-fortunes-of-woody-allen-quotes.html"

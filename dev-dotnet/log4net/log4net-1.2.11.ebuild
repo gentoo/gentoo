@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/log4net/log4net-1.2.11.ebuild,v 1.5 2014/08/10 20:03:08 slyfox Exp $
+# $Id$
 
 EAPI="4"
 

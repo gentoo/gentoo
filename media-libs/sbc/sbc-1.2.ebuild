@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sbc/sbc-1.2.ebuild,v 1.8 2014/05/13 14:44:06 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib multilib-minimal

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jexcelapi/jexcelapi-2.6.8.ebuild,v 1.4 2014/09/07 15:17:52 ercpe Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2

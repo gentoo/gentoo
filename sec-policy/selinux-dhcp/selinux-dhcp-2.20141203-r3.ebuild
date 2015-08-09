@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-dhcp/selinux-dhcp-2.20141203-r3.ebuild,v 1.2 2015/03/22 14:17:14 swift Exp $
+# $Id$
 EAPI="5"
 
 IUSE=""

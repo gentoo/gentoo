@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/kpathsea/kpathsea-6.1.1_p20130530.ebuild,v 1.2 2013/08/31 09:41:16 grobian Exp $
+# $Id$
 
 EAPI=5
 

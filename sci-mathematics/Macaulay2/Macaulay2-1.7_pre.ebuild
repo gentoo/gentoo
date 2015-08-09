@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/Macaulay2/Macaulay2-1.7_pre.ebuild,v 1.5 2015/04/21 17:40:45 pacho Exp $
+# $Id$
 
 EAPI=5
 

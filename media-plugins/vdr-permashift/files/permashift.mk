@@ -1,7 +1,7 @@
 #
 # Makefile for a Video Disk Recorder plugin
 #
-# $Id: permashift.mk,v 1.1 2013/03/31 13:06:59 hd_brummy Exp $
+# $Id$
 
 # The official name of this plugin.
 # This name will be used in the '-P...' option of VDR to load the plugin.

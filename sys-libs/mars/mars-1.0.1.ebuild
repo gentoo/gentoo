@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/mars/mars-1.0.1.ebuild,v 1.1 2008/11/14 12:06:05 lu_zero Exp $
+# $Id$
 
 inherit autotools
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/taglist/taglist-4.5.ebuild,v 1.8 2009/12/17 10:56:55 fauli Exp $
+# $Id$
 
 inherit vim-plugin eutils
 

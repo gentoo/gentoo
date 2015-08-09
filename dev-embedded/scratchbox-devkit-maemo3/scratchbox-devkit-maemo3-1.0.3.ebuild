@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-devkit-maemo3/scratchbox-devkit-maemo3-1.0.3.ebuild,v 1.7 2014/08/10 20:05:05 slyfox Exp $
+# $Id$
 
 SBOX_GROUP="sbox"
 

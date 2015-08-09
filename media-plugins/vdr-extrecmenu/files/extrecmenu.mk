@@ -1,7 +1,7 @@
 #
 # Makefile for a Video Disk Recorder plugin
 #
-# $Id: extrecmenu.mk,v 1.1 2014/08/05 19:11:03 hd_brummy Exp $
+# $Id$
 
 # The official name of this plugin.
 # This name will be used in the '-P...' option of VDR to load the plugin.

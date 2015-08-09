@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Try-Tiny/Try-Tiny-0.180.0.ebuild,v 1.13 2014/03/13 17:38:51 zlogene Exp $
+# $Id$
 
 EAPI=5
 

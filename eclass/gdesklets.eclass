@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/eclass/gdesklets.eclass,v 1.21 2011/08/22 04:46:31 vapier Exp $
+# $Id$
 
 # @ECLASS: gdesklets.eclass
 # @MAINTAINER:

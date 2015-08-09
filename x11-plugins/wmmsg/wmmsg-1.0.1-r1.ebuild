@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmsg/wmmsg-1.0.1-r1.ebuild,v 1.6 2014/04/07 19:32:30 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

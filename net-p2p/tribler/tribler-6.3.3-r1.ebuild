@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/tribler/tribler-6.3.3-r1.ebuild,v 1.1 2014/11/16 20:17:27 blueness Exp $
+# $Id$
 
 EAPI="5"
 

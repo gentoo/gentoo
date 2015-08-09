@@ -106,7 +106,7 @@ diff -Nru rp-l2tp-0.4.orig/man/l2tp.conf.5 rp-l2tp-0.4/man/l2tp.conf.5
 --- rp-l2tp-0.4.orig/man/l2tp.conf.5	2007-04-15 13:30:55.000000000 +0300
 +++ rp-l2tp-0.4/man/l2tp.conf.5	2007-04-15 13:29:18.000000000 +0300
 @@ -1,13 +1,13 @@
- .\" $Id: rp-l2tp-0.4-gentoo.patch,v 1.1 2007/04/15 10:42:17 mrness Exp $ 
+ .\" $Id$
  .\" LIC: GPL
 -.TH L2TP.CONF 5 "11 March 2002"
 +.TH RP-L2TPD.CONF 5 "11 March 2002"
@@ -139,7 +139,7 @@ diff -Nru rp-l2tp-0.4.orig/man/l2tpd.8 rp-l2tp-0.4/man/l2tpd.8
 --- rp-l2tp-0.4.orig/man/l2tpd.8	2007-04-15 13:30:55.000000000 +0300
 +++ rp-l2tp-0.4/man/l2tpd.8	2007-04-15 13:29:18.000000000 +0300
 @@ -1,14 +1,14 @@
- .\" $Id: rp-l2tp-0.4-gentoo.patch,v 1.1 2007/04/15 10:42:17 mrness Exp $ 
+ .\" $Id$
  .\" LIC: GPL
 -.TH L2TPD 8 "11 March 2002"
 +.TH RP-L2TPD 8 "11 March 2002"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/prover9/prover9-2009.11a.ebuild,v 1.4 2014/01/08 15:59:39 jlec Exp $
+# $Id$
 
 EAPI=5
 

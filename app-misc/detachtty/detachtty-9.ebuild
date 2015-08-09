@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/detachtty/detachtty-9.ebuild,v 1.11 2011/01/04 21:56:48 hwoarang Exp $
+# $Id$
 
 inherit toolchain-funcs
 

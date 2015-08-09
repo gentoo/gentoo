@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dbus-test-runner/dbus-test-runner-12.10.1.ebuild,v 1.4 2013/12/08 20:06:06 pacho Exp $
+# $Id$
 
 EAPI=4
 

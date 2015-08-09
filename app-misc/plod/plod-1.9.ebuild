@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/plod/plod-1.9.ebuild,v 1.1 2008/01/10 22:05:35 killerfox Exp $
+# $Id$
 
 DESCRIPTION="PLOD is a tool designed to help administrators (and others) keep
 track of their daily activities."

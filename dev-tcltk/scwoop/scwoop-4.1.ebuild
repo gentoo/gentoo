@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/scwoop/scwoop-4.1.ebuild,v 1.7 2013/04/30 16:23:33 ulm Exp $
+# $Id$
 
 DESCRIPTION="Simple Composite Widget Object Oriented Package"
 HOMEPAGE="http://jfontain.free.fr/scwoop41.htm"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/xfce_plugins.desc,v 1.9 2014/09/16 11:12:15 ssuominen Exp $
+# $Id$
 
 # This file contains descriptions of XFCE_PLUGINS USE_EXPAND flags.
 

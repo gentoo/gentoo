@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/ksh/ksh-93.20110208.ebuild,v 1.7 2012/04/01 17:17:28 armin76 Exp $
+# $Id$
 
 EAPI=4
 

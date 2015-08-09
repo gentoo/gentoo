@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=7368863377355bc85918b2e59c46abee
+SLOT=0
 DEFINED_PHASES=compile install prepare unpack
+EAPI=5
 DEPEND=lapack? ( virtual/lapack ) virtual/pkgconfig dev-lang/perl:=[-build(-)]
 DESCRIPTION=Tools for working with VCF (Variant Call Format) files
-EAPI=5
-HOMEPAGE=http://vcftools.sourceforge.net/
-IUSE=lapack
-KEYWORDS=~x86 ~amd64
 LICENSE=LGPL-3
-RDEPEND=lapack? ( virtual/lapack ) dev-lang/perl:=[-build(-)]
-SLOT=0
+IUSE=lapack
 SRC_URI=mirror://sourceforge/vcftools/vcftools_0.1.12b.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=e21ab94868909765f282095cd14d4215
+KEYWORDS=~x86 ~amd64
+HOMEPAGE=http://vcftools.sourceforge.net/
+RDEPEND=lapack? ( virtual/lapack ) dev-lang/perl:=[-build(-)]

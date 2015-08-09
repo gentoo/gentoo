@@ -1,8 +1,10 @@
-DEFINED_PHASES=install unpack
-DESCRIPTION=Global and progressive multiple sequence alignment
-HOMEPAGE=http://msa.cgb.ki.se/
-KEYWORDS=amd64 x86
-LICENSE=GPL-2
+_eclasses_=
+_md5_=796265b19f9020a39acc88060b0a06dc
 SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=0
+DESCRIPTION=Global and progressive multiple sequence alignment
+LICENSE=GPL-2
 SRC_URI=mirror://debian/pool/main/k/kalign/kalign_2.03.orig.tar.gz
-_md5_=d65c2434a219065d25951d818ee9db30
+KEYWORDS=amd64 x86
+HOMEPAGE=http://msa.cgb.ki.se/

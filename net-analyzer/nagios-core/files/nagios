@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-core/files/nagios,v 1.12 2011/07/27 16:14:39 dertobi123 Exp $
+# $Id$
 
 opts="${opts} reload checkconfig"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rwbs/rwbs-0.27-r1.ebuild,v 1.4 2013/03/15 13:29:06 pinkbyte Exp $
+# $Id$
 
 EAPI=4
 

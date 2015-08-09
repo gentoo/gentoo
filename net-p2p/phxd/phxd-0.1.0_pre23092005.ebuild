@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/phxd/phxd-0.1.0_pre23092005.ebuild,v 1.9 2014/08/10 20:37:50 slyfox Exp $
+# $Id$
 
 inherit eutils user
 

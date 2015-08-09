@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/LuaBitOp/LuaBitOp-1.0.2.ebuild,v 1.6 2014/12/09 09:52:22 jer Exp $
+# $Id$
 
 EAPI="5"
 inherit toolchain-funcs

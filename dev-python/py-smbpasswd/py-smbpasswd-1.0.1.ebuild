@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/py-smbpasswd/py-smbpasswd-1.0.1.ebuild,v 1.7 2014/08/10 21:16:01 slyfox Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

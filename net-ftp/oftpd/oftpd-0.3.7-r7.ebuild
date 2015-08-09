@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/oftpd/oftpd-0.3.7-r7.ebuild,v 1.8 2012/12/19 07:26:21 ulm Exp $
+# $Id$
 
 EAPI=2
 

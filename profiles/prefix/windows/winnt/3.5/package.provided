@@ -1,5 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/winnt/3.5/package.provided,v 1.1 2009/06/06 03:55:11 solar Exp $
+# $Id$
 
 sys-winnt/libc-3.5

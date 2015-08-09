@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/sysfsutils/sysfsutils-2.1.0.ebuild,v 1.14 2013/05/05 23:34:40 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils toolchain-funcs

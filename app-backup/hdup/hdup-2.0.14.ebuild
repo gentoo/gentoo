@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/hdup/hdup-2.0.14.ebuild,v 1.9 2014/08/10 01:54:00 patrick Exp $
+# $Id$
 
 KEYWORDS="~amd64 ~ppc ~x86"
 DESCRIPTION="Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh"

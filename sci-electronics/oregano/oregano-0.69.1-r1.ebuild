@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/oregano/oregano-0.69.1-r1.ebuild,v 1.9 2014/11/12 21:46:23 dlan Exp $
+# $Id$
 
 EAPI="5"
 

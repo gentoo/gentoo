@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/jadetex/jadetex-3.13-r6.ebuild,v 1.11 2014/04/06 15:18:27 vapier Exp $
+# $Id$
 
 EAPI=5
 

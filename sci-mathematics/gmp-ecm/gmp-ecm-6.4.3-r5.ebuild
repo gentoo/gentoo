@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/gmp-ecm/gmp-ecm-6.4.3-r5.ebuild,v 1.2 2013/03/07 08:05:21 jlec Exp $
+# $Id$
 
 EAPI=4
 DESCRIPTION="Elliptic Curve Method for Integer Factorization"

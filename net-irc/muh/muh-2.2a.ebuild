@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/muh/muh-2.2a.ebuild,v 1.6 2007/05/07 19:34:47 dang Exp $
+# $Id$
 
 DESCRIPTION="Persistent IRC bouncer"
 HOMEPAGE="http://mind.riot.org/muh/"

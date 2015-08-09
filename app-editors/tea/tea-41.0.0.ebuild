@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/tea/tea-41.0.0.ebuild,v 1.1 2015/04/08 14:03:00 pesa Exp $
+# $Id$
 
 EAPI=5
 PLOCALES="de fr ru"

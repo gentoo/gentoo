@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ttysnoop/ttysnoop-0.12d.ebuild,v 1.5 2012/10/29 09:01:44 pinkbyte Exp $
+# $Id$
 
 EAPI="4"
 

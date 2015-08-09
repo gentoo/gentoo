@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-blis/coinor-blis-0.93.10.ebuild,v 1.2 2014/02/04 09:55:14 jlec Exp $
+# $Id$
 
 EAPI=5
 

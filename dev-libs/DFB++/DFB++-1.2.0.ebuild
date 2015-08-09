@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/DFB++/DFB++-1.2.0.ebuild,v 1.5 2012/05/04 18:35:55 jdhore Exp $
+# $Id$
 
 inherit eutils
 

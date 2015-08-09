@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/whois/whois-5.0.26.ebuild,v 1.1 2013/07/21 10:34:25 radhermit Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

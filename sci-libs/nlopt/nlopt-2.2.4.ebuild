@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/nlopt/nlopt-2.2.4.ebuild,v 1.10 2013/04/24 12:20:01 jlec Exp $
+# $Id$
 
 EAPI=4
 

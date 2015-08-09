@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/toycars/toycars-0.3.10.ebuild,v 1.11 2015/03/15 20:51:08 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic games

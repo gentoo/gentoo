@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/muttprint/muttprint-0.73-r1.ebuild,v 1.6 2012/08/21 06:35:25 xmw Exp $
+# $Id$
 
 EAPI=4
 

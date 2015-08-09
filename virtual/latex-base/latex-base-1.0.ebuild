@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/latex-base/latex-base-1.0.ebuild,v 1.13 2012/05/09 13:48:32 aballier Exp $
+# $Id$
 
 DESCRIPTION="Virtual for basic LaTeX binaries"
 HOMEPAGE=""

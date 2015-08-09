@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.17-r1.ebuild,v 1.11 2012/03/02 20:52:14 ranger Exp $
+# $Id$
 
 EAPI=3
 

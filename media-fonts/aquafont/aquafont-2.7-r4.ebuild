@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/aquafont/aquafont-2.7-r4.ebuild,v 1.6 2010/02/21 02:14:12 abcd Exp $
+# $Id$
 
 inherit font
 

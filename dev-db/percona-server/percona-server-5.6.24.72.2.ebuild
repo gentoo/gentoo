@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/percona-server/percona-server-5.6.24.72.2.ebuild,v 1.1 2015/05/11 16:50:38 grknight Exp $
+# $Id$
 
 EAPI="5"
 MY_EXTRAS_VER="20150113-1853Z"

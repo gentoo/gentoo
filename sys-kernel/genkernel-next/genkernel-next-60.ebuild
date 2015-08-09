@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/genkernel-next/genkernel-next-60.ebuild,v 1.1 2015/01/20 08:25:58 lxnay Exp $
+# $Id$
 
 EAPI=5
 

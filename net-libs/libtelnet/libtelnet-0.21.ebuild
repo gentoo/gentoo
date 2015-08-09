@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libtelnet/libtelnet-0.21.ebuild,v 1.1 2014/05/28 15:47:22 nativemad Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools

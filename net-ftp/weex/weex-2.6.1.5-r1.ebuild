@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/weex/weex-2.6.1.5-r1.ebuild,v 1.4 2014/12/16 10:32:28 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

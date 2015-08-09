@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr-gtk/bzr-gtk-0.104.0.ebuild,v 1.1 2012/10/08 19:45:54 fauli Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

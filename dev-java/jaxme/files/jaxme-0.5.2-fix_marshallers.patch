@@ -3,7 +3,7 @@ diff -ur ws-jaxme-0.5.2-old/src/jaxme/org/apache/ws/jaxme/impl/JMMarshallerImpl.
 +++ ws-jaxme-0.5.2/src/jaxme/org/apache/ws/jaxme/impl/JMMarshallerImpl.java	2009-04-05 00:43:39.498597962 +0300
 @@ -45,7 +45,7 @@
   * @author <a href="mailto:joe@ispsoft.de">Jochen Wiedmann</a>
-  * @version $Id: jaxme-0.5.2-fix_marshallers.patch,v 1.1 2009/05/23 00:55:54 ali_bush Exp $
+  * @version $Id$
   */
 -public class JMMarshallerImpl extends JMControllerImpl implements JMMarshaller {
 +public abstract class JMMarshallerImpl extends JMControllerImpl implements JMMarshaller {

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/sitebar/sitebar-3.3.9-r1.ebuild,v 1.6 2010/09/11 15:18:00 mabi Exp $
+# $Id$
 
 inherit webapp eutils
 

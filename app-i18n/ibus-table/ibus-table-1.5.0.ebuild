@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-table/ibus-table-1.5.0.ebuild,v 1.2 2013/02/05 11:44:18 yngwin Exp $
+# $Id$
 
 EAPI=5
 PYTHON_DEPEND="2:2.5"

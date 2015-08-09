@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/rarfs/rarfs-0.1.1.ebuild,v 1.4 2012/12/15 08:17:25 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

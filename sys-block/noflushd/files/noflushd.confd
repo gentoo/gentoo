@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/noflushd/files/noflushd.confd,v 1.1 2005/03/06 19:19:20 ciaranm Exp $
+# $Id$
 
 # Config file for /etc/init.d/noflushd
 

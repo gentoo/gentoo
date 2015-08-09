@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/uriparser/uriparser-0.8.2.ebuild,v 1.1 2015/04/27 19:02:56 sping Exp $
+# $Id$
 
 EAPI=4
 

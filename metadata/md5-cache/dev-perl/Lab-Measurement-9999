@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=a648b711a6cd4c94a8c8ec4a0ea8cbf0
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare test unpack
+EAPI=5
 DEPEND=dev-perl/Class-ISA dev-perl/Clone dev-perl/Exception-Class dev-perl/Hook-LexWrap dev-perl/List-MoreUtils dev-perl/Term-ANSIScreen dev-perl/TermReadKey dev-perl/TeX-Encode dev-perl/XML-Generator dev-perl/XML-DOM dev-perl/XML-Twig dev-perl/encoding-warnings dev-perl/yaml dev-perl/Switch sci-visualization/gnuplot virtual/perl-Data-Dumper virtual/perl-Encode virtual/perl-Time-HiRes !dev-perl/Lab-Instrument !dev-perl/Lab-Tools debug? ( dev-lang/perl[ithreads] dev-perl/wxperl ) xpression? ( dev-perl/wxperl ) dev-perl/Module-Build dev-lang/perl:=[-build(-)] >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Measurement control and automation with Perl
-EAPI=5
-HOMEPAGE=http://www.labmeasurement.de/
-IUSE=debug +xpression
 LICENSE=|| ( Artistic GPL-1+ )
+IUSE=debug +xpression
+HOMEPAGE=http://www.labmeasurement.de/
 RDEPEND=dev-perl/Class-ISA dev-perl/Clone dev-perl/Exception-Class dev-perl/Hook-LexWrap dev-perl/List-MoreUtils dev-perl/Term-ANSIScreen dev-perl/TermReadKey dev-perl/TeX-Encode dev-perl/XML-Generator dev-perl/XML-DOM dev-perl/XML-Twig dev-perl/encoding-warnings dev-perl/yaml dev-perl/Switch sci-visualization/gnuplot virtual/perl-Data-Dumper virtual/perl-Encode virtual/perl-Time-HiRes !dev-perl/Lab-Instrument !dev-perl/Lab-Tools debug? ( dev-lang/perl[ithreads] dev-perl/wxperl ) xpression? ( dev-perl/wxperl ) dev-lang/perl:=[-build(-)]
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=1c4d9134744f8c27f113044476fe8957

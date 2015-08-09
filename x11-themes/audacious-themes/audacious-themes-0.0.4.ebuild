@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/audacious-themes/audacious-themes-0.0.4.ebuild,v 1.8 2010/02/24 14:55:36 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="Collection of XMMS themes for Audacious"
 HOMEPAGE="http://www.xmms.org"

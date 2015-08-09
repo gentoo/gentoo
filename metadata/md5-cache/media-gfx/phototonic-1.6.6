@@ -1,13 +1,13 @@
+_eclasses_=qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=be75069095cc162b0f758904094da5a7
+SLOT=0
 DEFINED_PHASES=configure install
+EAPI=5
 DEPEND=dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 media-gfx/exiv2:= svg? ( dev-qt/qtsvg:5 ) tiff? ( dev-qt/qtimageformats:5 )
 DESCRIPTION=Image viewer and organizer
-EAPI=5
-HOMEPAGE=http://oferkv.github.io/phototonic/
-IUSE=svg tiff
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 media-gfx/exiv2:= svg? ( dev-qt/qtsvg:5 ) tiff? ( dev-qt/qtimageformats:5 )
-SLOT=0
+IUSE=svg tiff
 SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/phototonic-1.6.6.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	4ce40e37ef0e28425a7159b0353be026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=15853628be1419687eb0e17fae550b30
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://oferkv.github.io/phototonic/
+RDEPEND=dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 media-gfx/exiv2:= svg? ( dev-qt/qtsvg:5 ) tiff? ( dev-qt/qtimageformats:5 )

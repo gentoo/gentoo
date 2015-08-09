@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/dzen/dzen-0.9.5-r1.ebuild,v 1.4 2014/09/03 10:50:04 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs vcs-snapshot

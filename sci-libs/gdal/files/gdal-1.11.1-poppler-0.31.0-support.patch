@@ -21,7 +21,7 @@ diff -urpN gdal-1.11.1.orig/frmts/pdf/pdfio.cpp gdal-1.11.1/frmts/pdf/pdfio.cpp
 +++ gdal-1.11.1/frmts/pdf/pdfio.cpp	2015-02-19 13:55:58.715589318 -0800
 @@ -39,13 +39,25 @@
  
- CPL_CVSID("$Id: gdal-1.11.1-poppler-0.31.0-support.patch,v 1.1 2015/02/24 00:05:14 xmw Exp $");
+ CPL_CVSID("$Id$");
  
 +
 +#ifdef POPPLER_BASE_STREAM_HAS_TWO_ARGS

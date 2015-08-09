@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/plan9port/plan9port-20130320.ebuild,v 1.3 2014/11/21 09:56:37 vapier Exp $
+# $Id$
 
 EAPI="4"
 

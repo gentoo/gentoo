@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-classpath-inetlib/gnu-classpath-inetlib-1.1-r3.ebuild,v 1.4 2011/12/21 08:39:20 phajdan.jr Exp $
+# $Id$
 
 inherit java-pkg-2 java-ant-2
 

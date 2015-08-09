@@ -1,12 +1,12 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	distutils	def8c8eb435ec28fd9315114640f6c84
+_md5_=94fe1edb0951e09f4488d499a00056df
+SLOT=0
 DEFINED_PHASES=compile install postinst postrm prepare
+EAPI=3
 DEPEND==dev-lang/python-2*
 DESCRIPTION=A Python package for implementing SCGI servers
-EAPI=3
-HOMEPAGE=http://pypi.python.org/pypi/scgi http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/
-KEYWORDS=~amd64 hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=CNRI
-RDEPEND==dev-lang/python-2*
-SLOT=0
 SRC_URI=http://python.ca/scgi/releases/scgi-1.14.tar.gz
-_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=075394ce6adde829caaed5081362e6a1
+KEYWORDS=~amd64 hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+HOMEPAGE=http://pypi.python.org/pypi/scgi http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/
+RDEPEND==dev-lang/python-2*

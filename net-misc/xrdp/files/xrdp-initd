@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/xrdp/files/xrdp-initd,v 1.4 2014/10/23 10:23:41 mgorny Exp $
+# $Id$
 
 depend() {
 	use net logger

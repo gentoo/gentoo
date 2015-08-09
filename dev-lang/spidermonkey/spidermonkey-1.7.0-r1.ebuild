@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/spidermonkey-1.7.0-r1.ebuild,v 1.2 2011/03/22 15:51:21 jer Exp $
+# $Id$
 
 inherit eutils toolchain-funcs multilib flag-o-matic
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bumpversion/bumpversion-0.5.3.ebuild,v 1.1 2015/08/07 09:22:46 jlec Exp $
+# $Id$
 
 EAPI=5
 

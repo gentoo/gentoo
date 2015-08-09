@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/mtink/files/mtinkd.confd,v 1.3 2004/07/15 00:22:25 agriffis Exp $
+# $Id$
 
 # define the device file, adapt this
 #DEV_FILE=/dev/lp0

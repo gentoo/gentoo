@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-dts/gst-plugins-dts-1.4.5.ebuild,v 1.4 2015/03/29 10:51:25 jer Exp $
+# $Id$
 
 EAPI="5"
 GST_ORG_MODULE=gst-plugins-bad

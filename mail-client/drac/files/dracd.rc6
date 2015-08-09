@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/drac/files/dracd.rc6,v 1.2 2004/07/14 22:27:19 agriffis Exp $
+# $Id$
 
 depend() {
 	need net portmap

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-event/pecl-event-1.7.8.ebuild,v 1.1 2013/09/22 09:40:17 hwoarang Exp $
+# $Id$
 
 EAPI=4
 PHP_EXT_NAME="event"

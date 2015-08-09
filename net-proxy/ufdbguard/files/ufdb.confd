@@ -1,5 +1,5 @@
 # -*- sh -*-
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/ufdbguard/files/ufdb.confd,v 1.2 2011/05/01 16:05:50 flameeyes Exp $
+# $Id$
 
 # Tables to re-generate when starting or reloading ufdbguard
 UFDB_GT="alwaysallow alwaysdeny"

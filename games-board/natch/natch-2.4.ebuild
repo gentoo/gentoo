@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/natch/natch-2.4.ebuild,v 1.5 2014/10/17 06:48:11 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

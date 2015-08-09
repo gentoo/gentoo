@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xdm/xdm-1.1.11-r1.ebuild,v 1.11 2012/08/20 21:28:34 mgorny Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jackson-dataformat-yaml/jackson-dataformat-yaml-2.5.1.ebuild,v 1.1 2015/03/05 23:29:13 chewi Exp $
+# $Id$
 
 EAPI="5"
 

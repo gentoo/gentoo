@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mongo-c-driver/mongo-c-driver-0.98.2.ebuild,v 1.2 2015/03/16 20:25:44 ultrabug Exp $
+# $Id$
 
 EAPI=5
 

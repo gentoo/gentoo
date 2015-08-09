@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-firmware/b43legacy-firmware/b43legacy-firmware-3.130.20.0.ebuild,v 1.1 2013/02/13 18:54:22 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

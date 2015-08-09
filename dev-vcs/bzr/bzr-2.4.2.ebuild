@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr/bzr-2.4.2.ebuild,v 1.6 2014/08/10 21:22:22 slyfox Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"

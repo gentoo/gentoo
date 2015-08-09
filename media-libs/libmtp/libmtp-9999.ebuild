@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmtp/libmtp-9999.ebuild,v 1.16 2015/05/06 07:23:14 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit eutils udev user

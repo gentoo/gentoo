@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwloc/hwloc-1.10.0-r2.ebuild,v 1.9 2015/06/28 16:12:42 zlogene Exp $
+# $Id$
 
 EAPI=5
 

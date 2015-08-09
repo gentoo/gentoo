@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gegl/gegl-0.3.0.ebuild,v 1.6 2015/08/02 09:02:36 pacho Exp $
+# $Id$
 
 EAPI=5
 

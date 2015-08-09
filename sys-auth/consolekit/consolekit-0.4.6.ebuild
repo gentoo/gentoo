@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/consolekit/consolekit-0.4.6.ebuild,v 1.19 2015/03/03 09:53:46 dlan Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils linux-info pam systemd

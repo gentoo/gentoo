@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/rosetta-fragments/rosetta-fragments-3.1-r1.ebuild,v 1.2 2014/05/14 12:09:55 jlec Exp $
+# $Id$
 
 EAPI=5
 

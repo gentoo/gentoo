@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/crf++/crf++-0.54.ebuild,v 1.4 2011/09/04 10:19:01 maekke Exp $
+# $Id$
 
 EAPI="3"
 inherit autotools eutils

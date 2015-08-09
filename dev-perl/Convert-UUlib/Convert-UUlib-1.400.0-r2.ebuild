@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-UUlib/Convert-UUlib-1.400.0-r2.ebuild,v 1.2 2014/10/11 20:20:41 zlogene Exp $
+# $Id$
 
 EAPI=5
 

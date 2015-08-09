@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2005q3_2-glibc2_5/scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7.ebuild,v 1.6 2014/08/10 20:05:33 slyfox Exp $
+# $Id$
 
 SBOX_GROUP="sbox"
 

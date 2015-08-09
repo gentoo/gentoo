@@ -1,6 +1,6 @@
 # Copyright 2010-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/mipsel/mips64el/n32/make.defaults,v 1.5 2014/06/30 15:16:17 mgorny Exp $
+# $Id$
 
 PROFILE_ARCH="mips64el"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-wnn/scim-wnn-0.2.4.ebuild,v 1.5 2009/12/31 21:03:14 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="Japanese input method Wnn IMEngine for SCIM"
 HOMEPAGE="http://nop.net-p.org/modules/pukiwiki/index.php?%5B%5Bscim-wnn%5D%5D"

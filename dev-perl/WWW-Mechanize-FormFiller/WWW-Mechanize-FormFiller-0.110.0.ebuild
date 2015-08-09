@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/WWW-Mechanize-FormFiller/WWW-Mechanize-FormFiller-0.110.0.ebuild,v 1.1 2015/03/11 16:18:50 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

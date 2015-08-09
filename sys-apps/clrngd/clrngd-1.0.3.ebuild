@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/clrngd/clrngd-1.0.3.ebuild,v 1.8 2009/09/23 20:23:03 patrick Exp $
+# $Id$
 
 DESCRIPTION="Clock randomness gathering daemon"
 HOMEPAGE="http://echelon.pl/pubs/"

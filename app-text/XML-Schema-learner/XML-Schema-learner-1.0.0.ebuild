@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/XML-Schema-learner/XML-Schema-learner-1.0.0.ebuild,v 1.5 2015/06/06 09:21:05 jlec Exp $
+# $Id$
 
 EAPI=5
 

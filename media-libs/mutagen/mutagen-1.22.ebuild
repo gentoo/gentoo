@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mutagen/mutagen-1.22.ebuild,v 1.11 2014/09/18 15:13:57 ssuominen Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

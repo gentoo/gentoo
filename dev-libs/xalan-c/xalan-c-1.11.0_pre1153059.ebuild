@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/xalan-c-1.11.0_pre1153059.ebuild,v 1.4 2011/12/18 17:26:24 armin76 Exp $
+# $Id$
 
 EAPI="4"
 

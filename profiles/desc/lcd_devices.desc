@@ -1,6 +1,6 @@
 # Copyright 2007-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/lcd_devices.desc,v 1.9 2012/05/07 09:43:35 pacho Exp $
+# $Id$
 
 # This file contains descriptions of LCD_DEVICES USE_EXPAND flags.
 

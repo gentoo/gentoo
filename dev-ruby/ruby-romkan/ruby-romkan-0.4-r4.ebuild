@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-romkan/ruby-romkan-0.4-r4.ebuild,v 1.10 2014/04/05 17:57:57 mrueg Exp $
+# $Id$
 
 EAPI="4"
 # ruby19 jruby

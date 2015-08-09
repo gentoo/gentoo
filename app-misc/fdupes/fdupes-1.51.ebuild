@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/fdupes/fdupes-1.51.ebuild,v 1.11 2015/02/28 13:58:51 ago Exp $
+# $Id$
 
 EAPI=5
 

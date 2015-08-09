@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/armv8-fast-model/armv8-fast-model-0.8.5206.ebuild,v 1.1 2014/01/18 09:21:49 vapier Exp $
+# $Id$
 
 EAPI="4"
 

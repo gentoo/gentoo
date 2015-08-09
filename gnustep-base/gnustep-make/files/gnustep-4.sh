@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-make/files/gnustep-4.sh,v 1.1 2011/04/20 17:42:09 voyageur Exp $
+# $Id$
 
 # Test for an interactive shell
 case $- in

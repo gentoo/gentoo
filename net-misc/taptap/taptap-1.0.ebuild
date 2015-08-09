@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/taptap/taptap-1.0.ebuild,v 1.1 2010/11/07 20:31:13 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit toolchain-funcs

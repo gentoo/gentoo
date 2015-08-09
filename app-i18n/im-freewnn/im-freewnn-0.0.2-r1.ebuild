@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/im-freewnn/im-freewnn-0.0.2-r1.ebuild,v 1.10 2013/04/21 10:16:49 lxnay Exp $
+# $Id$
 
 EAPI="1"
 

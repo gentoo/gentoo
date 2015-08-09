@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/iscsitarget/iscsitarget-1.4.20.2_p20130821.ebuild,v 1.4 2015/07/29 17:47:02 zlogene Exp $
+# $Id$
 
 EAPI="4"
 

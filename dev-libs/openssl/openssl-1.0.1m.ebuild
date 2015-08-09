@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/openssl-1.0.1m.ebuild,v 1.10 2015/05/27 14:11:05 zlogene Exp $
+# $Id$
 
 EAPI="4"
 

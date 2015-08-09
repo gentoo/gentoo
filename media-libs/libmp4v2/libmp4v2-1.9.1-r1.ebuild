@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmp4v2/libmp4v2-1.9.1-r1.ebuild,v 1.4 2012/07/02 07:58:18 jdhore Exp $
+# $Id$
 
 # this ebuild is only for the libmp4v2.so.1 SONAME for ABI compat
 

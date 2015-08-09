@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/regexp-common/regexp-common-2013031301.0.0.ebuild,v 1.9 2014/07/25 17:20:44 zlogene Exp $
+# $Id$
 
 EAPI=5
 

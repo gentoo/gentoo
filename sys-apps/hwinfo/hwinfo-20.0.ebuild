@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwinfo/hwinfo-20.0.ebuild,v 1.7 2014/05/28 10:19:55 jlec Exp $
+# $Id$
 
 EAPI=4
 inherit multilib rpm toolchain-funcs

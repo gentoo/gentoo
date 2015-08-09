@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/authenticate/authenticate-1.3.2.10.ebuild,v 1.1 2014/12/13 13:25:02 gienah Exp $
+# $Id$
 
 EAPI=5
 

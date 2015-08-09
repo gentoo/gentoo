@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/email/email-3.0.5.ebuild,v 1.6 2014/08/10 20:44:37 slyfox Exp $
+# $Id$
 
 inherit flag-o-matic
 

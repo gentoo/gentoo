@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logsentry/logsentry-1.1.1-r1.ebuild,v 1.1 2011/04/05 16:47:19 signals Exp $
+# $Id$
 
 inherit toolchain-funcs
 

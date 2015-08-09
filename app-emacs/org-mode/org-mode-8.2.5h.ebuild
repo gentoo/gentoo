@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/org-mode/org-mode-8.2.5h.ebuild,v 1.5 2014/06/14 10:16:02 phajdan.jr Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/adm8211/adm8211-20060111.ebuild,v 1.3 2007/11/14 03:38:32 robbat2 Exp $
+# $Id$
 
 inherit linux-mod
 

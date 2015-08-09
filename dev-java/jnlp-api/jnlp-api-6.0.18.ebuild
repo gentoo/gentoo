@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jnlp-api/jnlp-api-6.0.18.ebuild,v 1.4 2014/08/10 20:18:43 slyfox Exp $
+# $Id$
 
 EAPI="4"
 JAVA_PKG_IUSE="source"

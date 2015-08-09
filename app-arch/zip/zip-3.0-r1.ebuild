@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/zip/zip-3.0-r1.ebuild,v 1.19 2014/01/18 01:45:41 vapier Exp $
+# $Id$
 
 EAPI="2"
 inherit toolchain-funcs eutils flag-o-matic

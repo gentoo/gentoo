@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/affiche/affiche-0.6.0-r3.ebuild,v 1.5 2008/08/01 11:52:23 grobian Exp $
+# $Id$
 
 inherit gnustep-2
 

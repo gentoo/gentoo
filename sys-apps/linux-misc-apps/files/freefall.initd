@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2012-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/linux-misc-apps/files/freefall.initd,v 1.1 2014/12/29 00:12:01 robbat2 Exp $
+# $Id$
 
 checkconfig() {
     if [ -z "$DISK" ] ; then

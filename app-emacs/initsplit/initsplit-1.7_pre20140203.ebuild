@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/initsplit/initsplit-1.7_pre20140203.ebuild,v 1.3 2014/03/24 14:57:19 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/hyperspec/hyperspec-7.0.ebuild,v 1.5 2007/07/15 02:50:08 mr_bones_ Exp $
+# $Id$
 
 MY_PV=${PV/./-}
 

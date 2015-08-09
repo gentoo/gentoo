@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/afbinit/afbinit-1.0.1-r7.ebuild,v 1.4 2014/07/22 20:29:17 mrueg Exp $
+# $Id$
 
 inherit eutils
 

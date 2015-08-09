@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/misterhouse/misterhouse-2.103.ebuild,v 1.7 2013/06/10 17:11:51 zlogene Exp $
+# $Id$
 
 DESCRIPTION="Mister House, an open source home automation program with X10 support"
 HOMEPAGE="http://misterhouse.sf.net/"

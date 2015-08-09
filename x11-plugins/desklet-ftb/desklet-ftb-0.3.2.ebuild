@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-ftb/desklet-ftb-0.3.2.ebuild,v 1.10 2009/11/15 20:48:42 nixphoeni Exp $
+# $Id$
 
 DESKLET_NAME="FTB"
 

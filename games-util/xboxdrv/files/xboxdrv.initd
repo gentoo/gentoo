@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/xboxdrv/files/xboxdrv.initd,v 1.1 2013/05/14 19:11:14 swegener Exp $
+# $Id$
 
 PIDFILE="/var/run/${SVCNAME}.pid"
 

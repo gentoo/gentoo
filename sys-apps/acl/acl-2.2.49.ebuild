@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/acl/acl-2.2.49.ebuild,v 1.7 2010/04/02 12:15:58 armin76 Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

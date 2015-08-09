@@ -1,5 +1,5 @@
 #%PAM-1.0
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/files/3.5/system-auth-winbind.pam,v 1.1 2010/03/01 16:19:54 patrick Exp $
+# $Id$
 
 auth        required      pam_env.so
 auth        sufficient    pam_winbind.so

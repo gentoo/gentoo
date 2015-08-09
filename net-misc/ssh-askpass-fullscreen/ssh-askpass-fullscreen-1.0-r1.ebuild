@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ssh-askpass-fullscreen/ssh-askpass-fullscreen-1.0-r1.ebuild,v 1.11 2015/04/02 18:53:43 mr_bones_ Exp $
+# $Id$
 
 EAPI=4
 

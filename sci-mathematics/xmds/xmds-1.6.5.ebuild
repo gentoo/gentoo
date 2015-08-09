@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/xmds/xmds-1.6.5.ebuild,v 1.4 2008/09/08 20:36:20 maekke Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/isapnptools/isapnptools-1.27.ebuild,v 1.4 2012/01/21 16:13:56 phajdan.jr Exp $
+# $Id$
 
 EAPI="3"
 

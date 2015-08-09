@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cairocffi/cairocffi-0.6-r1.ebuild,v 1.2 2015/06/25 07:29:38 jlec Exp $
+# $Id$
 
 EAPI="5"
 

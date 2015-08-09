@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/pymp/pymp-1.1.ebuild,v 1.5 2014/01/05 10:47:24 ago Exp $
+# $Id$
 
 EAPI=3
 PYTHON_DEPEND="2:2.5"

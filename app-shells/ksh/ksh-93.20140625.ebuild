@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/ksh/ksh-93.20140625.ebuild,v 1.1 2014/09/29 02:14:32 floppym Exp $
+# $Id$
 
 EAPI=5
 

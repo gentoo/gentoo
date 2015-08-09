@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/pybugz/pybugz-9999.ebuild,v 1.23 2015/03/29 05:50:54 williamh Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python3_3 python3_4 )

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-9999.ebuild,v 1.56 2015/05/25 23:48:45 tetromino Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

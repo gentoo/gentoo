@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vqadmin/vqadmin-2.3.7.ebuild,v 1.2 2008/04/06 19:42:23 hollow Exp $
+# $Id$
 
 inherit webapp eutils autotools qmail
 

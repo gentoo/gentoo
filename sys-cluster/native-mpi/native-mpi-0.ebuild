@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/native-mpi/native-mpi-0.ebuild,v 1.2 2011/08/26 21:25:59 flameeyes Exp $
+# $Id$
 
 EAPI=3
 

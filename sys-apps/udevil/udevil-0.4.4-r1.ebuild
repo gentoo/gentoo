@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/udevil/udevil-0.4.4-r1.ebuild,v 1.1 2015/06/20 05:31:55 zlg Exp $
+# $Id$
 
 EAPI=5
 

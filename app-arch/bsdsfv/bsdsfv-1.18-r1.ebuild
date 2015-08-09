@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/bsdsfv/bsdsfv-1.18-r1.ebuild,v 1.12 2011/03/27 20:27:51 angelos Exp $
+# $Id$
 
 EAPI=3
 inherit eutils toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/cdbackup/cdbackup-0.7.1.ebuild,v 1.1 2013/04/04 08:16:50 patrick Exp $
+# $Id$
 
 inherit toolchain-funcs
 

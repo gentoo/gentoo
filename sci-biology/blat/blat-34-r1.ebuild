@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/blat/blat-34-r1.ebuild,v 1.2 2011/08/04 19:46:21 grobian Exp $
+# $Id$
 
 EAPI=4
 

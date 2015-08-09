@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/skk/skk-1.23.ebuild,v 1.12 2014/08/10 19:31:59 slyfox Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

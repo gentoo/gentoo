@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/mkfontscale/mkfontscale-1.1.1.ebuild,v 1.11 2014/01/18 12:21:01 vapier Exp $
+# $Id$
 
 EAPI=5
 

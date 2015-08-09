@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/nekohtml/nekohtml-1.9.18-r1.ebuild,v 1.4 2015/03/29 18:06:48 zlogene Exp $
+# $Id$
 
 EAPI="5"
 

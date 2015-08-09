@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/zaz/zaz-1.0.0.ebuild,v 1.8 2014/06/13 15:50:01 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit autotools flag-o-matic eutils games

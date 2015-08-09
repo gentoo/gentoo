@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/rsyslog/rsyslog-8.9.0.ebuild,v 1.1 2015/04/20 13:06:49 ultrabug Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1

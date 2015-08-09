@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/eyesaver/eyesaver-0.4.ebuild,v 1.2 2014/12/31 13:15:39 kensington Exp $
+# $Id$
 
 EAPI=5
 

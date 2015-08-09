@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cdb/python-cdb-0.34.ebuild,v 1.8 2011/04/03 11:47:30 arfrever Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

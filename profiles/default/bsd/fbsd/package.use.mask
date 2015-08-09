@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/package.use.mask,v 1.40 2015/06/20 21:55:23 chewi Exp $
+# $Id$
 
 # As per UberLord's requests
 sys-apps/openrc pam

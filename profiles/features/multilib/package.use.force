@@ -1,6 +1,6 @@
 # Copyright 2004-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/multilib/package.use.force,v 1.1 2014/03/21 18:57:15 vapier Exp $
+# $Id$
 
 # These packages must have multilib turned on in order to work sanely.
 sys-apps/sandbox multilib

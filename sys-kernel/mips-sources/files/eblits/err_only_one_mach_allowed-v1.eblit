@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/err_only_one_mach_allowed-v1.eblit,v 1.1 2009/03/16 06:39:10 kumba Exp $
+# $Id$
 
 # Eblit informing a user when they try to apply two machine patches to the
 # same tree.  Most machine patches are exclusive to avoid conflicts.

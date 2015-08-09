@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ebtables/ebtables-2.0.10.4-r1.ebuild,v 1.2 2014/08/10 20:55:27 slyfox Exp $
+# $Id$
 
 EAPI="4"
 

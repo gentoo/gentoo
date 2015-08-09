@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/files/irda.initd,v 1.2 2008/03/23 16:00:16 sbriesen Exp $
+# $Id$
 
 # Hint: We don't use start-stop-daemon, because pidfile is the same
 # for every irattach instance. So it isn't reliable if we have more

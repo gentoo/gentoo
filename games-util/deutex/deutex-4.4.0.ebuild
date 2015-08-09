@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/deutex/deutex-4.4.0.ebuild,v 1.10 2015/03/15 04:20:14 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs eutils

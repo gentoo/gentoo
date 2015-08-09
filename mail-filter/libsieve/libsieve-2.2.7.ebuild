@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/libsieve/libsieve-2.2.7.ebuild,v 1.7 2014/08/10 21:16:22 slyfox Exp $
+# $Id$
 
 DESCRIPTION="A library for parsing, sorting and filtering your mail"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"

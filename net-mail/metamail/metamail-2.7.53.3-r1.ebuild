@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/metamail/metamail-2.7.53.3-r1.ebuild,v 1.8 2013/02/28 14:08:51 eras Exp $
+# $Id$
 
 EAPI=4
 

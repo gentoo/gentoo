@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.13-r7.ebuild,v 1.4 2015/03/25 16:49:40 jlec Exp $
+# $Id$
 
 EAPI="3"
 

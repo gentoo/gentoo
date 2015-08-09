@@ -1,8 +1,10 @@
-DEFINED_PHASES=install
-DESCRIPTION=TCP proxy for applications that don't speak IPv6
-HOMEPAGE=http://toxygen.net/6tunnel
-KEYWORDS=s390 x86
-LICENSE=GPL-2
+_eclasses_=
+_md5_=3074080fca729a794bfee057b244b44
 SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=TCP proxy for applications that don't speak IPv6
+LICENSE=GPL-2
 SRC_URI=http://toxygen.net/6tunnel/6tunnel-0.10.tar.gz
-_md5_=894a7f5bc8cb0f8212442347151d8f25
+KEYWORDS=s390 x86
+HOMEPAGE=http://toxygen.net/6tunnel

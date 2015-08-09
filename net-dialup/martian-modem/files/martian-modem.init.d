@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/martian-modem/files/martian-modem.init.d,v 1.1 2012/12/15 16:41:36 pacho Exp $
+# $Id$
 
 daemon=/usr/sbin/martian_modem
 description="Initscript to run the userspace daemon for winmodems supported by martian-modem driver"

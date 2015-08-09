@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_access_dnsbl/mod_access_dnsbl-0.02.ebuild,v 1.1 2014/12/17 20:22:36 mjo Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sg3_utils/sg3_utils-1.41.ebuild,v 1.1 2015/07/09 08:19:34 polynomial-c Exp $
+# $Id$
 
 EAPI="4"
 

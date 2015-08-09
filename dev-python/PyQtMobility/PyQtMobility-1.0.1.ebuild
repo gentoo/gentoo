@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQtMobility/PyQtMobility-1.0.1.ebuild,v 1.3 2013/03/03 00:36:34 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

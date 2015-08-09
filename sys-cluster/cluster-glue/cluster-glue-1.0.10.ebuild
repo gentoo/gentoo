@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cluster-glue/cluster-glue-1.0.10.ebuild,v 1.6 2014/01/08 06:03:39 vapier Exp $
+# $Id$
 
 EAPI=4
 

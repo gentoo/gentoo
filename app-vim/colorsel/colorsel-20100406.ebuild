@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/colorsel/colorsel-20100406.ebuild,v 1.5 2011/01/07 22:20:43 ranger Exp $
+# $Id$
 
 EAPI=3
 

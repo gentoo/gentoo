@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gxine/gxine-0.5.907-r1.ebuild,v 1.5 2014/08/21 10:45:08 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils fdo-mime gnome2-utils multilib nsplugins

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-soup/gst-plugins-soup-1.2.4-r1.ebuild,v 1.12 2015/01/02 03:06:14 leio Exp $
+# $Id$
 
 EAPI="5"
 

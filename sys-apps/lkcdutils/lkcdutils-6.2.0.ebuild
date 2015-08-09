@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lkcdutils/lkcdutils-6.2.0.ebuild,v 1.1 2009/01/02 05:24:37 vapier Exp $
+# $Id$
 
 inherit eutils
 

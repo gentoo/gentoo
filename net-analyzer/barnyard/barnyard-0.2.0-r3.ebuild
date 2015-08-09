@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/barnyard/barnyard-0.2.0-r3.ebuild,v 1.8 2015/03/25 16:04:09 jlec Exp $
+# $Id$
 
 EAPI=2
 

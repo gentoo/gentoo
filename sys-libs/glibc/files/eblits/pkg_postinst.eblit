@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/pkg_postinst.eblit,v 1.2 2012/04/15 20:04:44 vapier Exp $
+# $Id$
 
 eblit-glibc-pkg_postinst() {
 	# nothing to do if just installing headers

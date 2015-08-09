@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/cfg-update/cfg-update-1.8.9.ebuild,v 1.5 2015/03/21 08:34:55 jlec Exp $
+# $Id$
 
 EAPI=5
 

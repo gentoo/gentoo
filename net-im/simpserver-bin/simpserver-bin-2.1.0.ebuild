@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/simpserver-bin/simpserver-bin-2.1.0.ebuild,v 1.5 2014/08/05 18:34:11 mrueg Exp $
+# $Id$
 
 MY_PN=${PN/-bin/}
 MY_P="${MY_PN}-${PV}"

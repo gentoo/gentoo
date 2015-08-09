@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/efibootmgr/efibootmgr-0.5.4-r1.ebuild,v 1.6 2014/01/15 09:23:37 ago Exp $
+# $Id$
 
 EAPI=5
 

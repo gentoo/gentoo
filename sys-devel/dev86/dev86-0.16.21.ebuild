@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/dev86/dev86-0.16.21.ebuild,v 1.1 2014/06/12 12:36:34 polynomial-c Exp $
+# $Id$
 
 EAPI="5"
 

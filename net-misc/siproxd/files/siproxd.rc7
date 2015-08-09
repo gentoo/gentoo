@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/siproxd/files/siproxd.rc7,v 1.1 2013/03/20 17:19:50 chithanh Exp $
+# $Id$
 
 depend() {
 	need net

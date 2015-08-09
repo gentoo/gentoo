@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/frozen-bubble/frozen-bubble-2.2.1_beta1.ebuild,v 1.12 2015/07/11 20:39:07 dilfridge Exp $
+# $Id$
 
 EAPI=5
 MY_P=${P/_/-}

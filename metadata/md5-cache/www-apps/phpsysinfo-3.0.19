@@ -1,13 +1,13 @@
+_eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=e62a5b32949c35db00ae79d28cc2f99e
+SLOT=3.0.19
 DEFINED_PHASES=install postinst prerm setup
+EAPI=4
 DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=phpSysInfo is a nice package that will display your system stats via PHP
-EAPI=4
-HOMEPAGE=http://phpsysinfo.sourceforge.net/
-IUSE=vhosts
-KEYWORDS=amd64 hppa ppc ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=virtual/httpd-php dev-lang/php[simplexml,xml,xsl(+),xslt(+),unicode] >=app-admin/webapp-config-1.50.15
-SLOT=3.0.19
+IUSE=vhosts
 SRC_URI=mirror://sourceforge/phpsysinfo/phpsysinfo-3.0.19.tar.gz
-_eclasses_=webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=7f884cccad1332d752d55166b9e311e3
+KEYWORDS=amd64 hppa ppc ppc64 x86 ~x86-fbsd
+HOMEPAGE=http://phpsysinfo.sourceforge.net/
+RDEPEND=virtual/httpd-php dev-lang/php[simplexml,xml,xsl(+),xslt(+),unicode] >=app-admin/webapp-config-1.50.15

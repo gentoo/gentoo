@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/deb2targz/deb2targz-1-r2.ebuild,v 1.10 2013/04/18 19:23:02 ulm Exp $
+# $Id$
 
 EAPI=4
 inherit base

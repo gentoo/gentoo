@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnustep-silver-theme/gnustep-silver-theme-2.5.ebuild,v 1.1 2012/02/22 10:12:01 voyageur Exp $
+# $Id$
 
 EAPI=4
 inherit gnustep-2

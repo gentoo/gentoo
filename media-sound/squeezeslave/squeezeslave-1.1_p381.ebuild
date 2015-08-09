@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/squeezeslave/squeezeslave-1.1_p381.ebuild,v 1.2 2015/02/06 14:24:50 aballier Exp $
+# $Id$
 
 EAPI="5"
 

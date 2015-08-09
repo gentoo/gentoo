@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/xsunpinyin/xsunpinyin-2.0.4_pre20130108.ebuild,v 1.2 2013/01/30 14:35:14 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit readme.gentoo scons-utils toolchain-funcs

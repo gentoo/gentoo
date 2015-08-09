@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libndp/libndp-1.4.ebuild,v 1.15 2015/06/07 14:02:18 pacho Exp $
+# $Id$
 
 EAPI=5
 GCONF_DEBUG="no"

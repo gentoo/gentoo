@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/slf4j-api/slf4j-api-1.5.11.ebuild,v 1.5 2010/10/14 16:59:11 ranger Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/x509-system/x509-system-1.4.2.ebuild,v 1.1 2014/03/09 13:15:41 gienah Exp $
+# $Id$
 
 EAPI=5
 

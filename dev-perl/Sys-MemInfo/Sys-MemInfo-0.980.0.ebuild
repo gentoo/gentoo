@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sys-MemInfo/Sys-MemInfo-0.980.0.ebuild,v 1.1 2015/03/04 22:39:09 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

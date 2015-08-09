@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/iwidgets/iwidgets-4.0.1.ebuild,v 1.21 2013/01/19 10:17:04 ulm Exp $
+# $Id$
 
 MY_P=${PN}${PV}
 ITCL_MY_PN="itcl"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/psqlodbc/psqlodbc-09.01.0200.ebuild,v 1.3 2014/12/28 15:15:55 titanofold Exp $
+# $Id$
 
 EAPI="4"
 

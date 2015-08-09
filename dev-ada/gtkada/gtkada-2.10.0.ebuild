@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/gtkada/gtkada-2.10.0.ebuild,v 1.6 2009/12/13 00:28:31 flameeyes Exp $
+# $Id$
 
 inherit eutils gnat versionator
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/grepmail/grepmail-5.30.33-r2.ebuild,v 1.3 2014/08/10 20:44:56 slyfox Exp $
+# $Id$
 
 EAPI=5
 

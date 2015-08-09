@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gkrellm-themes/gkrellm-themes-0.1.ebuild,v 1.18 2015/05/14 16:29:05 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 DESCRIPTION="A pack of ~200 themes for GKrellM"

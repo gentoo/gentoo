@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-weatherng/vdr-weatherng-0.0.8_pre3-r1.ebuild,v 1.4 2015/03/05 18:30:36 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

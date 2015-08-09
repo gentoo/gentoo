@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kbstateapplet/kbstateapplet-0_p1268845.ebuild,v 1.4 2014/03/20 22:01:36 johu Exp $
+# $Id$
 
 EAPI=5
 

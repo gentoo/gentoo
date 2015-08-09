@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pambase/pambase-20120417-r3.ebuild,v 1.11 2014/01/18 05:16:11 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

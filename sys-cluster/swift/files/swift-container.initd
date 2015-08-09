@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/swift/files/swift-container.initd,v 1.2 2015/04/05 02:40:10 prometheanfire Exp $
+# $Id$
 
 COMMAND=/usr/bin/swift-init
 PIDFILE=/run/swift/container-server.pid

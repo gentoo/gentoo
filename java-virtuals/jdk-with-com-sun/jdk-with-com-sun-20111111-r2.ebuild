@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/java-virtuals/jdk-with-com-sun/jdk-with-com-sun-20111111-r2.ebuild,v 1.2 2015/04/14 21:40:53 chewi Exp $
+# $Id$
 
 EAPI="5"
 

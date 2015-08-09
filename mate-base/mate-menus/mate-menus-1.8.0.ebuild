@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-menus/mate-menus-1.8.0.ebuild,v 1.7 2015/07/11 23:53:41 np-hardass Exp $
+# $Id$
 
 EAPI="5"
 

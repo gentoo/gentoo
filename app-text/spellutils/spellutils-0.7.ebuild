@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/spellutils/spellutils-0.7.ebuild,v 1.13 2013/07/24 02:46:56 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

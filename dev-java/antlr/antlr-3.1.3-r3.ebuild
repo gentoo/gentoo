@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/antlr/antlr-3.1.3-r3.ebuild,v 1.3 2015/08/08 01:55:34 sping Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="source"

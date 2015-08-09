@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/x32/package.mask,v 1.2 2013/12/22 15:59:49 phajdan.jr Exp $
+# $Id$
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Oct 2012)
 # V8 upstream said they won't support x32, bug #423815

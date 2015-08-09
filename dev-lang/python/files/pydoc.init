@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public Licence v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/files/pydoc.init,v 1.5 2014/10/12 12:37:07 djc Exp $
+# $Id$
 
 start() {
 	local pydoc_port="${@PYDOC_PORT_VARIABLE@-${PYDOC_PORT}}"

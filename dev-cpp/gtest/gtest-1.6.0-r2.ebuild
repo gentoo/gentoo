@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtest/gtest-1.6.0-r2.ebuild,v 1.5 2015/04/08 17:46:42 mgorny Exp $
+# $Id$
 
 EAPI="5"
 

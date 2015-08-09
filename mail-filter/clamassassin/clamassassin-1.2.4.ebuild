@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/clamassassin/clamassassin-1.2.4.ebuild,v 1.3 2013/11/06 04:46:01 patrick Exp $
+# $Id$
 
 DESCRIPTION="A simple spamassassin-like script for virus scanning (through clamav) and filtering e-mail messages"
 HOMEPAGE="http://jameslick.com/clamassassin/"

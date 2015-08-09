@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/ppc/package.mask,v 1.4 2015/01/22 16:00:52 pesa Exp $
+# $Id$
 
 # Fails to find openssl headers, bug #517160
 net-misc/openssh

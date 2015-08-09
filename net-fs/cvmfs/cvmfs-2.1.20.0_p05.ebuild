@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cvmfs/cvmfs-2.1.20.0_p05.ebuild,v 1.2 2015/08/07 19:00:39 bicatali Exp $
+# $Id$
 
 EAPI=5
 

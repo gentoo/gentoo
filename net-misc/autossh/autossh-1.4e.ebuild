@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/autossh/autossh-1.4e.ebuild,v 1.1 2015/02/15 02:45:12 radhermit Exp $
+# $Id$
 
 EAPI=5
 

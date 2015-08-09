@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ddd/ddd-3.3.12-r3.ebuild,v 1.8 2013/02/21 16:12:26 ago Exp $
+# $Id$
 
 EAPI="4"
 

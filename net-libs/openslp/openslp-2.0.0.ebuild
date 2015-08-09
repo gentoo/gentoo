@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/openslp/openslp-2.0.0.ebuild,v 1.4 2014/04/27 12:49:06 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

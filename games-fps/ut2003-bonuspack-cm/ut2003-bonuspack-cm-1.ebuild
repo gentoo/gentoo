@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-bonuspack-cm/ut2003-bonuspack-cm-1.ebuild,v 1.4 2008/02/15 01:20:41 wolf31o2 Exp $
+# $Id$
 
 inherit games
 

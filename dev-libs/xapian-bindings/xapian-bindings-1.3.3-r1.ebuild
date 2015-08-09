@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xapian-bindings/xapian-bindings-1.3.3-r1.ebuild,v 1.1 2015/06/12 19:47:26 mgorny Exp $
+# $Id$
 
 EAPI="5"
 

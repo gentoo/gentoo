@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gnumail/gnumail-1.2.0.ebuild,v 1.5 2014/10/20 13:33:58 voyageur Exp $
+# $Id$
 
 EAPI=4
 inherit gnustep-2

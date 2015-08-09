@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/webcdwriter/files/webcdwriter.rc,v 1.1 2005/06/10 18:24:46 pylon Exp $
+# $Id$
 
 depend() {
 	need net

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/unifont/unifont-6.3.20131020.ebuild,v 1.4 2013/12/08 02:22:29 floppym Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/files/initiatorname.iscsi,v 1.2 2006/03/08 09:19:25 robbat2 Exp $
+# $Id$
 #
 # This file must contain a InitiatorName entry!
 # white space is significent here!

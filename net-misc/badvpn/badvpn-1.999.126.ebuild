@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/badvpn/badvpn-1.999.126.ebuild,v 1.1 2012/12/26 02:22:00 hasufell Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils user toolchain-funcs

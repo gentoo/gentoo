@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-fepg/vdr-fepg-0.4.1.ebuild,v 1.6 2014/02/23 19:52:18 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

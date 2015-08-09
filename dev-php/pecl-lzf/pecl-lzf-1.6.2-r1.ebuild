@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-lzf/pecl-lzf-1.6.2-r1.ebuild,v 1.1 2014/09/30 03:03:00 grknight Exp $
+# $Id$
 
 EAPI=5
 

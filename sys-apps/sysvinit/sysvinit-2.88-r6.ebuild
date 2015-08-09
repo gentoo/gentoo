@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysvinit/sysvinit-2.88-r6.ebuild,v 1.7 2014/05/17 15:05:12 swift Exp $
+# $Id$
 
 EAPI="4"
 

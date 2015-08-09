@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngcrush/pngcrush-1.7.81.ebuild,v 1.2 2015/01/15 05:32:20 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

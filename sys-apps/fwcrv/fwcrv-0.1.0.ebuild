@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/fwcrv/fwcrv-0.1.0.ebuild,v 1.5 2008/01/14 02:34:51 robbat2 Exp $
+# $Id$
 
 inherit eutils
 

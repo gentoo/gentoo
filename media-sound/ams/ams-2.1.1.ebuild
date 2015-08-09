@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ams/ams-2.1.1.ebuild,v 1.1 2015/07/27 11:37:28 polynomial-c Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils flag-o-matic multilib

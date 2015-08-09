@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/casa-data/casa-data-10013.ebuild,v 1.1 2014/07/02 23:45:28 bicatali Exp $
+# $Id$
 
 EAPI=5
 inherit subversion

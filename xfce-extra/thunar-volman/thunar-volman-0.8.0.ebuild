@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-volman/thunar-volman-0.8.0.ebuild,v 1.11 2014/07/24 12:27:52 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

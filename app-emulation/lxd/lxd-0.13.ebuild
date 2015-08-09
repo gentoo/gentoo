@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/lxd/lxd-0.13.ebuild,v 1.1 2015/07/19 20:36:34 alunduil Exp $
+# $Id$
 
 EAPI=5
 

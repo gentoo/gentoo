@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/nvidia-settings/nvidia-settings-331.20.ebuild,v 1.5 2014/01/15 15:29:15 jer Exp $
+# $Id$
 
 EAPI=5
 

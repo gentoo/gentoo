@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/openmsx/openmsx-0.3.1-r1.ebuild,v 1.6 2015/01/28 10:22:58 ago Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

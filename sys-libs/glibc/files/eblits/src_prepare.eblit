@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/src_prepare.eblit,v 1.1 2014/09/10 05:59:03 vapier Exp $
+# $Id$
 
 eblit-glibc-src_prepare() {
 	# XXX: We should do the branchupdate, before extracting the manpages and

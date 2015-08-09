@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tasty-smallcheck/tasty-smallcheck-0.8.0.1.ebuild,v 1.1 2014/12/17 13:17:01 gienah Exp $
+# $Id$
 
 EAPI=5
 

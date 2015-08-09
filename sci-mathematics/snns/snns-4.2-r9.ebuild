@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/snns/snns-4.2-r9.ebuild,v 1.2 2012/02/26 05:28:38 patrick Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="python? 2"

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-sync-engine/synce-sync-engine-0.15.1-r3.ebuild,v 1.3 2012/06/15 09:22:20 ssuominen Exp $
+# $Id$
 
 EAPI=4
 

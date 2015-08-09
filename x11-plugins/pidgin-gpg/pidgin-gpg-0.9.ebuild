@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-gpg/pidgin-gpg-0.9.ebuild,v 1.4 2012/10/08 18:48:30 pinkbyte Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/chess/chess-2.0_beta6-r2.ebuild,v 1.4 2013/04/03 19:59:23 ulm Exp $
+# $Id$
 
 EAPI=5
 

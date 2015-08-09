@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unar/unar-1.6.ebuild,v 1.3 2014/08/30 14:33:28 nimiux Exp $
+# $Id$
 
 EAPI=5
 

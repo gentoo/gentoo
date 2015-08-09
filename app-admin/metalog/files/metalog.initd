@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/files/metalog.initd,v 1.5 2011/09/23 03:15:23 vapier Exp $
+# $Id$
 
 extra_started_commands="buffer unbuffer"
 

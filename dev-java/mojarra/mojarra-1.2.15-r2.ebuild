@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mojarra/mojarra-1.2.15-r2.ebuild,v 1.3 2011/02/10 19:33:37 tomka Exp $
+# $Id$
 
 EAPI=3
 

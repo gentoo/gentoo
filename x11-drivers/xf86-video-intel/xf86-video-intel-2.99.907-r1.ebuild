@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-intel/xf86-video-intel-2.99.907-r1.ebuild,v 1.1 2014/01/06 14:44:01 zx2c4 Exp $
+# $Id$
 
 EAPI=5
 

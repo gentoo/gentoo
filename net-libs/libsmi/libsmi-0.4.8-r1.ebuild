@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsmi/libsmi-0.4.8-r1.ebuild,v 1.11 2014/07/18 15:31:52 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic

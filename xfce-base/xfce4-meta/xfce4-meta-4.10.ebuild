@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-meta/xfce4-meta-4.10.ebuild,v 1.11 2015/03/03 13:07:25 dlan Exp $
+# $Id$
 
 EAPI=5
 

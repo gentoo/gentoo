@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/wdm/wdm-1.28-r3.ebuild,v 1.5 2012/03/02 23:02:25 klausman Exp $
+# $Id$
 
 EAPI=2
 inherit eutils pam

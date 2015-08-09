@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/dlm-lib/dlm-lib-2.03.09.ebuild,v 1.6 2011/03/24 13:31:18 angelos Exp $
+# $Id$
 
 inherit eutils linux-mod multilib versionator
 

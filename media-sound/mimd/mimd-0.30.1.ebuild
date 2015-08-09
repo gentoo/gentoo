@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mimd/mimd-0.30.1.ebuild,v 1.6 2014/08/10 21:07:58 slyfox Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

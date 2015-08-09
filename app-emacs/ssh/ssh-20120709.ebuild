@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ssh/ssh-20120709.ebuild,v 1.2 2014/03/25 20:40:38 ulm Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/rebase/rebase-1508.ebuild,v 1.1 2015/08/02 13:40:34 jlec Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mysql_fx.eclass,v 1.32 2014/07/29 17:59:21 robbat2 Exp $
+# $Id$
 
 # Author: Francesco Riosa (Retired) <vivo@gentoo.org>
 # Maintainer:

@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/dev-db/myodbc/files/odbc.ini.m4,v 1.2 2004/07/18 02:46:19 dragonheart Exp $
+# $Id$
 # vim:ts=4 noexpandtab ft=dosini:
 #
 [ODBC Data Sources]

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/grilo-plugins/grilo-plugins-0.2.13.ebuild,v 1.8 2015/08/07 15:03:27 klausman Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no" # --enable-debug only changes CFLAGS

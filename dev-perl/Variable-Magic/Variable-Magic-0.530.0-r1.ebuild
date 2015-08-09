@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Variable-Magic/Variable-Magic-0.530.0-r1.ebuild,v 1.2 2015/03/21 05:58:47 jer Exp $
+# $Id$
 
 EAPI=5
 

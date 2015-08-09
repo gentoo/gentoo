@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bouncy-castle-java/bouncy-castle-java-1.5.0147.ebuild,v 1.1 2013/04/29 05:26:21 graaff Exp $
+# $Id$
 
 EAPI=4
 

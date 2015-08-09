@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms2-scrobbler/xmms2-scrobbler-0.4.0.ebuild,v 1.2 2012/12/04 19:38:57 slyfox Exp $
+# $Id$
 
 EAPI=4
 

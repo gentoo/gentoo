@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/lib-compat/lib-compat-1.4.2-r1.ebuild,v 1.2 2014/09/07 10:34:26 ulm Exp $
+# $Id$
 
 EAPI=5
 

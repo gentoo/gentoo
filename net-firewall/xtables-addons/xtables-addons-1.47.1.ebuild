@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/xtables-addons/xtables-addons-1.47.1.ebuild,v 1.5 2013/04/01 16:47:30 pinkbyte Exp $
+# $Id$
 
 EAPI="5"
 

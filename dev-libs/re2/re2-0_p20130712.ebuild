@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/re2/re2-0_p20130712.ebuild,v 1.3 2014/05/04 16:05:10 floppym Exp $
+# $Id$
 
 EAPI=5
 

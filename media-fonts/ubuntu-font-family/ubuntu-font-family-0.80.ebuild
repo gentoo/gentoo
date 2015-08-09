@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/ubuntu-font-family/ubuntu-font-family-0.80.ebuild,v 1.4 2013/01/21 20:03:56 steev Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/baekmuk-fonts/baekmuk-fonts-2.2-r2.ebuild,v 1.14 2014/06/10 00:54:04 vapier Exp $
+# $Id$
 
 inherit font font-ebdftopcf
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-kakasi/gauche-kakasi-0.1.ebuild,v 1.4 2007/01/10 17:12:28 hkbst Exp $
+# $Id$
 
 IUSE=""
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/geramik/geramik-0.27-r1.ebuild,v 1.3 2006/09/20 11:22:02 kugelfang Exp $
+# $Id$
 
 MY_P="Geramik-${PV}"
 DESCRIPTION="GTK+1 and GTK+2 Geramik Themes"

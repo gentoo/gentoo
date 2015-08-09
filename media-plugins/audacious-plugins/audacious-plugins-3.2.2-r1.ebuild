@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/audacious-plugins-3.2.2-r1.ebuild,v 1.12 2014/05/15 17:08:56 ulm Exp $
+# $Id$
 
 EAPI=4
 

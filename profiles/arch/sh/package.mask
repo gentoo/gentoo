@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sh/package.mask,v 1.11 2012/12/27 11:23:02 pinkbyte Exp $
+# $Id$
 
 # Zac Medico <zmedico@gentoo.org> (09 Aug 2011)
 # Bug #377907 - Use package.mask for compatibility with PMS section 5.2.7, and

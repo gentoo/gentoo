@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/suse-build/suse-build-2014.02.20.ebuild,v 1.2 2014/04/21 07:23:40 scarabeus Exp $
+# $Id$
 
 EAPI=5
 

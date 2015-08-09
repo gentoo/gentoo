@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/vips/vips-7.26.3.ebuild,v 1.3 2011/10/23 11:49:17 maekke Exp $
+# $Id$
 
 EAPI=3
 PYTHON_DEPEND="python? 2"

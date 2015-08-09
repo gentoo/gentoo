@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-shout/ruby-shout-2.2.1.ebuild,v 1.3 2014/04/24 16:54:01 mrueg Exp $
+# $Id$
 
 EAPI=5
 

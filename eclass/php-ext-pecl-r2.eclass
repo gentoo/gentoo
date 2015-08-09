@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-pecl-r2.eclass,v 1.6 2011/08/22 04:46:32 vapier Exp $
+# $Id$
 
 # @ECLASS: php-ext-pecl-r1.eclass
 # @MAINTAINER:

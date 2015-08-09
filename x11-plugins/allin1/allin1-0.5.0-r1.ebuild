@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/allin1/allin1-0.5.0-r1.ebuild,v 1.1 2012/10/24 11:25:47 ago Exp $
+# $Id$
 
 EAPI=4
 

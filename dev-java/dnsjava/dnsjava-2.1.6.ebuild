@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dnsjava/dnsjava-2.1.6.ebuild,v 1.2 2015/04/02 18:04:29 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 

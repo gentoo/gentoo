@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/pypanel/pypanel-2.4-r1.ebuild,v 1.7 2011/06/24 18:55:56 ranger Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

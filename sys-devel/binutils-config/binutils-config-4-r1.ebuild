@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/binutils-config-4-r1.ebuild,v 1.1 2014/12/30 15:10:36 blueness Exp $
+# $Id$
 
 EAPI="4"
 

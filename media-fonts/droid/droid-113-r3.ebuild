@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/droid/droid-113-r3.ebuild,v 1.1 2014/11/07 12:56:28 yngwin Exp $
+# $Id$
 
 EAPI=4
 

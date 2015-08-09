@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/di/di-4.36.ebuild,v 1.1 2015/05/19 07:33:33 polynomial-c Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

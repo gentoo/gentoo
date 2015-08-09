@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/nacl/nacl-0_p20110221.ebuild,v 1.2 2013/07/04 14:35:49 xmw Exp $
+# $Id$
 
 EAPI=5
 

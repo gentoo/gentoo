@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/yosucker/yosucker-77.ebuild,v 1.3 2014/08/10 20:47:44 slyfox Exp $
+# $Id$
 
 MY_P="YoSucker-pr${PV}"
 S=${WORKDIR}/${MY_P}

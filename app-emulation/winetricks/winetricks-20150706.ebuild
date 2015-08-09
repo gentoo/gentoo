@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/winetricks/winetricks-20150706.ebuild,v 1.1 2015/07/08 20:05:13 np-hardass Exp $
+# $Id$
 
 EAPI=5
 

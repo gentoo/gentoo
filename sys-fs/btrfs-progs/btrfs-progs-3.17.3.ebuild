@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/btrfs-progs/btrfs-progs-3.17.3.ebuild,v 1.1 2015/01/01 14:53:03 floppym Exp $
+# $Id$
 
 EAPI=5
 

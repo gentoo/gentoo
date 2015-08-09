@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jrrd/jrrd-1.0.1-r1.ebuild,v 1.4 2008/12/08 03:37:55 jmbsvicetto Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 WANT_AUTOMAKE="1.9"

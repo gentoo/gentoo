@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmal/libmal-0.44.1.ebuild,v 1.9 2011/03/31 04:07:34 ssuominen Exp $
+# $Id$
 
 EAPI=4
 

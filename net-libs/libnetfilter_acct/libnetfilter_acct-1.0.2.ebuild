@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnetfilter_acct/libnetfilter_acct-1.0.2.ebuild,v 1.7 2014/08/13 16:52:29 blueness Exp $
+# $Id$
 
 EAPI=5
 

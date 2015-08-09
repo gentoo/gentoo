@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wminet/wminet-3.0.0.ebuild,v 1.7 2014/08/10 20:07:07 slyfox Exp $
+# $Id$
 
 inherit toolchain-funcs
 

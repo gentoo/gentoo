@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/email/email-2.5.0.ebuild,v 1.9 2014/08/10 20:44:37 slyfox Exp $
+# $Id$
 
 DESCRIPTION="Advanced CLI tool for sending email"
 HOMEPAGE="http://email.cleancode.org"

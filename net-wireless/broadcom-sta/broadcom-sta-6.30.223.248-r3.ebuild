@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/broadcom-sta/broadcom-sta-6.30.223.248-r3.ebuild,v 1.2 2015/05/05 17:25:29 mpagano Exp $
+# $Id$
 
 EAPI=5
 inherit eutils linux-info linux-mod

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-chamorro/sword-chamorro-2.7.ebuild,v 1.2 2014/01/05 22:21:53 creffett Exp $
+# $Id$
 
 EAPI=5
 SWORD_MODULE="Chamorro"

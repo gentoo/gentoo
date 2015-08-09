@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/releases/13.0/package.mask,v 1.1 2013/01/14 21:02:57 dilfridge Exp $
+# $Id$
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (14 Jan 2013)
 # Mask portage versions not supporting EAPI=5

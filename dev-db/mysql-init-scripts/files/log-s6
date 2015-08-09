@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-init-scripts/files/log-s6,v 1.2 2015/05/27 21:01:03 grknight Exp $
+# $Id$
 
 if [ -e ./env ] ; then source ./env ; else echo "failed to source env" ; fi
 mkdir -p "/var/log/mysql/${SVCNAME}"

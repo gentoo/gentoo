@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux/amd64/make.defaults,v 1.6 2014/07/05 13:08:34 grobian Exp $
+# $Id$
 
 #Note: this is Gentoo Prefix specific! (13 Jul 2008, darkside)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/orinoco-fwutils/orinoco-fwutils-0.1.ebuild,v 1.4 2012/07/06 19:31:10 steev Exp $
+# $Id$
 
 DESCRIPTION="ORiNOCO IEEE 802.11 wireless LAN firmware utilities"
 HOMEPAGE="http://www.nongnu.org/orinoco/"

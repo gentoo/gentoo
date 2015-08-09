@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libiptcdata/libiptcdata-1.0.4.ebuild,v 1.16 2014/06/24 03:46:01 patrick Exp $
+# $Id$
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/subdownloader/subdownloader-2.0.18.ebuild,v 1.4 2013/06/25 12:54:33 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/xfsprogs-3.2.3.ebuild,v 1.1 2015/06/11 11:44:14 polynomial-c Exp $
+# $Id$
 
 EAPI="4"
 

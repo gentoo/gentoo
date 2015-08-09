@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/gawk-3.1.8.ebuild,v 1.8 2014/02/18 18:58:12 ottxor Exp $
+# $Id$
 
 EAPI="2"
 

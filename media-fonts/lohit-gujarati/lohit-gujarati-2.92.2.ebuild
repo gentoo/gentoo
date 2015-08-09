@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/lohit-gujarati/lohit-gujarati-2.92.2.ebuild,v 1.2 2015/02/20 17:47:33 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit font

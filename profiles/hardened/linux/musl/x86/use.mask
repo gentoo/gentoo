@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/x86/use.mask,v 1.4 2015/01/28 21:41:03 mgorny Exp $
+# $Id$
 
 # Force the flag which corresponds to arch/abi, bug #515130
 -x86

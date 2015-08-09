@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/glassfish-transaction-api/glassfish-transaction-api-1.1.2.2.04.ebuild,v 1.8 2010/12/30 12:52:32 betelgeuse Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

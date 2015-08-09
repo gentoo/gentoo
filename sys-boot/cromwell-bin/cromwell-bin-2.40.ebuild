@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/cromwell-bin/cromwell-bin-2.40.ebuild,v 1.3 2011/04/10 14:36:44 ulm Exp $
+# $Id$
 
 inherit mount-boot
 

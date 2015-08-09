@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SMTP-SSL/Net-SMTP-SSL-1.30.0.ebuild,v 1.1 2015/07/11 21:54:36 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/wvstreams/wvstreams-4.6.1-r3.ebuild,v 1.9 2013/07/04 12:18:19 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils flag-o-matic toolchain-funcs versionator

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/microdc2/microdc2-0.15.6-r2.ebuild,v 1.1 2010/03/06 16:23:01 ssuominen Exp $
+# $Id$
 
 inherit autotools eutils
 

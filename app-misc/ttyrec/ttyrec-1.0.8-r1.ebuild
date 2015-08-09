@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ttyrec/ttyrec-1.0.8-r1.ebuild,v 1.2 2013/09/01 13:15:38 grobian Exp $
+# $Id$
 
 EAPI=5
 

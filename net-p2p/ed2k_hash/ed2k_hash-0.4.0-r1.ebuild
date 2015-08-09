@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/ed2k_hash/ed2k_hash-0.4.0-r1.ebuild,v 1.10 2015/01/05 15:28:49 mrueg Exp $
+# $Id$
 
 EAPI=5
 inherit flag-o-matic eutils

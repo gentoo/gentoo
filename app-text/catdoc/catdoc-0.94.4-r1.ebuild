@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/catdoc/catdoc-0.94.4-r1.ebuild,v 1.1 2014/10/27 05:27:08 radhermit Exp $
+# $Id$
 
 EAPI=5
 WANT_AUTOMAKE=none

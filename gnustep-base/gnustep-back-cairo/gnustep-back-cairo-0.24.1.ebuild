@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-cairo/gnustep-back-cairo-0.24.1.ebuild,v 1.1 2015/05/18 14:59:17 voyageur Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnustep-base

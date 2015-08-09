@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gcj-jdk/gcj-jdk-4.8.4.ebuild,v 1.2 2015/05/21 08:50:13 chewi Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/webcpp/webcpp-0.8.4.ebuild,v 1.12 2009/10/12 20:29:39 ssuominen Exp $
+# $Id$
 
 inherit eutils
 

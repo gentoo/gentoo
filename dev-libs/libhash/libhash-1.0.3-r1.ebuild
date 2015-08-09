@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhash/libhash-1.0.3-r1.ebuild,v 1.7 2012/05/06 16:20:43 armin76 Exp $
+# $Id$
 
 inherit toolchain-funcs
 

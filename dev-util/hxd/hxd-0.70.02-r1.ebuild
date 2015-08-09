@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/hxd/hxd-0.70.02-r1.ebuild,v 1.1 2012/06/20 12:53:28 jlec Exp $
+# $Id$
 
 EAPI=4
 

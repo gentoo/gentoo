@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/ask/ask-2.4.1.ebuild,v 1.6 2007/03/18 02:48:19 genone Exp $
+# $Id$
 
 DESCRIPTION="Active Spam Killer: A program to filter spam"
 HOMEPAGE="http://www.paganini.net/ask/index.html"

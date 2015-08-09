@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/beets/beets-1.3.13.ebuild,v 1.1 2015/08/02 10:52:32 yngwin Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

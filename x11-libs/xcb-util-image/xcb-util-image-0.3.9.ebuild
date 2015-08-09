@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/xcb-util-image/xcb-util-image-0.3.9.ebuild,v 1.10 2013/11/04 00:28:33 chithanh Exp $
+# $Id$
 
 EAPI=4
 

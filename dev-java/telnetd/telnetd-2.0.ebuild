@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/telnetd/telnetd-2.0.ebuild,v 1.4 2007/11/25 14:33:48 ranger Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

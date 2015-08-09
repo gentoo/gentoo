@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-cairo/gnustep-back-cairo-0.24.0.ebuild,v 1.3 2014/12/27 19:28:06 ago Exp $
+# $Id$
 
 EAPI=5
 inherit gnustep-base

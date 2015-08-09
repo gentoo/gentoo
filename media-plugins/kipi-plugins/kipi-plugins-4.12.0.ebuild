@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/kipi-plugins/kipi-plugins-4.12.0.ebuild,v 1.1 2015/08/08 08:40:43 johu Exp $
+# $Id$
 
 #
 # TODO: complete packaging of qtsoap and qtkoauth, see dilfridge overlay for work in progress

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsrtp/libsrtp-1.5.2-r1.ebuild,v 1.1 2015/04/11 18:13:52 phajdan.jr Exp $
+# $Id$
 
 EAPI="5"
 

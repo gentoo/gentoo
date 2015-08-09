@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-go/go-protobuf/go-protobuf-0_pre20150727.ebuild,v 1.3 2015/07/30 09:31:49 patrick Exp $
+# $Id$
 
 EAPI=5
 

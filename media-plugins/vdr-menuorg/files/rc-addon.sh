@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-menuorg/files/rc-addon.sh,v 1.1 2007/10/09 14:57:54 hd_brummy Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-menuorg
 #

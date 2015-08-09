@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libreplaygain/libreplaygain-477-r1.ebuild,v 1.7 2014/01/19 10:24:09 ago Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-multilib

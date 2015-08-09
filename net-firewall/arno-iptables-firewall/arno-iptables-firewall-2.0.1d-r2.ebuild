@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/arno-iptables-firewall/arno-iptables-firewall-2.0.1d-r2.ebuild,v 1.3 2014/01/26 11:03:38 ago Exp $
+# $Id$
 
 EAPI=5
 inherit readme.gentoo systemd

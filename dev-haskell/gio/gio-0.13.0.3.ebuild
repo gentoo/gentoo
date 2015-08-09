@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gio/gio-0.13.0.3.ebuild,v 1.3 2015/03/11 09:24:27 gienah Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,13 +1,13 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=729f93ccb60deb33d263133ca52d7666
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Distribute hardware interrupts across processors on a multiprocessor system
-EAPI=5
-HOMEPAGE=https://github.com/Irqbalance/irqbalance
-IUSE=caps +numa selinux
-KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) selinux? ( sec-policy/selinux-irqbalance )
-SLOT=0
+IUSE=caps +numa selinux
 SRC_URI=https://github.com/Irqbalance/irqbalance/archive/v1.0.9.tar.gz -> irqbalance-1.0.9.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=436a0dae83dbbd82b24a0f2f16b35eef
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=https://github.com/Irqbalance/irqbalance
+RDEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) selinux? ( sec-policy/selinux-irqbalance )

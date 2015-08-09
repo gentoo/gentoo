@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/zinnia-tomoe/zinnia-tomoe-0.6.0_p20080911.ebuild,v 1.5 2014/03/04 19:06:15 naota Exp $
+# $Id$
 
 EAPI=4
 

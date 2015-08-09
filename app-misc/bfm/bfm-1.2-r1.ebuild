@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/bfm/bfm-1.2-r1.ebuild,v 1.6 2007/11/19 16:56:29 wltjr Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

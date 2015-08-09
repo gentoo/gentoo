@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/makedepend/makedepend-1.0.4.ebuild,v 1.11 2014/01/21 02:46:01 vapier Exp $
+# $Id$
 
 EAPI=4
 XORG_STATIC=no

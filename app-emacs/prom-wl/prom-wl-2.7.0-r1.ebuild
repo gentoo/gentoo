@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/prom-wl/prom-wl-2.7.0-r1.ebuild,v 1.2 2007/10/23 07:06:43 ulm Exp $
+# $Id$
 
 inherit elisp
 

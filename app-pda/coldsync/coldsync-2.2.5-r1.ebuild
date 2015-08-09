@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/coldsync/coldsync-2.2.5-r1.ebuild,v 1.14 2014/07/26 12:09:00 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic perl-module toolchain-funcs

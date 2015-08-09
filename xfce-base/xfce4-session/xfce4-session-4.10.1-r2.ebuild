@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-session/xfce4-session-4.10.1-r2.ebuild,v 1.11 2014/07/24 10:54:57 ssuominen Exp $
+# $Id$
 
 EAPI=5
 EAUTORECONF=1

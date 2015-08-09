@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/id3ed/id3ed-1.10.4.ebuild,v 1.18 2010/04/24 16:42:41 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit toolchain-funcs

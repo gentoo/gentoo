@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/android-ndk/android-ndk-9.ebuild,v 1.1 2013/09/27 15:45:54 cardoe Exp $
+# $Id$
 
 EAPI=5
 

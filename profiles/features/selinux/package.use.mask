@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.use.mask,v 1.11 2015/06/28 14:03:30 perfinion Exp $
+# $Id$
 
 # Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
 # Unmask when we get HAL 0.5.10 straightened out

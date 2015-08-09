@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/date-cache/date-cache-0.3.0-r1.ebuild,v 1.1 2013/08/26 11:27:15 qnikst Exp $
+# $Id$
 
 EAPI=5
 

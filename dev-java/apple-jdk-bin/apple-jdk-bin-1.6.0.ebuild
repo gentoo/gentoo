@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/apple-jdk-bin/apple-jdk-bin-1.6.0.ebuild,v 1.5 2012/11/27 07:54:39 grobian Exp $
+# $Id$
 
 JAVA_SUPPORTS_GENERATION_1="true"
 inherit java-vm-2 eutils

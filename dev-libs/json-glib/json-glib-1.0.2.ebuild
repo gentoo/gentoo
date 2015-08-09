@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/json-glib/json-glib-1.0.2.ebuild,v 1.10 2014/10/11 13:45:52 maekke Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

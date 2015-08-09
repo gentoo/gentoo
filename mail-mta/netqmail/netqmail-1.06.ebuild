@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/netqmail/netqmail-1.06.ebuild,v 1.14 2012/11/06 11:17:40 eras Exp $
+# $Id$
 
 GENQMAIL_PV=20080406
 QMAIL_SPP_PV=0.42

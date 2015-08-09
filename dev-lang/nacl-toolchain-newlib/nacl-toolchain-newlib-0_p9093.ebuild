@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/nacl-toolchain-newlib/nacl-toolchain-newlib-0_p9093.ebuild,v 1.5 2014/11/02 15:38:58 floppym Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libatomic_ops/libatomic_ops-1.1.ebuild,v 1.3 2012/12/16 16:31:21 ulm Exp $
+# $Id$
 
 DESCRIPTION="Implementation for atomic memory update operations"
 HOMEPAGE="http://www.hpl.hp.com/research/linux/atomic_ops/"

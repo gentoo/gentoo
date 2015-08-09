@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/mrrescue/mrrescue-1.02b.ebuild,v 1.3 2014/03/04 19:55:08 ago Exp $
+# $Id$
 
 EAPI=5
 

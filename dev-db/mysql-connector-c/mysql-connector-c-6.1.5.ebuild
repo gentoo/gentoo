@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-connector-c/mysql-connector-c-6.1.5.ebuild,v 1.1 2015/07/17 16:53:19 grknight Exp $
+# $Id$
 
 EAPI=5
 CMAKE_MIN_VERSION="2.8.12"

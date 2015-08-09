@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gigolo/gigolo-0.4.2.ebuild,v 1.3 2014/04/20 08:50:14 ago Exp $
+# $Id$
 
 EAPI=5
 #EAUTORECONF=yes (Why was this in 0.4.1 w/o any calls to autotools.eclass again?

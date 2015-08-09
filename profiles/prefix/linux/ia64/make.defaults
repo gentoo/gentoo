@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux/ia64/make.defaults,v 1.1 2009/06/06 03:54:56 solar Exp $
+# $Id$
 
 # The base profile sets ACCEPT_KEYWORDS=ia64 and we don't have that in prefix.
 ACCEPT_KEYWORDS="-ia64 ~ia64-linux"

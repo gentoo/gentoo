@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qmidiarp/qmidiarp-0.3.9.ebuild,v 1.4 2013/03/02 22:00:06 hwoarang Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

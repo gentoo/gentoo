@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/faenza-icon-theme/faenza-icon-theme-1.3.1.ebuild,v 1.1 2014/06/03 10:27:25 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit gnome2-utils

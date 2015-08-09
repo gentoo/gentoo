@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-C3/Class-C3-0.280.0.ebuild,v 1.6 2015/06/21 08:37:31 zlogene Exp $
+# $Id$
 
 EAPI=5
 

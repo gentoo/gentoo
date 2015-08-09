@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-text/calibre/files/calibre-server.init,v 1.1 2012/01/14 18:27:01 zmedico Exp $
+# $Id$
 
 depend() {
 	need net

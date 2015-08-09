@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/kannel-sqlbox/files/kannel-sqlbox.initd,v 1.1 2009/09/25 01:17:26 mrness Exp $
+# $Id$
 
 KANNEL_SERVICE=${SVCNAME#*-}
 

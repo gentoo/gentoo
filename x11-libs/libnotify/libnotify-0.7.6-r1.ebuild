@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libnotify/libnotify-0.7.6-r1.ebuild,v 1.10 2015/05/27 12:18:24 zlogene Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils gnome.org multilib-minimal

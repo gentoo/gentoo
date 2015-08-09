@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ca-certificates/ca-certificates-20110502-r1.ebuild,v 1.6 2011/09/03 13:14:16 armin76 Exp $
+# $Id$
 
 inherit eutils
 

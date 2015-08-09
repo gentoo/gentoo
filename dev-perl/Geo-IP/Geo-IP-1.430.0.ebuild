@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Geo-IP/Geo-IP-1.430.0.ebuild,v 1.3 2014/10/05 14:53:59 blueness Exp $
+# $Id$
 
 EAPI=5
 

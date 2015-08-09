@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim/scim-1.4.14.ebuild,v 1.12 2015/07/30 13:10:35 ago Exp $
+# $Id$
 
 EAPI="4"
 inherit eutils flag-o-matic multilib gnome2-utils autotools-utils

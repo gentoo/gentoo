@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/rabbitmq-c/rabbitmq-c-0.3.0.ebuild,v 1.1 2013/03/14 18:50:36 olemarkus Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/opencc/opencc-0.4.3.ebuild,v 1.3 2014/09/09 09:24:41 jer Exp $
+# $Id$
 
 EAPI=5
 

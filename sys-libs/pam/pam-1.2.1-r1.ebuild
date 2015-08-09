@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/pam-1.2.1-r1.ebuild,v 1.1 2015/07/13 05:03:16 vapier Exp $
+# $Id$
 
 EAPI=5
 

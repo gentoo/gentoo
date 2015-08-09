@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/389-ds-base/files/389-ds-snmp.initd,v 1.1 2010/07/07 14:31:36 lxnay Exp $
+# $Id$
 
 PIDFILE="/var/run/ldap-agent.pid"
 CONFIGFILE="/etc/dirsrv/config/ldap-agent.conf"

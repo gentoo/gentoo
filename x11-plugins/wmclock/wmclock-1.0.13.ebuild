@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmclock/wmclock-1.0.13.ebuild,v 1.5 2012/02/16 18:49:39 phajdan.jr Exp $
+# $Id$
 
 EAPI=3
 

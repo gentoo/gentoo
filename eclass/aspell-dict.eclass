@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/aspell-dict.eclass,v 1.44 2014/01/05 11:39:48 pacho Exp $
+# $Id$
 
 # @ECLASS: aspell-dict.eclass
 # @MAINTAINER:

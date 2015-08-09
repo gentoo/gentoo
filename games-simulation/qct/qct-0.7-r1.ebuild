@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/qct/qct-0.7-r1.ebuild,v 1.4 2015/01/28 10:22:18 ago Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

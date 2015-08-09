@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sexp_processor/sexp_processor-4.5.1.ebuild,v 1.1 2015/04/28 04:54:23 graaff Exp $
+# $Id$
 
 EAPI=5
 

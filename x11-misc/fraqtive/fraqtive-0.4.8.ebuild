@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/fraqtive/fraqtive-0.4.8.ebuild,v 1.1 2015/02/05 09:38:29 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnome2-utils qmake-utils toolchain-funcs

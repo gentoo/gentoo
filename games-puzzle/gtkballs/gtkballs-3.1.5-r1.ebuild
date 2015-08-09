@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/gtkballs/gtkballs-3.1.5-r1.ebuild,v 1.6 2015/02/20 20:54:11 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

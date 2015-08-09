@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-mailutils/uw-mailutils-2007f.ebuild,v 1.8 2012/03/08 14:59:57 ranger Exp $
+# $Id$
 
 EAPI=4
 

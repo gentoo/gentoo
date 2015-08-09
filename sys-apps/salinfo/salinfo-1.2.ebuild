@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/salinfo/salinfo-1.2.ebuild,v 1.1 2014/03/30 06:28:51 vapier Exp $
+# $Id$
 
 EAPI="4"
 

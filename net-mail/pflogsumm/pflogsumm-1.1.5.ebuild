@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/pflogsumm/pflogsumm-1.1.5.ebuild,v 1.4 2013/05/07 13:56:02 ago Exp $
+# $Id$
 
 DESCRIPTION="Pflogsumm is a log analyzer for Postfix logs"
 HOMEPAGE="http://jimsun.linxnet.com/postfix_contrib.html"

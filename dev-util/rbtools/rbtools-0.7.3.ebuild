@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rbtools/rbtools-0.7.3.ebuild,v 1.1 2015/05/28 19:26:07 kensington Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

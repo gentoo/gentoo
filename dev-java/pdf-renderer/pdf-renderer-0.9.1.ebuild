@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/pdf-renderer/pdf-renderer-0.9.1.ebuild,v 1.5 2014/04/13 16:17:33 ago Exp $
+# $Id$
 
 EAPI=4
 

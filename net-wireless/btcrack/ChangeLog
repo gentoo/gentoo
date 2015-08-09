@@ -1,9 +1,0 @@
-# ChangeLog for net-wireless/btcrack
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/btcrack/ChangeLog,v 1.1 2014/05/12 22:38:47 zerochaos Exp $
-
-*btcrack-9999 (12 May 2014)
-
-  12 May 2014; Rick Farina <zerochaos@gentoo.org> +btcrack-9999.ebuild,
-  +metadata.xml:
-  initial commit of btcrack

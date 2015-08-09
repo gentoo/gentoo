@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/qtweb/qtweb-3.8.5_p108.ebuild,v 1.7 2014/06/19 01:26:24 jer Exp $
+# $Id$
 
 EAPI=5
 inherit qt4-r2

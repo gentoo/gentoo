@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/quickcrypt/quickcrypt-0.9.2b.ebuild,v 1.17 2010/12/17 15:54:56 c1pher Exp $
+# $Id$
 
 MY_P=${P/-/_}
 S=${WORKDIR}/${MY_P}

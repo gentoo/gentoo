@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/realpath/realpath-1.17.ebuild,v 1.12 2013/01/01 19:16:14 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs flag-o-matic multilib prefix

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lndir/lndir-1.0.3.ebuild,v 1.6 2012/08/26 19:26:12 armin76 Exp $
+# $Id$
 
 EAPI=3
 

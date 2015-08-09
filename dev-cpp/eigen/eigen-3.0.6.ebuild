@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/eigen/eigen-3.0.6.ebuild,v 1.10 2013/02/20 19:41:35 ago Exp $
+# $Id$
 
 EAPI=4
 

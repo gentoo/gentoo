@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4
+_md5_=e6c0712c1a64073fbefa5dc7ce234beb
+SLOT=0
 DEFINED_PHASES=configure prepare
+EAPI=4
 DEPEND=png? ( media-libs/gd[png,truetype?] ) virtual/pkgconfig sys-devel/bison sys-devel/flex !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A message sequence chart generator
-EAPI=4
-HOMEPAGE=http://www.mcternan.me.uk/mscgen/
-IUSE=png truetype
-KEYWORDS=amd64 arm ppc ppc64 x86 ~x64-solaris
 LICENSE=GPL-2
-RDEPEND=png? ( media-libs/gd[png,truetype?] )
+IUSE=png truetype
 RESTRICT=test
-SLOT=0
 SRC_URI=http://www.mcternan.me.uk/mscgen/software/mscgen-src-0.20.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=75f18e0e65c178a81b215a93524f0e65
+KEYWORDS=amd64 arm ppc ppc64 x86 ~x64-solaris
+HOMEPAGE=http://www.mcternan.me.uk/mscgen/
+RDEPEND=png? ( media-libs/gd[png,truetype?] )

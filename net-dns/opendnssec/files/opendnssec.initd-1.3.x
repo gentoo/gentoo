@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/opendnssec/files/opendnssec.initd-1.3.x,v 1.4 2014/02/03 00:05:16 mschiff Exp $
+# $Id$
 
 description="An open-source turn-key solution for DNSSEC"
 

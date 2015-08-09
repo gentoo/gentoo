@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kolor-manager/kolor-manager-1.0.1.ebuild,v 1.3 2014/08/05 16:31:40 mrueg Exp $
+# $Id$
 
 EAPI=5
 

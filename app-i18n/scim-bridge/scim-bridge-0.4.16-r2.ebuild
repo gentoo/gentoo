@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-bridge/scim-bridge-0.4.16-r2.ebuild,v 1.7 2013/04/21 10:20:56 lxnay Exp $
+# $Id$
 
 EAPI="2"
 

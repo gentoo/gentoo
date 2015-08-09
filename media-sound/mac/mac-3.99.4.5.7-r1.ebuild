@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mac/mac-3.99.4.5.7-r1.ebuild,v 1.8 2015/01/29 18:54:47 mgorny Exp $
+# $Id$
 
 EAPI=5
 

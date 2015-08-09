@@ -1,7 +1,7 @@
 #:CoLo:#
 #
 # Simple CoLo boot script.
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/colo/files/simple.colo,v 1.1 2005/12/07 07:33:43 redhatter Exp $
+# $Id$
 
 # Turn serial on; if possible
 # - means: "ignore any failure", so if the machine has no serial device (such as

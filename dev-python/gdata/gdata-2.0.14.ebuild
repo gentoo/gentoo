@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gdata/gdata-2.0.14.ebuild,v 1.11 2013/05/04 21:22:22 floppym Exp $
+# $Id$
 
 EAPI="4"
 PYTHON_DEPEND="2"

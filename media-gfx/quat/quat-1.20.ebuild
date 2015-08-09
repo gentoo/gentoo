@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/quat/quat-1.20.ebuild,v 1.12 2010/10/03 20:22:09 spock Exp $
+# $Id$
 
 DESCRIPTION="A 3D quaternionic fractal generator"
 HOMEPAGE="http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html"

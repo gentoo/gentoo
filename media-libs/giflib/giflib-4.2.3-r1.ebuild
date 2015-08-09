@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/giflib/giflib-4.2.3-r1.ebuild,v 1.5 2014/07/31 04:08:56 vapier Exp $
+# $Id$
 
 EAPI=5
 

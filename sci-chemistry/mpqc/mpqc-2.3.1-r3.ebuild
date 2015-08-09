@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mpqc/mpqc-2.3.1-r3.ebuild,v 1.8 2013/02/27 14:38:40 jlec Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/nap/nap-1.5.4-r1.ebuild,v 1.2 2013/01/27 12:11:35 ulm Exp $
+# $Id$
 
 inherit toolchain-funcs
 

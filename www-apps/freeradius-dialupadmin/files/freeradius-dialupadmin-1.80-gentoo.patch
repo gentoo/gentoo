@@ -2,7 +2,7 @@ diff -Nru freeradius-server-2.1.1.orig/dialup_admin/Makefile freeradius-server-2
 --- freeradius-server-2.1.1.orig/dialup_admin/Makefile	2008-10-12 10:13:16.000000000 +0000
 +++ freeradius-server-2.1.1/dialup_admin/Makefile	2008-10-12 10:16:16.000000000 +0000
 @@ -4,7 +4,6 @@
- # Version:	$Id: freeradius-dialupadmin-1.80-gentoo.patch,v 1.1 2008/10/12 10:33:19 mrness Exp $
+ # Version:	$Id$
  #
  
 -include ../Make.inc

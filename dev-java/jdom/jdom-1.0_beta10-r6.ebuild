@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdom/jdom-1.0_beta10-r6.ebuild,v 1.8 2009/08/19 08:27:24 elvanor Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc examples source"
 

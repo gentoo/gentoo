@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/rest/rest-0.7.92-r2.ebuild,v 1.5 2015/03/29 11:18:14 jer Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

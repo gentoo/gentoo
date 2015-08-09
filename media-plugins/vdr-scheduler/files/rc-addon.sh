@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-scheduler-0.1.3/files/rc-addon.sh
+# $Id$
 #
 # rc-addon-script for plugin scheduler
 #

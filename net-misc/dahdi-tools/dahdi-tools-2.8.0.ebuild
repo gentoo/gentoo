@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi-tools/dahdi-tools-2.8.0.ebuild,v 1.3 2014/02/22 08:07:45 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/pm-utils/pm-utils-1.4.1-r7.ebuild,v 1.1 2015/07/29 02:56:15 tetromino Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib

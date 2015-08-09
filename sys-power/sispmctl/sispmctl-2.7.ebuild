@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/sispmctl/sispmctl-2.7.ebuild,v 1.4 2011/03/20 18:28:20 ssuominen Exp $
+# $Id$
 
 EAPI=2
 

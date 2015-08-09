@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/arx-libertatis/arx-libertatis-1.0.3.ebuild,v 1.6 2013/03/14 00:56:08 hasufell Exp $
+# $Id$
 
 EAPI=4
 

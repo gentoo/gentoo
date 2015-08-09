@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-gfx/sdl-gfx-2.0.25.ebuild,v 1.11 2015/03/03 09:02:20 dlan Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils multilib-minimal

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PHP_CodeCoverage/PHP_CodeCoverage-1.2.13.ebuild,v 1.7 2014/08/10 20:58:00 slyfox Exp $
+# $Id$
 
 EAPI=5
 

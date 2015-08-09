@@ -4,7 +4,7 @@ diff -c -r nss_ldap-250/ChangeLog nss_ldap-250.1/ChangeLog
 ***************
 *** 1,6 ****
 --- 1,13 ----
-  $Id: nss_ldap-254-nss_getgrent_skipmembers.patch,v 1.1 2007/02/06 04:50:25 robbat2 Exp $
+  $Id$
   ===============================================================
   
 + 250.1   Paul B. Henson <henson@acm.org>

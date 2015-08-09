@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/puppet-syntax/puppet-syntax-3.0.1.ebuild,v 1.8 2014/02/09 18:47:23 grobian Exp $
+# $Id$
 
 EAPI=4
 

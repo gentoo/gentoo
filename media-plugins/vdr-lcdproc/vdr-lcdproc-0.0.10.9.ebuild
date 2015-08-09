@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-lcdproc/vdr-lcdproc-0.0.10.9.ebuild,v 1.1 2012/05/10 15:29:02 hd_brummy Exp $
+# $Id$
 
 EAPI="4"
 

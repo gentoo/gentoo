@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/x11perf/x11perf-1.6.0.ebuild,v 1.1 2015/07/05 11:31:16 mrueg Exp $
+# $Id$
 
 EAPI=5
 inherit xorg-2

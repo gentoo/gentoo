@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-dvdswitch/files/0.1.3/confd-r2,v 1.1 2007/07/21 22:32:27 hd_brummy Exp $
+# $Id$
 # Global config file for vdrplugin dvdswitch
 
 # Script to use for reading DVDs

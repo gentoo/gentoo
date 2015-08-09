@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/reswrap/reswrap-4.0.0.ebuild,v 1.9 2013/10/29 01:43:26 blueness Exp $
+# $Id$
 
 FOX_COMPONENT="utils"
 FOX_PV="1.6.40"

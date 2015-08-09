@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/httpunit/httpunit-1.7.ebuild,v 1.6 2014/08/10 20:14:56 slyfox Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7de5eb678166de78463f7b6a6ce88802
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
 DEPEND=dev-db/mongodb[sharedclient] dev-libs/boost[threads] sci-libs/avogadrolibs[qt4] sci-libs/chemkit sci-libs/vtk[qt4,rendering] sci-chemistry/molequeue dev-util/ninja >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Application for managing large collections of chemical data
-EAPI=5
-HOMEPAGE=http://www.openchemistry.org/
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
-RDEPEND=dev-db/mongodb[sharedclient] dev-libs/boost[threads] sci-libs/avogadrolibs[qt4] sci-libs/chemkit sci-libs/vtk[qt4,rendering] sci-chemistry/molequeue
-SLOT=0
 SRC_URI=https://github.com/OpenChemistry/mongochem/archive/df36ebce92024dd4fd1c70eb37eb84e4c51120ff.tar.gz -> mongochem-0.7.0.tar.gz
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
-_md5_=3cb8aa2faef9cb7db52d8275d84db358
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.openchemistry.org/
+RDEPEND=dev-db/mongodb[sharedclient] dev-libs/boost[threads] sci-libs/avogadrolibs[qt4] sci-libs/chemkit sci-libs/vtk[qt4,rendering] sci-chemistry/molequeue

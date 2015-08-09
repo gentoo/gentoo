@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/evilvte/evilvte-0.5.1.ebuild,v 1.3 2012/05/20 09:02:35 ssuominen Exp $
+# $Id$
 
 EAPI=4
 MY_P=${P/_/\~}

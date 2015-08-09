@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/rcs/rcs-5.9.3.ebuild,v 1.7 2015/08/02 18:44:17 ago Exp $
+# $Id$
 
 EAPI="5"
 

@@ -5,7 +5,7 @@
 #
 # Licensed under the GNU General Public License, v2
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-pkg-2.eclass,v 1.41 2015/06/17 09:48:12 chewi Exp $
+# $Id$
 
 # @ECLASS: java-pkg-2.eclass
 # @MAINTAINER:

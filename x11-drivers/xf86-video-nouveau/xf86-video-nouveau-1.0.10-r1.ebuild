@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-nouveau/xf86-video-nouveau-1.0.10-r1.ebuild,v 1.1 2014/08/06 05:28:54 vapier Exp $
+# $Id$
 
 EAPI=5
 XORG_DRI="always"

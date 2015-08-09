@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/suite3270/suite3270-3.3.9_p12.ebuild,v 1.6 2009/12/15 19:28:38 ssuominen Exp $
+# $Id$
 
 inherit eutils
 

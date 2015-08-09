@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/2ping/2ping-1.2.3.ebuild,v 1.3 2014/07/21 19:05:53 dilfridge Exp $
+# $Id$
 
 EAPI="4"
 

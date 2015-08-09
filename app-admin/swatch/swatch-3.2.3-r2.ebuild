@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/swatch/swatch-3.2.3-r2.ebuild,v 1.6 2014/10/25 22:16:00 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

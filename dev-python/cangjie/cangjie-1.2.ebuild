@@ -1,9 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cangjie/cangjie-1.2.ebuild,v 1.2 2015/04/08 08:05:07 mgorny Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python{3_3,3_4} )
+AUTOTOOLS_AUTORECONF=yes
 
 inherit autotools-utils python-r1
 

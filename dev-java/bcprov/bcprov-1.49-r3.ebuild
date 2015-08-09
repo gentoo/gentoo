@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcprov/bcprov-1.49-r3.ebuild,v 1.1 2014/03/02 14:45:06 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

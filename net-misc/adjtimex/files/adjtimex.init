@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/adjtimex/files/adjtimex.init,v 1.5 2010/03/25 19:28:47 robbat2 Exp $
+# $Id$
 
 DAEMON=adjtimex
 OPTS="--tick ${TICK} --frequency ${FREQ}"

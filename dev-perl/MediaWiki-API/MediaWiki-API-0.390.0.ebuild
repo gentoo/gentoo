@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MediaWiki-API/MediaWiki-API-0.390.0.ebuild,v 1.11 2014/11/29 20:42:31 zlogene Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/fnlib/fnlib-0.5-r2.ebuild,v 1.6 2012/10/29 03:43:04 jer Exp $
+# $Id$
 
 EAPI="2"
 

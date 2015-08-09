@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/RPC-XML/RPC-XML-0.780.0.ebuild,v 1.2 2014/11/28 22:14:02 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.20-r2.ebuild,v 1.13 2015/07/21 02:41:57 vapier Exp $
+# $Id$
 
 EAPI="4"
 

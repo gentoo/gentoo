@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/slimv/slimv-0.9.12.ebuild,v 1.3 2014/04/26 18:53:00 ago Exp $
+# $Id$
 
 EAPI=5
 

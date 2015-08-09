@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/f2fs-tools/f2fs-tools-1.4.0.ebuild,v 1.1 2015/03/07 15:56:52 blueness Exp $
+# $Id$
 
 EAPI=5
 

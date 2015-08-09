@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/kbproto/kbproto-1.0.6-r1.ebuild,v 1.11 2014/06/15 00:37:16 vapier Exp $
+# $Id$
 
 EAPI=5
 

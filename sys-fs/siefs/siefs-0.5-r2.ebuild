@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/siefs/siefs-0.5-r2.ebuild,v 1.3 2012/02/16 19:21:45 phajdan.jr Exp $
+# $Id$
 
 inherit eutils autotools
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmweather/wmweather-2.4.5.ebuild,v 1.2 2014/08/10 20:09:50 slyfox Exp $
+# $Id$
 
 EAPI=4
 DESCRIPTION="a dockable weather monitor for standard METAR stations using ICAO location"

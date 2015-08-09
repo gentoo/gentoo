@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/crystalspace/crystalspace-2.0.ebuild,v 1.6 2015/06/26 08:58:20 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic multilib java-pkg-opt-2 autotools wxwidgets versionator multiprocessing

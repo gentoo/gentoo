@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-select2/django-select2-3.2.1.ebuild,v 1.2 2013/04/02 16:28:26 prometheanfire Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

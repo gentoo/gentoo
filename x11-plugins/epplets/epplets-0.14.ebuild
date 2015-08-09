@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/epplets/epplets-0.14.ebuild,v 1.1 2012/11/08 03:18:53 vapier Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/sawfish-themes/sawfish-themes-0.0.1-r3.ebuild,v 1.21 2010/02/24 14:22:54 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="Some nice themes for Sawfish"
 HOMEPAGE="http://themes.freshmeat.net/"

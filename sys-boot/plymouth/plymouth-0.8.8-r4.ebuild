@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/plymouth/plymouth-0.8.8-r4.ebuild,v 1.9 2014/02/02 15:56:31 ago Exp $
+# $Id$
 
 EAPI=5
 

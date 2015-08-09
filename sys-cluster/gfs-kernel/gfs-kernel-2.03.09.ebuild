@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gfs-kernel/gfs-kernel-2.03.09.ebuild,v 1.7 2011/04/28 18:59:44 ulm Exp $
+# $Id$
 
 inherit eutils linux-mod versionator
 

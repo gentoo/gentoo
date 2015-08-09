@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nx/nx-3.5.0.20.ebuild,v 1.5 2015/03/27 14:47:37 voyageur Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils multilib

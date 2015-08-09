@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/servletapi/servletapi-2.3-r3.ebuild,v 1.13 2012/01/01 15:41:20 sera Exp $
+# $Id$
 
 inherit java-pkg-2 java-ant-2
 

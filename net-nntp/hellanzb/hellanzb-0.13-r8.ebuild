@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/hellanzb/hellanzb-0.13-r8.ebuild,v 1.3 2013/08/03 09:45:50 mgorny Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

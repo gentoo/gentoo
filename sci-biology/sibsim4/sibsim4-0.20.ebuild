@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/sibsim4/sibsim4-0.20.ebuild,v 1.4 2013/02/17 18:25:16 ago Exp $
+# $Id$
 
 EAPI=5
 

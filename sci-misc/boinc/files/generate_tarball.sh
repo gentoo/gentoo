@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-## $Id: generate_tarball.sh,v 1.3 2013/06/30 14:52:47 jlec Exp $
+## $Id$
 ## Modified by scarabeus 2008-10-23
 ###############################################################################
 # functions

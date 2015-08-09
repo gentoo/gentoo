@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/yass/yass-1.14.ebuild,v 1.1 2010/06/18 05:52:46 weaver Exp $
+# $Id$
 
 EAPI="2"
 

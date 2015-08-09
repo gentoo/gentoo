@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/libwpd/libwpd-0.10.0.ebuild,v 1.6 2014/11/21 11:43:21 klausman Exp $
+# $Id$
 
 EAPI=5
 

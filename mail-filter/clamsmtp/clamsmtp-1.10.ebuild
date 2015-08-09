@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/clamsmtp/clamsmtp-1.10.ebuild,v 1.5 2011/06/19 13:42:32 maekke Exp $
+# $Id$
 
 DESCRIPTION="ClamSMTP is an SMTP filter that allows you to check for viruses using the ClamAV anti-virus software"
 HOMEPAGE="http://memberwebs.com/nielsen/software/clamsmtp/"

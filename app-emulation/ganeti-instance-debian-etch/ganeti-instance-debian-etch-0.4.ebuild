@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti-instance-debian-etch/ganeti-instance-debian-etch-0.4.ebuild,v 1.2 2011/09/03 09:32:19 scarabeus Exp $
+# $Id$
 
 DESCRIPTION="Debian Etch instance example for Ganeti"
 HOMEPAGE="http://code.google.com/p/ganeti/"

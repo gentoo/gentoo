@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ettercap/ettercap-9999.ebuild,v 1.9 2014/11/05 16:20:52 vapier Exp $
+# $Id$
 
 EAPI=5
 

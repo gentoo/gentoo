@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed/sylpheed-3.3.0.ebuild,v 1.9 2013/04/12 17:19:34 ago Exp $
+# $Id$
 
 EAPI="4"
 

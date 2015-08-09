@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/davl/davl-1.2.4-r1.ebuild,v 1.2 2014/05/15 08:56:05 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

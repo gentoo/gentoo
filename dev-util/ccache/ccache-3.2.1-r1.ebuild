@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ccache/ccache-3.2.1-r1.ebuild,v 1.1 2014/12/21 15:30:06 floppym Exp $
+# $Id$
 
 EAPI=5
 

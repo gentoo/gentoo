@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/fuse-2.9.3.ebuild,v 1.14 2015/03/07 21:34:40 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit eutils libtool linux-info udev toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lsadb/lsadb-0.1.3.ebuild,v 1.1 2009/11/30 20:14:31 josejx Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

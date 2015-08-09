@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/kterm/kterm-6.2.0-r5.ebuild,v 1.11 2013/03/04 10:57:33 naota Exp $
+# $Id$
 
 EAPI=4
 

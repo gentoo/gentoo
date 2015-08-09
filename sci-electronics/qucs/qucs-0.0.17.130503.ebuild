@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/qucs/qucs-0.0.17.130503.ebuild,v 1.2 2013/07/23 14:32:41 kensington Exp $
+# $Id$
 
 EAPI=5
 

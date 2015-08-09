@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/qalculate-units/qalculate-units-0.9.4-r2.ebuild,v 1.9 2014/07/04 15:41:44 bicatali Exp $
+# $Id$
 
 EAPI=5
 

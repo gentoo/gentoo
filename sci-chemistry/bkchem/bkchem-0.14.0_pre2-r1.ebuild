@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/bkchem/bkchem-0.14.0_pre2-r1.ebuild,v 1.1 2015/02/20 10:28:32 jlec Exp $
+# $Id$
 
 EAPI=5
 

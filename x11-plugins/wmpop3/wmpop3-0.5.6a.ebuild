@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpop3/wmpop3-0.5.6a.ebuild,v 1.14 2010/09/02 10:44:28 s4t4n Exp $
+# $Id$
 
 DESCRIPTION="dockapp for checking pop3 accounts"
 HOMEPAGE="http://www.cs.mun.ca/~scotth/"

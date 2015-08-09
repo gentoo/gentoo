@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nettop/nettop-0.2.3-r2.ebuild,v 1.6 2014/07/14 22:52:20 jer Exp $
+# $Id$
 
 EAPI=5
 

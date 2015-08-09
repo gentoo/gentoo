@@ -2,7 +2,7 @@
 +++ src/Makefile	2013-03-08 22:20:52.360922189 +0100
 @@ -20,16 +20,14 @@
  
- # $Id: htun-0.9.6-makefile.patch,v 1.1 2013/03/12 04:35:43 pinkbyte Exp $
+ # $Id$
  
 -
 -CFLAGS = -I../include -I. -O -W -Wall -g -D_REENTRANT #-pg -a

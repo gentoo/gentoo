@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vino/vino-3.14.2.ebuild,v 1.3 2015/03/15 13:32:27 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="yes"

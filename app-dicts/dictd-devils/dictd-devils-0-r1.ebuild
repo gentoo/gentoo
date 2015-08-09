@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/dictd-devils/dictd-devils-0-r1.ebuild,v 1.13 2005/04/01 14:35:18 nigoro Exp $
+# $Id$
 
 MY_P=devils-dict-pre
 S=${WORKDIR}

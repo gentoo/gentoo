@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/files/iperf.confd,v 1.1 2005/01/23 10:52:13 ka0ttic Exp $
+# $Id$
 
 # extra options (run iperf -h for a list of supported options)
 IPERF_OPTS="--format Mbytes"

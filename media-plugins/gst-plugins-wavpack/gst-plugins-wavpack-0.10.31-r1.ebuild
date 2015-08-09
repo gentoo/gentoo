@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-wavpack/gst-plugins-wavpack-0.10.31-r1.ebuild,v 1.8 2014/08/25 11:02:29 ago Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/knot/files/knot.init,v 1.2 2013/08/21 09:23:59 scarabeus Exp $
+# $Id$
 
 command=/usr/sbin/knotd
 command_args="-d"

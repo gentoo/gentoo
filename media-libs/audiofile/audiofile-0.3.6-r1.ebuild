@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/audiofile/audiofile-0.3.6-r1.ebuild,v 1.14 2015/03/03 08:21:44 dlan Exp $
+# $Id$
 
 EAPI=5
 

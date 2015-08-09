@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/radiusclient-ng/radiusclient-ng-0.5.6-r1.ebuild,v 1.4 2015/01/27 10:08:26 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

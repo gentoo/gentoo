@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnump3d/gnump3d-3.0-r1.ebuild,v 1.6 2012/06/09 23:08:40 zmedico Exp $
+# $Id$
 
 inherit eutils multilib user
 

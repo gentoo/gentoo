@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/recoll/recoll-1.19.5.ebuild,v 1.2 2014/05/17 07:32:01 ulm Exp $
+# $Id$
 
 EAPI="4"
 

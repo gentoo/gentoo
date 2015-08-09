@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlc/xmlc-2.3.1-r1.ebuild,v 1.4 2012/09/02 00:53:04 xmw Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/multilib/package.use.mask,v 1.1 2012/09/20 11:42:57 chithanh Exp $
+# $Id$
 
 # Matt Turner <mattst88@gentoo.org> (19 Sep 2012)
 # multilib requires 32-bit libGL provided by emul-linux-x86-opengl

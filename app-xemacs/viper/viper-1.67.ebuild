@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/viper/viper-1.67.ebuild,v 1.7 2014/08/10 19:43:38 slyfox Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

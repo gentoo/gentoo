@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-all/fortune-mod-all-1.ebuild,v 1.18 2015/02/03 20:43:26 tupone Exp $
+# $Id$
 
 EAPI=5
 DESCRIPTION="Meta package for all fortune-mod packages"

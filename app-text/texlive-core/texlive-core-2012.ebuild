@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/texlive-core-2012.ebuild,v 1.3 2012/07/30 20:30:04 jer Exp $
+# $Id$
 
 EAPI=3
 

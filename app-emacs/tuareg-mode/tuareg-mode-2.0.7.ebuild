@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/tuareg-mode/tuareg-mode-2.0.7.ebuild,v 1.5 2014/09/02 13:19:34 ulm Exp $
+# $Id$
 
 EAPI=5
 

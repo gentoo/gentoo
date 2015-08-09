@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wireless-regdb/wireless-regdb-20130213.ebuild,v 1.7 2013/03/31 10:25:34 ago Exp $
+# $Id$
 
 EAPI=5
 

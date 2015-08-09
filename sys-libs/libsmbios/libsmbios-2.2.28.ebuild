@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libsmbios/libsmbios-2.2.28.ebuild,v 1.12 2013/04/05 12:01:25 polynomial-c Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

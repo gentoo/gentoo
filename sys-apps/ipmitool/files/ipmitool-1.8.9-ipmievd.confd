@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ipmitool/files/ipmitool-1.8.9-ipmievd.confd,v 1.1 2007/09/23 06:03:42 robbat2 Exp $
+# $Id$
 # /etc/conf.d/ipmievd
 
 # Interfaces:

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnu-smalltalk/gnu-smalltalk-3.2.4.ebuild,v 1.4 2012/06/06 03:07:09 zmedico Exp $
+# $Id$
 
 EAPI="3"
 

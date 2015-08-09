@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/package.use.mask,v 1.49 2014/12/24 17:57:56 tamiko Exp $
+# $Id$
 
 # Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
 # dev-libs/xapian is currently not keyworded for any *-bsd profile

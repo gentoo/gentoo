@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/enumerate/enumerate-111.08.00.ebuild,v 1.3 2014/11/10 07:44:51 aballier Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/piedock/piedock-1.6.6.ebuild,v 1.1 2014/08/15 08:42:41 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

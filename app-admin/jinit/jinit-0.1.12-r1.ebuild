@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/jinit/jinit-0.1.12-r1.ebuild,v 1.2 2010/02/22 12:07:45 phajdan.jr Exp $
+# $Id$
 
 inherit eutils
 

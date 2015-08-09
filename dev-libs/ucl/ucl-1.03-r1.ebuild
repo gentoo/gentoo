@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ucl/ucl-1.03-r1.ebuild,v 1.10 2013/10/13 14:47:43 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

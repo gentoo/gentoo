@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/channeleditor/channeleditor-1.9.2.1-r1.ebuild,v 1.8 2013/03/04 19:20:40 billie Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx-support/mailx-support-20060102-r1.ebuild,v 1.17 2013/02/17 20:46:43 zmedico Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

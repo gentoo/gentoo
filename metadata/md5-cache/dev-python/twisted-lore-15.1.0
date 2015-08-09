@@ -1,14 +1,14 @@
+_eclasses_=versionator	99ae9d758cbe7cfed19170e7d48f5a9c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	twisted-r1	62b944313919179373fb9a646e2185a2	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=92ee418ffe5156d034f6f1857cb6d0ab
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare test
+EAPI=5
 DEPEND==dev-python/twisted-core-15.1*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] =dev-python/twisted-web-15.1*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Twisted documentation system
-EAPI=5
-HOMEPAGE=http://www.twistedmatrix.com/
-IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
-RDEPEND==dev-python/twisted-core-15.1*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] =dev-python/twisted-web-15.1*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+IUSE=python_targets_python2_7
 REQUIRED_USE=|| ( python_targets_python2_7 )
-SLOT=0
 SRC_URI=http://twistedmatrix.com/Releases/Lore/15.1/TwistedLore-15.1.0.tar.bz2
-_eclasses_=distutils-r1	715b22a21726d3fd76b17e007c5daf5f	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	twisted-r1	8e3123a6498c5da6dd9d8135b3655efd	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=761b78bf309b521b2aa3a31f814303a1
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
+HOMEPAGE=http://www.twistedmatrix.com/
+RDEPEND==dev-python/twisted-core-15.1*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] =dev-python/twisted-web-15.1*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

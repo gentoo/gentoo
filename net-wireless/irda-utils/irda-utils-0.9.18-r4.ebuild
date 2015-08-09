@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/irda-utils-0.9.18-r4.ebuild,v 1.6 2013/10/13 16:36:13 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs flag-o-matic udev

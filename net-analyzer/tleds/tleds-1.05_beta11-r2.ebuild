@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tleds/tleds-1.05_beta11-r2.ebuild,v 1.5 2014/09/11 17:12:02 nimiux Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

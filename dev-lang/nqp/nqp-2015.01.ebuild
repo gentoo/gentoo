@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/nqp/nqp-2015.01.ebuild,v 1.2 2015/01/26 04:14:32 patrick Exp $
+# $Id$
 
 EAPI=5
 

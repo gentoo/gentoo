@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/xnap/xnap-2.5-r3.ebuild,v 1.6 2010/08/15 11:25:15 armin76 Exp $
+# $Id$
 
 DESCRIPTION="A P2P framework and client"
 HOMEPAGE="http://xnap.sf.net"

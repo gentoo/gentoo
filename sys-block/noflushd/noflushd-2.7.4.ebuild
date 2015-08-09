@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/noflushd/noflushd-2.7.4.ebuild,v 1.3 2014/03/10 10:59:50 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="A daemon to spin down your disks and force accesses to be cached"
 HOMEPAGE="http://noflushd.sourceforge.net"

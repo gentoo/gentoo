@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/inxi/inxi-2.2.19.ebuild,v 1.2 2015/07/30 16:44:39 maekke Exp $
+# $Id$
 
 EAPI=5
 

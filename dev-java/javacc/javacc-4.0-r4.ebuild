@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javacc/javacc-4.0-r4.ebuild,v 1.8 2011/08/12 16:02:22 xarthisius Exp $
+# $Id$
 
 IUSE="doc examples source test"
 

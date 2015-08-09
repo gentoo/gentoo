@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/64ul/package.mask,v 1.7 2009/07/31 08:50:21 ssuominen Exp $
+# $Id$
 
 # <gcc-4 does not compile with >=gcc-4 on ppc64
 sys-libs/libstdc++-v3

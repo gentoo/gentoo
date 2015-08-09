@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/slang/slang-2.2.4.ebuild,v 1.14 2013/11/19 12:41:59 slyfox Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

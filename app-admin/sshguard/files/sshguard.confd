@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sshguard/files/sshguard.confd,v 1.4 2013/01/31 16:36:47 jer Exp $
+# $Id$
 
 # Config file for /etc/init.d/sshguard
 #   See sshguard(8) for details.

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vim-spell.eclass,v 1.9 2011/12/27 17:55:12 fauli Exp $
+# $Id$
 
 #
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>

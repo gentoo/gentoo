@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/darwinia/darwinia-1.3.0.ebuild,v 1.19 2015/06/01 20:51:01 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 CDROM_OPTIONAL="yes"

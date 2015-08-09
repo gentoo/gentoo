@@ -1,9 +1,0 @@
-# ChangeLog for app-misc/plod
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/plod/ChangeLog,v 1.1 2008/01/10 22:05:35 killerfox Exp $
-
-*plod-1.9 (10 Jan 2008)
-
-  10 Jan 2008; René Nussbaumer <killerfox@gentoo.org> +plod-1.9.ebuild:
-  Initial import
-

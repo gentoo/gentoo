@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/linux-mod.eclass,v 1.116 2014/01/14 20:50:23 mpagano Exp $
+# $Id$
 
 # @ECLASS: linux-mod.eclass
 # @MAINTAINER:

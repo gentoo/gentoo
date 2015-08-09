@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/jmx2munin/jmx2munin-1.0_p20120811-r1.ebuild,v 1.1 2014/03/01 16:57:00 ercpe Exp $
+# $Id$
 
 EAPI=5
 

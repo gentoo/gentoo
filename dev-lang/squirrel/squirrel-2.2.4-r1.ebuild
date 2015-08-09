@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/squirrel/squirrel-2.2.4-r1.ebuild,v 1.3 2011/01/25 12:17:31 fauli Exp $
+# $Id$
 
 EAPI=3
 

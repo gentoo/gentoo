@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/webapp-config-1.54-r1.ebuild,v 1.1 2015/07/11 03:17:24 twitch153 Exp $
+# $Id$
 
 EAPI="5"
 

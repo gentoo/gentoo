@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/colorlog/colorlog-2.6.0.ebuild,v 1.1 2015/05/29 10:53:33 jlec Exp $
+# $Id$
 
 EAPI=5
 

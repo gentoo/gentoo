@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-data/quake3-data-1.32b.ebuild,v 1.20 2015/01/31 20:23:11 tupone Exp $
+# $Id$
 EAPI=5
 CDROM_OPTIONAL="yes"
 inherit eutils unpacker cdrom games

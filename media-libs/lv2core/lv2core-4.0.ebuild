@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2core/lv2core-4.0.ebuild,v 1.1 2010/10/10 17:11:47 aballier Exp $
+# $Id$
 
 EAPI=2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/html/html-1.0.1.2.ebuild,v 1.10 2012/09/12 14:55:27 qnikst Exp $
+# $Id$
 
 CABAL_FEATURES="lib profile haddock"
 inherit haskell-cabal

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/dataplot/dataplot-20090821.ebuild,v 1.7 2014/10/26 14:40:18 jlec Exp $
+# $Id$
 
 EAPI=5
 

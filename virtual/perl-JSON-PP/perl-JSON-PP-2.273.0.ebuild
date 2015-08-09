@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-JSON-PP/perl-JSON-PP-2.273.0.ebuild,v 1.1 2015/06/06 19:42:56 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

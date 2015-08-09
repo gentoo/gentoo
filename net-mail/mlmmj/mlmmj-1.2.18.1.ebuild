@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mlmmj/mlmmj-1.2.18.1.ebuild,v 1.1 2014/02/05 20:38:56 robbat2 Exp $
+# $Id$
 
 EAPI=4
 

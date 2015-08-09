@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pixels2pgf/pixels2pgf-0.1.ebuild,v 1.1 2012/04/09 19:57:00 mgorny Exp $
+# $Id$
 
 EAPI=4
 

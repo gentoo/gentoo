@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/udpcast/udpcast-20120424.ebuild,v 1.6 2015/05/24 06:16:58 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

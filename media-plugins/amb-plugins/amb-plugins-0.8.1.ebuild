@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/amb-plugins/amb-plugins-0.8.1.ebuild,v 1.3 2011/12/13 23:32:33 ago Exp $
+# $Id$
 
 EAPI=3
 

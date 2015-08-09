@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/txsocksx/txsocksx-1.13.0.3.ebuild,v 1.1 2015/01/06 03:34:13 mrueg Exp $
+# $Id$
 
 EAPI=5
 

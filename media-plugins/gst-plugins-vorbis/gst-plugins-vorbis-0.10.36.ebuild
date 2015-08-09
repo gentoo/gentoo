@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-vorbis/gst-plugins-vorbis-0.10.36.ebuild,v 1.13 2013/02/24 18:01:29 ago Exp $
+# $Id$
 
 EAPI="5"
 

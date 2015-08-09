@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-jaf/gnu-jaf-1.1.1.ebuild,v 1.4 2010/02/09 14:42:58 josejx Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2

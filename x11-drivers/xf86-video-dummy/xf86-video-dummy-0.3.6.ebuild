@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-dummy/xf86-video-dummy-0.3.6.ebuild,v 1.15 2013/02/27 05:41:20 zmedico Exp $
+# $Id$
 
 EAPI=4
 inherit xorg-2

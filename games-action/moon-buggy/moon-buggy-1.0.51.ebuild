@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/moon-buggy/moon-buggy-1.0.51.ebuild,v 1.8 2014/11/19 06:50:10 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils games

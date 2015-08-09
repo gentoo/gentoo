@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/icmake/icmake-7.21.01.ebuild,v 1.1 2014/01/23 00:49:27 radhermit Exp $
+# $Id$
 
 EAPI=5
 

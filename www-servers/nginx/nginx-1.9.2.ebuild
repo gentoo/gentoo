@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/nginx-1.9.2.ebuild,v 1.1 2015/07/13 04:51:06 mgorny Exp $
+# $Id$
 
 EAPI="5"
 

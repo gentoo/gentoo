@@ -1,9 +1,0 @@
-# ChangeLog for x11-misc/kaqaz
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/kaqaz/ChangeLog,v 1.1 2014/12/15 14:41:17 yngwin Exp $
-
-*kaqaz-1.2.0 (15 Dec 2014)
-
-  15 Dec 2014; Ben de Groot <yngwin@gentoo.org> +kaqaz-1.2.0.ebuild,
-  +metadata.xml:
-  Initial commit. Ebuild from lorelei overlay.

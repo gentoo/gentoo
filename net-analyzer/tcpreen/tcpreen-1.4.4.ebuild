@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpreen/tcpreen-1.4.4.ebuild,v 1.3 2014/07/17 16:33:28 jer Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

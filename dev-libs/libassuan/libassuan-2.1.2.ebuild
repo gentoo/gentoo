@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libassuan/libassuan-2.1.2.ebuild,v 1.2 2014/11/14 20:29:08 grobian Exp $
+# $Id$
 
 EAPI=5
 

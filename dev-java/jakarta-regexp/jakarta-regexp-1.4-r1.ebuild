@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jakarta-regexp/jakarta-regexp-1.4-r1.ebuild,v 1.10 2011/12/31 12:36:17 sera Exp $
+# $Id$
 
 inherit java-pkg-2 java-ant-2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/holotz-castle/holotz-castle-1.3.14.ebuild,v 1.5 2014/07/25 14:19:05 tupone Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs games

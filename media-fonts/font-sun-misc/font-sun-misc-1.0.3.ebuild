@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-sun-misc/font-sun-misc-1.0.3.ebuild,v 1.10 2012/05/15 14:08:52 aballier Exp $
+# $Id$
 
 EAPI=3
 inherit xorg-2

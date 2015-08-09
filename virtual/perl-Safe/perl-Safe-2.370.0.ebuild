@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Safe/perl-Safe-2.370.0.ebuild,v 1.10 2015/02/18 08:38:23 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/libfprint/libfprint-0.5.0-r1.ebuild,v 1.8 2014/08/02 18:19:41 ago Exp $
+# $Id$
 
 EAPI=4
 

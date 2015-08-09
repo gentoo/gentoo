@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/postalplus/postalplus-1.ebuild,v 1.6 2015/03/30 21:45:32 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cdrom games

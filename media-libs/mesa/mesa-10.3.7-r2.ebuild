@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/mesa-10.3.7-r2.ebuild,v 1.7 2015/05/24 04:30:12 mattst88 Exp $
+# $Id$
 
 EAPI=5
 

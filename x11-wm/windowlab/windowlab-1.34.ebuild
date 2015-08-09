@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowlab/windowlab-1.34.ebuild,v 1.8 2014/08/10 20:00:35 slyfox Exp $
+# $Id$
 
 inherit eutils
 

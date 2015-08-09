@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils	def8c8eb435ec28fd9315114640f6c84	python	6d7be3e54573292f012e3cc433d8297	mercurial	6ac07cde03301514a5f9e4f13df3f55e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=579aa046a700eb985093be497f5bf22f
+SLOT=0
 DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+EAPI=3
 DEPEND=dev-vcs/mercurial doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt ) =dev-lang/python-2* dev-vcs/mercurial
 DESCRIPTION=Mercurial authentication and authorization tools
-EAPI=3
-HOMEPAGE=http://www.lshift.net/mercurial-server.html
-IUSE=doc
 LICENSE=GPL-2
+IUSE=doc
+HOMEPAGE=http://www.lshift.net/mercurial-server.html
 RDEPEND=dev-vcs/mercurial =dev-lang/python-2*
-SLOT=0
-_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	mercurial	2fbda5894dda6392b71334ee9a92de0b	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=a78f5f3e64f519360be43262c941c50a

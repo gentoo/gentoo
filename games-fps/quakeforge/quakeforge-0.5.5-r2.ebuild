@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quakeforge/quakeforge-0.5.5-r2.ebuild,v 1.12 2012/06/23 10:59:05 xarthisius Exp $
+# $Id$
 
 EAPI=2
 inherit base eutils autotools games

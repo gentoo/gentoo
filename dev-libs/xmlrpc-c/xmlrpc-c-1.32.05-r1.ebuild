@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/xmlrpc-c-1.32.05-r1.ebuild,v 1.12 2015/07/23 14:32:45 pinkbyte Exp $
+# $Id$
 
 EAPI="4"
 

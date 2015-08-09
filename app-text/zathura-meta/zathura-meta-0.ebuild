@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/zathura-meta/zathura-meta-0.ebuild,v 1.8 2014/06/05 09:43:02 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

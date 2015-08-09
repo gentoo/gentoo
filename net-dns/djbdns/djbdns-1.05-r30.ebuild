@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/djbdns-1.05-r30.ebuild,v 1.9 2015/04/13 08:17:21 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic readme.gentoo toolchain-funcs user

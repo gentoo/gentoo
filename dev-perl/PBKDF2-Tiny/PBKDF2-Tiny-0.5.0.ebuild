@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PBKDF2-Tiny/PBKDF2-Tiny-0.5.0.ebuild,v 1.1 2015/02/21 20:56:25 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

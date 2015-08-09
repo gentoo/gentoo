@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/6.1/x86/make.defaults,v 1.5 2011/05/24 12:59:38 mduft Exp $
+# $Id$
 
 # the CHOST version number is the version number of the host libc, not the version of the interix SDK package.
 

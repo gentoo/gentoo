@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tracker/tracker-1.2.5.ebuild,v 1.5 2015/05/02 13:23:05 eva Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

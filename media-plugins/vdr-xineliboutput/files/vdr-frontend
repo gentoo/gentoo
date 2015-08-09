@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-xineliboutput/files/vdr-frontend,v 1.2 2015/02/21 02:14:47 hd_brummy Exp $
+# $Id$
 
 description="Start xineliboutput sxfe/sxfb remote frontend"
 

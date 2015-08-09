@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/p3scan/files/p3scan.init-r1,v 1.1 2013/01/15 15:01:34 eras Exp $
+# $Id$
 
 depend() {
 	use net

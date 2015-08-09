@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/qxmledit/qxmledit-0.8.8.1.ebuild,v 1.3 2014/03/12 05:20:38 phajdan.jr Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/lib_mysqludf_ta/lib_mysqludf_ta-0.1.ebuild,v 1.2 2011/10/19 12:32:13 sbriesen Exp $
+# $Id$
 
 EAPI=4
 

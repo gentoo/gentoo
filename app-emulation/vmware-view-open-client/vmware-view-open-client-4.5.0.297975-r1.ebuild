@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-view-open-client/vmware-view-open-client-4.5.0.297975-r1.ebuild,v 1.5 2013/06/22 18:46:17 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

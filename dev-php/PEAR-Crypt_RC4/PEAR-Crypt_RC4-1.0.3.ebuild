@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Crypt_RC4/PEAR-Crypt_RC4-1.0.3.ebuild,v 1.10 2014/08/10 20:45:43 slyfox Exp $
+# $Id$
 
 EAPI="4"
 

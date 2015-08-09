@@ -1,3 +1,3 @@
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/files/smtp.sasl,v 1.3 2011/05/09 12:36:20 eras Exp $
+# $Id$
 pwcheck_method:saslauthd
 mech_list: PLAIN

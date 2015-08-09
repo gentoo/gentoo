@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile config configure install postinst postrm preinst prepare prerm pretend setup test
+_eclasses_=mount-boot	41ed556fa5641393d5323e421c8e5bcf	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c50aafea0caaf0acedaac76538f1b806
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup test
+EAPI=4
 DEPEND=!static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3 amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) ) static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3[static-libs(+)] amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GNU GRUB Legacy boot loader
-EAPI=4
-HOMEPAGE=http://www.gnu.org/software/grub/
-IUSE=custom-cflags ncurses netboot static
-KEYWORDS=amd64 x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=!static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3 amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) )
-SLOT=0
+IUSE=custom-cflags ncurses netboot static
 SRC_URI=mirror://gentoo/grub-0.97.tar.gz mirror://gnu-alpha/grub/grub-0.97.tar.gz mirror://gentoo/splash.xpm.gz mirror://gentoo/grub-0.97-patches-1.14.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	mount-boot	07784c1c862b665e1d6a3c1f47936987	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=10af227d48b206568a9dc59263747f2d
+KEYWORDS=amd64 x86 ~x86-fbsd
+HOMEPAGE=http://www.gnu.org/software/grub/
+RDEPEND=!static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3 amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) )

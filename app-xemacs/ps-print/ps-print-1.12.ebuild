@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ps-print/ps-print-1.12.ebuild,v 1.6 2011/07/22 11:25:02 xarthisius Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

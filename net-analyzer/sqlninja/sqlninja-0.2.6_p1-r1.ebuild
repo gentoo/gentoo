@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sqlninja/sqlninja-0.2.6_p1-r1.ebuild,v 1.2 2014/07/17 15:07:43 jer Exp $
+# $Id$
 
 EAPI=5
 inherit versionator

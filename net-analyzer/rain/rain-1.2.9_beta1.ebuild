@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rain/rain-1.2.9_beta1.ebuild,v 1.4 2014/07/27 10:52:45 phajdan.jr Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

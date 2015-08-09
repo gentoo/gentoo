@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukini/zukini-20120806.ebuild,v 1.3 2012/10/17 03:23:38 phajdan.jr Exp $
+# $Id$
 
 EAPI=4
 

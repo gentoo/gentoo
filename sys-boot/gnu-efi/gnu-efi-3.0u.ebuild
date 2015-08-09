@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/gnu-efi/gnu-efi-3.0u.ebuild,v 1.2 2014/03/15 19:56:24 vapier Exp $
+# $Id$
 
 EAPI=5
 

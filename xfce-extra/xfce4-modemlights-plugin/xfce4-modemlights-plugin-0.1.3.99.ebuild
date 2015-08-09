@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-modemlights-plugin/xfce4-modemlights-plugin-0.1.3.99.ebuild,v 1.8 2012/11/28 12:25:10 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit multilib xfconf

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/freepv/freepv-0.3.0-r4.ebuild,v 1.4 2014/06/14 10:00:34 phajdan.jr Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils eutils

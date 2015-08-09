@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libxcrypt/libxcrypt-2.4.ebuild,v 1.3 2013/11/25 20:48:27 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib

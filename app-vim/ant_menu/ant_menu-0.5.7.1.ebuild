@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/ant_menu/ant_menu-0.5.7.1.ebuild,v 1.4 2012/02/28 20:48:13 ranger Exp $
+# $Id$
 
 inherit vim-plugin
 

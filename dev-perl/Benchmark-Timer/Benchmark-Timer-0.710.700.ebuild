@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Benchmark-Timer/Benchmark-Timer-0.710.700.ebuild,v 1.1 2015/05/06 19:29:42 zlogene Exp $
+# $Id$
 
 EAPI=5
 

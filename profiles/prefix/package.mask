@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/package.mask,v 1.134 2015/06/16 13:00:05 grobian Exp $
+# $Id$
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked.  This file is for

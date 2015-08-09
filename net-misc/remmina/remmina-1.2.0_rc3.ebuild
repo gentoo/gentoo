@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/remmina/remmina-1.2.0_rc3.ebuild,v 1.2 2015/05/12 08:41:14 ago Exp $
+# $Id$
 
 EAPI="4"
 

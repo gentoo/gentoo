@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/texinfo/texinfo-6.0.ebuild,v 1.1 2015/06/30 08:03:56 polynomial-c Exp $
+# $Id$
 
 EAPI="4"
 

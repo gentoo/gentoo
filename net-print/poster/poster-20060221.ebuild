@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/poster/poster-20060221.ebuild,v 1.4 2013/08/09 06:55:21 mrueg Exp $
+# $Id$
 
 EAPI=5
 

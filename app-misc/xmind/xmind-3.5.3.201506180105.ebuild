@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/xmind/xmind-3.5.3.201506180105.ebuild,v 1.1 2015/08/07 02:11:26 creffett Exp $
+# $Id$
 
 EAPI=5
 

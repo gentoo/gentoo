@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ampi/ampi-0_pre20140616.ebuild,v 1.1 2014/06/16 21:14:19 jauhien Exp $
+# $Id$
 
 EAPI=5
 

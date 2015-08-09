@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/filebench/filebench-1.4.9.1.ebuild,v 1.1 2012/08/27 08:57:06 patrick Exp $
+# $Id$
 
 inherit eutils autotools
 

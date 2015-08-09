@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/midentd/midentd-2.3.1-r1.ebuild,v 1.7 2014/12/29 14:19:01 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

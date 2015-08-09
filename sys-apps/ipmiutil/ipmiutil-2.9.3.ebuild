@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ipmiutil/ipmiutil-2.9.3.ebuild,v 1.3 2014/06/28 17:59:02 jer Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils systemd

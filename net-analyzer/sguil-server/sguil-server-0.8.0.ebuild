@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sguil-server/sguil-server-0.8.0.ebuild,v 1.6 2015/03/25 16:12:18 jlec Exp $
+# $Id$
 
 EAPI=5
 

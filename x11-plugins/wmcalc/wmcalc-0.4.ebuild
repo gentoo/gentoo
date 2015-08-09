@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcalc/wmcalc-0.4.ebuild,v 1.15 2012/02/15 09:44:32 voyageur Exp $
+# $Id$
 
 inherit multilib toolchain-funcs
 

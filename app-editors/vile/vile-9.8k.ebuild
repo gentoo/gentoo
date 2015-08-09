@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/vile/vile-9.8k.ebuild,v 1.8 2015/03/31 17:33:30 ulm Exp $
+# $Id$
 
 EAPI="5"
 

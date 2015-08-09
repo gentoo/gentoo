@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdivsufsort/libdivsufsort-2.0.1.ebuild,v 1.1 2012/04/10 15:49:03 mgorny Exp $
+# $Id$
 
 EAPI=4
 inherit cmake-utils multilib

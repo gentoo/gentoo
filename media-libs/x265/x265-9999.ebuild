@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/x265/x265-9999.ebuild,v 1.16 2015/07/24 15:51:17 blueness Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/tapeutils/tapeutils-0.4.ebuild,v 1.3 2010/03/07 01:23:03 vapier Exp $
+# $Id$
 
 inherit toolchain-funcs
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/intel-ocl-sdk/intel-ocl-sdk-4.4.0.117-r1.ebuild,v 1.4 2015/04/20 16:43:29 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

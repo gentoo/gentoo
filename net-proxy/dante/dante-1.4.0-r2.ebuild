@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/dante-1.4.0-r2.ebuild,v 1.4 2015/05/03 06:59:44 jer Exp $
+# $Id$
 
 EAPI="5"
 

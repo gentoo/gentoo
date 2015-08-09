@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunique/libunique-1.1.6-r1.ebuild,v 1.11 2013/01/13 16:35:38 eva Exp $
+# $Id$
 
 EAPI="4"
 GNOME2_LA_PUNT="yes"

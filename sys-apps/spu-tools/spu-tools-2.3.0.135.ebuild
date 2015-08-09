@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/spu-tools/spu-tools-2.3.0.135.ebuild,v 1.1 2008/12/26 14:46:52 josejx Exp $
+# $Id$
 
 MY_P=${P/_p/-}
 

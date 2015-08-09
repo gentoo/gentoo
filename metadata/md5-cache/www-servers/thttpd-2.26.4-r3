@@ -1,11 +1,11 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7d5101f731d1d3fdbdffe91d4ce56e0b
+SLOT=0
 DEFINED_PHASES=configure install prepare setup
+EAPI=4
 DEPEND=virtual/pkgconfig
 DESCRIPTION=Fork of thttpd, a small, fast, multiplexing webserver
-EAPI=4
-HOMEPAGE=http://opensource.dyc.edu/sthttpd
-KEYWORDS=amd64 arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=BSD GPL-2
-SLOT=0
 SRC_URI=http://opensource.dyc.edu/pub/sthttpd/sthttpd-2.26.4.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=28d232e4bd6db867bc75f1ba27bb2179
+KEYWORDS=amd64 arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux
+HOMEPAGE=http://opensource.dyc.edu/sthttpd

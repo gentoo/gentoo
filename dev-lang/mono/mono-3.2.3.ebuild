@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-3.2.3.ebuild,v 1.3 2014/11/18 02:45:27 zerochaos Exp $
+# $Id$
 
 EAPI="5"
 AUTOTOOLS_PRUNE_LIBTOOL_FILES="all"

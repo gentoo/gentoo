@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mps/mps-1.114.0.ebuild,v 1.1 2014/07/11 06:26:17 patrick Exp $
+# $Id$
 
 EAPI=4
 

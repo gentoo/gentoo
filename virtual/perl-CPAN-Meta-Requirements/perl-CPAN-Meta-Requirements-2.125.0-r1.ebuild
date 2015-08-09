@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-CPAN-Meta-Requirements/perl-CPAN-Meta-Requirements-2.125.0-r1.ebuild,v 1.13 2015/04/04 23:46:20 vapier Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/nss-pam-ldapd/files/nslcd.rc,v 1.1 2012/07/24 07:16:14 prometheanfire Exp $
+# $Id$
 
 opts="checkconfig"
 

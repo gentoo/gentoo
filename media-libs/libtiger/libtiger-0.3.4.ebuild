@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libtiger/libtiger-0.3.4.ebuild,v 1.9 2014/03/09 14:35:48 maekke Exp $
+# $Id$
 
 EAPI=4
 inherit libtool

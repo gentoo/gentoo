@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/smrsh/smrsh-8.14.9.ebuild,v 1.1 2014/07/22 04:08:39 patrick Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

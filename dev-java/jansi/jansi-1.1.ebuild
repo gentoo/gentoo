@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jansi/jansi-1.1.ebuild,v 1.4 2011/08/13 07:07:41 xarthisius Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source"

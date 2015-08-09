@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/gnu-crypto-2.0.1-r2.ebuild,v 1.13 2012/10/18 12:47:00 ottxor Exp $
+# $Id$
 
 EAPI=4
 JAVA_PKG_IUSE="doc source"

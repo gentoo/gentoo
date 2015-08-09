@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/nss_ldap/nss_ldap-258.ebuild,v 1.8 2007/11/14 03:56:40 beandog Exp $
+# $Id$
 
 inherit fixheadtails eutils multilib autotools
 

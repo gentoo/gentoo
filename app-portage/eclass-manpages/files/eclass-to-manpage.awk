@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/eclass-manpages/files/eclass-to-manpage.awk,v 1.28 2013/01/10 17:42:39 vapier Exp $
+# $Id$
 
 # This awk converts the comment documentation found in eclasses
 # into man pages for easier/nicer reading.

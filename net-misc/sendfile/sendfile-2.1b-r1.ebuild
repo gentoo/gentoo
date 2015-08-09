@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sendfile/sendfile-2.1b-r1.ebuild,v 1.4 2012/06/28 10:05:34 ago Exp $
+# $Id$
 
 inherit toolchain-funcs
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/cancd/files/cancd-init.d,v 1.2 2011/12/31 15:42:32 idl0r Exp $
+# $Id$
 
 depend() {
 	need net

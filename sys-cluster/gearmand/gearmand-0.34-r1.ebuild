@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gearmand/gearmand-0.34-r1.ebuild,v 1.4 2014/12/28 16:57:22 titanofold Exp $
+# $Id$
 
 EAPI=5
 

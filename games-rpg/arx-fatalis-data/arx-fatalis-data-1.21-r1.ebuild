@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/arx-fatalis-data/arx-fatalis-data-1.21-r1.ebuild,v 1.3 2013/01/30 19:08:34 ago Exp $
+# $Id$
 
 EAPI=4
 

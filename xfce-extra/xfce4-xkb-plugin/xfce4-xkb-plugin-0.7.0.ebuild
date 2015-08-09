@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-xkb-plugin/xfce4-xkb-plugin-0.7.0.ebuild,v 1.1 2014/03/15 13:02:49 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit multilib xfconf

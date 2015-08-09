@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Date-Extract/Date-Extract-0.40.0.ebuild,v 1.1 2014/05/28 12:22:11 zlogene Exp $
+# $Id$
 
 EAPI=5
 

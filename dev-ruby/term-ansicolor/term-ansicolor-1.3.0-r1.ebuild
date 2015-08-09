@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/term-ansicolor/term-ansicolor-1.3.0-r1.ebuild,v 1.2 2015/06/28 20:30:58 maekke Exp $
+# $Id$
 
 EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22"

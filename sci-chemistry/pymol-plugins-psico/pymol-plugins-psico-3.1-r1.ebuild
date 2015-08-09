@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol-plugins-psico/pymol-plugins-psico-3.1-r1.ebuild,v 1.1 2015/05/29 07:01:07 jlec Exp $
+# $Id$
 
 EAPI=5
 

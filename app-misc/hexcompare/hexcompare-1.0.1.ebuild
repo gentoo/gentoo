@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/hexcompare/hexcompare-1.0.1.ebuild,v 1.1 2010/11/10 23:01:05 xmw Exp $
+# $Id$
 
 EAPI=3
 

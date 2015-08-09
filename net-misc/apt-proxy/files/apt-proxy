@@ -1,6 +1,6 @@
 # default: off
 # description: this is a proxy for debian packages.  
-# $Header: /var/cvsroot/gentoo-x86/net-misc/apt-proxy/files/apt-proxy,v 1.2 2004/07/18 04:06:59 dragonheart Exp $
+# $Id$
 
 service apt-proxy
 {

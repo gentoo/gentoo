@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/exaile/exaile-0.3.2.1.ebuild,v 1.3 2011/10/20 02:52:13 radhermit Exp $
+# $Id$
 
 EAPI=3
 

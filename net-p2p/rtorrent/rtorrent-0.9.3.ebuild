@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/rtorrent-0.9.3.ebuild,v 1.9 2015/03/11 17:28:14 mrueg Exp $
+# $Id$
 
 EAPI=4
 

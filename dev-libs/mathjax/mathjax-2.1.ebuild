@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mathjax/mathjax-2.1.ebuild,v 1.1 2013/02/16 14:57:45 hasufell Exp $
+# $Id$
 
 EAPI=5
 

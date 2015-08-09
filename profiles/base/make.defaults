@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/make.defaults,v 1.128 2015/07/25 15:53:19 floppym Exp $
+# $Id$
 #
 # System-wide defaults for the Portage system
 # See portage(5) manpage

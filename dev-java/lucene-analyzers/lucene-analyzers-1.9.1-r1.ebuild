@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/lucene-analyzers/lucene-analyzers-1.9.1-r1.ebuild,v 1.6 2011/12/31 13:59:31 sera Exp $
+# $Id$
 
 JAVA_PKG_IUSE="source"
 inherit java-pkg-2 java-ant-2 java-osgi

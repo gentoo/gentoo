@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	eutils	351a78113be5b393c09a2c948701ad36	wxwidgets	6712758caa92e836a735c1281b34e70e
+_md5_=aeeae191b2f88ebe4429b08d1b1b7938
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+EAPI=3
 DEPEND=>=dev-lang/perl-5.6.1 ssl? ( >=dev-libs/openssl-0.9.7d ) emacs? ( virtual/emacs ) java? ( >=virtual/jdk-1.2 ) odbc? ( dev-db/unixODBC ) wxwidgets? ( x11-libs/wxGTK:2.8[X,opengl] virtual/glu ) sctp? ( net-misc/lksctp-tools ) tk? ( dev-lang/tk ) java? ( >=dev-java/java-config-2.2.0 )
 DESCRIPTION=Erlang programming language, runtime environment, and large collection of libraries
-EAPI=3
-HOMEPAGE=http://www.erlang.org/
-IUSE=compat-ethread doc emacs halfword hipe java kpoll odbc smp sctp ssl tk wxwidgets elibc_FreeBSD java
-KEYWORDS=alpha amd64 ~arm ~ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris
 LICENSE=ErlPL-1.1
-RDEPEND=>=dev-lang/perl-5.6.1 ssl? ( >=dev-libs/openssl-0.9.7d ) emacs? ( virtual/emacs ) java? ( >=virtual/jdk-1.2 ) odbc? ( dev-db/unixODBC ) java? ( >=dev-java/java-config-2.2.0 )
-SLOT=0
+IUSE=compat-ethread doc emacs halfword hipe java kpoll odbc smp sctp ssl tk wxwidgets elibc_FreeBSD java
 SRC_URI=http://www.erlang.org/download/otp_src_R15B03-1.tar.gz http://erlang.org/download/otp_doc_man_R15B03-1.tar.gz doc? ( http://erlang.org/download/otp_doc_html_R15B03-1.tar.gz )
-_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	java-pkg-opt-2	f9bbbe5092225a2059aa9e6a3a2b52f1	java-utils-2	240e3f28c6b42b9f36d3c36b8b27fbb2	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=fa656acbae83ce3e233525cad8d2550b
+KEYWORDS=alpha amd64 ~arm ~ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris
+HOMEPAGE=http://www.erlang.org/
+RDEPEND=>=dev-lang/perl-5.6.1 ssl? ( >=dev-libs/openssl-0.9.7d ) emacs? ( virtual/emacs ) java? ( >=virtual/jdk-1.2 ) odbc? ( dev-db/unixODBC ) java? ( >=dev-java/java-config-2.2.0 )

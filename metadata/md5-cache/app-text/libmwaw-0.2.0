@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	base	84d9f879f57a8316ff02be0373a3d6f9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=252cfc9b66ab2cdf478b40b22a9ac443
+SLOT=0
 DEFINED_PHASES=compile configure install prepare unpack
+EAPI=5
 DEPEND=app-text/libwpd:0.9 >=app-text/libwpg-0.2.2:0.2 dev-libs/libxml2 sys-libs/zlib >=dev-libs/boost-1.46 sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen )
 DESCRIPTION=Library parsing many pre-OSX MAC text formats
-EAPI=5
-HOMEPAGE=http://sourceforge.net/p/libmwaw/wiki/Home/
-IUSE=doc static-libs
-KEYWORDS=amd64 ~arm ~ppc x86
 LICENSE=LGPL-2.1
-RDEPEND=app-text/libwpd:0.9 >=app-text/libwpg-0.2.2:0.2 dev-libs/libxml2 sys-libs/zlib
-SLOT=0
+IUSE=doc static-libs
 SRC_URI=mirror://sourceforge/libmwaw/libmwaw-0.2.0.tar.xz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=04bf493dbac7c9979676d9dcfaf93f2a
+KEYWORDS=amd64 ~arm ~ppc x86
+HOMEPAGE=http://sourceforge.net/p/libmwaw/wiki/Home/
+RDEPEND=app-text/libwpd:0.9 >=app-text/libwpg-0.2.2:0.2 dev-libs/libxml2 sys-libs/zlib

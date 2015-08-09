@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/xfce4-terminal/xfce4-terminal-0.6.3.ebuild,v 1.11 2014/07/06 16:18:03 blueness Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

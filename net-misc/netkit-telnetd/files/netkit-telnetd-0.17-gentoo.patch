@@ -37,7 +37,7 @@ diff -r -u netkit-telnet-0.17_orig/telnet/network.cc netkit-telnet-0.17/telnet/n
 +++ netkit-telnet-0.17/telnet/network.cc	2002-04-05 09:22:52.000000000 +0200
 @@ -37,6 +37,7 @@
  char net_rcsid[] = 
-   "$Id: netkit-telnetd-0.17-gentoo.patch,v 1.1 2002/04/05 07:48:02 gbevin Exp $";
+   "$Id$";
  
 +#include <stdlib.h>
  #include <sys/types.h>

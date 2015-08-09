@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/intel-common/intel-common-15.0.3.187.ebuild,v 1.1 2015/06/24 09:35:19 jlec Exp $
+# $Id$
 
 EAPI=5
 

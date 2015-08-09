@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tcp-wrappers/tcp-wrappers-7.6.22-r1.ebuild,v 1.15 2014/05/17 14:05:32 ago Exp $
+# $Id$
 
 EAPI="4"
 

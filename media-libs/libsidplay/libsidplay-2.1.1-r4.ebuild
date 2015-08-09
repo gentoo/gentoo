@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsidplay/libsidplay-2.1.1-r4.ebuild,v 1.10 2015/06/11 19:07:40 maekke Exp $
+# $Id$
 
 EAPI=4
 inherit eutils libtool multilib-minimal

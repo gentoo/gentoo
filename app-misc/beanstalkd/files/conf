@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beanstalkd/files/conf,v 1.1 2008/08/15 21:24:35 caleb Exp $
+# $Id$
 
 BEANSTALKD_BINARY="/usr/bin/beanstalkd"
 PIDFILE="/var/run/beanstalkd.pid"

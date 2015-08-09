@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/esco/esco-0.512.ebuild,v 1.1 2013/02/01 10:43:49 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

@@ -117,7 +117,7 @@ provide options for SDL and GLFW video drivers
 --- driver/video/GLFW/src/CMakeLists.txt
 +++ driver/video/GLFW/src/CMakeLists.txt
 @@ -2,7 +2,7 @@
- ### $Id: s25rttr-0.8.1-cmake.patch,v 1.1 2013/12/23 13:45:08 hasufell Exp $
+ ### $Id$
  #################################################################################
  
 -IF ("${COMPILEFOR}/${COMPILEARCH}" STREQUAL "linux/i386" )

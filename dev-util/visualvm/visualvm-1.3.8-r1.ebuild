@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/visualvm/visualvm-1.3.8-r1.ebuild,v 1.1 2015/02/09 10:03:20 fordfrog Exp $
+# $Id$
 
 EAPI="5"
 

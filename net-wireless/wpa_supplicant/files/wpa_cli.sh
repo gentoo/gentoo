@@ -3,7 +3,7 @@
 # Written by Roy Marples <uberlord@gentoo.org>
 # Distributed under the terms of the GNU General Public License v2
 # Alternatively, this file may be distributed under the terms of the BSD License
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wpa_supplicant/files/wpa_cli.sh,v 1.3 2011/07/08 07:06:21 gurligebis Exp $
+# $Id$
 
 if [ -z "$1" -o -z "$2" ]; then
 	logger -t wpa_cli "Insufficient parameters"

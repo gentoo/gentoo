@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/dav/dav-0.8.5-r1.ebuild,v 1.6 2014/10/31 11:20:24 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

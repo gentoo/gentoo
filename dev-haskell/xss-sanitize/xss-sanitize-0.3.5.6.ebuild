@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xss-sanitize/xss-sanitize-0.3.5.6.ebuild,v 1.1 2015/08/01 11:43:17 slyfox Exp $
+# $Id$
 
 EAPI=5
 

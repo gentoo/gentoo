@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/instantiator/instantiator-0.0.6.ebuild,v 1.11 2015/03/22 16:16:07 graaff Exp $
+# $Id$
 
 EAPI=5
 

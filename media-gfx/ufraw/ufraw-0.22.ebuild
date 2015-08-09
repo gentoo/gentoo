@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/ufraw/ufraw-0.22.ebuild,v 1.1 2015/06/27 12:45:01 maekke Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils fdo-mime gnome2-utils toolchain-funcs

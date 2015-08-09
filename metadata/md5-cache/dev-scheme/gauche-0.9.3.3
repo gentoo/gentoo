@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=dd7a1d0aa2ffc58f12b3c16757a7a221
+SLOT=0
 DEFINED_PHASES=configure install prepare test
+EAPI=5
 DEPEND=sys-libs/gdbm test? ( dev-libs/openssl ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A Unix system friendly Scheme Interpreter
-EAPI=5
-HOMEPAGE=http://practical-scheme.net/gauche/
-IUSE=ipv6 test
-KEYWORDS=~alpha ~amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=BSD
-RDEPEND=sys-libs/gdbm
-SLOT=0
+IUSE=ipv6 test
 SRC_URI=mirror://sourceforge/gauche/Gauche-0.9.3.3.tgz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=cefa52b85eb825c6c60132d3625eb585
+KEYWORDS=~alpha ~amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+HOMEPAGE=http://practical-scheme.net/gauche/
+RDEPEND=sys-libs/gdbm

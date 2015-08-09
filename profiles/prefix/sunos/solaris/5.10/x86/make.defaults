@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/sunos/solaris/5.10/x86/make.defaults,v 1.1 2009/06/06 03:55:01 solar Exp $
+# $Id$
 
 ARCH="x86-solaris"
 CHOST="i386-pc-solaris2.10"

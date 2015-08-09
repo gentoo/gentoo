@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gspeakers/gspeakers-0.11-r1.ebuild,v 1.9 2012/10/21 10:28:01 pacho Exp $
+# $Id$
 
 EAPI=4
 inherit eutils gnome2 autotools

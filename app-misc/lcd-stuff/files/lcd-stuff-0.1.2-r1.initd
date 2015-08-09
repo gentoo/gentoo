@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lcd-stuff/files/lcd-stuff-0.1.2-r1.initd,v 1.1 2007/05/12 11:24:49 rbu Exp $
+# $Id$
 
 PIDFILE=/var/run/${SVCNAME}.pid
 

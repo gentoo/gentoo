@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/fastjet/fastjet-3.0.6-r1.ebuild,v 1.1 2014/05/06 17:40:58 bicatali Exp $
+# $Id$
 
 EAPI=5
 

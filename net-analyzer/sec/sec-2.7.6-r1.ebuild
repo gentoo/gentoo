@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sec/sec-2.7.6-r1.ebuild,v 1.1 2015/02/15 09:59:01 jer Exp $
+# $Id$
 
 EAPI=5
 

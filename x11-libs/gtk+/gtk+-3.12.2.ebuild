@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-3.12.2.ebuild,v 1.11 2014/10/11 11:39:16 maekke Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

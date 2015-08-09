@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/seq24/seq24-0.9.2-r1.ebuild,v 1.5 2014/08/10 21:11:43 slyfox Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

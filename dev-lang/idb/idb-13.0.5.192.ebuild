@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/idb/idb-13.0.5.192.ebuild,v 1.1 2013/07/14 09:11:38 jlec Exp $
+# $Id$
 
 EAPI=5
 

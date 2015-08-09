@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/doctest-mode/doctest-mode-0.4.ebuild,v 1.10 2013/12/29 12:49:28 ulm Exp $
+# $Id$
 
 EAPI=5
 

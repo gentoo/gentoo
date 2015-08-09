@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/monads-tf/monads-tf-0.1.0.2.ebuild,v 1.5 2015/02/25 15:33:22 ago Exp $
+# $Id$
 
 EAPI=5
 

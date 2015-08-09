@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-config/gcc-config-1.5-r1.ebuild,v 1.3 2011/11/11 12:15:40 aballier Exp $
+# $Id$
 
 inherit flag-o-matic toolchain-funcs multilib
 

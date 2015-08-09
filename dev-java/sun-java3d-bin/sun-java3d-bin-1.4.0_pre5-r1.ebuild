@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-java3d-bin/sun-java3d-bin-1.4.0_pre5-r1.ebuild,v 1.7 2012/09/28 16:37:59 sera Exp $
+# $Id$
 
 inherit java-pkg-2
 

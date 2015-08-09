@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/proxyper/proxyper-341a.ebuild,v 1.10 2012/07/12 15:26:19 axs Exp $
+# $Id$
 
 DESCRIPTION="distributed.net personal proxy"
 HOMEPAGE="http://www.distributed.net"

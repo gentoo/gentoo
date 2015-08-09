@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/asciinema/asciinema-0.9.8.ebuild,v 1.3 2014/11/24 12:22:50 kensington Exp $
+# $Id$
 
 EAPI=5
 

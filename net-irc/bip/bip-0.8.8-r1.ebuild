@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/bip/bip-0.8.8-r1.ebuild,v 1.3 2012/01/29 12:24:00 phajdan.jr Exp $
+# $Id$
 
 EAPI="2"
 inherit eutils autotools

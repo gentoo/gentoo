@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-admin/files/rc-addon.sh,v 1.2 2007/04/17 12:40:17 zzam Exp $
+# $Id$
 #
 # rc-addon-script for plugin admin
 #

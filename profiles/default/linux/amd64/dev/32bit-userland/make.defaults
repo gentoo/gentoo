@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/amd64/dev/32bit-userland/make.defaults,v 1.1 2009/10/03 16:00:24 ssuominen Exp $
+# $Id$
 
 DEFAULT_ABI="x86"
 ABI="x86"

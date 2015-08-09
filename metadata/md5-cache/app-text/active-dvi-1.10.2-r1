@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	texlive-common	9f53e0e2b52b33a0fa6b470fbcb05fb9	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=aa2c8ca667ac2affeada2b891045c81b
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare
+EAPI=5
 DEPEND=>=dev-lang/ocaml-3.11.2:=[ocamlopt?] >=dev-ml/camlimages-4.0.1:=[truetype,tiff,jpeg,postscript,X] virtual/latex-base app-text/ghostscript-gpl x11-libs/libXinerama dev-texlive/texlive-pstricks dev-texlive/texlive-pictures dev-texlive/texlive-latexextra x11-proto/xineramaproto dev-ml/findlib app-text/htmlc dev-tex/hevea !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A DVI previewer and a presenter for slides written in LaTeX
-EAPI=5
-HOMEPAGE=http://gallium.inria.fr/advi/
-IUSE=+ocamlopt
-KEYWORDS=~amd64 ~ppc x86
 LICENSE=LGPL-2.1
-RDEPEND=>=dev-lang/ocaml-3.11.2:=[ocamlopt?] >=dev-ml/camlimages-4.0.1:=[truetype,tiff,jpeg,postscript,X] virtual/latex-base app-text/ghostscript-gpl x11-libs/libXinerama
-SLOT=0
+IUSE=+ocamlopt
 SRC_URI=http://gallium.inria.fr/advi/advi-1.10.2.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c3fcefdd5c1091b82324996c7f218ee0
+KEYWORDS=~amd64 ~ppc x86
+HOMEPAGE=http://gallium.inria.fr/advi/
+RDEPEND=>=dev-lang/ocaml-3.11.2:=[ocamlopt?] >=dev-ml/camlimages-4.0.1:=[truetype,tiff,jpeg,postscript,X] virtual/latex-base app-text/ghostscript-gpl x11-libs/libXinerama

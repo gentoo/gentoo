@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.27.4_p20150124.ebuild,v 1.1 2015/01/24 15:08:08 rich0 Exp $
+# $Id$
 
 EAPI=5
 

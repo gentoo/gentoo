@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libieee1284/libieee1284-0.2.11-r2.ebuild,v 1.7 2012/12/21 03:46:01 vapier Exp $
+# $Id$
 
 EAPI="3"
 

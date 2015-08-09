@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/multicd/multicd-1.7.5-r1.ebuild,v 1.1 2008/06/15 15:39:33 drac Exp $
+# $Id$
 
 DESCRIPTION="Tool for making direct copies of your files to multiple cd's"
 HOMEPAGE="http://danborn.net/multicd/"

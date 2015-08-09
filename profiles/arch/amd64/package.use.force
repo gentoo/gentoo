@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/package.use.force,v 1.9 2015/01/28 21:29:48 mgorny Exp $
+# $Id$
 
 # Michał Górny <mgorny@gentoo.org> (02 Sep 2013)
 # Packages with optional 64-bit variant.

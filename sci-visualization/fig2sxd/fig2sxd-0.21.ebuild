@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/fig2sxd/fig2sxd-0.21.ebuild,v 1.2 2012/08/06 20:55:30 bicatali Exp $
+# $Id$
 
 EAPI=4
 

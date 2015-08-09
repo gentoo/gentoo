@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/bygfoot/bygfoot-2.3.2.ebuild,v 1.7 2014/01/13 00:57:23 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

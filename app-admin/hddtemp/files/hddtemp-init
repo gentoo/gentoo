@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/hddtemp/files/hddtemp-init,v 1.7 2012/10/24 18:45:04 aidecoe Exp $
+# $Id$
 
 depend() {
 	need localmount

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpc/mpc-0.25.ebuild,v 1.8 2014/01/26 12:16:21 ago Exp $
+# $Id$
 
 EAPI=4
 inherit bash-completion-r1

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/prosper/prosper-1.5-r1.ebuild,v 1.9 2011/10/05 20:58:08 aballier Exp $
+# $Id$
 
 inherit latex-package
 

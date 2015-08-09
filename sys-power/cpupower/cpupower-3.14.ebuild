@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/cpupower/cpupower-3.14.ebuild,v 1.3 2014/06/29 22:10:19 steev Exp $
+# $Id$
 
 EAPI=5
 inherit multilib toolchain-funcs

@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-weatherng/files/rc-addon-0.0.8.sh,v 1.2 2007/04/17 09:43:15 zzam Exp $
+# $Id$
 #
 # rc-addon-script for plugin weatherng
 #

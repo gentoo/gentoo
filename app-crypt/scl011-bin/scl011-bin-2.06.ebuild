@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/scl011-bin/scl011-bin-2.06.ebuild,v 1.4 2012/12/11 21:51:18 ssuominen Exp $
+# $Id$
 
 EAPI=4
 

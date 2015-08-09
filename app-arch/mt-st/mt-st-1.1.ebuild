@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/mt-st/mt-st-1.1.ebuild,v 1.7 2009/12/08 19:37:08 ranger Exp $
+# $Id$
 
 EAPI="2"
 

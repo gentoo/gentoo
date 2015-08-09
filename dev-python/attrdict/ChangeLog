@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/attrdict
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/attrdict/ChangeLog,v 1.1 2015/07/29 19:14:30 alunduil Exp $
-
-*attrdict-2.0.0 (29 Jul 2015)
-
-  29 Jul 2015; Alex Brandt <alunduil@gentoo.org> +attrdict-2.0.0.ebuild,
-  +metadata.xml:
-  add version 2.0.0

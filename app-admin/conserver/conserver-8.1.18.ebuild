@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/conserver/conserver-8.1.18.ebuild,v 1.6 2014/05/30 13:05:18 swift Exp $
+# $Id$
 
 EAPI="4"
 

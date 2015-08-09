@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/duke3d-data/duke3d-data-1.0.ebuild,v 1.8 2014/06/01 20:23:51 hasufell Exp $
+# $Id$
 
 inherit eutils cdrom games
 

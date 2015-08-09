@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/memtest86+-4.00.ebuild,v 1.8 2011/01/09 03:23:16 vapier Exp $
+# $Id$
 
 QA_PRESTRIPPED=/boot/memtest86plus/memtest
 

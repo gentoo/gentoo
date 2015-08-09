@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/exolabtools/exolabtools-1.0_p20050205-r1.ebuild,v 1.5 2007/04/25 19:54:42 betelgeuse Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

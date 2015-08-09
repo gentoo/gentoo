@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/libpcap-9999.ebuild,v 1.3 2015/07/03 04:20:58 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils git-r3 multilib-minimal

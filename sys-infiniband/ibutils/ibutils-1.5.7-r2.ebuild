@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/ibutils/ibutils-1.5.7-r2.ebuild,v 1.2 2012/10/13 06:48:20 alexxy Exp $
+# $Id$
 
 EAPI="4"
 

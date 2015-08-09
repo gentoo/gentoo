@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-20140710.ebuild,v 1.4 2015/07/14 17:04:01 aballier Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils multilib flag-o-matic

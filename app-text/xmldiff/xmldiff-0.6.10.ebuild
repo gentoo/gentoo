@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xmldiff/xmldiff-0.6.10.ebuild,v 1.9 2012/08/27 15:18:13 floppym Exp $
+# $Id$
 
 EAPI="3"
 

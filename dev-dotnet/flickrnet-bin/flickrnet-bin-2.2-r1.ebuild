@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/flickrnet-bin/flickrnet-bin-2.2-r1.ebuild,v 1.5 2011/06/13 22:19:27 flameeyes Exp $
+# $Id$
 
 EAPI=2
 

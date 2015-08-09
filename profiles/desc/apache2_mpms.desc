@@ -1,6 +1,6 @@
 # Copyright 2007 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/apache2_mpms.desc,v 1.1 2007/11/28 07:50:44 hollow Exp $
+# $Id$
 
 # This file contains descriptions of APACHE2_MPMS USE_EXPAND flags.
 

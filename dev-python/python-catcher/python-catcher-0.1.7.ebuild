@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-catcher/python-catcher-0.1.7.ebuild,v 1.2 2014/06/27 06:52:01 jlec Exp $
+# $Id$
 
 EAPI=5
 

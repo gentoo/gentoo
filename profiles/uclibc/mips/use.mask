@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/mips/use.mask,v 1.7 2009/03/03 12:49:06 pva Exp $
+# $Id$
 
 # Henrik Brix Andersen <brix@gentoo.org>
 # According to the mips herd, we currently have no way of testing

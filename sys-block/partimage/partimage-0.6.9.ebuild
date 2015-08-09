@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/partimage-0.6.9.ebuild,v 1.6 2012/10/09 19:20:56 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit eutils flag-o-matic pam user

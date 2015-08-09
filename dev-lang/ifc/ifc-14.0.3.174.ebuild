@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ifc/ifc-14.0.3.174.ebuild,v 1.1 2014/06/02 11:27:27 jlec Exp $
+# $Id$
 
 EAPI=5
 

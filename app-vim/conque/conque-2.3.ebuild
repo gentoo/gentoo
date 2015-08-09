@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/conque/conque-2.3.ebuild,v 1.3 2014/07/27 11:49:15 phajdan.jr Exp $
+# $Id$
 
 EAPI="4"
 VIM_PLUGIN_VIM_VERSION="7.1"

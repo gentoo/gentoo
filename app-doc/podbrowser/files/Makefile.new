@@ -1,4 +1,4 @@
-# $Id: Makefile.new,v 1.1 2006/01/08 15:15:59 mcummings Exp $
+# $Id$
 NAME=podbrowser
 PREFIX=/usr/local
 BINDIR=$(PREFIX)/bin

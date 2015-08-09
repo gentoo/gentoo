@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtgui/qtgui-5.4.2-r1.ebuild,v 1.1 2015/07/11 18:17:30 pesa Exp $
+# $Id$
 
 EAPI=5
 QT5_MODULE="qtbase"

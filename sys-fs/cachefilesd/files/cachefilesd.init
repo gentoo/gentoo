@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/cachefilesd/files/cachefilesd.init,v 1.2 2010/09/20 08:45:22 jlec Exp $
+# $Id$
 
 depend() {
 	need localmount

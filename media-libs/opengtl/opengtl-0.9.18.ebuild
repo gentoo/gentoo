@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opengtl/opengtl-0.9.18.ebuild,v 1.6 2014/01/11 09:14:50 mgorny Exp $
+# $Id$
 
 EAPI=5
 

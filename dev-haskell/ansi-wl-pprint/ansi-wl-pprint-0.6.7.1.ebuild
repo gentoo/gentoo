@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/ansi-wl-pprint/ansi-wl-pprint-0.6.7.1.ebuild,v 1.8 2015/08/04 11:40:34 zlogene Exp $
+# $Id$
 
 EAPI=5
 

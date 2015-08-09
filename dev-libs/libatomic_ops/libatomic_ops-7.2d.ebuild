@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libatomic_ops/libatomic_ops-7.2d.ebuild,v 1.14 2013/02/28 13:39:40 jer Exp $
+# $Id$
 
 EAPI=4
 

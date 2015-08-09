@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdc1394/libdc1394-2.2.3.ebuild,v 1.1 2014/12/03 17:13:36 aballier Exp $
+# $Id$
 
 EAPI=5
 

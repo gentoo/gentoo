@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/fapg/fapg-0.41.ebuild,v 1.8 2012/07/29 18:40:19 armin76 Exp $
+# $Id$
 
 DESCRIPTION="Fast Audio Playlist Generator"
 HOMEPAGE="http://royale.zerezo.com/fapg/"

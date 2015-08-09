@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/maven-poke/maven-poke-0.0.1.ebuild,v 1.6 2009/09/23 14:31:38 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="Matrox utility to read and set maven registers (tune tvout)"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/"

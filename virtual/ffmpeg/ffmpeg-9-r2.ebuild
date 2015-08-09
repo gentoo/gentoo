@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/ffmpeg/ffmpeg-9-r2.ebuild,v 1.4 2015/06/04 10:53:16 zlogene Exp $
+# $Id$
 
 EAPI=5
 

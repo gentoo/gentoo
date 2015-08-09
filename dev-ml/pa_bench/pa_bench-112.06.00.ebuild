@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/pa_bench/pa_bench-112.06.00.ebuild,v 1.1 2014/12/22 09:46:00 aballier Exp $
+# $Id$
 
 EAPI="5"
 

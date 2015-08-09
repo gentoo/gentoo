@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j-core/mx4j-core-3.0.2.ebuild,v 1.4 2012/12/02 08:29:18 ulm Exp $
+# $Id$
 
 inherit eutils java-pkg-2 java-ant-2
 

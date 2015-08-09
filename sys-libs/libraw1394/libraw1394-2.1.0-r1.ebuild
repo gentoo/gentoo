@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libraw1394/libraw1394-2.1.0-r1.ebuild,v 1.10 2014/03/19 13:49:29 ago Exp $
+# $Id$
 
 EAPI=4
 

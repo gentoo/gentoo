@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/awesome/awesome-3.4.15.ebuild,v 1.9 2013/12/27 14:16:45 maksbotan Exp $
+# $Id$
 
 EAPI="3"
 CMAKE_MIN_VERSION="2.8"

@@ -1,5 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/winnt/6.1/package.provided,v 1.1 2010/03/04 12:45:49 mduft Exp $
+# $Id$
 
 sys-winnt/libc-6.1

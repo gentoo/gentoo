@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-vmware/xf86-video-vmware-13.0.2.ebuild,v 1.2 2015/01/18 22:21:11 pacho Exp $
+# $Id$
 
 EAPI=5
 

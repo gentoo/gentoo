@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/navi2ch/navi2ch-1.8.4.ebuild,v 1.7 2013/05/09 10:34:45 fauli Exp $
+# $Id$
 
 EAPI=3
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_QuickForm_advmultiselect/PEAR-HTML_QuickForm_advmultiselect-1.5.1.ebuild,v 1.4 2014/08/10 20:48:50 slyfox Exp $
+# $Id$
 
 inherit php-pear-r1
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/grace/grace-5.1.22-r3.ebuild,v 1.7 2012/10/24 19:45:13 ulm Exp $
+# $Id$
 
 EAPI=4
 

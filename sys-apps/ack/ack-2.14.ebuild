@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ack/ack-2.14.ebuild,v 1.2 2014/12/21 00:45:21 radhermit Exp $
+# $Id$
 
 EAPI=5
 MODULE_AUTHOR=PETDANCE

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-xml-simple-dtd/docbook-xml-simple-dtd-1.0-r2.ebuild,v 1.5 2014/04/06 15:20:50 vapier Exp $
+# $Id$
 
 inherit sgml-catalog
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libctl/libctl-3.2.ebuild,v 1.2 2012/10/18 20:29:27 jlec Exp $
+# $Id$
 
 EAPI=4
 

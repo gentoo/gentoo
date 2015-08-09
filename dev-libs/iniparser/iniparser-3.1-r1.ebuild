@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/iniparser/iniparser-3.1-r1.ebuild,v 1.15 2015/06/23 15:10:32 haubi Exp $
+# $Id$
 
 EAPI=4
 

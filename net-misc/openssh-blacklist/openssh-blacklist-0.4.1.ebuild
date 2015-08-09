@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh-blacklist/openssh-blacklist-0.4.1.ebuild,v 1.5 2010/12/04 12:50:29 phajdan.jr Exp $
+# $Id$
 
 inherit toolchain-funcs
 

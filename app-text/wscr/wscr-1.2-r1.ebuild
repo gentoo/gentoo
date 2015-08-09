@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/wscr/wscr-1.2-r1.ebuild,v 1.8 2013/02/02 17:22:42 jer Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

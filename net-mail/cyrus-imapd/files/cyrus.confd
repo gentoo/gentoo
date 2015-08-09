@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/files/cyrus.confd,v 1.1 2004/12/29 06:44:00 swegener Exp $
+# $Id$
 
 # Additional options for the cyrus master
 CYRUS_OPTS=""

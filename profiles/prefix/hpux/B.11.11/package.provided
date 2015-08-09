@@ -1,5 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/hpux/B.11.11/package.provided,v 1.1 2009/07/27 09:53:49 haubi Exp $
+# $Id$
 
 sys-hpux/libc-11.11

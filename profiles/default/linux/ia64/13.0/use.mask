@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/ia64/13.0/use.mask,v 1.3 2014/09/30 19:08:56 grobian Exp $
+# $Id$
 
 # Anthony G. Basile <blueness@gentoo.org> (15 Apr 2012)
 # Pulls in net-libs/axtls or net-libs/polarssl which are

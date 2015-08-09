@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/enscript/enscript-1.6.6.ebuild,v 1.9 2012/12/30 14:35:21 ago Exp $
+# $Id$
 
 EAPI="2"
 

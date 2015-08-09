@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.graphlcd
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-graphlcd/files/confd,v 1.1 2006/01/08 15:36:55 hd_brummy Exp $
+# $Id$
 
 ####### Global config for Graphlcd ####################
 #

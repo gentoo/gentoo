@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/atk/atk-2.16.0-r1.ebuild,v 1.1 2015/07/16 19:12:21 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

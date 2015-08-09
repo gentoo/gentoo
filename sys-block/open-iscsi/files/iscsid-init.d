@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/files/iscsid-init.d,v 1.9 2015/08/08 05:42:15 prometheanfire Exp $
+# $Id$
 
 command="/usr/sbin/iscsid"
 command_args="${OPTS}"

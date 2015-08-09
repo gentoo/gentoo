@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/clamfs/clamfs-1.0.1-r1.ebuild,v 1.1 2010/06/17 17:29:26 matsuu Exp $
+# $Id$
 
 EAPI="2"
 inherit eutils linux-info

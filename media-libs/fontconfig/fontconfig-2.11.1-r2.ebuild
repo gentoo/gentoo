@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/fontconfig/fontconfig-2.11.1-r2.ebuild,v 1.11 2015/04/17 08:45:38 zlogene Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=yes

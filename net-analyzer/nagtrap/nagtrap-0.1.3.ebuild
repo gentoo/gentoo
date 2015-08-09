@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagtrap/nagtrap-0.1.3.ebuild,v 1.3 2015/06/17 20:00:26 grknight Exp $
+# $Id$
 
 EAPI=2
 

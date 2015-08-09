@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/a-bird-story/a-bird-story-20141106.ebuild,v 1.2 2014/11/14 17:31:22 hasufell Exp $
+# $Id$
 
 EAPI=5
 

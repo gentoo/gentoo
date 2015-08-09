@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gnucap/gnucap-0.35.20091207.ebuild,v 1.6 2013/01/18 14:02:10 jlec Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/wqy-bitmapfont/wqy-bitmapfont-1.0.0_rc1.ebuild,v 1.6 2014/06/10 07:22:55 zlogene Exp $
+# $Id$
 
 inherit font
 

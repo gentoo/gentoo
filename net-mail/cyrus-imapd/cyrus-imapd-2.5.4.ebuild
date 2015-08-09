@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.5.4.ebuild,v 1.2 2015/07/30 12:33:48 eras Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils multilib pam ssl-cert user toolchain-funcs

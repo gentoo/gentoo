@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/biosql/biosql-1.0.1.ebuild,v 1.4 2009/06/02 18:28:03 fauli Exp $
+# $Id$
 
 DESCRIPTION="A generic bioinformatics relational database model"
 HOMEPAGE="http://www.biosql.org/"

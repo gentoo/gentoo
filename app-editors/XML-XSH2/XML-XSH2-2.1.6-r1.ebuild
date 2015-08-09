@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/XML-XSH2/XML-XSH2-2.1.6-r1.ebuild,v 1.1 2014/08/29 19:10:15 axs Exp $
+# $Id$
 
 EAPI=5
 

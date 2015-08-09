@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-ASN1/Convert-ASN1-0.260.0-r1.ebuild,v 1.1 2014/08/22 14:42:42 axs Exp $
+# $Id$
 
 EAPI=5
 

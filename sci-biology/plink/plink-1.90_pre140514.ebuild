@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/plink/plink-1.90_pre140514.ebuild,v 1.3 2015/06/09 13:37:57 jlec Exp $
+# $Id$
 
 EAPI=5
 

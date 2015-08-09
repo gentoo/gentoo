@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccp4-libs/ccp4-libs-6.1.3-r16.ebuild,v 1.6 2015/07/31 08:19:51 jlec Exp $
+# $Id$
 
 EAPI=5
 

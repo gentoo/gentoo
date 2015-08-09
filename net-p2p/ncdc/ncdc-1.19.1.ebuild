@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/ncdc/ncdc-1.19.1.ebuild,v 1.4 2015/04/19 09:44:45 pacho Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xfig/xfig-3.2.5c.ebuild,v 1.9 2014/12/01 09:14:02 ago Exp $
+# $Id$
 
 EAPI=5
 

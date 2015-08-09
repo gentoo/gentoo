@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/argtable/argtable-2.13.ebuild,v 1.7 2011/08/13 07:33:32 xarthisius Exp $
+# $Id$
 
 EAPI=3
 inherit versionator

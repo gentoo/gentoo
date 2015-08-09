@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/iripdb/iripdb-0.1.3b.ebuild,v 1.7 2014/08/10 18:19:12 slyfox Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

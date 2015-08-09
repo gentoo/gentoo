@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/linux-device-drivers/linux-device-drivers-2.ebuild,v 1.5 2005/04/23 18:58:28 wormo Exp $
+# $Id$
 
 DESCRIPTION="howto write linux device drivers (updated for Linux 2.4)"
 HOMEPAGE="http://www.oreilly.com/catalog/linuxdrive2/"

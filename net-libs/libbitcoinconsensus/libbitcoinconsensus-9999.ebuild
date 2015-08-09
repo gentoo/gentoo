@@ -1,6 +1,6 @@
 # Copyright 2010-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libbitcoinconsensus/libbitcoinconsensus-9999.ebuild,v 1.4 2015/07/17 20:18:02 blueness Exp $
+# $Id$
 
 EAPI=5
 

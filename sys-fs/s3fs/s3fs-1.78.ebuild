@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/s3fs/s3fs-1.78.ebuild,v 1.1 2014/09/27 00:04:17 radhermit Exp $
+# $Id$
 
 EAPI=5
 

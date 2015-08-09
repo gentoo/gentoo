@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/uwsgi/files/uwsgi.initd-r3,v 1.1 2013/03/01 09:50:06 ultrabug Exp $
+# $Id$
 
 PROGNAME=${SVCNAME#*.}
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/kombu/kombu-2.5.16.ebuild,v 1.1 2015/07/24 06:12:40 prometheanfire Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/reduce/reduce-3.14.080821.ebuild,v 1.1 2011/05/03 17:49:48 jlec Exp $
+# $Id$
 
 EAPI=4
 

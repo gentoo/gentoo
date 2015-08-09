@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/eternal-lands-bloodsucker/eternal-lands-bloodsucker-3.0_p20110618.ebuild,v 1.3 2015/03/01 16:51:39 tupone Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sdparm/sdparm-1.07.ebuild,v 1.10 2013/02/17 21:37:46 zmedico Exp $
+# $Id$
 
 EAPI="4"
 

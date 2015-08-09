@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/active-dvi-1.10.2-r1.ebuild,v 1.4 2014/01/26 15:39:48 ago Exp $
+# $Id$
 
 EAPI="5"
 

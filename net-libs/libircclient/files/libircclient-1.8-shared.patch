@@ -1,7 +1,7 @@
 --- libircclient-1.7.orig/src/Makefile.in
 +++ libircclient-1.7/src/Makefile.in
 @@ -1,8 +1,10 @@
- # $Id: libircclient-1.8-shared.patch,v 1.1 2015/02/05 05:55:28 mr_bones_ Exp $
+ # $Id$
  CC = @CC@
 -CFLAGS = -Wall -DIN_BUILDING_LIBIRC @CFLAGS@
 +CFLAGS = -fPIC -Wall -DIN_BUILDING_LIBIRC @CFLAGS@

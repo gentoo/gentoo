@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/2.18-r1/init,v 1.1 2008/01/04 03:53:15 betelgeuse Exp $
+# $Id$
 
 depend() {
 	local avahi

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-sisusb/xf86-video-sisusb-0.9.6.ebuild,v 1.10 2013/01/01 18:59:40 armin76 Exp $
+# $Id$
 
 EAPI=4
 

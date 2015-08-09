@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/atari-fdisk/atari-fdisk-0.7.1.5.4.ebuild,v 1.2 2013/02/12 08:19:50 armin76 Exp $
+# $Id$
 
 inherit versionator toolchain-funcs
 

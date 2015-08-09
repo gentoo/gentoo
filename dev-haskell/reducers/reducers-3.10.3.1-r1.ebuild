@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/reducers/reducers-3.10.3.1-r1.ebuild,v 1.1 2015/06/01 08:26:41 gienah Exp $
+# $Id$
 
 EAPI=5
 

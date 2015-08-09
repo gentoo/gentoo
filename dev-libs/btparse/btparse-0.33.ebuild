@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/btparse/btparse-0.33.ebuild,v 1.14 2009/09/23 17:16:52 patrick Exp $
+# $Id$
 
 DESCRIPTION="A C library to parse Bibtex files"
 HOMEPAGE="http://starship.python.net/~gward/btOOL/"

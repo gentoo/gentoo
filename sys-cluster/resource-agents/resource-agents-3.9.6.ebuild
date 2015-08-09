@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/resource-agents/resource-agents-3.9.6.ebuild,v 1.1 2015/02/23 15:21:06 ultrabug Exp $
+# $Id$
 
 EAPI="5"
 

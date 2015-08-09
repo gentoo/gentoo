@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-unix/ucspi-unix-0.36-r2.ebuild,v 1.6 2008/03/28 21:46:37 maekke Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

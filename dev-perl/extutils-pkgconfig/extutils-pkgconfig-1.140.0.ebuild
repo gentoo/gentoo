@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/extutils-pkgconfig/extutils-pkgconfig-1.140.0.ebuild,v 1.12 2014/06/28 18:02:04 zlogene Exp $
+# $Id$
 
 EAPI=5
 

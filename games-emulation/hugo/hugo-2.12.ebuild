@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/hugo/hugo-2.12.ebuild,v 1.6 2015/03/16 17:46:01 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic games

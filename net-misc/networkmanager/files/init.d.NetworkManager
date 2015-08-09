@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright (c) 2008 Saleem Abdulrasool <compnerd@compnerd.org>
 # Distributed under the terms of the GNU General Purpose License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/files/init.d.NetworkManager,v 1.1 2013/01/28 07:05:05 tetromino Exp $
+# $Id$
 
 description="NetworkManager daemon. The service is marked as started only \
 when a network connection is established."

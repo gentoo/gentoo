@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/purple-libnotify-plus/purple-libnotify-plus-1.99.2.ebuild,v 1.3 2012/12/04 15:41:21 ago Exp $
+# $Id$
 
 EAPI=4
 

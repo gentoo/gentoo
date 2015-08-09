@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/bristol/bristol-0.60.9.ebuild,v 1.6 2012/05/05 08:16:22 mgorny Exp $
+# $Id$
 
 EAPI="4"
 

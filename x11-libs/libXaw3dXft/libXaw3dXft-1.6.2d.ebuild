@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXaw3dXft/libXaw3dXft-1.6.2d.ebuild,v 1.1 2015/03/26 17:03:13 chithanh Exp $
+# $Id$
 
 EAPI=5
 

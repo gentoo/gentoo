@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/QtBitcoinTrader/QtBitcoinTrader-9999.ebuild,v 1.7 2015/08/02 17:28:55 alexxy Exp $
+# $Id$
 
 EAPI=5
 

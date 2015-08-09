@@ -1,9 +1,0 @@
-# ChangeLog for mail-filter/exim-geoip
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/exim-geoip/ChangeLog,v 1.1 2013/07/23 18:17:05 grobian Exp $
-
-*exim-geoip-0.1 (23 Jul 2013)
-
-  23 Jul 2013; Fabian Groffen <grobian@gentoo.org> +exim-geoip-0.1.ebuild,
-  +metadata.xml:
-  Initial ebuild by Marcin Mirosław, bug #436484

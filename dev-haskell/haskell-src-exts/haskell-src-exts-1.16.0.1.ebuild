@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haskell-src-exts/haskell-src-exts-1.16.0.1.ebuild,v 1.1 2014/12/14 05:14:49 gienah Exp $
+# $Id$
 
 EAPI=5
 

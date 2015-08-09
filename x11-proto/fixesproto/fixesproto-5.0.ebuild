@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/fixesproto/fixesproto-5.0.ebuild,v 1.10 2013/02/22 15:41:59 zmedico Exp $
+# $Id$
 
 EAPI=4
 inherit xorg-2

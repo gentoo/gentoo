@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/authforce/authforce-0.9.9-r1.ebuild,v 1.4 2012/06/20 13:02:02 jlec Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imap-admin/cyrus-imap-admin-2.4.18.ebuild,v 1.1 2015/07/21 15:35:26 eras Exp $
+# $Id$
 
 EAPI=5
 inherit autotools db-use eutils perl-app toolchain-funcs

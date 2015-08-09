@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-canna/scim-canna-1.0.1.ebuild,v 1.5 2012/05/03 19:24:29 jdhore Exp $
+# $Id$
 
 DESCRIPTION="Japanese input method Canna IMEngine for SCIM"
 HOMEPAGE="http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMCanna"

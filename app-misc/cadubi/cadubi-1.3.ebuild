@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cadubi/cadubi-1.3.ebuild,v 1.9 2010/01/01 18:02:36 ssuominen Exp $
+# $Id$
 
 inherit eutils multilib
 

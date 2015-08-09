@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/faac/faac-1.28-r4.ebuild,v 1.11 2014/01/26 12:13:59 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils multilib-minimal

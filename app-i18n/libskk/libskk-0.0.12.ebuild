@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/libskk/libskk-0.0.12.ebuild,v 1.2 2013/05/04 00:09:34 naota Exp $
+# $Id$
 
 EAPI=4
 

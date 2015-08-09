@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/use.force,v 1.3 2009/07/31 16:42:56 ssuominen Exp $
+# $Id$
 
 # Force the GNU/Linux ELIBC, KERNEL, and USERLAND
 # flags that apply to the majority of profiles.

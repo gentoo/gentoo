@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/nero/nero-4.0.0.0b.ebuild,v 1.3 2012/06/26 11:34:53 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils fdo-mime rpm multilib gnome2-utils linux-info

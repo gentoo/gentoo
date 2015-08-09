@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/tldp-howto/tldp-howto-20120707.ebuild,v 1.2 2013/10/21 03:42:12 dirtyepic Exp $
+# $Id$
 
 EAPI=5
 

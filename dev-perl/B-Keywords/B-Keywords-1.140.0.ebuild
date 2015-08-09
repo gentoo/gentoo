@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/B-Keywords/B-Keywords-1.140.0.ebuild,v 1.1 2015/04/17 22:45:12 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

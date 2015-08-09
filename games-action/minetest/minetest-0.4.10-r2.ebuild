@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/minetest/minetest-0.4.10-r2.ebuild,v 1.1 2014/09/25 20:13:59 hasufell Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils gnome2-utils vcs-snapshot user games

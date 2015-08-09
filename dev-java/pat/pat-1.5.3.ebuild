@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/pat/pat-1.5.3.ebuild,v 1.4 2013/08/14 11:18:05 patrick Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

@@ -1,14 +1,14 @@
+_eclasses_=multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=b6f702899df5e57dacca038ed701dbbb
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare test
+EAPI=5
 DEPEND=>=sci-libs/xylib-1 >=dev-lang/lua-5.1:0 nlopt? ( sci-libs/nlopt ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) readline? ( sys-libs/readline:0= ) wxwidgets? ( >=x11-libs/wxGTK-2.9.2:2.9 ) dev-libs/boost dev-lang/swig
 DESCRIPTION=General-purpose nonlinear curve fitting and data analysis
-EAPI=5
-HOMEPAGE=http://fityk.nieto.pl/
-IUSE=gnuplot nlopt readline python static-libs wxwidgets python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=>=sci-libs/xylib-1 >=dev-lang/lua-5.1:0 nlopt? ( sci-libs/nlopt ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) readline? ( sys-libs/readline:0= ) wxwidgets? ( >=x11-libs/wxGTK-2.9.2:2.9 ) gnuplot? ( sci-visualization/gnuplot )
+IUSE=gnuplot nlopt readline python static-libs wxwidgets python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
 REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 ) )
-SLOT=0
 SRC_URI=http://github.com/downloads/wojdyr/fityk/fityk-1.2.1.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	d9c8348f26710ea523a385c2328cf027	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=67a7def9b2c243f0c366699a8db0b9e5
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://fityk.nieto.pl/
+RDEPEND=>=sci-libs/xylib-1 >=dev-lang/lua-5.1:0 nlopt? ( sci-libs/nlopt ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) readline? ( sys-libs/readline:0= ) wxwidgets? ( >=x11-libs/wxGTK-2.9.2:2.9 ) gnuplot? ( sci-visualization/gnuplot )

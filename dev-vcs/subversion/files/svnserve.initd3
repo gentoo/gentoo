@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/subversion/files/svnserve.initd3,v 1.1 2015/04/09 12:58:45 polynomial-c Exp $
+# $Id$
 
 description="svn server"
 pidfile="/var/run/svnserve.pid"

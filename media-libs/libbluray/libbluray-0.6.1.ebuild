@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libbluray/libbluray-0.6.1.ebuild,v 1.1 2014/08/05 09:49:31 polynomial-c Exp $
+# $Id$
 
 EAPI=5
 

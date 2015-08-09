@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-plugins/kaffeine-mozilla-plugin/kaffeine-mozilla-plugin-0.2.ebuild,v 1.2 2014/08/10 20:09:42 slyfox Exp $
+# $Id$
 
 inherit nsplugins multilib
 

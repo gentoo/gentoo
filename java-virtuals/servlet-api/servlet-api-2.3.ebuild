@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/java-virtuals/servlet-api/servlet-api-2.3.ebuild,v 1.20 2015/07/11 09:24:04 chewi Exp $
+# $Id$
 
 EAPI=5
 

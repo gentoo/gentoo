@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/jpegtoavi/jpegtoavi-1.5.ebuild,v 1.1 2010/03/02 21:11:58 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit eutils toolchain-funcs

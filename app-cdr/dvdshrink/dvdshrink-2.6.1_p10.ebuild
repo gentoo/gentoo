@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/dvdshrink/dvdshrink-2.6.1_p10.ebuild,v 1.4 2009/07/20 04:13:45 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

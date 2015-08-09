@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libcxxrt/libcxxrt-0.0_p20140322.ebuild,v 1.3 2015/01/17 19:13:19 blueness Exp $
+# $Id$
 
 EAPI=5
 

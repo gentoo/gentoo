@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Tiny/Class-Tiny-1.0.0.ebuild,v 1.1 2014/12/11 23:28:49 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

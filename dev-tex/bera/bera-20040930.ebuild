@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/bera/bera-20040930.ebuild,v 1.3 2009/12/15 00:23:44 rich0 Exp $
+# $Id$
 
 inherit latex-package
 

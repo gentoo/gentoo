@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-core-sounds/asterisk-core-sounds-1.4.22.ebuild,v 1.4 2013/02/07 22:33:16 ulm Exp $
+# $Id$
 
 EAPI="4"
 

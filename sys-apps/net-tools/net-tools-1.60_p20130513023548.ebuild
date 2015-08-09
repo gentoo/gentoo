@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/net-tools/net-tools-1.60_p20130513023548.ebuild,v 1.14 2015/04/25 16:36:44 floppym Exp $
+# $Id$
 
 EAPI="3"
 

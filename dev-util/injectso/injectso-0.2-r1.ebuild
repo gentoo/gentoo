@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/injectso/injectso-0.2-r1.ebuild,v 1.2 2012/11/22 10:06:26 ago Exp $
+# $Id$
 
 EAPI="2"
 

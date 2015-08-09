@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/zathura-pdf-poppler/zathura-pdf-poppler-9999.ebuild,v 1.2 2014/04/04 20:57:11 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

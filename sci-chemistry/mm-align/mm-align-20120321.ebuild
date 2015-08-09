@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mm-align/mm-align-20120321.ebuild,v 1.2 2013/05/20 16:19:05 jlec Exp $
+# $Id$
 
 EAPI=4
 

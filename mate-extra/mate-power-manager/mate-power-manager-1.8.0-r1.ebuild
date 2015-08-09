@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-extra/mate-power-manager/mate-power-manager-1.8.0-r1.ebuild,v 1.8 2015/07/12 00:00:07 np-hardass Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/open-cobol/open-cobol-1.1.ebuild,v 1.1 2013/01/30 05:52:54 patrick Exp $
+# $Id$
 
 inherit eutils
 

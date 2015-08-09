@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/asm/asm-2.0-r1.ebuild,v 1.16 2015/07/11 09:21:08 chewi Exp $
+# $Id$
 
 EAPI=4
 inherit java-pkg-2 java-ant-2

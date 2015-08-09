@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/io_lib/io_lib-1.11.2.1.ebuild,v 1.1 2008/07/06 18:59:51 ribosome Exp $
+# $Id$
 
 DESCRIPTION="A general purpose trace and experiment file reading/writing interface"
 HOMEPAGE="http://staden.sourceforge.net/"

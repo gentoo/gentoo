@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/atop/atop-2.0.2.ebuild,v 1.3 2014/10/28 21:52:26 jer Exp $
+# $Id$
 
 EAPI="4"
 

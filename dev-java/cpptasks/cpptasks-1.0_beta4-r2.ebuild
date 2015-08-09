@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cpptasks/cpptasks-1.0_beta4-r2.ebuild,v 1.5 2014/01/02 15:16:02 tomwij Exp $
+# $Id$
 
 inherit java-pkg-2 java-ant-2
 

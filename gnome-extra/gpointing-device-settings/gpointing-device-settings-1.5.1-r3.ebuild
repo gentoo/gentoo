@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gpointing-device-settings/gpointing-device-settings-1.5.1-r3.ebuild,v 1.3 2015/01/26 10:03:28 ago Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

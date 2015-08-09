@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Time-Piece/perl-Time-Piece-1.290.0.ebuild,v 1.1 2015/06/12 23:00:40 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

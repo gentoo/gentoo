@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-pulseaudio-plugin/xfce4-pulseaudio-plugin-0.2.3.ebuild,v 1.5 2015/07/19 18:37:43 maekke Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

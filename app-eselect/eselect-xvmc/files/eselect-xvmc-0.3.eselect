@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: eselect-xvmc-0.3.eselect,v 1.1 2015/03/31 16:58:41 ulm Exp $
+# $Id$
 
 DESCRIPTION="Manage the XvMC implementation used by your system"
 MAINTAINER="cardoe@gentoo.org"

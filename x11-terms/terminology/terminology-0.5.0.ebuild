@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/terminology/terminology-0.5.0.ebuild,v 1.1 2014/03/31 18:07:17 tommy Exp $
+# $Id$
 
 EAPI=5
 

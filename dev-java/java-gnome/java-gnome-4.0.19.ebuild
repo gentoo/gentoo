@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-gnome/java-gnome-4.0.19.ebuild,v 1.7 2012/05/03 07:42:51 jdhore Exp $
+# $Id$
 
 EAPI=2
 JAVA_PKG_IUSE="doc examples source"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/libertine/libertine-5.3.0.20120702-r2.ebuild,v 1.1 2015/04/05 06:11:41 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit font versionator

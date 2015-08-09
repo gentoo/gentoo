@@ -1,6 +1,6 @@
 # Copyright 2006-2013 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/alsa_cards.desc,v 1.9 2013/04/23 10:15:33 ssuominen Exp $
+# $Id$
 
 # This file contains descriptions of ALSA_CARDS USE_EXPAND flags.
 

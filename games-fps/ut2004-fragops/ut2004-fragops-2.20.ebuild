@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-fragops/ut2004-fragops-2.20.ebuild,v 1.2 2009/10/10 17:34:13 nyhm Exp $
+# $Id$
 
 EAPI=2
 

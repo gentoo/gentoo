@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2009q1-eglibc2_8/scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.17.ebuild,v 1.2 2014/08/10 20:05:54 slyfox Exp $
+# $Id$
 
 ARMV=${PV}-10
 I486V=${PV}-5

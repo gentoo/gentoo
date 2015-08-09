@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vdr2jpeg/vdr2jpeg-0.1.9-r1.ebuild,v 1.2 2015/02/06 20:25:39 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

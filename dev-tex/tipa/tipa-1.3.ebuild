@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/tipa/tipa-1.3.ebuild,v 1.7 2014/02/24 13:42:35 nimiux Exp $
+# $Id$
 
 DESCRIPTION="International Phonetic Alphabet package for LaTeX"
 HOMEPAGE="http://www.l.u-tokyo.ac.jp/~fkr/"

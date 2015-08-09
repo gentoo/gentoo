@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-8.6.9.ebuild,v 1.2 2014/12/03 08:21:16 djc Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Math-BigInt-GMP/Math-BigInt-GMP-1.380.0.ebuild,v 1.4 2014/08/02 20:06:25 zlogene Exp $
+# $Id$
 
 EAPI=5
 

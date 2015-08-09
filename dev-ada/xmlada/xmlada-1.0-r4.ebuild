@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/xmlada/xmlada-1.0-r4.ebuild,v 1.8 2008/01/27 00:23:29 george Exp $
+# $Id$
 
 inherit gnat versionator
 

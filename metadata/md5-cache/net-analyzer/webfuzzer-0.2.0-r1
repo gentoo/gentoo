@@ -1,10 +1,10 @@
-DEFINED_PHASES=compile install prepare
-DESCRIPTION=Poor man's web vulnerability scanner
-EAPI=5
-HOMEPAGE=http://gunzip.altervista.org/g.php?f=projects
-KEYWORDS=~amd64 ~x86
-LICENSE=GPL-2
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c36f1e785dc35b06cda251a5f1a07371
 SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=5
+DESCRIPTION=Poor man's web vulnerability scanner
+LICENSE=GPL-2
 SRC_URI=http://gunzip.altervista.org/webfuzzer/webfuzzer-0.2.0.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=fbe53756dcf7f8e70abbd9fcf00cbb21
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://gunzip.altervista.org/g.php?f=projects

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/caps-plugins/caps-plugins-0.9.15.ebuild,v 1.4 2014/08/10 12:56:41 nativemad Exp $
+# $Id$
 
 EAPI=5
 

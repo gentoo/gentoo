@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/ois/ois-1.3.ebuild,v 1.7 2015/04/02 16:53:58 aballier Exp $
+# $Id$
 
 EAPI=4
 inherit autotools autotools-utils

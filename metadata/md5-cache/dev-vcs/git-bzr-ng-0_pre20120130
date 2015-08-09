@@ -1,12 +1,12 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=809c9bac9873cb0ef3ba19cc8df6894f
+SLOT=0
 DEFINED_PHASES=install prepare setup
+EAPI=4
 DEPEND=app-arch/xz-utils =dev-lang/python-2*
 DESCRIPTION=Git subcommand providing a bidirectional bridge to Bazaar repositories
-EAPI=4
-HOMEPAGE=https://github.com/termie/git-bzr-ng
-KEYWORDS=amd64 x86
 LICENSE=BSD
-RDEPEND=>=dev-vcs/bzr-2.2 dev-vcs/git >=dev-vcs/bzr-fastimport-0.10 dev-python/python-fastimport =dev-lang/python-2*
-SLOT=0
 SRC_URI=http://dev.gentoo.org/~tetromino/distfiles/git-bzr-ng/git-bzr-ng-0_pre20120130.tar.xz
-_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=4214ac0b5ddb7ba4b1de87556759e7c3
+KEYWORDS=amd64 x86
+HOMEPAGE=https://github.com/termie/git-bzr-ng
+RDEPEND=>=dev-vcs/bzr-2.2 dev-vcs/git >=dev-vcs/bzr-fastimport-0.10 dev-python/python-fastimport =dev-lang/python-2*

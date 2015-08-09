@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/chirp/chirp-9999.ebuild,v 1.5 2014/10/08 23:45:00 zerochaos Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

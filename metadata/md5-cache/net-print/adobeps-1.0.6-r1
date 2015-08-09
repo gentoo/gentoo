@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=26e6e9555c6efb16ba0bb4d37c4d2fea
+SLOT=0
 DEFINED_PHASES=install setup unpack
+EAPI=5
 DEPEND=app-arch/cabextract
 DESCRIPTION=Adobe PostScript drivers for Windows for use with CUPS
-EAPI=5
-HOMEPAGE=http://www.adobe.com/support/downloads/product.jsp?product=44&platform=Windows
-IUSE=cups linguas_en linguas_da linguas_de linguas_es linguas_fi linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_no linguas_pt_BR linguas_se linguas_zh_CN
-KEYWORDS=~amd64 ~x86
 LICENSE=AdobePS
-RDEPEND=cups? ( >=net-print/cups-1.2 )
+IUSE=cups linguas_en linguas_da linguas_de linguas_es linguas_fi linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_no linguas_pt_BR linguas_se linguas_zh_CN
 RESTRICT=mirror
-SLOT=0
 SRC_URI=linguas_en? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winsteng.exe ) linguas_da? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstDan.exe ) linguas_de? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstger.exe ) linguas_es? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstspa.exe ) linguas_fi? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstfin.exe ) linguas_fr? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstfre.exe ) linguas_it? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstita.exe ) linguas_ja? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstjpn.exe ) linguas_ko? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstkor.exe ) linguas_nl? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstdut.exe ) linguas_no? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstnor.exe ) linguas_pt_BR? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstbrz.exe ) linguas_se? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstswe.exe ) linguas_zh_CN? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/Winstchs.exe ) !linguas_en? ( !linguas_da? ( !linguas_de? ( !linguas_es? ( !linguas_fi? ( !linguas_fr? ( !linguas_it? ( !linguas_ja? ( !linguas_ko? ( !linguas_nl? ( !linguas_no? ( !linguas_pt_BR? ( !linguas_se? ( !linguas_zh_CN? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winsteng.exe ) ) ) ) ) ) ) ) ) ) ) ) ) )
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2aea2e7511f96b639bd566722e17cece
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.adobe.com/support/downloads/product.jsp?product=44&platform=Windows
+RDEPEND=cups? ( >=net-print/cups-1.2 )

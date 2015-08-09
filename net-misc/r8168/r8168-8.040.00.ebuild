@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/r8168/r8168-8.040.00.ebuild,v 1.3 2015/08/06 07:23:45 ago Exp $
+# $Id$
 
 EAPI=5
 

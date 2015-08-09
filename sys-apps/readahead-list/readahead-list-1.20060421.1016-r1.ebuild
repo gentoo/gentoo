@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/readahead-list/readahead-list-1.20060421.1016-r1.ebuild,v 1.3 2014/08/10 20:24:55 slyfox Exp $
+# $Id$
 
 inherit base
 

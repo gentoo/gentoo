@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/scmxlate/scmxlate-20090410.ebuild,v 1.3 2012/11/04 17:04:11 ulm Exp $
+# $Id$
 
 EAPI="3"
 

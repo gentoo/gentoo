@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/splash-themes-gentoo/splash-themes-gentoo-20101212-r2.ebuild,v 1.2 2013/12/22 11:18:08 pacho Exp $
+# $Id$
 
 EAPI="5"
 

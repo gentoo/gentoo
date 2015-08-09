@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcptraceroute/tcptraceroute-1.5_beta7-r1.ebuild,v 1.12 2013/02/21 02:25:40 zmedico Exp $
+# $Id$
 
 EAPI=5
 inherit flag-o-matic

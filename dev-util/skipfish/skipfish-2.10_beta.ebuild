@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/skipfish/skipfish-2.10_beta.ebuild,v 1.1 2013/01/05 11:13:31 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs versionator

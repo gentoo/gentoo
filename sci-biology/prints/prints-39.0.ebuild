@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/prints/prints-39.0.ebuild,v 1.8 2012/03/07 20:50:37 ranger Exp $
+# $Id$
 
 MY_PV="${PV/./_}"
 

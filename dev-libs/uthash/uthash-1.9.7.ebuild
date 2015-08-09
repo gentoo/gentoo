@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/uthash/uthash-1.9.7.ebuild,v 1.7 2013/06/26 17:08:12 blueness Exp $
+# $Id$
 
 EAPI="4"
 

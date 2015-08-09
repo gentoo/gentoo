@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/mg/mg-20110905-r1.ebuild,v 1.7 2013/05/25 14:24:04 ago Exp $
+# $Id$
 
 EAPI=4
 

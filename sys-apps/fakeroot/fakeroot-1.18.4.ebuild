@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/fakeroot/fakeroot-1.18.4.ebuild,v 1.8 2013/01/11 18:47:22 blueness Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

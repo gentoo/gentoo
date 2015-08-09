@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gifsicle/gifsicle-1.67.ebuild,v 1.4 2012/06/29 12:48:17 ranger Exp $
+# $Id$
 
 EAPI=4
 

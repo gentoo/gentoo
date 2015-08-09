@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/slv2/slv2-0.6.6.ebuild,v 1.7 2012/06/27 19:46:57 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils multilib python toolchain-funcs

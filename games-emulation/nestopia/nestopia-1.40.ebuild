@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/nestopia/nestopia-1.40.ebuild,v 1.10 2015/01/17 16:39:55 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic games

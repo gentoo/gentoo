@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/lzma/lzma-4.63.ebuild,v 1.3 2009/03/09 21:38:20 maekke Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2

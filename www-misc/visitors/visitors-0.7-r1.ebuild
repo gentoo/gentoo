@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/visitors/visitors-0.7-r1.ebuild,v 1.4 2012/05/29 19:31:07 ranger Exp $
+# $Id$
 
 EAPI="2"
 

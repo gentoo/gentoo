@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/dvda-author/dvda-author-10.06.ebuild,v 1.1 2010/08/30 23:27:06 radhermit Exp $
+# $Id$
 
 EAPI=2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ultracopier/ultracopier-0.2.0.16.ebuild,v 1.2 2013/03/02 23:33:00 hwoarang Exp $
+# $Id$
 
 EAPI=2
 

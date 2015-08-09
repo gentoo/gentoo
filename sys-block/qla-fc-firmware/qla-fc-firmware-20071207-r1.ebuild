@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/qla-fc-firmware/qla-fc-firmware-20071207-r1.ebuild,v 1.6 2010/11/30 20:48:24 robbat2 Exp $
+# $Id$
 
 DESCRIPTION="QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards"
 HOMEPAGE="ftp://ftp.qlogic.com/outgoing/linux/firmware/"

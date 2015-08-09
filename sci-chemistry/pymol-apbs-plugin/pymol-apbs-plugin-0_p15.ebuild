@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol-apbs-plugin/pymol-apbs-plugin-0_p15.ebuild,v 1.7 2010/06/09 06:48:36 jlec Exp $
+# $Id$
 
 EAPI="3"
 

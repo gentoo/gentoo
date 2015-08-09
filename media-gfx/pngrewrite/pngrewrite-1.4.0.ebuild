@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngrewrite/pngrewrite-1.4.0.ebuild,v 1.1 2011/04/29 06:01:48 radhermit Exp $
+# $Id$
 
 EAPI=4
 

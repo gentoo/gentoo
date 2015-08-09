@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/valve/valve-1.0.ebuild,v 1.4 2010/03/24 22:11:58 robbat2 Exp $
+# $Id$
 
 DESCRIPTION="Copies data while enforcing a specified maximum transfer rate"
 HOMEPAGE="http://www.fourmilab.ch/webtools/valve/"

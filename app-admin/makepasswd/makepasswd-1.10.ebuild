@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/makepasswd/makepasswd-1.10.ebuild,v 1.26 2011/03/06 12:30:18 xmw Exp $
+# $Id$
 
 DESCRIPTION="Random password generator"
 HOMEPAGE="http://packages.debian.org/stable/admin/makepasswd"

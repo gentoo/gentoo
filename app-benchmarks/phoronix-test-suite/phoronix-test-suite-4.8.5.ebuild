@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/phoronix-test-suite/phoronix-test-suite-4.8.5.ebuild,v 1.1 2015/03/25 03:55:58 patrick Exp $
+# $Id$
 
 EAPI=4
 

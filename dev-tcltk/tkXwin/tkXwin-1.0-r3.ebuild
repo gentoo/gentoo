@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkXwin/tkXwin-1.0-r3.ebuild,v 1.5 2012/10/21 17:06:50 armin76 Exp $
+# $Id$
 
 EAPI=4
 

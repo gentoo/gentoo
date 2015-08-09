@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/fgdc-emergency/fgdc-emergency-2.20.ebuild,v 1.4 2014/03/02 09:37:10 pacho Exp $
+# $Id$
 
 inherit font
 

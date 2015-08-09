@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=eb21f8a93bf430b2044922c0e3f5fc7a
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare test unpack
+EAPI=5
 DEPEND=dev-libs/boost[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl sys-apps/dbus sys-apps/util-linux sys-libs/zlib virtual/libintl btrfs? ( >=sys-fs/btrfs-progs-3.17.1 ) ext4? ( sys-fs/e2fsprogs ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) xattr? ( sys-apps/attr ) sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Command-line program for btrfs and ext4 snapshot management
-EAPI=5
-HOMEPAGE=http://snapper.io/
-IUSE=+btrfs ext4 lvm pam xattr
 LICENSE=GPL-2
+IUSE=+btrfs ext4 lvm pam xattr
+HOMEPAGE=http://snapper.io/
 RDEPEND=dev-libs/boost[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl sys-apps/dbus sys-apps/util-linux sys-libs/zlib virtual/libintl btrfs? ( >=sys-fs/btrfs-progs-3.17.1 ) ext4? ( sys-fs/e2fsprogs ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) xattr? ( sys-apps/attr )
-SLOT=0
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	32063705ec420339d5c94dfeb87b36cb	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ea906d8ced03d7b7d4c0fdbbf247123d

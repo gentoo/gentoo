@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mtop/mtop-0.6.6-r3.ebuild,v 1.1 2014/05/08 01:19:27 grknight Exp $
+# $Id$
 
 EAPI=5
 inherit perl-module

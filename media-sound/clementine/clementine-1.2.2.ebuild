@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/clementine/clementine-1.2.2.ebuild,v 1.7 2015/07/12 03:41:29 idella4 Exp $
+# $Id$
 
 EAPI=5
 

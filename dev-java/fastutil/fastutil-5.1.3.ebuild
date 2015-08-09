@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/fastutil/fastutil-5.1.3.ebuild,v 1.5 2014/08/10 20:13:06 slyfox Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

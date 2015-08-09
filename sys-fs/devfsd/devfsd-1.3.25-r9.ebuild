@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/devfsd/devfsd-1.3.25-r9.ebuild,v 1.6 2015/04/03 07:17:16 vapier Exp $
+# $Id$
 
 EAPI="5"
 

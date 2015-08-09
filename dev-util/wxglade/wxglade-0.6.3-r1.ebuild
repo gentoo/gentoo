@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/wxglade/wxglade-0.6.3-r1.ebuild,v 1.6 2012/09/05 09:49:30 jlec Exp $
+# $Id$
 
 EAPI="2"
 PYTHON_DEPEND="2:2.5"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/varnish/varnish-4.0.1-r1.ebuild,v 1.2 2015/04/08 18:30:55 mgorny Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/th-lift/th-lift-0.7.ebuild,v 1.1 2014/12/23 04:59:58 gienah Exp $
+# $Id$
 
 EAPI=5
 

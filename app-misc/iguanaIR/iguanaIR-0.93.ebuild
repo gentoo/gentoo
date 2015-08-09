@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/iguanaIR/iguanaIR-0.93.ebuild,v 1.9 2013/04/02 20:55:42 ago Exp $
+# $Id$
 
 EAPI=4
 inherit eutils flag-o-matic python

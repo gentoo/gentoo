@@ -1,8 +1,8 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/package.mask,v 1.14 2013/12/31 03:35:53 creffett Exp $
+# $Id$
 
-# $Id: package.mask,v 1.14 2013/12/31 03:35:53 creffett Exp $
+# $Id$
 
 # Markus Duft <mduft@gentoo.org> (05 May 2008)
 # Does not build with the slang interface, and

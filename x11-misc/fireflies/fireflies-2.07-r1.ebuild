@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/fireflies/fireflies-2.07-r1.ebuild,v 1.8 2014/06/21 19:27:12 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils multilib

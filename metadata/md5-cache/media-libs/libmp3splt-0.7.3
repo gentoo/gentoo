@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=95c4526615e4cea389d1b1991b7aa4da
+SLOT=0
 DEFINED_PHASES=configure install prepare
+EAPI=2
 DEPEND=media-libs/libmad media-libs/libvorbis media-libs/libogg media-libs/libid3tag pcre? ( dev-libs/libpcre ) doc? ( app-doc/doxygen media-gfx/graphviz ) sys-apps/findutils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a library for mp3splt to split mp3 and ogg files without decoding
-EAPI=2
-HOMEPAGE=http://mp3splt.sourceforge.net
-IUSE=doc pcre
-KEYWORDS=alpha amd64 ~hppa ~ppc ~ppc64 sparc x86
 LICENSE=GPL-2
-RDEPEND=media-libs/libmad media-libs/libvorbis media-libs/libogg media-libs/libid3tag pcre? ( dev-libs/libpcre )
-SLOT=0
+IUSE=doc pcre
 SRC_URI=mirror://sourceforge/mp3splt/libmp3splt-0.7.3.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=cda05d1cb22077f3dbad1f03a65b112e
+KEYWORDS=alpha amd64 ~hppa ~ppc ~ppc64 sparc x86
+HOMEPAGE=http://mp3splt.sourceforge.net
+RDEPEND=media-libs/libmad media-libs/libvorbis media-libs/libogg media-libs/libid3tag pcre? ( dev-libs/libpcre )

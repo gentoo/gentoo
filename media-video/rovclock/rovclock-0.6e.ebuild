@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/rovclock/rovclock-0.6e.ebuild,v 1.5 2011/03/18 20:35:48 angelos Exp $
+# $Id$
 
 EAPI=3
 inherit toolchain-funcs eutils

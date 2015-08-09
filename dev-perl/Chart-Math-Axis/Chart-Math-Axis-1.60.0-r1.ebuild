@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Chart-Math-Axis/Chart-Math-Axis-1.60.0-r1.ebuild,v 1.3 2013/12/09 16:28:10 zlogene Exp $
+# $Id$
 
 EAPI=5
 

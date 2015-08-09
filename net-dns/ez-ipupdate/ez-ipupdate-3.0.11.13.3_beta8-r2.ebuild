@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/ez-ipupdate/ez-ipupdate-3.0.11.13.3_beta8-r2.ebuild,v 1.1 2014/07/08 15:54:44 pacho Exp $
+# $Id$
 
 EAPI="5"
 inherit eutils readme.gentoo systemd user versionator

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDB_File/CDB_File-0.980.0.ebuild,v 1.1 2015/07/04 17:31:13 zlogene Exp $
+# $Id$
 
 EAPI=5
 

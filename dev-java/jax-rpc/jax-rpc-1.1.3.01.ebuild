@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jax-rpc/jax-rpc-1.1.3.01.ebuild,v 1.6 2007/11/15 00:49:17 betelgeuse Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

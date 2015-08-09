@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/namespace-clean/namespace-clean-0.240.0-r1.ebuild,v 1.4 2015/05/20 04:51:38 mattst88 Exp $
+# $Id$
 
 EAPI=5
 

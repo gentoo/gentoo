@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/nail/nail-12.4.ebuild,v 1.17 2011/10/12 17:21:54 armin76 Exp $
+# $Id$
 
 EAPI="3"
 

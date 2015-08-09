@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/charva/charva-1.1.4-r1.ebuild,v 1.4 2013/09/02 08:06:48 ago Exp $
+# $Id$
 
 EAPI="4"
 JAVA_PKG_IUSE="doc examples source"

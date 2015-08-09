@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/testdisk/testdisk-6.14.ebuild,v 1.6 2015/05/15 10:44:22 pacho Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/lz4/lz4-0_p120.ebuild,v 1.13 2015/04/23 15:56:43 jer Exp $
+# $Id$
 
 EAPI=5
 

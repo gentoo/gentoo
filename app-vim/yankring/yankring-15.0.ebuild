@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/yankring/yankring-15.0.ebuild,v 1.1 2013/01/13 09:10:09 radhermit Exp $
+# $Id$
 
 EAPI="5"
 

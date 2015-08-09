@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cocaine-core/cocaine-core-0.9.2-r1.ebuild,v 1.1 2014/09/08 11:19:19 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

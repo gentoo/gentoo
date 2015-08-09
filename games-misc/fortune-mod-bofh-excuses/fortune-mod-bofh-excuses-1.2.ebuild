@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-bofh-excuses/fortune-mod-bofh-excuses-1.2.ebuild,v 1.14 2015/02/04 17:37:42 tupone Exp $
+# $Id$
 EAPI=5
 DESCRIPTION="Excuses from Bastard Operator from Hell"
 HOMEPAGE="http://www.stlim.net/staticpages/index.php?page=20020814005536450"

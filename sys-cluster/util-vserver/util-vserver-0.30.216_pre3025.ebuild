@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/util-vserver/util-vserver-0.30.216_pre3025.ebuild,v 1.3 2014/01/16 13:55:04 jer Exp $
+# $Id$
 
 EAPI=4
 

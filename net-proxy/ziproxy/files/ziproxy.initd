@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/ziproxy/files/ziproxy.initd,v 1.5 2008/07/14 10:42:28 sbriesen Exp $
+# $Id$
 
 depend() {
 	need net

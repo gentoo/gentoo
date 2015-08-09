@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/smac/smac-6.0a.ebuild,v 1.25 2015/03/26 20:21:43 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils unpacker cdrom games

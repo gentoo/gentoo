@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jython/jython-2.2.1-r2.ebuild,v 1.4 2014/03/10 16:57:18 johu Exp $
+# $Id$
 
 EAPI=4
 

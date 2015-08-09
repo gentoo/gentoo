@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/monkeyd/monkeyd-1.5.3.ebuild,v 1.4 2014/08/21 01:17:56 blueness Exp $
+# $Id$
 
 EAPI="5"
 

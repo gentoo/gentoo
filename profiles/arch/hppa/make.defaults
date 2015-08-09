@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/hppa/make.defaults,v 1.13 2014/07/01 14:50:36 jer Exp $
+# $Id$
 
 ARCH="hppa"
 ACCEPT_KEYWORDS="hppa"

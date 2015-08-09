@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/ansi-terminal/ansi-terminal-0.6.ebuild,v 1.8 2013/08/29 19:51:27 ago Exp $
+# $Id$
 
 EAPI=5
 

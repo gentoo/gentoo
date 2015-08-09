@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libnova/libnova-0.12.3.ebuild,v 1.7 2010/01/19 00:47:22 jer Exp $
+# $Id$
 
 EAPI=2
 inherit eutils autotools flag-o-matic

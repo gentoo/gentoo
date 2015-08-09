@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-1.0.2.ebuild,v 1.11 2012/05/04 08:58:56 jdhore Exp $
+# $Id$
 
 EAPI="2"
 if [[ ${PV} == *9999 ]] ; then

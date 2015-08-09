@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/cenonlibrary/cenonlibrary-3.9.4.ebuild,v 1.4 2012/06/07 15:06:00 xmw Exp $
+# $Id$
 
 EAPI=4
 inherit gnustep-2

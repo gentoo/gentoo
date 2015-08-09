@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-social-auth/python-social-auth-0.1.26.ebuild,v 1.4 2015/03/06 22:35:17 pacho Exp $
+# $Id$
 
 EAPI=5
 

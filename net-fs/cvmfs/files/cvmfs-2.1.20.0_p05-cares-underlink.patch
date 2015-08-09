@@ -3,7 +3,7 @@ diff -Nur cvmfs-cvmfs-2.1.20.0-fix05.orig/cmake/Modules/FindCARES.cmake cvmfs-cv
 +++ cvmfs-cvmfs-2.1.20.0-fix05/cmake/Modules/FindCARES.cmake	2015-07-31 18:35:05.859879354 +0000
 @@ -0,0 +1,35 @@
 +#
-+# $Id: cvmfs-2.1.20.0_p05-cares-underlink.patch,v 1.1 2015/07/31 20:09:57 bicatali Exp $
++# $Id$
 +#
 +# - Find cares
 +# Find the native CARES includes and library

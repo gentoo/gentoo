@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-7.6.3-r1.ebuild,v 1.18 2015/04/26 17:07:50 pacho Exp $
+# $Id$
 
 # Brief explanation of the bootstrap logic:
 #

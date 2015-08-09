@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jre-bin/sun-jre-bin-1.6.0.45.ebuild,v 1.4 2014/05/16 19:06:15 swift Exp $
+# $Id$
 
 EAPI="5"
 

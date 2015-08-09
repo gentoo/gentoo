@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/bertini/bertini-1.4.ebuild,v 1.1 2013/08/04 20:03:02 tomka Exp $
+# $Id$
 
 EAPI=5
 

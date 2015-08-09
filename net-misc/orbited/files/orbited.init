@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/orbited/files/orbited.init,v 1.1 2009/08/30 11:44:46 caleb Exp $
+# $Id$
 
 depend() {
 	need net

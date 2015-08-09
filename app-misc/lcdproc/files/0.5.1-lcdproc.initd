@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lcdproc/files/0.5.1-lcdproc.initd,v 1.2 2007/10/04 10:39:36 swegener Exp $
+# $Id$
 
 depend(){
 	use LCDd

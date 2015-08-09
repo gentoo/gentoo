@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/files/gpsd.conf-2,v 1.1 2010/09/26 13:36:50 scarabeus Exp $
+# $Id$
 
 # Config file for gpsd server
 GPSD_OPTIONS=""

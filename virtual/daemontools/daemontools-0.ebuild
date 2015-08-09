@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/daemontools/daemontools-0.ebuild,v 1.3 2011/07/11 15:27:50 aballier Exp $
+# $Id$
 
 DESCRIPTION="Virtual for daemontools"
 HOMEPAGE=""

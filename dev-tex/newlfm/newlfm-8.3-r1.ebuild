@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/newlfm/newlfm-8.3-r1.ebuild,v 1.3 2011/06/27 14:40:00 aballier Exp $
+# $Id$
 
 inherit latex-package
 

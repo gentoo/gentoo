@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/shoulda-matchers/shoulda-matchers-2.6.1.ebuild,v 1.3 2014/08/18 01:44:21 blueness Exp $
+# $Id$
 
 EAPI=5
 

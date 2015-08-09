@@ -1,5 +1,5 @@
 # plugin-startup-skript for powermate-plugin
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-powermate/files/rc-addon.sh,v 1.2 2007/04/17 09:48:01 zzam Exp $
+# $Id$
 
 # try to autodetect device for powermate
 

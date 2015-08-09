@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/fira-sans/fira-sans-4.105.ebuild,v 1.1 2015/07/29 13:57:17 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit font versionator

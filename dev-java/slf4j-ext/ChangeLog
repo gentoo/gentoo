@@ -1,9 +1,0 @@
-# ChangeLog for dev-java/slf4j-ext
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/slf4j-ext/ChangeLog,v 1.1 2014/01/13 18:13:18 ercpe Exp $
-
-*slf4j-ext-1.7.5 (13 Jan 2014)
-
-  13 Jan 2014; Johann Schmitz <ercpe@gentoo.org> +files/1.7.5-build.xml,
-  +metadata.xml, +slf4j-ext-1.7.5.ebuild:
-  New ebuild for slf4j extension module

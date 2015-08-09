@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.8.30-r1.ebuild,v 1.13 2015/03/20 14:41:50 jlec Exp $
+# $Id$
 
 EAPI=4
 

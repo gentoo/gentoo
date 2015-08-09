@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/pkg_postinst-v1.eblit,v 1.1 2009/03/16 06:39:10 kumba Exp $
+# $Id$
 
 # Eblit that handles binpkg postinst tasks.
 # In this case, it sets up the /usr/src/linux symlink.

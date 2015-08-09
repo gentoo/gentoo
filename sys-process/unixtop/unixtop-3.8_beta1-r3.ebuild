@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/unixtop/unixtop-3.8_beta1-r3.ebuild,v 1.2 2014/01/14 18:14:20 grobian Exp $
+# $Id$
 
 inherit eutils autotools
 

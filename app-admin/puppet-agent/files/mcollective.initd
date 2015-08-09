@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet-agent/files/mcollective.initd,v 1.1 2015/07/18 23:22:16 prometheanfire Exp $
+# $Id$
 
 MCOLLECTIVE_PID_DIR="${MCOLLECTIVE_PID_DIR:-/var/run/puppetlabs}"
 

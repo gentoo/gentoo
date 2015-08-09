@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-ati/xf86-video-ati-6.14.6-r1.ebuild,v 1.11 2013/01/31 14:16:24 chithanh Exp $
+# $Id$
 
 EAPI=4
 

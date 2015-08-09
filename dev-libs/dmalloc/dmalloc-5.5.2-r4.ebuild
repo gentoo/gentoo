@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dmalloc/dmalloc-5.5.2-r4.ebuild,v 1.11 2013/02/07 21:50:56 ulm Exp $
+# $Id$
 
 EAPI=4
 

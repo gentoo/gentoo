@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/lib_mysqludf_log/lib_mysqludf_log-0.0.2.ebuild,v 1.1 2011/10/19 12:15:36 sbriesen Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/files/teamspeak-server-bin-init-r1,v 1.1 2015/08/02 13:00:19 jlec Exp $
+# $Id$
 
 name="TeamSpeak Server"
 command="/usr/sbin/ts3server"

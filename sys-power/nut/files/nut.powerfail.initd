@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/nut/files/nut.powerfail.initd,v 1.4 2014/01/05 20:37:52 robbat2 Exp $
+# $Id$
 
 description='Signal the UPS to kill power in a power failure condition'
 

@@ -1,7 +1,7 @@
 --- a/modules/submit-http/submit-http.hpp
 +++ b/modules/submit-http/submit-http.hpp
 @@ -29,7 +29,6 @@
-  /* $Id: nepenthes-0.2.2-curl_types_h.patch,v 1.1 2014/10/25 11:50:22 jer Exp $ */
+  /* $Id$ */
  
  #include <curl/curl.h>
 -#include <curl/types.h> /* new for v7 */
@@ -21,7 +21,7 @@
 --- a/modules/submit-http/HTTPSession.hpp
 +++ b/modules/submit-http/HTTPSession.hpp
 @@ -29,7 +29,6 @@
-  /* $Id: nepenthes-0.2.2-curl_types_h.patch,v 1.1 2014/10/25 11:50:22 jer Exp $ */
+  /* $Id$ */
   
  #include <curl/curl.h>
 -#include <curl/types.h>
@@ -31,7 +31,7 @@
 --- a/modules/download-curl/download-curl.hpp
 +++ b/modules/download-curl/download-curl.hpp
 @@ -28,7 +28,6 @@
-  /* $Id: nepenthes-0.2.2-curl_types_h.patch,v 1.1 2014/10/25 11:50:22 jer Exp $ */
+  /* $Id$ */
  
  #include <curl/curl.h>
 -#include <curl/types.h> /* new for v7 */

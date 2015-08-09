@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/smem/smem-20071119_p1.ebuild,v 1.2 2015/02/11 04:30:33 bircoph Exp $
+# $Id$
 
 DESCRIPTION="A tool to parse smaps statistics"
 HOMEPAGE="http://bmaurer.blogspot.de/2006/03/memory-usage-with-smaps.html"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/package.mask,v 1.8 2014/07/26 09:17:01 ssuominen Exp $
+# $Id$
 
 # Mask out the GNU versions of various packages.
 # We want BSD versions wherever possible

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/most/most-5.0.0a-r1.ebuild,v 1.7 2015/06/21 19:38:06 zlogene Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/tex-gyre/tex-gyre-2.005.ebuild,v 1.1 2015/05/09 04:08:37 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit font

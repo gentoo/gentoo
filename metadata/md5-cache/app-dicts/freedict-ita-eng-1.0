@@ -1,10 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	freedict	1cdd6e607bc12d575b61200cc2898bc9	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=6126f64313ebf6190860b23c11431a8f
+SLOT=0
 DEFINED_PHASES=install
+EAPI=0
 DEPEND=app-text/dictd
 DESCRIPTION=Freedict for language translation from Italian to English
-HOMEPAGE=http://www.freedict.de
-KEYWORDS=alpha ~amd64 ~hppa ~mips ppc sparc x86
 LICENSE=GPL-2
-SLOT=0
 SRC_URI=http://freedict.sourceforge.net/download/linux/ita-eng.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	freedict	627b5b69174d5181f843838b320685af	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c6f997a15f799b55f7afb6832e96175e
+KEYWORDS=alpha ~amd64 ~hppa ~mips ppc sparc x86
+HOMEPAGE=http://www.freedict.de

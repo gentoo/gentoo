@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/elixir/elixir-1.0.1.ebuild,v 1.1 2014/10/17 19:35:47 hasufell Exp $
+# $Id$
 
 EAPI=5
 

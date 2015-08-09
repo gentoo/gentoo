@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/sparc/experimental/multilib/packages,v 1.1 2008/12/26 11:09:43 bluebird Exp $
+# $Id$
 
 # older versions of gcc don't support biarch
 *>=sys-devel/gcc-4.3.2-r1

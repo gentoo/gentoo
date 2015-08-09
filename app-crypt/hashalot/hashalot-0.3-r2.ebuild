@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/hashalot/hashalot-0.3-r2.ebuild,v 1.2 2011/02/06 05:26:24 leio Exp $
+# $Id$
 
 DESCRIPTION="CryptoAPI utils"
 HOMEPAGE="http://www.kerneli.org/"

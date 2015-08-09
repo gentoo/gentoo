@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vpncwatch/vpncwatch-1.8.1.ebuild,v 1.1 2013/04/01 13:14:16 jlec Exp $
+# $Id$
 
 EAPI=5
 

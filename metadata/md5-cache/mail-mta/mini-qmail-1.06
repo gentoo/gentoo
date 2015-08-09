@@ -1,11 +1,12 @@
+_eclasses_=qmail	283e7fa084ff27bf177a23bf740c7218	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fixheadtails	2f44773656577fe2653bacc8bdcb2174	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f42332f1694e6d24ce36d55c6f371539
+SLOT=0
 DEFINED_PHASES=compile install test unpack
+EAPI=0
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=a small null client that forwards mail via QMQP to a full qmail server
-HOMEPAGE=http://netqmail.org http://cr.yp.to/qmail/mini.html http://qmail.org
-KEYWORDS=~amd64 arm hppa ~mips ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/maildrop !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
-SLOT=0
 SRC_URI=mirror://qmail/netqmail-1.06.tar.gz http://dev.gentoo.org/~hollow/distfiles/genqmail-20080406.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	qmail	f99b250a01cfe0407cb29e3bbfff9cf7	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=2109280a54fd9ceb10f139388d59cc5c
+KEYWORDS=~amd64 arm hppa ~mips ~ppc ~x86
+HOMEPAGE=http://netqmail.org http://cr.yp.to/qmail/mini.html http://qmail.org
+RDEPEND=!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/maildrop !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd

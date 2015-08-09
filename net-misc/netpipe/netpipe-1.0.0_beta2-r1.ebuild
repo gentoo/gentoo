@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netpipe/netpipe-1.0.0_beta2-r1.ebuild,v 1.1 2010/08/26 20:02:10 hwoarang Exp $
+# $Id$
 
 inherit toolchain-funcs
 

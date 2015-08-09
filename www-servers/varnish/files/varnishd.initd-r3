@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/varnish/files/varnishd.initd-r3,v 1.1 2014/05/22 20:23:48 idl0r Exp $
+# $Id$
 
 VARNISHD_PID=${VARNISHD_PID:-/run/${SVCNAME}.pid}
 CONFIGFILES="${CONFIGFILE:-/etc/varnish/default.vcl}"

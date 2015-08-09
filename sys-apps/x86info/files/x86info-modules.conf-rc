@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/x86info/files/x86info-modules.conf-rc,v 1.2 2004/07/18 04:41:21 dragonheart Exp $
+# $Id$
 #
 # Aliases needed for x86info to probe data
 # these are so the modules auto-load as needed

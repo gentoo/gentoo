@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-sparvg2004/sword-sparvg2004-1.0.ebuild,v 1.3 2014/01/06 00:38:07 creffett Exp $
+# $Id$
 
 EAPI=5
 SWORD_MODULE="SpaRVG2004"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bson/bson-1.6.2-r1.ebuild,v 1.4 2015/01/05 19:31:29 graaff Exp $
+# $Id$
 
 EAPI=5
 # jruby → support needs to be written properly

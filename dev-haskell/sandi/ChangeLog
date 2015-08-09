@@ -1,9 +1,0 @@
-# ChangeLog for dev-haskell/sandi
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/sandi/ChangeLog,v 1.1 2015/06/21 18:53:50 slyfox Exp $
-
-*sandi-0.3.5 (21 Jun 2015)
-
-  21 Jun 2015; Sergei Trofimovich <slyfox@gentoo.org> +metadata.xml,
-  +sandi-0.3.5.ebuild:
-  Data encoding library, a depend for dev-vcs/git-annex.

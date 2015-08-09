@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gentoo10-backgrounds/gentoo10-backgrounds-20110309.ebuild,v 1.6 2014/03/04 20:33:01 vincent Exp $
+# $Id$
 
 EAPI=5
 

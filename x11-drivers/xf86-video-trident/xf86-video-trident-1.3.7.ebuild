@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-trident/xf86-video-trident-1.3.7.ebuild,v 1.1 2015/03/30 17:19:18 mattst88 Exp $
+# $Id$
 
 EAPI=5
 inherit xorg-2

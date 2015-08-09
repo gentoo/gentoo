@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=cd57d6ba3d1f9d1c436b86984b5d30a2
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare test
+EAPI=5
 DEPEND=!sci-misc/boinc-bin !app-admin/quickswitch >=app-misc/ca-certificates-20080809 dev-libs/openssl:0= net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)] sys-apps/util-linux sys-libs/zlib cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) X? ( dev-db/sqlite:3 media-libs/freeglut sys-libs/glibc:2.2 virtual/jpeg:0= x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:2.8[X,opengl] ) sys-devel/gettext app-text/docbook-xml-dtd:4.4 app-text/docbook2X !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The Berkeley Open Infrastructure for Network Computing
-EAPI=5
-HOMEPAGE=http://boinc.ssl.berkeley.edu/
-IUSE=X cuda static-libs
-KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
-RDEPEND=!sci-misc/boinc-bin !app-admin/quickswitch >=app-misc/ca-certificates-20080809 dev-libs/openssl:0= net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)] sys-apps/util-linux sys-libs/zlib cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) X? ( dev-db/sqlite:3 media-libs/freeglut sys-libs/glibc:2.2 virtual/jpeg:0= x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:2.8[X,opengl] )
-SLOT=0
+IUSE=X cuda static-libs
 SRC_URI=http://dev.gentoo.org/~jlec/distfiles/boinc-7.2.0.tar.xz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=497afb360cb55334be98729e0a1da953
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+HOMEPAGE=http://boinc.ssl.berkeley.edu/
+RDEPEND=!sci-misc/boinc-bin !app-admin/quickswitch >=app-misc/ca-certificates-20080809 dev-libs/openssl:0= net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)] sys-apps/util-linux sys-libs/zlib cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) X? ( dev-db/sqlite:3 media-libs/freeglut sys-libs/glibc:2.2 virtual/jpeg:0= x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:2.8[X,opengl] )

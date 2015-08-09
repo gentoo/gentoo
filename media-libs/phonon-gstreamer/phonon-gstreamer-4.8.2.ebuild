@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/phonon-gstreamer/phonon-gstreamer-4.8.2.ebuild,v 1.1 2015/01/30 22:07:32 johu Exp $
+# $Id$
 
 EAPI=5
 

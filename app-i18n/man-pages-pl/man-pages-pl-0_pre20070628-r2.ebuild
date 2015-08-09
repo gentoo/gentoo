@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-pl/man-pages-pl-0_pre20070628-r2.ebuild,v 1.1 2015/07/28 10:34:33 idella4 Exp $
+# $Id$
 
 EAPI=4
 

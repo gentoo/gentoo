@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunistring/libunistring-0.9.3-r1.ebuild,v 1.5 2013/05/08 18:34:28 grobian Exp $
+# $Id$
 
 EAPI="3"
 

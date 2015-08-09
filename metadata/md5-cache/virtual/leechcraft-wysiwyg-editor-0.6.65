@@ -1,7 +1,8 @@
+_eclasses_=
+_md5_=ab6ae57a70280dc73c0e19dfe2e2db91
+SLOT=0
 DEFINED_PHASES=-
-DESCRIPTION=Virtual for LeechCraft plugins providing WYSIWYG text editor
 EAPI=4
+DESCRIPTION=Virtual for LeechCraft plugins providing WYSIWYG text editor
 KEYWORDS=~amd64 ~x86
 RDEPEND=~app-leechcraft/lc-lhtr-0.6.65
-SLOT=0
-_md5_=f54512a98f24440f12b297dd7125998a

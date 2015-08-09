@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tiers/tiers-1.1.ebuild,v 1.13 2013/03/10 01:43:51 ottxor Exp $
+# $Id$
 
 inherit eutils
 

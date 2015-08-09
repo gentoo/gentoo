@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/files/postgresql-check-db-dir,v 1.1 2014/12/28 18:07:22 titanofold Exp $
+# $Id$
 
 eerror() {
     echo "$@" >&2

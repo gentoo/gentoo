@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/bin2iso/bin2iso-19b-r2.ebuild,v 1.4 2010/01/01 19:53:44 fauli Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

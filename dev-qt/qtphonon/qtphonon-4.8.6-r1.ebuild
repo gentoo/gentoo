@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtphonon/qtphonon-4.8.6-r1.ebuild,v 1.8 2015/06/04 19:01:21 kensington Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-spandsp_codec_g726/asterisk-spandsp_codec_g726-0.0.2_pre26.ebuild,v 1.5 2010/10/28 12:35:33 ssuominen Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

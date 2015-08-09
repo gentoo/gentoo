@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-2.10.9-r2.ebuild,v 1.7 2014/12/11 03:50:00 prometheanfire Exp $
+# $Id$
 
 EAPI="4"
 

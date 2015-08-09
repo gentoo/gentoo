@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/ruby-minitest/ruby-minitest-0-r3.ebuild,v 1.11 2014/04/22 03:24:31 mrueg Exp $
+# $Id$
 
 EAPI=2
 USE_RUBY="ruby19 ruby20 jruby"

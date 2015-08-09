@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-module.eclass,v 1.71 2015/07/30 12:59:09 aballier Exp $
+# $Id$
 
 # @ECLASS: texlive-module.eclass
 # @MAINTAINER:

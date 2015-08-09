@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/arc/arc-5.21p.ebuild,v 1.7 2011/02/12 17:51:58 armin76 Exp $
+# $Id$
 
 EAPI="2"
 

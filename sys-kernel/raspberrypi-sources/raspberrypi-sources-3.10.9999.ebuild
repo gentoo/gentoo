@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/raspberrypi-sources/raspberrypi-sources-3.10.9999.ebuild,v 1.2 2013/07/22 06:53:57 xmw Exp $
+# $Id$
 
 EAPI=5
 

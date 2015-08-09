@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/qrencode/qrencode-3.3.1.ebuild,v 1.12 2014/02/02 11:08:13 ago Exp $
+# $Id$
 
 EAPI=4
 

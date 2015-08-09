@@ -1,9 +1,0 @@
-# ChangeLog for dev-haskell/fmlist
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/fmlist/ChangeLog,v 1.1 2015/08/01 16:45:05 slyfox Exp $
-
-*fmlist-0.9 (01 Aug 2015)
-
-  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +fmlist-0.9.ebuild,
-  +metadata.xml:
-  FoldMap lists.

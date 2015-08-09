@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-os/coinor-os-2.8.3.ebuild,v 1.3 2014/02/04 10:39:51 jlec Exp $
+# $Id$
 
 EAPI=5
 

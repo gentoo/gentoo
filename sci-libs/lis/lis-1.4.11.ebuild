@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lis/lis-1.4.11.ebuild,v 1.2 2015/01/29 23:02:59 mgorny Exp $
+# $Id$
 
 EAPI=5
 

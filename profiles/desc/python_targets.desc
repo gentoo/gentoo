@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/python_targets.desc,v 1.15 2014/11/06 15:08:02 mgorny Exp $
+# $Id$
 
 # This file contains descriptions of PYTHON_TARGETS USE_EXPAND flags.
 

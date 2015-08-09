@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cryptography-vectors/cryptography-vectors-0.9.1.ebuild,v 1.1 2015/06/07 09:37:33 jlec Exp $
+# $Id$
 
 EAPI=5
 

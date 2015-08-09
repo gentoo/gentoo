@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland/redland-1.0.15.ebuild,v 1.17 2014/12/28 15:34:51 titanofold Exp $
+# $Id$
 
 EAPI=4
 inherit libtool

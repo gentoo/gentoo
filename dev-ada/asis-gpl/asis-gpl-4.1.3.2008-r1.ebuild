@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/asis-gpl/asis-gpl-4.1.3.2008-r1.ebuild,v 1.2 2014/07/13 16:26:07 ulm Exp $
+# $Id$
 
 # NOTE: gnat-gpl-2007 and 2008 have "incompatible bugs"
 # so, we separate asis following the separation of gnat

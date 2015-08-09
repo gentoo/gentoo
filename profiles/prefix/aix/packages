@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/aix/packages,v 1.1 2009/06/06 03:54:34 solar Exp $
+# $Id$
 
 # AIX uses the native (non-source available) linker
 *sys-devel/native-cctools

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/imwheel/imwheel-1.0.0_pre13_p20100827.ebuild,v 1.1 2010/08/27 02:58:46 jer Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ifp-gnome/ifp-gnome-0.7.ebuild,v 1.6 2014/08/10 21:07:13 slyfox Exp $
+# $Id$
 
 EAPI=2
 

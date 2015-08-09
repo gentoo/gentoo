@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/distcc-3.1-r10.ebuild,v 1.4 2015/03/20 17:04:06 jlec Exp $
+# $Id$
 
 EAPI=5
 

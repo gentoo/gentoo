@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/noip-updater/noip-updater-2.1.9-r1.ebuild,v 1.7 2014/01/10 23:46:26 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils readme.gentoo systemd toolchain-funcs

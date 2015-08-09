@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/xemacs-elisp-common.eclass,v 1.7 2012/07/18 14:28:55 vapier Exp $
+# $Id$
 #
 # Copyright 2007-2011 Hans de Graaff <graaff@gentoo.org>
 #

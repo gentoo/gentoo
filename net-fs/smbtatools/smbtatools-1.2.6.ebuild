@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/smbtatools/smbtatools-1.2.6.ebuild,v 1.2 2013/03/02 22:50:44 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

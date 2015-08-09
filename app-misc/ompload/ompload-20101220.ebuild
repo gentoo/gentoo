@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ompload/ompload-20101220.ebuild,v 1.6 2012/03/06 10:29:38 xmw Exp $
+# $Id$
 
 EAPI=3
 

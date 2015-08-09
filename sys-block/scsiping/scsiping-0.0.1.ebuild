@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/scsiping/scsiping-0.0.1.ebuild,v 1.8 2009/09/23 20:32:17 patrick Exp $
+# $Id$
 
 DESCRIPTION="SCSIPing pings a host on the SCSI-chain"
 HOMEPAGE="http://www.vanheusden.com/Linux/"

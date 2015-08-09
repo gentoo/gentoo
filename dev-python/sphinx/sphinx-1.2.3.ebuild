@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx/sphinx-1.2.3.ebuild,v 1.6 2015/03/03 07:22:40 dlan Exp $
+# $Id$
 
 EAPI=5
 

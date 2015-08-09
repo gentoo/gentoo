@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/listres/listres-1.0.3.ebuild,v 1.8 2012/08/26 16:21:51 armin76 Exp $
+# $Id$
 
 EAPI=4
 

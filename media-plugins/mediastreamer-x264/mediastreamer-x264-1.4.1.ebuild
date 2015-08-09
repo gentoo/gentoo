@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/mediastreamer-x264/mediastreamer-x264-1.4.1.ebuild,v 1.8 2014/07/23 02:48:19 patrick Exp $
+# $Id$
 
 EAPI="4"
 

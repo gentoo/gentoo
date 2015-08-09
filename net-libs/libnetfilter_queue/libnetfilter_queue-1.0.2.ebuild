@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnetfilter_queue/libnetfilter_queue-1.0.2.ebuild,v 1.10 2014/08/01 20:09:39 tgall Exp $
+# $Id$
 
 EAPI=5
 inherit autotools-utils linux-info

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_yubico/pam_yubico-2.19-r1.ebuild,v 1.1 2015/05/04 03:15:16 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <!--
-$Header: /var/cvsroot/gentoo-x86/skel.metadata.xml,v 1.24 2014/08/18 18:40:32 robbat2 Exp $
+# $Id$
 
 This is the example metadata file.
 The root element of this file is <pkgmetadata>. Within this element a

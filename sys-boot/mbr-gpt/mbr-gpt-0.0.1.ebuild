@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/mbr-gpt/mbr-gpt-0.0.1.ebuild,v 1.3 2014/08/10 20:21:10 slyfox Exp $
+# $Id$
 
 inherit eutils flag-o-matic
 

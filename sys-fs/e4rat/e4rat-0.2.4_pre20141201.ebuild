@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e4rat/e4rat-0.2.4_pre20141201.ebuild,v 1.1 2014/12/01 11:38:10 pacho Exp $
+# $Id$
 
 EAPI=5
 

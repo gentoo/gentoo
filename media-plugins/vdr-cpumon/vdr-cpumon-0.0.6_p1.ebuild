@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-cpumon/vdr-cpumon-0.0.6_p1.ebuild,v 1.1 2012/06/30 20:17:59 hd_brummy Exp $
+# $Id$
 
 EAPI="4"
 

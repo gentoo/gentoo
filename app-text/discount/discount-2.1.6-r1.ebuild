@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/discount/discount-2.1.6-r1.ebuild,v 1.9 2014/01/19 20:05:54 pacho Exp $
+# $Id$
 
 EAPI=5
 

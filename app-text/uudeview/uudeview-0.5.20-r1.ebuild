@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/uudeview/uudeview-0.5.20-r1.ebuild,v 1.6 2010/04/06 01:29:35 abcd Exp $
+# $Id$
 
 EAPI="3"
 

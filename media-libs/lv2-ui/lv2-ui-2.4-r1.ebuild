@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2-ui/lv2-ui-2.4-r1.ebuild,v 1.1 2015/06/23 07:51:09 jlec Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/ec2-api-tools/ec2-api-tools-1.6.7.2-r4.ebuild,v 1.2 2015/03/21 08:07:43 jlec Exp $
+# $Id$
 
 EAPI="5"
 

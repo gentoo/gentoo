@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/price/price-1.2.0.ebuild,v 1.3 2013/03/13 09:50:47 ago Exp $
+# $Id$
 
 EAPI=5
 inherit gnustep-2

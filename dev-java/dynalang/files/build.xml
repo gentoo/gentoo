@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 -->
-<!-- $Id: build.xml,v 1.1 2010/06/06 21:50:33 ali_bush Exp $ -->
+<!-- $Id$ -->
 	<property name="project.name" value="JVM Dynamic Languages Metaobject Protocol"/>
 	<property name="artifact.name" value="dynalang-mop"/>
 	<property name="revision" value="0.4"/>

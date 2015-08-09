@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/crypto-api/crypto-api-0.13.ebuild,v 1.2 2014/09/10 21:04:43 slyfox Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtest/gtest-1.6.0-r1.ebuild,v 1.14 2013/03/29 01:55:22 vapier Exp $
+# $Id$
 
 EAPI="4"
 PYTHON_DEPEND="2"

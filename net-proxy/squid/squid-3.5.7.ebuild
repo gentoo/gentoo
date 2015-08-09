@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/squid-3.5.7.ebuild,v 1.1 2015/08/04 16:12:51 eras Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils linux-info pam toolchain-funcs user versionator

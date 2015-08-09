@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtools/mtools-4.0.16.ebuild,v 1.1 2011/04/18 04:49:01 jer Exp $
+# $Id$
 
 EAPI="2"
 

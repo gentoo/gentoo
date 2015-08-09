@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=937a1dc184ae95b4d0c72a3c393dc9f1
+SLOT=0/1
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse:0= ) lapack? ( virtual/lapack ) protobuf? ( dev-libs/protobuf ) sparse? ( sci-libs/amd:0= sci-libs/camd:0= sci-libs/ccolamd:0= sci-libs/cholmod:0= sci-libs/colamd:0= sci-libs/spqr:0= ) dev-cpp/eigen:3 doc? ( dev-python/sphinx dev-python/sphinx_rtd_theme ) lapack? ( virtual/pkgconfig ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Nonlinear least-squares minimizer
-EAPI=5
-HOMEPAGE=http://ceres-solver.org/
-IUSE=cxsparse doc examples gflags lapack openmp protobuf +schur sparse static-libs test
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
-RDEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse:0= ) lapack? ( virtual/lapack ) protobuf? ( dev-libs/protobuf ) sparse? ( sci-libs/amd:0= sci-libs/camd:0= sci-libs/ccolamd:0= sci-libs/cholmod:0= sci-libs/colamd:0= sci-libs/spqr:0= )
+IUSE=cxsparse doc examples gflags lapack openmp protobuf +schur sparse static-libs test
 REQUIRED_USE=test? ( gflags ) sparse? ( lapack ) doc? ( )
-SLOT=0/1
 SRC_URI=http://ceres-solver.org//ceres-solver-1.9.0.tar.gz
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=83bbefe917d24c4871ce11446abf0ad3
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://ceres-solver.org/
+RDEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse:0= ) lapack? ( virtual/lapack ) protobuf? ( dev-libs/protobuf ) sparse? ( sci-libs/amd:0= sci-libs/camd:0= sci-libs/ccolamd:0= sci-libs/cholmod:0= sci-libs/colamd:0= sci-libs/spqr:0= )

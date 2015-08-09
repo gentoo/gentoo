@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javacc/javacc-5.0.ebuild,v 1.3 2012/04/13 18:13:08 ulm Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="doc examples source test"

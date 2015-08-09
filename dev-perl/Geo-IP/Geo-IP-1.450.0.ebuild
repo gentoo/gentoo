@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Geo-IP/Geo-IP-1.450.0.ebuild,v 1.9 2015/05/13 07:00:57 jmorgan Exp $
+# $Id$
 
 EAPI=5
 

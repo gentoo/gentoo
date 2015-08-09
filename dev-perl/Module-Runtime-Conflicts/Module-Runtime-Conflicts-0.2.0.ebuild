@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Runtime-Conflicts/Module-Runtime-Conflicts-0.2.0.ebuild,v 1.1 2015/07/25 20:19:07 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

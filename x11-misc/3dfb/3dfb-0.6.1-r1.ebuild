@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/3dfb/3dfb-0.6.1-r1.ebuild,v 1.3 2014/06/25 06:18:45 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

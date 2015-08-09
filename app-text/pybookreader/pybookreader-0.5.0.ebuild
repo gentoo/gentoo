@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pybookreader/pybookreader-0.5.0.ebuild,v 1.4 2012/02/25 12:01:14 patrick Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

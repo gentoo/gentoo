@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnetfilter_conntrack/libnetfilter_conntrack-1.0.3.ebuild,v 1.10 2013/07/06 17:05:04 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools-utils linux-info

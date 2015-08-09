@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/bastille/bastille-3.0.9-r1.ebuild,v 1.1 2014/12/09 22:30:09 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

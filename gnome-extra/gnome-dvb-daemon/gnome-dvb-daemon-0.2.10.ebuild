@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-dvb-daemon/gnome-dvb-daemon-0.2.10.ebuild,v 1.6 2014/07/24 18:38:15 ssuominen Exp $
+# $Id$
 
 EAPI="4"
 GCONF_DEBUG="no"

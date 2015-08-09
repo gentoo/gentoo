@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/murrine-themes/murrine-themes-0.98.0.ebuild,v 1.7 2013/05/22 11:19:39 blueness Exp $
+# $Id$
 
 EAPI="2"
 

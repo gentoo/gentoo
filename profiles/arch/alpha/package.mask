@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/package.mask,v 1.40 2015/07/05 21:17:32 klausman Exp $
+# $Id$
 
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # Qt5 mask, pending keywording. Remember unmasking qt5 in use.mask as well.

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/package.use.force,v 1.1 2012/11/11 15:58:26 blueness Exp $
+# $Id$
 
 # Anthony G. Basile <blueness@gentoo.org> (11 Nov 2012)
 # Only gnome-base/gdm has stable keywording. If x11-misc/lightdm or kde-base/kdm

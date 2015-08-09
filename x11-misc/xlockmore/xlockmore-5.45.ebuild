@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xlockmore/xlockmore-5.45.ebuild,v 1.8 2015/02/27 11:12:28 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils flag-o-matic pam

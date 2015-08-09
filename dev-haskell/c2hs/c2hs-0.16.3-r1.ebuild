@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/c2hs/c2hs-0.16.3-r1.ebuild,v 1.8 2012/09/18 06:42:39 gienah Exp $
+# $Id$
 
 EAPI="4"
 

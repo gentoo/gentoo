@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-4.4_pre6250.ebuild,v 1.6 2014/12/31 13:38:03 kensington Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_DEPEND="python? 2"

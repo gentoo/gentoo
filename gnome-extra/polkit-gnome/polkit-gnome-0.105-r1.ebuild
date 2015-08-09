@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/polkit-gnome/polkit-gnome-0.105-r1.ebuild,v 1.11 2015/05/27 13:46:24 zlogene Exp $
+# $Id$
 
 EAPI=4
 inherit gnome.org

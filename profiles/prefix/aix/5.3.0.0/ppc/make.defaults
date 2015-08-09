@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/aix/5.3.0.0/ppc/make.defaults,v 1.1 2009/06/06 03:54:36 solar Exp $
+# $Id$
 
 ARCH="ppc-aix"
 CHOST="powerpc-ibm-aix5.3.0.0"

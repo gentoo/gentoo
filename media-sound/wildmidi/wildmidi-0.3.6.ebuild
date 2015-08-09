@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wildmidi/wildmidi-0.3.6.ebuild,v 1.1 2014/05/21 20:33:36 hwoarang Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils readme.gentoo

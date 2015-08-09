@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-SlideShow/desklet-SlideShow-0.9.ebuild,v 1.2 2010/05/09 00:41:05 nixphoeni Exp $
+# $Id$
 
 inherit gdesklets
 

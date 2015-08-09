@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lsscsi/lsscsi-0.28.ebuild,v 1.7 2015/01/18 08:49:53 ago Exp $
+# $Id$
 
 EAPI=5
 

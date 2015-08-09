@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cue2toc/cue2toc-0.4.ebuild,v 1.7 2009/12/31 17:45:03 ranger Exp $
+# $Id$
 
 DESCRIPTION="Convert CUE files to cdrdao's TOC format"
 HOMEPAGE="http://cue2toc.sourceforge.net/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/sqliteodbc/sqliteodbc-0.96.ebuild,v 1.5 2014/08/10 20:02:56 slyfox Exp $
+# $Id$
 
 EAPI=4
 

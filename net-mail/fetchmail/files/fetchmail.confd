@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/fetchmail/files/fetchmail.confd,v 1.1 2011/08/24 09:15:18 eras Exp $
+# $Id$
 
 # Polling frequency in seconds
 # (fetchmail will daemonize and check for new mail at this interval)

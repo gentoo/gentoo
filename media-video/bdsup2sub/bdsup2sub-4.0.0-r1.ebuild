@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/bdsup2sub/bdsup2sub-4.0.0-r1.ebuild,v 1.2 2010/08/14 02:57:57 sbriesen Exp $
+# $Id$
 
 EAPI="3"
 

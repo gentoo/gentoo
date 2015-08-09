@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5adb163ffd495f93defc7af091ea5879
+SLOT=0
 DEFINED_PHASES=configure install prepare
+EAPI=3
 DEPEND=>=sys-libs/ncurses-5.2
 DESCRIPTION=Splitting terminals into two shells
-EAPI=3
-HOMEPAGE=http://www.devolution.com/~slouken/projects/splitvt
-KEYWORDS=amd64 ia64 ppc sparc x86
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/ncurses-5.2
-SLOT=0
 SRC_URI=http://www.devolution.com/~slouken/projects/splitvt/splitvt-1.6.6.tar.gz mirror://debian/pool/main/s/splitvt/splitvt_1.6.6-7.diff.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=8e28bf2a7b65f850ea503485f39df45d
+KEYWORDS=amd64 ia64 ppc sparc x86
+HOMEPAGE=http://www.devolution.com/~slouken/projects/splitvt
+RDEPEND=>=sys-libs/ncurses-5.2

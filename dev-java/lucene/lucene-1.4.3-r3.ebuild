@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/lucene/lucene-1.4.3-r3.ebuild,v 1.10 2013/12/28 19:09:57 robbat2 Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc examples source test"
 inherit java-pkg-2 java-ant-2

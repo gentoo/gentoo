@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rezound/rezound-0.12.3_beta-r2.ebuild,v 1.8 2012/07/25 10:58:41 aballier Exp $
+# $Id$
 
 EAPI=4
 MY_P=${P/_/}

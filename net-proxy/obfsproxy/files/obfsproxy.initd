@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/obfsproxy/files/obfsproxy.initd,v 1.1 2013/01/19 16:00:49 blueness Exp $
+# $Id$
 
 PIDFILE="/var/run/obfsproxy.pid"
 DAEMON="/usr/bin/obfsproxy"

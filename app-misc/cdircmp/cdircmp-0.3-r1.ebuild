@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdircmp/cdircmp-0.3-r1.ebuild,v 1.4 2012/10/06 16:59:30 armin76 Exp $
+# $Id$
 
 EAPI="2"
 

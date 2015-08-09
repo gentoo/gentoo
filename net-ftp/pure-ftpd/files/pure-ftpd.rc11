@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/pure-ftpd/files/pure-ftpd.rc11,v 1.6 2014/03/03 13:53:27 polynomial-c Exp $
+# $Id$
 
 ftpd_pidfile="/var/run/pure-ftpd.pid"
 script_pidfile="/var/run/pure-uploadscript.pid"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ccs-tools/ccs-tools-1.8.3_p20130214.ebuild,v 1.2 2013/02/28 14:46:54 naota Exp $
+# $Id$
 
 EAPI=3
 inherit eutils multilib toolchain-funcs

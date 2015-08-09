@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/polipo/files/polipo.initd-2,v 1.1 2015/01/09 00:13:32 bircoph Exp $
+# $Id$
 
 CONFFILE="/etc/polipo/config${SVCNAME#polipo}"
 PIDFILE="/var/run/${SVCNAME}.pid"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/diskdev_cmds/diskdev_cmds-332.14_p1.ebuild,v 1.6 2013/08/02 11:34:46 maekke Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/webrtc-audio-processing/webrtc-audio-processing-0.1-r1.ebuild,v 1.4 2014/01/14 13:54:26 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/biblatex/biblatex-2.9a-r1.ebuild,v 1.1 2014/12/04 13:21:55 mrueg Exp $
+# $Id$
 
 EAPI=5
 

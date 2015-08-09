@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/exiftool/exiftool-9.78.ebuild,v 1.2 2015/01/08 05:21:06 radhermit Exp $
+# $Id$
 
 EAPI=5
 

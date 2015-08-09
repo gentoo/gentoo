@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/confix-wrapper/confix-wrapper-0.ebuild,v 1.5 2012/12/05 09:42:56 haubi Exp $
+# $Id$
 
 DESCRIPTION="Wrapper to select either confix1.py or confix2.py"
 HOMEPAGE="http://confix.sourceforge.net"

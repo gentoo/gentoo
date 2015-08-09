@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xcmsdb/xcmsdb-1.0.4.ebuild,v 1.9 2012/08/26 16:38:05 armin76 Exp $
+# $Id$
 
 EAPI=4
 

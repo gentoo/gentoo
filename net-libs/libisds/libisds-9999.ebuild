@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libisds/libisds-9999.ebuild,v 1.16 2014/03/01 22:23:50 mgorny Exp $
+# $Id$
 
 EAPI=5
 

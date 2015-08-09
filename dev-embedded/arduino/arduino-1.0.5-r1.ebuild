@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/arduino/arduino-1.0.5-r1.ebuild,v 1.1 2015/04/16 23:04:19 chewi Exp $
+# $Id$
 
 EAPI=4
 JAVA_PKG_IUSE="doc examples"

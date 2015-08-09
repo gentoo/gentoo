@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/minidlna/files/minidlna-1.1.0.initd,v 1.1 2013/05/11 22:19:45 xmw Exp $
+# $Id$
 
 depend() {
 	need net

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/keyutils/keyutils-1.5.5.ebuild,v 1.11 2014/01/18 04:49:23 vapier Exp $
+# $Id$
 
 EAPI="3"
 

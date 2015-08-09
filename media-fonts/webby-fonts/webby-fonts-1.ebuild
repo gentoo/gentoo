@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/webby-fonts/webby-fonts-1.ebuild,v 1.7 2008/08/25 12:00:56 armin76 Exp $
+# $Id$
 
 inherit font
 

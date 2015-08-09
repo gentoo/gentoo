@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/dracut_modules.desc,v 1.9 2013/09/14 14:30:28 aidecoe Exp $
+# $Id$
 
 # This file contains descriptions of DRACUT_MODULES USE_EXPAND flags.
 

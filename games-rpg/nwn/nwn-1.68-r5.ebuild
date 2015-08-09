@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/nwn-1.68-r5.ebuild,v 1.8 2015/06/14 17:08:19 ulm Exp $
+# $Id$
 
 EAPI=5
 

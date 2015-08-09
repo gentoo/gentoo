@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/maui/maui-3.2.6_p21.ebuild,v 1.5 2014/05/21 12:18:31 jlec Exp $
+# $Id$
 
 inherit autotools eutils multilib
 

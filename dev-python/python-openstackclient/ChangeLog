@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/python-openstackclient
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-openstackclient/ChangeLog,v 1.1 2015/06/11 17:31:13 prometheanfire Exp $
-
-*python-openstackclient-1.0.4 (11 Jun 2015)
-
-  11 Jun 2015; Matthew Thode <prometheanfire@gentoo.org> +metadata.xml,
-  +python-openstackclient-1.0.4.ebuild:
-  adding for the needful

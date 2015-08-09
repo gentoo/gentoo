@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gprof2dot/gprof2dot-0_p20130517.ebuild,v 1.6 2014/11/21 23:48:36 sping Exp $
+# $Id$
 
 EAPI="5"
 

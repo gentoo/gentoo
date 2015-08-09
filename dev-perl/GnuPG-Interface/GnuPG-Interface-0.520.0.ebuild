@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/GnuPG-Interface/GnuPG-Interface-0.520.0.ebuild,v 1.4 2015/04/05 13:02:58 zlogene Exp $
+# $Id$
 
 EAPI=5
 

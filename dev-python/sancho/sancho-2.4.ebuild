@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sancho/sancho-2.4.ebuild,v 1.12 2010/06/29 04:45:57 arfrever Exp $
+# $Id$
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"

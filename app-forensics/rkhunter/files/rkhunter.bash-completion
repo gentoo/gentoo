@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/rkhunter/files/rkhunter.bash-completion,v 1.2 2004/12/07 10:33:36 ka0ttic Exp $
+# $Id$
 # rkhunter completion
 
 _rkhunter() {

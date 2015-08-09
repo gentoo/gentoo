@@ -1,7 +1,7 @@
 @version: 3.6
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/files/3.6/syslog-ng.conf.gentoo.hardened,v 1.1 2014/11/09 08:10:43 mr_bones_ Exp $
+# $Id$
 
 # https://bugs.gentoo.org/show_bug.cgi?id=426814
 @include "scl.conf"

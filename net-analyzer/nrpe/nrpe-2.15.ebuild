@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nrpe/nrpe-2.15.ebuild,v 1.8 2014/05/17 13:50:44 ago Exp $
+# $Id$
 
 EAPI=4
 

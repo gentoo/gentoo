@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/interix/5.2/x86/make.defaults,v 1.1 2009/06/06 03:55:09 solar Exp $
+# $Id$
 
 ARCH="x86-interix"
 CHOST="i586-pc-interix5.2"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/x11/x11-1.6.1.2.ebuild,v 1.1 2014/05/10 11:51:03 slyfox Exp $
+# $Id$
 
 EAPI=5
 

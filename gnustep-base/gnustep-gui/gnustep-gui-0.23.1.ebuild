@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-gui/gnustep-gui-0.23.1.ebuild,v 1.1 2013/04/24 17:33:29 voyageur Exp $
+# $Id$
 
 EAPI=5
 inherit gnustep-base multilib

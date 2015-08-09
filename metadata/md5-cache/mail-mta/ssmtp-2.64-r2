@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=cb3cd7f2382cefa9aea0759691df932b
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup
+EAPI=4
 DEPEND=ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) !<sys-devel/gettext-0.18.1.1-r3 sys-devel/automake >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Extremely simple MTA to get mail off the system to a Mailhub
-EAPI=4
-HOMEPAGE=ftp://ftp.debian.org/debian/pool/main/s/ssmtp/
-IUSE=ipv6 +ssl gnutls +mta
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
-RDEPEND=ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) net-mail/mailbase mta? ( !net-mail/mailwrapper !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd )
+IUSE=ipv6 +ssl gnutls +mta
 REQUIRED_USE=gnutls? ( ssl )
-SLOT=0
 SRC_URI=mirror://debian/pool/main/s/ssmtp/ssmtp_2.64.orig.tar.bz2 http://dev.gentoo.org/~flameeyes/ssmtp/ssmtp-2.64-patches-3.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=c9adbfbc953f742b4f14a0eef208a3a1
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+HOMEPAGE=ftp://ftp.debian.org/debian/pool/main/s/ssmtp/
+RDEPEND=ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) net-mail/mailbase mta? ( !net-mail/mailwrapper !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/nbsmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd )

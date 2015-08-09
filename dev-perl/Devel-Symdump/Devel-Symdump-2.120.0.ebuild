@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-Symdump/Devel-Symdump-2.120.0.ebuild,v 1.3 2015/01/18 02:46:08 zlogene Exp $
+# $Id$
 
 EAPI=5
 

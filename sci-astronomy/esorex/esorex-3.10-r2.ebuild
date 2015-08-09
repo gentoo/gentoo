@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/esorex/esorex-3.10-r2.ebuild,v 1.1 2014/03/04 00:23:49 bicatali Exp $
+# $Id$
 
 EAPI=5
 

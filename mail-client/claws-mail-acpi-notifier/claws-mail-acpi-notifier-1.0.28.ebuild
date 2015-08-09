@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-acpi-notifier/claws-mail-acpi-notifier-1.0.28.ebuild,v 1.6 2014/08/10 21:16:46 slyfox Exp $
+# $Id$
 
 inherit eutils
 

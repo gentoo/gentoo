@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/lgrind/lgrind-3.67-r3.ebuild,v 1.6 2014/08/10 21:27:03 slyfox Exp $
+# $Id$
 
 inherit latex-package toolchain-funcs eutils
 

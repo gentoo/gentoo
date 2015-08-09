@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/oidentd/files/oidentd-2.0.7-init,v 1.4 2007/10/24 11:38:14 uberlord Exp $
+# $Id$
 
 depend() {
     need net

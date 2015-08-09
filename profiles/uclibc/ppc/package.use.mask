@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/ppc/package.use.mask,v 1.4 2014/03/31 22:05:28 tomwij Exp $
+# $Id$
 
 # Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
 # Masked Parallel LCD devices for bug #180683

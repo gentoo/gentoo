@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/cdb/cdb-0.75-r3.ebuild,v 1.11 2014/08/10 19:57:13 slyfox Exp $
+# $Id$
 
 EAPI=3
 inherit eutils multilib toolchain-funcs

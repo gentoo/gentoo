@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-apps/kde4-l10n/kde4-l10n-4.14.3.ebuild,v 1.2 2015/06/05 16:05:37 kensington Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rescan-scsi-bus/rescan-scsi-bus-1.56.ebuild,v 1.3 2012/06/02 12:16:27 blueness Exp $
+# $Id$
 
 inherit eutils
 

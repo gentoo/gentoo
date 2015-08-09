@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitflu/files/bitflu.initd,v 1.1 2011/06/30 16:02:44 blueness Exp $
+# $Id$
 
 DAEMON=/usr/sbin/bitflu.pl
 PIDDIR=/var/run/bitflu

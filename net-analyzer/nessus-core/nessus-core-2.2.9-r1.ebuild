@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus-core/nessus-core-2.2.9-r1.ebuild,v 1.6 2013/07/04 21:32:09 ottxor Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/moc/moc-2.5.0.ebuild,v 1.8 2015/03/16 22:09:00 vapier Exp $
+# $Id$
 
 EAPI=5
 

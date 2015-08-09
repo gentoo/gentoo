@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jaaa/jaaa-0.6.0.ebuild,v 1.3 2014/01/25 19:21:32 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

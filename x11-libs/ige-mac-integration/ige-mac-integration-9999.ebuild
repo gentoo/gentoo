@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/ige-mac-integration/ige-mac-integration-9999.ebuild,v 1.5 2012/05/05 03:52:27 jdhore Exp $
+# $Id$
 
 EAPI="3"
 

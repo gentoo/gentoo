@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/geolizer/geolizer-2.01.10_p20070115-r1.ebuild,v 1.2 2012/06/19 21:09:55 jer Exp $
+# $Id$
 
 # uses webapp.eclass to create directories with right permissions
 # probably slight overkill but works well

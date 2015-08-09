@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xtrap/xtrap-1.0.2-r1.ebuild,v 1.8 2013/01/01 18:49:12 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit xorg-2

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/xdvdfs-tools/xdvdfs-tools-2.1-r1.ebuild,v 1.3 2008/11/27 18:02:11 vapier Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

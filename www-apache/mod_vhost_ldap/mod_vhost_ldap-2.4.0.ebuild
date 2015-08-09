@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_vhost_ldap/mod_vhost_ldap-2.4.0.ebuild,v 1.1 2014/12/18 02:11:23 mjo Exp $
+# $Id$
 
 EAPI=5
 

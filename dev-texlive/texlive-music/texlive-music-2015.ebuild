@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-music/texlive-music-2015.ebuild,v 1.1 2015/07/16 09:25:58 aballier Exp $
+# $Id$
 
 EAPI="5"
 

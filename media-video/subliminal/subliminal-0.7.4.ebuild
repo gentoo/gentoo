@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/subliminal/subliminal-0.7.4.ebuild,v 1.2 2014/07/06 12:53:48 mgorny Exp $
+# $Id$
 
 EAPI="5"
 # setup.py declares support for python3.3, but it does not work

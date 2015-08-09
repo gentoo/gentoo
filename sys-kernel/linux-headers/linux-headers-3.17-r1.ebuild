@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-3.17-r1.ebuild,v 1.2 2014/11/15 08:42:59 vapier Exp $
+# $Id$
 
 EAPI="4"
 

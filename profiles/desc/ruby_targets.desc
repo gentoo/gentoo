@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/ruby_targets.desc,v 1.7 2014/12/27 19:40:19 graaff Exp $
+# $Id$
 
 # This file contains descriptions of RUBY_TARGETS USE_EXPAND flags.
 

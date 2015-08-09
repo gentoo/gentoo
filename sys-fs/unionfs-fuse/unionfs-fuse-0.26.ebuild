@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/unionfs-fuse/unionfs-fuse-0.26.ebuild,v 1.4 2013/02/21 03:59:06 zmedico Exp $
+# $Id$
 
 EAPI="3"
 

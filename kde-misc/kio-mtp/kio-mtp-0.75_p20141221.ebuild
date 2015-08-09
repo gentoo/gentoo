@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kio-mtp/kio-mtp-0.75_p20141221.ebuild,v 1.1 2015/01/21 07:18:43 mrueg Exp $
+# $Id$
 
 EAPI=5
 

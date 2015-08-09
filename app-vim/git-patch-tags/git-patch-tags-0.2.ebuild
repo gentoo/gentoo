@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/git-patch-tags/git-patch-tags-0.2.ebuild,v 1.1 2015/03/21 07:22:27 radhermit Exp $
+# $Id$
 
 EAPI=5
 

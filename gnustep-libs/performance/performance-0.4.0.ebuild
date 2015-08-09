@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/performance/performance-0.4.0.ebuild,v 1.1 2014/01/29 23:56:43 voyageur Exp $
+# $Id$
 
 EAPI=5
 inherit gnustep-2

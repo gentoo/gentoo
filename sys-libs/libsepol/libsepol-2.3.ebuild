@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libsepol/libsepol-2.3.ebuild,v 1.3 2014/09/21 10:21:23 swift Exp $
+# $Id$
 
 EAPI="4"
 

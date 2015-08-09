@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/repsnapper/repsnapper-2.2.0b_p3.ebuild,v 1.1 2013/08/28 05:37:56 slis Exp $
+# $Id$
 
 EAPI=5
 

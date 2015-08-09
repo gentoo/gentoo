@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/mypaint/mypaint-1.0.0-r1.ebuild,v 1.8 2012/07/24 21:13:45 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

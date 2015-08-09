@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-IMAP-Simple/Net-IMAP-Simple-1.220.600.ebuild,v 1.1 2015/07/11 22:21:41 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

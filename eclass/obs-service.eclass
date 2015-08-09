@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/obs-service.eclass,v 1.11 2013/03/26 13:49:39 scarabeus Exp $
+# $Id$
 
 # @ECLASS: obs-service.eclass
 # @MAINTAINER:

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/iceicons/iceicons-0.10.0.ebuild,v 1.14 2012/10/12 18:36:51 ago Exp $
+# $Id$
 
 DESCRIPTION="IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM"
 HOMEPAGE="http://sandbox.cz/~covex/icewm/iceicons/"

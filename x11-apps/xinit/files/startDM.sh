@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinit/files/startDM.sh,v 1.5 2011/01/22 15:35:49 lxnay Exp $
+# $Id$
 
 # We need to source /etc/profile for stuff like $LANG to work
 # bug #10190.

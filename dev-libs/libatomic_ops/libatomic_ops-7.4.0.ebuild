@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libatomic_ops/libatomic_ops-7.4.0.ebuild,v 1.2 2013/12/25 05:42:13 radhermit Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/gnu-efi/gnu-efi-3.0i.ebuild,v 1.3 2010/08/28 22:43:29 vapier Exp $
+# $Id$
 
 inherit eutils
 

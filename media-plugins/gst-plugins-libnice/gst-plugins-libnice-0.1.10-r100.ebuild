@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-libnice/gst-plugins-libnice-0.1.10-r100.ebuild,v 1.7 2015/06/07 10:41:11 maekke Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib-minimal toolchain-funcs

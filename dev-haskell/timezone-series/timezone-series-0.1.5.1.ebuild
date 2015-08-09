@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/timezone-series/timezone-series-0.1.5.1.ebuild,v 1.1 2015/07/17 09:29:11 gienah Exp $
+# $Id$
 
 EAPI=5
 

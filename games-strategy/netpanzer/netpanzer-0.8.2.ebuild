@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/netpanzer/netpanzer-0.8.2.ebuild,v 1.11 2015/02/18 19:08:13 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

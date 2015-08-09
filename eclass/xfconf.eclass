@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/xfconf.eclass,v 1.47 2014/11/15 07:49:11 vapier Exp $
+# $Id$
 
 # @ECLASS: xfconf.eclass
 # @MAINTAINER:

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rwho/netkit-rwho-0.17-r4.ebuild,v 1.8 2015/05/25 09:58:42 vapier Exp $
+# $Id$
 
 EAPI=5
 

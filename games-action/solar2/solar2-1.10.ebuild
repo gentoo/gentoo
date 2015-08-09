@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/solar2/solar2-1.10.ebuild,v 1.9 2015/06/01 22:05:46 mr_bones_ Exp $
+# $Id$
 
 # TODO: - unbundle libmono for 64bit
 #       - unbundling libSDL_mixer breaks the game

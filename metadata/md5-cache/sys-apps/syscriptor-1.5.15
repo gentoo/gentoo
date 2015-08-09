@@ -1,8 +1,10 @@
-DEFINED_PHASES=install
-DESCRIPTION=display misc information about your hardware
-HOMEPAGE=http://syscriptor.sourceforge.net/
-KEYWORDS=~alpha amd64 ppc x86
-LICENSE=GPL-2
+_eclasses_=
+_md5_=47ef673042146d641109b4e10c445603
 SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=display misc information about your hardware
+LICENSE=GPL-2
 SRC_URI=mirror://sourceforge/syscriptor/syscriptor-1.5.15.tar.bz2
-_md5_=3e3f020d326bc45e193ce3e7848fd3dc
+KEYWORDS=~alpha amd64 ppc x86
+HOMEPAGE=http://syscriptor.sourceforge.net/

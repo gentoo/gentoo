@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xdriinfo/xdriinfo-1.0.4.ebuild,v 1.10 2013/05/11 03:45:07 patrick Exp $
+# $Id$
 
 EAPI=3
 inherit xorg-2 flag-o-matic

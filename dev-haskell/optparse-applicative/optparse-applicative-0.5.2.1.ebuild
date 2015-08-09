@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/optparse-applicative/optparse-applicative-0.5.2.1.ebuild,v 1.2 2013/09/13 09:53:52 gienah Exp $
+# $Id$
 
 EAPI=5
 

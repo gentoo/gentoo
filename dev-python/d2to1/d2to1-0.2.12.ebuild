@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/d2to1/d2to1-0.2.12.ebuild,v 1.2 2015/08/04 07:54:19 idella4 Exp $
+# $Id$
 
 EAPI=5
 

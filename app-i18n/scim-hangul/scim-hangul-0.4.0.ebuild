@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-hangul/scim-hangul-0.4.0.ebuild,v 1.2 2013/04/06 00:00:19 naota Exp $
+# $Id$
 
 EAPI=5
 

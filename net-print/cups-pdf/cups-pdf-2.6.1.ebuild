@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups-pdf/cups-pdf-2.6.1.ebuild,v 1.6 2014/08/10 20:35:52 slyfox Exp $
+# $Id$
 
 EAPI=4
 

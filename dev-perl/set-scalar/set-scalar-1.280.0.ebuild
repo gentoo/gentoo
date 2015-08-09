@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/set-scalar/set-scalar-1.280.0.ebuild,v 1.7 2015/01/18 03:18:13 zlogene Exp $
+# $Id$
 
 EAPI=5
 

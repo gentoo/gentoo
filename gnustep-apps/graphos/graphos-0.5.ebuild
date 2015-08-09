@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/graphos/graphos-0.5.ebuild,v 1.1 2013/10/18 12:28:13 voyageur Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnustep-2

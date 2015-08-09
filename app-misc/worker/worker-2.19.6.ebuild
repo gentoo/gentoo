@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/worker/worker-2.19.6.ebuild,v 1.7 2013/04/25 19:15:53 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

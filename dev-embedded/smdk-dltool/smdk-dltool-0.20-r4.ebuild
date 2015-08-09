@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/smdk-dltool/smdk-dltool-0.20-r4.ebuild,v 1.2 2014/04/24 17:40:50 ulm Exp $
+# $Id$
 
 EAPI="4"
 

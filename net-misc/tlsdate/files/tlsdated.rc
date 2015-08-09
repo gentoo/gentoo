@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tlsdate/files/tlsdated.rc,v 1.2 2014/11/06 16:00:28 vapier Exp $
+# $Id$
 
 description="start a daemon to continuously set time via a helper"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpgstats/gpgstats-0.5-r1.ebuild,v 1.4 2009/07/15 22:27:07 arfrever Exp $
+# $Id$
 
 EAPI="2"
 

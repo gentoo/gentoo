@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gcube/gcube-0.4-r1.ebuild,v 1.12 2015/06/02 04:33:22 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

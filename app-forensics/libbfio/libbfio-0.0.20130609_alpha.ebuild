@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/libbfio/libbfio-0.0.20130609_alpha.ebuild,v 1.4 2014/08/10 17:46:15 slyfox Exp $
+# $Id$
 
 EAPI=5
 

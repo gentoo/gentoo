@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/nsd/files/nsd.initd,v 1.2 2013/04/03 19:10:39 wschlich Exp $
+# $Id$
 
 description="NSD is an authoritative-only, high performance, open source name server"
 extra_commands="configtest"

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/avr-libc/avr-libc-1.6.8.ebuild,v 1.1 2010/03/18 01:57:12 solar Exp $
+# $Id$
 
 CHOST="avr"
 CTARGET="avr"

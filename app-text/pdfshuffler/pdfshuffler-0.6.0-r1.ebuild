@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdfshuffler/pdfshuffler-0.6.0-r1.ebuild,v 1.1 2015/01/10 20:52:17 grozin Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

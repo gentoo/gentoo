@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qtgain/qtgain-0.9.5.ebuild,v 1.3 2013/03/02 22:02:13 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

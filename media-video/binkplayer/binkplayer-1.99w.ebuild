@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/binkplayer/binkplayer-1.99w.ebuild,v 1.11 2015/06/01 20:40:06 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 DESCRIPTION="Bink Video! Player"

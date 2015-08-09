@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/djb/djb-0.5.2.ebuild,v 1.8 2013/01/01 20:38:31 ulm Exp $
+# $Id$
 
 inherit toolchain-funcs fixheadtails
 

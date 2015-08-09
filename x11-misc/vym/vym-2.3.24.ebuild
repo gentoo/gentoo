@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/vym/vym-2.3.24.ebuild,v 1.1 2014/08/06 09:10:35 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils

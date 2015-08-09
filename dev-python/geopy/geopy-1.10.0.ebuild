@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/geopy/geopy-1.10.0.ebuild,v 1.1 2015/04/11 06:36:48 idella4 Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/geant/geant-3.21.14-r4.ebuild,v 1.1 2015/08/06 20:30:29 bircoph Exp $
+# $Id$
 
 EAPI=5
 

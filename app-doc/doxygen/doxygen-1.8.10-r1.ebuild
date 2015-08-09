@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.8.10-r1.ebuild,v 1.1 2015/08/06 14:54:01 tamiko Exp $
+# $Id$
 
 EAPI=4
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -13,8 +13,7 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="http://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz"
-	KEYWORDS="~amd64"
-	# KEYWORDS="~alpha ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 fi
 SRC_URI+=" http://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
 
@@ -23,7 +22,7 @@ HOMEPAGE="http://www.doxygen.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch latex qt4 sqlite"
+IUSE="clang debug doc dot doxysearch latex qt4 sqlite userland_GNU"
 
 #missing SerbianCyrilic, JapaneseEn, KoreanEn, Chinesetraditional
 LANGS=(hy ar pt_BR ca zh cs de da eo es fa fi fr el hr hu id it ja ko lt mk

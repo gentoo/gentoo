@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/oasis.eclass,v 1.5 2014/10/29 14:21:52 aballier Exp $
+# $Id$
 
 # @ECLASS: oasis.eclass
 # @MAINTAINER: 

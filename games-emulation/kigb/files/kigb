@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/kigb/files/kigb,v 1.5 2007/03/07 16:48:48 wolf31o2 Exp $
+# $Id$
 
 kigb_dir="${HOME}/.kigb"
 

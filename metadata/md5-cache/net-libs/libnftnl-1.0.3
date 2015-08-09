@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=6126564260d80995b05b3dd954b4db8b
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test unpack
+EAPI=5
 DEPEND=virtual/pkgconfig >=net-libs/libmnl-1.0.0 xml? ( >=dev-libs/mini-xml-2.6 ) json? ( >=dev-libs/jansson-2.3 )
 DESCRIPTION=Netlink API to the in-kernel nf_tables subsystem
-EAPI=5
-HOMEPAGE=http://netfilter.org/projects/nftables/
-IUSE=examples json static-libs test xml
-KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
-RDEPEND=>=net-libs/libmnl-1.0.0 xml? ( >=dev-libs/mini-xml-2.6 ) json? ( >=dev-libs/jansson-2.3 )
+IUSE=examples json static-libs test xml
 REQUIRED_USE=test? ( json xml )
-SLOT=0
 SRC_URI=http://netfilter.org/projects/libnftnl/files/libnftnl-1.0.3.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=a6ca62fa9d91641078bb526250aeca45
+KEYWORDS=~amd64 ~arm ~x86
+HOMEPAGE=http://netfilter.org/projects/nftables/
+RDEPEND=>=net-libs/libmnl-1.0.0 xml? ( >=dev-libs/mini-xml-2.6 ) json? ( >=dev-libs/jansson-2.3 )

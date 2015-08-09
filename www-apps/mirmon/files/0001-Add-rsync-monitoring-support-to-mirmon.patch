@@ -33,7 +33,7 @@ index 0000000..a7fe513
 +++ b/probe-mirmon
 @@ -0,0 +1,50 @@
 +#!/usr/bin/env perl
-+# $Id: 0001-Add-rsync-monitoring-support-to-mirmon.patch,v 1.1 2010/05/09 22:06:26 darkside Exp $
++# $Id$
 +# public domain.  Originally written by Karl Berry, 2009.
 +# 
 +# Probe rsync url's for mirmon; use wget for anything else.

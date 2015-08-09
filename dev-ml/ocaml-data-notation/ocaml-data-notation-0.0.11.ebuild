@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-data-notation/ocaml-data-notation-0.0.11.ebuild,v 1.2 2014/11/28 17:49:31 aballier Exp $
+# $Id$
 
 EAPI=5
 

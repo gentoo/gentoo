@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/qjoypad/qjoypad-4.1.0.ebuild,v 1.11 2014/11/28 19:41:28 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils qt4-r2

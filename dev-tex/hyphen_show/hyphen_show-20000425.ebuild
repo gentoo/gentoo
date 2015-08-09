@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/hyphen_show/hyphen_show-20000425.ebuild,v 1.6 2010/09/04 17:41:54 ulm Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

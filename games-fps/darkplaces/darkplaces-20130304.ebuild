@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/darkplaces/darkplaces-20130304.ebuild,v 1.2 2015/01/29 20:32:46 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit unpacker eutils flag-o-matic games

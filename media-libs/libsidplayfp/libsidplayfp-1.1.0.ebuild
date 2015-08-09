@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsidplayfp/libsidplayfp-1.1.0.ebuild,v 1.5 2015/01/29 17:42:48 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

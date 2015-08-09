@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/manaplus/manaplus-1.3.9.29.ebuild,v 1.3 2014/08/10 17:39:15 ago Exp $
+# $Id$
 
 # REMINDER: check sdl2 support on version bump
 

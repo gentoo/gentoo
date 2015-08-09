@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/arpsponge/files/arpsponge.confd,v 1.1 2013/02/27 13:31:45 chainsaw Exp $
+# $Id$
 
 # Mandatory arguments: IPADDR/PREFIXLEN dev IFNAME
 # 	Example: 192.168.0.0/24 dev eth0

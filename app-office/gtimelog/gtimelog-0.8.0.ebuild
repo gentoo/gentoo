@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/gtimelog/gtimelog-0.8.0.ebuild,v 1.3 2013/03/25 16:15:33 ago Exp $
+# $Id$
 
 EAPI="4"
 PYTHON_DEPEND="2"

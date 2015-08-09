@@ -1,10 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ef3924dd969d2998e5b2c6168c39d761
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
 DEPEND=dev-libs/libltdl:0 virtual/jpeg:0 media-libs/libpng:0= x11-libs/fltk virtual/glu virtual/opengl virtual/pkgconfig >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=The Stage Robot Simulator
-EAPI=5
-HOMEPAGE=http://rtv.github.io/Stage/
 LICENSE=GPL-2
+HOMEPAGE=http://rtv.github.io/Stage/
 RDEPEND=dev-libs/libltdl:0 virtual/jpeg:0 media-libs/libpng:0= x11-libs/fltk virtual/glu virtual/opengl
-SLOT=0
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=e50eacf5f1869a308f3a1b67dd3ab2ca

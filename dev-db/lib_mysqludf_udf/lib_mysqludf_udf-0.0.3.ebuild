@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/lib_mysqludf_udf/lib_mysqludf_udf-0.0.3.ebuild,v 1.1 2011/10/19 12:34:53 sbriesen Exp $
+# $Id$
 
 EAPI=4
 

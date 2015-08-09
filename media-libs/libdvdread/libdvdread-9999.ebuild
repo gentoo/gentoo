@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/libdvdread-9999.ebuild,v 1.8 2015/03/13 15:00:48 yngwin Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=1

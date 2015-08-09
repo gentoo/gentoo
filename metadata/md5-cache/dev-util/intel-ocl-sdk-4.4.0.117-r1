@@ -1,14 +1,14 @@
+_eclasses_=rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3890916104b07f087f4c3f19dfccaa9a
+SLOT=0
 DEFINED_PHASES=install postinst prepare unpack
+EAPI=5
 DEPEND=>=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=Intel's implementation of the OpenCL standard
-EAPI=5
-HOMEPAGE=http://software.intel.com/en-us/articles/opencl-sdk/
-IUSE=android +system-tbb system-clang +system-boost +system-qt
-KEYWORDS=-* ~amd64
 LICENSE=Intel-SDP
-RDEPEND=app-eselect/eselect-opencl sys-process/numactl system-tbb? ( >=dev-cpp/tbb-4.2.20131118 ) system-clang? ( =sys-devel/clang-3.4* ) system-boost? ( >=dev-libs/boost-1.52.0:= ) system-qt? ( >=dev-qt/qtgui-4.8.5:4 >=dev-qt/qtcore-4.8.5:4 )
+IUSE=android +system-tbb system-clang +system-boost +system-qt
 RESTRICT=mirror
-SLOT=0
 SRC_URI=http://registrationcenter.intel.com/irc_nas/4181/intel_sdk_for_ocl_applications_2014_ubuntu_4.4.0.117_x64.tgz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=5a84795f9ed4532c628e0ac73e08affb
+KEYWORDS=-* ~amd64
+HOMEPAGE=http://software.intel.com/en-us/articles/opencl-sdk/
+RDEPEND=app-eselect/eselect-opencl sys-process/numactl system-tbb? ( >=dev-cpp/tbb-4.2.20131118 ) system-clang? ( =sys-devel/clang-3.4* ) system-boost? ( >=dev-libs/boost-1.52.0:= ) system-qt? ( >=dev-qt/qtgui-4.8.5:4 >=dev-qt/qtcore-4.8.5:4 )

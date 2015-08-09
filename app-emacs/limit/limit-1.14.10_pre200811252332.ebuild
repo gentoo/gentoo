@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/limit/limit-1.14.10_pre200811252332.ebuild,v 1.7 2014/02/18 19:53:10 ulm Exp $
+# $Id$
 
 EAPI=5
 

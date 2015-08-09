@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cdplay/cdplay-1.0.ebuild,v 1.7 2007/12/12 15:42:39 fmccor Exp $
+# $Id$
 
 inherit toolchain-funcs
 

@@ -2,7 +2,7 @@ scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 
 " Default configuration file for Vim
-" $Header: /var/cvsroot/gentoo-x86/app-editors/vim-core/files/vimrc-r4,v 1.3 2010/04/15 19:30:32 darkside Exp $
+" $Id$
 
 " Written by Aron Griffis <agriffis@gentoo.org>
 " Modified by Ryan Phillips <rphillips@gentoo.org>

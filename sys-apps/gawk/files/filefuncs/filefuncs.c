@@ -30,7 +30,7 @@
  * Copyright 1999-2004 Gentoo Foundation
  * Distributed under the terms of the GNU General Public License v2
  * Author:  Martin Schlemmer <azarah@gentoo.org>, Nov 2002
- * $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/files/filefuncs/filefuncs.c,v 1.3 2005/05/06 01:35:53 vapier Exp $
+ * $Id$
  * 
  * Extended with: do_symlink()
  *                do_unlink()

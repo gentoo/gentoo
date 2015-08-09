@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/opensm/files/opensm.init.d,v 1.3 2015/02/11 04:45:41 bircoph Exp $
+# $Id$
 
 depend() {
     need openib

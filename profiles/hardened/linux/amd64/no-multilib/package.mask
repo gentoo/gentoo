@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/no-multilib/package.mask,v 1.43 2015/06/02 09:15:36 ulm Exp $
+# $Id$
 
 # These are broken as reported by Halcy0n, Aug, 23, 2011
 net-misc/teamviewer

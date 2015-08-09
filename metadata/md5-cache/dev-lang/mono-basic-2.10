@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	mono	3fb22ec265e021c7294a29e720f3d5f7	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	go-mono	fdf799ccb71e4bdd1e25fb365343d74f	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b96370e081a4e217965eb599bdd2eaa0
+SLOT=0
 DEFINED_PHASES=compile configure install prepare unpack
+EAPI=2
 DEPEND=>=dev-lang/mono-2.10 virtual/pkgconfig userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Visual Basic .NET Runtime and Class Libraries
-EAPI=2
-HOMEPAGE=http://www.mono-project.com/VisualBasic.NET_support
-KEYWORDS=amd64 ppc x86
 LICENSE=LGPL-2 MIT
-RDEPEND=>=dev-lang/mono-2.10
 RESTRICT=test
-SLOT=0
 SRC_URI=http://download.mono-project.com/sources/mono-basic/mono-basic-2.10.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	go-mono	95f4d6f11343dd05b134d8d1d2efd9e0	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=c870dbef1b5a141bd4b2be0805285763
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www.mono-project.com/VisualBasic.NET_support
+RDEPEND=>=dev-lang/mono-2.10

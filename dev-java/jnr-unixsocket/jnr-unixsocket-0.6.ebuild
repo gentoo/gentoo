@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jnr-unixsocket/jnr-unixsocket-0.6.ebuild,v 1.2 2015/06/17 17:14:09 monsieurp Exp $
+# $Id$
 
 EAPI="5"
 

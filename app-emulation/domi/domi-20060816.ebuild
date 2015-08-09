@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/domi/domi-20060816.ebuild,v 1.3 2010/08/20 17:00:42 jer Exp $
+# $Id$
 
 inherit eutils
 DESCRIPTION="Scripts for building Xen domains"

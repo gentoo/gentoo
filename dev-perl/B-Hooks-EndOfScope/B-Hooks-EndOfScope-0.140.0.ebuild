@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/B-Hooks-EndOfScope/B-Hooks-EndOfScope-0.140.0.ebuild,v 1.3 2015/05/20 04:51:15 mattst88 Exp $
+# $Id$
 
 EAPI=5
 

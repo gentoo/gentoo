@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/llgal/llgal-0.13.17-r1.ebuild,v 1.3 2014/11/16 22:57:20 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

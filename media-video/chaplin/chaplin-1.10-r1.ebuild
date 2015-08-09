@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/chaplin/chaplin-1.10-r1.ebuild,v 1.7 2011/11/21 21:06:11 radhermit Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

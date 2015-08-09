@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/xboxdrv/xboxdrv-0.8.5-r2.ebuild,v 1.1 2015/06/02 08:35:38 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit linux-info scons-utils toolchain-funcs systemd udev

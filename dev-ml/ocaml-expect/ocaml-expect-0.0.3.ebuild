@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-expect/ocaml-expect-0.0.3.ebuild,v 1.2 2013/03/02 18:47:08 aballier Exp $
+# $Id$
 
 EAPI=5
 

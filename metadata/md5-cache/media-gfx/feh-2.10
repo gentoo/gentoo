@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b05d142399c10e2b2cd38c3fe43160c5
+SLOT=0
 DEFINED_PHASES=compile install prepare setup
+EAPI=5
 DEPEND=>=media-libs/giblib-1.2.4 media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) x11-libs/libXt x11-proto/xproto test? ( >=dev-lang/perl-5.10 dev-perl/Test-Command )
 DESCRIPTION=A fast, lightweight imageviewer using imlib2
-EAPI=5
-HOMEPAGE=http://feh.finalrewind.org/
-IUSE=debug curl exif test xinerama
-KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
 LICENSE=feh
-RDEPEND=>=media-libs/giblib-1.2.4 media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) virtual/jpeg:0
-SLOT=0
+IUSE=debug curl exif test xinerama
 SRC_URI=http://feh.finalrewind.org/feh-2.10.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c2476d8105c2607083de67a4d5608256
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
+HOMEPAGE=http://feh.finalrewind.org/
+RDEPEND=>=media-libs/giblib-1.2.4 media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) virtual/jpeg:0

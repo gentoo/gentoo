@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/talkfilters/talkfilters-2.3.8.ebuild,v 1.6 2011/01/06 16:24:20 jlec Exp $
+# $Id$
 
 DESCRIPTION="Convert ordinary English text into text that mimics a stereotyped or otherwise humorous dialect"
 HOMEPAGE="http://www.hyperrealm.com/talkfilters/talkfilters.html"

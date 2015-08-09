@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/notify-osd/notify-osd-0.9.34.ebuild,v 1.5 2012/07/30 21:01:34 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit autotools gnome2-utils multilib savedconfig

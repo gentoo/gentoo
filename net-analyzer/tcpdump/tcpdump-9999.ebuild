@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpdump/tcpdump-9999.ebuild,v 1.1 2015/01/07 16:08:40 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic git-r3 toolchain-funcs user

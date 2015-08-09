@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/glossaries/glossaries-4.12-r1.ebuild,v 1.1 2014/12/06 02:37:27 radhermit Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pod-Spell/Pod-Spell-1.10.0-r1.ebuild,v 1.3 2014/12/07 19:19:16 zlogene Exp $
+# $Id$
 
 EAPI=5
 

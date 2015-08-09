@@ -1,7 +1,7 @@
 diff -Naurp src/p_blowfish.c src/p_blowfish.c
 --- src/p_blowfish.c	2007-02-26 12:16:53.000000000 +0000
 +++ src/p_blowfish.c	2007-02-26 12:17:11.000000000 +0000
-@@ -31,7 +31,7 @@ static char rcsid[] = "@(#)$Id: p_blowfi
+@@ -31,7 +31,7 @@ static char rcsid[] = "@(#)# $Id$
  #include <string.h>
  #include <config.h>
  

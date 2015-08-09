@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/hteditor/hteditor-2.1.0.ebuild,v 1.1 2015/01/17 01:32:26 radhermit Exp $
+# $Id$
 
 EAPI=5
 

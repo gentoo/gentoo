@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/forehead/forehead-1.0_beta5-r1.ebuild,v 1.3 2010/05/22 20:05:56 ken69267 Exp $
+# $Id$
 
 inherit java-pkg-2 java-ant-2
 

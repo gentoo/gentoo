@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gst-plugins-bad.eclass,v 1.46 2012/12/02 17:16:20 eva Exp $
+# $Id$
 
 # @ECLASS: gst-plugins10-bad.eclass
 # @MAINTAINER:

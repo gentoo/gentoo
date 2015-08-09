@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/flinker/flinker-1.72.ebuild,v 1.8 2015/03/29 23:38:03 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

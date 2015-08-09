@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/vnc2swf/vnc2swf-0.5.0-r1.ebuild,v 1.1 2010/05/27 23:26:25 hwoarang Exp $
+# $Id$
 
 inherit eutils
 

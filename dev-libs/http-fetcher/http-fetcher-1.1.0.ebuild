@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/http-fetcher/http-fetcher-1.1.0.ebuild,v 1.8 2010/01/19 11:08:27 cla Exp $
+# $Id$
 
 MY_P="${P/-/_}"
 S="${WORKDIR}/${MY_P}"

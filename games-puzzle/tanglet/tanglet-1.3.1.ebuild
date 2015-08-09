@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/tanglet/tanglet-1.3.1.ebuild,v 1.1 2015/02/11 05:25:07 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 LANGS="cs de es en fr he hu it nl ro tr uk"

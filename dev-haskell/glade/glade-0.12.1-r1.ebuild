@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/glade/glade-0.12.1-r1.ebuild,v 1.6 2014/07/25 09:16:23 slyfox Exp $
+# $Id$
 
 EAPI=5
 

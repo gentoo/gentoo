@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-cdplayer/vdr-cdplayer-1.2.2.ebuild,v 1.1 2015/03/03 10:58:00 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

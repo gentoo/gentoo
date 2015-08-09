@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-merge-changelog/git-merge-changelog-20140223.ebuild,v 1.2 2015/05/28 13:47:34 vapier Exp $
+# $Id$
 
 # snapshot extracted from git://git.savannah.gnu.org/gnulib.git using
 # ./gnulib-tool --create-testdir --without-tests --dir=${PN} ${PN};

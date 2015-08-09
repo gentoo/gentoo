@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/selenium/selenium-2.46.0.ebuild,v 1.1 2015/06/19 09:38:38 jlec Exp $
+# $Id$
 
 EAPI=5
 

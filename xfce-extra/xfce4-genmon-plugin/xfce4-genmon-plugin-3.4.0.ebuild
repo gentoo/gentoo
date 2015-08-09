@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-genmon-plugin/xfce4-genmon-plugin-3.4.0.ebuild,v 1.7 2012/11/28 12:43:56 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

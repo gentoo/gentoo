@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/depend.apache.eclass,v 1.47 2012/04/20 07:22:47 patrick Exp $
+# $Id$
 
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:

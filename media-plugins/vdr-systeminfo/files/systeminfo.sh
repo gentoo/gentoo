@@ -5,7 +5,7 @@
 # See the main source file 'systeminfo.c' for copyright information and
 # how to reach the author.
 #
-# $Id: systeminfo.sh,v 1.1 2008/11/17 17:56:13 hd_brummy Exp $
+# $Id$
 #
 # possible output formats:
 # (blanks around tabs only for better reading)

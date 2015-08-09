@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/dlx/dlx-1.0.0-r1.ebuild,v 1.4 2012/10/24 10:52:55 ago Exp $
+# $Id$
 
 inherit toolchain-funcs
 

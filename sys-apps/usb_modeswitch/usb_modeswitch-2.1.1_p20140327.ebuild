@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usb_modeswitch/usb_modeswitch-2.1.1_p20140327.ebuild,v 1.2 2015/03/20 15:16:28 jlec Exp $
+# $Id$
 
 EAPI=5
 inherit eutils linux-info toolchain-funcs udev systemd

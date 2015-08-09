@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/watch/watch-0.1.0.ebuild,v 1.1 2013/12/25 19:33:56 naota Exp $
+# $Id$
 
 EAPI=5
 

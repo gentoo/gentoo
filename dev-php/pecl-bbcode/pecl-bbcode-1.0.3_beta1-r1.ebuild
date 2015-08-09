@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-bbcode/pecl-bbcode-1.0.3_beta1-r1.ebuild,v 1.1 2014/09/29 19:16:36 grknight Exp $
+# $Id$
 
 EAPI="5"
 

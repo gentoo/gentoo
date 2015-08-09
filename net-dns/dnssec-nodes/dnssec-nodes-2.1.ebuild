@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-nodes/dnssec-nodes-2.1.ebuild,v 1.2 2014/11/06 20:08:05 xmw Exp $
+# $Id$
 
 EAPI=4
 

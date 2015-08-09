@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/psiconv/psiconv-0.8.3-r1.ebuild,v 1.2 2014/03/10 10:56:13 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nstx/nstx-1.1_beta6-r3.ebuild,v 1.5 2014/03/10 10:59:21 ssuominen Exp $
+# $Id$
 
 inherit versionator toolchain-funcs eutils linux-info
 

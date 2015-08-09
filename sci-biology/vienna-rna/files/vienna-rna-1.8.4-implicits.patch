@@ -25,7 +25,7 @@ Fix implicit function declarations and attempt to free non-heap obj
 +extern void init_pf_circ_fold(int length);
  
  /*@unused@*/
- static char UNUSED rcsid[] = "$Id: vienna-rna-1.8.4-implicits.patch,v 1.1 2010/10/15 07:15:15 xarthisius Exp $";
+ static char UNUSED rcsid[] = "$Id$";
 --- Cluster/AS_main.c
 +++ Cluster/AS_main.c
 @@ -1,6 +1,7 @@

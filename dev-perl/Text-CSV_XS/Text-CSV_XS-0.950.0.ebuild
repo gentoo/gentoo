@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-CSV_XS/Text-CSV_XS-0.950.0.ebuild,v 1.12 2013/06/02 08:41:43 ago Exp $
+# $Id$
 
 EAPI=5
 

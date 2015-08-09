@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/curses-hexedit/curses-hexedit-0.9.7.ebuild,v 1.2 2014/12/30 23:29:21 vapier Exp $
+# $Id$
 
 # There's already a "hexedit" package in the tree, so name this one differently
 

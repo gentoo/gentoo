@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/dellmgr/dellmgr-5.32-r1.ebuild,v 1.1 2008/12/01 16:04:54 wschlich Exp $
+# $Id$
 
 inherit multilib rpm
 

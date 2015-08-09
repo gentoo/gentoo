@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/mbuffer/mbuffer-20090113.ebuild,v 1.6 2010/05/22 15:34:15 pacho Exp $
+# $Id$
 
 DESCRIPTION="M(easuring)buffer is a replacement for buffer with additional functionality"
 HOMEPAGE="http://www.maier-komor.de/mbuffer.html"

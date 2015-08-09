@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-familyguy/fortune-mod-familyguy-0.2.ebuild,v 1.7 2015/02/04 21:21:35 tupone Exp $
+# $Id$
 EAPI=5
 DESCRIPTION="Quotes from the TV-Series -Family Guy-"
 HOMEPAGE="http://jon.oberheide.org/familyguy/"

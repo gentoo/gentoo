@@ -22,7 +22,7 @@ Subject: fix tiff build switch
 +++ xpaint-2.9.10.2/rw/readWriteTIFF.c
 @@ -14,6 +14,8 @@
  
- /* $Id: xpaint-2.9.10.2-tiff.patch,v 1.1 2014/06/20 14:31:42 hasufell Exp $ */
+ /* $Id$ */
  
 +#ifdef HAVE_TIFF
 +

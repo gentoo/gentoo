@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mechanize/mechanize-0.2.5.ebuild,v 1.4 2011/05/28 13:52:59 ranger Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

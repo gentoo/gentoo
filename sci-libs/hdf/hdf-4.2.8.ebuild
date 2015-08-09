@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/hdf/hdf-4.2.8.ebuild,v 1.7 2013/02/25 13:31:04 ago Exp $
+# $Id$
 
 EAPI=4
 

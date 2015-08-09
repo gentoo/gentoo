@@ -4,7 +4,7 @@
 #
 # Licensed under the GNU General Public License, v2
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-pkg-simple.eclass,v 1.6 2015/05/24 20:40:40 chewi Exp $
+# $Id$
 
 inherit java-utils-2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mediatomb/mediatomb-0.12.1-r8.ebuild,v 1.3 2014/08/29 10:30:26 nimiux Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils linux-info user

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pktstat/pktstat-1.8.5-r1.ebuild,v 1.3 2014/08/20 15:59:57 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

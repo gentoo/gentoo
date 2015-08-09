@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_h2/mod_h2-9999.ebuild,v 1.5 2015/06/26 01:39:28 vapier Exp $
+# $Id$
 
 EAPI="5"
 

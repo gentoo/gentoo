@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/me-tv/me-tv-1.4.0.10.ebuild,v 1.3 2014/08/10 21:03:11 slyfox Exp $
+# $Id$
 
 EAPI="4"
 

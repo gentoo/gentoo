@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gnopaster/gnopaster-0.0.9.ebuild,v 1.5 2007/06/27 16:07:13 opfer Exp $
+# $Id$
 
 DESCRIPTION="A submitter for gnopaste, a nopaste service like http://nopaste.info"
 HOMEPAGE="http://gnopaste.sf.net"

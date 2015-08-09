@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/docker/docker-1.5.ebuild,v 1.19 2015/01/19 19:31:07 voyageur Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

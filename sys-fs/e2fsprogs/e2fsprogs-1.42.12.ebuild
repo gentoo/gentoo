@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/e2fsprogs-1.42.12.ebuild,v 1.12 2015/05/25 10:29:17 vapier Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=18c173f672a27f1c8b1200cf78a2c02c
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup unpack
+EAPI=4
 DEPEND=app-arch/bzip2 dev-libs/glib:2 dev-libs/libaio libnet? ( net-libs/libnet:1.1 ) net-misc/curl net-misc/iputils || ( net-misc/netkit-telnetd net-misc/telnet-bsd ) dev-libs/libxml2 !<sys-cluster/heartbeat-3.0 doc? ( dev-libs/libxslt app-text/docbook-xsl-stylesheets ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Library pack for Heartbeat / Pacemaker
-EAPI=4
-HOMEPAGE=http://www.linux-ha.org/wiki/Cluster_Glue
-IUSE=doc libnet static-libs
-KEYWORDS=amd64 hppa x86
 LICENSE=GPL-2
-RDEPEND=app-arch/bzip2 dev-libs/glib:2 dev-libs/libaio libnet? ( net-libs/libnet:1.1 ) net-misc/curl net-misc/iputils || ( net-misc/netkit-telnetd net-misc/telnet-bsd ) dev-libs/libxml2 !<sys-cluster/heartbeat-3.0
-SLOT=0
+IUSE=doc libnet static-libs
 SRC_URI=http://hg.linux-ha.org/glue/archive/glue-1.0.10.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=ee588b609ac3368ff4f4d7fcfad5c184
+KEYWORDS=amd64 hppa x86
+HOMEPAGE=http://www.linux-ha.org/wiki/Cluster_Glue
+RDEPEND=app-arch/bzip2 dev-libs/glib:2 dev-libs/libaio libnet? ( net-libs/libnet:1.1 ) net-misc/curl net-misc/iputils || ( net-misc/netkit-telnetd net-misc/telnet-bsd ) dev-libs/libxml2 !<sys-cluster/heartbeat-3.0

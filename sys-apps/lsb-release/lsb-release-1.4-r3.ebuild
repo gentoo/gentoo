@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lsb-release/lsb-release-1.4-r3.ebuild,v 1.1 2015/01/04 21:33:39 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sat4j-pseudo/sat4j-pseudo-2.3.1.ebuild,v 1.2 2011/12/27 10:33:38 fordfrog Exp $
+# $Id$
 
 EAPI="2"
 

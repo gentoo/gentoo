@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ethtool/ethtool-3.8.ebuild,v 1.10 2013/06/02 08:42:17 ago Exp $
+# $Id$
 
 EAPI="4"
 

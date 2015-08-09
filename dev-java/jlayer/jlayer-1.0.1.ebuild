@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jlayer/jlayer-1.0.1.ebuild,v 1.4 2010/05/22 05:21:20 ken69267 Exp $
+# $Id$
 
 EAPI="2"
 

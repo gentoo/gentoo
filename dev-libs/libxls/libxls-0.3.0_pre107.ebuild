@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxls/libxls-0.3.0_pre107.ebuild,v 1.5 2014/03/03 23:57:27 pacho Exp $
+# $Id$
 
 EAPI=5
 

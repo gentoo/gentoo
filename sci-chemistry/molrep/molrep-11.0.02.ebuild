@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molrep/molrep-11.0.02.ebuild,v 1.10 2013/02/21 22:00:47 jlec Exp $
+# $Id$
 
 EAPI=4
 

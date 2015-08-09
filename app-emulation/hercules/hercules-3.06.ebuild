@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/hercules/hercules-3.06.ebuild,v 1.8 2010/10/24 15:54:21 ranger Exp $
+# $Id$
 
 inherit eutils flag-o-matic
 

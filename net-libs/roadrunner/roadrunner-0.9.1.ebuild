@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/roadrunner/roadrunner-0.9.1.ebuild,v 1.10 2014/07/22 20:31:47 mrueg Exp $
+# $Id$
 
 # EBuild details
 DESCRIPTION="RoadRunner library provides API for using Blocks Extensible Exchange Protocol"

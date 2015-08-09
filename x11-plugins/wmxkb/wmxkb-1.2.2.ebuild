@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmxkb/wmxkb-1.2.2.ebuild,v 1.10 2011/01/03 21:54:59 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit toolchain-funcs

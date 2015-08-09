@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mpc-plugin/xfce4-mpc-plugin-0.4.4.ebuild,v 1.4 2012/11/28 12:20:04 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

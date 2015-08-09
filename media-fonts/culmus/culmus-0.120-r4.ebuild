@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/culmus-0.120-r4.ebuild,v 1.12 2013/06/02 08:46:09 ago Exp $
+# $Id$
 
 EAPI="2"
 

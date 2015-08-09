@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/chuck/chuck-1.2.1.2.ebuild,v 1.6 2009/06/09 15:57:11 ssuominen Exp $
+# $Id$
 
 inherit toolchain-funcs flag-o-matic eutils
 

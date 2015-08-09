@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/w3mmee/w3mmee-0.3.2_p24-r7.ebuild,v 1.12 2014/07/05 01:18:42 naota Exp $
+# $Id$
 
 inherit alternatives eutils toolchain-funcs multilib
 

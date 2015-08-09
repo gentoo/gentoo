@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/tac_plus/tac_plus-4.0.4.19-r3.ebuild,v 1.6 2012/12/09 10:27:58 ulm Exp $
+# $Id$
 
 EAPI=4
 

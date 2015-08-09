@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/csound-syntax/csound-syntax-3.1.ebuild,v 1.1 2010/10/08 22:25:20 radhermit Exp $
+# $Id$
 
 EAPI=3
 inherit eutils vim-plugin

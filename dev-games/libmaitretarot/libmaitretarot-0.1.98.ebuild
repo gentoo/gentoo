@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/libmaitretarot/libmaitretarot-0.1.98.ebuild,v 1.12 2015/02/06 13:40:54 ago Exp $
+# $Id$
 
 EAPI=5
 DESCRIPTION="backend library for the maitretarot games"

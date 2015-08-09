@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gexiv2/gexiv2-0.10.3.ebuild,v 1.1 2015/06/28 09:19:54 maekke Exp $
+# $Id$
 
 EAPI=5
 

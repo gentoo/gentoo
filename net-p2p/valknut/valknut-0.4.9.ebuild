@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/valknut/valknut-0.4.9.ebuild,v 1.10 2013/03/03 13:48:03 xarthisius Exp $
+# $Id$
 
 EAPI=2
 

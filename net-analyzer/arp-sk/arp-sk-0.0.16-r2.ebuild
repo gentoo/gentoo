@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arp-sk/arp-sk-0.0.16-r2.ebuild,v 1.8 2014/07/10 19:10:27 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils multilib

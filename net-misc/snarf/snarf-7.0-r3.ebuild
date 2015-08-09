@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/snarf/snarf-7.0-r3.ebuild,v 1.7 2014/08/10 20:47:31 slyfox Exp $
+# $Id$
 
 inherit eutils
 

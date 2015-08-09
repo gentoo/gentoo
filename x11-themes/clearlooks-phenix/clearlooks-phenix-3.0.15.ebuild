@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/clearlooks-phenix/clearlooks-phenix-3.0.15.ebuild,v 1.2 2014/03/19 00:12:57 hasufell Exp $
+# $Id$
 
 EAPI=5
 

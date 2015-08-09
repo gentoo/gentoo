@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zeitgeist-datahub/zeitgeist-datahub-0.9.5.ebuild,v 1.10 2013/04/24 06:48:21 jlec Exp $
+# $Id$
 
 EAPI=4
 

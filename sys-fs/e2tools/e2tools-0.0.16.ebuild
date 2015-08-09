@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2tools/e2tools-0.0.16.ebuild,v 1.1 2011/12/13 18:30:54 vapier Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/b2evolution/b2evolution-4.1.7.ebuild,v 1.4 2013/09/14 10:14:07 ago Exp $
+# $Id$
 
 EAPI=5
 

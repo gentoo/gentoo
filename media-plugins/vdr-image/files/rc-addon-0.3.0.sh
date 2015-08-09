@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-image/files/rc-addon-0.3.0.sh,v 1.1 2009/01/06 02:22:11 hd_brummy Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-image
 #

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_authn_sasl/mod_authn_sasl-1.2.ebuild,v 1.4 2014/12/18 13:20:03 pacho Exp $
+# $Id$
 
 inherit eutils apache-module
 

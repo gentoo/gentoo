@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/package.use.mask,v 1.48 2014/04/17 03:01:15 patrick Exp $
+# $Id$
 
 # Patrick Lauer <patrick@gentoo.org> (17 Mar 2014)
 # Fallout from ruby1.8 masking #505226

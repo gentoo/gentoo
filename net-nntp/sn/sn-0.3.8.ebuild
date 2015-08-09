@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/sn/sn-0.3.8.ebuild,v 1.4 2011/11/22 01:39:53 radhermit Exp $
+# $Id$
 
 EAPI=4
 

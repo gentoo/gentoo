@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/c3/c3-4.0.1.ebuild,v 1.3 2012/12/02 13:15:52 ago Exp $
+# $Id$
 
 DESCRIPTION="The Cluster Command and Control (C3) tool suite"
 HOMEPAGE="http://www.csm.ornl.gov/torc/C3/"

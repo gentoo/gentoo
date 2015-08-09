@@ -1,5 +1,5 @@
 # Global config file for vdr wapd plugin
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-wapd/files/confd,v 1.1 2008/01/27 17:42:03 hd_brummy Exp $
+# $Id$
 
 # Set the port where the plugin is listen on
 #	allowed values: port number

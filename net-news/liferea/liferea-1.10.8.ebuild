@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-news/liferea/liferea-1.10.8.ebuild,v 1.5 2014/10/31 08:41:27 pacho Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/allpathslg/allpathslg-42337.ebuild,v 1.6 2013/11/13 02:34:46 patrick Exp $
+# $Id$
 
 EAPI=4
 

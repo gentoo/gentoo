@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/golang-vcs-snapshot.eclass,v 1.2 2015/08/05 19:23:28 williamh Exp $
+# $Id$
 
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:

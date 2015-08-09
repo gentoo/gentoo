@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/roadnav/roadnav-0.19-r1.ebuild,v 1.1 2014/07/14 16:46:10 pacho Exp $
+# $Id$
 
 EAPI=5
 WX_GTK_VER=2.8

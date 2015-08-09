@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/unfonts-extra/unfonts-extra-1.0.2_pre080608-r1.ebuild,v 1.5 2009/12/24 11:57:24 pacho Exp $
+# $Id$
 
 inherit font
 

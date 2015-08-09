@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/x2x/x2x-1.27-r3.ebuild,v 1.9 2014/01/17 14:46:22 jer Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

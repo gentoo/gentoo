@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/tuxonice-sources/tuxonice-sources-3.4.107.ebuild,v 1.1 2015/05/13 20:33:03 floppym Exp $
+# $Id$
 
 EAPI="5"
 ETYPE="sources"

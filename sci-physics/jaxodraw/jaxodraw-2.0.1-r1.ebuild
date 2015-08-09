@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/jaxodraw/jaxodraw-2.0.1-r1.ebuild,v 1.1 2014/03/28 10:49:32 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

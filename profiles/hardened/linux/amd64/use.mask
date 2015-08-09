@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/use.mask,v 1.7 2012/11/27 02:03:24 zerochaos Exp $
+# $Id$
 
 # Rick Farina <zerochaos@gentoo.org> 26 Nov 2012
 video_cards_nvidia

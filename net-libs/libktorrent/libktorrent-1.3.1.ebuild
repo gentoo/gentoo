@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libktorrent/libktorrent-1.3.1.ebuild,v 1.8 2015/01/29 01:39:03 johu Exp $
+# $Id$
 
 EAPI=5
 

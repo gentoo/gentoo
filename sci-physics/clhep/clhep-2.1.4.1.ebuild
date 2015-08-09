@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/clhep/clhep-2.1.4.1.ebuild,v 1.1 2013/11/25 21:59:14 bicatali Exp $
+# $Id$
 
 EAPI=5
 

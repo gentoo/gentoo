@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ps2eps/ps2eps-1.68.ebuild,v 1.15 2014/01/02 15:04:45 tomwij Exp $
+# $Id$
 
 inherit toolchain-funcs
 

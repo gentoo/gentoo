@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/openlibm/openlibm-0.3.ebuild,v 1.1 2014/04/28 19:10:05 bicatali Exp $
+# $Id$
 
 EAPI=5
 

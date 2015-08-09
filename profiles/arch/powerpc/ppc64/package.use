@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/package.use,v 1.2 2012/11/05 15:51:49 slyfox Exp $
+# $Id$
 
 # Doug Goldstein <cardoe@gentoo.org> (29 Oct 2012)
 # Enable the native arch as the default qemu target

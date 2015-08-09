@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/cryptokit/cryptokit-1.10.ebuild,v 1.4 2015/02/25 15:35:04 ago Exp $
+# $Id$
 
 EAPI="5"
 

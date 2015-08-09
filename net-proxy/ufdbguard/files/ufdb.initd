@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/ufdbguard/files/ufdb.initd,v 1.4 2011/09/14 11:37:04 flameeyes Exp $
+# $Id$
 
 # reconfig is what the upstream documentation suggests, so let's
 # provide it for compatibility.

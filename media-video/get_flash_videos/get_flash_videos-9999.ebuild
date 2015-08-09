@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/get_flash_videos/get_flash_videos-9999.ebuild,v 1.4 2014/07/29 19:20:29 dilfridge Exp $
+# $Id$
 
 EAPI=5
 inherit eutils perl-module git-2

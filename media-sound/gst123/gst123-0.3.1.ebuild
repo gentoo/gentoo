@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gst123/gst123-0.3.1.ebuild,v 1.2 2012/05/05 08:27:50 mgorny Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/make.defaults,v 1.3 2011/11/17 01:14:26 jmbsvicetto Exp $
+# $Id$
 
 # We disable the symlink, since we won't be using it.
 SYMLINK_LIB="yes"

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/samsung-tools/files/samsung-tools.init,v 1.1 2011/11/11 16:05:26 angelos Exp $
+# $Id$
 
 depend() {
 	need dbus

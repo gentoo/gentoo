@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	gnome2	56d268cae832738430a9de86a5765fa1	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=96f5cb1dff144ef911bf9af88b2de109
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+EAPI=5
 DEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.14:2 >=gnome-base/gconf-2.6 >=gnome-base/libgnomeui-2.14 dev-libs/dbus-glib dev-libs/gmime:2.6 >=x11-libs/libnotify-0.4.1 gnome-keyring? ( gnome-base/libgnome-keyring ) ssl? ( >=dev-libs/openssl-0.9.6 ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sound? ( media-libs/gstreamer:0.10 ) sylpheed? ( mail-client/sylpheed ) app-text/scrollkeeper dev-util/gob sys-devel/gettext virtual/pkgconfig >=dev-util/intltool-0.35.0 app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=Status icon informing about new mail
-EAPI=5
-HOMEPAGE=http://www.nongnu.org/mailnotify/ https://github.com/epienbroek/mail-notification
-IUSE=+gnome-keyring sasl +sound ssl sylpheed linguas_bg linguas_ca linguas_cs linguas_de linguas_es linguas_fr linguas_ja linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ru linguas_sr linguas_sr@Latn linguas_sv
-KEYWORDS=amd64 ~ppc ~sparc x86 ~x86-linux
 LICENSE=GPL-3
-RDEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.14:2 >=gnome-base/gconf-2.6 >=gnome-base/libgnomeui-2.14 dev-libs/dbus-glib dev-libs/gmime:2.6 >=x11-libs/libnotify-0.4.1 gnome-keyring? ( gnome-base/libgnome-keyring ) ssl? ( >=dev-libs/openssl-0.9.6 ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sound? ( media-libs/gstreamer:0.10 ) sylpheed? ( mail-client/sylpheed )
-SLOT=0
+IUSE=+gnome-keyring sasl +sound ssl sylpheed linguas_bg linguas_ca linguas_cs linguas_de linguas_es linguas_fr linguas_ja linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ru linguas_sr linguas_sr@Latn linguas_sv
 SRC_URI=https://github.com/epienbroek/mail-notification/tarball/eab5c13 -> mail-notification-eab5c13.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=de4d7c7e92cf82b4c04513d59cdca376
+KEYWORDS=amd64 ~ppc ~sparc x86 ~x86-linux
+HOMEPAGE=http://www.nongnu.org/mailnotify/ https://github.com/epienbroek/mail-notification
+RDEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.14:2 >=gnome-base/gconf-2.6 >=gnome-base/libgnomeui-2.14 dev-libs/dbus-glib dev-libs/gmime:2.6 >=x11-libs/libnotify-0.4.1 gnome-keyring? ( gnome-base/libgnome-keyring ) ssl? ( >=dev-libs/openssl-0.9.6 ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sound? ( media-libs/gstreamer:0.10 ) sylpheed? ( mail-client/sylpheed )

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/xl2tpd/xl2tpd-1.3.1-r3.ebuild,v 1.4 2014/01/08 16:49:13 floppym Exp $
+# $Id$
 
 EAPI="5"
 

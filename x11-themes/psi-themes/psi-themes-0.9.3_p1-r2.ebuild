@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/psi-themes/psi-themes-0.9.3_p1-r2.ebuild,v 1.12 2011/07/25 16:50:00 halcy0n Exp $
+# $Id$
 
 EAPI="2"
 

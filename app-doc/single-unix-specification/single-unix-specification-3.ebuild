@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/single-unix-specification/single-unix-specification-3.ebuild,v 1.5 2013/03/30 16:24:23 ulm Exp $
+# $Id$
 
 DESCRIPTION="The Single UNIX Specification, Version 3, 2004 Edition (8 Volumes)"
 HOMEPAGE="http://www.opengroup.org/bookstore/catalog/t041.htm"

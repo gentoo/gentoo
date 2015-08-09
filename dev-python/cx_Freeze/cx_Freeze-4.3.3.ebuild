@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cx_Freeze/cx_Freeze-4.3.3.ebuild,v 1.2 2014/12/02 09:48:47 pacho Exp $
+# $Id$
 
 EAPI="5"
 

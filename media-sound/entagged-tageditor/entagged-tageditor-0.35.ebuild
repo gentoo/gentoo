@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/entagged-tageditor/entagged-tageditor-0.35.ebuild,v 1.2 2008/07/12 10:14:51 serkan Exp $
+# $Id$
 
 inherit eutils java-pkg-2 java-ant-2
 

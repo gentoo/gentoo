@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnuconfig	3920de1188fc7bfee873515453ed1d10	fcaps	3a17f16a21cfbb14acca5c05e5c130eb	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9e91e9bdc4c90076b945525586d39ca9
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare
+EAPI=5
 DEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) !app-cdr/cdrkit x11-misc/makedepend nls? ( >=sys-devel/gettext-0.18.1.1 ) filecaps? ( sys-libs/libcap ) sys-devel/gnuconfig
 DESCRIPTION=A set of tools for CD/DVD reading and recording, including cdrecord
-EAPI=5
-HOMEPAGE=http://sourceforge.net/projects/cdrtools/
-IUSE=acl caps nls unicode +filecaps
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2 LGPL-2.1 CDDL-Schily
-RDEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) !app-cdr/cdrkit
-SLOT=0
+IUSE=acl caps nls unicode +filecaps
 SRC_URI=mirror://sourceforge/cdrtools/alpha/cdrtools-3.01a30.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fcaps	eeefea88d5fef2853d4c1e3770340302	flag-o-matic	c9602887773166fe300444712fc7ff98	gnuconfig	00a0530e40148c254cebb925df0e87ef	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=8082cb6ea0715c0eb3c8cedb412a57eb
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+HOMEPAGE=http://sourceforge.net/projects/cdrtools/
+RDEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) !app-cdr/cdrkit

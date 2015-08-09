@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/namebench/namebench-1.3.1-r1.ebuild,v 1.3 2014/07/06 17:41:18 floppym Exp $
+# $Id$
 
 EAPI="5"
 

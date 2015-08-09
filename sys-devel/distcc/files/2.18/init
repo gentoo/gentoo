@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/2.18/init,v 1.1 2004/10/12 17:21:43 lisa Exp $
+# $Id$
 
 depend() {
 	need net

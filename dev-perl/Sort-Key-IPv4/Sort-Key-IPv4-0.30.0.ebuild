@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sort-Key-IPv4/Sort-Key-IPv4-0.30.0.ebuild,v 1.2 2014/12/07 13:12:19 zlogene Exp $
+# $Id$
 
 EAPI=5
 

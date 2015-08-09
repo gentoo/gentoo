@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/icoutils/icoutils-0.31.0.ebuild,v 1.5 2013/12/21 16:25:35 ago Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils flag-o-matic

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/ds9-bin/ds9-bin-7.1.ebuild,v 1.1 2012/11/15 00:10:40 bicatali Exp $
+# $Id$
 
 EAPI=4
 

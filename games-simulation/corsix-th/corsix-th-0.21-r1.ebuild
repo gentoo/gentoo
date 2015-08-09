@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/corsix-th/corsix-th-0.21-r1.ebuild,v 1.2 2013/07/28 21:02:57 miknix Exp $
+# $Id$
 
 EAPI=5
 

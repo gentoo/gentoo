@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/apachetop/apachetop-0.12.6-r2.ebuild,v 1.6 2015/05/28 15:13:32 jmorgan Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools

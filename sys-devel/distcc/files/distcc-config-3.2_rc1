@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/distcc-config-3.2_rc1,v 1.1 2011/10/28 05:41:06 matsuu Exp $
+# $Id$
 
 import os, re, signal, subprocess, sys
 

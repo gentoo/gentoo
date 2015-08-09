@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/zlib/zlib-1.2.5.1-r2.ebuild,v 1.12 2013/03/03 09:18:24 vapier Exp $
+# $Id$
 
 inherit autotools eutils toolchain-funcs multilib
 

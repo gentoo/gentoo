@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/omniORB/files/omniNames,v 1.1 2008/04/02 21:20:14 caster Exp $
+# $Id$
 
 depend() {
 	need net

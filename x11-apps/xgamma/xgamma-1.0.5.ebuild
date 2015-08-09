@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xgamma/xgamma-1.0.5.ebuild,v 1.9 2012/08/26 16:46:54 armin76 Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gstreamermm/gstreamermm-1.0.10.ebuild,v 1.5 2015/03/15 13:16:29 pacho Exp $
+# $Id$
 
 EAPI="5"
 GNOME2_LA_PUNT="yes"

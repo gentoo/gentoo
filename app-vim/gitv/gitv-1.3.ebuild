@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/gitv/gitv-1.3.ebuild,v 1.1 2015/03/20 19:30:06 radhermit Exp $
+# $Id$
 
 EAPI=5
 

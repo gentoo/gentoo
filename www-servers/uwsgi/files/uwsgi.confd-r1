@@ -1,5 +1,5 @@
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/uwsgi/files/uwsgi.confd-r1,v 1.1 2012/05/15 06:45:08 dev-zero Exp $
+# $Id$
 
 # YOU SHOULD ONLY MODIFY THIS FILE IF YOU USE THE UWSGI EMPEROR MODE!
 # IF YOU WANT TO RUN A SINGLE APP INSTANCE, CREATE A COPY AND MODIFY THAT INSTEAD!

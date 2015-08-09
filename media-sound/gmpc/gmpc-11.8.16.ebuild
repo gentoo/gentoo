@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmpc/gmpc-11.8.16.ebuild,v 1.10 2013/05/11 17:56:43 angelos Exp $
+# $Id$
 
 EAPI=4
 VALA_MIN_API_VERSION=0.12

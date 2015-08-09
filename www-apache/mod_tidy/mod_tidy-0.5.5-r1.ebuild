@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_tidy/mod_tidy-0.5.5-r1.ebuild,v 1.1 2009/09/17 07:28:43 hollow Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Pager/PEAR-Pager-2.4.8.ebuild,v 1.10 2014/08/10 20:54:45 slyfox Exp $
+# $Id$
 
 inherit php-pear-r1
 

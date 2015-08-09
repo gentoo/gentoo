@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cloudshark/cloudshark-1.0.3.180.ebuild,v 1.1 2014/06/06 02:38:43 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

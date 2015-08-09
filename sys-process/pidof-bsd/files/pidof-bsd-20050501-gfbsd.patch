@@ -9,7 +9,7 @@ diff -u -r1.4 pidof.c
 --- pidof.c	1 May 2005 16:26:19 -0000	1.4
 +++ pidof.c	13 Sep 2005 16:11:08 -0000
 @@ -26,6 +26,7 @@
-  * $Id: pidof-bsd-20050501-gfbsd.patch,v 1.1 2006/04/01 17:01:15 flameeyes Exp $
+  * $Id$
   */
  
 +#include <unistd.h>

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/amule/files/amuleweb.initd,v 1.7 2008/02/04 16:51:51 armin76 Exp $
+# $Id$
 
 depend() {
 	need net

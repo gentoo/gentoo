@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/signify/signify-1.14.ebuild,v 1.3 2005/04/20 21:30:58 hansmi Exp $
+# $Id$
 
 S=${WORKDIR}/${PN}
 

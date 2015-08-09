@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Amazon-S3/Net-Amazon-S3-0.590.0.ebuild,v 1.2 2014/10/27 14:33:41 zlogene Exp $
+# $Id$
 
 EAPI=5
 

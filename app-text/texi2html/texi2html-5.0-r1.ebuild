@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texi2html/texi2html-5.0-r1.ebuild,v 1.16 2013/02/07 21:44:45 ulm Exp $
+# $Id$
 
 EAPI=4
 

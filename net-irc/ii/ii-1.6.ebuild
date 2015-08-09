@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ii/ii-1.6.ebuild,v 1.2 2011/10/25 19:20:07 binki Exp $
+# $Id$
 
 EAPI=4
 

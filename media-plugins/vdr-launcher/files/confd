@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.launcher:
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-launcher/files/confd,v 1.1 2006/03/06 06:07:44 zzam Exp $
+# $Id$
 
 # config file for vdr plugin launcher
 

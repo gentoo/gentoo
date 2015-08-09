@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-rescue/freebsd-rescue-8.2.ebuild,v 1.2 2012/05/02 21:41:15 jdhore Exp $
+# $Id$
 
 EAPI=2
 

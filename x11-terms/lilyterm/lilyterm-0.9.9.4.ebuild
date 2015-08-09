@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/lilyterm/lilyterm-0.9.9.4.ebuild,v 1.2 2013/07/23 15:11:39 jer Exp $
+# $Id$
 
 EAPI=5
 

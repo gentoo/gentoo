@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/chromium.eclass,v 1.12 2015/06/04 18:49:42 kensington Exp $
+# $Id$
 
 # @ECLASS: chromium.eclass
 # @MAINTAINER:

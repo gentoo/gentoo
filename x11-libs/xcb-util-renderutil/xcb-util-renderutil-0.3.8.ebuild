@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/xcb-util-renderutil/xcb-util-renderutil-0.3.8.ebuild,v 1.11 2013/02/23 02:47:40 zmedico Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/help2man/help2man-1.47.1.ebuild,v 1.3 2015/07/16 02:56:44 vapier Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

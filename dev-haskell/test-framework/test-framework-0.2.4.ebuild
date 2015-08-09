@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/test-framework/test-framework-0.2.4.ebuild,v 1.10 2012/09/12 15:31:31 qnikst Exp $
+# $Id$
 
 CABAL_FEATURES="bin lib profile haddock"
 inherit base haskell-cabal

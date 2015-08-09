@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/scorched3d/scorched3d-44.ebuild,v 1.7 2015/02/23 11:17:59 ago Exp $
+# $Id$
 
 EAPI=5
 WX_GTK_VER=2.8

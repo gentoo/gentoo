@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mrouted/mrouted-3.9.5.ebuild,v 1.5 2012/07/12 15:54:33 axs Exp $
+# $Id$
 
 EAPI="2"
 

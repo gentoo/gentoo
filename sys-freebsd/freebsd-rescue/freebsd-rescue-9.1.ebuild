@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-rescue/freebsd-rescue-9.1.ebuild,v 1.1 2013/01/27 21:27:12 aballier Exp $
+# $Id$
 
 EAPI=2
 

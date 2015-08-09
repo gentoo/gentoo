@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sonic-visualiser/sonic-visualiser-1.9.ebuild,v 1.5 2013/03/02 22:03:47 hwoarang Exp $
+# $Id$
 
 EAPI=4
 inherit eutils qt4-r2 autotools fdo-mime

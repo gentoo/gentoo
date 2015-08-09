@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-blasq/lc-blasq-9999.ebuild,v 1.2 2013/08/27 16:10:06 kensington Exp $
+# $Id$
 
 EAPI="5"
 

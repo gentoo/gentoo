@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gdesklets-core/files/gdesklets-control-getid,v 1.5 2010/05/08 19:04:24 nixphoeni Exp $
+# $Id$
 # 
 # A simple script to get the name and id from a Control.
 # Pretty much copied from test-control.py

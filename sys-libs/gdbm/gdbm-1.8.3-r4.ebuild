@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/gdbm/gdbm-1.8.3-r4.ebuild,v 1.14 2014/01/18 03:55:06 vapier Exp $
+# $Id$
 
 inherit eutils libtool flag-o-matic
 

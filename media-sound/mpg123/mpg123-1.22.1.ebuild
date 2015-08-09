@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpg123/mpg123-1.22.1.ebuild,v 1.1 2015/04/08 07:29:07 aballier Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs libtool multilib-minimal

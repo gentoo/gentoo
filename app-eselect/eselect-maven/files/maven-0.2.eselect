@@ -1,7 +1,7 @@
 # -*-eselect-*-  vim: ft=eselect
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: maven-0.2.eselect,v 1.1 2015/03/31 16:50:47 ulm Exp $
+# $Id$
 
 DESCRIPTION="Manage Maven targets"
 MAINTAINER="java@gentoo.org"

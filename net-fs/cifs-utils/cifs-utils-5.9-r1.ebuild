@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/cifs-utils/cifs-utils-5.9-r1.ebuild,v 1.13 2013/10/22 10:46:10 polynomial-c Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/kmetronome/kmetronome-0.10.1-r1.ebuild,v 1.2 2014/04/27 23:27:49 johu Exp $
+# $Id$
 
 EAPI=5
 

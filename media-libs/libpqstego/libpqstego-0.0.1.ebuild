@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libpqstego/libpqstego-0.0.1.ebuild,v 1.2 2010/08/09 09:35:16 xarthisius Exp $
+# $Id$
 
 EAPI=2
 

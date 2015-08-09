@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/nestra/nestra-0.66-r2.ebuild,v 1.7 2015/04/08 14:54:13 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs flag-o-matic multilib games

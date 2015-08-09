@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/clawsker/clawsker-0.7.8.ebuild,v 1.4 2014/08/10 21:17:21 slyfox Exp $
+# $Id$
 
 DESCRIPTION="Applet to edit Claws Mail's hidden preferences"
 HOMEPAGE="http://www.claws-mail.org/clawsker/"

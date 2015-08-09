@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-pin/files/reccmds.pin.conf-0.0.16,v 1.1 2006/05/05 22:38:03 hd_brummy Exp $
+# $Id$
 #
 # creats protected records, only visibly with the right pin
 # 

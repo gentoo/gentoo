@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ruby-mode/ruby-mode-2.1.5.ebuild,v 1.1 2014/12/26 06:56:01 graaff Exp $
+# $Id$
 
 EAPI=5
 

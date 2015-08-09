@@ -1,5 +1,5 @@
 # default: off
-# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/files/uw-ipop3.xinetd,v 1.2 2002/06/07 02:01:38 woodchip Exp $
+# $Id$
 # description: The POP3 service allows remote users to access their mail \
 #              using an POP3 client such as Netscape Communicator, mutt, \
 #	       or fetchmail.

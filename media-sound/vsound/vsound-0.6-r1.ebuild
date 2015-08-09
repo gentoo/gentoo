@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/vsound/vsound-0.6-r1.ebuild,v 1.6 2011/06/02 07:18:37 radhermit Exp $
+# $Id$
 
 EAPI=4
 

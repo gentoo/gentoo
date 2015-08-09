@@ -1,5 +1,5 @@
 # for vixie cron
-# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/files/crontab-3.0.1-r4,v 1.3 2011/09/20 15:13:51 idl0r Exp $
+# $Id$
 
 # Global variables
 SHELL=/bin/bash

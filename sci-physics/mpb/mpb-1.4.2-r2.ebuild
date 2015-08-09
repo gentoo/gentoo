@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/mpb/mpb-1.4.2-r2.ebuild,v 1.7 2013/02/19 19:44:18 jlec Exp $
+# $Id$
 
 EAPI=4
 

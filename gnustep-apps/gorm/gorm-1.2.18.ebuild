@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gorm/gorm-1.2.18.ebuild,v 1.3 2012/09/23 07:51:15 phajdan.jr Exp $
+# $Id$
 
 EAPI=4
 inherit gnustep-2

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/qhull/qhull-2012.1-r4.ebuild,v 1.2 2015/01/25 21:09:04 maekke Exp $
+# $Id$
 
 EAPI=5
 

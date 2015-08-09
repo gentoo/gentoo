@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/dictd-gazetteer/dictd-gazetteer-1.2-r1.ebuild,v 1.13 2005/04/01 15:34:40 nigoro Exp $
+# $Id$
 
 MY_P=dict-gazetteer-${PV}-pre
 DESCRIPTION="The original U.S. Gazetteer Place and Zipcode Files for dict"

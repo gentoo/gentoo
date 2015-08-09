@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cvsgraph/cvsgraph-1.7.0.ebuild,v 1.3 2012/05/13 21:19:17 ramereth Exp $
+# $Id$
 
 DESCRIPTION="CVS/RCS repository grapher"
 HOMEPAGE="http://www.akhphd.au.dk/~bertho/cvsgraph"

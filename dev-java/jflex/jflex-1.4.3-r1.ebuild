@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jflex/jflex-1.4.3-r1.ebuild,v 1.1 2015/02/23 10:37:47 monsieurp Exp $
+# $Id$
 
 # Currently, this package uses an included JFlex.jar file to bootstrap.
 # Upstream was contacted and this bootstrap is really needed. The only way to avoid it would be to use a supplied pre-compiled .scanner file.

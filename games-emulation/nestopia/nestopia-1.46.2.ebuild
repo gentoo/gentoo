@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/nestopia/nestopia-1.46.2.ebuild,v 1.5 2015/03/25 13:52:38 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnome2-utils games

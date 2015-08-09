@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/mathematica-fonts/mathematica-fonts-10.0.ebuild,v 1.1 2015/08/06 12:59:35 amadio Exp $
+# $Id$
 
 EAPI="5"
 

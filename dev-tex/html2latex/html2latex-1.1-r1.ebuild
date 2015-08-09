@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/html2latex/html2latex-1.1-r1.ebuild,v 1.3 2014/12/13 20:59:02 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

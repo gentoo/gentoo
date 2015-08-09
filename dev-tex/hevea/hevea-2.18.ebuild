@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/hevea/hevea-2.18.ebuild,v 1.1 2014/10/27 08:31:15 aballier Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/optcomp/optcomp-1.6.ebuild,v 1.2 2014/11/28 17:34:50 aballier Exp $
+# $Id$
 
 EAPI=5
 

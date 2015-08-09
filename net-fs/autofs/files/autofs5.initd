@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/files/autofs5.initd,v 1.4 2013/11/10 15:53:29 tomwij Exp $
+# $Id$
 
 DAEMON=/usr/sbin/automount
 PIDFILE=/var/run/autofs.pid

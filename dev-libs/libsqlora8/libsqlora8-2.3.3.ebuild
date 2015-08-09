@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsqlora8/libsqlora8-2.3.3.ebuild,v 1.2 2012/12/17 20:05:40 ulm Exp $
+# $Id$
 
 DESCRIPTION="libsqlora8 is a simple C-library to access Oracle databases via the OCI interface"
 SRC_URI="http://www.poitschke.de/libsqlora8/${P}.tar.gz"

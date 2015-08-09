@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-osdteletext/files/rc-addon-v3.sh,v 1.2 2014/03/03 15:07:36 hd_brummy Exp $
+# $Id$
 #
 # rc-addon-script for plugin osdteletext
 #

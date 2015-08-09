@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/opensmtpd/files/smtpd.initd,v 1.4 2015/07/18 11:33:58 pinkbyte Exp $
+# $Id$
 
 command="smtpd"
 start_stop_daemon_args="--pidfile=/run/smtpd.pid"

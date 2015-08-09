@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nepenthes/nepenthes-0.2.2-r1.ebuild,v 1.2 2014/10/25 12:09:09 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils user

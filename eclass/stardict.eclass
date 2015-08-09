@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/stardict.eclass,v 1.18 2012/06/05 10:21:35 pacho Exp $
+# $Id$
 
 # Author : Alastair Tse <liquidx@gentoo.org>
 #

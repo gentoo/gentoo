@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ser/files/ser.confd,v 1.2 2005/09/12 18:07:17 stkn Exp $
+# $Id$
 
 # Additional options to start SER with
 #

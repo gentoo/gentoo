@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/pysam/pysam-0.6-r1.ebuild,v 1.2 2015/04/13 06:22:56 jlec Exp $
+# $Id$
 
 EAPI="5"
 

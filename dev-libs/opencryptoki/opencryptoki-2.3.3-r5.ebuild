@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/opencryptoki/opencryptoki-2.3.3-r5.ebuild,v 1.4 2012/06/06 03:43:03 zmedico Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5546b5bef00df6891066207875b706c8
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare setup
+EAPI=5
 DEPEND=sys-devel/libtool =www-servers/apache-2*
 DESCRIPTION=Bandwidth Management Module for Apache2
-EAPI=5
-HOMEPAGE=http://www.ivn.cl/apache/
-KEYWORDS=amd64 ppc x86
 LICENSE=Apache-2.0
-RDEPEND==www-servers/apache-2*
-SLOT=0
 SRC_URI=http://ivn.cl/files/source/mod_bw-0.92.tgz
-_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=94dd4fa2a8e9eedfa774eedc5c701ab0
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www.ivn.cl/apache/
+RDEPEND==www-servers/apache-2*

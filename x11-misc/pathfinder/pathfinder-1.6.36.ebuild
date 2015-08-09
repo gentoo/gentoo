@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/pathfinder/pathfinder-1.6.36.ebuild,v 1.7 2011/11/12 10:50:41 jlec Exp $
+# $Id$
 
 EAPI="1"
 

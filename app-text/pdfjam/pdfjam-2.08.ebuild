@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdfjam/pdfjam-2.08.ebuild,v 1.16 2013/04/25 21:25:34 ago Exp $
+# $Id$
 
 MY_PV=${PV/./}
 DESCRIPTION="pdfnup, pdfjoin and pdf90"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-contrib/ant-contrib-1.0_beta2-r2.ebuild,v 1.11 2014/08/10 20:07:08 slyfox Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

@@ -1,10 +1,11 @@
+_eclasses_=
+_md5_=542669115bd73110f8a601e257819fb1
+SLOT=0
 DEFINED_PHASES=compile install prepare test
+EAPI=5
 DEPEND=app-arch/xz-utils
 DESCRIPTION=Gentoo - 10 Years Compiling Background Artwork
-EAPI=5
-HOMEPAGE=http://www.gentoo.org/proj/en/pr/releases/10.0/graphics.xml
-KEYWORDS=amd64 ~mips x86
 LICENSE=CC-BY-SA-3.0
-SLOT=0
 SRC_URI=http://dev.gentoo.org/~flameeyes/gentoo10-backgrounds-20110309.tar.xz
-_md5_=20ee310ad66767ce7932cb49a4a4179d
+KEYWORDS=amd64 ~mips x86
+HOMEPAGE=http://www.gentoo.org/proj/en/pr/releases/10.0/graphics.xml

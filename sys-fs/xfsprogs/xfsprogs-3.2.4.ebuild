@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/xfsprogs/xfsprogs-3.2.4.ebuild,v 1.6 2015/08/06 04:56:14 maekke Exp $
+# $Id$
 
 EAPI="4"
 

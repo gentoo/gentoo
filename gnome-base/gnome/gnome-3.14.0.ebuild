@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-3.14.0.ebuild,v 1.7 2015/03/15 13:23:23 pacho Exp $
+# $Id$
 
 EAPI="5"
 

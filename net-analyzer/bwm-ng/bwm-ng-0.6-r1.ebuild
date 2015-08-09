@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bwm-ng/bwm-ng-0.6-r1.ebuild,v 1.4 2013/01/31 23:08:47 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libtaginfo/libtaginfo-0.1.6.ebuild,v 1.3 2014/07/06 13:19:57 mgorny Exp $
+# $Id$
 
 EAPI=4
 

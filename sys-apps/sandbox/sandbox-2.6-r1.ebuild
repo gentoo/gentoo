@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sandbox/sandbox-2.6-r1.ebuild,v 1.17 2015/04/15 03:25:06 vapier Exp $
+# $Id$
 
 #
 # don't monkey with this ebuild unless contacting portage devs.

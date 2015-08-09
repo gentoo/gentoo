@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/agrep/agrep-2.04-r1.ebuild,v 1.7 2014/08/06 07:09:33 patrick Exp $
+# $Id$
 
 inherit toolchain-funcs
 

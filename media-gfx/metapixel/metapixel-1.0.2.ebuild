@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/metapixel/metapixel-1.0.2.ebuild,v 1.5 2011/09/15 23:19:01 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

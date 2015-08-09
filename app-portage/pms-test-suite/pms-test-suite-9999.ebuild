@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/pms-test-suite/pms-test-suite-9999.ebuild,v 1.4 2015/07/22 01:35:40 mrueg Exp $
+# $Id$
 
 EAPI=4
 

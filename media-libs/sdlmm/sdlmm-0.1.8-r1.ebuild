@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdlmm/sdlmm-0.1.8-r1.ebuild,v 1.14 2015/03/31 16:27:06 mr_bones_ Exp $
+# $Id$
 
 MY_P=${P/sdl/SDL}
 

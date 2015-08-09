@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailman/files/README.gentoo-r3,v 1.2 2008/11/14 11:07:55 hanno Exp $
+# $Id$
 
 Follow these instructions to finish setting up mailman. This file and the
 original ebuild were tweaked by me <lamer@gentoo.org> but were graciously

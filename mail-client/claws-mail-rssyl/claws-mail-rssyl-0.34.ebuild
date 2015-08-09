@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-rssyl/claws-mail-rssyl-0.34.ebuild,v 1.11 2013/05/08 04:04:00 fauli Exp $
+# $Id$
 
 EAPI="4"
 

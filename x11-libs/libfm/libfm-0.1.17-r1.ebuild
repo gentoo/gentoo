@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libfm/libfm-0.1.17-r1.ebuild,v 1.2 2012/08/08 21:20:57 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

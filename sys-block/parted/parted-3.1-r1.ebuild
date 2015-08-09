@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/parted/parted-3.1-r1.ebuild,v 1.18 2014/03/04 00:25:41 jer Exp $
+# $Id$
 
 EAPI="4"
 

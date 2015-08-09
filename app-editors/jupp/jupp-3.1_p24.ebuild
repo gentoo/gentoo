@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jupp/jupp-3.1_p24.ebuild,v 1.2 2013/01/07 02:37:49 jdhore Exp $
+# $Id$
 
 EAPI=4
 

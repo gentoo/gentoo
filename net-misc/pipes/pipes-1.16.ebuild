@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pipes/pipes-1.16.ebuild,v 1.8 2010/10/28 10:36:35 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="Very versatile TCP pipes"
 HOMEPAGE="http://bisqwit.iki.fi/source/pipes.html"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jibx-tools/jibx-tools-1.1.5-r2.ebuild,v 1.2 2015/07/06 14:24:44 monsieurp Exp $
+# $Id$
 
 EAPI="5"
 JAVA_PKG_IUSE="source"

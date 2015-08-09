@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/lugaru/lugaru-1.0c-r1.ebuild,v 1.4 2015/06/01 22:05:44 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils unpacker games

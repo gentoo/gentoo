@@ -1,9 +1,9 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=1b486c5289eb1c910f0d55b7cd043ff7
+SLOT=0
 DEFINED_PHASES=install prepare unpack
+EAPI=5
 DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=base functions required by all gentoo systems
-EAPI=5
-HOMEPAGE=http://www.gentoo.org
 LICENSE=GPL-2
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2c53b4aa9933a49f34aa02580ebb788d
+HOMEPAGE=http://www.gentoo.org

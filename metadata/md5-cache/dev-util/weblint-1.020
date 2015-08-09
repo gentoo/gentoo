@@ -1,8 +1,10 @@
-DEFINED_PHASES=install
-DESCRIPTION=syntax and minimal style checker for HTML by Neil Bowers
-HOMEPAGE=http://www.w3.org/Tools/weblint.html
-KEYWORDS=alpha amd64 ppc sparc x86
-LICENSE=GPL-2
+_eclasses_=
+_md5_=fd70e1880d6bf2713415bf895c010075
 SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=syntax and minimal style checker for HTML by Neil Bowers
+LICENSE=GPL-2
 SRC_URI=mirror://gentoo/weblint-1.020.tar.gz
-_md5_=a1c75ecf203176a8f8e237101309d413
+KEYWORDS=alpha amd64 ppc sparc x86
+HOMEPAGE=http://www.w3.org/Tools/weblint.html

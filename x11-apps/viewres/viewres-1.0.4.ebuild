@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/viewres/viewres-1.0.4.ebuild,v 1.8 2013/10/08 05:03:06 ago Exp $
+# $Id$
 
 EAPI=5
 

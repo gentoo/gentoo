@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-burn/files/rc-addon.sh,v 1.4 2011/02/02 19:59:18 hd_brummy Exp $
+# $Id$
 #
 # rc-addon-script for plugin burn
 #

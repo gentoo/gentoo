@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/meep/meep-1.1.1.ebuild,v 1.5 2012/08/14 23:11:40 bicatali Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

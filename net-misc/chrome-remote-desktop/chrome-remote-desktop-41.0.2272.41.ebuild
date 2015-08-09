@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/chrome-remote-desktop/chrome-remote-desktop-41.0.2272.41.ebuild,v 1.1 2015/02/27 08:05:14 vapier Exp $
+# $Id$
 
 # Base URL: https://dl.google.com/linux/chrome-remote-desktop/deb/
 # Fetch the Release file:

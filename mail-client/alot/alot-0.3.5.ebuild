@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/alot/alot-0.3.5.ebuild,v 1.3 2014/08/07 19:44:13 aidecoe Exp $
+# $Id$
 
 EAPI=5
 

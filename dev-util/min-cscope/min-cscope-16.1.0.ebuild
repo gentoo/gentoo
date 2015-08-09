@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/min-cscope/min-cscope-16.1.0.ebuild,v 1.3 2014/02/07 20:41:56 creffett Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils flag-o-matic

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/slrnconf/slrnconf-0.8.4.ebuild,v 1.4 2011/10/23 15:08:19 armin76 Exp $
+# $Id$
 
 DESCRIPTION="slrnconf is a graphical configuration utility for the newsreader slrn"
 HOMEPAGE="http://home.arcor.de/kaffeetisch/slrnconf.html"

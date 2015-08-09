@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sipcalc/sipcalc-1.1.6.ebuild,v 1.6 2014/08/10 20:47:21 slyfox Exp $
+# $Id$
 
 EAPI=5
 

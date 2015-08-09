@@ -1,5 +1,5 @@
 # Global config file for VDR systeminfo plugin
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-systeminfo/files/confd,v 1.1 2008/11/17 17:56:13 hd_brummy Exp $
+# $Id$
 
 # I most cases here is no user activity needed
 # Yust if you get wrong or no output in OSD of plugin

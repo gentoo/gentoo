@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/p0f/p0f-3.07_beta.ebuild,v 1.1 2014/09/11 18:09:19 jer Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

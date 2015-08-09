@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/mercurial-server/mercurial-server-1.2.ebuild,v 1.4 2012/12/26 23:17:35 ottxor Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

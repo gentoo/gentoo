@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/files/xencommons.initd,v 1.1 2013/12/06 23:34:11 idella4 Exp $
+# $Id$
 
 depend() {
 	before xenstored

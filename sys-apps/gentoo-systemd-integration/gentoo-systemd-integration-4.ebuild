@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gentoo-systemd-integration/gentoo-systemd-integration-4.ebuild,v 1.11 2014/12/07 12:32:54 ago Exp $
+# $Id$
 
 EAPI=5
 

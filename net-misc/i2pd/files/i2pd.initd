@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/i2pd/files/i2pd.initd,v 1.1 2015/01/08 22:44:46 blueness Exp $
+# $Id$
 
 description="C++ daemon for accessing the I2P network"
 

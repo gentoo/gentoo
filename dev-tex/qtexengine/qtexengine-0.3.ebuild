@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/qtexengine/qtexengine-0.3.ebuild,v 1.5 2015/01/25 23:53:10 pesa Exp $
+# $Id$
 
 EAPI=5
 

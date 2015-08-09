@@ -2,7 +2,7 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
 # Author:  Martin Schlemmer <azarah@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinit/files/chooser.sh,v 1.5 2009/11/14 14:18:43 scarabeus Exp $
+# $Id$
 
 # Find a match for $XSESSION in /etc/X11/Sessions
 GENTOO_SESSION=""

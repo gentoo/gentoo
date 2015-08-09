@@ -1,4 +1,4 @@
-/* $Id: tai64nfrac.c,v 1.1 2002/01/30 13:36:48 gbevin Exp $
+/* # $Id$
 
    Convert external TAI64N timestamps to fractional seconds since epoch.
 

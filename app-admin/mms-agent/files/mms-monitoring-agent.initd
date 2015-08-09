@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mms-agent/files/mms-monitoring-agent.initd,v 1.2 2015/05/12 09:47:50 ultrabug Exp $
+# $Id$
 
 logfile=/var/log/mongodb/mms-monitoring-agent.log
 run_dir=${run_dir:-/run/mongodb}

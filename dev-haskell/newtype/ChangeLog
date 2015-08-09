@@ -1,9 +1,0 @@
-# ChangeLog for dev-haskell/newtype
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/newtype/ChangeLog,v 1.1 2015/03/11 12:13:00 gienah Exp $
-
-*newtype-0.2 (11 Mar 2015)
-
-  11 Mar 2015; Mark Wright <gienah@gentoo.org> +metadata.xml,
-  +newtype-0.2.ebuild:
-  Add newtype

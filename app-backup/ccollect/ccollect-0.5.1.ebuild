@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/ccollect/ccollect-0.5.1.ebuild,v 1.7 2009/10/12 17:19:30 halcy0n Exp $
+# $Id$
 
 DESCRIPTION="(pseudo) incremental backup with different exclude lists using
 hardlinks and rsync"

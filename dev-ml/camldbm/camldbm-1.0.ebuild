@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/camldbm/camldbm-1.0.ebuild,v 1.8 2013/07/23 17:59:00 aballier Exp $
+# $Id$
 
 EAPI=5
 

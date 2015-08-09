@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qastools/qastools-0.18.1-r1.ebuild,v 1.1 2015/03/29 04:43:03 yngwin Exp $
+# $Id$
 
 EAPI=5
 PLOCALES="cs de es he ru"

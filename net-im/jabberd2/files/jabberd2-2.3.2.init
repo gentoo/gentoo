@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd2/files/jabberd2-2.3.2.init,v 1.1 2014/06/01 20:09:54 hasufell Exp $
+# $Id$
 
 extra_commands="reload"
 

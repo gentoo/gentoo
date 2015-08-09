@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jakarta-slide-webdavclient/jakarta-slide-webdavclient-2.1-r3.ebuild,v 1.2 2009/09/11 22:14:13 maekke Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source"

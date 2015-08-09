@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/enlightenment/enlightenment-0.18.8.ebuild,v 1.4 2015/04/19 09:47:14 pacho Exp $
+# $Id$
 
 EAPI=5
 

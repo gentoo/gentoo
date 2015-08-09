@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/lilo/lilo-24.0-r1.ebuild,v 1.3 2014/09/26 13:24:00 ago Exp $
+# $Id$
 
 EAPI="5"
 

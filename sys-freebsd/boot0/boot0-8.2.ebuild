@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/boot0/boot0-8.2.ebuild,v 1.2 2011/07/25 10:26:26 naota Exp $
+# $Id$
 
 EAPI=2
 

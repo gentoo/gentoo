@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/blas-reference-20070226.ebuild,v 1.27 2015/03/31 20:10:55 ulm Exp $
+# $Id$
 
 inherit eutils fortran-2 autotools multilib flag-o-matic toolchain-funcs
 

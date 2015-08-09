@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.joystick
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-joystick/files/confd,v 1.1 2007/12/03 20:47:02 hd_brummy Exp $
+# $Id$
 
 ### Joystick device
 #   default: /dev/js0

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/szip/szip-2.1-r1.ebuild,v 1.4 2013/07/18 14:14:54 chithanh Exp $
+# $Id$
 
 EAPI=4
 inherit autotools-utils

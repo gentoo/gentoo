@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/urlview/urlview-0.9.ebuild,v 1.28 2014/10/28 00:04:35 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

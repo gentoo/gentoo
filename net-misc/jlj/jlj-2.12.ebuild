@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/jlj/jlj-2.12.ebuild,v 1.6 2014/08/10 20:44:54 slyfox Exp $
+# $Id$
 
 DESCRIPTION="A simple console LiveJournal entry system"
 HOMEPAGE="http://umlautllama.com/projects/perl/#jlj"

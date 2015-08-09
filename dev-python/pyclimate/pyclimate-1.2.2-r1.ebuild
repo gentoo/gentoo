@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyclimate/pyclimate-1.2.2-r1.ebuild,v 1.11 2015/02/23 14:46:43 idella4 Exp $
+# $Id$
 
 EAPI="3"
 SUPPORT_PYTHON_ABIS="1"

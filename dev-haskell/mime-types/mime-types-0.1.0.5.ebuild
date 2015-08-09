@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/mime-types/mime-types-0.1.0.5.ebuild,v 1.1 2014/12/23 05:20:57 gienah Exp $
+# $Id$
 
 EAPI=5
 

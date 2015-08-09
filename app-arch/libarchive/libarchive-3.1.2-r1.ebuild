@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/libarchive/libarchive-3.1.2-r1.ebuild,v 1.14 2014/06/10 00:24:29 vapier Exp $
+# $Id$
 
 EAPI=5
 inherit eutils libtool multilib toolchain-funcs

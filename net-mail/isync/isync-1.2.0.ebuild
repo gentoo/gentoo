@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/isync/isync-1.2.0.ebuild,v 1.1 2015/08/05 22:42:26 alonbl Exp $
+# $Id$
 
 EAPI=5
 

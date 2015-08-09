@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmp3splt/libmp3splt-0.9.1a.ebuild,v 1.6 2015/01/16 09:48:22 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit versionator autotools eutils multilib

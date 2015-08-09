@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dleyna-server/dleyna-server-0.5.0.ebuild,v 1.2 2015/07/04 12:50:17 pacho Exp $
+# $Id$
 
 EAPI=5
 

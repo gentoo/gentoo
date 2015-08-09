@@ -1,5 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/bsd/freebsd/9.0/package.provided,v 1.1 2011/12/26 10:50:45 grobian Exp $
+# $Id$
 
 sys-freebsd/libc-9.0

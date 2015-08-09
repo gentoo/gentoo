@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/hoh-bin/hoh-bin-1.01.ebuild,v 1.16 2015/06/01 21:33:24 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

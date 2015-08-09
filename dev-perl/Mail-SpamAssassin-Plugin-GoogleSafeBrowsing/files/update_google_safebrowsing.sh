@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing/files/update_google_safebrowsing.sh,v 1.2 2008/07/05 09:46:28 robbat2 Exp $
+# $Id$
 # This cron script updates the Google SafeBrowsing lists for the use of the
 # Mail-SpamAssassin-Plugin-GoogleSafeBrowsing plugin.
 # It should be run every 25-30 minutes! http://code.google.com/apis/safebrowsing/developers_guide.html#AcceptableUsage

@@ -1,6 +1,6 @@
 # Copyright 2005-2008 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/packages,v 1.2 2012/11/29 21:29:04 ranger Exp $
+# $Id$
 
 *sys-fs/hfsutils
 *sys-fs/hfsplusutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/pixman/pixman-0.32.6.ebuild,v 1.12 2015/03/14 14:19:22 maekke Exp $
+# $Id$
 
 EAPI=5
 XORG_MULTILIB=yes

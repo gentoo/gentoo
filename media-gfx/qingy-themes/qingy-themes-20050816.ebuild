@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/qingy-themes/qingy-themes-20050816.ebuild,v 1.6 2009/11/25 22:21:37 maekke Exp $
+# $Id$
 
 DESCRIPTION="Collection of qingy themes"
 

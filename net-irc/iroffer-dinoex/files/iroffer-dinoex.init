@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/iroffer-dinoex/files/iroffer-dinoex.init,v 1.2 2013/02/08 12:00:11 pinkbyte Exp $
+# $Id$
 
 extra_commands="reload reconnect"
 

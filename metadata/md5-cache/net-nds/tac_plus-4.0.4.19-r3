@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9336f85f258c2ee5fb9a90f636138f05
+SLOT=0
 DEFINED_PHASES=compile configure install prepare unpack
+EAPI=4
 DEPEND=skey? ( >=sys-auth/skey-1.1.5-r1 ) tcpd? ( sys-apps/tcp-wrappers ) sys-libs/pam !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An updated version of Cisco's TACACS+ server
-EAPI=4
-HOMEPAGE=http://www.shrubbery.net/tac_plus/
-IUSE=debug finger maxsess tcpd skey static-libs
-KEYWORDS=amd64 ppc x86
 LICENSE=HPND RSA GPL-2
-RDEPEND=skey? ( >=sys-auth/skey-1.1.5-r1 ) tcpd? ( sys-apps/tcp-wrappers ) sys-libs/pam
-SLOT=0
+IUSE=debug finger maxsess tcpd skey static-libs
 SRC_URI=ftp://ftp.shrubbery.net/pub/tac_plus/tacacs+-F4.0.4.19.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2b0aa3aa95fbb357f62339f36da2cf9e
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www.shrubbery.net/tac_plus/
+RDEPEND=skey? ( >=sys-auth/skey-1.1.5-r1 ) tcpd? ( sys-apps/tcp-wrappers ) sys-libs/pam

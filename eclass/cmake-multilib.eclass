@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/cmake-multilib.eclass,v 1.7 2014/05/09 10:48:59 mgorny Exp $
+# $Id$
 
 # @ECLASS: cmake-multilib.eclass
 # @MAINTAINER:

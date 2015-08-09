@@ -1,9 +1,0 @@
-# ChangeLog for kde-misc/plasma-photooftheday
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-photooftheday/ChangeLog,v 1.1 2013/06/21 22:18:00 creffett Exp $
-
-*plasma-photooftheday-2.1.1 (21 Jun 2013)
-
-  21 Jun 2013; Chris Reffett <creffett@gentoo.org> +metadata.xml,
-  +plasma-photooftheday-2.1.1.ebuild:
-  Add to tree from kde overlay

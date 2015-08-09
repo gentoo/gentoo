@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/files/rrdcached.init,v 1.1 2012/09/06 16:50:41 maksbotan Exp $
+# $Id$
 
 command="/usr/bin/rrdcached"
 command_args="${RRCACHE_ARGS} -p /run/rrdcached.pid"

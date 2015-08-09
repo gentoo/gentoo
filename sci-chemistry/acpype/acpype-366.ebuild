@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/acpype/acpype-366.ebuild,v 1.2 2011/08/02 14:45:49 alexxy Exp $
+# $Id$
 
 EAPI=3
 

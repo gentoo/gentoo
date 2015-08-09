@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/dragonflycms/dragonflycms-9.3.3.1.ebuild,v 1.1 2012/06/23 13:41:38 mabi Exp $
+# $Id$
 
 EAPI=4
 

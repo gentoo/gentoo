@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/os-networksv2-python-novaclient-ext/os-networksv2-python-novaclient-ext-0.21-r1.ebuild,v 1.1 2014/04/08 06:38:42 prometheanfire Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

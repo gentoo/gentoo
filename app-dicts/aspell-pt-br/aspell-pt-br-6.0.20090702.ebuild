@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-pt-br/aspell-pt-br-6.0.20090702.ebuild,v 1.9 2012/05/17 20:06:29 aballier Exp $
+# $Id$
 
 ASPELL_LANG="Brazilian Portuguese"
 ASPOSTFIX=6

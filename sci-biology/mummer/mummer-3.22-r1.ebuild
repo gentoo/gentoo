@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mummer/mummer-3.22-r1.ebuild,v 1.3 2011/05/31 20:43:14 maekke Exp $
+# $Id$
 
 EAPI="3"
 

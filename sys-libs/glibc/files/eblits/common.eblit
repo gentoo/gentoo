@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/common.eblit,v 1.47 2015/05/30 05:28:41 vapier Exp $
+# $Id$
 
 alt_prefix() {
 	is_crosscompile && echo /usr/${CTARGET}

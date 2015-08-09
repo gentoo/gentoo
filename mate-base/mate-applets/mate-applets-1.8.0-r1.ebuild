@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mate-base/mate-applets/mate-applets-1.8.0-r1.ebuild,v 1.11 2015/07/11 23:50:15 np-hardass Exp $
+# $Id$
 
 EAPI="5"
 

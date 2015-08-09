@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg-tools/mpeg-tools-1.5b-r5.ebuild,v 1.5 2014/03/14 10:13:59 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

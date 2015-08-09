@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/libreswan/libreswan-3.7-r1.ebuild,v 1.1 2014/01/06 19:55:34 floppym Exp $
+# $Id$
 
 EAPI=5
 

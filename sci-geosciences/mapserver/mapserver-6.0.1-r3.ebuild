@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/mapserver/mapserver-6.0.1-r3.ebuild,v 1.1 2015/05/05 08:52:36 idella4 Exp $
+# $Id$
 
 EAPI=5
 

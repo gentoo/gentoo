@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmpi/openmpi-1.6.5-r1.ebuild,v 1.1 2015/02/04 21:46:32 jsbronder Exp $
+# $Id$
 
 EAPI=5
 

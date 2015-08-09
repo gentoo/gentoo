@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-spell/gtk2-spell-1.40.0-r1.ebuild,v 1.2 2015/05/01 12:44:59 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/freetds/freetds-0.91-r1.ebuild,v 1.1 2014/01/22 13:37:30 olemarkus Exp $
+# $Id$
 
 EAPI=4
 

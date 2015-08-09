@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/leafnode/leafnode-1.11.8.ebuild,v 1.6 2012/03/18 17:55:14 armin76 Exp $
+# $Id$
 
 EAPI=4
 

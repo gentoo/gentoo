@@ -1,9 +1,0 @@
-# ChangeLog for dev-util/obs-service-git_tarballs
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/obs-service-git_tarballs/ChangeLog,v 1.1 2013/11/02 09:55:21 scarabeus Exp $
-
-*obs-service-git_tarballs-0.1.7 (02 Nov 2013)
-
-  02 Nov 2013; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
-  +obs-service-git_tarballs-0.1.7.ebuild:
-  Intial commit of git_tarballs obs service to repack git.

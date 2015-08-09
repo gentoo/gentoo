@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gtk2hs-buildtools/gtk2hs-buildtools-0.13.0.3.ebuild,v 1.1 2014/12/13 13:42:55 gienah Exp $
+# $Id$
 
 EAPI=5
 

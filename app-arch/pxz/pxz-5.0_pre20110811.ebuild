@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/pxz/pxz-5.0_pre20110811.ebuild,v 1.1 2011/08/11 20:59:44 chutzpah Exp $
+# $Id$
 
 EAPI="3"
 

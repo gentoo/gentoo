@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/slashtime/slashtime-0.5.13-r1.ebuild,v 1.3 2014/02/24 01:07:30 phajdan.jr Exp $
+# $Id$
 
 EAPI="5"
 

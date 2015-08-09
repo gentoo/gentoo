@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Perlbal/files/perlbal_conf.d_1.58,v 1.1 2007/05/13 08:18:36 robbat2 Exp $
+# $Id$
 # PIDFILE is not yet used, pending upstream still
 #PIDFILE="/var/run/perlbal.pid"
 PERLBAL_OPTS="--daemon --config=/etc/perlbal/perlbal.conf"

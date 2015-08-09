@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/nmon/nmon-14i.ebuild,v 1.2 2014/10/28 12:01:05 jer Exp $
+# $Id$
 
 EAPI=5
 inherit flag-o-matic toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-widget-message-indicator/plasma-widget-message-indicator-0.5.8.ebuild,v 1.4 2014/12/31 12:31:54 kensington Exp $
+# $Id$
 
 EAPI=5
 

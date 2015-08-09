@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bareos/bareos-12.4.5-r1.ebuild,v 1.9 2015/05/05 16:03:52 mschiff Exp $
+# $Id$
 
 EAPI="5"
 

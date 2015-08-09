@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Digest/perl-Digest-1.170.0-r5.ebuild,v 1.1 2015/06/04 21:40:59 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

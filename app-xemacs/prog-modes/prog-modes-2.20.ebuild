@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/prog-modes/prog-modes-2.20.ebuild,v 1.7 2014/08/10 19:23:25 slyfox Exp $
+# $Id$
 
 SLOT="0"
 IUSE=""

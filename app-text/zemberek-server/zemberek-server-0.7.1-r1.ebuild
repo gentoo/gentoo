@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/zemberek-server/zemberek-server-0.7.1-r1.ebuild,v 1.1 2015/04/05 21:01:36 monsieurp Exp $
+# $Id$
 
 EAPI=5
 inherit eutils java-pkg-2 java-ant-2

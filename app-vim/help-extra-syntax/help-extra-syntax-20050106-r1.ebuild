@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/help-extra-syntax/help-extra-syntax-20050106-r1.ebuild,v 1.6 2013/05/14 05:24:39 radhermit Exp $
+# $Id$
 
 inherit vim-plugin
 

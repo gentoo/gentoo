@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sshguard/sshguard-1.5-r1.ebuild,v 1.3 2012/01/15 15:41:08 phajdan.jr Exp $
+# $Id$
 
 EAPI="2"
 

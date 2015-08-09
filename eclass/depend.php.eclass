@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/depend.php.eclass,v 1.37 2015/07/17 18:29:39 grknight Exp $
+# $Id$
 
 # @DEAD
 # @ECLASS: depend.php.eclass

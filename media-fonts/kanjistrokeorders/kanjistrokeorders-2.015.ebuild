@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/kanjistrokeorders/kanjistrokeorders-2.015.ebuild,v 1.1 2010/11/04 09:15:32 matsuu Exp $
+# $Id$
 
 inherit font
 

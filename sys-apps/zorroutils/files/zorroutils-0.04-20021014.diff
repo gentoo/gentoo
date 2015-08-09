@@ -5,8 +5,8 @@ diff -Nru zorroutils-0.04.orig/zorro.ids zorroutils-0.04/zorro.ids
  #	Maintained by Geert Uytterhoeven <zorro@linux-m68k.org>
  #	If you have any new entries, please send them to the maintainer.
  #
--#	$Id: zorroutils-0.04-20021014.diff,v 1.1 2009/03/26 18:21:22 armin76 Exp $
-+#	$Id: zorroutils-0.04-20021014.diff,v 1.1 2009/03/26 18:21:22 armin76 Exp $
+-#	$Id$
++#	$Id$
  #
  
  # Manufacturers and Products. Please keep sorted.

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ddt/ddt-1.0.0.ebuild,v 1.1 2015/04/28 20:18:36 prometheanfire Exp $
+# $Id$
 
 EAPI=5
 

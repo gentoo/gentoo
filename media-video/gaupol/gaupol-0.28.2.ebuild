@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gaupol/gaupol-0.28.2.ebuild,v 1.2 2015/05/27 13:21:38 patrick Exp $
+# $Id$
 
 EAPI=5
 

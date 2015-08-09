@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/linux-info.eclass,v 1.107 2015/06/02 07:39:52 vapier Exp $
+# $Id$
 
 # @ECLASS: linux-info.eclass
 # @MAINTAINER:

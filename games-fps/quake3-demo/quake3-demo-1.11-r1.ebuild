@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-demo/quake3-demo-1.11-r1.ebuild,v 1.4 2015/06/14 19:49:39 ulm Exp $
+# $Id$
 
 EAPI=5
 inherit eutils unpacker games

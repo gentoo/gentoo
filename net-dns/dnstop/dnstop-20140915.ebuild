@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnstop/dnstop-20140915.ebuild,v 1.1 2015/01/07 14:36:59 xmw Exp $
+# $Id$
 
 EAPI=5
 

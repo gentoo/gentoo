@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/csup/csup-20060318.ebuild,v 1.7 2009/10/12 20:42:28 ssuominen Exp $
+# $Id$
 
 inherit toolchain-funcs eutils
 

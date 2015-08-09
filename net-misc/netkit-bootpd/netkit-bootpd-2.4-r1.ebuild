@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-bootpd/netkit-bootpd-2.4-r1.ebuild,v 1.4 2010/11/11 17:40:11 hwoarang Exp $
+# $Id$
 
 EAPI=3
 inherit eutils toolchain-funcs

@@ -1,10 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils	def8c8eb435ec28fd9315114640f6c84	python	6d7be3e54573292f012e3cc433d8297	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9b8f5362face8ccf6766b1bec7e44c88
+SLOT=0
 DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+EAPI=4
 DEPEND=dev-python/configshell dev-python/rtslib sys-block/lio-utils =dev-lang/python-2* dev-vcs/git
 DESCRIPTION=RTSAdmin Community Edition for target_core_mod/ConfigFS
-EAPI=4
-HOMEPAGE=http://linux-iscsi.org/
 LICENSE=AGPL-3
+HOMEPAGE=http://linux-iscsi.org/
 RDEPEND=dev-python/configshell dev-python/rtslib sys-block/lio-utils =dev-lang/python-2*
-SLOT=0
-_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=0b64c0cb186acb63b811faf237b6d669

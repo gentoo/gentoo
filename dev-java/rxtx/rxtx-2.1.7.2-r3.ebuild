@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/rxtx/rxtx-2.1.7.2-r3.ebuild,v 1.4 2011/09/22 07:17:57 radhermit Exp $
+# $Id$
 
 inherit flag-o-matic toolchain-funcs versionator autotools java-pkg-2
 

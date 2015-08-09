@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/addresses/addresses-0.4.7.ebuild,v 1.5 2008/12/08 16:24:58 voyageur Exp $
+# $Id$
 
 inherit gnustep-2
 

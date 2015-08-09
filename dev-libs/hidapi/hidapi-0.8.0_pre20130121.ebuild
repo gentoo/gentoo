@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/hidapi/hidapi-0.8.0_pre20130121.ebuild,v 1.5 2014/01/26 13:51:06 blueness Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/monkeysphere/monkeysphere-0.37.ebuild,v 1.1 2014/08/08 11:30:23 k_f Exp $
+# $Id$
 
 EAPI=5
 inherit eutils user

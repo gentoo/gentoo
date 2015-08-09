@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avinfo/avinfo-1.0_alpha15_p1.ebuild,v 1.2 2011/11/20 21:32:44 radhermit Exp $
+# $Id$
 
 EAPI=4
 

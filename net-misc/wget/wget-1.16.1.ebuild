@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/wget/wget-1.16.1.ebuild,v 1.2 2014/12/08 17:55:39 polynomial-c Exp $
+# $Id$
 
 EAPI="4"
 PYTHON_COMPAT=( python{3_3,3_4} )

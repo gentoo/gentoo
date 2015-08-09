@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-pcre-builtin/regex-pcre-builtin-0.94.4.5.8.31.ebuild,v 1.1 2013/04/02 10:24:33 gienah Exp $
+# $Id$
 
 EAPI=5
 

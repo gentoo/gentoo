@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/haml/haml-4.0.6.ebuild,v 1.2 2015/07/25 07:15:48 graaff Exp $
+# $Id$
 
 EAPI=5
 

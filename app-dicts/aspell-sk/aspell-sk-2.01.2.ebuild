@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-sk/aspell-sk-2.01.2.ebuild,v 1.8 2012/05/17 20:08:18 aballier Exp $
+# $Id$
 
 ASPELL_LANG="Slovak"
 ASPOSTFIX="6"

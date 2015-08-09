@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/develock/develock-0.45.ebuild,v 1.5 2014/05/14 14:20:56 ago Exp $
+# $Id$
 
 EAPI=5
 

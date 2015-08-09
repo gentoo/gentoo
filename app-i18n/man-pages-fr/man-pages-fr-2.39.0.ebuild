@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-fr/man-pages-fr-2.39.0.ebuild,v 1.6 2014/01/30 20:28:02 vapier Exp $
+# $Id$
 
 DESCRIPTION="A somewhat comprehensive collection of french Linux man pages"
 HOMEPAGE="http://fr.tldp.org/manfr.php"

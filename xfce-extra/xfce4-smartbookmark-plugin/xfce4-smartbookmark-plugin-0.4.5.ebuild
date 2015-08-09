@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-smartbookmark-plugin/xfce4-smartbookmark-plugin-0.4.5.ebuild,v 1.7 2013/04/12 15:06:19 ago Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

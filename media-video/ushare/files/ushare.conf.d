@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ushare/files/ushare.conf.d,v 1.1 2009/12/23 22:27:37 darkside Exp $
+# $Id$
 
 # User to run ushare daemon (if none, root will be used)
 USHARE_USER="ushare"

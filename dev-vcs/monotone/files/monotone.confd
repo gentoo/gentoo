@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/monotone/files/monotone.confd,v 1.1 2010/03/05 16:49:36 sping Exp $
+# $Id$
 
 # The commented variables in this file are the defaults that are used
 

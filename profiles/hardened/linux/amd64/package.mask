@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/package.mask,v 1.6 2015/08/01 12:33:53 bircoph Exp $
+# $Id$
 
 # Magnus Granberg <zorry@gentoo.org> (20 Nov 2012)
 # Newer then 300.00 is patched but we still have RWX in the libs.

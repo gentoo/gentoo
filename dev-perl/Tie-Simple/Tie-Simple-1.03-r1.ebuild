@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tie-Simple/Tie-Simple-1.03-r1.ebuild,v 1.1 2014/08/22 21:12:03 axs Exp $
+# $Id$
 
 EAPI=5
 

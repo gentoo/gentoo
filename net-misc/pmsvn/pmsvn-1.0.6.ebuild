@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pmsvn/pmsvn-1.0.6.ebuild,v 1.1 2012/12/15 17:33:13 hwoarang Exp $
+# $Id$
 
 EAPI=5
 

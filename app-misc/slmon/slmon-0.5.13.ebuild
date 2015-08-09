@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/slmon/slmon-0.5.13.ebuild,v 1.7 2014/01/17 18:11:35 creffett Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

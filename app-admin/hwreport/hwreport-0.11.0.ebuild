@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/hwreport/hwreport-0.11.0.ebuild,v 1.1 2013/01/13 22:15:51 fauli Exp $
+# $Id$
 
 EAPI=5
 

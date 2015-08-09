@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pitchtune/pitchtune-0.0.4.ebuild,v 1.1 2009/08/15 20:26:41 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

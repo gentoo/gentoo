@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/ez-ipupdate/files/ez-ipupdate.initd,v 1.6 2014/01/28 15:35:09 dlan Exp $
+# $Id$
 
 extra_commands="update"
 

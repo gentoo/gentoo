@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/varnish/files/varnishd.initd-r1,v 1.1 2013/07/08 22:11:35 blueness Exp $
+# $Id$
 
 extra_commands="configtest"
 extra_started_commands="reload"

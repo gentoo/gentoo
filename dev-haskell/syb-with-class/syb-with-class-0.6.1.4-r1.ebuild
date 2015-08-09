@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/syb-with-class/syb-with-class-0.6.1.4-r1.ebuild,v 1.1 2013/06/20 06:12:40 qnikst Exp $
+# $Id$
 
 EAPI=5
 

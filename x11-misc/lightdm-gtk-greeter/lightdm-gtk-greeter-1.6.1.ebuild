@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lightdm-gtk-greeter/lightdm-gtk-greeter-1.6.1.ebuild,v 1.2 2013/12/11 21:43:00 pacho Exp $
+# $Id$
 
 EAPI=4
 

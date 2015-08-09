@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/duali/duali-0.2.0.ebuild,v 1.7 2012/11/24 14:30:43 ulm Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

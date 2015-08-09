@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netctl/netctl-9999.ebuild,v 1.12 2014/06/21 17:55:44 floppym Exp $
+# $Id$
 
 EAPI=5
 

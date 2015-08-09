@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-3.6.2.ebuild,v 1.15 2015/05/28 20:01:41 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib systemd versionator

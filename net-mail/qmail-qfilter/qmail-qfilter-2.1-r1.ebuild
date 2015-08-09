@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/qmail-qfilter/qmail-qfilter-2.1-r1.ebuild,v 1.4 2010/01/14 12:37:09 bangert Exp $
+# $Id$
 
 EAPI="2"
 

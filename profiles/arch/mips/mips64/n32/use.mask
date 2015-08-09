@@ -1,5 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/mips64/n32/use.mask,v 1.2 2014/10/11 08:22:41 blueness Exp $
+# $Id$
 
 -abi_mips_n32

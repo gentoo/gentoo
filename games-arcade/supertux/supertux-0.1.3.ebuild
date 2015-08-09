@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/supertux/supertux-0.1.3.ebuild,v 1.20 2015/02/19 06:28:27 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

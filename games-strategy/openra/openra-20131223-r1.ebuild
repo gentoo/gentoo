@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/openra/openra-20131223-r1.ebuild,v 1.3 2014/03/04 19:55:40 ago Exp $
+# $Id$
 
 EAPI=5
 

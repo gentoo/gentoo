@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/transfac/transfac-3.2.ebuild,v 1.17 2011/08/09 15:36:17 xarthisius Exp $
+# $Id$
 
 DESCRIPTION="A database of eucaryotic transcription factors"
 HOMEPAGE="http://www.gene-regulation.com/pub/databases.html"

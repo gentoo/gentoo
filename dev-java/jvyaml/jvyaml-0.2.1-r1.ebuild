@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jvyaml/jvyaml-0.2.1-r1.ebuild,v 1.5 2007/05/07 16:20:17 caster Exp $
+# $Id$
 
 JAVA_PKG_IUSE="source test"
 inherit java-pkg-2 java-ant-2 eutils

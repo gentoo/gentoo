@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/make.defaults,v 1.26 2015/03/21 19:15:02 mgorny Exp $
+# $Id$
 
 ARCH="amd64"
 ACCEPT_KEYWORDS="${ARCH}"

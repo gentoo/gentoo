@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailgraph/files/mailgraph.confd-new,v 1.1 2007/04/01 19:30:00 ticho Exp $
+# $Id$
 
 # Location of logfile that all (!) mail software (MTA, spamfilter etc.) logs to.
 # mailgraph defaults to /var/log/syslog if unspecified

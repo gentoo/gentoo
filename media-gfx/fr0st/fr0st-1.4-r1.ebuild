@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/fr0st/fr0st-1.4-r1.ebuild,v 1.1 2011/10/08 22:33:07 ssuominen Exp $
+# $Id$
 
 EAPI=3
 

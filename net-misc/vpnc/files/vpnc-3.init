@@ -2,7 +2,7 @@
 
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vpnc/files/vpnc-3.init,v 1.2 2010/08/13 08:39:48 fauli Exp $
+# $Id$
 
 VPNDIR="/etc/vpnc"
 VPN="${SVCNAME#*.}"

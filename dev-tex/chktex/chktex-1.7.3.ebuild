@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/chktex/chktex-1.7.3.ebuild,v 1.2 2015/04/29 15:13:50 aballier Exp $
+# $Id$
 
 EAPI=4
 AUTOTOOLS_AUTORECONF=true

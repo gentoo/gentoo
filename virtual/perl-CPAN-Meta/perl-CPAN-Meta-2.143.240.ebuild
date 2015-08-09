@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-CPAN-Meta/perl-CPAN-Meta-2.143.240.ebuild,v 1.2 2015/04/19 17:42:51 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

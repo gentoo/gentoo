@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/polyorb/polyorb-2.1.0.ebuild,v 1.6 2008/01/27 00:15:45 george Exp $
+# $Id$
 
 inherit gnat
 

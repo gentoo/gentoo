@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/web-console/web-console-2.1.3.ebuild,v 1.1 2015/06/16 20:17:35 graaff Exp $
+# $Id$
 
 EAPI=5
 USE_RUBY="ruby20 ruby21"

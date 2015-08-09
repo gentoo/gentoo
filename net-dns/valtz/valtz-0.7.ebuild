@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/valtz/valtz-0.7.ebuild,v 1.4 2014/08/10 20:42:51 slyfox Exp $
+# $Id$
 
 DESCRIPTION="Validation tool for tinydns-data zone files"
 SRC_URI="http://x42.com/software/valtz/${PN}.tgz"

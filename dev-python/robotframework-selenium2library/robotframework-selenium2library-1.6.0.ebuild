@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/robotframework-selenium2library/robotframework-selenium2library-1.6.0.ebuild,v 1.1 2014/11/24 01:45:35 radhermit Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

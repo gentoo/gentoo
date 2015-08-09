@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_authnz_external/mod_authnz_external-3.3.2.ebuild,v 1.1 2014/12/16 09:34:43 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils apache-module

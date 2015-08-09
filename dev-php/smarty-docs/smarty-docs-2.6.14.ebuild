@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/smarty-docs/smarty-docs-2.6.14.ebuild,v 1.11 2014/08/10 21:05:45 slyfox Exp $
+# $Id$
 
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 

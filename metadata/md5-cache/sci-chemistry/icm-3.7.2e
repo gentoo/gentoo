@@ -1,15 +1,15 @@
-DEFINED_PHASES=install nofetch postinst unpack
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=8a372ee3a4e930a7a2f60801dd393ca0
+SLOT=0
+DEFINED_PHASES=install postinst unpack
+EAPI=5
 DEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
 DESCRIPTION=MolSoft LCC ICM Pro
-EAPI=5
-HOMEPAGE=http://www.molsoft.com/icm_pro.html
-IUSE=32bit 64bit vim-syntax
-KEYWORDS=~amd64 ~x86
 LICENSE=MolSoft
-RDEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+IUSE=32bit 64bit vim-syntax
 REQUIRED_USE=^^ ( ( !32bit 64bit ) ( 32bit !64bit ) ( 32bit 64bit ) )
 RESTRICT=fetch
-SLOT=0
 SRC_URI=icm-3.7-2e-linux.sh
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=5796cc7f6d93added554c8b701029804
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.molsoft.com/icm_pro.html
+RDEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )

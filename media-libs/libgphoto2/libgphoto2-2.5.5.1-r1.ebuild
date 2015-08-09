@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libgphoto2/libgphoto2-2.5.5.1-r1.ebuild,v 1.9 2015/01/02 12:10:14 ago Exp $
+# $Id$
 
 # TODO
 # 1. Track upstream bug --disable-docs does not work.

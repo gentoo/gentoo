@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-r128/xf86-video-r128-6.9.1.ebuild,v 1.9 2013/03/07 12:31:22 heroxbd Exp $
+# $Id$
 
 EAPI=4
 XORG_DRI=dri

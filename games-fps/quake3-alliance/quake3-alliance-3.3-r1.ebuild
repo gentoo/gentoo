@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-alliance/quake3-alliance-3.3-r1.ebuild,v 1.6 2009/10/10 17:20:07 nyhm Exp $
+# $Id$
 
 EAPI=2
 

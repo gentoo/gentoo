@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/scripts/bootstrap.sh,v 1.99 2015/02/04 10:07:32 kumba Exp $
+# $Id$
 
 # people who were here:
 # (drobbins, 06 Jun 2003)
@@ -56,7 +56,7 @@ v_echo() {
 	env "$@"
 }
 
-cvsver="$Header: /var/cvsroot/gentoo-x86/scripts/bootstrap.sh,v 1.99 2015/02/04 10:07:32 kumba Exp $"
+cvsver="$Id$"
 cvsver=${cvsver##*,v }
 cvsver=${cvsver%%Exp*}
 cvsyear=${cvsver#* }

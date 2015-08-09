@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_FTP/PEAR-Net_FTP-1.4.0_alpha3.ebuild,v 1.2 2012/08/03 20:02:44 olemarkus Exp $
+# $Id$
 
 EAPI="4"
 

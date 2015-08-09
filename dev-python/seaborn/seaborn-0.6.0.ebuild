@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/seaborn/seaborn-0.6.0.ebuild,v 1.1 2015/07/02 08:19:07 jlec Exp $
+# $Id$
 
 EAPI=5
 

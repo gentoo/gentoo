@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sysklogd/sysklogd-1.5.1.ebuild,v 1.11 2014/11/29 19:43:48 maekke Exp $
+# $Id$
 
 EAPI="4"
 

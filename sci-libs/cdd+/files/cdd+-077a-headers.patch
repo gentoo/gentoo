@@ -36,7 +36,7 @@ diff -u -p -r1.1.1.1 Rational.h
 --- Rational.h	2008/12/15 01:19:52	1.1.1.1
 +++ Rational.h	2008/12/15 01:27:08
 @@ -17,6 +17,7 @@
- #define _POLYMAKE_GMP_RATIONAL_H "$Project: polymake $$Id: cdd+-077a-headers.patch,v 1.1 2010/11/12 15:04:32 tomka Exp $"
+ #define _POLYMAKE_GMP_RATIONAL_H "$Project: polymake $$Id$
  
  #include <Integer.h>
 +#include <cstring>
@@ -60,7 +60,7 @@ diff -u -p -r1.1.1.1 gmp_init.cc
 --- gmp_init.cc	2008/12/15 01:19:52	1.1.1.1
 +++ gmp_init.cc	2008/12/15 01:23:45
 @@ -16,6 +16,7 @@
- #ident "$Project: polymake $$Id: cdd+-077a-headers.patch,v 1.1 2010/11/12 15:04:32 tomka Exp $"
+ #ident "$Project: polymake $$Id$
  
  #include <memory>
 +#include <cstring>

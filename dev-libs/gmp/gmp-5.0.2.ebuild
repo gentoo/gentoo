@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmp/gmp-5.0.2.ebuild,v 1.11 2011/12/18 20:10:55 vapier Exp $
+# $Id$
 
 inherit flag-o-matic eutils libtool toolchain-funcs
 

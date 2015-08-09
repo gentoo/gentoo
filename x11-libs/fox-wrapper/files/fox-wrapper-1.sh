@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox-wrapper/files/fox-wrapper-1.sh,v 1.1 2005/05/07 19:38:54 rphillips Exp $
+# $Id$
 
 # Based on the am-wrapper.sh script (sys-devel/automake-wrapper-1-r1)
 #

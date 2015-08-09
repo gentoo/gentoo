@@ -1,2 +1,2 @@
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/files/3.6/lmhosts,v 1.1 2011/06/30 15:50:28 dagger Exp $
+# $Id$
 127.0.0.1 localhost

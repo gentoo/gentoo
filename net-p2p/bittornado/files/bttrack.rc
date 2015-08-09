@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bittornado/files/bttrack.rc,v 1.1 2004/07/17 15:12:51 squinky86 Exp $
+# $Id$
 
 depend() {
 	need net

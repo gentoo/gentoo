@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wehjit/wehjit-0.2.2-r1.ebuild,v 1.2 2015/04/08 08:04:58 mgorny Exp $
+# $Id$
 
 EAPI=5
 

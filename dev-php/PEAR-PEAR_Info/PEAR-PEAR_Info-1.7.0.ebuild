@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PEAR_Info/PEAR-PEAR_Info-1.7.0.ebuild,v 1.9 2007/12/06 00:47:46 jokey Exp $
+# $Id$
 
 inherit php-pear-r1
 

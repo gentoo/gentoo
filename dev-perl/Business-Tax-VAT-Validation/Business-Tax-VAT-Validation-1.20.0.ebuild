@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Business-Tax-VAT-Validation/Business-Tax-VAT-Validation-1.20.0.ebuild,v 1.1 2014/12/05 21:09:44 dilfridge Exp $
+# $Id$
 
 EAPI=5
 MODULE_AUTHOR=BPGN

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pal/pal-0.4.3-r1.ebuild,v 1.5 2014/10/28 22:11:40 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils prefix toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/libxml-sax/libxml-sax-0.7.4.ebuild,v 1.7 2014/12/06 16:58:13 ago Exp $
+# $Id$
 
 EAPI=5
 

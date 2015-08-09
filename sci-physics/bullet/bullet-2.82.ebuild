@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/bullet/bullet-2.82.ebuild,v 1.1 2014/02/23 02:36:07 bicatali Exp $
+# $Id$
 
 EAPI=5
 

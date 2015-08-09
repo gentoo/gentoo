@@ -1,5 +1,5 @@
 dnl
-dnl $Id: php_ext-config.m4,v 1.1 2015/01/22 17:25:49 grknight Exp $
+dnl $Id$
 dnl
 
 PHP_LIBDIR=lib

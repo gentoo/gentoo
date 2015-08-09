@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/cronbase-0.3.4.ebuild,v 1.1 2015/07/22 01:22:28 vapier Exp $
+# $Id$
 
 EAPI="5"
 

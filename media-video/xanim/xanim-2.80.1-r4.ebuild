@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/xanim/xanim-2.80.1-r4.ebuild,v 1.41 2013/07/28 19:34:49 aballier Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

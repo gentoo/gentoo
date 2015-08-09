@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/servletapi/servletapi-2.4-r5.ebuild,v 1.13 2015/07/11 09:22:30 chewi Exp $
+# $Id$
 
 inherit eutils java-pkg-2 java-ant-2
 

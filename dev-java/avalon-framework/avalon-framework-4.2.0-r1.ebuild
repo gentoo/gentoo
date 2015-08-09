@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/avalon-framework/avalon-framework-4.2.0-r1.ebuild,v 1.14 2013/11/30 08:07:24 tomwij Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

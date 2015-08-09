@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/prettyclass/prettyclass-1.0.0.0.ebuild,v 1.1 2015/08/02 14:04:54 gienah Exp $
+# $Id$
 
 EAPI=5
 

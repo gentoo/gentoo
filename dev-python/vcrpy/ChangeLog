@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/vcrpy
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/vcrpy/ChangeLog,v 1.1 2015/07/05 10:47:29 mrueg Exp $
-
-*vcrpy-1.5.2 (05 Jul 2015)
-
-  05 Jul 2015; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
-  +vcrpy-1.5.2.ebuild:
-  Initial version.

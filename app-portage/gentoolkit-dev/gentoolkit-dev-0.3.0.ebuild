@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit-dev/gentoolkit-dev-0.3.0.ebuild,v 1.2 2015/07/29 17:52:38 grobian Exp $
+# $Id$
 
 EAPI="5"
 

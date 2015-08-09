@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=6e49678df97133bbf63da0b862dbb0a
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare
+EAPI=5
 DEPEND=>=sys-libs/libsepol-2.3 >=sys-libs/libsemanage-2.3 sys-devel/flex sys-devel/bison
 DESCRIPTION=SELinux policy compiler
-EAPI=5
-HOMEPAGE=http://userspace.selinuxproject.org
-IUSE=debug
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/libsemanage-2.3
-SLOT=0
+IUSE=debug
 SRC_URI=https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/checkpolicy-2.3.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ed7ad15e6fd11e9c2f7fdd55d70cc7d9
+KEYWORDS=amd64 x86
+HOMEPAGE=http://userspace.selinuxproject.org
+RDEPEND=>=sys-libs/libsemanage-2.3

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xosview/xosview-1.16.ebuild,v 1.1 2013/11/22 12:31:46 jer Exp $
+# $Id$
 
 EAPI=4
 

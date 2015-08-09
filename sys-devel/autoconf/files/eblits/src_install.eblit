@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/files/eblits/src_install.eblit,v 1.1 2015/03/19 23:49:17 vapier Exp $
+# $Id$
 
 # slot the info pages.  do this w/out munging the source so we don't have
 # to depend on texinfo to regen things.  #464146 (among others)

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/pftop/pftop-0.7.ebuild,v 1.3 2010/04/21 05:30:24 the_paya Exp $
+# $Id$
 
 PATCH_PV=1
 

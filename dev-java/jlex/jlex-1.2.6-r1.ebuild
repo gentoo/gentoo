@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jlex/jlex-1.2.6-r1.ebuild,v 1.5 2007/06/17 12:07:34 opfer Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

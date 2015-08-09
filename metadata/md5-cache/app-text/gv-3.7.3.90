@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f2e9736d2231bda16e356fe90bc9c952
+SLOT=0
 DEFINED_PHASES=configure install
+EAPI=5
 DEPEND=app-text/ghostscript-gpl x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXaw3d-1.6-r1[unicode] x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-proto/xproto
 DESCRIPTION=Viewer for PostScript and PDF documents using Ghostscript
-EAPI=5
-HOMEPAGE=http://www.gnu.org/software/gv/
-IUSE=xinerama
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-3
-RDEPEND=app-text/ghostscript-gpl x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXaw3d-1.6-r1[unicode] x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama )
-SLOT=0
+IUSE=xinerama
 SRC_URI=mirror://gnu-alpha/gv/gv-3.7.3.90.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2c52b7459d946c111a321c9e55ebb455
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+HOMEPAGE=http://www.gnu.org/software/gv/
+RDEPEND=app-text/ghostscript-gpl x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXaw3d-1.6-r1[unicode] x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama )

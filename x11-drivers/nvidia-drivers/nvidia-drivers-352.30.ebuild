@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-352.30.ebuild,v 1.2 2015/08/08 06:38:04 jer Exp $
+# $Id$
 
 EAPI=5
 

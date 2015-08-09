@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pypy/pypy-2.4.0.ebuild,v 1.11 2015/01/28 19:47:38 mgorny Exp $
+# $Id$
 
 EAPI=5
 

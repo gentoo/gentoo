@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/openocd-0.5.0.ebuild,v 1.10 2012/08/22 17:29:19 hwoarang Exp $
+# $Id$
 
 EAPI="4"
 

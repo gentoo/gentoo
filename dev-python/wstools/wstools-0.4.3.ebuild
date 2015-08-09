@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wstools/wstools-0.4.3.ebuild,v 1.14 2015/01/16 10:16:19 idella4 Exp $
+# $Id$
 
 EAPI=5
 

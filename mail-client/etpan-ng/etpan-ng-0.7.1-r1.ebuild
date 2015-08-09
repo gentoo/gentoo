@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/etpan-ng/etpan-ng-0.7.1-r1.ebuild,v 1.6 2012/12/26 02:56:18 jer Exp $
+# $Id$
 
 inherit eutils autotools
 

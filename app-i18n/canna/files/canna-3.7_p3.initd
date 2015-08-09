@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/canna/files/canna-3.7_p3.initd,v 1.1 2009/09/21 02:55:22 matsuu Exp $
+# $Id$
 
 # CANNASERVER_OPTS and CANNASERVER_OWNER is defined in /etc/conf.d/canna
 CANNASERVER_LOGFILE="/var/log/canna/CANNA0msgs"

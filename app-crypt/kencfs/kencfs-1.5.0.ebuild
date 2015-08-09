@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/kencfs/kencfs-1.5.0.ebuild,v 1.4 2015/08/02 18:55:45 ago Exp $
+# $Id$
 
 EAPI=5
 

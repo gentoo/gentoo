@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/tlswrap/tlswrap-1.04.ebuild,v 1.3 2012/07/12 08:42:03 voyageur Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/curcmdmode/curcmdmode-1.0.ebuild,v 1.10 2010/10/07 03:06:03 leio Exp $
+# $Id$
 
 inherit vim-plugin
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/zathura-djvu/zathura-djvu-0.2.3.ebuild,v 1.7 2014/06/05 09:42:08 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

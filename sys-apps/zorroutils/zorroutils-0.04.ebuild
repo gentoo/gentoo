@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/zorroutils/zorroutils-0.04.ebuild,v 1.2 2009/03/26 18:25:38 armin76 Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/libc-bench/libc-bench-20110206.ebuild,v 1.2 2014/04/03 20:58:19 vapier Exp $
+# $Id$
 
 EAPI="5"
 

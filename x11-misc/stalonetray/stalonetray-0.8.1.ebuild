@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/stalonetray/stalonetray-0.8.1.ebuild,v 1.3 2012/06/25 19:22:37 jdhore Exp $
+# $Id$
 
 EAPI=4
 

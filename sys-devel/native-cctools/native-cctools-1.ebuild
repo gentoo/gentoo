@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/native-cctools/native-cctools-1.ebuild,v 1.2 2014/12/29 09:07:57 grobian Exp $
+# $Id$
 
 EAPI="3"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/apng2gif/apng2gif-1.4.ebuild,v 1.1 2011/11/29 08:35:23 radhermit Exp $
+# $Id$
 
 EAPI="4"
 

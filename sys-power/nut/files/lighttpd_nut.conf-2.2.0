@@ -2,7 +2,7 @@
 # Lighttpd configuration for using NUT under Gentoo Linux.
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/nut/files/lighttpd_nut.conf-2.2.0,v 1.1 2007/10/09 00:48:44 robbat2 Exp $
+# $Id$
 ###############################################################################
 
 # Simple copy this to /etc/lighttpd/ and include it in your lighttpd.conf.

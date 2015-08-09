@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f3f62b8b25ca3abe43afc6dcf0a1bc30
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=dev-cpp/eigen:3 dev-games/ode dev-libs/boost dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts || ( sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 ) sys-libs/zlib virtual/glu >=dev-lang/swig-2.0.4-r1:0 virtual/fortran =dev-lang/python-2* sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=QT based Computer Aided Design application
-EAPI=5
-HOMEPAGE=http://sourceforge.net/apps/mediawiki/free-cad/
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-cpp/eigen:3 dev-games/ode dev-libs/boost dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts || ( sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 ) sys-libs/zlib virtual/glu virtual/fortran =dev-lang/python-2*
 RESTRICT=bindist mirror
-SLOT=0
 SRC_URI=mirror://sourceforge/free-cad/freecad-0.12.5284.tar.gz
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=2b0861714a8da50a8fae615745d20a09
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://sourceforge.net/apps/mediawiki/free-cad/
+RDEPEND=dev-cpp/eigen:3 dev-games/ode dev-libs/boost dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts || ( sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 ) sys-libs/zlib virtual/glu virtual/fortran =dev-lang/python-2*

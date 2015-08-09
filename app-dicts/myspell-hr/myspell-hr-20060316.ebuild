@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-hr/myspell-hr-20060316.ebuild,v 1.19 2012/05/17 18:17:38 aballier Exp $
+# $Id$
 
 MYSPELL_SPELLING_DICTIONARIES=(
 "hr,HR,hr_HR,Croatian (Croatia),hr_HR.zip"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/liblinebreak/liblinebreak-2.1.ebuild,v 1.4 2014/06/30 15:11:44 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

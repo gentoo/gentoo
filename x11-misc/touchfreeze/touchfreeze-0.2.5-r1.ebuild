@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/touchfreeze/touchfreeze-0.2.5-r1.ebuild,v 1.5 2013/03/02 23:54:00 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

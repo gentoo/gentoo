@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-validator/dnssec-validator-1.14.ebuild,v 1.2 2013/03/13 10:08:38 xmw Exp $
+# $Id$
 
 EAPI=4
 

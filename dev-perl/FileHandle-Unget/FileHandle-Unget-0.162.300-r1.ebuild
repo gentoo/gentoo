@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/FileHandle-Unget/FileHandle-Unget-0.162.300-r1.ebuild,v 1.2 2013/12/15 12:58:13 zlogene Exp $
+# $Id$
 
 EAPI=5
 

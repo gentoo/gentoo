@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/libdlm/libdlm-3.1.5.ebuild,v 1.4 2015/03/23 11:01:10 ultrabug Exp $
+# $Id$
 
 EAPI=5
 

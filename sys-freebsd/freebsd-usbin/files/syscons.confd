@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/syscons.confd,v 1.1 2006/09/14 17:03:27 flameeyes Exp $
+# $Id$
 # Example syscons config file. This is the place to set things like keymap, etc.
 
 # Set the keymap to "uk.iso".

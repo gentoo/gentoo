@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/gnuradius/gnuradius-1.6.1-r1.ebuild,v 1.4 2014/12/28 16:15:33 titanofold Exp $
+# $Id$
 
 EAPI=5
 

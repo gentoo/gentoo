@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/entropy/entropy-0.3.2.ebuild,v 1.2 2014/09/10 21:04:26 slyfox Exp $
+# $Id$
 
 EAPI=5
 

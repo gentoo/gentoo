@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/ibp/ibp-0.21.ebuild,v 1.5 2012/11/12 19:14:37 tomjbe Exp $
+# $Id$
 
 EAPI="4"
 inherit eutils toolchain-funcs

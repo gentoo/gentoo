@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/files/3.5/nsswitch.conf-wins,v 1.1 2010/03/01 16:19:54 patrick Exp $
+# $Id$
 passwd:      files
 group:       files
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/pdns-recursor/pdns-recursor-3.5.3-r1.ebuild,v 1.3 2014/07/05 10:51:36 ago Exp $
+# $Id$
 
 EAPI="4"
 

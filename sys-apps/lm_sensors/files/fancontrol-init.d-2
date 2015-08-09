@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/files/fancontrol-init.d-2,v 1.1 2012/12/28 00:00:03 flameeyes Exp $
+# $Id$
 
 CONFIG=/etc/fancontrol
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/musca/musca-0.9.24_p20100226-r4.ebuild,v 1.1 2015/06/08 18:39:40 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils savedconfig toolchain-funcs

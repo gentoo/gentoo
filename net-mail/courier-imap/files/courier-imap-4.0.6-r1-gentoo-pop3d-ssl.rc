@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/files/courier-imap-4.0.6-r1-gentoo-pop3d-ssl.rc,v 1.4 2014/11/20 10:25:15 mrueg Exp $
+# $Id$
 #
 # Copyright 1998-2014 - 2000 Double Precision, Inc.
 # See COPYING for distribution information.

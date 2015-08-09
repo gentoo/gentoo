@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/mips/mipsel/make.defaults,v 1.3 2014/07/02 10:57:54 mgorny Exp $
+# $Id$
 
 CHOST="mipsel-gentoo-linux-musl"
 CHOST_o32=${CHOST}

@@ -1,9 +1,0 @@
-# ChangeLog for dev-java/boilerpipe
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/boilerpipe/ChangeLog,v 1.1 2014/03/01 09:15:45 ercpe Exp $
-
-*boilerpipe-1.2.0 (01 Mar 2014)
-
-  01 Mar 2014; Johann Schmitz <ercpe@gentoo.org> +boilerpipe-1.2.0.ebuild,
-  +metadata.xml:
-  Added ebuild for boilerpipe (dep of dev-java/tika)

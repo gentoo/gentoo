@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=7919766a0a98c23c41630ca0203b9e28
+SLOT=0
 DEFINED_PHASES=install postinst prepare prerm setup
+EAPI=3
 DEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fastcgi ) || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-EAPI=3
-HOMEPAGE=http://practical-scheme.net/wiliki/
-IUSE=cgi fastcgi vhosts
-KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
-SLOT=0
+IUSE=cgi fastcgi vhosts
 SRC_URI=mirror://sourceforge/wiliki/WiLiKi-0.6.1.tgz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=e34104148b807960fac82281ed4fd653
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://practical-scheme.net/wiliki/
+RDEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15

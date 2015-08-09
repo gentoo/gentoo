@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/deltup/deltup-0.4.5-r1.ebuild,v 1.4 2015/03/12 23:03:03 dlan Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/motion/motion-3.2.12-r2.ebuild,v 1.8 2014/12/28 16:00:19 titanofold Exp $
+# $Id$
 
 EAPI=4
 inherit eutils user

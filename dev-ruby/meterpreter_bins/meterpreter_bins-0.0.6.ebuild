@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/meterpreter_bins/meterpreter_bins-0.0.6.ebuild,v 1.1 2014/07/17 19:08:53 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

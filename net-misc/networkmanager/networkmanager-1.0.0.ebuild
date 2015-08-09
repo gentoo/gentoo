@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager/networkmanager-1.0.0.ebuild,v 1.13 2015/08/04 04:36:16 tetromino Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

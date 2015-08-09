@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/nerdtree/nerdtree-4.1.0.ebuild,v 1.1 2010/06/27 16:36:22 spatz Exp $
+# $Id$
 
 EAPI=3
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-share/freebsd-share-8.2.ebuild,v 1.1 2011/07/06 06:08:41 aballier Exp $
+# $Id$
 
 inherit bsdmk freebsd
 

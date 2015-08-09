@@ -1,8 +1,10 @@
-DEFINED_PHASES=compile install
-DESCRIPTION=Watches a process for termination
-HOMEPAGE=http://www.codepark.org/
-KEYWORDS=x86 amd64 -ppc
-LICENSE=GPL-2
+_eclasses_=
+_md5_=88167fbfdf691d30f7b4b6be92a7bff4
 SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DESCRIPTION=Watches a process for termination
+LICENSE=GPL-2
 SRC_URI=mirror://gentoo/watchpid_0.1.tar.gz
-_md5_=8345968b9bc74c75831d040840f2e1f1
+KEYWORDS=x86 amd64 -ppc
+HOMEPAGE=http://www.codepark.org/

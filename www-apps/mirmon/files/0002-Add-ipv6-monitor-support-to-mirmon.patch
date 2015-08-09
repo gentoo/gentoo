@@ -17,7 +17,7 @@ diff --git a/mirmon b/mirmon
 index 6c0aaa8..50d40ca 100755
 --- a/mirmon
 +++ b/mirmon
-@@ -30,7 +30,17 @@ my $VER = '$Id: 0002-Add-ipv6-monitor-support-to-mirmon.patch,v 1.1 2010/05/09 22:06:26 darkside Exp $' ;
+@@ -30,7 +30,17 @@ my $VER = '# $Id$
  use strict ;
  use IO::Pipe ;
  use IO::Select ;

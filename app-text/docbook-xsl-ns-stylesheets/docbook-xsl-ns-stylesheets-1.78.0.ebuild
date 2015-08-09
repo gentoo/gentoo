@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-xsl-ns-stylesheets/docbook-xsl-ns-stylesheets-1.78.0.ebuild,v 1.12 2013/06/02 08:37:38 ago Exp $
+# $Id$
 
 EAPI=5
 

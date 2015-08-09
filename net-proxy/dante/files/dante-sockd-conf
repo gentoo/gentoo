@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/files/dante-sockd-conf,v 1.1 2005/04/22 20:47:27 mrness Exp $
+# $Id$
 
 # Number of processes to fork off
 # 1 is plenty for most users

@@ -1,7 +1,9 @@
-DEFINED_PHASES=install unpack
-DESCRIPTION=Common Lisp ANSI-standard Hyperspec
-HOMEPAGE=http://www.lispworks.com/reference/HyperSpec/
-KEYWORDS=x86 amd64 sparc ppc
-LICENSE=HyperSpec
+_eclasses_=
+_md5_=44fdab385c4f588c6700b14ed7b8cdfd
 SLOT=0
-_md5_=ce5ea326d2dbc2c12de90811569dcfc1
+DEFINED_PHASES=install unpack
+EAPI=0
+DESCRIPTION=Common Lisp ANSI-standard Hyperspec
+LICENSE=HyperSpec
+KEYWORDS=x86 amd64 sparc ppc
+HOMEPAGE=http://www.lispworks.com/reference/HyperSpec/

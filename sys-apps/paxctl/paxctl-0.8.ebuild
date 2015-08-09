@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/paxctl/paxctl-0.8.ebuild,v 1.2 2014/09/03 04:26:55 zerochaos Exp $
+# $Id$
 
 EAPI="5"
 

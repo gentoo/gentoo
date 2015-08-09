@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyGPG/pyGPG-0.1.ebuild,v 1.8 2015/08/08 11:23:52 klausman Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/use.stable.mask,v 1.11 2015/08/05 18:59:48 grknight Exp $
+# $Id$
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask

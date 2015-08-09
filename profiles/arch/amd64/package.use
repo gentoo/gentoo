@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/package.use,v 1.5 2015/05/03 05:15:22 yngwin Exp $
+# $Id$
 
 # Ben de Groot <yngwin@gentoo.org> (03 May 2015)
 # Enable luajit (for OSC) by default

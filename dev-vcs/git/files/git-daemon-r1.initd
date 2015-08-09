@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/files/git-daemon-r1.initd,v 1.4 2014/03/03 19:21:29 polynomial-c Exp $
+# $Id$
 
 pidfile="/var/run/git-daemon.pid"
 command="/usr/bin/git"

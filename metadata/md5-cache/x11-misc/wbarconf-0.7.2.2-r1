@@ -1,12 +1,12 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3ff370e6372256b7bb94d2faf36c02c4
+SLOT=0
 DEFINED_PHASES=install prepare setup
+EAPI=4
 DEPEND=|| ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 DESCRIPTION=Configuration GUI for x11-misc/wbar
-EAPI=4
-HOMEPAGE=http://koti.kapsi.fi/ighea/wbarconf/
-KEYWORDS=amd64 x86
 LICENSE=GPL-3
-RDEPEND=>=x11-misc/wbar-1.3.3 dev-python/pygobject:2 dev-python/pygtk:2 sys-devel/gettext || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
-SLOT=0
 SRC_URI=http://koti.kapsi.fi/ighea/wbarconf/wbarconf-0.7.2.2.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=ef983c044a598e7b971f024bfd419209
+KEYWORDS=amd64 x86
+HOMEPAGE=http://koti.kapsi.fi/ighea/wbarconf/
+RDEPEND=>=x11-misc/wbar-1.3.3 dev-python/pygobject:2 dev-python/pygtk:2 sys-devel/gettext || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )

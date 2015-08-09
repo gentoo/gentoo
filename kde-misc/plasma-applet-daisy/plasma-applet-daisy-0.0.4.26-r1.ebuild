@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-applet-daisy/plasma-applet-daisy-0.0.4.26-r1.ebuild,v 1.2 2014/04/24 15:19:23 johu Exp $
+# $Id$
 
 EAPI=5
 

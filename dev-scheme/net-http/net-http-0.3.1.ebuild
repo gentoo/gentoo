@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/net-http/net-http-0.3.1.ebuild,v 1.7 2011/12/16 14:50:48 jlec Exp $
+# $Id$
 
 DESCRIPTION="Library for doing HTTP client-side programming in Guile"
 HOMEPAGE="http://evan.prodromou.name/software/net-http/"

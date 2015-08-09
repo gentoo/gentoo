@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/abuse/abuse-0.8.ebuild,v 1.7 2014/12/30 19:00:57 tupone Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils games

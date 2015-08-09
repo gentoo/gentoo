@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dietlibc/dietlibc-0.33_pre20110403.ebuild,v 1.11 2014/01/26 12:23:29 ago Exp $
+# $Id$
 
 EAPI="3"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-sqlite3/ocaml-sqlite3-2.0.9.ebuild,v 1.1 2015/02/09 09:52:42 aballier Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr67/jsr67-1.3.ebuild,v 1.5 2008/03/28 17:51:19 nixnut Exp $
+# $Id$
 
 JAVA_PKG_IUSE=""
 

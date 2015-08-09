@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/helium/helium-1.6.ebuild,v 1.5 2010/08/29 18:30:50 slyfox Exp $
+# $Id$
 
 inherit autotools eutils
 

@@ -1,9 +1,0 @@
-# ChangeLog for dev-haskell/time-locale-compat
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/time-locale-compat/ChangeLog,v 1.1 2015/07/17 10:36:52 gienah Exp $
-
-*time-locale-compat-0.1.1.0 (17 Jul 2015)
-
-  17 Jul 2015; Mark Wright <gienah@gentoo.org> +metadata.xml,
-  +time-locale-compat-0.1.1.0.ebuild:
-  Add time-locale-compat

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/opentyrian/opentyrian-20110517-r1.ebuild,v 1.1 2011/06/07 13:45:40 chainsaw Exp $
+# $Id$
 
 inherit base games
 

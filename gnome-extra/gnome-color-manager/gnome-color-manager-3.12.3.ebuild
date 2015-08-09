@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-color-manager/gnome-color-manager-3.12.3.ebuild,v 1.4 2015/05/27 14:12:29 tetromino Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

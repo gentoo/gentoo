@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/autovivification/autovivification-0.160.0.ebuild,v 1.1 2015/07/04 08:45:30 mrueg Exp $
+# $Id$
 EAPI=5
 MODULE_AUTHOR=VPIT
 MODULE_VERSION=0.16

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/use.mask,v 1.8 2012/10/28 22:41:53 naota Exp $
+# $Id$
 
 # Espeak does not run on bsd
 espeak

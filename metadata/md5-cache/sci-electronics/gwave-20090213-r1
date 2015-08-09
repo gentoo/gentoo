@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4c92288e34b24f9ff6684d1eddb1abbb
+SLOT=0
 DEFINED_PHASES=install postinst postrm preinst prepare
+EAPI=5
 DEPEND==dev-scheme/guile-1.8*[networking] =dev-scheme/guile-gnome-platform-2.16* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Analog waveform viewer for SPICE-like simulations
-EAPI=5
-HOMEPAGE=http://gwave.sourceforge.net
-IUSE=gnuplot plotutils
-KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND==dev-scheme/guile-1.8*[networking] =dev-scheme/guile-gnome-platform-2.16* sci-electronics/electronics-menu gnuplot? ( sci-visualization/gnuplot ) plotutils? ( media-libs/plotutils )
-SLOT=0
+IUSE=gnuplot plotutils
 SRC_URI=mirror://sourceforge/gwave/gwave2-20090213.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c380b5e0f965dfac17b9d0b330ad8ede
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://gwave.sourceforge.net
+RDEPEND==dev-scheme/guile-1.8*[networking] =dev-scheme/guile-gnome-platform-2.16* sci-electronics/electronics-menu gnuplot? ( sci-visualization/gnuplot ) plotutils? ( media-libs/plotutils )

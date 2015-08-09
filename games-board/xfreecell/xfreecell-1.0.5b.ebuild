@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/xfreecell/xfreecell-1.0.5b.ebuild,v 1.15 2014/09/21 05:29:46 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

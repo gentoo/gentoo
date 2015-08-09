@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/alacarte/alacarte-3.10.0.ebuild,v 1.6 2014/04/26 08:29:43 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

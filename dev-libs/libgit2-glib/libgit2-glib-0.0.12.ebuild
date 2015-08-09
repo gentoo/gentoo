@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2-glib/libgit2-glib-0.0.12.ebuild,v 1.5 2015/04/08 17:51:56 mgorny Exp $
+# $Id$
 
 EAPI=5
 

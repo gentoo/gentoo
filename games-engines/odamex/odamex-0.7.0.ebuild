@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/odamex/odamex-0.7.0.ebuild,v 1.2 2014/05/15 16:42:25 ulm Exp $
+# $Id$
 
 EAPI=5
 WX_GTK_VER="3.0"

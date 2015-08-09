@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozcoreconf-v3.eclass,v 1.2 2015/07/16 16:25:47 axs Exp $
+# $Id$
 #
 # @ECLASS: mozcoreconf.eclass
 # @MAINTAINER:

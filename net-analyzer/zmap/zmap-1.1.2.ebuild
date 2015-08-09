@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zmap/zmap-1.1.2.ebuild,v 1.1 2014/02/15 10:51:45 jlec Exp $
+# $Id$
 
 EAPI=5
 

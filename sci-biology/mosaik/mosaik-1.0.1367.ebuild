@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mosaik/mosaik-1.0.1367.ebuild,v 1.3 2010/01/03 14:25:26 pacho Exp $
+# $Id$
 
 EAPI="2"
 

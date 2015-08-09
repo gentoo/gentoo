@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wxcore/wxcore-0.90.0.3.ebuild,v 1.2 2013/01/13 11:57:38 gienah Exp $
+# $Id$
 
 EAPI=5
 

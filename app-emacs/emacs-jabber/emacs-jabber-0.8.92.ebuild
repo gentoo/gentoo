@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-jabber/emacs-jabber-0.8.92.ebuild,v 1.7 2015/01/27 18:04:31 ulm Exp $
+# $Id$
 
 EAPI=5
 

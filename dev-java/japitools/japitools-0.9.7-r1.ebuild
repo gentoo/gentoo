@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/japitools/japitools-0.9.7-r1.ebuild,v 1.3 2008/07/04 06:51:22 opfer Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source test"
 inherit eutils java-pkg-2 java-ant-2

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdom-jaxen/jdom-jaxen-1.0_beta10-r1.ebuild,v 1.9 2014/08/10 20:18:05 slyfox Exp $
+# $Id$
 
 JAVA_PKG_IUSE=""
 

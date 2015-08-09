@@ -1,12 +1,12 @@
+_eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+_md5_=e306277ebfc2bda4064e6108c6786657
+SLOT=0
 DEFINED_PHASES=install postinst postrm prepare unpack
+EAPI=4
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: visualize your Vim undo tree
-EAPI=4
-HOMEPAGE=http://sjl.bitbucket.org/gundo.vim/
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=|| ( app-editors/vim[python] app-editors/gvim[python] ) >=dev-lang/python-2.4 || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
-SLOT=0
 SRC_URI=https://github.com/sjl/gundo.vim/tarball/v2.4.0 -> gundo-2.4.0.tar.gz
-_eclasses_=vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66	vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
-_md5_=5ecc8d2afea56affec751ef8a9ca9acd
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://sjl.bitbucket.org/gundo.vim/
+RDEPEND=|| ( app-editors/vim[python] app-editors/gvim[python] ) >=dev-lang/python-2.4 || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )

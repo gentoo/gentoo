@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=1546a4593c956cbd2f3eacf5f0214cac
+SLOT=0
 DEFINED_PHASES=compile install preinst prepare setup unpack
+EAPI=5
 DEPEND==net-wireless/gnuradio-9999:=[grc,utils,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] =net-wireless/gr-osmosdr-9999:= || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=multimode radio decoder for rtl-sdr devices using gnuradio
-EAPI=5
-HOMEPAGE=https://www.cgran.org/browser/projects/multimode/trunk
-IUSE=python_targets_python2_7
 LICENSE=BSD
+IUSE=python_targets_python2_7
+HOMEPAGE=https://www.cgran.org/browser/projects/multimode/trunk
 RDEPEND==net-wireless/gnuradio-9999:=[grc,utils,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] =net-wireless/gr-osmosdr-9999:=
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=b48b616ce92580b616a1c8233a6c19ba

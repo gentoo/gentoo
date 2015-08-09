@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/mlterm-3.0.11-r1.ebuild,v 1.5 2012/09/23 08:21:11 phajdan.jr Exp $
+# $Id$
 
 EAPI="3"
 inherit autotools eutils

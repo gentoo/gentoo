@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/blinkperl/blinkperl-20030301-r1.ebuild,v 1.3 2009/05/05 13:15:39 fauli Exp $
+# $Id$
 
 inherit eutils
 

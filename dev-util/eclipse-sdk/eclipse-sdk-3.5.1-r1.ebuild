@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-3.5.1-r1.ebuild,v 1.6 2012/05/21 20:05:07 ssuominen Exp $
+# $Id$
 
 EAPI="2"
 WANT_ANT_TASKS="ant-nodeps"

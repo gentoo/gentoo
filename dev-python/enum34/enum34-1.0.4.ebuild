@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/enum34/enum34-1.0.4.ebuild,v 1.15 2015/08/02 09:25:22 pacho Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3} pypy pypy3 )  # Do NOT add python3_4—see DESCRIPTION

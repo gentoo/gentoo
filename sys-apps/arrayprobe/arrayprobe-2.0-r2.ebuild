@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/arrayprobe/arrayprobe-2.0-r2.ebuild,v 1.6 2014/03/08 22:26:56 vapier Exp $
+# $Id$
 
 EAPI="4"
 

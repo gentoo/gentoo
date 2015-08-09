@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-2.0.27-r1.ebuild,v 1.2 2015/06/01 19:10:08 grobian Exp $
+# $Id$
 
 EAPI="5"
 

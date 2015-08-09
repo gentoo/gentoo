@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vala.eclass,v 1.12 2015/06/09 10:18:38 eva Exp $
+# $Id$
 
 # @ECLASS: vala.eclass
 # @MAINTAINER:

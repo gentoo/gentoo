@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/gnupg/gnupg-2.5.ebuild,v 1.4 2013/08/12 09:30:49 xmw Exp $
+# $Id$
 
 EAPI=4
 

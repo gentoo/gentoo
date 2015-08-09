@@ -1,5 +1,5 @@
 @version: 3.4
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/files/3.4/syslog-ng.conf.gentoo.fbsd,v 1.2 2013/06/02 01:18:35 mr_bones_ Exp $
+# $Id$
 #
 # Syslog-ng default configuration file for Gentoo FreeBSD
 #

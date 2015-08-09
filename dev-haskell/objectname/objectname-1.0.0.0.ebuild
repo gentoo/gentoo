@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/objectname/objectname-1.0.0.0.ebuild,v 1.5 2013/09/23 19:16:23 ago Exp $
+# $Id$
 
 EAPI=4
 

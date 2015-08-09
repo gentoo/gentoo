@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/milo/milo-2.4.18.ebuild,v 1.10 2011/04/03 19:40:48 mr_bones_ Exp $
+# $Id$
 
 inherit flag-o-matic eutils
 

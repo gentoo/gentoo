@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-mach64/xf86-video-mach64-6.9.5.ebuild,v 1.1 2015/05/24 03:08:33 mattst88 Exp $
+# $Id$
 
 EAPI=5
 

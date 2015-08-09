@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/scponly/scponly-4.8-r5.ebuild,v 1.7 2014/02/11 18:42:29 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib readme.gentoo toolchain-funcs user

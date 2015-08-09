@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-4.6.4.ebuild,v 1.19 2015/05/27 16:01:17 vapier Exp $
+# $Id$
 
 EAPI="5"
 

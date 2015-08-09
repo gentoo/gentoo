@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/3ddesktop/3ddesktop-0.2.9-r1.ebuild,v 1.7 2014/07/19 19:36:03 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/samplicator/samplicator-1.3.6.ebuild,v 1.2 2014/01/08 06:36:06 vapier Exp $
+# $Id$
 
 EAPI="5"
 

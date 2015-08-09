@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/love/love-0.8.0.ebuild,v 1.12 2015/02/18 19:43:24 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit games

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xalan-serializer/xalan-serializer-2.7.2.ebuild,v 1.3 2015/07/30 22:35:44 chewi Exp $
+# $Id$
 
 EAPI=5
 

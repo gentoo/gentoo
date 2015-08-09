@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/gunicorn/gunicorn-0.17.4.ebuild,v 1.3 2014/03/03 23:31:50 pacho Exp $
+# $Id$
 
 EAPI="5"
 SUPPORT_PYTHON_ABIS="1"

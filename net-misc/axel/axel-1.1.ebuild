@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/axel/axel-1.1.ebuild,v 1.8 2011/05/01 14:49:25 jlec Exp $
+# $Id$
 
 inherit toolchain-funcs
 

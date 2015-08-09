@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/w_scan/w_scan-20141122.ebuild,v 1.1 2014/12/07 23:50:41 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/resin-servlet-api/resin-servlet-api-4.0.15.ebuild,v 1.1 2011/03/15 20:11:15 nelchael Exp $
+# $Id$
 
 EAPI="2"
 

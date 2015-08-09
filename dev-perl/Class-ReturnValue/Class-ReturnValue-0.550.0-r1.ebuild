@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-ReturnValue/Class-ReturnValue-0.550.0-r1.ebuild,v 1.1 2015/05/03 10:46:11 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

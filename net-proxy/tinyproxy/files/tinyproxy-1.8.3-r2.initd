@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/tinyproxy/files/tinyproxy-1.8.3-r2.initd,v 1.1 2013/05/30 16:44:03 tomwij Exp $
+# $Id$
 
 get_config() {
     res=$(awk '$1 == "'$1'" { s=$2 } END { print s }' "$CONFFILE")

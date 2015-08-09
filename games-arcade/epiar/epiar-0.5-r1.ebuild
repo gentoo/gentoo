@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/epiar/epiar-0.5-r1.ebuild,v 1.5 2015/03/29 01:59:43 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit flag-o-matic eutils games

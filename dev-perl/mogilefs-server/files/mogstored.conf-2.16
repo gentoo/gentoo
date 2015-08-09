@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/mogilefs-server/files/mogstored.conf-2.16,v 1.1 2007/05/16 11:11:17 robbat2 Exp $
+# $Id$
 
 # These are set inside the Gentoo conf.d/mogilefsd
 #pidfile = /var/run/mogile/mogstored.pid

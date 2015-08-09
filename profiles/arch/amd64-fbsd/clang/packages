@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64-fbsd/clang/packages,v 1.1 2015/02/08 16:29:53 mgorny Exp $
+# $Id$
 
 # Don't remove gcc from here: clang uses it for crt{begin,end}*.o and its c++
 # stack.

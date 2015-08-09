@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/ensemblist/ensemblist-040126.ebuild,v 1.12 2015/03/23 07:13:49 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

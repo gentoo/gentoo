@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	portability	3a50b3ec310b86914f98babecc8f89c6	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	savedconfig	7de7daa586f6bf361639e77d6f2299db	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=fe1278e9693eeb5917c4e77e5dba5884
+SLOT=0
 DEFINED_PHASES=install postinst prepare unpack
+EAPI=5
 DEPEND=net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/libX11 dev-lang/perl virtual/pkgconfig >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A minimal web browser that behaves like the Vimperator plugin for Firefox
-EAPI=5
-HOMEPAGE=http://www.vimprobable.org/
-IUSE=savedconfig
 LICENSE=MIT
+IUSE=savedconfig
+HOMEPAGE=http://www.vimprobable.org/
 RDEPEND=net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/libX11
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	savedconfig	5313100f525c41f6c72c6e04edeb4f65	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=5d8a9fc02cc845c9395be5b7ce7bd1d7

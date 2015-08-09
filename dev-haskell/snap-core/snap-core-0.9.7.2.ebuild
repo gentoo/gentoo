@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/snap-core/snap-core-0.9.7.2.ebuild,v 1.1 2015/07/17 10:37:33 gienah Exp $
+# $Id$
 
 EAPI=5
 

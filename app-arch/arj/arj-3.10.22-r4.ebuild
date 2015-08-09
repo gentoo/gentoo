@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/arj/arj-3.10.22-r4.ebuild,v 1.4 2013/08/03 15:45:34 pinkbyte Exp $
+# $Id$
 
 EAPI=4
 

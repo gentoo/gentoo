@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/files/fix_libtool_files.sh,v 1.17 2014/05/20 08:00:40 rhill Exp $
+# $Id$
 
 usage() {
 cat << "USAGE_END"

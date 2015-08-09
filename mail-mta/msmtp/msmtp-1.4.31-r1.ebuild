@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/msmtp/msmtp-1.4.31-r1.ebuild,v 1.8 2014/03/19 15:19:11 ago Exp $
+# $Id$
 
 EAPI=5
 inherit multilib python eutils

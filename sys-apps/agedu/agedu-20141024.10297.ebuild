@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/agedu/agedu-20141024.10297.ebuild,v 1.1 2014/10/24 12:21:39 blueness Exp $
+# $Id$
 
 EAPI="5"
 

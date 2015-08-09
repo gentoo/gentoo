@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/p7zip/p7zip-9.20.1-r5.ebuild,v 1.15 2015/07/30 19:02:20 zlogene Exp $
+# $Id$
 
 EAPI=4
 

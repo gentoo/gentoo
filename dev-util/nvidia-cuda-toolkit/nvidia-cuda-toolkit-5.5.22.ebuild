@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/nvidia-cuda-toolkit-5.5.22.ebuild,v 1.13 2015/02/15 06:50:36 vapier Exp $
+# $Id$
 
 EAPI=5
 

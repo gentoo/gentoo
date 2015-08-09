@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	games	9e5e9ee0b325a8a10823f9b385ca2036	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	gnome2	56d268cae832738430a9de86a5765fa1	user	906f3c8eb3a2350a4f1191a89baa3e46	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=886657af93ac22c0ed1b81ea7130e7f8
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+EAPI=5
 DEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.0.1:2.0 gnome-base/gconf:2 >=x11-libs/vte-0.11:0 gstreamer? ( media-libs/gstreamer:0.10 ) dev-perl/XML-Parser dev-libs/libpcre net-libs/gnet:2 virtual/libintl virtual/pkgconfig >=dev-util/intltool-0.23 >=sys-devel/gettext-0.11.5 app-text/rarian >=sys-apps/sed-4
 DESCRIPTION=GNOME MUD client
-EAPI=5
-HOMEPAGE=https://wiki.gnome.org/Apps/GnomeMud
-IUSE=gstreamer debug
-KEYWORDS=amd64 ~ppc x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.0.1:2.0 gnome-base/gconf:2 >=x11-libs/vte-0.11:0 gstreamer? ( media-libs/gstreamer:0.10 ) dev-perl/XML-Parser dev-libs/libpcre net-libs/gnet:2 virtual/libintl games-misc/games-envd
-SLOT=0
+IUSE=gstreamer debug
 SRC_URI=mirror://gnome/sources/gnome-mud/0.11/gnome-mud-0.11.2.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=ea50c11dfe2cb4a3be5fab6c7603f322
+KEYWORDS=amd64 ~ppc x86 ~x86-fbsd
+HOMEPAGE=https://wiki.gnome.org/Apps/GnomeMud
+RDEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.0.1:2.0 gnome-base/gconf:2 >=x11-libs/vte-0.11:0 gstreamer? ( media-libs/gstreamer:0.10 ) dev-perl/XML-Parser dev-libs/libpcre net-libs/gnet:2 virtual/libintl games-misc/games-envd

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gtkspell/gtkspell-2.0.16.ebuild,v 1.13 2012/12/06 06:50:07 tetromino Exp $
+# $Id$
 
 EAPI=4
 

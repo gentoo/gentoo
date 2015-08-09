@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-j2ee-deployment-bin/sun-j2ee-deployment-bin-1.1-r2.ebuild,v 1.6 2008/06/16 19:05:24 serkan Exp $
+# $Id$
 
 inherit java-pkg-2
 

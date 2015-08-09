@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3/quake3-1.36-r1.ebuild,v 1.6 2014/08/12 12:01:00 vapier Exp $
+# $Id$
 
 # quake3-9999          -> latest svn
 # quake3-9999.REV      -> use svn REV

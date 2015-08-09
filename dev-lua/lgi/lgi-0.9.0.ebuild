@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lua/lgi/lgi-0.9.0.ebuild,v 1.6 2015/07/23 20:01:03 pacho Exp ${PV}.ebuild,v 1.7 2015/04/02 18:22:41 mr_bones_ Exp $
+# $Id$
 
 EAPI=4
 

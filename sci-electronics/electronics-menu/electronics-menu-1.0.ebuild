@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/electronics-menu/electronics-menu-1.0.ebuild,v 1.7 2010/10/08 19:24:05 darkside Exp $
+# $Id$
 
 EAPI="3"
 

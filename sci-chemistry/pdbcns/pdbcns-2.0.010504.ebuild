@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdbcns/pdbcns-2.0.010504.ebuild,v 1.1 2012/03/01 16:12:16 jlec Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pypax/pypax-0.9.0.ebuild,v 1.9 2015/06/02 05:12:50 jmorgan Exp $
+# $Id$
 
 EAPI="5"
 

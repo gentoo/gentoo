@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-icon-theme-symbolic/gnome-icon-theme-symbolic-3.10.1.ebuild,v 1.7 2014/06/16 14:54:21 blueness Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

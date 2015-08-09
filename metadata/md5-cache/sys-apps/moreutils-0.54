@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=1acafe42bb5c47da0e8a51066ca5d6e7
+SLOT=0
 DEFINED_PHASES=compile install prepare
+EAPI=5
 DEPEND=doc? ( dev-lang/perl >=app-text/docbook2X-0.8.8-r2 app-text/docbook-xml-dtd:4.4 )
 DESCRIPTION=a growing collection of the unix tools that nobody thought to write thirty years ago
-EAPI=5
-HOMEPAGE=http://joeyh.name/code/moreutils/
-IUSE=+doc +perl
-KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-linux
 LICENSE=GPL-2
-RDEPEND=perl? ( dev-lang/perl dev-perl/IPC-Run dev-perl/Time-Duration dev-perl/TimeDate )
-SLOT=0
+IUSE=+doc +perl
 SRC_URI=mirror://debian/pool/main/m/moreutils/moreutils_0.54.orig.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=d4918745bb95d334052ddb6f5f1f3614
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-linux
+HOMEPAGE=http://joeyh.name/code/moreutils/
+RDEPEND=perl? ( dev-lang/perl dev-perl/IPC-Run dev-perl/Time-Duration dev-perl/TimeDate )

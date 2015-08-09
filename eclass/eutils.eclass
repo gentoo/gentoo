@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/eutils.eclass,v 1.444 2015/03/20 18:28:11 vapier Exp $
+# $Id$
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:

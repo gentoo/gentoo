@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/phrap/phrap-1.080812-r1.ebuild,v 1.1 2015/06/16 08:34:28 jlec Exp $
+# $Id$
 
 EAPI=5
 

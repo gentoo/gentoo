@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/qsstv/qsstv-8.2.10.ebuild,v 1.1 2015/03/07 17:54:50 tomjbe Exp $
+# $Id$
 
 EAPI=5
 

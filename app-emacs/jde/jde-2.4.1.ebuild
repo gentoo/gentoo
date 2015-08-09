@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/jde/jde-2.4.1.ebuild,v 1.6 2014/06/07 11:19:27 ulm Exp $
+# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"

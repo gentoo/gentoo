@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/Memoize/Memoize-1.30.0-r1.ebuild,v 1.1 2014/07/26 13:49:16 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

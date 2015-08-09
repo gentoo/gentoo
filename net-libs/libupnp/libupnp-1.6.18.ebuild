@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libupnp/libupnp-1.6.18.ebuild,v 1.10 2013/04/04 22:19:49 vapier Exp $
+# $Id$
 
 EAPI="4"
 

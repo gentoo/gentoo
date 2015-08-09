@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ce670379b4009db40a1f431ec0d7373
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
 DEPEND=ident? ( net-libs/libident ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib ) >=sys-apps/sed-4
 DESCRIPTION=A IRC server written from scratch
-EAPI=5
-HOMEPAGE=http://ngircd.barton.de/
-IUSE=debug gnutls ident ipv6 pam ssl tcpd zlib
-KEYWORDS=~amd64 x86 ~x64-macos
 LICENSE=GPL-2
-RDEPEND=ident? ( net-libs/libident ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib )
+IUSE=debug gnutls ident ipv6 pam ssl tcpd zlib
 RESTRICT=test
-SLOT=0
 SRC_URI=ftp://ngircd.barton.de/pub/ngircd/ngircd-20.3.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=5d98c843d3a29e446f050562d884aadb
+KEYWORDS=~amd64 x86 ~x64-macos
+HOMEPAGE=http://ngircd.barton.de/
+RDEPEND=ident? ( net-libs/libident ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib )

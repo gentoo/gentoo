@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgit2-glib/libgit2-glib-0.22.8.ebuild,v 1.2 2015/07/26 02:27:25 tetromino Exp $
+# $Id$
 
 EAPI=5
 

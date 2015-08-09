@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/procmail/procmail-3.22-r10.ebuild,v 1.14 2014/10/24 19:03:15 grobian Exp $
+# $Id$
 
 inherit eutils flag-o-matic toolchain-funcs prefix
 

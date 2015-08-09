@@ -1,7 +1,8 @@
+_eclasses_=
+_md5_=c6d3e1219782daed44dacd9882d0354
+SLOT=0
 DEFINED_PHASES=-
-DESCRIPTION=Virtual for LeechCraft plugins capable of visually notifying the user
 EAPI=5
+DESCRIPTION=Virtual for LeechCraft plugins capable of visually notifying the user
 KEYWORDS=~amd64 ~x86
 RDEPEND=|| ( app-leechcraft/lc-kinotify app-leechcraft/lc-dbusmanager )
-SLOT=0
-_md5_=50ad3f9f452c7a8ade6aeb9fefa522bb

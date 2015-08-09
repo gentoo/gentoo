@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/monadcatchio-mtl/monadcatchio-mtl-0.3.0.5.ebuild,v 1.7 2013/09/07 20:12:32 ago Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/alliance/alliance-5.0.20110203.ebuild,v 1.5 2014/08/10 20:27:39 slyfox Exp $
+# $Id$
 
 EAPI=4
 

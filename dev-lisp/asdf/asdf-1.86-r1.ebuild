@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/asdf/asdf-1.86-r1.ebuild,v 1.1 2012/04/07 09:54:02 neurogeek Exp $
+# $Id$
 
 EAPI="3"
 DEB_PV="1"

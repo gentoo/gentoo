@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/kalign/kalign-2.03.ebuild,v 1.3 2009/03/21 17:10:35 armin76 Exp $
+# $Id$
 
 DESCRIPTION="Global and progressive multiple sequence alignment"
 HOMEPAGE="http://msa.cgb.ki.se/"

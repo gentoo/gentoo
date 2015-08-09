@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-pqf/fortune-mod-pqf-6.0.ebuild,v 1.10 2015/02/05 17:27:58 tupone Exp $
+# $Id$
 EAPI=5
 DESCRIPTION="Fortune database of Terry Pratchett's Discworld related quotes"
 HOMEPAGE="http://www.lspace.org/"

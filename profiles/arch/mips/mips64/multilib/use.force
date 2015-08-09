@@ -1,5 +1,5 @@
 # Copyright 2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/mips64/multilib/use.force,v 1.3 2013/07/28 02:41:57 mattst88 Exp $
+# $Id$
 
 multilib

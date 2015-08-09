@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/rax-scheduled-images-python-novaclient-ext/rax-scheduled-images-python-novaclient-ext-0.2.1.ebuild,v 1.1 2014/05/12 03:02:08 prometheanfire Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

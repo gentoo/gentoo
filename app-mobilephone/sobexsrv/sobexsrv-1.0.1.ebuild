@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/sobexsrv/sobexsrv-1.0.1.ebuild,v 1.11 2012/06/02 05:04:06 zmedico Exp $
+# $Id$
 
 inherit eutils toolchain-funcs user
 

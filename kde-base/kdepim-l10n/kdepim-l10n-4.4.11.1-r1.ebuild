@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdepim-l10n/kdepim-l10n-4.4.11.1-r1.ebuild,v 1.12 2014/04/05 18:21:29 dilfridge Exp $
+# $Id$
 
 EAPI=5
 KDE_MINIMAL="4.6"

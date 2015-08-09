@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/files/svscan.init-0.76-r7,v 1.1 2008/12/07 06:59:37 robbat2 Exp $
+# $Id$
 
 depend() {
 	use net

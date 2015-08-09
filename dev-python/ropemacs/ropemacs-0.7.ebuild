@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ropemacs/ropemacs-0.7.ebuild,v 1.1 2014/05/13 16:40:20 ulm Exp $
+# $Id$
 
 EAPI=5
 

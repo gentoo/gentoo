@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ptexenc/ptexenc-1.3.0_p20120701.ebuild,v 1.13 2013/04/25 21:25:58 ago Exp $
+# $Id$
 
 EAPI=3
 

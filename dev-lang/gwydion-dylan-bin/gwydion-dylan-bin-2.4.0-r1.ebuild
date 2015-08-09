@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gwydion-dylan-bin/gwydion-dylan-bin-2.4.0-r1.ebuild,v 1.1 2008/03/09 21:06:02 araujo Exp $
+# $Id$
 
 DESCRIPTION="The Dylan Programming Language Compiler"
 HOMEPAGE="http://www.gwydiondylan.org/"

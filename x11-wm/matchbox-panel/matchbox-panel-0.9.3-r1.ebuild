@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/matchbox-panel/matchbox-panel-0.9.3-r1.ebuild,v 1.5 2013/05/06 04:02:24 patrick Exp $
+# $Id$
 
 inherit eutils autotools versionator
 

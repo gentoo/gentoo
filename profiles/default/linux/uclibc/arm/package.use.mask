@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/arm/package.use.mask,v 1.1 2014/10/16 22:35:53 tamiko Exp $
+# $Id$
 
 # Matthias Maier <tamiko@gentoo.org> (17 Oct 2014)
 # virtual/jre is not keyworded on arm.

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/splash-themes-livecd/splash-themes-livecd-2006.1.ebuild,v 1.7 2013/09/28 09:29:23 pinkbyte Exp $
+# $Id$
 
 MY_P="gentoo-livecd-${PV}"
 MY_REV="0.9.4"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/fcitx-qt5/fcitx-qt5-1.0.2.ebuild,v 1.1 2015/05/09 12:01:09 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-pam-modules/freebsd-pam-modules-8.2.ebuild,v 1.1 2011/07/06 06:03:53 aballier Exp $
+# $Id$
 
 inherit bsdmk freebsd multilib pam
 

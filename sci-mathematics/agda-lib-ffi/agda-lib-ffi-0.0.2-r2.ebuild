@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/agda-lib-ffi/agda-lib-ffi-0.0.2-r2.ebuild,v 1.1 2015/08/02 13:56:54 gienah Exp $
+# $Id$
 
 EAPI=5
 

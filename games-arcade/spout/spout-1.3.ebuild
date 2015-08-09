@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/spout/spout-1.3.ebuild,v 1.8 2015/03/31 02:31:55 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

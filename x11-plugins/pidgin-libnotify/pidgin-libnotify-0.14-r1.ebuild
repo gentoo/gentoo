@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-libnotify/pidgin-libnotify-0.14-r1.ebuild,v 1.6 2012/05/05 05:11:58 jdhore Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xdotool/xdotool-2.20110530.1.ebuild,v 1.10 2014/01/07 16:56:09 vapier Exp $
+# $Id$
 
 EAPI=2
 

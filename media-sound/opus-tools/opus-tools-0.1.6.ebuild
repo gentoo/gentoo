@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/opus-tools/opus-tools-0.1.6.ebuild,v 1.3 2014/01/22 10:47:42 nimiux Exp $
+# $Id$
 
 EAPI=4
 

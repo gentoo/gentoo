@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/safecat/safecat-1.13.ebuild,v 1.6 2011/06/22 21:27:21 ranger Exp $
+# $Id$
 
 EAPI="3"
 

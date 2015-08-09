@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam-script/pam-script-1.1.7.ebuild,v 1.1 2013/05/14 04:37:24 radhermit Exp $
+# $Id$
 
 EAPI=5
 

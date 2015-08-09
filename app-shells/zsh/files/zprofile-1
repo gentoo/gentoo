@@ -1,5 +1,5 @@
 # @GENTOO_PORTAGE_EPREFIX@/etc/zsh/zprofile
-# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/files/zprofile-1,v 1.1 2010/08/15 12:21:56 tove Exp $
+# $Id$
 
 # Load environment settings from profile.env, which is created by
 # env-update from the files in /etc/env.d

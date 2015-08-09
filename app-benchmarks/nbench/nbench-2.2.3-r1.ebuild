@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/nbench/nbench-2.2.3-r1.ebuild,v 1.10 2010/09/30 21:23:29 ranger Exp $
+# $Id$
 
 EAPI="2"
 

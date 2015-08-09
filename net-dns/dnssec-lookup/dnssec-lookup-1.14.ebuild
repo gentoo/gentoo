@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-lookup/dnssec-lookup-1.14.ebuild,v 1.2 2013/03/02 22:49:09 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

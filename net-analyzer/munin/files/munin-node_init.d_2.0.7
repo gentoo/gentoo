@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/files/munin-node_init.d_2.0.7,v 1.4 2013/02/09 14:37:01 flameeyes Exp $
+# $Id$
 
 get_munin_config() {
 	awk '$1 == "'$1'" { s=$2 } END { print s }' "$CFGFILE"

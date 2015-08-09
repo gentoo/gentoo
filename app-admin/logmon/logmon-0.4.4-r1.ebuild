@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logmon/logmon-0.4.4-r1.ebuild,v 1.7 2014/11/27 00:07:49 jer Exp $
+# $Id$
 
 EAPI="5"
 

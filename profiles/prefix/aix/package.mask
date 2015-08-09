@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/aix/package.mask,v 1.13 2015/02/17 17:59:50 haubi Exp $
+# $Id$
 
 # Michael Haubenwallner <haubi@gentoo.org> (17 Feb 2015)
 # Fails to include "config.h" first in some sources.

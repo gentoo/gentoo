@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fping/fping-2.4_beta2_p161-r2.ebuild,v 1.10 2014/11/02 09:02:43 ago Exp $
+# $Id$
 
 EAPI=5
 

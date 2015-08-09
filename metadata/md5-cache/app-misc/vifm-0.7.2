@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	base	84d9f879f57a8316ff02be0373a3d6f9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=a9ac34a3ce6029155d1a31950f17ec61
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare unpack
+EAPI=4
 DEPEND=>=sys-libs/ncurses-5.7-r7 magic? ( sys-apps/file )
 DESCRIPTION=Console file manager with vi(m)-like keybindings
-EAPI=4
-HOMEPAGE=http://vifm.info/
-IUSE=+compatibility +extended-keys +magic vim-plugin vim-syntax
-KEYWORDS=amd64 ppc s390 x86
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/ncurses-5.7-r7 magic? ( sys-apps/file ) vim-plugin? ( >=app-editors/vim-7.3 ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
-SLOT=0
+IUSE=+compatibility +extended-keys +magic vim-plugin vim-syntax
 SRC_URI=mirror://sourceforge/vifm/vifm-0.7.2.tar.bz2
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=6284b67f8038837065944a66ca23826f
+KEYWORDS=amd64 ppc s390 x86
+HOMEPAGE=http://vifm.info/
+RDEPEND=>=sys-libs/ncurses-5.7-r7 magic? ( sys-apps/file ) vim-plugin? ( >=app-editors/vim-7.3 ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/dwb/dwb-2014.03.07-r1.ebuild,v 1.1 2014/12/06 06:04:30 radhermit Exp $
+# $Id$
 
 EAPI=5
 

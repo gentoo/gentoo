@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/src_test.eblit,v 1.9 2014/09/17 22:53:43 vapier Exp $
+# $Id$
 
 glibc_src_test() {
 	cd "$(builddir $1)"

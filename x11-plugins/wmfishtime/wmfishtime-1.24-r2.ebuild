@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfishtime/wmfishtime-1.24-r2.ebuild,v 1.7 2014/04/07 19:41:35 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

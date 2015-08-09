@@ -1,10 +1,10 @@
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f90677658dd0c0de9b508b8ecb3ea16c
+SLOT=0
 DEFINED_PHASES=compile install setup unpack
+EAPI=5
 DEPEND=>=app-text/libspectre-0.2.6:= >=app-text/zathura-0.2.7 dev-libs/glib:2= x11-libs/cairo:= virtual/pkgconfig dev-vcs/git
 DESCRIPTION=PostScript plug-in for zathura
-EAPI=5
-HOMEPAGE=http://pwmt.org/projects/zathura/
 LICENSE=ZLIB
+HOMEPAGE=http://pwmt.org/projects/zathura/
 RDEPEND=>=app-text/libspectre-0.2.6:= >=app-text/zathura-0.2.7 dev-libs/glib:2= x11-libs/cairo:=
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=0c1fc47d46f9fcfda27d3e5ab1fe1f85

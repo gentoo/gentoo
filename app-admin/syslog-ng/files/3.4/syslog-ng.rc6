@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/files/3.4/syslog-ng.rc6,v 1.6 2013/08/31 17:44:03 mr_bones_ Exp $
+# $Id$
 
 SYSLOG_NG_CONFIGFILE=${SYSLOG_NG_CONFIGFILE:-/etc/syslog-ng/${RC_SVCNAME}.conf}
 SYSLOG_NG_STATEFILE_DIR=${SYSLOG_NG_STATEFILE_DIR:-/var/lib/syslog-ng}

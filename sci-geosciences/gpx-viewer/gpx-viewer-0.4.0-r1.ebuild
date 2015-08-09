@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpx-viewer/gpx-viewer-0.4.0-r1.ebuild,v 1.1 2015/06/02 08:46:13 jlec Exp $
+# $Id$
 
 EAPI=5
 

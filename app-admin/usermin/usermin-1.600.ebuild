@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/usermin/usermin-1.600.ebuild,v 1.1 2014/05/28 00:35:35 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/profphd-utils/profphd-utils-1.0.10.ebuild,v 1.2 2013/04/25 07:38:09 jlec Exp $
+# $Id$
 
 EAPI=5
 

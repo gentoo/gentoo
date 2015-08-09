@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javacup/javacup-0.11b_beta20150326.ebuild,v 1.4 2015/08/08 13:07:19 sping Exp $
+# $Id$
 
 EAPI="5"
 

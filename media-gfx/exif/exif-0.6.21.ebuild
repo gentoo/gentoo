@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/exif/exif-0.6.21.ebuild,v 1.7 2012/09/20 13:23:45 xarthisius Exp $
+# $Id$
 
 EAPI=4
 

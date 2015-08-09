@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/chicken/chicken-4.8.0.3-r1.ebuild,v 1.6 2013/07/14 14:18:38 ago Exp $
+# $Id$
 
 EAPI="3"
 

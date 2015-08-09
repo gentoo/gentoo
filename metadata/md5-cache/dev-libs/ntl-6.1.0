@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=1a670ad5a8b01fd14738191906a18fda
+SLOT=0
 DEFINED_PHASES=compile configure install prepare
+EAPI=5
 DEPEND=>=dev-libs/gmp-4.3 >=dev-libs/gf2x-0.9 dev-lang/perl
 DESCRIPTION=High-performance and portable Number Theory C++ library
-EAPI=5
-HOMEPAGE=http://shoup.net/ntl/
-IUSE=doc static-libs test
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/gmp-4.3 >=dev-libs/gf2x-0.9
-SLOT=0
+IUSE=doc static-libs test
 SRC_URI=http://www.shoup.net/ntl/ntl-6.1.0.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=6fefb3ac1e4e6ac70ebddd9c3034e145
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos
+HOMEPAGE=http://shoup.net/ntl/
+RDEPEND=>=dev-libs/gmp-4.3 >=dev-libs/gf2x-0.9

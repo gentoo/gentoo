@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gcs-oauth2-boto-plugin/gcs-oauth2-boto-plugin-1.9.ebuild,v 1.1 2015/05/20 10:16:50 vapier Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

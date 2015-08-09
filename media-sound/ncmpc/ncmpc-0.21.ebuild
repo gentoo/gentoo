@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpc/ncmpc-0.21.ebuild,v 1.9 2013/05/26 15:55:48 ago Exp $
+# $Id$
 
 EAPI=4
 inherit multilib

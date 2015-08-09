@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_mysql/pam_mysql-0.7_rc1-r4.ebuild,v 1.6 2012/05/21 23:25:46 vapier Exp $
+# $Id$
 
 EAPI=2
 inherit autotools libtool pam eutils

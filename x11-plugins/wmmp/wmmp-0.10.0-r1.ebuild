@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmp/wmmp-0.10.0-r1.ebuild,v 1.6 2010/09/06 09:48:58 s4t4n Exp $
+# $Id$
 
 EAPI=2
 MY_P=${P/wm/WM}

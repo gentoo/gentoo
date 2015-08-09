@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gamin/gamin-0.1.10-r1.ebuild,v 1.11 2014/06/18 19:00:16 mgorny Exp $
+# $Id$
 
 EAPI=5
 

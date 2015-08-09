@@ -8,4 +8,4 @@ Index: work/texmf-dist/scripts/epstopdf/epstopdf.pl
 +#!/usr/bin/perl
  use strict;
  
- # $Id: epstopdf_invocation.patch,v 1.1 2011/02/17 15:12:16 aballier Exp $
+ # $Id$

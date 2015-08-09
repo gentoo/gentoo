@@ -1,9 +1,0 @@
-# ChangeLog for sys-apps/netloc
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/netloc/ChangeLog,v 1.1 2014/04/08 09:04:15 alexxy Exp $
-
-*netloc-0.5 (08 Apr 2014)
-
-  08 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +metadata.xml,
-  +netloc-0.5.ebuild:
-  [sys-apps/netloc] New ebuild for netloc - network locality

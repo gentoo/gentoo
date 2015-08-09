@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsecp256k1/libsecp256k1-0.0.0_pre20150423.ebuild,v 1.1 2015/07/14 12:55:24 blueness Exp $
+# $Id$
 
 EAPI=5
 

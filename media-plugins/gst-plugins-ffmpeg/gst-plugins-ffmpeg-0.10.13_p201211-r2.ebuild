@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/gst-plugins-ffmpeg-0.10.13_p201211-r2.ebuild,v 1.12 2014/10/11 13:10:50 maekke Exp $
+# $Id$
 
 EAPI=5
 

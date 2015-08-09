@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/din/din-5.2.1.ebuild,v 1.2 2015/03/25 16:01:54 jlec Exp $
+# $Id$
 
 EAPI=5
 

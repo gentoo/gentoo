@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bison/bison-1.875d.ebuild,v 1.14 2014/01/18 03:19:42 vapier Exp $
+# $Id$
 
 inherit toolchain-funcs flag-o-matic eutils
 

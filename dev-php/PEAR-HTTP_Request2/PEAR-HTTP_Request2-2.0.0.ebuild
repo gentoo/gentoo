@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTTP_Request2/PEAR-HTTP_Request2-2.0.0.ebuild,v 1.9 2012/03/18 18:53:55 armin76 Exp $
+# $Id$
 
 EAPI=4
 

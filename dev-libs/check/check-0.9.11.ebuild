@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/check/check-0.9.11.ebuild,v 1.11 2014/03/14 10:03:05 ago Exp $
+# $Id$
 
 EAPI=4
 

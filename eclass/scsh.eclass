@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/scsh.eclass,v 1.10 2012/11/27 12:50:40 ulm Exp $
+# $Id$
 #
 
 inherit eutils multilib

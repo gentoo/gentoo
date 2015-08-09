@@ -3,7 +3,7 @@
 # Adaption of the original RedHat script
 # Original Copyright (C) 2003 Red Hat, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/files/rgmanager.initd,v 1.1 2011/09/14 10:47:36 ultrabug Exp $
+# $Id$
 
 depend() {
 	use net

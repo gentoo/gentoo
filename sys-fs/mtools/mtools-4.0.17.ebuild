@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtools/mtools-4.0.17.ebuild,v 1.1 2011/09/15 00:41:34 radhermit Exp $
+# $Id$
 
 EAPI="4"
 

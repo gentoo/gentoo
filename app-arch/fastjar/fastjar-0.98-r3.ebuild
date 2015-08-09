@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/fastjar/fastjar-0.98-r3.ebuild,v 1.1 2015/04/05 20:24:51 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

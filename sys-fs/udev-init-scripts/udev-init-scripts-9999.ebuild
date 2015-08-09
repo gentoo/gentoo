@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev-init-scripts/udev-init-scripts-9999.ebuild,v 1.38 2015/06/01 16:47:35 williamh Exp $
+# $Id$
 
 EAPI=5
 

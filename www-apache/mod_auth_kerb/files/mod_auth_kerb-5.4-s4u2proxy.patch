@@ -37,7 +37,7 @@ KrbConstrainedDelegation. The default is off.
 +
 +The module itself will obtain and manage the necessary credentials.
 +
- $Id: mod_auth_kerb-5.4-s4u2proxy.patch,v 1.2 2013/01/11 20:41:59 pacho Exp $
+ $Id$
 diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.4/src/mod_auth_kerb.c
 --- mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c	2011-12-09 17:55:05.000000000 -0500
 +++ mod_auth_kerb-5.4/src/mod_auth_kerb.c	2012-03-01 14:19:40.000000000 -0500
@@ -70,7 +70,7 @@ diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.
 + * Copyright (C) 2012  Red Hat
 + */
 +
- #ident "$Id: mod_auth_kerb-5.4-s4u2proxy.patch,v 1.2 2013/01/11 20:41:59 pacho Exp $"
+ #ident "$Id$"
  
  #include "config.h"
 @@ -49,6 +74,7 @@

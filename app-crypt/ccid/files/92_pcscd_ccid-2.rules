@@ -1,7 +1,7 @@
 # udev rules to set the access rights of CCID smart card readers
 # so they can be used by pcscd
 
-# $Id: 92_pcscd_ccid-2.rules,v 1.1 2014/08/04 22:09:43 flameeyes Exp $
+# $Id$
 
 # Gemplus PCMCIA Card
 #SUBSYSTEMS=="pcmcia", DRIVERS=="serial_cs", ACTION=="add", ATTRS{prod_id1}=="Gemplus", ATTRS{prod_id2}=="SerialPort", ATTRS{prod_id3}=="GemPC Card", RUN+="/usr/sbin/pcscd --hotplug" 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/tpb/tpb-0.6.4-r1.ebuild,v 1.3 2013/02/25 11:40:40 ago Exp $
+# $Id$
 
 EAPI=5
 inherit linux-info eutils

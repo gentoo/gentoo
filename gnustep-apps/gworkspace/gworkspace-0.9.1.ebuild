@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gworkspace/gworkspace-0.9.1.ebuild,v 1.4 2012/09/23 07:51:40 phajdan.jr Exp $
+# $Id$
 
 EAPI=3
 inherit gnustep-2

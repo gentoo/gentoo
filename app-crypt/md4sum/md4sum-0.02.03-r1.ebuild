@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/md4sum/md4sum-0.02.03-r1.ebuild,v 1.1 2015/02/15 21:07:45 hanno Exp $
+# $Id$
 
 EAPI=5
 

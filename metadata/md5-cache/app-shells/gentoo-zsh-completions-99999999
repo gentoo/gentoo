@@ -1,10 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ddf5a5465f0b51ffb41a2b294f50045f
+SLOT=0
 DEFINED_PHASES=install unpack
+EAPI=5
 DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=Gentoo specific zsh completion support (includes emerge and ebuild commands)
-EAPI=5
-HOMEPAGE=https://github.com/radhermit/gentoo-zsh-completions
 LICENSE=ZSH
+HOMEPAGE=https://github.com/radhermit/gentoo-zsh-completions
 RDEPEND=>=app-shells/zsh-4.3.5
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=c70181bd09085e3b4d76273acacdb913

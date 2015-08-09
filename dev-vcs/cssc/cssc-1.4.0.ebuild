@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cssc/cssc-1.4.0.ebuild,v 1.3 2014/10/10 10:58:58 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

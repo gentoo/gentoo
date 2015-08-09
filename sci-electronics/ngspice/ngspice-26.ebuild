@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/ngspice/ngspice-26.ebuild,v 1.3 2014/12/14 16:53:03 tomjbe Exp $
+# $Id$
 
 EAPI="3"
 

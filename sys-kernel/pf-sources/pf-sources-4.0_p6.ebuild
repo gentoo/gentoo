@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/pf-sources/pf-sources-4.0_p6.ebuild,v 1.1 2015/06/13 18:25:35 hwoarang Exp $
+# $Id$
 
 EAPI="5"
 inherit readme.gentoo toolchain-funcs versionator

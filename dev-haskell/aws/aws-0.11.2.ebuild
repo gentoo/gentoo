@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aws/aws-0.11.2.ebuild,v 1.1 2015/01/25 21:12:35 qnikst Exp $
+# $Id$
 
 EAPI=5
 

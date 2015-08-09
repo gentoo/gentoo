@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/quidscor/quidscor-1.2.48-r1.ebuild,v 1.1 2014/07/20 13:54:45 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

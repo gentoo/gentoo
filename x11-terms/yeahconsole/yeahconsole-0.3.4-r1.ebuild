@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/yeahconsole/yeahconsole-0.3.4-r1.ebuild,v 1.6 2011/01/25 02:40:00 jer Exp $
+# $Id$
 
 EAPI="2"
 

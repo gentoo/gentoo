@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/raw-thumbnailer/raw-thumbnailer-0.2.1.ebuild,v 1.10 2012/05/05 07:00:24 jdhore Exp $
+# $Id$
 
 EAPI=4
 

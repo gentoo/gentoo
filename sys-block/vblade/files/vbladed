@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/vblade/files/vbladed,v 1.1 2006/01/25 06:17:55 robbat2 Exp $
+# $Id$
 #
 # run a vblade daemon using a logger process
 # output is directed to syslogd

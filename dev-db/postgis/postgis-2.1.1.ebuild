@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/postgis-2.1.1.ebuild,v 1.7 2015/03/20 15:11:13 nativemad Exp $
+# $Id$
 
 EAPI="5"
 POSTGRES_COMPAT=( 9.{0,1,2,3,4} )

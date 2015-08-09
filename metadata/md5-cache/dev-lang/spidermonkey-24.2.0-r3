@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=4affbf30833cae8b640f8f34a23642ff
+SLOT=24
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi >=sys-libs/zlib-1.1.4 system-icu? ( >=dev-libs/icu-1.51:= ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) app-arch/zip virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) =sys-devel/autoconf-2.1* >=sys-devel/libtool-2.4
 DESCRIPTION=Stand-alone JavaScript C library
-EAPI=5
-HOMEPAGE=http://www.mozilla.org/js/spidermonkey/
-IUSE=debug icu jit minimal static-libs +system-icu test
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
 LICENSE=NPL-1.1
-RDEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi >=sys-libs/zlib-1.1.4 system-icu? ( >=dev-libs/icu-1.51:= )
+IUSE=debug icu jit minimal static-libs +system-icu test
 RESTRICT=ia64? ( test )
-SLOT=24
 SRC_URI=https://ftp.mozilla.org/pub/mozilla.org/js/mozjs-24.2.0.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	python-any-r1	4756de53ea4d40471a582e898815a5c8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=7735893ce49381e8121bdce410362402
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.mozilla.org/js/spidermonkey/
+RDEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi >=sys-libs/zlib-1.1.4 system-icu? ( >=dev-libs/icu-1.51:= )

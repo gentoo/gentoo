@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/raul/raul-0.8.0-r1.ebuild,v 1.2 2015/01/03 12:03:20 mgorny Exp $
+# $Id$
 
 EAPI=5
 

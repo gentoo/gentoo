@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ayttm/ayttm-0.6.3.ebuild,v 1.5 2015/05/16 10:38:08 pacho Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils multilib

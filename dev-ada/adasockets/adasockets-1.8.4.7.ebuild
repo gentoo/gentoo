@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/adasockets/adasockets-1.8.4.7.ebuild,v 1.6 2014/08/10 19:52:40 slyfox Exp $
+# $Id$
 
 WANT_AUTOCONF="2.1"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-m17n/scim-m17n-0.2.2.ebuild,v 1.12 2011/02/13 19:16:13 armin76 Exp $
+# $Id$
 
 inherit eutils
 

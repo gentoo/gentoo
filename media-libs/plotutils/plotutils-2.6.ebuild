@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/plotutils/plotutils-2.6.ebuild,v 1.12 2013/05/04 21:06:53 jlec Exp $
+# $Id$
 
 EAPI=3
 inherit libtool eutils autotools

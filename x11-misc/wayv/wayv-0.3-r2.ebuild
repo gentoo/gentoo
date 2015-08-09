@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/wayv/wayv-0.3-r2.ebuild,v 1.4 2014/09/03 08:34:39 jer Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

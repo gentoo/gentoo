@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sonata/sonata-1.6.2.1-r1.ebuild,v 1.4 2015/06/17 05:45:52 yngwin Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

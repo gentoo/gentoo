@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lasi/lasi-1.1.1.ebuild,v 1.14 2014/03/17 13:06:21 polynomial-c Exp $
+# $Id$
 
 EAPI=4
 

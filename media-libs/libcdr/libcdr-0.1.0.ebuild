@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libcdr/libcdr-0.1.0.ebuild,v 1.4 2015/02/15 14:51:34 ago Exp $
+# $Id$
 
 EAPI=5
 

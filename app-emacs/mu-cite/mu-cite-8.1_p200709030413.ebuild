@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mu-cite/mu-cite-8.1_p200709030413.ebuild,v 1.1 2014/02/15 17:37:40 ulm Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,5 +1,5 @@
 # Config file for /etc/init.d/xsp
-# $Id: xsp.confd,v 1.1 2009/01/18 17:44:04 loki_val Exp $
+# $Id$
 
 # This is the document root; trailing slash is not necessary
 MonoServerRoot=/usr/lib/xsp/test

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/burp/burp-1.4.26.ebuild,v 1.2 2015/04/08 19:13:54 aidecoe Exp $
+# $Id$
 
 EAPI=5
 

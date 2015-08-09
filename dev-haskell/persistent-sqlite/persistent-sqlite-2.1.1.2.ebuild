@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/persistent-sqlite/persistent-sqlite-2.1.1.2.ebuild,v 1.1 2014/12/24 03:45:33 gienah Exp $
+# $Id$
 
 EAPI=5
 

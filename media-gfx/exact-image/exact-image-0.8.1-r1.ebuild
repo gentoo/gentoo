@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/exact-image/exact-image-0.8.1-r1.ebuild,v 1.3 2014/12/30 19:17:14 dilfridge Exp $
+# $Id$
 
 EAPI=4
 PYTHON_DEPEND="python? 2:2.5"

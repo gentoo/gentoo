@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-ipaddr/ocaml-ipaddr-2.5.0.ebuild,v 1.1 2014/12/01 09:59:25 aballier Exp $
+# $Id$
 
 EAPI=5
 

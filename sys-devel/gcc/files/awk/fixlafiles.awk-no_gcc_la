@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/files/awk/fixlafiles.awk-no_gcc_la,v 1.4 2010/03/19 23:53:07 vapier Exp $
+# $Id$
 
 #
 # Helper functions

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/abduco/abduco-0.2.ebuild,v 1.1 2014/11/24 21:28:52 xmw Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/blt/blt-2.4z-r10.ebuild,v 1.16 2013/01/09 21:27:59 jlec Exp $
+# $Id$
 
 EAPI="3"
 

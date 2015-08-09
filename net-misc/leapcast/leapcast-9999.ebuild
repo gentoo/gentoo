@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/leapcast/leapcast-9999.ebuild,v 1.2 2015/03/03 06:46:18 bman Exp $
+# $Id$
 
 EAPI="5"
 

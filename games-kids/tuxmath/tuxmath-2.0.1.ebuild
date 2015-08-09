@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/tuxmath/tuxmath-2.0.1.ebuild,v 1.5 2013/07/05 18:22:07 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnome2-utils games

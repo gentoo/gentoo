@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/chillispot/chillispot-1.1.0.ebuild,v 1.7 2014/08/30 11:50:24 mgorny Exp $
+# $Id$
 
 inherit eutils
 

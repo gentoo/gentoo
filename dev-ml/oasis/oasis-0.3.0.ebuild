@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/oasis/oasis-0.3.0.ebuild,v 1.4 2013/03/03 11:18:08 aballier Exp $
+# $Id$
 
 EAPI=5
 

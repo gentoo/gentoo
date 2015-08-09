@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/par/par-1.52.ebuild,v 1.12 2010/10/02 12:45:34 grobian Exp $
+# $Id$
 
 inherit toolchain-funcs
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-RsyncP/File-RsyncP-0.700.0.ebuild,v 1.4 2014/12/12 22:29:51 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

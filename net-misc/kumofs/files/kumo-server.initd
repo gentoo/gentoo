@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/kumofs/files/kumo-server.initd,v 1.1 2010/03/02 15:52:20 matsuu Exp $
+# $Id$
 
 KUMO_SERVER_HOSTNAME="${KUMO_SERVER_HOSTNAME:-${HOSTNAME}}"
 KUMO_SERVER_EXEC="${KUMO_SERVER_EXEC:-/usr/bin/kumo-server}"

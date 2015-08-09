@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tor/tor-0.2.6.10.ebuild,v 1.7 2015/08/02 18:41:00 ago Exp $
+# $Id$
 
 EAPI="5"
 

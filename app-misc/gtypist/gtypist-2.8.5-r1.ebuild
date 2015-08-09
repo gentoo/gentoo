@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gtypist/gtypist-2.8.5-r1.ebuild,v 1.3 2011/09/30 15:48:11 darkside Exp $
+# $Id$
 
 EAPI=4
 

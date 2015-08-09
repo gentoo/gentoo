@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_ssh/pam_ssh-1.97-r3.ebuild,v 1.3 2012/11/01 13:50:43 ulm Exp $
+# $Id$
 
 EAPI=2
 

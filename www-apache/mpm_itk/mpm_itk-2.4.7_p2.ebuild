@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mpm_itk/mpm_itk-2.4.7_p2.ebuild,v 1.1 2014/05/28 02:23:41 mjo Exp $
+# $Id$
 
 EAPI=5
 inherit apache-module linux-info

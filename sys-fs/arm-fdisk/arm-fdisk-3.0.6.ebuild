@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/arm-fdisk/arm-fdisk-3.0.6.ebuild,v 1.8 2008/10/14 15:17:32 flameeyes Exp $
+# $Id$
 
 inherit eutils
 

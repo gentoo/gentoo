@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/shoutcast-search/shoutcast-search-0.3.1.ebuild,v 1.2 2011/03/13 16:02:27 hwoarang Exp $
+# $Id$
 
 EAPI=3
 

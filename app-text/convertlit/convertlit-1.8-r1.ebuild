@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/convertlit/convertlit-1.8-r1.ebuild,v 1.14 2013/08/24 13:09:21 maekke Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

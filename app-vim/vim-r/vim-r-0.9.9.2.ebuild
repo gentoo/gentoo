@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/vim-r/vim-r-0.9.9.2.ebuild,v 1.1 2013/02/21 07:42:47 radhermit Exp $
+# $Id$
 
 EAPI=5
 

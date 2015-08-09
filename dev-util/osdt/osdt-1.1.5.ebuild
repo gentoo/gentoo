@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/osdt/osdt-1.1.5.ebuild,v 1.1 2013/12/16 07:21:51 patrick Exp $
+# $Id$
 
 DESCRIPTION="tools for Open Source software distribution"
 HOMEPAGE="http://sourceforge.net/projects/osdt/"

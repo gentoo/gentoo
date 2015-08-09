@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cfengine/cfengine-2.2.10-r4.ebuild,v 1.10 2013/05/16 15:43:23 ago Exp $
+# $Id$
 
 EAPI="2"
 

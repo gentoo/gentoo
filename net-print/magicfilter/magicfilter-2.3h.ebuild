@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/magicfilter/magicfilter-2.3h.ebuild,v 1.5 2011/04/16 16:33:39 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

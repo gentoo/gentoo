@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfits/pyfits-2.4.0.ebuild,v 1.6 2014/02/06 19:47:28 bicatali Exp $
+# $Id$
 
 EAPI="2"
 SUPPORT_PYTHON_ABIS="1"

@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=919eacc0bc968f5ddb6a79a8f1b134e6
+SLOT=0
 DEFINED_PHASES=configure install prepare setup
+EAPI=4
 DEPEND=net-analyzer/net-snmp !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Additional Nagios plugins for monitoring SNMP capable devices
-EAPI=4
-HOMEPAGE=http://nagios.manubulon.com
-KEYWORDS=amd64 ~ppc ppc64 ~sparc x86
 LICENSE=GPL-2
-RDEPEND=net-analyzer/net-snmp
-SLOT=0
 SRC_URI=http://nagios.manubulon.com/nagios-plugins-snmp-0.6.0.tgz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=f75c754f7113c2417feb829b0f98a6e8
+KEYWORDS=amd64 ~ppc ppc64 ~sparc x86
+HOMEPAGE=http://nagios.manubulon.com
+RDEPEND=net-analyzer/net-snmp

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/efivar/efivar-0.20.ebuild,v 1.1 2015/06/29 01:18:43 floppym Exp $
+# $Id$
 
 EAPI=5
 

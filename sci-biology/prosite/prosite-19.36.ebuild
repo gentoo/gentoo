@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/prosite/prosite-19.36.ebuild,v 1.10 2011/08/09 15:36:16 xarthisius Exp $
+# $Id$
 
 DESCRIPTION="A protein families and domains database"
 LICENSE="swiss-prot"

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	webapp	2442891c368d310c1d3fe77d9c77fe5b	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5c9e16f1cbc5fb4d137e02d13176ec1e
+SLOT=4.1.11
 DEFINED_PHASES=install postinst prerm setup
+EAPI=2
 DEPEND=app-arch/unzip virtual/httpd-php >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Web-based administration for VirtualBox in PHP
-EAPI=2
-HOMEPAGE=https://sourceforge.net/projects/phpvirtualbox/
-IUSE=vhosts
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-lang/php[session,unicode,soap,gd] virtual/httpd-php >=app-admin/webapp-config-1.50.15
-SLOT=4.1.11
+IUSE=vhosts
 SRC_URI=http://phpvirtualbox.googlecode.com/files/phpvirtualbox-4.1-11.zip
-_eclasses_=depend.php	9ad63283ebea79851f4521028c019da6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=88a3ceaf9facc2b813e79dd880bc9977
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://sourceforge.net/projects/phpvirtualbox/
+RDEPEND=dev-lang/php[session,unicode,soap,gd] virtual/httpd-php >=app-admin/webapp-config-1.50.15

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cddlib/cddlib-094g.ebuild,v 1.5 2015/04/19 10:03:46 ago Exp $
+# $Id$
 
 EAPI=5
 

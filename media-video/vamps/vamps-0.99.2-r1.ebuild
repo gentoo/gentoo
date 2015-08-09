@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vamps/vamps-0.99.2-r1.ebuild,v 1.1 2007/11/19 19:47:44 aballier Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

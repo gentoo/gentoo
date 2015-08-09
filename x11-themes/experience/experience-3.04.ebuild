@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/experience/experience-3.04.ebuild,v 1.7 2010/02/24 14:30:07 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="GTK+2 themes which copy and improve the look of XP Luna"
 HOMEPAGE="http://art.gnome.org/themes/gtk2/1058"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/scim-bridge-el/scim-bridge-el-0.8.2.ebuild,v 1.3 2013/09/17 21:44:42 ulm Exp $
+# $Id$
 
 EAPI=5
 inherit elisp versionator

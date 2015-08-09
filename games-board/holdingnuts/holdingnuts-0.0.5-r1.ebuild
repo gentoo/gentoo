@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/holdingnuts/holdingnuts-0.0.5-r1.ebuild,v 1.6 2014/09/21 23:31:05 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils games

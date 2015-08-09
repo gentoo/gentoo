@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/phpsyslogng/phpsyslogng-2.9.8m-r1.ebuild,v 1.3 2014/08/10 01:37:41 patrick Exp $
+# $Id$
 
 inherit webapp
 

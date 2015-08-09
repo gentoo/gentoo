@@ -1,7 +1,7 @@
 --- Makefile.orig	2012-08-21 11:03:31.028266807 +0200
 +++ Makefile	2012-08-21 11:05:06.808876995 +0200
 @@ -1,19 +1,12 @@
- # $Id: wmmixer-1.7-respect_flags.patch,v 1.1 2012/08/21 09:08:25 voyageur Exp $
+ # $Id$
  
 -prefix      = /usr/local
 +prefix      = /usr

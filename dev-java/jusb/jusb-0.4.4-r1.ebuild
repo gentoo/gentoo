@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jusb/jusb-0.4.4-r1.ebuild,v 1.4 2011/11/25 02:01:58 robbat2 Exp $
+# $Id$
 
 inherit eutils java-pkg-2 linux-info flag-o-matic multilib
 

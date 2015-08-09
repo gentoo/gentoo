@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/warsow/warsow-1.5.1-r1.ebuild,v 1.7 2015/08/01 17:41:41 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils check-reqs gnome2-utils flag-o-matic games

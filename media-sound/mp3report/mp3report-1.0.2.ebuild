@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3report/mp3report-1.0.2.ebuild,v 1.4 2014/08/10 21:08:29 slyfox Exp $
+# $Id$
 
 DESCRIPTION="Perl script to create an HTML report of MP3 files in a directory"
 HOMEPAGE="http://mp3report.sourceforge.net/"

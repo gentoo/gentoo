@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups-pk-helper/cups-pk-helper-0.2.5.ebuild,v 1.3 2014/07/23 15:24:21 ago Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/novell-groupwise-client/novell-groupwise-client-8.0.2.96933.ebuild,v 1.9 2015/04/09 10:28:02 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

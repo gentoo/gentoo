@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/horde-3.3.11.ebuild,v 1.6 2010/12/29 15:36:45 hwoarang Exp $
+# $Id$
 
 HORDE_PHP_FEATURES="session xml"
 

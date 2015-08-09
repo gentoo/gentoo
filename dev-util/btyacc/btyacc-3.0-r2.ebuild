@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/btyacc/btyacc-3.0-r2.ebuild,v 1.2 2012/05/31 02:48:31 aballier Exp $
+# $Id$
 
 EAPI="2"
 

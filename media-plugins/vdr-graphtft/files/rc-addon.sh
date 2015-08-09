@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-graphtft/files/rc-addon.sh,v 1.2 2009/10/22 14:26:11 hd_brummy Exp $
+# $Id$
 #
 # rc-addon-script for plugin graphtft & graphtft-fe
 #

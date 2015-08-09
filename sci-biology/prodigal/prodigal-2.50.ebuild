@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/prodigal/prodigal-2.50.ebuild,v 1.1 2011/07/16 20:37:51 weaver Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr305/jsr305-1.0-r1.ebuild,v 1.4 2011/11/30 11:59:31 grobian Exp $
+# $Id$
 
 EAPI=2
 

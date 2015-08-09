@@ -1,9 +1,0 @@
-# ChangeLog for sys-infiniband/libocrdma
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/libocrdma/ChangeLog,v 1.1 2014/04/16 08:22:28 alexxy Exp $
-
-*libocrdma-1.0.2 (16 Apr 2014)
-
-  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +libocrdma-1.0.2.ebuild,
-  +metadata.xml:
-  Update ofed stack to 3.12-rc1

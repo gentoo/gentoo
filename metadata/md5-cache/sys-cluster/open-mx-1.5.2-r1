@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	udev	37ef89be271b9ae8aa64be024ddb39b5	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	linux-mod	9e27971daa324852d78bc7d4d811afae	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=1ae7c609294049fc644dfc96dbbbbf51
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+EAPI=4
 DEPEND=sys-apps/hwloc virtual/linux-sources virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) virtual/pkgconfig
 DESCRIPTION=Open-MX - Myrinet Express over Generic Ethernet Hardware
-EAPI=4
-HOMEPAGE=http://open-mx.gforge.inria.fr/
-IUSE=debug modules static-libs kernel_linux
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2
-RDEPEND=sys-apps/hwloc virtual/modutils kernel_linux? ( virtual/modutils )
-SLOT=0
+IUSE=debug modules static-libs kernel_linux
 SRC_URI=http://gforge.inria.fr/frs/download.php/30245/open-mx-1.5.2.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	linux-info	8cbc678e083c23e4ad546ca6509cf304	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=a26c32752bcae0640e13217f5162f776
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://open-mx.gforge.inria.fr/
+RDEPEND=sys-apps/hwloc virtual/modutils kernel_linux? ( virtual/modutils )

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/superadduser/superadduser-1.0.9.ebuild,v 1.16 2014/01/18 09:11:50 vapier Exp $
+# $Id$
 
 DESCRIPTION="Interactive adduser script from Slackware"
 HOMEPAGE="http://www.interlude.org.uk/unix/slackware/"

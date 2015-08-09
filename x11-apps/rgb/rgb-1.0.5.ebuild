@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/rgb/rgb-1.0.5.ebuild,v 1.12 2014/03/13 20:12:49 ottxor Exp $
+# $Id$
 
 EAPI=5
 

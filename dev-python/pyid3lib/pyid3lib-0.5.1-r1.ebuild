@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyid3lib/pyid3lib-0.5.1-r1.ebuild,v 1.10 2012/02/21 08:10:41 patrick Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

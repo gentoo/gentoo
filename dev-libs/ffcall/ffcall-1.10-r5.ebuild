@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ffcall/ffcall-1.10-r5.ebuild,v 1.1 2014/12/14 11:10:54 slyfox Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mserv/mserv-0.35-r1.ebuild,v 1.16 2012/06/09 23:11:58 zmedico Exp $
+# $Id$
 
 inherit depend.apache webapp eutils toolchain-funcs user
 

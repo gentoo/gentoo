@@ -1,9 +1,0 @@
-# ChangeLog for sys-devel/multilib-gcc-wrapper
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/multilib-gcc-wrapper/ChangeLog,v 1.1 2014/06/30 20:17:54 mgorny Exp $
-
-*multilib-gcc-wrapper-0 (30 Jun 2014)
-
-  30 Jun 2014; Michał Górny <mgorny@gentoo.org> +metadata.xml,
-  +multilib-gcc-wrapper-0.ebuild:
-  Introduce the initial version.

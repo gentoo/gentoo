@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libxcrypt/libxcrypt-2.0.ebuild,v 1.6 2009/10/13 13:36:57 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="A replacement for libcrypt with DES, MD5 and blowfish support"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"

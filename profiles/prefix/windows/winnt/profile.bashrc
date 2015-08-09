@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/winnt/profile.bashrc,v 1.1 2009/06/06 03:55:10 solar Exp $
+# $Id$
 
 # On windows, binary files (executables, shared libraries) in use
 # cannot be replaced during merge.

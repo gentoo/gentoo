@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/sword/sword-1.7.3.ebuild,v 1.1 2014/10/14 18:37:32 creffett Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic

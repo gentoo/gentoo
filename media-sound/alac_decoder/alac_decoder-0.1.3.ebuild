@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alac_decoder/alac_decoder-0.1.3.ebuild,v 1.6 2009/12/23 17:06:39 grobian Exp $
+# $Id$
 
 EAPI=2
 inherit eutils toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux/x86/make.defaults,v 1.6 2014/07/05 13:08:35 grobian Exp $
+# $Id$
 
 ARCH="x86"
 CHOST="i686-pc-linux-gnu"

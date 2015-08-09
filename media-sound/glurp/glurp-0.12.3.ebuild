@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/glurp/glurp-0.12.3.ebuild,v 1.6 2012/05/05 08:20:42 mgorny Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

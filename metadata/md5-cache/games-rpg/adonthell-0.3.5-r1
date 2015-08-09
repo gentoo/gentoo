@@ -1,13 +1,13 @@
+_eclasses_=python-single-r1	626346d3c54afb66571061bbd4c53f25	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	games	9e5e9ee0b325a8a10823f9b385ca2036	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=e6020e2157cf73e6d9b8a7e03bed97dc
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/libsdl:0[X,video,sound] sys-libs/zlib media-libs/freetype media-libs/libogg media-libs/libvorbis nls? ( virtual/libintl ) dev-lang/swig doc? ( media-gfx/graphviz app-doc/doxygen ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=roleplaying game engine
-EAPI=5
-HOMEPAGE=http://adonthell.linuxgames.com/
-IUSE=doc nls python_targets_python2_7
-KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/libsdl:0[X,video,sound] sys-libs/zlib media-libs/freetype media-libs/libogg media-libs/libvorbis nls? ( virtual/libintl ) games-misc/games-envd
-SLOT=0
+IUSE=doc nls python_targets_python2_7
 SRC_URI=http://savannah.nongnu.org/download/adonthell/adonthell-src-0.3.5.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	351da1aa73960a282591217fb57c1bb8	python-utils-r1	0295a286ec27cab6af76b3b75ba07a3a	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=6ac7847e10002ccc1d93fa36f1eefc20
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://adonthell.linuxgames.com/
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] media-libs/libsdl:0[X,video,sound] sys-libs/zlib media-libs/freetype media-libs/libogg media-libs/libvorbis nls? ( virtual/libintl ) games-misc/games-envd

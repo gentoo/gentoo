@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pydns/pydns-2.3.6-r1.ebuild,v 1.12 2015/07/18 07:34:08 jer Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )

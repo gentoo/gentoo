@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/loop-aes/loop-aes-3.7c.ebuild,v 1.2 2015/05/06 19:58:05 alonbl Exp $
+# $Id$
 
 EAPI="5"
 

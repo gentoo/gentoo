@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/curator/curator-3.0_p20110120.ebuild,v 1.7 2013/06/09 19:02:17 floppym Exp $
+# $Id$
 
 EAPI=4
 

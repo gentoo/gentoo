@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/corkscrew/corkscrew-2.0.ebuild,v 1.13 2012/06/24 14:23:33 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit autotools

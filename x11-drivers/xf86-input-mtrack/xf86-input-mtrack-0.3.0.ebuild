@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-mtrack/xf86-input-mtrack-0.3.0.ebuild,v 1.4 2013/01/21 19:59:56 steev Exp $
+# $Id$
 
 EAPI=4
 

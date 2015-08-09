@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/drush/drush-5.8.ebuild,v 1.4 2013/12/23 16:04:30 pacho Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-remote/vdr-remote-0.5.0-r1.ebuild,v 1.1 2015/01/23 13:49:34 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

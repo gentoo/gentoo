@@ -1,5 +1,5 @@
 # Config file for /etc/init.d/mod-mono-server
-# $Id: mod-mono-server.confd,v 1.1 2009/01/18 17:44:04 loki_val Exp $
+# $Id$
 
 # Configuration directives for mod-mono-server.exe. For more information on
 # these variables, see the man page for xsp(1).

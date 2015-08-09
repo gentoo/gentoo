@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/subotage/subotage-0.15.ebuild,v 1.1 2013/05/12 07:08:13 mgorny Exp $
+# $Id$
 
 EAPI=5
 

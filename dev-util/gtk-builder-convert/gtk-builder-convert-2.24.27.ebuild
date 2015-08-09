@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gtk-builder-convert/gtk-builder-convert-2.24.27.ebuild,v 1.8 2015/06/07 10:33:12 maekke Exp $
+# $Id$
 
 EAPI="5"
 GNOME_ORG_MODULE="gtk+"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/opendylan/opendylan-2014.1.ebuild,v 1.1 2015/01/07 05:38:37 patrick Exp $
+# $Id$
 EAPI=4
 
 inherit autotools toolchain-funcs

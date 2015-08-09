@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libirman/libirman-0.4.5.ebuild,v 1.7 2012/09/15 10:33:47 scarabeus Exp $
+# $Id$
 
 EAPI=4
 

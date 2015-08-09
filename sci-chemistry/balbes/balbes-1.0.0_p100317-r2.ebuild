@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/balbes/balbes-1.0.0_p100317-r2.ebuild,v 1.4 2012/10/19 09:39:51 jlec Exp $
+# $Id$
 
 EAPI=3
 

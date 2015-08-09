@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/xia2/xia2-0.3.3.3.ebuild,v 1.1 2011/10/04 15:09:07 jlec Exp $
+# $Id$
 
 EAPI=3
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/clang/clang-9999-r100.ebuild,v 1.5 2013/10/28 00:25:12 ottxor Exp $
+# $Id$
 
 EAPI=5
 

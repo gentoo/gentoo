@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/clamav/files/clamd.initd-r6,v 1.1 2013/09/27 16:04:14 eras Exp $
+# $Id$
 
 daemon_clamd="/usr/sbin/clamd"
 daemon_freshclam="/usr/bin/freshclam"

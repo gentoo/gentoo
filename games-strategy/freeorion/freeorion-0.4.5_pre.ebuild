@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/freeorion/freeorion-0.4.5_pre.ebuild,v 1.4 2015/08/03 11:36:48 tomka Exp $
+# $Id$
 
 EAPI=5
 

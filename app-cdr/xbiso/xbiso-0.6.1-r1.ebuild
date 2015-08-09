@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/xbiso/xbiso-0.6.1-r1.ebuild,v 1.2 2011/12/22 18:30:40 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit flag-o-matic

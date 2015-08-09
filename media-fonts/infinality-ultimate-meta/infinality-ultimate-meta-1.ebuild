@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/infinality-ultimate-meta/infinality-ultimate-meta-1.ebuild,v 1.1 2015/05/09 10:14:52 yngwin Exp $
+# $Id$
 
 EAPI=5
 PLOCALES="as bn brx bo doi dz gu hi ja km kn_IN ko kok ks mai ml mr ne or pa_IN

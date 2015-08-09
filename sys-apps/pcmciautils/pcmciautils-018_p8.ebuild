@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcmciautils/pcmciautils-018_p8.ebuild,v 1.8 2014/07/30 19:41:09 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils flag-o-matic linux-info toolchain-funcs udev

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubypants/rubypants-0.2.0-r4.ebuild,v 1.7 2015/05/09 05:59:28 graaff Exp $
+# $Id$
 
 EAPI=5
 

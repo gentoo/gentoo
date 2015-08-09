@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/dynamite/dynamite-0.1.1_p20120512.ebuild,v 1.1 2012/05/12 17:45:13 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

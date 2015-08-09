@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/apmd-3.2.2_p14.ebuild,v 1.7 2014/02/04 02:21:34 creffett Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib toolchain-funcs

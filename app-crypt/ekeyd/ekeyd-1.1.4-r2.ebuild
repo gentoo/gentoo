@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/ekeyd/ekeyd-1.1.4-r2.ebuild,v 1.6 2014/07/30 19:29:08 ssuominen Exp $
+# $Id$
 
 EAPI=4
 

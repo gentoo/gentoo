@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/chkrootkit/chkrootkit-0.49.ebuild,v 1.10 2012/01/06 17:34:08 halcy0n Exp $
+# $Id$
 
 EAPI="4"
 

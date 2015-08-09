@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-drivers/xorg-drivers-1.13.ebuild,v 1.16 2013/02/27 06:20:36 zmedico Exp $
+# $Id$
 
 EAPI=4
 

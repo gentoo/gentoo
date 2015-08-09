@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.4-r3.ebuild,v 1.14 2015/07/20 08:43:24 monsieurp Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/fam-2.7.0-r6.ebuild,v 1.11 2013/04/24 17:53:43 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools

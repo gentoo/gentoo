@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/openal/openal-1.3.1.1.ebuild,v 1.6 2014/08/01 09:50:23 armin76 Exp $
+# $Id$
 
 CABAL_FEATURES="lib profile haddock"
 inherit haskell-cabal

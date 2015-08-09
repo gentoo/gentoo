@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/cogl/cogl-1.18.2-r1.ebuild,v 1.5 2015/07/27 13:29:46 tetromino Exp $
+# $Id$
 
 EAPI="5"
 CLUTTER_LA_PUNT="yes"

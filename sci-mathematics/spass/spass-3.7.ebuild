@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/spass/spass-3.7.ebuild,v 1.5 2012/12/05 10:35:35 gienah Exp $
+# $Id$
 
 EAPI=5
 

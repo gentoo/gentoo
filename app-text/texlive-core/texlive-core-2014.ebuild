@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texlive-core/texlive-core-2014.ebuild,v 1.1 2014/11/03 06:45:36 aballier Exp $
+# $Id$
 
 EAPI=5
 

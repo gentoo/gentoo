@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fprobe/fprobe-1.1.ebuild,v 1.4 2006/03/01 23:30:29 vanquirius Exp $
+# $Id$
 
 DESCRIPTION="A libpcap-based tool to collect network traffic data and emit it as NetFlow flows"
 HOMEPAGE="http://fprobe.sourceforge.net"

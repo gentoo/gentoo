@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/stringbuilder/stringbuilder-0.4.0.ebuild,v 1.3 2013/11/24 19:35:19 ago Exp $
+# $Id$
 
 EAPI=5
 

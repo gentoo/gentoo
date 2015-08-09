@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake4-data/quake4-data-1.0.2147.12.ebuild,v 1.13 2012/01/16 19:24:33 ulm Exp $
+# $Id$
 
 inherit eutils cdrom games
 

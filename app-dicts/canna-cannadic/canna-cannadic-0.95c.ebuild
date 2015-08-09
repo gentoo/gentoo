@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/canna-cannadic/canna-cannadic-0.95c.ebuild,v 1.8 2009/08/23 17:21:51 flameeyes Exp $
+# $Id$
 
 inherit cannadic
 

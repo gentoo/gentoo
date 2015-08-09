@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmorgan/gmorgan-0.39.ebuild,v 1.4 2012/03/18 15:46:39 armin76 Exp $
+# $Id$
 
 EAPI=2
 inherit eutils autotools

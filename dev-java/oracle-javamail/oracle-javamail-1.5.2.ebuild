@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/oracle-javamail/oracle-javamail-1.5.2.ebuild,v 1.2 2015/08/06 15:13:21 monsieurp Exp $
+# $Id$
 
 EAPI=4
 JAVA_PKG_IUSE="doc source"

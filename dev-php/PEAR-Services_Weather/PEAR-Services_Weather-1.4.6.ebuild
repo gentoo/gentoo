@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Services_Weather/PEAR-Services_Weather-1.4.6.ebuild,v 1.9 2014/01/26 18:39:06 olemarkus Exp $
+# $Id$
 
 EAPI="4"
 

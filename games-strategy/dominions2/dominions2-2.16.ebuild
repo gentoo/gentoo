@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/dominions2/dominions2-2.16.ebuild,v 1.13 2015/06/01 20:49:09 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cdrom games

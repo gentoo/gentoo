@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/biloba/biloba-0.9.3.ebuild,v 1.8 2014/10/10 15:25:42 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils gnome2-utils games

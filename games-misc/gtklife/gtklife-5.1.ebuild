@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/gtklife/gtklife-5.1.ebuild,v 1.8 2014/07/24 19:34:17 tupone Exp $
+# $Id$
 
 EAPI=4
 inherit eutils games

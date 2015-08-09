@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/dvi2tty/dvi2tty-5.3.4.ebuild,v 1.10 2012/05/28 13:59:09 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

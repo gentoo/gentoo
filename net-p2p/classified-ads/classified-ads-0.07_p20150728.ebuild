@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/classified-ads/classified-ads-0.07_p20150728.ebuild,v 1.1 2015/08/01 13:19:29 idella4 Exp $
+# $Id$
 
 EAPI=5
 PLOCALES="en fi sv"

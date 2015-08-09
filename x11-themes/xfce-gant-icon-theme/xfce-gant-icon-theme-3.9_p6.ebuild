@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/xfce-gant-icon-theme/xfce-gant-icon-theme-3.9_p6.ebuild,v 1.3 2010/11/07 17:42:02 ssuominen Exp $
+# $Id$
 
 inherit gnome2-utils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/flam3/flam3-3.0.1.ebuild,v 1.4 2013/05/02 03:25:24 patrick Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

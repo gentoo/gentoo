@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/cmdparse/cmdparse-2.0.6.ebuild,v 1.8 2015/04/27 08:57:00 ago Exp $
+# $Id$
 
 EAPI=5
 

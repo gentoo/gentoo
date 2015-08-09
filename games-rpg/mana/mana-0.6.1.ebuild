@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/mana/mana-0.6.1.ebuild,v 1.7 2014/08/10 17:39:01 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils games

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/fritzing/fritzing-0.9.2b.ebuild,v 1.2 2015/04/22 17:37:39 kensington Exp $
+# $Id$
 
 EAPI=5
 

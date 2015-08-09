@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/iroffer-dinoex/files/iroffer-dinoex.logrotate,v 1.2 2014/05/12 18:12:30 zlogene Exp $
+# $Id$
 
 /var/log/iroffer-dinoex/*.log {
 	missingok

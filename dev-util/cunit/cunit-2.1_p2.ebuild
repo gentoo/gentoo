@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cunit/cunit-2.1_p2.ebuild,v 1.5 2013/10/09 19:44:40 hasufell Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils flag-o-matic toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/kyotocabinet/kyotocabinet-1.2.76-r1.ebuild,v 1.5 2015/05/01 05:44:59 jer Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/ufdbguard/ufdbguard-1.24-r1.ebuild,v 1.6 2015/04/24 10:18:43 eras Exp $
+# $Id$
 
 EAPI="2"
 

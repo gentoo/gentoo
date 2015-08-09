@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64-fbsd/clang/package.use.mask,v 1.1 2015/02/08 16:29:53 mgorny Exp $
+# $Id$
 
 # Build libcxxrt over libgcc_s since that is what clang defaults to.
 sys-libs/libcxxrt libunwind

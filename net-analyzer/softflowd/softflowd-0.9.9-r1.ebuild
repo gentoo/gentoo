@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/softflowd/softflowd-0.9.9-r1.ebuild,v 1.1 2014/07/17 15:01:44 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

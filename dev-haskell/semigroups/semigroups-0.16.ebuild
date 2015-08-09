@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/semigroups/semigroups-0.16.ebuild,v 1.1 2014/12/14 05:46:11 gienah Exp $
+# $Id$
 
 EAPI=5
 

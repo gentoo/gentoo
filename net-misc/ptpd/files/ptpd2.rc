@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ptpd/files/ptpd2.rc,v 1.1 2015/06/12 10:55:53 mgorny Exp $
+# $Id$
 
 PTPD_CONFIGFILE=${PTPD_CONFIGFILE:-/etc/${RC_SVCNAME}.conf}
 PTPD_STATEFILE_DIR=${PTPD_STATEFILE_DIR:-/var/run}

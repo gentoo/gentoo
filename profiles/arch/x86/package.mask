@@ -1,4 +1,4 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/package.mask,v 1.24 2013/08/24 15:29:37 maekke Exp $
+# $Id$
 

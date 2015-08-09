@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/reoback/reoback-1.0_p3-r1.ebuild,v 1.6 2015/03/28 21:34:13 ago Exp $
+# $Id$
 
 EAPI=5
 

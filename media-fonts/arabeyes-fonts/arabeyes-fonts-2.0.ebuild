@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/arabeyes-fonts/arabeyes-fonts-2.0.ebuild,v 1.7 2008/11/09 12:07:28 vapier Exp $
+# $Id$
 
 inherit font
 

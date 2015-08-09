@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/wdfs/wdfs-1.4.2.ebuild,v 1.5 2010/06/22 20:05:53 arfrever Exp $
+# $Id$
 
 DESCRIPTION="WebDAV filesystem with special features for accessing subversion repositories"
 HOMEPAGE="http://noedler.de/projekte/wdfs/"

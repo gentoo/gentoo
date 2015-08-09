@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/appdata-tools/appdata-tools-0.1.7.ebuild,v 1.7 2014/07/07 13:08:04 pacho Exp $
+# $Id$
 
 EAPI=5
 

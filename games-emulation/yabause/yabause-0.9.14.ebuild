@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/yabause/yabause-0.9.14.ebuild,v 1.4 2015/05/22 16:55:18 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils games

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/open-vm-tools/open-vm-tools-9.10.2_p2822639.ebuild,v 1.1 2015/08/06 20:51:44 floppym Exp $
+# $Id$
 
 EAPI=5
 

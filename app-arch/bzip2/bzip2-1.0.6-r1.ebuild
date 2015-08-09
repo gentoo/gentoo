@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/bzip2/bzip2-1.0.6-r1.ebuild,v 1.1 2010/09/23 09:19:49 vapier Exp $
+# $Id$
 
 inherit eutils multilib toolchain-funcs flag-o-matic
 

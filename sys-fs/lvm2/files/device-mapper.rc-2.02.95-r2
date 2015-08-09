@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/files/device-mapper.rc-2.02.95-r2,v 1.2 2013/04/09 11:00:26 ssuominen Exp $
+# $Id$
 
 depend() {
 	# As of .67-r1, we call ALL lvm start/stop scripts with --sysinit, that

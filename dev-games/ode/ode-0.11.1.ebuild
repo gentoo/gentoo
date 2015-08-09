@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/ode/ode-0.11.1.ebuild,v 1.8 2015/03/30 21:52:38 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

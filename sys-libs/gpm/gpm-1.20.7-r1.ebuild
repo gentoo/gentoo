@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/gpm/gpm-1.20.7-r1.ebuild,v 1.12 2014/02/01 23:24:37 vapier Exp $
+# $Id$
 
 # emacs support disabled due to #99533 #335900
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-demo/doom3-demo-1.1.1286-r1.ebuild,v 1.3 2015/06/14 19:38:13 ulm Exp $
+# $Id$
 
 EAPI=5
 inherit eutils unpacker games

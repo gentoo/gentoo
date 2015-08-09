@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xwit/xwit-3.4.ebuild,v 1.11 2012/12/23 20:30:14 ulm Exp $
+# $Id$
 
 EAPI=2
 inherit eutils toolchain-funcs

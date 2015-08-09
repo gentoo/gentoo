@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-ru/man-pages-ru-3.54.2171.1790.20131020.ebuild,v 1.11 2014/01/30 20:30:23 vapier Exp $
+# $Id$
 
 EAPI="5"
 

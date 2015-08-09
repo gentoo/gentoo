@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/tac_plus/tac_plus-4.0.4.27a.ebuild,v 1.1 2015/03/25 11:23:01 chainsaw Exp $
+# $Id$
 
 EAPI=5
 

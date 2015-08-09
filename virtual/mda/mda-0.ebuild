@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/mda/mda-0.ebuild,v 1.5 2011/04/24 06:38:28 eras Exp $
+# $Id$
 
 EAPI=3
 

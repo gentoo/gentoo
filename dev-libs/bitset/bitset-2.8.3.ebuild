@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/bitset/bitset-2.8.3.ebuild,v 1.4 2013/06/13 08:43:38 pinkbyte Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speechd-up/speechd-up-0.4-r3.ebuild,v 1.2 2009/04/01 17:35:43 williamh Exp $
+# $Id$
 
 IUSE=""
 

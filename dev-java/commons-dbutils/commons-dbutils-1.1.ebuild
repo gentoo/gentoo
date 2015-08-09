@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-dbutils/commons-dbutils-1.1.ebuild,v 1.4 2010/03/20 13:36:24 betelgeuse Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source test"
 

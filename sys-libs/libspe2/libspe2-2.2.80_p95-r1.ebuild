@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libspe2/libspe2-2.2.80_p95-r1.ebuild,v 1.5 2015/02/27 08:09:09 vapier Exp $
+# $Id$
 inherit eutils
 
 MY_P=${P/_p/-}

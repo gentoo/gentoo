@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zgv/zgv-5.9.ebuild,v 1.5 2011/11/05 06:54:22 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

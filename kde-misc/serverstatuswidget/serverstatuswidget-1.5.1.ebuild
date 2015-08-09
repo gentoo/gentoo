@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/serverstatuswidget/serverstatuswidget-1.5.1.ebuild,v 1.2 2014/03/21 19:06:33 johu Exp $
+# $Id$
 
 EAPI=5
 

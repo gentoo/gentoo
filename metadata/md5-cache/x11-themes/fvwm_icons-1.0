@@ -1,9 +1,11 @@
-DEFINED_PHASES=install
-DESCRIPTION=Icons for use with FVWM
-HOMEPAGE=http://www.fvwm.org/
-KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
-LICENSE=GPL-2 FVWM
-RDEPEND=>=x11-wm/fvwm-2.6.2
+_eclasses_=
+_md5_=830ba7fb93174806a2305ab6d699cc5c
 SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Icons for use with FVWM
+LICENSE=GPL-2 FVWM
 SRC_URI=http://www.fvwm.org/generated/icon_download/fvwm_icons.tar.bz2
-_md5_=dbaab25ca78b85e6dbf09fee6f873791
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.fvwm.org/
+RDEPEND=>=x11-wm/fvwm-2.6.2

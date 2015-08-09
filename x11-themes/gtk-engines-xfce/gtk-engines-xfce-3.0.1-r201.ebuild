@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-xfce/gtk-engines-xfce-3.0.1-r201.ebuild,v 1.14 2015/03/03 12:55:37 dlan Exp $
+# $Id$
 
 EAPI=5
 MY_PN=gtk-xfce-engine

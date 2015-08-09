@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/package.use,v 1.1 2011/02/13 17:50:16 arfrever Exp $
+# $Id$
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Feb 2011)
 # Disable deprecated bsddb module of Python 2 by default.

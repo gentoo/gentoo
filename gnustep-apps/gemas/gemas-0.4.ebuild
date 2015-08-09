@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gemas/gemas-0.4.ebuild,v 1.1 2014/02/10 10:02:18 voyageur Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnustep-2

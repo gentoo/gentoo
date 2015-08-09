@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/flashrom/flashrom-0.9.6.1.ebuild,v 1.5 2014/05/31 09:49:17 swegener Exp $
+# $Id$
 
 EAPI="4"
 

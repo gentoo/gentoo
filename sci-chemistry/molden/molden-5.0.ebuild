@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molden/molden-5.0.ebuild,v 1.7 2013/04/11 18:51:34 ulm Exp $
+# $Id$
 
 EAPI=4
 

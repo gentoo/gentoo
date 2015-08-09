@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnome-games.eclass,v 1.2 2013/08/25 18:12:24 eva Exp $
+# $Id$
 
 # @ECLASS: gnome-games
 # @MAINTAINER:

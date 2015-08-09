@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-de/aspell-de-0.60_pre20030222.ebuild,v 1.22 2012/05/17 19:52:04 aballier Exp $
+# $Id$
 
 ASPELL_LANG="German and Swiss-German"
 ASPOSTFIX="6"

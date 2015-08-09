@@ -1,6 +1,6 @@
 # Copyright 2014-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pymysql/pymysql-0.6.3.ebuild,v 1.2 2015/02/16 16:21:24 pacho Exp $
+# $Id$
 
 EAPI=5
 

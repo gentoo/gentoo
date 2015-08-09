@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jre-bin/ibm-jre-bin-1.6.0.9_p1.ebuild,v 1.5 2014/05/16 19:09:24 swift Exp $
+# $Id$
 
 inherit java-vm-2 versionator eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/librime/librime-1.2.ebuild,v 1.6 2015/05/09 13:36:56 yngwin Exp $
+# $Id$
 
 EAPI=5
 

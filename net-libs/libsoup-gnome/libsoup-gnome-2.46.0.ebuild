@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup-gnome/libsoup-gnome-2.46.0.ebuild,v 1.9 2014/10/11 12:26:14 maekke Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="yes"

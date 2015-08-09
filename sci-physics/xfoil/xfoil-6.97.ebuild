@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-physics/xfoil/xfoil-6.97.ebuild,v 1.10 2012/10/16 18:50:32 jlec Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/reportlab/reportlab-2.6.ebuild,v 1.17 2014/12/11 23:45:56 idella4 Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

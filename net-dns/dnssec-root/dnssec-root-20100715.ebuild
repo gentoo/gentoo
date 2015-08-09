@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-root/dnssec-root-20100715.ebuild,v 1.4 2011/05/02 15:53:42 darkside Exp $
+# $Id$
 
 DESCRIPTION="The DNSSEC root key(s)"
 HOMEPAGE="https://www.iana.org/dnssec/"

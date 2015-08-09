@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/lapack-docs/lapack-docs-3.1.1.ebuild,v 1.17 2013/07/14 17:34:51 ago Exp $
+# $Id$
 
 DESCRIPTION="Documentation reference and man pages for lapack implementations"
 HOMEPAGE="http://www.netlib.org/lapack"

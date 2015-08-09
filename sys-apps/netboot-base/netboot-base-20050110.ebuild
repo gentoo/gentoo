@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/netboot-base/netboot-base-20050110.ebuild,v 1.3 2010/10/08 02:13:21 leio Exp $
+# $Id$
 
 inherit toolchain-funcs
 

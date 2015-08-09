@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Pod-Simple/perl-Pod-Simple-3.280.0-r2.ebuild,v 1.1 2015/06/10 22:57:47 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

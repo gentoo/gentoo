@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sslh/files/sslh.init.d-2,v 1.2 2012/07/11 15:47:57 kensington Exp $
+# $Id$
 
 start() {
 	ebegin "Starting ${SVCNAME}"

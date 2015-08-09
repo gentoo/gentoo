@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libltdl/libltdl-1.3.5.ebuild,v 1.1 2014/11/03 05:31:48 vapier Exp ${P}-r1.ebuild,v 1.8 2002/10/04 06:34:42 kloeri Exp $
+# $Id$
 
 # This ebuild provides libltdl.so.0.
 

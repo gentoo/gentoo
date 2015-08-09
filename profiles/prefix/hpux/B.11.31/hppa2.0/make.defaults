@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/hpux/B.11.31/hppa2.0/make.defaults,v 1.2 2009/07/22 14:32:43 haubi Exp $
+# $Id$
 
 ARCH="hppa-hpux"
 # config.guess tells for hpux11 on hppa2.0 cpu:

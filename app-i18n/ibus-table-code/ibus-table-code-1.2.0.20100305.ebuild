@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-table-code/ibus-table-code-1.2.0.20100305.ebuild,v 1.4 2012/08/20 13:07:28 naota Exp $
+# $Id$
 
 DESCRIPTION="The code tables for IBus-Table"
 HOMEPAGE="http://code.google.com/p/ibus/"

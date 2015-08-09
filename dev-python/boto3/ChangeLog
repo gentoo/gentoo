@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/boto3
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/boto3/ChangeLog,v 1.1 2015/07/29 18:53:19 alunduil Exp $
-
-*boto3-1.1.1 (29 Jul 2015)
-
-  29 Jul 2015; Alex Brandt <alunduil@gentoo.org> +boto3-1.1.1.ebuild,
-  +metadata.xml:
-  add version 1.1.1

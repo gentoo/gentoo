@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/shoutcast-trans-bin/shoutcast-trans-bin-0.4.0-r1.ebuild,v 1.11 2014/08/10 21:11:58 slyfox Exp $
+# $Id$
 
 inherit eutils
 

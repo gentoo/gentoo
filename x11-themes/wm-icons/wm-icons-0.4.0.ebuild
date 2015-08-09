@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/wm-icons/wm-icons-0.4.0.ebuild,v 1.3 2013/02/28 15:54:42 ottxor Exp $
+# $Id$
 
 DESCRIPTION="A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind"
 

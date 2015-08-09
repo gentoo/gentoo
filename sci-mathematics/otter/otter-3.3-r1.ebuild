@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/otter/otter-3.3-r1.ebuild,v 1.9 2014/08/10 20:23:55 slyfox Exp $
+# $Id$
 
 DESCRIPTION="An Automated Deduction System"
 HOMEPAGE="http://www.cs.unm.edu/~mccune/otter/"

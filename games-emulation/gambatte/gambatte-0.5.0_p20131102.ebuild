@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gambatte/gambatte-0.5.0_p20131102.ebuild,v 1.5 2015/06/04 16:07:19 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/dsx/dsx-0.1.ebuild,v 1.8 2010/06/06 10:05:59 ssuominen Exp $
+# $Id$
 
 EAPI=2
 PYTHON_DEPEND="2"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/tagainijisho/tagainijisho-1.0.3.ebuild,v 1.1 2015/04/05 05:01:17 calchan Exp $
+# $Id$
 
 EAPI=5
 

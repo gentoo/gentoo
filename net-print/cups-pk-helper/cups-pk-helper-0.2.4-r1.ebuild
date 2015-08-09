@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups-pk-helper/cups-pk-helper-0.2.4-r1.ebuild,v 1.5 2014/02/22 22:35:25 pacho Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

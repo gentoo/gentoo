@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/async/async-2.0.1.5.ebuild,v 1.1 2014/02/21 19:38:42 slyfox Exp $
+# $Id$
 
 EAPI=5
 

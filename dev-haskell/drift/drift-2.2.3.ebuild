@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/drift/drift-2.2.3.ebuild,v 1.7 2012/05/13 09:37:20 slyfox Exp $
+# $Id$
 
 EAPI=4
 

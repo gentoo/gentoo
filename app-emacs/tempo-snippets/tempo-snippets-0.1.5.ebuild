@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/tempo-snippets/tempo-snippets-0.1.5.ebuild,v 1.4 2015/01/27 19:32:26 ulm Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/tcpdf/tcpdf-6.0.096.ebuild,v 1.1 2014/10/10 16:27:03 grknight Exp $
+# $Id$
 
 EAPI=5
 

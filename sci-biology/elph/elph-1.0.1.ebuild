@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/elph/elph-1.0.1.ebuild,v 1.5 2010/08/09 18:24:26 xarthisius Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

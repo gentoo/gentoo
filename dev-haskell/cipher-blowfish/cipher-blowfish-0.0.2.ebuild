@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cipher-blowfish/cipher-blowfish-0.0.2.ebuild,v 1.1 2013/09/13 05:44:20 gienah Exp $
+# $Id$
 
 EAPI=5
 

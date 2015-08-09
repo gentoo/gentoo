@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/urbanterror/urbanterror-4.2.023.ebuild,v 1.5 2015/04/19 10:07:14 ago Exp $
+# $Id$
 
 EAPI=5
 inherit check-reqs eutils gnome2-utils pax-utils games

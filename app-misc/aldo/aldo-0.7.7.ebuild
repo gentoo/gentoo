@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/aldo/aldo-0.7.7.ebuild,v 1.3 2014/01/17 17:52:00 creffett Exp $
+# $Id$
 
 EAPI=5
 

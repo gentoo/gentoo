@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/pothana2k/pothana2k-2006-r1.ebuild,v 1.6 2012/06/30 05:37:12 yngwin Exp $
+# $Id$
 
 inherit font
 

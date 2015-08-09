@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zbar/zbar-0.10_p20121015.ebuild,v 1.2 2015/08/06 17:59:19 xmw Exp $
+# $Id$
 
 EAPI=5
 

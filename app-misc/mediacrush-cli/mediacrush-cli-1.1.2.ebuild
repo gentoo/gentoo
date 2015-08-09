@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mediacrush-cli/mediacrush-cli-1.1.2.ebuild,v 1.1 2014/02/17 17:29:54 maksbotan Exp $
+# $Id$
 
 EAPI=5
 

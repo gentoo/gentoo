@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/traverso/traverso-0.49.2-r1.ebuild,v 1.4 2013/03/02 22:04:48 hwoarang Exp $
+# $Id$
 
 EAPI=4
 inherit cmake-utils eutils flag-o-matic gnome2-utils

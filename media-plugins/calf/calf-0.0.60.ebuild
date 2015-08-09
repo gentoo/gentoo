@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/calf/calf-0.0.60.ebuild,v 1.1 2015/07/25 08:47:39 yngwin Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_AUTORECONF=yes

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-live/vdr-live-0.3.0_p20130504-r2.ebuild,v 1.1 2015/01/28 14:56:35 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

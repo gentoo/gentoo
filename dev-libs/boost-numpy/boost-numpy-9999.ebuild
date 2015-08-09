@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost-numpy/boost-numpy-9999.ebuild,v 1.3 2014/12/26 12:06:12 patrick Exp $
+# $Id$
 
 EAPI=5
 

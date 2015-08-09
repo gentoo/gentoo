@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpBB/phpBB-3.0.12.ebuild,v 1.2 2015/03/03 10:24:42 dlan Exp $
+# $Id$
 
 EAPI=5
 

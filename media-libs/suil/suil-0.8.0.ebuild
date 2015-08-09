@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/suil/suil-0.8.0.ebuild,v 1.1 2014/01/18 12:20:50 aballier Exp $
+# $Id$
 
 EAPI=4
 

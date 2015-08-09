@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/etcd/files/etcd.initd,v 1.1 2014/10/15 11:36:53 zmedico Exp $
+# $Id$
 
 SVCNAME=etcd
 PIDPATH=/var/run/${SVCNAME}

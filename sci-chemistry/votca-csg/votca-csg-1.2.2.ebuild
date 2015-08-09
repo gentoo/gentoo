@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/votca-csg/votca-csg-1.2.2.ebuild,v 1.8 2012/12/26 23:23:45 ottxor Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvisvgm/dvisvgm-1.2.1.ebuild,v 1.11 2013/09/05 05:25:39 vapier Exp $
+# $Id$
 
 EAPI=4
 

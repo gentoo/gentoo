@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/happydoc/happydoc-3.1-r2.ebuild,v 1.10 2015/06/02 05:10:47 jmorgan Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )

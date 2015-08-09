@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/imule/imule-2.3.2.3-r1.ebuild,v 1.2 2015/05/27 06:38:18 zlg Exp $
+# $Id$
 
 EAPI="5"
 WX_GTK_VER="2.8"

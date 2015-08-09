@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-dumb/audacious-dumb-0.81.ebuild,v 1.1 2012/07/27 17:02:28 joker Exp $
+# $Id$
 
 EAPI="4"
 

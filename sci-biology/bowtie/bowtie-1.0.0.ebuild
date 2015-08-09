@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bowtie/bowtie-1.0.0.ebuild,v 1.2 2013/09/18 06:50:27 jlec Exp $
+# $Id$
 
 EAPI=5
 

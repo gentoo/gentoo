@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swi-prolog/swi-prolog-6.6.6.ebuild,v 1.3 2015/03/02 09:33:02 ago Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/fifth-leg/fifth-leg-0.6.ebuild,v 1.1 2013/01/08 14:44:01 miska Exp $
+# $Id$
 
 EAPI=4
 

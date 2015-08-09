@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/skinenigmang-logos/skinenigmang-logos-20070214-r1.ebuild,v 1.1 2011/01/17 19:29:56 hd_brummy Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cocoon/cocoon-2.1.11.ebuild,v 1.2 2008/12/01 21:50:17 betelgeuse Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc"
 

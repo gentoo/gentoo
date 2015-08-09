@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/aesutil/aesutil-1.0.7.ebuild,v 1.8 2011/03/29 17:29:52 c1pher Exp $
+# $Id$
 
 inherit toolchain-funcs
 

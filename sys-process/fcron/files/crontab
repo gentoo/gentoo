@@ -1,5 +1,5 @@
 # for fcron 
-# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/files/crontab,v 1.3 2013/03/03 16:28:06 wschlich Exp $
+# $Id$
 
 # fcron:
 # This is NOT the system crontab! fcron does not support a system crontab.

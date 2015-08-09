@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/avogadrolibs/avogadrolibs-0.7.2-r1.ebuild,v 1.3 2014/12/01 09:45:23 jlec Exp $
+# $Id$
 
 EAPI=5
 

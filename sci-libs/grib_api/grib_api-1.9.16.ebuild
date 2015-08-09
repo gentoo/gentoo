@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/grib_api/grib_api-1.9.16.ebuild,v 1.4 2013/06/13 12:45:59 xmw Exp $
+# $Id$
 
 EAPI=4
 

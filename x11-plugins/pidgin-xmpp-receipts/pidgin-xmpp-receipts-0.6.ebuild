@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-xmpp-receipts/pidgin-xmpp-receipts-0.6.ebuild,v 1.2 2014/08/25 16:20:53 mrueg Exp $
+# $Id$
 
 EAPI=5
 

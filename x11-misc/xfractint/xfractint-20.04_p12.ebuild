@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xfractint/xfractint-20.04_p12.ebuild,v 1.6 2013/08/04 06:49:00 zmedico Exp $
+# $Id$
 
 EAPI=4
 

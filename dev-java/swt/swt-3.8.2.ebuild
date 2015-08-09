@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.8.2.ebuild,v 1.1 2014/03/09 07:19:51 rhill Exp $
+# $Id$
 
 EAPI="5"
 

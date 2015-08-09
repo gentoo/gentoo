@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-clipman-plugin/xfce4-clipman-plugin-1.2.6.ebuild,v 1.6 2014/07/18 19:54:13 ago Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/pacemaker/pacemaker-1.1.12-r2.ebuild,v 1.4 2015/04/02 16:44:39 jer Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx/mailx-8.1.2.20050715-r6.ebuild,v 1.8 2013/02/21 00:23:21 zmedico Exp $
+# $Id$
 
 inherit eutils flag-o-matic toolchain-funcs
 

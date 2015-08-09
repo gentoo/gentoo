@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx-bootstrap-theme/sphinx-bootstrap-theme-0.4.6.ebuild,v 1.1 2015/06/20 15:37:00 mrueg Exp $
+# $Id$
 
 EAPI=5
 

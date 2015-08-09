@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gdesklets-core/gdesklets-core-0.36.3-r4.ebuild,v 1.8 2015/02/28 13:29:27 ago Exp $
+# $Id$
 
 EAPI=5
 GCONF_DEBUG=no

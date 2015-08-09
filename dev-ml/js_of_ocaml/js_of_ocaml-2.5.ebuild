@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/js_of_ocaml/js_of_ocaml-2.5.ebuild,v 1.1 2014/12/01 09:50:16 aballier Exp $
+# $Id$
 
 EAPI=5
 

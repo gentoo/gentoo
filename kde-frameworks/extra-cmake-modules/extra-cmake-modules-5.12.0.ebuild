@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-frameworks/extra-cmake-modules/extra-cmake-modules-5.12.0.ebuild,v 1.2 2015/08/07 18:02:49 kensington Exp $
+# $Id$
 
 EAPI=5
 

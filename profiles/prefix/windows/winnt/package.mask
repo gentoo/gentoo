@@ -1,8 +1,8 @@
 
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/winnt/package.mask,v 1.4 2009/09/30 11:11:03 mduft Exp $
+# $Id$
 
-# $Id: package.mask,v 1.4 2009/09/30 11:11:03 mduft Exp $
+# $Id$
 
 # Markus Duft <mduft@gentoo.org> (30 Sep 2009)
 # the patch does not currently apply, and needs some work.

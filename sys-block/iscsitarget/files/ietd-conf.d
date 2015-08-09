@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-block/iscsitarget/files/ietd-conf.d,v 1.1 2006/02/20 08:33:40 robbat2 Exp $
+# $Id$
 
 # Address and port to listen on for connections.
 #ADDRESS="" # set this to non-empty to listen somewhere specific

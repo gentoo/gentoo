@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/jpilot/jpilot-1.8.0.ebuild,v 1.10 2014/03/01 22:17:19 mgorny Exp $
+# $Id$
 
 EAPI=2
 inherit autotools eutils

@@ -225,7 +225,7 @@
 +#include <unistd.h>
 +#include <limits.h>
 +
-+RCSID("@(#) $Header: /var/cvsroot/gentoo-x86/net-analyzer/netcat6/files/netcat6-1.0-unix-sockets.patch,v 1.2 2014/07/14 21:39:15 jer Exp $");
++RCSID("@(#) $Id$");
 +
 +
 +int unixsocket_connect(const struct addrinfo *hints,

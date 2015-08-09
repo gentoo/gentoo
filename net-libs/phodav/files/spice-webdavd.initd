@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/phodav/files/spice-webdavd.initd,v 1.1 2014/06/13 12:05:09 dev-zero Exp $
+# $Id$
 
 description="Spice guest utility for file sharing via WebDAV"
 

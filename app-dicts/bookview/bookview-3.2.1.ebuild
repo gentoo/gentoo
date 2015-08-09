@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/bookview/bookview-3.2.1.ebuild,v 1.7 2009/10/17 22:48:11 halcy0n Exp $
+# $Id$
 
 inherit eutils
 

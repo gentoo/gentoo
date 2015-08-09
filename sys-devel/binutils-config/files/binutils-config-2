@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/files/binutils-config-2,v 1.3 2011/04/03 21:44:42 vapier Exp $
+# $Id$
 
 # Format of /etc/env.d/binutils/:
 #  config-TARGET:	CURRENT=version for TARGET
@@ -358,7 +358,7 @@ while [[ $# -gt 0 ]] ; do
 			;;
 		-V|--version)
 			unset Header
-			cvsver="$Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/files/binutils-config-2,v 1.3 2011/04/03 21:44:42 vapier Exp $"
+			cvsver="$Id$"
 			cvsver=${cvsver##*binutils-config-}
 			bver=${cvsver%%,v *}
 			cvsver=${cvsver#* }

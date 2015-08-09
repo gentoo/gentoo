@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpthread-stubs/libpthread-stubs-0.1.ebuild,v 1.15 2011/02/06 12:39:02 leio Exp $
+# $Id$
 
 # Must be before x-modular eclass is inherited
 #SNAPSHOT="yes"

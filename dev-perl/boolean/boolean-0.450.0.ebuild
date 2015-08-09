@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/boolean/boolean-0.450.0.ebuild,v 1.1 2015/03/14 14:07:49 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/swig-3.0.5.ebuild,v 1.10 2015/07/22 16:22:32 zlogene Exp $
+# $Id$
 
 EAPI=5
 

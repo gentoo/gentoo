@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/drac/drac-1.12-r1.ebuild,v 1.16 2014/08/10 21:17:31 slyfox Exp $
+# $Id$
 
 inherit toolchain-funcs
 

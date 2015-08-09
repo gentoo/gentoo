@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-discworld/fortune-mod-discworld-0.1.ebuild,v 1.7 2015/02/04 21:14:35 tupone Exp $
+# $Id$
 EAPI=5
 MY_P=${PN/-mod/}
 DESCRIPTION="Quotes from Discworld novels"

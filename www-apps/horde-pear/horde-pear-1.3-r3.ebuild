@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-pear/horde-pear-1.3-r3.ebuild,v 1.15 2014/08/10 20:13:24 slyfox Exp $
+# $Id$
 
 DESCRIPTION="Meta package for the PEAR packages required by Horde"
 HOMEPAGE="http://pear.php.net/"

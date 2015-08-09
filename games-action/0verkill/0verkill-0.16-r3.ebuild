@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/0verkill/0verkill-0.16-r3.ebuild,v 1.10 2014/12/30 12:50:37 tupone Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils games

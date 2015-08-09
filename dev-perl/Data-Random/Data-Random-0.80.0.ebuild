@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-Random/Data-Random-0.80.0.ebuild,v 1.4 2013/05/25 07:58:34 ago Exp $
+# $Id$
 
 EAPI=5
 

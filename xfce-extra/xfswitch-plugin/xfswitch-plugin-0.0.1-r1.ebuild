@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfswitch-plugin/xfswitch-plugin-0.0.1-r1.ebuild,v 1.6 2012/11/28 12:19:52 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit multilib xfconf

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/sendEmail/sendEmail-1.56-r1.ebuild,v 1.3 2013/04/05 21:49:20 ago Exp $
+# $Id$
 
 EAPI=5
 MY_P="${PN}-v${PV}"

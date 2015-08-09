@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/netlogo-bin/netlogo-bin-4.0.4.ebuild,v 1.5 2013/01/07 01:08:51 creffett Exp $
+# $Id$
 
 EAPI=4
 

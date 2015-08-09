@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/texlive-common.eclass,v 1.22 2014/11/02 18:02:58 aballier Exp $
+# $Id$
 
 # @ECLASS: texlive-common.eclass
 # @MAINTAINER:

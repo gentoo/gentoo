@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-udf-infusion/mysql-udf-infusion-20110109.ebuild,v 1.1 2011/10/20 00:01:20 sbriesen Exp $
+# $Id$
 
 EAPI=4
 

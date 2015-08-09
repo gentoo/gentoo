@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/virtualx.eclass,v 1.43 2012/10/03 22:47:12 chithanh Exp $
+# $Id$
 
 # @ECLASS: virtualx.eclass
 # @MAINTAINER:

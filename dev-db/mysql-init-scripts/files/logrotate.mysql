@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-init-scripts/files/logrotate.mysql,v 1.2 2011/01/13 20:06:06 robbat2 Exp $
+# $Id$
 
 /var/log/mysql/mysql.err /var/log/mysql/mysql.log /var/log/mysql/mysqld.err {
 monthly

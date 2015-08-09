@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gamess/gamess-20110811.1.ebuild,v 1.4 2013/02/27 16:50:41 jlec Exp $
+# $Id$
 
 EAPI=4
 

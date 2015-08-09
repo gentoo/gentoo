@@ -83,7 +83,7 @@ diff -urN razor-agents-2.85.orig/lib/Razor2/String.pm razor-agents-2.85/lib/Razo
 --- razor-agents-2.85.orig/lib/Razor2/String.pm	2005-06-13 17:09:59.000000000 -0400
 +++ razor-agents-2.85/lib/Razor2/String.pm	2009-11-01 13:45:08.123368518 -0500
 @@ -1,11 +1,15 @@
- # $Id: razor-2.85-use-sha-not-sha1.patch,v 1.1 2010/03/25 00:39:36 robbat2 Exp $
+ # $Id$
  package Razor2::String;
  
 -use Digest::SHA1 qw(sha1_hex);

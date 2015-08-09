@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/sunos/solaris/make.defaults,v 1.1 2012/09/09 10:23:33 grobian Exp $
+# $Id$
 
 # Solaris comes with ipv6 support since Solaris 7, full ipv6 integration
 # since Solaris 8.  Let's enjoy that we have it.

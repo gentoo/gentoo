@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/txt2tags/txt2tags-2.6.ebuild,v 1.10 2014/03/13 20:29:40 ottxor Exp $
+# $Id$
 
 EAPI="2"
 PYTHON_USE_WITH="tk"

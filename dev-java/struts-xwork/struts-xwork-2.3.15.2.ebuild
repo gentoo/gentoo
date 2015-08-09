@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/struts-xwork/struts-xwork-2.3.15.2.ebuild,v 1.2 2013/10/05 11:17:52 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

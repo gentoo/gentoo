@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/rhapsody/rhapsody-0.28b.ebuild,v 1.5 2009/12/15 19:16:19 armin76 Exp $
+# $Id$
 
 inherit toolchain-funcs eutils
 

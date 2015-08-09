@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-SharedFork/Test-SharedFork-0.210.0-r1.ebuild,v 1.4 2014/11/03 19:57:44 zlogene Exp $
+# $Id$
 
 EAPI=5
 

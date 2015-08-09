@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qt-docs/qt-docs-5.4.2_p0.ebuild,v 1.1 2015/06/17 13:46:28 pesa Exp $
+# $Id$
 
 EAPI=5
 

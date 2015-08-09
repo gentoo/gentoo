@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/net-misc/portfwd/files/portfwd.init,v 1.5 2004/07/18 04:15:11 dragonheart Exp $
+# $Id$
 
 depend() {
 	need net

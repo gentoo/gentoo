@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/zpipe/zpipe-2.01-r1.ebuild,v 1.2 2015/04/16 20:26:33 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

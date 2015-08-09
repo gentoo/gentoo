@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/goby/goby-1.9.8.1.ebuild,v 1.1 2012/01/05 23:00:11 weaver Exp $
+# $Id$
 
 EAPI=4
 

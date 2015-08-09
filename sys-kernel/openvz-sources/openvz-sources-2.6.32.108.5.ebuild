@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/openvz-sources-2.6.32.108.5.ebuild,v 1.3 2015/06/28 09:59:18 zlogene Exp $
+# $Id$
 
 EAPI="5"
 

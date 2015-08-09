@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/h264enc/h264enc-9.4.0.ebuild,v 1.1 2011/08/22 05:09:09 radhermit Exp $
+# $Id$
 
 EAPI=4
 

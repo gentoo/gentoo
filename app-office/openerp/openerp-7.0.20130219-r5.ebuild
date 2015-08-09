@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openerp/openerp-7.0.20130219-r5.ebuild,v 1.5 2014/12/28 14:59:12 titanofold Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

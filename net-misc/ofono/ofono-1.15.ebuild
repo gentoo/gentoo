@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ofono/ofono-1.15.ebuild,v 1.1 2014/09/23 07:33:26 dlan Exp $
+# $Id$
 
 EAPI=5
 

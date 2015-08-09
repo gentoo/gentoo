@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/memcached-1.4.17-r3.ebuild,v 1.1 2014/02/17 17:52:50 prometheanfire Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils flag-o-matic systemd user

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libestr/libestr-0.1.5.ebuild,v 1.4 2013/06/27 18:09:18 ago Exp $
+# $Id$
 
 EAPI=4
 

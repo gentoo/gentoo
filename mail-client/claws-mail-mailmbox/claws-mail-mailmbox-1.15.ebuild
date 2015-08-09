@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-mailmbox/claws-mail-mailmbox-1.15.ebuild,v 1.8 2013/05/08 03:53:30 fauli Exp $
+# $Id$
 
 MY_P="${P#claws-mail-}"
 

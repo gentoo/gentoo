@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpipeline/libpipeline-1.2.5.ebuild,v 1.12 2014/10/27 01:43:03 vapier Exp $
+# $Id$
 
 EAPI="5"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/suite3270/suite3270-3.3.10_p3-r1.ebuild,v 1.5 2010/10/16 18:13:12 ranger Exp $
+# $Id$
 
 MY_PV=${PV/_p/ga}
 MY_P=${PN}-${MY_PV}

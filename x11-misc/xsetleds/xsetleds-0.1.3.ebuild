@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xsetleds/xsetleds-0.1.3.ebuild,v 1.17 2014/09/03 09:03:56 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

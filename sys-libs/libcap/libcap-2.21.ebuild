@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libcap/libcap-2.21.ebuild,v 1.1 2011/06/15 05:28:48 jer Exp $
+# $Id$
 
 EAPI="2"
 

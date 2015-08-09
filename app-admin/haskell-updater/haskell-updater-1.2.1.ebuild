@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/haskell-updater/haskell-updater-1.2.1.ebuild,v 1.9 2014/05/17 13:58:54 ago Exp $
+# $Id$
 
 EAPI=5
 

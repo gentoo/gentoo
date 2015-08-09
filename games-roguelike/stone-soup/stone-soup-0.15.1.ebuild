@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/stone-soup/stone-soup-0.15.1.ebuild,v 1.2 2014/10/27 02:58:21 patrick Exp $
+# $Id$
 
 ## TODO
 # add sound support (no build switch, no sound files)

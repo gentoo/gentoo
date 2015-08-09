@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ltxml/ltxml-1.2.9.ebuild,v 1.5 2012/11/05 13:01:17 kensington Exp $
+# $Id$
 
 EAPI=4
 

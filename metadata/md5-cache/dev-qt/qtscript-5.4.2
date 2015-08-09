@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	qt5-build	9d17a5a474dd6091d62b5db56f69bfae	flag-o-matic	2090c5a622458303e6bf68837ac6b96	virtualx	7d550983f9b6adb3e7091f4090ddae2f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9c58f1caada9b979efdee542a08c9782
+SLOT=5
 DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+EAPI=5
 DEPEND=>=dev-qt/qtcore-5.4.2:5 scripttools? ( >=dev-qt/qtgui-5.4.2:5 >=dev-qt/qtwidgets-5.4.2:5 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) dev-lang/perl virtual/pkgconfig test? ( >=dev-qt/qttest-5.4.2:5 )
 DESCRIPTION=Application scripting library for the Qt5 framework
-EAPI=5
-HOMEPAGE=https://www.qt.io/
-IUSE=scripttools test debug test
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86
 LICENSE=|| ( LGPL-2.1 LGPL-3 ) FDL-1.3
-RDEPEND=>=dev-qt/qtcore-5.4.2:5 scripttools? ( >=dev-qt/qtgui-5.4.2:5 >=dev-qt/qtwidgets-5.4.2:5 ) dev-qt/qtchooser
+IUSE=scripttools test debug test
 RESTRICT=test
-SLOT=5
 SRC_URI=http://download.qt.io/official_releases/qt/5.4/5.4.2/submodules/qtscript-opensource-src-5.4.2.tar.xz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	qt5-build	e34691d6a49adf83cd1a094658039ac0	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
-_md5_=fe78528eb4e9cbbebbe969b02ff86df8
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86
+HOMEPAGE=https://www.qt.io/
+RDEPEND=>=dev-qt/qtcore-5.4.2:5 scripttools? ( >=dev-qt/qtgui-5.4.2:5 >=dev-qt/qtwidgets-5.4.2:5 ) dev-qt/qtchooser

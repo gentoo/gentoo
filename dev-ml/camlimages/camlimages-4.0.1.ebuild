@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlimages/camlimages-4.0.1.ebuild,v 1.5 2013/05/24 15:46:20 aballier Exp $
+# $Id$
 
 EAPI=5
 

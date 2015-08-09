@@ -1,14 +1,14 @@
-DEFINED_PHASES=compile install nofetch postinst prepare setup test
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5b945fb2595962ff4f14fc125fbf1c48
+SLOT=0
+DEFINED_PHASES=compile install postinst prepare setup test
+EAPI=4
 DEPEND=>=sys-fs/lvm2-2.02.45 sys-fs/fuse x11-libs/wxGTK:2.8[X?] app-admin/sudo !ppc? ( dev-lang/nasm )
 DESCRIPTION=Free open-source disk encryption software
-EAPI=4
-HOMEPAGE=http://www.truecrypt.org/
-IUSE=X +asm
-KEYWORDS=-* ~amd64 ~ppc ~x86
 LICENSE=truecrypt-3.0
-RDEPEND=>=sys-fs/lvm2-2.02.45 sys-fs/fuse x11-libs/wxGTK:2.8[X?] app-admin/sudo
+IUSE=X +asm
 RESTRICT=mirror fetch bindist
-SLOT=0
 SRC_URI=truecrypt-7.1a.tar.gz truecrypt-7.1a-pkcs11.h
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=79961b184219d0e3563b00409a37aa95
+KEYWORDS=-* ~amd64 ~ppc ~x86
+HOMEPAGE=http://www.truecrypt.org/
+RDEPEND=>=sys-fs/lvm2-2.02.45 sys-fs/fuse x11-libs/wxGTK:2.8[X?] app-admin/sudo

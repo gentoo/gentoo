@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-lackman/lc-lackman-0.6.60.ebuild,v 1.4 2014/08/14 09:21:36 pinkbyte Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,9 +1,11 @@
-DEFINED_PHASES=install
-DESCRIPTION=Manages configuration of TiMidity++ patchsets
-HOMEPAGE=http://www.gentoo.org/
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
-LICENSE=GPL-2
-RDEPEND=>=app-admin/eselect-1.2.3
+_eclasses_=
+_md5_=8aca5b561c9258c69931912dd2d12e4d
 SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Manages configuration of TiMidity++ patchsets
+LICENSE=GPL-2
 SRC_URI=mirror://gentoo/timidity.eselect-20091106.bz2
-_md5_=5874fca6444fd9116676260f9964a6a0
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+HOMEPAGE=http://www.gentoo.org/
+RDEPEND=>=app-admin/eselect-1.2.3

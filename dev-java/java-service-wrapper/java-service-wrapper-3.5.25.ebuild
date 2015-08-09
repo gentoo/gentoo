@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-service-wrapper/java-service-wrapper-3.5.25.ebuild,v 1.1 2014/09/05 22:34:15 jauhien Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfwm4/xfwm4-4.12.3-r1.ebuild,v 1.2 2015/07/19 12:39:06 klausman Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

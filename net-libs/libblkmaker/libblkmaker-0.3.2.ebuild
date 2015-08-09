@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libblkmaker/libblkmaker-0.3.2.ebuild,v 1.5 2014/09/16 00:17:28 blueness Exp $
+# $Id$
 
 EAPI=5
 

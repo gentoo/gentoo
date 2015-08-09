@@ -1,3 +1,3 @@
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing/files/init_google_safebrowsing.pre,v 1.1 2007/10/17 08:47:41 robbat2 Exp $
+# $Id$
 # You need to uncomment this after you have an API key and the cronjob is active!
 #loadplugin  Mail::SpamAssassin::Plugin::GoogleSafeBrowsing

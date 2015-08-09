@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/fms/files/fms,v 1.4 2010/03/31 19:19:27 tommy Exp $
+# $Id$
 
 # Check for OpenRC/Baselayout 2 - see bug #270646
 is_openrc() {

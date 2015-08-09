@@ -1,9 +1,0 @@
-# ChangeLog for dev-haskell/ascii-progress
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/ascii-progress/ChangeLog,v 1.1 2015/06/21 18:55:33 slyfox Exp $
-
-*ascii-progress-0.2.1.2 (21 Jun 2015)
-
-  21 Jun 2015; Sergei Trofimovich <slyfox@gentoo.org>
-  +ascii-progress-0.2.1.2.ebuild, +metadata.xml:
-  A simple progress bar for the console, a depend for dev-vcs/git-annex.

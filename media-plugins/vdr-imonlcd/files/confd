@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-imonlcd/files/confd,v 1.2 2011/01/28 23:11:47 idl0r Exp $
+# $Id$
 
 #IMONLCD_DEVICE=/dev/lcd0
 

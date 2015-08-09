@@ -14,7 +14,7 @@ diff -purN vixie-cron-4.1.orig/Makefile vixie-cron-4.1/Makefile
 diff -purN vixie-cron-4.1.orig/database.c vixie-cron-4.1/database.c
 --- vixie-cron-4.1.orig/database.c	2004-08-27 14:09:34.000000000 -0400
 +++ vixie-cron-4.1/database.c	2008-08-27 08:19:37.948930858 -0400
-@@ -28,6 +28,16 @@ static char rcsid[] = "$Id: database.c,v
+@@ -28,6 +28,16 @@ static char rcsid[] = "# $Id$
  
  #include "cron.h"
  
@@ -100,7 +100,7 @@ diff -purN vixie-cron-4.1.orig/database.c vixie-cron-4.1/database.c
 diff -purN vixie-cron-4.1.orig/do_command.c vixie-cron-4.1/do_command.c
 --- vixie-cron-4.1.orig/do_command.c	2004-08-27 14:09:34.000000000 -0400
 +++ vixie-cron-4.1/do_command.c	2008-08-25 15:43:43.289174371 -0400
-@@ -25,6 +25,11 @@ static char rcsid[] = "$Id: do_command.c
+@@ -25,6 +25,11 @@ static char rcsid[] = "# $Id$
  
  #include "cron.h"
  

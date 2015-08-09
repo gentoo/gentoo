@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/eid-mw/eid-mw-9999.ebuild,v 1.3 2015/01/24 18:17:08 swift Exp $
+# $Id$
 
 EAPI=5
 

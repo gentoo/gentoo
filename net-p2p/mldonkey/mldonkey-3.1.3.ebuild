@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/mldonkey-3.1.3.ebuild,v 1.12 2014/08/10 20:37:42 slyfox Exp $
+# $Id$
 
 EAPI="2"
 WANT_AUTOCONF=2.5

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/package.use.stable.mask,v 1.11 2015/07/30 16:48:36 maekke Exp $
+# $Id$
 
 # Markus Meier <maekke@gentoo.org> (30 Jul 2015)
 # Missing stable

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbattery/wmbattery-2.47.ebuild,v 1.1 2015/04/17 12:10:54 voyageur Exp $
+# $Id$
 
 EAPI=5
 inherit autotools

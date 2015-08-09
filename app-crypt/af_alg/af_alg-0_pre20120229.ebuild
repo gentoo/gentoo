@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/af_alg/af_alg-0_pre20120229.ebuild,v 1.2 2013/03/03 08:24:42 vapier Exp $
+# $Id$
 
 EAPI=5
 

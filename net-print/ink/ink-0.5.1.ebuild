@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/ink/ink-0.5.1.ebuild,v 1.4 2014/10/23 23:04:24 tamiko Exp $
+# $Id$
 
 EAPI="5"
 

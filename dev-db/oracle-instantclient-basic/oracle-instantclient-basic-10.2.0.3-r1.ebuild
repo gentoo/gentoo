@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-basic/oracle-instantclient-basic-10.2.0.3-r1.ebuild,v 1.6 2012/06/04 06:37:16 zmedico Exp $
+# $Id$
 
 inherit eutils multilib
 

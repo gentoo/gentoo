@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/m2vrequantizer/m2vrequantizer-0.0.2_pre20060306.ebuild,v 1.1 2011/01/22 23:55:50 hd_brummy Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-ClassAttribute/MooseX-ClassAttribute-0.260.0.ebuild,v 1.2 2014/08/31 15:57:33 zlogene Exp $
+# $Id$
 
 EAPI=5
 

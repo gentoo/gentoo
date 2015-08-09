@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/package.use.force,v 1.2 2012/10/30 17:51:34 ssuominen Exp $
+# $Id$
 
 # Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2012)
 # Only gnome-base/gdm has stable keywording. If x11-misc/lightdm or kde-base/kdm gets

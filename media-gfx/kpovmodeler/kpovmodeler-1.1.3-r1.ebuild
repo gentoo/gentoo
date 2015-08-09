@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/kpovmodeler/kpovmodeler-1.1.3-r1.ebuild,v 1.1 2013/06/03 17:12:22 kensington Exp $
+# $Id$
 
 EAPI=5
 KDE_LINGUAS="af ar be bg br ca cs cy da de el en_GB es et eu fa fi fr ga gl he

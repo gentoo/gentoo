@@ -83,7 +83,7 @@
 +#! @GENTOO_PORTAGE_EPREFIX@/bin/sh
  :
  # Copyright (c) 1990-1997, S.R. van den Berg, The Netherlands
- #$Id: procmail-prefix.patch,v 1.1 2014/10/24 19:03:15 grobian Exp $
+ # $Id$
 @@ -1416,20 +1416,10 @@
  
  found=no

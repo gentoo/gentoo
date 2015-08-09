@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/files/lvm.rc-2.02.105-r2,v 1.1 2014/02/02 19:52:34 robbat2 Exp $
+# $Id$
 
 depend() {
 	before checkfs fsck

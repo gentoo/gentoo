@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/matrix-toolkits-java/matrix-toolkits-java-0.9.12.ebuild,v 1.2 2013/02/17 09:46:48 jlec Exp $
+# $Id$
 
 EAPI="2"
 

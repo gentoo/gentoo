@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/scss-mode/scss-mode-20150107.ebuild,v 1.1 2015/05/19 12:13:40 graaff Exp $
+# $Id$
 
 EAPI=5
 

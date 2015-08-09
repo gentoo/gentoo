@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-firmware/linux-firmware-20150320.ebuild,v 1.1 2015/03/26 13:09:23 chithanh Exp $
+# $Id$
 
 EAPI=5
 inherit savedconfig

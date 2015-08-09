@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/eventmachine/eventmachine-1.0.8.ebuild,v 1.1 2015/08/07 02:02:33 mrueg Exp $
+# $Id$
 
 EAPI=5
 

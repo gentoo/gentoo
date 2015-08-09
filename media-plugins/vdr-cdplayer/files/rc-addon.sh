@@ -1,7 +1,7 @@
 #
 # rc-addon-script for plugin cdplayer
 #
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-cdplayer/files/rc-addon.sh,v 1.2 2013/05/26 20:23:22 hd_brummy Exp $
+# $Id$
 
 . /etc/conf.d/vdr.cdplayer
 

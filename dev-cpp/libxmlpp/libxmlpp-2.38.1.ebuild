@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxmlpp/libxmlpp-2.38.1.ebuild,v 1.4 2015/07/13 04:09:09 jer Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

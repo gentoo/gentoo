@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/openpgm/openpgm-5.1.118.ebuild,v 1.12 2014/02/16 19:55:38 vapier Exp $
+# $Id$
 
 EAPI=3
 inherit autotools

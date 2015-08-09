@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/wwwoffle/files/wwwoffle-online.confd,v 1.1 2005/04/22 19:15:12 mrness Exp $
+# $Id$
 
 # Enter the interface that connects you to the outside world
 # This will correspond to /etc/wwwoffle/init.d/net.${IFACE}

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/incron/incron-0.5.10-r1.ebuild,v 1.4 2013/12/21 16:38:50 ago Exp $
+# $Id$
 
 EAPI="4"
 

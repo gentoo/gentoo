@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitcoind/files/bitcoin.initd-r1,v 1.1 2014/02/21 14:22:42 blueness Exp $
+# $Id$
 
 vardir="/var/lib/bitcoin"
 conffile="${vardir}/.bitcoin/bitcoin.conf"

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/florist/florist-2007.0.ebuild,v 1.2 2008/02/08 14:34:23 george Exp $
+# $Id$
 
 inherit gnat libtool
 

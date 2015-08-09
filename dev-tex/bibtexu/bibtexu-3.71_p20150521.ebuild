@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/bibtexu/bibtexu-3.71_p20150521.ebuild,v 1.1 2015/07/15 10:10:14 aballier Exp $
+# $Id$
 
 EAPI=5
 

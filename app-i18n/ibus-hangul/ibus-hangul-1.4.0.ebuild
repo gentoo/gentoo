@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-hangul/ibus-hangul-1.4.0.ebuild,v 1.5 2012/05/03 19:24:33 jdhore Exp $
+# $Id$
 
 EAPI=4
 

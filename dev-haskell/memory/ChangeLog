@@ -1,9 +1,0 @@
-# ChangeLog for dev-haskell/memory
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/memory/ChangeLog,v 1.1 2015/08/01 14:22:42 slyfox Exp $
-
-*memory-0.7 (01 Aug 2015)
-
-  01 Aug 2015; Sergei Trofimovich <slyfox@gentoo.org> +memory-0.7.ebuild,
-  +metadata.xml:
-  memory and related abtraction stuff, a depend for dev-haskell/securemem-0.1.9

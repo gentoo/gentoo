@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/perl-ExtUtils-Command/perl-ExtUtils-Command-1.180.0-r2.ebuild,v 1.13 2015/04/05 00:01:30 vapier Exp $
+# $Id$
 
 EAPI=5
 

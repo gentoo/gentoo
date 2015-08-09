@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latexdiff/latexdiff-0.5.ebuild,v 1.20 2012/05/09 17:10:42 aballier Exp $
+# $Id$
 
 DESCRIPTION="Compare two latex files and mark up significant differences"
 HOMEPAGE="http://www.ctan.org/tex-archive/support/latexdiff/"

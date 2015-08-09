@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bmon/bmon-3.7.ebuild,v 1.1 2015/07/02 04:56:46 jer Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils linux-info toolchain-funcs

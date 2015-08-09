@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/thunar-archive-plugin/thunar-archive-plugin-0.3.1.ebuild,v 1.9 2014/04/19 17:46:17 ago Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

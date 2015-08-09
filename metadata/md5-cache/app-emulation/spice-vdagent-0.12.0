@@ -1,13 +1,13 @@
+_eclasses_=linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7ec65985d998e9d35948770e3dc6f0dd
+SLOT=0
 DEFINED_PHASES=configure install setup
+EAPI=4
 DEPEND=virtual/pkgconfig x11-libs/libXfixes x11-libs/libXrandr x11-libs/libX11 x11-libs/libXinerama >=x11-libs/libpciaccess-0.10 >=app-emulation/spice-protocol-0.10.1 consolekit? ( sys-auth/consolekit sys-apps/dbus )
 DESCRIPTION=SPICE VD Linux Guest Agent
-EAPI=4
-HOMEPAGE=http://spice-space.org/
-IUSE=+consolekit selinux
-KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
-RDEPEND=x11-libs/libXfixes x11-libs/libXrandr x11-libs/libX11 x11-libs/libXinerama >=x11-libs/libpciaccess-0.10 >=app-emulation/spice-protocol-0.10.1 consolekit? ( sys-auth/consolekit sys-apps/dbus ) selinux? ( sec-policy/selinux-vdagent )
-SLOT=0
+IUSE=+consolekit selinux
 SRC_URI=http://spice-space.org/download/releases/spice-vdagent-0.12.0.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=f6c1c15572fa4715658f54223776810e
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://spice-space.org/
+RDEPEND=x11-libs/libXfixes x11-libs/libXrandr x11-libs/libX11 x11-libs/libXinerama >=x11-libs/libpciaccess-0.10 >=app-emulation/spice-protocol-0.10.1 consolekit? ( sys-auth/consolekit sys-apps/dbus ) selinux? ( sec-policy/selinux-vdagent )

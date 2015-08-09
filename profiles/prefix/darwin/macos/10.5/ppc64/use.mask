@@ -1,5 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.5/ppc64/use.mask,v 1.1 2011/01/05 12:30:31 grobian Exp $
+# $Id$
 
 -altivec

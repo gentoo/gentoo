@@ -1,9 +1,0 @@
-# ChangeLog for dev-perl/Test-CleanNamespaces
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-CleanNamespaces/ChangeLog,v 1.1 2015/07/25 20:34:55 dilfridge Exp $
-
-*Test-CleanNamespaces-0.180.0 (25 Jul 2015)
-
-  25 Jul 2015; Andreas K. Huettel <dilfridge@gentoo.org>
-  +Test-CleanNamespaces-0.180.0.ebuild, +metadata.xml:
-  New package, needed for dev-perl/Moose, ebuild by Kent Fredric, bug 554938

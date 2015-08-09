@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/obfsproxy/files/obfsproxy.confd,v 1.1 2013/01/19 16:00:49 blueness Exp $
+# $Id$
 
 # protocols ofbsproxy will obfuscate = obfs2 | dummy
 PROTOCOL="obfs2"

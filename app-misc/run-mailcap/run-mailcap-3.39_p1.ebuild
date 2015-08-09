@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/run-mailcap/run-mailcap-3.39_p1.ebuild,v 1.6 2008/05/11 14:04:45 maekke Exp $
+# $Id$
 
 inherit eutils
 

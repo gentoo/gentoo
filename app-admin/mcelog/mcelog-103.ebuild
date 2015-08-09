@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/mcelog/mcelog-103.ebuild,v 1.1 2014/09/09 01:58:47 hasufell Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/opendmarc/opendmarc-1.3.0.ebuild,v 1.2 2015/07/14 17:06:29 grobian Exp $
+# $Id$
 
 EAPI=5
 

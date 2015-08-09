@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/at/files/atd.confd,v 1.1 2011/04/17 22:46:40 jer Exp $
+# $Id$
 
 # Define startup options for atd(8).
 # For example: ATD_OPTS="-l 3.0 -b 5"

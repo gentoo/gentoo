@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/tagstream-conduit/tagstream-conduit-0.5.4.1.ebuild,v 1.1 2013/12/11 06:30:32 gienah Exp $
+# $Id$
 
 EAPI=5
 

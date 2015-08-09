@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_abl/pam_abl-0.6.0.ebuild,v 1.1 2015/05/21 03:12:04 vapier Exp $
+# $Id$
 
 EAPI=5
 

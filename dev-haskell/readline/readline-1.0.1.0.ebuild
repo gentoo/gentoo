@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/readline/readline-1.0.1.0.ebuild,v 1.3 2012/09/15 07:48:35 gienah Exp $
+# $Id$
 
 EAPI=4
 

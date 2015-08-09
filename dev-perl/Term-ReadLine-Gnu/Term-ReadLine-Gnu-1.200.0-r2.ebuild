@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Term-ReadLine-Gnu/Term-ReadLine-Gnu-1.200.0-r2.ebuild,v 1.5 2014/01/14 20:41:06 zlogene Exp $
+# $Id$
 
 EAPI=5
 

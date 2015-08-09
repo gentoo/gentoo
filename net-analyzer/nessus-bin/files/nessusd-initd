@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus-bin/files/nessusd-initd,v 1.2 2011/04/20 12:21:01 jlec Exp $
+# $Id$
 
 depend() {
 	need net

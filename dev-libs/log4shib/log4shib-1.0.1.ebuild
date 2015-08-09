@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4shib/log4shib-1.0.1.ebuild,v 1.2 2013/03/07 12:05:14 pinkbyte Exp $
+# $Id$
 
 inherit eutils autotools
 

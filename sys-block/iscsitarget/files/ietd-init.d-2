@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-block/iscsitarget/files/ietd-init.d-2,v 1.2 2010/12/15 11:50:05 fauli Exp $
+# $Id$
 
 MEM_SIZE=1048576
 DAEMON=/usr/sbin/ietd

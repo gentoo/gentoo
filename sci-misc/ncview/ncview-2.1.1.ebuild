@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/ncview/ncview-2.1.1.ebuild,v 1.2 2012/08/04 18:24:48 bicatali Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-firmware/ipxe/ipxe-1.0.0_p20120905.ebuild,v 1.6 2013/06/27 22:10:51 cardoe Exp $
+# $Id$
 
 EAPI=4
 

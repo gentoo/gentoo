@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/asm/asm-4.0.ebuild,v 1.8 2015/06/14 09:18:47 chewi Exp $
+# $Id$
 
 MY_P="${PN}-${PV/rc/RC}"
 JAVA_PKG_IUSE="doc source"

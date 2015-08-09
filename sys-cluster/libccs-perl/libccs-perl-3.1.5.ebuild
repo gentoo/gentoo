@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/libccs-perl/libccs-perl-3.1.5.ebuild,v 1.1 2011/09/14 10:30:26 ultrabug Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/single-unix-specification/single-unix-specification-4-r1.ebuild,v 1.10 2013/10/20 20:17:38 grobian Exp $
+# $Id$
 
 DESCRIPTION="The Single UNIX Specification, Version 4, 2008 Edition (8 Volumes)"
 HOMEPAGE="http://www.opengroup.org/bookstore/catalog/c082.htm"

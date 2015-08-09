@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ecasound/ecasound-2.6.0.ebuild,v 1.9 2012/01/20 12:29:31 ago Exp $
+# $Id$
 
 EAPI=3
 

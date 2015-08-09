@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/migemo-dict/migemo-dict-200812.ebuild,v 1.9 2010/09/27 09:20:53 xmw Exp $
+# $Id$
 
 IUSE="unicode"
 

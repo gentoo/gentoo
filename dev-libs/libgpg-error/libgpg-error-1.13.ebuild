@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgpg-error/libgpg-error-1.13.ebuild,v 1.10 2015/04/26 16:57:06 jer Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langspanish/texlive-langspanish-2015.ebuild,v 1.1 2015/07/16 09:22:07 aballier Exp $
+# $Id$
 
 EAPI="5"
 

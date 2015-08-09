@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-vcalendar/claws-mail-vcalendar-2.0.14.ebuild,v 1.7 2013/05/08 04:06:40 fauli Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squidguard/squidguard-1.4-r4.ebuild,v 1.12 2015/04/24 10:16:20 eras Exp $
+# $Id$
 
 EAPI=2
 WANT_AUTOMAKE=none

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/lpe/lpe-1.2.6.13.ebuild,v 1.13 2013/03/07 15:24:26 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib toolchain-funcs

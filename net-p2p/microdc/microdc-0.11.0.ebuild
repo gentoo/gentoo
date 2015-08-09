@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/microdc/microdc-0.11.0.ebuild,v 1.1 2006/06/18 05:32:19 squinky86 Exp $
+# $Id$
 
 DESCRIPTION="A small command-line based Direct Connect client"
 HOMEPAGE="http://www.nongnu.org/microdc/"

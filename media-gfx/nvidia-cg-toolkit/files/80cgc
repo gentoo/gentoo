@@ -1,5 +1,5 @@
 # /etc/env.d/80cgc :
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/nvidia-cg-toolkit/files/80cgc,v 1.2 2004/07/18 03:34:21 dragonheart Exp $
+# $Id$
 
 
 # Configures the CG Runtime environment for Bourne shell and compatible shells

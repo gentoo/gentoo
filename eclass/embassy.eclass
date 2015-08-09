@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/embassy.eclass,v 1.19 2012/09/15 16:16:53 zmedico Exp $
+# $Id$
 
 # Author Olivier Fisette <ribosome@gentoo.org>
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rsync/rsync-3.0.9-r3.ebuild,v 1.12 2014/04/06 14:37:52 vapier Exp $
+# $Id$
 
 EAPI="4"
 

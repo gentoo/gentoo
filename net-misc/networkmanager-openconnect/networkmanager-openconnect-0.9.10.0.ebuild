@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-openconnect/networkmanager-openconnect-0.9.10.0.ebuild,v 1.4 2014/12/19 13:42:34 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

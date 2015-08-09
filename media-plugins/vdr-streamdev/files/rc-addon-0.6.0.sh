@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-streamdev/files/rc-addon-0.6.0.sh,v 1.1 2013/03/31 16:22:06 hd_brummy Exp $
+# $Id$
 #
 # rc-addon-script for plugin streamdev-server
 #

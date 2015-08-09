@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/dailystrips/dailystrips-1.0.28-r2.ebuild,v 1.9 2014/08/10 18:02:49 slyfox Exp $
+# $Id$
 
 DESCRIPTION="dailystrips automatically downloads your favorite online comics from the web"
 HOMEPAGE="http://dailystrips.sourceforge.net/"

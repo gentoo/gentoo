@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/0ad/0ad-0.0.17_alpha.ebuild,v 1.1 2014/10/12 22:40:10 hasufell Exp $
+# $Id$
 
 EAPI=5
 

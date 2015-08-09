@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fplll/fplll-4.0.4.ebuild,v 1.1 2013/07/15 22:41:41 hasufell Exp $
+# $Id$
 
 EAPI=5
 

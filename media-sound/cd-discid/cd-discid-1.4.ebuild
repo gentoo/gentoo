@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cd-discid/cd-discid-1.4.ebuild,v 1.5 2013/07/27 22:08:04 ago Exp $
+# $Id$
 
 EAPI=5
 

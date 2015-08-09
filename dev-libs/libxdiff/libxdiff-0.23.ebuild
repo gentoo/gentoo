@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxdiff/libxdiff-0.23.ebuild,v 1.3 2013/03/31 17:50:28 ago Exp $
+# $Id$
 
 DESCRIPTION="Library for creating diff files"
 HOMEPAGE="http://www.xmailserver.org/xdiff-lib.html"

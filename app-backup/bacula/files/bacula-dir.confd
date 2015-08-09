@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/files/bacula-dir.confd,v 1.1 2011/05/14 09:28:46 tomjbe Exp $
+# $Id$
 
 # Config file for /etc/init.d/bacula-dir
 

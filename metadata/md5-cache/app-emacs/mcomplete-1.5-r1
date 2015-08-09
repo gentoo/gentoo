@@ -1,12 +1,12 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=53faccd34c19370099550374279925ca
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+EAPI=5
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=An improved interface to minibuffer completion
-EAPI=5
-HOMEPAGE=http://homepage1.nifty.com/bmonkey/emacs/index-en.html http://www.emacswiki.org/emacs/McompleteMode
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=>=virtual/emacs-23
-SLOT=0
 SRC_URI=mirror://gentoo/mcomplete-1.5.el.bz2
-_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=a52482b21d752161d19e0c22428689ed
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://homepage1.nifty.com/bmonkey/emacs/index-en.html http://www.emacswiki.org/emacs/McompleteMode
+RDEPEND=>=virtual/emacs-23

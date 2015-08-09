@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/cardo/cardo-1.04.ebuild,v 1.2 2011/08/15 00:52:37 dirtyepic Exp $
+# $Id$
 
 inherit font
 

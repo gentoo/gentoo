@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kscope/kscope-1.9.4-r1.ebuild,v 1.5 2013/04/17 09:03:44 ssuominen Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xkbprint/xkbprint-1.0.3.ebuild,v 1.7 2011/03/05 18:03:44 xarthisius Exp $
+# $Id$
 
 EAPI=3
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/kmid/kmid-2.4.0-r1.ebuild,v 1.4 2014/12/03 08:04:42 kensington Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/ganglia-3.7.1-r1.ebuild,v 1.2 2015/08/05 20:48:05 jsbronder Exp $
+# $Id$
 
 EAPI=5
 

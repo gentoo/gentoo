@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.graphtft
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-graphtft/files/confd,v 1.1 2007/12/23 22:05:10 hd_brummy Exp $
+# $Id$
 
 ####### Global config for Graphtft ####################
 

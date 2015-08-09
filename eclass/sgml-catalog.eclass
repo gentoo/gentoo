@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/sgml-catalog.eclass,v 1.20 2012/04/29 23:25:05 flameeyes Exp $
+# $Id$
 
 # @ECLASS: sgml-catalog.eclass
 # @MAINTAINER:

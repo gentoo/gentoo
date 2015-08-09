@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-gnome/java-gnome-4.0.20.ebuild,v 1.1 2013/07/08 14:09:02 tomwij Exp $
+# $Id$
 
 EAPI="5"
 

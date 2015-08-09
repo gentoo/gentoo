@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/qlife/qlife-1.1.ebuild,v 1.6 2015/02/06 21:45:24 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils qt4-r2 games

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Util/Module-Util-1.90.0.ebuild,v 1.2 2015/06/13 22:27:53 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

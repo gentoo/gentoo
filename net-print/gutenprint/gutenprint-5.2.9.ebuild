@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/gutenprint/gutenprint-5.2.9.ebuild,v 1.10 2013/04/25 18:43:59 radhermit Exp $
+# $Id$
 
 EAPI=4
 

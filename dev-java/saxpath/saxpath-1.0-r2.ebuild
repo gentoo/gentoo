@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/saxpath/saxpath-1.0-r2.ebuild,v 1.21 2015/07/11 09:22:29 chewi Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source test"
 

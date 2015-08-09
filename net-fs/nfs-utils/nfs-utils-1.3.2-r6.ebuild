@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/nfs-utils/nfs-utils-1.3.2-r6.ebuild,v 1.1 2015/02/05 04:32:41 williamh Exp $
+# $Id$
 
 EAPI="5"
 

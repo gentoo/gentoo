@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/raster3d/raster3d-3.0.2.ebuild,v 1.10 2012/12/14 10:16:38 ulm Exp $
+# $Id$
 
 EAPI=4
 

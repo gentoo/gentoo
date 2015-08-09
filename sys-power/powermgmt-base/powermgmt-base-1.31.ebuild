@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/powermgmt-base/powermgmt-base-1.31.ebuild,v 1.11 2014/06/05 09:56:11 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

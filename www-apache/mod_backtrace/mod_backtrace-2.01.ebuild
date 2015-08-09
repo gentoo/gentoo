@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_backtrace/mod_backtrace-2.01.ebuild,v 1.1 2014/12/23 13:15:45 mjo Exp $
+# $Id$
 
 EAPI=5
 

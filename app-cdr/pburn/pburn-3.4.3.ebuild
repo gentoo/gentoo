@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/pburn/pburn-3.4.3.ebuild,v 1.3 2013/04/25 14:28:43 ssuominen Exp $
+# $Id$
 
 # wget --user puppy --password linux "http://www.meownplanet.net/zigbert/${P}.pet"
 

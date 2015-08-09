@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/tribler/tribler-6.0.3.ebuild,v 1.6 2013/08/11 22:59:17 aballier Exp $
+# $Id$
 
 EAPI="4"
 PYTHON_DEPEND="2"

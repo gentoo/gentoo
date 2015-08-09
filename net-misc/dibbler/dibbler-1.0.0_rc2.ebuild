@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dibbler/dibbler-1.0.0_rc2.ebuild,v 1.1 2014/08/22 12:00:03 voyageur Exp $
+# $Id$
 
 EAPI="5"
 inherit eutils readme.gentoo systemd

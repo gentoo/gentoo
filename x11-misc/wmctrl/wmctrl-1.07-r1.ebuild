@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/wmctrl/wmctrl-1.07-r1.ebuild,v 1.7 2013/07/22 20:41:28 ago Exp $
+# $Id$
 
 inherit eutils
 

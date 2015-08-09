@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/uhttpmock/uhttpmock-0.5.0.ebuild,v 1.2 2015/07/20 15:30:54 klausman Exp $
+# $Id$
 
 EAPI=5
 GCONF_DEBUG="yes"

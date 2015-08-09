@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/glu/glu-9.0.ebuild,v 1.12 2013/03/03 11:51:43 vapier Exp $
+# $Id$
 
 DESCRIPTION="Virtual for OpenGL utility library"
 HOMEPAGE=""

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/qtwitter/qtwitter-0.10.0-r1.ebuild,v 1.6 2014/08/05 18:34:15 mrueg Exp $
+# $Id$
 
 EAPI=4
 PLOCALES="ca_ES cs_CZ de_DE es_ES fr_FR it_IT ja_JP nb_NO pl_PL pt_BR"

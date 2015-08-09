@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # # Distributed under the terms of the GNU General Public License v2
-# # $Header: /var/cvsroot/gentoo-x86/www-apps/tt-rss/files/ttrssd.confd-r1,v 1.1 2013/03/24 10:22:25 scarabeus Exp $
+# $Id$
 
 # Path to TT-RSS instances which should have running update daemon.
 # EXAMPLE: INSTANCE_DIRS="/some/webhost/htdocs/tt-rss /some/otherwebhost/htdocs/newsreader"

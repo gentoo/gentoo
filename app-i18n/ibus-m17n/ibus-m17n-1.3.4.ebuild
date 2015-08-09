@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-m17n/ibus-m17n-1.3.4.ebuild,v 1.1 2013/01/15 08:43:46 naota Exp $
+# $Id$
 
 EAPI="3"
 

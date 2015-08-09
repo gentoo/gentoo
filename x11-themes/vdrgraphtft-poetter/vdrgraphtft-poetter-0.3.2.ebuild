@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/vdrgraphtft-poetter/vdrgraphtft-poetter-0.3.2.ebuild,v 1.1 2009/10/22 14:20:39 hd_brummy Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/po-mode/po-mode-0.18.3.2.ebuild,v 1.10 2014/05/17 13:59:57 ago Exp $
+# $Id$
 
 EAPI=5
 

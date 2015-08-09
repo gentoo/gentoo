@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffdiaporama/ffdiaporama-2.0.1.ebuild,v 1.3 2014/05/15 17:10:15 ulm Exp $
+# $Id$
 
 EAPI=5
 

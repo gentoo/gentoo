@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-otr/pidgin-otr-3.2.1.ebuild,v 1.6 2013/06/20 14:25:13 polynomial-c Exp $
+# $Id$
 
 EAPI=5
 

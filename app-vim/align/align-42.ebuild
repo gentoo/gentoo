@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/align/align-42.ebuild,v 1.8 2013/01/29 07:42:26 radhermit Exp $
+# $Id$
 
 EAPI=4
 

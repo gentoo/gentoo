@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ca-certificates/ca-certificates-20110502-r3.ebuild,v 1.2 2011/09/07 00:39:11 vapier Exp $
+# $Id$
 
 EAPI="3"
 

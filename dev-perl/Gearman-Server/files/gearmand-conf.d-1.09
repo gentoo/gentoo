@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gearman-Server/files/gearmand-conf.d-1.09,v 1.1 2007/05/13 02:18:42 robbat2 Exp $
+# $Id$
 PIDFILE="/var/run/gearmand.pid"
 GEARMAND_OPTS="--daemonize --port=7003 --pidfile=${PIDFILE}"
 # vim: ft=gentoo-conf-d:

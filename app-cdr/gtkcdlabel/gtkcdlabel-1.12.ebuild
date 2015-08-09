@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/gtkcdlabel/gtkcdlabel-1.12.ebuild,v 1.8 2014/08/10 02:14:16 patrick Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2:2.6"

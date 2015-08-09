@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/amiwm/amiwm-0.21_p2.ebuild,v 1.1 2011/06/11 11:52:47 xarthisius Exp $
+# $Id$
 
 EAPI=4
 

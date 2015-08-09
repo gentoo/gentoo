@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/linux-kernel-in-a-nutshell/linux-kernel-in-a-nutshell-1.ebuild,v 1.3 2013/02/07 21:31:30 ulm Exp $
+# $Id$
 
 inherit eutils
 

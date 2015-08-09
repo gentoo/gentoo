@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-apache-xalan2/ant-apache-xalan2-1.9.2.ebuild,v 1.7 2015/07/11 09:20:52 chewi Exp $
+# $Id$
 
 EAPI="5"
 

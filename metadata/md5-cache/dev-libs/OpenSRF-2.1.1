@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile config configure install postinst prepare setup test unpack
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	depend.apache	e3c541cb90838388f81620d630c28f41	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=528a218ab796f894c083083db53750a9
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+EAPI=5
 DEPEND=>=www-servers/apache-2.2.9 >=dev-db/libdbi-drivers-0.8.2 >=dev-db/libdbi-0.8.2 net-im/ejabberd dev-libs/libmemcache dev-perl/Cache-Memcached dev-perl/Class-DBI-AbstractSearch sqlite? ( dev-perl/DBD-SQLite ) postgres? ( dev-perl/DBD-Pg ) virtual/perl-Digest-MD5 dev-perl/JSON-XS dev-perl/net-server dev-perl/UNIVERSAL-require dev-perl/Unix-Syslog dev-perl/XML-LibXML =www-servers/apache-2.2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Framework for the high-level development of the Evergreen ILS software
-EAPI=5
-HOMEPAGE=http://open-ils.org/
-IUSE=postgres +sqlite
-KEYWORDS=~x86 ~amd64
 LICENSE=GPL-2
-RDEPEND=>=www-servers/apache-2.2.9 >=dev-db/libdbi-drivers-0.8.2 >=dev-db/libdbi-0.8.2 net-im/ejabberd dev-libs/libmemcache dev-perl/Cache-Memcached dev-perl/Class-DBI-AbstractSearch sqlite? ( dev-perl/DBD-SQLite ) postgres? ( dev-perl/DBD-Pg ) virtual/perl-Digest-MD5 dev-perl/JSON-XS dev-perl/net-server dev-perl/UNIVERSAL-require dev-perl/Unix-Syslog dev-perl/XML-LibXML =www-servers/apache-2.2* dev-lang/perl:=[-build(-)]
-SLOT=0
+IUSE=postgres +sqlite
 SRC_URI=http://open-ils.org/downloads/opensrf-2.1.1.tar.gz
-_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	autotools	2264f05fbbbaaf83d34ec81e72b38ffd	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
-_md5_=20a1c65ee2d069b350aca342904b5780
+KEYWORDS=~x86 ~amd64
+HOMEPAGE=http://open-ils.org/
+RDEPEND=>=www-servers/apache-2.2.9 >=dev-db/libdbi-drivers-0.8.2 >=dev-db/libdbi-0.8.2 net-im/ejabberd dev-libs/libmemcache dev-perl/Cache-Memcached dev-perl/Class-DBI-AbstractSearch sqlite? ( dev-perl/DBD-SQLite ) postgres? ( dev-perl/DBD-Pg ) virtual/perl-Digest-MD5 dev-perl/JSON-XS dev-perl/net-server dev-perl/UNIVERSAL-require dev-perl/Unix-Syslog dev-perl/XML-LibXML =www-servers/apache-2.2* dev-lang/perl:=[-build(-)]

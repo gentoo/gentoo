@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/datashape/datashape-0.4.5.ebuild,v 1.1 2015/06/04 03:08:17 idella4 Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/laptop-mode-tools/laptop-mode-tools-1.67.ebuild,v 1.1 2015/07/03 15:42:12 alonbl Exp $
+# $Id$
 
 EAPI=5
 inherit eutils multilib systemd udev

@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Header: /var/cvsroot/gentoo-x86/net-misc/clockspeed/files/ntpclockset,v 1.4 2006/10/19 10:04:22 bangert Exp $
+# $Id$
 
 # Updates by Sascha Silbe
 

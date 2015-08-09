@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gnome-rdp/gnome-rdp-0.3.0.9.ebuild,v 1.1 2011/08/19 11:36:00 voyageur Exp $
+# $Id$
 
 EAPI=4
 

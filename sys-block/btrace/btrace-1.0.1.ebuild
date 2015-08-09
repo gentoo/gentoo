@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/btrace/btrace-1.0.1.ebuild,v 1.4 2014/08/10 20:21:30 slyfox Exp $
+# $Id$
 
 inherit eutils toolchain-funcs flag-o-matic linux-info
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/files/svscan.init,v 1.2 2008/04/06 16:52:40 hollow Exp $
+# $Id$
 
 depend() {
 	use net

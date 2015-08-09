@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival-freebsoft-utils/festival-freebsoft-utils-0.2.ebuild,v 1.10 2009/11/01 20:58:15 eva Exp $
+# $Id$
 
 DESCRIPTION="a collection of Festival functions for speech-dispatcher"
 HOMEPAGE="http://www.freebsoft.org/festival-freebsoft-utils"

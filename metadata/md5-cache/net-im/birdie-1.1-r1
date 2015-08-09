@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	gnome2	56d268cae832738430a9de86a5765fa1	cmake-utils	f474224ef49d530640a43a04ae94928e	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c507003523305b57861dc9ba0cdae1c
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+EAPI=5
 DEPEND=dev-db/sqlite:3 >=dev-libs/granite-0.2.1 dev-libs/json-glib dev-libs/libdbusmenu dev-libs/libgee:0 net-libs/libsoup:2.4 net-libs/rest:0.7 media-libs/libcanberra net-im/pidgin net-libs/webkit-gtk:3 >=x11-libs/gtk+-3.10:3 x11-libs/gtksourceview:3.0 x11-libs/libnotify x11-libs/libXtst || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 ) dev-util/ninja >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=Twitter client for Linux
-EAPI=5
-HOMEPAGE=http://birdieapp.github.io/
-IUSE=debug
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
-RDEPEND=dev-db/sqlite:3 >=dev-libs/granite-0.2.1 dev-libs/json-glib dev-libs/libdbusmenu dev-libs/libgee:0 net-libs/libsoup:2.4 net-libs/rest:0.7 media-libs/libcanberra net-im/pidgin net-libs/webkit-gtk:3 >=x11-libs/gtk+-3.10:3 x11-libs/gtksourceview:3.0 x11-libs/libnotify x11-libs/libXtst
-SLOT=0
+IUSE=debug
 SRC_URI=https://github.com/birdieapp/birdie/archive/1.1.tar.gz -> birdie-1.1.tar.gz
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	45882dc8beda2ffd09ad51fb3f22b669	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=74d92d47763b6206f4b5365b7b36f7a7
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://birdieapp.github.io/
+RDEPEND=dev-db/sqlite:3 >=dev-libs/granite-0.2.1 dev-libs/json-glib dev-libs/libdbusmenu dev-libs/libgee:0 net-libs/libsoup:2.4 net-libs/rest:0.7 media-libs/libcanberra net-im/pidgin net-libs/webkit-gtk:3 >=x11-libs/gtk+-3.10:3 x11-libs/gtksourceview:3.0 x11-libs/libnotify x11-libs/libXtst

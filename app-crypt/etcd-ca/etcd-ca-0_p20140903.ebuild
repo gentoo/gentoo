@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/etcd-ca/etcd-ca-0_p20140903.ebuild,v 1.1 2014/10/16 23:58:42 zmedico Exp $
+# $Id$
 
 EAPI=5
 

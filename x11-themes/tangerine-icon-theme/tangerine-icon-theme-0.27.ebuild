@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/tangerine-icon-theme/tangerine-icon-theme-0.27.ebuild,v 1.11 2015/06/04 19:06:19 kensington Exp $
+# $Id$
 
 EAPI=4
 inherit gnome2-utils

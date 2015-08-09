@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/blockdpy/blockdpy-1.ebuild,v 1.3 2014/08/10 20:01:25 slyfox Exp $
+# $Id$
 
 inherit toolchain-funcs
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/trac-accountmanager/trac-accountmanager-0.3_p9766.ebuild,v 1.1 2011/01/14 22:20:53 rafaelmartins Exp $
+# $Id$
 
 EAPI=3
 

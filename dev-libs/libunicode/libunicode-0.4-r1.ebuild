@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunicode/libunicode-0.4-r1.ebuild,v 1.35 2011/03/19 20:22:42 mr_bones_ Exp $
+# $Id$
 
 EAPI=3
 inherit autotools toolchain-funcs

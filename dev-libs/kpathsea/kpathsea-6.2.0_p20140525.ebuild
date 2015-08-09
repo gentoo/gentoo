@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/kpathsea/kpathsea-6.2.0_p20140525.ebuild,v 1.4 2015/07/22 19:14:08 blueness Exp $
+# $Id$
 
 EAPI=5
 

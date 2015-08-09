@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-8.20.ebuild,v 1.12 2013/01/01 18:55:02 armin76 Exp $
+# $Id$
 
 EAPI="3"
 

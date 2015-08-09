@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/xtide/xtide-2.13.ebuild,v 1.4 2013/10/27 08:39:43 hasufell Exp $
+# $Id$
 
 EAPI=5
 

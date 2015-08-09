@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/python-x2go/python-x2go-0.5.0.3.ebuild,v 1.1 2015/02/03 12:38:18 voyageur Exp $
+# $Id$
 
 EAPI=5
 

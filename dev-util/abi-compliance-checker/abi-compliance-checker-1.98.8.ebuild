@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/abi-compliance-checker/abi-compliance-checker-1.98.8.ebuild,v 1.1 2013/02/11 10:04:28 mgorny Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/mix-mplus-ipa/mix-mplus-ipa-20111002.ebuild,v 1.1 2012/01/22 10:40:37 matsuu Exp $
+# $Id$
 
 EAPI="4"
 inherit font

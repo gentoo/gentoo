@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/tvision/tvision-2.1.0_pre2-r3.ebuild,v 1.4 2012/06/14 03:05:45 jdhore Exp $
+# $Id$
 
 inherit eutils multilib
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/libinklevel/libinklevel-0.8.0-r1.ebuild,v 1.5 2012/05/21 19:19:29 xarthisius Exp $
+# $Id$
 
 EAPI="2"
 

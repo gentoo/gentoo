@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xfe/xfe-1.40.ebuild,v 1.5 2015/04/30 05:39:37 jer Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-image/vdr-image-0.4.0.ebuild,v 1.1 2015/02/08 11:00:57 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

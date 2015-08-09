@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/dir2ogg/dir2ogg-0.11.6.ebuild,v 1.6 2014/08/10 21:05:20 slyfox Exp $
+# $Id$
 
 inherit versionator
 

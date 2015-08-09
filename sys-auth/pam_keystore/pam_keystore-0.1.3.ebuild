@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_keystore/pam_keystore-0.1.3.ebuild,v 1.2 2014/05/08 22:29:04 vapier Exp $
+# $Id$
 
 inherit pam toolchain-funcs
 

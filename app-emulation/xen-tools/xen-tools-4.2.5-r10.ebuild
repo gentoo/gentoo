@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/xen-tools-4.2.5-r10.ebuild,v 1.2 2015/08/05 11:46:33 zlogene Exp $
+# $Id$
 
 EAPI=5
 

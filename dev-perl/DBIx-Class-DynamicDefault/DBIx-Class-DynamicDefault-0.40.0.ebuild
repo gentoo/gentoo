@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBIx-Class-DynamicDefault/DBIx-Class-DynamicDefault-0.40.0.ebuild,v 1.2 2014/10/12 15:31:29 zlogene Exp $
+# $Id$
 
 EAPI=5
 

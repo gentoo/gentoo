@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/path64/path64-1.0.0_pre20111108.ebuild,v 1.1 2011/11/08 12:25:28 xarthisius Exp $
+# $Id$
 
 EAPI=4
 CMAKE_VERBOSE=1

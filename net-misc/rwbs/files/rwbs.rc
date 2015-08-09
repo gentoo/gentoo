@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rwbs/files/rwbs.rc,v 1.4 2012/06/25 17:32:32 jlec Exp $
+# $Id$
 
 depend() {
 	need net

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/iedera/iedera-1.04.ebuild,v 1.1 2010/06/18 05:53:32 weaver Exp $
+# $Id$
 
 EAPI="2"
 

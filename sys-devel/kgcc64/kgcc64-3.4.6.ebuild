@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/kgcc64/kgcc64-3.4.6.ebuild,v 1.12 2014/09/17 08:20:33 jer Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rbpdf/rbpdf-1.18.6-r1.ebuild,v 1.1 2015/07/03 21:50:17 mjo Exp $
+# $Id$
 
 EAPI=5
 

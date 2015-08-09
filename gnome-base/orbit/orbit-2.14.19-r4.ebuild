@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/orbit-2.14.19-r4.ebuild,v 1.9 2014/10/11 13:35:50 maekke Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="yes"

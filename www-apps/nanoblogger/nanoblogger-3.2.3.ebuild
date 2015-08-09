@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/nanoblogger/nanoblogger-3.2.3.ebuild,v 1.12 2011/10/02 05:07:58 radhermit Exp $
+# $Id$
 
 inherit bash-completion-r1
 

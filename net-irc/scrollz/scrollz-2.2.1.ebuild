@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/scrollz/scrollz-2.2.1.ebuild,v 1.6 2012/08/23 14:37:38 xmw Exp $
+# $Id$
 
 EAPI=4
 

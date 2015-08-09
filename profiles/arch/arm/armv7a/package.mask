@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/armv7a/package.mask,v 1.1 2015/05/24 12:48:51 chewi Exp $
+# $Id$
 
 # James Le Cuirot <chewi@gentoo.org> (24 May 2015)
 # This is built for armv7a so unmask against the wider arm mask.

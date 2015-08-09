@@ -63,7 +63,7 @@ Fix implicit function declarations
 --- libncdap3/ncdap3.c
 +++ libncdap3/ncdap3.c
 @@ -4,6 +4,7 @@
-  *   $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/files/netcdf-4.1.1-implicits.patch,v 1.2 2010/12/05 11:38:45 xarthisius Exp $
+  *   $Id$
   *********************************************************************/
  #include "config.h"
 +#include "netcdf3.h"

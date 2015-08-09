@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nbtscan/nbtscan-1.5.1-r3.ebuild,v 1.5 2014/08/27 12:29:40 ago Exp $
+# $Id$
 
 EAPI=5
 

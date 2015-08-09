@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-skinelchi/files/rc-addon-0.1.1_pre2-r1.sh,v 1.2 2007/04/17 12:41:15 zzam Exp $
+# $Id$
 #
 # rc-addon plugin-startup-skript for vdr-skinelchi
 #

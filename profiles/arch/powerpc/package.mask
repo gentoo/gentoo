@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/package.mask,v 1.67 2015/05/16 19:57:41 jer Exp $
+# $Id$
 
 # Julian Ospald <hasufell@gentoo.org> (01 Sep 2014)
 # Needs either hardmasked >=media-video/libav-10 or

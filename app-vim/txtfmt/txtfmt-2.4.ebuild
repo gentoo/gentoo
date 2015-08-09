@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/txtfmt/txtfmt-2.4.ebuild,v 1.1 2011/05/20 08:23:13 radhermit Exp $
+# $Id$
 
 EAPI=4
 VIM_PLUGIN_VIM_VERSION="7.2"

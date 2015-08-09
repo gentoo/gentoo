@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/freeipmi/freeipmi-1.4.3.ebuild,v 1.2 2014/06/14 18:36:25 flameeyes Exp $
+# $Id$
 
 EAPI=5
 

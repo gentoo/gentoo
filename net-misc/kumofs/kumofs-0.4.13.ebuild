@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/kumofs/kumofs-0.4.13.ebuild,v 1.2 2012/04/23 17:33:22 mgorny Exp $
+# $Id$
 
 EAPI="3"
 

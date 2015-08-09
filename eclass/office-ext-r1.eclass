@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/office-ext-r1.eclass,v 1.4 2013/03/29 10:02:23 scarabeus Exp $
+# $Id$
 
 # @ECLASS: office-ext-r1.eclass
 # @MAINTAINER:

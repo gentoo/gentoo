@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/myster/myster-8.0-r1.ebuild,v 1.2 2007/12/27 08:17:14 cla Exp $
+# $Id$
 
 inherit java-pkg-2
 

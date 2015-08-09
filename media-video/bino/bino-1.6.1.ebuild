@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/bino/bino-1.6.1.ebuild,v 1.2 2015/02/27 22:24:32 mgorny Exp $
+# $Id$
 
 EAPI=5
 

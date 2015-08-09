@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libwnck/libwnck-2.31.0.ebuild,v 1.13 2015/06/20 11:27:21 pacho Exp $
+# $Id$
 
 EAPI=5
 GNOME2_LA_PUNT="yes"

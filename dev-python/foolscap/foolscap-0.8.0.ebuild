@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/foolscap/foolscap-0.8.0.ebuild,v 1.1 2015/06/16 05:06:18 idella4 Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/asn1-data/asn1-data-0.7.1.ebuild,v 1.3 2013/11/24 19:36:18 ago Exp $
+# $Id$
 
 EAPI=4
 

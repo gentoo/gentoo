@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/coccinella/coccinella-0.96.20.ebuild,v 1.2 2014/08/05 18:34:19 mrueg Exp $
+# $Id$
 
 EAPI=4
 inherit eutils fdo-mime

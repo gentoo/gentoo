@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/arm/package.mask,v 1.2 2009/07/31 09:56:01 ssuominen Exp $
+# $Id$
 
 # Segfaults, bug #193597
 >=net-proxy/squid-3

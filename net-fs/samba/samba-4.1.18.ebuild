@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-4.1.18.ebuild,v 1.4 2015/06/28 03:34:52 patrick Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

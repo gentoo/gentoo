@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/yaps/yaps-0.96-r5.ebuild,v 1.4 2014/09/15 08:56:17 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/open-iscsi-2.0.872-r3.ebuild,v 1.2 2015/08/06 03:09:28 prometheanfire Exp $
+# $Id$
 
 EAPI=2
 inherit versionator linux-info eutils flag-o-matic toolchain-funcs

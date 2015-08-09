@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/aix/make.defaults,v 1.7 2015/01/12 21:26:32 haubi Exp $
+# $Id$
 
 # System-wide defaults for all AIX profiles
 # This file should rarely need to be changed

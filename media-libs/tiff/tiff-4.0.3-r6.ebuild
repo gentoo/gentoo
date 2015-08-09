@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/tiff/tiff-4.0.3-r6.ebuild,v 1.13 2014/06/18 19:58:32 mgorny Exp $
+# $Id$
 
 EAPI=5
 inherit eutils libtool multilib-minimal

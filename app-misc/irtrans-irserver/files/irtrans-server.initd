@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/irtrans-irserver/files/irtrans-server.initd,v 1.2 2007/12/06 19:09:31 hd_brummy Exp $
+# $Id$
 
 depend() {
 	need net

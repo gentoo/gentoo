@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-lv/myspell-lv-1.1.0.ebuild,v 1.1 2015/05/27 19:25:02 mrueg Exp $
+# $Id$
 
 EAPI=5
 

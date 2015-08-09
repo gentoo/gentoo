@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/doxymacs/doxymacs-1.8.0-r3.ebuild,v 1.5 2014/06/07 11:08:58 ulm Exp $
+# $Id$
 
 EAPI=5
 

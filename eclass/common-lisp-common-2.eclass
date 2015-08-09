@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/common-lisp-common-2.eclass,v 1.5 2012/06/02 19:16:31 zmedico Exp $
+# $Id$
 #
 # Author Matthew Kennedy <mkennedy@gentoo.org>
 #

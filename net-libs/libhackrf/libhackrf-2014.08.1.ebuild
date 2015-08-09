@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libhackrf/libhackrf-2014.08.1.ebuild,v 1.1 2014/08/28 20:15:57 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

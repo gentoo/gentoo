@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/openrc/openrc-0.16.ebuild,v 1.1 2015/05/12 00:42:48 williamh Exp $
+# $Id$
 
 EAPI=5
 

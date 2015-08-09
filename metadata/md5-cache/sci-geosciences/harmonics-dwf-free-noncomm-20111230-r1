@@ -1,9 +1,10 @@
-DEFINED_PHASES=install
-DESCRIPTION=Tidal harmonics database for libtcd
-EAPI=5
-HOMEPAGE=http://www.flaterco.com/xtide/
-KEYWORDS=amd64 x86
-LICENSE=free-noncomm
+_eclasses_=
+_md5_=fd8e58b48e0617a5eb0af03c4d5e1cdd
 SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DESCRIPTION=Tidal harmonics database for libtcd
+LICENSE=free-noncomm
 SRC_URI=ftp://ftp.flaterco.com/xtide/harmonics-dwf-20111230-nonfree.tar.bz2
-_md5_=a50484ef72756b9f89fd28e8bd912a68
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.flaterco.com/xtide/

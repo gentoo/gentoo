@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=c59d0b8c9d4b1eeb48a1737299376ae6
+SLOT=6.5.9
 DEFINED_PHASES=install postinst prerm setup
+EAPI=2
 DEPEND=>=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,tokenizer,ldap?,mssql?,mysql?,mysqli?,zlib?,curl?,imap?,json?] dev-php/PEAR-DB dev-php/PEAR-Cache_Lite dev-php/PEAR-Mail_Mime virtual/httpd-cgi freetds? ( >=dev-db/freetds-0.64 mssql? ( >=dev-db/freetds-0.64[mssql] ) ) app-arch/unzip >=app-admin/webapp-config-1.50.15
 DESCRIPTION=A complete CRM and groupware system for businesses of all sizes
-EAPI=2
-HOMEPAGE=http://www.sugarforge.org/
-IUSE=curl imap +json +zlib +mysql +mysqli freetds ldap mssql vhosts
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=>=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,tokenizer,ldap?,mssql?,mysql?,mysqli?,zlib?,curl?,imap?,json?] dev-php/PEAR-DB dev-php/PEAR-Cache_Lite dev-php/PEAR-Mail_Mime virtual/httpd-cgi freetds? ( >=dev-db/freetds-0.64 mssql? ( >=dev-db/freetds-0.64[mssql] ) ) app-arch/unzip >=app-admin/webapp-config-1.50.15
-SLOT=6.5.9
+IUSE=curl imap +json +zlib +mysql +mysqli freetds ldap mssql vhosts
 SRC_URI=mirror://sourceforge/project/sugarcrm/1%20-%20SugarCRM%206.5.X/SugarCommunityEdition-6.5.X/SugarCE-6.5.9.zip
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	094698bf1c7a5b1acd3184e94f484017
-_md5_=2d02d9a99ba88927da58d2a6da55ccc2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.sugarforge.org/
+RDEPEND=>=dev-lang/php-5.2.10[ssl,soap,unicode,xml,session,tokenizer,ldap?,mssql?,mysql?,mysqli?,zlib?,curl?,imap?,json?] dev-php/PEAR-DB dev-php/PEAR-Cache_Lite dev-php/PEAR-Mail_Mime virtual/httpd-cgi freetds? ( >=dev-db/freetds-0.64 mssql? ( >=dev-db/freetds-0.64[mssql] ) ) app-arch/unzip >=app-admin/webapp-config-1.50.15

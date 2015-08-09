@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/substract_wave/substract_wave-0.3-r1.ebuild,v 1.1 2011/04/26 13:02:50 angelos Exp $
+# $Id$
 
 EAPI=2
 inherit eutils toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jffi/jffi-1.2.6.ebuild,v 1.2 2013/09/01 14:39:19 grobian Exp $
+# $Id$
 
 EAPI="5"
 

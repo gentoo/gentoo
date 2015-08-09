@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/apptools/apptools-4.2.0-r1.ebuild,v 1.2 2014/06/27 02:17:24 floppym Exp $
+# $Id$
 
 EAPI=5
 

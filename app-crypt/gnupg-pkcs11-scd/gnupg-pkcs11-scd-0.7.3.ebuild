@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg-pkcs11-scd/gnupg-pkcs11-scd-0.7.3.ebuild,v 1.3 2014/03/01 22:27:46 mgorny Exp $
+# $Id$
 
 EAPI="4"
 

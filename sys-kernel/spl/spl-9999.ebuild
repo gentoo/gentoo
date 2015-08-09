@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/spl/spl-9999.ebuild,v 1.46 2015/05/15 18:25:55 blueness Exp $
+# $Id$
 
 EAPI="4"
 AUTOTOOLS_AUTORECONF="1"

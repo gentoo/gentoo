@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/srecord/srecord-1.64.ebuild,v 1.1 2014/12/04 02:35:03 radhermit Exp $
+# $Id$
 
 EAPI=5
 

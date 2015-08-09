@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/silc-toolkit/silc-toolkit-1.1.10.ebuild,v 1.11 2014/08/05 18:34:08 mrueg Exp $
+# $Id$
 
 EAPI=4
 

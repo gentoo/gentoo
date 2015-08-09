@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/vmware_guest.desc,v 1.1 2011/03/27 14:57:17 vadimk Exp $
+# $Id$
 
 # This file contains descriptions of VMWARE_GUEST USE_EXPAND flags.
 

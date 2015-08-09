@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/quixote/quixote-2.8.ebuild,v 1.4 2015/01/28 10:33:20 ago Exp $
+# $Id$
 
 EAPI=5
 # Appears to be written only for py2

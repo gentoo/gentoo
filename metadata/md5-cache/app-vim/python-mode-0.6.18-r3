@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	vim-plugin	222d094e412102a0169617b4d68b6250	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c8d5284f441cc1cce91a563a60486aee
+SLOT=0
 DEFINED_PHASES=install postinst postrm prepare
+EAPI=5
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=Provide python code looking for bugs, refactoring and other useful things
-EAPI=5
-HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3770 https://github.com/klen/python-mode
-KEYWORDS=amd64 x86
 LICENSE=LGPL-3
-RDEPEND=dev-python/astng dev-python/autopep8 dev-python/pyflakes dev-python/pylint dev-python/rope dev-python/ropemode || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
-SLOT=0
 SRC_URI=https://github.com/klen/python-mode/archive/0.6.18.tar.gz -> python-mode-0.6.18.tar.gz
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
-_md5_=d88418ddee9df2fb69abfc5e94afe4e2
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3770 https://github.com/klen/python-mode
+RDEPEND=dev-python/astng dev-python/autopep8 dev-python/pyflakes dev-python/pylint dev-python/rope dev-python/ropemode || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )

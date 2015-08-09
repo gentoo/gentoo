@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/adiff/adiff-1.4.ebuild,v 1.9 2010/12/28 15:34:09 ranger Exp $
+# $Id$
 
 DESCRIPTION="wordwise diff"
 HOMEPAGE="http://agriffis.n01se.net/adiff/"

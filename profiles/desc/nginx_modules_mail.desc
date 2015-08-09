@@ -1,6 +1,6 @@
 # Copyright 2010 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/nginx_modules_mail.desc,v 1.1 2010/03/07 10:37:51 hollow Exp $
+# $Id$
 
 # This file contains descriptions of NGINX_MODULES_MAIL USE_EXPAND flags.
 

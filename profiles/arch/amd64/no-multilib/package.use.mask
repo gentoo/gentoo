@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/package.use.mask,v 1.17 2015/06/27 18:03:08 tetromino Exp $
+# $Id$
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (24 Jun 2012)
 # Disable 32-bit parts of wine, bug #351436

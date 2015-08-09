@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_dotfile/pam_dotfile-0.7-r2.ebuild,v 1.4 2013/05/20 08:25:37 ago Exp $
+# $Id$
 
 EAPI=5
 

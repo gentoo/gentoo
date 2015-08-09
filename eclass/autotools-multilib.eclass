@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools-multilib.eclass,v 1.23 2014/05/02 16:16:37 mgorny Exp $
+# $Id$
 
 # @ECLASS: autotools-multilib.eclass
 # @MAINTAINER:

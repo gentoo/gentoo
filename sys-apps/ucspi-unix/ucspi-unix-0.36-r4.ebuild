@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-unix/ucspi-unix-0.36-r4.ebuild,v 1.1 2010/01/14 18:20:45 bangert Exp $
+# $Id$
 
 EAPI="2"
 

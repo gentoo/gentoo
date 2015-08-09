@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/amd64/package.use.mask,v 1.5 2015/06/01 16:54:49 kensington Exp $
+# $Id$
 
 # Mike Frysinger <vapier@gentoo.org> (21 Oct 2014)
 # This target supports ASAN/etc... #504200.

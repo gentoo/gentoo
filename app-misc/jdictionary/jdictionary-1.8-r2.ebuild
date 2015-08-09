@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jdictionary/jdictionary-1.8-r2.ebuild,v 1.6 2007/12/09 13:54:27 nelchael Exp $
+# $Id$
 
 inherit java-pkg-2 eutils
 

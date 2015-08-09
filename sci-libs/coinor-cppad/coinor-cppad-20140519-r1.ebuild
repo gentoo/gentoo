@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-cppad/coinor-cppad-20140519-r1.ebuild,v 1.1 2014/10/31 09:08:43 jlec Exp $
+# $Id$
 
 EAPI=5
 

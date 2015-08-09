@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=384a9f12c04199770c7fc12f06cd4d7f
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test
+EAPI=5
 DEPEND=x11-libs/libSM x11-libs/libXext virtual/glu virtual/opengl asio? ( dev-cpp/asio ) curl? ( net-misc/curl ) examples? ( fltk? ( x11-libs/fltk:1[opengl] ) fox? ( x11-libs/fox:1.6[opengl] ) glut? ( media-libs/freeglut ) gtk? ( x11-libs/gtkglext ) sdl? ( media-libs/libsdl ) wxwidgets? ( x11-libs/wxGTK[opengl,X] ) ) ffmpeg? ( virtual/ffmpeg ) gdal? ( sci-libs/gdal ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) openexr? ( media-libs/ilmbase media-libs/openexr ) openinventor? ( media-libs/coin ) pdf? ( app-text/poppler[cairo] ) png? ( media-libs/libpng:0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 ) svg? ( gnome-base/librsvg x11-libs/cairo ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype:2 ) vnc? ( net-libs/libvncserver ) xine? ( media-libs/xine-lib ) xrandr? ( x11-libs/libXrandr ) zlib? ( sys-libs/zlib ) app-arch/unzip virtual/pkgconfig x11-proto/xextproto doc? ( app-doc/doxygen ) xrandr? ( x11-proto/randrproto ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Open source high performance 3D graphics toolkit
-EAPI=5
-HOMEPAGE=http://www.openscenegraph.org/projects/osg/
-IUSE=asio curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k openexr openinventor osgapps pdf png qt4 qt5 sdl svg tiff truetype vnc wxwidgets xine xrandr zlib
-KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=wxWinLL-3 LGPL-2.1
-RDEPEND=x11-libs/libSM x11-libs/libXext virtual/glu virtual/opengl asio? ( dev-cpp/asio ) curl? ( net-misc/curl ) examples? ( fltk? ( x11-libs/fltk:1[opengl] ) fox? ( x11-libs/fox:1.6[opengl] ) glut? ( media-libs/freeglut ) gtk? ( x11-libs/gtkglext ) sdl? ( media-libs/libsdl ) wxwidgets? ( x11-libs/wxGTK[opengl,X] ) ) ffmpeg? ( virtual/ffmpeg ) gdal? ( sci-libs/gdal ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) openexr? ( media-libs/ilmbase media-libs/openexr ) openinventor? ( media-libs/coin ) pdf? ( app-text/poppler[cairo] ) png? ( media-libs/libpng:0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 ) svg? ( gnome-base/librsvg x11-libs/cairo ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype:2 ) vnc? ( net-libs/libvncserver ) xine? ( media-libs/xine-lib ) xrandr? ( x11-libs/libXrandr ) zlib? ( sys-libs/zlib )
+IUSE=asio curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k openexr openinventor osgapps pdf png qt4 qt5 sdl svg tiff truetype vnc wxwidgets xine xrandr zlib
 REQUIRED_USE=qt4? ( !qt5 ) qt5? ( !qt4 )
-SLOT=0
 SRC_URI=http://www.openscenegraph.org/downloads/developer_releases/OpenSceneGraph-3.2.1.zip
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
-_md5_=b79e7f5b788e2dfe49829f256cf8488a
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://www.openscenegraph.org/projects/osg/
+RDEPEND=x11-libs/libSM x11-libs/libXext virtual/glu virtual/opengl asio? ( dev-cpp/asio ) curl? ( net-misc/curl ) examples? ( fltk? ( x11-libs/fltk:1[opengl] ) fox? ( x11-libs/fox:1.6[opengl] ) glut? ( media-libs/freeglut ) gtk? ( x11-libs/gtkglext ) sdl? ( media-libs/libsdl ) wxwidgets? ( x11-libs/wxGTK[opengl,X] ) ) ffmpeg? ( virtual/ffmpeg ) gdal? ( sci-libs/gdal ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) openexr? ( media-libs/ilmbase media-libs/openexr ) openinventor? ( media-libs/coin ) pdf? ( app-text/poppler[cairo] ) png? ( media-libs/libpng:0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 ) svg? ( gnome-base/librsvg x11-libs/cairo ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype:2 ) vnc? ( net-libs/libvncserver ) xine? ( media-libs/xine-lib ) xrandr? ( x11-libs/libXrandr ) zlib? ( sys-libs/zlib )

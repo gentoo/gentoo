@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/the_silver_searcher/the_silver_searcher-0.29.1.ebuild,v 1.2 2015/03/21 06:47:28 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit autotools bash-completion-r1

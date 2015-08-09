@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/http-replicator/http-replicator-3.0-r4.ebuild,v 1.6 2015/03/21 20:09:06 jlec Exp $
+# $Id$
 
 EAPI=4
 PYTHON_DEPEND="2:2.7:2.7" # not 2.6 bug #33907, not 3.0 bug #411083

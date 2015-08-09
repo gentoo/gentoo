@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/dar/dar-2.4.17.ebuild,v 1.1 2015/02/08 15:18:15 rich0 Exp $
+# $Id$
 
 EAPI="5"
 inherit confutils eutils flag-o-matic

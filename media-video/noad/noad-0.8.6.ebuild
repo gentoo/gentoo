@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/noad/noad-0.8.6.ebuild,v 1.2 2014/10/27 16:57:11 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils toolchain-funcs confutils

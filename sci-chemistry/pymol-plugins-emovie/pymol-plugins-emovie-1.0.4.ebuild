@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol-plugins-emovie/pymol-plugins-emovie-1.0.4.ebuild,v 1.2 2010/02/28 13:50:41 arfrever Exp $
+# $Id$
 
 EAPI="3"
 

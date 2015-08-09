@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxsettings-client/libxsettings-client-0.17.ebuild,v 1.9 2013/01/05 12:31:09 armin76 Exp $
+# $Id$
 
 GPE_TARBALL_SUFFIX="bz2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ocrad/ocrad-0.22.ebuild,v 1.5 2014/05/14 14:41:20 ago Exp $
+# $Id$
 
 EAPI=5
 inherit unpacker toolchain-funcs

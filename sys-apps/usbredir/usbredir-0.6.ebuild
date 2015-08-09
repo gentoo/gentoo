@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbredir/usbredir-0.6.ebuild,v 1.15 2014/01/15 12:54:33 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils flag-o-matic

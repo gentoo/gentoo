@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/mbtpdfasm/mbtpdfasm-1.0.28-r1.ebuild,v 1.3 2014/08/10 18:26:52 slyfox Exp $
+# $Id$
 
 EAPI="2"
 

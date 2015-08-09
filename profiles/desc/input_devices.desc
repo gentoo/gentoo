@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/input_devices.desc,v 1.14 2015/03/09 00:12:01 idella4 Exp $
+# $Id$
 
 # This file contains descriptions of INPUT_DEVICES USE_EXPAND flags.
 

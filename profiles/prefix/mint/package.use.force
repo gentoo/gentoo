@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/mint/package.use.force,v 1.2 2011/05/29 18:02:46 grobian Exp $
+# $Id$
 
 #364789
 app-arch/libarchive static static-libs

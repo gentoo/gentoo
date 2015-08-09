@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/i18n/i18n-0.6.9-r1.ebuild,v 1.6 2014/12/31 12:18:07 graaff Exp $
+# $Id$
 
 EAPI=5
 

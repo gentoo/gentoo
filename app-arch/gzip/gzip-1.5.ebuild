@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/gzip/gzip-1.5.ebuild,v 1.9 2014/01/18 01:18:08 vapier Exp $
+# $Id$
 
 inherit eutils flag-o-matic unpacker
 

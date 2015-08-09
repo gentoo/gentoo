@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/afb-ucode/afb-ucode-1.3.11.ebuild,v 1.3 2014/07/22 20:31:03 mrueg Exp $
+# $Id$
 
 inherit multilib
 

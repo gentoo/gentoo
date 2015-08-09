@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/cpdup/cpdup-1.18.ebuild,v 1.1 2014/04/23 10:00:27 naota Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

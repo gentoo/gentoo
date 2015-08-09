@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gnonlin/gnonlin-0.10.9.ebuild,v 1.6 2015/01/29 10:51:19 pacho Exp $
+# $Id$
 
 EAPI="4"
 

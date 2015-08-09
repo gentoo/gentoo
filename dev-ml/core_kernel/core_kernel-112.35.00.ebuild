@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/core_kernel/core_kernel-112.35.00.ebuild,v 1.1 2015/07/13 18:12:46 aballier Exp $
+# $Id$
 
 EAPI="5"
 

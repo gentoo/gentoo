@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/blowfishj/blowfishj-2.14-r2.ebuild,v 1.4 2015/03/29 17:54:22 zlogene Exp $
+# $Id$
 
 EAPI=5
 

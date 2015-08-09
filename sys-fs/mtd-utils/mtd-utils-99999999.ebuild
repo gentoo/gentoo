@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtd-utils/mtd-utils-99999999.ebuild,v 1.12 2013/02/21 00:03:43 zmedico Exp $
+# $Id$
 
 EAPI="4"
 

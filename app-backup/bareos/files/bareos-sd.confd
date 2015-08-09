@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bareos/files/bareos-sd.confd,v 1.1 2013/10/21 21:52:50 mschiff Exp $
+# $Id$
 
 # Config file for /etc/init.d/bareos-sd
 

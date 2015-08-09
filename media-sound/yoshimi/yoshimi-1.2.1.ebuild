@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/yoshimi/yoshimi-1.2.1.ebuild,v 1.1 2014/06/20 07:14:10 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit eutils cmake-utils

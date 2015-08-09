@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-net-ldap/ruby-net-ldap-0.8.0.ebuild,v 1.1 2014/09/11 23:47:06 mrueg Exp $
+# $Id$
 
 EAPI=5
 # jruby: requires ruby 1.9 compatibility

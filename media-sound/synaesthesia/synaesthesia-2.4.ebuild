@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/synaesthesia/synaesthesia-2.4.ebuild,v 1.7 2012/03/18 12:42:17 ssuominen Exp $
+# $Id$
 
 EAPI=2
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-hppa64/binutils-hppa64-2.25.1.ebuild,v 1.1 2015/08/08 08:27:26 jer Exp $
+# $Id$
 
 EAPI="4"
 

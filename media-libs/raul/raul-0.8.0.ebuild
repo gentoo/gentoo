@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/raul/raul-0.8.0.ebuild,v 1.7 2014/08/10 21:11:40 slyfox Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/zip-archive/zip-archive-0.2.3.7.ebuild,v 1.2 2015/08/04 20:12:33 slyfox Exp $
+# $Id$
 
 EAPI=5
 

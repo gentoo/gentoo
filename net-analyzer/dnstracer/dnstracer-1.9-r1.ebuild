@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dnstracer/dnstracer-1.9-r1.ebuild,v 1.2 2013/04/08 18:07:57 jer Exp $
+# $Id$
 
 EAPI=5
 

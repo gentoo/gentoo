@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gartoon/gartoon-0.5-r2.ebuild,v 1.6 2009/07/18 22:33:46 ssuominen Exp $
+# $Id$
 
 EAPI=2
 

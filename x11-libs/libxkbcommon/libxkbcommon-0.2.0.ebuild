@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxkbcommon/libxkbcommon-0.2.0.ebuild,v 1.2 2013/04/21 19:25:45 chithanh Exp $
+# $Id$
 
 EAPI=5
 XORG_EAUTORECONF="yes"

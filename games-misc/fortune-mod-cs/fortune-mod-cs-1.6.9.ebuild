@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-cs/fortune-mod-cs-1.6.9.ebuild,v 1.11 2015/02/04 17:43:32 tupone Exp $
+# $Id$
 EAPI=5
 DESCRIPTION="Database of the Czech and Slovak cookies for the fortune(6) program"
 HOMEPAGE="http://ftp.fi.muni.cz/pub/linux/people/zdenek_pytela/"

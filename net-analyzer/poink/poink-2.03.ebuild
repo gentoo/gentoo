@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/poink/poink-2.03.ebuild,v 1.9 2011/08/26 20:21:52 flameeyes Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

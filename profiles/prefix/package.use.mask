@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/package.use.mask,v 1.24 2014/12/15 20:52:04 redlizard Exp $
+# $Id$
 
 # Mikle Kolyada <zlogene@gentoo.org> (29 Nov 2014)
 # Masked because of lack of manpower/time (bug #497068)

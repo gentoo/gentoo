@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rdate/files/rdate-confd,v 1.1 2005/05/17 21:19:07 robbat2 Exp $
+# $Id$
 
 # the NTP server to get the date from
 RDATE_SERVER="pool.ntp.org"

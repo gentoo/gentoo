@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/rgmanager-2.03.09.ebuild,v 1.2 2009/02/10 22:48:36 xmerlin Exp $
+# $Id$
 
 inherit eutils versionator
 

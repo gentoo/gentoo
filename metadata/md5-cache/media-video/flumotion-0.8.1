@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python	6d7be3e54573292f012e3cc433d8297	virtualx	7d550983f9b6adb3e7091f4090ddae2f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5faad0f471dd2fbd8e8a91dac9867441
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare test
+EAPI=3
 DEPEND=dev-python/gst-python:0.10 dev-python/kiwi dev-python/pycairo =dev-python/pygtk-2* dev-python/twisted-core media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-plugins/gst-plugins-ogg:0.10 media-plugins/gst-plugins-theora:0.10 media-plugins/gst-plugins-vorbis:0.10 sys-devel/gettext doc? ( dev-python/epydoc ) test? ( dev-python/icalendar dev-python/pychecker dev-python/twisted-conch ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Flumotion Streaming server
-EAPI=3
-HOMEPAGE=http://www.flumotion.net/
-IUSE=doc test test
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-python/gst-python:0.10 dev-python/kiwi dev-python/pycairo =dev-python/pygtk-2* dev-python/twisted-core media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-plugins/gst-plugins-ogg:0.10 media-plugins/gst-plugins-theora:0.10 media-plugins/gst-plugins-vorbis:0.10 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
-SLOT=0
+IUSE=doc test test
 SRC_URI=http://www.flumotion.net/src/flumotion/flumotion-0.8.1.tar.bz2
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	virtualx	73cfc129b4b9ba23aed1abb10c825d86
-_md5_=94674b5db204b58360558694d444ca68
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.flumotion.net/
+RDEPEND=dev-python/gst-python:0.10 dev-python/kiwi dev-python/pycairo =dev-python/pygtk-2* dev-python/twisted-core media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-plugins/gst-plugins-ogg:0.10 media-plugins/gst-plugins-theora:0.10 media-plugins/gst-plugins-vorbis:0.10 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )

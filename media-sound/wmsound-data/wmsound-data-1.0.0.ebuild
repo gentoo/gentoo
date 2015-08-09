@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wmsound-data/wmsound-data-1.0.0.ebuild,v 1.7 2009/08/03 13:13:13 ssuominen Exp $
+# $Id$
 
 IUSE=""
 

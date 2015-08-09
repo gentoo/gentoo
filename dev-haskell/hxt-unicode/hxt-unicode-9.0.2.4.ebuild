@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt-unicode/hxt-unicode-9.0.2.4.ebuild,v 1.1 2015/04/04 09:02:59 gienah Exp $
+# $Id$
 
 EAPI=5
 

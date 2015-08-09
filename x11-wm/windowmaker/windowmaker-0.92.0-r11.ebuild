@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/windowmaker-0.92.0-r11.ebuild,v 1.11 2015/05/27 20:24:52 pacho Exp $
+# $Id$
 EAPI=3
 
 inherit autotools eutils flag-o-matic

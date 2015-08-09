@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.0_p22.ebuild,v 1.2 2014/10/20 05:02:36 vapier Exp $
+# $Id$
 
 EAPI="4"
 

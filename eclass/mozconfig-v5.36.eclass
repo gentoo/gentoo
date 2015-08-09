@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v5.36.eclass,v 1.2 2015/04/25 09:13:40 polynomial-c Exp $
+# $Id$
 #
 # @ECLASS: mozconfig-v5.33.eclass
 # @MAINTAINER:

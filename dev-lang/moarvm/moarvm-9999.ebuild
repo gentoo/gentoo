@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/moarvm/moarvm-9999.ebuild,v 1.4 2014/04/02 04:50:32 patrick Exp $
+# $Id$
 
 EAPI=5
 

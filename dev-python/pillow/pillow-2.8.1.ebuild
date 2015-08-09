@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pillow/pillow-2.8.1.ebuild,v 1.12 2015/07/22 15:24:29 zlogene Exp $
+# $Id$
 
 EAPI=5
 

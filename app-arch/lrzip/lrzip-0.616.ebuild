@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/lrzip/lrzip-0.616.ebuild,v 1.5 2014/07/21 19:08:46 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

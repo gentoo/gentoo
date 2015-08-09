@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-authlib/files/courier-authlib-r1,v 1.1 2010/10/10 18:35:37 hanno Exp $
+# $Id$
 
 depend() {
 	need net

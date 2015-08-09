@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmaiload/wmmaiload-2.2.1-r1.ebuild,v 1.12 2014/08/10 20:07:24 slyfox Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

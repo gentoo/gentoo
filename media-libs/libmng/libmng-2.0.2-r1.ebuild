@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmng/libmng-2.0.2-r1.ebuild,v 1.14 2015/03/03 08:44:13 dlan Exp $
+# $Id$
 
 EAPI=5
 inherit eutils autotools-multilib

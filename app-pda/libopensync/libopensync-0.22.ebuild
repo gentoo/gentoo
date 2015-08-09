@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync/libopensync-0.22.ebuild,v 1.20 2012/05/03 20:21:00 jdhore Exp $
+# $Id$
 
 inherit eutils
 

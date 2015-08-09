@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/microcode-ctl/microcode-ctl-1.27.ebuild,v 1.1 2015/01/22 08:28:00 polynomial-c Exp $
+# $Id$
 
 EAPI="5"
 

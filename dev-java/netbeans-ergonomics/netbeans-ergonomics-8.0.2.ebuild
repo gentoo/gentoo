@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/netbeans-ergonomics/netbeans-ergonomics-8.0.2.ebuild,v 1.4 2015/05/21 09:51:20 ago Exp $
+# $Id$
 
 EAPI="4"
 inherit eutils java-pkg-2 java-ant-2

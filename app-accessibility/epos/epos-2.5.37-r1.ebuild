@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/epos/epos-2.5.37-r1.ebuild,v 1.17 2013/03/03 07:10:10 dirtyepic Exp $
+# $Id$
 
 EAPI="4"
 

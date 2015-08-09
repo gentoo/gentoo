@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/razercfg/files/razerd.init.d,v 1.1 2011/08/17 18:39:36 joker Exp $
+# $Id$
 
 depend() {
 	use logger

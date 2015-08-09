@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyclamav/pyclamav-0.4.1-r1.ebuild,v 1.6 2012/03/13 02:54:16 floppym Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

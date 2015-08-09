@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/daa2iso/daa2iso-0.1.7e.ebuild,v 1.4 2013/01/13 11:41:08 ago Exp $
+# $Id$
 
 EAPI="2"
 inherit base toolchain-funcs

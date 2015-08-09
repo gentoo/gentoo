@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gentoo-guide-xml-dtd/gentoo-guide-xml-dtd-2.1-r1.ebuild,v 1.11 2005/07/17 18:54:11 kugelfang Exp $
+# $Id$
 
 inherit sgml-catalog
 

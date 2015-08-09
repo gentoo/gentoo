@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vpopmail/files/vpopmail-Maildir-dotmaildir-fix.sh,v 1.2 2004/10/19 17:55:24 robbat2 Exp $
+# $Id$
 # Written by Robin H. Johnson, robbat2@gentoo.org
 
 OLDNAME='Maildir'

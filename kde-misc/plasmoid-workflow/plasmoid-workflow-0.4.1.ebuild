@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasmoid-workflow/plasmoid-workflow-0.4.1.ebuild,v 1.2 2014/08/05 16:31:44 mrueg Exp $
+# $Id$
 
 EAPI=5
 

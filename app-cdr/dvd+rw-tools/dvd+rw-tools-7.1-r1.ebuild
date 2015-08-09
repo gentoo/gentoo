@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/dvd+rw-tools/dvd+rw-tools-7.1-r1.ebuild,v 1.13 2013/02/19 02:56:52 zmedico Exp $
+# $Id$
 
 EAPI=3
 

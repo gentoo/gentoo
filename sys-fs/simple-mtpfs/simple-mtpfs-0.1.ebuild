@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/simple-mtpfs/simple-mtpfs-0.1.ebuild,v 1.4 2013/03/31 14:49:31 scarabeus Exp $
+# $Id$
 
 EAPI=5
 

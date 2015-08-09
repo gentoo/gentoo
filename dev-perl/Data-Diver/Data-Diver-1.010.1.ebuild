@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-Diver/Data-Diver-1.010.1.ebuild,v 1.4 2013/12/17 19:29:04 zlogene Exp $
+# $Id$
 
 EAPI=5
 

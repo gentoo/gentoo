@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/lxdream/lxdream-0.9.1-r2.ebuild,v 1.4 2014/05/15 16:37:33 ulm Exp $
+# $Id$
 
 EAPI=4
 inherit eutils games

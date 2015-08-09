@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/glm/glm-0.9.3.2.ebuild,v 1.1 2012/04/28 18:07:18 tupone Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtgui/qtgui-4.8.5-r4.ebuild,v 1.12 2015/03/31 19:19:40 ulm Exp $
+# $Id$
 
 EAPI=5
 

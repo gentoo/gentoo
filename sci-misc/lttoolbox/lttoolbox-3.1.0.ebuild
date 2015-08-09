@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/lttoolbox/lttoolbox-3.1.0.ebuild,v 1.4 2011/07/29 06:11:09 bicatali Exp $
+# $Id$
 
 EAPI=4
 

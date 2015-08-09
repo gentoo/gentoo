@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speechd-el/speechd-el-2.5.ebuild,v 1.5 2014/06/07 11:57:06 ulm Exp $
+# $Id$
 
 EAPI="4"
 

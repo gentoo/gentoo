@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-bluez/gkrellm-bluez-0.2-r1.ebuild,v 1.8 2010/06/11 10:57:34 ssuominen Exp $
+# $Id$
 
 inherit gkrellm-plugin
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_auth_imap2/mod_auth_imap2-2.2.0.ebuild,v 1.1 2007/12/30 17:13:58 hollow Exp $
+# $Id$
 
 inherit apache-module
 

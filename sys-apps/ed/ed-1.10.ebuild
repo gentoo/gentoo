@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ed/ed-1.10.ebuild,v 1.13 2015/05/27 12:34:17 zlogene Exp $
+# $Id$
 
 EAPI="4"
 

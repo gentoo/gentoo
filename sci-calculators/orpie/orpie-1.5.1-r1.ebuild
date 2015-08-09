@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/orpie/orpie-1.5.1-r1.ebuild,v 1.7 2014/11/13 12:55:45 jer Exp $
+# $Id$
 
 EAPI=4
 inherit eutils autotools

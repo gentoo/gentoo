@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kimono/kimono-4.14.3.ebuild,v 1.4 2015/02/16 08:31:55 ago Exp $
+# $Id$
 
 EAPI=5
 

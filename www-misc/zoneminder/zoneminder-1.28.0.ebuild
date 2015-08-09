@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/zoneminder/zoneminder-1.28.0.ebuild,v 1.3 2015/03/31 19:04:37 ulm Exp $
+# $Id$
 
 # TO DO:
 # * ffmpeg support can be disabled in CMakeLists.txt but it does not build then

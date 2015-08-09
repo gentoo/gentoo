@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/rasqal/rasqal-0.9.32.ebuild,v 1.2 2015/07/11 16:54:25 klausman Exp $
+# $Id$
 
 EAPI=5
 inherit eutils libtool

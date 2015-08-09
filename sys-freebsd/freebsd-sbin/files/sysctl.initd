@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-sbin/files/sysctl.initd,v 1.5 2008/02/01 12:37:30 flameeyes Exp $
+# $Id$
 
 depend() {
 	after checkroot root

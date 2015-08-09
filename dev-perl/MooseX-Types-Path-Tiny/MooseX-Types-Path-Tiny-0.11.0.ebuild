@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Types-Path-Tiny/MooseX-Types-Path-Tiny-0.11.0.ebuild,v 1.1 2014/12/13 23:23:55 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

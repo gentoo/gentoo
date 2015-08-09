@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/gitg/gitg-0.2.7.ebuild,v 1.5 2014/04/05 20:49:13 ikelos Exp $
+# $Id$
 
 EAPI=5
 

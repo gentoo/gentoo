@@ -1,7 +1,7 @@
 --- balance-3.54/Makefile
 +++ balance-3.54/Makefile
 @@ -1,14 +1,14 @@
- # $Id: balance-3.54-Makefile.patch,v 1.1 2012/06/16 22:51:30 xmw Exp $
+ # $Id$
  
  #CFLAGS=-g -I.
 -CFLAGS=-O2 -Wall -Wstrict-prototypes -Wuninitialized

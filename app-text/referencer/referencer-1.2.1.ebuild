@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/referencer/referencer-1.2.1.ebuild,v 1.1 2013/07/08 22:09:11 xmw Exp $
+# $Id$
 
 EAPI="5"
 

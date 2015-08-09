@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-mount-plugin/xfce4-mount-plugin-0.6.7.ebuild,v 1.7 2014/07/18 19:54:16 ago Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

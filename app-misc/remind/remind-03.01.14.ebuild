@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/remind/remind-03.01.14.ebuild,v 1.1 2015/04/30 16:12:21 jer Exp $
+# $Id$
 
 EAPI=5
 

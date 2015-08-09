@@ -2,7 +2,7 @@
 +++ shpcreate.c	2009-09-15 20:20:31.310673754 -0700
 @@ -51,6 +51,7 @@
  static char rcsid[] = 
-   "$Id: stdlib_include_fix.patch,v 1.1 2009/09/16 04:58:04 nerdboy Exp $";
+   "$Id$";
  
 +#include <stdlib.h>
  #include "shapefil.h"
@@ -12,7 +12,7 @@
 +++ shpdump.c	2009-09-15 20:20:29.654673421 -0700
 @@ -67,6 +67,7 @@
  static char rcsid[] = 
-   "$Id: stdlib_include_fix.patch,v 1.1 2009/09/16 04:58:04 nerdboy Exp $";
+   "$Id$";
  
 +#include <stdlib.h>
  #include "shapefil.h"

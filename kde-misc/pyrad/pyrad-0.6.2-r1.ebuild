@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/pyrad/pyrad-0.6.2-r1.ebuild,v 1.1 2014/10/22 14:20:11 mrueg Exp $
+# $Id$
 
 EAPI=5
 

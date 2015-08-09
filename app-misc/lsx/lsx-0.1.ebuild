@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lsx/lsx-0.1.ebuild,v 1.8 2012/02/16 06:59:31 jer Exp $
+# $Id$
 
 inherit toolchain-funcs
 

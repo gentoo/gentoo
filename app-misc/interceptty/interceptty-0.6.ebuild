@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/interceptty/interceptty-0.6.ebuild,v 1.5 2010/01/01 18:40:35 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="a program that can sit between a serial port and an application"
 HOMEPAGE="http://www.suspectclass.com/~sgifford/interceptty/"

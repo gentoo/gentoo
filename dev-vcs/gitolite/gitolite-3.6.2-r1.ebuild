@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/gitolite/gitolite-3.6.2-r1.ebuild,v 1.1 2014/11/29 22:27:00 robbat2 Exp $
+# $Id$
 
 EAPI=5
 [[ ${PV} == *9999 ]] && SCM="git-2"

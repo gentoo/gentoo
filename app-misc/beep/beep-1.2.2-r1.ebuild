@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beep/beep-1.2.2-r1.ebuild,v 1.12 2009/03/28 05:39:33 solar Exp $
+# $Id$
 
 inherit eutils base toolchain-funcs
 

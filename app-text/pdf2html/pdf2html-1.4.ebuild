@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdf2html/pdf2html-1.4.ebuild,v 1.20 2012/09/16 20:04:30 ottxor Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

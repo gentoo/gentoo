@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libggiwmh/libggiwmh-0.3.2.ebuild,v 1.14 2013/07/28 19:21:15 aballier Exp $
+# $Id$
 
 DESCRIPTION="Library for General Graphics Interface"
 HOMEPAGE="http://www.ggi-project.org"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/hdaps_monitor/hdaps_monitor-0.3-r1.ebuild,v 1.2 2014/04/24 14:19:27 johu Exp $
+# $Id$
 
 EAPI=5
 inherit kde4-base

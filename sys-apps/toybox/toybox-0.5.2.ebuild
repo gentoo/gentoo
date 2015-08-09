@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/toybox/toybox-0.5.2.ebuild,v 1.1 2015/03/06 01:24:59 patrick Exp $
+# $Id$
 
 EAPI=5
 

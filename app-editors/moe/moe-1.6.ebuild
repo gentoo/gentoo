@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/moe/moe-1.6.ebuild,v 1.4 2014/12/06 08:21:12 jer Exp $
+# $Id$
 
 EAPI=5
 

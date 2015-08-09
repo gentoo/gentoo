@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/libsoup-2.50.0.ebuild,v 1.1 2015/06/09 09:48:41 eva Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="yes"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/textedit/textedit-0.95_pre20100427-r1.ebuild,v 1.2 2014/12/27 19:28:23 ago Exp $
+# $Id$
 
 EAPI=5
 inherit eutils gnustep-2

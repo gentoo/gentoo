@@ -1,12 +1,12 @@
-DEFINED_PHASES=install nofetch postinst postrm preinst prerm pretend unpack
-DESCRIPTION=LSI MPT-SAS3 controller management tool
-EAPI=5
-HOMEPAGE=http://www.lsi.com/support/Pages/download-results.aspx?component=Storage+Component&productfamily=Host+Bus+Adapters&productcode=0&assettype=Miscellaneous&productname=&keyword=SAS3IRCU
-IUSE=efi doc
-KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd ~ppc64 ~amd64-fbsd ~sparc-solaris ~x64-solaris ~x86-solaris
-LICENSE=LSI
-RESTRICT=strip fetch mirror
+_eclasses_=mount-boot	41ed556fa5641393d5323e421c8e5bcf
+_md5_=feffbaea0403b4028d06476d8b1f593a
 SLOT=0
+DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+EAPI=5
+DESCRIPTION=LSI MPT-SAS3 controller management tool
+LICENSE=LSI
+IUSE=efi doc
+RESTRICT=strip fetch mirror
 SRC_URI=http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/Host%20Bus%20Adapters%20Common%20Files/SAS_SATA_12G_P5/SAS3IRCU_P5.zip doc? ( http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/SAS3IRCU_UG.pdf )
-_eclasses_=mount-boot	07784c1c862b665e1d6a3c1f47936987
-_md5_=500034887dca770a8447630e116cce71
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd ~ppc64 ~amd64-fbsd ~sparc-solaris ~x64-solaris ~x86-solaris
+HOMEPAGE=http://www.lsi.com/support/Pages/download-results.aspx?component=Storage+Component&productfamily=Host+Bus+Adapters&productcode=0&assettype=Miscellaneous&productname=&keyword=SAS3IRCU

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cblas-reference/cblas-reference-20030223-r4.ebuild,v 1.23 2015/03/31 20:14:22 ulm Exp $
+# $Id$
 
 inherit autotools eutils fortran-2 multilib toolchain-funcs
 

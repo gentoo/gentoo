@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/spring-expression/spring-expression-3.2.4.ebuild,v 1.2 2015/04/02 18:18:11 mr_bones_ Exp $
+# $Id$
 
 EAPI="5"
 

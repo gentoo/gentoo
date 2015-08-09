@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/sysdig/sysdig-0.1.92.ebuild,v 1.2 2014/11/22 10:36:18 mgorny Exp $
+# $Id$
 
 EAPI=5
 

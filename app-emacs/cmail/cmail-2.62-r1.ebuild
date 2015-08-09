@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/cmail/cmail-2.62-r1.ebuild,v 1.4 2010/05/14 14:43:00 ulm Exp $
+# $Id$
 
 inherit elisp
 

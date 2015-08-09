@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-math/commons-math-3.2.ebuild,v 1.4 2014/03/03 23:37:22 pacho Exp $
+# $Id$
 
 EAPI="5"
 

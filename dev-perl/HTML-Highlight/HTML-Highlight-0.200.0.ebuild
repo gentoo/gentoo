@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Highlight/HTML-Highlight-0.200.0.ebuild,v 1.1 2014/12/06 00:13:59 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/calibre/calibre-2.27.0.ebuild,v 1.1 2015/05/02 14:39:13 yngwin Exp $
+# $Id$
 
 EAPI=5
 inherit eutils fdo-mime bash-completion-r1 multilib toolchain-funcs

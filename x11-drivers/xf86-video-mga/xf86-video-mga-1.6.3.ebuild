@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-mga/xf86-video-mga-1.6.3.ebuild,v 1.8 2014/04/19 17:47:26 ago Exp $
+# $Id$
 
 EAPI=4
 XORG_DRI=dri

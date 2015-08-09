@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/ezmlm-idx/ezmlm-idx-6.0.0.ebuild,v 1.12 2014/12/28 16:34:45 titanofold Exp $
+# $Id$
 
 EZMLM_P=ezmlm-0.53
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/i8krellm/i8krellm-2.5-r1.ebuild,v 1.1 2010/08/11 13:37:36 lack Exp $
+# $Id$
 
 EAPI=3
 inherit gkrellm-plugin

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/pcalc/pcalc-1.3.ebuild,v 1.6 2015/06/24 13:39:08 vapier Exp $
+# $Id$
 
 inherit toolchain-funcs
 

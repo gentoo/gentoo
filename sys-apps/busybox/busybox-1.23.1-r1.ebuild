@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/busybox-1.23.1-r1.ebuild,v 1.6 2015/04/04 22:34:04 vapier Exp $
+# $Id$
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gptfdisk/gptfdisk-0.8.10.ebuild,v 1.10 2015/03/03 09:50:06 dlan Exp $
+# $Id$
 
 EAPI=5
 

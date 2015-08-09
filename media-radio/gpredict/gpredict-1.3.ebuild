@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/gpredict/gpredict-1.3.ebuild,v 1.8 2014/02/02 17:12:25 tomjbe Exp $
+# $Id$
 
 EAPI=5
 

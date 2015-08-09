@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/converseen/converseen-0.6.4.ebuild,v 1.1 2013/07/26 07:32:20 xmw Exp $
+# $Id$
 
 EAPI="5"
 LANGSLONG="cs_CZ de_DE fr_FR hu_HU it_IT pl_PL pt_BR ru_RU tr_TR"

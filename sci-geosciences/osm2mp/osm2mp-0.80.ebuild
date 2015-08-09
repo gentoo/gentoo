@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/osm2mp/osm2mp-0.80.ebuild,v 1.4 2011/06/04 07:56:26 scarabeus Exp $
+# $Id$
 
 EAPI=4
 

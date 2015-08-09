@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/remake/remake-3.82.0.4.ebuild,v 1.2 2011/11/30 04:21:39 vapier Exp $
+# $Id$
 
 MY_P="${PN}-${PV:0:4}+dbg-${PV:5}"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp-arrow-brushes/gimp-arrow-brushes-20120122.ebuild,v 1.5 2013/12/08 10:45:51 pacho Exp $
+# $Id$
 
 EAPI="4"
 

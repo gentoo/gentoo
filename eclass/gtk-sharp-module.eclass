@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gtk-sharp-module.eclass,v 1.37 2014/01/19 21:13:08 moult Exp $
+# $Id$
 
 # @ECLASS: gtk-sharp-module.eclass
 # @MAINTAINER:

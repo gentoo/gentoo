@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/blaze/blaze-0.8.0.ebuild,v 1.3 2015/08/02 11:10:06 idella4 Exp $
+# $Id$
 
 EAPI=5
 

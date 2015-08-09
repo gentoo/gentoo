@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cccc/cccc-3.1.4.ebuild,v 1.7 2012/09/05 18:39:35 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sblim-cim-client/sblim-cim-client-2.2.1-r1.ebuild,v 1.1 2014/10/31 16:39:12 ercpe Exp $
+# $Id$
 
 EAPI=5
 

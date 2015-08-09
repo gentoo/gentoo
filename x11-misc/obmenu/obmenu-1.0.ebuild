@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/obmenu/obmenu-1.0.ebuild,v 1.9 2010/06/13 13:59:13 ssuominen Exp $
+# $Id$
 
 EAPI=3
 PYTHON_DEPEND="2"

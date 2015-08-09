@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-sqlplus/oracle-instantclient-sqlplus-11.2.0.2.ebuild,v 1.3 2013/05/10 08:18:42 patrick Exp $
+# $Id$
 
 inherit eutils multilib
 

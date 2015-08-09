@@ -1,10 +1,10 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	fcaps	3a17f16a21cfbb14acca5c05e5c130eb	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9ce3fe0f4b1dea35148c5cfb3b897ab3
+SLOT=0
 DEFINED_PHASES=compile install postinst setup unpack
+EAPI=5
 DEPEND=>=dev-lang/go-1.4:= dev-go/go-oauth2:= filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
 DESCRIPTION=A tool for managing secrets
-EAPI=5
-HOMEPAGE=https://vaultproject.io/
-IUSE=+filecaps
 LICENSE=MPL-2.0
-SLOT=0
-_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fcaps	eeefea88d5fef2853d4c1e3770340302	git-r3	32063705ec420339d5c94dfeb87b36cb	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=58948dd6d03d70e8fd5ec6b4e4c8ac0e
+IUSE=+filecaps
+HOMEPAGE=https://vaultproject.io/

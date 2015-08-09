@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/xwxapt/xwxapt-2.1.ebuild,v 1.1 2012/11/02 18:31:25 tomjbe Exp $
+# $Id$
 
 EAPI=4
 

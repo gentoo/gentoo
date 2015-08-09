@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/brutefir/brutefir-1.0k-r1.ebuild,v 1.3 2012/02/16 18:52:28 phajdan.jr Exp $
+# $Id$
 
 EAPI=2
 inherit eutils multilib toolchain-funcs

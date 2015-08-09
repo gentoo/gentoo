@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/m68k/make.defaults,v 1.6 2014/07/01 14:13:01 mgorny Exp $
+# $Id$
 
 ARCH="m68k"
 ACCEPT_KEYWORDS="m68k ~m68k"

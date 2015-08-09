@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/filestore/filestore-0.6.0.4.ebuild,v 1.1 2014/12/14 11:44:19 gienah Exp $
+# $Id$
 
 EAPI=5
 

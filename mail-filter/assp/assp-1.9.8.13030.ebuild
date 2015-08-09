@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/assp/assp-1.9.8.13030.ebuild,v 1.3 2014/08/10 21:15:28 slyfox Exp $
+# $Id$
 
 inherit eutils user
 

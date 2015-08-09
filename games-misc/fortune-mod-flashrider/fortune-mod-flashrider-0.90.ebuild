@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-flashrider/fortune-mod-flashrider-0.90.ebuild,v 1.1 2011/02/10 19:08:49 zzam Exp $
+# $Id$
 
 EAPI=3
 

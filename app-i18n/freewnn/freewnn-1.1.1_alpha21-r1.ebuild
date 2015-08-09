@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/freewnn/freewnn-1.1.1_alpha21-r1.ebuild,v 1.11 2013/08/31 06:10:35 naota Exp $
+# $Id$
 
 inherit eutils
 

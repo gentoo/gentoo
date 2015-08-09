@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/sound-icons/sound-icons-0.1.ebuild,v 1.3 2012/10/19 19:56:05 ago Exp $
+# $Id$
 
 DESCRIPTION="a collection of Sound Icons for speech-dispatcher"
 HOMEPAGE="http://www.freebsoft.org"

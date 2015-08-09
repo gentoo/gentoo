@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/amazon-ec2-init/amazon-ec2-init-20101127.ebuild,v 1.3 2014/08/10 01:37:42 patrick Exp $
+# $Id$
 
 EAPI="2"
 

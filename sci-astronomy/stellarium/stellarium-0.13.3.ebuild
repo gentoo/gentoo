@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/stellarium/stellarium-0.13.3.ebuild,v 1.3 2015/07/15 17:14:09 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils eutils flag-o-matic gnome2-utils

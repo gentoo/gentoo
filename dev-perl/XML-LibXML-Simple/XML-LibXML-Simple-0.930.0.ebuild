@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-LibXML-Simple/XML-LibXML-Simple-0.930.0.ebuild,v 1.1 2013/03/17 17:18:52 tove Exp $
+# $Id$
 
 EAPI=5
 

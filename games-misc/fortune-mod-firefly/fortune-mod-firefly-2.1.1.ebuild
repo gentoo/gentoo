@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-firefly/fortune-mod-firefly-2.1.1.ebuild,v 1.10 2015/02/04 21:23:15 tupone Exp $
+# $Id$
 EAPI=5
 DESCRIPTION="Quotes from FireFly"
 HOMEPAGE="http://www.daughtersoftiresias.org/progs/firefly/"

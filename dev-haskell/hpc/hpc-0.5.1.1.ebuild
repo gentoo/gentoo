@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hpc/hpc-0.5.1.1.ebuild,v 1.3 2012/09/12 14:40:16 qnikst Exp $
+# $Id$
 
 EAPI="3"
 

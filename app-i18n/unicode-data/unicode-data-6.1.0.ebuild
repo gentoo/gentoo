@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/unicode-data/unicode-data-6.1.0.ebuild,v 1.12 2013/04/02 13:25:48 ago Exp $
+# $Id$
 
 EAPI=5
 

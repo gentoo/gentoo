@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SNMP/Net-SNMP-6.0.1-r1.ebuild,v 1.4 2015/06/13 22:29:16 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

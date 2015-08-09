@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/rvm/rvm-1.12.ebuild,v 1.5 2010/05/08 17:39:19 george Exp $
+# $Id$
 
 DESCRIPTION="Recoverable Virtual Memory (used by Coda)"
 HOMEPAGE="http://www.coda.cs.cmu.edu/"

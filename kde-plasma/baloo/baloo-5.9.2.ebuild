@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-plasma/baloo/baloo-5.9.2.ebuild,v 1.1 2015/06/30 20:50:13 johu Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/maude/maude-2.6-r1.ebuild,v 1.1 2013/11/06 18:01:37 bicatali Exp $
+# $Id$
 
 EAPI=5
 

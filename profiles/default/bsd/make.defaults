@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/make.defaults,v 1.1 2012/07/05 16:23:28 ryao Exp $
+# $Id$
 
 # Mask systemd files until upstream supports *BSD
 INSTALL_MASK="/usr/lib/systemd"

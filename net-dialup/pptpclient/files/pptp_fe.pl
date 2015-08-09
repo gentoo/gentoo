@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#   $Id: pptp_fe.pl,v 1.1 2003/02/26 23:31:46 agriffis Exp $
+#   $Id$
 #
 #   pptp_fe.pl, privileged portion of xpptp_fe.pl
 #   Copyright (C) 2001  Smoot Carl-Mitchell (smoot@tic.com)

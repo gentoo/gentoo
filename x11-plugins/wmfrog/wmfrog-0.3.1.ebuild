@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfrog/wmfrog-0.3.1.ebuild,v 1.2 2014/08/10 20:06:30 slyfox Exp $
+# $Id$
 
 EAPI=2
 inherit toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/POE/POE-1.356-r1.ebuild,v 1.2 2015/01/31 13:28:41 zlogene Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/luatex/luatex-0.70.1-r2.ebuild,v 1.14 2014/10/11 10:48:02 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

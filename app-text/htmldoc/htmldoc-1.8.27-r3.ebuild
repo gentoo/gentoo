@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/htmldoc/htmldoc-1.8.27-r3.ebuild,v 1.9 2013/12/26 00:41:50 dilfridge Exp $
+# $Id$
 
 EAPI="4"
 inherit eutils

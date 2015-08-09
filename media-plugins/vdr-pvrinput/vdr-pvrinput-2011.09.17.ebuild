@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-pvrinput/vdr-pvrinput-2011.09.17.ebuild,v 1.6 2014/01/14 17:46:50 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

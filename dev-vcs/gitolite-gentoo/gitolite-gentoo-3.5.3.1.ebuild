@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/gitolite-gentoo/gitolite-gentoo-3.5.3.1.ebuild,v 1.4 2015/04/25 16:27:57 floppym Exp $
+# $Id$
 
 EAPI=5
 

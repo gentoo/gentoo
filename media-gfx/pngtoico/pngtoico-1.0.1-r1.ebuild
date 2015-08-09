@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngtoico/pngtoico-1.0.1-r1.ebuild,v 1.4 2011/08/13 03:19:23 ssuominen Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

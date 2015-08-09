@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/simple_oauth/simple_oauth-0.3.1.ebuild,v 1.2 2015/03/25 20:34:06 graaff Exp $
+# $Id$
 
 EAPI=5
 

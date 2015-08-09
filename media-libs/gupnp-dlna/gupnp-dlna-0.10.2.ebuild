@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gupnp-dlna/gupnp-dlna-0.10.2.ebuild,v 1.4 2013/12/08 19:12:57 pacho Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

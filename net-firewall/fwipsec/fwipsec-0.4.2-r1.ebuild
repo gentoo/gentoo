@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwipsec/fwipsec-0.4.2-r1.ebuild,v 1.9 2014/08/10 20:55:39 slyfox Exp $
+# $Id$
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="Firewall scripts that control iptables, FreeS/WAN, and squid"

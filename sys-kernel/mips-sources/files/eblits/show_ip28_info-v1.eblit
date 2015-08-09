@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/show_ip28_info-v1.eblit,v 1.1 2009/03/16 06:39:10 kumba Exp $
+# $Id$
 
 # Eblit with information/warnings for IP28 (Indigo2 Impact R10000) users.
 #

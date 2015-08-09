@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/asa/asa-1.1-r1.ebuild,v 1.1 2013/09/23 12:37:07 jlec Exp $
+# $Id$
 
 EAPI=5
 

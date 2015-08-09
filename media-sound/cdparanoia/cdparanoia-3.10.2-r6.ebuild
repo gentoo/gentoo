@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cdparanoia/cdparanoia-3.10.2-r6.ebuild,v 1.14 2015/03/31 19:16:52 ulm Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils libtool toolchain-funcs versionator multilib-minimal

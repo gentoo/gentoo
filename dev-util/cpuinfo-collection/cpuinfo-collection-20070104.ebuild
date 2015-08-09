@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cpuinfo-collection/cpuinfo-collection-20070104.ebuild,v 1.3 2012/12/16 22:32:10 ulm Exp $
+# $Id$
 
 MY_P=test_proc-${PV:6:2}January${PV:0:4}
 DESCRIPTION="huge collection of /proc/cpuinfo files"

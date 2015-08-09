@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/encfs/encfs-1.7.5.ebuild,v 1.4 2014/12/26 17:52:17 maekke Exp $
+# $Id$
 
 EAPI=2
 inherit autotools eutils multilib

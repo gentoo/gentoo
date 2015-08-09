@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/arss/arss-0.2.3.ebuild,v 1.2 2013/03/04 18:49:20 kensington Exp $
+# $Id$
 
 EAPI=5
 CMAKE_IN_SOURCE_BUILD="true"

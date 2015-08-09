@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/twolame/twolame-0.3.13-r1.ebuild,v 1.12 2014/10/11 13:08:48 maekke Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cacao/cacao-0.99.4.ebuild,v 1.7 2012/06/14 21:25:44 radhermit Exp $
+# $Id$
 
 EAPI=2
 AUTOTOOLS_AUTO_DEPEND="no"

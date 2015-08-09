@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.72b-r3.ebuild,v 1.1 2015/02/01 23:03:22 mgorny Exp $
+# $Id$
 
 ## BUNDLED-DEPS:
 # extern/cuew

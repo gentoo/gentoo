@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-SAX-Expat/XML-SAX-Expat-0.500.0.ebuild,v 1.5 2014/12/07 13:08:18 zlogene Exp $
+# $Id$
 
 EAPI=5
 

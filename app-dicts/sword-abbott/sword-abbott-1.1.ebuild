@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-abbott/sword-abbott-1.1.ebuild,v 1.1 2010/05/16 00:05:17 beandog Exp $
+# $Id$
 
 SWORD_MODULE="Abbott"
 

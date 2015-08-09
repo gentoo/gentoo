@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/reswrap/reswrap-3.2.0.ebuild,v 1.11 2009/09/23 17:48:09 patrick Exp $
+# $Id$
 
 FOX_COMPONENT="utils"
 FOX_PV="1.4.12"

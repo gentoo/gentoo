@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueman/blueman-1.98_p20150105.ebuild,v 1.2 2015/08/08 15:42:23 mgorny Exp $
+# $Id$
 
 EAPI="5"
 

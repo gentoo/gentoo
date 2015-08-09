@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/eflite/files/eflite.rc,v 1.7 2009/11/01 18:45:20 eva Exp $
+# $Id$
 
 depend() {
 	use alsasound

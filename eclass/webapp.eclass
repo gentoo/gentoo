@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/webapp.eclass,v 1.75 2015/07/08 09:33:47 voyageur Exp $
+# $Id$
 
 # @ECLASS: webapp.eclass
 # @MAINTAINER:

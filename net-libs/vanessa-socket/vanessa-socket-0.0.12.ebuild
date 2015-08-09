@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/vanessa-socket/vanessa-socket-0.0.12.ebuild,v 1.3 2014/12/26 08:40:36 patrick Exp $
+# $Id$
 
 inherit eutils
 

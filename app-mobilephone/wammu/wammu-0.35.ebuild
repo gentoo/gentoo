@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/wammu/wammu-0.35.ebuild,v 1.5 2011/08/13 07:15:07 xarthisius Exp $
+# $Id$
 
 EAPI="3"
 

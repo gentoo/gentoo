@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca/qca-2.0.3-r1.ebuild,v 1.4 2015/03/04 07:54:12 kensington Exp $
+# $Id$
 
 EAPI="3"
 

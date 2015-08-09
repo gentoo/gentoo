@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/socketstream/socketstream-0.7.0-r1.ebuild,v 1.7 2013/03/03 06:30:56 dirtyepic Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-uk/aspell-uk-1.4.0.0.ebuild,v 1.12 2012/05/17 20:10:45 aballier Exp $
+# $Id$
 
 ASPELL_LANG="Ukrainian"
 ASPOSTFIX="6"

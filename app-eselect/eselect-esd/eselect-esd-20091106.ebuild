@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-esd/eselect-esd-20091106.ebuild,v 1.1 2015/03/31 16:48:28 ulm Exp $
+# $Id$
 
 DESCRIPTION="Manages configuration of ESounD implementation or PulseAudio wrapper"
 HOMEPAGE="http://www.gentoo.org/"

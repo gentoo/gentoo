@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-mouse/xf86-input-mouse-1.8.1.ebuild,v 1.13 2013/03/07 12:26:06 heroxbd Exp $
+# $Id$
 
 EAPI=4
 inherit xorg-2

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bdelta/bdelta-0.3.1.ebuild,v 1.2 2013/03/05 13:35:01 slyfox Exp $
+# $Id$
 
 EAPI=4
 

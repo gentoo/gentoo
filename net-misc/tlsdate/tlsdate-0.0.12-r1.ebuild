@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tlsdate/tlsdate-0.0.12-r1.ebuild,v 1.4 2015/02/01 21:10:57 maekke Exp $
+# $Id$
 
 EAPI="4"
 

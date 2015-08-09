@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/akonadi-facebook/akonadi-facebook-0_p20130209.ebuild,v 1.4 2015/07/28 20:33:00 johu Exp $
+# $Id$
 
 EAPI=5
 

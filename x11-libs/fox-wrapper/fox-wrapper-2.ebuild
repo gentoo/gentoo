@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox-wrapper/fox-wrapper-2.ebuild,v 1.11 2009/05/05 07:36:36 ssuominen Exp $
+# $Id$
 
 DESCRIPTION="wrapper for fox-config to manage multiple versions"
 HOMEPAGE="http://www.gentoo.org/"

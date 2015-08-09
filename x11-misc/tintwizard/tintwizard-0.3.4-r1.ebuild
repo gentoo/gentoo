@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/tintwizard/tintwizard-0.3.4-r1.ebuild,v 1.3 2010/08/20 07:46:16 fauli Exp $
+# $Id$
 
 EAPI="3"
 

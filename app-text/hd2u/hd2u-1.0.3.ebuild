@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/hd2u/hd2u-1.0.3.ebuild,v 1.7 2012/02/01 09:10:53 ssuominen Exp $
+# $Id$
 
 EAPI=4
 

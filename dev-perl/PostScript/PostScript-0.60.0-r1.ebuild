@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PostScript/PostScript-0.60.0-r1.ebuild,v 1.1 2014/08/22 18:16:09 axs Exp $
+# $Id$
 
 EAPI=5
 

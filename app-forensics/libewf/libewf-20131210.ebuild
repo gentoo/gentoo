@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/libewf/libewf-20131210.ebuild,v 1.2 2014/08/08 14:00:42 blueness Exp $
+# $Id$
 
 EAPI=5
 

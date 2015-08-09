@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/podofo/podofo-0.9.3.ebuild,v 1.2 2015/08/08 05:36:05 zmedico Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils flag-o-matic multilib toolchain-funcs

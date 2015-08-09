@@ -6,7 +6,7 @@
 #
 # Licensed under the GNU General Public License, v2
 #
-# $Header: /var/cvsroot/gentoo-x86/eclass/java-utils-2.eclass,v 1.169 2015/08/02 23:12:16 chewi Exp $
+# $Id$
 
 # @ECLASS: java-utils-2.eclass
 # @MAINTAINER:

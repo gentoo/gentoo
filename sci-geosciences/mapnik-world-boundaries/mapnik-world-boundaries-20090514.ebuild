@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/mapnik-world-boundaries/mapnik-world-boundaries-20090514.ebuild,v 1.4 2014/03/10 17:11:53 johu Exp $
+# $Id$
 EAPI=2
 
 DESCRIPTION="Mapnik World Boundaries"

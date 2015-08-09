@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/foremost/foremost-1.5.7-r2.ebuild,v 1.4 2015/01/26 09:57:28 ago Exp $
+# $Id$
 
 EAPI=4
 

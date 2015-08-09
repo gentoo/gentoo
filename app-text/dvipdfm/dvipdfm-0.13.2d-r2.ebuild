@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvipdfm/dvipdfm-0.13.2d-r2.ebuild,v 1.1 2013/07/07 15:19:51 aballier Exp $
+# $Id$
 
 EAPI=3
 inherit eutils

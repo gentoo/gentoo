@@ -1,9 +1,0 @@
-# ChangeLog for dev-perl/autobox
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/autobox/ChangeLog,v 1.1 2015/04/12 18:32:02 dilfridge Exp $
-
-*autobox-2.830.0 (12 Apr 2015)
-
-  12 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
-  +autobox-2.830.0.ebuild, +metadata.xml:
-  New package, needed for dev-perl/Apache-AuthCookie

@@ -1,12 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ce24141404c15e77398d56cff9e9caf7
+SLOT=0
 DEFINED_PHASES=compile install setup unpack
+EAPI=0
 DEPEND=virtual/blas sci-libs/ufconfig sci-libs/amd virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
 DESCRIPTION=Unsymmetric multifrontal sparse LU factorization library
-HOMEPAGE=http://www.cise.ufl.edu/research/sparse/umfpack
-IUSE=doc
-KEYWORDS=amd64 hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
-RDEPEND=virtual/blas sci-libs/ufconfig sci-libs/amd virtual/fortran
-SLOT=0
+IUSE=doc
 SRC_URI=http://www.cise.ufl.edu/research/sparse/umfpack/UMFPACK-5.2.0.tar.gz
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=5d3828184f2d6fd4ff55ddd8b013b230
+KEYWORDS=amd64 hppa ppc ppc64 sparc x86
+HOMEPAGE=http://www.cise.ufl.edu/research/sparse/umfpack
+RDEPEND=virtual/blas sci-libs/ufconfig sci-libs/amd virtual/fortran

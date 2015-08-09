@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/xcalibrateproto/xcalibrateproto-0.1_pre20081210.ebuild,v 1.13 2012/07/05 15:31:02 chithanh Exp $
+# $Id$
 
 EAPI=4
 

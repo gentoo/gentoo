@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/exult/exult-9999.ebuild,v 1.1 2015/01/09 01:52:57 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 ESVN_REPO_URI="https://svn.code.sf.net/p/exult/code/exult/trunk/"

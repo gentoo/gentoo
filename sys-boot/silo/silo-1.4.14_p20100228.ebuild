@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/silo/silo-1.4.14_p20100228.ebuild,v 1.6 2012/05/24 05:12:20 vapier Exp $
+# $Id$
 
 inherit mount-boot flag-o-matic toolchain-funcs eutils
 

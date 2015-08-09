@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/unf/unf-0.1.4.ebuild,v 1.6 2015/06/09 18:30:23 maekke Exp $
+# $Id$
 
 EAPI=5
 

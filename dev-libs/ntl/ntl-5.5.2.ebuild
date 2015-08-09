@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ntl/ntl-5.5.2.ebuild,v 1.7 2011/02/24 04:56:07 bicatali Exp $
+# $Id$
 
 EAPI=3
 inherit toolchain-funcs eutils multilib flag-o-matic

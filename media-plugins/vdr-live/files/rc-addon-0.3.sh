@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-live/files/rc-addon-0.3.sh,v 1.1 2015/01/28 14:56:35 hd_brummy Exp $
+# $Id$
 #
 # zzam@g.o
 # hd_brummy@g.o

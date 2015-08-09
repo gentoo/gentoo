@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/neXtaw/neXtaw-0.15.1-r1.ebuild,v 1.19 2012/05/09 15:06:34 aballier Exp $
+# $Id$
 
 DESCRIPTION="Athena Widgets with N*XTSTEP appearance"
 HOMEPAGE="http://siag.nu/neXtaw/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackctl/qjackctl-0.3.13.ebuild,v 1.1 2015/04/08 07:21:46 aballier Exp $
+# $Id$
 
 EAPI=4
 

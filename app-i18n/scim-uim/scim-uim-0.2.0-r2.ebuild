@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-uim/scim-uim-0.2.0-r2.ebuild,v 1.6 2012/08/24 12:02:22 xmw Exp $
+# $Id$
 
 EAPI="2"
 inherit eutils

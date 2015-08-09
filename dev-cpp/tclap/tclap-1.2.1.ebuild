@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/tclap/tclap-1.2.1.ebuild,v 1.7 2014/12/26 17:53:50 maekke Exp $
+# $Id$
 
 EAPI="5"
 inherit eutils

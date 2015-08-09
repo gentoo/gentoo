@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ppl/ppl-0.12.1-r1.ebuild,v 1.15 2014/11/04 03:24:24 vapier Exp $
+# $Id$
 
 EAPI="3"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/snipes/snipes-1.0.4.ebuild,v 1.6 2014/12/30 20:05:08 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs eutils games

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/colorv/colorv-2.5.6.ebuild,v 1.1 2012/08/03 10:53:54 radhermit Exp $
+# $Id$
 
 EAPI="4"
 

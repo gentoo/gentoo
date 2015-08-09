@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/xz-utils/xz-utils-5.2.0.ebuild,v 1.1 2014/12/22 11:41:31 lu_zero Exp $
+# $Id$
 
 # Remember: we cannot leverage autotools in this ebuild in order
 #           to avoid circular deps with autotools

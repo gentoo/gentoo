@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tktreectrl/tktreectrl-2.2.9.ebuild,v 1.8 2012/12/05 08:16:04 ulm Exp $
+# $Id$
 
 EAPI=3
 

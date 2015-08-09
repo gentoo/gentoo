@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/structure-synth/structure-synth-1.5.0.ebuild,v 1.2 2013/03/02 21:40:57 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

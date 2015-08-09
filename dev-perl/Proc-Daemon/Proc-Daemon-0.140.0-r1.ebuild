@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Proc-Daemon/Proc-Daemon-0.140.0-r1.ebuild,v 1.3 2013/12/17 17:28:36 zlogene Exp $
+# $Id$
 
 EAPI=5
 

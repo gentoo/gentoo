@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/seatris/seatris-0.0.14.ebuild,v 1.13 2014/10/31 02:00:21 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs games

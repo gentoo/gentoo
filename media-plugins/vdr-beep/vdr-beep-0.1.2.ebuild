@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-beep/vdr-beep-0.1.2.ebuild,v 1.2 2012/06/30 17:51:45 hd_brummy Exp $
+# $Id$
 
 EAPI="4"
 

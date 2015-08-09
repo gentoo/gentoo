@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/cluster/cluster-1.3.081231-r1.ebuild,v 1.4 2015/05/21 13:27:53 ago Exp $
+# $Id$
 
 EAPI=5
 

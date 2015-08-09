@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-a52dec/gst-plugins-a52dec-1.2.4-r1.ebuild,v 1.11 2014/10/11 12:44:36 maekke Exp $
+# $Id$
 
 EAPI="5"
 

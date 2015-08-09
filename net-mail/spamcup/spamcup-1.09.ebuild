@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/spamcup/spamcup-1.09.ebuild,v 1.6 2014/08/10 20:46:38 slyfox Exp $
+# $Id$
 
 DESCRIPTION="This script does the same you would do when you report spam with your browser in Spamcop.net"
 HOMEPAGE="http://sourceforge.net/projects/spamcup/"

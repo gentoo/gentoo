@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-telnetd/netkit-telnetd-0.17-r10.ebuild,v 1.10 2013/10/13 14:11:16 pacho Exp $
+# $Id$
 
 inherit eutils toolchain-funcs
 

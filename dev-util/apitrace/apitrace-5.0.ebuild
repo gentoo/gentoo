@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/apitrace/apitrace-5.0.ebuild,v 1.1 2014/12/07 19:26:06 mattst88 Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

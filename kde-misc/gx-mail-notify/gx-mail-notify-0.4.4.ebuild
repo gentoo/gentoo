@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/gx-mail-notify/gx-mail-notify-0.4.4.ebuild,v 1.3 2014/03/20 21:58:28 johu Exp $
+# $Id$
 
 EAPI=5
 

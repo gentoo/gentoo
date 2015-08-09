@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-vdrmanager/vdr-vdrmanager-0.12.ebuild,v 1.1 2014/06/01 17:09:08 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

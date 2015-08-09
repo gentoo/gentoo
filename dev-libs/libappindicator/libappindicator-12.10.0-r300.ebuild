@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libappindicator/libappindicator-12.10.0-r300.ebuild,v 1.2 2015/07/26 09:09:41 mgorny Exp $
+# $Id$
 
 EAPI=5
 VALA_MIN_API_VERSION="0.16"

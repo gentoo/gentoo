@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rails-observers/rails-observers-0.1.2.ebuild,v 1.3 2014/10/18 07:53:29 graaff Exp $
+# $Id$
 
 EAPI=5
 

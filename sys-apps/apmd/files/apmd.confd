@@ -1,4 +1,4 @@
 # /etc/init.d/apmd:
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/files/apmd.confd,v 1.4 2005/05/23 23:07:05 vapier Exp $
+# $Id$
 
 APMD_OPTS="-P /etc/apm/apmd_proxy"

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/allin1/allin1-0.5.0.ebuild,v 1.5 2007/07/22 02:24:05 coldwind Exp $
+# $Id$
 
 DESCRIPTION="All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti"
 HOMEPAGE="http://ilpettegolo.altervista.org/linux_allin1.en.shtml"

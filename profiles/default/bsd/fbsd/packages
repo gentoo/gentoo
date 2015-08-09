@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/packages,v 1.3 2012/07/25 12:34:40 ryao Exp $
+# $Id$
 
 # This files contains a small list of packages that define a 
 # minimal FreeBSD system. DO NOT change this without contacting

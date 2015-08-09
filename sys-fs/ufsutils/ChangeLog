@@ -1,9 +1,0 @@
-# ChangeLog for sys-fs/ufsutils
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/ufsutils/ChangeLog,v 1.1 2013/02/18 03:49:16 ryao Exp $
-
-*ufsutils-8.2_p3 (18 Feb 2013)
-
-  18 Feb 2013; Richard Yao <ryao@gentoo.org> +metadata.xml,
-  +ufsutils-8.2_p3.ebuild:
-  New package sys-fs/ufsutils based on Debian's ufsutils package, bug \#213723

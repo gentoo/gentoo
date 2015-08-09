@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnrd/dnrd-2.20.3-r1.ebuild,v 1.2 2012/06/14 02:05:55 zmedico Exp $
+# $Id$
 
 inherit autotools eutils user
 

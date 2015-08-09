@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gentoo-rsync-mirror/gentoo-rsync-mirror-1.0-r4.ebuild,v 1.13 2015/01/05 02:34:22 dlan Exp $
+# $Id$
 
 DESCRIPTION="Ebuild for setting up a Gentoo rsync mirror"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Infrastructure/Rsync"

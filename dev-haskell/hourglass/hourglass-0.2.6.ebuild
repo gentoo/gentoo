@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hourglass/hourglass-0.2.6.ebuild,v 1.2 2015/03/11 12:16:18 gienah Exp $
+# $Id$
 
 EAPI=5
 

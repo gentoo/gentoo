@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnat-gcc/gnat-gcc-3.4.6.ebuild,v 1.13 2013/08/02 17:45:41 george Exp $
+# $Id$
 
 WANT_AUTOCONF=2.1
 inherit gnatbuild

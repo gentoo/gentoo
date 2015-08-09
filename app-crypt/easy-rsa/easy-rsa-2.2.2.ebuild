@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/easy-rsa/easy-rsa-2.2.2.ebuild,v 1.7 2015/07/24 06:04:58 jer Exp $
+# $Id$
 
 EAPI=5
 

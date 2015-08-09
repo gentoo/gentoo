@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cdd+/cdd+-077a.ebuild,v 1.4 2015/04/03 13:43:52 jlec Exp $
+# $Id$
 
 EAPI=5
 

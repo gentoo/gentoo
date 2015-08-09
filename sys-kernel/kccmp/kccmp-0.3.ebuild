@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/kccmp/kccmp-0.3.ebuild,v 1.4 2013/03/02 23:37:29 hwoarang Exp $
+# $Id$
 
 EAPI="4"
 inherit qt4-r2

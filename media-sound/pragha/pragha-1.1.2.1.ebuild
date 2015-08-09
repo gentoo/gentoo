@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pragha/pragha-1.1.2.1.ebuild,v 1.3 2014/01/28 14:16:55 ago Exp $
+# $Id$
 
 EAPI=5
 inherit flag-o-matic xfconf

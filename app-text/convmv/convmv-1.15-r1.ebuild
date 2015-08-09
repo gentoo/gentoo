@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/convmv/convmv-1.15-r1.ebuild,v 1.1 2014/09/09 09:36:02 polynomial-c Exp $
+# $Id$
 
 EAPI=5
 

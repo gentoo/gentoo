@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4c6ae6b76f5e5feaed084f8cc7ce14a7
+SLOT=0
 DEFINED_PHASES=install prepare
+EAPI=5
 DEPEND=dev-libs/expat >=gnome-base/libglade-2.5.0:2.0 >=virtual/ffmpeg-0.10 sys-libs/zlib >=x11-libs/gtk+-2.7.0:2 x11-libs/libX11 virtual/pkgconfig x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=realize the collective dream of sleeping computers from all over the internet
-EAPI=5
-HOMEPAGE=http://electricsheep.org/
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/expat >=gnome-base/libglade-2.5.0:2.0 >=virtual/ffmpeg-0.10 sys-libs/zlib >=x11-libs/gtk+-2.7.0:2 x11-libs/libX11 app-arch/gzip media-gfx/flam3 media-video/mplayer net-misc/curl x11-misc/xdg-utils
-SLOT=0
 SRC_URI=http://dev.gentooexperimental.org/~dreeevil/electricsheep-2.7_beta11.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=76e96fad4c6fcc7e126eb6170eefb9ad
+KEYWORDS=amd64 x86
+HOMEPAGE=http://electricsheep.org/
+RDEPEND=dev-libs/expat >=gnome-base/libglade-2.5.0:2.0 >=virtual/ffmpeg-0.10 sys-libs/zlib >=x11-libs/gtk+-2.7.0:2 x11-libs/libX11 app-arch/gzip media-gfx/flam3 media-video/mplayer net-misc/curl x11-misc/xdg-utils

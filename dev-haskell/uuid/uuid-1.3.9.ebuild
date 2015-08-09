@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/uuid/uuid-1.3.9.ebuild,v 1.1 2015/04/04 09:35:05 gienah Exp $
+# $Id$
 
 EAPI=5
 

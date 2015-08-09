@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-s3/xf86-video-s3-0.6.5.ebuild,v 1.7 2014/05/27 12:41:15 chithanh Exp $
+# $Id$
 
 EAPI=4
 inherit xorg-2

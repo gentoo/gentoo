@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libmbim/libmbim-1.6.0.ebuild,v 1.7 2014/10/11 12:28:53 maekke Exp $
+# $Id$
 
 EAPI="5"
 

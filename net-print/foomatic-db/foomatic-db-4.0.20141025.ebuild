@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-db/foomatic-db-4.0.20141025.ebuild,v 1.1 2014/10/25 14:45:32 mrueg Exp $
+# $Id$
 
 EAPI=5
 

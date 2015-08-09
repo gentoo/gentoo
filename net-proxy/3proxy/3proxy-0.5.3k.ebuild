@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/3proxy/3proxy-0.5.3k.ebuild,v 1.4 2008/10/16 20:20:23 maekke Exp $
+# $Id$
 
 inherit toolchain-funcs eutils
 

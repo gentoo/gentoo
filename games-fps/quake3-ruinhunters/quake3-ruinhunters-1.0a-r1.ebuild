@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-ruinhunters/quake3-ruinhunters-1.0a-r1.ebuild,v 1.5 2015/03/27 02:59:13 mr_bones_ Exp $
+# $Id$
 
 EAPI=2
 MOD_DESC="a anime/fantasy mod with cartoonish characters and arcade-like gameplay"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/xml-hamlet/xml-hamlet-0.4.0.9.ebuild,v 1.1 2014/12/14 08:50:45 gienah Exp $
+# $Id$
 
 EAPI=5
 

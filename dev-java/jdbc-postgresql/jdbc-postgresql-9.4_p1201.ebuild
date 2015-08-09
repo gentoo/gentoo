@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-postgresql/jdbc-postgresql-9.4_p1201.ebuild,v 1.1 2015/04/22 22:27:05 monsieurp Exp $
+# $Id$
 
 EAPI="5"
 

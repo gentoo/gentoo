@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/gtkradiant/gtkradiant-1.5.0_pre20060302.ebuild,v 1.3 2011/03/02 23:00:33 mr_bones_ Exp $
+# $Id$
 
 EAPI=2
 inherit eutils games rpm

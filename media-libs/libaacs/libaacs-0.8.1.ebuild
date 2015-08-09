@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libaacs/libaacs-0.8.1.ebuild,v 1.1 2015/05/11 06:52:55 aballier Exp $
+# $Id$
 
 EAPI=5
 

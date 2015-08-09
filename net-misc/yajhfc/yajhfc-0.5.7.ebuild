@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/yajhfc/yajhfc-0.5.7.ebuild,v 1.1 2015/03/22 09:09:50 ercpe Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/graphite2/graphite2-1.2.4-r1.ebuild,v 1.20 2015/07/11 20:40:13 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

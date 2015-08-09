@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_flvx/mod_flvx-0.0.1-r1.ebuild,v 1.1 2015/03/27 00:57:33 sping Exp $
+# $Id$
 
 inherit eutils apache-module
 

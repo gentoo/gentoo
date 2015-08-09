@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/reed/reed-5.4.ebuild,v 1.14 2014/11/15 12:29:35 jer Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

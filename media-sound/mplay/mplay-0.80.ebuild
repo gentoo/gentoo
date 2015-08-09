@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mplay/mplay-0.80.ebuild,v 1.8 2012/03/25 16:51:34 armin76 Exp $
+# $Id$
 
 DESCRIPTION="A Curses front-end for mplayer"
 HOMEPAGE="http://mplay.sourceforge.net"

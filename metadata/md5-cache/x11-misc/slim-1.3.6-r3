@@ -1,15 +1,15 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	pam	5f80e6013406d68612a7493314e3777	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=d1b45494123caf3f72042c72b7ecced8
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
 DEPEND=x11-libs/libXmu x11-libs/libX11 x11-libs/libXpm x11-libs/libXft x11-libs/libXrandr media-libs/libpng:0= virtual/jpeg:= x11-apps/sessreg consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( virtual/pam !x11-misc/slimlock ) virtual/pkgconfig x11-proto/xproto sys-devel/make >=dev-util/cmake-2.8.8 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) virtual/pkgconfig
 DESCRIPTION=Simple Login Manager
-EAPI=5
-HOMEPAGE=http://sourceforge.net/projects/slim.berlios/
-IUSE=branding pam consolekit
-KEYWORDS=amd64 arm ~mips ppc ppc64 sparc x86 ~x86-fbsd
 LICENSE=GPL-2
-PDEPEND=branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )
-RDEPEND=x11-libs/libXmu x11-libs/libX11 x11-libs/libXpm x11-libs/libXft x11-libs/libXrandr media-libs/libpng:0= virtual/jpeg:= x11-apps/sessreg consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( virtual/pam !x11-misc/slimlock )
+IUSE=branding pam consolekit
 REQUIRED_USE=consolekit? ( pam )
-SLOT=0
+PDEPEND=branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )
 SRC_URI=mirror://sourceforge/project/slim.berlios/slim-1.3.6.tar.gz
-_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=4df5ee9a1f65c5f06e9057398461b224
+KEYWORDS=amd64 arm ~mips ppc ppc64 sparc x86 ~x86-fbsd
+HOMEPAGE=http://sourceforge.net/projects/slim.berlios/
+RDEPEND=x11-libs/libXmu x11-libs/libX11 x11-libs/libXpm x11-libs/libXft x11-libs/libXrandr media-libs/libpng:0= virtual/jpeg:= x11-apps/sessreg consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( virtual/pam !x11-misc/slimlock )

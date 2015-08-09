@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/armv7a/package.use.mask,v 1.1 2015/01/25 11:54:12 pacho Exp $
+# $Id$
 
 # Pacho Ramos <pacho@gentoo.org> (25 Jan 2015)
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so

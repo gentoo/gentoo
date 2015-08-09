@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/soxr/soxr-0.1.1.ebuild,v 1.15 2014/06/08 13:01:51 ago Exp $
+# $Id$
 
 EAPI=5
 

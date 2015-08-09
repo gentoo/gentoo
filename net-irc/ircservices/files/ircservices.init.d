@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircservices/files/ircservices.init.d,v 1.6 2011/12/17 04:41:25 binki Exp $
+# $Id$
 
 depend() {
 	if [[ ${LOCALIRCD} = true ]]

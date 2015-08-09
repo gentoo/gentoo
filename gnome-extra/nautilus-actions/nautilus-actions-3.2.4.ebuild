@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nautilus-actions/nautilus-actions-3.2.4.ebuild,v 1.3 2014/12/19 13:38:50 pacho Exp $
+# $Id$
 
 EAPI=5
 GCONF_DEBUG="no"

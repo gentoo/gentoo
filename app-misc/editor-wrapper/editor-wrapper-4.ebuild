@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/editor-wrapper/editor-wrapper-4.ebuild,v 1.17 2014/01/18 03:03:10 vapier Exp $
+# $Id$
 
 EAPI=4
 

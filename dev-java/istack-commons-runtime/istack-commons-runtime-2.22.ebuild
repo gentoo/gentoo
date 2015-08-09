@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/istack-commons-runtime/istack-commons-runtime-2.22.ebuild,v 1.2 2015/06/12 16:36:46 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

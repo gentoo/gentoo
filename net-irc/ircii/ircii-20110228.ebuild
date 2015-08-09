@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircii/ircii-20110228.ebuild,v 1.6 2012/02/05 15:16:43 armin76 Exp $
+# $Id$
 
 EAPI=4
 

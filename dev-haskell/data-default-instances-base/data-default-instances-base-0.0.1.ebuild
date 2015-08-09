@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/data-default-instances-base/data-default-instances-base-0.0.1.ebuild,v 1.3 2013/07/29 05:27:13 ago Exp $
+# $Id$
 
 EAPI=5
 

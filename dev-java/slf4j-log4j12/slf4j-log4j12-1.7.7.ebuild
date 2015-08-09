@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/slf4j-log4j12/slf4j-log4j12-1.7.7.ebuild,v 1.1 2014/04/25 06:05:50 radhermit Exp $
+# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"

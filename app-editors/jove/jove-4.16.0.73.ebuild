@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jove/jove-4.16.0.73.ebuild,v 1.8 2013/02/28 17:07:15 ulm Exp $
+# $Id$
 
 EAPI=4
 

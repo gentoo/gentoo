@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/four-in-a-row/four-in-a-row-3.16.2.ebuild,v 1.1 2015/06/09 15:11:40 eva Exp $
+# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"

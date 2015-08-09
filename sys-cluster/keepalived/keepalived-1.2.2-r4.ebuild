@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/keepalived/keepalived-1.2.2-r4.ebuild,v 1.5 2012/09/15 18:37:35 armin76 Exp $
+# $Id$
 
 EAPI=4
 

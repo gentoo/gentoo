@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/qct/qct-1.7-r1.ebuild,v 1.1 2015/02/25 01:04:48 idella4 Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sys-Virt/Sys-Virt-1.2.9.ebuild,v 1.1 2014/12/07 11:53:29 maksbotan Exp $
+# $Id$
 
 EAPI=5
 

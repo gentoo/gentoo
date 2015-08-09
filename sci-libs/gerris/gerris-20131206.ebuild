@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gerris/gerris-20131206.ebuild,v 1.1 2014/01/15 21:12:19 bicatali Exp $
+# $Id$
 
 EAPI=5
 

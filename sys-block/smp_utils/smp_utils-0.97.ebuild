@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/smp_utils/smp_utils-0.97.ebuild,v 1.1 2012/02/23 07:20:01 radhermit Exp $
+# $Id$
 
 EAPI=4
 

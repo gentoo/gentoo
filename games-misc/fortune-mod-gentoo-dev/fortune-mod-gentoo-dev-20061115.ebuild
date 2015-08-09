@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-gentoo-dev/fortune-mod-gentoo-dev-20061115.ebuild,v 1.2 2010/10/08 03:49:37 leio Exp $
+# $Id$
 
 DESCRIPTION="Fortune database of #gentoo-dev quotes"
 HOMEPAGE="http://dev.gentoo.org/~avenj"

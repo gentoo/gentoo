@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libXcm/libXcm-0.5.2-r1.ebuild,v 1.8 2014/12/09 05:45:56 zlogene Exp $
+# $Id$
 
 EAPI=5
 

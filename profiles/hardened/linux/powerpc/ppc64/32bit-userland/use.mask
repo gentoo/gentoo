@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/powerpc/ppc64/32bit-userland/use.mask,v 1.2 2012/04/26 13:59:23 xarthisius Exp $
+# $Id$
 
 # We mask this since we're not really a multilib profile
 multilib

@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/cpp2latex/cpp2latex-2.3-r1.ebuild,v 1.6 2008/11/28 19:32:28 tcunha Exp $
+# $Id$
 
 inherit eutils
 

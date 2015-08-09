@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/vtwm/vtwm-5.4.6a.ebuild,v 1.12 2007/07/02 10:54:16 coldwind Exp $
+# $Id$
 
 DESCRIPTION="one of many TWM descendants and implements a Virtual Desktop"
 HOMEPAGE="http://www.vtwm.org/"

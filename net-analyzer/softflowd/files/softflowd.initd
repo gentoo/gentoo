@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/softflowd/files/softflowd.initd,v 1.2 2012/03/21 07:52:49 robbat2 Exp $
+# $Id$
 
 depend() {
 	need net

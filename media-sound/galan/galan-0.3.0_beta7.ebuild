@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/galan/galan-0.3.0_beta7.ebuild,v 1.8 2013/01/28 02:43:11 mattst88 Exp $
+# $Id$
 
 EAPI=4
 inherit flag-o-matic toolchain-funcs

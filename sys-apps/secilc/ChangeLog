@@ -1,9 +1,0 @@
-# ChangeLog for sys-apps/secilc
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/secilc/ChangeLog,v 1.1 2015/06/09 15:41:47 swift Exp $
-
-*secilc-9999 (09 Jun 2015)
-
-  09 Jun 2015; Sven Vermeulen <swift@gentoo.org> +metadata.xml,
-  +secilc-9999.ebuild:
-  Adding secilc-9999 to better support upstream integrations

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/files/nvidia-persistenced.init,v 1.2 2014/09/19 22:09:28 jer Exp $
+# $Id$
 
 pidfile="/var/run/nvidia-persistenced/nvidia-persistenced.pid"
 

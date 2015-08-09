@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyfltk/pyfltk-1.3.0-r2.ebuild,v 1.6 2015/07/23 20:17:22 pacho Exp $
+# $Id$
 
 # FIXME: MakeSwig.py execution should be made work from pyfltk-1.1.5.ebuild
 

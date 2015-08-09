@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnome-specimen/gnome-specimen-0.4-r1.ebuild,v 1.2 2015/01/29 10:54:33 pacho Exp $
+# $Id$
 
 EAPI=5
 GCONF_DEBUG=no

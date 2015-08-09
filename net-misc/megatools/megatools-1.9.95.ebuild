@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/megatools/megatools-1.9.95.ebuild,v 1.1 2015/05/08 08:01:41 dlan Exp $
+# $Id$
 
 EAPI=5
 

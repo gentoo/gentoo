@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sgpp-lite-arm-linux-bin/sgpp-lite-arm-linux-bin-2010.09.50.ebuild,v 1.1 2010/12/02 15:15:56 vapier Exp $
+# $Id$
 
 CPU="arm"
 TARGET="arm-none-linux-gnueabi"

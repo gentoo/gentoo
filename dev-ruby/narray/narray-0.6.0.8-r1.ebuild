@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/narray/narray-0.6.0.8-r1.ebuild,v 1.6 2014/06/08 11:06:07 ago Exp $
+# $Id$
 
 EAPI=5
 

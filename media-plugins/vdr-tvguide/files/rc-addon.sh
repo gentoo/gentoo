@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-tvguide/files/rc-addon.sh,v 1.2 2014/02/01 19:39:34 idl0r Exp $
+# $Id$
 
 plugin_pre_vdr_start() {
 	if [ -n "${TVGUIDE_EPGIMAGESPATH}" ]; then

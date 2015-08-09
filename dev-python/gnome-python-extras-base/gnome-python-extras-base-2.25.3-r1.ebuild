@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gnome-python-extras-base/gnome-python-extras-base-2.25.3-r1.ebuild,v 1.11 2014/10/11 11:49:01 maekke Exp $
+# $Id$
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )

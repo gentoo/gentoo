@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cxsparse/cxsparse-2.2.1.ebuild,v 1.17 2015/02/22 00:47:15 mattst88 Exp $
+# $Id$
 
 inherit autotools eutils
 

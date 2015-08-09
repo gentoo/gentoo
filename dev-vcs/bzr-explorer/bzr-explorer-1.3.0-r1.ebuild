@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr-explorer/bzr-explorer-1.3.0-r1.ebuild,v 1.1 2015/03/10 14:34:45 idella4 Exp $
+# $Id$
 
 EAPI=5
 

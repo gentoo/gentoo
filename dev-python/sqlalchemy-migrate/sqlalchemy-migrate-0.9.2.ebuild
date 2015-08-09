@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlalchemy-migrate/sqlalchemy-migrate-0.9.2.ebuild,v 1.11 2015/04/14 12:51:19 ago Exp $
+# $Id$
 
 EAPI=5
 # py3 has a syntax errors. On testing it is underdone

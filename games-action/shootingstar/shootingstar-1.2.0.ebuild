@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/shootingstar/shootingstar-1.2.0.ebuild,v 1.10 2015/02/06 13:41:29 ago Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils gnome2-utils games

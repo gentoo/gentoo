@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/triptych-demo/triptych-demo-0.ebuild,v 1.11 2015/03/29 01:56:17 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

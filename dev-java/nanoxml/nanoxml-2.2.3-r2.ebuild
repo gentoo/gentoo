@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/nanoxml/nanoxml-2.2.3-r2.ebuild,v 1.7 2010/01/03 21:25:18 fauli Exp $
+# $Id$
 
 JAVA_PKG_IUSE="doc source"
 

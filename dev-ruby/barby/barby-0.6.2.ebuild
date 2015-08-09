@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/barby/barby-0.6.2.ebuild,v 1.1 2014/12/30 08:02:48 graaff Exp $
+# $Id$
 
 EAPI=5
 

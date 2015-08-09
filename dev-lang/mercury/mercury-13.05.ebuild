@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mercury/mercury-13.05.ebuild,v 1.1 2013/06/03 07:39:23 keri Exp $
+# $Id$
 
 EAPI=2
 

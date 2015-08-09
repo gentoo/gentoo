@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/s390/make.defaults,v 1.11 2014/07/01 08:28:31 mgorny Exp $
+# $Id$
 
 ARCH="s390"
 ACCEPT_KEYWORDS="s390 ~s390"

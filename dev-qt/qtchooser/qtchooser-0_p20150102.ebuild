@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtchooser/qtchooser-0_p20150102.ebuild,v 1.10 2015/08/05 08:49:58 zlogene Exp $
+# $Id$
 
 EAPI=5
 

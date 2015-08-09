@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ssl-cert.eclass,v 1.24 2014/03/20 19:33:13 vapier Exp $
+# $Id$
 
 # @ECLASS: ssl-cert.eclass
 # @MAINTAINER:

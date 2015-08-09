@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/check_mk/check_mk-1.2.4_p5.ebuild,v 1.1 2014/07/17 23:10:12 dlan Exp $
+# $Id$
 
 EAPI="5"
 MY_P="${P/_p/p}"

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes/fvwm-themes-0.7.0.ebuild,v 1.18 2011/11/11 17:13:22 ssuominen Exp $
+# $Id$
 
 EAPI=2
 inherit autotools eutils

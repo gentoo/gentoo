@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/cwm/cwm-5.5.ebuild,v 1.1 2014/03/13 18:48:10 xmw Exp $
+# $Id$
 
 EAPI=5
 

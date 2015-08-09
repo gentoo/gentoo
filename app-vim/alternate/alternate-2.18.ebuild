@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/alternate/alternate-2.18.ebuild,v 1.9 2013/10/21 11:52:14 grobian Exp $
+# $Id$
 
 inherit vim-plugin eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gobi_loader/gobi_loader-0.7-r2.ebuild,v 1.2 2014/07/30 19:42:05 ssuominen Exp $
+# $Id$
 
 EAPI="2"
 inherit eutils multilib udev

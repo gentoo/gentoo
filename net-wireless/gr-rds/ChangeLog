@@ -1,9 +1,0 @@
-# ChangeLog for net-wireless/gr-rds
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gr-rds/ChangeLog,v 1.1 2015/05/12 15:12:54 zerochaos Exp $
-
-*gr-rds-9999 (12 May 2015)
-
-  12 May 2015; Rick Farina <zerochaos@gentoo.org> +gr-rds-9999.ebuild,
-  +metadata.xml:
-  initial commit of gr-rds based on ebuild from jannis on bug #533768

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/freebsd-usbin-8.2-r2.ebuild,v 1.2 2011/11/08 11:11:59 naota Exp $
+# $Id$
 
 EAPI=2
 

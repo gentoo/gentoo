@@ -1,6 +1,6 @@
 # Copyright 2012-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/innoextract/innoextract-1.2.ebuild,v 1.1 2012/06/29 21:26:51 hasufell Exp $
+# $Id$
 
 EAPI=4
 

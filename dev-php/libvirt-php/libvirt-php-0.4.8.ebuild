@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/libvirt-php/libvirt-php-0.4.8.ebuild,v 1.1 2014/10/02 13:50:42 grknight Exp $
+# $Id$
 
 EAPI=5
 

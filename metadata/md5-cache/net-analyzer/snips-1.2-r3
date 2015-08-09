@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare unpack
-DESCRIPTION=System & Network Integrated Polling Software
-EAPI=4
-HOMEPAGE=http://www.netplex-tech.com/snips/
-KEYWORDS=~amd64
-LICENSE=SNIPS BSD HPND GPL-1+ RSA free-noncomm
-RDEPEND=dev-lang/perl virtual/mailx net-analyzer/rrdtool >=net-misc/iputils-20071127-r2 sys-libs/gdbm sys-libs/ncurses
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	base	84d9f879f57a8316ff02be0373a3d6f9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c2a76e205916e1923eb59cab8c91bfce
 SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare unpack
+EAPI=4
+DESCRIPTION=System & Network Integrated Polling Software
+LICENSE=SNIPS BSD HPND GPL-1+ RSA free-noncomm
 SRC_URI=http://www.netplex-tech.com/software/downloads/snips/snips-1.2.tar.gz
-_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
-_md5_=95e50a3670d6bd1dbe9324a4240dd195
+KEYWORDS=~amd64
+HOMEPAGE=http://www.netplex-tech.com/snips/
+RDEPEND=dev-lang/perl virtual/mailx net-analyzer/rrdtool >=net-misc/iputils-20071127-r2 sys-libs/gdbm sys-libs/ncurses

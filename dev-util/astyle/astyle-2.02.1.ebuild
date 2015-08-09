@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/astyle/astyle-2.02.1.ebuild,v 1.5 2012/07/29 16:56:41 armin76 Exp $
+# $Id$
 
 EAPI=4
 

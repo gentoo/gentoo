@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libicns/libicns-0.8.1.ebuild,v 1.1 2012/09/05 22:16:25 radhermit Exp $
+# $Id$
 
 EAPI=4
 

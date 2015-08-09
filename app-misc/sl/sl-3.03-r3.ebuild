@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/sl/sl-3.03-r3.ebuild,v 1.8 2012/12/27 08:38:56 armin76 Exp $
+# $Id$
 
 EAPI=4
 

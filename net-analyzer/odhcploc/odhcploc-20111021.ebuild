@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/odhcploc/odhcploc-20111021.ebuild,v 1.3 2014/07/15 00:52:27 jer Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

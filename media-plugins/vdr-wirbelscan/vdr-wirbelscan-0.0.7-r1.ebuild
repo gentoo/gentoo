@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-wirbelscan/vdr-wirbelscan-0.0.7-r1.ebuild,v 1.1 2014/01/06 14:52:20 hd_brummy Exp $
+# $Id$
 
 EAPI=5
 

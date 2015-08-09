@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/py-xmlrpc/py-xmlrpc-0.8.8.3-r1.ebuild,v 1.7 2012/02/21 08:46:27 patrick Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="2"

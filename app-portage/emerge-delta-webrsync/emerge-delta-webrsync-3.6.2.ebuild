@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/emerge-delta-webrsync/emerge-delta-webrsync-3.6.2.ebuild,v 1.7 2014/09/27 19:52:46 zmedico Exp $
+# $Id$
 
 EAPI=4
 DESCRIPTION="emerge-webrsync using patches to minimize bandwidth"

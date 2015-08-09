@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/shared-objects/shared-objects-1.4-r3.ebuild,v 1.3 2007/04/06 19:00:03 betelgeuse Exp $
+# $Id$
 
 JAVA_PKG_IUSE="source"
 

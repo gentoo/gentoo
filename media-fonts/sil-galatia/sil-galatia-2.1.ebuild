@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/sil-galatia/sil-galatia-2.1.ebuild,v 1.3 2012/05/27 12:32:35 yngwin Exp $
+# $Id$
 
 inherit font
 

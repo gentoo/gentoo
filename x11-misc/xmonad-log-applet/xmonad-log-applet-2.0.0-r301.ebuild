@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xmonad-log-applet/xmonad-log-applet-2.0.0-r301.ebuild,v 1.2 2015/02/15 14:35:25 slyfox Exp $
+# $Id$
 
 EAPI=4
 

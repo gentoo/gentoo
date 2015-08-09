@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-SAX-Writer/XML-SAX-Writer-0.560.0.ebuild,v 1.1 2015/07/01 11:24:48 zlogene Exp $
+# $Id$
 
 EAPI=5
 

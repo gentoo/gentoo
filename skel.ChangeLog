@@ -39,9 +39,9 @@
 
   Every new version or revision of the package should be marked by a '*'
   separator line as above to indicate where in the chronology it was first
-  added to our CVS tree. Any changes since the last revision, really _any
+  added to our Git tree. Any changes since the last revision, really _any
   changes at all_ have to be added to the top of the file, underneath the
-  initial copyright and cvs header comments, in exactly the same format as this
+  initial copyright and file header comments, in exactly the same format as this
   comment. If you are modifying older ebuilds, simply note them as changed
   files and add your entry to the top of the ChangeLog. Resist the temptation
   to "organize" your ChangeLog entries by placing them under the "correct" "*"
@@ -55,7 +55,7 @@
   of 80 characters.  The changed_files can be omitted if they are obvious; for
   example, if you are only modifying the .ebuild file and committing a new rev
   of a package.  Any details about what exactly changed in the code should be
-  added as a message when the changes are committed to cvs, not in this file.
+  added as a message when the changes are committed to Git, not in this file.
 
 -- A word regarding credit:
 

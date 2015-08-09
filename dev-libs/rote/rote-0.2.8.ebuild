@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/rote/rote-0.2.8.ebuild,v 1.4 2012/10/23 17:18:52 mr_bones_ Exp $
+# $Id$
 
 EAPI=4
 

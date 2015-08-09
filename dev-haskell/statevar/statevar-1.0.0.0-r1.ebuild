@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/statevar/statevar-1.0.0.0-r1.ebuild,v 1.4 2013/09/23 19:16:35 ago Exp $
+# $Id$
 
 EAPI=5
 

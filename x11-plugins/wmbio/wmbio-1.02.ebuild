@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbio/wmbio-1.02.ebuild,v 1.12 2010/09/01 07:16:26 s4t4n Exp $
+# $Id$
 
 EAPI=2
 inherit eutils

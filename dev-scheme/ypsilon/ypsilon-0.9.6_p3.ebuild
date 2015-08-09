@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/ypsilon/ypsilon-0.9.6_p3.ebuild,v 1.3 2014/06/19 13:01:36 creffett Exp $
+# $Id$
 EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs

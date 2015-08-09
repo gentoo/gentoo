@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/airsnort/airsnort-0.2.7e.ebuild,v 1.8 2012/05/04 06:41:54 jdhore Exp $
+# $Id$
 
 DESCRIPTION="802.11b Wireless Packet Sniffer/WEP Cracker"
 HOMEPAGE="http://airsnort.shmoo.com/"

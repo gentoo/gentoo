@@ -3,7 +3,7 @@ http://bugs.gentoo.org/292856
 --- a/config/Makefile.am
 +++ b/config/Makefile.am
 @@ -1,6 +1,6 @@
- # $Id: gmrun-0.9.2-sysconfdir.patch,v 1.2 2014/09/08 08:18:55 jer Exp $
+ # $Id$
  
 -myrcdir = @PACKAGE_DATA_DIR@
 +myrcdir = $(sysconfdir)

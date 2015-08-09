@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/battalion/battalion-1.4b.ebuild,v 1.18 2015/03/30 22:36:05 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

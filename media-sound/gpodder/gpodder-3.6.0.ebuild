@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gpodder/gpodder-3.6.0.ebuild,v 1.3 2014/04/06 10:42:39 eva Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

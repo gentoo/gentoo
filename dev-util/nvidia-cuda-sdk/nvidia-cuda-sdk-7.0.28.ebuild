@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-sdk/nvidia-cuda-sdk-7.0.28.ebuild,v 1.1 2015/05/12 11:06:56 jlec Exp $
+# $Id$
 
 EAPI=5
 

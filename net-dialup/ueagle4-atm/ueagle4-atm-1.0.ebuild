@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ueagle4-atm/ueagle4-atm-1.0.ebuild,v 1.3 2012/06/16 14:12:40 pacho Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/libwww-perl/libwww-perl-6.50.0.ebuild,v 1.12 2015/04/05 00:06:01 vapier Exp $
+# $Id$
 
 EAPI=5
 

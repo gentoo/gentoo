@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/openggsn/openggsn-9999.ebuild,v 1.1 2014/05/01 16:58:36 zx2c4 Exp $
+# $Id$
 
 EAPI=5
 

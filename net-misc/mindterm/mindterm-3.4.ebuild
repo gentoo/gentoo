@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mindterm/mindterm-3.4.ebuild,v 1.4 2012/02/03 22:51:56 ranger Exp $
+# $Id$
 
 EAPI="2"
 WANT_ANT_TASKS="ant-nodeps"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/layman/layman-2.1.0-r3.ebuild,v 1.2 2014/09/28 20:45:51 twitch153 Exp $
+# $Id$
 
 EAPI="5"
 

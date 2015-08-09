@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/apsfilter/apsfilter-7.2.8.ebuild,v 1.2 2013/03/10 01:54:43 ottxor Exp $
+# $Id$
 
 EAPI=4
 

@@ -1,6 +1,6 @@
 " Default Gentoo configuration file for neovim
 " Based on the default vimrc shipped by Gentoo with app-editors/vim-core
-" $Header: /var/cvsroot/gentoo-x86/app-editors/neovim/files/nvimrc,v 1.1 2015/02/26 06:08:10 yngwin Exp $
+" $Id$
 
 " You can override any of these settings on a global basis via the
 " "/etc/vim/nvimrc.local" file, and on a per-user basis via "~/.nvimrc".

@@ -2,7 +2,7 @@ diff -ur capiisdnmon-0.42.orig/capiinfo.cpp capiisdnmon-0.42/capiinfo.cpp
 --- capiisdnmon-0.42.orig/capiinfo.cpp	2005-01-31 01:55:40.000000000 +0200
 +++ capiisdnmon-0.42/capiinfo.cpp	2009-08-10 13:45:13.000000000 +0300
 @@ -10,6 +10,7 @@
- static const char capiinfo_cpp[] = "$Id: capiisdnmon-0.42-gcc44.patch,v 1.1 2009/08/10 10:43:38 ssuominen Exp $";
+ static const char capiinfo_cpp[] = "$Id$";
  
  #include "capiinfo.h"
 +#include <stdio.h>

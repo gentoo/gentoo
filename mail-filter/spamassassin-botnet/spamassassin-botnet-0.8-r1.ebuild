@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin-botnet/spamassassin-botnet-0.8-r1.ebuild,v 1.2 2014/11/09 22:19:00 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

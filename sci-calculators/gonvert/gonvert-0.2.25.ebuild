@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/gonvert/gonvert-0.2.25.ebuild,v 1.2 2012/08/04 21:15:30 bicatali Exp $
+# $Id$
 
 EAPI=4
 

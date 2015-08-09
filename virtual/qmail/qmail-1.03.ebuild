@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/virtual/qmail/qmail-1.03.ebuild,v 1.11 2011/05/15 10:11:50 xarthisius Exp $
+# $Id$
 
 DESCRIPTION="Virtual for qmail"
 HOMEPAGE=""

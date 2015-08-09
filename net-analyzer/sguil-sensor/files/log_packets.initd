@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sguil-sensor/files/log_packets.initd,v 1.5 2014/07/16 23:56:11 jer Exp $
+# $Id$
 
 extra_commands="cleandisk"
 

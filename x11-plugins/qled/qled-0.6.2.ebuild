@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/qled/qled-0.6.2.ebuild,v 1.6 2013/07/23 14:24:52 kensington Exp $
+# $Id$
 
 EAPI=3
 

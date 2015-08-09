@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/django-tinymce/django-tinymce-1.5.3.ebuild,v 1.1 2015/05/30 13:05:21 maksbotan Exp $
+# $Id$
 
 EAPI=5
 

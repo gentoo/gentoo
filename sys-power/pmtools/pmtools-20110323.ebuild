@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/pmtools/pmtools-20110323.ebuild,v 1.1 2011/04/03 03:58:56 nerdboy Exp $
+# $Id$
 
 EAPI=2
 

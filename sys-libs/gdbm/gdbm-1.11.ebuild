@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/gdbm/gdbm-1.11.ebuild,v 1.15 2014/10/20 17:43:50 vapier Exp $
+# $Id$
 
 EAPI="4"
 

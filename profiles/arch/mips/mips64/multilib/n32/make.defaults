@@ -1,6 +1,6 @@
 # Copyright 2011-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/mips64/multilib/n32/make.defaults,v 1.4 2014/06/30 15:10:10 mgorny Exp $
+# $Id$
 
 MULTILIB_ABIS="n64 o32 n32"
 DEFAULT_ABI="n32"

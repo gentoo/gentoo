@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/base/package.use.mask,v 1.697 2015/08/04 13:38:19 jlec Exp $
+# $Id$
 
 # This file requires >=portage-2.1.1
 # New entries go on top.

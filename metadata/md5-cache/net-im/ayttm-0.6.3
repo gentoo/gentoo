@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ed32a46b7f6f59d4e6ec4b25aed30932
+SLOT=0
 DEFINED_PHASES=configure install prepare
+EAPI=4
 DEPEND=app-text/enchant dev-libs/glib:2 dev-libs/openssl virtual/libiconv x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXpm x11-libs/pango crypt? ( app-crypt/gpgme ) webcam? ( media-libs/jasper ) xscreensaver? ( x11-libs/libXScrnSaver ) yahoo? ( net-libs/libyahoo2 ) sys-devel/bison sys-devel/flex nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A multi-protocol instant messaging client
-EAPI=4
-HOMEPAGE=http://ayttm.sourceforge.net/
-IUSE=crypt icq irc xmpp lj msn nls oscar smtp webcam xscreensaver yahoo
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=app-text/enchant dev-libs/glib:2 dev-libs/openssl virtual/libiconv x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXpm x11-libs/pango crypt? ( app-crypt/gpgme ) webcam? ( media-libs/jasper ) xscreensaver? ( x11-libs/libXScrnSaver ) yahoo? ( net-libs/libyahoo2 ) webcam? ( media-tv/xawtv )
-SLOT=0
+IUSE=crypt icq irc xmpp lj msn nls oscar smtp webcam xscreensaver yahoo
 SRC_URI=mirror://sourceforge/ayttm/0.6.3/ayttm-0.6.3.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
-_md5_=5e76b8e532bc1155bab232f88610674e
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://ayttm.sourceforge.net/
+RDEPEND=app-text/enchant dev-libs/glib:2 dev-libs/openssl virtual/libiconv x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXpm x11-libs/pango crypt? ( app-crypt/gpgme ) webcam? ( media-libs/jasper ) xscreensaver? ( x11-libs/libXScrnSaver ) yahoo? ( net-libs/libyahoo2 ) webcam? ( media-tv/xawtv )

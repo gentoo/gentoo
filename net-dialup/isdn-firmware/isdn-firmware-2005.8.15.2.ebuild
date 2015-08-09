@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn-firmware/isdn-firmware-2005.8.15.2.ebuild,v 1.5 2014/05/24 21:48:03 jer Exp $
+# $Id$
 
 EAPI=5
 inherit multilib rpm versionator

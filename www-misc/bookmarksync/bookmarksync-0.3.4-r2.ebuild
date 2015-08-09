@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/bookmarksync/bookmarksync-0.3.4-r2.ebuild,v 1.4 2012/12/28 11:22:11 ago Exp $
+# $Id$
 
 EAPI="2"
 

@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr.ffnetdev
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-ffnetdev/files/confd,v 1.1 2006/04/02 15:50:28 hd_brummy Exp $
+# $Id$
 
 ## listen on this port for OSD connect
 #  available Parameter are portnumber

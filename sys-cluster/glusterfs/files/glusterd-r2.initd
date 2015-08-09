@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/glusterfs/files/glusterd-r2.initd,v 1.1 2015/03/23 12:12:44 ultrabug Exp $
+# $Id$
 
 description="Gluster elastic volume management daemon"
 command="/usr/sbin/glusterd"

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/serdisplib/serdisplib-1.97.9.ebuild,v 1.6 2014/03/05 15:22:56 ago Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

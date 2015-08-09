@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/python-mode/python-mode-6.1.1.ebuild,v 1.8 2014/01/15 09:17:01 ago Exp $
+# $Id$
 
 EAPI=5
 

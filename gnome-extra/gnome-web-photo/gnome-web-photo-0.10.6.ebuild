@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-web-photo/gnome-web-photo-0.10.6.ebuild,v 1.3 2012/10/04 14:53:55 ago Exp $
+# $Id$
 
 EAPI="4"
 GCONF_DEBUG="yes"

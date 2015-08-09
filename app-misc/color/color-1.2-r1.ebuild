@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/color/color-1.2-r1.ebuild,v 1.6 2011/01/21 16:42:18 xarthisius Exp $
+# $Id$
 
 EAPI="3"
 

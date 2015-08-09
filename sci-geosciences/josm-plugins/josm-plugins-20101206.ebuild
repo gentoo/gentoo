@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/josm-plugins/josm-plugins-20101206.ebuild,v 1.1 2010/12/06 01:40:07 hanno Exp $
+# $Id$
 
 EAPI="3"
 

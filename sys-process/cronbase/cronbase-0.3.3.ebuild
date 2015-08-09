@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/cronbase-0.3.3.ebuild,v 1.10 2014/01/18 03:47:15 vapier Exp $
+# $Id$
 
 inherit user
 

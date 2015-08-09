@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cproto/cproto-4.7e.ebuild,v 1.9 2011/11/12 13:28:09 xmw Exp $
+# $Id$
 
 MY_PV="4_7e"
 MY_P=${PN}-${MY_PV}

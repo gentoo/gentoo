@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/aclock/aclock-0.4.0.ebuild,v 1.4 2012/06/07 14:44:18 xmw Exp $
+# $Id$
 
 EAPI=4
 inherit gnustep-2

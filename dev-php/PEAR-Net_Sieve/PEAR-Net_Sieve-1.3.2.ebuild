@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_Sieve/PEAR-Net_Sieve-1.3.2.ebuild,v 1.10 2014/01/26 18:36:34 olemarkus Exp $
+# $Id$
 
 EAPI="4"
 

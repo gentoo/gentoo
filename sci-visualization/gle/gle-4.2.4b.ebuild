@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-visualization/gle/gle-4.2.4b.ebuild,v 1.3 2013/03/02 23:27:19 hwoarang Exp $
+# $Id$
 
 EAPI=4
 inherit eutils elisp-common qt4-r2 flag-o-matic autotools

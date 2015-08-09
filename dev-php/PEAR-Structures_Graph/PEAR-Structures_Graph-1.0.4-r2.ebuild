@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Structures_Graph/PEAR-Structures_Graph-1.0.4-r2.ebuild,v 1.1 2015/04/15 02:17:47 grknight Exp $
+# $Id$
 
 # BIG FAT WARNING!
 # Do not use any pear eclass here since pear itself depends on this package.

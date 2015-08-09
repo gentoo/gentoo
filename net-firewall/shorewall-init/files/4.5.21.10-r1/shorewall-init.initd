@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall-init/files/4.5.21.10-r1/shorewall-init.initd,v 1.1 2014/11/18 11:13:58 xmw Exp $
+# $Id$
 
 SHOREWALLRC_FILE="@GENTOO_PORTAGE_EPREFIX@/usr/share/shorewall/shorewallrc"
 CONFIG_FILE="@GENTOO_PORTAGE_EPREFIX@/etc/conf.d/${SVCNAME}"

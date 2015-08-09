@@ -1,9 +1,0 @@
-# ChangeLog for dev-python/socketio-client
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/socketio-client/ChangeLog,v 1.1 2015/07/27 19:55:21 zmedico Exp $
-
-*socketio-client-0.5.6 (27 Jul 2015)
-
-  27 Jul 2015; Zac Medico <zmedico@gentoo.org> +metadata.xml,
-  +socketio-client-0.5.6.ebuild:
-  Add socketio-client.

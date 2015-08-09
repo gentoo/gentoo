@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/vnstat/files/vnstatd.initd,v 1.6 2012/01/01 01:19:16 idl0r Exp $
+# $Id$
 
 extra_started_commands="reload"
 

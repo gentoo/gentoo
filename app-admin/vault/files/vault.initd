@@ -1,7 +1,7 @@
 #!/sbin/openrc-run
 # Copyright 2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/vault/files/vault.initd,v 1.1 2015/05/26 03:17:37 zmedico Exp $
+# $Id$
 
 description="vault server"
 group=${group:-${SVCNAME}}

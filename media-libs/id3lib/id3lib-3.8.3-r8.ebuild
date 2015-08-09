@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/id3lib/id3lib-3.8.3-r8.ebuild,v 1.10 2013/05/03 18:05:14 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit autotools eutils

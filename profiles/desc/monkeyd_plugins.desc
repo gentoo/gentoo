@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/desc/monkeyd_plugins.desc,v 1.1 2013/05/28 12:15:48 blueness Exp $
+# $Id$
 
 # This file contains descriptions of MONKEYD_PLUGINS USE_EXPAND flags for www-servers/monkeyd.
 # All plugins are included here except cgi and fastcgi which are global use flags.

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-docs/linux-docs-3.12.30.ebuild,v 1.1 2014/10/17 13:15:09 mpagano Exp $
+# $Id$
 
 EAPI=5
 inherit toolchain-funcs

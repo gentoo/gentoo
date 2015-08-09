@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/keylookup/keylookup-2.2-r9999.ebuild,v 1.1 2010/08/20 21:41:24 robbat2 Exp $
+# $Id$
 
 DESCRIPTION="A tool to fetch PGP keys from keyservers"
 HOMEPAGE="http://www.palfrader.org/keylookup/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-ldap/qmail-ldap-1.03-r8.ebuild,v 1.8 2013/02/28 17:53:55 zx2c4 Exp $
+# $Id$
 
 GENQMAIL_PV=20080406
 QMAIL_SPP_PV=0.42

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-check/dnssec-check-1.13.ebuild,v 1.2 2013/03/02 22:48:59 hwoarang Exp $
+# $Id$
 
 EAPI=4
 

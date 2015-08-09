@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/yaala/yaala-0.7.3-r1.ebuild,v 1.4 2013/05/26 07:24:26 ago Exp $
+# $Id$
 
 EAPI="5"
 

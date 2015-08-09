@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/roxterm/roxterm-2.9.3.ebuild,v 1.1 2014/09/05 10:50:45 jauhien Exp $
+# $Id$
 
 EAPI=5
 inherit gnome2-utils python toolchain-funcs

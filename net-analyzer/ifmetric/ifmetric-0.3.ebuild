@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ifmetric/ifmetric-0.3.ebuild,v 1.6 2013/11/06 04:05:13 patrick Exp $
+# $Id$
 
 EAPI=4
 

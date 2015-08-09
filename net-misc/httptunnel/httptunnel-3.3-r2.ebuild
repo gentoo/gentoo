@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/httptunnel/httptunnel-3.3-r2.ebuild,v 1.4 2012/06/29 12:55:46 ranger Exp $
+# $Id$
 
 EAPI=4
 

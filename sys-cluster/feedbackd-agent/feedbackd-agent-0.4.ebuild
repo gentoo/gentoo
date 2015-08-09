@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/feedbackd-agent/feedbackd-agent-0.4.ebuild,v 1.5 2010/03/29 12:25:26 ssuominen Exp $
+# $Id$
 
 inherit eutils flag-o-matic
 

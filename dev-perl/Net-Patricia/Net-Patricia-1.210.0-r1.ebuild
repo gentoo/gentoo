@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Patricia/Net-Patricia-1.210.0-r1.ebuild,v 1.15 2015/05/13 07:01:11 jmorgan Exp $
+# $Id$
 
 EAPI=5
 

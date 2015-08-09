@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/calc/calc-2.12.1.5.ebuild,v 1.5 2008/01/28 20:01:17 grobian Exp $
+# $Id$
 
 DESCRIPTION="An arbitrary precision C-like arithmetic system"
 HOMEPAGE="http://www.isthe.com/chongo/tech/comp/calc/"

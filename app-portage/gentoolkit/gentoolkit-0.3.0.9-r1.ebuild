@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/gentoolkit-0.3.0.9-r1.ebuild,v 1.7 2015/05/27 15:23:25 floppym Exp $
+# $Id$
 
 EAPI="5"
 

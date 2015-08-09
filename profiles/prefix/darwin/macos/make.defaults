@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/make.defaults,v 1.2 2012/09/09 10:23:33 grobian Exp $
+# $Id$
 
 # on OSX one should have objc available
 USE="objc objc++"

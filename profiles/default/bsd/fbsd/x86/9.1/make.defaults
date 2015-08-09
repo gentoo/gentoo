@@ -1,5 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/x86/9.1/make.defaults,v 1.2 2015/06/20 21:55:23 chewi Exp $
+# $Id$
 
 CHOST="i486-gentoo-freebsd9.1"

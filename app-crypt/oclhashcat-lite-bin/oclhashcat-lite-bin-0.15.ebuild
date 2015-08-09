@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/oclhashcat-lite-bin/oclhashcat-lite-bin-0.15.ebuild,v 1.3 2013/08/24 18:29:58 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

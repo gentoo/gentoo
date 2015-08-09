@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-timed/files/timed.rc6,v 1.5 2004/07/15 00:05:17 agriffis Exp $
+# $Id$
 
 depend() {
 	need net

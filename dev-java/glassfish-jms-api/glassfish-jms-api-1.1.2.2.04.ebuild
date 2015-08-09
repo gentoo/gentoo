@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/glassfish-jms-api/glassfish-jms-api-1.1.2.2.04.ebuild,v 1.5 2013/06/27 21:31:36 aballier Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="doc source"

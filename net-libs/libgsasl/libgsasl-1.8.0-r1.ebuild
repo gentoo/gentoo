@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libgsasl/libgsasl-1.8.0-r1.ebuild,v 1.10 2014/05/20 10:02:35 jer Exp $
+# $Id$
 
 EAPI="4"
 

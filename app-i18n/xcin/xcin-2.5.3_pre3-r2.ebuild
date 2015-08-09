@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/xcin/xcin-2.5.3_pre3-r2.ebuild,v 1.4 2009/12/29 16:10:05 ssuominen Exp $
+# $Id$
 
 inherit multilib eutils autotools libtool
 

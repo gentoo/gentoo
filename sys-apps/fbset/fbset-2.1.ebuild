@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/fbset/fbset-2.1.ebuild,v 1.35 2012/07/10 08:50:50 flameeyes Exp $
+# $Id$
 
 inherit toolchain-funcs flag-o-matic eutils
 

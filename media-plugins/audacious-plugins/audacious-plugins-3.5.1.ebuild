@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-plugins/audacious-plugins-3.5.1.ebuild,v 1.2 2014/07/31 21:44:25 chainsaw Exp $
+# $Id$
 
 EAPI=5
 inherit eutils

@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/tex4ht/tex4ht-20090611_p1038-r1.ebuild,v 1.10 2012/07/25 14:18:20 ottxor Exp $
+# $Id$
 
 EAPI=4
 

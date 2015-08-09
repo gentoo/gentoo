@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/probe/probe-2.12.110413.ebuild,v 1.7 2012/07/10 17:59:09 ranger Exp $
+# $Id$
 
 EAPI=4
 

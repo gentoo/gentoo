@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/robodoc/robodoc-4.99.36.ebuild,v 1.2 2014/01/17 18:50:27 creffett Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lcms/lcms-2.6-r1.ebuild,v 1.10 2014/11/10 13:51:39 ago Exp $
+# $Id$
 
 EAPI=5
 AUTOTOOLS_PRUNE_LIBTOOL_FILES="modules"

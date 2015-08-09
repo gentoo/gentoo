@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/hdl_dump/hdl_dump-0.8.6.20060901.ebuild,v 1.7 2015/04/06 09:42:05 tupone Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs versionator

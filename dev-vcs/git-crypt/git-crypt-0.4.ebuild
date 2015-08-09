@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-crypt/git-crypt-0.4.ebuild,v 1.1 2014/11/21 05:33:36 patrick Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,5 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/amd64/13.0/x32/make.defaults,v 1.1 2013/01/15 23:08:00 dilfridge Exp $
+# $Id$
 
 CHOST="x86_64-pc-linux-gnux32"

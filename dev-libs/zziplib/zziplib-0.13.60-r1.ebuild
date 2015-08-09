@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/zziplib/zziplib-0.13.60-r1.ebuild,v 1.14 2013/04/20 00:07:18 vapier Exp $
+# $Id$
 
 EAPI="2"
 # PYTHON_BDEPEND="2"

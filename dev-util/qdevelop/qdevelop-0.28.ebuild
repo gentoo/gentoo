@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qdevelop/qdevelop-0.28.ebuild,v 1.10 2014/08/10 21:29:07 slyfox Exp $
+# $Id$
 
 EAPI=4
 

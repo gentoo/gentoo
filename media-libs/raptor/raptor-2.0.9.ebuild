@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/raptor/raptor-2.0.9.ebuild,v 1.13 2014/02/04 23:33:05 dilfridge Exp $
+# $Id$
 
 EAPI=5
 inherit eutils libtool

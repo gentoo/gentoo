@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pencil/pencil-0.4.4_beta.ebuild,v 1.4 2013/03/02 21:38:40 hwoarang Exp $
+# $Id$
 
 EAPI=2
 inherit eutils qt4-r2

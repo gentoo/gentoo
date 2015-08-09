@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/prosite/prosite-20.72.ebuild,v 1.5 2011/12/13 23:20:18 ago Exp $
+# $Id$
 
 DESCRIPTION="A protein families and domains database"
 HOMEPAGE="http://ca.expasy.org/prosite"

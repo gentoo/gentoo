@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/freetype/freetype-2.6.ebuild,v 1.1 2015/06/11 13:32:18 polynomial-c Exp $
+# $Id$
 
 EAPI=5
 inherit autotools-multilib flag-o-matic multilib toolchain-funcs

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/google-c-style/google-c-style-20091009-r1.ebuild,v 1.4 2011/11/11 22:04:44 ulm Exp $
+# $Id$
 
 EAPI=4
 

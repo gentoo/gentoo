@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/UNIVERSAL-can/UNIVERSAL-can-1.201.403.280.ebuild,v 1.1 2015/03/13 16:39:06 monsieurp Exp $
+# $Id$
 
 EAPI=5
 

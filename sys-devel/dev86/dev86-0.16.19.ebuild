@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/dev86/dev86-0.16.19.ebuild,v 1.3 2013/02/25 11:39:32 ago Exp $
+# $Id$
 
 EAPI="4"
 

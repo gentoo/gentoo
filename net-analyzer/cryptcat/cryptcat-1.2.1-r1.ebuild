@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cryptcat/cryptcat-1.2.1-r1.ebuild,v 1.5 2012/07/29 17:24:22 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit eutils toolchain-funcs

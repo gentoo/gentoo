@@ -1,5 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/sunos/solaris/5.10/sparc/package.mask,v 1.6 2011/12/30 16:20:16 grobian Exp $
+# $Id$
 
 

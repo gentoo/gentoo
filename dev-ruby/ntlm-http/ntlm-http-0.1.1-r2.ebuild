@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ntlm-http/ntlm-http-0.1.1-r2.ebuild,v 1.1 2015/04/04 06:46:16 graaff Exp $
+# $Id$
 
 EAPI=5
 

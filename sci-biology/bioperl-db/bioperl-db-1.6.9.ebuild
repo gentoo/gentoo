@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-db/bioperl-db-1.6.9.ebuild,v 1.6 2015/06/13 19:16:38 dilfridge Exp $
+# $Id$
 
 EAPI="5"
 

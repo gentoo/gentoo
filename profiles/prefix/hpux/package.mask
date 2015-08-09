@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/hpux/package.mask,v 1.5 2010/05/06 19:21:30 darkside Exp $
+# $Id$
 
 # Michael Haubenwallner <haubi@gentoo.org> (16 Jul 2009)
 # Is blocked by QA check 'implicit pointer usage warnings' on ia64-hpux.

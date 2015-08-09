@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-9999.ebuild,v 1.2 2015/08/05 21:56:49 tamiko Exp $
+# $Id$
 
 EAPI=4
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
@@ -15,17 +15,16 @@ else
 	SRC_URI="http://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz" # switch to github?
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 fi
-SRC_URI+="http://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
+SRC_URI+=" http://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
 
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="http://www.doxygen.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch qt4 sqlite"
+IUSE="clang debug doc dot doxysearch latex qt4 sqlite userland_GNU"
 
 #missing SerbianCyrilic, JapaneseEn, KoreanEn, Chinesetraditional
-
 LANGS=(hy ar pt_BR ca zh cs de da eo es fa fi fr el hr hu id it ja ko lt mk
 nl nb pl pt ro ru sl sk sr sv tr uk vi af)
 for X in "${LANGS[@]}" ; do
@@ -37,15 +36,17 @@ RDEPEND="app-text/ghostscript-gpl
 	media-libs/libpng
 	virtual/libiconv
 	clang? ( sys-devel/clang )
-	doc? ( app-text/texlive[extra] )
 	dot? (
 		media-gfx/graphviz
 		media-libs/freetype
 	)
 	doxysearch? ( =dev-libs/xapian-1.2* )
+	latex? ( app-text/texlive[extra] )
 	qt4? ( dev-qt/qtgui:4 )
 	sqlite? ( dev-db/sqlite:3 )
 	"
+
+REQUIRED_USE="doc? ( latex )"
 
 DEPEND="sys-apps/sed
 	sys-devel/flex
@@ -122,7 +123,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-	    -DBUILD_SHARED_LIBS=YES
 		-DDOC_INSTALL_DIR="share/doc/${P}"
 		-DLANG_CODES="$(get_langs)"
 		$(cmake-utils_use clang use_libclang)

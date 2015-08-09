@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/transmission-remote-gtk/transmission-remote-gtk-1.1.1.ebuild,v 1.3 2014/03/03 23:51:46 pacho Exp $
+# $Id$
 
 EAPI=4
 inherit eutils fdo-mime gnome2-utils

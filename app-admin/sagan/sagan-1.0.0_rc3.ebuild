@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sagan/sagan-1.0.0_rc3.ebuild,v 1.1 2014/12/05 19:19:55 maksbotan Exp $
+# $Id$
 
 EAPI=5
 

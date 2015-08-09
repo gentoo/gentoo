@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/bootcreator/bootcreator-1.2.ebuild,v 1.2 2011/04/10 14:18:53 ulm Exp $
+# $Id$
 
 inherit eutils
 

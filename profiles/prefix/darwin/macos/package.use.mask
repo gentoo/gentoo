@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/package.use.mask,v 1.14 2015/07/29 12:20:06 chewi Exp $
+# $Id$
 
 # James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
 # JavaFX is included on Mac OS. I think a browser plugin is too but as

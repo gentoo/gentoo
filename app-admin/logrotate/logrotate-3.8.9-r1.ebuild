@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logrotate/logrotate-3.8.9-r1.ebuild,v 1.10 2015/06/21 18:23:54 zlogene Exp $
+# $Id$
 
 EAPI=5
 

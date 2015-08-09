@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/sfcheck/sfcheck-7.03.18-r1.ebuild,v 1.7 2012/10/19 10:28:14 jlec Exp $
+# $Id$
 
 EAPI=4
 

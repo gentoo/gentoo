@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/gld/gld-1.7-r2.ebuild,v 1.6 2014/12/28 15:54:31 titanofold Exp $
+# $Id$
 
 EAPI="4"
 

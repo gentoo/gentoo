@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3blaster/mp3blaster-3.2.5-r1.ebuild,v 1.10 2012/09/09 17:12:06 armin76 Exp $
+# $Id$
 
 EAPI=4
 inherit eutils

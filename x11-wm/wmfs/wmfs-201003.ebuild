@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/wmfs/wmfs-201003.ebuild,v 1.3 2015/07/28 05:13:54 jer Exp $
+# $Id$
 
 EAPI=5
 inherit cmake-utils eutils

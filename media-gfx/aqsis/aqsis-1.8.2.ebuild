@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/aqsis/aqsis-1.8.2.ebuild,v 1.1 2014/02/16 08:08:12 pinkbyte Exp $
+# $Id$
 
 EAPI=5
 

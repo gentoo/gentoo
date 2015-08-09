@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_log_rotate/mod_log_rotate-1.00.ebuild,v 1.2 2009/04/08 14:16:47 hollow Exp $
+# $Id$
 
 inherit eutils apache-module
 

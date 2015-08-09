@@ -1,15 +1,15 @@
+_eclasses_=unpacker	1ca344bd9b922a7f8084a3fa02933b79	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	5f80e6013406d68612a7493314e3777	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	autotools	8056957fdccf2b3cd6e282a4b4551d1a	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=8a296d7098920718e4a2ca19b8b76f6e
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+EAPI=5
 DEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) ypbind? ( net-nds/ypbind ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) ssl? ( dev-libs/openssl ) lua? ( dev-lang/lua ) !lua? ( !dev-lang/lua ) >=sys-apps/hwloc-1.1.1-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)]
 DESCRIPTION=SLURM: A Highly Scalable Resource Manager
-EAPI=5
-HOMEPAGE=http://www.schedmd.com
-IUSE=lua maui multiple-slurmd +munge mysql pam perl postgres ssl static-libs torque ypbind
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) ypbind? ( net-nds/ypbind ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) ssl? ( dev-libs/openssl ) lua? ( dev-lang/lua ) !lua? ( !dev-lang/lua ) >=sys-apps/hwloc-1.1.1-r1 dev-libs/libcgroup maui? ( sys-cluster/maui[slurm] ) dev-lang/perl:=[-build(-)]
+IUSE=lua maui multiple-slurmd +munge mysql pam perl postgres ssl static-libs torque ypbind
 REQUIRED_USE=torque? ( perl )
 RESTRICT=primaryuri
-SLOT=0
 SRC_URI=http://www.schedmd.com/download/total/slurm-2.6.3.tar.bz2
-_eclasses_=autotools	2264f05fbbbaaf83d34ec81e72b38ffd	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
-_md5_=8854f16e6c826249f3df113b371184ad
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.schedmd.com
+RDEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) ypbind? ( net-nds/ypbind ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) ssl? ( dev-libs/openssl ) lua? ( dev-lang/lua ) !lua? ( !dev-lang/lua ) >=sys-apps/hwloc-1.1.1-r1 dev-libs/libcgroup maui? ( sys-cluster/maui[slurm] ) dev-lang/perl:=[-build(-)]

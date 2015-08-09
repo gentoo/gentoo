@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-vp8/gst-plugins-vp8-0.10.23-r3.ebuild,v 1.4 2015/05/25 10:44:46 zlogene Exp $
+# $Id$
 
 EAPI="5"
 

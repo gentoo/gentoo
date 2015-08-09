@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyftpdlib/pyftpdlib-1.0.1-r1.ebuild,v 1.17 2015/06/06 14:04:04 perfinion Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )

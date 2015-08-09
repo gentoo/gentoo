@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dhcp_probe/files/dhcp_probe.confd,v 1.2 2009/05/26 21:20:12 jer Exp $
+# $Id$
 
 # Config file for /etc/init.d/dhcp_probe
 

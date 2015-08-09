@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/sunos/solaris/package.use.force,v 1.1 2011/12/08 08:11:38 grobian Exp $
+# $Id$
 
 # Fabian Groffen <grobian@gentoo.org> (08 Dec 2011)
 # Force libssp, Solaris' libc doesn't have stack protection symbols,

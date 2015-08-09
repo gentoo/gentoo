@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/lxdvdrip/lxdvdrip-1.77.ebuild,v 1.1 2014/03/17 21:55:28 beandog Exp $
+# $Id$
 
 EAPI=5
 

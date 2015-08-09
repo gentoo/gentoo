@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mailcrypt/mailcrypt-3.5.9.ebuild,v 1.7 2014/08/29 06:55:28 ulm Exp $
+# $Id$
 
 EAPI=5
 

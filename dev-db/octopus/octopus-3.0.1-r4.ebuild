@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/octopus/octopus-3.0.1-r4.ebuild,v 1.1 2015/04/05 21:05:29 monsieurp Exp $
+# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"

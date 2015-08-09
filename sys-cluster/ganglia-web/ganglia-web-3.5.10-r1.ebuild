@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia-web/ganglia-web-3.5.10-r1.ebuild,v 1.1 2013/12/23 16:54:37 jsbronder Exp $
+# $Id$
 
 EAPI=4
 WEBAPP_MANUAL_SLOT="yes"

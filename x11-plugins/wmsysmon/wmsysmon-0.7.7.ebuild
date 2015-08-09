@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsysmon/wmsysmon-0.7.7.ebuild,v 1.12 2014/08/10 20:09:15 slyfox Exp $
+# $Id$
 
 inherit eutils
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/centerim/centerim-4.22.10.ebuild,v 1.11 2015/05/16 10:43:07 pacho Exp $
+# $Id$
 
 EAPI="2"
 

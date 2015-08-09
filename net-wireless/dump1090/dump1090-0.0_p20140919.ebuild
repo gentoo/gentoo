@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/dump1090/dump1090-0.0_p20140919.ebuild,v 1.1 2014/11/17 18:34:17 zerochaos Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-5.0.7-r4.ebuild,v 1.11 2013/09/26 17:30:08 ago Exp $
+# $Id$
 
 EAPI=5
 

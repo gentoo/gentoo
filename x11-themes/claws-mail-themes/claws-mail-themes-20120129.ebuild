@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/claws-mail-themes/claws-mail-themes-20120129.ebuild,v 1.4 2014/03/26 20:28:42 ulm Exp $
+# $Id$
 
 DESCRIPTION="Iconsets for Claws Mail"
 HOMEPAGE="http://www.claws-mail.org/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/exempi/exempi-2.2.0.ebuild,v 1.10 2013/08/03 07:33:20 ago Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

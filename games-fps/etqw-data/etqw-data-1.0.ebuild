@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/etqw-data/etqw-data-1.0.ebuild,v 1.7 2012/01/16 20:17:04 ulm Exp $
+# $Id$
 
 inherit eutils cdrom games
 

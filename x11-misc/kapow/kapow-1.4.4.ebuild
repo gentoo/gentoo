@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/kapow/kapow-1.4.4.ebuild,v 1.1 2013/03/11 12:26:37 jer Exp $
+# $Id$
 
 EAPI=5
 inherit qt4-r2

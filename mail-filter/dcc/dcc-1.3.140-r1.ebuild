@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/dcc/dcc-1.3.140-r1.ebuild,v 1.10 2012/12/30 14:27:13 ago Exp $
+# $Id$
 
 EAPI=2
 

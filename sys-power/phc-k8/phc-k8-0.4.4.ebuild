@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/phc-k8/phc-k8-0.4.4.ebuild,v 1.1 2011/11/18 08:45:18 xmw Exp $
+# $Id$
 
 EAPI=4
 

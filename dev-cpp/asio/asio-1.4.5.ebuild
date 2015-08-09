@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/asio/asio-1.4.5.ebuild,v 1.10 2010/09/13 07:11:10 josejx Exp $
+# $Id$
 
 EAPI=2
 

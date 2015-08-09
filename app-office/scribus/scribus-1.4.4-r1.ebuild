@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.4.4-r1.ebuild,v 1.8 2015/05/19 04:54:51 jer Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/led/led-1.111.ebuild,v 1.1 2011/11/07 03:52:54 robbat2 Exp $
+# $Id$
 
 inherit eutils
 DESCRIPTION="led is a general purpose LDAP editor"

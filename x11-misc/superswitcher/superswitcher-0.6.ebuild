@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/superswitcher/superswitcher-0.6.ebuild,v 1.10 2015/01/24 19:18:35 jer Exp $
+# $Id$
 
 EAPI=4
 inherit autotools eutils

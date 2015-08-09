@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jcifs/jcifs-1.3.17-r1.ebuild,v 1.4 2012/05/21 09:35:16 phajdan.jr Exp $
+# $Id$
 
 EAPI="2"
 JAVA_PKG_IUSE="doc examples source"

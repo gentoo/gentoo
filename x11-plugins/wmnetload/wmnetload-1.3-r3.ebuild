@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmnetload/wmnetload-1.3-r3.ebuild,v 1.9 2014/09/01 15:21:48 voyageur Exp $
+# $Id$
 
 inherit autotools eutils
 

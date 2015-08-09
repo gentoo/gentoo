@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/m64py/m64py-0.2.1.ebuild,v 1.1 2014/05/08 20:49:22 mgorny Exp $
+# $Id$
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )

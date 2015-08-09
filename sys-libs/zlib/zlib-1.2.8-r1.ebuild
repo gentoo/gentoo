@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/zlib/zlib-1.2.8-r1.ebuild,v 1.13 2014/01/17 04:23:20 vapier Exp $
+# $Id$
 
 EAPI=4
 AUTOTOOLS_AUTO_DEPEND="no"

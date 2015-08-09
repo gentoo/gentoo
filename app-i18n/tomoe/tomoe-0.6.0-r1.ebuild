@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/tomoe/tomoe-0.6.0-r1.ebuild,v 1.6 2012/06/22 02:13:29 naota Exp $
+# $Id$
 
 EAPI="3"
 PYTHON_DEPEND="python? 2"

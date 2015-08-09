@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/info2html/info2html-2.0.ebuild,v 1.6 2007/06/14 13:16:57 angelos Exp $
+# $Id$
 
 inherit eutils webapp
 

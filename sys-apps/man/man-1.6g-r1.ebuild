@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6g-r1.ebuild,v 1.1 2015/05/08 03:22:04 vapier Exp $
+# $Id$
 
 EAPI="4"
 

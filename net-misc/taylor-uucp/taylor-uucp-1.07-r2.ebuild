@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/taylor-uucp/taylor-uucp-1.07-r2.ebuild,v 1.4 2013/07/30 15:26:27 vapier Exp $
+# $Id$
 
 EAPI="4"
 

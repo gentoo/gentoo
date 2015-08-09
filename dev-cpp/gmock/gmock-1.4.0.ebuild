@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gmock/gmock-1.4.0.ebuild,v 1.6 2012/08/28 21:52:08 vapier Exp $
+# $Id$
 
 EAPI="4"
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/securemodelines/securemodelines-20140926.ebuild,v 1.3 2014/12/11 07:40:35 radhermit Exp $
+# $Id$
 
 EAPI=5
 inherit vim-plugin

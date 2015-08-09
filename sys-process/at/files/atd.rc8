@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/at/files/atd.rc8,v 1.1 2014/12/16 13:00:19 polynomial-c Exp $
+# $Id$
 
 pidfile="/var/run/atd.pid"
 command="/usr/sbin/atd"

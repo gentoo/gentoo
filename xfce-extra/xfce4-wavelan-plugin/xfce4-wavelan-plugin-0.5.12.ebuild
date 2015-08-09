@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-wavelan-plugin/xfce4-wavelan-plugin-0.5.12.ebuild,v 1.3 2015/07/01 17:03:08 zlogene Exp $
+# $Id$
 
 EAPI=5
 inherit xfconf

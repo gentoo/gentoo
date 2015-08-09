@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/libvirt-python/libvirt-python-1.2.18.ebuild,v 1.1 2015/08/07 14:44:58 tamiko Exp $
+# $Id$
 
 EAPI=5
 

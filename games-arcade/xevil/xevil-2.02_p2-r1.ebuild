@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/xevil/xevil-2.02_p2-r1.ebuild,v 1.7 2015/03/29 16:57:26 mr_bones_ Exp $
+# $Id$
 
 EAPI=5
 inherit eutils games

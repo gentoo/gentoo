@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/metadot/metadot-6.4.5.4.ebuild,v 1.10 2014/08/10 20:13:50 slyfox Exp $
+# $Id$
 
 inherit webapp
 MY_P="Metadot${PV}"

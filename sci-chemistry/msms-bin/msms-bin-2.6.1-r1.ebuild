@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/msms-bin/msms-bin-2.6.1-r1.ebuild,v 1.7 2012/05/23 07:56:19 jlec Exp $
+# $Id$
 
 EAPI=4
 

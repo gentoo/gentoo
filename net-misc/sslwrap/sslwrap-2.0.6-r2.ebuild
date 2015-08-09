@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sslwrap/sslwrap-2.0.6-r2.ebuild,v 1.6 2012/12/02 05:02:36 ssuominen Exp $
+# $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs

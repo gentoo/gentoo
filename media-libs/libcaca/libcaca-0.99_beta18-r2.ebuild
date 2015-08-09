@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libcaca/libcaca-0.99_beta18-r2.ebuild,v 1.15 2014/09/21 20:06:57 maekke Exp $
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )

@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/os-prober/os-prober-1.65.ebuild,v 1.3 2015/06/28 09:11:43 zlogene Exp $
+# $Id$
 
 EAPI=5
 

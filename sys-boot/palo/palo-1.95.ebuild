@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/palo/palo-1.95.ebuild,v 1.2 2015/01/19 11:16:07 jer Exp $
+# $Id$
 
 EAPI=5
 

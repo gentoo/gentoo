@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/qterminal/qterminal-0.5.0_p20140913.ebuild,v 1.2 2014/09/27 11:38:55 maekke Exp $
+# $Id$
 
 EAPI=5
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mytop/mytop-1.6-r4.ebuild,v 1.6 2014/03/24 15:03:13 ago Exp $
+# $Id$
 
 EAPI=5
 

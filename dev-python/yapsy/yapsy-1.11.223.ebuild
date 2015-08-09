@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/yapsy/yapsy-1.11.223.ebuild,v 1.1 2015/07/08 10:25:58 yngwin Exp $
+# $Id$
 
 EAPI="5"
 

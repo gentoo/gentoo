@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/bash-completion-r1.eclass,v 1.14 2014/09/02 15:28:05 mgorny Exp $
+# $Id$
 
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:

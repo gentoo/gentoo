@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/syb/syb-0.4.0.ebuild,v 1.9 2013/08/07 13:31:28 ago Exp $
+# $Id$
 
 EAPI=5
 

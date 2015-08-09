@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/mu-conference/mu-conference-0.7.ebuild,v 1.6 2015/03/21 19:12:17 jlec Exp $
+# $Id$
 
 inherit eutils
 

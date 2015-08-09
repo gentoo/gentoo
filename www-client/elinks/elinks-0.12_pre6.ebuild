@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/elinks/elinks-0.12_pre6.ebuild,v 1.12 2014/10/09 19:59:57 dilfridge Exp $
+# $Id$
 
 EAPI=4
 inherit eutils autotools flag-o-matic

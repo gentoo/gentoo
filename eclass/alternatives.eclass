@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/alternatives.eclass,v 1.18 2013/09/21 01:03:42 ottxor Exp $
+# $Id$
 
 # @ECLASS: alternatives.eclass
 # @AUTHOR:

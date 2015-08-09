@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: xsp.initd,v 1.1 2009/01/18 17:44:04 loki_val Exp $
+# $Id$
 
 depend() {
 	need net
