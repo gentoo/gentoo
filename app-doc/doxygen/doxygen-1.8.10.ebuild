@@ -23,7 +23,7 @@ HOMEPAGE="http://www.doxygen.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch qt4 sqlite"
+IUSE="clang debug doc dot doxysearch qt4 sqlite userland_GNU"
 
 #missing SerbianCyrilic, JapaneseEn, KoreanEn, Chinesetraditional
 LANGS=(hy ar pt_BR ca zh cs de da eo es fa fi fr el hr hu id it ja ko lt mk
