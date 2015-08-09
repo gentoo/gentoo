@@ -22,10 +22,13 @@
 		<flag name="androidsplice">Get TH splices for Android.</flag>
 		<flag name="asciiprogress">Use ascii-progress library (experimental)</flag>
 		<flag name="cryptohash">Enable use of cryptohash for checksumming</flag>
-		<flag name="dns">Enable the haskell DNS library for DNS lookup</flag>
+		<flag name="database">Enable building with <pkg>dev-haskell/persistent</pkg> for database use</flag>
+		<flag name="desktopnotify">Enable desktop environment notifications</flag>
 		<flag name="desktop-notify">Enable desktop environment notifications</flag>
+		<flag name="dns">Enable the haskell DNS library for DNS lookup</flag>
 		<flag name="ekg">Enable use of EKG to monitor git-annex as it runs.</flag>
 		<flag name="feed">Enable podcast feed support</flag>
+		<flag name='network-uri'>Get Network.URI from the network-uri package.</flag>
 		<flag name="production">Enable production build (slower build; faster binary)</flag>
 		<flag name="pairing">Enable pairing of git annex repositories</flag>
 		<flag name="quvi">Enable use of quvi to download videos</flag>
