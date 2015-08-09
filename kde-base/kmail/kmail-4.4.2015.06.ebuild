@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED=test
 inherit flag-o-matic kde4-meta
 
 DESCRIPTION="Email component of Kontact, the integrated personal information manager of KDE (noakonadi branch)"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
