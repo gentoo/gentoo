@@ -10,13 +10,13 @@ inherit multilib cmake-utils
 
 MY_P=CGAL-${PV}
 PID=34900
-DPID=34902
+DPID=34904
 
 DESCRIPTION="C++ library for geometric algorithms and data structures"
 HOMEPAGE="http://www.cgal.org/ https://gforge.inria.fr/projects/cgal/"
 SRC_URI="
 	http://gforge.inria.fr/frs/download.php/${PID}/${MY_P}.tar.xz
-	doc? ( http://gforge.inria.fr/frs/download.php/${DPID}/${MY_P}-doc_html.tar.xz )"
+	doc? ( http://gforge.inria.fr/frs/download.php/${DPID}/${MY_P}-doc_html.tar.xz -> ${MY_P}-doc_html-1.tar.xz )"
 
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
 SLOT="0"
