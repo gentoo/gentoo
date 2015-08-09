@@ -11,7 +11,7 @@ HOMEPAGE="http://rk4an.github.com/phpsysinfo/"
 SRC_URI="https://github.com/rk4an/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 hppa ppc ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ppc ppc64 x86 ~x86-fbsd"
 
 RDEPEND="
 	virtual/httpd-php
