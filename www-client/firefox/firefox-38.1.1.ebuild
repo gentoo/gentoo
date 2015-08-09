@@ -30,7 +30,8 @@ fi
 PATCH="${PN}-38.0-patches-0.3"
 # Upstream ftp release URI that's used by mozlinguas.eclass
 # We don't use the http mirror because it deletes old tarballs.
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases"
+#MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases"
+MOZ_FTP_URI="http://archive.mozilla.org/pub/${PN}/releases"
 MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
