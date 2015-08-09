@@ -12,7 +12,7 @@ SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="static static-libs"
 
 DEPEND=">=sys-devel/make-4.0

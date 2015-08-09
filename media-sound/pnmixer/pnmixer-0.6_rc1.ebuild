@@ -1,22 +1,24 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+# $Header: $
 
 EAPI=5
 
+WANT_LIBTOOL=none
 inherit autotools eutils gnome2-utils
 
-DESCRIPTION="Alsa volume mixer for the system tray"
+DESCRIPTION="Volume mixer for the system tray"
 HOMEPAGE="https://github.com/nicklan/pnmixer"
-SRC_URI="http://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
+SRC_URI="https://github.com/nicklan/pnmixer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug libnotify"
 
-RDEPEND="media-libs/alsa-lib
-	x11-libs/gtk+:2
+RDEPEND="dev-libs/glib:2
+	media-libs/alsa-lib
+	>=x11-libs/gtk+-3.6:3
 	x11-libs/libX11
 	libnotify? ( x11-libs/libnotify )"
 DEPEND="${RDEPEND}
@@ -24,20 +26,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-{build,desktopfile}.patch
-	mv configure.in configure.ac || die
 	eautoreconf
 }
 
 src_configure() {
 	econf \
+		$(use_with libnotify) \
 		$(use_enable debug) \
-		$(use_with libnotify)
-}
-
-src_install() {
-	default
-	newicon -s 128 pixmaps/${PN}-about.png ${PN}.png
+		--enable-minimal-flags \
+		--with-gtk3
 }
 
 pkg_preinst() {
