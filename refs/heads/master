@@ -1,0 +1,26 @@
+certificate version 0.1
+pusher 0xEE05E6F6A48F6136 1439097783 -0700
+pushee git+ssh://git.gentoo.org/repo/gentoo
+nonce 1439097783-96caee3250ebddabbc9a
+
+0000000000000000000000000000000000000000 56bd759df1d0c750a065b8c845e93d5dfa6b549d refs/heads/master
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.1
+Comment: Robbat2 @ Orbis-Terrarum Networks - The text below is a digital signature. If it doesn't make any sense to you, ignore it.
+
+iQJ8BAABCgBmBQJVxuO3XxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25zLm9w
+ZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXRCREVCQjZBNTJGMTU2RkRGMzE2OEQ5MTEx
+OTM5NUYyM0M1ODgyNkM0AAoJEBk5XyPFiCbEqfQQAIwMC4Hqjy8S/cmvV1s3OLdf
+2QaHlDcOg/LZNx5BuHBrXu/7XI/xL4/+Jv0ysZ6TlzCYzwDmAWWqQFEj06N8QpSf
+N9IbkvEwiNdTysL1tKMXGmeqafIr28MxJz7WcuZImGz37S2UTci6+YpSsO/nurFS
+t8s7tgIkPEPeOTSCrmvCxmUjHU5fd8cjcl7SMAUhF4P2Qi/Lj0EJAYSeS2f2y1oO
+pbrcx4W4kV2zQo+RgMm+s9Aa8wqyvqZAoJgZfBQaYB8scZ8eCjis3d5oWHwf3rC7
+lkT8YTENmho3ftYegz3x/YOWypK5C9tGFLrrHFKs1l3KfJUrsJ+lRgdXyXkZHPRd
+OlWAMUw2eNcyF2mJcf7vpH4PVPWtA9M9BQSAk9gk7CeYMSIbSbb6uJXHYUgQqNeU
+cObo052sREGoRXwavgkNzf4IEHz1Yg5fJn51ALtdeowsMxwkbxevj6Ud7GRs9FZF
+Iqdq9iElc0DOSmVaFcqSDPqUr7mfb8RXVC13gK5g/TqLPyZr5KvXJ+4NrFaz0IB8
+9rJBO+qHPKcCdE3palhX+spapIvMwIvhQrnex4U1DEWp1MDWKpX3kuH5NehT/Vdj
+2hQZhRfC+0TCSZqrsiu0SeqWqA+p/bpTUsmQRZgHfqD/YjGhdCPf/4tqDMeCc9Ih
+hieq4+BUWhbo8DO2OUYe
+=TUhc
+-----END PGP SIGNATURE-----
