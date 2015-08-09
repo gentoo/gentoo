@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A library for issuing notifications using FreeDesktop.org&#39;s Desktop
+		Notifications protcol. This protocol is supported by services such
+		as Ubuntu&#39;s NotifyOSD.
+	</longdescription>
+</pkgmetadata>
