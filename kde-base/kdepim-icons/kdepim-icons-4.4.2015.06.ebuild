@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="KDE PIM icons (noakonadi branch)"
 IUSE=""
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 src_install() {
 	kde4-meta_src_install
