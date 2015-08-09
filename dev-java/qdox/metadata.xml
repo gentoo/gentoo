@@ -7,4 +7,7 @@
 		High speed, small footprint parser for extracting class/interface/method
 		definitions from source files complete with JavaDoc @tags.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">codehaus/qdox</remote-id>
+	</upstream>
 </pkgmetadata>
