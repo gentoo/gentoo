@@ -23,7 +23,7 @@ HOMEPAGE="http://handbrake.fr/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+fdk gstreamer gtk libav libav-aac"
+IUSE="+fdk gstreamer gtk libav libav-aac x265"
 
 REQUIRED_USE="^^ ( fdk libav-aac )"
 
@@ -64,8 +64,8 @@ RDEPEND="
 		virtual/libgudev:=
 	)
 	fdk? ( media-libs/fdk-aac )
+	x265? ( =media-libs/x265-1.7 )
 	"
-	#x265? ( =media-libs/x265-1.4 )
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -78,6 +78,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch_user
+
 	# Get rid of leftover bundled library build definitions,
 	sed -i 's:.*\(/contrib\|contrib/\).*::g' \
 		"${S}"/make/include/main.defs \
@@ -89,6 +91,9 @@ src_prepare() {
 
 	# Remove faac dependency; TODO: figure out if we need to do this at all.
 	epatch "${FILESDIR}"/${PN}-9999-remove-faac-dependency.patch
+
+	# Fix missing x265 link flag
+	epatch "${FILESDIR}"/${PN}-9999-fix-missing-x265-link-flag.patch
 
 	cd "${S}/gtk"
 	# Don't run autogen.sh.
@@ -106,8 +111,7 @@ src_configure() {
 		$(use_enable fdk fdk-aac) \
 		$(use_enable gtk) \
 		$(usex !gstreamer --disable-gst) \
-		--disable-x265 || die "Configure failed."
-	#	$(use_enable x265) \
+		$(use_enable x265) || die "Configure failed."
 }
 
 src_compile() {

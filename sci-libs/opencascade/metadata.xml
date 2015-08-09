@@ -8,6 +8,7 @@
   <use>
     <flag name="freeimage">Enable support for image i/o via media-libs/freeimage</flag>
     <flag name="gl2ps">Use gl2ps PostScript printing library</flag>
-    <flag name="tbb">tEnable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
+    <flag name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
+    <flag name="vtk">Enable Virtualisation Toolkit</flag>
   </use>
 </pkgmetadata>

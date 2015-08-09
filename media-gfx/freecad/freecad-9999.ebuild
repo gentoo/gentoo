@@ -30,11 +30,8 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	dev-qt/qtopengl:4
 	dev-qt/qtsvg:4
 	dev-qt/qtwebkit:4
-	media-libs/SoQt
-	media-libs/coin[doc]
-	net-libs/ptlib
-	sci-libs/gts
-	|| ( sci-libs/opencascade:6.8.0 sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 )
+	media-libs/coin
+	|| ( sci-libs/opencascade:6.9.0[vtk] sci-libs/opencascade:6.8.0 sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 )
 	sys-libs/zlib
 	virtual/glu
 	${PYTHON_DEPS}"
@@ -75,15 +72,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local my_occ_env=${EROOT}etc/env.d/50opencascade
-	if [ -e "${EROOT}etc//env.d/51opencascade" ] ; then
-		my_occ_env=${EROOT}etc/env.d/51opencascade
-	fi
-	export CASROOT=$(awk -F '=' '$1 == "CASROOT" {print $2}' $my_occ_env)
-	#my_occ_ver=$(echo $CASROOT |
-	#	awk '{print gensub(".*opencascade-([0-9.]*).*","\\1","$0")}')
-	# or just $(eselect opencascade show)
-
 	local mycmakeargs=(
 		-DOCC_INCLUDE_DIR="${CASROOT}"/inc
 		-DOCC_INCLUDE_PATH="${CASROOT}"/inc
@@ -128,7 +116,7 @@ src_install() {
 	newicon src/Main/icon.ico ${PN}.ico
 	make_desktop_entry FreeCAD
 
-	dodoc README ChangeLog.txt
+	dodoc README.Linux ChangeLog.txt
 
 	# disable compression of QT assistant help files
 	>> "${ED}"usr/share/doc/${P}/freecad.qhc.ecompress.skip
