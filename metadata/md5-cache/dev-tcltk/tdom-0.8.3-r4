@@ -1,5 +1,5 @@
 _eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=e8f356735e18d61c9a8fbc268ef4c06c
+_md5_=79a900be37ce7d276b94ca831722e3bc
 SLOT=0
 DEFINED_PHASES=compile configure install prepare
 EAPI=5
@@ -8,6 +8,6 @@ DESCRIPTION=A XML/DOM/XPath/XSLT Implementation for Tcl
 LICENSE=MPL-1.1
 IUSE=static-libs threads
 SRC_URI=mirror://github/tDOM/tdom/tDOM-0.8.3.tgz
-KEYWORDS=amd64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux
 HOMEPAGE=http://tdom.github.com/
 RDEPEND=dev-lang/tcl:0= dev-libs/expat
