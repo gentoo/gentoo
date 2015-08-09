@@ -58,7 +58,9 @@ pkg_setup() {
 		*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
 		esac
 	fi
+}
 
+src_prepare() {
 	epatch_user
 }
 

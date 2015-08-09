@@ -58,12 +58,11 @@ pkg_setup() {
 		*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
 		esac
 	fi
-
-	epatch_user
 }
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-uselocale-0-fix.diff
+	epatch_user
 }
 
 src_configure() {
