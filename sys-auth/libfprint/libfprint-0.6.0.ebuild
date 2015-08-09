@@ -18,7 +18,8 @@ IUSE="debug static-libs"
 
 RDEPEND="virtual/libusb:1
 	dev-libs/glib:2
-	dev-libs/nss"
+	dev-libs/nss
+	x11-libs/pixman"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
