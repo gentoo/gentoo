@@ -1,14 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=37ed8e54f96816b2f79557ac55b732f7
-SLOT=0
 DEFINED_PHASES=compile install postinst preinst unpack
-EAPI=0
 DEPEND=>=dev-db/sqlite-3 >=dev-libs/glib-2 dev-libs/libxml2 python? ( >=dev-lang/python-2.2 ) debug? ( >=dev-libs/check-0.9.2 ) virtual/pkgconfig doc? ( app-doc/doxygen ) python? ( >=dev-lang/swig-1.3.17 )
 DESCRIPTION=OpenSync synchronisation framework library
-LICENSE=LGPL-2.1
-IUSE=debug doc python
-RESTRICT=test
-SRC_URI=http://dev.gentooexperimental.org/~peper/distfiles/libopensync-0.22.tar.bz2
-KEYWORDS=amd64 hppa ppc ppc64 x86
 HOMEPAGE=http://www.opensync.org/
+IUSE=debug doc python
+KEYWORDS=amd64 hppa ppc ppc64 x86
+LICENSE=LGPL-2.1
 RDEPEND=>=dev-db/sqlite-3 >=dev-libs/glib-2 dev-libs/libxml2 python? ( >=dev-lang/python-2.2 ) debug? ( >=dev-libs/check-0.9.2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://dev.gentooexperimental.org/~peper/distfiles/libopensync-0.22.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=37ed8e54f96816b2f79557ac55b732f7

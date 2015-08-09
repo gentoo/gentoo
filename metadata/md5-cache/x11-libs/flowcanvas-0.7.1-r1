@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	waf-utils	ad1dd5b59c523843eebd3a9934c509ca	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=88b06d77e199663c90b697be7885dac9
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup
-EAPI=5
 DEPEND=dev-libs/boost >=dev-cpp/gtkmm-2.4:2.4 >=dev-cpp/libgnomecanvasmm-2.6:2.6 media-gfx/graphviz || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) virtual/pkgconfig doc? ( app-doc/doxygen ) dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=Gtkmm/Gnomecanvasmm widget for boxes and lines environments
-LICENSE=GPL-2
-IUSE=debug doc
-SRC_URI=http://download.drobilla.net/flowcanvas-0.7.1.tar.bz2
-KEYWORDS=amd64 x86
+EAPI=5
 HOMEPAGE=http://wiki.drobilla.net/FlowCanvas
+IUSE=debug doc
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
 RDEPEND=dev-libs/boost >=dev-cpp/gtkmm-2.4:2.4 >=dev-cpp/libgnomecanvasmm-2.6:2.6 media-gfx/graphviz
+SLOT=0
+SRC_URI=http://download.drobilla.net/flowcanvas-0.7.1.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
+_md5_=88b06d77e199663c90b697be7885dac9

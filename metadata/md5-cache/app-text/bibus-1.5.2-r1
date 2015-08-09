@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=b9751a116e312835438a5316182f3f57
-SLOT=0
 DEFINED_PHASES=compile install postinst postrm prepare setup
-EAPI=5
 DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-office/libreoffice dev-python/wxpython:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-db/sqliteodbc dev-db/unixODBC mysql? ( dev-python/mysql-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-db/myodbc )
 DESCRIPTION=Bibliographic and reference management software, integrates with L/OO.o and MS Word
-LICENSE=GPL-2
-IUSE=mysql python_targets_python2_7
-REQUIRED_USE=|| ( python_targets_python2_7 )
-SRC_URI=mirror://sourceforge/bibus-biblio/bibus_1.5.2.orig.tar.gz
-KEYWORDS=amd64 ~x86
+EAPI=5
 HOMEPAGE=http://bibus-biblio.sourceforge.net/
+IUSE=mysql python_targets_python2_7
+KEYWORDS=amd64 ~x86
+LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-office/libreoffice dev-python/wxpython:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-db/sqliteodbc dev-db/unixODBC mysql? ( dev-python/mysql-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-db/myodbc )
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/bibus-biblio/bibus_1.5.2.orig.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b9751a116e312835438a5316182f3f57

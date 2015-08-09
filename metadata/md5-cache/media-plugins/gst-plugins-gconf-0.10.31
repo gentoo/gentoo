@@ -1,13 +1,13 @@
-_eclasses_=versionator	99ae9d758cbe7cfed19170e7d48f5a9c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gst-plugins10	db50330379680222b3421c9edea8af4b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gst-plugins-good	f48cfa0181182193c96793b325a4d3c1	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=636d8b1da8459522292530929827b5e0
-SLOT=0.10
 DEFINED_PHASES=compile configure install postinst preinst
-EAPI=5
 DEPEND=>=gnome-base/gconf-2 >=sys-apps/sed-4 >=sys-apps/sed-4 virtual/pkgconfig >=dev-libs/glib-2.6:2 media-libs/gstreamer:0.10 >=media-libs/gst-plugins-good-0.10.31:0.10 >=sys-apps/sed-4 virtual/pkgconfig >=dev-libs/glib-2.6:2 media-libs/gstreamer:0.10 >=media-libs/gst-plugins-good-0.10.31:0.10
 DESCRIPTION=GStreamer plugin for wrapping GConf audio/video settings
-LICENSE=GPL-2
-RESTRICT=test
-SRC_URI=http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-0.10.31.tar.xz
-KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+EAPI=5
 HOMEPAGE=http://gstreamer.freedesktop.org/
+KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2
 RDEPEND=>=gnome-base/gconf-2 >=dev-libs/glib-2.6:2 media-libs/gstreamer:0.10 >=media-libs/gst-plugins-good-0.10.31:0.10 >=dev-libs/glib-2.6:2 media-libs/gstreamer:0.10 >=media-libs/gst-plugins-good-0.10.31:0.10
+RESTRICT=test
+SLOT=0.10
+SRC_URI=http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-0.10.31.tar.xz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	gst-plugins-good	f48cfa0181182193c96793b325a4d3c1	gst-plugins10	db50330379680222b3421c9edea8af4b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=636d8b1da8459522292530929827b5e0

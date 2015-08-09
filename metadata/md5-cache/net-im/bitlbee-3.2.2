@@ -1,14 +1,14 @@
-_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=748bf04710ddb8675f35fc3da48cb241
-SLOT=0
 DEFINED_PHASES=configure install postinst prepare setup
-EAPI=5
 DEPEND=>=dev-libs/glib-2.14 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) virtual/pkgconfig selinux? ( sec-policy/selinux-bitlbee ) skype? ( app-text/asciidoc ) test? ( dev-libs/check ) virtual/pkgconfig
 DESCRIPTION=irc to IM gateway that support multiple IM protocols
-LICENSE=GPL-2
-IUSE=debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux skype ssl test twitter +yahoo xinetd python_targets_python2_7
-REQUIRED_USE=|| ( purple xmpp msn oscar yahoo ) msn? ( || ( gnutls nss ssl ) ) xmpp? ( !nss )
-SRC_URI=http://get.bitlbee.org/src/bitlbee-3.2.2.tar.gz
-KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-fbsd
+EAPI=5
 HOMEPAGE=http://www.bitlbee.org/
+IUSE=debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux skype ssl test twitter +yahoo xinetd python_targets_python2_7
+KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.14 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) virtual/logger skype? ( dev-python/skype4py[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] net-im/skype ) xinetd? ( sys-apps/xinetd )
+REQUIRED_USE=|| ( purple xmpp msn oscar yahoo ) msn? ( || ( gnutls nss ssl ) ) xmpp? ( !nss )
+SLOT=0
+SRC_URI=http://get.bitlbee.org/src/bitlbee-3.2.2.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=748bf04710ddb8675f35fc3da48cb241

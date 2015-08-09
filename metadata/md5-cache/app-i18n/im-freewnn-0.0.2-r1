@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=16ace66c3f277e19e15e3e284eab311e
-SLOT=0
 DEFINED_PHASES=install postinst postrm setup unpack
-EAPI=1
 DEPEND=dev-libs/glib x11-libs/pango >=x11-libs/gtk+-2.4:2 >=app-i18n/freewnn-1.1.1_alpha21-r1 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Japanese FreeWnn input method module for GTK+2
-LICENSE=GPL-2
-SRC_URI=http://bonobo.gnome.gr.jp/~nakai/immodule/im-freewnn-0.0.2.tar.gz
-KEYWORDS=amd64 ppc ppc64 x86
+EAPI=1
 HOMEPAGE=http://bonobo.gnome.gr.jp/~nakai/immodule/
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
 RDEPEND=dev-libs/glib x11-libs/pango >=x11-libs/gtk+-2.4:2 >=app-i18n/freewnn-1.1.1_alpha21-r1
+SLOT=0
+SRC_URI=http://bonobo.gnome.gr.jp/~nakai/immodule/im-freewnn-0.0.2.tar.gz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=16ace66c3f277e19e15e3e284eab311e

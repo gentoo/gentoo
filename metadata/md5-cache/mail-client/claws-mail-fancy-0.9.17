@@ -1,12 +1,11 @@
-_eclasses_=
-_md5_=2dd37148e78d7a46968342ba61aacef6
-SLOT=0
 DEFINED_PHASES=install
-EAPI=3
 DEPEND=~mail-client/claws-mail-3.9.0 >=net-libs/webkit-gtk-1.0:2 virtual/pkgconfig
 DESCRIPTION=Plugin to display HTML with Webkit
-LICENSE=GPL-3
-SRC_URI=http://www.claws-mail.org/downloads/plugins/fancy-0.9.17.tar.gz
-KEYWORDS=amd64 x86
+EAPI=3
 HOMEPAGE=http://www.claws-mail.org/
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
 RDEPEND=~mail-client/claws-mail-3.9.0 >=net-libs/webkit-gtk-1.0:2
+SLOT=0
+SRC_URI=http://www.claws-mail.org/downloads/plugins/fancy-0.9.17.tar.gz
+_md5_=2dd37148e78d7a46968342ba61aacef6

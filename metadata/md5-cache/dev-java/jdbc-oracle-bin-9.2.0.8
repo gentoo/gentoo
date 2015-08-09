@@ -1,14 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=ec65bae6995ac2e791d21595dd4fa6cb
-SLOT=9.2
 DEFINED_PHASES=compile install preinst setup unpack
-EAPI=0
 DEPEND=>=dev-java/java-config-2.2.0
 DESCRIPTION=JDBC 3.0 Drivers for Oracle
-LICENSE=oracle-jdbc
-IUSE=debug doc elibc_FreeBSD
-RESTRICT=fetch
-SRC_URI=!debug? ( jdbc-oracle-bin-9.2.0.8-ojdbc14.jar ) debug? ( jdbc-oracle-bin-9.2.0.8-ojdbc14_g.jar ) jdbc-oracle-bin-9.2.0.8-ocrs12.jar doc? ( jdbc-oracle-bin-9.2.0.8-javadoc.tar )
-KEYWORDS=~amd64 ~ppc ~x86
 HOMEPAGE=http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
+IUSE=debug doc elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=oracle-jdbc
 RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0
+RESTRICT=fetch
+SLOT=9.2
+SRC_URI=!debug? ( jdbc-oracle-bin-9.2.0.8-ojdbc14.jar ) debug? ( jdbc-oracle-bin-9.2.0.8-ojdbc14_g.jar ) jdbc-oracle-bin-9.2.0.8-ocrs12.jar doc? ( jdbc-oracle-bin-9.2.0.8-javadoc.tar )
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=ec65bae6995ac2e791d21595dd4fa6cb

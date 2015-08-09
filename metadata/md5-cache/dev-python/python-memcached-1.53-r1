@@ -1,15 +1,15 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=bdaf3a10ae4469b1f83b066f75076d78
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)] test? ( net-misc/memcached ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)]
 DESCRIPTION=Pure python memcached client
-LICENSE=OSL-2.0
+EAPI=5
+HOMEPAGE=http://www.tummy.com/Community/software/python-memcached/ http://pypi.python.org/pypi/python-memcached
 IUSE=test python_targets_python2_7 python_targets_pypy
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=OSL-2.0
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_pypy )
 RESTRICT=test
+SLOT=0
 SRC_URI=ftp://ftp.tummy.com/pub/python-memcached/old-releases/python-memcached-1.53.tar.gz
-KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
-HOMEPAGE=http://www.tummy.com/Community/software/python-memcached/ http://pypi.python.org/pypi/python-memcached
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)]
+_eclasses_=distutils-r1	0fbebe7ad62dbe4583baab75733f8aa0	eutils	351a78113be5b393c09a2c948701ad36	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=bdaf3a10ae4469b1f83b066f75076d78

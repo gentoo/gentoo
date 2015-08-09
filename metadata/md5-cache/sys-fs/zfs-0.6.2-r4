@@ -1,14 +1,14 @@
-_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	udev	37ef89be271b9ae8aa64be024ddb39b5	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=fff0b5bb4154b145e25d3d3aaf067980
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
-EAPI=5
 DEPEND=selinux? ( sys-libs/libselinux ) sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=Userland utilities for ZFS Linux kernel module
-LICENSE=BSD-2 CDDL bash-completion? ( MIT )
-IUSE=bash-completion custom-cflags debug kernel-builtin +rootfs selinux test-suite static-libs python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-RESTRICT=test
-SRC_URI=https://github.com/zfsonlinux/zfs/archive/zfs-0.6.2.tar.gz http://dev.gentoo.org/~ryao/dist/zfs-kmod-0.6.2-p3.tar.xz
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64
+EAPI=5
 HOMEPAGE=http://zfsonlinux.org/
+IUSE=bash-completion custom-cflags debug kernel-builtin +rootfs selinux test-suite static-libs python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64
+LICENSE=BSD-2 CDDL bash-completion? ( MIT )
 RDEPEND=selinux? ( sys-libs/libselinux ) sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk !=sys-apps/grep-2.13* !kernel-builtin? ( =sys-fs/zfs-kmod-0.6.2* ) !sys-fs/zfs-fuse !prefix? ( virtual/udev ) test-suite? ( sys-apps/util-linux sys-devel/bc sys-block/parted sys-fs/lsscsi sys-fs/mdadm sys-process/procps virtual/modutils ) rootfs? ( app-arch/cpio app-misc/pax-utils !<sys-boot/grub-2.00-r2:2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/zfsonlinux/zfs/archive/zfs-0.6.2.tar.gz http://dev.gentoo.org/~ryao/dist/zfs-kmod-0.6.2-p3.tar.xz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=fff0b5bb4154b145e25d3d3aaf067980

@@ -1,14 +1,14 @@
-_eclasses_=versionator	99ae9d758cbe7cfed19170e7d48f5a9c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	twisted-r1	62b944313919179373fb9a646e2185a2	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=5df5377f9a153d93b82817603df2a757
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-EAPI=5
 DEPEND=test? ( >=dev-python/zope-interface-3.6.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] crypt? ( >=dev-python/pyopenssl-0.10[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/service_identity[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) serial? ( dev-python/pyserial[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=An asynchronous networking framework written in Python
-LICENSE=MIT
-IUSE=crypt gtk serial test python_targets_python2_7
-REQUIRED_USE=|| ( python_targets_python2_7 )
-SRC_URI=http://twistedmatrix.com/Releases/Core/15.1/TwistedCore-15.1.0.tar.bz2
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+EAPI=5
 HOMEPAGE=http://www.twistedmatrix.com/
+IUSE=crypt gtk serial test python_targets_python2_7
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=MIT
 RDEPEND=>=dev-python/zope-interface-3.6.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] crypt? ( >=dev-python/pyopenssl-0.10[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/service_identity[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) serial? ( dev-python/pyserial[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://twistedmatrix.com/Releases/Core/15.1/TwistedCore-15.1.0.tar.bz2
+_eclasses_=distutils-r1	0fbebe7ad62dbe4583baab75733f8aa0	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	twisted-r1	62b944313919179373fb9a646e2185a2	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=5df5377f9a153d93b82817603df2a757

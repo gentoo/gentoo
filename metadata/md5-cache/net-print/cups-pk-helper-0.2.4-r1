@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=40af4d29f3047b06dbd1fc778159ff12
-SLOT=0
 DEFINED_PHASES=prepare
-EAPI=5
 DEPEND=>=dev-libs/glib-2.30.0:2 net-print/cups >=sys-auth/polkit-0.97 app-arch/xz-utils >=dev-util/gdbus-codegen-2.30.0 >=dev-util/intltool-0.40.6 virtual/pkgconfig sys-devel/gettext
 DESCRIPTION=PolicyKit helper to configure cups with fine-grained privileges
-LICENSE=GPL-2+
-SRC_URI=http://www.freedesktop.org/software/cups-pk-helper/releases/cups-pk-helper-0.2.4.tar.xz
-KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86
+EAPI=5
 HOMEPAGE=http://www.freedesktop.org/wiki/Software/cups-pk-helper
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.30.0:2 net-print/cups >=sys-auth/polkit-0.97 sys-apps/dbus
+SLOT=0
+SRC_URI=http://www.freedesktop.org/software/cups-pk-helper/releases/cups-pk-helper-0.2.4.tar.xz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=40af4d29f3047b06dbd1fc778159ff12

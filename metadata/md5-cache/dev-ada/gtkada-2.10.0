@@ -1,12 +1,11 @@
-_eclasses_=gnat	fbe75d73c10064a548c4ce9dbf3c05f4	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=68fbf4087ebef2b77547b54f804b293
-SLOT=2
 DEFINED_PHASES=compile install postinst setup unpack
-EAPI=0
 DEPEND=virtual/ada >=x11-libs/cairo-1.2.6 >=dev-libs/glib-2.12.4 >=x11-libs/pango-1.14.9 >=dev-libs/atk-1.12.1 >=x11-libs/gtk+-2.10.9 >=sys-apps/sed-4 >=app-eselect/eselect-gnat-1.3
 DESCRIPTION=Gtk+ bindings to the Ada language
-LICENSE=GPL-2
-IUSE=nls opengl
-SRC_URI=mirror://gentoo/GtkAda-gpl-2.10.0.tgz
-KEYWORDS=~amd64 ~x86 ~ppc
 HOMEPAGE=https://libre.adacore.com/GtkAda/
+IUSE=nls opengl
+KEYWORDS=~amd64 ~x86 ~ppc
+LICENSE=GPL-2
+SLOT=2
+SRC_URI=mirror://gentoo/GtkAda-gpl-2.10.0.tgz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnat	fbe75d73c10064a548c4ce9dbf3c05f4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=068fbf4087ebef2b77547b54f804b293

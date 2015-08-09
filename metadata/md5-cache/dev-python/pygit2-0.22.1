@@ -1,15 +1,15 @@
-_eclasses_=versionator	99ae9d758cbe7cfed19170e7d48f5a9c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=29c0000cd9853a6a040120974f106f8b
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND==dev-libs/libgit2-0.22* dev-python/cffi:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
 DESCRIPTION=Python bindings for libgit2
-LICENSE=GPL-2-with-linking-exception
+EAPI=5
+HOMEPAGE=https://github.com/libgit2/pygit2
 IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2-with-linking-exception
+RDEPEND==dev-libs/libgit2-0.22* dev-python/cffi:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
 RESTRICT=test
+SLOT=0
 SRC_URI=https://github.com/libgit2/pygit2/archive/v0.22.1.tar.gz -> pygit2-0.22.1.tar.gz
-KEYWORDS=~amd64 ~x86
-HOMEPAGE=https://github.com/libgit2/pygit2
-RDEPEND==dev-libs/libgit2-0.22* dev-python/cffi:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
+_eclasses_=distutils-r1	0fbebe7ad62dbe4583baab75733f8aa0	eutils	351a78113be5b393c09a2c948701ad36	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=29c0000cd9853a6a040120974f106f8b

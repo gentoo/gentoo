@@ -1,11 +1,10 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
-_md5_=43dd761d205941d026742109fc6fa6f3
-SLOT=0
 DEFINED_PHASES=install
-EAPI=0
 DESCRIPTION=Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
-LICENSE=MIT
-SRC_URI=http://dlc.sun.com/osol/sparc-gfx/downloads/afb-ucode.tar.bz2 mirror://gentoo/afb-ucode.tar.bz2
-KEYWORDS=-* sparc
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=-* sparc
+LICENSE=MIT
 RDEPEND=x11-misc/afbinit
+SLOT=0
+SRC_URI=http://dlc.sun.com/osol/sparc-gfx/downloads/afb-ucode.tar.bz2 mirror://gentoo/afb-ucode.tar.bz2
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=43dd761d205941d026742109fc6fa6f3

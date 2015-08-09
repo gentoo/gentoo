@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	games	9e5e9ee0b325a8a10823f9b385ca2036	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=f337582e1d43c5b5ea67c84bb42f9c30
-SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-EAPI=5
 DEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0[abi_x86_32(-)] ) dev-lang/nasm debug? ( virtual/pkgconfig ) amd64? ( >=sys-apps/portage-2.1 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=SNES (Super Nintendo) emulator that uses x86 assembly
-LICENSE=GPL-2
-IUSE=ao custom-cflags +debug opengl pax_kernel png
-SRC_URI=mirror://sourceforge/zsnes/zsnes151src.tar.bz2
-KEYWORDS=-* amd64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+EAPI=5
 HOMEPAGE=http://www.zsnes.com/ http://ipherswipsite.com/zsnes/
+IUSE=ao custom-cflags +debug opengl pax_kernel png
+KEYWORDS=-* amd64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0[abi_x86_32(-)] ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/zsnes/zsnes151src.tar.bz2
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	games	9e5e9ee0b325a8a10823f9b385ca2036	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=f337582e1d43c5b5ea67c84bb42f9c30

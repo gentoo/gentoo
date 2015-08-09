@@ -1,14 +1,14 @@
-_eclasses_=multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	gnome.org	84c1434ce5de42302c744df8431bf1f6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=12be2e0b28399628f6bbd98715584015
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND=net-libs/gssdp >=net-libs/gupnp-0.18 >=dev-libs/glib-2.16:2 introspection? ( >=dev-libs/gobject-introspection-0.10 ) python? ( >=dev-libs/gobject-introspection-0.10 >=dev-python/pygobject-2.16:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils
 DESCRIPTION=Library to handle UPnP IGD port mapping for GUPnP
-LICENSE=LGPL-2
-IUSE=+introspection python python_targets_python2_7
-RESTRICT=test
-SRC_URI=mirror://gnome/sources/gupnp-igd/0.2/gupnp-igd-0.2.2.tar.xz
-KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86
+EAPI=5
 HOMEPAGE=http://gupnp.org
+IUSE=+introspection python python_targets_python2_7
+KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86
+LICENSE=LGPL-2
 RDEPEND=net-libs/gssdp >=net-libs/gupnp-0.18 >=dev-libs/glib-2.16:2 introspection? ( >=dev-libs/gobject-introspection-0.10 ) python? ( >=dev-libs/gobject-introspection-0.10 >=dev-python/pygobject-2.16:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnome/sources/gupnp-igd/0.2/gupnp-igd-0.2.2.tar.xz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	gnome.org	84c1434ce5de42302c744df8431bf1f6	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=12be2e0b28399628f6bbd98715584015

@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=8e0959bd2021fb352af2ded0158f9479
-SLOT=0
 DEFINED_PHASES=compile install prepare setup
-EAPI=5
 DEPEND=app-shells/tcsh dev-lang/tcl:0= dev-lang/tk:0=
 DESCRIPTION=Graphical NMR assignment and integration program for proteins, nucleic acids, and other polymers
-LICENSE=sparky
-IUSE=examples python_targets_python2_7
-RESTRICT=mirror
-SRC_URI=http://www.cgl.ucsf.edu/home/sparky/distrib-3.115/sparky-source-3.115.tar.gz
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+EAPI=5
 HOMEPAGE=http://www.cgl.ucsf.edu/home/sparky/
+IUSE=examples python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=sparky
 RDEPEND=app-shells/tcsh dev-lang/tcl:0= dev-lang/tk:0=
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://www.cgl.ucsf.edu/home/sparky/distrib-3.115/sparky-source-3.115.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=8e0959bd2021fb352af2ded0158f9479

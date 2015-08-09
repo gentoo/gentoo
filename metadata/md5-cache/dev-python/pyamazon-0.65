@@ -1,12 +1,12 @@
-_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=a127ad5260c8a8ce0b6bd5add0cca4d7
-SLOT=0
 DEFINED_PHASES=install postinst postrm prepare
-EAPI=3
 DEPEND=app-arch/unzip =dev-lang/python-2*
 DESCRIPTION=A Python wrapper for the Amazon web API
-LICENSE=PSF-2
-SRC_URI=http://www.josephson.org/projects/pyamazon/files/pyamazon-0.65.zip
-KEYWORDS=~amd64
+EAPI=3
 HOMEPAGE=http://www.josephson.org/projects/pyamazon
+KEYWORDS=~amd64
+LICENSE=PSF-2
 RDEPEND==dev-lang/python-2*
+SLOT=0
+SRC_URI=http://www.josephson.org/projects/pyamazon/files/pyamazon-0.65.zip
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=a127ad5260c8a8ce0b6bd5add0cca4d7

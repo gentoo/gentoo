@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=9db6e0543fb2f65ab54c78546329f5b9
-SLOT=0.8.8e
 DEFINED_PHASES=compile install postinst prepare prerm setup
-EAPI=5
 DEPEND=|| ( virtual/httpd-basic virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Cacti is a complete frontend to rrdtool
-LICENSE=GPL-2
-IUSE=snmp doc vhosts
-SRC_URI=http://www.cacti.net/downloads/cacti-0.8.8e.tar.gz
-KEYWORDS=alpha amd64 ~arm hppa ~ppc ~ppc64 sparc x86
+EAPI=5
 HOMEPAGE=http://www.cacti.net/
+IUSE=snmp doc vhosts
+KEYWORDS=alpha amd64 ~arm hppa ~ppc ~ppc64 sparc x86
+LICENSE=GPL-2
 RDEPEND=dev-lang/php[cli,mysql,session,sockets,xml] dev-php/adodb net-analyzer/rrdtool[graph] virtual/cron virtual/mysql snmp? ( >=net-analyzer/net-snmp-5.2.0 ) >=app-admin/webapp-config-1.50.15
+SLOT=0.8.8e
+SRC_URI=http://www.cacti.net/downloads/cacti-0.8.8e.tar.gz
+_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=9db6e0543fb2f65ab54c78546329f5b9

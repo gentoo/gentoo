@@ -1,13 +1,13 @@
-_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=8427f342795cb103f276c23d71e54cd6
-SLOT=0
 DEFINED_PHASES=compile configure install prepare
-EAPI=2
 DEPEND=>=dev-lang/mono-2 app-arch/sharutils sys-apps/sed
 DESCRIPTION=Nini - A configuration library for .NET
-LICENSE=MIT
-IUSE=debug
-SRC_URI=mirror://sourceforge/nini/Nini-1.1.0.zip
-KEYWORDS=amd64 x86
+EAPI=2
 HOMEPAGE=http://nini.sourceforge.net
+IUSE=debug
+KEYWORDS=amd64 x86
+LICENSE=MIT
 RDEPEND=>=dev-lang/mono-2
+SLOT=0
+SRC_URI=mirror://sourceforge/nini/Nini-1.1.0.zip
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8427f342795cb103f276c23d71e54cd6

@@ -1,12 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	cannadic	ce62a23ce863000e8ee601a3ae189731	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=c2f4c95a519abeb99e67314f2129d539
-SLOT=0
 DEFINED_PHASES=compile install postinst postrm prerm setup unpack
-EAPI=0
 DEPEND=>=sys-apps/sed-4 x11-misc/gccmakedep x11-misc/imake doc? ( app-text/ghostscript-gpl >=dev-texlive/texlive-langcjk-2010 dev-texlive/texlive-fontsextra dev-texlive/texlive-genericrecommended dev-texlive/texlive-latexrecommended )
 DESCRIPTION=A client-server based Kana-Kanji conversion system
-LICENSE=MIT GPL-2
-IUSE=doc
-SRC_URI=mirror://sourceforge.jp/canna/9565/Canna37p3.tar.bz2
-KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 HOMEPAGE=http://canna.sourceforge.jp/
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/canna/9565/Canna37p3.tar.bz2
+_eclasses_=cannadic	ce62a23ce863000e8ee601a3ae189731	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=c2f4c95a519abeb99e67314f2129d539

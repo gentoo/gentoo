@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	virtualx	7d550983f9b6adb3e7091f4090ddae2f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=b81244c70f5810e149cea124022f8918
-SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup
-EAPI=5
 DEPEND=app-shells/tcsh media-gfx/graphviz >=dev-lang/tk-8.3:0 >=dev-tcltk/blt-2.4 sci-libs/ccp4-libs test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Protein X-ray crystallography toolkit -- graphical interface
-LICENSE=ccp4
-IUSE=python_targets_python2_7 test
-SRC_URI=ftp://ftp.ccp4.ac.uk/ccp4/6.1.3/ccp4-6.1.3-core-src.tar.gz mirror://gentoo/ccp4i-6.1.3-arpwarp.patch.bz2 http://dev.gentoo.org/~jlec/distfiles/6.1.3-oasis4.0.patch.bz2
-KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
+EAPI=5
 HOMEPAGE=http://www.ccp4.ac.uk/
+IUSE=python_targets_python2_7 test
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
+LICENSE=ccp4
 RDEPEND=app-shells/tcsh media-gfx/graphviz >=dev-lang/tk-8.3:0 >=dev-tcltk/blt-2.4 sci-libs/ccp4-libs
+SLOT=0
+SRC_URI=ftp://ftp.ccp4.ac.uk/ccp4/6.1.3/ccp4-6.1.3-core-src.tar.gz mirror://gentoo/ccp4i-6.1.3-arpwarp.patch.bz2 http://dev.gentoo.org/~jlec/distfiles/6.1.3-oasis4.0.patch.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_md5_=b81244c70f5810e149cea124022f8918

@@ -1,8 +1,7 @@
-_eclasses_=
-_md5_=fa7c1fb32e4d2391ea22632fee6cfa98
-SLOT=0
 DEFINED_PHASES=-
-EAPI=5
 DESCRIPTION=Virtual for Devel-PPPort
+EAPI=5
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
 RDEPEND=|| ( =dev-lang/perl-5.20* ~perl-core/Devel-PPPort-3.210.0 ) !<perl-core/Devel-PPPort-3.210.0 !>perl-core/Devel-PPPort-3.210.0-r999
+SLOT=0
+_md5_=fa7c1fb32e4d2391ea22632fee6cfa98

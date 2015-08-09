@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	db-use	a4966c7f4f7df444ead1212848c13cc9	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=271dcb78f2dc73564f52d47fb6845502
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare
-EAPI=4
 DEPEND=|| ( >=sys-libs/db-4.8.30:4.8 sys-libs/db:4.7 sys-libs/db:4.6 sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 sys-libs/db:4.2 ) >=sys-libs/ncurses-5.6-r2 perl? ( dev-lang/perl ) tcl? ( !unicode? ( >=dev-lang/tcl-8.5:0 ) ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Vi clone
-LICENSE=BSD
-IUSE=perl tcl unicode
-REQUIRED_USE=tcl? ( !unicode )
-SRC_URI=http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/nvi-1.81.6.tar.bz2
-KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 sparc x86
+EAPI=4
 HOMEPAGE=https://sites.google.com/a/bostic.com/keithbostic/vi
+IUSE=perl tcl unicode
+KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 sparc x86
+LICENSE=BSD
 RDEPEND=|| ( >=sys-libs/db-4.8.30:4.8 sys-libs/db:4.7 sys-libs/db:4.6 sys-libs/db:4.5 sys-libs/db:4.4 sys-libs/db:4.3 sys-libs/db:4.2 ) >=sys-libs/ncurses-5.6-r2 perl? ( dev-lang/perl ) tcl? ( !unicode? ( >=dev-lang/tcl-8.5:0 ) ) app-eselect/eselect-vi
+REQUIRED_USE=tcl? ( !unicode )
+SLOT=0
+SRC_URI=http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/nvi-1.81.6.tar.bz2
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=271dcb78f2dc73564f52d47fb6845502

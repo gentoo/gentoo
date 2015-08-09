@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
-_md5_=c713375ba7e1e3145e5b2ba2229c0f19
-SLOT=0/1.2
 DEFINED_PHASES=compile install prepare
-EAPI=5
 DEPEND=media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] >=media-libs/openjpeg-1.5:0[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) virtual/pkgconfig static-libs? ( media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] >=media-libs/openjpeg-1.5:0[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) ) static? ( app-arch/bzip2[static-libs] x11-libs/libXau[static-libs] x11-libs/libXdmcp[static-libs] x11-libs/libxcb[static-libs] )
 DESCRIPTION=a lightweight PDF viewer and toolkit written in portable C
-LICENSE=AGPL-3
-IUSE=X vanilla static static-libs
-SRC_URI=http://mupdf.googlecode.com/files/mupdf-1.2-source.zip
-KEYWORDS=amd64 arm ~ppc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+EAPI=5
 HOMEPAGE=http://mupdf.com/
+IUSE=X vanilla static static-libs
+KEYWORDS=amd64 arm ~ppc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=AGPL-3
 RDEPEND=media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] >=media-libs/openjpeg-1.5:0[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] )
+SLOT=0/1.2
+SRC_URI=http://mupdf.googlecode.com/files/mupdf-1.2-source.zip
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=c713375ba7e1e3145e5b2ba2229c0f19

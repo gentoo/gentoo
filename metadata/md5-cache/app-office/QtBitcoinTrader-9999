@@ -1,10 +1,10 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=647fa2ca0bfe82704611c63970ae17fc
-SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare unpack
-EAPI=5
 DEPEND=dev-libs/openssl:0 sys-libs/zlib dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 dev-qt/qtmultimedia:5 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Mt.Gox and BTC-e Bitcoin Trading Client
-LICENSE=GPL-3
+EAPI=5
 HOMEPAGE=https://github.com/JulyIGHOR/QtBitcoinTrader
+LICENSE=GPL-3
 RDEPEND=dev-libs/openssl:0 sys-libs/zlib dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 dev-qt/qtmultimedia:5
+SLOT=0
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=647fa2ca0bfe82704611c63970ae17fc

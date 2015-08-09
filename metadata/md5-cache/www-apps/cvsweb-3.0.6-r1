@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=bf572a3329ccf3dcf0fc7e7aff436de
-SLOT=3.0.6-r1
 DEFINED_PHASES=install postinst prepare prerm setup
-EAPI=5
 DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=WWW interface to a CVS tree
-LICENSE=BSD
-IUSE=vhosts
-SRC_URI=ftp://ftp.freebsd.org/pub/FreeBSD/ports/local-distfiles/scop/cvsweb-3.0.6.tar.gz
-KEYWORDS=~amd64 ~ppc sparc x86
+EAPI=5
 HOMEPAGE=http://www.freebsd.org/projects/cvsweb.html
+IUSE=vhosts
+KEYWORDS=~amd64 ~ppc sparc x86
+LICENSE=BSD
 RDEPEND=>=dev-lang/perl-5.8 >=dev-vcs/cvs-1.11 >=dev-vcs/rcs-5.7 >=dev-perl/URI-1.28 dev-perl/IPC-Run dev-perl/MIME-Types dev-perl/String-Ediff >=dev-vcs/cvsgraph-1.4.0 >=app-text/enscript-1.6.3 >=app-admin/webapp-config-1.50.15
+SLOT=3.0.6-r1
+SRC_URI=ftp://ftp.freebsd.org/pub/FreeBSD/ports/local-distfiles/scop/cvsweb-3.0.6.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=0bf572a3329ccf3dcf0fc7e7aff436de

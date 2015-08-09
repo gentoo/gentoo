@@ -1,12 +1,10 @@
-_eclasses_=
-_md5_=3850a39c1c10ca5458850de38399f53a
-SLOT=0
 DEFINED_PHASES=install
-EAPI=0
 DEPEND=>=app-misc/g15daemon-1.9.0 dev-libs/libg15 dev-libs/libg15render sys-libs/zlib
 DESCRIPTION=A simple message/alert client for G15daemon
-LICENSE=GPL-2
-SRC_URI=mirror://sourceforge/g15daemon/g15message-1.0.0.tar.bz2
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 HOMEPAGE=http://g15daemon.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
 RDEPEND=>=app-misc/g15daemon-1.9.0 dev-libs/libg15 dev-libs/libg15render sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/g15daemon/g15message-1.0.0.tar.bz2
+_md5_=3850a39c1c10ca5458850de38399f53a

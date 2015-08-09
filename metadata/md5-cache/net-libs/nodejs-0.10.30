@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=eb55361c73c56813167277751f8d48fb
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
-EAPI=5
 DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-libs/openssl
 DESCRIPTION=Evented IO for V8 Javascript
-LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
-IUSE=+npm +snapshot
-RESTRICT=test
-SRC_URI=http://nodejs.org/dist/v0.10.30/node-v0.10.30.tar.gz
-KEYWORDS=amd64 ~arm x86 ~x64-macos
+EAPI=5
 HOMEPAGE=http://nodejs.org/
+IUSE=+npm +snapshot
+KEYWORDS=amd64 ~arm x86 ~x64-macos
+LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
 RDEPEND=dev-libs/openssl
+RESTRICT=test
+SLOT=0
+SRC_URI=http://nodejs.org/dist/v0.10.30/node-v0.10.30.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=eb55361c73c56813167277751f8d48fb

@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
-_md5_=8cbfc900b470accd440bc529212bc5d2
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-EAPI=5
 DEPEND=emacs? ( virtual/emacs ) readline? ( sys-libs/readline ) athena? ( x11-libs/libXaw ) >=dev-libs/gmp-4.1 tk? ( dev-lang/tk ) X? ( x11-libs/libXt x11-libs/libXext x11-libs/libXmu x11-libs/libXaw ) virtual/latex-base virtual/texi2dvi >=app-text/texi2html-1.64 >=sys-devel/autoconf-2.52
 DESCRIPTION=GNU Common Lisp
-LICENSE=LGPL-2 GPL-2
-IUSE=+ansi athena emacs +readline tk X
-RESTRICT=strip
-SRC_URI=mirror://gnu/gcl/gcl-2.6.10.tar.gz http://dev.gentoo.org/~grozin/gcl-2.6.10-fedora.tar.bz2
-KEYWORDS=amd64 ~arm x86
+EAPI=5
 HOMEPAGE=http://www.gnu.org/software/gcl/gcl.html
+IUSE=+ansi athena emacs +readline tk X
+KEYWORDS=amd64 ~arm x86
+LICENSE=LGPL-2 GPL-2
 RDEPEND=emacs? ( virtual/emacs ) readline? ( sys-libs/readline ) athena? ( x11-libs/libXaw ) >=dev-libs/gmp-4.1 tk? ( dev-lang/tk ) X? ( x11-libs/libXt x11-libs/libXext x11-libs/libXmu x11-libs/libXaw ) virtual/latex-base
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://gnu/gcl/gcl-2.6.10.tar.gz http://dev.gentoo.org/~grozin/gcl-2.6.10-fedora.tar.bz2
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=8cbfc900b470accd440bc529212bc5d2

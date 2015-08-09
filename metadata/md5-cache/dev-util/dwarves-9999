@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	cmake-utils	f474224ef49d530640a43a04ae94928e	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=4d2015cf10d1ad30a30de5b082bd01db
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test unpack
-EAPI=5
 DEPEND=>=dev-libs/elfutils-0.131 sys-libs/zlib sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git
 DESCRIPTION=pahole (Poke-a-Hole) and other DWARF2 utilities
-LICENSE=GPL-2
-IUSE=debug python_targets_python2_7
+EAPI=5
 HOMEPAGE=https://git.kernel.org/cgit/devel/pahole/pahole.git/
+IUSE=debug python_targets_python2_7
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/elfutils-0.131 sys-libs/zlib
+SLOT=0
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=4d2015cf10d1ad30a30de5b082bd01db

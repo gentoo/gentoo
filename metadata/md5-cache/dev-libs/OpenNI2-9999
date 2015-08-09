@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	git-r3	1502b9838d043db47700b8120083e637	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=dc95a3f12aaca0a0fcc53319faa75901
-SLOT=0
 DEFINED_PHASES=compile install preinst prepare setup unpack
-EAPI=5
 DEPEND=virtual/libusb:1 virtual/libudev virtual/jpeg:0 opengl? ( media-libs/freeglut ) java? ( >=virtual/jre-1.5 ) dev-lang/python doc? ( app-doc/doxygen ) java? ( >=virtual/jdk-1.5 ) >=dev-vcs/git-1.8.2.1 java? ( >=dev-java/java-config-2.2.0 )
 DESCRIPTION=OpenNI2 SDK
-LICENSE=Apache-2.0
-IUSE=doc java neon opengl static-libs elibc_FreeBSD java
+EAPI=5
 HOMEPAGE=http://structure.io/openni
+IUSE=doc java neon opengl static-libs elibc_FreeBSD java
+LICENSE=Apache-2.0
 RDEPEND=virtual/libusb:1 virtual/libudev virtual/jpeg:0 opengl? ( media-libs/freeglut ) java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0 )
+SLOT=0
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-r3	1502b9838d043db47700b8120083e637	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=dc95a3f12aaca0a0fcc53319faa75901

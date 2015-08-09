@@ -1,13 +1,12 @@
-_eclasses_=
-_md5_=ef4f106ded6e3f8cff1f0f80701d9b4
-SLOT=0
 DEFINED_PHASES=configure install prepare
-EAPI=2
 DEPEND=>=dev-libs/glib-2.14:2 >=media-video/ogmrip-0.13.4 virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
 DESCRIPTION=Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-LICENSE=GPL-2
-IUSE=nls
-SRC_URI=mirror://sourceforge/ogmrip/shrip-0.6.0.tar.gz
-KEYWORDS=~amd64 ~x86
+EAPI=2
 HOMEPAGE=http://ogmrip.sourceforge.net/
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.14:2 >=media-video/ogmrip-0.13.4
+SLOT=0
+SRC_URI=mirror://sourceforge/ogmrip/shrip-0.6.0.tar.gz
+_md5_=0ef4f106ded6e3f8cff1f0f80701d9b4

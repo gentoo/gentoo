@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=789263b0b5db97ac1c919bc1e91ea466
-SLOT=0
 DEFINED_PHASES=compile install prepare setup unpack
-EAPI=4
 DEPEND=dev-libs/boost[threads(+)] dev-libs/glib:2 dev-libs/crypto++ dev-libs/openssl[-bindist] upnp? ( net-libs/miniupnpc ) sys-libs/db:4.8[cxx] >=app-shells/bash-4.1 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A P2P network based domain name system
-LICENSE=MIT ISC cryptopp
+EAPI=4
+HOMEPAGE=https://dot-bit.org/
 IUSE=ssl upnp
 KEYWORDS=~amd64 ~x86
-HOMEPAGE=https://dot-bit.org/
+LICENSE=MIT ISC cryptopp
 RDEPEND=dev-libs/boost[threads(+)] dev-libs/glib:2 dev-libs/crypto++ dev-libs/openssl[-bindist] upnp? ( net-libs/miniupnpc ) sys-libs/db:4.8[cxx]
+SLOT=0
+_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=789263b0b5db97ac1c919bc1e91ea466

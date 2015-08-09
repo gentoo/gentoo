@@ -1,11 +1,10 @@
-_eclasses_=
-_md5_=611279f4c519514e2777a0f5e5c3a264
-SLOT=0
 DEFINED_PHASES=install
-EAPI=5
 DESCRIPTION=Icon themes for smplayer
-LICENSE=CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 GPL-2 LGPL-3
-SRC_URI=mirror://sourceforge/smplayer/smplayer-themes-14.9.0.tar.bz2
-KEYWORDS=amd64 hppa ~ppc ~ppc64 x86 ~x86-fbsd
+EAPI=5
 HOMEPAGE=http://smplayer.sourceforge.net/
+KEYWORDS=amd64 hppa ~ppc ~ppc64 x86 ~x86-fbsd
+LICENSE=CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 GPL-2 LGPL-3
 RDEPEND=media-video/smplayer
+SLOT=0
+SRC_URI=mirror://sourceforge/smplayer/smplayer-themes-14.9.0.tar.bz2
+_md5_=611279f4c519514e2777a0f5e5c3a264

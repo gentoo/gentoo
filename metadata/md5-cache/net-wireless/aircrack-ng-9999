@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	subversion	d11b897c0c78e23413f0af0959ec6b92	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=8f16d47023127f73f777173daf7da467
-SLOT=0
 DEFINED_PHASES=compile install postinst preinst prepare test unpack
-EAPI=5
 DEPEND=net-libs/libpcap dev-libs/openssl:0= netlink? ( dev-libs/libnl:3 ) pcre? ( dev-libs/libpcre ) airdrop-ng? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) airgraph-ng? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) experimental? ( sys-libs/zlib ) sqlite? ( >=dev-db/sqlite-3.4 ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=WLAN tools for breaking 802.11 WEP/WPA keys
-LICENSE=GPL-2
-IUSE=+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD +netlink +pcre +sqlite +experimental python_targets_python2_7
-REQUIRED_USE=airdrop-ng? ( || ( python_targets_python2_7 ) ) airgraph-ng? ( || ( python_targets_python2_7 ) )
+EAPI=5
 HOMEPAGE=http://www.aircrack-ng.org
+IUSE=+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD +netlink +pcre +sqlite +experimental python_targets_python2_7
+LICENSE=GPL-2
 RDEPEND=net-libs/libpcap dev-libs/openssl:0= netlink? ( dev-libs/libnl:3 ) pcre? ( dev-libs/libpcre ) airdrop-ng? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) airgraph-ng? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) experimental? ( sys-libs/zlib ) sqlite? ( >=dev-db/sqlite-3.4 ) kernel_linux? ( net-wireless/iw net-wireless/wireless-tools sys-apps/ethtool sys-apps/usbutils sys-apps/pciutils ) sys-apps/hwids airdrop-ng? ( net-wireless/lorcon[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+REQUIRED_USE=airdrop-ng? ( || ( python_targets_python2_7 ) ) airgraph-ng? ( || ( python_targets_python2_7 ) )
+SLOT=0
+_eclasses_=distutils-r1	0fbebe7ad62dbe4583baab75733f8aa0	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=8f16d47023127f73f777173daf7da467

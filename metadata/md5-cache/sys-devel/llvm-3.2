@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=64d253aa824f4f1e34277793cf227a8b
-SLOT=0/3.2
 DEFINED_PHASES=compile configure install prepare setup
-EAPI=5
 DEPEND=dev-lang/perl >=sys-devel/make-3.79 >=sys-devel/flex-2.5.4 >=sys-devel/bison-1.875d || ( >=sys-devel/gcc-3.0 >=sys-devel/gcc-apple-4.2.1 ) || ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-3.2.3 ) doc? ( dev-python/sphinx ) gold? ( >=sys-devel/binutils-2.22[cxx] ) libffi? ( virtual/pkgconfig virtual/libffi ) ocaml? ( dev-lang/ocaml ) udis86? ( dev-libs/udis86[pic(+)] ) || ( >=dev-lang/python-2.7.5-r2:2.7 )
 DESCRIPTION=Low Level Virtual Machine
-LICENSE=UoI-NCSA
-IUSE=debug doc gold +libffi multitarget ocaml test udis86 vim-syntax
-SRC_URI=http://llvm.org/releases/3.2/llvm-3.2.src.tar.gz !doc? ( http://dev.gentoo.org/~voyageur/distfiles/llvm-3.2-manpages.tar.bz2 )
-KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos
+EAPI=5
 HOMEPAGE=http://llvm.org/
+IUSE=debug doc gold +libffi multitarget ocaml test udis86 vim-syntax
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=UoI-NCSA
 RDEPEND=dev-lang/perl libffi? ( virtual/libffi ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+SLOT=0/3.2
+SRC_URI=http://llvm.org/releases/3.2/llvm-3.2.src.tar.gz !doc? ( http://dev.gentoo.org/~voyageur/distfiles/llvm-3.2-manpages.tar.bz2 )
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=64d253aa824f4f1e34277793cf227a8b

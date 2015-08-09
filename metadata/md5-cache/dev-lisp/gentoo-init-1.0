@@ -1,10 +1,9 @@
-_eclasses_=
-_md5_=ea54107afe5dfc0a51c48ce4580c4f99
-SLOT=0
 DEFINED_PHASES=install
-EAPI=4
 DESCRIPTION=Simple ASDF2 configuration for Gentoo Common Lisp ports
-LICENSE=GPL-2
-KEYWORDS=amd64 ~ppc ~sparc x86
+EAPI=4
 HOMEPAGE=http://www.gentoo.org/proj/en/lisp/common-lisp/guide.xml
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
 RDEPEND=>=dev-lisp/asdf-2.0
+SLOT=0
+_md5_=ea54107afe5dfc0a51c48ce4580c4f99

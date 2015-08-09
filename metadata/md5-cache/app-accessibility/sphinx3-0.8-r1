@@ -1,14 +1,14 @@
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	prefix	e7f2b9c6e57342e5d25eac22fce23062	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=9493bd824ed4d70cdc4cbed7090deafd
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND=>=app-accessibility/sphinxbase-0.7[static-libs?,python?,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
 DESCRIPTION=CMU Speech Recognition engine
-LICENSE=BSD-2
-IUSE=doc python static-libs python_targets_python2_7
-REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
-SRC_URI=mirror://sourceforge/cmusphinx/sphinx3-0.8.tar.gz
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://cmusphinx.sourceforge.net/
+IUSE=doc python static-libs python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
 RDEPEND=>=app-accessibility/sphinxbase-0.7[static-libs?,python?,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/cmusphinx/sphinx3-0.8.tar.gz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	distutils-r1	0fbebe7ad62dbe4583baab75733f8aa0	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	prefix	e7f2b9c6e57342e5d25eac22fce23062	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=9493bd824ed4d70cdc4cbed7090deafd

@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1
-_md5_=207e0572a59c9799c5d63c8df7beafaa
-SLOT=0/3.4
 DEFINED_PHASES=postinst postrm
-EAPI=5
 DESCRIPTION=C language family frontend for LLVM (meta-ebuild)
-LICENSE=UoI-NCSA
+EAPI=5
+HOMEPAGE=http://clang.llvm.org/
 IUSE=debug multitarget python +static-analyzer abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos
-HOMEPAGE=http://clang.llvm.org/
+LICENSE=UoI-NCSA
 RDEPEND=~sys-devel/llvm-3.4.2[clang(-),debug=,multitarget?,python?,static-analyzer,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+SLOT=0/3.4
+_eclasses_=multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=207e0572a59c9799c5d63c8df7beafaa

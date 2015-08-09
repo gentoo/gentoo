@@ -1,12 +1,10 @@
-_eclasses_=
-_md5_=16c811bc4bcb8131e83da8d8aa3015ec
-SLOT=0
 DEFINED_PHASES=install unpack
-EAPI=0
 DEPEND=dev-lang/perl
 DESCRIPTION=randomsig - perl script for generating random .signature files
-LICENSE=GPL-2
-SRC_URI=http://suso.suso.org/programs/randomsig/downloads/randomsig-v1.10.0.tar.gz
-KEYWORDS=~amd64 s390 sparc x86
 HOMEPAGE=http://suso.suso.org/programs/randomsig/
+KEYWORDS=~amd64 s390 sparc x86
+LICENSE=GPL-2
 RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://suso.suso.org/programs/randomsig/downloads/randomsig-v1.10.0.tar.gz
+_md5_=16c811bc4bcb8131e83da8d8aa3015ec

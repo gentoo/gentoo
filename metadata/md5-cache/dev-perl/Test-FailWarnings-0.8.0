@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
-_md5_=380a9214e01ddcd596330065af58903f
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test unpack
-EAPI=5
 DEPEND=virtual/perl-Carp virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.860.0 virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Capture-Tiny-0.120.0 virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO virtual/perl-Scalar-List-Utils >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Add test failures if warnings are caught
-LICENSE=Apache-2.0
-IUSE=test
-SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Test-FailWarnings-0.008.tar.gz
-KEYWORDS=~amd64 ~hppa ~ppc ~x86
+EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Test-FailWarnings/
+IUSE=test
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=Apache-2.0
 RDEPEND=virtual/perl-Carp virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.860.0 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Test-FailWarnings-0.008.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
+_md5_=380a9214e01ddcd596330065af58903f

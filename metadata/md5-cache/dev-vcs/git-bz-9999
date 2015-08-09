@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=374b1382429d75efbf68e8eec361b6c4
-SLOT=0
 DEFINED_PHASES=compile configure install setup unpack
-EAPI=5
 DEPEND=app-text/asciidoc app-text/xmlto >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Bugzilla subcommand for git
-LICENSE=GPL-2
-IUSE=python_targets_pypy python_targets_python2_7 python_single_target_pypy python_single_target_python2_7
+EAPI=5
 HOMEPAGE=http://www.fishsoup.net/software/git-bz/
+IUSE=python_targets_pypy python_targets_python2_7 python_single_target_pypy python_single_target_python2_7
+LICENSE=GPL-2
 RDEPEND=dev-vcs/git
+SLOT=0
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=374b1382429d75efbf68e8eec361b6c4

@@ -1,11 +1,11 @@
-_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	a2128e58ed9724a40d815e35697d32dd
-_md5_=3337e1e72f5745b64f31581570cd3332
-SLOT=0/1.0.0
 DEFINED_PHASES=compile install test unpack
-EAPI=5
 DEPEND=>=dev-lang/go-1.4.2:=
 DESCRIPTION=Resiliency patterns for golang
-LICENSE=MIT
-SRC_URI=https://github.com/eapache/go-resiliency/archive/v1.0.0.tar.gz -> go-resiliency-1.0.0.tar.gz
-KEYWORDS=~amd64
+EAPI=5
 HOMEPAGE=https://github.com/eapache/go-resiliency
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0/1.0.0
+SRC_URI=https://github.com/eapache/go-resiliency/archive/v1.0.0.tar.gz -> go-resiliency-1.0.0.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	a2128e58ed9724a40d815e35697d32dd
+_md5_=3337e1e72f5745b64f31581570cd3332

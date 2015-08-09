@@ -1,10 +1,9 @@
-_eclasses_=
-_md5_=b625b8a1b656d9317803b9f3db2af151
-SLOT=0
 DEFINED_PHASES=-
-EAPI=5
 DESCRIPTION=Alternative to Test::More::use_ok
-LICENSE=GPL-2
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://www.gentoo.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
 RDEPEND=~virtual/perl-Test-Simple-1.1.14
+SLOT=0
+_md5_=b625b8a1b656d9317803b9f3db2af151

@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=4e27975bba24b6ba46ee0f7c34082905
-SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-EAPI=5
 DEPEND=dev-libs/expat media-libs/fontconfig media-libs/flac >=media-libs/libsdl-1.2.10[X,sound,joystick,opengl?,video] media-libs/sdl-ttf sys-libs/zlib virtual/jpeg alsa? ( media-libs/alsa-lib ) X? ( gnome-base/gconf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) app-arch/unzip media-libs/alsa-lib virtual/pkgconfig X? ( x11-proto/xineramaproto )
 DESCRIPTION=Multiple Arcade Machine Emulator (SDL)
-LICENSE=XMAME
-IUSE=X alsa debug opengl
-REQUIRED_USE=debug? ( X )
-SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/sdlmame0148u1_diff.zip http://dev.gentoo.org/~hasufell/distfiles/mame0148s.zip http://www.netswarm.net/misc/sdlmame-ui.bdf.gz
-KEYWORDS=amd64 ~ppc x86
+EAPI=5
 HOMEPAGE=http://mamedev.org/
+IUSE=X alsa debug opengl
+KEYWORDS=amd64 ~ppc x86
+LICENSE=XMAME
 RDEPEND=dev-libs/expat media-libs/fontconfig media-libs/flac >=media-libs/libsdl-1.2.10[X,sound,joystick,opengl?,video] media-libs/sdl-ttf sys-libs/zlib virtual/jpeg alsa? ( media-libs/alsa-lib ) X? ( gnome-base/gconf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama ) games-misc/games-envd
+REQUIRED_USE=debug? ( X )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/sdlmame0148u1_diff.zip http://dev.gentoo.org/~hasufell/distfiles/mame0148s.zip http://www.netswarm.net/misc/sdlmame-ui.bdf.gz
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	games	9e5e9ee0b325a8a10823f9b385ca2036	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=4e27975bba24b6ba46ee0f7c34082905

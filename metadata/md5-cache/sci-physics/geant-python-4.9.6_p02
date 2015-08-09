@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=be1464a713aee72ddc4747fc9c7cf658
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
-EAPI=5
 DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] dev-libs/boost[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] dev-libs/xerces-c =sci-physics/geant-4.9.6_p02*
 DESCRIPTION=Python bindings for Geant4
-LICENSE=geant4
-IUSE=examples python_targets_python2_7 python_targets_python3_3
-SRC_URI=http://geant4.cern.ch/support/source/geant4.9.6.p02.tar.gz
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+EAPI=5
 HOMEPAGE=http://geant4.cern.ch/
+IUSE=examples python_targets_python2_7 python_targets_python3_3
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=geant4
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] dev-libs/boost[python_targets_python2_7(-)?,python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-)] dev-libs/xerces-c =sci-physics/geant-4.9.6_p02*
+SLOT=0
+SRC_URI=http://geant4.cern.ch/support/source/geant4.9.6.p02.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=be1464a713aee72ddc4747fc9c7cf658

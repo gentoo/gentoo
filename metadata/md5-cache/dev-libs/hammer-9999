@@ -1,10 +1,10 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	git-2	1bb87192831f668cd20d93ffb1689c94	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=fd217dbc7cc31236b36599a34a720539
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test unpack
-EAPI=5
 DEPEND=dev-util/scons >=dev-libs/glib-2.29 python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-lang/swig ) perl? ( >=dev-lang/swig-2.0.8 ) php? ( dev-lang/swig ) dev-util/scons dev-vcs/git
 DESCRIPTION=Hammer is a parsing library, which is bit-oriented and features several parsing backends
-LICENSE=GPL-2
-IUSE=debug perl php python test python_targets_python2_7
+EAPI=5
 HOMEPAGE=https://github.com/UpstandingHackers/hammer
+IUSE=debug perl php python test python_targets_python2_7
+LICENSE=GPL-2
+SLOT=0
+_eclasses_=distutils-r1	0fbebe7ad62dbe4583baab75733f8aa0	eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=fd217dbc7cc31236b36599a34a720539

@@ -1,13 +1,12 @@
-_eclasses_=
-_md5_=288e4144db0c797bf16c7ec4af5abbb1
-SLOT=0
 DEFINED_PHASES=configure install
-EAPI=5
 DEPEND=>=dev-libs/glib-2.28:2 dev-libs/libnl systemd? ( sys-apps/systemd:0 ) >=sys-apps/dbus-1.2.24
 DESCRIPTION=Near Field Communication (NFC) management daemon
-LICENSE=GPL-2
-IUSE=tools systemd
-SRC_URI=mirror://kernel/linux/network/nfc/neard-0.15.tar.xz
-KEYWORDS=~amd64 ~arm ~x86
+EAPI=5
 HOMEPAGE=https://01.org/linux-nfc/
+IUSE=tools systemd
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.28:2 dev-libs/libnl systemd? ( sys-apps/systemd:0 ) >=sys-apps/dbus-1.2.24
+SLOT=0
+SRC_URI=mirror://kernel/linux/network/nfc/neard-0.15.tar.xz
+_md5_=288e4144db0c797bf16c7ec4af5abbb1

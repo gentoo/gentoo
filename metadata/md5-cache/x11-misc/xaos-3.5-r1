@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=4b3b5762d1cb9e343a54634fc6921435
-SLOT=0
 DEFINED_PHASES=compile configure install prepare
-EAPI=4
 DEPEND=sci-libs/gsl sys-libs/zlib aalib? ( media-libs/aalib ) gtk? ( x11-libs/gtk+:2 ) png? ( media-libs/libpng ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) virtual/pkgconfig doc? ( virtual/texi2dvi ) X? ( x11-proto/xf86vidmodeproto x11-proto/xextproto x11-proto/xproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A very fast real-time fractal zoomer
-LICENSE=GPL-2
-IUSE=aalib doc -gtk nls png svga threads X
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/xaos.png.tar mirror://sourceforge/xaos/xaos-3.5.tar.gz
-KEYWORDS=amd64 ppc sparc x86
+EAPI=4
 HOMEPAGE=http://xaos.sf.net/
+IUSE=aalib doc -gtk nls png svga threads X
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
 RDEPEND=sci-libs/gsl sys-libs/zlib aalib? ( media-libs/aalib ) gtk? ( x11-libs/gtk+:2 ) png? ( media-libs/libpng ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/xaos.png.tar mirror://sourceforge/xaos/xaos-3.5.tar.gz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=4b3b5762d1cb9e343a54634fc6921435

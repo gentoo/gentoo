@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	elisp	484004c25306120b472b7dfdb0685c95	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=7f7cb942b30ae780d8594a6c7af173d1
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-EAPI=5
 DEPEND=espeak? ( app-accessibility/espeak ) >=virtual/emacs-24 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=the emacspeak audio desktop
-LICENSE=BSD GPL-2
-IUSE=+espeak
+EAPI=5
 HOMEPAGE=http://emacspeak.sourceforge.net/
+IUSE=+espeak
+LICENSE=BSD GPL-2
 RDEPEND=espeak? ( app-accessibility/espeak ) >=dev-tcltk/tclx-8.4 >=virtual/emacs-24
+SLOT=0
+_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=7f7cb942b30ae780d8594a6c7af173d1

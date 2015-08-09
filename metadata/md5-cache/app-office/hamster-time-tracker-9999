@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	waf-utils	ad1dd5b59c523843eebd3a9934c509ca	python-single-r1	626346d3c54afb66571061bbd4c53f25	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=56e85ef0fefed2620a414e1069509e95
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup unpack
-EAPI=5
 DEPEND=dev-python/gconf-python gnome-base/gconf[introspection] dev-python/pyxdg >=x11-libs/gtk+-3.10 sys-devel/gettext dev-util/intltool >=dev-vcs/git-1.8.2.1 dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=Time tracking for the masses
-LICENSE=GPL-3
-IUSE=python_targets_python2_7
+EAPI=5
 HOMEPAGE=http://projecthamster.wordpress.com
+IUSE=python_targets_python2_7
+LICENSE=GPL-3
 RDEPEND=dev-python/gconf-python gnome-base/gconf[introspection] dev-python/pyxdg >=x11-libs/gtk+-3.10 sys-devel/gettext
+SLOT=0
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
+_md5_=56e85ef0fefed2620a414e1069509e95

@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=2a4234bb3be934526854ea52a5c63a6d
-SLOT=0
 DEFINED_PHASES=install prepare setup
-EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 DESCRIPTION=Allow manipulating events before/after insertion as well as before fetching
-LICENSE=GPL-3
-IUSE=fts geolocation memprofile sqldebug tracker python_targets_python2_7
-REQUIRED_USE=python_targets_python2_7
-SRC_URI=http://launchpad.net/zeitgeist-extensions/trunk/fts-0.0.13/+download/zeitgeist-extensions-0.0.13.tar.gz
-KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+EAPI=5
 HOMEPAGE=https://launchpad.net/zeitgeist-extensions/
+IUSE=fts geolocation memprofile sqldebug tracker python_targets_python2_7
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] fts? ( !gnome-extra/zeitgeist[fts] dev-libs/xapian-bindings[python] dev-python/dbus-python dev-python/pygobject dev-python/pyxdg ) geolocation? ( dev-python/dbus-python dev-python/python-geoclue ) memprofile? ( dev-python/dbus-python dev-python/pympler ) sqldebug? ( dev-python/python-sqlparse ) tracker? ( app-misc/tracker dev-python/pygobject dev-python/dbus-python )
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=http://launchpad.net/zeitgeist-extensions/trunk/fts-0.0.13/+download/zeitgeist-extensions-0.0.13.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=2a4234bb3be934526854ea52a5c63a6d

@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=11640a6104b7aaabfd81e67c03c6429b
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
-EAPI=5
 DEPEND=virtual/libgudev:= virtual/libudev:= >=dev-libs/glib-2.32:2 test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) ) app-arch/xz-utils virtual/pkgconfig
 DESCRIPTION=Mock hardware devices for creating unit tests
-LICENSE=LGPL-2.1+
-IUSE=static-libs test
-RESTRICT=test
-SRC_URI=http://launchpad.net/umockdev/trunk/0.8.9/+download/umockdev-0.8.9.tar.xz
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=https://github.com/martinpitt/umockdev/
+IUSE=static-libs test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1+
 RDEPEND=virtual/libgudev:= virtual/libudev:= >=dev-libs/glib-2.32:2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://launchpad.net/umockdev/trunk/0.8.9/+download/umockdev-0.8.9.tar.xz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=11640a6104b7aaabfd81e67c03c6429b

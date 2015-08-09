@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=9f0f495e11031ea8c3da7134d65916d8
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND=>=dev-libs/protobuf-c-0.15 sys-libs/zlib ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6m ) ) doc? ( app-doc/doxygen ) test? ( dev-libs/expat dev-libs/libxml2:2 net-misc/curl ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=This library implements the client side of the Gadu-Gadu protocol
-LICENSE=LGPL-2.1
-IUSE=doc gnutls ssl static-libs test threads
-REQUIRED_USE=gnutls? ( ssl )
-SRC_URI=https://github.com/wojtekka/libgadu/archive/1.12.0.tar.gz -> libgadu-1.12.0.tar.gz
-KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+EAPI=5
 HOMEPAGE=http://toxygen.net/libgadu/
+IUSE=doc gnutls ssl static-libs test threads
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/protobuf-c-0.15 sys-libs/zlib ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( >=dev-libs/openssl-0.9.6m ) ) !=net-im/kadu-0.6.0.2 !=net-im/kadu-0.6.0.1
+REQUIRED_USE=gnutls? ( ssl )
+SLOT=0
+SRC_URI=https://github.com/wojtekka/libgadu/archive/1.12.0.tar.gz -> libgadu-1.12.0.tar.gz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=9f0f495e11031ea8c3da7134d65916d8

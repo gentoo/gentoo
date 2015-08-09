@@ -1,12 +1,12 @@
-_eclasses_=multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=36e1dad74d919c52c53e37bfafcc3159
-SLOT=0
 DEFINED_PHASES=compile configure install preinst prepare test
-EAPI=4
 DESCRIPTION=TCP Wrappers
-LICENSE=tcp_wrappers_license
-IUSE=ipv6 netgroups static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-SRC_URI=ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz mirror://debian/pool/main/t/tcp-wrappers/tcp-wrappers_7.6.q-22.debian.tar.gz
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux
+EAPI=4
 HOMEPAGE=ftp://ftp.porcupine.org/pub/security/index.html
+IUSE=ipv6 netgroups static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux
+LICENSE=tcp_wrappers_license
 RDEPEND=abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r4 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
+SLOT=0
+SRC_URI=ftp://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz mirror://debian/pool/main/t/tcp-wrappers/tcp-wrappers_7.6.q-22.debian.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=36e1dad74d919c52c53e37bfafcc3159

@@ -1,13 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
-_md5_=bcc93cdc08f768e16ec13f4d2529ce8f
-SLOT=0
 DEFINED_PHASES=compile install postinst setup
-EAPI=0
 DEPEND=virtual/mysql dbi? ( dev-db/libdbi ) ssl? ( dev-libs/openssl ) =www-servers/apache-2.2*
 DESCRIPTION=An Apache module for logging to an SQL (MySQL) database
-LICENSE=Artistic
-IUSE=dbi ssl
-SRC_URI=http://www.outoforder.cc/downloads/mod_log_sql/mod_log_sql-1.101.tar.bz2
-KEYWORDS=amd64 ppc x86
 HOMEPAGE=http://www.outoforder.cc/projects/apache/mod_log_sql/
+IUSE=dbi ssl
+KEYWORDS=amd64 ppc x86
+LICENSE=Artistic
 RDEPEND=virtual/mysql dbi? ( dev-db/libdbi ) ssl? ( dev-libs/openssl ) =www-servers/apache-2.2*
+SLOT=0
+SRC_URI=http://www.outoforder.cc/downloads/mod_log_sql/mod_log_sql-1.101.tar.bz2
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=bcc93cdc08f768e16ec13f4d2529ce8f

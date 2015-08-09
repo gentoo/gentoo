@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	gnome2	56d268cae832738430a9de86a5765fa1	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=1ef369203ccf89ff9747ce35cd749a9b
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-EAPI=5
 DEPEND=>=dev-libs/glib-2.4:2 >=dev-libs/atk-1.6 >=x11-libs/gtk+-2.4:2 >=x11-libs/pango-1.2.1 >=gnome-base/gconf-2.4:2 >=gnome-base/libglade-2.4:2.0 >=gnome-base/libgnomeui-2.4 freewnn? ( app-i18n/freewnn ) canna? ( app-i18n/canna ) skk? ( virtual/skkserv ) anthy? ( app-i18n/anthy ) dev-lang/perl dev-util/intltool dev-perl/URI virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=A Japanese input module for GTK2 and XIM
-LICENSE=GPL-2
-IUSE=canna freewnn skk anthy
-SRC_URI=http://im-ja.sourceforge.net/im-ja-1.5.tar.gz http://im-ja.sourceforge.net/old/im-ja-1.5.tar.gz
-KEYWORDS=amd64 ppc x86
+EAPI=5
 HOMEPAGE=http://im-ja.sourceforge.net/
+IUSE=canna freewnn skk anthy
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.4:2 >=dev-libs/atk-1.6 >=x11-libs/gtk+-2.4:2 >=x11-libs/pango-1.2.1 >=gnome-base/gconf-2.4:2 >=gnome-base/libglade-2.4:2.0 >=gnome-base/libgnomeui-2.4 freewnn? ( app-i18n/freewnn ) canna? ( app-i18n/canna ) skk? ( virtual/skkserv ) anthy? ( app-i18n/anthy )
+SLOT=0
+SRC_URI=http://im-ja.sourceforge.net/im-ja-1.5.tar.gz http://im-ja.sourceforge.net/old/im-ja-1.5.tar.gz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=1ef369203ccf89ff9747ce35cd749a9b
