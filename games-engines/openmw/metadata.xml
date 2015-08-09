@@ -9,8 +9,6 @@
 	<use>
 		<flag name="devtools">Install development tools like
 			bsatool, esmtool and opencs.</flag>
-		<flag name="launcher">Install the launcher for configuring
-			OpenMW.</flag>
 	</use>
 	<upstream>
 		<changelog>https://github.com/OpenMW/openmw/releases</changelog>
