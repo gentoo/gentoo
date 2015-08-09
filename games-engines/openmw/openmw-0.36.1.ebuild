@@ -19,7 +19,7 @@ IUSE="doc devtools"
 RDEPEND="
 	app-arch/unshield
 	>=dev-games/mygui-3.2.1[ogre]
-	>=dev-games/ogre-1.9.0[freeimage,ois,opengl,zip]
+	>=dev-games/ogre-1.9.0[-double-precision,freeimage,ois,opengl,zip]
 	>=dev-libs/boost-1.46.0
 	dev-libs/tinyxml
 	>=dev-qt/qtcore-4.7.0:4
