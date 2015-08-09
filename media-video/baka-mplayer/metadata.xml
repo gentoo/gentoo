@@ -3,4 +3,7 @@
 <pkgmetadata>
   <herd>qt</herd>
   <herd>video</herd>
+  <upstream>
+    <remote-id type="github">u8sand/Baka-MPlayer</remote-id>
+  </upstream>
 </pkgmetadata>
