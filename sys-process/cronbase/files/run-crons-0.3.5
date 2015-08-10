@@ -1,30 +1,6 @@
 #!/bin/bash
-#
-# $Id$
-#
-# 12 Oct 2008; Thilo Bangert <bangert@gentoo.org> run-crons:
-#     ignore emacs backup files (bug #237200)
-#     include logging patch (bug #140869)
-#
-# 08 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> run-crons:
-#     Ignore the error messages from find caused by race conditions, since
-#     we could care less about the error as long as the file has been removed.
-#     See bug 8506.
-#
-# 06 May 2004; Aron Griffis <agriffis@gentoo.org> run-crons:
-#     Make the locking actually work.  The old code was racy.
-#     Thanks to Mathias Gumz in bug 45155 for some cleanups.
-#
-# 23 Jun 2002; Jon Nelson <jnelson@gentoo.org> run-crons:
-#     fixed a race condition, where cron jobs and run-crons wanted to
-#     delete touch files
-#
-# 20 Apr 2002; Thilo Bangert <bangert@gentoo.org> run-crons:
-#     moved lastrun directory to /var/spool/cron/lastrun
-#
-# Author: Achim Gottinger <achim@gentoo.org>
-#
-# Mostly copied from SuSE
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 #
 # this script looks into /etc/cron.[hourly|daily|weekly|monthly]
 # for scripts to be executed. The info about last run is stored in
