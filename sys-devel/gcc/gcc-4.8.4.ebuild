@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-PATCH_VER="1.6"
+PATCH_VER="1.7"
 UCLIBC_VER="1.0"
 
 # Hardened gcc 4 stuff
