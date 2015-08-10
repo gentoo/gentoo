@@ -1,0 +1,28 @@
+From 14370f5ce94cce077c798db6611ef65cd1822df2 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 8 Aug 2015 19:04:08 +0200
+Subject: [PATCH 1/2] Respect user CFLAGS
+
+---
+ Makefile | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 78708a5..744405a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,11 +6,6 @@
+ CC      ?= gcc
+ 
+ CFLAGS  += -fPIC -Wall -Wextra -ansi -pedantic
+-ifndef DEBUG
+-CFLAGS	+= -O2
+-else
+-CFLAGS  += -g
+-endif
+ 
+ # Ar settings to build the library
+ AR	    ?= ar
+-- 
+2.5.0
+
