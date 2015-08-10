@@ -8,9 +8,9 @@ inherit eutils qmail
 
 DESCRIPTION="a small null client that forwards mail via QMQP to a full qmail server"
 HOMEPAGE="
-	http://netqmail.org
+	http://netqmail.org/
 	http://cr.yp.to/qmail/mini.html
-	http://qmail.org
+	http://qmail.org/
 "
 SRC_URI="mirror://qmail/netqmail-${PV}.tar.gz
 	http://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}"
