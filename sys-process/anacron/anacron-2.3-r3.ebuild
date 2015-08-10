@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="a periodic command scheduler"
 HOMEPAGE="http://anacron.sourceforge.net/"
@@ -21,7 +21,13 @@ RDEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-compile-fix-from-debian.patch
-	sed -i "s:^CFLAGS =:CFLAGS = $CFLAGS:" Makefile
+	sed -i \
+		-e '/^CFLAGS/{s:=:+=:;s:-O2::}' \
+		Makefile || die
+}
+
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
