@@ -59,6 +59,6 @@ pkg_postinst() {
 		echo
 		elog "You may wish to read the Gentoo Linux Cron Guide, which can be"
 		elog "found online at:"
-		elog "    http://www.gentoo.org/doc/en/cron-guide.xml"
+		elog "    https://wiki.gentoo.org/wiki/Cron"
 	fi
 }
