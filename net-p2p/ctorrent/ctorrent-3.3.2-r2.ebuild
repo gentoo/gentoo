@@ -20,6 +20,7 @@ IUSE=""
 S=${WORKDIR}/${MY_P}
 
 DEPEND="dev-libs/openssl"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-CVE-2009-1759.patch
