@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<use>
+		<flag name='gnome'>Enable support for the freedesktop.org
+			Secret Service API via <pkg>app-crypt/libsecret</pkg>.
+			This does not control the gui!
+		</flag>
+		<flag name='gui'>Whether to build the QT gui. Highly recommended.
+		</flag>
+		<flag name='kde'>Enable support for KDE, e.g. via
+			<pkg>kde-base/kwalletd</pkg>. This does not control the gui,
+			but NEEDS GUI ENABLED!
+		</flag>
+		<flag name='udev'>Whether udev will be consulted when deciding
+			if a volume is system or not.
+		</flag>
+	</use>
+</pkgmetadata>
