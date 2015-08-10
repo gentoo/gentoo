@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (10 Aug 2015)
+# Opting out of the net-misc/ofono dep tree until we have a user request
+>=media-sound/pulseaudio-6.0 ofono-headset
+
 # Tobias Klausmann <klausman@gentoo.org> (08 Aug 2015)
 # It's unlikely that greenlet will ever be ported to Alpha. Mask USE=gevent for
 # pyzor to avoid that dependency. See bug 538510
