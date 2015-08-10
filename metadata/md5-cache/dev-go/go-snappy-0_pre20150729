@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=BSD
 SLOT=0/0_pre20150729
 SRC_URI=https://github.com/golang/snappy/archive/723cc1e459b8eea2dea4583200fd60757d40097a.tar.gz -> go-snappy-0_pre20150729.tar.gz
-_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	a2128e58ed9724a40d815e35697d32dd
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c
 _md5_=5dd46d8da396d8e7731525de3dbbbba0

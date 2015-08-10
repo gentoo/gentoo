@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mjpg-streamer/mjpg-streamer-0_pre20120421.ebuild,v 1.1 2012/04/23 10:00:59 aidecoe Exp $
+# $Id$
 
 EAPI=4
 

@@ -26,6 +26,19 @@ if [[ -z ${_GOLANG_BUILD} ]]; then
 
 _GOLANG_BUILD=1
 
+# @ECLASS-VARIABLE: EGO_BUILD_FLAGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# This allows you to pass build flags to the Go compiler. These flags
+# are common to the "go build" and "go install" commands used below.
+# Please emerge dev-lang/go and run "go help build" for the
+# documentation for these flags.
+#
+# Example:
+# @CODE
+# EGO_BUILD_FLAGS="-ldflags \"-X main.version ${PV}\""
+# @CODE
+
 # @ECLASS-VARIABLE: EGO_PN
 # @REQUIRED
 # @DESCRIPTION:
@@ -42,7 +55,7 @@ golang-build_src_compile() {
 
 	ego_pn_check
 	set -- env GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
-		go build -v -work -x "${EGO_PN}"
+		go build -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
 	echo "$@"
 	"$@" || die
 }
@@ -52,7 +65,7 @@ golang-build_src_install() {
 
 	ego_pn_check
 	set -- env GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
-		go install -v -work -x "${EGO_PN}"
+		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
 	echo "$@"
 	"$@" || die
 	golang_install_pkgs

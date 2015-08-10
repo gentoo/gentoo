@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=BSD
 SLOT=0/0_pre20150727
 SRC_URI=https://github.com/golang/protobuf/archive/68c687dc49948540b356a6b47931c9be4fcd0245.tar.gz -> go-protobuf-0_pre20150727.tar.gz
-_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	a2128e58ed9724a40d815e35697d32dd
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c
 _md5_=72cc95de09a8ed824cafc34d99325711

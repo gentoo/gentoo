@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=ISC
 SLOT=0/0_pre20150619
 SRC_URI=https://github.com/davecgh/go-spew/archive/2df174808ee097f90d259e432cc04442cf60be21.tar.gz -> go-spew-0_pre20150619.tar.gz
-_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	a2128e58ed9724a40d815e35697d32dd
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c
 _md5_=2bc96f6430a0df8a4f35a69a90ca4b35
