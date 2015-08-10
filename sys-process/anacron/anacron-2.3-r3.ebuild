@@ -13,10 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
-DEPEND=">=sys-apps/sed-4
-	sys-process/cronbase"
-RDEPEND="virtual/mta
-	virtual/cron"
+DEPEND="sys-process/cronbase"
+RDEPEND="${RDEPEND}
+	virtual/mta"
 
 src_unpack() {
 	unpack ${A}
