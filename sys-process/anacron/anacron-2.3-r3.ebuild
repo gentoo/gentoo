@@ -35,8 +35,7 @@ src_install() {
 
 	dodoc ChangeLog README TODO
 
-	insinto /usr/sbin
-	insopts -o root -g root -m 0750 ; doins anacron
+	dosbin anacron
 
 	insinto /etc
 	doins "${FILESDIR}"/anacrontab
