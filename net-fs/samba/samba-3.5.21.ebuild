@@ -33,12 +33,12 @@ DEPEND="dev-libs/popt
 	avahi? ( net-dns/avahi[dbus] )
 	caps? ( sys-libs/libcap )
 	client? ( !net-fs/mount-cifs
-		dev-libs/iniparser )
+		dev-libs/iniparser:0 )
 	cluster? ( >=dev-db/ctdb-1.0.114_p1 )
 	fam? ( virtual/fam )
 	ldap? ( net-nds/openldap )
 	pam? ( virtual/pam
-		winbind? ( dev-libs/iniparser )
+		winbind? ( dev-libs/iniparser:0 )
 	)
 	readline? ( >=sys-libs/readline-5.2 )
 	selinux? ( sec-policy/selinux-samba )
@@ -151,7 +151,7 @@ src_configure() {
 	fi
 
 	#bug #399141 wrap newer iniparser version
-	has_version ">=dev-libs/iniparser-3.0.0" && \
+	has_version ">=dev-libs/iniparser-3.0.0:0" && \
 		export CPPFLAGS+=" -Diniparser_getstr\(d,i\)=iniparser_getstring\(d,i,NULL\)"
 
 	# Notes:

@@ -17,7 +17,7 @@ IUSE="debug"
 
 DEPEND="
 	dev-db/libdbi
-	dev-libs/iniparser
+	dev-libs/iniparser:0
 	sys-libs/talloc
 "
 RDEPEND="${DEPEND}

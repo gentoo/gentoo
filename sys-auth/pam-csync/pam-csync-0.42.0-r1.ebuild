@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-libs/iniparser-3.1
+	>=dev-libs/iniparser-3.1:0
 	>=net-misc/ocsync-0.60.0
 	virtual/pam
 "

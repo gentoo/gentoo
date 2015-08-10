@@ -19,7 +19,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-db/sqlite:3
-	>=dev-libs/iniparser-3.1
+	>=dev-libs/iniparser-3.1:0
 	net-libs/neon[ssl]
 	iconv? ( virtual/libiconv )
 	samba? ( net-fs/samba )
