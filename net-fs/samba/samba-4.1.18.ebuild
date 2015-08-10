@@ -27,7 +27,7 @@ ldap quota selinux syslog systemd test winbind"
 # sys-libs/pam is an automagic dependency (see bug #489770)
 CDEPEND="${PYTHON_DEPS}
 	>=app-crypt/heimdal-1.5[-ssl,-threads]
-	dev-libs/iniparser
+	dev-libs/iniparser:0
 	dev-libs/popt
 	sys-libs/readline:=
 	virtual/libiconv

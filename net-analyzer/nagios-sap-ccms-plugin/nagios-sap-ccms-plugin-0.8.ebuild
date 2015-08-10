@@ -23,7 +23,7 @@ QA_FLAGS_IGNORED="/usr/lib/librfccm.so"
 
 DEPEND="
 	net-analyzer/nagios-core
-	dev-libs/iniparser
+	dev-libs/iniparser:0
 "
 RDEPEND=${DEPEND}
 

@@ -29,7 +29,7 @@ DEPEND="dev-libs/popt
 	avahi? ( net-dns/avahi[dbus] )
 	caps? ( >=sys-libs/libcap-2.22-r2[${MULTILIB_USEDEP}] )
 	client? ( !net-fs/mount-cifs
-		>=dev-libs/iniparser-3.1-r1[${MULTILIB_USEDEP}] )
+		>=dev-libs/iniparser-3.1-r1:0[${MULTILIB_USEDEP}] )
 	cluster? ( >=dev-db/ctdb-1.13 )
 	cups? ( net-print/cups )
 	debug? ( dev-libs/dmalloc )
@@ -38,7 +38,7 @@ DEPEND="dev-libs/popt
 	ldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
 	ldb? ( sys-libs/ldb )
 	pam? ( >=virtual/pam-0-r1[${MULTILIB_USEDEP}]
-		winbind? ( >=dev-libs/iniparser-3.1-r1[${MULTILIB_USEDEP}] )
+		winbind? ( >=dev-libs/iniparser-3.1-r1:0[${MULTILIB_USEDEP}] )
 	)
 	readline? ( >=sys-libs/readline-5.2:= )
 	syslog? ( virtual/logger )"
@@ -127,7 +127,7 @@ src_prepare() {
 	epatch "${CONFDIR}"/smb.conf.default.patch
 
 	#bug #399141 wrap newer iniparser version
-	has_version ">=dev-libs/iniparser-3.0.0" && \
+	has_version ">=dev-libs/iniparser-3.0.0:0" && \
 		append-cppflags "-Diniparser_getstr\(d,i\)=iniparser_getstring\(d,i,NULL\)"
 
 	multilib_copy_sources
