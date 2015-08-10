@@ -9,5 +9,6 @@
 		<flag name="debug">Enable lots of debugging info</flag>
 		<flag name="jemalloc">Use dev-libs/jemalloc for allocations</flag>
 		<flag name="minimal">Do not install shared lib and include files</flag>
+		<flag name="static-plugins">Build statically linked plugins</flag>
 	</use>
 </pkgmetadata>
