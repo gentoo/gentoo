@@ -101,6 +101,10 @@ src_configure() {
 		|| die
 }
 
+src_compile() {
+	emake VERBOSE=1
+}
+
 src_install() {
 	default
 

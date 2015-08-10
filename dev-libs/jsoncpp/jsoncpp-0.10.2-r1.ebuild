@@ -29,6 +29,7 @@ RDEPEND=""
 PATCHES=(
 	# fix broken path subst in .pc file
 	"${FILESDIR}"/jsoncpp-1.6.2-fix-pkgconfig.patch
+	"${FILESDIR}/${P}-arm.patch"
 )
 
 pkg_setup() {
