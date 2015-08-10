@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI="5"
+
 inherit toolchain-funcs
 
 MY_PV=${PV/_beta/b}
@@ -17,9 +19,7 @@ IUSE=""
 
 S=${WORKDIR}/${PN}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	sed -i \
 		-e 's:__LINUX__:__linux__:' \
 		*.[ch] */*.[ch] || die
@@ -33,6 +33,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin extract-xiso || die
+	dobin extract-xiso
 	dodoc README.TXT
 }
