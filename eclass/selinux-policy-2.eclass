@@ -122,7 +122,7 @@ case "${EAPI:-0}" in
 	*) : ;;
 esac
 
-EXPORT_FUNCTIONS "src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm"
+EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
 
 # @FUNCTION: selinux-policy-2_src_unpack
 # @DESCRIPTION:
