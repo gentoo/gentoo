@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,11 +37,6 @@ src_configure() {
 		$(use_enable debug) \
 		--enable-minimal-flags \
 		--with-gtk3
-}
-
-src_install() {
-	default
-	newicon -s 128 pixmaps/${PN}-about.png ${PN}.png
 }
 
 pkg_preinst() {
