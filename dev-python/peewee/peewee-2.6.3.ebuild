@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
-RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 # Req'd to ensure a unique tmp.db for each python impl running the testsuite.
