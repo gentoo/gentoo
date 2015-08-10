@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Go text processing support
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/text
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0/0_pre20150806
+SRC_URI=https://github.com/golang/text/archive/1309a1875a4368c12688b9383c6bcac738c17c29.tar.gz -> go-text-0_pre20150806.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	a2128e58ed9724a40d815e35697d32dd	golang-vcs-snapshot	ba866dbcaf061acebc4812f70fd60bd3
+_md5_=05faee0740e3d173045a688e28c3bcb6

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=Multiple Repository management tool
+EAPI=5
+HOMEPAGE=https://github.com/joeyh/myrepos
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/libwww-perl dev-perl/HTML-Parser
+SLOT=0
+SRC_URI=https://github.com/joeyh/myrepos/archive/1.20150503.tar.gz -> mr-1.20150503.tar.gz
+_md5_=6cccb0f2f083111d7233315744ebeb22
