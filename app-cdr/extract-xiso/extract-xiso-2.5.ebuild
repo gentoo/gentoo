@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ DESCRIPTION="Tool for extracting and creating optimised Xbox ISO images"
 HOMEPAGE="http://sourceforge.net/projects/extract-xiso"
 SRC_URI="mirror://sourceforge/extract-xiso/${PN}_v${MY_PV}_src.tgz"
 
-LICENSE="BSD"
+LICENSE="BSD-4"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
