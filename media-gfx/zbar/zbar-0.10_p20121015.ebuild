@@ -44,9 +44,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	#epatch "${FILESDIR}"/${P}-no-v4l1-check.patch
-	epatch "${FILESDIR}"/${PN}-0.10-errors.patch
-	epatch "${FILESDIR}"/${PN}-0.10-python-crash.patch
+	epatch "${FILESDIR}"/${PN}-0.10-errors.patch \
+		"${FILESDIR}"/${PN}-0.10-python-crash.patch \
+		"${FILESDIR}"/${PN}-0.10-v4l2-uvcvideo.patch
 
 	use python && python_fix_shebang examples/upcrpc.py test/*.py
 

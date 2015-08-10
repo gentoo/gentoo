@@ -38,9 +38,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-v4l1-check.patch
-	epatch "${FILESDIR}"/${P}-errors.patch
-	epatch "${FILESDIR}"/${P}-python-crash.patch
+	epatch "${FILESDIR}"/${P}-no-v4l1-check.patch \
+		"${FILESDIR}"/${P}-errors.patch \
+		"${FILESDIR}"/${P}-python-crash.patch \
+		"${FILESDIR}"/${P}-v4l2-uvcvideo.patch
 
 	use python && python_fix_shebang examples/upcrpc.py test/*.py
 
