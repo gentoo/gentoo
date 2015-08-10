@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI="5"
+
 inherit eutils
 
 DESCRIPTION="a periodic command scheduler"
@@ -17,15 +19,9 @@ DEPEND="sys-process/cronbase"
 RDEPEND="${RDEPEND}
 	virtual/mta"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-compile-fix-from-debian.patch
 	sed -i "s:^CFLAGS =:CFLAGS = $CFLAGS:" Makefile
-}
-
-src_compile() {
-	emake || die
 }
 
 src_install() {
@@ -47,14 +43,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Schedule the command \"anacron -s\" as a daily cron-job (preferably"
-	elog "at some early morning hour).  This will make sure that jobs are run"
-	elog "when the systems is left running for a night."
-	echo
-	elog "Update /etc/anacrontab to include what you want anacron to run."
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		elog "Schedule the command \"anacron -s\" as a daily cron-job (preferably"
+		elog "at some early morning hour).  This will make sure that jobs are run"
+		elog "when the systems is left running for a night."
+		echo
+		elog "Update /etc/anacrontab to include what you want anacron to run."
 
-	echo
-	elog "You may wish to read the Gentoo Linux Cron Guide, which can be"
-	elog "found online at:"
-	elog "    http://www.gentoo.org/doc/en/cron-guide.xml"
+		echo
+		elog "You may wish to read the Gentoo Linux Cron Guide, which can be"
+		elog "found online at:"
+		elog "    http://www.gentoo.org/doc/en/cron-guide.xml"
+	fi
 }
