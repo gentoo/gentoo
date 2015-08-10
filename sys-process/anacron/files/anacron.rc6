@@ -1,15 +1,14 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 depend() {
-	use logger
-	need clock hostname 
+	use clock hostname logger
 }
 
 start() {
 	ebegin "Running anacron"
-	/usr/sbin/anacron -s >>/var/log/cron.log 2>&1
+	anacron -s >>/var/log/cron.log 2>&1
 	eend $?
 }
