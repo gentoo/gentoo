@@ -19,7 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-python/pygtk[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pygtk[${PYTHON_USEDEP}]
+	dev-python/pygobject:2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	x11-misc/xdg-utils
 	test? (

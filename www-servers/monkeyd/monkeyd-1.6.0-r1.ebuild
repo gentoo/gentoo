@@ -108,7 +108,7 @@ src_compile() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/monkeyd.initd monkeyd
+	newinitd "${FILESDIR}"/monkeyd.initd-r1 monkeyd
 	newconfd "${FILESDIR}"/monkeyd.confd monkeyd
 
 	#move htdocs to docdir, bug #429632

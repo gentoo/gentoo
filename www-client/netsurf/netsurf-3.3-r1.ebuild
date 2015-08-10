@@ -119,22 +119,30 @@ src_install() {
 		netsurf_src_install
 		elog "framebuffer binary has been installed as netsurf-fb"
 		pushd "${ED}"usr/bin >/dev/null || die
-		for f in netsurf{,.*} ; do
+		eshopts_push -s nullglob
+		# bug 552562
+		local binaries=(netsurf{,.*})
+		eshopts_pop
+		for f in "${binaries[@]}" ; do
 			mv -v $f ${f/netsurf/netsurf-fb} || die
 			make_desktop_entry "${EROOT}"usr/bin/${f/netsurf/netsurf-fb} NetSurf-framebuffer${f/netsurf} netsurf "Network;WebBrowser"
 		done
 		popd >/dev/null || die
 		elog "In order to setup the framebuffer console, netsurf needs an /etc/fb.modes"
 		elog "You can use an example from /usr/share/doc/${PF}/fb.modes.* (bug 427092)."
-		elog "Please make /etc/input/mice readable to the account using netsurf-fb."
-		elog "Either use chmod a+r /etc/input/mice (security!!!) or use an group."
+		elog "Please make /dev/input/mice readable to the account using netsurf-fb."
+		elog "Either use chmod a+r /dev/input/mice (security!!!) or use an group."
 	fi
 	if use gtk ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk}" )
 		netsurf_src_install
 		elog "netsurf gtk version has been installed as netsurf-gtk"
 		pushd "${ED}"usr/bin >/dev/null || die
-		for f in netsurf{,.*} ; do
+		eshopts_push -s nullglob
+		# bug 552562
+		local binaries=(netsurf{,.*})
+		eshopts_pop
+		for f in "${binaries[@]}" ; do
 			mv -v $f ${f/netsurf/netsurf-gtk} || die
 			make_desktop_entry "${EROOT}"usr/bin/${f/netsurf/netsurf-gtk} NetSurf-gtk${f/netsurf} netsurf "Network;WebBrowser"
 		done

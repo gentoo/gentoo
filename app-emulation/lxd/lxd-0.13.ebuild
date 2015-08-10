@@ -67,7 +67,7 @@ src_compile() {
 	cd "${S}/src/${EGO_PN}"
 
 	# Build binaries
-	GOPATH="${S}" emake
+	GOPATH="${S}:$(get_golibdir_gopath)" emake
 
 	use nls && emake build-mo
 }
