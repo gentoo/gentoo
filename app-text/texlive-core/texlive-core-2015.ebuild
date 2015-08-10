@@ -157,6 +157,10 @@ src_prepare() {
 	#EPATCH_MULTI_MSG="Applying patches from upstream bugfix branch..." EPATCH_SUFFIX="patch" epatch "${WORKDIR}/gentoo_branch2011_patches"
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 
+	sed -i \
+		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${EPREFIX}/usr/include\"," \
+		texk/web2c/configure || die
+
 	elibtoolize
 }
 
