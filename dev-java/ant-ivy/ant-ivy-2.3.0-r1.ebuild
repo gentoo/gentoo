@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,18 +29,16 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 RESTRICT="test"
 
 # There may be additional optional dependencies (commons-logging, commons-lang...)
-CDEPEND="
-	dev-java/jsch:0
-	dev-java/bcpg:0
+CDEPEND="dev-java/jsch:0
 	dev-java/bcpkix:0
-	dev-java/bcprov:1.50
+	dev-java/bcpg:1.50
 	dev-java/ant-core:0
+	dev-java/bcprov:1.50
 	dev-java/commons-vfs:0
 	dev-java/jakarta-oro:2.0
 	dev-java/commons-httpclient:3"
 
-DEPEND="
-	>=virtual/jdk-1.6
+DEPEND=">=virtual/jdk-1.6
 	test? (
 		dev-java/ant-junit:0
 	)
@@ -72,9 +70,9 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_GENTOO_CLASSPATH="
 	jsch
-	bcpg
 	bcpkix
 	ant-core
+	bcpg-1.50
 	commons-vfs
 	bcprov-1.50
 	jakarta-oro-2.0
