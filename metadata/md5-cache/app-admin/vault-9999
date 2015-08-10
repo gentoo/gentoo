@@ -1,10 +1,11 @@
-DEFINED_PHASES=compile install postinst setup unpack
-DEPEND=>=dev-lang/go-1.4:= dev-go/go-oauth2:= filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
+DEFINED_PHASES=compile install postinst setup test unpack
+DEPEND=dev-go/go-oauth2:= filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1 >=dev-lang/go-1.4.2:= virtual/pkgconfig
 DESCRIPTION=A tool for managing secrets
 EAPI=5
 HOMEPAGE=https://vaultproject.io/
 IUSE=+filecaps
 LICENSE=MPL-2.0
+RESTRICT=test
 SLOT=0
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fcaps	3a17f16a21cfbb14acca5c05e5c130eb	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=9ce3fe0f4b1dea35148c5cfb3b897ab3
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fcaps	3a17f16a21cfbb14acca5c05e5c130eb	git-r3	1502b9838d043db47700b8120083e637	golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	a2128e58ed9724a40d815e35697d32dd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=8d3f18d8dce07067b288570f75fa6288

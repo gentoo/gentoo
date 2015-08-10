@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit fcaps systemd user
+inherit fcaps golang-build systemd user
 
 KEYWORDS="~amd64"
 DESCRIPTION="A tool for managing secrets"
@@ -13,9 +13,9 @@ GO_PN="github.com/hashicorp/${PN}"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE=""
+RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.4:=
-	dev-go/go-oauth2:="
+DEPEND="dev-go/go-oauth2:="
 RDEPEND=""
 
 SRC_URI="https://${GO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -45,7 +45,7 @@ src_unpack() {
 	cp -sR "${EPREFIX}"/usr/lib/go "${GOROOT}" || die
 	rm -rf "${GOROOT}/src/${GO_PN}" || die
 
-	export GOPATH=${WORKDIR}:${WORKDIR}/src/github.com/hashicorp/vault/Godeps/_workspace
+	export GOPATH=${WORKDIR}:${WORKDIR}/src/github.com/hashicorp/vault/Godeps/_workspace:$(get_golibdir_gopath)
 
 	while read -r -d '' x; do
 		rm -rf "${GOROOT}/src/${x}" "${GOROOT}/pkg/${KERNEL}_${ARCH}/${x}"{,.a} || die

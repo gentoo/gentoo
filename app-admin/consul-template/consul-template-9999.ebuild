@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit git-r3 systemd user
+inherit git-r3 golang-base systemd user
 
 KEYWORDS=""
 DESCRIPTION="Generic template rendering and notifications with Consul"
@@ -32,7 +32,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	export GOPATH=${WORKDIR}
+	export GOPATH=${WORKDIR}:$(get_golibdir_gopath)
 	git-r3_src_unpack
 	go get -d -v ./... $(go list -f '{{range .TestImports}}{{.}} {{end}}' ./...) || die
 }

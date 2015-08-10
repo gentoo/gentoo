@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install test unpack
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=a small null client that forwards mail via QMQP to a full qmail server
-HOMEPAGE=http://netqmail.org http://cr.yp.to/qmail/mini.html http://qmail.org
+HOMEPAGE=http://netqmail.org/ http://cr.yp.to/qmail/mini.html http://qmail.org/
 KEYWORDS=~amd64 arm hppa ~mips ~ppc ~x86
 LICENSE=public-domain
 RDEPEND=!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/maildrop !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
 SLOT=0
 SRC_URI=mirror://qmail/netqmail-1.06.tar.gz http://dev.gentoo.org/~hollow/distfiles/genqmail-20080406.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmail	283e7fa084ff27bf177a23bf740c7218	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=f42332f1694e6d24ce36d55c6f371539
+_md5_=d97c945298d316a937d65c657dab42db

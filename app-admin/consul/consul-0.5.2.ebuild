@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit systemd user
+inherit golang-base systemd user
 
 KEYWORDS="~amd64"
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
@@ -13,6 +13,7 @@ GO_PN="github.com/hashicorp/consul"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="test web"
+RESTRICT="test"
 
 DEPEND=">=dev-lang/go-1.4
 	dev-go/go-crypto
@@ -89,7 +90,7 @@ src_unpack() {
 	unpack_go_packages
 	# Create a writable GOROOT in order to avoid sandbox violations
 	# or other interference from installed instances.
-	export GOPATH="${WORKDIR}" GOROOT="${WORKDIR}/goroot"
+	export GOPATH="${WORKDIR}:$(get_golibdir_gopath)" GOROOT="${WORKDIR}/goroot"
 	cp -sR "${EPREFIX}"/usr/lib/go "${GOROOT}" || die
 	while read -r path; do
 		rm -rf "${GOROOT}/src/${path#${WORKDIR}/src}" \

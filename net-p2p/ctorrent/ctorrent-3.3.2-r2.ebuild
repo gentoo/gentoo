@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils
 
@@ -19,14 +19,10 @@ IUSE=""
 
 S=${WORKDIR}/${MY_P}
 
-DEPEND="dev-libs/openssl"
+DEPEND="dev-libs/openssl:="
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-CVE-2009-1759.patch
 	epatch "${FILESDIR}"/${P}-negative-ints.patch
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog README-DNH.TXT README NEWS
 }

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit git-r3 systemd user
+inherit git-r3 golang-base systemd user
 
 KEYWORDS=""
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
@@ -14,6 +14,7 @@ EGIT_REPO_URI="git://${GO_PN}.git"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="test web"
+RESTRICT="test"
 
 DEPEND=">=dev-lang/go-1.4:=
 	dev-go/go-crypto:=
@@ -40,7 +41,7 @@ src_unpack() {
 
 	# Create a writable GOROOT in order to avoid sandbox violations
 	# or other interference from installed instances.
-	export GOPATH="${WORKDIR}" GOROOT="${WORKDIR}/goroot"
+	export GOPATH="${WORKDIR}:$(get_golibdir_gopath)" GOROOT="${WORKDIR}/goroot"
 	cp -sR "${EPREFIX}"/usr/lib/go "${GOROOT}" || die
 
 	# Use latest versions of some packages, in case of incompatible
