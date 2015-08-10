@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/glib:2
-	x11-libs/gtk+:2"
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3"
 DEPEND="${REPEND}
 	virtual/pkgconfig"
 
