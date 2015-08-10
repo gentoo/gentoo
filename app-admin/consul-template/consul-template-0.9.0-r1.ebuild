@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit systemd user
+inherit golang-base systemd user
 
 KEYWORDS="~amd64"
 DESCRIPTION="Generic template rendering and notifications with Consul"
@@ -68,7 +68,7 @@ unpack_go_packages() {
 
 src_unpack() {
 	unpack_go_packages
-	export GOPATH=${WORKDIR}
+	export GOPATH=${WORKDIR}:$(get_golibdir_gopath)
 }
 
 src_prepare() {
