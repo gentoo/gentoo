@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit fcaps git-r3 systemd user
+inherit fcaps git-r3 golang-build systemd user
 
 KEYWORDS=""
 DESCRIPTION="A tool for managing secrets"
@@ -14,9 +14,9 @@ EGIT_REPO_URI="git://${GO_PN}.git"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE=""
+RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.4:=
-	dev-go/go-oauth2:="
+DEPEND="dev-go/go-oauth2:="
 RDEPEND=""
 
 SRC_URI=""
@@ -43,7 +43,7 @@ src_unpack() {
 	cp -sR "${EPREFIX}"/usr/lib/go "${GOROOT}" || die
 	rm -rf "${GOROOT}/src/${GO_PN}" || die
 
-	export GOPATH=${WORKDIR}:${WORKDIR}/src/github.com/hashicorp/vault/Godeps/_workspace
+	export GOPATH=${WORKDIR}:${WORKDIR}/src/github.com/hashicorp/vault/Godeps/_workspace:$(get_golibdir_gopath)
 
 	while read -r -d '' x; do
 		rm -rf "${GOROOT}/src/${x}" "${GOROOT}/pkg/${KERNEL}_${ARCH}/${x}"{,.a} || die
