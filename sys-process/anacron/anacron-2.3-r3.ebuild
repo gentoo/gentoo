@@ -47,15 +47,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Schedule the command \"anacron -s\" as a daily cron-job (preferably"
-	einfo "at some early morning hour).  This will make sure that jobs are run"
-	einfo "when the systems is left running for a night."
-	einfo ""
-	einfo "Update /etc/anacrontab to include what you want anacron to run."
+	elog "Schedule the command \"anacron -s\" as a daily cron-job (preferably"
+	elog "at some early morning hour).  This will make sure that jobs are run"
+	elog "when the systems is left running for a night."
+	echo
+	elog "Update /etc/anacrontab to include what you want anacron to run."
 
 	echo
-	einfo "You may wish to read the Gentoo Linux Cron Guide, which can be"
-	einfo "found online at:"
-	einfo "    http://www.gentoo.org/doc/en/cron-guide.xml"
-	echo
+	elog "You may wish to read the Gentoo Linux Cron Guide, which can be"
+	elog "found online at:"
+	elog "    http://www.gentoo.org/doc/en/cron-guide.xml"
 }
