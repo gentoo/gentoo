@@ -5,7 +5,7 @@
  
  CFLAGS += -std=c99 -Dsmall $(WARNFLAGS) 	\
 -	  -D_BSD_SOURCE \
-+	  -D_DEFAULT_SOURCE \
++	  -D_BSD_SOURCE -D_DEFAULT_SOURCE \
  	  -D_XOPEN_SOURCE=600 \
  	  -D_POSIX_C_SOURCE=200112L \
  	  $(shell $(PKG_CONFIG) --cflags libnsfb libhubbub libcss openssl)
@@ -16,7 +16,7 @@
  GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk \
  		$(GTKDEPFLAGS) \
 -		-D_BSD_SOURCE \
-+		-D_DEFAULT_SOURCE \
++		-D_BSD_SOURCE -D_DEFAULT_SOURCE \
  		-D_XOPEN_SOURCE=600 \
  		-D_POSIX_C_SOURCE=200809L \
  		-D_NETBSD_SOURCE \
@@ -24,7 +24,7 @@
 +++ netsurf-3.2/test/Makefile
 @@ -1,4 +1,4 @@
 -CFLAGS := -std=c99 -D_BSD_SOURCE -D_POSIX_C_SOURCE -I.. \
-+CFLAGS := -std=c99 -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE -I.. \
++CFLAGS := -std=c99 -D_BSD_SOURCE -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE -I.. \
  		$(shell pkg-config --cflags libcurl)
  LDFLAGS := $(shell pkg-config --libs libcurl) -lz
  
