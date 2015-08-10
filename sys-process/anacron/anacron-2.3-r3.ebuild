@@ -21,6 +21,7 @@ RDEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-compile-fix-from-debian.patch
+	epatch "${FILESDIR}"/${P}-headers.patch
 	sed -i \
 		-e '/^CFLAGS/{s:=:+=:;s:-O2::}' \
 		Makefile || die
