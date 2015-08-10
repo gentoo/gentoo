@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs
+inherit toolchain-funcs eutils
 
 MY_PV=${PV/_beta/b}
 
@@ -20,6 +20,7 @@ IUSE=""
 S=${WORKDIR}/${PN}
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.7.1-headers.patch
 	sed -i \
 		-e 's:__LINUX__:__linux__:' \
 		*.[ch] */*.[ch] || die
@@ -28,7 +29,8 @@ src_prepare() {
 doit() { echo "$@"; "$@"; }
 
 src_compile() {
-	doit $(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+	# Need _GNU_SOURCE here for asprintf prototype.
+	doit $(tc-getCC) ${CFLAGS} ${CPPFLAGS} -D_GNU_SOURCE ${LDFLAGS} \
 		extract-xiso.c libftp-*/*.c -o extract-xiso || die
 }
 
