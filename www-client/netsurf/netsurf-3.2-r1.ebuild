@@ -122,8 +122,8 @@ src_install() {
 
 		elog "In order to setup the framebuffer console, netsurf needs an /etc/fb.modes"
 		elog "You can use an example from /usr/share/doc/${PF}/fb.modes.* (bug 427092)."
-		elog "Please make /etc/input/mice readable to the account using netsurf-fb."
-		elog "Either use chmod a+r /etc/input/mice (security!!!) or use an group."
+		elog "Please make /dev/input/mice readable to the account using netsurf-fb."
+		elog "Either use chmod a+r /dev/input/mice (security!!!) or use an group."
 	fi
 	if use gtk ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk}" )
