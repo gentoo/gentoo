@@ -5,12 +5,12 @@
 # This file contains descriptions of MONKEYD_PLUGINS USE_EXPAND flags for www-servers/monkeyd.
 # All plugins are included here except cgi and fastcgi which are global use flags.
 
-auth - Provide HTTP Basic Authentication
-cheetah - Provide a shell-like command line interface
-#cgi - Provide the traditional CGI interface
-dirlisting - Show an HTML listing of the content of a directory
-#fastcgi - Provide FastCGI proxy support
-liana - Build your own network layer through monkeyd
-logger - Log requests and common errors
-mandril - Restrict incoming connections based on the IP address or URI request
-polarssl - Provide HTTPS using PolarSSL v1.*.
+auth - Provide HTTP Basic Authentication.
+cheetah - Provide a shell-like command line interface.
+#cgi - Provide the traditional CGI interface - This is a global USE flag.
+dirlisting - Show an HTML listing of the content of a directory.
+#fastcgi - Provide FastCGI proxy support - This is a global USE flag.
+liana - Build your own network layer through monkeyd.
+logger - Log requests and common errors.
+mandril - Restrict incoming connections based on the IP address or URI request.
+tls - Provide TLS using mbed TLS (formerly known as PolarSSL) - Currently disabled.

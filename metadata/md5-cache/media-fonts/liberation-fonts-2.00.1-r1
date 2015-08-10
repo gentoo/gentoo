@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	font	cd7790315ca5b8c505e1e0513df6acce	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=7aede0ee260918bb9818aaec460868b2
+SLOT=0
 DEFINED_PHASES=install postinst postrm setup
+EAPI=4
 DEPEND=fontforge? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) media-gfx/fontforge dev-python/fonttools ) X? ( x11-apps/mkfontdir media-fonts/encodings )
 DESCRIPTION=A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
-EAPI=4
-HOMEPAGE=https://fedorahosted.org/liberation-fonts
-IUSE=fontforge X X
-KEYWORDS=amd64 arm ~arm64 ia64 ppc x86 ~amd64-linux ~x86-linux ~x64-solaris
 LICENSE=OFL-1.1
-SLOT=0
+IUSE=fontforge X X
 SRC_URI=!fontforge? ( https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz ) fontforge? ( https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-2.00.1.tar.gz )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=7aede0ee260918bb9818aaec460868b2
+KEYWORDS=amd64 arm ~arm64 ia64 ppc x86 ~amd64-linux ~x86-linux ~x64-solaris
+HOMEPAGE=https://fedorahosted.org/liberation-fonts

@@ -1,11 +1,11 @@
-DEFINED_PHASES=install prepare
-DESCRIPTION=An alternative protocol to UPnP IGD specification
-EAPI=5
-HOMEPAGE=http://miniupnp.free.fr/libnatpmp.html
-IUSE=static-libs
-KEYWORDS=amd64 arm ~mips ppc ppc64 ~sparc x86 ~x86-fbsd
-LICENSE=BSD
-SLOT=0
-SRC_URI=http://miniupnp.free.fr/files/download.php?file=libnatpmp-20130911.tar.gz -> libnatpmp-20130911.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
 _md5_=870c1469a696dde6033890fa670eae6f
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DESCRIPTION=An alternative protocol to UPnP IGD specification
+LICENSE=BSD
+IUSE=static-libs
+SRC_URI=http://miniupnp.free.fr/files/download.php?file=libnatpmp-20130911.tar.gz -> libnatpmp-20130911.tar.gz
+KEYWORDS=amd64 arm ~mips ppc ppc64 ~sparc x86 ~x86-fbsd
+HOMEPAGE=http://miniupnp.free.fr/libnatpmp.html

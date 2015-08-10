@@ -1,12 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=1e123378293c92bf2c88da5f4af7241a
+SLOT=0
 DEFINED_PHASES=compile install unpack
+EAPI=0
 DEPEND=>=dev-libs/vdk-2.4.0
 DESCRIPTION=The Visual Development Kit used for VDK Builder
-HOMEPAGE=http://vdkbuilder.sf.net
-IUSE=nls debug
-KEYWORDS=ppc x86
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/vdk-2.4.0
-SLOT=0
+IUSE=nls debug
 SRC_URI=mirror://sourceforge/vdkbuilder/vdkbuilder2-2.4.0.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=1e123378293c92bf2c88da5f4af7241a
+KEYWORDS=ppc x86
+HOMEPAGE=http://vdkbuilder.sf.net
+RDEPEND=>=dev-libs/vdk-2.4.0

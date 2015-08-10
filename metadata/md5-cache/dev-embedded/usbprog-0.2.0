@@ -1,12 +1,13 @@
+_eclasses_=
+_md5_=39970cfcafddf4817dd87f27bec2d95
+SLOT=0
 DEFINED_PHASES=configure install
+EAPI=4
 DEPEND=X? ( >=x11-libs/wxGTK-2.6.0 ) >=dev-libs/libxml2-2.0.0 net-misc/curl virtual/libusb:0 sys-libs/readline virtual/pkgconfig
 DESCRIPTION=flashtool for the multi purpose programming adapter usbprog
-EAPI=4
-HOMEPAGE=http://www.embedded-projects.net/index.php?page_id=215
-IUSE=static-libs X
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=X? ( >=x11-libs/wxGTK-2.6.0 ) >=dev-libs/libxml2-2.0.0 net-misc/curl virtual/libusb:0 sys-libs/readline
-SLOT=0
+IUSE=static-libs X
 SRC_URI=mirror://berlios/usbprog/usbprog-0.2.0.tar.bz2
-_md5_=039970cfcafddf4817dd87f27bec2d95
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.embedded-projects.net/index.php?page_id=215
+RDEPEND=X? ( >=x11-libs/wxGTK-2.6.0 ) >=dev-libs/libxml2-2.0.0 net-misc/curl virtual/libusb:0 sys-libs/readline

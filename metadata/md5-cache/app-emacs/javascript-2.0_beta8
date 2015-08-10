@@ -1,11 +1,12 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=fd0f3bde22a5ec3169883855879079a1
+SLOT=0
 DEFINED_PHASES=compile install postinst postrm setup unpack
+EAPI=0
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=Major mode for editing JavaScript source text
-HOMEPAGE=http://www.karllandstrom.se/emacs_modes.php http://www.emacswiki.org/emacs/JavaScriptMode
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=>=virtual/emacs-23
-SLOT=0
 SRC_URI=mirror://gentoo/javascript-2.0_beta8.el.bz2
-_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=fd0f3bde22a5ec3169883855879079a1
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://www.karllandstrom.se/emacs_modes.php http://www.emacswiki.org/emacs/JavaScriptMode
+RDEPEND=>=virtual/emacs-23

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	portability	3a50b3ec310b86914f98babecc8f89c6	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	freebsd	f8e66e6d6da923be35831f93abf8742b	bsdmk	2d20496ff432a0ca089345cf400e5c87	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=575677165a807eba8bb87126f11c2a69
+SLOT=0
 DEFINED_PHASES=compile install prepare setup unpack
+EAPI=5
 DEPEND=ssl? ( dev-libs/openssl ) hesiod? ( net-dns/hesiod ) kerberos? ( app-crypt/heimdal ) usb? ( !dev-libs/libusb ) zfs? ( =sys-freebsd/freebsd-cddl-9.1* ) >=dev-libs/expat-2.0.1 !sys-libs/libutempter !sys-freebsd/freebsd-headers >=sys-devel/flex-2.5.31-r2 =sys-freebsd/freebsd-sources-9.1* userland_GNU? ( sys-apps/mtree ) =sys-freebsd/freebsd-mk-defs-9.1* virtual/pmake virtual/pmake
 DESCRIPTION=FreeBSD's base system libraries
-EAPI=5
-HOMEPAGE=http://www.freebsd.org/
-IUSE=atm bluetooth ssl hesiod ipv6 kerberos usb netware build crosscompile_opts_headers-only zfs userland_GNU userland_BSD multilib profile
-KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
 LICENSE=BSD
-RDEPEND=ssl? ( dev-libs/openssl ) hesiod? ( net-dns/hesiod ) kerberos? ( app-crypt/heimdal ) usb? ( !dev-libs/libusb ) zfs? ( =sys-freebsd/freebsd-cddl-9.1* ) >=dev-libs/expat-2.0.1 !sys-libs/libutempter !sys-freebsd/freebsd-headers
-SLOT=0
+IUSE=atm bluetooth ssl hesiod ipv6 kerberos usb netware build crosscompile_opts_headers-only zfs userland_GNU userland_BSD multilib profile
 SRC_URI=mirror://gentoo/freebsd-lib-9.1.tar.bz2 mirror://gentoo/freebsd-contrib-9.1.tar.bz2 mirror://gentoo/freebsd-crypto-9.1.tar.bz2 mirror://gentoo/freebsd-libexec-9.1.tar.bz2 mirror://gentoo/freebsd-etc-9.1.tar.bz2 mirror://gentoo/freebsd-include-9.1.tar.bz2 mirror://gentoo/freebsd-usbin-9.1.tar.bz2 mirror://gentoo/freebsd-gnu-9.1.tar.bz2 build? ( mirror://gentoo/freebsd-sys-9.1.tar.bz2 ) zfs? ( mirror://gentoo/freebsd-cddl-9.1.tar.bz2 )
-_eclasses_=bsdmk	2d20496ff432a0ca089345cf400e5c87	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	freebsd	f8e66e6d6da923be35831f93abf8742b	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=575677165a807eba8bb87126f11c2a69
+KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+HOMEPAGE=http://www.freebsd.org/
+RDEPEND=ssl? ( dev-libs/openssl ) hesiod? ( net-dns/hesiod ) kerberos? ( app-crypt/heimdal ) usb? ( !dev-libs/libusb ) zfs? ( =sys-freebsd/freebsd-cddl-9.1* ) >=dev-libs/expat-2.0.1 !sys-libs/libutempter !sys-freebsd/freebsd-headers

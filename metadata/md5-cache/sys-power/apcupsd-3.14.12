@@ -1,13 +1,13 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	udev	37ef89be271b9ae8aa64be024ddb39b5	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2badad70d1e56f7fb6d08b86e2f7065
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup
+EAPI=4
 DEPEND=|| ( >=sys-apps/util-linux-2.23[tty-helpers(-)] <=sys-apps/sysvinit-2.88-r4 sys-freebsd/freebsd-ubin ) cgi? ( >=media-libs/gd-1.8.4 ) nls? ( sys-devel/gettext ) snmp? ( >=net-analyzer/net-snmp-5.7.2 ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=APC UPS daemon with integrated tcp/ip remote shutdown
-EAPI=4
-HOMEPAGE=http://www.apcupsd.org/
-IUSE=snmp +usb cgi nls gnome kernel_linux
-KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=|| ( >=sys-apps/util-linux-2.23[tty-helpers(-)] <=sys-apps/sysvinit-2.88-r4 sys-freebsd/freebsd-ubin ) cgi? ( >=media-libs/gd-1.8.4 ) nls? ( sys-devel/gettext ) snmp? ( >=net-analyzer/net-snmp-5.7.2 ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) sys-apps/openrc virtual/mailx
-SLOT=0
+IUSE=snmp +usb cgi nls gnome kernel_linux
 SRC_URI=mirror://sourceforge/apcupsd/apcupsd-3.14.12.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=02badad70d1e56f7fb6d08b86e2f7065
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://www.apcupsd.org/
+RDEPEND=|| ( >=sys-apps/util-linux-2.23[tty-helpers(-)] <=sys-apps/sysvinit-2.88-r4 sys-freebsd/freebsd-ubin ) cgi? ( >=media-libs/gd-1.8.4 ) nls? ( sys-devel/gettext ) snmp? ( >=net-analyzer/net-snmp-5.7.2 ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) sys-apps/openrc virtual/mailx

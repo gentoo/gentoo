@@ -1,13 +1,13 @@
-DEFINED_PHASES=install postinst
-DESCRIPTION=Script to guess CPU_FLAGS_X86 flags from /proc/cpuinfo
-EAPI=5
-HOMEPAGE=https://bitbucket.org/mgorny/cpuinfo2cpuflags
-IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy
-KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
-LICENSE=BSD-2
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)]
-REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy )
-SLOT=0
-SRC_URI=https://bitbucket.org/mgorny/cpuinfo2cpuflags/downloads/cpuinfo2cpuflags-1.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
 _md5_=719fa2ec64445730210a7b5e471ee0f3
+SLOT=0
+DEFINED_PHASES=install postinst
+EAPI=5
+DESCRIPTION=Script to guess CPU_FLAGS_X86 flags from /proc/cpuinfo
+LICENSE=BSD-2
+IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy )
+SRC_URI=https://bitbucket.org/mgorny/cpuinfo2cpuflags/downloads/cpuinfo2cpuflags-1.tar.gz
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+HOMEPAGE=https://bitbucket.org/mgorny/cpuinfo2cpuflags
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)]

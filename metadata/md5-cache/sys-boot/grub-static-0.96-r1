@@ -1,10 +1,12 @@
+_eclasses_=
+_md5_=40a9e688af3302597dab64046f229874
+SLOT=0
 DEFINED_PHASES=install
+EAPI=0
 DEPEND=!<sys-boot/grub-2
 DESCRIPTION=Static GNU GRUB boot loader
-HOMEPAGE=http://www.gnu.org/software/grub/
-KEYWORDS=-* amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=!<sys-boot/grub-2
-SLOT=0
 SRC_URI=mirror://gentoo/grub-static-0.96.tar.bz2
-_md5_=40a9e688af3302597dab64046f229874
+KEYWORDS=-* amd64 ~x86
+HOMEPAGE=http://www.gnu.org/software/grub/
+RDEPEND=!<sys-boot/grub-2

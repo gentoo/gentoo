@@ -1,14 +1,14 @@
+_eclasses_=versionator	99ae9d758cbe7cfed19170e7d48f5a9c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	cmake-utils	f474224ef49d530640a43a04ae94928e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=c177c828620874bc7eccac9e44a812d3
+SLOT=0
 DEFINED_PHASES=compile configure install preinst prepare setup test
+EAPI=5
 DEPEND=media-libs/alsa-lib app-arch/unzip java? ( >=virtual/jdk-1.6 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/cython-0.12.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) doc? ( app-doc/doxygen dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latexextra dev-tex/xcolor virtual/latex-base ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) java? ( >=dev-java/java-config-2.2.0 )
 DESCRIPTION=A library for real time MIDI input and output
-EAPI=5
-HOMEPAGE=http://portmedia.sourceforge.net/
-IUSE=debug doc java python static-libs test-programs python_targets_python2_7 elibc_FreeBSD java
-KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=media-libs/alsa-lib java? ( >=virtual/jre-1.6 ) java? ( >=dev-java/java-config-2.2.0 )
+IUSE=debug doc java python static-libs test-programs python_targets_python2_7 elibc_FreeBSD java
 REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
-SLOT=0
 SRC_URI=mirror://sourceforge/portmedia/portmidi-src-217.zip
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	distutils-r1	0fbebe7ad62dbe4583baab75733f8aa0	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c177c828620874bc7eccac9e44a812d3
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://portmedia.sourceforge.net/
+RDEPEND=media-libs/alsa-lib java? ( >=virtual/jre-1.6 ) java? ( >=dev-java/java-config-2.2.0 )

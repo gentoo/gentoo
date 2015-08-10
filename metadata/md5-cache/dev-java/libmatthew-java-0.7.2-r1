@@ -1,12 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	flag-o-matic	2090c5a622458303e6bf68837ac6b96	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2452d0e6f8fd2ea4c173d4984036a1c0
+SLOT=0
 DEFINED_PHASES=compile install preinst setup unpack
+EAPI=0
 DEPEND=>=virtual/jdk-1.5 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 DESCRIPTION=A selection of libraries for Java
-HOMEPAGE=http://www.matthew.ath.cx/projects/java/
-IUSE=elibc_FreeBSD doc source
-KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
 LICENSE=LGPL-2.1
-RDEPEND=>=virtual/jre-1.5 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
-SLOT=0
+IUSE=elibc_FreeBSD doc source
 SRC_URI=http://www.matthew.ath.cx/projects/java/libmatthew-java-0.7.2.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=2452d0e6f8fd2ea4c173d4984036a1c0
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+HOMEPAGE=http://www.matthew.ath.cx/projects/java/
+RDEPEND=>=virtual/jre-1.5 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )

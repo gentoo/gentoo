@@ -1,10 +1,12 @@
+_eclasses_=
+_md5_=6f603da3aa137699eaa57a0061ec374e
+SLOT=0
 DEFINED_PHASES=install
+EAPI=0
 DEPEND=>=app-i18n/ibus-table-1.2 virtual/pkgconfig
 DESCRIPTION=The Thai and Viqr (Vietnamese) tables for IBus-Table
-HOMEPAGE=http://code.google.com/p/ibus/
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=app-i18n/ibus-table-1.2
-SLOT=0
 SRC_URI=http://ibus.googlecode.com/files/ibus-table-tv-1.2.0.20100305.tar.gz
-_md5_=6f603da3aa137699eaa57a0061ec374e
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://code.google.com/p/ibus/
+RDEPEND=>=app-i18n/ibus-table-1.2

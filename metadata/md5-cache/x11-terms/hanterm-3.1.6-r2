@@ -1,10 +1,12 @@
+_eclasses_=
+_md5_=3ab97b2890bb2112866ef3caf57830b3
+SLOT=0
 DEFINED_PHASES=compile install unpack
+EAPI=0
 DEPEND=x11-libs/libXmu x11-libs/libICE x11-libs/libXaw >=x11-libs/libXaw3d-1.5
 DESCRIPTION=Hanterm -- Korean terminal
-HOMEPAGE=http://www.hanterm.org/
-KEYWORDS=x86 ppc
 LICENSE=MIT HPND
-RDEPEND=x11-libs/libXmu x11-libs/libICE x11-libs/libXaw >=x11-libs/libXaw3d-1.5 media-fonts/baekmuk-fonts
-SLOT=0
 SRC_URI=http://download.kldp.net/hanterm/hanterm-3.1.6.tar.gz
-_md5_=3ab97b2890bb2112866ef3caf57830b3
+KEYWORDS=x86 ppc
+HOMEPAGE=http://www.hanterm.org/
+RDEPEND=x11-libs/libXmu x11-libs/libICE x11-libs/libXaw >=x11-libs/libXaw3d-1.5 media-fonts/baekmuk-fonts

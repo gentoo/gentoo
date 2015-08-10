@@ -1,11 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=72c10f170b8e8adfd3be6360ee7f9f32
+SLOT=0
 DEFINED_PHASES=configure unpack
+EAPI=5
 DEPEND=ssl? ( dev-libs/openssl:= ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Advanced command line hexadecimal editor and more
-EAPI=5
-HOMEPAGE=http://www.radare.org
-IUSE=debug ssl
 LICENSE=GPL-2
+IUSE=debug ssl
+HOMEPAGE=http://www.radare.org
 RDEPEND=ssl? ( dev-libs/openssl:= )
-SLOT=0
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=72c10f170b8e8adfd3be6360ee7f9f32

@@ -1,12 +1,12 @@
+_eclasses_=multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	autotools	8056957fdccf2b3cd6e282a4b4551d1a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools-multilib	b47cfc5bc6e355200e256e42f54fb09	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=69bcb0f14a1f344208022cdcf4e2d848
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test unpack
+EAPI=5
 DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7[xml(+)] dev-lang/python:3.4[xml(+)] >=dev-lang/python-3.3.2-r2:3.3[xml(+)] ) media-libs/mesa[egl] x11-misc/util-macros x11-libs/libX11 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Epoxy is a library for handling OpenGL function pointer management for you
-EAPI=5
-HOMEPAGE=https://github.com/anholt/libepoxy
-IUSE=test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=MIT
-SLOT=0
+IUSE=test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 SRC_URI=https://github.com/anholt/libepoxy/archive/v1.2.tar.gz -> libepoxy-1.2.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-multilib	0b47cfc5bc6e355200e256e42f54fb09	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=69bcb0f14a1f344208022cdcf4e2d848
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
+HOMEPAGE=https://github.com/anholt/libepoxy

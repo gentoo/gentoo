@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=eaed949442ee32202cc7442298fb69f8
+SLOT=0
 DEFINED_PHASES=install postinst postrm setup
+EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=sys-apps/sed-4
 DESCRIPTION=Rigo, the Sabayon Application Browser
-EAPI=5
-HOMEPAGE=http://www.sabayon.org
-IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-3
-RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] || ( dev-python/pygobject-cairo:3 dev-python/pygobject:3[cairo] ) ~sys-apps/entropy-254[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ~sys-apps/rigo-daemon-254[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sys-devel/gettext x11-libs/gtk+:3 x11-libs/vte:2.90 >=x11-misc/xdg-utils-1.1.0_rc1_p20120319
+IUSE=python_targets_python2_7
 REQUIRED_USE=python_targets_python2_7
-SLOT=0
 SRC_URI=mirror://sabayon/sys-apps/entropy-254.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=eaed949442ee32202cc7442298fb69f8
+KEYWORDS=~amd64 ~arm ~x86
+HOMEPAGE=http://www.sabayon.org
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] || ( dev-python/pygobject-cairo:3 dev-python/pygobject:3[cairo] ) ~sys-apps/entropy-254[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ~sys-apps/rigo-daemon-254[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sys-devel/gettext x11-libs/gtk+:3 x11-libs/vte:2.90 >=x11-misc/xdg-utils-1.1.0_rc1_p20120319

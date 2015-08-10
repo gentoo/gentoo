@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install postinst prerm setup
-DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
-DESCRIPTION=Web based administration and user controls for dspam
-EAPI=4
-HOMEPAGE=http://dspam.nuclearelephant.com/
-IUSE=vhosts
-KEYWORDS=amd64 ~ppc x86
-LICENSE=AGPL-3
-RDEPEND=>=mail-filter/dspam-3.10.1[-user-homedirs] dev-perl/GD[png] dev-perl/GD-Graph3d dev-perl/GDGraph dev-perl/GDTextUtil >=app-admin/webapp-config-1.50.15
-SLOT=3.10.1
-SRC_URI=http://dspam.nuclearelephant.com/sources/dspam-3.10.1.tar.gz
 _eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
 _md5_=e798bb290bcd62993bda99eea09a3b08
+SLOT=3.10.1
+DEFINED_PHASES=compile configure install postinst prerm setup
+EAPI=4
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web based administration and user controls for dspam
+LICENSE=AGPL-3
+IUSE=vhosts
+SRC_URI=http://dspam.nuclearelephant.com/sources/dspam-3.10.1.tar.gz
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://dspam.nuclearelephant.com/
+RDEPEND=>=mail-filter/dspam-3.10.1[-user-homedirs] dev-perl/GD[png] dev-perl/GD-Graph3d dev-perl/GDGraph dev-perl/GDTextUtil >=app-admin/webapp-config-1.50.15

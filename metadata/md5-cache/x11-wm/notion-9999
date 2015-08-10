@@ -1,13 +1,13 @@
+_eclasses_=readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	git-r3	1502b9838d043db47700b8120083e637	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e1eab3bca311934402e1a4305c8a0d39
+SLOT=0
 DEFINED_PHASES=configure install postinst prepare unpack
+EAPI=5
 DEPEND=>=dev-lang/lua-5.1:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXext nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Notion is a tiling, tabbed window manager for the X window system
-EAPI=5
-HOMEPAGE=http://notion.sourceforge.net
-IUSE=nls xinerama +xrandr
 LICENSE=LGPL-2.1
-RDEPEND=>=dev-lang/lua-5.1:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXext nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr )
+IUSE=nls xinerama +xrandr
 REQUIRED_USE=xrandr? ( xinerama )
 RESTRICT=test
-SLOT=0
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e1eab3bca311934402e1a4305c8a0d39
+HOMEPAGE=http://notion.sourceforge.net
+RDEPEND=>=dev-lang/lua-5.1:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXext nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr )

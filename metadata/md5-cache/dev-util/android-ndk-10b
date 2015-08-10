@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile configure install
-DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
-EAPI=5
-HOMEPAGE=http://developer.android.com/sdk/ndk/
-IUSE=+target-32 target-64
-KEYWORDS=~amd64 ~x86
-LICENSE=android
-RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81
-RESTRICT=mirror strip installsources test
-SLOT=0
-SRC_URI=x86? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10b-linux-x86.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10b-linux-x86.tar.bz2 ) ) amd64? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10b-linux-x86_64.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10b-linux-x86_64.tar.bz2 ) )
+_eclasses_=
 _md5_=3a51cf7913e29875eb15823d8045ee9f
+SLOT=0
+DEFINED_PHASES=compile configure install
+EAPI=5
+DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
+LICENSE=android
+IUSE=+target-32 target-64
+RESTRICT=mirror strip installsources test
+SRC_URI=x86? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10b-linux-x86.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10b-linux-x86.tar.bz2 ) ) amd64? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10b-linux-x86_64.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10b-linux-x86_64.tar.bz2 ) )
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://developer.android.com/sdk/ndk/
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81

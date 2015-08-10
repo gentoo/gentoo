@@ -1,9 +1,10 @@
+_eclasses_=
+_md5_=4960bafb1c8e199ffe145492b2187eec
+SLOT=0
 DEFINED_PHASES=-
-DESCRIPTION=Virtual for OpenCL implementations
 EAPI=4
+DESCRIPTION=Virtual for OpenCL implementations
 IUSE=video_cards_nvidia
+REQUIRED_USE=|| ( video_cards_nvidia )
 KEYWORDS=amd64 x86
 RDEPEND=|| ( video_cards_nvidia? ( x11-drivers/nvidia-drivers >=dev-util/nvidia-cuda-toolkit-3.1 ) )
-REQUIRED_USE=|| ( video_cards_nvidia )
-SLOT=0
-_md5_=4960bafb1c8e199ffe145492b2187eec

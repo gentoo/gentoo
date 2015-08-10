@@ -1,13 +1,14 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=1bf101279ce505dbc9ef048c4ce112
+SLOT=0
 DEFINED_PHASES=compile install postinst preinst
+EAPI=0
 DEPEND=>=sys-libs/zlib-1.1.4 sys-apps/file imagemagick? ( >=media-gfx/imagemagick-5.5.7.15 ) vorbis? ( >=media-libs/libvorbis-1 )
 DESCRIPTION=A OpenFT, Gnutella and FastTrack p2p network daemon
-HOMEPAGE=http://gift.sourceforge.net
-IUSE=ares fasttrack gnutella imagemagick openft vorbis
-KEYWORDS=alpha amd64 ia64 ~ppc sparc x86 ~x86-fbsd
 LICENSE=GPL-2
+IUSE=ares fasttrack gnutella imagemagick openft vorbis
 PDEPEND=ares? ( net-p2p/gift-ares ) fasttrack? ( net-p2p/gift-fasttrack ) gnutella? ( net-p2p/gift-gnutella ) openft? ( net-p2p/gift-openft )
-RDEPEND=>=sys-libs/zlib-1.1.4 sys-apps/file imagemagick? ( >=media-gfx/imagemagick-5.5.7.15 ) vorbis? ( >=media-libs/libvorbis-1 )
-SLOT=0
 SRC_URI=mirror://sourceforge/gift/gift-0.11.8.1.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=001bf101279ce505dbc9ef048c4ce112
+KEYWORDS=alpha amd64 ia64 ~ppc sparc x86 ~x86-fbsd
+HOMEPAGE=http://gift.sourceforge.net
+RDEPEND=>=sys-libs/zlib-1.1.4 sys-apps/file imagemagick? ( >=media-gfx/imagemagick-5.5.7.15 ) vorbis? ( >=media-libs/libvorbis-1 )

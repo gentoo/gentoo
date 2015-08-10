@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	waf-utils	ad1dd5b59c523843eebd3a9934c509ca	vala	335996addec48717e632dfd1f588ef1c	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=f421060622cc21c0ffb8b151d1075052
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup
+EAPI=4
 DEPEND=>=dev-libs/glib-2 x11-libs/gtk+:3 x11-libs/vte:2.90 || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) dev-lang/python !dev-lang/python[-threads]
 DESCRIPTION=A lightweight vala based terminal
-EAPI=4
-HOMEPAGE=http://gitorious.org/valaterm
-IUSE=nls
-KEYWORDS=amd64 x86
 LICENSE=GPL-3
-RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:3 x11-libs/vte:2.90
-SLOT=0
+IUSE=nls
 SRC_URI=http://gitorious.org/valaterm/valaterm/archive-tarball/0.6 -> valaterm-0.6.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
-_md5_=f421060622cc21c0ffb8b151d1075052
+KEYWORDS=amd64 x86
+HOMEPAGE=http://gitorious.org/valaterm
+RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:3 x11-libs/vte:2.90

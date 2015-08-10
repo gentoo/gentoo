@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 PYTHON_REQ_USE='tk?'
 
 inherit distutils-r1 eutils
@@ -18,31 +19,35 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
-IUSE="doc examples jpeg jpeg2k lcms scanner test tiff tk truetype webp zlib"
+IUSE="doc examples jpeg jpeg2k lcms test tiff tk truetype webp zlib"
+
 REQUIRED_USE="test? ( jpeg )"
 
 RDEPEND="
-	truetype? ( media-libs/freetype:2= )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lcms? ( media-libs/lcms:2= )
-	scanner? ( media-gfx/sane-backends:0= )
 	tiff? ( media-libs/tiff:0= )
+	truetype? ( media-libs/freetype:2= )
 	webp? ( media-libs/libwebp:0= )
 	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
-		dev-python/sphinx
-		dev-python/sphinx-better-theme
-	)"
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-better-theme[${PYTHON_USEDEP}]
+	)
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	"
 RDEPEND+=" !dev-python/imaging"
 
 S="${WORKDIR}/${MY_P}"
 
 # See _render and _clean in Tests/test_imagefont.py
 DISTUTILS_IN_SOURCE_BUILD=1
+
+PATCHES=( "${FILESDIR}"/${P}-ico-backport.patch )
 
 python_prepare_all() {
 	# Disable all the stuff we don't want.
@@ -62,33 +67,19 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-# XXX: split into two ebuilds?
-wrap_phase() {
-	"${@}"
-
-	if use scanner; then
-		cd Sane || die
-		"${@}"
-	fi
-}
-
-python_compile() {
-	wrap_phase distutils-r1_python_compile
-}
-
 python_compile_all() {
 	use doc && emake -C docs html
 }
 
 python_test() {
 	"${PYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
-	nosetests -v Tests/test_*.py || die "Testing failed with ${EPYTHON}"
+	nosetests -vx Tests/test_*.py || die "Testing failed with ${EPYTHON}"
 }
 
 python_install() {
 	python_doheader libImaging/{Imaging.h,ImPlatform.h}
 
-	wrap_phase distutils-r1_python_install
+	distutils-r1_python_install
 }
 
 python_install_all() {
@@ -96,14 +87,4 @@ python_install_all() {
 	use examples && local EXAMPLES=( Scripts/. )
 
 	distutils-r1_python_install_all
-
-	if use scanner; then
-		docinto sane
-		dodoc Sane/{CHANGES,README.rst,sanedoc.txt}
-	fi
-
-	if use examples && use scanner; then
-		docinto examples/sane
-		dodoc Sane/demo_*.py
-	fi
 }

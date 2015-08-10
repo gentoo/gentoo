@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=c98c39e22181d982af7213e9fea096cb
+SLOT=4.1.7
 DEFINED_PHASES=install postinst prerm setup
+EAPI=5
 DEPEND=virtual/httpd-php dev-lang/php[ctype,curl,mysql,tokenizer,xml] app-arch/unzip || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Multilingual multiuser multi-blog engine
-EAPI=5
-HOMEPAGE=http://www.b2evolution.net
-IUSE=vhosts
-KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=virtual/httpd-php dev-lang/php[ctype,curl,mysql,tokenizer,xml] >=app-admin/webapp-config-1.50.15
-SLOT=4.1.7
+IUSE=vhosts
 SRC_URI=mirror://sourceforge/evocms/b2evolution-4.1.7-stable-2013-04-27.zip
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=c98c39e22181d982af7213e9fea096cb
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www.b2evolution.net
+RDEPEND=virtual/httpd-php dev-lang/php[ctype,curl,mysql,tokenizer,xml] >=app-admin/webapp-config-1.50.15

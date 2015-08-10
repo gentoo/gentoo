@@ -1,8 +1,10 @@
-DEFINED_PHASES=install
-DESCRIPTION=Miscellaneous helpers for AIX (currently just ldd)
-HOMEPAGE=http://www.gentoo.org/proj/en/gentoo-alt/prefix/
-KEYWORDS=~ppc-aix
-LICENSE=GPL-2
-SLOT=0
-SRC_URI=http://dev.gentoo.org/~haubi/distfiles/aix-miscutils-0.1.1671.tar.bz2
+_eclasses_=
 _md5_=a8281cb5aea5e267f797513e6d8ffe12
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Miscellaneous helpers for AIX (currently just ldd)
+LICENSE=GPL-2
+SRC_URI=http://dev.gentoo.org/~haubi/distfiles/aix-miscutils-0.1.1671.tar.bz2
+KEYWORDS=~ppc-aix
+HOMEPAGE=http://www.gentoo.org/proj/en/gentoo-alt/prefix/

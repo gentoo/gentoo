@@ -1,8 +1,10 @@
-DEFINED_PHASES=install
-DESCRIPTION=Documentation for Smarty, a template engine for PHP
-HOMEPAGE=http://smarty.php.net/docs.php
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
-LICENSE=LGPL-2.1
-SLOT=0
-SRC_URI=http://smarty.php.net/distributions/manual/en/Smarty-2.6.14-docs.tar.gz
+_eclasses_=
 _md5_=84c6d2abf8fda58e92336ce67e05aa4e
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Documentation for Smarty, a template engine for PHP
+LICENSE=LGPL-2.1
+SRC_URI=http://smarty.php.net/distributions/manual/en/Smarty-2.6.14-docs.tar.gz
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+HOMEPAGE=http://smarty.php.net/docs.php

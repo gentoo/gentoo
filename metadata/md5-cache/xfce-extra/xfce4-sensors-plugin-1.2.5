@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	xfconf	d842ab8b2140980394561496bf157447	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e945a3388ddc7500d97e9842b355d28b
+SLOT=0
 DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+EAPI=5
 DEPEND=>=x11-libs/gtk+-2.14:2 >=xfce-base/libxfce4ui-4.8 >=xfce-base/xfce4-panel-4.8 hddtemp? ( app-admin/hddtemp net-analyzer/gnu-netcat ) libnotify? ( >=x11-libs/libnotify-0.7 ) lm_sensors? ( >=sys-apps/lm_sensors-3.1.0 ) video_cards_nvidia? ( media-video/nvidia-settings ) dev-util/intltool virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=dev-util/xfce4-dev-tools-4.10
 DESCRIPTION=A panel plug-in for different sensors using acpi, lm_sensors and hddtemp
-EAPI=5
-HOMEPAGE=http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
-IUSE=+acpi debug hddtemp libnotify lm_sensors video_cards_nvidia
-KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
-RDEPEND=>=x11-libs/gtk+-2.14:2 >=xfce-base/libxfce4ui-4.8 >=xfce-base/xfce4-panel-4.8 hddtemp? ( app-admin/hddtemp net-analyzer/gnu-netcat ) libnotify? ( >=x11-libs/libnotify-0.7 ) lm_sensors? ( >=sys-apps/lm_sensors-3.1.0 ) video_cards_nvidia? ( media-video/nvidia-settings )
+IUSE=+acpi debug hddtemp libnotify lm_sensors video_cards_nvidia
 REQUIRED_USE=|| ( hddtemp lm_sensors acpi )
-SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-sensors-plugin/1.2/xfce4-sensors-plugin-1.2.5.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	xfconf	d842ab8b2140980394561496bf157447
-_md5_=e945a3388ddc7500d97e9842b355d28b
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
+RDEPEND=>=x11-libs/gtk+-2.14:2 >=xfce-base/libxfce4ui-4.8 >=xfce-base/xfce4-panel-4.8 hddtemp? ( app-admin/hddtemp net-analyzer/gnu-netcat ) libnotify? ( >=x11-libs/libnotify-0.7 ) lm_sensors? ( >=sys-apps/lm_sensors-3.1.0 ) video_cards_nvidia? ( media-video/nvidia-settings )

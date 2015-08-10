@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=47086f610d09d8ea499be50ef15cdf96
+SLOT=3.18.17_p14
 DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+EAPI=5
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Full Linux 3.18 kernel sources with the CONFIG_PREEMPT_RT patch
-EAPI=5
-HOMEPAGE=http://www.kernel.org/ http://www.gentoo.org/ http://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
-IUSE=symlink build deblob
-KEYWORDS=~amd64
 LICENSE=GPL-2 !deblob? ( freedist )
-RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+IUSE=symlink build deblob
 RESTRICT=binchecks strip
-SLOT=3.18.17_p14
 SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.18.17.xz mirror://kernel/linux/kernel/v3.x/linux-3.18.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.18-gnu/deblob-3.18 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.18-gnu/deblob-check -> deblob-check-3.18 ) mirror://kernel/linux/kernel/projects/rt/3.18/patch-3.18.17-rt14.patch.xz mirror://kernel/linux/kernel/projects/rt/3.18/older/patch-3.18.17-rt14.patch.xz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=47086f610d09d8ea499be50ef15cdf96
+KEYWORDS=~amd64
+HOMEPAGE=http://www.kernel.org/ http://www.gentoo.org/ http://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )

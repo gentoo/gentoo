@@ -1,14 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=ae07779f63443559176f9a673feab3da
+SLOT=0
 DEFINED_PHASES=configure install postinst setup
+EAPI=5
 DEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) virtual/pkgconfig
 DESCRIPTION=A scalable distributed monitoring system for clusters and grids
-EAPI=5
-HOMEPAGE=http://ganglia.sourceforge.net/
-IUSE=minimal pcre python examples python_targets_python2_7
-KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
-RDEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) !minimal? ( net-analyzer/rrdtool )
+IUSE=minimal pcre python examples python_targets_python2_7
 REQUIRED_USE=python? ( python_targets_python2_7 )
-SLOT=0
 SRC_URI=mirror://sourceforge/ganglia/ganglia-3.7.1.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=ae07779f63443559176f9a673feab3da
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://ganglia.sourceforge.net/
+RDEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) !minimal? ( net-analyzer/rrdtool )

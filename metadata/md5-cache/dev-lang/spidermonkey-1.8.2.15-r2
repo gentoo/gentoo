@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=cd1dd0d450d72c609ad26c05fb7825e5
+SLOT=0/mozjs
 DEFINED_PHASES=compile configure install prepare setup
+EAPI=5
 DEPEND=threadsafe? ( >=dev-libs/nspr-4.8.6 ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) app-arch/zip virtual/pkgconfig
 DESCRIPTION=Stand-alone JavaScript C library
-EAPI=5
-HOMEPAGE=http://www.mozilla.org/js/spidermonkey/
-IUSE=threadsafe
-KEYWORDS=alpha amd64 arm ppc ppc64 sparc x86 ~x86-fbsd ~x64-macos ~x86-macos
 LICENSE=NPL-1.1
-RDEPEND=threadsafe? ( >=dev-libs/nspr-4.8.6 )
-SLOT=0/mozjs
+IUSE=threadsafe
 SRC_URI=http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.6.15/source/firefox-3.6.15.source.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=cd1dd0d450d72c609ad26c05fb7825e5
+KEYWORDS=alpha amd64 arm ppc ppc64 sparc x86 ~x86-fbsd ~x64-macos ~x86-macos
+HOMEPAGE=http://www.mozilla.org/js/spidermonkey/
+RDEPEND=threadsafe? ( >=dev-libs/nspr-4.8.6 )

@@ -1,12 +1,13 @@
+_eclasses_=
+_md5_=38e90cb4e5b263a1f5eaa71be4c995ef
+SLOT=0
 DEFINED_PHASES=configure install
+EAPI=4
 DEPEND=>=dev-libs/guiloader-2.99 dev-cpp/gtkmm:3.0 >=dev-cpp/glibmm-2.28:2 dev-libs/boost virtual/pkgconfig nls? ( >=sys-devel/gettext-0.18 )
 DESCRIPTION=C++ binding to GuiLoader library
-EAPI=4
-HOMEPAGE=http://www.crowdesigner.org
-IUSE=nls linguas_ru
-KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=>=dev-libs/guiloader-2.99 dev-cpp/gtkmm:3.0 >=dev-cpp/glibmm-2.28:2
-SLOT=0
+IUSE=nls linguas_ru
 SRC_URI=http://nothing-personal.googlecode.com/files/guiloader-c++-2.99.0.tar.xz
-_md5_=38e90cb4e5b263a1f5eaa71be4c995ef
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.crowdesigner.org
+RDEPEND=>=dev-libs/guiloader-2.99 dev-cpp/gtkmm:3.0 >=dev-cpp/glibmm-2.28:2

@@ -1,15 +1,15 @@
+_eclasses_=python-single-r1	626346d3c54afb66571061bbd4c53f25	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=4396046be03e4fe8e6ba52c9f652aeb
+SLOT=0
 DEFINED_PHASES=configure install prepare setup test
+EAPI=5
 DEPEND=dev-cpp/glog dev-cpp/sparsehash dev-libs/cityhash >=dev-libs/hyperleveldb-1.2 >=dev-libs/libpo6-0.8 >=dev-libs/libe-0.11 >=dev-libs/busybee-0.7 dev-libs/popt >=dev-libs/replicant-0.8 >=dev-libs/libmacaroons-0.3 >=dev-libs/libtreadstone-0.2 dev-libs/json-c !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A searchable distributed Key-Value Store
-EAPI=5
-HOMEPAGE=http://hyperdex.org
-IUSE=test +python python_targets_python2_7
-KEYWORDS=~amd64
 LICENSE=BSD
-RDEPEND=dev-cpp/glog dev-cpp/sparsehash dev-libs/cityhash >=dev-libs/hyperleveldb-1.2 >=dev-libs/libpo6-0.8 >=dev-libs/libe-0.11 >=dev-libs/busybee-0.7 dev-libs/popt >=dev-libs/replicant-0.8 >=dev-libs/libmacaroons-0.3 >=dev-libs/libtreadstone-0.2 dev-libs/json-c
+IUSE=test +python python_targets_python2_7
 REQUIRED_USE=test? ( python )
 RESTRICT=test
-SLOT=0
 SRC_URI=http://hyperdex.org/src/hyperdex-1.8.1.tar.gz http://dev.gentooexperimental.org/~patrick/autotools-java.tar
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=04396046be03e4fe8e6ba52c9f652aeb
+KEYWORDS=~amd64
+HOMEPAGE=http://hyperdex.org
+RDEPEND=dev-cpp/glog dev-cpp/sparsehash dev-libs/cityhash >=dev-libs/hyperleveldb-1.2 >=dev-libs/libpo6-0.8 >=dev-libs/libe-0.11 >=dev-libs/busybee-0.7 dev-libs/popt >=dev-libs/replicant-0.8 >=dev-libs/libmacaroons-0.3 >=dev-libs/libtreadstone-0.2 dev-libs/json-c

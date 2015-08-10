@@ -1,13 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b4819d1930ba971614cd1c2f5f96e3bd
+SLOT=0
 DEFINED_PHASES=compile install postinst
+EAPI=0
 DEPEND=virtual/pkgconfig >=net-p2p/gift-0.11.8 berkdb? ( >=sys-libs/db-3.3 )
 DESCRIPTION=The giFT OpenFT plugin
-HOMEPAGE=http://gift.sf.net/
-IUSE=berkdb
-KEYWORDS=alpha amd64 ia64 ~ppc sparc x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=>=net-p2p/gift-0.11.8 berkdb? ( >=sys-libs/db-3.3 )
+IUSE=berkdb
 RESTRICT=mirror
-SLOT=0
 SRC_URI=mirror://sourceforge/gift/gift-openft-0.2.1.6.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=b4819d1930ba971614cd1c2f5f96e3bd
+KEYWORDS=alpha amd64 ia64 ~ppc sparc x86 ~x86-fbsd
+HOMEPAGE=http://gift.sf.net/
+RDEPEND=>=net-p2p/gift-0.11.8 berkdb? ( >=sys-libs/db-3.3 )

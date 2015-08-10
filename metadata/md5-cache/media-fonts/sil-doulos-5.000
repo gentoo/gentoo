@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=38ed1e075e5cb56ee30cb8a60dbbb353
+SLOT=0
 DEFINED_PHASES=install postinst postrm setup
+EAPI=5
 DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
 DESCRIPTION=Serif font for Roman and Cyrillic languages with comprehensive orthographic support
-EAPI=5
-HOMEPAGE=http://scripts.sil.org/DoulosSILfont
-IUSE=X
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
 LICENSE=OFL-1.1
-SLOT=0
+IUSE=X
 SRC_URI=http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=DoulosSIL-5.000.zip&filename=DoulosSIL-5.000.zip -> sil-doulos-5.000.zip
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=38ed1e075e5cb56ee30cb8a60dbbb353
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
+HOMEPAGE=http://scripts.sil.org/DoulosSILfont

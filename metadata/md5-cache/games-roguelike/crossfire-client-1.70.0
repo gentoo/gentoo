@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ced2f909129986ae23264f1ff5f6739f
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+EAPI=5
 DEPEND=alsa? ( media-libs/alsa-lib ) virtual/opengl x11-libs/gtk+:2 gnome-base/libglade sdl? ( media-libs/libsdl[video] media-libs/sdl-image ) lua? ( dev-lang/lua ) net-misc/curl media-libs/freeglut media-libs/libpng:0 sys-libs/zlib virtual/pkgconfig >=sys-apps/sed-4
 DESCRIPTION=Client for the nethack-style but more in the line of UO
-EAPI=5
-HOMEPAGE=http://crossfire.real-time.com/
-IUSE=alsa lua oss sdl
-KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=alsa? ( media-libs/alsa-lib ) virtual/opengl x11-libs/gtk+:2 gnome-base/libglade sdl? ( media-libs/libsdl[video] media-libs/sdl-image ) lua? ( dev-lang/lua ) net-misc/curl media-libs/freeglut media-libs/libpng:0 sys-libs/zlib games-misc/games-envd
-SLOT=0
+IUSE=alsa lua oss sdl
 SRC_URI=mirror://sourceforge/crossfire/crossfire-client-1.70.0.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9e5e9ee0b325a8a10823f9b385ca2036	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=ced2f909129986ae23264f1ff5f6739f
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://crossfire.real-time.com/
+RDEPEND=alsa? ( media-libs/alsa-lib ) virtual/opengl x11-libs/gtk+:2 gnome-base/libglade sdl? ( media-libs/libsdl[video] media-libs/sdl-image ) lua? ( dev-lang/lua ) net-misc/curl media-libs/freeglut media-libs/libpng:0 sys-libs/zlib games-misc/games-envd

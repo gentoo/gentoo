@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=dfd0bd750840331008e15a74438400d1
+SLOT=2
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=>=app-crypt/gpgme-1 xmpp? ( net-libs/gloox ) qt4? ( dev-qt/qtgui:4 ) socks5? ( net-proxy/dante ) ssl? ( >=dev-libs/openssl-0.9.5a ) xosd? ( x11-libs/xosd ) aosd? ( x11-libs/libaosd ) doc? ( app-doc/doxygen[dot] ) nls? ( sys-devel/gettext ) dev-libs/boost sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=ICQ Client with v8 support
-EAPI=5
-HOMEPAGE=http://www.licq.org/
-IUSE=debug doc linguas_he nls socks5 ssl xosd aosd xmpp qt4 msn
-KEYWORDS=alpha amd64 ia64 ppc sparc x86
 LICENSE=GPL-2
-RDEPEND=>=app-crypt/gpgme-1 xmpp? ( net-libs/gloox ) qt4? ( dev-qt/qtgui:4 ) socks5? ( net-proxy/dante ) ssl? ( >=dev-libs/openssl-0.9.5a ) xosd? ( x11-libs/xosd ) aosd? ( x11-libs/libaosd )
-SLOT=2
+IUSE=debug doc linguas_he nls socks5 ssl xosd aosd xmpp qt4 msn
 SRC_URI=mirror://sourceforge/licq/licq-1.8.2.tar.bz2
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=dfd0bd750840331008e15a74438400d1
+KEYWORDS=alpha amd64 ia64 ppc sparc x86
+HOMEPAGE=http://www.licq.org/
+RDEPEND=>=app-crypt/gpgme-1 xmpp? ( net-libs/gloox ) qt4? ( dev-qt/qtgui:4 ) socks5? ( net-proxy/dante ) ssl? ( >=dev-libs/openssl-0.9.5a ) xosd? ( x11-libs/xosd ) aosd? ( x11-libs/libaosd )

@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=7e6aee948ca0f198465278eb49f12a0b
+SLOT=4.0_p6
 DEFINED_PHASES=compile install postinst postrm preinst prepare pretend setup test unpack
+EAPI=5
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 DESCRIPTION=Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
-EAPI=5
-HOMEPAGE=http://pf.natalenko.name/
-IUSE=symlink build
-KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2 freedist
-RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+IUSE=symlink build
 RESTRICT=binchecks strip
-SLOT=4.0_p6
 SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.0.tar.xz http://pf.natalenko.name/sources/4.0/patch-4.0-pf6.xz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7e6aee948ca0f198465278eb49f12a0b
+KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
+HOMEPAGE=http://pf.natalenko.name/
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )

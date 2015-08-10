@@ -1,12 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=3b273793b7610a7016341607955c1bc7
+SLOT=0
 DEFINED_PHASES=compile install unpack
+EAPI=0
 DEPEND=>=sys-fs/mtools-3 doc? ( virtual/texi2dvi )
 DESCRIPTION=utilities for configuring and debugging the Linux floppy driver
-HOMEPAGE=http://fdutils.linux.lu/
-IUSE=doc
-KEYWORDS=~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=>=sys-fs/mtools-3
-SLOT=0
+IUSE=doc
 SRC_URI=http://fdutils.linux.lu/fdutils-5.5.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=3b273793b7610a7016341607955c1bc7
+KEYWORDS=~ppc ~x86
+HOMEPAGE=http://fdutils.linux.lu/
+RDEPEND=>=sys-fs/mtools-3

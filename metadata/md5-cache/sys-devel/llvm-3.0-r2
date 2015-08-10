@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c22571bbb56421cfeaf06be665961d0d
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup
+EAPI=4
 DEPEND=dev-lang/perl >=sys-devel/make-3.79 >=sys-devel/flex-2.5.4 >=sys-devel/bison-1.875d || ( >=sys-devel/gcc-3.0 >=sys-devel/gcc-apple-4.2.1 ) || ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-3.2.3 ) gold? ( >=sys-devel/binutils-2.22[cxx] ) libffi? ( virtual/pkgconfig virtual/libffi ) ocaml? ( dev-lang/ocaml ) udis86? ( dev-libs/udis86[pic(+)] ) =dev-lang/python-2*
 DESCRIPTION=Low Level Virtual Machine
-EAPI=4
-HOMEPAGE=http://llvm.org/
-IUSE=debug gold +libffi multitarget ocaml test udis86 vim-syntax
-KEYWORDS=amd64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=UoI-NCSA
-RDEPEND=dev-lang/perl libffi? ( virtual/libffi ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) =dev-lang/python-2*
-SLOT=0
+IUSE=debug gold +libffi multitarget ocaml test udis86 vim-syntax
 SRC_URI=http://llvm.org/releases/3.0/llvm-3.0.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=c22571bbb56421cfeaf06be665961d0d
+KEYWORDS=amd64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://llvm.org/
+RDEPEND=dev-lang/perl libffi? ( virtual/libffi ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) =dev-lang/python-2*

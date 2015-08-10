@@ -1,11 +1,12 @@
+_eclasses_=
+_md5_=3b5eac54502dd88cc3ae2cdb351483e5
+SLOT=0
 DEFINED_PHASES=-
+EAPI=5
 DEPEND=gtk? ( ~app-admin/packagekit-gtk-0.8.15 ) qt4? ( =app-admin/packagekit-qt4-0.8* )
 DESCRIPTION=PackageKit Package Manager interface (meta package)
-EAPI=5
-HOMEPAGE=http://www.packagekit.org/
+LICENSE=GPL-2
 IUSE=gtk qt4
 KEYWORDS=~amd64 ~arm ~x86
-LICENSE=GPL-2
+HOMEPAGE=http://www.packagekit.org/
 RDEPEND=gtk? ( ~app-admin/packagekit-gtk-0.8.15 ) qt4? ( =app-admin/packagekit-qt4-0.8* )
-SLOT=0
-_md5_=3b5eac54502dd88cc3ae2cdb351483e5

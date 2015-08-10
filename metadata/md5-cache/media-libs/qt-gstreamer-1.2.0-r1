@@ -1,15 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=90d3d803a52bf372ef733bc071789776
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=dev-libs/glib:2 >=dev-libs/boost-1.40:= qt4? ( dev-qt/qtcore:4 dev-qt/qtdeclarative:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtquick1:5 dev-qt/qtwidgets:5 ) media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 test? ( qt4? ( dev-qt/qttest:4 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=QtGStreamer provides C++ bindings for GStreamer with a Qt-style API
-EAPI=5
-HOMEPAGE=http://gstreamer.freedesktop.org/modules/qt-gstreamer.html
-IUSE=+qt4 qt5 test
-KEYWORDS=~amd64 ~arm ~x86
 LICENSE=LGPL-2.1
-RDEPEND=dev-libs/glib:2 >=dev-libs/boost-1.40:= qt4? ( dev-qt/qtcore:4 dev-qt/qtdeclarative:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtquick1:5 dev-qt/qtwidgets:5 ) media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0
+IUSE=+qt4 qt5 test
 REQUIRED_USE=|| ( qt4 qt5 )
 RESTRICT=test
-SLOT=0
 SRC_URI=http://gstreamer.freedesktop.org/src/qt-gstreamer/qt-gstreamer-1.2.0.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=90d3d803a52bf372ef733bc071789776
+KEYWORDS=~amd64 ~arm ~x86
+HOMEPAGE=http://gstreamer.freedesktop.org/modules/qt-gstreamer.html
+RDEPEND=dev-libs/glib:2 >=dev-libs/boost-1.40:= qt4? ( dev-qt/qtcore:4 dev-qt/qtdeclarative:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtquick1:5 dev-qt/qtwidgets:5 ) media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0

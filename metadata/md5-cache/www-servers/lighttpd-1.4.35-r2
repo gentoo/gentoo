@@ -1,14 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=97464ccc83ee73705cbfca691328019d
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+EAPI=5
 DEPEND=bzip2? ( app-arch/bzip2 ) fam? ( virtual/fam ) gdbm? ( sys-libs/gdbm ) ldap? ( >=net-nds/openldap-2.1.26 ) libev? ( >=dev-libs/libev-4.01 ) lua? ( >=dev-lang/lua-5.1:= ) memcache? ( dev-libs/libmemcache ) mysql? ( >=virtual/mysql-4.0 ) pcre? ( >=dev-libs/libpcre-3.1 ) php? ( dev-lang/php:=[cgi] ) rrdtool? ( net-analyzer/rrdtool ) ssl? ( >=dev-libs/openssl-0.9.7:=[kerberos?] ) webdav? ( dev-libs/libxml2 >=dev-db/sqlite-3 sys-fs/e2fsprogs ) xattr? ( kernel_linux? ( sys-apps/attr ) ) zlib? ( >=sys-libs/zlib-1.1 ) virtual/pkgconfig doc? ( dev-python/docutils ) test? ( virtual/perl-Test-Harness dev-libs/fcgi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Lightweight high-performance web server
-EAPI=5
-HOMEPAGE=http://www.lighttpd.net/
-IUSE=bzip2 doc fam gdbm ipv6 kerberos ldap libev lua minimal mmap memcache mysql pcre php rrdtool selinux ssl test uploadprogress webdav xattr zlib
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd
 LICENSE=BSD GPL-2
-RDEPEND=bzip2? ( app-arch/bzip2 ) fam? ( virtual/fam ) gdbm? ( sys-libs/gdbm ) ldap? ( >=net-nds/openldap-2.1.26 ) libev? ( >=dev-libs/libev-4.01 ) lua? ( >=dev-lang/lua-5.1:= ) memcache? ( dev-libs/libmemcache ) mysql? ( >=virtual/mysql-4.0 ) pcre? ( >=dev-libs/libpcre-3.1 ) php? ( dev-lang/php:=[cgi] ) rrdtool? ( net-analyzer/rrdtool ) ssl? ( >=dev-libs/openssl-0.9.7:=[kerberos?] ) webdav? ( dev-libs/libxml2 >=dev-db/sqlite-3 sys-fs/e2fsprogs ) xattr? ( kernel_linux? ( sys-apps/attr ) ) zlib? ( >=sys-libs/zlib-1.1 ) selinux? ( sec-policy/selinux-apache )
+IUSE=bzip2 doc fam gdbm ipv6 kerberos ldap libev lua minimal mmap memcache mysql pcre php rrdtool selinux ssl test uploadprogress webdav xattr zlib
 REQUIRED_USE=kerberos? ( ssl )
-SLOT=0
 SRC_URI=http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.35.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=97464ccc83ee73705cbfca691328019d
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd
+HOMEPAGE=http://www.lighttpd.net/
+RDEPEND=bzip2? ( app-arch/bzip2 ) fam? ( virtual/fam ) gdbm? ( sys-libs/gdbm ) ldap? ( >=net-nds/openldap-2.1.26 ) libev? ( >=dev-libs/libev-4.01 ) lua? ( >=dev-lang/lua-5.1:= ) memcache? ( dev-libs/libmemcache ) mysql? ( >=virtual/mysql-4.0 ) pcre? ( >=dev-libs/libpcre-3.1 ) php? ( dev-lang/php:=[cgi] ) rrdtool? ( net-analyzer/rrdtool ) ssl? ( >=dev-libs/openssl-0.9.7:=[kerberos?] ) webdav? ( dev-libs/libxml2 >=dev-db/sqlite-3 sys-fs/e2fsprogs ) xattr? ( kernel_linux? ( sys-apps/attr ) ) zlib? ( >=sys-libs/zlib-1.1 ) selinux? ( sec-policy/selinux-apache )

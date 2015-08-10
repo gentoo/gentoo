@@ -1,13 +1,13 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=c8cca195117ce97d1fae851ec1bc06f2
+SLOT=0
 DEFINED_PHASES=install postinst postrm prepare prerm setup test
+EAPI=3
 DEPEND=test? ( =dev-lang/python-2*[berkdb] ) >=app-admin/webapp-config-1.50.15 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 DESCRIPTION=A feed aggregator application
-EAPI=3
-HOMEPAGE=http://intertwingly.net/code/venus/
-IUSE=django genshi redland test vhosts
-KEYWORDS=~amd64 ~x86
 LICENSE=PSF-2.2
-RDEPEND=django? ( dev-python/django ) genshi? ( dev-python/genshi ) redland? ( dev-python/rdflib[redland] ) dev-python/chardet dev-python/httplib2 dev-python/utidylib >=app-admin/webapp-config-1.50.15 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
-SLOT=0
+IUSE=django genshi redland test vhosts
 SRC_URI=mirror://gentoo/venus-20100911.tar.bz2
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=c8cca195117ce97d1fae851ec1bc06f2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://intertwingly.net/code/venus/
+RDEPEND=django? ( dev-python/django ) genshi? ( dev-python/genshi ) redland? ( dev-python/rdflib[redland] ) dev-python/chardet dev-python/httplib2 dev-python/utidylib >=app-admin/webapp-config-1.50.15 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )

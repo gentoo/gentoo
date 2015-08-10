@@ -1,9 +1,10 @@
-DEFINED_PHASES=install
-DESCRIPTION=Chained EPREFIX utilities and wrappers
-HOMEPAGE=http://dev.gentoo.org/~mduft
-KEYWORDS=~ppc-aix ~ia64-hpux ~x86-interix ~x86-linux ~sparc-solaris ~x86-solaris ~x86-winnt
-LICENSE=GPL-3
-RDEPEND=sys-devel/gcc-config
-SLOT=0
 _eclasses_=prefix	e7f2b9c6e57342e5d25eac22fce23062
 _md5_=c43475ab409b3d16a1eab721cb0f6ccb
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Chained EPREFIX utilities and wrappers
+LICENSE=GPL-3
+KEYWORDS=~ppc-aix ~ia64-hpux ~x86-interix ~x86-linux ~sparc-solaris ~x86-solaris ~x86-winnt
+HOMEPAGE=http://dev.gentoo.org/~mduft
+RDEPEND=sys-devel/gcc-config

@@ -1,9 +1,11 @@
+_eclasses_=
+_md5_=438f9f386a18d98d68ddda784a86667d
+SLOT=0
 DEFINED_PHASES=install setup unpack
+EAPI=0
 DESCRIPTION=3ware SATA+PATA RAID controller Command Line Interface tool
-HOMEPAGE=https://www.3ware.com/3warekb/article.aspx?id=14847
-KEYWORDS=-* ~amd64 ~x86
 LICENSE=3ware
 RESTRICT=fetch strip mirror
-SLOT=0
 SRC_URI=x86? ( http://www.3ware.com/download/Escalade9690SA-Series/9.5.0/tw_cli-linux-x86-9.5.0.tgz ) amd64? ( http://www.3ware.com/download/Escalade9690SA-Series/9.5.0/tw_cli-linux-x86_64-9.5.0.tgz )
-_md5_=438f9f386a18d98d68ddda784a86667d
+KEYWORDS=-* ~amd64 ~x86
+HOMEPAGE=https://www.3ware.com/3warekb/article.aspx?id=14847

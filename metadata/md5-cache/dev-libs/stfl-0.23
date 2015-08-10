@@ -1,13 +1,13 @@
+_eclasses_=unpacker	1ca344bd9b922a7f8084a3fa02933b79	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-utils-r1	c595450196ccd7d3fac66424be096ffc	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=79e83c17a4db7973448dc84b8635c88b
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
 DEPEND=sys-libs/ncurses[unicode] perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) perl? ( dev-lang/swig ) python? ( >=dev-lang/swig-1.3.40 ) ruby? ( dev-lang/swig )
 DESCRIPTION=A library which implements a curses-based widget set for text terminals
-EAPI=5
-HOMEPAGE=http://www.clifford.at/stfl/
-IUSE=examples perl python ruby static-libs python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=amd64 ppc x86
 LICENSE=LGPL-3
-RDEPEND=sys-libs/ncurses[unicode] perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] )
-SLOT=0
+IUSE=examples perl python ruby static-libs python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
 SRC_URI=http://www.clifford.at/stfl/stfl-0.23.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=79e83c17a4db7973448dc84b8635c88b
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www.clifford.at/stfl/
+RDEPEND=sys-libs/ncurses[unicode] perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] )

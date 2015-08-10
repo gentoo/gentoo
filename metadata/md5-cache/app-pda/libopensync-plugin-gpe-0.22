@@ -1,10 +1,12 @@
+_eclasses_=
+_md5_=3d8ddcc2138eb730836b51b06920bef1
+SLOT=0
 DEFINED_PHASES=install
+EAPI=0
 DEPEND==app-pda/libopensync-0.22*
 DESCRIPTION=OpenSync Gpe Plugin
-HOMEPAGE=http://www.opensync.org/
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND==app-pda/libopensync-0.22*
-SLOT=0
 SRC_URI=http://dev.gentooexperimental.org/~peper/distfiles/libopensync-plugin-gpe-0.22.tar.bz2
-_md5_=3d8ddcc2138eb730836b51b06920bef1
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.opensync.org/
+RDEPEND==app-pda/libopensync-0.22*

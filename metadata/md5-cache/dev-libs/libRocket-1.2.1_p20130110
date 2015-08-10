@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	cmake-utils	f474224ef49d530640a43a04ae94928e	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=1d26fafb6461c9c07d0f0052c50bf254
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test
+EAPI=5
 DEPEND=media-libs/freetype python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-libs/boost[python] ) samples? ( virtual/opengl x11-libs/libXext x11-libs/libX11 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A HTML/CSS User Interface library
-EAPI=5
-HOMEPAGE=http://librocket.com/
-IUSE=python samples python_targets_python2_7
-KEYWORDS=amd64 x86
 LICENSE=MIT
-RDEPEND=media-libs/freetype python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-libs/boost[python] ) samples? ( virtual/opengl x11-libs/libXext x11-libs/libX11 )
+IUSE=python samples python_targets_python2_7
 REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
-SLOT=0
 SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/libRocket-1.2.1_p20130110.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=1d26fafb6461c9c07d0f0052c50bf254
+KEYWORDS=amd64 x86
+HOMEPAGE=http://librocket.com/
+RDEPEND=media-libs/freetype python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-libs/boost[python] ) samples? ( virtual/opengl x11-libs/libXext x11-libs/libX11 )

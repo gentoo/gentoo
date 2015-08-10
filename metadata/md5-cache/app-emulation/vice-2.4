@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	games	9e5e9ee0b325a8a10823f9b385ca2036	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f4360c5b7bf108f5b9e6671f83765eea
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
 DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libICE x11-libs/libSM x11-libs/libXt x11-libs/libXxf86vm x11-apps/xset Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( !gnome? ( x11-libs/libXaw ) ) alsa? ( media-libs/alsa-lib ) gnome? ( x11-libs/gtk+:2 x11-libs/vte:0 dev-libs/atk x11-libs/pango ) lame? ( media-sound/lame ) ffmpeg? ( virtual/ffmpeg ) ethernet? ( >=net-libs/libpcap-0.9.8 >=net-libs/libnet-1.1.2.1 ) nls? ( virtual/libintl ) png? ( media-libs/libpng:0 ) readline? ( sys-libs/readline ) sdl? ( media-libs/libsdl ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) xv? ( x11-libs/libXv ) dga? ( x11-libs/libXxf86dga ) xrandr? ( x11-libs/libXrandr ) virtual/pkgconfig x11-apps/bdftopcf x11-apps/mkfontdir x11-proto/xproto x11-proto/xf86vidmodeproto x11-proto/xextproto media-libs/fontconfig dga? ( x11-proto/xf86dgaproto ) xv? ( x11-proto/videoproto ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=The Versatile Commodore 8-bit Emulator
-EAPI=5
-HOMEPAGE=http://vice-emu.sourceforge.net/
-IUSE=Xaw3d alsa gnome nls png readline sdl ipv6 memmap ethernet oss zlib X gif jpeg xv dga xrandr ffmpeg lame pulseaudio
-KEYWORDS=amd64 ppc ~sparc x86
 LICENSE=GPL-2
-RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libICE x11-libs/libSM x11-libs/libXt x11-libs/libXxf86vm x11-apps/xset Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( !gnome? ( x11-libs/libXaw ) ) alsa? ( media-libs/alsa-lib ) gnome? ( x11-libs/gtk+:2 x11-libs/vte:0 dev-libs/atk x11-libs/pango ) lame? ( media-sound/lame ) ffmpeg? ( virtual/ffmpeg ) ethernet? ( >=net-libs/libpcap-0.9.8 >=net-libs/libnet-1.1.2.1 ) nls? ( virtual/libintl ) png? ( media-libs/libpng:0 ) readline? ( sys-libs/readline ) sdl? ( media-libs/libsdl ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) xv? ( x11-libs/libXv ) dga? ( x11-libs/libXxf86dga ) xrandr? ( x11-libs/libXrandr ) games-misc/games-envd
-SLOT=0
+IUSE=Xaw3d alsa gnome nls png readline sdl ipv6 memmap ethernet oss zlib X gif jpeg xv dga xrandr ffmpeg lame pulseaudio
 SRC_URI=mirror://sourceforge/vice-emu/releases/vice-2.4.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9e5e9ee0b325a8a10823f9b385ca2036	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=f4360c5b7bf108f5b9e6671f83765eea
+KEYWORDS=amd64 ppc ~sparc x86
+HOMEPAGE=http://vice-emu.sourceforge.net/
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libICE x11-libs/libSM x11-libs/libXt x11-libs/libXxf86vm x11-apps/xset Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( !gnome? ( x11-libs/libXaw ) ) alsa? ( media-libs/alsa-lib ) gnome? ( x11-libs/gtk+:2 x11-libs/vte:0 dev-libs/atk x11-libs/pango ) lame? ( media-sound/lame ) ffmpeg? ( virtual/ffmpeg ) ethernet? ( >=net-libs/libpcap-0.9.8 >=net-libs/libnet-1.1.2.1 ) nls? ( virtual/libintl ) png? ( media-libs/libpng:0 ) readline? ( sys-libs/readline ) sdl? ( media-libs/libsdl ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) xv? ( x11-libs/libXv ) dga? ( x11-libs/libXxf86dga ) xrandr? ( x11-libs/libXrandr ) games-misc/games-envd

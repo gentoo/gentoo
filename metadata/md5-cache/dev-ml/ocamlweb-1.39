@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	base	84d9f879f57a8316ff02be0373a3d6f9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=fd9712deefad4908b74c01b584b13ec9
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+EAPI=5
 DEPEND=>=dev-lang/ocaml-3.09:= virtual/latex-base dev-texlive/texlive-latexextra virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=O'Caml literate programming tool
-EAPI=5
-HOMEPAGE=http://www.lri.fr/~filliatr/ocamlweb/
-KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=LGPL-2
-RDEPEND=virtual/latex-base
-SLOT=0
 SRC_URI=http://www.lri.fr/~filliatr/ftp/ocamlweb/ocamlweb-1.39.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=fd9712deefad4908b74c01b584b13ec9
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://www.lri.fr/~filliatr/ocamlweb/
+RDEPEND=virtual/latex-base

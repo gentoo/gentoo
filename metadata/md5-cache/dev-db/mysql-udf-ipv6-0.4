@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=69388f537e7a918e07ebcca699e823aa
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare setup
+EAPI=4
 DEPEND=>=virtual/mysql-5.1 idn? ( net-dns/libidn )
 DESCRIPTION=IPv6 and internationalized domain (IDNA) functions for MySQL
-EAPI=4
-HOMEPAGE=http://labs.watchmouse.com/2009/10/extending-mysql-5-with-ipv6-functions/
-IUSE=idn
-KEYWORDS=~amd64 ~x86
 LICENSE=EUPL-1.1
-RDEPEND=>=virtual/mysql-5.1 idn? ( net-dns/libidn )
-SLOT=0
+IUSE=idn
 SRC_URI=https://bitbucket.org/watchmouse/mysql-udf-ipv6/get/01c591b05b79.tar.bz2 -> watchmouse-mysql-udf-ipv6-01c591b05b79.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=69388f537e7a918e07ebcca699e823aa
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://labs.watchmouse.com/2009/10/extending-mysql-5-with-ipv6-functions/
+RDEPEND=>=virtual/mysql-5.1 idn? ( net-dns/libidn )

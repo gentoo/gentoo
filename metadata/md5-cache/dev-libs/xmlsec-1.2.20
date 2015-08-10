@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f9331bc3e75aaf23955aeb87db04ba7d
+SLOT=0
 DEFINED_PHASES=configure install prepare test
+EAPI=5
 DEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 ) gnutls? ( >=net-libs/gnutls-2.8.0 ) nss? ( >=dev-libs/nspr-4.4.1 >=dev-libs/nss-3.9 ) openssl? ( >=dev-libs/openssl-0.9.7 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Command line tool for signing, verifying, encrypting and decrypting XML
-EAPI=5
-HOMEPAGE=http://www.aleksey.com/xmlsec
-IUSE=doc gcrypt gnutls nss +openssl static-libs
-KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
 LICENSE=MIT
-RDEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 ) gnutls? ( >=net-libs/gnutls-2.8.0 ) nss? ( >=dev-libs/nspr-4.4.1 >=dev-libs/nss-3.9 ) openssl? ( >=dev-libs/openssl-0.9.7 )
+IUSE=doc gcrypt gnutls nss +openssl static-libs
 REQUIRED_USE=|| ( gcrypt gnutls nss openssl ) gnutls? ( gcrypt )
-SLOT=0
 SRC_URI=http://www.aleksey.com/xmlsec/download/xmlsec1-1.2.20.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f9331bc3e75aaf23955aeb87db04ba7d
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
+HOMEPAGE=http://www.aleksey.com/xmlsec
+RDEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 ) gnutls? ( >=net-libs/gnutls-2.8.0 ) nss? ( >=dev-libs/nspr-4.4.1 >=dev-libs/nss-3.9 ) openssl? ( >=dev-libs/openssl-0.9.7 )

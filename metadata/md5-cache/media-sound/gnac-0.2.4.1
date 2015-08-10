@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	gnome2	56d268cae832738430a9de86a5765fa1	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e23ca546e058045365b5b179d5c2ec9d
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+EAPI=5
 DEPEND=x11-libs/gtk+:3 dev-libs/libunique:3 dev-libs/libxml2:2 libnotify? ( x11-libs/libnotify ) >=media-libs/gstreamer-0.10.31:0.10 >=media-libs/gst-plugins-base-0.10.31:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-meta:0.10[flac?,mp3?,wavpack?] aac? ( media-plugins/gst-plugins-faac:0.10 ) nls? ( virtual/libintl ) >=app-text/gnome-doc-utils-0.17.2 gnome-base/gnome-common virtual/pkgconfig nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=Audio converter for GNOME
-EAPI=5
-HOMEPAGE=http://gnac.sourceforge.net/
-IUSE=aac flac libnotify mp3 nls wavpack linguas_cs linguas_da linguas_de linguas_en_GB linguas_es linguas_gl linguas_fr linguas_he linguas_hu linguas_it linguas_lt linguas_nb linguas_pt_BR linguas_pl linguas_ro linguas_ru linguas_sl linguas_sv linguas_te linguas_tr linguas_zh_CN debug
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=x11-libs/gtk+:3 dev-libs/libunique:3 dev-libs/libxml2:2 libnotify? ( x11-libs/libnotify ) >=media-libs/gstreamer-0.10.31:0.10 >=media-libs/gst-plugins-base-0.10.31:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-meta:0.10[flac?,mp3?,wavpack?] aac? ( media-plugins/gst-plugins-faac:0.10 ) nls? ( virtual/libintl )
-SLOT=0
+IUSE=aac flac libnotify mp3 nls wavpack linguas_cs linguas_da linguas_de linguas_en_GB linguas_es linguas_gl linguas_fr linguas_he linguas_hu linguas_it linguas_lt linguas_nb linguas_pt_BR linguas_pl linguas_ro linguas_ru linguas_sl linguas_sv linguas_te linguas_tr linguas_zh_CN debug
 SRC_URI=mirror://sourceforge/gnac/gnac-0.2.4.1.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e23ca546e058045365b5b179d5c2ec9d
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://gnac.sourceforge.net/
+RDEPEND=x11-libs/gtk+:3 dev-libs/libunique:3 dev-libs/libxml2:2 libnotify? ( x11-libs/libnotify ) >=media-libs/gstreamer-0.10.31:0.10 >=media-libs/gst-plugins-base-0.10.31:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-meta:0.10[flac?,mp3?,wavpack?] aac? ( media-plugins/gst-plugins-faac:0.10 ) nls? ( virtual/libintl )

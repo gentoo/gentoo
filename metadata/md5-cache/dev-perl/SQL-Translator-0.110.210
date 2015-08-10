@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=e28396499890021579736550c3d84b69
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
 DEPEND=dev-perl/Carp-Clan >=dev-perl/DBI-1.540.0 virtual/perl-Digest-SHA >=dev-perl/File-ShareDir-1.0.0 >=dev-perl/List-MoreUtils-0.90.0 >=dev-perl/Moo-1.0.3 >=dev-perl/Package-Variant-1.1.1 >=dev-perl/Parse-RecDescent-1.967.9 >=dev-perl/Try-Tiny-0.40.0 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 >=dev-perl/JSON-2 >=dev-perl/XML-Writer-0.500.0 >=dev-perl/yaml-0.660.0 test? ( dev-perl/HTML-Parser dev-perl/Spreadsheet-ParseExcel >=dev-perl/Template-Toolkit-2.200.0 dev-perl/Test-Exception dev-perl/Test-Differences dev-perl/Test-Pod >=dev-perl/XML-LibXML-1.690.0 ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Manipulate structured data definitions (SQL and more)
-EAPI=5
-HOMEPAGE=http://search.cpan.org/dist/SQL-Translator/
-IUSE=test
-KEYWORDS=~amd64 ~x86 ~ppc-aix ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/Carp-Clan >=dev-perl/DBI-1.540.0 virtual/perl-Digest-SHA >=dev-perl/File-ShareDir-1.0.0 >=dev-perl/List-MoreUtils-0.90.0 >=dev-perl/Moo-1.0.3 >=dev-perl/Package-Variant-1.1.1 >=dev-perl/Parse-RecDescent-1.967.9 >=dev-perl/Try-Tiny-0.40.0 dev-lang/perl:=[-build(-)]
-SLOT=0
+IUSE=test
 SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/SQL-Translator-0.11021.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=e28396499890021579736550c3d84b69
+KEYWORDS=~amd64 ~x86 ~ppc-aix ~x86-solaris
+HOMEPAGE=http://search.cpan.org/dist/SQL-Translator/
+RDEPEND=dev-perl/Carp-Clan >=dev-perl/DBI-1.540.0 virtual/perl-Digest-SHA >=dev-perl/File-ShareDir-1.0.0 >=dev-perl/List-MoreUtils-0.90.0 >=dev-perl/Moo-1.0.3 >=dev-perl/Package-Variant-1.1.1 >=dev-perl/Parse-RecDescent-1.967.9 >=dev-perl/Try-Tiny-0.40.0 dev-lang/perl:=[-build(-)]

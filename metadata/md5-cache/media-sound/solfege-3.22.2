@@ -1,15 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=9b22f906724e55e9132ff27530273c82
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup
+EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-lang/swig sys-devel/gettext sys-apps/texinfo virtual/pkgconfig dev-libs/libxslt app-text/txt2man >=app-text/docbook-xsl-stylesheets-1.60
 DESCRIPTION=GNU Solfege is a program written to help you practice ear training
-EAPI=5
-HOMEPAGE=http://www.solfege.org
-IUSE=alsa oss python_targets_python2_7
-KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-3
-RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-python/pygtk-2.12 gnome-base/librsvg alsa? ( dev-python/pyalsa ) !oss? ( media-sound/timidity++ )
+IUSE=alsa oss python_targets_python2_7
 REQUIRED_USE=python_targets_python2_7
 RESTRICT=test
-SLOT=0
 SRC_URI=mirror://sourceforge/solfege/solfege-3.22.2.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9b22f906724e55e9132ff27530273c82
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://www.solfege.org
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-python/pygtk-2.12 gnome-base/librsvg alsa? ( dev-python/pyalsa ) !oss? ( media-sound/timidity++ )

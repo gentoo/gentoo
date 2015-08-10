@@ -1,14 +1,14 @@
+_eclasses_=multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=2cf793ea149ac8a1d890245be2a0cdb6
+SLOT=3
 DEFINED_PHASES=configure install prepare unpack
+EAPI=5
 DEPEND=dev-libs/glib:2 >=dev-libs/libxml2-2.0 >=media-libs/fontconfig-2 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXt >=x11-libs/pango-1.8[X] imlib? ( media-libs/imlib2 ) startup-notification? ( >=x11-libs/startup-notification-0.8 ) svg? ( gnome-base/librsvg:2 ) xdg? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sys-devel/gettext virtual/pkgconfig x11-proto/xextproto x11-proto/xf86vidmodeproto x11-proto/xineramaproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A standards compliant, fast, light-weight, extensible window manager
-EAPI=5
-HOMEPAGE=http://openbox.org/
-IUSE=branding debug imlib nls session startup-notification static-libs svg xdg python_targets_python2_7
-KEYWORDS=alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd ~arm-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=dev-libs/glib:2 >=dev-libs/libxml2-2.0 >=media-libs/fontconfig-2 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXt >=x11-libs/pango-1.8[X] imlib? ( media-libs/imlib2 ) startup-notification? ( >=x11-libs/startup-notification-0.8 ) svg? ( gnome-base/librsvg:2 ) xdg? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+IUSE=branding debug imlib nls session startup-notification static-libs svg xdg python_targets_python2_7
 REQUIRED_USE=xdg? ( || ( python_targets_python2_7 ) )
-SLOT=3
 SRC_URI=http://openbox.org/dist/openbox/openbox-3.5.2.tar.gz branding? ( http://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=2cf793ea149ac8a1d890245be2a0cdb6
+KEYWORDS=alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd ~arm-linux ~x86-linux
+HOMEPAGE=http://openbox.org/
+RDEPEND=dev-libs/glib:2 >=dev-libs/libxml2-2.0 >=media-libs/fontconfig-2 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXt >=x11-libs/pango-1.8[X] imlib? ( media-libs/imlib2 ) startup-notification? ( >=x11-libs/startup-notification-0.8 ) svg? ( gnome-base/librsvg:2 ) xdg? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )

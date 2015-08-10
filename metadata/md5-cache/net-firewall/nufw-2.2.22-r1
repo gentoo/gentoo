@@ -1,15 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	pam	5f80e6013406d68612a7493314e3777	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=8eb7ada91e577c9868f87833b44cf81c
+SLOT=0
 DEFINED_PHASES=configure install postinst prepare
+EAPI=5
 DEPEND=dev-libs/cyrus-sasl dev-libs/glib:2 dev-libs/libgcrypt:0 dev-python/ipy net-firewall/iptables net-libs/gnutls ldap? ( >=net-nds/openldap-2 ) mysql? ( virtual/mysql ) nfconntrack? ( net-libs/libnetfilter_conntrack ) nfqueue? ( net-libs/libnfnetlink net-libs/libnetfilter_queue ) pam? ( sys-libs/pam ) pam_nuauth? ( sys-libs/pam ) postgres? ( dev-db/postgresql[server] ) prelude? ( dev-libs/libprelude ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-libs/openssl
 DESCRIPTION=An enterprise grade authenticating firewall based on netfilter
-EAPI=5
-HOMEPAGE=http://www.nufw.org/
-IUSE=debug ldap mysql pam pam_nuauth plaintext postgres prelude unicode nfqueue nfconntrack static syslog test
-KEYWORDS=~amd64 x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/cyrus-sasl dev-libs/glib:2 dev-libs/libgcrypt:0 dev-python/ipy net-firewall/iptables net-libs/gnutls ldap? ( >=net-nds/openldap-2 ) mysql? ( virtual/mysql ) nfconntrack? ( net-libs/libnetfilter_conntrack ) nfqueue? ( net-libs/libnfnetlink net-libs/libnetfilter_queue ) pam? ( sys-libs/pam ) pam_nuauth? ( sys-libs/pam ) postgres? ( dev-db/postgresql[server] ) prelude? ( dev-libs/libprelude )
+IUSE=debug ldap mysql pam pam_nuauth plaintext postgres prelude unicode nfqueue nfconntrack static syslog test
 REQUIRED_USE=pam_nuauth? ( plaintext )
 RESTRICT=test
-SLOT=0
 SRC_URI=http://www.nufw.org/attachments/download/39/nufw-2.2.22.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8eb7ada91e577c9868f87833b44cf81c
+KEYWORDS=~amd64 x86
+HOMEPAGE=http://www.nufw.org/
+RDEPEND=dev-libs/cyrus-sasl dev-libs/glib:2 dev-libs/libgcrypt:0 dev-python/ipy net-firewall/iptables net-libs/gnutls ldap? ( >=net-nds/openldap-2 ) mysql? ( virtual/mysql ) nfconntrack? ( net-libs/libnetfilter_conntrack ) nfqueue? ( net-libs/libnfnetlink net-libs/libnetfilter_queue ) pam? ( sys-libs/pam ) pam_nuauth? ( sys-libs/pam ) postgres? ( dev-db/postgresql[server] ) prelude? ( dev-libs/libprelude )

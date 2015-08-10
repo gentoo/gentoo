@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2dbf9a8972eeed32a9c4a34f592c70cb
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test
+EAPI=5
 DEPEND=dev-qt/qtgui:4 dev-util/ninja >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Fast and usable calculator for power users
-EAPI=5
-HOMEPAGE=http://speedcrunch.org/
-IUSE=doc linguas_ar_JO linguas_ca_ES linguas_cs_CZ linguas_de_DE linguas_en_GB linguas_en_US linguas_es_AR linguas_es_ES linguas_et_EE linguas_eu_ES linguas_fi_FI linguas_fr_FR linguas_he_IL linguas_hu_HU linguas_id_ID linguas_it_IT linguas_ja_JP linguas_ko_KR linguas_lv_LV linguas_nb_NO linguas_nl_NL linguas_pl_PL linguas_pt_BR linguas_pt_PT linguas_ro_RO linguas_ru_RU linguas_sv_SE linguas_tr_TR linguas_uz_UZ linguas_vi_VN linguas_zh_CN
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=dev-qt/qtgui:4
-SLOT=0
+IUSE=doc linguas_ar_JO linguas_ca_ES linguas_cs_CZ linguas_de_DE linguas_en_GB linguas_en_US linguas_es_AR linguas_es_ES linguas_et_EE linguas_eu_ES linguas_fi_FI linguas_fr_FR linguas_he_IL linguas_hu_HU linguas_id_ID linguas_it_IT linguas_ja_JP linguas_ko_KR linguas_lv_LV linguas_nb_NO linguas_nl_NL linguas_pl_PL linguas_pt_BR linguas_pt_PT linguas_ro_RO linguas_ru_RU linguas_sv_SE linguas_tr_TR linguas_uz_UZ linguas_vi_VN linguas_zh_CN
 SRC_URI=https://github.com/speedcrunch/SpeedCrunch/archive/0.11.tar.gz -> speedcrunch-0.11.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=2dbf9a8972eeed32a9c4a34f592c70cb
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://speedcrunch.org/
+RDEPEND=dev-qt/qtgui:4

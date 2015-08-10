@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	base	84d9f879f57a8316ff02be0373a3d6f9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c8b58d8e38d0f755baee36375eed9fac
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+EAPI=5
 DEPEND=>=sys-libs/ncurses-5.7-r7 magic? ( sys-apps/file ) gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libX11 )
 DESCRIPTION=Console file manager with vi(m)-like keybindings
-EAPI=5
-HOMEPAGE=http://vifm.info/
-IUSE=X developer +extended-keys gtk +magic vim vim-syntax
-KEYWORDS=amd64 ppc ~s390 x86
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/ncurses-5.7-r7 magic? ( sys-apps/file ) gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libX11 ) vim? ( || ( app-editors/vim app-editors/gvim ) ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
-SLOT=0
+IUSE=X developer +extended-keys gtk +magic vim vim-syntax
 SRC_URI=mirror://sourceforge/vifm/vifm-0.7.7.tar.bz2
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf
-_md5_=c8b58d8e38d0f755baee36375eed9fac
+KEYWORDS=amd64 ppc ~s390 x86
+HOMEPAGE=http://vifm.info/
+RDEPEND=>=sys-libs/ncurses-5.7-r7 magic? ( sys-apps/file ) gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libX11 ) vim? ( || ( app-editors/vim app-editors/gvim ) ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )

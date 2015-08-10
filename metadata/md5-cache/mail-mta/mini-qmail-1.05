@@ -1,11 +1,12 @@
+_eclasses_=fixheadtails	2f44773656577fe2653bacc8bdcb2174	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4ef5b307e9346fcc29876c67059236e0
+SLOT=0
 DEFINED_PHASES=compile install postinst setup unpack
+EAPI=0
 DEPEND=sys-apps/groff >=sys-apps/sed-4
 DESCRIPTION=a small null client that forwards mail via QMQP to a full qmail server
-HOMEPAGE=http://www.qmail.org/ http://cr.yp.to/qmail/mini.html
-KEYWORDS=amd64 arm hppa ~mips ppc x86
 LICENSE=public-domain
-RDEPEND=!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
-SLOT=0
 SRC_URI=mirror://qmail/netqmail-1.05.tar.gz http://www.din.or.jp/~ushijima/mini-qmail-kit/mini-qmail-kit-0.52.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fixheadtails	2f44773656577fe2653bacc8bdcb2174	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=4ef5b307e9346fcc29876c67059236e0
+KEYWORDS=amd64 arm hppa ~mips ppc x86
+HOMEPAGE=http://www.qmail.org/ http://cr.yp.to/qmail/mini.html
+RDEPEND=!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	unpacker	1ca344bd9b922a7f8084a3fa02933b79	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ed3a3d3be868a69288b586bb00d7966a
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
 DEPEND=app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip
 DESCRIPTION=Top-down adventure game set in a gritty futuristic/dystopian city
-EAPI=5
-HOMEPAGE=http://wiki.scummvm.org/index.php/Dreamweb
-IUSE=doc linguas_de linguas_en linguas_en_GB linguas_en_US linguas_es linguas_fr linguas_it
-KEYWORDS=amd64 x86
 LICENSE=Dreamweb
-RDEPEND=>=games-engines/scummvm-1.7[flac] games-misc/games-envd
-SLOT=0
+IUSE=doc linguas_de linguas_en linguas_en_GB linguas_en_US linguas_es linguas_fr linguas_it
 SRC_URI=doc? ( mirror://sourceforge/scummvm/dreamweb-manuals-en-highres.zip ) linguas_de? ( mirror://sourceforge/scummvm/dreamweb-cd-de-1.1.zip ) linguas_en? ( mirror://sourceforge/scummvm/dreamweb-cd-us-1.1.zip ) linguas_en_GB? ( mirror://sourceforge/scummvm/dreamweb-cd-uk-1.1.zip ) linguas_en_US? ( mirror://sourceforge/scummvm/dreamweb-cd-us-1.1.zip ) linguas_es? ( mirror://sourceforge/scummvm/dreamweb-cd-es-1.1.zip ) linguas_fr? ( mirror://sourceforge/scummvm/dreamweb-cd-fr-1.1.zip ) linguas_it? ( mirror://sourceforge/scummvm/dreamweb-cd-it-1.1.zip ) !linguas_de? ( !linguas_en? ( !linguas_en_GB? ( !linguas_en_US? ( !linguas_es? ( !linguas_fr? ( !linguas_it? ( mirror://sourceforge/scummvm/dreamweb-cd-us-1.1.zip ) ) ) ) ) ) ) http://www.scummvm.org/images/cat-dreamweb.png
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9e5e9ee0b325a8a10823f9b385ca2036	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=ed3a3d3be868a69288b586bb00d7966a
+KEYWORDS=amd64 x86
+HOMEPAGE=http://wiki.scummvm.org/index.php/Dreamweb
+RDEPEND=>=games-engines/scummvm-1.7[flac] games-misc/games-envd

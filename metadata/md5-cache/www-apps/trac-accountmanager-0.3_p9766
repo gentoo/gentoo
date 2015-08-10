@@ -1,12 +1,12 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	distutils	def8c8eb435ec28fd9315114640f6c84
+_md5_=1b7fac83e2eee837567984be6b55d6a9
+SLOT=0
 DEFINED_PHASES=compile install postinst postrm prepare
+EAPI=3
 DEPEND=dev-python/setuptools app-arch/unzip =dev-lang/python-2*
 DESCRIPTION=A Trac plugin for manage user accounts
-EAPI=3
-HOMEPAGE=http://trac-hacks.org/wiki/AccountManagerPlugin
-KEYWORDS=~amd64 ~x86
 LICENSE=BEER-WARE
-RDEPEND=>=www-apps/trac-0.12 =dev-lang/python-2*
-SLOT=0
 SRC_URI=http://trac-hacks.org/changeset/9766/accountmanagerplugin/trunk?old_path=/&filename=accountmanagerplugin/trunk&format=zip -> trac-accountmanager-0.3_p9766.zip
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=1b7fac83e2eee837567984be6b55d6a9
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://trac-hacks.org/wiki/AccountManagerPlugin
+RDEPEND=>=www-apps/trac-0.12 =dev-lang/python-2*

@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=259a02b233fc72184a19c8c1287ebe61
+SLOT=2.27
 DEFINED_PHASES=compile install postinst prepare test
+EAPI=2
 DEPEND=>=dev-lang/ocaml-3.10.2[ocamlopt?] gtk? ( >=dev-ml/lablgtk-2.2 )
 DESCRIPTION=Two-way cross-platform file synchronizer
-EAPI=2
-HOMEPAGE=http://www.cis.upenn.edu/~bcpierce/unison/
-IUSE=gtk doc static debug threads +ocamlopt
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux
 LICENSE=GPL-2
+IUSE=gtk doc static debug threads +ocamlopt
 PDEPEND=gtk? ( media-fonts/font-schumacher-misc )
-RDEPEND=gtk? ( >=dev-ml/lablgtk-2.2 || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) ) !net-misc/unison:0 app-eselect/eselect-unison
-SLOT=2.27
 SRC_URI=http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.27.157/unison-2.27.157.tar.gz doc? ( http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.27.157/unison-2.27.157-manual.pdf http://www.cis.upenn.edu/~bcpierce/unison/download/releases/unison-2.27.157/unison-2.27.157-manual.html )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=259a02b233fc72184a19c8c1287ebe61
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux
+HOMEPAGE=http://www.cis.upenn.edu/~bcpierce/unison/
+RDEPEND=gtk? ( >=dev-ml/lablgtk-2.2 || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) ) !net-misc/unison:0 app-eselect/eselect-unison

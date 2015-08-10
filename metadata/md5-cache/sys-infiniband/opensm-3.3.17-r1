@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	openib	88d3cf78b98b3ff627670687fcb1c7e4	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	rpm	514a1840ee796656311a029ea952faa9	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=95baf4b4788d3be2eb2425ed9bb6f2aa
+SLOT=3.12
 DEFINED_PHASES=configure install postinst prepare unpack
+EAPI=5
 DEPEND=sys-infiniband/libibmad:3.12 sys-infiniband/libibumad:3.12 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=OpenSM - InfiniBand Subnet Manager and Administration for OpenIB
-EAPI=5
-HOMEPAGE=http://www.openfabrics.org/
-IUSE=tools
-KEYWORDS=~amd64 ~x86 ~amd64-linux
 LICENSE=|| ( GPL-2 BSD-2 )
-RDEPEND=sys-infiniband/libibmad:3.12 sys-infiniband/libibumad:3.12 tools? ( net-misc/iputils net-misc/openssh ) !sys-infiniband/opensm:0 !sys-infiniband/opensm:1.5.4.1 !sys-infiniband/opensm:3.5
-SLOT=3.12
+IUSE=tools
 SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	openib	88d3cf78b98b3ff627670687fcb1c7e4	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=95baf4b4788d3be2eb2425ed9bb6f2aa
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+HOMEPAGE=http://www.openfabrics.org/
+RDEPEND=sys-infiniband/libibmad:3.12 sys-infiniband/libibumad:3.12 tools? ( net-misc/iputils net-misc/openssh ) !sys-infiniband/opensm:0 !sys-infiniband/opensm:1.5.4.1 !sys-infiniband/opensm:3.5

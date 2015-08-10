@@ -1,6 +1,8 @@
+_eclasses_=
+_md5_=5d09e461187082dabede332bd5c6e8b7
+SLOT=0
 DEFINED_PHASES=-
+EAPI=0
 DESCRIPTION=Virtual for OpenGL utility library
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 RDEPEND=|| ( media-libs/glu <media-libs/mesa-9 media-libs/opengl-apple )
-SLOT=0
-_md5_=5d09e461187082dabede332bd5c6e8b7

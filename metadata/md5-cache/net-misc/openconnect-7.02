@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=766f0e73e822f39bcba0ab7dcc047b23
+SLOT=0/5
 DEFINED_PHASES=configure install postinst setup
+EAPI=5
 DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) virtual/pkgconfig doc? ( || ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) sys-apps/groff ) java? ( virtual/jdk ) nls? ( sys-devel/gettext )
 DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
-EAPI=5
-HOMEPAGE=http://www.infradead.org/openconnect.html
-IUSE=doc +gnutls gssapi java libproxy nls static-libs linguas_ar linguas_cs linguas_de linguas_el linguas_en_GB linguas_en_US linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_id linguas_lt linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_sk linguas_sl linguas_tg linguas_ug linguas_uk linguas_zh_CN linguas_zh_TW
-KEYWORDS=~amd64 arm ~arm64 ~ppc64 ~x86
 LICENSE=LGPL-2.1 GPL-2
-RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) sys-apps/iproute2 java? ( virtual/jre )
-SLOT=0/5
+IUSE=doc +gnutls gssapi java libproxy nls static-libs linguas_ar linguas_cs linguas_de linguas_el linguas_en_GB linguas_en_US linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_id linguas_lt linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_sk linguas_sl linguas_tg linguas_ug linguas_uk linguas_zh_CN linguas_zh_TW
 SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-7.02.tar.gz ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20140806.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=766f0e73e822f39bcba0ab7dcc047b23
+KEYWORDS=~amd64 arm ~arm64 ~ppc64 ~x86
+HOMEPAGE=http://www.infradead.org/openconnect.html
+RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) sys-apps/iproute2 java? ( virtual/jre )

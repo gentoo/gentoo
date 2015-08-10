@@ -1,11 +1,12 @@
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+_md5_=3a96351741e7023979fc4e9fa4a340d
+SLOT=0
 DEFINED_PHASES=install postinst postrm
+EAPI=0
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: exheres format highlighting
-HOMEPAGE=http://www.exherbo.org/
-KEYWORDS=~amd64 ~x86
 LICENSE=vim
-RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
-SLOT=0
 SRC_URI=http://dev.exherbo.org/~ahf/pub/software/releases/exheres-syntax/exheres-syntax-20080908.tar.bz2
-_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
-_md5_=03a96351741e7023979fc4e9fa4a340d
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.exherbo.org/
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )

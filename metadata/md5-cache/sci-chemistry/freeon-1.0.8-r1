@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=5ec70bbf53b93b72082448d3af2fec26
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=sci-libs/hdf5 virtual/blas virtual/lapack || ( >=dev-lang/python-2.7.5-r2:2.7 dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
 DESCRIPTION=An experimental suite of programs for linear scaling quantum chemistry
-EAPI=5
-HOMEPAGE=http://www.freeon.org
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=sci-libs/hdf5 virtual/blas virtual/lapack virtual/fortran
-SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/freeon/freeon-1.0.8.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5ec70bbf53b93b72082448d3af2fec26
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.freeon.org
+RDEPEND=sci-libs/hdf5 virtual/blas virtual/lapack virtual/fortran

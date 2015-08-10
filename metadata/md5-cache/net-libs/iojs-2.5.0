@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=e40c6bbaa77cb41ffb22b22b13df5b58
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare pretend setup test
+EAPI=5
 DEPEND=icu? ( dev-libs/icu ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=net-libs/http-parser-2.5 >=dev-libs/libuv-1.6.1 >=dev-libs/openssl-1.0.2d[-bindist] !!net-libs/nodejs
 DESCRIPTION=An npm compatible platform originally based on node.js
-EAPI=5
-HOMEPAGE=http://iojs.org/
-IUSE=debug icu +npm snapshot +ssl python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~x86 ~x64-macos
 LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
-RDEPEND=icu? ( dev-libs/icu ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=net-libs/http-parser-2.5 >=dev-libs/libuv-1.6.1 >=dev-libs/openssl-1.0.2d[-bindist]
+IUSE=debug icu +npm snapshot +ssl python_targets_python2_7
 REQUIRED_USE=python_targets_python2_7
-SLOT=0
 SRC_URI=http://iojs.org/dist/v2.5.0/iojs-v2.5.0.tar.xz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e40c6bbaa77cb41ffb22b22b13df5b58
+KEYWORDS=~amd64 ~arm ~x86 ~x64-macos
+HOMEPAGE=http://iojs.org/
+RDEPEND=icu? ( dev-libs/icu ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=net-libs/http-parser-2.5 >=dev-libs/libuv-1.6.1 >=dev-libs/openssl-1.0.2d[-bindist]

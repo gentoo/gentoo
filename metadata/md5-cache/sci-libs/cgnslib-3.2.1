@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9def779327816782e89022759ca7bc5d
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=hdf5? ( >=sci-libs/hdf5-1.8[mpi=] ) szip? ( sci-libs/szip ) zlib? ( sys-libs/zlib ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) fortran? ( virtual/fortran )
 DESCRIPTION=The CFD General Notation System (CGNS) is a standard for CFD data
-EAPI=5
-HOMEPAGE=http://www.cgns.org/
-IUSE=fortran hdf5 legacy mpi szip zlib
-KEYWORDS=~amd64 ~x86
 LICENSE=ZLIB
-RDEPEND=hdf5? ( >=sci-libs/hdf5-1.8[mpi=] ) szip? ( sci-libs/szip ) zlib? ( sys-libs/zlib ) fortran? ( virtual/fortran )
-SLOT=0
+IUSE=fortran hdf5 legacy mpi szip zlib
 SRC_URI=mirror://sourceforge/project/cgns/cgnslib_3.2/cgnslib_3.2.1.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9def779327816782e89022759ca7bc5d
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.cgns.org/
+RDEPEND=hdf5? ( >=sci-libs/hdf5-1.8[mpi=] ) szip? ( sci-libs/szip ) zlib? ( sys-libs/zlib ) fortran? ( virtual/fortran )

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=84a3ca2707069be8ac4a7d08f9081ead
+SLOT=0
 DEFINED_PHASES=compile configure install prepare
+EAPI=5
 DEPEND=>=dev-libs/libxml2-2.5.6 >=sys-libs/ncurses-5.3[unicode?] dev-libs/openssl virtual/pkgconfig
 DESCRIPTION=Snownews, a text-mode RSS/RDF newsreader
-EAPI=5
-HOMEPAGE=http://snownews.kcore.de/
-IUSE=unicode
-KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/libxml2-2.5.6 >=sys-libs/ncurses-5.3[unicode?] dev-libs/openssl dev-perl/XML-LibXML dev-perl/libwww-perl
-SLOT=0
+IUSE=unicode
 SRC_URI=http://home.kcore.de/~kiza/software/snownews/download/snownews-1.5.12.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=84a3ca2707069be8ac4a7d08f9081ead
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+HOMEPAGE=http://snownews.kcore.de/
+RDEPEND=>=dev-libs/libxml2-2.5.6 >=sys-libs/ncurses-5.3[unicode?] dev-libs/openssl dev-perl/XML-LibXML dev-perl/libwww-perl

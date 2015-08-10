@@ -1,13 +1,13 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=82051a96bacba28c54a9b3a630dab90e
+SLOT=0
 DEFINED_PHASES=configure install postinst postrm prepare setup
+EAPI=4
 DEPEND=media-libs/libogg media-libs/libpng virtual/pkgconfig sys-devel/flex sys-devel/bison doc? ( app-doc/doxygen ) wxwidgets? ( =dev-lang/python-2* )
 DESCRIPTION=Codec for karaoke and text encapsulation for Ogg
-EAPI=4
-HOMEPAGE=http://code.google.com/p/libkate/
-IUSE=debug doc wxwidgets
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=BSD
-RDEPEND=media-libs/libogg media-libs/libpng wxwidgets? ( =dev-python/wxpython-2.8* media-libs/liboggz ) wxwidgets? ( =dev-lang/python-2* )
-SLOT=0
+IUSE=debug doc wxwidgets
 SRC_URI=http://libkate.googlecode.com/files/libkate-0.3.8.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=82051a96bacba28c54a9b3a630dab90e
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+HOMEPAGE=http://code.google.com/p/libkate/
+RDEPEND=media-libs/libogg media-libs/libpng wxwidgets? ( =dev-python/wxpython-2.8* media-libs/liboggz ) wxwidgets? ( =dev-lang/python-2* )

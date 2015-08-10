@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	base	84d9f879f57a8316ff02be0373a3d6f9	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=59f19f1d240926f77c3bcb06611d8eab
+SLOT=0
 DEFINED_PHASES=compile configure install preinst prepare unpack
+EAPI=5
 DEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41 dev-libs/check >=sys-devel/gcc-4.4 >=dev-cpp/asio-1.4.8[ssl?] dev-util/scons
 DESCRIPTION=Synchronous multi-master replication engine that provides its service through wsrep API
-EAPI=5
-HOMEPAGE=http://www.codership.org/
-IUSE=garbd ssl test
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 BSD
-RDEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41 garbd? ( || ( net-analyzer/netcat net-analyzer/netcat6 net-analyzer/gnu-netcat net-analyzer/openbsd-netcat ) )
-SLOT=0
+IUSE=garbd ssl test
 SRC_URI=https://launchpad.net/galera/3.x/25.3.5/+download/galera-25.3.5-src.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=59f19f1d240926f77c3bcb06611d8eab
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.codership.org/
+RDEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41 garbd? ( || ( net-analyzer/netcat net-analyzer/netcat6 net-analyzer/gnu-netcat net-analyzer/openbsd-netcat ) )

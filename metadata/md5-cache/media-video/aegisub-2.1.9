@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c86debd5a613c19ad1bc546e8aa230b6
+SLOT=0
 DEFINED_PHASES=configure prepare
+EAPI=4
 DEPEND=x11-libs/wxGTK:2.8[X,opengl,debug?] virtual/opengl virtual/glu >=media-libs/libass-0.9.11[fontconfig] virtual/libiconv >=media-libs/fontconfig-2.4.2 media-libs/freetype:2 alsa? ( media-libs/alsa-lib ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) openal? ( media-libs/openal ) lua? ( >=dev-lang/lua-5.1.1 ) spell? ( >=app-text/hunspell-1.2 ) ffmpeg? ( >=media-libs/ffmpegsource-2.17 ) dev-util/intltool virtual/pkgconfig media-gfx/imagemagick !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Advanced SSA/ASS subtitle editor
-EAPI=4
-HOMEPAGE=http://www.aegisub.org/
-IUSE=alsa debug +ffmpeg lua nls openal oss portaudio pulseaudio spell
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=x11-libs/wxGTK:2.8[X,opengl,debug?] virtual/opengl virtual/glu >=media-libs/libass-0.9.11[fontconfig] virtual/libiconv >=media-libs/fontconfig-2.4.2 media-libs/freetype:2 alsa? ( media-libs/alsa-lib ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) openal? ( media-libs/openal ) lua? ( >=dev-lang/lua-5.1.1 ) spell? ( >=app-text/hunspell-1.2 ) ffmpeg? ( >=media-libs/ffmpegsource-2.17 )
-SLOT=0
+IUSE=alsa debug +ffmpeg lua nls openal oss portaudio pulseaudio spell
 SRC_URI=http://rion-overlay.googlecode.com/files/aegisub-2.1.9.tar.xz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e
-_md5_=c86debd5a613c19ad1bc546e8aa230b6
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.aegisub.org/
+RDEPEND=x11-libs/wxGTK:2.8[X,opengl,debug?] virtual/opengl virtual/glu >=media-libs/libass-0.9.11[fontconfig] virtual/libiconv >=media-libs/fontconfig-2.4.2 media-libs/freetype:2 alsa? ( media-libs/alsa-lib ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) openal? ( media-libs/openal ) lua? ( >=dev-lang/lua-5.1.1 ) spell? ( >=app-text/hunspell-1.2 ) ffmpeg? ( >=media-libs/ffmpegsource-2.17 )

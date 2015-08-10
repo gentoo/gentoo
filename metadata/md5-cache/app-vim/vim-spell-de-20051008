@@ -1,11 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	vim-spell	d51083e5d2b7bf16ad5c237ef037d62d
+_md5_=8839539ee27ffe7f639b1f0b9e9d89
+SLOT=0
 DEFINED_PHASES=install postinst
+EAPI=0
 DEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )
 DESCRIPTION=vim spell files: German (de)
-HOMEPAGE=http://www.vim.org/
-KEYWORDS=amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2
-RDEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )
-SLOT=0
 SRC_URI=mirror://gentoo/vim-spell-de-20051008.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vim-spell	d51083e5d2b7bf16ad5c237ef037d62d
-_md5_=008839539ee27ffe7f639b1f0b9e9d89
+KEYWORDS=amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+HOMEPAGE=http://www.vim.org/
+RDEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )

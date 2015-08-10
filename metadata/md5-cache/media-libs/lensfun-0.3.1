@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=2ebf74127d47e03d92dcf4d53eb3dd29
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
 DEPEND=>=dev-libs/glib-2.28 media-libs/libpng:0= sys-libs/zlib:= doc? ( app-doc/doxygen dev-python/docutils ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=lensfun: A library for rectifying and simulating photographic lens distortions
-EAPI=5
-HOMEPAGE=http://lensfun.sourceforge.net/
-IUSE=doc cpu_flags_x86_sse cpu_flags_x86_sse2 test python_targets_python2_7
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-3 CC-BY-SA-3.0
-RDEPEND=>=dev-libs/glib-2.28 media-libs/libpng:0= sys-libs/zlib:=
+IUSE=doc cpu_flags_x86_sse cpu_flags_x86_sse2 test python_targets_python2_7
 REQUIRED_USE=python_targets_python2_7
-SLOT=0
 SRC_URI=mirror://sourceforge/lensfun/lensfun-0.3.1.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=2ebf74127d47e03d92dcf4d53eb3dd29
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux
+HOMEPAGE=http://lensfun.sourceforge.net/
+RDEPEND=>=dev-libs/glib-2.28 media-libs/libpng:0= sys-libs/zlib:=

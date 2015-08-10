@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	cuda	5e306be76ac11f3468389ef2e4da10	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=66b753c705a560a9bfa32dbe67f34b5b
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup
+EAPI=5
 DEPEND=>=dev-lang/tk-8.6.1 dev-lang/perl dev-libs/expat dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sci-libs/netcdf virtual/opengl >=x11-libs/fltk-1.1.10-r2:1 x11-libs/libXft x11-libs/libXi cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= ) gromacs? ( >=sci-chemistry/gromacs-5.0.4-r1[tng] ) sqlite? ( dev-db/sqlite:3= ) tachyon? ( >=media-gfx/tachyon-0.99_beta6 ) xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig dev-lang/swig
 DESCRIPTION=Visual Molecular Dynamics
-EAPI=5
-HOMEPAGE=http://www.ks.uiuc.edu/Research/vmd/
-IUSE=cuda gromacs msms povray sqlite tachyon xinerama python_targets_python2_7
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=vmd
-RDEPEND=>=dev-lang/tk-8.6.1 dev-lang/perl dev-libs/expat dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sci-libs/netcdf virtual/opengl >=x11-libs/fltk-1.1.10-r2:1 x11-libs/libXft x11-libs/libXi cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= ) gromacs? ( >=sci-chemistry/gromacs-5.0.4-r1[tng] ) sqlite? ( dev-db/sqlite:3= ) tachyon? ( >=media-gfx/tachyon-0.99_beta6 ) xinerama? ( x11-libs/libXinerama ) sci-biology/stride sci-chemistry/surf x11-terms/xterm msms? ( sci-chemistry/msms-bin ) povray? ( media-gfx/povray )
+IUSE=cuda gromacs msms povray sqlite tachyon xinerama python_targets_python2_7
 RESTRICT=fetch
-SLOT=0
 SRC_URI=http://dev.gentoo.org/~jlec/distfiles/vmd-1.9.2-gentoo-patches.tar.xz vmd-1.9.2.src.tar.gz
-_eclasses_=cuda	005e306be76ac11f3468389ef2e4da10	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=66b753c705a560a9bfa32dbe67f34b5b
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.ks.uiuc.edu/Research/vmd/
+RDEPEND=>=dev-lang/tk-8.6.1 dev-lang/perl dev-libs/expat dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sci-libs/netcdf virtual/opengl >=x11-libs/fltk-1.1.10-r2:1 x11-libs/libXft x11-libs/libXi cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= ) gromacs? ( >=sci-chemistry/gromacs-5.0.4-r1[tng] ) sqlite? ( dev-db/sqlite:3= ) tachyon? ( >=media-gfx/tachyon-0.99_beta6 ) xinerama? ( x11-libs/libXinerama ) sci-biology/stride sci-chemistry/surf x11-terms/xterm msms? ( sci-chemistry/msms-bin ) povray? ( media-gfx/povray )

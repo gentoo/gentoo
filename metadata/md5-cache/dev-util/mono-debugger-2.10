@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	mono	3fb22ec265e021c7294a29e720f3d5f7	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	go-mono	fdf799ccb71e4bdd1e25fb365343d74f	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4e6d553e608f7d079d903881ada45971
+SLOT=0
 DEFINED_PHASES=compile configure install prepare unpack
+EAPI=4
 DEPEND=!!=dev-lang/mono-2.2 sys-devel/binutils dev-libs/glib:2 !dev-lang/mercury >=dev-lang/mono-2.10 virtual/pkgconfig userland_GNU? ( >=sys-apps/findutils-4.4.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Debugger for .NET managed and unmanaged applications
-EAPI=4
-HOMEPAGE=http://www.mono-project.com/
-KEYWORDS=-* amd64 x86
 LICENSE=GPL-2 MIT
-RDEPEND=!!=dev-lang/mono-2.2 sys-devel/binutils dev-libs/glib:2 >=dev-lang/mono-2.10
 RESTRICT=test
-SLOT=0
 SRC_URI=http://download.mono-project.com/sources/mono-debugger/mono-debugger-2.10.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	go-mono	fdf799ccb71e4bdd1e25fb365343d74f	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=4e6d553e608f7d079d903881ada45971
+KEYWORDS=-* amd64 x86
+HOMEPAGE=http://www.mono-project.com/
+RDEPEND=!!=dev-lang/mono-2.2 sys-devel/binutils dev-libs/glib:2 >=dev-lang/mono-2.10

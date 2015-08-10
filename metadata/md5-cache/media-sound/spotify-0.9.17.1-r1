@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	pax-utils	a472fe09c2264598d61d4887809e6016	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	unpacker	1ca344bd9b922a7f8084a3fa02933b79	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4e581e7cc7000f8c195aef1182c11e5c
+SLOT=0
 DEFINED_PHASES=install postinst postrm preinst prepare unpack
+EAPI=5
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=Spotify is a social music platform
-EAPI=5
-HOMEPAGE=https://www.spotify.com/ch-de/download/previews/
-IUSE=gnome pax_kernel pulseaudio
-KEYWORDS=~amd64
 LICENSE=Spotify
-RDEPEND=x11-libs/libxcb x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXext x11-libs/libXinerama x11-libs/libXdmcp x11-libs/libXScrnSaver x11-libs/libXrandr x11-libs/libXrender dev-qt/qtcore:4[glib] dev-qt/qtdbus:4 dev-qt/qtgui:4[glib] dev-qt/qtwebkit:4 x11-misc/xdg-utils media-libs/alsa-lib media-libs/fontconfig media-libs/freetype dev-libs/openssl:0 dev-libs/glib:2 || ( dev-libs/libgcrypt:11/11 dev-libs/libgcrypt:0/11 ) media-libs/libpng:0 dev-db/sqlite:3 sys-libs/zlib app-arch/bzip2 sys-apps/dbus[X] x11-libs/pango[X] sys-apps/util-linux dev-libs/expat >=dev-libs/nspr-4.9 gnome-base/gconf:2 x11-libs/gtk+:2 dev-libs/nss dev-libs/glib:2 net-print/cups virtual/udev pulseaudio? ( >=media-sound/pulseaudio-0.9.21 ) gnome? ( gnome-extra/gnome-integration-spotify )
+IUSE=gnome pax_kernel pulseaudio
 RESTRICT=mirror strip
-SLOT=0
 SRC_URI=amd64? ( http://repository.spotify.com/pool/non-free/s/spotify/spotify-client_0.9.17.1.g9b85d43.7-1_amd64.deb )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=4e581e7cc7000f8c195aef1182c11e5c
+KEYWORDS=~amd64
+HOMEPAGE=https://www.spotify.com/ch-de/download/previews/
+RDEPEND=x11-libs/libxcb x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXext x11-libs/libXinerama x11-libs/libXdmcp x11-libs/libXScrnSaver x11-libs/libXrandr x11-libs/libXrender dev-qt/qtcore:4[glib] dev-qt/qtdbus:4 dev-qt/qtgui:4[glib] dev-qt/qtwebkit:4 x11-misc/xdg-utils media-libs/alsa-lib media-libs/fontconfig media-libs/freetype dev-libs/openssl:0 dev-libs/glib:2 || ( dev-libs/libgcrypt:11/11 dev-libs/libgcrypt:0/11 ) media-libs/libpng:0 dev-db/sqlite:3 sys-libs/zlib app-arch/bzip2 sys-apps/dbus[X] x11-libs/pango[X] sys-apps/util-linux dev-libs/expat >=dev-libs/nspr-4.9 gnome-base/gconf:2 x11-libs/gtk+:2 dev-libs/nss dev-libs/glib:2 net-print/cups virtual/udev pulseaudio? ( >=media-sound/pulseaudio-0.9.21 ) gnome? ( gnome-extra/gnome-integration-spotify )

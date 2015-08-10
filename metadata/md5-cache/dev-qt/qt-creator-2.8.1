@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=787a3130efd3990989da45a79c42033c
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
 DEPEND==dev-libs/botan-1.10*[threads] >=dev-qt/designer-4.8.5:4 >=dev-qt/qtcore-4.8.5:4[ssl] >=dev-qt/qtdeclarative-4.8.5:4[accessibility] >=dev-qt/qtgui-4.8.5:4[accessibility] >=dev-qt/qthelp-4.8.5:4[doc?] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4 >=dev-qt/qtsvg-4.8.5:4[accessibility] virtual/pkgconfig test? ( >=dev-qt/qttest-4.8.5:4 )
 DESCRIPTION=Lightweight IDE for C++/QML development centering around Qt
-EAPI=5
-HOMEPAGE=http://doc.qt.io/qtcreator/
-IUSE=debug doc examples test android autotools bazaar clearcase cmake cvs fakevim git madde mercurial perforce qnx subversion valgrind linguas_cs linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_pl linguas_ru linguas_sl linguas_uk linguas_zh_CN linguas_zh_TW
-KEYWORDS=amd64 ~arm ppc x86
 LICENSE=LGPL-2.1
+IUSE=debug doc examples test android autotools bazaar clearcase cmake cvs fakevim git madde mercurial perforce qnx subversion valgrind linguas_cs linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_pl linguas_ru linguas_sl linguas_uk linguas_zh_CN linguas_zh_TW
 PDEPEND=autotools? ( sys-devel/autoconf ) bazaar? ( dev-vcs/bzr ) cmake? ( dev-util/cmake ) cvs? ( dev-vcs/cvs ) git? ( dev-vcs/git ) mercurial? ( dev-vcs/mercurial ) subversion? ( dev-vcs/subversion ) valgrind? ( dev-util/valgrind )
-RDEPEND==dev-libs/botan-1.10*[threads] >=dev-qt/designer-4.8.5:4 >=dev-qt/qtcore-4.8.5:4[ssl] >=dev-qt/qtdeclarative-4.8.5:4[accessibility] >=dev-qt/qtgui-4.8.5:4[accessibility] >=dev-qt/qthelp-4.8.5:4[doc?] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4 >=dev-qt/qtsvg-4.8.5:4[accessibility] >=sys-devel/gdb-7.2[python] examples? ( >=dev-qt/qtdemo-4.8.5:4 )
-SLOT=0
 SRC_URI=http://download.qt.io/official_releases/qtcreator/2.8/2.8.1/qt-creator-2.8.1-src.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=787a3130efd3990989da45a79c42033c
+KEYWORDS=amd64 ~arm ppc x86
+HOMEPAGE=http://doc.qt.io/qtcreator/
+RDEPEND==dev-libs/botan-1.10*[threads] >=dev-qt/designer-4.8.5:4 >=dev-qt/qtcore-4.8.5:4[ssl] >=dev-qt/qtdeclarative-4.8.5:4[accessibility] >=dev-qt/qtgui-4.8.5:4[accessibility] >=dev-qt/qthelp-4.8.5:4[doc?] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4 >=dev-qt/qtsvg-4.8.5:4[accessibility] >=sys-devel/gdb-7.2[python] examples? ( >=dev-qt/qtdemo-4.8.5:4 )

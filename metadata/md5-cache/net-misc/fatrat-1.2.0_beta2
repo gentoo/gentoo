@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=9f09c4bc98863dbcac27705557dbda8e
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
 DEPEND=dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 bittorrent? ( >=net-libs/rb_libtorrent-0.14.5 >=dev-cpp/asio-1.1.0 dev-qt/qtwebkit:4 ) curl? ( >=net-misc/curl-7.18.2 ) doc? ( dev-qt/qthelp:4 ) xmpp? ( net-libs/gloox ) webinterface? ( dev-qt/qtscript:4 ) nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Qt4-based download/upload manager
-EAPI=5
-HOMEPAGE=http://fatrat.dolezel.info/
-IUSE=bittorrent +curl doc xmpp nls webinterface
-KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 bittorrent? ( >=net-libs/rb_libtorrent-0.14.5 >=dev-cpp/asio-1.1.0 dev-qt/qtwebkit:4 ) curl? ( >=net-misc/curl-7.18.2 ) doc? ( dev-qt/qthelp:4 ) xmpp? ( net-libs/gloox ) webinterface? ( dev-qt/qtscript:4 )
-SLOT=0
+IUSE=bittorrent +curl doc xmpp nls webinterface
 SRC_URI=http://www.dolezel.info/download/data/fatrat/fatrat-1.2.0_beta2.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9f09c4bc98863dbcac27705557dbda8e
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://fatrat.dolezel.info/
+RDEPEND=dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 bittorrent? ( >=net-libs/rb_libtorrent-0.14.5 >=dev-cpp/asio-1.1.0 dev-qt/qtwebkit:4 ) curl? ( >=net-misc/curl-7.18.2 ) doc? ( dev-qt/qthelp:4 ) xmpp? ( net-libs/gloox ) webinterface? ( dev-qt/qtscript:4 )

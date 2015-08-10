@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=71b43c1eb8cff22ccec14d8dcbb09a14
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare test
+EAPI=3
 DEPEND=app-arch/unzip >=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/libtermcap-compat )
 DESCRIPTION=SCM is a Scheme implementation from the author of slib
-EAPI=3
-HOMEPAGE=http://swiss.csail.mit.edu/~jaffer/SCM
-IUSE=arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext macro ncurses posix readline regex sockets unix
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-macos
 LICENSE=LGPL-3
-RDEPEND=app-arch/unzip >=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/libtermcap-compat )
-SLOT=0
+IUSE=arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext macro ncurses posix readline regex sockets unix
 SRC_URI=http://groups.csail.mit.edu/mac/ftpdir/scm/scm-5e6.zip
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=71b43c1eb8cff22ccec14d8dcbb09a14
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-macos
+HOMEPAGE=http://swiss.csail.mit.edu/~jaffer/SCM
+RDEPEND=app-arch/unzip >=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses ) readline? ( sys-libs/libtermcap-compat )

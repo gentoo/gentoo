@@ -1,9 +1,11 @@
+_eclasses_=
+_md5_=3fea319425324b49a3e8a1c1fc146efd
+SLOT=0
 DEFINED_PHASES=compile install
+EAPI=0
 DESCRIPTION=A base caller for Sanger DNA sequencing
-HOMEPAGE=http://phrap.org/phredphrapconsed.html
-KEYWORDS=~amd64 ~x86
 LICENSE=phrap
 RESTRICT=fetch
-SLOT=0
 SRC_URI=phred-dist-071220.b-acd.tar.gz
-_md5_=3fea319425324b49a3e8a1c1fc146efd
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://phrap.org/phredphrapconsed.html

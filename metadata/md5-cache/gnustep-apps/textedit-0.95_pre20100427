@@ -1,13 +1,13 @@
+_eclasses_=gnustep-base	707840264bcc460d4e700dcc8c6aa746	gnustep-2	eae71f6ebee53a3bf1016938874bca15	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=a836d00e3633f3ed8118a7590046b770
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup
+EAPI=3
 DEPEND=>=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
 DESCRIPTION=A text editor with font, color, and style capabilities for GNUstep
-EAPI=3
-HOMEPAGE=http://www.nongnu.org/backbone/
-IUSE=debug doc
-KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
-RDEPEND=>=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
-SLOT=0
+IUSE=debug doc
 SRC_URI=mirror://gentoo/textedit-0.95_pre20100427.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	707840264bcc460d4e700dcc8c6aa746	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=a836d00e3633f3ed8118a7590046b770
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://www.nongnu.org/backbone/
+RDEPEND=>=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )

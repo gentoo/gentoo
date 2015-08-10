@@ -1,9 +1,11 @@
-DEFINED_PHASES=install
-DESCRIPTION=Manages configuration of dictionaries for OpenOffice.Org
-HOMEPAGE=http://www.gentoo.org/
-KEYWORDS=amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
-LICENSE=GPL-2
-RDEPEND=>=app-admin/eselect-1.2
+_eclasses_=
+_md5_=aaf6c6be76d9a26f54f54c23000b90c
 SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Manages configuration of dictionaries for OpenOffice.Org
+LICENSE=GPL-2
 SRC_URI=mirror://gentoo/oodict.eselect-20100228.bz2
-_md5_=0aaf6c6be76d9a26f54f54c23000b90c
+KEYWORDS=amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
+HOMEPAGE=http://www.gentoo.org/
+RDEPEND=>=app-admin/eselect-1.2

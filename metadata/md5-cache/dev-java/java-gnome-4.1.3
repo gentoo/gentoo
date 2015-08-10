@@ -1,14 +1,14 @@
+_eclasses_=virtualx	7d550983f9b6adb3e7091f4090ddae2f	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=d3b0e1e3b026a50072ccf2ebb981bed
+SLOT=4.1
 DEFINED_PHASES=compile configure install preinst prepare setup test
+EAPI=5
 DEPEND=app-text/enchant:0 dev-libs/atk:0 >=dev-libs/glib-2.28:2 dev-libs/libunique:3 gnome-base/librsvg:2 >=x11-libs/cairo-1.10.0[svg] x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/gtksourceview:3.0 >=x11-libs/libnotify-0.7.0 x11-libs/pango:0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-java/junit:0 dev-lang/perl >=virtual/jdk-1.6 virtual/pkgconfig >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Java bindings for GTK and GNOME
-EAPI=5
-HOMEPAGE=http://java-gnome.sourceforge.net/
-IUSE=elibc_FreeBSD doc examples source python_targets_python2_7 test
-KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2-with-linking-exception
-RDEPEND=app-text/enchant:0 dev-libs/atk:0 >=dev-libs/glib-2.28:2 dev-libs/libunique:3 gnome-base/librsvg:2 >=x11-libs/cairo-1.10.0[svg] x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/gtksourceview:3.0 >=x11-libs/libnotify-0.7.0 x11-libs/pango:0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=virtual/jre-1.6 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+IUSE=elibc_FreeBSD doc examples source python_targets_python2_7 test
 RESTRICT=test
-SLOT=4.1
 SRC_URI=mirror://gnome/sources/java-gnome/4.1/java-gnome-4.1.3.tar.xz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	0cafc0cf4ff05a561eb084acb586152e	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=0d3b0e1e3b026a50072ccf2ebb981bed
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://java-gnome.sourceforge.net/
+RDEPEND=app-text/enchant:0 dev-libs/atk:0 >=dev-libs/glib-2.28:2 dev-libs/libunique:3 gnome-base/librsvg:2 >=x11-libs/cairo-1.10.0[svg] x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/gtksourceview:3.0 >=x11-libs/libnotify-0.7.0 x11-libs/pango:0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=virtual/jre-1.6 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )

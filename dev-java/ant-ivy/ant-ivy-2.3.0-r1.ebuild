@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,42 +29,55 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 RESTRICT="test"
 
 # There may be additional optional dependencies (commons-logging, commons-lang...)
-COMMON_DEP="
-	dev-java/ant-core:0
-	dev-java/bcpg:0
+CDEPEND="dev-java/jsch:0
 	dev-java/bcpkix:0
-	dev-java/bcprov:0
+	dev-java/bcpg:1.50
+	dev-java/ant-core:0
+	dev-java/bcprov:1.50
+	dev-java/commons-vfs:0
 	dev-java/jakarta-oro:2.0
-	dev-java/jsch:0
-	dev-java/commons-httpclient:3
-	dev-java/commons-vfs:0"
+	dev-java/commons-httpclient:3"
 
-DEPEND="
-	>=virtual/jdk-1.4
-	test? ( dev-java/ant-junit )
-	${COMMON_DEP}"
+DEPEND=">=virtual/jdk-1.6
+	test? (
+		dev-java/ant-junit:0
+	)
+	${CDEPEND}"
 
-RDEPEND=">=virtual/jre-1.4
-	${COMMON_DEP}"
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
 java_prepare() {
-	rm -rf test/repositories
-	rm -rf test/triggers
-	rm -rf src/example/chained-resolvers/settings/repository/test-1.0.jar
-	rm -rf test/java/org/apache/ivy/core/settings/custom-resolver.jar
+	# This stuff needs removing.
+	local CLEANUP=(
+		doc/reports
+		test/triggers
+		doc/configuration
+		test/repositories
+		test/java/org/apache/ivy/core/settings/custom-resolver.jar
+		src/example/chained-resolvers/settings/repository/test-1.0.jar
+	)
 
-	# Removing obsolete documentation.
-	rm -rf doc/reports
-	rm -rf doc/configuration
+	rm -rf "${CLEANUP[@]}" || die
 
 	java-ant_rewrite-classpath
-	mkdir lib
+	mkdir lib || die
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="ant-core,bcpg,bcpkix,bcprov,commons-vfs,jakarta-oro-2.0,jsch,commons-httpclient-3"
+
+EANT_GENTOO_CLASSPATH="
+	jsch
+	bcpkix
+	ant-core
+	bcpg-1.50
+	commons-vfs
+	bcprov-1.50
+	jakarta-oro-2.0
+	commons-httpclient-3
+"
 
 EANT_BUILD_TARGET="/offline jar"
 
@@ -76,12 +89,14 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_dojar "build/artifact/jars/ivy.jar"
-
-	use doc && java-pkg_dojavadoc "build/doc/reports/api"
-	use doc && dohtml -r "doc"
-	use examples && java-pkg_doexamples "src/example"
-	use source && java-pkg_dosrc src/java/*
-
+	java-pkg_dojar build/artifact/jars/ivy.jar
 	java-pkg_register-ant-task
+
+	if use doc; then
+		java-pkg_dojavadoc build/doc/reports/api
+		java-pkg_dohtml -r doc
+	fi
+
+	use examples && java-pkg_doexamples src/example
+	use source && java-pkg_dosrc src/java/*
 }

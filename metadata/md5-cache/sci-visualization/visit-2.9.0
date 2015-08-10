@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=5ca43168cff2b204de802953448cc856
+SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup test
+EAPI=5
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] tcmalloc? ( dev-util/google-perftools ) cgns? ( sci-libs/cgnslib ) hdf5? ( sci-libs/hdf5 ) netcdf? ( sci-libs/netcdf ) silo? ( sci-libs/silo ) >=sci-libs/vtk-6.0.0[imaging,mpi=,python,rendering,qt4,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sys-libs/zlib sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A software that delivers parallel interactive visualizations
-EAPI=5
-HOMEPAGE=https://wci.llnl.gov/codes/visit/home.html
-IUSE=cgns debug hdf5 mpi netcdf silo tcmalloc threads python_targets_python2_7
-KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] tcmalloc? ( dev-util/google-perftools ) cgns? ( sci-libs/cgnslib ) hdf5? ( sci-libs/hdf5 ) netcdf? ( sci-libs/netcdf ) silo? ( sci-libs/silo ) >=sci-libs/vtk-6.0.0[imaging,mpi=,python,rendering,qt4,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sys-libs/zlib
+IUSE=cgns debug hdf5 mpi netcdf silo tcmalloc threads python_targets_python2_7
 REQUIRED_USE=python_targets_python2_7
-SLOT=0
 SRC_URI=http://portal.nersc.gov/svn/visit/trunk/releases/2.9.0/visit2.9.0.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5ca43168cff2b204de802953448cc856
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://wci.llnl.gov/codes/visit/home.html
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] tcmalloc? ( dev-util/google-perftools ) cgns? ( sci-libs/cgnslib ) hdf5? ( sci-libs/hdf5 ) netcdf? ( sci-libs/netcdf ) silo? ( sci-libs/silo ) >=sci-libs/vtk-6.0.0[imaging,mpi=,python,rendering,qt4,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] sys-libs/zlib

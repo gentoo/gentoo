@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	systemd	6b4f0cefa642270eded7e6ca816fd181	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	udev	37ef89be271b9ae8aa64be024ddb39b5	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e2d042e226daf470a65cbce3e6d216d8
+SLOT=0
 DEFINED_PHASES=compile install postinst prepare
+EAPI=4
 DEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio sys-libs/readline systemd? ( sys-apps/systemd ) virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=Device mapper target autoconfig
-EAPI=4
-HOMEPAGE=http://christophe.varoqui.free.fr/
-IUSE=systemd
-KEYWORDS=~alpha amd64 ~arm ~ia64 ppc ppc64 ~sparc x86
 LICENSE=GPL-2
-RDEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio sys-libs/readline systemd? ( sys-apps/systemd )
-SLOT=0
+IUSE=systemd
 SRC_URI=http://christophe.varoqui.free.fr/multipath-tools/multipath-tools-0.5.0.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5
-_md5_=e2d042e226daf470a65cbce3e6d216d8
+KEYWORDS=~alpha amd64 ~arm ~ia64 ppc ppc64 ~sparc x86
+HOMEPAGE=http://christophe.varoqui.free.fr/
+RDEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio sys-libs/readline systemd? ( sys-apps/systemd )

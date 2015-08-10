@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils	def8c8eb435ec28fd9315114640f6c84	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python	6d7be3e54573292f012e3cc433d8297	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2c0abaa4d068dce559d14a20e7185516
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+EAPI=4
 DEPEND=media-libs/alsa-lib app-arch/unzip java? ( >=virtual/jdk-1.6 ) python? ( >=dev-python/cython-0.12.1 ) doc? ( app-doc/doxygen dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latexextra dev-tex/xcolor virtual/latex-base ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) java? ( >=dev-java/java-config-2.2.0 )
 DESCRIPTION=A library for real time MIDI input and output
-EAPI=4
-HOMEPAGE=http://portmedia.sourceforge.net/
-IUSE=debug doc java python static-libs test-programs elibc_FreeBSD java
-KEYWORDS=amd64 x86
 LICENSE=MIT
-RDEPEND=media-libs/alsa-lib java? ( >=virtual/jre-1.6 ) python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) java? ( >=dev-java/java-config-2.2.0 )
-SLOT=0
+IUSE=debug doc java python static-libs test-programs elibc_FreeBSD java
 SRC_URI=mirror://sourceforge/portmedia/portmidi-src-217.zip
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	distutils	def8c8eb435ec28fd9315114640f6c84	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=2c0abaa4d068dce559d14a20e7185516
+KEYWORDS=amd64 x86
+HOMEPAGE=http://portmedia.sourceforge.net/
+RDEPEND=media-libs/alsa-lib java? ( >=virtual/jre-1.6 ) python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) java? ( >=dev-java/java-config-2.2.0 )

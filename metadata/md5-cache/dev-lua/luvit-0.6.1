@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=e7e6a8f15e2f98eee2188ff0f8e93874
+SLOT=0
 DEFINED_PHASES=compile configure install prepare
+EAPI=5
 DEPEND=dev-libs/openssl:0 sys-libs/zlib system-libs? ( >=dev-libs/yajl-2.0.4 ) virtual/pkgconfig
 DESCRIPTION=Takes node.js' architecture and dependencies and fits it in the Lua language
-EAPI=5
-HOMEPAGE=http://luvit.io/
-IUSE=examples +system-libs
-KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0 MIT !system-libs? ( BSD )
-RDEPEND=dev-libs/openssl:0 sys-libs/zlib system-libs? ( >=dev-libs/yajl-2.0.4 )
+IUSE=examples +system-libs
 RESTRICT=test
-SLOT=0
 SRC_URI=http://luvit.io/dist/latest/luvit-0.6.1.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e7e6a8f15e2f98eee2188ff0f8e93874
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://luvit.io/
+RDEPEND=dev-libs/openssl:0 sys-libs/zlib system-libs? ( >=dev-libs/yajl-2.0.4 )

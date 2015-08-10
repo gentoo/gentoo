@@ -1,15 +1,15 @@
+_eclasses_=unpacker	1ca344bd9b922a7f8084a3fa02933b79	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	php-ext-source-r2	f5fb7301b23c79ad7fef68a2d8de2116	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=3104411aea6581b66b4269fb84e7328f
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare prerm setup test unpack
+EAPI=5
 DEPEND=sys-devel/flex virtual/yacc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php? ( php_targets_php5-3? ( dev-lang/php:5.3 ) ) dev-lang/perl:=[-build(-)] python? ( =dev-lang/python-2* )
 DESCRIPTION=An Open Source library for Flash movie generation
-EAPI=5
-HOMEPAGE=http://ming.sourceforge.net/
-IUSE=+perl +python php static-libs php_targets_php5-3
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=LGPL-2.1
-RDEPEND=perl? ( dev-lang/perl ) python? ( dev-lang/python ) media-libs/freetype media-libs/libpng media-libs/giflib sys-libs/zlib !media-libs/libswf php? ( php_targets_php5-3? ( dev-lang/php:5.3 ) ) dev-lang/perl:=[-build(-)] python? ( =dev-lang/python-2* )
+IUSE=+perl +python php static-libs php_targets_php5-3
 REQUIRED_USE=php? ( || ( php_targets_php5-3 ) )
 RESTRICT=test
-SLOT=0
 SRC_URI=mirror://sourceforge/ming/ming-0.4.4.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	php-ext-source-r2	f5fb7301b23c79ad7fef68a2d8de2116	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=3104411aea6581b66b4269fb84e7328f
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+HOMEPAGE=http://ming.sourceforge.net/
+RDEPEND=perl? ( dev-lang/perl ) python? ( dev-lang/python ) media-libs/freetype media-libs/libpng media-libs/giflib sys-libs/zlib !media-libs/libswf php? ( php_targets_php5-3? ( dev-lang/php:5.3 ) ) dev-lang/perl:=[-build(-)] python? ( =dev-lang/python-2* )

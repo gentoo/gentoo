@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	cmake-utils	f474224ef49d530640a43a04ae94928e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7a65711c851232f99e6c63c697132c73
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+EAPI=4
 DEPEND=media-libs/alsa-lib dev-qt/qtgui:4 dev-qt/qtsvg:4 x11-misc/shared-mime-info dbus? ( dev-qt/qtdbus:4 ) virtual/pkgconfig doc? ( app-doc/doxygen app-text/docbook-xsl-stylesheets dev-libs/libxslt ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
 DESCRIPTION=Qt4/C++ wrapper for ALSA sequencer
-EAPI=4
-HOMEPAGE=http://drumstick.sourceforge.net/
-IUSE=dbus doc
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=media-libs/alsa-lib dev-qt/qtgui:4 dev-qt/qtsvg:4 x11-misc/shared-mime-info dbus? ( dev-qt/qtdbus:4 )
-SLOT=0
+IUSE=dbus doc
 SRC_URI=mirror://sourceforge/drumstick/drumstick-0.5.0.tar.bz2
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=7a65711c851232f99e6c63c697132c73
+KEYWORDS=amd64 x86
+HOMEPAGE=http://drumstick.sourceforge.net/
+RDEPEND=media-libs/alsa-lib dev-qt/qtgui:4 dev-qt/qtsvg:4 x11-misc/shared-mime-info dbus? ( dev-qt/qtdbus:4 )

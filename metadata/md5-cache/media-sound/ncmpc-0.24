@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=75dab5c874b845a6ba9a1f7264443b32
+SLOT=0
 DEFINED_PHASES=configure
+EAPI=5
 DEPEND=>=dev-libs/glib-2.12:2 >=media-libs/libmpdclient-2.3 sys-libs/ncurses lirc? ( app-misc/lirc ) nls? ( sys-libs/ncurses[unicode] ) app-arch/xz-utils virtual/pkgconfig
 DESCRIPTION=A ncurses client for the Music Player Daemon (MPD)
-EAPI=5
-HOMEPAGE=http://www.musicpd.org/clients/ncmpc/
-IUSE=artist-screen chat-screen colors debug +help-screen key-screen lirc lyrics-screen mouse nls search-screen song-screen
-KEYWORDS=amd64 hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2.12:2 >=media-libs/libmpdclient-2.3 sys-libs/ncurses lirc? ( app-misc/lirc ) nls? ( sys-libs/ncurses[unicode] )
-SLOT=0
+IUSE=artist-screen chat-screen colors debug +help-screen key-screen lirc lyrics-screen mouse nls search-screen song-screen
 SRC_URI=http://www.musicpd.org/download/ncmpc/0/ncmpc-0.24.tar.xz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=75dab5c874b845a6ba9a1f7264443b32
+KEYWORDS=amd64 hppa ppc ppc64 sparc x86
+HOMEPAGE=http://www.musicpd.org/clients/ncmpc/
+RDEPEND=>=dev-libs/glib-2.12:2 >=media-libs/libmpdclient-2.3 sys-libs/ncurses lirc? ( app-misc/lirc ) nls? ( sys-libs/ncurses[unicode] )

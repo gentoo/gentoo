@@ -1,13 +1,14 @@
+_eclasses_=qmail	283e7fa084ff27bf177a23bf740c7218	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fixheadtails	2f44773656577fe2653bacc8bdcb2174	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	webapp	2442891c368d310c1d3fe77d9c77fe5b	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=a99029959138617350279f4a3c0581c4
+SLOT=0
 DEFINED_PHASES=compile install postinst prerm setup unpack
+EAPI=0
 DEPEND=virtual/qmail >=net-mail/vpopmail-5.4.33 net-mail/autorespond maildrop? ( >=mail-filter/maildrop-2.0.1 ) >=sys-apps/sed-4 >=app-admin/webapp-config-1.50.15 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A web interface for managing a qmail system with virtual domains
-HOMEPAGE=http://www.inter7.com/qmailadmin.html
-IUSE=maildrop vhosts
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=virtual/qmail >=net-mail/vpopmail-5.4.33 net-mail/autorespond maildrop? ( >=mail-filter/maildrop-2.0.1 ) >=app-admin/webapp-config-1.50.15
+IUSE=maildrop vhosts
 RESTRICT=userpriv
-SLOT=0
 SRC_URI=mirror://sourceforge/qmailadmin/qmailadmin-1.2.16.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmail	283e7fa084ff27bf177a23bf740c7218	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=a99029959138617350279f4a3c0581c4
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~sparc ~x86
+HOMEPAGE=http://www.inter7.com/qmailadmin.html
+RDEPEND=virtual/qmail >=net-mail/vpopmail-5.4.33 net-mail/autorespond maildrop? ( >=mail-filter/maildrop-2.0.1 ) >=app-admin/webapp-config-1.50.15

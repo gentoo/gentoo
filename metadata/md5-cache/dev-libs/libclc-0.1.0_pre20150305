@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=5c007bc0aa0e79400779b686336a34eb
+SLOT=0
 DEFINED_PHASES=compile configure install prepare setup unpack
+EAPI=5
 DEPEND=>=sys-devel/clang-3.6 >=sys-devel/llvm-3.6 || ( >=dev-lang/python-2.7.5-r2:2.7 )
 DESCRIPTION=OpenCL C library
-EAPI=5
-HOMEPAGE=http://libclc.llvm.org/
-KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( MIT BSD )
-RDEPEND=>=sys-devel/clang-3.6 >=sys-devel/llvm-3.6
-SLOT=0
 SRC_URI=mirror://gentoo/libclc-0.1.0_pre20150305.tar.xz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	python-utils-r1	c595450196ccd7d3fac66424be096ffc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5c007bc0aa0e79400779b686336a34eb
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://libclc.llvm.org/
+RDEPEND=>=sys-devel/clang-3.6 >=sys-devel/llvm-3.6

@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=52dd7bcbbc4db5435b0991a6b5f19e70
+SLOT=0
 DEFINED_PHASES=compile configure install prepare test
+EAPI=5
 DEPEND=dev-libs/boost dev-libs/mpfr:0 sys-libs/zlib x11-libs/libX11 virtual/glu virtual/opengl gmp? ( dev-libs/gmp[cxx] ) qt4? ( dev-qt/qtgui:4 dev-qt/qtopengl:4 ) mpfi? ( sci-libs/mpfi ) app-arch/xz-utils virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=C++ library for geometric algorithms and data structures
-EAPI=5
-HOMEPAGE=http://www.cgal.org/ https://gforge.inria.fr/projects/cgal/
-IUSE=doc examples +gmp mpfi qt4
-KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-3 GPL-3 Boost-1.0
-RDEPEND=dev-libs/boost dev-libs/mpfr:0 sys-libs/zlib x11-libs/libX11 virtual/glu virtual/opengl gmp? ( dev-libs/gmp[cxx] ) qt4? ( dev-qt/qtgui:4 dev-qt/qtopengl:4 ) mpfi? ( sci-libs/mpfi )
-SLOT=0
+IUSE=doc examples +gmp mpfi qt4
 SRC_URI=http://gforge.inria.fr/frs/download.php/32995/CGAL-4.3.tar.xz doc? ( http://gforge.inria.fr/frs/download.php/33000/CGAL-4.3-doc_html.tar.xz )
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=52dd7bcbbc4db5435b0991a6b5f19e70
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.cgal.org/ https://gforge.inria.fr/projects/cgal/
+RDEPEND=dev-libs/boost dev-libs/mpfr:0 sys-libs/zlib x11-libs/libX11 virtual/glu virtual/opengl gmp? ( dev-libs/gmp[cxx] ) qt4? ( dev-qt/qtgui:4 dev-qt/qtopengl:4 ) mpfi? ( sci-libs/mpfi )

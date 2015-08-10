@@ -1,13 +1,14 @@
+_eclasses_=
+_md5_=a324474715dcefe5998982bfbe2c70cf
+SLOT=0
 DEFINED_PHASES=compile install
+EAPI=5
 DEPEND=test? ( dev-lua/luafilesystem )
 DESCRIPTION=JSON Parser/Constructor for Lua
-EAPI=5
-HOMEPAGE=http://www.eharning.us/wiki/luajson/
-IUSE=test
-KEYWORDS=amd64 ~arm hppa ~mips x86
 LICENSE=MIT
-RDEPEND=|| ( >=dev-lang/lua-5.1 dev-lang/luajit:2 ) dev-lua/lpeg
+IUSE=test
 RESTRICT=test
-SLOT=0
 SRC_URI=https://github.com/harningt/luajson/archive/1.3.2.tar.gz -> luajson-1.3.2.tar.gz
-_md5_=a324474715dcefe5998982bfbe2c70cf
+KEYWORDS=amd64 ~arm hppa ~mips x86
+HOMEPAGE=http://www.eharning.us/wiki/luajson/
+RDEPEND=|| ( >=dev-lang/lua-5.1 dev-lang/luajit:2 ) dev-lua/lpeg

@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4
+_md5_=bf7a0c3563919fa865b480123b3b0e9a
+SLOT=0
 DEFINED_PHASES=install prepare
+EAPI=2
 DEPEND=>=dev-libs/glib-2.10 x11-libs/gtk+:2 >=x11-libs/libwnck-2.10:1 x11-libs/libX11 virtual/pkgconfig dev-util/intltool sys-devel/gettext gnome-base/gnome-common !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A Window Matching utility similar to Sawfish's Matched Windows feature
-EAPI=2
-HOMEPAGE=http://www.burtonini.com/blog/computers/devilspie
-KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2.10 x11-libs/gtk+:2 >=x11-libs/libwnck-2.10:1 x11-libs/libX11
-SLOT=0
 SRC_URI=http://www.burtonini.com/computing/devilspie-0.22.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=bf7a0c3563919fa865b480123b3b0e9a
+KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.burtonini.com/blog/computers/devilspie
+RDEPEND=>=dev-libs/glib-2.10 x11-libs/gtk+:2 >=x11-libs/libwnck-2.10:1 x11-libs/libX11

@@ -1,11 +1,11 @@
+_eclasses_=subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=d0e0200a92d401d788855f84066b1c82
+SLOT=0
 DEFINED_PHASES=compile configure install preinst prepare unpack
+EAPI=5
 DEPEND=dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4[sqlite] dev-qt/qtsvg:4 doc? ( app-doc/doxygen ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=Qt4 application to design electric diagrams
-EAPI=5
-HOMEPAGE=http://qelectrotech.org/
-IUSE=doc linguas_cs linguas_de linguas_el linguas_en linguas_es linguas_fr linguas_it linguas_pl linguas_pt linguas_ro linguas_ru
 LICENSE=GPL-3
+IUSE=doc linguas_cs linguas_de linguas_el linguas_en linguas_es linguas_fr linguas_it linguas_pl linguas_pt linguas_ro linguas_ru
+HOMEPAGE=http://qelectrotech.org/
 RDEPEND=dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4[sqlite] dev-qt/qtsvg:4
-SLOT=0
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=d0e0200a92d401d788855f84066b1c82

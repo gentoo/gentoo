@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=fdccdb7ed02f09d23fde4bd072f1467d
+SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
 DEPEND=media-libs/libsdl[opengl] media-libs/sdl-image media-libs/sdl-mixer virtual/opengl virtual/glu media-libs/freeglut dev-lang/swig =dev-lang/python-2*
 DESCRIPTION=Fun 3D puzzle game using SDL/OpenGL
-EAPI=5
-HOMEPAGE=http://kiki.sourceforge.net/
-KEYWORDS=ppc x86
 LICENSE=public-domain
-RDEPEND=media-libs/libsdl[opengl] media-libs/sdl-image media-libs/sdl-mixer virtual/opengl virtual/glu media-libs/freeglut =dev-lang/python-2* games-misc/games-envd
-SLOT=0
 SRC_URI=mirror://sourceforge/kiki/kiki-1.0.2-src.tgz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9e5e9ee0b325a8a10823f9b385ca2036	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=fdccdb7ed02f09d23fde4bd072f1467d
+KEYWORDS=ppc x86
+HOMEPAGE=http://kiki.sourceforge.net/
+RDEPEND=media-libs/libsdl[opengl] media-libs/sdl-image media-libs/sdl-mixer virtual/opengl virtual/glu media-libs/freeglut =dev-lang/python-2* games-misc/games-envd

@@ -1,14 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7bd6f2e813d44363d5a2c47f1b0a6d77
+SLOT=0
 DEFINED_PHASES=install postinst unpack
-DESCRIPTION=Online password manager and form filler that makes web browsing easier and more secure
 EAPI=5
-HOMEPAGE=https://lastpass.com/misc_download2.php
-IUSE=+chromium +firefox +chrome
-KEYWORDS=-* ~x86 ~amd64
+DESCRIPTION=Online password manager and form filler that makes web browsing easier and more secure
 LICENSE=LastPass
-RDEPEND=chrome? ( || ( www-client/google-chrome www-client/google-chrome-beta www-client/google-chrome-unstable ) ) chromium? ( >=www-client/chromium-32.0.1700.102 ) firefox? ( www-client/firefox )
+IUSE=+chromium +firefox +chrome
 REQUIRED_USE=|| ( firefox chromium chrome )
 RESTRICT=strip mirror
-SLOT=0
 SRC_URI=https://lastpass.com/lplinux.tar.bz2 https://lastpass.com/lpchrome_linux.crx firefox? ( https://lastpass.com/lp_linux.xpi )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=7bd6f2e813d44363d5a2c47f1b0a6d77
+KEYWORDS=-* ~x86 ~amd64
+HOMEPAGE=https://lastpass.com/misc_download2.php
+RDEPEND=chrome? ( || ( www-client/google-chrome www-client/google-chrome-beta www-client/google-chrome-unstable ) ) chromium? ( >=www-client/chromium-32.0.1700.102 ) firefox? ( www-client/firefox )

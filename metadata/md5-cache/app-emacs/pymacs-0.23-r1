@@ -1,13 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	distutils	def8c8eb435ec28fd9315114640f6c84	python	6d7be3e54573292f012e3cc433d8297	elisp	484004c25306120b472b7dfdb0685c95	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2b01d0e93c1dd51c2cf76bae8af549e
+SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+EAPI=3
 DEPEND=doc? ( dev-python/docutils virtual/latex-base dev-texlive/texlive-latexextra dev-texlive/texlive-langfrench ) =dev-lang/python-2* >=virtual/emacs-23
 DESCRIPTION=A tool that allows both-side communication beetween Python and Emacs Lisp
-EAPI=3
-HOMEPAGE=http://pymacs.progiciels-bpi.ca/
-IUSE=doc
-KEYWORDS=amd64 arm hppa ia64 ppc ppc64 s390 sh x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
-RDEPEND==dev-lang/python-2* >=virtual/emacs-23
-SLOT=0
+IUSE=doc
 SRC_URI=http://pymacs.progiciels-bpi.ca/archives/Pymacs-0.23.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=02b01d0e93c1dd51c2cf76bae8af549e
+KEYWORDS=amd64 arm hppa ia64 ppc ppc64 s390 sh x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+HOMEPAGE=http://pymacs.progiciels-bpi.ca/
+RDEPEND==dev-lang/python-2* >=virtual/emacs-23

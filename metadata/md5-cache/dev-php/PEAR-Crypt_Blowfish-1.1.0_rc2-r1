@@ -1,12 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=9b42be31ec2ece3bb998f2a6b4cbeeaf
+SLOT=0
 DEFINED_PHASES=install setup
+EAPI=5
 DEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
 DESCRIPTION=Allows for quick two-way Blowfish encryption without requiring the MCrypt PHP extension
-EAPI=5
-HOMEPAGE=http://pear.php.net/Crypt_Blowfish
-KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
-SLOT=0
 SRC_URI=http://pear.php.net/get/Crypt_Blowfish-1.1.0RC2.tgz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9b42be31ec2ece3bb998f2a6b4cbeeaf
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://pear.php.net/Crypt_Blowfish
+RDEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
