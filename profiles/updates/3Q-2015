@@ -3,3 +3,4 @@ move dev-perl/locale-maketext-lexicon dev-perl/Locale-Maketext-Lexicon
 slotmove dev-util/kdevelop-pg-qt 0 4
 slotmove dev-util/kdevelop-qmake 0 4
 move dev-java/biojava sci-biology/biojava
+move x11-plugins/bitlbee-steam net-im/bitlbee-steam

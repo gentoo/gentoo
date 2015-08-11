@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/OpenRA/OpenRA/tarball/release-${PV} -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="tools"
+IUSE=""
 
 QA_PREBUILT="$(games_get_libdir)/openra/liblua*"
 
@@ -45,7 +45,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake $(usex tools "all" "")
+	emake all
 	emake native-dependencies
 	emake docs
 }
@@ -56,7 +56,7 @@ src_install() {
 		bindir="${GAMES_BINDIR}" \
 		libdir="$(games_get_libdir)" \
 		DESTDIR="${D}" \
-		$(usex tools "install-all" "install") install-linux-scripts
+		install-all install-linux-scripts
 
 	exeinto "$(games_get_libdir)/openra"
 	doexe Eluant.dll.config liblua$(usex amd64 "64" "32")*
