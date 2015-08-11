@@ -30,7 +30,7 @@ RUBY_PATCHES=(
 # gruff to work properly imagemagick needs to be compiled with truetype
 # support and this cannot be expressed in the rmagick dependency. Tests
 # also require imagemagick to have jpeg and png support.
-DEPEND="${DEPEND} test? ( media-gfx/imagemagick[jpeg,png,truetype] )"
+DEPEND="${DEPEND} test? ( media-gfx/imagemagick[jpeg,png,truetype,webp] )"
 RDEPEND="${RDEPEND} media-gfx/imagemagick[truetype]"
 
 ruby_add_rdepend ">=dev-ruby/rmagick-2.13.4"

@@ -29,10 +29,7 @@ EMVER="1.8.2"
 PATCH="thunderbird-38.0-patches-0.1"
 PATCHFF="firefox-38.0-patches-0.3"
 
-# Upstream ftp release URI that's used by mozlinguas.eclass
-# We don't use the http mirror because it deletes old tarballs.
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases/"
-MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases/"
+MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_JIT="enabled"
 inherit flag-o-matic toolchain-funcs mozconfig-v6.38 makeedit multilib autotools pax-utils check-reqs nsplugins mozlinguas
@@ -46,16 +43,13 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist crypt hardened ldap lightning +minimal mozdom selinux"
 RESTRICT="!bindist? ( bindist )"
 
-SRC_URIS=(
-	${SRC_URI}
-	{${MOZ_FTP_URI},${MOZ_HTTP_URI}}${MOZ_PV}/source/${MOZ_P}.source.tar.bz2
-	${MOZ_FTP_URI/${PN}/calendar/lightning}"${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi"
-	${MOZ_HTTP_URI/${PN}/calendar/lightning}"${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi"
-	"lightning? ( http://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.tar.xz )"
-	"crypt? ( http://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )"
-	http://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCH},${PATCHFF}}.tar.xz
-)
-SRC_URI="${SRC_URIS[@]}"
+PATCH_URIS=( http://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCH},${PATCHFF}}.tar.xz )
+SRC_URI="${SRC_URI}
+	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.bz2
+	${MOZ_HTTP_URI/${PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
+	lightning? ( http://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.tar.xz )
+	crypt? ( http://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )
+	${PATCH_URIS[@]}"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
