@@ -13,16 +13,17 @@ SRC_URI="http://www.slf4j.org/dist/${P/-log4j12/}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 COMMON_DEPEND="
 	dev-java/log4j:0
 	dev-java/slf4j-api:0"
+
 RDEPEND="${COMMON_DEPEND}
-	>=virtual/jre-1.5"
+	>=virtual/jre-1.6"
 DEPEND="${COMMON_DEPEND}
-	>=virtual/jdk-1.5
+	>=virtual/jdk-1.6
 	test? (
 		dev-java/hamcrest-core:0
 		dev-java/junit:4
@@ -37,7 +38,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_EXTRA_ARGS="-Dmaven.build.finalName=${PN}"
 
 java_prepare() {
-	cp "${FILESDIR}"/${PN}-1.7.6-maven-build.xml build.xml || die
+	cp "${FILESDIR}"/${P}-maven-build.xml build.xml || die
 	find "${WORKDIR}" -iname '*.jar' -delete || die
 }
 
