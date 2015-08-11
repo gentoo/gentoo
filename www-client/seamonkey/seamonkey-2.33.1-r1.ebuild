@@ -17,11 +17,11 @@ MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
 
 if [[ ${PV} == *_pre* ]] ; then
-	MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
+	MOZ_HTTP_URI="http://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
 	MOZ_LANGPACK_PREFIX="linux-i686/xpi/"
 	# And the langpack stuff stays at eclass defaults
 else
-	MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases/${MOZ_PV}"
+	MOZ_HTTP_URI="http://archive.mozilla.org/pub/${PN}/releases/${MOZ_PV}"
 	MOZ_LANGPACK_PREFIX="langpack/${MY_MOZ_P}."
 	MOZ_LANGPACK_SUFFIX=".langpack.xpi"
 fi
@@ -52,7 +52,7 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux test"
 
 SRC_URI="${SRC_URI}
-	${MOZ_FTP_URI}/source/${MY_MOZ_P}.source.tar.bz2 -> ${P}.source.tar.bz2
+	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.bz2 -> ${P}.source.tar.bz2
 	http://dev.gentoo.org/~axs/mozilla/patchsets/${PATCHFF}.tar.xz
 	http://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
 	http://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCHFF}.tar.xz

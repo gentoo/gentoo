@@ -17,14 +17,14 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_LANGPACK_PREFIX="${MOZ_PV}/langpack/${MOZ_P}."
 MOZ_LANGPACK_SUFFIX=".langpack.xpi"
 
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases"
 
 inherit eutils multilib mozextension pax-utils nsplugins fdo-mime gnome2-utils mozlinguas
 
 DESCRIPTION="Mozilla Application Suite - web browser, email, HTML editor, IRC"
 SRC_URI="${SRC_URI}
-	amd64? ( ${MOZ_FTP_URI}/${MOZ_PV}/contrib/${MOZ_P}.en-US.linux-x86_64.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
-	x86? ( ${MOZ_FTP_URI}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+	amd64? ( ${MOZ_HTTP_URI}/${MOZ_PV}/contrib/${MOZ_P}.en-US.linux-x86_64.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
+	x86? ( ${MOZ_HTTP_URI}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
 HOMEPAGE="http://www.seamonkey-project.org/"
 RESTRICT="strip mirror"
 
