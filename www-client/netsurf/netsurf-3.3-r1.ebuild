@@ -66,6 +66,9 @@ src_prepare() {
 
 	mv "${WORKDIR}"/netsurf-fb.modes-example fb.modes
 
+	sed -e 's:-DG_DISABLE_DEPRECATED::' \
+		-i gtk/Makefile.target || die
+
 	netsurf_src_prepare
 }
 
