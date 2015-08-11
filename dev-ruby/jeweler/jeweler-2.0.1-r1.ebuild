@@ -26,7 +26,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos 
 IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )
-	test? ( dev-ruby/shoulda dev-ruby/rr dev-ruby/test_construct dev-ruby/test-unit:0 )"
+	test? ( dev-ruby/shoulda dev-ruby/rr dev-ruby/test_construct dev-ruby/test-unit:0 >=dev-ruby/hoe-1.5.1 )"
 
 ruby_add_rdepend "
 	dev-ruby/rake
