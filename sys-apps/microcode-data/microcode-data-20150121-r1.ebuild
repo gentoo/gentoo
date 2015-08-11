@@ -17,8 +17,8 @@ SRC_URI="http://downloadmirror.intel.com/${NUM}/eng/microcode-${PV}.tgz"
 LICENSE="intel-ucode"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="monolithic +split-ucode"
-REQUIRED_USE="|| ( monolithic split-ucode )"
+IUSE="initramfs monolithic +split-ucode"
+REQUIRED_USE="|| ( initramfs monolithic split-ucode )"
 
 RDEPEND="!<sys-apps/microcode-ctl-1.17-r2" #268586
 
@@ -30,6 +30,10 @@ src_unpack() {
 }
 
 src_compile() {
+	if use initramfs ; then
+		iucode_tool --write-earlyfw=microcode.cpio microcode.dat || die
+	fi
+
 	if use split-ucode ; then
 		tc-env_build emake intel-microcode2ucode
 		./intel-microcode2ucode microcode.dat || die
@@ -38,6 +42,7 @@ src_compile() {
 
 src_install() {
 	insinto /lib/firmware
+	use initramfs && doins microcode.cpio
 	use monolithic && doins microcode.dat
 	use split-ucode && doins -r intel-ucode
 }
