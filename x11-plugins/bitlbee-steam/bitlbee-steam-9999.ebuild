@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools git-2
+inherit eutils autotools git-2
 
 DESCRIPTION="Steam protocol plugin for BitlBee"
 HOMEPAGE="https://github.com/jgeboski/bitlbee-steam"
@@ -16,10 +16,10 @@ KEYWORDS=""
 IUSE="debug"
 
 RDEPEND="
-	dev-libs/gmp:0
+	dev-libs/glib:2
+	dev-libs/libgpg-error
 	>=net-im/bitlbee-3.2.1[plugins]"
 DEPEND="${RDEPEND}
-	dev-libs/glib:2
 	virtual/pkgconfig"
 
 src_prepare() {
