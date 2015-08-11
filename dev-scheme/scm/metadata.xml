@@ -21,6 +21,7 @@ SCM is a  Scheme implementation conforming to  Revised5 Report on the Algorithmi
 		<flag name='inexact'>Support for floating point numbers.</flag>
 		<flag name='ioext'>Commonly available I/O extensions: line I/O, file
 			positioning, file delete and rename, and directory functions.</flag>
+		<flag name='libscm'>Build and install libscm.a and related headers</flag>
 		<flag name='macro'>C level support for hygienic and referentially 
 			transparent macros (syntax-rules macros).</flag>
 		<flag name='regex'>String regular expression matching.</flag>
