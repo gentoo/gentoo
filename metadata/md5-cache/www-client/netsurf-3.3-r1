@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( fbcon gtk ) amd64? ( abi_x86_32? ( !javascript ) ) fbcon? ( ^^
 SLOT=0
 SRC_URI=http://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.3-src.tar.gz http://xmw.de/mirror/netsurf-fb.modes-example.gz http://download.netsurf-browser.org/libs/releases/buildsystem-1.3.tar.gz -> netsurf-buildsystem-1.3.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multibuild	4550e10791f720f7af3fdd911aedf518	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	netsurf	40ce708ef9d359f8572f6858a41777bd	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=3e745721752e76eef51f5869495ce44a
+_md5_=6f76b6fcb4fdcace4b8dc0edcdf2dac2

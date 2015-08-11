@@ -22,13 +22,12 @@ IUSE="+bmp fbcon truetype +gif gstreamer gtk javascript +jpeg +mng pdf-writer
 	fbcon_frontend_sdl fbcon_frontend_vnc fbcon_frontend_x"
 
 REQUIRED_USE="|| ( fbcon gtk )
-	amd64? ( abi_x86_32? (
-		!gstreamer !javascript !pdf-writer svg? ( svgtiny ) !truetype ) )
+	amd64? ( abi_x86_32? ( !javascript ) )
 	fbcon? ( ^^ ( fbcon_frontend_able fbcon_frontend_linux fbcon_frontend_sdl
 		fbcon_frontend_vnc fbcon_frontend_x ) )"
 
-RDEPEND="dev-libs/libxml2
-	net-misc/curl
+RDEPEND="dev-libs/libxml2:2[${MULTILIB_USEDEP}]
+	net-misc/curl[${MULTILIB_USEDEP}]
 	>=dev-libs/libcss-0.4.0[${MULTILIB_USEDEP}]
 	>=net-libs/libhubbub-0.3.0-r1[${MULTILIB_USEDEP}]
 	bmp? ( >=media-libs/libnsbmp-0.1.1[${MULTILIB_USEDEP}] )
@@ -38,17 +37,17 @@ RDEPEND="dev-libs/libxml2
 	)
 	gif? ( >=media-libs/libnsgif-0.1.1[${MULTILIB_USEDEP}] )
 	gtk? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
-		gnome-base/libglade:2.0
+		gnome-base/libglade:2.0[${MULTILIB_USEDEP}]
 		>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}] )
-	gstreamer? ( media-libs/gstreamer:0.10 )
+	gstreamer? ( media-libs/gstreamer:0.10[${MULTILIB_USEDEP}] )
 	javascript? ( >=dev-libs/nsgenbind-0.1.1[${MULTILIB_USEDEP}]
 		dev-lang/spidermonkey:0= )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	mng? ( >=media-libs/libmng-1.0.10-r2[${MULTILIB_USEDEP}] )
-	pdf-writer? ( media-libs/libharu )
+	pdf-writer? ( media-libs/libharu[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0[${MULTILIB_USEDEP}] )
 	svg? ( svgtiny? ( >=media-libs/libsvgtiny-0.1.2[${MULTILIB_USEDEP}] )
-		!svgtiny? ( gnome-base/librsvg:2 ) )
+		!svgtiny? ( gnome-base/librsvg:2[${MULTILIB_USEDEP}] ) )
 	webp? ( >=media-libs/libwebp-0.3.0[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	rosprite? ( >=media-libs/librosprite-0.1.1[${MULTILIB_USEDEP}] )"
@@ -56,7 +55,8 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${P}-CFLAGS.patch
 	"${FILESDIR}"/${PN}-3.0-framebuffer-pkgconfig.patch
 	"${FILESDIR}"/${P}-conditionally-include-image-headers.patch
-	"${FILESDIR}"/${P}-glibc2.20.patch )
+	"${FILESDIR}"/${P}-glibc2.20.patch
+	"${FILESDIR}"/${P}-pdf-writer.patch )
 DOCS=( fb.modes README Docs/USING-Framebuffer
 	Docs/ideas/{cache,css-engine,render-library}.txt )
 
@@ -64,6 +64,9 @@ src_prepare() {
 	rm -rf amiga atari beos cocoa monkey riscos windows  || die
 
 	mv "${WORKDIR}"/netsurf-fb.modes-example fb.modes
+
+	sed -e 's:-DG_DISABLE_DEPRECATED::' \
+		-i gtk/Makefile.target || die
 
 	netsurf_src_prepare
 }
