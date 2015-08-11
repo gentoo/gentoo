@@ -22,7 +22,7 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libX11
 	libnotify? ( x11-libs/libnotify )"
 DEPEND="${RDEPEND}
-	sys-devel/gettext
+	dev-util/intltool
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${P/_rc/-rc}
