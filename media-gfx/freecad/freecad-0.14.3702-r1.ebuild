@@ -34,7 +34,6 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	media-libs/SoQt
 	media-libs/coin[doc]
 	net-libs/ptlib
-	sci-libs/gts
 	sci-libs/opencascade:6.7.1
 	sys-libs/zlib
 	virtual/glu
