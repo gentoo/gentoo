@@ -14,8 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-#KEYWORDS="~amd64 ~hppa ~amd64-linux ~x86-linux"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 DEPEND="
@@ -58,6 +57,8 @@ python_prepare_all() {
 
 	distutils-r1_python_prepare_all
 }
+
+PATCHES=( "${FILESDIR}/${PN}-${PV}_no-git.patch" )
 
 python_test() {
 	# Note; Tests, that have been removed, pass once package is emerged.
