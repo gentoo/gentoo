@@ -38,20 +38,6 @@ _GOLANG_VCS=1
 # EGO_PN="github.com/user1/package1 github.com/user2/package2"
 # @CODE
 
-# @ECLASS-VARIABLE: EGO_SRC
-# @DESCRIPTION:
-# This is the Go upstream repository which will be copied to
-# ${WORKDIR}/${P}.
-# If it isn't set, it defaults to the first word of ${EGO_PN}.
-# This should be set if you are retrieving a repository that includes
-# multiple packages, e.g. golang.org/x/tools.
-#
-# Example:
-# @CODE
-# EGO_PN="github.com/user/repository/..."
-# EGO_SRC="github.com/user/repository"
-# @CODE
-
 # @ECLASS-VARIABLE: EGO_STORE_DIR
 # @DESCRIPTION:
 # Storage directory for Go sources.
@@ -98,10 +84,6 @@ _golang-vcs_env_setup() {
 	[[ -n ${EVCS_UMASK} ]] && eumask_pop
 	mkdir -p "${WORKDIR}/${P}/src" ||
 		die "${ECLASS}: unable to create ${WORKDIR}/${P}"
-	if [ -z "${EGO_SRC}" ]; then
-		set -- ${EGO_PN}
-		EGO_SRC="$1"
-	fi
 	return 0
 }
 
@@ -127,11 +109,11 @@ _golang-vcs_fetch() {
 
 		[[ -n ${EVCS_UMASK} ]] && eumask_pop
 	fi
-	set -- mkdir -p "${WORKDIR}/${P}/src/${EGO_SRC%/*}"
+	set -- mkdir -p "${WORKDIR}/${P}/src/${EGO_PN%/...}"
 	echo "$@"
 	"$@" || die "Unable to create ${WORKDIR}/${P}/src"
-	set -- cp -r	"${EGO_STORE_DIR}/src/${EGO_SRC}" \
-		"${WORKDIR}/${P}/src/${EGO_SRC%/*}"
+	set -- cp -r	"${EGO_STORE_DIR}/src/${EGO_PN%/...}" \
+		"${WORKDIR}/${P}/src/${EGO_PN%/...}"
 	echo "$@"
 	"$@" || die "Unable to copy sources to ${WORKDIR}/${P}"
 	return 0

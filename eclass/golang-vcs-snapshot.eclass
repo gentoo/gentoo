@@ -50,7 +50,7 @@ golang-vcs-snapshot_src_unpack() {
 	ego_pn_check
 	set -- ${A}
 	x="$1"
-	mkdir -p "${WORKDIR}/${P}/src/${EGO_PN%/*}" || die
-	tar -C "${WORKDIR}/${P}/src/${EGO_PN%/*}" -x --strip-components 1 \
+	mkdir -p "${WORKDIR}/${P}/src/${EGO_PN%/...}" || die
+	tar -C "${WORKDIR}/${P}/src/${EGO_PN%/...}" -x --strip-components 1 \
 		-f "${DISTDIR}/${x}" || die
 }
