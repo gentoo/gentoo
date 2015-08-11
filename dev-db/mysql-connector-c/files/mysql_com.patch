@@ -1,0 +1,31 @@
+--- a/include/mysql_com.h	2014-06-10 23:10:43.000000000 -0400
++++ b/include/mysql_com.h	2015-08-11 15:20:54.487091000 -0400
+@@ -179,7 +171,7 @@
+ #define CLIENT_IGNORE_SIGPIPE   4096    /* IGNORE sigpipes */
+ #define CLIENT_TRANSACTIONS	8192	/* Client knows about transactions */
+ #define CLIENT_RESERVED         16384   /* Old flag for 4.1 protocol  */
+-#define CLIENT_RESERVED2        32768   /* Old flag for 4.1 authentication */
++#define CLIENT_SECURE_CONNECTION 32768  /* New 4.1 authentication */
+ #define CLIENT_MULTI_STATEMENTS (1UL << 16) /* Enable/disable multi-stmt support */
+ #define CLIENT_MULTI_RESULTS    (1UL << 17) /* Enable/disable multi-results */
+ #define CLIENT_PS_MULTI_RESULTS (1UL << 18) /* Multi-results in PS-protocol */
+@@ -226,7 +216,7 @@
+                            | CLIENT_IGNORE_SIGPIPE \
+                            | CLIENT_TRANSACTIONS \
+                            | CLIENT_RESERVED \
+-                           | CLIENT_RESERVED2 \
++                           | CLIENT_SECURE_CONNECTION \
+                            | CLIENT_MULTI_STATEMENTS \
+                            | CLIENT_MULTI_RESULTS \
+                            | CLIENT_PS_MULTI_RESULTS \
+--- a/libmysql/client_settings.h	2015-02-25 16:09:49.000000000 -0500
++++ b/libmysql/client_settings.h	2015-08-11 15:44:10.804091000 -0400
+@@ -31,7 +31,7 @@
+                              CLIENT_LONG_FLAG |     \
+                              CLIENT_TRANSACTIONS |  \
+                              CLIENT_PROTOCOL_41 | \
+-                             CLIENT_RESERVED2 | \
++                             CLIENT_SECURE_CONNECTION | \
+                              CLIENT_MULTI_RESULTS | \
+                              CLIENT_PS_MULTI_RESULTS | \
+                              CLIENT_PLUGIN_AUTH | \
