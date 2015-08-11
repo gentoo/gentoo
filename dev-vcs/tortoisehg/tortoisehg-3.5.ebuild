@@ -10,7 +10,7 @@ inherit distutils-r1 eutils
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-3.3 <dev-vcs/mercurial-3.5"
+	HG_DEPEND=">=dev-vcs/mercurial-3.4 <dev-vcs/mercurial-3.6"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
@@ -67,7 +67,7 @@ python_install_all() {
 	if use doc ; then
 		dohtml -r doc/build/html/
 	fi
-	newicon -s scalable icons/scalable/apps/thg-logo.svg thg_logo.svg
+	newicon -s scalable icons/scalable/apps/thg.svg thg_logo.svg
 	domenu contrib/thg.desktop
 }
 

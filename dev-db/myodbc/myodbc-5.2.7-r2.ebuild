@@ -44,8 +44,9 @@ src_prepare() {
 
 	# Patch document path so it doesn't install files to /usr
 	epatch "${FILESDIR}/cmake-doc-path.patch" \
-		"${FILESDIR}/${PVR}-cxxlinkage.patch" \
-		"${FILESDIR}/${PV}-mariadb-dynamic-array.patch"
+		"${FILESDIR}/${PV}-r1-cxxlinkage.patch" \
+		"${FILESDIR}/${PV}-mariadb-dynamic-array.patch" \
+		"${FILESDIR}/${PV}-my_malloc.patch"
 }
 
 multilib_src_configure() {
