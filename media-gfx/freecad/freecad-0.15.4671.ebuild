@@ -113,7 +113,7 @@ src_install() {
 
 	make_desktop_entry FreeCAD "FreeCAD" "" "" "MimeType=application/x-extension-fcstd;"
 
-	dodoc README.linux ChangeLog.txt
+	dodoc README.Linux ChangeLog.txt
 
 	# install mimetype for FreeCAD files
 	insinto /usr/share/mime/packages
