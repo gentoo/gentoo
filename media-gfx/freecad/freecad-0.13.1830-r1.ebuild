@@ -33,7 +33,7 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	media-libs/SoQt
 	media-libs/coin[doc]
 	sci-libs/gts
-	|| ( sci-libs/opencascade:6.7.1 sci-libs/opencascade:6.6.0 sci-libs/opencascade:6.5.5 )
+	sci-libs/opencascade:6.7.1
 	sys-libs/zlib
 	virtual/glu
 	${PYTHON_DEPS}"
