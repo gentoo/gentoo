@@ -33,6 +33,7 @@
     <flag name="mediawiki">Support pulling and pushing from MediaWiki</flag>
     <flag name="ppcsha1">Make use of a bundled routine that is optimized for the PPC arch</flag>
     <flag name="subversion">Include git-svn for <pkg>dev-vcs/subversion</pkg> support</flag>
+    <flag name="tk">Include the 'gitk' and 'git gui' tools</flag>
     <flag name="webdav">Adds support for push'ing to HTTP/HTTPS repositories via DAV</flag>
   </use>
 </pkgmetadata>
