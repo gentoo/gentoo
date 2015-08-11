@@ -1,0 +1,15 @@
+--- source/com/itextpdf/text/pdf/security/OcspClientBouncyCastle.java.orig	2015-08-11 10:52:11.031000000 +0000
++++ source/com/itextpdf/text/pdf/security/OcspClientBouncyCastle.java	2015-08-11 10:52:39.070000000 +0000
+@@ -183,9 +183,9 @@
+                     if (status == CertificateStatus.GOOD) {
+                         return basicResponse.getEncoded();
+                     }
+-                    else if (status instanceof org.bouncycastle.ocsp.RevokedStatus) {
+-                        throw new IOException(MessageLocalization.getComposedMessage("ocsp.status.is.revoked"));
+-                    }
++                    //else if (status instanceof org.bouncycastle.ocsp.RevokedStatus) {
++                    //    throw new IOException(MessageLocalization.getComposedMessage("ocsp.status.is.revoked"));
++                    //}
+                     else {
+                         throw new IOException(MessageLocalization.getComposedMessage("ocsp.status.is.unknown"));
+                     }
