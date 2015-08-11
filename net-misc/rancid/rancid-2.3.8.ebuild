@@ -8,7 +8,7 @@ inherit autotools eutils readme.gentoo user
 
 DESCRIPTION="Really Awesome New Cisco confIg Differ"
 HOMEPAGE="http://www.shrubbery.net/rancid/"
-SRC_URI="ftp://ftp.shrubbery.net/pub/${PN}/${P}.tar.gz"
+SRC_URI="http://http.debian.net/debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-4"
 
 SLOT="0"
