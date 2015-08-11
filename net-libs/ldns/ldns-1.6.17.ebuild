@@ -42,6 +42,10 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}_perl522.patch"
+}
+
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
