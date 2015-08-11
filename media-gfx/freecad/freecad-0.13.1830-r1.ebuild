@@ -19,7 +19,7 @@ IUSE=""
 
 COMMON_DEPEND="dev-cpp/eigen:3
 	dev-games/ode
-	dev-libs/boost
+	<dev-libs/boost-1.57
 	dev-libs/libf2c
 	dev-libs/libspnav[X]
 	dev-libs/xerces-c[icu]

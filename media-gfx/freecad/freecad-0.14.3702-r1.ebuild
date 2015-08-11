@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils fortran-2 multilib python-single-r1
+inherit cmake-utils eutils fortran-2 multilib python-single-r1 fdo-mime
 
 DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="http://www.freecadweb.org/"
@@ -123,14 +123,34 @@ src_install() {
 		"${EROOT}"usr/$(get_libdir)/${P}/bin/FreeCADCmd \
 		"" "${EROOT}"usr/$(get_libdir)/${P}/lib
 
-	newicon src/Main/icon.ico ${PN}.ico
-	make_desktop_entry FreeCAD
+	make_desktop_entry FreeCAD "FreeCAD" "" "" "MimeType=application/x-extension-fcstd;"
 
 	dodoc README.Linux ChangeLog.txt
+
+	# install mimetype for FreeCAD files
+	insinto /usr/share/mime/packages
+	newins "${FILESDIR}"/${PN}.sharedmimeinfo "${PN}.xml"
+
+	# install icons to correct place rather than /usr/share/freecad
+	pushd "${ED}/usr/share/${P}"
+	for size in 16 32 48 64; do
+		newicon -s ${size} freecad-icon-${size}.png freecad.png
+	done
+	doicon -s scalable freecad.svg
+	newicon -s 64 -c mimetypes freecad-doc.png application-x-extension-fcstd.png
+	popd
 
 	# disable compression of QT assistant help files
 	>> "${ED}"usr/share/doc/${P}/freecad.qhc.ecompress.skip
 	>> "${ED}"usr/share/doc/${P}/freecad.qch.ecompress.skip
 
 	python_optimize "${ED}"usr/{$(get_libdir),share}/${P}/Mod/
+}
+
+pkg_postinst() {
+	fdo-mime_mime_database_update
+}
+
+pkg_postrm() {
+	fdo-mime_mime_database_update
 }
