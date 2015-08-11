@@ -49,7 +49,7 @@ src_configure() {
 
 src_install() {
 	export INSTALL_ROOT="${D}" #submakes need it as well, re-install fails otherwise.
-	emake install
+	emake -j1 install
 	rm -r "${ED}"/usr/share/doc/${PN} || die
 	if use upekbsapi ; then
 		use amd64 && dolib.so upek/lib64/libbsapi.so*
