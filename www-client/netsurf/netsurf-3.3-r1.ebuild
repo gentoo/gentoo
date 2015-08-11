@@ -57,7 +57,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}"/${P}-CFLAGS.patch
 	"${FILESDIR}"/${PN}-3.0-framebuffer-pkgconfig.patch
-	"${FILESDIR}"/${PN}-3.2-conditionally-include-image-headers.patch )
+	"${FILESDIR}"/${PN}-3.2-conditionally-include-image-headers.patch
+	"${FILESDIR}"/${P}-pdf-writer.patch )
 DOCS=( fb.modes README Docs/USING-Framebuffer
 	Docs/ideas/{cache,css-engine,render-library}.txt )
 

@@ -1,0 +1,90 @@
+--- netsurf-3.2/desktop/save_pdf/pdf_plotters.c
++++ netsurf-3.2/desktop/save_pdf/pdf_plotters.c
+@@ -426,11 +428,11 @@
+ 
+ 		switch(content_get_type(content)){
+ 		/*Handle "embeddable" types of images*/
+-		case CONTENT_JPEG:
+- 			image = HPDF_LoadJpegImageFromMem(pdf_doc,
+- 					(const HPDF_BYTE *) source_data,
+- 					source_size);
+- 			break;
++		//case CONTENT_JPEG:
++ 		//	image = HPDF_LoadJpegImageFromMem(pdf_doc,
++ 		//			(const HPDF_BYTE *) source_data,
++ 		//			source_size);
++ 		//	break;
+ 
+ 		/*Disabled until HARU PNG support will be more stable.
+ 
+@@ -676,7 +678,7 @@
+ 
+ 
+ #ifndef PDF_DEBUG
+-	if (option_enable_PDF_compression)
++	if (nsoption_bool(enable_PDF_compression))
+ 		HPDF_SetCompressionMode(pdf_doc, HPDF_COMP_ALL); /*Compression on*/
+ #endif
+ 	HPDF_SetInfoAttr(pdf_doc, HPDF_INFO_CREATOR, user_agent_string());
+@@ -750,7 +752,7 @@
+ 	assert(settings->output != NULL);
+ 
+ 	/*Encryption on*/
+-	if (option_enable_PDF_password)
++	if (nsoption_bool(enable_PDF_password))
+ 		PDF_Password(&owner_pass, &user_pass,
+ 				(void *)settings->output);
+ 	else
+@@ -765,7 +767,7 @@
+ {
+ 	bool success = false;
+ 
+-	if (option_enable_PDF_password && owner_pass != NULL ) {
++	if (nsoption_bool(enable_PDF_password) && owner_pass != NULL ) {
+ 		HPDF_SetPassword(pdf_doc, owner_pass, user_pass);
+ 		HPDF_SetEncryptionMode(pdf_doc, HPDF_ENCRYPT_R3, 16);
+ 		free(owner_pass);
+--- netsurf-3.2/gtk/gui.c
++++ netsurf-3.2/gtk/gui.c
+@@ -740,9 +740,11 @@
+ 
+ #ifdef WITH_PDF_EXPORT
+ 
++#include <glade/glade-xml.h>
++
+ void PDF_Password(char **owner_pass, char **user_pass, char *path)
+ {
+-	GladeXML *x = glade_xml_new(glade_password_file_location, NULL, NULL);
++	GladeXML *x = glade_xml_new(glade_file_location->password, NULL, NULL);
+ 	GtkWindow *wnd = GTK_WINDOW(glade_xml_get_widget(x, "wndPDFPassword"));
+ 	GtkButton *ok, *no;
+ 	void **data = malloc(5 * sizeof(void *));
+--- netsurf-3.2/gtk/scaffolding.c
++++ netsurf-3.2/gtk/scaffolding.c
+@@ -711,14 +711,14 @@
+ 
+ 	free(url_name);
+ 
+-	strncpy(dirname, option_downloads_directory, PATH_MAX);
++	strncpy(dirname, nsoption_charp(downloads_directory), PATH_MAX);
+ 	strncat(dirname, "/", PATH_MAX - strlen(dirname));
+ 	dirname[PATH_MAX - 1] = '\0';
+ 
+ 	/* this way the scale used by PDF functions is synchronized with that
+ 	 * used by the all-purpose print interface
+ 	 */
+-	haru_nsfont_set_scale((float)option_export_scale / 100);
++	haru_nsfont_set_scale((float)nsoption_int(export_scale) / 100);
+ 
+ 	save_dialog = gtk_file_chooser_dialog_new("Export to PDF", g->window,
+ 		GTK_FILE_CHOOSER_ACTION_SAVE,
+--- netsurf-3.2/gtk/Makefile.target
++++ netsurf-3.2/gtk/Makefile.target
+@@ -62,6 +62,7 @@
+ $(eval $(call pkg_config_find_and_add,gtk+-$(NETSURF_GTK_MAJOR).0,GTK-$(NETSURF_GTK_MAJOR)))
+ $(eval $(call pkg_config_find_and_add,gthread-2.0,GThread2))
+ $(eval $(call pkg_config_find_and_add,gmodule-2.0,GModule2))
++$(eval $(call pkg_config_find_and_add,libglade-2.0,GLADE))
+ 
+ 
+ CFLAGS += $(GTKCFLAGS)
