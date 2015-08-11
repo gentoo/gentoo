@@ -21,7 +21,7 @@ REQUIRED_USE="^^ ( qt4 qt5 )
 
 RDEPEND="cups? ( net-print/cups )
 	djvu? ( app-text/djvu )
-	fitz? ( app-text/mupdf:0/1.4 )
+	fitz? ( <app-text/mupdf-1.7:= )
 	postscript? ( app-text/libspectre )
 	qt4? ( dev-qt/qtcore:4[iconv]
 		dev-qt/qtgui:4
