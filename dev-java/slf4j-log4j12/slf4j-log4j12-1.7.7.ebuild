@@ -13,7 +13,7 @@ SRC_URI="http://www.slf4j.org/dist/${P/-log4j12/}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 COMMON_DEPEND="
