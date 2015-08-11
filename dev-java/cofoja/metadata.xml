@@ -5,5 +5,8 @@
 	<upstream>
 		<remote-id type="google-code">cofoja</remote-id>
 	</upstream>
+	<maintainer>
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
 </pkgmetadata>
-
