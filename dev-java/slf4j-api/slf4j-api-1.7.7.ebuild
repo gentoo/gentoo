@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
 
-RDEPEND=">=virtual/jre-1.5"
-DEPEND=">=virtual/jdk-1.5
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	test? (
 		dev-java/junit:4
@@ -32,7 +32,7 @@ EANT_TEST_ANT_TASKS="ant-junit"
 EANT_EXTRA_ARGS="-Dmaven.build.finalName=${PN}"
 
 java_prepare() {
-	cp "${FILESDIR}"/1.7.6-build.xml build.xml || die
+	cp "${FILESDIR}"/"${PV}"-build.xml build.xml || die
 	find "${WORKDIR}" -iname '*.jar' -delete || die
 }
 
