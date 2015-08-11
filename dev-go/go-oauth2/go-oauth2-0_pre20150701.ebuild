@@ -17,8 +17,7 @@ https://github.com/GoogleCloudPlatform/gcloud-golang/archive/e34a32f9b0ecbc07848
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
-DEPEND=">=dev-lang/go-1.4
-	dev-go/go-net"
+DEPEND="dev-go/go-net"
 RDEPEND=""
 S="${WORKDIR}/src/${GO_PN}"
 EGIT_CHECKOUT_DIR="${S}"
