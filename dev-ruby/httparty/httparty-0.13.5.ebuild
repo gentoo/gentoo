@@ -35,6 +35,10 @@ all_ruby_prepare() {
 	# Avoid test dependency on cucumber. We can't run the features since
 	# they depend on mongrel which is no longer packaged.
 	sed -i -e '/cucumber/I s:^:#:' Rakefile || die
+
+	# Avoid test dependency on simplecov
+	sed -i -e '/simplecov/I s:^:#:' \
+		-e '1i require "cgi"' spec/spec_helper.rb || die
 }
 
 each_ruby_test() {
