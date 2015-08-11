@@ -23,7 +23,6 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib
 	dev-python/pyside[X]
-	dev-python/pyside-tools
 	dev-python/shiboken
 	dev-qt/designer:4
 	dev-qt/qtgui:4
@@ -78,7 +77,7 @@ src_configure() {
 		-DOCC_LIBRARY="${CASROOT}"/lib/libTKernel.so
 		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
 		-DOCC_LIB_PATH="${CASROOT}"/lib
-		-DCOIN3D_INCLUDE_DIR="${EROOT}"usr/include/coin
+		-DCOIN3D_INCLUDE_DIRS="${EROOT}"usr/include/coin
 		-DCOIN3D_LIBRARY="${EROOT}"usr/$(get_libdir)/libCoin.so
 		-DSOQT_LIBRARY="${EROOT}"usr/$(get_libdir)/libSoQt.so
 		-DSOQT_INCLUDE_PATH="${EROOT}"usr/include/coin
@@ -116,7 +115,7 @@ src_install() {
 	newicon src/Main/icon.ico ${PN}.ico
 	make_desktop_entry FreeCAD
 
-	dodoc README.Linux ChangeLog.txt
+	dodoc README.md ChangeLog.txt
 
 	# disable compression of QT assistant help files
 	>> "${ED}"usr/share/doc/${P}/freecad.qhc.ecompress.skip
