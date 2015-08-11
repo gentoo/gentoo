@@ -21,8 +21,8 @@ IUSE="doc examples static-libs test"
 
 RDEPEND="dev-libs/glib:2"
 DEPEND="${RDEPEND}
-	dev-util/gtk-doc
 	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
 	test? ( media-libs/netpbm )"
 
 # buggy

@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-cpp/eigen:3 dev-games/ode <dev-libs/boost-1.57 dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts sci-libs/opencascade:6.7.1 sys-libs/zlib virtual/glu >=dev-lang/swig-2.0.4-r1:0 virtual/fortran =dev-lang/python-2* sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=dev-cpp/eigen:3 dev-games/ode <dev-libs/boost-1.57 dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/opencascade:6.7.1 sys-libs/zlib virtual/glu >=dev-lang/swig-2.0.4-r1:0 virtual/fortran =dev-lang/python-2* sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=QT based Computer Aided Design application
 EAPI=5
 HOMEPAGE=http://sourceforge.net/apps/mediawiki/free-cad/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-cpp/eigen:3 dev-games/ode <dev-libs/boost-1.57 dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/gts sci-libs/opencascade:6.7.1 sys-libs/zlib virtual/glu virtual/fortran =dev-lang/python-2*
+RDEPEND=dev-cpp/eigen:3 dev-games/ode <dev-libs/boost-1.57 dev-libs/libf2c dev-libs/libspnav[X] dev-libs/xerces-c[icu] dev-python/PyQt4[svg] dev-python/pivy dev-qt/designer:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 media-libs/SoQt media-libs/coin[doc] sci-libs/opencascade:6.7.1 sys-libs/zlib virtual/glu virtual/fortran =dev-lang/python-2*
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=mirror://sourceforge/free-cad/freecad-0.12.5284.tar.gz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0819e1e459872278c52c56f56039b24f
+_md5_=7b3a3fbe164c81590e3f15c0109f60bf
