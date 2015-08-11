@@ -18,11 +18,13 @@ RDEPEND="
 	virtual/perl-Carp
 	>=dev-perl/DateTime-0.180.0
 	dev-perl/Params-Validate
+	dev-perl/Dist-CheckConflicts
 "
 DEPEND="${RDEPEND}
 	virtual/perl-File-Spec
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
-	test? ( >=virtual/perl-Test-Simple-0.880.0 )
-"
+	test? ( >=virtual/perl-Test-Simple-0.880.0
+		virtual/perl-File-Spec
+		virtual/perl-Storable )"
 
 SRC_TEST=do
