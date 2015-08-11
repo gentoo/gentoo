@@ -9,7 +9,7 @@ inherit autotools eutils gnome2-utils
 
 DESCRIPTION="Volume mixer for the system tray"
 HOMEPAGE="https://github.com/nicklan/pnmixer"
-SRC_URI="https://github.com/nicklan/pnmixer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nicklan/pnmixer/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,6 +24,8 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+S=${WORKDIR}/${P/_rc/-rc}
 
 src_prepare() {
 	eautoreconf

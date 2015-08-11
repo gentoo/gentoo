@@ -12,10 +12,11 @@ SRC_URI="http://www.sixxs.net/archive/sixxs/aiccu/unix/${PN}_${PV//\./}.tar.gz"
 
 LICENSE="SixXS"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc sparc x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 IUSE="systemd"
 
-RDEPEND="<net-libs/gnutls-3.4
+RDEPEND="
+	net-libs/gnutls
 	sys-apps/iproute2
 	systemd? ( sys-apps/systemd )
 "
@@ -33,7 +34,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-Makefile.patch \
 		"${FILESDIR}"/${P}-setupscript.patch \
 		"${FILESDIR}"/${P}-uclibc.patch \
-		"${FILESDIR}"/${P}-systemd.patch
+		"${FILESDIR}"/${P}-systemd.patch \
+		"${FILESDIR}"/${P}-gnutls-3.4.patch
 }
 
 src_compile() {

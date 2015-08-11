@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="gtk imagemagick jpeg python qt4 static-libs +threads v4l X xv"
 
-RDEPEND="sys-devel/gettext
-	gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+RDEPEND="gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 	imagemagick? (
 		|| ( media-gfx/imagemagick
 		media-gfx/graphicsmagick[imagemagick] ) )
@@ -29,6 +28,7 @@ RDEPEND="sys-devel/gettext
 	X? ( x11-libs/libXext
 		xv? ( x11-libs/libXv ) )"
 DEPEND="${RDEPEND}
+	sys-devel/gettext
 	virtual/pkgconfig"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -38,9 +38,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-v4l1-check.patch
-	epatch "${FILESDIR}"/${P}-errors.patch
-	epatch "${FILESDIR}"/${P}-python-crash.patch
+	epatch "${FILESDIR}"/${P}-no-v4l1-check.patch \
+		"${FILESDIR}"/${P}-errors.patch \
+		"${FILESDIR}"/${P}-python-crash.patch \
+		"${FILESDIR}"/${P}-v4l2-uvcvideo.patch
 
 	use python && python_fix_shebang examples/upcrpc.py test/*.py
 
