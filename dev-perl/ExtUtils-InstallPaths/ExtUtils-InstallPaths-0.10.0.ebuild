@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION='Build.PL install path logic made easy'
 LICENSE=" || ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 DEPEND="
