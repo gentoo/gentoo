@@ -10,5 +10,5 @@ SRC_URI="https://bitbucket.org/mgorny/cpuinfo2cpuflags/downloads/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
