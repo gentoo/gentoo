@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.0-rxvt-unicode-9.15.patch" #192083 #383871
 	"${FILESDIR}/${PN}-6.0-pkg-config.patch"
 	"${FILESDIR}/${PN}-5.9-gcc-5.patch" #545114
+	"${FILESDIR}/${PN}-6.0-ticlib.patch" #557360
 )
 
 src_prepare() {

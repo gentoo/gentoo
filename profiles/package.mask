@@ -30,10 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (12 Aug 2015)
-# Masked due to ABI_X86="32" breakage (bug #557360)
-=sys-libs/ncurses-6.0
-
 # Patrice Clement <monsieurp@gentoo.org> (11 Aug 2015)
 # Old and doesn't compile with recent JDKs (>= 1.8).
 # Masked for removal in 30 days. See bug #557210.
