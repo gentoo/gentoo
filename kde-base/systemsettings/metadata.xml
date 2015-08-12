@@ -4,6 +4,5 @@
 	<herd>kde</herd>
 	<use>
 		<flag name="kscreen">Use <pkg>kde-misc/kscreen</pkg> for screen management</flag>
-		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 	</use>
 </pkgmetadata>
