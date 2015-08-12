@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils gnome2-utils multilib qmake-utils
 
 MY_PV="${PV/_rc/.RC}"
-MY_PV="${MY_PV/_pre/\~}"
+MY_PV="${MY_PV/_pre/$'\x7e'}" # bug #557276
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.sourceforge.net"
