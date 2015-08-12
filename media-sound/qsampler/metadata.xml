@@ -3,6 +3,7 @@
 <pkgmetadata>
   <herd>sound</herd>
   <use>
-    <flag name="libgig">Enable libgig support for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files</flag>
+    <flag name="libgig">Enable libgig support for loading Gigasampler files and
+      DLS (Downloadable Sounds) Level 1/2 files</flag>
   </use>
 </pkgmetadata>
