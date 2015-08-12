@@ -56,7 +56,7 @@ RDEPEND="
 	dev-libs/libxml2
 	=sys-fs/fuse-2*
 	acl? ( sys-apps/acl )
-	java? ( virtual/jre:1.6 )
+	java? ( virtual/jre:1.7 )
 "
 
 S="${WORKDIR}"
