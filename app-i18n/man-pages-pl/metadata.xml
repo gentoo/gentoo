@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-	<email>maintainer-needed@gentoo.org</email>
+	<email>yoshi3@autograf.pl</email>
+	<name> Marcin Kowalski</name>
+	<description>Maintainer. Assign bugs on him</description>
 	</maintainer>
+	<herd>proxy-maintainers</herd>
 </pkgmetadata>
