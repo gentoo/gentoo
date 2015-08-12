@@ -8,19 +8,14 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit eutils systemd udev python-r1
 
-BACKPORTS=e26b4ba6
 MY_PN="qemu"
 MY_P="${MY_PN}-${PV}"
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
 	inherit git-2
-	SRC_URI=""
-	KEYWORDS=""
 else
-	SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.bz2
-	${BACKPORTS:+
-		http://dev.gentoo.org/~cardoe/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
+	SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
@@ -39,35 +34,37 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	python_export_best
-}
-
 src_prepare() {
-	[[ -n ${BACKPORTS} ]] && \
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
-			epatch
-
 	epatch_user
 }
 
 src_configure() {
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--libdir=/usr/$(get_libdir) \
-		--localstatedir=/ \
-		--disable-bsd-user \
-		--disable-linux-user \
-		--disable-system \
-		--disable-strip \
-		--disable-werror \
-		--enable-guest-agent \
-		--python=${PYTHON}
+	python_setup
+
+	tc-export AR LD OBJCOPY
+
+	local myconf=(
+		--prefix=/usr
+		--sysconfdir=/etc
+		--libdir="/usr/$(get_libdir)"
+		--localstatedir=/
+		--disable-bsd-user
+		--disable-linux-user
+		--disable-system
+		--disable-strip
+		--disable-werror
+		--enable-guest-agent
+		--python="${PYTHON}"
+		--cc="$(tc-getCC)"
+		--cxx="$(tc-getCXX)"
+		--host-cc="$(tc-getBUILD_CC)"
+	)
+	echo "./configure ${myconf[*]}"
+	./configure "${myconf[@]}" || die
 }
 
 src_compile() {
-	emake qemu-ga
+	emake V=1 qemu-ga
 }
 
 src_install() {
@@ -77,7 +74,7 @@ src_install() {
 	newinitd "${FILESDIR}/qemu-ga.init-r1" qemu-guest-agent
 	newconfd "${FILESDIR}/qemu-ga.conf-r1" qemu-guest-agent
 
-	insinto /etc/logrotate.d/
+	insinto /etc/logrotate.d
 	newins "${FILESDIR}/qemu-ga.logrotate" qemu-guest-agent
 
 	# systemd stuff
