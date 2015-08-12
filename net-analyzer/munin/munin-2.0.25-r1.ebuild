@@ -46,7 +46,13 @@ DEPEND_COM="
 	virtual/perl-Time-HiRes
 	apache? ( www-servers/apache[apache2_modules_cgi,apache2_modules_cgid,apache2_modules_rewrite] )
 	asterisk? ( dev-perl/Net-Telnet )
-	cgi? ( dev-perl/FCGI )
+	cgi? (
+		dev-perl/FCGI
+		|| (
+			( dev-perl/CGI-Fast >=dev-lang/perl-5.22 )
+			<dev-lang/perl-5.22
+			)
+		)
 	dhcpd? (
 		>=net-misc/dhcp-3[server]
 		dev-perl/Net-IP
