@@ -100,8 +100,9 @@ do_configure() {
 		$(use_with cxx cxx-binding)
 		$(use_with debug)
 		$(use_with profile)
-		$(use_with gpm)
-		$(multilib_is_native_abi || use_with gpm gpm libgpm.so.1)
+		# The configure script uses ldd to parse the linked output which
+		# is flaky for cross-compiling/multilib/ldd versions/etc...
+		$(use_with gpm gpm libgpm.so.1)
 		--disable-termcap
 		--enable-symlinks
 		--with-rcs-ids
