@@ -27,7 +27,7 @@ LICENSE="GPL-2
 	handbook? ( FDL-1.2 )"
 KEYWORDS="amd64 x86"
 SLOT="4"
-IUSE="addressbook debug doc gphoto2 mysql nepomuk semantic-desktop themedesigner +thumbnails video"
+IUSE="addressbook debug doc gphoto2 mysql semantic-desktop themedesigner +thumbnails video"
 
 CDEPEND="
 	kde-apps/kdebase-kioslaves:4
@@ -51,12 +51,6 @@ CDEPEND="
 	addressbook? ( $(add_kdebase_dep kdepimlibs) )
 	gphoto2? ( media-libs/libgphoto2:= )
 	mysql? ( virtual/mysql )
-	nepomuk? (
-		dev-libs/shared-desktop-ontologies
-		dev-libs/soprano
-		$(add_kdebase_dep kdelibs 'semantic-desktop(+)')
-		$(add_kdebase_dep nepomuk-core)
-	)
 	semantic-desktop? (
 		$(add_kdebase_dep baloo)
 	)
@@ -125,16 +119,15 @@ src_configure() {
 		-DFORCED_UNBUNDLE=ON
 		-DWITH_LQR=ON
 		-DWITH_LENSFUN=ON
-		$(cmake-utils_use_enable addressbook KDEPIMLIBSSUPPORT)
 		-DWITH_MarbleWidget=ON
+		-DENABLE_NEPOMUKSUPPORT=OFF
+		$(cmake-utils_use_enable addressbook KDEPIMLIBSSUPPORT)
 		$(cmake-utils_use_enable gphoto2 GPHOTO2)
 		$(cmake-utils_use_with gphoto2)
-		$(cmake-utils_use_with nepomuk Soprano)
 		$(cmake-utils_use_enable themedesigner)
 		$(cmake-utils_use_enable thumbnails THUMBS_DB)
 		$(cmake-utils_use_enable mysql INTERNALMYSQL)
 		$(cmake-utils_use_enable debug DEBUG_MESSAGES)
-		$(cmake-utils_use_enable nepomuk NEPOMUKSUPPORT)
 		$(cmake-utils_use_enable semantic-desktop BALOOSUPPORT)
 	)
 
