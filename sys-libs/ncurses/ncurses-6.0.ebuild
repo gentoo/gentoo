@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic toolchain-funcs multilib-minimal
+inherit eutils flag-o-matic toolchain-funcs multilib-minimal multiprocessing
 
 MY_PV=${PV:0:3}
 PV_SNAP=${PV:4}
@@ -62,8 +62,10 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	do_configure narrowc
-	use unicode && do_configure widec --enable-widec --includedir="${EPREFIX}"/usr/include/ncursesw
+	multijob_init
+	multijob_child_init do_configure narrowc
+	use unicode && multijob_child_init do_configure widec --enable-widec --includedir="${EPREFIX}"/usr/include/ncursesw
+	multijob_finish
 }
 
 do_configure() {
