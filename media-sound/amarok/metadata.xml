@@ -18,7 +18,6 @@
 	<flag name="mp3tunes">Enable mp3tunes integration</flag>
 	<flag name="mtp">Enable support for libMTP (Plays4Sure) devices access through libmtp
 	</flag>
-	<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 	<flag name="ofa">Use <pkg>media-libs/libofa</pkg> to compute MusicDNS acoustic
 		fingerprints (used by MusicBrainz)
 	</flag>
