@@ -1,0 +1,38 @@
+--- /var/tmp/portage/media-sound/mpg321-0.3.2/work/mpg321-0.3.2-orig/mpg321.c	2012-03-25 14:27:49.000000000 +0200
++++ /tmp/mpg321.c	2015-08-12 23:34:20.395331151 +0200
+@@ -183,7 +183,7 @@
+ 				else{
+ #endif					
+ 					if(!(options.opt & MPG321_ENABLE_BUFFER))
+-						fprintf(stderr,"Volume: %ld%%      \r",volume);
++						fprintf(stderr,"Volume: %d%%      \r",volume);
+ #ifdef HAVE_ALSA
+ 				}
+ #endif
+@@ -233,7 +233,7 @@
+ 				else{
+ #endif
+ 					if(!(options.opt & MPG321_ENABLE_BUFFER))
+-						fprintf(stderr,"Volume: %ld%%      \r",volume);
++						fprintf(stderr,"Volume: %d%%      \r",volume);
+ #ifdef HAVE_ALSA
+ 				}
+ #endif
+@@ -447,7 +447,7 @@
+         {
+             if(!names[i])
+             {
+-                printf(emptystring);
++                printf("%s", emptystring);
+             }
+             
+             else
+@@ -465,7 +465,7 @@
+         for (i=0; i<=5; i++)    {
+             fprintf (stderr, "%s", info_id3[i].name);
+             if (!names[i])  {
+-                fprintf (stderr, emptystring);
++                fprintf (stderr, "%s", emptystring);
+             }   else    {
+                 fprintf (stderr, "%s", names[i]);
+                 free (names[i]);
