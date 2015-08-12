@@ -89,9 +89,8 @@ pkg_setup() {
 
 	# Make sure people who are using tcp wrappers are notified of its removal. #531156
 	if grep -qs '^ *sshd *:' "${EROOT}"/etc/hosts.{allow,deny} ; then
-		eerror "Sorry, but openssh no longer supports tcp-wrappers, and it seems like"
-		eerror "you're trying to use it.  Update your ${EROOT}etc/hosts.{allow,deny} please."
-		die "USE=tcpd no longer works"
+		ewarn "Sorry, but openssh no longer supports tcp-wrappers, and it seems like"
+		ewarn "you're trying to use it.  Update your ${EROOT}etc/hosts.{allow,deny} please."
 	fi
 }
 
