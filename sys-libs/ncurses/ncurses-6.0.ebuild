@@ -18,7 +18,7 @@ LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="5/6"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="ada +cxx debug doc gpm minimal profile static-libs tinfo trace unicode"
+IUSE="ada +cxx debug doc gpm minimal profile static-libs test tinfo trace unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 #	berkdb? ( sys-libs/db )"
@@ -115,6 +115,7 @@ do_configure() {
 		$(use_enable !debug leaks)
 		$(use_with debug expanded)
 		$(use_with !debug macros)
+		$(use_with test tests)
 		$(use_with trace)
 		$(use_with tinfo termlib)
 	)
