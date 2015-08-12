@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,15 +10,14 @@ inherit distutils-r1
 
 DESCRIPTION="ISO country, subdivision, language, currency and script definitions and their translations"
 HOMEPAGE="http://pypi.python.org/pypi/pycountry"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~sparc ~ppc ~x86"
 IUSE="test"
 
-DEPEND="app-arch/unzip
-	dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
