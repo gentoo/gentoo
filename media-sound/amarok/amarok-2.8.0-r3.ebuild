@@ -29,7 +29,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="4"
-IUSE="cdda debug +embedded ipod lastfm mp3tunes mtp nepomuk ofa opengl test +utils"
+IUSE="cdda debug +embedded ipod lastfm mp3tunes mtp ofa opengl test +utils"
 
 if [[ ${KDE_BUILD_TYPE} == live ]]; then
 	RESTRICT="test"
@@ -38,7 +38,7 @@ fi
 # ipod requires gdk enabled and also gtk compiled in libgpod
 COMMONDEPEND="
 	app-crypt/qca:2[qt4(+)]
-	$(add_kdebase_dep kdelibs 'nepomuk?,opengl?' 4.8.4)
+	$(add_kdebase_dep kdelibs 'opengl?' 4.8.4)
 	$(add_kdeapps_dep kdebase-kioslaves)
 	>=media-libs/taglib-1.7[asf,mp4]
 	>=media-libs/taglib-extras-1.0.1
@@ -58,13 +58,12 @@ COMMONDEPEND="
 	mp3tunes? (
 		dev-libs/glib:2
 		dev-libs/libxml2
-		dev-libs/openssl
+		dev-libs/openssl:0
 		net-libs/loudmouth
 		net-misc/curl
 		>=dev-qt/qtcore-4.8.4:4[glib]
 	)
 	mtp? ( >=media-libs/libmtp-1.0.0 )
-	nepomuk? ( >=kde-base/nepomuk-core-4.9.0 )
 	ofa? ( >=media-libs/libofa-0.9.0 )
 	opengl? ( virtual/opengl )
 "
@@ -92,14 +91,14 @@ src_configure() {
 		-DWITH_PLAYER=ON
 		-DWITH_Libgcrypt=OFF
 		-DWITH_SPECTRUM_ANALYZER=OFF
+		-DWITH_NepomukCore=OFF
+		-DWITH_Soprano=OFF
 		$(cmake-utils_use embedded WITH_MYSQL_EMBEDDED)
 		$(cmake-utils_use_with ipod)
 		$(cmake-utils_use_with ipod Gdk)
 		$(cmake-utils_use_with lastfm LibLastFm)
 		$(cmake-utils_use_with mtp)
 		$(cmake-utils_use_with mp3tunes MP3Tunes)
-		$(cmake-utils_use_with nepomuk)
-		$(cmake-utils_use_with nepomuk Soprano)
 		$(cmake-utils_use_with ofa LibOFA)
 		$(cmake-utils_use_with utils UTILITIES)
 	)

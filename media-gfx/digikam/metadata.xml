@@ -5,7 +5,6 @@
 <maintainer><email>dilfridge@gentoo.org</email></maintainer>
 <use>
 	<flag name="addressbook">Add support for kdepim</flag>
-	<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 	<flag name="themedesigner">Build the digikam theme designer</flag>
 	<flag name="thumbnails">Enable thumbnails database support</flag>
 	<flag name="video">Pull in mplayerthumbs to enable video thumbnails</flag>
