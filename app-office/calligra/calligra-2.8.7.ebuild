@@ -41,9 +41,9 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="attica +crypt +eigen +exif fftw +fontconfig freetds +glew +glib +gsf gsl
-import-filter +jpeg jpeg2k +kdcraw kde +kdepim +lcms marble mysql nepomuk
-+okular openexr +pdf postgres spacenav sybase test tiff +threads +truetype vc
-xbase +xml"
+import-filter +jpeg jpeg2k +kdcraw kde +kdepim +lcms marble mysql +okular
+openexr +pdf postgres spacenav sybase test tiff +threads +truetype vc xbase
++xml"
 
 # please do not sort here, order is same as in CMakeLists.txt
 CAL_FTS="words stage sheets author karbon krita kexi flow plan braindump"
@@ -73,7 +73,6 @@ RDEPEND="
 	!app-office/krita
 	!app-office/kspread
 	!app-office/kword
-	$(add_kdebase_dep kdelibs 'nepomuk?')
 	$(add_kdeapps_dep knewstuff)
 	dev-lang/perl
 	dev-libs/boost
@@ -112,7 +111,6 @@ RDEPEND="
 	)
 	marble? ( $(add_kdeapps_dep marble) )
 	mysql? ( virtual/mysql )
-	nepomuk? ( dev-libs/soprano )
 	okular? ( $(add_kdeapps_dep okular) )
 	opengl? ( virtual/glu )
 	openexr? ( media-libs/openexr )
@@ -174,6 +172,7 @@ src_configure() {
 		"-DBUILD_active=OFF"         # we dont support active gui, maybe arm could
 		"-DCREATIVEONLY=OFF"
 		"-DPACKAGERS_BUILD=OFF"
+		"-DWITH_Soprano=OFF"
 	)
 
 	# regular options
@@ -202,7 +201,6 @@ src_configure() {
 		$(cmake-utils_use_with lcms LCMS2)
 		$(cmake-utils_use_with marble Marble)
 		$(cmake-utils_use_with mysql MySQL)
-		$(cmake-utils_use_with nepomuk Soprano)
 		$(cmake-utils_use_with okular Okular)
 		$(cmake-utils_use_with openexr OpenEXR)
 		$(cmake-utils_use_with opengl OpenGL)

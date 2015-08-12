@@ -18,7 +18,7 @@ SRC_URI="http://tellico-project.org/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="4"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="addressbook cddb debug nepomuk pdf scanner taglib v4l xmp yaz"
+IUSE="addressbook cddb debug pdf scanner taglib v4l xmp yaz"
 
 RDEPEND="
 	dev-libs/libxml2
@@ -28,13 +28,12 @@ RDEPEND="
 	media-libs/qimageblitz
 	addressbook? ( $(add_kdebase_dep kdepimlibs) )
 	cddb? ( $(add_kdeapps_dep libkcddb) )
-	nepomuk? ( $(add_kdebase_dep kdelibs 'nepomuk?') )
 	pdf? ( app-text/poppler[qt4] )
 	scanner? ( $(add_kdeapps_dep libksane) )
 	taglib? ( >=media-libs/taglib-1.5 )
 	v4l? ( >=media-libs/libv4l-0.8.3 )
 	xmp? ( >=media-libs/exempi-2 )
-	yaz? ( >=dev-libs/yaz-2 )
+	yaz? ( >=dev-libs/yaz-2:0 )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -47,10 +46,10 @@ DOCS=( AUTHORS ChangeLog README )
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_Nepomuk=OFF
 		$(cmake-utils_use_with addressbook KdepimLibs)
 		$(cmake-utils_use_with cddb KdeMultimedia)
 		$(cmake-utils_use_with pdf PopplerQt4)
-		$(cmake-utils_use_with nepomuk)
 		$(cmake-utils_use_with scanner KSane)
 		$(cmake-utils_use_with taglib)
 		$(cmake-utils_use_enable v4l WEBCAM)

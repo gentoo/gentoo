@@ -9,6 +9,5 @@
 	</longdescription>
 	<use>
 		<flag name="addressbook">Add support for kdepim addressbook (kabc)</flag>
-		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 	 </use>
 </pkgmetadata>
