@@ -36,11 +36,13 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-0.6.10-info-suffix.patch \
 		"${FILESDIR}"/${PN}-0.6.10-dir-file.patch \
 		"${FILESDIR}"/${PN}-0.6.10-tinfo.patch \
-		"${FILESDIR}"/${PN}-0.6.10-gettext-0.19.patch
+		"${FILESDIR}"/${PN}-0.6.10-gettext-0.19.patch \
+		"${FILESDIR}"/${PN}-0.6.10-ncurses-check.patch \
+		"${FILESDIR}"/${PN}-0.6.10-libc-basename.patch
 
 	eautoreconf
 
-	append-cflags -D_BSD_SOURCE # sbrk()
+	append-cflags -D_BSD_SOURCE -D_DEFAULT_SOURCE # sbrk()
 }
 
 src_configure() {

@@ -1,0 +1,33 @@
+do not redefine the basename that the C library provides
+
+--- a/src/filehandling_functions.c
++++ b/src/filehandling_functions.c
+@@ -31,7 +31,6 @@ typedef struct
+ }
+ Suffixes;
+ 
+-char * basename(char *filename);
+ 
+ 
+ /******************************************************************************
+@@ -713,20 +712,6 @@ opendirfile(int number)
+ 	return NULL;
+ }
+ 
+-char *
+-basename(char *filename)
+-{
+-	int len = strlen(filename);
+-	char *a = filename + len;
+-	while (a > filename)
+-	{
+-		a--;
+-		if (*a == '/')
+-			return a + 1;
+-	}
+-	return filename;		/* when it was a basename */
+-}
+-
+ /*
+  * Note: openinfo is a function for reading info files, and putting
+  * uncompressed content into a temporary filename.  For a flexibility, there
