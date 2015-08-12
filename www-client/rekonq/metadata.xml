@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<herd>kde</herd>
 	<use>
-		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 		<flag name="opera">Support for Opera sync handler</flag>
 	</use>
 	<upstream>
