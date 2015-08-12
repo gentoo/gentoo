@@ -6,7 +6,4 @@
 	<maintainer>
   		<email>media-video@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
-	</use>
 </pkgmetadata>
