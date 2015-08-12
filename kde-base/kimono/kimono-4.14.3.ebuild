@@ -7,14 +7,14 @@ EAPI=5
 inherit mono-env kde4-base
 
 DESCRIPTION="C# bindings for KDE"
-KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="akonadi debug nepomuk plasma"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="akonadi debug plasma"
 
 DEPEND="
 	dev-lang/mono
 	$(add_kdebase_dep qyoto 'webkit')
 	$(add_kdebase_dep smokeqt)
-	$(add_kdebase_dep smokekde 'nepomuk?')
+	$(add_kdebase_dep smokekde)
 	plasma? ( $(add_kdebase_dep smokeqt 'webkit') )
 "
 RDEPEND="${DEPEND}"
@@ -32,11 +32,11 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_Soprano=OFF
+		-DWITH_Nepomuk=OFF
 		$(cmake-utils_use_with akonadi)
 		$(cmake-utils_use_with akonadi KdepimLibs)
-		$(cmake-utils_use_with nepomuk)
 		$(cmake-utils_use_disable plasma)
-		-DWITH_Soprano=OFF
 	)
 	kde4-base_src_configure
 }

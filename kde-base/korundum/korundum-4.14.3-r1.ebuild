@@ -16,12 +16,12 @@ inherit kde4-base ruby-ng
 
 DESCRIPTION="KDE Ruby bindings"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="akonadi debug kate nepomuk okular"
+IUSE="akonadi debug kate okular"
 HOMEPAGE="http://techbase.kde.org/Development/Languages/Ruby"
 
 DEPEND="
 	$(add_kdebase_dep qtruby 'ruby_targets_ruby20')
-	$(add_kdebase_dep smokekde 'akonadi?,kate?,okular?,nepomuk?')
+	$(add_kdebase_dep smokekde 'akonadi?,kate?,okular?')
 	$(add_kdebase_dep smokeqt)
 "
 RDEPEND="${DEPEND}
@@ -51,10 +51,10 @@ each_ruby_configure() {
 		-DRUBY_LIBRARY=$(ruby_get_libruby)
 		-DRUBY_INCLUDE_PATH=$(ruby_get_hdrdir)
 		-DRUBY_EXECUTABLE=${RUBY}
+		-DWITH_Nepomuk=OFF
+		-DWITH_Soprano=OFF
 		$(cmake-utils_use_with akonadi)
 		$(cmake-utils_use_with akonadi KdepimLibs)
-		$(cmake-utils_use_with nepomuk)
-		$(cmake-utils_use_with nepomuk Soprano)
 		$(cmake-utils_use_disable kate)
 		$(cmake-utils_use_with okular)
 	)
