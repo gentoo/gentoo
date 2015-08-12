@@ -21,6 +21,7 @@ RDEPEND="dev-lang/perl
 	dev-perl/GraphViz
 	dev-perl/MailTools
 	dev-perl/Net-DNS
+	dev-perl/Net-DNS-SEC
 	dev-perl/XML-Simple"
 DEPEND="${RDEPEND}"
 
