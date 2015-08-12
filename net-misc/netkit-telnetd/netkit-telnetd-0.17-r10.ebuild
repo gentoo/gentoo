@@ -44,6 +44,11 @@ src_prepare() {
 	# gnu source. This is needed for gcc-3.4.x (needs to be pushed
 	# back to the deb folk?)
 	epatch "${FILESDIR}"/netkit-telnetd-0.17-cflags-gnu_source.patch
+
+	# Fix portability issues.
+	sed -i \
+		-e 's:echo -n:printf %s:' \
+		configure || die
 }
 
 src_configure() {
