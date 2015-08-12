@@ -14,7 +14,7 @@ inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="debug gps json +kdepim nepomuk python qalculate"
+IUSE="debug gps json +kdepim python qalculate"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -23,7 +23,7 @@ COMMONDEPEND="
 	>=dev-qt/qtcore-4.8.4-r3:4
 	!kde-misc/ktouchpadenabler
 	$(add_kdebase_dep kactivities)
-	$(add_kdebase_dep kdelibs 'crypt,nepomuk?')
+	$(add_kdebase_dep kdelibs 'crypt')
 	$(add_kdebase_dep kephal)
 	$(add_kdebase_dep ksysguard)
 	$(add_kdebase_dep libkworkspace)
@@ -40,10 +40,6 @@ COMMONDEPEND="
 	gps? ( >=sci-geosciences/gpsd-2.37 )
 	json? ( dev-libs/qjson )
 	kdepim? ( $(add_kdebase_dep kdepimlibs) )
-	nepomuk? (
-		dev-libs/soprano
-		$(add_kdebase_dep nepomuk-core)
-	)
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/PyQt4-4.4.0[X,${PYTHON_USEDEP}]
@@ -99,15 +95,15 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_NepomukCore=OFF
+		-DWITH_Soprano=OFF
+		-DWITH_Xmms=OFF
 		$(cmake-utils_use_with gps libgps)
 		$(cmake-utils_use_with json QJSON)
 		$(cmake-utils_use_with kdepim Akonadi)
 		$(cmake-utils_use_with kdepim KdepimLibs)
-		$(cmake-utils_use_with nepomuk NepomukCore)
-		$(cmake-utils_use_with nepomuk Soprano)
 		$(cmake-utils_use_with python PythonLibrary)
 		$(cmake-utils_use_with qalculate)
-		-DWITH_Xmms=OFF
 	)
 
 	kde4-meta_src_configure
