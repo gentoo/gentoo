@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst unpack
+DEFINED_PHASES=compile install unpack
 DEPEND=initramfs? ( sys-apps/iucode_tool )
 DESCRIPTION=Intel IA32 microcode update data
 EAPI=4
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( initramfs monolithic split-ucode )
 SLOT=0
 SRC_URI=http://downloadmirror.intel.com/24661/eng/microcode-20150121.tgz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=dedd496c439fa9f2bb7564edbed1e5d5
+_md5_=1a3307692cfb8b78d0921f70eafc296f
