@@ -1,0 +1,48 @@
+diff -aurN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2015-07-15 09:34:27.000000000 -0400
++++ b/CMakeLists.txt	2015-08-10 22:12:06.021818283 -0400
+@@ -56,7 +56,7 @@
+   endif()
+ endif()
+ 
+-set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_RPATH}:${CMAKE_INSTALL_PREFIX}/${MAXSCALE_LIBDIR})
++set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/${MAXSCALE_LIBDIR})
+ 
+ # Make sure the release notes for this release are present if it is a stable one
+ if(${MAXSCALE_VERSION} MATCHES "-stable")
+diff -aurN a/server/modules/filter/hint/CMakeLists.txt b/server/modules/filter/hint/CMakeLists.txt
+--- a/server/modules/filter/hint/CMakeLists.txt	2015-07-15 09:34:27.000000000 -0400
++++ b/server/modules/filter/hint/CMakeLists.txt	2015-08-10 22:12:49.413170068 -0400
+@@ -1,4 +1,3 @@
+ add_library(hintfilter SHARED hintfilter.c hintparser.c)
+-set_target_properties(hintfilter PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_RPATH}:${MAXSCALE_LIBDIR})
+ target_link_libraries(hintfilter ssl log_manager utils)
+ install(TARGETS hintfilter DESTINATION ${MAXSCALE_LIBDIR})
+diff -aurN a/server/modules/routing/binlog/CMakeLists.txt b/server/modules/routing/binlog/CMakeLists.txt
+--- a/server/modules/routing/binlog/CMakeLists.txt	2015-07-15 09:34:27.000000000 -0400
++++ b/server/modules/routing/binlog/CMakeLists.txt	2015-08-10 22:12:35.565376937 -0400
+@@ -1,4 +1,3 @@
+ add_library(binlogrouter SHARED blr.c blr_master.c blr_cache.c blr_slave.c blr_file.c)
+-set_target_properties(binlogrouter PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_RPATH}:${MAXSCALE_LIBDIR})
+ target_link_libraries(binlogrouter ssl pthread log_manager)
+ install(TARGETS binlogrouter DESTINATION ${MAXSCALE_LIBDIR})
+diff -aurN a/server/modules/routing/maxinfo/CMakeLists.txt b/server/modules/routing/maxinfo/CMakeLists.txt
+--- a/server/modules/routing/maxinfo/CMakeLists.txt	2015-07-15 09:34:27.000000000 -0400
++++ b/server/modules/routing/maxinfo/CMakeLists.txt	2015-08-10 22:12:25.265530805 -0400
+@@ -1,4 +1,3 @@
+ add_library(maxinfo SHARED maxinfo.c maxinfo_parse.c maxinfo_error.c maxinfo_exec.c)
+-set_target_properties(maxinfo PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_RPATH}:${MAXSCALE_LIBDIR})
+ target_link_libraries(maxinfo pthread log_manager)
+ install(TARGETS maxinfo DESTINATION ${MAXSCALE_LIBDIR})
+diff -aurN a/server/core/CMakeLists.txt b/server/core/CMakeLists.txt
+--- a/server/core/CMakeLists.txt	2015-07-15 09:34:27.000000000 -0400
++++ b/server/core/CMakeLists.txt	2015-08-10 22:39:22.709368505 -0400
+@@ -8,6 +8,8 @@
+   target_link_libraries(fullcore ${CURL_LIBRARIES} utils log_manager pthread ${EMBEDDED_LIB} ${PCRE_LINK_FLAGS} ssl aio rt crypt dl crypto inih z m stdc++)
+ endif()
+ 
++SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
++
+ add_executable(maxscale atomic.c buffer.c spinlock.c gateway.c
+ 	gw_utils.c utils.c dcb.c load_utils.c session.c service.c server.c 
+ 	poll.c config.c users.c hashtable.c dbusers.c thread.c gwbitmask.c 
