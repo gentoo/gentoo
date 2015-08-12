@@ -47,9 +47,3 @@ src_install() {
 	use monolithic && doins microcode.dat
 	use split-ucode && doins -r intel-ucode
 }
-
-pkg_postinst() {
-	elog "The microcode available for Intel CPUs has been updated.  You'll need"
-	elog "to reload the code into your processor.  If you're using the init.d:"
-	elog "/etc/init.d/microcode_ctl restart"
-}
