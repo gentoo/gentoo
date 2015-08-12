@@ -20,18 +20,11 @@ SLOT="5/6"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs tinfo trace unicode"
 
-DEPEND="gpm? ( sys-libs/gpm )"
+DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 #	berkdb? ( sys-libs/db )"
 RDEPEND="${DEPEND}
 	!<x11-terms/rxvt-unicode-9.06-r3
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r12
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
-# Put the MULTILIB_USEDEP on gpm in PDEPEND only to avoid circular deps.
-# We can move it to DEPEND and drop the --with-gpm=libgpm.so.1 from the econf
-# line below once we can assume multilib gpm is available everywhere.
-PDEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
+	!app-emulation/emul-linux-x86-baselibs"
 
 S=${WORKDIR}/${MY_P}
 HOSTTIC_DIR=${WORKDIR}/${P}-host
