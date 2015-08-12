@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit versionator eutils flag-o-matic toolchain-funcs
 
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ~hppa ppc ppc64 x86"
 IUSE="ncurses"
 
-DEPEND="ncurses? ( >=sys-libs/ncurses-5.2 )"
+DEPEND="ncurses? ( >=sys-libs/ncurses-5.2:= )"
 RDEPEND="${DEPEND}
 	net-dialup/lrzsz"
 
