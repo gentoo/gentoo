@@ -7,16 +7,12 @@ inherit kde4-meta-pkg
 
 DESCRIPTION="KDE bindings - merge this to pull in all kdebindings-derived packages"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="csharp java perl python ruby"
+IUSE="java perl python ruby"
 
 RDEPEND="
 	$(add_kdebase_dep smokegen)
 	$(add_kdebase_dep smokekde)
 	$(add_kdebase_dep smokeqt)
-	csharp? (
-		$(add_kdebase_dep kimono)
-		$(add_kdebase_dep qyoto)
-	)
 	java? ( $(add_kdebase_dep krossjava) )
 	perl? (
 		$(add_kdebase_dep perlkde)
