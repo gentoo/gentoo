@@ -6,7 +6,6 @@
 		<flag name="akonadi">Compile bindings for Akonadi</flag>
 		<flag name="attica">Compile bindings for <pkg>dev-libs/libattica</pkg></flag>
 		<flag name="kate">Compile bindings for KDE Advanced Text Editor</flag>
-		<flag name="nepomuk">Compile bindings for Nepomuk</flag>
 		<flag name="okular">Compile bindings for <pkg>kde-base/okular</pkg></flag>
 	</use>
 </pkgmetadata>
