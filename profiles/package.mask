@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (12 Aug 2015)
+# (on behalf of QA team)
+# Disables RSA & DSA keys without warning, effectively blocking incoming
+# SSH connections.
+>=net-misc/openssh-7.0
+
 # Patrice Clement <monsieurp@gentoo.org> (11 Aug 2015)
 # Old and doesn't compile with recent JDKs (>= 1.8).
 # Masked for removal in 30 days. See bug #557210.
