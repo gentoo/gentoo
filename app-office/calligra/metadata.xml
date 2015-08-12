@@ -13,7 +13,6 @@
 		<flag name="kdcraw">Enable support for KDE image manipulating interface via <pkg>kde-apps/libkdcraw</pkg></flag>
 		<flag name="kdepim">Enable support for KDEPIM resources integration</flag>
 		<flag name="marble">Enable displaying of maps using Marble</flag>
-		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 		<flag name="okular">Enable bindings for <pkg>kde-apps/okular</pkg></flag>
 		<flag name="spacenav">Enable support for the 3Dconnexion spacenav input device via <pkg>dev-libs/libspnav</pkg></flag>
 		<flag name="vc">Enable support for <pkg>dev-libs/vc</pkg>, could be a significant speed boost on krita</flag>
