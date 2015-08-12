@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="scheme"
 
 RDEPEND="dev-libs/expat
-	dev-scheme/scm[libscm]"
+	scheme? ( dev-scheme/scm[libscm] )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
