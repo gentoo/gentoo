@@ -12,7 +12,7 @@ DESCRIPTION="KDE4 translation tool"
 HOMEPAGE="http://www.kde.org/applications/development/lokalize
 http://l10n.kde.org/tools"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="debug nepomuk"
+IUSE="debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -20,7 +20,6 @@ DEPEND="
 	${PYTHON_DEPS}
 	>=app-text/hunspell-1.2.8
 	>=dev-qt/qtsql-4.5.0:4[sqlite]
-	nepomuk? ( >=dev-libs/soprano-2.9.0 )
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdesdk-strigi-analyzer)
