@@ -20,6 +20,7 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="initramfs monolithic +split-ucode"
 REQUIRED_USE="|| ( initramfs monolithic split-ucode )"
 
+DEPEND="initramfs? ( sys-apps/iucode_tool )"
 RDEPEND="!<sys-apps/microcode-ctl-1.17-r2" #268586
 
 S=${WORKDIR}
