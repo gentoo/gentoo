@@ -11,4 +11,9 @@
 	<upstream>
 		<remote-id type="sourceforge">rnv</remote-id>
 	</upstream>
+	<use>
+		<flag name="scheme">
+			Enable scheme support based on <pkg>dev-scheme/scm</pkg>
+		</flag>
+	</use>
 </pkgmetadata>
