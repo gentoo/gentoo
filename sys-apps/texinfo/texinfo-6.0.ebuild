@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit flag-o-matic
 
@@ -16,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="nls static"
 
 RDEPEND="!=app-text/tetex-2*
-	>=sys-libs/ncurses-5.2-r2
+	>=sys-libs/ncurses-5.2-r2:=
 	dev-lang/perl
 	dev-perl/libintl-perl
 	dev-perl/Unicode-EastAsianWidth
