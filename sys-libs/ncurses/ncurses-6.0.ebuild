@@ -96,6 +96,7 @@ do_configure() {
 		$(use_with ada)
 		$(use_with cxx)
 		$(use_with cxx cxx-binding)
+		--with-cxx-shared
 		$(use_with debug)
 		$(use_with profile)
 		# The configure script uses ldd to parse the linked output which
@@ -181,7 +182,7 @@ multilib_src_install() {
 	if ! tc-is-static-only ; then
 		ln -sf libncurses$(get_libname) "${ED}"/usr/$(get_libdir)/libcurses$(get_libname) || die
 	fi
-	use static-libs || find "${ED}"/usr/ -name '*.a' -a '!' -name '*curses++*.a' -delete
+	use static-libs || find "${ED}"/usr/ -name '*.a' -delete
 
 	# Build fails to create this ...
 	dosym ../share/terminfo /usr/$(get_libdir)/terminfo
