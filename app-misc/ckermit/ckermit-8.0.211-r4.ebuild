@@ -46,7 +46,7 @@ src_compile() {
 
 	local libs
 	ck_use ncurses -DCK_NCURSES -lncurses
-	append-cppflags -DHAVE_PTMX -D_XOPEN_SOURCE -D_BSD_SOURCE #202840
+	append-cppflags -DHAVE_PTMX -D_XOPEN_SOURCE -D_BSD_SOURCE -D_DEFAULT_SOURCE #202840
 	append-cppflags -DHAVE_CRYPT_H
 	emake \
 		CC="$(tc-getCC)" \
