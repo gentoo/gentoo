@@ -1,0 +1,53 @@
+--- modules/quercus/src/com/caucho/quercus/lib/xml/XMLWriter.java.orig	2015-08-12 22:15:36.022000000 +0000
++++ modules/quercus/src/com/caucho/quercus/lib/xml/XMLWriter.java	2015-08-12 22:16:45.761000000 +0000
+@@ -29,6 +29,7 @@
+ 
+ package com.caucho.quercus.lib.xml;
+ 
++import com.caucho.quercus.annotation.Optional;
+ import com.caucho.quercus.annotation.*;
+ import com.caucho.quercus.env.*;
+ import com.caucho.util.L10N;
+--- modules/quercus/src/com/caucho/quercus/lib/xml/XMLWriterModule.java.orig	2015-08-12 22:24:52.586000000 +0000
++++ modules/quercus/src/com/caucho/quercus/lib/xml/XMLWriterModule.java	2015-08-12 22:25:10.385000000 +0000
+@@ -29,6 +29,7 @@
+ 
+ package com.caucho.quercus.lib.xml;
+ 
++import com.caucho.quercus.annotation.Optional;
+ import com.caucho.quercus.annotation.*;
+ import com.caucho.quercus.env.*;
+ import com.caucho.util.L10N;
+--- modules/resin/src/com/caucho/security/x509/X509Parser.java.orig	2015-08-12 22:38:56.323000000 +0000
++++ modules/resin/src/com/caucho/security/x509/X509Parser.java	2015-08-12 22:39:17.249000000 +0000
+@@ -29,6 +29,7 @@
+ 
+ package com.caucho.security.x509;
+ 
++import com.caucho.util.Base64;
+ import com.caucho.util.*;
+ import com.caucho.vfs.*;
+ import java.io.*;
+--- modules/resin/src/com/caucho/server/admin/ManagementAuthenticator.java.orig	2015-08-12 22:39:56.138000000 +0000
++++ modules/resin/src/com/caucho/server/admin/ManagementAuthenticator.java	2015-08-12 22:40:29.323000000 +0000
+@@ -33,6 +33,7 @@
+ import com.caucho.security.AbstractAuthenticator;
+ import com.caucho.security.PasswordUser;
+ import com.caucho.util.*;
++import com.caucho.util.Base64;
+ 
+ import java.security.Principal;
+ import java.util.*;
+--- modules/resin/src/com/caucho/ejb/session/AbstractSessionManager.java.orig	2015-08-12 22:42:36.743000000 +0000
++++ modules/resin/src/com/caucho/ejb/session/AbstractSessionManager.java	2015-08-12 22:42:53.030000000 +0000
+@@ -379,9 +379,7 @@
+   @Override
+   public <T> T getLocalProxy(Class<T> api)
+   {
+-    OwnerCreationalContext owner = new OwnerCreationalContext(null);
+-    
+-    return getSessionContext(api).createProxy(owner);
++      return null;
+   }
+   
+   protected <T> AbstractSessionContext<X,T>

@@ -1,0 +1,59 @@
+--- build.xml.orig	2015-08-12 23:14:20.302000000 +0000
++++ build.xml	2015-08-12 23:14:47.909000000 +0000
+@@ -12,7 +12,7 @@
+   <property name="eclipse.home" value="${user.home}/eclipse"/>
+ 
+   <target name="compile"
+-          depends="init, hessian, javaee, jaxstream, portlet, script, resin-kernel, quercus-dev, resin, ecmascript, cdi, webutil, conf, ext, j2ee-management, resin-eclipselink, gae, jasper">
++          depends="init, hessian, javaee, jaxstream, portlet, script, resin-kernel, quercus-dev, resin, ecmascript, cdi, webutil, conf, ext, j2ee-management, gae">
+   </target>
+ 
+   <!--
+@@ -27,10 +27,6 @@
+     </antcall>
+   </target>
+   -->
+-  <target name="resin-eclipselink" depends="eclipselink">
+-    <copy file="modules/eclipselink/dist/resin-eclipselink.jar"
+-          todir="${resin.lib}"/>
+-  </target>
+ 
+   <target name="richfaces" depends="init">
+     <antcall target="artifact" inheritRefs="true">
+@@ -92,13 +88,6 @@
+     </antcall>
+   </target>
+ 
+-  <target name="eclipselink" depends="init">
+-    <antcall target="module" inheritRefs="true">
+-      <param name="module.name" value="eclipselink"/>
+-      <param name="module.jar" value="resin-eclipselink.jar"/>
+-    </antcall>
+-  </target>
+-
+   <!-- gae APIs for quercus testing -->
+   <target name="gae" depends="init">
+     <antcall target="module" inheritRefs="true">
+@@ -437,13 +426,6 @@
+     </antcall>
+   </target>
+ 
+-  <target name="jasper" depends="init">
+-    <antcall target="module" inheritRefs="true">
+-      <param name="module.name" value="jasper"/>
+-      <param name="module.jar" value="resin-jasper.jar"/>
+-    </antcall>
+-  </target>
+-
+   <target name="version">
+     <copy file="${resin.modules}/kernel/src/com/caucho/Version.tmpl"
+           tofile="${resin.modules}/kernel/src/com/caucho/Version.java"
+@@ -903,7 +885,7 @@
+     <delete dir="${dist}/${dist.name}"/>
+   </target>
+ 
+-  <target name="dist" depends="dist.clean, configure, compile, update, junit, eclipselink, artifacts, resin.dist.build, dist.package, quercus.war"/>
++  <target name="dist" depends="dist.clean, configure, compile, update, junit, artifacts, resin.dist.build, dist.package, quercus.war"/>
+ 
+   <target name="configure" depends="init">
+      <copy tofile="modules/c/src/resin/Makefile.in"
