@@ -27,3 +27,5 @@ RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/pygame-sdl2-for-renpy-${PV}
+
+PATCHES=( "${FILESDIR}"/${P}-cython-0.23.patch )
