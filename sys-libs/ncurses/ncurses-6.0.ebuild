@@ -115,6 +115,7 @@ do_configure() {
 		$(use_enable !debug leaks)
 		$(use_with debug expanded)
 		$(use_with !debug macros)
+		$(multilib_native_with progs)
 		$(use_with test tests)
 		$(use_with trace)
 		$(use_with tinfo termlib)
@@ -130,22 +131,20 @@ src_compile() {
 	# because people often don't keep matching host/target
 	# ncurses versions #249363
 	if tc-is-cross-compiler && ! ROOT=/ has_version ~sys-libs/${P} ; then
-		make_flags="-C progs tic"
-		BUILD_DIR="${HOSTTIC_DIR}" do_compile cross
+		BUILD_DIR="${HOSTTIC_DIR}" do_compile cross -C progs tic
 	fi
 
 	multilib-minimal_src_compile
 }
 
 multilib_src_compile() {
-	make_flags=""
-	multilib_is_native_abi || make_flags="PROGS= "
 	do_compile narrowc
 	use unicode && do_compile widec
 }
 
 do_compile() {
 	cd "${BUILD_DIR}"-$1 || die
+	shift
 
 	# A little hack to fix parallel builds ... they break when
 	# generating sources so if we generate the sources first (in
@@ -158,7 +157,7 @@ do_compile() {
 	# Manually delete the pc-files file so the install step will
 	# create the .pc files we want.
 	rm -f misc/pc-files
-	emake ${make_flags}
+	emake "$@"
 }
 
 multilib_src_install() {
