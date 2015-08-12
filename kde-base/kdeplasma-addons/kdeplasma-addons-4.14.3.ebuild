@@ -9,8 +9,8 @@ inherit kde4-base
 DESCRIPTION="Extra Plasma applets and engines"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="attica debug desktopglobe exif fcitx ibus json +kdepim nepomuk oauth
-qalculate qwt scim"
+IUSE="attica debug desktopglobe exif fcitx ibus json +kdepim oauth qalculate
+qwt scim"
 
 RESTRICT=test
 # tests hang
@@ -18,9 +18,8 @@ RESTRICT=test
 # krunner is only needed to generate dbus interface for lancelot
 COMMON_DEPEND="
 	app-crypt/qca:2[qt4(+)]
-	$(add_kdebase_dep kdelibs 'nepomuk?')
 	$(add_kdebase_dep krunner '' 4.11)
-	$(add_kdebase_dep plasma-workspace 'nepomuk?' 4.11)
+	$(add_kdebase_dep plasma-workspace '' 4.11)
 	x11-misc/shared-mime-info
 	attica? ( dev-libs/libattica )
 	desktopglobe? ( $(add_kdeapps_dep marble) )
@@ -44,13 +43,13 @@ RDEPEND="${COMMON_DEPEND}
 src_configure() {
 	local mycmakeargs=(
 		-DDBUS_INTERFACES_INSTALL_DIR="${EPREFIX}/usr/share/dbus-1/interfaces/"
+		-DWITH_Nepomuk=OFF
 		$(cmake-utils_use_with attica LibAttica)
 		$(cmake-utils_use_with desktopglobe Marble)
 		$(cmake-utils_use_with exif Kexiv2)
 		$(cmake-utils_use_build ibus)
 		$(cmake-utils_use_with json QJSON)
 		$(cmake-utils_use_with kdepim KdepimLibs)
-		$(cmake-utils_use_with nepomuk)
 		$(cmake-utils_use_with oauth QtOAuth)
 		$(cmake-utils_use_with qalculate)
 		$(cmake-utils_use_with qwt)
