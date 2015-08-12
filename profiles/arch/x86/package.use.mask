@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Michael Palimaka <kensington@gentoo.org> (12 Aug 2015)
+# Unkeyworded dependencies
+kde-frameworks/kauth policykit
+
 # James Le Cuirot <chewi@gentoo.org> (28 Jul 2015)
 # JavaFX and the browser plugin are included on x86 Linux.
 dev-java/oracle-jdk-bin -javafx -nsplugin
