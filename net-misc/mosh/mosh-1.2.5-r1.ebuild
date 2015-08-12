@@ -19,7 +19,7 @@ REQUIRED_USE="|| ( client server )
 	examples? ( client )"
 
 RDEPEND="dev-libs/protobuf
-	sys-libs/ncurses:5
+	sys-libs/ncurses:5=
 	virtual/ssh
 	client? (
 		dev-lang/perl
