@@ -2,7 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>kde</herd>
-	<use>
-		<flag name="soprano">Enable deprecated <pkg>dev-libs/soprano</pkg>, needed for nepomuk search</flag>
-	</use>
 </pkgmetadata>

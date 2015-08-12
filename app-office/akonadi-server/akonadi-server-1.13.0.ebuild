@@ -22,7 +22,7 @@ HOMEPAGE="http://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="+mysql postgres +qt4 qt5 soprano sqlite test"
+IUSE="+mysql postgres +qt4 qt5 sqlite test"
 
 REQUIRED_USE="^^ ( qt4 qt5 ) || ( sqlite mysql postgres )"
 
@@ -45,9 +45,7 @@ CDEPEND="
 		dev-qt/qttest:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
-		soprano? ( dev-libs/soprano[-qt4,qt5] )
 	)
-	soprano? ( dev-libs/soprano )
 	sqlite? ( dev-db/sqlite:3 )
 "
 DEPEND="${CDEPEND}
@@ -103,8 +101,8 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_QSQLITE_IN_QT_PREFIX=ON
+		-DWITH_SOPRANO=FALSE
 		$(cmake-utils_use test AKONADI_BUILD_TESTS)
-		$(cmake-utils_use_with soprano)
 		$(cmake-utils_use sqlite AKONADI_BUILD_QSQLITE)
 		$(cmake-utils_use qt5 QT5_BUILD)
 	)
