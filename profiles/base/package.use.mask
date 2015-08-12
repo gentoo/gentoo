@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michael Palimaka <kensington@gentoo.org> (12 Aug 2015)
+# Requires unreleased dependency
+kde-frameworks/kwallet gpg
+
 # Ben de Groot <yngwin@gentoo.org> (12 Aug 2015)
 # Seems to link correctly, but fails to run. Bug #557354.
 =media-sound/qsampler-0.3.1 libgig
