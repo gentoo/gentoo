@@ -11,18 +11,17 @@ inherit python-r1 portability kde4-base multilib eutils
 
 DESCRIPTION="Python bindings for KDE4"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="akonadi debug doc examples nepomuk test"
+IUSE="akonadi debug doc examples test"
 HOMEPAGE="http://techbase.kde.org/Development/Languages/Python"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE} test? ( nepomuk )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/PyQt4-4.11.1[${PYTHON_USEDEP},dbus,declarative,script,sql,svg,webkit,X]
 	>=dev-python/sip-4.16.2:=[${PYTHON_USEDEP}]
-	$(add_kdebase_dep kdelibs 'nepomuk?,opengl')
+	$(add_kdebase_dep kdelibs 'opengl')
 	akonadi? ( $(add_kdebase_dep kdepimlibs) )
-	nepomuk? ( >=dev-libs/soprano-2.9.0 )
 "
 DEPEND="${RDEPEND}
 	dev-lang/python-exec:2[${PYTHON_USEDEP}]
@@ -74,11 +73,11 @@ src_configure() {
 		local mycmakeargs=(
 			-DWITH_PolkitQt=OFF
 			-DWITH_QScintilla=OFF
-			$(cmake-utils_use_with akonadi KdepimLibs)
-			$(cmake-utils_use_with nepomuk)
-			$(cmake-utils_use_with nepomuk Soprano)
-			-DPYTHON_EXECUTABLE=${PYTHON}
 			-DPYKDEUIC4_ALTINSTALL=TRUE
+			-DWITH_Nepomuk=OFF
+			-DWITH_Soprano=OFF
+			$(cmake-utils_use_with akonadi KdepimLibs)
+			-DPYTHON_EXECUTABLE=${PYTHON}
 		)
 		local CMAKE_BUILD_DIR=${S}_build-${PYTHON_ABI}
 		kde4-base_src_configure

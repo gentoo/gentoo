@@ -4,6 +4,5 @@
 	<herd>kde</herd>
 	<use>
 		<flag name="akonadi">Compile bindings for Akonadi</flag>
-		<flag name="nepomuk">Compile bindings for Nepomuk</flag>
 	</use>
 </pkgmetadata>
