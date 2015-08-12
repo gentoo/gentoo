@@ -1,11 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 AUTOTOOLS_PRUNE_LIBTOOL_FILES="all"
+AUTOTOOLS_AUTORECONF=1
 
-inherit eutils linux-info mono-env flag-o-matic pax-utils autotools-utils
+inherit eutils linux-info mono-env flag-o-matic pax-utils autotools-utils versionator
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
 HOMEPAGE="http://www.mono-project.com/Main_Page"
@@ -16,12 +17,11 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 
-IUSE="nls minimal pax_kernel xen doc debug"
+IUSE="nls minimal pax_kernel xen doc"
 
 COMMONDEPEND="
-	!dev-util/monodoc
 	!minimal? ( >=dev-dotnet/libgdiplus-2.10 )
-	ia64? (	sys-libs/libunwind )
+	ia64? ( sys-libs/libunwind )
 	nls? ( sys-devel/gettext )
 "
 RDEPEND="${COMMONDEPEND}
@@ -33,10 +33,13 @@ DEPEND="${COMMONDEPEND}
 	pax_kernel? ( sys-apps/elfix )
 "
 
+MAKEOPTS="${MAKEOPTS} -j1" #nowarn
+S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
+
 pkg_pretend() {
 	# If CONFIG_SYSVIPC is not set in your kernel .config, mono will hang while compiling.
 	# See http://bugs.gentoo.org/261869 for more info."
-	CONFIG_CHECK="~SYSVIPC"
+	CONFIG_CHECK="SYSVIPC"
 	use kernel_linux && check_extra_config
 }
 
@@ -59,41 +62,34 @@ src_prepare() {
 	# mono build system can fail otherwise
 	strip-flags
 
-	# Remove this at your own peril. Mono will barf in unexpected ways.
-	append-flags -fno-strict-aliasing
+	# Fix VB targets
+	# http://osdir.com/ml/general/2015-05/msg20808.html
+	epatch "${FILESDIR}/add_missing_vb_portable_targets.patch"
 
-	# Bug #504108, dlls/test-883.il unexisting; TODO: Figure out how to make it.
-	epatch "${FILESDIR}"/${P}-disable-missing-test.patch
-	rm mcs/tests/test-883{,-lib}.cs|| die
+	# Fix build on big-endian machines
+	# https://bugzilla.xamarin.com/show_bug.cgi?id=31779
+	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-decimal-ms-on-big-endian.patch"
+
+	# Fix build when sgen disabled
+	# https://bugzilla.xamarin.com/show_bug.cgi?id=32015
+	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-mono-dis-makefile-am-when-without-sgen.patch"
+
+	# Fix atomic_add_i4 support for 32-bit ppc
+	# https://github.com/mono/mono/compare/f967c79926900343f399c75624deedaba460e544^...8f379f0c8f98493180b508b9e68b9aa76c0c5bdf
+	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-ppc-atomic-add-i4.patch"
 
 	autotools-utils_src_prepare
+
+	epatch "${FILESDIR}/systemweb3.patch"
 }
 
 src_configure() {
-	# NOTE: We need the static libs for now so mono-debugger works.
-	# See http://bugs.gentoo.org/show_bug.cgi?id=256264 for details
-	#
-	# --without-moonlight since www-plugins/moonlight is not the only one
-	# using mono: https://bugzilla.novell.com/show_bug.cgi?id=641005#c3
-	#
-	# --with-profile4 needs to be always enabled since it's used by default
-	# and, otherwise, problems like bug #340641 appear.
-	#
-	# sgen fails on ppc, bug #359515
 	local myeconfargs=(
-		--enable-system-aot=yes
-		--enable-static
-		--disable-quiet-build
-		--without-moonlight
-		--with-libgdiplus=$(usex minimal no installed)
+		--disable-silent-rules
 		$(use_with xen xen_opt)
 		--without-ikvm-native
-		--with-jit
 		--disable-dtrace
-		--with-profile4
-		--with-sgen=$(usex ppc no yes)
 		$(use_with doc mcs-docs)
-		$(use_enable debug)
 		$(use_enable nls)
 	)
 
@@ -101,23 +97,10 @@ src_configure() {
 }
 
 src_compile() {
-	nonfatal autotools-utils_src_compile || {
-		eqawarn "maintainer of this ebuild has no idea why it fails. If you happen to know how to fix it - please let me know"
-		autotools-utils_src_compile
-	 }
+	autotools-utils_src_compile
 }
 
 src_test() {
 	cd mcs/tests || die
 	emake check
-}
-
-src_install() {
-	autotools-utils_src_install
-
-	# Remove files not respecting LDFLAGS and that we are not supposed to provide, see Fedora
-	# mono.spec and http://www.mail-archive.com/mono-devel-list@lists.ximian.com/msg24870.html
-	# for reference.
-	rm -f "${ED}"/usr/lib/mono/{2.0,4.5}/mscorlib.dll.so || die
-	rm -f "${ED}"/usr/lib/mono/{2.0,4.5}/mcs.exe.so || die
 }

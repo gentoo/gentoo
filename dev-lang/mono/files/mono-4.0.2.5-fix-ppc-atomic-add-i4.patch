@@ -1,0 +1,79 @@
+From f967c79926900343f399c75624deedaba460e544 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20R=C3=B8nne=20Petersen?= <alexrp@xamarin.com>
+Date: Mon, 3 Aug 2015 17:32:07 +0200
+Subject: [PATCH 1/2] [ppc] Instruction length of atomic_add_i4 is 28.
+
+---
+ mono/mini/cpu-ppc.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mono/mini/cpu-ppc.md b/mono/mini/cpu-ppc.md
+index ba2ec60..e6baf91 100644
+--- a/mono/mini/cpu-ppc.md
++++ b/mono/mini/cpu-ppc.md
+@@ -314,5 +314,5 @@ vcall2_membase: src1:b len:16 clob:c
+ 
+ jump_table: dest:i len:8
+ 
+-atomic_add_i4: src1:b src2:i dest:i len:20
++atomic_add_i4: src1:b src2:i dest:i len:28
+ atomic_cas_i4: src1:b src2:i src3:i dest:i len:38
+
+From 8f379f0c8f98493180b508b9e68b9aa76c0c5bdf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20R=C3=B8nne=20Petersen?= <alexrp@xamarin.com>
+Date: Mon, 3 Aug 2015 17:32:31 +0200
+Subject: [PATCH 2/2] [ppc] Fix atomic_add_i4 support for 32-bit PPC.
+
+---
+ mono/mini/mini-ppc.c | 31 ++++++++++++++++---------------
+ 1 file changed, 16 insertions(+), 15 deletions(-)
+
+diff --git a/mono/mini/mini-ppc.c b/mono/mini/mini-ppc.c
+index 758a63f..06528bd 100644
+--- a/mono/mini/mini-ppc.c
++++ b/mono/mini/mini-ppc.c
+@@ -4420,6 +4420,22 @@ mono_arch_output_basic_block (MonoCompile *cfg, MonoBasicBlock *bb)
+ 			else
+ 				ppc_mr (code, ins->dreg, ins->sreg1);
+ 			break;
++#else
++		case OP_ICONV_TO_R4:
++		case OP_ICONV_TO_R8: {
++			if (cpu_hw_caps & PPC_ISA_64) {
++				ppc_srawi(code, ppc_r0, ins->sreg1, 31);
++				ppc_stw (code, ppc_r0, -8, ppc_r1);
++				ppc_stw (code, ins->sreg1, -4, ppc_r1);
++				ppc_lfd (code, ins->dreg, -8, ppc_r1);
++				ppc_fcfid (code, ins->dreg, ins->dreg);
++				if (ins->opcode == OP_ICONV_TO_R4)
++					ppc_frsp (code, ins->dreg, ins->dreg);
++				}
++			break;
++		}
++#endif
++
+ 		case OP_ATOMIC_ADD_I4:
+ 		CASE_PPC64 (OP_ATOMIC_ADD_I8) {
+ 			int location = ins->inst_basereg;
+@@ -4453,21 +4469,6 @@ mono_arch_output_basic_block (MonoCompile *cfg, MonoBasicBlock *bb)
+ 			ppc_mr (code, ins->dreg, ppc_r0);
+ 			break;
+ 		}
+-#else
+-		case OP_ICONV_TO_R4:
+-		case OP_ICONV_TO_R8: {
+-			if (cpu_hw_caps & PPC_ISA_64) {
+-				ppc_srawi(code, ppc_r0, ins->sreg1, 31);
+-				ppc_stw (code, ppc_r0, -8, ppc_r1);
+-				ppc_stw (code, ins->sreg1, -4, ppc_r1);
+-				ppc_lfd (code, ins->dreg, -8, ppc_r1);
+-				ppc_fcfid (code, ins->dreg, ins->dreg);
+-				if (ins->opcode == OP_ICONV_TO_R4)
+-					ppc_frsp (code, ins->dreg, ins->dreg);
+-				}
+-			break;
+-		}
+-#endif
+ 		case OP_ATOMIC_CAS_I4:
+ 		CASE_PPC64 (OP_ATOMIC_CAS_I8) {
+ 			int location = ins->sreg1;
