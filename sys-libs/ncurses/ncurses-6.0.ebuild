@@ -18,7 +18,7 @@ LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="5/6"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="ada +cxx debug doc gpm minimal profile static-libs test tinfo trace unicode"
+IUSE="ada +cxx debug doc gpm minimal profile static-libs test threads tinfo trace unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 #	berkdb? ( sys-libs/db )"
@@ -46,6 +46,18 @@ src_configure() {
 	tc-export_build_env BUILD_{CC,CPP}
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE" #214642
 
+	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
+	# Order matters here -- we want unicode/thread versions to come last so that the
+	# binaries in /usr/bin support both wide and narrow.
+	# The naming is also important as we use these directly with filenames and when
+	# checking configure flags.
+	NCURSES_TARGETS=(
+		ncurses
+		$(usex unicode 'ncursesw' '')
+		$(usex threads 'ncursest' '')
+		$(use unicode && usex threads 'ncursestw' '')
+	)
+
 	# when cross-compiling, we need to build up our own tic
 	# because people often don't keep matching host/target
 	# ncurses versions #249363
@@ -61,15 +73,15 @@ src_configure() {
 }
 
 multilib_src_configure() {
+	local t
 	multijob_init
-	multijob_child_init do_configure narrowc
-	use unicode && multijob_child_init do_configure widec --enable-widec --includedir="${EPREFIX}"/usr/include/ncursesw
+	for t in "${NCURSES_TARGETS[@]}" ; do
+		multijob_child_init do_configure "${t}"
+	done
 	multijob_finish
 }
 
 do_configure() {
-	ECONF_SOURCE=${S}
-
 	local target=$1
 	shift
 
@@ -124,9 +136,26 @@ do_configure() {
 		$(use_with tinfo termlib)
 	)
 
+	if [[ ${target} == ncurses*w ]] ; then
+		conf+=( --enable-widec )
+	else
+		conf+=( --disable-widec )
+	fi
+	if [[ ${target} == ncursest* ]] ; then
+		conf+=( --with-{pthread,reentrant} )
+	else
+		conf+=( --without-{pthread,reentrant} )
+	fi
+	# Make sure each variant goes in a unique location.
+	if [[ ${target} != "ncurses" ]] ; then
+		conf+=( --includedir="${EPREFIX}"/usr/include/${target} )
+	fi
+
 	# Force bash until upstream rebuilds the configure script with a newer
 	# version of autotools. #545532
-	CONFIG_SHELL=/bin/bash econf "${conf[@]}" "$@"
+	CONFIG_SHELL=/bin/bash \
+	ECONF_SOURCE=${S} \
+	econf "${conf[@]}" "$@"
 }
 
 src_compile() {
@@ -141,8 +170,10 @@ src_compile() {
 }
 
 multilib_src_compile() {
-	do_compile narrowc
-	use unicode && do_compile widec
+	local t
+	for t in "${NCURSES_TARGETS[@]}" ; do
+		do_compile "${t}"
+	done
 }
 
 do_compile() {
@@ -169,22 +200,20 @@ multilib_src_install() {
 	# use the cross-compiled tic (if need be) #249363
 	export PATH="${BUILD_DIR}/cross/progs:${PATH}"
 
-	# install unicode version second so that the binaries in /usr/bin
-	# support both wide and narrow
-	cd "${BUILD_DIR}"/narrowc || die
-	emake DESTDIR="${D}" install
-	if use unicode ; then
-		cd "${BUILD_DIR}"/widec || die
-		emake DESTDIR="${D}" install
-	fi
+	local target
+	for target in "${NCURSES_TARGETS[@]}" ; do
+		emake -C "${BUILD_DIR}/${target}" DESTDIR="${D}" install
+	done
 
-	# Move libncurses{,w} into /lib
-	multilib_is_native_abi && gen_usr_ldscript -a \
-		ncurses \
-		$(usex unicode 'ncursesw' '') \
-		$(use tinfo && usex unicode 'tinfow' '') \
-		$(usev tinfo)
+	# Move main libraries into /.
+	if multilib_is_native_abi ; then
+		gen_usr_ldscript -a \
+			"${NCURSES_TARGETS[@]}"
+			$(use tinfo && usex unicode 'tinfow' '') \
+			$(usev tinfo)
+	fi
 	if ! tc-is-static-only ; then
+		# Provide a link for -lcurses.
 		ln -sf libncurses$(get_libname) "${ED}"/usr/$(get_libdir)/libcurses$(get_libname) || die
 	fi
 	use static-libs || find "${ED}"/usr/ -name '*.a' -delete
