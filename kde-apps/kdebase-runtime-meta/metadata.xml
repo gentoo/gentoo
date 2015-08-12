@@ -4,6 +4,5 @@
 	<herd>kde</herd>
 	<use>
 		<flag name="crash-reporter">Builds a gui tool to submit crash information to the upstream backtracker</flag>
-		<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
 	</use>
 </pkgmetadata>
