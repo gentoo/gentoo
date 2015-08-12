@@ -27,7 +27,6 @@ RDEPEND="${DEPEND}
 	!app-emulation/emul-linux-x86-baselibs"
 
 S=${WORKDIR}/${MY_P}
-HOSTTIC_DIR=${WORKDIR}/${P}-host
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.0-gfbsd.patch"
@@ -56,7 +55,7 @@ src_configure() {
 		CXXFLAGS=${BUILD_CXXFLAGS} \
 		CPPFLAGS=${BUILD_CPPFLAGS} \
 		LDFLAGS="${BUILD_LDFLAGS} -static" \
-		BUILD_DIR="${HOSTTIC_DIR}" do_configure cross --without-shared --with-normal
+		do_configure cross --without-shared --with-normal
 	fi
 	multilib-minimal_src_configure
 }
@@ -71,9 +70,11 @@ multilib_src_configure() {
 do_configure() {
 	ECONF_SOURCE=${S}
 
-	mkdir "${BUILD_DIR}"-$1
-	cd "${BUILD_DIR}"-$1 || die
+	local target=$1
 	shift
+
+	mkdir "${BUILD_DIR}/${target}"
+	cd "${BUILD_DIR}/${target}" || die
 
 	local conf=(
 		# We need the basic terminfo files in /etc, bug #37026.  We will
@@ -133,7 +134,7 @@ src_compile() {
 	# because people often don't keep matching host/target
 	# ncurses versions #249363
 	if tc-is-cross-compiler && ! ROOT=/ has_version ~sys-libs/${P} ; then
-		BUILD_DIR="${HOSTTIC_DIR}" do_compile cross -C progs tic
+		do_compile cross -C progs tic
 	fi
 
 	multilib-minimal_src_compile
@@ -145,8 +146,10 @@ multilib_src_compile() {
 }
 
 do_compile() {
-	cd "${BUILD_DIR}"-$1 || die
+	local target=$1
 	shift
+
+	cd "${BUILD_DIR}/${target}" || die
 
 	# A little hack to fix parallel builds ... they break when
 	# generating sources so if we generate the sources first (in
@@ -164,14 +167,14 @@ do_compile() {
 
 multilib_src_install() {
 	# use the cross-compiled tic (if need be) #249363
-	export PATH="${HOSTTIC_DIR}-cross/progs:${PATH}"
+	export PATH="${BUILD_DIR}/cross/progs:${PATH}"
 
 	# install unicode version second so that the binaries in /usr/bin
 	# support both wide and narrow
-	cd "${BUILD_DIR}"-narrowc || die
+	cd "${BUILD_DIR}"/narrowc || die
 	emake DESTDIR="${D}" install
 	if use unicode ; then
-		cd "${BUILD_DIR}"-widec || die
+		cd "${BUILD_DIR}"/widec || die
 		emake DESTDIR="${D}" install
 	fi
 
