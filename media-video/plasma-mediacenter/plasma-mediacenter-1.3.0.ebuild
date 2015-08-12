@@ -19,9 +19,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="debug nepomuk semantic-desktop"
-
-REQUIRED_USE="?? ( nepomuk semantic-desktop )"
+IUSE="debug semantic-desktop"
 
 # bug 516686
 RESTRICT="test"
@@ -30,7 +28,6 @@ RDEPEND="
 	$(add_kdebase_dep plasma-workspace)
 	dev-qt/qt-mobility[multimedia,qml]
 	media-libs/taglib
-	nepomuk? ( $(add_kdebase_dep nepomuk-core) )
 	semantic-desktop? ( $(add_kdebase_dep baloo) )
 "
 DEPEND="${RDEPEND}
@@ -41,11 +38,11 @@ S=${WORKDIR}/${PN}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package nepomuk NepomukCore)
+		-DCMAKE_DISABLE_FIND_PACKAGE_NepomukCore=ON
 		$(cmake-utils_use_find_package semantic-desktop Baloo)
 	)
 
-	if ! use nepomuk && ! use semantic-desktop ; then
+	if ! use semantic-desktop ; then
 		mycmakeargs+=( -DUSE_FILESYSTEM_MEDIA_SOURCE=ON )
 	fi
 
