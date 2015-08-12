@@ -11,14 +11,9 @@ inherit kde4-base
 DESCRIPTION="KDE Activity Manager"
 
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="minimal nepomuk"
+IUSE="minimal"
 
-DEPEND="
-	nepomuk? (
-		$(add_kdebase_dep nepomuk-core)
-		dev-libs/soprano
-	)
-"
+DEPEND=""
 RDEPEND="
 	${DEPEND}
 	!kde-base/activitymanager
@@ -26,8 +21,8 @@ RDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_NepomukCore=OFF
 		$(cmake-utils_use minimal KACTIVITIES_LIBRARY_ONLY)
-		$(cmake-utils_use_with nepomuk NepomukCore)
 	)
 	kde4-base_src_configure
 }
