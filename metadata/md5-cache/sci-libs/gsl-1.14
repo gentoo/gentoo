@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9053d872356b16800ddf9e12c2718443
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare setup test
+EAPI=3
+DEPEND=cblas-external? ( virtual/cblas ) app-eselect/eselect-cblas virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The GNU Scientific Library
+LICENSE=GPL-3
+IUSE=cblas-external
+SRC_URI=mirror://gnu/gsl/gsl-1.14.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris
+HOMEPAGE=http://www.gnu.org/software/gsl/
+RDEPEND=cblas-external? ( virtual/cblas )

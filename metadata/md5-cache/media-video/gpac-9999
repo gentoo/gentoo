@@ -1,0 +1,11 @@
+_eclasses_=subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=b2d2f0f19d98f82c7c685ba6d0099fc7
+SLOT=0
+DEFINED_PHASES=configure install preinst prepare unpack
+EAPI=4
+DEPEND=a52? ( media-libs/a52dec ) aac? ( >=media-libs/faad2-2.0 ) alsa? ( media-libs/alsa-lib ) dvb? ( media-tv/linuxtv-dvb-apps ) ffmpeg? ( virtual/ffmpeg ) jack? ( media-sound/jack-audio-connection-kit ) jpeg? ( virtual/jpeg ) mad? ( >=media-libs/libmad-0.15.1b ) opengl? ( virtual/opengl media-libs/freeglut virtual/glu ) >=media-libs/libogg-1.1 png? ( >=media-libs/libpng-1.4 ) vorbis? ( >=media-libs/libvorbis-1.1 ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2.1.4 ) xml? ( >=dev-libs/libxml2-2.6.0 ) xvid? ( >=media-libs/xvid-1.0.1 ) sdl? ( media-libs/libsdl ) jpeg2k? ( media-libs/openjpeg:0 ) ssl? ( dev-libs/openssl ) pulseaudio? ( media-sound/pulseaudio ) x11-libs/libXt x11-libs/libX11 x11-libs/libXv x11-libs/libXext || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
+LICENSE=GPL-2
+IUSE=a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k mad opengl oss png pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid
+HOMEPAGE=http://gpac.wp.mines-telecom.fr/
+RDEPEND=a52? ( media-libs/a52dec ) aac? ( >=media-libs/faad2-2.0 ) alsa? ( media-libs/alsa-lib ) dvb? ( media-tv/linuxtv-dvb-apps ) ffmpeg? ( virtual/ffmpeg ) jack? ( media-sound/jack-audio-connection-kit ) jpeg? ( virtual/jpeg ) mad? ( >=media-libs/libmad-0.15.1b ) opengl? ( virtual/opengl media-libs/freeglut virtual/glu ) >=media-libs/libogg-1.1 png? ( >=media-libs/libpng-1.4 ) vorbis? ( >=media-libs/libvorbis-1.1 ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2.1.4 ) xml? ( >=dev-libs/libxml2-2.6.0 ) xvid? ( >=media-libs/xvid-1.0.1 ) sdl? ( media-libs/libsdl ) jpeg2k? ( media-libs/openjpeg:0 ) ssl? ( dev-libs/openssl ) pulseaudio? ( media-sound/pulseaudio ) x11-libs/libXt x11-libs/libX11 x11-libs/libXv x11-libs/libXext

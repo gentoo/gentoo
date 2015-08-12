@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils	def8c8eb435ec28fd9315114640f6c84	python	6d7be3e54573292f012e3cc433d8297	mercurial	6ac07cde03301514a5f9e4f13df3f55e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=33b5a176599a7ae4431bf472e0116a3f
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm prepare test unpack
+EAPI=3
+DEPEND=dev-python/setuptools test? ( dev-python/nose ) =dev-lang/python-2* dev-vcs/mercurial
+DESCRIPTION=hgsubversion is a Mercurial extension for working with Subversion repositories
+LICENSE=GPL-2
+IUSE=test
+HOMEPAGE=https://bitbucket.org/durin42/hgsubversion/wiki/Home http://pypi.python.org/pypi/hgsubversion
+RDEPEND=>=dev-vcs/mercurial-1.4 || ( dev-python/subvertpy >=dev-vcs/subversion-1.5[python] ) =dev-lang/python-2*

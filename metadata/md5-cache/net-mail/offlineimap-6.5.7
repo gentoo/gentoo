@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=be6f23c7e9f6359180d96aec054aca1e
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare setup test
+EAPI=5
+DEPEND=doc? ( app-text/asciidoc ) >=dev-lang/python-2.7.5-r2:2.7[threads,sqlite?,ssl?] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
+DESCRIPTION=Powerful IMAP/Maildir synchronization and reader support
+LICENSE=GPL-2
+IUSE=doc ssl sqlite python_targets_python2_7
+REQUIRED_USE=python_targets_python2_7
+SRC_URI=https://github.com/OfflineIMAP/offlineimap/archive/v6.5.7.tar.gz -> offlineimap-6.5.7.tar.gz
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+HOMEPAGE=http://offlineimap.org
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[threads,sqlite?,ssl?] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]

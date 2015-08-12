@@ -1,0 +1,15 @@
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=25e528a158fd661ddb10809040c51656
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=dev-lang/tcl:0= dev-lang/tk:0= alsa? ( media-libs/alsa-lib ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)] ) vorbis? ( media-libs/libvorbis ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)]
+DESCRIPTION=The Snack Sound Toolkit (Tcl)
+LICENSE=GPL-2
+IUSE=alsa examples python threads vorbis python_targets_python2_7 python_targets_pypy
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_pypy )
+RESTRICT=test
+SRC_URI=http://www.speech.kth.se/snack/dist/snack2.2.10.tar.gz
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+HOMEPAGE=http://www.speech.kth.se/snack/
+RDEPEND=dev-lang/tcl:0= dev-lang/tk:0= alsa? ( media-libs/alsa-lib ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)] ) vorbis? ( media-libs/libvorbis ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)]

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=deef9a04c2bdcf039f03af887eb39e8c
+SLOT=0
+DEFINED_PHASES=install postinst postrm
+EAPI=5
+DESCRIPTION=distributed.net personal proxy
+LICENSE=distributed.net GPL-2
+RESTRICT=mirror
+SRC_URI=http://http.distributed.net/pub/dcti/proxyper/proxyper347a-linux-x86-uclibc.tar.gz
+KEYWORDS=-alpha -ppc -sparc ~x86
+HOMEPAGE=http://www.distributed.net
+RDEPEND=net-dns/host

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=bd8dd3b464d5ac5ca4e5d7fddee46427
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=5
+DEPEND=>=media-libs/mediastreamer-2.8.2:= >=net-libs/ortp-0.16.0:= virtual/pkgconfig
+DESCRIPTION=Backported G729 implementation for Linphone
+LICENSE=GPL-2
+SRC_URI=mirror://nongnu/linphone/plugins/sources/bcg729-1.0.0.tar.gz
+KEYWORDS=amd64 ppc ppc64 x86
+HOMEPAGE=http://www.linphone.org
+RDEPEND=>=media-libs/mediastreamer-2.8.2:= >=net-libs/ortp-0.16.0:=

@@ -1,0 +1,12 @@
+_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_md5_=a3bf1b7e26cbfcad355cdde76da40962
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=4
+DEPEND=app-arch/unzip
+DESCRIPTION=Portuguese dictionaries for myspell/hunspell
+LICENSE=GPL-2 MIT
+IUSE=+preao
+SRC_URI=http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT.oxt preao? ( http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT-preao.oxt )
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+HOMEPAGE=http://natura.di.uminho.pt/wiki/doku.php?id=dicionarios:main

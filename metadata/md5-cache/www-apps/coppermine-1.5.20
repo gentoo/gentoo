@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=76071903a7ffee1a3694003165be4069
+SLOT=1.5.20
+DEFINED_PHASES=install postinst prerm setup
+EAPI=4
+DEPEND=app-arch/unzip || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web picture gallery written in PHP with a MySQL backend
+LICENSE=GPL-2
+IUSE=vhosts
+SRC_URI=mirror://sourceforge/eenemeenemuu.u/cpg1.5.20.zip
+KEYWORDS=~amd64 ~sparc ~x86
+HOMEPAGE=http://coppermine.sourceforge.net/
+RDEPEND=virtual/httpd-php dev-lang/php[gd,mysql] >=app-admin/webapp-config-1.50.15

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=224c2db1f51bc4ce1d741c9677ad504c
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DESCRIPTION=Shotgun assembly and alignment utilities
+LICENSE=phrap
+RESTRICT=fetch
+SRC_URI=phrap-1.080812-distrib.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.phrap.org/
+RDEPEND=dev-lang/perl dev-perl/perl-tk

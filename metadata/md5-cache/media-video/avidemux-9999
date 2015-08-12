@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7ca9bf7f95f99be6c3787118a07c4193
+SLOT=2.6
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
+DEPEND=~media-libs/avidemux-core-9999:2.6[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?] opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtgui-4.8.3:4 ) vaapi? ( x11-libs/libva:0 ) video_cards_fglrx? ( || ( >=x11-drivers/ati-drivers-14.12-r3 x11-libs/xvba-video:0 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git
+DESCRIPTION=Video editor designed for simple cutting, filtering and encoding tasks
+LICENSE=GPL-1 GPL-2 MIT PSF-2 public-domain
+IUSE=debug opengl nls qt4 sdl vaapi vdpau video_cards_fglrx xv linguas_ca linguas_cs linguas_de linguas_el linguas_es linguas_fr linguas_it linguas_ja linguas_pt_BR linguas_ru linguas_sr linguas_sr@latin linguas_tr
+PDEPEND=~media-libs/avidemux-plugins-9999:2.6[opengl?,qt4?]
+HOMEPAGE=http://fixounet.free.fr/avidemux
+RDEPEND=~media-libs/avidemux-core-9999:2.6[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?] opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtgui-4.8.3:4 ) vaapi? ( x11-libs/libva:0 ) video_cards_fglrx? ( || ( >=x11-drivers/ati-drivers-14.12-r3 x11-libs/xvba-video:0 ) )

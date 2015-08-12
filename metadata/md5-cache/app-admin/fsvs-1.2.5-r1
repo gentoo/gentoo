@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c7c52e18a50fc9e6039131e735dda8ce
+SLOT=0
+DEFINED_PHASES=compile install postinst prepare
+EAPI=5
+DEPEND=dev-vcs/subversion dev-libs/libpcre sys-libs/gdbm dev-libs/apr-util dev-util/ctags
+DESCRIPTION=Backup/restore for subversion backends
+LICENSE=GPL-3
+SRC_URI=http://download.fsvs-software.org/fsvs-1.2.5.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://fsvs.tigris.org/
+RDEPEND=dev-vcs/subversion dev-libs/libpcre sys-libs/gdbm dev-libs/apr-util dev-util/ctags

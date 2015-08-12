@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=76bb32734adc32b859a0bfbc6a291b7e
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup unpack
+EAPI=4
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtscript:4 x11-libs/qscintilla python? ( =dev-lang/python-2* )
+DESCRIPTION=Cross platform GUI for several code formatters, beautifiers and indenters
+LICENSE=GPL-2
+IUSE=debug examples html perl php python ruby xml linguas_de linguas_fr linguas_ja linguas_ru linguas_uk linguas_zh_TW
+SRC_URI=mirror://sourceforge/universalindent/universalindentgui-1.2.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://universalindent.sourceforge.net/
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtscript:4 x11-libs/qscintilla dev-util/astyle dev-util/bcpp dev-util/indent html? ( app-text/htmltidy perl? ( dev-lang/perl ) ) perl? ( dev-perl/perltidy ) php? ( dev-php/PEAR-PHP_Beautifier ) ruby? ( dev-lang/ruby ) xml? ( dev-util/xmlindent ) python? ( =dev-lang/python-2* )

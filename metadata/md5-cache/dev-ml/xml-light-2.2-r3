@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b9557add8edc7c1830e4569f7b6d30b4
+SLOT=0/2.2
+DEFINED_PHASES=compile install prepare test
+EAPI=5
+DEPEND=app-arch/unzip dev-lang/ocaml:=[ocamlopt?]
+DESCRIPTION=Minimal Xml parser and printer for OCaml
+LICENSE=LGPL-2.1
+IUSE=doc +ocamlopt
+SRC_URI=http://tech.motion-twin.com/zip/xml-light-2.2.zip
+KEYWORDS=amd64 x86
+HOMEPAGE=http://tech.motion-twin.com/xmllight.html
+RDEPEND=dev-lang/ocaml:=[ocamlopt?]

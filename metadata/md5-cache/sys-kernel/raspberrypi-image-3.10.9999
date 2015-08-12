@@ -1,0 +1,11 @@
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7da81c451a3ace7ed6521c77e3728759
+SLOT=3.10.9999
+DEFINED_PHASES=install unpack
+EAPI=5
+DEPEND=dev-vcs/git
+DESCRIPTION=Raspberry PI precompiled kernel and modules
+LICENSE=GPL-2 raspberrypi-videocore-bin
+IUSE=doc
+RESTRICT=binchecks strip
+HOMEPAGE=https://github.com/raspberrypi/firmware

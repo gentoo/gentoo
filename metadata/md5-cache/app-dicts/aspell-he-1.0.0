@@ -1,0 +1,12 @@
+_eclasses_=aspell-dict	6df2ba61a621be13d44ec68128cc1343
+_md5_=41e17be99bb13b34249faca857854068
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=>=app-text/aspell-0.60
+DESCRIPTION=Hebrew language dictionary for aspell
+LICENSE=GPL-2
+SRC_URI=mirror://gnu/aspell/dict/he/aspell6-he-1.0-0.tar.bz2
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+HOMEPAGE=http://aspell.net
+RDEPEND=>=app-text/aspell-0.60

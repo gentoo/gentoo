@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=c3afbdf6a6626f4bd5eb9cdcdcab566d
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] test? ( dev-python/httplib2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/jinja[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/keyczar[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pycrypto-2.6[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-misc/sshpass virtual/ssh dev-python/mock[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/nose[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/passlib[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-vcs/git ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Radically simple deployment, model-driven configuration management, and command execution framework
+LICENSE=GPL-3
+IUSE=test python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=test
+SRC_URI=mirror://pypi/a/ansible/ansible-1.9.2.tar.gz
+KEYWORDS=amd64 x86 ~x64-macos
+HOMEPAGE=http://ansible.com/
+RDEPEND=dev-python/httplib2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/jinja[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/keyczar[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pycrypto-2.6[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-misc/sshpass virtual/ssh python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

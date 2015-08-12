@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f3cac52cc83b7d1bbda00eed45ff3440
+SLOT=0
+DEFINED_PHASES=compile configure install preinst prepare
+EAPI=5
+DEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41:0= dev-libs/check >=sys-devel/gcc-4.4 >=dev-cpp/asio-1.4.8[ssl?] dev-util/scons
+DESCRIPTION=Synchronous multi-master replication engine that provides its service through wsrep API
+LICENSE=GPL-2 BSD
+IUSE=cpu_flags_x86_sse4_2 garbd ssl test
+SRC_URI=https://github.com/codership/galera/archive/release_25.3.10.tar.gz -> galera-25.3.10.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.galeracluster.com/
+RDEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41:0= garbd? ( || ( net-analyzer/netcat net-analyzer/netcat6 net-analyzer/gnu-netcat net-analyzer/openbsd-netcat ) )

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=dca1dbbd63894205145f4623ac260fa3
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=>=app-mobilephone/obexftp-0.22 sys-fs/fuse
+DESCRIPTION=FUSE filesystem interface for ObexFTP
+LICENSE=GPL-2
+SRC_URI=http://triq.net/obexftp/obexfs-0.11.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://dev.zuckschwerdt.org/openobex/wiki/ObexFs
+RDEPEND=>=app-mobilephone/obexftp-0.22 sys-fs/fuse

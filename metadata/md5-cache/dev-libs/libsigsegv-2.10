@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=97ced7160e095e83f6eb5bed303641b9
+SLOT=0
+DEFINED_PHASES=configure install test
+EAPI=2
+DESCRIPTION=library for handling page faults in user mode
+LICENSE=GPL-2
+SRC_URI=mirror://gnu/libsigsegv/libsigsegv-2.10.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+HOMEPAGE=http://libsigsegv.sourceforge.net/

@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=3a06d18e80d15c5f998d1780c2d989f5
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qt3support:4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=CuteCom is a serial terminal, like minicom, written in qt
+LICENSE=GPL-2
+SRC_URI=http://cutecom.sourceforge.net/cutecom-0.22.0.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://cutecom.sourceforge.net
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qt3support:4 net-dialup/lrzsz

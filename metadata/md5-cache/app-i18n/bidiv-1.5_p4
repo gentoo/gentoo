@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c9a6e5e6e6e05a5397991af7030f57f7
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=4
+DEPEND=virtual/pkgconfig
+DESCRIPTION=A commandline tool displaying logical Hebrew/Arabic
+LICENSE=GPL-2
+SRC_URI=mirror://debian/pool/main/b/bidiv/bidiv_1.5.orig.tar.gz mirror://debian/pool/main/b/bidiv/bidiv_1.5-4.debian.tar.gz
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+HOMEPAGE=http://packages.qa.debian.org/b/bidiv.html
+RDEPEND=>=dev-libs/fribidi-0.19.2-r2

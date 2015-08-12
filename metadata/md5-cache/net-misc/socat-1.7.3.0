@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=b03365dc5c076d785262f323938a42cc
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=5
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6 ) readline? ( >=sys-libs/readline-4.1 ) tcpd? ( sys-apps/tcp-wrappers )
+DESCRIPTION=Multipurpose relay (SOcket CAT)
+LICENSE=GPL-2
+IUSE=ssl readline ipv6 tcpd
+RESTRICT=test
+SRC_URI=http://www.dest-unreach.org/socat/download/socat-1.7.3.0.tar.bz2
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+HOMEPAGE=http://www.dest-unreach.org/socat/
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6 ) readline? ( >=sys-libs/readline-4.1 ) tcpd? ( sys-apps/tcp-wrappers )

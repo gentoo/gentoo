@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=b1c3787a787f12bad8b460a2624c63af
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DESCRIPTION=/usr/bin wrapper scripts for FreeBSD script compatibility
+LICENSE=public-domain
+IUSE=userland_BSD userland_GNU
+KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+HOMEPAGE=http://www.gentoo.org

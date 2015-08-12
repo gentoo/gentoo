@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=dev-go/go-text:= >=dev-lang/go-1.4.2:=
+DESCRIPTION=Go supplementary network libraries
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/net
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0/0_pre20150804
+SRC_URI=https://github.com/golang/net/archive/1bc0720082d79ce7ffc6ef6e523d00d46b0dee45.tar.gz -> go-net-0_pre20150804.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
+_md5_=2b743c3f3d6ee09e3e9511047e5e65d4

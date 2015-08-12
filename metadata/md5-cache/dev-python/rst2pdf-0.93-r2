@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=e0684ce0fd6c6ddd64981ae3b7eda224
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
+DEPEND=dev-python/docutils[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/python-imaging[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pdfrw[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygments[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/reportlab-2.6[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] svg? ( media-gfx/svg2rlg ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Tool for transforming reStructuredText to PDF using ReportLab
+LICENSE=MIT
+IUSE=svg python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SRC_URI=http://rst2pdf.googlecode.com/files/rst2pdf-0.93.tar.gz
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ppc ~ppc64 x86
+HOMEPAGE=http://rst2pdf.ralsina.com.ar/ http://pypi.python.org/pypi/rst2pdf
+RDEPEND=dev-python/docutils[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/python-imaging[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pdfrw[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygments[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/reportlab-2.6[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] svg? ( media-gfx/svg2rlg ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

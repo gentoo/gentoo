@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=8da3e55adca75ff5d57b1f34b49f941b
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=5
+DESCRIPTION=Wake up hardware that is Magic Packet compliant
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=mirror://sourceforge/ahh/wol-0.7.1.tar.gz
+KEYWORDS=amd64 arm ppc ~ppc64 x86 ~x86-fbsd
+HOMEPAGE=http://ahh.sourceforge.net/wol/

@@ -1,0 +1,12 @@
+_eclasses_=sword-module	a2b0800a67ad11742c7657239b19b20
+_md5_=33fb7676cb264a37bbc24435b58e464
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=app-arch/unzip
+DESCRIPTION=Matthias Ansorgs Kommentar
+LICENSE=public-domain
+SRC_URI=mirror://gentoo/MAK-1.0.zip
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=MAK
+RDEPEND=app-text/sword

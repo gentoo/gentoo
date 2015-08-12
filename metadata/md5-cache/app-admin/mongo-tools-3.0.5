@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=977d4c552ef38c1046832b3563f37b0d
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=5
+DEPEND=!<dev-db/mongodb-3.0.0 dev-lang/go:= sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl )
+DESCRIPTION=A high-performance, open source, schema-free document-oriented database
+LICENSE=Apache-2.0
+IUSE=sasl ssl
+SRC_URI=https://github.com/mongodb/mongo-tools/archive/r3.0.5.tar.gz -> mongo-tools-3.0.5.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.mongodb.org
+RDEPEND=!<dev-db/mongodb-3.0.0

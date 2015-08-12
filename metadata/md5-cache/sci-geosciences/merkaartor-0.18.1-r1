@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=46946f08c010c19398f66230030b1ebd
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+EAPI=5
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 >=dev-qt/qtsingleapplication-2.6.1[X,qt4(+)] >=sci-libs/gdal-1.6.0 >=sci-libs/proj-4.6 sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-2.92[cxx] ) libproxy? ( net-libs/libproxy ) qrcode? ( media-gfx/zbar ) >=dev-libs/boost-1.46 virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A Qt4 based map editor for the openstreetmap.org project
+LICENSE=GPL-2
+IUSE=debug exif gps libproxy qrcode linguas_ar linguas_cs linguas_de linguas_es linguas_et linguas_fr linguas_hr linguas_hu linguas_it linguas_ja linguas_nl linguas_pl linguas_pt_BR linguas_pt linguas_ru linguas_sk linguas_sv linguas_uk
+SRC_URI=https://github.com/openstreetmap/merkaartor/archive/0.18.1.tar.gz -> merkaartor-0.18.1.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.merkaartor.be https://github.com/openstreetmap/merkaartor
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 >=dev-qt/qtsingleapplication-2.6.1[X,qt4(+)] >=sci-libs/gdal-1.6.0 >=sci-libs/proj-4.6 sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-2.92[cxx] ) libproxy? ( net-libs/libproxy ) qrcode? ( media-gfx/zbar )

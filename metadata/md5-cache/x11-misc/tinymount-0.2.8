@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=74af003286027371fabaa41d27218c40
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=5
+DEPEND=dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 libnotify? ( x11-libs/libnotify ) virtual/pkgconfig
+DESCRIPTION=Simple graphical utility for disk mounting
+LICENSE=GPL-2
+IUSE=debug libnotify linguas_ru linguas_uk
+SRC_URI=https://github.com/limansky/tinymount/archive/0.2.8.tar.gz -> tinymount-0.2.8.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/limansky/tinymount
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 libnotify? ( x11-libs/libnotify ) sys-fs/udisks:0

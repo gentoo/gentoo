@@ -1,0 +1,13 @@
+_eclasses_=multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9e42bc2f0c58832615061f6469ad8194
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=sys-fs/xfsprogs
+DESCRIPTION=XFS data management API library
+LICENSE=LGPL-2.1
+IUSE=static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+SRC_URI=ftp://oss.sgi.com/projects/xfs/cmd_tars/dmapi-2.2.12.tar.gz ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/dmapi-2.2.12.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+HOMEPAGE=http://oss.sgi.com/projects/xfs/
+RDEPEND=sys-fs/xfsprogs

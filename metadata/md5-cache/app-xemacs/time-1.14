@@ -1,0 +1,11 @@
+_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
+_md5_=617c9c6514839c16af06465ed0996e90
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=Display time & date on the modeline
+LICENSE=GPL-2
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/time-1.14-pkg.tar.gz
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+HOMEPAGE=http://xemacs.org/
+RDEPEND=app-xemacs/xemacs-base app-editors/xemacs

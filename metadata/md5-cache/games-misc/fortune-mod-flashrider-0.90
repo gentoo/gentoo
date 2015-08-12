@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=8f2dd0671cf41a86ca1d43a4b8a2d0c5
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=3
+DEPEND=games-misc/fortune-mod
+DESCRIPTION=Quotes from Prolinux articles and comments
+LICENSE=GPL-2
+SRC_URI=http://www.nanolx.org/downloads/fortunes-flashrider-0.90-BB-Styles-Edition.tar.bz2
+KEYWORDS=~amd64 ~x86 ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+HOMEPAGE=http://www.nanolx.org/random/fortunesflashrider/
+RDEPEND=games-misc/fortune-mod

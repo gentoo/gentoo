@@ -1,0 +1,12 @@
+_eclasses_=cron	9e9819fdabe97ef639d106171b2538de	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=609ceaf664a29b7f74ddee68319fe5ca
+SLOT=0
+DEFINED_PHASES=compile install postinst
+EAPI=0
+DEPEND=>=dev-libs/bglibs-1.031 >=sys-apps/sed-4.0.5
+DESCRIPTION=A new cron system designed with secure operations in mind by Bruce Guenter
+LICENSE=GPL-2
+SRC_URI=http://untroubled.org/bcron/archive/bcron-0.09.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://untroubled.org/bcron/
+RDEPEND=>=sys-process/cronbase-0.3.2 virtual/mta sys-apps/ucspi-unix virtual/daemontools >=sys-process/cronbase-0.3.2 !sys-process/vixie-cron !sys-process/cronie !sys-process/dcron !sys-process/fcron

@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=2c86f2776c1c7148825998227fe51c33
+SLOT=3.18.10_pre-r20150330
+DEFINED_PHASES=install prepare
+EAPI=5
+DESCRIPTION=Raspberry PI precompiled kernel and modules
+LICENSE=GPL-2
+RESTRICT=binchecks mirror strip
+SRC_URI=https://dev.gentoo.org/~xmw/raspberrypi-image/raspberrypi-image-3.18.10_pre-r20150330.tar.xz
+KEYWORDS=~arm -*
+HOMEPAGE=https://github.com/raspberrypi/firmware

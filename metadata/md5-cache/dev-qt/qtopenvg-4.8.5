@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	qt4-build	96f23bf58d60c4c9cc56ffc513510a6d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=ec4d2a664cbc5f355c5df5a1e20d5757
+SLOT=4
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+EAPI=4
+DEPEND=~dev-qt/qtcore-4.8.5[aqua=,debug=,qt3support=] ~dev-qt/qtgui-4.8.5[aqua=,debug=,egl,qt3support=] media-libs/mesa[egl,openvg] virtual/pkgconfig
+DESCRIPTION=The OpenVG module for the Qt toolkit
+LICENSE=|| ( LGPL-2.1 GPL-3 )
+IUSE=qt3support aqua debug pch +exceptions
+SRC_URI=http://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz
+KEYWORDS=amd64 ~arm ~ia64 ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+HOMEPAGE=https://www.qt.io/
+RDEPEND=~dev-qt/qtcore-4.8.5[aqua=,debug=,qt3support=] ~dev-qt/qtgui-4.8.5[aqua=,debug=,egl,qt3support=] media-libs/mesa[egl,openvg]

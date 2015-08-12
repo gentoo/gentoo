@@ -1,0 +1,13 @@
+_eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=f57cff18af274df7722a6be9897c0457
+SLOT=0.11.0-r1
+DEFINED_PHASES=install postinst prerm setup
+EAPI=2
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=phpMp is a client program for Music Player Daemon (mpd)
+LICENSE=GPL-2
+IUSE=vhosts
+SRC_URI=mirror://sourceforge/musicpd/phpMp-0.11.0.tar.gz
+KEYWORDS=alpha amd64 ~ppc sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.musicpd.org/
+RDEPEND=virtual/httpd-php || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) >=app-admin/webapp-config-1.50.15

@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=543f7dfa1876c20b09e003c99df067c1
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
+LICENSE=qlogic-fibre-channel-firmware
+SRC_URI=mirror://gentoo/qla-fc-firmware-20080423.tar.bz2
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+HOMEPAGE=ftp://ftp.qlogic.com/outgoing/linux/firmware/
+RDEPEND=!sys-kernel/linux-firmware

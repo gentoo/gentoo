@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=bce972354a1cd3a0505c2f1da24ea3a1
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=net-libs/libgssglue virtual/pkgconfig
+DESCRIPTION=implementation of rpcsec_gss (RFC 2203) for secure rpc communication
+LICENSE=BSD
+SRC_URI=http://www.citi.umich.edu/projects/nfsv4/linux/librpcsecgss/librpcsecgss-0.16.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+HOMEPAGE=http://www.citi.umich.edu/projects/nfsv4/linux/
+RDEPEND=net-libs/libgssglue

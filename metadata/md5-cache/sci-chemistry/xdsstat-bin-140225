@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=abc26f35d54a38c7515a555828b774fc
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DESCRIPTION=Prints various statistics (that are not available from XDS itself)
+LICENSE=all-rights-reserved
+RESTRICT=mirror
+SRC_URI=amd64? ( ftp://turn5.biologie.uni-konstanz.de/pub/xdsstat-linux64.bz2 ) x86? ( ftp://turn5.biologie.uni-konstanz.de/pub/xdsstat-linux32.bz2 )
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://strucbio.biologie.uni-konstanz.de/xdswiki/index.php/XDSSTAT
+RDEPEND=sci-chemistry/xds-bin

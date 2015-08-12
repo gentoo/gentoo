@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=3dc642a7f098b74e138d55e08ffb2612
+SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DEPEND=>=dev-libs/libpo6-0.6.0 >=dev-libs/libe-0.6.0
+DESCRIPTION=A messaging abstraction on top of TCP sockets used in HyperDex
+LICENSE=BSD
+SRC_URI=http://hyperdex.org/src/busybee-0.6.0.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=http://hyperdex.org
+RDEPEND=>=dev-libs/libpo6-0.6.0 >=dev-libs/libe-0.6.0

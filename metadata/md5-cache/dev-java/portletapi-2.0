@@ -1,0 +1,13 @@
+_eclasses_=java-pkg-simple	d87e645de7dff9e1bc0aac42b43ca4f4	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b36743e922633b7ff1a341a85390b014
+SLOT=2.0
+DEFINED_PHASES=compile install preinst prepare setup
+EAPI=5
+DEPEND=>=virtual/jdk-1.6 app-arch/unzip dev-java/tomcat-servlet-api:3.0 >=dev-java/java-config-2.2.0
+DESCRIPTION=Portlet API 2.0 developed by the Java Community Process JSR-286
+LICENSE=Apache-2.0
+IUSE=elibc_FreeBSD elibc_FreeBSD
+SRC_URI=http://mirrors.ibiblio.org/maven2/javax/portlet/portlet-api/2.0/portlet-api-2.0-sources.jar
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+HOMEPAGE=https://jcp.org/en/jsr/detail?id=286
+RDEPEND=>=virtual/jre-1.6 dev-java/tomcat-servlet-api:3.0 >=dev-java/java-config-2.2.0

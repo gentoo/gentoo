@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=733a77ac331a4a80a5217d570c84123c
+SLOT=0
+DEFINED_PHASES=install
+EAPI=2
+DEPEND=x11-libs/libX11 media-sound/jack-audio-connection-kit media-libs/alsa-lib media-libs/libsamplerate x11-libs/gtk+:2 virtual/pkgconfig
+DESCRIPTION=Software synthesizer (Phase Harmonic Advanced Synthesis EXperiment)
+LICENSE=GPL-2
+SRC_URI=http://sysex.net/phasex/beta/phasex-0.12.0beta3.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://sysex.net/phasex/
+RDEPEND=x11-libs/libX11 media-sound/jack-audio-connection-kit media-libs/alsa-lib media-libs/libsamplerate x11-libs/gtk+:2

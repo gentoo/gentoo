@@ -1,0 +1,14 @@
+_eclasses_=readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	gnome2	56d268cae832738430a9de86a5765fa1	user	906f3c8eb3a2350a4f1191a89baa3e46	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=94c4f3e35aa4ef0ad0e3480b05725286
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+EAPI=5
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome-base/nautilus dev-libs/glib:2 dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-misc/dropbox x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libXinerama virtual/pkgconfig dev-python/docutils[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Store, Sync and Share Files Online
+LICENSE=GPL-2
+IUSE=debug python_targets_python2_7 debug
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SRC_URI=http://www.dropbox.com/download?dl=packages/nautilus-dropbox-1.6.2.tar.bz2
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.dropbox.com/
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome-base/nautilus dev-libs/glib:2 dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-misc/dropbox x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libXinerama

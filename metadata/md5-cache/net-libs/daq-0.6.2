@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=a6391f3c3b54621aacf5ace0e7fcfb9e
+SLOT=0
+DEFINED_PHASES=configure install postinst
+EAPI=4
+DEPEND=pcap? ( >=net-libs/libpcap-1.0.0 ) dump? ( >=net-libs/libpcap-1.0.0 ) nfq? ( dev-libs/libdnet >=net-firewall/iptables-1.4.10 net-libs/libnetfilter_queue ) ipq? ( dev-libs/libdnet >=net-firewall/iptables-1.4.10 net-libs/libnetfilter_queue )
+DESCRIPTION=Data Acquisition library, for packet I/O
+LICENSE=GPL-2
+IUSE=ipv6 +afpacket +dump +pcap nfq ipq static-libs
+SRC_URI=http://www.snort.org/downloads/1339 -> daq-0.6.2.tar.gz
+KEYWORDS=amd64 ~arm ~mips ~ppc x86
+HOMEPAGE=http://www.snort.org/
+RDEPEND=pcap? ( >=net-libs/libpcap-1.0.0 ) dump? ( >=net-libs/libpcap-1.0.0 ) nfq? ( dev-libs/libdnet >=net-firewall/iptables-1.4.10 net-libs/libnetfilter_queue ) ipq? ( dev-libs/libdnet >=net-firewall/iptables-1.4.10 net-libs/libnetfilter_queue )

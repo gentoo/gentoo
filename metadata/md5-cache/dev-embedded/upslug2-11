@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=cafa94edd9f55cba81eef12f90d47b89
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=util for flashing NSLU2 machines remotely
+LICENSE=MIT
+SRC_URI=mirror://sourceforge/nslu/upslug2-11.tar.gz
+KEYWORDS=amd64 ~arm x86
+HOMEPAGE=http://www.nslu2-linux.org/wiki/Main/UpSlug2

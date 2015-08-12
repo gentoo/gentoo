@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4ae92618636039fea00e387d36263a2d
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=5
+DEPEND=virtual/pkgconfig net-misc/curl >=dev-libs/jansson-2.6 ncurses? ( sys-libs/ncurses ) avalon? ( virtual/libusb:1 ) bflsc? ( virtual/libusb:1 ) bitforce? ( virtual/libusb:1 ) bitfury? ( virtual/libusb:1 ) cointerra? ( virtual/libusb:1 ) drillbit? ( virtual/libusb:1 ) hashfast? ( virtual/libusb:1 ) hashratio? ( virtual/libusb:1 ) icarus? ( virtual/libusb:1 ) klondike? ( virtual/libusb:1 ) modminer? ( virtual/libusb:1 ) spondoolies? ( virtual/libusb:1 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Bitcoin CPU/GPU/FPGA/ASIC miner in C
+LICENSE=GPL-3
+IUSE=doc examples udev hardened ncurses ants1 ants2 avalon avalon2 bab bitmine_A1 bflsc bitforce bitfury cointerra drillbit hashfast hashratio icarus klondike knc minion modminer spondoolies
+REQUIRED_USE=|| ( ants1 ants2 avalon avalon2 bab bitmine_A1 bflsc bitforce bitfury cointerra drillbit hashfast hashratio icarus klondike knc minion modminer spondoolies )
+SRC_URI=http://ck.kolivas.org/apps/cgminer/cgminer-4.7.0.tar.bz2
+KEYWORDS=~amd64 ~arm ~x86
+HOMEPAGE=http://bitcointalk.org/?topic=28402.msg357369 http://github.com/ckolivas/cgminer
+RDEPEND=net-misc/curl >=dev-libs/jansson-2.6 ncurses? ( sys-libs/ncurses ) avalon? ( virtual/libusb:1 ) bflsc? ( virtual/libusb:1 ) bitforce? ( virtual/libusb:1 ) bitfury? ( virtual/libusb:1 ) cointerra? ( virtual/libusb:1 ) drillbit? ( virtual/libusb:1 ) hashfast? ( virtual/libusb:1 ) hashratio? ( virtual/libusb:1 ) icarus? ( virtual/libusb:1 ) klondike? ( virtual/libusb:1 ) modminer? ( virtual/libusb:1 ) spondoolies? ( virtual/libusb:1 )

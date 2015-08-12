@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=ee0c42582bfeeef85fa9e47d6f610e0c
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+EAPI=5
+DEPEND=test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A simple but powerful template language for C++
+LICENSE=BSD
+IUSE=doc emacs vim-syntax static-libs test
+RESTRICT=test
+SRC_URI=http://dev.gentoo.org/~pinkbyte/distfiles/ctemplate-2.3.tar.bz2
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://code.google.com/p/ctemplate/
+RDEPEND=vim-syntax? ( >=app-editors/vim-core-7 ) emacs? ( virtual/emacs )

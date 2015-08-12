@@ -1,0 +1,11 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=1c7b8d6f9e731dd13a33bf73b2844fce
+SLOT=0
+DEFINED_PHASES=configure install postinst preinst prepare
+EAPI=3
+DESCRIPTION=Minimal baselayout and e-functions for Gentoo Prefix installs
+LICENSE=GPL-2
+IUSE=build kernel_linux
+SRC_URI=mirror://gentoo/baselayout-2.2.tar.bz2 http://dev.gentoo.org/~vapier/dist/baselayout-2.2.tar.bz2 http://dev.gentoo.org/~redlizard/distfiles/einfo-1.0.6.tar.xz
+KEYWORDS=~arm ~arm-linux ~ppc-aix ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt
+HOMEPAGE=http://www.gentoo.org/

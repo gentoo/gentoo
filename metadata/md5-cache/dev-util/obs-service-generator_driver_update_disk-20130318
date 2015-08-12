@@ -1,0 +1,11 @@
+_eclasses_=obs-service	32d8ccd02ab40b202e196c2a20d1a8b8	obs-download	34254a75c71884fa169583d31466e857
+_md5_=88f3ac900683da2386c06467962d5333
+SLOT=0
+DEFINED_PHASES=install prepare unpack
+EAPI=5
+DESCRIPTION=Open Build Service client module - generator_driver_update_disk service
+LICENSE=GPL-2
+SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-generator_driver_update_disk/generator_driver_update_disk -> generator_driver_update_disk-20130318 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-generator_driver_update_disk/generator_driver_update_disk.service -> generator_driver_update_disk-20130318.service https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-generator_driver_update_disk/BSKiwiXML.pm -> BSKiwiXML-20130318.pm
+KEYWORDS=amd64 x86
+HOMEPAGE=http://en.opensuse.org/openSUSE:OSC
+RDEPEND=dev-lang/perl dev-util/osc dev-util/suse-build

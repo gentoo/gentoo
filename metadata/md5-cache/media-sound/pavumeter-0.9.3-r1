@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=cc71025db0af017520e9c4100bff0ec0
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=2
+DEPEND=dev-cpp/gtkmm:2.4 dev-libs/libsigc++:2 >=media-sound/pulseaudio-0.9.7[glib] || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme ) virtual/pkgconfig
+DESCRIPTION=PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
+LICENSE=GPL-2
+SRC_URI=http://0pointer.de/lennart/projects/pavumeter/pavumeter-0.9.3.tar.gz
+KEYWORDS=amd64 ~sparc x86
+HOMEPAGE=http://0pointer.de/lennart/projects/pavumeter/
+RDEPEND=dev-cpp/gtkmm:2.4 dev-libs/libsigc++:2 >=media-sound/pulseaudio-0.9.7[glib] || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme )

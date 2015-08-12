@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=db7378450b229f75f61476bb1bcf356d
+SLOT=0/1.2.0
+DEFINED_PHASES=compile install test
+EAPI=5
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/findlib dev-ml/opam
+DESCRIPTION=OCaml module for functional reactive programming
+LICENSE=BSD
+IUSE=doc +ocamlopt
+SRC_URI=http://erratique.ch/software/react/releases/react-1.2.0.tbz
+KEYWORDS=~amd64 ~x86-fbsd
+HOMEPAGE=http://erratique.ch/software/react
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?]

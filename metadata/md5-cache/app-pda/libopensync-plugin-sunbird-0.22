@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=eed38734a9a35a17cf9683a0a6c6871d
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=3
+DEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 net-libs/neon virtual/pkgconfig
+DESCRIPTION=OpenSync Sunbird Plugin
+LICENSE=LGPL-2.1
+SRC_URI=http://www.opensync.org/download/releases/0.22/libopensync-plugin-sunbird-0.22.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.opensync.org/
+RDEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 net-libs/neon

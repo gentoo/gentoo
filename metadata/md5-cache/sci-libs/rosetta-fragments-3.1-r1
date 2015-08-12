@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	prefix	e7f2b9c6e57342e5d25eac22fce23062	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=4abdd32e99842163f352e907991c7bbe
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=5
+DESCRIPTION=Fragment library for rosetta
+LICENSE=rosetta
+RESTRICT=fetch
+SRC_URI=rosetta3.1_fragments.tgz
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.rosettacommons.org
+RDEPEND=sci-biology/ncbi-tools || ( sci-biology/update-blastdb sci-biology/ncbi-tools++ ) sci-biology/psipred

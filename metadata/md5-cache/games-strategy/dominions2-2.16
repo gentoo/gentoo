@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	portability	3a50b3ec310b86914f98babecc8f89c6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	cdrom	d59e7a8a50d875e095c60654bbe22273	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=18237dfbe22dee1c1da12dac7c87fd35
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
+DESCRIPTION=Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
+LICENSE=all-rights-reserved
+IUSE=doc
+RESTRICT=bindist strip
+SRC_URI=x86? ( http://www.shrapnelgames.com/downloads/dompatch216_linux_x86.tgz ) amd64? ( http://www.shrapnelgames.com/downloads/dompatch216_linux_x86.tgz ) ppc? ( http://www.shrapnelgames.com/downloads/dompatch216_linux_ppc.tgz ) doc? ( http://www.shrapnelgames.com/downloads/DOM2_Walkthrough.pdf http://www.shrapnelgames.com/downloads/manual_addenda.pdf ) mirror://gentoo/dominions2.png
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://www.illwinter.com/dom2/index.html
+PROPERTIES=interactive
+RDEPEND=|| ( ppc? ( media-libs/libsdl virtual/opengl virtual/glu ) !ppc? ( media-libs/libsdl[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] virtual/glu[abi_x86_32(-)] ) ) games-misc/games-envd

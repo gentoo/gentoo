@@ -1,0 +1,9 @@
+_eclasses_=
+_md5_=6d0ac6a7707bfdb277c34c957c394146
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=wrapper for fox-config to manage multiple versions
+LICENSE=GPL-2
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.gentoo.org/

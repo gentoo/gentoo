@@ -1,0 +1,13 @@
+_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ec28814c14053e20c89c591185a0a9a7
+SLOT=0/1.2.0
+DEFINED_PHASES=compile install
+EAPI=5
+DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] sys-libs/zlib >=virtual/mysql-4.0 >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=A package for ocaml that provides access to mysql databases
+LICENSE=LGPL-2
+IUSE=+ocamlopt
+SRC_URI=https://forge.ocamlcore.org/frs/download.php/1500/ocaml-mysql-1.2.0.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://ocaml-mysql.forge.ocamlcore.org/
+RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] sys-libs/zlib >=virtual/mysql-4.0

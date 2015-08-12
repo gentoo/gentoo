@@ -1,0 +1,12 @@
+_eclasses_=rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=279c1411e76c20846992e54d9383d312
+SLOT=0
+DEFINED_PHASES=install postinst unpack
+EAPI=5
+DEPEND=app-arch/unzip app-admin/chrpath >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=LSI Logic MegaRAID Command Line Interface management tool
+LICENSE=LSI
+RESTRICT=mirror fetch
+SRC_URI=http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/8.07.14_MegaCLI.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.lsi.com/

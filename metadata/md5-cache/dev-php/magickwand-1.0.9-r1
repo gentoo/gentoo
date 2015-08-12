@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	php-ext-source-r2	f5fb7301b23c79ad7fef68a2d8de2116	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4b63fc483546caada38b305a4265ee86
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=5
+DEPEND=>=media-gfx/imagemagick-6.5.2.9 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-4? ( dev-lang/php:5.4 )
+DESCRIPTION=A native PHP-extension to the ImageMagick MagickWand API
+LICENSE=MagickWand
+IUSE=php_targets_php5-6 php_targets_php5-5 php_targets_php5-4
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php5-5 php_targets_php5-4 )
+SRC_URI=http://www.magickwand.org/download/php/MagickWandForPHP-1.0.9-2.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.magickwand.org/
+RDEPEND=>=media-gfx/imagemagick-6.5.2.9 php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-4? ( dev-lang/php:5.4 )

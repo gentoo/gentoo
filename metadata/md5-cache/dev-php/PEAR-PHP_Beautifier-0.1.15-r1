@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=8f180cee6ffc6010469d3b5e56b8d2c7
+SLOT=0
+DEFINED_PHASES=install postinst setup
+EAPI=5
+DEPEND=dev-lang/php[tokenizer] dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=Code Beautifier for PHP
+LICENSE=PHP-3
+SRC_URI=http://pear.php.net/get/PHP_Beautifier-0.1.15.tgz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://pear.php.net/PHP_Beautifier
+RDEPEND=dev-lang/php[tokenizer] >=dev-php/PEAR-Log-1.8 dev-lang/php:* >=dev-php/pear-1.8.1

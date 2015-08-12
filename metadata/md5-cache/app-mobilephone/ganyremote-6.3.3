@@ -1,0 +1,14 @@
+_eclasses_=multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=6f5d6be96287439efac1e207b4830e2b
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=app-mobilephone/anyremote-6.5[bluetooth=] dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] bluetooth? ( dev-python/pybluez[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Gnome frontend to Anyremote
+LICENSE=GPL-2+
+IUSE=bluetooth python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SRC_URI=mirror://sourceforge/anyremote/ganyremote-6.3.3.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://anyremote.sourceforge.net/
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=app-mobilephone/anyremote-6.5[bluetooth=] dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] bluetooth? ( dev-python/pybluez[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )

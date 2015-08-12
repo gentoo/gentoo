@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=e67da8101c765610566ae8c6eaf7bb27
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
+DEPEND=>=dev-perl/Params-Util-0.370.0 >=dev-perl/IPC-Run3-0.42.0 >=virtual/perl-File-Path-2.04 >=dev-perl/DBD-SQLite-1.210.0 >=dev-perl/ORLite-1.280.0 >=dev-perl/File-pushd-1.0.0 >=dev-perl/Probe-Perl-0.10.0 >=virtual/perl-File-Spec-3.270.100 >=dev-perl/File-Which-1.70.0 >=dev-perl/DBI-1.580.0 dev-lang/perl:=[-build(-)]
+DESCRIPTION=Extremely light weight SQLite-specific schema migration
+LICENSE=|| ( Artistic GPL-1+ )
+SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/ORLite-Migrate-1.10.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://search.cpan.org/dist/ORLite-Migrate/
+RDEPEND=>=dev-perl/Params-Util-0.370.0 >=dev-perl/IPC-Run3-0.42.0 >=virtual/perl-File-Path-2.04 >=dev-perl/DBD-SQLite-1.210.0 >=dev-perl/ORLite-1.280.0 >=dev-perl/File-pushd-1.0.0 >=dev-perl/Probe-Perl-0.10.0 >=virtual/perl-File-Spec-3.270.100 >=dev-perl/File-Which-1.70.0 >=dev-perl/DBI-1.580.0 dev-lang/perl:=[-build(-)]

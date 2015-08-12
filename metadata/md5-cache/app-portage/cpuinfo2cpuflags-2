@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Tool to guess CPU_FLAGS_X86 flags for the host
+EAPI=5
+HOMEPAGE=https://bitbucket.org/mgorny/cpuinfo2cpuflags
+KEYWORDS=~amd64 ~x86 ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=https://bitbucket.org/mgorny/cpuinfo2cpuflags/downloads/cpuinfo2cpuflags-2.tar.bz2
+_md5_=e3c8d8ded4d8a862f18e71c2bba996c7

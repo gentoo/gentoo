@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=44bcd20830646345565bd43a4402d0aa
+SLOT=0
+DEFINED_PHASES=configure install postinst
+EAPI=5
+DEPEND=dev-lang/perl dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO !<sys-apps/moreutils-0.45-r1 !<sci-geosciences/grass-6.4.1-r1
+DESCRIPTION=A shell tool for executing jobs in parallel locally or on remote machines
+LICENSE=GPL-3
+SRC_URI=mirror://gnu/parallel/parallel-20150622.tar.bz2
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.gnu.org/software/parallel/
+RDEPEND=dev-lang/perl dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO

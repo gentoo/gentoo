@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f4331f5b1906aa9f2dc53280663b4958
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=3
+DEPEND=sys-libs/zlib virtual/jpeg dev-libs/openssl dev-lang/tk net-misc/stunnel java? ( virtual/jre ) x11-terms/xterm x11-libs/libICE x11-libs/libSM x11-libs/libXaw x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libXt java? ( virtual/jdk )
+DESCRIPTION=VNC viewer that adds encryption security to VNC connections
+LICENSE=GPL-2
+IUSE=java
+SRC_URI=mirror://sourceforge/ssvnc/ssvnc-1.0.28.src.tar.gz
+KEYWORDS=amd64 x86 ~x86-linux
+HOMEPAGE=http://www.karlrunge.com/x11vnc/ssvnc.html
+RDEPEND=sys-libs/zlib virtual/jpeg dev-libs/openssl dev-lang/tk net-misc/stunnel java? ( virtual/jre ) x11-terms/xterm x11-libs/libICE x11-libs/libSM x11-libs/libXaw x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libXt

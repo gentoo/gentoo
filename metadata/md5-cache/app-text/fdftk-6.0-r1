@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=97b3b2a1344c4448026f5caa00e1a03d
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=0
+DESCRIPTION=Acrobat FDF Toolkit
+LICENSE=Adobe
+RESTRICT=fetch strip mirror
+SRC_URI=FDFToolkitForUnix.tar.gz
+KEYWORDS=-* x86
+HOMEPAGE=http://www.adobe.com/devnet/acrobat/fdftoolkit.html

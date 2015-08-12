@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=ebb3a81f7f546c5e9302285915ffad51
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=4
+DEPEND=virtual/pkgconfig =media-sound/audacious-3.1* >=media-libs/dumb-0.9.3
+DESCRIPTION=Audacious Plug-in for accurate, high-quality IT/XM/S3M/MOD playback
+LICENSE=GPL-2
+SRC_URI=http://www.netswarm.net/misc/audacious-dumb-0.74.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.netswarm.net/
+RDEPEND==media-sound/audacious-3.1* >=media-libs/dumb-0.9.3

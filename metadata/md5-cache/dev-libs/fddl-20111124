@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b20ce41aca564178e6375bae514e15d4
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=4
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Free Decision Diagram Library
+LICENSE=GPL-2
+SRC_URI=http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/fddl-20111124.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://itval.sourceforge.net/ https://github.com/atomopawn/FDDL

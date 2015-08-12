@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=711bf50cfe1d8fb78958980f7f9cf7b6
+SLOT=0
+DEFINED_PHASES=configure prepare
+EAPI=5
+DEPEND=x11-libs/gtk+:2 >=games-util/qstat-2.11 nls? ( virtual/libintl ) geoip? ( dev-libs/geoip ) bzip2? ( app-arch/bzip2 ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A server browser for many FPS games (frontend for qstat)
+LICENSE=GPL-2
+IUSE=bzip2 geoip nls
+SRC_URI=mirror://sourceforge/xqf/xqf-1.0.5.tar.gz
+KEYWORDS=amd64 hppa ppc x86
+HOMEPAGE=http://www.linuxgames.com/xqf/
+RDEPEND=x11-libs/gtk+:2 >=games-util/qstat-2.11 nls? ( virtual/libintl ) geoip? ( dev-libs/geoip ) bzip2? ( app-arch/bzip2 )

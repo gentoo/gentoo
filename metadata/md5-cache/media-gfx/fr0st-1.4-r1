@@ -1,0 +1,12 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	wxwidgets	6712758caa92e836a735c1281b34e70e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3bdd8cdf701891937d8d761cdfc839ba
+SLOT=0
+DEFINED_PHASES=install postinst postrm prepare setup
+EAPI=3
+DEPEND=dev-python/wxpython:2.8 >=media-gfx/flam3-3.0.1 =dev-lang/python-2.7*
+DESCRIPTION=A fractal flame editor
+LICENSE=GPL-3
+SRC_URI=http://launchpad.net/fr0st/trunk/1.4.0/+download/fr0st-1.4-src.tgz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://fr0st.wordpress.com/
+RDEPEND=dev-python/wxpython:2.8 >=media-gfx/flam3-3.0.1 =dev-lang/python-2.7*

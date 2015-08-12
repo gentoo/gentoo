@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=d8855702d1e60bcd950383d5316c4415
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DEPEND=dev-libs/nspr dev-libs/openssl:0 sys-apps/util-linux sys-apps/help2man sys-boot/gnu-efi virtual/pkgconfig
+DESCRIPTION=Tools for manipulating signed PE-COFF binaries
+LICENSE=GPL-2
+SRC_URI=https://github.com/vathpela/pesign/archive/0.108.tar.gz -> pesign-0.108.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/vathpela/pesign
+RDEPEND=dev-libs/nspr dev-libs/openssl:0 sys-apps/util-linux

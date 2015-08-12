@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3853a2074faae0a026d0206396e262ca
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= )
+DESCRIPTION=Efficient (partially uncompressed) SquashFS binary delta tool
+LICENSE=BSD public-domain
+IUSE=lz4 +lzo
+REQUIRED_USE=|| ( lz4 lzo )
+SRC_URI=https://www.bitbucket.org/mgorny/squashdelta/downloads/squashdelta-0.1.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://bitbucket.org/mgorny/squashdelta/
+RDEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= ) dev-util/xdelta:3

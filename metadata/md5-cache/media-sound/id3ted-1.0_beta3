@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=49843c03e835c5e06b4acd1c7f6bc56b
+SLOT=0
+DEFINED_PHASES=setup
+EAPI=4
+DEPEND=media-libs/taglib sys-apps/file
+DESCRIPTION=A Command-line ID3 Tag Editor
+LICENSE=GPL-2
+SRC_URI=mirror://github/muennich/id3ted/id3ted-1.0b3.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://muennich.github.com/id3ted/
+RDEPEND=media-libs/taglib sys-apps/file

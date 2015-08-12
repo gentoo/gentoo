@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=614ca29aae7901d8706af7150cf56291
+SLOT=0/10
+DEFINED_PHASES=compile configure install postinst postrm setup
+EAPI=5
+DEPEND=dev-libs/glib:2= dev-libs/gmp:0= dev-libs/libxml2:2= dev-libs/mpfr:0= sci-libs/fftw:3.0= sci-visualization/gnuplot virtual/lapack virtual/latex-base accessibility? ( app-accessibility/flite:= ) curl? ( net-misc/curl:0= ) emacs? ( virtual/emacs ) gtk? ( media-libs/gd:2=[png] sci-visualization/gnuplot[gd] x11-libs/gtk+:3= x11-libs/gtksourceview:3.0= ) mpi? ( virtual/mpi ) odbc? ( dev-db/unixODBC:0= ) R? ( dev-lang/R:0= ) readline? ( sys-libs/readline:0= ) virtual/pkgconfig
+DESCRIPTION=Regression, econometrics and time-series library
+LICENSE=GPL-3
+IUSE=accessibility cpu_flags_x86_avx +curl emacs gnome gtk mpi nls odbc openmp python readline cpu_flags_x86_sse2 R static-libs
+REQUIRED_USE=emacs? ( gtk ) !curl? ( !gtk )
+SRC_URI=mirror://sourceforge/gretl/gretl-1.9.90.tar.xz
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://gretl.sourceforge.net/
+RDEPEND=dev-libs/glib:2= dev-libs/gmp:0= dev-libs/libxml2:2= dev-libs/mpfr:0= sci-libs/fftw:3.0= sci-visualization/gnuplot virtual/lapack virtual/latex-base accessibility? ( app-accessibility/flite:= ) curl? ( net-misc/curl:0= ) emacs? ( virtual/emacs ) gtk? ( media-libs/gd:2=[png] sci-visualization/gnuplot[gd] x11-libs/gtk+:3= x11-libs/gtksourceview:3.0= ) mpi? ( virtual/mpi ) odbc? ( dev-db/unixODBC:0= ) R? ( dev-lang/R:0= ) readline? ( sys-libs/readline:0= ) python? ( dev-python/numpy )

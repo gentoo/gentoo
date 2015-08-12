@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=aea5b5b38b4f1b4edb11f95d444fa257
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+EAPI=2
+DEPEND=emacs? ( virtual/emacs ) java? ( >=virtual/jdk-1.5 ) java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=Bigloo is a Scheme implementation
+LICENSE=GPL-2
+IUSE=emacs java elibc_FreeBSD java
+SRC_URI=ftp://ftp-sop.inria.fr/mimosa/fp/Bigloo/bigloo3.0c-4.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www-sop.inria.fr/mimosa/fp/Bigloo/bigloo.html
+RDEPEND=emacs? ( virtual/emacs ) java? ( >=virtual/jdk-1.5 ) java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0 )

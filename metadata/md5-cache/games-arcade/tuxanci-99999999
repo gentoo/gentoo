@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5e4fae8026721022d6aeff9f6289a89f
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+EAPI=5
+DEPEND=!dedicated? ( >=media-libs/fontconfig-2.7.0 media-libs/libsdl[X,opengl?] media-libs/sdl-ttf[X] >=media-libs/sdl-image-1.2.10[png] sound? ( >=media-libs/sdl-mixer-1.2.11[vorbis] ) ) physfs? ( dev-games/physfs[zip] ) !physfs? ( >=dev-libs/libzip-0.9 ) virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git
+DESCRIPTION=Tuxanci is first tux shooter inspired by game Bulanci
+LICENSE=GPL-2
+IUSE=debug dedicated +ipv6 nls opengl physfs +sound
+HOMEPAGE=http://www.tuxanci.org/
+RDEPEND=!dedicated? ( >=media-libs/fontconfig-2.7.0 media-libs/libsdl[X,opengl?] media-libs/sdl-ttf[X] >=media-libs/sdl-image-1.2.10[png] sound? ( >=media-libs/sdl-mixer-1.2.11[vorbis] ) ) physfs? ( dev-games/physfs[zip] ) !physfs? ( >=dev-libs/libzip-0.9 ) games-misc/games-envd

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=7df7141613a3f7002afb19b75ef22f39
+SLOT=0
+DEFINED_PHASES=compile install postinst
+EAPI=2
+DEPEND=>=x11-libs/gtk+-2.6:2 >=dev-libs/glib-2.6:2 virtual/pkgconfig
+DESCRIPTION=A tray menu for the Fluxbox toolbar
+LICENSE=GPL-3
+SRC_URI=mirror://sourceforge/ftmenu/ftmenu-0.4.0.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://ftmenu.sourceforge.net/
+RDEPEND=>=x11-libs/gtk+-2.6:2 >=dev-libs/glib-2.6:2 x11-wm/fluxbox

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=16e2f822d583eb61b814d26e8e641c85
+SLOT=3
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=>=sci-libs/netcdf-4.2
+DESCRIPTION=C++ library for netCDF
+LICENSE=UCAR-Unidata
+IUSE=examples static-libs
+SRC_URI=https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx-4.2.tar.gz
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.unidata.ucar.edu/software/netcdf/
+RDEPEND=>=sci-libs/netcdf-4.2

@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=681002f1f5ad38354b0b60bafcfc5a51
+SLOT=0
+DEFINED_PHASES=install postinst prepare
+EAPI=5
+DESCRIPTION=Additional completion definitions for Zsh
+LICENSE=BSD
+SRC_URI=https://github.com/zsh-users/zsh-completions/archive/0.12.0.tar.gz -> zsh-completions-0.12.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/zsh-users/zsh-completions
+RDEPEND=app-shells/zsh

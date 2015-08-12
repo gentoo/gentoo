@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=f872be4ddcbe0e5ddd73f5ac9b7b3e94
+SLOT=0
+DEFINED_PHASES=install postinst prepare setup
+EAPI=5
+DESCRIPTION=WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
+LICENSE=GPL-2
+IUSE=python_targets_python2_7
+REQUIRED_USE=python_targets_python2_7
+SRC_URI=http://wifi-radar.tuxfamily.org/pub/wifi-radar-2.0.s08.tar.bz2
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://wifi-radar.tuxfamily.org/
+RDEPEND=app-admin/sudo >=dev-python/pygtk-2.16.0-r1 >=net-wireless/wireless-tools-29 || ( net-misc/dhcpcd net-misc/dhcp net-misc/pump )

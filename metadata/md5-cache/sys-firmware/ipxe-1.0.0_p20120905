@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=3498790838dc07c478e0c8d295e7ebc0
+SLOT=0
+DEFINED_PHASES=compile configure install
+EAPI=4
+DEPEND=sys-devel/make dev-lang/perl sys-libs/zlib iso? ( sys-boot/syslinux virtual/cdrtools )
+DESCRIPTION=Open source network boot (PXE) firmware
+LICENSE=GPL-2
+IUSE=iso +qemu undi usb vmware
+SRC_URI=https://git.ipxe.org/ipxe.git/snapshot/e6427b7ee117ea4af0812bb13b57999bccd8e058.tar.bz2
+KEYWORDS=amd64 x86
+HOMEPAGE=http://ipxe.org

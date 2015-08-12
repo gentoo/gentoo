@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4339cb421b57bd6208e9c2eb9a8af18
+SLOT=0
+DEFINED_PHASES=compile configure install prepare
+EAPI=5
+DEPEND=rsh? ( net-misc/netkit-rsh ) >=net-libs/neon-0.24.6[zlib?,ssl?,expat?] <=net-libs/neon-0.30.9999[zlib?,ssl?,expat?] xml? ( >=net-libs/neon-0.24.6[-expat] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Maintain remote web sites with ease
+LICENSE=GPL-2
+IUSE=expat nls rsh ssl webdav xml zlib
+SRC_URI=http://www.manyfish.co.uk/sitecopy/sitecopy-0.16.6.tar.gz http://dev.gentoo.org/~idella4/sitecopy-0.16.6-04-manpages-addition-fixes.patch
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.manyfish.co.uk/sitecopy/
+RDEPEND=rsh? ( net-misc/netkit-rsh ) >=net-libs/neon-0.24.6[zlib?,ssl?,expat?] <=net-libs/neon-0.30.9999[zlib?,ssl?,expat?] xml? ( >=net-libs/neon-0.24.6[-expat] )

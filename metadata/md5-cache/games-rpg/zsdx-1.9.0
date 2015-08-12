@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=40fef30e85c16c12ba2ec270e55605d
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+EAPI=5
+DEPEND=app-arch/zip sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
+DESCRIPTION=A free 2D Zelda fangame
+LICENSE=all-rights-reserved CC-BY-SA-3.0 GPL-3
+RESTRICT=mirror
+SRC_URI=http://www.zelda-solarus.com/downloads/zsdx/zsdx-1.9.0.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.solarus-games.org/
+RDEPEND=>=games-engines/solarus-1.3.0 <games-engines/solarus-1.4.0 games-misc/games-envd

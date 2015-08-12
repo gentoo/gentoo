@@ -1,0 +1,13 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	distutils	def8c8eb435ec28fd9315114640f6c84
+_md5_=853c1b8a60efcb30c9c38e4f1096bfc8
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+EAPI=3
+DEPEND=!app-misc/glimpse !app-text/agrep virtual/pkgconfig nls? ( sys-devel/gettext ) =dev-lang/python-2*
+DESCRIPTION=Lightweight, robust, and efficient POSIX compliant regexp matching library
+LICENSE=BSD-2
+IUSE=nls python static-libs
+SRC_URI=http://laurikari.net/tre/tre-0.8.0.tar.bz2
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+HOMEPAGE=http://laurikari.net/tre/
+RDEPEND=!app-misc/glimpse !app-text/agrep =dev-lang/python-2*

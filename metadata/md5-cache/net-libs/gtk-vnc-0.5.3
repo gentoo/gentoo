@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	gnome.org	84c1434ce5de42302c744df8431bf1f6	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=b5b1c333c330fa0351578b0be011a19a
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=>=dev-libs/glib-2.30.1:2 >=dev-libs/libgcrypt-1.4.2:0 dev-libs/libgpg-error >=net-libs/gnutls-1.4 >=x11-libs/cairo-1.2 >=x11-libs/gtk+-2.18:2 x11-libs/libX11 gtk3? ( >=x11-libs/gtk+-2.91.3:3 ) introspection? ( >=dev-libs/gobject-introspection-0.9.4 ) pulseaudio? ( media-sound/pulseaudio ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtk-2:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sasl? ( dev-libs/cyrus-sasl ) >=dev-lang/perl-5 >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) >=dev-libs/gobject-introspection-0.9.4 ) app-arch/xz-utils
+DESCRIPTION=VNC viewer widget for GTK
+LICENSE=GPL-2
+IUSE=examples +gtk3 +introspection pulseaudio python sasl vala python_targets_python2_7
+REQUIRED_USE=python? ( || ( python_targets_python2_7 ) ) vala? ( gtk3 introspection )
+SRC_URI=mirror://gnome/sources/gtk-vnc/0.5/gtk-vnc-0.5.3.tar.xz
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
+HOMEPAGE=https://live.gnome.org/gtk-vnc
+RDEPEND=>=dev-libs/glib-2.30.1:2 >=dev-libs/libgcrypt-1.4.2:0 dev-libs/libgpg-error >=net-libs/gnutls-1.4 >=x11-libs/cairo-1.2 >=x11-libs/gtk+-2.18:2 x11-libs/libX11 gtk3? ( >=x11-libs/gtk+-2.91.3:3 ) introspection? ( >=dev-libs/gobject-introspection-0.9.4 ) pulseaudio? ( media-sound/pulseaudio ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtk-2:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sasl? ( dev-libs/cyrus-sasl )

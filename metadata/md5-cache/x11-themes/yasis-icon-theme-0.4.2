@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=337b5cad2a2bcab0825d7eafa0a0e0db
+SLOT=0
+DEFINED_PHASES=install postinst postrm preinst
+EAPI=0
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=A scalable icon theme called Yasis
+LICENSE=GPL-2
+IUSE=minimal
+RESTRICT=binchecks strip
+SRC_URI=http://www.silvestre.com.ar/icons/yasis-0.4.2.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.silvestre.com.ar/
+RDEPEND=!minimal? ( || ( x11-themes/gnome-icon-theme x11-themes/nuovo-icon-theme ) )

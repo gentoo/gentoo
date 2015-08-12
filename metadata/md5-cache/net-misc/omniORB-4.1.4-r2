@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=c2f8fc6bbbecfc391da1b7eda4d1212c
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare setup
+EAPI=5
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6b:0= )
+DESCRIPTION=A robust, high-performance CORBA 2 ORB
+LICENSE=LGPL-2 GPL-2
+IUSE=doc ssl static-libs python_targets_python2_7
+SRC_URI=mirror://sourceforge/omniorb/omniORB-4.1.4.tar.gz
+KEYWORDS=amd64 ppc ppc64 ~sparc x86
+HOMEPAGE=http://omniorb.sourceforge.net/
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6b:0= )

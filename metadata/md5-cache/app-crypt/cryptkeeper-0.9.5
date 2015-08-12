@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	gnome2	56d268cae832738430a9de86a5765fa1	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=cccdeb85c981b2a3a05405db65928776
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+EAPI=5
+DEPEND=gnome-base/gconf:2 >=sys-fs/encfs-1.7.2 >=sys-fs/fuse-2.8.0 gnome-extra/zenity nls? ( sys-devel/gettext ) app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=EncFS system tray applet for GNOME
+LICENSE=GPL-3
+IUSE=nls
+RESTRICT=test
+SRC_URI=http://tom.noflag.org.uk/cryptkeeper/cryptkeeper-0.9.5.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://tom.noflag.org.uk/cryptkeeper.html
+RDEPEND=gnome-base/gconf:2 >=sys-fs/encfs-1.7.2 >=sys-fs/fuse-2.8.0 gnome-extra/zenity

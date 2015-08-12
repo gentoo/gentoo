@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=8b963bf327c685098372103a45debb3a
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=4
+DEPEND=app-text/mecab >=dev-db/postgresql-7.4[server]
+DESCRIPTION=Integrated Full-Text-Search for Japanese language using morphological analyze
+LICENSE=BSD
+SRC_URI=http://pgfoundry.org/frs/download.php/2943/textsearch_ja-9.0.0.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=http://textsearch-ja.projects.postgresql.org/index.html
+RDEPEND=app-text/mecab >=dev-db/postgresql-7.4[server]

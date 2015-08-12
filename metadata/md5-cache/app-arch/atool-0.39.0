@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=ffa4eedf357303bf83a9dddc4bb867aa
+SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DEPEND=dev-lang/perl
+DESCRIPTION=a script for managing file archives of various types
+LICENSE=GPL-2
+SRC_URI=http://savannah.nongnu.org/download/atool/atool-0.39.0.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www.nongnu.org/atool/
+RDEPEND=dev-lang/perl !app-text/adiff

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-go/go-net >=dev-lang/go-1.4.2:=
+DESCRIPTION=Go client implementation for OAuth 2.0 spec
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/oauth2
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/golang/oauth2/archive/8914e5017ca260f2a3a1575b1e6868874050d95e.tar.gz -> go-oauth2-0_pre20150701.tar.gz https://github.com/GoogleCloudPlatform/gcloud-golang/archive/e34a32f9b0ecbc0784865fb2d47f3818c09521d4.tar.gz -> gcloud-golang-e34a32f9b0ecbc0784865fb2d47f3818c09521d4.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f
+_md5_=1561043e89aaf075b7fe2bf0b07a0597

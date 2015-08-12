@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=ebded669e41683cd358789d4a6501789
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+EAPI=5
+DEPEND=dev-python/python-distutils-extra[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=sys-apps/sed-4 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=An advanced menu editor that provides modern features in a clean, easy-to-use interface
+LICENSE=GPL-3
+IUSE=python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SRC_URI=http://launchpad.net/menulibre/trunk/13.04.17/+download/menulibre_13.04.17.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.smdavis.us/projects/menulibre/
+RDEPEND=dev-libs/gobject-introspection dev-python/pygobject:3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] x11-libs/gdk-pixbuf[X,introspection] x11-libs/gtk+:3[X,introspection] x11-libs/gtksourceview:3.0[introspection] x11-themes/hicolor-icon-theme python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

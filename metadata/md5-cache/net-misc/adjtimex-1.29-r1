@@ -1,0 +1,11 @@
+_eclasses_=fixheadtails	2f44773656577fe2653bacc8bdcb2174	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=66a727f0d6f329068f908437ad5ea5b9
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare
+EAPI=2
+DEPEND=sys-apps/sed >=sys-apps/sed-4
+DESCRIPTION=display or set the kernel time variables
+LICENSE=GPL-2
+SRC_URI=mirror://debian/pool/main/a/adjtimex/adjtimex_1.29-2.diff.gz mirror://debian/pool/main/a/adjtimex/adjtimex_1.29.orig.tar.gz
+KEYWORDS=alpha amd64 ppc x86
+HOMEPAGE=http://www.ibiblio.org/linsearch/lsms/adjtimex.html

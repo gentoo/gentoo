@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=33a6ed2a68d41197be88efa6be7943f
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+EAPI=5
+DEPEND=>=dev-perl/Event-ExecFlow-0.64 >=dev-perl/Event-RPC-0.89 dev-perl/gtk2-perl >=dev-perl/gtk2-ex-formfactory-0.65 >=dev-perl/libintl-perl-1.16 || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick ) >=media-video/transcode-1.1.0[dvd,jpeg,mp3,ogg,vorbis] >=virtual/perl-podlators-2.5.3 dev-lang/perl:=[-build(-)]
+DESCRIPTION=dvd::rip is a graphical frontend for transcode
+LICENSE=|| ( Artistic GPL-1+ )
+IUSE=ffmpeg fping mplayer ogg subtitles vcd vorbis xine xvid
+SRC_URI=http://www.exit1.org/dvdrip/dist/dvdrip-0.98.11.tar.gz
+KEYWORDS=amd64 ppc ppc64 x86
+HOMEPAGE=http://www.exit1.org/dvdrip/
+RDEPEND=>=dev-perl/Event-ExecFlow-0.64 >=dev-perl/Event-RPC-0.89 dev-perl/gtk2-perl >=dev-perl/gtk2-ex-formfactory-0.65 >=dev-perl/libintl-perl-1.16 || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick ) >=media-video/transcode-1.1.0[dvd,jpeg,mp3,ogg,vorbis] >=virtual/perl-podlators-2.5.3 x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2 ffmpeg? ( virtual/ffmpeg ) fping? ( >=net-analyzer/fping-2.2 ) mplayer? ( media-video/mplayer ) ogg? ( media-sound/ogmtools ) subtitles? ( media-video/subtitleripper ) vcd? ( media-video/transcode[mjpeg] >=media-video/mjpegtools-1.6.0 ) vorbis? ( media-sound/vorbis-tools ) xine? ( media-video/xine-ui ) xvid? ( media-video/xvid4conf ) >=media-video/lsdvd-0.15 dev-lang/perl:=[-build(-)]

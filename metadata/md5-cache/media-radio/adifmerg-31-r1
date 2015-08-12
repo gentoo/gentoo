@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=d7ef7af2ad02df21aaa6dd28cafb8312
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DESCRIPTION=A small conversion and check utility for ADIF files
+LICENSE=GPL-2
+IUSE=examples
+SRC_URI=http://jaakko.home.cern.ch/jaakko/Soft/adifmerg31.tgz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://jaakko.home.cern.ch/jaakko/Soft/
+RDEPEND=dev-lang/perl

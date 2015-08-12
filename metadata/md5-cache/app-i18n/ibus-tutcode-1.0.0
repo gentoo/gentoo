@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=b4575e53a3f0f0abff3c45dd83138cd9
+SLOT=0
+DEFINED_PHASES=install
+EAPI=4
+DEPEND=>=dev-lang/python-2.5 >=sys-devel/gettext-0.16.1
+DESCRIPTION=a Japanese TUT-Code input engine for IBus
+LICENSE=GPL-2
+SRC_URI=mirror://github/deton/ibus-tutcode/ibus-tutcode-1.0.0.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/deton/ibus-tutcode/
+RDEPEND=>=dev-lang/python-2.5 >=sys-devel/gettext-0.16.1 app-i18n/ibus

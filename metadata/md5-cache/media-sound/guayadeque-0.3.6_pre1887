@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c0f09a7c9889ccb5d707f1b31b5fac43
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
+DEPEND=dev-db/sqlite:3 dev-db/wxsqlite3 dev-libs/glib:2 media-libs/flac media-libs/gstreamer:0.10[introspection] >=media-libs/taglib-1.6.4 net-misc/curl sys-apps/dbus x11-libs/wxGTK:2.8[X] ayatana? ( >=dev-libs/libindicate-0.7 ) ipod? ( media-libs/libgpod ) !minimal? ( dev-perl/GStreamer media-libs/gnonlin:0.10 media-plugins/gst-plugins-alsa:0.10 media-plugins/gst-plugins-ffmpeg:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-gnomevfs:0.10 media-plugins/gst-plugins-libnice:0.10 media-plugins/gst-plugins-pulse:0.10 media-plugins/gst-plugins-soup:0.10 media-plugins/gst-plugins-x:0.10 media-libs/gst-plugins-bad:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-libs/gst-plugins-ugly:0.10 ) app-arch/unzip sys-devel/gettext virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Music management program designed for all music enthusiasts
+LICENSE=GPL-2
+IUSE=ayatana ipod +minimal linguas_es linguas_uk linguas_it linguas_de linguas_fr linguas_is linguas_nb linguas_th linguas_cs linguas_ru linguas_hu linguas_sv linguas_nl linguas_pt_BR linguas_pt linguas_el linguas_sk linguas_pl linguas_tr linguas_ja linguas_sr linguas_bg linguas_ca_ES linguas_hr
+RESTRICT=test
+SRC_URI=http://sourceforge.net/code-snapshots/svn/g/gu/guayadeque/code/guayadeque-code-1887.zip -> guayadeque-0.3.6_pre1887.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://guayadeque.org/
+RDEPEND=dev-db/sqlite:3 dev-db/wxsqlite3 dev-libs/glib:2 media-libs/flac media-libs/gstreamer:0.10[introspection] >=media-libs/taglib-1.6.4 net-misc/curl sys-apps/dbus x11-libs/wxGTK:2.8[X] ayatana? ( >=dev-libs/libindicate-0.7 ) ipod? ( media-libs/libgpod ) !minimal? ( dev-perl/GStreamer media-libs/gnonlin:0.10 media-plugins/gst-plugins-alsa:0.10 media-plugins/gst-plugins-ffmpeg:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-gnomevfs:0.10 media-plugins/gst-plugins-libnice:0.10 media-plugins/gst-plugins-pulse:0.10 media-plugins/gst-plugins-soup:0.10 media-plugins/gst-plugins-x:0.10 media-libs/gst-plugins-bad:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-libs/gst-plugins-ugly:0.10 )

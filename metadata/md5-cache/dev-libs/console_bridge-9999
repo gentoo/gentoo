@@ -1,0 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=434cbed0b16698bc00981f9abaccf6c7
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
+DEPEND=dev-libs/boost:=[threads] >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A ROS-independent package for logging into rosconsole/rosout for ROS-dependent packages.
+LICENSE=BSD
+HOMEPAGE=http://wiki.ros.org/console_bridge
+RDEPEND=dev-libs/boost:=[threads]

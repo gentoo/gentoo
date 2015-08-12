@@ -1,0 +1,13 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	distutils	def8c8eb435ec28fd9315114640f6c84
+_md5_=f0ebe255c77b88873fa04513fb01406
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm prepare
+EAPI=3
+DEPEND=>=x11-libs/xosd-2.2.4 =dev-lang/python-2*
+DESCRIPTION=Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
+LICENSE=GPL-2
+IUSE=examples
+SRC_URI=http://ichi2.net/pyosd/pyosd-0.2.14.tar.gz
+KEYWORDS=amd64 ~ia64 ppc x86
+HOMEPAGE=http://ichi2.net/pyosd/
+RDEPEND=>=x11-libs/xosd-2.2.4 =dev-lang/python-2*

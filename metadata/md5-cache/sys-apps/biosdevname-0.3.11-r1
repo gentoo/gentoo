@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=1553a5b95a0d5cb139b16567b53e5626
+SLOT=0
+DEFINED_PHASES=postinst prepare
+EAPI=4
+DEPEND=virtual/udev sys-apps/pciutils
+DESCRIPTION=Sets BIOS-given device names instead of kernel eth* names
+LICENSE=GPL-2
+SRC_URI=http://linux.dell.com/biosdevname/biosdevname-0.3.11/biosdevname-0.3.11.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://linux.dell.com/biosdevname/
+RDEPEND=virtual/udev

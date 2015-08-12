@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=bd4ee850a905b176ec00f9ec975487d0
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=sys-libs/ncurses sys-apps/help2man
+DESCRIPTION=CELL spu ps and top alike utilities
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/libspe/spu-tools-2.2.80-95.tar.gz
+KEYWORDS=ppc ppc64
+HOMEPAGE=http://sourceforge/projects/libspe
+RDEPEND=sys-libs/ncurses

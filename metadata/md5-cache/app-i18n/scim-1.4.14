@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=de91ed8332ad4db48f36137720850ae1
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+EAPI=4
+DEPEND=x11-libs/libX11 dev-libs/glib:2 gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) >=dev-libs/atk-1 >=x11-libs/pango-1 !app-i18n/scim-cvs doc? ( app-doc/doxygen >=app-text/docbook-xsl-stylesheets-1.73.1 ) dev-lang/perl virtual/pkgconfig >=dev-util/intltool-0.33 sys-devel/libtool >=sys-apps/sed-4
+DESCRIPTION=Smart Common Input Method (SCIM) is an Input Method (IM) development platform
+LICENSE=GPL-2
+IUSE=doc gtk3
+SRC_URI=mirror://sourceforge/scim/scim-1.4.14.tar.gz
+KEYWORDS=alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.scim-im.org/
+RDEPEND=x11-libs/libX11 dev-libs/glib:2 gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) >=dev-libs/atk-1 >=x11-libs/pango-1 !app-i18n/scim-cvs

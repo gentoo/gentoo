@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9a020d857a22a62c3566f56c7b929f68
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=>=dev-qt/qtcore-4.8:4 >=dev-qt/qtgui-4.8:4 >=dev-qt/qtsql-4.8:4[sqlite] >=dev-qt/qtsvg-4.8:4 >=dev-qt/qtwebkit-4.8:4 phonon? ( kde? ( media-libs/phonon[qt4] ) !kde? ( || ( >=dev-qt/qtphonon-4.8:4 media-libs/phonon[qt4] ) ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Application to create and manage beer recipes
+LICENSE=GPL-3 WTFPL-2
+IUSE=kde phonon linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en linguas_es linguas_fr linguas_hu linguas_it linguas_nb linguas_nl linguas_pl linguas_pt linguas_ru linguas_sv linguas_zh
+SRC_URI=https://launchpad.net/brewtarget/trunk/2.1.0/+download/brewtarget_2.1.0.orig.tar.xz
+KEYWORDS=~amd64
+HOMEPAGE=http://www.brewtarget.org/
+RDEPEND=>=dev-qt/qtcore-4.8:4 >=dev-qt/qtgui-4.8:4 >=dev-qt/qtsql-4.8:4[sqlite] >=dev-qt/qtsvg-4.8:4 >=dev-qt/qtwebkit-4.8:4 phonon? ( kde? ( media-libs/phonon[qt4] ) !kde? ( || ( >=dev-qt/qtphonon-4.8:4 media-libs/phonon[qt4] ) ) )

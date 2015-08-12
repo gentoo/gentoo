@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Go supplementary cryptography libraries
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/crypto
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0/0_pre20150808
+SRC_URI=https://github.com/golang/crypto/archive/83f1503f771a82af8a31f358eb825e9efb5dae6c.tar.gz -> go-crypto-0_pre20150808.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
+_md5_=0b34f2e1ec2da84be543f81e299eb132

@@ -1,0 +1,10 @@
+_eclasses_=selinux-policy-2	beb92ccd0cd9505f4b0151a601885ba6	git-r3	1502b9838d043db47700b8120083e637	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=291b04989cb35b7cb6e7ffe2404046ef
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm prepare unpack
+EAPI=5
+DEPEND=>=dev-vcs/git-1.8.2.1 >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999 sys-devel/m4 >=sys-apps/checkpolicy-2.0.21
+DESCRIPTION=SELinux policy for logwatch
+LICENSE=GPL-2
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999

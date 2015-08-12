@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4
+_md5_=e6c0712c1a64073fbefa5dc7ce234beb
+SLOT=0
+DEFINED_PHASES=configure prepare
+EAPI=4
+DEPEND=png? ( media-libs/gd[png,truetype?] ) virtual/pkgconfig sys-devel/bison sys-devel/flex !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A message sequence chart generator
+LICENSE=GPL-2
+IUSE=png truetype
+RESTRICT=test
+SRC_URI=http://www.mcternan.me.uk/mscgen/software/mscgen-src-0.20.tar.gz
+KEYWORDS=amd64 arm ppc ppc64 x86 ~x64-solaris
+HOMEPAGE=http://www.mcternan.me.uk/mscgen/
+RDEPEND=png? ( media-libs/gd[png,truetype?] )

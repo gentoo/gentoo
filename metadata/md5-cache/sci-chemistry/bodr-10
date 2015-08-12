@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=3872d5a078c5d07cc8ac9327ec048185
+SLOT=0
+DEFINED_PHASES=configure prepare
+EAPI=5
+DEPEND=dev-libs/libxslt
+DESCRIPTION=The Blue Obelisk Data Repository listing element and isotope properties
+LICENSE=MIT
+SRC_URI=mirror://sourceforge/bodr/bodr-10.tar.bz2
+KEYWORDS=~amd64 ~x86 ~ppc-macos
+HOMEPAGE=http://sourceforge.net/projects/bodr

@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	openib	88d3cf78b98b3ff627670687fcb1c7e4	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b389ad21c41a12baf1393a71c7dd785c
+SLOT=3.12
+DEFINED_PHASES=unpack
+EAPI=5
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=A library allowing programs to use InfiniBand 'verbs' for direct access to IB hardware
+LICENSE=|| ( GPL-2 BSD-2 )
+SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
+KEYWORDS=amd64 x86 ~amd64-linux
+HOMEPAGE=http://www.openfabrics.org/
+RDEPEND=!sys-infiniband/openib-userspace !sys-infiniband/libibverbs:0 !sys-infiniband/libibverbs:1.5.4.1 !sys-infiniband/libibverbs:3.5

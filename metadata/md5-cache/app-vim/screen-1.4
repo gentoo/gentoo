@@ -1,0 +1,12 @@
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+_md5_=d42549eb1b6b2fd17a250e948fe209a5
+SLOT=0
+DEFINED_PHASES=install postinst postrm
+EAPI=3
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: simulate a split shell with screen or tmux
+LICENSE=public-domain
+SRC_URI=mirror://gentoo/screen-1.4.tar.bz2 http://dev.gentoo.org/~radhermit/vim/screen-1.4.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=2711
+RDEPEND=|| ( app-misc/screen app-misc/tmux ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )

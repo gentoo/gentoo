@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	base	84d9f879f57a8316ff02be0373a3d6f9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ada84d12a2df625ba17c75e180b4b48e
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm unpack
+EAPI=0
+DEPEND=dev-texlive/texlive-latex app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=xcolor -- easy driver-independent access to colors
+LICENSE=LPPL-1.2
+SRC_URI=http://www.ukern.de/tex/xcolor/ctan/xcolor211.zip
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+HOMEPAGE=http://www.ukern.de/tex/xcolor.html
+RDEPEND=dev-texlive/texlive-latex virtual/latex-base

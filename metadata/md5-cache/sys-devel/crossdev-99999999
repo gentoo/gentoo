@@ -1,0 +1,10 @@
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_md5_=b6277ed6b258b590c495a6ad76b631ef
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=4
+DEPEND=app-arch/xz-utils dev-vcs/git
+DESCRIPTION=Gentoo Cross-toolchain generator
+LICENSE=GPL-2
+HOMEPAGE=http://www.gentoo.org/
+RDEPEND=>=sys-apps/portage-2.1 >=app-portage/portage-utils-0.55 app-shells/bash !sys-devel/crossdev-wrappers

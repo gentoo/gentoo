@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=8e91344eac8537d2ada3fb6c5c906bac
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=4
+DEPEND=!sci-chemistry/openbabel
+DESCRIPTION=Interconvert file formats used in molecular modeling
+LICENSE=all-rights-reserved
+RESTRICT=mirror bindist
+SRC_URI=http://smog.com/chem/babel/files/babel-1.6.tar.Z
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://smog.com/chem/babel/
+RDEPEND=!sci-chemistry/openbabel

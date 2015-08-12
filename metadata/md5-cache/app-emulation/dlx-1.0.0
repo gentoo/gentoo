@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=5c01c8ef89fb99da7889faabb5f10d5d
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DESCRIPTION=DLX Simulator
+LICENSE=GPL-2
+SRC_URI=http://www.davidviner.com/dlx/dlx.tar.gz
+KEYWORDS=x86 ppc
+HOMEPAGE=http://www.davidviner.com/dlx.php

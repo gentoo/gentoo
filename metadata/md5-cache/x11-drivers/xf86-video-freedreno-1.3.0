@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	xorg-2	eea8dd526d72948be85a9628c00694d4	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c5ed847044e2880fb98e40080dd2bc57
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+EAPI=5
+DEPEND=>=media-libs/mesa-10.2[xa] virtual/libudev >=x11-libs/libdrm-2.4.54[video_cards_freedreno] !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig x11-proto/xf86driproto x11-proto/glproto x11-proto/dri2proto x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/videoproto x11-proto/xextproto x11-proto/xineramaproto x11-proto/xproto x11-base/xorg-server[-minimal] x11-libs/libdrm x11-base/xorg-server[xorg] x11-libs/libpciaccess
+DESCRIPTION=Driver for Adreno mobile GPUs
+LICENSE=MIT
+SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-video-freedreno-1.3.0.tar.bz2
+KEYWORDS=arm
+HOMEPAGE=http://xorg.freedesktop.org/
+RDEPEND=>=media-libs/mesa-10.2[xa] virtual/libudev >=x11-libs/libdrm-2.4.54[video_cards_freedreno] x11-base/xorg-server:= x11-base/xorg-server[-minimal] x11-libs/libdrm x11-base/xorg-server[xorg] x11-libs/libpciaccess

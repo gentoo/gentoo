@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=8b7236f959554cda9f9d1eb89580d9c7
+SLOT=0
+DEFINED_PHASES=configure install prepare setup unpack
+EAPI=5
+DEPEND=media-libs/plotutils opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) virtual/pkgconfig virtual/fortran !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Program for scientific visualization and statistical analyis
+LICENSE=public-domain
+IUSE=examples gd opengl X
+SRC_URI=ftp://ftp.nist.gov/pub/dataplot/unix/dpsrc_2009_08_21.tar.gz ftp://ftp.nist.gov/pub/dataplot/unix/dplib.2009_07_15.tar.gz
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.itl.nist.gov/div898/software/dataplot/
+RDEPEND=media-libs/plotutils opengl? ( virtual/opengl ) gd? ( media-libs/gd[png,jpeg] ) X? ( x11-misc/xdg-utils ) virtual/fortran

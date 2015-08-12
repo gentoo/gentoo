@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=206673cfad629569377a7eb24395351a
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=5
+DEPEND=sys-devel/bison httppower? ( net-misc/curl ) snmppower? ( net-analyzer/net-snmp ) !app-accessibility/speech-tools
+DESCRIPTION=RPC/PDU control and monitoring service for data center or compute cluster power management
+LICENSE=GPL-2
+IUSE=+httppower -snmppower -h8power +genders
+SRC_URI=http://powerman.googlecode.com/files/powerman-2.3.9.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://code.google.com/p/powerman/
+RDEPEND=>=sys-libs/freeipmi-0.2.3

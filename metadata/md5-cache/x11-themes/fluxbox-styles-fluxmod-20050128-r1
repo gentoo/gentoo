@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=26922305a8a6c4ca1fa8a010167837aa
+SLOT=0
+DEFINED_PHASES=install postinst prepare
+EAPI=2
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=A collection of FluxBox themes from FluxMod
+LICENSE=GPL-2
+SRC_URI=mirror://gentoo/fluxbox-styles-fluxmod-20050128.tar.bz2
+KEYWORDS=~arm alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+HOMEPAGE=http://tenr.de/styles/

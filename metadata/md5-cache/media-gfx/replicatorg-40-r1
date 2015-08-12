@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f686a5012118f51a345a1a91c1b1b346
+SLOT=0
+DEFINED_PHASES=install postinst setup
+EAPI=3
+DEPEND=dev-java/oracle-jre-bin
+DESCRIPTION=ReplicatorG is a simple, open source 3D printing program
+LICENSE=GPL-2
+SRC_URI=http://replicatorg.googlecode.com/files/replicatorg-0040-linux.tgz
+HOMEPAGE=http://replicat.org/start
+RDEPEND=dev-java/oracle-jre-bin

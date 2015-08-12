@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=32da9b23ca21ab5c44cd74a8b41b6406
+SLOT=0
+DEFINED_PHASES=compile install prepare setup
+EAPI=4
+DEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.12:2 acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A file manager that implements the popular two-pane design
+LICENSE=GPL-3 LGPL-3
+IUSE=acl gimp kernel_linux nls policykit spell udisks
+RESTRICT=test
+SRC_URI=http://emelfm2.net/rel/emelfm2-0.8.1.tar.bz2
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
+HOMEPAGE=http://emelfm2.net/
+RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.12:2 acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) udisks? ( sys-fs/udisks:0 )

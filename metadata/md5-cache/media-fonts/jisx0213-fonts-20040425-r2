@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	font-ebdftopcf	2152f6c46f91648120cdb689c0895d58	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e5a2f878949fb6698792867d13e876ab
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm setup
+EAPI=0
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings ) X? ( media-gfx/ebdftopcf )
+DESCRIPTION=Japanese fixed fonts that cover JIS0213 charset
+LICENSE=public-domain
+IUSE=X X
+RESTRICT=strip binchecks
+SRC_URI=http://www12.ocn.ne.jp/~imamura/jiskan16-2004-1.bdf.gz http://www12.ocn.ne.jp/~imamura/jiskan16-2000-1.bdf.gz http://www12.ocn.ne.jp/~imamura/jiskan16-2000-2.bdf.gz http://www12.ocn.ne.jp/~imamura/K14-2004-1.bdf.gz http://www12.ocn.ne.jp/~imamura/K14-2000-1.bdf.gz http://www12.ocn.ne.jp/~imamura/K14-2000-2.bdf.gz http://www12.ocn.ne.jp/~imamura/K12-1.bdf.gz http://www12.ocn.ne.jp/~imamura/K12-2.bdf.gz http://www12.ocn.ne.jp/~imamura/A14.bdf.gz http://www12.ocn.ne.jp/~imamura/A12.bdf.gz http://gitatsu.hp.infoseek.co.jp/bdf/jiskan24-2000-1.bdf.gz http://gitatsu.hp.infoseek.co.jp/bdf/jiskan24-2000-2.bdf.gz
+KEYWORDS=alpha amd64 arm ia64 ppc s390 sh sparc x86 ~x86-fbsd
+HOMEPAGE=http://www12.ocn.ne.jp/~imamura/jisx0213.html

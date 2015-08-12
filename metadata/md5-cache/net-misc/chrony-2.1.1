@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	systemd	6b4f0cefa642270eded7e6ca816fd181	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c1c107f154af49ee30946da71a582780
+SLOT=0
+DEFINED_PHASES=compile configure install prepare
+EAPI=5
+DEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) sys-apps/texinfo virtual/pkgconfig
+DESCRIPTION=NTP client and server programs
+LICENSE=GPL-2
+IUSE=caps +cmdmon ipv6 libedit +ntp +phc +pps readline +refclock +rtc selinux +adns
+REQUIRED_USE=?? ( libedit readline )
+RESTRICT=test
+SRC_URI=http://download.tuxfamily.org/chrony/chrony-2.1.1.tar.gz
+KEYWORDS=amd64 ~arm hppa ~mips ppc ppc64 sparc x86
+HOMEPAGE=http://chrony.tuxfamily.org/
+RDEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) selinux? ( sec-policy/selinux-chronyd )

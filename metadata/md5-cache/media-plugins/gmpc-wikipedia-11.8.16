@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=44fb3e9acaa2bb7d294c2f89079d81d3
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=4
+DEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2:2 net-libs/webkit-gtk:2 virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DESCRIPTION=This plugin shows the Wikipedia article about the currently playing artist
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=mirror://sourceforge/musicpd/gmpc-wikipedia-11.8.16.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_WIKIPEDIA
+RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2:2 net-libs/webkit-gtk:2

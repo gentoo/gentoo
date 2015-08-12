@@ -1,0 +1,12 @@
+_eclasses_=sword-module	a2b0800a67ad11742c7657239b19b20
+_md5_=1572f8d7a99c6843b2b3038c10eb2b8f
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=app-arch/unzip
+DESCRIPTION=William Tyndale Bible (1525/1530)
+LICENSE=freedist
+SRC_URI=mirror://gentoo/Tyndale-1.0.zip
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Tyndale
+RDEPEND=app-text/sword

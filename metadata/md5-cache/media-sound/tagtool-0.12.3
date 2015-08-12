@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=552c5cba30a344ebb8434e61dced2d27
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=2
+DEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.6 mp3? ( >=media-libs/id3lib-3.8.3-r6 ) vorbis? ( >=media-libs/libvorbis-1 ) !mp3? ( !vorbis? ( >=media-libs/libvorbis-1 ) ) virtual/pkgconfig
+DESCRIPTION=Audio Tag Tool Ogg/Mp3 Tagger
+LICENSE=GPL-2
+IUSE=vorbis mp3
+SRC_URI=mirror://sourceforge/tagtool/tagtool-0.12.3.tar.bz2
+KEYWORDS=amd64 ppc sparc x86
+HOMEPAGE=http://pwp.netcabo.pt/paol/tagtool
+RDEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.6 mp3? ( >=media-libs/id3lib-3.8.3-r6 ) vorbis? ( >=media-libs/libvorbis-1 ) !mp3? ( !vorbis? ( >=media-libs/libvorbis-1 ) )

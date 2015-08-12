@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=6b544920d042fdce7a3202f49b038174
+SLOT=0
+DEFINED_PHASES=compile install postinst prepare
+EAPI=4
+DEPEND=sys-fs/mtools dev-perl/Crypt-PasswdMD5 dev-perl/Digest-SHA1 dev-lang/nasm virtual/os-headers
+DESCRIPTION=SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+LICENSE=GPL-2
+IUSE=custom-cflags
+SRC_URI=mirror://kernel/linux/utils/boot/syslinux/5.xx/syslinux-5.10.tar.xz
+KEYWORDS=-* amd64 x86
+HOMEPAGE=http://www.syslinux.org/
+RDEPEND=sys-fs/mtools dev-perl/Crypt-PasswdMD5 dev-perl/Digest-SHA1

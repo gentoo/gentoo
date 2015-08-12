@@ -1,0 +1,8 @@
+_eclasses_=
+_md5_=b88b8d51557f6f736496585f3c6f8d39
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=Virtual for Memoize
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+RDEPEND=|| ( =dev-lang/perl-5.22* =dev-lang/perl-5.20* ~perl-core/Memoize-1.30.0 ) !<perl-core/Memoize-1.30.0 !>perl-core/Memoize-1.30.0-r999

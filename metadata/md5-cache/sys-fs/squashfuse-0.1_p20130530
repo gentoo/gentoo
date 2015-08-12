@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4
+_md5_=b1bf3ee5826e36affadd6d3308897977
+SLOT=0
+DEFINED_PHASES=configure prepare unpack
+EAPI=5
+DEPEND=app-arch/unzip >=sys-fs/fuse-2.8.6:= lzma? ( >=app-arch/xz-utils-5.0.4:= ) zlib? ( >=sys-libs/zlib-1.2.5-r2:= ) lzo? ( >=dev-libs/lzo-2.06:= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=FUSE filesystem to mount squashfs archives
+LICENSE=BSD-2
+IUSE=lzma lzo +zlib
+REQUIRED_USE=|| ( lzma zlib lzo )
+SRC_URI=https://github.com/vasi/squashfuse/archive/f03158f49cb4adbb6459cb2a1898e586b488cb10.zip -> squashfuse-0.1_p20130530.zip
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux
+HOMEPAGE=https://github.com/vasi/squashfuse
+RDEPEND=>=sys-fs/fuse-2.8.6:= lzma? ( >=app-arch/xz-utils-5.0.4:= ) zlib? ( >=sys-libs/zlib-1.2.5-r2:= ) lzo? ( >=dev-libs/lzo-2.06:= )

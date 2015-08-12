@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=9701463d8126c2d7ad624884912f99d4
+SLOT=0
+DEFINED_PHASES=configure prepare setup
+EAPI=5
+DEPEND=>=dev-libs/glib-2.28.0 >=sci-libs/libsigrok-0.3.0 decode? ( >=sci-libs/libsigrokdecode-0.3.0 python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] ) virtual/pkgconfig
+DESCRIPTION=Command-line client for the sigrok logic analyzer software
+LICENSE=GPL-3
+IUSE=+decode python_targets_python3_3 python_targets_python3_4 python_single_target_python3_3 python_single_target_python3_4
+REQUIRED_USE=decode? ( ^^ ( python_single_target_python3_3 python_single_target_python3_4 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 ) )
+SRC_URI=http://sigrok.org/download/source/sigrok-cli/sigrok-cli-0.5.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://sigrok.org/wiki/Sigrok-cli
+RDEPEND=>=dev-libs/glib-2.28.0 >=sci-libs/libsigrok-0.3.0 decode? ( >=sci-libs/libsigrokdecode-0.3.0 python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] )

@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=c761492d7c44b77ef683349dd34bb907
+SLOT=0
+DEFINED_PHASES=compile install postinst setup
+EAPI=0
+DEPEND==www-servers/apache-2*
+DESCRIPTION=Sets the Unix umask of the Apache2 webserver process after it has started
+LICENSE=Apache-2.0
+SRC_URI=http://www.apache.org/~pquerna/modules/mod_umask-0.1.0.tar.bz2
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.outoforder.cc/projects/apache/mod_umask/
+RDEPEND==www-servers/apache-2*

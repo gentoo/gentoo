@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=88e12dc9f430bd2ed66055eba364e3e2
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=5
+DESCRIPTION=Determines where a given nameserver gets its information from
+LICENSE=BSD-2
+IUSE=ipv6
+SRC_URI=http://www.mavetju.org/download/dnstracer-1.9.tar.gz
+KEYWORDS=amd64 arm hppa ia64 ~ppc ppc64 s390 sparc x86 ~amd64-linux
+HOMEPAGE=http://www.mavetju.org/unix/general.php

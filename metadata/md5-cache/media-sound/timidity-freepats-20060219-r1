@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=84361e2751d51aafec043265d9f258ea
+SLOT=0
+DEFINED_PHASES=install postinst prepare
+EAPI=5
+DEPEND=>=app-eselect/eselect-timidity-20061203
+DESCRIPTION=Free and open set of instrument patches
+LICENSE=GPL-2
+RESTRICT=binchecks strip
+SRC_URI=http://freepats.opensrc.org//freepats-20060219.tar.bz2
+KEYWORDS=alpha amd64 arm hppa ppc ppc64 x86 ~x86-fbsd
+HOMEPAGE=http://freepats.opensrc.org/

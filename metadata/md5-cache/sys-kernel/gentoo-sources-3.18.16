@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=d0a237c16f5e8499219cc00ddb6f5ae
+SLOT=3.18.16
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+EAPI=5
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full sources including the Gentoo patchset for the 3.18 kernel tree
+LICENSE=GPL-2 !deblob? ( freedist )
+IUSE=deblob experimental symlink build deblob
+RESTRICT=binchecks strip
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.18.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.18-gnu/deblob-3.18 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.18-gnu/deblob-check -> deblob-check-3.18 ) mirror://gentoo/genpatches-3.18-17.base.tar.xz mirror://gentoo/genpatches-3.18-17.extras.tar.xz experimental? ( mirror://gentoo/genpatches-3.18-17.experimental.tar.xz )
+KEYWORDS=alpha amd64 arm ~arm64 -hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
+HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )

@@ -1,0 +1,12 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=46996f4e0edea9e91f396452a24c3a38
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+EAPI=5
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=A derived Emacs mode implementing most of the C# rules
+LICENSE=GPL-2+
+SRC_URI=http://mfgames.com/releases/csharp-mode/csharp-mode-0.7.0.tar.bz2
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://mfgames.com/csharp-mode/start
+RDEPEND=>=virtual/emacs-23

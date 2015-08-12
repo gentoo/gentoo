@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=7259d4d9ad944e31db7b296bd2f82c73
+SLOT=0
+DEFINED_PHASES=configure prepare setup test
+EAPI=5
+DEPEND=dev-libs/libsodium dev-libs/json-c virtual/pkgconfig
+DESCRIPTION=Hyperdex macaroons support library
+LICENSE=BSD
+IUSE=test +python python_targets_python2_7
+REQUIRED_USE=test? ( python )
+RESTRICT=test
+SRC_URI=http://hyperdex.org/src/libmacaroons-0.3.0.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=http://hyperdex.org
+RDEPEND=dev-libs/libsodium dev-libs/json-c

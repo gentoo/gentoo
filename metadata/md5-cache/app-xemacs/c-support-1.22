@@ -1,0 +1,11 @@
+_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
+_md5_=8ba110b3d900879bb5eeb31b5d7ce8de
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=Basic single-file add-ons for editing C code
+LICENSE=GPL-2
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/c-support-1.22-pkg.tar.gz
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+HOMEPAGE=http://xemacs.org/
+RDEPEND=app-xemacs/cc-mode app-xemacs/xemacs-base app-editors/xemacs

@@ -1,0 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=1dfeddc4aec877d95b036ca150a63ec5
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=3
+DESCRIPTION=Multithreading application for matching large sets of patternsagainst biosequence dbs
+LICENSE=GPL-2
+SRC_URI=http://web.mit.edu/bamel/biogrep-1.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://web.mit.edu/bamel/biogrep.shtml

@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=81e2e8b7937ce5cc7c1cdc57a29d4eb0
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=CLI designed to validate AppData descriptions for standards compliance and to the style guide
+LICENSE=metapackage
+KEYWORDS=amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86
+HOMEPAGE=https://github.com/hughsie/appdata-tools/
+RDEPEND=>=dev-libs/appstream-glib-0.3.2

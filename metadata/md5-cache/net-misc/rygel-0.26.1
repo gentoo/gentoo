@@ -1,0 +1,13 @@
+_eclasses_=gnome2	56d268cae832738430a9de86a5765fa1	virtualx	7d550983f9b6adb3e7091f4090ddae2f	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ad9c54d9d43590f32be47aaa093049ca
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+EAPI=5
+DEPEND=>=dev-libs/glib-2.34:2 >=dev-libs/libgee-0.8:0.8 >=dev-libs/libxml2-2.7:2 >=media-libs/gupnp-dlna-0.9.4:2.0 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 >=media-libs/libmediaart-0.7:2.0 media-plugins/gst-plugins-soup:1.0 >=net-libs/gssdp-0.13 >=net-libs/gupnp-0.19 >=net-libs/gupnp-av-0.12.4 >=net-libs/libsoup-2.44:2.4 >=sys-apps/util-linux-2.20 x11-misc/shared-mime-info introspection? ( >=dev-libs/gobject-introspection-1.33.4 ) sqlite? ( >=dev-db/sqlite-3.5:3 dev-libs/libunistring:= ) tracker? ( >=app-misc/tracker-0.16:= ) transcode? ( media-libs/gst-plugins-bad:1.0 media-plugins/gst-plugins-twolame:1.0 media-plugins/gst-plugins-libav:1.0 ) X? ( >=x11-libs/gtk+-3:3 ) dev-util/gtk-doc-am >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig app-arch/xz-utils >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Rygel is an open source UPnP/DLNA MediaServer
+LICENSE=GPL-2
+IUSE=X +introspection +sqlite tracker test transcode test
+SRC_URI=mirror://gnome/sources/rygel/0.26/rygel-0.26.1.tar.xz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://wiki.gnome.org/Projects/Rygel
+RDEPEND=>=dev-libs/glib-2.34:2 >=dev-libs/libgee-0.8:0.8 >=dev-libs/libxml2-2.7:2 >=media-libs/gupnp-dlna-0.9.4:2.0 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 >=media-libs/libmediaart-0.7:2.0 media-plugins/gst-plugins-soup:1.0 >=net-libs/gssdp-0.13 >=net-libs/gupnp-0.19 >=net-libs/gupnp-av-0.12.4 >=net-libs/libsoup-2.44:2.4 >=sys-apps/util-linux-2.20 x11-misc/shared-mime-info introspection? ( >=dev-libs/gobject-introspection-1.33.4 ) sqlite? ( >=dev-db/sqlite-3.5:3 dev-libs/libunistring:= ) tracker? ( >=app-misc/tracker-0.16:= ) transcode? ( media-libs/gst-plugins-bad:1.0 media-plugins/gst-plugins-twolame:1.0 media-plugins/gst-plugins-libav:1.0 ) X? ( >=x11-libs/gtk+-3:3 )

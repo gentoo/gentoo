@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=9e79c66d824f2bd27e84bd7676a6c98
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=2
+DEPEND=app-arch/unzip
+DESCRIPTION=Mapnik World Boundaries
+LICENSE=CC-BY-SA-2.0
+SRC_URI=mirror://gentoo/world_boundaries-spherical-20090331.tgz mirror://gentoo/processed_p-20090514.zip
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://www.openstreetmap.org/

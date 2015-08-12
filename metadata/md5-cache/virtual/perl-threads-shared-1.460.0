@@ -1,0 +1,8 @@
+_eclasses_=
+_md5_=6a93ed79539c025cf6b4afc8f75a074a
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=Virtual for threads-shared
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+RDEPEND=|| ( =dev-lang/perl-5.20* ~perl-core/threads-shared-1.460.0 ) !<perl-core/threads-shared-1.460.0 !>perl-core/threads-shared-1.460.0-r999

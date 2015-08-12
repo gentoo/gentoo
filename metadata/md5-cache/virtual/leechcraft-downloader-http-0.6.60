@@ -1,0 +1,8 @@
+_eclasses_=
+_md5_=be2bd745a8b000650f13f7b83539794a
+SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DESCRIPTION=Virtual for LeechCraft plugins providing HTTP downloading
+KEYWORDS=amd64 x86
+RDEPEND=app-leechcraft/lc-cstp

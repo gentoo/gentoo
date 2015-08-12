@@ -1,0 +1,12 @@
+_eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_md5_=29133211d7d7459e9e42fd036321b95b
+SLOT=0
+DEFINED_PHASES=install postinst unpack
+EAPI=4
+DESCRIPTION=Eselect module to choose Freetype infinality-enhanced LCD filtering settings
+LICENSE=GPL-2
+PDEPEND=media-libs/freetype[infinality]
+SRC_URI=https://github.com/yngwin/eselect-lcdfilter/tarball/v1 -> eselect-lcdfilter-1.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=https://github.com/yngwin/eselect-lcdfilter
+RDEPEND=app-admin/eselect

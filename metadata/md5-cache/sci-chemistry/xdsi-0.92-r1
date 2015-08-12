@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9c41b2b5d6a461f82bcb316478298d3b
+SLOT=0
+DEFINED_PHASES=install postinst prepare
+EAPI=5
+DESCRIPTION=A crude interface for running the XDS
+LICENSE=all-rights-reserved
+RESTRICT=mirror bindist
+SRC_URI=ftp://turn5.biologie.uni-konstanz.de/pub/xdsi_0.92.tar.gz
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://strucbio.biologie.uni-konstanz.de/xdswiki/index.php/Xdsi
+RDEPEND=app-text/mupdf dev-lang/tk || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) sci-chemistry/mosflm sci-chemistry/pointless sci-chemistry/xds-bin[smp] sci-visualization/gnuplot sci-visualization/xds-viewer

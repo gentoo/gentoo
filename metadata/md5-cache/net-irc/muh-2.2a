@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=1a8de8e8d3a2e41628e3001bd9027651
+SLOT=0
+DEFINED_PHASES=compile install postinst
+EAPI=0
+DESCRIPTION=Persistent IRC bouncer
+LICENSE=GPL-2
+IUSE=ipv6
+SRC_URI=mirror://sourceforge/muh/muh-2.2a.tar.gz
+KEYWORDS=alpha ~amd64 ~hppa ~mips ppc ~sparc x86
+HOMEPAGE=http://mind.riot.org/muh/

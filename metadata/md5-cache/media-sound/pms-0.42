@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4
+_md5_=da5002041e7013117887e1f7393a3edf
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=2
+DEPEND=virtual/pkgconfig sys-libs/ncurses dev-libs/glib:2 regex? ( >=dev-libs/boost-1.36 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Practical Music Search: an open source ncurses client for mpd, written in C++
+LICENSE=GPL-3
+IUSE=regex
+SRC_URI=mirror://sourceforge/pms/pms-0.42.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://pms.sourceforge.net/
+RDEPEND=sys-libs/ncurses dev-libs/glib:2 regex? ( >=dev-libs/boost-1.36 )

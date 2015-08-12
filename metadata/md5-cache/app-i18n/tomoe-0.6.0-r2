@@ -1,0 +1,15 @@
+_eclasses_=python-single-r1	626346d3c54afb66571061bbd4c53f25	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=1ad257e57a364fb139c0e4bf9ad11edb
+SLOT=0
+DEFINED_PHASES=configure install prepare setup
+EAPI=5
+DEPEND=dev-util/gtk-doc-am dev-util/intltool virtual/pkgconfig doc? ( dev-util/gtk-doc ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Japanese handwriting recognition engine
+LICENSE=LGPL-2.1
+IUSE=doc hyperestraier mysql ruby python static-libs subversion python_targets_python2_7
+REQUIRED_USE=python_targets_python2_7
+RESTRICT=test
+SRC_URI=mirror://sourceforge/tomoe/tomoe-0.6.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://tomoe.sourceforge.jp/
+RDEPEND=>=dev-libs/glib-2.4 ruby? ( dev-ruby/ruby-glib2 ) hyperestraier? ( app-text/hyperestraier ) subversion? ( >=dev-libs/apr-1 dev-vcs/subversion ) mysql? ( dev-db/mysql ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] )

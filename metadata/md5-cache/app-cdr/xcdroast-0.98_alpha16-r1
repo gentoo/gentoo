@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=805823b1b52d98e5f8c620608b451876
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+EAPI=2
+DEPEND=>=x11-libs/gtk+-2:2 app-cdr/cdrtools sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Lightweight cdrtools front-end for CD and DVD writing
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=mirror://sourceforge/xcdroast/xcdroast-0.98alpha16.tar.gz
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+HOMEPAGE=http://www.xcdroast.org/
+RDEPEND=>=x11-libs/gtk+-2:2 app-cdr/cdrtools

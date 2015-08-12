@@ -1,0 +1,15 @@
+_eclasses_=
+_md5_=fe92e619cc166c2ad9ee8845c1ad77c3
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=5
+DEPEND=~dev-python/pypax-0.8.4[ptpax=,xtpax=] ptpax? ( dev-libs/elfutils ) xtpax? ( sys-apps/attr )
+DESCRIPTION=A suite of tools to work with ELF objects on Hardened Gentoo
+LICENSE=GPL-3
+IUSE=+ptpax +xtpax
+REQUIRED_USE=|| ( ptpax xtpax )
+RESTRICT=test
+SRC_URI=http://dev.gentoo.org/~blueness/elfix/elfix-0.8.4.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
+HOMEPAGE=http://www.gentoo.org/proj/en/hardened/pax-quickstart.xml http://dev.gentoo.org/~blueness/elfix/
+RDEPEND=~dev-python/pypax-0.8.4[ptpax=,xtpax=] ptpax? ( dev-libs/elfutils ) xtpax? ( sys-apps/attr )

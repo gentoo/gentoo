@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=2be4b236186b9e1cc2ff3f5c5aeedd5f
+SLOT=0
+DEFINED_PHASES=install
+EAPI=2
+DEPEND=sys-fs/fuse
+DESCRIPTION=Self-syncing tree-merging file system based on FUSE
+LICENSE=BSD
+SRC_URI=http://podgorny.cz/unionfs-fuse/releases/unionfs-fuse-0.24.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://podgorny.cz/moin/UnionFsFuse
+RDEPEND=sys-fs/fuse

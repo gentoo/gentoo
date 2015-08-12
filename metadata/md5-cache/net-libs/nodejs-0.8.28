@@ -1,0 +1,13 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	pax-utils	a472fe09c2264598d61d4887809e6016	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5988c96652e2dddebdf2330d6915ed82
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
+DEPEND=dev-libs/openssl =dev-lang/python-2*
+DESCRIPTION=Evented IO for V8 Javascript
+LICENSE=GPL-2
+RESTRICT=test
+SRC_URI=http://nodejs.org/dist/v0.8.28/node-v0.8.28.tar.gz
+KEYWORDS=~amd64 ~arm ~x86 ~x64-macos
+HOMEPAGE=http://nodejs.org/
+RDEPEND=dev-libs/openssl =dev-lang/python-2*

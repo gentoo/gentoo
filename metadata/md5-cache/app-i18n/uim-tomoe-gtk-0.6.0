@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=a2e982258189a99de9f130178f1513df
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=|| ( app-i18n/uim app-i18n/uim-svn ) >=app-i18n/libtomoe-gtk-0.6.0 virtual/pkgconfig
+DESCRIPTION=Japanese input method Tomoe IMEngine for uim
+LICENSE=LGPL-2.1
+SRC_URI=mirror://sourceforge/tomoe/uim-tomoe-gtk-0.6.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://tomoe.sourceforge.net/
+RDEPEND=|| ( app-i18n/uim app-i18n/uim-svn ) >=app-i18n/libtomoe-gtk-0.6.0

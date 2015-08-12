@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ae717091454f47b751d85dcd25e1b906
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=5
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 autoshutdown? ( dev-qt/qtdbus:4 )
+DESCRIPTION=Great Qt4 GUI front-end for mplayer
+LICENSE=GPL-2 BSD
+IUSE=autoshutdown bidi debug linguas_ar_SY linguas_bg linguas_ca linguas_cs linguas_da linguas_de linguas_el_GR linguas_en_US linguas_es linguas_et linguas_eu linguas_fi linguas_fr linguas_gl linguas_he_IL linguas_hr linguas_hu linguas_it linguas_ja linguas_ka linguas_ko linguas_ku linguas_lt linguas_mk linguas_ms_MY linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ro_RO linguas_ru_RU linguas_sk linguas_sl_SI linguas_sr linguas_sv linguas_th linguas_tr linguas_uk_UA linguas_vi_VN linguas_zh_CN linguas_zh_TW
+SRC_URI=mirror://sourceforge/smplayer/smplayer-14.9.0.tar.bz2
+KEYWORDS=~alpha amd64 ~arm hppa ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux
+HOMEPAGE=http://smplayer.sourceforge.net/
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 autoshutdown? ( dev-qt/qtdbus:4 ) media-video/mplayer[bidi?,libass,png,X]

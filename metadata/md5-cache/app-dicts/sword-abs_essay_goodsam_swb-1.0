@@ -1,0 +1,12 @@
+_eclasses_=sword-module	a2b0800a67ad11742c7657239b19b20
+_md5_=7d1d0df5c69e7ba017bed5084c456a78
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=app-arch/unzip
+DESCRIPTION=Essays on The Good Samaritan: Violence on the Road, Social World of Bandits
+LICENSE=public-domain
+SRC_URI=mirror://gentoo/ABS_Essay_GoodSam_SWB-1.0.zip
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=ABS_Essay_GoodSam_SWB
+RDEPEND=app-text/sword

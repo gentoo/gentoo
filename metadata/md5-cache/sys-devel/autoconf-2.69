@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=d1ab4d25992febbe678fef6991b49a3c
+SLOT=2.5
+DEFINED_PHASES=configure install prepare
+EAPI=3
+DEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6
+DESCRIPTION=Used to create autoconfiguration files
+LICENSE=GPL-3
+IUSE=emacs multislot
+PDEPEND=emacs? ( app-emacs/autoconf-mode )
+SRC_URI=mirror://gnu/autoconf/autoconf-2.69.tar.xz ftp://alpha.gnu.org/pub/gnu/autoconf/autoconf-2.69.tar.xz
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux
+HOMEPAGE=http://www.gnu.org/software/autoconf/autoconf.html
+RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 multislot? ( !~sys-devel/autoconf-2.69:0 ) >=sys-devel/autoconf-wrapper-13

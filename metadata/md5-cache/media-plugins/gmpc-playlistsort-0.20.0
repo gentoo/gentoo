@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=9bb35c6e174c40e2b1659074a46d11d9
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=3
+DEPEND=>=media-sound/gmpc-0.20.0 >=gnome-base/libglade-2 dev-libs/libxml2 virtual/pkgconfig
+DESCRIPTION=This plugin adds a dialog to sort the current playlist
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/musicpd/gmpc-playlistsort-0.20.0.tar.gz
+KEYWORDS=amd64 ~ppc x86
+HOMEPAGE=http://gmpc.wikia.com/
+RDEPEND=>=media-sound/gmpc-0.20.0 >=gnome-base/libglade-2 dev-libs/libxml2

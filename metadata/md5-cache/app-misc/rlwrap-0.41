@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=7f9abe57e15253aef059307c30f50599
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=5
+DEPEND=sys-libs/readline
+DESCRIPTION=GNU readline wrapper
+LICENSE=GPL-2
+IUSE=debug
+SRC_URI=http://utopia.knoware.nl/~hlub/uck/rlwrap/rlwrap-0.41.tar.gz
+KEYWORDS=amd64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+HOMEPAGE=http://utopia.knoware.nl/~hlub/uck/rlwrap/
+RDEPEND=sys-libs/readline

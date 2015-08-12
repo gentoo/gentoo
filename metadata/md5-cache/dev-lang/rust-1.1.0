@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=7be358dfdacb4a6d7c2b5d6c131ca522
+SLOT=stable
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+EAPI=5
+DEPEND=libcxx? ( sys-libs/libcxx ) >=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0 || ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/perl-5.0 clang? ( sys-devel/clang ) system-llvm? ( >=sys-devel/llvm-3.6.0[multitarget(-)] )
+DESCRIPTION=Systems programming language from Mozilla
+LICENSE=|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA
+IUSE=clang debug doc libcxx +system-llvm
+REQUIRED_USE=libcxx? ( clang )
+SRC_URI=http://static.rust-lang.org/dist/rustc-1.1.0-src.tar.gz amd64? ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-04-27-857ef6e-linux-x86_64-94089740e48167c5975c92c139ae9c286764012f.tar.bz2 ) x86? ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-04-27-857ef6e-linux-i386-0bc8cffdce611fb71fd7d3d8e7cdbfaf748a4f16.tar.bz2 )
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.rust-lang.org/
+RDEPEND=libcxx? ( sys-libs/libcxx ) >=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0

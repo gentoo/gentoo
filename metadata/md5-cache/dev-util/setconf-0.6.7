@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-single-r1	626346d3c54afb66571061bbd4c53f25	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=b06a748c101ab2703027d65dc3615b6f
+SLOT=0
+DEFINED_PHASES=install prepare setup unpack
+EAPI=5
+DESCRIPTION=A small python based utility used to change configuration files
+LICENSE=GPL-2
+IUSE=python_targets_python3_3 python_targets_python3_4 python_targets_python2_7 python_single_target_python3_3 python_single_target_python3_4 python_single_target_python2_7
+REQUIRED_USE=^^ ( python_single_target_python3_3 python_single_target_python3_4 python_single_target_python2_7 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python2_7? ( python_targets_python2_7 )
+SRC_URI=http://setconf.roboticoverlords.org/setconf-0.6.7.tar.xz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://setconf.roboticoverlords.org/
+RDEPEND=python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?,python_single_target_python2_7(+)?]

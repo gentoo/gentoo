@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=dd82d8b5739b4fc5894f33a53a969e3e
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=4
+DEPEND=>=sys-libs/ncurses-5.2 >=net-im/pidgin-2.7.0 >=dev-libs/glib-2.16.0 >=dev-libs/libsigc++-2.2.0 virtual/pkgconfig
+DESCRIPTION=CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
+LICENSE=GPL-2
+IUSE=debug nls
+SRC_URI=http://www.centerim.org/download/cim5/centerim5-5.0.0beta1.tar.gz
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+HOMEPAGE=http://www.centerim.org/
+RDEPEND=>=sys-libs/ncurses-5.2 >=net-im/pidgin-2.7.0 >=dev-libs/glib-2.16.0 >=dev-libs/libsigc++-2.2.0 nls? ( sys-devel/gettext )

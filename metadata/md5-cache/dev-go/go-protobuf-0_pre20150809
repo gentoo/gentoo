@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Go support for Google's protocol buffers
+EAPI=5
+HOMEPAGE=https://github.com/golang/protobuf
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0/0_pre20150809
+SRC_URI=https://github.com/golang/protobuf/archive/68c687dc49948540b356a6b47931c9be4fcd0245.tar.gz -> go-protobuf-0_pre20150809.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
+_md5_=6c63d85dd323b11414d77078e564b0f8

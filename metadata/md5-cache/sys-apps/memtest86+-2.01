@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=631e63964c04a7c0720cf5e736d049b6
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm preinst prerm unpack
+EAPI=0
+DESCRIPTION=Memory tester based on memtest86
+LICENSE=GPL-2
+IUSE=serial
+RESTRICT=test
+SRC_URI=http://www.memtest.org/download/2.01/memtest86+-2.01.tar.gz
+KEYWORDS=-* amd64 x86
+HOMEPAGE=http://www.memtest.org/

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=6fae9cc0c6afb215aa1102b97d0d2495
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=A cross-compilation toolkit designed to make embedded Linux application development easier
+LICENSE=GPL-2
+RESTRICT=strip binchecks
+SRC_URI=http://scratchbox.org/download/files/sbox-releases/stable/tarball/scratchbox-toolchain-cs2007q3-glibc2.5-arm7-1.0.12-10-i386.tar.gz http://scratchbox.org/download/files/sbox-releases/stable/tarball/scratchbox-toolchain-cs2007q3-glibc2.5-i486-1.0.12-8-i386.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.scratchbox.org/
+RDEPEND==dev-embedded/scratchbox-1.0*

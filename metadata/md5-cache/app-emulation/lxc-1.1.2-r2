@@ -1,0 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	libtool	7f78cd7d403808a350c9ae23f5821fb4	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=e51cbe02bde6f34f2fc7a2433785451
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare setup
+EAPI=5
+DEPEND=net-libs/gnutls sys-libs/libcap cgmanager? ( app-admin/cgmanager ) lua? ( >=dev-lang/lua-5.1:= ) python? ( python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) seccomp? ( sys-libs/libseccomp ) doc? ( app-text/docbook-sgml-utils ) >=sys-kernel/linux-headers-3.2 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=LinuX Containers userspace utilities
+LICENSE=LGPL-3
+IUSE=cgmanager doc examples lua python seccomp python_targets_python3_3 python_targets_python3_4
+REQUIRED_USE=python? ( || ( python_targets_python3_3 python_targets_python3_4 ) )
+SRC_URI=https://github.com/lxc/lxc/archive/lxc-1.1.2.tar.gz
+KEYWORDS=~amd64 ~arm ~arm64
+HOMEPAGE=https://linuxcontainers.org/
+RDEPEND=net-libs/gnutls sys-libs/libcap cgmanager? ( app-admin/cgmanager ) lua? ( >=dev-lang/lua-5.1:= ) python? ( python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) seccomp? ( sys-libs/libseccomp ) sys-process/criu sys-apps/util-linux app-misc/pax-utils virtual/awk

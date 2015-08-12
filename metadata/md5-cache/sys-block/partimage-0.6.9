@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	pam	5f80e6013406d68612a7493314e3777	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=fe5cbfc31ddf027861e5324d8562d08f
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare setup
+EAPI=4
+DEPEND=!static? ( pam? ( virtual/pam ) ) app-arch/bzip2 >=dev-libs/newt-0.52 >=sys-libs/slang-2 sys-libs/zlib ssl? ( dev-libs/openssl ) nls? ( sys-devel/gettext )
+DESCRIPTION=Console-based application to efficiently save raw partition data to an image file
+LICENSE=GPL-2
+IUSE=nls nologin pam ssl static
+SRC_URI=mirror://sourceforge/partimage/partimage-0.6.9.tar.bz2
+KEYWORDS=amd64 ppc ~sparc x86
+HOMEPAGE=http://www.partimage.org/
+RDEPEND=!static? ( pam? ( virtual/pam ) ) !static? ( app-arch/bzip2 >=dev-libs/newt-0.52 >=sys-libs/slang-2 sys-libs/zlib ssl? ( dev-libs/openssl ) )

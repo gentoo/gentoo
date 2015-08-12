@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=28858d1be6c7b86e7e00a34b70087cfd
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DESCRIPTION=Jeff Bauer's Persistent CGI
+LICENSE=ZPL
+SRC_URI=http://www.zope.org/Products/Zope/2.6.1/Zope-2.6.1-src.tgz mirror://gentoo/PCGI-HOWTO-1998-08-13.html.bz2
+KEYWORDS=~x86 ~ppc
+HOMEPAGE=http://starship.python.net/crew/jbauer/persistcgi/
+RDEPEND=dev-lang/python

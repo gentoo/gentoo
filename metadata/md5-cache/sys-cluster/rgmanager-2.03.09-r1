@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=d2bef29d0f693b5e66cff018d8de4297
+SLOT=0
+DEFINED_PHASES=compile configure install prepare
+EAPI=2
+DEPEND==sys-cluster/ccs-2.03.09* =sys-cluster/dlm-lib-2.03.09* =sys-cluster/cman-lib-2.03.09* dev-libs/libxml2[-icu] =sys-libs/slang-2*
+DESCRIPTION=Clustered resource group manager
+LICENSE=GPL-2
+SRC_URI=ftp://sources.redhat.com/pub/cluster/releases/cluster-2.03.09.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://sources.redhat.com/cluster/wiki/
+RDEPEND==sys-cluster/ccs-2.03.09* =sys-cluster/dlm-lib-2.03.09* =sys-cluster/cman-lib-2.03.09*

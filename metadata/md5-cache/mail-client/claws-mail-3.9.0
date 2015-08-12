@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=43c3c44b61ad22148bb185dd461dbb5c
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+EAPI=4
+DEPEND=>=x11-libs/gtk+-2.20:2 pda? ( >=app-pda/jpilot-0.99 ) ssl? ( >=net-libs/gnutls-2.2.0 ) ldap? ( >=net-nds/openldap-2.0.7 ) crypt? ( >=app-crypt/gpgme-0.4.5 ) dbus? ( >=dev-libs/dbus-glib-0.60 ) dillo? ( www-client/dillo ) spell? ( >=app-text/enchant-1.0.0 ) imap? ( >=net-libs/libetpan-0.57 ) nntp? ( >=net-libs/libetpan-0.57 ) startup-notification? ( x11-libs/startup-notification ) bogofilter? ( mail-filter/bogofilter ) session? ( x11-libs/libSM x11-libs/libICE ) smime? ( >=app-crypt/gpgme-0.4.5 ) xface? ( >=media-libs/compface-1.4 ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=An email client (and news reader) based on GTK+
+LICENSE=GPL-3
+IUSE=bogofilter crypt dbus dillo doc +imap ipv6 ldap nntp pda session smime spamassassin spell +ssl startup-notification xface
+SRC_URI=mirror://sourceforge/sylpheed-claws/claws-mail-3.9.0.tar.bz2
+KEYWORDS=alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.claws-mail.org/
+RDEPEND=>=x11-libs/gtk+-2.20:2 pda? ( >=app-pda/jpilot-0.99 ) ssl? ( >=net-libs/gnutls-2.2.0 ) ldap? ( >=net-nds/openldap-2.0.7 ) crypt? ( >=app-crypt/gpgme-0.4.5 ) dbus? ( >=dev-libs/dbus-glib-0.60 ) dillo? ( www-client/dillo ) spell? ( >=app-text/enchant-1.0.0 ) imap? ( >=net-libs/libetpan-0.57 ) nntp? ( >=net-libs/libetpan-0.57 ) startup-notification? ( x11-libs/startup-notification ) bogofilter? ( mail-filter/bogofilter ) session? ( x11-libs/libSM x11-libs/libICE ) smime? ( >=app-crypt/gpgme-0.4.5 ) app-misc/mime-types x11-misc/shared-mime-info

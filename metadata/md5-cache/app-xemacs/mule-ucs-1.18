@@ -1,0 +1,11 @@
+_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
+_md5_=6218dbee583bc4274733430502368f01
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=MULE: Extended coding systems (including Unicode) for XEmacs
+LICENSE=GPL-2
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/mule-ucs-1.18-pkg.tar.gz
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+HOMEPAGE=http://xemacs.org/
+RDEPEND=app-xemacs/mule-base app-xemacs/latin-euro-standards app-editors/xemacs

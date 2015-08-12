@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=8241d98f4ede9aededc9b84d7cd06e0e
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=5
+DEPEND=>=dev-libs/glib-2 media-libs/alsa-lib x11-libs/gtk+:3 x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 ) virtual/pkgconfig
+DESCRIPTION=A lightweight volume control that sits in your systray
+LICENSE=GPL-3
+IUSE=libnotify
+SRC_URI=http://softwarebakery.com/maato/files/volumeicon/volumeicon-0.5.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://softwarebakery.com/maato/volumeicon.html
+RDEPEND=>=dev-libs/glib-2 media-libs/alsa-lib x11-libs/gtk+:3 x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 )

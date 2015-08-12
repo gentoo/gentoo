@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=c42c0409dc9d14010125238ef2817d34
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=5
+DEPEND=>=dev-libs/glib-2.32 doc? ( dev-util/gtk-doc ) virtual/pkgconfig
+DESCRIPTION=QMI modem protocol helper library
+LICENSE=LGPL-2
+IUSE=doc static-libs
+SRC_URI=http://www.freedesktop.org/software/libqmi/libqmi-1.8.0.tar.xz
+KEYWORDS=amd64 arm ~mips x86
+HOMEPAGE=http://cgit.freedesktop.org/libqmi/
+RDEPEND=>=dev-libs/glib-2.32

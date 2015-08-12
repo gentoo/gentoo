@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=c6cdeb517ec1735c8ac7664302f7039
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
+DEPEND=>=dev-cpp/tbb-4.2 sys-libs/glibc mpi? ( virtual/mpi ) doc? ( app-doc/doxygen ) test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Intel Concurrent Collections for C++ - Parallelism without the Pain
+LICENSE=BSD
+IUSE=doc examples mpi test
+RESTRICT=test
+SRC_URI=https://github.com/icnc/icnc/archive/v1.0.100.tar.gz -> icnc-1.0.100.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=https://software.intel.com/en-us/articles/intel-concurrent-collections-for-cc
+RDEPEND=>=dev-cpp/tbb-4.2 sys-libs/glibc mpi? ( virtual/mpi )

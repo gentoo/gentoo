@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=94f4e6f882438c2ab89fc4659e6db1cc
+SLOT=0
+DEFINED_PHASES=compile install preinst prepare setup
+EAPI=4
+DEPEND=>=dev-java/java-config-2.2.0
+DESCRIPTION=JavaScript optimizing compiler
+LICENSE=Apache-2.0
+IUSE=elibc_FreeBSD
+SRC_URI=http://dl.google.com/closure-compiler/compiler-20150126.tar.gz -> closure-compiler-bin-20150126.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/google/closure-compiler
+RDEPEND=>=virtual/jre-1.6 >=dev-java/java-config-2.2.0

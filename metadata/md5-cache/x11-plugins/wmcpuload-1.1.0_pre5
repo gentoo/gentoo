@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=f4893f236503b04a340eb2584b643ea1
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xextproto x11-libs/libICE
+DESCRIPTION=a dockapp for monitoring CPU usage with a LCD display
+LICENSE=GPL-2
+SRC_URI=mirror://gentoo/wmcpuload-1.1.0pre5.tar.gz
+KEYWORDS=alpha amd64 ~mips ppc ppc64 sparc x86
+HOMEPAGE=http://dockapps.windowmaker.org/file.php/id/36
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	unpacker	1ca344bd9b922a7f8084a3fa02933b79	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=fa14c88036e62e29cc2006e3910cb2e3
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=2
+DEPEND=media-libs/libsdl media-libs/sdl-mixer media-sound/timidity++ media-sound/timidity-eawpatches perl? ( dev-lang/perl[-ithreads] ) opengl? ( virtual/opengl ) demo? ( app-arch/unzip ) !pic? ( x86? ( dev-lang/nasm ) )
+DESCRIPTION=Port of the original Duke Nukem 3D
+LICENSE=GPL-2
+IUSE=demo pic perl opengl
+SRC_URI=mirror://gentoo/duke3d-20040817.tar.bz2 demo? ( ftp://ftp.3drealms.com/share/3dduke13.zip ftp://ftp.planetmirror.com/pub/gameworld/downloads/3dduke13.zip )
+KEYWORDS=hppa ppc x86
+HOMEPAGE=http://icculus.org/projects/duke3d/
+RDEPEND=media-libs/libsdl media-libs/sdl-mixer media-sound/timidity++ media-sound/timidity-eawpatches perl? ( dev-lang/perl[-ithreads] ) opengl? ( virtual/opengl ) games-misc/games-envd

@@ -1,0 +1,14 @@
+_eclasses_=versionator	99ae9d758cbe7cfed19170e7d48f5a9c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=4b1fbd7c7595c3577567541d74aa9a8d
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=python_targets_python2_7? ( >=dev-python/ipaddr-2.1.10[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-python/pyspf[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ipv6] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ipv6] ) python_targets_python3_4? ( dev-lang/python:3.4[ipv6] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
+DESCRIPTION=Python-based policy daemon for Postfix SPF verification
+LICENSE=Apache-2.0
+IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
+SRC_URI=http://launchpad.net/pypolicyd-spf/1.2/1.2/+download/pypolicyd-spf-1.2.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://launchpad.net/pypolicyd-spf
+RDEPEND=python_targets_python2_7? ( >=dev-python/ipaddr-2.1.10[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-python/pyspf[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] dev-python/authres[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ipv6] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ipv6] ) python_targets_python3_4? ( dev-lang/python:3.4[ipv6] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]

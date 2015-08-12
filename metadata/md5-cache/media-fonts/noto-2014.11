@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=81fea54d54d9ac37e3647b2f640ac596
+SLOT=0
+DEFINED_PHASES=install postinst postrm setup
+EAPI=5
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Google's font family that aims to support all the world's languages
+LICENSE=Apache-2.0
+IUSE=X
+RESTRICT=binchecks strip
+SRC_URI=mirror://gentoo/noto-2014.11.zip
+KEYWORDS=amd64 arm ~arm64 x86
+HOMEPAGE=https://www.google.com/get/noto/

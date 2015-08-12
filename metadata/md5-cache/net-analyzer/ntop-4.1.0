@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9618fe7065fdca092f429680897a04ef
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare setup
+EAPI=2
+DEPEND=virtual/awk dev-lang/perl sys-libs/gdbm dev-libs/libevent net-libs/libpcap media-libs/gd media-libs/libpng net-analyzer/rrdtool[graph] ssl? ( dev-libs/openssl ) sys-libs/zlib dev-libs/geoip dev-lang/lua snmp? ( net-analyzer/net-snmp[ipv6] ) >=sys-devel/libtool-1.5.26 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Network traffic analyzer with web interface
+LICENSE=GPL-3
+IUSE=snmp ssl
+SRC_URI=mirror://sourceforge/ntop/ntop/Stable/ntop-4.1.0.tar.gz
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+HOMEPAGE=http://www.ntop.org/products/ntop/
+RDEPEND=virtual/awk dev-lang/perl sys-libs/gdbm dev-libs/libevent net-libs/libpcap media-libs/gd media-libs/libpng net-analyzer/rrdtool[graph] ssl? ( dev-libs/openssl ) sys-libs/zlib dev-libs/geoip dev-lang/lua snmp? ( net-analyzer/net-snmp[ipv6] ) media-fonts/corefonts media-gfx/graphviz net-misc/wget app-arch/gzip dev-libs/glib:2 dev-python/mako

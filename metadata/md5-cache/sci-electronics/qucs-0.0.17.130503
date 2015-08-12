@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9ab3f5fa0ffcb3a0a6fe5298aaa2e515
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4[qt3support] dev-qt/qt3support:4 x11-libs/libX11
+DESCRIPTION=Quite Universal Circuit Simulator in Qt4
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/qucs/qucs-0.0.17.130503.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://qucs.sourceforge.net/
+RDEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4[qt3support] dev-qt/qt3support:4 x11-libs/libX11

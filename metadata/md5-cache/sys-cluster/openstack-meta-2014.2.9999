@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=2b8be12e23b305a88396d4ebf52bf3b8
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=A openstack meta-package for installing the various openstack pieces
+LICENSE=Apache-2.0
+IUSE=keystone swift neutron glance cinder nova
+HOMEPAGE=https://openstack.org
+RDEPEND=keystone? ( ~sys-auth/keystone-2014.2.9999 ) swift? ( ~sys-cluster/swift-2.2.2 ) neutron? ( ~sys-cluster/neutron-2014.2.9999 ) glance? ( ~app-admin/glance-2014.2.9999 ) cinder? ( ~sys-cluster/cinder-2014.2.9999 ) nova? ( ~sys-cluster/nova-2014.2.9999 )

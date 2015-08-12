@@ -1,0 +1,12 @@
+_eclasses_=sword-module	a2b0800a67ad11742c7657239b19b20
+_md5_=817346685fea5ba89c8bed38a2f47b05
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=app-arch/unzip
+DESCRIPTION=Scofield Reference Notes, 1917 Edition
+LICENSE=public-domain
+SRC_URI=mirror://gentoo/Scofield-1.0.zip
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Scofield
+RDEPEND=app-text/sword

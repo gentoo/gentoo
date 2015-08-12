@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3855ed52b3c001a8b2a5d8e974ce10e6
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=5
+DESCRIPTION=CD image containing guest additions for VirtualBox
+LICENSE=GPL-2+ LGPL-2.1+ MIT SGI-B-2.0 CDDL
+RESTRICT=mirror
+SRC_URI=http://download.virtualbox.org/virtualbox/4.3.28/VBoxGuestAdditions_4.3.28.iso
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.virtualbox.org/
+RDEPEND=!app-emulation/virtualbox-bin !=app-emulation/virtualbox-9999

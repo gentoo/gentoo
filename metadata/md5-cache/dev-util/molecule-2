@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=f8dbc8a19df935c6dabc7c8ed915f5f6
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=Meta package for dev-util/molecule-core and dev-util/molecule-plugins
+LICENSE=GPL-2
+IUSE=+plugins
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.sabayon.org
+RDEPEND=>=dev-util/molecule-core-1.0.2 plugins? ( >=dev-util/molecule-plugins-1.0.2 )

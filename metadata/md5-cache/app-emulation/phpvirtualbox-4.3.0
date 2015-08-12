@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	webapp	2442891c368d310c1d3fe77d9c77fe5b	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e672f1accd76f64684eeb3e87d5cf870
+SLOT=4.3.0
+DEFINED_PHASES=install postinst prerm setup
+EAPI=5
+DEPEND=app-arch/unzip virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web-based administration for VirtualBox in PHP
+LICENSE=GPL-2
+IUSE=vhosts
+SRC_URI=mirror://sourceforge/phpvirtualbox/phpvirtualbox-4.3-0.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://sourceforge.net/projects/phpvirtualbox/
+RDEPEND=dev-lang/php[session,unicode,soap,gd] virtual/httpd-php >=app-admin/webapp-config-1.50.15

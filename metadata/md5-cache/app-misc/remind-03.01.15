@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=2e9cf17edd92f7a354632534249d6aad
+SLOT=0
+DEFINED_PHASES=install prepare test
+EAPI=5
+DESCRIPTION=Ridiculously functional reminder program
+LICENSE=GPL-2
+IUSE=tk
+SRC_URI=http://www.roaringpenguin.com/files/download/remind-03.01.15.tar.gz
+KEYWORDS=amd64 ~ppc x86 ~x86-fbsd
+HOMEPAGE=http://www.roaringpenguin.com/products/remind
+RDEPEND=tk? ( dev-lang/tk dev-tcltk/tcllib )

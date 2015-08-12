@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=6c0e73575e738be80233c7730ce767f6
+SLOT=0
+DEFINED_PHASES=compile install preinst prepare setup test
+EAPI=5
+DEPEND=java? ( >=virtual/jdk-1.5 ) ncurses? ( sys-libs/ncurses ) java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=Common Data Format I/O library for multi-dimensional data sets
+LICENSE=CDF
+IUSE=doc examples java ncurses static-libs elibc_FreeBSD java
+SRC_URI=ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_1-dist-cdf.tar.gz java? ( ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_1-dist-java.tar.gz ) doc? ( ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_documentation/cdf34crm.pdf ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_documentation/cdf34frm.pdf ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_documentation/cdf34ifd.pdf ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_documentation/cdf34prm.pdf ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_documentation/cdf34ug.pdf java? ( ftp://cdaweb.gsfc.nasa.gov/pub/cdf/dist/cdf34_1/unix/cdf34_documentation/cdf34jrm.pdf ) )
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://cdf.gsfc.nasa.gov/
+RDEPEND=java? ( >=virtual/jre-1.5 ) ncurses? ( sys-libs/ncurses ) java? ( >=dev-java/java-config-2.2.0 )

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=26698ede0b11a649bba59b213c6d9da2
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=dev-perl/POE dev-perl/Sys-Statistics-Linux dev-lang/perl
+DESCRIPTION=a ncurses which monitors the CPU, disk, network and memory usage
+LICENSE=GPL-2
+SRC_URI=http://www.fusedcreations.com/PProcM/PProcM-1.0.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.fusedcreations.com/PProcM/
+RDEPEND=dev-perl/IO-Pipely

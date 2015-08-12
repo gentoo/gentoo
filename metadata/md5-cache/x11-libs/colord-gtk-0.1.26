@@ -1,0 +1,15 @@
+_eclasses_=gnome2	56d268cae832738430a9de86a5765fa1	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	gnome.org	84c1434ce5de42302c744df8431bf1f6	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4da1351fd62b3782a3cbe240d34d68ee
+SLOT=0/1
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+EAPI=5
+DEPEND=>=dev-libs/glib-2.28:2 >=media-libs/lcms-2.2:2= x11-libs/gdk-pixbuf:2[introspection?] x11-libs/gtk+:3[X(+),introspection?] x11-misc/colord:=[introspection?,vala?] introspection? ( >=dev-libs/gobject-introspection-0.9.8 ) dev-libs/libxslt >=dev-util/intltool-0.35 >=sys-devel/gettext-0.17 virtual/pkgconfig doc? ( app-text/docbook-xml-dtd:4.1.2 >=dev-util/gtk-doc-1.9 ) vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=GTK support library for colord
+LICENSE=LGPL-3+
+IUSE=doc +introspection vala
+REQUIRED_USE=vala? ( introspection )
+RESTRICT=test
+SRC_URI=http://www.freedesktop.org/software/colord/releases/colord-gtk-0.1.26.tar.xz
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
+HOMEPAGE=http://www.freedesktop.org/software/colord/
+RDEPEND=>=dev-libs/glib-2.28:2 >=media-libs/lcms-2.2:2= x11-libs/gdk-pixbuf:2[introspection?] x11-libs/gtk+:3[X(+),introspection?] x11-misc/colord:=[introspection?,vala?] introspection? ( >=dev-libs/gobject-introspection-0.9.8 ) !<x11-misc/colord-0.1.27

@@ -1,0 +1,12 @@
+_eclasses_=linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=5e5d322d5287bd3be52c7d80879cef6a
+SLOT=7
+DEFINED_PHASES=install pretend setup
+EAPI=5
+DESCRIPTION=Firmware for Intel (R) Dual Band Wireless-AC 3160
+LICENSE=ipw3945
+IUSE=bluetooth
+SRC_URI=http://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=iwlwifi-3160-ucode-22.1.7.0.tgz -> iwl3160-ucode-0.7.1.22.tgz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://wireless.kernel.org/en/users/Drivers/iwlwifi
+RDEPEND=bluetooth? ( sys-firmware/iwl3160-7260-bt-ucode ) !sys-kernel/linux-firmware[-savedconfig]

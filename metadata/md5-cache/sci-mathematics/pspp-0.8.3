@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4d1cc8b0a85c53e923cbbf615e132a06
+SLOT=0/0.8.3
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+EAPI=5
+DEPEND=dev-libs/libxml2:2= sci-libs/gsl:0= sys-devel/gettext:0= sys-libs/readline:0= sys-libs/zlib:0= virtual/libiconv cairo? ( x11-libs/cairo:0= ) emacs? ( virtual/emacs ) gtk? ( gnome-base/libglade:2.0 x11-libs/gtk+:2 >=x11-libs/gtksourceview-2.2:2.0 ) ncurses? ( sys-libs/ncurses ) postgres? ( dev-db/postgresql:=[server] ) virtual/pkgconfig doc? ( virtual/latex-base ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Program for statistical analysis of sampled data
+LICENSE=GPL-3
+IUSE=cairo doc emacs examples gtk ncurses nls perl postgres static-libs
+SRC_URI=mirror://gnu/pspp/pspp-0.8.3.tar.gz
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.gnu.org/software/pspp/pspp.html
+RDEPEND=dev-libs/libxml2:2= sci-libs/gsl:0= sys-devel/gettext:0= sys-libs/readline:0= sys-libs/zlib:0= virtual/libiconv cairo? ( x11-libs/cairo:0= ) emacs? ( virtual/emacs ) gtk? ( gnome-base/libglade:2.0 x11-libs/gtk+:2 >=x11-libs/gtksourceview-2.2:2.0 ) ncurses? ( sys-libs/ncurses ) postgres? ( dev-db/postgresql:=[server] )

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=ca6b365a99b3ac72be073741d400c00e
+SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DEPEND=virtual/pkgconfig
+DESCRIPTION=libpurple twitter protocol
+LICENSE=GPL-2
+SRC_URI=http://prpltwtr.googlecode.com/files/prpltwtr-0.12.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://code.google.com/p/prpltwtr/
+RDEPEND=>=net-im/pidgin-2.6

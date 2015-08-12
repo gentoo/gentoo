@@ -1,0 +1,14 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c1bb12c289a60bd7dabcba0fa2e331b8
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=5
+DEPEND=>=virtual/ffmpeg-0.10 a52? ( media-libs/a52dec ) aac? ( media-libs/faac ) alsa? ( media-libs/alsa-lib ) dv? ( media-libs/libdv ) dvd? ( media-libs/libdvdread ) iconv? ( virtual/libiconv ) imagemagick? ( media-gfx/imagemagick ) jpeg? ( virtual/jpeg ) lzo? ( >=dev-libs/lzo-2 ) mjpeg? ( media-video/mjpegtools ) mp3? ( media-sound/lame ) mpeg? ( media-libs/libmpeg2 ) ogg? ( media-libs/libogg ) postproc? ( >=virtual/ffmpeg-0.10 ) quicktime? ( >=media-libs/libquicktime-1 ) sdl? ( >=media-libs/libsdl-1.2.5[X?] ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2 ) v4l? ( media-libs/libv4l ) vorbis? ( media-libs/libvorbis ) X? ( x11-libs/libXpm x11-libs/libXaw x11-libs/libXv ) x264? ( media-libs/x264 ) xml? ( dev-libs/libxml2 ) xvid? ( media-libs/xvid ) virtual/pkgconfig v4l? ( >=sys-kernel/linux-headers-2.6.11 )
+DESCRIPTION=A suite of utilities for transcoding video and audio codecs in different containers
+LICENSE=GPL-2
+IUSE=cpu_flags_x86_3dnow a52 aac alsa altivec dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid
+REQUIRED_USE=cpu_flags_x86_sse? ( cpu_flags_x86_mmx ) cpu_flags_x86_sse2? ( cpu_flags_x86_mmx cpu_flags_x86_sse ) cpu_flags_x86_3dnow? ( cpu_flags_x86_mmx ) nuv? ( lzo )
+SRC_URI=https://www.bitbucket.org/france/transcode-tcforge/downloads/transcode-1.1.7.tar.bz2
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+HOMEPAGE=http://www.transcoding.org/ https://bitbucket.org/france/transcode-tcforge
+RDEPEND=>=virtual/ffmpeg-0.10 a52? ( media-libs/a52dec ) aac? ( media-libs/faac ) alsa? ( media-libs/alsa-lib ) dv? ( media-libs/libdv ) dvd? ( media-libs/libdvdread ) iconv? ( virtual/libiconv ) imagemagick? ( media-gfx/imagemagick ) jpeg? ( virtual/jpeg ) lzo? ( >=dev-libs/lzo-2 ) mjpeg? ( media-video/mjpegtools ) mp3? ( media-sound/lame ) mpeg? ( media-libs/libmpeg2 ) ogg? ( media-libs/libogg ) postproc? ( >=virtual/ffmpeg-0.10 ) quicktime? ( >=media-libs/libquicktime-1 ) sdl? ( >=media-libs/libsdl-1.2.5[X?] ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2 ) v4l? ( media-libs/libv4l ) vorbis? ( media-libs/libvorbis ) X? ( x11-libs/libXpm x11-libs/libXaw x11-libs/libXv ) x264? ( media-libs/x264 ) xml? ( dev-libs/libxml2 ) xvid? ( media-libs/xvid )

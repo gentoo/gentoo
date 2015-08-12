@@ -1,0 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	db-use	a4966c7f4f7df444ead1212848c13cc9	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ccd5a35b317258ad16377efd6194859e
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare setup
+EAPI=5
+DEPEND=|| ( mail-filter/libmilter mail-mta/sendmail ) dev-libs/libbsd ssl? ( >=dev-libs/openssl-0.9.8 ) berkdb? ( >=sys-libs/db-3.2 ) opendbx? ( >=dev-db/opendbx-1.4.0 ) lua? ( dev-lang/lua ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb ) memcached? ( dev-libs/libmemcached ) sasl? ( dev-libs/cyrus-sasl ) unbound? ( >=net-dns/unbound-1.4.1 net-dns/dnssec-root ) !unbound? ( net-libs/ldns ) gnutls? ( >=net-libs/gnutls-2.11.7 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A milter-based application to provide DKIM signing and verification
+LICENSE=Sendmail-Open-Source BSD
+IUSE=+berkdb gnutls ldap lmdb lua memcached opendbx poll sasl selinux +ssl static-libs unbound
+REQUIRED_USE=sasl? ( ldap )
+SRC_URI=mirror://sourceforge/opendkim/opendkim-2.9.3.tar.gz
+KEYWORDS=~amd64 ~arm ~x86
+HOMEPAGE=http://opendkim.org
+RDEPEND=|| ( mail-filter/libmilter mail-mta/sendmail ) dev-libs/libbsd ssl? ( >=dev-libs/openssl-0.9.8 ) berkdb? ( >=sys-libs/db-3.2 ) opendbx? ( >=dev-db/opendbx-1.4.0 ) lua? ( dev-lang/lua ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb ) memcached? ( dev-libs/libmemcached ) sasl? ( dev-libs/cyrus-sasl ) unbound? ( >=net-dns/unbound-1.4.1 net-dns/dnssec-root ) !unbound? ( net-libs/ldns ) gnutls? ( >=net-libs/gnutls-2.11.7 ) sys-process/psmisc selinux? ( sec-policy/selinux-dkim )

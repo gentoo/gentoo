@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=e6894c2f4fe9e5a7b68513e76f3812b6
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=3
+DEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 !app-pda/osynctool virtual/pkgconfig
+DESCRIPTION=OpenSync msync tool
+LICENSE=GPL-2
+SRC_URI=http://www.opensync.org/downloads/releases/0.22/msynctool-0.22.tar.bz2
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://www.opensync.org/
+RDEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 !app-pda/osynctool

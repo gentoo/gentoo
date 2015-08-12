@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	confutils	18995f74ac4ffafb7ad853dfe133f209	webapp	2442891c368d310c1d3fe77d9c77fe5b	db-use	a4966c7f4f7df444ead1212848c13cc9	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=eaf756fdf74f9a779d5ac1a3ec53d9de
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare prerm setup
+EAPI=2
+DEPEND=>=sys-libs/db-4.2 >=sys-libs/zlib-1.1.4 >=media-libs/libpng-1.2 >=media-libs/gd-1.8.3 dev-libs/geoip >=app-admin/webapp-config-1.50.15 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Webserver log file analyzer
+LICENSE=GPL-2
+IUSE=nls vhosts
+SRC_URI=ftp://ftp.mrunix.net/pub/webalizer/old/webalizer-2.01-10-src.tar.bz2 http://sysd.org/stas/files/active/0/geolizer_2.01-10-patch.20070115.tar.gz mirror://gentoo/webalizer.conf.gz
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+HOMEPAGE=http://sysd.org/stas/node/10
+RDEPEND=>=sys-libs/db-4.2 >=sys-libs/zlib-1.1.4 >=media-libs/libpng-1.2 >=media-libs/gd-1.8.3 dev-libs/geoip >=app-admin/webapp-config-1.50.15

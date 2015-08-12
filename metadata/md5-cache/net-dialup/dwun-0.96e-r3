@@ -1,0 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=7a0a5f41ba5c3c9f800d36580136c031
+SLOT=0
+DEFINED_PHASES=configure install postinst prepare
+EAPI=5
+DESCRIPTION=Dialer Without a Useful Name (DWUN)
+LICENSE=MIT GPL-2
+SRC_URI=mirror://sourceforge/dwun/dwun-0.96e.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://dwun.sourceforge.net/

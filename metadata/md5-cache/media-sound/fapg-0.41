@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=3c1bccf8ae1a99398ec3c05df86c1592
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=xspf? ( >=dev-libs/uriparser-0.6.3 )
+DESCRIPTION=Fast Audio Playlist Generator
+LICENSE=GPL-2
+IUSE=xspf
+SRC_URI=http://royale.zerezo.com/fapg/fapg-0.41.tar.gz
+KEYWORDS=amd64 ppc ~ppc64 x86
+HOMEPAGE=http://royale.zerezo.com/fapg/
+RDEPEND=xspf? ( >=dev-libs/uriparser-0.6.3 )

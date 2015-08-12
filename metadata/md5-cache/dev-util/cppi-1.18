@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=5247031058930ebde43f5fda341e2b34
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=4
+DEPEND=app-arch/xz-utils nls? ( sys-devel/gettext )
+DESCRIPTION=a cpp directive indenter
+LICENSE=GPL-3
+IUSE=nls linguas_de linguas_eo linguas_fi linguas_fr linguas_hr linguas_it linguas_ja linguas_pl linguas_sr linguas_sv linguas_uk linguas_vi
+SRC_URI=mirror://gnu/cppi/cppi-1.18.tar.xz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://savannah.gnu.org/projects/cppi

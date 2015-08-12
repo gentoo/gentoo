@@ -1,0 +1,14 @@
+_eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=f40cdf4fa174ed1988971447df37ea78
+SLOT=3.0.9
+DEFINED_PHASES=install postinst prerm setup
+EAPI=5
+DEPEND=app-arch/unzip >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web based (PHP Script) photo album viewer/creator
+LICENSE=GPL-2
+IUSE=ffmpeg +gd imagemagick mysql mysqli vhosts
+REQUIRED_USE=|| ( gd imagemagick ) || ( mysql mysqli )
+SRC_URI=mirror://sourceforge/gallery/gallery/gallery-3.0.9.zip
+KEYWORDS=amd64 hppa ppc ppc64 x86
+HOMEPAGE=http://gallery.menalto.com/
+RDEPEND=imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) ) ffmpeg? ( virtual/ffmpeg ) >=dev-lang/php-5.2.3[ctype,filter,iconv,json,simplexml,tokenizer,unicode,gd?,mysql?,mysqli?] virtual/httpd-php >=app-admin/webapp-config-1.50.15

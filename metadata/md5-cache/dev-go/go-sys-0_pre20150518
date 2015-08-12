@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=d2f6dc68179504b350d9ab0ca0c74783
+SLOT=0
+DEFINED_PHASES=compile install test unpack
+EAPI=5
+DEPEND=>=dev-lang/go-1.4
+DESCRIPTION=Go packages for low-level interaction with the operating system
+LICENSE=BSD
+SRC_URI=https://github.com/golang/sys/archive/58e109635f5d754f4b3a8a0172db65a52fcab866.tar.gz -> go-sys-0_pre20150518.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=https://godoc.org/golang.org/x/sys

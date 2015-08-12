@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=76ecda8b163991af4f9001baf511d65f
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=2
+DEPEND=dev-db/sqlite:3 dev-libs/libev dev-libs/libyaml >=sys-devel/libtool-2.2.6b sys-libs/readline virtual/linuxtv-dvb-headers
+DESCRIPTION=DVB over UDP streaming solution
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/dvbstreamer/dvbstreamer-2.0.0rc1.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://dvbstreamer.sourceforge.net/
+RDEPEND=dev-db/sqlite:3 dev-libs/libev dev-libs/libyaml >=sys-devel/libtool-2.2.6b sys-libs/readline

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=9962570bdd70db2e45f059879657cf7d
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=2
+DEPEND=dev-libs/boost[python] >=dev-cpp/glibmm-2.6:2 >=dev-cpp/gtkmm-2.6:2.4 dev-libs/expat >=dev-libs/libsigc++-2.2:2 media-libs/mesa virtual/glu virtual/opengl >=x11-libs/gtkglext-1.0.6-r3 x11-libs/libICE x11-libs/libSM x11-libs/libXmu x11-libs/libXt 3ds? ( media-libs/lib3ds ) cuda? ( dev-util/nvidia-cuda-toolkit ) gnome? ( gnome-base/libgnome ) graphviz? ( media-gfx/graphviz ) gts? ( sci-libs/gts ) imagemagick? ( media-gfx/imagemagick ) jpeg? ( virtual/jpeg ) openexr? ( media-libs/openexr ) png? ( >=media-libs/libpng-1.2.43-r2 ) python? ( >=dev-lang/python-2.3 dev-python/cgkit ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 ) virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A free 3D modeling, animation, and rendering system
+LICENSE=GPL-2
+IUSE=3ds cuda gnome graphviz gts imagemagick jpeg nls openexr png python tiff truetype
+SRC_URI=mirror://sourceforge/k3d/k3d-source-0.7.11.0.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://www.k-3d.org/
+RDEPEND=dev-libs/boost[python] >=dev-cpp/glibmm-2.6:2 >=dev-cpp/gtkmm-2.6:2.4 dev-libs/expat >=dev-libs/libsigc++-2.2:2 media-libs/mesa virtual/glu virtual/opengl >=x11-libs/gtkglext-1.0.6-r3 x11-libs/libICE x11-libs/libSM x11-libs/libXmu x11-libs/libXt 3ds? ( media-libs/lib3ds ) cuda? ( dev-util/nvidia-cuda-toolkit ) gnome? ( gnome-base/libgnome ) graphviz? ( media-gfx/graphviz ) gts? ( sci-libs/gts ) imagemagick? ( media-gfx/imagemagick ) jpeg? ( virtual/jpeg ) openexr? ( media-libs/openexr ) png? ( >=media-libs/libpng-1.2.43-r2 ) python? ( >=dev-lang/python-2.3 dev-python/cgkit ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 )

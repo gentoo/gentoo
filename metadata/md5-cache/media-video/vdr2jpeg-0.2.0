@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f8c6280c1c500f26d6a351ba58332949
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DEPEND=libav? ( media-video/libav ) !libav? ( media-video/ffmpeg:0 ) virtual/pkgconfig
+DESCRIPTION=Addon needed for XXV - WWW Admin for the Video Disk Recorder
+LICENSE=GPL-2
+IUSE=libav
+RESTRICT=strip
+SRC_URI=mirror://vdr-developerorg/1911/vdr2jpeg-0.2.0.tgz mirror://gentoo/vdr2jpeg-0.2.0.tgz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://projects.vdr-developer.org/projects/xxv
+RDEPEND=libav? ( media-video/libav ) !libav? ( media-video/ffmpeg:0 )

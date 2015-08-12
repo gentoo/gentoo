@@ -1,0 +1,8 @@
+_eclasses_=
+_md5_=c264ffd1fa8c2bcfc97aa6e1e3b32efd
+SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DESCRIPTION=Virtual for plugins that can show IDownloads and IJobHolders
+KEYWORDS=amd64 x86
+RDEPEND=app-leechcraft/lc-summary

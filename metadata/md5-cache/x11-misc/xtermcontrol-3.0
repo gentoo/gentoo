@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=965ba8741b7615c67c4c0d6134bc6436
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=xtermcontrol enables dynamic control of XFree86 xterm properties
+LICENSE=GPL-2+
+SRC_URI=http://www.thrysoee.dk/xtermcontrol/xtermcontrol-3.0.tar.gz
+KEYWORDS=alpha amd64 ia64 ppc ~sparc x86
+HOMEPAGE=http://www.thrysoee.dk/xtermcontrol/

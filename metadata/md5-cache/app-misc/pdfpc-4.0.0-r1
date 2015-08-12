@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	vala	335996addec48717e632dfd1f588ef1c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=edf44e09af03982ce5e1204d65728330
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=app-text/poppler:=[cairo] dev-libs/glib:2 dev-libs/libgee:0.8 gnome-base/librsvg media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 x11-libs/gtk+:3 || ( dev-lang/vala:0.28 dev-lang/vala:0.26 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Presenter console with multi-monitor support for PDF files
+LICENSE=GPL-2
+SRC_URI=https://github.com/pdfpc/pdfpc/releases/download/v4.0.0/pdfpc-v4.0.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://pdfpc.github.io
+RDEPEND=app-text/poppler:=[cairo] dev-libs/glib:2 dev-libs/libgee:0.8 gnome-base/librsvg media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 x11-libs/gtk+:3

@@ -1,0 +1,11 @@
+_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
+_md5_=f758a8cfec9fdb1234a4f4d47e2552e4
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=XEmacs Microsoft sound files
+LICENSE=GPL-2
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/sounds-wav-1.12-pkg.tar.gz
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+HOMEPAGE=http://xemacs.org/
+RDEPEND=app-editors/xemacs

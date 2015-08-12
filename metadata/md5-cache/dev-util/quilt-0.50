@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2342d0bb4cb7c20096350db665e689c3
+SLOT=0
+DEFINED_PHASES=install setup unpack
+EAPI=0
+DESCRIPTION=quilt patch manager
+LICENSE=GPL-2
+IUSE=emacs graphviz
+PDEPEND=emacs? ( app-emacs/quilt-el )
+SRC_URI=http://savannah.nongnu.org/download/quilt/quilt-0.50.tar.gz
+KEYWORDS=amd64 arm ppc ppc64 sparc x86
+HOMEPAGE=http://savannah.nongnu.org/projects/quilt
+RDEPEND=sys-apps/ed dev-util/diffstat graphviz? ( media-gfx/graphviz ) >=sys-apps/coreutils-8.5

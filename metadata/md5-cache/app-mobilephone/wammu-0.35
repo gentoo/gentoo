@@ -1,0 +1,13 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	distutils	def8c8eb435ec28fd9315114640f6c84
+_md5_=ebdf5ecf0bc5fc4eabdea35d1b2d8e70
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm prepare setup
+EAPI=3
+DEPEND=>=app-mobilephone/gammu-1.25.0[python] >=dev-python/wxpython-2.8 bluetooth? ( dev-python/pybluez gnome? ( net-wireless/gnome-bluetooth ) ) =dev-lang/python-2*
+DESCRIPTION=Front-end for gammu to access mobile phones easily
+LICENSE=GPL-2
+IUSE=bluetooth gnome linguas_af linguas_bg linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_es linguas_et linguas_fi linguas_fr linguas_gl linguas_he linguas_hu linguas_id linguas_it linguas_ko linguas_nl linguas_pl linguas_pt_BR linguas_ru linguas_sk linguas_sv linguas_zh_CN linguas_zh_TW
+SRC_URI=http://dl.cihar.com/wammu/v0/wammu-0.35.tar.bz2
+KEYWORDS=amd64 x86
+HOMEPAGE=http://www.wammu.eu/
+RDEPEND=>=app-mobilephone/gammu-1.25.0[python] >=dev-python/wxpython-2.8 bluetooth? ( dev-python/pybluez gnome? ( net-wireless/gnome-bluetooth ) ) =dev-lang/python-2*

@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=f9716f2fdc2d038200b0b4d7fc04030c
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=2
+DEPEND=gnutls? ( net-libs/gnutls ) net-dns/c-ares
+DESCRIPTION=small command line tool for testing SIP applications and devices
+LICENSE=GPL-2
+IUSE=gnutls
+SRC_URI=mirror://berlios/sipsak/sipsak-0.9.6-1.tar.gz
+KEYWORDS=~amd64 ~ppc ~sparc x86 ~x86-fbsd
+HOMEPAGE=http://sipsak.org/
+RDEPEND=gnutls? ( net-libs/gnutls ) net-dns/c-ares

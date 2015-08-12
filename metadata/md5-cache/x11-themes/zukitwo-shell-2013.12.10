@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=fb7584b3d647b4dbaf0e235ae3c8c32
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Zukitwo theme for GNOME Shell
+LICENSE=GPL-3
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/zukitwo-2013.12.10.tar.xz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://gnome-look.org/content/show.php/Zukitwo?content=140562
+RDEPEND=>=gnome-base/gnome-shell-3.4 media-fonts/ubuntu-font-family !<=x11-themes/zukitwo-2011.12.29

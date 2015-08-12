@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=db423c6060a51eddb9c6d681a9300d5c
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt >=x11-libs/qtermwidget-0.4.0.37 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt4-based multitab terminal emulator
+LICENSE=GPL-2
+IUSE=debug
+SRC_URI=https://dev.gentoo.org/~kensington/distfiles/qterminal-0.5.0_p20140913.tar.xz
+KEYWORDS=~amd64 ~arm ~x86
+HOMEPAGE=https://github.com/qterminal/qterminal
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt >=x11-libs/qtermwidget-0.4.0.37

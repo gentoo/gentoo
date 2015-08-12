@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=bd54c5991b33759f6e96aaf1b8699431
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=5
+DEPEND=>=dev-lang/go-1.4:=
+DESCRIPTION=Go client library for etcd
+LICENSE=Apache-2.0
+SRC_URI=https://github.com/coreos/go-etcd/archive/25e2c63be8e8ab405014a78879e0992ae5ff55e8.tar.gz -> go-etcd-2.0.0.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=https://github.com/coreos/go-etcd

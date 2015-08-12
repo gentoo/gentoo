@@ -1,0 +1,10 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=91eab3f7231c74069b5e386d056460f0
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=3
+DESCRIPTION=An ISO 3166 country code finder
+LICENSE=GPL-2
+SRC_URI=http://www.grigna.com/diego/linux/countrycodes/countrycodes-1.0.5.tar.gz
+KEYWORDS=alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86
+HOMEPAGE=http://www.grigna.com/diego/linux/countrycodes/

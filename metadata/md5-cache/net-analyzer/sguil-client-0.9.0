@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=56c1a0822f1200facb891548e26334b2
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DESCRIPTION=GUI Console for sguil Network Security Monitoring
+LICENSE=QPL
+IUSE=ssl
+SRC_URI=https://github.com/bammv/sguil/archive/v0.9.0.tar.gz -> sguil-0.9.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://sguil.sf.net
+RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-lang/tk-8.3:0= >=dev-tcltk/itcl-3.2 >=dev-tcltk/tclx-8.3 dev-tcltk/itk dev-tcltk/iwidgets dev-tcltk/tcllib net-analyzer/wireshark ssl? ( >=dev-tcltk/tls-1.4.1 )

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	wxwidgets	6712758caa92e836a735c1281b34e70e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f7dba579c074c84c9e7ab2a602c2ad58
+SLOT=0
+DEFINED_PHASES=configure install prepare setup
+EAPI=5
+DEPEND=x11-libs/wxGTK:=[X,debug=] >=dev-db/postgresql-8.4.0:= >=dev-libs/libxml2-2.6.18 >=dev-libs/libxslt-1.1
+DESCRIPTION=wxWidgets GUI for PostgreSQL
+LICENSE=POSTGRESQL
+IUSE=debug +databasedesigner
+SRC_URI=mirror://postgresql/pgadmin3/release/v1.20.0/src/pgadmin3-1.20.0.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://www.pgadmin.org/
+RDEPEND=x11-libs/wxGTK:=[X,debug=] >=dev-db/postgresql-8.4.0:= >=dev-libs/libxml2-2.6.18 >=dev-libs/libxslt-1.1

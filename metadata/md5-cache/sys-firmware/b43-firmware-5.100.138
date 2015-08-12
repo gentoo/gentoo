@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=7abad9af79770228400a76a41769774f
+SLOT=b43
+DEFINED_PHASES=compile install
+EAPI=5
+DEPEND=>=net-wireless/b43-fwcutter-015
+DESCRIPTION=broadcom firmware for b43 LP PHY and >=linux-3.2
+LICENSE=Broadcom
+RESTRICT=mirror binchecks strip
+SRC_URI=http://www.lwfinger.com/b43-firmware/broadcom-wl-5.100.138.tar.bz2
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://linuxwireless.org/en/users/Drivers/b43

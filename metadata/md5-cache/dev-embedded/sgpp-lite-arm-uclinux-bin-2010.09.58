@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=9efe4770c8cf1078bda176ae804c50e9
+SLOT=2010.09.58
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=regular, validated releases of the GNU Toolchain for arm processors by CodeSourcery
+LICENSE=GPL-2
+IUSE=doc
+RESTRICT=strip
+SRC_URI=http://www.codesourcery.com/public/gnu_toolchain/arm-uclinuxeabi/arm-2010.09-58-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.codesourcery.com/sgpp/lite/arm
+RDEPEND=sys-libs/glibc

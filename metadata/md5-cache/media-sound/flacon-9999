@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	git-r3	1502b9838d043db47700b8120083e637	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	cmake-utils	f474224ef49d530640a43a04ae94928e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c0794da17ca1c7e541f96f9db844ee9d
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+EAPI=5
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-libs/uchardet media-sound/shntool[mac?] flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) mp4? ( media-libs/faac ) ogg? ( media-sound/vorbis-tools ) tta? ( media-sound/ttaenc ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) ogg? ( media-sound/vorbisgain ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Extracts audio tracks from audio CD image to separate tracks
+LICENSE=LGPL-2.1
+IUSE=flac mac mp3 mp4 ogg replaygain tta wavpack linguas_cs_CZ linguas_cs linguas_de linguas_es_MX linguas_es linguas_fr linguas_gl linguas_hu linguas_it linguas_pl_PL linguas_pl linguas_pt_BR linguas_pt_PT linguas_ro_RO linguas_ru linguas_si_LK linguas_uk linguas_zh_CN linguas_zh_TW
+HOMEPAGE=https://flacon.github.io/
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-libs/uchardet media-sound/shntool[mac?] flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) mp4? ( media-libs/faac ) ogg? ( media-sound/vorbis-tools ) tta? ( media-sound/ttaenc ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) ogg? ( media-sound/vorbisgain ) )

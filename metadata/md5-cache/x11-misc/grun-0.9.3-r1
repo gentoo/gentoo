@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ae3c7f2b48be065710d5e67072f3a2d3
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=5
+DEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=gRun is a GTK based Run dialog that closely resembles the Windows Run dialog, just like xexec
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=http://grun.googlecode.com/files/grun-0.9.3.tar.gz
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+HOMEPAGE=http://code.google.com/p/grun/
+RDEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2

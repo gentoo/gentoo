@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=1321e350b79d1accbbe5f394d63660d2
+SLOT=0
+DEFINED_PHASES=install
+EAPI=4
+DESCRIPTION=Script to encode H.264/AVC/MPEG-4 Part 10 formats
+LICENSE=GPL-2
+IUSE=aac dvd flac lame matroska mp4 ogm vorbis
+SRC_URI=mirror://sourceforge/h264enc/h264enc-9.4.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://h264enc.sourceforge.net/
+RDEPEND=media-video/mplayer[encode,x264] sys-apps/coreutils sys-apps/pv sys-devel/bc sys-process/time aac? ( media-libs/faac media-sound/aacplusenc ) dvd? ( media-video/lsdvd ) flac? ( media-libs/flac ) lame? ( media-sound/lame ) matroska? ( media-video/mkvtoolnix ) mp4? ( >=media-video/gpac-0.4.5[a52] ) ogm? ( media-sound/ogmtools ) vorbis? ( media-sound/vorbis-tools )

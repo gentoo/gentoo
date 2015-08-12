@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=c9ae043bc331bd66e76ed8e41b451835
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=5
+DEPEND=games-misc/fortune-mod unicode? ( virtual/libiconv )
+DESCRIPTION=Quotes from at.linux
+LICENSE=GPL-2
+IUSE=unicode
+SRC_URI=mirror://sourceforge/fortune-mod-fvl/fortune-mod-at.linux-20030120.tar.gz
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+HOMEPAGE=http://fortune-mod-fvl.sourceforge.net/
+RDEPEND=games-misc/fortune-mod

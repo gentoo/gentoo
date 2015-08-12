@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cuda	5e306be76ac11f3468389ef2e4da10	unpacker	1ca344bd9b922a7f8084a3fa02933b79	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=ca7adc75d6a104354d4bdd7205c9f230
+SLOT=0
+DEFINED_PHASES=compile install prepare setup test unpack
+EAPI=4
+DEPEND=~dev-util/nvidia-cuda-toolkit-5.5.22 media-libs/freeglut examples? ( media-libs/freeimage media-libs/glew virtual/mpi >=x11-drivers/nvidia-drivers-304.54 )
+DESCRIPTION=NVIDIA CUDA Software Development Kit
+LICENSE=CUDPP
+IUSE=debug +doc +examples opencl +cuda
+RESTRICT=test
+SRC_URI=amd64? ( http://developer.download.nvidia.com/compute/cuda/5_5/rel/installers/cuda_5.5.22_linux_64.run ) x86? ( http://developer.download.nvidia.com/compute/cuda/5_5/rel/installers/cuda_5.5.22_linux_32.run )
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://developer.nvidia.com/cuda
+RDEPEND=~dev-util/nvidia-cuda-toolkit-5.5.22 media-libs/freeglut examples? ( media-libs/freeimage media-libs/glew virtual/mpi >=x11-drivers/nvidia-drivers-304.54 )

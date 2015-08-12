@@ -1,0 +1,14 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=a9d0a8f3d7163e89a260d4f596f5547e
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+EAPI=4
+DEPEND=test? ( app-emacs/htmlize ) >=virtual/emacs-23
+DESCRIPTION=Muse-mode is similar to EmacsWikiMode, but more focused on publishing to various formats
+LICENSE=GPL-3 FDL-1.2 GPL-2 MIT
+IUSE=test
+RESTRICT=test
+SRC_URI=http://download.gna.org/muse-el/muse-3.20.tar.gz
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+HOMEPAGE=http://mwolson.org/projects/EmacsMuse.html
+RDEPEND=>=virtual/emacs-23

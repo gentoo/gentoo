@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=62f0c0072af3ebb24d964d4f4d3745b6
+SLOT=0
+DEFINED_PHASES=compile configure install preinst prepare setup
+EAPI=2
+DEPEND=sys-libs/zlib gmp? ( dev-libs/gmp ) java? ( >=virtual/jdk-1.4 ) mpi? ( virtual/mpi ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) readline? ( sys-libs/readline sys-libs/ncurses ) doc? ( app-text/texi2html ) java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=YAP is a high-performance Prolog compiler
+LICENSE=Artistic LGPL-2
+IUSE=debug doc examples gmp java mpi mysql odbc readline static threads elibc_FreeBSD java
+SRC_URI=http://www.dcc.fc.up.pt/~vsc/Yap/yap-6.2.2.tar.gz mirror://gentoo/yap-6.2.2-gentoo-patchset-2.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://www.dcc.fc.up.pt/~vsc/Yap/
+RDEPEND=sys-libs/zlib gmp? ( dev-libs/gmp ) java? ( >=virtual/jdk-1.4 ) mpi? ( virtual/mpi ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) readline? ( sys-libs/readline sys-libs/ncurses ) java? ( >=dev-java/java-config-2.2.0 )

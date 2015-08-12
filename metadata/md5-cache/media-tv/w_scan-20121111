@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=1508ec10dd10d7ee5e20e57596e2ced
+SLOT=0
+DEFINED_PHASES=install prepare
+EAPI=5
+DEPEND=>=virtual/linuxtv-dvb-headers-5.3
+DESCRIPTION=Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
+LICENSE=GPL-2
+IUSE=doc examples
+SRC_URI=http://wirbel.htpc-forum.de/w_scan/w_scan-20121111.tar.bz2
+KEYWORDS=amd64 x86
+HOMEPAGE=http://wirbel.htpc-forum.de/w_scan/index2.html

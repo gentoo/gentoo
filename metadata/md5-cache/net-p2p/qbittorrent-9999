@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	multibuild	4550e10791f720f7af3fdd911aedf518	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=eb0749618b025fc433a38b3137084b01
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=5
+DEPEND=dev-libs/boost:= >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt4?,qt5?,X?] >=net-libs/rb_libtorrent-1.0.0 sys-libs/zlib qt4? ( dev-qt/qtcore:4 dbus? ( dev-qt/qtdbus:4 ) X? ( dev-qt/qtgui:4 ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 dbus? ( dev-qt/qtdbus:5 ) X? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DESCRIPTION=BitTorrent client in C++ and Qt
+LICENSE=GPL-2
+IUSE=+dbus debug +qt4 qt5 webui +X python_targets_python2_7
+REQUIRED_USE=^^ ( qt4 qt5 ) dbus? ( X )
+HOMEPAGE=http://www.qbittorrent.org/
+RDEPEND=dev-libs/boost:= >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt4?,qt5?,X?] >=net-libs/rb_libtorrent-1.0.0 sys-libs/zlib qt4? ( dev-qt/qtcore:4 dbus? ( dev-qt/qtdbus:4 ) X? ( dev-qt/qtgui:4 ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 dbus? ( dev-qt/qtdbus:5 ) X? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

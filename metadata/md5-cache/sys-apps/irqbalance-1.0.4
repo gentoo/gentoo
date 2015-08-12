@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	systemd	6b4f0cefa642270eded7e6ca816fd181	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c8e9ff4c6e7cac58a876943b67b68fe
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=4
+DEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Distribute hardware interrupts across processors on a multiprocessor system
+LICENSE=GPL-2
+IUSE=caps numa
+SRC_URI=https://github.com/Irqbalance/irqbalancefiles/irqbalance-1.0.4.tar.bz2
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=https://github.com/Irqbalance/irqbalance
+RDEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl )

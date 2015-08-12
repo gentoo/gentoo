@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	portability	3a50b3ec310b86914f98babecc8f89c6	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	bsdmk	2d20496ff432a0ca089345cf400e5c87	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3e13c20ab39d6deb0fe5945fd6f7b87b
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=2
+DEPEND=sys-freebsd/freebsd-mk-defs virtual/pmake
+DESCRIPTION=fuser(1) utility for *BSD
+LICENSE=BSD
+SRC_URI=http://mbsd.msk.ru/dist/fuser-1142334561.tar.bz2 mirror://gentoo/fuser-bsd-patches-1.tar.bz2
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+HOMEPAGE=http://mbsd.msk.ru/stas/fuser.html
+RDEPEND=virtual/libc !sys-process/psmisc

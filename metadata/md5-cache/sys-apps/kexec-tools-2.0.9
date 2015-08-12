@@ -1,0 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=22f773fdda02909cd4fbbb2132e4ed85
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare setup test
+EAPI=5
+DEPEND=lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
+DESCRIPTION=Load another kernel from the currently executing Linux kernel
+LICENSE=GPL-2
+IUSE=booke lzma xen zlib
+REQUIRED_USE=lzma? ( zlib )
+SRC_URI=mirror://kernel/linux/utils/kernel/kexec/kexec-tools-2.0.9.tar.xz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://kernel.org/pub/linux/utils/kernel/kexec/
+RDEPEND=lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib )

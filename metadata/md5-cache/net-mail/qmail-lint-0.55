@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=de60f0e4ec7bfa5feafc67a3aaf6ea0
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=qmail-lint checks your qmail configuration for common problems
+LICENSE=qmail-nelson
+SRC_URI=mirror://qmail/qmail-lint-0.55
+KEYWORDS=~hppa ~ppc ~sparc ~x86
+HOMEPAGE=http://www.qmail.org/
+RDEPEND=virtual/qmail dev-lang/perl

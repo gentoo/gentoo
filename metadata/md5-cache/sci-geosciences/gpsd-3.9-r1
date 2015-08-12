@@ -1,0 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils	def8c8eb435ec28fd9315114640f6c84	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	udev	37ef89be271b9ae8aa64be024ddb39b5	scons-utils	b7d634f772db55c8af429f50aeec6ee0	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=10c8c1ae11e8fbc4abfcb8d9cdba8b98
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+EAPI=4
+DEPEND=X? ( dev-python/pygtk:2 ) ncurses? ( sys-libs/ncurses ) bluetooth? ( net-wireless/bluez ) usb? ( virtual/libusb:1 ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) ntp? ( || ( net-misc/ntp net-misc/chrony ) ) systemd? ( sys-apps/systemd ) qt4? ( dev-qt/qtgui:4 ) virtual/pkgconfig test? ( sys-devel/bc ) virtual/pkgconfig python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) ) >=dev-util/scons-1.2.1 virtual/pkgconfig
+DESCRIPTION=GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients
+LICENSE=BSD
+IUSE=gpsd_protocols_aivdm gpsd_protocols_ashtech gpsd_protocols_earthmate gpsd_protocols_evermore gpsd_protocols_fury gpsd_protocols_fv18 gpsd_protocols_garmin gpsd_protocols_garmintxt gpsd_protocols_geostar gpsd_protocols_gpsclock gpsd_protocols_itrax gpsd_protocols_mtk3301 gpsd_protocols_navcom gpsd_protocols_nmea gpsd_protocols_nmea2000 gpsd_protocols_ntrip gpsd_protocols_oceanserver gpsd_protocols_oncore gpsd_protocols_rtcm104v2 gpsd_protocols_rtcm104v3 gpsd_protocols_sirf gpsd_protocols_superstar2 gpsd_protocols_tnt gpsd_protocols_tripmate gpsd_protocols_tsip gpsd_protocols_ubx bluetooth cxx debug dbus ipv6 latency_timing ncurses ntp python qt4 +shm +sockets systemd test udev usb X
+REQUIRED_USE=X? ( python ) gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
+SRC_URI=mirror://nongnu/gpsd/gpsd-3.9.tar.gz
+KEYWORDS=amd64 arm ppc ppc64 x86
+HOMEPAGE=http://catb.org/gpsd/
+RDEPEND=X? ( dev-python/pygtk:2 ) ncurses? ( sys-libs/ncurses ) bluetooth? ( net-wireless/bluez ) usb? ( virtual/libusb:1 ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) ntp? ( || ( net-misc/ntp net-misc/chrony ) ) systemd? ( sys-apps/systemd ) qt4? ( dev-qt/qtgui:4 ) python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )

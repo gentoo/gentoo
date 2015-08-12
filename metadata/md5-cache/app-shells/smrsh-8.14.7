@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=7bfaa612183b7c778d5b8aefc33be45d
+SLOT=0
+DEFINED_PHASES=compile install postinst prepare
+EAPI=5
+DEPEND=sys-devel/m4 >=sys-apps/sed-4
+DESCRIPTION=Sendmail restricted shell, for use with MTAs other than Sendmail
+LICENSE=Sendmail
+SRC_URI=ftp://ftp.sendmail.org/pub/sendmail/sendmail.8.14.7.tar.gz
+KEYWORDS=~amd64 x86
+HOMEPAGE=http://www.sendmail.org/
+RDEPEND=sys-devel/m4 >=sys-apps/sed-4 !mail-mta/sendmail

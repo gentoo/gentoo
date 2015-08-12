@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=a3c06d064986819564e6acaf30e4f39b
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=5
+DEPEND=games-misc/fortune-mod
+DESCRIPTION=Fortune database of Terry Pratchett's Discworld related quotes
+LICENSE=GPL-2
+SRC_URI=http://www.ie.lspace.org/ftp-lspace/words/pqf/pqf-6.0
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+HOMEPAGE=http://www.lspace.org/
+RDEPEND=games-misc/fortune-mod

@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=cb44b4c97a7fac4f99bce3a781872f5d
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=0
+DEPEND=app-arch/unzip
+DESCRIPTION=Bram Moolenaar's super-make program
+LICENSE=GPL-2
+IUSE=doc
+SRC_URI=mirror://sourceforge/a-a-p/aap-1.076.zip
+KEYWORDS=alpha ~amd64 ia64 ~mips ~ppc sparc x86
+HOMEPAGE=http://www.a-a-p.org/
+RDEPEND=>=dev-lang/python-1.5

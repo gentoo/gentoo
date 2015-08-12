@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=7a62b99288120ad082a1fc58ab595cf6
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=4
+DEPEND=>=media-sound/gmpc-11.8.16 virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DESCRIPTION=This plugin can start/stop/pause your music at a preset time
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/gmpc-alarm-11.8.16.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_ALARM
+RDEPEND=>=media-sound/gmpc-11.8.16

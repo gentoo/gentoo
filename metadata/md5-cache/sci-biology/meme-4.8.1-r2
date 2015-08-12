@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=3da487080e0d3a3f0051709b0f0c2cb5
+SLOT=0
+DEFINED_PHASES=configure install prepare setup test
+EAPI=4
+DEPEND=app-shells/tcsh dev-libs/libxml2:2 dev-libs/libxslt mpi? ( virtual/mpi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 =dev-lang/python-2*
+DESCRIPTION=The MEME/MAST system - Motif discovery and search
+LICENSE=meme
+IUSE=debug examples mpi
+SRC_URI=http://meme.nbcr.net/downloads/meme_4.8.1.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://meme.sdsc.edu/meme
+RDEPEND=app-shells/tcsh dev-libs/libxml2:2 dev-libs/libxslt mpi? ( virtual/mpi ) =dev-lang/python-2*

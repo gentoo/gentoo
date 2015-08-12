@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b51f849d45b9aa9ba5440e1ad6349f4f
+SLOT=0
+DEFINED_PHASES=compile install prepare unpack
+EAPI=4
+DEPEND=app-arch/sharutils
+DESCRIPTION=PDB Record I/O Libraries -- c version
+LICENSE=BSD
+IUSE=static-libs
+SRC_URI=mirror://gentoo/libpdb-991112.shar
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://www.cgl.ucsf.edu/Overview/software.html

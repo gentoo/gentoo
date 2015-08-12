@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=5b99926657c5a3ec9978a8f33458efd0
+SLOT=0
+DEFINED_PHASES=install prepare test
+EAPI=5
+DESCRIPTION=Recursive-descent parser generators for C
+LICENSE=MIT
+IUSE=test
+RESTRICT=test
+SRC_URI=http://piumarta.com/software/peg/peg-0.1.13.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://piumarta.com/software/peg/

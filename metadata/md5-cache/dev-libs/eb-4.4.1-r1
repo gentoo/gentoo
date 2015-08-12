@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=d0bbf10f595d8728cd343bf2cc02771
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=5
+DEPEND=sys-libs/zlib linguas_ja? ( virtual/libintl ) linguas_ja? ( sys-devel/gettext )
+DESCRIPTION=EB is a C library and utilities for accessing CD-ROM books
+LICENSE=BSD
+IUSE=ipv6 linguas_ja threads
+SRC_URI=ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.1.tar.lzma
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+HOMEPAGE=http://www.sra.co.jp/people/m-kasahr/eb/
+RDEPEND=sys-libs/zlib linguas_ja? ( virtual/libintl )

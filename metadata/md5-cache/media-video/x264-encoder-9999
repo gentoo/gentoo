@@ -1,0 +1,12 @@
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=dde6bde09eef3d342b02207086673349
+SLOT=0
+DEFINED_PHASES=configure unpack
+EAPI=5
+DEPEND=ffmpeg? ( virtual/ffmpeg ) ~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.4.1_pre20060122 ) amd64? ( >=dev-lang/yasm-1.2.0 ) x86? ( >=dev-lang/yasm-1.2.0 ) x86-fbsd? ( >=dev-lang/yasm-1.2.0 ) virtual/pkgconfig dev-vcs/git
+DESCRIPTION=A free commandline encoder for X264/AVC streams
+LICENSE=GPL-2
+IUSE=10bit avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads
+REQUIRED_USE=ffmpegsource? ( ffmpeg )
+HOMEPAGE=http://www.videolan.org/developers/x264.html
+RDEPEND=ffmpeg? ( virtual/ffmpeg ) ~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.4.1_pre20060122 )

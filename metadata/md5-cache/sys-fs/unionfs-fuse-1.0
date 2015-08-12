@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=c5570e482d12f9b22128e4fd874124e3
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=sys-fs/fuse
+DESCRIPTION=Self-syncing tree-merging file system based on FUSE
+LICENSE=BSD
+SRC_URI=https://github.com/rpodgorny/unionfs-fuse/archive/v1.0.tar.gz -> unionfs-fuse-1.0.tar.gz
+KEYWORDS=~amd64 ~x86 ~x86-linux
+HOMEPAGE=https://github.com/rpodgorny/unionfs-fuse
+RDEPEND=sys-fs/fuse

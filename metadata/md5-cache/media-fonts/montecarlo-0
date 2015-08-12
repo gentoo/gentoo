@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=13f7bb5658bec83b86f336b2a22e549
+SLOT=0
+DEFINED_PHASES=install postinst postrm setup
+EAPI=4
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=monospace font, created by programmers, for programmers
+LICENSE=public-domain
+IUSE=bdf X
+SRC_URI=http://www.bok.net/MonteCarlo/downloads/MonteCarlo-PCF.tgz bdf? ( http://www.bok.net/MonteCarlo/downloads/MonteCarlo-BDF.tgz )
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.bok.net/MonteCarlo/

@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=16d9f2b194ec57729958d7c757c62726
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=0
+DESCRIPTION=Dictionary files for the Migemo and C/Migemo
+LICENSE=GPL-2
+IUSE=unicode
+SRC_URI=mirror://gentoo/migemo-dict-200812.tar.bz2
+KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://openlab.ring.gr.jp/skk/dic.html

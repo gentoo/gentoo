@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=1977bfd09243c122544ae7388d7234a0
+SLOT=0
+DEFINED_PHASES=install
+EAPI=2
+DEPEND=net-im/pidgin media-sound/rhythmbox >=x11-libs/gtk+-2.4:2 dev-libs/dbus-glib
+DESCRIPTION=automatically update your pidgin profile with current info from Rhythmbox
+LICENSE=GPL-2
+SRC_URI=http://jon.oberheide.org/pidgin-rhythmbox/downloads/pidgin-rhythmbox-2.0.tar.gz
+KEYWORDS=amd64 ~sparc x86
+HOMEPAGE=http://jon.oberheide.org/pidgin-rhythmbox/
+RDEPEND=net-im/pidgin media-sound/rhythmbox >=x11-libs/gtk+-2.4:2 dev-libs/dbus-glib

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	systemd	6b4f0cefa642270eded7e6ca816fd181	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=b14f3fe23a7ec3ac85dbd35b3929d23d
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare
+EAPI=5
+DEPEND=ssl? ( dev-libs/openssl ) sys-devel/flex sys-devel/bison pam? ( virtual/pam ) virtual/pkgconfig
+DESCRIPTION=a utility for monitoring and managing daemons or similar programs running on a Unix system
+LICENSE=GPL-3
+IUSE=pam ssl
+SRC_URI=http://mmonit.com/monit/dist/monit-5.8.1.tar.gz
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux
+HOMEPAGE=http://mmonit.com/monit/
+RDEPEND=ssl? ( dev-libs/openssl )

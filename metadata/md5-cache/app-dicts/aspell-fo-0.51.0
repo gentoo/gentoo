@@ -1,0 +1,12 @@
+_eclasses_=aspell-dict	6df2ba61a621be13d44ec68128cc1343
+_md5_=f015f72393532a1c5c286f90b711e638
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=>=app-text/aspell-0.50
+DESCRIPTION=Faroese language dictionary for aspell
+LICENSE=GPL-2
+SRC_URI=mirror://gnu/aspell/dict/fo/aspell-fo-0.51-0.tar.bz2
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+HOMEPAGE=http://aspell.net
+RDEPEND=>=app-text/aspell-0.50

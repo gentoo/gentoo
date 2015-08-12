@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=79b24d960c49f2e505187a70f200bdf
+SLOT=0
+DEFINED_PHASES=configure postinst postrm preinst prepare
+EAPI=4
+DEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.16:2 dev-libs/libxml2:2 >=media-libs/libmpd-11.8 net-libs/libsoup:2.4 >=x11-libs/gtk+-2.18:2 x11-libs/libX11 x11-themes/hicolor-icon-theme unique? ( dev-libs/libunique:1 ) xspf? ( >=media-libs/libxspf-1.2 ) || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) app-text/gnome-doc-utils >=dev-util/gob-2.0.17 virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=A GTK+2 client for the Music Player Daemon
+LICENSE=GPL-2
+IUSE=nls xspf +unique
+SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/gmpc-11.8.16.tar.gz
+KEYWORDS=amd64 ppc x86
+HOMEPAGE=http://gmpc.wikia.com/wiki/Gnome_Music_Player_Client
+RDEPEND=dev-db/sqlite:3 >=dev-libs/glib-2.16:2 dev-libs/libxml2:2 >=media-libs/libmpd-11.8 net-libs/libsoup:2.4 >=x11-libs/gtk+-2.18:2 x11-libs/libX11 x11-themes/hicolor-icon-theme unique? ( dev-libs/libunique:1 ) xspf? ( >=media-libs/libxspf-1.2 )

@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=54432733124a6e1f946c6ab7ca5cd689
+SLOT=0
+DEFINED_PHASES=install
+EAPI=4
+DESCRIPTION=Shows status of logical drives attached to HP SmartArray controllers
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/cciss/cciss_vol_status-1.09.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://cciss.sourceforge.net/#cciss_utils

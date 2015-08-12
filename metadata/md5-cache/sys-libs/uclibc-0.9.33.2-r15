@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	portability	3a50b3ec310b86914f98babecc8f89c6	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	savedconfig	7de7daa586f6bf361639e77d6f2299db	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2b638cf02efdf1ac3373539137e99fe3
+SLOT=0
+DEFINED_PHASES=compile install postinst setup test unpack
+EAPI=0
+DESCRIPTION=C library for developing embedded Linux systems
+LICENSE=LGPL-2
+IUSE=debug hardened iconv ipv6 nptl rpc ssp uclibc-compat wordexp crosscompile_opts_headers-only savedconfig
+RESTRICT=strip
+SRC_URI=http://uclibc.org/downloads/uClibc-0.9.33.2.tar.bz2 mirror://gentoo/uClibc-0.9.33.2-patches-17.tar.bz2
+KEYWORDS=-* amd64 arm m68k ~mips ppc sh sparc x86
+HOMEPAGE=http://www.uclibc.org/

@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=871f23649d6da0192adb2ce1338a6da4
+SLOT=0/4.0
+DEFINED_PHASES=configure install
+EAPI=5
+DEPEND=>=net-libs/libosip-4.0.0:= ssl? ( dev-libs/openssl )
+DESCRIPTION=library that hides the complexity of using the SIP protocol for multimedia session establishement
+LICENSE=GPL-2
+IUSE=+srv ssl
+SRC_URI=http://download.savannah.nongnu.org/releases/exosip/libeXosip2-4.0.0.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86 ~ppc-macos ~x86-macos
+HOMEPAGE=http://savannah.nongnu.org/projects/exosip/
+RDEPEND=>=net-libs/libosip-4.0.0:= ssl? ( dev-libs/openssl )

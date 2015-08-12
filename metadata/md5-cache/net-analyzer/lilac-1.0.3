@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=cf8fb9267eb07ee21e0fbc21cff6dca6
+SLOT=1.0.3
+DEFINED_PHASES=install postinst prerm setup
+EAPI=5
+DEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web-based configuration tool written to configure Nagios
+LICENSE=GPL-2
+IUSE=vhosts
+SRC_URI=mirror://gentoo/lilac-1.0.3.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.lilacplatform.com
+RDEPEND=>=dev-php/PEAR-PEAR-1.6.1 >=net-analyzer/nagios-3.0 >=virtual/mysql-5.0 dev-lang/php[curl,json,mysql,pcntl,pdo,posix,simplexml] virtual/httpd-php >=app-admin/webapp-config-1.50.15

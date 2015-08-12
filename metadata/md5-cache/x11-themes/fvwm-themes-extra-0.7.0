@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=e98d379d6d3ecba4ba34cc73f6b7da6f
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Extra themes for fvwm-themes
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/fvwm-themes/fvwm-themes-extra-0.7.0.tar.bz2
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
+HOMEPAGE=http://fvwm-themes.sourceforge.net/
+RDEPEND=x11-themes/fvwm-themes

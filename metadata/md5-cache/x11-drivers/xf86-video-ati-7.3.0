@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	xorg-2	eea8dd526d72948be85a9628c00694d4	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=29090576d0f2f86af137dab2ebf04872
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare pretend setup test unpack
+EAPI=5
+DEPEND=>=x11-libs/libdrm-2.4.46[video_cards_radeon] glamor? ( >=x11-libs/glamor-0.6 ) udev? ( virtual/udev ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig x11-proto/xf86driproto x11-proto/glproto x11-proto/dri2proto x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/videoproto x11-proto/xextproto x11-proto/xineramaproto x11-proto/xproto x11-base/xorg-server[-minimal] x11-libs/libdrm x11-base/xorg-server[xorg] x11-libs/libpciaccess
+DESCRIPTION=ATI video driver
+LICENSE=MIT
+IUSE=+glamor udev
+SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-video-ati-7.3.0.tar.bz2
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+HOMEPAGE=http://xorg.freedesktop.org/
+RDEPEND=>=x11-libs/libdrm-2.4.46[video_cards_radeon] glamor? ( >=x11-libs/glamor-0.6 ) udev? ( virtual/udev ) x11-base/xorg-server:= x11-base/xorg-server[-minimal] x11-libs/libdrm x11-base/xorg-server[xorg] x11-libs/libpciaccess

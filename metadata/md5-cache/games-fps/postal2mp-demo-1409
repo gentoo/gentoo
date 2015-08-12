@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	unpacker	1ca344bd9b922a7f8084a3fa02933b79	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c52486a118dcf556321521544e419592
+SLOT=0
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+EAPI=5
+DESCRIPTION=You play the Postal Dude: Postal 2 is only as violent as you are
+LICENSE=postal2
+RESTRICT=mirror strip
+SRC_URI=http://treefort.icculus.org/postal2/Postal2STP-FreeMP-linux.tar.bz2 http://0day.icculus.org/postal2/Postal2STP-FreeMP-linux.tar.bz2 http://cyberstalker.dk/sponsored-by-dkchan.org/Postal2STP-FreeMP-linux.tar.bz2
+KEYWORDS=amd64 x86
+HOMEPAGE=http://icculus.org/news/news.php?id=4419
+RDEPEND=sys-libs/glibc sys-libs/libstdc++-v3:5 amd64? ( sys-libs/glibc[multilib] sys-libs/libstdc++-v3:5[multilib] ) >=media-libs/libsdl-1.2.15-r4[X,opengl,abi_x86_32(-)] >=media-libs/openal-1.15.1[abi_x86_32(-)] games-misc/games-envd

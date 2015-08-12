@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=bb20e70fc4c04e0f2a30b0bd7ff6dc6b
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=4
+DEPEND=all_sfx? ( app-arch/unrar )
+DESCRIPTION=RAR compressor/uncompressor
+LICENSE=RAR
+IUSE=all_sfx static
+SRC_URI=x86? ( http://www.rarlab.com/rar/rarlinux-5.2.1.tar.gz ) amd64? ( http://www.rarlab.com/rar/rarlinux-x64-5.2.1.tar.gz ) all_sfx? ( http://www.rarlab.com/rar/rarlinux-5.2.1.tar.gz http://www.rarlab.com/rar/rarlinux-x64-5.2.1.tar.gz http://www.rarlab.com/rar/winrar-x64-521.exe )
+KEYWORDS=-* amd64 x86
+HOMEPAGE=http://www.rarsoft.com/
+RDEPEND=sys-libs/glibc

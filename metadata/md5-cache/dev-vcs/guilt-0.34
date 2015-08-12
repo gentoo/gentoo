@@ -1,0 +1,14 @@
+_eclasses_=
+_md5_=29c81f0445e47dd71aef564320347e97
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DEPEND=dev-vcs/git doc? ( app-text/asciidoc app-text/xmlto )
+DESCRIPTION=A series of bash scripts which add a quilt-like interface to git
+LICENSE=GPL-2
+IUSE=doc
+RESTRICT=test
+SRC_URI=mirror://kernel/linux/kernel/people/jsipek/guilt/guilt-0.34.tar.bz2 mirror://gentoo/guilt-manpages-0.34.tar.bz2
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86
+HOMEPAGE=http://www.kernel.org/pub/linux/kernel/people/jsipek/guilt/
+RDEPEND=dev-vcs/git

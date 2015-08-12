@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=8c06cc67065b9a83034c3e8a0ca798fb
+SLOT=0
+DEFINED_PHASES=install
+EAPI=2
+DESCRIPTION=Themes for the Murrine GTK+2 Cairo Engine
+LICENSE=GPL-2
+SRC_URI=http://www.cimitan.com/murrine/files/MurrinaAquaIsh.tar.bz2 http://www.cimitan.com/murrine/files/MurrinaBlu-0.32.tar.gz http://www.cimitan.com/murrine/files/MurrinaCandido.tar.gz http://www.cimitan.com/murrine/files/MurrinaGilouche.tar.bz2 http://www.cimitan.com/murrine/files/MurrinaFancyCandy.tar.bz2 http://www.cimitan.com/murrine/files/MurrinaLoveGray.tar.bz2 http://www.cimitan.com/murrine/files/MurrineThemePack.tar.bz2 http://www.cimitan.com/murrine/files/MurrinaVerdeOlivo.tar.bz2 http://www.cimitan.com/murrine/files/MurrineXfwm.tar.bz2 http://www.cimitan.com/murrine/files/MurrinaCream.tar.gz http://www.cimitan.com/murrine/files/NOX-svn-r22.tar.gz http://gnome-look.org/CONTENT/content-files/93558-Murreza.tar.gz
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~x86-fbsd
+HOMEPAGE=http://www.cimitan.com/murrine/
+RDEPEND=>=x11-themes/gtk-engines-murrine-0.98.0

@@ -1,0 +1,12 @@
+_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	systemd	6b4f0cefa642270eded7e6ca816fd181	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2bcc3c8517aba1aff67ced197d2b9000
+SLOT=0
+DEFINED_PHASES=compile install postinst setup
+EAPI=4
+DEPEND==dev-lang/python-2.7* virtual/pkgconfig
+DESCRIPTION=Proxy cache for Gentoo packages
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/http-replicator/http-replicator_3.0.tar.gz
+KEYWORDS=~alpha amd64 hppa ppc ~sparc x86
+HOMEPAGE=http://sourceforge.net/projects/http-replicator
+RDEPEND==dev-lang/python-2.7*

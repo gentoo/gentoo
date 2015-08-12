@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	oasis	1f8aac15a40bfb39dd98018626248fe1	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4b2a0d15cc667901f9464941c047def5
+SLOT=0/0.6
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
+DEPEND=virtual/libiconv || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) pcre? ( dev-ml/pcre-ocaml:=[ocamlopt?] ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DESCRIPTION=library for dealing with 'text'
+LICENSE=BSD
+IUSE=pcre +ocamlopt debug doc test
+SRC_URI=http://forge.ocamlcore.org/frs/download.php/937/ocaml-text-0.6.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=http://forge.ocamlcore.org/projects/ocaml-text/
+RDEPEND=virtual/libiconv || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) pcre? ( dev-ml/pcre-ocaml:=[ocamlopt?] ) >=dev-lang/ocaml-3.12:=[ocamlopt?]

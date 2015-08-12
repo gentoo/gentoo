@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=486dcd670b32be9aa39f6a768e899e69
+SLOT=0
+DEFINED_PHASES=install postinst prepare
+EAPI=5
+DESCRIPTION=Core Rule Set for ModSecurity
+LICENSE=Apache-2.0
+IUSE=lua geoip
+SRC_URI=https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/2.2.7.tar.gz -> modsecurity-crs-2.2.7.tar.gz
+KEYWORDS=amd64 ppc sparc x86
+HOMEPAGE=http://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project
+RDEPEND=>=www-apache/mod_security-2.7[lua?,geoip?]

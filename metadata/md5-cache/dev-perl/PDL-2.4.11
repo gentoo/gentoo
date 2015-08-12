@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=6659a1d7430f0dd426764b7dcfd37266
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare prerm setup test unpack
+EAPI=5
+DEPEND=sys-libs/ncurses app-arch/sharutils dev-perl/Astro-FITS-Header dev-perl/File-Map dev-perl/Inline dev-perl/OpenGL dev-perl/TermReadKey || ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu ) virtual/perl-Data-Dumper virtual/perl-Pod-Parser virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/Filter virtual/perl-Storable virtual/perl-Text-Balanced fftw? ( sci-libs/fftw:2.1 ) gd? ( media-libs/gd ) gsl? ( sci-libs/gsl ) hdf? ( sci-libs/hdf ) netpbm? ( media-libs/netpbm virtual/ffmpeg ) pdl2? ( dev-perl/Devel-REPL ) pgplot? ( dev-perl/PGPLOT ) plplot? ( sci-libs/plplot ) fortran? ( >=dev-perl/ExtUtils-F77-1.13 ) dev-lang/perl:=[-build(-)] fortran? ( virtual/fortran )
+DESCRIPTION=Perl Data Language for scientific computing
+LICENSE=|| ( Artistic GPL-1+ ) public-domain PerlDL
+IUSE=+badval doc fftw fortran gd gsl hdf netpbm pdl2 pgplot plplot threads
+REQUIRED_USE=plplot? ( badval )
+SRC_URI=mirror://cpan/authors/id/C/CH/CHM/PDL-2.4.11.tar.gz
+KEYWORDS=amd64 arm ppc x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://search.cpan.org/dist/PDL/
+RDEPEND=sys-libs/ncurses app-arch/sharutils dev-perl/Astro-FITS-Header dev-perl/File-Map dev-perl/Inline dev-perl/OpenGL dev-perl/TermReadKey || ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu ) virtual/perl-Data-Dumper virtual/perl-Pod-Parser virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/Filter virtual/perl-Storable virtual/perl-Text-Balanced fftw? ( sci-libs/fftw:2.1 ) gd? ( media-libs/gd ) gsl? ( sci-libs/gsl ) hdf? ( sci-libs/hdf ) netpbm? ( media-libs/netpbm virtual/ffmpeg ) pdl2? ( dev-perl/Devel-REPL ) pgplot? ( dev-perl/PGPLOT ) plplot? ( sci-libs/plplot ) dev-lang/perl:=[-build(-)] fortran? ( virtual/fortran )

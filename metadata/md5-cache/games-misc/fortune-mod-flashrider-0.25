@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=b250f44dfcfc39b20686479f73406317
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=2
+DEPEND=games-misc/fortune-mod
+DESCRIPTION=Quotes from Prolinux articles and comments
+LICENSE=GPL-2
+SRC_URI=http://www.pro-linux.de/files/fortunes-prolinux-0.25.tar.bz2
+KEYWORDS=~amd64 x86
+HOMEPAGE=http://www.pro-linux.de/news/2009/14520.html
+RDEPEND=games-misc/fortune-mod

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=5083bd820d2030789703edc7539cb61d
+SLOT=0
+DEFINED_PHASES=install
+EAPI=2
+DEPEND=>=x11-libs/gtk+-2.2.4:2 virtual/pkgconfig
+DESCRIPTION=GTK2-configuration dialog for xvid4
+LICENSE=GPL-2
+SRC_URI=mirror://gentoo/xvid4conf-1.12.tar.gz
+KEYWORDS=alpha amd64 ~hppa ia64 ppc ppc64 sparc x86
+HOMEPAGE=http://cvs.exit1.org/cgi-bin/viewcvs.cgi/xvid4conf/
+RDEPEND=>=x11-libs/gtk+-2.2.4:2

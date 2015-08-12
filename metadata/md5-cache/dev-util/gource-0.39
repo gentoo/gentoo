@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=12a54100c9ad700e65f295348556b9e1
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=5
+DEPEND=>=dev-libs/boost-1.46:=[threads(+)] >=media-libs/glew-1.5 >=media-libs/libpng-1.2 >=media-libs/libsdl-1.2.10[video,opengl,X] >=media-libs/sdl-image-1.2[jpeg,png] dev-libs/libpcre:3 dev-libs/tinyxml media-fonts/freefont media-libs/freetype:2 media-libs/mesa virtual/glu virtual/jpeg virtual/pkgconfig >=media-libs/glm-0.9.3
+DESCRIPTION=A software version control visualization tool
+LICENSE=GPL-3
+SRC_URI=http://gource.googlecode.com/files/gource-0.39.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://code.google.com/p/gource/
+RDEPEND=>=dev-libs/boost-1.46:=[threads(+)] >=media-libs/glew-1.5 >=media-libs/libpng-1.2 >=media-libs/libsdl-1.2.10[video,opengl,X] >=media-libs/sdl-image-1.2[jpeg,png] dev-libs/libpcre:3 dev-libs/tinyxml media-fonts/freefont media-libs/freetype:2 media-libs/mesa virtual/glu virtual/jpeg

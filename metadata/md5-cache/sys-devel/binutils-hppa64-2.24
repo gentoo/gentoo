@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-binutils	85d6792dbc565dea9a17ee8e31648fba	libtool	7f78cd7d403808a350c9ae23f5821fb4	gnuconfig	3920de1188fc7bfee873515453ed1d10	unpacker	1ca344bd9b922a7f8084a3fa02933b79	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=f7264386a10e58ae5dc92f756118b6a2
+SLOT=2.24
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+EAPI=4
+DEPEND=>=sys-devel/patch-2.6.1 sys-devel/gnuconfig >=sys-devel/binutils-config-3 zlib? ( sys-libs/zlib ) test? ( dev-util/dejagnu ) nls? ( sys-devel/gettext ) sys-devel/flex virtual/yacc
+DESCRIPTION=binutils package for building 64bit kernels on HPPA
+LICENSE=|| ( GPL-3 LGPL-3 )
+IUSE=cxx multislot multitarget nls static-libs test vanilla zlib
+SRC_URI=mirror://gnu/binutils/binutils-2.24.tar.bz2 mirror://gentoo/binutils-2.24-patches-1.4.tar.xz http://dev.gentoo.org/~vapier/dist/binutils-2.24-patches-1.4.tar.xz
+KEYWORDS=-* hppa
+HOMEPAGE=http://sourceware.org/binutils/
+RDEPEND=>=sys-devel/binutils-config-3 zlib? ( sys-libs/zlib )

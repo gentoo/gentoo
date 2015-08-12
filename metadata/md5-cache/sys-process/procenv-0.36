@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=c1b484a06a4463917d7f8c8247a7db87
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=A command-line utility that simply dumps all attributes of its environment
+LICENSE=GPL-3
+SRC_URI=https://launchpad.net/procenv/trunk/0.36/+download/procenv-0.36.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://launchpad.net/procenv/

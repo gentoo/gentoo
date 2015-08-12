@@ -1,0 +1,11 @@
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_md5_=478e4f8438f67cbfb0a3f6a0750ec148
+SLOT=0
+DEFINED_PHASES=install unpack
+EAPI=4
+DEPEND=dev-vcs/git
+DESCRIPTION=Rules for Sagan log analyzer
+LICENSE=BSD
+IUSE=+lognorm
+PDEPEND=app-admin/sagan
+HOMEPAGE=http://sagan.softwink.com/

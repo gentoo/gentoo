@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	perl-app	f4e5d7e4162790fd8dca8dafe5a2eadf	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=3645bad2c748d35e3806bd76c3e1a366
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+EAPI=5
+DEPEND=app-arch/unzip dev-perl/DateTime dev-perl/Digest-CRC dev-perl/DateTime dev-perl/Carp-Assert dev-perl/Data-Hexify dev-lang/perl[-build(-)] dev-lang/perl[-build(-)]
+DESCRIPTION=Read, decode and dump Windows Vista/2008/7 event log file
+LICENSE=GPL-2
+SRC_URI=http://computer.forensikblog.de/files/evtx/Parse-Evtx-1.1.1.zip
+KEYWORDS=amd64 x86
+HOMEPAGE=http://computer.forensikblog.de/en/topics/windows/vista_event_log
+RDEPEND=app-arch/unzip dev-perl/DateTime dev-perl/Digest-CRC dev-perl/DateTime dev-perl/Carp-Assert dev-perl/Data-Hexify dev-lang/perl[-build(-)] dev-lang/perl[-build(-)]

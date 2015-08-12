@@ -1,0 +1,14 @@
+_eclasses_=ruby-ng	497a8201c1d4a4129a8ac57a2bf2abb5	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-utils	97c910cb6b087c64260df641a9b3de0c	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=dc38e821f88210c46d846ba4271165
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup test unpack
+EAPI=4
+DEPEND=>=dev-libs/openssl-0.9.8e-r3:0 >=sys-libs/ncurses-5.6-r2 virtual/libiconv archive? ( app-arch/libarchive ) perl? ( >=dev-lang/perl-5.8.8-r2 ) tcl? ( dev-lang/tcl:0 ) socks5? ( net-proxy/dante ) ruby? ( ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ) valgrind? ( dev-util/valgrind ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Epic5 IRC Client
+LICENSE=BSD
+IUSE=archive ipv6 perl tcl ruby socks5 valgrind elibc_FreeBSD ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22
+REQUIRED_USE=ruby? ( ^^ ( ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ) ) ruby_targets_ruby20? ( ruby ) ruby_targets_ruby21? ( ruby ) ruby_targets_ruby22? ( ruby )
+SRC_URI=ftp://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/epic5-1.1.10.tar.bz2
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://epicsol.org/
+RDEPEND=>=dev-libs/openssl-0.9.8e-r3:0 >=sys-libs/ncurses-5.6-r2 virtual/libiconv archive? ( app-arch/libarchive ) perl? ( >=dev-lang/perl-5.8.8-r2 ) tcl? ( dev-lang/tcl:0 ) socks5? ( net-proxy/dante ) ruby? ( ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) )

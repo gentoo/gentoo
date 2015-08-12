@@ -1,0 +1,12 @@
+_eclasses_=mount-boot	41ed556fa5641393d5323e421c8e5bcf
+_md5_=e99d9027239e0c1a70bde69db47d9b4b
+SLOT=0
+DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+EAPI=5
+DESCRIPTION=LSI MPT-SAS2 controller management tool
+LICENSE=LSI
+IUSE=efi doc
+RESTRICT=strip fetch mirror
+SRC_URI=http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/Host%20Bus%20Adapters%20Common%20Files/SAS_SATA_6G_P19/SAS2IRCU_P19.zip doc? ( http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/Host%20Bus%20Adapters%20Common%20Files/SAS_SATA_6G_P12/SAS2IRCU_User_Guide.pdf )
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd ~ppc64 ~amd64-fbsd ~sparc-solaris ~x64-solaris ~x86-solaris
+HOMEPAGE=http://www.lsi.com/support/Pages/download-results.aspx?component=Storage+Component&productfamily=Host+Bus+Adapters&productcode=0&assettype=Miscellaneous&productname=&keyword=SAS2IRCU

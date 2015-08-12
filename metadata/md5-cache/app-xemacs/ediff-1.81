@@ -1,0 +1,11 @@
+_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
+_md5_=eeadbe1a0afaa58f3e10d076b47af9c6
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DESCRIPTION=Interface over GNU patch
+LICENSE=GPL-2
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/ediff-1.81-pkg.tar.gz
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+HOMEPAGE=http://xemacs.org/
+RDEPEND=app-xemacs/pcl-cvs app-xemacs/elib app-xemacs/dired app-xemacs/xemacs-base app-xemacs/edebug app-xemacs/prog-modes app-xemacs/gnus app-xemacs/tramp app-xemacs/vc app-editors/xemacs

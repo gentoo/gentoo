@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e3beaa850045a59dadf1299b84e7f7c1
+SLOT=0
+DEFINED_PHASES=configure prepare unpack
+EAPI=5
+DEPEND=dev-libs/boost:= media-libs/netpbm x11-libs/fltk:1[opengl] app-text/ghostscript-gpl virtual/glu sys-apps/groff !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Interactive plotting program
+LICENSE=GPL-3
+SRC_URI=http://nsweb.tn.tudelft.nl/gitweb/?p=spyview.git;a=snapshot;h=879615fcc662e8572f99854557010d014bb4651e;sf=tgz -> spyview-20130823.tgz
+KEYWORDS=~x86
+HOMEPAGE=http://kavli.nano.tudelft.nl/~gsteele/spyview/
+RDEPEND=dev-libs/boost:= media-libs/netpbm x11-libs/fltk:1[opengl] app-text/ghostscript-gpl virtual/glu sci-visualization/gnuplot

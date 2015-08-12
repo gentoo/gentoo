@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	pax-utils	a472fe09c2264598d61d4887809e6016	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=4b8aa3d69e1fd769e8d3d5de332cf8b1
+SLOT=0
+DEFINED_PHASES=compile install prepare setup test
+EAPI=4
+DEPEND=sys-libs/zlib !minimal? ( >=dev-libs/openssl-0.9.7:0 ) mpi? ( virtual/mpi ) cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit ) opencl? ( virtual/opencl )
+DESCRIPTION=fast password cracker
+LICENSE=GPL-2
+IUSE=cuda custom-cflags -minimal cpu_flags_x86_mmx mpi opencl openmp cpu_flags_x86_sse2
+REQUIRED_USE=openmp? ( !minimal ) mpi? ( !minimal ) cuda? ( !minimal ) opencl? ( !minimal )
+SRC_URI=http://www.openwall.com/john/g/john-1.7.9.tar.bz2 !minimal? ( http://www.openwall.com/john/g/john-1.7.9-jumbo-7.diff.gz )
+KEYWORDS=alpha amd64 arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://www.openwall.com/john/
+RDEPEND=sys-libs/zlib !minimal? ( >=dev-libs/openssl-0.9.7:0 ) mpi? ( virtual/mpi ) cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit ) opencl? ( virtual/opencl )

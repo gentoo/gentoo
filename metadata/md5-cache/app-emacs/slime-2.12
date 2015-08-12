@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	elisp	484004c25306120b472b7dfdb0685c95	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c43dca909556a24f5390cd0fa5b6d20f
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+EAPI=5
+DEPEND=virtual/commonlisp dev-lisp/asdf >=sys-apps/texinfo-5.1 doc? ( virtual/texi2dvi ) >=virtual/emacs-23
+DESCRIPTION=SLIME, the Superior Lisp Interaction Mode (Extended)
+LICENSE=GPL-2 xref? ( xref.lisp )
+IUSE=doc xref
+RESTRICT=test
+PDEPEND=virtual/commonlisp
+SRC_URI=https://github.com/slime/slime/archive/v2.12.tar.gz -> slime-2.12.tar.gz
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+HOMEPAGE=http://common-lisp.net/project/slime/
+RDEPEND=virtual/commonlisp dev-lisp/asdf >=virtual/emacs-23

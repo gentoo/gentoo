@@ -1,0 +1,14 @@
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	flag-o-matic	2090c5a622458303e6bf68837ac6b96	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	check-reqs	b27570870865543b1c55261abb19533a	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	libtool	7f78cd7d403808a350c9ae23f5821fb4	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e71109a825fecddade3f3b6dc0c5db65
+SLOT=6.6.0
+DEFINED_PHASES=configure install postinst preinst prepare pretend setup
+EAPI=5
+DEPEND=app-eselect/eselect-opencascade dev-lang/tcl:0= dev-lang/tk:0= dev-tcltk/itcl dev-tcltk/itk dev-tcltk/tix media-libs/ftgl virtual/glu virtual/opengl x11-libs/libXmu freeimage? ( media-libs/freeimage ) gl2ps? ( x11-libs/gl2ps ) java? ( virtual/jdk:= ) tbb? ( dev-cpp/tbb ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+LICENSE=Open-CASCADE-Technology-Public-License-6.6
+IUSE=debug doc examples freeimage gl2ps java qt4 +tbb elibc_FreeBSD java
+RESTRICT=bindist mirror
+SRC_URI=http://files.opencascade.com/OCCT/OCC_6.6.0_release/OpenCASCADE660.tgz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.opencascade.org/
+RDEPEND=app-eselect/eselect-opencascade dev-lang/tcl:0= dev-lang/tk:0= dev-tcltk/itcl dev-tcltk/itk dev-tcltk/tix media-libs/ftgl virtual/glu virtual/opengl x11-libs/libXmu freeimage? ( media-libs/freeimage ) gl2ps? ( x11-libs/gl2ps ) java? ( virtual/jdk:= ) tbb? ( dev-cpp/tbb ) java? ( >=dev-java/java-config-2.2.0 )

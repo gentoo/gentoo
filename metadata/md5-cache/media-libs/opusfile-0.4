@@ -1,0 +1,14 @@
+_eclasses_=
+_md5_=7738acc21b94fca7fd3bd2cd6b3eceea
+SLOT=0
+DEFINED_PHASES=configure
+EAPI=5
+DEPEND=media-libs/libogg media-libs/opus http? ( dev-libs/openssl ) doc? ( app-doc/doxygen )
+DESCRIPTION=A high-level decoding and seeking API for .opus files
+LICENSE=BSD
+IUSE=doc fixed-point +float +http static-libs
+REQUIRED_USE=^^ ( fixed-point float )
+SRC_URI=http://downloads.xiph.org/releases/opus/opusfile-0.4.tar.gz
+KEYWORDS=amd64 ~hppa ~ppc x86
+HOMEPAGE=http://www.opus-codec.org/
+RDEPEND=media-libs/libogg media-libs/opus http? ( dev-libs/openssl )

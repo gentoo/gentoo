@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=e2b2fe25c1aea25bc5355a912eec844d
+SLOT=0
+DEFINED_PHASES=compile install unpack
+EAPI=0
+DEPEND=emacs? ( virtual/emacs ) nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=Fast, high-capacity, identifier database tool
+LICENSE=GPL-2
+IUSE=emacs nls
+SRC_URI=mirror://gnu/idutils/idutils-4.2.tar.gz mirror://debian/pool/main/i/id-utils/id-utils_4.2-1.diff.gz
+KEYWORDS=~x86 ~amd64
+HOMEPAGE=http://www.gnu.org/software/idutils/
+RDEPEND=emacs? ( virtual/emacs ) nls? ( virtual/libintl )

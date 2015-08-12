@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=87dba6745f283aca99271a66ae554d95
+SLOT=0
+DEFINED_PHASES=compile configure install
+EAPI=2
+DESCRIPTION=Small footprint implementation of Tcl programming language
+LICENSE=LGPL-2
+IUSE=static-libs
+SRC_URI=http://dev.gentoo.org/~hwoarang/distfiles/jimtcl-0.70_pre20110317.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://jim.berlios.de/

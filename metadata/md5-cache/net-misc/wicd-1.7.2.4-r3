@@ -1,0 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=f838115da85673d17373bef48b18ca1f
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare setup test
+EAPI=5
+DEPEND=nls? ( dev-python/Babel ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses?,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig
+DESCRIPTION=A lightweight wired and wireless network manager for Linux
+LICENSE=GPL-2
+IUSE=doc X ambiance +gtk ioctl libnotify mac4lin ncurses nls +pm-utils python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SRC_URI=http://launchpad.net/wicd/1.7/1.7.2.4/+download/wicd-1.7.2.4.tar.gz mac4lin? ( http://dev.gentoo.org/~anarchy/dist/wicd-mac4lin-icons.tar.xz ) ambiance? ( http://freetimesblog.altervista.org/blog/wp-content/uploads/downloads/2010/05/Icone-Wicd-Lucid.tar.gz )
+KEYWORDS=amd64 ~arm ~mips ppc ppc64 x86
+HOMEPAGE=https://launchpad.net/wicd
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses?,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] X? ( gtk? ( dev-python/pygtk ) || ( x11-misc/ktsuss x11-libs/gksu kde-apps/kdesu ) ) || ( net-misc/dhcpcd net-misc/dhcp net-misc/pump ) net-wireless/wireless-tools net-wireless/wpa_supplicant || ( sys-apps/net-tools sys-apps/ethtool ) !gtk? ( dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ioctl? ( dev-python/python-iwscan dev-python/python-wpactrl ) libnotify? ( dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ncurses? ( dev-python/urwid dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) pm-utils? ( sys-power/pm-utils ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses?,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

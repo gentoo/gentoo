@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=c97c871afa594541d4c25fe795d17962
+SLOT=0/0
+DEFINED_PHASES=compile configure install prepare setup test
+EAPI=5
+DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) fingerprint? ( media-libs/libsamplerate sci-libs/fftw:3.0 qt4? ( dev-qt/qtsql:4 ) qt5? ( dev-qt/qtsql:5 ) ) test? ( qt4? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Collection of libraries to integrate Last.fm services
+LICENSE=GPL-3
+IUSE=fingerprint test +qt4 qt5
+REQUIRED_USE=|| ( qt4 qt5 )
+RESTRICT=test
+SRC_URI=https://github.com/lastfm/liblastfm/archive/1.0.9.tar.gz -> liblastfm-1.0.9.tar.gz
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=https://github.com/lastfm/liblastfm
+RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) fingerprint? ( media-libs/libsamplerate sci-libs/fftw:3.0 qt4? ( dev-qt/qtsql:4 ) qt5? ( dev-qt/qtsql:5 ) ) !<media-libs/lastfmlib-0.4.0

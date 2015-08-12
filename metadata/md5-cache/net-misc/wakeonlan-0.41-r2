@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	perl-app	f4e5d7e4162790fd8dca8dafe5a2eadf	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=ac5f8e7ed1a81dcf987d28710fa05b0e
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
+DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl[-build(-)]
+DESCRIPTION=Client for Wake-On-LAN
+LICENSE=Artistic GPL-2
+SRC_URI=http://gsd.di.uminho.pt/jpo/software/wakeonlan/downloads/wakeonlan-0.41.tar.gz
+KEYWORDS=amd64 arm ppc sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux
+HOMEPAGE=http://gsd.di.uminho.pt/jpo/software/wakeonlan/
+RDEPEND=dev-lang/perl[-build(-)]

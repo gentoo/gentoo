@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=bcdf51b6f08f73b75ce028939b0ce05d
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare
+EAPI=5
+DEPEND=!sys-apps/module-init-tools !sys-apps/modutils !<sys-apps/openrc-0.13.8 !<sys-apps/systemd-216-r3 lzma? ( >=app-arch/xz-utils-5.0.4-r1 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zlib? ( >=sys-libs/zlib-1.2.6 ) doc? ( dev-util/gtk-doc ) lzma? ( virtual/pkgconfig ) python? ( dev-python/cython[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] virtual/pkgconfig ) zlib? ( virtual/pkgconfig )
+DESCRIPTION=library and tools for managing linux kernel modules
+LICENSE=LGPL-2
+IUSE=debug doc lzma python static-libs +tools zlib python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 ) )
+RESTRICT=test
+SRC_URI=mirror://kernel/linux/utils/kernel/kmod/kmod-20.tar.xz
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+HOMEPAGE=http://git.kernel.org/?p=utils/kernel/kmod/kmod.git
+RDEPEND=!sys-apps/module-init-tools !sys-apps/modutils !<sys-apps/openrc-0.13.8 !<sys-apps/systemd-216-r3 lzma? ( >=app-arch/xz-utils-5.0.4-r1 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zlib? ( >=sys-libs/zlib-1.2.6 )

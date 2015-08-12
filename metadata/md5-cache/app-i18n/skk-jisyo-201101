@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=c88cacb24f92cb1510cdef90020c02cf
+SLOT=0
+DEFINED_PHASES=compile install prepare
+EAPI=3
+DEPEND=cdb? ( dev-db/cdb ) sys-apps/gawk
+DESCRIPTION=Jisyo (dictionary) files for the SKK Japanese-input software
+LICENSE=GPL-2 public-domain freedist
+IUSE=cdb
+SRC_URI=mirror://gentoo/skk-jisyo-201101.tar.bz2
+KEYWORDS=amd64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+HOMEPAGE=http://openlab.ring.gr.jp/skk/dic.html
+RDEPEND=cdb? ( dev-db/cdb ) !app-i18n/skk-jisyo-extra !app-i18n/skk-jisyo-cdb

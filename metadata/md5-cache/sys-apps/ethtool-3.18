@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=ce739b002809b29f51a105e5ad4daae
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Utility for examining and tuning ethernet-based network interfaces
+LICENSE=GPL-2
+SRC_URI=mirror://kernel/software/network/ethtool/ethtool-3.18.tar.xz
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86
+HOMEPAGE=http://www.kernel.org/pub/software/network/ethtool/

@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=fb94074fda786aa0bd8b84fbe2fd7ad7
+SLOT=0
+DEFINED_PHASES=install postinst
+EAPI=4
+DESCRIPTION=Script to create html and text report about your system
+LICENSE=GPL-2
+SRC_URI=mirror://gentoo/recursos-2.0.tbz2
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.josealberto.org
+RDEPEND=|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) app-shells/bash net-analyzer/rrdtool[graph]

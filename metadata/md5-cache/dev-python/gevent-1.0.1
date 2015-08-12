@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=4dd135bf8cce3e80e17b10ece1fe1e97
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=dev-libs/libev net-dns/c-ares >=dev-python/greenlet-0.3.2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] doc? ( dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Python networking library that uses greenlet to provide synchronous API
+LICENSE=MIT
+IUSE=doc examples python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=test
+SRC_URI=https://github.com/surfly/gevent/releases/download/1.0.1/gevent-1.0.1.tar.gz
+KEYWORDS=amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://gevent.org/ http://pypi.python.org/pypi/gevent/
+RDEPEND=dev-libs/libev net-dns/c-ares >=dev-python/greenlet-0.3.2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

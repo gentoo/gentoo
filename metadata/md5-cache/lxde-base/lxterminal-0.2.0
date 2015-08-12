@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=2847d23a1a43b49afb2d85908d1b8faa
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=x11-libs/gtk+:2 dev-libs/glib:2 x11-libs/vte:0 virtual/pkgconfig sys-devel/gettext >=dev-util/intltool-0.40.0
+DESCRIPTION=Lightweight vte-based tabbed terminal emulator for LXDE
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/lxde/lxterminal-0.2.0.tar.gz
+KEYWORDS=~alpha ~amd64 ~arm ~mips ~ppc ~x86 ~x86-interix ~amd64-linux ~arm-linux ~x86-linux
+HOMEPAGE=http://lxde.sf.net/
+RDEPEND=x11-libs/gtk+:2 dev-libs/glib:2 x11-libs/vte:0

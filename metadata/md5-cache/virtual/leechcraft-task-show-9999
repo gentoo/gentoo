@@ -1,0 +1,7 @@
+_eclasses_=
+_md5_=cabbf4061f113883fbd705bc73916075
+SLOT=0
+DEFINED_PHASES=-
+EAPI=4
+DESCRIPTION=Virtual for plugins that can show IDownloads and IJobHolders
+RDEPEND=app-leechcraft/lc-summary

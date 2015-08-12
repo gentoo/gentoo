@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=8a24489ef6deb9bfb5dc1ce7ed8b489
+SLOT=0
+DEFINED_PHASES=compile configure install prepare setup test unpack
+EAPI=5
+DEPEND=opengl? ( media-libs/lcms:2 >=media-libs/openimageio-1.1.0 media-libs/glew media-libs/freeglut virtual/opengl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) =dev-cpp/yaml-cpp-0.3* dev-libs/tinyxml doc? ( pdf? ( dev-python/sphinx[latex,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) !pdf? ( dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A color management framework for visual effects and animation
+LICENSE=BSD
+IUSE=doc opengl pdf python cpu_flags_x86_sse2 test python_targets_python2_7
+REQUIRED_USE=doc? ( python )
+RESTRICT=test
+SRC_URI=https://github.com/imageworks/OpenColorIO/tarball/v1.0.8 -> opencolorio-1.0.8.tar.gz
+KEYWORDS=amd64 x86
+HOMEPAGE=http://opencolorio.org/
+RDEPEND=opengl? ( media-libs/lcms:2 >=media-libs/openimageio-1.1.0 media-libs/glew media-libs/freeglut virtual/opengl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) =dev-cpp/yaml-cpp-0.3* dev-libs/tinyxml

@@ -1,0 +1,12 @@
+_eclasses_=sword-module	a2b0800a67ad11742c7657239b19b20
+_md5_=3907e4916941f9e96577adccebb6ebb9
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=app-arch/unzip
+DESCRIPTION=Bible in Worldwide English
+LICENSE=freedist
+SRC_URI=mirror://gentoo/BWE-1.0.zip
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=BWE
+RDEPEND=app-text/sword

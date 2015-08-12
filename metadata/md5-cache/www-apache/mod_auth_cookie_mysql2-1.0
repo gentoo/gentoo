@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
+_md5_=76f6662b165fc71154f1e98a2df6e002
+SLOT=0
+DEFINED_PHASES=compile install postinst setup
+EAPI=0
+DEPEND=virtual/mysql =www-servers/apache-2.2*
+DESCRIPTION=An Apache2 backend authentication module that uses cookies and MySQL
+LICENSE=GPL-2
+SRC_URI=http://home.digithi.de/digithi/dev/mod_auth_cookie_mysql/mod_auth_cookie_mysql2_1.0.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://home.digithi.de/digithi/dev/mod_auth_cookie_mysql/
+RDEPEND=virtual/mysql =www-servers/apache-2.2*

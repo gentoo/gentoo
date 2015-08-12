@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	prefix	e7f2b9c6e57342e5d25eac22fce23062	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
+_md5_=18c39254e961f1799e6ad5e5408ed52e
+SLOT=0
+DEFINED_PHASES=compile install prepare setup
+EAPI=5
+DEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng:0= X? ( media-libs/fontconfig x11-libs/motif:0= x11-libs/libICE x11-libs/libX11 x11-libs/libXft x11-libs/libXmu x11-libs/libXt )
+DESCRIPTION=Development toolkit and applications for computational biology, including NCBI BLAST
+LICENSE=public-domain
+IUSE=doc static-libs X
+SRC_URI=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.26/ncbi.tar.gz -> ncbi-tools-2.2.26.tar.gz
+KEYWORDS=~alpha amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
+HOMEPAGE=http://www.ncbi.nlm.nih.gov/
+RDEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng:0= X? ( media-libs/fontconfig x11-libs/motif:0= x11-libs/libICE x11-libs/libX11 x11-libs/libXft x11-libs/libXmu x11-libs/libXt )

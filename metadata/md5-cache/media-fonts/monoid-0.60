@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=2e347ae83eb87269170563c19fa6d357
+SLOT=0
+DEFINED_PHASES=compile install postinst postrm setup
+EAPI=5
+DEPEND=media-gfx/fontforge[python] X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Open source coding font
+LICENSE=MIT OFL-1.1
+IUSE=X
+RESTRICT=binchecks strip
+SRC_URI=https://github.com/larsenwork/monoid/archive/0.60.tar.gz -> monoid-0.60.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://larsenwork.com/monoid https://github.com/larsenwork/monoid

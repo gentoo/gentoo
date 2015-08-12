@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	cmake-utils	f474224ef49d530640a43a04ae94928e	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=1778dd76ca162eb84b4b69cf253037c5
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+EAPI=5
+DEPEND=X? ( x11-libs/libX11 x11-libs/libXinerama ) cairo? ( x11-libs/cairo[X] pango? ( x11-libs/pango[X] ) !pango? ( media-libs/fontconfig ) ) dbus? ( sys-apps/dbus ) enchant? ( app-text/enchant ) gtk? ( x11-libs/gtk+:2 dev-libs/glib:2 dev-libs/dbus-glib ) gtk3? ( x11-libs/gtk+:3 dev-libs/glib:2 dev-libs/dbus-glib ) icu? ( dev-libs/icu:= ) introspection? ( dev-libs/gobject-introspection ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc ) qt4? ( dev-qt/qtdbus:4 dev-qt/qtgui:4[glib] ) xml? ( app-text/iso-codes dev-libs/libxml2 x11-libs/libxkbfile ) virtual/libintl virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
+DESCRIPTION=Flexible Contect-aware Input Tool with eXtension support
+LICENSE=GPL-2
+IUSE=+X +autostart +cairo +dbus debug +enchant gtk gtk3 icu introspection lua nls opencc +pango qt4 static-libs +table test +xml
+REQUIRED_USE=cairo? ( X ) gtk? ( X ) gtk3? ( X ) qt4? ( X )
+SRC_URI=http://download.fcitx-im.org/fcitx/fcitx-4.2.8.5_dict.tar.xz
+KEYWORDS=amd64 hppa ppc ppc64 ~x86
+HOMEPAGE=http://fcitx-im.org/
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libXinerama ) cairo? ( x11-libs/cairo[X] pango? ( x11-libs/pango[X] ) !pango? ( media-libs/fontconfig ) ) dbus? ( sys-apps/dbus ) enchant? ( app-text/enchant ) gtk? ( x11-libs/gtk+:2 dev-libs/glib:2 dev-libs/dbus-glib ) gtk3? ( x11-libs/gtk+:3 dev-libs/glib:2 dev-libs/dbus-glib ) icu? ( dev-libs/icu:= ) introspection? ( dev-libs/gobject-introspection ) lua? ( dev-lang/lua:= ) nls? ( sys-devel/gettext ) opencc? ( app-i18n/opencc ) qt4? ( dev-qt/qtdbus:4 dev-qt/qtgui:4[glib] ) xml? ( app-text/iso-codes dev-libs/libxml2 x11-libs/libxkbfile )

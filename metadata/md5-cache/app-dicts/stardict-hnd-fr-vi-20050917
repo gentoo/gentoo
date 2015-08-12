@@ -1,0 +1,13 @@
+_eclasses_=stardict	f2fd36b0af07ceaba9852e6caec6ac7f
+_md5_=ad79a69714f16053582a6f05804cac10
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=app-arch/unzip || ( >=app-text/stardict-2.4.2 app-text/sdcv app-text/goldendict ) gzip? ( app-arch/gzip app-text/dictd )
+DESCRIPTION=Stardict Dictionary French to Vietnamese
+LICENSE=GPL-2
+IUSE=gzip
+RESTRICT=strip
+SRC_URI=http://james.dyndns.ws/pub/Dictionary/StarDict-James/PhapViet47K.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://forum.vnoss.org/viewtopic.php?id=1818

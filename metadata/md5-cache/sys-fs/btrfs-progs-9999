@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	git-r3	1502b9838d043db47700b8120083e637	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=148d73859105912e3dac671747b6c4d4
+SLOT=0/0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=5
+DEPEND=dev-libs/lzo:2= sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= ) convert? ( sys-apps/acl ) app-text/asciidoc app-text/docbook-xml-dtd:4.5 app-text/xmlto sys-devel/gnuconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Btrfs filesystem utilities
+LICENSE=GPL-2
+IUSE=+convert
+RESTRICT=test
+HOMEPAGE=https://btrfs.wiki.kernel.org
+RDEPEND=dev-libs/lzo:2= sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= )

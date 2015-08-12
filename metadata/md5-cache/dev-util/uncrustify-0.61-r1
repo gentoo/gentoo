@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=ef197a041550e2c4a1a7ba285fc589c7
+SLOT=0
+DEFINED_PHASES=setup
+EAPI=5
+DEPEND=test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=C/C++/C#/D/Java/Pawn code indenter and beautifier
+LICENSE=GPL-2
+IUSE=test
+SRC_URI=mirror://sourceforge/uncrustify/uncrustify-0.61.tar.gz
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris
+HOMEPAGE=http://uncrustify.sourceforge.net/

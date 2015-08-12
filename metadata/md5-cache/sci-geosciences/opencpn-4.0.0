@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=6c71d13436129021fcacf84363cabb44
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test
+EAPI=5
+DEPEND=app-arch/bzip2 dev-libs/tinyxml media-libs/freetype:2 media-libs/portaudio sys-libs/zlib opengl? ( virtual/opengl ) x11-libs/gtk+:2 x11-libs/wxGTK:2.8[X] gps? ( >=sci-geosciences/gpsd-2.96-r1 ) sys-devel/gettext sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=a free, open source software for marine navigation
+LICENSE=GPL-2+
+IUSE=doc gps opengl
+SRC_URI=https://github.com/OpenCPN/OpenCPN/archive/v4.0.0.tar.gz -> opencpn-4.0.0.tar.gz doc? ( https://launchpad.net/~opencpn/+archive/ubuntu/opencpn/+files/opencpn-doc_4.0.0.orig.tar.xz )
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://opencpn.org/
+RDEPEND=app-arch/bzip2 dev-libs/tinyxml media-libs/freetype:2 media-libs/portaudio sys-libs/zlib opengl? ( virtual/opengl ) x11-libs/gtk+:2 x11-libs/wxGTK:2.8[X] gps? ( >=sci-geosciences/gpsd-2.96-r1 )

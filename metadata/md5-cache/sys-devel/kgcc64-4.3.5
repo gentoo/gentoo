@@ -1,0 +1,15 @@
+_eclasses_=toolchain	829a014a8035c6a8dfc391ff8499e447	flag-o-matic	2090c5a622458303e6bf68837ac6b96	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	fixheadtails	2f44773656577fe2653bacc8bdcb2174	pax-utils	a472fe09c2264598d61d4887809e6016	libtool	7f78cd7d403808a350c9ae23f5821fb4	gnuconfig	3920de1188fc7bfee873515453ed1d10	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=9ceea933e793f0993912a7bc5e89d99b
+SLOT=4.3.5
+DEFINED_PHASES=compile configure install postinst postrm prepare pretend setup test unpack
+EAPI=4
+DEPEND=hppa? ( sys-devel/binutils-hppa64 ) !sys-devel/gcc-hppa64 !sys-devel/gcc-mips64 !sys-devel/gcc-powerpc64 !sys-devel/gcc-sparc64 >=sys-apps/sed-4 sys-devel/gnuconfig sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2 >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext ) regression-test? ( >=dev-util/dejagnu-1.4.4 >=sys-devel/autogen-5.5.4 )
+DESCRIPTION=64bit kernel compiler
+LICENSE=GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ ) FDL-1.2+
+IUSE=multislot regression-test vanilla +nls +nptl
+RESTRICT=strip
+PDEPEND=>=sys-devel/gcc-config-1.7
+SRC_URI=mirror://gnu/gcc/gcc-4.3.5/gcc-4.3.5.tar.bz2 mirror://gentoo/gcc-4.3.5-patches-1.1.tar.bz2 http://dev.gentoo.org/~vapier/dist/gcc-4.3.5-patches-1.1.tar.bz2 http://dev.gentoo.org/~rhill/dist/gcc-4.3.5-patches-1.1.tar.bz2 http://dev.gentoo.org/~zorry/patches/gcc/gcc-4.3.5-patches-1.1.tar.bz2 http://dev.gentoo.org/~blueness/dist/gcc-4.3.5-patches-1.1.tar.bz2
+KEYWORDS=-hppa ~mips ~sparc
+HOMEPAGE=http://gcc.gnu.org/
+RDEPEND=sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2

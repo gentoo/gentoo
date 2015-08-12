@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=8488d85837beb72d6327f73f4f928181
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=sys-libs/ncurses
+DESCRIPTION=Visual binary diff utility
+LICENSE=GPL-2
+SRC_URI=http://www.cjmweb.net/vbindiff/vbindiff-3.0_beta1.tar.gz
+KEYWORDS=amd64 x86 ~x86-fbsd
+HOMEPAGE=http://www.cjmweb.net/vbindiff/
+RDEPEND=sys-libs/ncurses

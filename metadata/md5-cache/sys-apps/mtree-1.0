@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=23e232e7fac12029f8bdbed868c11446
+SLOT=0
+DEFINED_PHASES=install
+EAPI=4
+DESCRIPTION=Directory hierarchy mapping tool from FreeBSD
+LICENSE=BSD
+SRC_URI=http://mtree-port.googlecode.com/files/mtree-1.0.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=http://code.google.com/p/mtree-port/

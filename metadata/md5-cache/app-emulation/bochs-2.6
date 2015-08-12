@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	wxwidgets	6712758caa92e836a735c1281b34e70e	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=4e06429463db6d1c97e0375063710e7b
+SLOT=0
+DEFINED_PHASES=configure prepare
+EAPI=4
+DEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) wxwidgets? ( x11-libs/wxGTK:2.8[X] ) readline? ( sys-libs/readline ) ncurses? ( sys-libs/ncurses ) doc? ( app-text/docbook-sgml-utils ) X? ( x11-proto/xproto ) sys-apps/sed >=app-text/opensp-1.5
+DESCRIPTION=LGPL-ed pc emulator
+LICENSE=LGPL-2.1
+IUSE=3dnow avx debugger doc gdb ncurses readline svga sdl +smp wxwidgets vnc X +x86-64
+REQUIRED_USE=avx? ( x86-64 ) gdb? ( !debugger !smp ) debugger? ( !gdb )
+SRC_URI=mirror://sourceforge/bochs/bochs-2.6.tar.gz
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+HOMEPAGE=http://bochs.sourceforge.net/
+RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) wxwidgets? ( x11-libs/wxGTK:2.8[X] ) readline? ( sys-libs/readline ) ncurses? ( sys-libs/ncurses )

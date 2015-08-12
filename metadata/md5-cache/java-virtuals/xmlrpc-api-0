@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=95898daa7a7fb0da06bbabd12491dbd3
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=>=dev-java/java-config-2.2.0
+DESCRIPTION=Virtual for XML RPC API (javax.xml.rpc)
+LICENSE=public-domain
+IUSE=elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://www.gentoo.org
+RDEPEND=dev-java/glassfish-xmlrpc-api:0 >=dev-java/java-config-2.2.0

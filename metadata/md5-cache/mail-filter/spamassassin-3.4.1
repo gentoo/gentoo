@@ -1,0 +1,14 @@
+_eclasses_=systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=9b7e5f1ace2267c4fb35e9375ba6332f
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+EAPI=5
+DEPEND=>=dev-lang/perl-5.8.8-r8 virtual/perl-MIME-Base64 >=virtual/perl-Pod-Parser-1.510.0-r2 virtual/perl-Storable virtual/perl-Time-HiRes >=dev-perl/HTML-Parser-3.43 >=dev-perl/Mail-DKIM-0.37 >=dev-perl/Net-DNS-0.53 dev-perl/Digest-SHA1 dev-perl/libwww-perl >=virtual/perl-Archive-Tar-1.23 app-crypt/gnupg >=virtual/perl-IO-Zlib-1.04 >=dev-util/re2c-0.12.0 dev-perl/Mail-SPF >=dev-perl/NetAddr-IP-4.0.1 dev-perl/Geo-IP dev-perl/Encode-Detect dev-perl/Net-Patricia ssl? ( dev-perl/IO-Socket-SSL dev-libs/openssl ) berkdb? ( virtual/perl-DB_File ) ldap? ( dev-perl/perl-ldap ) mysql? ( dev-perl/DBI dev-perl/DBD-mysql ) postgres? ( dev-perl/DBI dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBI dev-perl/DBD-SQLite ) ipv6? ( || ( dev-perl/IO-Socket-INET6 virtual/perl-IO-Socket-IP ) ) dev-lang/perl:=[-build(-)] virtual/pkgconfig
+DESCRIPTION=An extensible mail filter which can identify and tag spam
+LICENSE=Apache-2.0 GPL-2
+IUSE=+bayes berkdb qmail ssl doc ldap mysql postgres sqlite ipv6
+REQUIRED_USE=bayes? ( || ( berkdb mysql postgres sqlite ) )
+SRC_URI=mirror://apache/spamassassin/source/Mail-SpamAssassin-3.4.1.tar.bz2
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
+HOMEPAGE=http://spamassassin.apache.org/
+RDEPEND=>=dev-lang/perl-5.8.8-r8 virtual/perl-MIME-Base64 >=virtual/perl-Pod-Parser-1.510.0-r2 virtual/perl-Storable virtual/perl-Time-HiRes >=dev-perl/HTML-Parser-3.43 >=dev-perl/Mail-DKIM-0.37 >=dev-perl/Net-DNS-0.53 dev-perl/Digest-SHA1 dev-perl/libwww-perl >=virtual/perl-Archive-Tar-1.23 app-crypt/gnupg >=virtual/perl-IO-Zlib-1.04 >=dev-util/re2c-0.12.0 dev-perl/Mail-SPF >=dev-perl/NetAddr-IP-4.0.1 dev-perl/Geo-IP dev-perl/Encode-Detect dev-perl/Net-Patricia ssl? ( dev-perl/IO-Socket-SSL dev-libs/openssl ) berkdb? ( virtual/perl-DB_File ) ldap? ( dev-perl/perl-ldap ) mysql? ( dev-perl/DBI dev-perl/DBD-mysql ) postgres? ( dev-perl/DBI dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBI dev-perl/DBD-SQLite ) ipv6? ( || ( dev-perl/IO-Socket-INET6 virtual/perl-IO-Socket-IP ) ) dev-lang/perl:=[-build(-)]

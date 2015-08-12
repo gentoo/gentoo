@@ -1,0 +1,13 @@
+_eclasses_=
+_md5_=af459a420b8444933eddf5bbb12330f2
+SLOT=0
+DEFINED_PHASES=configure install postinst
+EAPI=5
+DEPEND=net-libs/libpcap nls? ( sys-devel/gettext )
+DESCRIPTION=Portable userland implementation of Common Address Redundancy Protocol (CARP)
+LICENSE=GPL-2
+IUSE=nls
+SRC_URI=ftp://ftp.ucarp.org/pub/ucarp/ucarp-1.5.2.tar.gz
+KEYWORDS=~amd64 ~ppc x86
+HOMEPAGE=http://www.ucarp.org
+RDEPEND=net-libs/libpcap

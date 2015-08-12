@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=384882a1cc6590969d7a3eaca5090545
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND==dev-libs/libvterm-neovim-0.0_pre20150309
+DESCRIPTION=A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
+LICENSE=MIT
+SRC_URI=http://dev.gentoo.org/~tranquility/distfiles/pangoterm-0.0_pre20150323.tar.gz
+KEYWORDS=~amd64
+HOMEPAGE=http://www.leonerd.org.uk/code/pangoterm/
+RDEPEND==dev-libs/libvterm-neovim-0.0_pre20150309 dev-libs/glib:2 x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/pango

@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=a91c70e04fbf9ba5bae627a876b4d514
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=sys-cluster/torque
+DESCRIPTION=Displays clear, concise and up-to-date PBS node and CPU usage information
+LICENSE=GPL-2
+SRC_URI=http://homepages.inf.ed.ac.uk/s0239160/misc/lspbs/lspbs-1.1.tar.gz
+KEYWORDS=~x86 ~amd64 ~ppc
+HOMEPAGE=http://homepages.inf.ed.ac.uk/s0239160/misc/lspbs/lspbs.html
+RDEPEND=sys-cluster/torque

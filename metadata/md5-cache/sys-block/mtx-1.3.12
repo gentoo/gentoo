@@ -1,0 +1,10 @@
+_eclasses_=
+_md5_=4e33efebd3c9008cebefb562544fe223
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DESCRIPTION=Utilities for controlling SCSI media changers and tape drives
+LICENSE=GPL-2
+SRC_URI=mirror://sourceforge/mtx/mtx-1.3.12.tar.gz
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+HOMEPAGE=http://mtx.sourceforge.net/

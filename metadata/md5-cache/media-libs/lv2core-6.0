@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	waf-utils	ad1dd5b59c523843eebd3a9934c509ca	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=f9af748997909bf5bedf3274ba4668d7
+SLOT=0
+DEFINED_PHASES=compile configure install setup
+EAPI=4
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) dev-lang/python !dev-lang/python[-threads]
+DESCRIPTION=LV2 is a simple but extensible successor of LADSPA
+LICENSE=LGPL-2.1 MIT
+SRC_URI=http://lv2plug.in/spec/lv2core-6.0.tar.bz2
+KEYWORDS=~amd64 ~ppc ~x86
+HOMEPAGE=http://lv2plug.in/
+RDEPEND=!<media-libs/slv2-0.4.2

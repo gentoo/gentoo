@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=537af6d4244c9f3b2a8f8519f4a27a1f
+SLOT=0
+DEFINED_PHASES=configure install prepare
+EAPI=4
+DEPEND=dev-libs/glib dev-libs/libgee:0 dev-libs/json-glib >=dev-libs/gobject-introspection-0.9 || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=GObject-based library to deal with Japanese kana-to-kanji conversion method
+LICENSE=GPL-3
+IUSE=nls static-libs
+SRC_URI=mirror://github/ueno/libskk/libskk-0.0.9.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=https://github.com/ueno/libskk
+RDEPEND=dev-libs/glib dev-libs/libgee:0 dev-libs/json-glib >=dev-libs/gobject-introspection-0.9 || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) nls? ( virtual/libintl )

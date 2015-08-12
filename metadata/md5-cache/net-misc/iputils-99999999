@@ -1,0 +1,11 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	fcaps	3a17f16a21cfbb14acca5c05e5c130eb	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=31d86348eedee3810ba76a815843509
+SLOT=0
+DEFINED_PHASES=compile configure install postinst prepare unpack
+EAPI=4
+DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gnutls? ( net-libs/gnutls[openssl(+)] net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0 ) ) ) ) static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn[static-libs(+)] ) ipv6? ( ssl? ( gnutls? ( net-libs/gnutls[openssl(+)] net-libs/gnutls[static-libs(+)] ) !gnutls? ( dev-libs/openssl:0[static-libs(+)] ) ) ) ) virtual/os-headers app-text/openjade dev-perl/SGMLSpm app-text/docbook-sgml-dtd app-text/docbook-sgml-utils filecaps? ( sys-libs/libcap ) dev-vcs/git
+DESCRIPTION=Network monitoring tools including ping and ping6
+LICENSE=BSD-4
+IUSE=arping caps clockdiff doc gnutls idn ipv6 rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute +filecaps
+HOMEPAGE=http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils
+RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gnutls? ( net-libs/gnutls[openssl(+)] net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0 ) ) ) )

@@ -1,0 +1,14 @@
+_eclasses_=
+_md5_=7886bed22d46316b3eba394e2367fd1b
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=java? ( || ( >=virtual/jdk-1.2 >=virtual/jre-1.2 ) ) net-libs/libpcap
+DESCRIPTION=NETI@Home research project from GATech
+LICENSE=GPL-2
+IUSE=zlib java
+RESTRICT=test
+SRC_URI=mirror://sourceforge/neti/neti-2.0.tar.gz
+KEYWORDS=~ppc x86
+HOMEPAGE=http://www.neti.gatech.edu
+RDEPEND=java? ( || ( >=virtual/jdk-1.2 >=virtual/jre-1.2 ) ) net-libs/libpcap

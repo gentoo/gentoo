@@ -1,0 +1,15 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=dacd36d43bd70c6f6f3bd49d6e823c1c
+SLOT=0
+DEFINED_PHASES=compile configure install test
+EAPI=5
+DEPEND=parrot? ( >=dev-lang/parrot-6.7.0:=[unicode] ) java? ( >=virtual/jre-1.7 ) moar? ( =dev-lang/moarvm-2015.05 ) dev-libs/libffi java? ( >=virtual/jdk-1.7 ) dev-lang/perl
+DESCRIPTION=Not Quite Perl, a Perl 6 bootstrapping compiler
+LICENSE=Artistic-2
+IUSE=doc parrot java +moar
+REQUIRED_USE=|| ( parrot java moar )
+RESTRICT=test
+SRC_URI=http://github.com/perl6/nqp/tarball/2015.05 -> nqp-2015.05.tar.gz
+KEYWORDS=~x86 ~amd64
+HOMEPAGE=http://rakudo.org/
+RDEPEND=parrot? ( >=dev-lang/parrot-6.7.0:=[unicode] ) java? ( >=virtual/jre-1.7 ) moar? ( =dev-lang/moarvm-2015.05 ) dev-libs/libffi

@@ -1,0 +1,11 @@
+_eclasses_=
+_md5_=5e5bfe78229131d107d07139cab75d8f
+SLOT=0
+DEFINED_PHASES=configure install
+EAPI=3
+DESCRIPTION=A portable C++ preprocessor
+LICENSE=BSD
+IUSE=static-libs
+SRC_URI=mirror://sourceforge/mcpp/mcpp-2.7.2.tar.gz
+KEYWORDS=amd64 ~arm ~ia64 x86 ~x64-macos ~x86-linux
+HOMEPAGE=http://mcpp.sourceforge.net

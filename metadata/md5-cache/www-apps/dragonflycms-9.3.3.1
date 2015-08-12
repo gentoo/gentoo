@@ -1,0 +1,14 @@
+_eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=bd8bd79e5e9ad9d0c83a8b3ab2b224fb
+SLOT=9.3.3.1
+DEFINED_PHASES=install postinst prerm setup
+EAPI=4
+DEPEND=app-arch/unzip || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=A feature-rich open source content management system based off of PHP-Nuke 6.5
+LICENSE=GPL-2
+IUSE=vhosts
+RESTRICT=fetch
+SRC_URI=mirror://gentoo/Dragonfly9.3.3.1.zip
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~x86
+HOMEPAGE=http://dragonflycms.org
+RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15

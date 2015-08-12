@@ -1,0 +1,13 @@
+_eclasses_=stardict	f2fd36b0af07ceaba9852e6caec6ac7f
+_md5_=f88f153df4219dcaebade18882b04f70
+SLOT=0
+DEFINED_PHASES=compile install
+EAPI=0
+DEPEND=app-arch/unzip || ( >=app-text/stardict-2.4.2 app-text/sdcv app-text/goldendict ) gzip? ( app-arch/gzip app-text/dictd )
+DESCRIPTION=Stardict Dictionary Russian to Vietnamese
+LICENSE=GPL-2
+IUSE=gzip
+RESTRICT=strip
+SRC_URI=http://james.dyndns.ws/pub/Dictionary/StarDict-James/NgaViet38K.zip
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://forum.vnoss.org/viewtopic.php?id=1818

@@ -1,0 +1,12 @@
+_eclasses_=sword-module	a2b0800a67ad11742c7657239b19b20
+_md5_=52d9953b0ade9d8b2fe963df16442f43
+SLOT=0
+DEFINED_PHASES=install
+EAPI=5
+DEPEND=app-arch/unzip
+DESCRIPTION=Spanish Reina Valera Gomez 2004
+LICENSE=sword-sparvg2004
+SRC_URI=mirror://gentoo/SpaRVG2004-1.0.zip
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=SpaRVG2004
+RDEPEND=app-text/sword

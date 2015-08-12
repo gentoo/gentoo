@@ -1,0 +1,12 @@
+_eclasses_=
+_md5_=734b0237fe71fd39c065c1a6eb6a9e6a
+SLOT=0
+DEFINED_PHASES=install
+EAPI=0
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xextproto
+DESCRIPTION=A dockapp to monitor LongRun on a Transmeta Crusoe processor
+LICENSE=GPL-2
+SRC_URI=mirror://gentoo/wmlongrun-0.2.0.tar.gz
+KEYWORDS=x86 -*
+HOMEPAGE=http://dockapps.windowmaker.org/file.php/id/38
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm

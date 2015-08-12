@@ -1,0 +1,8 @@
+_eclasses_=
+_md5_=1212de720bd785426d322dd1cf9c0d1a
+SLOT=0
+DEFINED_PHASES=-
+EAPI=5
+DESCRIPTION=Virtual for perl-core/Filter-Simple
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Filter-Simple-0.920.0 ) !<perl-core/Filter-Simple-0.920.0 !>perl-core/Filter-Simple-0.920.0-r999

@@ -1,0 +1,14 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	multibuild	4550e10791f720f7af3fdd911aedf518	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
+_md5_=54ca9d9e7b4fc59f469aad7694a39e1f
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test
+EAPI=5
+DEPEND=<dev-python/numpy-1.9[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyro:3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-libs/netcdf mpi? ( virtual/mpi ) test? ( dev-python/nose[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Scientific Module for Python
+LICENSE=CeCILL-2
+IUSE=doc mpi test python_targets_python2_7
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SRC_URI=http://sourcesup.cru.fr/frs/download.php/4570/ScientificPython-2.9.4.tar.gz
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+HOMEPAGE=http://sourcesup.cru.fr/projects/scientific-py/
+RDEPEND=<dev-python/numpy-1.9[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyro:3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-libs/netcdf mpi? ( virtual/mpi ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]

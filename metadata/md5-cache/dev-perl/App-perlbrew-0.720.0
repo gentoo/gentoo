@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	perl-module	1cfb38bf68a24c8394e41d2f53003146
+_md5_=178d94ac030fe45f41692f216c50c2d2
+SLOT=0
+DEFINED_PHASES=compile configure install prepare test unpack
+EAPI=5
+DEPEND=>=dev-perl/CPAN-Perl-Releases-1.940.0 >=dev-perl/Capture-Tiny-0.250.0 >=dev-perl/Devel-PatchPerl-1.280.0 >=virtual/perl-Pod-Parser-1.620.0 >=dev-perl/local-lib-2.0.14 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 >=virtual/perl-File-Temp-0.230.400 >=dev-perl/IO-All-0.510.0 >=dev-perl/Path-Class-0.330.0 test? ( >=dev-perl/Test-Exception-0.320.0 >=virtual/perl-Test-Simple-1.1.2 >=dev-perl/Test-NoWarnings-1.40.0 >=dev-perl/Test-Output-1.30.0 >=dev-perl/Test-Spec-0.470.0 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Manage perl installations in your $HOME
+LICENSE=MIT
+IUSE=test
+SRC_URI=mirror://cpan/authors/id/G/GU/GUGOD/App-perlbrew-0.72.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://search.cpan.org/dist/App-perlbrew/
+RDEPEND=>=dev-perl/CPAN-Perl-Releases-1.940.0 >=dev-perl/Capture-Tiny-0.250.0 >=dev-perl/Devel-PatchPerl-1.280.0 >=virtual/perl-Pod-Parser-1.620.0 >=dev-perl/local-lib-2.0.14 dev-lang/perl:=[-build(-)]

@@ -1,0 +1,12 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	5b63bb5c708c5903a9de5c58c8e43c8	base	84d9f879f57a8316ff02be0373a3d6f9	qt4-r2	cb2cb5856695b300266b425da70e82d8	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=86fac36d8b81c163a42543917ac510b8
+SLOT=0
+DEFINED_PHASES=compile configure install prepare unpack
+EAPI=4
+DEPEND=>=media-libs/taglib-1.7 >=dev-qt/qtgui-4.6:4 >=dev-qt/qtcore-4.6:4
+DESCRIPTION=GUI audio tagger based on Qt4 and taglib
+LICENSE=|| ( GPL-2 GPL-3 )
+SRC_URI=http://cs.joensuu.fi/~sjuvonen/coquillo/1.12/coquillo-1.12-src.tar.gz
+KEYWORDS=~amd64 ~x86
+HOMEPAGE=http://qt-apps.org/content/show.php/Coquillo?content=141896
+RDEPEND=>=media-libs/taglib-1.7 >=dev-qt/qtgui-4.6:4 >=dev-qt/qtcore-4.6:4

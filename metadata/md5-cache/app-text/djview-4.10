@@ -1,0 +1,13 @@
+_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	mozextension	3d8ee4835f89ff39d4666656aa603433	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
+_md5_=fd7052175898a69f610571f334b013cd
+SLOT=0
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+EAPI=4
+DEPEND=>=app-text/djvu-3.5.22-r1 dev-qt/qtdbus:4 dev-qt/qtopengl:4 dev-qt/qtgui:4 >=sys-devel/autoconf-2.67 virtual/pkgconfig nsplugin? ( dev-libs/glib:2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 app-arch/unzip
+DESCRIPTION=Portable DjVu viewer using Qt4
+LICENSE=GPL-2
+IUSE=debug nsplugin
+SRC_URI=mirror://sourceforge/djvu/djview-4.10.tar.gz
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86
+HOMEPAGE=http://djvu.sourceforge.net/djview4.html
+RDEPEND=>=app-text/djvu-3.5.22-r1 dev-qt/qtdbus:4 dev-qt/qtopengl:4 dev-qt/qtgui:4
