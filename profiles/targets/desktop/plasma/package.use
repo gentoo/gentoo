@@ -34,12 +34,14 @@ media-libs/mesa egl
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
+kde-apps/kcontrol -handbook
 kde-apps/kde4-l10n minimal
 kde-apps/kdeartwork-meta minimal
 kde-apps/kdebase-kioslaves minimal
 kde-apps/kdebase-meta minimal
 kde-apps/kdebase-runtime-meta -crash-reporter minimal
 kde-apps/kdesu -handbook
+kde-apps/knetattach -handbook
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 kde-base/kactivities minimal

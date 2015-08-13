@@ -17,8 +17,8 @@ DESCRIPTION="KDE libraries needed by all KDE programs"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="cpu_flags_x86_3dnow acl alsa altivec +bzip2 +crypt debug doc fam jpeg2k
-kerberos lzma cpu_flags_x86_mmx nepomuk nls openexr +policykit spell
-cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
+kerberos lzma cpu_flags_x86_mmx nls openexr +policykit spell cpu_flags_x86_sse
+cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
 
 REQUIRED_USE="
 	udisks? ( udev )
@@ -73,10 +73,6 @@ COMMONDEPEND="
 	fam? ( virtual/fam )
 	jpeg2k? ( media-libs/jasper )
 	kerberos? ( virtual/krb5 )
-	nepomuk? (
-		>=dev-libs/shared-desktop-ontologies-0.11.0
-		>=dev-libs/soprano-2.9.0[dbus,raptor,redland]
-	)
 	openexr? (
 		media-libs/openexr:=
 		media-libs/ilmbase:=
@@ -119,10 +115,6 @@ PDEPEND="
 			$(add_kdebase_dep khelpcenter '' 4.14.3)
 			kde-plasma/khelpcenter:5[compat(+)]
 		)
-	)
-	nepomuk? (
-		$(add_kdebase_dep nepomuk-core '' 4.14.3)
-		$(add_kdebase_dep nepomuk-widgets '' 4.14.3)
 	)
 	policykit? ( || (
 		>=sys-auth/polkit-kde-agent-0.99
@@ -196,6 +188,8 @@ src_configure() {
 		-DKDE_DEFAULT_HOME=.kde4
 		-DKAUTH_BACKEND=POLKITQT-1
 		-DBUILD_libkactivities=OFF
+		-DWITH_Soprano=OFF
+		-DWITH_SharedDesktopOntologies=OFF
 		$(cmake-utils_use_build handbook doc)
 		$(cmake-utils_use_has cpu_flags_x86_3dnow X86_3DNOW)
 		$(cmake-utils_use_has altivec PPC_ALTIVEC)
@@ -210,8 +204,6 @@ src_configure() {
 		$(cmake-utils_use_with jpeg2k Jasper)
 		$(cmake-utils_use_with kerberos GSSAPI)
 		$(cmake-utils_use_with lzma LibLZMA)
-		$(cmake-utils_use_with nepomuk Soprano)
-		$(cmake-utils_use_with nepomuk SharedDesktopOntologies)
 		$(cmake-utils_use_with nls Libintl)
 		$(cmake-utils_use_with openexr OpenEXR)
 		$(cmake-utils_use_with opengl OpenGL)
