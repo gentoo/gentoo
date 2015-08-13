@@ -1,2 +1,5 @@
 /.ebuild.x
-profiles/use.local.desc
+/distfiles/
+/local/
+/packages/
+/profiles/use.local.desc
