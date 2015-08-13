@@ -8,10 +8,12 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit eutils multilib pax-utils python-any-r1 versionator
 
 BINHOST="http://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}"
+CPY_PATCHSET_VERSION="2.7.10-0"
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language (binary package)"
 HOMEPAGE="http://pypy.org/"
 SRC_URI="https://bitbucket.org/pypy/pypy/downloads/pypy-${PV}-src.tar.bz2
+	http://dev.gentoo.org/~floppym/python/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz
 	amd64? (
 		jit? ( shadowstack? (
 			${BINHOST}/${P}-amd64+bzip2+jit+ncurses+shadowstack.tar.xz
@@ -58,7 +60,7 @@ RDEPEND="
 	dev-libs/libffi:0
 	dev-libs/openssl:0[-bindist]
 	sys-libs/glibc:2.2
-	sys-libs/ncurses:5
+	sys-libs/ncurses:5/5
 	sys-libs/zlib:0
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
@@ -83,8 +85,11 @@ src_prepare() {
 	epatch "${FILESDIR}/1.9-scripts-location.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 
+	# apply CPython stdlib patches
 	pushd lib-python/2.7 > /dev/null || die
-	epatch "${FILESDIR}"/2.5.0_all_distutils_cxx.patch
+	epatch "${FILESDIR}"/2.5.0_all_distutils_cxx.patch \
+		"${WORKDIR}"/patches/22_all_turkish_locale.patch \
+		"${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
 	popd > /dev/null || die
 
 	epatch_user
@@ -107,7 +112,6 @@ src_compile() {
 		|| die "Failed to rebuild ctypes config cache"
 }
 
-# Doesn't work - pypy missing its own libs
 src_test() {
 	# (unset)
 	local -x PYTHONDONTWRITEBYTECODE
@@ -155,19 +159,29 @@ src_install() {
 	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
 		|| die "Generation of Grammar and PatternGrammar pickles failed"
 
-	# Generate cffi cache
+	# Generate cffi modules
 	# Please keep in sync with pypy/tool/release/package.py!
-	"${PYTHON}" -c "import _curses" || die "Failed to import _curses (cffi)"
-	"${PYTHON}" -c "import syslog" || die "Failed to import syslog (cffi)"
-	if use gdbm; then
-		"${PYTHON}" -c "import gdbm" || die "Failed to import gdbm (cffi)"
-	fi
-	if use sqlite; then
-		"${PYTHON}" -c "import _sqlite3" || die "Failed to import _sqlite3 (cffi)"
-	fi
-	if use tk; then
-		"${PYTHON}" -c "import _tkinter" || die "Failed to import _tkinter (cffi)"
-	fi
+#cffi_build_scripts = {
+#    "sqlite3": "_sqlite3_build.py",
+#    "audioop": "_audioop_build.py",
+#    "tk": "_tkinter/tklib_build.py",
+#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
+#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
+#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
+	cffi_targets=( audioop curses syslog gdbm pwdgrp )
+	use gdbm && cffi_targets+=( gdbm )
+	use sqlite && cffi_targets+=( sqlite3 )
+	use tk && cffi_targets+=( tkinter/tklib )
+
+	local t
+	# all modules except tkinter output to .
+	# tkinter outputs to the correct dir ...
+	cd "${ED%/}${INSDESTTREE}"/lib_pypy || die
+	for t in "${cffi_targets[@]}"; do
+		# tkinter doesn't work via -m
+		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+	done
 
 	# Cleanup temporary objects
 	find "${ED%/}${INSDESTTREE}" -name "_cffi_*.[co]" -delete || die
