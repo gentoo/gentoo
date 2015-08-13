@@ -392,7 +392,7 @@ src_install-libs() {
 			"libGL.so ${NV_SOVER} ${GL_ROOT}"
 			"libGLESv1_CM.so ${NV_SOVER} ${GL_ROOT}"
 			"libGLdispatch.so 0 ${GL_ROOT}"
-			"libOpenCL.so 1.0.0 ${GL_ROOT}"
+			"libOpenCL.so 1.0.0 ${CL_ROOT}"
 			"libOpenGL.so 0 ${GL_ROOT}"
 			"libcuda.so ${NV_SOVER}"
 			"libnvcuvid.so ${NV_SOVER}"
