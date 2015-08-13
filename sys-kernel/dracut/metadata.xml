@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>aidecoe@gentoo.org</email>
-		<name>Amadeusz Żołnowski</name>
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
 	</maintainer>
 	<maintainer>
 		<email>prometheanfire@gentoo.org</email>
@@ -12,6 +12,10 @@
 	<maintainer>
 		<email>alexander@tsoy.me</email>
 		<name>Alexander Tsoy</name>
+	</maintainer>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
 	</maintainer>
 	<herd>proxy-maintainers</herd>
 	<use>
