@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (11 Aug 2015)
+# Last release is over 13 years old (!).
+# Masked for removal in 30 days. See bug #557210.
+app-text/jdictionary
+
 # Johannes Huber <johu@@gentoo.org> (13 Aug 2015)
 # Nepomuk removal. Announced via portage news item on 2015/08/11.
 # Removal in 30 days. Please switch to the default semantic desktop
