@@ -75,8 +75,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/${PN}-9999-set-codeset-for-gettext-to-UTF-8-always.patch"
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
