@@ -30,6 +30,7 @@ src_prepare() {
 		elog "Excluding vm-pcrisis.el since the \"bbdb\" USE flag is not set."
 		epatch "${FILESDIR}/${PN}-8.0-no-pcrisis.patch"
 	fi
+	epatch "${FILESDIR}/${P}-texinfo-5.patch"
 }
 
 src_configure() {
