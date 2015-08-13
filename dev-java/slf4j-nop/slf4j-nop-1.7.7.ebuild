@@ -17,13 +17,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-COMMON_DEP="dev-java/slf4j-api:0"
-RDEPEND=">=virtual/jre-1.5
-	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.5
+CDEPEND="dev-java/slf4j-api:0"
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
-	${COMMON_DEP}
-	test? ( dev-java/junit:4 )"
+	test? (
+		dev-java/ant-junit:0
+		dev-java/junit:4
+	)
+	${CDEPEND}"
 
 S="${WORKDIR}/${P/-nop/}/${PN}"
 
