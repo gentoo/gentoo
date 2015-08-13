@@ -17,6 +17,9 @@ USE="berkdb crypt ipv6 ncurses nls pam readline ssl tcpd zlib"
 # make sure toolchain has sane defaults <tooclhain@gentoo.org>
 USE="${USE} fortran openmp"
 
+# Security ftw.
+USE="${USE} seccomp"
+
 # 2010/10/21 - Ole Markus With <olemarkus@gentoo.org>
 # These USE flags were originally inserted here because of PHP
 # and were later removed by me. Reinserting the USE flags again because they are
