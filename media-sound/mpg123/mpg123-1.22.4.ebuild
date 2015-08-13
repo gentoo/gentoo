@@ -11,21 +11,24 @@ SRC_URI="http://www.mpg123.org/download/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext alsa altivec coreaudio int-quality ipv6 jack cpu_flags_x86_mmx nas oss portaudio pulseaudio sdl cpu_flags_x86_sse"
 
 # No MULTILIB_USEDEP here since we only build libmpg123 for non native ABIs.
 RDEPEND="app-eselect/eselect-mpg123
-	>=sys-devel/libtool-2.2.6b
+	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
 	alsa? ( media-libs/alsa-lib )
 	jack? ( media-sound/jack-audio-connection-kit )
 	nas? ( media-libs/nas )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r9
-					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
+	abi_x86_32? (
+		!<=app-emulation/emul-linux-x86-soundlibs-20130224-r9
+		!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)]
+	)"
 DEPEND="${RDEPEND}
+	sys-devel/libtool
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS NEWS.libmpg123 README )
@@ -42,7 +45,7 @@ multilib_src_configure() {
 	if $(multilib_is_native_abi) ; then
 		for flag in nas portaudio sdl oss jack alsa pulseaudio coreaudio; do
 			if use ${flag}; then
-				_audio="${_audio} ${flag/pulseaudio/pulse}"
+				_audio+=" ${flag/pulseaudio/pulse}"
 				_output=${flag/pulseaudio/pulse}
 			fi
 		done
