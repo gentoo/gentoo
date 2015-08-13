@@ -15,9 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
-RDEPEND="dev-libs/openssl:0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND=""
+DEPEND="${RDEPEND}"
 
 pkg_preinst() {
 	enewgroup carbon
@@ -26,6 +25,7 @@ pkg_preinst() {
 
 src_prepare() {
 	tc-export CC
+	tc-has-openmp || export OPENMP_FLAGS=
 }
 
 src_install() {
