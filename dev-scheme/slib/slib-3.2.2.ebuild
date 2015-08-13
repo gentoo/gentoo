@@ -29,6 +29,13 @@ DEPEND="app-arch/unzip"
 
 INSTALL_DIR="/usr/share/slib/"
 
+_fix_txi_file() {
+	local inplace_filename="${1}"
+	local tempfile="$(mktemp)"
+	awk -f "${FILESDIR}"/slib-3.2.2-fix-texinfo.awk < "${inplace_filename}" > "${tempfile}"
+	mv "${tempfile}" "${inplace_filename}" || die
+}
+
 src_prepare() {
 	sed "s:prefix = /usr/local/:prefix = ${ED}/usr/:" -i Makefile || die
 	sed 's:libdir = $(exec_prefix)lib/:libdir = $(exec_prefix)share/:' -i Makefile || die
@@ -40,6 +47,11 @@ src_prepare() {
 #	diff -u Makefile.old Makefile
 
 	sed 's:(lambda () "/usr/local/share/gambc/")):(lambda () "'"${EPREFIX}"'/usr/share/gambit")):' -i gambit.init || die
+
+	einfo "Fixing Texinfo files..."
+	for i in *.txi *.texi ; do
+		_fix_txi_file "${i}" || die
+	done
 }
 
 src_compile() {

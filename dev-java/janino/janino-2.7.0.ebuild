@@ -14,7 +14,7 @@ SRC_URI="http://janino.net/download/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
