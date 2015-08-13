@@ -77,6 +77,11 @@ fi
 # generate and install KDE handbook.
 : ${KDE_HANDBOOK:=false}
 
+# @ECLASS-VARIABLE: KDE_DOC_DIR
+# @DESCRIPTION:
+# Defaults to "doc". Otherwise, use alternative KDE handbook path.
+: ${KDE_DOC_DIR:=doc}
+
 # @ECLASS-VARIABLE: KDE_TEST
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -271,13 +276,25 @@ _calculate_live_repo() {
 			# (anonsvn) with anything else you might want to use.
 			ESVN_MIRROR=${ESVN_MIRROR:=svn://anonsvn.kde.org/home/kde}
 
-			local branch_prefix="KDE"
+			local branch_prefix="trunk/KDE"
 
-			if [[ -n ${KMNAME} ]]; then
-				branch_prefix="${KMNAME}"
+			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
+				branch_prefix="branches/Applications/$(get_version_component_range 1-2)"
 			fi
 
-			ESVN_REPO_URI="${ESVN_MIRROR}/trunk/${branch_prefix}/${PN}"
+			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
+				branch_prefix="branches/plasma/$(get_version_component_range 1-2)"
+			fi
+
+			local _kmname
+
+			if [[ -n ${KMNAME} ]]; then
+				_kmname=${KMNAME}
+			else
+				_kmname=${PN}
+			fi
+
+			ESVN_REPO_URI="${ESVN_MIRROR}/${branch_prefix}/${_kmname}"
 			;;
 		git)
 			# @ECLASS-VARIABLE: EGIT_MIRROR
@@ -366,7 +383,7 @@ kde5_src_prepare() {
 
 	# only enable handbook when required
 	if ! use_if_iuse handbook ; then
-		comment_add_subdirectory doc
+		comment_add_subdirectory ${KDE_DOC_DIR}
 	fi
 
 	# enable only the requested translations
@@ -387,8 +404,8 @@ kde5_src_prepare() {
 			popd > /dev/null
 		fi
 
-		if [[ ${KDE_HANDBOOK} = true ]] ; then
-			pushd doc > /dev/null
+		if [[ ${KDE_HANDBOOK} = true && -d ${KDE_DOC_DIR} ]] ; then
+			pushd ${KDE_DOC_DIR} > /dev/null
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					comment_add_subdirectory ${lang}

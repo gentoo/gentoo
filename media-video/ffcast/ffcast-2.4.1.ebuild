@@ -6,8 +6,8 @@ EAPI=5
 
 inherit autotools
 
-DESCRIPTION="Print the geometry of a rectangular screen region"
-HOMEPAGE="https://github.com/lolilolicon/xrectsel"
+DESCRIPTION="Record screencasts using ffmpeg"
+HOMEPAGE="https://github.com/lolilolicon/ffcast"
 SRC_URI="https://github.com/lolilolicon/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -15,9 +15,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="x11-libs/libX11"
-RDEPEND="${DEPEND}"
+RDEPEND="x11-apps/xdpyinfo
+		x11-apps/xprop
+		x11-apps/xwininfo
+		x11-apps/xrectsel
+		media-video/ffmpeg
+		>=app-shells/bash-4.3"
+DEPEND=""
+
+S="${WORKDIR}/FFcast-${PV}"
 
 src_prepare() {
+	rmdir src/xrectsel
 	eautoreconf
 }
