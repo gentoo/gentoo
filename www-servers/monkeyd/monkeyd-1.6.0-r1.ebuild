@@ -30,7 +30,7 @@ REQUIRED_USE="
 	cgi? ( php )"
 
 #DEPEND="jemalloc? ( >=dev-libs/jemalloc-3.3.1 )"
-DEPEND=""
+DEPEND="dev-util/cmake"
 RDEPEND="
 	php? ( dev-lang/php )
 	cgi? ( dev-lang/php[cgi] )"
