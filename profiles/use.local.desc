@@ -3223,7 +3223,6 @@ kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kde-meta:kdepim - Pull in KDE PIM
 kde-base/kde-meta:sdk - Pull in developer-specific meta-packages
 kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
-kde-base/kdelibs:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdepim-common-libs:google - Google service integration via net-libs/libkgapi
 kde-base/kdepim-runtime:facebook - Facebook service integration via net-libs/libkfbapi
