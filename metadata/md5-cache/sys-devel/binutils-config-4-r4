@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=Utility to change the binutils version being used
+EAPI=4
+HOMEPAGE=http://www.gentoo.org/
+LICENSE=GPL-2
+RDEPEND=sys-apps/gentoo-functions !<app-admin/eselect-1.4.4
+SLOT=0
+_md5_=543f1ef2d1076f20957a74d1977354eb
