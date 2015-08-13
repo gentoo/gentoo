@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proaudio</herd>
-	<upstream>
-		<remote-id type="sourceforge">dssi</remote-id>
-	</upstream>
+  <herd>proaudio</herd>
+  <use>
+    <flag name='gtk2'>Enable <pkg>x11-libs/gtk+:2</pkg> based GUI</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">dssi</remote-id>
+  </upstream>
 </pkgmetadata>
