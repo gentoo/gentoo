@@ -1,0 +1,369 @@
+diff -rupN monodevelop/configure monodevelop.nognome/configure
+--- monodevelop/configure	2015-04-28 11:55:36.000000000 +0300
++++ monodevelop.nognome/configure	2015-05-27 12:40:15.073411758 +0300
+@@ -3711,224 +3711,6 @@ $as_echo "yes" >&6; }
+ 
+ fi
+ 
+-
+-
+-pkg_failed=no
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for GNOME_SHARP" >&5
+-$as_echo_n "checking for GNOME_SHARP... " >&6; }
+-
+-if test -n "$GNOME_SHARP_CFLAGS"; then
+-    pkg_cv_GNOME_SHARP_CFLAGS="$GNOME_SHARP_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnome-sharp-2.0 >= \$GTKSHARP_REQUIRED_VERSION\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gnome-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GNOME_SHARP_CFLAGS=`$PKG_CONFIG --cflags "gnome-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$GNOME_SHARP_LIBS"; then
+-    pkg_cv_GNOME_SHARP_LIBS="$GNOME_SHARP_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnome-sharp-2.0 >= \$GTKSHARP_REQUIRED_VERSION\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gnome-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GNOME_SHARP_LIBS=`$PKG_CONFIG --libs "gnome-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        GNOME_SHARP_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnome-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>&1`
+-        else
+-	        GNOME_SHARP_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnome-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$GNOME_SHARP_PKG_ERRORS" >&5
+-
+-	gnome_sharp=no
+-elif test $pkg_failed = untried; then
+-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-	gnome_sharp=no
+-else
+-	GNOME_SHARP_CFLAGS=$pkg_cv_GNOME_SHARP_CFLAGS
+-	GNOME_SHARP_LIBS=$pkg_cv_GNOME_SHARP_LIBS
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-	gnome_sharp=yes
+-fi
+-
+-
+-pkg_failed=no
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for GNOME_VFS_SHARP" >&5
+-$as_echo_n "checking for GNOME_VFS_SHARP... " >&6; }
+-
+-if test -n "$GNOME_VFS_SHARP_CFLAGS"; then
+-    pkg_cv_GNOME_VFS_SHARP_CFLAGS="$GNOME_VFS_SHARP_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnome-vfs-sharp-2.0 >= \$GTKSHARP_REQUIRED_VERSION\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gnome-vfs-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GNOME_VFS_SHARP_CFLAGS=`$PKG_CONFIG --cflags "gnome-vfs-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$GNOME_VFS_SHARP_LIBS"; then
+-    pkg_cv_GNOME_VFS_SHARP_LIBS="$GNOME_VFS_SHARP_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnome-vfs-sharp-2.0 >= \$GTKSHARP_REQUIRED_VERSION\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gnome-vfs-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GNOME_VFS_SHARP_LIBS=`$PKG_CONFIG --libs "gnome-vfs-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        GNOME_VFS_SHARP_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnome-vfs-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>&1`
+-        else
+-	        GNOME_VFS_SHARP_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnome-vfs-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$GNOME_VFS_SHARP_PKG_ERRORS" >&5
+-
+-	gnome_vfs_sharp=no
+-elif test $pkg_failed = untried; then
+-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-	gnome_vfs_sharp=no
+-else
+-	GNOME_VFS_SHARP_CFLAGS=$pkg_cv_GNOME_VFS_SHARP_CFLAGS
+-	GNOME_VFS_SHARP_LIBS=$pkg_cv_GNOME_VFS_SHARP_LIBS
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-	gnome_vfs_sharp=yes
+-fi
+-
+-
+-pkg_failed=no
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for GCONF_SHARP" >&5
+-$as_echo_n "checking for GCONF_SHARP... " >&6; }
+-
+-if test -n "$GCONF_SHARP_CFLAGS"; then
+-    pkg_cv_GCONF_SHARP_CFLAGS="$GCONF_SHARP_CFLAGS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gconf-sharp-2.0 >= \$GTKSHARP_REQUIRED_VERSION\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GCONF_SHARP_CFLAGS=`$PKG_CONFIG --cflags "gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-if test -n "$GCONF_SHARP_LIBS"; then
+-    pkg_cv_GCONF_SHARP_LIBS="$GCONF_SHARP_LIBS"
+- elif test -n "$PKG_CONFIG"; then
+-    if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gconf-sharp-2.0 >= \$GTKSHARP_REQUIRED_VERSION\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-  pkg_cv_GCONF_SHARP_LIBS=`$PKG_CONFIG --libs "gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>/dev/null`
+-		      test "x$?" != "x0" && pkg_failed=yes
+-else
+-  pkg_failed=yes
+-fi
+- else
+-    pkg_failed=untried
+-fi
+-
+-
+-
+-if test $pkg_failed = yes; then
+-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        GCONF_SHARP_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>&1`
+-        else
+-	        GCONF_SHARP_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$GCONF_SHARP_PKG_ERRORS" >&5
+-
+-	gconf_sharp=no
+-elif test $pkg_failed = untried; then
+-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-	gconf_sharp=no
+-else
+-	GCONF_SHARP_CFLAGS=$pkg_cv_GCONF_SHARP_CFLAGS
+-	GCONF_SHARP_LIBS=$pkg_cv_GCONF_SHARP_LIBS
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+-	gconf_sharp=yes
+-fi
+-
+-
+ gtksharp_prefix="`$PKG_CONFIG --variable=prefix gtk-sharp-2.0`"
+ 
+ 
+diff -rupN monodevelop/src/addins/GnomePlatform/GnomePlatform.cs monodevelop.nognome/src/addins/GnomePlatform/GnomePlatform.cs
+--- monodevelop/src/addins/GnomePlatform/GnomePlatform.cs	2014-09-22 16:28:49.000000000 +0300
++++ monodevelop.nognome/src/addins/GnomePlatform/GnomePlatform.cs	2015-05-27 12:40:15.073411758 +0300
+@@ -26,7 +26,6 @@
+ // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ //
+ 
+-using Gnome;
+ using MonoDevelop.Ide.Desktop;
+ using System;
+ using System.Collections.Generic;
+@@ -40,46 +39,15 @@ namespace MonoDevelop.Platform
+ {
+ 	public class GnomePlatform : PlatformService
+ 	{
+-		static bool useGio;
+-
+-		Gnome.ThumbnailFactory thumbnailFactory = new Gnome.ThumbnailFactory (Gnome.ThumbnailSize.Normal);
+-
+ 		static GnomePlatform ()
+ 		{
+ 			try {
+ 				Gio.GetDefaultForType ("text/plain");
+-				useGio = true;
+ 			} catch (Exception ex) {
+ 				Console.WriteLine (ex);
+ 			}
+-			//apparently Gnome.Icon needs GnomeVFS initialized even when we're using GIO.
+-			Gnome.Vfs.Vfs.Initialize ();
+-		}
+-		
+-		DesktopApplication GetGnomeVfsDefaultApplication (string mimeType)
+-		{
+-			var app = Gnome.Vfs.Mime.GetDefaultApplication (mimeType);
+-			if (app != null)
+-				return (DesktopApplication) Marshal.PtrToStructure (app.Handle, typeof(DesktopApplication));
+-			else
+-				return null;
+-		}
+-		
+-		IEnumerable<DesktopApplication> GetGnomeVfsApplications (string mimeType)
+-		{
+-			var def = GetGnomeVfsDefaultApplication (mimeType);
+-			var list = new List<DesktopApplication> ();
+-			var apps = Gnome.Vfs.Mime.GetAllApplications (mimeType);
+-			foreach (var app in apps) {
+-				var dap = (GnomeVfsApp) Marshal.PtrToStructure (app.Handle, typeof(GnomeVfsApp));
+-				if (!string.IsNullOrEmpty (dap.Command) && !string.IsNullOrEmpty (dap.DisplayName) && !dap.Command.Contains ("monodevelop ")) {
+-					var isDefault = def != null && def.Id == dap.Command;
+-					list.Add (new GnomeDesktopApplication (dap.Command, dap.DisplayName, isDefault));
+-				}
+-			}
+-			return list;
+ 		}
+-		
++
+ 		public override IEnumerable<DesktopApplication> GetApplications (string filename)
+ 		{
+ 			var mimeType = GetMimeTypeForUri (filename);
+@@ -88,10 +56,7 @@ namespace MonoDevelop.Platform
+ 
+ 		IEnumerable<DesktopApplication> GetApplicationsForMimeType (string mimeType)
+ 		{
+-			if (useGio)
+-				return Gio.GetAllForType (mimeType);
+-			else
+-				return GetGnomeVfsApplications (mimeType);
++			return Gio.GetAllForType (mimeType);
+ 		}
+ 		
+ 		struct GnomeVfsApp {
+@@ -100,10 +65,7 @@ namespace MonoDevelop.Platform
+ 
+ 		protected override string OnGetMimeTypeDescription (string mt)
+ 		{
+-			if (useGio)
+-				return Gio.GetMimeTypeDescription (mt);
+-			else
+-				return Gnome.Vfs.Mime.GetDescription (mt);
++			return Gio.GetMimeTypeDescription (mt);
+ 		}
+ 
+ 		protected override string OnGetMimeTypeForUri (string uri)
+@@ -111,12 +73,7 @@ namespace MonoDevelop.Platform
+ 			if (uri == null)
+ 				return null;
+ 			
+-			if (useGio) {
+-				string mt = Gio.GetMimeTypeForUri (uri);
+-				if (mt != null)
+-					return mt;
+-			}
+-			return Gnome.Vfs.MimeType.GetMimeTypeForUri (ConvertFileNameToVFS (uri));
++			return Gio.GetMimeTypeForUri (uri);
+ 		}
+ 		
+ 		protected override bool OnGetMimeTypeIsText (string mimeType)
+@@ -127,20 +84,10 @@ namespace MonoDevelop.Platform
+ 					return true;
+ 			return base.OnGetMimeTypeIsText (mimeType);
+ 		}
+-
+-
+-		public override void ShowUrl (string url)
+-		{
+-			Gnome.Url.Show (url);
+-		}
+ 		
+ 		public override string DefaultMonospaceFont {
+ 			get {
+-				try {
+-					return (string) (new GConf.Client ().Get ("/desktop/gnome/interface/monospace_font_name"));
+-				} catch (Exception) {
+-					return "Monospace 11";
+-				}
++				return "Monospace 11";
+ 			}
+ 		}
+ 		
+@@ -158,19 +105,9 @@ namespace MonoDevelop.Platform
+ 			} else if (System.IO.File.Exists (filename)) {
+ 				filename = EscapeFileName (filename);
+ 				if (filename == null)
+-					return "gnome-fs-regular";
+-				
+-				string icon = null;
+-				Gnome.IconLookupResultFlags result;
+-				try {
+-					icon = Gnome.Icon.LookupSync (IconTheme.Default, thumbnailFactory, filename, null, 
+-					                              Gnome.IconLookupFlags.None, out result);
+-				} catch {}
+-				if (icon != null && icon.Length > 0)
+-					return icon;
++					return "gnome-fs-regular";				
+ 			}			
+-			return "gnome-fs-regular";
+-			
++			return "gnome-fs-regular";			
+ 		}
+ 		
+ 		protected override Xwt.Drawing.Image OnGetIconForFile (string filename)

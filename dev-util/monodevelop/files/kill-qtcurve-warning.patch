@@ -1,0 +1,12 @@
+diff -Naur monodevelop-5.0.1.org/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Gui.OptionPanels/IDEStyleOptionsPanel.cs monodevelop-5.0.1/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Gui.OptionPanels/IDEStyleOptionsPanel.cs
+--- monodevelop-5.0.1.org/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Gui.OptionPanels/IDEStyleOptionsPanel.cs	2014-06-04 19:10:44.000000000 +0300
++++ monodevelop-5.0.1/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Gui.OptionPanels/IDEStyleOptionsPanel.cs	2014-12-29 15:28:43.590834768 +0200
+@@ -127,8 +127,6 @@
+ 
+ 		internal static bool IsBadGtkTheme (string theme)
+ 		{
+-			if (string.Equals ("QtCurve", theme, StringComparison.OrdinalIgnoreCase))
+-				return true;
+ 			if (string.Equals ("oxygen-gtk", theme, StringComparison.OrdinalIgnoreCase))
+ 				return Environment.GetEnvironmentVariable ("OXYGEN_DISABLE_INNER_SHADOWS_HACK") != "1";
+ 			return false;
