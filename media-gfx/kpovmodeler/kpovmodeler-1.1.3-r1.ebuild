@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,8 +12,8 @@ inherit kde4-base
 MY_P=${P}-kde4.1.1
 
 DESCRIPTION="A modeling and composition program for creating POV-Ray(TM) scenes"
-HOMEPAGE="http://www.kpovmodeler.org/"
-SRC_URI="http://www.kpovmodeler.org/files/${MY_P}.tar.bz2"
+HOMEPAGE="https://extragear.kde.org/apps/kpovmodeler/"
+SRC_URI="http://dev.gentoo.org/~kensington/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1 FDL-1.2"
 SLOT="4"
