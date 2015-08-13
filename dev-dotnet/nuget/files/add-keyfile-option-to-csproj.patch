@@ -1,0 +1,11 @@
+--- work.orig/nuget-Release-2.8.1-MonoDevelop/src/Core/Core.csproj	2014-10-29 13:28:28.000000000 +0300
++++ work/nuget-Release-2.8.1-MonoDevelop/src/Core/Core.csproj	2015-03-06 10:55:17.783762949 +0300
+@@ -12,6 +12,8 @@
+     <TargetFrameworkProfile Condition=" '$(MonoBuild)' == '' And '$(TargetFrameworkVersion)' == 'v4.0' "></TargetFrameworkProfile>
+     <PlatformTarget>AnyCPU</PlatformTarget>
+     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>rsa-4096.snk</AssemblyOriginatorKeyFile>
+   </PropertyGroup>
+   <ItemGroup>
+     <EmbeddedResource Include="..\..\Common\CommonResources.resx">
