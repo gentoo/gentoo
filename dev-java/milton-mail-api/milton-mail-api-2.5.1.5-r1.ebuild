@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,13 +21,17 @@ IUSE=""
 CDEPEND="
 	dev-java/milton-api:${SLOT}
 	dev-java/slf4j-api:0
-	java-virtuals/javamail:0
+	dev-java/oracle-javamail:0
 "
 
-RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5"
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
 
-DEPEND="${CDEPEND}
-	>=virtual/jdk-1.5"
+DEPEND=">=virtual/jdk-1.6
+	${CDEPEND}"
 
-JAVA_GENTOO_CLASSPATH="milton-api-${SLOT},javamail,slf4j-api"
+JAVA_GENTOO_CLASSPATH="
+	milton-api-${SLOT}
+	oracle-javamail
+	slf4j-api
+"
