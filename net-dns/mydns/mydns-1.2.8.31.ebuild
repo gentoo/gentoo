@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,6 +29,7 @@ REQUIRED_USE="^^ ( mysql postgres )"
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.2.8.27-m4.patch"
 	eautoreconf
+	epatch "${FILESDIR}/${P}-texinfo.patch"
 }
 
 src_configure() {
