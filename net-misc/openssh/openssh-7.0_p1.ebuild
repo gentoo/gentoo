@@ -309,4 +309,16 @@ pkg_postinst() {
 		elog "Make sure to update any configs that you might have.  Note that xinetd might"
 		elog "be an alternative for you as it supports USE=tcpd."
 	fi
+	if has_version "<${CATEGORY}/${PN}-7.1_p1" ; then #557388
+		elog "Starting with openssh-7.0, support for ssh-dss keys were disabled due to their"
+		elog "weak sizes.  If you rely on these key types, you can re-enable the key types by"
+		elog "adding to your sshd_config:"
+		elog "	PubkeyAcceptedKeyTypes=+ssh-dss"
+		elog "You should however generate new keys using rsa or ed25519."
+	fi
+	if ! use ssl && has_version "${CATEGORY}/${PN}[ssl]" ; then
+		elog "Be aware that by disabling openssl support in openssh, the server and clients"
+		elog "no longer support dss/rsa/ecdsa keys.  You will need to generate ed25519 keys"
+		elog "and update all clients/servers that utilize them."
+	fi
 }
