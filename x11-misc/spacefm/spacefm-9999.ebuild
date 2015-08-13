@@ -15,7 +15,8 @@ HOMEPAGE="http://ignorantguru.github.com/spacefm/"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="+startup-notification +video-thumbnails"
+IUSE="gtk2 +gtk3 +startup-notification +video-thumbnails"
+REQUIRED_USE="gtk2? ( !gtk3 )"
 
 RDEPEND="dev-libs/glib:2
 	dev-util/desktop-file-utils
@@ -42,7 +43,7 @@ src_configure() {
 		--disable-hal \
 		--enable-inotify \
 		--disable-pixmaps \
-		--with-gtk3=yes
+		$(use_with gtk3 gtk3 "yes")
 }
 
 pkg_preinst() {
