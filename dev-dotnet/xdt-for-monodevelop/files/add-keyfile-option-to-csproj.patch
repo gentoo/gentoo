@@ -1,0 +1,13 @@
+--- work.unpacked/xdt-Release-NuGet-2.8.1-Mono/XmlTransform/Microsoft.Web.XmlTransform.csproj	2014-10-26 21:16:30.000000000 +0300
++++ work/xdt-Release-NuGet-2.8.1-Mono/XmlTransform/Microsoft.Web.XmlTransform.csproj	2015-03-06 16:51:31.859038709 +0300
+@@ -16,7 +16,9 @@
+   <PropertyGroup Condition="!$(ExtensionsCommonTargetsExists)">
+     <AppDesignerFolder>Properties</AppDesignerFolder>
+     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+-  </PropertyGroup>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>rsa-4096.snk</AssemblyOriginatorKeyFile>
++   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU' AND !$(ExtensionsCommonTargetsExists)">
+     <DebugSymbols>true</DebugSymbols>
+     <DebugType>full</DebugType>

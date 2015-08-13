@@ -1,0 +1,47 @@
+Index: xamarin-pkg-monodevelop/src/addins/AspNet/Properties/MonoDevelop.AspNet.addin.xml
+===================================================================
+--- xamarin-pkg-monodevelop.orig/src/addins/AspNet/Properties/MonoDevelop.AspNet.addin.xml	2015-01-15 19:43:29.994850405 +0000
++++ xamarin-pkg-monodevelop/src/addins/AspNet/Properties/MonoDevelop.AspNet.addin.xml	2015-01-15 19:51:12.746841738 +0000
+@@ -1,13 +1,13 @@
+ <ExtensionModel>
+ 	
+ 	<Runtime>
+-		<Import assembly = "System.Web.Helpers.dll" />
+-		<Import assembly = "System.Web.Mvc.dll" />
+-		<Import assembly = "System.Web.Razor.dll" />
+-		<Import assembly = "System.Web.WebPages.Deployment.dll" />
+-		<Import assembly = "System.Web.WebPages.dll" />
+-		<Import assembly = "System.Web.WebPages.Razor.dll" />
+-
++<!--		<Import assembly = "System.Web.Helpers.dll" />
++		<Import assembly = "System.Web.Mvc.dll" />
++		<Import assembly = "System.Web.Razor.dll" />
++		<Import assembly = "System.Web.WebPages.Deployment.dll" />
++		<Import assembly = "System.Web.WebPages.dll" />
++		<Import assembly = "System.Web.WebPages.Razor.dll" /> -->
++
+ 		<Import file = "Html/Schemas/xhtml1-strict.xsd" />
+ 		<Import file = "Html/Schemas/xhtml1-transitional.xsd" />
+ 		<Import file = "Html/Schemas/xhtml1-frameset.xsd" />
+@@ -202,10 +202,10 @@
+ 			guid="{E53F8FEA-EAE0-44A6-8774-FFD645390401}"
+ 			type="MonoDevelop.AspNet.Projects.AspMvc3Project"
+ 			useXBuild="true" />
+-		<DotNetProjectSubtype
++<!--		<DotNetProjectSubtype
+ 			guid="{E3E379DF-F4C6-4180-9B81-6769533ABE47}"
+ 			type="MonoDevelop.AspNet.Projects.AspMvc4Project"
+-			useXBuild="true" />
++			useXBuild="true" /> -->
+ 		<DotNetProjectSubtype
+ 			id="MonoDevelop.AspNet.Projects.AspNetAppProject"
+ 			guid="{349C5851-65DF-11DA-9384-00065B846F21}"
+@@ -216,7 +216,7 @@
+ 	<Extension path = "/MonoDevelop/TypeSystem/Parser">
+ 		<Parser class = "MonoDevelop.AspNet.WebForms.WebFormsParser" mimeType="application/x-aspx, application/x-ascx, application/x-master-page" />
+ 		<Parser class = "MonoDevelop.AspNet.Html.HtmlParser" mimeType="text/html, application/x-spark" />
+-		<Parser class = "MonoDevelop.AspNet.Razor.RazorCSharpParser" mimeType="text/x-cshtml" />
++		<Parser class = "MonoDevelop.AspNet.Razor.RazorCSharpParser" mimeType="text/x-cshtml" />
+ 	</Extension>
+ 
+ 	<Extension path = "/MonoDevelop/ProjectModel/SerializableClasses">
