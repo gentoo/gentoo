@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 PYTHON_REQ_USE='tk?'
 
-inherit distutils-r1 eutils flag-o-matic git-r3 virtualx
+inherit distutils-r1 eutils flag-o-matic git-r3 virtualx toolchain-funcs
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="http://matplotlib.org/"
@@ -65,8 +65,13 @@ DEPEND="${COMMON_DEPEND}
 		)"
 
 RDEPEND="${COMMON_DEPEND}
-	dev-python/pyparsing[${PYTHON_USEDEP}]
-	cairo? ( dev-python/pycairo[${PYTHON_USEDEP}] )
+	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
+	cairo? (
+		|| (
+			dev-python/pycairo[${PYTHON_USEDEP}]
+			dev-python/cairocffi[${PYTHON_USEDEP}]
+			)
+		)
 	excel? ( dev-python/xlwt[${PY2_USEDEP}] )
 	fltk? ( dev-python/pyfltk[${PY2_USEDEP}] )
 	gtk3? (
@@ -83,7 +88,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	pyside? ( dev-python/pyside[X,${PYTHON_USEDEP}] )
 	qt4? ( dev-python/PyQt4[X,${PYTHON_USEDEP}] )
-	qt5? ( dev-python/PyQt5[X,${PYTHON_USEDEP}] )
+	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )
 	"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
@@ -94,7 +99,7 @@ REQUIRED_USE="
 	gtk? ( ${PY2_FLAGS} )
 	wxwidgets? ( ${PY2_FLAGS} )
 	test? (
-		cairo fltk latex pyside qt4 tk wxwidgets
+		cairo fltk latex pyside qt5 qt4 tk wxwidgets
 		|| ( gtk gtk3 )
 		)"
 
@@ -152,6 +157,7 @@ python_prepare_all() {
 python_configure_all() {
 	append-flags -fno-strict-aliasing
 	append-cppflags -DNDEBUG  # or get old trying to do triangulation
+	tc-export PKG_CONFIG
 }
 
 python_configure() {
