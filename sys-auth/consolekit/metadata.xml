@@ -6,6 +6,7 @@
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="cgroups">Use the kernel to track processes instead of the session cookie.</flag>
 		<flag name="policykit">Use the PolicyKit framework (<pkg>sys-auth/polkit</pkg>) to get authorization for suspend/shutdown.</flag>
 		<flag name="systemd-units">Install systemd unit files to replace the modern functionality of logind in <pkg>sys-apps/systemd</pkg>. Not recommended.</flag>
 	</use>
