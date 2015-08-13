@@ -26,12 +26,12 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.11.0}
+: ${FRAMEWORKS_MINIMAL:=5.12.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.3.1}
+: ${PLASMA_MINIMAL:=5.3.2}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
@@ -188,7 +188,11 @@ add_kdeapps_dep() {
 		version=${PV}
 	elif [[ -z "${version}" ]] ; then
 		# In KDE applications world, 5.9999 > yy.mm.x
-		[[ ${PV} = 5.9999 ]] && version=5.9999 || version=${KDE_APPS_MINIMAL}
+		if [[ ${PV} = 5.9999 || ${PV} = 9999 ]]; then
+			version=5.9999
+		else
+			version=${KDE_APPS_MINIMAL}
+		fi
 	fi
 
 	_add_kdecategory_dep kde-apps "${1}" "${2}" "${version}"
