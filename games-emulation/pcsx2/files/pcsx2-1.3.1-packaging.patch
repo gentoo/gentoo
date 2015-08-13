@@ -1,0 +1,148 @@
+From 8e625d61b0a895074d35d6d227008664360e8458 Mon Sep 17 00:00:00 2001
+From: nE0sIghT <ykonotopov@gmail.com>
+Date: Mon, 10 Aug 2015 19:15:40 +0300
+Subject: [PATCH 2/3] cmake: fatal error if miss dependencies in package mode
+ Moved zzogl to extra plugins
+
+---
+ cmake/SelectPcsx2Plugins.cmake | 56 +++++++++++++++++++++---------------------
+ 1 file changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/cmake/SelectPcsx2Plugins.cmake b/cmake/SelectPcsx2Plugins.cmake
+index ee8138b..bb7307e 100644
+--- a/cmake/SelectPcsx2Plugins.cmake
++++ b/cmake/SelectPcsx2Plugins.cmake
+@@ -15,6 +15,14 @@ else(GLSL_API)
+ 	set(msg_dep_zzogl       "check these libraries -> glew (>=1.6), jpeg (>=6.2), opengl, X11, nvidia-cg-toolkit (>=2.1), pcsx2 common libs")
+ endif()
+ 
++macro(print_dep str dep)
++    if (PACKAGE_MODE)
++        message(FATAL_ERROR "${str}:${dep}")
++    else()
++        message(STATUS "${str}:${dep}")
++    endif()
++endmacro(print_dep)
++
+ #-------------------------------------------------------------------------------
+ #								Pcsx2 core & common libs
+ #-------------------------------------------------------------------------------
+@@ -43,8 +51,7 @@ elseif(NOT EXISTS "${CMAKE_SOURCE_DIR}/common/src")
+     set(common_libs FALSE)
+ else()
+     set(common_libs FALSE)
+-    message(STATUS "Skip build of common libraries: miss some dependencies")
+-    message(STATUS "${msg_dep_common_libs}")
++    print_dep("Skip build of common libraries: miss some dependencies" "${msg_dep_common_libs}")
+ endif()
+ 
+ #---------------------------------------
+@@ -62,14 +69,12 @@ elseif(NOT EXISTS "${CMAKE_SOURCE_DIR}/pcsx2")
+     set(pcsx2_core FALSE)
+ else()
+     set(pcsx2_core FALSE)
+-    message(STATUS "Skip build of pcsx2 core: miss some dependencies")
+-    message(STATUS "${msg_dep_pcsx2}")
++    print_dep("Skip build of pcsx2 core: miss some dependencies" "${msg_dep_pcsx2}")
+ endif()
+ # Linux need also gtk2
+ if(UNIX AND pcsx2_core AND NOT GTKn_FOUND)
+     set(pcsx2_core FALSE)
+-    message(STATUS "Skip build of pcsx2 core: miss some dependencies")
+-    message(STATUS "${msg_dep_pcsx2}")
++    print_dep("Skip build of pcsx2 core: miss some dependencies" "${msg_dep_pcsx2}")
+ endif()
+ 
+ 
+@@ -102,8 +107,7 @@ if(EXTRA_PLUGINS)
+         set(CDVDiso FALSE)
+     else()
+         set(CDVDiso FALSE)
+-        message(STATUS "Skip build of CDVDiso: miss some dependencies")
+-        message(STATUS "${msg_dep_cdvdiso}")
++        print_dep("Skip build of CDVDiso: miss some dependencies" "${msg_dep_cdvdiso}")
+     endif()
+ endif()
+ 
+@@ -147,11 +151,10 @@ endif()
+ if(OPENGL_FOUND AND X11_FOUND AND GTKn_FOUND AND (EGL_FOUND OR NOT EGL_API))
+     set(GSdx TRUE)
+ elseif(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugins/GSdx")
+-	set(GSdx FALSE)
++    set(GSdx FALSE)
+ else()
+-	set(GSdx FALSE)
+-    message(STATUS "Skip build of GSdx: miss some dependencies")
+-    message(STATUS "${msg_dep_gsdx}")
++    set(GSdx FALSE)
++    print_dep("Skip build of GSdx: miss some dependencies" "${msg_dep_gsdx}")
+ endif()
+ #---------------------------------------
+ 
+@@ -170,8 +173,7 @@ if(EXTRA_PLUGINS)
+         set(zerogs FALSE)
+     else()
+         set(zerogs FALSE)
+-        message(STATUS "Skip build of zerogs: miss some dependencies")
+-        message(STATUS "${msg_dep_zerogs}")
++        print_dep("Skip build of zerogs: miss some dependencies" "${msg_dep_zerogs}")
+     endif()
+ endif()
+ #---------------------------------------
+@@ -186,14 +188,15 @@ endif()
+ #			-JPEG
+ #           -common_libs
+ #---------------------------------------
+-if((GLEW_FOUND AND OPENGL_FOUND AND X11_FOUND AND JPEG_FOUND AND common_libs AND GTKn_FOUND) AND (CG_FOUND OR GLSL_API))
+-	set(zzogl TRUE)
+-elseif(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugins/zzogl-pg")
+-	set(zzogl FALSE)
+-else()
+-	set(zzogl FALSE)
+-    message(STATUS "Skip build of zzogl: miss some dependencies")
+-    message(STATUS "${msg_dep_zzogl}")
++if(EXTRA_PLUGINS)
++    if((GLEW_FOUND AND OPENGL_FOUND AND X11_FOUND AND JPEG_FOUND AND common_libs AND GTKn_FOUND) AND (CG_FOUND OR GLSL_API))
++        set(zzogl TRUE)
++    elseif(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugins/zzogl-pg")
++        set(zzogl FALSE)
++    else()
++        set(zzogl FALSE)
++        print_dep("Skip build of zzogl: miss some dependencies" "${msg_dep_zzogl}")
++    endif()
+ endif()
+ #---------------------------------------
+ 
+@@ -216,8 +219,7 @@ elseif(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugins/onepad")
+ 	set(onepad FALSE)
+ else()
+ 	set(onepad FALSE)
+-    message(STATUS "Skip build of onepad: miss some dependencies")
+-    message(STATUS "${msg_dep_onepad}")
++    print_dep("Skip build of onepad: miss some dependencies" "${msg_dep_onepad}")
+ endif()
+ #---------------------------------------
+ 
+@@ -244,8 +246,7 @@ elseif(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugins/spu2-x")
+ 	set(spu2-x FALSE)
+ else()
+ 	set(spu2-x FALSE)
+-    message(STATUS "Skip build of spu2-x: miss some dependencies")
+-    message(STATUS "${msg_dep_spu2x}")
++    print_dep("Skip build of spu2-x: miss some dependencies" "${msg_dep_spu2x}")
+ endif()
+ #---------------------------------------
+ 
+@@ -266,8 +267,7 @@ if(EXTRA_PLUGINS)
+         set(zerospu2 FALSE)
+     else()
+         set(zerospu2 FALSE)
+-        message(STATUS "Skip build of zerospu2: miss some dependencies")
+-        message(STATUS "${msg_dep_zerospu2}")
++        print_dep("Skip build of zerospu2: miss some dependencies" "${msg_dep_zerospu2}")
+     endif()
+ endif()
+ #---------------------------------------
+-- 
+2.4.6
+

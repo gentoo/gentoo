@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>ykonotopov@gmail.com</email>
+		<name>Yuri Konotopov</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/PCSX2/pcsx2/issues</bugs-to>
+		<remote-id type="github">PCSX2/pcsx2</remote-id>
+	</upstream>
+</pkgmetadata>
