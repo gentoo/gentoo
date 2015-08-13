@@ -69,10 +69,12 @@ src_configure() {
 	export USE_LIBCURL=$(usetf curl)
 	export USE_LDAP=$(usetf ldap)
 	export USE_XAUTHPAM=$(usetf pam)
+	export DEBUG_CFLAGS=
+	export OPTIMIZE_CFLAGS=
 }
 
 src_compile() {
-	emake programs
+	emake all
 }
 
 src_install() {

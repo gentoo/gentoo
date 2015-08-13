@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="caps curl dnssec ldap pam"
 
 COMMON_DEPEND="
-	dev-libs/gmp
+	dev-libs/gmp:0=
 	dev-libs/nspr
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )
@@ -46,9 +46,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/libreswan-3.7-curl.patch"
-	epatch "${FILESDIR}/libreswan-3.7-openrc.patch"
-	epatch "${FILESDIR}/libreswan-3.7-openrc-pidfile.patch"
 	epatch_user
 }
 
@@ -72,23 +69,26 @@ src_configure() {
 	export USE_LIBCURL=$(usetf curl)
 	export USE_LDAP=$(usetf ldap)
 	export USE_XAUTHPAM=$(usetf pam)
+	export DEBUG_CFLAGS=
+	export OPTIMIZE_CFLAGS=
 }
 
 src_compile() {
-	emake programs
+	emake all
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	sed -i -e '1s:python$:python2:' "${D}"/usr/libexec/ipsec/verify || die
 
 	echo "include /etc/ipsec.d/*.secrets" > "${D}"/etc/ipsec.secrets
 	fperms 0600 /etc/ipsec.secrets
 
 	systemd_dounit "${FILESDIR}/ipsec.service"
 
-	dodoc BUGS CHANGES README
+	dodoc CHANGES README
 	dodoc -r docs
+
+	find "${D}" -type d -empty -delete || die
 }
 
 pkg_postinst() {
