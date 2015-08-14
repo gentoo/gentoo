@@ -226,9 +226,6 @@ dev-libs/efl pixman
 
 # Jeroen Roovers <jer@gentoo.org> (20 Jun 2014)
 # net-libs/adns is going away (bug #513982)
-app-admin/apachetop adns
-dev-libs/liboop adns
-net-analyzer/nepenthes adns
 net-analyzer/wireshark libadns
 
 # Zac Medico <zmedico@gentoo.org> (06 Jun 2014)
