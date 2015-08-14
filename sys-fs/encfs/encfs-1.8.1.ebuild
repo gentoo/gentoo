@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~sparc ~x86"
 IUSE="xattr nls"
 
-RDEPEND=">=dev-libs/boost-1.34
-	>=sys-fs/fuse-2.5
-	>=dev-libs/openssl-0.9.7
+RDEPEND="dev-libs/boost:=
+	dev-libs/openssl:=
 	>=dev-libs/rlog-1.3
+	>=sys-fs/fuse-2.5
 	sys-libs/zlib"
 # Your libc probably provides xattrs, but to be safe
 # we'll dep on sys-apps/attr.  This should be fixed
