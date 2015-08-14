@@ -11,10 +11,13 @@ SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="x11-libs/libX11
-		>=x11-libs/libvdpau-0.9"
-DEPEND="${RDEPEND}
-		virtual/pkgconfig
-		x11-proto/xproto"
+RDEPEND="
+	x11-libs/libX11
+	>=x11-libs/libvdpau-1.0
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+	x11-proto/xproto
+"
