@@ -10,7 +10,8 @@ inherit distutils-r1
 
 DESCRIPTION="Transmit data between two computers using audio"
 HOMEPAGE="https://github.com/romanz/amodem"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/romanz/amodem/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
