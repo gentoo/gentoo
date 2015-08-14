@@ -16,11 +16,12 @@ SRC_URI="http://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="conntrack ipv6 netlink static-libs"
+IUSE="conntrack ipv6 netlink pcap static-libs"
 
 RDEPEND="
 	conntrack? ( net-libs/libnetfilter_conntrack )
 	netlink? ( net-libs/libnfnetlink )
+	pcap? ( net-libs/libpcap )
 "
 DEPEND="${RDEPEND}
 	virtual/os-headers
@@ -49,6 +50,7 @@ src_configure() {
 		--libexecdir="${EPREFIX}/$(get_libdir)" \
 		--enable-devel \
 		--enable-shared \
+		$(use_enable pcap bpf-compiler) \
 		$(use_enable static-libs static) \
 		$(use_enable ipv6)
 }
