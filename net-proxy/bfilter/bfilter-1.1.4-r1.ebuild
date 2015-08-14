@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE="X debug"
 
 RDEPEND="sys-libs/zlib
-	dev-libs/ace
+	<dev-libs/ace-5.8.3
 	dev-libs/libsigc++:2
 	X? ( dev-cpp/gtkmm:2.4 x11-libs/libX11 )
 	dev-libs/boost"
