@@ -1,25 +1,29 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 # Force users doing their own patches to install their own tools
 AUTOTOOLS_AUTO_DEPEND=no
 
-inherit eutils multilib toolchain-funcs autotools
+inherit eutils multilib systemd toolchain-funcs autotools
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="http://www.netfilter.org/projects/iptables/"
 SRC_URI="http://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="ipv6 netlink static-libs"
+# Subslot tracks libxtables as that's the one other packages generally link
+# against and iptables changes.  Will have to revisit if other sonames change.
+SLOT="0/10"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="conntrack ipv6 netlink pcap static-libs"
 
 RDEPEND="
+	conntrack? ( net-libs/libnetfilter_conntrack )
 	netlink? ( net-libs/libnfnetlink )
+	pcap? ( net-libs/libpcap )
 "
 DEPEND="${RDEPEND}
 	virtual/os-headers
@@ -40,6 +44,7 @@ src_configure() {
 
 	sed -i \
 		-e "/nfnetlink=[01]/s:=[01]:=$(usex netlink 1 0):" \
+		-e "/nfconntrack=[01]/s:=[01]:=$(usex conntrack 1 0):" \
 		configure || die
 
 	econf \
@@ -47,6 +52,7 @@ src_configure() {
 		--libexecdir="${EPREFIX}/$(get_libdir)" \
 		--enable-devel \
 		--enable-shared \
+		$(use_enable pcap bpf-compiler) \
 		$(use_enable static-libs static) \
 		$(use_enable ipv6)
 }
@@ -72,15 +78,20 @@ src_install() {
 	doins include/iptables/internal.h
 
 	keepdir /var/lib/iptables
-	newinitd "${FILESDIR}"/${PN}-1.4.13-r1.init iptables
+	newinitd "${FILESDIR}"/${PN}.init iptables
 	newconfd "${FILESDIR}"/${PN}-1.4.13.confd iptables
 	if use ipv6 ; then
 		keepdir /var/lib/ip6tables
-		newinitd "${FILESDIR}"/iptables-1.4.13-r1.init ip6tables
+		newinitd "${FILESDIR}"/iptables.init ip6tables
 		newconfd "${FILESDIR}"/ip6tables-1.4.13.confd ip6tables
 	fi
 
-	# Move important libs to /lib
+	systemd_dounit "${FILESDIR}"/systemd/iptables{,-{re,}store}.service
+	if use ipv6 ; then
+		systemd_dounit "${FILESDIR}"/systemd/ip6tables{,-{re,}store}.service
+	fi
+
+	# Move important libs to /lib #332175
 	gen_usr_ldscript -a ip{4,6}tc iptc xtables
 
 	prune_libtool_files

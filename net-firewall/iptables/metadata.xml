@@ -3,7 +3,9 @@
 <pkgmetadata>
 <herd>base-system</herd>
 <use>
- <flag name='netlink'>Build against libnfnetlink which enables the nfnl_osf util</flag>
+	<flag name='conntrack'>Build against <pkg>net-libs/libnetfilter_conntrack</pkg> when enables the connlabel matcher</flag>
+	<flag name='netlink'>Build against libnfnetlink which enables the nfnl_osf util</flag>
+	<flag name='pcap'>Build against <pkg>net-libs/libpcap</pkg> which enables the nfbpf_compile util</flag>
 </use>
 <longdescription>
   iptables is the userspace command line program used to set up, maintain, and

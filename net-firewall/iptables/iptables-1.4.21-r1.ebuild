@@ -15,10 +15,11 @@ SRC_URI="http://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="ipv6 netlink static-libs"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+IUSE="conntrack ipv6 netlink static-libs"
 
 RDEPEND="
+	conntrack? ( net-libs/libnetfilter_conntrack )
 	netlink? ( net-libs/libnfnetlink )
 "
 DEPEND="${RDEPEND}
@@ -40,6 +41,7 @@ src_configure() {
 
 	sed -i \
 		-e "/nfnetlink=[01]/s:=[01]:=$(usex netlink 1 0):" \
+		-e "/nfconntrack=[01]/s:=[01]:=$(usex conntrack 1 0):" \
 		configure || die
 
 	econf \
@@ -85,7 +87,7 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/systemd/ip6tables{,-{re,}store}.service
 	fi
 
-	# Move important libs to /lib
+	# Move important libs to /lib #332175
 	gen_usr_ldscript -a ip{4,6}tc iptc xtables
 
 	prune_libtool_files

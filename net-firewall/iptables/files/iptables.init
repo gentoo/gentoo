@@ -1,15 +1,16 @@
 #!/sbin/runscript
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-extra_commands="save panic"
+extra_commands="check save panic"
 extra_started_commands="reload"
 
 iptables_name=${SVCNAME}
-if [ "${iptables_name}" != "iptables" -a "${iptables_name}" != "ip6tables" ] ; then
-	iptables_name="iptables"
-fi
+case ${iptables_name} in
+iptables|ip6tables) ;;
+*) iptables_name="iptables" ;;
+esac
 
 iptables_bin="/sbin/${iptables_name}"
 case ${iptables_name} in
@@ -20,8 +21,8 @@ case ${iptables_name} in
 esac
 
 depend() {
+	need localmount #434774
 	before net
-	use logger
 }
 
 set_table_policy() {
@@ -34,7 +35,7 @@ set_table_policy() {
 	esac
 	local chain
 	for chain in ${chains} ; do
-		${iptables_bin} -t ${table} -P ${chain} ${policy}
+		${iptables_bin} -w -t ${table} -P ${chain} ${policy}
 	done
 }
 
@@ -72,29 +73,41 @@ stop() {
 	for a in $(cat ${iptables_proc}) ; do
 		set_table_policy $a ACCEPT
 
-		${iptables_bin} -F -t $a
-		${iptables_bin} -X -t $a
+		${iptables_bin} -w -F -t $a
+		${iptables_bin} -w -X -t $a
 	done
 	eend $?
 }
 
 reload() {
 	checkkernel || return 1
+	checkrules || return 1
 	ebegin "Flushing firewall"
 	local a
 	for a in $(cat ${iptables_proc}) ; do
-		${iptables_bin} -F -t $a
-		${iptables_bin} -X -t $a
+		${iptables_bin} -w -F -t $a
+		${iptables_bin} -w -X -t $a
 	done
 	eend $?
 
 	start
 }
 
+checkrules() {
+	ebegin "Checking rules"
+	${iptables_bin}-restore --test ${SAVE_RESTORE_OPTIONS} < "${iptables_save}"
+	eend $?
+}
+
+check() {
+	# Short name for users of init.d script.
+	checkrules
+}
+
 save() {
 	ebegin "Saving ${iptables_name} state"
-	touch "${iptables_save}"
-	chmod 0600 "${iptables_save}"
+	checkpath -q -d "$(dirname "${iptables_save}")"
+	checkpath -q -m 0600 -f "${iptables_save}"
 	${iptables_bin}-save ${SAVE_RESTORE_OPTIONS} > "${iptables_save}"
 	eend $?
 }
@@ -108,8 +121,8 @@ panic() {
 	local a
 	ebegin "Dropping all packets"
 	for a in $(cat ${iptables_proc}) ; do
-		${iptables_bin} -F -t $a
-		${iptables_bin} -X -t $a
+		${iptables_bin} -w -F -t $a
+		${iptables_bin} -w -X -t $a
 
 		set_table_policy $a DROP
 	done
