@@ -16,7 +16,7 @@ inherit enlightenment toolchain-funcs multilib-minimal
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="http://www.enlightenment.org/"
 
-IUSE="bzip2 gif jpeg cpu_flags_x86_mmx mp3 png static-libs tiff X zlib"
+IUSE="bzip2 gif jpeg cpu_flags_x86_mmx cpu_flags_x86_sse2 mp3 png static-libs tiff X zlib"
 
 RDEPEND="=media-libs/freetype-2*[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
@@ -38,9 +38,9 @@ DEPEND="${RDEPEND}
 	)"
 
 multilib_src_configure() {
-	# imlib2 has diff configure options for x86/amd64 mmx
+	# imlib2 has diff configure options for x86/amd64 assembly
 	if [[ $(tc-arch) == amd64 ]]; then
-		E_ECONF+=( $(use_enable cpu_flags_x86_mmx amd64) --disable-mmx )
+		E_ECONF+=( $(use_enable cpu_flags_x86_sse2 amd64) --disable-mmx )
 	else
 		E_ECONF+=( --disable-amd64 $(use_enable cpu_flags_x86_mmx mmx) )
 	fi
