@@ -70,32 +70,65 @@ COMMON_LIB_DEPEND=">=dev-libs/glib-2.0[static-libs(+)]
 	xattr? ( sys-apps/attr[static-libs(+)] )"
 SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
+	accessibility? ( app-accessibility/brltty[static-libs(+)] )
 	aio? ( dev-libs/libaio[static-libs(+)] )
+	alsa? ( >=media-libs/alsa-lib-1.0.13 )
+	bluetooth? ( net-wireless/bluez )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
+	gtk? (
+		gtk2? (
+			x11-libs/gtk+:2
+			vte? ( x11-libs/vte:0 )
+		)
+		!gtk2? (
+			x11-libs/gtk+:3
+			vte? ( x11-libs/vte:2.90 )
+		)
+	)
 	infiniband? ( sys-infiniband/librdmacm:=[static-libs(+)] )
+	iscsi? ( net-libs/libiscsi )
 	jpeg? ( virtual/jpeg:=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	ncurses? ( sys-libs/ncurses[static-libs(+)] )
 	nfs? ( >=net-fs/libnfs-1.9.3[static-libs(+)] )
 	numa? ( sys-process/numactl[static-libs(+)] )
+	opengl? (
+		virtual/opengl
+		media-libs/libepoxy[static-libs(+)]
+		media-libs/mesa[static-libs(+)]
+		media-libs/mesa[gles2]
+	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
+	pulseaudio? ( media-sound/pulseaudio )
 	rbd? ( sys-cluster/ceph[static-libs(+)] )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
-		!sdl2? ( >=media-libs/libsdl-1.2.11[static-libs(+)] )
-		sdl2? ( media-libs/libsdl2[static-libs(+)] )
+		!sdl2? (
+			media-libs/libsdl[X]
+			>=media-libs/libsdl-1.2.11[static-libs(+)]
+		)
+		sdl2? (
+			media-libs/libsdl2[X]
+			media-libs/libsdl2[static-libs(+)]
+		)
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
+	smartcard? ( dev-libs/nss !app-emulation/libcacard )
 	snappy? ( app-arch/snappy[static-libs(+)] )
-	spice? ( >=app-emulation/spice-0.12.0[static-libs(+)] )
+	spice? (
+		>=app-emulation/spice-protocol-0.12.3
+		>=app-emulation/spice-0.12.0[static-libs(+)]
+	)
 	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
 	tls? ( net-libs/gnutls[static-libs(+)] )
-	usb? ( >=dev-libs/libusb-1.0.18[static-libs(+)] )
+	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
+	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	uuid? ( >=sys-apps/util-linux-2.16.0[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
+	virtfs? ( sys-libs/libcap )
 	xfs? ( sys-fs/xfsprogs[static-libs(+)] )"
 USER_LIB_DEPEND="${COMMON_LIB_DEPEND}"
 X86_FIRMWARE_DEPEND="
@@ -115,35 +148,8 @@ CDEPEND="
 	!static-user? ( $(printf "%s? ( ${USER_LIB_DEPEND//\[static-libs(+)]} ) " ${use_user_targets}) )
 	qemu_softmmu_targets_i386? ( ${X86_FIRMWARE_DEPEND} )
 	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )
-	accessibility? ( app-accessibility/brltty )
-	alsa? ( >=media-libs/alsa-lib-1.0.13 )
-	bluetooth? ( net-wireless/bluez )
-	gtk? (
-		gtk2? (
-			x11-libs/gtk+:2
-			vte? ( x11-libs/vte:0 )
-		)
-		!gtk2? (
-			x11-libs/gtk+:3
-			vte? ( x11-libs/vte:2.90 )
-		)
-	)
-	iscsi? ( net-libs/libiscsi )
-	opengl? (
-		virtual/opengl
-		media-libs/mesa[gles2]
-	)
-	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
-	sdl? (
-		!sdl2? ( media-libs/libsdl[X] )
-		sdl2? ( media-libs/libsdl2[X] )
-	)
-	smartcard? ( dev-libs/nss !app-emulation/libcacard )
-	spice? ( >=app-emulation/spice-protocol-0.12.3 )
 	systemtap? ( dev-util/systemtap )
-	usbredir? ( >=sys-apps/usbredir-0.6 )
-	virtfs? ( sys-libs/libcap )
 	xen? ( app-emulation/xen-tools )"
 DEPEND="${CDEPEND}
 	dev-lang/perl
@@ -298,12 +304,6 @@ qemu_src_configure() {
 
 	mkdir "${builddir}"
 
-	# audio options
-	local audio_opts="oss"
-	use alsa && audio_opts="alsa,${audio_opts}"
-	use sdl && audio_opts="sdl,${audio_opts}"
-	use pulseaudio && audio_opts="pa,${audio_opts}"
-
 	local conf_opts=(
 		--prefix=/usr
 		--sysconfdir=/etc
@@ -384,6 +384,12 @@ qemu_src_configure() {
 		)
 		;;
 	softmmu)
+		# audio options
+		local audio_opts="oss"
+		use alsa && audio_opts="alsa,${audio_opts}"
+		use sdl && audio_opts="sdl,${audio_opts}"
+		use pulseaudio && audio_opts="pa,${audio_opts}"
+
 		conf_opts+=(
 			--disable-linux-user
 			--enable-system
