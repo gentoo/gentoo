@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -87,13 +87,21 @@ case ${GTK_SHARP_MODULE} in
 	glib|glade|gtk|gdk|atk|pango|gtk-dotnet|gtk-gapi|gtk-docs)
 		TARBALL="gtk-sharp"
 		case ${PVR} in
-			2.12.*)
+			2.12.10*)
 				SRC_URI="mirror://gentoo/${TARBALL}-2.12.7.patch.bz2"
 				#Upstream: https://bugzilla.novell.com/show_bug.cgi?id=$bugno
 				#Upstream bug #470390 for the gtk-sharp-2.12.7.patch
 				PATCHES=(
 					"${WORKDIR}/${TARBALL}-2.12.7.patch"
 				)
+				;;
+			2.12.11*)
+				SRC_URI="mirror://gentoo/${TARBALL}-2.12.11.patch.bz2"
+				PATCHES=(
+					"${WORKDIR}/${TARBALL}-2.12.11.patch"
+				)
+				;;
+			2.12.1*)
 				EAUTORECONF="YES"
 				add_bdepend "=sys-devel/automake-1.10*"
 				add_bdepend ">=sys-devel/autoconf-2.61"
@@ -137,7 +145,7 @@ esac
 case ${PF} in
 	#gtk-sharp tarball
 	gtk-sharp-docs*)
-		add_depend ">=dev-lang/mono-2.0"
+		add_depend ">=virtual/monodoc-2.0"
 		;;
 	gtk-sharp-gapi*)
 		add_rdepend "!<=dev-dotnet/gtk-sharp-2.12.7:2"
@@ -275,8 +283,13 @@ S="${WORKDIR}/${TARBALL}-${PV}"
 # @ECLASS-VARIABLE: SRC_URI
 # @DESCRIPTION:
 # Default value: mirror://gnome/sources/${TARBALL}/${PV_MAJOR}/${TARBALL}-${PV}.tar.bz2
-SRC_URI="${SRC_URI}
-	mirror://gnome/sources/${TARBALL}/${PV_MAJOR}/${TARBALL}-${PV}.tar.bz2"
+if TARBALL="gtk-sharp"; then
+	SRC_URI="${SRC_URI}
+		http://download.mono-project.com/sources/gtk-sharp212/${TARBALL}-${PV}.tar.bz2"
+else
+	SRC_URI="${SRC_URI}
+		mirror://gnome/sources/${TARBALL}/${PV_MAJOR}/${TARBALL}-${PV}.tar.bz2"
+fi
 
 # @FUNCTION: get_sharp_apis
 # @USAGE: <type> <pkgconfig-package>
