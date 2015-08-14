@@ -137,6 +137,7 @@ RDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/cve-2015-5163-stable-kilo.patch"
 )
 
 pkg_setup() {
