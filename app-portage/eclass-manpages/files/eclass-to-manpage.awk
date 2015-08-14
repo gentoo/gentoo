@@ -18,7 +18,7 @@
 # @BUGREPORTS:
 # <optional; description of how to report bugs;
 #  default: tell people to use bugs.gentoo.org>
-# @VCSURL: <optional; url to vcs for this eclass; default: http://sources.gentoo.org/eclass/@ECLASS@?view=log>
+# @VCSURL: <optional; url to vcs for this eclass; default: https://gitweb.gentoo.org/repo/gentoo.git/log/eclass/@ECLASS@>
 # @BLURB: <required; short description>
 # @DESCRIPTION:
 # <optional; long description>
@@ -375,7 +375,7 @@ BEGIN {
 		PORTDIR = "/usr/portage"
 	eclassdir = PORTDIR "/eclass"
 	reporting_bugs = "Please report bugs via http://bugs.gentoo.org/"
-	vcs_url = "http://sources.gentoo.org/eclass/@ECLASS@?view=log"
+	vcs_url = "https://gitweb.gentoo.org/repo/gentoo.git/log/eclass/@ECLASS@"
 }
 
 #
