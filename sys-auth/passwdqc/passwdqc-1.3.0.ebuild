@@ -27,6 +27,11 @@ src_prepare() {
 	sed -i \
 		-e 's:`uname -s`:Linux:' \
 		Makefile || die
+	# See if the system has a shadow.h. #554504
+	echo '#include <shadow.h>' > "${T}"/test.c
+	if ! $(tc-getCPP) ${CPPFLAGS} "${T}"/test.c >& /dev/null ; then
+		sed -i -e 's:-DHAVE_SHADOW::' Makefile || die
+	fi
 }
 
 _emake() {
