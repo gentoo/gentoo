@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig-v5.38.eclass,v 1.1 2015/05/27 19:00:31 axs Exp $
+# $Id$
 #
-# @ECLASS: mozconfig-v5.33.eclass
+# @ECLASS: mozconfig-v6.40.eclass
 # @MAINTAINER:
 # mozilla team <mozilla@gentoo.org>
-# @BLURB: the new mozilla common configuration eclass for FF33 and newer, v5
+# @BLURB: the new mozilla common configuration eclass for FF33 and newer, v6
 # @DESCRIPTION:
 # This eclass is used in mozilla ebuilds (firefox, thunderbird, seamonkey)
 # to provide a single common place for the common mozilla engine compoments.
