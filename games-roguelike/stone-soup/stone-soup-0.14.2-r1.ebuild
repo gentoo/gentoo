@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ SRC_URI="mirror://sourceforge/crawl-ref/Stone%20Soup/${PV}/${MY_P}-nodeps.tar.xz
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug luajit ncurses test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121
@@ -36,7 +36,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-db/sqlite:3
 	luajit? ( >=dev-lang/luajit-2.0.0 )
-	!luajit? ( >=dev-lang/lua-5.1.0[deprecated] )
+	!luajit? ( >=dev-lang/lua-5.1.0:0[deprecated] )
 	sys-libs/zlib
 	!ncurses? ( !tiles? ( sys-libs/ncurses ) )
 	ncurses? ( sys-libs/ncurses )
