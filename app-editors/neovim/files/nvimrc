@@ -6,37 +6,10 @@
 " "/etc/vim/nvimrc.local" file, and on a per-user basis via "~/.nvimrc".
 " You may need to create these.
 
-" {{{ General settings
-" The following are some sensible defaults for Vim for most users.
-set bs=2                " Allow backspacing over everything in insert mode
-set ai                  " Always set auto-indenting on
-set history=50          " keep 50 lines of command history
-set ruler               " Show the cursor position all the time
-set formatoptions+=j    " Delete comment character when joining commented lines
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" When doing tab completion, give the following files lower priority. You may
-" wish to set 'wildignore' to completely ignore files, and 'wildmenu' to enable
-" enhanced tab completion. These can be done in the user vimrc file.
-set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
-
-" When displaying line numbers, don't use an annoyingly wide number column. This
-" doesn't enable line numbers -- :set number will do that. The value given is a
-" minimum width to use for the number column, not a fixed size.
-set numberwidth=3
-
-" Use sensible whitespace indicators
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-" }}}
-
-" {{{ Modeline settings
-" We don't allow modelines by default. See bug #14088 and bug #73715.
-" If you're not concerned about these, you can enable them on a per-user
-" basis by adding "set modeline" to your ~/.vimrc file.
-set nomodeline
-" }}}
+" Neovim comes with sensible defaults, see:
+" https://github.com/neovim/neovim/issues/2676
+" Most of the general settings from Gentoo's vimrc have been dropped here.
+" We add only some necessary fixes and a few Gentoo specific settings.
 
 " {{{ Locale settings
 " If we have a BOM, always honour that rather than trying to guess.
@@ -49,44 +22,6 @@ if &fileencodings !~? "utf-8"
   " If we have to add this, the default encoding is not Unicode.
   let g:added_fenc_utf8 = 1
   set fileencodings+=utf-8
-endif
-" }}}
-
-" {{{ Syntax highlighting settings
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-" }}}
-
-" {{{ Terminal fixes
-if &term ==? "xterm"
-  set t_Sb=^[4%dm
-  set t_Sf=^[3%dm
-  set ttymouse=xterm2
-endif
-
-if &term ==? "gnome" && has("eval")
-  " Set useful keys that vim doesn't discover via termcap but are in the
-  " builtin xterm termcap. See bug #122562. We use exec to avoid having to
-  " include raw escapes in the file.
-  exec "set <C-Left>=\eO5D"
-  exec "set <C-Right>=\eO5C"
-endif
-" }}}
-
-" {{{ Filetype plugin settings
-" Enable plugin-provided filetype settings, but only if the ftplugin
-" directory exists (which it won't on livecds, for example).
-if isdirectory(expand("$VIMRUNTIME/ftplugin"))
-  filetype plugin on
-
-  " Uncomment the next line (or copy to your ~/.vimrc) for plugin-provided
-  " indent settings. Some people don't like these, so we won't turn them on by
-  " default.
-  " filetype indent on
 endif
 " }}}
 
@@ -119,22 +54,21 @@ augroup gentoo
   " Note that the rules below are very minimal and don't cover everything.
   " Better to emerge app-vim/gentoo-syntax, which provides full syntax,
   " filetype and indent settings for all things Gentoo.
-  au BufRead,BufNewFile *.e{build,class} let is_bash=1|setfiletype sh
   au BufRead,BufNewFile *.e{build,class} set ts=4 sw=4 noexpandtab
 
   " In text files, limit the width of text to 78 characters, but be careful
   " that we don't override the user's setting.
   autocmd BufNewFile,BufRead *.txt
         \ if &tw == 0 && ! exists("g:leave_my_textwidth_alone") |
-        \     setlocal textwidth=78 |
+        \   setlocal textwidth=78 |
         \ endif
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
         \ if ! exists("g:leave_my_cursor_position_alone") |
-        \     if line("'\"") > 0 && line ("'\"") <= line("$") |
-        \         exe "normal g'\"" |
-        \     endif |
+        \   if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \     exe "normal g'\"" |
+        \   endif |
         \ endif
 
   " When editing a crontab file, set backupcopy to yes rather than auto. See
@@ -147,22 +81,25 @@ augroup gentoo
   " Except of course if a byte-order mark is in effect.
   autocmd BufReadPost *
         \ if exists("g:added_fenc_utf8") && &fileencoding == "utf-8" &&
-        \    ! &bomb && search('[\x80-\xFF]','nw') == 0 && &modifiable |
-        \       set fileencoding= |
+        \   ! &bomb && search('[\x80-\xFF]','nw') == 0 && &modifiable |
+        \     set fileencoding= |
+        \ endif
+
+  " Strip trailing spaces on write
+  autocmd BufWritePre *.e{build,class}
+        \ if ! exists("g:leave_my_trailing_space_alone") |
+        \   :%s/\s\+$//e |
         \ endif
 
 augroup END
 
-" Strip trailing spaces on write
-autocmd BufWritePre * :%s/\s\+$//e
-
 endif " has("autocmd")
 " }}}
 
-" {{{ vimrc.local
+" {{{ nvimrc.local
 if filereadable("/etc/vim/nvimrc.local")
   source /etc/vim/nvimrc.local
 endif
 " }}}
 
-" vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
+" vim: set tw=80 sw=2 sts=2 et foldmethod=marker :
