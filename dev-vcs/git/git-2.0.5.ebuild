@@ -42,11 +42,11 @@ IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv media
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:0
 	sys-libs/zlib
 	pcre? ( dev-libs/libpcre )
 	perl? ( dev-lang/perl:=[-build(-)] )
-	tk? ( dev-lang/tk )
+	tk? ( dev-lang/tk:0 )
 	curl? (
 		net-misc/curl
 		webdav? ( dev-libs/expat )

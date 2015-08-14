@@ -18,7 +18,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="${PYTHON_DEPS}
+	dev-vcs/git"
 DEPEND="dev-python/docutils"
 
 src_compile() {
