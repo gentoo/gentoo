@@ -17,7 +17,7 @@ fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="perl python"
+IUSE="+nvimpager perl python"
 
 CDEPEND="dev-lang/luajit:2
 	>=dev-libs/libtermkey-0.17
@@ -42,6 +42,9 @@ src_prepare() {
 	# add eclass to bash filetypes
 	sed -e 's|*.ebuild|*.ebuild,*.eclass|' -i runtime/filetype.vim || die
 
+	# make less.sh macro actually work with neovim
+	sed -e 's|vim |nvim |g' -i runtime/macros/less.sh || die
+
 	cmake-utils_src_prepare
 }
 
@@ -60,7 +63,13 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
+
 	# install a default configuration file
 	insinto /etc/vim
 	doins "${FILESDIR}"/nvimrc
+
+	# conditionally install a symlink for nvimpager
+	if use nvimpager; then
+		dosym /usr/share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
+	fi
 }

@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>vim</herd>
+  <use>
+    <flag name='nvimpager'>Install nvimpager symlink to less.sh macro</flag>
+  </use>
   <upstream>
     <remote-id type="github">neovim/neovim</remote-id>
   </upstream>
