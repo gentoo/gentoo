@@ -145,12 +145,14 @@ diff --git a/examples/apparmor/usr.sbin.libvirtd b/examples/apparmor/usr.sbin.li
 index 5d606e6..ab2f1a9 100644
 --- a/examples/apparmor/usr.sbin.libvirtd
 +++ b/examples/apparmor/usr.sbin.libvirtd
-@@ -58,8 +58,8 @@
+@@ -58,8 +58,10 @@
    audit deny /sys/kernel/security/apparmor/.* rwxl,
    /sys/kernel/security/apparmor/profiles r,
    /usr/{lib,lib64}/libvirt/* PUxr,
 -  /usr/{lib,lib64}/libvirt/libvirt_parthelper ix,
 -  /usr/{lib,lib64}/libvirt/libvirt_iohelper ix,
++  /usr/libexec/virt-aa-helper PUxr,
++  /usr/libexec/libvirt_lxc PUxr,
 +  /usr/libexec/libvirt_parthelper ix,
 +  /usr/libexec/libvirt_iohelper ix,
    /etc/libvirt/hooks/** rmix,
