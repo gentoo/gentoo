@@ -522,13 +522,13 @@ gtk-sharp-module_src_configure() {
 # @FUNCTION: gtk-sharp-module_src_compile
 # @DESCRIPTION:
 # Calls emake in the subdir of the module.
-# Sets CSC=/usr/bin/gmcs. Deletes top_srcdir Makefiles to prevent recursing in
+# Sets CSC=/usr/bin/mcs. Deletes top_srcdir Makefiles to prevent recursing in
 # case we missed some dll references.
 # Is exported.
 gtk-sharp-module_src_compile() {
 	rm -f "${S}"/Makefile* &> /dev/null
 	cd "${S}/${GTK_SHARP_MODULE_DIR}"
-	emake CSC=/usr/bin/gmcs || die "emake failed"
+	emake CSC=/usr/bin/mcs || die "emake failed"
 }
 
 # @FUNCTION: gtk-sharp-module_src_install
