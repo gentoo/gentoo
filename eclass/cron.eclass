@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: cron
+# @ECLASS: cron.eclass
 # @MAINTAINER:
 # cron-bugs@gentoo.org
 # @AUTHOR:

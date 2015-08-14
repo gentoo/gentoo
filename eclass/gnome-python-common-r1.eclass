@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: gnome-python-common-r1
+# @ECLASS: gnome-python-common-r1.eclass
 # @MAINTAINER:
 # GNOME team <gnome@gentoo.org>
 # @AUTHOR:

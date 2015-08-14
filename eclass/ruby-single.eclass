@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: ruby-single
+# @ECLASS: ruby-single.eclass
 # @MAINTAINER:
 # Ruby team <ruby@gentoo.org>
 # @AUTHOR:
