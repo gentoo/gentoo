@@ -294,12 +294,12 @@ function _handle_variable() {
 	# first try var="val"
 	op = "="
 	regex = "^.*" var_name "=(.*)$"
-	val = gensub(regex, "\\1", "", $0)
+	val = gensub(regex, "\\1", 1, $0)
 	if (val == $0) {
 		# next try : ${var:=val}
 		op = "?="
 		regex = "^[[:space:]]*:[[:space:]]*[$]{" var_name ":?=(.*)}"
-		val = gensub(regex, "\\1", "", $0)
+		val = gensub(regex, "\\1", 1, $0)
 		if (val == $0) {
 			if (default_unset + required + internal == 0)
 				warn(var_name ": unable to extract default variable content: " $0)
@@ -367,7 +367,7 @@ function handle_footer() {
 	print ".BR " eclassdir "/" eclass
 	print ".SH \"SEE ALSO\""
 	print ".BR ebuild (5)"
-	print pre_text(gensub("@ECLASS@", eclass, "", vcs_url))
+	print pre_text(gensub("@ECLASS@", eclass, 1, vcs_url))
 }
 
 #
