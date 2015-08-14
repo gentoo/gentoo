@@ -6,9 +6,9 @@
 # New entries go on top.
 
 # Heather Cynede <cynede@gentoo.org> (13 Aug 2015)
-# mono 3.12.1 currently fails with doc most likely because of xattr
+# mono currently fails with doc most likely because of xattr
 # Gentoo bug: 554484
-~dev-lang/mono-3.12.1 doc
+>=dev-lang/mono-3.12.1 doc
 
 # Michael Palimaka <kensington@gentoo.org> (12 Aug 2015)
 # Requires unreleased dependency

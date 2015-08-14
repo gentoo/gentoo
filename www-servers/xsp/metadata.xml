@@ -6,4 +6,7 @@
 		XSP is a standalone web server written in C# that can be used to run
 		your ASP.NET applications.
 	</longdescription>
+	<use>
+		<flag name='developer'>creates .mdb files for either Release and Debug</flag>
+	</use>
 </pkgmetadata>
