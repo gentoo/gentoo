@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/555106
+
+patch by Gokturk Yuksek <gokturk@binghamton.edu>
+
+--- rngd.8.in
++++ rngd.8.in
+@@ -59,7 +59,7 @@
+ .TP
+ \fB\-r\fI file\fR, \fB\-\-rng-device=\fIfile\fR
+ Kernel device used for random number input
+-(default: /dev/hwrandom)
++(default: /dev/hwrng)
+ .TP
+ \fB\-s\fI nnn\fR, \fB\-\-random-step=\fInnn\fR
+ Number of bytes written to random-device at a time (default: 64)
