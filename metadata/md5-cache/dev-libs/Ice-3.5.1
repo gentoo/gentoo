@@ -1,13 +1,13 @@
-_eclasses_=mono-env	10809200679bcceefebac9e72bebb6e6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	ruby-utils	97c910cb6b087c64260df641a9b3de0c	ruby-ng	497a8201c1d4a4129a8ac57a2bf2abb5	db-use	a4966c7f4f7df444ead1212848c13cc9	multibuild	4550e10791f720f7af3fdd911aedf518	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=1a92672cb24a82be1516f04ecfa4ae11
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test unpack
-EAPI=5
 DEPEND=>=dev-libs/expat-2.0.1 >=app-arch/bzip2-1.0.5 >=dev-libs/openssl-0.9.8o:0 || ( sys-libs/db:5.3[cxx] sys-libs/db:5.1[cxx] sys-libs/db:4.8[cxx] ) ~dev-cpp/libmcpp-2.7.2 python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)] ) ruby? ( dev-lang/ruby:1.9 ) mono? ( dev-lang/mono ) !dev-python/IcePy !dev-ruby/IceRuby ncurses? ( sys-libs/ncurses sys-libs/readline ) test? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)] )
 DESCRIPTION=ICE middleware C++ library and generator tools
-LICENSE=GPL-2
-IUSE=doc examples +ncurses mono python ruby test debug python_targets_python2_7 python_targets_pypy elibc_FreeBSD ruby_targets_ruby19
-SRC_URI=http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.tar.gz doc? ( http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.pdf )
-KEYWORDS=amd64 ~arm ~ia64 x86 ~x86-linux ~x64-macos
+EAPI=5
 HOMEPAGE=http://www.zeroc.com/
+IUSE=doc examples +ncurses mono python ruby test debug python_targets_python2_7 python_targets_pypy elibc_FreeBSD ruby_targets_ruby19
+KEYWORDS=amd64 ~arm ~ia64 x86 ~x86-linux ~x64-macos
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/expat-2.0.1 >=app-arch/bzip2-1.0.5 >=dev-libs/openssl-0.9.8o:0 || ( sys-libs/db:5.3[cxx] sys-libs/db:5.1[cxx] sys-libs/db:4.8[cxx] ) ~dev-cpp/libmcpp-2.7.2 python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_pypy(-)] ) ruby? ( dev-lang/ruby:1.9 ) mono? ( dev-lang/mono ) !dev-python/IcePy !dev-ruby/IceRuby
+SLOT=0
+SRC_URI=http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.tar.gz doc? ( http://www.zeroc.com/download/Ice/3.5/Ice-3.5.1.pdf )
+_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	mono-env	10809200679bcceefebac9e72bebb6e6	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	ruby-ng	497a8201c1d4a4129a8ac57a2bf2abb5	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=1a92672cb24a82be1516f04ecfa4ae11

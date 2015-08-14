@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	python-single-r1	626346d3c54afb66571061bbd4c53f25	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=143a42eaac8499008c250b4b921c69f7
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
-EAPI=5
 DEPEND=app-arch/snappy dev-libs/openssl dev-libs/boost[python] dev-libs/handystats sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=The elliptics network - eblob backend
-LICENSE=GPL-2
-IUSE=python python_targets_python2_7
-SRC_URI=https://github.com/reverbrain/eblob/archive/v0.22.16.zip -> elliptics-eblob-0.22.16.zip
-KEYWORDS=~x86 ~amd64
+EAPI=5
 HOMEPAGE=http://www.ioremap.net/projects/elliptics
+IUSE=python python_targets_python2_7
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
 RDEPEND=app-arch/snappy dev-libs/openssl dev-libs/boost[python] dev-libs/handystats
+SLOT=0
+SRC_URI=https://github.com/reverbrain/eblob/archive/v0.22.16.zip -> elliptics-eblob-0.22.16.zip
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=143a42eaac8499008c250b4b921c69f7

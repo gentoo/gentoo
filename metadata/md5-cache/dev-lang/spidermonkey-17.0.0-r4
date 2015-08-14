@@ -1,15 +1,15 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=9ed72e04e4a50fbdb8e00cb47a36f0e3
-SLOT=17
 DEFINED_PHASES=compile configure install prepare setup test
-EAPI=5
 DEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi >=sys-libs/zlib-1.1.4 || ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) app-arch/zip virtual/pkgconfig
 DESCRIPTION=Stand-alone JavaScript C library
-LICENSE=NPL-1.1
+EAPI=5
+HOMEPAGE=http://www.mozilla.org/js/spidermonkey/
 IUSE=debug jit minimal static-libs test
+KEYWORDS=alpha amd64 arm -hppa ia64 -mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
+LICENSE=NPL-1.1
+RDEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi >=sys-libs/zlib-1.1.4
 REQUIRED_USE=debug? ( jit )
 RESTRICT=ia64? ( test )
+SLOT=17
 SRC_URI=http://ftp.mozilla.org/pub/mozilla.org/js/mozjs17.0.0.tar.gz
-KEYWORDS=alpha amd64 arm -hppa ia64 -mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
-HOMEPAGE=http://www.mozilla.org/js/spidermonkey/
-RDEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi >=sys-libs/zlib-1.1.4
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9ed72e04e4a50fbdb8e00cb47a36f0e3

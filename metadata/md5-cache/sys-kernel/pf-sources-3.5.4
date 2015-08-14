@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python-any-r1	fdd97a8376ac7d4e15c8e254b06915fd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=1ac6f446df3e04aff0cdd7f5b4470511
-SLOT=3.5.4
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
-EAPI=5
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 DESCRIPTION=Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
-LICENSE=GPL-2 freedist
-IUSE=symlink build
-RESTRICT=binchecks strip
-SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.5.tar.xz http://pf.natalenko.name/sources/3.5/patch-3.5.4-pf.bz2
-KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
+EAPI=5
 HOMEPAGE=http://pf.natalenko.name/
+IUSE=symlink build
+KEYWORDS=-* ~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 freedist
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=3.5.4
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.5.tar.xz http://pf.natalenko.name/sources/3.5/patch-3.5.4-pf.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=1ac6f446df3e04aff0cdd7f5b4470511

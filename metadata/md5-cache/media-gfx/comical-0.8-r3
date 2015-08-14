@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	wxwidgets	6712758caa92e836a735c1281b34e70e	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=751421c2a136a4bb99ca5f093bf33e8f
-SLOT=0
 DEFINED_PHASES=compile install postinst postrm preinst prepare
-EAPI=4
 DEPEND=>=app-arch/unrar-4.1.4-r2 sys-libs/zlib[minizip] x11-libs/wxGTK:2.8[X] virtual/pkgconfig >=sys-apps/sed-4
 DESCRIPTION=A sequential image display program, to deal with .cbr and .cbz files
-LICENSE=GPL-2
-SRC_URI=mirror://sourceforge/comical/comical-0.8.tar.gz
-KEYWORDS=amd64 x86 ~x86-fbsd
+EAPI=4
 HOMEPAGE=http://comical.sourceforge.net/
+KEYWORDS=amd64 x86 ~x86-fbsd
+LICENSE=GPL-2
 RDEPEND=>=app-arch/unrar-4.1.4-r2 sys-libs/zlib[minizip] x11-libs/wxGTK:2.8[X]
+SLOT=0
+SRC_URI=mirror://sourceforge/comical/comical-0.8.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_md5_=751421c2a136a4bb99ca5f093bf33e8f

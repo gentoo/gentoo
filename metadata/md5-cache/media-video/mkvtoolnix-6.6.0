@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	6712758caa92e836a735c1281b34e70e	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=13611f2defd0631b5d25dde71882abdd
-SLOT=0
 DEFINED_PHASES=compile configure install prepare pretend
-EAPI=5
 DEPEND=>=dev-libs/libebml-1.3.0:= >=media-libs/libmatroska-1.4.1:= >=dev-libs/boost-1.46.0:= dev-libs/pugixml media-libs/flac media-libs/libogg media-libs/libvorbis sys-apps/file >=sys-devel/gcc-4.6 sys-libs/zlib qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) wxwidgets? ( x11-libs/wxGTK:2.8[X] ) dev-lang/ruby virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Tools to create, alter, and inspect Matroska files
-LICENSE=GPL-2
-IUSE=debug pch qt4 wxwidgets
-SRC_URI=http://www.bunkus.org/videotools/mkvtoolnix/sources/mkvtoolnix-6.6.0.tar.xz
-KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux
+EAPI=5
 HOMEPAGE=http://www.bunkus.org/videotools/mkvtoolnix
+IUSE=debug pch qt4 wxwidgets
+KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/libebml-1.3.0:= >=media-libs/libmatroska-1.4.1:= >=dev-libs/boost-1.46.0:= dev-libs/pugixml media-libs/flac media-libs/libogg media-libs/libvorbis sys-apps/file >=sys-devel/gcc-4.6 sys-libs/zlib qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) wxwidgets? ( x11-libs/wxGTK:2.8[X] )
+SLOT=0
+SRC_URI=http://www.bunkus.org/videotools/mkvtoolnix/sources/mkvtoolnix-6.6.0.tar.xz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_md5_=13611f2defd0631b5d25dde71882abdd

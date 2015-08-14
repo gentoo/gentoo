@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	elisp	484004c25306120b472b7dfdb0685c95	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	13aa6ffcee3f5f1d3a39515b001a39f5	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=27d1740a53c48d6f5b4637d0a8f3cd9d
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-EAPI=5
 DEPEND=>=virtual/emacs-23
 DESCRIPTION=When you start Emacs, Session restores various variables from your last session
-LICENSE=GPL-3+
-SRC_URI=mirror://sourceforge/emacs-session/session-2.3a.tar.gz
-KEYWORDS=amd64 ppc x86
+EAPI=5
 HOMEPAGE=http://emacs-session.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://sourceforge/emacs-session/session-2.3a.tar.gz
+_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=27d1740a53c48d6f5b4637d0a8f3cd9d

@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	portability	3a50b3ec310b86914f98babecc8f89c6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	cdrom	d59e7a8a50d875e095c60654bbe22273	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=a77c8eb9e4b14c46c26f3b093420828f
-SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-EAPI=5
 DEPEND=app-arch/unarj
 DESCRIPTION=Data files for Descent 2
-LICENSE=descent2-data
+EAPI=5
+HOMEPAGE=http://www.interplay.com/games/product.asp?GameID=109
 IUSE=videos
 KEYWORDS=amd64 ppc x86
-HOMEPAGE=http://www.interplay.com/games/product.asp?GameID=109
+LICENSE=descent2-data
 PROPERTIES=interactive
 RDEPEND=!<games-action/d2x-0.2.5-r3 games-misc/games-envd
+SLOT=0
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	cdrom	d59e7a8a50d875e095c60654bbe22273	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=a77c8eb9e4b14c46c26f3b093420828f

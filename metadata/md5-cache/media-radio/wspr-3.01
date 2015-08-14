@@ -1,14 +1,14 @@
-_eclasses_=multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	distutils-r1	fbebe7ad62dbe4583baab75733f8aa0	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	libtool	7f78cd7d403808a350c9ae23f5821fb4	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	autotools	8056957fdccf2b3cd6e282a4b4551d1a	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=f39a4bb7fecdb1aef1ecf55e2285c4fc
-SLOT=0
 DEFINED_PHASES=compile configure install prepare setup test
-EAPI=5
 DEPEND=virtual/python-imaging[tk,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] <dev-python/numpy-1.9.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pmw[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-libs/fftw:3.0 media-libs/hamlib media-libs/portaudio media-libs/libsamplerate !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Weak Signal Propagation Reporter
-LICENSE=GPL-2
-IUSE=python_targets_python2_7
-REQUIRED_USE=|| ( python_targets_python2_7 )
-SRC_URI=http://dev.gentoo.org/~tomjbe/distfiles/wspr-3.01.r2792.tgz
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://www.physics.princeton.edu/pulsar/K1JT/wspr.html
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
 RDEPEND=virtual/python-imaging[tk,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] <dev-python/numpy-1.9.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pmw[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-libs/fftw:3.0 media-libs/hamlib media-libs/portaudio media-libs/libsamplerate virtual/fortran python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~tomjbe/distfiles/wspr-3.01.r2792.tgz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=f39a4bb7fecdb1aef1ecf55e2285c4fc

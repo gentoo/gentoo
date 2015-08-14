@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	ruby-utils	97c910cb6b087c64260df641a9b3de0c	ruby-single	9281b7403005a55b992e20bd3f92a2b4	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=779dae3ac9fd4619ca11d5eef0d0feb8
-SLOT=0
 DEFINED_PHASES=compile install prepare test
-EAPI=5
 DEPEND=dev-libs/icu:= dev-libs/openssl media-libs/fontconfig media-libs/freetype media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/libpng:0= virtual/jpeg:0 || ( dev-lang/ruby:2.0 dev-lang/ruby:1.9 dev-lang/ruby:2.1 dev-lang/ruby:2.2 ) virtual/rubygems app-arch/unzip virtual/pkgconfig
 DESCRIPTION=A headless WebKit scriptable with a JavaScript API
-LICENSE=BSD
-IUSE=examples
-SRC_URI=https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.0.0-source.zip
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://phantomjs.org/
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
 RDEPEND=dev-libs/icu:= dev-libs/openssl media-libs/fontconfig media-libs/freetype media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/libpng:0= virtual/jpeg:0
+SLOT=0
+SRC_URI=https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.0.0-source.zip
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	pax-utils	a472fe09c2264598d61d4887809e6016	ruby-single	c49250968781888465d5a8597376297f	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=779dae3ac9fd4619ca11d5eef0d0feb8

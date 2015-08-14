@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=59284f762d80844727b9fdd24d79840b
-SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-EAPI=5
 DESCRIPTION=An exploratory action adventure game with an emphasis on audiovisual style
-LICENSE=CAPYBARA-EULA LGPL-3
-IUSE=bundled-libs
-RESTRICT=bindist fetch splitdebug
-SRC_URI=swordandsworcery_1.02.tar.gz
-KEYWORDS=-* amd64 x86
+EAPI=5
 HOMEPAGE=http://www.swordandsworcery.com/
+IUSE=bundled-libs
+KEYWORDS=-* amd64 x86
+LICENSE=CAPYBARA-EULA LGPL-3
 RDEPEND=virtual/opengl amd64? ( >=dev-libs/openssl-1.0.1h-r2[abi_x86_32(-)] >=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)] >=virtual/glu-9.0-r1[abi_x86_32(-)] >=virtual/opengl-7.0-r1[abi_x86_32(-)] >=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)] >=media-libs/flac-1.2.1-r5[abi_x86_32(-)] >=media-libs/libogg-1.3.0[abi_x86_32(-)] >=media-libs/libsndfile-1.0.25[abi_x86_32(-)] >=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)] >=media-sound/pulseaudio-2.1-r1[abi_x86_32(-)] >=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)] >=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXau-1.0.7-r1[abi_x86_32(-)] >=x11-libs/libxcb-1.9.1[abi_x86_32(-)] >=x11-libs/libXdmcp-1.1.1-r1[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXi-1.7.2[abi_x86_32(-)] >=x11-libs/libXtst-1.2.1-r1[abi_x86_32(-)] !bundled-libs? ( >=net-misc/curl-7.36.0[abi_x86_32(-)] >=media-libs/libsdl-1.2.15-r4[X,sound,video,opengl,joystick,abi_x86_32(-)] ) ) x86? ( dev-libs/openssl media-libs/alsa-lib media-libs/flac media-libs/libogg media-libs/libsndfile media-libs/libvorbis media-sound/pulseaudio sys-libs/zlib virtual/glu x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdmcp x11-libs/libXext x11-libs/libXi x11-libs/libXtst !bundled-libs? ( net-misc/curl media-libs/libsdl[X,sound,video,opengl,joystick] ) ) games-misc/games-envd
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=swordandsworcery_1.02.tar.gz
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=59284f762d80844727b9fdd24d79840b

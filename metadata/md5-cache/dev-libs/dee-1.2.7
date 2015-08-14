@@ -1,14 +1,14 @@
-_eclasses_=multibuild	4550e10791f720f7af3fdd911aedf518	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	cafc0cf4ff05a561eb084acb586152e	autotools-utils	bf099a6e3dfeaf20a7a94504d8dd896	libtool	7f78cd7d403808a350c9ae23f5821fb4	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	python-utils-r1	c595450196ccd7d3fac66424be096ffc
-_md5_=ff87d0fc2ba10ed8268e8d779db1c95c
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND=dev-libs/glib:2 dev-libs/icu:= introspection? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] dev-libs/gobject-introspection ) || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) doc? ( dev-util/gtk-doc ) test? ( dev-libs/gtx dev-util/dbus-test-runner ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Provide objects allowing to create Model-View-Controller type programs across DBus
-LICENSE=GPL-3
-IUSE=doc debug examples +icu introspection static-libs test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-REQUIRED_USE=introspection? ( || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 ) )
-SRC_URI=https://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz
-KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86
+EAPI=5
 HOMEPAGE=https://launchpad.net/dee/
+IUSE=doc debug examples +icu introspection static-libs test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-3
 RDEPEND=dev-libs/glib:2 dev-libs/icu:= introspection? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] dev-libs/gobject-introspection )
+REQUIRED_USE=introspection? ( || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 ) )
+SLOT=0
+SRC_URI=https://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c
+_md5_=ff87d0fc2ba10ed8268e8d779db1c95c

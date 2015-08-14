@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	base	84d9f879f57a8316ff02be0373a3d6f9	games	9e5e9ee0b325a8a10823f9b385ca2036	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=2df328af44ee5843c3d52a229baead88
-SLOT=0
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-EAPI=5
 DEPEND=>=media-libs/libsdl-1.2.2[sound,joystick,video] zlib? ( sys-libs/zlib ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) theora? ( media-libs/libtheora ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) flac? ( media-libs/flac ) opengl? ( virtual/opengl ) truetype? ( media-libs/freetype:2 ) fluidsynth? ( media-sound/fluidsynth ) x86? ( dev-lang/nasm ) >=sys-apps/sed-4
 DESCRIPTION=Reimplementation of the SCUMM game engine used in Lucasarts adventures
-LICENSE=GPL-2 LGPL-2.1 BSD GPL-3-with-font-exception
-IUSE=aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype unsupported vorbis zlib
-RESTRICT=test
-SRC_URI=mirror://sourceforge/scummvm/scummvm-1.7.0.tar.bz2
-KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+EAPI=5
 HOMEPAGE=http://scummvm.sourceforge.net/
+IUSE=aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype unsupported vorbis zlib
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2 LGPL-2.1 BSD GPL-3-with-font-exception
 RDEPEND=>=media-libs/libsdl-1.2.2[sound,joystick,video] zlib? ( sys-libs/zlib ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) theora? ( media-libs/libtheora ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) flac? ( media-libs/flac ) opengl? ( virtual/opengl ) truetype? ( media-libs/freetype:2 ) fluidsynth? ( media-sound/fluidsynth ) games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/scummvm/scummvm-1.7.0.tar.bz2
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	games	9c0a2dd4a6a25b6b7851fa01019cc809	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=2df328af44ee5843c3d52a229baead88
