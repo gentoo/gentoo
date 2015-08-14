@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit autotools eutils multilib
 
 DESCRIPTION="An implementation of encrypted filesystem in user-space using FUSE"
@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="xattr"
 
-RDEPEND=">=dev-libs/boost-1.34
-	>=dev-libs/openssl-0.9.7
+RDEPEND="dev-libs/boost:=
+	dev-libs/openssl:=
 	>=dev-libs/rlog-1.4
 	>=sys-fs/fuse-2.7.0
 	sys-libs/zlib"
