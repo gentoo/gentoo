@@ -1,0 +1,56 @@
+diff --git a/build/gcc/Makefile b/build/gcc/Makefile
+index b1af4c1..1dfa021 100755
+--- a/build/gcc/Makefile
++++ b/build/gcc/Makefile
+@@ -34,15 +34,15 @@ objdir = obj
+ ipath=$(prefix)/bin
+ CBASEFLAGS = -W -Wall -fno-rtti -fno-exceptions
+ JAVAINCS   = -I$(JAVA_HOME)/include
+-CXX = g++
++CXX ?= g++
+ INSTALL=install -o $(USER) -g $(USER)
+ 
+ ##################################################
+ 
+ # define compile options for each build
+-ifdef CFLAGS
+-    CFLAGSr   = -DNDEBUG $(CBASEFLAGS) $(CFLAGS)
+-    CFLAGSd   = -g $(CBASEFLAGS) $(CFLAGS)
++ifdef CXXFLAGS
++    CFLAGSr   = -DNDEBUG $(CBASEFLAGS) $(CXXFLAGS)
++    CFLAGSd   = -g $(CBASEFLAGS) $(CXXFLAGS)
+ else
+     CFLAGSr   = -DNDEBUG -O3 $(CBASEFLAGS)
+     CFLAGSd   = -g $(CBASEFLAGS)
+@@ -134,13 +134,13 @@ astyled:  $(OBJd)
+ shared:  libastyle-2.05.1.so
+ libastyle-2.05.1.so:  $(OBJs)
+ 	@ mkdir -p $(bindir)
+-	$(CXX) -shared $(LDFLAGSr) -o $(bindir)/$@ $^
++	$(CXX) -shared -Wl,-soname,$@ $(LDFLAGSr) -o $(bindir)/$@ $^
+ 	@ echo
+ 
+ shareddebug:  libastyle-2.05.1d.so
+ libastyle-2.05.1d.so:  $(OBJsd)
+ 	@ mkdir -p $(bindir)
+-	$(CXX) -shared $(LDFLAGSd) -o $(bindir)/$@ $^
++	$(CXX) -shared -Wl,-soname,$@ $(LDFLAGSr) -o $(bindir)/$@ $^
+ 	@ echo
+ 
+ static:  libastyle.a
+@@ -158,13 +158,13 @@ libastyled.a:  $(OBJad)
+ java:  libastyle-2.05.1j.so
+ libastyle-2.05.1j.so:  $(OBJsj)
+ 	@ mkdir -p $(bindir)
+-	$(CXX) -shared $(LDFLAGSr) -o $(bindir)/$@ $^
++	$(CXX) -shared -Wl,-soname,$@ $(LDFLAGSr) -o $(bindir)/$@ $^
+ 	@ echo
+ 
+ javadebug:  libastyle-2.05.1jd.so
+ libastyle-2.05.1jd.so:  $(OBJsjd)
+ 	@ mkdir -p $(bindir)
+-	$(CXX) -shared $(LDFLAGSd) -o $(bindir)/$@ $^
++	$(CXX) -shared -Wl,-soname,$@ $(LDFLAGSr) -o $(bindir)/$@ $^
+ 	@ echo
+ 
+ all:  release debug shared shareddebug static staticdebug
