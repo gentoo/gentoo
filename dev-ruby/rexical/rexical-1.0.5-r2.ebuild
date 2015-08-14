@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,14 @@ ruby_add_bdepend "
 	doc? ( >=dev-ruby/hoe-2.6.2 )
 	test? (
 		>=dev-ruby/hoe-2.6.2
+		dev-ruby/test-unit:2
 	)"
+
+all_ruby_prepare() {
+	sed -i -e '1igem "test-unit"' test/test_generator.rb || die
+
+	sed -i -e '/rubyforge_name/d' Rakefile || die
+}
 
 all_ruby_install() {
 	all_fakegem_install
