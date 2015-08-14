@@ -20,13 +20,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="minimal static"
 
-RDEPEND="dev-libs/openssl:0=
-	sys-apps/util-linux:=
+LIB_DEPEND="dev-libs/openssl:0=[static-libs(+)]
+	sys-apps/util-linux:=[static-libs(+)]"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	!minimal? (
 		app-arch/xz-utils:=
 		dev-libs/libyaml:=
 	)"
 DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )
 	app-crypt/trousers"
 
 S=${WORKDIR}
