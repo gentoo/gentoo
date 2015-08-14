@@ -124,7 +124,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	)
 	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
 	tls? ( net-libs/gnutls[static-libs(+)] )
-	usb? ( >=dev-libs/libusb-1.0.18[static-libs(+)] )
+	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	uuid? ( >=sys-apps/util-linux-2.16.0[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
