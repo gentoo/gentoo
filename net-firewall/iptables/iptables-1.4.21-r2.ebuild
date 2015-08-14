@@ -91,7 +91,7 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/systemd/ip6tables{,-{re,}store}.service
 	fi
 
-	# Move important libs to /lib
+	# Move important libs to /lib #332175
 	gen_usr_ldscript -a ip{4,6}tc iptc xtables
 
 	prune_libtool_files
