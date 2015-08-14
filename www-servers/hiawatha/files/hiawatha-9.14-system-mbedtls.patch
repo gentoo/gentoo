@@ -1,0 +1,25 @@
+Add missing libraries to linker.
+
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -114,7 +114,7 @@
+ 		#add_definitions(-DMBEDTLS_THREADING_PTHREAD -DMBEDTLS_THREADING_C)
+ 		add_subdirectory(mbedtls)
+ 	endif()
+-	set(MBEDTLS_LIBRARY "mbedtls")
++	set(MBEDTLS_LIBRARIES "mbedtls" "mbedx509" "mbedcrypto")
+ endif()
+ 
+ # Hiawatha
+@@ -144,8 +144,8 @@
+ target_link_libraries(wigwam ${CRYPT_LIBRARY})
+ target_link_libraries(hiawatha ${CRYPT_LIBRARY} pthread ${Z_LIBRARY})
+ if(ENABLE_TLS)
+-	target_link_libraries(hiawatha ${MBEDTLS_LIBRARY})
+-	target_link_libraries(wigwam ${MBEDTLS_LIBRARY})
++	target_link_libraries(hiawatha ${MBEDTLS_LIBRARIES})
++	target_link_libraries(wigwam ${MBEDTLS_LIBRARIES})
+ 	if(NOT USE_SYSTEM_MBEDTLS)
+ 		set_target_properties(hiawatha PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/hiawatha)
+ 		set_target_properties(wigwam PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/hiawatha)
