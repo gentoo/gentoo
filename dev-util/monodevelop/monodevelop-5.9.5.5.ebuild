@@ -26,7 +26,7 @@ RDEPEND=">=dev-lang/mono-3.2.8
 	>=dev-dotnet/nuget-2.8.3
 	gnome? ( >=dev-dotnet/gnome-sharp-2.24.2-r1 )
 	>=dev-dotnet/gtk-sharp-2.12.21:2
-	>=dev-dotnet/xsp-2
+	>=www-servers/xsp-2
 	dev-util/ctags
 	sys-apps/dbus[X]
 	subversion? ( dev-vcs/subversion )
