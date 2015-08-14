@@ -37,7 +37,7 @@ RDEPEND="app-arch/unzip
 		>=media-libs/flac-1.2.1-r1 )
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
-	gtk3? ( x11-libs/gtk+:2 )
+	!gtk3? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
 	qt5? ( dev-qt/qtcore:5
 	      dev-qt/qtgui:5
@@ -102,8 +102,8 @@ src_configure() {
 	econf \
 		${ffmpeg} \
 		--enable-modplug \
+		--enable-statusicon \
 		--disable-soxr \
-		--enable-neon \
 		$(use_enable adplug) \
 		$(use_enable aac) \
 		$(use_enable alsa) \
