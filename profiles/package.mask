@@ -590,11 +590,6 @@ www-client/google-chrome:unstable
 # This is not for your production kit quite yet.
 =net-misc/asterisk-12*
 
-# Tom Wijsman <TomWij@gentoo.org> (09 Jan 2014)
-# Monolithic dev-dotnet/{gnome,gtk}-sharp introduction mask, see bug #382491.
->=dev-dotnet/gnome-sharp-2.24.2-r1
->=dev-dotnet/gtk-sharp-2.12.21
-
 # Michał Górny <mgorny@gentoo.org> (15 Dec 2013)
 # Masked for testing due to almost complete redesign. It is now
 # completely split and no longer has an integrated GUI. Currently,
