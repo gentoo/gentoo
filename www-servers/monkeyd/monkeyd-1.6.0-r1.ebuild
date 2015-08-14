@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs depend.php multilib
+inherit flag-o-matic toolchain-funcs multilib
 
 MY_P="${PN/d}-${PV}"
 DESCRIPTION="A small, fast, and scalable web server"
@@ -85,6 +85,13 @@ src_configure() {
 	if use static-plugins; then
 		myconf+=" --static-plugins=${enable_plugins%,}"
 	fi
+
+	# For O_CLOEXEC which is guarded by _GNU_SOURCE in uClibc,
+	# but shouldn't because it is POSIX.  This needs to be fixed
+	# in uClibc.  Also, we really should us append-cppflags but
+	# monkey's build system doesn't respect CPPFLAGS.  This needs
+	# to be fixed in monkey.
+	use elibc_uclibc && append-cflags -D_GNU_SOURCE
 
 	# Non-autotools configure
 	./configure \
