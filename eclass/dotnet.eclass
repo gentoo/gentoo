@@ -36,7 +36,8 @@ for x in ${USE_DOTNET}; do
 done
 
 # @FUNCTION: dotnet_pkg_setup
-# @DESCRIPTION:  This function set FRAMEWORK
+# @DESCRIPTION:
+# This function set FRAMEWORK.
 dotnet_pkg_setup() {
 	for x in ${USE_DOTNET} ; do
 		case ${x} in
@@ -79,14 +80,16 @@ export XDG_CONFIG_HOME="${T}"
 unset MONO_AOT_CACHE
 
 # @FUNCTION: exbuild
-# @DESCRIPTION: run xbuild with Release configuration and configurated FRAMEWORK
+# @DESCRIPTION:
+# Run xbuild with Release configuration and configurated FRAMEWORK.
 exbuild() {
 	elog "xbuild ""$@"" /p:Configuration=Release /tv:4.0 /p:TargetFrameworkVersion=v""${FRAMEWORK}"" || die"
 	xbuild "$@" /p:Configuration=Release /tv:4.0 /p:TargetFrameworkVersion=v"${FRAMEWORK}" || die
 }
 
 # @FUNCTION: egacinstall
-# @DESCRIPTION:  install package to GAC
+# @DESCRIPTION:
+# Install package to GAC.
 egacinstall() {
 	use !prefix && has "${EAPI:-0}" 0 1 2 && ED="${D}"
 	gacutil -i "${1}" \
@@ -97,7 +100,8 @@ egacinstall() {
 }
 
 # @FUNCTION: dotnet_multilib_comply
-# @DESCRIPTION:  multilib comply
+# @DESCRIPTION:
+# multilib comply
 dotnet_multilib_comply() {
 	use !prefix && has "${EAPI:-0}" 0 1 2 && ED="${D}"
 	local dir finddirs=() mv_command=${mv_command:-mv}

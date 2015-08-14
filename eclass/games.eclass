@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: games
+# @ECLASS: games.eclass
 # @MAINTAINER:
 # Games team <games@gentoo.org>
 # @BLURB: Standardizing the install of games.

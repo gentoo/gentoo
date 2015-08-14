@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: gnome-games
+# @ECLASS: gnome-games.eclass
 # @MAINTAINER:
 # Gnome team <gnome@gentoo.org>
 # @AUTHOR:
@@ -95,7 +95,7 @@ gnome-games_pkg_preinst() {
 	games_pkg_preinst
 }
 
-# @FUNCTION: gnome-games_pkg_preinst
+# @FUNCTION: gnome-games_pkg_postinst
 # @DESCRIPTION:
 # Set proper phase defaults
 gnome-games_pkg_postinst() {

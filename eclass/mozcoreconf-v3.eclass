@@ -103,7 +103,7 @@ moz_pkgsetup() {
 }
 
 # @FUNCTION: mozconfig_init
-# @DESCRIPTION
+# @DESCRIPTION:
 # Initialize mozilla configuration and populate with core settings.
 # This should be called in src_configure before any other mozconfig_* functions.
 mozconfig_init() {

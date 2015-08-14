@@ -6,7 +6,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs
+inherit toolchain-funcs eutils autotools
 
 MY_P=${P/curses-}
 DESCRIPTION="full screen curses hex editor (with insert/delete support)"
@@ -23,9 +23,11 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-ncurses-pkg-config.patch
+	eautoreconf
+}
+
 src_configure() {
-	# Package has an old configure script.
-	CONFIG_SHELL="/bin/bash"
-	tc-export CC
 	econf --program-prefix=curses-
 }

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: multibuild
+# @ECLASS: multibuild.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
