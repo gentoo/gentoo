@@ -145,7 +145,7 @@ esac
 case ${PF} in
 	#gtk-sharp tarball
 	gtk-sharp-docs*)
-		add_depend ">=virtual/monodoc-2.0"
+		add_depend ">=dev-lang/mono-2.0"
 		;;
 	gtk-sharp-gapi*)
 		add_rdepend "!<=dev-dotnet/gtk-sharp-2.12.7:2"
