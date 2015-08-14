@@ -26,7 +26,7 @@ SRC_URI="mirror://sourceforge/crawl-ref/Stone%20Soup/${PV}/${MY_P}-nodeps.tar.xz
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug luajit ncurses test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121
