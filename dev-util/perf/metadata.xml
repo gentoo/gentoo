@@ -21,6 +21,7 @@
       documentation handling tools that are not always welcome on user
       systems.
     </flag>
+	<flag name="numa">Enable NUMA support</flag>
     <flag name="perl">
       Add support for Perl as a scripting language for perf tools.
     </flag>
