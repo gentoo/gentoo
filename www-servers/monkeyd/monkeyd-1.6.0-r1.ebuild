@@ -118,7 +118,7 @@ src_install() {
 	newinitd "${FILESDIR}"/monkeyd.initd-r1 monkeyd
 	newconfd "${FILESDIR}"/monkeyd.confd monkeyd
 
-	#move htdocs to docdir, bug #429632
+	# Move htdocs to docdir, bug #429632
 	docompress -x /usr/share/doc/"${PF}"/htdocs.dist
 	mv "${D}"${WEBROOT}/htdocs \
 		"${D}"/usr/share/doc/"${PF}"/htdocs.dist
@@ -127,4 +127,7 @@ src_install() {
 	keepdir \
 		/var/log/monkeyd \
 		${WEBROOT}/htdocs
+
+	# This needs to be created at runtime
+	rm -rf "${D}"/run
 }

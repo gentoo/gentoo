@@ -12,6 +12,8 @@ depend() {
 
 start() {
 	ebegin "Starting monkeyd"
+	local PIDFILE=$(awk '/^ *PidFile/ { print $2 }' "${CONFFILE}")
+	mkdir -p $(dirname ${PIDFILE})
 	start-stop-daemon --start --exec "${DAEMON}" -- "-D" "${MONKEY_ARGS}" >/dev/null
 	eend $?
 }
