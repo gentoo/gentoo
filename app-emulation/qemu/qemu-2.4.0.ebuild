@@ -131,6 +131,7 @@ CDEPEND="
 	iscsi? ( net-libs/libiscsi )
 	opengl? (
 		virtual/opengl
+		media-libs/libepoxy
 		media-libs/mesa[gles2]
 	)
 	pulseaudio? ( media-sound/pulseaudio )
