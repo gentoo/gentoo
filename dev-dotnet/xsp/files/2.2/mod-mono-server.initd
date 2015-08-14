@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: mod-mono-server-r1.initd,v 1.1 2012/01/22 12:54:29 pacho Exp $
+# $Id: mod-mono-server.initd,v 1.1 2009/01/18 17:44:04 loki_val Exp $
 
 depend() {
 	use net
@@ -51,10 +51,8 @@ start() {
 		modmonoserverpath=1.0/mod-mono-server.exe
 	elif [ ${MonoServerVersion} -eq 2 ]; then
 		modmonoserverpath=2.0/mod-mono-server2.exe
-	elif [ ${MonoServerVersion} -eq 4 ]; then
-		modmonoserverpath=4.0/mod-mono-server4.exe
 	else
-		eerror "MonoServerVersion was not properly set. Check your /etc/conf.d/mod-mono-server"
+		eerror "MonoServerVersion was not properly set. Check your /etc/conf.d/xsp"
 		return 1
 	fi
 
@@ -66,7 +64,7 @@ start() {
 		--background \
 		--make-pidfile \
 		--pidfile /var/run/aspnet/mod-mono-server.pid \
-		--user aspnet \
+		--chuid aspnet \
 		--exec /usr/bin/mono /usr/lib/mono/${modmonoserverpath} \
 		-- $MONO_SERVER_OPTS
 
@@ -76,7 +74,7 @@ start() {
 stop() {
 	ebegin "Stopping mod-mono-server"
 
-	start-stop-daemon --quiet --stop \
+	start-stop-daemon -o --quiet --stop \
 		--pidfile /var/run/aspnet/mod-mono-server.pid
 
 	eend $?
