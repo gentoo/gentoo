@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs depend.php multilib
+inherit flag-o-matic toolchain-funcs multilib
 
 MY_P="${PN/d}-${PV}"
 DESCRIPTION="A small, fast, and scalable web server"
@@ -86,6 +86,13 @@ src_configure() {
 		myconf+=" --static-plugins=${enable_plugins%,}"
 	fi
 
+	# For O_CLOEXEC which is guarded by _GNU_SOURCE in uClibc,
+	# but shouldn't because it is POSIX.  This needs to be fixed
+	# in uClibc.  Also, we really should us append-cppflags but
+	# monkey's build system doesn't respect CPPFLAGS.  This needs
+	# to be fixed in monkey.
+	use elibc_uclibc && append-cflags -D_GNU_SOURCE
+
 	# Non-autotools configure
 	./configure \
 		--pthread-tls \
@@ -111,7 +118,7 @@ src_install() {
 	newinitd "${FILESDIR}"/monkeyd.initd-r1 monkeyd
 	newconfd "${FILESDIR}"/monkeyd.confd monkeyd
 
-	#move htdocs to docdir, bug #429632
+	# Move htdocs to docdir, bug #429632
 	docompress -x /usr/share/doc/"${PF}"/htdocs.dist
 	mv "${D}"${WEBROOT}/htdocs \
 		"${D}"/usr/share/doc/"${PF}"/htdocs.dist
@@ -120,4 +127,7 @@ src_install() {
 	keepdir \
 		/var/log/monkeyd \
 		${WEBROOT}/htdocs
+
+	# This needs to be created at runtime
+	rm -rf "${D}"/run
 }

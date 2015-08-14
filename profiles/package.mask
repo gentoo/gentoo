@@ -30,9 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrice Clement <monsieurp@gentoo.org> (11 Aug 2015)
+# Patrice Clement <monsieurp@gentoo.org> (14 Aug 2015)
+# Unreachable HOMEPAGE (dead). Very very very old package: 
+# last release came out in 2001.
+# Masked for removal in 30 days. See bug #232666.
+dev-java/tclib
+
+# Patrice Clement <monsieurp@gentoo.org> (14 Aug 2015)
 # Last release is over 13 years old (!).
-# Masked for removal in 30 days. See bug #557210.
+# Masked for removal in 30 days. See bug #177032.
 app-text/jdictionary
 
 # Johannes Huber <johu@@gentoo.org> (13 Aug 2015)
