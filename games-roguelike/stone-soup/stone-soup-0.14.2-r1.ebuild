@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-db/sqlite:3
 	luajit? ( >=dev-lang/luajit-2.0.0 )
-	!luajit? ( >=dev-lang/lua-5.1.0[deprecated] )
+	!luajit? ( >=dev-lang/lua-5.1.0:0[deprecated] )
 	sys-libs/zlib
 	!ncurses? ( !tiles? ( sys-libs/ncurses ) )
 	ncurses? ( sys-libs/ncurses )
