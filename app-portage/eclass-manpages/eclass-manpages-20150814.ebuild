@@ -30,9 +30,9 @@ src_compile() {
 	for o in ${PORTDIR_OVERLAY} ; do
 		e="${o}/eclass"
 		[[ -d ${e} ]] || continue
-		genit "${e}"
+		genit "${e}" || die
 	done
-	genit
+	genit || die
 }
 
 src_install() {

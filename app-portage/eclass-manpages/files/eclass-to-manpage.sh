@@ -22,6 +22,7 @@ fi
 
 [[ $# -eq 0 ]] && set -- "${ECLASSDIR}"/*.eclass
 
+ret=0
 for e in "$@" ; do
 	set -- \
 	${AWK} \
@@ -29,8 +30,17 @@ for e in "$@" ; do
 		-f "${FILESDIR}"/eclass-to-manpage.awk \
 		${e}
 	if [[ ${AWK} == "gawk" ]] ; then
-		"$@" > ${e##*/}.5 || rm -f ${e##*/}.5
+		"$@" > ${e##*/}.5
+		tret=$?
+		if [[ ${tret} -ne 0 ]] ; then
+			rm -f ${e##*/}.5
+			if [[ ${tret} -ne 77 ]] ; then
+				echo "FAIL: ${e}"
+				ret=1
+			fi
+		fi
 	else
 		"$@"
 	fi
 done
+exit ${ret}

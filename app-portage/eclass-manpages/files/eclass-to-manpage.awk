@@ -79,6 +79,10 @@ function fail(text) {
 	_stderr_msg(text, "error")
 	exit(1)
 }
+function xfail(text) {
+	_stderr_msg(text, "error (ignoring)")
+	exit(77)
+}
 
 function eat_line() {
 	ret = $0
@@ -392,8 +396,12 @@ BEGIN {
 			state = "funcvar"
 		} else if ($0 == "# @DEAD") {
 			eclass = "dead"
-			exit(10)
+			exit(77)
 		} else if ($0 == "# @eclass-begin") {
+			# White list old eclasses that haven't been updated so we can block
+			# new ones from being added to the tree.
+			if (eclass == "")
+				xfail("java documentation not supported")
 			fail("java documentation not supported")
 		} else if ($0 ~ /^# @/)
 			warn("Unexpected tag in \"" state "\" state: " $0)
@@ -414,7 +422,7 @@ BEGIN {
 #
 END {
 	if (eclass == "")
-		fail("eclass not documented yet (no @ECLASS found)")
+		xfail("eclass not documented yet (no @ECLASS found)")
 	else if (eclass != "dead")
 		handle_footer()
 }
