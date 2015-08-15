@@ -1,12 +1,11 @@
-_eclasses_=
-_md5_=95741fef152b67386df33fb4d82fd93b
-SLOT=0
 DEFINED_PHASES=compile configure install prepare
-EAPI=4
 DEPEND=doc? ( app-doc/doxygen >=media-gfx/graphviz-2.26 )
 DESCRIPTION=library for MPEG TS/DVB PSI tables decoding and generation
-LICENSE=LGPL-2.1
-IUSE=doc static-libs
-SRC_URI=http://download.videolan.org/pub/libdvbpsi/1.2.0/libdvbpsi-1.2.0.tar.bz2
-KEYWORDS=alpha amd64 arm ~arm64 ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+EAPI=4
 HOMEPAGE=http://www.videolan.org/libdvbpsi
+IUSE=doc static-libs
+KEYWORDS=alpha amd64 arm ~arm64 ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=http://download.videolan.org/pub/libdvbpsi/1.2.0/libdvbpsi-1.2.0.tar.bz2
+_md5_=95741fef152b67386df33fb4d82fd93b

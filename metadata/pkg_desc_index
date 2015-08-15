@@ -11721,7 +11721,7 @@ media-libs/libmms 0.6.2 0.6.2-r1 0.6.4: Common library for accessing Microsoft M
 media-libs/libmng 2.0.2-r1 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmnote 0.5.6: libmnote is a library for parsing, editing, and saving MakerNote-EXIF-tags
 media-libs/libmodplug 0.8.8.5: Library for playing MOD-like music files
-media-libs/libmp3splt 0.7.3 0.9.0 0.9.1 0.9.1a: a library for mp3splt to split mp3 and ogg files without decoding
+media-libs/libmp3splt 0.7.3 0.9.0 0.9.1 0.9.1a 0.9.2: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 1.9.1-r1 2.0.0: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.9 2.10: A library for interfacing Music Player Daemon (media-sound/mpd)
@@ -12405,8 +12405,8 @@ media-sound/mp3diags 1.0.12.079 1.2.01 1.2.02: Qt-based MP3 diagnosis and repair
 media-sound/mp3gain 1.4.6-r3 1.5.2: A program to analyze and adjust MP3 files to same volume
 media-sound/mp3info 0.8.5a: An MP3 technical info viewer and ID3 1.x tag editor
 media-sound/mp3report 1.0.2: Perl script to create an HTML report of MP3 files in a directory
-media-sound/mp3splt 2.6.1a: a command line utility to split mp3 and ogg files without decoding
-media-sound/mp3splt-gtk 0.7.3 0.9 0.9.1 0.9.1a 0.9.1a-r1: a GTK+ based utility to split mp3 and ogg files without decoding
+media-sound/mp3splt 2.6.1a 2.6.2: a command line utility to split mp3 and ogg files without decoding
+media-sound/mp3splt-gtk 0.7.3 0.9 0.9.1 0.9.1a 0.9.1a-r1 0.9.2: a GTK+ based utility to split mp3 and ogg files without decoding
 media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 files between different encodings
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.25 0.26: A commandline client for Music Player Daemon (media-sound/mpd)
@@ -12678,7 +12678,7 @@ media-video/dvdauthor 0.6.18 0.7.0 0.7.1: Tools for generating DVD files to be p
 media-video/dvdbackup 0.4.1 0.4.2: Backup content from DVD to hard disk
 media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to check for errors
 media-video/dvdrip 0.98.11-r2: dvd::rip is a graphical frontend for transcode
-media-video/dvdstyler 2.7.2 2.9.2: A cross-platform free DVD authoring application
+media-video/dvdstyler 2.7.2 2.9.2 2.9.3: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing

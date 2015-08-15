@@ -1,14 +1,13 @@
-_eclasses_=
-_md5_=8c00e383f319b1e5ad110ac0fe08bdb9
-SLOT=0
 DEFINED_PHASES=compile install
-EAPI=5
 DEPEND=emboss? ( >=sci-biology/emboss-5.0.0 )
 DESCRIPTION=A restriction enzyme database
-LICENSE=public-domain
-IUSE=emboss minimal
-RESTRICT=binchecks strip
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/rebase-1508.tar.xz
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+EAPI=5
 HOMEPAGE=http://rebase.neb.com
+IUSE=emboss minimal
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=public-domain
 RDEPEND=emboss? ( >=sci-biology/emboss-5.0.0 )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/rebase-1508.tar.xz
+_md5_=8c00e383f319b1e5ad110ac0fe08bdb9

@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=7bc44c69cfb7c155c5a4b09e1fbdb277
-SLOT=0
 DEFINED_PHASES=configure install prepare setup
-EAPI=2
 DEPEND=>=sys-libs/ncurses-5.2 bidi? ( dev-libs/fribidi ) ssl? ( >=dev-libs/openssl-0.9.6g ) jpeg? ( virtual/jpeg ) xmpp? ( otr? ( <net-libs/libotr-4 ) crypt? ( >=app-crypt/gpgme-1.0.2 ) ) msn? ( >=net-misc/curl-7.25.0-r1[ssl] ) yahoo? ( >=net-misc/curl-7.25.0-r1[ssl] )
 DESCRIPTION=CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
-LICENSE=GPL-2
-IUSE=+aim gadu +icq +irc +xmpp lj +msn rss +yahoo bidi nls ssl crypt jpeg otr
-SRC_URI=http://www.centerim.org/download/releases/centerim-4.22.10.tar.gz
-KEYWORDS=amd64 x86 ~x86-fbsd
+EAPI=2
 HOMEPAGE=http://www.centerim.org/
+IUSE=+aim gadu +icq +irc +xmpp lj +msn rss +yahoo bidi nls ssl crypt jpeg otr
+KEYWORDS=amd64 x86 ~x86-fbsd
+LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.2 bidi? ( dev-libs/fribidi ) ssl? ( >=dev-libs/openssl-0.9.6g ) jpeg? ( virtual/jpeg ) xmpp? ( otr? ( <net-libs/libotr-4 ) crypt? ( >=app-crypt/gpgme-1.0.2 ) ) msn? ( >=net-misc/curl-7.25.0-r1[ssl] ) yahoo? ( >=net-misc/curl-7.25.0-r1[ssl] ) nls? ( sys-devel/gettext )
+SLOT=0
+SRC_URI=http://www.centerim.org/download/releases/centerim-4.22.10.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=7bc44c69cfb7c155c5a4b09e1fbdb277

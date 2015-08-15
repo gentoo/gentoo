@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gst-plugins10	db50330379680222b3421c9edea8af4b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=b37d61fa5d81a73b7cddc201e00d1226
-SLOT=1.0
 DEFINED_PHASES=compile configure install
-EAPI=5
 DEPEND=>=dev-libs/glib-2.32:2 >=media-libs/gstreamer-1.4.0:1.0 >=media-libs/gst-plugins-base-1.4.0:1.0 virtual/pkgconfig >=dev-util/gtk-doc-am-1.13 test? ( dev-libs/check >=media-libs/gst-plugins-good-1.4.0:1.0 ) >=sys-apps/sed-4 virtual/pkgconfig nls? ( >=sys-devel/gettext-0.17 ) >=dev-libs/glib-2.6:2 media-libs/gstreamer:1.0
 DESCRIPTION=Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
-LICENSE=LGPL-2
-IUSE=test nls
-SRC_URI=http://gstreamer.freedesktop.org/src/gnonlin/gnonlin-1.4.0.tar.xz
-KEYWORDS=amd64 x86
+EAPI=5
 HOMEPAGE=http://gnonlin.sourceforge.net
+IUSE=test nls
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2
 RDEPEND=>=dev-libs/glib-2.32:2 >=media-libs/gstreamer-1.4.0:1.0 >=media-libs/gst-plugins-base-1.4.0:1.0 >=dev-libs/glib-2.6:2 media-libs/gstreamer:1.0
+SLOT=1.0
+SRC_URI=http://gstreamer.freedesktop.org/src/gnonlin/gnonlin-1.4.0.tar.xz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gst-plugins10	db50330379680222b3421c9edea8af4b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b37d61fa5d81a73b7cddc201e00d1226

@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	l10n	714aaf78929eade946da5eaff7d2001a	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=8144e84a2f5a32b5a433ae4ad7a1dc1f
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 app-text/aspell sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Graphical front-end for cuneiform and tesseract OCR tools
-LICENSE=GPL-3
-IUSE=scanner cuneiform +tesseract pdf linguas_fr linguas_ru
-REQUIRED_USE=|| ( cuneiform tesseract )
-SRC_URI=http://symmetrica.net/cuneiform-linux/yagf-0.9.3.2.tar.gz
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://symmetrica.net/cuneiform-linux/yagf-en.html
+IUSE=scanner cuneiform +tesseract pdf linguas_fr linguas_ru
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
 RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 app-text/aspell cuneiform? ( app-text/cuneiform ) tesseract? ( app-text/tesseract ) scanner? ( media-gfx/xsane ) pdf? ( || ( app-text/poppler[utils] app-text/ghostscript-gpl ) )
+REQUIRED_USE=|| ( cuneiform tesseract )
+SLOT=0
+SRC_URI=http://symmetrica.net/cuneiform-linux/yagf-0.9.3.2.tar.gz
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=8144e84a2f5a32b5a433ae4ad7a1dc1f

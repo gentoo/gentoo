@@ -1,13 +1,13 @@
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	libtool	7f78cd7d403808a350c9ae23f5821fb4	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=73444ae830176aec157c01ec460881af
-SLOT=0
 DEFINED_PHASES=configure install prepare
-EAPI=2
 DEPEND=sys-libs/zlib >=media-libs/ilmbase-1.0.2 virtual/pkgconfig
 DESCRIPTION=ILM's OpenEXR high dynamic-range image file format libraries
-LICENSE=BSD
-IUSE=examples static-libs
-SRC_URI=http://download.savannah.gnu.org/releases/openexr/openexr-1.7.0.tar.gz
-KEYWORDS=amd64 -arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+EAPI=2
 HOMEPAGE=http://openexr.com/
+IUSE=examples static-libs
+KEYWORDS=amd64 -arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=BSD
 RDEPEND=sys-libs/zlib >=media-libs/ilmbase-1.0.2
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/openexr/openexr-1.7.0.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=73444ae830176aec157c01ec460881af

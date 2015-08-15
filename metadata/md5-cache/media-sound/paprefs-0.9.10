@@ -1,13 +1,12 @@
-_eclasses_=
-_md5_=c4b5d1be3e647e1512409e20ab8fbf2d
-SLOT=0
 DEFINED_PHASES=configure install
-EAPI=4
 DEPEND=dev-cpp/gtkmm:2.4 dev-cpp/libglademm:2.4 >=dev-cpp/gconfmm-2.6 >=dev-libs/libsigc++-2.2:2 media-sound/pulseaudio[glib,gnome] || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme ) nls? ( sys-devel/gettext dev-util/intltool ) virtual/pkgconfig
 DESCRIPTION=PulseAudio Preferences, configuration dialog for PulseAudio
-LICENSE=GPL-2
-IUSE=nls
-SRC_URI=http://freedesktop.org/software/pulseaudio/paprefs/paprefs-0.9.10.tar.xz
-KEYWORDS=amd64 ~ppc ~sparc x86
+EAPI=4
 HOMEPAGE=http://freedesktop.org/software/pulseaudio/paprefs
+IUSE=nls
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
 RDEPEND=dev-cpp/gtkmm:2.4 dev-cpp/libglademm:2.4 >=dev-cpp/gconfmm-2.6 >=dev-libs/libsigc++-2.2:2 media-sound/pulseaudio[glib,gnome] || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme )
+SLOT=0
+SRC_URI=http://freedesktop.org/software/pulseaudio/paprefs/paprefs-0.9.10.tar.xz
+_md5_=c4b5d1be3e647e1512409e20ab8fbf2d

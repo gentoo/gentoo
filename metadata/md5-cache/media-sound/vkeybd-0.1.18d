@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=b27c0bcf38cf4ddb011722d3d2611a
-SLOT=0
 DEFINED_PHASES=compile install postinst prepare setup
-EAPI=2
 DEPEND=alsa? ( media-libs/alsa-lib ) >=dev-lang/tk-8.3 lash? ( media-sound/lash ) x11-libs/libX11 x11-proto/xf86bigfontproto x11-proto/bigreqsproto x11-proto/xextproto x11-proto/xcmiscproto
 DESCRIPTION=A virtual MIDI keyboard for X
-LICENSE=GPL-2
-IUSE=alsa lash oss
-SRC_URI=http://ftp.suse.com/pub/people/tiwai/vkeybd/vkeybd-0.1.18d.tar.bz2
-KEYWORDS=amd64 ~sparc x86
+EAPI=2
 HOMEPAGE=http://www.alsa-project.org/~iwai/alsa.html
+IUSE=alsa lash oss
+KEYWORDS=amd64 ~sparc x86
+LICENSE=GPL-2
 RDEPEND=alsa? ( media-libs/alsa-lib ) >=dev-lang/tk-8.3 lash? ( media-sound/lash ) x11-libs/libX11
+SLOT=0
+SRC_URI=http://ftp.suse.com/pub/people/tiwai/vkeybd/vkeybd-0.1.18d.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=00b27c0bcf38cf4ddb011722d3d2611a

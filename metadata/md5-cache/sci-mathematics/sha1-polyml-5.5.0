@@ -1,10 +1,10 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
-_md5_=1ccdf8faec8bbf1d194feaf6e0e186d5
-SLOT=0
 DEFINED_PHASES=compile install prepare test
-EAPI=5
 DESCRIPTION=implementation of SHA1 is taken from the GNU coreutils package
-LICENSE=GPL-3
-SRC_URI=http://isabelle.in.tum.de/components/polyml-5.5.0.tar.gz
-KEYWORDS=~x86 ~amd64
+EAPI=5
 HOMEPAGE=http://isabelle.in.tum.de/
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://isabelle.in.tum.de/components/polyml-5.5.0.tar.gz
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=1ccdf8faec8bbf1d194feaf6e0e186d5

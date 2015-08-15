@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	alternatives	b19e1ec28e600fa497461bddfb9c1f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=9e46a26edac3575bae5171b55cc5f48e
-SLOT=0/5.20
 DEFINED_PHASES=configure install postinst postrm prepare test
-EAPI=5
 DEPEND=berkdb? ( sys-libs/db:* ) gdbm? ( >=sys-libs/gdbm-1.8.3 ) app-arch/bzip2 sys-libs/zlib !prefix? ( elibc_FreeBSD? ( sys-freebsd/freebsd-mk-defs ) )
 DESCRIPTION=Larry Wall's Practical Extraction and Report Language
-LICENSE=|| ( Artistic GPL-1+ )
-IUSE=berkdb debug doc gdbm ithreads
-PDEPEND=>=app-admin/perl-cleaner-2.5 >=virtual/perl-File-Temp-0.230.400-r2 >=virtual/perl-Data-Dumper-2.154.0
-SRC_URI=mirror://cpan/src/5.0/perl-5.20.2.tar.bz2 mirror://cpan/authors/id/S/SH/SHAY/perl-5.20.2.tar.bz2 mirror://gentoo/perl-5.20.2-patches-2.tar.xz http://dev.gentoo.org/~dilfridge/distfiles/perl-5.20.2-patches-2.tar.xz
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+EAPI=5
 HOMEPAGE=http://www.perl.org/
+IUSE=berkdb debug doc gdbm ithreads
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+PDEPEND=>=app-admin/perl-cleaner-2.5 >=virtual/perl-File-Temp-0.230.400-r2 >=virtual/perl-Data-Dumper-2.154.0
 RDEPEND=berkdb? ( sys-libs/db:* ) gdbm? ( >=sys-libs/gdbm-1.8.3 ) app-arch/bzip2 sys-libs/zlib
+SLOT=0/5.20
+SRC_URI=mirror://cpan/src/5.0/perl-5.20.2.tar.bz2 mirror://cpan/authors/id/S/SH/SHAY/perl-5.20.2.tar.bz2 mirror://gentoo/perl-5.20.2-patches-2.tar.xz http://dev.gentoo.org/~dilfridge/distfiles/perl-5.20.2-patches-2.tar.xz
+_eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=9e46a26edac3575bae5171b55cc5f48e

@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=338ed2ed2d00dd791c7551ba00b05337
-SLOT=0
 DEFINED_PHASES=compile install unpack
-EAPI=0
 DEPEND=>=x11-libs/libmatchbox-1.1
 DESCRIPTION=Common files used by matchbox-panel and matchbox-desktop packages
-LICENSE=GPL-2
-IUSE=pda
-SRC_URI=http://matchbox-project.org/sources/matchbox-common/0.9/matchbox-common-0.9.1.tar.bz2
-KEYWORDS=amd64 ~arm ~hppa ppc x86
+EAPI=0
 HOMEPAGE=http://matchbox-project.org/
+IUSE=pda
+KEYWORDS=amd64 ~arm ~hppa ppc x86
+LICENSE=GPL-2
 RDEPEND=>=x11-libs/libmatchbox-1.1
+SLOT=0
+SRC_URI=http://matchbox-project.org/sources/matchbox-common/0.9/matchbox-common-0.9.1.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=338ed2ed2d00dd791c7551ba00b05337

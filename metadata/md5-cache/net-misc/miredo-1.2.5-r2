@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=b055da34e7a1354bac8291ad8ffaa461
-SLOT=0
 DEFINED_PHASES=configure install preinst prepare setup
-EAPI=4
 DEPEND=sys-apps/iproute2 dev-libs/judy caps? ( sys-libs/libcap ) app-arch/xz-utils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Miredo is an open-source Teredo IPv6 tunneling software
-LICENSE=GPL-2
-IUSE=+caps
-RESTRICT=test
-SRC_URI=http://www.remlab.net/files/miredo/miredo-1.2.5.tar.xz
-KEYWORDS=amd64 x86
+EAPI=4
 HOMEPAGE=http://www.remlab.net/miredo/
+IUSE=+caps
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
 RDEPEND=sys-apps/iproute2 dev-libs/judy caps? ( sys-libs/libcap )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.remlab.net/files/miredo/miredo-1.2.5.tar.xz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b055da34e7a1354bac8291ad8ffaa461

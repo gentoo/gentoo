@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=7569c37a849db39afdeed28e3ff71397
-SLOT=20140929d
 DEFINED_PHASES=install postinst prepare prerm setup
-EAPI=5
 DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
 DESCRIPTION=DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
-LICENSE=GPL-2
-IUSE=gd vhosts
-SRC_URI=http://download.dokuwiki.org/src/dokuwiki/dokuwiki-2014-09-29d.tgz
-KEYWORDS=amd64 ~ppc ~sparc x86
+EAPI=5
 HOMEPAGE=http://wiki.splitbrain.org/wiki:dokuwiki
+IUSE=gd vhosts
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
 RDEPEND=>=dev-lang/php-5.3[xml] gd? ( || ( dev-lang/php[gd] media-gfx/imagemagick ) ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=20140929d
+SRC_URI=http://download.dokuwiki.org/src/dokuwiki/dokuwiki-2014-09-29d.tgz
+_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=7569c37a849db39afdeed28e3ff71397

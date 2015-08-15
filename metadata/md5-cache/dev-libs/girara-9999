@@ -1,11 +1,11 @@
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
-_md5_=45b87fc28fcad303f6b2a2bbb7f5c4b6
-SLOT=3
 DEFINED_PHASES=compile install prepare setup unpack
-EAPI=5
 DEPEND=>=dev-libs/glib-2.28 >=x11-libs/gtk+-3.2:3 !<dev-libs/girara-0.1.6 libnotify? ( >=x11-libs/libnotify-0.7 ) sys-devel/gettext virtual/pkgconfig dev-vcs/git
 DESCRIPTION=A library that implements a user interface that focuses on simplicity and minimalism
-LICENSE=ZLIB
-IUSE=libnotify static-libs
+EAPI=5
 HOMEPAGE=http://pwmt.org/projects/girara/
+IUSE=libnotify static-libs
+LICENSE=ZLIB
 RDEPEND=>=dev-libs/glib-2.28 >=x11-libs/gtk+-3.2:3 !<dev-libs/girara-0.1.6 libnotify? ( >=x11-libs/libnotify-0.7 )
+SLOT=3
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=45b87fc28fcad303f6b2a2bbb7f5c4b6

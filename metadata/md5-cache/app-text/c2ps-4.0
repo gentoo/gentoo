@@ -1,10 +1,10 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	base	84d9f879f57a8316ff02be0373a3d6f9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=2901061b37044c60db04ccbe041e1d83
-SLOT=0
 DEFINED_PHASES=compile configure install prepare unpack
-EAPI=4
 DESCRIPTION=Generates a beautified ps document from a source file (c/c++)
-LICENSE=GPL-2
-SRC_URI=http://www.cs.technion.ac.il/users/c2ps/c2ps-4.0.tar.gz
-KEYWORDS=amd64 ~mips ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+EAPI=4
 HOMEPAGE=http://www.cs.technion.ac.il/users/c2ps
+KEYWORDS=amd64 ~mips ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.cs.technion.ac.il/users/c2ps/c2ps-4.0.tar.gz
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=2901061b37044c60db04ccbe041e1d83

@@ -1,10 +1,9 @@
-_eclasses_=
-_md5_=76db51b68cf2f4e0854f80954339d1d2
-SLOT=0
 DEFINED_PHASES=install
-EAPI=4
 DESCRIPTION=Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
-LICENSE=GPL-3
-SRC_URI=http://www.gimphelp.org/DL/arrow_brushes_color_1.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_color_2.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_BW_1.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_BW_2.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_black_gloss.tar.bz2 http://www.gimphelp.org/DL/hand_pointer_brushes.tar.bz2 http://www.gimphelp.org/DL/button_arrow_brushes.tar.bz2 http://www.gimphelp.org/DL/arrow_action.tar.bz2 http://www.gimphelp.org/DL/cursor_brushes-1.0.tar.bz2
-KEYWORDS=amd64 x86
+EAPI=4
 HOMEPAGE=http://www.gimphelp.org/index.shtml
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://www.gimphelp.org/DL/arrow_brushes_color_1.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_color_2.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_BW_1.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_BW_2.tar.bz2 http://www.gimphelp.org/DL/arrow_brushes_black_gloss.tar.bz2 http://www.gimphelp.org/DL/hand_pointer_brushes.tar.bz2 http://www.gimphelp.org/DL/button_arrow_brushes.tar.bz2 http://www.gimphelp.org/DL/arrow_action.tar.bz2 http://www.gimphelp.org/DL/cursor_brushes-1.0.tar.bz2
+_md5_=76db51b68cf2f4e0854f80954339d1d2

@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	user	906f3c8eb3a2350a4f1191a89baa3e46	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=f2436dc820ec18bf81ba00f818035c3
-SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare setup
-EAPI=5
 DEPEND=module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss] sys-libs/zlib ) module_config_sgconfig? ( dev-libs/expat ) module_store_firebird? ( >=dev-db/firebird-2.0.3.12981.0-r6 ) module_store_mysql? ( virtual/mysql ) module_store_postgres? ( dev-db/postgresql dev-libs/openssl sys-libs/zlib ) sgconf? ( dev-libs/expat ) sgconf_xml? ( dev-libs/expat ) doc? ( dev-libs/libxslt )
 DESCRIPTION=Billing system for small home and office networks
-LICENSE=GPL-2
-IUSE=sgconv radius rscriptd sgauth sgconf sgconf_xml +stargazer debug doc examples static-libs module_auth_always_online module_auth_internet_access module_auth_freeradius module_capture_ipq module_capture_ether module_capture_netflow module_config_sgconfig module_config_rpcconfig module_other_ping module_other_smux module_other_remote_script +module_store_files module_store_firebird module_store_mysql module_store_postgres
-REQUIRED_USE=stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )
-SRC_URI=http://stg.dp.ua/download/server/2.408/stg-2.408.tar.gz
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://stg.dp.ua/
+IUSE=sgconv radius rscriptd sgauth sgconf sgconf_xml +stargazer debug doc examples static-libs module_auth_always_online module_auth_internet_access module_auth_freeradius module_capture_ipq module_capture_ether module_capture_netflow module_config_sgconfig module_config_rpcconfig module_other_ping module_other_smux module_other_remote_script +module_store_files module_store_firebird module_store_mysql module_store_postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
 RDEPEND=module_config_rpcconfig? ( dev-libs/xmlrpc-c[abyss] sys-libs/zlib ) module_config_sgconfig? ( dev-libs/expat ) module_store_firebird? ( >=dev-db/firebird-2.0.3.12981.0-r6 ) module_store_mysql? ( virtual/mysql ) module_store_postgres? ( dev-db/postgresql dev-libs/openssl sys-libs/zlib ) sgconf? ( dev-libs/expat ) sgconf_xml? ( dev-libs/expat )
+REQUIRED_USE=stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )
+SLOT=0
+SRC_URI=http://stg.dp.ua/download/server/2.408/stg-2.408.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0f2436dc820ec18bf81ba00f818035c3

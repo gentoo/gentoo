@@ -1,13 +1,13 @@
-_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=2d11e1a7751b3cf46457d1e87f38ba5b
-SLOT=0
 DEFINED_PHASES=compile install postinst prepare
-EAPI=3
 DEPEND=x11-libs/libX11 x11-libs/motif:0 xpm? ( x11-libs/libXpm ) python? ( =dev-lang/python-2* )
 DESCRIPTION=A suite of programmes to process and view NMR data
-LICENSE=AZARA
-IUSE=python xpm X
-SRC_URI=http://www.bio.cam.ac.uk/ccpn/download/azara/azara-2.8-src.tgz
-KEYWORDS=~amd64 ~x86 ~amd64-linux
+EAPI=3
 HOMEPAGE=http://www.bio.cam.ac.uk/azara/
+IUSE=python xpm X
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=AZARA
 RDEPEND=x11-libs/libX11 x11-libs/motif:0 xpm? ( x11-libs/libXpm ) python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=http://www.bio.cam.ac.uk/ccpn/download/azara/azara-2.8-src.tgz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=2d11e1a7751b3cf46457d1e87f38ba5b

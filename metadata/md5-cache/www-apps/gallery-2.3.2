@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	depend.php	c595f1a83ba4052bfe96c06daee20004	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	confutils	18995f74ac4ffafb7ad853dfe133f209	webapp	2442891c368d310c1d3fe77d9c77fe5b	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=e99b44d9fd987e3b003a578a9f19fc77
-SLOT=2.3.2
 DEFINED_PHASES=install postinst prerm setup
-EAPI=5
 DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Web based (PHP Script) photo album viewer/creator
-LICENSE=GPL-2
-IUSE=ffmpeg +gd imagemagick +mysql netpbm postgres raw sqlite unzip zip vhosts
-SRC_URI=mirror://sourceforge/gallery/gallery-2.3.2-full.tar.gz
-KEYWORDS=amd64 hppa ppc ppc64 x86
+EAPI=5
 HOMEPAGE=http://galleryproject.org/
+IUSE=ffmpeg +gd imagemagick +mysql netpbm postgres raw sqlite unzip zip vhosts
+KEYWORDS=amd64 hppa ppc ppc64 x86
+LICENSE=GPL-2
 RDEPEND=raw? ( media-gfx/dcraw ) ffmpeg? ( virtual/ffmpeg ) imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) ) netpbm? ( media-libs/netpbm media-gfx/jhead ) unzip? ( app-arch/unzip ) zip? ( app-arch/zip ) sqlite? ( dev-lang/php[pdo] dev-lang/php[sqlite] ) mysql? ( || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) ) dev-lang/php[session,postgres?,gd?] virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=2.3.2
+SRC_URI=mirror://sourceforge/gallery/gallery-2.3.2-full.tar.gz
+_eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=e99b44d9fd987e3b003a578a9f19fc77

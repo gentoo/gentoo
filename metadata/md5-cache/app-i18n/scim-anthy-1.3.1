@@ -1,13 +1,13 @@
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	libtool	7f78cd7d403808a350c9ae23f5821fb4
-_md5_=8ac5ca0ea4212cc9894e974db97229df
-SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare
-EAPI=2
 DEPEND=>=app-i18n/scim-1.2[-gtk3] || ( >=app-i18n/anthy-7500 >=app-i18n/anthy-ss-7500 ) nls? ( virtual/libintl ) gtk? ( >=x11-libs/gtk+-2.8:2 ) nls? ( sys-devel/gettext ) virtual/pkgconfig
 DESCRIPTION=Japanese input method Anthy IMEngine for SCIM
-LICENSE=GPL-2
-IUSE=gtk nls
-SRC_URI=mirror://sourceforge.jp/scim-imengine/29660/scim-anthy-1.3.1.tar.gz
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+EAPI=2
 HOMEPAGE=http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMAnthy
+IUSE=gtk nls
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=GPL-2
 RDEPEND=>=app-i18n/scim-1.2[-gtk3] || ( >=app-i18n/anthy-7500 >=app-i18n/anthy-ss-7500 ) nls? ( virtual/libintl ) gtk? ( >=x11-libs/gtk+-2.8:2 ) gtk? ( app-dicts/kasumi )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/scim-imengine/29660/scim-anthy-1.3.1.tar.gz
+_eclasses_=libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=8ac5ca0ea4212cc9894e974db97229df

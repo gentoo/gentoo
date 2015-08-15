@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
-_md5_=6a228684ab73d74943478314aa0af1ab
-SLOT=0
 DEFINED_PHASES=compile install postinst setup
-EAPI=0
 DEPEND==www-servers/apache-2.2*
 DESCRIPTION=An Apache2 module providing macros for the Apache config file
-LICENSE=BSD
-SRC_URI=http://www.coelho.net/mod_macro/mod_macro-1.1.10.tar.bz2
-KEYWORDS=amd64 x86
+EAPI=0
 HOMEPAGE=http://www.coelho.net/mod_macro/
+KEYWORDS=amd64 x86
+LICENSE=BSD
 RDEPEND==www-servers/apache-2.2*
+SLOT=0
+SRC_URI=http://www.coelho.net/mod_macro/mod_macro-1.1.10.tar.bz2
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=6a228684ab73d74943478314aa0af1ab

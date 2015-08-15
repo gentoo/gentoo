@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=f23d5c70cc799a0bbe5d01faff0783af
-SLOT=0
 DEFINED_PHASES=install postinst postrm preinst unpack
-EAPI=5
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=Easy way to install DLLs needed to work around problems in Wine
-LICENSE=LGPL-2.1+
-IUSE=gtk kde rar
-RESTRICT=test
-SRC_URI=https://github.com/Winetricks/winetricks/archive/20150706.tar.gz -> winetricks-20150706.tar.gz gtk? ( http://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( http://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 )
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://winetricks.org http://wiki.winehq.org/winetricks
+IUSE=gtk kde rar
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1+
 RDEPEND=app-arch/cabextract app-arch/p7zip app-arch/unzip app-emulation/wine net-misc/wget x11-misc/xdg-utils gtk? ( gnome-extra/zenity ) kde? ( kde-apps/kdialog ) rar? ( app-arch/unrar )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/Winetricks/winetricks/archive/20150706.tar.gz -> winetricks-20150706.tar.gz gtk? ( http://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( http://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 )
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=f23d5c70cc799a0bbe5d01faff0783af

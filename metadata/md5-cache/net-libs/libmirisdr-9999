@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=8126cfdbb2f0a6522fd9a94058493080
-SLOT=0/9999
 DEFINED_PHASES=compile configure install prepare test unpack
-EAPI=5
 DEPEND=virtual/libusb:1 virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git
 DESCRIPTION=Software for the Mirics MSi2500 + MSi001 SDR platform
-LICENSE=GPL-2
-IUSE=doc static-libs
+EAPI=5
 HOMEPAGE=http://cgit.osmocom.org/libmirisdr/
+IUSE=doc static-libs
+LICENSE=GPL-2
 RDEPEND=virtual/libusb:1
+SLOT=0/9999
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=8126cfdbb2f0a6522fd9a94058493080

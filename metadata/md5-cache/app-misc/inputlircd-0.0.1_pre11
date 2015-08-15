@@ -1,10 +1,9 @@
-_eclasses_=
-_md5_=c6e9144e8428ba76b6de28df20f72b78
-SLOT=0
 DEFINED_PHASES=install
-EAPI=0
 DESCRIPTION=Inputlirc daemon to utilize /dev/input/event*
-LICENSE=GPL-2
-SRC_URI=http://gentooexperimental.org/~genstef/dist/inputlircd-0.0.1_pre11.tar.bz2
-KEYWORDS=alpha amd64 ia64 ppc ppc64 x86
+EAPI=0
 HOMEPAGE=http://svn.sliepen.eu.org/inputlirc/trunk
+KEYWORDS=alpha amd64 ia64 ppc ppc64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://gentooexperimental.org/~genstef/dist/inputlircd-0.0.1_pre11.tar.bz2
+_md5_=c6e9144e8428ba76b6de28df20f72b78

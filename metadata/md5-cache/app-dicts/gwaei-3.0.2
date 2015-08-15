@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=a35b5beefda83fa2c3f1dd3be1704152
-SLOT=0
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-EAPI=4
 DEPEND=>=net-misc/curl-7.21.0 >=dev-libs/glib-2.25.0:2 gtk? ( x11-libs/gtk+:3 >=app-text/gnome-doc-utils-0.13.0 unique? ( dev-libs/libunique:3 ) ) ncurses? ( sys-libs/ncurses[unicode] ) nls? ( virtual/libintl ) test? ( app-text/docbook-xml-dtd:4.1.2 ) gtk? ( >=app-text/gnome-doc-utils-0.13.0 app-text/scrollkeeper ) nls? ( >=sys-devel/gettext-0.17 ) app-text/rarian dev-util/intltool virtual/pkgconfig >=sys-apps/sed-4
 DESCRIPTION=Japanese-English Dictionary for GNOME
-LICENSE=GPL-3
-IUSE=gtk nls unique test ncurses
-REQUIRED_USE=unique? ( gtk )
-SRC_URI=mirror://sourceforge/gwaei/gwaei-3.0.2.tar.gz
-KEYWORDS=~amd64 ~x86
+EAPI=4
 HOMEPAGE=http://gwaei.sourceforge.net/
+IUSE=gtk nls unique test ncurses
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
 RDEPEND=>=net-misc/curl-7.21.0 >=dev-libs/glib-2.25.0:2 gtk? ( x11-libs/gtk+:3 >=app-text/gnome-doc-utils-0.13.0 unique? ( dev-libs/libunique:3 ) ) ncurses? ( sys-libs/ncurses[unicode] ) nls? ( virtual/libintl )
+REQUIRED_USE=unique? ( gtk )
+SLOT=0
+SRC_URI=mirror://sourceforge/gwaei/gwaei-3.0.2.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=a35b5beefda83fa2c3f1dd3be1704152

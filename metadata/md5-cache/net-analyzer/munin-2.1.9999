@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=c053fbb1e5aeff8e08c3218e3e76b9b5
-SLOT=0
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
-EAPI=5
 DEPEND=dev-lang/perl[berkdb] sys-process/procps doc? ( dev-python/sphinx ) irc? ( dev-perl/Net-IRC ) mysql? ( virtual/mysql dev-perl/Cache-Cache dev-perl/DBD-mysql ) ssl? ( dev-perl/Net-SSLeay ) postgres? ( dev-perl/DBD-Pg dev-db/postgresql ) memcached? ( dev-perl/Cache-Memcached ) cgi? ( dev-perl/FCGI ) apache? ( www-servers/apache[apache2_modules_cgi,apache2_modules_cgid,apache2_modules_rewrite] ) syslog? ( virtual/perl-Sys-Syslog ) http? ( dev-perl/libwww-perl ) dhcpd? ( >=net-misc/dhcp-3[server] dev-perl/Net-IP dev-perl/HTTP-Date ) dev-perl/DBI dev-perl/DateManip dev-perl/File-Copy-Recursive dev-perl/List-MoreUtils dev-perl/Log-Log4perl dev-perl/Net-CIDR dev-perl/Net-Netmask dev-perl/Net-SNMP dev-perl/net-server[ipv6(-)?] virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-MIME-Base64 virtual/perl-Storable virtual/perl-Text-Balanced virtual/perl-Time-HiRes !minimal? ( dev-perl/HTML-Template dev-perl/IO-Socket-INET6 dev-perl/URI >=net-analyzer/rrdtool-1.3[graph,perl] virtual/ssh ) dev-perl/Module-Build java? ( >=virtual/jdk-1.5 ) test? ( dev-perl/Test-Deep dev-perl/Test-LongString dev-perl/Test-Differences dev-perl/Test-MockModule dev-perl/Test-MockObject dev-perl/File-Slurp dev-perl/IO-stringy dev-perl/IO-Socket-INET6 ) java? ( >=dev-java/java-config-2.2.0 ) dev-vcs/git
 DESCRIPTION=Munin Server Monitoring Tool
-LICENSE=GPL-2
-IUSE=irc java memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache elibc_FreeBSD java
-REQUIRED_USE=cgi? ( !minimal ) apache? ( cgi )
+EAPI=5
 HOMEPAGE=http://munin-monitoring.org/
+IUSE=irc java memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache elibc_FreeBSD java
+LICENSE=GPL-2
 RDEPEND=dev-lang/perl[berkdb] sys-process/procps doc? ( dev-python/sphinx ) irc? ( dev-perl/Net-IRC ) mysql? ( virtual/mysql dev-perl/Cache-Cache dev-perl/DBD-mysql ) ssl? ( dev-perl/Net-SSLeay ) postgres? ( dev-perl/DBD-Pg dev-db/postgresql ) memcached? ( dev-perl/Cache-Memcached ) cgi? ( dev-perl/FCGI ) apache? ( www-servers/apache[apache2_modules_cgi,apache2_modules_cgid,apache2_modules_rewrite] ) syslog? ( virtual/perl-Sys-Syslog ) http? ( dev-perl/libwww-perl ) dhcpd? ( >=net-misc/dhcp-3[server] dev-perl/Net-IP dev-perl/HTTP-Date ) dev-perl/DBI dev-perl/DateManip dev-perl/File-Copy-Recursive dev-perl/List-MoreUtils dev-perl/Log-Log4perl dev-perl/Net-CIDR dev-perl/Net-Netmask dev-perl/Net-SNMP dev-perl/net-server[ipv6(-)?] virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-MIME-Base64 virtual/perl-Storable virtual/perl-Text-Balanced virtual/perl-Time-HiRes !minimal? ( dev-perl/HTML-Template dev-perl/IO-Socket-INET6 dev-perl/URI >=net-analyzer/rrdtool-1.3[graph,perl] virtual/ssh ) virtual/awk ipmi? ( >=sys-libs/freeipmi-1.1.6-r1 ) java? ( >=virtual/jre-1.5 || ( net-analyzer/netcat6 net-analyzer/netcat ) ) !minimal? ( virtual/cron media-fonts/dejavu ) selinux? ( sec-policy/selinux-munin ) !<sys-apps/openrc-0.11.8 java? ( >=dev-java/java-config-2.2.0 )
+REQUIRED_USE=cgi? ( !minimal ) apache? ( cgi )
+SLOT=0
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c053fbb1e5aeff8e08c3218e3e76b9b5

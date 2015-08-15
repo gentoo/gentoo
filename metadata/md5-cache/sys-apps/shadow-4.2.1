@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	pam	5f80e6013406d68612a7493314e3777	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=a95ea8ebca6e1b7ff9a7127fe2c02968
-SLOT=0
 DEFINED_PHASES=configure install postinst preinst prepare
-EAPI=4
 DEPEND=acl? ( sys-apps/acl ) audit? ( sys-process/audit ) cracklib? ( >=sys-libs/cracklib-2.7-r3 ) pam? ( virtual/pam ) skey? ( sys-auth/skey ) selinux? ( >=sys-libs/libselinux-1.28 sys-libs/libsemanage ) nls? ( virtual/libintl ) xattr? ( sys-apps/attr ) app-arch/xz-utils nls? ( sys-devel/gettext )
 DESCRIPTION=Utilities to deal with user accounts
-LICENSE=BSD GPL-2
-IUSE=acl audit cracklib nls pam selinux skey xattr
-SRC_URI=http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+EAPI=4
 HOMEPAGE=http://shadow.pld.org.pl/ http://pkg-shadow.alioth.debian.org/
+IUSE=acl audit cracklib nls pam selinux skey xattr
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD GPL-2
 RDEPEND=acl? ( sys-apps/acl ) audit? ( sys-process/audit ) cracklib? ( >=sys-libs/cracklib-2.7-r3 ) pam? ( virtual/pam ) skey? ( sys-auth/skey ) selinux? ( >=sys-libs/libselinux-1.28 sys-libs/libsemanage ) nls? ( virtual/libintl ) xattr? ( sys-apps/attr ) pam? ( >=sys-auth/pambase-20120417 )
+SLOT=0
+SRC_URI=http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=a95ea8ebca6e1b7ff9a7127fe2c02968

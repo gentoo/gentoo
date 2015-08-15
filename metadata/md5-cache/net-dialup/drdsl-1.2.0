@@ -1,14 +1,14 @@
-_eclasses_=rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=fc36559b8f94e6e41b8eff0f23ad535c
-SLOT=0
 DEFINED_PHASES=install unpack
-EAPI=0
 DEPEND=unicode? ( virtual/libiconv ) >=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=AVM DSL Assistant for autodetecting DSL values (VPI, VCI, VPP) for 'fcdsl' based cards
-LICENSE=AVM-FC
-IUSE=unicode
-RESTRICT=mirror strip test
-SRC_URI=x86? ( http://opensuse.foehr-it.de/rpms/10_3/2.6.22.13_0.3/32bit/drdsl-1.0-1.i586.rpm ) amd64? ( http://opensuse.foehr-it.de/rpms/10_3/2.6.22.13_0.3/64bit/drdsl-1.0-1.x86_64.rpm )
-KEYWORDS=~amd64 x86
+EAPI=0
 HOMEPAGE=http://opensuse.foehr-it.de/
+IUSE=unicode
+KEYWORDS=~amd64 x86
+LICENSE=AVM-FC
 RDEPEND=net-dialup/capi4k-utils
+RESTRICT=mirror strip test
+SLOT=0
+SRC_URI=x86? ( http://opensuse.foehr-it.de/rpms/10_3/2.6.22.13_0.3/32bit/drdsl-1.0-1.i586.rpm ) amd64? ( http://opensuse.foehr-it.de/rpms/10_3/2.6.22.13_0.3/64bit/drdsl-1.0-1.x86_64.rpm )
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=fc36559b8f94e6e41b8eff0f23ad535c

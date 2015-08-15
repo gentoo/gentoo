@@ -1,15 +1,15 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=8a372ee3a4e930a7a2f60801dd393ca0
-SLOT=0
 DEFINED_PHASES=install postinst unpack
-EAPI=5
 DEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
 DESCRIPTION=MolSoft LCC ICM Pro
-LICENSE=MolSoft
+EAPI=5
+HOMEPAGE=http://www.molsoft.com/icm_pro.html
 IUSE=32bit 64bit vim-syntax
+KEYWORDS=~amd64 ~x86
+LICENSE=MolSoft
+RDEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
 REQUIRED_USE=^^ ( ( !32bit 64bit ) ( 32bit !64bit ) ( 32bit 64bit ) )
 RESTRICT=fetch
+SLOT=0
 SRC_URI=icm-3.7-3b-linux.sh
-KEYWORDS=~amd64 ~x86
-HOMEPAGE=http://www.molsoft.com/icm_pro.html
-RDEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8a372ee3a4e930a7a2f60801dd393ca0

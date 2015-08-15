@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
-_md5_=3ceae8cf2c7f16d33e5561f140a94e5c
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=5
 DEPEND=>=virtual/ffmpeg-0.10 tools? ( >=media-libs/taglib-1.6 ) test? ( dev-cpp/gtest dev-libs/boost ) tools? ( dev-libs/boost ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A client-side library that implements a custom algorithm for extracting fingerprints
-LICENSE=LGPL-2.1
-IUSE=test tools
-SRC_URI=https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-1.1.tar.gz
-KEYWORDS=amd64 ~ppc x86 ~amd64-fbsd
+EAPI=5
 HOMEPAGE=http://acoustid.org/chromaprint
+IUSE=test tools
+KEYWORDS=amd64 ~ppc x86 ~amd64-fbsd
+LICENSE=LGPL-2.1
 RDEPEND=>=virtual/ffmpeg-0.10 tools? ( >=media-libs/taglib-1.6 )
+SLOT=0
+SRC_URI=https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-1.1.tar.gz
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=3ceae8cf2c7f16d33e5561f140a94e5c

@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6
-_md5_=c780bac2d501472953e6aa606e2a2bb2
-SLOT=0
 DEFINED_PHASES=install postinst setup
-EAPI=4
 DEPEND=dev-lang/php >=dev-php/pear-1.8.1
 DESCRIPTION=Generic server class for PHP
-LICENSE=PHP-3.01
-SRC_URI=http://pear.php.net/get/Net_Server-1.0.2.tgz
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+EAPI=4
 HOMEPAGE=http://pear.php.net/Net_Server
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=PHP-3.01
 RDEPEND=dev-lang/php[sockets] dev-lang/php >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/Net_Server-1.0.2.tgz
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=c780bac2d501472953e6aa606e2a2bb2

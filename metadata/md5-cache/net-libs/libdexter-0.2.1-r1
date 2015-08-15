@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=c58030902cb467055ed3ada117d0835c
-SLOT=0
 DEFINED_PHASES=configure install prepare
-EAPI=5
 DEPEND=tcpd? ( sys-apps/tcp-wrappers:= ) virtual/pkgconfig >=dev-libs/glib-2.30:2 >=sys-apps/sed-4
 DESCRIPTION=A plugin-based, distributed sampling library
-LICENSE=LGPL-2.1
-IUSE=tcpd
-SRC_URI=mirror://sourceforge/libdexter/libdexter-0.2.1.tar.bz2
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://libdexter.sourceforge.net/
+IUSE=tcpd
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
 RDEPEND=tcpd? ( sys-apps/tcp-wrappers:= )
+SLOT=0
+SRC_URI=mirror://sourceforge/libdexter/libdexter-0.2.1.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=c58030902cb467055ed3ada117d0835c

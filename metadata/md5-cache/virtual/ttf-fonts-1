@@ -1,8 +1,7 @@
-_eclasses_=
-_md5_=db5d643cfa59803eab2db63da76bb57
-SLOT=0
 DEFINED_PHASES=-
-EAPI=0
 DESCRIPTION=Virtual for Serif/Sans/Monospace font packages
+EAPI=0
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=|| ( media-fonts/liberation-fonts media-fonts/source-pro media-fonts/dejavu media-fonts/croscorefonts media-fonts/droid media-fonts/ttf-bitstream-vera media-fonts/freefont media-fonts/corefonts )
+SLOT=0
+_md5_=0db5d643cfa59803eab2db63da76bb57

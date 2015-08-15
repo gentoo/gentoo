@@ -1,11 +1,10 @@
-_eclasses_=
-_md5_=49ca18114c4c1c182afb99f8ae0acc14
-SLOT=3.10.24_pre-r20131212
 DEFINED_PHASES=install prepare
-EAPI=5
 DESCRIPTION=Raspberry PI precompiled kernel and modules
+EAPI=5
+HOMEPAGE=https://github.com/raspberrypi/firmware
+KEYWORDS=~arm -*
 LICENSE=GPL-2
 RESTRICT=binchecks mirror strip
+SLOT=3.10.24_pre-r20131212
 SRC_URI=https://dev.gentoo.org/~xmw/raspberrypi-image/raspberrypi-image-3.10.24_pre-r20131212.tar.xz
-KEYWORDS=~arm -*
-HOMEPAGE=https://github.com/raspberrypi/firmware
+_md5_=49ca18114c4c1c182afb99f8ae0acc14

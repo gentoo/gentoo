@@ -1,11 +1,11 @@
-_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=97317a7d1b3b07ea46ed13b40359780
-SLOT=0
 DEFINED_PHASES=install postinst setup
-EAPI=5
 DEPEND=dev-lang/go:=
 DESCRIPTION=Collects logs locally in preparation for processing elsewhere
-LICENSE=Apache-2.0
-SRC_URI=https://github.com/elastic/logstash-forwarder/archive/v0.4.0.tar.gz -> logstash-forwarder-0.4.0.tar.gz
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=https://github.com/elastic/logstash-forwarder
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/elastic/logstash-forwarder/archive/v0.4.0.tar.gz -> logstash-forwarder-0.4.0.tar.gz
+_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=097317a7d1b3b07ea46ed13b40359780

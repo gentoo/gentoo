@@ -1,14 +1,13 @@
-_eclasses_=
-_md5_=a67ca1bb923449994969394f5fd81d05
-SLOT=0
 DEFINED_PHASES=compile install
-EAPI=0
 DEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) perl? ( dev-lang/perl ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl ) >=dev-lang/swig-1.3.21 virtual/pkgconfig
 DESCRIPTION=Library interface to IPMI
-LICENSE=LGPL-2.1 GPL-2
-IUSE=crypt snmp perl tcl python
-RESTRICT=test
-SRC_URI=mirror://sourceforge/openipmi/OpenIPMI-2.0.11.tar.gz
-KEYWORDS=amd64 ~ia64 ppc x86
+EAPI=0
 HOMEPAGE=http://sourceforge.net/projects/openipmi/
+IUSE=crypt snmp perl tcl python
+KEYWORDS=amd64 ~ia64 ppc x86
+LICENSE=LGPL-2.1 GPL-2
 RDEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) perl? ( dev-lang/perl ) python? ( dev-lang/python ) tcl? ( dev-lang/tcl )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/openipmi/OpenIPMI-2.0.11.tar.gz
+_md5_=a67ca1bb923449994969394f5fd81d05

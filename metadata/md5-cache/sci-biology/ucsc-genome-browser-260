@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	2090c5a622458303e6bf68837ac6b96
-_md5_=291204ab910d7f2b77d52afc8fcb6675
-SLOT=0
 DEFINED_PHASES=compile install postinst prepare prerm setup
-EAPI=5
 DEPEND=app-arch/unzip !<sci-biology/ucsc-genome-browser-223 mysql? ( virtual/mysql ) server? ( virtual/httpd-cgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=The UCSC genome browser suite, also known as Jim Kent's library and GoldenPath
-LICENSE=blat
-IUSE=+mysql +server static-libs vhosts
-REQUIRED_USE=server? ( mysql )
-SRC_URI=http://hgdownload.cse.ucsc.edu/admin/jksrc.v260.zip
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://genome.ucsc.edu/
+IUSE=+mysql +server static-libs vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=blat
 RDEPEND=app-arch/unzip !<sci-biology/ucsc-genome-browser-223 mysql? ( virtual/mysql ) server? ( virtual/httpd-cgi ) >=app-admin/webapp-config-1.50.15
+REQUIRED_USE=server? ( mysql )
+SLOT=0
+SRC_URI=http://hgdownload.cse.ucsc.edu/admin/jksrc.v260.zip
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_md5_=291204ab910d7f2b77d52afc8fcb6675

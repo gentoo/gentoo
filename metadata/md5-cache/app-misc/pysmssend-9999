@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	distutils	def8c8eb435ec28fd9315114640f6c84	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=16e840889f023e6c2639b05c3c7c9a75
-SLOT=0
 DEFINED_PHASES=compile install postinst postrm prepare unpack
-EAPI=3
 DEPEND=>=dev-python/mechanize-0.1.9 qt4? ( >=dev-python/PyQt4-4.3[X] ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) dev-vcs/git
 DESCRIPTION=Python Application for sending sms over multiple ISPs
-LICENSE=GPL-3
-IUSE=qt4
+EAPI=3
 HOMEPAGE=http://pysmssend.silverarrow.org/
+IUSE=qt4
+LICENSE=GPL-3
 RDEPEND=>=dev-python/mechanize-0.1.9 qt4? ( >=dev-python/PyQt4-4.3[X] ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=16e840889f023e6c2639b05c3c7c9a75

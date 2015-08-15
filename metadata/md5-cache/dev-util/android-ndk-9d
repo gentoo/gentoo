@@ -1,12 +1,11 @@
-_eclasses_=
-_md5_=f702ddcafe0228d97b103fb386ab55ac
-SLOT=0
 DEFINED_PHASES=compile configure install
-EAPI=5
 DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
-LICENSE=android
-RESTRICT=mirror strip installsources test
-SRC_URI=x86? ( http://dl.google.com/android/ndk/android-ndk-r9d-linux-x86.tar.bz2 ) amd64? ( http://dl.google.com/android/ndk/android-ndk-r9d-linux-x86_64.tar.bz2 )
-KEYWORDS=~amd64 ~x86
+EAPI=5
 HOMEPAGE=http://developer.android.com/sdk/ndk/
+KEYWORDS=~amd64 ~x86
+LICENSE=android
 RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81
+RESTRICT=mirror strip installsources test
+SLOT=0
+SRC_URI=x86? ( http://dl.google.com/android/ndk/android-ndk-r9d-linux-x86.tar.bz2 ) amd64? ( http://dl.google.com/android/ndk/android-ndk-r9d-linux-x86_64.tar.bz2 )
+_md5_=f702ddcafe0228d97b103fb386ab55ac

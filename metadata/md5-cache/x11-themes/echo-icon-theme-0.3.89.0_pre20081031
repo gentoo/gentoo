@@ -1,12 +1,12 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=35869ebc62d4d40d402b16f2f401ed4c
-SLOT=0
 DEFINED_PHASES=install postinst postrm preinst
-EAPI=2
 DEPEND=virtual/pkgconfig >=x11-misc/icon-naming-utils-0.8.90 >=sys-apps/sed-4
 DESCRIPTION=SVG icon theme from the Echo Icon project
+EAPI=2
+HOMEPAGE=https://fedorahosted.org/echo-icon-theme
+KEYWORDS=~amd64 ~x86
 LICENSE=CC-BY-SA-3.0
 RESTRICT=binchecks strip
+SLOT=0
 SRC_URI=mirror://gentoo/echo-icon-theme-0.3.89.0_pre20081031.tar.bz2
-KEYWORDS=~amd64 ~x86
-HOMEPAGE=https://fedorahosted.org/echo-icon-theme
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=35869ebc62d4d40d402b16f2f401ed4c

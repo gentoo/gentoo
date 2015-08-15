@@ -1,11 +1,10 @@
-_eclasses_=
-_md5_=d06ef3260340932777955054c487e66b
-SLOT=0
 DEFINED_PHASES=install
-EAPI=5
 DESCRIPTION=Data for the Crystallographic Object-Oriented Toolkit
+EAPI=5
+HOMEPAGE=http://www.biop.ox.ac.uk/coot/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=GPL-3
 RESTRICT=binchecks strip
+SLOT=0
 SRC_URI=mirror://gentoo/reference-structures-2.tar.gz
-KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
-HOMEPAGE=http://www.biop.ox.ac.uk/coot/
+_md5_=d06ef3260340932777955054c487e66b

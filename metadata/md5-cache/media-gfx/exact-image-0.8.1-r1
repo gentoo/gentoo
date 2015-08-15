@@ -1,13 +1,13 @@
-_eclasses_=python	6d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=483dc237ac0767d1d17ed6f42e9c79c6
-SLOT=0
 DEFINED_PHASES=configure prepare setup
-EAPI=4
 DEPEND=x11-libs/agg[truetype] sys-libs/zlib expat? ( dev-libs/expat ) jpeg2k? ( media-libs/jasper ) jpeg? ( virtual/jpeg ) lua? ( dev-lang/lua ) openexr? ( media-libs/openexr ) php? ( dev-lang/php ) perl? ( dev-lang/perl ) png? ( >=media-libs/libpng-1.2.43 ) ruby? ( dev-lang/ruby ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 ) X? ( x11-libs/libXext x11-libs/libXt x11-libs/libICE x11-libs/libSM ) virtual/pkgconfig swig? ( dev-lang/swig ) python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) )
 DESCRIPTION=A fast, modern and generic image processing library
-LICENSE=GPL-2
-IUSE=expat jpeg jpeg2k lua openexr php perl png python ruby swig tiff truetype X
-SRC_URI=http://dl.exactcode.de/oss/exact-image/exact-image-0.8.1.tar.bz2
-KEYWORDS=~amd64 ~x86
+EAPI=4
 HOMEPAGE=http://www.exactcode.de/site/open_source/exactimage/
+IUSE=expat jpeg jpeg2k lua openexr php perl png python ruby swig tiff truetype X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
 RDEPEND=x11-libs/agg[truetype] sys-libs/zlib expat? ( dev-libs/expat ) jpeg2k? ( media-libs/jasper ) jpeg? ( virtual/jpeg ) lua? ( dev-lang/lua ) openexr? ( media-libs/openexr ) php? ( dev-lang/php ) perl? ( dev-lang/perl ) png? ( >=media-libs/libpng-1.2.43 ) ruby? ( dev-lang/ruby ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 ) X? ( x11-libs/libXext x11-libs/libXt x11-libs/libICE x11-libs/libSM ) python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) )
+SLOT=0
+SRC_URI=http://dl.exactcode.de/oss/exact-image/exact-image-0.8.1.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=483dc237ac0767d1d17ed6f42e9c79c6

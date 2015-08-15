@@ -1,14 +1,14 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=8ea871ebbecaa008326c6903fdf6e06e
-SLOT=0/4.7.1
 DEFINED_PHASES=configure install postinst postrm preinst prepare
-EAPI=5
 DEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.16:2 >=lxde-base/menu-cache-0.3.2:= vala? ( || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) ) doc? ( dev-util/gtk-doc ) app-arch/xz-utils >=dev-util/intltool-0.40 virtual/pkgconfig sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A library for file management
-LICENSE=GPL-2
-IUSE=+automount debug doc examples udisks vala
-REQUIRED_USE=udisks? ( automount )
-SRC_URI=http://dev.gentoo.org/~hwoarang/distfiles/libfm-1.1.4.tar.xz
-KEYWORDS=~alpha amd64 arm ~mips ppc x86 ~amd64-linux ~x86-linux
+EAPI=5
 HOMEPAGE=http://pcmanfm.sourceforge.net/
+IUSE=+automount debug doc examples udisks vala
+KEYWORDS=~alpha amd64 arm ~mips ppc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.16:2 >=lxde-base/menu-cache-0.3.2:= x11-misc/shared-mime-info automount? ( udisks? ( || ( gnome-base/gvfs[udev,udisks] gnome-base/gvfs[udev,gdu] ) ) !udisks? ( gnome-base/gvfs[udev] ) )
+REQUIRED_USE=udisks? ( automount )
+SLOT=0/4.7.1
+SRC_URI=http://dev.gentoo.org/~hwoarang/distfiles/libfm-1.1.4.tar.xz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c
+_md5_=8ea871ebbecaa008326c6903fdf6e06e

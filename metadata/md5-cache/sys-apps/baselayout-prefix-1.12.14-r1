@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	flag-o-matic	2090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	user	906f3c8eb3a2350a4f1191a89baa3e46	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=c6570a9ec268b6f2606c9946a6349269
-SLOT=0
 DEFINED_PHASES=compile configure install postinst prepare
-EAPI=3
 DEPEND=>=sys-apps/portage-2.2.01
 DESCRIPTION=Baselayout for Gentoo Prefix installs
-LICENSE=GPL-2
-IUSE=prefix-chaining
-SRC_URI=http://dev.gentoo.org/~grobian/distfiles/baselayout-prefix-1.12.14.1709.tar.bz2
-KEYWORDS=~ppc-aix ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt
+EAPI=3
 HOMEPAGE=http://prefix.gentoo.org/
+IUSE=prefix-chaining
+KEYWORDS=~ppc-aix ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt
+LICENSE=GPL-2
 RDEPEND=>=sys-libs/readline-5.0-r1 >=app-shells/bash-3.1_p7 >=sys-apps/coreutils-5.2.1 kernel_Darwin? ( sys-process/pidof-bsd ) kernel_FreeBSD? ( sys-process/pidof-bsd )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~grobian/distfiles/baselayout-prefix-1.12.14.1709.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=c6570a9ec268b6f2606c9946a6349269

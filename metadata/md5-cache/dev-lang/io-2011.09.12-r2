@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	eutils	351a78113be5b393c09a2c948701ad36	cmake-utils	f474224ef49d530640a43a04ae94928e	flag-o-matic	2090c5a622458303e6bf68837ac6b96
-_md5_=85e0fe004e1c5d761d0bd78f3e3e24c8
-SLOT=0
 DEFINED_PHASES=compile configure install prepare test
-EAPI=4
 DEPEND=clutter? ( media-libs/clutter ) dbi? ( dev-db/libdbi ) editline? ( dev-libs/libedit ) image? ( virtual/jpeg media-libs/tiff media-libs/libpng ) xmpp? ( net-libs/loudmouth ) libffi? ( virtual/libffi ) libxml2? ( dev-libs/libxml2 ) lzo? ( dev-libs/lzo ) ncurses? ( sys-libs/ncurses ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql[server] ) readline? ( sys-libs/readline ) sndfile? ( media-libs/libsndfile ) sqlite? ( >=dev-db/sqlite-3.0.0 ) theora? ( media-libs/libtheora ) truetype? ( media-libs/freetype ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Io is a small, prototype-based programming language
-LICENSE=BSD
-IUSE=cgi clutter dbi doc editline google gui http image libffi libxml2 lzo md5sum ncurses ogg opengl postgres pcre python readline sha1 sndfile sockets sqlite syslog theora threads truetype twitter vorbis xmpp zlib
-REQUIRED_USE=vorbis? ( ogg )
-SRC_URI=mirror://gentoo/io-2011.09.12.tar.gz http://dev.gentoo.org/~araujo/snapshots/io-2011.09.12.tar.gz
-KEYWORDS=~x86 ~amd64
+EAPI=4
 HOMEPAGE=http://www.iolanguage.com
+IUSE=cgi clutter dbi doc editline google gui http image libffi libxml2 lzo md5sum ncurses ogg opengl postgres pcre python readline sha1 sndfile sockets sqlite syslog theora threads truetype twitter vorbis xmpp zlib
+KEYWORDS=~x86 ~amd64
+LICENSE=BSD
+REQUIRED_USE=vorbis? ( ogg )
+SLOT=0
+SRC_URI=mirror://gentoo/io-2011.09.12.tar.gz http://dev.gentoo.org/~araujo/snapshots/io-2011.09.12.tar.gz
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=85e0fe004e1c5d761d0bd78f3e3e24c8

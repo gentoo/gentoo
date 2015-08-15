@@ -1,13 +1,13 @@
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	gkrellm-plugin	d8a7ae1368b3384fb89d1cbcb650415	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=a92ecb83d867536b10c5993cd34b9432
-SLOT=0
 DEFINED_PHASES=compile install postinst setup
-EAPI=4
 DEPEND=dev-libs/glib:2 =app-admin/gkrellm-2* virtual/pkgconfig
 DESCRIPTION=a GKrellM2 plugin which displays the top three processes
-LICENSE=GPL-2
-IUSE=X
-SRC_URI=mirror://sourceforge/gkrelltop/gkrelltop_2.2.11.orig.tar.gz
-KEYWORDS=amd64 ppc x86
+EAPI=4
 HOMEPAGE=http://sourceforge.net/projects/gkrelltop
+IUSE=X
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 =app-admin/gkrellm-2*
+SLOT=0
+SRC_URI=mirror://sourceforge/gkrelltop/gkrelltop_2.2.11.orig.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gkrellm-plugin	0d8a7ae1368b3384fb89d1cbcb650415	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=a92ecb83d867536b10c5993cd34b9432

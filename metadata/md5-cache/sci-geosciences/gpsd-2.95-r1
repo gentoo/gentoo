@@ -1,13 +1,13 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	python	6d7be3e54573292f012e3cc433d8297	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	libtool	7f78cd7d403808a350c9ae23f5821fb4	user	906f3c8eb3a2350a4f1191a89baa3e46	autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36
-_md5_=a41c5c341b27242a8982433012cd4e8d
-SLOT=0
 DEFINED_PHASES=configure install prepare setup
-EAPI=3
 DEPEND=dev-python/pygtk:2 sys-libs/ncurses virtual/libusb:1 dbus? ( sys-apps/dbus dev-libs/dbus-glib ) ntp? ( net-misc/ntp ) qt4? ( dev-qt/qtgui:4 ) app-text/xmlto =app-text/docbook-xml-dtd-4.1* || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients
-LICENSE=BSD
-IUSE=gpsd_protocols_ashtech gpsd_protocols_aivdm gpsd_protocols_clientdebug gpsd_protocols_earthmate gpsd_protocols_evermore gpsd_protocols_fv18 gpsd_protocols_garmin gpsd_protocols_garmintxt gpsd_protocols_gpsclock gpsd_protocols_itrax gpsd_protocols_mtk3301 gpsd_protocols_nmea gpsd_protocols_ntrip gpsd_protocols_navcom gpsd_protocols_oceanserver gpsd_protocols_oldstyle gpsd_protocols_oncore gpsd_protocols_rtcm104v2 gpsd_protocols_rtcm104v3 gpsd_protocols_sirf gpsd_protocols_superstar2 gpsd_protocols_timing gpsd_protocols_tsip gpsd_protocols_tripmate gpsd_protocols_tnt gpsd_protocols_ubx dbus ipv6 ntp qt4
-SRC_URI=mirror://berlios/gpsd/gpsd-2.95.tar.gz
-KEYWORDS=amd64 arm ppc ppc64 x86
+EAPI=3
 HOMEPAGE=http://gpsd.berlios.de/
+IUSE=gpsd_protocols_ashtech gpsd_protocols_aivdm gpsd_protocols_clientdebug gpsd_protocols_earthmate gpsd_protocols_evermore gpsd_protocols_fv18 gpsd_protocols_garmin gpsd_protocols_garmintxt gpsd_protocols_gpsclock gpsd_protocols_itrax gpsd_protocols_mtk3301 gpsd_protocols_nmea gpsd_protocols_ntrip gpsd_protocols_navcom gpsd_protocols_oceanserver gpsd_protocols_oldstyle gpsd_protocols_oncore gpsd_protocols_rtcm104v2 gpsd_protocols_rtcm104v3 gpsd_protocols_sirf gpsd_protocols_superstar2 gpsd_protocols_timing gpsd_protocols_tsip gpsd_protocols_tripmate gpsd_protocols_tnt gpsd_protocols_ubx dbus ipv6 ntp qt4
+KEYWORDS=amd64 arm ppc ppc64 x86
+LICENSE=BSD
 RDEPEND=dev-python/pygtk:2 sys-libs/ncurses virtual/libusb:1 dbus? ( sys-apps/dbus dev-libs/dbus-glib ) ntp? ( net-misc/ntp ) qt4? ( dev-qt/qtgui:4 ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+SLOT=0
+SRC_URI=mirror://berlios/gpsd/gpsd-2.95.tar.gz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=a41c5c341b27242a8982433012cd4e8d

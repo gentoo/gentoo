@@ -1,10 +1,9 @@
-_eclasses_=
-_md5_=7e059334582e9915b4eaba2c700f970b
-SLOT=0
 DEFINED_PHASES=compile install prepare
-EAPI=3
 DESCRIPTION=Darwin Csu (crt1.o) - Mac OS X 10.6.6 to 10.9.5 versions
-LICENSE=APSL-2
-SRC_URI=http://www.opensource.apple.com/tarballs/Csu/Csu-79.tar.gz
-KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+EAPI=3
 HOMEPAGE=http://www.opensource.apple.com/
+KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+LICENSE=APSL-2
+SLOT=0
+SRC_URI=http://www.opensource.apple.com/tarballs/Csu/Csu-79.tar.gz
+_md5_=7e059334582e9915b4eaba2c700f970b

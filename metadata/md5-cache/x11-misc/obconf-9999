@@ -1,11 +1,11 @@
-_eclasses_=toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	autotools	8056957fdccf2b3cd6e282a4b4551d1a
-_md5_=1df00eb9a62f88748a2e65eb4ff62dd5
-SLOT=0
 DEFINED_PHASES=configure install postinst postrm prepare unpack
-EAPI=2
 DEPEND=gnome-base/libglade:2.0 x11-libs/gtk+:2 x11-libs/startup-notification =x11-wm/openbox-9999 nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.9* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
 DESCRIPTION=ObConf is a tool for configuring the Openbox window manager
-LICENSE=GPL-2
-IUSE=nls
+EAPI=2
 HOMEPAGE=http://openbox.org/wiki/ObConf:About
+IUSE=nls
+LICENSE=GPL-2
 RDEPEND=gnome-base/libglade:2.0 x11-libs/gtk+:2 x11-libs/startup-notification =x11-wm/openbox-9999
+SLOT=0
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=1df00eb9a62f88748a2e65eb4ff62dd5
