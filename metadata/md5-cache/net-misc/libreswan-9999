@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install postinst prepare unpack
-DEPEND=dev-libs/gmp:0= dev-libs/nspr caps? ( sys-libs/libcap-ng ) curl? ( net-misc/curl ) dnssec? ( net-dns/unbound net-libs/ldns ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) app-text/docbook-xml-dtd:4.1.2 app-text/xmlto dev-libs/nss sys-devel/bison sys-devel/flex virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DEPEND=dev-libs/gmp:0= dev-libs/libevent dev-libs/nspr caps? ( sys-libs/libcap-ng ) curl? ( net-misc/curl ) dnssec? ( net-dns/unbound net-libs/ldns ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) app-text/docbook-xml-dtd:4.1.2 app-text/xmlto dev-libs/nss sys-devel/bison sys-devel/flex virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1
 DESCRIPTION=IPsec implementation for Linux, fork of Openswan
 EAPI=5
 HOMEPAGE=https://libreswan.org/
 IUSE=caps curl dnssec ldap pam
 LICENSE=GPL-2 BSD-4 RSA DES
-RDEPEND=dev-libs/gmp:0= dev-libs/nspr caps? ( sys-libs/libcap-ng ) curl? ( net-misc/curl ) dnssec? ( net-dns/unbound net-libs/ldns ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) dev-libs/nss[utils(+)] sys-apps/iproute2 !net-misc/openswan !net-misc/strongswan
+RDEPEND=dev-libs/gmp:0= dev-libs/libevent dev-libs/nspr caps? ( sys-libs/libcap-ng ) curl? ( net-misc/curl ) dnssec? ( net-dns/unbound net-libs/ldns ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) dev-libs/nss[utils(+)] sys-apps/iproute2 !net-misc/openswan !net-misc/strongswan
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=dffd1ea91c2f261e9a20be891fdfc472
+_md5_=81aa29a6c61a8148461cfeb42d2fefb0
