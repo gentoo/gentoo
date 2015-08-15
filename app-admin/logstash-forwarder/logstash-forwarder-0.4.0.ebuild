@@ -29,6 +29,11 @@ src_install() {
 	dodoc "${PN}".conf.example CHANGELOG README.md
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+
+	local statedir="/var/lib/${PN}"
+	keepdir "$statedir"
+	fowners logstash:logstash "$statedir"
+	fperms 0750 "$statedir"
 }
 
 pkg_postinst() {
