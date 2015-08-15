@@ -28,8 +28,6 @@ RDEPEND="${DEPEND}
 
 DOCS=( AUTHORS Changes.mdown README.mdown )
 
-PATCHES=( "${FILESDIR}/${P}-unbundle-shflags.patch" )
-
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
