@@ -13237,7 +13237,7 @@ net-firewall/nfacct 1.0.0 1.0.1: Command line tool to create/retrieve/delete acc
 net-firewall/nftables 0.4: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.5 0.7 0.7-r1 0.7-r2: Pftop: curses-based utility for real-time display of active states and rule statistics for pf
-net-firewall/pglinux 2.2.4: Privacy oriented firewall application
+net-firewall/pglinux 2.2.4 2.3.0: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.1: Port Scanning Attack Detection daemon
 net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
