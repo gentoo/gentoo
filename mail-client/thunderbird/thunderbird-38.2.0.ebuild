@@ -46,13 +46,10 @@ RESTRICT="!bindist? ( bindist )"
 PATCH_URIS=( http://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCH},${PATCHFF}}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.bz2
-	http://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
+	${MOZ_HTTP_URI/${PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
 	lightning? ( http://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.tar.xz )
 	crypt? ( http://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )
 	${PATCH_URIS[@]}"
-
-# using a self-rolled release for locales this time, usually will want to use the official one
-#	${MOZ_HTTP_URI/${PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
@@ -121,8 +118,7 @@ src_unpack() {
 	# Unpack language packs
 	mozlinguas_src_unpack
 
-	# this version of lightning is a .tar.xz , no xpi needed
-	#xpi_unpack lightning-${MOZ_LIGHTNING_VER}.xpi
+	xpi_unpack lightning-${MOZ_LIGHTNING_VER}.xpi
 	# this version of gdata-provider is a .tar.xz , no xpi needed
 	#use lightning && xpi_unpack gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.xpi
 }
