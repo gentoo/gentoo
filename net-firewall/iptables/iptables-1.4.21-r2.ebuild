@@ -34,6 +34,8 @@ src_prepare() {
 	# use the saner headers from the kernel
 	rm -f include/linux/{kernel,types}.h
 
+	epatch "${FILESDIR}"/${P}-configure.patch #557586
+
 	# Only run autotools if user patched something
 	epatch_user && eautoreconf || elibtoolize
 }
