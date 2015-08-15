@@ -22,7 +22,6 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-util/shflags
 	dev-vcs/git
 "
 
