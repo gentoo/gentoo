@@ -234,12 +234,6 @@ app-backup/cyphertite
 dev-lang/php:7.0
 =virtual/httpd-php-7.0
 
-# Michał Górny <mgorny@gentoo.org> (04 Jun 2015)
-# New version of PyPy. Masked for testing and binary package build.
-~dev-python/pypy-2.6.0
-~dev-python/pypy-bin-2.6.0
-~virtual/pypy-2.6.0
-
 # Mike Gilbert <floppym@gentoo.org> (06 May 2015)
 # Obsolete development snapshots.
 >=app-emulation/open-vm-tools-2013
