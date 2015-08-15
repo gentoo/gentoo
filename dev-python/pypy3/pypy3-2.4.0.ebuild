@@ -25,7 +25,7 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	dev-libs/openssl:0=
 	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
-	ncurses? ( sys-libs/ncurses:5= )
+	ncurses? ( sys-libs/ncurses:5/5 )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
 		dev-lang/tk:0=
@@ -197,10 +197,12 @@ src_install() {
 
 	# Generate cffi cache
 	# Please keep in sync with pypy/tool/release/package.py!
-	"${PYTHON}" -c "import _curses" || die "Failed to import _curses (cffi)"
 	"${PYTHON}" -c "import syslog" || die "Failed to import syslog (cffi)"
 	if use gdbm; then
 		"${PYTHON}" -c "import _gdbm" || die "Failed to import gdbm (cffi)"
+	fi
+	if use ncurses; then
+		"${PYTHON}" -c "import _curses" || die "Failed to import _curses (cffi)"
 	fi
 	if use sqlite; then
 		"${PYTHON}" -c "import _sqlite3" || die "Failed to import _sqlite3 (cffi)"
