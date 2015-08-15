@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201508-02">
+  <title>libgadu: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libgadu, the worst of
+    which may result in execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">libgadu</product>
+  <announced>August 15, 2015</announced>
+  <revised>August 15, 2015: 1</revised>
+  <bug>490238</bug>
+  <bug>505558</bug>
+  <bug>510714</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libgadu" auto="yes" arch="*">
+      <unaffected range="ge">1.12.0</unaffected>
+      <vulnerable range="lt">1.12.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libgadu is a library that implements the client side of the Gadu-Gadu
+      protocol.
+    </p>
+  </background>
+  <description>
+    <p>libgadu contains multiple vulnerabilities:</p>
+    
+    <ul>
+      <li>X.509 certificates are not properly validated (CVE-2013-4488)</li>
+      <li>A integer overflow error could lead to a buffer overflow
+        (CVE-2013-6487)
+      </li>
+      <li>Malformed responses from a Gadu-Gadu file relay server are not
+        properly handled (CVE-2014-3775)
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or spoof
+      servers.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libgadu users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libgadu-1.12.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4488">CVE-2013-4488</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6487">CVE-2013-6487</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3775">CVE-2014-3775</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 22 Sep 2014 04:01:34 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Aug 2015 12:51:37 +0000">ackle</metadata>
+</glsa>
