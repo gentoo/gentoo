@@ -1,0 +1,63 @@
+diff --git a/share/mk/bsd.lib.mk b/share/mk/bsd.lib.mk
+index 80549d8..fd2aac5 100644
+--- a/share/mk/bsd.lib.mk
++++ b/share/mk/bsd.lib.mk
+@@ -173,7 +173,7 @@ _LIBS=		lib${LIB}.a
+ lib${LIB}.a: ${OBJS} ${STATICOBJS}
+ 	@${ECHO} building static ${LIB} library
+ 	@rm -f ${.TARGET}
+-	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${OBJS} ${STATICOBJS} | tsort -q` ${ARADD}
++	@${AR} ${ARFLAGS} ${.TARGET} ${OBJS} ${STATICOBJS} ${ARADD}
+ 	${RANLIB} ${RANLIBFLAGS} ${.TARGET}
+ .endif
+ 
+@@ -186,7 +186,7 @@ POBJS+=		${OBJS:.o=.po} ${STATICOBJS:.o=.po}
+ lib${LIB}_p.a: ${POBJS}
+ 	@${ECHO} building profiled ${LIB} library
+ 	@rm -f ${.TARGET}
+-	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${POBJS} | tsort -q` ${ARADD}
++	@${AR} ${ARFLAGS} ${.TARGET} {POBJS} ${ARADD}
+ 	${RANLIB} ${RANLIBFLAGS} ${.TARGET}
+ .endif
+ 
+@@ -215,7 +215,7 @@ ${SHLIB_NAME_FULL}: ${SOBJS}
+ .endif
+ 	${_LD} ${LDFLAGS} ${SSP_CFLAGS} ${SOLINKOPTS} \
+ 	    -o ${.TARGET} -Wl,-soname,${SONAME} \
+-	    `NM='${NM}' lorder ${SOBJS} | tsort -q` ${LDADD}
++	    `echo ${SOBJS} | xargs -n 1 echo | sort -u` ${LDADD}
+ .if ${MK_CTF} != "no"
+ 	${CTFMERGE} ${CTFFLAGS} -o ${.TARGET} ${SOBJS}
+ .endif
+@@ -273,13 +273,6 @@ _EXTRADEPEND:
+ 
+ .if !target(install)
+ 
+-.if defined(PRECIOUSLIB)
+-.if !defined(NO_FSCHG)
+-SHLINSTALLFLAGS+= -fschg
+-.endif
+-SHLINSTALLFLAGS+= -S
+-.endif
+-
+ _INSTALLFLAGS:=	${INSTALLFLAGS}
+ .for ie in ${INSTALLFLAGS_EDIT}
+ _INSTALLFLAGS:=	${_INSTALLFLAGS${ie}}
+diff --git a/share/mk/bsd.prog.mk b/share/mk/bsd.prog.mk
+index 19ad99f..46c4b09 100644
+--- a/share/mk/bsd.prog.mk
++++ b/share/mk/bsd.prog.mk
+@@ -179,13 +179,6 @@ _EXTRADEPEND:
+ 
+ .if !target(install)
+ 
+-.if defined(PRECIOUSPROG)
+-.if !defined(NO_FSCHG)
+-INSTALLFLAGS+= -fschg
+-.endif
+-INSTALLFLAGS+= -S
+-.endif
+-
+ _INSTALLFLAGS:=	${INSTALLFLAGS}
+ .for ie in ${INSTALLFLAGS_EDIT}
+ _INSTALLFLAGS:=	${_INSTALLFLAGS${ie}}
