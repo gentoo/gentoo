@@ -1,12 +1,12 @@
 DEFINED_PHASES=install prepare
-DEPEND=dev-libs/boost:=
+DEPEND=dev-libs/boost:=[threads]
 DESCRIPTION=The protein secondary structure standard
 EAPI=5
 HOMEPAGE=http://swift.cmbi.ru.nl/gv/dssp/
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=Boost-1.0
-RDEPEND=dev-libs/boost:=
+RDEPEND=dev-libs/boost:=[threads]
 SLOT=0
 SRC_URI=ftp://ftp.cmbi.ru.nl/pub/molbio/software/dssp-2/dssp-2.2.1.tgz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=ab46beb8e45d36d0dd3249af0a2825be
+_md5_=70ec65a4f60509d04be702dea767289c
