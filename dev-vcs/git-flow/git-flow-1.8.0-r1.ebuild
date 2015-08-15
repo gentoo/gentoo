@@ -22,13 +22,10 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-util/shflags
 	dev-vcs/git
 "
 
 DOCS=( AUTHORS Changes.mdown README.mdown )
-
-PATCHES=( "${FILESDIR}/${P}-unbundle-shflags.patch" )
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
