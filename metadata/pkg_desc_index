@@ -269,7 +269,7 @@ app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/libzpaq 6.41 6.49 6.53 7.04: Library to compress files in the ZPAQ format
 app-arch/lrzip 0.614 0.616 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p106-r1 0_p120 9999: Extremely Fast Compression algorithm
-app-arch/lzip 1.16 1.17: lossless data compressor based on the LZMA algorithm
+app-arch/lzip 1.16 1.17 1.18_pre1: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.16 1.17 1.18_pre1: Lziprecover is a data recovery tool and decompressor for files in the lzip compressed data format
 app-arch/lzlib 1.6 1.7: Library for lzip compression
 app-arch/lzma 9.20: LZMA Stream Compressor from the SDK
@@ -9163,7 +9163,7 @@ dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidir
 dev-vcs/git-cola 2.1.2 2.2.1: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
-dev-vcs/git-flow 0.4.1 1.8.0: Git extensions to provide high-level repository operations for Vincent Driessen's branching model
+dev-vcs/git-flow 0.4.1 1.8.0-r1: Git extensions to provide high-level repository operations for Vincent Driessen's branching model
 dev-vcs/git-imerge 0.7.0: Incremental merge for git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
