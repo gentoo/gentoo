@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (15 Aug 2015)
+# Java 7+ is required for websocket support.
+www-servers/tomcat websockets
+
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keywords
 media-sound/audacity midi
