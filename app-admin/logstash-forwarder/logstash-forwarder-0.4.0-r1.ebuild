@@ -29,6 +29,11 @@ src_install() {
 	dodoc "${PN}".conf.example CHANGELOG README.md
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+
+	local statedir="/var/lib/${PN}"
+	keepdir "$statedir"
+	fowners logstash:logstash "$statedir"
+	fperms 0750 "$statedir"
 }
 
 pkg_postinst() {
@@ -37,8 +42,9 @@ pkg_postinst() {
 		elog
 		elog "  /etc/${PN}/${PN}.conf"
 		elog
-		elog "See example in /usr/share/doc/${PVR} directory. You can remove"
-		elog "-quiet from logstash-forward arguments in /etc/conf.d/${PN} to"
-		elog "until you get working configuration. Search syslog for errors."
+		elog "See example in /usr/share/doc/${PN}-${PVR} directory. You can"
+		elog "remove -quiet from logstash-forward arguments in"
+		elog "/etc/conf.d/${PN} until you get working configuration."
+		elog "Search syslog for errors."
 	fi
 }
