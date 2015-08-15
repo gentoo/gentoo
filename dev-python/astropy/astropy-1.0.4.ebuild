@@ -42,6 +42,11 @@ DEPEND="${RDEPEND}
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)"
 
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+	epatch "${FILESDIR}/${P}-disable_helper.patch"
+}
+
 python_compile() {
 	distutils-r1_python_compile --use-system-libraries --offline
 }
