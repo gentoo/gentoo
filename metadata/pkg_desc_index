@@ -8655,7 +8655,7 @@ dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/notoccite 20000720: Stop citations in figures, tables and contents changing citation order
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
 dev-tex/pdfannotextractor 0.1l: Extract annotations from pdf files
-dev-tex/pgf 2.10 3.0.0: pgf -- The TeX Portable Graphic Format
+dev-tex/pgf 2.10 3.0.0 3.0.1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/ppower4 0.9.6: Post-process presentations in PDF format which were prepared using (La)TeX to add dynamic effects
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
