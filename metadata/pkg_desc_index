@@ -132,7 +132,7 @@ app-admin/logrotate 3.8.8 3.8.9 3.8.9-r1 3.9.1: Rotates, compresses, and mails s
 app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
 app-admin/logstash-bin 1.4.4 1.5.3: Tool for managing events and logs
-app-admin/logstash-forwarder 0.4.0: Collects logs locally in preparation for processing elsewhere
+app-admin/logstash-forwarder 0.4.0-r1: Collects logs locally in preparation for processing elsewhere
 app-admin/logsurfer+ 1.8-r1: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
@@ -16283,7 +16283,7 @@ sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.5 1.5.2 1.6.2 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
-sys-fs/udev 208-r1 216 217 218 219 220-r1 220-r2 220-r3 222 224 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 208-r1 216 217 218 219 220-r1 220-r2 220-r3 222 224 224-r1 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 29 30 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
