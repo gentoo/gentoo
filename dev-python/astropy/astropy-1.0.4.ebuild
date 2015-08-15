@@ -18,10 +18,10 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 RDEPEND="
-	dev-libs/expat:0=
+	>=dev-libs/expat-2.1.0:0=
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-astronomy/erfa:0=
-	>=sci-astronomy/wcslib-4.23:0=
+	>=sci-astronomy/erfa-1.2:0=
+	>=sci-astronomy/wcslib-4.25:0=
 	>=sci-libs/cfitsio-3.350:0=
 	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
