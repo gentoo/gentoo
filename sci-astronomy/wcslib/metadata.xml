@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-astronomy</herd>
-<longdescription lang="en">
+  <herd>sci-astronomy</herd>
+  <longdescription lang="en">
   WCSLIB is a C library, supplied with a full set of Fortran wrappers,
   that implements the "World Coordinate System" (WCS) convention in FITS
   (Flexible Image Transport System).  It also includes a PGPLOT-based routine,
   PGSBOX, for drawing general curvilinear coordinate graticules and a number of
   utility programs.
 </longdescription>
-<use>
-  <flag name="fits">
+  <use>
+    <flag name="fits">
     Enable support for the FITS format through <pkg>sci-libs/cfitsio</pkg>
   </flag>
-  <flag name="pgplot">
+    <flag name="pgplot">
     Builds PGBSOX routines, needs <pkg>sci-libs/pgplot</pkg> library
   </flag>
-</use>
+  </use>
 </pkgmetadata>
