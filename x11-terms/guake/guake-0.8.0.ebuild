@@ -19,6 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="
+	dev-libs/keybinder:0[python]
 	dev-python/dbus-python
 	dev-python/gconf-python
 	dev-python/notify-python
