@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ DEPEND="
 	>=net-misc/curl-7.20.0-r1[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:5= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
