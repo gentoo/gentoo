@@ -6,5 +6,7 @@
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">javacsv</remote-id>
+	</upstream>
 </pkgmetadata>
-
