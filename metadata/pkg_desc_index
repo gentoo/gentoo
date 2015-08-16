@@ -7234,7 +7234,7 @@ dev-python/openpyxl 2.1.0 2.2.3 2.2.4 9999: Pure python reader and writer of Exc
 dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output for nosetests
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
-dev-python/os-client-config 1.6.1: OpenStack Client Configuation Library
+dev-python/os-client-config 1.6.1 1.6.3: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.1 0.1.1-r1 0.1.2 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network extension support to python-novaclient
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
