@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package gpg Gpgme)
-		$(cmake-utils_use_find_package gpg Gpgmepp)
+		$(cmake-utils_use_find_package gpg KF5Gpgmepp)
 	)
 	kde5_src_configure
 }
