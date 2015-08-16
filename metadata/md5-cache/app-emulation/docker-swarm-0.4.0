@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=A Docker-native clustering system
+EAPI=5
+HOMEPAGE=https://docs.docker.com/swarm/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/docker/swarm/archive/v0.4.0.tar.gz -> docker-swarm-0.4.0.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
+_md5_=ffcfd6801738cd4203706c49b8cec49f

@@ -1269,6 +1269,7 @@ app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.6.1 1.6.2 1.7.1: Docker complements kernel namespacing with a high-level API which operates at the process level
 app-emulation/docker-compose 1.2.0-r1: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.4.1: Machine management for a container-centric world
+app-emulation/docker-swarm 0.4.0: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20091009 1.4.1_pre20130107-r3: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
