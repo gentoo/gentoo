@@ -46,6 +46,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
+	# see bug #426262
+	mv configure.in configure.ac || die
 	eautoreconf
 }
 
