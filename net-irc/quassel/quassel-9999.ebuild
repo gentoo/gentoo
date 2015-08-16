@@ -136,7 +136,8 @@ src_configure() {
 		$(cmake-utils_use_want server CORE)
 		$(cmake-utils_use_with webkit)
 		$(cmake-utils_use_want X QTCLIENT)
-		"-DEMBED_DATA=OFF"
+		-DEMBED_DATA=OFF
+		-DCMAKE_SKIP_RPATH=ON
 	)
 
 	# Something broke upstream detection since Qt 5.5
