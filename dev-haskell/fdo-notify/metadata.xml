@@ -3,8 +3,11 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		A library for issuing notifications using FreeDesktop.org&#39;s Desktop
+		A library for issuing notifications using FreeDesktop.org's Desktop
 		Notifications protcol. This protocol is supported by services such
-		as Ubuntu&#39;s NotifyOSD.
+		as Ubuntu's NotifyOSD.
 	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">taejo/fdo-notify</remote-id>
+	</upstream>
 </pkgmetadata>
