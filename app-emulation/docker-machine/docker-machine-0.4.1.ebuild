@@ -32,5 +32,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN} || die
+	dobin ${PN}
+	dodoc CHANGELOG.md CONTRIBUTING.md README.md ROADMAP.md
 }
