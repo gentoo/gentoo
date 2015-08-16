@@ -19,8 +19,8 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~a
 IUSE=""
 
 RDEPEND="
-	>=sys-libs/ncurses-5.2
-	>=sys-libs/readline-4.1"
+	>=sys-libs/ncurses-5.2:5=
+	>=sys-libs/readline-4.1:0="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog QuickStart README doc/scripts.sh doc/scripts.tcsh doc/todorc.example )
