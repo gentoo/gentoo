@@ -34,6 +34,7 @@ python_prepare_all() {
 }
 
 python_test() {
+	# https://github.com/pympler/pympler/issues/22
 	esetup.py try
 }
 
