@@ -9,10 +9,10 @@ JAVA_PKG_IUSE="doc examples source"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Small XML pull parser for constrained environments such as Applets, Personal Java or MIDP devices"
-HOMEPAGE="http://${PN}.sourceforge.net/"
+HOMEPAGE="http://kxml.org/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}2-src-${PV}.zip"
 
-LICENSE="MIT"
+LICENSE="BSD"
 SLOT="2"
 KEYWORDS="~amd64"
 
