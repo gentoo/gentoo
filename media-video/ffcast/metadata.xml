@@ -5,4 +5,7 @@
   <maintainer>
     <email>zx2c4@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">lolilolicon/ffcast</remote-id>
+  </upstream>
 </pkgmetadata>
