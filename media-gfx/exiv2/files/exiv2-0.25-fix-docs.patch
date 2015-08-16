@@ -1,0 +1,71 @@
+--- a/CMakeLists.txt	2015-07-19 16:04:35.363628707 +0200
++++ b/CMakeLists.txt	2015-07-19 16:28:31.051680136 +0200
+@@ -216,9 +216,7 @@
+ ADD_SUBDIRECTORY( xmpsdk )
+ ADD_SUBDIRECTORY( src )
+ 
+-IF( EXIV2_ENABLE_BUILD_SAMPLES )
+-    ADD_SUBDIRECTORY( samples )
+-ENDIF( EXIV2_ENABLE_BUILD_SAMPLES )
++ADD_SUBDIRECTORY( samples )
+ 
+ IF( EXIV2_ENABLE_BUILD_PO )
+     ADD_SUBDIRECTORY( po )
+--- a/samples/CMakeLists.txt	2015-07-19 16:04:35.360628744 +0200
++++ b/samples/CMakeLists.txt	2015-07-19 16:30:46.415987850 +0200
+@@ -20,7 +20,11 @@
+ endif()
+ include_directories("${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}/src")
+ 
+-SET( SAMPLES addmoddel.cpp
++SET( SAMPLES taglist.cpp )
++
++IF( EXIV2_ENABLE_BUILD_SAMPLES )
++    SET( SAMPLES ${SAMPLES}
++             addmoddel.cpp
+              convert-test.cpp
+              easyaccess-test.cpp
+              exifcomment.cpp
+@@ -38,7 +42,6 @@
+              mmap-test.cpp
+              prevtest.cpp
+              stringto-test.cpp
+-             taglist.cpp
+              tiff-test.cpp
+              werror-test.cpp
+              write-test.cpp
+@@ -47,6 +50,7 @@
+              xmpparser-test.cpp
+              xmpsample.cpp
+    )
++ENDIF()
+ 
+ FOREACH(entry ${SAMPLES})
+     STRING( REPLACE ".cpp" "" target ${entry})
+@@ -63,6 +67,7 @@
+     SET( MC_SRC            ${MC_SRC}       ../src/getopt_win32.c )
+ ENDIF( MSVC )
+ 
++IF( EXIV2_ENABLE_BUILD_SAMPLES )
+ SET( MC_SRC ${MC_SRC} metacopy.cpp ../src/utils.cpp )
+ ADD_EXECUTABLE( metacopy ${MC_SRC} )
+ TARGET_LINK_LIBRARIES( metacopy exiv2lib )
+@@ -79,6 +84,7 @@
+ SET_TARGET_PROPERTIES( exiv2json PROPERTIES OUTPUT_NAME exiv2json )
+ TARGET_LINK_LIBRARIES( exiv2json exiv2lib )
+ INSTALL( TARGETS exiv2json ${INSTALL_TARGET_STANDARD_ARGS} )
++ENDIF()
+ 
+ # That's all Folks!
+ ##
+--- a/doc/templates/Makefile	2015-07-19 16:50:50.589933604 +0200
++++ b/doc/templates/Makefile	2015-07-19 16:51:07.686719864 +0200
+@@ -143,7 +143,7 @@
+          xmp_mwg-rs \
+          xmp_mwg-kw
+ 
+-TAGLIST = ../../bin/taglist
++TAGLIST = ../../src/bin/taglist
+ 
+ # **********************************************************************
+ # ======================================================================
