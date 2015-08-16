@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
+# Project discontinued: part of the java.util namespace as of Java 8.
+# See https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html.
+# Masked for removal. See bug #557866.
+dev-java/base64
+
 # Brian Evans <grknight@gentoo.org> (16 Aug 2015)
 # Mask new PEAR installer as it is likely to break
 # many old scripts
