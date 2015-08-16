@@ -12,5 +12,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">passlib</remote-id>
+    <remote-id type="bitbucket">ecollins/passlib</remote-id>
   </upstream>
 </pkgmetadata>
