@@ -24,7 +24,7 @@ IUSE="audit debug elibc_glibc ncurses pam newnet prefix +netifrc selinux static-
 
 COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
 	elibc_glibc? ( >=sys-libs/glibc-2.5 )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:5= )
 	pam? (
 		sys-auth/pambase
 		virtual/pam
