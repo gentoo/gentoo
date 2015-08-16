@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>qemu</herd>
-<use>
-	<flag name='accessibility'>Adds support for braille displays using brltty</flag>
-	<flag name='aio'>Enables support for Linux's Async IO</flag>
-	<flag name='alsa'>Enable alsa output for sound emulation</flag>
-	<flag name='curl'>Support ISOs / -cdrom directives vis HTTP or HTTPS.</flag>
-	<flag name='fdt'>Enables firmware device tree support</flag>
-	<flag name='glusterfs'>Enables GlusterFS cluster fileystem via
+	<herd>qemu</herd>
+	<use>
+		<flag name="accessibility">Adds support for braille displays using brltty</flag>
+		<flag name="aio">Enables support for Linux's Async IO</flag>
+		<flag name="alsa">Enable alsa output for sound emulation</flag>
+		<flag name="curl">Support ISOs / -cdrom directives vis HTTP or HTTPS.</flag>
+		<flag name="fdt">Enables firmware device tree support</flag>
+		<flag name="glusterfs">Enables GlusterFS cluster fileystem via
 			<pkg>sys-cluster/glusterfs</pkg></flag>
-	<flag name='gtk2'>Use gtk-2 instead of gtk-3</flag>
-	<flag name='iscsi'>Enable direct iSCSI support via
+		<flag name="gtk2">Use gtk-2 instead of gtk-3</flag>
+		<flag name="iscsi">Enable direct iSCSI support via
 		<pkg>net-libs/libiscsi</pkg> instead of indirectly via the Linux
 		block layer that <pkg>sys-block/open-iscsi</pkg> does.</flag>
-	<flag name='ncurses'>Enable the ncurses-based console</flag>
-	<flag name='nfs'>Enable NFS support</flag>
-	<flag name='numa'>Enable NUMA support</flag>
-	<flag name='pin-upstream-blobs'>Pin the versions of BIOS firmware to the version included in the upstream release.
+		<flag name="ncurses">Enable the ncurses-based console</flag>
+		<flag name="nfs">Enable NFS support</flag>
+		<flag name="numa">Enable NUMA support</flag>
+		<flag name="pin-upstream-blobs">Pin the versions of BIOS firmware to the version included in the upstream release.
 		This is needed to sanely support migration/suspend/resume/snapshotting/etc... of instances.
 		When the blobs are different, random corruption/bugs/crashes/etc... may be observed.</flag>
-	<flag name='pulseaudio'>Enable pulseaudio output for sound emulation</flag>
-	<flag name='rbd'>Enable rados block device backend support, see http://ceph.newdream.net/wiki/QEMU-RBD</flag>
-	<flag name='sdl'>Enable the SDL-based console</flag>
-	<flag name='sdl2'>Use libsdl2 instead of libsdl</flag>
-	<flag name='spice'>Enable Spice protocol support via <pkg>app-emulation/spice</pkg></flag>
-	<flag name='ssh'>Enable SSH based block device support via <pkg>net-libs/libssh2</pkg></flag>
-	<flag name='static-softmmu'>Builds the Software MMU (system) targets as static binaries</flag>
-	<flag name='static-user'>Build the User targets as static binaries</flag>
-	<flag name='static'>Enables both 'static-softmmu' and 'static-user'</flag>
-	<flag name='snappy'>Enable support for snappy compression</flag>
-	<flag name='systemtap'>Enable SystemTAP/DTrace tracing</flag>
-	<flag name='tci'>Enable the TCG Interpreter which can speed up or slowdown workloads depending on the host and guest CPUs being emulated. In the future it will be a runtime option but for now its compile time.</flag>
-	<flag name='tls'>Enable TLS support for the VNC console server.
+		<flag name="pulseaudio">Enable pulseaudio output for sound emulation</flag>
+		<flag name="rbd">Enable rados block device backend support, see http://ceph.newdream.net/wiki/QEMU-RBD</flag>
+		<flag name="sdl">Enable the SDL-based console</flag>
+		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
+		<flag name="spice">Enable Spice protocol support via <pkg>app-emulation/spice</pkg></flag>
+		<flag name="ssh">Enable SSH based block device support via <pkg>net-libs/libssh2</pkg></flag>
+		<flag name="static-softmmu">Builds the Software MMU (system) targets as static binaries</flag>
+		<flag name="static-user">Build the User targets as static binaries</flag>
+		<flag name="static">Enables both 'static-softmmu' and 'static-user'</flag>
+		<flag name="snappy">Enable support for snappy compression</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="tci">Enable the TCG Interpreter which can speed up or slowdown workloads depending on the host and guest CPUs being emulated. In the future it will be a runtime option but for now its compile time.</flag>
+		<flag name="tls">Enable TLS support for the VNC console server.
 		For 1.4 and newer this also enables WebSocket support.
 		For 2.0 through 2.3 also enables disk quorum support.</flag>
-	<flag name='jpeg'>Enable jpeg image support for the VNC console server</flag>
-	<flag name='png'>Enable png image support for the VNC console server</flag>
-	<flag name='usb'>Enable USB passthrough via <pkg>dev-libs/libusb</pkg></flag>
-	<flag name="usbredir">Use <pkg>sys-apps/usbredir</pkg> to redirect USB devices to another machine over TCP</flag>
-	<flag name='uuid'>Enable UUID support in the vdi block driver</flag>
-	<flag name='vde'>Enable VDE-based networking</flag>
-	<flag name='vhost-net'>Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet</flag>
-	<flag name='virtfs'>Enable VirtFS via virtio-9p-pci / fsdev. See http://wiki.qemu.org/Documentation/9psetup</flag>
-	<flag name='vte'>Enable terminal support (<pkg>x11-libs/vte</pkg>) in the GTK+ interface</flag>
-	<flag name='xattr'>Add support for getting and setting POSIX extended attributes, through
+		<flag name="jpeg">Enable jpeg image support for the VNC console server</flag>
+		<flag name="png">Enable png image support for the VNC console server</flag>
+		<flag name="usb">Enable USB passthrough via <pkg>dev-libs/libusb</pkg></flag>
+		<flag name="usbredir">Use <pkg>sys-apps/usbredir</pkg> to redirect USB devices to another machine over TCP</flag>
+		<flag name="uuid">Enable UUID support in the vdi block driver</flag>
+		<flag name="vde">Enable VDE-based networking</flag>
+		<flag name="vhost-net">Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet</flag>
+		<flag name="virtfs">Enable VirtFS via virtio-9p-pci / fsdev. See http://wiki.qemu.org/Documentation/9psetup</flag>
+		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>) in the GTK+ interface</flag>
+		<flag name="xattr">Add support for getting and setting POSIX extended attributes, through
 		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.
 	</flag>
-	<flag name='xen'>Enables support for Xen backends</flag>
-	<flag name='xfs'>Support xfsctl() notification and syncing for XFS backed
+		<flag name="xen">Enables support for Xen backends</flag>
+		<flag name="xfs">Support xfsctl() notification and syncing for XFS backed
 		virtual disks.</flag>
-</use>
+	</use>
 </pkgmetadata>
