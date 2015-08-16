@@ -17,7 +17,7 @@ IUSE="+openpty toolbar truetype unicode Xaw3d"
 
 COMMON_DEPEND="kernel_linux? ( sys-libs/libutempter )
 	kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
-	>=sys-libs/ncurses-5.7-r7
+	>=sys-libs/ncurses-5.7-r7:5=
 	x11-apps/xmessage
 	x11-libs/libX11
 	x11-libs/libXaw
