@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test
-DEPEND=dev-java/eclipse-ecj:4.4 dev-java/tomcat-servlet-api:3.1 >=virtual/jdk-1.7 >=dev-java/ant-core-1.8.1:0 test? ( dev-java/ant-junit:0 dev-java/junit:4 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=dev-java/eclipse-ecj:4.4 dev-java/tomcat-servlet-api:3.1 >=virtual/jdk-1.7 >=dev-java/ant-core-1.8.1:0 test? ( dev-java/ant-junit:0 dev-java/junit:4 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Tomcat Servlet-3.1/JSP-2.3 Container
 EAPI=5
 HOMEPAGE=http://tomcat.apache.org/
@@ -10,5 +10,5 @@ RDEPEND=dev-java/eclipse-ecj:4.4 dev-java/tomcat-servlet-api:3.1 !<dev-java/tomc
 RESTRICT=test
 SLOT=8
 SRC_URI=mirror://apache/tomcat/tomcat-8/v8.0.23/src/apache-tomcat-8.0.23-src.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	a91064e45b54985a9d6a8779e1cde5f4	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7b0ea46d86eba7bce699bfcfbd9429e2

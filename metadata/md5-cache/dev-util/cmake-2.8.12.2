@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
-DEPEND=>=app-arch/libarchive-2.8.0:= >=dev-libs/expat-2.0.1 >=net-misc/curl-7.20.0-r1[ssl] sys-libs/zlib virtual/pkgconfig ncurses? ( sys-libs/ncurses ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sys-devel/make userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=>=app-arch/libarchive-2.8.0:= >=dev-libs/expat-2.0.1 >=net-misc/curl-7.20.0-r1[ssl] sys-libs/zlib virtual/pkgconfig ncurses? ( sys-libs/ncurses:5= ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sys-devel/make userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Cross platform Make
 EAPI=5
 HOMEPAGE=http://www.cmake.org/
 IUSE=emacs ncurses qt4 qt5 test
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=CMake
-RDEPEND=>=app-arch/libarchive-2.8.0:= >=dev-libs/expat-2.0.1 >=net-misc/curl-7.20.0-r1[ssl] sys-libs/zlib virtual/pkgconfig ncurses? ( sys-libs/ncurses ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) emacs? ( virtual/emacs )
+RDEPEND=>=app-arch/libarchive-2.8.0:= >=dev-libs/expat-2.0.1 >=net-misc/curl-7.20.0-r1[ssl] sys-libs/zlib virtual/pkgconfig ncurses? ( sys-libs/ncurses:5= ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) emacs? ( virtual/emacs )
 REQUIRED_USE=?? ( qt4 qt5 )
 SLOT=0
 SRC_URI=http://www.cmake.org/files/v2.8/cmake-2.8.12.2.tar.gz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	cmake-utils	f474224ef49d530640a43a04ae94928e	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=2612d0c8a5a39793d588db2c44106d3b
+_md5_=8fcad3e744d7b05b6ac1e41994d9b409

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test
-DEPEND=dev-java/ant-core:0 dev-java/asm:4 dev-java/bsf:2.3 >=dev-java/bytelist-1.0.8:0 dev-java/headius-options:0 dev-java/invokebinder:0 dev-java/jcodings:1 dev-java/jffi:1.2 dev-java/jnr-constants:0 dev-java/jnr-enxio:0 dev-java/jnr-ffi:0.7 >=dev-java/jnr-netdb-1.0:0 dev-java/jnr-posix:2.4 dev-java/jnr-unixsocket:0 dev-java/joda-time:0 dev-java/joni:2.1 dev-java/nailgun:0 dev-java/osgi-core-api:0 dev-lang/ruby:1.9 >=dev-java/snakeyaml-1.9:0 dev-java/jzlib:1.1 >=virtual/jdk-1.8 test? ( dev-java/ant-junit4:0 dev-java/ant-trax:0 dev-java/commons-logging:0 dev-java/junit:4 dev-java/xalan:0 java-virtuals/jdk-with-com-sun:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=dev-java/ant-core:0 dev-java/asm:4 dev-java/bsf:2.3 >=dev-java/bytelist-1.0.8:0 dev-java/headius-options:0 dev-java/invokebinder:0 dev-java/jcodings:1 dev-java/jffi:1.2 dev-java/jnr-constants:0 dev-java/jnr-enxio:0 dev-java/jnr-ffi:0.7 >=dev-java/jnr-netdb-1.0:0 dev-java/jnr-posix:2.4 dev-java/jnr-unixsocket:0 dev-java/joda-time:0 dev-java/joni:2.1 dev-java/nailgun:0 dev-java/osgi-core-api:0 dev-lang/ruby:1.9 >=dev-java/snakeyaml-1.9:0 dev-java/jzlib:1.1 >=virtual/jdk-1.8 test? ( dev-java/ant-junit4:0 dev-java/ant-trax:0 dev-java/commons-logging:0 dev-java/junit:4 dev-java/xalan:0 java-virtuals/jdk-with-com-sun:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Java-based Ruby interpreter implementation
 EAPI=5
 HOMEPAGE=http://jruby.codehaus.org/
@@ -10,5 +10,5 @@ RDEPEND=dev-java/ant-core:0 dev-java/asm:4 dev-java/bsf:2.3 >=dev-java/bytelist-
 RESTRICT=test
 SLOT=0
 SRC_URI=http://jruby.org.s3.amazonaws.com/downloads/1.7.12/jruby-src-1.7.12.tar.gz http://dev.gentoo.org/~tomwij/files/dist/jruby-1.7.12-mvn-ant-ant.patch
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	a91064e45b54985a9d6a8779e1cde5f4	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=f97bdb9b1be175c20aad91954db2f089

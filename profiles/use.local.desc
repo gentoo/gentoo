@@ -361,7 +361,8 @@ app-crypt/aespipe:asm - Enable assebly modules
 app-crypt/aespipe:cpu_flags_x86_padlock - Use VIA padlock instructions, detected at run time, code still works on non-padlock processors
 app-crypt/ccid:twinserial - Enable twinserial reader
 app-crypt/codecrypt:cryptopp - Build algorithms that need Crypto++ support dev-libs/crypto++
-app-crypt/eid-mw:gtk - Enable the dialog pages, by using x11-libs/gtk+:2
+app-crypt/eid-mw:dialogs - Enable "askaccess" dialog box, by using x11-libs/gtk+:*
+app-crypt/eid-mw:gtk - All dialogs are available, by using x11-libs/gtk+:*
 app-crypt/eid-mw:xpi - Build and install an extension for Mozilla browsers.
 app-crypt/ekeyd:minimal - Only install the ekey-egd-linux service rather than the full ekeyd package.
 app-crypt/ekeyd:munin - Install a plugin for net-analyzer/munin to graph statistical data from ekeyd.
@@ -5625,7 +5626,6 @@ net-mail/notmuch:doc - Install API documentation for enabled bindings
 net-mail/notmuch:emacs - Install Emacs UI (the main one)
 net-mail/notmuch:mutt - Install helper script for Mutt
 net-mail/notmuch:nmbug - Install experimental tag sharing / pseudo-bug-tracking script for Notmuch (see http://notmuchmail.org/nmbug/)
-net-mail/notmuch:pick - Experimental threaded message view for the emacs interface
 net-mail/offlineimap:sqlite - Enable runtime support for sqlite mail status backend.
 net-mail/postfix-logwatch:logwatch - Install filters for use with sys-apps/logwatch.
 net-mail/qmailadmin:maildrop - Filter spam using maildrop

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-DEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.20:2[introspection?] >=x11-libs/pango-1.22.0 sys-libs/ncurses x11-libs/libX11 x11-libs/libXft glade? ( dev-util/glade:3 ) introspection? ( >=dev-libs/gobject-introspection-0.9.0 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-util/gtk-doc-am >=dev-util/intltool-0.35 virtual/pkgconfig sys-devel/gettext app-arch/xz-utils >=sys-apps/sed-4
+DEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.20:2[introspection?] >=x11-libs/pango-1.22.0 sys-libs/ncurses:5= x11-libs/libX11 x11-libs/libXft glade? ( dev-util/glade:3 ) introspection? ( >=dev-libs/gobject-introspection-0.9.0 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-util/gtk-doc-am >=dev-util/intltool-0.35 virtual/pkgconfig sys-devel/gettext app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=GNOME terminal widget
 EAPI=5
 HOMEPAGE=https://live.gnome.org/VTE
@@ -7,8 +7,8 @@ IUSE=debug glade +introspection python debug python_targets_python2_7
 KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2+
 PDEPEND=x11-libs/gnome-pty-helper
-RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.20:2[introspection?] >=x11-libs/pango-1.22.0 sys-libs/ncurses x11-libs/libX11 x11-libs/libXft glade? ( dev-util/glade:3 ) introspection? ( >=dev-libs/gobject-introspection-0.9.0 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.20:2[introspection?] >=x11-libs/pango-1.22.0 sys-libs/ncurses:5= x11-libs/libX11 x11-libs/libXft glade? ( dev-util/glade:3 ) introspection? ( >=dev-libs/gobject-introspection-0.9.0 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
 SLOT=0
 SRC_URI=mirror://gnome/sources/vte/0.28/vte-0.28.2.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9f2b2005575ba49affdee26a3cffceb8
+_md5_=260573745492c06f827b6989e2a5db22

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install preinst prepare setup test
-DEPEND=dev-java/commons-io:1 dev-java/jsap:0 dev-java/log4j:0 dev-java/commons-collections:0 dev-java/colt:0 dev-java/fastutil:5.0 dev-java/commons-configuration:0 dev-java/commons-lang:2.1 dev-java/junit:0 || ( virtual/jdk:1.6 virtual/jdk:1.5 ) test? ( dev-java/emma:0 dev-java/ant-junit:0 dev-java/ant-trax:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=dev-java/commons-io:1 dev-java/jsap:0 dev-java/log4j:0 dev-java/commons-collections:0 dev-java/colt:0 dev-java/fastutil:5.0 dev-java/commons-configuration:0 dev-java/commons-lang:2.1 dev-java/junit:0 || ( virtual/jdk:1.6 virtual/jdk:1.5 ) test? ( dev-java/emma:0 dev-java/ant-junit:0 dev-java/ant-trax:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=A Mish Mash of classes that were initially distributed with mg4j (amount others)
 EAPI=4
 HOMEPAGE=http://dsiutils.dsi.unimi.it/
@@ -9,5 +9,5 @@ LICENSE=LGPL-3
 RDEPEND=dev-java/commons-io:1 dev-java/jsap:0 dev-java/log4j:0 dev-java/commons-collections:0 dev-java/colt:0 dev-java/fastutil:5.0 dev-java/commons-configuration:0 dev-java/commons-lang:2.1 dev-java/junit:0 >=virtual/jre-1.5 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=http://dsiutils.dsi.unimi.it/dsiutils-1.0.10-src.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	a91064e45b54985a9d6a8779e1cde5f4	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=00981400b24a3dd07a3536523bc1d2ad

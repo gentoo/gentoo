@@ -197,7 +197,7 @@ app-admin/sud 1.3-r1: A daemon to execute processes with special (and customizab
 app-admin/sudo 1.8.12 1.8.13 1.8.14_p3 9999: Allows users or groups to run commands as other users
 app-admin/sulfur 1.0_rc104-r1: Sulfur, the Entropy Package Manager Store
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
-app-admin/supernova 2.0.0 2.0.5 2.0.7: novaclient wrapper for multiple nova environments
+app-admin/supernova 2.0.5 2.0.7 2.0.8: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.3: A system for controlling process state under UNIX
 app-admin/swatch 3.2.3-r2: Perl-based system log watcher
 app-admin/sxid 4.2-r1: suid, sgid file and directory checking
@@ -512,7 +512,7 @@ app-crypt/dieharder 2.28.1 3.31.1 3.31.1-r1: An advanced suite for testing the r
 app-crypt/dirmngr 1.1.1-r1: DirMngr is a daemon to handle CRL and certificate requests for GnuPG
 app-crypt/easy-rsa 2.2.0-r1 2.2.2: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.4.1 1.4.1-r1 1.4.1-r2 1.4.2 1.4.2-r1: Tools for manipulating UEFI secure boot platforms
-app-crypt/eid-mw 4.0.6_p1480 4.0.6_p1620 9999: Belgian Electronic Identity Card middleware supplied by the Belgian Federal Government
+app-crypt/eid-mw 4.0.6_p1480 4.0.6_p1620 4.1.4 9999: Belgian Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.4-r2 1.1.5: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
@@ -1312,7 +1312,7 @@ app-emulation/skyeye 1.0.0: an ARM embedded hardware simulator
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.12.5-r1: SPICE server and client
-app-emulation/spice-protocol 0.12.3 0.12.8: Headers defining the SPICE protocol
+app-emulation/spice-protocol 0.12.3 0.12.9: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.12.0 0.16.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
@@ -1323,7 +1323,7 @@ app-emulation/vice 2.4 2.4.20: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 0.5.6 2.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
-app-emulation/virtualbox 4.3.28 4.3.30 5.0.0: Family of powerful x86 virtualization products for enterprise as well as home use
+app-emulation/virtualbox 4.3.28 4.3.30 5.0.0 5.0.0-r1: Family of powerful x86 virtualization products for enterprise as well as home use
 app-emulation/virtualbox-additions 4.3.28 4.3.30 5.0.0: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-bin 4.3.28.100309 4.3.30.101610 5.0.0.101573: Family of powerful x86 virtualization products for enterprise as well as home use
 app-emulation/virtualbox-extpack-oracle 4.3.28.100309 4.3.30.101610 5.0.0.101573: PUEL extensions for VirtualBox
@@ -2123,7 +2123,7 @@ app-portage/repo-commit 0.4.1 9999: A repository commit helper
 app-portage/smart-live-rebuild 1.3.3 1.3.4 1.3.4.1 9999: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.3 9999: arch testing tool
-app-portage/ufed 0.40.2-r1 0.90_rc1 0.90_rc2 0.90_rc2-r1 0.91 0.92 9999: Gentoo Linux USE flags editor
+app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
 app-shells/autojump 21.3.0-r1 21.5.8-r1 21.6.9: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p33 4.3_p33-r1 4.3_p33-r2 4.3_p39_pre0 4.3_p39 4.4_alpha-r1: The standard GNU Bourne again shell
 app-shells/bash-completion 1.3-r2 2.1 2.1-r2 2.1-r91 2.1-r92 2.1-r93 2.1_p20141224: Programmable Completion for bash
@@ -2411,6 +2411,7 @@ app-text/t1utils 1.39: Type 1 Font utilities
 app-text/tabler 2: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped or otherwise humorous dialect
 app-text/teckit 2.5.1 2.5.3: Text Encoding Conversion toolkit
+app-text/teseq 1.1.1: a tool for analyzing files that contain control characters and terminal control sequences
 app-text/tesseract 2.04-r1 3.03_rc1 3.03_rc1-r1 3.04.00 3.04.00-r1 3.04.00-r2: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015: A complete TeX distribution
@@ -3679,7 +3680,7 @@ dev-java/ant-apache-log4j 1.9.2: Apache Ant's optional tasks depending on log4j
 dev-java/ant-apache-oro 1.9.2: Apache Ant's optional tasks depending on jakarta-oro-2.0
 dev-java/ant-apache-regexp 1.9.2: Apache Ant's optional tasks depending on jakarta-regexp-1.4
 dev-java/ant-apache-resolver 1.9.2: Apache Ant's optional tasks depending on xml-commons-resolver
-dev-java/ant-apache-xalan2 1.9.2 1.9.2-r1: Apache Ant's optional tasks depending on xalan
+dev-java/ant-apache-xalan2 1.9.2-r1: Apache Ant's optional tasks depending on xalan
 dev-java/ant-commons-logging 1.9.2: Apache Ant's optional tasks depending on commons-logging
 dev-java/ant-commons-net 1.9.2: Apache Ant's optional tasks depending on commons-net
 dev-java/ant-contrib 1.0_beta2-r2 1.0_beta3-r1: A collection of tasks (and at one point maybe types and other tools) for Apache Ant
@@ -4265,7 +4266,7 @@ dev-java/tomcat-jstl-el 1.2.5: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.1.32 1.1.33: Native APR library for Tomcat
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 7.0.59 8.0.23: Tomcat's Servlet API 3.1/JSP API 2.3 implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 7.0.59 7.0.63 8.0.23 8.0.24: Tomcat's Servlet API 3.1/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22: TouchGraph provides a set of interfaces for graph visualization
 dev-java/trident 1.3: Java animation library
@@ -4902,7 +4903,7 @@ dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an 
 dev-libs/vc 0.7.3 0.7.4: SIMD Vector Class Library for C++
 dev-libs/vdk 2.5.1: A Visual Development Kit for RAD
 dev-libs/vrb 0.3.0 0.5.1: Library for a virtual ring buffer
-dev-libs/wayland 0.95.0 1.0.6 1.1.0 1.2.0 1.2.1 1.2.1-r1 1.3.0 1.4.0 1.5.0 1.6.0 1.6.1 1.7.0: Wayland protocol libraries
+dev-libs/wayland 0.95.0 1.0.6 1.1.0 1.2.0 1.2.1 1.2.1-r1 1.3.0 1.4.0 1.5.0 1.6.0 1.6.1 1.7.0 1.8.1: Wayland protocol libraries
 dev-libs/weston 1.2.0-r1 1.2.1 1.4.0 1.5.0 1.6.0 1.6.1 1.7.0: Wayland reference compositor
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
@@ -6421,7 +6422,7 @@ dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
 dev-perl/wxperl 0.990.200-r1 0.991.700 0.992.700: Perl bindings for wxGTK
 dev-perl/yaml 0.840.0-r1 0.900.0 1.140.0 1.150.0: YAML Ain't Markup Language (tm)
 dev-php/File_Iterator 1.3.1 1.3.4: FilterIterator implementation that filters files based on a list of suffixes
-dev-php/PEAR-Archive_Tar 1.3.15: Tar file management class
+dev-php/PEAR-Archive_Tar 1.3.15 1.4.0: Tar file management class
 dev-php/PEAR-Auth 1.6.4: Provides methods for creating an authentication system using PHP
 dev-php/PEAR-Auth_HTTP 2.1.6-r1 2.1.8: Create HTTP authentication systems similar to Apache's realm-based .htaccess mechanism
 dev-php/PEAR-Auth_SASL 1.0.6 1.0.6-r1: Abstraction of various SASL mechanism responses
@@ -6433,7 +6434,7 @@ dev-php/PEAR-Config 1.10.12-r1: Provides methods for configuration manipulation.
 dev-php/PEAR-Console_Color 1.0.3: This Class allows you to easily use ANSI console colors in your application.
 dev-php/PEAR-Console_CommandLine 1.2.0: A full featured command line options and arguments parser
 dev-php/PEAR-Console_Getargs 1.3.5: A command-line arguments parser
-dev-php/PEAR-Console_Getopt 1.3.1 1.4.0: Command-line option parser
+dev-php/PEAR-Console_Getopt 1.3.1 1.4.0 1.4.1: Command-line option parser
 dev-php/PEAR-Console_Table 1.1.6: Class that makes it easy to build console style tables
 dev-php/PEAR-Crypt_Blowfish 1.1.0_rc2-r1: Allows for quick two-way Blowfish encryption without requiring the MCrypt PHP extension
 dev-php/PEAR-Crypt_CHAP 1.5.0: Generating CHAP packets
@@ -6520,7 +6521,7 @@ dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web bro
 dev-php/PEAR-Numbers_Roman 1.0.2: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 0.6.1 1.0.0_rc2: Package for reading and writing OLE containers
-dev-php/PEAR-PEAR 1.9.4 1.9.5: PEAR Base System
+dev-php/PEAR-PEAR 1.9.4 1.9.5 1.10.0_alpha2: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
 dev-php/PEAR-PEAR_PackageFileManager 1.6.3 1.7.0: Takes an existing package.xml file and updates it with a new filelist and changelog
 dev-php/PEAR-PHP_Beautifier 0.1.15-r1: Code Beautifier for PHP
@@ -6539,7 +6540,7 @@ dev-php/PEAR-Services_W3C_HTMLValidator 1.0.0-r1: Object oriented interface to t
 dev-php/PEAR-Services_Weather 1.4.6: This class acts as an interface to various online weather-services
 dev-php/PEAR-Spreadsheet_Excel_Writer 0.9.3: Package for generating Excel spreadsheets
 dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a record set of data for paging and sorting purposes.
-dev-php/PEAR-Structures_Graph 1.0.4 1.0.4-r2: Graph datastructure manipulation library
+dev-php/PEAR-Structures_Graph 1.0.4 1.0.4-r2 1.1.1: Graph datastructure manipulation library
 dev-php/PEAR-System_Command 1.0.8: PEAR::System_Command is a commandline execution interface
 dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
 dev-php/PEAR-Text_CAPTCHA 0.5.0: Generation of CAPTCHAs
@@ -6559,7 +6560,7 @@ dev-php/PEAR-XML_Feed_Parser 1.0.5-r1: Provides an unified API for handling Atom
 dev-php/PEAR-XML_Parser 1.3.4-r1: XML parsing class based on PHP's SAX parser
 dev-php/PEAR-XML_RSS 1.0.2: Parser for Resource Description Framework (RDF) Site Summary (RSS) documents
 dev-php/PEAR-XML_Serializer 0.20.2: Swiss-army knife for reading and writing XML files
-dev-php/PEAR-XML_Util 1.2.3-r1: XML utility class
+dev-php/PEAR-XML_Util 1.2.3-r1 1.3.0: XML utility class
 dev-php/PHP_CodeCoverage 1.1.2 1.2.13: Provides collection, processing, and rendering functionality for PHP code coverage information
 dev-php/PHP_Timer 1.0.5: Utility class for timing
 dev-php/PHP_TokenStream 1.1.3: Wrapper around PHP's tokenizer extension
@@ -6586,7 +6587,7 @@ dev-php/ming-php 0.4.5: PHP extension for the ming Flash movie generation librar
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
-dev-php/pear 1.9.4 1.9.5: PEAR - PHP Extension and Application Repository
+dev-php/pear 1.9.4 1.9.5 1.10.0_alpha2: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.4.0: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.7: Stripped down version of APC supporting only user cache
 dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
@@ -6674,7 +6675,7 @@ dev-python/Numdifftools 0.6.0 0.7.7: Solves automatic numerical differentiation 
 dev-python/PyECLib 1.0.7: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.0 1.25.1 1.25.2: Python library to access the Github API v3
-dev-python/PyPDF2 1.24: Python library to work with pdf files
+dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.1 4.11.4: Python bindings for the Qt framework
 dev-python/PyQt5 5.4.2 5.5: Python bindings for the Qt framework
 dev-python/PyQtMobility 1.0.1: Python bindings for Nokia's QtMobility libraries
@@ -7437,7 +7438,7 @@ dev-python/pyminuit 1.2.1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.2-r1 0.7.13.3: Python machine learning package
 dev-python/pymongo 2.6.3 2.7.2 2.8.1 3.0.3: Python driver for MongoDB
 dev-python/pymountboot 0.2.1 0.2.2 9999: Python extension module to (re)mount /boot
-dev-python/pympler 0.3.1 0.4 0.4.1: Memory profiling for Python applications
+dev-python/pympler 0.3.1 0.4.1 0.4.2: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.6.3 0.6.6: Pure-Python MySQL Driver
@@ -7697,7 +7698,7 @@ dev-python/setproctitle 1.1.8: Allow customization of the process title
 dev-python/setuptools 2.2 7.0 8.0.1 8.2.1 9.1 12.0.1 12.0.3 12.0.5 15.0 15.2 16.0 17.0 17.1.1 18.0.1 18.1 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
-dev-python/setuptools_scm 1.5.4 1.5.5: package to manage versions by scm tags via setuptools
+dev-python/setuptools_scm 1.5.4 1.5.5 1.7.0: package to manage versions by scm tags via setuptools
 dev-python/sexpdata 0.0.3: a simple S-expression parser/serializer
 dev-python/sh 1.07 1.08 1.09 1.11: Python subprocess interface
 dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
@@ -8150,7 +8151,7 @@ dev-ruby/hoe-seattlerb 1.3.2-r1 1.3.3 1.3.4: Hoe plugins providing tasks used by
 dev-ruby/hpricot 0.8.6-r2 0.8.6-r3: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.0.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.1-r1 4.3.2 4.3.3 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
-dev-ruby/http 0.6.3 0.6.3-r1 0.8.12 0.9.0: An easy-to-use client library for making requests from Ruby
+dev-ruby/http 0.6.3 0.6.3-r1 0.8.12 0.9.0 0.9.1: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-cookie 1.0.2 1.0.2-r1: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0 0.6.0-r1: Simple callback-based HTTP request/response parser
@@ -8821,7 +8822,7 @@ dev-util/bustle 0.4.2-r1 0.4.3 0.4.7-r1 0.5.1: Draw sequence diagrams of D-Bus t
 dev-util/byacc 20130304 20140101 20140527 20141006 20141128: the best variant of the Yacc parser generator
 dev-util/catalyst 2.0.16 2.0.17 2.0.18 2.0.18-r1 2.0.9999 2.9999 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/ccache 2.4-r9 3.1.9-r4 3.1.10-r1 3.2.1-r1 3.2.2: fast compiler cache
+dev-util/ccache 2.4-r9 3.1.9-r4 3.1.10-r1 3.2.1-r1 3.2.2 3.2.3: fast compiler cache
 dev-util/cccc 3.1.4: A code counter for C and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/ccmalloc 0.4.0-r2: A easy-to-use memory debugging library
@@ -9030,7 +9031,7 @@ dev-util/par 00.05.01: par manipulates PalmOS database files
 dev-util/patchelf 0.8: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3: A collection of tools that operate on patch files
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
-dev-util/perf 3.8-r1 3.12 3.13.1-r1 3.15.5 4.1.5: Userland tools for Linux Performance Counters
+dev-util/perf 3.8-r1 3.12 3.13.1-r1 3.15.5 4.1.5-r1: Userland tools for Linux Performance Counters
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/piklab 0.16.2: IDE for applications based on PIC and dsPIC microcontrollers
 dev-util/pkgcheck 0.5 9999: pkgcore-based QA utility
@@ -9122,7 +9123,7 @@ dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest
 dev-util/webcpp 0.8.4: converts source code into HTML using a customizable syntax highlight engine and colour schemes
 dev-util/weblint 1.020: syntax and minimal style checker for HTML by Neil Bowers
 dev-util/weka 3.6.6-r1 3.6.12: A Java data mining package
-dev-util/wiggle 0.8-r1 0.9: program for applying patches that patch cannot apply because of conflicting changes
+dev-util/wiggle 0.9 0.9-r1: program for applying patches that patch cannot apply because of conflicting changes
 dev-util/wxglade 0.6.3-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
 dev-util/xdelta 1.1.4-r1 3.0.5 3.0.6 3.0.8: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
@@ -9211,7 +9212,7 @@ dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xm
 dev-vcs/svn2git 0_pre20100303 0_pre20100324 0_pre20100327 0_pre20101008 0_pre20101101 1.0.2.1 1.0.3_p1 1.0.4 1.0.5 1.0.6 1.0.8-r1 1.0.10 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.2.2-r1 1.3.0: Tool collecting path entries across SVN history
 dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
-dev-vcs/tig 2.0.3 2.1: Tig: text mode interface for git
+dev-vcs/tig 2.0.3 2.1 2.1.1: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9: A different patch queue manager
 dev-vcs/tortoisehg 3.3.2 3.3.3 3.4.2 3.5 9999: Set of graphical tools for Mercurial
@@ -11295,7 +11296,7 @@ media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript,
 media-gfx/drqueue 0.64.4-r1 9999: Render farm managing software
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
-media-gfx/enblend 4.1.1 4.1.1-r1 4.1.1-r2 4.1.2 4.1.3 4.1.3-r1: Image Blending with Multiresolution Splines
+media-gfx/enblend 4.1.1 4.1.1-r1 4.1.1-r2 4.1.1-r3 4.1.2 4.1.3 4.1.3-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 5.1 5.2: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 0.6.0: Tethered Camera Control & Capture
 media-gfx/eog 3.14.3 3.14.4 3.16.2: The Eye of GNOME image viewer
@@ -11505,7 +11506,7 @@ media-gfx/wkhtmltopdf 0.12.1.2 0.12.2.1: Convert html to pdf (and various image 
 media-gfx/xfig 3.2.5c: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r11: utility to view many different types of images under X11
-media-gfx/xpaint 2.9.10.2: Image editor with tiff, jpeg and png support
+media-gfx/xpaint 2.9.10.2 2.9.10.3: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r1: graphical scanning frontend
 media-gfx/xsvg 0.2.1: a command line viewer for SVG files
 media-gfx/xv 3.10a-r16: An interactive image manipulation program that supports a wide variety of image formats
@@ -13322,7 +13323,7 @@ net-im/gajim 0.16 0.16.3: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4: Gadu-Gadu transport for Jabber
 net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects messages that need a response
 net-im/jabber-base 0.01: Jabber servers and transports layout package
-net-im/jabberd2 2.3.1-r1 2.3.2 2.3.2-r1: Open Source Jabber Server
+net-im/jabberd2 2.3.1-r1 2.3.2 2.3.2-r1 2.3.3: Open Source Jabber Server
 net-im/kadu 0.12.3 2.1: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kde-telepathy-meta 0.9.0: KDE Telepathy client - merge this to pull in all net-im/ktp-* kde packages
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
@@ -13683,7 +13684,7 @@ net-mail/mpop 1.0.29 1.2.0 1.2.2: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.16-r1 0.17 0.18.2 0.19-r1 0.20.2: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.18.2 0.19-r1 0.20.2: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.5 6.5.6 6.5.7: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/perdition 1.18: modular and fully featured POP3 and IMAP4 proxy
@@ -13887,7 +13888,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing
 net-misc/jumpgate 0.7: An advanced TCP connection forwarder
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/keychain 2.7.1-r1 2.7.1-r2 2.8.0 2.8.1: manage ssh and GPG keys in a convenient and secure manner
-net-misc/knemo 0.7.6-r1: The KDE Network Monitor
+net-misc/knemo 0.7.6-r1 0.7.6-r2: The KDE Network Monitor
 net-misc/knock 0.6 0.7: A simple port-knocking daemon
 net-misc/knutclient 1.0.5: A visual KDE client for UPS systems
 net-misc/ksshaskpass 0.5.3-r1: KDE implementation of ssh-askpass with Kwallet integration
@@ -14060,7 +14061,7 @@ net-misc/socat 1.7.3.0 2.0.0_beta8 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/sparkleshare 1.1.0: Git-based collaboration and file sharing tool
-net-misc/spice-gtk 0.20-r1 0.21 0.25-r1 0.28: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
+net-misc/spice-gtk 0.20-r1 0.21 0.25-r1 0.28 0.29: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
 net-misc/spiped 1.5.0: secure pipe daemon
 net-misc/spread 4.1.0 4.3.0: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
@@ -14133,7 +14134,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.07.28 2015.08.06.1 2015.08.09: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.08.09 2015.08.16: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -14906,7 +14907,7 @@ sci-geosciences/opencpn-plugin-statusbar 0.5: Statusbar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weather_routing 1.2: Weather Routing Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weatherfax 1.3: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0: World Magnetic Model Plugin for OpenCPN
-sci-geosciences/osgearth 2.6: Dynamic map generation toolkit for OpenSceneGraph
+sci-geosciences/osgearth 2.6 2.7: Dynamic map generation toolkit for OpenSceneGraph
 sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
 sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
@@ -15596,7 +15597,7 @@ sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 1.12.5-r11 1.12.14 1.12.14-r1 2.2-r3 2.2-r4: Minimal baselayout for Gentoo Prefix installs
-sys-apps/biosdevname 0.3.11-r1 0.4.0 0.4.1 0.6.1: Sets BIOS-given device names instead of kernel eth* names
+sys-apps/biosdevname 0.4.1 0.6.1 0.6.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20100611-r1: A script that creates floppy boot images to flash Dell BIOSes
 sys-apps/bleachbit 1.2 1.4 1.9.1: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.20.2 1.21.0 1.21.1 1.22.0 1.22.1 1.22.1-r1 1.23.0-r1 1.23.1 1.23.1-r1 1.23.2 9999: Utilities for rescue and embedded systems
@@ -16335,7 +16336,7 @@ sys-infiniband/srptools 0.0.4-r2 1.0.2: Tools for discovering and connecting to 
 sys-kernel/aufs-sources 3.18.16 3.18.19 3.19.8 4.0.4 4.0.5 4.0.6 4.0.7 4.0.9 4.1.0 4.1.3 4.1.4 4.1.5: Full sources including the Gentoo patchset for the 4.1 kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.107 3.10.82 3.10.83 3.10.86 3.14.46 3.14.48 3.14.50 3.18.16 3.18.19 3.19.8 4.0.7 4.0.9 4.1.3 4.1.5: Full Linux 4.1 kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
-sys-kernel/dracut 034-r4 040-r3 041-r3 043 043-r1: Generic initramfs generation tool
+sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49 3.4.49.1 3.4.49.2 3.4.50 3.4.51 3.4.51.1 3.4.51.2 3.4.51.4 9999 9999-r1: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.106 3.4.107 3.4.9999 3.10.82 3.10.83 3.10.85 3.10.86 3.12.44 3.12.9999 3.14.48 3.14.49 3.14.50 3.18.16 3.18.18 3.18.19 3.19.8 4.0.4 4.0.5 4.0.6 4.0.7 4.0.8 4.0.9 4.1.0 4.1.0-r1 4.1.1-r1 4.1.2 4.1.3 4.1.4 4.1.5: Full sources including the Gentoo patchset for the 4.1 kernel tree
@@ -16355,7 +16356,7 @@ sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.46_p46 3.18.17_p14 4.0.5_p4: Full Linux 4.0 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2 0.6.2-r1 0.6.2-r2 0.6.2-r3 0.6.2-r4 0.6.2-r5 0.6.3 0.6.3-r1 0.6.4 0.6.4.2 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.107 3.10.79 3.10.80 3.10.81 3.12.43 3.12.44 3.14.43 3.14.44 3.14.45 3.18.14 3.18.16 3.19.8 4.0.4 4.0.5 4.0.6: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.70 3.4.108 3.10.86 3.12.46 3.18.19 4.0.9 4.1.5: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.71 3.4.108 3.10.86 3.12.46 3.14.50 3.18.19 4.0.9 4.1.5: Full sources for the Linux kernel
 sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3 2.3.7.4: Full sources including Linux-VServer patchsets for the 3.18 kernel tree
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
@@ -16490,7 +16491,7 @@ sys-process/fcron 3.1.1 3.1.2-r2: A command scheduler with extended capabilities
 sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/fuser-bsd 1142334561: fuser(1) utility for *BSD
 sys-process/glances 2.2.1 2.3 2.4.2: CLI curses based monitoring tool
-sys-process/htop 1.0.2 1.0.2-r2 1.0.3: interactive process viewer
+sys-process/htop 1.0.3: interactive process viewer
 sys-process/incron 0.5.10 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5: tool for identifying where in the system latency is happening
@@ -16999,7 +17000,7 @@ www-servers/skunkweb 3.4.4: robust Python web application server
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.3 1.6.3-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 6.0.44 7.0.59-r2 8.0.23-r2: Tomcat Servlet-3.1/JSP-2.3 Container
+www-servers/tomcat 6.0.44 6.0.44-r1 7.0.59-r2 7.0.63 8.0.23-r2 8.0.24: Tomcat Servlet-3.1/JSP-2.3 Container
 www-servers/tornado 3.1.1 3.1.1-r1 4.0.1 4.0.2 4.1.0 4.1.0-r1 4.2 4.2.0_beta1 4.2.1: Tornado is a Python web framework and asynchronous networking library, ... .
 www-servers/uwsgi 2.0.9 2.0.11.1: uWSGI server for Python web applications
 www-servers/varnish 3.0.5 3.0.5-r3 3.0.5-r4 3.0.6 3.0.7 4.0.0-r1 4.0.1-r1 4.0.2 4.0.3: Varnish is a state-of-the-art, high-performance HTTP accelerator

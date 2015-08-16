@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install preinst prepare setup unpack
-DEPEND=system-mupdf? ( >=app-text/mupdf-1.2 ) virtual/jdk:1.7 app-arch/p7zip media-libs/libbmp dev-vcs/git >=dev-java/java-config-2.2.0 >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=system-mupdf? ( >=app-text/mupdf-1.2 ) virtual/jdk:1.7 app-arch/p7zip media-libs/libbmp dev-vcs/git >=dev-java/java-config-2.2.0 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 EAPI=5
 HOMEPAGE=https://code.google.com/p/jmupdf/
@@ -8,5 +8,5 @@ LICENSE=GPL-1
 RDEPEND=system-mupdf? ( >=app-text/mupdf-1.2 ) virtual/jdk:1.7 >=dev-java/java-config-2.2.0
 REQUIRED_USE=!system-mupdf
 SLOT=0
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-2	1bb87192831f668cd20d93ffb1689c94	java-ant-2	a91064e45b54985a9d6a8779e1cde5f4	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-2	1bb87192831f668cd20d93ffb1689c94	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=eedc92a16f2c9bfd96127c0d47665633

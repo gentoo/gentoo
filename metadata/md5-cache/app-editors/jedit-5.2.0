@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
-DEPEND=dev-java/jsr305:0 >=virtual/jdk-1.7 dev-java/ant-apache-bsf:0 dev-java/ant-contrib:0 dev-java/bsh[bsf] test? ( dev-java/ant-junit:0 ) >=dev-java/java-config-2.2.0 >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=dev-java/jsr305:0 >=virtual/jdk-1.7 dev-java/ant-apache-bsf:0 dev-java/ant-contrib:0 dev-java/bsh[bsf] test? ( dev-java/ant-junit:0 ) >=dev-java/java-config-2.2.0 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Programmer's editor written in Java
 EAPI=5
 HOMEPAGE=http://www.jedit.org
@@ -10,5 +10,5 @@ RDEPEND=dev-java/jsr305:0 >=virtual/jre-1.7 >=dev-java/java-config-2.2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/jedit/jedit5.2.0source.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-ant-2	a91064e45b54985a9d6a8779e1cde5f4	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e7161f248b7ad9c705174f7cf939843f

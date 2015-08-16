@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install preinst prepare setup test
-DEPEND=!<=dev-java/freemarker-2.3.10 dev-java/antlr:3 dev-java/asm:3 dev-java/guava:0 >=dev-java/java-config-2.1.11-r3 dev-java/jffi:1.0 dev-java/jline:0 dev-java/jnr-constants:0.8.2 dev-java/jnr-posix:1.1 java-virtuals/script-api:0 java-virtuals/servlet-api:2.5 readline? ( >=dev-java/libreadline-java-0.8.0:0 ) >=virtual/jdk-1.5 app-arch/unzip >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=!<=dev-java/freemarker-2.3.10 dev-java/antlr:3 dev-java/asm:3 dev-java/guava:0 >=dev-java/java-config-2.1.11-r3 dev-java/jffi:1.0 dev-java/jline:0 dev-java/jnr-constants:0.8.2 dev-java/jnr-posix:1.1 java-virtuals/script-api:0 java-virtuals/servlet-api:2.5 readline? ( >=dev-java/libreadline-java-0.8.0:0 ) >=virtual/jdk-1.5 app-arch/unzip >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=An implementation of Python written in Java
 EAPI=4
 HOMEPAGE=http://www.jython.org
@@ -10,5 +10,5 @@ RDEPEND=!<=dev-java/freemarker-2.3.10 dev-java/antlr:3 dev-java/asm:3 dev-java/g
 RESTRICT=test
 SLOT=2.5
 SRC_URI=http://central.maven.org/maven2/org/python/jython-installer/2.5.3/jython-installer-2.5.3.jar
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	a91064e45b54985a9d6a8779e1cde5f4	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=f9b6a909b3cc7b1c460d7d33f184f5fa
