@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,9 +15,10 @@ IUSE="networking +regex discouraged +deprecated emacs nls debug-freelist debug-m
 RESTRICT="!regex? ( test )"
 
 RDEPEND="
-	>=dev-libs/gmp-4.1
+	>=dev-libs/gmp-4.1:0=
 	>=sys-devel/libtool-1.5.6
 	sys-devel/gettext
+	sys-libs/ncurses:5=
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo"

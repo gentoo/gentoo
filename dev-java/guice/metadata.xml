@@ -4,6 +4,6 @@
 	<herd>java</herd>
 	<upstream>
 		<remote-id type="google-code">google-guice</remote-id>
+		<remote-id type="github">google/guice</remote-id>
 	</upstream>
 </pkgmetadata>
-

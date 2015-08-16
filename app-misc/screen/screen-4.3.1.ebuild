@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS=" ~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug nethack pam selinux multiuser"
 
-CDEPEND=">=sys-libs/ncurses-5.2
+CDEPEND="
+	>=sys-libs/ncurses-5.2:5=
 	pam? ( virtual/pam )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-screen )"

@@ -40,7 +40,7 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc )
 	ssl? ( dev-libs/openssl:0 )
 	socks5? ( >=net-proxy/dante-1.1.13 )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:5= )
 	readline?  ( sys-libs/readline:0 )
 	dev-libs/libyaml
 	virtual/libffi

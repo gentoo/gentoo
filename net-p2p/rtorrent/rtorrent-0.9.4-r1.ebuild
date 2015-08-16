@@ -18,7 +18,7 @@ IUSE="daemon debug ipv6 selinux test xmlrpc"
 COMMON_DEPEND="~net-libs/libtorrent-0.13.${PV##*.}
 	>=dev-libs/libsigc++-2.2.2:2
 	>=net-misc/curl-7.19.1
-	sys-libs/ncurses
+	sys-libs/ncurses:5=
 	xmlrpc? ( dev-libs/xmlrpc-c )"
 RDEPEND="${COMMON_DEPEND}
 	daemon? ( app-misc/screen )

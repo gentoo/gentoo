@@ -104,3 +104,13 @@ src_test() {
 	cd mcs/tests || die
 	emake check
 }
+
+src_install() {
+	autotools-utils_src_install
+
+	# Remove files not respecting LDFLAGS and that we are not supposed to provide, see Fedora
+	# mono.spec and http://www.mail-archive.com/mono-devel-list@lists.ximian.com/msg24870.html
+	# for reference.
+	rm -f "${ED}"/usr/lib/mono/{2.0,4.5}/mscorlib.dll.so || die
+	rm -f "${ED}"/usr/lib/mono/{2.0,4.5}/mcs.exe.so || die
+}

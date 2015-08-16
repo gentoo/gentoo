@@ -30,6 +30,24 @@
 
 #--- END OF EXAMPLES ---
 
+
+# Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
+# Last release was in 2008. Does not compile with recent JDKs (>= 1.8).
+# Masked for removal. See bug #557920.
+dev-java/httpunit
+
+# Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
+# Project discontinued: part of the java.util namespace as of Java 8.
+# See https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html.
+# Masked for removal. See bug #557866.
+dev-java/base64
+
+# Brian Evans <grknight@gentoo.org> (16 Aug 2015)
+# Mask new PEAR installer as it is likely to break
+# many old scripts
+>=dev-php/pear-1.10.0_alpha1
+>=dev-php/PEAR-PEAR-1.10.0_alpha1
+
 # Patrice Clement <monsieurp@gentoo.org> (14 Aug 2015)
 # Unreachable HOMEPAGE (dead). Very very very old package: 
 # last release came out in 2001.

@@ -21,6 +21,7 @@ RDEPEND="
 	dev-libs/libunistring
 	>=dev-libs/boehm-gc-7.0[threads?]
 	virtual/libffi
+	sys-libs/ncurses
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo"

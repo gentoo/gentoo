@@ -4,4 +4,7 @@
   <herd>dotnet</herd>
   <use>
   </use>
+  <upstream>
+    <remote-id type="github">mrward/nuget</remote-id>
+  </upstream>
 </pkgmetadata>

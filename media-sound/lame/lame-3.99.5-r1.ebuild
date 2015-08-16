@@ -18,7 +18,8 @@ IUSE="debug cpu_flags_x86_mmx mp3rtp sndfile static-libs"
 
 # These deps are without MULTILIB_USEDEP and are correct since we only build
 # libmp3lame for multilib and these deps apply to the lame frontend executable.
-RDEPEND=">=sys-libs/ncurses-5.7-r7
+RDEPEND="
+	>=sys-libs/ncurses-5.7-r7:5=
 	sndfile? ( >=media-libs/libsndfile-1.0.2 )
 	abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 DEPEND="${RDEPEND}

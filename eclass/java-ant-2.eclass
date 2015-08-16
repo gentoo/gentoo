@@ -1,7 +1,7 @@
 # eclass for ant based Java packages
 #
 # Copyright (c) 2004-2005, Thomas Matthijs <axxo@gentoo.org>
-# Copyright (c) 2004-2011, Gentoo Foundation
+# Copyright (c) 2004-2015, Gentoo Foundation
 # Changes:
 #   May 2007:
 #     Made bsfix make one pass for all things and add some glocal targets for
@@ -58,7 +58,8 @@ inherit java-utils-2 multilib
 # Setting this variable non-empty before inheriting java-ant-2 disables adding
 # dev-java/ant-core into DEPEND.
 if [[ -z "${JAVA_ANT_DISABLE_ANT_CORE_DEP}" ]]; then
-		JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND} >=dev-java/ant-core-1.8.2"
+	JAVA_ANT_E_DEPEND+=" >=dev-java/ant-core-1.8.2"
+	[[ "${EAPI:-0}" != 0 ]] && JAVA_ANT_E_DEPEND+=":0"
 fi
 
 # add ant tasks specified in WANT_ANT_TASKS to DEPEND
@@ -371,7 +372,7 @@ java-ant_bsfix_files() {
 # @USAGE: <path/to/build.xml>
 # @DESCRIPTION:
 # Attempts to fix named build file.
-# 
+#
 # @CODE
 # Affected by variables:
 #	JAVA_PKG_BSFIX_SOURCE_TAGS

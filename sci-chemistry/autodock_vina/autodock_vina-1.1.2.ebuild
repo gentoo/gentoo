@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils flag-o-matic versionator
 
@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 LICENSE="Apache-2.0"
 IUSE="debug"
 
-RDEPEND="dev-libs/boost"
+RDEPEND="dev-libs/boost[threads]"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}/build/linux/release

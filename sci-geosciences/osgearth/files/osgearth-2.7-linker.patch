@@ -1,0 +1,52 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Aug 16 19:59:50 UTC 2015
+Subject: add missing library to linker
+
+--- a/src/applications/osgearth_package_qt/CMakeLists.txt
++++ b/src/applications/osgearth_package_qt/CMakeLists.txt
+@@ -59,6 +59,7 @@
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+     ${QT_QTOPENGL_LIBRARY}
++	${X11_LIBRARIES}
+ )
+ 
+ #### end var setup  ###
+--- a/src/applications/osgearth_qt/CMakeLists.txt
++++ b/src/applications/osgearth_qt/CMakeLists.txt
+@@ -38,6 +38,7 @@
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+     ${QT_QTOPENGL_LIBRARY}
++	${X11_LIBRARIES}
+ )
+ 
+ #### end var setup  ###
+--- a/src/applications/osgearth_demo/CMakeLists.txt
++++ b/src/applications/osgearth_demo/CMakeLists.txt
+@@ -7,6 +7,7 @@
+     QT5_WRAP_CPP( MOC_SRCS ${MOC_HDRS} OPTIONS "-f" )
+ 	SET(TARGET_ADDED_LIBRARIES
+         osgEarthQt
++		${X11_LIBRARIES}
+     )
+ ELSE()
+     INCLUDE( ${QT_USE_FILE} )
+@@ -16,6 +17,7 @@
+         ${QT_QTCORE_LIBRARY}
+         ${QT_QTGUI_LIBRARY}
+         ${QT_QTOPENGL_LIBRARY}
++		${X11_LIBRARIES}
+     )
+ ENDIF()
+ 
+--- a/src/applications/osgearth_qt_simple/CMakeLists.txt
++++ b/src/applications/osgearth_qt_simple/CMakeLists.txt
+@@ -34,6 +34,7 @@
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+     ${QT_QTOPENGL_LIBRARY}
++	${X11_LIBRARIES}
+ )
+ 
+ #### end var setup  ###

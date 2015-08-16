@@ -6,18 +6,21 @@
 		<name>Julian Ospald</name>
 	</maintainer>
 	<use>
-		<flag name='gnome'>Enable support for the freedesktop.org
+		<flag name="gnome">Enable support for the freedesktop.org
 			Secret Service API via <pkg>app-crypt/libsecret</pkg>.
 			This does not control the gui!
 		</flag>
-		<flag name='gui'>Whether to build the QT gui. Highly recommended.
+		<flag name="gui">Whether to build the QT gui. Highly recommended.
 		</flag>
-		<flag name='kde'>Enable support for KDE, e.g. via
+		<flag name="kde">Enable support for KDE, e.g. via
 			<pkg>kde-base/kwalletd</pkg>. This does not control the gui,
 			but NEEDS GUI ENABLED!
 		</flag>
-		<flag name='udev'>Whether udev will be consulted when deciding
+		<flag name="udev">Whether udev will be consulted when deciding
 			if a volume is system or not.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">mhogomchungu/zuluCrypt</remote-id>
+	</upstream>
 </pkgmetadata>

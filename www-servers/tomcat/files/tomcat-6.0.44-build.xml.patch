@@ -1,6 +1,41 @@
---- build.xml.orig	2012-07-06 20:26:21.361299240 +0200
-+++ build.xml	2012-07-06 20:26:56.085899911 +0200
-@@ -487,12 +487,14 @@
+diff -Naur apache-tomcat-6.0.44-src.orig/build.xml apache-tomcat-6.0.44-src/build.xml
+--- apache-tomcat-6.0.44-src.orig/build.xml	2015-05-08 13:22:05.000000000 +0100
++++ apache-tomcat-6.0.44-src/build.xml	2015-08-16 14:10:03.609366396 +0100
+@@ -159,12 +159,14 @@
+       </fileset>
+     </copy>
+     <!-- Copy JSP Schemas and DTDs to be packed into servlet-api.jar -->
++<!--
+     <copy todir="${tomcat.classes}/javax/servlet/resources" encoding="ISO-8859-1">
+       <fileset dir="${tomcat.classes}/javax/servlet/jsp/resources">
+         <include name="*" />
+         <exclude name="jspxml*" />
+       </fileset>
+     </copy>
++ -->
+ 
+   </target>
+ 
+@@ -307,14 +309,18 @@
+       manifest="${tomcat.manifests}/annotations-api.jar.manifest" />
+ 
+     <!-- Servlet 2.5 Implementation JAR File -->
++<!--
+     <jarIt jarfile="${servlet-api.jar}" filesId="files.servlet-api"
+       manifest="${tomcat.manifests}/servlet-api.jar.manifest"
+       license="${tomcat.manifests}/servlet-api.jar.license"
+       notice="${tomcat.manifests}/servlet-api.jar.notice" />
++-->
+ 
+     <!-- JSP 2.1 Implementation JAR File -->
++<!--
+     <jarIt jarfile="${jsp-api.jar}" filesId="files.jsp-api"
+       manifest="${tomcat.manifests}/jsp-api.jar.manifest" />
++-->
+ 
+ 
+     <!-- JSP 2.1 EL Implementation JAR File -->
+@@ -492,12 +498,14 @@
  
    <target name="deploy" depends="build-only,build-docs,warn.dbcp">
  
@@ -15,9 +50,7 @@
  
      <!-- Copy scripts -->
      <copy todir="${tomcat.build}/bin">
---- build.xml.orig	2012-07-06 20:31:31.387806167 +0200
-+++ build.xml	2012-07-06 20:32:33.185315885 +0200
-@@ -646,9 +646,11 @@
+@@ -649,9 +657,11 @@
        </fileset>
      </txt2html>
  

@@ -10,7 +10,7 @@ inherit flag-o-matic toolchain-funcs l10n
 
 DESCRIPTION="Devilspie like window matching utility, using LUA for scripting"
 HOMEPAGE="http://devilspie2.gusnan.se"
-SRC_URI="http://git.savannah.gnu.org/cgit/devilspie2.git/snapshot/devilspie2-${PV}.tar.gz"
+SRC_URI="http://download.savannah.gnu.org/releases/devilspie2/devilspie2_${PV}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

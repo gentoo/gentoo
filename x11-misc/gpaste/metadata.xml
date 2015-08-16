@@ -6,9 +6,12 @@
 		<name>Julian Ospald</name>
 	</maintainer>
 	<use>
-		<flag name='applet'>Enable gpaste-applet</flag>
-		<flag name='gnome'>Enable proper gnome support and
+		<flag name="applet">Enable gpaste-applet</flag>
+		<flag name="gnome">Enable proper gnome support and
 			enable gnome shell extension.</flag>
-		<flag name='vala'>Build vala bindings</flag>
+		<flag name="vala">Build vala bindings</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Keruspe/GPaste</remote-id>
+	</upstream>
 </pkgmetadata>

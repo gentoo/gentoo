@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 hppa ia64 ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux"
 IUSE="debug examples unicode"
 
-RDEPEND="sys-libs/ncurses[unicode?]"
+RDEPEND="sys-libs/ncurses:5=[unicode?]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 RESTRICT="test" # bug #492270

@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pyRFC3339</remote-id>
+		<remote-id type="github">kurtraschke/pyRFC3339</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<longdescription lang="en">
+	<longdescription lang="en">
 	An ultra-fast, ultra-compact key-value embedded data store
 </longdescription>
-<herd>ldap</herd>
-<maintainer>
-	<email>eras@gentoo.org</email>
-	<name>Eray Aslan</name>
-</maintainer>
+	<herd>ldap</herd>
+	<maintainer>
+		<email>eras@gentoo.org</email>
+		<name>Eray Aslan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">LMDB/lmdb</remote-id>
+	</upstream>
 </pkgmetadata>

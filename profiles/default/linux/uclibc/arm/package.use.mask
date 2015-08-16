@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Matthias Maier <tamiko@gentoo.org> (16 Aug 2015)
+# missing keywords
+net-misc/spice-gtk smartcard
+
 # Matthias Maier <tamiko@gentoo.org> (17 Oct 2014)
 # virtual/jre is not keyworded on arm.
 net-print/cups java

@@ -1,0 +1,275 @@
+From 15f330fe1afe9ac8870461faad55b7d63e791aca Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 14 Jul 2015 22:22:14 -0400
+Subject: [PATCH 2/3] Replace echo -n with printf in code with a /bin/sh
+ shebang
+
+POSIX does not mandate that echo support the -n parameter.
+printf has more well-defined behavior.
+---
+ modules.d/04watchdog/watchdog-stop.sh      | 2 +-
+ modules.d/40network/net-lib.sh             | 2 +-
+ modules.d/45ifcfg/write-ifcfg.sh           | 2 +-
+ modules.d/90lvm/lvm_scan.sh                | 4 ++--
+ modules.d/95fcoe/fcoe-up.sh                | 2 +-
+ modules.d/98usrmount/mount-usr.sh          | 2 +-
+ modules.d/99base/dracut-lib.sh             | 6 +++---
+ modules.d/99base/init.sh                   | 2 +-
+ test/TEST-10-RAID/create-root.sh           | 2 +-
+ test/TEST-10-RAID/cryptroot-ask.sh         | 2 +-
+ test/TEST-12-RAID-DEG/create-root.sh       | 2 +-
+ test/TEST-12-RAID-DEG/cryptroot-ask.sh     | 2 +-
+ test/TEST-13-ENC-RAID-LVM/create-root.sh   | 2 +-
+ test/TEST-13-ENC-RAID-LVM/cryptroot-ask.sh | 2 +-
+ test/TEST-14-IMSM/cryptroot-ask.sh         | 2 +-
+ test/TEST-20-NFS/client-init.sh            | 2 +-
+ test/TEST-40-NBD/create-root.sh            | 2 +-
+ test/TEST-40-NBD/cryptroot-ask.sh          | 2 +-
+ 18 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/modules.d/04watchdog/watchdog-stop.sh b/modules.d/04watchdog/watchdog-stop.sh
+index 91d45d6..921f969 100755
+--- a/modules.d/04watchdog/watchdog-stop.sh
++++ b/modules.d/04watchdog/watchdog-stop.sh
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-[ -c /dev/watchdog ] && echo -n 'V' > /dev/watchdog
++[ -c /dev/watchdog ] && printf 'V' > /dev/watchdog
+diff --git a/modules.d/40network/net-lib.sh b/modules.d/40network/net-lib.sh
+index a09cdaf..6c739e8 100755
+--- a/modules.d/40network/net-lib.sh
++++ b/modules.d/40network/net-lib.sh
+@@ -189,7 +189,7 @@ set_ifname() {
+ fix_bootif() {
+     local macaddr=${1}
+     local IFS='-'
+-    macaddr=$(for i in ${macaddr} ; do echo -n $i:; done)
++    macaddr=$(printf '%s:' ${macaddr})
+     macaddr=${macaddr%:}
+     # strip hardware type field from pxelinux
+     [ -n "${macaddr%??:??:??:??:??:??}" ] && macaddr=${macaddr#??:}
+diff --git a/modules.d/45ifcfg/write-ifcfg.sh b/modules.d/45ifcfg/write-ifcfg.sh
+index fa7db27..251d684 100755
+--- a/modules.d/45ifcfg/write-ifcfg.sh
++++ b/modules.d/45ifcfg/write-ifcfg.sh
+@@ -48,7 +48,7 @@ print_s390() {
+         for i in /sys/class/net/$_netif/device/cdev[0-9]*; do
+             [ -e $i ] || continue
+             channel=$(readlink -f $i)
+-            echo -n "${channel##*/},"
++            printf '%s' "${channel##*/},"
+         done
+     })
+     [ -n "$SUBCHANNELS" ] || return 1
+diff --git a/modules.d/90lvm/lvm_scan.sh b/modules.d/90lvm/lvm_scan.sh
+index 7495644..ead28aa 100755
+--- a/modules.d/90lvm/lvm_scan.sh
++++ b/modules.d/90lvm/lvm_scan.sh
+@@ -15,14 +15,14 @@ SNAPSIZE=$(getargs rd.lvm.snapsize -d rd_LVM_SNAPSIZE=)
+ lvmdevs=$(
+     for f in /tmp/.lvm_scan-*; do
+         [ -e "$f" ] || continue
+-        echo -n "${f##/tmp/.lvm_scan-} "
++        printf '%s' "${f##/tmp/.lvm_scan-} "
+     done
+ )
+ 
+ if [ ! -e /etc/lvm/lvm.conf ]; then
+     {
+         echo 'devices {';
+-        echo -n '    filter = [ '
++        printf '    filter = [ '
+         for dev in $lvmdevs; do
+             printf '"a|^/dev/%s$|", ' $dev;
+         done;
+diff --git a/modules.d/95fcoe/fcoe-up.sh b/modules.d/95fcoe/fcoe-up.sh
+index 43a0ad5..950e4b6 100755
+--- a/modules.d/95fcoe/fcoe-up.sh
++++ b/modules.d/95fcoe/fcoe-up.sh
+@@ -64,7 +64,7 @@ elif [ "$netdriver" = "bnx2x" ]; then
+     sleep 3
+     fipvlan "$netif" -c -s
+ else
+-    echo -n "$netif" > /sys/module/fcoe/parameters/create
++    printf '%s' "$netif" > /sys/module/fcoe/parameters/create
+ fi
+ 
+ need_shutdown
+diff --git a/modules.d/98usrmount/mount-usr.sh b/modules.d/98usrmount/mount-usr.sh
+index c29610f..d1a629c 100755
+--- a/modules.d/98usrmount/mount-usr.sh
++++ b/modules.d/98usrmount/mount-usr.sh
+@@ -12,7 +12,7 @@ filtersubvol() {
+     while [ $# -gt 0 ]; do
+         case $1 in
+             subvol\=*) :;;
+-            *) echo -n "${1}," ;;
++            *) printf '%s' "${1}," ;;
+         esac
+         shift
+     done
+diff --git a/modules.d/99base/dracut-lib.sh b/modules.d/99base/dracut-lib.sh
+index 08110cc..7a3c58c 100755
+--- a/modules.d/99base/dracut-lib.sh
++++ b/modules.d/99base/dracut-lib.sh
+@@ -298,7 +298,7 @@ _dogetargs() {
+         fi
+     done
+     if [ -n "$_found" ]; then
+-        [ $# -gt 0 ] && echo -n "$@"
++        [ $# -gt 0 ] && printf '%s' "$*"
+         return 0
+     fi
+     return 1;
+@@ -329,9 +329,9 @@ getargs() {
+     done
+     if [ -n "$_gfound" ]; then
+         if [ $# -gt 0 ]; then
+-            echo -n "$@"
++            printf '%s' "$*"
+         else
+-            echo -n 1
++            printf 1
+         fi
+         debug_on
+         return 0
+diff --git a/modules.d/99base/init.sh b/modules.d/99base/init.sh
+index f96dbb5..a59e8ea 100755
+--- a/modules.d/99base/init.sh
++++ b/modules.d/99base/init.sh
+@@ -253,7 +253,7 @@ while :; do
+ done
+ 
+ {
+-    echo -n "Mounted root filesystem "
++    printf "Mounted root filesystem "
+     while read dev mp rest || [ -n "$dev" ]; do [ "$mp" = "$NEWROOT" ] && echo $dev; done < /proc/mounts
+ } | vinfo
+ 
+diff --git a/test/TEST-10-RAID/create-root.sh b/test/TEST-10-RAID/create-root.sh
+index a7e56a5..7b5f2a7 100755
+--- a/test/TEST-10-RAID/create-root.sh
++++ b/test/TEST-10-RAID/create-root.sh
+@@ -18,7 +18,7 @@ mdadm --create /dev/md0 --run --auto=yes --level=5 --raid-devices=3 /dev/sda2 /d
+ # randomly.
+ mdadm -W /dev/md0
+ set -e
+-echo -n test >keyfile
++printf test >keyfile
+ cryptsetup -q luksFormat /dev/md0 /keyfile
+ echo "The passphrase is test"
+ cryptsetup luksOpen /dev/md0 dracut_crypt_test </keyfile
+diff --git a/test/TEST-10-RAID/cryptroot-ask.sh b/test/TEST-10-RAID/cryptroot-ask.sh
+index 407d067..c39eff6 100755
+--- a/test/TEST-10-RAID/cryptroot-ask.sh
++++ b/test/TEST-10-RAID/cryptroot-ask.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+ 
+ [ -b "/dev/mapper/$2" ] && exit 0
+-echo -n test >/keyfile
++printf test >/keyfile
+ /sbin/cryptsetup luksOpen "$1" "$2" </keyfile
+diff --git a/test/TEST-12-RAID-DEG/create-root.sh b/test/TEST-12-RAID-DEG/create-root.sh
+index 7b9a171..3299aa6 100755
+--- a/test/TEST-12-RAID-DEG/create-root.sh
++++ b/test/TEST-12-RAID-DEG/create-root.sh
+@@ -20,7 +20,7 @@ mdadm --create /dev/md0 --run --auto=yes --level=5 --raid-devices=3 /dev/sdb /de
+ # wait for the array to finish initailizing, otherwise this sometimes fails
+ # randomly.
+ mdadm -W /dev/md0
+-echo -n test >keyfile
++printf test >keyfile
+ cryptsetup -q luksFormat /dev/md0 /keyfile
+ echo "The passphrase is test"
+ set -e
+diff --git a/test/TEST-12-RAID-DEG/cryptroot-ask.sh b/test/TEST-12-RAID-DEG/cryptroot-ask.sh
+index db27c5b..78ed7f5 100755
+--- a/test/TEST-12-RAID-DEG/cryptroot-ask.sh
++++ b/test/TEST-12-RAID-DEG/cryptroot-ask.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ [ -b /dev/mapper/$2 ] && exit 0
+-echo -n test >/keyfile
++printf test >/keyfile
+ /sbin/cryptsetup luksOpen $1 $2 </keyfile
+ 
+diff --git a/test/TEST-13-ENC-RAID-LVM/create-root.sh b/test/TEST-13-ENC-RAID-LVM/create-root.sh
+index e74fe7f..72bc765 100755
+--- a/test/TEST-13-ENC-RAID-LVM/create-root.sh
++++ b/test/TEST-13-ENC-RAID-LVM/create-root.sh
+@@ -14,7 +14,7 @@ sfdisk /dev/sda <<EOF
+ ,25M
+ EOF
+ udevadm settle
+-echo -n test >keyfile
++printf test >keyfile
+ cryptsetup -q luksFormat /dev/sda2 /keyfile
+ cryptsetup -q luksFormat /dev/sda3 /keyfile
+ cryptsetup -q luksFormat /dev/sda4 /keyfile
+diff --git a/test/TEST-13-ENC-RAID-LVM/cryptroot-ask.sh b/test/TEST-13-ENC-RAID-LVM/cryptroot-ask.sh
+index db27c5b..78ed7f5 100755
+--- a/test/TEST-13-ENC-RAID-LVM/cryptroot-ask.sh
++++ b/test/TEST-13-ENC-RAID-LVM/cryptroot-ask.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ [ -b /dev/mapper/$2 ] && exit 0
+-echo -n test >/keyfile
++printf test >/keyfile
+ /sbin/cryptsetup luksOpen $1 $2 </keyfile
+ 
+diff --git a/test/TEST-14-IMSM/cryptroot-ask.sh b/test/TEST-14-IMSM/cryptroot-ask.sh
+index db27c5b..78ed7f5 100755
+--- a/test/TEST-14-IMSM/cryptroot-ask.sh
++++ b/test/TEST-14-IMSM/cryptroot-ask.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ [ -b /dev/mapper/$2 ] && exit 0
+-echo -n test >/keyfile
++printf test >/keyfile
+ /sbin/cryptsetup luksOpen $1 $2 </keyfile
+ 
+diff --git a/test/TEST-20-NFS/client-init.sh b/test/TEST-20-NFS/client-init.sh
+index 2311981..a443289 100755
+--- a/test/TEST-20-NFS/client-init.sh
++++ b/test/TEST-20-NFS/client-init.sh
+@@ -8,7 +8,7 @@ strstr() { [ "${1##*"$2"*}" != "$1" ]; }
+ 
+ stty sane
+ if strstr "$CMDLINE" "rd.shell"; then
+-    [ -c /dev/watchdog ] && echo -n 'V' > /dev/watchdog
++    [ -c /dev/watchdog ] && printf 'V' > /dev/watchdog
+ 	strstr "$(setsid --help)" "control" && CTTY="-c"
+ 	setsid $CTTY sh -i
+ fi
+diff --git a/test/TEST-40-NBD/create-root.sh b/test/TEST-40-NBD/create-root.sh
+index 391279e..20d0eff 100755
+--- a/test/TEST-40-NBD/create-root.sh
++++ b/test/TEST-40-NBD/create-root.sh
+@@ -5,7 +5,7 @@ for x in 64-lvm.rules 70-mdadm.rules 99-mount-rules; do
+ done
+ rm -f -- /etc/lvm/lvm.conf
+ udevadm control --reload
+-echo -n test >keyfile
++printf test >keyfile
+ cryptsetup -q luksFormat /dev/sdb /keyfile
+ echo "The passphrase is test"
+ cryptsetup luksOpen /dev/sdb dracut_crypt_test </keyfile && \
+diff --git a/test/TEST-40-NBD/cryptroot-ask.sh b/test/TEST-40-NBD/cryptroot-ask.sh
+index db27c5b..78ed7f5 100755
+--- a/test/TEST-40-NBD/cryptroot-ask.sh
++++ b/test/TEST-40-NBD/cryptroot-ask.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ [ -b /dev/mapper/$2 ] && exit 0
+-echo -n test >/keyfile
++printf test >/keyfile
+ /sbin/cryptsetup luksOpen $1 $2 </keyfile
+ 
+-- 
+2.5.0
+
