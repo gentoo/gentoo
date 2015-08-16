@@ -12,7 +12,7 @@ SRC_URI="http://cgit.freedesktop.org/cairo-ocaml/snapshot/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples gtk pango svg"
 
 RDEPEND="dev-lang/ocaml:=
