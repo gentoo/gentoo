@@ -1,0 +1,55 @@
+diff --git a/src/Helium/Parser/LexerMonad.hs b/src/Helium/Parser/LexerMonad.hs
+index 75ac077..af35093 100644
+--- a/src/Helium/Parser/LexerMonad.hs
++++ b/src/Helium/Parser/LexerMonad.hs
+@@ -20,2 +20,4 @@ import Helium.Parser.LexerMessage
+ import Text.ParserCombinators.Parsec.Pos
++import Control.Applicative
++import Control.Monad
+ 
+@@ -47,2 +49,9 @@ returnLM x = LM (\_ pos brackets -> Right (x, [], pos, brackets))
+ 
++instance Functor LexerMonad where
++    fmap  = liftM
++
++instance Applicative LexerMonad where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad LexerMonad where
+diff --git a/src/Helium/StaticAnalysis/Heuristics/OnlyResultHeuristics.hs b/src/Helium/StaticAnalysis/Heuristics/OnlyResultHeuristics.hs
+index 880ac0b..90574f0 100644
+--- a/src/Helium/StaticAnalysis/Heuristics/OnlyResultHeuristics.hs
++++ b/src/Helium/StaticAnalysis/Heuristics/OnlyResultHeuristics.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE FlexibleContexts #-}
+ {-| Module      :  OnlyResultHeuristics
+diff --git a/src/Helium/StaticAnalysis/Heuristics/RepairHeuristics.hs b/src/Helium/StaticAnalysis/Heuristics/RepairHeuristics.hs
+index 89e43f2..251406f 100644
+--- a/src/Helium/StaticAnalysis/Heuristics/RepairHeuristics.hs
++++ b/src/Helium/StaticAnalysis/Heuristics/RepairHeuristics.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE FlexibleContexts #-}
+ {-| Module      :  RepairHeuristics
+diff --git a/src/Helium/StaticAnalysis/Heuristics/TieBreakerHeuristics.hs b/src/Helium/StaticAnalysis/Heuristics/TieBreakerHeuristics.hs
+index d0b01a3..ba7ca19 100644
+--- a/src/Helium/StaticAnalysis/Heuristics/TieBreakerHeuristics.hs
++++ b/src/Helium/StaticAnalysis/Heuristics/TieBreakerHeuristics.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE FlexibleContexts #-}
+ {-| Module      :  TieBreakerHeuristics
+diff --git a/src/Helium/StaticAnalysis/Heuristics/UnifierHeuristics.hs b/src/Helium/StaticAnalysis/Heuristics/UnifierHeuristics.hs
+index c2e91f5..493c882 100644
+--- a/src/Helium/StaticAnalysis/Heuristics/UnifierHeuristics.hs
++++ b/src/Helium/StaticAnalysis/Heuristics/UnifierHeuristics.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE FlexibleContexts #-}
+ {-| Module      :  UnifierHeuristics
+diff --git a/src/Helium/Syntax/UHA_Pretty.hs b/src/Helium/Syntax/UHA_Pretty.hs
+index af970dc..ee42a48 100644
+--- a/src/Helium/Syntax/UHA_Pretty.hs
++++ b/src/Helium/Syntax/UHA_Pretty.hs
+@@ -17,2 +17,3 @@ import Control.Monad.Identity (Identity)
+ import qualified Control.Monad.Identity
++import Prelude hiding ((<$>))
+ 
