@@ -5,4 +5,7 @@
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">renpy/pygame_sdl2</remote-id>
+	</upstream>
 </pkgmetadata>
