@@ -11,6 +11,6 @@
 			<name>Quentin “Sardem FF7” Glidic</name>
 			<description>CC him on bugs</description>
 		</maintainer>
+		<remote-id type="github">sardemff7/purple-events</remote-id>
 	</upstream>
 </pkgmetadata>
-
