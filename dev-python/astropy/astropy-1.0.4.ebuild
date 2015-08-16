@@ -42,9 +42,12 @@ DEPEND="${RDEPEND}
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=( "${FILESDIR}/${P}-disable_helper.patch" )
+
 python_prepare_all() {
+	rm -r ${PN}_helpers || die
+	rm -r cextern/*/* || die
 	distutils-r1_python_prepare_all
-	epatch "${FILESDIR}/${P}-disable_helper.patch"
 }
 
 python_compile() {
@@ -66,7 +69,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install --offline
+	distutils-r1_python_install --offline --use-system-libraries
 }
 
 python_install_all() {
