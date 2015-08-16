@@ -198,7 +198,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if linux-info_get_any_version && linux_config_src_exists; then
+	if linux-info_get_any_version && linux_config_exists; then
 		ewarn ""
 		ewarn "If the following test report contains a missing kernel"
 		ewarn "configuration option, you should reconfigure and rebuild your"
