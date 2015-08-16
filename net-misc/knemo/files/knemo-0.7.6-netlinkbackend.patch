@@ -1,0 +1,11 @@
+--- ./src/knemod/backends/netlinkbackend.cpp	2015-08-15 14:34:54.823572917 +0600
++++ ./src/knemod/backends/netlinkbackend.cpp.new	2015-08-15 14:34:15.680238396 +0600
+@@ -30,6 +30,8 @@
+ #include "utils.h"
+ #include "netlinkbackend.h"
+ 
++#include <linux/if.h>
++
+ #ifndef IFF_LOWER_UP
+ #define IFF_LOWER_UP   0x10000
+ #endif
