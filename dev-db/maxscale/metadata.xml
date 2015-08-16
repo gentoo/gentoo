@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>mysql</herd>
-<maintainer>
-	<email>grknight@gentoo.org</email>
-	<name>Brian Evans</name>
-</maintainer>
-<use>
-  <flag name='jemalloc'>Use dev-libs/jemalloc for allocations</flag>
-  <flag name='rabbitmq'>Add support for RabbitMQ message queue</flag>
-</use>
+	<herd>mysql</herd>
+	<maintainer>
+		<email>grknight@gentoo.org</email>
+		<name>Brian Evans</name>
+	</maintainer>
+	<use>
+		<flag name="jemalloc">Use dev-libs/jemalloc for allocations</flag>
+		<flag name="rabbitmq">Add support for RabbitMQ message queue</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mariadb-corporation/MaxScale</remote-id>
+	</upstream>
 </pkgmetadata>
