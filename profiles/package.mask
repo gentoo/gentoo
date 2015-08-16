@@ -32,6 +32,12 @@
 
 
 # Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
+# Dependency of dev-java/base64. This project isn't getting a lot of traction
+# and we already have a ton of Java serialiser APIs in the tree.
+# Masked for removal. See bug #557866.
+dev-java/java-xmlbuilder
+
+# Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
 # Last release was in 2008. Does not compile with recent JDKs (>= 1.8).
 # Masked for removal. See bug #557920.
 dev-java/httpunit
