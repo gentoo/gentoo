@@ -73,7 +73,7 @@ RDEPEND="
 	tslib? ( x11-libs/tslib )
 	valgrind? ( dev-util/valgrind )
 	wayland? (
-		>=dev-libs/wayland-1.3.0
+		>=dev-libs/wayland-1.8.0
 		>=x11-libs/libxkbcommon-0.3.1
 		media-libs/mesa[gles2,wayland]
 	)
