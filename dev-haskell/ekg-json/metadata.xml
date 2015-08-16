@@ -7,4 +7,7 @@
 		ekg package, thus allowing ekg metrics to be served by other HTTP
 		servers than the one used by the ekg package.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">tibbe/ekg-json</remote-id>
+	</upstream>
 </pkgmetadata>
