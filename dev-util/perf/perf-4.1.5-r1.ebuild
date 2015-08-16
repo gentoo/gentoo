@@ -107,6 +107,8 @@ src_prepare() {
 		epatch "${WORKDIR}"/${P}.patch
 	fi
 
+	epatch "${FILESDIR}"/${P}-prefix.patch
+
 	# Drop some upstream too-developer-oriented flags and fix the
 	# Makefile in general
 	sed -i \
@@ -140,10 +142,10 @@ perf_make() {
 	# but it also wants to know about the split value -- i386/x86_64 vs just
 	# x86.  We can get that by telling the func to use an older linux version.
 	# It's kind of a hack, but not that bad ...
-	# prefix="/usr" bindir_relative="bin" \
 	local arch=$(tc-arch-kernel)
 	emake V=1 \
 		CC="$(tc-getCC)" AR="$(tc-getAR)" \
+		prefix="/usr" bindir_relative="bin" \
 		CFLAGS_OPTIMIZE="${CFLAGS}" \
 		LDFLAGS_OPTIMIZE="${LDFLAGS}" \
 		ARCH="${arch}" \
