@@ -50,6 +50,8 @@ DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
 MY_LIBDIR=/usr/lib
 PATCHES=(
 	"${FILESDIR}/${PV}-0001-Revert-lvm-Don-t-activate-LVs-with-act.patch"
+	"${FILESDIR}/${PV}-0002-Replace-echo-n-with-printf-in-code-wit.patch"
+	"${FILESDIR}/${PV}-0003-syncheck-Look-for-echo-n-usage-in-modu.patch"
 	)
 QA_MULTILIB_PATHS="
 	usr/lib/dracut/dracut-install
