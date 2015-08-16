@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit autotools eutils flag-o-matic
 
 DESCRIPTION="Hypertext info and man viewer based on (n)curses"
@@ -14,7 +15,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="nls readline"
 
-RDEPEND="sys-libs/ncurses:=
+RDEPEND="sys-libs/ncurses:5=
 	sys-libs/readline:0=
 	nls? ( virtual/libintl )
 "

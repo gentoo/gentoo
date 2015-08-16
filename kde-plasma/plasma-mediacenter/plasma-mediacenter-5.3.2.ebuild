@@ -25,8 +25,8 @@ DEPEND="
 	dev-qt/qtxml:5
 	media-libs/taglib
 	semantic-desktop? (
-		$(add_plasma_dep baloo)
-		$(add_plasma_dep kfilemetadata)
+		|| ( $(add_plasma_dep baloo) $(add_frameworks_dep baloo) )
+		|| ( $(add_plasma_dep kfilemetadata) $(add_frameworks_dep kfilemetadata) )
 	)
 "
 RDEPEND="${DEPEND}

@@ -8,4 +8,7 @@
 		existing libraries for platform-specific Window, Mac,
 		and Linux filesystem event notification.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">haskell-fswatch/hfsnotify</remote-id>
+	</upstream>
 </pkgmetadata>

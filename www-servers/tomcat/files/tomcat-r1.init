@@ -1,0 +1,111 @@
+#!/@GENTOO_PORTAGE_EPREFIX@sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="forcestop"
+
+PIDFILE=/@GENTOO_PORTAGE_EPREFIX@var/run/${RC_SVCNAME}.pid
+
+: ${CATALINA_HOME:=/@GENTOO_PORTAGE_EPREFIX@usr/share/tomcat-@SLOT@}
+: ${CATALINA_BASE:=/@GENTOO_PORTAGE_EPREFIX@var/lib/${RC_SVCNAME}}
+: ${CATALINA_TMPDIR:=/@GENTOO_PORTAGE_EPREFIX@var/tmp/${RC_SVCNAME}}
+: ${CATALINA_USER:=tomcat}
+: ${CATALINA_GROUP:=tomcat}
+
+: ${TOMCAT_START:=start}
+
+: ${JPDA_TRANSPORT:="dt_socket"}
+: ${JPDA_ADDRESS:="8000"}
+: ${JPDA_OPTS="-Xdebug -Xrunjdwp:transport=${JPDA_TRANSPORT},address=${JPDA_ADDRESS},server=y,suspend=n"}
+
+export JAVA_HOME=`java-config ${TOMCAT_JVM:+--select-vm ${TOMCAT_JVM}} --jre-home`
+export CLASSPATH="${CATALINA_HOME}/bin/bootstrap.jar:${CATALINA_HOME}/bin/tomcat-juli.jar"
+[[ @SLOT@ = 6 ]] && CLASSPATH+=":/@GENTOO_PORTAGE_EPREFIX@usr/share/tomcat-servlet-api-2.5/lib/jsp-api.jar:/@GENTOO_PORTAGE_EPREFIX@usr/share/tomcat-servlet-api-2.5/lib/servlet-api.jar"
+
+depend() {
+	use dns logger net
+}
+
+start()	{
+	ebegin "Starting ${RC_SVCNAME}"
+
+	if [ ! -e "${CATALINA_TMPDIR}" ]; then
+		eerror "CATALINA_TMPDIR does not exist. Unable to start tomcat."
+		eerror "Please see /@GENTOO_PORTAGE_EPREFIX@etc/conf.d/${RC_SVCNAME} for more information."
+		eend 1
+	fi
+
+	local DEPEND=$(java-config --query DEPEND --package tomcat-@SLOT@):${TOMCAT_EXTRA_JARS}
+	DEPEND=${DEPEND%:}
+
+	local GCLASSPATH=$(java-config --with-dependencies --classpath "${DEPEND//:/,}"):${TOMCAT_EXTRA_CLASSPATH}
+	GCLASSPATH=${GCLASSPATH%:}
+
+	local cmd=java args=
+	if [ "${TOMCAT_START}" = "debug" ] || [ "${TOMCAT_START}" = "-security debug" ] ; then
+		cmd=jdb
+		args="${args} -sourcepath ${CATALINA_HOME}/../../jakarta-tomcat-catalina/catalina/src/share"
+	fi
+	if [ "${TOMCAT_START}" = "-security debug" ] || [ "${TOMCAT_START}" = "-security start" ]; then
+		args="${args} -Djava.security.manager"
+		args="${args} -Djava.security.policy=${CATALINA_BASE}/conf/catalina.policy"
+	fi
+	if [ "${TOMCAT_START}" = "jpda start" ] ; then
+		args="${args} ${JPDA_OPTS}"
+	fi
+	if [ -r "${CATALINA_HOME}"/bin/tomcat-juli.jar ]; then
+		args="${args} -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
+		-Djava.util.logging.config.file=${CATALINA_BASE}/conf/logging.properties"
+	fi
+
+	start-stop-daemon  --start \
+		--quiet --background \
+		--chdir "${CATALINA_TMPDIR}" \
+		--user ${CATALINA_USER}:${CATALINA_GROUP} \
+		--make-pidfile --pidfile ${PIDFILE} \
+		--exec ${JAVA_HOME}/bin/${cmd} \
+		-- \
+			${JAVA_OPTS} \
+			${args} \
+			-Dcatalina.base="${CATALINA_BASE}" \
+			-Dcatalina.home="${CATALINA_HOME}" \
+			-Djava.io.tmpdir="${CATALINA_TMPDIR}" \
+			-Dgentoo.classpath="${GCLASSPATH//:/,}" \
+			-classpath "${CLASSPATH}" \
+			org.apache.catalina.startup.Bootstrap \
+			${CATALINA_OPTS} \
+			${TOMCAT_START}
+
+	eend $?
+}
+
+stop()	{
+	ebegin "Stopping '${RC_SVCNAME}'"
+
+	start-stop-daemon --stop \
+		--quiet --retry=60 \
+		--pidfile ${PIDFILE} \
+		--exec ${JAVA_HOME}/bin/java \
+		-- \
+			${JAVA_OPTS} \
+			-classpath "${CLASSPATH}" \
+			${CATALINA_OPTS} \
+			stop ${STD_OUT}
+
+	eend $?
+}
+
+forcestop()	{
+	ebegin "Forcing '${RC_SVCNAME}' to stop"
+
+	start-stop-daemon --stop \
+		--quiet --retry=60 \
+		--pidfile ${PIDFILE} \
+		--signal=9
+
+	if service_started "${RC_SVCNAME}"; then
+		mark_service_stopped "${RC_SVCNAME}"
+	fi
+
+	eend $?
+}

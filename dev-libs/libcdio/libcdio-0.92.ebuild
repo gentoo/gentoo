@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="cddb +cxx minimal static-libs test"
 
 RDEPEND="
 	!minimal? (
-		>=sys-libs/ncurses-5.7-r7
+		>=sys-libs/ncurses-5.7-r7:5=
 		cddb? ( >=media-libs/libcddb-1.3.2 )
 	)
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]

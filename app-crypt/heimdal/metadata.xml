@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>kerberos</herd>
-<longdescription>Kerberos 5 implementation from KTH</longdescription>
-<use>
-	<flag name='otp'>
+	<herd>kerberos</herd>
+	<longdescription>Kerberos 5 implementation from KTH</longdescription>
+	<use>
+		<flag name="otp">
 		Adds support for one-time passwords
 	</flag>
-	<flag name='pkinit'>
+		<flag name="pkinit">
 		Adds support for PKINIT for the initial ticket
 	</flag>
-	<flag name='hdb-ldap'>
+		<flag name="hdb-ldap">
 		Adds support for LDAP as a database backend
 	</flag>
-</use>
+	</use>
 </pkgmetadata>

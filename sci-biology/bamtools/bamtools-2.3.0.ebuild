@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,7 @@ IUSE="static-libs"
 
 DEPEND="
 	>=dev-libs/jsoncpp-0.5.0-r1
+	<dev-libs/jsoncpp-1
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 

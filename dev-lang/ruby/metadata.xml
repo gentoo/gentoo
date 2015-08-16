@@ -23,7 +23,7 @@
     <flag name="rdoc">
       Install <pkg>dev-ruby/rdoc</pkg> after installing Ruby.
     </flag>
-	<flag name="jemalloc">
+    <flag name="jemalloc">
 	  Use <pkg>dev-libs/jemalloc</pkg> for memory allocation.
 	</flag>
   </use>

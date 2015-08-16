@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>samba</herd>
-<maintainer>
-	<email>samba@gentoo.org</email>
-	<name>Samba Team</name>
-</maintainer>
+	<herd>samba</herd>
+	<maintainer>
+		<email>samba@gentoo.org</email>
+		<name>Samba Team</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ndevilla/iniparser</remote-id>
+	</upstream>
 </pkgmetadata>

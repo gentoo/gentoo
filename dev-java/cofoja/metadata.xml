@@ -4,6 +4,7 @@
 	<herd>java</herd>
 	<upstream>
 		<remote-id type="google-code">cofoja</remote-id>
+		<remote-id type="github">nhatminhle/cofoja</remote-id>
 	</upstream>
 	<maintainer>
 		<email>monsieurp@gentoo.org</email>

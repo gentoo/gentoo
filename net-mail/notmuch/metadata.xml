@@ -14,8 +14,6 @@
 		<flag name="nmbug">Install experimental tag sharing /
 			pseudo-bug-tracking script for Notmuch
 			(see http://notmuchmail.org/nmbug/)</flag>
-		<flag name="pick">Experimental threaded message view for the emacs
-			interface</flag>
 	</use>
 	<longdescription lang="en">
 		Notmuch is a system for indexing, searching, reading, and tagging large

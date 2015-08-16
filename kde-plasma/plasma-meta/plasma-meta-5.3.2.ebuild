@@ -15,12 +15,10 @@ KEYWORDS="~amd64"
 IUSE="bluetooth +display-manager gtk +sddm networkmanager +wallpapers"
 
 RDEPEND="
-	$(add_plasma_dep baloo)
 	$(add_plasma_dep breeze)
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep kdecoration)
 	$(add_plasma_dep kdeplasma-addons)
-	$(add_plasma_dep kfilemetadata)
 	$(add_plasma_dep khelpcenter)
 	$(add_plasma_dep khotkeys)
 	$(add_plasma_dep kinfocenter)

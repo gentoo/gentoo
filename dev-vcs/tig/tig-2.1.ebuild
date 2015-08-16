@@ -6,7 +6,7 @@ EAPI=5
 
 inherit bash-completion-r1 toolchain-funcs
 
-DESCRIPTION="Tig: text mode interface for git"
+DESCRIPTION="text mode interface for git"
 HOMEPAGE="http://jonas.nitro.dk/tig/"
 SRC_URI="http://jonas.nitro.dk/tig/releases/${P}.tar.gz"
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="unicode"
 
-DEPEND="sys-libs/ncurses[unicode?]
-	sys-libs/readline:0"
+DEPEND="sys-libs/ncurses:5=[unicode?]
+	sys-libs/readline:0="
 RDEPEND="${DEPEND}
 	dev-vcs/git"
 

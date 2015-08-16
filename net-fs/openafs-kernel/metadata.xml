@@ -2,19 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>net-fs</herd>
-<herd>proxy-maintainers</herd>
 <maintainer>
 	<email>np.hardass@gmail.com</email>
-	<description>proxied maintainer, please assign bugs to</description>
-</maintainer>
-<maintainer>
-	<email>steve@pressers.name</email>
-	<name>Steven Presser</name>
-	<description>proxied maintainer, please CC on bugs</description>
+	<description>please assign bugs to</description>
 </maintainer>
 <maintainer>
 	<email>bircoph@gentoo.org</email>
 	<name>Andrew Savchenko</name>
-	<description>maintainer, please CC on bugs</description>
+	<description>please CC on bugs</description>
 </maintainer>
 </pkgmetadata>

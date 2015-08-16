@@ -16,7 +16,7 @@ IUSE="cddb +cxx minimal static-libs test"
 
 RDEPEND="
 	!minimal? (
-		>=sys-libs/ncurses-5.7-r7
+		>=sys-libs/ncurses-5.7-r7:5=
 		cddb? ( >=media-libs/libcddb-1.3.2 )
 	)
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]

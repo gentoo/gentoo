@@ -13,7 +13,7 @@ SRC_URI="http://downloads.grantlee.org/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug doc test"
 
 RDEPEND="
