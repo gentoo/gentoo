@@ -27,7 +27,12 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 RDEPEND=""
 
+# Py2.7 fais some tests without this
+DISTUTILS_IN_SOURCE_BUILD=1
+
 S="${WORKDIR}/${P}dev"
+
+PATCHES=( "${FILESDIR}"/${P}-cookie-testfix.patch )
 
 python_prepare_all() {
 	# Workaround for http://bugs.python.org/issue11276.
