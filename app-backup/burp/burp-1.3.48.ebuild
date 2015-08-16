@@ -36,6 +36,7 @@ DOCS=( CONTRIBUTORS DONATIONS UPGRADING )
 PATCHES=(
 	"${FILESDIR}/${PV}-bedup-conf-path.patch"
 	"${FILESDIR}/${PV}-tinfo.patch"
+	"${FILESDIR}/${PV}-0001-Set-default_md-sha256-in-CA.cnf.patch"
 	)
 S="${WORKDIR}/burp"
 
