@@ -3885,6 +3885,7 @@ dev-java/hibernate-annotations 3.2.0: Annotations support for Hibernate
 dev-java/higlayout 1.0-r2: Java Swing layout manager that's powerful and easy to use
 dev-java/hoteqn 4.0.0: Java applet to view and display LaTeX mathematical equations
 dev-java/hp-jdk-bin 1.6.0.05: HP JDK/JRE and Plug-In
+dev-java/htmlcleaner 2.13: HTML parser written in Java that can be used as a tool, library or Ant task
 dev-java/htmlparser 1.4-r1: Implementation of the HTML5 parsing algorithm in Java
 dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.org)
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
