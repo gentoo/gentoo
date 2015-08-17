@@ -18,7 +18,7 @@
   <use>
     <flag name="lammps-memalign">Enables the use of the posix_memalign()
 			call instead of malloc() when large chunks or memory are allocated
-			by LAMMPS</flag>
+			by LAMMPS. Aliengnment is on 16 byte boundaries.</flag>
   </use>
   <herd>sci-physics</herd>
   <maintainer>
