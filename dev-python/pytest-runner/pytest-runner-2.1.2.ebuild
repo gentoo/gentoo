@@ -17,7 +17,9 @@ KEYWORDS="amd64 ~arm x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	app-arch/unzip
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 
 PATCHES=(

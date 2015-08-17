@@ -18,6 +18,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
+	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
