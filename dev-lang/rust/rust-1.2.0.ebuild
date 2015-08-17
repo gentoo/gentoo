@@ -14,8 +14,8 @@ DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="http://www.rust-lang.org/"
 
 SRC_URI="http://static.rust-lang.org/dist/${MY_P}-src.tar.gz
-	amd64? ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-04-27-857ef6e-linux-x86_64-94089740e48167c5975c92c139ae9c286764012f.tar.bz2 )
-	x86?   ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-04-27-857ef6e-linux-i386-0bc8cffdce611fb71fd7d3d8e7cdbfaf748a4f16.tar.bz2 )
+	amd64? ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-05-24-ba0e1cd-linux-x86_64-5fd8698fdfe953e6c4d86cf4fa1d5f3a0053248c.tar.bz2 )
+	x86?   ( http://static.rust-lang.org/stage0-snapshots/rust-stage0-2015-05-24-ba0e1cd-linux-i386-a6f22e481eabf098cc65bda97bf7e434a1fcc20b.tar.bz2 )
 "
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
@@ -48,7 +48,7 @@ src_unpack() {
 src_prepare() {
 	local postfix="gentoo-${SLOT}"
 	sed -i -e "s/CFG_FILENAME_EXTRA=.*/CFG_FILENAME_EXTRA=${postfix}/" mk/main.mk || die
-	epatch "${FILESDIR}/${P}-install.patch"
+	epatch "${FILESDIR}/${PN}-1.1.0-install.patch"
 }
 
 src_configure() {
