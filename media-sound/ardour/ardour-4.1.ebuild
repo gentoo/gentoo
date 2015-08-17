@@ -84,7 +84,7 @@ src_unpack() {
 
 src_prepare(){
 	if ! [ ${PV} = 9999 ]; then
-		epatch "${FILESDIR}"/${PN}-4.0-revision-naming.patch
+		epatch "${FILESDIR}"/${PN}-4.x-revision-naming.patch
 		touch "${S}/libs/ardour/revision.cc"
 	fi
 	$(use lv2 || epatch "${FILESDIR}"/${PN}-4.0-lv2.patch)
