@@ -16,6 +16,7 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-r1-header.patch
 	epatch "${FILESDIR}"/${P}-r1-Makefile.patch
 }
 

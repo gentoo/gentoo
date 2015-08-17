@@ -1,11 +1,13 @@
 --- linksys-tftp-1.2.1/main.c
 +++ linksys-tftp-1.2.1/main.c
-@@ -40,6 +40,8 @@
+@@ -40,6 +40,10 @@
  #include <setjmp.h>
  #include <ctype.h>
  #include <netdb.h>
 +#include <stdlib.h>
-+#include <strings.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/sendfile.h>
  
  #define	TIMEOUT		5		/* secs between rexmt's */
  
@@ -18,3 +20,33 @@
  	char *argv[];
  {
  	struct sockaddr_in sin;
+--- a/tftp.c
++++ b/tftp.c
+@@ -36,8 +36,8 @@
+ #include <stdio.h>
+ #include <errno.h>
+ #include <setjmp.h>
+-
+-extern	int errno;
++#include <string.h>
++#include <unistd.h>
+ 
+ extern  struct sockaddr_in sin;         /* filled in by main */
+ extern  int     f;                      /* the opened socket */
+@@ -69,16 +69,6 @@ void timer(int sig)
+ 	longjmp(timeoutbuf, 1);
+ }
+ 
+-strnlen(s, n)
+-	char *s;
+-	int n;
+-{
+-	int i = 0;
+-
+-	while (n-- > 0 && *s++) i++;
+-	return(i);
+-}
+-
+ /*
+  * Parse an OACK package and set blocksize accordingly
+  */
