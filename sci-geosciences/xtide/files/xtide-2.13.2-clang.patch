@@ -1,0 +1,33 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Aug 17 20:15:03 UTC 2015
+Subject: fix build with clang
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,26 +22,6 @@
+ AC_SUBST([ADDED_CPPFLAGS])
+ AC_SUBST([ADDED_CXXFLAGS])
+ 
+-# Extended initializer lists were added in 4.4.
+-AC_MSG_CHECKING([if using a version of GCC older than 4.4])
+-AC_PREPROC_IFELSE(
+-  [AC_LANG_SOURCE([[
+-#ifdef __GNUC__
+-#if (__GNUC__ * 100 + __GNUC_MINOR__) < 404
+-#FAIL
+-#endif
+-#endif
+-  ]])],
+-  [
+-    AC_MSG_RESULT(no)
+-  ],
+-  [
+-    AC_MSG_RESULT(yes)
+-    AC_MSG_NOTICE([if using GCC, version 4.4 or later is required])
+-    AC_MSG_ERROR([GCC too old])
+-  ]
+-)
+-
+ # /tmp/ccB6kF2d.s: Assembler messages:
+ # /tmp/ccB6kF2d.s:1325: Error: symbol `_ZZN10SafeVectorIdEixEPdS1_jE19__PRETTY_FUNCTION__' is already defined
+ # /tmp/ccB6kF2d.s:1330: Error: symbol `_ZZN10SafeVectorI5AngleEixEPS0_S2_jE19__PRETTY_FUNCTION__' is already defined
