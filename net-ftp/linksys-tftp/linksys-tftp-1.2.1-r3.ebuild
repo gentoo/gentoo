@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="TFTP client suitable for uploading to the Linksys WRT54G Wireless Router"
-HOMEPAGE="http://redsand.net/projects/linksys-tftp/linksys-tftp.php"
-SRC_URI="http://redsand.net/projects/${PN}/pub/${P}.tar.bz2"
+HOMEPAGE="https://www.redsand.net/solutions/linksys_tftp.html"
+SRC_URI="https://www.redsand.net/solutions/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
