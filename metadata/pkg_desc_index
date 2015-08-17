@@ -8992,7 +8992,7 @@ dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2: A set fo base plugins for Molecule
 dev-util/monkeystudio 1.9.0.4: A cross platform Qt 4 IDE
 dev-util/mono-debugger 2.10: Debugger for .NET managed and unmanaged applications
-dev-util/monodevelop 3.0.2-r1 5.9.5.5: Integrated Development Environment for .NET
+dev-util/monodevelop 3.0.2-r1 5.9.5.9: Integrated Development Environment for .NET
 dev-util/monodevelop-database 3.0.2: Database Browser Extension for MonoDevelop
 dev-util/monodevelop-debugger-gdb 3.0.2: GDB Extension for MonoDevelop
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
