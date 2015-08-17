@@ -7487,7 +7487,7 @@ dev-python/pyro 3.16-r1 4.25: Advanced and powerful Distributed Object Technolog
 dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyrtf 0.45-r1: A set of Python classes that make it possible to produce RTF documents from Python programs
 dev-python/pysaml2 2.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
-dev-python/pyscard 1.6.16: pyscard is a python module adding smart cards support to python
+dev-python/pyscard 1.6.16 1.7.0: pyscard is a python module adding smart cards support to python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 2.6-r1 2.7 2.7-r1: Python Serial Port Extension
