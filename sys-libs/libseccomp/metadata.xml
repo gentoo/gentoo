@@ -4,9 +4,6 @@
 	<maintainer>
 		<email>vapier@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="tools">enable debugging tools</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">seccomp/libseccomp</remote-id>
 	</upstream>
