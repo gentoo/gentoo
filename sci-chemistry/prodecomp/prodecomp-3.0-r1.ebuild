@@ -24,6 +24,7 @@ DEPEND=""
 S="${WORKDIR}"/NMRProjAnalys
 
 src_install() {
+	python_export
 	if use examples; then
 		insinto /usr/share/${PN}
 		doins -r ExampleData Results
@@ -38,9 +39,9 @@ src_install() {
 
 	cat >> "${T}"/${PN} <<- EOF
 	#!/bin/bash
-	${PYTHON} -O "${EPREFIX}"/$(python_get_sitedir)/${PN}/ProjAnalys.py $@
+	${PYTHON} -O $(python_get_sitedir)/${PN}/ProjAnalys.py \$@
 	EOF
 	dobin "${T}"/${PN}
 
-	dosym ../../../../share/doc/${PF}/Manual.pdf $(python_get_sitedir)/${PN}/Manual.pdf
+	dosym ../../../../share/doc/${PF}/Manual.pdf "${PYTHON_SITEDIR##${EPREFIX}}"/${PN}/Manual.pdf
 }
