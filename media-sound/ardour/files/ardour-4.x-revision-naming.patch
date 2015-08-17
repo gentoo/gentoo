@@ -1,0 +1,38 @@
+--- ardour-4.2/wscript
++++ ardour-4.2/wscript
+@@ -162,7 +162,7 @@
+ if os.path.isdir (os.path.join(os.getcwd(), '.git')):
+     rev = fetch_git_revision ()
+ else:
+-    rev = fetch_tarball_revision ()
++    rev = os.environ['PV']
+ 
+ #
+ # rev is now of the form MAJOR.MINOR[-rcX]-rev-commit
+@@ -238,16 +238,16 @@
+     return version
+ 
+ def create_stored_revision():
+-    rev = ""
+-    if os.path.exists('.git'):
+-        rev = fetch_git_revision();
+-        print("Git version: " + rev + "\n")
+-    elif os.path.exists('libs/ardour/revision.cc'):
+-        print("Using packaged revision")
+-        return
+-    else:
+-        print("Missing libs/ardour/revision.cc.  Blame the packager.")
+-        sys.exit(-1)
++    rev = os.environ['PV'] + "-gentoo"
++#    if os.path.exists('.git'):
++#        rev = fetch_git_revision();
++#        print("Git version: " + rev + "\n")
++#    elif os.path.exists('libs/ardour/revision.cc'):
++#        print("Using packaged revision")
++#        return
++#    else:
++#        print("Missing libs/ardour/revision.cc.  Blame the packager.")
++#        sys.exit(-1)
+ 
+     try:
+         #

@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="doc examples jpeg jpeg2k lcms test tiff tk truetype webp zlib"
 
-REQUIRED_USE="test? ( jpeg )"
+REQUIRED_USE="test? ( jpeg tiff )"
 
 RDEPEND="
 	jpeg? ( virtual/jpeg:0 )

@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE="debug exif pdf taglib truetype"
 
 RDEPEND="
-	exif? ( >=media-gfx/exiv2-0.13 )
+	exif? ( >=media-gfx/exiv2-0.13:= )
 	pdf? ( >=app-text/podofo-0.8 )
 	taglib? ( >=media-libs/taglib-1.5 )
 	truetype? ( media-libs/freetype:2 )

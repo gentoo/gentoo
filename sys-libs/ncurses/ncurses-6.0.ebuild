@@ -24,6 +24,7 @@ DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 #	berkdb? ( sys-libs/db )"
 RDEPEND="${DEPEND}
 	!<x11-terms/rxvt-unicode-9.06-r3
+	!<x11-terms/st-0.6-r1
 	!app-emulation/emul-linux-x86-baselibs"
 
 S=${WORKDIR}/${MY_P}
@@ -59,27 +60,31 @@ src_configure() {
 		$(use unicode && usex threads 'ncursestw' '')
 	)
 
-	# when cross-compiling, we need to build up our own tic
-	# because people often don't keep matching host/target
-	# ncurses versions #249363
-	if tc-is-cross-compiler && ! ROOT=/ has_version ~sys-libs/${P} ; then
+	multijob_init
+
+	# When installing ncurses, we have to use a compatible version of tic.
+	# This comes up when cross-compiling, doing multilib builds, upgrading,
+	# or installing for the first time.  Build a local copy of tic whenever
+	# the host version isn't available. #249363 #557598
+	if ! ROOT=/ has_version "~sys-libs/${P}" ; then
+		# We can't re-use the multilib BUILD_DIR because we run outside of it.
+		BUILD_DIR="${WORKDIR}" \
 		CHOST=${CBUILD} \
 		CFLAGS=${BUILD_CFLAGS} \
 		CXXFLAGS=${BUILD_CXXFLAGS} \
 		CPPFLAGS=${BUILD_CPPFLAGS} \
 		LDFLAGS="${BUILD_LDFLAGS} -static" \
-		do_configure cross --without-shared --with-normal
+		multijob_child_init do_configure cross --without-shared --with-normal
 	fi
 	multilib-minimal_src_configure
+	multijob_finish
 }
 
 multilib_src_configure() {
 	local t
-	multijob_init
 	for t in "${NCURSES_TARGETS[@]}" ; do
 		multijob_child_init do_configure "${t}"
 	done
-	multijob_finish
 }
 
 do_configure() {
@@ -151,6 +156,11 @@ do_configure() {
 	if [[ ${target} != "ncurses" ]] ; then
 		conf+=( --includedir="${EPREFIX}"/usr/include/${target} )
 	fi
+	# See comments in src_configure.
+	if [[ ${target} != "cross" ]] ; then
+		local tic_path="${WORKDIR}/cross/progs/tic"
+		[[ -d ${tic_path} ]] && export TIC_PATH=${tic_path}
+	fi
 
 	# Force bash until upstream rebuilds the configure script with a newer
 	# version of autotools. #545532
@@ -160,10 +170,9 @@ do_configure() {
 }
 
 src_compile() {
-	# when cross-compiling, we need to build up our own tic
-	# because people often don't keep matching host/target
-	# ncurses versions #249363
-	if tc-is-cross-compiler && ! ROOT=/ has_version ~sys-libs/${P} ; then
+	# See comments in src_configure.
+	if ! ROOT=/ has_version "~sys-libs/${P}" ; then
+		BUILD_DIR="${WORKDIR}" \
 		do_compile cross -C progs tic
 	fi
 
@@ -198,9 +207,6 @@ do_compile() {
 }
 
 multilib_src_install() {
-	# use the cross-compiled tic (if need be) #249363
-	export PATH="${BUILD_DIR}/cross/progs:${PATH}"
-
 	local target
 	for target in "${NCURSES_TARGETS[@]}" ; do
 		emake -C "${BUILD_DIR}/${target}" DESTDIR="${D}" install

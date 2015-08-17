@@ -31,6 +31,7 @@ DEPEND="${COMMONDEPEND}
 	sys-devel/bc
 	virtual/yacc
 	pax_kernel? ( sys-apps/elfix )
+	!dev-lang/mono-basic
 "
 
 MAKEOPTS="${MAKEOPTS} -j1" #nowarn
