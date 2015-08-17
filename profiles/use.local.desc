@@ -6794,7 +6794,7 @@ sci-physics/geant:vrml - Enable output of geant4 in vrml formats
 sci-physics/hepmc:cm - Build with cm instead of default mm for length units
 sci-physics/hepmc:gev - Build with GeV instead of default MeV for momentum units
 sci-physics/hoomd-blue:cuda - Enable cuda non-bonded kernels
-sci-physics/lammps:lammps-memalign - Enables the use of the posix_memalign() call instead of malloc() when large chunks or memory are allocated by LAMMPS
+sci-physics/lammps:lammps-memalign - Enables the use of the posix_memalign() call instead of malloc() when large chunks or memory are allocated by LAMMPS. Aliengnment is on 16 byte boundaries.
 sci-physics/lhapdf:octave - Add bindings for sci-mathematics/octave
 sci-physics/meep:mpb - Enable build against sci-physics/mpb
 sci-physics/pythia:fastjet - Build jets using the sci-physics/fastjet package
@@ -7429,7 +7429,6 @@ sys-libs/glibc:systemtap - enable systemtap static probe points
 sys-libs/gwenhywfar:fox - Use x11-libs/fox graphical toolkit
 sys-libs/libcxx:libcxxrt - Build on top of sys-libs/libcxxrt instead of gcc's libsupc++ (avoids depending on gcc).
 sys-libs/libcxxrt:libunwind - Use sys-libs/libunwind instead of libgcc_s for unwinding. This should allow avoiding relying on sys-devel/gcc but for now clang is setup to use libgcc_s.
-sys-libs/libseccomp:tools - enable debugging tools
 sys-libs/libunwind:debug-frame - Adds support for DWARF .debug_frame section: Use the information from this section if available
 sys-libs/libunwind:libatomic - Use libatomic instead of builtin atomic operations
 sys-libs/ncurses:ada - Add bindings for the ADA programming language
