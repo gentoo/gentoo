@@ -13,7 +13,7 @@ SRC_URI="https://github.com/zaphoyd/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 LICENSE="BSD"
 SLOT="0"
-IUSE="boost test"
+IUSE="boost examples test"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -26,9 +26,9 @@ RESTRICT="test"
 src_configure() {
 	# Disable EXAMPLES as compilation is broken upstream
 	local mycmakeargs=(
-		-DEXAMPLES=OFF
+		-DBUILD_EXAMPLES=OFF
 		$(cmake-utils_use_enable !boost CPP11)
-		$(cmake-utils_use_enable test TESTS)
+		$(cmake-utils_use_build test TESTS)
 	)
 
 	cmake-utils_src_configure
