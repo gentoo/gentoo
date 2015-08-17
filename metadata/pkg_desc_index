@@ -10911,7 +10911,7 @@ lxqt-base/lxqt-powermanagement 0.7.0 0.8.0 0.9.0: LXQt daemon for power manageme
 lxqt-base/lxqt-qtplugin 0.7.0 0.8.0 0.9.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.7.0-r1 0.8.0 0.9.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.7.0-r1 0.8.0 0.9.0-r1: LXQT session manager
-mail-client/alot 0.3.5 0.3.6: Experimental terminal UI for net-mail/notmuch written in Python
+mail-client/alot 0.3.6: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r5: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.4.14 2.5.2: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
