@@ -14,9 +14,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE=""
+IUSE="doc"
 
-DOCS=( README docs/Features.rst docs/UnicodeProperties.txt )
+DOCS=( README docs/UnicodeProperties.txt )
 
 python_compile() {
 	if ! python_is_python3; then
@@ -36,4 +36,11 @@ python_test() {
 	else
 		"${PYTHON}" Python2/test_regex.py || die $msg
 	fi
+}
+
+python_install_all() {
+	local DOCS="${DOCS} docs/UnicodeProperties.txt"
+	use doc && local HTML_DOCS=( docs/Features.html )
+
+	distutils-r1_python_install_all
 }
