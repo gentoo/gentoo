@@ -5,11 +5,13 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
-inherit distutils-r1
+inherit distutils-r1 vcs-snapshot
+
+MY_PV=${PV/_/}
 
 DESCRIPTION="Expressive and extensible TDD/BDD assertion library for Python"
 HOMEPAGE="https://github.com/jaimegildesagredo/expects"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
