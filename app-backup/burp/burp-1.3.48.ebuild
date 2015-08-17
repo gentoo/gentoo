@@ -8,7 +8,8 @@ inherit autotools eutils user
 
 DESCRIPTION="Network backup and restore client and server for Unix and Windows"
 HOMEPAGE="http://burp.grke.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+	http://burp.grke.org/downloads/${P}/${P}.tar.bz2"
 
 LICENSE="AGPL-3"
 SLOT="0"
