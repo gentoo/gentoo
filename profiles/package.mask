@@ -79,6 +79,8 @@ dev-util/plasmate
 kde-apps/nepomuk
 kde-base/nepomuk-core
 kde-base/nepomuk-widgets
+kde-misc/akonadi-google
+kde-misc/akonadi-social-utils
 kde-misc/ksoprano
 kde-misc/nepomukshell
 kde-misc/pgame
