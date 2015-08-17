@@ -7640,7 +7640,7 @@ dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailh
 dev-python/reconfigure 0.1.50 0.1.72: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3: Python client for Redis key-value store
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
-dev-python/regex 2015.06.24 2015.07.12: Alternative regular expression module to replace re
+dev-python/regex 2015.07.12 2015.07.19: Alternative regular expression module to replace re
 dev-python/remoteobjects 99999999: subclassable Python objects for working with JSON REST APIs
 dev-python/rencode 1.0.3: similar to bencode from the BitTorrent project
 dev-python/reportlab 2.6 3.1.44-r1 3.2.0: Tools for generating printable PDF documents from any data source
@@ -7657,7 +7657,7 @@ dev-python/retrying 1.3.2: Retrying is a general-purpose retrying library.
 dev-python/reverend 0.4-r1: Reverend - Simple Bayesian classifier
 dev-python/rfc3986 0.2.0: Validating URI References per RFC 3986
 dev-python/rlcompleter2 0.98 0.98-r1: Python command line completion
-dev-python/robotframework 2.8.5 2.8.6 2.8.7: A generic test automation framework for acceptance testing and acceptance test-driven development
+dev-python/robotframework 2.8.7 2.9: test automation framework for acceptance testing & test-driven development
 dev-python/robotframework-selenium2library 1.5.0 1.6.0 9999: Web testing library for Robot Framework
 dev-python/robotframework-sshlibrary 2.0.2 2.1.1: A test library for Robot Framework that enables SSH and SFTP
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
