@@ -16,6 +16,7 @@ KEYWORDS="~amd64"
 IUSE="acl afs ipv6 nls ssl tcpd xattr"
 
 DEPEND="
+	dev-libs/openssl:0
 	dev-libs/uthash
 	sys-libs/libcap
 	net-libs/librsync
@@ -24,7 +25,6 @@ DEPEND="
 	acl? ( sys-apps/acl )
 	afs? ( net-fs/openafs )
 	nls? ( sys-devel/gettext )
-	ssl? ( dev-libs/openssl:0 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	xattr? ( sys-apps/attr )
 	"

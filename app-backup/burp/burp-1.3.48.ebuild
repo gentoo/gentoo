@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="acl afs ipv6 nls ssl tcpd xattr"
 
 DEPEND="
+	dev-libs/openssl:0
 	dev-libs/uthash
 	sys-libs/libcap
 	net-libs/librsync
@@ -24,7 +25,6 @@ DEPEND="
 	acl? ( sys-apps/acl )
 	afs? ( net-fs/openafs )
 	nls? ( sys-devel/gettext )
-	ssl? ( dev-libs/openssl:0 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	xattr? ( sys-apps/attr )
 	"
@@ -36,6 +36,7 @@ DOCS=( CONTRIBUTORS DONATIONS UPGRADING )
 PATCHES=(
 	"${FILESDIR}/${PV}-bedup-conf-path.patch"
 	"${FILESDIR}/${PV}-tinfo.patch"
+	"${FILESDIR}/${PV}-0001-Set-default_md-sha256-in-CA.cnf.patch"
 	)
 S="${WORKDIR}/burp"
 
@@ -46,6 +47,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
+	# see bug #426262
+	mv configure.in configure.ac || die
 	eautoreconf
 }
 
