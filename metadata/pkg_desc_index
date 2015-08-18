@@ -8193,7 +8193,7 @@ dev-ruby/log4r 1.1.10-r1 1.1.10-r2: A comprehensive and flexible logging library
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
 dev-ruby/logging 1.8.2 2.0.0: Flexible logging library for use in Ruby programs based on the design of Java's log4j library
 dev-ruby/logue 1.0.2-r1 1.0.2-r2: A module that adds logging/trace functionality
-dev-ruby/loofah 2.0.1 2.0.2: A general library for manipulating and transforming HTML/XML documents and fragments.
+dev-ruby/loofah 2.0.1 2.0.2 2.0.3: A general library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
 dev-ruby/lumberjack 1.0.9: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
