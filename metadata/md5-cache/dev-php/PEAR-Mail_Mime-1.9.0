@@ -1,0 +1,12 @@
+DEFINED_PHASES=install setup
+DEPEND=>=dev-lang/php-5.0:* dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=Provides classes to deal with creation and manipulation of mime messages
+EAPI=5
+HOMEPAGE=http://pear.php.net/Mail_Mime
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/php-5.0:* dev-lang/php:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/Mail_Mime-1.9.0.tgz
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=4e95e5e61d088129ea2e468bbda890e5
