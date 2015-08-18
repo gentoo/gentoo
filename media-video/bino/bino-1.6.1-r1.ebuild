@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc lirc"
+IUSE="debug doc libav lirc"
 
 IUSE_VIDEO_CARDS="
 	video_cards_nvidia"
@@ -32,7 +32,8 @@ RDEPEND=">=media-libs/glew-1.6.0
 	dev-qt/qtcore:4
 	dev-qt/qtopengl:4
 	>=media-libs/libass-0.9.9
-	>=virtual/ffmpeg-0.6.90
+	libav? ( >=media-video/libav-0.7:0= )
+	!libav? ( >=media-video/ffmpeg-0.7:0= )
 	lirc? ( app-misc/lirc )
 	video_cards_nvidia? ( media-video/nvidia-settings )
 	virtual/libintl"
@@ -51,11 +52,16 @@ src_configure() {
 	local myeconfargs=(
 		$(use_with video_cards_nvidia xnvctrl)
 		$(use_with lirc liblircclient)
+		$(use_enable debug)
 		--without-equalizer
 		--htmldir=/usr/share/doc/${PF}/html
 	)
-	use video_cards_nvidia && append-cppflags "-I/usr/include/NVCtrl" && append-ldflags "-I/usr/$(get_libdir)" && append-libs "Xext"
-	use lirc && append-cppflags "-I/usr/include/lirc"  && append-libs "lirc_client"
+
+	use video_cards_nvidia && append-cppflags "-I/usr/include/NVCtrl" \
+		&& append-ldflags "-L/usr/$(get_libdir)/opengl/nvidia/lib \
+		-L/usr/$(get_libdir)" && append-libs "Xext"
+	use lirc && append-cppflags "-I/usr/include/lirc" \
+		&& append-libs "lirc_client"
 
 	# Fix a compilation error because of a multiple definitions in glew
 	append-ldflags "-zmuldefs"
