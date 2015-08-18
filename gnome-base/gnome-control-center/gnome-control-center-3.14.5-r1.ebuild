@@ -11,10 +11,12 @@ inherit autotools bash-completion-r1 eutils gnome2
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
 
+SRC_URI="${SRC_URI} http://dev.gentoo.org/~tetromino/distfiles/${PN}/${PN}-3.16.2-pyongyang.tar.xz"
+
 LICENSE="GPL-2+"
 SLOT="2"
 IUSE="+bluetooth +colord +cups +gnome-online-accounts +i18n input_devices_wacom kerberos v4l"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"
@@ -108,8 +110,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 
 	gnome-base/gnome-common
-
-	<sys-libs/timezone-data-2015f
 "
 # Needed for autoreconf
 #	gnome-base/gnome-common
@@ -121,6 +121,10 @@ src_prepare() {
 
 	# Fix some absolute paths to be appropriate for Gentoo
 	epatch "${FILESDIR}"/${PN}-3.10.2-gentoo-paths.patch
+
+	# North Korea causes build failure, https://bugzilla.gnome.org/show_bug.cgi?id=753643
+	cp ../${PN}-3.16.2-pyongyang/*.png panels/datetime/data/ || die
+	epatch ../${PN}-3.16.2-pyongyang/*.patch
 
 	epatch_user
 
