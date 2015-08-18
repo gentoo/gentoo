@@ -16,7 +16,7 @@ SRC_URI="http://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
-IUSE="acl cgroups debug doc kernel_linux pam +pm-utils policykit selinux test"
+IUSE="acl cgroups debug doc kernel_linux pam policykit selinux test"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=
 	>=sys-devel/gettext-0.19
@@ -34,7 +34,6 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=
 	policykit? ( >=sys-auth/polkit-0.110 )"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
-	pm-utils? ( sys-power/pm-utils )
 	selinux? ( sec-policy/selinux-consolekit )"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
@@ -108,4 +107,9 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513
+}
+
+pkg_postinst() {
+	elog "For suspend/hibernate support, please emerge"
+	elog "  sys-power/pm-utils"
 }
