@@ -33,7 +33,7 @@ RDEPEND=">=virtual/jre-1.6
 LICENSE="Apache-2.0"
 SLOT="0"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 S="${WORKDIR}/${P}-src"
