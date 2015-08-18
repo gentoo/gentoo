@@ -23,7 +23,6 @@
     <flag name="gio">Enable GIO for FS monitoring (glib based alternative to inotify interface, not recommended; if both are compiled, may be selected at runtime).</flag>
     <flag name="highload-locks">Allows to use spinlocks for short delays instead of mutexes, but only on SMP systems.</flag>
     <flag name="namespaces">Enable namespaces isolation.</flag>
-    <flag name="seccomp">Enable seccomp for system call filtering.</flag>
   </use>
   <upstream>
     <remote-id type="github">xaionaro/clsync</remote-id>

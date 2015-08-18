@@ -233,8 +233,5 @@ opencl
 # This one we need to test ...
 python_targets_python3_3
 
-# sys-libs/libseccomp has not been ported to this arch yet #524148
-seccomp
-
 # No arm64 java support yet.
 java
