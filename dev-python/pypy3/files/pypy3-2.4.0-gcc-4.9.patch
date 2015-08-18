@@ -1,0 +1,26 @@
+Description: Expect cmovnb and jnb
+ Fixes an FTBFS since gcc 4.9.2, which is emmiting new operations
+Author: Stefano Rivera <stefanor@debian.org>
+Forwarded: https://bitbucket.org/pypy/pypy/commits/c1abec418acf30bb04891c3249bc12cbe8f48d4a
+Bug-Debian: https://bugs.debian.org/771137
+Last-Update: 2014-11-26
+
+--- a/rpython/translator/c/gcc/trackgcroot.py
++++ b/rpython/translator/c/gcc/trackgcroot.py
+@@ -590,7 +590,7 @@
+ 
+     # The various cmov* operations
+     for name in '''
+-        e ne g ge l le a ae b be p np s ns o no
++        e ne g ge l le a ae b be nb p np s ns o no
+         '''.split():
+         locals()['visit_cmov' + name] = binary_insn
+         locals()['visit_cmov' + name + 'l'] = binary_insn
+@@ -837,6 +837,7 @@
+     visit_jb = conditional_jump
+     visit_jbe = conditional_jump
+     visit_jp = conditional_jump
++    visit_jnb = conditional_jump
+     visit_jnp = conditional_jump
+     visit_js = conditional_jump
+     visit_jns = conditional_jump
