@@ -6,8 +6,8 @@
 
 # Jeroen Roovers <jer@gentoo.org> (16 Aug 2015)
 # Bundles luajit which has not been ported to HPPA (bug #554376)
-app-text/texlive-basic luajittex
 app-text/texlive-core luajittex
+dev-texlive/texlive-basic luajittex
 
 # Jeroen Roovers <jer@gentoo.org> (3 Jul 2015) 
 # net-libs/nghttp2 fails to compile (bug #552898)
