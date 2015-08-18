@@ -28,26 +28,27 @@ RDEPEND="
 	>=x11-libs/gtk+-2.12:2
 	>=x11-libs/libdesktop-agnostic-0.3.9[gconf?]
 	>=x11-libs/libwnck-2.22:1
+	dev-cpp/gtkmm:2.4
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/librsvg-python[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-vcs/bzr
+	gconf? ( >=gnome-base/gconf-2 )
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXext
 	x11-libs/libXrender
-	gconf? ( >=gnome-base/gconf-2 )
-	"
+"
 DEPEND="
-	${RDEPEND}
 	$(vala_depend)
+	${RDEPEND}
+	dev-util/gtk-doc
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
 	x11-proto/xproto
-	dev-util/gtk-doc
 "
 
 S="${WORKDIR}/awn-${PV}"
