@@ -1,0 +1,13 @@
+# /etc/conf.d/libvirtd
+
+# Startup dependency
+# libvirtd typically requires all networks to be up and settled which
+# is what rc_need="net" provides. However if you only use specific networks
+# for libvirtd, you may override this. Or if you only use libvirtd locally.
+rc_need="net"
+
+# LIBVIRTD_OPTS
+# You may want to add '--listen' to have libvirtd listen for tcp/ip connections
+# if you want to use libvirt for remote control
+# Please consult 'libvirtd --help' for more options
+#LIBVIRTD_OPTS="--listen"
