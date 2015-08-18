@@ -10,7 +10,7 @@ DESCRIPTION="Java Dependency checker"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEP="
 	dev-java/commons-cli:1
