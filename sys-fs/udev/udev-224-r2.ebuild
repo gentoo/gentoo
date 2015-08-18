@@ -8,11 +8,10 @@ inherit autotools bash-completion-r1 eutils linux-info multilib multilib-minimal
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
-	inherit git-2
-	patchset=
+	inherit git-r3
 else
-	patchset=3
-	SRC_URI="http://www.freedesktop.org/software/systemd/systemd-${PV}.tar.xz"
+	patchset=
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
 				SRC_URI="${SRC_URI}
 					http://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
@@ -26,14 +25,13 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="acl doc gudev introspection +kmod selinux static-libs"
+IUSE="acl +kmod selinux static-libs"
 
 RESTRICT="test"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.20
+COMMON_DEPEND=">=sys-apps/util-linux-2.24
+	sys-libs/libcap[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl )
-	gudev? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.38 )
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 	!<sys-libs/glibc-2.11
@@ -46,25 +44,19 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.20
 # Force new make >= -r4 to skip some parallel build issues
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
+	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	sys-libs/libcap
 	virtual/os-headers
 	virtual/pkgconfig
 	>=sys-devel/make-3.82-r4
 	>=sys-kernel/linux-headers-3.9
-	doc? ( >=dev-util/gtk-doc-1.18 )"
-# Try with `emerge -C docbook-xml-dtd` to see the build failure without DTDs
-if [[ ${PV} = 9999* ]]; then
-	DEPEND="${DEPEND}
-		app-text/docbook-xml-dtd:4.2
-		app-text/docbook-xml-dtd:4.5
-		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt"
-fi
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt"
 RDEPEND="${COMMON_DEPEND}
 	!<sys-fs/lvm2-2.02.103
-	!<sec-policy/selinux-base-2.20120725-r10
-	gudev? ( !dev-libs/libgudev )"
+	!<sec-policy/selinux-base-2.20120725-r10"
 PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-26"
 
@@ -112,7 +104,7 @@ pkg_setup() {
 src_prepare() {
 	if ! [[ ${PV} = 9999* ]]; then
 		# secure_getenv() disable for non-glibc systems wrt bug #443030
-		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 28 ]]; then
+		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 25 ]]; then
 			eerror "The line count for secure_getenv() failed, see bug #443030"
 			die
 		fi
@@ -132,19 +124,16 @@ src_prepare() {
 	# change rules back to group uucp instead of dialout for now wrt #454556
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
+	# stub out the am_path_libcrypt function
+	echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > m4/gcrypt.m4
+
 	# apply user patches
 	epatch_user
 
-	if [[ ! -e configure ]]; then
-		if use doc; then
-			gtkdocize --docdir docs || die "gtkdocize failed"
-		else
-			echo 'EXTRA_DIST =' > docs/gtk-doc.make
-		fi
-		eautoreconf
-	else
+	eautoreconf
+
+	if ! [[ ${PV} = 9999* ]]; then
 		check_default_rules
-		elibtoolize
 	fi
 
 	# Restore possibility of running --enable-static wrt #472608
@@ -156,26 +145,21 @@ src_prepare() {
 		echo '#define secure_getenv(x) NULL' >> config.h.in
 		sed -i -e '/error.*secure_getenv/s:.*:#define secure_getenv(x) NULL:' src/shared/missing.h || die
 	fi
-	rm src/journal/audit_type-to-name.h src/udev/keyboard-keys-from-name.gperf \
-		|| die
 }
 
 multilib_src_configure() {
 	tc-export CC #463846
 	export cc_cv_CFLAGS__flto=no #502950
+	export cc_cv_CFLAGS__Werror_shadow=no #554454
 
 	# Keep sorted by ./configure --help and only pass --disable flags
 	# when *required* to avoid external deps or unnecessary compile
 	local econf_args
 	econf_args=(
-		ac_cv_search_cap_init=
 		--libdir=/usr/$(get_libdir)
 		--docdir=/usr/share/doc/${PF}
 		$(multilib_native_use_enable static-libs static)
 		--disable-nls
-		$(multilib_native_use_enable doc gtk-doc)
-		$(multilib_native_use_enable introspection)
-		--disable-python-devel
 		--disable-dbus
 		$(multilib_native_use_enable kmod)
 		--disable-xkbcommon
@@ -190,22 +174,21 @@ multilib_src_configure() {
 		--disable-libcryptsetup
 		--disable-qrencode
 		--disable-microhttpd
+		--disable-gnuefi
 		--disable-gnutls
 		--disable-libcurl
 		--disable-libidn
 		--disable-quotacheck
 		--disable-logind
 		--disable-polkit
-		--disable-terminal
 		--disable-myhostname
-		$(use_enable gudev)
 		$(multilib_is_native_abi || echo "--disable-manpages")
 		--enable-split-usr
-		--with-html-dir=/usr/share/doc/${PF}/html
 		--without-python
 		--with-bashcompletiondir="$(get_bashcompdir)"
 		--with-rootprefix=
 		$(multilib_is_native_abi && echo "--with-rootlibdir=/$(get_libdir)")
+		--disable-elfutils
 	)
 
 	if ! multilib_is_native_abi; then
@@ -213,9 +196,6 @@ multilib_src_configure() {
 			MOUNT_{CFLAGS,LIBS}=' '
 		)
 	fi
-
-	# Use pregenerated copies when possible wrt #480924
-	[[ ${PV} = 9999* ]] || econf_args+=( --disable-manpages )
 
 	ECONF_SOURCE=${S} econf "${econf_args[@]}"
 }
@@ -230,7 +210,6 @@ multilib_src_compile() {
 	# early enough, like eg. libsystemd-shared.la
 	if multilib_is_native_abi; then
 		local lib_targets=( libudev.la )
-		use gudev && lib_targets+=( libgudev-1.0.la )
 		emake "${lib_targets[@]}"
 
 		local exec_targets=(
@@ -245,29 +224,20 @@ multilib_src_compile() {
 			collect
 			scsi_id
 			v4l_id
-			accelerometer
 			mtd_probe
 		)
 		emake "${helper_targets[@]}"
 
-		if [[ ${PV} = 9999* ]]; then
-			local man_targets=(
-				man/udev.conf.5
-				man/systemd.link.5
-				man/udev.7
-				man/systemd-udevd.service.8
-				man/udevadm.8
-			)
-			emake "${man_targets[@]}"
-		fi
-
-		if use doc; then
-			emake -C docs/libudev
-			use gudev && emake -C docs/gudev
-		fi
+		local man_targets=(
+			man/udev.conf.5
+			man/systemd.link.5
+			man/udev.7
+			man/systemd-udevd.service.8
+			man/udevadm.8
+		)
+		emake "${man_targets[@]}"
 	else
 		local lib_targets=( libudev.la )
-		use gudev && lib_targets+=( libgudev-1.0.la )
 		emake "${lib_targets[@]}"
 	fi
 }
@@ -280,27 +250,19 @@ multilib_src_install() {
 		local targets=(
 			install-libLTLIBRARIES
 			install-includeHEADERS
-			install-libgudev_includeHEADERS
 			install-rootbinPROGRAMS
 			install-rootlibexecPROGRAMS
 			install-udevlibexecPROGRAMS
 			install-dist_udevconfDATA
 			install-dist_udevrulesDATA
-			install-girDATA
 			install-pkgconfiglibDATA
 			install-pkgconfigdataDATA
-			install-typelibsDATA
 			install-dist_docDATA
 			libudev-install-hook
 			install-directories-hook
 			install-dist_bashcompletionDATA
 			install-dist_networkDATA
 		)
-
-		if use gudev; then
-			lib_LTLIBRARIES+=" libgudev-1.0.la"
-			pkgconfiglib_DATA+=" src/gudev/gudev-1.0.pc"
-		fi
 
 		# add final values of variables:
 		targets+=(
@@ -316,17 +278,7 @@ multilib_src_install() {
 			dist_network_DATA="network/99-default.link"
 		)
 		emake -j1 DESTDIR="${D}" "${targets[@]}"
-
-		if use doc; then
-			emake -C docs/libudev DESTDIR="${D}" install
-			use gudev && emake -C docs/gudev DESTDIR="${D}" install
-		fi
-
-		if [[ ${PV} = 9999* ]]; then
-			doman man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
-		else
-			doman "${S}"/man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
-		fi
+		doman man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
 	else
 		local lib_LTLIBRARIES="libudev.la" \
 			pkgconfiglib_DATA="src/libudev/libudev.pc" \
@@ -337,11 +289,6 @@ multilib_src_install() {
 			install-includeHEADERS
 			install-pkgconfiglibDATA
 		)
-
-		if use gudev; then
-			lib_LTLIBRARIES+=" libgudev-1.0.la"
-			pkgconfiglib_DATA+=" src/gudev/gudev-1.0.pc"
-		fi
 
 		targets+=(
 			lib_LTLIBRARIES="${lib_LTLIBRARIES}"
@@ -367,27 +314,6 @@ multilib_src_install_all() {
 	# maintainer note: by not letting the upstream build-sys create the .so
 	# link, you also avoid a parallel make problem
 	mv "${D}"/usr/share/man/man8/systemd-udevd{.service,}.8
-
-	if ! [[ ${PV} = 9999* ]]; then
-		insinto /usr/share/doc/${PF}/html/gudev
-		doins "${S}"/docs/gudev/html/*
-
-		insinto /usr/share/doc/${PF}/html/libudev
-		doins "${S}"/docs/libudev/html/*
-	fi
-}
-
-pkg_preinst() {
-	local htmldir
-	for htmldir in gudev libudev; do
-		if [[ -d ${ROOT%/}/usr/share/gtk-doc/html/${htmldir} ]]; then
-			rm -rf "${ROOT%/}"/usr/share/gtk-doc/html/${htmldir}
-		fi
-		if [[ -d ${D}/usr/share/doc/${PF}/html/${htmldir} ]]; then
-			dosym ../../doc/${PF}/html/${htmldir} \
-				/usr/share/gtk-doc/html/${htmldir}
-		fi
-	done
 }
 
 pkg_postinst() {

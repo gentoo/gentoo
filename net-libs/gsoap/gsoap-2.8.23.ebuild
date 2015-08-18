@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit autotools eutils
 
@@ -22,7 +22,7 @@ DEPEND="app-arch/unzip
 	sys-devel/bison
 	sys-libs/zlib
 	gnutls? ( net-libs/gnutls )
-	ssl? ( dev-libs/openssl )"
+	ssl? ( dev-libs/openssl:= )"
 RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
@@ -35,12 +35,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=
-	use ssl || myconf+="--disable-ssl "
-	use gnutls && myconf+="--enable-gnutls "
-	use ipv6 && myconf+="--enable-ipv6 "
+	local myconf=()
+	use ssl || myconf+=( --disable-ssl )
+	use gnutls && myconf+=( --enable-gnutls )
+	use ipv6 && myconf+=( --enable-ipv6 )
 	econf \
-		${myconf} \
+		${myconf[@]} \
 		$(use_enable debug) \
 		$(use_enable examples samples)
 }
@@ -56,9 +56,9 @@ src_install() {
 	# it contains info about how to apply the licenses
 	dodoc *.txt
 
-	dohtml changelog.html
+	dohtml changelog.md
 
-	find "${D}"/usr/ -name "*.la" -exec rm {} \;
+	prune_libtool_files --all
 
 	if use examples; then
 		rm -rf gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o
