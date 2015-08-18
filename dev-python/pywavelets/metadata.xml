@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-mathematics</herd>
-<herd>python</herd>
-<longdescription lang="en">
+  <herd>sci-mathematics</herd>
+  <herd>python</herd>
+  <longdescription lang="en">
   PyWavelets is a Python wavelet transforms module that can perform:
   * Discrete Wavelet Transform (1D and 2D)
   * Inverse Discrete Wavelet Transform (1D and 2D)
   * Stationary Wavelet Transform
   * Wavelet Packets decomposition and reconstruction
 </longdescription>
-<upstream>
-  <remote-id type="pypi">PyWavelets</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">PyWavelets</remote-id>
+    <remote-id type="github">PyWavelets/pywt</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="pypi">PyPDF2</remote-id>
+    <remote-id type="github">mstamy2/PyPDF2</remote-id>
   </upstream>
 </pkgmetadata>
