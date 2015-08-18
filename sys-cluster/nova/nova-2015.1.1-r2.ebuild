@@ -34,6 +34,7 @@ DEPEND="
 		>=dev-python/mock-1.0[${PYTHON_USEDEP}]
 		<dev-python/mock-1.1.0[${PYTHON_USEDEP}]
 		>=dev-python/mox3-0.7.0[${PYTHON_USEDEP}]
+		<dev-python/mox3-0.8.0[${PYTHON_USEDEP}]
 		dev-python/mysql-python[${PYTHON_USEDEP}]
 		dev-python/psycopg[${PYTHON_USEDEP}]
 		>=dev-python/python-barbicanclient-3.0.1[${PYTHON_USEDEP}]
@@ -114,7 +115,7 @@ RDEPEND="
 	<dev-python/stevedore-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/websockify-0.6.0[${PYTHON_USEDEP}]
 	<dev-python/websockify-0.7.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-1.8.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-1.8.2[${PYTHON_USEDEP}]
 	<dev-python/oslo-concurrency-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-1.9.3[${PYTHON_USEDEP}]
 	<dev-python/oslo-config-1.10.0[${PYTHON_USEDEP}]
@@ -162,6 +163,7 @@ RDEPEND="
 	)"
 
 PATCHES=(
+	"${FILESDIR}/CVE-2015-3241-kilo.patch"
 )
 
 pkg_setup() {
