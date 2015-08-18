@@ -117,10 +117,6 @@ media-video/mpv doc-pdf
 # dependency sci-libs/vtk not keyworded on ppc yet
 media-libs/opencv vtk
 
-# Markos Chandras <hwoarang@gentoo.org> (03 May 2014)
-# sys-libs/libseccomp suppors amd64, x86, ARM and MIPS.
-app-emulation/lxc seccomp
-
 # Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
 # Missing keywords, bug #508226
 media-video/mpv sdl
@@ -202,11 +198,6 @@ net-misc/modemmanager qmi qmi-newest
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
-
-# Sergei Trofimovich <slyfox@gentoo.org> (11 Jan 2013)
-# Current sys-libs/libseccomp (up to 1.0.1) support
-# only x86/amd64. Relies on hardcoded syscall numbers.
-app-emulation/qemu seccomp
 
 # Anthony G. Basile <blueness@gentoo.org> (15 Nove 2012)
 # Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
