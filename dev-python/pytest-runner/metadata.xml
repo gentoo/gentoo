@@ -11,5 +11,6 @@
 	</longdescription>
   <upstream>
     <remote-id type="pypi">pytest-runner</remote-id>
+    <remote-id type="bitbucket">pytest-dev/pytest-runner</remote-id>
   </upstream>
 </pkgmetadata>

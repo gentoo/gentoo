@@ -3,4 +3,7 @@
 <pkgmetadata>
 	<herd>java</herd>
 	<longdescription>HtmlCleaner is an open source HTML parser written in Java. HTML found on the Web is usually dirty, ill-formed and unsuitable for further processing. For any serious consumption of such documents, it is necessary to first clean up the mess and bring some order to the tags, attributes and ordinary text. For any given HTML document, HtmlCleaner reorders individual elements and produces well-formed XML. By default, it follows similar rules that the most of web browsers use in order to create the Document Object Model. However, you can provide custom tag and rule sets for tag filtering and balancing.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">htmlcleaner</remote-id>
+	</upstream>
 </pkgmetadata>

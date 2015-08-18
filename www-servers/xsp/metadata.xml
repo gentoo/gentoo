@@ -7,6 +7,9 @@
 		your ASP.NET applications.
 	</longdescription>
 	<use>
-		<flag name='developer'>creates .mdb files for either Release and Debug</flag>
+		<flag name="developer">creates .mdb files for either Release and Debug</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">mono/xsp</remote-id>
+	</upstream>
 </pkgmetadata>

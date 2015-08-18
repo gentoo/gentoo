@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">sphinxcontrib-spelling</remote-id>
+		<remote-id type="bitbucket">dhellmann/sphinxcontrib-spelling</remote-id>
 	</upstream>
 </pkgmetadata>
