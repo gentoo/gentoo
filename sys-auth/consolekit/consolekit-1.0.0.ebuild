@@ -34,8 +34,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=
 	policykit? ( >=sys-auth/polkit-0.110 )"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
-	selinux? ( sec-policy/selinux-consolekit )
-	sys-power/pm-utils"
+	selinux? ( sec-policy/selinux-consolekit )"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	virtual/pkgconfig
@@ -108,4 +107,9 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513
+}
+
+pkg_postinst() {
+	elog "For suspend/hibernate support, please emerge"
+	elog "  sys-power/pm-utils"
 }
