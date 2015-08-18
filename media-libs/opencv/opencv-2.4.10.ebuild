@@ -35,8 +35,8 @@ RDEPEND="
 		!libav? ( media-video/ffmpeg:0= )
 	)
 	gstreamer? (
-		media-libs/gstreamer:0.10
-		media-libs/gst-plugins-base:0.10
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
 	)
 	gtk? (
 		dev-libs/glib:2
