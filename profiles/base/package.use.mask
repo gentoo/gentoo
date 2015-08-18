@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Johannes Huber <johu@gentoo.org> (18 Aug 2015)
+# No consumer for Qt5 build, qt4/qt5 switch causes conflicts.
+# Qt5 only version will come back with kde-apps/akonadi.
+app-office/akonadi-server qt5
+
 # Heather Cynede <cynede@gentoo.org> (13 Aug 2015)
 # mono currently fails with doc most likely because of xattr
 # Gentoo bug: 554484
