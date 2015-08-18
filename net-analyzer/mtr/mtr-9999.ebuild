@@ -38,8 +38,9 @@ src_unpack() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/0.80-impl-dec.patch \
-		"${FILESDIR}"/0.85-gtk.patch
+		"${FILESDIR}"/${PN}-0.80-impl-dec.patch \
+		"${FILESDIR}"/${PN}-0.85-gtk.patch \
+		"${FILESDIR}"/${PN}-9999-tinfo.patch
 
 	sed -i -e "/^\s*xver=/s|$.*)|${EGIT_VERSION:0:8}|" Makefile.am || die
 
