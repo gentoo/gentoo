@@ -40,7 +40,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="attica +crypt +eigen +exif fftw +fontconfig freetds +glew +glib +gsf gsl
+IUSE="attica +crypt +eigen +exif fftw +fontconfig freetds +glib +gsf gsl
 import-filter +jpeg jpeg2k +kdcraw kde +kdepim +lcms marble mysql +okular
 openexr +pdf postgres spacenav sybase test tiff +threads +truetype vc xbase
 +xml"
@@ -77,7 +77,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-libs/boost
 	dev-qt/qtcore:4[exceptions]
-	media-libs/libpng
+	media-libs/libpng:0
 	sys-libs/zlib
 	>=dev-qt/qtgui-4.8.1-r1:4
 	virtual/libiconv
@@ -88,15 +88,14 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0 )
 	fontconfig? ( media-libs/fontconfig )
 	freetds? ( dev-db/freetds )
-	glew? ( media-libs/glew )
 	glib? ( dev-libs/glib:2 )
 	gsf? ( gnome-extra/libgsf )
 	gsl? ( sci-libs/gsl )
 	import-filter? (
 		app-text/libetonyek
 		app-text/libodfgen
-		app-text/libwpd
-		app-text/libwpg
+		app-text/libwpd:*
+		app-text/libwpg:*
 		app-text/libwps
 		media-libs/libvisio
 	)
@@ -112,19 +111,22 @@ RDEPEND="
 	marble? ( $(add_kdeapps_dep marble) )
 	mysql? ( virtual/mysql )
 	okular? ( $(add_kdeapps_dep okular) )
-	opengl? ( virtual/glu )
+	opengl? (
+		media-libs/glew
+		virtual/glu
+	)
 	openexr? ( media-libs/openexr )
 	pdf? (
 		app-text/poppler:=
 		media-gfx/pstoedit
 	)
 	postgres? (
-		dev-db/postgresql
+		dev-db/postgresql:*
 		dev-libs/libpqxx
 	)
 	spacenav? ( dev-libs/libspnav  )
 	sybase? ( dev-db/freetds )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype:2 )
 	vc? ( dev-libs/vc )
 	xbase? ( dev-db/xbase )
@@ -184,7 +186,6 @@ src_configure() {
 		$(cmake-utils_use_with fftw FFTW3)
 		$(cmake-utils_use_with fontconfig Fontconfig)
 		$(cmake-utils_use_with freetds FreeTDS)
-		$(cmake-utils_use_with glew GLEW)
 		$(cmake-utils_use_with glib GLIB2)
 		$(cmake-utils_use_with gsl GSL)
 		$(cmake-utils_use_with import-filter LibEtonyek)
@@ -203,6 +204,7 @@ src_configure() {
 		$(cmake-utils_use_with mysql MySQL)
 		$(cmake-utils_use_with okular Okular)
 		$(cmake-utils_use_with openexr OpenEXR)
+		$(cmake-utils_use_with opengl GLEW)
 		$(cmake-utils_use_with opengl OpenGL)
 		$(cmake-utils_use_with pdf Poppler)
 		$(cmake-utils_use_with pdf Pstoedit)
