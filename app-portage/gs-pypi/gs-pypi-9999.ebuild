@@ -17,7 +17,7 @@ EGIT_REPO_URI="http://github.com/jauhien/gs-pypi"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=app-portage/g-sorcery-0.2[bson(-),$(python_gen_usedep 'python*')]
+DEPEND=">=app-portage/g-sorcery-9999[bson(-),git(-),$(python_gen_usedep 'python*')]
 	dev-python/beautifulsoup:4[$(python_gen_usedep 'python*')]"
 RDEPEND="${DEPEND}"
 
