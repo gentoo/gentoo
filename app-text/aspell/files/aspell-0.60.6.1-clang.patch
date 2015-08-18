@@ -1,0 +1,47 @@
+From https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=180565
+--- interfaces/cc/aspell.h.orig	2011-07-02 17:53:27.000000000 -0400
++++ interfaces/cc/aspell.h	2015-07-29 11:23:32.000000000 -0400
+@@ -237,6 +237,7 @@
+ /******************************** errors ********************************/
+ 
+ 
++#ifndef ASPELL_ERRORS__HPP
+ extern const struct AspellErrorInfo * const aerror_other;
+ extern const struct AspellErrorInfo * const aerror_operation_not_supported;
+ extern const struct AspellErrorInfo * const   aerror_cant_copy;
+@@ -322,6 +323,7 @@
+ extern const struct AspellErrorInfo * const   aerror_bad_magic;
+ extern const struct AspellErrorInfo * const aerror_expression;
+ extern const struct AspellErrorInfo * const   aerror_invalid_expression;
++#endif
+ 
+ 
+ /******************************* speller *******************************/
+--- prog/aspell.cpp.orig	2011-07-04 05:13:58.000000000 -0400
++++ prog/aspell.cpp	2015-07-29 11:22:57.000000000 -0400
+@@ -25,6 +25,7 @@
+ # include <langinfo.h>
+ #endif
+ 
++#include "errors.hpp"
+ #include "aspell.h"
+ 
+ #ifdef USE_FILE_INO
+@@ -40,7 +41,6 @@
+ #include "convert.hpp"
+ #include "document_checker.hpp"
+ #include "enumeration.hpp"
+-#include "errors.hpp"
+ #include "file_util.hpp"
+ #include "fstream.hpp"
+ #include "info.hpp"
+--- prog/checker_string.hpp.orig	2011-07-02 17:09:09.000000000 -0400
++++ prog/checker_string.hpp	2015-07-29 11:24:50.000000000 -0400
+@@ -6,6 +6,7 @@
+ 
+ #include <stdio.h>
+ 
++#include "errors.hpp"
+ #include "aspell.h"
+ 
+ #include "vector.hpp"

@@ -57,7 +57,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}/${PN}-0.60.5-nls.patch" \
 		"${FILESDIR}/${PN}-0.60.5-solaris.patch" \
-		"${FILESDIR}/${PN}-0.60.6-darwin-bundles.patch"
+		"${FILESDIR}/${PN}-0.60.6-darwin-bundles.patch" \
+		"${FILESDIR}/${PN}-0.60.6.1-clang.patch"
 
 	rm m4/lt* m4/libtool.m4
 	eautoreconf
