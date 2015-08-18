@@ -3936,7 +3936,7 @@ dev-java/jarbundler 1.7 1.8.1-r1 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jarjar 0.9 1.4: Tool for repackaging third-party jars
 dev-java/java-config 2.2.0: Java environment configuration query tool
 dev-java/java-config-wrapper 0.16: Wrapper for java-config
-dev-java/java-dep-check 0.3 0.3-r1: Java Dependency checker
+dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.51: Oracle's documentation bundle (including API) for Java SE
