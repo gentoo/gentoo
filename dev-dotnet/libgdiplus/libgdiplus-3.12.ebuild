@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-inherit base eutils dotnet flag-o-matic
+
+inherit autotools eutils dotnet flag-o-matic
 
 DESCRIPTION="Library for using System.Drawing with mono"
 HOMEPAGE="http://www.mono-project.com"
@@ -30,38 +31,36 @@ RDEPEND=">=dev-libs/glib-2.2.3:2
 	!cairo? ( >=x11-libs/pango-1.20 )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-giflib-quantizebuffer.patch"  )
+PATCHES=(
+	"${FILESDIR}/${P}-giflib-quantizebuffer.patch"
+	"${FILESDIR}/${P}-underlinking.patch"
+	)
 
 RESTRICT="test"
 
 src_prepare() {
-	base_src_prepare
-	sed -i -e 's:ungif:gif:g' configure || die
+	epatch "${PATCHES[@]}"
+	sed -i -e 's:ungif:gif:g' configure.ac || die
+	append-flags -fno-strict-aliasing
+	eautoreconf
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing
-	econf 	--disable-dependency-tracking		\
-		--disable-static			\
-		--with-cairo=system			\
-		$(use !cairo && printf %s --with-pango)
-}
-
-src_compile() {
-	emake "$@"
+	econf \
+		--disable-dependency-tracking \
+		--disable-static \
+		$(usex cairo "" "--with-pango")
 }
 
 src_install () {
-	emake -j1 DESTDIR="${D}" "$@" install #nowarn
+	MAKEOPTS+=" -j1"
+	default
+
 	dotnet_multilib_comply
 	local commondoc=( AUTHORS ChangeLog README TODO )
-	for docfile in "${commondoc[@]}"
-	do
+	for docfile in "${commondoc[@]}"; do
 		[[ -e "${docfile}" ]] && dodoc "${docfile}"
 	done
-	if [[ "${DOCS[@]}" ]]
-	then
-		dodoc "${DOCS[@]}"
-	fi
+	[[ "${DOCS[@]}" ]] && dodoc "${DOCS[@]}"
 	prune_libtool_files
 }
