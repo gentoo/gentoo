@@ -12,12 +12,13 @@ HOMEPAGE="http://opencv.org"
 
 SRC_URI="
 	mirror://sourceforge/opencvlibrary/opencv-unix/${PV}/${P}.zip
-	https://github.com/Itseez/${PN}/archive/${PV}.zip -> ${P}.zip"
+	https://github.com/Itseez/${PN}/archive/${PV}.zip -> ${P}.zip
+	contrib? ( https://github.com/Itseez/${PN}_contrib/archive/master.zip -> ${PN}_contrib.zip )"
 
 LICENSE="BSD"
 SLOT="0/3.0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="cuda doc +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt4 qt5 testprograms threads tiff v4l vtk xine"
+IUSE="contrib cuda doc +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt4 qt5 testprograms threads tiff v4l vtk xine"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt4? ( !qt5 )
@@ -171,6 +172,10 @@ src_configure() {
 		mycmakeargs+=( "-DWITH_QT=5" )
 	else
 		mycmakeargs+=( "-DWITH_QT=OFF" )
+	fi
+
+	if use contrib; then
+		mycmakeargs+=( "-DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules" )
 	fi
 
 	if use cuda; then
