@@ -10527,7 +10527,7 @@ kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning pro
 kde-apps/kwrite 4.14.3: KDE MDI editor/IDE
 kde-apps/libkcddb 4.14.3: KDE library for CDDB
 kde-apps/libkcompactdisc 4.14.3: KDE library for playing & ripping CDs
-kde-apps/libkdcraw 4.14.3: KDE digital camera raw image library wrapper
+kde-apps/libkdcraw 4.14.3 4.14.3-r1: KDE digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1: Base library common to many KDE games
 kde-apps/libkexiv2 4.14.3: KDE Image Plugin Interface: an exiv2 library wrapper
@@ -14389,7 +14389,7 @@ net-wireless/crackle 0.1: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
 net-wireless/crda 1.1.2-r3 1.1.2-r4 1.1.3 1.1.3-r1 3.18: Central Regulatory Domain Agent for wireless networks
 net-wireless/dump1090 0.0_p20140919 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/gnome-bluetooth 3.14.0 3.14.1 3.16.1: Bluetooth graphical utilities integrated with GNOME
-net-wireless/gnuradio 3.6.5.1-r2 3.7.6.1-r2 3.7.7.1 9999: Toolkit that provides signal processing blocks to implement software radios
+net-wireless/gnuradio 3.6.5.1-r2 3.7.6.1-r2 3.7.7.1 3.7.8 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.3.1 2.3.2 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gr-baz 9999: Gnuradio baz
