@@ -101,6 +101,8 @@ case ${GTK_SHARP_MODULE} in
 					"${WORKDIR}/${TARBALL}-2.12.11.patch"
 				)
 				;;
+		esac
+		case ${PVR} in
 			2.12.1*)
 				EAUTORECONF="YES"
 				add_bdepend "=sys-devel/automake-1.10*"
