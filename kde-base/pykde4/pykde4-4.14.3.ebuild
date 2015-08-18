@@ -3,10 +3,11 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE="threads"
 OPENGL_REQUIRED="always"
-
+CMAKE_MAKEFILE_GENERATOR="emake"
 inherit python-r1 portability kde4-base multilib eutils
 
 DESCRIPTION="Python bindings for KDE4"
