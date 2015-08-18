@@ -30,6 +30,7 @@ IUSE="acl +kmod selinux static-libs"
 RESTRICT="test"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.24
+	sys-libs/libcap[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl )
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
@@ -45,7 +46,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	sys-libs/libcap
 	virtual/os-headers
 	virtual/pkgconfig
 	>=sys-devel/make-3.82-r4
@@ -156,7 +156,6 @@ multilib_src_configure() {
 	# when *required* to avoid external deps or unnecessary compile
 	local econf_args
 	econf_args=(
-		ac_cv_search_cap_init=
 		--libdir=/usr/$(get_libdir)
 		--docdir=/usr/share/doc/${PF}
 		$(multilib_native_use_enable static-libs static)
