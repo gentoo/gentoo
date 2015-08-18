@@ -377,9 +377,6 @@ opencl
 # Unmask once sys-libs/libunwind gets keyworded.
 unwind
 
-# sys-libs/libseccomp has not been ported to this arch yet #524148
-seccomp
-
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # please remove when keyworded
 qt5
