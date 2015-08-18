@@ -4,22 +4,22 @@
 
 EAPI=5
 
-inherit scons-utils multilib toolchain-funcs eutils user flag-o-matic
+MY_P="${PN}-3-${PV}"
 
-MY_PV="release_${PV}"
+inherit scons-utils multilib toolchain-funcs eutils user
 DESCRIPTION="Synchronous multi-master replication engine that provides its service through wsrep API"
-HOMEPAGE="http://www.galeracluster.com/"
-SRC_URI="https://github.com/codership/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://www.galeracluster.com"
+SRC_URI="http://releases.galeracluster.com/source/galera-3-${PV}.tar.gz"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_sse4_2 garbd ssl test"
+IUSE="garbd ssl test"
 
 CDEPEND="
 	 ssl? ( dev-libs/openssl:0= )
-	>=dev-libs/boost-1.41:0=
+	>=dev-libs/boost-1.41
 	"
 DEPEND="${DEPEND}
 	${CDEPEND}
@@ -36,7 +36,7 @@ RDEPEND="${CDEPEND}
 		net-analyzer/openbsd-netcat
 	) )"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+S="${WORKDIR}/${MY_P}"
 
 pkg_preinst() {
 	if use garbd ; then
@@ -49,9 +49,8 @@ src_prepare() {
 	# Remove bundled dev-cpp/asio
 	rm -r "${S}/asio" || die
 
-	# Respect {C,LD}FLAGS and remove machine specific CFLAGS
-	epatch "${FILESDIR}/respect-flags.patch" \
-		"${FILESDIR}/galera-strip-machine-cflags.patch"
+	# Respect {C,LD}FLAGS.
+	epatch "${FILESDIR}/respect-flags.patch"
 
 	#Remove optional garbd daemon
 	if ! use garbd ; then
@@ -63,12 +62,6 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC CXX
-	# Uses hardware specific code that seems to depend on SSE4.2
-	if use cpu_flags_x86_sse4_2 ; then
-		append-cflags -msse4.2
-	else
-		append-cflags -DCRC32C_NO_HARDWARE
-	fi
 	# strict_build_flags=0 disables -Werror, -pedantic, -Weffc++,
 	# and -Wold-style-cast
 	myesconsargs=(
@@ -88,7 +81,6 @@ src_install() {
 		dobin garb/garbd
 		newconfd "${FILESDIR}/garb.cnf" garbd
 		newinitd "${FILESDIR}/garb.sh" garbd
-		doman man/garbd.8
 	fi
 	exeinto /usr/$(get_libdir)/${PN}
 	doexe libgalera_smm.so
