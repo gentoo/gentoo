@@ -76,7 +76,7 @@ src_install() {
 	echo
 	elog "Other features can be enhanced by"
 	optfeature "GEO Django" sci-libs/gdal[geos]
-	optfeature "Memcached support" dev-python/python-memcached
+	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
 	optfeature "ImageField Support" virtual/python-imaging
 	optfeature "Password encryption" dev-python/bcrypt
 	optfeature "Extended templating support" dev-python/jinja

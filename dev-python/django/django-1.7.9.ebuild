@@ -78,7 +78,7 @@ src_install() {
 	optfeature "MySQL backend support in python 2.7 - 3.4" dev-python/mysqlclient
 	optfeature "PostgreSQL backend support" dev-python/psycopg:2
 	optfeature "GEO Django" sci-libs/gdal[geos]
-	optfeature "Memcached support" dev-python/python-memcached
+	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
 	optfeature "ImageField Support" virtual/python-imaging
 	echo ""
 }
