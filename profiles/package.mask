@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (18 Aug 2015)
+# Masked for removal in 30 days. Does not compile with
+# dev-python/PyQt4-4.11.4, which blocks stabilization.
+# Dead upstream. Last commit 6 years ago. See bug #558020.
+net-misc/guidedog
 
 # Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
 # Dependency of dev-java/base64. This project isn't getting a lot of traction
