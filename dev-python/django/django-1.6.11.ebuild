@@ -79,7 +79,7 @@ src_install() {
 	optfeature "MySQL backend support in python 2.7 only" dev-python/mysql-python
 	optfeature "MySQL backend support in python 2.7 - 3.4" dev-python/mysql-connector-python
 	optfeature "PostgreSQL backend support" dev-python/psycopg:2
-	optfeature "Memcached support" dev-python/python-memcached
+	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
 	optfeature "ImageField Support" virtual/python-imaging
 	echo ""
 }
