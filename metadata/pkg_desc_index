@@ -4714,7 +4714,7 @@ dev-libs/libparserutils 0.1.2 0.2.0-r1 0.2.1-r1: library for building efficient 
 dev-libs/libpcre 7.9-r1 8.35 8.36 8.37 8.37-r1 8.37-r2: Perl-compatible regular expression library
 dev-libs/libpeas 1.12.1-r1 1.14.0 1.14.0-r1: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0: Hardware-based performance monitoring interface for Linux
-dev-libs/libpipeline 1.2.4 1.2.5 1.3.0 1.3.1 1.4.0: a pipeline manipulation library
+dev-libs/libpipeline 1.2.5 1.3.1 1.4.0 1.4.1: a pipeline manipulation library
 dev-libs/libplatform 1.0.10: Platform support library used by libCEC and binary add-ons for Kodi.
 dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 4.0.1: C++ client API for PostgreSQL. The standard front-end for writing C++ programs that use PostgreSQL
@@ -15717,7 +15717,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/magneto-core 254: Entropy Package Manager notification applet library
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
-sys-apps/man-db 2.6.6 2.6.7.1 2.7.1: a man replacement that utilizes berkdb instead of flat files
+sys-apps/man-db 2.6.6 2.6.7.1 2.7.1 2.7.2: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.00 4.01 4.02: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/mawk 1.3.4_p20100625 1.3.4_p20131226 1.3.4_p20140914 1.3.4_p20141027 1.3.4_p20141206: an (often faster than gawk) awk-interpreter

@@ -4,11 +4,11 @@ DESCRIPTION=GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 EAPI=5
 HOMEPAGE=http://wxwidgets.org/
 IUSE=+X aqua doc debug gstreamer libnotify opengl sdl tiff webkit
-KEYWORDS=alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=alpha amd64 arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )
 PDEPEND=>=app-eselect/eselect-wxwidgets-20131230
 RDEPEND=dev-libs/expat sdl? ( media-libs/libsdl ) X? ( >=dev-libs/glib-2.22:2 media-libs/libpng:0= sys-libs/zlib virtual/jpeg >=x11-libs/gtk+-2.18:2 x11-libs/gdk-pixbuf x11-libs/libSM x11-libs/libXxf86vm x11-libs/pango[X] gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 ) libnotify? ( x11-libs/libnotify ) opengl? ( virtual/opengl ) tiff? ( media-libs/tiff:0 ) webkit? ( net-libs/webkit-gtk:2 ) ) aqua? ( >=x11-libs/gtk+-2.4[aqua=] virtual/jpeg tiff? ( media-libs/tiff:0 ) )
 SLOT=3.0
 SRC_URI=mirror://sourceforge/wxpython/wxPython-src-3.0.2.0.tar.bz2 doc? ( mirror://sourceforge/wxpython/wxPython-docs-3.0.2.0.tar.bz2 )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9b7764c87c5b4084253c8d05e1534a73
+_md5_=b2b217020ef8a256f38e996491de5acd
