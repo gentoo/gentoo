@@ -25,7 +25,7 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc"
 
 CDEPEND="
-	dev-libs/boost
+	dev-libs/boost[threads]
 	dev-util/google-perftools"
 DEPEND="${CDEPEND}
 	app-editors/vim-core
