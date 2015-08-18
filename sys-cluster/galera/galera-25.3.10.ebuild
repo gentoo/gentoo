@@ -28,13 +28,7 @@ DEPEND="${DEPEND}
 	>=dev-cpp/asio-1.4.8[ssl?]
 	"
 #Run time only
-RDEPEND="${CDEPEND}
-	garbd? ( || (
-		net-analyzer/netcat
-		net-analyzer/netcat6
-		net-analyzer/gnu-netcat
-		net-analyzer/openbsd-netcat
-	) )"
+RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 

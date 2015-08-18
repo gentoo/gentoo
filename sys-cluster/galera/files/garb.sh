@@ -1,5 +1,5 @@
-#!/sbin/runscript
-# Copyright 1999-2014 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -22,21 +22,7 @@ start() {
 
 	GALERA_PORT="${GALERA_PORT:-4567}"
 
-	for ADDRESS in ${GALERA_NODES} 0; do
-		HOST=$(echo $ADDRESS | cut -d \: -f 1 )
-		PORT=$(echo $ADDRESS | cut -d \: -f 2 )
-		if [ "x${HOST}" = "x${PORT}" ]; then
-			PORT=${GALERA_PORT}
-		fi
-		PORT=${PORT:-$GALERA_PORT}
-		nc -z ${HOST} ${PORT} > /dev/null &&  break
-	done
-	if [ ${ADDRESS} = "0" ]; then
-		eerror "None of the nodes in GALERA_NODES is accessible"
-		return 1
-	fi
-
-	OPTIONS="-a gcomm://${ADDRESS} -g ${GALERA_GROUP}"
+	OPTIONS="-a gcomm://${GALERA_NODES// /,} -g ${GALERA_GROUP}"
 	[ -n "${GALERA_OPTIONS}" ] && OPTIONS="${OPTIONS} -o ${GALERA_OPTIONS}"
         [ -n "${LOG_FILE}" ]       && OPTIONS="${OPTIONS} -l ${LOG_FILE}"
 
