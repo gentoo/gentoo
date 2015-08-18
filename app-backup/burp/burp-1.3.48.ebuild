@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl afs ipv6 nls ssl tcpd xattr"
+IUSE="acl afs ipv6 nls tcpd xattr"
 
 DEPEND="
 	dev-libs/openssl:0
@@ -58,7 +58,6 @@ src_configure() {
 		--sbindir=/usr/sbin
 		--sysconfdir=/etc/burp
 		--enable-largefile
-		$(use_with ssl openssl)
 		$(use_enable acl)
 		$(use_enable afs)
 		$(use_enable ipv6)
@@ -89,7 +88,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use ssl && [ ! -e /etc/burp/CA/index.txt ]; then
+	if [[ ! -e /etc/burp/CA/index.txt ]]; then
 		elog "At first run burp server will generate DH parameters and SSL"
 		elog "certificates.  You should adjust configuration before."
 		elog "Server configuration is located at"

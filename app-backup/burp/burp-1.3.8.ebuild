@@ -13,7 +13,7 @@ SRC_URI="http://burp.grke.org/downloads/${P}/${P}.tar.bz2"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="acl afs nls ssl tcpd xattr"
+IUSE="acl afs nls tcpd xattr"
 
 DEPEND="
 	dev-libs/openssl:0
@@ -53,7 +53,6 @@ src_configure() {
 		--sbindir=/usr/sbin
 		--sysconfdir=/etc/burp
 		--enable-largefile
-		$(use_with ssl openssl)
 		$(use_enable acl)
 		$(use_enable afs)
 		$(use_enable nls)
@@ -83,7 +82,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use ssl && [ ! -e /etc/burp/CA/index.txt ]; then
+	if [[ ! -e /etc/burp/CA/index.txt ]]; then
 		elog "At first run burp server will generate DH parameters and SSL"
 		elog "certificates.  You should adjust configuration before."
 		elog "Server configuration is located at"
