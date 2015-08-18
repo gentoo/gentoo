@@ -11,21 +11,29 @@ inherit autotools bash-completion-r1 eutils gnome2
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
 
+SRC_URI="${SRC_URI} http://dev.gentoo.org/~tetromino/distfiles/${PN}/${PN}-3.16.2-pyongyang.tar.xz"
+
 LICENSE="GPL-2+"
 SLOT="2"
-IUSE="+bluetooth +colord +cups +gnome-online-accounts +i18n input_devices_wacom kerberos v4l"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="+bluetooth +colord +cups +gnome-online-accounts +i18n input_devices_wacom kerberos networkmanager v4l wayland"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"
 
 # gnome-session-2.91.6-r1 is needed so that 10-user-dirs-update is run at login
 # g-s-d[policykit] needed for bug #403527
+
+# kerberos unfortunately means mit-krb5; build fails with heimdal
+
+# udev could be made optional, only conditions gsd-device-panel
+# (mouse, keyboards, touchscreen, etc)
+
 COMMON_DEPEND="
 	>=dev-libs/glib-2.39.91:2[dbus]
 	>=x11-libs/gdk-pixbuf-2.23.0:2
-	>=x11-libs/gtk+-3.13:3
-	>=gnome-base/gsettings-desktop-schemas-3.13.91
+	>=x11-libs/gtk+-3.15:3[X,wayland?]
+	>=gnome-base/gsettings-desktop-schemas-3.15.4
 	>=gnome-base/gnome-desktop-3.11.3:3=
 	>=gnome-base/gnome-settings-daemon-3.8.3[colord?,policykit]
 
@@ -40,10 +48,7 @@ COMMON_DEPEND="
 	>=sys-power/upower-0.99:=
 	>=x11-libs/libnotify-0.7.3:0=
 
-	>=gnome-extra/nm-applet-0.9.7.995
-	>=net-misc/networkmanager-0.9.8[modemmanager]
-	>=net-misc/modemmanager-0.7.990
-
+	virtual/libgudev
 	virtual/opengl
 	x11-apps/xmodmap
 	x11-libs/cairo
@@ -61,9 +66,13 @@ COMMON_DEPEND="
 		|| ( >=net-fs/samba-3.6.14-r1[smbclient] >=net-fs/samba-4.0.0[client] ) )
 	gnome-online-accounts? (
 		>=media-libs/grilo-0.2.6:0.2
-		>=net-libs/gnome-online-accounts-3.9.90 )
+		>=net-libs/gnome-online-accounts-3.15.1 )
 	i18n? ( >=app-i18n/ibus-1.5.2 )
 	kerberos? ( app-crypt/mit-krb5 )
+	networkmanager? (
+		>=gnome-extra/nm-applet-0.9.7.995
+		>=net-misc/networkmanager-0.9.8[modemmanager]
+		>=net-misc/modemmanager-0.7.990 )
 	v4l? (
 		media-libs/gstreamer:1.0
 		media-libs/clutter-gtk:1.0
@@ -78,7 +87,7 @@ COMMON_DEPEND="
 # libgnomekbd needed only for gkbd-keyboard-display tool
 RDEPEND="${COMMON_DEPEND}
 	|| ( ( app-admin/openrc-settingsd sys-auth/consolekit ) >=sys-apps/systemd-31 )
-	>=sys-apps/accountsservice-0.6.33
+	>=sys-apps/accountsservice-0.6.39
 	x11-themes/gnome-icon-theme-symbolic
 	colord? ( >=gnome-extra/gnome-color-manager-3 )
 	cups? (
@@ -108,8 +117,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 
 	gnome-base/gnome-common
-
-	<sys-libs/timezone-data-2015f
 "
 # Needed for autoreconf
 #	gnome-base/gnome-common
@@ -118,9 +125,16 @@ src_prepare() {
 	# Make some panels and dependencies optional; requires eautoreconf
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	epatch "${FILESDIR}"/${PN}-3.14.0-optional.patch
+	epatch "${FILESDIR}"/${PN}-3.16.0-make-wayland-optional.patch
+	epatch "${FILESDIR}"/${PN}-3.16.0-keep-panels-optional.patch
+	epatch "${FILESDIR}"/${PN}-3.16.0-networkmanager.patch
 
 	# Fix some absolute paths to be appropriate for Gentoo
 	epatch "${FILESDIR}"/${PN}-3.10.2-gentoo-paths.patch
+
+	# North Korea causes build failure, https://bugzilla.gnome.org/show_bug.cgi?id=753643
+	cp ../${PN}-3.16.2-pyongyang/*.png panels/datetime/data/ || die
+	epatch ../${PN}-3.16.2-pyongyang/*.patch
 
 	epatch_user
 
@@ -139,8 +153,10 @@ src_configure() {
 		$(use_enable gnome-online-accounts goa) \
 		$(use_enable i18n ibus) \
 		$(use_enable kerberos) \
+		$(use_enable networkmanager) \
 		$(use_with v4l cheese) \
-		$(use_enable input_devices_wacom wacom)
+		$(use_enable input_devices_wacom wacom) \
+		$(use_enable wayland)
 }
 
 src_install() {
