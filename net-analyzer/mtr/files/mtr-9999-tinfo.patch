@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,8 @@
+   AC_DEFINE(NO_CURSES, 1, [Define if you don't have the curses libraries available.])
+   CURSES_OBJ=)
+ 
++AC_SEARCH_LIBS(raw, [ncurses curses cursesX tinfo])
++
+ AC_CHECK_LIB(ncurses, use_default_colors, 
+   AC_DEFINE(HAVE_USE_DEFAULT_COLORS, 1, [Define this if your curses library has the use_default_colors() command.]))
+ 
