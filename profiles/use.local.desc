@@ -1000,6 +1000,7 @@ app-office/abiword:redland - Enables support redland and raptor libs.
 app-office/abiword:thesaurus - Enable thesaurus support
 app-office/abiword:wordperfect - Enable wordperfect file support via app-text/libwpd
 app-office/calligra:attica - Get hot stuff with dev-libs/libattica
+app-office/calligra:color-management - Enable color management via media-libs/opencolorio
 app-office/calligra:eigen - Enable dev-cpp/eigen mathematical templates support
 app-office/calligra:glew - Enable media-libs/glew opengl extension library support
 app-office/calligra:glib - Enable support for C library routines from dev-libs/glib
