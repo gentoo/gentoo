@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>williamh@gentoo.org</email>
 		<description>backup Maintainer, CC him on bugs</description>
-	</maintainer>
-	<maintainer>
-		<email>ambrop7@gmail.com</email>
-		<name>Ambroz Bizjak</name>
-		<description>Proxy maintainer. CC him on bugs</description>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">

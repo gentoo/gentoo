@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>gert@gepe-biljarts.be</email>
+	<name>Gert Pellin</name>
+	<description>Proxy maintainer. Assign bugs to him.</description>
+</maintainer>
+<longdescription lang="en">
+Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.
+</longdescription>
+</pkgmetadata>
