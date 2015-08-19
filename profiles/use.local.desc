@@ -1289,7 +1289,6 @@ dev-db/mariadb-galera:embedded - Build embedded server (libmysqld)
 dev-db/mariadb-galera:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
 dev-db/mariadb-galera:jemalloc - Use dev-libs/jemalloc for allocations.
 dev-db/mariadb-galera:latin1 - Use LATIN1 encoding instead of UTF8
-dev-db/mariadb-galera:minimal - Install client programs only, no server
 dev-db/mariadb-galera:oqgraph - Add support for the Open Query GRAPH engine
 dev-db/mariadb-galera:profiling - Add support for statement profiling (requires USE=community).
 dev-db/mariadb-galera:server - Build the server program
