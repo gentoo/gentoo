@@ -13,8 +13,8 @@ SRC_URI="https://github.com/mltframework/mlt/archive/v0.9.8.tar.gz -> ${P}.tar.g
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="compressed-lumas dv debug ffmpeg fftw frei0r gtk jack kde kdenlive libav libsamplerate melt opengl
-cpu_flags_x86_mmx qt4 quicktime rtaudio sdl cpu_flags_x86_sse cpu_flags_x86_sse2 xine xml lua python ruby vdpau" # java perl php tcl
+IUSE="compressed-lumas debug ffmpeg fftw frei0r gtk jack kde kdenlive libav libsamplerate melt opengl
+cpu_flags_x86_mmx qt4 rtaudio sdl cpu_flags_x86_sse cpu_flags_x86_sse2 xine xml lua python ruby vdpau" # java perl php tcl
 IUSE="${IUSE} kernel_linux"
 
 #rtaudio will use OSS on non linux OSes
@@ -23,7 +23,6 @@ RDEPEND="
 		libav? ( media-video/libav:0=[vdpau?] )
 		!libav? ( media-video/ffmpeg:0=[vdpau?] )
 	)
-	dv? ( >=media-libs/libdv-0.104 )
 	xml? ( >=dev-libs/libxml2-2.5 )
 	sdl? ( >=media-libs/libsdl-1.2.10[X,opengl]
 		 >=media-libs/sdl-image-1.2.4 )
@@ -37,7 +36,6 @@ RDEPEND="
 		media-libs/libexif
 		x11-libs/pango )
 	opengl? ( media-video/movit )
-	quicktime? ( media-libs/libquicktime )
 	rtaudio? ( kernel_linux? ( media-libs/alsa-lib ) )
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
 	qt4? ( dev-qt/qtcore:4
@@ -95,7 +93,6 @@ src_configure() {
 		--target-arch=$(tc-arch-kernel)
 		--disable-swfdec
 		$(use_enable debug)
-		$(use_enable dv)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable cpu_flags_x86_sse2 sse2)
 		$(use_enable gtk gtk2)
@@ -118,7 +115,6 @@ src_configure() {
 
 	use ffmpeg && myconf="${myconf} --avformat-swscale"
 	use kde || myconf="${myconf} --without-kde"
-	(use quicktime && use dv) || myconf="${myconf} --disable-kino"
 	use compressed-lumas && myconf="${myconf} --luma-compress"
 
 	( use x86 || use amd64 ) && \
