@@ -538,7 +538,7 @@ app-crypt/ima-evm-utils 0.2 0.8 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, RIPEMD*, SHA*, TIGER*, WHIRLPOOL
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10: fast password cracker
 app-crypt/kencfs 1.5.0: GUI frontend for encfs
-app-crypt/keybase 0.8.9 0.8.10 0.8.12 0.8.13: Client for keybase.io
+app-crypt/keybase 0.8.9 0.8.10 0.8.12 0.8.13 0.8.18: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
@@ -15280,7 +15280,7 @@ sci-physics/heppdt 3.04.01: Data about each particle from the Review of Particle
 sci-physics/herwig 6.5.10 6.5.21: High Energy Physics Event Generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150416 20150418 20150428 20150430 20150515 20150515-r1 20150718 20150721 20150722 20150724 20150810: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150416 20150418 20150428 20150430 20150515 20150515-r1 20150718 20150721 20150722 20150724 20150810 20150818: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.8.4 6.1.5: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/meep 1.1.1 1.2: Simulation software to model electromagnetic systems
