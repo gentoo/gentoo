@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/santuario/java-library/${MY_PV}/${PN}-bin-${MY_PV}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
@@ -25,13 +25,13 @@ CDEPEND="
 "
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5"
+	>=virtual/jre-1.6"
 DEPEND="${CDEPEND}
 	test? (
 		dev-java/ant-junit:0
 		dev-java/junit:4
 	)
-	>=virtual/jdk-1.5"
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
