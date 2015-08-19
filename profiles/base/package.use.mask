@@ -5,6 +5,14 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# James Le Cuirot <chewi@gentoo.org> (18 Aug 2015)
+# gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
+# anything in the tree. The toolchain folks aren't keen to support it
+# and it should probably only be used if you really know what you're
+# doing *and* your name is gnu_andrew. ;) See bug #531900.
+sys-devel/gcc awt
+dev-java/gcj-jdk awt
+
 # Johannes Huber <johu@gentoo.org> (18 Aug 2015)
 # No consumer for Qt5 build, qt4/qt5 switch causes conflicts.
 # Qt5 only version will come back with kde-apps/akonadi.

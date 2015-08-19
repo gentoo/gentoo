@@ -28,14 +28,6 @@ dev-java/oracle-jre-bin -javafx -nsplugin
 # Hiding the use flag fixes bug #545662 for now.
 media-libs/libsdl2 fusionsound
 
-# Michał Górny <mgorny@gentoo.org> (14 Sep 2014)
-# on behalf of gx86-multilib project <multilib@gentoo.org>
-# gcc[awt] is only used by gcj-jdk[X], and gcj-jdk[X] is not really
-# used by anything. The deps are hard to fix properly thanks
-# to toolchain.eclass.
-sys-devel/gcc awt
-dev-java/gcj-jdk X
-
 # Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus

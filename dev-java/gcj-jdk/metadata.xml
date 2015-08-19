@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>java</herd>
-<herd>proxy-maintainers</herd>
-<maintainer>
-  <email>gnu_andrew@member.fsf.org</email>
-  <name>Andrew John Hughes</name>
-</maintainer>
-<longdescription>This provides a JDK wrapper for GCJ, in the style of gcj-java-compat in other distributions.</longdescription>
+	<herd>java</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>gnu_andrew@member.fsf.org</email>
+		<name>Andrew John Hughes</name>
+	</maintainer>
+	<longdescription>This provides a JDK wrapper for GCJ, in the style of gcj-java-compat in other distributions.</longdescription>
+	<use>
+		<flag name="awt">Install AWT libraries, needed by some GUIs (not needed to build icedtea)</flag>
+	</use>
 </pkgmetadata>
