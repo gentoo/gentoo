@@ -522,7 +522,7 @@ app-crypt/gentoo-keys 201501052117: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.1-r1 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.1-r1 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.19 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.1.6 2.1.7: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.19 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.1.6 2.1.7 2.1.7-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.5 0.9.6 0.9.7: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -4304,7 +4304,7 @@ dev-java/xmlstreambuffer 1.5.3: A stream-based representation of an XML infoset 
 dev-java/xmlunit 1.6: XMLUnit extends JUnit and NUnit to enable unit testing of XML
 dev-java/xom 1.2.10: A new XML object model
 dev-java/xp 0.5-r2: XP is an XML 1.0 parser written in Java
-dev-java/xpp2 2.1.10-r1 2.1.10-r2: A streaming pull XML parser used to quickly process input elements
+dev-java/xpp2 2.1.10-r2: A streaming pull XML parser used to quickly process input elements
 dev-java/xpp3 1.1.4c-r1 1.1.4c-r2: An implementation of XMLPULL V1 API
 dev-java/xsd2jibx 0.2a_beta-r2: JiBX binding and code from schema generator
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
@@ -4639,7 +4639,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.10.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.4 1.5.4-r1 1.5.4-r100 1.6.3-r3: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.4 1.5.4-r1 1.5.4-r100 1.6.3-r3 1.6.3-r4: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.16.1 0.17.1 0.17.2: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.16.0 0.17.0 0.18.0 0.19.0-r1 0.20.0-r1 0.21.3 0.21.5 0.22.0 0.22.1 0.22.2 0.22.3 0.23.0 9999: A linkable library for Git
