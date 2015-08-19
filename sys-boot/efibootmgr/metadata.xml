@@ -5,11 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer>
-		<email>yannick.schaeffer@epfl.ch</email>
-		<name>Yannick Schaeffer</name>
-	</maintainer>
-	<herd>proxy-maintainers</herd>
 	<longdescription>
 		This is efibootmgr, a Linux user-space application to modify the Intel
 		Extensible Firmware Interface (EFI) Boot Manager.  This application
