@@ -53,6 +53,7 @@ sys-auth/polkit-kde-agent minimal
 media-libs/phonon designer
 
 # Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
+app-office/akonadi-server -qt5
 >=app-office/texmaker-4.4.1 -qt4
 >=app-office/texstudio-2.9.4 -qt4
 app-text/qpdfview -qt4
