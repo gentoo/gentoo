@@ -4,6 +4,7 @@
 
 EAPI=5
 
+export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 
 inherit eutils toolchain-funcs
@@ -13,7 +14,8 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://storage.googleapis.com/golang/go${PV}.src.tar.gz"
-	# Upstream only supports go on amd64, arm and x86 architectures.
+	# go-bootstrap-1.4 only supports go on amd64, arm and x86 architectures.
+	# Allowing other bootstrap options would enable arm64 and ppc64 builds.
 	KEYWORDS="-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos"
 fi
 
@@ -28,20 +30,79 @@ DEPEND=">=dev-lang/go-bootstrap-1.4.1"
 RDEPEND=""
 
 # These test data objects have writable/executable stacks.
-QA_EXECSTACK="
-	usr/lib/go/src/debug/elf/testdata/go-relocation-test-gcc482-aarch64.obj
-	usr/lib/go/src/debug/elf/testdata/gcc-amd64-openbsd-debug-with-rela.obj"
+QA_EXECSTACK="usr/lib/go/src/debug/elf/testdata/*.obj"
 
 # The tools in /usr/lib/go should not cause the multilib-strict check to fail.
 QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 
 # The go language uses *.a files which are _NOT_ libraries and should not be
-# stripped.
-STRIP_MASK="/usr/lib/go/pkg/linux*/*.a /usr/lib/go/pkg/freebsd*/*.a /usr/lib/go/pkg/darwin*/*.a"
+# stripped. The test data objects should also be left alone and unstripped.
+STRIP_MASK="/usr/lib/go/pkg/*.a
+	/usr/lib/go/src/debug/elf/testdata/*
+	/usr/lib/go/src/debug/dwarf/testdata/*
+	/usr/lib/go/src/runtime/race/*.syso"
 
 if [[ ${PV} != 9999 ]]; then
 	S="${WORKDIR}"/go
 fi
+
+go_arch()
+{
+	# By chance most portage arch names match Go
+	local portage_arch=$(tc-arch $@)
+	case "${portage_arch}" in
+		x86)	echo 386;;
+		*)		echo "${portage_arch}";;
+	esac
+}
+
+go_arm()
+{
+	case "${1:-${CHOST}}" in
+		armv5)	echo 5;;
+		armv6)	echo 6;;
+		armv7)	echo 7;;
+		*)
+			die "unknown GOARM for ${1:-${CHOST}}"
+			;;
+	esac
+}
+
+go_os()
+{
+	case "${1:-${CHOST}}" in
+		*-linux*)	echo linux;;
+		*-darwin*)	echo darwin;;
+		*-freebsd*)	echo freebsd;;
+		*-netbsd*)	echo netbsd;;
+		*-openbsd*)	echo openbsd;;
+		*-solaris*)	echo solaris;;
+		*-cygwin*|*-interix*|*-winnt*)
+			echo windows
+			;;
+		*)
+			die "unknown GOOS for ${1:-${CHOST}}"
+			;;
+	esac
+}
+
+go_tuple()
+{
+	echo "$(go_os $@)_$(go_arch $@)"
+}
+
+go_cross_compile()
+{
+	[[ $(go_tuple ${CBUILD}) != $(go_tuple) ]]
+}
+
+pkg_pretend()
+{
+	# make.bash does not understand cross-compiling a cross-compiler
+	if [[ $(go_tuple) != $(go_tuple ${CTARGET}) ]]; then
+		die "CHOST CTARGET pair unsupported: CHOST=${CHOST} CTARGET=${CTARGET}"
+	fi
+}
 
 src_prepare()
 {
@@ -58,11 +119,19 @@ src_compile()
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
 	export GOROOT="$(pwd)"
 	export GOBIN="${GOROOT}/bin"
-	if [[ $CTARGET = armv5* ]]
-	then
-		export GOARM=5
+
+	# Go's build script does not use BUILD/HOST/TARGET consistently. :(
+	export GOHOSTARCH=$(go_arch ${CBUILD})
+	export GOHOSTOS=$(go_os ${CBUILD})
+	export CC=$(tc-getBUILD_CC)
+
+	export GOARCH=$(go_arch)
+	export GOOS=$(go_os)
+	export CC_FOR_TARGET=$(tc-getCC)
+	export CXX_FOR_TARGET=$(tc-getCXX)
+	if [[ ${ARCH} == arm ]]; then
+		export GOARM=$(go_arm)
 	fi
-	tc-export CC
 
 	cd src
 	./make.bash || die "build failed"
@@ -70,6 +139,8 @@ src_compile()
 
 src_test()
 {
+	go_cross_compile && return 0
+
 	cd src
 	PATH="${GOBIN}:${PATH}" \
 		./run.bash --no-rebuild --banner || die "tests failed"
@@ -77,17 +148,27 @@ src_test()
 
 src_install()
 {
-	dobin bin/*
+	local bin_path="${GOBIN}"
+	if go_cross_compile; then
+		bin_path="${GOBIN}/$(go_tuple)"
+	fi
+	dobin "${bin_path}"/*
 	dodoc AUTHORS CONTRIBUTORS PATENTS README.md
 
-	dodir /usr/lib/go
+	dodir /usr/lib/go /usr/lib/go/pkg /usr/lib/go/pkg/tool
 	insinto /usr/lib/go
 
 	# There is a known issue which requires the source tree to be installed [1].
 	# Once this is fixed, we can consider using the doc use flag to control
 	# installing the doc and src directories.
 	# [1] https://golang.org/issue/2775
-	doins -r doc lib pkg src
+	doins -r doc lib src
+
+	# Selectively install pkg directory to exclude the bootstrap build
+	insinto /usr/lib/go/pkg
+	doins -r pkg/include "pkg/$(go_tuple)"
+	insinto /usr/lib/go/pkg/tool
+	doins -r "pkg/tool/$(go_tuple)"
 	fperms -R +x /usr/lib/go/pkg/tool
 }
 
