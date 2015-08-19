@@ -3,8 +3,10 @@
 # $Id$
 
 EAPI="5"
-MY_EXTRAS_VER="20141215-0144Z"
+MY_EXTRAS_VER="20150717-1707Z"
 WSREP_REVISION="25"
+HAS_TOOLS_PATCH="1"
+SUBSLOT="18"
 
 inherit toolchain-funcs mysql-multilib
 # only to make repoman happy. it is really set in the eclass
@@ -24,7 +26,7 @@ RDEPEND="${RDEPEND}"
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
 # Official test instructions:
-# USE='embedded extraengine perl ssl static-libs community' \
+# USE='client-libs community embedded extraengine perl server ssl static-libs tools' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mariadb-galera-X.X.XX.ebuild \
 # digest clean package
@@ -43,7 +45,7 @@ multilib_src_test() {
 	# localhost. Also causes weird failures.
 	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-	if ! use "minimal" ; then
+	if use server ; then
 
 		if [[ $UID -eq 0 ]]; then
 			die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
@@ -67,6 +69,13 @@ multilib_src_test() {
 
 		# create directories because mysqladmin might right out of order
 		mkdir -p "${T}"/var-tests{,/log}
+
+		# Create a symlink to provided binaries so the tests can find them when client-libs is off
+		if ! use client-libs ; then
+			ln -srf /usr/bin/my_print_defaults "${BUILD_DIR}/client/my_print_defaults" || die
+			ln -srf /usr/bin/perror "${BUILD_DIR}/client/perror" || die
+			mysql-multilib_disable_test main.perror "String mismatch due to not building local perror"
+		fi
 
 		# These are failing in MariaDB 10.0 for now and are believed to be
 		# false positives:

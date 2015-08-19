@@ -15,7 +15,6 @@ dev-db/mariadb
   <flag name='extraengine'>Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
   <flag name='latin1'>Use LATIN1 encoding instead of UTF8</flag>
-  <flag name='minimal'>Install client programs only, no server</flag>
   <flag name='oqgraph'>Add support for the Open Query GRAPH engine</flag>
   <flag name='profiling'>Add support for statement profiling (requires USE=community).</flag>
   <flag name='server'>Build the server program</flag>
