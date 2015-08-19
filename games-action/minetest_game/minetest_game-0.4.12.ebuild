@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit vcs-snapshot games
+inherit vcs-snapshot
 
 DESCRIPTION="The main game for the Minetest game engine"
 HOMEPAGE="http://github.com/minetest/minetest_game"
@@ -14,18 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="~games-action/minetest-${PV}"
-
-src_unpack() {
-	vcs-snapshot_src_unpack
-}
+RDEPEND=">=games-action/minetest-${PV}"
 
 src_install() {
-	insinto "${GAMES_DATADIR}"/minetest/games/${PN}
+	insinto /usr/share/minetest/games/${PN}
 	doins -r mods menu
 	doins game.conf minetest.conf
 
 	dodoc README.txt game_api.txt
-
-	prepgamesdirs
 }
