@@ -1,0 +1,20 @@
+The build system tries to link to installed system libraries first, which
+fails because the ABI has changed...
+
+--- swig/ruby/build
++++ swig/ruby/build
+@@ -0,0 +1,14 @@
++#!/usr/bin/env ruby
++require 'mkmf'
++if ARGV.shift == 'clean'
++  system( "rm -f *.cxx *.so *.o mlt.i ../.ruby Makefile" )
++  exit 0
++end
++system( "ln -sf ../mlt.i" )
++system( "ln -sf ../../framework/libmlt.so" )
++system( "ln -sf ../../mlt++/libmlt++.so" )
++system( "swig -c++ -ruby -I../../mlt++ -I../.. mlt.i" )
++$CFLAGS += " -I../.. " + (ENV.has_key?('CXXFLAGS')? ENV['CXXFLAGS'] : '')
++$LIBS += " -lmlt++ -lmlt -lstdc++"
++create_makefile('mlt')
++system( "make" )
