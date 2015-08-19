@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/witty/wt/3.3.0/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc +extjs fcgi graphicsmagick mysql pdf postgres resources +server ssl +sqlite test zlib"
 
 RDEPEND="
