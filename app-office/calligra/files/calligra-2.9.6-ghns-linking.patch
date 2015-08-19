@@ -1,0 +1,11 @@
+--- calligra-2.9.6/libs/widgets/CMakeLists.txt.orig	2015-08-09 21:35:06.673116594 +0200
++++ calligra-2.9.6/libs/widgets/CMakeLists.txt	2015-08-09 21:47:31.458881310 +0200
+@@ -102,7 +102,7 @@
+ target_link_libraries(kowidgets kotext pigmentcms kowidgetutils ${KDE4_KIO_LIBS})
+ 
+ if(GHNS)
+-    target_link_libraries(kowidgets {KDE4_KNEWSTUFF3_LIBS})
++    target_link_libraries(kowidgets ${KDE4_KNEWSTUFF3_LIBS})
+ endif ()
+ 
+ target_link_libraries(kowidgets LINK_INTERFACE_LIBRARIES kotext pigmentcms kowidgetutils ${KDE4_KDEUI_LIBS})

@@ -8,6 +8,7 @@
 author - CALLIGRA_FEATURES option to build minimalistic word processor application
 braindump - CALLIGRA_FEATURES option to build mindmap note collection application
 flow - CALLIGRA_FEATURES option to build flowcharting application
+gemini - CALLIGRA_FEATURES option to build touch device friendly application
 karbon - CALLIGRA_FEATURES option to build vector image editor
 kexi - CALLIGRA_FEATURES option to build database manager
 krita - CALLIGRA_FEATURES option to build raster image editor

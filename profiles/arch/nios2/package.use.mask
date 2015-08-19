@@ -111,7 +111,7 @@ net-misc/unison gtk
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (20 Feb 2013)
 # Mask flags of calligra and dependencies due to lack of keywords
-app-office/calligra openexr postgres spacenav vc
+app-office/calligra color-management openexr postgres spacenav vc
 media-gfx/pstoedit emf
 
 # Michał Górny <mgorny@gentoo.org> (01 Feb 2013)

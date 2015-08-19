@@ -5,6 +5,7 @@
 	<herd>openoffice</herd>
 	<use>
 		<flag name="attica">Get hot stuff with <pkg>dev-libs/libattica</pkg></flag>
+		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
 		<flag name="eigen">Enable <pkg>dev-cpp/eigen</pkg> mathematical templates support</flag>
 		<flag name="glew">Enable <pkg>media-libs/glew</pkg> opengl extension library support</flag>
 		<flag name="glib">Enable support for C library routines from <pkg>dev-libs/glib</pkg></flag>
