@@ -37,16 +37,13 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${PN}-${MY_PV}
 
 pkg_pretend() {
-if [[ ${MERGE_TYPE} != binary ]]; then
-		echo 'int main() {return 0;}' > "${T}"/test.cxx || die
-		ebegin "Trying to build a C++14 test program"
-		if ! $(tc-getCXX) -std=c++14 -o /dev/null "${T}"/test.cxx; then
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if ! test-flag-CXX -std=c++14; then
 			eerror "${P} requires C++14-capable C++ compiler. Your current compiler"
 			eerror "does not seem to support -std=c++14 option. Please upgrade your compiler"
 			eerror "to gcc-4.9 or an equivalent version supporting C++14."
 			die "Currently active compiler does not support -std=c++14"
 		fi
-		eend ${?}
 	fi
 }
 
