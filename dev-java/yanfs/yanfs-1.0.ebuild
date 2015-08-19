@@ -14,11 +14,11 @@ SRC_URI="http://dev.gentoo.org/~ercpe/distfiles/dev-java/yanfs/yanfs-1.0.tar.bz2
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.5"
-DEPEND=">=virtual/jdk-1.5"
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P}"
 
