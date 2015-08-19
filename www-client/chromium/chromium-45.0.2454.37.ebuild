@@ -56,7 +56,6 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	media-libs/libpng:0=
 	>=media-libs/libwebp-0.4.0:=
 	media-libs/speex:=
-	net-libs/libsrtp:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
@@ -237,6 +236,7 @@ src_prepare() {
 		'third_party/libjingle' \
 		'third_party/libphonenumber' \
 		'third_party/libsecret' \
+		'third_party/libsrtp' \
 		'third_party/libudev' \
 		'third_party/libusb' \
 		'third_party/libvpx' \
@@ -319,6 +319,7 @@ src_configure() {
 
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
+	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: use_system_libvpx (http://crbug.com/494939).
 	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
@@ -334,7 +335,6 @@ src_configure() {
 		-Duse_system_libevent=1
 		-Duse_system_libjpeg=1
 		-Duse_system_libpng=1
-		-Duse_system_libsrtp=1
 		-Duse_system_libwebp=1
 		-Duse_system_libxml=1
 		-Duse_system_libxslt=1
