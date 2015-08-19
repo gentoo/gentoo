@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install preinst prepare
-DEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41 dev-libs/check >=sys-devel/gcc-4.4 >=dev-cpp/asio-1.4.8[ssl?] dev-util/scons
+DEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41:0= dev-libs/check >=sys-devel/gcc-4.4 >=dev-cpp/asio-1.4.8[ssl?] dev-util/scons
 DESCRIPTION=Synchronous multi-master replication engine that provides its service through wsrep API
 EAPI=5
 HOMEPAGE=http://www.galeracluster.com
-IUSE=garbd ssl test
+IUSE=cpu_flags_x86_sse4_2 garbd ssl test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 BSD
-RDEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41
+RDEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.41:0=
 SLOT=0
 SRC_URI=http://releases.galeracluster.com/source/galera-3-25.3.10.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=802485f97f151962a65488acf940fbde
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=b47f4b6348c2b3c7e6381109c58f09db
