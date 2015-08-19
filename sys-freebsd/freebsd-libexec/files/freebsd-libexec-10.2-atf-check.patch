@@ -1,0 +1,28 @@
+diff --git a/libexec/atf/Makefile.inc b/libexec/atf/Makefile.inc
+index b50e14e..e59a413 100644
+--- a/libexec/atf/Makefile.inc
++++ b/libexec/atf/Makefile.inc
+@@ -25,7 +25,7 @@
+ #
+ # $FreeBSD: stable/10/libexec/atf/Makefile.inc 271298 2014-09-09 04:00:30Z ngie $
+ 
+-CFLAGS+=	-DHAVE_CONFIG_H
++CXXFLAGS+=	-DHAVE_CONFIG_H
+ 
+ WARNS?=		3
+ 
+diff --git a/libexec/atf/atf-check/Makefile b/libexec/atf/atf-check/Makefile
+index 77c11db..7449ddb 100644
+--- a/libexec/atf/atf-check/Makefile
++++ b/libexec/atf/atf-check/Makefile
+@@ -34,8 +34,8 @@ PROG_CXX=	atf-check
+ SRCS=		atf-check.cpp
+ MAN=		atf-check.1
+ 
+-CFLAGS+=	-I${ATF}
+-CFLAGS+=	-DATF_SHELL='"/bin/sh"'
++CXXFLAGS+=	-I${ATF}
++CXXFLAGS+=	-DATF_SHELL='"/bin/sh"'
+ 
+ LDFLAGS+=	-L${.OBJDIR}/../../../lib/atf/libatf-c++
+ LDFLAGS+=	-L${.OBJDIR}/../../../lib/atf/libatf-c
