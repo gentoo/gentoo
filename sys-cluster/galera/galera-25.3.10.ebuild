@@ -6,7 +6,7 @@ EAPI=5
 
 MY_P="${PN}-3-${PV}"
 
-inherit scons-utils multilib toolchain-funcs eutils user
+inherit scons-utils multilib toolchain-funcs eutils user flag-o-matic
 DESCRIPTION="Synchronous multi-master replication engine that provides its service through wsrep API"
 HOMEPAGE="http://www.galeracluster.com"
 SRC_URI="http://releases.galeracluster.com/source/galera-3-${PV}.tar.gz"
@@ -15,11 +15,11 @@ LICENSE="GPL-2 BSD"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="garbd ssl test"
+IUSE="cpu_flags_x86_sse4_2 garbd ssl test"
 
 CDEPEND="
 	 ssl? ( dev-libs/openssl:0= )
-	>=dev-libs/boost-1.41
+	>=dev-libs/boost-1.41:0=
 	"
 DEPEND="${DEPEND}
 	${CDEPEND}
@@ -44,7 +44,8 @@ src_prepare() {
 	rm -r "${S}/asio" || die
 
 	# Respect {C,LD}FLAGS.
-	epatch "${FILESDIR}/respect-flags.patch"
+	epatch "${FILESDIR}/respect-flags.patch" \
+		"${FILESDIR}/galera-strip-machine-cflags.patch"
 
 	#Remove optional garbd daemon
 	if ! use garbd ; then
@@ -56,6 +57,12 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC CXX
+	# Uses hardware specific code that seems to depend on SSE4.2
+	if use cpu_flags_x86_sse4_2 ; then
+		append-cflags -msse4.2
+	else
+		append-cflags -DCRC32C_NO_HARDWARE
+	fi
 	# strict_build_flags=0 disables -Werror, -pedantic, -Weffc++,
 	# and -Wold-style-cast
 	myesconsargs=(
@@ -75,6 +82,7 @@ src_install() {
 		dobin garb/garbd
 		newconfd "${FILESDIR}/garb.cnf" garbd
 		newinitd "${FILESDIR}/garb.sh" garbd
+		doman man/garbd.8
 	fi
 	exeinto /usr/$(get_libdir)/${PN}
 	doexe libgalera_smm.so
