@@ -30,6 +30,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (19 Aug 2015)
+# Upstream dead: no releases since 2010.
+# Technology has moved on and there are far better alternatives
+# (easymock, mockito and jmock).
+# Masked for removal in 30 days. See bug #190307.
+dev-java/mockobjects
+
+# Patrice Clement <monsieurp@gentoo.org> (19 Aug 2015)
+# Upstream dead too: no releases since 2005.
+# Masked for removal in 30 days. See bug #190307.
+dev-java/xdoclet
+
 # Johannes Huber <johu@gentoo.org> (18 Aug 2015)
 # Masked for removal in 30 days. Does not compile with
 # dev-python/PyQt4-4.11.4, which blocks stabilization.
