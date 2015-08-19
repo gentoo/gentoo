@@ -23,6 +23,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+ruby_add_rdepend "dev-ruby/chunky_png"
+
 all_ruby_prepare() {
 	sed -i -e '/[bB]undler/s:^:#:' Rakefile || die
 }
