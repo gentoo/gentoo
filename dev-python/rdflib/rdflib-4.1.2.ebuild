@@ -1,3 +1,4 @@
+
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
@@ -36,6 +37,11 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	# Upstream manufactured .pyc files which promptly break distutils' src_test
 	find -name "*.py[oc~]" -delete || die
+
+	# Bug 358189; take out tests that attempt to connect to the network
+	sed -e "/'--with-doctest',/d" -e "/'--doctest-extension=.doctest',/d" \
+		-e "/'--doctest-tests',/d" -i run_tests.py || die
+
 	distutils-r1_python_prepare_all
 }
 
