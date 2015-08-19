@@ -87,7 +87,7 @@ src_prepare(){
 		epatch "${FILESDIR}"/${PN}-4.x-revision-naming.patch
 		touch "${S}/libs/ardour/revision.cc"
 	fi
-	$(use lv2 || epatch "${FILESDIR}"/${PN}-4.0-lv2.patch)
+	use lv2 || epatch "${FILESDIR}"/${PN}-4.0-lv2.patch
 	epatch "${FILESDIR}"/${PN}-3.5.403-sse.patch
 	sed -e 's/'FLAGS\'\,\ compiler_flags'/'FLAGS\'\,\ program_flags'/g' -i "${S}"/wscript
 	sed -e 's/'compiler_flags.append\ \(\'-DPROGRAM_'/'program_flags.append\ \(\'-DPROGRAM_'/g' -i "${S}"/wscript
