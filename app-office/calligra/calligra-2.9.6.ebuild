@@ -141,7 +141,10 @@ PDEPEND=">=app-office/calligra-l10n-${LANGVERSION}"
 # bug 394273
 RESTRICT=test
 
-PATCHES=( "${FILESDIR}/${PN}-2.9.6-ghns-linking.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-version.patch"
+	"${FILESDIR}/${P}-ghns-linking.patch"
+)
 
 pkg_pretend() {
 	check-reqs_pkg_pretend
