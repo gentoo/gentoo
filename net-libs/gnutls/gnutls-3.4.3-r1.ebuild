@@ -47,8 +47,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS doc/TODO )
 
-S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
-
 pkg_setup() {
 	# bug#520818
 	export TZ=UTC
