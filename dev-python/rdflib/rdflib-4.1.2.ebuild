@@ -33,22 +33,23 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/sparql-wrapper[${PYTHON_USEDEP}]
 		>=dev-python/nose-1.3.1-r1[${PYTHON_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}"/${PN}-4-test.patch )
+
 python_prepare_all() {
 	# Upstream manufactured .pyc files which promptly break distutils' src_test
 	find -name "*.py[oc~]" -delete || die
+
+	# Bug 358189; take out tests that attempt to connect to the network
+	sed -e "/'--with-doctest',/d" -e "/'--doctest-extension=.doctest',/d" \
+		-e "/'--doctest-tests',/d" -i run_tests.py || die
+
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
+	# the default; nose with: --where=./ does not work for python3
 	if python_is_python3; then
 		pushd "${BUILD_DIR}/src/" > /dev/null
-		if [[ "${EPYTHON}" == 'python3.4' ]]; then
-			sed -e 's:test_rdfpipe_bytes_vs_str:_&:' \
-				-e 's:test_rdfpipe_mdata_open:_&:' \
-				-i test/test_issue375.py || die
-			sed -e 's:testHTML:_&:' \
-				-i test/test_xmlliterals.py || die
-		fi
 		"${PYTHON}" ./run_tests.py || die "Tests failed under ${EPYTHON}"
 		popd > /dev/null
 	else
