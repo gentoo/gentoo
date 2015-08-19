@@ -14,18 +14,18 @@ SRC_URI="https://kenai.com/projects/trident/downloads/download/version%20${PV}%2
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RESTRICT="test"
 
-COMMON_DEPEND="dev-java/swt:3.7"
+CDEPEND="dev-java/swt:3.7"
 
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
-	${COMMON_DEPEND}"
+	${CDEPEND}"
 RDEPEND=">=virtual/jre-1.6
-	${COMMON_DEPEND}"
+	${CDEPEND}"
 
 S="${WORKDIR}"
 

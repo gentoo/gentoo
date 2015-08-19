@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/santuario/java-library/${MY_PV}/${PN}-bin-${MY_PV}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
@@ -25,10 +25,13 @@ CDEPEND="
 "
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5"
+	>=virtual/jre-1.6"
 DEPEND="${CDEPEND}
-	test? ( dev-java/junit:4 )
-	>=virtual/jdk-1.5"
+	test? (
+		dev-java/ant-junit:0
+		dev-java/junit:4
+	)
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -39,10 +42,16 @@ EANT_TEST_GENTOO_CLASSPATH="${EANT_GENTOO_CLASSPATH},junit-4"
 EANT_TEST_TARGET="build.test test"
 WANT_ANT_TASKS="ant-junit"
 
-src_prepare() {
+# Buggy tests.
+JAVA_RM_FILES=(
+	src/test/java/org/apache/xml/security/test/encryption/BaltimoreEncTest.java
+	src/test/java/org/apache/xml/security/test/encryption/XMLCipherTest.java
+	src/test/java/org/apache/xml/security/test/utils/OldApiTest.java
+)
+
+java_prepare() {
 	epatch "${FILESDIR}/${PV}-build.xml.patch"
 	find "${S}" -name "*.jar" -delete || die
-	rm "${S}"/src/test/java/org/apache/xml/security/test/utils/OldApiTest.java || die
 }
 
 src_install() {
