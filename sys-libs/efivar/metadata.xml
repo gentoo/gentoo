@@ -5,11 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer>
-		<email>yannick.schaeffer@epfl.ch</email>
-		<name>Yannick Schaeffer</name>
-	</maintainer>
-	<herd>proxy-maintainers</herd>
 	<upstream>
 		<remote-id type="github">vathpela/efivar</remote-id>
 	</upstream>
