@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils cmake-utils gnome2-utils vcs-snapshot user games
+inherit eutils cmake-utils gnome2-utils vcs-snapshot user
 
 DESCRIPTION="An InfiniMiner/Minecraft inspired game"
 HOMEPAGE="http://minetest.net/"
@@ -21,7 +21,7 @@ RDEPEND="dev-db/sqlite:3
 		app-arch/bzip2
 		>=dev-games/irrlicht-1.8-r2
 		media-libs/libpng:0
-		virtual/jpeg:62
+		virtual/jpeg:0
 		virtual/opengl
 		x11-libs/libX11
 		x11-libs/libXxf86vm
@@ -42,10 +42,9 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
-	games_pkg_setup
-
 	if use server || use dedicated ; then
-		enewuser ${PN} -1 -1 /var/lib/${PN} ${GAMES_GROUP}
+		enewgroup ${PN}
+		enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 	fi
 }
 
@@ -55,32 +54,32 @@ src_unpack() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${P}-shared-irrlicht.patch \
-		"${FILESDIR}"/${P}-as-needed.patch
+		"${FILESDIR}"/${PN}-0.4.12-shared-irrlicht.patch \
+		"${FILESDIR}"/${PN}-0.4.12-as-needed.patch
 
 	# correct gettext behavior
 	if [[ -n "${LINGUAS+x}" ]] ; then
-		for i in po/* ; do
+		for i in po/*; do
 			if ! has ${i#po/} ${LINGUAS} ; then
 				rm -r ${i} || die
 			fi
-		 done
+		done
 	fi
 
 	# set paths
 	sed \
-		-e "s#@BINDIR@#${GAMES_BINDIR}#g" \
-		-e "s#@GROUP@#${GAMES_GROUP}#g" \
+		-e "s#@BINDIR@#/usr/bin#g" \
+		-e "s#@GROUP@#${PN}#g" \
 		"${FILESDIR}"/minetestserver.confd > "${T}"/minetestserver.confd || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		$(usex dedicated "-DBUILD_SERVER=ON -DBUILD_CLIENT=OFF" "$(cmake-utils_use_build server SERVER) -DBUILD_CLIENT=ON")
-		-DCUSTOM_BINDIR="${GAMES_BINDIR}"
+		-DCUSTOM_BINDIR="/usr/bin"
 		-DCUSTOM_DOCDIR="/usr/share/doc/${PF}"
-		-DCUSTOM_LOCALEDIR="${GAMES_DATADIR}/${PN}/locale"
-		-DCUSTOM_SHAREDIR="${GAMES_DATADIR}/${PN}"
+		-DCUSTOM_LOCALEDIR="/usr/share/locale"
+		-DCUSTOM_SHAREDIR="/usr/share/${PN}"
 		$(cmake-utils_use_enable curl CURL)
 		$(cmake-utils_use_enable truetype FREETYPE)
 		$(cmake-utils_use_enable nls GETTEXT)
@@ -91,10 +90,10 @@ src_configure() {
 		$(cmake-utils_use !luajit DISABLE_LUAJIT)
 		-DRUN_IN_PLACE=0
 	)
-
+	
 	use dedicated && mycmakeargs+=(
-		echo "-DIRRLICHT_SOURCE_DIR=/the/irrlicht/source"
-		echo "-DIRRLICHT_INCLUDE_DIR=/usr/include/irrlicht"
+			echo "-DIRRLICHT_SOURCE_DIR=/the/irrlicht/source"
+			echo "-DIRRLICHT_INCLUDE_DIR=/usr/include/irrlicht"
 	)
 
 	cmake-utils_src_configure
@@ -120,17 +119,13 @@ src_install() {
 		cd "${CMAKE_BUILD_DIR}"/doc || die
 		dodoc -r html
 	fi
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 
 	if ! use dedicated ; then
