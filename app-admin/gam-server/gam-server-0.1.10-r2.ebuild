@@ -16,7 +16,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-solaris"
 IUSE="debug kernel_linux"
 
 RDEPEND=">=dev-libs/glib-2:2
@@ -67,8 +67,12 @@ src_configure() {
 	# fixes bug 225403
 	#append-flags "-D_GNU_SOURCE"
 
+	# Solaris' patchs adds this to configure, but it conflicts with
+	# Gentoo's FreeBSD patch.
+	[[ ${CHOST} == *-solaris* ]] && append-libs socket nsl
+
 	if ! has_version virtual/pkgconfig; then
-		export DAEMON_CFLAGS="-I/usr/include/glib-2.0 -I/usr/$(get_libdir)/glib-2.0/include"
+		export DAEMON_CFLAGS="-I${EPREFIX}/usr/include/glib-2.0 -I${EPREFIX}/usr/$(get_libdir)/glib-2.0/include"
 		export DAEMON_LIBS="-lglib-2.0"
 	fi
 
