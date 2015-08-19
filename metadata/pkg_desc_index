@@ -4293,7 +4293,7 @@ dev-java/xml-commons 1.0_beta2-r1: Jakarta project for for XML bindings for java
 dev-java/xml-commons-external 1.3.04 1.4.01: An Apache-hosted set of externally-defined standards interfaces, namely DOM, SAX, and JAXP
 dev-java/xml-commons-resolver 1.2: An XML Entity and URI Resolver
 dev-java/xml-im-exporter 1.1-r1: XML Im-/Exporter is a library to assist you in the process of importing and exporting XML
-dev-java/xml-security 1.5.7: An implementation of the primary security standards for XML
+dev-java/xml-security 1.5.7-r1: An implementation of the primary security standards for XML
 dev-java/xml-writer 0.2: A simple XML Writer
 dev-java/xml-xmlbeans 1.0.4_pre20041217 1.0.4_pre20041217-r1 2.6.0: An XML-Java binding tool
 dev-java/xmlc 2.3.1-r1: Open Source Java/XML Presentation Compiler
