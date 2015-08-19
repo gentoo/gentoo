@@ -12,7 +12,7 @@ DESCRIPTION="high level interface to Linux seccomp filter"
 HOMEPAGE="http://sourceforge.net/projects/libseccomp/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="static-libs"
