@@ -1,11 +1,15 @@
---- ./src/knemod/backends/netlinkbackend.cpp	2015-08-15 14:34:54.823572917 +0600
-+++ ./src/knemod/backends/netlinkbackend.cpp.new	2015-08-15 14:34:15.680238396 +0600
-@@ -30,6 +30,8 @@
- #include "utils.h"
- #include "netlinkbackend.h"
+diff --git a/src/knemod/backends/netlinkbackend.cpp b/src/knemod/backends/netlinkbackend.cpp
+index f749e43..5a82c13 100644
+--- a/src/knemod/backends/netlinkbackend.cpp
++++ b/src/knemod/backends/netlinkbackend.cpp
+@@ -23,6 +23,10 @@
+ #include <netlink/route/link.h>
+ #include <netlink/route/route.h>
  
-+#include <linux/if.h>
++#if LIBNL_CURRENT >= 221
++#include <net/if.h>
++#endif
 +
- #ifndef IFF_LOWER_UP
- #define IFF_LOWER_UP   0x10000
- #endif
+ #include <KLocale>
+ #include <kio/global.h>
+ 
