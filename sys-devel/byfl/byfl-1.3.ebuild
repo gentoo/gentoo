@@ -7,13 +7,13 @@ EAPI=5
 inherit autotools-utils flag-o-matic
 
 if [ "${PV}" = "9999" ]; then
-	LLVM_VERSION="3.6"
+	LLVM_VERSION="3.6.2"
 	EGIT_REPO_URI="git://github.com/losalamos/${PN^b}.git http://github.com/losalamos/${PN}.git"
 	inherit git-2
 	KEYWORDS=""
 	AUTOTOOLS_AUTORECONF=1
 else
-	LLVM_VERSION="3.5.1"
+	LLVM_VERSION="3.6.2"
 	MY_P="${P}-llvm-${LLVM_VERSION}"
 	SRC_URI="https://github.com/losalamos/Byfl/releases/download/v${MY_P#${PN}-}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~amd64-linux"
@@ -29,7 +29,7 @@ IUSE="dragonegg hdf5 static-libs sqlite"
 RDEPEND="dragonegg? ( >=sys-devel/dragonegg-${LLVM_VERSION} )
 	>=sys-devel/clang-${LLVM_VERSION}
 	>=sys-devel/llvm-${LLVM_VERSION}
-	sys-devel/binutils
+	sys-devel/binutils:0
 	dev-lang/perl:=
 	dev-perl/Switch
 	hdf5? ( sci-libs/hdf5[cxx] )
