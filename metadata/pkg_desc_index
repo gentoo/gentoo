@@ -7669,7 +7669,7 @@ dev-python/rope 0.9.4-r1 0.10.2: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1: A helper for using rope refactoring library in IDEs
-dev-python/routes 1.13-r1 2.0 2.1 2.1-r1: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
+dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3: Pure python parser generator that also works with RPython
 dev-python/rpy 2.5.4 2.6.0 2.6.1: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
