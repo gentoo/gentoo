@@ -4,5 +4,6 @@
 	<herd>base-system</herd>
 	<upstream>
 		<remote-id type="sourceforge">cracklib</remote-id>
+		<remote-id type="github">cracklib/cracklib</remote-id>
 	</upstream>
 </pkgmetadata>

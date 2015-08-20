@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>amynka@gentoo.org</email>
-</maintainer>
-<longdescription>
+	<maintainer>
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<longdescription>
 </longdescription>
+	<upstream>
+		<remote-id type="github">jiixyj/libebur128</remote-id>
+	</upstream>
 </pkgmetadata>
