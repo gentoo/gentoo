@@ -1,0 +1,206 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the BSD license
+# $Id$
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+	use rabbitmq redis logger dns
+}
+
+CELERYD_ENABLED=${CELERYD_ENABLED:-"no"}
+CELERYD_PID_FILE=${CELERYD_PID_FILE:-"/run/celery/celeryd@%n.pid"}
+CELERYD_LOG_FILE=${CELERYD_LOG_FILE:-"/var/log/celery/celeryd@%n.log"}
+CELERYD_LOG_LEVEL=${CELERYD_LOG_LEVEL:-"INFO"}
+CELERYD_NODES=${CELERYD_NODES:-"celery"}
+
+CELERYBEAT_ENABLED=${CELERYBEAT_ENABLED:-"no"}
+CELERYBEAT_PID_FILE=${CELERYBEAT_PID_FILE:-"/run/celery/celerybeat.pid"}
+CELERYBEAT_LOG_FILE=${CELERYBEAT_LOG_FILE:-"/var/log/celery/celerybeat.log"}
+CELERYBEAT_LOG_LEVEL=${CELERYBEAT_LOG_LEVEL:-"INFO"}
+
+export CELERY_LOADER
+
+CELERYD_MULTI=${CELERYD_MULTI:-"celery multi"}
+CELERYCTL=${CELERYCTL:-"celery"}
+CELERYBEAT=${CELERYBEAT:-"celery beat"}
+
+CELERYD_OPTS="${CELERYD_OPTS}"
+CELERYBEAT_OPTS="${CELERYBEAT_OPTS} -f ${CELERYBEAT_LOG_FILE} -l ${CELERYBEAT_LOG_LEVEL}"
+
+create_dirs() {
+	local logfile="${1}"
+	local pidfile="${2}"
+	local logdir=$(dirname ${logfile})
+	local piddir=$(dirname ${pidfile})
+
+	checkpath -d -q -m 0750 -o ${CELERY_USER:-"root"}:${CELERY_GROUP:-"root"} ${logdir} ${piddir}
+}
+
+[ -n "${CELERY_USER}" ] && DAEMON_OPTS="${DAEMON_OPTS} --uid=${CELERY_USER}"
+[ -n "${CELERY_GROUP}" ] && DAEMON_OPTS="${DAEMON_OPTS} --gid=${CELERY_GROUP}"
+
+checkconfig() {
+	if [ ! -c /dev/null ]; then
+		eerror "/dev/null is not a character device!"
+		return 1
+	fi
+
+	if [ -z "${CELERY_PROJDIR}" ]; then
+		eerror "Missing CELERY_PROJDIR variable"
+		return 1
+	fi
+
+	yesno "${CELERYD_ENABLED}" && \
+		create_dirs "${CELERYD_LOG_FILE}" "${CELERYD_PID_FILE}"
+
+	yesno "${CELERYBEAT_ENABLED}" && \
+		create_dirs "${CELERYBEAT_LOG_FILE}" "${CELERYBEAT_PID_FILE}"
+
+	return 0
+}
+
+celery_chdir() {
+	[ -n "${CELERY_PROJDIR}" ] && cd "${CELERY_PROJDIR}"
+}
+
+wait_pid () {
+	local pidfile=${1}
+	local timeout=${STOPTIMEOUT:-"10"}
+	local PID=$(cat "${pidfile}" 2>/dev/null)
+
+	while [ -n "${PID}" ] && [ "${timeout}" -ge 1 ]; do
+		kill -0 ${PID} 2>/dev/null || break
+		kill -TERM "${PID}"
+		timeout=$((${timeout} - 1))
+		sleep 0.5
+	done
+
+	[ "${timeout}" -lt 1 ] && return 1
+	[ -f ${pidfile} ] && rm -f ${pidfile}
+	return 0
+}
+
+# celeryd
+start_workers() {
+	yesno "${CELERYD_ENABLED}" || return 0
+
+	${CELERYD_MULTI} start ${CELERYD_NODES} ${DAEMON_OPTS} \
+				--pidfile="${CELERYD_PID_FILE}" \
+				--logfile="${CELERYD_LOG_FILE}" \
+				--loglevel="${CELERYD_LOG_LEVEL}" \
+				${CELERYD_OPTS}
+}
+
+stop_workers() {
+	yesno "${CELERYD_ENABLED}" || return 0
+
+	local timeout=${STOPTIMEOUT:-"10"}
+
+	${CELERYD_MULTI} stop ${CELERYD_NODES} --pidfile="${CELERYD_PID_FILE}" || return 1
+
+	# Wait for each node
+	for node in ${CELERYD_NODES}; do
+		local pidfile=${CELERYD_PID_FILE/\%n/${node}}
+		local PID=$(cat "${pidfile}" 2>/dev/null)
+		while [ -n "${PID}" ] && [ "${timeout}" -ge 1 ]; do
+		kill -0 ${PID} 2>/dev/null || break
+		timeout=$((${timeout} - 1))
+		sleep 0.5
+		done
+	done
+
+	[ "${timeout}" -lt 1 ] && return 1
+	return 0
+}
+
+restart_workers() {
+	yesno "${CELERYD_ENABLED}" || return 0
+
+	${CELERYD_MULTI} restart ${CELERYD_NODES} ${DAEMON_OPTS} \
+		--pidfile="${CELERYD_PID_FILE}" \
+		--logfile="${CELERYD_LOG_FILE}" \
+		--loglevel="${CELERYD_LOG_LEVEL}" \
+		${CELERYD_OPTS}
+}
+
+# celerybeat
+start_beat() {
+	yesno "${CELERYBEAT_ENABLED}" || return 0
+
+	ebegin "Starting celerybeat"
+	${CELERYBEAT} ${CELERYBEAT_OPTS} ${DAEMON_OPTS} --detach \
+		--pidfile="${CELERYBEAT_PID_FILE}"
+	eend ${?}
+}
+
+
+stop_beat() {
+	yesno "${CELERYBEAT_ENABLED}" || return 0
+
+	ebegin "Stopping celerybeat"
+	if [ -f "${CELERYBEAT_PID_FILE}" ]; then
+		wait_pid "${CELERYBEAT_PID_FILE}"
+	else
+		ewarn "not running"
+	fi
+	eend ${?}
+}
+
+
+start() {
+	local cr=0
+
+	checkconfig || return 1
+
+	ebegin "Starting ${SVCNAME}"
+	eindent
+
+	celery_chdir && \
+		start_workers && \
+		start_beat || cr=1
+
+	eoutdent
+	eend ${cr}
+}
+
+stop() {
+	local cr=0
+
+	checkconfig || return 1
+
+	ebegin "Stopping ${SVCNAME}"
+	eindent
+
+	celery_chdir
+	stop_workers || cr=1
+	stop_beat || cr=1
+
+	eoutdent
+	eend ${cr}
+}
+
+reload() {
+	local cr=0
+
+	checkconfig || return 1
+
+	ebegin "Restarting ${SVCNAME}"
+	eindent
+
+	celery_chdir
+	restart_workers || cr=1
+	stop_beat && start_beat || cr=1
+
+	eoutdent
+	eend ${cr}
+}
+
+status() {
+	checkconfig || return 1
+
+	celery_chdir && \
+		${CELERYCTL} status
+}

@@ -1,0 +1,29 @@
+From a45b719645960c9bacb430e452192d6ffac5be19 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 20 Aug 2015 13:43:47 +0200
+Subject: [PATCH] Let ping6 use crypto if enabled.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e34be5b..d4cb6c0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -159,9 +159,9 @@ LIB_clockdiff = $(LIB_CAP)
+ 
+ # ping / ping6
+ DEF_ping_common = $(DEF_CAP) $(DEF_IDN)
+-DEF_ping6_common = $(DEF_CAP) $(DEF_IDN)
++DEF_ping6_common = $(DEF_CAP) $(DEF_IDN) $(DEF_CRYPTO)
+ DEF_ping  = $(DEF_CAP) $(DEF_IDN) $(DEF_WITHOUT_IFADDRS) $(DEF_IPV4)
+-LIB_ping  = $(LIB_CAP) $(LIB_IDN) $(LIB_RESOLV)
++LIB_ping  = $(LIB_CAP) $(LIB_IDN) $(LIB_RESOLV) $(LIB_CRYPTO)
+ 
+ ping: ping_common.o ping6_common.o
+ ping.o ping_common.o ping6_common.o: ping.h in6_flowlabel.h
+-- 
+2.5.0
+

@@ -70,8 +70,7 @@ src_configure() {
 
 	econf \
 		--prefix="${EPREFIX:-/}" \
-		--datarootdir='${prefix}/usr/share' \
-		|| die
+		--datarootdir='${prefix}/usr/share'
 }
 
 src_install() {

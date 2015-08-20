@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>radhermit@gentoo.org</email>
-  <name>Tim Harder</name>
-</maintainer>
-<longdescription>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <longdescription>
   Zsh is a shell designed for interactive use, although it is also a
   powerful scripting language. Many of the useful features of bash, ksh,
   and tcsh were incorporated into zsh; many original features were
