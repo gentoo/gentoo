@@ -3836,6 +3836,9 @@ media-libs/libextractor:midi - Enable MIDI support through media-libs/libsmf
 media-libs/libggi:vis - Enables sparc vis support for libggi
 media-libs/libgphoto2:serial - Enable serial port support
 media-libs/libgpod:gtk - Enable ArtworkDB support
+media-libs/libgroove:chromaprint - Enable audio fingerprinting using media-libs/chromaprint.
+media-libs/libgroove:loudness - Enable loudness detection according to the EBU R128 standard using media-libs/libebur128.
+media-libs/libgroove:sound - Enable audio playing.
 media-libs/liblastfm:fingerprint - Build the lastfm-fingerprint library
 media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libomxil-bellagio:audioeffects - enable audio volume/mixer effects components

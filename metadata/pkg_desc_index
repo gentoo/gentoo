@@ -335,7 +335,7 @@ app-arch/zpaq-extras 2 3: A set of additional compression profiles for app-arch/
 app-arch/zpipe 2.01-r1: Pipe compressor/decompressor for ZPAQ
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/backintime 1.0.24-r2 1.0.36-r2 1.0.40 1.1.4: A simple backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
-app-backup/backup-manager 0.7.5 0.7.10.1-r1 0.7.10.1-r2: Backup Manager is a command line backup tool for GNU/Linux
+app-backup/backup-manager 0.7.5 0.7.10.1-r2: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.0-r1: A high-performance system for backing up computers to a server's disk
 app-backup/bacula 5.0.3-r4 5.2.13-r3 7.0.5-r1: Featureful client/server network backup suite
@@ -11696,6 +11696,7 @@ media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any gra
 media-libs/libgltf 0.0.1 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
 media-libs/libgphoto2 2.5.5.1-r1 2.5.7: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3: Shared library to access the contents of an iPod
+media-libs/libgroove 4.3.0: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
 media-libs/libhdhomerun 20130117 20130328 20140121: SiliconDust HDHomeRun Utilties
 media-libs/libicns 0.7.1 0.8.0 0.8.1: A library for manipulating MacOS X .icns icon format
