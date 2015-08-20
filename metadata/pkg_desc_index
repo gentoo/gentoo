@@ -7671,7 +7671,7 @@ dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1: A helper for using rope refactoring library in IDEs
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3: Pure python parser generator that also works with RPython
-dev-python/rpy 2.5.4 2.6.0 2.6.1: Python interface to the R Programming Language
+dev-python/rpy 2.5.4 2.6.1 2.6.2: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.1.4-r1: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
@@ -13629,7 +13629,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
-net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.6.6 2.8.3: Open source web browser engine
+net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.6.6 2.8.3 2.8.5: Open source web browser engine
 net-libs/wt 3.2.2_p1-r1 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1: Extended ROOT remote file server
