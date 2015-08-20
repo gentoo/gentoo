@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Open source coding font
+EAPI=5
+HOMEPAGE=http://larsenwork.com/monoid https://github.com/larsenwork/monoid
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT OFL-1.1
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=mirror://gentoo/monoid-0.61.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=5410270f3d939b65dbd294e1c54dc109
