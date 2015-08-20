@@ -172,7 +172,7 @@ RDEPEND="sys-libs/zlib
 tc_version_is_at_least 3 && RDEPEND+=" virtual/libiconv"
 
 if tc_version_is_at_least 4 ; then
-	GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2"
+	GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0 >=dev-libs/mpfr-2.4.2:0"
 	if tc_version_is_at_least 4.3 ; then
 		RDEPEND+=" ${GMP_MPFR_DEPS}"
 	elif in_iuse fortran ; then
@@ -180,7 +180,7 @@ if tc_version_is_at_least 4 ; then
 	fi
 fi
 
-tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1"
+tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0"
 
 if in_iuse graphite ; then
 	if tc_version_is_at_least 5.0 ; then
