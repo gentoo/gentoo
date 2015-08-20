@@ -226,7 +226,6 @@ src_configure() {
 		$(use_enable drm)
 		$(use_enable jpeg)
 		$(use_enable raspberry-pi rpi)
-		$(use_enable raspberry-pi rpi-gles)
 
 		# hwaccels
 		$(use_enable vaapi vaapi-hwaccel)
