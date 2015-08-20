@@ -1290,7 +1290,7 @@ app-emulation/libcacard 0.1.2: Library for emulating CAC cards
 app-emulation/libguestfs 1.26.1 1.28.3 1.28.5 1.28.5-r1: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
-app-emulation/libvirt 1.2.15-r1 1.2.17-r5 1.2.18-r1 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 1.2.15-r1 1.2.17-r5 1.2.18-r1 1.2.18-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 0.2.0 0.2.1 0.2.2: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.6-r1 1.0.7 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2: LinuX Containers userspace utilities
