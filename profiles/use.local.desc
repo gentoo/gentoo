@@ -6818,6 +6818,8 @@ sci-physics/root:reflex - Build the reflection database for the C++ interpreter
 sci-physics/root:shadow - Enable shadow authentication in rootd and proofd
 sci-physics/root:table - Build libTable contrib library
 sci-physics/root:xrootd - Build the interface for net-libs/xrootd
+sci-physics/yoda:c++11 - Build using the C++11 standard
+sci-physics/yoda:root - Adds support for sci-physics/root
 sci-visualization/fityk:nlopt - Enable optimization with sci-libs/nlopt
 sci-visualization/gnuplot:bitmap - Enable dot-matrix printers and pbm terminal
 sci-visualization/gnuplot:compat - Enable backwards compatibility with version 4 syntax

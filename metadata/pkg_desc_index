@@ -15294,6 +15294,7 @@ sci-physics/root 5.32.03-r2 5.34.26 5.34.32 6.02.05-r2: C++ data analysis framew
 sci-physics/sassena 1.4.1: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/xfoil 6.97: Design and analysis of subsonic isolated airfoils
+sci-physics/yoda 1.4.0: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.10 1.2.11 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/extrema 4.4.5: Interactive data analysis and visualization tool
