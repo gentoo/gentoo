@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit autotools eutils
 
 DESCRIPTION="console application which monitors network traffic and bandwidth usage in real time"
@@ -13,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~mips ppc x86"
 
-RDEPEND=">=sys-libs/ncurses-5.2"
+RDEPEND=">=sys-libs/ncurses-5.2:5="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
