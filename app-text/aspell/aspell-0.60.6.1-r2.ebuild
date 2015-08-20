@@ -34,7 +34,7 @@ done
 unset dep
 
 COMMON_DEPEND="
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:5=
 	nls? ( virtual/libintl )
 "
 DEPEND="${COMMON_DEPEND}
