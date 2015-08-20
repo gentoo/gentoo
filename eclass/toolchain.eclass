@@ -213,10 +213,6 @@ if in_iuse gcj ; then
 		x11-proto/xextproto
 		=x11-libs/gtk+-2*
 		virtual/pkgconfig
-		amd64? ( multilib? (
-			app-emulation/emul-linux-x86-gtklibs
-			app-emulation/emul-linux-x86-xlibs
-		) )
 	"
 	tc_version_is_at_least 3.4 && GCJ_GTK_DEPS+=" x11-libs/pango"
 	tc_version_is_at_least 4.2 && GCJ_DEPS+=" app-arch/zip app-arch/unzip"
