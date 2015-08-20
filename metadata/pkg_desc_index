@@ -9072,7 +9072,7 @@ dev-util/reviewboard 1.7.28: A web-based code review tool that offers developers
 dev-util/rootstrap 0.3.24 0.3.24_p5-r1: A tool for building complete Linux filesystem images
 dev-util/rpmdevtools 8.3 8.3-r1 8.5: Collection of rpm packaging related utilities
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
-dev-util/scala-ide 4.1.0: The Scala IDE
+dev-util/scala-ide 4.1.0 4.1.1: The Scala IDE
 dev-util/scanmem 0.15.2: Locate and modify variables in executing processes
 dev-util/schroot 1.6.3 1.6.5 1.6.5-r1 1.6.10-r3: Utility to execute commands in a chroot environment
 dev-util/scons 2.3.0 2.3.1 2.3.1-r1 2.3.2 2.3.4 2.3.5: Extensible Python-based build utility
