@@ -10356,7 +10356,7 @@ kde-apps/analitza 4.14.3: KDE library for mathematical features
 kde-apps/ark 4.14.3-r1: KDE Archiving tool
 kde-apps/artikulate 4.14.3: Language learning application that helps improving pronunciation skills
 kde-apps/attica 4.14.3: Open Collaboration Services provider management
-kde-apps/audiocd-kio 4.14.3: KDE kioslaves from the kdemultimedia package
+kde-apps/audiocd-kio 4.14.3 15.08.0: KDE kioslaves from the kdemultimedia package
 kde-apps/blinken 4.14.3: KDE version of the Simon Says game
 kde-apps/bomber 4.14.3: KDE arcade bombing game
 kde-apps/bovo 4.14.3: Five-in-a-row Board Game
@@ -10364,14 +10364,14 @@ kde-apps/cantor 4.14.3: KDE4 interface for doing mathematics and scientific comp
 kde-apps/cervisia 4.14.3: Cervisia - A KDE CVS frontend
 kde-apps/dolphin 4.14.3: A KDE filemanager focusing on usability
 kde-apps/dolphin-plugins 4.14.3: Extra Dolphin plugins
-kde-apps/dragon 4.14.3: Dragon Player is a simple video player for KDE 4
+kde-apps/dragon 4.14.3 15.08.0: A simple video player
 kde-apps/drkonqi 4.14.3: KDE crash handler, gives the user feedback if a program crashed
-kde-apps/ffmpegthumbs 4.14.3: A FFmpeg based thumbnail Generator for Video Files
+kde-apps/ffmpegthumbs 4.14.3 15.08.0: A FFmpeg based thumbnail Generator for Video Files
 kde-apps/filelight 4.14.3: Visualise disk usage with interactive map of concentric, segmented rings
 kde-apps/granatier 4.14.3: KDE Bomberman game
 kde-apps/gwenview 4.14.3: KDE image viewer
 kde-apps/jovie 4.14.3: Jovie is a text to speech application
-kde-apps/juk 4.14.3: Jukebox and music manager for KDE
+kde-apps/juk 4.14.3 15.08.0: Jukebox and music manager for KDE
 kde-apps/kaccessible 4.14.3: Provides accessibility services like focus tracking
 kde-apps/kajongg 4.14.3: The classical Mah Jongg for four players
 kde-apps/kalgebra 4.14.3: MathML-based graph calculator for KDE
@@ -10422,9 +10422,10 @@ kde-apps/kdeedu-meta 4.14.3: KDE educational apps - merge this to pull in all kd
 kde-apps/kdegames-meta 4.14.3: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 4.14.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 4.14.3: Library to support mobipocket ebooks
-kde-apps/kdemultimedia-meta 4.14.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
+kde-apps/kdemultimedia-meta 4.14.3 15.08.0: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
+kde-apps/kdenlive 15.08.0: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3: KDE GUI for passwd
 kde-apps/kdesdk-kioslaves 4.14.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 4.14.3: KDE SDK - merge this to pull in all kdesdk-derived packages
@@ -10470,7 +10471,7 @@ kde-apps/kmag 4.14.3: KDE screen magnifier
 kde-apps/kmahjongg 4.14.3: Mahjongg for KDE
 kde-apps/kmimetypefinder 4.14.3: KDE application to report the mimetype for a given file
 kde-apps/kmines 4.14.3: KMines is a classic mine sweeper game
-kde-apps/kmix 4.14.3 4.14.3-r1: KDE mixer gui
+kde-apps/kmix 4.14.3 4.14.3-r1 15.08.0: Plasma mixer gui
 kde-apps/kmousetool 4.14.3: KDE program that clicks the mouse for you
 kde-apps/kmouth 4.14.3: KDE application that reads what you type out loud. Doesn't include a speech synthesizer
 kde-apps/kmplot 4.14.3: Mathematical function plotter for KDE
@@ -10501,7 +10502,7 @@ kde-apps/kreversi 4.14.3: KDE Board Game
 kde-apps/krfb 4.14.3: VNC-compatible server to share KDE desktops
 kde-apps/kruler 4.14.3: A screen ruler for KDE
 kde-apps/ksaneplugin 4.14.3: SANE Plugin for KDE
-kde-apps/kscd 4.14.3: KDE CD player
+kde-apps/kscd 4.14.3 15.08.0: KDE CD player
 kde-apps/kshisen 4.14.3: A KDE game similiar to Mahjongg
 kde-apps/ksirk 4.14.3: KDE: Ksirk is a KDE port of the board game risk
 kde-apps/ksnakeduel 4.14.3: KDE Tron game
@@ -10528,8 +10529,8 @@ kde-apps/kwalletd 4.14.3-r1 4.14.3-r2: KDE Password Server
 kde-apps/kwalletmanager 4.14.3: KDE Wallet Management Tool
 kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 4.14.3: KDE MDI editor/IDE
-kde-apps/libkcddb 4.14.3: KDE library for CDDB
-kde-apps/libkcompactdisc 4.14.3: KDE library for playing & ripping CDs
+kde-apps/libkcddb 4.14.3 15.08.0: KDE library for CDDB
+kde-apps/libkcompactdisc 4.14.3 15.08.0: KDE library for playing & ripping CDs
 kde-apps/libkdcraw 4.14.3 4.14.3-r1: KDE digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1: Base library common to many KDE games
@@ -10542,7 +10543,7 @@ kde-apps/libksane 4.14.3: SANE Library interface for KDE
 kde-apps/lokalize 4.14.3: KDE4 translation tool
 kde-apps/lskat 4.14.3: Skat game for KDE
 kde-apps/marble 4.14.3: Generic geographical map widget
-kde-apps/mplayerthumbs 4.14.3: A Thumbnail Generator for Video Files on KDE filemanagers
+kde-apps/mplayerthumbs 4.14.3 15.08.0: A Thumbnail Generator for Video Files on KDE filemanagers
 kde-apps/nepomuk 4.14.3: Nepomuk KDE4 client
 kde-apps/nsplugins 4.14.3: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3: KDE hexeditor
