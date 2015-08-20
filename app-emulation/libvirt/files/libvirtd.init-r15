@@ -1,0 +1,35 @@
+#!/sbin/runscript
+
+description="Virtual Machine Management daemon (libvirt)"
+
+depend() {
+	USE_FLAG_FIREWALLD
+	use USE_FLAG_AVAHI USE_FLAG_ISCSI USE_FLAG_RBD dbus virtlockd
+	after ntp-client ntpd nfs nfsmount portmap rpc.statd iptables ip6tables ebtables corosync sanlock cgconfig xenconsoled
+}
+
+start() {
+	# Test configuration directories in /etc/libvirt/ to be either not
+	# present or a directory, i.e. not a regular file, bug #532892
+	for dir in lxc nwfilter qemu storage; do
+		if [ -f /etc/libvirt/$dir ]; then
+			eerror "/etc/libvirt/$dir was created as a regular file. It must be either"
+			eerror "a directory or not present for libvirtd to start up successfully."
+			return 1
+		fi
+	done
+
+	ebegin "Starting libvirtd"
+	start-stop-daemon --start \
+		--env KRB5_KTNAME=/etc/libvirt/krb5.tab \
+		--exec /usr/sbin/libvirtd --pidfile=/var/run/libvirtd.pid \
+		-- -d ${LIBVIRTD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping libvirtd without shutting down your VMs"
+	start-stop-daemon --stop --quiet --exec \
+		/usr/sbin/libvirtd --pidfile=/var/run/libvirtd.pid
+	eend $?
+}

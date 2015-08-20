@@ -1,0 +1,49 @@
+# /etc/conf.d/libvirtd
+
+# LIBVIRT_URIS
+# space separated list of libvirt URIs to communicate with to start/stop guests
+# Valid values are anything that can be passed to 'virsh connect'
+
+#LIBVIRT_URIS="qemu:///system"
+
+
+# LIBVIRT_SHUTDOWN
+# Valid options:
+# * managedsave - Performs a state save external to the VM (for hypervisors
+#                 supporting this operation). qemu-kvm will stop the CPU
+#                 and save off all state to a separate file. When the
+#                 machine is started again, it will resume like nothing
+#                 ever happened. This is guarenteed to always successfully
+#                 stop your machine and restart it.
+#
+# * shutdown -    Sends an ACPI shutdown (think of this as a request to
+#                 your guest to shutdown). There is no way to distinguish
+#                 between guests that are ignoring the shutdown request or
+#                 are stuck or are taking a long time to shutdown. We will
+#                 wait LIBVIRT_MAXWAIT seconds before yanking the power
+#                 out.
+#
+# * destroy  -    Immediately stop all running guests. Use with caution as
+#                 this can leave the guest in a corrupted state and might
+#                 lead to data loss.
+#
+
+#LIBVIRT_SHUTDOWN="managedsave"
+
+
+# LIBVIRT_MAXWAIT
+# Timeout in seconds until stopping a guest and "pulling the plug" on the
+# guest
+# Valid values are any integer over 0
+
+#LIBVIRT_MAXWAIT="500"
+
+
+# LIBVIRT_NET_SHUTDOWN
+# If libvirtd created networks for you (e.g. NATed networks) then this init
+# script will shut them down for you if this is set to 'yes'. Otherwise,
+# the networks will be left running. For this option to be useful you must
+# have enabled the 'virt-network' USE flag and have had libvirt create a
+# NATed network for you. Valid values: 'yes' or 'no'
+
+#LIBVIRT_NET_SHUTDOWN="yes"
