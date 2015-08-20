@@ -23,11 +23,12 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
-	>=dev-lang/R-3
+	>=dev-lang/R-3.1
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pandas-0.13.1[${PYTHON_USEDEP}]
 	dev-python/ipython[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]"
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( $(python_gen_cond_dep 'dev-python/singledispatch[${PYTHON_USEDEP}]' python2_7 python3_3) )"
@@ -36,7 +37,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 # Tarball absent of doc files in doc folder
-# https://bitbucket.org/lgautier/rpy2/issue/229/
+# https://bitbucket.org/rpy2/rpy2/issues/229
+
 python_compile() {
 	if ! python_is_python3; then
 		local CFLAGS=${CFLAGS}
