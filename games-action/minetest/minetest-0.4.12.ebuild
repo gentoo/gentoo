@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils cmake-utils gnome2-utils vcs-snapshot user
+inherit cmake-utils eutils gnome2-utils user vcs-snapshot
 
 DESCRIPTION="An InfiniMiner/Minecraft inspired game"
 HOMEPAGE="http://minetest.net/"
@@ -48,23 +48,10 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	vcs-snapshot_src_unpack
-}
-
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-0.4.12-shared-irrlicht.patch \
 		"${FILESDIR}"/${PN}-0.4.12-as-needed.patch
-
-	# correct gettext behavior
-	if [[ -n "${LINGUAS+x}" ]] ; then
-		for i in po/*; do
-			if ! has ${i#po/} ${LINGUAS} ; then
-				rm -r ${i} || die
-			fi
-		done
-	fi
 
 	# set paths
 	sed \
@@ -80,20 +67,20 @@ src_configure() {
 		-DCUSTOM_DOCDIR="/usr/share/doc/${PF}"
 		-DCUSTOM_LOCALEDIR="/usr/share/locale"
 		-DCUSTOM_SHAREDIR="/usr/share/${PN}"
-		$(cmake-utils_use_enable curl CURL)
+		-DENABLE_CURL=$(usex curl)
 		$(cmake-utils_use_enable truetype FREETYPE)
 		$(cmake-utils_use_enable nls GETTEXT)
 		-DENABLE_GLES=0
 		$(cmake-utils_use_enable leveldb LEVELDB)
 		$(cmake-utils_use_enable redis REDIS)
 		$(cmake-utils_use_enable sound SOUND)
-		$(cmake-utils_use !luajit DISABLE_LUAJIT)
+		-DDISABLE_LUAJIT=$(usex !luajit)
 		-DRUN_IN_PLACE=0
 	)
 	
 	use dedicated && mycmakeargs+=(
-			echo "-DIRRLICHT_SOURCE_DIR=/the/irrlicht/source"
-			echo "-DIRRLICHT_INCLUDE_DIR=/usr/include/irrlicht"
+		-DIRRLICHT_SOURCE_DIR=/the/irrlicht/source
+		-DIRRLICHT_INCLUDE_DIR=/usr/include/irrlicht
 	)
 
 	cmake-utils_src_configure
@@ -103,7 +90,7 @@ src_compile() {
 	cmake-utils_src_compile
 
 	if use doc ; then
-		emake -C "${CMAKE_BUILD_DIR}" doc
+		cmake-utils_src_compile doc
 	fi
 }
 
