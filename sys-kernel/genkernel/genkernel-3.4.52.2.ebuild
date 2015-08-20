@@ -141,7 +141,7 @@ src_install() {
 
 	cd "${DISTDIR}"
 	insinto /usr/share/genkernel/distfiles
-	doins ${A/${P}.tar.bz2/}
+	doins ${A/${P}.tar.xz/}
 }
 
 pkg_postinst() {
