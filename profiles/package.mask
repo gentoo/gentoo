@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
+# Masked for testing
+=net-misc/iputils-20150815
+
 # Hans de Graaff <graaff@gentoo.org> (20 Aug 2015)
 # No longer part of ruby-gnome2. Nothing depends on it.
 # Masked for removal in 30 days.
