@@ -13896,7 +13896,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing
 net-misc/jumpgate 0.7: An advanced TCP connection forwarder
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/keychain 2.7.1-r1 2.7.1-r2 2.8.0 2.8.1: manage ssh and GPG keys in a convenient and secure manner
-net-misc/knemo 0.7.6-r1 0.7.6-r2: The KDE Network Monitor
+net-misc/knemo 0.7.6-r1 0.7.6-r2 0.7.7: The KDE Network Monitor
 net-misc/knock 0.6 0.7: A simple port-knocking daemon
 net-misc/knutclient 1.0.5: A visual KDE client for UPS systems
 net-misc/ksshaskpass 0.5.3-r1: KDE implementation of ssh-askpass with Kwallet integration
