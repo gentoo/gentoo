@@ -1,0 +1,65 @@
+From 8d4d34eea9fbd25d0103975f366799764bbc4a2f Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 20 Aug 2015 11:47:22 +0200
+Subject: [PATCH] Add possibility to make ping use IPv4 by default.
+
+Using ping with a linux kernel without IPv6 capability yields to the
+following problem:
+
+> ping www.google.de
+ping: socket: Address family not supported by protocol (raw socket
+required by specified options).
+>
+
+because ping is using IPv6 by default when -4 option is omitted.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ Makefile | 7 ++++++-
+ ping.c   | 5 +++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8b37c42..e34be5b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -114,6 +114,11 @@ ifeq ($(ENABLE_PING6_RTHDR),RFC3542)
+ endif
+ endif
+ 
++# DEFAULT TO IPV4
++ifneq ($(IPV4_DEFAULT),no)
++	DEF_IPV4 = -DIPV4_DEFAULT
++endif
++
+ # -------------------------------------
+ TARGETS=ping tracepath tracepath6 traceroute6 clockdiff rdisc arping tftpd rarpd
+ 
+@@ -155,7 +160,7 @@ LIB_clockdiff = $(LIB_CAP)
+ # ping / ping6
+ DEF_ping_common = $(DEF_CAP) $(DEF_IDN)
+ DEF_ping6_common = $(DEF_CAP) $(DEF_IDN)
+-DEF_ping  = $(DEF_CAP) $(DEF_IDN) $(DEF_WITHOUT_IFADDRS)
++DEF_ping  = $(DEF_CAP) $(DEF_IDN) $(DEF_WITHOUT_IFADDRS) $(DEF_IPV4)
+ LIB_ping  = $(LIB_CAP) $(LIB_IDN) $(LIB_RESOLV)
+ 
+ ping: ping_common.o ping6_common.o
+diff --git a/ping.c b/ping.c
+index ec9708e..a08a03e 100644
+--- a/ping.c
++++ b/ping.c
+@@ -439,6 +439,11 @@ main(int argc, char **argv)
+ 
+ 	target = argv[argc-1];
+ 
++#ifdef IPV4_DEFAULT
++	if (hints.ai_family == AF_UNSPEC)
++		hints.ai_family = AF_INET;
++#endif
++
+ 	/* Create sockets */
+ 	enable_capability_raw();
+ 	if (hints.ai_family != AF_INET6)
+-- 
+2.5.0
+
