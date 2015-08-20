@@ -5,7 +5,7 @@
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
 
-EAPI="3"
+EAPI="5"
 
 VERSION_BUSYBOX='1.20.2'
 VERSION_DMRAID='1.0.0.rc16-3'
@@ -108,23 +108,23 @@ src_prepare() {
 
 src_compile() {
 	if [[ ${PV} == 9999* ]]; then
-		emake || die
+		emake
 	fi
 }
 
 src_install() {
 	insinto /etc
-	doins "${S}"/genkernel.conf || die "doins genkernel.conf"
+	doins "${S}"/genkernel.conf
 
-	doman genkernel.8 || die "doman"
-	dodoc AUTHORS ChangeLog README TODO || die "dodoc"
+	doman genkernel.8
+	dodoc AUTHORS ChangeLog README TODO
 
-	dobin genkernel || die "dobin genkernel"
+	dobin genkernel
 
 	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf
 
 	insinto /usr/share/genkernel
-	doins -r "${S}"/* || die "doins"
+	doins -r "${S}"/*
 	use ibm && cp "${S}"/ppc64/kernel-2.6-pSeries "${S}"/ppc64/kernel-2.6 || \
 		cp "${S}"/arch/ppc64/kernel-2.6.g5 "${S}"/arch/ppc64/kernel-2.6
 
