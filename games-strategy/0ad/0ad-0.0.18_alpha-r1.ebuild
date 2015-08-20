@@ -23,6 +23,7 @@ RDEPEND="
 	dev-libs/boost
 	dev-libs/icu:=
 	dev-libs/libxml2
+	dev-libs/nspr
 	~games-strategy/0ad-data-${PV}
 	media-libs/libpng:0
 	media-libs/libsdl2[X,opengl,video]
