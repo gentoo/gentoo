@@ -5,7 +5,7 @@
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
 
-EAPI=4 # works with EAPI5 without changes, but this is more supported for a crucial package
+EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
 
 VERSION_BUSYBOX='1.20.2'
 VERSION_DMRAID='1.0.0.rc16-3'
@@ -41,7 +41,7 @@ then
 	KEYWORDS=""
 else
 	inherit bash-completion-r1 eutils
-	SRC_URI="mirror://gentoo/${P}.tar.bz2
+	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz
 		${COMMON_URI}"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
@@ -81,7 +81,7 @@ src_unpack() {
 	if [[ ${PV} == 9999* ]] ; then
 		git-2_src_unpack
 	else
-		unpack ${P}.tar.bz2
+		unpack ${P}.tar.xz
 	fi
 }
 
@@ -113,7 +113,7 @@ src_prepare() {
 }
 
 src_compile() {
-	if [[ ${PV} == 9999* ]] ; then
+	if [[ ${PV} == 9999* ]]; then
 		emake
 	fi
 }
@@ -125,7 +125,7 @@ src_install() {
 	doman genkernel.8
 	dodoc AUTHORS ChangeLog README TODO
 	dobin genkernel
-	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf || die
+	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf
 
 	if use ibm ; then
 		cp "${S}"/arch/ppc64/kernel-2.6{-pSeries,} || die
@@ -141,7 +141,7 @@ src_install() {
 
 	cd "${DISTDIR}"
 	insinto /usr/share/genkernel/distfiles
-	doins ${A/${P}.tar.bz2/}
+	doins ${A/${P}.tar.xz/}
 }
 
 pkg_postinst() {
