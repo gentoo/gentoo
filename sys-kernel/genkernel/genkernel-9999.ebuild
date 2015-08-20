@@ -113,7 +113,7 @@ src_prepare() {
 }
 
 src_compile() {
-	if [[ ${PV} == 9999* ]] ; then
+	if [[ ${PV} == 9999* ]]; then
 		emake
 	fi
 }
@@ -125,7 +125,7 @@ src_install() {
 	doman genkernel.8
 	dodoc AUTHORS ChangeLog README TODO
 	dobin genkernel
-	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf || die
+	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf
 
 	if use ibm ; then
 		cp "${S}"/arch/ppc64/kernel-2.6{-pSeries,} || die
