@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (20 Aug 2015)
+# No longer part of ruby-gnome2. Nothing depends on it.
+# Masked for removal in 30 days.
+dev-ruby/ruby-goocanvas
+
 # Patrice Clement <monsieurp@gentoo.org> (19 Aug 2015)
 # Upstream dead: no releases since 2010.
 # Technology has moved on and there are far better alternatives
