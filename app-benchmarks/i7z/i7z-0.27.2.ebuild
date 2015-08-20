@@ -16,8 +16,8 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="X"
 
 RDEPEND="
-	sys-libs/ncurses
-	X? ( dev-qt/qtgui:4 )"
+	sys-libs/ncurses:5=
+	X? ( dev-qt/qtgui:4= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
