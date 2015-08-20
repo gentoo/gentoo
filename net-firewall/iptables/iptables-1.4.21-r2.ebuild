@@ -7,7 +7,7 @@ EAPI="5"
 # Force users doing their own patches to install their own tools
 AUTOTOOLS_AUTO_DEPEND=no
 
-inherit eutils multilib systemd toolchain-funcs autotools
+inherit eutils multilib systemd toolchain-funcs autotools flag-o-matic
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="http://www.netfilter.org/projects/iptables/"
@@ -43,6 +43,9 @@ src_prepare() {
 src_configure() {
 	# Some libs use $(AR) rather than libtool to build #444282
 	tc-export AR
+
+	# Hack around struct mismatches between userland & kernel for some ABIs. #472388
+	use amd64 && [[ ${ABI} == "x32" ]] && append-flags -fpack-struct
 
 	sed -i \
 		-e "/nfnetlink=[01]/s:=[01]:=$(usex netlink 1 0):" \
