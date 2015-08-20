@@ -24,7 +24,7 @@ IUSE="caps debug doc examples gdbm maildir pcre static unicode"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1
-	static? ( >=sys-libs/ncurses-5.7-r4[static-libs] )
+	static? ( >=sys-libs/ncurses-5.7-r4:5=[static-libs] )
 	caps? ( sys-libs/libcap )
 	pcre? ( >=dev-libs/libpcre-3.9
 		static? ( >=dev-libs/libpcre-3.9[static-libs] ) )
