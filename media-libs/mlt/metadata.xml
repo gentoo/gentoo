@@ -24,5 +24,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">mlt</remote-id>
+    <remote-id type="github">mltframework/mlt</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>kde</herd>
-<maintainer>
-	<email>dilfridge@gentoo.org</email>
-	<name>Andreas K. Huettel</name>
-</maintainer>
-<maintainer>
-	<email>amynka@gentoo.org</email>
-	<name>Amy Winston</name>
-</maintainer>
-<longdescription>
+	<herd>kde</herd>
+	<maintainer>
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Huettel</name>
+	</maintainer>
+	<maintainer>
+		<email>amynka@gentoo.org</email>
+		<name>Amy Winston</name>
+	</maintainer>
+	<longdescription>
 OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
 Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
 Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
 </longdescription>
-<use>
-	<flag name="contrib">Install user contributed scripts from opencv_contrib</flag>
-	<flag name="cuda">Enable NVIDIA Cuda computations support</flag>
-	<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
-	<flag name="ipp">Enable Intel Integrated Primitive support</flag>
-	<flag name="opencl">Add support for OpenCL</flag>
-	<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
-	<flag name="vtk">Build new 3D visualization module viz based on sci-libs/vtk</flag>
-</use>
+	<use>
+		<flag name="contrib">Install user contributed scripts from opencv_contrib</flag>
+		<flag name="cuda">Enable NVIDIA Cuda computations support</flag>
+		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
+		<flag name="ipp">Enable Intel Integrated Primitive support</flag>
+		<flag name="opencl">Add support for OpenCL</flag>
+		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
+		<flag name="vtk">Build new 3D visualization module viz based on sci-libs/vtk</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">opencvlibrary</remote-id>
+	</upstream>
 </pkgmetadata>
