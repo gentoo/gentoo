@@ -172,7 +172,7 @@ RDEPEND="sys-libs/zlib
 tc_version_is_at_least 3 && RDEPEND+=" virtual/libiconv"
 
 if tc_version_is_at_least 4 ; then
-	GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2"
+	GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0 >=dev-libs/mpfr-2.4.2:0"
 	if tc_version_is_at_least 4.3 ; then
 		RDEPEND+=" ${GMP_MPFR_DEPS}"
 	elif in_iuse fortran ; then
@@ -180,7 +180,7 @@ if tc_version_is_at_least 4 ; then
 	fi
 fi
 
-tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1"
+tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0"
 
 if in_iuse graphite ; then
 	if tc_version_is_at_least 5.0 ; then
@@ -213,10 +213,6 @@ if in_iuse gcj ; then
 		x11-proto/xextproto
 		=x11-libs/gtk+-2*
 		virtual/pkgconfig
-		amd64? ( multilib? (
-			app-emulation/emul-linux-x86-gtklibs
-			app-emulation/emul-linux-x86-xlibs
-		) )
 	"
 	tc_version_is_at_least 3.4 && GCJ_GTK_DEPS+=" x11-libs/pango"
 	tc_version_is_at_least 4.2 && GCJ_DEPS+=" app-arch/zip app-arch/unzip"
