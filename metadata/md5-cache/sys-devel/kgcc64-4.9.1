@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare pretend setup test unpack
-DEPEND=>=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2 >=dev-libs/mpc-0.8.1 >=sys-devel/gcc-config-1.4 hppa? ( sys-devel/binutils-hppa64 ) !sys-devel/gcc-hppa64 !sys-devel/gcc-mips64 !sys-devel/gcc-powerpc64 !sys-devel/gcc-sparc64 >=sys-apps/texinfo-4.8 >=sys-devel/bison-1.875 >=sys-apps/sed-4 sys-devel/gnuconfig sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2 >=dev-libs/mpc-0.8.1 >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext ) regression-test? ( >=dev-util/dejagnu-1.4.4 >=sys-devel/autogen-5.5.4 )
+DEPEND=>=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2 >=dev-libs/mpc-0.8.1 >=sys-devel/gcc-config-1.4 hppa? ( sys-devel/binutils-hppa64 ) !sys-devel/gcc-hppa64 !sys-devel/gcc-mips64 !sys-devel/gcc-powerpc64 !sys-devel/gcc-sparc64 >=sys-apps/texinfo-4.8 >=sys-devel/bison-1.875 >=sys-apps/sed-4 sys-devel/gnuconfig sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2:0 >=dev-libs/mpfr-2.4.2:0 >=dev-libs/mpc-0.8.1:0 >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext ) regression-test? ( >=dev-util/dejagnu-1.4.4 >=sys-devel/autogen-5.5.4 )
 DESCRIPTION=64bit kernel compiler
 EAPI=4
 HOMEPAGE=http://gcc.gnu.org/
@@ -7,9 +7,9 @@ IUSE=multislot regression-test vanilla +nls +nptl
 KEYWORDS=~hppa
 LICENSE=GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+
 PDEPEND=>=sys-devel/gcc-config-1.7
-RDEPEND=>=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2 >=dev-libs/mpc-0.8.1 >=sys-devel/gcc-config-1.4 sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2 >=dev-libs/mpc-0.8.1
+RDEPEND=>=dev-libs/gmp-4.3.2 >=dev-libs/mpfr-2.4.2 >=dev-libs/mpc-0.8.1 >=sys-devel/gcc-config-1.4 sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2:0 >=dev-libs/mpfr-2.4.2:0 >=dev-libs/mpc-0.8.1:0
 RESTRICT=strip
 SLOT=4.9
 SRC_URI=mirror://gnu/gcc/gcc-4.9.1/gcc-4.9.1.tar.bz2 mirror://gentoo/gcc-4.9.1-patches-1.0.tar.bz2 http://dev.gentoo.org/~vapier/dist/gcc-4.9.1-patches-1.0.tar.bz2 http://dev.gentoo.org/~rhill/dist/gcc-4.9.1-patches-1.0.tar.bz2 http://dev.gentoo.org/~zorry/patches/gcc/gcc-4.9.1-patches-1.0.tar.bz2 http://dev.gentoo.org/~blueness/dist/gcc-4.9.1-patches-1.0.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	toolchain	829a014a8035c6a8dfc391ff8499e447	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	toolchain	e634e7c1ce6b1d242f1d78d7d01ffafb	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=b5f8710912c0ca2306154826ff01789f

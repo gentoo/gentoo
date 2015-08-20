@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-apps/util-linux
+DESCRIPTION=Lightweight cross platform C++ GUID/UUID library
+EAPI=5
+HOMEPAGE=https://github.com/graeme-hill/crossguid
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=sys-apps/util-linux
+SLOT=0
+SRC_URI=https://github.com/graeme-hill/crossguid/archive/8f399e8bd4252be9952f3dfa8199924cc8487ca4.tar.gz -> crossguid-0_pre20150817.tar.gz
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=bda223199829936f5931bb2aae7c9be9
