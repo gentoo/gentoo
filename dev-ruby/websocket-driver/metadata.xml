@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>ruby</herd>
   <upstream>
-    <remote-id type="github">faye/websocket-driver</remote-id>
+    <remote-id type="github">faye/websocket-driver-ruby</remote-id>
   </upstream>
 </pkgmetadata>
