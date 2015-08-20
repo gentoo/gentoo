@@ -81,7 +81,7 @@ src_unpack() {
 	if [[ ${PV} == 9999* ]] ; then
 		git-2_src_unpack
 	else
-		unpack ${P}.tar.bz2
+		unpack ${P}.tar.xz
 	fi
 }
 
