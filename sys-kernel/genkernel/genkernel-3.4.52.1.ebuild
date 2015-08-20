@@ -5,7 +5,7 @@
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
 
-EAPI="3"
+EAPI="5"
 
 VERSION_BUSYBOX='1.20.2'
 VERSION_DMRAID='1.0.0.rc16-3'
@@ -41,7 +41,7 @@ then
 	KEYWORDS=""
 else
 	inherit bash-completion-r1 eutils
-	SRC_URI="mirror://gentoo/${P}.tar.bz2
+	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz
 		${COMMON_URI}"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
@@ -71,7 +71,7 @@ src_unpack() {
 	if [[ ${PV} == 9999* ]] ; then
 		git-2_src_unpack
 	else
-		unpack ${P}.tar.bz2
+		default
 	fi
 }
 
@@ -97,44 +97,49 @@ src_prepare() {
 		"${S}"/defaults/software.sh \
 		|| die "Could not adjust versions"
 
+	# sparc doesn't need crosscompiler anymore
+	# remove this after >3.4.51.2
+	sed -i -e "s:^DEFAULT_KERNEL_CC:#DEFAULT_KERNEL_CC:g" \
+		"${S}"/arch/sparc64/config.sh \
+		|| die "Could not remove sparc64 crosscompiler config"
+
 	epatch_user
 }
 
 src_compile() {
 	if [[ ${PV} == 9999* ]]; then
-		emake || die
+		emake
 	fi
 }
 
 src_install() {
 	insinto /etc
-	doins "${S}"/genkernel.conf || die "doins genkernel.conf"
+	doins "${S}"/genkernel.conf
 
-	doman genkernel.8 || die "doman"
-	dodoc AUTHORS ChangeLog README TODO || die "dodoc"
+	doman genkernel.8
+	dodoc AUTHORS ChangeLog README TODO
 
-	dobin genkernel || die "dobin genkernel"
+	dobin genkernel
 
 	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf
 
 	insinto /usr/share/genkernel
-	doins -r "${S}"/* || die "doins"
+	doins -r "${S}"/*
 	use ibm && cp "${S}"/ppc64/kernel-2.6-pSeries "${S}"/ppc64/kernel-2.6 || \
 		cp "${S}"/arch/ppc64/kernel-2.6.g5 "${S}"/arch/ppc64/kernel-2.6
 
 	# Copy files to /var/cache/genkernel/src
-	elog "Copying files to /var/cache/genkernel/src..."
-	mkdir -p "${D}"/var/cache/genkernel/src
-	cp -f \
-		"${DISTDIR}"/mdadm-${VERSION_MDADM}.tar.bz2 \
-		"${DISTDIR}"/dmraid-${VERSION_DMRAID}.tar.bz2 \
-		"${DISTDIR}"/LVM2.${VERSION_LVM}.tgz \
-		"${DISTDIR}"/busybox-${VERSION_BUSYBOX}.tar.bz2 \
-		"${DISTDIR}"/fuse-${VERSION_FUSE}.tar.gz \
-		"${DISTDIR}"/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2 \
-		"${DISTDIR}"/gnupg-${VERSION_GPG}.tar.bz2 \
-		"${DISTDIR}"/open-iscsi-${VERSION_ISCSI}.tar.gz \
-		"${D}"/var/cache/genkernel/src || die "Copying distfiles..."
+	GKDISTDIR=/usr/share/genkernel/distfiles/
+	elog "Copying files to ${GKDISTDIR}..."
+	insinto $GKDISTDIR
+	doins "${DISTDIR}"/mdadm-${VERSION_MDADM}.tar.bz2
+	doins "${DISTDIR}"/dmraid-${VERSION_DMRAID}.tar.bz2
+	doins "${DISTDIR}"/LVM2.${VERSION_LVM}.tgz
+	doins "${DISTDIR}"/busybox-${VERSION_BUSYBOX}.tar.bz2
+	doins "${DISTDIR}"/fuse-${VERSION_FUSE}.tar.gz
+	doins "${DISTDIR}"/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
+	doins "${DISTDIR}"/gnupg-${VERSION_GPG}.tar.bz2
+	doins "${DISTDIR}"/open-iscsi-${VERSION_ISCSI}.tar.gz
 
 	newbashcomp "${FILESDIR}"/genkernel.bash "${PN}"
 	insinto /etc
