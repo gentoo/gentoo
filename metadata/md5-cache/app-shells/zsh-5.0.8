@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=sys-apps/groff >=sys-libs/ncurses-5.1 static? ( >=sys-libs/ncurses-5.7-r4[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm )
+DEPEND=sys-apps/groff >=sys-libs/ncurses-5.1 static? ( >=sys-libs/ncurses-5.7-r4:5=[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm )
 DESCRIPTION=UNIX Shell similar to the Korn shell
 EAPI=5
 HOMEPAGE=http://www.zsh.org/
@@ -7,8 +7,8 @@ IUSE=caps debug doc examples gdbm maildir pcre static unicode
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=ZSH gdbm? ( GPL-2 )
 PDEPEND=examples? ( app-doc/zsh-lovers )
-RDEPEND=>=sys-libs/ncurses-5.1 static? ( >=sys-libs/ncurses-5.7-r4[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm )
+RDEPEND=>=sys-libs/ncurses-5.1 static? ( >=sys-libs/ncurses-5.7-r4:5=[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm )
 SLOT=0
 SRC_URI=http://www.zsh.org/pub/zsh-5.0.8.tar.bz2 doc? ( http://www.zsh.org/pub/zsh-5.0.8-doc.tar.bz2 )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=11d752b87100ada3b11859a0b0f3b6f9
+_md5_=43bb3cb4386dc8fb73349eeea1f99237

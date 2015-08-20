@@ -2157,7 +2157,7 @@ app-shells/shish 0.7_pre3-r1: The diet shell
 app-shells/smrsh 8.14.5 8.14.6 8.14.7 8.14.8 8.14.9: Sendmail restricted shell, for use with MTAs other than Sendmail
 app-shells/soapbox 0.3.1-r1: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.3-r1 1.2.6 1.2.7: An advanced, cross-platform object oriented scripting shell based on the squirrel scripting language
-app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3: Enhanced version of the Berkeley C shell (csh)
+app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanced version of the Berkeley C shell (csh)
 app-shells/zsh 5.0.5 5.0.7-r1 5.0.7-r2 5.0.8 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.12.0-r2 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
@@ -6779,7 +6779,7 @@ dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/cddb-py 1.4 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
-dev-python/celery 3.1.17 3.1.18: Open source asynchronous task queue/job queue based on distributed message passing
+dev-python/celery 3.1.17 3.1.18 3.1.18-r1: Open source asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2: CLI Application Framework for Python
 dev-python/certifi 14.05.14 2015.04.28: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 0.8.6 0.9.2 1.0.2 1.0.3 1.1.0 1.1.2: Foreign Function Interface for Python calling C code
@@ -13880,7 +13880,7 @@ net-misc/iperf 2.0.5-r2 3.0.11 3.1_beta3: A TCP, UDP, and SCTP network bandwidth
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r1: ipsvd is a set of internet protocol service daemons for Unix
-net-misc/iputils 20121221 20121221-r1 20121221-r2 99999999: Network monitoring tools including ping and ping6
+net-misc/iputils 20121221 20121221-r1 20121221-r2 20150815 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 0.94.1 0.97.4 0.99.0: IPv6 address calculator
 net-misc/ipx-utils 1.1-r3: The IPX Utilities
 net-misc/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
