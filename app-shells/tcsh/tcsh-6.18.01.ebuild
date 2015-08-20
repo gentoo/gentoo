@@ -66,8 +66,7 @@ src_configure() {
 	econf \
 		--prefix="${EPREFIX:-/}" \
 		--datarootdir='${prefix}/usr/share' \
-		$(use_enable nls) \
-		|| die
+		$(use_enable nls)
 }
 
 src_install() {
