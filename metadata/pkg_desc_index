@@ -11808,7 +11808,7 @@ media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library f
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.4.6 10.5.8 10.6.1 10.6.2 10.6.3: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5: An Open Source library for Flash movie generation
-media-libs/mlt 0.8.2 0.8.8 0.9.0 0.9.8: An open source multimedia framework, designed and developed for television broadcasting
+media-libs/mlt 0.9.0 0.9.8: An open source multimedia framework, designed and developed for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
 media-libs/mutagen 1.22 1.27 1.29: Mutagen is an audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
