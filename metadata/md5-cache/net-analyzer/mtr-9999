@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure postinst prepare unpack
-DEPEND=sys-libs/ncurses gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 ) sys-devel/autoconf virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1
+DEPEND=sys-libs/ncurses:5= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 ) sys-devel/autoconf virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=My TraceRoute, an Excellent network diagnostic tool
 EAPI=5
 HOMEPAGE=http://www.bitwizard.nl/mtr/
 IUSE=gtk ipv6 +filecaps
 LICENSE=GPL-2
-RDEPEND=sys-libs/ncurses gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+RDEPEND=sys-libs/ncurses:5= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=mirror://gentoo/gtk-2.0-for-mtr.m4.bz2
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fcaps	3a17f16a21cfbb14acca5c05e5c130eb	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9b44e73f12c30396fe4348fb8baa89cf
+_md5_=3eafcc6b539e044cd76a6cce7833b23d
