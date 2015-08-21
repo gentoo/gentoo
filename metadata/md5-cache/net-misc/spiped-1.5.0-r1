@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-libs/openssl:*
+DESCRIPTION=secure pipe daemon
+EAPI=5
+HOMEPAGE=http://www.tarsnap.com/spiped.html
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/openssl:* !net-mail/qlogtools
+SLOT=0
+SRC_URI=http://www.tarsnap.com/spiped/spiped-1.5.0.tgz
+_md5_=5cd6eb007fa9a075f2ad8275425ea37a
