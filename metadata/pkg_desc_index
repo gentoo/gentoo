@@ -7675,7 +7675,7 @@ dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system,
 dev-python/rply 0.7.3: Pure python parser generator that also works with RPython
 dev-python/rpy 2.5.4 2.6.1 2.6.2: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rsa 3.1.4-r1: Pure-Python RSA implementation
+dev-python/rsa 3.1.4-r1 3.2: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtf2xml 1.33-r1: Converts a Microsoft RTF file to structured XML
 dev-python/rtgraph 0.70-r1: Widgets for graphing data in real-time using PyGTK, and UI components for controlling the graphs
