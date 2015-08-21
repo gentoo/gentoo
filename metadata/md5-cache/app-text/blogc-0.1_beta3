@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure prepare
+DEPEND=test? ( virtual/pkgconfig dev-util/cmocka )
+DESCRIPTION=A blog compiler
+EAPI=5
+HOMEPAGE=http://blogc.org/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/blogc/blogc/releases/download/v0.1-beta.3/blogc-0.1-beta.3.tar.xz
+_md5_=ce646fd25cfb6c60a2dc72f28396c935
