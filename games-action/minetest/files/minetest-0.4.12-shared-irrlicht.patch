@@ -1,0 +1,17 @@
+diff --git a/cmake/Modules/FindIrrlicht.cmake b/cmake/Modules/FindIrrlicht.cmake
+index dce78fb..56a1003 100644
+--- a/cmake/Modules/FindIrrlicht.cmake
++++ b/cmake/Modules/FindIrrlicht.cmake
+@@ -44,11 +44,7 @@ else()
+ 		/usr/include/irrlicht
+ 	)
+ 
+-	FIND_LIBRARY(IRRLICHT_LIBRARY NAMES libIrrlicht.a Irrlicht
+-		PATHS
+-		/usr/local/lib
+-		/usr/lib
+-	)
++	FIND_LIBRARY(IRRLICHT_LIBRARY NAMES Irrlicht)
+ endif()
+ 
+ MESSAGE(STATUS "IRRLICHT_SOURCE_DIR = ${IRRLICHT_SOURCE_DIR}")
