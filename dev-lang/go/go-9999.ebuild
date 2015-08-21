@@ -143,7 +143,7 @@ src_test()
 
 	cd src
 	PATH="${GOBIN}:${PATH}" \
-		./run.bash --no-rebuild --banner || die "tests failed"
+		./run.bash -no-rebuild || die "tests failed"
 }
 
 src_install()
