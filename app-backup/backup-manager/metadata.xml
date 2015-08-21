@@ -10,4 +10,7 @@
 	<use>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sukria/Backup-Manager</remote-id>
+	</upstream>
 </pkgmetadata>
