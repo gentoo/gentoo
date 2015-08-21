@@ -1,47 +1,34 @@
-diff --git a/configure b/configure
-index 0a4cb94..8f7ef75 100755
---- a/configure
-+++ b/configure
-@@ -591,11 +591,6 @@ case $host_cpu in
+Index: x264-9999/configure
+===================================================================
+--- x264-9999.orig/configure
++++ x264-9999/configure
+@@ -669,11 +669,6 @@ case $host_cpu in
              if [[ "$asm" == auto && "$CFLAGS" != *-march* ]]; then
                  CFLAGS="$CFLAGS -march=i686"
              fi
 -            if [[ "$asm" == auto && "$CFLAGS" != *-mfpmath* ]]; then
--                CFLAGS="$CFLAGS -mfpmath=sse -msse"
+-                CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2"
 -            fi
 -            CFLAGS="-m32 $CFLAGS"
 -            LDFLAGS="-m32 $LDFLAGS"
          elif [ $compiler = ICC ]; then
              # icc on linux has various degrees of mod16 stack support
              if [ $SYS = LINUX ]; then
-@@ -627,13 +622,8 @@ case $host_cpu in
-         ARCH="X86_64"
-         AS="yasm"
+@@ -706,13 +701,8 @@ case $host_cpu in
+         AS="${AS-yasm}"
+         AS_EXT=".asm"
          ASFLAGS="$ASFLAGS -DARCH_X86_64=1 -I\$(SRCPATH)/common/x86/"
 -        [ $compiler = GNU ] && CFLAGS="-m64 $CFLAGS" && LDFLAGS="-m64 $LDFLAGS"
          if [ "$SYS" = MACOSX ]; then
-             ASFLAGS="$ASFLAGS -f macho64 -m amd64 -DPIC -DPREFIX"
+             ASFLAGS="$ASFLAGS -f macho64 -DPIC -DPREFIX"
 -            if cc_check '' "-arch x86_64"; then
 -                CFLAGS="$CFLAGS -arch x86_64"
 -                LDFLAGS="$LDFLAGS -arch x86_64"
 -            fi
          elif [ "$SYS" = WINDOWS -o "$SYS" = CYGWIN ]; then
-             ASFLAGS="$ASFLAGS -f win32 -m amd64"
+             ASFLAGS="$ASFLAGS -f win64"
              # only the GNU toolchain is inconsistent in prefixing function names with _
-@@ -641,7 +631,11 @@ case $host_cpu in
-             [ $compiler = GNU ] && LDFLAGS="$LDFLAGS -Wl,--nxcompat -Wl,--dynamicbase"
-             [ $compiler = GNU ] && RCFLAGS="--target=pe-x86-64 $RCFLAGS"
-         else
--            ASFLAGS="$ASFLAGS -f elf -m amd64"
-+            if cpp_check "" "" "__ILP32__" ; then
-+                ASFLAGS="$ASFLAGS -f elf -m x32"
-+            else
-+                ASFLAGS="$ASFLAGS -f elf -m amd64"
-+            fi
-         fi
-         ;;
-     powerpc|powerpc64)
-@@ -1006,10 +1000,6 @@ if [ "$pic" = "yes" ] ; then
+@@ -1139,20 +1129,10 @@ if [ "$pic" = "yes" ] ; then
      [ $SYS = SunOS -a "$ARCH" = "X86" ] && SOFLAGS="$SOFLAGS -mimpure-text"
  fi
  
@@ -52,4 +39,13 @@ index 0a4cb94..8f7ef75 100755
  if [ "$strip" = "yes" ]; then
      LDFLAGS="$LDFLAGS -s"
  fi
-
+ 
+-if [ "$debug" = "yes" ]; then
+-    CFLAGS="-O1 -g $CFLAGS"
+-else
+-    CFLAGS="-O3 -ffast-math $CFLAGS"
+-fi
+-
+ if cc_check '' -fno-tree-vectorize ; then
+     CFLAGS="$CFLAGS -fno-tree-vectorize"
+ fi
