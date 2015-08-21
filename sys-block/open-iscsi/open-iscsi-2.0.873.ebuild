@@ -14,7 +14,7 @@ SRC_URI="http://www.open-iscsi.org/bits/${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="debug slp"
 
 DEPEND="slp? ( net-libs/openslp )"
