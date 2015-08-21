@@ -15294,6 +15294,7 @@ sci-physics/mpb 1.4.2-r2: Photonic band structure program
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 8.1.86 8.1.86-r1 8.2.10: Lund Monte Carlo high-energy physics event generator
 sci-physics/reduze 2.0.9: Program for reducing Feynman integrals
+sci-physics/rivet 2.3.0: Toolkit for validation of Monte Carlo HEP event generators
 sci-physics/root 5.32.03-r2 5.34.26 5.34.32 6.02.05-r2: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.1: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6: Hadron Seedless Infrared-Safe Cone jet algorithm
