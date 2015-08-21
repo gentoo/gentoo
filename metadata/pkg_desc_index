@@ -6860,7 +6860,7 @@ dev-python/django-auth-ldap 1.2.2 1.2.6: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
 dev-python/django-celery 3.1.16: Celery Integration for Django
 dev-python/django-compressor 1.4 1.5: Compresses linked and inline javascript or CSS into a single cached file
-dev-python/django-crispy-forms 1.4.0 1.5.0: Best way to have Django DRY forms
+dev-python/django-crispy-forms 1.4.0 1.5.0 1.5.1: Best way to have Django DRY forms
 dev-python/django-debug-toolbar 1.3.2: A configurable set of panels that display debug information
 dev-python/django-discover-runner 0.4 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
@@ -7272,7 +7272,7 @@ dev-python/passwordmeter 0.1.7-r1: A password strength measuring library
 dev-python/paste 1.7.5.1-r1 1.7.5.1-r2 2.0.2: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 1.5.2: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2: A pluggable command-line frontend, including commands to setup package file layouts
-dev-python/path-py 7.3 7.4: A module wrapper for os.path
+dev-python/path-py 7.3 7.4 7.6.1: A module wrapper for os.path
 dev-python/pathlib 1.0.1: Object-oriented filesystem paths
 dev-python/pathtools 0.1.2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.4.0: Python module to describe statistical models and design matrices
@@ -7312,7 +7312,7 @@ dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visua
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progressbar 2.3-r1: Text progressbar library for python
 dev-python/promise 0.2.2-r1: Bytecode optimisation using staticness assertions
-dev-python/prompt_toolkit 0.45 0.46: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 0.45 0.46 0.47: Building powerful interactive command lines in Python
 dev-python/protorpc 0.10.0: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
 dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1: Retrieve information on running processes and system utilization
@@ -10426,7 +10426,7 @@ kde-apps/kdegraphics-mobipocket 4.14.3: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 4.14.3 15.08.0: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 15.08.0: Non-linear video editing suite by KDE
+kde-apps/kdenlive 0.9.8 0.9.10 15.08.0: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3: KDE GUI for passwd
 kde-apps/kdesdk-kioslaves 4.14.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 4.14.3: KDE SDK - merge this to pull in all kdesdk-derived packages
@@ -12723,7 +12723,6 @@ media-video/istanbul 0.2.2 0.2.2.1_pre20120909: Istanbul is a screencast applica
 media-video/jubler 4.6.1-r3: Java subtitle editor
 media-video/kaffeine 1.2.2-r1: KDE media player with digital TV support
 media-video/kamerka 0.10: Simple photo taking application with fancy animated interface
-media-video/kdenlive 0.9.8 0.9.10: A non-linear video editing suite for KDE
 media-video/kffmpegthumbnailer 1.1.0-r3: KDE thumbnailer based on ffmpegthumbnailer
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.11.3d-r3: Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend
@@ -16921,8 +16920,8 @@ www-client/epiphany 3.14.2 3.16.2 3.16.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.1.1 38.2.0 40.0.2: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 40.0.2: Firefox Web Browser
-www-client/google-chrome 44.0.2403.155_p1: The web browser from Google
-www-client/google-chrome-beta 45.0.2454.37_p1: The web browser from Google
+www-client/google-chrome 44.0.2403.157_p1: The web browser from Google
+www-client/google-chrome-beta 45.0.2454.46_p1: The web browser from Google
 www-client/google-chrome-unstable 46.0.2486.0_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -16978,7 +16977,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.508: Adobe Flash Player
-www-plugins/chrome-binary-plugins 44.0.2403.155_p1 45.0.2454.37_beta1 46.0.2486.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 44.0.2403.157_p1 45.0.2454.46_beta1 46.0.2486.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
