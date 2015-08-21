@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit autotools eutils
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
@@ -19,9 +20,9 @@ RESTRICT="test"
 # to fix bug 85999
 RDEPEND="
 	>=sys-fs/e2fsprogs-1.27
-	>=sys-libs/ncurses-5.7-r7
+	>=sys-libs/ncurses-5.7-r7:5=
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
-	readline? ( >=sys-libs/readline-5.2 )
+	readline? ( >=sys-libs/readline-5.2:0= )
 	selinux? ( sys-libs/libselinux )
 "
 DEPEND="
@@ -31,9 +32,9 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.2-devmapper.patch
-
-	epatch "${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
+	epatch \
+		"${FILESDIR}"/${PN}-3.2-devmapper.patch \
+		"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
 	eautoreconf
 }
 
