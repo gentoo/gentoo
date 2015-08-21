@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit eutils autotools fcaps flag-o-matic git-r3
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
@@ -16,7 +17,7 @@ KEYWORDS=""
 IUSE="gtk ipv6"
 
 RDEPEND="
-	sys-libs/ncurses
+	sys-libs/ncurses:5=
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:2
