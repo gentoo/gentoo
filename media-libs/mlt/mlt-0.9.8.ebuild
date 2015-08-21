@@ -47,7 +47,7 @@ RDEPEND="
 	kde? ( kde-base/kdelibs:4
 		media-libs/libexif )
 	!media-libs/mlt++
-	lua? ( >=dev-lang/lua-5.1.4-r4 )
+	lua? ( >=dev-lang/lua-5.1.4-r4:= )
 	ruby? ( ${RUBY_DEPS} )"
 #	sox? ( media-sound/sox )
 #	java? ( >=virtual/jre-1.5 )
