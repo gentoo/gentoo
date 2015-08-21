@@ -39,10 +39,6 @@
 # https://github.com/rsyslog/rsyslog/issues/489
 =dev-libs/liblognorm-1.1.2
 
-# Michael Palimaka <kensington@gentoo.org> (20 Aug 2015)
-# Causes build failure in many revdeps
-=kde-base/kdelibs-4.14.11
-
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Masked for testing
 =net-misc/iputils-20150815
