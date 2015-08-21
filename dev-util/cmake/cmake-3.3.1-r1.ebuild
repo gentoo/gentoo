@@ -11,7 +11,8 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="http://www.cmake.org/"
-SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz"
+SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz
+	http://www.cmake.org/gitweb?p=cmake.git;a=patch;h=b9ec9392da21a3421e48c6961976060d872faffb -> ${PN}-3.3.1-FindPkgConfig_remove_variable_dereference.patch"
 
 LICENSE="CMake"
 SLOT="0"
@@ -62,6 +63,9 @@ PATCHES=(
 	# respect python eclasses
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
 	"${FILESDIR}"/${PN}-3.1.0-FindPythonInterp.patch
+
+	#upstream fixes (can usually be removed with a version bump)
+	"${DISTDIR}/${PN}-3.3.1-FindPkgConfig_remove_variable_dereference.patch"
 )
 
 cmake_src_bootstrap() {
