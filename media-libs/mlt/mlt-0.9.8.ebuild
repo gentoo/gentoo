@@ -4,7 +4,8 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit eutils toolchain-funcs multilib python-single-r1
+USE_RUBY="ruby19"
+inherit eutils toolchain-funcs multilib python-single-r1 ruby-single
 
 DESCRIPTION="An open source multimedia framework, designed and developed for television broadcasting"
 HOMEPAGE="http://www.mltframework.org/"
@@ -46,8 +47,8 @@ RDEPEND="
 	kde? ( kde-base/kdelibs:4
 		media-libs/libexif )
 	!media-libs/mlt++
-	lua? ( >=dev-lang/lua-5.1.4-r4 )
-	ruby? ( dev-lang/ruby )"
+	lua? ( >=dev-lang/lua-5.1.4-r4:= )
+	ruby? ( ${RUBY_DEPS} )"
 #	sox? ( media-sound/sox )
 #	java? ( >=virtual/jre-1.5 )
 #	perl? ( dev-lang/perl )
