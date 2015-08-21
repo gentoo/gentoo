@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst preinst prepare test unpack
+DEFINED_PHASES=compile install postinst preinst prepare pretend test unpack
 DEPEND=>=dev-lang/go-bootstrap-1.4.1 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A concurrent garbage collected and typesafe programming language
 EAPI=5
@@ -6,4 +6,4 @@ HOMEPAGE=http://www.golang.org
 LICENSE=BSD
 SLOT=0/9999
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e4ce44645079c26971fbd59ddb5ce568
+_md5_=eebd92e0de1a8554bcfab78b83812a8c
