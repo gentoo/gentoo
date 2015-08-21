@@ -10,12 +10,13 @@ DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
 HOMEPAGE="http://www.jetbrains.com/pycharm/"
 SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
 
-LICENSE="Apache-2.0 BSD CDDL MIT-with-advertising"
+LICENSE="PyCharm_Academic PyCharm_Classroom PyCharm PyCharm_OpenSource PyCharm_Preview"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.6"
+RDEPEND=">=virtual/jre-1.6
+	 dev-python/pip"
 DEPEND=""
 
 RESTRICT="mirror strip"
