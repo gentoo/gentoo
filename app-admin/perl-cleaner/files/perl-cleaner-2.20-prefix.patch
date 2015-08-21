@@ -1,0 +1,111 @@
+add Prefix and Darwin support
+
+--- perl-cleaner
++++ perl-cleaner
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!@GENTOO_PORTAGE_EPREFIX@/bin/bash
+ # vim: set et sw=4 sts=4 tw=80:
+ # Copyright 2005-2014 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+@@ -22,13 +22,13 @@
+ PKGS_EXCEPTIONS="dev-lang/perl sys-devel/libperl app-emulation/emul-linux-x86-baselibs"
+ PKGS_MANUAL=""
+ 
+-PKG_DBDIR=/var/db/pkg
++PKG_DBDIR="@GENTOO_PORTAGE_EPREFIX@/var/db/pkg"
+ 
+ # See bug 504116 for details
+-if [ -e /lib/gentoo/functions.sh ]; then
+-    . /lib/gentoo/functions.sh
+-elif [ -e /etc/init.d/functions.sh ]; then
+-    . /etc/init.d/functions.sh
++if [ -e "@GENTOO_PORTAGE_EPREFIX@/lib/gentoo/functions.sh" ]; then
++    . "@GENTOO_PORTAGE_EPREFIX@/lib/gentoo/functions.sh"
++elif [ -e "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/functions.sh" ]; then
++    . "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/functions.sh"
+ else
+     echo "$0: Unable to find functions.sh"
+     exit 1
+@@ -157,7 +157,7 @@
+ 
+     veinfo 1 "Locating ph files for removal"
+     eindent ""
+-    for i in /usr/lib{,64,x32}/perl5 ; do
++    for i in "@GENTOO_PORTAGE_EPREFIX@"/usr/lib{,64,x32}/perl5 ; do
+         [[ ! -d ${i} ]] && continue
+         veinfo 4 "...in ${i}"
+         while IFS= read -r -d $'\0' file ; do
+@@ -183,13 +183,13 @@
+         veinfo 1 "Pretend. Nothing to do."
+         return
+     fi
+-    pushd /usr/include > /dev/null
++    pushd "@GENTOO_PORTAGE_EPREFIX@"/usr/include > /dev/null
+     if [[ ${version} =~ ^5.(8|10) ]] ; then
+         eindent
+-        veinfo 2 "...in /usr/include"
++        veinfo 2 "...in @GENTOO_PORTAGE_EPREFIX@/usr/include"
+         h2ph ${option} * 2>/dev/null
+         for dir in sys arpa netinet bits security asm gnu linux ; do
+-            veinfo 2 "...in /usr/include/$dir/"
++            veinfo 2 "...in @GENTOO_PORTAGE_EPREFIX@/usr/include/$dir/"
+             h2ph ${option} -r $dir/*
+         done
+         eoutdent
+@@ -220,13 +220,16 @@
+         veinfo 1 "Locating ebuilds linked against libperl"
+     fi
+ 
++    local scanelf=scanelf
++    [[ -e "@GENTOO_PORTAGE_EPREFIX@"/usr/lib/libperl.dylib ]] \
++        && scanelf=scanmacho
+     if ${LIBPERL} ; then
+-        if ! type -P scanelf >/dev/null 2>&1; then
+-            ewarn "scanelf not found! Install app-misc/pax-utils."
++        if ! type -P ${scanelf} >/dev/null 2>&1; then
++            ewarn "${scanelf} not found! Install app-misc/pax-utils."
+             ewarn "--libperl is disbled."
+             LIBPERL=false
+         else
+-            SONAME="$(scanelf -qBS "$(realpath /usr/lib/libperl.so 2>/dev/null )" | awk '{ print $1 }')"
++            SONAME="$(${scanelf} -qBS "$(realpath "@GENTOO_PORTAGE_EPREFIX@"/usr/lib/libperl.{so,dylib} 2>/dev/null )" | awk '{ print $1 }')"
+             veinfo 4 SONAME="${SONAME}"
+         fi
+     fi
+@@ -268,7 +271,7 @@
+             while read -r type file ; do
+                 shopt -s extglob
+                 [[ ${type} == obj ]] || [[ ${type} == sym ]] || continue
+-                [[ ${file} =~ ^/usr/(share|lib(32|64|x32)?)/perl5 ]] || continue
++                [[ ${file} =~ ^"@GENTOO_PORTAGE_EPREFIX@"/usr/(share|lib(32|64|x32)?)/perl5 ]] || continue
+                 file=${file% +(!([[:space:]])) +([[:digit:]])}
+                 shopt -u extglob
+                 if ${FORCE} || outdated_path "${file}" ; then
+@@ -302,7 +305,7 @@
+ 
+         if ${LIBPERL} ; then
+             # We assume the broken libs have all bin or lib in their path
+-            broken_libs="$(scanelf -qBn < <(awk '/^(obj|sym) [^ ]*\/(s?bin|lib(32|64|x32)?)\// && ! /^obj [^ ]*\/usr\/lib\/debug\//{ print $2 }' ${content} ) | grep -o 'libperl\.so\.[0-9.]*' | sort -u )"
++            broken_libs="$(${scanelf} -qBn < <(awk '/^(obj|sym) [^ ]*\/(s?bin|lib(32|64|x32)?)\// && ! /^obj [^ ]*\/usr\/lib\/debug\//{ print $2 }' ${content} ) | grep -o 'libperl\.\(so\|dylib\)\.[0-9.]*' | sort -u )"
+             if [[ -n "${broken_libs}" ]] ; then
+                 if ${FORCE} || [[ ${broken_libs} != ${SONAME} ]] ; then
+                     PKGS_TO_REMERGE+=" ${CATPKGVER}"
+@@ -327,7 +330,7 @@
+         exit $?
+     fi
+ 
+-    if [[ ${PMS_COMMAND[${PMS_INDEX}]} == emerge && -x /usr/bin/portageq ]] ; then
++    if [[ ${PMS_COMMAND[${PMS_INDEX}]} == emerge && -x "@GENTOO_PORTAGE_EPREFIX@"/usr/bin/portageq ]] ; then
+         # Filter out --getbinpkg, --getbinpkgonly, --usepkg and --usepkgonly options in EMERGE_DEFAULT_OPTS
+         emerge_default_opts=""
+         for option in $(portageq envvar EMERGE_DEFAULT_OPTS ) ; do
+@@ -383,7 +386,7 @@
+     veinfo 1 "or edited. This script cannot deal with them."
+     vecho 1
+ 
+-    for i in /usr/{share,lib{,32,64,x32}}/perl5 ; do
++    for i in "@GENTOO_PORTAGE_EPREFIX@"/usr/{share,lib{,32,64,x32}}/perl5 ; do
+         [[ -d $i ]] && perlpath[${#perlpath[*]}]="$(realpath $i 2>/dev/null )"
+     done
+     [[ ${#perlpath[*]} == 0 ]] && return
