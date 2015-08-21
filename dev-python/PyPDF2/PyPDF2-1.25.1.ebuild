@@ -22,7 +22,7 @@ python_test() {
 	einfo "expected failure meaning the installation of PyPDF2 is working"
 	einfo "He plans to update the causative file to see it pass"; einfo ""
 
-        "${PYTHON}" -m unittest Tests.tests || die "Tests failed under ${EPYTHON}"
+	"${PYTHON}" -m unittest Tests.tests || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
