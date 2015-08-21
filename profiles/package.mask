@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (21 Aug 2015)
+# This version breaks tests in app-admin/rsyslog and 
+# also breaks rule settings.
+# See
+# http://lists.adiscon.net/pipermail/rsyslog/2015-August/041013.html
+# and
+# https://github.com/rsyslog/rsyslog/issues/489
+=dev-libs/liblognorm-1.1.2
+
 # Michael Palimaka <kensington@gentoo.org> (20 Aug 2015)
 # Causes build failure in many revdeps
 =kde-base/kdelibs-4.14.11
