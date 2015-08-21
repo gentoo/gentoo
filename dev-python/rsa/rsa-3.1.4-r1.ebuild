@@ -18,7 +18,7 @@ KEYWORDS="amd64 arm x86"
 IUSE="test"
 
 RDEPEND="
-	>=dev-python/pyasn1-0.0.13[${PYTHON_USEDEP}]
+	>=dev-python/pyasn1-0.1.3[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-0.6.10[${PYTHON_USEDEP}]
