@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -37,6 +37,7 @@
+ AC_CHECK_LIB(curses, initscr, LIBS="$LIBS -lcurses",
+   AC_CHECK_LIB(ncurses, initscr, LIBS="$LIBS -lncurses")
+ )
++AC_SEARCH_LIBS(nodelay, tinfo)
+ AC_CHECK_FUNC(use_default_colors, 
+   AC_DEFINE(HAVE_COLORS, , "Define if you want colored (fruit salad) display option")
+ )
