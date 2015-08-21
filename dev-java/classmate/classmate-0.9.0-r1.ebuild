@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,17 +14,22 @@ SRC_URI="https://github.com/cowtowncoder/java-classmate/archive/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.5"
-DEPEND=">=virtual/jdk-1.5
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6
 	test? ( dev-java/junit:4 )"
 
 S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/main/java"
+
+# This one test is buggy.
+JAVA_RM_FILES=(
+	src/test/java/com/fasterxml/classmate/AnnotationsTest.java
+)
 
 java_prepare() {
 	rm pom.xml || die
