@@ -3743,11 +3743,11 @@ dev-java/cdegroot-db 0.08-r1: OO database written in Java
 dev-java/cdi-api 1.2: Contexts and Dependency Injection for the Java EE platform
 dev-java/cglib 3.0 3.1: cglib is a powerful, high performance and quality Code Generation Library
 dev-java/charva 1.1.4-r1: A Java Windowing Toolkit for Text Terminals
-dev-java/classmate 0.9.0: Library for introspecting generic type information of types, member/static methods, fields
+dev-java/classmate 0.9.0-r1: Library for introspecting generic type information of types, member/static methods, fields
 dev-java/cldc-api 1.1-r1: Java ME Connected Limited Device Configuration API
 dev-java/cocoon 2.1.11: A Web Publishing Framework for Apache
 dev-java/codemodel 2.6: Java library for code generators
-dev-java/cofoja 1.1_p150 1.2: Contracts for Java
+dev-java/cofoja 1.2: Contracts for Java
 dev-java/colt 1.2.0-r2: A set of Open Source Libraries for High Performance Scientific and Technical Computing in Java
 dev-java/commons-attributes 2.2-r2: Commons Attributes enables Java programmers to use C#/.Net-style attributes in their code
 dev-java/commons-beanutils 1.8.0 1.8.3 1.9.2: Provides easy-to-use wrappers around Reflection and Introspection APIs
@@ -17005,7 +17005,7 @@ www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for 
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 9999: Pretty small HTTP server - a command-line tool to share files
-www-servers/resin 4.0.22 4.0.25 4.0.26 4.0.44: A fast Servlet and JSP engine
+www-servers/resin 4.0.44: A fast Servlet and JSP engine
 www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
 www-servers/skunkweb 3.4.4: robust Python web application server
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
