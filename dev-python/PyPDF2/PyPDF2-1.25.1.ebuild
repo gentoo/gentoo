@@ -16,11 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-# https://github.com/mstamy2/PyPDF2/issues/216
-RESTRICT="test"
-
 python_test() {
-        "${PYTHON}" -m unittest Tests.tests
+	# https://github.com/mstamy2/PyPDF2/issues/216
+	einfo ""; einfo "According to the author, this 1 failed test is an"
+	einfo "expected failure meaning the installation of PyPDF2 is working"
+	einfo "He plans to update the causative file to see it pass"; einfo ""
+
+        "${PYTHON}" -m unittest Tests.tests || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
