@@ -196,10 +196,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/niash_array_index.patch \
 		"${FILESDIR}"/${PN}-1.0.24-automagic_systemd.patch \
 		"${FILESDIR}"/${PN}-1.0.24-systemd_pkgconfig.patch \
-		"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch \
-		"${FILESDIR}"/${PN}-1.0.24-cross-compile.patch
-	# Fix for "make check".
-	sed -i -e 's/sane-backends 1.0.24git/sane-backends 1.0.24/' testsuite/tools/data/html*
+		"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	mv configure.{in,ac} || die
 	AT_NOELIBTOOLIZE=yes eautoreconf
 }
