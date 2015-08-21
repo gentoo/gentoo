@@ -6,14 +6,14 @@ EAPI=5
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="9"
+K_GENPATCHES_VER="20"
 K_DEBLOB_AVAILABLE="1"
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo
 detect_version
 detect_arch
 
-AUFS_VERSION=3.19_p20150511
+AUFS_VERSION=3.18.1+_p20150629
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
 # git archive -v --remote=git://git.code.sf.net/p/aufs/aufs3-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="http://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
