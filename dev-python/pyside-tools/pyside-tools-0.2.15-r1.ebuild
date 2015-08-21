@@ -4,6 +4,7 @@
 
 EAPI=5
 CMAKE_IN_SOURCE_BUILD="1"
+CMAKE_MAKEFILE_GENERATOR="emake" # bug 558248
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 VIRTUALX_COMMAND="cmake-utils_src_test"
 
