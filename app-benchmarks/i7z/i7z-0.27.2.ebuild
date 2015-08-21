@@ -7,11 +7,11 @@ EAPI=5
 inherit eutils flag-o-matic qmake-utils toolchain-funcs
 
 DESCRIPTION="A better i7 (and now i3, i5) reporting tool for Linux"
-HOMEPAGE="http://code.google.com/p/i7z/"
+HOMEPAGE="https://github.com/ajaiantilal/i7z"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
+LICENSE="GPL-2"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="X"
 

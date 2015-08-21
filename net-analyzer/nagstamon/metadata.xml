@@ -8,5 +8,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">nagstamon</remote-id>
+    <remote-id type="github">HenriWahl/nagstamon</remote-id>
   </upstream>
 </pkgmetadata>
