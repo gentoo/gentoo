@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="Command-line downloader and uploader for file-sharing websites"
 HOMEPAGE="https://github.com/mcrapet/plowshare"
@@ -31,8 +31,6 @@ DEPEND=""
 # javascript dep should be any javascript interpreter using /usr/bin/js
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix_git_invocation.patch
-
 	# Fix doc install path
 	sed -i -e "/^DOCDIR/s|plowshare|${PF}|" Makefile || die "sed failed"
 
