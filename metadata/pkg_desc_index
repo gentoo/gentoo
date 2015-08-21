@@ -6686,7 +6686,7 @@ dev-python/PyQtMobility 1.0.1: Python bindings for Nokia's QtMobility libraries
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
-dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8: Required testing tools needed in the several Salt Stack projects
+dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3: A simple Python object interface to a MySQL database schema
 dev-python/WSME 0.6.2: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
