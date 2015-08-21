@@ -19,7 +19,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-SONAME="142"
+SONAME="148"
 SLOT="0/${SONAME}"
 
 LICENSE="GPL-2"
@@ -51,6 +51,7 @@ multilib_src_configure() {
 
 	# Upstream uses this, see the cflags patch
 	use cpu_flags_x86_sse && append-flags "-msse" "-mfpmath=sse"
+	append-flags "-ffast-math"
 
 	"${S}/configure" \
 		--prefix="${EPREFIX}"/usr \
