@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-physics</herd>
+<longdescription>
+  The Rivet project (Robust Independent Validation of Experiment and
+  Theory) is a toolkit for validation of Monte Carlo event
+  generators. It provides a large (and ever growing) set of
+  experimental analyses useful for MC generator development,
+  validation, and tuning, as well as a convenient infrastructure for
+  adding your own analyses. Rivet is the most widespread way by which
+  analysis code from the LHC and other high-energy collider
+  experiments is preserved for comparison to and development of future
+  theory models.
+</longdescription>
+</pkgmetadata>
