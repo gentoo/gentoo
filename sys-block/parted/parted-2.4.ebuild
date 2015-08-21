@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,9 +19,9 @@ RESTRICT="test"
 # to fix bug 85999
 RDEPEND="
 	>=sys-fs/e2fsprogs-1.27
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:5=
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
-	readline? ( >=sys-libs/readline-5.2 )
+	readline? ( >=sys-libs/readline-5.2:0= )
 	selinux? ( sys-libs/libselinux )
 "
 DEPEND="
