@@ -105,6 +105,7 @@ fi
 PATCHES=(
 	"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 	"${FILESDIR}/224-0001-networkd-fix-neworkd-crash.patch"
+	"${FILESDIR}/224-0002-Use-getxpid-syscall-on-alpha-for-raw_getpid.patch"
 )
 
 pkg_pretend() {
