@@ -16068,7 +16068,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 2015.1.0-r2 2015.1.1 2015.1.9999: A virtual network service for Openstack
-sys-cluster/nova 2015.1.0-r3 2015.1.1-r2 2015.1.9999: A cloud computing fabric controller (main part of an IaaS system) written in Python
+sys-cluster/nova 2015.1.1-r2 2015.1.9999: A cloud computing fabric controller (main part of an IaaS system) written in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
@@ -16936,7 +16936,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 31.0.1889.99 31.0.1889.174: A fast and secure web browser
 www-client/opera-beta 31.0.1889.98 32.0.1948.4: A fast and secure web browser
-www-client/opera-developer 32.0.1926.0 32.0.1933.0: A fast and secure web browser
+www-client/opera-developer 32.0.1933.0 33.0.1963.0: A fast and secure web browser
 www-client/otter 0.9.06 0.9.07_p81 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
@@ -16952,7 +16952,7 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
 www-client/vimb 2.9: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.231.3_p1 1.0.233.3_p1 1.0.249.12_p1: A new browser for our friends
+www-client/vivaldi 1.0.249.12_p1 1.0.252.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
