@@ -1,0 +1,23 @@
+------------------------------------------------------------------------
+r39186 | kosaki | 2013-02-10 06:41:01 +0100 (Sun, 10 Feb 2013) | 1 line
+
+* gc.h (SET_MACHINE_STACK_END): use __volatile__ instead of volatile.
+
+Index: gc.h
+===================================================================
+--- gc.h	(revision 39185)
++++ gc.h	(revision 39186)
+@@ -3,9 +3,9 @@
+ #define RUBY_GC_H 1
+ 
+ #if defined(__x86_64__) && defined(__GNUC__) && !defined(__native_client__)
+-#define SET_MACHINE_STACK_END(p) __asm__ volatile ("movq\t%%rsp, %0" : "=r" (*(p)))
++#define SET_MACHINE_STACK_END(p) __asm__ __volatile__ ("movq\t%%rsp, %0" : "=r" (*(p)))
+ #elif defined(__i386) && defined(__GNUC__) && !defined(__native_client__)
+-#define SET_MACHINE_STACK_END(p) __asm__ volatile ("movl\t%%esp, %0" : "=r" (*(p)))
++#define SET_MACHINE_STACK_END(p) __asm__ __volatile__ ("movl\t%%esp, %0" : "=r" (*(p)))
+ #else
+ NOINLINE(void rb_gc_set_stack_end(VALUE **stack_end_p));
+ #define SET_MACHINE_STACK_END(p) rb_gc_set_stack_end(p)
+
+------------------------------------------------------------------------
