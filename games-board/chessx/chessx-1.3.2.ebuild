@@ -23,7 +23,7 @@ RDEPEND="dev-qt/qtprintsupport:5
 	dev-qt/qtxml:5
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools"
+	dev-qt/linguist-tools:5"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-zlib.patch
