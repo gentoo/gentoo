@@ -20,6 +20,7 @@ GSTREAMER_DEPEND="
 	dev-perl/GStreamer-Interfaces
 	media-plugins/gst-plugins-meta:0.10"
 MPLAYER_DEPEND="media-video/mplayer"
+MPV_DEPEND="media-video/mpv"
 OTHER_DEPEND="
 	media-sound/alsa-utils
 	media-sound/flac123
@@ -33,6 +34,7 @@ RDEPEND="dev-lang/perl
 	|| (
 		( ${GSTREAMER_DEPEND} )
 		( ${MPLAYER_DEPEND} )
+		( ${MPV_DEPEND} )
 		( ${OTHER_DEPEND} )
 	)"
 DEPEND="sys-devel/gettext
@@ -62,10 +64,11 @@ pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
 
-	elog "Gmusicbrowser supports gstreamer, mplayer and mpg123/ogg123..."
+	elog "Gmusicbrowser supports gstreamer, mplayer, mpv and mpg123/ogg123..."
 	elog "for audio playback. Needed dependencies:"
 	elog "Gstreamer: ${GSTREAMER_DEPEND}"
 	elog "mplayer: ${MPLAYER_DEPEND}"
+	elog "mpv: ${MPV_DEPEND}"
 	elog "mpg123/ogg123...: ${OTHER_DEPEND}"
 	elog
 	elog "This ebuild just ensures at least one implementation is installed!"
