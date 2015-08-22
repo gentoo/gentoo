@@ -20,9 +20,7 @@ DEPEND=""
 RDEPEND=""
 
 src_install() {
-	pwd
 	dodoc CHANGELOG README.rst
-	#rm AUTHORS README.markdown
 	php-pear-lib-r1_src_install
 	rm -r "${D}"/usr/share/php/docs
 }
