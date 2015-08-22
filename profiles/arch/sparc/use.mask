@@ -118,6 +118,7 @@ lensfun
 jingle
 mod_wsgi
 vaapi
+librtmp
 rtmp
 vpx
 kde

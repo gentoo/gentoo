@@ -60,6 +60,7 @@ pike
 timidity
 valgrind
 vaapi
+librtmp
 rtmp
 vpx
 kde
