@@ -1,0 +1,16 @@
+diff --git a/src/wl/sys/wl_cfg80211_hybrid.c b/src/wl/sys/wl_cfg80211_hybrid.c
+index ea0726f..1541dad 100644
+--- a/src/wl/sys/wl_cfg80211_hybrid.c
++++ b/src/wl/sys/wl_cfg80211_hybrid.c
+@@ -2047,7 +2047,11 @@ wl_notify_connect_status(struct wl_cfg80211_priv *wl, struct net_device *ndev,
+ 		}
+ 		else if ((event == WLC_E_LINK && ~(flags & WLC_EVENT_MSG_LINK)) ||
+ 			event == WLC_E_DEAUTH_IND || event == WLC_E_DISASSOC_IND) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++			cfg80211_disconnected(ndev, 0, NULL, 0, false, GFP_KERNEL);
++#else
+ 			cfg80211_disconnected(ndev, 0, NULL, 0, GFP_KERNEL);
++#endif
+ 			clear_bit(WL_STATUS_CONNECTED, &wl->status);
+ 			wl_link_down(wl);
+ 			wl_init_prof(wl->profile);
