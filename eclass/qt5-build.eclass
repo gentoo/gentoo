@@ -199,10 +199,6 @@ qt5-build_src_prepare() {
 		# Don't add -O3 to CXXFLAGS (bug 549140)
 		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
-
-		# Don't force sse2 on x86 (bug 552942)
-		sed -i -e 's/^sse2:/false:&/' \
-			mkspecs/features/qt_module.prf || die "sed failed (sse2)"
 	fi
 
 	# apply patches
