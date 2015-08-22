@@ -18,8 +18,8 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="ncurses sdl +sound X"
 
 RDEPEND="X? ( x11-libs/libX11 )
-	!ncurses? ( !X? ( !sdl? ( sys-libs/ncurses ) ) )
-	ncurses? ( sys-libs/ncurses )
+	!ncurses? ( !X? ( !sdl? ( sys-libs/ncurses[unicode] ) ) )
+	ncurses? ( sys-libs/ncurses[unicode] )
 	sdl? ( media-libs/libsdl[video,X]
 		media-libs/sdl-ttf
 		media-libs/sdl-image
