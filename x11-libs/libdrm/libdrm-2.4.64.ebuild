@@ -49,6 +49,7 @@ src_configure() {
 		$(use_enable video_cards_nouveau nouveau)
 		$(use_enable video_cards_omap omap-experimental-api)
 		$(use_enable video_cards_radeon radeon)
+		$(use_enable video_cards_radeon amdgpu)
 		$(use_enable video_cards_tegra tegra-experimental-api)
 		$(use_enable video_cards_vmware vmwgfx)
 		$(use_enable libkms)
