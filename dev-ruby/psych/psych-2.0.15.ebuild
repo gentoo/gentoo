@@ -20,10 +20,10 @@ IUSE=""
 
 DEPEND+=" >=dev-libs/libyaml-0.1.6"
 
-ruby_add_bdepend "test? ( >=dev-ruby/minitest-4.0:0 )"
+ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
-	sed -i -e '1igem "minitest", "~>4.0"' test/psych/helper.rb || die
+	sed -i -e '1igem "minitest", "~>5.0"' test/psych/helper.rb || die
 }
 
 each_ruby_configure() {
