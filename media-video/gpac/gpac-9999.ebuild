@@ -11,7 +11,6 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/gpac/gpac/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-	S="${WORKDIR}"/${PN}
 fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
@@ -65,7 +64,7 @@ my_use() {
 
 src_prepare() {
 	epatch	"${FILESDIR}"/110_all_implicitdecls.patch \
-			"${FILESDIR}"/${PN}-0.5.2-static-libs.patch \
+			"${FILESDIR}"/${PN}-0.5.3-static-libs.patch \
 			"${FILESDIR}"/${PN}-0.5.2-gf_isom_set_pixel_aspect_ratio.patch
 	sed -i -e "s:\(--disable-.*\)=\*):\1):" configure || die
 }
