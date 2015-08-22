@@ -637,10 +637,11 @@ qt4_qmake() {
 	local projectdir=${PWD/#${BUILD_DIR}/${S}}
 
 	"${BUILD_DIR}"/bin/qmake \
+		"${projectdir}" \
 		CONFIG+=nostrip \
 		LIBS+=-L"${QT4_LIBDIR}" \
-		"${projectdir}" \
-		|| die "qmake failed (${projectdir})"
+		"${myqmakeargs[@]}" \
+		|| die "qmake failed (${projectdir#${S}/})"
 }
 
 # @FUNCTION: qt4_install_module_qconfigs
