@@ -4,7 +4,7 @@
 
 EAPI=5
 XORG_MULTILIB=yes
-inherit xorg-2 toolchain-funcs versionator
+inherit xorg-2
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/pixman"
 DESCRIPTION="Low-level pixel manipulation routines"
