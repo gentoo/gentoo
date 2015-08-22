@@ -299,10 +299,6 @@ sys-infiniband/ofed ofed_drivers_ehca
 # leading to build failures. This is becoming more and more painful...
 >=kde-apps/marble-4.12.49.9999 python
 
-# Lars Wendler <polynomial-c@gentoo.org> (12 Apr 2014)
-# Required ffmpeg version still is masked (#507474)
->=media-libs/xine-lib-1.2.5 avformat
-
 # Julian Ospald <hasufell@gentoo.org> (06 Apr 2014)
 # broken wrt #501582
 <net-misc/openvpn-9999 polarssl
@@ -330,12 +326,6 @@ dev-vcs/git mediawiki
 # Sergey Popov <pinkbyte@gentoo.org> (27 Dec 2013)
 # Mask because Boost.Context library does not work on most of arches
 dev-libs/boost context
-
-# Lars Wendler <polynomial-c@gentoo.org> (26 Dec 2013)
-# Masked until upstream has fixed support with >=polarssl-1.3.0
-# (see upstream bug https://github.com/fatbob313/umurmur/issues/24)
-# and affected versions are removed from the tree.
-<media-sound/umurmur-0.2.14 polarssl
 
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2013)
 # Gstreamer support fails to build due to libtool shortcomings when using
