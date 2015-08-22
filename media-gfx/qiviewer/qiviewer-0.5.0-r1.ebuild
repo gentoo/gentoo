@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}/src"
 
 DOC_CONTENTS="If you want support for gif and tiff images
-make sure that you build dev-qt/qtgui
+make sure that you build dev-qt/qtgui:4
 with apropriate USE flags"
 
 src_prepare() {
