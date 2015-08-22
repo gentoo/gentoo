@@ -3,11 +3,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+LOGSTASH_FORWARDER_USER="${LOGSTASH_FORWARDER_USER:-logstash}"
+LOGSTASH_FORWARDER_GROUP="${LOGSTASH_FORWARDER_GROUP:-logstash}"
+
 start() {
 	local config_file=/etc/logstash-forwarder/logstash-forwarder.conf
 	local statedir=/var/lib/logstash-forwarder
 
-	if ! [[ -d ${statedir} ]]; then
+	if ! [ -d ${statedir} ]; then
 		eend 1 "logstash state directory is missing: ${statedir}"
 		return 1
 	fi
@@ -16,7 +19,8 @@ start() {
 	start-stop-daemon --start --exec /usr/bin/logstash-forwarder \
 		--make-pidfile --pidfile /run/logstash-forwarder.pid \
 		--background --wait 100 --chdir "${statedir}" \
-		--user logstash --group logstash \
+		--user ${LOGSTASH_FORWARDER_USER} \
+		--group ${LOGSTASH_FORWARDER_GROUP} \
 		-- -config="${config_file}" ${LOGSTASH_FORWARDER_ARGS}
 	eend $?
 }
@@ -24,7 +28,9 @@ start() {
 stop() {
 	ebegin "Stopping logstash-forwarder"
 	start-stop-daemon --stop --exec /usr/bin/logstash-forwarder \
-		--pidfile /run/logstash-forwarder.pid --user logstash --group logstash
+		--pidfile /run/logstash-forwarder.pid \
+		--user ${LOGSTASH_FORWARDER_USER} \
+		--group ${LOGSTASH_FORWARDER_GROUP}
 	local rc=$?
 
 	eend ${rc}
