@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">php</product>
   <announced>November 09, 2014</announced>
-  <revised>January 02, 2015: 2</revised>
+  <revised>August 22, 2015: 3</revised>
   <bug>525960</bug>
   <access>remote</access>
   <affected>
@@ -20,6 +20,13 @@
       <unaffected range="rge">5.4.38</unaffected>
       <unaffected range="rge">5.4.39</unaffected>
       <unaffected range="rge">5.4.35</unaffected>
+      <unaffected range="rge">5.4.40</unaffected>
+      <unaffected range="rge">5.4.41</unaffected>
+      <unaffected range="rge">5.4.42</unaffected>
+      <unaffected range="rge">5.4.43</unaffected>
+      <unaffected range="rge">5.4.44</unaffected>
+      <unaffected range="rge">5.4.45</unaffected>
+      <unaffected range="rge">5.4.46</unaffected>
       <vulnerable range="lt">5.5.18</vulnerable>
     </package>
   </affected>
@@ -74,5 +81,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3670">CVE-2014-3670</uri>
   </references>
   <metadata tag="requester" timestamp="Mon, 03 Nov 2014 23:38:25 +0000">ackle</metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Jan 2015 22:13:49 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Aug 2015 22:31:28 +0000">ackle</metadata>
 </glsa>

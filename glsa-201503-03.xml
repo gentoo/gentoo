@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>March 08, 2015</announced>
-  <revised>March 08, 2015: 1</revised>
+  <revised>August 22, 2015: 2</revised>
   <bug>530820</bug>
   <bug>532914</bug>
   <bug>533998</bug>
@@ -18,6 +18,12 @@
       <unaffected range="rge">5.4.37</unaffected>
       <unaffected range="rge">5.4.38</unaffected>
       <unaffected range="rge">5.4.39</unaffected>
+      <unaffected range="rge">5.4.40</unaffected>
+      <unaffected range="rge">5.4.41</unaffected>
+      <unaffected range="rge">5.4.42</unaffected>
+      <unaffected range="rge">5.4.43</unaffected>
+      <unaffected range="rge">5.4.44</unaffected>
+      <unaffected range="rge">5.4.45</unaffected>
       <vulnerable range="lt">5.5.21</vulnerable>
     </package>
   </affected>
@@ -72,5 +78,5 @@
   <metadata tag="requester" timestamp="Mon, 29 Dec 2014 01:51:48 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 08 Mar 2015 14:18:17 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 22 Aug 2015 22:32:31 +0000">K_F</metadata>
 </glsa>

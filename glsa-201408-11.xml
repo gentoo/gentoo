@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">php</product>
   <announced>August 29, 2014</announced>
-  <revised>January 02, 2015: 3</revised>
+  <revised>August 22, 2015: 4</revised>
   <bug>459904</bug>
   <bug>472204</bug>
   <bug>472558</bug>
@@ -42,6 +42,14 @@
       <unaffected range="rge">5.4.36</unaffected>
       <unaffected range="rge">5.4.37</unaffected>
       <unaffected range="rge">5.4.38</unaffected>
+      <unaffected range="rge">5.4.39</unaffected>
+      <unaffected range="rge">5.4.40</unaffected>
+      <unaffected range="rge">5.4.41</unaffected>
+      <unaffected range="rge">5.4.42</unaffected>
+      <unaffected range="rge">5.4.43</unaffected>
+      <unaffected range="rge">5.4.44</unaffected>
+      <unaffected range="rge">5.4.45</unaffected>
+      <unaffected range="rge">5.4.46</unaffected>
       <vulnerable range="lt">5.5.16</vulnerable>
     </package>
   </affected>
@@ -123,7 +131,7 @@
   <metadata tag="requester" timestamp="Fri, 23 Aug 2013 14:19:36 +0000">
     creffett
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 02 Jan 2015 22:16:35 +0000">
+  <metadata tag="submitter" timestamp="Sat, 22 Aug 2015 22:25:57 +0000">
     creffett
   </metadata>
 </glsa>
