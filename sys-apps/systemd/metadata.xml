@@ -11,7 +11,6 @@
 		<!-- TODO: drop reference to systemd-import once the oldest release in tree is >218 -->
 		<flag name="curl">Enable support for uploading journals; required to build systemd-import/systemd-pull</flag>
 		<flag name="cryptsetup">Enable cryptsetup tools (includes unit generator for crypttab)</flag>
-		<flag name="firmware-loader">Enable user-space firmware loader (for kernels prior to 3.8)</flag>
 		<flag name="gnuefi">Enable EFI boot manager and stub loader (built using <pkg>sys-boot/gnu-efi</pkg>)</flag>
 		<flag name="elfutils">Enable coredump stacktraces in the journal</flag>
 		<!-- TODO: drop reference to systemd-import once the oldest release in tree is >218 -->
