@@ -16,6 +16,7 @@ IUSE=""
 
 RDEPEND="media-libs/alsa-lib
 	media-libs/lv2
+	media-sound/jack-audio-connection-kit
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXext"
