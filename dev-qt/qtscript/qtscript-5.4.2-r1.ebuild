@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
-IUSE="scripttools"
+IUSE="+jit scripttools"
 
 DEPEND="
 	>=dev-qt/qtcore-${PV}:5
@@ -27,4 +27,11 @@ src_prepare() {
 		src/src.pro
 
 	qt5-build_src_prepare
+}
+
+src_configure() {
+	local myqmakeargs=(
+		$(usex jit '' JAVASCRIPTCORE_JIT=no)
+	)
+	qt5-build_src_configure
 }
