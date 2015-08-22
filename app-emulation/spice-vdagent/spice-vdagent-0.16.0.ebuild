@@ -36,8 +36,8 @@ ERROR_VIRTIO_CONSOLE="VirtIO console/serial device support is required"
 src_configure() {
 	local opt="--with-session-info=none --with-init-script=systemd"
 
-	use systemd && opt="--with-session-info=systemd"
-	use consolekit && opt="${opt} --with-session-info=console-kit"
+	use systemd && opt+=" --with-session-info=systemd"
+	use consolekit && opt+=" --with-session-info=console-kit"
 
 	econf \
 		--localstatedir=/var \
