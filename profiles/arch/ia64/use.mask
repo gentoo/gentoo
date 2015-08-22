@@ -84,6 +84,7 @@ schroedinger
 ots
 eclipse
 vaapi
+librtmp
 rtmp
 vpx
 frei0r
