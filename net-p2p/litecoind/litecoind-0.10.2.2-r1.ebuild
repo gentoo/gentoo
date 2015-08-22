@@ -27,7 +27,7 @@ RDEPEND="
 	logrotate? ( app-admin/logrotate )
 	upnp? ( net-libs/miniupnpc )
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
-	virtual/bitcoin-leveldb
+	<=dev-libs/leveldb-1.15.0-r1
 "
 DEPEND="${RDEPEND}
 	>=app-shells/bash-4.1
