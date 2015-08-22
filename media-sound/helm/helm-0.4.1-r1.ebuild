@@ -25,10 +25,16 @@ DEPEND="${RDEPEND}"
 DOCS="README.md"
 
 src_prepare() {
+	rm patches/Synth/.DS_Store || die
 	sed -e 's|/usr/lib/|/usr/'$(get_libdir)'/|' -i Makefile || die
 	epatch_user
 }
 
 src_compile() {
 	emake PREFIX=/usr all
+}
+
+src_install() {
+	default
+	make_desktop_entry /usr/bin/helm Helm /usr/share/helm/icons/helm_icon_32_1x.png
 }
