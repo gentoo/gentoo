@@ -10,4 +10,4 @@ RDEPEND=dev-qt/qtgui:4 webp? ( media-libs/libwebp )
 SLOT=0
 SRC_URI=http://qiviewer.googlecode.com/files/qiviewer-0.5.0.tar.bz2
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=3608951802be85c20d95875700d9889f
+_md5_=4d2713e210f82046ea2f45c634004a1d
