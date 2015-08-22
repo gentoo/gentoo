@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/R:0= dev-libs/double-conversion:0= dev-libs/gmp:0= dev-libs/libpcre:3= dev-libs/mpfr:0= sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0= sci-libs/openlibm:0= sci-libs/spqr:0= sci-libs/umfpack:0= sci-mathematics/glpk:0= =sys-devel/llvm-3.3* >=sys-libs/libunwind-1.1:7= sys-libs/readline:0= sys-libs/zlib:0= virtual/blas virtual/lapack emacs? ( app-emacs/ess )
 SLOT=0
 SRC_URI=https://github.com/JuliaLang/julia/archive/v0.2.1.tar.gz -> julia-0.2.1.tar.gz http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-2.2.tar.gz http://dev.gentoo.org/~bicatali/distfiles/libuv-julia-0.2.1.tar.gz
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=34a53ef7d48066e8f96fb2a9159a45c3

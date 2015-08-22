@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=X? ( x11-libs/libX11 x11-libs/libXxf86vm x11-libs/libXau x11-libs/libXext x11-libs/libXdmcp x11-apps/xset x11-apps/xlsfonts x11-apps/bdftopcf x11-apps/mkfontdir ) svga? ( media-libs/svgalib ) gpm? ( sys-libs/gpm ) alsa? ( media-libs/alsa-lib ) sndfile? ( media-libs/libsndfile ) fluidsynth? ( media-sound/fluidsynth media-sound/fluid-soundfont ) media-libs/libsdl >=sys-libs/slang-1.4
 SLOT=0
 SRC_URI=mirror://sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz http://sourceforge.net/code-snapshots/git/d/do/dosemu/code.git/dosemu-code-15cfb41ff20a052769d753c3262c57ecb050ad71.zip -> dosemu-1.4.1_pre20130107.zip
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	a472fe09c2264598d61d4887809e6016	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=825fbbf4087553fb106137389422d3b8
