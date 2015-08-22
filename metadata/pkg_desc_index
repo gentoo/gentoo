@@ -7956,7 +7956,7 @@ dev-qt/qtpositioning 5.4.2: Physical position determination library for the Qt5 
 dev-qt/qtprintsupport 5.4.2: Printing support library for the Qt5 framework
 dev-qt/qtquick1 5.4.2: Legacy declarative UI module for the Qt5 framework
 dev-qt/qtquickcontrols 5.4.2: Set of controls used in conjunction with Qt Quick to build complete interfaces
-dev-qt/qtscript 4.8.5 4.8.6-r2 4.8.7 5.4.2: Application scripting library for the Qt5 framework
+dev-qt/qtscript 4.8.5 4.8.6-r2 4.8.7 5.4.2-r1: Application scripting library for the Qt5 framework
 dev-qt/qtsensors 5.4.2: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.4.2: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20130904-r1 2.6.1_p20150629: Qt library to start applications only once per user
