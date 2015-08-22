@@ -1,6 +1,6 @@
 diff -Naur apache-tomcat-7.0.63-src.orig/build.xml apache-tomcat-7.0.63-src/build.xml
 --- apache-tomcat-7.0.63-src.orig/build.xml	2015-06-30 09:15:44.000000000 +0100
-+++ apache-tomcat-7.0.63-src/build.xml	2015-08-16 14:17:34.594426081 +0100
++++ apache-tomcat-7.0.63-src/build.xml	2015-08-22 21:13:12.453038827 +0100
 @@ -660,12 +660,14 @@
        </fileset>
      </copy>
@@ -92,7 +92,35 @@ diff -Naur apache-tomcat-7.0.63-src.orig/build.xml apache-tomcat-7.0.63-src/buil
  
      <antcall target="downloadfile">
        <param name="sourcefile" value="${jaxrpc-lib.loc}"/>
-@@ -2642,7 +2653,7 @@
+@@ -1886,6 +1897,7 @@
+     description="Create the Tomcat javadoc" >
+     <fail unless="java.7.home"
+           message="The java.7.home property must be set for javadoc build"/>
++<!--
+     <javadoc packagenames="javax.servlet.*"
+       excludepackagenames="javax.servlet.jsp.*"
+       sourcepath="${tomcat.dist}/src/java"
+@@ -1947,6 +1959,7 @@
+         <path location="${ant.core.lib}"/>
+       </classpath>
+     </javadoc>
++-->
+     <javadoc packagenames="javax.websocket.*"
+       sourcepath="${tomcat.dist}/src/java"
+       destdir="${tomcat.dist}/webapps/docs/websocketapi"
+@@ -1985,9 +1998,11 @@
+         <path refid="tomcat.webservices.classpath"/>
+         <path location="${ant.core.lib}"/>
+       </classpath>
++<!--
+       <link href="../servletapi"/>
+       <link href="../jspapi"/>
+       <link href="../elapi"/>
++-->
+       <link href="../websocketapi"/>
+       <link href="http://docs.oracle.com/javase/7/docs/api/"/>
+       <link href="http://commons.apache.org/proper/commons-io/javadocs/api-release/"/>
+@@ -2642,7 +2657,7 @@
    </target>
  
    <target name="download-compile"
@@ -101,7 +129,7 @@ diff -Naur apache-tomcat-7.0.63-src.orig/build.xml apache-tomcat-7.0.63-src/buil
  
      <antcall target="downloadfile-2">
        <param name="sourcefile.1" value="${tomcat-native.loc.1}"/>
-@@ -2699,7 +2710,7 @@
+@@ -2699,7 +2714,7 @@
    </target>
  
    <target name="download-test-compile"
@@ -110,7 +138,7 @@ diff -Naur apache-tomcat-7.0.63-src.orig/build.xml apache-tomcat-7.0.63-src/buil
  
      <antcall target="downloadfile">
        <param name="sourcefile" value="${junit.loc}"/>
-@@ -2727,7 +2738,7 @@
+@@ -2727,7 +2742,7 @@
    </target>
  
    <target name="download-dist"

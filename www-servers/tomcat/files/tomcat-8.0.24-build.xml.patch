@@ -1,6 +1,6 @@
 diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/build.xml
 --- apache-tomcat-8.0.24-src.orig/build.xml	2015-07-01 21:25:21.000000000 +0100
-+++ apache-tomcat-8.0.24-src/build.xml	2015-08-14 13:45:50.315788075 +0100
++++ apache-tomcat-8.0.24-src/build.xml	2015-08-22 21:17:05.825564599 +0100
 @@ -697,24 +697,29 @@
        manifest="${tomcat.manifests}/annotations-api.jar.manifest" />
  
@@ -107,7 +107,42 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
  
      <antcall target="downloadfile">
        <param name="sourcefile" value="${jaxrpc-lib.loc}"/>
-@@ -2739,7 +2745,7 @@
+@@ -1882,6 +1888,7 @@
+ 
+   <target name="javadoc" depends="dist-source,extras-webservices-prepare"
+     description="Create the Tomcat javadoc" >
++<!--
+     <javadoc packagenames="javax.servlet.*"
+       excludepackagenames="javax.servlet.jsp.*"
+       sourcepath="${tomcat.dist}/src/java"
+@@ -1940,6 +1947,7 @@
+         <path location="${ant.core.lib}"/>
+       </classpath>
+     </javadoc>
++-->
+     <javadoc packagenames="javax.websocket.*"
+       sourcepath="${tomcat.dist}/src/java"
+       destdir="${tomcat.dist}/webapps/docs/websocketapi"
+@@ -1970,15 +1978,17 @@
+       docencoding="UTF-8"
+       charset="UTF-8"
+       additionalparam="-breakiterator -notimestamp"
+-      maxmemory="256m" >
++      maxmemory="512m" >
+       <classpath>
+         <path refid="compile.classpath"/>
+         <path refid="tomcat.webservices.classpath"/>
+         <path location="${ant.core.lib}"/>
+       </classpath>
++<!--
+       <link href="../servletapi"/>
+       <link href="../jspapi"/>
+       <link href="../elapi"/>
++-->
+       <link href="../websocketapi"/>
+       <link href="http://docs.oracle.com/javase/7/docs/api/"/>
+       <link href="http://commons.apache.org/proper/commons-io/javadocs/api-release/"/>
+@@ -2739,7 +2749,7 @@
    </target>
  
    <target name="download-compile"
@@ -116,7 +151,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
  
      <antcall target="downloadfile-2">
        <param name="sourcefile.1" value="${tomcat-native.loc.1}"/>
-@@ -2773,7 +2779,7 @@
+@@ -2773,7 +2783,7 @@
    </target>
  
    <target name="download-test-compile"
@@ -125,7 +160,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
  
      <antcall target="downloadfile">
        <param name="sourcefile" value="${junit.loc}"/>
-@@ -2819,7 +2825,7 @@
+@@ -2819,7 +2829,7 @@
    </target>
  
    <target name="download-dist"
@@ -134,7 +169,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
  
      <antcall target="downloadzip-2">
        <param name="sourcefile.1" value="${tomcat-native.win.1}"/>
-@@ -2845,18 +2851,18 @@
+@@ -2845,18 +2855,18 @@
  
    <!-- =============== Utility Targets to support downloads ================ -->
  
@@ -156,7 +191,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <!-- Download and extract the package -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -2868,7 +2874,7 @@
+@@ -2868,7 +2878,7 @@
      <delete file="${temp.file}.tar.gz"/>
    </target>
  
@@ -165,7 +200,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <!-- Download and extract the package from the two alternative locations -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -2887,7 +2893,7 @@
+@@ -2887,7 +2897,7 @@
      <delete file="${temp.file}.tar.gz"/>
    </target>
  
@@ -174,7 +209,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <!-- Download and extract the package -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -2898,7 +2904,7 @@
+@@ -2898,7 +2908,7 @@
      <delete file="${temp.file}"/>
    </target>
  
@@ -183,7 +218,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <!-- Download and extract the package from the two alternative locations -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -2916,7 +2922,7 @@
+@@ -2916,7 +2926,7 @@
      <delete file="${temp.file}"/>
    </target>
  
@@ -192,7 +227,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <!-- Download the file -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -2926,7 +2932,7 @@
+@@ -2926,7 +2936,7 @@
      <move file="${temp.file}" tofile="${destfile}"/>
    </target>
  
@@ -201,7 +236,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <!-- Download the file from the two alternative locations -->
      <local name="temp.file"/>
      <mkdir dir="${base.path}"/>
-@@ -2949,7 +2955,7 @@
+@@ -2949,7 +2959,7 @@
      <move file="${temp.file}" tofile="${destfile}"/>
    </target>
  
@@ -210,7 +245,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <condition property="trydownload.run">
        <and>
          <not>
-@@ -2960,7 +2966,7 @@
+@@ -2960,7 +2970,7 @@
      </condition>
    </target>
  
@@ -219,7 +254,7 @@ diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/buil
      <!-- Downloads a file if not yet downloaded and the source URL is available -->
      <get src="${sourcefile}" httpusecaches="${trydownload.httpusecaches}" dest="${destfile}" />
    </target>
-@@ -2971,7 +2977,7 @@
+@@ -2971,7 +2981,7 @@
  
    <target name="ide-eclipse"
            depends="download-compile, extras-webservices-prepare, download-test-compile"
