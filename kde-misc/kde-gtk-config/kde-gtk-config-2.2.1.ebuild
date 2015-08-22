@@ -32,6 +32,8 @@ RDEPEND="
 	$(add_kdeapps_dep kcmshell)
 "
 
+PATCHES=( "${FILESDIR}/${P}-kdelibs-4.14.11.patch" )
+
 pkg_postinst() {
 	kde4-base_pkg_postinst
 	einfo
