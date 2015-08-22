@@ -30,6 +30,7 @@ IUSE=""
 
 RDEPEND="dev-libs/urdfdom_headers
 	dev-libs/console_bridge
+	dev-libs/tinyxml
 	dev-libs/boost:=[threads]"
 DEPEND="${RDEPEND}"
 

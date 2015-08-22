@@ -63,7 +63,7 @@ my_use() {
 
 src_prepare() {
 	epatch	"${FILESDIR}"/110_all_implicitdecls.patch \
-			"${FILESDIR}"/${PN}-0.5.3-static-libs.patch \
+			"${FILESDIR}"/${PN}-0.5.2-static-libs.patch \
 			"${FILESDIR}"/${PN}-0.5.2-gf_isom_set_pixel_aspect_ratio.patch
 	sed -i -e "s:\(--disable-.*\)=\*):\1):" configure || die
 }
@@ -109,7 +109,7 @@ src_configure() {
 src_install() {
 	emake STRIP="true" DESTDIR="${D}" install
 	emake STRIP="true" DESTDIR="${D}" install-lib
-	dodoc AUTHORS BUGS Changelog README.md TODO
+	dodoc AUTHORS BUGS Changelog README TODO
 	dodoc doc/*.txt
 	dohtml doc/*.html
 }
