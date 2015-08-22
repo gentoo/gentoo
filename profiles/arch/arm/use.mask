@@ -126,6 +126,7 @@ xanim
 fits
 tokyocabinet
 vaapi
+librtmp
 rtmp
 vpx
 iplayer
