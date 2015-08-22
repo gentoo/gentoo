@@ -22,7 +22,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k mad opengl oss png pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid"
 
-
 RDEPEND="
 	a52? ( media-libs/a52dec )
 	aac? ( >=media-libs/faad2-2.0 )
