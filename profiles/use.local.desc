@@ -4529,6 +4529,7 @@ media-video/ffmpeg:gme - Enables support for media-libs/game-music-emu for playi
 media-video/ffmpeg:gpl - Build GPL code. Should be enabled unless you require LGPL binaries.
 media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
 media-video/ffmpeg:iec61883 - Support for FireWire DV/HDV input device using media-libs/libiec61883.
+media-video/ffmpeg:librtmp - Enable Real Time Messaging Protocol using librtmp
 media-video/ffmpeg:libsoxr - Enables audio resampling through media-libs/soxr.
 media-video/ffmpeg:libv4l - Uses media-libs/libv4l for video4linux instead of direct calls. Adds support for more devices via the userspace library.
 media-video/ffmpeg:mipsdspr1 - Enables MIPS DSP ASE R1 optimizations.
@@ -4540,7 +4541,6 @@ media-video/ffmpeg:opus - Adds (decoding) support for the Opus codec via media-l
 media-video/ffmpeg:pic - Force shared libraries to be built as PIC (this is slower)
 media-video/ffmpeg:postproc - Build and install libpostproc.
 media-video/ffmpeg:quvi - Adds support for playing media from Internet services using the quvi project.
-media-video/ffmpeg:rtmp - Enable Real Time Messaging Protocol using librtmp
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:snappy - Enable app-arch/snappy support. Required for e.g. Vidvox Hap encoder.
 media-video/ffmpeg:ssh - Enable SSH/sftp support via net-libs/libssh.
