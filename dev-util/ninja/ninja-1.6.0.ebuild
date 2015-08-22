@@ -4,12 +4,17 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
-SRC_URI="https://github.com/martine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/martine/ninja.git"
+else
+	SRC_URI="https://github.com/martine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+fi
 
 DESCRIPTION="A small build system similar to make"
 HOMEPAGE="http://github.com/martine/ninja"
@@ -56,7 +61,7 @@ src_compile() {
 	# configure.py uses CFLAGS instead of CXXFLAGS
 	export CFLAGS=${CXXFLAGS}
 
-	run_for_build "${PYTHON}" bootstrap.py --verbose || die
+	run_for_build "${PYTHON}" configure.py --bootstrap --verbose || die
 
 	if tc-is-cross-compiler; then
 		mv ninja ninja-build || die
