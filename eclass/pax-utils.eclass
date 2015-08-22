@@ -29,7 +29,7 @@ _PAX_UTILS_ECLASS=1
 # Control which markings are made:
 # PT = PT_PAX markings, XT = XATTR_PAX markings
 # Default to PT markings.
-PAX_MARKINGS=${PAX_MARKINGS:="PT"}
+PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
 
 # @FUNCTION: pax-mark
 # @USAGE: <flags> {<ELF files>}
