@@ -115,6 +115,8 @@ src_prepare() {
 		EPATCH_SUFFIX=patch EPATCH_FORCE=yes epatch
 	fi
 
+	epatch "${FILESDIR}/224-0002-Use-getxpid-syscall-on-alpha-for-raw_getpid.patch"
+
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
 	SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
