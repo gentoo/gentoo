@@ -11807,7 +11807,7 @@ media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mash 0.2.0-r1: A library for rendering 3D models with Clutter
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.4.6 10.5.8 10.6.1 10.6.2 10.6.3: OpenGL-like graphic library for Linux
+media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.4.6 10.5.8 10.6.1 10.6.2 10.6.3 10.6.5: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5: An Open Source library for Flash movie generation
 media-libs/mlt 0.9.0 0.9.8: An open source multimedia framework, designed and developed for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
@@ -14385,7 +14385,7 @@ net-wireless/bluedevil 2.0_rc1 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 1.23-r2 1.98_p20150105 2.0 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
 net-wireless/bluez 4.101-r9 5.25 5.32 5.33: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
-net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chillispot 1.1.0: open source captive portal or wireless LAN access point controller
@@ -17270,7 +17270,7 @@ x11-libs/libcryptui 3.12.2: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.6.1 0.6.4 0.7.0: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.20-r1 2.4.33 2.4.46 2.4.52 2.4.53 2.4.54 2.4.56 2.4.58 2.4.59 2.4.59-r1 2.4.62: X.Org libdrm library
+x11-libs/libdrm 2.4.20-r1 2.4.33 2.4.46 2.4.52 2.4.53 2.4.54 2.4.56 2.4.58 2.4.59 2.4.59-r1 2.4.62 2.4.64: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 0.1.17-r1 1.1.4 1.2.2.1 1.2.3 1.2.3-r1 9999: A library for file management
 x11-libs/libfm-extra 1.2.3: A library for file management

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=virtual/linux-sources kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+EAPI=5
+HOMEPAGE=http://www.broadcom.com/support/802.11/linux_sta.php
+IUSE=kernel_linux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Broadcom
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=x86? ( http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_248.tar.gz ) amd64? ( http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_248.tar.gz ) http://www.broadcom.com/docs/linux_sta/README_6.30.223.248.txt -> README-broadcom-sta-6.30.223.248.txt
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=daa16ae0d780616c4af01dbc08402383
