@@ -23,10 +23,10 @@ RDEPEND="dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	iconv? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jdk-1.8.0 )
 	qt5? (
-		>=dev-qt/qtdeclarative-5.3
-		>=dev-qt/qtgui-5.3
-		>=dev-qt/qttest-5.3
-		>=dev-qt/qtwidgets-5.3
+		>=dev-qt/qtdeclarative-5.3:5
+		>=dev-qt/qtgui-5.3:5
+		>=dev-qt/qttest-5.3:5
+		>=dev-qt/qtwidgets-5.3:5
 	)
 	uname? ( sys-apps/coreutils )
 	systemd? ( sys-apps/systemd[${MULTILIB_USEDEP}] )
