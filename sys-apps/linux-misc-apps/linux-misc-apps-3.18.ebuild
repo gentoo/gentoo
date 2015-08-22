@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit versionator eutils toolchain-funcs linux-info autotools flag-o-matic
+inherit versionator eutils toolchain-funcs linux-info flag-o-matic
 
 DESCRIPTION="Misc tools bundled with kernel sources"
 HOMEPAGE="http://kernel.org/"
@@ -69,7 +69,7 @@ TARGETS_SIMPLE=(
 # These have a broken make install, no DESTDIR
 TARGET_MAKE_SIMPLE=(
 	tools/firewire:nosy-dump
-	tools/power/x86/turbostat:../../../../turbostat
+	tools/power/x86/turbostat:turbostat:../../../../turbostat
 	tools/power/x86/x86_energy_perf_policy:x86_energy_perf_policy
 	Documentation/misc-devices/mei:mei-amt-version
 )
@@ -133,8 +133,10 @@ src_compile() {
 	done
 
 	for t in ${TARGET_MAKE_SIMPLE[@]} ; do
-		dir=${t/:*} target=${t/*:}
-		einfo "Building $dir => $target"
+		dir=${t/:*} target_binfile=${t#*:}
+		target=${target_binfile/:*} binfile=${target_binfile/*:}
+		[ -z "${binfile}" ] && binfile=$target
+		einfo "Building $dir => $binfile (via emake $target)"
 		emake -C $dir ARCH=${karch} $target
 	done
 }
@@ -148,9 +150,11 @@ src_install() {
 	done
 
 	for t in ${TARGET_MAKE_SIMPLE[@]} ; do
-		dir=${t/:*} target=${t/*:}
-		einfo "Installing $dir => $target"
-		dosbin ${dir}/${target}
+		dir=${t/:*} target_binfile=${t#*:}
+		target=${target_binfile/:*} binfile=${target_binfile/*:}
+		[ -z "${binfile}" ] && binfile=$target
+		einfo "Installing $dir => $binfile"
+		dosbin ${dir}/${binfile}
 	done
 
 	newconfd "${FILESDIR}"/freefall.confd freefall
