@@ -34,7 +34,7 @@ RDEPEND="
 		net-libs/miniupnpc
 	)
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
-	virtual/bitcoin-leveldb
+	<=dev-libs/leveldb-1.15.0-r1
 	!qt5? (
 		dev-qt/qtgui:4
 		dbus? (
