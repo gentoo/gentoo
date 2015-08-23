@@ -1,0 +1,8 @@
+--- wmakerconf.desktop.in.orig	2015-08-23 23:14:56.272180470 +0200
++++ wmakerconf.desktop.in	2015-08-23 23:15:05.446195859 +0200
+@@ -10,4 +10,4 @@
+ Icon=@prefix@/share/wmakerconf/wmakerconf.xpm
+ Terminal=false
+ Type=Application
+-Categories=GTK;Application;DesktopSettings
++Categories=GTK;DesktopSettings;
