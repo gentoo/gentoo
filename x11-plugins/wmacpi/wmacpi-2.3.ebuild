@@ -15,13 +15,15 @@ SLOT="0"
 KEYWORDS="~amd64 -ppc -sparc ~x86"
 IUSE=""
 
-DEPEND="x11-libs/libdockapp
+DEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11"
 
 S=${WORKDIR}/dockapps
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-makefile.patch
+
+	sed -e 's#<dockapp.h>#<libdockapp/dockapp.h>#' -i *.c || die
 }
 
 src_compile() {
