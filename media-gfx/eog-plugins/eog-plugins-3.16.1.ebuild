@@ -14,17 +14,18 @@ HOMEPAGE="https://wiki.gnome.org/Apps/EyeOfGnome/Plugins"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
+
 IUSE="+exif +flickr map +picasa +python"
 REQUIRED_USE="
 	map? ( exif )
 	python? ( ^^ ( $(python_gen_useflags '*') ) )"
 
 RDEPEND="
-	>=dev-libs/glib-2.32:2
+	>=dev-libs/glib-2.38:2
 	>=dev-libs/libpeas-0.7.4:=
-	>=media-gfx/eog-3.11.4
-	>=x11-libs/gtk+-3.3.8:3
+	>=media-gfx/eog-3.15.90
+	>=x11-libs/gtk+-3.14:3
 	exif? ( >=media-libs/libexif-0.6.16 )
 	flickr? ( media-gfx/postr )
 	map? (
@@ -34,6 +35,7 @@ RDEPEND="
 	picasa? ( >=dev-libs/libgdata-0.9.1:= )
 	python? (
 		${PYTHON_DEPS}
+		>=dev-libs/glib-2.32:2[dbus]
 		dev-libs/libpeas:=[gtk,python,${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		gnome-base/gsettings-desktop-schemas
@@ -57,7 +59,7 @@ src_configure() {
 	use flickr && plugins="${plugins},postr"
 	use map && plugins="${plugins},map"
 	use picasa && plugins="${plugins},postasa"
-	use python && plugins="${plugins},slideshowshuffle,pythonconsole,fullscreenbg,export-to-folder"
+	use python && plugins="${plugins},slideshowshuffle,pythonconsole,fullscreenbg,export-to-folder,maximize-windows"
 	gnome2_src_configure \
 		$(use_enable python) \
 		--with-plugins=${plugins}
