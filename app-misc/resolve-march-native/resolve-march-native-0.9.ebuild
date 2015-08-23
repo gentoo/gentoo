@@ -16,4 +16,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="sys-devel/gcc"
+RDEPEND=">=sys-devel/gcc-4.2"
