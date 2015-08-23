@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,15 +14,15 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}2-src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CDEPEND="dev-java/xpp3:0"
 
-DEPEND=">=virtual/jdk-1.4
+DEPEND=">=virtual/jdk-1.6
 	${CDEPEND}
 	app-arch/unzip"
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 
 S="${WORKDIR}"
