@@ -5,7 +5,7 @@
 EAPI=5
 
 # only works with >=pypy-2.6
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 
 inherit distutils-r1
 
@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-python/pyasn1-0.1.8[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

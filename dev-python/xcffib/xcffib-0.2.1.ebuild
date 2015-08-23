@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 COMMON_DEPEND="x11-libs/libxcb"
 
 RDEPEND="
-	>=dev-python/cffi-0.8.2:=[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/cffi-0.8.2:=[${PYTHON_USEDEP}]' 'python*')
 	dev-python/six[${PYTHON_USEDEP}]
 	${COMMON_DEPEND}"
 DEPEND="

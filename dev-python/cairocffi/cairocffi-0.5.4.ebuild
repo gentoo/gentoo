@@ -18,7 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-RDEPEND=">=dev-python/cffi-0.6:=[${PYTHON_USEDEP}]
+RDEPEND="
+	$(python_gen_cond_dep '>=dev-python/cffi-0.6:=[${PYTHON_USEDEP}]' 'python*')
 	x11-libs/cairo:0="
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )

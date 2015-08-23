@@ -23,9 +23,11 @@ IUSE=""
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1:=[${PYTHON_USEDEP}]' 'python*')
+	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	"
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1:=[${PYTHON_USEDEP}]' 'python*')
+	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	!dev-python/py-bcrypt"
 
