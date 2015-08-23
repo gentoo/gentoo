@@ -685,10 +685,6 @@ net-dns/pdnsd isdn urandom
 # Upstream didn't release patches for aria yet
 >=sci-chemistry/cns-1.3 aria
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (8 Sep 2010)
-# drm don't even build here so mask everywhere expect live.
-<x11-libs/cairo-9999 drm
-
 # Alex Legler <a3li@gentoo.org> (1 Sep 2010)
 # This feature is marked as experimental by upstream.
 dev-lang/ruby-enterprise fastthreading

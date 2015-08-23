@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,8 @@ IUSE="debug"
 RDEPEND="
 	>=dev-lang/mono-1.1.14
 	>=dev-dotnet/gtk-sharp-2.12
-	>=dev-dotnet/glade-sharp-2.12
+	|| ( >=dev-dotnet/gtk-sharp-2.12.21
+	     >=dev-dotnet/glade-sharp-2.12 )
 "
 DEPEND="${RDEPEND}
 	app-text/scrollkeeper
@@ -42,6 +43,7 @@ src_prepare() {
 	( "${T}/gettextize" -f --no-changelog > /dev/null ) || die "gettexize failed"
 	epatch "${FILESDIR}/${P}-pixmap.patch"
 	epatch "${FILESDIR}/${P}-docpath.patch"
+	epatch "${FILESDIR}/${P}-mono-4.patch"
 	eautoreconf
 	gnome2_src_prepare
 }

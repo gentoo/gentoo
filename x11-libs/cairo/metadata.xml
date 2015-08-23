@@ -14,11 +14,8 @@
   <use>
     <flag name="opengl" restrict="&gt;=x11-libs/cairo-1.10.0">
       Use Mesa backend for acceleration</flag>
-    <flag name="drm">Use Linux DRM for backend acceleration</flag>
-    <flag name="gallium">Use Mesa's Gallium backend for acceleration</flag>
     <flag name="gles2">Use OpenGL ES 2 backend for acceleration.</flag>
     <flag name="glib">Compile with GLib Object System support</flag>
-    <flag name="openvg">Use OpenVG for backend acceleration</flag>
     <flag name="valgrind">Built-in support to mark memory regions</flag>
     <flag name="xlib-xcb">Use XCB renderer backend for acceleration over xlib</flag>
   </use>
