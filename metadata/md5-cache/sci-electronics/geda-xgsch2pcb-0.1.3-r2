@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-python/pygtk:2 dev-python/pygobject:2 dev-python/dbus-python sci-electronics/pcb[dbus] sci-electronics/geda nls? ( virtual/libintl ) sci-electronics/electronics-menu gnome? ( dev-python/gnome-vfs-python ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://geda.seul.org/dist/geda-xgsch2pcb-0.1.3.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=0495d3b18164d23f16c326d5069474a1

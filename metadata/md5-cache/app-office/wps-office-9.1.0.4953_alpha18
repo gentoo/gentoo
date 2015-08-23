@@ -10,5 +10,5 @@ RDEPEND=app-arch/bzip2 dev-libs/expat dev-libs/glib:2 dev-libs/libffi dev-libs/l
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=x86? ( http://kdl.cc.ksosoft.com/wps-community/download/a18/wps-office_9.1.0.4953~a18_i386.deb ) amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/a18/wps-office_9.1.0.4953~a18_amd64.deb )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	font	cd7790315ca5b8c505e1e0513df6acce	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	font	cd7790315ca5b8c505e1e0513df6acce	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=df780cd3aeec19becb76de43a8cf6b6b

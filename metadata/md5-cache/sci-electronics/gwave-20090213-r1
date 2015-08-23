@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND==dev-scheme/guile-1.8*[networking] =dev-scheme/guile-gnome-platform-2.16* sci-electronics/electronics-menu gnuplot? ( sci-visualization/gnuplot ) plotutils? ( media-libs/plotutils )
 SLOT=0
 SRC_URI=mirror://sourceforge/gwave/gwave2-20090213.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=4c92288e34b24f9ff6684d1eddb1abbb

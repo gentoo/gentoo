@@ -7,5 +7,5 @@ KEYWORDS=amd64 ppc ppc64 sparc x86 ~x86-macos
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://geda.seul.org/dist/electronics-menu-1.0.tar.gz
-_eclasses_=gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=bded8951e06c687f92d7ae7e99ff0574

@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-3 LGPL-3 )
 RDEPEND=>=media-libs/babl-0.1.10 >=dev-libs/glib-2.28:2 >=x11-libs/gdk-pixbuf-2.18:2 x11-libs/pango sys-libs/zlib cairo? ( x11-libs/cairo ) ffmpeg? ( libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( >=media-libs/jasper-1.900.1 ) openexr? ( media-libs/openexr ) png? ( media-libs/libpng:0 ) raw? ( =media-libs/libopenraw-0.0.9 ) sdl? ( media-libs/libsdl ) svg? ( >=gnome-base/librsvg-2.14:2 ) umfpack? ( sci-libs/umfpack ) lensfun? ( >=media-libs/lensfun-0.2.5 )
 SLOT=0
 SRC_URI=ftp://ftp.gimp.org/pub/gegl/0.2/gegl-0.2.0.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=6bb65c9a1d693bb8d63e59d53d66bab1

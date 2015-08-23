@@ -6,5 +6,5 @@ HOMEPAGE=http://pinta-project.com
 LICENSE=MIT CC-BY-3.0
 RDEPEND=dev-dotnet/atk-sharp:2 dev-dotnet/gdk-sharp:2 dev-dotnet/glib-sharp:2 dev-dotnet/gtk-sharp:2 dev-dotnet/mono-addins[gtk] dev-dotnet/pango-sharp:2 dev-lang/mono x11-libs/cairo[X] x11-libs/gdk-pixbuf[X,jpeg,tiff] x11-themes/gnome-icon-theme
 SLOT=0
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	1bb87192831f668cd20d93ffb1689c94	gnome2-utils	ba8b66b446cac0566ae76d6e5bf2f914	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	1bb87192831f668cd20d93ffb1689c94	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=300b567cd3e7d81eed86d9a170a396cb
