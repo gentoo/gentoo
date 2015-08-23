@@ -16,13 +16,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gdk-pixbuf
-	x11-libs/libdockapp"
+	>=x11-libs/libdockapp-0.7:="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/dockapps
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-Makefile.patch
+
+	sed -e 's#<dockapp.h>#<libdockapp/dockapp.h>#' -i *.c || die
 }
 
 src_compile() {
