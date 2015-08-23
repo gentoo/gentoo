@@ -9624,7 +9624,7 @@ games-fps/doom3-roe 1: Doom III: Resurrection of Evil expansion pack
 games-fps/doomsday 1.14.5: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/doomsday-resources 1.01-r1: Improved models & textures for doomsday
 games-fps/duke3d 20040817-r2: Port of the original Duke Nukem 3D
-games-fps/duke3d-data 1.0 1.0-r2: Duke Nukem 3D data files
+games-fps/duke3d-data 1.0 1.0-r3: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
 games-fps/eduke32 20131119.4169: Port of Duke Nukem 3D for SDL
 games-fps/enemy-territory 2.60b-r1: standalone multi-player game based on Return to Castle Wolfenstein
@@ -9965,7 +9965,7 @@ games-roguelike/wrogue 0.8.0b: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/a-bird-story 20141106: Indie adventure short of a boy's memories, dream, and imagination
 games-rpg/adonthell 0.3.5-r1: roleplaying game engine
-games-rpg/arx-fatalis-data 1.21-r2: Arx Fatalis data files
+games-rpg/arx-fatalis-data 1.21-r2 1.21-r3: Arx Fatalis data files
 games-rpg/arx-fatalis-demo 0: Arx Fatalis demo
 games-rpg/arx-libertatis 1.1.2: Cross-platform port of Arx Fatalis, a first-person role-playing game
 games-rpg/avadon 1.0.4: Epic fantasy role-playing adventure in an enormous and unique world
