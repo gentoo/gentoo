@@ -30,8 +30,10 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 
-	if [[ ${EPYTHON} == pypy* ]]; then
+	if [[ ${EPYTHON} == pypy ]]; then
 		local pyver=2.7
+	elif [[ ${EPYTHON} == pypy3 ]]; then
+		local pyver=3.2
 	else
 		local pyver=${EPYTHON#python}
 	fi
