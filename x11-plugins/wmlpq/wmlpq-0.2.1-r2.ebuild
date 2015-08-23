@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,8 @@ DESCRIPTION="Windowmaker dockapp which monitors up to 5 printqueues"
 SRC_URI="http://www.ur.uklinux.net/wmlpq/dl/wmlpq_0.2.1.tar.gz"
 HOMEPAGE="http://www.ur.uklinux.net/wmlpq/"
 
-DEPEND="x11-libs/libdockapp"
+DEPEND="<x11-libs/libdockapp-0.7"
+RDEPEND="${DEPEND}"
 
 RDEPEND=""
 
