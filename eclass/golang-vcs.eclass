@@ -109,13 +109,14 @@ _golang-vcs_fetch() {
 
 		[[ -n ${EVCS_UMASK} ]] && eumask_pop
 	fi
-	set -- mkdir -p "${WORKDIR}/${P}/src/${EGO_PN%/...}"
+	local go_srcpath="${WORKDIR}/${P}/src/${EGO_PN%/...}"
+	set -- mkdir -p "${go_srcpath}"
 	echo "$@"
-	"$@" || die "Unable to create ${WORKDIR}/${P}/src"
+	"$@" || die "Unable to create ${go_srcpath}"
 	set -- cp -r	"${EGO_STORE_DIR}/src/${EGO_PN%/...}" \
-		"${WORKDIR}/${P}/src/${EGO_PN%/...}"
+		"${go_srcpath}/.."
 	echo "$@"
-	"$@" || die "Unable to copy sources to ${WORKDIR}/${P}"
+	"$@" || die "Unable to copy sources to ${go_srcpath}"
 	return 0
 }
 
