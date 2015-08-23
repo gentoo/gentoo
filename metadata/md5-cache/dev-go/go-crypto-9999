@@ -5,5 +5,5 @@ EAPI=5
 HOMEPAGE=https://godoc.org/golang.org/x/crypto
 LICENSE=BSD
 SLOT=0/9999
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs	8b09384127f9e8bb8fe6056911b9f10c	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs	6625d7992916e5a3bed86489f4b9a73d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=b9b349b7e5cef6090d4c11733229dafb
