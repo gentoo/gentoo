@@ -5874,7 +5874,7 @@ dev-perl/Net-SNMP 6.0.1-r1: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-AuthorizedKeysFile 0.160.0-r1 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH2 0.460.0 0.470.0 0.480.0 0.520.0 0.530.0: Net::SSH2 - Support for the SSH 2 protocol via libssh2
-dev-perl/Net-SSLeay 1.650.0: Net::SSLeay module for perl
+dev-perl/Net-SSLeay 1.650.0-r1: Net::SSLeay module for perl
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
 dev-perl/Net-Server-Mail 0.210.0-r1: Class to easily create a mail server
 dev-perl/Net-Subnet 1.30.0: Fast IP-in-subnet matcher for IPv4 and IPv6, CIDR or mask
@@ -6337,7 +6337,7 @@ dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protoc
 dev-perl/YAML-LibYAML 0.590.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Parser-Syck 0.10.0-r1: Perl Wrapper for the YAML Parser Extension: libsyck
 dev-perl/YAML-Syck 1.200.0-r1 1.270.0 1.290.0: Fast, lightweight YAML loader and dumper
-dev-perl/YAML-Tiny 1.510.0-r1 1.660.0 1.670.0: Read/Write YAML files with as little code as possible
+dev-perl/YAML-Tiny 1.510.0-r1 1.660.0 1.670.0 1.690.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.20.0 1.30.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.40.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
