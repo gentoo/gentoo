@@ -28,7 +28,7 @@ DEPEND="app-eselect/eselect-opencascade
 	x11-libs/libXmu
 	freeimage? ( media-libs/freeimage )
 	gl2ps? ( x11-libs/gl2ps )
-	java? ( virtual/jdk:= )
+	java? ( >=virtual/jdk-0:= )
 	tbb? ( dev-cpp/tbb )
 	vtk? ( =sci-libs/${MY_VTK}* )"
 RDEPEND="${DEPEND}"
