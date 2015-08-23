@@ -1,0 +1,37 @@
+--- java/Makefile.am
++++ java/Makefile.am
+@@ -11,8 +12,7 @@
+ 
+ CLEANFILES = ThePEG.jar thepeg.sh
+ 
+-jardir = $(pkglibdir)
+-nodist_jar_DATA = ThePEG.jar
++noinst_DATA = ThePEG.jar
+ 
+ dist_noinst_DATA = $(JAVASOURCES) jar-manifest
+ 
+@@ -34,7 +34,7 @@
+ 	$(JAR) cmf ThePEG/jar-manifest ThePEG.jar ThePEG/*.class
+ 
+ thepeg.sh: thepeg.install Makefile
+-	sed -e s:@pkglibdir[@]:$(pkglibdir):g \
++	sed -e s:@datadir[@]:$(datadir):g \
+             -e s:@bindir[@]:$(bindir):g \
+             -e s:@java[@]:$(JAVA):g $(srcdir)/thepeg.install > thepeg.sh
+ 	chmod +x thepeg.sh
+--- java/thepeg.install
++++ java/thepeg.install
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-pkglibdir=@pkglibdir@
++source @datadir@/thepeg/package.env
+ bindir=@bindir@
+ 
+ ThePEG_CMD="${bindir}/setupThePEG"
+@@ -19,4 +19,4 @@
+ 
+ 
+ 
+-exec @java@ ${HEADLESS} -jar ${pkglibdir}/ThePEG.jar ${ThePEG_CMD} "$@"
++exec @java@ ${HEADLESS} -jar ${CLASSPATH} ${ThePEG_CMD} "$@"
