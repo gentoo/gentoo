@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 VALA_MIN_API_VERSION="0.18"
 
-inherit autotools eutils gnome2 linux-info multilib python-any-r1 vala versionator virtualx
+inherit autotools bash-completion-r1 eutils gnome2 linux-info multilib python-any-r1 vala versionator virtualx
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
@@ -16,10 +16,10 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/100"
 IUSE="cue eds elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf
-gstreamer gtk iptc +iso +jpeg +miner-fs mp3 nautilus networkmanager
-pdf playlist rss test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
+gstreamer gtk iptc +iso +jpeg libav +miner-fs mp3 nautilus networkmanager
+pdf playlist rss stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 REQUIRED_USE="
 	?? ( gstreamer ffmpeg )
@@ -41,7 +41,7 @@ RDEPEND="
 		>=media-gfx/imagemagick-5.2.1[png,jpeg=]
 		media-gfx/graphicsmagick[imagemagick,png,jpeg=] )
 	>=media-libs/libpng-1.2:0=
-	>=media-libs/libmediaart-0.5:1.0
+	>=media-libs/libmediaart-1.9:2.0
 	>=x11-libs/pango-1:=
 	sys-apps/util-linux
 
@@ -53,7 +53,10 @@ RDEPEND="
 		<gnome-extra/evolution-data-server-3.5.3 )
 	elibc_glibc? ( >=sys-libs/glibc-2.12 )
 	exif? ( >=media-libs/libexif-0.6 )
-	ffmpeg? ( >=virtual/ffmpeg-9 )
+	ffmpeg? (
+		libav? ( media-video/libav:= )
+		!libav? ( media-video/ffmpeg:0= )
+	)
 	firefox-bookmarks? ( || (
 		>=www-client/firefox-4.0
 		>=www-client/firefox-bin-4.0 ) )
@@ -78,6 +81,7 @@ RDEPEND="
 		>=x11-libs/gtk+-2.12:2 )
 	playlist? ( >=dev-libs/totem-pl-parser-3 )
 	rss? ( net-libs/libgrss:0.5 )
+	stemmer? ( dev-libs/snowball-stemmer )
 	thunderbird? ( || (
 		>=mail-client/thunderbird-5.0
 		>=mail-client/thunderbird-bin-5.0 ) )
@@ -92,6 +96,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(vala_depend)
+	>=dev-libs/libxslt-1
 	>=dev-util/gtk-doc-am-1.8
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.17
@@ -128,19 +133,19 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Fix position of AM_CONDITIONAL, bug #550910, upstream bug #750368
+	epatch "${FILESDIR}"/${PN}-1.4.0-have-gstreamer-fix.patch
+
 	# Don't run 'firefox --version' or 'thunderbird --version'; it results in
 	# access violations on some setups (bug #385347, #385495).
 	create_version_script "www-client/firefox" "Mozilla Firefox" firefox-version.sh
 	create_version_script "mail-client/thunderbird" "Mozilla Thunderbird" thunderbird-version.sh
 
-	# Skip broken tests
-	# https://bugzilla.gnome.org/show_bug.cgi?id=699408
-	sed -e '\%/libtracker-common/file-utils/has_write_access_or_was_created%,+1 d' \
-		-i tests/libtracker-common/tracker-file-utils-test.c || die
-	# Fails inside portage, not outside
-	# https://bugzilla.gnome.org/show_bug.cgi?id=699413
-	sed -e '\%/steroids/tracker/tracker_sparql_update_async%,+3 d' \
-		-i tests/tracker-steroids/tracker-test.c || die
+	# Looks like sorting got fixed but not test reference files
+	sort "${S}"/tests/libtracker-data/functions/functions-tracker-1.out \
+		-o "${S}"/tests/libtracker-data/functions/functions-tracker-1.out || die
+	sort "${S}"/tests/libtracker-data/functions/functions-tracker-2.out \
+		-o "${S}"/tests/libtracker-data/functions/functions-tracker-2.out || die
 
 	eautoreconf # See bug #367975
 	gnome2_src_prepare
@@ -170,8 +175,10 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-hal \
 		--disable-nautilus-extension \
+		--disable-static \
 		--enable-abiword \
 		--enable-artwork \
+		--enable-cfg-man-pages \
 		--enable-dvi \
 		--enable-enca \
 		--enable-guarantee-metadata \
@@ -186,6 +193,7 @@ src_configure() {
 		--enable-tracker-fts \
 		--enable-tracker-writeback \
 		--with-unicode-support=libicu \
+		--with-bash-completion-dir="$(get_bashcompdir)" \
 		$(use_enable cue libcue) \
 		$(use_enable eds miner-evolution) \
 		$(use_enable exif libexif) \
@@ -208,6 +216,7 @@ src_configure() {
 		$(use_enable pdf poppler) \
 		$(use_enable playlist) \
 		$(use_enable rss miner-rss) \
+		$(use_enable stemmer libstemmer) \
 		$(use_enable test functional-tests) \
 		$(use_enable test unit-tests) \
 		$(use_enable thunderbird miner-thunderbird) \
@@ -222,9 +231,8 @@ src_configure() {
 }
 
 src_test() {
-	export G_MESSAGES_DEBUG=all # upstream bug #699401#c1
-	unset DBUS_SESSION_BUS_ADDRESS
-	Xemake check
+	# G_MESSAGES_DEBUG, upstream bug #699401#c1
+	Xemake check TESTS_ENVIRONMENT="dbus-run-session" G_MESSAGES_DEBUG="all"
 }
 
 src_install() {
