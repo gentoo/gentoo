@@ -140,6 +140,7 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/firefox"
+	epatch "${FILESDIR}"/${PN}-38-dont-hardcode-libc-soname.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	epatch_user

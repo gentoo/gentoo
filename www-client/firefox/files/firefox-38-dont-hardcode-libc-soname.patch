@@ -1,0 +1,22 @@
+--- a/testing/mozbase/mozinfo/mozinfo/mozinfo.py	2015-08-06 13:41:02.000000000 -0400
++++ b/testing/mozbase/mozinfo/mozinfo/mozinfo.py	2015-08-21 21:17:00.320766493 -0400
+@@ -96,7 +96,7 @@
+     import errno
+     PR_SET_SECCOMP = 22
+     SECCOMP_MODE_FILTER = 2
+-    ctypes.CDLL("libc.so.6", use_errno=True).prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, 0)
++    ctypes.CDLL(ctypes.util.find_library('c'), use_errno=True).prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, 0)
+     info['has_sandbox'] = ctypes.get_errno() == errno.EFAULT
+ else:
+     info['has_sandbox'] = True
+--- a/testing/mochitest/runtests.py	2015-08-06 13:41:02.000000000 -0400
++++ b/testing/mochitest/runtests.py	2015-08-21 21:17:36.060766000 -0400
+@@ -1097,7 +1097,7 @@
+     if not mozinfo.isLinux:
+         return False, ''
+ 
+-    libc = ctypes.cdll.LoadLibrary('libc.so.6')
++    libc = ctypes.cdll.LoadLibrary(ctypes.util.find_library('c'))
+     O_RDWR = 2
+     # These are from linux/videodev2.h
+ 
