@@ -3,6 +3,8 @@
 ## portage as of 2.0.51-r5. They are sorted regardless of order here.
 ##
 ACCEPT_KEYWORDS
+CC
+CXX
 CFLAGS
 CBUILD
 CHOST
