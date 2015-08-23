@@ -83,8 +83,13 @@ src_install() {
 	GOROOT="${T}/goroot" golang-build_src_install
 	dobin bin/* "${T}/goroot/bin/godoc"
 
-	exeinto "$(go env GOTOOLDIR)"
-	exeopts -m0755 -p # preserve timestamps for bug 551486
-	doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/cover"
-	doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/vet"
+	if has_version '<dev-lang/go-1.5'; then
+		exeinto "$(go env GOTOOLDIR)"
+		exeopts -m0755 -p # preserve timestamps for bug 551486
+		doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/cover"
+		doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/vet"
+	else
+		rm "${D}"/usr/bin/{cover,vet} ||
+			die "unable to remove cover and vet"
+	fi
 }
