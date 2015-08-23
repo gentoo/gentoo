@@ -78,7 +78,9 @@ PDEPEND="app-admin/python-updater"
 S=${WORKDIR}/pypy-${PV}-src
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		use doc && python-any-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
