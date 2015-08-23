@@ -47,6 +47,7 @@ CDEPEND="
 	media-libs/freetype:2=
 	media-libs/libpng:0=
 	>=sys-devel/clang-3.4:=
+	sys-libs/ncurses:=
 	sys-libs/zlib:0=
 	X? (
 		media-libs/ftgl:0=
