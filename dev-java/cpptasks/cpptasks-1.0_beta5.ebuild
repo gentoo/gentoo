@@ -14,26 +14,21 @@ SRC_URI="mirror://sourceforge/ant-contrib/ant-contrib/${P/_/-}/${P/_beta/b}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-COMMON_DEP="
+CDEPEND="
 	dev-java/ant-core:0
 	dev-java/xerces:2"
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.4"
-DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.4"
+RDEPEND="${CDEPEND}
+	>=virtual/jre-1.6"
+DEPEND="${CDEPEND}
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P/_beta/b}"
 
 java_prepare() {
 	find -name '*.jar' -exec rm -v {} + || die
-
-# Doesn't apply any longer.
-#	# https://sourceforge.net/tracker/index.php?func=detail&aid=829906&group_id=36177&atid=416920
-#	# https://bugs.gentoo.org/show_bug.cgi?id=156596
-#	epatch "${FILESDIR}/1.0b4-profiling.patch"
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
@@ -41,11 +36,6 @@ JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_BUILD_TARGET="jars"
 EANT_DOC_TARGET="javadocs -Dbuild.javadocs=build/api"
 EANT_GENTOO_CLASSPATH="ant-core,xerces-2"
-
-# TODO
-#src_test() {
-#	eant run-tests
-#}
 
 src_install() {
 	java-pkg_dojar target/lib/${PN}.jar

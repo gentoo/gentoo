@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,14 +14,14 @@ MY_PN="org.apache.felix.utils"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="mirror://apache/felix/${MY_P}-source-release.tar.gz"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.6
 	dev-java/felix-gogo-runtime:0
 	dev-java/osgi-compendium:0
 	dev-java/osgi-core-api:0"
 
-RDEPEND=">=virtual/jre-1.5"
+RDEPEND=">=virtual/jre-1.6"
 
 S="${WORKDIR}/${MY_P}"
 
