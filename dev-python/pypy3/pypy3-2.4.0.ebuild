@@ -41,32 +41,36 @@ PDEPEND="app-admin/python-updater"
 S="${WORKDIR}/${P}-src"
 
 pkg_pretend() {
-	if use low-memory; then
-		CHECKREQS_MEMORY="1750M"
-		use amd64 && CHECKREQS_MEMORY="3500M"
-	else
-		CHECKREQS_MEMORY="3G"
-		use amd64 && CHECKREQS_MEMORY="6G"
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if use low-memory; then
+			CHECKREQS_MEMORY="1750M"
+			use amd64 && CHECKREQS_MEMORY="3500M"
+		else
+			CHECKREQS_MEMORY="3G"
+			use amd64 && CHECKREQS_MEMORY="6G"
+		fi
 	fi
 
 	check-reqs_pkg_pretend
 }
 
 pkg_setup() {
-	pkg_pretend
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		pkg_pretend
 
-	# unset to allow forcing pypy below :)
-	use low-memory && local EPYTHON=
-	if python_is_installed pypy && [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]]; then
-		einfo "Using PyPy to perform the translation."
-		local EPYTHON=pypy
-	else
-		einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
-		einfo "recommends using PyPy for that. If you wish to do so, please install"
-		einfo "virtual/pypy and ensure that EPYTHON variable is unset."
+		# unset to allow forcing pypy below :)
+		use low-memory && local EPYTHON=
+		if python_is_installed pypy && [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]]; then
+			einfo "Using PyPy to perform the translation."
+			local EPYTHON=pypy
+		else
+			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
+			einfo "recommends using PyPy for that. If you wish to do so, please install"
+			einfo "virtual/pypy and ensure that EPYTHON variable is unset."
+		fi
+
+		python-any-r1_pkg_setup
 	fi
-
-	python-any-r1_pkg_setup
 }
 
 src_prepare() {
