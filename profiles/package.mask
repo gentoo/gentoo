@@ -294,11 +294,6 @@ app-backup/cyphertite
 dev-lang/php:7.0
 =virtual/httpd-php-7.0
 
-# Mike Gilbert <floppym@gentoo.org> (06 May 2015)
-# Obsolete development snapshots.
->=app-emulation/open-vm-tools-2013
->=app-emulation/open-vm-tools-kmod-2013
-
 # Brian Evans <grknight@gentoo.org> (30 Apr 2015)
 # It is unclear if dev-php/smarty-2* is affected by
 # security bug 526542.  Masked for removal in 30 days
