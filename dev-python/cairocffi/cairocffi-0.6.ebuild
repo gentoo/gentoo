@@ -21,7 +21,7 @@ IUSE="doc test"
 
 # xcffib is an optional extra excpet that the testsuite has it a hard coded unconditional component
 RDEPEND="
-	>=dev-python/cffi-0.6:=[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/cffi-0.6:=[${PYTHON_USEDEP}]' 'python*')
 	x11-libs/cairo:0=
 	<dev-python/xcffib-0.3[${PYTHON_USEDEP}]"
 
