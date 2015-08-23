@@ -14,24 +14,23 @@ HOMEPAGE="https://git.gnome.org/browse/gvfs"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="afp archive avahi bluray cdda fuse gnome-online-accounts gphoto2 gtk +http ios libsecret mtp samba systemd test +udev udisks"
+IUSE="afp archive bluray cdda fuse gnome-online-accounts gphoto2 gtk +http ios libsecret mtp nfs samba systemd test +udev udisks zeroconf"
 REQUIRED_USE="
 	cdda? ( udev )
 	mtp? ( udev )
 	udisks? ( udev )
 	systemd? ( udisks )
 "
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 # Can use libgphoto-2.5.0 as well. Automagic detection.
 RDEPEND="
-	>=dev-libs/glib-2.37:2
+	>=dev-libs/glib-2.43.2:2
 	sys-apps/dbus
 	dev-libs/libxml2:2
 	net-misc/openssh
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
-	avahi? ( >=net-dns/avahi-0.6 )
 	bluray? ( media-libs/libbluray )
 	fuse? ( >=sys-fs/fuse-2.8.0 )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1 )
@@ -43,13 +42,15 @@ RDEPEND="
 		>=app-pda/libplist-1:= )
 	libsecret? ( app-crypt/libsecret )
 	mtp? ( >=media-libs/libmtp-1.1.6 )
+	nfs? ( >=net-fs/libnfs-1.9.7 )
 	samba? ( || ( >=net-fs/samba-3.4.6[smbclient] >=net-fs/samba-4[client] ) )
 	systemd? ( sys-apps/systemd:0= )
 	udev? (
-		cdda? ( || ( dev-libs/libcdio-paranoia <dev-libs/libcdio-0.90[-minimal] ) )
+		cdda? ( dev-libs/libcdio-paranoia )
 		virtual/libgudev:=
 		virtual/libudev:= )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
+	zeroconf? ( >=net-dns/avahi-0.6 )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
@@ -81,6 +82,7 @@ src_prepare() {
 			-e 's/burn.mount/ /' \
 			-i daemon/Makefile.am || die
 
+		# Uncomment when eautoreconf stops being needed always
 		eautoreconf
 	fi
 
@@ -95,12 +97,10 @@ src_configure() {
 		--with-bash-completion-dir="$(get_bashcompdir)" \
 		--disable-gdu \
 		--disable-hal \
-		--disable-obexftp \
 		--with-dbus-service-dir="${EPREFIX}"/usr/share/dbus-1/services \
 		--enable-documentation \
 		$(use_enable afp) \
 		$(use_enable archive) \
-		$(use_enable avahi) \
 		$(use_enable bluray) \
 		$(use_enable cdda) \
 		$(use_enable fuse) \
@@ -109,11 +109,13 @@ src_configure() {
 		$(use_enable gtk) \
 		$(use_enable ios afc) \
 		$(use_enable mtp libmtp) \
+		$(use_enable nfs) \
 		$(use_enable udev) \
 		$(use_enable udev gudev) \
 		$(use_enable http) \
 		$(use_enable libsecret keyring) \
 		$(use_enable samba) \
 		$(use_enable systemd libsystemd-login) \
-		$(use_enable udisks udisks2)
+		$(use_enable udisks udisks2) \
+		$(use_enable zeroconf avahi)
 }
