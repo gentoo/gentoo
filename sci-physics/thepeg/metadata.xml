@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-physics</herd>
+<maintainer>
+  <email>jauhien@gentoo.org</email>
+</maintainer>
+<longdescription>
+  Toolkit for High Energy Physics Event Generation.
+  ThePEG has been broken out from the PYTHIA7 program
+  to better factorize the parts which were PYTHIA-specific
+  from those which are general model-independent components
+  of the toolkit and which can be used by any event generator model.
+</longdescription>
+<use>
+  <flag name='c++11'>Build ThePEG using the C++11 standard.
+  Experimental feature, not for production use.</flag>
+  <flag name='fastjet'>Adds support for <pkg>sci-physics/fastjet</pkg></flag>
+  <flag name='hepmc'>Adds support for High Energy Physics Monte Carlo
+	  Generators <pkg>sci-physics/hepmc</pkg></flag>
+  <flag name='lhapdf'>Adds support for <pkg>sci-physics/lhapdf</pkg></flag>
+  <flag name='rivet'>Adds support for <pkg>sci-physics/rivet</pkg></flag>
+</use>
+</pkgmetadata>
