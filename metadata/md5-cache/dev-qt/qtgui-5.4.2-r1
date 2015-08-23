@@ -4,7 +4,7 @@ DESCRIPTION=The GUI module and platform plugins for the Qt5 framework
 EAPI=5
 HOMEPAGE=https://www.qt.io/
 IUSE=accessibility dbus egl eglfs evdev +gif gles2 gtkstyle +harfbuzz ibus jpeg +png +udev +xcb test debug test
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 hppa ~ppc64 ~x86
 LICENSE=|| ( LGPL-2.1 LGPL-3 ) FDL-1.3
 PDEPEND=ibus? ( app-i18n/ibus )
 RDEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.4.2 media-libs/fontconfig media-libs/freetype:2 >=sys-libs/zlib-1.2.5 virtual/opengl dbus? ( ~dev-qt/qtdbus-5.4.2 ) egl? ( media-libs/mesa[egl] ) evdev? ( sys-libs/mtdev ) gtkstyle? ( x11-libs/gtk+:2 x11-libs/pango !!x11-libs/cairo[qt4] ) gles2? ( media-libs/mesa[gles2] ) harfbuzz? ( >=media-libs/harfbuzz-0.9.32:= ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) udev? ( virtual/libudev:= ) xcb? ( x11-libs/libICE x11-libs/libSM >=x11-libs/libX11-1.5 >=x11-libs/libXi-1.6 x11-libs/libXrender >=x11-libs/libxcb-1.10:=[xkb] >=x11-libs/libxkbcommon-0.4.1[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm ) dev-qt/qtchooser
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=5
 SRC_URI=http://download.qt.io/official_releases/qt/5.4/5.4.2/submodules/qtbase-opensource-src-5.4.2.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qt5-build	202ce6b10b351cf7dac263cab7e93e6c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=2d8c1613ebb1e7bd005c79b7e95c047e
+_md5_=b40a27d0072c7d2e698d6892c324f7b5
