@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=5
 
 JAVA_PKG_IUSE="doc source"
 JAVA_PKG_BSFIX="off"
