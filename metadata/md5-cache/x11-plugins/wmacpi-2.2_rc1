@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install postinst unpack
-DEPEND=x11-libs/libdockapp x11-libs/libX11
+DEPEND=<x11-libs/libdockapp-0.7 x11-libs/libX11
 DESCRIPTION=WMaker DockApp: ACPI status monitor for laptops
 EAPI=0
 HOMEPAGE=http://himi.org/wmacpi/
 KEYWORDS=amd64 -ppc -sparc x86
 LICENSE=GPL-2
-RDEPEND=x11-libs/libdockapp x11-libs/libX11
+RDEPEND=<x11-libs/libdockapp-0.7 x11-libs/libX11
 SLOT=0
 SRC_URI=http://himi.org/wmacpi/download/wmacpi-2.2rc1.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5abc8310661ad9928e75c935c80c31c5
+_md5_=f94aa15bd9cff967e8126e6750ece2ff
