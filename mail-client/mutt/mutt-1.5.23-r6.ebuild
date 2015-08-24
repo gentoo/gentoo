@@ -71,8 +71,8 @@ src_prepare() {
 	# If you ever take over or need to modify patches here, just check
 	# out the gentoo branch(es) of Gentoo's Mutt Mercurial clone, and
 	# the patchqueue as it'll save you a lot of work.
-	# http://prefix.gentooexperimental.org:8000/mutt/
-	# http://prefix.gentooexperimental.org:8000/mutt-patches/
+	# http://hg.code.sf.net/p/gentoomutt/code/
+	# http://hg.code.sf.net/p/gentoomuttpatches/code/
 	for rev in $(eval echo {0..${PR#r}}) ; do
 		local revpatch="${PATCHDIR}"/mutt-gentoo-${PV}-r${rev}.patch
 		[[ -e ${revpatch} ]] && \
