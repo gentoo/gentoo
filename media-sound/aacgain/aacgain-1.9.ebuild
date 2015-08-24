@@ -13,7 +13,7 @@ MP3GAIN_PV="1.5.2"
 DESCRIPTION="AACGain normalizes the volume of digital music files using the Replay Gain algorithm"
 HOMEPAGE="http://aacgain.altosdesign.com/"
 SRC_URI="http://sbriesen.de/gentoo/distfiles/${P}.tar.xz
-	http://mp4v2.googlecode.com/files/mp4v2-${MP4V2_PV}.tar.bz2
+	https://mp4v2.googlecode.com/files/mp4v2-${MP4V2_PV}.tar.bz2
 	mirror://sourceforge/mp3gain/mp3gain-${MP3GAIN_PV//./_}-src.zip
 	mirror://sourceforge/faac/faad2-${FAAD2_PV}.tar.gz"
 

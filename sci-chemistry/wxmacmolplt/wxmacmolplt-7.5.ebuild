@@ -10,7 +10,7 @@ inherit autotools eutils wxwidgets
 
 DESCRIPTION="Chemical 3D graphics program with GAMESS input builder"
 HOMEPAGE="http://www.scl.ameslab.gov/MacMolPlt/"
-SRC_URI="http://wxmacmolplt.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://wxmacmolplt.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

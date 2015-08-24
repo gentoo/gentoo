@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils fdo-mime gnome2-utils games
 
 DESCRIPTION="GUI for gnuchess and for internet chess servers"
-HOMEPAGE="http://www.gnu.org/software/xboard/"
+HOMEPAGE="https://www.gnu.org/software/xboard/"
 SRC_URI="mirror://gnu/xboard/${P}.tar.gz"
 
 LICENSE="GPL-3"

@@ -5,7 +5,7 @@
 inherit flag-o-matic
 
 DESCRIPTION="User utilities for zisofs"
-HOMEPAGE="http://www.kernel.org/pub/linux/utils/fs/zisofs/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/fs/zisofs/"
 SRC_URI="mirror://kernel/linux/utils/fs/zisofs/${P}.tar.bz2"
 
 LICENSE="GPL-2"

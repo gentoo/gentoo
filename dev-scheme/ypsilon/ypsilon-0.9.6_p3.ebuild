@@ -8,7 +8,7 @@ inherit eutils flag-o-matic toolchain-funcs
 MY_P="${P/_p/.update}"
 DESCRIPTION="R6RS-compliant Scheme implementation for real-time applications"
 HOMEPAGE="https://code.google.com/p/ypsilon/"
-SRC_URI="http://ypsilon.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://ypsilon.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

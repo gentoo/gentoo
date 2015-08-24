@@ -9,9 +9,9 @@
 		The implementation is using GCC&#39;s builtin atomic operations (available in GCC &gt;=
 		4) in C wrappers called through the FFI. See these links for background:
 		
-		* GCC manual: &lt;http://gcc.gnu.org/onlinedocs/gcc/Atomic-Builtins.html&gt;
+		* GCC manual: &lt;https://gcc.gnu.org/onlinedocs/gcc/Atomic-Builtins.html&gt;
 		
-		* GCC wiki: &lt;http://gcc.gnu.org/wiki/Atomic&gt;
+		* GCC wiki: &lt;https://gcc.gnu.org/wiki/Atomic&gt;
 		
 		/Portability/: This package is primarily developed on a Linux system, but
 		should work wherever GCC &gt;= 4 is available. It has been confirmed as working

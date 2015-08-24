@@ -7,8 +7,8 @@ EAPI="3"
 inherit cmake-utils eutils multilib
 
 if [ "${PV}" != "9999" ]; then
-	SRC_URI="system-boost? ( http://votca.googlecode.com/files/${PF}_pristine.tar.gz )
-		!system-boost? ( http://votca.googlecode.com/files/${PF}.tar.gz )"
+	SRC_URI="system-boost? ( https://votca.googlecode.com/files/${PF}_pristine.tar.gz )
+		!system-boost? ( https://votca.googlecode.com/files/${PF}.tar.gz )"
 	RESTRICT="primaryuri"
 else
 	SRC_URI=""

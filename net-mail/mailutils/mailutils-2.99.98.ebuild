@@ -8,7 +8,7 @@ PYTHON_DEPEND="python? 2"
 inherit eutils flag-o-matic python toolchain-funcs
 
 DESCRIPTION="A useful collection of mail servers, clients, and filters"
-HOMEPAGE="http://www.gnu.org/software/mailutils/mailutils.html"
+HOMEPAGE="https://www.gnu.org/software/mailutils/mailutils.html"
 #SRC_URI="mirror://gnu/mailutils/${P}.tar.xz"
 SRC_URI="mirror://gnu-alpha/mailutils/${P}.tar.xz"
 

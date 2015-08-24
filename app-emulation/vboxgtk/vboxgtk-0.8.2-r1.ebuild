@@ -9,7 +9,7 @@ inherit gnome2-utils l10n distutils-r1
 
 DESCRIPTION="GTK frontend for VirtualBox"
 HOMEPAGE="https://code.google.com/p/vboxgtk/"
-SRC_URI="http://vboxgtk.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://vboxgtk.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

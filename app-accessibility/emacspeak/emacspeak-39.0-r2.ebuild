@@ -10,10 +10,10 @@ DISABLE_AUTOFORMATTING=1
 inherit eutils readme.gentoo elisp
 
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="http://${PN}.googlecode.com/svn/trunk"
+	ESVN_REPO_URI="https://${PN}.googlecode.com/svn/trunk"
 	inherit subversion
 else
-	SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+	SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 	KEYWORDS="amd64 ppc x86"
 fi
 

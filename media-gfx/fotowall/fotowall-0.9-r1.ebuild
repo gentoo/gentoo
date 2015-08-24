@@ -10,7 +10,7 @@ MY_P="${P/f/F}"
 
 DESCRIPTION="Qt4 tool for creating wallpapers"
 HOMEPAGE="http://www.enricoros.com/opensource/fotowall/"
-SRC_URI="http://fotowall.googlecode.com/files/${MY_P}.tar.bz2"
+SRC_URI="https://fotowall.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library of matchers for building test expressions"
 HOMEPAGE="https://code.google.com/p/${MY_PN}/"
-SRC_URI="http://${MY_PN}.googlecode.com/files/${MY_P}.tgz"
+SRC_URI="https://${MY_PN}.googlecode.com/files/${MY_P}.tgz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-macos ~x64-solaris"

@@ -6,7 +6,7 @@ EAPI=2
 
 DESCRIPTION="C++ library to scrobble tracks on Last.fm"
 HOMEPAGE="https://code.google.com/p/lastfmlib/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

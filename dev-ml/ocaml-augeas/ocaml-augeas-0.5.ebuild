@@ -9,7 +9,7 @@ inherit findlib
 DESCRIPTION="Ocaml bindings for Augeas"
 HOMEPAGE="http://augeas.net/"
 #SRC_URI="http://augeas.net/download/ocaml/${P}.tar.gz"
-SRC_URI="http://people.redhat.com/~rjones/augeas/files/${P}.tar.gz"
+SRC_URI="https://people.redhat.com/~rjones/augeas/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

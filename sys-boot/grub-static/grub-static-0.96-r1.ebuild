@@ -4,7 +4,7 @@
 
 DESCRIPTION="Static GNU GRUB boot loader"
 
-HOMEPAGE="http://www.gnu.org/software/grub/"
+HOMEPAGE="https://www.gnu.org/software/grub/"
 SRC_URI="mirror://gentoo/grub-static-${PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"

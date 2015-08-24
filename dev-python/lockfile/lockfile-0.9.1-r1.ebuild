@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Platform-independent file locking module"
 HOMEPAGE="https://code.google.com/p/pylockfile/ https://pypi.python.org/pypi/lockfile http://smontanaro.dyndns.org/python/"
-SRC_URI="http://pylockfile.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://pylockfile.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

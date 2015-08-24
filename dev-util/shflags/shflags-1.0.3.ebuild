@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="Command-line flags module for Unix shell scripts"
 HOMEPAGE="https://code.google.com/p/shflags/"
-SRC_URI="http://shflags.googlecode.com/files/${P}.tgz"
+SRC_URI="https://shflags.googlecode.com/files/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

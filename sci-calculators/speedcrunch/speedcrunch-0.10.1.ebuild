@@ -8,7 +8,7 @@ inherit eutils cmake-utils
 
 DESCRIPTION="A fast and usable calculator for power users"
 HOMEPAGE="https://code.google.com/p/speedcrunch/"
-SRC_URI="http://speedcrunch.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://speedcrunch.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -10,8 +10,8 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="Morse-tutor for Linux using the Koch-method"
-HOMEPAGE="http://KochMorse.googlecode.com/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://KochMorse.googlecode.com/"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Simple commands to access hardware device registers"
 HOMEPAGE="https://code.google.com/p/iotools/"
-SRC_URI="http://iotools.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://iotools.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ MY_P=xdelta3-${PV}
 
 DESCRIPTION="a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression"
 HOMEPAGE="http://xdelta.org/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.xz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.xz"
 SRC_URI="https://github.com/jmacd/xdelta-devel/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

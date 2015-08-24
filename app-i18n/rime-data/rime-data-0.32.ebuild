@@ -8,7 +8,7 @@ inherit vcs-snapshot
 MY_P=brise-${PV}
 DESCRIPTION="Data resources for Rime Input Method Engine"
 HOMEPAGE="https://code.google.com/p/rimeime/"
-SRC_URI="http://rimeime.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://rimeime.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

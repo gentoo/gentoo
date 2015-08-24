@@ -98,7 +98,7 @@ pkg_postinst() {
 	ewarn "See http://fuseyism.com/japi/ibmjdk15-libgcj-${API_DIFF_PV}.html"
 	ewarn "and http://fuseyism.com/japi/icedtea6-libgcj-${API_DIFF_PV}.html"
 	ewarn "Check for existing bugs relating to missing APIs and file"
-	ewarn "new ones at http://gcc.gnu.org/bugzilla/"
+	ewarn "new ones at https://gcc.gnu.org/bugzilla/"
 	ewarn
 	ewarn "Due to this and limited manpower, we currently cannot support"
 	ewarn "using gcj-jdk as a system VM. Its main purpose is to bootstrap"

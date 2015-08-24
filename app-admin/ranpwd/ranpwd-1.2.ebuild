@@ -5,7 +5,7 @@
 EAPI=3
 
 DESCRIPTION="Generate random passwords using the in-kernel cryptographically secure random number generator"
-HOMEPAGE="http://www.kernel.org/pub/software/utils/admin/ranpwd/"
+HOMEPAGE="https://www.kernel.org/pub/software/utils/admin/ranpwd/"
 SRC_URI="mirror://kernel/software/utils/admin/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

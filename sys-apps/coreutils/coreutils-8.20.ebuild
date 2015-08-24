@@ -8,7 +8,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 PATCH_VER="1.1"
 DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
-HOMEPAGE="http://www.gnu.org/software/coreutils/"
+HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu-alpha/coreutils/${P}.tar.xz
 	mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}.tar.xz

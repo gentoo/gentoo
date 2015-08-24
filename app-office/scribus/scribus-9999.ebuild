@@ -165,7 +165,7 @@ src_install() {
 	ln -sf html "${ED}"/usr/share/doc/${PF}/en || die
 	cat >> "${T}"/COPYING <<- EOF
 	${PN} is licensed under the "${LICENSE}".
-	Please visit http://www.gnu.org/licenses/gpl-2.0.html for the complete license text.
+	Please visit https://www.gnu.org/licenses/gpl-2.0.html for the complete license text.
 	EOF
 	dodoc "${T}"/COPYING
 	docompress -x /usr/share/doc/${PF}/en /usr/share/doc/${PF}/{AUTHORS,TRANSLATION,LINKS,COPYING}

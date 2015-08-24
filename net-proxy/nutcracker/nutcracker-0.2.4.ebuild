@@ -9,7 +9,7 @@ inherit autotools eutils
 DESCRIPTION="A fast, light-weight proxy for Memcached and Redis.
 (Twitter's Twemproxy)"
 HOMEPAGE="https://github.com/twitter/twemproxy"
-SRC_URI="http://twemproxy.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://twemproxy.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

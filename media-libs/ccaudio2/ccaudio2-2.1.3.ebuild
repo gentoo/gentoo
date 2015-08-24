@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF="1"
 inherit autotools-utils
 
 DESCRIPTION="C++ class framework for manipulating audio data"
-HOMEPAGE="http://www.gnu.org/software/ccaudio"
+HOMEPAGE="https://www.gnu.org/software/ccaudio"
 SRC_URI="mirror://gnu/ccaudio/${P}.tar.gz"
 
 LICENSE="GPL-3"

@@ -8,7 +8,7 @@ inherit cmake-utils multilib
 
 DESCRIPTION="Rime Input Method Engine library"
 HOMEPAGE="https://code.google.com/p/rimeime/"
-SRC_URI="http://rimeime.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://rimeime.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

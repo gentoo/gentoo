@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Better INI parser for Python"
 HOMEPAGE="https://code.google.com/p/iniparse https://pypi.python.org/pypi/iniparse"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT PSF-2"
 SLOT="0"

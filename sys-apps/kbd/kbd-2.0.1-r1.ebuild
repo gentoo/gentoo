@@ -7,7 +7,7 @@ EAPI=5
 SCM=""
 if [[ ${PV} == "9999" ]] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="http://git.kernel.org/cgit/linux/kernel/git/legion/${PN}.git"
+	EGIT_REPO_URI="https://git.kernel.org/cgit/linux/kernel/git/legion/${PN}.git"
 	EGIT_BRANCH="master"
 else
 	SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/kbd/${P}.tar.xz"

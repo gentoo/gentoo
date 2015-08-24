@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils autotools
 
 DESCRIPTION="displays info about resources used by a program"
-HOMEPAGE="http://www.gnu.org/directory/time.html"
+HOMEPAGE="https://www.gnu.org/directory/time.html"
 SRC_URI="mirror://gnu/time/${P}.tar.gz"
 
 LICENSE="GPL-2"

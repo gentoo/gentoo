@@ -8,8 +8,8 @@ PYTHON_DEPEND="2"
 inherit autotools eutils multilib toolchain-funcs python eutils
 
 DESCRIPTION="Userspace utilities for storing and processing auditing records"
-HOMEPAGE="http://people.redhat.com/sgrubb/audit/"
-SRC_URI="http://people.redhat.com/sgrubb/audit/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/sgrubb/audit/"
+SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

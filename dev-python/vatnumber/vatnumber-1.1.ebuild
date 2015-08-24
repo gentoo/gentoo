@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Module to validate VAT numbers"
 HOMEPAGE="https://code.google.com/p/vatnumber/"
-SRC_URI="http://vatnumber.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://vatnumber.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

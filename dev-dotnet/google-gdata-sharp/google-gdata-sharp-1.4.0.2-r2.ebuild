@@ -10,7 +10,7 @@ MY_PN="libgoogle-data-mono"
 
 DESCRIPTION="C# bindings for the Google GData API"
 HOMEPAGE="https://code.google.com/p/google-gdata/"
-SRC_URI="http://google-gdata.googlecode.com/files/${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://google-gdata.googlecode.com/files/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

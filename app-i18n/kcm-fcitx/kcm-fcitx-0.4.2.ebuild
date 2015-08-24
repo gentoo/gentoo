@@ -7,7 +7,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE configuration module for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
-SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://fcitx.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

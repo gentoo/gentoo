@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="library and tools for managing linux kernel modules"
-HOMEPAGE="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git"
+HOMEPAGE="https://git.kernel.org/?p=utils/kernel/kmod/kmod.git"
 
 LICENSE="LGPL-2"
 SLOT="0"

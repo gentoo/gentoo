@@ -6,7 +6,7 @@ EAPI=5
 inherit flag-o-matic games
 
 DESCRIPTION="Console based chess interface"
-HOMEPAGE="http://www.gnu.org/software/chess/chess.html"
+HOMEPAGE="https://www.gnu.org/software/chess/chess.html"
 SRC_URI="mirror://gnu/chess/${P}.tar.gz"
 
 KEYWORDS="amd64 ~arm ppc ppc64 x86"

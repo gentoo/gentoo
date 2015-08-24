@@ -8,7 +8,7 @@ inherit eutils flag-o-matic qmake-utils toolchain-funcs
 
 DESCRIPTION="A better i7 (and now i3, i5) reporting tool for Linux"
 HOMEPAGE="https://github.com/ajaiantilal/i7z"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

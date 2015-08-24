@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="libhangul is a generalized and portable library for processing hangul"
 HOMEPAGE="https://code.google.com/p/libhangul/"
-SRC_URI="http://libhangul.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://libhangul.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

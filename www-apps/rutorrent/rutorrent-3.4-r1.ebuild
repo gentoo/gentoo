@@ -9,8 +9,8 @@ inherit webapp eutils
 DESCRIPTION="ruTorrent is a front-end for the popular Bittorrent client rTorrent"
 HOMEPAGE="https://code.google.com/p/rutorrent/"
 SRC_URI="
-			http://rutorrent.googlecode.com/files/${P}.tar.gz
-			http://rutorrent.googlecode.com/files/plugins-${PV}.tar.gz"
+			https://rutorrent.googlecode.com/files/${P}.tar.gz
+			https://rutorrent.googlecode.com/files/plugins-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"

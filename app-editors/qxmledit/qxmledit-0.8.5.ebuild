@@ -10,7 +10,7 @@ MY_P="qxmledit-${PV}-src"
 
 DESCRIPTION="Qt4 XML Editor"
 HOMEPAGE="https://code.google.com/p/qxmledit/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tgz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tgz"
 
 LICENSE="LGPL-2"
 SLOT="0"

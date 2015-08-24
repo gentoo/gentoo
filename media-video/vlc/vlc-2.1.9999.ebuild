@@ -223,7 +223,7 @@ src_prepare() {
 	# config.h:792: warning: ignoring #pragma STDC FENV_ACCESS [-Wunknown-pragmas]
 	# config.h:793: warning: ignoring #pragma STDC FP_CONTRACT [-Wunknown-pragmas]
 	#
-	# http://gcc.gnu.org/c99status.html
+	# https://gcc.gnu.org/c99status.html
 	if [[ "$(tc-getCC)" == *"gcc"* ]] ; then
 		sed -i 's/ifndef __FAST_MATH__/if 0/g' configure.ac || die
 	fi

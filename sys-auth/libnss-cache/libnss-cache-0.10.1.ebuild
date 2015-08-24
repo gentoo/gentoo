@@ -8,7 +8,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="libnss-cache is a library that serves nss lookups"
 HOMEPAGE="https://code.google.com/p/nsscache/"
-SRC_URI="http://nsscache.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://nsscache.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

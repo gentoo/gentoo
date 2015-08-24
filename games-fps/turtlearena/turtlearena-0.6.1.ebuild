@@ -10,8 +10,8 @@ MY_P=${PN/-/}-${PV}
 
 DESCRIPTION="A turtle featuring free and open source third-person action game (ioq3 engine)"
 HOMEPAGE="http://ztm.x10host.com/ta/index.htm"
-SRC_URI="http://turtlearena.googlecode.com/files/${MY_P}-0-src.tar.bz2
-	http://turtlearena.googlecode.com/files/${MY_P}-0.zip"
+SRC_URI="https://turtlearena.googlecode.com/files/${MY_P}-0-src.tar.bz2
+	https://turtlearena.googlecode.com/files/${MY_P}-0.zip"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 mplus-fonts lcc"
 SLOT="0"

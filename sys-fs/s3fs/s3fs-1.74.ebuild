@@ -7,8 +7,8 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Amazon mounting S3 via fuse"
-HOMEPAGE="http://s3fs.googlecode.com/"
-SRC_URI="http://s3fs.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://s3fs.googlecode.com/"
+SRC_URI="https://s3fs.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

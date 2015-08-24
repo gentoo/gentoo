@@ -13,7 +13,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="BLAS and LAPACK-derived matrix data structures and linear algebra methods"
 HOMEPAGE="https://code.google.com/p/matrix-toolkits-java/"
-SRC_URI="http://matrix-toolkits-java.googlecode.com/files/mtj-${PV}.zip"
+SRC_URI="https://matrix-toolkits-java.googlecode.com/files/mtj-${PV}.zip"
 
 LICENSE="LGPL-3"
 SLOT="0"

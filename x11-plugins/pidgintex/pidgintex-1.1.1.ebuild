@@ -9,7 +9,7 @@ MY_P=pidginTeX-${PV}
 
 DESCRIPTION="Pidgin plugin to render LaTeX expressions in messages"
 HOMEPAGE="https://code.google.com/p/pidgintex"
-SRC_URI="http://pidgintex.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://pidgintex.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

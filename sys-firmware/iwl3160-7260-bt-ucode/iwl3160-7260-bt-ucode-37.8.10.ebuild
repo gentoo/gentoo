@@ -6,7 +6,7 @@ EAPI=5
 inherit linux-info
 
 DESCRIPTION="Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth"
-HOMEPAGE="http://wireless.kernel.org/en/users/Drivers/iwlwifi"
+HOMEPAGE="https://wireless.kernel.org/en/users/Drivers/iwlwifi"
 SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="ipw3945"

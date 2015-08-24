@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="locks the local X display until a password is entered"
 HOMEPAGE="https://code.google.com/p/alock/
 	http://darkshed.net/projects/alock"
-SRC_URI="http://alock.googlecode.com/files/alock-svn-${PV}.tar.bz2"
+SRC_URI="https://alock.googlecode.com/files/alock-svn-${PV}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

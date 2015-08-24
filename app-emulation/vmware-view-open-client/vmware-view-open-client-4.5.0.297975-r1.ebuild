@@ -11,7 +11,7 @@ MY_P="${PN/vm/VM}-source-${MY_PV}"
 
 DESCRIPTION="Open Source VMware View Client"
 HOMEPAGE="https://code.google.com/p/vmware-view-open-client/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

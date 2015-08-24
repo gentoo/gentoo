@@ -8,7 +8,7 @@ inherit autotools-utils
 
 DESCRIPTION="code generator and runtime libraries to use Protocol Buffers (protobuf) from pure C"
 HOMEPAGE="https://code.google.com/p/protobuf-c/"
-SRC_URI="http://protobuf-c.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://protobuf-c.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="A pure Python module for creation and analysis of binary data"
-HOMEPAGE="http://python-bitstring.googlecode.com/"
-SRC_URI="http://python-bitstring.googlecode.com/files/${P}.zip"
+HOMEPAGE="https://python-bitstring.googlecode.com/"
+SRC_URI="https://python-bitstring.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"

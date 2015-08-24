@@ -8,7 +8,7 @@ inherit eutils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
-HOMEPAGE="http://www.gnu.org/software/automake/"
+HOMEPAGE="https://www.gnu.org/software/automake/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

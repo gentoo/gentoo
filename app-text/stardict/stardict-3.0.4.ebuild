@@ -17,8 +17,8 @@ inherit eutils gnome2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="https://code.google.com/p/stardict-3/"
-SRC_URI="http://${PN}-3.googlecode.com/files/${P}.tar.bz2
-	pronounce? ( http://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
+SRC_URI="https://${PN}-3.googlecode.com/files/${P}.tar.bz2
+	pronounce? ( https://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
 	qqwry? ( mirror://gentoo/QQWry.Dat.bz2 )"
 
 LICENSE="CPL-1.0 GPL-3 LGPL-2"

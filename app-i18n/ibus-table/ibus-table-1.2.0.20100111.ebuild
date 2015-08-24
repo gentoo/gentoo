@@ -9,7 +9,7 @@ inherit python
 
 DESCRIPTION="The Table Engine for IBus Framework"
 HOMEPAGE="https://code.google.com/p/ibus/"
-SRC_URI="http://ibus.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

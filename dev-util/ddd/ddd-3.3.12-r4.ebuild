@@ -7,7 +7,7 @@ EAPI="4"
 inherit autotools-utils eutils
 
 DESCRIPTION="Graphical front-end for command-line debuggers"
-HOMEPAGE="http://www.gnu.org/software/ddd"
+HOMEPAGE="https://www.gnu.org/software/ddd"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3 FDL-1.1"

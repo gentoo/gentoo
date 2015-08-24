@@ -3,8 +3,8 @@
 # $Id$
 
 DESCRIPTION="Small utility for Linux/SPARC that list devices on SBUS"
-HOMEPAGE="http://people.redhat.com/tcallawa/lssbus/"
-SRC_URI="http://people.redhat.com/tcallawa/lssbus/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/tcallawa/lssbus/"
+SRC_URI="https://people.redhat.com/tcallawa/lssbus/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

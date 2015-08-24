@@ -8,7 +8,7 @@ inherit findlib eutils
 
 DESCRIPTION="Standard library extensions for O'Caml"
 HOMEPAGE="https://code.google.com/p/ocaml-extlib/"
-SRC_URI="http://ocaml-extlib.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ocaml-extlib.googlecode.com/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 DEPEND="
 	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]

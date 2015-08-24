@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="a periodic ping program"
-HOMEPAGE="http://www.gnu.org/software/alive/"
+HOMEPAGE="https://www.gnu.org/software/alive/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils scons-utils
 
 DESCRIPTION="The SunPinyin IMEngine for Smart Common Input Method (SCIM)"
-HOMEPAGE="http://sunpinyin.googlecode.com"
+HOMEPAGE="https://sunpinyin.googlecode.com"
 SRC_URI="${HOMEPAGE}/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 CDDL"

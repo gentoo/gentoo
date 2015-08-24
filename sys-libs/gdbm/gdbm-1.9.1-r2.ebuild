@@ -8,7 +8,7 @@ inherit eutils libtool flag-o-matic
 
 EX_P="${PN}-1.8.3"
 DESCRIPTION="Standard GNU database libraries"
-HOMEPAGE="http://www.gnu.org/software/gdbm/"
+HOMEPAGE="https://www.gnu.org/software/gdbm/"
 SRC_URI="mirror://gnu/gdbm/${P}.tar.gz
 	exporter? ( mirror://gnu/gdbm/${EX_P}.tar.gz )"
 

@@ -9,7 +9,7 @@ MY_PV="${PV/_}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Allows important system files to be stored in a fast database file rather than plain text"
-HOMEPAGE="http://sources.redhat.com/glibc/"
+HOMEPAGE="https://sources.redhat.com/glibc/"
 SRC_URI="ftp://sources.redhat.com/pub/glibc/old-releases/${MY_P}.tar.gz
 		 mirror://gentoo/${MY_P}-external.patch.bz2
 		 mirror://gentoo/${MY_P}-dbupgrade.patch.bz2

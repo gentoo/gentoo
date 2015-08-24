@@ -7,8 +7,8 @@ EAPI="5"
 inherit eutils user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
-HOMEPAGE="http://${PN}.googlecode.com/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://${PN}.googlecode.com/"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"

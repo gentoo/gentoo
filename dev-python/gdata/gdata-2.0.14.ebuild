@@ -14,7 +14,7 @@ MY_P="gdata-${PV}"
 
 DESCRIPTION="Python client library for Google data APIs"
 HOMEPAGE="https://code.google.com/p/gdata-python-client/ https://pypi.python.org/pypi/gdata"
-SRC_URI="http://gdata-python-client.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://gdata-python-client.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

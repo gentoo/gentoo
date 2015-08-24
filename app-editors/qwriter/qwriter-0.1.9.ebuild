@@ -12,7 +12,7 @@ MY_P="${P}-src"
 DESCRIPTION="Advanced text editor with syntax highlighting"
 HOMEPAGE="http://qt-apps.org/content/show.php/QWriter?content=106377"
 #upstream failed to provide a sane url
-SRC_URI="http://qwriter.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://qwriter.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

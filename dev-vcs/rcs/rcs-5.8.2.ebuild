@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils
 
 DESCRIPTION="Revision Control System"
-HOMEPAGE="http://www.gnu.org/software/rcs/"
+HOMEPAGE="https://www.gnu.org/software/rcs/"
 SRC_URI="mirror://gnu/rcs/${P}.tar.gz"
 
 LICENSE="GPL-3"

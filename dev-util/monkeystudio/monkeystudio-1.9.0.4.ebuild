@@ -11,7 +11,7 @@ MY_P="mks_${PV}-src"
 
 DESCRIPTION="A cross platform Qt 4 IDE"
 HOMEPAGE="http://www.monkeystudio.org"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 MY_P="${PN}-r${PV}"
 DESCRIPTION="A collection of Google's core Java libraries"
 HOMEPAGE="https://code.google.com/p/guava-libraries/"
-SRC_URI="http://guava-libraries.googlecode.com/files/${MY_P}.zip"
+SRC_URI="https://guava-libraries.googlecode.com/files/${MY_P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

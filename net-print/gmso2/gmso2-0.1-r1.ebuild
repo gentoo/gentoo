@@ -10,8 +10,8 @@ WANT_ANT_TASKS="ant-nodeps"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="GMSO 2 queries ink levels of libinklevel supported printers"
-HOMEPAGE="http://mso.googlecode.com/"
-SRC_URI="http://mso.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://mso.googlecode.com/"
+SRC_URI="https://mso.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

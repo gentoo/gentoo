@@ -11,7 +11,7 @@ inherit python-single-r1 vim-plugin
 MY_P="${PN}_${PV}"
 DESCRIPTION="vim plugin: Run interactive commands inside a Vim buffer"
 HOMEPAGE="https://code.google.com/p/conque/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

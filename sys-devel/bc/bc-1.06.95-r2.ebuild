@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Handy console-based calculator utility"
-HOMEPAGE="http://www.gnu.org/software/bc/bc.html"
+HOMEPAGE="https://www.gnu.org/software/bc/bc.html"
 SRC_URI="mirror://gnu-alpha/bc/${P}.tar.bz2
 	mirror://gnu/bc/${P}.tar.bz2"
 

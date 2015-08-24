@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Cross-platform windowing and multimedia library for Python"
 HOMEPAGE="http://www.pyglet.org/"
-SRC_URI="http://pyglet.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://pyglet.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

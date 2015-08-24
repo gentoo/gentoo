@@ -7,7 +7,7 @@ EAPI=5
 inherit flag-o-matic
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
-HOMEPAGE="http://www.gnu.org/software/bison/"
+HOMEPAGE="https://www.gnu.org/software/bison/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

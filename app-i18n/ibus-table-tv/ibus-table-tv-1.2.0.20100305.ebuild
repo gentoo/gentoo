@@ -4,7 +4,7 @@
 
 DESCRIPTION="The Thai and Viqr (Vietnamese) tables for IBus-Table"
 HOMEPAGE="https://code.google.com/p/ibus/"
-SRC_URI="http://ibus.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -40,7 +40,7 @@ SRC_URI+=" mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz
 	truetype? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
 DESCRIPTION="GNU GRUB boot loader"
-HOMEPAGE="http://www.gnu.org/software/grub/"
+HOMEPAGE="https://www.gnu.org/software/grub/"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 truetype? ( BitstreamVera GPL-2-with-font-exception )"

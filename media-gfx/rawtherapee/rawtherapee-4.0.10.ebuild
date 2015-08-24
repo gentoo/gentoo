@@ -8,7 +8,7 @@ inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="http://www.rawtherapee.com/"
-SRC_URI="http://rawtherapee.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://rawtherapee.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

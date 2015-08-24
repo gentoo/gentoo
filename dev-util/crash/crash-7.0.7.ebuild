@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Red Hat crash utility. Used for analyzing kernel core dumps"
-HOMEPAGE="http://people.redhat.com/anderson/"
-SRC_URI="http://people.redhat.com/anderson/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/anderson/"
+SRC_URI="https://people.redhat.com/anderson/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI="4"
 inherit toolchain-funcs
 
 DESCRIPTION="Your basic line editor"
-HOMEPAGE="http://www.gnu.org/software/ed/"
+HOMEPAGE="https://www.gnu.org/software/ed/"
 #SRC_URI="mirror://gnu/ed/${P}.tar.lz"
 # Using gzip instead -- the filesize diff is small and lzip uncommon #545344
 SRC_URI="http://fossies.org/linux/privat/${P}.tar.gz"

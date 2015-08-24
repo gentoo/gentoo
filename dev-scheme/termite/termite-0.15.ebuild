@@ -8,7 +8,7 @@ inherit multilib
 
 DESCRIPTION="Erlang-style concurrency for Gambit Scheme"
 HOMEPAGE="https://code.google.com/p/termite/"
-SRC_URI="http://termite.googlecode.com/files/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://termite.googlecode.com/files/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

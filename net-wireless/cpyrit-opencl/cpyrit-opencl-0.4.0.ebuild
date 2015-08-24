@@ -12,7 +12,7 @@ inherit distutils eutils
 
 DESCRIPTION="A sub-package that adds OpenCL-capability to Pyrit"
 HOMEPAGE="https://code.google.com/p/pyrit/"
-SRC_URI="http://pyrit.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://pyrit.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

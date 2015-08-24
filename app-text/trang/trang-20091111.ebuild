@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Multi-format schema converter based on RELAX NG"
 HOMEPAGE="http://thaiopensource.com/relaxng/trang.html"
-SRC_URI="http://jing-trang.googlecode.com/files/${P}.zip"
+SRC_URI="https://jing-trang.googlecode.com/files/${P}.zip"
 LICENSE="BSD"
 
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI="2"
 inherit flag-o-matic eutils
 
 DESCRIPTION="The GNU info program and utilities"
-HOMEPAGE="http://www.gnu.org/software/texinfo/"
+HOMEPAGE="https://www.gnu.org/software/texinfo/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.lzma"
 
 LICENSE="GPL-3"

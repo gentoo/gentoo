@@ -7,7 +7,7 @@ EAPI=2
 inherit eutils flag-o-matic
 
 DESCRIPTION="Primitive text file viewer"
-HOMEPAGE="http://www.kernel.org/pub/linux/utils/util-linux/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
 SRC_URI="mirror://kernel/linux/utils/util-linux/util-linux-${PV}.tar.bz2"
 S=${WORKDIR}/util-linux-${PV}
 

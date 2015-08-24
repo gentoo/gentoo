@@ -14,7 +14,7 @@ then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
+	SRC_URI="https://${PN}-emu.googlecode.com/files/${P}-src.zip"
 	KEYWORDS="~amd64"
 fi
 

@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Create a diff disregarding formatting"
-HOMEPAGE="http://www.gnu.org/software/wdiff/"
+HOMEPAGE="https://www.gnu.org/software/wdiff/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

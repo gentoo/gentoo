@@ -7,7 +7,7 @@ EAPI="3"
 inherit eutils
 
 DESCRIPTION="GNU macro processor"
-HOMEPAGE="http://www.gnu.org/software/m4/m4.html"
+HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

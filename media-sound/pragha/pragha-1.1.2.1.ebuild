@@ -7,7 +7,7 @@ inherit flag-o-matic xfconf
 
 DESCRIPTION="A lightweight music player (with support for the Xfce desktop environment)"
 HOMEPAGE="http://pragha.wikispaces.com/ https://github.com/matiasdelellis/pragha"
-SRC_URI="http://dissonance.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://dissonance.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

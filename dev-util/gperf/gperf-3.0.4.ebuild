@@ -7,7 +7,7 @@ EAPI="4"
 inherit toolchain-funcs
 
 DESCRIPTION="A perfect hash function generator"
-HOMEPAGE="http://www.gnu.org/software/gperf/"
+HOMEPAGE="https://www.gnu.org/software/gperf/"
 SRC_URI="mirror://gnu/gperf/${P}.tar.gz"
 
 LICENSE="GPL-2"

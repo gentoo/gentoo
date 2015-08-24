@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs autotools
 
 DESCRIPTION="MySQL User-defined function (UDF) for HTTP REST"
 HOMEPAGE="https://code.google.com/p/mysql-udf-http/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

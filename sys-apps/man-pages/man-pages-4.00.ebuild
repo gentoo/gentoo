@@ -7,7 +7,7 @@ EAPI=4
 GENTOO_PATCH=2
 
 DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
-HOMEPAGE="http://www.kernel.org/doc/man-pages/"
+HOMEPAGE="https://www.kernel.org/doc/man-pages/"
 SRC_URI="mirror://kernel/linux/docs/man-pages/Archive/${P}.tar.xz
 	mirror://kernel/linux/docs/man-pages/${P}.tar.xz
 	http://man7.org/linux/man-pages/download/${P}.tar.xz

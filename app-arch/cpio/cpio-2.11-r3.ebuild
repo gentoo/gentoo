@@ -7,7 +7,7 @@ EAPI="5"
 inherit autotools eutils
 
 DESCRIPTION="A file archival tool which can also read and write tar files"
-HOMEPAGE="http://www.gnu.org/software/cpio/cpio.html"
+HOMEPAGE="https://www.gnu.org/software/cpio/cpio.html"
 SRC_URI="mirror://gnu/cpio/${P}.tar.bz2"
 
 LICENSE="GPL-3"

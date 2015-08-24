@@ -7,7 +7,7 @@ inherit autotools eutils flag-o-matic toolchain-funcs versionator
 
 DESCRIPTION="A network programming library in C++"
 HOMEPAGE="http://alumnit.ca/wiki/?WvStreams"
-SRC_URI="http://wvstreams.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

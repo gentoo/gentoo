@@ -7,7 +7,7 @@ inherit qt4-r2
 
 DESCRIPTION="GUI front-end for cclive and clive video extraction utilities"
 HOMEPAGE="https://code.google.com/p/abby/"
-SRC_URI="http://abby.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://abby.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

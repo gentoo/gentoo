@@ -7,8 +7,8 @@ EAPI="5"
 inherit multilib eutils toolchain-funcs linux-info
 
 DESCRIPTION="Linux Key Management Utilities"
-HOMEPAGE="http://people.redhat.com/dhowells/keyutils/"
-SRC_URI="http://people.redhat.com/dhowells/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://people.redhat.com/dhowells/keyutils/"
+SRC_URI="https://people.redhat.com/dhowells/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

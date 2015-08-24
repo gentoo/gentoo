@@ -7,7 +7,7 @@ inherit qt4-r2
 
 DESCRIPTION="A packet generator and analyzer"
 HOMEPAGE="https://code.google.com/p/ostinato/"
-SRC_URI="http://ostinato.googlecode.com/files/${PN}-src-${PV}.tar.gz"
+SRC_URI="https://ostinato.googlecode.com/files/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

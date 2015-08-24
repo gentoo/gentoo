@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for ADNS"
 HOMEPAGE="https://code.google.com/p/adns-python/ https://pypi.python.org/pypi/adns-python"
-SRC_URI="http://adns-python.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://adns-python.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

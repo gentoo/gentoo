@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils
 
 DESCRIPTION="Manage installation of software in /var/lib/"
-HOMEPAGE="http://www.gnu.org/software/stow/"
+HOMEPAGE="https://www.gnu.org/software/stow/"
 SRC_URI="mirror://gnu/stow/${P}.tar.gz"
 
 LICENSE="GPL-2"

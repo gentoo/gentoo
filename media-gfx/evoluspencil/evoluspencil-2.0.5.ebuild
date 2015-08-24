@@ -9,7 +9,7 @@ inherit fdo-mime
 
 DESCRIPTION="A simple GUI prototyping tool to create mockups"
 HOMEPAGE="http://pencil.evolus.vn/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

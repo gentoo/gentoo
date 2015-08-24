@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="The GNU Project's replacement for SCCS"
 SRC_URI="mirror://gnu/${PN}/${P^^}.tar.gz"
-HOMEPAGE="http://www.gnu.org/software/cssc/"
+HOMEPAGE="https://www.gnu.org/software/cssc/"
 SLOT="0"
 LICENSE="GPL-3"
 

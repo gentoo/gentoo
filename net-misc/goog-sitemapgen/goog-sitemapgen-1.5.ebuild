@@ -10,8 +10,8 @@ inherit eutils python distutils
 MY_P="sitemap_gen_${PV}"
 
 DESCRIPTION="A python script which will generate an XML sitemap for your web site"
-HOMEPAGE="http://sitemap-generators.googlecode.com/"
-SRC_URI="http://sitemap-generators.googlecode.com/files/${MY_P}.tar.gz"
+HOMEPAGE="https://sitemap-generators.googlecode.com/"
+SRC_URI="https://sitemap-generators.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

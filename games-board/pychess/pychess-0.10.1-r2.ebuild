@@ -10,7 +10,7 @@ inherit fdo-mime gnome2-utils distutils-r1 games
 
 DESCRIPTION="A chess client for Gnome"
 HOMEPAGE="http://pychess.googlepages.com/home"
-SRC_URI="http://pychess.googlecode.com/files/${P/_/}.tar.gz"
+SRC_URI="https://pychess.googlecode.com/files/${P/_/}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

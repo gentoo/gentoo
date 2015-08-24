@@ -8,8 +8,8 @@ MY_PV=${PV/_/.}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Device-mapper RAID tool and library"
-HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
-SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/old/${MY_P}.tar.bz2"
+HOMEPAGE="https://people.redhat.com/~heinzm/sw/dmraid/"
+SRC_URI="https://people.redhat.com/~heinzm/sw/dmraid/src/old/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

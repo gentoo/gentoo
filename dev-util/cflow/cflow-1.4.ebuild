@@ -7,7 +7,7 @@ EAPI="5"
 inherit elisp-common eutils
 
 DESCRIPTION="C function call hierarchy analyzer"
-HOMEPAGE="http://www.gnu.org/software/cflow/"
+HOMEPAGE="https://www.gnu.org/software/cflow/"
 SRC_URI="ftp://download.gnu.org.ua/pub/release/cflow/${P}.tar.bz2"
 
 LICENSE="GPL-3"

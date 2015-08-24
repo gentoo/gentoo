@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Zile is a small Emacs clone"
-HOMEPAGE="http://www.gnu.org/software/zile/"
+HOMEPAGE="https://www.gnu.org/software/zile/"
 SRC_URI="mirror://gnu/zile/${P}.tar.gz"
 
 LICENSE="GPL-3+"

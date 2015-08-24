@@ -11,7 +11,7 @@ RELEASE="${PN}-v${PV}-${RELDATE}"
 
 DESCRIPTION="Clustering Database at High Identity with Tolerance"
 HOMEPAGE="http://weizhong-lab.ucsd.edu/cd-hit/"
-SRC_URI="http://cdhit.googlecode.com/files/${RELEASE}.tgz"
+SRC_URI="https://cdhit.googlecode.com/files/${RELEASE}.tgz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"

@@ -7,7 +7,7 @@ EAPI=5
 inherit perl-module git-2
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
-HOMEPAGE="http://trizen.googlecode.com"
+HOMEPAGE="https://trizen.googlecode.com"
 SRC_URI=""
 EGIT_REPO_URI="git://github.com/trizen/${PN}.git"
 

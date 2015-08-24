@@ -11,7 +11,7 @@ inherit eutils elisp-common python
 
 DESCRIPTION="A tool for generating marked up documents (HTML, SGML, ...) from a plain text file with markup"
 HOMEPAGE="http://txt2tags.org/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tgz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

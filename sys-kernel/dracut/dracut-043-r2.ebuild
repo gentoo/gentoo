@@ -7,7 +7,7 @@ EAPI=4
 inherit bash-completion-r1 eutils linux-info multilib systemd
 
 DESCRIPTION="Generic initramfs generation tool"
-HOMEPAGE="http://dracut.wiki.kernel.org"
+HOMEPAGE="https://dracut.wiki.kernel.org"
 SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit cmake-utils eutils gnome2-utils fdo-mime multilib readme.gentoo
 
 DESCRIPTION="Flexible Contect-aware Input Tool with eXtension support"
 HOMEPAGE="http://fcitx-im.org/"
-SRC_URI="http://fcitx.googlecode.com/files/${P}_dict.tar.xz"
+SRC_URI="https://fcitx.googlecode.com/files/${P}_dict.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

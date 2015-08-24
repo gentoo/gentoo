@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python hierarchical clustering package for Scipy"
 HOMEPAGE="https://code.google.com/p/scipy-cluster/ https://pypi.python.org/pypi/hcluster"
-SRC_URI="http://scipy-cluster.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://scipy-cluster.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

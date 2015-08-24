@@ -7,7 +7,7 @@ inherit user
 
 DESCRIPTION="An authentication service for creating and validating credentials"
 HOMEPAGE="https://code.google.com/p/munge/"
-SRC_URI="http://munge.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://munge.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

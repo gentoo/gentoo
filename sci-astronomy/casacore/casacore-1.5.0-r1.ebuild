@@ -8,7 +8,7 @@ inherit cmake-utils eutils toolchain-funcs fortran-2
 
 DESCRIPTION="Core libraries for the Common Astronomy Software Applications"
 HOMEPAGE="https://code.google.com/p/casacore/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 #KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"

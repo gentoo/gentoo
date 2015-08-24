@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Diction and style checkers for english and german texts"
-HOMEPAGE="http://www.gnu.org/software/diction/diction.html"
+HOMEPAGE="https://www.gnu.org/software/diction/diction.html"
 SRC_URI="http://www.moria.de/~michael/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

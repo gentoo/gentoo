@@ -9,8 +9,8 @@ inherit eutils
 PATCHVER="002"
 
 DESCRIPTION="Linux Driver support for the CoolKey and CAC products"
-HOMEPAGE="http://directory.fedora.redhat.com/wiki/CoolKey"
-SRC_URI="http://directory.fedora.redhat.com/download/coolkey/${P}.tar.gz
+HOMEPAGE="https://directory.fedora.redhat.com/wiki/CoolKey"
+SRC_URI="https://directory.fedora.redhat.com/download/coolkey/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCHVER}.tar.gz"
 
 LICENSE="LGPL-2.1"

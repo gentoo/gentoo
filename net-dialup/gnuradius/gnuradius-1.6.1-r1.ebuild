@@ -9,7 +9,7 @@ inherit eutils multilib pam
 MY_P="${P#gnu}"
 
 DESCRIPTION="GNU radius authentication server"
-HOMEPAGE="http://www.gnu.org/software/radius/radius.html"
+HOMEPAGE="https://www.gnu.org/software/radius/radius.html"
 SRC_URI="mirror://gnu/radius/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

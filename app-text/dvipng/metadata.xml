@@ -15,7 +15,7 @@
   regenerate many images again and again. The primary target is the
   preview-latex (X)Emacs package, a package to preview formulas from within
   (X)Emacs. Yes, you get to see your formulas in the (X)Emacs buffer, see
-  &lt;http://www.gnu.org/software/auctex/preview-latex.html&gt;.
+  &lt;https://www.gnu.org/software/auctex/preview-latex.html&gt;.
 </longdescription>
 	<use>
 		<flag name="t1lib">Enable support for T1lib font rendering

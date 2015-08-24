@@ -8,7 +8,7 @@ inherit qt4-r2 multilib
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework"
 HOMEPAGE="https://code.google.com/p/qxmpp/"
-SRC_URI="http://qxmpp.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://qxmpp.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

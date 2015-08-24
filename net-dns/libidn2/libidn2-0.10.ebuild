@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFC 5890, RFC 5891, RFC 5892, RFC 5893)"
-HOMEPAGE="http://www.gnu.org/software/libidn/#libidn2"
+HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2"
 SRC_URI="mirror://gnu-alpha/libidn/${P}.tar.gz"
 
 LICENSE="GPL-3"

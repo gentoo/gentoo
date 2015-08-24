@@ -11,7 +11,7 @@ inherit autotools eutils fdo-mime flag-o-matic multilib python-single-r1 systemd
 MY_P="${P/_}"
 DESCRIPTION="Distribute compilation of C code across several machines on a network"
 HOMEPAGE="http://distcc.org/"
-SRC_URI="http://distcc.googlecode.com/files/${MY_P}.tar.bz2"
+SRC_URI="https://distcc.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

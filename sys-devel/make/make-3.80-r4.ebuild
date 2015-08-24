@@ -5,7 +5,7 @@
 inherit eutils flag-o-matic
 
 DESCRIPTION="Standard tool to compile source trees"
-HOMEPAGE="http://www.gnu.org/software/make/make.html"
+HOMEPAGE="https://www.gnu.org/software/make/make.html"
 SRC_URI="mirror://gnu//make/${P}.tar.bz2"
 
 LICENSE="GPL-2"

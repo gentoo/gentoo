@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Parse RSS and Atom feeds in Python"
 HOMEPAGE="https://code.google.com/p/feedparser/ https://pypi.python.org/pypi/feedparser"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 # sgmllib is licensed under PSF-2.
 LICENSE="BSD-2 PSF-2"

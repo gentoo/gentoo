@@ -10,7 +10,7 @@ MY_PV=${PV/_beta/beta}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Unique multiplayer wargame between liquids"
-HOMEPAGE="http://www.gnu.org/software/liquidwar6/"
+HOMEPAGE="https://www.gnu.org/software/liquidwar6/"
 SRC_URI="http://www.ufoot.org/download/liquidwar/v6/${MY_PV}/${MY_P}.tar.gz
 	maps? ( http://www.ufoot.org/download/liquidwar/v6/${MY_PV}/${PN}-extra-maps-${MY_PV}.tar.gz )"
 

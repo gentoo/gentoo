@@ -9,7 +9,7 @@ inherit fdo-mime eutils java-pkg-2 java-ant-2 toolchain-funcs
 MY_PN=${PN/#j/J}
 DESCRIPTION="Java subtitle editor"
 HOMEPAGE="http://www.jubler.org/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_PN}-source-${PV}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_PN}-source-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

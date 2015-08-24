@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="minimal dumb-terminal emulation program"
 HOMEPAGE="https://code.google.com/p/picocom/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

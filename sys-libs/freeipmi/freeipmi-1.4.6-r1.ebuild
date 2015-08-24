@@ -10,7 +10,7 @@ AT_M4DIR="config"
 inherit eutils multilib autotools-utils
 
 DESCRIPTION="Provides Remote-Console and System Management Software as per IPMI v1.5/2.0"
-HOMEPAGE="http://www.gnu.org/software/freeipmi/"
+HOMEPAGE="https://www.gnu.org/software/freeipmi/"
 
 MY_P="${P/_/.}"
 S="${WORKDIR}"/${MY_P}

@@ -17,7 +17,7 @@ VERSION_UNIONFS_FUSE='0.24'
 VERSION_GPG='1.4.11'
 
 RH_HOME="ftp://sources.redhat.com/pub"
-DM_HOME="http://people.redhat.com/~heinzm/sw/dmraid/src"
+DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
 BB_HOME="http://www.busybox.net/downloads"
 
 COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2

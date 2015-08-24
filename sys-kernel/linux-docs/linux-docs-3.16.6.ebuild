@@ -9,7 +9,7 @@ MY_P=linux-${PV}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="Developer documentation generated from the Linux kernel"
-HOMEPAGE="http://www.kernel.org/"
+HOMEPAGE="https://www.kernel.org/"
 SRC_URI="mirror://kernel/linux/kernel/v3.x/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"

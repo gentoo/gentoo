@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils
 
 DESCRIPTION="Used to create autoconfiguration files"
-HOMEPAGE="http://www.gnu.org/software/autoconf/autoconf.html"
+HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -9,8 +9,8 @@ inherit autotools linux-info flag-o-matic eutils
 MY_PV=${PV/_/.}-3
 
 DESCRIPTION="Device-mapper RAID tool and library"
-HOMEPAGE="http://people.redhat.com/~heinzm/sw/dmraid/"
-SRC_URI="http://people.redhat.com/~heinzm/sw/dmraid/src/${PN}-${MY_PV}.tar.bz2"
+HOMEPAGE="https://people.redhat.com/~heinzm/sw/dmraid/"
+SRC_URI="https://people.redhat.com/~heinzm/sw/dmraid/src/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

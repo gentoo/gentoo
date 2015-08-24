@@ -9,8 +9,8 @@ AUTOTOOLS_AUTORECONF=true
 inherit autotools-utils eutils multilib
 
 DESCRIPTION="Guile Scheme code that wraps the GNOME developer platform"
-HOMEPAGE="http://www.gnu.org/software/guile-gnome/"
-SRC_URI="http://ftp.gnu.org/pub/gnu/guile-gnome/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.gnu.org/software/guile-gnome/"
+SRC_URI="https://ftp.gnu.org/pub/gnu/guile-gnome/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

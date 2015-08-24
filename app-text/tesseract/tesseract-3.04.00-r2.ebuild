@@ -13,7 +13,7 @@ DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
 SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${URI_PREFIX}eng.traineddata -> eng.traineddata-${PV}
-	doc? ( http://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02-doc-html.tar.gz )
+	doc? ( https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02-doc-html.tar.gz )
 	linguas_ar? ( ${URI_PREFIX}ara.traineddata -> ara.traineddata-${PV} )
 	linguas_bg? ( ${URI_PREFIX}bul.traineddata -> bul.traineddata-${PV} )
 	linguas_ca? ( ${URI_PREFIX}cat.traineddata -> cat.traineddata-${PV} )

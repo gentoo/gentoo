@@ -9,7 +9,7 @@ WANT_AUTOCONF="2.5"
 inherit eutils flag-o-matic toolchain-funcs pam autotools user
 
 DESCRIPTION="Full-screen window manager that multiplexes physical terminals between several processes"
-HOMEPAGE="http://www.gnu.org/software/screen/"
+HOMEPAGE="https://www.gnu.org/software/screen/"
 SRC_URI="ftp://ftp.uni-erlangen.de/pub/utilities/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

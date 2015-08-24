@@ -12,7 +12,7 @@ inherit bash-completion-r1
 DESCRIPTION="sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks"
 HOMEPAGE="https://github.com/ftrvxmtrx/split2flac"
 [[ ${PV} == *9999* ]] || \
-SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://rion-overlay.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

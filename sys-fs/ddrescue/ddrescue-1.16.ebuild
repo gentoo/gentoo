@@ -7,7 +7,7 @@ EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="Copy data from one file or block device to another with read-error recovery"
-HOMEPAGE="http://www.gnu.org/software/ddrescue/ddrescue.html"
+HOMEPAGE="https://www.gnu.org/software/ddrescue/ddrescue.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

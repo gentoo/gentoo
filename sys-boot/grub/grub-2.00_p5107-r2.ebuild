@@ -41,7 +41,7 @@ SRC_URI+=" truetype? (
 )"
 
 DESCRIPTION="GNU GRUB boot loader"
-HOMEPAGE="http://www.gnu.org/software/grub/"
+HOMEPAGE="https://www.gnu.org/software/grub/"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 truetype? ( BitstreamVera GPL-2-with-font-exception )"

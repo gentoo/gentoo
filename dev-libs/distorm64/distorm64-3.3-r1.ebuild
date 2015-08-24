@@ -15,7 +15,7 @@ MY_PN=distorm
 MY_PV=$(replace_all_version_separators '-')
 MY_P=${MY_PN}${MY_PV}
 
-SRC_URI="http://distorm.googlecode.com/files/${MY_P}-sdist.zip"
+SRC_URI="https://distorm.googlecode.com/files/${MY_P}-sdist.zip"
 S="${WORKDIR}/${MY_P}"
 
 DEPEND="app-arch/unzip"

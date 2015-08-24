@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++"
-HOMEPAGE="http://gcc.gnu.org/libstdc++/"
+HOMEPAGE="https://gcc.gnu.org/libstdc++/"
 SRC_URI="ia64? ( mirror://gentoo/${PN}-ia64-${PV}.tbz2 )
 	ppc64? ( mirror://gentoo/${PN}-ppc64-${PV}.tbz2 )"
 

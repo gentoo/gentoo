@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit eutils elisp-common autotools-utils multilib
 
 DESCRIPTION="Program for statistical analysis of sampled data"
-HOMEPAGE="http://www.gnu.org/software/pspp/pspp.html"
+HOMEPAGE="https://www.gnu.org/software/pspp/pspp.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

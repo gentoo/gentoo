@@ -11,7 +11,7 @@ MY_P="${PN}_${MY_PV}"
 
 DESCRIPTION="Qt4 cross-platform multi-threaded download utility"
 HOMEPAGE="http://qt-apps.org/content/show.php/?content=103312"
-SRC_URI="http://netfleet.googlecode.com/files/${MY_P}.tar.bz2"
+SRC_URI="https://netfleet.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

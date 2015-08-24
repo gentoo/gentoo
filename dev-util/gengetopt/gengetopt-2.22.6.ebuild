@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils autotools
 
 DESCRIPTION="A tool to write command line option parsing code for C programs"
-HOMEPAGE="http://www.gnu.org/software/gengetopt/"
+HOMEPAGE="https://www.gnu.org/software/gengetopt/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

@@ -5,7 +5,7 @@
 EAPI="4"
 
 DESCRIPTION="GNU \"Hello, world\" application"
-HOMEPAGE="http://www.gnu.org/software/hello/"
+HOMEPAGE="https://www.gnu.org/software/hello/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="FDL-1.3 GPL-3"

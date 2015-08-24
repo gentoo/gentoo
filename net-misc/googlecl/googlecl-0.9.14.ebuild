@@ -9,7 +9,7 @@ inherit distutils
 
 DESCRIPTION="Command line tools for the Google Data APIs"
 HOMEPAGE="https://code.google.com/p/googlecl/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

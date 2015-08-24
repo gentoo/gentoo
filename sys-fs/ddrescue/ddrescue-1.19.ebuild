@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs flag-o-matic unpacker
 
 DESCRIPTION="Copy data from one file or block device to another with read-error recovery"
-HOMEPAGE="http://www.gnu.org/software/ddrescue/ddrescue.html"
+HOMEPAGE="https://www.gnu.org/software/ddrescue/ddrescue.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-2+"

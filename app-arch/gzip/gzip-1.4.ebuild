@@ -5,7 +5,7 @@
 inherit eutils flag-o-matic
 
 DESCRIPTION="Standard GNU compressor"
-HOMEPAGE="http://www.gnu.org/software/gzip/"
+HOMEPAGE="https://www.gnu.org/software/gzip/"
 SRC_URI="mirror://gnu-alpha/gzip/${P}.tar.gz
 	mirror://gnu/gzip/${P}.tar.gz
 	mirror://gentoo/${P}.tar.gz"

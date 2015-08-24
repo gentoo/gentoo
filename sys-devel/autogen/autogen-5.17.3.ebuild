@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils autotools
 
 DESCRIPTION="Program and text file generation"
-HOMEPAGE="http://www.gnu.org/software/autogen/"
+HOMEPAGE="https://www.gnu.org/software/autogen/"
 SRC_URI="mirror://gnu/${PN}/rel${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"

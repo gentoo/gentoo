@@ -7,7 +7,7 @@ inherit java-pkg-2
 MY_PN="mail"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="GNU implementation of the Javamail API"
-HOMEPAGE="http://www.gnu.org/software/classpathx/javamail/"
+HOMEPAGE="https://www.gnu.org/software/classpathx/javamail/"
 SRC_URI="mirror://gnu/classpathx/${MY_P}.tar.gz"
 LICENSE="GPL-2-with-linking-exception"
 SLOT="1"

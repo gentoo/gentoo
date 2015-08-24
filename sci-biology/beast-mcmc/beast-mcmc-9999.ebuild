@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-ESVN_REPO_URI="http://beast-mcmc.googlecode.com/svn/trunk/"
+ESVN_REPO_URI="https://beast-mcmc.googlecode.com/svn/trunk/"
 
 WANT_ANT_TASKS="ant-junit4"
 EANT_GENTOO_CLASSPATH="colt,jdom-1.0,itext,junit-4,jebl,matrix-toolkits-java,commons-math-2,jdom-jaxen-1.0"

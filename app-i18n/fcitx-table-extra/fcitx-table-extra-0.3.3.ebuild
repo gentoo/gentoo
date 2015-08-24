@@ -7,7 +7,7 @@ inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie and Quick"
 HOMEPAGE="http://fcitx-im.org/"
-SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://fcitx.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

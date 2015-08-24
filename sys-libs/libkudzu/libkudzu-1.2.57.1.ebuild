@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils linux-info flag-o-matic toolchain-funcs
 
 DESCRIPTION="Red Hat Hardware detection tools"
-HOMEPAGE="http://rhlinux.redhat.com/kudzu/"
+HOMEPAGE="https://rhlinux.redhat.com/kudzu/"
 SRC_URI="mirror://gentoo/kudzu-${PV}.tar.gz"
 
 LICENSE="GPL-2"

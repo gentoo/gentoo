@@ -7,8 +7,8 @@ EAPI="2"
 inherit eutils autotools
 
 DESCRIPTION="Fedora bootstrap scripts"
-HOMEPAGE="http://people.redhat.com/~rjones/febootstrap/"
-SRC_URI="http://people.redhat.com/~rjones/febootstrap/files/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/~rjones/febootstrap/"
+SRC_URI="https://people.redhat.com/~rjones/febootstrap/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

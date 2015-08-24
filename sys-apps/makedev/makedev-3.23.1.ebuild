@@ -11,8 +11,8 @@ MY_VER=${PV%.*}
 MY_REL=${PV#${MY_VER}.}
 MY_P="${MY_PN}-${MY_VER}"
 DESCRIPTION="program used for creating device files in /dev"
-HOMEPAGE="http://people.redhat.com/nalin/MAKEDEV/"
-SRC_URI="http://people.redhat.com/nalin/MAKEDEV/${MY_P}-${MY_REL}.tar.gz"
+HOMEPAGE="https://people.redhat.com/nalin/MAKEDEV/"
+SRC_URI="https://people.redhat.com/nalin/MAKEDEV/${MY_P}-${MY_REL}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

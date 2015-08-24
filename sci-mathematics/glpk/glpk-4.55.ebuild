@@ -10,7 +10,7 @@ inherit eutils flag-o-matic toolchain-funcs autotools-utils
 
 DESCRIPTION="GNU Linear Programming Kit"
 LICENSE="GPL-3"
-HOMEPAGE="http://www.gnu.org/software/glpk/"
+HOMEPAGE="https://www.gnu.org/software/glpk/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 SLOT="0/36"

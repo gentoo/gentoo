@@ -10,8 +10,8 @@ RESTRICT_PYTHON_ABIS="3.* *-jython 2.7-pypy-*"
 inherit autotools multilib toolchain-funcs python linux-info eutils
 
 DESCRIPTION="Userspace utilities for storing and processing auditing records"
-HOMEPAGE="http://people.redhat.com/sgrubb/audit/"
-SRC_URI="http://people.redhat.com/sgrubb/audit/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/sgrubb/audit/"
+SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

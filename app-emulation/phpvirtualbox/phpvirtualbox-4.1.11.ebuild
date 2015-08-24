@@ -11,7 +11,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Web-based administration for VirtualBox in PHP"
 HOMEPAGE="https://sourceforge.net/projects/phpvirtualbox/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.zip"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.zip"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

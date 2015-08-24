@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Viewer for PostScript and PDF documents using Ghostscript"
-HOMEPAGE="http://www.gnu.org/software/gv/"
+HOMEPAGE="https://www.gnu.org/software/gv/"
 SRC_URI="mirror://gnu/gv/${P}.tar.gz"
 
 LICENSE="GPL-3"

@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="library to create GTK+ interfaces from GuiXml at runtime"
 HOMEPAGE="http://www.crowdesigner.org"
-SRC_URI="http://nothing-personal.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://nothing-personal.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

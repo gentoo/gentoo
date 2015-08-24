@@ -7,7 +7,7 @@ inherit eutils autotools games
 
 DESCRIPTION="A NeoGeo emulator"
 HOMEPAGE="https://code.google.com/p/gngeo/"
-SRC_URI="http://gngeo.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://gngeo.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

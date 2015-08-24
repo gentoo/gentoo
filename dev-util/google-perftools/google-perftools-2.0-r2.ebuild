@@ -10,7 +10,7 @@ inherit toolchain-funcs eutils flag-o-matic autotools-utils
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://code.google.com/p/gperftools/"
-SRC_URI="http://gperftools.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://gperftools.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"

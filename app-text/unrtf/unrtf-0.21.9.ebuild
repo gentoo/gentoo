@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="Converts RTF files to various formats"
-HOMEPAGE="http://www.gnu.org/software/unrtf/unrtf.html"
+HOMEPAGE="https://www.gnu.org/software/unrtf/unrtf.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

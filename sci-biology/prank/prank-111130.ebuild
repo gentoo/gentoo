@@ -8,7 +8,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Probabilistic Alignment Kit"
 HOMEPAGE="http://wasabiapp.org/software/prank/"
-SRC_URI="http://prank-msa.googlecode.com/files/prank.src.${PV}.tgz"
+SRC_URI="https://prank-msa.googlecode.com/files/prank.src.${PV}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

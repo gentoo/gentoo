@@ -25,7 +25,7 @@ else
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
-HOMEPAGE="http://www.gnu.org/software/emacs/"
+HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"

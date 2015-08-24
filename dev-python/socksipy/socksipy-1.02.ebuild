@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="SOCKS proxy implementation for python"
 HOMEPAGE="http://socksipy.sourceforge.net/ https://code.google.com/p/socksipy-branch/"
-SRC_URI="http://socksipy-branch.googlecode.com/files/${MY_P}.zip"
+SRC_URI="https://socksipy-branch.googlecode.com/files/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

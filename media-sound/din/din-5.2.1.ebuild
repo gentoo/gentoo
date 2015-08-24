@@ -8,7 +8,7 @@ inherit eutils autotools
 
 DESCRIPTION="a software musical instrument and audio synthesizer"
 HOMEPAGE="http://dinisnoise.org/"
-SRC_URI="http://din.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://din.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

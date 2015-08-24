@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="An IDE/editor for several programming languages, including Python, Java, C, Perl and others"
 HOMEPAGE="http://eggy.yolky.org/eggy/default/about"
-SRC_URI="http://eggy.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://eggy.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

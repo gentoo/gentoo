@@ -14,7 +14,7 @@ if [ "$PV" != "9999" ]; then
 	KEYWORDS="~amd64 ~ppc ~x86"
 else
 	SRC_URI=""
-	ESVN_REPO_URI="http://qmmp.googlecode.com/svn/trunk/qmmp/"
+	ESVN_REPO_URI="https://qmmp.googlecode.com/svn/trunk/qmmp/"
 	KEYWORDS=""
 fi
 

@@ -22,7 +22,7 @@ PACKET_SRC_URI="http://www.linuxtv.org/downloads/firmware/${PACKET_NAME}"
 TEVII_NAME=Tevii_linuxdriver_0815.rar
 TEVII_SRC_URI="http://tevii.com/${TEVII_NAME}"
 get_dvb_firmware="${FILESDIR}/get_dvb_firmware-${PV}"
-# from http://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6-stable.git;a=history;f=Documentation/dvb/get_dvb_firmware
+# from https://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6-stable.git;a=history;f=Documentation/dvb/get_dvb_firmware
 
 FW_USE_FLAGS=(
 # packet

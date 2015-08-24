@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="GNU utility to convert program --help output to a man page"
-HOMEPAGE="http://www.gnu.org/software/help2man/"
+HOMEPAGE="https://www.gnu.org/software/help2man/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

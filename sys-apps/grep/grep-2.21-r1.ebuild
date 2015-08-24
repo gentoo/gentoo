@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="GNU regular expression matcher"
-HOMEPAGE="http://www.gnu.org/software/grep/"
+HOMEPAGE="https://www.gnu.org/software/grep/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/${P}-heap_buffer_overrun.patch"

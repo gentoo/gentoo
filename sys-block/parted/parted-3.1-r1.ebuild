@@ -7,7 +7,7 @@ EAPI="4"
 inherit autotools eutils
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
-HOMEPAGE="http://www.gnu.org/software/parted"
+HOMEPAGE="https://www.gnu.org/software/parted"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

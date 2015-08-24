@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A comprehensive HTTP client library"
 HOMEPAGE="https://code.google.com/p/httplib2/ https://pypi.python.org/pypi/httplib2"
-SRC_URI="http://httplib2.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://httplib2.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Tools for manipulation and analysis of BED, GFF/GTF, VCF, and SAM/BAM file formats"
 HOMEPAGE="https://code.google.com/p/bedtools/"
-SRC_URI="http://bedtools.googlecode.com/files/BEDTools.v${PV}.tar.gz"
+SRC_URI="https://bedtools.googlecode.com/files/BEDTools.v${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

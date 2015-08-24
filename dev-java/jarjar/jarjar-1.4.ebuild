@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Tool for repackaging third-party jars"
-SRC_URI="http://jarjar.googlecode.com/files/${PN}-src-${PV}.zip"
+SRC_URI="https://jarjar.googlecode.com/files/${PN}-src-${PV}.zip"
 HOMEPAGE="http://jarjar.sourceforge.net"
 LICENSE="GPL-2"
 SLOT="1"

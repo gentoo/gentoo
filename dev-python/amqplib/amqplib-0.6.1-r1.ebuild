@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Python client for the Advanced Message Queuing Procotol (AMQP)"
 HOMEPAGE="https://code.google.com/p/py-amqplib/"
-SRC_URI="http://py-amqplib.googlecode.com/files/${P}.tgz"
+SRC_URI="https://py-amqplib.googlecode.com/files/${P}.tgz"
 
 LICENSE="LGPL-3"
 SLOT="0"

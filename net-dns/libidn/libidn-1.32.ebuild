@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp-common java-pkg-opt-2 mono-env multilib-minimal
 
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
-HOMEPAGE="http://www.gnu.org/software/libidn/"
+HOMEPAGE="https://www.gnu.org/software/libidn/"
 SRC_URI="mirror://gnu/libidn/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3 LGPL-3 java? ( Apache-2.0 )"

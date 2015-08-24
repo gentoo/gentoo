@@ -9,7 +9,7 @@ MY_P=${P/lib}
 
 DESCRIPTION="Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard"
 HOMEPAGE="https://code.google.com/p/mp4v2/"
-SRC_URI="http://mp4v2.googlecode.com/files/${MY_P}.tar.bz2"
+SRC_URI="https://mp4v2.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="MPL-1.1"
 SLOT="0"

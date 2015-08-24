@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Viewer for PostScript and PDF documents using Ghostscript"
-HOMEPAGE="http://www.gnu.org/software/gv/"
+HOMEPAGE="https://www.gnu.org/software/gv/"
 # Change 'gnu-alpha' to 'gnu' for final release, like 3.7.4
 SRC_URI="mirror://gnu-alpha/gv/${P}.tar.gz"
 

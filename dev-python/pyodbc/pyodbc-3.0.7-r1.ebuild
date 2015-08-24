@@ -10,7 +10,7 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="python ODBC module to connect to almost any database"
 HOMEPAGE="https://code.google.com/p/pyodbc"
-SRC_URI="http://pyodbc.googlecode.com/files/${P}.zip"
+SRC_URI="https://pyodbc.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"

@@ -13,7 +13,7 @@ DESCRIPTION="The ultimate disassembler library (X86-32, X86-64)"
 HOMEPAGE="http://www.ragestorm.net/distorm/"
 
 # This is not nice - hardcoding is bad
-SRC_URI="http://distorm.googlecode.com/files/distorm3-1.0.zip"
+SRC_URI="https://distorm.googlecode.com/files/distorm3-1.0.zip"
 S="${WORKDIR}/distorm3-1.0"
 
 DEPEND="app-arch/unzip"

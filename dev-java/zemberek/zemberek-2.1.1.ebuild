@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Zemberek NLP library"
 HOMEPAGE="https://code.google.com/p/zemberek/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}-nolibs-src.zip"
+SRC_URI="https://${PN}.googlecode.com/files/${P}-nolibs-src.zip"
 
 LICENSE="MPL-1.1"
 SLOT="0"

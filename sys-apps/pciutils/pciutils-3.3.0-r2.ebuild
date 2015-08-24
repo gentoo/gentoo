@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="Various utilities dealing with the PCI bus"
-HOMEPAGE="http://mj.ucw.cz/sw/pciutils/ http://git.kernel.org/?p=utils/pciutils/pciutils.git"
+HOMEPAGE="http://mj.ucw.cz/sw/pciutils/ https://git.kernel.org/?p=utils/pciutils/pciutils.git"
 SRC_URI="ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${P}.tar.gz"
 
 LICENSE="GPL-2"

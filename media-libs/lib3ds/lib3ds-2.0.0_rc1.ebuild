@@ -10,7 +10,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="library for managing 3D-Studio Release 3 and 4 .3DS files"
 HOMEPAGE="https://code.google.com/p/lib3ds/"
-SRC_URI="http://lib3ds.googlecode.com/files/${MY_P}.zip"
+SRC_URI="https://lib3ds.googlecode.com/files/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

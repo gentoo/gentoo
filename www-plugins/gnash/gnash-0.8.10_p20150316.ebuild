@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils kde4-base multilib nsplugins python-any-r1 flag-o-matic
 
 DESCRIPTION="GNU Flash movie player that supports many SWF v7,8,9 features"
-HOMEPAGE="http://www.gnu.org/software/gnash/"
+HOMEPAGE="https://www.gnu.org/software/gnash/"
 
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""

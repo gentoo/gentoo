@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="An open-source braille translator and back-translator"
 HOMEPAGE="https://code.google.com/p/liblouis/"
-SRC_URI="http://liblouis.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://liblouis.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

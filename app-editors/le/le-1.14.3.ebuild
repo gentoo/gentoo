@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Terminal text editor"
-HOMEPAGE="http://www.gnu.org/directory/text/editors/le-editor.html"
+HOMEPAGE="https://www.gnu.org/directory/text/editors/le-editor.html"
 SRC_URI="ftp://ftp.yars.free.net/pub/source/le/le-${PV}.tar.lzma"
 
 LICENSE="GPL-2"

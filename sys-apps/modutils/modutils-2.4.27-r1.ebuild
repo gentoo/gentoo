@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils
 
 DESCRIPTION="Standard kernel module utilities for linux-2.4 and older"
-HOMEPAGE="http://www.kernel.org/pub/linux/utils/kernel/modutils/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/kernel/modutils/"
 SRC_URI="mirror://kernel/linux/utils/kernel/${PN}/v2.4/${P}.tar.bz2"
 
 LICENSE="GPL-2"

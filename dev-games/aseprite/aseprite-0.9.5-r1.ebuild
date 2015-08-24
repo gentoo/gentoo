@@ -8,7 +8,7 @@ inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="http://www.aseprite.org"
-SRC_URI="http://aseprite.googlecode.com/files/aseprite-${PV}.tar.xz"
+SRC_URI="https://aseprite.googlecode.com/files/aseprite-${PV}.tar.xz"
 
 LICENSE="GPL-2 FTL"
 SLOT="0"

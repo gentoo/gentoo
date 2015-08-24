@@ -8,7 +8,7 @@ inherit eutils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Tools to deal with shar archives"
-HOMEPAGE="http://www.gnu.org/software/sharutils/"
+HOMEPAGE="https://www.gnu.org/software/sharutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

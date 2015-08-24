@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A C++ class library for writing CGI applications"
-HOMEPAGE="http://www.gnu.org/software/cgicc/"
+HOMEPAGE="https://www.gnu.org/software/cgicc/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3 doc? ( FDL-1.2 )"

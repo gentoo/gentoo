@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Graphviz to LaTeX converter"
 HOMEPAGE="http://www.fauskes.net/code/dot2tex/"
-SRC_URI="http://dot2tex.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://dot2tex.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

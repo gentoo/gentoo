@@ -7,7 +7,7 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="A collection of Perl-scripts for iPod"
-HOMEPAGE="http://www.gnu.org/software/gnupod/"
+HOMEPAGE="https://www.gnu.org/software/gnupod/"
 SRC_URI="http://blinkenlights.ch/gnupod-dist/stable/${P}.tgz"
 
 LICENSE="GPL-3"

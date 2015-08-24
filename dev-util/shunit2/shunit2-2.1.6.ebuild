@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Unit-test framework for Bourne-based shell scripts"
 HOMEPAGE="https://code.google.com/p/shunit2/wiki/ProjectInfo"
-SRC_URI="http://shunit2.googlecode.com/files/${P}.tgz"
+SRC_URI="https://shunit2.googlecode.com/files/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

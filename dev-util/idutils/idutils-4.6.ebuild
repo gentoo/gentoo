@@ -6,7 +6,7 @@ EAPI=4
 inherit elisp-common eutils
 
 DESCRIPTION="Fast, high-capacity, identifier database tool"
-HOMEPAGE="http://www.gnu.org/software/idutils/"
+HOMEPAGE="https://www.gnu.org/software/idutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

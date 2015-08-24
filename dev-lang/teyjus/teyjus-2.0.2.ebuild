@@ -11,7 +11,7 @@ MY_P=$(version_format_string '${MY_PN}-$1.$2-b$3')
 
 DESCRIPTION="Higher-order logic programming language Lambda Prolog"
 HOMEPAGE="http://teyjus.cs.umn.edu/"
-SRC_URI="http://teyjus.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://teyjus.googlecode.com/files/${MY_P}.tar.gz"
 
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"

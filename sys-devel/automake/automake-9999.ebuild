@@ -10,7 +10,7 @@ EGIT_REPO_URI="git://git.savannah.gnu.org/${PN}.git
 inherit eutils git-2
 
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
-HOMEPAGE="http://www.gnu.org/software/automake/"
+HOMEPAGE="https://www.gnu.org/software/automake/"
 SRC_URI=""
 
 LICENSE="GPL-3"

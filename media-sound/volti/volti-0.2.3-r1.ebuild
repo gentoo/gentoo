@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="GTK+ application for controlling audio volume from system tray/notification area"
 HOMEPAGE="https://code.google.com/p/volti/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

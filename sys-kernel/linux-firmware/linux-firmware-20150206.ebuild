@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Linux firmware files"
-HOMEPAGE="http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git"
+HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git"
 
 LICENSE="GPL-1 GPL-2 GPL-3 BSD freedist"
 SLOT="0"

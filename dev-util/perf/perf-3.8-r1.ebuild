@@ -11,7 +11,7 @@ MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
-HOMEPAGE="http://perf.wiki.kernel.org/"
+HOMEPAGE="https://perf.wiki.kernel.org/"
 
 LINUX_V="${PV:0:1}.x"
 if [[ ${PV/_rc} != ${PV} ]] ; then

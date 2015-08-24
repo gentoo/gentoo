@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="library that provides direct access to the IEEE 1394 bus"
-HOMEPAGE="http://ieee1394.wiki.kernel.org/"
+HOMEPAGE="https://ieee1394.wiki.kernel.org/"
 SRC_URI="mirror://kernel/linux/libs/ieee1394/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"

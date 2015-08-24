@@ -9,8 +9,8 @@ inherit distutils-r1
 
 DESCRIPTION="Python Bindings for the Google Voice API"
 HOMEPAGE="https://code.google.com/p/pygooglevoice/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz
-	http://${PN}.googlecode.com/files/${P}-extras.zip"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz
+	https://${PN}.googlecode.com/files/${P}-extras.zip"
 
 LICENSE="BSD"
 SLOT="0"

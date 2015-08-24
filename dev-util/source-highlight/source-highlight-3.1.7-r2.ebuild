@@ -7,7 +7,7 @@ EAPI="4"
 inherit bash-completion-r1 versionator
 
 DESCRIPTION="Generate highlighted source code as an (x)html document"
-HOMEPAGE="http://www.gnu.org/software/src-highlite/source-highlight.html"
+HOMEPAGE="https://www.gnu.org/software/src-highlite/source-highlight.html"
 SRC_URI="mirror://gnu/src-highlite/${P}.tar.gz"
 LICENSE="GPL-3"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"

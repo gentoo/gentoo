@@ -11,7 +11,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Last File Manager is a powerful file manager for the console"
 HOMEPAGE="https://code.google.com/p/lfm/"
-SRC_URI="http://lfm.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://lfm.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit python-r1
 DESCRIPTION="interactive ncurses client and real-time monitoring,
 statistics displaying tool for the HAProxy"
 HOMEPAGE="http://feurix.org/projects/hatop/"
-SRC_URI="http://hatop.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://hatop.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

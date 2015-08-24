@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Provides graphical frontend to ufw"
 HOMEPAGE="https://code.google.com/p/ufw-frontends/"
-SRC_URI="http://ufw-frontends.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ufw-frontends.googlecode.com/files/${P}.tar.gz"
 
 # CC-BY-NC-SA-3.0 is for a png file
 LICENSE="GPL-3 CC-BY-NC-SA-3.0"

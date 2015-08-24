@@ -6,7 +6,7 @@ EAPI=3
 inherit libtool eutils autotools
 
 DESCRIPTION="a powerful C/C++ function library for exporting 2-D vector graphics"
-HOMEPAGE="http://www.gnu.org/software/plotutils/"
+HOMEPAGE="https://www.gnu.org/software/plotutils/"
 SRC_URI="mirror://gnu/plotutils/${P}.tar.gz"
 
 LICENSE="GPL-2"

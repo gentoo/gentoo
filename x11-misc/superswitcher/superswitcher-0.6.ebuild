@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="A more feature-full replacement of the Alt-Tab window switching behavior"
 HOMEPAGE="https://code.google.com/p/superswitcher/"
-SRC_URI="http://superswitcher.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://superswitcher.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

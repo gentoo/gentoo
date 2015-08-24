@@ -21,7 +21,7 @@ detect_version
 
 K_NOSETEXTRAVERSION="don't_set_it"
 DESCRIPTION="The Zen Kernel Live Sources"
-HOMEPAGE="http://zen-kernel.org"
+HOMEPAGE="https://zen-kernel.org"
 
 IUSE=""
 

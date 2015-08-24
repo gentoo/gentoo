@@ -11,7 +11,7 @@ inherit kde4-base
 
 DESCRIPTION="Media player for KDE utilizing Nepomuk for tagging"
 HOMEPAGE="http://bangarangkde.wordpress.com"
-[[ ${PV} == 9999 ]] || SRC_URI="http://bangarangissuetracking.googlecode.com/files/${P}.tar.gz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://bangarangissuetracking.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 KEYWORDS="amd64 x86"

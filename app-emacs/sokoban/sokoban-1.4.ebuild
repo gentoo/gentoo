@@ -7,8 +7,8 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Implementation of Sokoban for Emacs"
-HOMEPAGE="http://elpa.gnu.org/packages/sokoban.html"
-SRC_URI="http://elpa.gnu.org/packages/${P}.tar"
+HOMEPAGE="https://elpa.gnu.org/packages/sokoban.html"
+SRC_URI="https://elpa.gnu.org/packages/${P}.tar"
 
 LICENSE="GPL-3+"
 SLOT="0"

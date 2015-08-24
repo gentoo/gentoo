@@ -6,7 +6,7 @@ EAPI=5
 
 MY_PN="${PN}-ocr"
 DL_P="${MY_PN}-3.02"
-URI_PREFIX="http://${MY_PN}.googlecode.com/files"
+URI_PREFIX="https://${MY_PN}.googlecode.com/files"
 
 inherit eutils autotools autotools-utils
 

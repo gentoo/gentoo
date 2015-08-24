@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Simple disk I/0 latency measuring tool"
 HOMEPAGE="https://code.google.com/p/ioping/"
-SRC_URI="http://ioping.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ioping.googlecode.com/files/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"

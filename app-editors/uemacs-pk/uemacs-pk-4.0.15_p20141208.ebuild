@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="uEmacs/PK is an enhanced version of MicroEMACS"
-HOMEPAGE="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
+HOMEPAGE="https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
 	ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK"
 # snapshot from git repo
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/uemacs-${PV}.tar.xz"

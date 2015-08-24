@@ -5,7 +5,7 @@
 inherit eutils libtool multilib
 
 DESCRIPTION="Standard GNU database libraries"
-HOMEPAGE="http://www.gnu.org/software/gdbm/gdbm.html"
+HOMEPAGE="https://www.gnu.org/software/gdbm/gdbm.html"
 SRC_URI="mirror://gnu/gdbm/${P}.tar.gz"
 
 LICENSE="GPL-2"

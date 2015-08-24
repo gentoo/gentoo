@@ -10,7 +10,7 @@ MY_P="${PN}-${PV/_/-}"
 
 DESCRIPTION="A lightweight panel/taskbar"
 HOMEPAGE="https://gitlab.com/o9000/tint2"
-SRC_URI="http://tint2.googlecode.com/files/${MY_P}.tar.bz2"
+SRC_URI="https://tint2.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

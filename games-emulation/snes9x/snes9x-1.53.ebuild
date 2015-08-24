@@ -7,7 +7,7 @@ inherit autotools eutils flag-o-matic multilib gnome2-utils games
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="https://code.google.com/p/snes9x-gtk/"
-SRC_URI="http://snes9x-gtk.googlecode.com/files/${P}-src.tar.bz2"
+SRC_URI="https://snes9x-gtk.googlecode.com/files/${P}-src.tar.bz2"
 
 LICENSE="Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP"
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI=3
 inherit eutils autotools
 
 DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
-HOMEPAGE="http://www.gnu.org/software/gnulib"
+HOMEPAGE="https://www.gnu.org/software/gnulib"
 
 # This tar.gz is created on-the-fly when downloaded from
 # http://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=snapshot;h=${GNULIB_COMMIT_GITID};sf=tgz

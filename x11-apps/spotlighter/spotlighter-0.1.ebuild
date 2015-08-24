@@ -4,7 +4,7 @@
 
 EAPI=3
 
-SRC_URI="http://ardesia.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ardesia.googlecode.com/files/${P}.tar.gz"
 DESCRIPTION="Shows a movable and resizable spotlight on the screen"
 HOMEPAGE="https://code.google.com/p/ardesia/"
 

@@ -8,7 +8,7 @@ inherit eutils qt4-r2
 
 DESCRIPTION="Keep your notes, pictures, ideas, and information in Baskets"
 HOMEPAGE="https://code.google.com/p/basqet/"
-SRC_URI="http://basqet.googlecode.com/files/${PN}_${PV}-src.tgz"
+SRC_URI="https://basqet.googlecode.com/files/${PN}_${PV}-src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

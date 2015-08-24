@@ -5,8 +5,8 @@
 inherit webapp
 
 DESCRIPTION="php-syslog-ng is a log monitor designed to easily manage logs from many hosts"
-HOMEPAGE="http://php-syslog-ng.googlecode.com/"
-SRC_URI="http://php-syslog-ng.googlecode.com/files/php-syslog-ng-${PV}.tar.gz"
+HOMEPAGE="https://php-syslog-ng.googlecode.com/"
+SRC_URI="https://php-syslog-ng.googlecode.com/files/php-syslog-ng-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc64 ~x86"

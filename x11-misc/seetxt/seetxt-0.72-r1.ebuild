@@ -8,7 +8,7 @@ inherit autotools eutils
 
 DESCRIPTION="Clever, lightweight GUI text file and manual page viewer for X windows"
 HOMEPAGE="https://code.google.com/p/seetxt/ http://seetxt.sourceforge.net/"
-SRC_URI="http://seetxt.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://seetxt.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

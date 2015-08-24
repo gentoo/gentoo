@@ -8,9 +8,9 @@ inherit font
 
 DESCRIPTION="A font based on Adobe Utopia"
 HOMEPAGE="https://code.google.com/p/evristika/"
-SRC_URI="http://evristika.googlecode.com/files/${PN}-ttf-${PV}.tar.xz
-	http://evristika.googlecode.com/files/${PN}-otf-${PV}.tar.xz
-	http://evristika.googlecode.com/files/${PN}-pfb-${PV}.tar.xz"
+SRC_URI="https://evristika.googlecode.com/files/${PN}-ttf-${PV}.tar.xz
+	https://evristika.googlecode.com/files/${PN}-otf-${PV}.tar.xz
+	https://evristika.googlecode.com/files/${PN}-pfb-${PV}.tar.xz"
 
 LICENSE="OFL"
 SLOT="0"

@@ -8,19 +8,19 @@ inherit eutils
 
 DESCRIPTION="An OCR Engine that was developed at HP and now at Google"
 HOMEPAGE="https://code.google.com/p/tesseract-ocr/"
-SRC_URI="http://tesseract-ocr.googlecode.com/files/${P}.tar.gz
-	http://tesseract-ocr.googlecode.com/files/${PN}-2.00.eng.tar.gz
+SRC_URI="https://tesseract-ocr.googlecode.com/files/${P}.tar.gz
+	https://tesseract-ocr.googlecode.com/files/${PN}-2.00.eng.tar.gz
 	linguas_de? (
-		http://tesseract-ocr.googlecode.com/files/${PN}-2.00.deu.tar.gz
-		http://tesseract-ocr.googlecode.com/files/${PN}-2.01.deu-f.tar.gz
+		https://tesseract-ocr.googlecode.com/files/${PN}-2.00.deu.tar.gz
+		https://tesseract-ocr.googlecode.com/files/${PN}-2.01.deu-f.tar.gz
 	)
-	linguas_eu? ( http://tesseract-ocr.googlecode.com/files/${PN}-2.04.eus.tar.gz )
-	linguas_es? ( http://tesseract-ocr.googlecode.com/files/${PN}-2.00.spa.tar.gz )
-	linguas_fr? ( http://tesseract-ocr.googlecode.com/files/${PN}-2.00.fra.tar.gz )
-	linguas_it? ( http://tesseract-ocr.googlecode.com/files/${PN}-2.00.ita.tar.gz )
-	linguas_nl? ( http://tesseract-ocr.googlecode.com/files/${PN}-2.00.nld.tar.gz )
-	linguas_pt_BR? ( http://tesseract-ocr.googlecode.com/files/${PN}-2.01.por.tar.gz )
-	linguas_vi? ( http://tesseract-ocr.googlecode.com/files/${PN}-2.01.vie.tar.gz )"
+	linguas_eu? ( https://tesseract-ocr.googlecode.com/files/${PN}-2.04.eus.tar.gz )
+	linguas_es? ( https://tesseract-ocr.googlecode.com/files/${PN}-2.00.spa.tar.gz )
+	linguas_fr? ( https://tesseract-ocr.googlecode.com/files/${PN}-2.00.fra.tar.gz )
+	linguas_it? ( https://tesseract-ocr.googlecode.com/files/${PN}-2.00.ita.tar.gz )
+	linguas_nl? ( https://tesseract-ocr.googlecode.com/files/${PN}-2.00.nld.tar.gz )
+	linguas_pt_BR? ( https://tesseract-ocr.googlecode.com/files/${PN}-2.01.por.tar.gz )
+	linguas_vi? ( https://tesseract-ocr.googlecode.com/files/${PN}-2.01.vie.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"

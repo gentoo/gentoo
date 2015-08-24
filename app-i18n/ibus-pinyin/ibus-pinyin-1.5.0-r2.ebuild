@@ -11,7 +11,7 @@ inherit python-single-r1 eutils
 
 DESCRIPTION="Chinese PinYin IMEngine for IBus Framework"
 HOMEPAGE="https://code.google.com/p/ibus/"
-SRC_URI="http://ibus.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

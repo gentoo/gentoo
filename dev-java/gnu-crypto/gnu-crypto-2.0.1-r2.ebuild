@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 eutils
 
 DESCRIPTION="GNU Crypto cryptographic primitives for Java"
-HOMEPAGE="http://www.gnu.org/software/gnu-crypto/"
+HOMEPAGE="https://www.gnu.org/software/gnu-crypto/"
 SRC_URI="ftp://ftp.gnupg.org/GnuPG/gnu-crypto/gnu-crypto-2.0.1.tar.bz2"
 
 LICENSE="GPL-2"

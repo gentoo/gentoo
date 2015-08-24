@@ -12,7 +12,7 @@ inherit distutils
 
 DESCRIPTION="Interactive X11 vector drawing program"
 HOMEPAGE="http://www.skencil.org/"
-SRC_URI="http://sk1.googlecode.com/files/${P/_alpha/alpha_rev}.tar.gz"
+SRC_URI="https://sk1.googlecode.com/files/${P/_alpha/alpha_rev}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

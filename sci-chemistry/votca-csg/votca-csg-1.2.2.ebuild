@@ -9,9 +9,9 @@ inherit bash-completion-r1 cmake-utils multilib
 IUSE="doc examples extras +gromacs +system-boost"
 PDEPEND="extras? ( =sci-chemistry/votca-csgapps-${PV} )"
 if [ "${PV}" != "9999" ]; then
-	SRC_URI="http://votca.googlecode.com/files/${PF}.tar.gz
-		doc? ( http://votca.googlecode.com/files/${PN}-manual-${PV}.pdf )
-		examples? (	http://votca.googlecode.com/files/${PN}-tutorials-${PV}.tar.gz )"
+	SRC_URI="https://votca.googlecode.com/files/${PF}.tar.gz
+		doc? ( https://votca.googlecode.com/files/${PN}-manual-${PV}.pdf )
+		examples? (	https://votca.googlecode.com/files/${PN}-tutorials-${PV}.tar.gz )"
 	RESTRICT="primaryuri"
 else
 	SRC_URI=""

@@ -10,7 +10,7 @@ MY_PV="$(delete_all_version_separators)"
 DESCRIPTION="A stream editor for manipulating CSV files"
 HOMEPAGE="https://code.google.com/p/csvfix/"
 SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.bz2
-	doc? ( http://csvfix.googlecode.com/files/CSVfix_man_html_${MY_PV}0.zip )"
+	doc? ( https://csvfix.googlecode.com/files/CSVfix_man_html_${MY_PV}0.zip )"
 
 LICENSE="MIT"
 SLOT="0"

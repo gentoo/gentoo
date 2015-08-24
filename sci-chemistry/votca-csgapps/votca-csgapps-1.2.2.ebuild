@@ -7,7 +7,7 @@ EAPI=4
 inherit cmake-utils
 
 if [ "${PV}" != "9999" ]; then
-	SRC_URI="http://votca.googlecode.com/files/${PF}.tar.gz"
+	SRC_URI="https://votca.googlecode.com/files/${PF}.tar.gz"
 	RESTRICT="primaryuri"
 else
 	inherit mercurial

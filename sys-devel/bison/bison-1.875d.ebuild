@@ -5,7 +5,7 @@
 inherit toolchain-funcs flag-o-matic eutils
 
 DESCRIPTION="A yacc-compatible parser generator"
-HOMEPAGE="http://www.gnu.org/software/bison/bison.html"
+HOMEPAGE="https://www.gnu.org/software/bison/bison.html"
 SRC_URI="ftp://alpha.gnu.org/pub/gnu/bison/${P}.tar.bz2"
 
 LICENSE="GPL-2"
