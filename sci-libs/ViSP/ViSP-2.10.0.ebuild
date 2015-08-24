@@ -67,6 +67,7 @@ src_configure() {
 		"-DUSE_FFMPEG=$(usex ffmpeg ON OFF)"
 		"-DUSE_ZBAR=$(usex zbar ON OFF)"
 		"-DUSE_DMTX=$(usex dmtx ON OFF)"
+		"-DCMAKE_DISABLE_FIND_PACKAGE_Coin3D=ON"
 	)
 	cmake-utils_src_configure
 }
