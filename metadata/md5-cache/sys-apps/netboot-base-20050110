@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install postinst preinst setup
 DESCRIPTION=Baselayout for netboot systems
 EAPI=0
-HOMEPAGE=http://www.gentoo.org/
+HOMEPAGE=https://www.gentoo.org/
 KEYWORDS=alpha arm hppa ~mips ppc sh sparc x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~vapier/netboot-base-20050110.tar.bz2 mirror://gentoo/netboot-base-20050110.tar.bz2
+SRC_URI=https://dev.gentoo.org/~vapier/netboot-base-20050110.tar.bz2 mirror://gentoo/netboot-base-20050110.tar.bz2
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=1ab9ecbab8e906044c4ecec63ede7403
+_md5_=3a479ac97276fe5d6224f953592fa5bf

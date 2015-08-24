@@ -10,6 +10,6 @@ PDEPEND=qt3support? ( ~dev-qt/qt3support-4.8.5[aqua=,debug=] )
 RDEPEND=app-eselect/eselect-qtgraphicssystem ~dev-qt/qtcore-4.8.5[aqua=,debug=,glib=,qt3support=] ~dev-qt/qtscript-4.8.5[aqua=,debug=] media-libs/fontconfig media-libs/freetype:2 media-libs/libpng:0= sys-libs/zlib virtual/jpeg:0 !aqua? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) xv? ( x11-libs/libXv ) ) cups? ( net-print/cups ) egl? ( media-libs/mesa[egl] ) glib? ( dev-libs/glib:2 ) gtkstyle? ( x11-libs/cairo[-qt4(-)] x11-libs/gtk+:2[aqua=] ) mng? ( >=media-libs/libmng-1.0.9:= ) nas? ( >=media-libs/nas-1.5 ) tiff? ( media-libs/tiff:0 ) !<dev-qt/qthelp-4.8.5:4
 REQUIRED_USE=gtkstyle? ( glib )
 SLOT=4
-SRC_URI=http://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz http://dev.gentoo.org/~pesa/patches/qtgui-systemtrayicon-plugin-system.patch
+SRC_URI=http://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz https://dev.gentoo.org/~pesa/patches/qtgui-systemtrayicon-plugin-system.patch
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qt4-build	96f23bf58d60c4c9cc56ffc513510a6d	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=60cedd821c31e1a9ba2752e59b05093f
+_md5_=393ef97857d5d326bb20fd93239b55c6

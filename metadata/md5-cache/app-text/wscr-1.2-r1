@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=A Lightweight and Fast Anagram Solver
 EAPI=5
-HOMEPAGE=http://www.gentoo.org/
+HOMEPAGE=https://www.gentoo.org/
 KEYWORDS=amd64 ~mips ppc x86
 LICENSE=public-domain
 RDEPEND=sys-apps/miscfiles
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jer/wscr-1.2.tar.gz
+SRC_URI=https://dev.gentoo.org/~jer/wscr-1.2.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5268a4c9934e7759a6e7816d499be95d
+_md5_=fe026f9e36ea36e21e505b61206f354f

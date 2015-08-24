@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DEPEND=app-arch/xz-utils
 DESCRIPTION=Gentoo Cross-toolchain generator
 EAPI=4
-HOMEPAGE=http://www.gentoo.org/
+HOMEPAGE=https://www.gentoo.org/
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/portage-2.1 app-shells/bash !sys-devel/crossdev-wrappers
 SLOT=0
-SRC_URI=mirror://gentoo/crossdev-20140729.tar.xz http://dev.gentoo.org/~vapier/dist/crossdev-20140729.tar.xz
-_md5_=cc8ea4664ab5dcfdbbac570b7520287b
+SRC_URI=mirror://gentoo/crossdev-20140729.tar.xz https://dev.gentoo.org/~vapier/dist/crossdev-20140729.tar.xz
+_md5_=3317d8a69a4e672ea5ee9ca8da0a2fb4

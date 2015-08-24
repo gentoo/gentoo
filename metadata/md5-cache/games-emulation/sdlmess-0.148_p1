@@ -9,6 +9,6 @@ LICENSE=XMAME
 RDEPEND=dev-libs/expat media-libs/fontconfig media-libs/flac >=media-libs/libsdl-1.2.10[sound,joystick,opengl?,video] media-libs/sdl-ttf sys-libs/zlib virtual/jpeg:0 media-libs/portmidi X? ( gnome-base/gconf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama ) games-misc/games-envd
 REQUIRED_USE=debug? ( X )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/sdlmame0148u1_diff.zip http://dev.gentoo.org/~hasufell/distfiles/mame0148s.zip
+SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/sdlmame0148u1_diff.zip https://dev.gentoo.org/~hasufell/distfiles/mame0148s.zip
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	games	9c0a2dd4a6a25b6b7851fa01019cc809	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=de98976ecf48210df7505ce6beeaa760
+_md5_=3728bd9b7cb976e5b1fbda7b0766d43c

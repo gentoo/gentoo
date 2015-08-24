@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0 vim
 RDEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 dev-libs/libvterm-neovim >=dev-libs/unibilium-1.1.1 >=dev-libs/libuv-1.2.0 >=dev-libs/msgpack-0.6.0_pre20150220 dev-lua/lpeg dev-lua/messagepack perl? ( dev-lang/perl ) python? ( dev-python/neovim-python-client )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/neovim-0.0.0_pre20150727.tar.xz
+SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/neovim-0.0.0_pre20150727.tar.xz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8c0eeae780fd115b0aff64b1f5d2d18f
+_md5_=d2b1d9615e9b6df7d742d1323fa702de

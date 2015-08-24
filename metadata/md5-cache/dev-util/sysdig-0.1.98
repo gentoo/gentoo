@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/luajit:2= >=dev-libs/jsoncpp-0.6_pre:0= sys-libs/zlib:0= kernel_linux? ( virtual/modutils )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~mgorny/dist/sysdig-0.1.98.tar.xz
+SRC_URI=https://dev.gentoo.org/~mgorny/dist/sysdig-0.1.98.tar.xz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ba95ddec6ef891c4d025374a72ce55f8
+_md5_=f439bf79d7758b50eefc6d558dd11b4c

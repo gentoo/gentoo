@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Full sources including the Gentoo patchset for the 4.0 kernel tree and aufs4 support
 EAPI=5
-HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/
+HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/
 IUSE=deblob experimental module vanilla symlink build deblob
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 !deblob? ( freedist )
@@ -10,6 +10,6 @@ PDEPEND==sys-fs/aufs-util-4*
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=4.0.9
-SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.0.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-4.0 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-check -> deblob-check-4.0 ) http://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.0_p20150629.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.0-11.base.tar.xz mirror://gentoo/genpatches-4.0-11.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.0-11.experimental.tar.xz ) )
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.0.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-4.0 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-check -> deblob-check-4.0 ) https://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.0_p20150629.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.0-11.base.tar.xz mirror://gentoo/genpatches-4.0-11.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.0-11.experimental.tar.xz ) )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3429cee917fc981ff50c67d0562cbfed
+_md5_=d27eefc9d5b55c842573c4c556a08ef1

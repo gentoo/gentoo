@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=ccp4
 RDEPEND=>=sci-libs/ccp4-libs-6.1.3 sci-libs/mmdb virtual/lapack virtual/fortran
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/molrep-11.0.03.tar.gz
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/molrep-11.0.03.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=232fd300bea1030a85e4968619d66300
+_md5_=accfbe8e798f47c64f140499a7427129

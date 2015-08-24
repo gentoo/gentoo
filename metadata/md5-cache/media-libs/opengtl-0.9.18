@@ -9,6 +9,6 @@ LICENSE=LGPL-2
 RDEPEND=media-libs/libpng:0= ( <sys-devel/llvm-3.4 >=sys-devel/llvm-3.1 )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://download.opengtl.org/OpenGTL-0.9.18.tar.bz2 http://dev.gentoo.org/~creffett/distfiles/opengtl-0.9.18-llvm-3.3.patch
+SRC_URI=http://download.opengtl.org/OpenGTL-0.9.18.tar.bz2 https://dev.gentoo.org/~creffett/distfiles/opengtl-0.9.18-llvm-3.3.patch
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=75582971c0aa83da421a035c981e2319
+_md5_=7eaeda64ca3a78d3dd4702c6d6e7d774

@@ -9,5 +9,5 @@ PDEPEND=nls? ( linguas_da? ( app-i18n/man-pages-da ) linguas_de? ( app-i18n/man-
 RDEPEND=virtual/man !<sys-apps/attr-2.4.47-r2 !<dev-libs/libaio-0.3.109-r2
 RESTRICT=binchecks
 SLOT=0
-SRC_URI=mirror://kernel/linux/docs/man-pages/Archive/man-pages-4.00.tar.xz mirror://kernel/linux/docs/man-pages/man-pages-4.00.tar.xz http://man7.org/linux/man-pages/download/man-pages-4.00.tar.xz mirror://gentoo/man-pages-gentoo-2.tar.bz2 http://dev.gentoo.org/~cardoe/files/man-pages-gentoo-2.tar.bz2
-_md5_=1101e06c612f644a4171dfd155847223
+SRC_URI=mirror://kernel/linux/docs/man-pages/Archive/man-pages-4.00.tar.xz mirror://kernel/linux/docs/man-pages/man-pages-4.00.tar.xz http://man7.org/linux/man-pages/download/man-pages-4.00.tar.xz mirror://gentoo/man-pages-gentoo-2.tar.bz2 https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-2.tar.bz2
+_md5_=4d166d13fe37b1e14c94e33f49500993

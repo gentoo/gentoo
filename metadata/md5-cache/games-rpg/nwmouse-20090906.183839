@@ -7,6 +7,6 @@ LICENSE=nwmovies Artistic
 RDEPEND=>=games-rpg/nwn-1.68-r4 games-rpg/nwn-data sys-libs/glibc >=dev-libs/elfutils-0.155-r1[abi_x86_32(-)] >=media-libs/libsdl-1.2.15-r5[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXcursor[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] games-misc/games-envd
 RESTRICT=strip
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~calchan/distfiles/nwmouse-20090906.183839.tar.bz2 mirror://gentoo/nwmouse-20090906.183839.tar.bz2
+SRC_URI=https://dev.gentoo.org/~calchan/distfiles/nwmouse-20090906.183839.tar.bz2 mirror://gentoo/nwmouse-20090906.183839.tar.bz2
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=57eb884f9caa4b11aff31b17e7034c93
+_md5_=e01b447cd1de707648a5db75e430bbd1

@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libltdl virtual/mailx perl? ( dev-lang/perl ) web? ( media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd[php] ) apache2? ( || ( ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authz_core] dev-lang/php[apache2] ) ( || ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authz_core,apache2_modules_cgi] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authz_core,apache2_modules_cgid] ) dev-lang/php[cgi] ) ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authz_core] www-apache/mod_fcgid dev-lang/php[cgi] ) ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authz_core,apache2_modules_proxy_fcgi] dev-lang/php[fpm] ) ) ) ) !net-analyzer/nagios-imagepack vim-syntax? ( app-vim/nagios-syntax ) apache2? ( =www-servers/apache-2* )
 REQUIRED_USE=apache2? ( !lighttpd )
 SLOT=0
-SRC_URI=mirror://sourceforge/nagios/nagios-4.0.8.tar.gz web? ( http://dev.gentoo.org/~mjo/distfiles/nagios-core-gentoo-icons-20141125.tar )
+SRC_URI=mirror://sourceforge/nagios/nagios-4.0.8.tar.gz web? ( https://dev.gentoo.org/~mjo/distfiles/nagios-core-gentoo-icons-20141125.tar )
 _eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=66eb66fb622227f0d4871101bb769b96
+_md5_=bab7e257c77722ebbe54351c91c61d68

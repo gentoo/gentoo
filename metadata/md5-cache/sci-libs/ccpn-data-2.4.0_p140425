@@ -9,6 +9,6 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/
 REQUIRED_USE=|| ( python_targets_python2_7 )
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=http://www2.ccpn.ac.uk/download/ccpnmr/analysis2.4.0.tar.gz http://dev.gentoo.org/~jlec/distfiles/ccpn-update-2.4.0-140425.patch.xz
+SRC_URI=http://www2.ccpn.ac.uk/download/ccpnmr/analysis2.4.0.tar.gz https://dev.gentoo.org/~jlec/distfiles/ccpn-update-2.4.0-140425.patch.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d11bb0688a6d49425e344d96625f598f
+_md5_=0c9746ee8026c13abd79ce07fb7c6398

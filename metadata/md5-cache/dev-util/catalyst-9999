@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=app-text/asciidoc >=dev-python/snakeoil-0.5.2 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-vcs/git
 DESCRIPTION=Release metatool used for creating releases based on Gentoo Linux
 EAPI=5
-HOMEPAGE=http://www.gentoo.org/proj/en/releng/catalyst/
+HOMEPAGE=https://www.gentoo.org/proj/en/releng/catalyst/
 IUSE=ccache doc kernel_linux python_targets_python2_7
 LICENSE=GPL-2
 RDEPEND=app-arch/lbzip2 app-crypt/shash virtual/cdrtools amd64? ( >=sys-boot/syslinux-3.72 ) ia64? ( sys-fs/dosfstools ) x86? ( >=sys-boot/syslinux-3.72 ) ccache? ( dev-util/ccache ) kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8a2d782ab940a8cff5391365300cc9e8
+_md5_=8c5b77640ef2813338c1dc2b3fda4000

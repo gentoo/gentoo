@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=app-cdr/cuetools media-sound/shntool[mac?] virtual/libiconv media-libs/flac enca? ( app-i18n/enca ) flake? ( media-sound/flake ) mp3? ( media-sound/lame || ( media-libs/mutagen media-libs/id3lib ) ) mp4? ( media-libs/faac media-libs/libmp4v2:0[utils] ) ogg? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) mp4? ( media-sound/aacgain ) ogg? ( media-sound/vorbisgain ) ) imagemagick? ( media-gfx/imagemagick )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~maksbotan/split2flac-20111110-r1.sh
-_md5_=7b2dfa831297f04688d583f3f9272b52
+SRC_URI=https://dev.gentoo.org/~maksbotan/split2flac-20111110-r1.sh
+_md5_=4c8ab43a765a2edce846cc229a01a4de

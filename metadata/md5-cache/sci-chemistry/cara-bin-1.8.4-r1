@@ -8,5 +8,5 @@ LICENSE=CARA
 RDEPEND=!prefix? ( >=media-libs/fontconfig-2.10.92[abi_x86_32(-)] >=media-libs/freetype-2.5.0.1[abi_x86_32(-)] >=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)] >=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXcursor-1.1.14[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXi-1.7.2[abi_x86_32(-)] >=x11-libs/libXrandr-1.4.2[abi_x86_32(-)] >=x11-libs/libXrender-0.9.8[abi_x86_32(-)] ) virtual/libstdc++ lua? ( dev-lang/lua )
 RESTRICT=mirror
 SLOT=0
-SRC_URI=http://www.cara.nmr-software.org/downloads/cara_1.8.4_linux.gz http://dev.gentoo.org/~jlec/distfiles//Start1.2.cara.xz
-_md5_=dba653e69a40eb2092e0e88a5479ea87
+SRC_URI=http://www.cara.nmr-software.org/downloads/cara_1.8.4_linux.gz https://dev.gentoo.org/~jlec/distfiles//Start1.2.cara.xz
+_md5_=c3d293bc0a81a1f3a6907441b4365964

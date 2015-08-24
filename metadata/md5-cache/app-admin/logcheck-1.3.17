@@ -8,4 +8,4 @@ RDEPEND=!app-admin/logsentry app-misc/lockfile-progs dev-lang/perl dev-perl/mime
 SLOT=0
 SRC_URI=mirror://debian/pool/main/l/logcheck/logcheck_1.3.17.tar.xz
 _eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=efa74e89b5d37d3bdc4c2254ffd34445
+_md5_=9e6502ea81e0f5f2953aac8a3741bac7

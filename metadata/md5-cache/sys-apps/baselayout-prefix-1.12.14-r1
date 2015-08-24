@@ -8,6 +8,6 @@ KEYWORDS=~ppc-aix ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/readline-5.0-r1 >=app-shells/bash-3.1_p7 >=sys-apps/coreutils-5.2.1 kernel_Darwin? ( sys-process/pidof-bsd ) kernel_FreeBSD? ( sys-process/pidof-bsd )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~grobian/distfiles/baselayout-prefix-1.12.14.1709.tar.bz2
+SRC_URI=https://dev.gentoo.org/~grobian/distfiles/baselayout-prefix-1.12.14.1709.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=c6570a9ec268b6f2606c9946a6349269
+_md5_=468075988d3f1de9e6bc791968e882d5

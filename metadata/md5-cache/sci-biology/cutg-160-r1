@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=emboss? ( sci-biology/emboss )
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/cutg-160.tar.xz
-_md5_=19ba7b1b2f70f27057d5dce1843a2105
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/cutg-160.tar.xz
+_md5_=8841e19b9fa19461b5074b6156cf819c

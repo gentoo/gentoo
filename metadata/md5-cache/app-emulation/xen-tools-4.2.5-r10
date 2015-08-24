@@ -10,6 +10,6 @@ RDEPEND=sys-apps/iproute2 net-misc/bridge-utils ocaml? ( >=dev-lang/ocaml-4 ) sc
 REQUIRED_USE=hvm? ( qemu ) python_targets_python2_7
 RESTRICT=test
 SLOT=0
-SRC_URI=http://bits.xensource.com/oss-xen/release/4.2.5/xen-4.2.5.tar.gz http://code.coreboot.org/p/seabios/downloads/get/seabios-1.6.3.2.tar.gz http://dev.gentoo.org/~dlan/distfiles/seabios-1.6.3.2.tar.gz http://dev.gentoo.org/~dlan/distfiles/xen-4.2.5-upstream-patches-9.tar.xz http://dev.gentoo.org/~dlan/distfiles/xen-security-patches-6.tar.xz http://dev.gentoo.org/~dlan/distfiles/xen-gentoo-patches-1.tar.xz
+SRC_URI=http://bits.xensource.com/oss-xen/release/4.2.5/xen-4.2.5.tar.gz http://code.coreboot.org/p/seabios/downloads/get/seabios-1.6.3.2.tar.gz https://dev.gentoo.org/~dlan/distfiles/seabios-1.6.3.2.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-4.2.5-upstream-patches-9.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-security-patches-6.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-gentoo-patches-1.tar.xz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5
-_md5_=928e5c586fa70da7911bcd2583502612
+_md5_=c0b0808bdccde528b0bb98c9f135f97d

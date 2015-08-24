@@ -2,11 +2,11 @@ DEFINED_PHASES=install
 DEPEND=>=dev-java/java-config-2.2.0
 DESCRIPTION=Virtual ebuilds that require internal com.sun classes from a JDK
 EAPI=5
-HOMEPAGE=http://www.gentoo.org
+HOMEPAGE=https://www.gentoo.org
 IUSE=elibc_FreeBSD
 KEYWORDS=amd64 x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=public-domain
 RDEPEND=|| ( dev-java/icedtea-bin:6 dev-java/icedtea:6 dev-java/icedtea-bin:7 dev-java/icedtea:7 dev-java/oracle-jdk-bin:1.7 dev-java/oracle-jdk-bin:1.8 dev-java/apple-jdk-bin:1.6 ) >=dev-java/java-config-2.2.0
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=046150f5af406f6074ce2900a8ff9bcf
+_md5_=550ddb3343b6ad534d975f132f95112d

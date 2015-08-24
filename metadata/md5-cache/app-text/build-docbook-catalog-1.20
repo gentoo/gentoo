@@ -6,5 +6,5 @@ KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh 
 LICENSE=GPL-2
 RDEPEND=|| ( sys-apps/util-linux app-misc/getopt ) !<app-text/docbook-xsl-stylesheets-1.73.1 dev-libs/libxml2
 SLOT=0
-SRC_URI=mirror://gentoo/build-docbook-catalog-1.20.tar.xz http://dev.gentoo.org/~floppym/distfiles/build-docbook-catalog-1.20.tar.xz http://dev.gentoo.org/~vapier/dist/build-docbook-catalog-1.20.tar.xz
-_md5_=9791b7c3aaec50890e20ad49d809bbf3
+SRC_URI=mirror://gentoo/build-docbook-catalog-1.20.tar.xz https://dev.gentoo.org/~floppym/distfiles/build-docbook-catalog-1.20.tar.xz https://dev.gentoo.org/~vapier/dist/build-docbook-catalog-1.20.tar.xz
+_md5_=f41cccd5d61f1a889ae84732d414c4b3

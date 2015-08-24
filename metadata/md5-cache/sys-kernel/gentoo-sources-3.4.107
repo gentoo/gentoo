@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
 DESCRIPTION=Full sources including the Gentoo patchset for the 3.4 kernel tree
 EAPI=5
-HOMEPAGE=http://dev.gentoo.org/~mpagano/genpatches
+HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches
 IUSE=deblob symlink build
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2 freedist
@@ -11,4 +11,4 @@ RESTRICT=binchecks strip
 SLOT=3.4.107
 SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.4.tar.xz mirror://gentoo/genpatches-3.4-90.base.tar.xz mirror://gentoo/genpatches-3.4-90.extras.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7ef47bc08e08b789e10293719977521f
+_md5_=a62f76486e573fa1061fb8073d5667de

@@ -10,6 +10,6 @@ RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6d ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 REQUIRED_USE=python? ( python_targets_python2_7 ) rpm? ( bzip2 zlib )
 RESTRICT=test
 SLOT=0
-SRC_URI=mirror://sourceforge/net-snmp/net-snmp/5.7.3-pre-releases/net-snmp-5.7.3.pre5.tar.gz http://dev.gentoo.org/~jer/net-snmp-5.7.3-patches-1.tar.xz
+SRC_URI=mirror://sourceforge/net-snmp/net-snmp/5.7.3-pre-releases/net-snmp-5.7.3.pre5.tar.gz https://dev.gentoo.org/~jer/net-snmp-5.7.3-patches-1.tar.xz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=7314c5716b919828be9fb2fed89fd90d
+_md5_=03aac392e4f65ae63a7bf386114c2997

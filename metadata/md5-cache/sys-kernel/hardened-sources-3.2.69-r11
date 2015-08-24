@@ -2,13 +2,13 @@ DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Hardened kernel sources (kernel series 3.2)
 EAPI=5
-HOMEPAGE=http://www.gentoo.org/proj/en/hardened/
+HOMEPAGE=https://www.gentoo.org/proj/en/hardened/
 IUSE=deblob symlink build deblob
 KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2 !deblob? ( freedist )
 RDEPEND=>=sys-devel/gcc-4.5 !build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=3.2.69-r11
-SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.2.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu/deblob-3.2 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu/deblob-check -> deblob-check-3.2 ) http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-3.2.69-11.extras.tar.bz2 mirror://gentoo/genpatches-3.2-16.base.tar.xz mirror://gentoo/genpatches-3.2-16.extras.tar.xz
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.2.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu/deblob-3.2 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.2-gnu/deblob-check -> deblob-check-3.2 ) https://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-3.2.69-11.extras.tar.bz2 mirror://gentoo/genpatches-3.2-16.base.tar.xz mirror://gentoo/genpatches-3.2-16.extras.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=6508ddda564a83a61beeb9c3f155be20
+_md5_=7ed3bbcc0ba57a43ed8b4a7c156b7cd5

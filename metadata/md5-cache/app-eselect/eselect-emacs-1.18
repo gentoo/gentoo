@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix 
 LICENSE=GPL-2+
 RDEPEND=>=app-admin/eselect-1.2.6 ~app-eselect/eselect-ctags-1.18
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/emacs/eselect-emacs-1.18.tar.xz
-_md5_=8855f385b7363499b872771cf2f37a76
+SRC_URI=https://dev.gentoo.org/~ulm/emacs/eselect-emacs-1.18.tar.xz
+_md5_=1a026cf9ae8c613d48f900c15542f25c

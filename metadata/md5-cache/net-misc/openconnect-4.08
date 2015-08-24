@@ -8,6 +8,6 @@ KEYWORDS=amd64 ppc64 x86
 LICENSE=LGPL-2.1 GPL-2
 RDEPEND=dev-libs/libxml2 net-libs/libproxy sys-libs/zlib !gnutls? ( dev-libs/openssl[static-libs?] ) gnutls? ( || ( ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle ) ( =net-libs/gnutls-2.12*[nettle,static-libs?] dev-libs/nettle ) ( =net-libs/gnutls-2.12*[-nettle,static-libs?] dev-libs/libgcrypt:0[static-libs?] ) ) app-misc/ca-certificates ) doc? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) sys-apps/iproute2
 SLOT=0/2
-SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-4.08.tar.gz http://dev.gentoo.org/~hwoarang/distfiles/openconnect-script-20121108205904.tar.gz
+SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-4.08.tar.gz https://dev.gentoo.org/~hwoarang/distfiles/openconnect-script-20121108205904.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=a55d427ca55474a11ca4a3e53d384359
+_md5_=5a448f4a2d1d0971e0c6eb707da60664

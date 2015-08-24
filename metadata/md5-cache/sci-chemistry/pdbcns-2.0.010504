@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=dev-lang/perl
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/pdbcns.2.0.010504.perl.tgz
-_md5_=065458c0651f72f3b2421fe0e200c3ce
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/pdbcns.2.0.010504.perl.tgz
+_md5_=915dfacb863e6bd06b374e5a359316f0

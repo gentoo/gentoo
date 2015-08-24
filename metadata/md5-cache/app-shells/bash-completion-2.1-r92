@@ -6,6 +6,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 LICENSE=GPL-2
 RDEPEND=>=app-shells/bash-4.3_p30-r1 sys-apps/miscfiles !app-eselect/eselect-bashcomp
 SLOT=0
-SRC_URI=http://bash-completion.alioth.debian.org/files/bash-completion-2.1.tar.bz2 http://dev.gentoo.org/~mgorny/dist/bashcomp2-pre1.tar.gz
+SRC_URI=http://bash-completion.alioth.debian.org/files/bash-completion-2.1.tar.bz2 https://dev.gentoo.org/~mgorny/dist/bashcomp2-pre1.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=aed96692fb14394c516f13c07a4f36ac
+_md5_=84a0f0fb7c35fa2bf5f8b0082320f63c

@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/mono-2.0
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~pacho/nant/nant-0.93_pre20130131.tar.bz2
+SRC_URI=https://dev.gentoo.org/~pacho/nant/nant-0.93_pre20130131.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f2c047fb600047c8aa3d27d2d32b4273
+_md5_=0f5c90680e43b659db30a17b6f39d844

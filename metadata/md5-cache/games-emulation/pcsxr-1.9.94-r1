@@ -10,6 +10,6 @@ RDEPEND=dev-libs/glib:2= media-libs/libsdl:0=[joystick] sys-libs/zlib:0= x11-lib
 REQUIRED_USE=?? ( alsa openal oss pulseaudio sdl )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~mgorny/dist/pcsxr-1.9.94.zip
+SRC_URI=https://dev.gentoo.org/~mgorny/dist/pcsxr-1.9.94.zip
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7e97120a7fa71eca2b39755b63ef0f52
+_md5_=31142c894f2ed864091633673927e6b0

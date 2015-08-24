@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install prepare
 DEPEND=media-libs/alsa-lib media-sound/alsa-utils x11-libs/fltk:1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=FLTK based amixer Frontend
 EAPI=4
-HOMEPAGE=http://www.gentoo.org/
+HOMEPAGE=https://www.gentoo.org/
 KEYWORDS=amd64 arm ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=media-libs/alsa-lib media-sound/alsa-utils x11-libs/fltk:1
 SLOT=0
 SRC_URI=mirror://gentoo/alsamixergui-0.9.0rc1-2.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=7d19b2fc3c9acce90ffecfe999aa2be9
+_md5_=30dc320dabb84d1e6ed52bf159b08348

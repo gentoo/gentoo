@@ -10,4 +10,4 @@ RDEPEND=selinux? ( sec-policy/selinux-apm )
 SLOT=0
 SRC_URI=mirror://sourceforge/acpid2/acpid-2.0.21.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5a9374e01679753fc97f1c6cafc2d751
+_md5_=af85acb584ea7c95cfe8944b332dcb81

@@ -7,5 +7,5 @@ KEYWORDS=amd64 x86
 LICENSE=BSD
 PDEPEND=app-admin/sagan
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~maksbotan/sagan/sagan-rules-20130430.tar.gz
-_md5_=aeb46d27d6e595ce2ba9f8388029724e
+SRC_URI=https://dev.gentoo.org/~maksbotan/sagan/sagan-rules-20130430.tar.gz
+_md5_=49460c3a7ac98193c1a4da71e01d33b6

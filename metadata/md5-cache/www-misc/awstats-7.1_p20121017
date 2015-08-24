@@ -7,6 +7,6 @@ KEYWORDS=~alpha amd64 hppa ppc ~sparc x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.6.1 virtual/perl-Time-Local dev-perl/URI geoip? ( dev-perl/Geo-IP ) ipv6? ( dev-perl/Net-IP dev-perl/Net-DNS )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~flameeyes/awstats/awstats-7.1_p20121017.tar.gz
+SRC_URI=https://dev.gentoo.org/~flameeyes/awstats/awstats-7.1_p20121017.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=402549d298d42e754579a77c82a55b18
+_md5_=3adb0b0dc50d94798d1d873063e45498

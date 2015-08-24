@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
 RDEPEND=net-print/cups net-misc/openssh sys-apps/shadow
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~radhermit/distfiles/sshlpr-1.tar.gz
-_md5_=e159f6c1cf66028f4d3966f559bd6979
+SRC_URI=https://dev.gentoo.org/~radhermit/distfiles/sshlpr-1.tar.gz
+_md5_=c90561b6af06b1140b5f26aa9766579b

@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst
 DEPEND=app-arch/xz-utils
 DESCRIPTION=Utility to change the OpenCL implementation being used
 EAPI=4
-HOMEPAGE=http://www.gentoo.org/
+HOMEPAGE=https://www.gentoo.org/
 KEYWORDS=amd64 ~ppc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.4
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~xarthisius/distfiles//opencl.h.1.1.xz http://dev.gentoo.org/~xarthisius/distfiles//cl_platform.h.1.1.xz http://dev.gentoo.org/~xarthisius/distfiles//cl.h.1.1.xz http://dev.gentoo.org/~xarthisius/distfiles//cl_ext.h.1.1.xz http://dev.gentoo.org/~xarthisius/distfiles//cl_gl.h.1.1.xz http://dev.gentoo.org/~xarthisius/distfiles//cl_gl_ext.h.1.1.xz http://dev.gentoo.org/~xarthisius/distfiles//cl.hpp.1.1.xz http://dev.gentoo.org/~xarthisius/distfiles//eselect-opencl-1.1.0-r1.tar.xz
+SRC_URI=https://dev.gentoo.org/~xarthisius/distfiles//opencl.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_platform.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_ext.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_gl.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl_gl_ext.h.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//cl.hpp.1.1.xz https://dev.gentoo.org/~xarthisius/distfiles//eselect-opencl-1.1.0-r1.tar.xz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=6d26ebfaa249b90fcd03cb2721abe35e
+_md5_=ee9ddb30976f818fa41f8ddd1db2bd2f

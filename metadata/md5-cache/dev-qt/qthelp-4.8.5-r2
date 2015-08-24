@@ -8,6 +8,6 @@ KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-m
 LICENSE=|| ( LGPL-2.1 GPL-3 )
 RDEPEND=~dev-qt/qtcore-4.8.5[aqua=,debug=] ~dev-qt/qtgui-4.8.5[aqua=,debug=] ~dev-qt/qtsql-4.8.5[aqua=,debug=,sqlite] compat? ( ~dev-qt/qtdbus-4.8.5[aqua=,debug=] sys-libs/zlib )
 SLOT=4
-SRC_URI=http://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz compat? ( http://download.qt.io/archive/qt/4.6/qt-assistant-qassistantclient-library-compat-src-4.6.3.tar.gz http://dev.gentoo.org/~pesa/distfiles/qt-assistant-compat-headers-4.7.tar.gz )
+SRC_URI=http://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz compat? ( http://download.qt.io/archive/qt/4.6/qt-assistant-qassistantclient-library-compat-src-4.6.3.tar.gz https://dev.gentoo.org/~pesa/distfiles/qt-assistant-compat-headers-4.7.tar.gz )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qt4-build	96f23bf58d60c4c9cc56ffc513510a6d	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=ccc10b94a37907d5f84ba6cfff139d16
+_md5_=05928374fc10dc7f9d04442055799c34

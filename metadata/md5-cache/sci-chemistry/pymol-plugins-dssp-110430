@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD pymol
 RDEPEND=sci-chemistry/dssp sci-biology/stride sci-chemistry/pymol =dev-lang/python-2*
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/pymol-plugins-dssp-110430.py.xz
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/pymol-plugins-dssp-110430.py.xz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=2a8080104a43cb97b4c26d241ddbc543
+_md5_=73dbbf0b62319c7cb6c561a86ca320a1

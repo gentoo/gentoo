@@ -7,5 +7,5 @@ KEYWORDS=amd64 ~hppa x86
 LICENSE=BSD
 RDEPEND=dev-lang/php:*[phar,xml]
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~olemarkus/phpunit/phpunit-3.7.20.phar
-_md5_=f61b00ad8d299627c05ecb6881f89ec2
+SRC_URI=https://dev.gentoo.org/~olemarkus/phpunit/phpunit-3.7.20.phar
+_md5_=f0341ec39c769fc26544a9237931c9e3

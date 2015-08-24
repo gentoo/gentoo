@@ -8,6 +8,6 @@ KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libdiscid-0.2.2 dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/N/NJ/NJH/MusicBrainz-DiscID-0.03.tar.gz http://dev.gentoo.org/~tove/distfiles/dev-perl/MusicBrainz-DiscID/MusicBrainz-DiscID-0.30.0-patch.tar.bz2
+SRC_URI=mirror://cpan/authors/id/N/NJ/NJH/MusicBrainz-DiscID-0.03.tar.gz https://dev.gentoo.org/~tove/distfiles/dev-perl/MusicBrainz-DiscID/MusicBrainz-DiscID-0.30.0-patch.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=9940bedf4b32f22adccc799932fc91b9
+_md5_=833f9e7aeab384b43f21ffd31bcf1b65

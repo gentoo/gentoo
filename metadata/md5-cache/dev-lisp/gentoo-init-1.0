@@ -1,9 +1,9 @@
 DEFINED_PHASES=install
 DESCRIPTION=Simple ASDF2 configuration for Gentoo Common Lisp ports
 EAPI=4
-HOMEPAGE=http://www.gentoo.org/proj/en/lisp/common-lisp/guide.xml
+HOMEPAGE=https://www.gentoo.org/proj/en/lisp/common-lisp/guide.xml
 KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lisp/asdf-2.0
 SLOT=0
-_md5_=ea54107afe5dfc0a51c48ce4580c4f99
+_md5_=c3c843061d32e4fedb2f0d896d23652b

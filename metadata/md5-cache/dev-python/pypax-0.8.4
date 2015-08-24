@@ -2,13 +2,13 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_pypy(-)] ptpax? ( dev-libs/elfutils ) xtpax? ( sys-apps/attr ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_pypy(-)]
 DESCRIPTION=Python module to get or set either PT_PAX and/or XATTR_PAX flags
 EAPI=5
-HOMEPAGE=http://dev.gentoo.org/~blueness/elfix/ http://www.gentoo.org/proj/en/hardened/pax-quickstart.xml
+HOMEPAGE=https://dev.gentoo.org/~blueness/elfix/ https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml
 IUSE=+ptpax +xtpax python_targets_python2_7 python_targets_python3_3 python_targets_pypy
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-3
 RDEPEND=ptpax? ( dev-libs/elfutils ) xtpax? ( sys-apps/attr ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_pypy(-)]
 REQUIRED_USE=|| ( ptpax xtpax ) || ( python_targets_python2_7 python_targets_python3_3 python_targets_pypy )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~blueness/elfix/elfix-0.8.4.tar.gz
+SRC_URI=https://dev.gentoo.org/~blueness/elfix/elfix-0.8.4.tar.gz
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=56b063312659f6714dc165e9a42db2b5
+_md5_=e71877733a3ee724007fbb1ad1ea0e6c

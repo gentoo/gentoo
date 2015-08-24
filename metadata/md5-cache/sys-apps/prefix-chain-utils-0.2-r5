@@ -1,10 +1,10 @@
 DEFINED_PHASES=install
 DESCRIPTION=Chained EPREFIX utilities and wrappers
 EAPI=0
-HOMEPAGE=http://dev.gentoo.org/~mduft
+HOMEPAGE=https://dev.gentoo.org/~mduft
 KEYWORDS=~ppc-aix ~ia64-hpux ~x86-interix ~x86-linux ~sparc-solaris ~x86-solaris ~x86-winnt
 LICENSE=GPL-3
 RDEPEND=sys-devel/gcc-config
 SLOT=0
 _eclasses_=prefix	e7f2b9c6e57342e5d25eac22fce23062
-_md5_=c43475ab409b3d16a1eab721cb0f6ccb
+_md5_=b486318589a9a166d78cb6d5f55025f0

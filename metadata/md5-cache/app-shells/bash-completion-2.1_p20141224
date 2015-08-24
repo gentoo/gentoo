@@ -8,6 +8,6 @@ LICENSE=GPL-2
 PDEPEND=>=app-shells/gentoo-bashcomp-20140911
 RDEPEND=>=app-shells/bash-4.3_p30-r1 sys-apps/miscfiles !app-eselect/eselect-bashcomp
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~mgorny/dist/bash-completion-2.1_p20141224.tar.xz http://dev.gentoo.org/~mgorny/dist/bashcomp-2.0.1.tar.bz2
+SRC_URI=https://dev.gentoo.org/~mgorny/dist/bash-completion-2.1_p20141224.tar.xz https://dev.gentoo.org/~mgorny/dist/bashcomp-2.0.1.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=202f89c461ca385067c3545638a22123
+_md5_=15bdb45bc2a6e6227d55032230775722

@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1 CDDL
 RDEPEND=~app-i18n/sunpinyin-2.0.4_pre20130108:= x11-libs/gtk+:2 x11-libs/libX11
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/sunpinyin-2.0.4_pre20130108.tar.xz
+SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-2.0.4_pre20130108.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e897a11a62bd57fe6395fb9e4af52cb5
+_md5_=14549cd65159066c7a1e8057903482b1

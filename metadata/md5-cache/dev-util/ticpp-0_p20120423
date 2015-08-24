@@ -7,5 +7,5 @@ IUSE=debug doc
 KEYWORDS=amd64 ~ppc x86
 LICENSE=MIT
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ago/distfiles/ticpp-0_p20120423.tar.bz2
-_md5_=c59dbbcf6be0eaa3f79b344481237848
+SRC_URI=https://dev.gentoo.org/~ago/distfiles/ticpp-0_p20120423.tar.bz2
+_md5_=e18e6b35c3037f195b0cad1a60411380

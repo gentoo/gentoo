@@ -8,6 +8,6 @@ KEYWORDS=amd64 sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/lyskom-elisp-client-0.48_p20131231.tar.xz
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/lyskom-elisp-client-0.48_p20131231.tar.xz
 _eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=57d19287e43ce5baed237709d8b32f35
+_md5_=7ab814c6d79735013cf1c1443b0902cd

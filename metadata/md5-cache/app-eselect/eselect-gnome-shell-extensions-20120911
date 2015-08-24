@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst
 DEPEND=app-admin/eselect >=dev-libs/glib-2.26:2 gnome-base/gsettings-desktop-schemas gnome-base/gnome-shell app-arch/xz-utils
 DESCRIPTION=Manages system defaults for GNOME Shell extensions
 EAPI=4
-HOMEPAGE=http://www.gentoo.org
+HOMEPAGE=https://www.gentoo.org
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=app-admin/eselect >=dev-libs/glib-2.26:2 gnome-base/gsettings-desktop-schemas gnome-base/gnome-shell dev-lang/perl dev-perl/JSON
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~tetromino/distfiles/eselect-gnome-shell-extensions/eselect-gnome-shell-extensions-20120911.tar.xz
-_md5_=89f45dc0a59f53b63ac420175057eff4
+SRC_URI=https://dev.gentoo.org/~tetromino/distfiles/eselect-gnome-shell-extensions/eselect-gnome-shell-extensions-20120911.tar.xz
+_md5_=55d90022faeea08723ae29a333d4c456

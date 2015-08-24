@@ -7,6 +7,6 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~sparc-fbsd ~x
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5
 SLOT=0
-SRC_URI=http://www.gentoo.org/~fuzzyray/distfiles/epm-1.40.tar.gz
+SRC_URI=https://www.gentoo.org/~fuzzyray/distfiles/epm-1.40.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=fe399b6b1dc653906de8c6d443914780
+_md5_=1aab970dd0bd906d2c4a00f31057bdae

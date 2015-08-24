@@ -8,5 +8,5 @@ LICENSE=MIT
 PDEPEND=media-libs/freetype:2[infinality]
 RDEPEND=app-eselect/eselect-fontconfig app-eselect/eselect-infinality app-eselect/eselect-lcdfilter >=x11-libs/libXft-2.3.0 nyx? ( media-fonts/croscorefonts )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/fontconfig-infinality-20120619.tar.xz nyx? ( http://dev.gentoo.org/~yngwin/distfiles/fontconfig-nyx-1.tar.xz )
-_md5_=911fe9f3a3c6c6a00ae31f047c2decf3
+SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/fontconfig-infinality-20120619.tar.xz nyx? ( https://dev.gentoo.org/~yngwin/distfiles/fontconfig-nyx-1.tar.xz )
+_md5_=d90880a7f4b389cb3d766c16d418ec4e

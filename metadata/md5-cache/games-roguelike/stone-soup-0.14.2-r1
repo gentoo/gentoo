@@ -9,6 +9,6 @@ LICENSE=GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT
 RDEPEND=dev-db/sqlite:3 luajit? ( >=dev-lang/luajit-2.0.0 ) !luajit? ( >=dev-lang/lua-5.1.0:0[deprecated] ) sys-libs/zlib !ncurses? ( !tiles? ( sys-libs/ncurses ) ) ncurses? ( sys-libs/ncurses ) tiles? ( media-fonts/dejavu media-libs/freetype:2 media-libs/libpng:0 media-libs/libsdl[X,opengl,video] media-libs/sdl-image[png] virtual/glu virtual/opengl ) games-misc/games-envd
 RESTRICT=test
 SLOT=0
-SRC_URI=mirror://sourceforge/crawl-ref/Stone%20Soup/0.14.2/stone_soup-0.14.2-nodeps.tar.xz http://dev.gentoo.org/~hasufell/distfiles/stone-soup.png http://dev.gentoo.org/~hasufell/distfiles/stone-soup.svg
+SRC_URI=mirror://sourceforge/crawl-ref/Stone%20Soup/0.14.2/stone_soup-0.14.2-nodeps.tar.xz https://dev.gentoo.org/~hasufell/distfiles/stone-soup.png https://dev.gentoo.org/~hasufell/distfiles/stone-soup.svg
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=b7f13bfeb8191b4fc262a8a83d688c3c
+_md5_=80a8295d17764ddf4f791a7b5f321d09

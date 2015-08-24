@@ -7,6 +7,6 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=media-video/vdr-1.7.36 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~hd_brummy/distfiles/vdr-dvbsddevice-2.0.0.tar.gz
+SRC_URI=https://dev.gentoo.org/~hd_brummy/distfiles/vdr-dvbsddevice-2.0.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	vdr-plugin-2	10cd413f0e936b01e977002c4c9409c9
-_md5_=980fe1ed000ad12c0417b2a3f4a666f1
+_md5_=4441a01df421f9b97b59a816ea7c3a41

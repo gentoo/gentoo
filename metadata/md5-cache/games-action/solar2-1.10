@@ -9,6 +9,6 @@ LICENSE=all-rights-reserved
 RDEPEND=virtual/opengl amd64? ( >=media-libs/flac-1.2.1-r5[abi_x86_32(-)] >=media-libs/libsdl-1.2.15-r4[X,sound,video,joystick,abi_x86_32(-)] >=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)] >=virtual/opengl-7.0-r1[abi_x86_32(-)] !bundled-libs? ( >=media-libs/libmad-0.15.1b-r8[abi_x86_32(-)] >=media-libs/openal-1.15.1[abi_x86_32(-)] >=media-libs/sdl-mixer-1.2.12-r4[flac,mikmod,mad,mp3,vorbis,abi_x86_32(-)] >=media-libs/libmikmod-3.2.0[abi_x86_32(-)] ) ) x86? ( media-libs/flac media-libs/libsdl[X,sound,video,joystick] media-libs/libvorbis !bundled-libs? ( dev-lang/mono media-libs/libmad media-libs/libmikmod media-libs/openal media-libs/sdl-mixer[flac,mikmod,mad,mp3,vorbis] ) ) games-misc/games-envd
 RESTRICT=bindist fetch splitdebug
 SLOT=0
-SRC_URI=solar2-linux-1.10.tar.gz http://dev.gentoo.org/~hasufell/distfiles/solar2.png
+SRC_URI=solar2-linux-1.10.tar.gz https://dev.gentoo.org/~hasufell/distfiles/solar2.png
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=6aa61ce0b4604b633e03b5ffd9a3a461
+_md5_=d4ca650de5af47d2b109484ef7861fef

@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=MIT
 RDEPEND==dev-libs/libvterm-neovim-0.0_pre20150309 dev-libs/glib:2 x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/pango
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~tranquility/distfiles/pangoterm-0.0_pre20150323.tar.gz
-_md5_=384882a1cc6590969d7a3eaca5090545
+SRC_URI=https://dev.gentoo.org/~tranquility/distfiles/pangoterm-0.0_pre20150323.tar.gz
+_md5_=cc8ebbd067f6860156b98c1dfe6d5019

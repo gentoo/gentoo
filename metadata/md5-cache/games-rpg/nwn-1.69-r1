@@ -8,6 +8,6 @@ LICENSE=NWN-EULA
 RDEPEND=|| ( >=games-rpg/nwn-data-1.29-r3[sou?,hou?,linguas_en] >=games-rpg/nwn-data-1.29-r3[sou?,hou?,-linguas_fr,-linguas_de,-linguas_es,-linguas_it] ) !<games-rpg/nwmouse-0.1-r1 x11-libs/libXext[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] >=media-libs/libsdl-1.2.15-r5[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] games-misc/games-envd
 RESTRICT=mirror strip
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~calchan/distfiles/nwn-libs-1.tar.bz2 !sou? ( !hou? ( http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_orig.tar.gz ) ) sou? ( !hou? ( http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp1.tar.gz ) ) hou? ( http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp2.tar.gz )
+SRC_URI=https://dev.gentoo.org/~calchan/distfiles/nwn-libs-1.tar.bz2 !sou? ( !hou? ( http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_orig.tar.gz ) ) sou? ( !hou? ( http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp1.tar.gz ) ) hou? ( http://files.bioware.com/neverwinternights/updates/linux/169/English_linuxclient169_xp2.tar.gz )
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=79db28c59c7e83fc16acc4809d26646e
+_md5_=f5260cf17c8ff6e89a39752e41a3964e

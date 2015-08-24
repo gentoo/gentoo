@@ -9,6 +9,6 @@ LICENSE=ALMWorks-1.2
 RDEPEND=>=virtual/jre-1.5 dev-java/picocontainer:1 dev-java/javolution:4 >=dev-java/commons-codec-1.3 >=dev-java/jgoodies-forms-1.0.7 >=dev-java/commons-logging-1.0.4 >=dev-java/xmlrpc-2.0.1 dev-java/xerces:2 dev-java/itext:0 dev-java/jazzy:0 >=dev-java/java-config-2.2.0
 RESTRICT=mirror
 SLOT=0
-SRC_URI=http://d1.almworks.com/.files/deskzilla-1_7_1_without_jre.tar.gz http://dev.gentoo.org/~ercpe/distfiles/dev-util/deskzilla/deskzilla_gentoo.license
+SRC_URI=http://d1.almworks.com/.files/deskzilla-1_7_1_without_jre.tar.gz https://dev.gentoo.org/~ercpe/distfiles/dev-util/deskzilla/deskzilla_gentoo.license
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=48aedef0146619a2be6a6a5db46b3e57
+_md5_=8c25aa8ad4aa68f320af18772b1bf0bd

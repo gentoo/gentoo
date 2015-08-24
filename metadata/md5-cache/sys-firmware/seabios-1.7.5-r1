@@ -10,4 +10,4 @@ REQUIRED_USE=ppc? ( binary ) ppc64? ( binary )
 SLOT=0
 SRC_URI=!binary? ( http://code.coreboot.org/p/seabios/downloads/get/seabios-1.7.5.tar.gz ) binary? ( http://code.coreboot.org/p/seabios/downloads/get/bios.bin-1.7.5.gz seavgabios? ( mirror://debian/pool/main/s/seabios/seabios_1.7.5-1_all.deb ) )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8c9917e0812dcbe44c6789df187f933d
+_md5_=4c7a67f3442a029633aa48b0dc2e9cbc

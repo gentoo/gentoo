@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=emboss? ( >=sci-biology/emboss-5.0.0 )
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/rebase-1508.tar.xz
-_md5_=8c00e383f319b1e5ad110ac0fe08bdb9
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/rebase-1508.tar.xz
+_md5_=b292b5c8f0f32c1b3ee2aee4d4121c8f

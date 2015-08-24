@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst prepare pretend
 DESCRIPTION=SELinux policy for core modules
 EAPI=5
-HOMEPAGE=http://www.gentoo.org/proj/en/hardened/selinux/
+HOMEPAGE=https://www.gentoo.org/proj/en/hardened/selinux/
 IUSE=+unconfined
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 RDEPEND==sec-policy/selinux-base-2.20141203-r7
 SLOT=0
-SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20141203.tar.bz2 http://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20141203-r7.tar.bz2
+SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20141203.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20141203-r7.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f624d794682524f13ef9dee1fe35ab5f
+_md5_=6deb60d3f1956902fbdd0f9d911dd2f7

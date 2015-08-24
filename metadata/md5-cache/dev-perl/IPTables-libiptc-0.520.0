@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=<net-firewall/iptables-1.4.18:= dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/H/HA/HAWK/IPTables-libiptc-0.52.tar.gz http://dev.gentoo.org/~pinkbyte/distfiles/IPTables-libiptc/IPTables-libiptc-0.520.0-support-for-iptables-1.4.12.patch.bz2 http://dev.gentoo.org/~pinkbyte/distfiles/IPTables-libiptc/IPTables-libiptc-0.520.0-support-for-iptables-1.4.16.2.patch.bz2
+SRC_URI=mirror://cpan/authors/id/H/HA/HAWK/IPTables-libiptc-0.52.tar.gz https://dev.gentoo.org/~pinkbyte/distfiles/IPTables-libiptc/IPTables-libiptc-0.520.0-support-for-iptables-1.4.12.patch.bz2 https://dev.gentoo.org/~pinkbyte/distfiles/IPTables-libiptc/IPTables-libiptc-0.520.0-support-for-iptables-1.4.16.2.patch.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=6d0cf5b4d557d6e6502213af93da3e78
+_md5_=aa72aa56f5af7ba60dda2990b854a060

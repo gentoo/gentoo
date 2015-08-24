@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~serkan/distfiles/bytecode-20081007.tar.bz2
+SRC_URI=https://dev.gentoo.org/~serkan/distfiles/bytecode-20081007.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=8b5a8dd1895021ce96a9c50ba1cbe639
+_md5_=ea639834844f91a272e44e2a11b16e9e

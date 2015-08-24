@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=Apache-1.1
 RDEPEND=mod_proxy? ( www-servers/apache[apache2_modules_proxy_connect] ) =www-servers/apache-2.4*
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~pacho/maintainer-needed/mod_extract_forwarded-2.0.3_pre2015052015.tar.xz
+SRC_URI=https://dev.gentoo.org/~pacho/maintainer-needed/mod_extract_forwarded-2.0.3_pre2015052015.tar.xz
 _eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=6678bafdd3c990a96bbb1759b5b096e0
+_md5_=e1c15a276de6f4278d17a5f2bab40404

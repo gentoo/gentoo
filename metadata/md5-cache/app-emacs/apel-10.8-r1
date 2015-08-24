@@ -7,6 +7,6 @@ KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~
 LICENSE=GPL-2
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=ftp://ftp.jpl.org/pub/elisp/apel/apel-10.8.tar.gz http://dev.gentoo.org/~gienah/2big4tree/app-emacs/apel/apel-10.8-030_Use-new-style-backquotes.patch.gz
+SRC_URI=ftp://ftp.jpl.org/pub/elisp/apel/apel-10.8.tar.gz https://dev.gentoo.org/~gienah/2big4tree/app-emacs/apel/apel-10.8-030_Use-new-style-backquotes.patch.gz
 _eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=ff4ea1b2cae657507b0a01a9b42a5050
+_md5_=fad8eca4e3c9d918515627b3c221e904

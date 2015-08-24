@@ -7,5 +7,5 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=>=gnome-base/gnome-shell-3.4 media-fonts/ubuntu-font-family !<=x11-themes/zukitwo-2011.12.29
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~jlec/distfiles/zukitwo-2013.12.10.tar.xz
-_md5_=0fb7584b3d647b4dbaf0e235ae3c8c32
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/zukitwo-2013.12.10.tar.xz
+_md5_=8223869e190ff1f5208c88e08fdaa08c

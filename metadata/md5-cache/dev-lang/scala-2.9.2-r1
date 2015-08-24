@@ -9,6 +9,6 @@ LICENSE=BSD
 PDEPEND=emacs? ( app-emacs/scala-mode )
 RDEPEND=>=virtual/jre-1.6 app-eselect/eselect-scala !dev-lang/scala-bin >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=2.9/2.9.2
-SRC_URI=!binary? ( http://www.scala-lang.org/downloads/distrib/files/scala-sources-2.9.2.tgz -> scala-2.9.2.tar.gz ) binary? ( http://dev.gentoo.org/~ali_bush/distfiles/scala-2.9.2-gentoo-binary.tar.bz2 )
+SRC_URI=!binary? ( http://www.scala-lang.org/downloads/distrib/files/scala-sources-2.9.2.tgz -> scala-2.9.2.tar.gz ) binary? ( https://dev.gentoo.org/~ali_bush/distfiles/scala-2.9.2-gentoo-binary.tar.bz2 )
 _eclasses_=check-reqs	b27570870865543b1c55261abb19533a	eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3bfa1469ec67c208b30f3813ca94bbac
+_md5_=e23d62b59125a4fd6ae9ed2a78ce6182

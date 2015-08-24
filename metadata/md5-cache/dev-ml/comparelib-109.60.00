@@ -8,6 +8,6 @@ KEYWORDS=~amd64
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-ml/type-conv-109.20.00:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/109.60.00
-SRC_URI=http://ocaml.janestreet.com/ocaml-core/109.60.00/individual/comparelib-109.60.00.tar.gz http://dev.gentoo.org/~aballier/distfiles/comparelib-109.60.00.tar.gz
+SRC_URI=http://ocaml.janestreet.com/ocaml-core/109.60.00/individual/comparelib-109.60.00.tar.gz https://dev.gentoo.org/~aballier/distfiles/comparelib-109.60.00.tar.gz
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	1f8aac15a40bfb39dd98018626248fe1	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f4bc425429831fe9e7bf1e6a4d9ed89f
+_md5_=ff3b6f0972eabf5c8f03aa49f552b685
