@@ -6,5 +6,6 @@
   </maintainer>
   <upstream>
     <remote-id type="launchpad">pypolicyd-spf</remote-id>
+    <remote-id type="pypi">pypolicyd-spf</remote-id>
   </upstream>
 </pkgmetadata>
