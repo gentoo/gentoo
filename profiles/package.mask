@@ -464,7 +464,7 @@ app-admin/hwreport
 
 # Samuli Suominen <ssuominen@gentoo.org> (23 Aug 2014)
 # Some compile problems with media-libs/openexr >= 2.2.0
-# See http://bugs.gentoo.org/520240 for more information
+# See https://bugs.gentoo.org/520240 for more information
 >=media-libs/ilmbase-2.2.0
 >=media-libs/openexr-2.2.0
 >=media-gfx/openexr_viewers-2.2.0
@@ -700,7 +700,7 @@ net-irc/xchat-otr
 # package and have no alternative can unmask at their own risk. See bug #473830.
 #
 # This is continued by Oracle Corporation, which has acquired Sun Microsystems
-# in early 2010; as per http://en.wikipedia.org/wiki/Sun_acquisition_by_Oracle
+# in early 2010; as per https://en.wikipedia.gentoo.org/wiki/Sun_acquisition_by_Oracle
 #
 # Users are suggested to upgrade to one of the newer Oracle packages like
 # dev-java/oracle-jdk-bin or dev-java/oracle-jre-bin or choose another
@@ -813,7 +813,7 @@ kde-misc/kgtk
 
 # Ryan Hill <dirtyepic@gentoo.org> (30 Mar 2011)
 # Masked indefinitely (until 0.40 is released).
-# http://bugs.gentoo.org/354423
+# https://bugs.gentoo.org/354423
 >=app-pda/libopensync-0.30
 >=app-pda/libopensync-plugin-file-0.30
 >=app-pda/libopensync-plugin-irmc-0.30
@@ -825,7 +825,7 @@ app-pda/osynctool
 
 # Ryan Hill <dirtyepic@gentoo.org> (30 Mar 2011)
 # Work in progress
-# http://bugs.gentoo.org/show_bug.cgi?id=354423
+# https://bugs.gentoo.org/show_bug.cgi?id=354423
 app-pda/libopensync-plugin-gnokii
 app-pda/libopensync-plugin-gpe
 app-pda/multisync-gui
@@ -949,7 +949,7 @@ games-util/hearse
 # The following packages contain a remotely-exploitable
 # security vulnerability and have been hard masked accordingly.
 #
-# Please see http://bugs.gentoo.org/show_bug.cgi?id=44351 for more info
+# Please see https://bugs.gentoo.org/show_bug.cgi?id=44351 for more info
 #
 games-fps/unreal-tournament-goty
 games-fps/unreal-tournament-strikeforce

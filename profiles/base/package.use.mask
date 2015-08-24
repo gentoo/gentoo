@@ -396,7 +396,7 @@ sys-apps/hwloc cuda gl opencl
 # Samuli Suominen <ssuominen@gentoo.org> (07 Aug 2013)
 # There is no support for recent app-pda/libimobiledevice wrt bug #471920
 # Upstream removed entire support in future release:
-# http://code.google.com/p/clementine-player/source/detail?r=3d434f1c881890dd77fea6d0e3de3afc86971196
+# https://code.google.com/p/clementine-player/source/detail?r=3d434f1c881890dd77fea6d0e3de3afc86971196
 # Remove this entry once <=media-sound/clementine-1.1.1 has left the building
 media-sound/clementine ios
 <media-sound/clementine-1.2.0 ipod
@@ -492,7 +492,7 @@ gnome-extra/zeitgeist-datasources chromium tomboy
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
 # Incompatible with evolution-data-server-3.6, blocks upgrade to gnome-3.6
-# See bug #436460 and http://git.gnome.org/browse/tracker/log/?h=evo-new-api
+# See bug #436460 and https://git.gnome.org/browse/tracker/log/?h=evo-new-api
 app-misc/tracker eds
 
 # Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
@@ -652,7 +652,7 @@ gnome-base/gvfs bluray
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (12 Oct 2011)
 # Upstream support before 27.x not ready:
-# http://code.google.com/p/chromium/issues/detail?id=32757
+# https://code.google.com/p/chromium/issues/detail?id=32757
 <www-client/chromium-27.0.1448.0 pulseaudio
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
