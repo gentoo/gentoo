@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -23,7 +24,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/testtools-0.9.22[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	test? ( dev-python/mock[$(python_gen_usedep python2_7 pypy)] )"
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 #DISTUTILS_IN_SOURCE_BUILD=1
 
 python_test() {

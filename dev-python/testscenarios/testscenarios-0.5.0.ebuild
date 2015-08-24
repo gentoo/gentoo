@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -17,8 +18,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linu
 
 RDEPEND="dev-python/testtools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		>=dev-python/pbr-0.11[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# Remove a faulty file from tests, missing a required attribute

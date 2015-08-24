@@ -3,12 +3,14 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="Basic functions for handling mime-types in python"
-HOMEPAGE="http://code.google.com/p/mimeparse
+HOMEPAGE="
+	http://code.google.com/p/mimeparse
 	https://github.com/dbtsai/python-mimeparse"
 MY_PN="python-${PN}"
 MY_P="${MY_PN}-${PV}"
@@ -28,8 +30,10 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 
-	if [[ ${EPYTHON} == pypy* ]]; then
+	if [[ ${EPYTHON} == pypy ]]; then
 		local pyver=2.7
+	elif [[ ${EPYTHON} == pypy3 ]]; then
+		local pyver=3.2
 	else
 		local pyver=${EPYTHON#python}
 	fi
