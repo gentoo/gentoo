@@ -10,7 +10,7 @@ VALA_USE_DEPEND=vapigen
 inherit xfconf vala
 
 DESCRIPTION="Vala bindings for the Xfce desktop environment"
-HOMEPAGE="http://wiki.xfce.org/vala-bindings"
+HOMEPAGE="https://wiki.xfce.org/vala-bindings"
 SRC_URI="mirror://xfce/src/bindings/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
