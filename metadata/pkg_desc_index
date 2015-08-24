@@ -2231,7 +2231,7 @@ app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.78.0-r1: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
-app-text/dos2unix 6.0.6 7.2.2 7.2.3: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 6.0.6 7.2.3 7.3: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0: Arabic dictionary based on the DICT protocol
 app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
@@ -6670,6 +6670,7 @@ dev-python/3to2 1.0 1.1.1: Refactors valid 3.x syntax into valid 2.x syntax, if 
 dev-python/APScheduler 3.0.1: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 1.3-r1 2.0: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.3.2: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
 dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless they test everything
 dev-python/Djblets 0.7.31: A collection of useful extensions for Django
@@ -6836,7 +6837,7 @@ dev-python/ctypesgen 0_p72 0_p72-r1: Python wrapper generator for ctypes
 dev-python/curtsies 0.1.18 0.2.3: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.1.6-r2: Python package for convex optimization
 dev-python/cx_Freeze 4.3.1-r2 4.3.2 4.3.3: Create standalone executables from Python scripts
-dev-python/cython 0.22 0.22.1 0.23: A Python to C compiler
+dev-python/cython 0.22 0.22.1 0.23 0.23.1: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
@@ -6854,6 +6855,7 @@ dev-python/diff-match-patch 20121119: Diff, match and patch algorithms for plain
 dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/discogs-client 2.0.2 2.2.0: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
+dev-python/distlib 0.2.1: Distribution utilities
 dev-python/django 1.4.22 1.5.12 1.6.11 1.7.10 1.8.4 9999: High-level Python web framework
 dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 0.6: A helper class for handling configuration defaults of packaged apps gracefully
@@ -7172,7 +7174,7 @@ dev-python/mimerender 0.5.4 0.5.5: RESTful HTTP Content Negotiation for Flask, B
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 1.8: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
-dev-python/mistune 0.5.1 0.6-r1 0.7: The fastest markdown parser in pure Python
+dev-python/mistune 0.5.1 0.6-r1 0.7 0.7.1: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.11.1-r1 0.12.2 0.14.0: Project documentation with Markdown.
 dev-python/mkpythonproj 1.9: Creates the framework for a new Python project or script
 dev-python/mock 1.0.1-r1 1.0.1-r2 1.2.0 1.3.0-r1: Rolling backport of unittest.mock for all Pythons
@@ -7260,6 +7262,7 @@ dev-python/oslo-vmware 0.7.0 0.11.1 0.11.2: Oslo VMware library for OpenStack pr
 dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0: Oslo test framework
 dev-python/osprofiler 0.3.0: OpenStack Profiler Library
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
+dev-python/packaging 15.3: Core utilities for Python packages
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.10.1 1.12.2 1.13.0 1.15.1-r1 1.15.2: SSH2 protocol library
@@ -7292,7 +7295,7 @@ dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/pika 0.9.14: Pure-Python implementation of the AMQP
 dev-python/pillow 2.8.1 2.8.2 2.9.0: Python Imaging Library (fork)
-dev-python/pip 1.5.6 6.0.8 6.1.1 7.0.0 7.0.1 7.0.3 7.1.0: Installs python packages -- replacement for easy_install
+dev-python/pip 1.5.6 6.0.8 6.1.1 7.0.0 7.0.1 7.0.3 7.1.0 7.1.2: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
 dev-python/pkginfo 1.0 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -7311,6 +7314,7 @@ dev-python/pretend 1.0.7 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 14.05.7 15.5.7 15.6.3: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
+dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1: Text progressbar library for python
 dev-python/promise 0.2.2-r1: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 0.45 0.46 0.47: Building powerful interactive command lines in Python
@@ -7658,7 +7662,7 @@ dev-python/requests-mock 0.5.1 0.6.0: Mock out responses from the requests packa
 dev-python/requests-oauthlib 0.4.1: This project provides first-class OAuth library support for Requests
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
 dev-python/retry-decorator 1.0.0: Decorator for retrying when exceptions occur
-dev-python/retrying 1.3.2: Retrying is a general-purpose retrying library.
+dev-python/retrying 1.3.2 1.3.3: Retrying is a general-purpose retrying library.
 dev-python/reverend 0.4-r1: Reverend - Simple Bayesian classifier
 dev-python/rfc3986 0.2.0: Validating URI References per RFC 3986
 dev-python/rlcompleter2 0.98 0.98-r1: Python command line completion
@@ -7691,7 +7695,7 @@ dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical t
 dev-python/sclapp 0.5.3-r1: Framework for writing simple command-line applications
 dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
 dev-python/scrapy 0.25.1 1.0.0 1.0.1: A high-level Python Screen Scraping framework
-dev-python/scripttest 1.2-r1: A very small text templating language
+dev-python/scripttest 1.2-r1 1.3: A very small text templating language
 dev-python/seaborn 0.5.1 0.6.0: Statistical data visualization
 dev-python/selenium 2.42.1 2.45.0 2.46.0: Python language binding for Selenium Remote Control (version 1.0 and 2.0)
 dev-python/semantic_version 2.4.1: This small python library provides a few tools to handle SemVer in Python.
@@ -7700,7 +7704,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8: Allow customization of the process title
-dev-python/setuptools 2.2 7.0 8.0.1 8.2.1 9.1 12.0.1 12.0.3 12.0.5 15.0 15.2 16.0 17.0 17.1.1 18.0.1 18.1 18.2 9999: a collection of extensions to Distutils
+dev-python/setuptools 2.2 7.0 8.0.1 8.2.1 9.1 12.0.1 12.0.3 12.0.5 15.0 15.2 16.0 17.0 17.1.1 18.0.1 18.1 18.2 18.2-r1 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.5.4 1.5.5 1.7.0: package to manage versions by scm tags via setuptools
@@ -7901,7 +7905,7 @@ dev-python/wtforms 1.0.4 2.0.1 2.0.2: Flexible forms validation and rendering li
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xcffib 0.1.10 0.2.0 0.2.1 0.2.5 0.3.2 0.3.4: A drop in replacement for xpyb, an XCB python binding
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
-dev-python/xlrd 0.9.3 0.9.3-r1: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
+dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
 dev-python/xlsxwriter 0.7.3: Python module for creating Excel XLSX files
 dev-python/xlutils 1.5.2-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
@@ -16356,7 +16360,7 @@ sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.106 3.4.107 3.4.9999 3.10.82 3.10.83 3.10.85 3.10.86 3.10.87 3.12.44 3.12.9999 3.14.48 3.14.49 3.14.50 3.14.51 3.18.16 3.18.18 3.18.19 3.18.20 4.0.4 4.0.5 4.0.6 4.0.7 4.0.8 4.0.9 4.1.0 4.1.0-r1 4.1.1-r1 4.1.2 4.1.3 4.1.4 4.1.5 4.1.6: Full sources including the Gentoo patchset for the 4.1 kernel tree
-sys-kernel/git-sources 4.2_rc2 4.2_rc3 4.2_rc4 4.2_rc5 4.2_rc6 4.2_rc7: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 4.2_rc2 4.2_rc3 4.2_rc4 4.2_rc5 4.2_rc6 4.2_rc7 4.2_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 3.2.69-r11 3.2.69-r13 3.2.70 3.2.71 3.14.48 3.14.49 3.14.50 3.14.50-r1 3.14.51 4.0.8 4.1.6: Hardened kernel sources (kernel series 4.1)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1: Kernel config generator
