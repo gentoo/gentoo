@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>ada</herd>
 	<longdescription>The booch components provide a set of reusable components used in an efficient and appropriate manner, with the overall goal of balancing usability and extensibility. The BCs cover several issues: Time and Space semantics, Storage Management policies, Exception and Idioms for iteration.</longdescription>
