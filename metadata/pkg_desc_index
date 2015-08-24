@@ -8295,7 +8295,7 @@ dev-ruby/puppetdb-termini 3.0.1-r2: Library needed to connect puppet to puppetdb
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.1 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.9 1.4.11 1.4.12: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.4.6 1.4.6-r1 1.5.4 1.5.4-r1 1.6.2 1.6.4: A modular Ruby webserver interface
+dev-ruby/rack 1.4.6 1.4.6-r1 1.4.7 1.5.4 1.5.4-r1 1.5.5 1.6.2 1.6.4: A modular Ruby webserver interface
 dev-ruby/rack-attack 4.2.0 4.3.0: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.2-r1: A drop-in component to enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
@@ -8496,7 +8496,7 @@ dev-ruby/twitter 5.13.0 5.14.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.12.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 0.7.1 0.7.2 0.7.3: Runs HTTP requests in parallel while cleanly encapsulating handling logic
-dev-ruby/tzinfo 0.3.43 0.3.43-r1 1.2.2: Daylight-savings aware timezone library
+dev-ruby/tzinfo 0.3.43 0.3.43-r1 0.3.44 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r1 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 2.7.0 2.7.1: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
