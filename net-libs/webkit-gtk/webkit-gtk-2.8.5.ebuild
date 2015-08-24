@@ -199,6 +199,7 @@ src_configure() {
 		$(cmake-utils_use_enable doc GTKDOC)
 		$(cmake-utils_use_enable geoloc GEOLOCATION)
 		$(cmake-utils_use_find_package gles2 OpenGLES2)
+		$(cmake-utils_use_enable gles2 GLES2)
 		$(cmake-utils_use_enable gstreamer VIDEO)
 		$(cmake-utils_use_enable gstreamer WEB_AUDIO)
 		$(cmake-utils_use_enable introspection)
