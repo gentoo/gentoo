@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=sys-libs/zlib bfio? ( =app-forensics/libbfio-0.0.20120425_alpha ) fuse? ( sys-fs/fuse ) uuid? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib )
 DESCRIPTION=Implementation of the EWF (SMART and EnCase) image format
 EAPI=5
-HOMEPAGE=http://code.google.com/p/libewf/
+HOMEPAGE=https://code.google.com/p/libewf/
 IUSE=bfio debug ewf +fuse +ssl static-libs +uuid unicode zlib
 KEYWORDS=~amd64 ~hppa ~ppc ~x86
 LICENSE=BSD
@@ -10,4 +10,4 @@ RDEPEND=sys-libs/zlib bfio? ( =app-forensics/libbfio-0.0.20120425_alpha ) fuse? 
 SLOT=0/2
 SRC_URI=https://googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/libewf-20140608.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=99a82e29ebd36bc6607910b709a25983
+_md5_=0b1a2d022d88cb68952e556af2b0584f

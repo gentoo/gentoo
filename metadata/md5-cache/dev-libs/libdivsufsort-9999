@@ -2,8 +2,8 @@ DEFINED_PHASES=compile configure install preinst prepare test unpack
 DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=Suffix-sorting library (for BWT)
 EAPI=4
-HOMEPAGE=http://code.google.com/p/libdivsufsort/
+HOMEPAGE=https://code.google.com/p/libdivsufsort/
 LICENSE=MIT
 SLOT=0
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=627d9b20f24cc5221e11c88dcd3c47c1
+_md5_=acb5b09034f064ce64988b81de7dd72e

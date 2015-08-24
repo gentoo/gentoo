@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install postinst prepare setup
 DEPEND=>=dev-libs/protobuf-c-1.0.0_rc2 dev-libs/libconfig gnutls? ( >=net-libs/gnutls-3.0.0 ) polarssl? ( >=net-libs/polarssl-1.0.0 ) !gnutls? ( !polarssl? ( dev-libs/openssl:0 ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Minimalistic Murmur (Mumble server)
 EAPI=5
-HOMEPAGE=http://code.google.com/p/umurmur/ https://github.com/umurmur/umurmur
+HOMEPAGE=https://code.google.com/p/umurmur/ https://github.com/umurmur/umurmur
 IUSE=gnutls polarssl shm
 KEYWORDS=amd64 ~arm x86
 LICENSE=BSD
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/protobuf-c-1.0.0_rc2 dev-libs/libconfig gnutls? ( >=net-libs/
 SLOT=0
 SRC_URI=https://github.com/umurmur/umurmur/archive/0.2.16a.tar.gz -> umurmur-0.2.16a.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=dc43af17a8608a71cbac328a80d4f82d
+_md5_=71a5efd7807bbbeb62c3fdea6f056a9f

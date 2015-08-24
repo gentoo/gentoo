@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
 DEPEND=x11-libs/gtk+:2 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=GTK+ Flat Theme Engine
 EAPI=5
-HOMEPAGE=http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/x11-themes/gtk-engines-flat/
+HOMEPAGE=https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/x11-themes/gtk-engines-flat/
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2
 SLOT=2
 SRC_URI=http://download.freshmeat.net/themes/gtk2flat/gtk2flat-default.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=2e20ca3008b6c80559a65a999dc00936
+_md5_=a41aa0b1205cf8e8bdc1204d411bd07f

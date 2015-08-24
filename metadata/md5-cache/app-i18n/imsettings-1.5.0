@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install postinst prepare
 DEPEND=>=dev-libs/check-0.9.4 >=dev-libs/glib-2.26 sys-apps/dbus >=x11-libs/gtk+-2.12:2 >=x11-libs/libgxim-0.4.0 >=x11-libs/libnotify-0.7 x11-libs/libX11 gconf? ( gnome-base/gconf ) gtk3? ( x11-libs/gtk+:3 ) qt4? ( dev-qt/qtcore:4 ) xfconf? ( xfce-base/xfconf ) virtual/pkgconfig dev-util/intltool doc? ( dev-util/gtk-doc ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Delivery framework for general Input Method configuration
 EAPI=5
-HOMEPAGE=http://tagoh.github.com/imsettings/
+HOMEPAGE=https://tagoh.github.com/imsettings/
 IUSE=doc gconf gtk3 qt4 static-libs xfconf
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/imsettings/downloads/imsettings-1.5.0.tar.bz2
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=54cc627d51af4cdc5dc4c445cc2f945b
+_md5_=343bb5bb20b540d339d2ea66ecde8fa8

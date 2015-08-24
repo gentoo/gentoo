@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.26:2 >=dev-libs/libdbusmenu-
 SLOT=3
 SRC_URI=http://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c
-_md5_=5a97c3d890ff78459127625f1cd01bb6
+_md5_=a05a31180b51a25903b2fffc15ea501e

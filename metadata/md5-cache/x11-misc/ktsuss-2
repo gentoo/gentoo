@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DEPEND=virtual/pkgconfig >=x11-libs/gtk+-2.12.11:2 >=dev-libs/glib-2.16.5:2
 DESCRIPTION=Graphical version of su written in C and GTK+ 2
 EAPI=4
-HOMEPAGE=http://code.google.com/p/ktsuss/
+HOMEPAGE=https://code.google.com/p/ktsuss/
 KEYWORDS=amd64 ~ppc ~ppc64 x86
 LICENSE=BSD
 RDEPEND=>=x11-libs/gtk+-2.12.11:2 >=dev-libs/glib-2.16.5:2
 SLOT=0
 SRC_URI=http://ktsuss.googlecode.com/files/ktsuss-2.tar.gz
-_md5_=5669f345c5995246971e896bb707eb52
+_md5_=a3017cc4b0cc15a3d3dd80cb3db08baf

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup u
 DEPEND=x11-libs/libX11 x11-libs/libXext png? ( >=media-libs/libpng-1.2.43:0 ) gtk? ( >=x11-libs/gtk+-2.10:2 x11-misc/xdg-utils portaudio? ( >=media-libs/portaudio-19_pre ) joystick? ( >=media-libs/libsdl-1.2.12[joystick] ) opengl? ( virtual/opengl ) xv? ( x11-libs/libXv ) xrandr? ( x11-libs/libXrandr ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) x11-proto/xproto gtk? ( virtual/pkgconfig xv? ( x11-proto/videoproto ) ) nls? ( dev-util/intltool ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Super Nintendo Entertainment System (SNES) emulator
 EAPI=5
-HOMEPAGE=http://code.google.com/p/snes9x-gtk/
+HOMEPAGE=https://code.google.com/p/snes9x-gtk/
 IUSE=alsa debug gtk joystick multilib netplay nls opengl oss png pulseaudio portaudio +xv +xrandr zlib
 KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
 LICENSE=Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP
@@ -11,4 +11,4 @@ RESTRICT=bindist
 SLOT=0
 SRC_URI=http://snes9x-gtk.googlecode.com/files/snes9x-1.53-src.tar.bz2
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	games	9c0a2dd4a6a25b6b7851fa01019cc809	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=dd99609375c3c4f5f4d1b416f6825731
+_md5_=79cbfef762cd5da8eb0619fd3764a63a

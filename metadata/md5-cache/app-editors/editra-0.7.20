@@ -10,4 +10,4 @@ RDEPEND=>=dev-python/wxpython-2.8.9.2:2.8 >=dev-python/setuptools-0.6 spell? ( d
 SLOT=0
 SRC_URI=http://editra.org/uploads/src/Editra-0.7.20.tar.gz
 _eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9b0c3f4f059b3d64a7d420eef54e000d
+_md5_=20685b48e751faf314a3612046ff211a

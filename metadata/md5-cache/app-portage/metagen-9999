@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=>=dev-python/jaxml-3.01[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=sys-apps/portage-2.1.9.42[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-vcs/git-1.8.2.1
 DESCRIPTION=metadata.xml generator for ebuilds
 EAPI=5
-HOMEPAGE=http://cgit.gentoo.org/proj/metagen.git
+HOMEPAGE=https://cgit.gentoo.org/proj/metagen.git
 IUSE=python_targets_python2_7
 LICENSE=GPL-2
 RDEPEND=>=dev-python/jaxml-3.01[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=sys-apps/portage-2.1.9.42[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=67d175359a5c3b2dac8fe56d92ec94d5
+_md5_=4fee6aca5ec75aaf281a4744b7893cb0

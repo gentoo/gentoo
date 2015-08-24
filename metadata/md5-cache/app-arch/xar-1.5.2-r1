@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare unpack
 DEPEND=dev-libs/openssl dev-libs/libxml2 sys-libs/zlib acl? ( sys-apps/acl ) bzip2? ( app-arch/bzip2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An easily extensible archive format
 EAPI=4
-HOMEPAGE=http://code.google.com/p/xar
+HOMEPAGE=https://code.google.com/p/xar
 IUSE=acl +bzip2
 KEYWORDS=alpha amd64 hppa ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=BSD-2
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/openssl dev-libs/libxml2 sys-libs/zlib acl? ( sys-apps/acl ) bz
 SLOT=0
 SRC_URI=http://xar.googlecode.com/files/xar-1.5.2.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=3185154ad26129ec7ab1f76aff9663e6
+_md5_=dbc2825f71de5b1288bd1ab7650b283e

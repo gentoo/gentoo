@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst postrm prepare unpack
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
 EAPI=4
-HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3736 http://kien.github.com/ctrlp.vim/
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3736 https://kien.github.com/ctrlp.vim/
 KEYWORDS=~amd64 ~x86
 LICENSE=vim
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/kien/ctrlp.vim/tarball/1.78 -> ctrlp-1.78.tar.gz
 _eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
-_md5_=a4e8000596af34d00a18a45b43dc1807
+_md5_=1f813cc8a77069088ec665b5055b605f

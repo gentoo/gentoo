@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install
 DEPEND=>=dev-libs/check-0.9.4 >=dev-libs/dbus-glib-0.74 >=dev-libs/glib-2.32 >=sys-apps/dbus-0.23 >=x11-libs/gtk+-2.2:2 dev-lang/ruby virtual/pkgconfig doc? ( >=dev-util/gtk-doc-1.8 )
 DESCRIPTION=GObject-based XIM protocol library
 EAPI=3
-HOMEPAGE=http://tagoh.bitbucket.org/libgxim/
+HOMEPAGE=https://tagoh.bitbucket.org/libgxim/
 IUSE=doc static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/check-0.9.4 >=dev-libs/dbus-glib-0.74 >=dev-libs/glib-2.32 >=sys-apps/dbus-0.23 >=x11-libs/gtk+-2.2:2
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/libgxim/downloads/libgxim-0.5.0.tar.bz2
-_md5_=4522e0c2309ae447af350640702fe182
+_md5_=947f8549c5c15ff3b55829c6b89bc9cd

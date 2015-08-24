@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install prepare
 DEPEND=>=games-emulation/mupen64plus-core-2.0-r1:0=
 DESCRIPTION=A fork of Mupen64 Nintendo 64 emulator, HLE RSP plugin
 EAPI=5
-HOMEPAGE=http://code.google.com/p/mupen64plus/
+HOMEPAGE=https://code.google.com/p/mupen64plus/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=>=games-emulation/mupen64plus-core-2.0-r1:0=
 SLOT=0
 SRC_URI=https://github.com/mupen64plus/mupen64plus-rsp-hle/releases/download/2.0/mupen64plus-rsp-hle-src-2.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=240306c8f3512a66e9ee0c6aa66e58c9
+_md5_=99e3c2b2643b34988f1e4bf1de85dfd1

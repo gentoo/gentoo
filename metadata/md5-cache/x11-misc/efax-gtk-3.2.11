@@ -9,4 +9,4 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.10 media-libs/tiff:0 x11-libs/libX11 x11-libs/c++-gtk-utils:3 x11-libs/gtk+:3
 SLOT=0
 SRC_URI=mirror://sourceforge/efax-gtk/efax-gtk-3.2.11.src.tgz
-_md5_=8210afcd81f8361e2fd3156b0449daaa
+_md5_=9891d212e47c505550620433edfb5bb7

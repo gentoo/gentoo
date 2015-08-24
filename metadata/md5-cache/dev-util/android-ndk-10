@@ -8,5 +8,5 @@ LICENSE=android
 RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81
 RESTRICT=mirror strip installsources test
 SLOT=0
-SRC_URI=x86? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10-linux-x86.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10-linux-x86.tar.bz2 ) ) amd64? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10-linux-x86_64.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10-linux-x86_64.tar.bz2 ) )
-_md5_=3a51cf7913e29875eb15823d8045ee9f
+SRC_URI=x86? ( target-32? ( https://dl.google.com/android/ndk/android-ndk32-r10-linux-x86.tar.bz2 ) target-64? ( https://dl.google.com/android/ndk/android-ndk64-r10-linux-x86.tar.bz2 ) ) amd64? ( target-32? ( https://dl.google.com/android/ndk/android-ndk32-r10-linux-x86_64.tar.bz2 ) target-64? ( https://dl.google.com/android/ndk/android-ndk64-r10-linux-x86_64.tar.bz2 ) )
+_md5_=3ca5ffc25f95e9758955eda663940203

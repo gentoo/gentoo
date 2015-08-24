@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup
 DEPEND=>=dev-libs/libevent-2.0.5 snmp? ( net-analyzer/net-snmp[extensible(+)] ) xml? ( dev-libs/libxml2 ) jansson? ( dev-libs/jansson ) json-c? ( dev-libs/json-c ) seccomp? ( sys-libs/libseccomp ) zsh-completion? ( app-shells/zsh ) virtual/pkgconfig doc? ( graph? ( app-doc/doxygen[dot] ) !graph? ( app-doc/doxygen ) ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Implementation of IEEE 802.1ab (LLDP)
 EAPI=5
-HOMEPAGE=http://vincentbernat.github.com/lldpd/
+HOMEPAGE=https://vincentbernat.github.com/lldpd/
 IUSE=cdp doc +dot1 +dot3 edp fdp graph jansson json-c +lldpmed seccomp sonmp snmp static-libs readline xml zsh-completion
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
@@ -11,4 +11,4 @@ REQUIRED_USE=graph? ( doc ) json-c? ( !jansson )
 SLOT=0
 SRC_URI=http://media.luffy.cx/files/lldpd/lldpd-0.7.13.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=456d9cc8d362f61a230fd10bfb7602ea
+_md5_=6dc6bba179306621101dedaa49cd08ba

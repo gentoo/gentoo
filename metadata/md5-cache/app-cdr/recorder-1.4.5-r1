@@ -2,7 +2,7 @@ DEFINED_PHASES=postinst postrm prepare setup
 DEPEND=nls? ( sys-devel/gettext )
 DESCRIPTION=A simple GTK+ disc burner
 EAPI=5
-HOMEPAGE=http://code.google.com/p/recorder/
+HOMEPAGE=https://code.google.com/p/recorder/
 IUSE=dvdr mp3 nls ogg vcd linguas_ar linguas_cs linguas_es linguas_fr linguas_it linguas_nl linguas_pl linguas_pt_BR linguas_ru linguas_sv python_targets_python2_7
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=nls? ( sys-devel/gettext ) >=dev-python/pygtk-2[python_targets_python2_7
 SLOT=0
 SRC_URI=http://recorder.googlecode.com/files/recorder-1.4.5.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=a57a36499ec0e1bbf14f1c90545ad6b3
+_md5_=b2242eb92f400db4b55dc0c1fcb7b4a2

@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DEPEND=>=app-i18n/ibus-table-1.2.0.20090912 virtual/pkgconfig
 DESCRIPTION=The Latin tables for IBus-Table
 EAPI=0
-HOMEPAGE=http://code.google.com/p/ibus/
+HOMEPAGE=https://code.google.com/p/ibus/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=app-i18n/ibus-table-1.2.0.20090912
 SLOT=0
 SRC_URI=http://ibus.googlecode.com/files/ibus-table-latin-1.2.0.20100305.tar.gz
-_md5_=a600e2d2ff45739e6efe38bd7c153532
+_md5_=d25441ab5a7318741b222f7671accea0

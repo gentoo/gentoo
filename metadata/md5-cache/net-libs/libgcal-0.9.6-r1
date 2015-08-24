@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/libxml2:2 >=net-misc/curl-7.18.2 doc? ( app-doc/doxygen ) test? ( dev-libs/check ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=C/C++ interface to the Google Data API
 EAPI=5
-HOMEPAGE=http://code.google.com/p/libgcal/
+HOMEPAGE=https://code.google.com/p/libgcal/
 IUSE=debug doc test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://libgcal.googlecode.com/files/libgcal-0.9.6.tar.bz2
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0b2334a522a05fa4f7adc1dadbbec26a
+_md5_=4d0327ed5844d77606251bb7f961f1b0

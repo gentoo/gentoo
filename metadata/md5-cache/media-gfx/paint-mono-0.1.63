@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install
 DEPEND=>=dev-lang/mono-2.4[-minimal]
 DESCRIPTION=An unofficial effort to port Paint.NET 3.0 to Linux using Mono
 EAPI=2
-HOMEPAGE=http://code.google.com/p/paint-mono/
+HOMEPAGE=https://code.google.com/p/paint-mono/
 KEYWORDS=amd64 x86
 LICENSE=MIT CC-BY-NC-ND-2.5
 RDEPEND=>=dev-lang/mono-2.4[-minimal]
 SLOT=0
 SRC_URI=http://paint-mono.googlecode.com/files/paintdotnet-0.1.63.tar.gz
 _eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=4409708530931b617733e9ff84c458f4
+_md5_=426981e98dd41a14a22ae7096f1edaa7

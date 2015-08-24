@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/psi/psi-0.14.tar.bz2 http://fs.scs-tsa.de/psi_l10n/psi-0.14_langpack_for_packagers_2009-12-02.zip extras? ( mirror://gentoo/psi-extra-patches-r1428.tar.bz2 mirror://gentoo/psi-extra-iconsets-r1428.tar.bz2 )
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0784e04933f737859a57888e70953fa0
+_md5_=3bbf44fc54b658a37fd27aa215c1a9aa

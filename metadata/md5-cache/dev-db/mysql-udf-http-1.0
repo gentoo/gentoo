@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install postinst prepare setup
 DEPEND=>=virtual/mysql-5.1 net-misc/curl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=MySQL User-defined function (UDF) for HTTP REST
 EAPI=4
-HOMEPAGE=http://code.google.com/p/mysql-udf-http/
+HOMEPAGE=https://code.google.com/p/mysql-udf-http/
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
 RDEPEND=>=virtual/mysql-5.1 net-misc/curl
 SLOT=0
 SRC_URI=http://mysql-udf-http.googlecode.com/files/mysql-udf-http-1.0.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=d019c81215c35001e7ab9b3f13d65dbf
+_md5_=90c4ab507df3e749086e4333b7651265

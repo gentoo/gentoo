@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install postinst prepare setup
 DEPEND=>=app-shells/bash-4.0:* dev-libs/glib:2 sys-apps/util-linux virtual/acl >=virtual/udev-143 dev-util/intltool sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=mount and unmount removable devices without a password
 EAPI=5
-HOMEPAGE=http://ignorantguru.github.com/udevil/
+HOMEPAGE=https://ignorantguru.github.com/udevil/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=app-shells/bash-4.0:* dev-libs/glib:2 sys-apps/util-linux virtual/acl >=virtual/udev-143
 SLOT=0
 SRC_URI=https://github.com/IgnorantGuru/udevil/archive/0.4.4.tar.gz -> udevil-0.4.4.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=61cf60da6c6351e1442a9387805c3513
+_md5_=cf37920cab79ca18f50959f23c391953

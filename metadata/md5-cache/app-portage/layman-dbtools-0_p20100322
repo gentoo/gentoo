@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst postrm setup unpack
 DEPEND=dev-vcs/git =dev-lang/python-2* =dev-lang/python-2*[xml]
 DESCRIPTION=Tools to work with layman-global.txt/repositories.xml like files
 EAPI=3
-HOMEPAGE=http://cgit.gentoo.org/proj/repositories-xml-format.git
+HOMEPAGE=https://cgit.gentoo.org/proj/repositories-xml-format.git
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( GPL-2 GPL-3 )
 RDEPEND=app-portage/layman =dev-lang/python-2* =dev-lang/python-2*[xml]
 SLOT=0
 _eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=25a98c3eb21b00eb0d885491ebda5004
+_md5_=25c99680d5e7e037a40127e24ce5fc3f

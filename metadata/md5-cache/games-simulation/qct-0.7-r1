@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
 DEPEND=>=dev-python/pygame-1.5.5[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 DESCRIPTION=Quiet Console Town puts you in the place of the mayor of a budding new console RPG city
 EAPI=5
-HOMEPAGE=http://packages.gentoo.org/package/games-simulation/qct
+HOMEPAGE=https://packages.gentoo.org/package/games-simulation/qct
 IUSE=python_targets_python2_7
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://www.sourcefiles.org/Games/Role_Play/qct-0.7.tar.gz
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=0ff125975f8fdac62180b43b6d2b97b0
+_md5_=926bb4be385910b24927445a70fe4ed0

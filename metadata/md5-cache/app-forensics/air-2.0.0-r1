@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=userland_GNU? ( sys-apps/coreutils ) app-arch/mt-st net-analyzer/netcat crypt? ( net-analyzer/cryptcat )
 SLOT=0
 SRC_URI=mirror://sourceforge/air-imager/air-2.0.0.tar.gz
-_md5_=bb0f631a9ee7269a786a0698e9d30e39
+_md5_=3e00e3a0db7259d14a86d4da016a5273

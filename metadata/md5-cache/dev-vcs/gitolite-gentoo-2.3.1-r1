@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare setup test unpack
 DEPEND=dev-lang/perl virtual/perl-File-Path virtual/perl-File-Temp >=dev-vcs/git-1.6.6 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Highly flexible server for git directory version tracker, Gentoo fork
 EAPI=5
-HOMEPAGE=http://cgit.gentoo.org/proj/gitolite-gentoo.git
+HOMEPAGE=https://cgit.gentoo.org/proj/gitolite-gentoo.git
 IUSE=contrib vim-syntax
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=dev-lang/perl virtual/perl-File-Path virtual/perl-File-Temp >=dev-vcs/gi
 SLOT=0
 SRC_URI=mirror://gentoo/gitolite-gentoo-2.3.1.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=6652a63db3b499a3cfb032ee12c54a57
+_md5_=07e8ad0c48427f0a4f4d0d9f293f5059

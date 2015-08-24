@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=media-libs/lcms:2= media-libs/libpng:0= media-libs/tiff:0= sys-libs/zlib:= doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=An open-source JPEG 2000 library
 EAPI=5
-HOMEPAGE=http://code.google.com/p/openjpeg/
+HOMEPAGE=https://code.google.com/p/openjpeg/
 IUSE=doc static-libs test
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=BSD-2
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=2
 SRC_URI=mirror://sourceforge/openjpeg.mirror/openjpeg-2.0.0.tar.gz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=fbba5fb57763a98a780e6ab5efe343b2
+_md5_=9dd7f4e094cbb50a4eec610f95e64cc5

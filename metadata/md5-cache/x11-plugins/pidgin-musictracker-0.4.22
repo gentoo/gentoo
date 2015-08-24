@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare
 DEPEND=>=net-im/pidgin-2.0.0[gtk] >=dev-libs/dbus-glib-0.73 dev-libs/libpcre >=sys-devel/gettext-0.17 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A Pidgin now playing plugin to publicise the songs you are listening to in your status message
 EAPI=2
-HOMEPAGE=http://code.google.com/p/pidgin-musictracker/
+HOMEPAGE=https://code.google.com/p/pidgin-musictracker/
 IUSE=debug
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=>=net-im/pidgin-2.0.0[gtk] >=dev-libs/dbus-glib-0.73 dev-libs/libpcre >=
 SLOT=0
 SRC_URI=http://pidgin-musictracker.googlecode.com/files/pidgin-musictracker-0.4.22.tar.bz2
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=523c2f3aff75f99b8a0bbc31efb37842
+_md5_=de5a09cfe780bc079908b22fc256bfd1

@@ -2,7 +2,7 @@ DEFINED_PHASES=install postinst prerm setup
 DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=phpSysInfo is a nice package that will display your system stats via PHP
 EAPI=5
-HOMEPAGE=http://rk4an.github.com/phpsysinfo/
+HOMEPAGE=https://rk4an.github.com/phpsysinfo/
 IUSE=vhosts
 KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=virtual/httpd-php dev-lang/php[simplexml,xml,xsl(+),xslt(+),unicode] >=a
 SLOT=3.1.12
 SRC_URI=https://github.com/rk4an/phpsysinfo/archive/v3.1.12.tar.gz -> phpsysinfo-3.1.12.tar.gz
 _eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=0e64f5cb8fff2d3fb78d7eb38825e768
+_md5_=7689c5e8d0b466c13692b8a37708420e

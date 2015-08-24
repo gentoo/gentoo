@@ -1,11 +1,11 @@
 DEFINED_PHASES=install unpack
 DESCRIPTION=Gentoo-based Network Appliance building system
 EAPI=0
-HOMEPAGE=http://embedded.gentoo.org/gnap.xml
+HOMEPAGE=https://embedded.gentoo.org/gnap.xml
 IUSE=minimal
 KEYWORDS=~x86 ~amd64
 LICENSE=GPL-2
 RDEPEND=app-cdr/cdrtools sys-fs/dosfstools <sys-boot/syslinux-5
 SLOT=0
 SRC_URI=mirror://gentoo/gnap-tools-2.0.tar.bz2 !minimal? ( mirror://gentoo/gnap-core-2.0.tar )
-_md5_=38a390ff97ddb76121d92bea6f3eb65b
+_md5_=5e5ee38557fc30965549a313ea7d5fda

@@ -2,11 +2,11 @@ DEFINED_PHASES=install prepare setup
 DEPEND=sci-chemistry/ambertools || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 DESCRIPTION=AnteChamber PYthon Parser interfacE
 EAPI=4
-HOMEPAGE=http://code.google.com/p/acpype/
+HOMEPAGE=https://code.google.com/p/acpype/
 KEYWORDS=~amd64 ~x86 ~amd64-linux
 LICENSE=GPL-3
 RDEPEND=sci-chemistry/ambertools || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/acpype-374.tar.xz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=7db37a3bea776f7472389a250d6b6944
+_md5_=b83a3b8494f5a5ad8729ad55eeecc231

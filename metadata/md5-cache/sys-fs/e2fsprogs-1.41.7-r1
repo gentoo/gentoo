@@ -10,4 +10,4 @@ RDEPEND=~sys-libs/e2fsprogs-libs-1.41.7 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/e2fsprogs/e2fsprogs-1.41.7.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=137152f55aa417f1fe02cbae0b4267e9
+_md5_=875c83edc58efbda73a3b8aa78d85b1d

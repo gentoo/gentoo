@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=>=net-analyzer/nagios-plugins-1.4.13-r1
 SLOT=0
-SRC_URI=http://nodeload.github.com/hollow/check_fail2ban/tarball/v3 -> nagios-check_fail2ban-3.tar.gz
+SRC_URI=https://nodeload.github.com/hollow/check_fail2ban/tarball/v3 -> nagios-check_fail2ban-3.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=be46cf44800e6e2e3a527021c31ba2c2
+_md5_=232cc1d5e98e6e2209f9c202a8f64927

@@ -2,10 +2,10 @@ DEFINED_PHASES=install preinst prepare unpack
 DEPEND=>=dev-lang/perl-5.10.1[ithreads] dev-perl/JSON >=dev-perl/WWW-Mechanize-1.52 virtual/perl-Getopt-Long virtual/perl-Term-ANSIColor X? ( dev-perl/gtk2-gladexml dev-perl/Spiffy x11-misc/xclip ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=Linux Rapidshare downloader
 EAPI=4
-HOMEPAGE=http://code.google.com/p/slimrat/
+HOMEPAGE=https://code.google.com/p/slimrat/
 IUSE=X
 LICENSE=MIT
 RDEPEND=>=dev-lang/perl-5.10.1[ithreads] dev-perl/JSON >=dev-perl/WWW-Mechanize-1.52 virtual/perl-Getopt-Long virtual/perl-Term-ANSIColor X? ( dev-perl/gtk2-gladexml dev-perl/Spiffy x11-misc/xclip ) media-gfx/aview X? ( x11-terms/xterm )
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=45658346ed614af26590c9d2439db93b
+_md5_=263f97b3df9ba0b90ab2796e10b8d456

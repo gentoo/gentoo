@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install postinst postrm prepare
 DEPEND=>=app-i18n/libhangul-0.0.12 x11-libs/gtk+:3 virtual/libintl virtual/pkgconfig sys-devel/gettext >=sys-apps/sed-4
 DESCRIPTION=Gtk+-3.0 Hangul Input Modules
 EAPI=3
-HOMEPAGE=http://code.google.com/p/imhangul/
+HOMEPAGE=https://code.google.com/p/imhangul/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=app-i18n/libhangul-0.0.12 x11-libs/gtk+:3 virtual/libintl
 SLOT=3
 SRC_URI=http://imhangul.googlecode.com/files/imhangul-3.1.0.tar.bz2
 _eclasses_=gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=13e9844716d0ee59d50a89f48a97c353
+_md5_=5862f5d0d563e429f728ef75fa1a7a2b

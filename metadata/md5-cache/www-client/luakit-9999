@@ -2,10 +2,10 @@ DEFINED_PHASES=compile install prepare unpack
 DEPEND=virtual/pkgconfig sys-apps/help2man pax_kernel? ( sys-apps/elfix ) luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libunique:1 net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 dev-vcs/git
 DESCRIPTION=fast, small, webkit-gtk based micro-browser extensible by lua
 EAPI=4
-HOMEPAGE=http://mason-larobina.github.com/luakit/
+HOMEPAGE=https://mason-larobina.github.com/luakit/
 IUSE=luajit pax_kernel vim-syntax
 LICENSE=GPL-3
 RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libunique:1 net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 dev-lua/luafilesystem vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 SLOT=0
 _eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=cd154930b3fbd9ebaa6733acdb2cc98c
+_md5_=77d87a72c16cd6345953f62d1dcf594f

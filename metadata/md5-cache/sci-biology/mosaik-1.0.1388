@@ -1,9 +1,9 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=A reference-guided aligner for next-generation sequencing technologies
 EAPI=2
-HOMEPAGE=http://code.google.com/p/mosaik-aligner/
+HOMEPAGE=https://code.google.com/p/mosaik-aligner/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://mosaik-aligner.googlecode.com/files/Mosaik-1.0.1388-source.tar.bz2
-_md5_=182829f6302a9e1eb21be19250ced0a2
+_md5_=6610db4da1e3e3c2a1d61932b565a95b

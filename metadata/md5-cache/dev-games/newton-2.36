@@ -2,10 +2,10 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=app-arch/unrar sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=an integrated solution for real time simulation of physics environments
 EAPI=5
-HOMEPAGE=http://code.google.com/p/newton-dynamics/
+HOMEPAGE=https://code.google.com/p/newton-dynamics/
 KEYWORDS=~amd64 x86
 LICENSE=ZLIB
 SLOT=0
 SRC_URI=http://newton-dynamics.googlecode.com/files/newton-dynamics-2.36.rar
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=1efdb5816346ea22073780f06279dad1
+_md5_=967a48de9caa2d245aa9d3a7f3d8615f

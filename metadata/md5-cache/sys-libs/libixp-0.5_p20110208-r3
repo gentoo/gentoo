@@ -8,4 +8,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://gentoo/libixp-0.5_p20110208.tar.xz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9e616f161d96fa9f44aed23e67693f07
+_md5_=e35de5706c76b25615285d2827669cfa

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install prepare unpack
 DEPEND=virtual/pkgconfig sys-apps/help2man luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libunique:1 net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2
 DESCRIPTION=fast, small, webkit-gtk based micro-browser extensible by lua
 EAPI=4
-HOMEPAGE=http://mason-larobina.github.com/luakit/
+HOMEPAGE=https://mason-larobina.github.com/luakit/
 IUSE=luajit vim-syntax
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sql
 SLOT=0
 SRC_URI=https://github.com/mason-larobina/luakit/tarball/2012.09.13-r1 -> luakit-2012.09.13_p1.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
-_md5_=e714882eaccef1276b356da476a7c621
+_md5_=4ce098172d52c9dd9de9a760bce9a995
