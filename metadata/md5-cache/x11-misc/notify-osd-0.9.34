@@ -2,13 +2,13 @@ DEFINED_PHASES=configure install postinst postrm preinst prepare
 DEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.16 >=x11-libs/gtk+-3.2:3 >=x11-libs/libnotify-0.7 >=x11-libs/libwnck-3 x11-libs/libX11 x11-libs/pixman !x11-misc/notification-daemon !x11-misc/qtnotifydaemon virtual/pkgconfig gnome-base/gnome-common x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Canonical's on-screen-display notification agent
 EAPI=4
-HOMEPAGE=http://launchpad.net/notify-osd
+HOMEPAGE=https://launchpad.net/notify-osd
 IUSE=minimal savedconfig
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.16 >=x11-libs/gtk+-3.2:3 >=x11-libs/libnotify-0.7 >=x11-libs/libwnck-3 x11-libs/libX11 x11-libs/pixman !x11-misc/notification-daemon !x11-misc/qtnotifydaemon !minimal? ( x11-themes/notify-osd-icons )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://launchpad.net/notify-osd/precise/0.9.34/+download/notify-osd-0.9.34.tar.gz
+SRC_URI=https://launchpad.net/notify-osd/precise/0.9.34/+download/notify-osd-0.9.34.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=850c8c55bfdeb7defd0aa690466e2c36
+_md5_=d19982376150fe3b4341c723df9aac09

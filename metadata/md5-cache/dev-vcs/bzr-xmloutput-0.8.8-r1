@@ -7,6 +7,6 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=dev-vcs/bzr =dev-lang/python-2*
 SLOT=0
-SRC_URI=http://launchpad.net/bzr-xmloutput/trunk/0.8.8/+download/bzr-xmloutput-0.8.8.tar.gz
+SRC_URI=https://launchpad.net/bzr-xmloutput/trunk/0.8.8/+download/bzr-xmloutput-0.8.8.tar.gz
 _eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=78be5a75f8a5ef327db9f4ce4a4ebc91
+_md5_=4c91edb84d8cff981b8073cdb2d84749

@@ -17757,7 +17757,7 @@ x11-plugins/wmbio 1.02: A Window Maker applet that shows your biorhythm
 x11-plugins/wmblob 1.0.3: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbluecpu 0.6: a blue dockapp to monitor CPU usage
 x11-plugins/wmbutton 0.6.1 0.7.0: a dockapp application that displays nine configurable buttons
-x11-plugins/wmcalc 0.4 0.5: A WindowMaker DockApp calculator
+x11-plugins/wmcalc 0.4 0.5 0.6: A WindowMaker DockApp calculator
 x11-plugins/wmcalendar 0.5.2 0.5.2-r1: a calendar dockapp
 x11-plugins/wmcdplay 1.0_beta1 1.1: CD player applet for WindowMaker
 x11-plugins/wmcliphist 2.1 2.1-r1: Dockable clipboard history application for Window Maker

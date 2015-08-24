@@ -9,6 +9,6 @@ LICENSE=GPL-3
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] fts? ( !gnome-extra/zeitgeist[fts] dev-libs/xapian-bindings[python] dev-python/dbus-python dev-python/pygobject dev-python/pyxdg ) geolocation? ( dev-python/dbus-python dev-python/python-geoclue ) memprofile? ( dev-python/dbus-python dev-python/pympler ) sqldebug? ( dev-python/python-sqlparse ) tracker? ( app-misc/tracker dev-python/pygobject dev-python/dbus-python )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
-SRC_URI=http://launchpad.net/zeitgeist-extensions/trunk/fts-0.0.13/+download/zeitgeist-extensions-0.0.13.tar.gz
+SRC_URI=https://launchpad.net/zeitgeist-extensions/trunk/fts-0.0.13/+download/zeitgeist-extensions-0.0.13.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=2a4234bb3be934526854ea52a5c63a6d
+_md5_=e94b5caa02966343ce3d4ec186663fd4

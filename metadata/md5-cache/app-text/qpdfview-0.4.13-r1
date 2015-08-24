@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare
 DEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( <app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) qt4? ( dev-qt/qtcore:4[iconv] dev-qt/qtgui:4 dbus? ( dev-qt/qtdbus:4 ) pdf? ( app-text/poppler[qt4] ) sqlite? ( dev-qt/qtsql:4[sqlite] ) svg? ( dev-qt/qtsvg:4 ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.26.4[qt5] ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) ) !svg? ( virtual/freedesktop-icon-theme ) virtual/pkgconfig
 DESCRIPTION=A tabbed document viewer
 EAPI=5
-HOMEPAGE=http://launchpad.net/qpdfview
+HOMEPAGE=https://launchpad.net/qpdfview
 IUSE=cups dbus djvu fitz +pdf postscript +qt4 qt5 sqlite +svg synctex linguas_ast linguas_az linguas_bg linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_eo linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_he linguas_hr linguas_id linguas_it linguas_kk linguas_ko linguas_ky linguas_lt linguas_ms linguas_my linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sv linguas_tr linguas_ug linguas_uk linguas_vi linguas_zh_CN
 KEYWORDS=amd64 arm x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( qt4 qt5 ) ?? ( fitz pdf )
 SLOT=0
 SRC_URI=https://launchpad.net/qpdfview/trunk/0.4.13/+download/qpdfview-0.4.13.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5d23eb7f50ea3d4dfaeb9ccb6f6c0e51
+_md5_=d7e1f90463528b6722f89eb99d55cce5

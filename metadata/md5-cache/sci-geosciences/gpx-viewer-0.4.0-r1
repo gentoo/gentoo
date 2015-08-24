@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/gdl:3 dev-libs/glib:2 dev-libs/libxml2:2 >=media-libs/clutter-gtk-1.4.0:1.0 >=media-libs/libchamplain-0.12.3:0.12[gtk] x11-libs/gtk+:3
 SLOT=0
-SRC_URI=http://edge.launchpad.net/gpx-viewer/trunk/0.4.0/+download/gpx-viewer-0.4.0.tar.gz
+SRC_URI=https://edge.launchpad.net/gpx-viewer/trunk/0.4.0/+download/gpx-viewer-0.4.0.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=189b50e6993d9688408a1caae45fb567
+_md5_=0bab65634af83dc8d49a9f994018c025

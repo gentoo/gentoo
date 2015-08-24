@@ -2,12 +2,12 @@ DEFINED_PHASES=configure install test
 DEPEND=>=dev-libs/glib-2.22 >=x11-libs/gtk+-3.2:3 virtual/pkgconfig test? ( dev-util/dbus-test-runner ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=A set of symbols and convience functions that all indicators would like to use
 EAPI=4
-HOMEPAGE=http://launchpad.net/libindicator
+HOMEPAGE=https://launchpad.net/libindicator
 IUSE=test test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/glib-2.22 >=x11-libs/gtk+-3.2:3
 SLOT=3
-SRC_URI=http://launchpad.net/libindicator/12.10/12.10.0/+download/libindicator-12.10.0.tar.gz
+SRC_URI=https://launchpad.net/libindicator/12.10/12.10.0/+download/libindicator-12.10.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=30b846affd63c316d62c812ffccb4181
+_md5_=c177e52ee13409aea8701e00a3183c56
