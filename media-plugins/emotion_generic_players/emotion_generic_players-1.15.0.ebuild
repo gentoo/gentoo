@@ -10,14 +10,14 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_SUB_PROJECT="core"
 	EGIT_URI_APPEND="${PN}"
 else
-	SRC_URI="http://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.xz"
+	SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.xz"
 	EKEY_STATE="snap"
 fi
 
 inherit enlightenment
 
 DESCRIPTION="Provides external applications as generic loaders for Evas"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 
 LICENSE="GPL-2"
 # The -arch need to keyword vlc first.

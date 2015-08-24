@@ -7,7 +7,7 @@ EAPI="4"
 inherit enlightenment
 
 DESCRIPTION="Enlightenment's (Ecore) integration to DBus"
-SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 KEYWORDS="amd64 ~arm x86"

@@ -34,7 +34,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# http://bugzilla.xfce.org/show_bug.cgi?id=10032
+	# https://bugzilla.xfce.org/show_bug.cgi?id=10032
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.in || die
 	xfconf_src_prepare
 }

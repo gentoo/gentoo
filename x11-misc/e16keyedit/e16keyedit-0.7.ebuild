@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Key binding editor for enlightenment 16"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"

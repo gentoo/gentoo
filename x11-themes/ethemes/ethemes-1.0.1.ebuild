@@ -4,7 +4,7 @@
 
 MY_P="e16-themes-${PV}"
 DESCRIPTION="all the official Enlightenment themes"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="mirror://sourceforge/enlightenment/${MY_P}.tar.gz"
 
 LICENSE="BSD"

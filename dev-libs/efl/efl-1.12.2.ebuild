@@ -11,10 +11,10 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_URI_APPEND="${PN}"
 elif [[ *"${PV}" == *"_pre"* ]] ; then
 	MY_P=${P%%_*}
-	SRC_URI="http://download.enlightenment.org/pre-releases/${MY_P}.tar.bz2"
+	SRC_URI="https://download.enlightenment.org/pre-releases/${MY_P}.tar.bz2"
 	EKEY_STATE="snap"
 else
-	SRC_URI="http://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.bz2"
+	SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.bz2"
 	EKEY_STATE="snap"
 fi
 

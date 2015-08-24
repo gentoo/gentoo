@@ -10,14 +10,14 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_SUB_PROJECT="core"
 	EGIT_URI_APPEND="${PN}"
 else
-	SRC_URI="http://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.bz2"
+	SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.bz2"
 	EKEY_STATE="snap"
 fi
 
 inherit enlightenment
 
 DESCRIPTION="Basic widget set, based on EFL for mobile touch-screen devices"
-HOMEPAGE="http://trac.enlightenment.org/e/wiki/Elementary"
+HOMEPAGE="https://trac.enlightenment.org/e/wiki/Elementary"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="amd64 arm x86"

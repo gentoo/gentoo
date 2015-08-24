@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Base files for Enlightenment epplets and some epplets"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="mirror://sourceforge/enlightenment/epplets-${PV}.tar.gz"
 
 LICENSE="GPL-2"

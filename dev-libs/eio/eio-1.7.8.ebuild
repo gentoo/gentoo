@@ -7,8 +7,8 @@ EAPI="4"
 inherit enlightenment
 
 DESCRIPTION="Enlightenment's integration to IO"
-HOMEPAGE="http://trac.enlightenment.org/e/wiki/EIO"
-SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+HOMEPAGE="https://trac.enlightenment.org/e/wiki/EIO"
+SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~arm ~x86"

@@ -14,7 +14,7 @@ fi
 inherit enlightenment toolchain-funcs multilib-minimal
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 
 IUSE="bzip2 gif jpeg cpu_flags_x86_mmx cpu_flags_x86_sse2 mp3 png static-libs tiff X zlib"
 

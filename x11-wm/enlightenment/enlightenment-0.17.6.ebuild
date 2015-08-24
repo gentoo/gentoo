@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools enlightenment
 
 DESCRIPTION="Enlightenment DR17 window manager"
-SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 KEYWORDS="amd64 x86"

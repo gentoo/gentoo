@@ -41,9 +41,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# http://bugzilla.xfce.org/show_bug.cgi?id=8822
+	# https://bugzilla.xfce.org/show_bug.cgi?id=8822
 	sed -i -e 's:$(datadir)/xfce4/doc:$(docdir)/html:' Makefile.am || die
-	# http://bugzilla.xfce.org/show_bug.cgi?id=10030
+	# https://bugzilla.xfce.org/show_bug.cgi?id=10030
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die
 	xfconf_src_prepare
 }

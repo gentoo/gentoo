@@ -8,7 +8,7 @@ inherit eutils autotools
 MY_P=Eterm-${PV}
 
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="http://svn.enlightenment.org/svn/e/trunk/eterm/Eterm"
+	ESVN_REPO_URI="https://svn.enlightenment.org/svn/e/trunk/eterm/Eterm"
 	inherit subversion
 	SRC_URI=""
 	KEYWORDS=""

@@ -44,7 +44,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# http://bugzilla.xfce.org/show_bug.cgi?id=9556
+	# https://bugzilla.xfce.org/show_bug.cgi?id=9556
 	cat <<-EOF >> po/POTFILES.skip
 	xfconf-perl/xs/Xfconf.c
 	xfconf-perl/xs/XfconfBinding.c
