@@ -12,7 +12,7 @@ SRC_URI="http://gforge.inria.fr/frs/download.php/latestfile/475/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="
 	+coin demos +dmtx doc examples ffmpeg gsl ieee1394 jpeg lapack motif ogre
 	ois opencv png qt4 test tutorials usb v4l X xml +zbar zlib
