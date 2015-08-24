@@ -26,7 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
-DISTPLAY_MESSAGE=false
+DISPLAY_MESSAGE=false
 pkg_preinst() {
 	if ! has_version ${CATEGORY}/${PN} ; then
 		DISPLAY_MESSAGE=true
