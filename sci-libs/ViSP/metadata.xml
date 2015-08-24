@@ -6,6 +6,7 @@
 <name>Alexis Ballier</name>
 </maintainer>
 <use>
+  <flag name="coin">Enables Coin3D support.</flag>
   <flag name="dmtx">Enables barcode data matrix support.</flag>
   <flag name="demos">Installs demo programs.</flag>
   <flag name="ogre">Enables <pkg>dev-games/ogre</pkg> support.</flag>
