@@ -10,4 +10,4 @@ RDEPEND=app-misc/mime-types nls? ( virtual/libintl ) tokyocabinet? ( dev-db/toky
 SLOT=0
 SRC_URI=mirror://sourceforge/mutt/mutt-1.5.23.tar.gz mirror://bitbucket/mutt/mutt/downloads/mutt-1.5.23.tar.gz ftp://ftp.mutt.org/mutt/devel/mutt-1.5.23.tar.gz mirror://gentoo/mutt-1.5.23-gentoo-patches-r6.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/mutt-1.5.23-gentoo-patches-r6.tar.bz2
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=11ae86d54fba3ace2f4f974df4d796f9
+_md5_=f9bbcc32bcd8e3357bff6848995e635b
