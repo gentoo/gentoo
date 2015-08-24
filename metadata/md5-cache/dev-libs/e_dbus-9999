@@ -8,4 +8,4 @@ LICENSE=BSD-2
 RDEPEND=>=dev-libs/efl-1.8.4 sys-apps/dbus connman? ( >=net-misc/connman-0.75 ) udev? ( || ( sys-power/upower sys-power/upower-pm-utils ) sys-fs/udisks:0 ) nls? ( sys-devel/gettext )
 SLOT=0
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=74da598e476f1adcc3bcaad307da0c99
+_md5_=6e1cd65679dc5da72adca9601783528b

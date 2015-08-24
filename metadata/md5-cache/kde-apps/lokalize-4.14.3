@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup t
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=app-text/hunspell-1.2.8 >=dev-qt/qtsql-4.5.0:4[sqlite] >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/automoc virtual/pkgconfig !aqua? ( >=x11-libs/libXtst-1.1.0 x11-proto/xf86vidmodeproto ) handbook? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xsl-stylesheets ) dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.14.3:4[aqua=]
 DESCRIPTION=KDE4 translation tool
 EAPI=5
-HOMEPAGE=http://www.kde.org/applications/development/lokalize http://l10n.kde.org/tools
+HOMEPAGE=https://www.kde.org/applications/development/lokalize https://l10n.kde.org/tools
 IUSE=debug python_targets_python2_7 +handbook aqua
 KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=4/4.14
 SRC_URI=mirror://kde/stable/4.14.3/src/lokalize-4.14.3.tar.xz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnome2-utils	44555579e85afa5c035d2bd5428252da	kde4-base	b82e2cb31cbfd023d54ce6de39cdb381	kde4-functions	3b68b9a6265fb2bd834efa55716107e8	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=bb629c3fed625b1c23169faad4914ff2
+_md5_=d2124d53870ee4393de2056154195924

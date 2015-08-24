@@ -1,10 +1,10 @@
 DEFINED_PHASES=-
 DESCRIPTION=Sub-meta package for the applications of GNOME 3
 EAPI=5
-HOMEPAGE=http://www.gnome.org/
+HOMEPAGE=https://www.gnome.org/
 IUSE=+games +share +shotwell +tracker
 KEYWORDS=amd64 x86
 LICENSE=metapackage
 RDEPEND=>=gnome-base/gnome-core-libs-3.14.0 >=app-admin/gnome-system-log-3.9.90 >=app-arch/file-roller-3.14.0 >=app-dicts/gnome-dictionary-3.14.0 >=gnome-extra/gconf-editor-3 >=gnome-extra/gnome-calculator-3.14.0 >=gnome-extra/gnome-power-manager-3.14.0 >=gnome-extra/gnome-search-tool-3.6 >=gnome-extra/gnome-system-monitor-3.14.0 >=gnome-extra/gnome-tweak-tool-3.14.0 >=gnome-extra/gnome-weather-3.14.0 >=gnome-extra/gucharmap-3.14.0:2.90 >=gnome-extra/nautilus-sendto-3.8.2 >=gnome-extra/sushi-3.12.0 >=mail-client/evolution-3.12.9 >=media-gfx/gnome-font-viewer-3.14.0 >=media-gfx/gnome-screenshot-3.14.0 >=media-sound/sound-juicer-3.14.0 >=media-video/cheese-3.14.0 >=net-analyzer/gnome-nettool-3.8 >=net-misc/vinagre-3.14.0 >=net-misc/vino-3.14.0 >=sys-apps/baobab-3.14.0 >=sys-apps/gnome-disk-utility-3.14.0 >=www-client/epiphany-3.12 games? ( >=games-arcade/gnome-nibbles-3.14.0 >=games-arcade/gnome-robots-3.14.0 >=games-board/four-in-a-row-3.14.0 >=games-board/gnome-chess-3.14.0 >=games-board/gnome-mahjongg-3.14.0 >=games-board/gnome-mines-3.14.0 >=games-board/iagno-3.14.0 >=games-board/tali-3.14.0 >=games-puzzle/five-or-more-3.14.0 >=games-puzzle/gnome-klotski-3.14.0 >=games-puzzle/gnome-sudoku-3.14.0 >=games-puzzle/gnome-tetravex-3.14.0 >=games-puzzle/hitori-3.14.0 >=games-puzzle/lightsoff-3.14.0 >=games-puzzle/quadrapassel-3.14.0 >=games-puzzle/swell-foop-3.14.0 ) share? ( >=gnome-extra/gnome-user-share-3.14.0 ) shotwell? ( >=media-gfx/shotwell-0.20 ) tracker? ( >=app-misc/tracker-1.2 >=gnome-extra/gnome-documents-3.14.0 >=media-gfx/gnome-photos-3.14.0 >=media-sound/gnome-music-3.14.0 )
 SLOT=3.0
-_md5_=e92e454be835094a175338d56528365c
+_md5_=655f70caac6f477d7d55a8ab4a9a89c7

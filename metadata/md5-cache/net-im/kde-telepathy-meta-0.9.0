@@ -1,9 +1,9 @@
 DEFINED_PHASES=postinst
 DESCRIPTION=KDE Telepathy client - merge this to pull in all net-im/ktp-* kde packages
 EAPI=5
-HOMEPAGE=http://community.kde.org/Real-Time_Communication_and_Collaboration
+HOMEPAGE=https://community.kde.org/Real-Time_Communication_and_Collaboration
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( GPL-2 GPL-3 LGPL-2.1 )
 RDEPEND=>=net-im/ktp-accounts-kcm-0.9.0 >=net-im/ktp-approver-0.9.0 >=net-im/ktp-auth-handler-0.9.0 >=net-im/ktp-call-ui-0.9.0 >=net-im/ktp-common-internals-0.9.0 >=net-im/ktp-contact-list-0.9.0 >=net-im/ktp-contact-runner-0.9.0 >=net-im/ktp-desktop-applets-0.9.0 >=net-im/ktp-filetransfer-handler-0.9.0 >=net-im/ktp-kded-module-0.9.0 >=net-im/ktp-send-file-0.9.0 >=net-im/ktp-text-ui-0.9.0 net-im/telepathy-connection-managers
 SLOT=4
-_md5_=aeca65fc916d5d257be035d22504f25c
+_md5_=76eaaef925168700810d11daabaff538

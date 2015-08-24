@@ -1,11 +1,11 @@
 DEFINED_PHASES=postinst
 DESCRIPTION=Meta package for GNOME 3, merge this package to install
 EAPI=5
-HOMEPAGE=http://www.gnome.org/
+HOMEPAGE=https://www.gnome.org/
 IUSE=accessibility +bluetooth +classic +cdr cups +extras
 KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=metapackage
 PDEPEND=>=gnome-base/gvfs-1.24[udisks]
 RDEPEND=>=gnome-base/gnome-core-libs-3.16.0[cups?] >=gnome-base/gnome-core-apps-3.16.0[cups?,bluetooth?,cdr?] >=gnome-base/gdm-3.16.0 >=x11-wm/mutter-3.16.0 >=gnome-base/gnome-shell-3.16.0[bluetooth?] >=x11-themes/gnome-backgrounds-3.16.0 x11-themes/sound-theme-freedesktop accessibility? ( >=app-accessibility/at-spi2-atk-2.16 >=app-accessibility/at-spi2-core-2.16 >=app-accessibility/caribou-0.4.18 >=app-accessibility/orca-3.16.0 >=gnome-extra/mousetweaks-3.12.0 ) classic? ( >=gnome-extra/gnome-shell-extensions-3.16.0 ) extras? ( >=gnome-base/gnome-extra-apps-3.16.0 )
 SLOT=2.0
-_md5_=cebed10a8227be0cbe7ea823f0832983
+_md5_=40c11752818ef2275abb638215159083

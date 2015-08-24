@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare unpack
 DEPEND==media-libs/freetype-2* bzip2? ( app-arch/bzip2 ) zlib? ( sys-libs/zlib ) gif? ( >=media-libs/giflib-4.1.0 ) png? ( media-libs/libpng:0 ) jpeg? ( virtual/jpeg:0 ) tiff? ( media-libs/tiff:0 ) X? ( x11-libs/libX11 x11-libs/libXext ) mp3? ( media-libs/libid3tag ) png? ( virtual/pkgconfig ) X? ( x11-proto/xextproto x11-proto/xproto ) doc? ( app-doc/doxygen )
 DESCRIPTION=Version 2 of an advanced replacement library for libraries like libXpm
 EAPI=4
-HOMEPAGE=http://www.enlightenment.org/
+HOMEPAGE=https://www.enlightenment.org/
 IUSE=bzip2 gif jpeg cpu_flags_x86_mmx mp3 png static-libs tiff X zlib nls doc
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-interix ~x86-solaris ~x64-solaris
 LICENSE=BSD
@@ -10,4 +10,4 @@ RDEPEND==media-libs/freetype-2* bzip2? ( app-arch/bzip2 ) zlib? ( sys-libs/zlib 
 SLOT=0
 SRC_URI=mirror://sourceforge/enlightenment/imlib2-1.4.6.tar.gz
 _eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=2fbfc1acbcf4f43fcf576ce95114a290
+_md5_=fd3ab992343ac53ee3233b7cca40735c

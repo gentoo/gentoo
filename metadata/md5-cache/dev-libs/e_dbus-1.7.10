@@ -8,6 +8,6 @@ KEYWORDS=amd64 ~arm x86
 LICENSE=BSD-2
 RDEPEND=>=dev-libs/efl-1.8.4 sys-apps/dbus connman? ( >=net-misc/connman-0.75 ) udev? ( || ( sys-power/upower sys-power/upower-pm-utils ) sys-fs/udisks:0 ) nls? ( sys-devel/gettext )
 SLOT=0
-SRC_URI=http://download.enlightenment.org/releases/e_dbus-1.7.10.tar.bz2
+SRC_URI=https://download.enlightenment.org/releases/e_dbus-1.7.10.tar.bz2
 _eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=806e0a9b04083491cc71b2b3a9104042
+_md5_=f93d0f74146c8f01d9039d0c55c83959

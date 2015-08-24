@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DEPEND=x11-libs/libX11 x11-libs/libXext media-libs/freeglut media-libs/imlib2 >=x11-wm/enlightenment-0.16.4 virtual/pkgconfig x11-proto/xproto x11-proto/xextproto
 DESCRIPTION=Base files for Enlightenment epplets and some epplets
 EAPI=0
-HOMEPAGE=http://www.enlightenment.org/
+HOMEPAGE=https://www.enlightenment.org/
 KEYWORDS=alpha amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext media-libs/freeglut media-libs/imlib2 >=x11-wm/enlightenment-0.16.4
 SLOT=0
 SRC_URI=mirror://sourceforge/enlightenment/epplets-0.12.tar.gz
-_md5_=c0646ba3638555b86196b3b14fed1da6
+_md5_=a58023e267ea214b794ce612feaebe18

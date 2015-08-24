@@ -2,10 +2,10 @@ DEFINED_PHASES=compile configure install prepare unpack
 DEPEND=>=dev-libs/efl-9999[fbcon?,sdl?,png,wayland?,X?] dev-vcs/git !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 doc? ( app-doc/doxygen )
 DESCRIPTION=Basic widget set, based on EFL for mobile touch-screen devices
 EAPI=5
-HOMEPAGE=http://trac.enlightenment.org/e/wiki/Elementary
+HOMEPAGE=https://trac.enlightenment.org/e/wiki/Elementary
 IUSE=debug examples fbcon quicklaunch sdl wayland X static-libs nls doc
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/efl-9999[fbcon?,sdl?,png,wayland?,X?] nls? ( sys-devel/gettext )
 SLOT=0
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=54a721cb0199f0a95ef36cb5cd6aa33a
+_md5_=df7639f3a9f935dda26bf6288d2a1cb6

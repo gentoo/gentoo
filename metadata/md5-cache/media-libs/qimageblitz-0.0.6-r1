@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A graphical effect and filter library for KDE4
 EAPI=5
-HOMEPAGE=http://websvn.kde.org/trunk/kdesupport/qimageblitz/
+HOMEPAGE=https://websvn.kde.org/trunk/kdesupport/qimageblitz/
 IUSE=cpu_flags_x86_3dnow altivec debug cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2
 KEYWORDS=amd64 ~arm hppa ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
 LICENSE=GPL-2 LGPL-2
@@ -10,4 +10,4 @@ RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4
 SLOT=0
 SRC_URI=mirror://kde/stable/qimageblitz/qimageblitz-0.0.6.tar.bz2
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9705c23921c8ce7ad19886325121b625
+_md5_=3bd0a46f2681be2eb757403dedf1bd4b
