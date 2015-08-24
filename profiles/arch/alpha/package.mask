@@ -2,51 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
-# Qt5 mask, pending keywording. Remember unmasking qt5 in use.mask as well.
->=dev-qt/assistant-5.4.0
->=dev-qt/designer-5.4.0
->=dev-qt/linguist-5.4.0
->=dev-qt/linguist-tools-5.4.0
->=dev-qt/pixeltool-5.4.0
->=dev-qt/qdbus-5.4.0
->=dev-qt/qdbusviewer-5.4.0
->=dev-qt/qdoc-5.4.0
->=dev-qt/qtconcurrent-5.4.0
->=dev-qt/qtcore-5.4.0
->=dev-qt/qtdbus-5.4.0
->=dev-qt/qtdeclarative-5.4.0
->=dev-qt/qtdiag-5.4.0
->=dev-qt/qtgraphicaleffects-5.4.0
->=dev-qt/qtgui-5.4.0
->=dev-qt/qthelp-5.4.0
->=dev-qt/qtimageformats-5.4.0
->=dev-qt/qtmultimedia-5.4.0
->=dev-qt/qtnetwork-5.4.0
->=dev-qt/qtopengl-5.4.0
->=dev-qt/qtpaths-5.4.0
->=dev-qt/qtpositioning-5.4.0
->=dev-qt/qtprintsupport-5.4.0
->=dev-qt/qtquick1-5.4.0
->=dev-qt/qtquickcontrols-5.4.0
->=dev-qt/qtscript-5.4.0
->=dev-qt/qtsensors-5.4.0
->=dev-qt/qtserialport-5.4.0
->=dev-qt/qtsql-5.4.0
->=dev-qt/qtsvg-5.4.0
->=dev-qt/qttest-5.4.0
->=dev-qt/qttranslations-5.4.0
->=dev-qt/qtwayland-5.4.0
->=dev-qt/qtwebkit-5.4.0
->=dev-qt/qtwebsockets-5.4.0
->=dev-qt/qtwidgets-5.4.0
->=dev-qt/qtx11extras-5.4.0
->=dev-qt/qtxml-5.4.0
->=dev-qt/qtxmlpatterns-5.4.0
->=dev-qt/qt-creator-3.3.0
-=app-text/calibre-2*
->=x11-misc/sddm-0.10.0
-
 # Julian Ospald <hasufell@gentoo.org> (01 Sep 2014)
 # Needs either hardmasked >=media-video/libav-10 or
 # >=media-video/ffmpeg-2.1.4 which is not keyworded for
