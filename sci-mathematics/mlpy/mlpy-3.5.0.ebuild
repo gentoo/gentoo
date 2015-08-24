@@ -24,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-pyhton_install_all() {
+python_install_all() {
 	distutils-r1_python_install_all
 	if use doc; then
 		pushd docs 2>/dev/null || die
