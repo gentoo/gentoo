@@ -9,8 +9,8 @@ inherit enlightenment
 MY_P=${PN}-${PV/_/-}
 
 DESCRIPTION="Provides external applications as generic loaders for Evas"
-HOMEPAGE="http://www.enlightenment.org/"
-SRC_URI="http://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.enlightenment.org/"
+SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~x86"

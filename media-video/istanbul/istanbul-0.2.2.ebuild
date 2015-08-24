@@ -8,7 +8,7 @@ PYTHON_DEPEND="2"
 
 inherit eutils gnome2 python autotools
 
-HOMEPAGE="http://live.gnome.org/Istanbul"
+HOMEPAGE="https://live.gnome.org/Istanbul"
 DESCRIPTION="Istanbul is a screencast application for the Unix desktop"
 SRC_URI="http://zaheer.merali.org/${P}.tar.bz2"
 

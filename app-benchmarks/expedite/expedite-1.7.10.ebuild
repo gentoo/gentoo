@@ -9,7 +9,7 @@ EKEY_STATE="snap"
 inherit enlightenment
 
 DESCRIPTION="Performance and correctness test suite for Evas"
-SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 IUSE="directfb fbcon opengl X xcb"

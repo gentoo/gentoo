@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{3_3,3_4} )
 inherit gnome2 python-single-r1
 
 DESCRIPTION="Music management for Gnome"
-HOMEPAGE="http://wiki.gnome.org/Apps/Music"
+HOMEPAGE="https://wiki.gnome.org/Apps/Music"
 
 LICENSE="GPL-2+"
 SLOT="0"

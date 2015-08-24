@@ -8,7 +8,7 @@ GCONF_DEBUG="yes"
 inherit gnome2 eutils
 
 DESCRIPTION="Menu editor for enlightenment DR16 written in GTK2"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"

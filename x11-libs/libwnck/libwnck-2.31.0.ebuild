@@ -9,7 +9,7 @@ GCONF_DEBUG="no"
 inherit flag-o-matic gnome2
 
 DESCRIPTION="A window navigation construction kit"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="LGPL-2+"
 SLOT="1"

@@ -9,8 +9,8 @@ inherit kde4-base
 
 DESCRIPTION="KDE: A simple ball dodging game"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kollision/
-	http://games.kde.org/game.php?game=kollision
+	https://www.kde.org/applications/games/kollision/
+	https://games.kde.org/game.php?game=kollision
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

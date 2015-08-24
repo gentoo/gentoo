@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2 versionator
 
 DESCRIPTION="GNOME default icon theme"
-HOMEPAGE="http://www.gnome.org/ http://people.freedesktop.org/~jimmac/icons/#git"
+HOMEPAGE="https://www.gnome.org/ http://people.freedesktop.org/~jimmac/icons/#git"
 
 SRC_URI="${SRC_URI}
 	branding? ( http://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )"

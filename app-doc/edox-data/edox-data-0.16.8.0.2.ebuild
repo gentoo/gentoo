@@ -6,7 +6,7 @@ inherit eutils
 
 MY_P="e16-docs-${PV}"
 DESCRIPTION="The Enlightenment online help"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="mirror://sourceforge/enlightenment/${MY_P}.tar.gz"
 
 LICENSE="BSD"

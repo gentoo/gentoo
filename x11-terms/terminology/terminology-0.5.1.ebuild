@@ -5,8 +5,8 @@
 EAPI=5
 
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
-HOMEPAGE="http://www.enlightenment.org/p.php?p=about/terminology"
-SRC_URI="http://download.enlightenment.org/rel/apps/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.enlightenment.org/p.php?p=about/terminology"
+SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"

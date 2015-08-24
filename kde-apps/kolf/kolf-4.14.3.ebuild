@@ -10,8 +10,8 @@ inherit kde4-base
 
 DESCRIPTION="KDE Minigolf Game"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kolf/
-	http://games.kde.org/game.php?game=kolf
+	https://www.kde.org/applications/games/kolf/
+	https://games.kde.org/game.php?game=kolf
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

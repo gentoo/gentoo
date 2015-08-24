@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="Sub-meta package for the applications of GNOME 3"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 LICENSE="metapackage"
 SLOT="3.0"
 IUSE="+games +share +shotwell +tracker"

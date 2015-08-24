@@ -10,7 +10,7 @@ KDE_LINGUAS="bs ca ca@valencia cs da de el es fi fr gl hu it lv nl pl pt pt_BR s
 inherit kde4-base
 
 DESCRIPTION="Unified media experience for any device capable of running KDE"
-HOMEPAGE="http://www.kde.org/ http://community.kde.org/Plasma/Plasma_Media_Center"
+HOMEPAGE="https://www.kde.org/ https://community.kde.org/Plasma/Plasma_Media_Center"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.bz2"

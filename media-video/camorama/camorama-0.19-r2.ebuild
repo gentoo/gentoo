@@ -8,7 +8,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit eutils gnome2
 
 DESCRIPTION="A webcam application featuring various image filters"
-HOMEPAGE="http://git.gnome.org/browse/camorama/"
+HOMEPAGE="https://git.gnome.org/browse/camorama/"
 
 LICENSE="GPL-2"
 SLOT="0"

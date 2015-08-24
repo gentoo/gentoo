@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_SUB_PROJECT="core"
 	EGIT_URI_APPEND="${PN}"
 else
-	SRC_URI="http://download.enlightenment.org/rel/apps/${PN}/${MY_P}.tar.xz"
+	SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${MY_P}.tar.xz"
 	EKEY_STATE="snap"
 fi
 

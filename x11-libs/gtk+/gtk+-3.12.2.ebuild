@@ -14,8 +14,8 @@ HOMEPAGE="http://www.gtk.org/"
 LICENSE="LGPL-2+"
 SLOT="3"
 # NOTE: This gtk+ has multi-gdk-backend support, see:
-#  * http://blogs.gnome.org/kris/2010/12/29/gdk-3-0-on-mac-os-x/
-#  * http://mail.gnome.org/archives/gtk-devel-list/2010-November/msg00099.html
+#  * https://blogs.gnome.org/kris/2010/12/29/gdk-3-0-on-mac-os-x/
+#  * https://mail.gnome.org/archives/gtk-devel-list/2010-November/msg00099.html
 # I tried this and got it all compiling, but the end result is unusable as it
 # horribly mixes up the backends -- grobian
 IUSE="aqua cloudprint colord cups debug examples +introspection test vim-syntax wayland X xinerama"
@@ -86,7 +86,7 @@ DEPEND="${COMMON_DEPEND}
 # gtk+-3.2.2 breaks Alt key handling in <=x11-libs/vte-0.30.1:2.90
 # gtk+-3.3.18 breaks scrolling in <=x11-libs/vte-0.31.0:2.90
 # >=xorg-server-1.11.4 needed for
-#  http://mail.gnome.org/archives/desktop-devel-list/2012-March/msg00024.html
+#  https://mail.gnome.org/archives/desktop-devel-list/2012-March/msg00024.html
 RDEPEND="${COMMON_DEPEND}
 	!<gnome-base/gail-1000
 	!<x11-libs/vte-0.31.0:2.90

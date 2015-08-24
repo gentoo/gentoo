@@ -13,7 +13,7 @@ KDE_VERSION=4.4.0
 MY_P=${P}-kde${KDE_VERSION}
 
 DESCRIPTION="KDE screen grabbing utility"
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 SRC_URI="mirror://kde/stable/${KDE_VERSION}/src/extragear/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1 FDL-1.2"

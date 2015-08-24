@@ -10,7 +10,7 @@ inherit kde4-base
 if [[ $PV == *9999* ]]; then
 	KEYWORDS=""
 else
-	SRC_URI="http://quickgit.kde.org/?p=${PN}.git&a=snapshot&h=${PV%%.0} -> ${P}.tar.gz"
+	SRC_URI="https://quickgit.kde.org/?p=${PN}.git&a=snapshot&h=${PV%%.0} -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

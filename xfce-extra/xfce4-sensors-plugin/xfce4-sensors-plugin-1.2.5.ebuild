@@ -50,9 +50,9 @@ src_prepare() {
 	# Use flags from xfce4-dev-tools instead of defining them again in
 	# configure.in wrt #386979
 	# Remove AC_PROG_LIBTOOL because LT_INIT([disable-static]) is also present:
-	# http://bugzilla.xfce.org/show_bug.cgi?id=8888
+	# https://bugzilla.xfce.org/show_bug.cgi?id=8888
 	# Use AC_CONFIG_HEADERS for automake-1.13 compability, see:
-	# http://bugzilla.xfce.org/show_bug.cgi?id=10031
+	# https://bugzilla.xfce.org/show_bug.cgi?id=10031
 	sed -i \
 		-e '/PLATFORM_CFLAGS/s:-Werror::' \
 		-e '/AC_PROG_LIBTOOL/d' \

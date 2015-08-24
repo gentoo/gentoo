@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Geoclue python module"
-HOMEPAGE="http://live.gnome.org/gtg/soc/python_geoclue/"
+HOMEPAGE="https://live.gnome.org/gtg/soc/python_geoclue/"
 SRC_URI="http://www.paulocabido.com/soc/${PN}/${P}.tar.gz"
 
 SLOT="0"

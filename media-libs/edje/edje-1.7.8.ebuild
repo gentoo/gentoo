@@ -7,8 +7,8 @@ EAPI=2
 inherit autotools enlightenment
 
 DESCRIPTION="graphical layout and animation library"
-HOMEPAGE="http://www.enlightenment.org/pages/edje.html"
-SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+HOMEPAGE="https://www.enlightenment.org/pages/edje.html"
+SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 
 LICENSE="BSD-2 GPL-2"
 KEYWORDS="~amd64 ~arm ~x86"

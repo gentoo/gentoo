@@ -10,7 +10,7 @@ KDE_LINGUAS="ca cs da de en_GB es et fr hu it lt nl pl pt pt_BR sk sv uk"
 inherit kde4-base
 
 DESCRIPTION="Program to create cross stitch patterns"
-HOMEPAGE="http://userbase.kde.org/KXStitch"
+HOMEPAGE="https://userbase.kde.org/KXStitch"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2"

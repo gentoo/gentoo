@@ -9,7 +9,7 @@ KMNAME="kdepim"
 inherit kde4-meta
 
 DESCRIPTION="A Personal Organizer for KDE"
-HOMEPAGE="http://www.kde.org/applications/office/korganizer/"
+HOMEPAGE="https://www.kde.org/applications/office/korganizer/"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

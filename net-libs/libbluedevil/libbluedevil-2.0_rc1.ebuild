@@ -8,7 +8,7 @@ inherit kde4-base
 
 MY_P=${PN}-${PV/_/-}
 DESCRIPTION="Qt wrapper for bluez used in the KDE bluetooth stack"
-HOMEPAGE="http://projects.kde.org/projects/playground/libs/libbluedevil"
+HOMEPAGE="https://projects.kde.org/projects/playground/libs/libbluedevil"
 SRC_URI="mirror://kde/unstable/${PN}/${PV/_/-}/src/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"

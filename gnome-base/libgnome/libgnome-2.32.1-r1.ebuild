@@ -10,7 +10,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit gnome2 eutils
 
 DESCRIPTION="Essential Gnome Libraries"
-HOMEPAGE="http://library.gnome.org/devel/libgnome/stable/"
+HOMEPAGE="https://library.gnome.org/devel/libgnome/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"

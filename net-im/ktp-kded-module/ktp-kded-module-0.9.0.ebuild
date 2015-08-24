@@ -11,7 +11,7 @@ MY_P=${PN/kded/kded-integration}-${PV}
 inherit kde4-base
 
 DESCRIPTION="KDE Telepathy workspace integration"
-HOMEPAGE="http://community.kde.org/Real-Time_Communication_and_Collaboration"
+HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/kde-telepathy/${PV}/src/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"

@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils gnome2 python-single-r1
 
 DESCRIPTION="A user interface designer for GTK+ and GNOME"
-HOMEPAGE="http://glade.gnome.org/"
+HOMEPAGE="https://glade.gnome.org/"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="3/11" # subslot = suffix of libgladeui-1.so

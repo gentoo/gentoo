@@ -14,7 +14,7 @@ fi
 inherit enlightenment
 
 DESCRIPTION="image loader plugins for Imlib 2"
-HOMEPAGE="http://www.enlightenment.org/pages/imlib2.html"
+HOMEPAGE="https://www.enlightenment.org/pages/imlib2.html"
 
 IUSE="eet xcf"
 

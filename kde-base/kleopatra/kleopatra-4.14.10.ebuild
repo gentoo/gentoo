@@ -10,7 +10,7 @@ EGIT_BRANCH="KDE/4.14"
 inherit kde4-meta
 
 DESCRIPTION="Kleopatra - KDE X.509 key manager"
-HOMEPAGE="http://www.kde.org/applications/utilities/kleopatra/"
+HOMEPAGE="https://www.kde.org/applications/utilities/kleopatra/"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

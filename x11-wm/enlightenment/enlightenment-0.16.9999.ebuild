@@ -4,7 +4,7 @@
 
 EAPI="4"
 if [[ ${PV} == *9999 ]] ; then
-	ESVN_REPO_URI="http://svn.enlightenment.org/svn/e/trunk/E16/e"
+	ESVN_REPO_URI="https://svn.enlightenment.org/svn/e/trunk/E16/e"
 	inherit subversion autotools
 	SRC_URI=""
 	#KEYWORDS=""
@@ -17,7 +17,7 @@ fi
 inherit eutils
 
 DESCRIPTION="Enlightenment Window Manager (e16)"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 
 LICENSE="BSD"
 SLOT="0"

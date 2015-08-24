@@ -17,7 +17,7 @@ inherit kde4-base ruby-ng
 DESCRIPTION="KDE Ruby bindings"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="akonadi debug kate okular"
-HOMEPAGE="http://techbase.kde.org/Development/Languages/Ruby"
+HOMEPAGE="https://techbase.kde.org/Development/Languages/Ruby"
 
 DEPEND="
 	$(add_kdebase_dep qtruby 'ruby_targets_ruby20')

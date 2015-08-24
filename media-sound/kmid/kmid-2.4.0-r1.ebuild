@@ -10,7 +10,7 @@ sr sr@ijekavian sr@ijekavianlatin sr@Latn sv tr uk zh_CN"
 inherit kde4-base
 
 DESCRIPTION="A MIDI/Karaoke player for KDE"
-HOMEPAGE="http://userbase.kde.org/KMid"
+HOMEPAGE="https://userbase.kde.org/KMid"
 SRC_URI="mirror://sourceforge/kmid2/${P}.tar.bz2"
 
 LICENSE="GPL-2"

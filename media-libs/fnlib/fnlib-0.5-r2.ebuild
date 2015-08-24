@@ -7,7 +7,7 @@ EAPI="2"
 inherit autotools
 
 DESCRIPTION="Font Library for enlightenment"
-HOMEPAGE="http://www.enlightenment.org/"
+HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
 
 LICENSE="GPL-2"

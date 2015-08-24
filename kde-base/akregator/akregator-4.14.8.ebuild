@@ -10,7 +10,7 @@ EGIT_BRANCH="KDE/4.14"
 inherit kde4-meta
 
 DESCRIPTION="KDE news feed aggregator"
-HOMEPAGE="http://www.kde.org/applications/internet/akregator"
+HOMEPAGE="https://www.kde.org/applications/internet/akregator"
 KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

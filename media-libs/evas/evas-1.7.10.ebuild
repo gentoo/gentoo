@@ -9,14 +9,14 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_URI_APPEND=${PN}
 	EGIT_BRANCH=${PN}-1.7
 else
-	SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+	SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 	EKEY_STATE="snap"
 fi
 
 inherit enlightenment
 
 DESCRIPTION="hardware-accelerated retained canvas API"
-HOMEPAGE="http://trac.enlightenment.org/e/wiki/Evas"
+HOMEPAGE="https://trac.enlightenment.org/e/wiki/Evas"
 
 LICENSE="BSD-2"
 IUSE="altivec bidi +bmp directfb +eet fbcon +fontconfig gles gif +ico +jpeg cpu_flags_x86_mmx opengl +png +ppm +psd cpu_flags_x86_sse cpu_flags_x86_sse3 static-libs tga tiff wayland X xcb xpm"

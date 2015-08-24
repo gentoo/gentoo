@@ -10,7 +10,7 @@ sv th tr uk wa zh_CN zh_TW"
 inherit kde4-base
 
 DESCRIPTION="A quake-style terminal emulator based on KDE konsole technology"
-HOMEPAGE="http://yakuake.kde.org/"
+HOMEPAGE="https://yakuake.kde.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"

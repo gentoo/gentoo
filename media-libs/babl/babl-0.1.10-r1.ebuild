@@ -32,7 +32,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-clang.patch
 
 	# fix compilation on OSX, can be dropped on next release:
-	# http://mail.gnome.org/archives/commits-list/2012-April/msg02589.html
+	# https://mail.gnome.org/archives/commits-list/2012-April/msg02589.html
 	sed -i -e 's/values\.h/limits.h/' babl/babl-palette.c || die
 	epatch "${FILESDIR}"/${P}-introspection.patch
 	epatch "${FILESDIR}"/${P}-g-ir-compiler-crash.patch

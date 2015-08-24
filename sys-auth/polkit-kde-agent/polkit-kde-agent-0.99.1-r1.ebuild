@@ -14,7 +14,7 @@ KDE_LINGUAS="ar bs ca ca@valencia cs da de el en_GB eo es et fi fr
 inherit kde4-base
 
 DESCRIPTION="PolKit agent module for KDE"
-HOMEPAGE="http://www.kde.org"
+HOMEPAGE="https://www.kde.org"
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${MY_PN/-agent/}_${PV}.orig.tar.xz"
 fi

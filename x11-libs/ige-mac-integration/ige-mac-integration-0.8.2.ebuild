@@ -8,7 +8,7 @@ inherit base python libtool
 
 DESCRIPTION="GTK+ bindings for Mac OS X specific tasks"
 LICENSE="LGPL-2"
-HOMEPAGE="http://live.gnome.org/GTK+/OSX/Integration"
+HOMEPAGE="https://live.gnome.org/GTK+/OSX/Integration"
 SRC_URI="http://ftp.imendio.com/pub/imendio/ige-mac-integration/${P}.tar.gz"
 SLOT="0"
 KEYWORDS="~ppc-macos ~x86-macos"

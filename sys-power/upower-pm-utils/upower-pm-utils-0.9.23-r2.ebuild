@@ -48,7 +48,7 @@ src_prepare() {
 	sed -i -e '/DISABLE_DEPRECATED/d' configure || die
 
 	# http://bugs.freedesktop.org/show_bug.cgi?id=79565
-	# http://bugzilla.xfce.org/show_bug.cgi?id=10931
+	# https://bugzilla.xfce.org/show_bug.cgi?id=10931
 	# Same effect as Debian -no_deprecation_define.patch, they patch .h, we patch .pc
 	sed -i -e 's|Cflags: |&-DUPOWER_ENABLE_DEPRECATED |' upower-glib.pc.in || die
 

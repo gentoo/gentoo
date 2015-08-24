@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="KDE Telepathy client - merge this to pull in all net-im/ktp-*
 kde packages"
-HOMEPAGE="http://community.kde.org/Real-Time_Communication_and_Collaboration"
+HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"

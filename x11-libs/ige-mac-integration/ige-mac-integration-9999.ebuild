@@ -12,7 +12,7 @@ SRC_URI=""
 
 DESCRIPTION="GTK+ bindings for Mac OS X specific tasks"
 LICENSE="LGPL-2"
-HOMEPAGE="http://live.gnome.org/GTK+/OSX/Integration"
+HOMEPAGE="https://live.gnome.org/GTK+/OSX/Integration"
 SLOT="0"
 KEYWORDS=""
 IUSE=""

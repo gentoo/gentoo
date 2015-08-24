@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml"
 inherit gnome2 python-r1
 
 DESCRIPTION="Interactive Python accessibility explorer"
-HOMEPAGE="http://live.gnome.org/Accerciser"
+HOMEPAGE="https://live.gnome.org/Accerciser"
 
 LICENSE="BSD CC-BY-SA-3.0"
 SLOT="0"

@@ -19,7 +19,7 @@ fi
 inherit cmake-utils ${scm_eclass}
 
 DESCRIPTION="A library providing access to Open Collaboration Services"
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit autotools eutils gnome2 multilib-minimal
 
 DESCRIPTION="Printer handling for Gnome"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="2.2"

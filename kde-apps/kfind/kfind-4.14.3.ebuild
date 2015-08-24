@@ -9,7 +9,7 @@ KMNAME="kde-baseapps"
 inherit kde4-meta
 
 DESCRIPTION="KDE file finder utility"
-HOMEPAGE="http://www.kde.org/applications/utilities/kfind/"
+HOMEPAGE="https://www.kde.org/applications/utilities/kfind/"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

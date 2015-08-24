@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils autotools gnome.org fdo-mime
 
 DESCRIPTION="GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags"
-HOMEPAGE="http://projects.gnome.org/easytag/"
+HOMEPAGE="https://projects.gnome.org/easytag/"
 
 LICENSE="GPL-2"
 SLOT="0"

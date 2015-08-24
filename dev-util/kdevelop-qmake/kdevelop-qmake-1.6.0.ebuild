@@ -12,7 +12,7 @@ MY_PN="${KMNAME}"
 S=${WORKDIR}/${MY_PN}
 DESCRIPTION="Qt's qmake build system plugin for KDevelop"
 HOMEPAGE="http://www.kdevelop.org/"
-SRC_URI="http://quickgit.kde.org/?p=${MY_PN}.git&a=snapshot&h=${PV%%.0} -> ${P}.tar.gz"
+SRC_URI="https://quickgit.kde.org/?p=${MY_PN}.git&a=snapshot&h=${PV%%.0} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="4"

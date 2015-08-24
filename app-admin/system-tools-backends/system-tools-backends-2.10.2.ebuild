@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit eutils gnome2 readme.gentoo user
 
 DESCRIPTION="Tools aimed to make easy the administration of UNIX systems"
-HOMEPAGE="http://projects.gnome.org/gst/"
+HOMEPAGE="https://projects.gnome.org/gst/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit eutils gnome2 virtualx
 
 DESCRIPTION="a library for writing single instance application"
-HOMEPAGE="http://live.gnome.org/LibUnique"
+HOMEPAGE="https://live.gnome.org/LibUnique"
 
 LICENSE="LGPL-2.1"
 SLOT="1"

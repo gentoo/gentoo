@@ -9,7 +9,7 @@ KDE_TEST="false"
 inherit kde5
 
 DESCRIPTION="Plasma mixer gui"
-HOMEPAGE="http://www.kde.org/applications/multimedia/kmix/"
+HOMEPAGE="https://www.kde.org/applications/multimedia/kmix/"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa pulseaudio"
 

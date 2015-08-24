@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="Plasmoid that shows the state of keyboard leds"
-HOMEPAGE="http://websvn.kde.org/trunk/playground/base/plasma/applets/kbstateapplet"
+HOMEPAGE="https://websvn.kde.org/trunk/playground/base/plasma/applets/kbstateapplet"
 SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"

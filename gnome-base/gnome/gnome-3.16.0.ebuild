@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="Meta package for GNOME 3, merge this package to install"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="metapackage"
 SLOT="2.0" # Cannot be installed at the same time as gnome-2

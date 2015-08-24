@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools eutils gnome2 mono
 
 DESCRIPTION="Desktop note-taking application"
-HOMEPAGE="http://projects.gnome.org/tomboy/"
+HOMEPAGE="https://projects.gnome.org/tomboy/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

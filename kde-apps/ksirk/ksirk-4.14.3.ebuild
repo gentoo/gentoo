@@ -9,8 +9,8 @@ inherit kde4-base
 
 DESCRIPTION="KDE: Ksirk is a KDE port of the board game risk"
 HOMEPAGE="
-	http://www.kde.org/applications/games/ksirk/
-	http://games.kde.org/game.php?game=ksirk
+	https://www.kde.org/applications/games/ksirk/
+	https://games.kde.org/game.php?game=ksirk
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

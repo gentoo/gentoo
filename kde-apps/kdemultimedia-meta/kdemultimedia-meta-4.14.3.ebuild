@@ -7,8 +7,8 @@ inherit kde4-meta-pkg
 
 DESCRIPTION="kdemultimedia - merge this to pull in all kdemultimedia-derived packages"
 HOMEPAGE="
-	http://www.kde.org/applications/multimedia/
-	http://multimedia.kde.org/
+	https://www.kde.org/applications/multimedia/
+	https://multimedia.kde.org/
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+ffmpeg mplayer"

@@ -11,7 +11,7 @@ KMMODULE="console/${PN}"
 inherit kde4-meta
 
 DESCRIPTION="A tool to scan calendar data for buggy instances"
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

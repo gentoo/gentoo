@@ -8,7 +8,7 @@ inherit enlightenment
 
 DESCRIPTION="Library for managing scores, trophies and unlockables,stores them and provides views to display them"
 
-SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 LICENSE="BSD-2"
 
 KEYWORDS="~amd64 ~x86"

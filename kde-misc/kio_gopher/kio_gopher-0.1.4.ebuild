@@ -14,7 +14,7 @@ inherit kde4-base
 MY_P=${PN/_/-}-${PV}
 
 DESCRIPTION="Gopher Kioslave for Konqueror"
-HOMEPAGE="http://userbase.kde.org/Kio_gopher"
+HOMEPAGE="https://userbase.kde.org/Kio_gopher"
 SRC_URI="mirror://kde/stable/extragear/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"

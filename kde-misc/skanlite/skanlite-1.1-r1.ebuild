@@ -12,7 +12,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE image scanning application"
-HOMEPAGE="http://www.kde.org/applications/graphics/skanlite/"
+HOMEPAGE="https://www.kde.org/applications/graphics/skanlite/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"

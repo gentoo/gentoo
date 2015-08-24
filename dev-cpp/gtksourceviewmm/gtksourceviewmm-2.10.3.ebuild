@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="C++ bindings for gtksourceview"
-HOMEPAGE="http://projects.gnome.org/gtksourceviewmm/"
+HOMEPAGE="https://projects.gnome.org/gtksourceviewmm/"
 
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"

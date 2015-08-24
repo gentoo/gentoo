@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="Command line tool allowing user scripting of the running window manager"
 HOMEPAGE="http://kde-apps.org/content/show.php/WMIface?content=40425"
-SRC_URI="http://home.kde.org/~seli/${PN}/${P}.tar.gz"
+SRC_URI="https://home.kde.org/~seli/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="LibGRSS is a library for easy management of RSS/Atom/Pie feeds"
-HOMEPAGE="http://live.gnome.org/Libgrss"
+HOMEPAGE="https://live.gnome.org/Libgrss"
 
 LICENSE="LGPL-3"
 SLOT="0"

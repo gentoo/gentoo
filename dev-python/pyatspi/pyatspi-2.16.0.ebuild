@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit eutils gnome2 python-r1
 
 DESCRIPTION="Python binding to at-spi library"
-HOMEPAGE="http://live.gnome.org/Accessibility"
+HOMEPAGE="https://live.gnome.org/Accessibility"
 
 # Note: only some of the tests are GPL-licensed, everything else is LGPL
 LICENSE="LGPL-2 GPL-2+"

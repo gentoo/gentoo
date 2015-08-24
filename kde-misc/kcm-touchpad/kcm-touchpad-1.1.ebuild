@@ -11,7 +11,7 @@ HOMEPAGE="https://projects.kde.org/projects/playground/utils/kcm-touchpad"
 if [[ "${PV}" == *9999 ]]; then
 	KEYWORDS=""
 else
-	SRC_URI="http://quickgit.kde.org/?p=kcm-touchpad.git&a=snapshot&t=v${PV} -> ${P}.tar.gz"
+	SRC_URI="https://quickgit.kde.org/?p=kcm-touchpad.git&a=snapshot&t=v${PV} -> ${P}.tar.gz"
 	S=${WORKDIR}/${PN}
 	KEYWORDS="amd64 x86"
 fi

@@ -10,7 +10,7 @@ GNOME_TARBALL_SUFFIX=bz2
 inherit autotools eutils gnome2
 
 DESCRIPTION="Notification daemon"
-HOMEPAGE="http://git.gnome.org/browse/notification-daemon/"
+HOMEPAGE="https://git.gnome.org/browse/notification-daemon/"
 
 LICENSE="GPL-2"
 SLOT="0"

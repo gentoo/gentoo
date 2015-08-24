@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Kate is an MDI texteditor"
-HOMEPAGE="http://www.kde.org/applications/utilities/kate http://kate-editor.org"
+HOMEPAGE="https://www.kde.org/applications/utilities/kate http://kate-editor.org"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug python"
 

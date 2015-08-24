@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit base eutils gnome2
 
 DESCRIPTION="git repository viewer for GNOME"
-HOMEPAGE="http://git.gnome.org/browse/gitg/"
+HOMEPAGE="https://git.gnome.org/browse/gitg/"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"

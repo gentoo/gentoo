@@ -11,7 +11,7 @@ GNOME2_LA_PUNT="yes"
 inherit eutils gnome2 toolchain-funcs autotools
 
 DESCRIPTION="ORBit2 is a high-performance CORBA ORB"
-HOMEPAGE="http://projects.gnome.org/ORBit2/"
+HOMEPAGE="https://projects.gnome.org/ORBit2/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="2"

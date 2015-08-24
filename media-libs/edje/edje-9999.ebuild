@@ -9,14 +9,14 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_URI_APPEND=${PN}
 	EGIT_BRANCH=${PN}-1.7
 else
-	SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2"
+	SRC_URI="https://download.enlightenment.org/releases/${P}.tar.bz2"
 	EKEY_STATE="snap"
 fi
 
 inherit enlightenment
 
 DESCRIPTION="graphical layout and animation library"
-HOMEPAGE="http://www.enlightenment.org/pages/edje.html"
+HOMEPAGE="https://www.enlightenment.org/pages/edje.html"
 
 LICENSE="BSD-2 GPL-2"
 IUSE="debug +cache static-libs vim-syntax"

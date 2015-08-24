@@ -4,6 +4,6 @@
   <herd>qt</herd>
   <upstream>
     <remote-id type="sourceforge">kst</remote-id>
-    <bugs-to>http://bugs.kde.org/</bugs-to>
+    <bugs-to>https://bugs.kde.org/</bugs-to>
   </upstream>
 </pkgmetadata>

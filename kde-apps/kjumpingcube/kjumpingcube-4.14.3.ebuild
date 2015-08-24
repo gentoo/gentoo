@@ -10,8 +10,8 @@ inherit kde4-base
 
 DESCRIPTION="KDE: Tactical one or two player game"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kjumpingcube/
-	http://games.kde.org/game.php?game=kjumpingcube
+	https://www.kde.org/applications/games/kjumpingcube/
+	https://games.kde.org/game.php?game=kjumpingcube
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

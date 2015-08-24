@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-r1
 
 DESCRIPTION="Libraries for the gnome desktop that are not part of the UI"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="2"

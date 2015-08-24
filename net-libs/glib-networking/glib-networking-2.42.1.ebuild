@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools eutils gnome2 multilib-minimal virtualx
 
 DESCRIPTION="Network-related giomodules for glib"
-HOMEPAGE="http://git.gnome.org/browse/glib-networking/"
+HOMEPAGE="https://git.gnome.org/browse/glib-networking/"
 
 LICENSE="LGPL-2+"
 SLOT="0"

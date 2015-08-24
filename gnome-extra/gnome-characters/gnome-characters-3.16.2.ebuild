@@ -10,7 +10,7 @@ VALA_USE_DEPEND="vapigen"
 inherit gnome2 vala virtualx
 
 DESCRIPTION="Unicode character map viewer and library"
-HOMEPAGE="http://live.gnome.org/Gucharmap"
+HOMEPAGE="https://live.gnome.org/Gucharmap"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"

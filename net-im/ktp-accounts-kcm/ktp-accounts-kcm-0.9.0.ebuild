@@ -10,7 +10,7 @@ sr@ijekavianlatin sr@latin sv tr ug uk vi wa zh_CN zh_TW"
 inherit kde4-base
 
 DESCRIPTION="KDE Telepathy account management kcm"
-HOMEPAGE="http://community.kde.org/Real-Time_Communication_and_Collaboration"
+HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/kde-telepathy/${PV}/src/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"

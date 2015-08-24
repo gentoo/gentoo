@@ -11,7 +11,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="A user friendly IRC Client for KDE4"
-HOMEPAGE="http://kde.org/applications/internet/konversation/ http://konversation.kde.org"
+HOMEPAGE="https://kde.org/applications/internet/konversation/ https://konversation.kde.org"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2 handbook? ( FDL-1.2 )"

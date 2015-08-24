@@ -7,8 +7,8 @@ EAPI="2"
 MY_PN="eg"
 
 DESCRIPTION="Easy GIT is a wrapper for git, designed to make git easy to learn and use"
-HOMEPAGE="http://www.gnome.org/~newren/eg/"
-SRC_URI="http://www.gnome.org/~newren/${MY_PN}/download/${PV}/${MY_PN} -> ${PF}"
+HOMEPAGE="https://www.gnome.org/~newren/eg/"
+SRC_URI="https://www.gnome.org/~newren/${MY_PN}/download/${PV}/${MY_PN} -> ${PF}"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"

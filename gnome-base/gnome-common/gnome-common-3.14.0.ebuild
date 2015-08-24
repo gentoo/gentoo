@@ -7,7 +7,7 @@ EAPI="5"
 inherit gnome.org
 
 DESCRIPTION="Common files for development of Gnome packages"
-HOMEPAGE="http://git.gnome.org/browse/gnome-common"
+HOMEPAGE="https://git.gnome.org/browse/gnome-common"
 
 LICENSE="GPL-3"
 SLOT="3"

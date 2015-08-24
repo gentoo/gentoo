@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="small utility for making a poster from an EPS file or a one-page PS document"
 SRC_URI="mirror://kde/printing/${P}.tar.bz2"
-HOMEPAGE="http://printing.kde.org/downloads"
+HOMEPAGE="https://printing.kde.org/downloads"
 
 LICENSE="GPL-2"
 SLOT="0"

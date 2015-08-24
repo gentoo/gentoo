@@ -8,7 +8,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE Screenshot Utility"
-HOMEPAGE="http://www.kde.org/applications/graphics/ksnapshot/"
+HOMEPAGE="https://www.kde.org/applications/graphics/ksnapshot/"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug kipi"
 

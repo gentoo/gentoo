@@ -10,7 +10,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit eutils gnome2
 
 DESCRIPTION="GTK2 WGet Frontend"
-HOMEPAGE="http://gnome.org/projects/gwget/"
+HOMEPAGE="https://gnome.org/projects/gwget/"
 
 KEYWORDS="amd64 ppc x86"
 LICENSE="GPL-2"

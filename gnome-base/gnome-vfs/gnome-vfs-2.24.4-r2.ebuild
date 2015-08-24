@@ -10,7 +10,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools eutils gnome2 multilib-minimal virtualx
 
 DESCRIPTION="Gnome Virtual Filesystem"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="2"

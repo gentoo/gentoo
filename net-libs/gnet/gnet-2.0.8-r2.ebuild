@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit autotools eutils gnome2
 
 DESCRIPTION="A simple network library"
-HOMEPAGE="http://live.gnome.org/GNetLibrary"
+HOMEPAGE="https://live.gnome.org/GNetLibrary"
 
 LICENSE="LGPL-2"
 SLOT="2"

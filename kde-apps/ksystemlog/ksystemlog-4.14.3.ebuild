@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED=test
 inherit kde4-base
 
 DESCRIPTION="KDE system log viewer"
-HOMEPAGE="http://www.kde.org/applications/system/ksystemlog/"
+HOMEPAGE="https://www.kde.org/applications/system/ksystemlog/"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug test"
 
