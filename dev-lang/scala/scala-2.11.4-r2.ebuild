@@ -16,12 +16,12 @@ SV="$(get_version_component_range 1-2)"
 # creating the binary:
 # JAVA_PKG_FORCE_VM="$available-1.7" USE="doc source" ebuild scala-*.ebuild compile
 # cd $WORDKIR
-# tar -cjf scala-2.11.6-gentoo-binary.tar.bz2 scala-2.11.6/build/pack/bin \
-# scala-2.11.6/build/pack/lib/ scala-2.11.6/build/pack/man \
-# scala-2.11.6/src/actors/ scala-2.11.6/src/forkjoin/ \
-# scala-2.11.6/src/library scala-2.11.6/src/library-aux/ \
-# scala-2.11.6/src/reflect/ scala-2.11.6/docs/TODO \
-# scala-2.11.6/doc/README scala-2.11.6/build/scaladoc/compiler
+# tar -cjf scala-2.11.4-gentoo-binary.tar.bz2 scala-2.11.4/build/pack/bin \
+# scala-2.11.4/build/pack/lib/ scala-2.11.4/build/pack/man \
+# scala-2.11.4/src/actors/ scala-2.11.4/src/forkjoin/ \
+# scala-2.11.4/src/library scala-2.11.4/src/library-aux/ \
+# scala-2.11.4/src/reflect/ scala-2.11.4/docs/TODO \
+# scala-2.11.4/doc/README scala-2.11.4/build/scaladoc/compiler
 
 # In the pullJarFiles function in tools/binary-repo-lib.sh it executes find commands
 # to search for .desired.sha1 files, which contain sha1 hashes that are appended
@@ -73,7 +73,7 @@ COMMON_DEP="dev-java/ant-core:0
 DEPEND="${COMMON_DEP}
 	java-virtuals/jdk-with-com-sun:0
 	!binary? (
-		|| ( =virtual/jdk-1.6* =virtual/jdk-1.7* =virtual/jdk-1.8* )
+		|| ( =virtual/jdk-1.7* =virtual/jdk-1.8* )
 		dev-java/ant-core:0
 		dev-java/ant-contrib:0
 		dev-java/ant-nodeps:0
@@ -85,7 +85,7 @@ DEPEND="${COMMON_DEP}
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.6
+	>=virtual/jre-1.7
 	app-eselect/eselect-scala
 	!dev-lang/scala-bin:0"
 

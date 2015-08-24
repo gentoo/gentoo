@@ -73,7 +73,7 @@ COMMON_DEP="dev-java/ant-core:0
 DEPEND="${COMMON_DEP}
 	java-virtuals/jdk-with-com-sun:0
 	!binary? (
-		|| ( =virtual/jdk-1.6* =virtual/jdk-1.7* =virtual/jdk-1.8* )
+		|| ( =virtual/jdk-1.7* =virtual/jdk-1.8* )
 		dev-java/ant-core:0
 		dev-java/ant-contrib:0
 		dev-java/ant-nodeps:0
@@ -85,7 +85,7 @@ DEPEND="${COMMON_DEP}
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.6
+	>=virtual/jre-1.7
 	app-eselect/eselect-scala
 	!dev-lang/scala-bin:0"
 

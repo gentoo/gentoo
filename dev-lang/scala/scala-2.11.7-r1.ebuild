@@ -16,12 +16,12 @@ SV="$(get_version_component_range 1-2)"
 # creating the binary:
 # JAVA_PKG_FORCE_VM="$available-1.7" USE="doc source" ebuild scala-*.ebuild compile
 # cd $WORDKIR
-# tar -cjf scala-2.11.2-gentoo-binary.tar.bz2 scala-2.11.2/build/pack/bin \
-# scala-2.11.2/build/pack/lib/ scala-2.11.2/build/pack/man \
-# scala-2.11.2/src/actors/ scala-2.11.2/src/forkjoin/ \
-# scala-2.11.2/src/library scala-2.11.2/src/library-aux/ \
-# scala-2.11.2/src/reflect/ scala-2.11.2/docs/TODO \
-# scala-2.11.2/doc/README scala-2.11.2/build/scaladoc/compiler
+# tar -cjf scala-2.11.7-gentoo-binary.tar.bz2 scala-2.11.7/build/pack/bin \
+# scala-2.11.7/build/pack/lib/ scala-2.11.7/build/pack/man \
+# scala-2.11.7/src/actors/ scala-2.11.7/src/forkjoin/ \
+# scala-2.11.7/src/library scala-2.11.7/src/library-aux/ \
+# scala-2.11.7/src/reflect/ scala-2.11.7/docs/TODO \
+# scala-2.11.7/doc/README scala-2.11.7/build/scaladoc/compiler
 
 # In the pullJarFiles function in tools/binary-repo-lib.sh it executes find commands
 # to search for .desired.sha1 files, which contain sha1 hashes that are appended
@@ -32,24 +32,24 @@ SV="$(get_version_component_range 1-2)"
 
 BURI="http://repo.typesafe.com/typesafe/scala-sha-bootstrap/org/scala-lang/bootstrap"
 
-declare -a JURI=( \
-	"${BURI}/943cd5c8802b2a3a64a010efb86ec19bac142e40/lib/ant/ant-contrib.jar -> ${P}-ant-contrib.jar" \
-	"${BURI}/3fc1e35ca8c991fc3488548f7a276bd9053c179d/lib/ant/ant-dotnet-1.0.jar -> ${P}-ant-dotnet-1.0.jar" \
-	"${BURI}/7b456ca6b93900f96e58cc8371f03d90a9c1c8d1/lib/ant/ant.jar -> ${P}-ant.jar" \
-	"${BURI}/7e50e3e227d834695f1e0bf018a7326e06ee4c86/lib/ant/maven-ant-tasks-2.1.1.jar -> ${P}-maven-ant-tasks-2.1.1.jar" \
-	"${BURI}/2c61d6e9a912b3253194d5d6d3e1db7e2545ac4b/lib/ant/vizant.jar -> ${P}-vizant.jar" \
-	"${BURI}/ddd7d5398733c4fbbb8355c049e258d47af636cf/lib/forkjoin.jar -> ${P}-forkjoin.jar" \
-	"${BURI}/0392ecdeb306263c471ce51fa368223388b82b61/test/benchmarks/lib/jsr166_and_extra.jar -> ${P}-jsr166_and_extra.jar" \
-	"${BURI}/e737b123d31eede5594ceda07caafed1673ec472/test/files/codelib/code.jar -> ${P}-code.jar" \
-	"${BURI}/02fe2ed93766323a13f22c7a7e2ecdcd84259b6c/test/files/lib/annotations.jar -> ${P}-annotations.jar" \
-	"${BURI}/981392dbd1f727b152cd1c908c5fce60ad9d07f7/test/files/lib/enums.jar -> ${P}-enums.jar" \
-	"${BURI}/b1ec8a095cec4902b3609d74d274c04365c59c04/test/files/lib/genericNest.jar -> ${P}-genericNest.jar" \
-	"${BURI}/346d3dff4088839d6b4d163efa2892124039d216/test/files/lib/jsoup-1.3.1.jar -> ${P}-jsoup-1.3.1.jar" \
-	"${BURI}/3794ec22d9b27f2b179bd34e9b46db771b934ec3/test/files/lib/macro210.jar -> ${P}-macro210.jar" \
-	"${BURI}/be8454d5e7751b063ade201c225dcedefd252775/test/files/lib/methvsfield.jar -> ${P}-methvsfield.jar" \
-	"${BURI}/cd33e0a0ea249eb42363a2f8ba531186345ff68c/test/files/lib/nest.jar -> ${P}-nest.jar" \
-	"${BURI}/1b11ac773055c1e942c6b5eb4aabdf02292a7194/test/files/speclib/instrumented.jar -> ${P}-instrumented.jar" \
-	"${BURI}/a1883f4304d5aa65e1f6ee6aad5900c62dd81079/tools/push.jar -> ${P}-push.jar" \
+declare -a JURI=(
+	"${BURI}/943cd5c8802b2a3a64a010efb86ec19bac142e40/lib/ant/ant-contrib.jar -> ${P}-ant-contrib.jar"
+	"${BURI}/3fc1e35ca8c991fc3488548f7a276bd9053c179d/lib/ant/ant-dotnet-1.0.jar -> ${P}-ant-dotnet-1.0.jar"
+	"${BURI}/7b456ca6b93900f96e58cc8371f03d90a9c1c8d1/lib/ant/ant.jar -> ${P}-ant.jar"
+	"${BURI}/7e50e3e227d834695f1e0bf018a7326e06ee4c86/lib/ant/maven-ant-tasks-2.1.1.jar -> ${P}-maven-ant-tasks-2.1.1.jar"
+	"${BURI}/2c61d6e9a912b3253194d5d6d3e1db7e2545ac4b/lib/ant/vizant.jar -> ${P}-vizant.jar"
+	"${BURI}/ddd7d5398733c4fbbb8355c049e258d47af636cf/lib/forkjoin.jar -> ${P}-forkjoin.jar"
+	"${BURI}/0392ecdeb306263c471ce51fa368223388b82b61/test/benchmarks/lib/jsr166_and_extra.jar -> ${P}-jsr166_and_extra.jar"
+	"${BURI}/e737b123d31eede5594ceda07caafed1673ec472/test/files/codelib/code.jar -> ${P}-code.jar"
+	"${BURI}/02fe2ed93766323a13f22c7a7e2ecdcd84259b6c/test/files/lib/annotations.jar -> ${P}-annotations.jar"
+	"${BURI}/981392dbd1f727b152cd1c908c5fce60ad9d07f7/test/files/lib/enums.jar -> ${P}-enums.jar"
+	"${BURI}/b1ec8a095cec4902b3609d74d274c04365c59c04/test/files/lib/genericNest.jar -> ${P}-genericNest.jar"
+	"${BURI}/346d3dff4088839d6b4d163efa2892124039d216/test/files/lib/jsoup-1.3.1.jar -> ${P}-jsoup-1.3.1.jar"
+	"${BURI}/3794ec22d9b27f2b179bd34e9b46db771b934ec3/test/files/lib/macro210.jar -> ${P}-macro210.jar"
+	"${BURI}/be8454d5e7751b063ade201c225dcedefd252775/test/files/lib/methvsfield.jar -> ${P}-methvsfield.jar"
+	"${BURI}/cd33e0a0ea249eb42363a2f8ba531186345ff68c/test/files/lib/nest.jar -> ${P}-nest.jar"
+	"${BURI}/1b11ac773055c1e942c6b5eb4aabdf02292a7194/test/files/speclib/instrumented.jar -> ${P}-instrumented.jar"
+	"${BURI}/a1883f4304d5aa65e1f6ee6aad5900c62dd81079/tools/push.jar -> ${P}-push.jar"
 )
 
 DESCRIPTION="The Scala Programming Language"
@@ -73,7 +73,7 @@ COMMON_DEP="dev-java/ant-core:0
 DEPEND="${COMMON_DEP}
 	java-virtuals/jdk-with-com-sun:0
 	!binary? (
-		|| ( =virtual/jdk-1.6* =virtual/jdk-1.7* =virtual/jdk-1.8* )
+		|| ( =virtual/jdk-1.7* =virtual/jdk-1.8* )
 		dev-java/ant-core:0
 		dev-java/ant-contrib:0
 		dev-java/ant-nodeps:0
@@ -85,7 +85,7 @@ DEPEND="${COMMON_DEP}
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.6
+	>=virtual/jre-1.7
 	app-eselect/eselect-scala
 	!dev-lang/scala-bin:0"
 
@@ -93,7 +93,7 @@ PDEPEND="emacs? ( app-emacs/scala-mode:0 )"
 
 S="${WORKDIR}/${P}"
 
-CHECKREQS_MEMORY="1532M"
+CHECKREQS_MEMORY="1536M"
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
@@ -143,6 +143,10 @@ java_prepare() {
 			-e 's@\(<artifact:dependencies .*>\)@\1\n        <localRepository refid="localrepo" />@g' \
 			-i "${S}/build.xml" \
 			|| die "Could not change location of .m2 maven download directory in ${S}/build.xml"
+		sed -e 's@-Xmx1024M@-Xmx1536M@' \
+			-e 's@-XX:MaxPermSize=128M@-XX:MaxPermSize=256M@' \
+			-i "${S}/test/partest" \
+			|| die "Could not change increase memory size in ${S}/test/partest"
 	fi
 }
 
