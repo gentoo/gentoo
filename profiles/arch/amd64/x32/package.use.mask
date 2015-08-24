@@ -9,6 +9,7 @@
 app-emulation/wine abi_x86_x32
 
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
-# JavaScriptCore JIT doesn't currently work on x32.
+# The QML (V4) and JSC JITs do not work on x32.
+dev-qt/qtdeclarative jit
 dev-qt/qtscript jit
 dev-qt/qtwebkit jit

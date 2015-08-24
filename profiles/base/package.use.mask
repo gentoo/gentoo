@@ -630,8 +630,9 @@ sys-devel/gcc libssp
 media-video/transcode nuv pic
 
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
-# JavaScriptCore JIT is supported only on amd64/arm/x86, so
-# mask USE="jit" here and unmask it in the relevant arch profiles.
+# The QML (V4) and JSC JITs are supported only on amd64/arm/x86, so
+# mask the flag here and unmask it in the appropriate arch profiles.
+dev-qt/qtdeclarative jit
 dev-qt/qtscript jit
 dev-qt/qtwebkit jit
 

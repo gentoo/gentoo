@@ -163,8 +163,9 @@ www-client/midori -jit
 media-video/transcode -nuv -pic
 
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
-# JavaScriptCore JIT is supported only on amd64/arm/x86,
-# so it's masked in base profile and unmasked here.
+# The QML (V4) and JSC JITs are supported only on amd64/arm/x86,
+# so the flag is masked in the base profile and unmasked here.
+dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
