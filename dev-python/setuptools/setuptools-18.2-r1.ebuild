@@ -21,7 +21,7 @@ RDEPEND=">=dev-python/packaging-15.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
+		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
 
@@ -31,7 +31,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 DOCS=( README.txt docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
 
 python_prepare_all() {
-	rm -r ./pkg_resources/_vendor/packaging || die
+	rm -r ./pkg_resources/_vendor || die
 	# disable tests requiring a network connection
 	rm setuptools/tests/test_packageindex.py || die
 
