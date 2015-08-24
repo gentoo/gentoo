@@ -4277,7 +4277,7 @@ dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for
 dev-java/txw2-runtime 20070407-r2: TXW is a library that allows you to write XML documents
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/validation-api 1.0.0: Bean Validation (JSR-303) API
-dev-java/vecmath 1.5.2: Sun J3D: 3D vector math package
+dev-java/vecmath 1.5.2 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7: A Java-based template engine for easy creation/rendering of documents that format and present data
 dev-java/webgraph 1.4.1-r1: WebGraph is a framework to study the web graph
 dev-java/werken-xpath 0.9.4_beta-r2: W3C XPath-Rec implementation for DOM4J
