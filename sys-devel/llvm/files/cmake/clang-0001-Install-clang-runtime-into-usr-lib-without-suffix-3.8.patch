@@ -21,7 +21,7 @@ index f078b37..0c514fc 100644
      llvm::sys::path::append(P, ClangResourceDir);
    else
 -    llvm::sys::path::append(P, "..", Twine("lib") + CLANG_LIBDIR_SUFFIX,
-+    llvm::sys::path::append(P, "..", "lib", "clang",
++    llvm::sys::path::append(P, "..", "lib",
                              "clang", CLANG_VERSION_STRING);
  
    return P.str();

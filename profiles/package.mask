@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Bernard Cafarelli <voyageur@gentoo.org> (24 Aug 2015)
+# Masked for removal in 30 days. Abandoned upstream,
+# last version does not compile. Bug #543644
+sys-devel/dragonegg
+
+# Bernard Cafarelli <voyageur@gentoo.org> (24 Aug 2015)
 # New llvm version for testing
 =sys-devel/llvm-3.7.0*
 =sys-devel/clang-3.7.0*
