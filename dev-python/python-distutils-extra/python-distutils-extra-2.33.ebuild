@@ -11,7 +11,7 @@ inherit distutils
 
 DESCRIPTION="You can integrate gettext support, themed icons and scrollkeeper based documentation in distutils"
 HOMEPAGE="https://launchpad.net/python-distutils-extra"
-SRC_URI="http://launchpad.net/python-distutils-extra/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/python-distutils-extra/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

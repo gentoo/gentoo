@@ -5,7 +5,7 @@
 DESCRIPTION="Locate the ebuild providing a certain texmf file through regexp"
 HOMEPAGE="https://launchpad.net/texmfind/
 	http://home.gna.org/texmfind"
-SRC_URI="http://launchpad.net/texmfind/2010/${PV}/+download/texmfind-${PV}.tar.bz2"
+SRC_URI="https://launchpad.net/texmfind/2010/${PV}/+download/texmfind-${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

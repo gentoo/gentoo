@@ -9,8 +9,8 @@ VALA_USE_DEPEND="vapigen"
 inherit autotools eutils multilib-minimal vala
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
-HOMEPAGE="http://launchpad.net/libappindicator"
-SRC_URI="http://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/libappindicator"
+SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"

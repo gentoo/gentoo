@@ -6,8 +6,8 @@ EAPI=4
 inherit autotools gnome2-utils multilib savedconfig
 
 DESCRIPTION="Canonical's on-screen-display notification agent"
-HOMEPAGE="http://launchpad.net/notify-osd"
-SRC_URI="http://launchpad.net/${PN}/precise/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/notify-osd"
+SRC_URI="https://launchpad.net/${PN}/precise/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

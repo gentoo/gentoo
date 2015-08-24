@@ -8,7 +8,7 @@ PLOCALES="ast az be bg bs ca cs da de el en_GB eo es eu fi fr gl he hr id it kk 
 inherit eutils l10n multilib qmake-utils
 
 DESCRIPTION="A tabbed document viewer"
-HOMEPAGE="http://launchpad.net/qpdfview"
+HOMEPAGE="https://launchpad.net/qpdfview"
 SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"

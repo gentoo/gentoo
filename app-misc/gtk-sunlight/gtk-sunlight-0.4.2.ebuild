@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Real-time Sunlight Wallpaper"
 HOMEPAGE="http://realtimesunlightwallpaper.weebly.com/"
-SRC_URI="http://ppa.launchpad.net/realtime.sunlight.wallpaper/rsw/ubuntu/pool/main/g/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://ppa.launchpad.net/realtime.sunlight.wallpaper/rsw/ubuntu/pool/main/g/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

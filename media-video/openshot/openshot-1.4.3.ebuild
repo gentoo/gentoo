@@ -11,7 +11,7 @@ inherit versionator distutils-r1 python-r1 fdo-mime
 
 DESCRIPTION="Free, open-source, non-linear video editor to create and edit videos and movies"
 HOMEPAGE="http://www.openshotvideo.com"
-SRC_URI="http://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

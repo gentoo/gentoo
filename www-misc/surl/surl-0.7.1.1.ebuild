@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="URL shortening command line application that supports various sites"
-HOMEPAGE="http://launchpad.net/surl"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV%.*}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/surl"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV%.*}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

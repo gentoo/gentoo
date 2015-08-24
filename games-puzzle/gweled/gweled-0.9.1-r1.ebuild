@@ -7,7 +7,7 @@ inherit flag-o-matic autotools games
 
 DESCRIPTION="Bejeweled clone game"
 HOMEPAGE="http://www.gweled.org/"
-SRC_URI="http://launchpad.net/gweled/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/gweled/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

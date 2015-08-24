@@ -10,7 +10,7 @@ inherit eutils fdo-mime gnome2-utils distutils-r1 versionator
 MY_PV="$(get_version_component_range 1-2)"
 DESCRIPTION="Personal organizer for the GNOME desktop environment"
 HOMEPAGE="http://gtg.fritalk.com/"
-SRC_URI="http://launchpad.net/${PN}/${MY_PV}/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/${MY_PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

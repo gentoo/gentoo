@@ -13,7 +13,7 @@ DIR_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="Tool for easily browsing and finding files on your computer"
 HOMEPAGE="https://launchpad.net/gnome-activity-journal/"
-SRC_URI="http://launchpad.net/gnome-activity-journal/${DIR_PV}/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/gnome-activity-journal/${DIR_PV}/${PV}/+download/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3 LGPL-3"

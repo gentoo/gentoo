@@ -11,7 +11,7 @@ inherit fdo-mime multilib python
 
 DESCRIPTION="a media player aiming to be similar to AmaroK, but for GTK+"
 HOMEPAGE="http://www.exaile.org/"
-SRC_URI="http://launchpad.net/${PN}/0.3.2/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/0.3.2/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"

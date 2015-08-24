@@ -7,7 +7,7 @@ inherit autotools eutils gnome2 mono
 
 DESCRIPTION="Elegant, powerful, clean dock"
 HOMEPAGE="https://wiki.go-docky.com"
-SRC_URI="http://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.xz"
+SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

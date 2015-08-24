@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit fdo-mime python-r1
 
 DESCRIPTION="Tools for Samsung laptops"
-HOMEPAGE="http://launchpad.net/samsung-tools"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/samsung-tools"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

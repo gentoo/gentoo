@@ -9,7 +9,7 @@ inherit bash-completion-r1 qt4-r2
 
 DESCRIPTION="Helper to dock any application into the system tray"
 HOMEPAGE="https://launchpad.net/kdocker/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV:0:3}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV:0:3}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

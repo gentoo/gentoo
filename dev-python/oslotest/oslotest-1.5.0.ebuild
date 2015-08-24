@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="OpenStack test framework"
-HOMEPAGE="http://launchpad.net/oslo"
+HOMEPAGE="https://launchpad.net/oslo"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

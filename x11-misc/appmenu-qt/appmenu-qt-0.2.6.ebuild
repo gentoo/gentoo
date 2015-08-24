@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="Application menu module for Qt"
 HOMEPAGE="https://launchpad.net/appmenu-qt"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}-${PV}.tar.bz2"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

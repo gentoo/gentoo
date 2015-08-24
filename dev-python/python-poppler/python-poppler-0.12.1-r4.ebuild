@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools-utils eutils python-r1
 
 DESCRIPTION="Python bindings to the Poppler PDF library"
-HOMEPAGE="http://launchpad.net/poppler-python"
-SRC_URI="http://launchpad.net/poppler-python/trunk/development/+download/pypoppler-${PV}.tar.gz"
+HOMEPAGE="https://launchpad.net/poppler-python"
+SRC_URI="https://launchpad.net/poppler-python/trunk/development/+download/pypoppler-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

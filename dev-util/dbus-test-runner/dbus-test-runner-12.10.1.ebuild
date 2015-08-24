@@ -8,7 +8,7 @@ MY_MAJOR_VERSION=12.10
 
 DESCRIPTION="Run executables under a new DBus session for testing"
 HOMEPAGE="https://launchpad.net/dbus-test-runner"
-SRC_URI="http://launchpad.net/${PN}/${MY_MAJOR_VERSION}/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/${MY_MAJOR_VERSION}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit elisp
 MY_P="${PN}.el-${PV}"
 DESCRIPTION="An Emacs major mode for editing Python source"
 HOMEPAGE="https://launchpad.net/python-mode"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${MY_P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -9,8 +9,8 @@ VALA_MIN_API_VERSION="0.14"
 inherit cmake-utils multilib vala
 
 DESCRIPTION="A development library for elementary development"
-HOMEPAGE="http://launchpad.net/granite"
-SRC_URI="http://launchpad.net/${PN}/${PV%.*.*}.x/${PV%.*}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/granite"
+SRC_URI="https://launchpad.net/${PN}/${PV%.*.*}.x/${PV%.*}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

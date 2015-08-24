@@ -8,7 +8,7 @@ inherit versionator flag-o-matic
 
 DESCRIPTION="a relational database in shared library form"
 HOMEPAGE="http://www.haildb.com/"
-SRC_URI="http://launchpad.net/haildb/$(get_version_component_range 1-2)/cairo/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/haildb/$(get_version_component_range 1-2)/cairo/+download/${P}.tar.gz"
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

@@ -5,7 +5,7 @@
 EAPI=2
 
 DESCRIPTION="Icons for on-screen-display notification agent"
-HOMEPAGE="http://launchpad.net/notify-osd"
+HOMEPAGE="https://launchpad.net/notify-osd"
 SRC_URI="mirror://ubuntu/pool/main/n/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="CC-BY-SA-3.0"

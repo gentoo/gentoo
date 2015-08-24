@@ -9,7 +9,7 @@ inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="A highly available, distributed, and eventually consistent object/blob store"
 HOMEPAGE="https://launchpad.net/swift"
-SRC_URI="http://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

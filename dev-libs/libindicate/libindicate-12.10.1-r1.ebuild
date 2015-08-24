@@ -9,8 +9,8 @@ VALA_USE_DEPEND="vapigen"
 inherit autotools eutils flag-o-matic vala
 
 DESCRIPTION="A library to raise flags on DBus for other components of the desktop to pick up and visualize"
-HOMEPAGE="http://launchpad.net/libindicate"
-SRC_URI="http://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/libindicate"
+SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"

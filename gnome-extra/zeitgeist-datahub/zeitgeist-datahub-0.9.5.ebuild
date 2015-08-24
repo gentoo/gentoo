@@ -11,8 +11,8 @@ inherit autotools-utils versionator vala
 MY_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="Provides passive plugins to insert events into zeitgeist"
-HOMEPAGE="http://launchpad.net/zeitgeist-datahub"
-SRC_URI="http://launchpad.net/zeitgeist-datahub/${MY_PV}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/zeitgeist-datahub"
+SRC_URI="https://launchpad.net/zeitgeist-datahub/${MY_PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

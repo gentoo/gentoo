@@ -7,7 +7,7 @@ inherit cmake-utils versionator
 
 DESCRIPTION="A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle"
 HOMEPAGE="https://launchpad.net/mydumper"
-SRC_URI="http://launchpad.net/mydumper/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/mydumper/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

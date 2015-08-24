@@ -15,7 +15,7 @@ DIR_PV2=$(get_version_component_range 1-3)
 
 DESCRIPTION="Plugins whose work is to push activities as events into Zeitgeist daemon"
 HOMEPAGE="https://launchpad.net/zeitgeist-datasources/ http://zeitgeist-project.com/"
-SRC_URI="http://launchpad.net/zeitgeist-datasources/${DIR_PV}/${DIR_PV2}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/zeitgeist-datasources/${DIR_PV}/${DIR_PV2}/+download/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"

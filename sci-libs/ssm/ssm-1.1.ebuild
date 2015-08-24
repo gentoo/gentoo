@@ -8,7 +8,7 @@ inherit autotools eutils
 
 DESCRIPTION="A macromolecular coordinate superposition library"
 HOMEPAGE="https://launchpad.net/ssm"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

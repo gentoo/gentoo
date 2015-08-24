@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="Plasmoid for displaying Ayatana indications"
 HOMEPAGE="https://launchpad.net/plasma-widget-message-indicator"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="4"

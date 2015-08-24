@@ -9,7 +9,7 @@ inherit perl-module python-r1 versionator
 
 DESCRIPTION="Additional userspace utils to assist with AppArmor profile management"
 HOMEPAGE="http://apparmor.net/"
-SRC_URI="http://launchpad.net/apparmor/$(get_version_component_range 1-2)/${PV}/+download/apparmor-${PV}.tar.gz"
+SRC_URI="https://launchpad.net/apparmor/$(get_version_component_range 1-2)/${PV}/+download/apparmor-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

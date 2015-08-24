@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Paisley is a CouchDB client written in Python to be used within a Twisted application"
-HOMEPAGE="http://launchpad.net/paisley https://pypi.python.org/pypi/paisley"
+HOMEPAGE="https://launchpad.net/paisley https://pypi.python.org/pypi/paisley"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

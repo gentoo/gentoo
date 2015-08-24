@@ -12,8 +12,8 @@ PYTHON_DEPEND="2:2.6"
 inherit eutils gnome2 python
 
 DESCRIPTION="Applets for the Avant Window Navigator"
-HOMEPAGE="http://launchpad.net/awn-extras"
-SRC_URI="http://launchpad.net/awn-extras/0.4/${PV}/+download/awn-extras-${PV}.tar.gz"
+HOMEPAGE="https://launchpad.net/awn-extras"
+SRC_URI="https://launchpad.net/awn-extras/0.4/${PV}/+download/awn-extras-${PV}.tar.gz"
 
 LICENSE="BSD CC-BY-SA-3.0 GPL-3 LGPL-2.1"
 SLOT="0"

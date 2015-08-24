@@ -5,8 +5,8 @@
 EAPI=2
 
 DESCRIPTION="Generate and install ebuilds from the TeXLive package manager"
-HOMEPAGE="http://launchpad.net/g-ctan"
-SRC_URI="http://launchpad.net/g-ctan/${PV/\.*/}/${PV}/+download/${P}.tar.bz2"
+HOMEPAGE="https://launchpad.net/g-ctan"
+SRC_URI="https://launchpad.net/g-ctan/${PV/\.*/}/${PV}/+download/${P}.tar.bz2"
 LICENSE="GPL-3"
 
 SLOT="0"

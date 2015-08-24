@@ -9,7 +9,7 @@ inherit python-any-r1 autotools-utils
 
 DESCRIPTION="Mock hardware devices for creating unit tests"
 HOMEPAGE="https://github.com/martinpitt/umockdev/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.xz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

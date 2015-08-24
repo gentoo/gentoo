@@ -11,7 +11,7 @@ inherit distutils-r1 versionator
 
 DESCRIPTION="Python module to simulate keypresses and get current keyboard layout"
 HOMEPAGE="https://launchpad.net/virtkey"
-SRC_URI="http://launchpad.net/python-virtkey/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/python-virtkey/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

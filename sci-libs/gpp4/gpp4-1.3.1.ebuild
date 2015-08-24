@@ -10,7 +10,7 @@ inherit fortran-2
 
 DESCRIPTION="A standalone, drop-in replacement for the CCP4 library"
 HOMEPAGE="https://launchpad.net/gpp4/"
-SRC_URI="http://launchpad.net/${PN}/1.3/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/1.3/${PV}/+download/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

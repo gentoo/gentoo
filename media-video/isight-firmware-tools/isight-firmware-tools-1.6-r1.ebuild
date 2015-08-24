@@ -9,7 +9,7 @@ MY_MAJORV="$(get_version_component_range 1).6"
 
 DESCRIPTION="Extract, load or export firmware for the iSight webcams"
 HOMEPAGE="https://launchpad.net/isight-firmware-tools"
-SRC_URI="http://launchpad.net/${PN}/main/${MY_MAJORV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/main/${MY_MAJORV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

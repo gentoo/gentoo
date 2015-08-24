@@ -7,7 +7,7 @@ inherit cmake-utils nsplugins multilib toolchain-funcs
 
 DESCRIPTION="High performance flash player"
 HOMEPAGE="http://lightspark.sourceforge.net/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${P}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${P}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

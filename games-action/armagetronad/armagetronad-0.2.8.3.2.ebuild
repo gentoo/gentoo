@@ -8,7 +8,7 @@ inherit eutils gnome2-utils games
 
 DESCRIPTION="Fast-paced 3D lightcycle game based on Tron"
 HOMEPAGE="http://armagetronad.org/"
-SRC_URI="http://launchpad.net/armagetronad/${PV:0:5}/${PV}/+download/armagetronad-${PV}.src.tar.bz2"
+SRC_URI="https://launchpad.net/armagetronad/${PV:0:5}/${PV}/+download/armagetronad-${PV}.src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

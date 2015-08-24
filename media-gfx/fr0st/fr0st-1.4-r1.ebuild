@@ -11,7 +11,7 @@ inherit eutils multilib python wxwidgets
 
 DESCRIPTION="A fractal flame editor"
 HOMEPAGE="http://fr0st.wordpress.com/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}.0/+download/${P}-src.tgz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}.0/+download/${P}-src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit qt4-r2
 
 DESCRIPTION="Qt4 tool for drawing entity-relational diagrams"
 HOMEPAGE="http://oxygene.sk/lukas/dbmodel/"
-SRC_URI="http://launchpad.net/dbmodel/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/dbmodel/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

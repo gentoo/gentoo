@@ -11,7 +11,7 @@ inherit distutils versionator
 
 DESCRIPTION="Python based policy daemon for Postfix SPF checking"
 HOMEPAGE="https://launchpad.net/pypolicyd-spf"
-SRC_URI="http://launchpad.net/pypolicyd-spf/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/pypolicyd-spf/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

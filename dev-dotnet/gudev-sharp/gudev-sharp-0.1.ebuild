@@ -6,8 +6,8 @@ EAPI=2
 inherit mono
 
 DESCRIPTION="GUDEV API C# binding"
-HOMEPAGE="http://launchpad.net/gudev-sharp"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}-1.0-${PV}.tar.gz"
+HOMEPAGE="https://launchpad.net/gudev-sharp"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}-1.0-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

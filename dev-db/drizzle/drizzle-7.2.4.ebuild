@@ -11,7 +11,7 @@ S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Database optimized for Cloud and Net applications"
 HOMEPAGE="http://drizzle.org"
-SRC_URI="http://launchpad.net/drizzle/$(get_version_component_range 1-2)/${PV}/+download/${MY_P}.tar.gz"
+SRC_URI="https://launchpad.net/drizzle/$(get_version_component_range 1-2)/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

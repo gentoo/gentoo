@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN=${PN/-/.}
 
 DESCRIPTION="oslo.i18n library"
-HOMEPAGE="http://launchpad.net/oslo"
+HOMEPAGE="https://launchpad.net/oslo"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 

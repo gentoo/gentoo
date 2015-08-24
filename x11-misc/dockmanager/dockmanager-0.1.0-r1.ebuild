@@ -10,7 +10,7 @@ inherit gnome2 python-single-r1 vala
 
 DESCRIPTION="dock-independent helper scripts"
 HOMEPAGE="https://launchpad.net/dockmanager"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

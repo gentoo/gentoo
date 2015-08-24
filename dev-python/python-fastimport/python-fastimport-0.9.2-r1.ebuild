@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Library for parsing the fastimport VCS serialization format"
 HOMEPAGE="https://launchpad.net/python-fastimport"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

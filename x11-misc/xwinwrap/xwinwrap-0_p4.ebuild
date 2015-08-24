@@ -8,7 +8,7 @@ inherit toolchain-funcs vcs-snapshot
 
 DESCRIPTION="replace a desktop background with a movie or screensaver"
 HOMEPAGE="http://tech.shantanugoel.com/projects/linux/shantz-xwinwrap"
-SRC_URI="http://bazaar.launchpad.net/~shantanu-goel/xwinwrap/devel/tarball/4 -> ${P}.tar.gz"
+SRC_URI="https://bazaar.launchpad.net/~shantanu-goel/xwinwrap/devel/tarball/4 -> ${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"

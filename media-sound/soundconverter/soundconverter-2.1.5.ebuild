@@ -10,7 +10,7 @@ inherit gnome2 multilib python-single-r1
 
 DESCRIPTION="A simple audiofile converter application for the GNOME environment"
 HOMEPAGE="http://soundconverter.org/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.xz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -11,8 +11,8 @@ inherit autotools-utils eutils versionator
 MY_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="Client library to interact with zeitgeist"
-HOMEPAGE="http://launchpad.net/libzeitgeist/"
-SRC_URI="http://launchpad.net/libzeitgeist/${MY_PV}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/libzeitgeist/"
+SRC_URI="https://launchpad.net/libzeitgeist/${MY_PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

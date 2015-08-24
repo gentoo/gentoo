@@ -9,8 +9,8 @@ DISTUTILS_SINGLE_IMPL=TRUE
 inherit distutils-r1 eutils multilib systemd
 
 DESCRIPTION="Cloud instance initialization"
-HOMEPAGE="http://launchpad.net/cloud-init"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/cloud-init"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
