@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3} pypy )
+PYTHON_COMPAT=( python{2_7,3_3} pypy pypy3 )
 
 inherit autotools-utils python-single-r1
 

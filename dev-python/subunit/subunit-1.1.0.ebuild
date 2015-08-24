@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit distutils-r1 eutils multilib-minimal
 
@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="static-libs test"
 
-RDEPEND=">=dev-python/testtools-0.9.34[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/testtools-0.9.34[${PYTHON_USEDEP}]
 	dev-python/extras[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
