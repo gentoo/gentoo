@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/atom-0.3.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/kiwisolver-0.1.2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/ply-3.4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] || ( dev-python/wxpython:*[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/PyQt4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyside[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) test? ( dev-python/python-dateutil[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/wxpython[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyside[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/nose[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Enthought Tool Suite: framework for writing declarative interfaces
 EAPI=5
-HOMEPAGE=http://code.enthought.com/projects/enaml/ http://pypi.python.org/pypi/enaml
+HOMEPAGE=http://code.enthought.com/projects/enaml/ https://pypi.python.org/pypi/enaml
 IUSE=examples test python_targets_python2_7 test
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://pypi/e/enaml/enaml-0.9.8.tar.gz
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=426ab9798c59c87f37ed4551eb056ed1
+_md5_=aeb78a717c699b6ad6e26b88cb3e5e2f

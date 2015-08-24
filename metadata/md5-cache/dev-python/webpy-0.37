@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install postinst postrm prepare test
 DEPEND==dev-lang/python-2*
 DESCRIPTION=A small and simple web framework for Python
 EAPI=3
-HOMEPAGE=http://www.webpy.org http://pypi.python.org/pypi/web.py
+HOMEPAGE=http://www.webpy.org https://pypi.python.org/pypi/web.py
 KEYWORDS=amd64 hppa x86 ~amd64-linux ~x86-linux
 LICENSE=public-domain
 RDEPEND==dev-lang/python-2*
 SLOT=0
 SRC_URI=http://www.webpy.org/static/web.py-0.37.tar.gz
 _eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=4adb20c58b4c006ad4dc3dca80f149d1
+_md5_=1b572c604d3efd834c32f3064f45ffa2

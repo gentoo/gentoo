@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst postrm preinst
 DEPEND=>=dev-libs/glib-2 x11-libs/gtk+:2 virtual/pkgconfig >=sys-apps/sed-4
 DESCRIPTION=An library to control MPRIS2 compatible players
 EAPI=5
-HOMEPAGE=http://github.com/matiasdelellis/libmpris2client
+HOMEPAGE=https://github.com/matiasdelellis/libmpris2client
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:2
 SLOT=0
-SRC_URI=http://github.com/matiasdelellis/libmpris2client/releases/download/V0.1.0/libmpris2client-0.1.0.tar.bz2
+SRC_URI=https://github.com/matiasdelellis/libmpris2client/releases/download/V0.1.0/libmpris2client-0.1.0.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=bfcea62adae9a46816a8d01bdb9d0ba5
+_md5_=83fbc817392de78fed4b271f14627479

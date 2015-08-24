@@ -9,6 +9,6 @@ LICENSE=GPL-3+ FDL-1.2+
 RDEPEND=>=virtual/emacs-23
 RESTRICT=test
 SLOT=0
-SRC_URI=http://github.com/downloads/magit/magit/magit-1.2.0.tar.gz
+SRC_URI=https://github.com/downloads/magit/magit/magit-1.2.0.tar.gz
 _eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=2a9e4351c7b13f1c79af1fadd5c47c1b
+_md5_=0d42f6346d57f72cd23bd0f3ecaf8020

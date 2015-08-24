@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare unpack
 DEPEND=app-arch/unzip dev-texlive/texlive-latex virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=LaTeX class for creating presentations using a video projector
 EAPI=5
-HOMEPAGE=http://bitbucket.org/rivanvx/beamer/wiki/Home
+HOMEPAGE=https://bitbucket.org/rivanvx/beamer/wiki/Home
 IUSE=doc examples
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 FDL-1.2 LPPL-1.3c
@@ -10,4 +10,4 @@ RDEPEND=>=dev-tex/pgf-1.10 dev-tex/xcolor !dev-tex/translator virtual/latex-base
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~radhermit/dist/latex-beamer-3.33.zip
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0a1bc9c1f8f8d5097dbde9bdf6c207ed
+_md5_=f3600a94f514513969a2678b216f94f7

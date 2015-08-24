@@ -2,9 +2,9 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-util/dialog sys-libs/ncurses[unicode] sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git
 DESCRIPTION=Diagnostic and recovery tool for block devices
 EAPI=4
-HOMEPAGE=http://github.com/krieger-od/whdd
+HOMEPAGE=https://github.com/krieger-od/whdd
 LICENSE=GPL-2
 RDEPEND=dev-util/dialog sys-libs/ncurses[unicode] sys-apps/smartmontools
 SLOT=0
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=efad5074953a9596859277bcd5f55db6
+_md5_=e747579615dca97cfecb4b9c6de3499c

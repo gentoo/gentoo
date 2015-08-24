@@ -2,13 +2,13 @@ DEFINED_PHASES=compile configure install prepare setup test unpack
 DEPEND=dev-libs/boost[python?] dev-libs/pugixml media-libs/glew media-libs/ilmbase media-libs/libpng:0 >=media-libs/libwebp-0.2.1 media-libs/openexr media-libs/tiff:0 sci-libs/hdf5 sys-libs/zlib virtual/jpeg jpeg2k? ( >=media-libs/openjpeg-1.5:0 ) colorio? ( >=media-libs/opencolorio-1.0.7 ) opencv? ( >=media-libs/opencv-2.3 || ( <media-libs/opencv-2.4.8 >media-libs/opencv-2.4.8[python?] ) ) opengl? ( virtual/glu virtual/opengl ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) tbb? ( dev-cpp/tbb ) truetype? ( >=media-libs/freetype-2 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) python? ( =dev-lang/python-2.7* )
 DESCRIPTION=A library for reading and writing images
 EAPI=5
-HOMEPAGE=http://sites.google.com/site/openimageio/ http://github.com/OpenImageIO
+HOMEPAGE=http://sites.google.com/site/openimageio/ https://github.com/OpenImageIO
 IUSE=jpeg2k colorio opencv opengl python qt4 tbb +truetype
 KEYWORDS=amd64 ~ppc64 x86
 LICENSE=BSD
 RDEPEND=dev-libs/boost[python?] dev-libs/pugixml media-libs/glew media-libs/ilmbase media-libs/libpng:0 >=media-libs/libwebp-0.2.1 media-libs/openexr media-libs/tiff:0 sci-libs/hdf5 sys-libs/zlib virtual/jpeg jpeg2k? ( >=media-libs/openjpeg-1.5:0 ) colorio? ( >=media-libs/opencolorio-1.0.7 ) opencv? ( >=media-libs/opencv-2.3 || ( <media-libs/opencv-2.4.8 >media-libs/opencv-2.4.8[python?] ) ) opengl? ( virtual/glu virtual/opengl ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) tbb? ( dev-cpp/tbb ) truetype? ( >=media-libs/freetype-2 ) python? ( =dev-lang/python-2.7* )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://github.com/OpenImageIO/oiio/tarball/Release-1.1.1 -> openimageio-1.1.1.tar.gz
+SRC_URI=https://github.com/OpenImageIO/oiio/tarball/Release-1.1.1 -> openimageio-1.1.1.tar.gz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
-_md5_=95de2be0ab1d81f0c729a1fe0e7814ce
+_md5_=3b79c724271b53f1c62a0fc943585af0

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 DESCRIPTION=SNMP framework in Python. Not a wrapper
 EAPI=5
-HOMEPAGE=http://pysnmp.sf.net/ http://pypi.python.org/pypi/pysnmp
+HOMEPAGE=http://pysnmp.sf.net/ https://pypi.python.org/pypi/pysnmp
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=BSD
@@ -11,4 +11,4 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sourceforge/pysnmp/pysnmp-3.4.4.tar.gz
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=6fadc06d205f29b33a91e6f93b8ef530
+_md5_=e88c8ba92d65463611063f4f30b3f3fe

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-libs/openssl-0.9.8:0= >=dev-lang/swig-1.3.28:0 dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=M2Crypto: A Python crypto and SSL toolkit
 EAPI=5
-HOMEPAGE=https://github.com/martinpaljak/M2Crypto http://pypi.python.org/pypi/M2Crypto
+HOMEPAGE=https://github.com/martinpaljak/M2Crypto https://pypi.python.org/pypi/M2Crypto
 IUSE=python_targets_python2_7
 KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=BSD
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://pypi/M/M2Crypto/M2Crypto-0.22.3.tar.gz
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=c22062890de71699e55d43950e40f39b
+_md5_=cb53c5f4a9e4a3f3cf2720530d73c5db

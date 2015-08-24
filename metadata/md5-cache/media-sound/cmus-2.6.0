@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cue? ( media-libs/libcue ) cdio? ( dev-libs/libcdio-paranoia ) cddb? ( media-libs/libcddb ) discid? ( media-libs/libdiscid ) flac? ( media-libs/flac ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) opus? ( media-libs/opusfile ) pulseaudio? ( media-sound/pulseaudio ) tremor? ( media-libs/tremor ) !tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) ) wavpack? ( media-sound/wavpack ) wma? ( >=virtual/ffmpeg-0.10.2-r1 ) zsh-completion? ( app-shells/zsh ) pidgin? ( net-im/pidgin dev-python/dbus-python )
 REQUIRED_USE=tremor? ( vorbis )
 SLOT=0
-SRC_URI=http://github.com/cmus/cmus/archive/v2.6.0.tar.gz -> cmus-2.6.0.tar.gz
+SRC_URI=https://github.com/cmus/cmus/archive/v2.6.0.tar.gz -> cmus-2.6.0.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=348052d0c1dd92f120fe62afcfc9e7a3
+_md5_=149882745f0ea6ff60e62e34a6b82fda

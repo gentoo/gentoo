@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
 DEPEND=>=dev-ml/lwt-2.4.0:=[react] >=dev-ml/lambda-term-1.2:= >=dev-ml/zed-1.2:= emacs? ( virtual/emacs ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
 DESCRIPTION=A new toplevel for OCaml with completion and colorization
 EAPI=5
-HOMEPAGE=http://github.com/diml/utop
+HOMEPAGE=https://github.com/diml/utop
 IUSE=emacs +ocamlopt debug doc
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=>=dev-ml/lwt-2.4.0:=[react] >=dev-ml/lambda-term-1.2:= >=dev-ml/zed-1.2:= emacs? ( virtual/emacs ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/1.11
-SRC_URI=http://github.com/diml/utop/archive/1.11.tar.gz -> utop-1.11.tar.gz
+SRC_URI=https://github.com/diml/utop/archive/1.11.tar.gz -> utop-1.11.tar.gz
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	1f8aac15a40bfb39dd98018626248fe1	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0cf38e2fb949f96e8982e63d21d5c28e
+_md5_=ef5a4222a485c49666ddd5dcdf59421f

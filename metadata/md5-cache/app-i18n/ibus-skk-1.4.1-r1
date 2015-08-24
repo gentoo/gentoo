@@ -2,11 +2,11 @@ DEFINED_PHASES=configure
 DEPEND=>=app-i18n/ibus-1.3 >=app-i18n/libskk-0.0.11 nls? ( virtual/libintl ) dev-util/intltool virtual/pkgconfig nls? ( >=sys-devel/gettext-0.16.1 )
 DESCRIPTION=Japanese input method Anthy IMEngine for IBus Framework
 EAPI=5
-HOMEPAGE=http://github.com/ueno/ibus-skk
+HOMEPAGE=https://github.com/ueno/ibus-skk
 IUSE=nls
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-i18n/ibus-1.3 >=app-i18n/libskk-0.0.11 nls? ( virtual/libintl ) app-i18n/skk-jisyo
 SLOT=0
 SRC_URI=mirror://github/ueno/ibus-skk/ibus-skk-1.4.1.tar.gz
-_md5_=f30f247787e07d87e03d5132da2921f0
+_md5_=76bada2cd4c969258a24ecaa87cf20a6

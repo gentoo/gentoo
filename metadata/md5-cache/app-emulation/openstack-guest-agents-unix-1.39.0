@@ -2,11 +2,11 @@ DEFINED_PHASES=install prepare unpack
 DEPEND=dev-util/patchelf dev-python/pycrypto dev-python/pyxenstore !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Openstack Unix Guest Agent
 EAPI=5
-HOMEPAGE=http://github.com/rackerlabs/openstack-guest-agents-unix
+HOMEPAGE=https://github.com/rackerlabs/openstack-guest-agents-unix
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=dev-util/patchelf dev-python/pycrypto dev-python/pyxenstore
 SLOT=0
 SRC_URI=https://github.com/rackerlabs/openstack-guest-agents-unix/tarball/v1.39.0 -> openstack-guest-agents-unix-1.39.0.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
-_md5_=935f890e1a34cf9b4b755808f23f46d9
+_md5_=9de6364174434b6c811124f95bf089b6

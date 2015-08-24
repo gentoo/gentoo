@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm setup test
 DEPEND=>=dev-haskell/aeson-0.6:=[profile?] dev-haskell/attoparsec:=[profile?] >=dev-haskell/haskell-src-meta-0.1.0:=[profile?] dev-haskell/parsec:=[profile?] dev-haskell/scientific:=[profile?] dev-haskell/text:=[profile?] dev-haskell/vector:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( dev-haskell/hspec ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
 DESCRIPTION=JSON quasiquoter for Haskell
 EAPI=5
-HOMEPAGE=http://github.com/zalora/aeson-qq
+HOMEPAGE=https://github.com/zalora/aeson-qq
 IUSE=doc hscolour profile test
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
@@ -10,4 +10,4 @@ RDEPEND=>=dev-haskell/aeson-0.6:=[profile?] dev-haskell/attoparsec:=[profile?] >
 SLOT=0/0.8.0
 SRC_URI=mirror://hackage/packages/archive/aeson-qq/0.8.0/aeson-qq-0.8.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	844d30b2063d113d41e54823109e4325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=8f1206d788dc267408d238e4ea7c2879
+_md5_=76042994a490428fa4eda57afb1895ba

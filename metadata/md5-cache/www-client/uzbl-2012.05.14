@@ -9,6 +9,6 @@ LICENSE=LGPL-2.1 MPL-1.1
 RDEPEND=dev-libs/glib:2 >=dev-libs/icu-4.0.1 >=net-libs/libsoup-2.24:2.4 !gtk3? ( >=net-libs/webkit-gtk-1.1.15:2 >=x11-libs/gtk+-2.14:2 ) gtk3? ( net-libs/webkit-gtk:3 x11-libs/gtk+:3 ) x11-misc/xdg-utils browser? ( x11-misc/xclip ) helpers? ( dev-python/pygtk dev-python/pygobject:2 gnome-extra/zenity net-misc/socat x11-libs/pango x11-misc/dmenu x11-misc/xclip ) tabbed? ( dev-python/pygtk ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 REQUIRED_USE=tabbed? ( browser )
 SLOT=0
-SRC_URI=http://github.com/Dieterbe/uzbl/tarball/2012.05.14 -> uzbl-2012.05.14.tar.gz
+SRC_URI=https://github.com/Dieterbe/uzbl/tarball/2012.05.14 -> uzbl-2012.05.14.tar.gz
 _eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
-_md5_=0c40f7b81c3bcc2cf9af2e6489ca95c5
+_md5_=057162055062014d1e0a3fa79fc9369a

@@ -7,4 +7,4 @@ LICENSE=GPL-3
 RDEPEND=sys-power/acpi_call dev-lang/perl
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8ba5bb90c13313f33bba3611b5289c43
+_md5_=4ae2389b11d27971a9683dc0e207a900

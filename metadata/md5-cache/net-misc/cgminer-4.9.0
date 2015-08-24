@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare
 DEPEND=virtual/pkgconfig net-misc/curl >=dev-libs/jansson-2.6 ncurses? ( sys-libs/ncurses ) ants1? ( virtual/libusb:1[udev] ) ants2? ( virtual/libusb:1[udev] ) avalon? ( virtual/libusb:1[udev] ) avalon2? ( virtual/libusb:1[udev] ) avalon4? ( virtual/libusb:1[udev] ) bflsc? ( virtual/libusb:1[udev] ) bitforce? ( virtual/libusb:1[udev] ) bitfury? ( virtual/libusb:1[udev] ) blockerupter? ( virtual/libusb:1[udev] ) cointerra? ( virtual/libusb:1[udev] ) drillbit? ( virtual/libusb:1[udev] ) hashfast? ( virtual/libusb:1[udev] ) hashratio? ( virtual/libusb:1[udev] ) icarus? ( virtual/libusb:1[udev] ) klondike? ( virtual/libusb:1[udev] ) modminer? ( virtual/libusb:1[udev] ) spondoolies? ( virtual/libusb:1[udev] ) udev? ( virtual/libudev ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Bitcoin CPU/GPU/FPGA/ASIC miner in C
 EAPI=5
-HOMEPAGE=http://bitcointalk.org/?topic=28402.msg357369 http://github.com/ckolivas/cgminer
+HOMEPAGE=http://bitcointalk.org/?topic=28402.msg357369 https://github.com/ckolivas/cgminer
 IUSE=doc examples udev hardened ncurses ants1 ants2 avalon avalon2 avalon4 bab bitmine_A1 bflsc bitforce bitfury blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer spondoolies
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-3
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( ants1 ants2 avalon avalon2 avalon4 bab bitmine_A1 bflsc bitfor
 SLOT=0
 SRC_URI=http://ck.kolivas.org/apps/cgminer/cgminer-4.9.0.tar.bz2
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=fb0f13182a7db00417ee4ffddc3b9057
+_md5_=d97a8be098d8e423889c2e579718f826

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-libs/crypto++ dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Python wrappers for a few algorithms from the Crypto++ library
 EAPI=5
-HOMEPAGE=http://tahoe-lafs.org/trac/pycryptopp http://pypi.python.org/pypi/pycryptopp
+HOMEPAGE=http://tahoe-lafs.org/trac/pycryptopp https://pypi.python.org/pypi/pycryptopp
 IUSE=python_targets_python2_7
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://pypi/p/pycryptopp/pycryptopp-0.6.0.1206569328141510525648634803928199668821045408958.tar.gz
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
-_md5_=5b1c20fb64baef71c7de0a96118cb510
+_md5_=12ffb0f39e741279aab9008c9cf838fd

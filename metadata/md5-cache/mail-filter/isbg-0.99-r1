@@ -7,6 +7,6 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=mail-filter/spamassassin =dev-lang/python-2*
 SLOT=0
-SRC_URI=http://github.com/downloads/ook/isbg/isbg_0.99_20100303.tgz
+SRC_URI=https://github.com/downloads/ook/isbg/isbg_0.99_20100303.tgz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=fcba43fb966544a6918bb9fd1e484ee1
+_md5_=2f41d9c2efbe9bea46a551784d4608dd

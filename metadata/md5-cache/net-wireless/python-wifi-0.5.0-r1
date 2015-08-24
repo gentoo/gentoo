@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm prepare
 DEPEND=dev-python/setuptools =dev-lang/python-2*
 DESCRIPTION=Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
 EAPI=3
-HOMEPAGE=http://pypi.python.org/pypi/python-wifi https://developer.berlios.de/projects/pythonwifi
+HOMEPAGE=https://pypi.python.org/pypi/python-wifi https://developer.berlios.de/projects/pythonwifi
 IUSE=examples
 KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=LGPL-2.1 examples? ( GPL-2 )
@@ -10,4 +10,4 @@ RDEPEND==dev-lang/python-2*
 SLOT=0
 SRC_URI=mirror://berlios/pythonwifi/python-wifi-0.5.0.tar.bz2
 _eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=450ec33972903bf07d504139fcda5d44
+_md5_=282c09c510137eb8acee47fa13067557

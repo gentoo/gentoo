@@ -2,13 +2,13 @@ DEFINED_PHASES=configure install prepare
 DEPEND=>=x11-libs/gtk+-2.14:2 x11-libs/cairo >=gnome-base/libgtop-2.11.92 lxpanel? ( lxde-base/lxpanel ) xfce_plugins_multiload-nandhp? ( >=xfce-base/libxfce4ui-4.10 >=xfce-base/libxfce4util-4.10 >=xfce-base/xfce4-panel-4.10 ) dev-util/intltool sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A port of the GNOME multiload applet for the Xfce and LXDE panels
 EAPI=5
-HOMEPAGE=http://github.com/nandhp/multiload-nandhp
+HOMEPAGE=https://github.com/nandhp/multiload-nandhp
 IUSE=lxpanel +xfce_plugins_multiload-nandhp
 KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.14:2 x11-libs/cairo >=gnome-base/libgtop-2.11.92 lxpanel? ( lxde-base/lxpanel ) xfce_plugins_multiload-nandhp? ( >=xfce-base/libxfce4ui-4.10 >=xfce-base/libxfce4util-4.10 >=xfce-base/xfce4-panel-4.10 )
 REQUIRED_USE=|| ( xfce_plugins_multiload-nandhp lxpanel )
 SLOT=0
-SRC_URI=http://github.com/nandhp/multiload-nandhp/archive/version-0-2.tar.gz -> multiload-nandhp-0.2.tar.gz
+SRC_URI=https://github.com/nandhp/multiload-nandhp/archive/version-0-2.tar.gz -> multiload-nandhp-0.2.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=c113cf882f16f2da5d98f62d3c8184a6
+_md5_=9487a7ed7676d0012811591603842575

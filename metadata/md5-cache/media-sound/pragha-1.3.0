@@ -2,13 +2,13 @@ DEFINED_PHASES=configure install postinst postrm preinst prepare setup
 DEPEND=>=dev-db/sqlite-3.4:3 >=dev-libs/glib-2.32 >=dev-libs/libcdio-0.90 >=dev-libs/libcdio-paranoia-0.90 media-libs/gst-plugins-base:1.0 >=media-libs/libcddb-1.3.0 >=media-libs/taglib-1.7.0 >=x11-libs/gtk+-3.4:3 x11-libs/libX11 >=xfce-base/libxfce4ui-4.11[gtk3(+)] glyr? ( >=media-libs/glyr-1.0.1 ) keybinder? ( >=dev-libs/keybinder-0.2.0:3 ) lastfm? ( >=media-libs/libclastfm-0.5 ) libnotify? ( >=x11-libs/libnotify-0.7 ) mtp? ( >=media-libs/libmtp-1.1.0 ) peas? ( >=dev-libs/libpeas-1.0.0[gtk] ) playlist? ( >=dev-libs/totem-pl-parser-2.26 ) udev? ( virtual/libgudev:= ) dev-util/intltool >=dev-util/xfce4-dev-tools-4.10 sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=A lightweight music player (with support for the Xfce desktop environment)
 EAPI=5
-HOMEPAGE=http://pragha.wikispaces.com/ http://github.com/matiasdelellis/pragha
+HOMEPAGE=http://pragha.wikispaces.com/ https://github.com/matiasdelellis/pragha
 IUSE=debug +glyr +keybinder lastfm libnotify mtp +peas +playlist +udev
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=dev-db/sqlite-3.4:3 >=dev-libs/glib-2.32 >=dev-libs/libcdio-0.90 >=dev-libs/libcdio-paranoia-0.90 media-libs/gst-plugins-base:1.0 >=media-libs/libcddb-1.3.0 >=media-libs/taglib-1.7.0 >=x11-libs/gtk+-3.4:3 x11-libs/libX11 >=xfce-base/libxfce4ui-4.11[gtk3(+)] glyr? ( >=media-libs/glyr-1.0.1 ) keybinder? ( >=dev-libs/keybinder-0.2.0:3 ) lastfm? ( >=media-libs/libclastfm-0.5 ) libnotify? ( >=x11-libs/libnotify-0.7 ) mtp? ( >=media-libs/libmtp-1.1.0 ) peas? ( >=dev-libs/libpeas-1.0.0[gtk] ) playlist? ( >=dev-libs/totem-pl-parser-2.26 ) udev? ( virtual/libgudev:= ) media-plugins/gst-plugins-meta:1.0
 REQUIRED_USE=glyr? ( peas ) libnotify? ( peas ) mtp? ( udev ) udev? ( peas )
 SLOT=0
-SRC_URI=http://github.com/matiasdelellis/pragha/archive/v1.3.0.tar.gz -> pragha-1.3.0.tar.gz
+SRC_URI=https://github.com/matiasdelellis/pragha/archive/v1.3.0.tar.gz -> pragha-1.3.0.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	xfconf	d842ab8b2140980394561496bf157447
-_md5_=f9e7487281b38cedea788f7883844057
+_md5_=9582c16d0821ef8850a9768ee0f73eed

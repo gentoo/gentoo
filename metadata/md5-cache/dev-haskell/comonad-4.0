@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm setup test
 DEPEND=>=dev-haskell/contravariant-0.2.0.1:=[profile?] <dev-haskell/contravariant-1:=[profile?] >=dev-haskell/distributive-0.2.2:=[profile?] <dev-haskell/distributive-1:=[profile?] >=dev-haskell/mtl-2.0:=[profile?] <dev-haskell/mtl-2.2:=[profile?] >=dev-haskell/semigroups-0.8.3.1:=[profile?] <dev-haskell/semigroups-1:=[profile?] >=dev-haskell/tagged-0.1:=[profile?] <dev-haskell/tagged-1:=[profile?] >=dev-haskell/transformers-0.2:=[profile?] <dev-haskell/transformers-0.4:=[profile?] >=dev-lang/ghc-6.12.1:= >=dev-haskell/cabal-1.10 test? ( test-doctests? ( >=dev-haskell/doctest-0.9.1 ) ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
 DESCRIPTION=Comonads
 EAPI=5
-HOMEPAGE=http://github.com/ekmett/comonad/
+HOMEPAGE=https://github.com/ekmett/comonad/
 IUSE=+test-doctests doc hscolour profile test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
@@ -10,4 +10,4 @@ RDEPEND=>=dev-haskell/contravariant-0.2.0.1:=[profile?] <dev-haskell/contravaria
 SLOT=0/4.0
 SRC_URI=mirror://hackage/packages/archive/comonad/4.0/comonad-4.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	844d30b2063d113d41e54823109e4325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=4ed0d8bad4bff96141319297c09fc162
+_md5_=2b05719f33df9930fa114bf73354c69b
