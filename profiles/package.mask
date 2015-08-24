@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (24 Aug 2015)
+# New llvm version for testing
+=sys-devel/llvm-3.7.0*
+=sys-devel/clang-3.7.0*
+
 # Matt Turner <mattst88@gentoo.org> (22 Aug 2015)
 # nouveau has been in the kernel since 2.6.33
 # Masked for removal in 30 days.
