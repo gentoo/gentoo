@@ -11,7 +11,7 @@ SRC_URI="http://ftp.coin3d.org/coin/src/all/${P}.tar.gz"
 HOMEPAGE="http://www.coin3d.org/"
 
 LICENSE="|| ( GPL-2 PEL )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 IUSE="debug doc static-libs"
 
