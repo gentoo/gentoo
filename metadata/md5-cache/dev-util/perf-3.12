@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst prepare setup test unpack
 DEPEND=audit? ( sys-process/audit ) demangle? ( sys-devel/binutils ) perl? ( dev-lang/perl ) slang? ( dev-libs/newt ) unwind? ( sys-libs/libunwind ) dev-libs/elfutils sys-devel/bison sys-devel/flex doc? ( app-text/asciidoc app-text/sgml-common app-text/xmlto sys-process/time ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] )
 DESCRIPTION=Userland tools for Linux Performance Counters
 EAPI=5
-HOMEPAGE=http://perf.wiki.kernel.org/
+HOMEPAGE=https://perf.wiki.kernel.org/
 IUSE=audit +demangle +doc perl python slang unwind python_targets_python2_7
 KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.12.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3edc49675399c1ecea692e95e30c91f4
+_md5_=3e20013fa1db86ced3108a0207c534c4

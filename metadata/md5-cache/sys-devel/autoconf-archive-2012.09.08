@@ -1,9 +1,9 @@
 DEFINED_PHASES=install
 DESCRIPTION=GNU Autoconf Macro Archive
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/autoconf-archive/
+HOMEPAGE=https://www.gnu.org/software/autoconf-archive/
 KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://gnu/autoconf-archive/autoconf-archive-2012.09.08.tar.xz
-_md5_=1cf523f4004d250ecfa1ec49f29ce912
+_md5_=1f4604bf94a8d9972d1fc830d1535ecd

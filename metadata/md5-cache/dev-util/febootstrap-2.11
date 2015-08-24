@@ -2,11 +2,11 @@ DEFINED_PHASES=install prepare
 DEPEND=>=sys-apps/fakeroot-1.11 >=sys-apps/fakechroot-2.9 dev-lang/perl >=sys-apps/yum-3.2.21 sys-fs/e2fsprogs sys-libs/e2fsprogs-libs !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Fedora bootstrap scripts
 EAPI=2
-HOMEPAGE=http://people.redhat.com/~rjones/febootstrap/
+HOMEPAGE=https://people.redhat.com/~rjones/febootstrap/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/fakeroot-1.11 >=sys-apps/fakechroot-2.9 dev-lang/perl >=sys-apps/yum-3.2.21 sys-fs/e2fsprogs sys-libs/e2fsprogs-libs
 SLOT=0
-SRC_URI=http://people.redhat.com/~rjones/febootstrap/files/febootstrap-2.11.tar.gz
+SRC_URI=https://people.redhat.com/~rjones/febootstrap/files/febootstrap-2.11.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0c348fc4ac966cd945c5c53eb3d3b0f6
+_md5_=af6cf9adc0b93c1ce174d1c5e37f6a89

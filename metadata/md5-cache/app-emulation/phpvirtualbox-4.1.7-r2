@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/php[session,unicode,soap,gd] virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=4.1.7-r2
-SRC_URI=http://phpvirtualbox.googlecode.com/files/phpvirtualbox-4.1-7.zip
+SRC_URI=https://phpvirtualbox.googlecode.com/files/phpvirtualbox-4.1-7.zip
 _eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	2442891c368d310c1d3fe77d9c77fe5b
-_md5_=5c9e16f1cbc5fb4d137e02d13176ec1e
+_md5_=b7b41eac1b5cdbcdfa926544fc4d8c98

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare test
 DEPEND=sys-devel/gdb sys-libs/ncurses x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXpm x11-libs/libXt >=x11-libs/motif-2.3:0 ppc? ( dev-libs/elfutils ) ppc64? ( dev-libs/elfutils ) readline? ( sys-libs/readline ) x11-proto/xproto
 DESCRIPTION=Graphical front-end for command-line debuggers
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/ddd
+HOMEPAGE=https://www.gnu.org/software/ddd
 IUSE=+gnuplot readline
 KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3 LGPL-3 FDL-1.1
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/ddd/ddd-3.3.12.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=4293cfa40f82f9169db91dcfdf11c571
+_md5_=6dcd04e21c9851bbdee2f157445e6066

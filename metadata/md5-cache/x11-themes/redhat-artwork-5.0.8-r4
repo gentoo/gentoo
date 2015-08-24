@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install prepare unpack
 DEPEND=x11-libs/gtk+:2 dev-util/intltool media-gfx/icon-slicer virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 EAPI=5
-HOMEPAGE=http://www.redhat.com
+HOMEPAGE=https://www.redhat.com
 IUSE=audacious cursors gdm icons kdm nautilus
 KEYWORDS=alpha amd64 ~hppa ia64 ppc sparc x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gentoo/redhat-artwork-5.0.8-4.fc7.src.rpm
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=c3c9ee84ddd02570c10d660a67057faf
+_md5_=be9c5612afc5110a4e51fd3578f9f32c

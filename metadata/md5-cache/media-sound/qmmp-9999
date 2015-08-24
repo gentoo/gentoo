@@ -9,4 +9,4 @@ RDEPEND=media-libs/taglib dev-qt/qtgui:4 alsa? ( media-libs/alsa-lib ) bs2b? ( m
 REQUIRED_USE=kde? ( dbus )
 SLOT=0
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=4334b9c2682a3a263f5b9c2bf079b9f4
+_md5_=98b5cb26c07f5066f8fd450f6bebcaa2

@@ -8,5 +8,5 @@ KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=>=x11-libs/gtk+-2.22:2 >=dev-libs/glib-2.26:2
 SLOT=0
-SRC_URI=http://nothing-personal.googlecode.com/files/guiloader-2.21.0.tar.bz2
-_md5_=ebf3ac3508012ebff7b8b4cb5627fd74
+SRC_URI=https://nothing-personal.googlecode.com/files/guiloader-2.21.0.tar.bz2
+_md5_=ecae6ffe6ac4809eece8a1718bcb338d

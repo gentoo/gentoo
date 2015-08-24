@@ -8,6 +8,6 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-qt/qtcore-4.5.3:4 >=dev-qt/qtgui-4.5.3:4 >=dev-qt/qtwebkit-4.5.3:4
 SLOT=0
-SRC_URI=http://picturewall.googlecode.com/files/PictureWall_1.0.zip
+SRC_URI=https://picturewall.googlecode.com/files/PictureWall_1.0.zip
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e1f9e554b2607997a47eee2e6abaf259
+_md5_=6f4f3d490eace263c45de067bf9f7131

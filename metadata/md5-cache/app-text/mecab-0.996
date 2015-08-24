@@ -8,6 +8,6 @@ KEYWORDS=amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=|| ( BSD LGPL-2.1 GPL-2 )
 PDEPEND=|| ( app-dicts/mecab-ipadic[unicode=] app-dicts/mecab-naist-jdic[unicode=] )
 SLOT=0
-SRC_URI=http://mecab.googlecode.com/files/mecab-0.996.tar.gz
+SRC_URI=https://mecab.googlecode.com/files/mecab-0.996.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=14c5d5abcc3dae7b4c1021ee6da6bbc1
+_md5_=73c4ecf0cf92818e50d78d4161b2bb6a

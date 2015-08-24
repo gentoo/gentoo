@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install setup test unpack
 DEPEND=>=sys-devel/gcc-3.4.4 arm? ( >=sys-devel/binutils-2.16.90 >=sys-devel/gcc-4.1.0 ) x86? ( >=sys-devel/gcc-4.3 ) amd64? ( >=sys-devel/binutils-2.19 >=sys-devel/gcc-4.3 ) ppc? ( >=sys-devel/gcc-4.1.0 ) ppc64? ( >=sys-devel/gcc-4.1.0 ) >=sys-devel/binutils-2.15.94 >=sys-kernel/linux-headers-2.6.9 >=app-misc/pax-utils-0.1.10 virtual/os-headers !<sys-apps/sandbox-1.2.18.1-r2 !<sys-apps/portage-2.1.2 !<sys-devel/patch-2.6 selinux? ( sys-libs/libselinux ) !vanilla? ( >=sys-libs/timezone-data-2007c ) sys-devel/gnuconfig virtual/pkgconfig
 DESCRIPTION=GNU libc6 (also called glibc2) C library
 EAPI=0
-HOMEPAGE=http://www.gnu.org/software/libc/libc.html
+HOMEPAGE=https://www.gnu.org/software/libc/libc.html
 IUSE=debug gd hardened multilib selinux profile vanilla crosscompile_opts_headers-only
 KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86
 LICENSE=LGPL-2.1+ BSD HPND inner-net
@@ -11,4 +11,4 @@ RESTRICT=strip
 SLOT=2.2
 SRC_URI=mirror://gnu/glibc/glibc-2.13.tar.bz2 ftp://sourceware.org/pub/glibc/releases/glibc-2.13.tar.bz2 ftp://sourceware.org/pub/glibc/snapshots/glibc-2.13.tar.bz2 mirror://gentoo/glibc-2.13.tar.bz2 mirror://gnu/glibc/glibc-ports-2.13.tar.bz2 ftp://sourceware.org/pub/glibc/releases/glibc-ports-2.13.tar.bz2 ftp://sourceware.org/pub/glibc/snapshots/glibc-ports-2.13.tar.bz2 mirror://gentoo/glibc-ports-2.13.tar.bz2 mirror://gentoo/glibc-2.13-patches-11.tar.bz2 https://dev.gentoo.org/~vapier/dist/glibc-2.13-patches-11.tar.bz2 https://dev.gentoo.org/~azarah/glibc/glibc-2.13-patches-11.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnuconfig	3920de1188fc7bfee873515453ed1d10	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=04a1642de6429293ac3bbc4fe8d0f886
+_md5_=a9dc753b0fc48eaa3b373c225f853be1

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=sys-libs/gdbm crypt? ( >=app-crypt/gpgme-0.9.0 ) guile? ( >=dev-scheme/guile-1.8 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql[server] ) nls? ( sys-devel/gettext ) pcre? ( >=dev-libs/libpcre-3.9 ) sasl? ( virtual/gsasl ) gnutls? ( net-libs/gnutls ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) test? ( dev-util/dejagnu ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GNU Anubis is an outgoing mail processor
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/anubis/
+HOMEPAGE=https://www.gnu.org/software/anubis/
 IUSE=crypt guile mysql postgres nls pam pcre sasl socks5 +gnutls tcpd test
 KEYWORDS=ppc x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ REQUIRED_USE=mysql? ( sasl ) postgres? ( sasl )
 SLOT=0
 SRC_URI=mirror://gnu/anubis/anubis-4.1.1.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=38f8da9bfbae9c39bda6487c8d9ce33a
+_md5_=05105acc493d6770b8460f8a891ed114

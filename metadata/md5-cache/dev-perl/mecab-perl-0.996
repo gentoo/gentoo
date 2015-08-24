@@ -7,6 +7,6 @@ KEYWORDS=amd64 ~ia64 x86
 LICENSE=|| ( BSD LGPL-2.1 GPL-2 )
 RDEPEND=~app-text/mecab-0.996 dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=http://mecab.googlecode.com/files/mecab-perl-0.996.tar.gz
+SRC_URI=https://mecab.googlecode.com/files/mecab-perl-0.996.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=3df512973c2c39b20511074fb7c4a49f
+_md5_=421c9003c255ee0d90a900ea87adc03b

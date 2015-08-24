@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-im/pidgin-2.6
 SLOT=0
-SRC_URI=http://prpltwtr.googlecode.com/files/prpltwtr-0.12.0.tar.gz
-_md5_=ca6b365a99b3ac72be073741d400c00e
+SRC_URI=https://prpltwtr.googlecode.com/files/prpltwtr-0.12.0.tar.gz
+_md5_=bc030b7952c8a1f8c18e78bee112a687

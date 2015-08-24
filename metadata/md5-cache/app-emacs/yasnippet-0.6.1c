@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT GPL-2
 RDEPEND=>=app-emacs/dropdown-list-20080316 >=virtual/emacs-23
 SLOT=0
-SRC_URI=http://yasnippet.googlecode.com/files/yasnippet-0.6.1c.tar.bz2 doc? ( http://yasnippet.googlecode.com/files/yasnippet-doc-0.6.1c.tar.bz2 )
+SRC_URI=https://yasnippet.googlecode.com/files/yasnippet-0.6.1c.tar.bz2 doc? ( https://yasnippet.googlecode.com/files/yasnippet-doc-0.6.1c.tar.bz2 )
 _eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e40f6cf21da462db9482793306980b2c
+_md5_=9d7d5f6eb639efc4c89c59ed935a8c95

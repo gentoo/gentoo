@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=app-arch/xz-utils >=virtual/emacs-23
 DESCRIPTION=Emacs Interface to XClip
 EAPI=4
-HOMEPAGE=http://elpa.gnu.org/packages/
+HOMEPAGE=https://elpa.gnu.org/packages/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=x11-misc/xclip >=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/xclip-1.0.el.xz
 _eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e9fbdf628d6e9a01b5f1f1e6a20b8c75
+_md5_=6fb90540be81becf148117b3300fb80b

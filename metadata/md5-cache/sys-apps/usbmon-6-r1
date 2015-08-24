@@ -2,10 +2,10 @@ DEFINED_PHASES=install prepare
 DEPEND=!=sys-apps/usbutils-0.72-r2
 DESCRIPTION=Userland for USB monitoring framework
 EAPI=5
-HOMEPAGE=http://people.redhat.com/zaitcev/linux/
+HOMEPAGE=https://people.redhat.com/zaitcev/linux/
 KEYWORDS=~x86 ~ppc ~amd64
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=http://people.redhat.com/zaitcev/linux//usbmon-6.tar.gz
+SRC_URI=https://people.redhat.com/zaitcev/linux//usbmon-6.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=3802918872ea407d1703991ea086025a
+_md5_=f73c5cdf80c1a91df5f9a8777f55c975

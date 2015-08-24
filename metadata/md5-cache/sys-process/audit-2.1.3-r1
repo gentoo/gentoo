@@ -2,13 +2,13 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
 DEPEND=ldap? ( net-nds/openldap ) prelude? ( dev-libs/libprelude ) sys-libs/libcap-ng python? ( dev-lang/swig ) >=sys-kernel/linux-headers-2.6.34 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* )
 DESCRIPTION=Userspace utilities for storing and processing auditing records
 EAPI=3
-HOMEPAGE=http://people.redhat.com/sgrubb/audit/
+HOMEPAGE=https://people.redhat.com/sgrubb/audit/
 IUSE=ldap prelude python
 KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=ldap? ( net-nds/openldap ) prelude? ( dev-libs/libprelude ) sys-libs/libcap-ng python? ( =dev-lang/python-2* )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://people.redhat.com/sgrubb/audit/audit-2.1.3.tar.gz
+SRC_URI=https://people.redhat.com/sgrubb/audit/audit-2.1.3.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=32923601f9f749d5ee89ca6e43ebe5d9
+_md5_=9a17641e4296eeb83dbf480cacf0a967

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst prepare setup test unpack
 DEPEND=audit? ( sys-process/audit ) demangle? ( sys-devel/binutils ) perl? ( dev-lang/perl ) slang? ( dev-libs/newt ) unwind? ( sys-libs/libunwind ) dev-libs/elfutils sys-devel/bison sys-devel/flex doc? ( app-text/asciidoc app-text/sgml-common app-text/xmlto sys-process/time ) python? ( =dev-lang/python-2* )
 DESCRIPTION=Userland tools for Linux Performance Counters
 EAPI=4
-HOMEPAGE=http://perf.wiki.kernel.org/
+HOMEPAGE=https://perf.wiki.kernel.org/
 IUSE=audit +demangle +doc perl python slang unwind
 KEYWORDS=~amd64 ~arm ~mips ~ppc ~x86
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=audit? ( sys-process/audit ) demangle? ( sys-devel/binutils ) perl? ( de
 SLOT=0
 SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.8.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d5a124c3cb91ef54afce2322d4f522db
+_md5_=ae2952577849bc17eebb01577266a963

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gnome-base/libglade:2.0
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=cd30b5a04ed0c30f6f0e4b08183c392e
+_md5_=4e7f72c747487f5d03f998994a84aabb

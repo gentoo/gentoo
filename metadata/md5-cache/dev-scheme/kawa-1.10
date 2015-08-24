@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install preinst prepare setup unpack
 DEPEND=( >=virtual/jdk-1.5 ) frontend? ( sys-libs/readline:0 ) sax? ( dev-java/sax:0 ) echo2? ( dev-java/echo2 ) swt? ( dev-java/swt:3.5 ) servlets? ( dev-java/servletapi:2.4 ) xqtests? ( app-arch/unzip:0 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 DESCRIPTION=Kawa, the Java-based Scheme system & Language Framework
 EAPI=3
-HOMEPAGE=http://www.gnu.org/software/kawa/
+HOMEPAGE=https://www.gnu.org/software/kawa/
 IUSE=+awt echo2 +frontend jemacs krl +sax servlets +swing swt +xml xqtests elibc_FreeBSD source
 KEYWORDS=x86
 LICENSE=MIT public-domain jemacs? ( GPL-2 ) krl? ( GPL-2 )
@@ -10,4 +10,4 @@ RDEPEND=( >=virtual/jdk-1.5 ) frontend? ( sys-libs/readline:0 ) sax? ( dev-java/
 SLOT=0
 SRC_URI=mirror://gnu/kawa/kawa-1.10.tar.gz xqtests? ( http://www.w3.org/XML/Query/test-suite/XQTS_1_0_2.zip )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=4968c28319c7573dd66d1e63c5037577
+_md5_=c3303e62601dbe2cdee6581921724477

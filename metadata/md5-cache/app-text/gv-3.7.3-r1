@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare
 DEPEND=app-text/ghostscript-gpl x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXaw3d-1.6-r1[unicode] x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-proto/xproto
 DESCRIPTION=Viewer for PostScript and PDF documents using Ghostscript
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/gv/
+HOMEPAGE=https://www.gnu.org/software/gv/
 IUSE=xinerama
 KEYWORDS=alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=app-text/ghostscript-gpl x11-libs/libICE x11-libs/libSM x11-libs/libX11 
 SLOT=0
 SRC_URI=mirror://gnu/gv/gv-3.7.3.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=b9a7128d48e8c04581b61d75b9849c19
+_md5_=401ea91c1db6f07b07f8e0c08dee8ed3

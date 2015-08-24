@@ -8,5 +8,5 @@ KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=net-misc/curl
 SLOT=0
-SRC_URI=http://lastfmlib.googlecode.com/files/lastfmlib-0.4.0.tar.gz
-_md5_=305553a124ea9f9abf5da04cdd60ac52
+SRC_URI=https://lastfmlib.googlecode.com/files/lastfmlib-0.4.0.tar.gz
+_md5_=2b57a0ba8e846312bcb686305abe50fe

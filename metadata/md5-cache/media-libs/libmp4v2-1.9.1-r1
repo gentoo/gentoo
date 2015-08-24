@@ -8,6 +8,6 @@ LICENSE=MPL-1.1
 RDEPEND=!<=media-libs/libmp4v2-1.9.1:0
 RESTRICT=test
 SLOT=1
-SRC_URI=http://mp4v2.googlecode.com/files/mp4v2-1.9.1.tar.bz2
+SRC_URI=https://mp4v2.googlecode.com/files/mp4v2-1.9.1.tar.bz2
 _eclasses_=libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=d64bc87b0e7e2882c0ab349ab60cc7f7
+_md5_=36e7f24205692330dc6d1ccf3752e002

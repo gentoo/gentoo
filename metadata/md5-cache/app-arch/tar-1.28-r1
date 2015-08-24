@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare
 DEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux ) nls? ( >=sys-devel/gettext-0.10.35 ) xattr? ( sys-apps/attr )
 DESCRIPTION=Use this to make tarballs :)
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/tar/
+HOMEPAGE=https://www.gnu.org/software/tar/
 IUSE=acl minimal nls selinux static userland_GNU xattr
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3+
@@ -10,4 +10,4 @@ RDEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux )
 SLOT=0
 SRC_URI=mirror://gnu/tar/tar-1.28.tar.bz2 mirror://gnu-alpha/tar/tar-1.28.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=b5069ad56ec4894747f859ff3cef738f
+_md5_=ae643a91674ad984d93afc16f5666e1c

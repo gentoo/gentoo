@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install postinst postrm preinst prerm unpack
 DEPEND=sys-fs/e2fsprogs sys-apps/sparc-utils
 DESCRIPTION=SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 EAPI=0
-HOMEPAGE=http://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary
+HOMEPAGE=https://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary
 IUSE=hardened
 KEYWORDS=-* sparc
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/silo/silo_1.4.14+git20120226.orig.tar.gz mirror://debian/pool/main/s/silo/silo_1.4.14+git20120226-1.diff.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=ef759678baaf25716a069b35a7620a32
+_md5_=cf6017ef70cfc8372e4b98790838b79b

@@ -2,13 +2,13 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/atk dev-libs/g-wrap dev-libs/glib:2 dev-scheme/guile:12 dev-scheme/guile-cairo dev-scheme/guile-lib gnome-base/gconf:2 gnome-base/gnome-vfs:2 gnome-base/libbonobo gnome-base/libglade:2.0 gnome-base/libgnomecanvas gnome-base/libgnomeui gnome-base/orbit:2 x11-libs/gtk+:2 x11-libs/pango virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Guile Scheme code that wraps the GNOME developer platform
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/guile-gnome/
+HOMEPAGE=https://www.gnu.org/software/guile-gnome/
 IUSE=static-libs
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/atk dev-libs/g-wrap dev-libs/glib:2 dev-scheme/guile:12 dev-scheme/guile-cairo dev-scheme/guile-lib gnome-base/gconf:2 gnome-base/gnome-vfs:2 gnome-base/libbonobo gnome-base/libglade:2.0 gnome-base/libgnomecanvas gnome-base/libgnomeui gnome-base/orbit:2 x11-libs/gtk+:2 x11-libs/pango
 RESTRICT=test
 SLOT=0
-SRC_URI=http://ftp.gnu.org/pub/gnu/guile-gnome/guile-gnome-platform/guile-gnome-platform-2.16.1.tar.gz
+SRC_URI=https://ftp.gnu.org/pub/gnu/guile-gnome/guile-gnome-platform/guile-gnome-platform-2.16.1.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=7ac4da47d8a49c7c70cca6f981cbd5f1
+_md5_=917b96daf101895ab1c66d7f42c4fbcb

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=>=app-misc/pax-utils-0.1.10 !<sys-apps/sandbox-1.6 !<sys-apps/portage-2.1.2 selinux? ( sys-libs/libselinux ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-4.4 virtual/os-headers sys-devel/gnuconfig virtual/pkgconfig
 DESCRIPTION=GNU libc6 (also called glibc2) C library
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/libc/libc.html
+HOMEPAGE=https://www.gnu.org/software/libc/libc.html
 IUSE=debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only
 KEYWORDS=alpha amd64 arm arm64 -hppa ia64 m68k ~mips ppc ppc64 s390 sh ~sparc x86
 LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=2.2
 SRC_URI=mirror://gnu/glibc/glibc-2.20.tar.xz ftp://sourceware.org/pub/glibc/releases/glibc-2.20.tar.xz ftp://sourceware.org/pub/glibc/snapshots/glibc-2.20.tar.xz mirror://gentoo/glibc-2.20.tar.xz mirror://gentoo/glibc-2.20-patches-5.tar.bz2 https://dev.gentoo.org/~vapier/dist/glibc-2.20-patches-5.tar.bz2 https://dev.gentoo.org/~azarah/glibc/glibc-2.20-patches-5.tar.bz2 https://dev.gentoo.org/~blueness/glibc/glibc-2.20-patches-5.tar.bz2 multilib? ( mirror://gentoo/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~azarah/glibc/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 https://dev.gentoo.org/~blueness/glibc/gcc-4.7.3-r1-multilib-bootstrap.tar.bz2 )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnuconfig	3920de1188fc7bfee873515453ed1d10	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e77d25ef2a6d55f3892dfffcac5926ba
+_md5_=e8c61bb31fdc62f0ae745ecfe537c2af

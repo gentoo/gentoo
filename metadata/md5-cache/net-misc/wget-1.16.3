@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install setup test
 DEPEND=!static? ( idn? ( net-dns/libidn ) pcre? ( dev-libs/libpcre ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0 ) ) uuid? ( sys-apps/util-linux ) zlib? ( sys-libs/zlib ) ) app-arch/xz-utils virtual/pkgconfig static? ( idn? ( net-dns/libidn[static-libs(+)] ) pcre? ( dev-libs/libpcre[static-libs(+)] ) ssl? ( gnutls? ( net-libs/gnutls[static-libs(+)] ) !gnutls? ( dev-libs/openssl:0[static-libs(+)] ) ) uuid? ( sys-apps/util-linux[static-libs(+)] ) zlib? ( sys-libs/zlib[static-libs(+)] ) ) test? ( || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) dev-lang/perl dev-perl/HTTP-Daemon dev-perl/HTTP-Message dev-perl/IO-Socket-SSL ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Network utility to retrieve files from the WWW
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/wget/
+HOMEPAGE=https://www.gnu.org/software/wget/
 IUSE=debug gnutls idn ipv6 nls ntlm pcre +ssl static test uuid zlib
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3
@@ -11,4 +11,4 @@ REQUIRED_USE=ntlm? ( !gnutls ssl ) gnutls? ( ssl )
 SLOT=0
 SRC_URI=mirror://gnu/wget/wget-1.16.3.tar.xz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=19a30a09b7ca4a9356d81afa021f8c4b
+_md5_=6975d4e94462d28caa5ccd0545b9b63c

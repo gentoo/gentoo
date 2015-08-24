@@ -2,11 +2,11 @@ DEFINED_PHASES=configure install prepare
 DEPEND=>=sys-devel/m4-1.4.6 dev-lang/perl
 DESCRIPTION=Used to create autoconfiguration files
 EAPI=5
-HOMEPAGE=http://www.gnu.org/software/autoconf/autoconf.html
+HOMEPAGE=https://www.gnu.org/software/autoconf/autoconf.html
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd
 LICENSE=GPL-3
 RDEPEND=>=sys-devel/m4-1.4.6 dev-lang/perl !~sys-devel/autoconf-2.65:0 >=sys-devel/autoconf-wrapper-13
 SLOT=2.65
 SRC_URI=mirror://gnu/autoconf/autoconf-2.65.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f66d0a454fef44ef9f5a1bd2cca0a140
+_md5_=7f46ea9bb00be6cafc8bc2baf684177b

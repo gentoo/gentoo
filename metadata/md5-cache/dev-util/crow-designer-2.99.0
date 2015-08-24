@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-libs/guiloader-2.99 >=dev-libs/guiloader-c++-2.99 dev-cpp/gtkmm:3.0 >=dev-libs/dbus-glib-0.92
 SLOT=0
-SRC_URI=http://nothing-personal.googlecode.com/files/crow-2.99.0.tar.xz
-_md5_=fd57134aee473b89774e91ec02bc30c9
+SRC_URI=https://nothing-personal.googlecode.com/files/crow-2.99.0.tar.xz
+_md5_=d38f87844c9f0a8d10261d8030c57971

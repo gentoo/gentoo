@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=>=virtual/jre-1.6 dev-java/xerces:2 dev-java/xml-commons-resolver:0 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
-SRC_URI=http://jing-trang.googlecode.com/files/trang-20091111.zip
+SRC_URI=https://jing-trang.googlecode.com/files/trang-20091111.zip
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=fe45e9beaea87e5568a3fbae715b2f29
+_md5_=5178c8f036a148c9165feb499f08864a

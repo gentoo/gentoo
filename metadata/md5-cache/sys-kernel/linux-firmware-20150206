@@ -1,7 +1,7 @@
 DEFINED_PHASES=install postinst preinst prepare unpack
 DESCRIPTION=Linux firmware files
 EAPI=5
-HOMEPAGE=http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git
+HOMEPAGE=https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git
 IUSE=savedconfig savedconfig
 KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=GPL-1 GPL-2 GPL-3 BSD freedist
@@ -9,4 +9,4 @@ RDEPEND=!savedconfig? ( !sys-firmware/alsa-firmware[alsa_cards_ca0132] !sys-firm
 SLOT=0
 SRC_URI=mirror://gentoo/linux-firmware-20150206.tar.xz
 _eclasses_=portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db
-_md5_=8d686432a7ffaaf4dbbb4431598a5cd6
+_md5_=e3a6617e8bddefe14539e6a2a6f86b38

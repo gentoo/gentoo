@@ -8,5 +8,5 @@ LICENSE=LGPL-3
 RDEPEND=dev-libs/libzip sys-fs/fuse
 RESTRICT=test
 SLOT=0
-SRC_URI=http://fuse-zip.googlecode.com/files/fuse-zip-0.2.12.tar.gz
-_md5_=0acace7292538c744947ff4d1a76cef3
+SRC_URI=https://fuse-zip.googlecode.com/files/fuse-zip-0.2.12.tar.gz
+_md5_=95cf7595f7b9dc06e10b8fe6648e951b

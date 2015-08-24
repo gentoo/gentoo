@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpa
 DEPEND=>=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext ) >=sys-devel/gcc-config-1.3.12-r4 sys-libs/csu fortran? ( >=dev-libs/gmp-4.2.1 >=dev-libs/mpfr-2.2.0_p10 ) >=sys-apps/texinfo-4.2-r4 >=sys-devel/bison-1.875 sys-devel/binutils-apple >=dev-libs/mpfr-2.2.0_p10 >=sys-apps/sed-4 sys-devel/gnuconfig sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext ) regression-test? ( >=dev-util/dejagnu-1.4.4 >=sys-devel/autogen-5.5.4 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 EAPI=3
-HOMEPAGE=http://gcc.gnu.org
+HOMEPAGE=https://gcc.gnu.org
 IUSE=fortran nls +openmp objc objc++ +cxx multislot regression-test vanilla +nls +nptl
 KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2 GPL-3
@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=42
 SRC_URI=http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-5666.3.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-16.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-39.tar.gz fortran? ( mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2 )
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain	e634e7c1ce6b1d242f1d78d7d01ffafb	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=a0e96093ded055f6ec9e4863f4255bda
+_md5_=10cb6e5c91b58d99edf1f4b50d839b2b

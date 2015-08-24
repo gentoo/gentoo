@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Full Linux 3.14 kernel sources with the CONFIG_PREEMPT_RT patch
 EAPI=5
-HOMEPAGE=http://www.kernel.org/ http://www.gentoo.org/ http://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+HOMEPAGE=http://www.kernel.org/ http://www.gentoo.org/ https://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
 IUSE=symlink build deblob
 KEYWORDS=~amd64
 LICENSE=GPL-2 !deblob? ( freedist )
@@ -11,4 +11,4 @@ RESTRICT=binchecks strip
 SLOT=3.14.46_p46
 SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.14.46.xz mirror://kernel/linux/kernel/v3.x/linux-3.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-3.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-check -> deblob-check-3.14 ) mirror://kernel/linux/kernel/projects/rt/3.14/patch-3.14.46-rt46.patch.xz mirror://kernel/linux/kernel/projects/rt/3.14/older/patch-3.14.46-rt46.patch.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	kernel-2	58fa20f3bda6877b31f6672ca5baec4e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=47086f610d09d8ea499be50ef15cdf96
+_md5_=ff81d6be690b9cc4ca0e38901d79e62d

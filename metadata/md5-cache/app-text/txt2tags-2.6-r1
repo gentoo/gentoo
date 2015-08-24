@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[tk?] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] tk? ( dev-lang/tk ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) emacs? ( virtual/emacs )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
-SRC_URI=http://txt2tags.googlecode.com/files/txt2tags-2.6.tgz
+SRC_URI=https://txt2tags.googlecode.com/files/txt2tags-2.6.tgz
 _eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8b957e18b6a8a436e74c64666af7a0bc
+_md5_=bd5974f132c735af87bc792355b94c50

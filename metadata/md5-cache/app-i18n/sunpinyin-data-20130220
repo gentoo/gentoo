@@ -7,5 +7,5 @@ KEYWORDS=amd64 ~ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=app-i18n/sunpinyin-2.0.4_pre20130108
 SLOT=0
-SRC_URI=http://open-gram.googlecode.com/files/dict.utf8-20130220.tar.bz2 http://open-gram.googlecode.com/files/lm_sc.t3g.arpa-20121025.tar.bz2
-_md5_=d9dd95357c65cfacb2ae7ac46254a41c
+SRC_URI=https://open-gram.googlecode.com/files/dict.utf8-20130220.tar.bz2 https://open-gram.googlecode.com/files/lm_sc.t3g.arpa-20121025.tar.bz2
+_md5_=de9e607aca133c4dd3cc1fb5b23cf227

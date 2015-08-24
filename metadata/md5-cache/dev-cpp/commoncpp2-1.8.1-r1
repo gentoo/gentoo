@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare
 DEPEND=doc? ( >=app-doc/doxygen-1.3.6 ) ssl? ( gnutls? ( dev-libs/libgcrypt:0 net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) sys-libs/zlib !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
 EAPI=5
-HOMEPAGE=http://www.gnu.org/software/commoncpp/
+HOMEPAGE=https://www.gnu.org/software/commoncpp/
 IUSE=debug doc examples ipv6 gnutls ssl static-libs
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ REQUIRED_USE=gnutls? ( ssl )
 SLOT=0
 SRC_URI=mirror://gnu/commoncpp/commoncpp2-1.8.1.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=33efd6b7af7f72e6916016ddbec056fa
+_md5_=276afe83e7b80e55beea2dd21fbfe8b6

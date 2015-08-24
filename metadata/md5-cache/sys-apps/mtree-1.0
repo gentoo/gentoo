@@ -5,5 +5,5 @@ HOMEPAGE=https://code.google.com/p/mtree-port/
 KEYWORDS=~amd64
 LICENSE=BSD
 SLOT=0
-SRC_URI=http://mtree-port.googlecode.com/files/mtree-1.0.tar.gz
-_md5_=56f421b6e557a49abe362ff47667221d
+SRC_URI=https://mtree-port.googlecode.com/files/mtree-1.0.tar.gz
+_md5_=05fb4151f706470b22ce3c87354dc2da

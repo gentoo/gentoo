@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-libs/guiloader-2.99 dev-cpp/gtkmm:3.0 >=dev-cpp/glibmm-2.28:2
 SLOT=0
-SRC_URI=http://nothing-personal.googlecode.com/files/guiloader-c++-2.99.0.tar.xz
-_md5_=38e90cb4e5b263a1f5eaa71be4c995ef
+SRC_URI=https://nothing-personal.googlecode.com/files/guiloader-c++-2.99.0.tar.xz
+_md5_=495345ee37a39507a192103c180e92da

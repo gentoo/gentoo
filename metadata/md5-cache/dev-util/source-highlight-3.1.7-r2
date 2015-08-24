@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install test
 DEPEND=>=dev-libs/boost-1.52.0-r1[threads] dev-util/ctags
 DESCRIPTION=Generate highlighted source code as an (x)html document
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/src-highlite/source-highlight.html
+HOMEPAGE=https://www.gnu.org/software/src-highlite/source-highlight.html
 IUSE=doc static-libs
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/boost-1.52.0-r1[threads] dev-util/ctags
 SLOT=0
 SRC_URI=mirror://gnu/src-highlite/source-highlight-3.1.7.tar.gz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=34e9b8e8046023106c241a4bf40b7b73
+_md5_=14e78eb1777b41cd82bc790c37582f4e

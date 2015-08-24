@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare test
 DEPEND=>=sys-fs/e2fsprogs-1.27 >=sys-libs/ncurses-5.7-r7 device-mapper? ( >=sys-fs/lvm2-2.02.45 ) readline? ( >=sys-libs/readline-5.2 ) selinux? ( sys-libs/libselinux ) nls? ( >=sys-devel/gettext-0.12.1-r2 ) virtual/pkgconfig test? ( >=dev-libs/check-0.9.3 dev-perl/Digest-CRC ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Create, destroy, resize, check, copy partitions and file systems
 EAPI=4
-HOMEPAGE=http://www.gnu.org/software/parted
+HOMEPAGE=https://www.gnu.org/software/parted
 IUSE=+debug device-mapper nls readline selinux static-libs test
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=>=sys-fs/e2fsprogs-1.27 >=sys-libs/ncurses-5.7-r7 device-mapper? ( >=sys
 SLOT=0
 SRC_URI=mirror://gnu/parted/parted-3.1.tar.xz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=6b3f42231b24a0d8c5418d53f796f238
+_md5_=47a4665ce81231600dea4fa190e23a3e

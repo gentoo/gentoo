@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install
 DESCRIPTION=Gnulib is a library of common routines intended to be shared at the source level
 EAPI=5
-HOMEPAGE=http://www.gnu.org/software/gnulib
+HOMEPAGE=https://www.gnu.org/software/gnulib
 IUSE=doc
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://git.savannah.gnu.org/cgit/gnulib.git/snapshot/gnulib-0.1.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=d0970c289f9dac3b55740833a44417c9
+_md5_=f6a37d3d0a2da05cf59e028c881f786f

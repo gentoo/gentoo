@@ -7,5 +7,5 @@ KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=fairuse
 RDEPEND=games-misc/fortune-mod
 SLOT=0
-SRC_URI=http://slepnoga.googlecode.com/files/gentoo-ru-0.25.gz http://marsoft.dyndns.info/fortunes-gentoo-ru/gentoo-ru-0.25.gz
-_md5_=77bec5472d081968b7a6a5c71649b9eb
+SRC_URI=https://slepnoga.googlecode.com/files/gentoo-ru-0.25.gz http://marsoft.dyndns.info/fortunes-gentoo-ru/gentoo-ru-0.25.gz
+_md5_=c06cf01ce1bda26db7a8345b744ed357

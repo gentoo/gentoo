@@ -5,5 +5,5 @@ HOMEPAGE=http://prodigal.ornl.gov/ https://code.google.com/p/prodigal/
 KEYWORDS=~amd64
 LICENSE=GPL-3
 SLOT=0
-SRC_URI=http://prodigal.googlecode.com/files/prodigal.v2_60.tar.gz
-_md5_=59d1cbd997aac846168887de763d4247
+SRC_URI=https://prodigal.googlecode.com/files/prodigal.v2_60.tar.gz
+_md5_=305999f17f2c525994f97ab8a7636ff9

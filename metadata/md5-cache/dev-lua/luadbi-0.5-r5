@@ -9,6 +9,6 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) sqlite? ( >=dev-db/sqlite-3 )
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=0
-SRC_URI=http://luadbi.googlecode.com/files/luadbi.0.5.tar.gz
+SRC_URI=https://luadbi.googlecode.com/files/luadbi.0.5.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=770047ad918fbfe815cd01e72fafe3ea
+_md5_=1620774bd39ba30d239126da833a5a94

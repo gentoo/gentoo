@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-perl/TimeDate dev-perl/XML-Parser >=dev-perl/MP3-Info-1.01 dev-perl/Unicode-String dev-perl/Digest-SHA1 dev-perl/libwww-perl ffmpeg? ( virtual/ffmpeg ) flac? ( dev-perl/Audio-FLAC-Header media-libs/flac aac? ( >=media-libs/faac-1.24 ) mp3? ( media-sound/lame ) !aac? ( media-sound/lame ) ) ogg? ( dev-perl/Ogg-Vorbis-Header-PurePerl media-sound/vorbis-tools aac? ( >=media-libs/faac-1.24 ) mp3? ( media-sound/lame ) !aac? ( media-sound/lame ) ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=A collection of Perl-scripts for iPod
 EAPI=5
-HOMEPAGE=http://www.gnu.org/software/gnupod/
+HOMEPAGE=https://www.gnu.org/software/gnupod/
 IUSE=aac ffmpeg flac mp3 ogg
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=dev-perl/TimeDate dev-perl/XML-Parser >=dev-perl/MP3-Info-1.01 dev-perl/
 SLOT=0
 SRC_URI=http://blinkenlights.ch/gnupod-dist/stable/gnupod-0.99.8.tgz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=0ed7749c0d181c8c197c4d391a90d8cd
+_md5_=3ce45c1442e42fda498cc4d39df07133

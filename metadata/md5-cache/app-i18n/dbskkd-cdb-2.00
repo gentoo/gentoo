@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install prepare setup
 DEPEND=|| ( dev-db/cdb dev-db/tinycdb )
 DESCRIPTION=Yet another Dictionary server for the SKK Japanese-input software
 EAPI=2
-HOMEPAGE=http://dbskkd-cdb.googlecode.com/
+HOMEPAGE=https://dbskkd-cdb.googlecode.com/
 KEYWORDS=amd64 ppc x86
 LICENSE=BSD-2
 RDEPEND=>=app-i18n/skk-jisyo-200705[cdb] sys-apps/xinetd
 SLOT=0
-SRC_URI=http://dbskkd-cdb.googlecode.com/files/dbskkd-cdb-2.00.tar.gz
+SRC_URI=https://dbskkd-cdb.googlecode.com/files/dbskkd-cdb-2.00.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=730f818333416b9eef1fe5f8e4712d37
+_md5_=6a6acd19fa629a2dd323b65cc6bdca56

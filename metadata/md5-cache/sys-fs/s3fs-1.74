@@ -2,12 +2,12 @@ DEFINED_PHASES=-
 DEPEND=>=dev-libs/libxml2-2.6:2 dev-libs/openssl >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4 virtual/pkgconfig
 DESCRIPTION=Amazon mounting S3 via fuse
 EAPI=5
-HOMEPAGE=http://s3fs.googlecode.com/
+HOMEPAGE=https://s3fs.googlecode.com/
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libxml2-2.6:2 dev-libs/openssl >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4 app-misc/mime-types
 RESTRICT=test
 SLOT=0
-SRC_URI=http://s3fs.googlecode.com/files/s3fs-1.74.tar.gz
+SRC_URI=https://s3fs.googlecode.com/files/s3fs-1.74.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0280a2fb402bb9f1975f180f40aa8e30
+_md5_=c833dd2e92cff8640d8838c95d8f8955

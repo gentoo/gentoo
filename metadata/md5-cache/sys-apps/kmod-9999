@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare unpack
 DEPEND=!sys-apps/module-init-tools !sys-apps/modutils !<sys-apps/openrc-0.13.8 !<sys-apps/systemd-216-r3 lzma? ( >=app-arch/xz-utils-5.0.4-r1 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zlib? ( >=sys-libs/zlib-1.2.6 ) doc? ( dev-util/gtk-doc ) lzma? ( virtual/pkgconfig ) python? ( dev-python/cython[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] virtual/pkgconfig ) zlib? ( virtual/pkgconfig ) dev-libs/libxslt !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
 DESCRIPTION=library and tools for managing linux kernel modules
 EAPI=5
-HOMEPAGE=http://git.kernel.org/?p=utils/kernel/kmod/kmod.git
+HOMEPAGE=https://git.kernel.org/?p=utils/kernel/kmod/kmod.git
 IUSE=debug doc lzma python static-libs +tools zlib python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
 LICENSE=LGPL-2
 RDEPEND=!sys-apps/module-init-tools !sys-apps/modutils !<sys-apps/openrc-0.13.8 !<sys-apps/systemd-216-r3 lzma? ( >=app-arch/xz-utils-5.0.4-r1 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zlib? ( >=sys-libs/zlib-1.2.6 )
@@ -10,4 +10,4 @@ REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_3 py
 RESTRICT=test
 SLOT=0
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	fca51bba23ab2e206194470b2e56c92c	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=accc7d9f637128778997734180a5ed3d
+_md5_=0deed55383e066869b2cde1373bbb28c

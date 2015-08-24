@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install postinst postrm prepare setup
 DEPEND=!mail-client/nmh !mail-filter/libsieve !mail-client/mailx !mail-client/nail sys-libs/ncurses sys-libs/readline || ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 ) virtual/mta berkdb? ( sys-libs/db ) bidi? ( dev-libs/fribidi ) gdbm? ( sys-libs/gdbm ) guile? ( dev-scheme/guile ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) nls? ( sys-devel/gettext ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls ) tcpd? ( sys-apps/tcp-wrappers ) tokyocabinet? ( dev-db/tokyocabinet ) virtual/pkgconfig python? ( =dev-lang/python-2* )
 DESCRIPTION=A useful collection of mail servers, clients, and filters
 EAPI=5
-HOMEPAGE=http://www.gnu.org/software/mailutils/mailutils.html
+HOMEPAGE=https://www.gnu.org/software/mailutils/mailutils.html
 IUSE=berkdb bidi +clients gdbm sasl guile ipv6 kerberos ldap mysql nls pam postgres python servers ssl static-libs +threads tcpd tokyocabinet
 KEYWORDS=amd64 arm64 ~hppa ~ppc x86 ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2 LGPL-2.1
@@ -10,4 +10,4 @@ RDEPEND=!mail-client/nmh !mail-filter/libsieve !mail-client/mailx !mail-client/n
 SLOT=0
 SRC_URI=mirror://gnu-alpha/mailutils/mailutils-2.99.98.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=c5365b49f44bd7725e3757938bcc6cf7
+_md5_=1a758e217b4f617db506576c70cbd1b8
