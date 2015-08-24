@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,15 +38,16 @@ src_configure() {
 	econf
 }
 
+src_compile() {
+	:;
+}
+
 src_install() {
 	perl_set_version
-	sed -i -e "s:\$INC\[0\]/\$modi:${D}${VENDOR_ARCH}/\$modi:g" \
+	sed -i -e "s:\$INC\[0\]/\$modi:${VENDOR_ARCH}/\$modi:g" \
 		tools/gnupod_install.pl || die
 
-	dodir /usr/bin
-	dodir ${VENDOR_ARCH}/GNUpod
-	dodir /usr/share/info
-	einstall
+	emake DESTDIR="${D}" install
 
 	dodoc CHANGES README* doc/gnupodrc.example doc/gnutunesdb.example
 	dohtml doc/gnupod.html
