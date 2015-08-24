@@ -8,7 +8,7 @@ inherit eutils systemd
 
 if [ "${PV}" = "9999" ]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/teleshoes/tpacpi-bat.git http://github.com/teleshoes/tpacpi-bat.git"
+	EGIT_REPO_URI="git://github.com/teleshoes/tpacpi-bat.git https://github.com/teleshoes/tpacpi-bat.git"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/teleshoes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"

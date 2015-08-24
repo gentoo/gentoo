@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils multilib-minimal
 
 DESCRIPTION="Library for SSA/ASS subtitles rendering"
-HOMEPAGE="http://github.com/libass/libass"
-SRC_URI="http://github.com/libass/libass/releases/download/${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/libass/libass"
+SRC_URI="https://github.com/libass/libass/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0/5" # subslot = libass soname version

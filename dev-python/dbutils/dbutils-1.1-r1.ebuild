@@ -11,7 +11,7 @@ MY_PN="DBUtils"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Database connections for multi-threaded environments"
-HOMEPAGE="http://www.webwareforpython.org/DBUtils http://pypi.python.org/pypi/DBUtils"
+HOMEPAGE="http://www.webwareforpython.org/DBUtils https://pypi.python.org/pypi/DBUtils"
 SRC_URI="http://www.webwareforpython.org/downloads/DBUtils/${MY_P}.tar.gz"
 
 LICENSE="OSL-2.0"

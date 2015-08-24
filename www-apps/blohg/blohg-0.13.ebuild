@@ -16,7 +16,7 @@ fi
 inherit distutils-r1 ${GIT_ECLASS}
 
 DESCRIPTION="A Mercurial (or Git) based blogging engine"
-HOMEPAGE="http://blohg.org/ http://pypi.python.org/pypi/blohg"
+HOMEPAGE="http://blohg.org/ https://pypi.python.org/pypi/blohg"
 
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"

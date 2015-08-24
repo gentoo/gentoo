@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python library to create spreadsheet files compatible with Excel"
-HOMEPAGE="http://pypi.python.org/pypi/xlwt"
+HOMEPAGE="https://pypi.python.org/pypi/xlwt"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

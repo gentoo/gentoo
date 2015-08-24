@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 inherit distutils-r1
 
 DESCRIPTION="Module providing ASCII transliterations of Unicode text"
-HOMEPAGE="http://pypi.python.org/pypi/Unidecode"
+HOMEPAGE="https://pypi.python.org/pypi/Unidecode"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

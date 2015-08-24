@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="KDE-free version of Kross (core libraries and Qt Script backend)"
-HOMEPAGE="http://github.com/0xd34df00d/Qross"
+HOMEPAGE="https://github.com/0xd34df00d/Qross"
 SRC_URI="https://github.com/0xd34df00d/Qross/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

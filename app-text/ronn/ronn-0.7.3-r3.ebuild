@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="AUTHORS CHANGES README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Ronn converts simple, human readable textfiles to roff for terminal display, and also to HTML"
-HOMEPAGE="http://github.com/rtomayko/ronn/"
+HOMEPAGE="https://github.com/rtomayko/ronn/"
 
 LICENSE="MIT"
 SLOT="0"

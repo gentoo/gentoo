@@ -6,7 +6,7 @@ JAVA_PKG_IUSE="source test"
 inherit base java-pkg-2 java-ant-2
 
 DESCRIPTION="Provides Java values for common platform C constants"
-HOMEPAGE="http://github.com/wmeissner/jnr-constants"
+HOMEPAGE="https://github.com/wmeissner/jnr-constants"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"

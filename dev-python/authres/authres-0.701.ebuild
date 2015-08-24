@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Authentication Results Header Module"
-HOMEPAGE="https://launchpad.net/authentication-results-python http://pypi.python.org/pypi/authres"
+HOMEPAGE="https://launchpad.net/authentication-results-python https://pypi.python.org/pypi/authres"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

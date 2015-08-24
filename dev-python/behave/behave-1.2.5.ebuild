@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="behaviour-driven development, Python style"
-HOMEPAGE="http://github.com/behave/behave"
+HOMEPAGE="https://github.com/behave/behave"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

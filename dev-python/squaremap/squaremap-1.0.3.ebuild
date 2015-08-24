@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Hierarchic data-visualisation control for wxPython"
-HOMEPAGE="http://pypi.python.org/pypi/SquareMap"
+HOMEPAGE="https://pypi.python.org/pypi/SquareMap"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

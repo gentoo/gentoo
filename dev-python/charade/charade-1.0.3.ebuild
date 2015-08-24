@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Universal encoding detector for python 2 and 3 (fork of chardet)"
-HOMEPAGE="https://github.com/sigmavirus24/charade/ http://pypi.python.org/pypi/charade/"
+HOMEPAGE="https://github.com/sigmavirus24/charade/ https://pypi.python.org/pypi/charade/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

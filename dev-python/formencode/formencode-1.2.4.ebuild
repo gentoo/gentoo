@@ -13,7 +13,7 @@ MY_PN="FormEncode"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="HTML form validation, generation, and conversion package"
-HOMEPAGE="http://formencode.org/ http://pypi.python.org/pypi/FormEncode"
+HOMEPAGE="http://formencode.org/ https://pypi.python.org/pypi/FormEncode"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="PSF-2"

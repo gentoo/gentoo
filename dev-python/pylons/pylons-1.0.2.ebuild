@@ -12,7 +12,7 @@ MY_PN="Pylons"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Pylons Web Framework"
-HOMEPAGE="http://pylonshq.com/ http://pypi.python.org/pypi/Pylons"
+HOMEPAGE="http://pylonshq.com/ https://pypi.python.org/pypi/Pylons"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

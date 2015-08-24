@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="C++ template library for linear algebra: vectors, matrices, and related algorithms"
 HOMEPAGE="http://eigen.tuxfamily.org/"
-SRC_URI="http://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="LGPL-2 GPL-3"
 KEYWORDS="alpha amd64 ~arm ~hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"

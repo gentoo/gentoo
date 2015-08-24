@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://pypi.python.org/pypi/mimerender"
+HOMEPAGE="https://pypi.python.org/pypi/mimerender"
 
 LICENSE="BSD"
 SLOT="0"

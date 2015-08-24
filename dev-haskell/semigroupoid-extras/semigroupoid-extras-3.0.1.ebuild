@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Semigroupoids requiring Haskell extensions"
-HOMEPAGE="http://github.com/ekmett/semigroupoid-extras"
+HOMEPAGE="https://github.com/ekmett/semigroupoid-extras"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRA_DOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Run external commands on Unix or Windows"
-HOMEPAGE="http://github.com/opscode/mixlib-shellout"
+HOMEPAGE="https://github.com/opscode/mixlib-shellout"
 SRC_URI="https://github.com/opscode/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1
 
 DESCRIPTION="WSDL parsing services package for Web Services for Python"
-HOMEPAGE="https://github.com/kiorky/wstools http://pypi.python.org/pypi/wstools"
+HOMEPAGE="https://github.com/kiorky/wstools https://pypi.python.org/pypi/wstools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

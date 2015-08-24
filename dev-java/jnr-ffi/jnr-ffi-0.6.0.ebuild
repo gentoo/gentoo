@@ -9,8 +9,8 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="An abstracted interface to invoking native functions from java"
-HOMEPAGE="http://github.com/jnr"
-SRC_URI="http://github.com/jnr/${PN}/tarball/${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/jnr"
+SRC_URI="https://github.com/jnr/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-3 )"
 SLOT="0.6"

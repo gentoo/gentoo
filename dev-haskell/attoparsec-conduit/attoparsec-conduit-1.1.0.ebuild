@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile"
 inherit haskell-cabal
 
 DESCRIPTION="Consume attoparsec parsers via conduit. (deprecated)"
-HOMEPAGE="http://github.com/snoyberg/conduit"
+HOMEPAGE="https://github.com/snoyberg/conduit"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"

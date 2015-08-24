@@ -20,7 +20,7 @@ RUBY_FAKEGEM_GEMSPEC="rspec-core.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
-HOMEPAGE="http://github.com/rspec/rspec-core"
+HOMEPAGE="https://github.com/rspec/rspec-core"
 SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"

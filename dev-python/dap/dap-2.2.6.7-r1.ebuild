@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Data Access Protocol client and server"
-HOMEPAGE="http://pydap.org http://pypi.python.org/pypi/dap http://pypi.python.org/pypi/Pydap"
+HOMEPAGE="http://pydap.org https://pypi.python.org/pypi/dap https://pypi.python.org/pypi/Pydap"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

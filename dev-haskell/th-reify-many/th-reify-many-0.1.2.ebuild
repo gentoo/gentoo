@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Recurseively reify template haskell datatype info"
-HOMEPAGE="http://github.com/mgsloan/th-reify-many"
+HOMEPAGE="https://github.com/mgsloan/th-reify-many"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

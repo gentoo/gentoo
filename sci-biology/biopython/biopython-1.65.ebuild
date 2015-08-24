@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Python modules for computational molecular biology"
-HOMEPAGE="http://www.biopython.org/ http://pypi.python.org/pypi/biopython/"
+HOMEPAGE="http://www.biopython.org/ https://pypi.python.org/pypi/biopython/"
 SRC_URI="http://www.biopython.org/DIST/${P}.tar.gz"
 
 LICENSE="HPND"

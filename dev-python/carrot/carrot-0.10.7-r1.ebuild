@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="AMQP Messaging Framework for Python"
-HOMEPAGE="http://github.com/ask/carrot/"
+HOMEPAGE="https://github.com/ask/carrot/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

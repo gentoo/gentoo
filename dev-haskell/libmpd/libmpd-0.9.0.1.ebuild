@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="An MPD client library"
-HOMEPAGE="http://github.com/vimus/libmpd-haskell#readme"
+HOMEPAGE="https://github.com/vimus/libmpd-haskell#readme"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"

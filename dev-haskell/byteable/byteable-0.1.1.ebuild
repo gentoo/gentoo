@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Type class for sequence of bytes"
-HOMEPAGE="http://github.com/vincenthz/hs-byteable"
+HOMEPAGE="https://github.com/vincenthz/hs-byteable"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

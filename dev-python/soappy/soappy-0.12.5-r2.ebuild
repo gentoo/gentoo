@@ -13,7 +13,7 @@ MY_PN="SOAPpy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="SOAP Services for Python"
-HOMEPAGE="http://pywebsvcs.sourceforge.net/ http://pypi.python.org/pypi/SOAPpy"
+HOMEPAGE="http://pywebsvcs.sourceforge.net/ https://pypi.python.org/pypi/SOAPpy"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

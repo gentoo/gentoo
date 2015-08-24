@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="The new features in unittest for Python 2.7 backported to Python 2.4+"
-HOMEPAGE="http://pypi.python.org/pypi/unittest2
+HOMEPAGE="https://pypi.python.org/pypi/unittest2
 	http://code.google.com/p/unittest-ext/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

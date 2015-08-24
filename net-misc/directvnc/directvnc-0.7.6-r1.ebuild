@@ -11,7 +11,7 @@ inherit eutils autotools-utils
 
 DESCRIPTION="Very thin VNC client for unix framebuffer systems"
 HOMEPAGE="http://drinkmilk.github.com/directvnc/"
-SRC_URI="http://github.com/downloads/drinkmilk/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/drinkmilk/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="map.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A string/symbol indifferent ordered hash that works in all rubies"
-HOMEPAGE="http://github.com/ahoward/map"
+HOMEPAGE="https://github.com/ahoward/map"
 
 LICENSE="|| ( Ruby BSD-2 )"
 SLOT="0"

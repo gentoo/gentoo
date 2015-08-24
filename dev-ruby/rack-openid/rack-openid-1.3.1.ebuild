@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="Provides a more HTTPish API around the ruby-openid library"
-HOMEPAGE="http://github.com/josh/rack-openid"
+HOMEPAGE="https://github.com/josh/rack-openid"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~x86"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Enthought Tool Suite: framework for writing declarative interfaces"
-HOMEPAGE="http://code.enthought.com/projects/enaml/ http://pypi.python.org/pypi/enaml"
+HOMEPAGE="http://code.enthought.com/projects/enaml/ https://pypi.python.org/pypi/enaml"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

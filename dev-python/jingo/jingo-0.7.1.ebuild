@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="An adapter for using Jinja2 templates with Django"
-HOMEPAGE="http://github.com/jbalogh/jingo/"
+HOMEPAGE="https://github.com/jbalogh/jingo/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

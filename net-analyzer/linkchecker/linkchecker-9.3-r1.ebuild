@@ -13,7 +13,7 @@ MY_PN="${PN/linkchecker/LinkChecker}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Check websites for broken links"
-HOMEPAGE="http://wummel.github.com/linkchecker/ http://pypi.python.org/pypi/linkchecker/"
+HOMEPAGE="http://wummel.github.com/linkchecker/ https://pypi.python.org/pypi/linkchecker/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

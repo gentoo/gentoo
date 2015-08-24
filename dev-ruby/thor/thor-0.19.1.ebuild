@@ -16,7 +16,7 @@ inherit ruby-fakegem
 DESCRIPTION="A scripting framework that replaces rake and sake"
 HOMEPAGE="http://whatisthor.com/"
 
-SRC_URI="http://github.com/erikhuda/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
+SRC_URI="https://github.com/erikhuda/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A drop in replacement for xpyb, an XCB python binding"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://github.com/tych0/xcffib"
+HOMEPAGE="https://github.com/tych0/xcffib"
 
 LICENSE="MIT"
 SLOT="0"

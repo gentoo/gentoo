@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Test Daemon"
-HOMEPAGE="http://github.com/brunobord/tdaemon"
+HOMEPAGE="https://github.com/brunobord/tdaemon"
 SRC_URI="https://github.com/tampakrap/tdaemon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"

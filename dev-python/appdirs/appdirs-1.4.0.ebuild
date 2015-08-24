@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Module for determining appropriate platform-specific dirs"
-HOMEPAGE="http://github.com/ActiveState/appdirs"
+HOMEPAGE="https://github.com/ActiveState/appdirs"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

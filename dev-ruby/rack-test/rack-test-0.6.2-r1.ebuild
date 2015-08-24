@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.rdoc"
 inherit versionator ruby-fakegem
 
 DESCRIPTION="Rack::Test is a small, simple testing API for Rack apps"
-HOMEPAGE="http://github.com/brynary/rack-test"
+HOMEPAGE="https://github.com/brynary/rack-test"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

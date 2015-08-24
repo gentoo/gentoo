@@ -16,7 +16,7 @@ MY_PN="${PN}4"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree"
 HOMEPAGE="http://www.crummy.com/software/BeautifulSoup/
-	http://pypi.python.org/pypi/beautifulsoup4"
+	https://pypi.python.org/pypi/beautifulsoup4"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

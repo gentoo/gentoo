@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="CherryPy-${PV}"
 
 DESCRIPTION="CherryPy is a pythonic, object-oriented HTTP framework"
-HOMEPAGE="http://www.cherrypy.org/ http://pypi.python.org/pypi/CherryPy"
+HOMEPAGE="http://www.cherrypy.org/ https://pypi.python.org/pypi/CherryPy"
 SRC_URI="mirror://pypi/C/CherryPy/${MY_P}.tar.gz"
 
 LICENSE="BSD"

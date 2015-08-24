@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Semigroups, specialized containers and a general map/reduce framework"
-HOMEPAGE="http://github.com/ekmett/reducers/"
+HOMEPAGE="https://github.com/ekmett/reducers/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

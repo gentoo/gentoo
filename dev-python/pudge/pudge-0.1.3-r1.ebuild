@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A documentation generator for Python projects, using Restructured Text"
-HOMEPAGE="http://pudge.lesscode.org http://pypi.python.org/pypi/pudge"
+HOMEPAGE="http://pudge.lesscode.org https://pypi.python.org/pypi/pudge"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

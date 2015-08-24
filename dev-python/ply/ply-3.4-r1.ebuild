@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python Lex-Yacc library"
-HOMEPAGE="http://www.dabeaz.com/ply/ http://pypi.python.org/pypi/ply"
+HOMEPAGE="http://www.dabeaz.com/ply/ https://pypi.python.org/pypi/ply"
 SRC_URI="http://www.dabeaz.com/ply/${P}.tar.gz"
 
 LICENSE="BSD"

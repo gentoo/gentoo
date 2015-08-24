@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="An MPD client library"
-HOMEPAGE="http://github.com/joachifm/libmpd-haskell"
+HOMEPAGE="https://github.com/joachifm/libmpd-haskell"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

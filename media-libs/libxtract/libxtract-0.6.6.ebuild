@@ -5,8 +5,8 @@
 EAPI=5
 
 DESCRIPTION="A simple, portable, lightweight library of audio feature extraction functions"
-HOMEPAGE="http://github.com/jamiebullock/LibXtract"
-SRC_URI="http://github.com/downloads/jamiebullock/LibXtract/${P}.tar.gz"
+HOMEPAGE="https://github.com/jamiebullock/LibXtract"
+SRC_URI="https://github.com/downloads/jamiebullock/LibXtract/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

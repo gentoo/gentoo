@@ -8,7 +8,7 @@ inherit gnome2-utils
 
 DESCRIPTION="GNOME integration for Spotify"
 HOMEPAGE="https://github.com/mrpdaemon/gnome-integration-spotify"
-SRC_URI="http://github.com/mrpdaemon/${PN}/tarball/${PV} -> ${PN}-git-${PV}.tgz"
+SRC_URI="https://github.com/mrpdaemon/${PN}/tarball/${PV} -> ${PN}-git-${PV}.tgz"
 S="${WORKDIR}/mrpdaemon-${PN}-df9124d"
 
 LICENSE="GPL-3"

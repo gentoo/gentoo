@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Simple monadic parser for ASN1 stream types"
-HOMEPAGE="http://github.com/vincenthz/hs-asn1"
+HOMEPAGE="https://github.com/vincenthz/hs-asn1"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

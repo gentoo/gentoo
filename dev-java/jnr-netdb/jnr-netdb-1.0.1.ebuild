@@ -10,8 +10,8 @@ WANT_ANT_TASKS="ant-nodeps"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Network services database access for java"
-HOMEPAGE="http://github.com/wmeissner/jnr-netdb"
-SRC_URI="http://github.com/wmeissner/jnr-netdb/tarball/${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/wmeissner/jnr-netdb"
+SRC_URI="https://github.com/wmeissner/jnr-netdb/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

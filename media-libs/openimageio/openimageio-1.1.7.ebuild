@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils eutils multilib python-single-r1 vcs-snapshot
 
 DESCRIPTION="A library for reading and writing images"
-HOMEPAGE="http://sites.google.com/site/openimageio/ http://github.com/OpenImageIO"
-SRC_URI="http://github.com/OpenImageIO/oiio/archive/Release-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
+SRC_URI="https://github.com/OpenImageIO/oiio/archive/Release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -11,7 +11,7 @@ GIT_PV="0-gbaaab90"
 
 DESCRIPTION="Byte-based encoding support library for Java"
 HOMEPAGE="http://jruby.codehaus.org/"
-#SRC_URI="http://github.com/jruby/${PN}/tarball/${PV} -> ${P}-git.tar.gz"
+#SRC_URI="https://github.com/jruby/${PN}/tarball/${PV} -> ${P}-git.tar.gz"
 SRC_URI="mirror://gentoo/${P}-git.tar.gz"
 LICENSE="MIT"
 SLOT="0"

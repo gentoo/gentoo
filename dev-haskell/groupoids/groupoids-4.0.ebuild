@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile"
 inherit haskell-cabal
 
 DESCRIPTION="This package has been absorbed into semigroupoids 4.0"
-HOMEPAGE="http://github.com/ekmett/groupoids/"
+HOMEPAGE="https://github.com/ekmett/groupoids/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

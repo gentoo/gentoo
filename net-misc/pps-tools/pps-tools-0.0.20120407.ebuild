@@ -11,7 +11,7 @@ PV_COMMIT='0deb9c7e135e9380a6d09e9d2e938a146bb698c8'
 
 DESCRIPTION="User-space tools for LinuxPPS"
 HOMEPAGE="http://wiki.enneenne.com/index.php/LinuxPPS_installation"
-SRC_URI="http://github.com/${GITHUB_USER}/${PN}/tarball/${PV_COMMIT} -> ${PN}-git-${PV}.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/${PN}/tarball/${PV_COMMIT} -> ${PN}-git-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

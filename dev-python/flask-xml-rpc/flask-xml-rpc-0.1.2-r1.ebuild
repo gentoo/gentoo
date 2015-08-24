@@ -11,7 +11,7 @@ MY_PN="Flask-XML-RPC"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="XML-RPC support for Flask applications"
-HOMEPAGE="http://packages.python.org/Flask-XML-RPC/ http://pypi.python.org/pypi/Flask-XML-RPC"
+HOMEPAGE="http://packages.python.org/Flask-XML-RPC/ https://pypi.python.org/pypi/Flask-XML-RPC"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

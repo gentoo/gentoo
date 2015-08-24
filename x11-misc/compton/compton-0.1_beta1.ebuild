@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_3 )
 inherit toolchain-funcs python-r1
 
 DESCRIPTION="A compositor for X, and a fork of xcompmgr-dana"
-HOMEPAGE="http://github.com/chjj/compton"
+HOMEPAGE="https://github.com/chjj/compton"
 SRC_URI="https://github.com/chjj/compton/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

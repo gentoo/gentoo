@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3} )
 inherit distutils-r1
 
 DESCRIPTION="A jQuery-like library for python"
-HOMEPAGE="http://pypi.python.org/pypi/pyquery"
+HOMEPAGE="https://pypi.python.org/pypi/pyquery"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

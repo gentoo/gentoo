@@ -8,7 +8,7 @@ inherit autotools
 DESCRIPTION="A suite of tools for thin provisioning on Linux"
 HOMEPAGE="https://github.com/jthornber/thin-provisioning-tools"
 EXT=.tar.gz
-SRC_URI="http://github.com/jthornber/${PN}/archive/v${PV}${EXT} -> ${P}${EXT}"
+SRC_URI="https://github.com/jthornber/${PN}/archive/v${PV}${EXT} -> ${P}${EXT}"
 
 LICENSE="GPL-3"
 SLOT="0"

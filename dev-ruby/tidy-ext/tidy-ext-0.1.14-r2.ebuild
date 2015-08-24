@@ -12,7 +12,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="W3C HTML Tidy library implemented as a Ruby extension"
-HOMEPAGE="http://github.com/carld/tidy"
+HOMEPAGE="https://github.com/carld/tidy"
 
 LICENSE="HTML-Tidy"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit autotools eutils linux-info
 
 DESCRIPTION="Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor"
 HOMEPAGE="http://libcec.pulse-eight.com"
-SRC_URI="http://github.com/Pulse-Eight/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/Pulse-Eight/${PN}/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~arm ~amd64 ~x86"

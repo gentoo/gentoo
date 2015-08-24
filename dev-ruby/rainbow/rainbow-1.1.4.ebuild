@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="Changelog README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="Extends ruby's String class with colored text on ANSI terminals"
-HOMEPAGE="http://github.com/sickill/rainbow"
+HOMEPAGE="https://github.com/sickill/rainbow"
 
 SRC_URI="https://github.com/sickill/rainbow/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 

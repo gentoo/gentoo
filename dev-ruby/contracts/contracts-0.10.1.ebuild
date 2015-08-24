@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.markdown README.md TODO.markdown TUTORIAL.md"
 inherit ruby-fakegem
 
 DESCRIPTION="provides contracts for Ruby"
-HOMEPAGE="http://github.com/egonSchiele/contracts.ruby"
+HOMEPAGE="https://github.com/egonSchiele/contracts.ruby"
 
 LICENSE="MIT"
 SLOT="0"

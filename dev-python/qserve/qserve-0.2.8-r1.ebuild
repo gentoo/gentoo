@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A job queue server"
-HOMEPAGE="https://github.com/pediapress/qserve http://pypi.python.org/pypi/qserve/"
+HOMEPAGE="https://github.com/pediapress/qserve https://pypi.python.org/pypi/qserve/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"

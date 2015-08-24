@@ -12,7 +12,7 @@ MY_PN="Markups"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A wrapper around various text markups"
-HOMEPAGE="http://pypi.python.org/pypi/Markups"
+HOMEPAGE="https://pypi.python.org/pypi/Markups"
 SRC_URI="mirror://pypi/M/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

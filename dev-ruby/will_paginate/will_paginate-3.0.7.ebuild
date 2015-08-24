@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Most awesome pagination solution for Ruby"
-HOMEPAGE="http://github.com/mislav/will_paginate/"
+HOMEPAGE="https://github.com/mislav/will_paginate/"
 
 LICENSE="MIT"
 SLOT="3"

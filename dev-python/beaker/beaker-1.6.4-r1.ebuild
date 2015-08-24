@@ -13,7 +13,7 @@ MY_PN="Beaker"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A Session and Caching library with WSGI Middleware"
-HOMEPAGE="http://beaker.groovie.org/ http://pypi.python.org/pypi/Beaker"
+HOMEPAGE="http://beaker.groovie.org/ https://pypi.python.org/pypi/Beaker"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P="cElementTree-${PV}-20051216"
 
 DESCRIPTION="The cElementTree module is a C implementation of the ElementTree API"
-HOMEPAGE="http://effbot.org/zone/celementtree.htm http://pypi.python.org/pypi/cElementTree"
+HOMEPAGE="http://effbot.org/zone/celementtree.htm https://pypi.python.org/pypi/cElementTree"
 SRC_URI="http://effbot.org/downloads/${MY_P}.tar.gz"
 
 LICENSE="ElementTree"

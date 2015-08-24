@@ -11,7 +11,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Run tests by filtering the test tree depending on the result of previous test
 runs"
-HOMEPAGE="http://github.com/ocharles/tasty-rerun"
+HOMEPAGE="https://github.com/ocharles/tasty-rerun"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

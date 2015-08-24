@@ -7,7 +7,7 @@ EAPI=5
 inherit vcs-snapshot
 
 DESCRIPTION="A customized bash environment suitable for git work"
-HOMEPAGE="http://github.com/rtomayko/git-sh"
+HOMEPAGE="https://github.com/rtomayko/git-sh"
 SRC_URI="https://github.com/rtomayko/git-sh/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

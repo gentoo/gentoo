@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit eutils java-pkg-2 java-ant-2 versionator
 
 DESCRIPTION="An optimized Java interface to libffi"
-HOMEPAGE="http://github.com/jnr"
+HOMEPAGE="https://github.com/jnr"
 SRC_URI="https://github.com/jnr/jffi/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-3 )"

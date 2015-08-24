@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Lua bindings to zlib"
-HOMEPAGE="http://github.com/brimworks/lua-zlib"
+HOMEPAGE="https://github.com/brimworks/lua-zlib"
 SRC_URI="https://github.com/brimworks/${PN}/tarball/v${PV} -> ${P}.tgz"
 
 LICENSE="MIT"

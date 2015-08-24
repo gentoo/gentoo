@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="a collection of extensions to Distutils"
-HOMEPAGE="http://pypi.python.org/pypi/setuptools"
+HOMEPAGE="https://pypi.python.org/pypi/setuptools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A library for converting a token stream into a data structure for use in web form posts"
-HOMEPAGE="https://github.com/Pylons/peppercorn http://pypi.python.org/pypi/peppercorn"
+HOMEPAGE="https://github.com/Pylons/peppercorn https://pypi.python.org/pypi/peppercorn"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="repoze"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Privacy Enhanced Mail (PEM) format reader and writer"
-HOMEPAGE="http://github.com/vincenthz/hs-pem"
+HOMEPAGE="https://github.com/vincenthz/hs-pem"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="parse english textual date descriptions"
-HOMEPAGE="http://pypi.python.org/pypi/timelib"
+HOMEPAGE="https://pypi.python.org/pypi/timelib"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="PHP-3.01 ZLIB"

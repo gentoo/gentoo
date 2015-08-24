@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Enthought Tool Suite: Scientific and mathematical tools"
-HOMEPAGE="http://code.enthought.com/projects/sci_math/ http://pypi.python.org/pypi/scimath"
+HOMEPAGE="http://code.enthought.com/projects/sci_math/ https://pypi.python.org/pypi/scimath"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

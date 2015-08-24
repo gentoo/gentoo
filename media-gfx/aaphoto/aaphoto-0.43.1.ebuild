@@ -9,8 +9,8 @@ AM_OPTS="--force-missing" # overwrite old 'missing' script
 inherit autotools-utils
 
 DESCRIPTION="Automatic color correction and resizing of photos"
-HOMEPAGE="http://log69.com/aaphoto.html http://github.com/log69/aaphoto"
-SRC_URI="http://github.com/log69/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://log69.com/aaphoto.html https://github.com/log69/aaphoto"
+SRC_URI="https://github.com/log69/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

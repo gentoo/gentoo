@@ -9,7 +9,7 @@ PYTHON_DEPEND="2"
 inherit distutils
 
 DESCRIPTION="Python module for spawning child applications and responding to expected patterns"
-HOMEPAGE="http://pexpect.sourceforge.net/ http://pypi.python.org/pypi/pexpect"
+HOMEPAGE="http://pexpect.sourceforge.net/ https://pypi.python.org/pypi/pexpect"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

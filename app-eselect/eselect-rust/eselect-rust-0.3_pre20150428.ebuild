@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="eselect module for rust"
-HOMEPAGE="http://github.com/jauhien/eselect-rust"
+HOMEPAGE="https://github.com/jauhien/eselect-rust"
 SRC_URI="https://github.com/jauhien/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

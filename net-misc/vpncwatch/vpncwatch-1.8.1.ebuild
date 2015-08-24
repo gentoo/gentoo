@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Keepalive daemon for vpnc on Linux systems"
-HOMEPAGE="http://github.com/dcantrell/vpncwatch/"
-SRC_URI="http://github.com/downloads/dcantrell/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/dcantrell/vpncwatch/"
+SRC_URI="https://github.com/downloads/dcantrell/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

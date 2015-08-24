@@ -10,7 +10,7 @@ inherit distutils-r1
 #if LIVE
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git
 	http://anongit.gentoo.org/git/proj/${PN}.git
-	http://bitbucket.org/mgorny/${PN}.git"
+	https://bitbucket.org/mgorny/${PN}.git"
 inherit git-r3
 #endif
 

@@ -11,7 +11,7 @@ MY_PN="Fabric"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A simple pythonic tool for remote execution and deployment"
-HOMEPAGE="http://fabfile.org http://pypi.python.org/pypi/Fabric"
+HOMEPAGE="http://fabfile.org https://pypi.python.org/pypi/Fabric"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

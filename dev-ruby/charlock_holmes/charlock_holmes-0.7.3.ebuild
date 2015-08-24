@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Character encoding detecting library for Ruby using ICU"
-HOMEPAGE="http://github.com/brianmario/charlock_holmes"
+HOMEPAGE="https://github.com/brianmario/charlock_holmes"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="RFC1413-compliant identd server supporting masqueraded connections"
-HOMEPAGE="http://gentoo.org"
+HOMEPAGE="https://gentoo.org"
 SRC_URI="http://cats.meow.at/~peter/pimpd_${PV}.tar.gz"
 
 LICENSE="GPL-2"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Allows using distutils2-like setup.cfg files for a package metadata"
-HOMEPAGE="http://pypi.python.org/pypi/d2to1"
+HOMEPAGE="https://pypi.python.org/pypi/d2to1"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

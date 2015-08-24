@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Extensible optionally-pure exceptions"
-HOMEPAGE="http://github.com/ekmett/exceptions/"
+HOMEPAGE="https://github.com/ekmett/exceptions/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

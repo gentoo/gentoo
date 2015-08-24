@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Text progressbar library for python"
-HOMEPAGE="http://code.google.com/p/python-progressbar/ http://pypi.python.org/pypi/progressbar"
+HOMEPAGE="http://code.google.com/p/python-progressbar/ https://pypi.python.org/pypi/progressbar"
 SRC_URI="http://python-${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD )"

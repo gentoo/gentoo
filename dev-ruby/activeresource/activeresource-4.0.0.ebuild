@@ -16,7 +16,7 @@ inherit ruby-fakegem versionator
 
 DESCRIPTION="Think Active Record for web resources"
 HOMEPAGE="http://rubyforge.org/projects/activeresource/"
-SRC_URI="http://github.com/rails/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/rails/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

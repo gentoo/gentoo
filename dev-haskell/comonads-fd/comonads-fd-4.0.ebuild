@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile"
 inherit haskell-cabal
 
 DESCRIPTION="This package has been merged into comonad 4.0"
-HOMEPAGE="http://github.com/ekmett/comonads-fd/"
+HOMEPAGE="https://github.com/ekmett/comonads-fd/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

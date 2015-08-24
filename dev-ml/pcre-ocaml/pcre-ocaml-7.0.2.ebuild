@@ -9,8 +9,8 @@ OASIS_BUILD_DOCS=1
 inherit oasis
 
 DESCRIPTION="Perl Compatibility Regular Expressions for O'Caml"
-HOMEPAGE="http://bitbucket.org/mmottl/pcre-ocaml"
-SRC_URI="http://bitbucket.org/mmottl/pcre-ocaml/downloads/${P}.tar.gz"
+HOMEPAGE="https://bitbucket.org/mmottl/pcre-ocaml"
+SRC_URI="https://bitbucket.org/mmottl/pcre-ocaml/downloads/${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception"
 IUSE="examples"
 SLOT="0/${PV}"

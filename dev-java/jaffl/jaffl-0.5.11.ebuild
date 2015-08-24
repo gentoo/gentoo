@@ -12,7 +12,7 @@ inherit java-pkg-2 java-ant-2 versionator
 
 DESCRIPTION="An abstracted interface to invoking native functions from java"
 HOMEPAGE="http://kenai.com/projects/jaffl"
-SRC_URI="http://github.com/jnr/jnr-ffi/tarball/${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/jnr/jnr-ffi/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

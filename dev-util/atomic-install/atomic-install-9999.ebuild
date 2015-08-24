@@ -7,7 +7,7 @@ EAPI=4
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
 EGIT_REPO_URI="git://github.com/mgorny/${PN}.git
-	http://github.com/mgorny/${PN}.git"
+	https://github.com/mgorny/${PN}.git"
 
 inherit git-2
 #endif

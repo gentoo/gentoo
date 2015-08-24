@@ -10,7 +10,7 @@ inherit python
 MY_P="${P/-/_}_20100303"
 DESCRIPTION="IMAP Spam Begone: a script that makes it easy to scan an IMAP inbox for spam using SpamAssassin"
 HOMEPAGE="http://redmine.ookook.fr/projects/isbg"
-SRC_URI="http://github.com/downloads/ook/${PN}/${MY_P}.tgz"
+SRC_URI="https://github.com/downloads/ook/${PN}/${MY_P}.tgz"
 
 # upstream says:
 # You may use isbg under any OSI approved open source license

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python binding for libclamav"
-HOMEPAGE="http://xael.org/norman/python/pyclamav/ http://pypi.python.org/pypi/pyclamav"
+HOMEPAGE="http://xael.org/norman/python/pyclamav/ https://pypi.python.org/pypi/pyclamav"
 SRC_URI="http://xael.org/norman/python/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

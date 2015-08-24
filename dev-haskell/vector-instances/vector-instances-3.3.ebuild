@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Orphan Instances for 'Data.Vector'"
-HOMEPAGE="http://github.com/ekmett/vector-instances"
+HOMEPAGE="https://github.com/ekmett/vector-instances"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

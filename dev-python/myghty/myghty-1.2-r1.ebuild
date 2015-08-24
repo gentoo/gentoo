@@ -12,7 +12,7 @@ MY_PN="Myghty"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Template and view-controller framework derived from HTML::Mason"
-HOMEPAGE="http://www.myghty.org/ http://pypi.python.org/pypi/Myghty"
+HOMEPAGE="http://www.myghty.org/ https://pypi.python.org/pypi/Myghty"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

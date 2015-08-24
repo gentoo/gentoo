@@ -11,7 +11,7 @@ MY_PN="Louie"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Signal dispatching mechanism for Python"
-HOMEPAGE="http://pypi.python.org/pypi/Louie"
+HOMEPAGE="https://pypi.python.org/pypi/Louie"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
 if [ "${PV}" = "999999" ]; then
-	EGIT_REPO_URI="git://github.com/martine/ninja.git http://github.com/martine/ninja.git"
+	EGIT_REPO_URI="git://github.com/martine/ninja.git https://github.com/martine/ninja.git"
 	inherit git-2
 	KEYWORDS=""
 else
@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="A small build system similar to make"
-HOMEPAGE="http://github.com/martine/ninja"
+HOMEPAGE="https://github.com/martine/ninja"
 
 LICENSE="Apache-2.0"
 SLOT="0"

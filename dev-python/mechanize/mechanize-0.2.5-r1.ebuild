@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Stateful programmatic web browsing in Python"
-HOMEPAGE="http://wwwsearch.sourceforge.net/mechanize/ http://pypi.python.org/pypi/mechanize"
+HOMEPAGE="http://wwwsearch.sourceforge.net/mechanize/ https://pypi.python.org/pypi/mechanize"
 SRC_URI="http://wwwsearch.sourceforge.net/${PN}/src/${P}.tar.gz"
 
 LICENSE="|| ( BSD ZPL )"
@@ -20,7 +20,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
 python_test() {
-	# Ignore warnings (http://github.com/jjlee/mechanize/issues/issue/13).
+	# Ignore warnings (https://github.com/jjlee/mechanize/issues/issue/13).
 	# https://github.com/jjlee/mechanize/issues/66
 	"${PYTHON}" -W ignore test.py
 }

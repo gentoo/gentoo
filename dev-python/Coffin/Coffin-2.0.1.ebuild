@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Jinja2 adapter for Django"
-HOMEPAGE="http://github.com/coffin/coffin"
+HOMEPAGE="https://github.com/coffin/coffin"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

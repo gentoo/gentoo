@@ -12,7 +12,7 @@ inherit distutils-r1 flag-o-matic
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Package for using processes, which mimics the threading module API"
-HOMEPAGE="http://pyprocessing.berlios.de/ http://pypi.python.org/pypi/processing"
+HOMEPAGE="http://pyprocessing.berlios.de/ https://pypi.python.org/pypi/processing"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"

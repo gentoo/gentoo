@@ -6,8 +6,8 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="An implementation of basic iCAL protocols"
-HOMEPAGE="http://github.com/libical/libical"
-SRC_URI="http://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/libical/libical"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # FIGURE OUT: Why ebuild for 1.0 was marked || ( MPL-1.1 LGPL-2 ) against what COPYING file says?
 LICENSE="|| ( MPL-1.0 LGPL-2.1 )"

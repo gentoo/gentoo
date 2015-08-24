@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Utilities for dealing with IEEE floating point numbers"
-HOMEPAGE="http://github.com/patperry/hs-ieee754"
+HOMEPAGE="https://github.com/patperry/hs-ieee754"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

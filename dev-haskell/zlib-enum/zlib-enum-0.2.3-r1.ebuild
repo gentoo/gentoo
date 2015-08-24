@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Enumerator interface for zlib compression"
-HOMEPAGE="http://github.com/maltem/zlib-enum"
+HOMEPAGE="https://github.com/maltem/zlib-enum"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"

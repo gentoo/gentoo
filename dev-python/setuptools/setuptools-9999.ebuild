@@ -11,7 +11,7 @@ inherit mercurial
 #endif
 
 DESCRIPTION="a collection of extensions to Distutils"
-HOMEPAGE="http://pypi.python.org/pypi/setuptools"
+HOMEPAGE="https://pypi.python.org/pypi/setuptools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"

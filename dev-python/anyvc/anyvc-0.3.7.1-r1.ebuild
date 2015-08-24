@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Library to access any version control system"
-HOMEPAGE="http://pypi.python.org/pypi/anyvc"
+HOMEPAGE="https://pypi.python.org/pypi/anyvc"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

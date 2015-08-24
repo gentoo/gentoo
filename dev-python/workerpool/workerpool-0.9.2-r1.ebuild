@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Module for distributing jobs to a pool of worker threads"
-HOMEPAGE="http://github.com/shazow/workerpool"
+HOMEPAGE="https://github.com/shazow/workerpool"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

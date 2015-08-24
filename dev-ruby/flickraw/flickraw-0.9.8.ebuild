@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="-r README.rdoc examples"
 inherit ruby-fakegem
 
 DESCRIPTION="A library to access flickr api in a simple way"
-HOMEPAGE="http://github.com/hanklords/flickraw"
+HOMEPAGE="https://github.com/hanklords/flickraw"
 
 LICENSE="MIT"
 SLOT="0"

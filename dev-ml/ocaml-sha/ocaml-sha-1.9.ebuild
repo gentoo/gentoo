@@ -7,8 +7,8 @@ EAPI=5
 inherit findlib vcs-snapshot
 
 DESCRIPTION="A binding for SHA interface code in OCaml"
-HOMEPAGE="http://github.com/vincenthz/ocaml-sha"
-SRC_URI="http://github.com/vincenthz/ocaml-sha/archive/${PN}-v${PV}.tar.gz"
+HOMEPAGE="https://github.com/vincenthz/ocaml-sha"
+SRC_URI="https://github.com/vincenthz/ocaml-sha/archive/${PN}-v${PV}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"

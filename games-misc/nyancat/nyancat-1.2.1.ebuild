@@ -6,7 +6,7 @@ EAPI=5
 inherit games
 
 DESCRIPTION="Nyan Cat Telnet Server"
-HOMEPAGE="http://github.com/klange/nyancat"
+HOMEPAGE="https://github.com/klange/nyancat"
 SRC_URI="https://github.com/klange/nyancat/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UoI-NCSA"

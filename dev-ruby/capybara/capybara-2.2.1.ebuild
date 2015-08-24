@@ -14,7 +14,7 @@ RUBY_FAKEGEM_TASK_TEST=""
 inherit virtualx ruby-fakegem
 
 DESCRIPTION="Capybara aims to simplify the process of integration testing Rack applications"
-HOMEPAGE="http://github.com/jnicklas/capybara"
+HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
 KEYWORDS="~amd64"

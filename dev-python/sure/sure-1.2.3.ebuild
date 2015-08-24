@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A utility belt for automated testing in python for python"
-HOMEPAGE="http://github.com/gabrielfalcao/sure"
+HOMEPAGE="https://github.com/gabrielfalcao/sure"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"

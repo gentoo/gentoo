@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="The Wadler/Leijen Pretty Printer for colored ANSI terminal output"
-HOMEPAGE="http://github.com/batterseapower/ansi-wl-pprint"
+HOMEPAGE="https://github.com/batterseapower/ansi-wl-pprint"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

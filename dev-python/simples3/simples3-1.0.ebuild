@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A fairly simple, decently quick python interface to Amazon's S3 storage service"
-HOMEPAGE="http://sendapatch.se/projects/simples3/ http://pypi.python.org/pypi/simples3/"
+HOMEPAGE="http://sendapatch.se/projects/simples3/ https://pypi.python.org/pypi/simples3/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Constraint manipulation"
-HOMEPAGE="http://github.com/ekmett/constraints/"
+HOMEPAGE="https://github.com/ekmett/constraints/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

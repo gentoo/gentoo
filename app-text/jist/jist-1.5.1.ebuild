@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A ruby gem to publish a gist"
-HOMEPAGE="http://github.com/ConradIrwin/jist"
+HOMEPAGE="https://github.com/ConradIrwin/jist"
 
 LICENSE="MIT"
 SLOT="0"

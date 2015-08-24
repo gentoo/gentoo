@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN="web.py"
 
 DESCRIPTION="A small and simple web framework for Python"
-HOMEPAGE="http://www.webpy.org http://pypi.python.org/pypi/web.py"
+HOMEPAGE="http://www.webpy.org https://pypi.python.org/pypi/web.py"
 SRC_URI="http://www.webpy.org/static/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="public-domain"

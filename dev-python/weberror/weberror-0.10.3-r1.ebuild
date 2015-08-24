@@ -12,7 +12,7 @@ MY_PN="WebError"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Web Error handling and exception catching"
-HOMEPAGE="http://pypi.python.org/pypi/WebError"
+HOMEPAGE="https://pypi.python.org/pypi/WebError"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

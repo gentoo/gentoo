@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="A class for types that can be converted to a hash value"
-HOMEPAGE="http://github.com/tibbe/hashable"
+HOMEPAGE="https://github.com/tibbe/hashable"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

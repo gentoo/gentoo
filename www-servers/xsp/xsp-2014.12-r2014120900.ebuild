@@ -13,7 +13,7 @@ DESCRIPTION="XSP is a small web server that can host ASP.NET pages"
 HOMEPAGE="http://www.mono-project.com/ASP.NET"
 
 EGIT_COMMIT="e272a2c006211b6b03be2ef5bbb9e3f8fefd0768"
-SRC_URI="http://github.com/mono/xsp/archive/${EGIT_COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://github.com/mono/xsp/archive/${EGIT_COMMIT}.zip -> ${P}.zip"
 S="${WORKDIR}/xsp-${EGIT_COMMIT}"
 
 LICENSE="MIT"

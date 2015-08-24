@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Django Command Extensions"
-HOMEPAGE="http://github.com/django-extensions/django-extensions http://django-extensions.readthedocs.org"
+HOMEPAGE="https://github.com/django-extensions/django-extensions http://django-extensions.readthedocs.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD || ( MIT GPL-2 )"

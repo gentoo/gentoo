@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN="SymbolType"
 
 DESCRIPTION="Gives access to the peak.util.symbols module"
-HOMEPAGE=" http://peak.telecommunity.com/DevCenter/SymbolType http://pypi.python.org/pypi/SymbolType"
+HOMEPAGE=" http://peak.telecommunity.com/DevCenter/SymbolType https://pypi.python.org/pypi/SymbolType"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip -> ${P}.zip"
 
 KEYWORDS="amd64 x86"

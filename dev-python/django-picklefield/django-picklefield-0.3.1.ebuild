@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Implementation of a pickled object field for django"
-HOMEPAGE="http://github.com/shrubberysoft/django-picklefield"
+HOMEPAGE="https://github.com/shrubberysoft/django-picklefield"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

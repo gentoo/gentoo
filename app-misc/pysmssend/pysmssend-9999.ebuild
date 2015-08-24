@@ -7,7 +7,7 @@ PYTHON_DEPEND="2:2.5"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="2.4 3.*"
 EGIT_REPO_URI="git://github.com/hwoarang/${PN}.git
-	http://github.com/hwoarang/${PN}.git"
+	https://github.com/hwoarang/${PN}.git"
 
 inherit distutils eutils git-2
 

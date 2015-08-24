@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 inherit distutils eutils
 
 DESCRIPTION="Stateful programmatic web browsing in Python"
-HOMEPAGE="http://wwwsearch.sourceforge.net/mechanize/ http://pypi.python.org/pypi/mechanize"
+HOMEPAGE="http://wwwsearch.sourceforge.net/mechanize/ https://pypi.python.org/pypi/mechanize"
 SRC_URI="http://wwwsearch.sourceforge.net/${PN}/src/${P}.tar.gz"
 
 LICENSE="|| ( BSD ZPL )"
@@ -25,7 +25,7 @@ DOCS="docs/*.txt"
 
 src_test() {
 	testing() {
-		# Ignore warnings (http://github.com/jjlee/mechanize/issues/issue/13).
+		# Ignore warnings (https://github.com/jjlee/mechanize/issues/issue/13).
 		PYTHONPATH="build-${PYTHON_ABI}/lib" "$(PYTHON)" -W ignore test.py
 	}
 	python_execute_function testing

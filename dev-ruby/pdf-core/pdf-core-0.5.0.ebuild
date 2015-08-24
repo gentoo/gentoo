@@ -13,7 +13,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="Implements low level PDF features for Prawn"
-HOMEPAGE="http://github.com/prawnpdf/pdf-core/"
+HOMEPAGE="https://github.com/prawnpdf/pdf-core/"
 
 LICENSE="|| ( Ruby GPL-2 GPL-3 )"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit distutils eutils
 MY_P="Leo-${PV}-final"
 
 DESCRIPTION="Leo: Literate Editor with Outlines"
-HOMEPAGE="http://leo.sourceforge.net/ http://pypi.python.org/pypi/leo"
+HOMEPAGE="http://leo.sourceforge.net/ https://pypi.python.org/pypi/leo"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="MIT"

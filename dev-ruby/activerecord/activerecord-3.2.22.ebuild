@@ -17,7 +17,7 @@ inherit ruby-fakegem versionator
 
 DESCRIPTION="Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM"
 HOMEPAGE="http://rubyforge.org/projects/activerecord/"
-SRC_URI="http://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
+SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

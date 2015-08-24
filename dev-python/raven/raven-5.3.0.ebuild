@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} )
 inherit distutils-r1
 
 DESCRIPTION="Raven is a client for Sentry"
-HOMEPAGE="http://github.com/getsentry/raven-python"
+HOMEPAGE="https://github.com/getsentry/raven-python"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

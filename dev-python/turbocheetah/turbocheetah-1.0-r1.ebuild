@@ -13,7 +13,7 @@ MY_PN="TurboCheetah"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="TurboGears plugin to support use of Cheetah templates"
-HOMEPAGE="http://docs.turbogears.org/TurboCheetah http://pypi.python.org/pypi/TurboCheetah"
+HOMEPAGE="http://docs.turbogears.org/TurboCheetah https://pypi.python.org/pypi/TurboCheetah"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

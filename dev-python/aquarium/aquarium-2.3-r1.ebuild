@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Aquarium web application framework"
-HOMEPAGE="http://aquarium.sourceforge.net/ http://pypi.python.org/pypi/aquarium"
+HOMEPAGE="http://aquarium.sourceforge.net/ https://pypi.python.org/pypi/aquarium"
 SRC_URI="mirror://sourceforge/aquarium/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -7,7 +7,7 @@ EAPI="4"
 inherit git-2 eutils
 
 DESCRIPTION="tool for updating or switching between versions of the Linux kernel source"
-HOMEPAGE="http://github.com/psomas/ketchup"
+HOMEPAGE="https://github.com/psomas/ketchup"
 SRC_URI=""
 EGIT_REPO_URI="git://github.com/psomas/ketchup.git"
 EGIT_MASTER="experimental"

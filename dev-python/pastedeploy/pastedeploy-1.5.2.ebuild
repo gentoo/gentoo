@@ -11,7 +11,7 @@ MY_PN="PasteDeploy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Load, configure, and compose WSGI applications and servers"
-HOMEPAGE="http://pythonpaste.org/deploy/ http://pypi.python.org/pypi/PasteDeploy"
+HOMEPAGE="http://pythonpaste.org/deploy/ https://pypi.python.org/pypi/PasteDeploy"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

@@ -11,8 +11,8 @@ inherit distutils-r1
 GIT_HASH_TAG="32ffe9b"
 
 DESCRIPTION="Django Command Extensions"
-HOMEPAGE="http://github.com/django-extensions/django-extensions http://code.google.com/p/django-command-extensions/"
-SRC_URI="http://github.com/django-extensions/django-extensions/tarball/${PV}/${P}.tgz"
+HOMEPAGE="https://github.com/django-extensions/django-extensions http://code.google.com/p/django-command-extensions/"
+SRC_URI="https://github.com/django-extensions/django-extensions/tarball/${PV}/${P}.tgz"
 
 LICENSE="BSD || ( MIT GPL-2 )"
 SLOT="0"

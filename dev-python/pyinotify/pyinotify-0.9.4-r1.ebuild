@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python module used for monitoring filesystems events"
-HOMEPAGE="http://trac.dbzteam.org/pyinotify http://pypi.python.org/pypi/pyinotify"
+HOMEPAGE="http://trac.dbzteam.org/pyinotify https://pypi.python.org/pypi/pyinotify"
 SRC_URI="http://seb.dbzteam.org/pub/pyinotify/releases/${P}.tar.gz"
 
 LICENSE="MIT"

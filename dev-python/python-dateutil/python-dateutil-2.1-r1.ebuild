@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Extensions to the standard Python datetime module"
-HOMEPAGE="https://launchpad.net/dateutil http://pypi.python.org/pypi/python-dateutil"
+HOMEPAGE="https://launchpad.net/dateutil https://pypi.python.org/pypi/python-dateutil"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

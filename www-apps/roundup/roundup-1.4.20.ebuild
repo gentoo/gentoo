@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 inherit distutils
 
 DESCRIPTION="Simple-to-use and -install issue-tracking system with command-line, web, and e-mail interfaces"
-HOMEPAGE="http://roundup.sourceforge.net http://pypi.python.org/pypi/roundup"
+HOMEPAGE="http://roundup.sourceforge.net https://pypi.python.org/pypi/roundup"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT ZPL"

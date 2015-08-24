@@ -5,7 +5,7 @@
 EAPI=5
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/MidnightCommander/mc.git http://github.com/MidnightCommander/mc.git git://midnight-commander.org/git/mc.git"
+	EGIT_REPO_URI="git://github.com/MidnightCommander/mc.git https://github.com/MidnightCommander/mc.git git://midnight-commander.org/git/mc.git"
 	LIVE_ECLASSES="git-2 autotools"
 	LIVE_EBUILD=yes
 fi

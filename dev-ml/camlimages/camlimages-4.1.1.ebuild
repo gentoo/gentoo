@@ -8,7 +8,7 @@ inherit eutils vcs-snapshot findlib multilib
 
 DESCRIPTION="An image manipulation library for ocaml"
 HOMEPAGE="http://gallium.inria.fr/camlimages/"
-SRC_URI="http://bitbucket.org/camlspotter/camlimages/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://bitbucket.org/camlspotter/camlimages/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

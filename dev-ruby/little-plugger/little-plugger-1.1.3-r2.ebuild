@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.rdoc"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="Module that provides Gem based plugin management"
-HOMEPAGE="http://github.com/TwP/little-plugger"
+HOMEPAGE="https://github.com/TwP/little-plugger"
 
 IUSE="test"
 LICENSE="MIT"

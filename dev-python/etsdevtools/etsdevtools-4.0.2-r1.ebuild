@@ -9,7 +9,7 @@ PYTHON_COMPAT=python2_7
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Enthought Tool Suite: Tools to support Python development"
-HOMEPAGE="http://code.enthought.com/projects/dev_tools.php http://pypi.python.org/pypi/etsdevtools"
+HOMEPAGE="http://code.enthought.com/projects/dev_tools.php https://pypi.python.org/pypi/etsdevtools"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

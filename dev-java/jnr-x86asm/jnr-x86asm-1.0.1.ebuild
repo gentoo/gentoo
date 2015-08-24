@@ -9,8 +9,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A pure-java port of asmjit"
-HOMEPAGE="http://github.com/jnr"
-SRC_URI="http://github.com/jnr/${PN}/tarball/${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/jnr"
+SRC_URI="https://github.com/jnr/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"

@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="Commandline utility to convert ID3 tags in mp3 files between different encodings"
 HOMEPAGE="http://mp3unicode.sourceforge.net"
-SRC_URI="http://github.com/alonbl/${PN}/downloads/${P}.tar.bz2"
+SRC_URI="https://github.com/alonbl/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

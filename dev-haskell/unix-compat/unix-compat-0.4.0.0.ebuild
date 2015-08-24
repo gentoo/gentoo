@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Portable POSIX-compatibility layer"
-HOMEPAGE="http://github.com/jystic/unix-compat"
+HOMEPAGE="https://github.com/jystic/unix-compat"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

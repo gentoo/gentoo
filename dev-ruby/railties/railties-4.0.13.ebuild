@@ -16,8 +16,8 @@ RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem versionator
 
 DESCRIPTION="Tools for creating, working with, and running Rails applications"
-HOMEPAGE="http://github.com/rails/rails"
-SRC_URI="http://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
+HOMEPAGE="https://github.com/rails/rails"
+SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

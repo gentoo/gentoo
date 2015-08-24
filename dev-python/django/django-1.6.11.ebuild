@@ -14,7 +14,7 @@ inherit bash-completion-r1 distutils-r1 eutils versionator webapp
 MY_P="Django-${PV}"
 
 DESCRIPTION="High-level Python web framework"
-HOMEPAGE="http://www.djangoproject.com/ http://pypi.python.org/pypi/Django"
+HOMEPAGE="http://www.djangoproject.com/ https://pypi.python.org/pypi/Django"
 SRC_URI="https://www.djangoproject.com/m/releases/$(get_version_component_range 1-2)/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -3,8 +3,8 @@
 # $Id$
 
 DESCRIPTION="A command-line tool for mass tagging/renaming of audio files"
-HOMEPAGE="http://github.com/Daenyth/audiotag"
-SRC_URI="http://github.com/downloads/Daenyth/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/Daenyth/audiotag"
+SRC_URI="https://github.com/downloads/Daenyth/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

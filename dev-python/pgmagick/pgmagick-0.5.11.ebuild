@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Yet another boost.python based wrapper for GraphicsMagick"
-HOMEPAGE="https://pypi.python.org/pypi/pgmagick/ http://bitbucket.org/hhatto/pgmagick/"
+HOMEPAGE="https://pypi.python.org/pypi/pgmagick/ https://bitbucket.org/hhatto/pgmagick/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

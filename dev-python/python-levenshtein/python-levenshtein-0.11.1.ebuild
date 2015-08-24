@@ -11,8 +11,8 @@ MY_PN="python-Levenshtein"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Functions for fast computation of Levenshtein (edit) distance, and edit operations"
-HOMEPAGE="http://github.com/miohtama/python-Levenshtein/tree/
-	http://pypi.python.org/pypi/python-Levenshtein/"
+HOMEPAGE="https://github.com/miohtama/python-Levenshtein/tree/
+	https://pypi.python.org/pypi/python-Levenshtein/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

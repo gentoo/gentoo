@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile" # on ghc-7.10 does nothing
 inherit haskell-cabal
 
 DESCRIPTION="Natural numbers"
-HOMEPAGE="http://github.com/ekmett/nats/"
+HOMEPAGE="https://github.com/ekmett/nats/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Cpu information and properties helpers"
-HOMEPAGE="http://github.com/vincenthz/hs-cpu"
+HOMEPAGE="https://github.com/vincenthz/hs-cpu"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Parser for JavaScript"
-HOMEPAGE="http://github.com/alanz/language-javascript"
+HOMEPAGE="https://github.com/alanz/language-javascript"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

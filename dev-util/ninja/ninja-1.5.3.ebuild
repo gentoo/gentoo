@@ -12,7 +12,7 @@ SRC_URI="https://github.com/martine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="alpha amd64 arm arm64 ia64 m68k ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 DESCRIPTION="A small build system similar to make"
-HOMEPAGE="http://github.com/martine/ninja"
+HOMEPAGE="https://github.com/martine/ninja"
 
 LICENSE="Apache-2.0"
 SLOT="0"

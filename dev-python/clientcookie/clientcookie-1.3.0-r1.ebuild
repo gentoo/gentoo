@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="ClientCookie-${PV}"
 
 DESCRIPTION="Python module for handling HTTP cookies on the client side"
-HOMEPAGE="http://wwwsearch.sourceforge.net/ClientCookie/ http://pypi.python.org/pypi/ClientCookie"
+HOMEPAGE="http://wwwsearch.sourceforge.net/ClientCookie/ https://pypi.python.org/pypi/ClientCookie"
 SRC_URI="http://wwwsearch.sourceforge.net/ClientCookie/src/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 inherit twisted-r1
 
 DESCRIPTION="Object database implemented on top of SQLite"
-HOMEPAGE="http://divmod.org/trac/wiki/DivmodAxiom http://pypi.python.org/pypi/Axiom"
+HOMEPAGE="http://divmod.org/trac/wiki/DivmodAxiom https://pypi.python.org/pypi/Axiom"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 LICENSE="MIT"

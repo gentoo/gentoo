@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Universal encoding detector"
-HOMEPAGE="https://github.com/chardet/chardet http://pypi.python.org/pypi/chardet"
+HOMEPAGE="https://github.com/chardet/chardet https://pypi.python.org/pypi/chardet"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

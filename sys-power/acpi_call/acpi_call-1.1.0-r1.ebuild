@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="A kernel module that enables you to call ACPI methods"
-HOMEPAGE="http://github.com/mkottman/acpi_call"
+HOMEPAGE="https://github.com/mkottman/acpi_call"
 
 LICENSE="GPL-2"
 SLOT="0"

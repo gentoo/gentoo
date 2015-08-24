@@ -10,7 +10,7 @@ SRC_URI="http://dev.gentoo.org/~lxnay/${PN}/${P}.tar.bz2"
 
 KEYWORDS="~x86 ~amd64"
 DESCRIPTION="Build and operate a electronic whiteboard Wiimote and IR Pen"
-HOMEPAGE="http://github.com/pnegre/python-whiteboard"
+HOMEPAGE="https://github.com/pnegre/python-whiteboard"
 
 LICENSE="GPL-3"
 SLOT="0"

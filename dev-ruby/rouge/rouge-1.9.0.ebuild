@@ -12,7 +12,7 @@ RUBY_FAKEGEM_RECIPE_DOC="yard"
 inherit ruby-fakegem
 
 DESCRIPTION="Yet-another-markdown-parser but fast, pure Ruby, using a strict syntax definition"
-HOMEPAGE="http://github.com/jneen/rouge"
+HOMEPAGE="https://github.com/jneen/rouge"
 SRC_URI="https://github.com/jneen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

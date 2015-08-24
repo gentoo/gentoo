@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="matplotlib toolkit to plot map projections"
-HOMEPAGE="http://matplotlib.sourceforge.net/basemap/doc/html/ http://pypi.python.org/pypi/basemap"
+HOMEPAGE="http://matplotlib.sourceforge.net/basemap/doc/html/ https://pypi.python.org/pypi/basemap"
 SRC_URI="mirror://sourceforge/matplotlib/${P}.tar.gz"
 
 IUSE="examples test"

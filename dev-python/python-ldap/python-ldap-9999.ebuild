@@ -12,7 +12,7 @@ DISTUTILS_NO_PARALLEL_BUILD=1
 inherit distutils-r1 git-2 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
-HOMEPAGE="http://www.python-ldap.org http://pypi.python.org/pypi/python-ldap"
+HOMEPAGE="http://www.python-ldap.org https://pypi.python.org/pypi/python-ldap"
 EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
 
 LICENSE="PSF-2"

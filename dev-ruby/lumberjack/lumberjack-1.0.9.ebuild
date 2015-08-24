@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="A simple, powerful, and very fast logging utility"
-HOMEPAGE="http://github.com/bdurand/lumberjack"
+HOMEPAGE="https://github.com/bdurand/lumberjack"
 
 LICENSE="MIT"
 SLOT="0"

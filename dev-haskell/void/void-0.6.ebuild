@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A Haskell 98 logically uninhabited data type"
-HOMEPAGE="http://github.com/ekmett/void"
+HOMEPAGE="https://github.com/ekmett/void"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

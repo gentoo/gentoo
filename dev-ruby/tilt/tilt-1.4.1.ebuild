@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md TEMPLATES.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A thin interface over a Ruby template engines to make their usage as generic as possible"
-HOMEPAGE="http://github.com/rtomayko/tilt"
+HOMEPAGE="https://github.com/rtomayko/tilt"
 
 LICENSE="MIT"
 SLOT="0"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Access the local computer's basic network configuration"
-HOMEPAGE="http://github.com/jystic/network-info"
+HOMEPAGE="https://github.com/jystic/network-info"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

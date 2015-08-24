@@ -8,7 +8,7 @@ inherit eutils dotnet multilib autotools-utils
 
 DESCRIPTION="A generic framework for creating extensible applications"
 HOMEPAGE="http://www.mono-project.com/Mono.Addins"
-SRC_URI="http://github.com/mono/${PN}/archive/${P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mono/${PN}/archive/${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

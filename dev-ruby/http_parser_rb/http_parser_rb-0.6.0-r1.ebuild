@@ -15,7 +15,7 @@ RUBY_FAKEGEM_NAME="http_parser.rb"
 inherit ruby-fakegem
 
 DESCRIPTION="Simple callback-based HTTP request/response parser"
-HOMEPAGE="http://github.com/tmm1/http_parser.rb"
+HOMEPAGE="https://github.com/tmm1/http_parser.rb"
 
 LICENSE="MIT"
 SLOT="0"

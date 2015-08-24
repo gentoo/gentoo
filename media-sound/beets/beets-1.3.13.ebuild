@@ -12,7 +12,7 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="A media library management system for obsessive-compulsive music geeks"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://beets.radbox.org/ http://pypi.python.org/pypi/beets"
+HOMEPAGE="http://beets.radbox.org/ https://pypi.python.org/pypi/beets"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"

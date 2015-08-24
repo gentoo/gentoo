@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Simple random generators API for cryptography related code"
-HOMEPAGE="http://github.com/vincenthz/hs-crypto-random-api"
+HOMEPAGE="https://github.com/vincenthz/hs-crypto-random-api"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

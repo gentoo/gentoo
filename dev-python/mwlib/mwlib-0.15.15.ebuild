@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 user
 
 DESCRIPTION="Tools for parsing Mediawiki content to other formats"
-HOMEPAGE="http://code.pediapress.com/code/ http://pypi.python.org/pypi/mwlib https://github.com/pediapress/mwlib/"
+HOMEPAGE="http://code.pediapress.com/code/ https://pypi.python.org/pypi/mwlib https://github.com/pediapress/mwlib/"
 SRC_URI="https://github.com/pediapress/mwlib/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

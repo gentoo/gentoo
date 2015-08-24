@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Support of OAuth 1.0a in Django using python-oauth2"
-HOMEPAGE="http://pypi.python.org/pypi/django-oauth-plus	http://code.welldev.org/django-oauth-plus/"
+HOMEPAGE="https://pypi.python.org/pypi/django-oauth-plus	http://code.welldev.org/django-oauth-plus/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

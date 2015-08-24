@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python 2 and 3 compatibility library"
-HOMEPAGE="https://bitbucket.org/gutworth/six http://pypi.python.org/pypi/six"
+HOMEPAGE="https://bitbucket.org/gutworth/six https://pypi.python.org/pypi/six"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 versionator
 
 DESCRIPTION="A collection of useful extensions for Django"
-HOMEPAGE="http://github.com/djblets/djblets"
+HOMEPAGE="https://github.com/djblets/djblets"
 SRC_URI="http://downloads.reviewboard.org/releases/${PN}/$(get_version_component_range 1-2)/${P}.tar.gz"
 
 LICENSE="MIT"

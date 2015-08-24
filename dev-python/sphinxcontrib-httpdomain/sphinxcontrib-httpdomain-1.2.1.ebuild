@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Extension providing a Sphinx domain for describing RESTful HTTP APIs"
-HOMEPAGE="http://bitbucket.org/birkenfeld/sphinx-contrib/ \
+HOMEPAGE="https://bitbucket.org/birkenfeld/sphinx-contrib/ \
 	http://packages.python.org/sphinxcontrib-httpdomain/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

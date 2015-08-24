@@ -12,7 +12,7 @@ MY_PN="SQLAlchemy"
 MY_P="${MY_PN}-${PV/_beta/b}"
 
 DESCRIPTION="Python SQL toolkit and Object Relational Mapper"
-HOMEPAGE="http://www.sqlalchemy.org/ http://pypi.python.org/pypi/SQLAlchemy"
+HOMEPAGE="http://www.sqlalchemy.org/ https://pypi.python.org/pypi/SQLAlchemy"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="An asset packaging library for Django"
-HOMEPAGE="http://pypi.python.org/pypi/django-pipeline/ https://github.com/cyberdelia/django-pipeline"
+HOMEPAGE="https://pypi.python.org/pypi/django-pipeline/ https://github.com/cyberdelia/django-pipeline"
 
 # PyPi releases lack docs/ subdir:
 # https://github.com/cyberdelia/django-pipeline/pull/254

@@ -16,8 +16,8 @@ inherit ruby-fakegem
 GITHUB_USER="minad"
 
 DESCRIPTION="A unified interface to key/value stores"
-HOMEPAGE="http://github.com/minad/moneta"
-SRC_URI="http://github.com/${GITHUB_USER}/moneta/tarball/v${PV} -> ${P}.tgz"
+HOMEPAGE="https://github.com/minad/moneta"
+SRC_URI="https://github.com/${GITHUB_USER}/moneta/tarball/v${PV} -> ${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -15,7 +15,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="All the stuff that isn't good enough for a real library"
-HOMEPAGE="http://github.com/flori/tins"
+HOMEPAGE="https://github.com/flori/tins"
 
 LICENSE="MIT"
 SLOT="0"

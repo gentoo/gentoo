@@ -10,8 +10,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="OpenID support for servers and consumers"
-HOMEPAGE="http://www.openidenabled.com/openid/libraries/python/ http://pypi.python.org/pypi/python-openid"
-# Downloaded from http://github.com/openid/python-openid/downloads
+HOMEPAGE="http://www.openidenabled.com/openid/libraries/python/ https://pypi.python.org/pypi/python-openid"
+# Downloaded from https://github.com/openid/python-openid/downloads
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

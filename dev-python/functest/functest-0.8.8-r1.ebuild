@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Functest is a test tool/framework for testing in Python"
-HOMEPAGE="http://code.google.com/p/functest/ http://pypi.python.org/pypi/functest"
+HOMEPAGE="http://code.google.com/p/functest/ https://pypi.python.org/pypi/functest"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

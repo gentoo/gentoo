@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Python module for doing approximate and phonetic matching of strings"
-HOMEPAGE="https://github.com/jamesturk/jellyfish http://pypi.python.org/pypi/jellyfish"
+HOMEPAGE="https://github.com/jamesturk/jellyfish https://pypi.python.org/pypi/jellyfish"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

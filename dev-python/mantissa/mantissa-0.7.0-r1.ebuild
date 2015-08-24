@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit twisted-r1
 
 DESCRIPTION="An extensible, multi-protocol, multi-user, interactive application server"
-HOMEPAGE="http://divmod.org/trac/wiki/DivmodMantissa http://pypi.python.org/pypi/Mantissa"
+HOMEPAGE="http://divmod.org/trac/wiki/DivmodMantissa https://pypi.python.org/pypi/Mantissa"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 KEYWORDS="amd64 x86"

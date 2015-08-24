@@ -15,7 +15,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Ruby C bindings to the Yajl JSON stream-based parser library"
-HOMEPAGE="http://github.com/brianmario/yajl-ruby"
+HOMEPAGE="https://github.com/brianmario/yajl-ruby"
 
 LICENSE="MIT"
 SLOT="0"

@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="CONTRIBUTING.markdown README.markdown History.markdown"
 RUBY_FAKEGEM_EXTRAINSTALL="features site"
 
 DESCRIPTION="A simple, blog aware, static site generator"
-HOMEPAGE="http://jekyllrb.com http://github.com/jekyll/jekyll"
+HOMEPAGE="http://jekyllrb.com https://github.com/jekyll/jekyll"
 SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz  -> ${P}.tar.gz"
 
 LICENSE="MIT"

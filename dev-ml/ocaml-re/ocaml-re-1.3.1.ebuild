@@ -10,7 +10,7 @@ OASIS_BUILD_TESTS=1
 inherit oasis
 
 DESCRIPTION="Regular expression library for OCaml"
-HOMEPAGE="http://github.com/ocaml/ocaml-re"
+HOMEPAGE="https://github.com/ocaml/ocaml-re"
 SRC_URI="https://github.com/ocaml/ocaml-re/archive/${P}.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"

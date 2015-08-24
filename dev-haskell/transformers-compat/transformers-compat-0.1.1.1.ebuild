@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A small compatibility shim exposing the new types from transformers 0.3 to older Haskell platforms"
-HOMEPAGE="http://github.com/ekmett/transformers-compat/"
+HOMEPAGE="https://github.com/ekmett/transformers-compat/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

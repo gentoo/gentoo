@@ -7,7 +7,7 @@ EAPI=5
 inherit perl-module user
 
 DESCRIPTION="Highly flexible server for git directory version tracker"
-HOMEPAGE="http://github.com/sitaramc/gitolite"
+HOMEPAGE="https://github.com/sitaramc/gitolite"
 SRC_URI="http://milki.github.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

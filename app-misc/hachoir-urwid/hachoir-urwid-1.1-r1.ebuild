@@ -10,7 +10,7 @@ PYTHON_REQ_USE="ncurses"
 inherit distutils-r1
 
 DESCRIPTION="Binary file explorer using Hachoir and urwid libraries"
-HOMEPAGE="http://bitbucket.org/haypo/hachoir/wiki/hachoir-urwid http://pypi.python.org/pypi/hachoir-urwid"
+HOMEPAGE="https://bitbucket.org/haypo/hachoir/wiki/hachoir-urwid https://pypi.python.org/pypi/hachoir-urwid"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

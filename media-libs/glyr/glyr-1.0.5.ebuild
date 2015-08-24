@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="A music related metadata searchengine, both with commandline interface and C API"
-HOMEPAGE="http://github.com/sahib/glyr"
+HOMEPAGE="https://github.com/sahib/glyr"
 SRC_URI="https://github.com/sahib/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

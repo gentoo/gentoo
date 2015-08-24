@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Various helpers to pass trusted data to untrusted environments and back"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://pythonhosted.org/itsdangerous/ http://pypi.python.org/pypi/itsdangerous"
+HOMEPAGE="http://pythonhosted.org/itsdangerous/ https://pypi.python.org/pypi/itsdangerous"
 
 LICENSE="BSD"
 SLOT="0"

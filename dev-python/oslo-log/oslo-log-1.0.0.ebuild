@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="OpenStack logging config library provides standardized configuration for all openstack projects."
-HOMEPAGE="http://pypi.python.org/pypi/oslo.log https://github.com/openstack/oslo.log"
+HOMEPAGE="https://pypi.python.org/pypi/oslo.log https://github.com/openstack/oslo.log"
 SRC_URI="mirror://pypi/o/oslo.log/oslo.log-${PV}.tar.gz"
 S="${WORKDIR}/oslo.log-${PV}"
 

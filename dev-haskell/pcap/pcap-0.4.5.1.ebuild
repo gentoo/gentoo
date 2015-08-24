@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hscolour hoogle"
 inherit haskell-cabal
 
 DESCRIPTION="A system-independent interface for user-level packet capture"
-HOMEPAGE="http://bitbucket.org/bos/pcap"
+HOMEPAGE="https://bitbucket.org/bos/pcap"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

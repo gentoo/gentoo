@@ -7,7 +7,7 @@ EAPI=5
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="http://github.com/flexible-collision-library/fcl"
+	EGIT_REPO_URI="https://github.com/flexible-collision-library/fcl"
 fi
 
 inherit ${SCM} cmake-utils
@@ -17,7 +17,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
-	SRC_URI="http://github.com/flexible-collision-library/fcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/flexible-collision-library/fcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="The Flexible Collision Library"

@@ -17,7 +17,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="An easy way to vendor gem dependencies"
-HOMEPAGE="http://github.com/carlhuda/bundler"
+HOMEPAGE="https://github.com/carlhuda/bundler"
 
 LICENSE="MIT"
 SLOT="0"
@@ -37,7 +37,7 @@ RDEPEND+=" dev-vcs/git"
 
 all_ruby_prepare() {
 	# Bundler only supports running the specs from git:
-	# http://github.com/carlhuda/bundler/issues/issue/738
+	# https://github.com/carlhuda/bundler/issues/issue/738
 	sed -i -e '/when Bundler is bundled/,/^  end/ s:^:#:' spec/runtime/setup_spec.rb || die
 
 	# Fails randomly and no clear cause can be found. Might be related

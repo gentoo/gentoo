@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 cmake-utils
 
 DESCRIPTION="Python scripting backend for Qross"
-HOMEPAGE="http://github.com/0xd34df00d/Qross"
+HOMEPAGE="https://github.com/0xd34df00d/Qross"
 SRC_URI="https://github.com/0xd34df00d/Qross/archive/${PV}.tar.gz -> qrosscore-${PV}.tar.gz"
 
 LICENSE="GPL-2"

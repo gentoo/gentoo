@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1
 
 DESCRIPTION="Summarizes the contents of a syslog log file"
-HOMEPAGE="http://github.com/dpaleino/syslog-summary"
+HOMEPAGE="https://github.com/dpaleino/syslog-summary"
 SRC_URI="mirror://github/dpaleino/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

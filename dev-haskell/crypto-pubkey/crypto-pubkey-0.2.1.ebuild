@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Public Key cryptography"
-HOMEPAGE="http://github.com/vincenthz/hs-crypto-pubkey"
+HOMEPAGE="https://github.com/vincenthz/hs-crypto-pubkey"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

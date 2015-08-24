@@ -11,7 +11,7 @@ MY_PN="PyDispatcher"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Multi-producer-multi-consumer signal dispatching mechanism"
-HOMEPAGE="http://pydispatcher.sourceforge.net/ http://pypi.python.org/pypi/PyDispatcher"
+HOMEPAGE="http://pydispatcher.sourceforge.net/ https://pypi.python.org/pypi/PyDispatcher"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 virtualx flag-o-matic
 
 DESCRIPTION="Enthought Tool Suite: Drawing and interaction packages"
-HOMEPAGE="http://code.enthought.com/projects/enable/ http://pypi.python.org/pypi/enable"
+HOMEPAGE="http://code.enthought.com/projects/enable/ https://pypi.python.org/pypi/enable"
 SRC_URI="https://github.com/enthought/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

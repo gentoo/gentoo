@@ -8,7 +8,7 @@ inherit distutils-r1 gnome2-utils fdo-mime
 
 DESCRIPTION="audio library tagger, manager, and player for GTK+"
 HOMEPAGE="http://code.google.com/p/quodlibet/"
-SRC_URI="http://bitbucket.org/lazka/${PN}-files/raw/default/releases/${P}.tar.gz"
+SRC_URI="https://bitbucket.org/lazka/${PN}-files/raw/default/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

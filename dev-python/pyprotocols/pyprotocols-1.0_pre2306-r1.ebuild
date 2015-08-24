@@ -11,7 +11,7 @@ MY_PN="PyProtocols"
 MY_P="${MY_PN}-${PV/_pre/a0dev_r}"
 
 DESCRIPTION="Extends the PEP 246 adapt function with a new 'declaration API'"
-HOMEPAGE="http://peak.telecommunity.com/PyProtocols.html http://pypi.python.org/pypi/PyProtocols \
+HOMEPAGE="http://peak.telecommunity.com/PyProtocols.html https://pypi.python.org/pypi/PyProtocols \
 	http://svn.eby-sarna.com/PyProtocols/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 

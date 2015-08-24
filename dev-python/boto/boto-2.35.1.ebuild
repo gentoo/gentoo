@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Amazon Web Services API"
-HOMEPAGE="https://github.com/boto/boto http://pypi.python.org/pypi/boto"
+HOMEPAGE="https://github.com/boto/boto https://pypi.python.org/pypi/boto"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

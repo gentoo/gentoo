@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Logging framework handler that tracks when messages above a certain level have been logged"
-HOMEPAGE="http://pypi.python.org/pypi/errorhandler"
+HOMEPAGE="https://pypi.python.org/pypi/errorhandler"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="amd64 x86"

@@ -17,7 +17,7 @@ DESCRIPTION="A set of classes to drive external programs via pipe"
 HOMEPAGE="http://codeforpeople.com/lib/ruby/session/"
 #SRC_URI="http://codeforpeople.com/lib/ruby/session/${P}.tgz"
 
-# License info based on http://github.com/ahoward/session as indicated
+# License info based on https://github.com/ahoward/session as indicated
 # by author.
 LICENSE="Ruby"
 SLOT="0"

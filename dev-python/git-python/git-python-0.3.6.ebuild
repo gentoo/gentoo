@@ -13,7 +13,7 @@ MY_PV="${PV/_rc/.RC}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Library used to interact with Git repositories"
-HOMEPAGE="http://gitorious.org/git-python http://pypi.python.org/pypi/GitPython"
+HOMEPAGE="http://gitorious.org/git-python https://pypi.python.org/pypi/GitPython"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

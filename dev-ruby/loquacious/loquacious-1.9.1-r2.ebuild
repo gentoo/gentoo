@@ -16,7 +16,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="Descriptive configuration files for Ruby written in Ruby"
-HOMEPAGE="http://github.com/TwP/loquacious"
+HOMEPAGE="https://github.com/TwP/loquacious"
 
 IUSE=""
 LICENSE="MIT"

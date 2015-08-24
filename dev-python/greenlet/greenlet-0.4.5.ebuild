@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Lightweight in-process concurrent programming"
-HOMEPAGE="http://pypi.python.org/pypi/greenlet/"
+HOMEPAGE="https://pypi.python.org/pypi/greenlet/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"

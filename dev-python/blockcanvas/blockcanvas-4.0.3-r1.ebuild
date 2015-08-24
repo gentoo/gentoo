@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Enthought Tool Suite: Numerical modeling"
-HOMEPAGE="http://code.enthought.com/projects/block_canvas/ http://pypi.python.org/pypi/blockcanvas"
+HOMEPAGE="http://code.enthought.com/projects/block_canvas/ https://pypi.python.org/pypi/blockcanvas"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

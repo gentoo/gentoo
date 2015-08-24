@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Set of programmes and Python modules to deal with Replay Gain information"
-HOMEPAGE="http://bitbucket.org/fk/rgain"
+HOMEPAGE="https://bitbucket.org/fk/rgain"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

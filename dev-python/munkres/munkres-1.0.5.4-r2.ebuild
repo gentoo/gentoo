@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Module implementing munkres algorithm for the Assignment Problem"
-HOMEPAGE="http://pypi.python.org/pypi/munkres/"
+HOMEPAGE="https://pypi.python.org/pypi/munkres/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

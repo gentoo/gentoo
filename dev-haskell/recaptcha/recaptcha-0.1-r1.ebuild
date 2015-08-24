@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Functions for using the reCAPTCHA service in web applications"
-HOMEPAGE="http://github.com/jgm/recaptcha/tree/master"
+HOMEPAGE="https://github.com/jgm/recaptcha/tree/master"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

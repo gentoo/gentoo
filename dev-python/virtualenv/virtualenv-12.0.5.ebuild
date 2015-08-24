@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Virtual Python Environment builder"
-HOMEPAGE="http://www.virtualenv.org/ http://pypi.python.org/pypi/virtualenv"
+HOMEPAGE="http://www.virtualenv.org/ https://pypi.python.org/pypi/virtualenv"
 SRC_URI="https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="Lightweight SOAP client (Jurko's fork) (py3 support) (active development)"
-HOMEPAGE="http://bitbucket.org/jurko/suds"
+HOMEPAGE="https://bitbucket.org/jurko/suds"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}-jurko/${PN}-jurko-${PV}.tar.bz2 -> ${P}.tar.bz2"
 S="${WORKDIR}/${PN}-jurko-${PV}"
 

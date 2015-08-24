@@ -8,7 +8,7 @@ inherit python-r1
 
 DESCRIPTION="Plugins for Quod Libet and Ex Falso"
 HOMEPAGE="http://code.google.com/p/quodlibet/"
-SRC_URI="http://bitbucket.org/lazka/quodlibet-files/raw/default/releases/${P}.tar.gz"
+SRC_URI="https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

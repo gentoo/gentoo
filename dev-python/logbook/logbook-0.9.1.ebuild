@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A logging replacement for Python"
-HOMEPAGE="http://packages.python.org/Logbook/ http://pypi.python.org/pypi/Logbook"
+HOMEPAGE="http://packages.python.org/Logbook/ https://pypi.python.org/pypi/Logbook"
 SRC_URI="https://github.com/mitsuhiko/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

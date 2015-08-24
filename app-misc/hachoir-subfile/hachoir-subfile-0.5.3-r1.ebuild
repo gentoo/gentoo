@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Find subfile in any binary stream"
-HOMEPAGE="http://bitbucket.org/haypo/hachoir/wiki/hachoir-subfile http://pypi.python.org/pypi/hachoir-subfile"
+HOMEPAGE="https://bitbucket.org/haypo/hachoir/wiki/hachoir-subfile https://pypi.python.org/pypi/hachoir-subfile"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

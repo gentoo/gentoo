@@ -11,7 +11,7 @@ inherit distutils-r1
 # json module required.
 
 DESCRIPTION="Gtk and/or Vim-based Python Integrated Development Application"
-HOMEPAGE="http://pida.co.uk/ http://pypi.python.org/pypi/pida"
+HOMEPAGE="http://pida.co.uk/ https://pypi.python.org/pypi/pida"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="TLS extra default values and helpers"
-HOMEPAGE="http://github.com/vincenthz/hs-tls"
+HOMEPAGE="https://github.com/vincenthz/hs-tls"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 RESTRICT="test"
 

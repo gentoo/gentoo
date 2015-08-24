@@ -13,7 +13,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec"
 inherit ruby-fakegem
 
 DESCRIPTION="An AMQP 0.9.1 serialization library for Ruby"
-HOMEPAGE="http://github.com/ruby-amqp/amq-protocol"
+HOMEPAGE="https://github.com/ruby-amqp/amq-protocol"
 
 LICENSE="MIT"
 SLOT="0"

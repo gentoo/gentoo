@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="OpenBSD fork of calmwm, a clean and lightweight window manager"
 HOMEPAGE="http://www.openbsd.org/cgi-bin/cvsweb/xenocara/app/cwm/
-	http://github.com/chneukirchen/cwm"
+	https://github.com/chneukirchen/cwm"
 SRC_URI="vanilla? ( http://chneukirchen.org/releases/${P}.tar.gz -> ${P}-chneukirchen.tar.gz )
 	!vanilla? ( https://github.com/xmw/cwm/tarball/67cc266 -> ${P}-xmw.tar.gz )"
 

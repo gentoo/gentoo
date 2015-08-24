@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Smart replacement for plain tuple used in __version__"
-HOMEPAGE="http://pypi.python.org/pypi/versiontools/ https://launchpad.net/versiontools"
+HOMEPAGE="https://pypi.python.org/pypi/versiontools/ https://launchpad.net/versiontools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="amd64 x86"
 IUSE=""

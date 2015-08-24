@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A Python library that implements an OEmbed consumer"
-HOMEPAGE="http://pypi.python.org/pypi/python-oembed"
+HOMEPAGE="https://pypi.python.org/pypi/python-oembed"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

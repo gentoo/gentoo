@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="A high-performance striped resource pooling implementation"
-HOMEPAGE="http://github.com/bos/pool"
+HOMEPAGE="https://github.com/bos/pool"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

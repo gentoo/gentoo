@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Control process attributes through prctl"
-HOMEPAGE="http://github.com/seveas/python-prctl"
-SRC_URI="http://github.com/seveas/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/seveas/python-prctl"
+SRC_URI="https://github.com/seveas/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

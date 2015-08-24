@@ -13,7 +13,7 @@ MY_PN="ReadArgs"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple command line argument parsing"
-HOMEPAGE="http://github.com/rampion/ReadArgs"
+HOMEPAGE="https://github.com/rampion/ReadArgs"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

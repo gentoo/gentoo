@@ -11,7 +11,7 @@ MY_PN="gevent-socketio"
 MY_P="${MY_PN}-${PV/_/-}"
 
 DESCRIPTION="SocketIO server based on the Gevent pywsgi server"
-HOMEPAGE="http://pypi.python.org/pypi/gevent-socketio/"
+HOMEPAGE="https://pypi.python.org/pypi/gevent-socketio/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

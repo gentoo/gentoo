@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Exclude specific directories from nosetests runs"
-HOMEPAGE="http://bitbucket.org/kgrandis/nose-exclude"
+HOMEPAGE="https://bitbucket.org/kgrandis/nose-exclude"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

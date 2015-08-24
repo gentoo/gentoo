@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="arch testing tool"
-HOMEPAGE="http://github.com/tom111/tatt"
+HOMEPAGE="https://github.com/tom111/tatt"
 EGIT_REPO_URI="https://github.com/tom111/tatt.git \
 	git://github.com/tom111/tatt.git"
 

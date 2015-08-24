@@ -13,10 +13,10 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.rdoc"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="Provide a standard and simplified way to build and package Ruby extensions"
-HOMEPAGE="http://github.com/luislavena/rake-compiler"
+HOMEPAGE="https://github.com/luislavena/rake-compiler"
 LICENSE="MIT"
 
-SRC_URI="http://github.com/luislavena/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/luislavena/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 RUBY_S="luislavena-${PN}-*"
 
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"

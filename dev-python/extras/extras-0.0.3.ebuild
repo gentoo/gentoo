@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Useful extra bits for Python that should be in the standard library"
-HOMEPAGE="https://github.com/testing-cabal/extras/ http://pypi.python.org/pypi/extras/"
+HOMEPAGE="https://github.com/testing-cabal/extras/ https://pypi.python.org/pypi/extras/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

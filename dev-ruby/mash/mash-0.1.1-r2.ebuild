@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.txt"
 inherit ruby-fakegem
 
 DESCRIPTION="Mash is an extended Hash that gives simple pseudo-object functionality"
-HOMEPAGE="http://github.com/mbleigh/mash"
+HOMEPAGE="https://github.com/mbleigh/mash"
 
 LICENSE="MIT"
 SLOT="0"

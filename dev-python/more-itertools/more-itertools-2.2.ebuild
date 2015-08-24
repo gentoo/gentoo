@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="More routines for operating on iterables, beyond itertools"
-HOMEPAGE="http://pypi.python.org/pypi/${PN}"
+HOMEPAGE="https://pypi.python.org/pypi/${PN}"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -12,7 +12,7 @@ MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Python networking library that uses greenlet to provide synchronous API"
-HOMEPAGE="http://gevent.org/ http://pypi.python.org/pypi/gevent/"
+HOMEPAGE="http://gevent.org/ https://pypi.python.org/pypi/gevent/"
 SRC_URI="https://github.com/surfly/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

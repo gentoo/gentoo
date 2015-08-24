@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Django LDAP authentication backend"
-HOMEPAGE="http://pypi.python.org/pypi/django-auth-ldap http://bitbucket.org/psagers/django-auth-ldap/"
+HOMEPAGE="https://pypi.python.org/pypi/django-auth-ldap https://bitbucket.org/psagers/django-auth-ldap/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="amd64 x86"

@@ -11,7 +11,7 @@ MY_PN="textile"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML"
-HOMEPAGE="http://github.com/textile/python-textile"
+HOMEPAGE="https://github.com/textile/python-textile"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

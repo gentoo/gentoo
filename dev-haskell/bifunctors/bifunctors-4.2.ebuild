@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Bifunctors"
-HOMEPAGE="http://github.com/ekmett/bifunctors/"
+HOMEPAGE="https://github.com/ekmett/bifunctors/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

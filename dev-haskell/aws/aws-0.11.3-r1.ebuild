@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour test-suite"
 inherit base haskell-cabal
 
 DESCRIPTION="Amazon Web Services (AWS) for Haskell"
-HOMEPAGE="http://github.com/aristidb/aws"
+HOMEPAGE="https://github.com/aristidb/aws"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

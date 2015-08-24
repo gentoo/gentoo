@@ -6,7 +6,7 @@ EAPI=5
 
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="http://bitbucket.org/mgorny/${PN}2.git"
+EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}2.git"
 
 inherit git-r3
 #endif

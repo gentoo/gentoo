@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Pure-Python implementation of the Git file formats and protocols"
-HOMEPAGE="https://github.com/jelmer/dulwich/ http://pypi.python.org/pypi/dulwich"
+HOMEPAGE="https://github.com/jelmer/dulwich/ https://pypi.python.org/pypi/dulwich"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

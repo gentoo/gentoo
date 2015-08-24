@@ -15,7 +15,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Extends mocha to allow detailed tracking and querying of stub and mock invocations"
-HOMEPAGE="http://github.com/thoughtbot/bourne"
+HOMEPAGE="https://github.com/thoughtbot/bourne"
 
 LICENSE="MIT"
 SLOT="0"

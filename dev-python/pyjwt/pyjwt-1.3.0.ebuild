@@ -10,7 +10,7 @@ inherit eutils distutils-r1
 MY_PN="PyJWT"
 
 DESCRIPTION="JSON Web Token implementation in Python"
-HOMEPAGE="http://github.com/progrium/pyjwt https://pypi.python.org/pypi/PyJWT/"
+HOMEPAGE="https://github.com/progrium/pyjwt https://pypi.python.org/pypi/PyJWT/"
 #SRC_URI="https://github.com/progrium/${P}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 

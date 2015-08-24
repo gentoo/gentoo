@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Package of Hachoir parsers used to open binary files"
-HOMEPAGE="http://bitbucket.org/haypo/hachoir/wiki/hachoir-parser http://pypi.python.org/pypi/hachoir-parser"
+HOMEPAGE="https://bitbucket.org/haypo/hachoir/wiki/hachoir-parser https://pypi.python.org/pypi/hachoir-parser"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

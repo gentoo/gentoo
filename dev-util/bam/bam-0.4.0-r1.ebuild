@@ -10,7 +10,7 @@ inherit eutils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Fast and flexible Lua-based build system"
 HOMEPAGE="http://matricks.github.com/bam/"
-SRC_URI="http://github.com/downloads/matricks/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/downloads/matricks/${PN}/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

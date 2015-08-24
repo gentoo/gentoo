@@ -8,7 +8,7 @@ PYTHON_COMPAT="python2_7"
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Python interface to thetvdb.com API"
-HOMEPAGE="http://github.com/dbr/tvdb_api"
+HOMEPAGE="https://github.com/dbr/tvdb_api"
 SRC_URI="https://github.com/dbr/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="public-domain"

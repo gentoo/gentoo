@@ -12,7 +12,7 @@ MY_PN="Sphinx"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python documentation generator"
-HOMEPAGE="http://sphinx.pocoo.org/ http://pypi.python.org/pypi/Sphinx"
+HOMEPAGE="http://sphinx.pocoo.org/ https://pypi.python.org/pypi/Sphinx"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

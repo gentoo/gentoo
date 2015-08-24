@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3} )
 inherit distutils-r1
 
 DESCRIPTION="Python module for spawning child applications and responding to expected patterns"
-HOMEPAGE="http://pexpect.sourceforge.net/ http://pypi.python.org/pypi/pexpect"
+HOMEPAGE="http://pexpect.sourceforge.net/ https://pypi.python.org/pypi/pexpect"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

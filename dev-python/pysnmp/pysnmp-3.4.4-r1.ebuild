@@ -10,7 +10,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="SNMP framework in Python. Not a wrapper"
-HOMEPAGE="http://pysnmp.sf.net/ http://pypi.python.org/pypi/pysnmp"
+HOMEPAGE="http://pysnmp.sf.net/ https://pypi.python.org/pypi/pysnmp"
 SRC_URI="mirror://sourceforge/pysnmp/${P}.tar.gz"
 
 LICENSE="BSD"

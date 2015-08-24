@@ -9,7 +9,7 @@ inherit distutils-r1
 
 MY_P=${P/_rc/rc}
 DESCRIPTION="A library containing some useful snippets"
-HOMEPAGE="http://pypi.python.org/pypi/hcs_utils"
+HOMEPAGE="https://pypi.python.org/pypi/hcs_utils"
 SRC_URI="mirror://pypi/h/${PN/-/_}/${MY_P/-/_}.tar.gz"
 
 LICENSE="GPL-3"

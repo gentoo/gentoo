@@ -11,7 +11,7 @@ MY_PN="Flask-Themes"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Infrastructure for theming support in Flask applications"
-HOMEPAGE="http://packages.python.org/Flask-Themes/ http://pypi.python.org/pypi/Flask-Themes"
+HOMEPAGE="http://packages.python.org/Flask-Themes/ https://pypi.python.org/pypi/Flask-Themes"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

@@ -11,7 +11,7 @@ MY_PN=${PN/p/P}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python-based software project scripting tool along the lines of Make"
-HOMEPAGE="http://www.blueskyonmars.com/projects/paver/ http://github.com/paver/paver"
+HOMEPAGE="http://www.blueskyonmars.com/projects/paver/ https://github.com/paver/paver"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

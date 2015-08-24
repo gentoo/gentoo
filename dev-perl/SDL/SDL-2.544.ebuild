@@ -7,7 +7,7 @@ MODULE_AUTHOR=FROGGS
 inherit perl-module
 
 DESCRIPTION="Simple DirectMedia Layer (SDL) bindings for perl"
-HOMEPAGE="http://sdl.perl.org/ http://search.cpan.org/dist/SDL/ http://github.com/PerlGameDev/SDL"
+HOMEPAGE="http://sdl.perl.org/ http://search.cpan.org/dist/SDL/ https://github.com/PerlGameDev/SDL"
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"

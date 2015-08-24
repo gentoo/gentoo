@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Comonad transformers using functional dependencies"
-HOMEPAGE="http://github.com/ekmett/comonads-fd/"
+HOMEPAGE="https://github.com/ekmett/comonads-fd/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

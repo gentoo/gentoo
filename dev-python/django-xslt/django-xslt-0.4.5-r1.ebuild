@@ -11,7 +11,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	test? ( http://dev.gentoo.org/~tampakrap/tarballs/${PN}-demoapp-0.4.5_p20120427.tar.bz2 )"
 
 DESCRIPTION="an XSLT template system for Django"
-HOMEPAGE="http://pypi.python.org/pypi/django-xslt/"
+HOMEPAGE="https://pypi.python.org/pypi/django-xslt/"
 KEYWORDS="amd64 x86"
 IUSE="test"
 

@@ -7,7 +7,7 @@ EAPI=5
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="http://github.com/danfis/libccd"
+	EGIT_REPO_URI="https://github.com/danfis/libccd"
 fi
 
 inherit ${SCM} cmake-utils toolchain-funcs

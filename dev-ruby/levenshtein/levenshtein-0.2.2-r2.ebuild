@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG README"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Levenshtein distance algorithm"
-HOMEPAGE="http://github.com/mbleigh/mash"
+HOMEPAGE="https://github.com/mbleigh/mash"
 
 LICENSE="GPL-2"
 SLOT="0"

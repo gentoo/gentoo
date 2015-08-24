@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Profunctor extras"
-HOMEPAGE="http://github.com/ekmett/profunctor-extras/"
+HOMEPAGE="https://github.com/ekmett/profunctor-extras/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

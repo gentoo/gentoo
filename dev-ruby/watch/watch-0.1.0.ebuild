@@ -10,7 +10,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="A dirt simple mechanism to tell if files have changed"
-HOMEPAGE="http://github.com/benschwarz/watch"
+HOMEPAGE="https://github.com/benschwarz/watch"
 
 LICENSE="MIT"
 SLOT="0"

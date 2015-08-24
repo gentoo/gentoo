@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Low-level bindings to the zlib package. (deprecated)"
-HOMEPAGE="http://github.com/snoyberg/zlib-bindings"
+HOMEPAGE="https://github.com/snoyberg/zlib-bindings"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

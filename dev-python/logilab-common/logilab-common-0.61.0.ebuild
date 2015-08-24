@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Useful miscellaneous modules used by Logilab projects"
-HOMEPAGE="http://www.logilab.org/project/logilab-common http://pypi.python.org/pypi/logilab-common"
+HOMEPAGE="http://www.logilab.org/project/logilab-common https://pypi.python.org/pypi/logilab-common"
 SRC_URI="ftp://ftp.logilab.org/pub/common/${P}.tar.gz mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

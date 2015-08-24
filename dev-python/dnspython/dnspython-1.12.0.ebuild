@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="DNS toolkit for Python"
-HOMEPAGE="http://www.dnspython.org/ http://pypi.python.org/pypi/dnspython"
+HOMEPAGE="http://www.dnspython.org/ https://pypi.python.org/pypi/dnspython"
 SRC_URI="http://www.dnspython.org/kits/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"

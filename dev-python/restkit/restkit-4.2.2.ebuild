@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A HTTP ressource kit for Python"
-HOMEPAGE="http://github.com/benoitc/restkit"
+HOMEPAGE="https://github.com/benoitc/restkit"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

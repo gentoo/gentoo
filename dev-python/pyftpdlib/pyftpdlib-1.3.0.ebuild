@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ssl(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python FTP server library"
-HOMEPAGE="http://code.google.com/p/pyftpdlib/ http://pypi.python.org/pypi/pyftpdlib"
+HOMEPAGE="http://code.google.com/p/pyftpdlib/ https://pypi.python.org/pypi/pyftpdlib"
 SRC_URI="http://pyftpdlib.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"

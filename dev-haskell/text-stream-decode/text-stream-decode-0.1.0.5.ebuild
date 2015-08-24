@@ -11,7 +11,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Streaming decoding functions for UTF encodings. (deprecated)"
-HOMEPAGE="http://github.com/fpco/text-stream-decode"
+HOMEPAGE="https://github.com/fpco/text-stream-decode"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"

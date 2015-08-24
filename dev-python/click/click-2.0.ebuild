@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Python package for creating beautiful command line interfaces"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://click.pocoo.org/ http://pypi.python.org/pypi/click"
+HOMEPAGE="http://click.pocoo.org/ https://pypi.python.org/pypi/click"
 
 LICENSE="BSD"
 SLOT="0"

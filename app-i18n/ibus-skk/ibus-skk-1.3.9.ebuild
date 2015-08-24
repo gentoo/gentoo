@@ -8,7 +8,7 @@ PYTHON_DEPEND="2:2.5"
 inherit python
 
 DESCRIPTION="Japanese input method Anthy IMEngine for IBus Framework"
-HOMEPAGE="http://github.com/ueno/ibus-skk"
+HOMEPAGE="https://github.com/ueno/ibus-skk"
 SRC_URI="mirror://github/ueno/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

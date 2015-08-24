@@ -11,7 +11,7 @@ MY_PN="Flask-OpenID"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="OpenID support for Flask"
-HOMEPAGE="http://pypi.python.org/pypi/Flask-OpenID"
+HOMEPAGE="https://pypi.python.org/pypi/Flask-OpenID"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

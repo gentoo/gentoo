@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python module for DNS (Domain Name Service)"
-HOMEPAGE="http://pydns.sourceforge.net/ http://pypi.python.org/pypi/pydns"
+HOMEPAGE="http://pydns.sourceforge.net/ https://pypi.python.org/pypi/pydns"
 SRC_URI="http://downloads.sourceforge.net/project/pydns/pydns/${P}/${P}.tar.gz"
 
 LICENSE="CNRI"

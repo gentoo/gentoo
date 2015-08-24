@@ -10,7 +10,7 @@ inherit distutils-r1 versionator virtualx
 DESCRIPTION="Kiwi is a pure Python framework and set of enhanced PyGTK widgets"
 HOMEPAGE="http://www.async.com.br/projects/kiwi/
 	https://launchpad.net/kiwi
-	http://pypi.python.org/pypi/kiwi-gtk"
+	https://pypi.python.org/pypi/kiwi-gtk"
 MY_PN="${PN}-gtk"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"

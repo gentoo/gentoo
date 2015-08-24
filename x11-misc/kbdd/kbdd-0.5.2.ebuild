@@ -7,7 +7,7 @@ EAPI=4
 inherit autotools
 
 DESCRIPTION="Very simple layout switcher"
-HOMEPAGE="http://github.com/qnikst/kbdd"
+HOMEPAGE="https://github.com/qnikst/kbdd"
 SRC_URI="https://github.com/qnikst/kbdd/tarball/v${PV} -> ${PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"

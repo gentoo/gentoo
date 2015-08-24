@@ -8,8 +8,8 @@ OASIS_BUILD_DOCS=1
 inherit oasis elisp-common
 
 DESCRIPTION="A new toplevel for OCaml with completion and colorization"
-HOMEPAGE="http://github.com/diml/utop"
-SRC_URI="http://github.com/diml/utop/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/diml/utop"
+SRC_URI="https://github.com/diml/utop/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

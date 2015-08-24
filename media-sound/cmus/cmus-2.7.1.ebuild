@@ -7,7 +7,7 @@ inherit bash-completion-r1 multilib
 
 DESCRIPTION="A ncurses based music player with plugin support for many formats"
 HOMEPAGE="http://cmus.github.io/"
-SRC_URI="http://github.com/cmus/cmus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cmus/cmus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

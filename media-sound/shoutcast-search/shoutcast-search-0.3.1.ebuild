@@ -14,7 +14,7 @@ inherit distutils
 
 DESCRIPTION="A command-line tool for searching SHOUTcast stations"
 HOMEPAGE="http://www.k2h.se/code/shoutcast-search.html"
-SRC_URI="http://github.com/halhen/${PN}/tarball/${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/halhen/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

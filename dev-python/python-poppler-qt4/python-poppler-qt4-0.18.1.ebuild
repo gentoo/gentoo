@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="A python binding for libpoppler-qt4"
 HOMEPAGE="http://code.google.com/p/python-poppler-qt4/"
-SRC_URI="http://github.com/wbsoft/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wbsoft/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

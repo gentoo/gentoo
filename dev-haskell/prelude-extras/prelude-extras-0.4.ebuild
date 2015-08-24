@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell 98 - higher order versions of Prelude classes"
-HOMEPAGE="http://github.com/ekmett/prelude-extras"
+HOMEPAGE="https://github.com/ekmett/prelude-extras"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

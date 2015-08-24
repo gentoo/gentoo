@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="README"
 inherit ruby-fakegem
 
 DESCRIPTION="A pipe to browser utility for use at the shell and within editors like Vim or Emacs"
-HOMEPAGE="http://github.com/rtomayko/bcat"
+HOMEPAGE="https://github.com/rtomayko/bcat"
 
 LICENSE="MIT"
 SLOT="0"

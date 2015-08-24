@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python Markdown language reimplementation"
 SRC_URI="mirror://pypi/m/markdown2/${P}.zip"
-HOMEPAGE="http://github.com/trentm/python-markdown2"
+HOMEPAGE="https://github.com/trentm/python-markdown2"
 
 LICENSE="MIT"
 SLOT="0"

@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="amd64 arm hppa ppc ppc64 x86 ~x86-fbsd"
 IUSE="static-libs"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}/libpgm-${PV}~dfsg/${PN}/pgm"

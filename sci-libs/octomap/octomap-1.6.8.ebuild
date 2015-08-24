@@ -7,7 +7,7 @@ EAPI=5
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="http://github.com/OctoMap/octomap"
+	EGIT_REPO_URI="https://github.com/OctoMap/octomap"
 fi
 
 inherit ${SCM} cmake-utils
@@ -17,7 +17,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
-	SRC_URI="http://github.com/OctoMap/octomap/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/OctoMap/octomap/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="An Efficient Probabilistic 3D Mapping Framework Based on Octrees"

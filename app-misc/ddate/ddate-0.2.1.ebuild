@@ -6,8 +6,8 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Perpetual date converter from gregorian to poee calendar"
-HOMEPAGE="http://github.com/bo0ts/ddate"
-SRC_URI="http://github.com/bo0ts/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/bo0ts/ddate"
+SRC_URI="https://github.com/bo0ts/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

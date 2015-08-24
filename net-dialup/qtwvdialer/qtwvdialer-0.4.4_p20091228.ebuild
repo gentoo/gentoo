@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils qt4-r2
 
 DESCRIPTION="Qt4 frontend for wvdial"
-HOMEPAGE="http://github.com/schuay/qt4wvdialer/"
+HOMEPAGE="https://github.com/schuay/qt4wvdialer/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

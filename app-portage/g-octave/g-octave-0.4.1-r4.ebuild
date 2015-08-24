@@ -15,7 +15,7 @@ DESCRIPTION="A tool that generates and installs ebuilds for Octave-Forge"
 HOMEPAGE="https://github.com/rafaelmartins/g-octave"
 
 SRC_URI="mirror://github/rafaelmartins/${PN}/${P}.tar.gz
-	http://github.com/rafaelmartins/${PN}-db/tarball/${DB_COMMIT} ->
+	https://github.com/rafaelmartins/${PN}-db/tarball/${DB_COMMIT} ->
 		${PN}-db-${DB_COMMIT:0:7}.tar.gz"
 
 LICENSE="GPL-2"

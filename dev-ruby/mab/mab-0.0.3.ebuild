@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Markup as Ruby"
-HOMEPAGE="http://github.com/camping/mab"
+HOMEPAGE="https://github.com/camping/mab"
 LICENSE="MIT"
 
 SLOT="0"

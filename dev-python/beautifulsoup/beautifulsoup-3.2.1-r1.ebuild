@@ -11,7 +11,7 @@ MY_PN="BeautifulSoup"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="HTML/XML parser for quick-turnaround applications like screen-scraping"
-HOMEPAGE="http://www.crummy.com/software/BeautifulSoup/ http://pypi.python.org/pypi/BeautifulSoup"
+HOMEPAGE="http://www.crummy.com/software/BeautifulSoup/ https://pypi.python.org/pypi/BeautifulSoup"
 SRC_URI="http://www.crummy.com/software/${MY_PN}/download/3.x/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -6,7 +6,7 @@ EAPI=5
 
 #if LIVE
 EGIT_REPO_URI="git://github.com/lvc/${PN}.git
-	http://github.com/lvc/${PN}.git"
+	https://github.com/lvc/${PN}.git"
 
 inherit git-r3
 #endif

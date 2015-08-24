@@ -8,7 +8,7 @@ PYTHON_COMPAT=(python{2_7,3_3,3_4})
 inherit distutils-r1
 
 DESCRIPTION="Refactors valid 3.x syntax into valid 2.x syntax, if a syntactical conversion is possible"
-HOMEPAGE="http://pypi.python.org/pypi/3to2"
+HOMEPAGE="https://pypi.python.org/pypi/3to2"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="Apache-1.1"

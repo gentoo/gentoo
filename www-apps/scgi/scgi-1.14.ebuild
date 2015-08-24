@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 inherit distutils
 
 DESCRIPTION="A Python package for implementing SCGI servers"
-HOMEPAGE="http://pypi.python.org/pypi/scgi http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/"
+HOMEPAGE="https://pypi.python.org/pypi/scgi http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/"
 SRC_URI="http://python.ca/scgi/releases/${P}.tar.gz"
 
 LICENSE="CNRI"

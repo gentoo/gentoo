@@ -10,7 +10,7 @@ inherit xorg-2 vcs-snapshot
 
 DESCRIPTION="Xorg Driver for Multitouch Trackpads"
 HOMEPAGE="https://github.com/BlueDragonX/xf86-input-mtrack"
-SRC_URI="http://github.com/BlueDragonX/xf86-input-mtrack/tarball/v${PV/_/-} -> ${P}.tar.gz"
+SRC_URI="https://github.com/BlueDragonX/xf86-input-mtrack/tarball/v${PV/_/-} -> ${P}.tar.gz"
 IUSE="debug"
 
 LICENSE="GPL-2"

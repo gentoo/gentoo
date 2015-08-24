@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="IPython-enabled pdb"
-HOMEPAGE="http://pypi.python.org/pypi/ipdb"
+HOMEPAGE="https://pypi.python.org/pypi/ipdb"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="GPL-2"

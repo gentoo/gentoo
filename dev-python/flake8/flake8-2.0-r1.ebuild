@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="the modular source code checker: pep8, pyflakes and co"
-HOMEPAGE="http://bitbucket.org/tarek/flake8"
+HOMEPAGE="https://bitbucket.org/tarek/flake8"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

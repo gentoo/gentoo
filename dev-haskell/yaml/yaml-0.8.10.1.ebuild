@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Support for parsing and rendering YAML documents"
-HOMEPAGE="http://github.com/snoyberg/yaml/"
+HOMEPAGE="https://github.com/snoyberg/yaml/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

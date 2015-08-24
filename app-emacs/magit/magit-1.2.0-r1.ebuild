@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="An Emacs mode for GIT"
 HOMEPAGE="http://magit.github.io/"
-SRC_URI="http://github.com/downloads/magit/magit/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/magit/magit/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"

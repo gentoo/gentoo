@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="A perl script designed for monitoring disk usage in a more visual way than du"
-HOMEPAGE="http://gentoo.org"
+HOMEPAGE="https://gentoo.org"
 SRC_URI="http://www.hibernaculum.net/download/${P}.tar.gz"
 
 LICENSE="Artistic"

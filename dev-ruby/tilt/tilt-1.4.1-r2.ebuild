@@ -15,7 +15,7 @@ RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem
 
 DESCRIPTION="A thin interface over a Ruby template engines to make their usage as generic as possible"
-HOMEPAGE="http://github.com/rtomayko/tilt"
+HOMEPAGE="https://github.com/rtomayko/tilt"
 
 LICENSE="MIT"
 SLOT="0"

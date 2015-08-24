@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A python script for preparing the html output of Sphinx documentation for github pages"
-HOMEPAGE="http://github.com/michaeljones/sphinx-to-github/"
+HOMEPAGE="https://github.com/michaeljones/sphinx-to-github/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Transport neutral client implementation of the STOMP protocol"
-HOMEPAGE="http://pypi.python.org/pypi/stomper"
+HOMEPAGE="https://pypi.python.org/pypi/stomper"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

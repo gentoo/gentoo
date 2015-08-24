@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils
 
 DESCRIPTION="A compressed bitset with supporting data structures and algorithms"
-HOMEPAGE="http://github.com/chriso/bitset"
+HOMEPAGE="https://github.com/chriso/bitset"
 SRC_URI="https://github.com/chriso/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

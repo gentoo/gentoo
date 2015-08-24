@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to PROJ.4 library"
-HOMEPAGE="http://github.com/jswhit/pyproj"
+HOMEPAGE="https://github.com/jswhit/pyproj"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

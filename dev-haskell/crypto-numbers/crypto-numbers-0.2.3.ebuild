@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Cryptographic numbers: functions and algorithms"
-HOMEPAGE="http://github.com/vincenthz/hs-crypto-numbers"
+HOMEPAGE="https://github.com/vincenthz/hs-crypto-numbers"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

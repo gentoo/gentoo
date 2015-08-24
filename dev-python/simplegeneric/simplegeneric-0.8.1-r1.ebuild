@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Simple generic functions for Python"
-HOMEPAGE="http://pypi.python.org/pypi/simplegeneric"
+HOMEPAGE="https://pypi.python.org/pypi/simplegeneric"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="ZPL"

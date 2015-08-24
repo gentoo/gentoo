@@ -12,7 +12,7 @@ PYCAIRO_PYTHON2_VERSION="${PV}"
 PYCAIRO_PYTHON3_VERSION="${PV}"
 
 DESCRIPTION="Python bindings for the cairo library"
-HOMEPAGE="http://cairographics.org/pycairo/ http://pypi.python.org/pypi/pycairo"
+HOMEPAGE="http://cairographics.org/pycairo/ https://pypi.python.org/pypi/pycairo"
 SRC_URI="http://cairographics.org/releases/py2cairo-${PYCAIRO_PYTHON2_VERSION}.tar.bz2
 	http://cairographics.org/releases/pycairo-${PYCAIRO_PYTHON3_VERSION}.tar.bz2"
 

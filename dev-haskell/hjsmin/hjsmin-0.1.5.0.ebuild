@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell implementation of a javascript minifier"
-HOMEPAGE="http://github.com/erikd/hjsmin"
+HOMEPAGE="https://github.com/erikd/hjsmin"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

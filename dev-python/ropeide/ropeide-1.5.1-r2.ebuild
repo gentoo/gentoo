@@ -9,7 +9,7 @@ inherit distutils-r1
 PYTHON_REQ_USE="tk"
 
 DESCRIPTION="Python refactoring IDE"
-HOMEPAGE="http://rope.sourceforge.net/ropeide.html http://pypi.python.org/pypi/ropeide"
+HOMEPAGE="http://rope.sourceforge.net/ropeide.html https://pypi.python.org/pypi/ropeide"
 SRC_URI="mirror://sourceforge/rope/${P}.tar.gz"
 
 LICENSE="GPL-2"

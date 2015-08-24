@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3} )
 inherit distutils-r1
 
 DESCRIPTION="A full-screen, console-based Python debugger"
-HOMEPAGE="http://pypi.python.org/pypi/pudb"
+HOMEPAGE="https://pypi.python.org/pypi/pudb"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

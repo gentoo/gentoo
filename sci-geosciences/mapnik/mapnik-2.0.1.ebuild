@@ -11,7 +11,7 @@ inherit eutils python scons-utils toolchain-funcs
 
 DESCRIPTION="A Free Toolkit for developing mapping applications"
 HOMEPAGE="http://www.mapnik.org/"
-SRC_URI="http://github.com/downloads/${PN}/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://github.com/downloads/${PN}/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"
