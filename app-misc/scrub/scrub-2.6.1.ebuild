@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="Write patterns on disk/file"
-HOMEPAGE="http://code.google.com/p/diskscrub/"
+HOMEPAGE="https://code.google.com/p/diskscrub/"
 SRC_URI="https://github.com/chaos/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"

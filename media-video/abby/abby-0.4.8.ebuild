@@ -6,7 +6,7 @@ EAPI="4"
 inherit qt4-r2
 
 DESCRIPTION="GUI front-end for cclive and clive video extraction utilities"
-HOMEPAGE="http://code.google.com/p/abby/"
+HOMEPAGE="https://code.google.com/p/abby/"
 SRC_URI="http://abby.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"

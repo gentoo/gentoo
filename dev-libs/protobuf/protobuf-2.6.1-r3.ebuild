@@ -12,7 +12,7 @@ DISTUTILS_OPTIONAL=1
 inherit autotools-multilib eutils flag-o-matic toolchain-funcs distutils-r1 java-pkg-opt-2 elisp-common
 
 DESCRIPTION="Google's Protocol Buffers -- an efficient method of encoding structured data"
-HOMEPAGE="http://code.google.com/p/protobuf/ https://github.com/google/protobuf/"
+HOMEPAGE="https://code.google.com/p/protobuf/ https://github.com/google/protobuf/"
 SRC_URI="https://github.com/google/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"

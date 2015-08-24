@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Improved make"
-HOMEPAGE="http://code.google.com/a/apache-extras.org/p/dmake/"
+HOMEPAGE="https://code.google.com/a/apache-extras.org/p/dmake/"
 SRC_URI="http://${PN}.apache-extras.org.codespot.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-1"
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
 # test failure, reported upstream at
-# http://code.google.com/a/apache-extras.org/p/dmake/issues/detail?id=1
+# https://code.google.com/a/apache-extras.org/p/dmake/issues/detail?id=1
 RESTRICT="test"
 
 DEPEND="

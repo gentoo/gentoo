@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils cmake-utils
 
-# version release, check http://code.google.com/p/bullet/downloads/list
+# version release, check https://code.google.com/p/bullet/downloads/list
 MYP=${P}-rev2613
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"

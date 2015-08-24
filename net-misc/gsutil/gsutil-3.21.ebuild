@@ -7,7 +7,7 @@ EAPI="3"
 inherit eutils python multilib
 
 DESCRIPTION="command line tool for interacting with cloud storage services"
-HOMEPAGE="http://code.google.com/p/gsutil/"
+HOMEPAGE="https://code.google.com/p/gsutil/"
 SRC_URI="http://commondatastorage.googleapis.com/pub/${PN}_${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -38,7 +38,7 @@ src_install() {
 	dosym /usr/$(get_libdir)/${PN}/gsutil /usr/bin/gsutil
 	fperms a+x /usr/$(get_libdir)/${PN}/gsutil
 
-	# http://code.google.com/p/gsutil/issues/detail?id=96
+	# https://code.google.com/p/gsutil/issues/detail?id=96
 	rm "${D}"/usr/$(get_libdir)/${PN}/gslib/commands/test.py || die
 
 	dodoc README

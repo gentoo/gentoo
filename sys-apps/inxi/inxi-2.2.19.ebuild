@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="A newer, better system information script for irc, administration, and system troubleshooters."
-HOMEPAGE="http://code.google.com/p/inxi/"
+HOMEPAGE="https://code.google.com/p/inxi/"
 SRC_URI="https://inxi.googlecode.com/svn/tarballs/${PN}_${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"

@@ -5,7 +5,7 @@
 inherit eutils
 
 DESCRIPTION="easy-to-use image and video I/O functions"
-HOMEPAGE="http://code.google.com/p/iulib/"
+HOMEPAGE="https://code.google.com/p/iulib/"
 SRC_URI="http://iulib.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

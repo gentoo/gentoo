@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="serial graphics adapter bios option rom for x86"
-HOMEPAGE="http://code.google.com/p/sgabios/"
+HOMEPAGE="https://code.google.com/p/sgabios/"
 SRC_URI="mirror://gentoo/${P}.tar.xz
 	https://dev.gentoo.org/~cardoe/distfiles/${P}.tar.xz
 	https://dev.gentoo.org/~cardoe/distfiles/${P}-bins.tar.xz"

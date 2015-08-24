@@ -5,7 +5,7 @@
 inherit eutils flag-o-matic
 
 DESCRIPTION="A semi-automated, largely passive web application security audit tool"
-HOMEPAGE="http://code.google.com/p/ratproxy/"
+HOMEPAGE="https://code.google.com/p/ratproxy/"
 SRC_URI="http://ratproxy.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

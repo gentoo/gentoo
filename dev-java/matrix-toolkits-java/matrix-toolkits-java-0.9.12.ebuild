@@ -12,7 +12,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="BLAS and LAPACK-derived matrix data structures and linear algebra methods"
-HOMEPAGE="http://code.google.com/p/matrix-toolkits-java/"
+HOMEPAGE="https://code.google.com/p/matrix-toolkits-java/"
 SRC_URI="http://matrix-toolkits-java.googlecode.com/files/mtj-${PV}.zip"
 
 LICENSE="LGPL-3"

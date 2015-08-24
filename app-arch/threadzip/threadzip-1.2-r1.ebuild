@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1
 
 DESCRIPTION="threaded compressor logic for zlib/lzma"
-HOMEPAGE="http://code.google.com/p/threadzip/"
+HOMEPAGE="https://code.google.com/p/threadzip/"
 SRC_URI="http://threadzip.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

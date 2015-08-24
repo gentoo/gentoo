@@ -22,10 +22,10 @@ record it and share on the network.
 		<email>alpha@paranoici.org</email>
 		<name>Pietro Pilloli</name>
 	</maintainer>
-	<changelog>http://code.google.com/p/ardesia/source/list</changelog>
-	<doc>http://code.google.com/p/ardesia/wiki/FAQ</doc>
-	<bugs-to>http://code.google.com/p/ardesia/issues/list</bugs-to>
-	<remote-id type="google-code">http://code.google.com/p/ardesia</remote-id>
+	<changelog>https://code.google.com/p/ardesia/source/list</changelog>
+	<doc>https://code.google.com/p/ardesia/wiki/FAQ</doc>
+	<bugs-to>https://code.google.com/p/ardesia/issues/list</bugs-to>
+	<remote-id type="google-code">https://code.google.com/p/ardesia</remote-id>
 </upstream>
 </pkgmetadata>
 

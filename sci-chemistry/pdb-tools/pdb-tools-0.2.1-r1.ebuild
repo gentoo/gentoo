@@ -11,7 +11,7 @@ inherit fortran-2 python-single-r1 toolchain-funcs
 MY_PN="pdbTools"
 
 DESCRIPTION="Tools for manipulating and doing calculations on wwPDB macromolecule structure files"
-HOMEPAGE="http://code.google.com/p/pdb-tools/"
+HOMEPAGE="https://code.google.com/p/pdb-tools/"
 SRC_URI="http://${PN}.googlecode.com/files/${MY_PN}_${PV}.tar.gz"
 
 SLOT="0"

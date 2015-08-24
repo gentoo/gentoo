@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Google's Python argument parsing library"
-HOMEPAGE="http://code.google.com/p/python-gflags/"
+HOMEPAGE="https://code.google.com/p/python-gflags/"
 SRC_URI="http://python-gflags.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -28,7 +28,7 @@ PATCHES=(
 )
 
 python_test() {
-	# http://code.google.com/p/python-gflags/issues/detail?id=15&thanks=15&ts=1372948007
+	# https://code.google.com/p/python-gflags/issues/detail?id=15&thanks=15&ts=1372948007
 	local t
 	cd tests || die
 	for t in *.py; do

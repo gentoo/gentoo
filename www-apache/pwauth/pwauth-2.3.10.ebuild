@@ -7,7 +7,7 @@ EAPI=5
 inherit base flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="A Unix Web Authenticator"
-HOMEPAGE="http://code.google.com/p/pwauth/"
+HOMEPAGE="https://code.google.com/p/pwauth/"
 SRC_URI="http://pwauth.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-1.1"

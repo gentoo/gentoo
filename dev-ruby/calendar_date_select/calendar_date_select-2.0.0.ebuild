@@ -19,7 +19,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="app"
 inherit ruby-fakegem
 
 DESCRIPTION="A popular and flexible JavaScript DatePicker for RubyOnRails"
-HOMEPAGE="http://code.google.com/p/calendardateselect/"
+HOMEPAGE="https://code.google.com/p/calendardateselect/"
 
 LICENSE="MIT"
 SLOT="0"

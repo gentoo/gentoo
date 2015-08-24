@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Python libev interface, an event loop"
-HOMEPAGE="http://code.google.com/p/pyev/
+HOMEPAGE="https://code.google.com/p/pyev/
 	http://pythonhosted.org/pyev/"
 SRC_URI="mirror://pypi/p/pyev/${P}.tar.gz"
 

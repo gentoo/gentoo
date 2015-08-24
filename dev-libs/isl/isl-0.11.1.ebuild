@@ -23,7 +23,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.07-gdb-autoload-dir.patch
 
 	# m4/ax_create_pkgconfig_info.m4 is broken but avoid eautoreconf
-	# http://groups.google.com/group/isl-development/t/37ad876557e50f2c
+	# https://groups.google.com/group/isl-development/t/37ad876557e50f2c
 	sed -i -e '/Libs:/s:@LDFLAGS@ ::' configure || die #382737
 }
 

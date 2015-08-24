@@ -8,7 +8,7 @@ inherit cmake-utils
 MY_P=${P}-Source
 
 DESCRIPTION="The Chewing IMEngine for IBus Framework"
-HOMEPAGE="http://code.google.com/p/ibus/"
+HOMEPAGE="https://code.google.com/p/ibus/"
 SRC_URI="http://ibus.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

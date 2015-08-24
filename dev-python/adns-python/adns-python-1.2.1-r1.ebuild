@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for ADNS"
-HOMEPAGE="http://code.google.com/p/adns-python/ https://pypi.python.org/pypi/adns-python"
+HOMEPAGE="https://code.google.com/p/adns-python/ https://pypi.python.org/pypi/adns-python"
 SRC_URI="http://adns-python.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

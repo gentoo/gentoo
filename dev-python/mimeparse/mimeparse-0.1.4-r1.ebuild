@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Basic functions for handling mime-types in python"
 HOMEPAGE="
-	http://code.google.com/p/mimeparse
+	https://code.google.com/p/mimeparse
 	https://github.com/dbtsai/python-mimeparse"
 MY_PN="python-${PN}"
 MY_P="${MY_PN}-${PV}"

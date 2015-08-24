@@ -7,7 +7,7 @@ EAPI="4"
 inherit elisp-common python
 
 DESCRIPTION="A simple but powerful template language for C++"
-HOMEPAGE="http://code.google.com/p/ctemplate/"
+HOMEPAGE="https://code.google.com/p/ctemplate/"
 SRC_URI="http://ctemplate.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -7,7 +7,7 @@ EAPI=5
 inherit findlib eutils
 
 DESCRIPTION="Standard library extensions for O'Caml"
-HOMEPAGE="http://code.google.com/p/ocaml-extlib/"
+HOMEPAGE="https://code.google.com/p/ocaml-extlib/"
 SRC_URI="http://ocaml-extlib.googlecode.com/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 DEPEND="

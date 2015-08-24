@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="DRY and RAD for regular expressions"
-HOMEPAGE="https://github.com/jordansissel/grok http://code.google.com/p/semicomplete/wiki/Grok"
+HOMEPAGE="https://github.com/jordansissel/grok https://code.google.com/p/semicomplete/wiki/Grok"
 SRC_URI="https://github.com/jordansissel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

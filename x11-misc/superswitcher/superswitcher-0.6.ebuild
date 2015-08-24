@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="A more feature-full replacement of the Alt-Tab window switching behavior"
-HOMEPAGE="http://code.google.com/p/superswitcher/"
+HOMEPAGE="https://code.google.com/p/superswitcher/"
 SRC_URI="http://superswitcher.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

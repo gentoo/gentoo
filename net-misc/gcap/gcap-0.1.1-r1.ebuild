@@ -7,7 +7,7 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="Command line tool for downloading Youtube closed captions"
-HOMEPAGE="http://code.google.com/p/gcap/"
+HOMEPAGE="https://code.google.com/p/gcap/"
 SRC_URI="http://gcap.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

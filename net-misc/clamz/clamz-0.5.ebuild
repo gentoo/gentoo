@@ -6,7 +6,7 @@ EAPI=4
 inherit fdo-mime
 
 DESCRIPTION="Command-line downloader for the Amazon.com MP3 music store"
-HOMEPAGE="http://code.google.com/p/clamz/"
+HOMEPAGE="https://code.google.com/p/clamz/"
 SRC_URI="http://clamz.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

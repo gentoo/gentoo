@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Retrieve information on running processes and system utilization"
-HOMEPAGE="http://code.google.com/p/psutil/ https://pypi.python.org/pypi/psutil/"
+HOMEPAGE="https://code.google.com/p/psutil/ https://pypi.python.org/pypi/psutil/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

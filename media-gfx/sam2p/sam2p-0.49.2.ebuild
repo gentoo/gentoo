@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Utility to convert raster images to EPS, PDF and many others"
-HOMEPAGE="http://code.google.com/p/sam2p/"
+HOMEPAGE="https://code.google.com/p/sam2p/"
 SRC_URI="http://sam2p.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

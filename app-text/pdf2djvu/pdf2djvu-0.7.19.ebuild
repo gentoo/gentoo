@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="A tool to create DjVu files from PDF files"
-HOMEPAGE="http://code.google.com/p/pdf2djvu/"
+HOMEPAGE="https://code.google.com/p/pdf2djvu/"
 SRC_URI="https://bitbucket.org/jwilk/${PN}/downloads/${P}.tar.xz"
 
 LICENSE="GPL-2"

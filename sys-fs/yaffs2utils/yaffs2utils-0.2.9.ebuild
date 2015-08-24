@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="tools for generating YAFFS images"
-HOMEPAGE="http://code.google.com/p/yaffs2utils/"
+HOMEPAGE="https://code.google.com/p/yaffs2utils/"
 SRC_URI="https://yaffs2utils.googlecode.com/files/0.2.9.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

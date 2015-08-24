@@ -8,7 +8,7 @@ inherit vim-plugin
 
 MY_PN="CCTree"
 DESCRIPTION="vim plugin: Cscope based source-code browser and code flow analysis tool"
-HOMEPAGE="http://sites.google.com/site/vimcctree/"
+HOMEPAGE="https://sites.google.com/site/vimcctree/"
 SRC_URI="https://github.com/vim-scripts/${MY_PN}/tarball/${PV} -> ${P}.tar.gz"
 LICENSE="bufexplorer.vim"
 KEYWORDS="~amd64 ~x86"

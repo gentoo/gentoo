@@ -9,7 +9,7 @@ inherit eutils cmake-utils games
 MY_P="CorsixTH-${PV}-Source"
 
 DESCRIPTION="Open source clone of Theme Hospital"
-HOMEPAGE="http://code.google.com/p/corsix-th/"
+HOMEPAGE="https://code.google.com/p/corsix-th/"
 SRC_URI="http://corsix-th.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="MIT"

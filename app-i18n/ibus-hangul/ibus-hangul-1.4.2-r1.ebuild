@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1
 
 DESCRIPTION="The Hangul engine for IBus input platform"
-HOMEPAGE="http://code.google.com/p/ibus/"
+HOMEPAGE="https://code.google.com/p/ibus/"
 SRC_URI="http://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools linux-info udev
 
 DESCRIPTION="A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip"
-HOMEPAGE="http://code.google.com/p/madwimax/"
+HOMEPAGE="https://code.google.com/p/madwimax/"
 SRC_URI="http://madwimax.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

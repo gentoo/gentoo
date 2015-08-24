@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Format a simple (i.e. not nested) list into aligned columns"
-HOMEPAGE="http://code.google.com/p/pycolumnize/ https://pypi.python.org/pypi/columnize"
+HOMEPAGE="https://code.google.com/p/pycolumnize/ https://pypi.python.org/pypi/columnize"
 SRC_URI="http://pycolumnize.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="PSF-2"

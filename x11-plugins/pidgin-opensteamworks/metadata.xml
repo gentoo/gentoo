@@ -16,6 +16,6 @@
 		<maintainer status="active">
 			<email>eionrobb@gmail.com</email>
 		</maintainer>
-		<bugs-to>http://code.google.com/p/pidgin-opensteamworks/issues/list</bugs-to>
+		<bugs-to>https://code.google.com/p/pidgin-opensteamworks/issues/list</bugs-to>
 	</upstream>
 </pkgmetadata>

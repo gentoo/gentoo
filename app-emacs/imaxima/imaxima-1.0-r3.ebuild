@@ -8,7 +8,7 @@ inherit elisp
 
 MY_P="${PN}-imath-${PV/_}"
 DESCRIPTION="Imaxima enables graphical output in Maxima sessions with emacs"
-HOMEPAGE="http://sites.google.com/site/imaximaimath/"
+HOMEPAGE="https://sites.google.com/site/imaximaimath/"
 SRC_URI="https://sites.google.com/site/imaximaimath/download-and-install/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"

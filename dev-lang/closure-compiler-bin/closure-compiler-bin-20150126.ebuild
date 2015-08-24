@@ -8,7 +8,7 @@ inherit java-pkg-2
 
 DESCRIPTION="JavaScript optimizing compiler"
 HOMEPAGE="https://github.com/google/closure-compiler"
-SRC_URI="http://dl.google.com/closure-compiler/compiler-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://dl.google.com/closure-compiler/compiler-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

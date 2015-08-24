@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python client for the Advanced Message Queuing Procotol (AMQP)"
-HOMEPAGE="http://code.google.com/p/py-amqplib/"
+HOMEPAGE="https://code.google.com/p/py-amqplib/"
 SRC_URI="http://py-amqplib.googlecode.com/files/${P}.tgz"
 
 LICENSE="LGPL-3"

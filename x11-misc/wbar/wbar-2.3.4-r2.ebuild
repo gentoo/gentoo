@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools bash-completion-r1 eutils
 
 DESCRIPTION="A fast, lightweight quick launch bar"
-HOMEPAGE="http://code.google.com/p/wbar/"
+HOMEPAGE="https://code.google.com/p/wbar/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tgz"
 
 LICENSE="GPL-3"

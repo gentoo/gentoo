@@ -7,9 +7,9 @@ EAPI=4
 inherit font
 
 DESCRIPTION="Open licensed fonts metrically compatible with MS corefonts"
-HOMEPAGE="http://www.google.com/webfonts/specimen/Arimo
-	http://www.google.com/webfonts/specimen/Cousine
-	http://www.google.com/webfonts/specimen/Tinos"
+HOMEPAGE="https://www.google.com/webfonts/specimen/Arimo
+	https://www.google.com/webfonts/specimen/Cousine
+	https://www.google.com/webfonts/specimen/Tinos"
 SRC_URI="http://gsdview.appspot.com/chromeos-localmirror/distfiles/${P}.tar.gz"
 
 LICENSE="OFL-1.1"

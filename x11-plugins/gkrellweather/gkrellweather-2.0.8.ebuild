@@ -7,8 +7,8 @@ EAPI=5
 inherit flag-o-matic gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="GKrellM2 Plugin that monitors a METAR station and displays weatherinfo"
-HOMEPAGE="http://sites.google.com/site/makovick/gkrellm-plugins"
-SRC_URI="http://sites.google.com/site/makovick/projects/${P}.tgz"
+HOMEPAGE="https://sites.google.com/site/makovick/gkrellm-plugins"
+SRC_URI="https://sites.google.com/site/makovick/projects/${P}.tgz"
 
 SLOT="2"
 LICENSE="GPL-2"

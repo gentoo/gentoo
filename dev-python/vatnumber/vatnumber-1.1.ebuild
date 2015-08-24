@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Module to validate VAT numbers"
-HOMEPAGE="http://code.google.com/p/vatnumber/"
+HOMEPAGE="https://code.google.com/p/vatnumber/"
 SRC_URI="http://vatnumber.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

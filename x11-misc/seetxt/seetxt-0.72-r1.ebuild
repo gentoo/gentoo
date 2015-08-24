@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="Clever, lightweight GUI text file and manual page viewer for X windows"
-HOMEPAGE="http://code.google.com/p/seetxt/ http://seetxt.sourceforge.net/"
+HOMEPAGE="https://code.google.com/p/seetxt/ http://seetxt.sourceforge.net/"
 SRC_URI="http://seetxt.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"

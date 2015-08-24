@@ -33,7 +33,7 @@ pkg_setup() {
 
 src_prepare() {
 	# fix compilation on Darwin
-	# http://code.google.com/p/gyp/issues/detail?id=260
+	# https://code.google.com/p/gyp/issues/detail?id=260
 	sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
 	python_convert_shebangs 2 tools/node-waf || die
 }

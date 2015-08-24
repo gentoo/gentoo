@@ -8,7 +8,7 @@ inherit eutils python-single-r1 systemd
 
 MY_P="${P/pyicq-t/pyicqt}"
 DESCRIPTION="Python based jabber transport for ICQ"
-HOMEPAGE="http://code.google.com/p/pyicqt/"
+HOMEPAGE="https://code.google.com/p/pyicqt/"
 SRC_URI="http://pyicqt.googlecode.com/files/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

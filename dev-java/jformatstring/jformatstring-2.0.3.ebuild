@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Compile time checking for Java format strings"
 SRC_URI="mirror://sourceforge/findbugs/findbugs-${FINDBUGS_PV}-source.zip"
-HOMEPAGE="http://code.google.com/p/j-format-string"
+HOMEPAGE="https://code.google.com/p/j-format-string"
 
 LICENSE="GPL-2"
 SLOT="0"

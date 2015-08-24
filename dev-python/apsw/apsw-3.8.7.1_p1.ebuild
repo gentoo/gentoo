@@ -11,7 +11,7 @@ MY_PV=${PV/_p/-r}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="APSW - Another Python SQLite Wrapper"
-HOMEPAGE="http://code.google.com/p/apsw/"
+HOMEPAGE="https://code.google.com/p/apsw/"
 HOMEPAGE="https://github.com/rogerbinns/apsw/"
 SRC_URI="https://github.com/rogerbinns/apsw/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 

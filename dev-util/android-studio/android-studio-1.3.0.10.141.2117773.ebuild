@@ -17,7 +17,7 @@ fi
 
 DESCRIPTION="A new Android development environment based on IntelliJ IDEA"
 HOMEPAGE="http://developer.android.com/sdk/installing/studio.html"
-SRC_URI="http://dl.google.com/dl/android/studio/ide-zips/${STUDIO_V}/${PN}-ide-${BUILD_V}-linux.zip"
+SRC_URI="https://dl.google.com/dl/android/studio/ide-zips/${STUDIO_V}/${PN}-ide-${BUILD_V}-linux.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

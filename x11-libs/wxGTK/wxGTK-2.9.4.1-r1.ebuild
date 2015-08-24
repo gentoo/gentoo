@@ -91,7 +91,7 @@ src_configure() {
 	# apps can disable these features by building w/ -NDEBUG or wxDEBUG_LEVEL_0.
 	# wxDEBUG_LEVEL=2 enables assertions that have expensive runtime costs.
 	# http://docs.wxwidgets.org/2.9/overview_debugging.html
-	# http://groups.google.com/group/wx-dev/browse_thread/thread/c3c7e78d63d7777f/05dee25410052d9c
+	# https://groups.google.com/group/wx-dev/browse_thread/thread/c3c7e78d63d7777f/05dee25410052d9c
 	use debug \
 		&& myconf="${myconf} --enable-debug=max"
 

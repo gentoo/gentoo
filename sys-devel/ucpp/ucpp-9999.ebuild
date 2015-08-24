@@ -8,7 +8,7 @@ EGIT_REPO_URI="git://github.com/scarabeusiv/ucpp.git"
 inherit eutils git-2 autotools
 
 DESCRIPTION="A quick and light preprocessor, but anyway fully compliant to C99"
-HOMEPAGE="http://code.google.com/p/ucpp/"
+HOMEPAGE="https://code.google.com/p/ucpp/"
 
 LICENSE="BSD"
 SLOT="0"

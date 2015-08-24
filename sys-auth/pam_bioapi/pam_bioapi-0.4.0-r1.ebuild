@@ -5,7 +5,7 @@
 inherit eutils
 
 DESCRIPTION="PAM interface to bioapi package"
-HOMEPAGE="http://code.google.com/p/pam-bioapi/"
+HOMEPAGE="https://code.google.com/p/pam-bioapi/"
 SRC_URI="http://pam-bioapi.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

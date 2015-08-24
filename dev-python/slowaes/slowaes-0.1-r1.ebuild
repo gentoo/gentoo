@@ -10,7 +10,7 @@ inherit distutils-r1
 
 MY_P=${P}a1
 DESCRIPTION="AES implementation in pure Python"
-HOMEPAGE="http://code.google.com/p/slowaes/"
+HOMEPAGE="https://code.google.com/p/slowaes/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"

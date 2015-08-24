@@ -10,7 +10,7 @@ KDE_LINGUAS_DIR="translations"
 inherit kde4-base
 
 DESCRIPTION="A tablet desktop style app launcher"
-HOMEPAGE="http://code.google.com/p/takeoff-launcher/"
+HOMEPAGE="https://code.google.com/p/takeoff-launcher/"
 SRC_URI="https://takeoff-launcher.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"

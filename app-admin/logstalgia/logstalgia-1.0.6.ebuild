@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Replays or streams an access_log as a retro arcade game-like simulation"
-HOMEPAGE="http://code.google.com/p/logstalgia/"
+HOMEPAGE="https://code.google.com/p/logstalgia/"
 SRC_URI="https://github.com/acaudwell/Logstalgia/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3"

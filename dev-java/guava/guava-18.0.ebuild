@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A collection of Google's core Java libraries"
-HOMEPAGE="http://code.google.com/p/guava-libraries/ https://github.com/google/guava"
+HOMEPAGE="https://code.google.com/p/guava-libraries/ https://github.com/google/guava"
 SRC_URI="http://search.maven.org/remotecontent?filepath=com/google/${PN}/${PN}/${PV}/${P}-sources.jar"
 
 LICENSE="Apache-2.0"
@@ -23,6 +23,6 @@ RDEPEND="${COMMON_DEP}
 	|| ( virtual/jre:1.7 virtual/jre:1.6 )"
 DEPEND="${COMMON_DEP}
 	app-arch/unzip
-	virtual/jdk:1.7" # http://code.google.com/p/guava-libraries/issues/detail?id=635
+	virtual/jdk:1.7" # https://code.google.com/p/guava-libraries/issues/detail?id=635
 
 JAVA_GENTOO_CLASSPATH="jsr305,javax-inject"

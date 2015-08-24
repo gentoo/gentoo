@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4}} )
 inherit distutils-r1
 
 DESCRIPTION="Simplifies the usage of decorators for the average programmer"
-HOMEPAGE="https://pypi.python.org/pypi/decorator http://code.google.com/p/micheles/"
+HOMEPAGE="https://pypi.python.org/pypi/decorator https://code.google.com/p/micheles/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

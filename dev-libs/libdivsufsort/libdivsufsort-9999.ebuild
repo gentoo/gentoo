@@ -11,7 +11,7 @@ inherit subversion
 #endif
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
-HOMEPAGE="http://code.google.com/p/libdivsufsort/"
+HOMEPAGE="https://code.google.com/p/libdivsufsort/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="MIT"

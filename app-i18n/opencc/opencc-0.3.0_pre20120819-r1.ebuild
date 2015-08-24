@@ -7,7 +7,7 @@ EAPI=4
 inherit cmake-utils multilib eutils
 
 DESCRIPTION="Libraries for Simplified-Traditional Chinese Conversion"
-HOMEPAGE="http://code.google.com/p/open-chinese-convert/"
+HOMEPAGE="https://code.google.com/p/open-chinese-convert/"
 SRC_URI="http://dev.gentooexperimental.org/~scarabeus/${P}.tar.xz"
 
 LICENSE="Apache-2.0"

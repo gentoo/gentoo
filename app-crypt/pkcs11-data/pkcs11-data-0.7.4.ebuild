@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Utilities for PKCS#11 data object manipulation in"
-HOMEPAGE="http://sites.google.com/site/alonbarlev/pkcs11-utilities"
+HOMEPAGE="https://sites.google.com/site/alonbarlev/pkcs11-utilities"
 SRC_URI="http://pkcs11-tools.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"

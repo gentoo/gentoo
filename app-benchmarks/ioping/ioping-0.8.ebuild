@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Simple disk I/0 latency measuring tool"
-HOMEPAGE="http://code.google.com/p/ioping/"
+HOMEPAGE="https://code.google.com/p/ioping/"
 SRC_URI="http://ioping.googlecode.com/files/${P}.tar.gz"
 
 SLOT="0"

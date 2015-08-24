@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )	# Doesn't yet support py3
 inherit distutils-r1
 
 DESCRIPTION="Collection of utilities for building Python applications"
-HOMEPAGE="http://code.google.com/p/google-apputils-python/"
+HOMEPAGE="https://code.google.com/p/google-apputils-python/"
 SRC_URI="http://google-apputils-python.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

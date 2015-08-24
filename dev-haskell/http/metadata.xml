@@ -29,7 +29,7 @@
 		&gt;    do
 		&gt;      rsp &lt;- Network.Browser.browse $ do
 		&gt;               setAllowRedirects True -- handle HTTP redirects
-		&gt;               request $ getRequest "http://google.com/"
+		&gt;               request $ getRequest "https://google.com/"
 		&gt;      fmap (take 100) (getResponseBody rsp)
 		&gt;
 		

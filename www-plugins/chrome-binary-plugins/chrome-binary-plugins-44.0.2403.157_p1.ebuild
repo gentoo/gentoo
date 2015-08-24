@@ -7,7 +7,7 @@ EAPI=5
 inherit multilib unpacker
 
 DESCRIPTION="Binary plugins from Google Chrome for use in Chromium"
-HOMEPAGE="http://www.google.com/chrome"
+HOMEPAGE="https://www.google.com/chrome"
 
 case ${PV} in
 	*_alpha*|9999*)

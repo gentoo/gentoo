@@ -8,7 +8,7 @@ inherit toolchain-funcs versionator
 MY_P="$PN-$(get_version_component_range 1-2)b"
 
 DESCRIPTION="A fully automated, active web application security reconnaissance tool"
-HOMEPAGE="http://code.google.com/p/skipfish/"
+HOMEPAGE="https://code.google.com/p/skipfish/"
 SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tgz"
 
 LICENSE="Apache-2.0 LGPL-3"

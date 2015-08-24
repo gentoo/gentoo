@@ -8,7 +8,7 @@ inherit eutils multilib
 
 DESCRIPTION="Cluster tools for fixing common allocation problems on Ganeti 2.0
 clusters"
-HOMEPAGE="http://code.google.com/p/ganeti/"
+HOMEPAGE="https://code.google.com/p/ganeti/"
 SRC_URI="http://ganeti.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

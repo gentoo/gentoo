@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils user
 
 DESCRIPTION="library and programs to collect, send, process, and generate reports from NetFlow data"
-HOMEPAGE="http://code.google.com/p/flow-tools/"
+HOMEPAGE="https://code.google.com/p/flow-tools/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2"

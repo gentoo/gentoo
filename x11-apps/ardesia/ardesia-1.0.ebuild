@@ -4,7 +4,7 @@
 
 EAPI=4
 
-HOMEPAGE="http://code.google.com/p/ardesia/"
+HOMEPAGE="https://code.google.com/p/ardesia/"
 SRC_URI="http://ardesia.googlecode.com/files/${P}.tar.bz2"
 DESCRIPTION="Color, record and share free-hand annotations on screen and on network"
 

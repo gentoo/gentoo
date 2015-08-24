@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Makes ANSI escape character sequences for producing colored terminal text & cursor positioning"
-HOMEPAGE="http://code.google.com/p/colorama/"
+HOMEPAGE="https://code.google.com/p/colorama/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

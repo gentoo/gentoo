@@ -7,7 +7,7 @@ EAPI="2"
 inherit toolchain-funcs
 
 DESCRIPTION="A small general purpose fuzzer for C programs"
-HOMEPAGE="http://code.google.com/p/bunny-the-fuzzer"
+HOMEPAGE="https://code.google.com/p/bunny-the-fuzzer"
 SRC_URI="http://bunny-the-fuzzer.googlecode.com/files/${P}.tgz"
 
 LICENSE="Apache-2.0"

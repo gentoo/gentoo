@@ -10,7 +10,7 @@ MY_PV="$(replace_version_separator 3 '-')"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A nice GNOME GUI for making IP address based calculations"
-HOMEPAGE="http://code.google.com/p/gip/"
+HOMEPAGE="https://code.google.com/p/gip/"
 SRC_URI="
 	http://gip.googlecode.com/files/${MY_P}.tar.gz
 	mirror://debian/pool/main/g/${PN}/${PN}_${MY_PV}-3.debian.tar.gz"

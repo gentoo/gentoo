@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="DNS Benchmark Utility"
-HOMEPAGE="http://code.google.com/p/namebench/"
+HOMEPAGE="https://code.google.com/p/namebench/"
 SRC_URI="http://namebench.googlecode.com/files/${P}-source.tgz"
 
 LICENSE="Apache-2.0"

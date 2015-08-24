@@ -6,7 +6,7 @@ EAPI=2
 inherit gnome2-utils
 
 DESCRIPTION="Some gnome-colors iconsets including a Gentoo one"
-HOMEPAGE="http://code.google.com/p/gnome-colors/"
+HOMEPAGE="https://code.google.com/p/gnome-colors/"
 
 SRC_URI="http://gnome-colors.googlecode.com/files/gnome-colors-${PV}.tar.gz
 	https://dev.gentoo.org/~pacho/gnome-gentoo-${PV}.tar.gz"

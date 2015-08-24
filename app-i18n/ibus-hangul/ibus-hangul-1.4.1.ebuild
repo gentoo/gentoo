@@ -9,7 +9,7 @@ PYTHON_DEPEND="2:2.5"
 inherit python
 
 DESCRIPTION="The Hangul engine for IBus input platform"
-HOMEPAGE="http://code.google.com/p/ibus/"
+HOMEPAGE="https://code.google.com/p/ibus/"
 SRC_URI="http://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

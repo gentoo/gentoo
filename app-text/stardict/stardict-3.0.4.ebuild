@@ -16,7 +16,7 @@ GCONF_DEBUG=no
 inherit eutils gnome2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
-HOMEPAGE="http://code.google.com/p/stardict-3/"
+HOMEPAGE="https://code.google.com/p/stardict-3/"
 SRC_URI="http://${PN}-3.googlecode.com/files/${P}.tar.bz2
 	pronounce? ( http://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
 	qqwry? ( mirror://gentoo/QQWry.Dat.bz2 )"

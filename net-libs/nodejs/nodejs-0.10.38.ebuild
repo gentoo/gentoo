@@ -28,7 +28,7 @@ S=${WORKDIR}/node-v${PV}
 
 src_prepare() {
 	# fix compilation on Darwin
-	# http://code.google.com/p/gyp/issues/detail?id=260
+	# https://code.google.com/p/gyp/issues/detail?id=260
 	sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
 
 	# make sure we use python2.* while using gyp

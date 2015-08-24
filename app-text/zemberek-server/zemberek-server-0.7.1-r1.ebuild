@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="A Turkish spell checker server based on Zemberek NLP library"
-HOMEPAGE="http://code.google.com/p/zemberek/"
+HOMEPAGE="https://code.google.com/p/zemberek/"
 SRC_URI="http://zemberek.googlecode.com/files/${PN}-nolibs-${PV}.tar.gz"
 
 LICENSE="MPL-1.1 GPL-2"

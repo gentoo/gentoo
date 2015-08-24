@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools libtool gnome2-utils games
 
 DESCRIPTION="Chinese chess with gtkmm and c++"
-HOMEPAGE="http://code.google.com/p/gmchess/"
+HOMEPAGE="https://code.google.com/p/gmchess/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 RESTRICT="test"
 

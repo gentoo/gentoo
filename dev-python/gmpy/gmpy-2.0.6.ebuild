@@ -12,7 +12,7 @@ MY_PN="${PN}2"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python bindings for GMP, MPC, MPFR and MPIR libraries"
-HOMEPAGE="http://code.google.com/p/gmpy/"
+HOMEPAGE="https://code.google.com/p/gmpy/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"

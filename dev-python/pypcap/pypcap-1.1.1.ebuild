@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Simplified object-oriented Python extension module for libpcap"
-HOMEPAGE="http://code.google.com/p/pypcap/"
+HOMEPAGE="https://code.google.com/p/pypcap/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

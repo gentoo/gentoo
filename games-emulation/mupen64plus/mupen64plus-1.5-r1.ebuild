@@ -11,7 +11,7 @@ MY_P="Mupen64Plus-${PV/./-}-src"
 PATCH_VERSION="20091123"
 
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator"
-HOMEPAGE="http://code.google.com/p/mupen64plus/"
+HOMEPAGE="https://code.google.com/p/mupen64plus/"
 SRC_URI="http://mupen64plus.googlecode.com/files/${MY_P}.tar.gz mirror://gentoo/${P}-patches-${PATCH_VERSION}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -125,6 +125,6 @@ pkg_postinst() {
 
 	if use lirc; then
 		elog "For lirc configuration see:"
-		elog "http://code.google.com/p/mupen64plus/wiki/LIRC"
+		elog "https://code.google.com/p/mupen64plus/wiki/LIRC"
 	fi
 }

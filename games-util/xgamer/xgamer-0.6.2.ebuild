@@ -6,7 +6,7 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="A launcher for starting games in a second X session"
-HOMEPAGE="http://code.google.com/p/xgamer/"
+HOMEPAGE="https://code.google.com/p/xgamer/"
 SRC_URI="http://xgamer.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

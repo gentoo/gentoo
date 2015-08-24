@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="source doc test"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Zemberek NLP library"
-HOMEPAGE="http://code.google.com/p/zemberek/"
+HOMEPAGE="https://code.google.com/p/zemberek/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}-nolibs-src.zip"
 
 LICENSE="MPL-1.1"

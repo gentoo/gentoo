@@ -6,7 +6,7 @@ EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
 
 # NOTE: this package contains precompiled code. It appears that all
-# source code can be found at http://code.google.com/p/selenium/ but the
+# source code can be found at https://code.google.com/p/selenium/ but the
 # repository is not organized in a way so that we can easily rebuild the
 # suited shared object. We'll just try our luck with the precompiled
 # objects for now.

@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib xfconf
 
 DESCRIPTION="A network transfer rate monitoring panel plug-in, inspired by Gnome's Netspeed applet"
-HOMEPAGE="http://code.google.com/p/xfce4-netspeed-plugin/"
+HOMEPAGE="https://code.google.com/p/xfce4-netspeed-plugin/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

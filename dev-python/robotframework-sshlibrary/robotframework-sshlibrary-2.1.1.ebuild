@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A test library for Robot Framework that enables SSH and SFTP"
-HOMEPAGE="http://code.google.com/p/robotframework-sshlibrary/ https://pypi.python.org/pypi/robotframework-sshlibrary/"
+HOMEPAGE="https://code.google.com/p/robotframework-sshlibrary/ https://pypi.python.org/pypi/robotframework-sshlibrary/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

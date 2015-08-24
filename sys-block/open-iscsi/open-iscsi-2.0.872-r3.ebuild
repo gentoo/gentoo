@@ -31,7 +31,7 @@ pkg_setup() {
 	# Needs to be done, as iscsid currently only starts, when having the iSCSI
 	# support loaded as module. Kernel builtion options don't work. See this for
 	# more information:
-	# http://groups.google.com/group/open-iscsi/browse_thread/thread/cc10498655b40507/fd6a4ba0c8e91966
+	# https://groups.google.com/group/open-iscsi/browse_thread/thread/cc10498655b40507/fd6a4ba0c8e91966
 	# If there's a new release, check whether this is still valid!
 	CONFIG_CHECK_MODULES="SCSI_ISCSI_ATTRS ISCSI_TCP"
 	if linux_config_exists; then

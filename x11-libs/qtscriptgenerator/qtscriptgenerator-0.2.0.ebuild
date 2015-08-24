@@ -9,7 +9,7 @@ inherit eutils qmake-utils
 MY_P=${PN}-src-${PV}
 
 DESCRIPTION="Tool for generating Qt bindings for Qt Script"
-HOMEPAGE="http://code.google.com/p/qtscriptgenerator/"
+HOMEPAGE="https://code.google.com/p/qtscriptgenerator/"
 SRC_URI="http://qtscriptgenerator.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

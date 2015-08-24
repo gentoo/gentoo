@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools python-single-r1 linux-info libtool eutils
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
-HOMEPAGE="http://code.google.com/p/cryptsetup/"
+HOMEPAGE="https://code.google.com/p/cryptsetup/"
 SRC_URI="http://cryptsetup.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
@@ -117,6 +117,6 @@ pkg_postinst() {
 		elog "Users using cryptsetup-1.0.x (dm-crypt plain) volumes must use"
 		elog "a compatibility mode when using cryptsetup-1.1.x. This can be"
 		elog "done by specifying the cipher (-c), key size (-s) and hash (-h)."
-		elog "For more info, see http://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions#6._Issues_with_Specific_Versions_of_cryptsetup"
+		elog "For more info, see https://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions#6._Issues_with_Specific_Versions_of_cryptsetup"
 	fi
 }

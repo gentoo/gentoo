@@ -7,7 +7,7 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="Provides the google C/C++ coding style"
-HOMEPAGE="http://code.google.com/p/google-styleguide/"
+HOMEPAGE="https://code.google.com/p/google-styleguide/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"

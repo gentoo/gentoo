@@ -9,7 +9,7 @@ inherit vim-plugin
 
 MY_P="${PN}_${PV}"
 DESCRIPTION="vim plugin: Run interactive commands inside a Vim buffer"
-HOMEPAGE="http://code.google.com/p/conque/"
+HOMEPAGE="https://code.google.com/p/conque/"
 SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 LICENSE="MIT"
 KEYWORDS="amd64 x86"

@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="tif22pnm and png22pnm command-line converters"
-HOMEPAGE="http://pts.szit.bme.hu/ http://code.google.com/p/sam2p/"
+HOMEPAGE="http://pts.szit.bme.hu/ https://code.google.com/p/sam2p/"
 SRC_URI="http://sam2p.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

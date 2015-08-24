@@ -10,7 +10,7 @@ MY_PN="hamcrest"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library of matchers for building test expressions"
-HOMEPAGE="http://code.google.com/p/${MY_PN}/"
+HOMEPAGE="https://code.google.com/p/${MY_PN}/"
 SRC_URI="http://${MY_PN}.googlecode.com/files/${MY_P}.tgz"
 LICENSE="BSD-2"
 SLOT="0"

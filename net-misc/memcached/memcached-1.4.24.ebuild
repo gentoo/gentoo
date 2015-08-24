@@ -9,7 +9,7 @@ MY_PV="${PV/_rc/-rc}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="High-performance, distributed memory object caching system"
-HOMEPAGE="http://code.google.com/p/memcached/"
+HOMEPAGE="https://code.google.com/p/memcached/"
 SRC_URI="http://www.memcached.org/files/${MY_P}.tar.gz"
 
 LICENSE="BSD"

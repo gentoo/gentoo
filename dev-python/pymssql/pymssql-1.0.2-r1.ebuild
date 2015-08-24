@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Simple MSSQL python extension module"
-HOMEPAGE="http://pymssql.sourceforge.net/ http://code.google.com/p/pymssql/ https://pypi.python.org/pypi/pymssql"
+HOMEPAGE="http://pymssql.sourceforge.net/ https://code.google.com/p/pymssql/ https://pypi.python.org/pypi/pymssql"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

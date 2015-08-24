@@ -9,7 +9,7 @@ MODULE_VERSION=1.31
 inherit perl-module
 
 DESCRIPTION="Nmap::Parser - parse nmap scan data with perl"
-HOMEPAGE="http://nmapparser.wordpress.com/ http://code.google.com/p/nmap-parser/ ${HOMEPAGE}"
+HOMEPAGE="http://nmapparser.wordpress.com/ https://code.google.com/p/nmap-parser/ ${HOMEPAGE}"
 
 LICENSE="MIT"
 SLOT="0"

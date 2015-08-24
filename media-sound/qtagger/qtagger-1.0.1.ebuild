@@ -7,7 +7,7 @@ EAPI=3
 inherit cmake-utils
 
 DESCRIPTION="Simple Qt4 ID3v2 tag editor"
-HOMEPAGE="http://code.google.com/p/qtagger"
+HOMEPAGE="https://code.google.com/p/qtagger"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"

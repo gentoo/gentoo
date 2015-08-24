@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools-multilib
 
 DESCRIPTION="C library for image processing and analysis"
-HOMEPAGE="http://code.google.com/p/leptonica/"
+HOMEPAGE="https://code.google.com/p/leptonica/"
 SRC_URI="http://www.leptonica.com/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

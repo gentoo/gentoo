@@ -8,7 +8,7 @@ inherit libtool
 MY_P=${P/lib}
 
 DESCRIPTION="Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard"
-HOMEPAGE="http://code.google.com/p/mp4v2/"
+HOMEPAGE="https://code.google.com/p/mp4v2/"
 SRC_URI="http://mp4v2.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="MPL-1.1"

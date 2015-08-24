@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="GTK+ application for controlling audio volume from system tray/notification area"
-HOMEPAGE="http://code.google.com/p/volti/"
+HOMEPAGE="https://code.google.com/p/volti/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

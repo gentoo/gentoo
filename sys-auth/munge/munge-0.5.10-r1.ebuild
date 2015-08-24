@@ -6,7 +6,7 @@ EAPI=4
 inherit user
 
 DESCRIPTION="An authentication service for creating and validating credentials"
-HOMEPAGE="http://code.google.com/p/munge/"
+HOMEPAGE="https://code.google.com/p/munge/"
 SRC_URI="http://munge.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"

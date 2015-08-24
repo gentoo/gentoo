@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit eutils autotools-utils
 
 DESCRIPTION="Linux support for proprietary MIkrotik EoIP protocol"
-HOMEPAGE="http://code.google.com/p/linux-eoip/"
+HOMEPAGE="https://code.google.com/p/linux-eoip/"
 SRC_URI="http://linux-eoip.googlecode.com/files/${P}.tgz"
 
 LICENSE="GPL-2"

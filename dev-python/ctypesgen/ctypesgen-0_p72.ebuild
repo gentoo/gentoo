@@ -9,7 +9,7 @@ SUPPORT_PYTHON_ABIS="1"
 inherit distutils
 
 DESCRIPTION="Python wrapper generator for ctypes"
-HOMEPAGE="http://code.google.com/p/ctypesgen/"
+HOMEPAGE="https://code.google.com/p/ctypesgen/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD"

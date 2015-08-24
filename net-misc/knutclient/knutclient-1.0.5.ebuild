@@ -10,7 +10,7 @@ MY_P="knc${PV//./}"
 inherit kde4-base
 
 DESCRIPTION="A visual KDE client for UPS systems"
-HOMEPAGE="http://sites.google.com/a/prynych.cz/knutclient/"
+HOMEPAGE="https://sites.google.com/a/prynych.cz/knutclient/"
 SRC_URI="ftp://ftp.buzuluk.cz/pub/alo/knutclient/stable/${P}.tar.gz"
 
 LICENSE="GPL-2"

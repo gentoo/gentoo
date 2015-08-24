@@ -7,7 +7,7 @@ EAPI=4
 inherit qt4-r2 multilib
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework"
-HOMEPAGE="http://code.google.com/p/qxmpp/"
+HOMEPAGE="https://code.google.com/p/qxmpp/"
 SRC_URI="http://qxmpp.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

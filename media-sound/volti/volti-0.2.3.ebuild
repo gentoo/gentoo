@@ -11,7 +11,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 inherit distutils
 
 DESCRIPTION="GTK+ application for controlling audio volume from system tray/notification area"
-HOMEPAGE="http://code.google.com/p/volti/"
+HOMEPAGE="https://code.google.com/p/volti/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

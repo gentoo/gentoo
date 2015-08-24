@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 readme.gentoo systemd user
 
 DESCRIPTION="BuildBot Slave Daemon"
-HOMEPAGE="http://trac.buildbot.net/ http://code.google.com/p/buildbot/ https://pypi.python.org/pypi/buildbot-slave"
+HOMEPAGE="http://trac.buildbot.net/ https://code.google.com/p/buildbot/ https://pypi.python.org/pypi/buildbot-slave"
 
 MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"

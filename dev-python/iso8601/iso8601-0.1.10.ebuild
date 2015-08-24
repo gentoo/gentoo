@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Simple module to parse ISO 8601 dates"
-HOMEPAGE="http://code.google.com/p/pyiso8601/ https://pypi.python.org/pypi/iso8601"
+HOMEPAGE="https://code.google.com/p/pyiso8601/ https://pypi.python.org/pypi/iso8601"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

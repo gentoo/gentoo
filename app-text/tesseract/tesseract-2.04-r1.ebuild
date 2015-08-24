@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils
 
 DESCRIPTION="An OCR Engine that was developed at HP and now at Google"
-HOMEPAGE="http://code.google.com/p/tesseract-ocr/"
+HOMEPAGE="https://code.google.com/p/tesseract-ocr/"
 SRC_URI="http://tesseract-ocr.googlecode.com/files/${P}.tar.gz
 	http://tesseract-ocr.googlecode.com/files/${PN}-2.00.eng.tar.gz
 	linguas_de? (

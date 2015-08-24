@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A user friendly interface to the devilspie window matching daemon, to create rules easily"
-HOMEPAGE="http://code.google.com/p/gdevilspie/"
+HOMEPAGE="https://code.google.com/p/gdevilspie/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"

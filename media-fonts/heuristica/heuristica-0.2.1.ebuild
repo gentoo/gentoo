@@ -7,7 +7,7 @@ EAPI="3"
 inherit font
 
 DESCRIPTION="A font based on Adobe Utopia"
-HOMEPAGE="http://code.google.com/p/evristika/"
+HOMEPAGE="https://code.google.com/p/evristika/"
 SRC_URI="http://evristika.googlecode.com/files/${PN}-ttf-${PV}.tar.xz
 	http://evristika.googlecode.com/files/${PN}-otf-${PV}.tar.xz
 	http://evristika.googlecode.com/files/${PN}-pfb-${PV}.tar.xz"

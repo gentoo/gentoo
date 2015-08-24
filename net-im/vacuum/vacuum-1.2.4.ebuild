@@ -8,7 +8,7 @@ LANGS="de pl ru uk"
 inherit cmake-utils
 
 DESCRIPTION="Qt4 Crossplatform Jabber client"
-HOMEPAGE="http://code.google.com/p/vacuum-im"
+HOMEPAGE="https://code.google.com/p/vacuum-im"
 SRC_URI="https://googledrive.com/host/0B7A5K_290X8-NE5nLUx5Yl9BTkk/${P}.tar.xz"
 
 LICENSE="GPL-3"
