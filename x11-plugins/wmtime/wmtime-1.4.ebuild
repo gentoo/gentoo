@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,25 +15,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="x11-libs/libX11
+RDEPEND=">=x11-libs/libdockapp-0.7:=
+	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXau
 	x11-libs/libXdmcp
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
-
-S=${WORKDIR}/dockapps/${PN}
+	x11-proto/xproto"
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install () {
-	dobin wmtime
-	doman wmtime.1
+	emake DESTDIR="${D}" PREFIX=/usr install
 
-	cd ..
 	dodoc BUGS CHANGES HINTS README TODO
 }

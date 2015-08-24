@@ -23,8 +23,6 @@ RDEPEND="apm? ( sys-apps/apmd )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/dockapps
-
 DOCS=( ChangeLog README TODO )
 
 src_prepare() {
