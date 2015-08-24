@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>gnustep</herd>
 	<longdescription>GSPdf is a Pdf and PostScript file viewer. It is based on GhostScript which it calls at runtime to rasterize the pages.</longdescription>

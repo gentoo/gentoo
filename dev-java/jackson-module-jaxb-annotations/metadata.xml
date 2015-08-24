@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>java</herd>
   <longdescription>This Jackson extension module provides support for using JAXB (javax.xml.bind) annotations as an alternative to native Jackson annotations. It is most often used to make it easier to reuse existing data beans that used with JAXB framework to read and write XML.</longdescription>
