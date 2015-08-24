@@ -1,0 +1,40 @@
+#!/bin/sh
+# Author:  Daniel Campbell <zlg@gentoo.org>
+# License: Creative Commons Public Domain Dedication (CC0 1.0)
+#          <https://creativecommons.org/publicdomain/zero/1.0/>
+
+# apulse needs at least one argument
+if [ $# -lt 1 ]; then
+	echo "Usage: apulse <app-path> [options]"
+	exit
+fi
+
+# Get the full path of our application
+app_path=$(which ${1} 2>/dev/null)
+
+# The app might not be picked up by `which`, so let's use realpath as a backup
+[ -z ${app_path} ] && app_path=$(realpath ${1})
+
+# Then make sure it's executable
+[ ! -x ${app_path} ] && echo "${app_path} is not executable!" && exit 8
+
+# Fetch the app's ABI
+app_abi=$(file -L ${app_path} | sed 's/\([^,]*\), \([^,]*\), \(.*\)/\2/')
+
+# Determine libdir based on app_abi
+# Applications that don't have a header will default to native libdir
+case $app_abi in
+	Intel\ 80386)
+		APULSE_ABI="32"
+		;;
+	x86-64)
+		APULSE_ABI="64"
+		;;
+	*)
+		APULSE_ABI=$(readlink /usr/lib)
+		APULSE_ABI=${APULSE_ABI#lib}
+		;;
+esac
+
+# Set library path for the application so it'll use apulse
+LD_LIBRARY_PATH=/usr/lib${APULSE_ABI}/apulse${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} exec "$@"
