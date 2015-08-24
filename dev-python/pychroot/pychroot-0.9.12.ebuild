@@ -23,7 +23,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	=dev-python/snakeoil-9999[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	$(python_gen_cond_dep 'dev-python/3to2[${PYTHON_USEDEP}]' python2_7)
