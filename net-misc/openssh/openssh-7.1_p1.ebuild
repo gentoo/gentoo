@@ -11,7 +11,7 @@ PARCH=${P/_}
 
 HPN_PATCH="${PN}-7.0p1-hpnssh14v5.tar.xz"
 LDAP_PATCH="${PN}-lpk-6.8p1-0.3.14.patch.xz"
-#X509_VER="8.5" X509_PATCH="${PN}-${PV//_/}+x509-${X509_VER}.diff.gz"
+X509_VER="8.6" X509_PATCH="${PN}-${PV//_/}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
@@ -113,7 +113,7 @@ src_prepare() {
 
 	if use X509 ; then
 		pushd .. >/dev/null
-		#epatch "${WORKDIR}"/${PN}-6.8_p1-x509-${X509_VER}-glue.patch
+		epatch "${FILESDIR}"/${PN}-7.1_p1-hpn-x509-glue.patch
 		epatch "${FILESDIR}"/${PN}-7.0_p1-sctp-x509-glue.patch
 		popd >/dev/null
 		epatch "${WORKDIR}"/${X509_PATCH%.*}
