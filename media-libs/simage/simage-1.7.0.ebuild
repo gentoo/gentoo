@@ -11,7 +11,7 @@ HOMEPAGE="http://www.coin3d.org/lib/simage/"
 SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${P}.tar.gz"
 
 LICENSE="public-domain mpeg2enc"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~arm ppc x86"
 SLOT="0"
 IUSE="debug gif jpeg jpeg2k png sndfile static-libs tiff vorbis zlib"
 RESTRICT="mirror bindist" #465086
