@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Tool to read and control rfkill status through /dev/rfkill"
-HOMEPAGE="http://wireless.kernel.org/en/users/Documentation/rfkill"
+HOMEPAGE="https://wireless.kernel.org/en/users/Documentation/rfkill"
 SRC_URI="https://www.kernel.org/pub/software/network/${PN}/${P}.tar.xz"
 
 LICENSE="ISC"

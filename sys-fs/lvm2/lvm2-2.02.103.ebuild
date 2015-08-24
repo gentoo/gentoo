@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils linux-info multilib systemd toolchain-funcs udev
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
-HOMEPAGE="http://sources.redhat.com/lvm2/"
+HOMEPAGE="https://sources.redhat.com/lvm2/"
 SRC_URI="ftp://sources.redhat.com/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 	ftp://sources.redhat.com/pub/lvm2/old/${PN/lvm/LVM}.${PV}.tgz"
 

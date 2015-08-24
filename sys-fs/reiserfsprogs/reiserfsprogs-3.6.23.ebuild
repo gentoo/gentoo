@@ -7,7 +7,7 @@ EAPI="5"
 inherit flag-o-matic
 
 DESCRIPTION="Reiserfs Utilities"
-HOMEPAGE="http://www.kernel.org/pub/linux/utils/fs/reiserfs/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/fs/reiserfs/"
 SRC_URI="mirror://kernel/linux/utils/fs/reiserfs/${P}.tar.xz
 	mirror://kernel/linux/kernel/people/jeffm/${PN}/v${PV}/${P}.tar.xz"
 

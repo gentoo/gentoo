@@ -11,8 +11,8 @@ MY_PV="${vc[6]}.${vc[4]}.${vc[2]}.${vc[0]}"
 MY_PN="iwlwifi-${DEV_N}-ucode"
 
 DESCRIPTION="Firmware for Intel (R) Dual Band Wireless-AC ${DEV_N}"
-HOMEPAGE="http://wireless.kernel.org/en/users/Drivers/iwlwifi"
-SRC_URI="http://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=${MY_PN}-${MY_PV}.tgz -> ${P}.tgz"
+HOMEPAGE="https://wireless.kernel.org/en/users/Drivers/iwlwifi"
+SRC_URI="https://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=${MY_PN}-${MY_PV}.tgz -> ${P}.tgz"
 
 LICENSE="ipw3945"
 SLOT="${vc[2]}"

@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Provides a caching directory on an already mounted filesystem"
-HOMEPAGE="http://people.redhat.com/~dhowells/fscache/"
-SRC_URI="http://people.redhat.com/~dhowells/fscache/${P}.tar.bz2 -> ${P}.tar"
+HOMEPAGE="https://people.redhat.com/~dhowells/fscache/"
+SRC_URI="https://people.redhat.com/~dhowells/fscache/${P}.tar.bz2 -> ${P}.tar"
 
 SLOT="0"
 LICENSE="GPL-2"

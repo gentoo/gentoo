@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="kernel.org uploader tool"
-HOMEPAGE="http://www.kernel.org/pub/software/network/kup"
+HOMEPAGE="https://www.kernel.org/pub/software/network/kup"
 SRC_URI="mirror://kernel/software/network/kup/${P}.tar.gz"
 
 LICENSE="GPL-2"

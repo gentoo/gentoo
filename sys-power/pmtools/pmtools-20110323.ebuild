@@ -7,8 +7,8 @@ EAPI=2
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="ACPI disassembler tools, including acpidump"
-HOMEPAGE="http://ftp.kernel.org/pub/linux/kernel/people/lenb/acpi/"
-SRC_URI="http://ftp.kernel.org/pub/linux/kernel/people/lenb/acpi/utils/${P}.tar.gz"
+HOMEPAGE="https://ftp.kernel.org/pub/linux/kernel/people/lenb/acpi/"
+SRC_URI="https://ftp.kernel.org/pub/linux/kernel/people/lenb/acpi/utils/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

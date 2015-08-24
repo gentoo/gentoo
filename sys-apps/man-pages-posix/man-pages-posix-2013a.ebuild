@@ -8,7 +8,7 @@ inherit eutils
 
 MY_P="${PN}-${PV:0:4}-${PV:0-1}"
 DESCRIPTION="POSIX man-pages (0p, 1p, 3p)"
-HOMEPAGE="http://www.kernel.org/doc/man-pages/"
+HOMEPAGE="https://www.kernel.org/doc/man-pages/"
 SRC_URI="mirror://kernel/linux/docs/man-pages/${PN}/${MY_P}.tar.xz"
 
 LICENSE="man-pages-posix-2013"

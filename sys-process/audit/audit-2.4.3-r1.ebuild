@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit autotools multilib multilib-minimal toolchain-funcs python-r1 linux-info eutils systemd
 
 DESCRIPTION="Userspace utilities for storing and processing auditing records"
-HOMEPAGE="http://people.redhat.com/sgrubb/audit/"
-SRC_URI="http://people.redhat.com/sgrubb/audit/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/sgrubb/audit/"
+SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

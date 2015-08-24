@@ -6,7 +6,7 @@ EAPI="5"
 ETYPE="sources"
 KEYWORDS="~amd64"
 
-HOMEPAGE="http://www.kernel.org/pub/linux/kernel/projects/rt/"
+HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
 
 inherit versionator
 

@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1
 
 DESCRIPTION="Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY"
-HOMEPAGE="http://people.redhat.com/pwouters/hash-slinger/"
-SRC_URI="http://people.redhat.com/pwouters/${PN}/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/pwouters/hash-slinger/"
+SRC_URI="https://people.redhat.com/pwouters/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

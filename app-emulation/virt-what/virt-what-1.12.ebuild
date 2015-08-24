@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Detects if the current machine is running in a virtual machine"
-HOMEPAGE="http://people.redhat.com/~rjones/virt-what/"
-SRC_URI="http://people.redhat.com/~rjones/virt-what/files/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/~rjones/virt-what/"
+SRC_URI="https://people.redhat.com/~rjones/virt-what/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

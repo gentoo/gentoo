@@ -13,7 +13,7 @@ MY_P="${PN}_${MY_PV}+${MY_GIT}"
 DESCRIPTION="SPARC/UltraSPARC Improved Loader, a boot loader for sparc"
 SRC_URI="mirror://debian/pool/main/s/${PN}/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/s/${PN}/${MY_P}-${DEB_PL}.diff.gz"
-HOMEPAGE="http://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary"
+HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary"
 
 SLOT="0"
 LICENSE="GPL-2"

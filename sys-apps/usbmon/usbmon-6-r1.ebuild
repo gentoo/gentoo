@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Userland for USB monitoring framework"
-HOMEPAGE="http://people.redhat.com/zaitcev/linux/"
+HOMEPAGE="https://people.redhat.com/zaitcev/linux/"
 SRC_URI="${HOMEPAGE}/${P}.tar.gz"
 
 LICENSE="GPL-2" # GPL-2 only

@@ -7,7 +7,7 @@ inherit autotools eutils rpm
 
 MY_R=${PR/r/}
 DESCRIPTION="RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus"
-HOMEPAGE="http://www.redhat.com"
+HOMEPAGE="https://www.redhat.com"
 SRC_URI="mirror://gentoo/${P}-${MY_R}.fc7.src.rpm"
 LICENSE="GPL-2"
 

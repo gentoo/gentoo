@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 fi
 
 DESCRIPTION="C semantic parser"
-HOMEPAGE="http://sparse.wiki.kernel.org/index.php/Main_Page"
+HOMEPAGE="https://sparse.wiki.kernel.org/index.php/Main_Page"
 
 if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""

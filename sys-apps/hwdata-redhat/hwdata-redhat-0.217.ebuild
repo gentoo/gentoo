@@ -12,7 +12,7 @@ RPMREV="1"
 
 MY_P="${P/-redhat}"
 DESCRIPTION="Hardware identification and configuration data"
-HOMEPAGE="http://fedora.redhat.com/projects/config-tools/"
+HOMEPAGE="https://fedora.redhat.com/projects/config-tools/"
 SRC_URI="mirror://fedora-dev/releases/9/Everything/source/SRPMS/${MY_P}-${RPMREV}.fc${FCVER}.src.rpm"
 LICENSE="GPL-2 MIT"
 SLOT="0"

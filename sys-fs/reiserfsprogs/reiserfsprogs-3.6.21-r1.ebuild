@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils
 
 DESCRIPTION="Reiserfs Utilities"
-HOMEPAGE="http://www.kernel.org/pub/linux/utils/fs/reiserfs/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/fs/reiserfs/"
 SRC_URI="mirror://kernel/linux/utils/fs/reiserfs/${P}.tar.gz
 	mirror://kernel/linux/kernel/people/jeffm/${PN}/v${PV}/${P}.tar.gz"
 

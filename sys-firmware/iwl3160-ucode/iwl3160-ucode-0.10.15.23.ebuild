@@ -15,7 +15,7 @@ DV_MINOR="17"
 DV_PATCH="0"
 
 DESCRIPTION="Firmware for Intel (R) Dual Band Wireless-AC ${DEV_N}"
-HOMEPAGE="http://wireless.kernel.org/en/users/Drivers/iwlwifi"
+HOMEPAGE="https://wireless.kernel.org/en/users/Drivers/iwlwifi"
 SRC_URI="https://wireless.wiki.kernel.org/_media/en/users/drivers/${MY_PN}-${MY_PV}.tgz -> ${P}.tgz"
 
 LICENSE="ipw3945"

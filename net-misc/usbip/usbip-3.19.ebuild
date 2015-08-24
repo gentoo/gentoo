@@ -8,7 +8,7 @@ K_NOUSENAME=1
 inherit autotools eutils kernel-2
 
 DESCRIPTION="Userspace utilities for a general USB device sharing system over IP networks"
-HOMEPAGE="http://www.kernel.org/"
+HOMEPAGE="https://www.kernel.org/"
 SRC_URI="${KERNEL_URI}"
 
 LICENSE="GPL-2"

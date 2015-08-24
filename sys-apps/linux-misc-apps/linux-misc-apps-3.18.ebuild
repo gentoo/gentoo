@@ -7,7 +7,7 @@ EAPI=5
 inherit versionator eutils toolchain-funcs linux-info flag-o-matic
 
 DESCRIPTION="Misc tools bundled with kernel sources"
-HOMEPAGE="http://kernel.org/"
+HOMEPAGE="https://kernel.org/"
 
 LICENSE="GPL-2"
 SLOT="0"

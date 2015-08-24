@@ -13,7 +13,7 @@ inherit kernel-2
 detect_version
 
 DESCRIPTION="Full sources for the Linux kernel"
-HOMEPAGE="http://www.kernel.org"
+HOMEPAGE="https://www.kernel.org"
 SRC_URI="${KERNEL_URI}"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"

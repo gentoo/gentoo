@@ -7,13 +7,13 @@ EAPI="4"
 inherit autotools eutils flag-o-matic
 
 DESCRIPTION="Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times"
-HOMEPAGE="http://people.redhat.com/jakub/prelink"
+HOMEPAGE="https://people.redhat.com/jakub/prelink"
 
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
-#SRC_URI="http://people.redhat.com/jakub/prelink/${P}.tar.bz2"
+#SRC_URI="https://people.redhat.com/jakub/prelink/${P}.tar.bz2"
 
 # if not available on jakub's dev space extract the distfile with rpm2tarbz2 from
-# http://mirrors.kernel.org/fedora/development/rawhide/source/SRPMS/p/prelink-[ver].src.rpm
+# https://mirrors.kernel.org/fedora/development/rawhide/source/SRPMS/p/prelink-[ver].src.rpm
 #
 # track http://pkgs.fedoraproject.org/cgit/prelink.git/ for updates
 

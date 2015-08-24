@@ -10,8 +10,8 @@ RESTRICT_PYTHON_ABIS="*-jython *-pypy-*"
 inherit autotools flag-o-matic python
 
 DESCRIPTION="POSIX 1003.1e capabilities"
-HOMEPAGE="http://people.redhat.com/sgrubb/libcap-ng/"
-SRC_URI="http://people.redhat.com/sgrubb/${PN}/${P}.tar.gz"
+HOMEPAGE="https://people.redhat.com/sgrubb/libcap-ng/"
+SRC_URI="https://people.redhat.com/sgrubb/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

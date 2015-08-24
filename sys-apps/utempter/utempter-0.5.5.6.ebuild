@@ -7,7 +7,7 @@ inherit rpm eutils user
 MY_P=${P%.*}-${PV##*.}
 S=${WORKDIR}/${P%.*}
 DESCRIPTION="App that allows non-privileged apps to write utmp (login) info"
-HOMEPAGE="http://www.redhat.com/"
+HOMEPAGE="https://www.redhat.com/"
 SRC_URI="mirror://gentoo/${MY_P}.src.rpm"
 
 LICENSE="|| ( MIT LGPL-2 )"

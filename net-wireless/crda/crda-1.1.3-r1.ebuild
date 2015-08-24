@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils toolchain-funcs python-any-r1 udev
 
 DESCRIPTION="Central Regulatory Domain Agent for wireless networks"
-HOMEPAGE="http://wireless.kernel.org/en/developers/Regulatory"
+HOMEPAGE="https://wireless.kernel.org/en/developers/Regulatory"
 SRC_URI="http://linuxwireless.org/download/crda/${P}.tar.bz2"
 
 LICENSE="ISC"

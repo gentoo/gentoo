@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Convert png images to MS ico format"
-HOMEPAGE="http://www.kernel.org/pub/software/graphics/pngtoico/"
+HOMEPAGE="https://www.kernel.org/pub/software/graphics/pngtoico/"
 SRC_URI="mirror://kernel/software/graphics/pngtoico/${P}.tar.bz2"
 
 LICENSE="GPL-2"

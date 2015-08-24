@@ -4,7 +4,7 @@
 
 # This tarball is extracted from SuSe's sysvinit-2.86-#.src.rpm
 # You can find said src rpm via opensuse.org:
-# http://mirrors.kernel.org/opensuse/distribution/SL-OSS-*/inst-source/suse/src/
+# https://mirrors.kernel.org/opensuse/distribution/SL-OSS-*/inst-source/suse/src/
 
 inherit eutils multilib toolchain-funcs
 

@@ -5,7 +5,7 @@
 inherit toolchain-funcs
 
 DESCRIPTION="library required by reiser4progs"
-HOMEPAGE="http://www.kernel.org/pub/linux/utils/fs/reiser4/libaal/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/fs/reiser4/libaal/"
 SRC_URI="mirror://kernel/linux/utils/fs/reiser4/libaal/${P}.tar.gz"
 
 LICENSE="GPL-2"

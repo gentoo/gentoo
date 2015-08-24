@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=true
 inherit autotools-utils linux-info systemd git-r3
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
-HOMEPAGE="http://kernel.org/pub/linux/utils/kernel/kexec/"
+HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
 SRC_URI=""
 EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git"
 

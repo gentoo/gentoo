@@ -10,7 +10,7 @@ FCVER="6"
 MY_PV="${PV%.*}-${PV##*.}"
 MY_P="${PN%%-*}-${MY_PV}"
 DESCRIPTION="A simple BIND key generator"
-HOMEPAGE="http://fedora.redhat.com/projects/config-tools/"
+HOMEPAGE="https://fedora.redhat.com/projects/config-tools/"
 SRC_URI="mirror://gentoo/${MY_P}.fc${FCVER}.src.rpm"
 
 LICENSE="public-domain"

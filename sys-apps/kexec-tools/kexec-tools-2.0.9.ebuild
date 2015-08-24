@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools-utils flag-o-matic linux-info systemd
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
-HOMEPAGE="http://kernel.org/pub/linux/utils/kernel/kexec/"
+HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
 SRC_URI="mirror://kernel/linux/utils/kernel/kexec/${P}.tar.xz"
 
 LICENSE="GPL-2"
