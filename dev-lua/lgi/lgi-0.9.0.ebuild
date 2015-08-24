@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="manual"
 inherit eutils toolchain-funcs flag-o-matic virtualx
 
 DESCRIPTION="Lua bindings using gobject-introspection"
-HOMEPAGE="http://github.com/pavouk/lgi"
+HOMEPAGE="https://github.com/pavouk/lgi"
 SRC_URI="https://github.com/pavouk/lgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="HTTP cookie parsing and rendering"
-HOMEPAGE="http://github.com/snoyberg/cookie"
+HOMEPAGE="https://github.com/snoyberg/cookie"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

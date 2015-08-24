@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="A more pythonic replacement for the unittest module and nose"
-HOMEPAGE="https://github.com/Yelp/testify http://pypi.python.org/pypi/testify/"
+HOMEPAGE="https://github.com/Yelp/testify https://pypi.python.org/pypi/testify/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

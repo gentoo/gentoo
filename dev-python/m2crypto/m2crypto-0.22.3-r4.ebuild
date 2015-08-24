@@ -12,7 +12,7 @@ inherit distutils-r1
 MY_PN="M2Crypto"
 
 DESCRIPTION="M2Crypto: A Python crypto and SSL toolkit"
-HOMEPAGE="https://github.com/martinpaljak/M2Crypto http://pypi.python.org/pypi/M2Crypto"
+HOMEPAGE="https://github.com/martinpaljak/M2Crypto https://pypi.python.org/pypi/M2Crypto"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="BSD"

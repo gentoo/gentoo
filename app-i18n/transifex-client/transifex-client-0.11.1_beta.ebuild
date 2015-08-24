@@ -12,7 +12,7 @@ MY_PV=${PV/_/.}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="A command line interface for Transifex"
-HOMEPAGE="http://pypi.python.org/pypi/transifex-client http://www.transifex.net/"
+HOMEPAGE="https://pypi.python.org/pypi/transifex-client http://www.transifex.net/"
 SRC_URI="mirror://pypi/t/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

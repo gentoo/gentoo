@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell 98 Groupoids"
-HOMEPAGE="http://github.com/ekmett/groupoids/"
+HOMEPAGE="https://github.com/ekmett/groupoids/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

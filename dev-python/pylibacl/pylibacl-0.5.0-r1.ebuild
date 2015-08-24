@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="POSIX ACLs (Access Control Lists) for Python"
-HOMEPAGE="http://sourceforge.net/projects/pylibacl/ http://pypi.python.org/pypi/pylibacl"
+HOMEPAGE="http://sourceforge.net/projects/pylibacl/ https://pypi.python.org/pypi/pylibacl"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

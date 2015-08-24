@@ -12,7 +12,7 @@ inherit eutils gnome2-utils multilib distutils vcs-snapshot
 
 DESCRIPTION="Integrated version control support for your desktop"
 HOMEPAGE="http://rabbitvcs.org"
-SRC_URI="http://github.com/rabbitvcs/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/rabbitvcs/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Manuel lets you build tested documentation"
-HOMEPAGE="https://github.com/benji-york/manuel/ http://pypi.python.org/pypi/manuel"
+HOMEPAGE="https://github.com/benji-york/manuel/ https://pypi.python.org/pypi/manuel"
 # A snapshot was required since upstream missed out half the source
 SRC_URI="http://dev.gentoo.org/~idella4/tarballs/${P}-20130316.tar.bz2"
 

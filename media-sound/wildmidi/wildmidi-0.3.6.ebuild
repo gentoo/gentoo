@@ -7,7 +7,7 @@ inherit cmake-utils readme.gentoo
 
 DESCRIPTION="Midi processing library and a midi player using the gus patch set"
 HOMEPAGE="http://www.mindwerks.net/projects/wildmidi/"
-SRC_URI="http://github.com/Mindwerks/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/Mindwerks/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"

@@ -11,7 +11,7 @@ PN3="${PN}3"
 P3="${PN3}-${PV}"
 
 DESCRIPTION="DNS toolkit for Python"
-HOMEPAGE="http://www.dnspython.org/ http://pypi.python.org/pypi/dnspython"
+HOMEPAGE="http://www.dnspython.org/ https://pypi.python.org/pypi/dnspython"
 SRC_URI="http://www.dnspython.org/kits/${PV}/${P}.tar.gz
 	http://www.dnspython.org/kits3/${PV}/${P3}.zip"
 

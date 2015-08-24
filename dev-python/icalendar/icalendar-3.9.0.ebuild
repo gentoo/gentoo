@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_PN="collective-${PN}"
 
 DESCRIPTION="Package used for parsing and generating iCalendar files (RFC 2445)"
-HOMEPAGE="http://github.com/collective/icalendar"
+HOMEPAGE="https://github.com/collective/icalendar"
 SRC_URI="mirror://pypi/i/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

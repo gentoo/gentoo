@@ -12,7 +12,7 @@ MY_PN="WebTest"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Helper to test WSGI applications"
-HOMEPAGE="http://pythonpaste.org/webtest/ http://pypi.python.org/pypi/WebTest"
+HOMEPAGE="http://pythonpaste.org/webtest/ https://pypi.python.org/pypi/WebTest"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="MIT"

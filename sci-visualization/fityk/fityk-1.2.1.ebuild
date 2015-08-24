@@ -12,7 +12,7 @@ inherit autotools-utils fdo-mime python-r1 wxwidgets
 
 DESCRIPTION="General-purpose nonlinear curve fitting and data analysis"
 HOMEPAGE="http://fityk.nieto.pl/"
-SRC_URI="http://github.com/downloads/${GITHUB_USER}/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/downloads/${GITHUB_USER}/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

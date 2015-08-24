@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Library for OAuth version 1.0"
-HOMEPAGE="http://pypi.python.org/pypi/oauth2"
+HOMEPAGE="https://pypi.python.org/pypi/oauth2"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

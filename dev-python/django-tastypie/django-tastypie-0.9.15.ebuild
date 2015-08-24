@@ -10,7 +10,7 @@ inherit distutils-r1
 RESTRICT="test"
 
 DESCRIPTION="A flexible and capable API layer for django utilising serialisers"
-HOMEPAGE="http://pypi.python.org/pypi/django-tastypie/ https://github.com/toastdriven/django-tastypie"
+HOMEPAGE="https://pypi.python.org/pypi/django-tastypie/ https://github.com/toastdriven/django-tastypie"
 SRC_URI="https://github.com/toastdriven/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="amd64 x86"

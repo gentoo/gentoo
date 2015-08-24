@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Allows stubbing HTTP requests and setting expectations on HTTP requests"
-HOMEPAGE="http://github.com/bblimke/webmock"
+HOMEPAGE="https://github.com/bblimke/webmock"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Levenshtein and restricted Damerau-Levenshtein edit distances"
-HOMEPAGE="http://github.com/phadej/edit-distance"
+HOMEPAGE="https://github.com/phadej/edit-distance"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

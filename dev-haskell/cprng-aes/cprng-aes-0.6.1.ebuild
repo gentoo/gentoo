@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Crypto Pseudo Random Number Generator using AES in counter mode"
-HOMEPAGE="http://github.com/vincenthz/hs-cprng-aes"
+HOMEPAGE="https://github.com/vincenthz/hs-cprng-aes"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Derive Template Haskell's Lift class for datatypes"
-HOMEPAGE="http://github.com/mboes/th-lift"
+HOMEPAGE="https://github.com/mboes/th-lift"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

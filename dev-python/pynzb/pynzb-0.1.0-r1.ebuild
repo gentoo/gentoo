@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Unified API for parsing NZB files"
-HOMEPAGE="http://pypi.python.org/pypi/pynzb/"
+HOMEPAGE="https://pypi.python.org/pypi/pynzb/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

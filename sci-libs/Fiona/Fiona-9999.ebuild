@@ -11,7 +11,7 @@ inherit distutils-r1 git-r3
 DESCRIPTION="OGR's neat, nimble, no-nonsense API"
 HOMEPAGE="https://pypi.python.org/pypi/Fiona"
 SRC_URI=""
-EGIT_REPO_URI="http://github.com/Toblerity/${PN}.git"
+EGIT_REPO_URI="https://github.com/Toblerity/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"

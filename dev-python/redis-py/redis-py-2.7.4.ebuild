@@ -11,7 +11,7 @@ MY_PN="redis"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python client for Redis key-value store"
-HOMEPAGE="http://github.com/andymccurdy/redis-py http://pypi.python.org/pypi/redis"
+HOMEPAGE="https://github.com/andymccurdy/redis-py https://pypi.python.org/pypi/redis"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

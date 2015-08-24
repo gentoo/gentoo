@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils gnome2-utils
 
 DESCRIPTION="An library to control MPRIS2 compatible players"
-HOMEPAGE="http://github.com/matiasdelellis/libmpris2client"
-SRC_URI="http://github.com/matiasdelellis/${PN}/releases/download/V${PV}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/matiasdelellis/libmpris2client"
+SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/V${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

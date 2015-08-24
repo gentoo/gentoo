@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION='Manage config files in $HOME via fake bare git repositories'
 HOMEPAGE="https://github.com/RichiH/vcsh/"
-SRC_URI="http://github.com/RichiH/vcsh/archive/v${PV}-manpage-static.tar.gz -> ${P}-manpage-static.tar.gz"
+SRC_URI="https://github.com/RichiH/vcsh/archive/v${PV}-manpage-static.tar.gz -> ${P}-manpage-static.tar.gz"
 
 LICENSE="|| ( GPL-3 GPL-2 )"
 SLOT="0"

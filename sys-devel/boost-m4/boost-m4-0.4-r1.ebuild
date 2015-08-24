@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils vcs-snapshot
 
 DESCRIPTION="Another set of autoconf macros for compiling against boost"
-HOMEPAGE="http://github.com/tsuna/boost.m4"
+HOMEPAGE="https://github.com/tsuna/boost.m4"
 SRC_URI="${HOMEPAGE}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

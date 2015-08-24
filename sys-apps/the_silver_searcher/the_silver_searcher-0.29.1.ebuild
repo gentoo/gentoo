@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools bash-completion-r1
 
 DESCRIPTION="A code-searching tool similar to ack, but faster"
-HOMEPAGE="http://github.com/ggreer/the_silver_searcher"
+HOMEPAGE="https://github.com/ggreer/the_silver_searcher"
 SRC_URI="https://github.com/ggreer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

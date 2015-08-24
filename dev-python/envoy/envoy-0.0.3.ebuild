@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Simple API for running external processes"
-HOMEPAGE="https://github.com/kennethreitz/envoy http://pypi.python.org/pypi/envoy"
+HOMEPAGE="https://github.com/kennethreitz/envoy https://pypi.python.org/pypi/envoy"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

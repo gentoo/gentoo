@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 inherit distutils mercurial
 
 DESCRIPTION="hgsubversion is a Mercurial extension for working with Subversion repositories"
-HOMEPAGE="https://bitbucket.org/durin42/hgsubversion/wiki/Home http://pypi.python.org/pypi/hgsubversion"
+HOMEPAGE="https://bitbucket.org/durin42/hgsubversion/wiki/Home https://pypi.python.org/pypi/hgsubversion"
 SRC_URI=""
 EHG_REPO_URI="https://bitbucket.org/durin42/hgsubversion"
 

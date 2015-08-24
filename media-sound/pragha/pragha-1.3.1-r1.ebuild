@@ -6,8 +6,8 @@ EAPI=5
 inherit xfconf # autotools
 
 DESCRIPTION="A lightweight music player (with support for the Xfce desktop environment)"
-HOMEPAGE="http://pragha.wikispaces.com/ http://github.com/matiasdelellis/pragha"
-SRC_URI="http://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+HOMEPAGE="http://pragha.wikispaces.com/ https://github.com/matiasdelellis/pragha"
+SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

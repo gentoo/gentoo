@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Automagically generate the HUnit- and Quickcheck-bulk-code using Template Haskell"
-HOMEPAGE="http://github.com/bennofs/tasty-th"
+HOMEPAGE="https://github.com/bennofs/tasty-th"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

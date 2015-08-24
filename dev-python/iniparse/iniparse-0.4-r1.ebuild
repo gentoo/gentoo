@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Better INI parser for Python"
-HOMEPAGE="http://code.google.com/p/iniparse http://pypi.python.org/pypi/iniparse"
+HOMEPAGE="http://code.google.com/p/iniparse https://pypi.python.org/pypi/iniparse"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT PSF-2"

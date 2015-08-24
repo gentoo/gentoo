@@ -14,7 +14,7 @@ MY_PN="HDBC-mysql"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="MySQL driver for HDBC"
-HOMEPAGE="http://github.com/bos/hdbc-mysql"
+HOMEPAGE="https://github.com/bos/hdbc-mysql"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

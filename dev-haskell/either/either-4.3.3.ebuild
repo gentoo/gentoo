@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="An either monad transformer"
-HOMEPAGE="http://github.com/ekmett/either/"
+HOMEPAGE="https://github.com/ekmett/either/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

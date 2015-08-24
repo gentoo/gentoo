@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit eutils haskell-cabal
 
 DESCRIPTION="Fast, memory-efficient, low-level networking"
-HOMEPAGE="http://github.com/tibbe/network-bytestring"
+HOMEPAGE="https://github.com/tibbe/network-bytestring"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

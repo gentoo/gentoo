@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python code static checker"
-HOMEPAGE="http://www.logilab.org/project/pylint http://pypi.python.org/pypi/pylint"
+HOMEPAGE="http://www.logilab.org/project/pylint https://pypi.python.org/pypi/pylint"
 SRC_URI="ftp://ftp.logilab.org/pub/${PN}/${P}.tar.gz mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

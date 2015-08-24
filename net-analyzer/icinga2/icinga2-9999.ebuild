@@ -7,7 +7,7 @@ inherit cmake-utils depend.apache eutils git-2 systemd toolchain-funcs user vers
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
 HOMEPAGE="http://icinga.org/icinga2"
-EGIT_REPO_URI="http://github.com/Icinga/icinga2.git"
+EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
 EGIT_BRANCH="master"
 
 LICENSE="GPL-2"

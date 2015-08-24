@@ -19,7 +19,7 @@ inherit ruby-fakegem versionator
 
 DESCRIPTION="Eases web-request routing, handling, and response"
 HOMEPAGE="http://rubyforge.org/projects/actionpack/"
-SRC_URI="http://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
+SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

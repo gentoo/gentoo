@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P="gdata-${PV}"
 
 DESCRIPTION="Python client library for Google data APIs"
-HOMEPAGE="http://code.google.com/p/gdata-python-client/ http://pypi.python.org/pypi/gdata"
+HOMEPAGE="http://code.google.com/p/gdata-python-client/ https://pypi.python.org/pypi/gdata"
 SRC_URI="http://gdata-python-client.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"

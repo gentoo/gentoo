@@ -7,7 +7,7 @@ EAPI=5
 MY_PN=${PN/g/G}
 
 DESCRIPTION="The default theme from Xubuntu"
-HOMEPAGE="http://shimmerproject.org/project/greybird/ http://github.com/shimmerproject/Greybird"
+HOMEPAGE="http://shimmerproject.org/project/greybird/ https://github.com/shimmerproject/Greybird"
 SRC_URI="https://github.com/shimmerproject/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-BY-NC-SA-3.0 || ( GPL-2 GPL-3 )"

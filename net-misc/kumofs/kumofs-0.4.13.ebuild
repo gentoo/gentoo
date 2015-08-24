@@ -5,7 +5,7 @@
 EAPI="3"
 
 DESCRIPTION="a scalable and highly available distributed key-value store"
-HOMEPAGE="http://github.com/etolabo/kumofs"
+HOMEPAGE="https://github.com/etolabo/kumofs"
 SRC_URI="mirror://github/etolabo/kumofs/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

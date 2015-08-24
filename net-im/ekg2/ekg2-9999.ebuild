@@ -7,7 +7,7 @@ EAPI=5
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
 EGIT_REPO_URI="git://github.com/leafnode/${PN}.git
-	http://github.com/leafnode/${PN}.git"
+	https://github.com/leafnode/${PN}.git"
 
 inherit git-r3
 #endif

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Platform-independent file locking module"
-HOMEPAGE="http://code.google.com/p/pylockfile/ http://pypi.python.org/pypi/lockfile http://smontanaro.dyndns.org/python/"
+HOMEPAGE="http://code.google.com/p/pylockfile/ https://pypi.python.org/pypi/lockfile http://smontanaro.dyndns.org/python/"
 SRC_URI="http://pylockfile.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"

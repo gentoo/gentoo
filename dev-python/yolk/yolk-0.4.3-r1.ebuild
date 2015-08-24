@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Tool and library for querying PyPI and locally installed Python packages"
-HOMEPAGE="http://pypi.python.org/pypi/yolk"
+HOMEPAGE="https://pypi.python.org/pypi/yolk"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

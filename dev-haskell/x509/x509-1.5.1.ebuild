@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="X509 reader and writer"
-HOMEPAGE="http://github.com/vincenthz/hs-certificate"
+HOMEPAGE="https://github.com/vincenthz/hs-certificate"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

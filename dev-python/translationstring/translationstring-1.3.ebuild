@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Utility library for i18n relied on by various Repoze packages"
-HOMEPAGE="https://github.com/Pylons/translationstring http://pypi.python.org/pypi/translationstring"
+HOMEPAGE="https://github.com/Pylons/translationstring https://pypi.python.org/pypi/translationstring"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="repoze"

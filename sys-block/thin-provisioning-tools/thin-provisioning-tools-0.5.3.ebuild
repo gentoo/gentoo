@@ -7,8 +7,8 @@ EAPI="5"
 inherit autotools eutils flag-o-matic
 
 DESCRIPTION="A suite of tools for thin provisioning on Linux"
-HOMEPAGE="http://github.com/jthornber/thin-provisioning-tools"
-SRC_URI="http://github.com/jthornber/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/jthornber/thin-provisioning-tools"
+SRC_URI="https://github.com/jthornber/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="Changelog.md README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="Colorize printed text on ANSI terminals"
-HOMEPAGE="http://github.com/sickill/rainbow"
+HOMEPAGE="https://github.com/sickill/rainbow"
 
 SRC_URI="https://github.com/sickill/rainbow/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 

@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell implementation of Mustache templates"
-HOMEPAGE="http://github.com/lymar/hastache"
+HOMEPAGE="https://github.com/lymar/hastache"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

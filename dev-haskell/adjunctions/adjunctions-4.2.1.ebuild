@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Adjunctions and representable functors"
-HOMEPAGE="http://github.com/ekmett/adjunctions/"
+HOMEPAGE="https://github.com/ekmett/adjunctions/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

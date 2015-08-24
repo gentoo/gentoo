@@ -6,8 +6,8 @@ EAPI=4
 inherit autotools
 
 DESCRIPTION="A library for the manipulation of RDF file in LADSPA plugins"
-HOMEPAGE="http://github.com/swh/LRDF"
-SRC_URI="http://github.com/swh/LRDF/tarball/${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/swh/LRDF"
+SRC_URI="https://github.com/swh/LRDF/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

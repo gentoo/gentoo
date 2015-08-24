@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Web testing library for Robot Framework"
 HOMEPAGE="https://github.com/rtomac/robotframework-selenium2library/
-	http://pypi.python.org/pypi/robotframework-selenium2library/"
+	https://pypi.python.org/pypi/robotframework-selenium2library/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

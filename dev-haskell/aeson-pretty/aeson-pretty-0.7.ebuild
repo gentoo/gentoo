@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="JSON pretty-printing library and command-line tool"
-HOMEPAGE="http://github.com/informatikr/aeson-pretty"
+HOMEPAGE="https://github.com/informatikr/aeson-pretty"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

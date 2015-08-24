@@ -7,7 +7,7 @@ EAPI=4
 inherit cmake-utils
 
 DESCRIPTION="Data receiver of the SMB Traffic Analyzer project"
-HOMEPAGE="http://github.com/hhetter/smbtad"
+HOMEPAGE="https://github.com/hhetter/smbtad"
 SRC_URI="http://morelias.org/smbta/${P}.tar.bz2"
 
 LICENSE="GPL-3"

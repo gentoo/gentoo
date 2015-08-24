@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Fast base16 (hex) encoding and decoding for ByteStrings"
-HOMEPAGE="http://github.com/bos/base16-bytestring"
+HOMEPAGE="https://github.com/bos/base16-bytestring"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

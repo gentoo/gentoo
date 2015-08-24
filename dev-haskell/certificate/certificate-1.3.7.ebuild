@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Certificates and Key Reader/Writer"
-HOMEPAGE="http://github.com/vincenthz/hs-certificate"
+HOMEPAGE="https://github.com/vincenthz/hs-certificate"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -12,7 +12,7 @@ inherit bash-completion-r1 distutils-r1 eutils git-r3 multilib
 MY_P="${P/linkchecker/LinkChecker}"
 
 DESCRIPTION="Check websites for broken links"
-HOMEPAGE="http://wummel.github.com/linkchecker/ http://pypi.python.org/pypi/linkchecker/"
+HOMEPAGE="http://wummel.github.com/linkchecker/ https://pypi.python.org/pypi/linkchecker/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/wummel/linkchecker.git"
 

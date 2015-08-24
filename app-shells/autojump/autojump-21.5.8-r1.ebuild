@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3} )
 inherit python-r1 python-utils-r1 vcs-snapshot
 
 DESCRIPTION="change directory command that learns"
-HOMEPAGE="http://github.com/joelthelion/autojump"
+HOMEPAGE="https://github.com/joelthelion/autojump"
 SRC_URI="https://github.com/joelthelion/${PN}/archive/release-v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

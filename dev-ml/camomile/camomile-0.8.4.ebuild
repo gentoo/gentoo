@@ -7,8 +7,8 @@ EAPI="5"
 inherit findlib eutils
 
 DESCRIPTION="Camomile is a comprehensive Unicode library for ocaml"
-HOMEPAGE="http://github.com/yoriyuki/Camomile/wiki"
-SRC_URI="http://github.com/downloads/yoriyuki/Camomile/${P}.tar.bz2"
+HOMEPAGE="https://github.com/yoriyuki/Camomile/wiki"
+SRC_URI="https://github.com/downloads/yoriyuki/Camomile/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"

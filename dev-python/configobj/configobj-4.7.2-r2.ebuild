@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Simple config file reader and writer"
-HOMEPAGE="http://www.voidspace.org.uk/python/configobj.html http://code.google.com/p/configobj/ http://pypi.python.org/pypi/configobj"
+HOMEPAGE="http://www.voidspace.org.uk/python/configobj.html http://code.google.com/p/configobj/ https://pypi.python.org/pypi/configobj"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
 LICENSE="BSD"

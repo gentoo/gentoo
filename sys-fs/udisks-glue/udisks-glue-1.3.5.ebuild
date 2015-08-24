@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="A tool to associate udisks events to user-defined actions"
-HOMEPAGE="http://github.com/fernandotcl/udisks-glue"
-SRC_URI="http://github.com/fernandotcl/udisks-glue/tarball/release-${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/fernandotcl/udisks-glue"
+SRC_URI="https://github.com/fernandotcl/udisks-glue/tarball/release-${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

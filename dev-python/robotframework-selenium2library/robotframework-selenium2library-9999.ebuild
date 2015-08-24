@@ -11,7 +11,7 @@ EGIT_REPO_URI="git://github.com/rtomac/robotframework-selenium2library.git"
 
 DESCRIPTION="Web testing library for Robot Framework"
 HOMEPAGE="https://github.com/rtomac/robotframework-selenium2library/
-	http://pypi.python.org/pypi/robotframework-selenium2library/"
+	https://pypi.python.org/pypi/robotframework-selenium2library/"
 
 LICENSE="Apache-2.0"
 SLOT="0"

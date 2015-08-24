@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627"
-HOMEPAGE="http://deron.meranda.us/python/demjson/ http://pypi.python.org/pypi/demjson"
+HOMEPAGE="http://deron.meranda.us/python/demjson/ https://pypi.python.org/pypi/demjson"
 SRC_URI="http://deron.meranda.us/python/${PN}/dist/${P}.tar.gz"
 
 LICENSE="LGPL-3"

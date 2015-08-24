@@ -10,7 +10,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="Bytecode optimisation using staticness assertions"
-HOMEPAGE="https://github.com/rfk/promise/ http://pypi.python.org/pypi/promise"
+HOMEPAGE="https://github.com/rfk/promise/ https://pypi.python.org/pypi/promise"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

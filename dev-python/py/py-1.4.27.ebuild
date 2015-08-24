@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="library with cross-python path, ini-parsing, io, code, log facilities"
-HOMEPAGE="http://pylib.readthedocs.org/ http://pypi.python.org/pypi/py"
+HOMEPAGE="http://pylib.readthedocs.org/ https://pypi.python.org/pypi/py"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

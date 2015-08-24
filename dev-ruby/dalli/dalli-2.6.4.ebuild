@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="History.md Performance.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A high performance pure Ruby client for accessing memcached servers"
-HOMEPAGE="http://github.com/mperham/dalli"
+HOMEPAGE="https://github.com/mperham/dalli"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"

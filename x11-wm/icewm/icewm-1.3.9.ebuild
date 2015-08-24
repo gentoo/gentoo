@@ -10,7 +10,7 @@ inherit autotools eutils python-single-r1
 DESCRIPTION="Ice Window Manager with Themes"
 HOMEPAGE="http://www.icewm.org/ https://github.com/bbidulock/icewm"
 LICENSE="GPL-2"
-SRC_URI="http://github.com/bbidulock/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bbidulock/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"

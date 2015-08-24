@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils multilib
 
 DESCRIPTION="Minimalistic C client library for the Redis database"
-HOMEPAGE="http://github.com/redis/hiredis"
-SRC_URI="http://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/redis/hiredis"
+SRC_URI="https://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

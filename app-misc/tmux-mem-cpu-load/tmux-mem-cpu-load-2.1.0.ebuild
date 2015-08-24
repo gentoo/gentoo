@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="CPU, RAM memory, and load monitor for use with tmux"
-HOMEPAGE="http://github.com/thewtex/tmux-mem-cpu-load/"
+HOMEPAGE="https://github.com/thewtex/tmux-mem-cpu-load/"
 
 LICENSE="Apache-2.0"
 SLOT="0"

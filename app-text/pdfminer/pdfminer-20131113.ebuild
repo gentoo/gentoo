@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python tool for extracting information from PDF documents"
-HOMEPAGE="http://www.unixuser.org/~euske/python/pdfminer/ http://pypi.python.org/pypi/pdfminer/"
+HOMEPAGE="http://www.unixuser.org/~euske/python/pdfminer/ https://pypi.python.org/pypi/pdfminer/"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

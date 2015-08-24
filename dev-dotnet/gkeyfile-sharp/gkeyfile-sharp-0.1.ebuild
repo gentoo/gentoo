@@ -6,8 +6,8 @@ EAPI=2
 inherit autotools mono
 
 DESCRIPTION="C# binding for gkeyfile"
-HOMEPAGE="http://launchpad.net/gkeyfile-sharp http://github.com/mono/gkeyfile-sharp"
-SRC_URI="http://github.com/mono/${PN}/tarball/GKEYFILE_SHARP_0_1 -> ${P}.tar.gz"
+HOMEPAGE="http://launchpad.net/gkeyfile-sharp https://github.com/mono/gkeyfile-sharp"
+SRC_URI="https://github.com/mono/${PN}/tarball/GKEYFILE_SHARP_0_1 -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit twisted-r1 eutils
 
 DESCRIPTION="Epsilon is a Python utilities package, most famous for its Time class"
-HOMEPAGE="http://divmod.org/trac/wiki/DivmodEpsilon http://pypi.python.org/pypi/Epsilon"
+HOMEPAGE="http://divmod.org/trac/wiki/DivmodEpsilon https://pypi.python.org/pypi/Epsilon"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 KEYWORDS="amd64 ppc ppc64 sparc x86"

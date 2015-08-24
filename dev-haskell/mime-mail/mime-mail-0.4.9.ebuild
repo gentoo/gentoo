@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Compose MIME email messages"
-HOMEPAGE="http://github.com/snoyberg/mime-mail"
+HOMEPAGE="https://github.com/snoyberg/mime-mail"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"

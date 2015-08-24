@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="Helper for faking web requests in Ruby"
-HOMEPAGE="http://github.com/chrisk/fakeweb"
+HOMEPAGE="https://github.com/chrisk/fakeweb"
 
 LICENSE="GPL-2"
 SLOT="0"

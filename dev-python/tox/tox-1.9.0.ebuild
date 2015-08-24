@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="virtualenv-based automation of test activities"
-HOMEPAGE="http://tox.testrun.org http://pypi.python.org/pypi/tox"
+HOMEPAGE="http://tox.testrun.org https://pypi.python.org/pypi/tox"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

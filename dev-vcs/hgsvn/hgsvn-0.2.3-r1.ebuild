@@ -11,7 +11,7 @@ inherit distutils-r1
 PYTHON_REQ_USE="xml"
 
 DESCRIPTION="A set of scripts to work locally on Subversion checkouts using Mercurial"
-HOMEPAGE="http://pypi.python.org/pypi/hgsvn"
+HOMEPAGE="https://pypi.python.org/pypi/hgsvn"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="GPL-3"

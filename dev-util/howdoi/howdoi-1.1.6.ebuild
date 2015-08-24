@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3} )
 inherit distutils-r1
 
 DESCRIPTION="A code search tool"
-HOMEPAGE="http://pypi.python.org/pypi/howdoi"
+HOMEPAGE="https://pypi.python.org/pypi/howdoi"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

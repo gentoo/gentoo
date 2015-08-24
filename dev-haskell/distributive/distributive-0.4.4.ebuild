@@ -11,7 +11,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Distributive functors -- Dual to Traversable"
-HOMEPAGE="http://github.com/ekmett/distributive/"
+HOMEPAGE="https://github.com/ekmett/distributive/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

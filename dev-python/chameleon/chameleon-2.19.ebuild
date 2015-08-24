@@ -12,7 +12,7 @@ MY_PN="Chameleon"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Fast HTML/XML template compiler for Python"
-HOMEPAGE="http://chameleon.repoze.org http://pypi.python.org/pypi/Chameleon"
+HOMEPAGE="http://chameleon.repoze.org https://pypi.python.org/pypi/Chameleon"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="repoze"

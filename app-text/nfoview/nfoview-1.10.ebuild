@@ -11,7 +11,7 @@ RESTRICT_PYTHON_ABIS="2.*"
 inherit distutils fdo-mime gnome2-utils
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/otsaloma/nfoview.git
-		http://github.com/otsaloma/nfoview.git"
+		https://github.com/otsaloma/nfoview.git"
 	inherit git-2
 	SRC_URI=""
 	#KEYWORDS=""

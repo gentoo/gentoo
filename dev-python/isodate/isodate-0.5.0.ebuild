@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="ISO 8601 date/time/duration parser and formater"
-HOMEPAGE="http://pypi.python.org/pypi/isodate"
+HOMEPAGE="https://pypi.python.org/pypi/isodate"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

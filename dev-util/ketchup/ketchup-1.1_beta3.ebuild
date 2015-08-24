@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Tool for updating or switching between versions of the Linux kernel source"
-HOMEPAGE="http://github.com/psomas/ketchup"
+HOMEPAGE="https://github.com/psomas/ketchup"
 SRC_URI="http://dev.gentoo.org/~psomas/${PF}.tar.gz"
 
 LICENSE="GPL-2"

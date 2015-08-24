@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="HISTORY.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios"
-HOMEPAGE="http://github.com/aslakhellesoy/cucumber/wikis"
+HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
 LICENSE="Ruby"
 
 KEYWORDS="~amd64"

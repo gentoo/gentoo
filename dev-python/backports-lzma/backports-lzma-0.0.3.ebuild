@@ -12,7 +12,7 @@ MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Backport of Python 3.3's lzma module for XZ/LZMA compressed files"
-HOMEPAGE="https://github.com/peterjc/backports.lzma/ http://pypi.python.org/pypi/backports.lzma/"
+HOMEPAGE="https://github.com/peterjc/backports.lzma/ https://pypi.python.org/pypi/backports.lzma/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -12,7 +12,7 @@ MY_PN="Tempita"
 MY_P="${MY_PN}-${PV}dev"
 
 DESCRIPTION="A very small text templating language"
-HOMEPAGE="http://pythonpaste.org/tempita http://pypi.python.org/pypi/Tempita"
+HOMEPAGE="http://pythonpaste.org/tempita https://pypi.python.org/pypi/Tempita"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

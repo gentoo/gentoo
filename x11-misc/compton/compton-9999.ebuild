@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_3 python3_4 )
 inherit toolchain-funcs python-r1 git-2
 
 DESCRIPTION="A compositor for X, and a fork of xcompmgr-dana"
-HOMEPAGE="http://github.com/chjj/compton"
+HOMEPAGE="https://github.com/chjj/compton"
 SRC_URI=""
 
 EGIT_REPO_URI="git://github.com/chjj/compton.git"

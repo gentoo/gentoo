@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Provide a friendly DSL for binding method handles"
-SRC_URI="http://github.com/headius/invokebinder/archive/invokebinder-1.2.tar.gz"
+SRC_URI="https://github.com/headius/invokebinder/archive/invokebinder-1.2.tar.gz"
 HOMEPAGE="https://github.com/headius/invokebinder"
 
 SLOT="0"

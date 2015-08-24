@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit twisted-r1
 
 DESCRIPTION="A web templating framework that provides LivePage, an automatic AJAX toolkit"
-HOMEPAGE="http://divmod.org/trac/wiki/DivmodNevow http://pypi.python.org/pypi/Nevow"
+HOMEPAGE="http://divmod.org/trac/wiki/DivmodNevow https://pypi.python.org/pypi/Nevow"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 LICENSE="MIT"

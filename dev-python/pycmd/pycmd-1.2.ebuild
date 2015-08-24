@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="pycmd: tools for managing/searching Python related files"
-HOMEPAGE="http://pypi.python.org/pypi/pycmd"
+HOMEPAGE="https://pypi.python.org/pypi/pycmd"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ inherit cmake-multilib vcs-snapshot
 
 DESCRIPTION="Small event-driven (SAX-style) JSON parser"
 HOMEPAGE="http://lloyd.github.com/yajl/"
-SRC_URI="http://github.com/lloyd/yajl/tarball/${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/lloyd/yajl/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

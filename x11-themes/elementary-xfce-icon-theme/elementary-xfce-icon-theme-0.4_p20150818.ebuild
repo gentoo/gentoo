@@ -8,7 +8,7 @@ inherit gnome2-utils
 COMMIT="0a07c908381579475ca6015ae2738a6f29708b07"
 
 DESCRIPTION="Elementary icons forked from upstream, extended and maintained for Xfce"
-HOMEPAGE="http://github.com/shimmerproject/elementary-xfce"
+HOMEPAGE="https://github.com/shimmerproject/elementary-xfce"
 SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="public-domain GPL-1 GPL-2 GPL-3"
 SLOT="0"

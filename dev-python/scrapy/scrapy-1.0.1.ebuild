@@ -10,7 +10,7 @@ PYTHON_REQ_USE="sqlite(+)"
 inherit vcs-snapshot distutils-r1
 
 DESCRIPTION="A high-level Python Screen Scraping framework"
-HOMEPAGE="http://scrapy.org http://pypi.python.org/pypi/Scrapy/"
+HOMEPAGE="http://scrapy.org https://pypi.python.org/pypi/Scrapy/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"

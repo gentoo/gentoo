@@ -10,7 +10,7 @@ inherit distutils-r1 git-2
 EGIT_REPO_URI="http://git.tiker.net/trees/pyopencl.git"
 
 DESCRIPTION="Python wrapper for OpenCL"
-HOMEPAGE="http://mathema.tician.de/software/pyopencl http://pypi.python.org/pypi/pyopencl"
+HOMEPAGE="http://mathema.tician.de/software/pyopencl https://pypi.python.org/pypi/pyopencl"
 SRC_URI=""
 
 LICENSE="GPL-2"

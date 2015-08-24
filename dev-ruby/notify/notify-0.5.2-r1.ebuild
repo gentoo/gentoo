@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md sample.rb"
 inherit ruby-fakegem
 
 DESCRIPTION="A function to notify on cross platform"
-HOMEPAGE="http://github.com/jugyo/notify"
+HOMEPAGE="https://github.com/jugyo/notify"
 
 LICENSE="MIT"
 SLOT="0"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Crypto-api interfaces for cryptohash"
-HOMEPAGE="http://github.com/vincenthz/hs-cryptohash-cryptoapi"
+HOMEPAGE="https://github.com/vincenthz/hs-cryptohash-cryptoapi"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

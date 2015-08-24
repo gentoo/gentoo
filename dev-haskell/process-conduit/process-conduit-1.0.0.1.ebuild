@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Conduits for processes"
-HOMEPAGE="http://github.com/tanakh/process-conduit"
+HOMEPAGE="https://github.com/tanakh/process-conduit"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

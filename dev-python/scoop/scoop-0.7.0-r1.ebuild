@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Distributed Evolutionary Algorithms in Python"
-HOMEPAGE="https://code.google.com/p/scoop/ http://pypi.python.org/pypi/scoop"
+HOMEPAGE="https://code.google.com/p/scoop/ https://pypi.python.org/pypi/scoop"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.release.tar.gz"
 
 LICENSE="LGPL-3"

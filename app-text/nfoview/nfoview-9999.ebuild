@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{3_3,3_4} )
 inherit distutils-r1 fdo-mime gnome2-utils
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/otsaloma/nfoview.git
-		http://github.com/otsaloma/nfoview.git"
+		https://github.com/otsaloma/nfoview.git"
 	inherit git-2
 	SRC_URI=""
 	#KEYWORDS=""

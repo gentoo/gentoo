@@ -12,7 +12,7 @@ MY_PN=${PN/-/_}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A Django application that will run cron jobs for other django apps"
-HOMEPAGE="http://code.google.com/p/django-evolution/ http://pypi.python.org/pypi/django_evolution/"
+HOMEPAGE="http://code.google.com/p/django-evolution/ https://pypi.python.org/pypi/django_evolution/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

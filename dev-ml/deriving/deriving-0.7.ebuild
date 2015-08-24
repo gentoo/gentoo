@@ -9,8 +9,8 @@ OASIS_BUILD_TESTS=1
 inherit oasis
 
 DESCRIPTION="A deriving library for Ocsigen"
-HOMEPAGE="http://github.com/ocsigen/deriving"
-SRC_URI="http://github.com/ocsigen/deriving/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/ocsigen/deriving"
+SRC_URI="https://github.com/ocsigen/deriving/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRADOC="README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="A library for starting and stopping specific daemons programmatically in a robust manner"
-HOMEPAGE="http://github.com/FooBarWidget/daemon_controller"
+HOMEPAGE="https://github.com/FooBarWidget/daemon_controller"
 
 LICENSE="MIT"
 SLOT="0"

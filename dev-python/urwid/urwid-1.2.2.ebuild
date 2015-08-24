@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ncurses"
 inherit distutils-r1
 
 DESCRIPTION="Urwid is a curses-based user interface library for Python"
-HOMEPAGE="http://urwid.org/ http://pypi.python.org/pypi/urwid/"
+HOMEPAGE="http://urwid.org/ https://pypi.python.org/pypi/urwid/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

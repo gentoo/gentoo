@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} )
 inherit distutils-r1
 
 DESCRIPTION="python binding for curl/libcurl"
-HOMEPAGE="https://github.com/pycurl/pycurl http://pypi.python.org/pypi/pycurl"
+HOMEPAGE="https://github.com/pycurl/pycurl https://pypi.python.org/pypi/pycurl"
 SRC_URI="http://pycurl.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

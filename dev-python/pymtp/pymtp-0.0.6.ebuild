@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="LibMTP bindings for Python"
-HOMEPAGE="http://packages.debian.org/libmtp http://libmtp.sourceforge.net/ http://pypi.python.org/pypi/PyMTP"
+HOMEPAGE="http://packages.debian.org/libmtp http://libmtp.sourceforge.net/ https://pypi.python.org/pypi/PyMTP"
 DEB_URI="mirror://debian/pool/main/${PN:0:1}/${PN}"
 SRC_URI="${DEB_URI}/${PN}_${PV}.orig.tar.gz"
 

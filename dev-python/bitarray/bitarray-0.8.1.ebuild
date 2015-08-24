@@ -8,7 +8,7 @@ PYTHON_COMPAT=(python{2_7,3_{3,4}})
 inherit distutils-r1
 
 DESCRIPTION="efficient arrays of booleans -- C extension"
-HOMEPAGE="https://github.com/ilanschnell/bitarray http://pypi.python.org/pypi/bitarray"
+HOMEPAGE="https://github.com/ilanschnell/bitarray https://pypi.python.org/pypi/bitarray"
 SRC_URI="mirror://pypi/b/${PN}/${P}.tar.gz"
 
 SLOT="0"

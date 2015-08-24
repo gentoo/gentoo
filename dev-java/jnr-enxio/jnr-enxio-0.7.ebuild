@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc examples source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java Native Runtime Enhanced X-platform I/O"
-SRC_URI="http://github.com/jnr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/jnr/jnr-enxio"
 
 SLOT="0"

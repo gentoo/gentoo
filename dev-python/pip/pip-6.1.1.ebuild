@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3  )
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Installs python packages -- replacement for easy_install"
-HOMEPAGE="http://www.pip-installer.org/ http://pypi.python.org/pypi/pip/"
+HOMEPAGE="http://www.pip-installer.org/ https://pypi.python.org/pypi/pip/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

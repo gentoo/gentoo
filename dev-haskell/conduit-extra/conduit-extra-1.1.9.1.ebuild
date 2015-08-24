@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Batteries included conduit: adapters for common libraries"
-HOMEPAGE="http://github.com/snoyberg/conduit"
+HOMEPAGE="https://github.com/snoyberg/conduit"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"

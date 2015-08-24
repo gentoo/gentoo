@@ -30,7 +30,7 @@ if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/KhronosGroup/OpenCOLLADA/tarball/${COMMIT} -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~ppc64 x86"
 else
-	EGIT_REPO_URI="http://github.com/KhronosGroup/OpenCOLLADA.git"
+	EGIT_REPO_URI="https://github.com/KhronosGroup/OpenCOLLADA.git"
 fi
 
 RDEPEND="dev-libs/libpcre

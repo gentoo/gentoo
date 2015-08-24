@@ -8,7 +8,7 @@ inherit autotools eutils
 MY_P=${PN/hal/libhal1}_${PV/_}
 
 DESCRIPTION="A libhal stub library forwarding to UDisks for www-plugins/adobe-flash to play DRM content"
-HOMEPAGE="http://github.com/cshorler/hal-flash http://build.opensuse.org/package/show/devel:openSUSE:Factory/hal-flash"
+HOMEPAGE="https://github.com/cshorler/hal-flash http://build.opensuse.org/package/show/devel:openSUSE:Factory/hal-flash"
 SRC_URI="http://build.opensuse.org/package/rawsourcefile/devel:openSUSE:Factory/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

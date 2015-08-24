@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="A simple portage wrapper which works like other package managers"
-HOMEPAGE="http://github.com/jdhore/epkg"
+HOMEPAGE="https://github.com/jdhore/epkg"
 SRC_URI="https://github.com/jdhore/${PN}/archive/${P}.tar.gz"
 
 LICENSE="BSD-2"

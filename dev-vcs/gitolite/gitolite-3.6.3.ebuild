@@ -10,7 +10,7 @@ EGIT_MASTER=master
 inherit perl-module user versionator ${SCM}
 
 DESCRIPTION="Highly flexible server for git directory version tracker"
-HOMEPAGE="http://github.com/sitaramc/gitolite"
+HOMEPAGE="https://github.com/sitaramc/gitolite"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="https://github.com/sitaramc/gitolite/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm ~x86"

@@ -46,4 +46,4 @@ If you want to use goobook from mutt, add this in your .muttrc file:
 to query address book.
 
 You may find more information and advanced configuration tips at
-http://pypi.python.org/pypi/${PN}/${PV} in \"Configure/Mutt\" section"
+https://pypi.python.org/pypi/${PN}/${PV} in \"Configure/Mutt\" section"

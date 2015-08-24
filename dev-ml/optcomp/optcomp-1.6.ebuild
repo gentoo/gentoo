@@ -9,8 +9,8 @@ OASIS_BUILD_DOCS=1
 inherit oasis
 
 DESCRIPTION="Optional compilation for OCaml with cpp-like directives"
-HOMEPAGE="http://github.com/diml/optcomp"
-SRC_URI="http://github.com/diml/optcomp/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/diml/optcomp"
+SRC_URI="https://github.com/diml/optcomp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

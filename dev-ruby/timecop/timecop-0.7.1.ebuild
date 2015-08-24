@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRADOC="README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="A gem providing 'time travel' and 'time freezing' capabilities"
-HOMEPAGE="http://github.com/jtrupiano/timecop"
+HOMEPAGE="https://github.com/jtrupiano/timecop"
 
 LICENSE="MIT"
 SLOT="0"

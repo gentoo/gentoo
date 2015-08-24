@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Encrypt/Decrypt Password Library that wraps up Blowfish"
-HOMEPAGE="http://pypi.python.org/pypi/edpwd/"
+HOMEPAGE="https://pypi.python.org/pypi/edpwd/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

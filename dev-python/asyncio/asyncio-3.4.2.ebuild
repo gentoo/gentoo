@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{3,4} )
 inherit distutils-r1
 
 DESCRIPTION="reference implementation of PEP 3156"
-HOMEPAGE="http://pypi.python.org/pypi/asyncio https://github.com/python/asyncio"
+HOMEPAGE="https://pypi.python.org/pypi/asyncio https://github.com/python/asyncio"
 SRC_URI="mirror://pypi/a/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A buffered iterator for reading big arrays in small contiguous blocks"
-HOMEPAGE="http://pypi.python.org/pypi/arrayterator"
+HOMEPAGE="https://pypi.python.org/pypi/arrayterator"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

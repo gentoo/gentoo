@@ -6,7 +6,7 @@ EAPI=5
 inherit flag-o-matic xfconf
 
 DESCRIPTION="A lightweight music player (with support for the Xfce desktop environment)"
-HOMEPAGE="http://pragha.wikispaces.com/ http://github.com/matiasdelellis/pragha"
+HOMEPAGE="http://pragha.wikispaces.com/ https://github.com/matiasdelellis/pragha"
 SRC_URI="http://dissonance.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
@@ -53,7 +53,7 @@ src_prepare() {
 
 src_configure() {
 	# src/cdda.h should #include config.h to get this defined:
-	# http://github.com/matiasdelellis/pragha/issues/46
+	# https://github.com/matiasdelellis/pragha/issues/46
 	append-cppflags -DHAVE_PARANOIA_NEW_INCLUDES
 	xfconf_src_configure
 }

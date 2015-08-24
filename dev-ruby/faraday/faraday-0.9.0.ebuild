@@ -16,7 +16,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="HTTP/REST API client library with pluggable components"
-HOMEPAGE="http://github.com/lostisland/faraday"
+HOMEPAGE="https://github.com/lostisland/faraday"
 SRC_URI="https://github.com/lostisland/faraday/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

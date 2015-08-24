@@ -11,7 +11,7 @@ MY_PN="WebHelpers"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Web Helpers"
-HOMEPAGE="http://webhelpers.groovie.org/ http://pypi.python.org/pypi/WebHelpers"
+HOMEPAGE="http://webhelpers.groovie.org/ https://pypi.python.org/pypi/WebHelpers"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

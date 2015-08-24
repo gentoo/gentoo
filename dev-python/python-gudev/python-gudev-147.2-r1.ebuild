@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools-utils python-r1 vcs-snapshot eutils
 
 DESCRIPTION="Python binding to the GUDev udev helper library"
-HOMEPAGE="http://github.com/nzjrs/python-gudev"
+HOMEPAGE="https://github.com/nzjrs/python-gudev"
 SRC_URI="https://github.com/nzjrs/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"

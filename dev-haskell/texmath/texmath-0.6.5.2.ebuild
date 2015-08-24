@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Conversion of LaTeX math formulas to MathML or OMML"
-HOMEPAGE="http://github.com/jgm/texmath"
+HOMEPAGE="https://github.com/jgm/texmath"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"

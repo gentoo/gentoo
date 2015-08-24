@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="GLib bridge for libmowgli-2 eventing"
-HOMEPAGE="http://github.com/nenolod/libmowgli-glib"
+HOMEPAGE="https://github.com/nenolod/libmowgli-glib"
 SRC_URI="http://tortois.es/~nenolod/distfiles/${P}.tar.bz2"
 IUSE=""
 

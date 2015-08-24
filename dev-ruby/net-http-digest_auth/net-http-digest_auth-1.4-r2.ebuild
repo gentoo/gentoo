@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.txt"
 inherit ruby-fakegem
 
 DESCRIPTION="An implementation of RFC 2617 - Digest Access Authentication"
-HOMEPAGE="http://github.com/drbrain/net-http-digest_auth"
+HOMEPAGE="https://github.com/drbrain/net-http-digest_auth"
 
 LICENSE="MIT"
 SLOT="0"

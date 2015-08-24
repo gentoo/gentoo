@@ -11,7 +11,7 @@ MY_PN="SimpleTAL"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Stand alone Python implementation of the Zope TAL, TALES and METAL specs for HTML/XML templates"
-HOMEPAGE="http://www.owlfish.com/software/simpleTAL/ http://pypi.python.org/pypi/SimpleTAL"
+HOMEPAGE="http://www.owlfish.com/software/simpleTAL/ https://pypi.python.org/pypi/SimpleTAL"
 SRC_URI="http://www.owlfish.com/software/simpleTAL/downloads/${MY_P}.tar.gz"
 
 LICENSE="BSD"

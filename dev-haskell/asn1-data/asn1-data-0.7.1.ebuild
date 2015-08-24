@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="ASN1 data reader and writer in RAW, BER and DER forms"
-HOMEPAGE="http://github.com/vincenthz/hs-asn1-data"
+HOMEPAGE="https://github.com/vincenthz/hs-asn1-data"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Read/rewrite/write Python ASTs"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://pypi.python.org/pypi/astor"
+HOMEPAGE="https://pypi.python.org/pypi/astor"
 
 LICENSE="BSD"
 SLOT="0"

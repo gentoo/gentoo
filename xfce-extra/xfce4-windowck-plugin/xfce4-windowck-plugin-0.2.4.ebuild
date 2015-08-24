@@ -7,8 +7,8 @@ EAUTORECONF=1
 inherit xfconf
 
 DESCRIPTION="Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel"
-HOMEPAGE="http://github.com/cedl38/xfce4-windowck-plugin"
-SRC_URI="http://github.com/cedl38/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/cedl38/xfce4-windowck-plugin"
+SRC_URI="https://github.com/cedl38/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

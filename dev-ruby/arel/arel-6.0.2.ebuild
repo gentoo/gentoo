@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="arel.gemspec"
 inherit ruby-fakegem versionator
 
 DESCRIPTION="Arel is a Relational Algebra for Ruby"
-HOMEPAGE="http://github.com/rails/arel"
+HOMEPAGE="https://github.com/rails/arel"
 SRC_URI="https://github.com/rails/arel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

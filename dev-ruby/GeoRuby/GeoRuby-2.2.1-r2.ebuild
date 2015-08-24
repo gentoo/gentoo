@@ -18,7 +18,7 @@ RUBY_FAKEGEM_NAME="georuby"
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby data holder for OGC Simple Features"
-HOMEPAGE="http://github.com/nofxx/georuby"
+HOMEPAGE="https://github.com/nofxx/georuby"
 
 LICENSE="MIT"
 SLOT="0"

@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 inherit ruby-fakegem
 
 DESCRIPTION="An automatic logger for HTTP requests in Ruby"
-HOMEPAGE="http://github.com/chrisk/samuel"
+HOMEPAGE="https://github.com/chrisk/samuel"
 
 LICENSE="MIT"
 SLOT="0"

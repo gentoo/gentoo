@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A simple and Pythonic XML template language"
-HOMEPAGE="http://www.kid-templating.org/ http://pypi.python.org/pypi/kid"
+HOMEPAGE="http://www.kid-templating.org/ https://pypi.python.org/pypi/kid"
 SRC_URI="http://www.kid-templating.org/dist/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"

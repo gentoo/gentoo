@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="A tiny ruby module for Amazon EC2 intance metadata"
-HOMEPAGE="http://github.com/bkaney/litc"
+HOMEPAGE="https://github.com/bkaney/litc"
 
 IUSE=""
 LICENSE="MIT"

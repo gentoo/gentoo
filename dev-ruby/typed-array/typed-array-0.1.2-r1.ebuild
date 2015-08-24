@@ -13,7 +13,7 @@ USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 inherit ruby-fakegem
 DESCRIPTION="Gem provides enforced-type functionality to Arrays"
-HOMEPAGE="http://github.com/yaauie/typed-array"
+HOMEPAGE="https://github.com/yaauie/typed-array"
 
 LICENSE="MIT"
 SLOT="0"

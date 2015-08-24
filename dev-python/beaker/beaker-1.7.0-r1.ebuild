@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="A Session and Caching library with WSGI Middleware"
-HOMEPAGE="https://github.com/bbangert/beaker http://pypi.python.org/pypi/Beaker"
+HOMEPAGE="https://github.com/bbangert/beaker https://pypi.python.org/pypi/Beaker"
 SRC_URI="https://github.com/bbangert/${PN}/archive/v1.7.0dev.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

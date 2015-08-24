@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="Retrieve the source code for a method"
-HOMEPAGE="http://github.com/banister/method_source"
+HOMEPAGE="https://github.com/banister/method_source"
 IUSE=""
 SLOT="0"
 

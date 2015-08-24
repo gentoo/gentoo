@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby library that pretty prints Ruby objects in full color with proper indentation"
-HOMEPAGE="http://github.com/michaeldv/awesome_print"
+HOMEPAGE="https://github.com/michaeldv/awesome_print"
 LICENSE="MIT"
 
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"

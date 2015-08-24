@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="sanitize untrusted HTML to prevent XSS attacks"
-HOMEPAGE="http://github.com/yesodweb/haskell-xss-sanitize"
+HOMEPAGE="https://github.com/yesodweb/haskell-xss-sanitize"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="PyYAML-${PV}"
 
 DESCRIPTION="YAML parser and emitter for Python"
-HOMEPAGE="http://pyyaml.org/wiki/PyYAML http://pypi.python.org/pypi/PyYAML"
+HOMEPAGE="http://pyyaml.org/wiki/PyYAML https://pypi.python.org/pypi/PyYAML"
 SRC_URI="http://pyyaml.org/download/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

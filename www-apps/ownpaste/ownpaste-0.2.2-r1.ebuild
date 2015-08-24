@@ -15,7 +15,7 @@ fi
 inherit distutils-r1 ${HG_ECLASS}
 
 DESCRIPTION="Private pastebin (server-side implementation)"
-HOMEPAGE="http://ownpaste.rtfd.org/ http://pypi.python.org/pypi/ownpaste"
+HOMEPAGE="http://ownpaste.rtfd.org/ https://pypi.python.org/pypi/ownpaste"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python module for Chromaprint acoustic fingerprinting and the Acoustid API"
-HOMEPAGE="http://pypi.python.org/pypi/pyacoustid"
+HOMEPAGE="https://pypi.python.org/pypi/pyacoustid"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

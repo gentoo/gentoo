@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile"
 inherit haskell-cabal
 
 DESCRIPTION="This package has been absorbed into profunctors 4.0"
-HOMEPAGE="http://github.com/ekmett/profunctor-extras/"
+HOMEPAGE="https://github.com/ekmett/profunctor-extras/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

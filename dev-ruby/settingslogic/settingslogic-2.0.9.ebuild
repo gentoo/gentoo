@@ -13,7 +13,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A simple configuration / settings solution that uses an ERB enabled YAML file"
-HOMEPAGE="http://github.com/binarylogic/settingslogic"
+HOMEPAGE="https://github.com/binarylogic/settingslogic"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~x86 ~x86-macos"

@@ -12,7 +12,7 @@ MY_PN="Reverend"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Reverend - Simple Bayesian classifier"
-HOMEPAGE="http://divmod.org/trac/wiki/DivmodReverend http://pypi.python.org/pypi/Reverend"
+HOMEPAGE="http://divmod.org/trac/wiki/DivmodReverend https://pypi.python.org/pypi/Reverend"
 SRC_URI="mirror://sourceforge/reverend/${MY_P}.tar.gz mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

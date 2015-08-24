@@ -11,7 +11,7 @@ GITHUB_COMMIT="c5e075b"
 inherit apache-module
 
 DESCRIPTION="A simple FastCGI handler module"
-HOMEPAGE="http://github.com/hollow/mod_fastcgi_handler"
+HOMEPAGE="https://github.com/hollow/mod_fastcgi_handler"
 SRC_URI="http://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"

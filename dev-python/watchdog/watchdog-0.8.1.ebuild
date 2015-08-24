@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Python API and shell utilities to monitor file system events"
-HOMEPAGE="http://github.com/gorakhargosh/watchdog"
+HOMEPAGE="https://github.com/gorakhargosh/watchdog"
 SRC_URI="mirror://pypi/w/watchdog/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

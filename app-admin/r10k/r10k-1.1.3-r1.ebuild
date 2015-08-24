@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Puppet environment and module deployment"
-HOMEPAGE="http://github.com/adrienthebo/r10k"
+HOMEPAGE="https://github.com/adrienthebo/r10k"
 
 LICENSE="Apache-2.0"
 SLOT="0"

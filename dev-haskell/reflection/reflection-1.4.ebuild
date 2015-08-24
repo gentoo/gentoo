@@ -11,7 +11,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Reifies arbitrary terms into types that can be reflected back into terms"
-HOMEPAGE="http://github.com/ekmett/reflection"
+HOMEPAGE="https://github.com/ekmett/reflection"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

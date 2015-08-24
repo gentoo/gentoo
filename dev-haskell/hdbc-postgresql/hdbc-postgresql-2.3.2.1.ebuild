@@ -13,7 +13,7 @@ MY_PN="HDBC-postgresql"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="PostgreSQL driver for HDBC"
-HOMEPAGE="http://github.com/hdbc/hdbc-postgresql"
+HOMEPAGE="https://github.com/hdbc/hdbc-postgresql"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

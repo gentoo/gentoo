@@ -9,8 +9,8 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Lightweight cross-platform POSIX emulation layer for Java"
-HOMEPAGE="http://github.com/jnr/"
-SRC_URI="http://github.com/jnr/${PN}/tarball/${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/jnr/"
+SRC_URI="https://github.com/jnr/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="|| ( CPL-1.0 GPL-2 LGPL-2.1 )"
 SLOT="1.1"

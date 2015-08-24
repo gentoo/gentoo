@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="HTTP request/response parser for python in C"
-HOMEPAGE="http://github.com/benoitc/http-parser"
+HOMEPAGE="https://github.com/benoitc/http-parser"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -10,8 +10,8 @@ WANT_ANT_TASKS="ant-nodeps"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A pure-java port of asmjit"
-HOMEPAGE="http://github.com/wmeissner/jnr-x86asm/"
-SRC_URI="http://github.com/wmeissner/${PN}/tarball/0.1 -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/wmeissner/jnr-x86asm/"
+SRC_URI="https://github.com/wmeissner/${PN}/tarball/0.1 -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

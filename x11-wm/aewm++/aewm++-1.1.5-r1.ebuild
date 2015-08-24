@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A window manager with more modern features than aewm but with the same look and feel"
-HOMEPAGE="http://github.com/frankhale/aewmpp"
+HOMEPAGE="https://github.com/frankhale/aewmpp"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

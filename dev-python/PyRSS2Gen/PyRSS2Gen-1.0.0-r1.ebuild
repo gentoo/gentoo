@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="RSS feed generator written in Python"
-HOMEPAGE="http://www.dalkescientific.com/Python/PyRSS2Gen.html http://pypi.python.org/pypi/PyRSS2Gen"
+HOMEPAGE="http://www.dalkescientific.com/Python/PyRSS2Gen.html https://pypi.python.org/pypi/PyRSS2Gen"
 SRC_URI="http://www.dalkescientific.com/Python/${P}.tar.gz"
 
 LICENSE="BSD"

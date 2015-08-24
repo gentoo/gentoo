@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Lenses, Folds and Traversals"
-HOMEPAGE="http://github.com/ekmett/lens/"
+HOMEPAGE="https://github.com/ekmett/lens/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

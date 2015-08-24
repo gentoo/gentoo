@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.md"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="Adds a streamy multipart form post capability to Net::HTTP"
-HOMEPAGE="http://github.com/nicksieger/multipart-post"
+HOMEPAGE="https://github.com/nicksieger/multipart-post"
 
 LICENSE="MIT"
 SLOT="0"

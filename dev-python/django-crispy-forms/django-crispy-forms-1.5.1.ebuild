@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Best way to have Django DRY forms"
 HOMEPAGE="
 	https://pypi.python.org/pypi/django-crispy-forms/
-	http://github.com/maraujop/django-crispy-forms
+	https://github.com/maraujop/django-crispy-forms
 	https://django-crispy-forms.readthedocs.org/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

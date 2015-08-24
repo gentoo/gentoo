@@ -16,7 +16,7 @@ MY_PN="Paste"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tools for using a Web Server Gateway Interface stack"
-HOMEPAGE="http://pythonpaste.org http://pypi.python.org/pypi/Paste"
+HOMEPAGE="http://pythonpaste.org https://pypi.python.org/pypi/Paste"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

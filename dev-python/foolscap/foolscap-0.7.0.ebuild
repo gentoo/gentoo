@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="RPC protocol for Twisted"
-HOMEPAGE="http://foolscap.lothar.com/trac http://pypi.python.org/pypi/foolscap"
+HOMEPAGE="http://foolscap.lothar.com/trac https://pypi.python.org/pypi/foolscap"
 SRC_URI="http://${PN}.lothar.com/releases/${P}.tar.gz"
 
 LICENSE="MIT"

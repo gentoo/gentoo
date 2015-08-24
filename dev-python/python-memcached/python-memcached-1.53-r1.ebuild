@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Pure python memcached client"
-HOMEPAGE="http://www.tummy.com/Community/software/python-memcached/ http://pypi.python.org/pypi/python-memcached"
+HOMEPAGE="http://www.tummy.com/Community/software/python-memcached/ https://pypi.python.org/pypi/python-memcached"
 SRC_URI="ftp://ftp.tummy.com/pub/python-memcached/old-releases/${P}.tar.gz"
 
 LICENSE="OSL-2.0"

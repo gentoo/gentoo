@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Pointed and copointed data"
-HOMEPAGE="http://github.com/ekmett/pointed/"
+HOMEPAGE="https://github.com/ekmett/pointed/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

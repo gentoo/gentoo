@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python Documentation Utilities"
-HOMEPAGE="http://docutils.sourceforge.net/ http://pypi.python.org/pypi/docutils"
+HOMEPAGE="http://docutils.sourceforge.net/ https://pypi.python.org/pypi/docutils"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 SRC_URI+=" glep? ( mirror://gentoo/glep-0.4-r1.tbz2 )"
 

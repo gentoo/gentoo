@@ -11,7 +11,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Semigroupoids: Category sans id"
-HOMEPAGE="http://github.com/ekmett/semigroupoids"
+HOMEPAGE="https://github.com/ekmett/semigroupoids"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

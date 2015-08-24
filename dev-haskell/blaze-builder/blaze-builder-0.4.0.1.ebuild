@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Efficient buffered output"
-HOMEPAGE="http://github.com/lpsmith/blaze-builder"
+HOMEPAGE="https://github.com/lpsmith/blaze-builder"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

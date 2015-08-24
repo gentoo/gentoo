@@ -7,7 +7,7 @@ PYTHON_COMPAT=(python{2_7,3_{3,4}} pypy)
 inherit distutils-r1
 
 DESCRIPTION="An implementation of JSON-Schema validation for Python"
-HOMEPAGE="http://pypi.python.org/pypi/jsonschema"
+HOMEPAGE="https://pypi.python.org/pypi/jsonschema"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -16,7 +16,7 @@ RUBY_FAKEGEM_NAME="${MY_OWNER}-${PN}"
 inherit ruby-fakegem
 
 DESCRIPTION="RSpec-esque matchers for use in Test::Unit"
-HOMEPAGE="http://github.com/mcmire/matchy"
+HOMEPAGE="https://github.com/mcmire/matchy"
 
 LICENSE="MIT"
 SLOT="0"

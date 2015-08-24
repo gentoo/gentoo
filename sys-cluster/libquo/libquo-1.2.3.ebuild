@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools-utils
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://github.com/losalamos/${PN}.git http://github.com/losalamos/${PN}.git"
+	EGIT_REPO_URI="git://github.com/losalamos/${PN}.git https://github.com/losalamos/${PN}.git"
 	inherit git-r3
 	KEYWORDS=""
 	AUTOTOOLS_AUTORECONF=1

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 ) # does not work with py3 yet
 inherit autotools eutils vcs-snapshot python-single-r1
 
 DESCRIPTION="Openstack Unix Guest Agent"
-HOMEPAGE="http://github.com/rackerlabs/openstack-guest-agents-unix"
+HOMEPAGE="https://github.com/rackerlabs/openstack-guest-agents-unix"
 SRC_URI="https://github.com/rackerlabs/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

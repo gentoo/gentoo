@@ -8,7 +8,7 @@ inherit eutils mono gnome2-utils vcs-snapshot games
 
 DESCRIPTION="A free RTS engine supporting games like Command & Conquer and Red Alert"
 HOMEPAGE="http://open-ra.org/"
-SRC_URI="http://github.com/OpenRA/OpenRA/tarball/release-${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/OpenRA/OpenRA/tarball/release-${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

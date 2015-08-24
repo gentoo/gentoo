@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python source code checking tool"
-HOMEPAGE="http://pychecker.sourceforge.net/ http://pypi.python.org/pypi/PyChecker"
+HOMEPAGE="http://pychecker.sourceforge.net/ https://pypi.python.org/pypi/PyChecker"
 SRC_URI="mirror://sourceforge/pychecker/${P}.tar.gz"
 
 LICENSE="BSD"

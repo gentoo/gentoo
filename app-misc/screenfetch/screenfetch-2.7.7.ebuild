@@ -7,7 +7,7 @@ EAPI=4
 MY_PN="${PN/f/F}"
 DESCRIPTION="A Bash Screenshot Information Tool"
 HOMEPAGE="https://github.com/KittyKatt/screenFetch"
-SRC_URI="http://github.com/KittyKatt/${MY_PN}/zipball/v${PV} -> ${P}.zip"
+SRC_URI="https://github.com/KittyKatt/${MY_PN}/zipball/v${PV} -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

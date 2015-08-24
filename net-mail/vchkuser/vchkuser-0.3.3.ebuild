@@ -7,7 +7,7 @@ EAPI="2"
 inherit autotools qmail
 
 DESCRIPTION="qmail-spp plugin to check recipient existance with vpopmail"
-HOMEPAGE="http://github.com/hollow/vchkuser"
+HOMEPAGE="https://github.com/hollow/vchkuser"
 SRC_URI="http://bb.xnull.de/projects/vchkuser/dist/${P}.tar.bz2"
 
 LICENSE="BSD"

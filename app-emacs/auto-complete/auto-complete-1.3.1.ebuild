@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Auto-complete package"
 HOMEPAGE="http://cx4a.org/software/auto-complete/
-	http://github.com/m2ym/auto-complete/"
+	https://github.com/m2ym/auto-complete/"
 SRC_URI="http://cx4a.org/pub/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3+ FDL-1.1+"

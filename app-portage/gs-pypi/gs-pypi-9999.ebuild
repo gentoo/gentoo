@@ -12,7 +12,7 @@ DESCRIPTION="g-sorcery backend for pypi packages"
 HOMEPAGE="https://github.com/jauhien/gs-pypi"
 SRC_URI=""
 EGIT_BRANCH="master"
-EGIT_REPO_URI="http://github.com/jauhien/gs-pypi"
+EGIT_REPO_URI="https://github.com/jauhien/gs-pypi"
 
 LICENSE="GPL-2"
 SLOT="0"

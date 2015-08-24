@@ -11,7 +11,7 @@ MY_PN="TurboKid"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python template plugin that supports Kid templates"
-HOMEPAGE="http://pypi.python.org/pypi/TurboKid"
+HOMEPAGE="https://pypi.python.org/pypi/TurboKid"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

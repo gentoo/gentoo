@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="This is an extraction of the auto_link method from rails"
-HOMEPAGE="http://github.com/tenderlove/rails_autolink"
+HOMEPAGE="https://github.com/tenderlove/rails_autolink"
 
 LICENSE="MIT"
 SLOT="0"

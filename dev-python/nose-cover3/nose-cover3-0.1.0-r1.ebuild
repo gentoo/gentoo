@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Coverage 3.x support for Nose"
-HOMEPAGE="https://github.com/ask/nosecover3 http://pypi.python.org/pypi/nose-cover3"
+HOMEPAGE="https://github.com/ask/nosecover3 https://pypi.python.org/pypi/nose-cover3"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"

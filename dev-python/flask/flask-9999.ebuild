@@ -14,7 +14,7 @@ DESCRIPTION="A microframework based on Werkzeug, Jinja2 and good intentions"
 MY_PN="Flask"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
-HOMEPAGE="http://pypi.python.org/pypi/Flask"
+HOMEPAGE="https://pypi.python.org/pypi/Flask"
 
 LICENSE="BSD"
 SLOT="0"

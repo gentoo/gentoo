@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Syntax highlighting"
-HOMEPAGE="http://github.com/jgm/highlighting-kate"
+HOMEPAGE="https://github.com/jgm/highlighting-kate"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"

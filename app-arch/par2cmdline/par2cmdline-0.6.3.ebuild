@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="A PAR-2.0 file verification and repair tool"
-HOMEPAGE="http://github.com/BlackIkeEagle/par2cmdline"
-SRC_URI="http://github.com/BlackIkeEagle/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/BlackIkeEagle/par2cmdline"
+SRC_URI="https://github.com/BlackIkeEagle/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

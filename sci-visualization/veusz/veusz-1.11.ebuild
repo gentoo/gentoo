@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 inherit distutils eutils fdo-mime
 
 DESCRIPTION="Qt based scientific plotting package with good Postscript output"
-HOMEPAGE="http://home.gna.org/veusz/ http://pypi.python.org/pypi/veusz"
+HOMEPAGE="http://home.gna.org/veusz/ https://pypi.python.org/pypi/veusz"
 SRC_URI="http://download.gna.org/${PN}/${P}.tar.gz"
 
 IUSE="doc examples fits"

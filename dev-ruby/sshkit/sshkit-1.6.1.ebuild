@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md FAQ.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="SSHKit makes it easy to write structured, testable SSH commands in Ruby"
-HOMEPAGE="http://github.com/capistrano/sshkit"
+HOMEPAGE="https://github.com/capistrano/sshkit"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -12,7 +12,7 @@ MY_PN="Pyro4"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Advanced and powerful Distributed Object Technology system written entirely in Python"
-HOMEPAGE="http://www.xs4all.nl/~irmen/pyro/ http://pypi.python.org/pypi/Pyro4"
+HOMEPAGE="http://www.xs4all.nl/~irmen/pyro/ https://pypi.python.org/pypi/Pyro4"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

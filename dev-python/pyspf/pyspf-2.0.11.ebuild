@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ipv6?"
 inherit distutils-r1
 
 DESCRIPTION="Python implementation of the Sender Policy Framework (SPF) protocol"
-HOMEPAGE="http://pypi.python.org/pypi/pyspf"
+HOMEPAGE="https://pypi.python.org/pypi/pyspf"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Async Framework"
 HOMEPAGE="
 	http://gitorious.org/git-python/async
-	http://pypi.python.org/pypi/async"
+	https://pypi.python.org/pypi/async"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Bloom filter (bloomfilter) for Python built on mmap"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://pypi.python.org/pypi/pybloomfiltermmap"
+HOMEPAGE="https://pypi.python.org/pypi/pybloomfiltermmap"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils prefix
 
 DESCRIPTION="Script to recover diskspace wasted for unneeded locale files and localized man pages"
-HOMEPAGE="http://gentoo.org
+HOMEPAGE="https://gentoo.org
 http://cgit.gentoo.org/proj/localepurge.git"
 SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tbz2"
 

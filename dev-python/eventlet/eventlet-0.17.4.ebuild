@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="Highly concurrent networking library"
-HOMEPAGE="http://pypi.python.org/pypi/eventlet https://github.com/eventlet/eventlet/"
+HOMEPAGE="https://pypi.python.org/pypi/eventlet https://github.com/eventlet/eventlet/"
 SRC_URI="mirror://pypi/e/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

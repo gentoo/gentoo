@@ -16,7 +16,7 @@ RUBY_FAKEGEM_EXTRADOC="CONTRIBUTORS README.markdown"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="A fake filesystem. Use it in your tests"
-HOMEPAGE="http://github.com/defunkt/fakefs"
+HOMEPAGE="https://github.com/defunkt/fakefs"
 
 LICENSE="MIT"
 SLOT="0"

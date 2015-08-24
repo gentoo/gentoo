@@ -7,7 +7,7 @@ EAPI=5
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="http://github.com/orocos/orocos_kinematics_dynamics"
+	EGIT_REPO_URI="https://github.com/orocos/orocos_kinematics_dynamics"
 fi
 
 inherit ${SCM} cmake-utils
@@ -17,7 +17,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
-	SRC_URI="http://github.com/orocos/orocos_kinematics_dynamics/archive/v${PV}.tar.gz -> orocos_kinematics_dynamics-${PV}.tar.gz"
+	SRC_URI="https://github.com/orocos/orocos_kinematics_dynamics/archive/v${PV}.tar.gz -> orocos_kinematics_dynamics-${PV}.tar.gz"
 fi
 
 DESCRIPTION="Kinematics and Dynamics Library (KDL)"

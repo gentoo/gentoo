@@ -6,7 +6,7 @@ EAPI=4
 inherit gnome2-utils
 
 DESCRIPTION="A system tray for pulseaudio controls (replacement for the deprecated padevchooser)"
-HOMEPAGE="http://github.com/christophgysin/pasystray"
+HOMEPAGE="https://github.com/christophgysin/pasystray"
 SRC_URI="mirror://github/christophgysin/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

@@ -14,7 +14,7 @@ PARROT_VERSION="6.7.0"
 
 DESCRIPTION="Not Quite Perl, a Perl 6 bootstrapping compiler"
 HOMEPAGE="http://rakudo.org/"
-SRC_URI="http://github.com/perl6/${PN}/tarball/${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/perl6/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="Artistic-2"
 SLOT="0"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="A tool for monitoring webpages for updates"
-HOMEPAGE="http://thp.io/2008/urlwatch/ http://pypi.python.org/pypi/urlwatch"
+HOMEPAGE="http://thp.io/2008/urlwatch/ https://pypi.python.org/pypi/urlwatch"
 SRC_URI="http://thp.io/2008/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

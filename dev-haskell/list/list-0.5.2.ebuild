@@ -13,7 +13,7 @@ MY_PN="List"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="List monad transformer and class"
-HOMEPAGE="http://github.com/yairchu/generator/tree"
+HOMEPAGE="https://github.com/yairchu/generator/tree"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

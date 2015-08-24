@@ -11,7 +11,7 @@ WEBAPP_NO_AUTO_INSTALL="yes"
 inherit bash-completion-r1 distutils-r1 eutils git-r3 versionator webapp
 
 DESCRIPTION="High-level Python web framework"
-HOMEPAGE="http://www.djangoproject.com/ http://pypi.python.org/pypi/Django"
+HOMEPAGE="http://www.djangoproject.com/ https://pypi.python.org/pypi/Django"
 SRC_URI=""
 EGIT_REPO_URI="
 	https://github.com/django/django.git

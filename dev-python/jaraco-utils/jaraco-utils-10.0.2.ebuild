@@ -9,7 +9,7 @@ inherit distutils-r1
 
 MY_PN="jaraco.util"
 DESCRIPTION="General utility modules that supply commonly-used functionality"
-HOMEPAGE="http://pypi.python.org/pypi/jaraco.util"
+HOMEPAGE="https://pypi.python.org/pypi/jaraco.util"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip"
 
 LICENSE="MIT"

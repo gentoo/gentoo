@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="utility belt for automated testing in python for python"
-HOMEPAGE="http://github.com/gabrielfalcao/sure"
+HOMEPAGE="https://github.com/gabrielfalcao/sure"
 SRC_URI="https://github.com/gabrielfalcao/${PN}/archive/${PV}.tar.gz -> ${P}-r1.tar.gz"
 
 S="${WORKDIR}/${P}-r1"

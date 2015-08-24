@@ -10,7 +10,7 @@ inherit distutils-r1 eutils readme.gentoo
 
 DESCRIPTION="Rope in Emacs"
 HOMEPAGE="http://rope.sourceforge.net/ropemacs.html
-	http://pypi.python.org/pypi/ropemacs"
+	https://pypi.python.org/pypi/ropemacs"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-1+"		# GPL without version

@@ -6,7 +6,7 @@ EAPI=5
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="Modern rewrite of Quick Image Viewer"
-HOMEPAGE="http://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/"
+HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/"
 SRC_URI="https://github.com/phillipberndt/pqiv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

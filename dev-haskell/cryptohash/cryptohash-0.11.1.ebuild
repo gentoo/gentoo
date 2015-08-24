@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="collection of crypto hashes, fast, pure and practical"
-HOMEPAGE="http://github.com/vincenthz/hs-cryptohash"
+HOMEPAGE="https://github.com/vincenthz/hs-cryptohash"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

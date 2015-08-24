@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="A generic, spec-compliant, thorough implementation of the OAuth request-signing logic"
-HOMEPAGE="https://github.com/idan/oauthlib http://pypi.python.org/pypi/oauthlib"
+HOMEPAGE="https://github.com/idan/oauthlib https://pypi.python.org/pypi/oauthlib"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

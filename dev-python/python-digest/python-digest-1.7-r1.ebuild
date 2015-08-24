@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A Python library to aid in implementing HTTP Digest Authentication"
-HOMEPAGE="http://pypi.python.org/pypi/python-digest/ https://bitbucket.org/akoha/python-digest/"
+HOMEPAGE="https://pypi.python.org/pypi/python-digest/ https://bitbucket.org/akoha/python-digest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="amd64 x86"
 IUSE="test"

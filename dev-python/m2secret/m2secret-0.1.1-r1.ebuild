@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Encryption and decryption module and CLI utility"
-HOMEPAGE="http://www.heikkitoivonen.net/m2secret http://pypi.python.org/pypi/m2secret"
+HOMEPAGE="http://www.heikkitoivonen.net/m2secret https://pypi.python.org/pypi/m2secret"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

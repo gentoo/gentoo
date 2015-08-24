@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit eutils haskell-cabal
 
 DESCRIPTION="Splittable Unique Identifier Supply"
-HOMEPAGE="http://github.com/sebfisch/uniqueid/wikis"
+HOMEPAGE="https://github.com/sebfisch/uniqueid/wikis"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

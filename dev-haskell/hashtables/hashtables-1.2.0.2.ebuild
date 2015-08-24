@@ -11,7 +11,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Mutable hash tables in the ST monad"
-HOMEPAGE="http://github.com/gregorycollins/hashtables"
+HOMEPAGE="https://github.com/gregorycollins/hashtables"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -17,7 +17,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="default version.txt"
 inherit ruby-fakegem
 
 DESCRIPTION="Tool that creates new Ruby projects from a code skeleton"
-HOMEPAGE="http://github.com/TwP/bones"
+HOMEPAGE="https://github.com/TwP/bones"
 
 IUSE="test"
 LICENSE="MIT"

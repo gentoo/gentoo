@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Haskell 98 Profunctors"
-HOMEPAGE="http://github.com/ekmett/profunctors/"
+HOMEPAGE="https://github.com/ekmett/profunctors/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

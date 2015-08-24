@@ -14,7 +14,7 @@ inherit ruby-fakegem versionator
 
 DESCRIPTION="Framework for designing email-service layers"
 HOMEPAGE="https://github.com/rails/rails"
-SRC_URI="http://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
+SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

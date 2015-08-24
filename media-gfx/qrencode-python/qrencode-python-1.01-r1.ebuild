@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A simple wrapper for the C qrencode library"
-HOMEPAGE="http://pypi.python.org/pypi/qrencode/ https://github.com/Arachnid/pyqrencode/"
+HOMEPAGE="https://pypi.python.org/pypi/qrencode/ https://github.com/Arachnid/pyqrencode/"
 SRC_URI="mirror://pypi/q/qrencode/qrencode-${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"

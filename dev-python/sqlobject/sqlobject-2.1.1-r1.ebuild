@@ -13,7 +13,7 @@ MY_PN="SQLObject"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Object-Relational Manager, aka database wrapper"
-HOMEPAGE="http://sqlobject.org/ http://pypi.python.org/pypi/SQLObject"
+HOMEPAGE="http://sqlobject.org/ https://pypi.python.org/pypi/SQLObject"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

@@ -7,7 +7,7 @@ inherit cmake-utils toolchain-funcs user
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
-SRC_URI="http://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm ~x86"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 public-domain"

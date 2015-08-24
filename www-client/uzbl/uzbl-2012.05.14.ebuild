@@ -17,7 +17,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	inherit vcs-snapshot
 	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-	SRC_URI="http://github.com/Dieterbe/${PN}/tarball/${PV} -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Dieterbe/${PN}/tarball/${PV} -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Web interface tools which adhere to the unix philosophy"

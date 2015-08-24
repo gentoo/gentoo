@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="A simple wrapper for the C qrencode library"
-HOMEPAGE="http://pypi.python.org/pypi/qrencode/ https://github.com/Arachnid/pyqrencode/"
+HOMEPAGE="https://pypi.python.org/pypi/qrencode/ https://github.com/Arachnid/pyqrencode/"
 #SRC_URI="mirror://pypi/q/qrencode/qrencode-${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="https://github.com/Arachnid/pyqrencode/tarball/486bb7b64e3ce5483f65e375a67da0fa6d02ca92 -> ${P}.tar.gz"
 

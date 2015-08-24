@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="Ruby wrapper for the OAuth 2.0 protocol built with a similar style to the original OAuth gem"
-HOMEPAGE="http://github.com/intridea/oauth2"
+HOMEPAGE="https://github.com/intridea/oauth2"
 
 LICENSE="MIT"
 SLOT="0"

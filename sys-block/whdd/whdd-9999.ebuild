@@ -8,7 +8,7 @@ EGIT_REPO_URI="git://github.com/krieger-od/whdd.git"
 inherit cmake-utils git-2
 
 DESCRIPTION="Diagnostic and recovery tool for block devices"
-HOMEPAGE="http://github.com/krieger-od/whdd"
+HOMEPAGE="https://github.com/krieger-od/whdd"
 
 LICENSE="GPL-2"
 SLOT="0"

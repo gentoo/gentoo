@@ -16,11 +16,11 @@ inherit qt4-r2 multilib ${UNPACKER_ECLASS}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	KEYWORDS="-* ~x86 ~amd64"
-	SRC_URI="http://github.com/kekekeks/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kekekeks/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="An LD_PRELOAD wrapper that adds tabs to Skype for Linux"
-HOMEPAGE="http://github.com/kekekeks/skypetab-ng"
+HOMEPAGE="https://github.com/kekekeks/skypetab-ng"
 LICENSE="LGPL-3"
 SLOT="0"
 IUSE=""

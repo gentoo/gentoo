@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A framework for writing asynchronous long-running, high-performance network servers in Python"
-HOMEPAGE="http://www.amk.ca/python/code/medusa.html http://pypi.python.org/pypi/medusa"
+HOMEPAGE="http://www.amk.ca/python/code/medusa.html https://pypi.python.org/pypi/medusa"
 SRC_URI="http://www.amk.ca/files/python/${P}.tar.gz"
 
 LICENSE="PSF-2"

@@ -17,7 +17,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
-	SRC_URI="http://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
+	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
 fi
 

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python wrapper for running a display inside X virtual framebuffer"
 HOMEPAGE="https://github.com/cgoldberg/xvfbwrapper
-	http://pypi.python.org/pypi/xvfbwrapper"
+	https://pypi.python.org/pypi/xvfbwrapper"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

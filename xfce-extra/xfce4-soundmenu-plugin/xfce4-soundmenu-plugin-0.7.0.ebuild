@@ -6,8 +6,8 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="A panel plug-in to control MPRIS2 compatible players like Pragha (from the same authors)"
-HOMEPAGE="http://github.com/matiasdelellis/xfce4-soundmenu-plugin"
-SRC_URI="http://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/matiasdelellis/xfce4-soundmenu-plugin"
+SRC_URI="https://github.com/matiasdelellis/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Fast AES cipher implementation with advanced mode of operations"
-HOMEPAGE="http://github.com/vincenthz/hs-cipher-aes"
+HOMEPAGE="https://github.com/vincenthz/hs-cipher-aes"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -11,7 +11,7 @@ MY_PN="Flask-PyMongo"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="PyMongo support for Flask"
-HOMEPAGE="http://pypi.python.org/pypi/Flask-PyMongo"
+HOMEPAGE="https://pypi.python.org/pypi/Flask-PyMongo"
 SRC_URI="https://github.com/dcrosta/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 #SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 

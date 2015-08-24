@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="pyPgSQL-${PV}"
 
 DESCRIPTION="Python Interface to PostgreSQL"
-HOMEPAGE="http://pypgsql.sourceforge.net/ http://pypi.python.org/pypi/pyPgSQL"
+HOMEPAGE="http://pypgsql.sourceforge.net/ https://pypi.python.org/pypi/pyPgSQL"
 SRC_URI="mirror://sourceforge/pypgsql/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

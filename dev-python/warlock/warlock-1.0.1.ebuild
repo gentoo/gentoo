@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python object model built on JSON schema and JSON patch"
-HOMEPAGE="http://github.com/bcwaldon/warlock"
+HOMEPAGE="https://github.com/bcwaldon/warlock"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

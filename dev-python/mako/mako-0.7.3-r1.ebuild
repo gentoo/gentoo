@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P="Mako-${PV}"
 
 DESCRIPTION="A Python templating language"
-HOMEPAGE="http://www.makotemplates.org/ http://pypi.python.org/pypi/Mako"
+HOMEPAGE="http://www.makotemplates.org/ https://pypi.python.org/pypi/Mako"
 SRC_URI="http://www.makotemplates.org/downloads/${MY_P}.tar.gz"
 
 LICENSE="MIT"

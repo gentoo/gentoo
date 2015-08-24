@@ -11,7 +11,7 @@ inherit distutils-r1
 RESTRICT="test" # needs pygtk
 
 DESCRIPTION="Python code static checker"
-HOMEPAGE="http://www.logilab.org/project/pylint http://pypi.python.org/pypi/pylint"
+HOMEPAGE="http://www.logilab.org/project/pylint https://pypi.python.org/pypi/pylint"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -8,7 +8,7 @@ SUPPORT_PYTHON_ABIS="1"
 inherit distutils eutils
 
 DESCRIPTION="pyparsing is an easy-to-use Python module for text parsing"
-HOMEPAGE="http://pyparsing.wikispaces.com/ http://pypi.python.org/pypi/pyparsing"
+HOMEPAGE="http://pyparsing.wikispaces.com/ https://pypi.python.org/pypi/pyparsing"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

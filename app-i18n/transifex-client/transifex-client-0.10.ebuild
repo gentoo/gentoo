@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A command line interface for Transifex"
-HOMEPAGE="http://pypi.python.org/pypi/transifex-client http://www.transifex.net/"
+HOMEPAGE="https://pypi.python.org/pypi/transifex-client http://www.transifex.net/"
 SRC_URI="https://github.com/transifex/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

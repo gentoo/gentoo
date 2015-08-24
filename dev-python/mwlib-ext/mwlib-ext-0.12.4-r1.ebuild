@@ -12,7 +12,7 @@ MY_PN="${PN/-/.}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Extension module to mwlib to pull in reportlab"
-HOMEPAGE="http://code.pediapress.com/wiki/wiki http://pypi.python.org/pypi/mwlib.ext"
+HOMEPAGE="http://code.pediapress.com/wiki/wiki https://pypi.python.org/pypi/mwlib.ext"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="BSD"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3} pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="A streaming protocol for test results"
-HOMEPAGE="https://launchpad.net/subunit http://pypi.python.org/pypi/python-subunit"
+HOMEPAGE="https://launchpad.net/subunit https://pypi.python.org/pypi/python-subunit"
 SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD"

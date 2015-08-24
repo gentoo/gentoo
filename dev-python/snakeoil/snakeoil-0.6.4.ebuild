@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Miscellaneous python utility code"
-HOMEPAGE="http://github.com/pkgcore/snakeoil"
+HOMEPAGE="https://github.com/pkgcore/snakeoil"
 
 LICENSE="BSD"
 SLOT="0"

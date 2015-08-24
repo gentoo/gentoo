@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRADOC="ChangeLog.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Another synchronous Ruby AMQP client"
-HOMEPAGE="http://github.com/celldee/bunny"
+HOMEPAGE="https://github.com/celldee/bunny"
 
 LICENSE="MIT"
 SLOT="0"

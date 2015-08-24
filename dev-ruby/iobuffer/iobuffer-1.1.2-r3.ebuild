@@ -16,8 +16,8 @@ inherit multilib ruby-fakegem
 GITHUB_USER="tarcieri"
 
 DESCRIPTION="IO::Buffer is a fast byte queue which is primarily intended for non-blocking I/O applications"
-HOMEPAGE="http://github.com/tarcieri/iobuffer"
-SRC_URI="http://github.com/${GITHUB_USER}/iobuffer/tarball/v${PV} -> ${PN}-git-${PV}.tgz"
+HOMEPAGE="https://github.com/tarcieri/iobuffer"
+SRC_URI="https://github.com/${GITHUB_USER}/iobuffer/tarball/v${PV} -> ${PN}-git-${PV}.tgz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~x86-macos"

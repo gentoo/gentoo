@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Enthought Tool Suite: Traits-capable windowing framework"
-HOMEPAGE="https://github.com/enthought/pyface http://pypi.python.org/pypi/pyface"
+HOMEPAGE="https://github.com/enthought/pyface https://pypi.python.org/pypi/pyface"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -13,7 +13,7 @@ RUBY_FAKEGEM_TASK_TEST="test:unit"
 inherit ruby-fakegem
 
 DESCRIPTION="Rails application preloader"
-HOMEPAGE="http://github.com/rails/spring"
+HOMEPAGE="https://github.com/rails/spring"
 
 LICENSE="MIT"
 SLOT="1.1"

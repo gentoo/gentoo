@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Python library to work with pdf files"
-HOMEPAGE="http://pypi.python.org/pypi/${PN}/ https://github.com/mstamy2/PyPDF2"
+HOMEPAGE="https://pypi.python.org/pypi/${PN}/ https://github.com/mstamy2/PyPDF2"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

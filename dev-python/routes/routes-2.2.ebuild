@@ -11,7 +11,7 @@ MY_PN="Routes"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions"
-HOMEPAGE="http://routes.groovie.org http://pypi.python.org/pypi/Routes"
+HOMEPAGE="http://routes.groovie.org https://pypi.python.org/pypi/Routes"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
