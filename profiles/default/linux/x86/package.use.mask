@@ -5,3 +5,7 @@
 # Mike Frysinger <vapier@gentoo.org> (21 Oct 2014)
 # This target supports ASAN/etc... #504200.
 sys-devel/gcc -sanitize
+
+# Greg Turner <gmt@be-evil.net> (24 Aug 2015)
+# Chromium supports widevine cdm on this target (#547630)
+www-client/chromium -widevine

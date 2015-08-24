@@ -123,9 +123,6 @@ if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
 	EBUILD_DEATH_HOOKS+=" chromium_pkg_die";
 fi
 
-# TODO: flag-mask widevine in non-intel profiles in lieu of this
-REQUIRED_USE="|| ( x86 amd64 !widevine )"
-
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
 Some web pages may require additional fonts to display properly.
