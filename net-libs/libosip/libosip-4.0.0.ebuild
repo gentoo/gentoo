@@ -10,7 +10,7 @@ MY_PV=${PV%.?}-${PV##*.}
 MY_PV=${PV}
 MY_P=${PN}2-${MY_PV}
 DESCRIPTION="a simple way to support the Session Initiation Protocol"
-HOMEPAGE="http://www.gnu.org/software/osip/"
+HOMEPAGE="https://www.gnu.org/software/osip/"
 SRC_URI="mirror://gnu/osip/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"

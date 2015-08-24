@@ -7,7 +7,7 @@ EAPI="4"
 inherit libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
-HOMEPAGE="http://www.gnu.org/software/libiconv/"
+HOMEPAGE="https://www.gnu.org/software/libiconv/"
 SRC_URI="mirror://gnu/libiconv/${P}.tar.gz"
 
 LICENSE="GPL-3"

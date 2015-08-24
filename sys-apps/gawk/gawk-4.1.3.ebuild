@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="GNU awk pattern-matching language"
-HOMEPAGE="http://www.gnu.org/software/gawk/gawk.html"
+HOMEPAGE="https://www.gnu.org/software/gawk/gawk.html"
 SRC_URI="mirror://gnu/gawk/${P}.tar.xz"
 
 LICENSE="GPL-2"

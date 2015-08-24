@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils flag-o-matic
 
 DESCRIPTION="Revision Control System"
-HOMEPAGE="http://www.gnu.org/software/rcs/"
+HOMEPAGE="https://www.gnu.org/software/rcs/"
 SRC_URI="mirror://gnu/rcs/${P}.tar.xz"
 
 LICENSE="GPL-3"

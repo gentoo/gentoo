@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils games
 
 DESCRIPTION="A Go-playing program"
-HOMEPAGE="http://www.gnu.org/software/gnugo/devel.html"
+HOMEPAGE="https://www.gnu.org/software/gnugo/devel.html"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-3"

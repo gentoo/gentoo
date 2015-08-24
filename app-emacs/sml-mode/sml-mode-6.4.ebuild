@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs major mode for editing Standard ML"
 HOMEPAGE="http://www.iro.umontreal.ca/~monnier/elisp/"
-# taken from http://elpa.gnu.org/packages/${P}.el
+# taken from https://elpa.gnu.org/packages/${P}.el
 SRC_URI="mirror://gentoo/${P}.el.xz"
 
 LICENSE="GPL-3+"

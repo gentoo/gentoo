@@ -5,7 +5,7 @@
 inherit eutils elisp-common
 
 DESCRIPTION="Fast, high-capacity, identifier database tool"
-HOMEPAGE="http://www.gnu.org/software/idutils/"
+HOMEPAGE="https://www.gnu.org/software/idutils/"
 #DEB_PN="id-utils" # old upstream name for it
 #DEB_P="${DEB_PN}_${PV}"
 #DEB_PR="1"

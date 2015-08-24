@@ -7,7 +7,7 @@ EAPI=4
 inherit flag-o-matic eutils
 
 DESCRIPTION="Use this to make tarballs :)"
-HOMEPAGE="http://www.gnu.org/software/tar/"
+HOMEPAGE="https://www.gnu.org/software/tar/"
 SRC_URI="mirror://gnu/tar/${P}.tar.bz2
 	mirror://gnu-alpha/tar/${P}.tar.bz2"
 

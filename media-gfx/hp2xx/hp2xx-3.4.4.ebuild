@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils base
 
 DESCRIPTION="Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats"
-HOMEPAGE="http://www.gnu.org/software/hp2xx/"
+HOMEPAGE="https://www.gnu.org/software/hp2xx/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

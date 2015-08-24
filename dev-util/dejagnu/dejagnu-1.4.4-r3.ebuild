@@ -5,7 +5,7 @@
 inherit eutils
 
 DESCRIPTION="framework for testing other programs"
-HOMEPAGE="http://www.gnu.org/software/dejagnu/"
+HOMEPAGE="https://www.gnu.org/software/dejagnu/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

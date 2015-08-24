@@ -7,7 +7,7 @@ EAPI=4
 inherit flag-o-matic eutils
 
 DESCRIPTION="Utility to apply diffs to files"
-HOMEPAGE="http://www.gnu.org/software/patch/patch.html"
+HOMEPAGE="https://www.gnu.org/software/patch/patch.html"
 SRC_URI="mirror://gnu/patch/${P}.tar.xz"
 
 LICENSE="GPL-2"

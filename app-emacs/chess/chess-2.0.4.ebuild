@@ -8,9 +8,9 @@ NEED_EMACS=24
 inherit elisp
 
 DESCRIPTION="A chess client and library for Emacs"
-HOMEPAGE="http://elpa.gnu.org/packages/chess.html
+HOMEPAGE="https://elpa.gnu.org/packages/chess.html
 	http://www.emacswiki.org/emacs/ChessMode"
-# Taken from http://elpa.gnu.org/packages/${P}.tar
+# Taken from https://elpa.gnu.org/packages/${P}.tar
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 	mirror://gentoo/emacs-chess-sounds-${PV%.*}.tar.bz2
 	mirror://gentoo/emacs-chess-pieces-${PV%.*}.tar.bz2"

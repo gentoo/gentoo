@@ -7,7 +7,7 @@ EAPI="3"
 inherit eutils
 
 DESCRIPTION="Library for manipulating Unicode strings and C strings according to the Unicode standard"
-HOMEPAGE="http://www.gnu.org/software/libunistring/"
+HOMEPAGE="https://www.gnu.org/software/libunistring/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3 GPL-3"

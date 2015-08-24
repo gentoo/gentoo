@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="GNU Interactive Tools - increase speed and efficiency of most daily tasks"
-HOMEPAGE="http://www.gnu.org/software/gnuit/"
+HOMEPAGE="https://www.gnu.org/software/gnuit/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 FDL-1.3"

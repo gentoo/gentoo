@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="The GNU Calendar - a replacement for cal"
-HOMEPAGE="http://www.gnu.org/software/gcal/"
+HOMEPAGE="https://www.gnu.org/software/gcal/"
 SRC_URI="mirror://gnu/gcal/${P}.tar.xz"
 
 LICENSE="GPL-3"

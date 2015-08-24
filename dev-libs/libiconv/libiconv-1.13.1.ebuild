@@ -5,7 +5,7 @@
 inherit eutils multilib flag-o-matic libtool toolchain-funcs
 
 DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
-HOMEPAGE="http://www.gnu.org/software/libiconv/"
+HOMEPAGE="https://www.gnu.org/software/libiconv/"
 SRC_URI="mirror://gnu/libiconv/${P}.tar.gz"
 
 LICENSE="GPL-3"

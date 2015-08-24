@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils flag-o-matic autotools toolchain-funcs
 
 DESCRIPTION="The GNU Scientific Library"
-HOMEPAGE="http://www.gnu.org/software/gsl/"
+HOMEPAGE="https://www.gnu.org/software/gsl/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

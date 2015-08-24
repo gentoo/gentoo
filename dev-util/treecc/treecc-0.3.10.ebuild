@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="compiler-compiler tool for aspect-oriented programming"
-HOMEPAGE="http://www.gnu.org/software/dotgnu"
+HOMEPAGE="https://www.gnu.org/software/dotgnu"
 SRC_URI="http://download.savannah.gnu.org/releases/dotgnu-pnet/${P}.tar.gz"
 
 LICENSE="GPL-2"

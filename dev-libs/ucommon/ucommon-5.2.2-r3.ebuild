@@ -7,7 +7,7 @@ EAPI="4"
 inherit autotools-utils eutils
 
 DESCRIPTION="Portable C++ runtime for threads and sockets"
-HOMEPAGE="http://www.gnu.org/software/commoncpp"
+HOMEPAGE="https://www.gnu.org/software/commoncpp"
 SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 
 LICENSE="LGPL-3"

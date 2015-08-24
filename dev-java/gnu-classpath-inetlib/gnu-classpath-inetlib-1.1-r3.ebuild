@@ -7,7 +7,7 @@ inherit java-pkg-2 java-ant-2
 MY_PN="inetlib"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Network extensions library for GNU classpath and classpathx"
-HOMEPAGE="http://www.gnu.org/software/classpath/"
+HOMEPAGE="https://www.gnu.org/software/classpath/"
 SRC_URI="mirror://gnu/classpath/${MY_P}.tar.gz"
 LICENSE="GPL-2-with-linking-exception"
 SLOT="1.1"

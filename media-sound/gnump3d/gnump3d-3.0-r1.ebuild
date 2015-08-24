@@ -5,7 +5,7 @@
 inherit eutils multilib user
 
 DESCRIPTION="A streaming server for MP3, OGG vorbis and other streamable files"
-HOMEPAGE="http://www.gnu.org/software/gnump3d/"
+HOMEPAGE="https://www.gnu.org/software/gnump3d/"
 SRC_URI="http://savannah.gnu.org/download/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ EAPI=5
 inherit readme.gentoo elisp
 
 DESCRIPTION="Emacs Interface to XClip"
-HOMEPAGE="http://elpa.gnu.org/packages/xclip.html"
+HOMEPAGE="https://elpa.gnu.org/packages/xclip.html"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"

@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=true
 inherit autotools-utils virtualx
 
 DESCRIPTION="GTK+ bindings for guile"
-HOMEPAGE="http://www.gnu.org/software/guile-gtk/"
+HOMEPAGE="https://www.gnu.org/software/guile-gtk/"
 SRC_URI="mirror://gnu/guile-gtk/${P}.tar.gz"
 
 LICENSE="GPL-3"

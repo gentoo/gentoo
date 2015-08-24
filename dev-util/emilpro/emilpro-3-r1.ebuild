@@ -37,7 +37,7 @@ src_prepare() {
 	if use system-binutils; then
 		epatch "${FILESDIR}"/use-gentoo-binutils.patch
 	else
-		sed -i "s#wget -O binutils.tar.bz2 http://ftp.gnu.org/gnu/binutils/binutils-2.23.2.tar.bz2#cp \"${DISTDIR}/binutils-2.23.2.tar.bz2\" ./binutils.tar.bz2#" cmake/BuildBinutils.cmake
+		sed -i "s#wget -O binutils.tar.bz2 https://ftp.gnu.org/gnu/binutils/binutils-2.23.2.tar.bz2#cp \"${DISTDIR}/binutils-2.23.2.tar.bz2\" ./binutils.tar.bz2#" cmake/BuildBinutils.cmake
 	fi
 	cmake-utils_src_prepare
 }

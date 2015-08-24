@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=true
 inherit autotools-utils
 
 DESCRIPTION="C/C++ function library for rasterizing 2-D vector graphics"
-HOMEPAGE="http://www.gnu.org/software/libxmi/"
+HOMEPAGE="https://www.gnu.org/software/libxmi/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 SLOT="0"

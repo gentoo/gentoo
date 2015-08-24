@@ -6,7 +6,7 @@ EAPI=5
 inherit unpacker toolchain-funcs
 
 DESCRIPTION="GNU Ocrad is an OCR (Optical Character Recognition) program"
-HOMEPAGE="http://www.gnu.org/software/ocrad/ocrad.html"
+HOMEPAGE="https://www.gnu.org/software/ocrad/ocrad.html"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-3"

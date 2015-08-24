@@ -7,7 +7,7 @@ EAPI=5
 inherit elisp-common eutils
 
 DESCRIPTION="GNU Forth is a fast and portable implementation of the ANSI Forth language"
-HOMEPAGE="http://www.gnu.org/software/gforth"
+HOMEPAGE="https://www.gnu.org/software/gforth"
 SRC_URI="mirror://gnu/gforth/${P}.tar.gz"
 
 LICENSE="GPL-3"

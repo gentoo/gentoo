@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{3_3,3_4} )
 inherit flag-o-matic python-any-r1 toolchain-funcs autotools
 
 DESCRIPTION="Network utility to retrieve files from the WWW"
-HOMEPAGE="http://www.gnu.org/software/wget/"
+HOMEPAGE="https://www.gnu.org/software/wget/"
 SRC_URI="mirror://gnu/wget/${P}.tar.xz"
 
 LICENSE="GPL-3"

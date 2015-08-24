@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="a tool for analyzing files that contain control characters and terminal control sequences"
-HOMEPAGE="http://www.gnu.org/software/teseq/"
+HOMEPAGE="https://www.gnu.org/software/teseq/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

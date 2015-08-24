@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils flag-o-matic toolchain-funcs multilib
 
 DESCRIPTION="GNU utilities for finding files"
-HOMEPAGE="http://www.gnu.org/software/findutils/"
+HOMEPAGE="https://www.gnu.org/software/findutils/"
 SRC_URI="mirror://gnu-alpha/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"

@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Advanced Internet Whois client capable of recursive queries"
-HOMEPAGE="http://www.gnu.org/software/jwhois/"
+HOMEPAGE="https://www.gnu.org/software/jwhois/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

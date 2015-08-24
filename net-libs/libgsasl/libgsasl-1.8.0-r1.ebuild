@@ -7,7 +7,7 @@ EAPI="4"
 inherit autotools eutils
 
 DESCRIPTION="The GNU SASL library"
-HOMEPAGE="http://www.gnu.org/software/gsasl/"
+HOMEPAGE="https://www.gnu.org/software/gsasl/"
 SRC_URI="mirror://gnu/${PN/lib}/${P}.tar.gz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"

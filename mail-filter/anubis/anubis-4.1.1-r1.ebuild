@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils autotools pam toolchain-funcs user
 
 DESCRIPTION="GNU Anubis is an outgoing mail processor"
-HOMEPAGE="http://www.gnu.org/software/anubis/"
+HOMEPAGE="https://www.gnu.org/software/anubis/"
 
 SRC_URI="mirror://gnu/anubis/${P}.tar.gz"
 LICENSE="GPL-2"

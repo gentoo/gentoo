@@ -10,7 +10,7 @@ AUTOTOOLS_AUTORECONF=yes
 inherit eutils autotools-multilib
 
 DESCRIPTION="an advanced CDDA reader with error correction"
-HOMEPAGE="http://www.gnu.org/software/libcdio/"
+HOMEPAGE="https://www.gnu.org/software/libcdio/"
 SRC_URI="mirror://gnu/${PN%-*}/${MY_P}.tar.gz"
 
 # COPYING-GPL from cdparanoia says "2 or later"

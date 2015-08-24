@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="A compilation of small but very stable and portable shell scripts into a single shell tool"
-HOMEPAGE="http://www.gnu.org/software/shtool/shtool.html"
+HOMEPAGE="https://www.gnu.org/software/shtool/shtool.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 #SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 

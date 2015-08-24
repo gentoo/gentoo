@@ -95,7 +95,7 @@ pkg_postinst() {
 		ewarn "loop.  See:"
 		ewarn
 		ewarn "    https://trac.torproject.org/projects/tor/ticket/10259"
-		ewarn "    http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59358"
+		ewarn "    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=59358"
 		ewarn
 	fi
 }

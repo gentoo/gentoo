@@ -5,7 +5,7 @@
 EAPI="4"
 
 DESCRIPTION="GNU macro processor"
-HOMEPAGE="http://www.gnu.org/software/m4/m4.html"
+HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

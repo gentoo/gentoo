@@ -8,7 +8,7 @@ inherit eutils autotools
 
 DESCRIPTION="C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services"
 SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
-HOMEPAGE="http://www.gnu.org/software/commoncpp/"
+HOMEPAGE="https://www.gnu.org/software/commoncpp/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"

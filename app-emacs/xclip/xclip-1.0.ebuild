@@ -7,7 +7,7 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="Emacs Interface to XClip"
-HOMEPAGE="http://elpa.gnu.org/packages/"
+HOMEPAGE="https://elpa.gnu.org/packages/"
 SRC_URI="mirror://gentoo/${P}.el.xz"
 
 LICENSE="GPL-3"

@@ -7,7 +7,7 @@ EAPI="4"
 inherit toolchain-funcs unpacker
 
 DESCRIPTION="Your basic line editor"
-HOMEPAGE="http://www.gnu.org/software/ed/"
+HOMEPAGE="https://www.gnu.org/software/ed/"
 SRC_URI="mirror://gnu/ed/${P}.tar.lz"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ EAPI="4"
 inherit flag-o-matic eutils multilib toolchain-funcs mono-env libtool java-pkg-opt-2 multilib-minimal
 
 DESCRIPTION="GNU locale utilities"
-HOMEPAGE="http://www.gnu.org/software/gettext/"
+HOMEPAGE="https://www.gnu.org/software/gettext/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-2"

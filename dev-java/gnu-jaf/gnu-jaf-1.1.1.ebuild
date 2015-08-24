@@ -6,7 +6,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="GNU implementation of the JavaBeans Activation Framework"
-HOMEPAGE="http://www.gnu.org/software/classpathx/jaf/jaf.html"
+HOMEPAGE="https://www.gnu.org/software/classpathx/jaf/jaf.html"
 SRC_URI="mirror://gnu/classpathx/activation-${PV}.tar.gz"
 
 LICENSE="GPL-2-with-linking-exception"

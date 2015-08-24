@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils libtool multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
-HOMEPAGE="http://www.gnu.org/software/libcdio/"
+HOMEPAGE="https://www.gnu.org/software/libcdio/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

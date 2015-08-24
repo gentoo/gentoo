@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="A shared library tool for developers"
-HOMEPAGE="http://www.gnu.org/software/libtool/"
+HOMEPAGE="https://www.gnu.org/software/libtool/"
 
 LICENSE="GPL-2"
 SLOT="2"

@@ -7,7 +7,7 @@ EAPI=4
 inherit autotools eutils elisp-common
 
 DESCRIPTION="Tools and libraries to access human-editable, plain text databases"
-HOMEPAGE="http://www.gnu.org/software/recutils/"
+HOMEPAGE="https://www.gnu.org/software/recutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

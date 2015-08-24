@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
-HOMEPAGE="http://www.gnu.org/software/automake/"
+HOMEPAGE="https://www.gnu.org/software/automake/"
 
 LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.

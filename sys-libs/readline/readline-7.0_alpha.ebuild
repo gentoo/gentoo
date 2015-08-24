@@ -79,7 +79,7 @@ src_prepare() {
 src_configure() {
 	# fix implicit decls with widechar funcs
 	append-cppflags -D_GNU_SOURCE
-	# http://lists.gnu.org/archive/html/bug-readline/2010-07/msg00013.html
+	# https://lists.gnu.org/archive/html/bug-readline/2010-07/msg00013.html
 	append-cppflags -Dxrealloc=_rl_realloc -Dxmalloc=_rl_malloc -Dxfree=_rl_free
 
 	# Make sure configure picks a better ar than `ar`. #484866

@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="a tool designed for analyzing the complexity of C program functions"
-HOMEPAGE="http://www.gnu.org/software/complexity/"
+HOMEPAGE="https://www.gnu.org/software/complexity/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

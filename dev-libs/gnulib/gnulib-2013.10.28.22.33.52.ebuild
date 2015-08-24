@@ -9,7 +9,7 @@ inherit eutils
 GIT_TAG="0.1"
 
 DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
-HOMEPAGE="http://www.gnu.org/software/gnulib"
+HOMEPAGE="https://www.gnu.org/software/gnulib"
 SRC_URI="http://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.gz"
 
 LICENSE="GPL-2"

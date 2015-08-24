@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="GNU Crypto cryptographic primitives for Java"
-HOMEPAGE="http://www.gnu.org/software/gnu-crypto/"
+HOMEPAGE="https://www.gnu.org/software/gnu-crypto/"
 SRC_URI="ftp://ftp.gnupg.org/GnuPG/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

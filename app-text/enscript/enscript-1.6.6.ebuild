@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="powerful text-to-postscript converter"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
-HOMEPAGE="http://www.gnu.org/software/enscript/enscript.html"
+HOMEPAGE="https://www.gnu.org/software/enscript/enscript.html"
 
 KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 SLOT="0"

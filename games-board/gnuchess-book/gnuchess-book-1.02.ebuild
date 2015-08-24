@@ -6,7 +6,7 @@ EAPI=5
 inherit games
 
 DESCRIPTION="Opening book for gnuchess"
-HOMEPAGE="http://www.gnu.org/software/chess/chess.html"
+HOMEPAGE="https://www.gnu.org/software/chess/chess.html"
 SRC_URI="mirror://gnu/chess/book_${PV}.pgn.gz"
 
 LICENSE="GPL-2"

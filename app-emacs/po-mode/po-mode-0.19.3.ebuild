@@ -7,7 +7,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Major mode for GNU gettext PO files"
-HOMEPAGE="http://www.gnu.org/software/gettext/"
+HOMEPAGE="https://www.gnu.org/software/gettext/"
 SRC_URI="mirror://gnu/gettext/gettext-${PV}.tar.gz"
 
 LICENSE="GPL-3+"

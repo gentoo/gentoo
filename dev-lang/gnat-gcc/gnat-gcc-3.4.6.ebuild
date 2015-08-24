@@ -6,7 +6,7 @@ WANT_AUTOCONF=2.1
 inherit gnatbuild
 
 DESCRIPTION="GNAT Ada Compiler - gcc version"
-HOMEPAGE="http://gcc.gnu.org/"
+HOMEPAGE="https://gcc.gnu.org/"
 LICENSE="GMGPL"
 
 IUSE=""

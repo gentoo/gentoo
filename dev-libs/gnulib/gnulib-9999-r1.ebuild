@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils git-r3
 
 DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
-HOMEPAGE="http://www.gnu.org/software/gnulib"
+HOMEPAGE="https://www.gnu.org/software/gnulib"
 
 EGIT_REPO_URI="
 	git://git.savannah.gnu.org/${PN}.git

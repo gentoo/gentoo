@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A library used to extract metadata from files of arbitrary type"
-HOMEPAGE="http://www.gnu.org/software/libextractor/"
+HOMEPAGE="https://www.gnu.org/software/libextractor/"
 SRC_URI="mirror://gnu/libextractor/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils autotools flag-o-matic elisp-common
 
 DESCRIPTION="Scheme interpreter"
-HOMEPAGE="http://www.gnu.org/software/guile/"
+HOMEPAGE="https://www.gnu.org/software/guile/"
 SRC_URI="mirror://gnu/guile/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

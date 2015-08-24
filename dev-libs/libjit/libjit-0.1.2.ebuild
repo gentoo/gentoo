@@ -7,7 +7,7 @@ EAPI=2
 inherit eutils
 
 DESCRIPTION="Libjit  is a generic Just-In-Time compilation library"
-HOMEPAGE="http://www.gnu.org/software/dotgnu/"
+HOMEPAGE="https://www.gnu.org/software/dotgnu/"
 SRC_URI="mirror://gnu/dotgnu/libjit/${P}.tar.gz"
 
 LICENSE="GPL-2"

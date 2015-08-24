@@ -6,7 +6,7 @@ EAPI=5
 inherit gnustep-2
 
 DESCRIPTION="educational application to solve physics problems"
-HOMEPAGE="http://www.gnu.org/software/fisicalab"
+HOMEPAGE="https://www.gnu.org/software/fisicalab"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

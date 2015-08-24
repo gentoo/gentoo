@@ -22,7 +22,7 @@ inherit eutils mount-boot toolchain-funcs linux-info flag-o-matic autotools pax-
 
 PATCHVER="1.14" # Should match the revision ideally
 DESCRIPTION="GNU GRUB Legacy boot loader"
-HOMEPAGE="http://www.gnu.org/software/grub/"
+HOMEPAGE="https://www.gnu.org/software/grub/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	mirror://gnu-alpha/${PN}/${P}.tar.gz
 	mirror://gentoo/splash.xpm.gz

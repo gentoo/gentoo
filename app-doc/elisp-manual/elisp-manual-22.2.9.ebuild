@@ -8,7 +8,7 @@ inherit eutils
 
 MY_P=${PN}-${PV/./-}
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
-HOMEPAGE="http://www.gnu.org/software/emacs/manual/"
+HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
 # Taken from lispref/ of emacs-22.3
 SRC_URI="https://dev.gentoo.org/~ulm/emacs/${MY_P}.tar.bz2"
 

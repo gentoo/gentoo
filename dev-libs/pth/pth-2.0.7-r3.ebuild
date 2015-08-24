@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils fixheadtails libtool flag-o-matic
 
 DESCRIPTION="GNU Portable Threads"
-HOMEPAGE="http://www.gnu.org/software/pth/"
+HOMEPAGE="https://www.gnu.org/software/pth/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

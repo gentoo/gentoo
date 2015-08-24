@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 multilib
 MY_P=${P/gnu-/}
 DESCRIPTION="Free core class libraries for use with virtual machines and compilers for the Java language"
 SRC_URI="mirror://gnu/classpath/${MY_P}.tar.gz"
-HOMEPAGE="http://www.gnu.org/software/classpath"
+HOMEPAGE="https://www.gnu.org/software/classpath"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0.98"

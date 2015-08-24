@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils elisp-common
 
 DESCRIPTION="Universal typing tutor"
-HOMEPAGE="http://www.gnu.org/software/gtypist/"
+HOMEPAGE="https://www.gnu.org/software/gtypist/"
 SRC_URI="mirror://gnu/gtypist/${P}.tar.xz
 	http://colemak.com/pub/learn/colemak.typ"
 

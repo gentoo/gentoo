@@ -7,7 +7,7 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="Emacs major modes for editing autoconf and autotest input"
-HOMEPAGE="http://www.gnu.org/software/autoconf/autoconf.html"
+HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 SRC_URI="mirror://gnu/autoconf/autoconf-${PV}.tar.xz"
 
 LICENSE="GPL-3+"

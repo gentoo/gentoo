@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="source"
 inherit eutils java-pkg-2
 
 DESCRIPTION="Kawa, the Java-based Scheme system & Language Framework"
-HOMEPAGE="http://www.gnu.org/software/kawa/"
+HOMEPAGE="https://www.gnu.org/software/kawa/"
 XQTS_Ver="1_0_3"
 SRC_URI="mirror://gnu/kawa/${P}.tar.gz
 		 xqtests? ( http://www.w3.org/XML/Query/test-suite/XQTS_${XQTS_Ver}.zip )"

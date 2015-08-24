@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml"
 inherit eutils python-r1
 
 DESCRIPTION="Unit conversion program"
-HOMEPAGE="http://www.gnu.org/software/units/units.html"
+HOMEPAGE="https://www.gnu.org/software/units/units.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="FDL-1.3 GPL-3"

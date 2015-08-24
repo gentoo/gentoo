@@ -7,7 +7,7 @@ inherit font
 IUSE="bdf"
 
 DESCRIPTION="International X11 fixed fonts"
-HOMEPAGE="http://www.gnu.org/directory/intlfonts.html"
+HOMEPAGE="https://www.gnu.org/directory/intlfonts.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

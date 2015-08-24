@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="source"
 inherit eutils autotools java-pkg-2
 
 DESCRIPTION="A javadoc compatible Java source documentation generator"
-HOMEPAGE="http://www.gnu.org/software/cp-tools/"
+HOMEPAGE="https://www.gnu.org/software/cp-tools/"
 SRC_URI="mirror://gnu/classpath/${P}.tar.gz"
 
 LICENSE="GPL-2"

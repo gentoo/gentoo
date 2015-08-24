@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Text formatter used for man pages"
-HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
+HOMEPAGE="https://www.gnu.org/software/groff/groff.html"
 SRC_URI="mirror://gnu/groff/${P}.tar.gz"
 
 LICENSE="GPL-2"

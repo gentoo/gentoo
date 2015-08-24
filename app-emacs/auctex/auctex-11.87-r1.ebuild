@@ -7,7 +7,7 @@ EAPI=5
 inherit elisp latex-package
 
 DESCRIPTION="Extended support for writing, formatting and using (La)TeX, Texinfo and BibTeX files"
-HOMEPAGE="http://www.gnu.org/software/auctex/"
+HOMEPAGE="https://www.gnu.org/software/auctex/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+"

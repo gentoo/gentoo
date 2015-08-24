@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="barcode generator"
-HOMEPAGE="http://www.gnu.org/software/barcode/"
+HOMEPAGE="https://www.gnu.org/software/barcode/"
 SRC_URI="mirror://gnu/barcode/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Used to create autoconfiguration files"
-HOMEPAGE="http://www.gnu.org/software/autoconf/autoconf.html"
+HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 
 LICENSE="GPL-3"
 SLOT="${PV}"

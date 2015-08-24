@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils games
 
 DESCRIPTION="Japanese version of chess (commandline + X-Version)"
-HOMEPAGE="http://www.gnu.org/software/gnushogi/"
+HOMEPAGE="https://www.gnu.org/software/gnushogi/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

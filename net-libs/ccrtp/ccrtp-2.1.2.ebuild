@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils multilib
 
 DESCRIPTION="GNU ccRTP is an implementation of RTP, the real-time transport protocol from the IETF"
-HOMEPAGE="http://www.gnu.org/software/ccrtp/"
+HOMEPAGE="https://www.gnu.org/software/ccrtp/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"

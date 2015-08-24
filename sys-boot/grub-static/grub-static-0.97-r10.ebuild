@@ -13,7 +13,7 @@ PATCHVER="1.9" # Not used, just for tracking with main grub
 
 DESCRIPTION="GNU GRUB Legacy boot loader (static build)"
 
-HOMEPAGE="http://www.gnu.org/software/grub/"
+HOMEPAGE="https://www.gnu.org/software/grub/"
 SRC_URI="mirror://gentoo/${PF}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"

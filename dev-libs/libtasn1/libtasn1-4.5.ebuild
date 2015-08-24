@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools-multilib
 
 DESCRIPTION="ASN.1 library"
-HOMEPAGE="http://www.gnu.org/software/libtasn1/"
+HOMEPAGE="https://www.gnu.org/software/libtasn1/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-2.1"

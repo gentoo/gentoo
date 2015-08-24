@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs unpacker
 
 DESCRIPTION="A powerful and user-friendly console text editor"
-HOMEPAGE="http://www.gnu.org/software/moe/"
+HOMEPAGE="https://www.gnu.org/software/moe/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-3"
