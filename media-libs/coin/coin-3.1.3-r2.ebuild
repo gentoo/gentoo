@@ -13,7 +13,7 @@ HOMEPAGE="http://www.coin3d.org/"
 SRC_URI="ftp://ftp.coin3d.org/pub/coin/src/all/${MY_P}.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="bzip2 debug doc javascript openal simage static-libs threads zlib"
 
