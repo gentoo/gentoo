@@ -19,7 +19,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cups gnome gnome-keyring hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc"
+IUSE="cups gnome gnome-keyring hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc widevine"
 RESTRICT="proprietary-codecs? ( bindist )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -91,7 +91,8 @@ DEPEND="${RDEPEND}
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	widevine? ( www-plugins/chrome-binary-plugins[widevine] )"
 
 # For nvidia-drivers blocker, see bug #413637 .
 RDEPEND+="
@@ -121,6 +122,9 @@ python_check_deps() {
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
 	EBUILD_DEATH_HOOKS+=" chromium_pkg_die";
 fi
+
+# TODO: flag-mask widevine in non-intel profiles in lieu of this
+REQUIRED_USE="|| ( x86 amd64 !widevine )"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
@@ -187,6 +191,9 @@ src_prepare() {
 	# fi
 
 	epatch "${FILESDIR}/${PN}-system-jinja-r7.patch"
+
+	# sneak around widevine cdm versioning minefield
+	epatch "${FILESDIR}/${PN}-45-widevine-version-hack.patch"
 
 	epatch_user
 
@@ -366,7 +373,8 @@ src_configure() {
 		$(gyp_use hotwording enable_hotwording)
 		$(gyp_use kerberos)
 		$(gyp_use pulseaudio)
-		$(gyp_use tcmalloc use_allocator tcmalloc none)"
+		$(gyp_use tcmalloc use_allocator tcmalloc none)
+		$(gyp_use widevine enable_widevine)"
 
 	# Use explicit library dependencies instead of dlopen.
 	# This makes breakages easier to detect by revdep-rebuild.
@@ -585,6 +593,10 @@ src_install() {
 
 	newman out/Release/chrome.1 chromium${CHROMIUM_SUFFIX}.1 || die
 	newman out/Release/chrome.1 chromium-browser${CHROMIUM_SUFFIX}.1 || die
+
+	if use widevine; then
+		doexe out/Release/libwidevinecdmadapter.so
+	fi
 
 	# Install icons and desktop entry.
 	local branding size
