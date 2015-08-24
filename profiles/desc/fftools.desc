@@ -15,4 +15,5 @@ graph2dot - A tool to convert a libavfilter graph to a dot file.
 ismindex - A tool for creating smooth streaming manifests.
 pktdumper - Dumps packets as demuxed by libavformat.
 qt-faststart - Rearranges a Quicktime file to facilitate network streaming.
+sidxindex - Write an MPD file for fragmented MP4 files with a sidx index at the start of the file.
 trasher - Writes burts of random data into a file. Great for testing error robustness/resilience/concealment.
