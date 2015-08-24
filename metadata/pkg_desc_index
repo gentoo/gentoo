@@ -3113,8 +3113,10 @@ dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 0.11.0 0.12.3: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.1: Worldforge math library
+dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
 dev-go/go-crypto 0_pre20150808 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
+dev-go/go-md2man 1.0.3: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20150804 9999: Go supplementary network libraries
 dev-go/go-oauth2 0_pre20150701 9999: Go client implementation for OAuth 2.0 spec
 dev-go/go-protobuf 0_pre20150809 9999: Go support for Google's protocol buffers
@@ -3125,6 +3127,7 @@ dev-go/go-sys 0_pre20150729 9999: Go packages for low-level interaction with the
 dev-go/go-text 0_pre20150806 9999: Go text processing support
 dev-go/go-tools 0_pre20150805 0_pre20150823 9999: Go Tools
 dev-go/godep 0_pre20150807: dependency tool for go
+dev-go/sanitized-anchor-name 0_pre20150822 9999: A Go function to provide sanitized anchor names
 dev-go/sarama 1.4.3 9999: Sarama is a Go library for Apache Kafka
 dev-haskell/abstract-deque 0.2.2 0.3: Abstract, parameterized interface to mutable Deques
 dev-haskell/abstract-deque-tests 0.3: A test-suite for any queue or double-ended queue satisfying an interface
