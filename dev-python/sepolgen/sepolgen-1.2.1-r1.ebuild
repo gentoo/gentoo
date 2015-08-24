@@ -10,7 +10,7 @@ inherit python-r1 eutils
 DESCRIPTION="SELinux policy generation library"
 HOMEPAGE="http://userspace.selinuxproject.org"
 SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${P}.tar.gz
-	http://dev.gentoo.org/~swift/patches/sepolgen/patchbundle-${P}-r1.tar.gz"
+	https://dev.gentoo.org/~swift/patches/sepolgen/patchbundle-${P}-r1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

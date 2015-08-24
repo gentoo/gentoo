@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Cross-platform libmpv-based multimedia player with uncluttered design"
 HOMEPAGE="http://bakamplayer.u8sand.net/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

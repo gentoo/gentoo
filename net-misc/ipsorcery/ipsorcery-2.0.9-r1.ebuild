@@ -6,7 +6,7 @@ EAPI=2
 inherit toolchain-funcs
 
 DESCRIPTION="Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/ipsorc-${PV}.tar.gz"
 
 LICENSE="GPL-2"

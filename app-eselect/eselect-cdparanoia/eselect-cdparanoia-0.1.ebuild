@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Manage /usr/bin/cdparanoia symlink"
-HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"
+HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
 SRC_URI=""
 
 LICENSE="GPL-2"

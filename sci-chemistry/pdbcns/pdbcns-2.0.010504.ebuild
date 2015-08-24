@@ -7,7 +7,7 @@ EAPI=4
 DESCRIPTION="Convert atom names for common amino acids and nucleic acid bases from PDB format to CNS or back"
 HOMEPAGE="http://www.mybiosoftware.com/3d-molecular-model/314/"
 #SRC_URI="http://kinemage.biochem.duke.edu/php/downlode.php?filename=/downloads/software/scripts/${PN}.${PV}.perl.tgz"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${PN}.${PV}.perl.tgz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${PN}.${PV}.perl.tgz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"

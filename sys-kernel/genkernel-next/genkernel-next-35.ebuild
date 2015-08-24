@@ -5,7 +5,7 @@
 EAPI=5
 
 if [[ "${PV}" != "9999" ]]; then
-	SRC_URI="http://dev.gentoo.org/~lxnay/genkernel-next/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~lxnay/genkernel-next/${P}.tar.xz"
 else
 	EGIT_REPO_URI="git://github.com/Sabayon/genkernel-next.git"
 	inherit git-2
@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts, reloaded"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="GPL-2"
 SLOT="0"

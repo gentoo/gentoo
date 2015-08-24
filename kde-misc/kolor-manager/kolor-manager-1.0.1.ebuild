@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="KControl module for Oyranos CMS cross desktop settings"
 HOMEPAGE="http://www.oyranos.org/wiki/index.php?title=Kolor-manager"
-SRC_URI="http://dev.gentoo.org/~creffett/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~creffett/distfiles/${P}.tar.xz"
 
 LICENSE="BSD-2"
 KEYWORDS="~amd64 ~x86"

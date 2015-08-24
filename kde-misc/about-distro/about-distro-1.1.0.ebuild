@@ -10,7 +10,7 @@ inherit kde4-base
 
 DESCRIPTION="KCM displaying distribution and system information"
 HOMEPAGE="https://projects.kde.org/projects/playground/base/about-distro"
-SRC_URI="http://www.gentoo.org/images/glogo-small.png"
+SRC_URI="https://www.gentoo.org/images/glogo-small.png"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI+=" mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"

@@ -12,7 +12,7 @@ DESCRIPTION="Manage a stack of patches using GIT as a backend"
 HOMEPAGE="http://www.procode.org/stgit/"
 UPSTREAM_VER=0
 [[ -n ${UPSTREAM_VER} ]] && \
-	UPSTREAM_PATCHSET_URI="http://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
 SRC_URI="http://download.gna.org/${PN}/${P}.tar.gz
 	${UPSTREAM_PATCHSET_URI}"

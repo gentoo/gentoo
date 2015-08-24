@@ -5,7 +5,7 @@
 EAPI=3
 
 DESCRIPTION="Utility to change the Mesa OpenGL driver being used"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

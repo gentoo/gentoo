@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JNLP API classes, repackaged from the icedtea-web fork of netx"
 HOMEPAGE="http://jcp.org/en/jsr/detail?id=56"
-SRC_URI="http://dev.gentoo.org/~caster/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~caster/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
 SLOT="0"

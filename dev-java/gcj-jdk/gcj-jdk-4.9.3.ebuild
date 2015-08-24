@@ -7,7 +7,7 @@ EAPI="5"
 inherit java-vm-2 multilib
 
 DESCRIPTION="Java wrappers around GCJ"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

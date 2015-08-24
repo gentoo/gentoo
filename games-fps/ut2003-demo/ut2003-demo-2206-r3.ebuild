@@ -10,7 +10,7 @@ DESCRIPTION="Demo for the sequel to the 1999 Game of the Year multi-player first
 HOMEPAGE="http://www.ut2003.com/"
 SRC_URI="http://unreal.epicgames.com/linux/ut2003/ut2003demo-lnx-${PV}.sh.bin
 	http://download.factoryunreal.com/mirror/UT2003CrashFix.zip
-	http://dev.gentoo.org/~wolf31o2/sources/${PN}/${PN}-misc.tar.bz2"
+	https://dev.gentoo.org/~wolf31o2/sources/${PN}/${PN}-misc.tar.bz2"
 
 LICENSE="ut2003-demo"
 SLOT="0"

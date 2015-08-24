@@ -18,7 +18,7 @@ MY_P="apache-ant-${PV}"
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files"
 HOMEPAGE="http://ant.apache.org/"
 SRC_URI="mirror://apache/ant/source/${MY_P}-src.tar.bz2
-	http://dev.gentoo.org/~tomwij/files/dist/ant-${PV}-gentoo.tar.bz2"
+	https://dev.gentoo.org/~tomwij/files/dist/ant-${PV}-gentoo.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -106,7 +106,7 @@ pkg_postinst() {
 		if ! version_is_at_least 1.7.0 ${REPLACING_VERSIONS}; then
 			elog "The way of packaging ant in Gentoo has changed significantly since"
 			elog "the 1.7.0 version, For more information, please see:"
-			elog "http://www.gentoo.org/proj/en/java/ant-guide.xml"
+			elog "https://www.gentoo.org/proj/en/java/ant-guide.xml"
 		fi
 
 		if ! version_is_at_least 1.7.1 ${REPLACING_VERSIONS}; then

@@ -13,7 +13,7 @@ inherit kernel-2
 detect_version
 
 HGPV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}-1"
-HGPV_URI="http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-${HGPV}.extras.tar.bz2"
+HGPV_URI="https://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-${HGPV}.extras.tar.bz2"
 SRC_URI="${KERNEL_URI} ${HGPV_URI} ${GENPATCHES_URI} ${ARCH_URI}"
 
 UNIPATCH_LIST="${DISTDIR}/hardened-patches-${HGPV}.extras.tar.bz2"
@@ -22,7 +22,7 @@ UNIPATCH_EXCLUDE="
 	2900_dev-root-proc-mount-fix.patch"
 
 DESCRIPTION="Hardened kernel sources (kernel series ${KV_MAJOR}.${KV_MINOR})"
-HOMEPAGE="http://www.gentoo.org/proj/en/hardened/"
+HOMEPAGE="https://www.gentoo.org/proj/en/hardened/"
 IUSE="deblob"
 
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"

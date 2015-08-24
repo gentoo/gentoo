@@ -12,7 +12,7 @@ MY_CMD="pptp-command-20130515"
 DESCRIPTION="Linux client for PPTP"
 HOMEPAGE="http://pptpclient.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pptpclient/${MY_P}.tar.gz
-	http://dev.gentoo.org/~pinkbyte/distfiles/pptpclient/${MY_CMD}.bz2"
+	https://dev.gentoo.org/~pinkbyte/distfiles/pptpclient/${MY_CMD}.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"

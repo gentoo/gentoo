@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="A Portable Emacs Library is a library for making portable Emacs Lisp programs"
 HOMEPAGE="http://cvs.m17n.org/elisp/APEL/"
 SRC_URI="ftp://ftp.jpl.org/pub/elisp/apel/${P}.tar.gz
-	http://dev.gentoo.org/~gienah/2big4tree/app-emacs/${PN}/${PN}-10.8-030_Use-new-style-backquotes.patch.gz"
+	https://dev.gentoo.org/~gienah/2big4tree/app-emacs/${PN}/${PN}-10.8-030_Use-new-style-backquotes.patch.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

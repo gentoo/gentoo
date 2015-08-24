@@ -7,7 +7,7 @@ EAPI=5
 inherit fixheadtails autotools eutils toolchain-funcs
 
 DESCRIPTION="A flexible and fast logfile colorizer"
-HOMEPAGE="http://dev.gentoo.org/~joker/ccze/ccze.txt"
+HOMEPAGE="https://dev.gentoo.org/~joker/ccze/ccze.txt"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 RESTRICT="test"

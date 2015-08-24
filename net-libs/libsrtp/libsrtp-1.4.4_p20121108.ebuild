@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Open-source implementation of the Secure Real-time Transport Protocol (SRTP)"
 HOMEPAGE="http://srtp.sourceforge.net/srtp.html"
-SRC_URI="http://dev.gentoo.org/~phajdan.jr/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~phajdan.jr/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -23,7 +23,7 @@ HOMEPAGE="http://www.gnu.org/software/gnulib"
 # http://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=commit;h=${GNULIB_COMMIT_GITID}
 #
 GNULIB_COMMIT_GITID=8d2524ce78ca107074727cbd8780c26a203a107c
-SRC_URI="http://dev.gentoo.org/~drizzt/distfiles/${PN}-${GNULIB_COMMIT_GITID}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~drizzt/distfiles/${PN}-${GNULIB_COMMIT_GITID}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

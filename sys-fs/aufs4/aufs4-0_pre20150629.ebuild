@@ -16,7 +16,7 @@ KERN_MIN_VER=0
 
 DESCRIPTION="An entirely re-designed and re-implemented Unionfs"
 HOMEPAGE="http://aufs.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/aufs4-standalone-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/aufs4-standalone-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

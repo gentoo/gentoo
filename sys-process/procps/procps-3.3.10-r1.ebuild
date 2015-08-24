@@ -12,7 +12,7 @@ HOMEPAGE="http://procps.sourceforge.net/ https://gitlab.com/procps-ng/procps"
 # SRC_URI="mirror://debian/pool/main/p/${PN}/${PN}_${PV}.orig.tar.xz"
 #FEDORA_HASH="0980646fa25e0be58f7afb6b98f79d74"
 #SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/${PN}-ng/${PN}-ng-${PV}.tar.xz/${FEDORA_HASH}/${PN}-ng-${PV}.tar.xz"
-SRC_URI="http://dev.gentoo.org/~polynomial-c/${PN}-ng-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~polynomial-c/${PN}-ng-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

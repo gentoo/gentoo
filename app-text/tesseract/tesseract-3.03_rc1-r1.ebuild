@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-$(get_version_component_range 1-2 )"
 
 DESCRIPTION="An OCR Engine that was developed at HP and now at Google"
 HOMEPAGE="http://code.google.com/p/tesseract-ocr/"
-SRC_URI="http://dev.gentoo.org/~tomka/files/${PN}-3.03-rc1.tar.gz
+SRC_URI="https://dev.gentoo.org/~tomka/files/${PN}-3.03-rc1.tar.gz
 	${URI_PREFIX}/${DL_P}.eng.tar.gz
 	doc? ( ${URI_PREFIX}/${DL_P}.02-doc-html.tar.gz )
 	linguas_ar? ( ${URI_PREFIX}/${DL_P}.ara.tar.gz )

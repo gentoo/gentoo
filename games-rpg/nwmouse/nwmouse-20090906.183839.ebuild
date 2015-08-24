@@ -7,7 +7,7 @@ inherit games
 
 DESCRIPTION="Hardware mouse cursors for Neverwinter Nights"
 HOMEPAGE="http://home.roadrunner.com/~nwmovies/"
-SRC_URI="http://dev.gentoo.org/~calchan/distfiles/${P}.tar.bz2
+SRC_URI="https://dev.gentoo.org/~calchan/distfiles/${P}.tar.bz2
 	mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="nwmovies Artistic"

@@ -13,7 +13,7 @@ inherit eutils multilib python-single-r1
 
 DESCRIPTION="automatic updater and package installer/remover for rpm systems"
 HOMEPAGE="http://yum.baseurl.org/"
-SRC_URI="http://dev.gentoo.org/~creffett/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~creffett/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

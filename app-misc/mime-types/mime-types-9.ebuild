@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Provides /etc/mime.types file"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

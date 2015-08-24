@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A brainstorming and mind mapping software tool"
 HOMEPAGE="http://www.xmind.net"
 SRC_URI="http://dl2.xmind.net/xmind-downloads/${MY_P}.zip
-	http://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz"
+	https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz"
 LICENSE="EPL-1.0 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"

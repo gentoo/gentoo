@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Yet Another Message Interface on Emacsen"
 HOMEPAGE="https://github.com/wanderlust/wanderlust
 	http://emacswiki.org/emacs/WanderLust"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

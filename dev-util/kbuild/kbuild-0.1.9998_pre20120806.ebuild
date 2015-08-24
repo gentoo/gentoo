@@ -10,7 +10,7 @@ MY_P=kBuild-${PV/_/-}-src
 DESCRIPTION="A makefile framework for writing simple makefiles for complex tasks"
 HOMEPAGE="http://svn.netlabs.org/kbuild/wiki"
 #SRC_URI="ftp://ftp.netlabs.org/pub/${PN}/${MY_P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

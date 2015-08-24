@@ -6,7 +6,7 @@ IUSE="moneyplex"
 
 DESCRIPTION="This library provides a driver for using Towitoko smartcard readers under UNIX environment"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 
 SLOT="0"
 LICENSE="GPL-2"

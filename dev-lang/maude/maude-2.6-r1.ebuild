@@ -15,7 +15,7 @@ DESCRIPTION="High-level specification language for equational and logic programm
 HOMEPAGE="http://maude.cs.uiuc.edu/"
 SRC_URI="
 	http://maude.cs.uiuc.edu/download/current/${MYP}.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${P}-extras.tar.xz"
+	https://dev.gentoo.org/~jlec/distfiles/${P}-extras.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

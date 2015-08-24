@@ -7,8 +7,8 @@ EAPI="4"
 DESCRIPTION="DocBook XML catalog auto-updater"
 HOMEPAGE="http://sources.gentoo.org/gentoo-src/build-docbook-catalog/"
 SRC_URI="mirror://gentoo/${P}.tar.xz
-	http://dev.gentoo.org/~floppym/distfiles/${P}.tar.xz
-	http://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
+	https://dev.gentoo.org/~floppym/distfiles/${P}.tar.xz
+	https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

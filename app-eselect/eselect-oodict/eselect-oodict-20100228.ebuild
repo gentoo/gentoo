@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages configuration of dictionaries for OpenOffice.Org"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 
 SRC_URI="mirror://gentoo/oodict.eselect-${PVR}.bz2"
 

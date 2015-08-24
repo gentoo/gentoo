@@ -19,7 +19,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 else # Release
-	SRC_URI="http://dev.gentoo.org/~lu_zero/distfiles/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~lu_zero/distfiles/${P}.tar.xz"
 fi
 
 LICENSE="GPL-2"

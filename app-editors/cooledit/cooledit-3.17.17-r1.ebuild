@@ -7,7 +7,7 @@ inherit autotools eutils
 DESCRIPTION="Cooledit is a full featured multiple window text editor"
 HOMEPAGE="http://freshmeat.net/projects/cooledit/"
 SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/apps/editors/X/cooledit/${P}.tar.gz
-	http://dev.gentoo.org/~hwoarang/distfiles/${P}-nopython.tar.gz"
+	https://dev.gentoo.org/~hwoarang/distfiles/${P}-nopython.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

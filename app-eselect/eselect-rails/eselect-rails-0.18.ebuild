@@ -3,8 +3,8 @@
 # $Id$
 
 DESCRIPTION="Manages Ruby on Rails symlinks"
-HOMEPAGE="http://www.gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~flameeyes/ruby-team/${P}.tar.bz2"
+HOMEPAGE="https://www.gentoo.org/"
+SRC_URI="https://dev.gentoo.org/~flameeyes/ruby-team/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

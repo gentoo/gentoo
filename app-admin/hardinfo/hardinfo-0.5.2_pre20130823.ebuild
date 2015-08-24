@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="A system information and benchmark tool for Linux systems"
 HOMEPAGE="http://hardinfo.berlios.de/"
-SRC_URI="http://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

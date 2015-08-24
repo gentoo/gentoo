@@ -11,7 +11,7 @@ else
 	PVER="20150524-v2"
 	SRC_URI="
 		https://github.com/xaionaro/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		http://dev.gentoo.org/~bircoph/patches/${P}-${PVER}.patch.xz
+		https://dev.gentoo.org/~bircoph/patches/${P}-${PVER}.patch.xz
 	"
 	KEYWORDS="~amd64 ~x86"
 fi

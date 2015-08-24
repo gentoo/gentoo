@@ -12,7 +12,7 @@ HOMEPAGE="http://iubio.bio.indiana.edu/soft/molbio/readseq/"
 # Originally unversioned at
 # http://iubio.bio.indiana.edu/soft/molbio/readseq/java/readseq-source.zip.
 # Renamed to the date of the modification and mirrored
-SRC_URI="http://dev.gentoo.org/~dberkholz/distfiles/${MY_P}.zip"
+SRC_URI="https://dev.gentoo.org/~dberkholz/distfiles/${MY_P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"

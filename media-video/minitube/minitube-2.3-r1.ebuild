@@ -12,7 +12,7 @@ inherit l10n qt4-r2
 DESCRIPTION="Qt4 YouTube Client"
 HOMEPAGE="http://flavio.tordini.org/minitube"
 # As usual, upstream never releases proper tarballs
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -11,12 +11,12 @@ MY_P=${PN%tools}${MY_PV}
 MY_P=${MY_P%%_p*}
 
 # patches
-SRC_URI="$(for PATCH_VER in $(seq 1 ${PV##*_p}) ; do echo "http://dev.gentoo.org/~hasufell/distfiles/${MY_P}u${PATCH_VER}_diff.zip"; done)"
+SRC_URI="$(for PATCH_VER in $(seq 1 ${PV##*_p}) ; do echo "https://dev.gentoo.org/~hasufell/distfiles/${MY_P}u${PATCH_VER}_diff.zip"; done)"
 
 DESCRIPTION="Set of development tools shared between sdlmame and sdlmess"
 HOMEPAGE="http://mamedev.org/"
 # Upstream doesn't allow fetching with unknown User-Agent such as wget
-SRC_URI="$SRC_URI http://dev.gentoo.org/~hasufell/distfiles/${MY_P/sdl}s.zip"
+SRC_URI="$SRC_URI https://dev.gentoo.org/~hasufell/distfiles/${MY_P/sdl}s.zip"
 
 LICENSE="XMAME"
 SLOT="0"

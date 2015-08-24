@@ -10,7 +10,7 @@ DESCRIPTION="object code file converted (COFF, ELF, OMF, MACHO)"
 HOMEPAGE="http://agner.org/optimize/#objconv"
 # original URL is "http://agner.org/optimize/objconv.zip", but it's unversioned.
 # I copy those to distfiles time to time
-SRC_URI="http://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
 LICENSE="GPL-2"
 
 SLOT="0"

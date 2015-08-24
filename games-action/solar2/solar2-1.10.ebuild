@@ -14,7 +14,7 @@ inherit eutils gnome2-utils games
 DESCRIPTION="An open-world, sandbox game set in an infinite abstract universe"
 HOMEPAGE="http://murudai.com/solar/"
 GAMEBALL="${PN}-linux-${PV}.tar.gz"
-ICONFILE="http://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
+ICONFILE="https://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
 SRC_URI="${GAMEBALL} ${ICONFILE}"
 
 LICENSE="all-rights-reserved"

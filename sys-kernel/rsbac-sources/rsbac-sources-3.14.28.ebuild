@@ -21,7 +21,7 @@ UNIPATCH_LIST="${DISTDIR}/${RSBC_PATCH}"
 UNIPATCH_EXCLUDE="4200_fbcondecor-0.9.6.patch"
 
 DESCRIPTION="RSBAC kernel sources (kernel series ${KV_MAJOR}.${KV_MINOR})"
-HOMEPAGE="http://www.gentoo.org/proj/en/hardened/"
+HOMEPAGE="https://www.gentoo.org/proj/en/hardened/"
 IUSE=""
 
 KEYWORDS="~amd64 ~x86"

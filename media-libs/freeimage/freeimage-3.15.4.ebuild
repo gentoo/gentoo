@@ -14,7 +14,7 @@ DESCRIPTION="Image library supporting many formats"
 HOMEPAGE="http://freeimage.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
 	mirror://sourceforge/${PN}/${MY_P}.pdf
-	http://dev.gentoo.org/~gienah/2big4tree/media-libs/freeimage/${PN}-3.15.4-libjpeg-turbo.patch.gz"
+	https://dev.gentoo.org/~gienah/2big4tree/media-libs/freeimage/${PN}-3.15.4-libjpeg-turbo.patch.gz"
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"
 SLOT="0"

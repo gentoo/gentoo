@@ -12,7 +12,7 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Library bits of the samba network filesystem"
 HOMEPAGE="http://www.samba.org/"
 SRC_URI="mirror://samba/stable/${P}.tar.gz
-	http://dev.gentoo.org/~dagger/files/smb_traffic_analyzer_v2.diff.bz2"
+	https://dev.gentoo.org/~dagger/files/smb_traffic_analyzer_v2.diff.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"

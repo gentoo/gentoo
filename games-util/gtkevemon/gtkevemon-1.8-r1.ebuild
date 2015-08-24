@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="http://gtkevemon.battleclinic.com/releases/${P}-source.tar.gz
-		http://dev.gentoo.org/~wired/distfiles/${P}-learning.patch.gz"
+		https://dev.gentoo.org/~wired/distfiles/${P}-learning.patch.gz"
 fi
 
 DESCRIPTION="A standalone skill monitoring application for EVE Online"

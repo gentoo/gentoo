@@ -13,7 +13,7 @@ MYP="${PN}${PV}"
 DESCRIPTION="Adds a lot of image formats to Tcl/Tk"
 HOMEPAGE="http://tkimg.sourceforge.net/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/${P}-patchset-1.tar.xz
+	https://dev.gentoo.org/~jlec/distfiles/${P}-patchset-1.tar.xz
 	mirror://sourceforge/${PN}/${PV}/${MYP}.tar.bz2"
 
 SLOT="0"

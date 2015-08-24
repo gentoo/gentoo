@@ -14,7 +14,7 @@ UTHASH="ac47d4928e61c5abc6e977d91310d31ed74690e4"
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
 SRC_URI="https://github.com/fontforge/fontforge/archive/${PV}.tar.gz -> ${P}.tar.gz
-	http://dev.gentoo.org/~floppym/dist/gnulib-${GNULIB}.tar.gz
+	https://dev.gentoo.org/~floppym/dist/gnulib-${GNULIB}.tar.gz
 	https://github.com/troydhanson/uthash/archive/${UTHASH}.tar.gz -> uthash-${UTHASH}.tar.gz"
 
 LICENSE="BSD GPL-3+"

@@ -11,7 +11,7 @@ MY_P="${PN}-$(replace_version_separator 2 -)"
 DESCRIPTION="A graphical interface to the GNU debugger"
 HOMEPAGE="http://sourceware.org/insight/"
 SRC_URI="ftp://sources.redhat.com/pub/${PN}/releases/${MY_P}a.tar.bz2
-	http://dev.gentoo.org/~xarthisius/distfiles/${P}-patchset-02.tar.xz"
+	https://dev.gentoo.org/~xarthisius/distfiles/${P}-patchset-02.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

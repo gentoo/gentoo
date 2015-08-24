@@ -11,7 +11,7 @@ PYTHON_REQ_USE="xml"
 inherit python-r1 eutils
 
 DESCRIPTION="Collection of developer scripts for Gentoo"
-HOMEPAGE="http://www.gentoo.org/proj/en/portage/tools/index.xml"
+HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

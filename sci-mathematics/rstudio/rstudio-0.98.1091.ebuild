@@ -31,9 +31,9 @@ SRC_URI="https://github.com/rstudio/rstudio/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://s3.amazonaws.com/rstudio-buildtools/selenium-server-standalone-${SELENIUMVER}.jar
 	https://s3.amazonaws.com/rstudio-buildtools/chromedriver-linux
 	https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip
-	http://dev.gentoo.org/~gienah/distfiles/packrat-${PACKRAT_VER}.tar.gz
-	http://dev.gentoo.org/~gienah/distfiles/rmarkdown-${RMARKDOWN_VER}.tar.gz
-	http://dev.gentoo.org/~gienah/distfiles/shinyapps-${SHINYAPPS_VER}.tar.gz"
+	https://dev.gentoo.org/~gienah/distfiles/packrat-${PACKRAT_VER}.tar.gz
+	https://dev.gentoo.org/~gienah/distfiles/rmarkdown-${RMARKDOWN_VER}.tar.gz
+	https://dev.gentoo.org/~gienah/distfiles/shinyapps-${SHINYAPPS_VER}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

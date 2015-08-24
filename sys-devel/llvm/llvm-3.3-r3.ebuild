@@ -14,7 +14,7 @@ HOMEPAGE="http://llvm.org/"
 SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
 	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.gz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
-	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P}-manpages.tar.bz2 )"
+	!doc? ( https://dev.gentoo.org/~voyageur/distfiles/${P}-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"

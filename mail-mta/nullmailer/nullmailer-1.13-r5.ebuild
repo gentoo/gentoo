@@ -18,7 +18,7 @@ DESCRIPTION="Simple relay-only local mail transport agent"
 HOMEPAGE="http://untroubled.org/nullmailer/"
 SRC_URI="
 	http://untroubled.org/${PN}/archive/${MY_P}.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${PN}-patches-${PV}.tar.xz"
+	https://dev.gentoo.org/~jlec/distfiles/${PN}-patches-${PV}.tar.xz"
 #		mirror://debian/pool/main/n/${PN}/${DEBIAN_SRC}"
 
 SLOT="0"

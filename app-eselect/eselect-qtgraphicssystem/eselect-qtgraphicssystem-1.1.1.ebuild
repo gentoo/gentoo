@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="Utility to change the active Qt Graphics System"
 HOMEPAGE="https://github.com/gentoo/eselect-qtgraphicssystem"
-SRC_URI="http://dev.gentoo.org/~wired/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~wired/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

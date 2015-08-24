@@ -9,7 +9,7 @@ inherit autotools eutils
 DESCRIPTION="Japanese input method Anthy IMEngine for SCIM"
 HOMEPAGE="http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMAnthy"
 SRC_URI="mirror://sourceforge.jp/scim-imengine/37309/${P}.tar.gz
-	gtk3?	( http://dev.gentoo.org/~heroxbd/${P}-patches.tar.xz )"
+	gtk3?	( https://dev.gentoo.org/~heroxbd/${P}-patches.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"

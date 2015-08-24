@@ -13,7 +13,7 @@ DESCRIPTION="Image Scan! for Linux data files"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 # Use a gentoo hosted url since upstream uses a session based url that causes the
 # files to no longer be available after the session expires.
-SRC_URI="http://dev.gentoo.org/~idella4/tarballs//${PN}_${MY_PVR}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~idella4/tarballs//${PN}_${MY_PVR}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 

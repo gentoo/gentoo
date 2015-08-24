@@ -11,7 +11,7 @@ unset SCM_ECLASS
 
 DESCRIPTION="C++ client library for the CMIS interface"
 HOMEPAGE="https://sourceforge.net/projects/libcmis/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz http://dev.gentoo.org/~dilfridge/distfiles/${P}-gcc5.patch.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz https://dev.gentoo.org/~dilfridge/distfiles/${P}-gcc5.patch.gz"
 
 LICENSE="|| ( GPL-2 LGPL-2 MPL-1.1 )"
 SLOT="0.5"

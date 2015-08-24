@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Complaint generator for GNU Emacs"
 HOMEPAGE="http://www.emacswiki.org/emacs/Whine"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"

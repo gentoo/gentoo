@@ -8,7 +8,7 @@ inherit autotools eutils gnome2-utils git-r3 toolchain-funcs
 DESCRIPTION="A Free Telnet/SSH Client"
 HOMEPAGE="http://www.chiark.greenend.org.uk/~sgtatham/putty/"
 EGIT_REPO_URI="git://git.tartarus.org/simon/putty.git"
-SRC_URI="http://dev.gentoo.org/~jer/${PN}-icons.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~jer/${PN}-icons.tar.bz2"
 LICENSE="MIT"
 
 SLOT="0"

@@ -7,8 +7,8 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A set of CUPS printer drivers for SPL (Samsung Printer Language) printers"
 HOMEPAGE="http://splix.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${P}.tar.bz2
-	http://dev.gentoo.org/~voyageur/samsung-cms-20120312.tar.xz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.bz2
+	https://dev.gentoo.org/~voyageur/samsung-cms-20120312.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

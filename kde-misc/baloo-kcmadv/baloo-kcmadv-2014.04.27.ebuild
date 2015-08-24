@@ -10,7 +10,7 @@ inherit kde4-base
 DESCRIPTION="Alternative configuration module for the Baloo search framework"
 HOMEPAGE="https://gitlab.com/baloo-kcmadv/baloo-kcmadv"
 EGIT_REPO_URI="https://gitlab.com/${PN}/${PN}.git"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

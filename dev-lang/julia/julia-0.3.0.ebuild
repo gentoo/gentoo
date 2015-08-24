@@ -15,8 +15,8 @@ HOMEPAGE="http://julialang.org/"
 SRC_URI="
 	https://github.com/JuliaLang/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/${PDSFMT}.tar.gz
-	http://dev.gentoo.org/~patrick/libuv-${P}.tar.bz2
-	http://dev.gentoo.org/~patrick/rmath-0_p20140821.tar.bz2
+	https://dev.gentoo.org/~patrick/libuv-${P}.tar.bz2
+	https://dev.gentoo.org/~patrick/rmath-0_p20140821.tar.bz2
 	http://www.public-software-group.org/pub/projects/utf8proc/v1.1.6/utf8proc-v1.1.6.tar.gz
 "
 

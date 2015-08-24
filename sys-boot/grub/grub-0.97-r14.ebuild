@@ -214,7 +214,7 @@ setup_boot_dir() {
 		ewarn "root/setup manually."
 		ewarn
 		ewarn "For more help, see the handbook:"
-		ewarn "http://www.gentoo.org/doc/en/handbook/handbook-${ARCH}.xml?part=1&chap=10#grub-install-auto"
+		ewarn "https://www.gentoo.org/doc/en/handbook/handbook-${ARCH}.xml?part=1&chap=10#grub-install-auto"
 		echo
 	fi
 

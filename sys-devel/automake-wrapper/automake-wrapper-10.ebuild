@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="wrapper for automake to manage multiple automake versions"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

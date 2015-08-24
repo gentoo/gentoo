@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks"
 HOMEPAGE="https://code.google.com/p/split2flac/"
-SRC_URI="http://dev.gentoo.org/~maksbotan/${PN}-${PV##*_pre}-r1.sh"
+SRC_URI="https://dev.gentoo.org/~maksbotan/${PN}-${PV##*_pre}-r1.sh"
 
 LICENSE="MIT"
 SLOT="0"

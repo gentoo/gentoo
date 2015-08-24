@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Test-first development process for building object-oriented software"
 HOMEPAGE="http://mockobjects.sf.net"
-SRC_URI="http://dev.gentoo.org/~karltk/java/distfiles/mockobjects-java-${PV}-gentoo.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~karltk/java/distfiles/mockobjects-java-${PV}-gentoo.tar.bz2"
 
 LICENSE="Apache-1.1"
 SLOT="0"

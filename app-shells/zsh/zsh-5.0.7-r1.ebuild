@@ -146,7 +146,7 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
-		# should link to http://www.gentoo.org/doc/en/zsh.xml
+		# should link to https://www.gentoo.org/doc/en/zsh.xml
 		echo
 		elog "If you want to enable Portage completions and Gentoo prompt,"
 		elog "emerge app-shells/gentoo-zsh-completions and add"

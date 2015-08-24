@@ -7,7 +7,7 @@ inherit font
 DESCRIPTION="Mikachan Japanese TrueType Collection fonts"
 HOMEPAGE="http://mikachan-font.com/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-	http://dev.gentoo.org/~flameeyes/dist/${P}.tar.bz2"
+	https://dev.gentoo.org/~flameeyes/dist/${P}.tar.bz2"
 
 LICENSE="free-noncomm"
 SLOT="0"

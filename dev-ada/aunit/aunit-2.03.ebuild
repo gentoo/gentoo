@@ -7,7 +7,7 @@ inherit gnat
 IUSE=""
 
 DESCRIPTION="Aunit, Ada unit testing framework"
-SRC_URI="http://dev.gentoo.org/~george/src/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~george/src/${P}.tar.bz2"
 HOMEPAGE="https://libre.adacore.com/aunit/"
 
 LICENSE="GPL-2"

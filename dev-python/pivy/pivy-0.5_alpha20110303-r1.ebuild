@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Coin3d binding for Python"
 HOMEPAGE="http://pivy.coin3d.org/"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
 #identical to latest debian tarball at
 # http://ftp.de.debian.org/debian/pool/main/p/pivy/pivy_0.5.0~v609hg.orig.tar.bz2
 

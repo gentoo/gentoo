@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Wrapper for java-config"
-HOMEPAGE="http://www.gentoo.org/proj/en/java"
+HOMEPAGE="https://www.gentoo.org/proj/en/java"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

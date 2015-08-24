@@ -10,8 +10,8 @@ MY_P="${P/lastfmplayer/lastfm}+dfsg"
 DESCRIPTION="A player for last.fm radio streams"
 HOMEPAGE="http://www.last.fm/help/player
 	http://www.mehercule.net/staticpages/index.php/lastfm"
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/lastfm-${PV}+dfsg.tar.gz
-	http://dev.gentoo.org/~hwoarang/distfiles/lastfm_${PV}+dfsg-2.debian.tar.gz
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/lastfm-${PV}+dfsg.tar.gz
+	https://dev.gentoo.org/~hwoarang/distfiles/lastfm_${PV}+dfsg-2.debian.tar.gz
 	dbus? ( http://glue.umd.edu/~rossatok/dbusextension-2.0.tar.bz2 )"
 
 LICENSE="GPL-2"

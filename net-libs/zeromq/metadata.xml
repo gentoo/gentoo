@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
     <email>qnikst@gentoo.org</email>
@@ -12,7 +12,7 @@
       <description>iMatrix Corporation</description>
     </maintainer>
     <doc>http://zguide.zeromq.org/chapter:1</doc>
-    <bugs-to>http://github.com/zeromq/zeromq2/issues</bugs-to>
+    <bugs-to>https://github.com/zeromq/zeromq2/issues</bugs-to>
     <!-- remote-id type="github">zeromq/zeromq2</remote-id-->
   </upstream>
   <longdescription lang="en">

@@ -10,7 +10,7 @@ DESCRIPTION="An improved interface to color-moccur for editing"
 HOMEPAGE="http://www.bookshelf.jp/
 	http://www.emacswiki.org/emacs/SearchBuffers"
 # taken from http://www.bookshelf.jp/elc/moccur-edit.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -12,7 +12,7 @@ DESCRIPTION="P2P sharing software which connects through I2P and Kad network"
 # New homepage has a few resources and a working nodes.dat file users need
 # in order to get iMule to work
 HOMEPAGE="http://echelon.i2p/imule"
-SRC_URI="http://echelon.i2p/imule/${PV}/${MY_PN}-${PV}-src.tbz http://dev.gentoo.org/~zlg/extra/net-p2p/imule/2015-03-22_nodes.dat"
+SRC_URI="http://echelon.i2p/imule/${PV}/${MY_PN}-${PV}-src.tbz https://dev.gentoo.org/~zlg/extra/net-p2p/imule/2015-03-22_nodes.dat"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"

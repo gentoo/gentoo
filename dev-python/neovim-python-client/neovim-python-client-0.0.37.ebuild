@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python client to connect to Neovim thru its msgpack-rpc API"
 HOMEPAGE="https://github.com/neovim/python-client"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

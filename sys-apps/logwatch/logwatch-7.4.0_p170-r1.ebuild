@@ -9,7 +9,7 @@ inherit eutils
 DESCRIPTION="Analyzes and Reports on system logs"
 HOMEPAGE="http://www.logwatch.org/"
 #SRC_URI="mirror://sourceforge/${PN}/${P}/${P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~polynomial-c/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~polynomial-c/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

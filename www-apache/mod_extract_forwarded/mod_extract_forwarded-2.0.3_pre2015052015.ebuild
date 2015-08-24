@@ -8,7 +8,7 @@ inherit apache-module
 DESCRIPTION="Apache module that rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations"
 HOMEPAGE="http://www.openinfo.co.uk/apache/index.html"
 #SRC_URI="http://www.openinfo.co.uk/apache/extract_forwarded-${PV}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~pacho/maintainer-needed/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pacho/maintainer-needed/${P}.tar.xz"
 
 LICENSE="Apache-1.1"
 SLOT="0"

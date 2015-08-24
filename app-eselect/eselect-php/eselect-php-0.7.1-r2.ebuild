@@ -7,8 +7,8 @@ EAPI=5
 inherit depend.apache systemd
 
 DESCRIPTION="PHP eselect module"
-HOMEPAGE="http://www.gentoo.org"
-SRC_URI="http://dev.gentoo.org/~olemarkus/eselect-php/eselect-php-${PV}.bz2"
+HOMEPAGE="https://www.gentoo.org"
+SRC_URI="https://dev.gentoo.org/~olemarkus/eselect-php/eselect-php-${PV}.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

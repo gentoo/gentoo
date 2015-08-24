@@ -7,7 +7,7 @@ inherit eutils flag-o-matic multilib
 
 DESCRIPTION="A very basic terminfo library"
 HOMEPAGE="https://github.com/mauke/unibilium/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"

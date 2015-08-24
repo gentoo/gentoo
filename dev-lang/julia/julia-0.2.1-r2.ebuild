@@ -13,7 +13,7 @@ HOMEPAGE="http://julialang.org/"
 SRC_URI="
 	https://github.com/JuliaLang/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/${PDSFMT}.tar.gz
-	http://dev.gentoo.org/~bicatali/distfiles/libuv-${P}.tar.gz
+	https://dev.gentoo.org/~bicatali/distfiles/libuv-${P}.tar.gz
 "
 
 LICENSE="MIT"

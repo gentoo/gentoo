@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="pgrep(1) and pkill(1) for Darwin"
 HOMEPAGE="http://prefix.gentooexperimental.org:8000/pkill-darwin/"
-SRC_URI="http://www.gentoo.org/~grobian/distfiles/${P}.tar.xz"
+SRC_URI="https://www.gentoo.org/~grobian/distfiles/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

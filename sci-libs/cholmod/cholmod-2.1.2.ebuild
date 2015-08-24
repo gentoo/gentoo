@@ -8,7 +8,7 @@ inherit autotools-utils multilib toolchain-funcs
 
 DESCRIPTION="Sparse Cholesky factorization and update/downdate library"
 HOMEPAGE="http://www.cise.ufl.edu/research/sparse/cholmod/"
-SRC_URI="http://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
 
 LICENSE="minimal? ( LGPL-2.1 ) !minimal? ( GPL-2 )"
 SLOT="0"

@@ -13,8 +13,8 @@ CCTOOLS=cctools-698.1
 
 DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools 3.1.2"
 HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
-SRC_URI="http://www.gentoo.org/~grobian/distfiles/${LD64}.tar.gz
-	http://www.gentoo.org/~grobian/distfiles/${CCTOOLS}.tar.gz"
+SRC_URI="https://www.gentoo.org/~grobian/distfiles/${LD64}.tar.gz
+	https://www.gentoo.org/~grobian/distfiles/${CCTOOLS}.tar.gz"
 
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x86-macos"

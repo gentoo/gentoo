@@ -10,7 +10,7 @@ DESCRIPTION="An improved interface to minibuffer completion"
 HOMEPAGE="http://homepage1.nifty.com/bmonkey/emacs/index-en.html
 	http://www.emacswiki.org/emacs/McompleteMode"
 # taken from http://homepage1.nifty.com/bmonkey/emacs/elisp/mcomplete.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

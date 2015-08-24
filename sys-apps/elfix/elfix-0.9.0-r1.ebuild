@@ -7,9 +7,9 @@ EAPI="5"
 inherit eutils
 
 DESCRIPTION="A suite of tools to work with ELF objects on Hardened Gentoo"
-HOMEPAGE="http://www.gentoo.org/proj/en/hardened/pax-quickstart.xml
-	http://dev.gentoo.org/~blueness/elfix/"
-SRC_URI="http://dev.gentoo.org/~blueness/elfix/${P}.tar.gz"
+HOMEPAGE="https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml
+	https://dev.gentoo.org/~blueness/elfix/"
+SRC_URI="https://dev.gentoo.org/~blueness/elfix/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

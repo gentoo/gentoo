@@ -8,7 +8,7 @@ inherit font
 DESCRIPTION="A beautiful sans-serif monotype font designed for code listings"
 HOMEPAGE="http://www.google.com/fonts/specimen/Inconsolata
 	https://code.google.com/p/googlefontdirectory/source/browse/ofl/inconsolata/?name=default"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

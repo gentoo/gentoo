@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages PACKAGE_MANAGER environment variable"
-HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"
+HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

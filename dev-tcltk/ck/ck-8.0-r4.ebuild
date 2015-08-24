@@ -13,7 +13,7 @@ DESCRIPTION="A curses based toolkit for tcl"
 HOMEPAGE="http://www.ch-werner.de/ck/"
 SRC_URI="
 	http://www.ch-werner.de/ck/${MY_P}.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${P}-tcl8.6.patch.xz"
+	https://dev.gentoo.org/~jlec/distfiles/${P}-tcl8.6.patch.xz"
 
 LICENSE="BSD"
 SLOT="0"

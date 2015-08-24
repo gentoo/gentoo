@@ -6,9 +6,9 @@ EAPI=4
 inherit eutils prefix
 
 DESCRIPTION="Gentoo-specific bash command-line completions (emerge, ebuild, equery, repoman, layman, etc)"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-	http://dev.gentoo.org/~darkside/tmp/${P}.tar.bz2"
+	https://dev.gentoo.org/~darkside/tmp/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

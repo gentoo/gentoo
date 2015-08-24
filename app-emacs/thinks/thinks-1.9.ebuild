@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Insert text in a think bubble"
 HOMEPAGE="http://www.davep.org/emacs/"
 # taken from http://www.davep.org/emacs/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -12,7 +12,7 @@ MY_P=${P}.r2792
 
 DESCRIPTION="Weak Signal Propagation Reporter"
 HOMEPAGE="http://www.physics.princeton.edu/pulsar/K1JT/wspr.html"
-SRC_URI="http://dev.gentoo.org/~tomjbe/distfiles/${MY_P}.tgz"
+SRC_URI="https://dev.gentoo.org/~tomjbe/distfiles/${MY_P}.tgz"
 LICENSE="GPL-2"
 
 SLOT="0"

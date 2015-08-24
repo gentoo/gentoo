@@ -9,7 +9,7 @@ inherit eutils flag-o-matic gstreamer
 
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="http://gstreamer.freedesktop.org/"
-SRC_URI+=" http://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}-h264-patches.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}-h264-patches.tar.xz"
 
 LICENSE="LGPL-2"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"

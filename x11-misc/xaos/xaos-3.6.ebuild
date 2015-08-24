@@ -12,7 +12,7 @@ inherit autotools-utils eutils
 DESCRIPTION="Very fast real-time fractal zoomer"
 HOMEPAGE="http://matek.hu/xaos/doku.php"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${PN}.png.tar"
+	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.tar"
 
 SLOT="0"
 LICENSE="GPL-2"

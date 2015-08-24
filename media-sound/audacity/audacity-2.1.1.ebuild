@@ -8,8 +8,8 @@ inherit eutils wxwidgets
 MY_P="${PN}-minsrc-${PV}"
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="http://web.audacityteam.org/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${MY_P}.tar.xz
-	doc? ( http://dev.gentoo.org/~yngwin/distfiles/${PN}-manual-${PV}.zip )"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${MY_P}.tar.xz
+	doc? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-manual-${PV}.zip )"
 	# wget doesn't seem to work on FossHub links, so we mirror
 
 LICENSE="GPL-2"

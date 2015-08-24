@@ -14,7 +14,7 @@ MY_P=${PN}-src-r${PV/_rc/-rc}
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
 HOMEPAGE="http://www.mongodb.org"
 SRC_URI="http://downloads.mongodb.org/src/${MY_P}.tar.gz
-	mms-agent? ( http://dev.gentoo.org/~ultrabug/20140409-mms-monitoring-agent.zip )"
+	mms-agent? ( https://dev.gentoo.org/~ultrabug/20140409-mms-monitoring-agent.zip )"
 
 LICENSE="AGPL-3 Apache-2.0"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils linux-info systemd toolchain-funcs
 
 DESCRIPTION="Free client for Cisco VPN routing software"
 HOMEPAGE="http://www.unix-ag.uni-kl.de/~massar/vpnc/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"

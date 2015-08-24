@@ -21,7 +21,7 @@ IUSE="audit pam dbus"
 DESCRIPTION="SELinux core utilities"
 HOMEPAGE="http://userspace.selinuxproject.org"
 SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20140506/${MY_P}.tar.gz
-http://dev.gentoo.org/~swift/patches/policycoreutils/patchbundle-${PN}-${PATCHBUNDLE}.tar.gz
+https://dev.gentoo.org/~swift/patches/policycoreutils/patchbundle-${PN}-${PATCHBUNDLE}.tar.gz
 	mirror://gentoo/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
 
 LICENSE="GPL-2"

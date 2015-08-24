@@ -9,7 +9,7 @@ inherit autotools eutils gnome2-utils
 DESCRIPTION="A graphical user interface to the Apple productline"
 HOMEPAGE="http://gtkpod.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	http://dev.gentoo.org/~ssuominen/gst-element-check-0.10.m4.xz"
+	https://dev.gentoo.org/~ssuominen/gst-element-check-0.10.m4.xz"
 
 LICENSE="GPL-2 FDL-1.2"
 SLOT="0"

@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Eselect module for management of multiple Python versions"
-HOMEPAGE="http://www.gentoo.org/proj/en/Python/"
+HOMEPAGE="https://www.gentoo.org/proj/en/Python/"
 
 LICENSE="GPL-2"
 SLOT="0"

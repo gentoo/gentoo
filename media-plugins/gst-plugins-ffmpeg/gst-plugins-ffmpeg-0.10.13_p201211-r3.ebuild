@@ -16,8 +16,8 @@ SLOT=${PVP[0]}.${PVP[1]}
 DESCRIPTION="FFmpeg based gstreamer plugin"
 HOMEPAGE="http://gstreamer.freedesktop.org/modules/gst-ffmpeg.html"
 #SRC_URI="http://gstreamer.freedesktop.org/src/${MY_PN}/${MY_P}.tar.bz2"
-SRC_URI="http://dev.gentoo.org/~tetromino/distfiles/${PN}/${MY_P}.tar.xz
-	http://dev.gentoo.org/~tetromino/distfiles/${PN}/${MY_P}-libav-9-patches.tar.xz"
+SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${MY_P}.tar.xz
+	https://dev.gentoo.org/~tetromino/distfiles/${PN}/${MY_P}-libav-9-patches.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"

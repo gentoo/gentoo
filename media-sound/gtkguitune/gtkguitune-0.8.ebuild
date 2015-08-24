@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils gnome2-utils
 
 DESCRIPTION="A guitar tuning program that uses Schmitt-triggering for quick feedback"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${PN}-gtk2-${PV}.tar.gz"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ inherit cmake-utils
 
 DESCRIPTION="Collection of libraries for graphics transformation algorithms"
 HOMEPAGE="http://opengtl.org/"
-SRC_URI="http://download.opengtl.org/${MY_P}.tar.bz2 http://dev.gentoo.org/~creffett/distfiles/${PN}-0.9.18-llvm-3.3.patch"
+SRC_URI="http://download.opengtl.org/${MY_P}.tar.bz2 https://dev.gentoo.org/~creffett/distfiles/${PN}-0.9.18-llvm-3.3.patch"
 
 LICENSE="LGPL-2"
 SLOT="0"

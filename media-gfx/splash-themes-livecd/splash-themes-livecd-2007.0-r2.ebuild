@@ -9,7 +9,7 @@ inherit eutils
 MY_P="gentoo-livecd-${PV}"
 MY_REV="0.9.6"
 DESCRIPTION="Gentoo theme for gensplash consoles"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${PN}/${MY_P}-${MY_REV}.tar.bz2"
 
 SLOT=${PV}

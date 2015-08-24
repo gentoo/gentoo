@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Manages opencascade env file"
-HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"
+HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
 SRC_URI=""
 
 LICENSE="GPL-2"

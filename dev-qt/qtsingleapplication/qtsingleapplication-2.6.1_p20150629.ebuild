@@ -10,7 +10,7 @@ MY_P=qt-solutions-${PV#*_p}
 
 DESCRIPTION="Qt library to start applications only once per user"
 HOMEPAGE="https://code.qt.io/cgit/qt-solutions/qt-solutions.git/"
-SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"

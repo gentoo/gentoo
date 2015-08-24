@@ -19,7 +19,7 @@ PROTOBUF_URL="http://protobuf.googlecode.com/files/protobuf-${PROTOBUF_VER}.tar.
 GMOCK_URL="https://googlemock.googlecode.com/files/gmock-${GMOCK_VER}.zip"
 GTEST_URL="https://googletest.googlecode.com/files/gtest-${GTEST_VER}.zip"
 JSONCPP_URL="mirror://sourceforge/jsoncpp/jsoncpp-src-${JSONCPP_VER}.tar.gz"
-GYP_URL="http://dev.gentoo.org/~naota/files/gyp-${GYP_DATE}.tar.bz2"
+GYP_URL="https://dev.gentoo.org/~naota/files/gyp-${GYP_DATE}.tar.bz2"
 SRC_URI="${MOZC_URL} ${PROTOBUF_URL} ${GYP_URL}
 	test? ( ${GMOCK_URL} ${GTEST_URL} ${JSONCPP_URL} )"
 

@@ -3,7 +3,7 @@
 # $Id$
 
 # Some important notes about detecting libnet version
-# http://dev.gentoo.org/~zlogene/perl-libnet-mantainer-notes
+# https://dev.gentoo.org/~zlogene/perl-libnet-mantainer-notes
 
 # perl-5.20 probably was 1.260 (which is not on cpan anymore)
 # lets stabilize this one day together with dev-lang/perl-5.20

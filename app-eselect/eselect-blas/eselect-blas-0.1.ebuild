@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="BLAS module for eselect"
-HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"
+HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
 SRC_URI=""
 
 LICENSE="GPL-2"

@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="Titlebar-less decoration inspired by Google Chrome and Nitrogen minimal mod"
 HOMEPAGE="http://kde-look.org/content/show.php/Chromi?content=119069"
-SRC_URI="http://dev.gentoo.org/~kensington/distfiles/${MY_P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${MY_P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="4"

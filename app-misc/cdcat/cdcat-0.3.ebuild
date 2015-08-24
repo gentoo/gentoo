@@ -5,7 +5,7 @@
 DESCRIPTION="simple yet effective CD indexing program"
 # original src went away: SRC_URI="http://littledragon.home.ro/unix/${P}.tar.gz"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
-HOMEPAGE="http://dev.gentoo.org/~centic/cdcat/"
+HOMEPAGE="https://dev.gentoo.org/~centic/cdcat/"
 
 LICENSE="GPL-2"
 SLOT="0"

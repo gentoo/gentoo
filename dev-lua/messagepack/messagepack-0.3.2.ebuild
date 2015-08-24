@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A pure Lua implementation of the MessagePack serialization format"
 HOMEPAGE="http://fperrad.github.io/lua-MessagePack/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/lua-${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/lua-${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

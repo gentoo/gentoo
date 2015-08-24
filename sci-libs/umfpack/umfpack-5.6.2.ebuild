@@ -8,7 +8,7 @@ inherit autotools-utils toolchain-funcs
 
 DESCRIPTION="Unsymmetric multifrontal sparse LU factorization library"
 HOMEPAGE="http://www.cise.ufl.edu/research/sparse/umfpack"
-SRC_URI="http://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

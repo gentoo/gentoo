@@ -8,7 +8,7 @@ inherit autotools
 
 DESCRIPTION="A dovecot antispam plugin supporting multiple backends"
 HOMEPAGE="http://wiki2.dovecot.org/Plugins/Antispam/"
-SRC_URI="http://dev.gentoo.org/~radhermit/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

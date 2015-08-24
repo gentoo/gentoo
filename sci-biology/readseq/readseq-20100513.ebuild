@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Reads and writes nucleic/protein sequences in various formats"
 HOMEPAGE="http://iubio.bio.indiana.edu/soft/molbio/readseq/"
-SRC_URI="http://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"

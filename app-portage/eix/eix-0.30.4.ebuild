@@ -9,7 +9,7 @@ inherit bash-completion-r1 eutils l10n
 
 DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays, version changes, and more"
 HOMEPAGE="https://github.com/vaeth/eix/"
-SRC_URI="http://dev.gentoo.org/~axs/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~axs/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

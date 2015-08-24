@@ -7,7 +7,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A libc optimized for small size"
 HOMEPAGE="http://www.fefe.de/dietlibc/"
-SRC_URI="http://dev.gentoo.org/~patrick/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~patrick/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

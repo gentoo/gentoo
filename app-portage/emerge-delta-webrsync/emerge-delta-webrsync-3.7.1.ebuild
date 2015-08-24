@@ -4,7 +4,7 @@
 
 EAPI=4
 DESCRIPTION="emerge-webrsync using patches to minimize bandwidth"
-HOMEPAGE="http://www.gentoo.org/proj/en/portage/index.xml"
+HOMEPAGE="https://www.gentoo.org/proj/en/portage/index.xml"
 SRC_URI="https://raw.githubusercontent.com/gentoo/portage/4ab31da4f09c7d0cb323b16b5b4b607d652ffc48/misc/emerge-delta-webrsync -> ${P}"
 LICENSE="GPL-2"
 SLOT="0"

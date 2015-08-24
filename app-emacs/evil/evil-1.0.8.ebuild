@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Extensible vi layer for Emacs"
 HOMEPAGE="http://gitorious.org/evil"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"

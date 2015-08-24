@@ -8,7 +8,7 @@ inherit latex-package
 
 DESCRIPTION="Create glossaries and lists of acronyms"
 HOMEPAGE="http://www.ctan.org/pkg/glossaries/"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.zip"
 
 LICENSE="LPPL-1.2"
 SLOT="0"

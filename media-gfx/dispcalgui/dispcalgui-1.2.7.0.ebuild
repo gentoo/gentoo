@@ -14,7 +14,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Display Calibration and Characterization powered by Argyll CMS"
 HOMEPAGE="http://dispcalgui.hoech.net/"
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

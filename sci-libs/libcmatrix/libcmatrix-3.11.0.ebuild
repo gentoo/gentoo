@@ -13,7 +13,7 @@ MY_P="${PN}${PV}_lite"
 DESCRIPTION="lite version of pNMRsim"
 HOMEPAGE="http://www.dur.ac.uk/paul.hodgkinson/pNMRsim/"
 #SRC_URI="${HOMEPAGE}/${MY_P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"

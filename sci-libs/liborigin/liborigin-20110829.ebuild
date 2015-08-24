@@ -8,7 +8,7 @@ inherit eutils multilib qt4-r2
 
 DESCRIPTION="Library for reading OriginLab OPJ project files"
 HOMEPAGE="http://soft.proindependent.com/liborigin2/"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${PN}2-${PV}.zip"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${PN}2-${PV}.zip"
 
 LICENSE="GPL-3"
 SLOT="2"

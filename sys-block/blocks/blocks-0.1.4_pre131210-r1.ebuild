@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Conversion tools for block devices"
 HOMEPAGE="https://github.com/g2p/blocks"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3+"

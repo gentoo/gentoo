@@ -11,7 +11,7 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="A development tool to help programmers write Java code that adheres to a coding standard"
 HOMEPAGE="http://checkstyle.sourceforge.net"
 SRC_URI="mirror://sourceforge/checkstyle/${P}-src.tar.gz
-	http://dev.gentoo.org/~sera/distfiles/${P}-maven-build.xml.tar.bz2"
+	https://dev.gentoo.org/~sera/distfiles/${P}-maven-build.xml.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

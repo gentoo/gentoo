@@ -11,7 +11,7 @@ MY_P="${PN}_${PV}"
 
 DESCRIPTION="KDE dropbox client"
 HOMEPAGE="http://kdropbox.deuteros.es/"
-SRC_URI="http://dev.gentoo.org/~tampakrap/tarballs/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~tampakrap/tarballs/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="4"

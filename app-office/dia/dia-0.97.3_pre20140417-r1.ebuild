@@ -12,7 +12,7 @@ inherit autotools eutils gnome2 python-single-r1 multilib
 DESCRIPTION="Diagram/flowchart creation program"
 HOMEPAGE="https://wiki.gnome.org/Apps/Dia"
 
-SRC_URI="http://dev.gentoo.org/~pacho/gnome/${PN}-0.97.3_pre20140417.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pacho/gnome/${PN}-0.97.3_pre20140417.tar.xz"
 S="${WORKDIR}/${PN}-0.97.2"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@
 EAPI=4
 DESCRIPTION="low-level IO storage which packs data into sorted compressed blobs"
 HOMEPAGE="http://reverbrain.com/smack/"
-SRC_URI="http://dev.gentoo.org/~patrick/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~patrick/${P}.tar.bz2"
 
 inherit eutils cmake-utils
 

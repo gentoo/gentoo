@@ -10,7 +10,7 @@ DESCRIPTION="Major mode for editing Markdown-formatted text files"
 HOMEPAGE="http://jblevins.org/projects/markdown-mode/"
 # Cannot use this url because its hash differ about every five minutes
 # SRC_URI="http://jblevins.org/git/${PN}.git/snapshot/${P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

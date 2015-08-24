@@ -12,7 +12,7 @@ inherit python
 
 DESCRIPTION="DSSP Plugin for PyMOL"
 HOMEPAGE="http://www.biotec.tu-dresden.de/~hongboz/dssp_pymol/dssp_pymol.html"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.py.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.py.xz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"

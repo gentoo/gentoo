@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	# git archive --prefix=cwiid-$(date +%Y%m%d)/ \
 	#	--format=tar HEAD | bzip2 > cwiid-$(date +%Y%m%d).tar.bz2
-	SRC_URI="http://dev.gentoo.org/~lxnay/cwiid/cwiid-${PV}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~lxnay/cwiid/cwiid-${PV}.tar.bz2"
 	KEYWORDS="~x86 ~amd64"
 fi
 

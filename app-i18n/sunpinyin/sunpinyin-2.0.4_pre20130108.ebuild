@@ -8,7 +8,7 @@ inherit eutils multilib python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="A Statistical Language Model based Chinese input method library"
 HOMEPAGE="https://sunpinyin.googlecode.com/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0/1"

@@ -13,7 +13,7 @@ then
 	EGIT_REPO_URI="git://github.com/gentoo/eudev.git"
 	inherit git-2
 else
-	SRC_URI="http://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
 	KEYWORDS="ia64"
 fi
 
@@ -274,6 +274,6 @@ pkg_postinst()
 	elog
 	elog "For more information on eudev on Gentoo, writing udev rules, and"
 	elog "fixing known issues visit:"
-	elog "         http://www.gentoo.org/doc/en/udev-guide.xml"
+	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
 	elog
 }

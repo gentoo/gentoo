@@ -15,7 +15,7 @@ fi
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="base functions required by all gentoo systems"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="GPL-2"
 SLOT="0"

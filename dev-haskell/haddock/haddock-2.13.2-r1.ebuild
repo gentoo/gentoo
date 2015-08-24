@@ -10,7 +10,7 @@ inherit eutils haskell-cabal pax-utils
 DESCRIPTION="A documentation-generation tool for Haskell libraries"
 HOMEPAGE="http://www.haskell.org/haddock/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz
-		http://dev.gentoo.org/~qnikst/patches/dev-haskell-${PN}/${P}-pregenerated-files.patch
+		https://dev.gentoo.org/~qnikst/patches/dev-haskell-${PN}/${P}-pregenerated-files.patch
 		"
 
 LICENSE="BSD"

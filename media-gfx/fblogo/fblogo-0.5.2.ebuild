@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Creates images to substitute Linux boot logo"
 #HOMEPAGE="http://freakzone.net/gordon/#fblogo"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 #SRC_URI="http://freakzone.net/gordon/src/${P}.tar.gz"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

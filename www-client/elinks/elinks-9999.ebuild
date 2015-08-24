@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://repo.or.cz/elinks.git"
 MY_P="${P/_/}"
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
-SRC_URI="http://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2"
+SRC_URI="https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

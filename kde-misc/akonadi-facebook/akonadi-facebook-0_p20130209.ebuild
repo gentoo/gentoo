@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="Facebook services integration in Akonadi"
 HOMEPAGE="https://projects.kde.org/akonadi-facebook"
-SRC_URI="http://dev.gentoo.org/~creffett/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~creffett/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="4"

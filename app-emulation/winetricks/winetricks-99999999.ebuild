@@ -16,8 +16,8 @@ else
 fi
 wtg=winetricks-gentoo-2012.11.24
 SRC_URI="${SRC_URI}
-	gtk? ( http://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )
-	kde? ( http://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )"
+	gtk? ( https://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )
+	kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )"
 
 DESCRIPTION="Easy way to install DLLs needed to work around problems in Wine"
 HOMEPAGE="http://winetricks.org http://wiki.winehq.org/winetricks"

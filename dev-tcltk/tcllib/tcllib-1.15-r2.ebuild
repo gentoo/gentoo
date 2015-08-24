@@ -9,8 +9,8 @@ inherit eutils virtualx
 DESCRIPTION="Tcl Standard Library"
 HOMEPAGE="http://www.tcl.tk/software/tcllib/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/${P}-manpage-rename.patch.xz
-	http://dev.gentoo.org/~jlec/distfiles/${P}-test.patch.xz
+	https://dev.gentoo.org/~jlec/distfiles/${P}-manpage-rename.patch.xz
+	https://dev.gentoo.org/~jlec/distfiles/${P}-test.patch.xz
 	mirror://sourceforge/tcllib/${P}.tar.bz2"
 
 LICENSE="BSD"

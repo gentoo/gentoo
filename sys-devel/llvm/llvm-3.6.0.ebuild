@@ -15,7 +15,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
 		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
-	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P}-manpages.tar.bz2 )"
+	!doc? ( https://dev.gentoo.org/~voyageur/distfiles/${P}-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/3.6"

@@ -10,7 +10,7 @@ DESCRIPTION="An Emacs major mode for editing X resource database files"
 HOMEPAGE="https://launchpad.net/xrdb-mode
 	http://www.emacswiki.org/emacs/ResourceFiles"
 # taken from https://launchpad.net/${PN}/trunk/3.0/+download/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

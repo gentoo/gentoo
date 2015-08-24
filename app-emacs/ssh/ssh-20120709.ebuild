@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Directory tracking and special character handling support for SSH sessions in Emacs shell buffers"
 HOMEPAGE="http://www.splode.com/~friedman/software/emacs-lisp/index.html#ssh"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

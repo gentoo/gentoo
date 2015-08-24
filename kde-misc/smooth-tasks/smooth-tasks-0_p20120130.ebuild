@@ -10,7 +10,7 @@ inherit kde4-base
 
 DESCRIPTION="Alternate taskbar KDE plasmoid, similar to Windows 7"
 HOMEPAGE="https://bitbucket.org/flupp/smooth-tasks-fork"
-SRC_URI="http://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="4"

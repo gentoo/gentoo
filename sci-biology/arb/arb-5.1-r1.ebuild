@@ -11,7 +11,7 @@ HOMEPAGE="http://www.arb-home.de/"
 SRC_URI="
 	http://download.arb-home.de/release/arb_${PV}/arbsrc.tgz -> ${P}.tgz
 	mirror://gentoo/${P}-glibc2.10.patch.bz2
-	http://dev.gentoo.org/~jlec/${P}-linker.patch.bz2"
+	https://dev.gentoo.org/~jlec/${P}-linker.patch.bz2"
 
 LICENSE="arb"
 SLOT="0"

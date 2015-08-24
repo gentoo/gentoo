@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>openoffice</herd>
 	<longdescription>OOExtras is a set of community generated templates and sample files. For it to do anything useful, you also have to install one of the different flavours of OpenOffice.org that Gentoo provides</longdescription>

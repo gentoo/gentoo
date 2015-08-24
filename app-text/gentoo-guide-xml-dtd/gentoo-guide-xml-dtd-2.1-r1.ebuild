@@ -6,7 +6,7 @@ inherit sgml-catalog
 
 S=${WORKDIR}
 DESCRIPTION="DTD for Gentoo-Guide Style XML Files"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 
 SLOT="0"
 LICENSE="GPL-2"

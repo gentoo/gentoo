@@ -11,7 +11,7 @@ MY_PVR="$(replace_version_separator 3 -)"
 
 DESCRIPTION="Image Scan! for Linux data files"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="http://dev.gentoo.org/~flameeyes/avasys/${PN}_${MY_PVR}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~flameeyes/avasys/${PN}_${MY_PVR}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 

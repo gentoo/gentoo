@@ -8,12 +8,12 @@ DESCRIPTION="GNAT Ada Compiler - AdaCore GPL version"
 HOMEPAGE="https://libre.adacore.com/"
 LICENSE="GPL-2"
 
-SRC_URI="http://dev.gentoo.org/~george/src/gcc-branch-${GCCVER}.tar.bz2
+SRC_URI="https://dev.gentoo.org/~george/src/gcc-branch-${GCCVER}.tar.bz2
 	http://www.adaic.org/standards/05rm/RM-05-Html.zip
-	http://dev.gentoo.org/~george/src/${P}.tar.bz2
-	x86?   ( http://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-i386.tar.bz2 )
-	ppc?   ( http://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-ppc.tar.bz2 )
-	amd64? ( http://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-amd64.tar.bz2 )"
+	https://dev.gentoo.org/~george/src/${P}.tar.bz2
+	x86?   ( https://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-i386.tar.bz2 )
+	ppc?   ( https://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-ppc.tar.bz2 )
+	amd64? ( https://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-amd64.tar.bz2 )"
 # ${BOOT_SLOT} and ${GCCVER} are defined in gnatbuild.eclass and depend
 # only on $PV, so should be safe to use in DEPEND/SRC_URI
 

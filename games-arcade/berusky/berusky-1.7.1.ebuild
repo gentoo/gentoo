@@ -10,7 +10,7 @@ DESCRIPTION="free logic game based on an ancient puzzle named Sokoban"
 HOMEPAGE="http://anakreon.cz/?q=node/1"
 SRC_URI="http://www.anakreon.cz/download/${P}.tar.gz
 	http://www.anakreon.cz/download/${DATAFILE}.tar.gz
-	http://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,8 +5,8 @@
 EAPI="4"
 
 DESCRIPTION="Manages system defaults for GNOME Shell extensions"
-HOMEPAGE="http://www.gentoo.org"
-SRC_URI="http://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.gentoo.org"
+SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

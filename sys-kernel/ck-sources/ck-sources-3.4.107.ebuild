@@ -7,7 +7,7 @@ ETYPE="sources"
 KEYWORDS="~amd64 ~x86"
 IUSE="bfsonly experimental urwlocks"
 
-HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches/
+HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 	http://users.on.net/~ckolivas/kernel/"
 
 K_WANT_GENPATCHES="base extras"

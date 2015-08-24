@@ -13,9 +13,9 @@ SRC_URI="mirror://gnu-alpha/coreutils/${P}.tar.xz
 	mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}.tar.xz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz
-	http://dev.gentoo.org/~vapier/dist/${P}-patches-${PATCH_VER}.tar.xz
+	https://dev.gentoo.org/~vapier/dist/${P}-patches-${PATCH_VER}.tar.xz
 	mirror://gentoo/${P}-man.tar.xz
-	http://dev.gentoo.org/~vapier/dist/${P}-man.tar.xz"
+	https://dev.gentoo.org/~vapier/dist/${P}-man.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

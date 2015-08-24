@@ -743,7 +743,7 @@ pkg_postinst() {
 
 	elog "Getting started using OpenLDAP? There is some documentation available:"
 	elog "Gentoo Guide to OpenLDAP Authentication"
-	elog "(http://www.gentoo.org/doc/en/ldap-howto.xml)"
+	elog "(https://www.gentoo.org/doc/en/ldap-howto.xml)"
 	elog "---"
 	elog "An example file for tuning BDB backends with openldap is"
 	elog "DB_CONFIG.fast.example in /usr/share/doc/${PF}/"

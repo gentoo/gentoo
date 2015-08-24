@@ -15,8 +15,8 @@ else
 	SRC_URI="http://www.freedesktop.org/software/systemd/systemd-${PV}.tar.xz"
 	if [[ -n "${patchset}" ]]; then
 				SRC_URI="${SRC_URI}
-					http://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
-					http://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz"
+					https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
+					https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz"
 			fi
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 fi

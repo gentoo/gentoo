@@ -5,7 +5,7 @@
 DESCRIPTION="A tool to parse smaps statistics"
 HOMEPAGE="http://bmaurer.blogspot.de/2006/03/memory-usage-with-smaps.html"
 SRC_URI="mirror://gentoo/smem.pl.${PV}.bz2
-	http://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/smem.pl.${PV}.bz2"
+	https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/smem.pl.${PV}.bz2"
 
 IUSE=""
 

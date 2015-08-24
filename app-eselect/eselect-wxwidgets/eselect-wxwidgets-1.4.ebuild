@@ -6,7 +6,7 @@ WXWRAP_VER=1.3
 WXESELECT_VER=1.4
 
 DESCRIPTION="Eselect module and wrappers for wxWidgets"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI="mirror://gentoo/wxwidgets.eselect-${WXESELECT_VER}.bz2"
 
 LICENSE="GPL-2"

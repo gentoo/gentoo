@@ -35,7 +35,7 @@ HOMEPAGE="http://www.cl.cam.ac.uk/research/hvg/Isabelle/index.html"
 SRC_URI="http://www.cl.cam.ac.uk/users/lcp/archive/${MY_P}.tar.gz
 		http://isabelle.in.tum.de/components/${JEDIT_P}.tar.gz -> ${JEDIT_IC_P}.tar.gz
 		http://isabelle.in.tum.de/dist/contrib/${JFREECHART_P}.tar.gz -> ${JFREECHART_IC_P}.tar.gz
-		http://dev.gentoo.org/~gienah/snapshots/${POLYML_IC_P}.tar.gz"
+		https://dev.gentoo.org/~gienah/snapshots/${POLYML_IC_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

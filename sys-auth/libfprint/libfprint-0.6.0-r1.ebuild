@@ -10,7 +10,7 @@ MY_PV="V_${PV//./_}"
 DESCRIPTION="library to add support for consumer fingerprint readers"
 HOMEPAGE="http://cgit.freedesktop.org/libfprint/libfprint/"
 SRC_URI="http://cgit.freedesktop.org/${PN}/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
-	http://dev.gentoo.org/~xmw/${P}_vfs0050.patch.gz"
+	https://dev.gentoo.org/~xmw/${P}_vfs0050.patch.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

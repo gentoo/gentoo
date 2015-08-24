@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="simple GnuPG-encrypted password store written in perl"
 HOMEPAGE="http://roland.entierement.nu/blog/2010/01/22/simple-gnupg-encrypted-password-store.html"
-SRC_URI="http://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

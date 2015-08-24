@@ -9,7 +9,7 @@ inherit autotools eutils
 DESCRIPTION="Transparent application input fuzzer"
 HOMEPAGE="http://libcaca.zoy.org/wiki/zzuf/"
 SRC_URI="http://caca.zoy.org/files/${PN}/${P}.tar.gz
-	http://dev.gentoo.org/~cardoe/distfiles/${P}-zzcat-zzat-rename.patch.bz2"
+	https://dev.gentoo.org/~cardoe/distfiles/${P}-zzcat-zzat-rename.patch.bz2"
 
 LICENSE="WTFPL-2"
 SLOT="0"

@@ -21,8 +21,8 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
-	http://www.gentoo.org/~grobian/distfiles/${UNWIND}.tar.xz
-	http://www.gentoo.org/~grobian/distfiles/libunwind-llvm-115426.tar.bz2"
+	https://www.gentoo.org/~grobian/distfiles/${UNWIND}.tar.xz
+	https://www.gentoo.org/~grobian/distfiles/libunwind-llvm-115426.tar.bz2"
 
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"

@@ -8,7 +8,7 @@ inherit apache-module depend.apache
 
 DESCRIPTION="Store and configure Apache virtual hosts using LDAP"
 HOMEPAGE="http://modvhostldap.alioth.debian.org/"
-SRC_URI="http://dev.gentoo.org/~mjo/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~mjo/distfiles/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1 eutils multilib
 
 DESCRIPTION="Collection of Gentoo-specific tools for Java"
-HOMEPAGE="http://www.gentoo.org/proj/en/java/"
+HOMEPAGE="https://www.gentoo.org/proj/en/java/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

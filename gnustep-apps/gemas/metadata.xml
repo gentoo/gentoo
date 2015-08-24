@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>gnustep</herd>
 	<longdescription>Gemas is a simple code editor for GNUstep. It have autoindentation and highlight syntax for C, C++, Objective-C, Objective-C++, GSmarkup. And to edit Strings, Plist, GNUmakefile, ChangeLog files and plain text files (INSTALL, README, ...)</longdescription>

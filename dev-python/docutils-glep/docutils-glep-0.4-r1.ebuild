@@ -11,7 +11,7 @@ inherit eutils python-r1
 MY_P=${PF/docutils-/}
 
 DESCRIPTION="Gentoo GLEP support for docutils"
-HOMEPAGE="http://www.gentoo.org/proj/en/glep/"
+HOMEPAGE="https://www.gentoo.org/proj/en/glep/"
 SRC_URI="mirror://gentoo/${MY_P}.tbz2"
 
 LICENSE="public-domain"

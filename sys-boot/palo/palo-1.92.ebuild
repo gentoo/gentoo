@@ -8,7 +8,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="PALO : PArisc Linux Loader"
 HOMEPAGE="http://parisc-linux.org/ https://parisc.wiki.kernel.org/"
-SRC_URI="http://dev.gentoo.org/~jer/${P/-/_}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jer/${P/-/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

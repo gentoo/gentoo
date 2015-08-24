@@ -10,12 +10,12 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="g-cpan: generate and install CPAN modules using portage"
-HOMEPAGE="http://www.gentoo.org/proj/en/perl/g-cpan.xml"
+HOMEPAGE="https://www.gentoo.org/proj/en/perl/g-cpan.xml"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"

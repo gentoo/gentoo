@@ -14,7 +14,7 @@ DESCRIPTION="Munin Server Monitoring Tool"
 HOMEPAGE="http://munin-monitoring.org/"
 SRC_URI="
 	mirror://sourceforge/munin/${MY_P}.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-${PATCHSET}.tar.xz"
+	https://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

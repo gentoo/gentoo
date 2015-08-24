@@ -16,7 +16,7 @@ MYTHTV_BRANCH="fixes/0.27"
 DESCRIPTION="Homebrew PVR project"
 HOMEPAGE="http://www.mythtv.org"
 SRC_URI="https://github.com/MythTV/mythtv/archive/v0.27.3.tar.gz -> mythtv-0.27.3.tar.gz
-	${BACKPORTS:+http://dev.gentoo.org/~rich0/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
+	${BACKPORTS:+https://dev.gentoo.org/~rich0/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -332,7 +332,7 @@ pkg_postinst() {
 
 	elog "Want mythfrontend to start automatically?"
 	elog "Set USE=autostart. Details can be found at:"
-	elog "http://dev.gentoo.org/~cardoe/mythtv/autostart.html"
+	elog "https://dev.gentoo.org/~cardoe/mythtv/autostart.html"
 	elog
 	elog "Note that the systemd unit now restarts by default and logs"
 	elog "to journald via the console at the notice verbosity."

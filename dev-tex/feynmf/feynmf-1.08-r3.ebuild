@@ -9,8 +9,8 @@ inherit eutils latex-package
 DESCRIPTION="Combined LaTeX/Metafont package for drawing of Feynman diagrams"
 HOMEPAGE="http://www.ctan.org/tex-archive/macros/latex/contrib/feynmf/"
 #Taken from: ftp.tug.ctan.org/tex-archive/macros/latex/contrib/${PN}.tar.gz
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz
-	doc? ( http://dev.gentoo.org/~ulm/distfiles/${PN}-cnl.tar.gz )"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz
+	doc? ( https://dev.gentoo.org/~ulm/distfiles/${PN}-cnl.tar.gz )"
 
 LICENSE="GPL-2+"
 SLOT="0"

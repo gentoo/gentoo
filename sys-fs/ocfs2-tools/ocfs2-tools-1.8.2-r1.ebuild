@@ -8,7 +8,7 @@ inherit autotools eutils python
 
 DESCRIPTION="Support programs for the Oracle Cluster Filesystem 2"
 HOMEPAGE="http://oss.oracle.com/projects/ocfs2-tools/"
-SRC_URI="http://dev.gentoo.org/~alexxy/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~alexxy/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

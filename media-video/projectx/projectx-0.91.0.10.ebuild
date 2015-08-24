@@ -12,7 +12,7 @@ XDG_P="xdg-20100731"
 
 DESCRIPTION="Converts, splits and demuxes DVB and other MPEG recordings"
 HOMEPAGE="http://project-x.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~billie/distfiles/${P}.tar.xz
+SRC_URI="https://dev.gentoo.org/~billie/distfiles/${P}.tar.xz
 	http://sbriesen.de/gentoo/distfiles/${PN}-idctfast.tar.xz
 	http://sbriesen.de/gentoo/distfiles/${XDG_P}.java.xz
 	http://sbriesen.de/gentoo/distfiles/${PN}-icon.png"

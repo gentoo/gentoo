@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Maintain remote web sites with ease"
 SRC_URI="http://www.manyfish.co.uk/sitecopy/${P}.tar.gz
-	http://dev.gentoo.org/~idella4/sitecopy-0.16.6-04-manpages-addition-fixes.patch"
+	https://dev.gentoo.org/~idella4/sitecopy-0.16.6-04-manpages-addition-fixes.patch"
 HOMEPAGE=" http://www.manyfish.co.uk/sitecopy/"
 # Removed all Debian related stuff.  If you want more patches, they can be ported from
 # http://ftp.debian.org/debian/pool/main/s/sitecopy/

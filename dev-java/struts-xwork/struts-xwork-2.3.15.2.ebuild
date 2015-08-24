@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}-src"
 
 DESCRIPTION="A powerful Model View Controller Framework for JSP/Servlets: XWork Core"
 SRC_URI="mirror://apache/struts/source/${MY_P}.zip
-	http://dev.gentoo.org/~tomwij/files/dist/${MY_PN}-build.xml-${PV}.tar.xz"
+	https://dev.gentoo.org/~tomwij/files/dist/${MY_PN}-build.xml-${PV}.tar.xz"
 HOMEPAGE="http://struts.apache.org/index.html"
 
 LICENSE="Apache-2.0"

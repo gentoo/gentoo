@@ -14,7 +14,7 @@ HOMEPAGE="http://aufs.sourceforge.net/"
 # make headers_install INSTALL_HDR_PATH=${T}
 # find ${T} -type f \( ! -name "*aufs*" \) -delete
 # find ${T} -type d -empty -delete
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-2"

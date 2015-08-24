@@ -7,7 +7,7 @@ EAPI=4
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for Java Scripting API (jsr223)"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI=""
 
 LICENSE="public-domain"

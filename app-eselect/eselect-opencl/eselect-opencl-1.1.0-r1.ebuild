@@ -8,7 +8,7 @@ CL_ABI=1.1
 inherit multilib
 
 DESCRIPTION="Utility to change the OpenCL implementation being used"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 
 # Source:
 # http://www.khronos.org/registry/cl/api/${CL_ABI}/opencl.h
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.gentoo.org/"
 # http://www.khronos.org/registry/cl/api/${CL_ABI}/cl_gl_ext.h
 # http://www.khronos.org/registry/cl/api/${CL_ABI}/cl.hpp
 
-MIRROR="http://dev.gentoo.org/~xarthisius/distfiles/"
+MIRROR="https://dev.gentoo.org/~xarthisius/distfiles/"
 SRC_URI="${MIRROR}/opencl.h.${CL_ABI}.xz
 	${MIRROR}/cl_platform.h.${CL_ABI}.xz
 	${MIRROR}/cl.h.${CL_ABI}.xz

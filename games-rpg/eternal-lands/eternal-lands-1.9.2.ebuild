@@ -7,8 +7,8 @@ inherit eutils flag-o-matic games
 
 DESCRIPTION="An online MMORPG written in C and SDL"
 HOMEPAGE="http://www.eternal-lands.com"
-SRC_URI="http://dev.gentoo.org/~rich0/distfiles/elc_1.9.2-20110618.tar.bz2
-	http://dev.gentoo.org/~rich0/distfiles/eternal-lands.png"
+SRC_URI="https://dev.gentoo.org/~rich0/distfiles/elc_1.9.2-20110618.tar.bz2
+	https://dev.gentoo.org/~rich0/distfiles/eternal-lands.png"
 
 LICENSE="eternal_lands"
 SLOT="0"

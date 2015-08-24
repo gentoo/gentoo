@@ -10,7 +10,7 @@ MY_PV=${PV/_/}
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="A library for file management"
 HOMEPAGE="http://pcmanfm.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${MY_P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${MY_P}.tar.xz"
 
 KEYWORDS="~alpha amd64 arm ~mips ppc x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"

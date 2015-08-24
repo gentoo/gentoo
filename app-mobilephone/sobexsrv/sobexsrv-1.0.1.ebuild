@@ -10,7 +10,7 @@ IUSE="gtk"
 
 DESCRIPTION="Scripting/Secure OBEX Server (for BlueZ Linux)"
 SRC_URI="http://www.mulliner.org/bluetooth/${MY_P}.tar.gz
-	 http://dev.gentoo.org/~joker/${P}-fix64.patch"
+	 https://dev.gentoo.org/~joker/${P}-fix64.patch"
 HOMEPAGE="http://www.mulliner.org/bluetooth/sobexsrv.php"
 
 SLOT="0"

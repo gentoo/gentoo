@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Small program to test performances of remote servers"
 HOMEPAGE="http://echoping.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"

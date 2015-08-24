@@ -9,10 +9,10 @@ inherit eutils multilib libtool
 MY_P=${P/-prefix/}  # just use "upstream" sources
 EINFO=einfo-1.0.6
 DESCRIPTION="Minimal baselayout and e-functions for Gentoo Prefix installs"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
-	http://dev.gentoo.org/~vapier/dist/${MY_P}.tar.bz2
-	http://dev.gentoo.org/~redlizard/distfiles/${EINFO}.tar.xz"
+	https://dev.gentoo.org/~vapier/dist/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~redlizard/distfiles/${EINFO}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

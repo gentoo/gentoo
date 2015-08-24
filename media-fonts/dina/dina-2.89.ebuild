@@ -6,7 +6,7 @@ inherit font
 
 DESCRIPTION="A monospace bitmap font, primarily aimed at programmers"
 HOMEPAGE="http://www.donationcoder.com/Software/Jibz/Dina/index.html"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/dina-pcf-${PV}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/dina-pcf-${PV}.tar.gz"
 
 LICENSE="Dina"
 SLOT="0"

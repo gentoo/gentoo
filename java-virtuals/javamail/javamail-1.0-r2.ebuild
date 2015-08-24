@@ -7,7 +7,7 @@ EAPI=4
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for javamail implementations"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI=""
 
 LICENSE="public-domain"

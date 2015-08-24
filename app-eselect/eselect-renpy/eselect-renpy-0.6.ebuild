@@ -7,7 +7,7 @@ EAPI=5
 inherit games
 
 DESCRIPTION="Manages renpy symlink"
-HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"
+HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
 
 LICENSE="GPL-2"
 SLOT="0"

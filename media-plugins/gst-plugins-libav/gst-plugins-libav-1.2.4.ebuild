@@ -49,7 +49,7 @@ multilib_src_configure() {
 	econf \
 		--disable-maintainer-mode \
 		--with-package-name="Gentoo GStreamer ebuild" \
-		--with-package-origin="http://www.gentoo.org" \
+		--with-package-origin="https://www.gentoo.org" \
 		--disable-fatal-warnings \
 		--with-system-libav \
 		$(use_enable orc)

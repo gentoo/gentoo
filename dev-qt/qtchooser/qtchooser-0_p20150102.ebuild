@@ -8,7 +8,7 @@ inherit qmake-utils toolchain-funcs
 
 DESCRIPTION="Qt4/Qt5 version chooser"
 HOMEPAGE="https://qt.gitorious.org/qt/qtchooser"
-SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"

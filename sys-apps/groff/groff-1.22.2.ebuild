@@ -9,7 +9,7 @@ inherit autotools eutils toolchain-funcs
 DESCRIPTION="Text formatter used for man pages"
 HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
 SRC_URI="mirror://gnu/groff/${P}.tar.gz
-	linguas_ja? ( http://dev.gentoo.org/~naota/patch/${PN}-1.22.1-japanese.patch.bz2 )"
+	linguas_ja? ( https://dev.gentoo.org/~naota/patch/${PN}-1.22.1-japanese.patch.bz2 )"
 
 LICENSE="GPL-2"
 SLOT="0"

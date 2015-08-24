@@ -11,7 +11,7 @@ inherit cuda eutils flag-o-matic multilib prefix python-single-r1 toolchain-func
 DESCRIPTION="Visual Molecular Dynamics"
 HOMEPAGE="http://www.ks.uiuc.edu/Research/vmd/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-patches.tar.xz
+	https://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-patches.tar.xz
 	${P}.src.tar.gz"
 
 SLOT="0"
@@ -59,7 +59,7 @@ pkg_nofetch() {
 	elog "Please download ${P}.src.tar.gz from"
 	elog "${VMD_DOWNLOAD}"
 	elog "after agreeing to the license and get"
-	elog "http://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-patches.tar.xz"
+	elog "https://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-patches.tar.xz"
 	elog "Place both in ${DISTDIR}"
 }
 

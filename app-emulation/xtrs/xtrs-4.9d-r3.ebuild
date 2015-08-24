@@ -11,7 +11,7 @@ HOMEPAGE="http://www.tim-mann.org/xtrs.html"
 SRC_URI="http://www.tim-mann.org/trs80/${P}.tar.gz
 	ls-dos? (
 		http://www.tim-mann.org/trs80/ld4-631.zip
-		http://dev.gentoo.org/~ulm/distfiles/ld4-631l.xd3
+		https://dev.gentoo.org/~ulm/distfiles/ld4-631l.xd3
 	)"
 
 LICENSE="xtrs ls-dos? ( freedist )"

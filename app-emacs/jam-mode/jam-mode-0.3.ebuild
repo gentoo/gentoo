@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="An Emacs major mode for editing Jam files"
 HOMEPAGE="https://web.archive.org/web/20100211015821/http://www.tenfoot.org.uk/index.html"
 # taken from http://www.tenfoot.org.uk/emacs/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

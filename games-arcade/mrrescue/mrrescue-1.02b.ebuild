@@ -9,7 +9,7 @@ inherit eutils gnome2-utils games
 DESCRIPTION="Arcade styled 2d action game centered around evacuating civilians from burning buildings"
 HOMEPAGE="http://tangramgames.dk/games/mrrescue/"
 SRC_URI="https://github.com/SimonLarsen/mrrescue/releases/download/v${PV}/${P}-love.zip
-	http://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
 
 LICENSE="CC-BY-SA-3.0 MIT ZLIB"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs autotools multilib-minimal
 MY_P=smpeg-${PV}
 DESCRIPTION="SDL MPEG Player Library"
 HOMEPAGE="http://icculus.org/smpeg/"
-SRC_URI="http://dev.gentoo.org/~hasufell/distfiles/${MY_P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"

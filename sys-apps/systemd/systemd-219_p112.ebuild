@@ -12,7 +12,7 @@ inherit autotools-utils bash-completion-r1 linux-info multilib \
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
-SRC_URI="http://dev.gentoo.org/~floppym/dist/${P}.tar.xz
+SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz
 	http://cgit.freedesktop.org/systemd/systemd/plain/tmpfiles.d/systemd.conf.m4?id=v219 -> systemd.conf.m4-v219"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"

@@ -19,7 +19,7 @@ IUSE="gtk postgres qt4 ssl tcl threads X"
 RESTRICT="test" #298101
 
 [[ -z ${PATCH_VER} ]] || \
-	SRC_URI="${SRC_URI} http://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.bz2"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.bz2"
 
 # doesn't compile:
 #   bluetooth? ( net-wireless/bluez )

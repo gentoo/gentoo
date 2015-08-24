@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="XML output extension to GCC"
 HOMEPAGE="http://www.gccxml.org/"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

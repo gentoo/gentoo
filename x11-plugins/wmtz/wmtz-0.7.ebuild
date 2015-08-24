@@ -7,7 +7,7 @@ EAPI=3
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="dockapp that shows the time in multiple timezones"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

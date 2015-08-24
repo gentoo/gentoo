@@ -10,8 +10,8 @@ PYTHON_REQ_USE="xml"
 inherit eutils distutils-r1 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
-HOMEPAGE="http://www.gentoo.org/proj/en/portage/tools/index.xml"
-SRC_URI="http://dev.gentoo.org/~dolsen/distfiles/${P}.tar.gz"
+HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
+SRC_URI="https://dev.gentoo.org/~dolsen/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

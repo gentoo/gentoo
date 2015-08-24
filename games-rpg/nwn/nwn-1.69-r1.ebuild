@@ -10,7 +10,7 @@ PATCH_URL_BASE=http://files.bioware.com/neverwinternights/updates/linux/${MY_PV}
 
 DESCRIPTION="role-playing game set in a huge medieval fantasy world of Dungeons and Dragons"
 HOMEPAGE="http://nwn.bioware.com/downloads/linuxclient.html"
-SRC_URI="http://dev.gentoo.org/~calchan/distfiles/nwn-libs-1.tar.bz2
+SRC_URI="https://dev.gentoo.org/~calchan/distfiles/nwn-libs-1.tar.bz2
 	!sou? ( !hou? ( ${PATCH_URL_BASE}orig.tar.gz ) )
 	sou? ( !hou? ( ${PATCH_URL_BASE}xp1.tar.gz ) )
 	hou? ( ${PATCH_URL_BASE}xp2.tar.gz )"

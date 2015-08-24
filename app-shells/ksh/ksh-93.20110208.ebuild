@@ -15,8 +15,8 @@ ksh_release() {
 	echo "${v:0:4}-${v:4:2}-${v:6:2}"
 }
 
-SRC_URI="http://dev.gentoo.org/~floppym/distfiles/INIT.${INIT_RELEASE}.tgz
-	http://dev.gentoo.org/~floppym/distfiles/ast-base.$(ksh_release).tgz"
+SRC_URI="https://dev.gentoo.org/~floppym/distfiles/INIT.${INIT_RELEASE}.tgz
+	https://dev.gentoo.org/~floppym/distfiles/ast-base.$(ksh_release).tgz"
 
 LICENSE="CPL-1.0 EPL-1.0"
 SLOT="0"

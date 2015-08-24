@@ -11,7 +11,7 @@ S=${WORKDIR}/${PN}
 
 DESCRIPTION="CD player applet for WindowMaker"
 SRC_URI="mirror://gentoo/${MY_P}.tgz"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext

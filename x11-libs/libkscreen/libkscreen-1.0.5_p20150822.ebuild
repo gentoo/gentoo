@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE screen management library"
 HOMEPAGE="https://projects.kde.org/projects/extragear/libs/libkscreen"
-SRC_URI="http://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="4"

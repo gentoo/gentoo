@@ -24,7 +24,7 @@ DESCRIPTION="Webserver log file analyzer"
 HOMEPAGE="http://www.webalizer.org/"
 SRC_URI="ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
 	xtended? ( http://patrickfrei.ch/webalizer/${XTENDED_URL}/${PN}-${MY_PV}-${XTENDED_VER}-patch.tar.gz )
-	http://dev.gentoo.org/~blueness/webalizer/webalizer.conf.gz
+	https://dev.gentoo.org/~blueness/webalizer/webalizer.conf.gz
 	${GEODB_URL}/webalizer-geodb-${GEODB_DATE}.tgz"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Cross-platform multi-agent programmable modeling environment"
 HOMEPAGE="http://ccl.northwestern.edu/netlogo/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/${PN/-bin}.gif.tar
+	https://dev.gentoo.org/~jlec/distfiles/${PN/-bin}.gif.tar
 	http://ccl.northwestern.edu/netlogo/${PV}/${MY_P}.tar.gz"
 
 LICENSE="netlogo"

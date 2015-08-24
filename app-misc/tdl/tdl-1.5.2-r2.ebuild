@@ -10,7 +10,7 @@ DESCRIPTION="Command line To Do List manager"
 HOMEPAGE="http://www.rc0.org.uk/tdl/"
 SRC_URI="
 	http://www.rpcurnow.force9.co.uk/tdl/${P}.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${PN}-screenshot.png.tar"
+	https://dev.gentoo.org/~jlec/distfiles/${PN}-screenshot.png.tar"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit autotools base eutils
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
 # Grab from tag snapshot: http://www.geeqie.org/cgi-bin/gitweb.cgi?p=geeqie.git
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

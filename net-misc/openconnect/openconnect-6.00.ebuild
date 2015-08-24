@@ -14,7 +14,7 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 # New versions of openconnect-script can be found here:
 # http://git.infradead.org/users/dwmw2/vpnc-scripts.git/history/HEAD:/vpnc-script
 SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz
-	http://dev.gentoo.org/~hasufell/distfiles/openconnect-script-20140311.tar.xz"
+	https://dev.gentoo.org/~hasufell/distfiles/openconnect-script-20140311.tar.xz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/3"

@@ -5,7 +5,7 @@
 inherit multilib
 
 DESCRIPTION="wrapper for autoconf to manage multiple autoconf versions"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

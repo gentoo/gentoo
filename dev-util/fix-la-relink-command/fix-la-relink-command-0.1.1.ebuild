@@ -5,8 +5,8 @@
 EAPI="4"
 
 DESCRIPTION="Helps prevent .la files from relinking to libraries outside a build tree"
-HOMEPAGE="http://dev.gentoo.org/~tetromino/distfiles/${PN}"
-SRC_URI="http://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
+HOMEPAGE="https://dev.gentoo.org/~tetromino/distfiles/${PN}"
+SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"

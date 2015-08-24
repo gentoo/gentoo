@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Undo trees and visualization"
 HOMEPAGE="http://www.dr-qubit.org/emacs.php#undo-tree"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"

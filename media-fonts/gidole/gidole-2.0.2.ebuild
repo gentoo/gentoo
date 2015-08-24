@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Open source modern DIN fonts"
 HOMEPAGE="http://gidole.github.io/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"

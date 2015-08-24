@@ -8,7 +8,7 @@ DESCRIPTION="Shiki-Colors mixes the elegance of a dark theme with the usability 
 HOMEPAGE="http://code.google.com/p/gnome-colors/"
 
 SRC_URI="http://gnome-colors.googlecode.com/files/${P}.tar.gz
-	http://dev.gentoo.org/~pacho/Shiki-Gentoo-${PV}.tar.bz2"
+	https://dev.gentoo.org/~pacho/Shiki-Gentoo-${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

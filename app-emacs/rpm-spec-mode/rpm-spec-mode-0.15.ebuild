@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Emacs mode to ease editing of RPM spec files"
 HOMEPAGE="http://www.emacswiki.org/emacs/RpmSpecMode"
 # taken from http://www.tihlde.org/~stigb/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

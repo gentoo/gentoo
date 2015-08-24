@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="A set of eselect modules for Java"
-HOMEPAGE="http://www.gentoo.org/proj/en/java/"
+HOMEPAGE="https://www.gentoo.org/proj/en/java/"
 SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"

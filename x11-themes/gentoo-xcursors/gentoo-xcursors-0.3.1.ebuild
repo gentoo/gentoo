@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="A high quality set of animated mouse cursors"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${PN/xcursors/cursors}-tad-${PV}.tar.bz2"
 
 LICENSE="MIT"

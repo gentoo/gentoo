@@ -11,7 +11,7 @@ MY_P=ZRTPCPP-${PV}
 DESCRIPTION="GNU RTP stack for the zrtp protocol developed by Phil Zimmermann"
 HOMEPAGE="http://www.gnutelephony.org/index.php/GNU_ZRTP"
 # https://github.com/wernerd/ZRTPCPP/releases
-SRC_URI="http://dev.gentoo.org/~mgorny/dist/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${MY_P}.tar.gz"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 LICENSE="GPL-3"

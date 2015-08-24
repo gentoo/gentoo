@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Rust zsh completions"
 HOMEPAGE="http://www.rust-lang.org/"
-SRC_URI="http://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"

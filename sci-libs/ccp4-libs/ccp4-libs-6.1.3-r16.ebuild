@@ -23,7 +23,7 @@ SRC_URI="${SRC}/${PV}/${MY_P}-core-src.tar.gz"
 # patch tarball from upstream
 	[[ -n ${UPDATE} ]] && SRC_URI="${SRC_URI} ${SRC}/${PV}/updates/${P}-src-patch-${UPDATE}.tar.gz"
 # patches created by us
-	[[ -n ${PATCHDATE} ]] && SRC_URI="${SRC_URI} http://dev.gentoo.org/~jlec/science-dist/${PV}-${PATCHDATE}-updates.patch.bz2"
+	[[ -n ${PATCHDATE} ]] && SRC_URI="${SRC_URI} https://dev.gentoo.org/~jlec/science-dist/${PV}-${PATCHDATE}-updates.patch.bz2"
 
 for i in $(seq $PATCH_TOT); do
 	NAME="PATCH${i}[1]"

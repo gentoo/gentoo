@@ -9,7 +9,7 @@ inherit multilib
 DESCRIPTION="Plymouth plugin for OpenRC"
 HOMEPAGE="https://github.com/aidecoe/plymouth-openrc-plugin"
 SRC_URI="
-http://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
+https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"

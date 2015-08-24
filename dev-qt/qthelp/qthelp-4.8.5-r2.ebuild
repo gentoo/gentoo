@@ -10,7 +10,7 @@ DESCRIPTION="The Help module for the Qt toolkit"
 SRC_URI+="
 	compat? (
 		http://download.qt.io/archive/qt/4.6/qt-assistant-qassistantclient-library-compat-src-4.6.3.tar.gz
-		http://dev.gentoo.org/~pesa/distfiles/qt-assistant-compat-headers-4.7.tar.gz
+		https://dev.gentoo.org/~pesa/distfiles/qt-assistant-compat-headers-4.7.tar.gz
 	)"
 
 SLOT="4"

@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Make /etc/resolv.conf a symlink to a runtime-writable location"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI=""
 
 LICENSE="public-domain"

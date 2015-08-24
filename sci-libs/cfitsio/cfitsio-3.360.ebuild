@@ -10,7 +10,7 @@ inherit autotools-utils fortran-2
 
 DESCRIPTION="C and Fortran library for manipulating FITS files"
 HOMEPAGE="http://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html"
-SRC_URI="http://dev.gentoo.org/~bicatali/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/1"

@@ -7,8 +7,8 @@ EAPI="5"
 WXWRAP_VER=1.3
 
 DESCRIPTION="Eselect module and wrappers for wxWidgets"
-HOMEPAGE="http://www.gentoo.org"
-SRC_URI="http://dev.gentoo.org/~dirtyepic/dist/wxwidgets.eselect-${PV}.bz2"
+HOMEPAGE="https://www.gentoo.org"
+SRC_URI="https://dev.gentoo.org/~dirtyepic/dist/wxwidgets.eselect-${PV}.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

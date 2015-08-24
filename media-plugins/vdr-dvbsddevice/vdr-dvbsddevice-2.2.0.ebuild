@@ -9,7 +9,7 @@ inherit vdr-plugin-2
 DESCRIPTION="VDR Plugin: output device for the 'Full Featured' SD DVB Card"
 HOMEPAGE="http://www.tvdr.de/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
-		http://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.gz"
+		https://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"

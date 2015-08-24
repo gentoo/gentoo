@@ -12,7 +12,7 @@ SRC_URI="mirror://3dgamers/wolfensteinet/et-linux-2.60.x86.run
 	ftp://ftp.red.telefonica-wholesale.net/GAMES/ET/linux/et-linux-2.60.x86.run
 	mirror://idsoftware/et/ET-${PV}.zip
 	dedicated? (
-		http://dev.gentoo.org/~wolf31o2/sources/dump/${PN}-all-0.1.tar.bz2
+		https://dev.gentoo.org/~wolf31o2/sources/dump/${PN}-all-0.1.tar.bz2
 		mirror://gentoo/${PN}-all-0.1.tar.bz2
 	)"
 

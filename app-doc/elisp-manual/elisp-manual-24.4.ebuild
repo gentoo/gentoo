@@ -9,7 +9,7 @@ inherit eutils
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
 HOMEPAGE="http://www.gnu.org/software/emacs/manual/"
 # taken from doc/lispref/ of emacs-${PV}
-SRC_URI="http://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="FDL-1.3+"
 SLOT="24"

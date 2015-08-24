@@ -12,7 +12,7 @@ TOMEE_PV="1.5.2"
 
 DESCRIPTION="Project GlassFish XML RPC API"
 HOMEPAGE="https://glassfish.java.net/"
-SRC_URI="http://dev.gentoo.org/~tomwij/files/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~tomwij/files/dist/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

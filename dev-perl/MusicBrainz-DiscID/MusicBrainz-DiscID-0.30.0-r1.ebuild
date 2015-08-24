@@ -9,7 +9,7 @@ MODULE_VERSION=0.03
 inherit perl-module
 
 DESCRIPTION="Perl interface for the MusicBrainz libdiscid library"
-SRC_URI+=" http://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${P}-patch.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${P}-patch.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

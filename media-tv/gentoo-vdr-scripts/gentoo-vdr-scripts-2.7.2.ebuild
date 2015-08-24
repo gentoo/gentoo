@@ -7,9 +7,9 @@ EAPI=5
 inherit eutils user
 
 DESCRIPTION="Scripts necessary for use of vdr as a set-top-box"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-	http://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.bz2"
+	https://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

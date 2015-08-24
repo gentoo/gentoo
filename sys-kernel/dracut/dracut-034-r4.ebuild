@@ -18,7 +18,7 @@ add_req_use_for() {
 
 DESCRIPTION="Generic initramfs generation tool"
 HOMEPAGE="http://dracut.wiki.kernel.org"
-AIDECOE_DISTFILES="http://dev.gentoo.org/~aidecoe/distfiles"
+AIDECOE_DISTFILES="https://dev.gentoo.org/~aidecoe/distfiles"
 SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.bz2
 	${AIDECOE_DISTFILES}/${CATEGORY}/${PN}/${PV}-0010-module-setup.sh-add-comments.patch.bz2"
 LICENSE="GPL-2"

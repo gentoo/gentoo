@@ -9,7 +9,7 @@ DESCRIPTION="Alternative to Test::More::use_ok"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 LICENSE="GPL-2"
 # this is just a dummy ebuild to help with portage dependency resolution on
 # Perl 5.22 upgrade - it does not install any files

@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Cyan4973/lz4.git"
 	EGIT_BRANCH=dev
 else
-	SRC_URI="http://dev.gentoo.org/~ryao/dist/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~ryao/dist/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 

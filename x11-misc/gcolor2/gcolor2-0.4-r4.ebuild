@@ -10,7 +10,7 @@ inherit autotools eutils gnome2
 DESCRIPTION="A GTK+ color selector"
 HOMEPAGE="http://gcolor2.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	http://dev.gentoo.org/~pacho/gnome/${PN}.svg"
+	https://dev.gentoo.org/~pacho/gnome/${PN}.svg"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"

@@ -8,11 +8,11 @@ inherit xfconf
 DESCRIPTION="adds Subversion and GIT actions to the context menu of thunar"
 HOMEPAGE="http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin"
 SRC_URI="mirror://xfce/src/thunar-plugins/${PN}/${PV%.*}/${P}.tar.bz2
-	http://dev.gentoo.org/~ssuominen/${P}-el.po.bz2
-	http://dev.gentoo.org/~ssuominen/${P}-eu.po.bz2
+	https://dev.gentoo.org/~ssuominen/${P}-el.po.bz2
+	https://dev.gentoo.org/~ssuominen/${P}-eu.po.bz2
 	mirror://gentoo/${P}-ru.po.bz2
-	http://dev.gentoo.org/~ssuominen/${P}-ug.po.bz2
-	http://dev.gentoo.org/~ssuominen/${P}-uk.po.bz2"
+	https://dev.gentoo.org/~ssuominen/${P}-ug.po.bz2
+	https://dev.gentoo.org/~ssuominen/${P}-uk.po.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

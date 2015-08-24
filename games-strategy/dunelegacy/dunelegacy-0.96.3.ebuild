@@ -12,7 +12,7 @@ inherit eutils gnome2-utils games # STABLE ARCH
 DESCRIPTION="Updated clone of Westood Studios' Dune2"
 HOMEPAGE="http://dunelegacy.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
-SRC_URI="${SRC_URI} http://dev.gentoo.org/~hasufell/distfiles/${P}-no-autoreconf.patch.xz" # STABLE ARCH
+SRC_URI="${SRC_URI} https://dev.gentoo.org/~hasufell/distfiles/${P}-no-autoreconf.patch.xz" # STABLE ARCH
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -48,7 +48,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-lang/swig-2.0.4-r1:0"
 
 # http://bugs.gentoo.org/show_bug.cgi?id=352435
-# http://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
+# https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
 RESTRICT="bindist mirror"
 
 # TODO:

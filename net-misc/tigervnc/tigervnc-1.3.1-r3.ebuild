@@ -17,7 +17,7 @@ HOMEPAGE="http://www.tigervnc.org"
 SRC_URI="mirror://sourceforge/tigervnc/${P}.tar.gz
 	mirror://gentoo/${PN}.png
 	mirror://gentoo/${PN}-1.3.0-patches-${PATCHVER}.tar.bz2
-	http://dev.gentoo.org/~armin76/dist/${PN}-1.3.0-patches-${PATCHVER}.tar.bz2
+	https://dev.gentoo.org/~armin76/dist/${PN}-1.3.0-patches-${PATCHVER}.tar.bz2
 	server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.bz2	)"
 
 LICENSE="GPL-2"

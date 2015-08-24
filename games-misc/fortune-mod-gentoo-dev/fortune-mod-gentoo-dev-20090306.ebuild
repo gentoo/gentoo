@@ -3,11 +3,11 @@
 # $Id$
 EAPI=5
 DESCRIPTION="Fortune database of #gentoo-dev quotes"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 MY_PN="fortune-gentoo-dev"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
-		 http://dev.gentoo.org/~robbat2/distfiles/${MY_P}.tar.bz2"
+		 https://dev.gentoo.org/~robbat2/distfiles/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

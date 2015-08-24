@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Minor mode to highlight current line in buffer"
 HOMEPAGE="http://www.emacswiki.org/emacs/HighlineMode"
 # taken from: http://www.emacswiki.org/emacs/download/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

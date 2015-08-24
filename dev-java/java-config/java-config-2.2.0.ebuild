@@ -10,8 +10,8 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Java environment configuration query tool"
-HOMEPAGE="http://www.gentoo.org/proj/en/java/"
-SRC_URI="http://dev.gentoo.org/~sera/distfiles/${P}.tar.bz2"
+HOMEPAGE="https://www.gentoo.org/proj/en/java/"
+SRC_URI="https://dev.gentoo.org/~sera/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"

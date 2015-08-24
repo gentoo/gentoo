@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Layer Four Traceroute: an advanced traceroute implementation"
 HOMEPAGE="http://pwhois.org/lft/"
-SRC_URI="http://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 
 LICENSE="VOSTROM"
 SLOT="0"

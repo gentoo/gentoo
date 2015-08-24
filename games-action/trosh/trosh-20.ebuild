@@ -9,7 +9,7 @@ inherit eutils gnome2-utils games
 DESCRIPTION="A game made in 20 hours for a friend. It has explosions"
 HOMEPAGE="http://stabyourself.net/trosh/"
 SRC_URI="http://stabyourself.net/dl.php?file=trosh/trosh-linux.zip -> ${P}.zip
-	http://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
 
 LICENSE="WTFPL-2"
 SLOT="0"

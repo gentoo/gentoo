@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Namespace for backported Python features"
 HOMEPAGE="https://bitbucket.org/brandon/backports https://pypi.python.org/pypi/backports/"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
 
 LICENSE="PYTHON"
 SLOT="0"

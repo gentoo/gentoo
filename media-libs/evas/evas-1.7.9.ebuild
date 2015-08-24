@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH=${PN}-1.7
 else
 	SRC_URI="http://download.enlightenment.org/releases/${P}.tar.bz2
-		http://dev.gentoo.org/~polynomial-c/${PN}-1.7.9-freetype251.patch"
+		https://dev.gentoo.org/~polynomial-c/${PN}-1.7.9-freetype251.patch"
 	EKEY_STATE="snap"
 fi
 

@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Data visualization application for astronomical FITS images"
 HOMEPAGE="http://hea-www.harvard.edu/RD/ds9"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/ds9.png.tar
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/ds9.png.tar
 	amd64? ( http://hea-www.harvard.edu/RD/ds9/download/linux64/ds9.linux64.${PV}.tar.gz )
 	x86? ( http://hea-www.harvard.edu/RD/ds9/download/linux/ds9.linux.${PV}.tar.gz )"
 

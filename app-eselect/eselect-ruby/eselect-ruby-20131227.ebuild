@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages multiple Ruby versions"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI="http://dev.a3li.li/gentoo/distfiles/ruby.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"

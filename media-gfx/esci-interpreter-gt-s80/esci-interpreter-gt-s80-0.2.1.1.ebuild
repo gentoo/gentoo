@@ -11,8 +11,8 @@ MY_PVR="$(replace_version_separator 3 -)"
 
 DESCRIPTION="Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="amd64? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.x86_64.rpm )
-	x86? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.i386.rpm )"
+SRC_URI="amd64? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.x86_64.rpm )
+	x86? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.i386.rpm )"
 
 LICENSE="AVASYS"
 SLOT="0"

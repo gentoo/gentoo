@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/V${PV}.tar.gz -> ${PN}-${PV}.tar.gz
-	http://dev.gentoo.org/~hwoarang/distfiles/${P}-ffmpeg2.patch"
+	https://dev.gentoo.org/~hwoarang/distfiles/${P}-ffmpeg2.patch"
 	KEYWORDS="amd64 x86"
 fi
 

@@ -7,8 +7,8 @@ EAPI=2
 inherit eutils flag-o-matic linux-info multilib
 
 DESCRIPTION="A daemon to run x86 code in an emulated environment"
-HOMEPAGE="http://dev.gentoo.org/~spock/projects/uvesafb/"
-SRC_URI="http://dev.gentoo.org/~spock/projects/uvesafb/archive/${P/_/-}.tar.bz2"
+HOMEPAGE="https://dev.gentoo.org/~spock/projects/uvesafb/"
+SRC_URI="https://dev.gentoo.org/~spock/projects/uvesafb/archive/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

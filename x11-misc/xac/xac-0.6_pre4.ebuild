@@ -5,7 +5,7 @@
 inherit toolchain-funcs eutils multilib
 
 DESCRIPTION="Xorgautoconfig (xac) generates configuration files for X.org"
-HOMEPAGE="http://dev.gentoo.org/~josejx/xac.html"
+HOMEPAGE="https://dev.gentoo.org/~josejx/xac.html"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ppc ppc64 ~x86"
 SLOT="0"

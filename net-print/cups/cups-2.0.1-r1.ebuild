@@ -329,7 +329,7 @@ pkg_postinst() {
 	if ! [[ "${REPLACING_VERSIONS}" ]]; then
 		echo
 		elog "For information about installing a printer and general cups setup"
-		elog "take a look at: http://www.gentoo.org/doc/en/printing-howto.xml"
+		elog "take a look at: https://www.gentoo.org/doc/en/printing-howto.xml"
 		echo
 	fi
 

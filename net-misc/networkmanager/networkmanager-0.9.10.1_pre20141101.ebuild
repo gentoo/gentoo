@@ -17,7 +17,7 @@ inherit bash-completion-r1 eutils gnome2 linux-info multilib python-any-r1 syste
 DESCRIPTION="Universal network configuration daemon for laptops, desktops, servers and virtualization hosts"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
-SRC_URI="http://dev.gentoo.org/~pacho/gnome/${GNOME_ORG_MODULE}-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pacho/gnome/${GNOME_ORG_MODULE}-${PV}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0" # add subslot if libnm-util.so.2 or libnm-glib.so.4 bumps soname version

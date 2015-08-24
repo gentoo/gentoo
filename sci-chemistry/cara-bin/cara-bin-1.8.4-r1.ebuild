@@ -10,7 +10,7 @@ MY_P="${MY_PN}_${PV}"
 DESCRIPTION="Analysis of NMR spectra and Computer Aided Resonance Assignment"
 SRC_URI="
 	http://www.cara.nmr-software.org/downloads/${MY_P}_linux.gz
-	http://dev.gentoo.org/~jlec/distfiles//Start1.2.cara.xz"
+	https://dev.gentoo.org/~jlec/distfiles//Start1.2.cara.xz"
 HOMEPAGE="http://www.nmr.ch"
 
 LICENSE="CARA"

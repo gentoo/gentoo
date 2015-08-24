@@ -34,7 +34,7 @@ DEPEND="app-eselect/eselect-opencascade
 RDEPEND="${DEPEND}"
 
 # http://bugs.gentoo.org/show_bug.cgi?id=352435
-# http://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
+# https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
 RESTRICT="bindist mirror"
 
 CHECKREQS_MEMORY="256M"

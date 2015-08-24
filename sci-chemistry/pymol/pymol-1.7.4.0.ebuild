@@ -12,8 +12,8 @@ inherit distutils-r1 fdo-mime versionator
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="http://www.pymol.org/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/${PN}-1.7.0.0.png.xz
-	http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz
+	https://dev.gentoo.org/~jlec/distfiles/${PN}-1.7.0.0.png.xz
+	https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz
 "
 #	mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 1-2)/${PN}-v${PV}.tar.bz2
 # git archive -v --prefix=${P}/ master -o ${P}.tar.xz

@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils
 DESCRIPTION="Standalone debugedit taken from rpm"
 
 HOMEPAGE="http://www.rpm.org/"
-SRC_URI="http://dev.gentoo.org/~tester/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~tester/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

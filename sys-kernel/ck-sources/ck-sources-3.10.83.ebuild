@@ -7,7 +7,7 @@ ETYPE="sources"
 KEYWORDS="~amd64 ~x86"
 IUSE="bfsonly"
 
-HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches/
+HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 	http://users.on.net/~ckolivas/kernel/"
 
 K_WANT_GENPATCHES="base extras experimental"
@@ -40,9 +40,9 @@ BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}-r1.patch"
 
 CK_BASE_URL="http://ck.kolivas.org/patches/3.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
-CK_URI="http://dev.gentoo.org/~dlan/distfiles/${CK_FILE}
+CK_URI="https://dev.gentoo.org/~dlan/distfiles/${CK_FILE}
 	${CK_LVER_URL}/${CK_FILE}"
-BFS_URI="http://dev.gentoo.org/~dlan/distfiles/${BFS_FILE}
+BFS_URI="https://dev.gentoo.org/~dlan/distfiles/${BFS_FILE}
 	${CK_LVER_URL}/patches/${BFS_FILE}"
 
 #-- Build extra incremental patches list --------------------------------------

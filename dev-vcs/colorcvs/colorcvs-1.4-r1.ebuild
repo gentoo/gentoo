@@ -8,7 +8,7 @@ inherit eutils prefix
 
 DESCRIPTION="A tool based on colorgcc to beautify cvs output"
 HOMEPAGE="http://packages.gentoo.org/package/dev-vcs/colorcvs"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -3,8 +3,8 @@
 # $Id$
 
 DESCRIPTION="Miscellaneous helpers for AIX (currently just ldd)"
-HOMEPAGE="http://www.gentoo.org/proj/en/gentoo-alt/prefix/"
-SRC_URI="http://dev.gentoo.org/~haubi/distfiles/${P}.tar.bz2"
+HOMEPAGE="https://www.gentoo.org/proj/en/gentoo-alt/prefix/"
+SRC_URI="https://dev.gentoo.org/~haubi/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

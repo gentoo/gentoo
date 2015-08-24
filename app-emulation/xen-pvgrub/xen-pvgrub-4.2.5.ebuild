@@ -17,9 +17,9 @@ UPSTREAM_VER=
 GENTOO_VER=
 
 [[ -n ${UPSTREAM_VER} ]] && \
-	UPSTREAM_PATCHSET_URI="http://dev.gentoo.org/~dlan/distfiles/${P/-pvgrub/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-pvgrub/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 [[ -n ${GENTOO_VER} ]] && \
-	GENTOO_PATCHSET_URI="http://dev.gentoo.org/~dlan/distfiles/${P/-pvgrub/}-gentoo-patches-${GENTOO_VER}.tar.xz"
+	GENTOO_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-pvgrub/}-gentoo-patches-${GENTOO_VER}.tar.xz"
 
 SRC_URI="
 		http://bits.xensource.com/oss-xen/release/${PV}/xen-${PV}.tar.gz
@@ -157,6 +157,6 @@ src_install() {
 
 pkg_postinst() {
 	elog "Official Xen Guide and the offical wiki page:"
-	elog "http://www.gentoo.org/doc/en/xen-guide.xml"
+	elog "https://www.gentoo.org/doc/en/xen-guide.xml"
 	elog "http://wiki.xen.org/wiki/Main_Page"
 }

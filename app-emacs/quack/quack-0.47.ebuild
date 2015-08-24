@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Enhances Emacs support for Scheme"
 HOMEPAGE="http://www.neilvandyke.org/quack/"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

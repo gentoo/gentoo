@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tool for generating OpenPGP/GPG keys using a specifications file"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Gentoo-keys"
-SRC_URI="http://dev.gentoo.org/~dolsen/releases/${PN}/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

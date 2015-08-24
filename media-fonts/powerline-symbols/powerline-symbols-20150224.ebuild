@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="OpenType Unicode font with symbols for Powerline/Airline"
 HOMEPAGE="https://github.com/powerline/powerline"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 # We're redistributing just the (unversioned) font from the upstream repo here
 
 LICENSE="MIT-with-advertising"

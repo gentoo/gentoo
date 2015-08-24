@@ -24,7 +24,7 @@ if [[ ${PV//_p} == ${PV} ]]; then
 	SRC_URI="http://fedorapeople.org/~acme/dwarves/${P}.tar.bz2"
 	S=${WORKDIR}
 else
-	SRC_URI="http://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.xz"
 fi
 
 DOCS=( README README.ctracer NEWS )

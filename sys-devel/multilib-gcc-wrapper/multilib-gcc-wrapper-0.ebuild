@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils multilib
 
 DESCRIPTION="Wrappers for gcc tools to be used on non-native CHOSTs"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI=""
 
 LICENSE="public-domain"

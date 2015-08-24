@@ -11,7 +11,7 @@ HOMEPAGE="http://aboot.sourceforge.net/"
 SRC_URI="http://aboot.sourceforge.net/tarballs/${P}.tar.bz2
 	mirror://gentoo/gentoo-headers-base-${KERN_VER}.tar.bz2
 	mirror://gentoo/${PN}_gentoo.diff.bz2
-	http://dev.gentoo.org/~armin76/dist/${PN}_gentoo.diff.bz2"
+	https://dev.gentoo.org/~armin76/dist/${PN}_gentoo.diff.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

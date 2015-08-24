@@ -15,7 +15,7 @@ DESCRIPTION="Research tool for commutative algebra and algebraic geometry"
 HOMEPAGE="http://www.math.uiuc.edu/Macaulay2/"
 BASE_URI="http://www.math.uiuc.edu/Macaulay2/Downloads/OtherSourceCode/trunk"
 SRC_URI="
-	http://dev.gentoo.org/~tomka/files/${P}.tar.bz2
+	https://dev.gentoo.org/~tomka/files/${P}.tar.bz2
 	${BASE_URI}/${FACTORY}.tar.gz
 	${BASE_URI}/${FACTORY_GFTABLES}.tar.gz
 	${BASE_URI}/gtest-1.7.0.tar.gz"

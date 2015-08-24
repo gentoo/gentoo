@@ -7,7 +7,7 @@ EAPI=5
 DESCRIPTION="Monomer library used for macromolecular structure building and refinement"
 HOMEPAGE="http://www.ccp4.ac.uk/"
 # SRC_URI="http://www.ysbl.york.ac.uk/~garib/refmac/data/refmac_dictionary.tar.gz"
-SRC_URI="http://dev.gentoo.org/~jlec/science-dist/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jlec/science-dist/${P}.tar.gz"
 
 LICENSE="ccp4"
 SLOT="0"

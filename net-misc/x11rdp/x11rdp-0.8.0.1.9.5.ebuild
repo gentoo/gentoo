@@ -12,7 +12,7 @@ XORG_P=xorg-server-$(get_version_component_range 4-6)
 DESCRIPTION="A X11 server for RDP clients (used by xrdp)"
 HOMEPAGE="http://www.xrdp.org/"
 # mirrored from https://github.com/neutrinolabs/xrdp/releases
-SRC_URI="http://dev.gentoo.org/~mgorny/dist/${XRDP_P}.tar.xz
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${XRDP_P}.tar.xz
 	http://xorg.freedesktop.org/releases/individual/xserver/${XORG_P}.tar.bz2"
 
 LICENSE="Apache-2.0 MIT"

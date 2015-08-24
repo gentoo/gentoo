@@ -9,8 +9,8 @@ inherit eutils toolchain-funcs
 DESCRIPTION="serial graphics adapter bios option rom for x86"
 HOMEPAGE="http://code.google.com/p/sgabios/"
 SRC_URI="mirror://gentoo/${P}.tar.xz
-	http://dev.gentoo.org/~cardoe/distfiles/${P}.tar.xz
-	http://dev.gentoo.org/~cardoe/distfiles/${P}-bins.tar.xz"
+	https://dev.gentoo.org/~cardoe/distfiles/${P}.tar.xz
+	https://dev.gentoo.org/~cardoe/distfiles/${P}-bins.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

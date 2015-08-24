@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="A tool (and library) for decompressing data compressed with PKWARE Data Compression Library"
 HOMEPAGE="https://github.com/twogood/dynamite http://sourceforge.net/projects/synce/"
-SRC_URI="http://dev.gentoo.org/~ssuominen/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

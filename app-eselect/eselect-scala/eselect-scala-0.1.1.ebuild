@@ -5,8 +5,8 @@
 EAPI=5
 
 DESCRIPTION="Manages multiple Scala versions"
-HOMEPAGE="http://www.gentoo.org"
-SRC_URI="http://dev.gentoo.org/~gienah/distfiles/${P}.tar.gz"
+HOMEPAGE="https://www.gentoo.org"
+SRC_URI="https://dev.gentoo.org/~gienah/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -15,7 +15,7 @@ MY_P="${MY_PN}-${PV/_pre/dev-r}"
 
 DESCRIPTION="A Mercurial plugin for Trac"
 HOMEPAGE="http://trac.edgewall.org/"
-SRC_URI="http://dev.gentoo.org/~rafaelmartins/distfiles/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~rafaelmartins/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

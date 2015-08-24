@@ -15,7 +15,7 @@ DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://net-snmp.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${PN}/${PV/_pre*/}-pre-releases/${P/_pre*/}.${PV/*_}.tar.gz
-	http://dev.gentoo.org/~jer/${PN}-5.7.3-patches-${PATCHSET}.tar.xz
+	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-${PATCHSET}.tar.xz
 "
 
 S=${WORKDIR}/${P/_/.}

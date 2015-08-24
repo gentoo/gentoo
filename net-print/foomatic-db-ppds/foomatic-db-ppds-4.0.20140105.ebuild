@@ -11,7 +11,7 @@ MY_P=${PN/-ppds}-$(replace_version_separator 2 '-')
 DESCRIPTION="linuxprinting.org PPD files for postscript printers"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
 #SRC_URI="http://linuxprinting.org/download/foomatic/${MY_P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

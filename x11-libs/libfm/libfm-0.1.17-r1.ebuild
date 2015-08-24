@@ -8,7 +8,7 @@ inherit autotools eutils fdo-mime
 
 DESCRIPTION="A library for file management"
 HOMEPAGE="http://pcmanfm.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 KEYWORDS="~alpha amd64 arm ppc x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"

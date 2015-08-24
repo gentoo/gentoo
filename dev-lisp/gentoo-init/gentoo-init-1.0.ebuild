@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Simple ASDF2 configuration for Gentoo Common Lisp ports"
-HOMEPAGE="http://www.gentoo.org/proj/en/lisp/common-lisp/guide.xml"
+HOMEPAGE="https://www.gentoo.org/proj/en/lisp/common-lisp/guide.xml"
 
 LICENSE="GPL-2"
 SLOT="0"

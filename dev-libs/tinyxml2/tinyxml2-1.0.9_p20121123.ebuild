@@ -9,7 +9,7 @@ inherit cmake-utils
 
 DESCRIPTION="A simple, small, efficient, C++ XML parser"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml2/"
-SRC_URI="http://dev.gentoo.org/~radhermit/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

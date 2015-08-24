@@ -9,7 +9,7 @@ MODULE_VERSION=2.3
 inherit perl-module
 
 DESCRIPTION="Pragma to implement lvalue accessors with options"
-SRC_URI+=" http://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${P}-patch.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${P}-patch.tar.bz2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

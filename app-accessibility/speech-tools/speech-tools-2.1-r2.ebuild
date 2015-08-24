@@ -12,7 +12,7 @@ PATCHSET="r3"
 DESCRIPTION="Speech tools for Festival Text to Speech engine"
 HOMEPAGE="http://www.cstr.ed.ac.uk/projects/speech_tools/"
 SRC_URI="http://www.festvox.org/packed/festival/${PV}/${MY_P}-release.tar.gz
-		 http://dev.gentoo.org/~neurogeek/${PN}/${MY_P}-${PATCHSET}-patches.tar.gz"
+		 https://dev.gentoo.org/~neurogeek/${PN}/${MY_P}-${PATCHSET}-patches.tar.gz"
 
 LICENSE="FESTIVAL HPND BSD rc regexp-UofT"
 SLOT="0"

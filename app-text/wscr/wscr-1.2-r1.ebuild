@@ -6,8 +6,8 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="A Lightweight and Fast Anagram Solver"
-HOMEPAGE="http://www.gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~jer/${P}.tar.gz"
+HOMEPAGE="https://www.gentoo.org/"
+SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 

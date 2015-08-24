@@ -10,7 +10,7 @@ DESCRIPTION="Library for performing fast approximate nearest neighbor searches i
 HOMEPAGE="http://www.cs.ubc.ca/research/flann/"
 SRC_URI="
 	http://people.cs.ubc.ca/~mariusm/uploads/FLANN/${P}-src.zip
-	test? ( http://dev.gentoo.org/~bicatali/distfiles/${P}-testdata.tar.xz )"
+	test? ( https://dev.gentoo.org/~bicatali/distfiles/${P}-testdata.tar.xz )"
 
 LICENSE="BSD"
 SLOT="0"

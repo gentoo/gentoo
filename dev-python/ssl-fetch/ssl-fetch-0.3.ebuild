@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A small convenience library for fetching files securely"
 HOMEPAGE="https://github.com/dol-sen/ssl-fetch"
-SRC_URI="http://dev.gentoo.org/~dolsen/releases/ssl-fetch/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/ssl-fetch/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

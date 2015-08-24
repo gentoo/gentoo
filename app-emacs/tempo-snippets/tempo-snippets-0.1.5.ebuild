@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Visual insertion of tempo templates"
 HOMEPAGE="http://nschum.de/src/emacs/tempo-snippets/
 	http://www.emacswiki.org/emacs/TempoSnippets"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

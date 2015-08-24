@@ -12,7 +12,7 @@ SEPOL_VER="2.2"
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="http://userspace.selinuxproject.org"
 SRC_URI="http://userspace.selinuxproject.org/releases/20131030/${P}.tar.gz
-	http://dev.gentoo.org/~swift/patches/${PN}/patchbundle-${P}-r5.tar.gz"
+	https://dev.gentoo.org/~swift/patches/${PN}/patchbundle-${P}-r5.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

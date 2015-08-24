@@ -11,7 +11,7 @@ RESTRICT_PYTHON_ABIS='2.4 2.5 3.*'
 inherit distutils
 
 DESCRIPTION="Distfile Patching Support for Gentoo Linux (tools)"
-HOMEPAGE="http://www.gentoo.org/proj/en/infrastructure/distpatch/"
+HOMEPAGE="https://www.gentoo.org/proj/en/infrastructure/distpatch/"
 SRC_URI="mirror://github/rafaelmartins/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

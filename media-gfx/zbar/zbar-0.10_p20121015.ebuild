@@ -10,7 +10,7 @@ inherit autotools eutils flag-o-matic python-single-r1
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
 HOMEPAGE="http://zbar.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
+SRC_URI="https://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

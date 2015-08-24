@@ -8,7 +8,7 @@ inherit readme.gentoo elisp autotools
 
 DESCRIPTION="emacs-w3m is an interface program of w3m on Emacs"
 HOMEPAGE="http://emacs-w3m.namazu.org/"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

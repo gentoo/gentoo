@@ -7,7 +7,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="LDAP Class Libraries for Java (JLDAP)"
 HOMEPAGE="http://www.openldap.org/jldap/"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="OPENLDAP"
 SLOT="0"

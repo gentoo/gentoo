@@ -7,8 +7,8 @@ inherit eutils flag-o-matic
 DESCRIPTION="A minimal libc"
 HOMEPAGE="http://www.fefe.de/dietlibc/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-	http://dev.gentoo.org/~phreak/distfiles/${PN}-patches-${PVR}.tar.bz2
-	http://dev.gentoo.org/~hollow/distfiles/${PN}-patches-${PVR}.tar.bz2"
+	https://dev.gentoo.org/~phreak/distfiles/${PN}-patches-${PVR}.tar.bz2
+	https://dev.gentoo.org/~hollow/distfiles/${PN}-patches-${PVR}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

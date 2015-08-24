@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
 	<longdescription>This code is designed to allow for compile time checking of Java format strings. It can check that the format string is valid, that the proper number of arguments are supplied and that they are of the correct type.</longdescription>

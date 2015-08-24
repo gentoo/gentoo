@@ -12,7 +12,7 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="A comprehensive programming and configuration model for modern enterprise applications"
 HOMEPAGE="http://www.springsource.org/spring-framework"
 SRC_URI="https://github.com/SpringSource/spring-framework/archive/v${PV}.RELEASE.tar.gz -> spring-framework-${PV}.tar.gz
-		http://dev.gentoo.org/~ercpe/distfiles/dev-java/spring-framework/spring-framework-${PV}-buildscripts.tar.bz2"
+		https://dev.gentoo.org/~ercpe/distfiles/dev-java/spring-framework/spring-framework-${PV}-buildscripts.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="3.2"

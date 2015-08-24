@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Manage multiple terminal buffers in Emacs"
 HOMEPAGE="http://www.emacswiki.org/emacs/MultiTerm"
 # Taken from http://www.emacswiki.org/emacs/download/${PN}.el
-SRC_URI="http://dev.gentoo.org/~mjo/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~mjo/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

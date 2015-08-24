@@ -9,7 +9,7 @@ inherit eutils prefix
 DESCRIPTION="Script to recover diskspace wasted for unneeded locale files and localized man pages"
 HOMEPAGE="https://gentoo.org
 http://cgit.gentoo.org/proj/localepurge.git"
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tbz2"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tbz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -17,7 +17,7 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="Java Evolutionary Biology Library"
 HOMEPAGE="http://jebl.sourceforge.net/"
 #SRC_URI=""
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"

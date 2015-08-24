@@ -10,7 +10,7 @@ EAPI=5
 
 DESCRIPTION="Git merge driver for GNU style ChangeLog files"
 HOMEPAGE="http://www.gnu.org/software/gnulib/"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

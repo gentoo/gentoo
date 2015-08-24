@@ -13,7 +13,7 @@ HOMEPAGE="
 	http://qmail.org/
 "
 SRC_URI="mirror://qmail/netqmail-${PV}.tar.gz
-	http://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}"
+	https://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}"
 
 LICENSE="public-domain"
 SLOT="0"

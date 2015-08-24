@@ -13,7 +13,7 @@ MY_PV=$(replace_all_version_separators '_') #${PV/beta/b})
 MY_P="${PN}-${MY_PV}"
 S="${WORKDIR}/${MY_P}"
 SRC_URI="http://d1.almworks.com/.files/${MY_P}_without_jre.tar.gz
-		http://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/deskzilla_gentoo.license"
+		https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/deskzilla_gentoo.license"
 LICENSE="ALMWorks-1.2"
 # license does not allow redistributing, and they seem to silently update
 # distfiles...

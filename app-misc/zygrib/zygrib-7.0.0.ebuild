@@ -11,7 +11,7 @@ MY_PN="zyGrib"
 DESCRIPTION="GRIB File Viewer - Weather data visualization"
 HOMEPAGE="http://www.zygrib.org/"
 SRC_URI="http://www.zygrib.org/getfile.php?file=${MY_PN}-${PV}.tgz -> ${P}.tgz
-	http://dev.gentoo.org/~mschiff/distfiles/${PN}-icon.png
+	https://dev.gentoo.org/~mschiff/distfiles/${PN}-icon.png
 	maps?   (
 		http://zygrib.org/getfile.php?file=zyGrib_maps2.4.tgz -> zygrib-maps2.4.tgz
 		http://www.zygrib.org/getfile.php?file=cities_1k-3k.txt.gz -> zygrib-cities_1k-3k.txt.gz

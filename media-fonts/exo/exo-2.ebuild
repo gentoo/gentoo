@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="A geometric sans-serif font with a technological feel"
 HOMEPAGE="http://ndiscovered.com/exo-2/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 # repackaged from two upstream zips (exo-2, exo condensed & expanded) + license
 
 LICENSE="OFL-1.1"

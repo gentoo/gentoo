@@ -10,7 +10,7 @@ inherit python
 
 DESCRIPTION="Git subcommand providing a bidirectional bridge to Bazaar repositories"
 HOMEPAGE="https://github.com/termie/git-bzr-ng"
-SRC_URI="http://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

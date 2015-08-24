@@ -7,7 +7,7 @@ EAPI=4
 inherit linux-mod
 
 KEYWORDS="~amd64 ~x86"
-SRC_URI="http://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
 
 DESCRIPTION="Layer between virtual file system switch and file system drivers"
 HOMEPAGE="http://www.redirfs.org/"

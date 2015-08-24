@@ -9,7 +9,7 @@ inherit vdr-plugin-2
 DESCRIPTION="VDR plugin: Remote Control Unit consists mainly of an infrared receiver, controlled by a PIC 16C84"
 HOMEPAGE="http://www.tvdr.de/remote.htm"
 SRC_URI="mirror://gentoo/${P}.tar.gz
-		http://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.gz"
+		https://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"

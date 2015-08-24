@@ -12,7 +12,7 @@ MY_P="${MY_PN}${MY_PV}.zip"
 
 DESCRIPTION="Intel Performance Counter Monitor - A better way to measure CPU utilization"
 HOMEPAGE="https://software.intel.com/en-us/articles/intel-performance-counter-monitor-a-better-way-to-measure-cpu-utilization"
-SRC_URI="http://dev.gentoo.org/~dlan/distfiles/${MY_P}"
+SRC_URI="https://dev.gentoo.org/~dlan/distfiles/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"

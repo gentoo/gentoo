@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE ftps KIO slave"
 HOMEPAGE="http://kde-apps.org/content/show.php/kio-ftps?content=35875"
-SRC_URI="http://dev.gentoo.org/~johu/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="4"

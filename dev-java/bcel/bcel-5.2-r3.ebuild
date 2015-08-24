@@ -11,7 +11,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="The Byte Code Engineering Library: analyze, create, manipulate Java class files"
 HOMEPAGE="http://commons.apache.org/bcel/"
 SRC_URI="mirror://apache/jakarta/${PN}/source/${P}-src.tar.gz
-	findbugs? ( http://dev.gentoo.org/~fordfrog/distfiles/findbugs-${P}_p20070531.patch.bz2 )"
+	findbugs? ( https://dev.gentoo.org/~fordfrog/distfiles/findbugs-${P}_p20070531.patch.bz2 )"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: Scala syntax highlighting, filetype and indent settings"
 HOMEPAGE="http://www.scala-lang.org/"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

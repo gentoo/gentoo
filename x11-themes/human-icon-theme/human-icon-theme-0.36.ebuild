@@ -8,7 +8,7 @@ inherit gnome2-utils
 DESCRIPTION="A nice and well polished icon theme"
 HOMEPAGE="http://packages.ubuntu.com/lucid/human-icon-theme"
 SRC_URI="mirror://ubuntu/pool/universe/h/${PN}/${PN}_${PV}.tar.gz
-	http://www.gentoo.org/images/gentoo-logo.svg"
+	https://www.gentoo.org/images/gentoo-logo.svg"
 
 LICENSE="CC-BY-SA-2.5"
 SLOT="0"

@@ -25,7 +25,7 @@ if [[ ${PV} != 9999 ]]; then
 	else
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 			mirror://gentoo/${P}.tar.xz
-			http://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
+			https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
 	KEYWORDS="~amd64 ~x86"

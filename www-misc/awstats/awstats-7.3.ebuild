@@ -12,7 +12,7 @@ DESCRIPTION="AWStats is short for Advanced Web Statistics"
 HOMEPAGE="http://www.awstats.org/"
 
 if [ ${MY_P} != ${P} ]; then
-	SRC_URI="http://dev.gentoo.org/~flameeyes/awstats/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~flameeyes/awstats/${P}.tar.gz"
 	# The following SRC_URI is useful only when fetching for the first time
 	# after bump; upstream does not bump the version when they change it, so
 	# we rename it to include the date and upload to our mirrors instead.

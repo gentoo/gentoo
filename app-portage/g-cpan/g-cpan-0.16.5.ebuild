@@ -7,9 +7,9 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="g-cpan: generate and install CPAN modules using portage"
-HOMEPAGE="http://www.gentoo.org/proj/en/perl/g-cpan.xml"
+HOMEPAGE="https://www.gentoo.org/proj/en/perl/g-cpan.xml"
 SRC_URI="mirror://gentoo/${P}.tar.gz
-		 http://dev.gentoo.org/~chainsaw/distfiles/${P}.tar.gz"
+		 https://dev.gentoo.org/~chainsaw/distfiles/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"

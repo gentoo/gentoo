@@ -8,7 +8,7 @@ inherit autotools font
 DESCRIPTION="Window Maker Dock Applet Library"
 HOMEPAGE="http://windowmaker.org/dockapps/?name=wmclock"
 # Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0/3"

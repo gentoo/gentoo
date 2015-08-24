@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 		"https://code.qt.io/git/qt-labs/messagingframework.git"
 	)
 else
-	SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${P}.tar.gz"
 	S=${WORKDIR}/qt-labs-messagingframework
 fi
 

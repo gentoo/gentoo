@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="A collection of Bootsplash themes"
-HOMEPAGE="http://dev.gentoo.org/~spock/repos/bootsplash/"
+HOMEPAGE="https://dev.gentoo.org/~spock/repos/bootsplash/"
 THEME_URI="mirror://gentoo"
 
 SRC_URI="${THEME_URI}/Theme-73labAllstar.tar.bz2

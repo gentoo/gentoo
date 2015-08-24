@@ -7,7 +7,7 @@ EAPI="5"
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for Interceptor API (javax.interceptor)"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="public-domain"
 SLOT="0"

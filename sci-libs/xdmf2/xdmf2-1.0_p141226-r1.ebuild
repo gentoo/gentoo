@@ -10,7 +10,7 @@ inherit cmake-utils multilib python-single-r1
 
 DESCRIPTION="eXtensible Data Model and Format"
 HOMEPAGE="http://xdmf.org/index.php/Main_Page"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="VTK"

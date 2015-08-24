@@ -10,7 +10,7 @@ inherit eutils gnome2
 DESCRIPTION="Library for the Desktop Menu fd.o specification"
 HOMEPAGE="https://git.gnome.org/browse/gnome-menus"
 SRC_URI="${SRC_URI}
-	http://dev.gentoo.org/~tetromino/distfiles/${PN}/${PN}-3.10.1-patches.tar.xz"
+	https://dev.gentoo.org/~tetromino/distfiles/${PN}/${PN}-3.10.1-patches.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="3"

@@ -8,7 +8,7 @@ inherit eutils multilib pam ssl-cert systemd
 
 DESCRIPTION="The Erlang Jabber Daemon"
 HOMEPAGE="http://www.ejabberd.im/ https://github.com/processone/ejabberd/"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
 # upstream tarball missing bundled erlang libs that are fetched via git
 #SRC_URI="https://www.process-one.net/downloads/downloads-action.php?file=/${PN}/${PV}/${P}.tgz -> ${P}.tar.gz"
 

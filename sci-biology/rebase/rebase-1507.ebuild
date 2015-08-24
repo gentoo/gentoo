@@ -8,7 +8,7 @@ MY_PV=${PV#1}
 
 DESCRIPTION="A restriction enzyme database"
 HOMEPAGE="http://rebase.neb.com"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="public-domain"

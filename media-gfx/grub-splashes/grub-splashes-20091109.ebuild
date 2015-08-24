@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Collection of grub splashes"
-HOMEPAGE="http://dev.gentoo.org/~welp/grub-splashes.xml"
+HOMEPAGE="https://dev.gentoo.org/~welp/grub-splashes.xml"
 SRC_URI="mirror://gentoo/${PN}-0.1.tar.gz
 	http://www.kde-look.org/CONTENT/content-files/49074-natural_gentoo-8.0.tar.gz
 	http://www.kde-look.org/CONTENT/content-files/98478-gentoo-splash.xpm.gz"

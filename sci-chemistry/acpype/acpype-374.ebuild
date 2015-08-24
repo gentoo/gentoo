@@ -10,7 +10,7 @@ inherit python
 
 DESCRIPTION="AnteChamber PYthon Parser interfacE"
 HOMEPAGE="http://code.google.com/p/acpype/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

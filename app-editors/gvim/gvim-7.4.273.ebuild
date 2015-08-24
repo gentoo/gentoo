@@ -16,7 +16,7 @@ else
 	VIM_ORG_PATCHES="vim-patches-${PV}.patch.bz2"
 
 	SRC_URI="ftp://ftp.vim.org/pub/vim/unix/vim-${VIM_VERSION}.tar.bz2
-		http://dev.gentoo.org/~radhermit/vim/${VIM_ORG_PATCHES}"
+		https://dev.gentoo.org/~radhermit/vim/${VIM_ORG_PATCHES}"
 	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 fi
 
