@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="A SNMP Perl Module"
 SRC_URI="http://snmp-session.googlecode.com/files/${P}.tar.gz"
-HOMEPAGE="http://code.google.com/p/snmp-session/"
+HOMEPAGE="https://code.google.com/p/snmp-session/"
 
 LICENSE="Artistic-2"
 SLOT="0"

@@ -11,7 +11,7 @@
       <email>chen.sst@gmail.com</email>
       <name>Gong Chen</name>
     </maintainer>
-    <bugs-to>http://code.google.com/p/rimeime/issues/list</bugs-to>
+    <bugs-to>https://code.google.com/p/rimeime/issues/list</bugs-to>
     <remote-id type="google-code">rimeime</remote-id>
   </upstream>
 </pkgmetadata>

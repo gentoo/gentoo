@@ -8,7 +8,7 @@ inherit apache-module eutils
 
 MY_P="${PN}-${PV/_/-}"
 DESCRIPTION="Token based URI access module for Apache2"
-HOMEPAGE="http://code.google.com/p/mod-auth-token/"
+HOMEPAGE="https://code.google.com/p/mod-auth-token/"
 SRC_URI="http://mod-auth-token.googlecode.com/files/${MY_P}.tar.gz"
 
 KEYWORDS="~amd64"

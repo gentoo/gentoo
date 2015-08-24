@@ -7,7 +7,7 @@ PYTHON_DEPEND="wxwidgets? 2"
 inherit python
 
 DESCRIPTION="Codec for karaoke and text encapsulation for Ogg"
-HOMEPAGE="http://code.google.com/p/libkate/"
+HOMEPAGE="https://code.google.com/p/libkate/"
 SRC_URI="http://libkate.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

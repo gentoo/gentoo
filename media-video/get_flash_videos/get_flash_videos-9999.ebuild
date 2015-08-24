@@ -9,7 +9,7 @@ MY_PN="App-${PN}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Downloads videos from various Flash-based video hosting sites"
-HOMEPAGE="http://code.google.com/p/get-flash-videos/"
+HOMEPAGE="https://code.google.com/p/get-flash-videos/"
 EGIT_REPO_URI="git://github.com/monsieurvideo/get-flash-videos.git"
 
 LICENSE="Apache-2.0"

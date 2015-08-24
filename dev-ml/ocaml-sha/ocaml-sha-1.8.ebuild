@@ -8,7 +8,7 @@ inherit findlib vcs-snapshot
 
 DESCRIPTION="A binding for SHA interface code in OCaml"
 HOMEPAGE="https://github.com/vincenthz/ocaml-sha"
-SRC_URI="http://nodeload.github.com/vincenthz/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://nodeload.github.com/vincenthz/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"

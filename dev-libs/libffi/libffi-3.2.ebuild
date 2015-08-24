@@ -24,7 +24,7 @@ DOCS="ChangeLog* README"
 ECONF_SOURCE=${S}
 
 pkg_setup() {
-	# Check for orphaned libffi, see http://bugs.gentoo.org/354903 for example
+	# Check for orphaned libffi, see https://bugs.gentoo.org/354903 for example
 	if [[ ${ROOT} == "/" && ${EPREFIX} == "" ]] && ! has_version ${CATEGORY}/${PN}; then
 		local base="${T}"/conftest
 		echo 'int main() { }' > "${base}".c

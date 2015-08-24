@@ -8,7 +8,7 @@ MY_P="${PN}-r${PV}"
 
 DESCRIPTION="Open Handset Alliance's Android NDK (Native Dev Kit)"
 HOMEPAGE="http://developer.android.com/sdk/ndk/"
-SRC_URI="http://dl.google.com/android/ndk/${MY_P}-linux-x86.tar.bz2"
+SRC_URI="https://dl.google.com/android/ndk/${MY_P}-linux-x86.tar.bz2"
 
 LICENSE="android"
 SLOT="0"

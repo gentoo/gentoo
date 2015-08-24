@@ -30,7 +30,7 @@ S="${WORKDIR}/ACE_wrappers"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	# Let's avoid autotools. http://bugs.gentoo.org/328027.
+	# Let's avoid autotools. https://bugs.gentoo.org/328027.
 	if has_version ">=dev-libs/openssl-1.0.0"; then
 		sed -i -e 's:SSL_METHOD:const SSL_METHOD:' configure || die
 	fi

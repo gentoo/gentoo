@@ -11,7 +11,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="High-resolution clock functions: monotonic, realtime, cputime"
-HOMEPAGE="http://corsis.github.com/clock/"
+HOMEPAGE="https://corsis.github.com/clock/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

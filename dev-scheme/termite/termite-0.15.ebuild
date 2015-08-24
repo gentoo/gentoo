@@ -7,7 +7,7 @@ EAPI=3
 inherit multilib
 
 DESCRIPTION="Erlang-style concurrency for Gambit Scheme"
-HOMEPAGE="http://code.google.com/p/termite/"
+HOMEPAGE="https://code.google.com/p/termite/"
 SRC_URI="http://termite.googlecode.com/files/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

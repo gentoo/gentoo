@@ -6,7 +6,7 @@ EAPI=4
 inherit gnome2-utils
 
 DESCRIPTION="GTK client for management of the Transmission BitTorrent client, over HTTP RPC"
-HOMEPAGE="http://code.google.com/p/transmission-remote-gtk"
+HOMEPAGE="https://code.google.com/p/transmission-remote-gtk"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

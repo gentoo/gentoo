@@ -48,7 +48,7 @@ src_configure() {
 		--disable-gtk-doc \
 		--without-gtk \
 	        --with-package-name="GStreamer editing services ebuild for Gentoo" \
-        	--with-package-origin="http://packages.gentoo.org/package/media-libs/gstreamer-editing-services"
+        	--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer-editing-services"
 }
 
 src_install() {

@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="C/C++ interface to the Google Data API"
-HOMEPAGE="http://code.google.com/p/libgcal/"
+HOMEPAGE="https://code.google.com/p/libgcal/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD"

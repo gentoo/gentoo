@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="The code tables for IBus-Table"
-HOMEPAGE="http://code.google.com/p/ibus/"
+HOMEPAGE="https://code.google.com/p/ibus/"
 SRC_URI="http://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

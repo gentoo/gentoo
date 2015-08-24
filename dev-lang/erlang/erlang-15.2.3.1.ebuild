@@ -164,7 +164,7 @@ pkg_postinst() {
 	use emacs && elisp-site-regen
 	elog
 	elog "If you need a symlink to one of Erlang's binaries,"
-	elog "please open a bug on http://bugs.gentoo.org/"
+	elog "please open a bug on https://bugs.gentoo.org/"
 	elog
 	elog "Gentoo's versioning scheme differs from the author's, so please refer to this version as ${MY_PV}"
 	elog

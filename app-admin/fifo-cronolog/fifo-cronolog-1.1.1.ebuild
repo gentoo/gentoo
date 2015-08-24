@@ -5,7 +5,7 @@
 EAPI=3
 
 DESCRIPTION="cronolog wrapper for use with dumb daemons like squid, varnish and so on"
-HOMEPAGE="http://cgit.gentoo.org/proj/fifo-cronolog.git"
+HOMEPAGE="https://cgit.gentoo.org/proj/fifo-cronolog.git"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD-2 GPL-2"

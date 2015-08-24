@@ -88,7 +88,7 @@ pkg_nofetch() {
 	#einfo "amd64-fbsd - ${SRC_URI_amd64_fbsd}"
 	einfo ""
 	einfo "However, they have given permission to redistribute."
-	einfo "http://bugs.gentoo.org/show_bug.cgi?id=60690#c106"
+	einfo "https://bugs.gentoo.org/show_bug.cgi?id=60690#c106"
 	einfo ""
 	supportedcards
 }

@@ -7,7 +7,7 @@ EAPI=3
 inherit eutils qt4-r2
 
 DESCRIPTION="Keep your notes, pictures, ideas, and information in Baskets"
-HOMEPAGE="http://code.google.com/p/basqet/"
+HOMEPAGE="https://code.google.com/p/basqet/"
 SRC_URI="http://basqet.googlecode.com/files/${PN}_${PV}-src.tgz"
 
 LICENSE="GPL-3"

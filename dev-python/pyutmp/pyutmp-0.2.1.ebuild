@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python UTMP wrapper for Un*x systems"
-HOMEPAGE="https://pypi.python.org/pypi/pyutmp http://bmc.github.com/pyutmp/"
+HOMEPAGE="https://pypi.python.org/pypi/pyutmp https://bmc.github.com/pyutmp/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

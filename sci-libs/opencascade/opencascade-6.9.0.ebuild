@@ -33,7 +33,7 @@ DEPEND="app-eselect/eselect-opencascade
 	vtk? ( =sci-libs/${MY_VTK}* )"
 RDEPEND="${DEPEND}"
 
-# http://bugs.gentoo.org/show_bug.cgi?id=352435
+# https://bugs.gentoo.org/show_bug.cgi?id=352435
 # https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
 RESTRICT="bindist mirror"
 

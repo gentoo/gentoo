@@ -34,7 +34,7 @@ REQUIRED_USE="|| ( http obex )"
 DOCS="AUTHORS CODING ChangeLog RELEASE"
 
 src_prepare() {
-	# http://bugs.gentoo.org/425738
+	# https://bugs.gentoo.org/425738
 	sed -i \
 		-e '/include/s:wbxml.h:wbxml/&:' \
 		libsyncml/parser/sml_wbxml_internals.h tests/mobiles/obex_mobile_ds_client.c || die

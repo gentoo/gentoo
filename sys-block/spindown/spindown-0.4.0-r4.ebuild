@@ -5,7 +5,7 @@
 inherit eutils
 
 DESCRIPTION="Spindown is a daemon that can spin down idle disks"
-HOMEPAGE="http://code.google.com/p/spindown"
+HOMEPAGE="https://code.google.com/p/spindown"
 SRC_URI="http://spindown.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

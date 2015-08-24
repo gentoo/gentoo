@@ -7,7 +7,7 @@
     <name>Yixun Lan</name>
   </maintainer>
   <upstream>
-    <bugs-to>http://code.google.com/p/rimeime/issues/list</bugs-to>
+    <bugs-to>https://code.google.com/p/rimeime/issues/list</bugs-to>
     <remote-id type="google-code">rimeime</remote-id>
   </upstream>
 </pkgmetadata>

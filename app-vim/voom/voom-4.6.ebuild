@@ -7,7 +7,7 @@ EAPI="5"
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: emulates a two-pane text outliner"
-HOMEPAGE="http://vim-voom.github.com/ http://www.vim.org/scripts/script.php?script_id=2657"
+HOMEPAGE="https://vim-voom.github.com/ http://www.vim.org/scripts/script.php?script_id=2657"
 LICENSE="WTFPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

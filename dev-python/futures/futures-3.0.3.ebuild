@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Backport of the concurrent.futures package from Python 3.2"
-HOMEPAGE="http://code.google.com/p/pythonfutures  https://pypi.python.org/pypi/futures"
+HOMEPAGE="https://code.google.com/p/pythonfutures  https://pypi.python.org/pypi/futures"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -24,7 +24,7 @@ python_compile_all() {
 
 python_test() {
 	# tests that fail under pypy
-	# http://code.google.com/p/pythonfutures/issues/detail?id=27
+	# https://code.google.com/p/pythonfutures/issues/detail?id=27
 	if [[ "${EPYTHON}" == pypy ]]; then
 		sed -e 's:test_del_shutdown:_&:g' \
 			-e 's:test_repr:_&:' -i test_futures.py || die

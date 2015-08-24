@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="A skeleton, statically managed /dev"
-HOMEPAGE="http://bugs.gentoo.org/107875"
+HOMEPAGE="https://bugs.gentoo.org/107875"
 SRC_URI=""
 
 LICENSE="GPL-2"

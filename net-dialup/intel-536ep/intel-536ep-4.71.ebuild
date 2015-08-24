@@ -19,7 +19,7 @@ MODULE_NAMES="Intel536(:${S}/coredrv)"
 pkg_setup() {
 	if kernel_is ge 2 6 16; then
 		eerror "This driver is not supported by kernels >= 2.6.16."
-		eerror "Please see http://bugs.gentoo.org/show_bug.cgi?id=127464 for more info."
+		eerror "Please see https://bugs.gentoo.org/show_bug.cgi?id=127464 for more info."
 		die "unsupported kernel version"
 	elif kernel_is 2 4; then
 		BUILD_TARGETS="536core"

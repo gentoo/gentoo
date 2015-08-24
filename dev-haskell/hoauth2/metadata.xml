@@ -11,7 +11,7 @@
 		
 		* weibo oauth2: &lt;http://open.weibo.com/wiki/Oauth2&gt;
 		
-		* github oauth: &lt;http://developer.github.com/v3/oauth/&gt;
+		* github oauth: &lt;https://developer.github.com/v3/oauth/&gt;
 	</longdescription>
 	<upstream>
 		<remote-id type="github">freizl/hoauth2</remote-id>

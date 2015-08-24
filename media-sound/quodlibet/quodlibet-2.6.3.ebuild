@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 gnome2-utils fdo-mime
 
 DESCRIPTION="audio library tagger, manager, and player for GTK+"
-HOMEPAGE="http://code.google.com/p/quodlibet/"
+HOMEPAGE="https://code.google.com/p/quodlibet/"
 SRC_URI="https://bitbucket.org/lazka/${PN}-files/raw/default/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"

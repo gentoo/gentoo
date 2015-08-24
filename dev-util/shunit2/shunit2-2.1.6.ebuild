@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils
 
 DESCRIPTION="Unit-test framework for Bourne-based shell scripts"
-HOMEPAGE="http://code.google.com/p/shunit2/wiki/ProjectInfo"
+HOMEPAGE="https://code.google.com/p/shunit2/wiki/ProjectInfo"
 SRC_URI="http://shunit2.googlecode.com/files/${P}.tgz"
 
 LICENSE="LGPL-2.1"

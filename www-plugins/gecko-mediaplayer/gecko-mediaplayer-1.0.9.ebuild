@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib nsplugins
 
 DESCRIPTION="A browser plugin that uses GNOME MPlayer"
-HOMEPAGE="http://code.google.com/p/gecko-mediaplayer/"
+HOMEPAGE="https://code.google.com/p/gecko-mediaplayer/"
 SRC_URI="http://${PN}.googlecode.com/svn/packages/${P}.tar.gz"
 
 LICENSE="GPL-2"

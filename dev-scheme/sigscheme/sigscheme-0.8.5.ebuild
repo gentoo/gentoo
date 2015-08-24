@@ -5,7 +5,7 @@
 EAPI="3"
 
 DESCRIPTION="SigScheme is an R5RS Scheme interpreter for embedded use"
-HOMEPAGE="http://code.google.com/p/sigscheme/"
+HOMEPAGE="https://code.google.com/p/sigscheme/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD"

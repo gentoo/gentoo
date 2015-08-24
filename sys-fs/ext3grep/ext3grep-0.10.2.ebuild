@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Recover deleted files on an ext3 file system"
-HOMEPAGE="http://code.google.com/p/ext3grep/"
+HOMEPAGE="https://code.google.com/p/ext3grep/"
 SRC_URI="http://ext3grep.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

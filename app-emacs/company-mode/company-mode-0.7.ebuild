@@ -7,7 +7,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="In-buffer completion front-end"
-HOMEPAGE="http://company-mode.github.com/"
+HOMEPAGE="https://company-mode.github.com/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README"
 inherit ruby-fakegem
 
 DESCRIPTION="Forking implementation of rackup"
-HOMEPAGE="http://rtomayko.github.com/shotgun/"
+HOMEPAGE="https://rtomayko.github.com/shotgun/"
 
 LICENSE="MIT"
 SLOT="0"

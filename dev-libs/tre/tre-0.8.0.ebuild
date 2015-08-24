@@ -79,7 +79,7 @@ pkg_postinst() {
 	echo
 	ewarn "app-misc/glimpse, app-text/agrep and this package all provide agrep."
 	ewarn "If this causes any unforeseen incompatibilities please file a bug"
-	ewarn "on http://bugs.gentoo.org."
+	ewarn "on https://bugs.gentoo.org."
 	echo
 
 	use python && distutils_pkg_postinst

@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit vcs-snapshot java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A Java library for parsing command line options"
-HOMEPAGE="http://pholser.github.com/jopt-simple/"
+HOMEPAGE="https://pholser.github.com/jopt-simple/"
 SRC_URI="https://github.com/pholser/${PN}/tarball/${P} -> ${P}.tar.gz"
 
 LICENSE="MIT"

@@ -211,7 +211,7 @@ pkg_postinst() {
 	if ! systemd_is_booted; then
 		ewarn "${PN} needs Systemd to be *running* for working"
 		ewarn "properly. Please follow this guide to migrate:"
-		ewarn "http://wiki.gentoo.org/wiki/Systemd"
+		ewarn "https://wiki.gentoo.org/wiki/Systemd"
 	fi
 
 	if use openrc-force; then

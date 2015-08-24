@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Utility functions, classes and widgets written on top of gtkmm and
 glibmm."
-HOMEPAGE="http://code.google.com/p/gtkmm-utils/"
+HOMEPAGE="https://code.google.com/p/gtkmm-utils/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="LGPL-2"
 

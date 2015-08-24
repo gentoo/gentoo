@@ -8,7 +8,7 @@ inherit eutils
 
 MY_P="${P}_autoconf"
 DESCRIPTION="Stressful Application Test"
-HOMEPAGE="http://code.google.com/p/stressapptest/"
+HOMEPAGE="https://code.google.com/p/stressapptest/"
 SRC_URI="http://stressapptest.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"

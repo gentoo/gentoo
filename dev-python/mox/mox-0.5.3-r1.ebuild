@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A mock object framework for Python, loosely based on EasyMock for Java"
-HOMEPAGE="http://code.google.com/p/pymox/"
+HOMEPAGE="https://code.google.com/p/pymox/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

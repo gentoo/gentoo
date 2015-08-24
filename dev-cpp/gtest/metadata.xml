@@ -6,7 +6,7 @@
 	<name>Thomas Kahle</name>
 	</maintainer>
 	<upstream>
-		<doc lang="en">http://code.google.com/p/googletest/w/list</doc>
+		<doc lang="en">https://code.google.com/p/googletest/w/list</doc>
 		<remote-id type="google-code">googletest</remote-id>
 	</upstream>
 </pkgmetadata>

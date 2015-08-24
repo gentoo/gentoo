@@ -15,7 +15,7 @@ else
 fi;
 
 DESCRIPTION="WBFS manager for Linux using GTK+"
-HOMEPAGE="http://code.google.com/p/linux-wbfs-manager/"
+HOMEPAGE="https://code.google.com/p/linux-wbfs-manager/"
 
 LICENSE="GPL-2"
 SLOT="0"

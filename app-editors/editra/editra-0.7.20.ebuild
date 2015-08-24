@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}"/${MY_PN}-${PV}
 
 src_compile() {
-	distutils_src_compile --no-clean # http://code.google.com/p/editra/issues/detail?id=481
+	distutils_src_compile --no-clean # https://code.google.com/p/editra/issues/detail?id=481
 }
 
 src_install() {

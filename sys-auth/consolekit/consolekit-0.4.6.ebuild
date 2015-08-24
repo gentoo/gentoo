@@ -46,7 +46,7 @@ QA_MULTILIB_PATHS="usr/lib/ConsoleKit/.*"
 
 pkg_setup() {
 	if use kernel_linux; then
-		# This is from http://bugs.gentoo.org/376939
+		# This is from https://bugs.gentoo.org/376939
 		use acl && CONFIG_CHECK="~TMPFS_POSIX_ACL"
 		# This is required to get login-session-id string with pam_ck_connector.so
 		use pam && CONFIG_CHECK+=" ~AUDITSYSCALL"

@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="HTTP multipart split out of the cgi package"
-HOMEPAGE="http://www.github.com/silkapp/multipart"
+HOMEPAGE="https://www.github.com/silkapp/multipart"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

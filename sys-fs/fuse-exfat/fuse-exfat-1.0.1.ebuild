@@ -6,7 +6,7 @@ EAPI=5
 inherit scons-utils toolchain-funcs #udev
 
 DESCRIPTION="exFAT filesystem FUSE module"
-HOMEPAGE="http://code.google.com/p/exfat/"
+HOMEPAGE="https://code.google.com/p/exfat/"
 SRC_URI="http://exfat.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

@@ -11,7 +11,7 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_PN}"
 inherit elisp git-r3
 
 DESCRIPTION="Emacs major mode for editing eselect files"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Eselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
 
 LICENSE="GPL-2+"
 SLOT="0"

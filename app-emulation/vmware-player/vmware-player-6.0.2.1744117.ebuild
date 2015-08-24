@@ -110,7 +110,7 @@ src_prepare() {
 clean_bundled_libs() {
 	ebegin 'Removing superfluous libraries'
 	# exclude OpenSSL from unbundling until the AES-NI patch gets into the tree
-	# see http://forums.gentoo.org/viewtopic-t-835867.html
+	# see https://forums.gentoo.org/viewtopic-t-835867.html
 	# must use shipped libgcr.so.0 or else "undefined symbol: gcr_certificate_widget_new"
 	ldconfig -p | sed 's:^\s\+\([^(]*[^( ]\).*=> \(/.*\)$:\1 \2:g;t;d' | fgrep -v 'libcrypto.so.0.9.8
 libssl.so.0.9.8

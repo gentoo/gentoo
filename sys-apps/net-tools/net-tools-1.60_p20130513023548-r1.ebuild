@@ -45,7 +45,7 @@ maint_pkg_create() {
 	local d="${T}/${patches}"
 	mkdir "${d}"
 	git format-patch -o "${d}" master..gentoo > /dev/null
-	echo "From http://cgit.gentoo.org/proj/net-tools.git" > "${d}"/README
+	echo "From https://cgit.gentoo.org/proj/net-tools.git" > "${d}"/README
 	tar cf - -C "${T}" ${d##*/} | xz > "${T}"/${patches}.tar.xz
 	rm -rf "${d}"
 

@@ -53,7 +53,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 	use nls && emake -C po DESTDIR="${D}" install
 
-	# http://bugs.gentoo.org/388999
+	# https://bugs.gentoo.org/388999
 	insinto /usr/share/${PN}/cleaners
 	doins cleaners/*.xml
 

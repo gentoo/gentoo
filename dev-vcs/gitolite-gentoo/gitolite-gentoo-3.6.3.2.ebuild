@@ -10,7 +10,7 @@ EGIT_MASTER=master
 inherit perl-module user versionator ${SCM}
 
 DESCRIPTION="Highly flexible server for git directory version tracker, Gentoo fork"
-HOMEPAGE="http://cgit.gentoo.org/proj/gitolite-gentoo.git"
+HOMEPAGE="https://cgit.gentoo.org/proj/gitolite-gentoo.git"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"

@@ -6,7 +6,7 @@ EAPI="5"
 inherit multilib toolchain-funcs
 
 DESCRIPTION="File System Library for the Lua Programming Language"
-HOMEPAGE="http://keplerproject.github.com/luafilesystem/"
+HOMEPAGE="https://keplerproject.github.com/luafilesystem/"
 SRC_URI="mirror://github/keplerproject/luafilesystem/${P}.tar.gz"
 
 LICENSE="MIT"

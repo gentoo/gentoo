@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="HISTORY.md KNOWN-ISSUES README.rdoc SPEC"
 inherit ruby-fakegem eutils versionator
 
 DESCRIPTION="A modular Ruby webserver interface"
-HOMEPAGE="http://rack.github.com/"
+HOMEPAGE="https://rack.github.com/"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"

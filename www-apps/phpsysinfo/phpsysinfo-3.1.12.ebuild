@@ -7,7 +7,7 @@ EAPI=5
 inherit webapp
 
 DESCRIPTION="phpSysInfo is a nice package that will display your system stats via PHP"
-HOMEPAGE="http://rk4an.github.com/phpsysinfo/"
+HOMEPAGE="https://rk4an.github.com/phpsysinfo/"
 SRC_URI="https://github.com/rk4an/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

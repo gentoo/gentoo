@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Password hashing framework supporting over 20 schemes"
-HOMEPAGE="http://code.google.com/p/passlib/"
+HOMEPAGE="https://code.google.com/p/passlib/"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

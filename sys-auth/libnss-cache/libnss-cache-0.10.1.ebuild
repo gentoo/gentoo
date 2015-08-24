@@ -7,7 +7,7 @@ EAPI=3
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="libnss-cache is a library that serves nss lookups"
-HOMEPAGE="http://code.google.com/p/nsscache/"
+HOMEPAGE="https://code.google.com/p/nsscache/"
 SRC_URI="http://nsscache.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

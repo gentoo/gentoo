@@ -7,10 +7,10 @@ EAPI=3
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Pidgin plugin to notify by writing user defined strings to (led control) files"
-HOMEPAGE="http://sites.google.com/site/simohmattila/led-notification"
+HOMEPAGE="https://sites.google.com/site/simohmattila/led-notification"
 MY_PN=${PN/pidgin-/}
 MY_P=${MY_PN}-${PV}
-SRC_URI="http://sites.google.com/site/simohmattila/${MY_P}.tar.bz2"
+SRC_URI="https://sites.google.com/site/simohmattila/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

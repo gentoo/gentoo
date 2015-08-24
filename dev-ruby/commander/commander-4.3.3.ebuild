@@ -12,7 +12,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="The complete solution for Ruby command-line executables"
-HOMEPAGE="http://visionmedia.github.com/commander/"
+HOMEPAGE="https://visionmedia.github.com/commander/"
 
 LICENSE="MIT"
 SLOT="0"

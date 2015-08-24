@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Debian Etch instance example for Ganeti"
-HOMEPAGE="http://code.google.com/p/ganeti/"
+HOMEPAGE="https://code.google.com/p/ganeti/"
 SRC_URI="http://ganeti.googlecode.com/files/${P}.tar"
 
 LICENSE="GPL-2"

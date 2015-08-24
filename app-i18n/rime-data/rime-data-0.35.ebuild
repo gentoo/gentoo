@@ -7,7 +7,7 @@ EAPI=5
 inherit vcs-snapshot
 MY_P=brise-${PV}
 DESCRIPTION="Data resources for Rime Input Method Engine"
-HOMEPAGE="http://code.google.com/p/rimeime/"
+HOMEPAGE="https://code.google.com/p/rimeime/"
 SRC_URI="http://dl.bintray.com/lotem/rime/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

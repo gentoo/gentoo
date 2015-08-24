@@ -10,7 +10,7 @@ inherit distutils-r1
 
 # Use at your own risk ;), or because an openstack package cited it as a req'd dep :)
 DESCRIPTION="The Mock object framework for Python"
-HOMEPAGE="http://code.google.com/p/pymox/wiki/MoxDocumentation http://www.openstack.org/"
+HOMEPAGE="https://code.google.com/p/pymox/wiki/MoxDocumentation http://www.openstack.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"

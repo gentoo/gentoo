@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md"
 inherit ruby-fakegem eutils
 
 DESCRIPTION="A fast and liberal HTML parser for Ruby"
-HOMEPAGE="http://wiki.github.com/hpricot/hpricot"
+HOMEPAGE="https://wiki.github.com/hpricot/hpricot"
 
 LICENSE="MIT"
 SLOT="0"

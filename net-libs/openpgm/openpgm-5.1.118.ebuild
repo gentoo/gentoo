@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="OpenPGM is an open source implementation of the Pragmatic General
 Multicast (PGM) specification"
-HOMEPAGE="http://code.google.com/p/openpgm"
+HOMEPAGE="https://code.google.com/p/openpgm"
 SRC_URI="http://openpgm.googlecode.com/files/libpgm-${PV}~dfsg.tar.gz"
 
 LICENSE="LGPL-2.1"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1 games
 
 DESCRIPTION="Quiet Console Town puts you in the place of the mayor of a budding new console RPG city"
-HOMEPAGE="http://packages.gentoo.org/package/games-simulation/qct"
+HOMEPAGE="https://packages.gentoo.org/package/games-simulation/qct"
 SRC_URI="http://www.sourcefiles.org/Games/Role_Play/${P}.tar.gz"
 
 LICENSE="GPL-2"

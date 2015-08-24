@@ -61,7 +61,7 @@ src_configure() {
 	# build verbose by default
 	MAKEOPTS="${MAKEOPTS} verbose=yes"
 
-	# http://bugs.gentoo.org/show_bug.cgi?id=384585
+	# https://bugs.gentoo.org/show_bug.cgi?id=384585
 	# https://bugs.gentoo.org/show_bug.cgi?id=465988
 	# copied from php-pear-r1.eclass
 	addpredict /usr/share/snmp/mibs/.index

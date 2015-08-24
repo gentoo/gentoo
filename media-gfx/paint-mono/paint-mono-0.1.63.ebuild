@@ -7,7 +7,7 @@ EAPI=2
 inherit mono multilib
 
 DESCRIPTION="An unofficial effort to port Paint.NET 3.0 to Linux using Mono"
-HOMEPAGE="http://code.google.com/p/paint-mono/"
+HOMEPAGE="https://code.google.com/p/paint-mono/"
 SRC_URI="http://${PN}.googlecode.com/files/paintdotnet-${PV}.tar.gz"
 
 LICENSE="MIT CC-BY-NC-ND-2.5"

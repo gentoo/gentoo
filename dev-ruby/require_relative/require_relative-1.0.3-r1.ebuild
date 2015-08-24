@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Backport require_relative from ruby 1.9.2"
-HOMEPAGE="http://steveklabnik.github.com/require_relative"
+HOMEPAGE="https://steveklabnik.github.com/require_relative"
 
 LICENSE="|| ( Ruby BSD WTFPL-2 )"
 SLOT="0"

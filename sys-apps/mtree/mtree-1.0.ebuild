@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Directory hierarchy mapping tool from FreeBSD"
-HOMEPAGE="http://code.google.com/p/mtree-port/"
+HOMEPAGE="https://code.google.com/p/mtree-port/"
 SRC_URI="http://mtree-port.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

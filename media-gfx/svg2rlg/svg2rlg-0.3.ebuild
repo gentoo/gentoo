@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="svg2rlg is a python tool to convert SVG files to reportlab
 graphics"
-HOMEPAGE="http://code.google.com/p/svg2rlg/"
+HOMEPAGE="https://code.google.com/p/svg2rlg/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

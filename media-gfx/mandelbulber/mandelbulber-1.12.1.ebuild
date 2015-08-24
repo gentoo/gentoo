@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs versionator
 MY_P=${PN}$(replace_version_separator 2 '-' )
 
 DESCRIPTION="Tool to render 3D fractals"
-HOMEPAGE="http://sites.google.com/site/mandelbulber/home"
+HOMEPAGE="https://sites.google.com/site/mandelbulber/home"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

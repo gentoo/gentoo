@@ -47,7 +47,7 @@ src_compile() {
 
 	# Bugs to Gentoo bugzilla:
 	sed -i \
-		-e "s,bug-xrn@kamens.brookline.ma.us,http://bugs.gentoo.org/," \
+		-e "s,bug-xrn@kamens.brookline.ma.us,https://bugs.gentoo.org/," \
 		-e "s,\(#ifndef CONFIG_H_IS_OK\),#define CONFIG_H_IS_OK\n\1," \
 		config.h
 

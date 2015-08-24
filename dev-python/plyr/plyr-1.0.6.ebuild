@@ -11,7 +11,7 @@ MY_PN="python-glyr"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A python wrapper for Glyr"
-HOMEPAGE="http://sahib.github.com/python-glyr/intro.html
+HOMEPAGE="https://sahib.github.com/python-glyr/intro.html
 	https://github.com/sahib/python-glyr"
 SRC_URI="https://github.com/sahib/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 

@@ -8,10 +8,10 @@ MY_P="${PN}-r${PV}"
 
 DESCRIPTION="Open Handset Alliance's Android NDK (Native Dev Kit)"
 HOMEPAGE="http://developer.android.com/sdk/ndk/"
-SRC_URI="x86? ( http://dl.google.com/android/ndk/${MY_P}-linux-x86.tar.bz2
-	legacy-toolchains? ( http://dl.google.com/android/ndk/${MY_P}-linux-x86-legacy-toolchains.tar.bz2 ) )
-	amd64? ( http://dl.google.com/android/ndk/${MY_P}-linux-x86_64.tar.bz2
-	legacy-toolchains? ( http://dl.google.com/android/ndk/${MY_P}-linux-x86_64-legacy-toolchains.tar.bz2 ) )"
+SRC_URI="x86? ( https://dl.google.com/android/ndk/${MY_P}-linux-x86.tar.bz2
+	legacy-toolchains? ( https://dl.google.com/android/ndk/${MY_P}-linux-x86-legacy-toolchains.tar.bz2 ) )
+	amd64? ( https://dl.google.com/android/ndk/${MY_P}-linux-x86_64.tar.bz2
+	legacy-toolchains? ( https://dl.google.com/android/ndk/${MY_P}-linux-x86_64-legacy-toolchains.tar.bz2 ) )"
 
 LICENSE="android"
 SLOT="0"

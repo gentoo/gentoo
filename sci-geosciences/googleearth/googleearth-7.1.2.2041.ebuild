@@ -7,12 +7,12 @@ EAPI=5
 inherit pax-utils eutils unpacker fdo-mime gnome2-utils
 
 DESCRIPTION="A 3D interface to the planet"
-HOMEPAGE="http://earth.google.com/"
+HOMEPAGE="https://earth.google.com/"
 # no upstream versioning, version determined from help/about
 # incorrect digest means upstream bumped and thus needs version bump
-SRC_URI="x86? ( http://dl.google.com/dl/earth/client/current/google-earth-stable_current_i386.deb
+SRC_URI="x86? ( https://dl.google.com/dl/earth/client/current/google-earth-stable_current_i386.deb
 			-> GoogleEarthLinux-${PV}_i386.deb )
-	amd64? ( http://dl.google.com/dl/earth/client/current/google-earth-stable_current_amd64.deb
+	amd64? ( https://dl.google.com/dl/earth/client/current/google-earth-stable_current_amd64.deb
 			-> GoogleEarthLinux-${PV}_amd64.deb )"
 LICENSE="googleearth GPL-2"
 SLOT="0"
@@ -58,7 +58,7 @@ S=${WORKDIR}/opt/google/earth/free
 pkg_nofetch() {
 	einfo "Wrong checksum or file size means that Google silently replaced the distfile with a newer version."
 	einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."
-	einfo "Please file a version bump bug on http://bugs.gentoo.org (search existing bugs for googleearth first!)."
+	einfo "Please file a version bump bug on https://bugs.gentoo.org (search existing bugs for googleearth first!)."
 	einfo "By redigesting the file yourself, you will install a different version than the ebuild says, untested!"
 }
 

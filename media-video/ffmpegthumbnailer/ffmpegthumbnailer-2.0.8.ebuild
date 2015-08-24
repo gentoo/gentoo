@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils libtool
 
 DESCRIPTION="Lightweight video thumbnailer that can be used by file managers"
-HOMEPAGE="http://code.google.com/p/ffmpegthumbnailer/"
+HOMEPAGE="https://code.google.com/p/ffmpegthumbnailer/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

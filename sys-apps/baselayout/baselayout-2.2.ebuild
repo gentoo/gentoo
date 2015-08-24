@@ -222,7 +222,7 @@ pkg_postinst() {
 		fi
 	fi
 
-	# http://bugs.gentoo.org/361349
+	# https://bugs.gentoo.org/361349
 	if use kernel_linux; then
 		mkdir -p "${ROOT}"/run
 

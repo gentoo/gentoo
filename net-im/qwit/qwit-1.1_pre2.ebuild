@@ -9,7 +9,7 @@ inherit qt4-r2
 MY_P=${P/_/-}-src
 
 DESCRIPTION="Qt4 cross-platform client for Twitter"
-HOMEPAGE="http://code.google.com/p/qwit/"
+HOMEPAGE="https://code.google.com/p/qwit/"
 SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"

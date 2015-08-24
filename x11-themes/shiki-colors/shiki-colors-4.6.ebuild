@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Shiki-Colors mixes the elegance of a dark theme with the usability of a light theme"
-HOMEPAGE="http://code.google.com/p/gnome-colors/"
+HOMEPAGE="https://code.google.com/p/gnome-colors/"
 
 SRC_URI="http://gnome-colors.googlecode.com/files/${P}.tar.gz
 	https://dev.gentoo.org/~pacho/Shiki-Gentoo-${PV}.tar.bz2"

@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils
 
 DESCRIPTION="An encoder/decoder for the VCDIFF (RFC3284) format"
-HOMEPAGE="http://code.google.com/p/open-vcdiff/"
+HOMEPAGE="https://code.google.com/p/open-vcdiff/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

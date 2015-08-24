@@ -89,7 +89,7 @@ pkg_postinst() {
 	elog ""
 	elog "For more information on how to use the Plextor devices with Gentoo"
 	elog "you can follow this thread for tips and tricks:"
-	elog "http://forums.gentoo.org/viewtopic-t-306559-highlight-.html"
+	elog "https://forums.gentoo.org/viewtopic-t-306559-highlight-.html"
 	elog ""
 	elog "Also, the unofficial Gentoo wiki has a HOWTO page:"
 	elog "http://gentoo-wiki.com/HARDWARE_go7007"

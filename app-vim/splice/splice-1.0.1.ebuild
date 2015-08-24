@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit vim-plugin python-single-r1
 
 DESCRIPTION="vim plugin: resolve conflicts during three-way merges"
-HOMEPAGE="http://sjl.bitbucket.org/splice.vim/ http://vim.sourceforge.net/scripts/script.php?script_id=4026"
+HOMEPAGE="https://sjl.bitbucket.org/splice.vim/ http://vim.sourceforge.net/scripts/script.php?script_id=4026"
 LICENSE="MIT"
 KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

@@ -7,7 +7,7 @@ EAPI=2
 inherit eutils qt4-r2
 
 DESCRIPTION="A program to create compositions from video files"
-HOMEPAGE="http://code.google.com/p/videocut/"
+HOMEPAGE="https://code.google.com/p/videocut/"
 SRC_URI="http://${PN}.googlecode.com/files/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"

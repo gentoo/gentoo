@@ -6,9 +6,9 @@ EAPI=5
 inherit font
 
 DESCRIPTION="Open licensed fonts metrically compatible with MS corefonts"
-HOMEPAGE="http://www.google.com/webfonts/specimen/Arimo
-	http://www.google.com/webfonts/specimen/Cousine
-	http://www.google.com/webfonts/specimen/Tinos"
+HOMEPAGE="https://www.google.com/webfonts/specimen/Arimo
+	https://www.google.com/webfonts/specimen/Cousine
+	https://www.google.com/webfonts/specimen/Tinos"
 SRC_URI="http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

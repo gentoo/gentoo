@@ -30,7 +30,7 @@ else
 fi
 
 DESCRIPTION="Ganeti is a virtual server management software tool"
-HOMEPAGE="http://code.google.com/p/ganeti/"
+HOMEPAGE="https://code.google.com/p/ganeti/"
 
 LICENSE="GPL-2"
 SLOT="0"

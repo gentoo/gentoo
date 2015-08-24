@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="README.txt"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Patron is a Ruby HTTP client library based on libcurl"
-HOMEPAGE="http://toland.github.com/patron/"
+HOMEPAGE="https://toland.github.com/patron/"
 
 LICENSE="MIT"
 SLOT="0"

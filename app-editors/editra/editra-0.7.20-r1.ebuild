@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}"/${MY_PN}-${PV}
 
 python_compile() {
-	# http://code.google.com/p/editra/issues/detail?id=481
+	# https://code.google.com/p/editra/issues/detail?id=481
 	distutils-r1_python_compile --no-clean
 }
 

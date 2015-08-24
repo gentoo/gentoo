@@ -12,7 +12,7 @@ MYPN=APLpy
 MYP=${MYPN}-${PV}
 
 DESCRIPTION="Astronomical Plotting Library in Python"
-HOMEPAGE="http://aplpy.github.com/"
+HOMEPAGE="https://aplpy.github.com/"
 SRC_URI="mirror://pypi/${MYPN:0:1}/${MYPN}/${MYP}.tar.gz"
 
 LICENSE="MIT"

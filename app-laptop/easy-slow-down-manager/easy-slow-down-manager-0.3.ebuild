@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils linux-mod
 
 DESCRIPTION="provides Linux users with functionality similar to Samsung Easy Speed Up Manager"
-HOMEPAGE="http://code.google.com/p/easy-slow-down-manager/"
+HOMEPAGE="https://code.google.com/p/easy-slow-down-manager/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-1"

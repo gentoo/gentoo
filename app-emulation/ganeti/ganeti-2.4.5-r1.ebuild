@@ -10,7 +10,7 @@ MY_PV="${PV/_rc/~rc}"
 #MY_PV="${PV/_beta/~beta}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Ganeti is a virtual server management software tool"
-HOMEPAGE="http://code.google.com/p/ganeti/"
+HOMEPAGE="https://code.google.com/p/ganeti/"
 SRC_URI="http://ganeti.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

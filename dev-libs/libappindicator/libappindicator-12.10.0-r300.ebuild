@@ -37,7 +37,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-conditional-py-bindings.patch
 	eautoreconf
 
-	# Disable MONO for now because of http://bugs.gentoo.org/382491
+	# Disable MONO for now because of https://bugs.gentoo.org/382491
 	sed -i -e '/^MONO_REQUIRED_VERSION/s:=.*:=9999:' configure || die
 }
 

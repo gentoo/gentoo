@@ -74,7 +74,7 @@ src_prepare() {
 
 	elibtoolize # for Darwin modules
 
-	# For testsuite, see http://bugs.gentoo.org/show_bug.cgi?id=500580#c3
+	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
 	shopt -s nullglob
 	mesa_cards=$(echo -n /dev/dri/card* | sed 's/ /:/g')
 	if test -n "${mesa_cards}"; then

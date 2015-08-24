@@ -18,7 +18,7 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Kurdish dictionaries for myspell/hunspell"
-HOMEPAGE="http://code.google.com/p/hunspell-ku/"
+HOMEPAGE="https://code.google.com/p/hunspell-ku/"
 SRC_URI="mirror://sourceforge/myspellkurdish/ku_TR-${PV/./}.zip"
 
 LICENSE="GPL-3 LGPL-3 MPL-1.1"

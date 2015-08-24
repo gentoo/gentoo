@@ -23,7 +23,7 @@ fi
 inherit eutils distutils-r1 ${scm_eclass}
 
 DESCRIPTION="Simple SQL analysis of python records"
-HOMEPAGE="http://orbeckst.github.com/RecSQL/"
+HOMEPAGE="https://orbeckst.github.com/RecSQL/"
 
 LICENSE="GPL-3"
 SLOT="0"

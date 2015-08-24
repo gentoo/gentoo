@@ -11,7 +11,7 @@ PYTHON_REQ_USE="xml"
 inherit distutils-r1
 
 DESCRIPTION="Python framework for efficient cluster administration"
-HOMEPAGE="http://cea-hpc.github.com/clustershell/"
+HOMEPAGE="https://cea-hpc.github.com/clustershell/"
 SRC_URI="https://github.com/cea-hpc/clustershell/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CeCILL-C"

@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Simple commands to access hardware device registers"
-HOMEPAGE="http://code.google.com/p/iotools/"
+HOMEPAGE="https://code.google.com/p/iotools/"
 SRC_URI="http://iotools.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

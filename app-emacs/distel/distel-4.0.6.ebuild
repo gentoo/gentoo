@@ -7,11 +7,11 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Distributed Emacs Lisp for Erlang"
-HOMEPAGE="http://code.google.com/p/distel/
+HOMEPAGE="https://code.google.com/p/distel/
 	http://www.emacswiki.org/emacs/DistributedEmacsLisp"
 SRC_URI="https://github.com/massemanet/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-# "New BSD License" according to http://code.google.com/p/distel/
+# "New BSD License" according to https://code.google.com/p/distel/
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

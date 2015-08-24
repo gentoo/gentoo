@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Gentoo Package Manager Specification"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:PMS"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:PMS"
 SRC_URI="!binary? ( https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz )
 	binary? ( https://dev.gentoo.org/~ulm/distfiles/${P}-prebuilt.tar.xz )"
 

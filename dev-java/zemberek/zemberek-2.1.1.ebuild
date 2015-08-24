@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="source doc test"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Zemberek NLP library"
-HOMEPAGE="http://code.google.com/p/zemberek/"
+HOMEPAGE="https://code.google.com/p/zemberek/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}-nolibs-src.zip"
 
 LICENSE="MPL-1.1"
@@ -35,7 +35,7 @@ java_prepare() {
 	use test && java-pkg_jarfrom --build-only --into lib/gelistirme junit-4 junit.jar
 	# Added hamcrest-core as a workaround
 	# Issue spotted by Markus Meier <maekke@gentoo.org>
-	# See http://bugs.gentoo.org/show_bug.cgi?id=253753#c3
+	# See https://bugs.gentoo.org/show_bug.cgi?id=253753#c3
 	use test && java-pkg_jarfrom --build-only --into lib/gelistirme hamcrest-core
 	epatch "${FILESDIR}"/${P}-classpathfix.patch
 }

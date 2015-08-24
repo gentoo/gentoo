@@ -30,7 +30,7 @@ src_prepare() {
 	To accomplish same with this version, you can use following syntax:
 	# hardlink -x '^\..*\.\?{6,6}$'
 
-	This was discussed at http://bugs.gentoo.org/416613
+	This was discussed at https://bugs.gentoo.org/416613
 	EOF
 }
 

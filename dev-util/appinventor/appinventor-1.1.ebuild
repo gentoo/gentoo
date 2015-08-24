@@ -7,7 +7,7 @@ EAPI="4"
 MY_P="${PN}-setup_${PV}"
 DESCRIPTION="MIT App Inventor Setup package"
 HOMEPAGE="http://www.appinventor.mit.edu/"
-SRC_URI="http://dl.google.com/dl/${PN}/installers/linux/${MY_P}.tar.gz"
+SRC_URI="https://dl.google.com/dl/${PN}/installers/linux/${MY_P}.tar.gz"
 
 LICENSE="android"
 SLOT="0"

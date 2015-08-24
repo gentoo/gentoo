@@ -6,7 +6,7 @@ EAPI=5
 inherit font
 
 DESCRIPTION="A beautiful sans-serif monotype font designed for code listings"
-HOMEPAGE="http://www.google.com/fonts/specimen/Inconsolata
+HOMEPAGE="https://www.google.com/fonts/specimen/Inconsolata
 	https://code.google.com/p/googlefontdirectory/source/browse/ofl/inconsolata/?name=default"
 SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 

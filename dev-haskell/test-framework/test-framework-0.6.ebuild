@@ -10,7 +10,7 @@ CABAL_FEATURES="bin lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Framework for running and organising tests, with HUnit and QuickCheck support"
-HOMEPAGE="http://batterseapower.github.com/test-framework/"
+HOMEPAGE="https://batterseapower.github.com/test-framework/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

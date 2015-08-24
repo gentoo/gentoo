@@ -9,7 +9,7 @@ MY_P=${P/_pre/test}
 MY_P=${MY_P/-applet/_applet}
 
 DESCRIPTION="Control utility for some special features of some special Logitech USB mice!"
-HOMEPAGE="http://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@
 inherit unpacker toolchain-funcs multilib
 
 DESCRIPTION="utility to manage compilers"
-HOMEPAGE="http://cgit.gentoo.org/proj/gcc-config.git"
+HOMEPAGE="https://cgit.gentoo.org/proj/gcc-config.git"
 SRC_URI="mirror://gentoo/${P}.tar.xz
 	https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 

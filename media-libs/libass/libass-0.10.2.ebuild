@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Library for SSA/ASS subtitles rendering"
-HOMEPAGE="http://code.google.com/p/libass/"
+HOMEPAGE="https://code.google.com/p/libass/"
 SRC_URI="http://libass.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="ISC"

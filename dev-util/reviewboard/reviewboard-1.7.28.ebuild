@@ -59,7 +59,7 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	# See http://code.google.com/p/reviewboard/issues/ #3009
+	# See https://code.google.com/p/reviewboard/issues/ #3009
 	# until build of manual can find and use ROOT_URLCONF, only possible build path for manual
 	# requires sacrificing the resources section, all of which call on ROOT_URLCONF
 	local msg="Generating docs for"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Provides graphical frontend to ufw"
-HOMEPAGE="http://code.google.com/p/ufw-frontends/"
+HOMEPAGE="https://code.google.com/p/ufw-frontends/"
 SRC_URI="http://ufw-frontends.googlecode.com/files/${P}.tar.gz"
 
 # CC-BY-NC-SA-3.0 is for a png file

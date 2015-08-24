@@ -137,7 +137,7 @@ src_configure() {
 		$(use_enable qt4 qt) \
 		$(use_enable thin-splines) \
 		$(use_enable wxwidgets) \
-		DIST_CONTACT="http://bugs.gentoo.org/" \
+		DIST_CONTACT="https://bugs.gentoo.org/" \
 		EMACS=no
 }
 

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to PROJ.4 library"
-HOMEPAGE="http://code.google.com/p/pyproj/ https://pypi.python.org/pypi/pyproj"
+HOMEPAGE="https://code.google.com/p/pyproj/ https://pypi.python.org/pypi/pyproj"
 SRC_URI="http://pyproj.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"

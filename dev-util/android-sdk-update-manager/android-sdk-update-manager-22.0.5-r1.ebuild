@@ -10,7 +10,7 @@ MY_P="android-sdk_r${PV}-linux"
 
 DESCRIPTION="Open Handset Alliance's Android SDK"
 HOMEPAGE="http://developer.android.com"
-SRC_URI="http://dl.google.com/android/${MY_P}.tgz"
+SRC_URI="https://dl.google.com/android/${MY_P}.tgz"
 IUSE=""
 RESTRICT="mirror"
 
@@ -95,7 +95,7 @@ pkg_postinst() {
 	elog "Just run 'gpasswd -a <USER> android', then have <USER> re-login."
 	elog "See http://developer.android.com/sdk/adding-components.html for more"
 	elog "information."
-	elog "If you have problems downloading the SDK, see http://code.google.com/p/android/issues/detail?id=4406"
+	elog "If you have problems downloading the SDK, see https://code.google.com/p/android/issues/detail?id=4406"
 	elog "You need to run env-update and source /etc/profile in any open shells"
 	elog "if you get an SWT error."
 }

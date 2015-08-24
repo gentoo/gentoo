@@ -7,7 +7,7 @@ EAPI="2"
 MY_PV=${PV//./_}
 
 DESCRIPTION="Prokaryotic Dynamic Programming Genefinding Algorithm"
-HOMEPAGE="http://prodigal.ornl.gov/ http://code.google.com/p/prodigal/"
+HOMEPAGE="http://prodigal.ornl.gov/ https://code.google.com/p/prodigal/"
 SRC_URI="http://prodigal.googlecode.com/files/prodigal.v${MY_PV}.tar.gz"
 
 LICENSE="GPL-3"

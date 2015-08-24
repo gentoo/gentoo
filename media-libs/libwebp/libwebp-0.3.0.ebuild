@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils multilib-minimal
 
 DESCRIPTION="A lossy image compression format"
-HOMEPAGE="http://code.google.com/p/webp/"
+HOMEPAGE="https://code.google.com/p/webp/"
 SRC_URI="http://webp.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

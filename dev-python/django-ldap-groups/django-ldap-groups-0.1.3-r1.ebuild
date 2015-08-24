@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A reusable application for the Django web framework"
-HOMEPAGE="http://code.google.com/p/django-ldap-groups"
+HOMEPAGE="https://code.google.com/p/django-ldap-groups"
 SRC_URI="http://django-ldap-groups.googlecode.com/files/${P}.tar.gz"
 
 KEYWORDS="amd64 x86"

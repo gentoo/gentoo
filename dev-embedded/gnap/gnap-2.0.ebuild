@@ -5,7 +5,7 @@
 MY_P="${P/gnap/gnap-tools}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="Gentoo-based Network Appliance building system"
-HOMEPAGE="http://embedded.gentoo.org/gnap.xml"
+HOMEPAGE="https://embedded.gentoo.org/gnap.xml"
 
 SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
 	!minimal? ( mirror://gentoo/${PN}-core-${PV}.tar )"

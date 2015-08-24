@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="*-jython"
 inherit distutils
 
 DESCRIPTION="Graphical Python debugger"
-HOMEPAGE="http://winpdb.org/ http://code.google.com/p/winpdb/ https://pypi.python.org/pypi/winpdb"
+HOMEPAGE="http://winpdb.org/ https://code.google.com/p/winpdb/ https://pypi.python.org/pypi/winpdb"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

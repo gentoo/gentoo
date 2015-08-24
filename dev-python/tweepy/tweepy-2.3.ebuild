@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="A Python library for accessing the Twitter API "
-HOMEPAGE="http://tweepy.github.com/"
+HOMEPAGE="https://tweepy.github.com/"
 SRC_URI="https://github.com/tweepy/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="MIT"

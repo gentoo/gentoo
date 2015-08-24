@@ -10,7 +10,7 @@ MY_PN=jsr-305
 
 DESCRIPTION="Reference implementation for JSR 305: Annotations for Software Defect Detection in Java"
 SRC_URI="mirror://gentoo/${MY_PN}-source.tar.gz"
-HOMEPAGE="http://code.google.com/p/jsr-305/"
+HOMEPAGE="https://code.google.com/p/jsr-305/"
 
 LICENSE="BSD"
 SLOT="0"

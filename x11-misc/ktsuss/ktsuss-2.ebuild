@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Graphical version of su written in C and GTK+ 2"
-HOMEPAGE="http://code.google.com/p/ktsuss/"
+HOMEPAGE="https://code.google.com/p/ktsuss/"
 SRC_URI="http://ktsuss.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 MY_P=${PN}-${PV/_beta/b}
 DESCRIPTION="A Command-line ID3 Tag Editor"
-HOMEPAGE="http://muennich.github.com/id3ted/"
+HOMEPAGE="https://muennich.github.com/id3ted/"
 SRC_URI="mirror://github/muennich/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

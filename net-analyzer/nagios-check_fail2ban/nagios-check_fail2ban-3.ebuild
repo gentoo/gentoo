@@ -12,7 +12,7 @@ GITHUB_COMMIT="c554837"
 
 DESCRIPTION="A nagios plugin for checking the fail2ban daemon"
 HOMEPAGE="https://github.com/hollow/check_fail2ban"
-SRC_URI="http://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

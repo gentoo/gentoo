@@ -6,7 +6,7 @@ EAPI=5
 
 MY_P="eselect-emacs-${PV}"
 DESCRIPTION="Manages ctags implementations"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 SRC_URI="https://dev.gentoo.org/~ulm/emacs/${MY_P}.tar.xz"
 
 LICENSE="GPL-2+"

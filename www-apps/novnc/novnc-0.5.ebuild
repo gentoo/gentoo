@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="noVNC is a VNC client implemented using HTML5 technologies"
-HOMEPAGE="http://kanaka.github.com/noVNC/"
+HOMEPAGE="https://kanaka.github.com/noVNC/"
 SRC_URI="https://github.com/kanaka/noVNC/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/noVNC-${PV}"
 

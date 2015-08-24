@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java runtime metadata analysis"
-HOMEPAGE="http://code.google.com/p/reflections/"
+HOMEPAGE="https://code.google.com/p/reflections/"
 SRC_URI="http://search.maven.org/remotecontent?filepath=org/${PN}/${PN}/${PV}/${P}-sources.jar"
 LICENSE="WTFPL-2"
 SLOT="0"

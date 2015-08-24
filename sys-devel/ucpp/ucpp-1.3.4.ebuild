@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A quick and light preprocessor, but anyway fully compliant to C99"
-HOMEPAGE="http://code.google.com/p/ucpp/"
+HOMEPAGE="https://code.google.com/p/ucpp/"
 SRC_URI="http://dev.gentooexperimental.org/~scarabeus/${P}.tar.xz"
 
 LICENSE="BSD"

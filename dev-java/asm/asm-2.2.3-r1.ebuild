@@ -18,7 +18,7 @@ DEPEND=">=virtual/jdk-1.4
 RDEPEND=">=virtual/jre-1.4"
 
 # Needs unpackaged deps.
-# http://bugs.gentoo.org/show_bug.cgi?id=212860
+# https://bugs.gentoo.org/show_bug.cgi?id=212860
 RESTRICT="test"
 
 src_unpack() {

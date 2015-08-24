@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ssl(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python FTP server library"
-HOMEPAGE="http://code.google.com/p/pyftpdlib/ https://pypi.python.org/pypi/pyftpdlib"
+HOMEPAGE="https://code.google.com/p/pyftpdlib/ https://pypi.python.org/pypi/pyftpdlib"
 SRC_URI="http://pyftpdlib.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}"
 DISTUTILS_NO_PARALLEL_BUILD=1
 
 python_prepare_all() {
-	# http://code.google.com/p/pyftpdlib/issues/detail?id=292&thanks=292&ts=1400308829
+	# https://code.google.com/p/pyftpdlib/issues/detail?id=292&thanks=292&ts=1400308829
 	# Disable failing test
 	sed -e 's:test_on_incomplete_file_received:_&:' -i test/test_ftpd.py || die
 	distutils-r1_python_prepare_all

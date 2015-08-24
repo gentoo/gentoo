@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to Graphviz's Dot language"
-HOMEPAGE="http://code.google.com/p/pydot/ https://pypi.python.org/pypi/pydot"
+HOMEPAGE="https://code.google.com/p/pydot/ https://pypi.python.org/pypi/pydot"
 SRC_URI="http://pydot.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"

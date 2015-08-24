@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils games
 
 DESCRIPTION="A falling block game similar to Blockout"
-HOMEPAGE="http://packages.gentoo.org/package/games-puzzle/shaaft"
+HOMEPAGE="https://packages.gentoo.org/package/games-puzzle/shaaft"
 SRC_URI="mirror://sourceforge/criticalmass/${P/s/S}.tar.bz2"
 
 LICENSE="GPL-2"

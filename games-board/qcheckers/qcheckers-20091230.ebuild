@@ -8,7 +8,7 @@ inherit eutils qt4-r2 games
 MY_PN=${PN/qc/QC}
 
 DESCRIPTION="Qt4 based checkers game"
-HOMEPAGE="http://code.google.com/p/qcheckers/"
+HOMEPAGE="https://code.google.com/p/qcheckers/"
 SRC_URI="http://qcheckers.googlecode.com/files/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-3"

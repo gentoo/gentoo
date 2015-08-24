@@ -63,7 +63,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# http://bugs.gentoo.org/402279
+	# https://bugs.gentoo.org/402279
 	export CUSTOM_PROCPS_NAME=procps
 	export CUSTOM_PROCPS_LIBS="$($(tc-getPKG_CONFIG) --libs libprocps)"
 

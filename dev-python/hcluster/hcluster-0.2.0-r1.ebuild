@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python hierarchical clustering package for Scipy"
-HOMEPAGE="http://code.google.com/p/scipy-cluster/ https://pypi.python.org/pypi/hcluster"
+HOMEPAGE="https://code.google.com/p/scipy-cluster/ https://pypi.python.org/pypi/hcluster"
 SRC_URI="http://scipy-cluster.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

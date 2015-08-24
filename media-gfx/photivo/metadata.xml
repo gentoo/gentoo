@@ -8,6 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">photivo</remote-id>
-		<bugs-to>http://code.google.com/p/photivo/issues/list</bugs-to>
+		<bugs-to>https://code.google.com/p/photivo/issues/list</bugs-to>
 	</upstream>
 </pkgmetadata>

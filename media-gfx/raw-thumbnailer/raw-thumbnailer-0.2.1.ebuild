@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="A lightweight and fast raw image thumbnailer"
-HOMEPAGE="http://code.google.com/p/raw-thumbnailer"
+HOMEPAGE="https://code.google.com/p/raw-thumbnailer"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

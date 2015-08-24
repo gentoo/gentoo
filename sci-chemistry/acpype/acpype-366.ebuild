@@ -8,7 +8,7 @@ inherit eutils python
 PYTHON_DEPEND="2:2.5"
 
 DESCRIPTION="AnteChamber PYthon Parser interfacE"
-HOMEPAGE="http://code.google.com/p/acpype/"
+HOMEPAGE="https://code.google.com/p/acpype/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-3"

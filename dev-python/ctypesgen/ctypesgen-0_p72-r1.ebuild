@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python wrapper generator for ctypes"
-HOMEPAGE="http://code.google.com/p/ctypesgen/"
+HOMEPAGE="https://code.google.com/p/ctypesgen/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD"

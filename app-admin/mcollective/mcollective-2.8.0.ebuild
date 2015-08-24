@@ -55,5 +55,5 @@ pkg_postinst() {
 	einfo "is a new installation"
 	einfo
 	einfo "[1] http://activemq.apache.org/"
-	einfo "[2] http://code.google.com/p/mcollective/wiki/GettingStarted"
+	einfo "[2] https://code.google.com/p/mcollective/wiki/GettingStarted"
 }

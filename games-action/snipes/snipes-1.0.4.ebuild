@@ -6,8 +6,8 @@ EAPI=5
 inherit toolchain-funcs eutils games
 
 DESCRIPTION="2D scrolling shooter, resembles the old DOS game of same name"
-HOMEPAGE="http://cyp.github.com/snipes/"
-SRC_URI="http://cyp.github.com/snipes/${P}.tar.gz"
+HOMEPAGE="https://cyp.github.com/snipes/"
+SRC_URI="https://cyp.github.com/snipes/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

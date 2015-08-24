@@ -11,7 +11,7 @@ EAPI="4"
 inherit flag-o-matic
 
 DESCRIPTION="Stressful Application Test"
-HOMEPAGE="http://code.google.com/p/stressapptest/"
+HOMEPAGE="https://code.google.com/p/stressapptest/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="Apache-2.0"

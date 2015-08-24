@@ -9,8 +9,8 @@ inherit autotools eutils flag-o-matic multilib toolchain-funcs
 MY_P="tDOM-${PV}"
 
 DESCRIPTION="A XML/DOM/XPath/XSLT Implementation for Tcl"
-HOMEPAGE="http://tdom.github.com/"
-#SRC_URI="http://cloud.github.com/downloads/tDOM/${PN}/${MY_P}.tgz"
+HOMEPAGE="https://tdom.github.com/"
+#SRC_URI="https://cloud.github.com/downloads/tDOM/${PN}/${MY_P}.tgz"
 SRC_URI="mirror://github/tDOM/${PN}/${MY_P}.tgz"
 
 LICENSE="MPL-1.1"

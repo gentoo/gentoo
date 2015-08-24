@@ -17,7 +17,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby extension for programmatically loading dynamic libraries"
-HOMEPAGE="http://wiki.github.com/ffi/ffi"
+HOMEPAGE="https://wiki.github.com/ffi/ffi"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 

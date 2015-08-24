@@ -7,7 +7,7 @@ EAPI=5
 inherit fdo-mime gnome2-utils linux-info
 
 DESCRIPTION="A multi-panel tabbed file manager"
-HOMEPAGE="http://ignorantguru.github.com/spacefm/"
+HOMEPAGE="https://ignorantguru.github.com/spacefm/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"

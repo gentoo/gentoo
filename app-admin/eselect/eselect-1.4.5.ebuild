@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils bash-completion-r1
 
 DESCRIPTION="Gentoo's multi-purpose configuration and management tool"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Eselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
 SRC_URI="https://dev.gentoo.org/~ulm/eselect/${P}.tar.xz"
 
 LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-3.0 )"

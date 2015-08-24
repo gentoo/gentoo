@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils eutils toolchain-funcs fortran-2
 
 DESCRIPTION="Core libraries for the Common Astronomy Software Applications"
-HOMEPAGE="http://code.google.com/p/casacore/"
+HOMEPAGE="https://code.google.com/p/casacore/"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"

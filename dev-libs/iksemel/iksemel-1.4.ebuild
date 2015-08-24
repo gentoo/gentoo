@@ -7,7 +7,7 @@ EAPI="2"
 inherit autotools eutils
 
 DESCRIPTION="eXtensible Markup Language parser library designed for Jabber applications"
-HOMEPAGE="http://code.google.com/p/iksemel"
+HOMEPAGE="https://code.google.com/p/iksemel"
 SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

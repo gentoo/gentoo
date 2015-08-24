@@ -9,8 +9,8 @@ inherit check-reqs
 
 DESCRIPTION="Open Handset Alliance's Android NDK (Native Dev Kit)"
 HOMEPAGE="http://developer.android.com/sdk/ndk/"
-SRC_URI="x86? ( http://dl.google.com/android/ndk/${PN}-r${PV}-linux-x86.bin -> ${P}-x86.7z )
-	amd64? ( http://dl.google.com/android/ndk/${PN}-r${PV}-linux-x86_64.bin -> ${P}-amd64.7z )"
+SRC_URI="x86? ( https://dl.google.com/android/ndk/${PN}-r${PV}-linux-x86.bin -> ${P}-x86.7z )
+	amd64? ( https://dl.google.com/android/ndk/${PN}-r${PV}-linux-x86_64.bin -> ${P}-amd64.7z )"
 
 LICENSE="android"
 SLOT="0"

@@ -10,7 +10,7 @@ MY_PN="spatialindex-src"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="General framework for developing spatial indices"
-HOMEPAGE="http://libspatialindex.github.com/"
+HOMEPAGE="https://libspatialindex.github.com/"
 SRC_URI="http://download.osgeo.org/libspatialindex/${MY_P}.tar.bz2"
 LICENSE="MIT"
 

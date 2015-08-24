@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Rime Input Method Engine for IBus Framework"
-HOMEPAGE="http://code.google.com/p/rimeime/"
+HOMEPAGE="https://code.google.com/p/rimeime/"
 SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
 
 LICENSE="GPL-3"

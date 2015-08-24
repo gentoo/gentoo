@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit toolchain-funcs python-any-r1
 
 DESCRIPTION="Intel SPMD Program Compiler"
-HOMEPAGE="http://ispc.github.com/"
+HOMEPAGE="https://ispc.github.com/"
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3

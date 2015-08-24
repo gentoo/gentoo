@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGES README.rdoc"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Approximate Matching Extension for Ruby"
-HOMEPAGE="http://flori.github.com/amatch/"
+HOMEPAGE="https://flori.github.com/amatch/"
 
 LICENSE="GPL-2"
 SLOT="0"

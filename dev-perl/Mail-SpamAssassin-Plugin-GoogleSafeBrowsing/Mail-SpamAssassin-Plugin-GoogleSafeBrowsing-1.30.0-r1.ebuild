@@ -40,7 +40,7 @@ pkg_postinst() {
 	fi
 	elog "To use this package:"
 	elog "1. You MUST apply for a free apikey at:"
-	elog "   http://code.google.com/apis/safebrowsing/key_signup.html"
+	elog "   https://code.google.com/apis/safebrowsing/key_signup.html"
 	elog "2. Place the key into /etc/mail/spamassassin/24_google_safebrowsing.cf"
 	elog "3. Manually run the script /usr/sbin/update_google_safebrowsing.sh"
 	elog "4. Enable the plugin by uncommenting the loadplugin entry in"

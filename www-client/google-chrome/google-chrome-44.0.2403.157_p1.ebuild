@@ -11,7 +11,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he
 inherit readme.gentoo chromium eutils multilib pax-utils unpacker
 
 DESCRIPTION="The web browser from Google"
-HOMEPAGE="http://www.google.com/chrome"
+HOMEPAGE="https://www.google.com/chrome"
 
 if [[ ${PN} == google-chrome ]]; then
 	MY_PN=${PN}-stable
@@ -23,10 +23,10 @@ MY_P="${MY_PN}_${PV/_p/-}"
 
 SRC_URI="
 	amd64? (
-		http://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb
+		https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb
 	)
 	x86? (
-		http://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_i386.deb
+		https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_i386.deb
 	)
 "
 

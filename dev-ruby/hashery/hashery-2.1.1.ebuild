@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="The Hashery is a tight collection of Hash-like classes"
-HOMEPAGE="http://rubyworks.github.com/hashery"
+HOMEPAGE="https://rubyworks.github.com/hashery"
 
 LICENSE="BSD-2"
 SLOT="0"

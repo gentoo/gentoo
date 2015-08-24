@@ -5,7 +5,7 @@
 inherit toolchain-funcs
 
 DESCRIPTION="Run a command with a new system hostname"
-HOMEPAGE="http://code.google.com/p/chname"
+HOMEPAGE="https://code.google.com/p/chname"
 SRC_URI="http://chname.googlecode.com/files/chname-1.0.tar.gz"
 
 LICENSE="GPL-2"

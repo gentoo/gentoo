@@ -11,7 +11,7 @@ PY3_P=${PN}py3k-${PV}
 
 DESCRIPTION="The new features in unittest for Python 2.7 backported to Python 2.4+"
 HOMEPAGE="https://pypi.python.org/pypi/unittest2
-	https://pypi.python.org/pypi/unittest2py3k http://code.google.com/p/unittest-ext/"
+	https://pypi.python.org/pypi/unittest2py3k https://code.google.com/p/unittest-ext/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	mirror://pypi/${PN:0:1}/${PN}/${PY3_P}.tar.gz"
 

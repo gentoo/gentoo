@@ -9,7 +9,7 @@ PYTHON_MULTIPLE_ABI=1
 inherit distutils-r1 git-2
 
 DESCRIPTION="python library for reading and writing collada documents"
-HOMEPAGE="http://pycollada.github.com/"
+HOMEPAGE="https://pycollada.github.com/"
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="BSD"

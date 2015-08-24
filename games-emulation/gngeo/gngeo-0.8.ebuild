@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils autotools games
 
 DESCRIPTION="A NeoGeo emulator"
-HOMEPAGE="http://code.google.com/p/gngeo/"
+HOMEPAGE="https://code.google.com/p/gngeo/"
 SRC_URI="http://gngeo.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

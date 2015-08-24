@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Generic tagging application for Django"
-HOMEPAGE="http://code.google.com/p/django-tagging/"
+HOMEPAGE="https://code.google.com/p/django-tagging/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

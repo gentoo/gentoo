@@ -10,7 +10,7 @@ PYTHON_REQ_USE="ncurses"
 inherit distutils-r1 eutils
 
 DESCRIPTION="Last File Manager is a powerful file manager for the console"
-HOMEPAGE="http://code.google.com/p/lfm/"
+HOMEPAGE="https://code.google.com/p/lfm/"
 SRC_URI="http://lfm.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

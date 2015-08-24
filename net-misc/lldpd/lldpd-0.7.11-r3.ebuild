@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils user systemd bash-completion-r1 autotools
 
 DESCRIPTION="Implementation of IEEE 802.1ab (LLDP)"
-HOMEPAGE="http://vincentbernat.github.com/lldpd/"
+HOMEPAGE="https://vincentbernat.github.com/lldpd/"
 SRC_URI="http://media.luffy.cx/files/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"

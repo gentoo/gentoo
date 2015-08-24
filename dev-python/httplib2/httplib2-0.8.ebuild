@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A comprehensive HTTP client library"
-HOMEPAGE="http://code.google.com/p/httplib2/ https://pypi.python.org/pypi/httplib2"
+HOMEPAGE="https://code.google.com/p/httplib2/ https://pypi.python.org/pypi/httplib2"
 SRC_URI="http://httplib2.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"

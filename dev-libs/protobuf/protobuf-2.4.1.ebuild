@@ -11,7 +11,7 @@ DISTUTILS_SRC_TEST="setup.py"
 inherit autotools eutils distutils java-pkg-opt-2 elisp-common
 
 DESCRIPTION="Google's Protocol Buffers -- an efficient method of encoding structured data"
-HOMEPAGE="http://code.google.com/p/protobuf/"
+HOMEPAGE="https://code.google.com/p/protobuf/"
 SRC_URI="http://protobuf.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"

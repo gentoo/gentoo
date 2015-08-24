@@ -10,7 +10,7 @@ DISTUTILS_SINGLE_IMPL=true
 inherit distutils-r1 readme.gentoo virtualx
 
 DESCRIPTION="The highly caffeinated git GUI"
-HOMEPAGE="http://git-cola.github.com/"
+HOMEPAGE="https://git-cola.github.com/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

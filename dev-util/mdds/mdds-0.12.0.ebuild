@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A collection of multi-dimensional data structure and indexing algorithm"
-HOMEPAGE="http://code.google.com/p/multidimalgorithm/"
+HOMEPAGE="https://code.google.com/p/multidimalgorithm/"
 SRC_URI="http://kohei.us/files/${PN}/src/${P/-/_}.tar.bz2"
 
 LICENSE="MIT"

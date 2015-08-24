@@ -33,7 +33,7 @@ src_configure() {
 	econf \
 		--with-packager="Gentoo" \
 		--with-packager-version="${PVR}" \
-		--with-packager-bug-reports="http://bugs.gentoo.org/" \
+		--with-packager-bug-reports="https://bugs.gentoo.org/" \
 		--program-prefix=${program_prefix} \
 		$(use_enable nls) \
 		$(use_with selinux) \

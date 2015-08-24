@@ -8,22 +8,22 @@ inherit eutils multilib nsplugins unpacker
 
 if [ "${PV}" != "9999" ]; then
 	DEB_PATCH="1"
-	#http://dl.google.com/linux/talkplugin/deb/dists/stable/main/binary-i386/Packages
-	MY_URL="http://dl.google.com/linux/talkplugin/deb/pool/main/${P:0:1}/${PN}"
+	#https://dl.google.com/linux/talkplugin/deb/dists/stable/main/binary-i386/Packages
+	MY_URL="https://dl.google.com/linux/talkplugin/deb/pool/main/${P:0:1}/${PN}"
 	MY_PKG="${PN}_${PV}-${DEB_PATCH}_i386.deb"
 	SRC_URI="x86? ( ${MY_URL}/${MY_PKG} )
 		amd64? ( ${MY_URL}/${MY_PKG/i386/amd64} )"
 	KEYWORDS="-* ~amd64 ~x86"
 else
 	inherit cvs #hack to make it part of @live-rebuild
-	MY_URL="http://dl.google.com/linux/direct"
+	MY_URL="https://dl.google.com/linux/direct"
 	MY_PKG="${PN}_current_i386.deb"
 	SRC_URI=""
 fi
 
 DESCRIPTION="Video chat browser plug-in for Google Talk"
 
-HOMEPAGE="http://www.google.com/chat/video"
+HOMEPAGE="https://www.google.com/chat/video"
 IUSE="libnotify selinux"
 SLOT="0"
 
@@ -76,12 +76,12 @@ pkg_nofetch() {
 		elog "This ebuild is intended for users who already downloaded it previously and have problems"
 		elog "with ${PV}+. If you can get the distfile from e.g. another computer of yours, or search"
 		use amd64 && MY_PKG="${MY_PKG/i386/amd64}"
-		elog "it with google: http://www.google.com/search?q=intitle:%22index+of%22+${MY_PKG}"
+		elog "it with google: https://www.google.com/search?q=intitle:%22index+of%22+${MY_PKG}"
 		elog "and copy the file ${MY_PKG} to ${DISTDIR}."
 	else
 		einfo "This version is no longer available from Google."
 		einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."
-		einfo "Please file a version bump bug on http://bugs.gentoo.org (search	existing bugs for ${PN} first!)."
+		einfo "Please file a version bump bug on https://bugs.gentoo.org (search	existing bugs for ${PN} first!)."
 	fi
 }
 

@@ -45,6 +45,6 @@ src_install() {
 	dodoc AUTHORS BUGS ChangeLog
 
 	# Remove libwmsnd.a and wmsnd.h because they are unused, see:
-	# http://qa-reports.gentoo.org/output/genrdeps/dindex/media-sound/wmsound
+	# https://qa-reports.gentoo.org/output/genrdeps/dindex/media-sound/wmsound
 	rm -rf "${ED}"/usr/{include,lib*}
 }

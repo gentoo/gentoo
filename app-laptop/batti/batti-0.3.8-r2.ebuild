@@ -11,7 +11,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 inherit python distutils gnome2-utils eutils
 
 DESCRIPTION="A upower based battery monitor for the system tray, similar to batterymon"
-HOMEPAGE="http://code.google.com/p/batti-gtk/"
+HOMEPAGE="https://code.google.com/p/batti-gtk/"
 SRC_URI="http://batti-gtk.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

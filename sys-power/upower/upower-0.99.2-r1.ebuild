@@ -75,7 +75,7 @@ src_configure() {
 src_install() {
 	default
 
-	# http://bugs.gentoo.org/487400
+	# https://bugs.gentoo.org/487400
 	insinto /usr/share/doc/${PF}/html/UPower
 	doins doc/html/*
 	dosym /usr/share/doc/${PF}/html/UPower /usr/share/gtk-doc/html/UPower

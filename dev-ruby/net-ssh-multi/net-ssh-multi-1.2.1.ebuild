@@ -13,7 +13,7 @@ RUBY_FAKEGEM_TASK_TEST="none"
 inherit ruby-fakegem
 
 DESCRIPTION="A library for controlling multiple Net::SSH connections via a single interface"
-HOMEPAGE="http://net-ssh.github.com/net-ssh-multi"
+HOMEPAGE="https://net-ssh.github.com/net-ssh-multi"
 SRC_URI="https://github.com/net-ssh/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="GPL-2"

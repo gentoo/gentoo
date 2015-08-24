@@ -22,7 +22,7 @@
 		</maintainer>
 		<changelog>https://github.com/pnegre/python-whiteboard/commits/master</changelog>
 		<doc>https://github.com/pnegre/python-whiteboard/wiki</doc>
-		<bugs-to>http://groups.google.com/group/python-whiteboard</bugs-to>
+		<bugs-to>https://groups.google.com/group/python-whiteboard</bugs-to>
 		<remote-id type="sourceforge">git://github.com/pnegre/python-whiteboard.git</remote-id>
 		<remote-id type="github">pnegre/python-whiteboard</remote-id>
 	</upstream>

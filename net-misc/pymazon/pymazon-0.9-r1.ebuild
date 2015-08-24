@@ -8,7 +8,7 @@ inherit eutils distutils fdo-mime
 
 MY_P="Pymazon-${PV}"
 DESCRIPTION="Downloader for the Amazon.com MP3 music store"
-HOMEPAGE="http://code.google.com/p/pymazon/"
+HOMEPAGE="https://code.google.com/p/pymazon/"
 SRC_URI="http://pymazon.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

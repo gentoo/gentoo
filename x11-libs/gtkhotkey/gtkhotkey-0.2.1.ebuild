@@ -10,7 +10,7 @@ MY_CRV=$(get_version_component_range 1-2)
 
 RESTRICT="test"
 # Tests try to access live filesystem
-# See http://bugs.gentoo.org/show_bug.cgi?id=259052#c3
+# See https://bugs.gentoo.org/show_bug.cgi?id=259052#c3
 
 DESCRIPTION="Cross platform library for using desktop wide hotkeys"
 HOMEPAGE="http://launchpad.net/gtkhotkey"

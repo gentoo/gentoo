@@ -12,7 +12,7 @@ MY_PN=${PN}-all
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python library for arbitrary-precision floating-point arithmetic"
-HOMEPAGE="http://code.google.com/p/mpmath"
+HOMEPAGE="https://code.google.com/p/mpmath"
 SRC_URI="mirror://pypi/m/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

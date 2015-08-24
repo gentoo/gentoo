@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Dog is better than cat"
 # the best HOMEPAGE we have.
-HOMEPAGE="http://packages.gentoo.org/package/sys-apps/dog"
+HOMEPAGE="https://packages.gentoo.org/package/sys-apps/dog"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

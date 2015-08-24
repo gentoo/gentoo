@@ -9,7 +9,7 @@ inherit autotools
 MY_P=${P/ams/amS}
 
 DESCRIPTION="Virtual analogue synthesizer"
-HOMEPAGE="http://code.google.com/p/amsynth/"
+HOMEPAGE="https://code.google.com/p/amsynth/"
 SRC_URI="http://amsynth.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

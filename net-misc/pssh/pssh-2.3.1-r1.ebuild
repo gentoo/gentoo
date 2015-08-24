@@ -10,7 +10,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="PSSH provides parallel versions of OpenSSH and related tools"
-HOMEPAGE="http://code.google.com/p/parallel-ssh/"
+HOMEPAGE="https://code.google.com/p/parallel-ssh/"
 SRC_URI="http://parallel-ssh.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

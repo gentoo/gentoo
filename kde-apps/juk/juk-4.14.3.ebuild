@@ -18,7 +18,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	# http://bugs.gentoo.org/410551 for disabling deprecated TunePimp support
+	# https://bugs.gentoo.org/410551 for disabling deprecated TunePimp support
 	local mycmakeargs=(
 		-DWITH_TunePimp=OFF
 	)

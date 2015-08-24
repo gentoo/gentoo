@@ -6,7 +6,7 @@ EAPI=5
 inherit games
 
 DESCRIPTION="Space invaders clone, using ncurses library"
-HOMEPAGE="http://packages.gentoo.org/package/games-arcade/ascii-invaders"
+HOMEPAGE="https://packages.gentoo.org/package/games-arcade/ascii-invaders"
 SRC_URI="mirror://gentoo/invaders${PV}.tgz"
 
 LICENSE="GPL-2"

@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P=${P}-4.04
 
 DESCRIPTION="Python libev interface, an event loop"
-HOMEPAGE="http://code.google.com/p/pyev/
+HOMEPAGE="https://code.google.com/p/pyev/
 	http://pythonhosted.org/pyev/"
 SRC_URI="mirror://pypi/p/pyev/${MY_P}.tar.gz"
 

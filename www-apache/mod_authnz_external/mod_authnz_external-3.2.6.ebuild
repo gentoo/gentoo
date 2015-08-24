@@ -5,7 +5,7 @@
 inherit eutils apache-module
 
 DESCRIPTION="An Apache2 authentication DSO using external programs"
-HOMEPAGE="http://code.google.com/p/mod-auth-external/"
+HOMEPAGE="https://code.google.com/p/mod-auth-external/"
 SRC_URI="http://mod-auth-external.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-1.1"

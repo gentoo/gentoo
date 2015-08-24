@@ -5,8 +5,8 @@
 EAPI=5
 
 DESCRIPTION="Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings"
-HOMEPAGE="http://sites.google.com/site/e3editor/"
-SRC_URI="http://sites.google.com/site/e3editor/Home/${P}.tgz"
+HOMEPAGE="https://sites.google.com/site/e3editor/"
+SRC_URI="https://sites.google.com/site/e3editor/Home/${P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"

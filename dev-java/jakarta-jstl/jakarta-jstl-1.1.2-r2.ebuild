@@ -30,7 +30,7 @@ DEPEND=">=virtual/jdk-1.5
 S="${WORKDIR}/${MY_P}-src/standard"
 
 # Needs cactus packaged
-# http://bugs.gentoo.org/show_bug.cgi?id=212890
+# https://bugs.gentoo.org/show_bug.cgi?id=212890
 RESTRICT="test"
 
 java_prepare() {

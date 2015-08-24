@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Live Syncing (Mirror) Daemon"
-HOMEPAGE="http://code.google.com/p/lsyncd/"
+HOMEPAGE="https://code.google.com/p/lsyncd/"
 SRC_URI="http://lsyncd.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools-utils python-r1 virtualx
 
 DESCRIPTION="Python bindings for the WebKit GTK+ port"
-HOMEPAGE="http://code.google.com/p/pywebkitgtk/"
+HOMEPAGE="https://code.google.com/p/pywebkitgtk/"
 SRC_URI="http://pywebkitgtk.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2"

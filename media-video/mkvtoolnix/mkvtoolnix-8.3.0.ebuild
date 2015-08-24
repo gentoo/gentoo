@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_pretend() {
-	# http://bugs.gentoo.org/419257
+	# https://bugs.gentoo.org/419257
 	local ver=4.6
 	local msg="You need at least GCC ${ver}.x for C++11 range-based 'for' and nullptr support."
 	if ! version_is_at_least ${ver} $(gcc-version); then

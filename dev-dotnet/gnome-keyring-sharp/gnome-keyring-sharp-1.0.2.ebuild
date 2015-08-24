@@ -32,7 +32,7 @@ src_configure() {
 
 src_compile() {
 	# This dies without telling in docs with anything not -j1
-	# CSC=gmcs needed for http://bugs.gentoo.org/show_bug.cgi?id=250069
+	# CSC=gmcs needed for https://bugs.gentoo.org/show_bug.cgi?id=250069
 	emake -j1 CSC=gmcs || die "emake failed"
 }
 

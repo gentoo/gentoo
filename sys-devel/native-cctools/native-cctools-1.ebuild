@@ -7,7 +7,7 @@ EAPI="3"
 inherit eutils
 
 DESCRIPTION="Host OS native assembler as and static linker ld"
-HOMEPAGE="http://prefix.gentoo.org/"
+HOMEPAGE="https://prefix.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2" # actually, we don't know, the wrapper is

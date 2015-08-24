@@ -10,7 +10,7 @@ MY_PV=${PV//./_}
 MY_PVR="${MY_PV}-r43"
 
 DESCRIPTION="Simplified Java NIO asynchronous sockets"
-HOMEPAGE="http://code.google.com/p/naga/"
+HOMEPAGE="https://code.google.com/p/naga/"
 
 LICENSE="MIT"
 SLOT="0"

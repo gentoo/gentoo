@@ -9,7 +9,7 @@ inherit git-r3 toolchain-funcs
 EGIT_REPO_URI="https://bitbucket.org/portix/dwb.git"
 
 DESCRIPTION="Dynamic web browser based on WebKit and GTK+"
-HOMEPAGE="http://portix.bitbucket.org/dwb/"
+HOMEPAGE="https://portix.bitbucket.org/dwb/"
 
 LICENSE="GPL-3"
 SLOT="0"

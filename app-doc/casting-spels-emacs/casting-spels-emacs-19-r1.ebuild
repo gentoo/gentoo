@@ -7,7 +7,7 @@ EAPI=3
 inherit elisp-common eutils
 
 DESCRIPTION="Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)"
-HOMEPAGE="http://code.google.com/p/casting-spels-emacs/"
+HOMEPAGE="https://code.google.com/p/casting-spels-emacs/"
 SRC_URI="http://casting-spels-emacs.googlecode.com/files/${PN}-v${PV}.zip"
 
 LICENSE="GPL-2 FDL-1.2"

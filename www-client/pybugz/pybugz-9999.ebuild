@@ -19,7 +19,7 @@ fi
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Command line interface to (Gentoo) Bugzilla"
-HOMEPAGE="http://www.github.com/williamh/pybugz"
+HOMEPAGE="https://www.github.com/williamh/pybugz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="zsh-completion"

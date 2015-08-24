@@ -60,7 +60,7 @@ multilib_src_configure() {
 		x86_64*) export AS=yasm;;
 	esac
 
-	# http://bugs.gentoo.org/show_bug.cgi?id=384585
+	# https://bugs.gentoo.org/show_bug.cgi?id=384585
 	# https://bugs.gentoo.org/show_bug.cgi?id=465988
 	# copied from php-pear-r1.eclass
 	addpredict /usr/share/snmp/mibs/.index

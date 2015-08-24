@@ -31,7 +31,7 @@ src_prepare() {
 		-e "/LIBDIR.*frei0r-1/s:lib:$(get_libdir):" \
 		${f} || die
 
-	# http://bugs.gentoo.org/418243
+	# https://bugs.gentoo.org/418243
 	sed -i \
 		-e '/set.*CMAKE_C_FLAGS/s:"): ${CMAKE_C_FLAGS}&:' \
 		src/filter/*/${f} || die

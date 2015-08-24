@@ -21,7 +21,7 @@ else
 fi
 
 DESCRIPTION="Set of graphical tools for Mercurial"
-HOMEPAGE="http://tortoisehg.bitbucket.org"
+HOMEPAGE="https://tortoisehg.bitbucket.org"
 
 LICENSE="GPL-2"
 SLOT="0"

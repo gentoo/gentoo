@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Manage contributed bash-completion scripts"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Eselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
 SRC_URI="mirror://gentoo/eselect-${PV}.tar.xz"
 
 LICENSE="GPL-2+"

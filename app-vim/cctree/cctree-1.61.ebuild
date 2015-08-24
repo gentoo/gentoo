@@ -7,7 +7,7 @@ EAPI=4
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: Cscope based source-code browser and code flow analysis tool"
-HOMEPAGE="http://sites.google.com/site/vimcctree/"
+HOMEPAGE="https://sites.google.com/site/vimcctree/"
 LICENSE="bufexplorer.vim"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

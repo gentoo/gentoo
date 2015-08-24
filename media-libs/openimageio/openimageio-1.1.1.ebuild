@@ -9,7 +9,7 @@ PYTHON_DEPEND="python? 2:2.7"
 inherit cmake-utils eutils multilib python vcs-snapshot
 
 DESCRIPTION="A library for reading and writing images"
-HOMEPAGE="http://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
+HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
 SRC_URI="https://github.com/OpenImageIO/oiio/tarball/Release-${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"

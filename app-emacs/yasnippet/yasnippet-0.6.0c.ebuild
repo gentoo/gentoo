@@ -5,7 +5,7 @@
 inherit elisp
 
 DESCRIPTION="Yet another snippet extension for Emacs"
-HOMEPAGE="http://code.google.com/p/yasnippet/"
+HOMEPAGE="https://code.google.com/p/yasnippet/"
 SRC_URI="http://yasnippet.googlecode.com/files/${P}.tar.bz2
 	doc? ( http://yasnippet.googlecode.com/files/${PN}-doc-${PV}.tar.bz2 )"
 

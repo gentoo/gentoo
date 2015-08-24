@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to The Echo Nest APIs"
-HOMEPAGE="http://echonest.github.com/pyechonest/"
+HOMEPAGE="https://echonest.github.com/pyechonest/"
 SRC_URI="https://github.com/echonest/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

@@ -5,7 +5,7 @@
 inherit base games
 
 DESCRIPTION="Open-source port of the DOS game Tyrian, vertical scrolling shooter"
-HOMEPAGE="http://code.google.com/p/opentyrian/"
+HOMEPAGE="https://code.google.com/p/opentyrian/"
 SRC_URI="http://darklomax.org/tyrian/tyrian21.zip
 	 http://www.camanis.net/${PN}/releases/${P}-src.tar.gz"
 

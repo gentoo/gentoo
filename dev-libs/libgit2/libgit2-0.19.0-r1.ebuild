@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils multilib
 
 DESCRIPTION="A linkable library for Git"
-HOMEPAGE="http://libgit2.github.com/"
+HOMEPAGE="https://libgit2.github.com/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2-with-linking-exception"

@@ -7,10 +7,10 @@ EAPI=5
 inherit git-r3
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git
-	http://anongit.gentoo.org/git/proj/${PN}.git"
+	https://anongit.gentoo.org/git/proj/${PN}.git"
 
 DESCRIPTION="Gentoo Package Manager Specification (draft)"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:PMS"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:PMS"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="live"

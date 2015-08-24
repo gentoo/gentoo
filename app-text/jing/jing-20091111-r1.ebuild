@@ -44,7 +44,7 @@ src_unpack() {
 	popd >/dev/null
 
 	# get the resourses from prebuilt jar
-	# http://code.google.com/p/jing-trang/issues/detail?id=84
+	# https://code.google.com/p/jing-trang/issues/detail?id=84
 	mkdir -p "${S}"/target/classes || die
 	pushd "${S}"/target/classes >/dev/null || die
 		unpack ./../../../bin/${PN}.jar

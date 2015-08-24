@@ -10,7 +10,7 @@ EGIT_BRANCH="next"
 inherit fdo-mime git-2 gnome2-utils linux-info
 
 DESCRIPTION="A multi-panel tabbed file manager"
-HOMEPAGE="http://ignorantguru.github.com/spacefm/"
+HOMEPAGE="https://ignorantguru.github.com/spacefm/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

@@ -6,8 +6,8 @@ inherit font
 
 MY_P="KanjiStrokeOrders_v${PV}"
 DESCRIPTION="font to view stroke order diagrams for Kanji, Kana and etc"
-HOMEPAGE="http://sites.google.com/site/nihilistorguk/"
-SRC_URI="http://sites.google.com/site/nihilistorguk/Home/${MY_P}.zip"
+HOMEPAGE="https://sites.google.com/site/nihilistorguk/"
+SRC_URI="https://sites.google.com/site/nihilistorguk/Home/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

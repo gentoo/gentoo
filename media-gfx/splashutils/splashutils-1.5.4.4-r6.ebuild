@@ -200,7 +200,7 @@ pkg_postinst() {
 		elog "devfs or a static /dev tree might work, but are generally discouraged and"
 		elog "not supported. If you decide to switch to udev, you might want to have a"
 		elog "look at 'The Gentoo udev Guide', which can be found at"
-		elog "  http://wiki.gentoo.org/wiki/Udev"
+		elog "  https://wiki.gentoo.org/wiki/Udev"
 		elog ""
 	fi
 

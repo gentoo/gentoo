@@ -7,7 +7,7 @@ EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="Utilities to assist running batch processing jobs"
-HOMEPAGE="http://code.google.com/p/cronutils/"
+HOMEPAGE="https://code.google.com/p/cronutils/"
 SRC_URI="http://cronutils.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

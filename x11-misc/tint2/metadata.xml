@@ -12,7 +12,7 @@
 	<longdescription lang="en">tint2 is a simple panel/taskbar intentionally made for 
 		<pkg>
 			openbox</pkg>3, but should also work with other window managers.
-		It's based on ttm code http://code.google.com/p/ttm/.
+		It's based on ttm code https://code.google.com/p/ttm/.
 		The goal is to keep a clean and unintrusive look with code lightweight and compliance with freedesktop specifications.</longdescription>
 	<upstream>
 		<remote-id type="google-code">tint2</remote-id>

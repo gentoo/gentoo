@@ -71,7 +71,7 @@ check_old_modules() {
 		eerror "that are not built or supported anymore:"
 		eerror "pam_pwdb, pam_console"
 		eerror "If you are in real need for these modules, please contact the maintainers"
-		eerror "of PAM through http://bugs.gentoo.org/ providing information about its"
+		eerror "of PAM through https://bugs.gentoo.org/ providing information about its"
 		eerror "use cases."
 		eerror "Please also make sure to read the PAM Upgrade guide at the following URL:"
 		eerror "  https://www.gentoo.org/proj/en/base/pam/upgrade-0.99.xml"

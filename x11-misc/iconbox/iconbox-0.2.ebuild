@@ -7,7 +7,7 @@ EAPI=4
 MY_P=${P/-/_}
 
 DESCRIPTION="App for placing icons in a menu which auto-hides"
-HOMEPAGE="http://packages.gentoo.org/"
+HOMEPAGE="https://packages.gentoo.org/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

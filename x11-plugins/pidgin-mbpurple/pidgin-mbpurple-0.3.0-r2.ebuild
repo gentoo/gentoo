@@ -7,7 +7,7 @@ EAPI=2
 inherit base toolchain-funcs
 
 DESCRIPTION="Libpurple (Pidgin) plug-in supporting microblog services like Twitter or identi.ca"
-HOMEPAGE="http://code.google.com/p/microblog-purple/"
+HOMEPAGE="https://code.google.com/p/microblog-purple/"
 MY_P="${P/pidgin-/}"
 SRC_URI="http://microblog-purple.googlecode.com/files/${MY_P}.tar.gz"
 

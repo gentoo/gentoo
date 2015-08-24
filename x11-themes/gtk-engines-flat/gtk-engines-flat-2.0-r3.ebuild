@@ -11,7 +11,7 @@ inherit autotools gnome2
 MY_P=gtk-flat-theme-${PV}
 
 DESCRIPTION="GTK+ Flat Theme Engine"
-HOMEPAGE="http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/x11-themes/gtk-engines-flat/"
+HOMEPAGE="https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/x11-themes/gtk-engines-flat/"
 SRC_URI="http://download.freshmeat.net/themes/gtk2flat/gtk2flat-default.tar.gz"
 
 LICENSE="GPL-2"
