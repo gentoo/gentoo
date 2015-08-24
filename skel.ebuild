@@ -36,7 +36,7 @@ inherit eutils
 DESCRIPTION="This is a sample skeleton ebuild file"
 
 # Homepage, not used by Portage directly but handy for developer reference
-HOMEPAGE="http://foo.example.org/"
+HOMEPAGE="https://foo.example.org/"
 
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
@@ -130,7 +130,7 @@ RDEPEND="${DEPEND}"
 	#	--mandir=/usr/share/man || die
 	# Note the use of --infodir and --mandir, above. This is to make
 	# this package FHS 2.2-compliant.  For more information, see
-	#   http://www.pathname.com/fhs/
+	#   https://www.pathname.com/fhs/
 #}
 
 # The following src_compile function is implemented as default by portage, so

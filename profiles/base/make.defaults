@@ -97,7 +97,7 @@ USE="cracklib"
 NETBEANS="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
 
 # 2009/09/21 Robin H. Johnson <robbat2@gentoo.org>
-# http://archives.gentoo.org/gentoo-dev/msg_dc705dc2c1a45e18a85aa62e8fb17009.xml
+# https://archives.gentoo.org/gentoo-dev/msg_dc705dc2c1a45e18a85aa62e8fb17009.xml
 # Build kernel modules from linux-mod by default:
 USE="${USE} modules"
 
@@ -108,7 +108,7 @@ RUBY_TARGETS="ruby19 ruby20"
 # Samuli Suominen <ssuominen@gentoo.org> (03 Dec 2009)
 # Enable USE cxx by default so base-system and toolchain pkgs can start using USE cxx
 # instead of USE nocxx.
-# http://archives.gentoo.org/gentoo-dev/msg_a181cd0d36600067b599f4b996c6989f.xml
+# https://archives.gentoo.org/gentoo-dev/msg_a181cd0d36600067b599f4b996c6989f.xml
 USE="${USE} cxx"
 
 # Tiziano Müller <dev-zero@gentoo.org> (24 Jan 2010)

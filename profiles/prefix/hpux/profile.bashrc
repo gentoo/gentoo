@@ -104,7 +104,7 @@ prefix_hpux-pre_pkg_postinst() {
 }
 
 # These are because of
-# http://archives.gentoo.org/gentoo-dev/msg_529a0806ed2cf841a467940a57e2d588.xml
+# https://archives.gentoo.org/gentoo-dev/msg_529a0806ed2cf841a467940a57e2d588.xml
 # The profile-* ones are meant to be used in etc/portage/profile.bashrc by user
 # until there is the registration mechanism.
 profile-post_pkg_preinst() { prefix_hpux-post_pkg_preinst ; }

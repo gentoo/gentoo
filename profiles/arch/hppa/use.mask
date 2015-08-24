@@ -188,7 +188,7 @@ gcj
 ivtv
 
 # 2007/03/02 Samuli Suominen <drac@gentoo.org>
-# See http://bugs.gentoo.org/show_bug.cgi?id=157881#c3
+# See https://bugs.gentoo.org/show_bug.cgi?id=157881#c3
 battery
 
 # 2006/12/01 Gustavo Zacarias <gustavoz@gentoo.org>

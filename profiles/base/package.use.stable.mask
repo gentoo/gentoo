@@ -58,7 +58,7 @@ media-libs/opencv vtk
 # Optional (not required by anything in gentoo-x86) and fragile (based on
 # host system, like Java JRE version). Keep masked indefinately until
 # something starts requiring these.
-# http://bugs.gentoo.org/483372 and http://bugs.gentoo.org/508564
+# https://bugs.gentoo.org/483372 and https://bugs.gentoo.org/508564
 media-libs/libcaca java mono
 
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Jul 2014)
