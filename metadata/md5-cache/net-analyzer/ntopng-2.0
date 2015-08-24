@@ -1,12 +1,12 @@
 DEFINED_PHASES=install postinst prepare setup
-DEPEND=dev-db/sqlite:3 dev-libs/geoip dev-libs/glib:2 net-libs/libpcap dev-libs/libxml2 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-db/sqlite:3 dev-lang/luajit:2 dev-libs/geoip dev-libs/glib:2 dev-libs/libxml2 net-analyzer/rrdtool net-libs/libpcap net-libs/zeromq !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Network traffic analyzer with web interface
 EAPI=5
 HOMEPAGE=http://www.ntop.org/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-db/sqlite:3 dev-libs/geoip dev-libs/glib:2 net-libs/libpcap dev-libs/libxml2 dev-db/redis
+RDEPEND=dev-db/sqlite:3 dev-lang/luajit:2 dev-libs/geoip dev-libs/glib:2 dev-libs/libxml2 net-analyzer/rrdtool net-libs/libpcap net-libs/zeromq dev-db/redis
 SLOT=0
 SRC_URI=mirror://sourceforge/ntop/ntopng/ntopng-2.0.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=5b17326fda1ce4eff6b594c87884f90b
+_md5_=76d929f73a97d4a97eba805084b866ba
