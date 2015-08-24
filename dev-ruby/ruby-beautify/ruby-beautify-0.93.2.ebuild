@@ -16,6 +16,6 @@ DESCRIPTION="a cli tool (and module) to beautify ruby code"
 HOMEPAGE="https://github.com/erniebrodeur/ruby-beautify"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
 SLOT="0"
 IUSE=""
