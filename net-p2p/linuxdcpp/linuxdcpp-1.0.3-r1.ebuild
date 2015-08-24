@@ -9,7 +9,7 @@ inherit eutils multiprocessing
 
 DESCRIPTION="Direct connect client, looks and works like famous DC++"
 HOMEPAGE="https://launchpad.net/linuxdcpp"
-SRC_URI="http://launchpad.net/linuxdcpp/1.0/${PV}/+download/${P}.tar.bz2"
+SRC_URI="https://launchpad.net/linuxdcpp/1.0/${PV}/+download/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"

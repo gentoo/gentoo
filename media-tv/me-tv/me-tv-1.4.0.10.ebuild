@@ -8,7 +8,7 @@ inherit eutils versionator autotools gnome2
 
 DESCRIPTION="Me TV is a GTK desktop application for watching digital television"
 HOMEPAGE="http://me-tv.sourceforge.net/"
-SRC_URI="http://launchpad.net/${PN}/$(get_version_component_range 1-2)/$(get_version_component_range 1-3)/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/$(get_version_component_range 1-3)/+download/${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-3"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Django-based project aimed at providing a complete OpenStack Dashboard"
 HOMEPAGE="https://launchpad.net/horizon"
-SRC_URI="http://launchpad.net/${PN}/icehouse/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/icehouse/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

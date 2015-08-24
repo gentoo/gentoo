@@ -8,7 +8,7 @@ inherit flag-o-matic libtool user autotools-utils
 
 DESCRIPTION="Generic framework to farm out work to other machines"
 HOMEPAGE="http://www.gearman.org/"
-SRC_URI="http://launchpad.net/gearmand/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/gearmand/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,8 +7,8 @@ EAPI=5
 inherit autotools eutils multilib virtualx
 
 DESCRIPTION="Tk-based Calendar program"
-HOMEPAGE="http://launchpad.net/ical-tcl"
-SRC_URI="http://launchpad.net/ical-tcl/3.x/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/ical-tcl"
+SRC_URI="https://launchpad.net/ical-tcl/3.x/${PV}/+download/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"

@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="Library for handling Metalink files"
-HOMEPAGE="http://launchpad.net/libmetalink"
+HOMEPAGE="https://launchpad.net/libmetalink"
 SRC_URI="https://launchpad.net/${PN}/trunk/${P}/+download/${P}.tar.bz2"
 
 LICENSE="MIT"

@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils flag-o-matic virtualx multilib-minimal
 
 DESCRIPTION="A set of symbols and convience functions that all indicators would like to use"
-HOMEPAGE="http://launchpad.net/libindicator"
-SRC_URI="http://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/libindicator"
+SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="3"

@@ -10,7 +10,7 @@ inherit python-single-r1 eutils
 
 DESCRIPTION="GUI application for automatic downloading/uploading of subtitles for videofiles"
 HOMEPAGE="http://www.subdownloader.net/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_2.0.18.orig.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_2.0.18.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

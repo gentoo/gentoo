@@ -16,7 +16,7 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="A high level interface to all commonly used Bazaar features"
 HOMEPAGE="https://launchpad.net/bzr-explorer"
-SRC_URI="http://launchpad.net/${PN}/1.3/${LPV}/+download/${MY_P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/1.3/${LPV}/+download/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"

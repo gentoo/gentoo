@@ -10,7 +10,7 @@ inherit autotools-utils python-single-r1
 
 DESCRIPTION="A streaming protocol for test results"
 HOMEPAGE="https://launchpad.net/subunit https://pypi.python.org/pypi/python-subunit"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"

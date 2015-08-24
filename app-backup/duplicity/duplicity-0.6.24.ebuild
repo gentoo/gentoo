@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Secure backup system using gnupg to encrypt data"
 HOMEPAGE="http://www.nongnu.org/duplicity/"
-SRC_URI="http://code.launchpad.net/${PN}/0.6-series/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://code.launchpad.net/${PN}/0.6-series/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

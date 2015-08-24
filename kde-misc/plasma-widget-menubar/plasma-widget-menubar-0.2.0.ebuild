@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="A Plasma widget to display menubar of application windows"
 HOMEPAGE="https://launchpad.net/plasma-widget-menubar"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="4"

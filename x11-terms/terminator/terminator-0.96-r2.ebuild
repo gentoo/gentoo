@@ -11,7 +11,7 @@ inherit gnome2 distutils-r1
 
 DESCRIPTION="Multiple GNOME terminals in one window"
 HOMEPAGE="http://www.tenshu.net/p/terminator.html"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

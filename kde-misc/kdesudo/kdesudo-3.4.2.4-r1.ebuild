@@ -10,8 +10,8 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="A frontend for sudo. Unlike kdesu, it uses directly sudo as backend"
-HOMEPAGE="http://launchpad.net/kdesudo/"
-SRC_URI="http://launchpad.net/${PN}/3.x/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/kdesudo/"
+SRC_URI="https://launchpad.net/${PN}/3.x/${PV}/+download/${P}.tar.gz"
 
 LICENSE="FDL-1.2 GPL-2 LGPL-2"
 SLOT="4"

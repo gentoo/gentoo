@@ -13,7 +13,7 @@ inherit autotools eutils gnome2 vala versionator
 
 DESCRIPTION="GUI which lets you easily control what gets logged by Zeitgeist"
 HOMEPAGE="https://launchpad.net/activity-log-manager/"
-SRC_URI="http://launchpad.net/history-manager/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.xz"
+SRC_URI="https://launchpad.net/history-manager/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"

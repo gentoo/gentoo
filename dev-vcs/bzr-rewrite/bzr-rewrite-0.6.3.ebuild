@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Bazaar plugin that adds support for rebasing, similar to the functionality in git"
 HOMEPAGE="https://launchpad.net/bzr-rewrite"
-SRC_URI="http://launchpad.net/bzr-rewrite/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/bzr-rewrite/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

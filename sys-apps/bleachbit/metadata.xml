@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">bleachbit</remote-id>
-		<bugs-to>http://bugs.launchpad.net/bleachbit</bugs-to>
+		<bugs-to>https://bugs.launchpad.net/bleachbit</bugs-to>
 	</upstream>
 </pkgmetadata>

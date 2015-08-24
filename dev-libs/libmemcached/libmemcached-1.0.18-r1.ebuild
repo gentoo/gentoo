@@ -9,7 +9,7 @@ RESTRICT="test" # https://bugs.gentoo.org/show_bug.cgi?id=498250 https://bugs.la
 
 DESCRIPTION="a C client library to the memcached server"
 HOMEPAGE="http://libmemcached.org/libMemcached.html"
-SRC_URI="http://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A library that can be used to add OpenID support to Django applications"
 HOMEPAGE="https://launchpad.net/django-openid-auth"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}-${PV}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

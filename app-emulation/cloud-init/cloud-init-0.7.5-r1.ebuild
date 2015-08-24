@@ -9,7 +9,7 @@ inherit distutils-r1 eutils multilib
 
 DESCRIPTION="Package provides configuration and customization of cloud instance"
 HOMEPAGE="https://launchpad.net/cloud-init"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

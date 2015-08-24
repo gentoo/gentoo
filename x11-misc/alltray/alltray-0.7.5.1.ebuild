@@ -11,7 +11,7 @@ MY_P=${P}dev
 
 DESCRIPTION="An application which allows any application to be docked into the system notification area"
 HOMEPAGE="http://alltray.trausch.us/"
-SRC_URI="http://code.launchpad.net/${PN}/trunk/${PV}dev/+download/${MY_P}.tar.gz"
+SRC_URI="https://code.launchpad.net/${PN}/trunk/${PV}dev/+download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

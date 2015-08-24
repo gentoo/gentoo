@@ -9,7 +9,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit bash-completion-r1 eutils linux-info distutils-r1 systemd
 
 DESCRIPTION="A program used to manage a netfilter firewall"
-HOMEPAGE="http://launchpad.net/ufw"
+HOMEPAGE="https://launchpad.net/ufw"
 SRC_URI="mirror://sabayon/${CATEGORY}/${P}.tar.gz"
 
 LICENSE="GPL-3"

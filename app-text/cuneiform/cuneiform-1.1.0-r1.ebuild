@@ -10,7 +10,7 @@ MY_P=${PN}-linux-${PV}
 
 DESCRIPTION="An enterprise quality optical character recognition (OCR) engine by Cognitive Technologies"
 HOMEPAGE="https://launchpad.net/cuneiform-linux"
-SRC_URI="http://launchpad.net/${PN}-linux/${PV_MAJ}/${PV_MAJ}/+download/${MY_P}.tar.bz2"
+SRC_URI="https://launchpad.net/${PN}-linux/${PV_MAJ}/${PV_MAJ}/+download/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

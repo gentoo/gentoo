@@ -12,7 +12,7 @@ MY_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="Application that rotates tablet pc's screen automatically, depending on orientation"
 HOMEPAGE="https://launchpad.net/magick-rotation"
-SRC_URI="http://launchpad.net/magick-rotation/trunk/${MY_PV}/+download/${P}.tar.bz2"
+SRC_URI="https://launchpad.net/magick-rotation/trunk/${MY_PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

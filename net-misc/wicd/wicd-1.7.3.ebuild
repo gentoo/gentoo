@@ -11,7 +11,7 @@ inherit eutils distutils-r1 linux-info readme.gentoo systemd
 
 DESCRIPTION="A lightweight wired and wireless network manager for Linux"
 HOMEPAGE="https://launchpad.net/wicd"
-SRC_URI="http://launchpad.net/wicd/1.7/${PV}/+download/${P}.tar.gz
+SRC_URI="https://launchpad.net/wicd/1.7/${PV}/+download/${P}.tar.gz
 	mac4lin? ( https://dev.gentoo.org/~anarchy/dist/wicd-mac4lin-icons.tar.xz )
 	ambiance? ( http://freetimesblog.altervista.org/blog/wp-content/uploads/downloads/2010/05/Icone-Wicd-Lucid.tar.gz )"
 

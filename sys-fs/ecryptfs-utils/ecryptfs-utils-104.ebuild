@@ -11,7 +11,7 @@ inherit flag-o-matic pam python linux-info autotools
 
 DESCRIPTION="eCryptfs userspace utilities"
 HOMEPAGE="https://launchpad.net/ecryptfs"
-SRC_URI="http://launchpad.net/ecryptfs/trunk/${PV}/+download/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://launchpad.net/ecryptfs/trunk/${PV}/+download/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -13,8 +13,8 @@ RESTRICT="test"
 # See https://bugs.gentoo.org/show_bug.cgi?id=259052#c3
 
 DESCRIPTION="Cross platform library for using desktop wide hotkeys"
-HOMEPAGE="http://launchpad.net/gtkhotkey"
-SRC_URI="http://launchpad.net/${PN}/${MY_CRV}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/gtkhotkey"
+SRC_URI="https://launchpad.net/${PN}/${MY_CRV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

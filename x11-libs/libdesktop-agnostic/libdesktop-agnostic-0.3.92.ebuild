@@ -10,7 +10,7 @@ inherit python waf-utils vala
 
 DESCRIPTION="A desktop-agnostic library for GLib-based projects"
 HOMEPAGE="https://launchpad.net/libdesktop-agnostic"
-SRC_URI="http://launchpad.net/${PN}/0.4/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/0.4/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

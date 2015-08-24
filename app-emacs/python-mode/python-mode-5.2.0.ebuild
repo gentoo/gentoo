@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="An Emacs major mode for editing Python source"
 HOMEPAGE="https://launchpad.net/python-mode"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tgz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tgz"
 
 LICENSE="GPL-3+"
 SLOT="0"

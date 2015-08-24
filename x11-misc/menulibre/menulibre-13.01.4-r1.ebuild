@@ -11,7 +11,7 @@ inherit eutils gnome2-utils distutils-r1
 
 DESCRIPTION="An advanced menu editor that provides modern features in a clean, easy-to-use interface"
 HOMEPAGE="http://www.smdavis.us/projects/menulibre/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

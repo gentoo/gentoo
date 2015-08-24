@@ -9,8 +9,8 @@ VALA_MIN_API_VERSION="0.14"
 inherit cmake-utils gnome2-utils multilib vala versionator
 
 DESCRIPTION="A development library for elementary development"
-HOMEPAGE="http://launchpad.net/granite"
-SRC_URI="http://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/granite"
+SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

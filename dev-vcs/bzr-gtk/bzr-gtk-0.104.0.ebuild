@@ -13,7 +13,7 @@ MY_P="/${P/_rc/rc}"
 
 DESCRIPTION="A GTK+ interfaces to most Bazaar operations"
 HOMEPAGE="http://bazaar-vcs.org/bzr-gtk"
-SRC_URI="http://launchpad.net/${PN}/gtk3/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/gtk3/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

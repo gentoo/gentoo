@@ -7,7 +7,7 @@ inherit eutils cmake-utils gnome2-utils games
 
 DESCRIPTION="Warcraft II for the Stratagus game engine"
 HOMEPAGE="http://wargus.sourceforge.net/"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit autotools-utils gnome2 vala
 
 DESCRIPTION="Simple program to visualize a gpx file"
 HOMEPAGE="http://blog.sarine.nl/gpx-viewer/"
-SRC_URI="http://edge.launchpad.net/${PN}/trunk/0.4.0/+download/${P}.tar.gz"
+SRC_URI="https://edge.launchpad.net/${PN}/trunk/0.4.0/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit eutils python-single-r1
 
 DESCRIPTION="Allow manipulating events before/after insertion as well as before fetching"
 HOMEPAGE="https://launchpad.net/zeitgeist-extensions/"
-SRC_URI="http://launchpad.net/${PN}/trunk/fts-${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/fts-${PV}/+download/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"

@@ -15,7 +15,7 @@ if [[ ${PV} == 9999* ]] ; then
 	KEYWORDS=""
 else
 	MY_PV=${PV/_pre/+14.10.}
-	SRC_URI="http://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${MY_PV}.orig.tar.gz"
+	SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${MY_PV}.orig.tar.gz"
 	# upstream has no permissions to use some kde written code so repack git
 	# repo every time
 	#SRC_URI="https://dev.gentoo.org/~scarabeus/${P}.tar.xz"

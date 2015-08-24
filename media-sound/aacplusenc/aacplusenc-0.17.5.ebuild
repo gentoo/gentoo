@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="High-Efficiency AAC (AAC+) Encoder"
 HOMEPAGE="http://teknoraver.net/software/mp4tools/"
-SRC_URI="http://ppa.launchpad.net/teknoraver/ppa/ubuntu/pool/main/a/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="https://ppa.launchpad.net/teknoraver/ppa/ubuntu/pool/main/a/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

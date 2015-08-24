@@ -11,7 +11,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Screenlets are small owner-drawn applications"
 HOMEPAGE="http://www.screenlets.org https://launchpad.net/screenlets"
-SRC_URI="http://code.launchpad.net/screenlets/trunk/${PV}/+download/screenlets-${PV}.tar.bz2"
+SRC_URI="https://code.launchpad.net/screenlets/trunk/${PV}/+download/screenlets-${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

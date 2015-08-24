@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings to the Linux inotify file system event monitoring API"
 HOMEPAGE="http://www.alittletooquiet.net/software/inotifyx/"
-SRC_URI="http://launchpad.net/inotifyx/dev/v${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/inotifyx/dev/v${PV}/+download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

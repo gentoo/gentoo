@@ -7,10 +7,10 @@ EAPI=4
 inherit autotools-utils
 
 DESCRIPTION="The Coordinate Library, designed to assist CCP4 developers in working with coordinate files"
-HOMEPAGE="http://launchpad.net/mmdb/"
+HOMEPAGE="https://launchpad.net/mmdb/"
 SRC_URI="
 	http://www.ysbl.york.ac.uk/~emsley/software/${P}.tar.gz
-	http://launchpad.net/mmdb/1.23/${PV}/+download/${P}.tar.gz"
+	https://launchpad.net/mmdb/1.23/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="0"

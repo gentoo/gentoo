@@ -16,7 +16,7 @@ SERIES=$(get_version_component_range 1-2)
 DESCRIPTION="Bazaar is a next generation distributed version control system"
 HOMEPAGE="http://bazaar-vcs.org/"
 #SRC_URI="http://bazaar-vcs.org/releases/src/${MY_P}.tar.gz"
-SRC_URI="http://launchpad.net/bzr/${SERIES}/${PV}/+download/${MY_P}.tar.gz"
+SRC_URI="https://launchpad.net/bzr/${SERIES}/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

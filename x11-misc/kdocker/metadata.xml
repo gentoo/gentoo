@@ -4,6 +4,6 @@
 	<herd>kde</herd>
 	<upstream>
 		<remote-id type="launchpad">kdocker</remote-id>
-		<bugs-to>http://bugs.launchpad.net/kdocker</bugs-to>
+		<bugs-to>https://bugs.launchpad.net/kdocker</bugs-to>
 	</upstream>
 </pkgmetadata>

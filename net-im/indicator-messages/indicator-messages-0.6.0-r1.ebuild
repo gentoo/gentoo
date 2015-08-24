@@ -6,8 +6,8 @@ EAPI=4
 inherit eutils gnome2-utils
 
 DESCRIPTION="A place on the user's desktop that collects messages that need a response"
-HOMEPAGE="http://launchpad.net/indicator-messages"
-SRC_URI="http://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/indicator-messages"
+SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

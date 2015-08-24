@@ -13,7 +13,7 @@ inherit autotools-utils distutils-r1 perl-module versionator
 
 DESCRIPTION="Library to support AppArmor userspace utilities"
 HOMEPAGE="http://apparmor.net/"
-SRC_URI="http://launchpad.net/apparmor/$(get_version_component_range 1-2)/${PV}/+download/apparmor-${PV}.tar.gz"
+SRC_URI="https://launchpad.net/apparmor/$(get_version_component_range 1-2)/${PV}/+download/apparmor-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

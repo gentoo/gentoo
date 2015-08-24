@@ -7,7 +7,7 @@ inherit cmake-utils eutils games
 
 DESCRIPTION="A realtime strategy game engine"
 HOMEPAGE="http://stratagus.sourceforge.net/"
-SRC_URI="http://launchpad.net/stratagus/trunk/${PV}/+download/stratagus_${PV}.orig.tar.gz"
+SRC_URI="https://launchpad.net/stratagus/trunk/${PV}/+download/stratagus_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

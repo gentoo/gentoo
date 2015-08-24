@@ -11,8 +11,8 @@ VALA_MAX_API_VERSION=0.20
 inherit gnome2 autotools-utils gnome2-utils vala
 
 DESCRIPTION="A program launcher in the style of GNOME Do"
-HOMEPAGE="http://launchpad.net/synapse-project/"
-SRC_URI="http://launchpad.net/synapse-project/${PV%.*}/${PV}/+download/${P}.tar.gz"
+HOMEPAGE="https://launchpad.net/synapse-project/"
+SRC_URI="https://launchpad.net/synapse-project/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

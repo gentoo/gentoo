@@ -8,7 +8,7 @@ inherit eutils multilib
 
 DESCRIPTION="a C client library to the memcached server"
 HOMEPAGE="http://tangent.org/552/libmemcached.html"
-SRC_URI="http://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

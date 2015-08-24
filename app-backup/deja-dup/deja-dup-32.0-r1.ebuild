@@ -13,7 +13,7 @@ inherit cmake-utils eutils gnome2 vala
 
 DESCRIPTION="Simple backup tool using duplicity back-end"
 HOMEPAGE="https://launchpad.net/deja-dup/"
-SRC_URI="http://launchpad.net/${PN}/32/${PV}/+download/${P}.tar.xz"
+SRC_URI="https://launchpad.net/${PN}/32/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

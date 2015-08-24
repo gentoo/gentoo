@@ -8,7 +8,7 @@ inherit eutils autotools
 
 DESCRIPTION="A GTK2 8085 Simulator"
 HOMEPAGE="http://gnusim8085.org"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

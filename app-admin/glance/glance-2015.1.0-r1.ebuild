@@ -10,7 +10,7 @@ inherit distutils-r1 user
 DESCRIPTION="Provides services for discovering, registering, and retrieving
 virtual machine images"
 HOMEPAGE="https://launchpad.net/glance"
-SRC_URI="http://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

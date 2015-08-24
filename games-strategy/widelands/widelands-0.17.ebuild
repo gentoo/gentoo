@@ -9,7 +9,7 @@ MY_PV=build$(get_version_component_range 2)
 MY_P=${PN}-${MY_PV}-src
 DESCRIPTION="A game similar to Settlers 2"
 HOMEPAGE="http://www.widelands.org/"
-SRC_URI="http://launchpad.net/widelands/${MY_PV}/build-$(get_version_component_range 2)/+download/${MY_P}.tar.bz2"
+SRC_URI="https://launchpad.net/widelands/${MY_PV}/build-$(get_version_component_range 2)/+download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

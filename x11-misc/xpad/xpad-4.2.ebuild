@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="a sticky note application for jotting down things to remember"
 HOMEPAGE="http://mterry.name/xpad"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

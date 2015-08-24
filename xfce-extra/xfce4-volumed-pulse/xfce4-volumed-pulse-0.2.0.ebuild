@@ -6,8 +6,8 @@ EAPI=5
 inherit xfconf
 
 DESCRIPTION="Daemon to control volume up/down and mute keys for pulseaudio"
-HOMEPAGE="http://launchpad.net/xfce4-volumed-pulse"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
+HOMEPAGE="https://launchpad.net/xfce4-volumed-pulse"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

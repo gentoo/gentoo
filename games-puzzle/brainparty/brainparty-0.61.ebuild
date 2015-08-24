@@ -7,7 +7,7 @@ inherit eutils games
 
 DESCRIPTION="A puzzle-solving, brain-stretching game for all ages"
 HOMEPAGE="http://www.tuxradar.com/brainparty"
-SRC_URI="http://launchpad.net/brainparty/trunk/${PV}/+download/${PN}${PV}.tar.gz"
+SRC_URI="https://launchpad.net/brainparty/trunk/${PV}/+download/${PN}${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
