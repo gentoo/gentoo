@@ -62,7 +62,7 @@ multilib_src_configure() {
 		$(use_enable nls) \
 		$(use_enable test tests) \
 		--with-package-name="GStreamer ebuild for Gentoo" \
-		--with-package-origin="http://packages.gentoo.org/package/media-libs/gstreamer"
+		--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer"
 
 	if multilib_is_native_abi; then
 		local x

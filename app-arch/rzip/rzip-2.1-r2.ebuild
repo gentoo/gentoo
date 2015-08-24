@@ -31,7 +31,7 @@ pkg_postinst() {
 	ewarn "compression of large files it didn't set the right file size, so"
 	ewarn "if you have any reason to believe that your archive was compressed "
 	ewarn "with an old Gentoo rzip, please refer to "
-	ewarn "     http://bugs.gentoo.org/show_bug.cgi?id=217552 "
+	ewarn "     https://bugs.gentoo.org/show_bug.cgi?id=217552 "
 	ewarn "for the rzip-handle-broken-archive.patch patch to rescue your"
 	ewarn "data."
 	ewarn

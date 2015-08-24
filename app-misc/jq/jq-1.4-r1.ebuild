@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="A lightweight and flexible command-line JSON processor"
-HOMEPAGE="http://stedolan.github.com/jq/"
+HOMEPAGE="https://stedolan.github.com/jq/"
 SRC_URI="http://stedolan.github.io/jq/download/source/${P}.tar.gz"
 
 LICENSE="MIT CC-BY-3.0"

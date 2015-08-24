@@ -10,7 +10,7 @@ DISTUTILS_OPTIONAL=1
 inherit eutils autotools gnome2 distutils-r1
 
 DESCRIPTION="A gtk+ viewer for OpenStreetMap files"
-HOMEPAGE="http://nzjrs.github.com/osm-gps-map/"
+HOMEPAGE="https://nzjrs.github.com/osm-gps-map/"
 SRC_URI="http://www.johnstowers.co.nz/files/${PN}/${P}.tar.gz
 python? ( http://www.johnstowers.co.nz/files/${PN}/python-osmgpsmap-${PV}.tar.gz )"
 

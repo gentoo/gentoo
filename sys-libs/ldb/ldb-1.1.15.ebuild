@@ -72,6 +72,6 @@ pkg_postinst() {
 	if has_version sys-auth/sssd; then
 		ewarn "You have sssd installed. It is known to break after ldb upgrades,"
 		ewarn "so please try to rebuild it before reporting bugs."
-		ewarn "See http://bugs.gentoo.org/404281"
+		ewarn "See https://bugs.gentoo.org/404281"
 	fi
 }

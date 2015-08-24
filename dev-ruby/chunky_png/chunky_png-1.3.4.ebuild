@@ -18,7 +18,7 @@ RUBY_FAKEGEM_GEMSPEC="chunky_png.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Pure Ruby library that can read and write PNG images"
-HOMEPAGE="http://wiki.github.com/wvanbergen/chunky_png"
+HOMEPAGE="https://wiki.github.com/wvanbergen/chunky_png"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI=3
 inherit eutils prefix
 
 DESCRIPTION="A tool based on colorgcc to beautify cvs output"
-HOMEPAGE="http://packages.gentoo.org/package/dev-vcs/colorcvs"
+HOMEPAGE="https://packages.gentoo.org/package/dev-vcs/colorcvs"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"

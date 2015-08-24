@@ -18,7 +18,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A small ruby library that allows it to 'tail' files in Ruby"
-HOMEPAGE="http://flori.github.com/file-tail"
+HOMEPAGE="https://flori.github.com/file-tail"
 
 LICENSE="GPL-2"
 SLOT="0"

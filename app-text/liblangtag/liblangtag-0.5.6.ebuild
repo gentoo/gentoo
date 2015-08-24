@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools-utils
 
 DESCRIPTION="An interface library to access tags for identifying languages"
-HOMEPAGE="http://tagoh.bitbucket.org/liblangtag/"
+HOMEPAGE="https://tagoh.bitbucket.org/liblangtag/"
 SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"

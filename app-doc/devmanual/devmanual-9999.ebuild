@@ -7,7 +7,7 @@ EAPI=5
 inherit git-2 readme.gentoo
 
 DESCRIPTION="The Gentoo Development Guide"
-HOMEPAGE="http://devmanual.gentoo.org/"
+HOMEPAGE="https://devmanual.gentoo.org/"
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/devmanual.git"
 
 LICENSE="CC-BY-SA-2.0"

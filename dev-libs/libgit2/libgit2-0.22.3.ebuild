@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="A linkable library for Git"
-HOMEPAGE="http://libgit2.github.com/"
+HOMEPAGE="https://libgit2.github.com/"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/22"

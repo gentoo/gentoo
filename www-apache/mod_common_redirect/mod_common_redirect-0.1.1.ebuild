@@ -12,7 +12,7 @@ GITHUB_COMMIT="595a370"
 
 DESCRIPTION="mod_common_redirect implements common redirects without mod_rewrite overhead"
 HOMEPAGE="https://github.com/hollow/mod_common_redirect"
-SRC_URI="http://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

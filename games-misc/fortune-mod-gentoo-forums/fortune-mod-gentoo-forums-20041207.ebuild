@@ -3,7 +3,7 @@
 # $Id$
 EAPI=5
 DESCRIPTION="Fortune database of quotes from forums.gentoo.org"
-HOMEPAGE="http://forums.gentoo.org/"
+HOMEPAGE="https://forums.gentoo.org/"
 SRC_URI="mirror://gentoo/gentoo-forums-${PV}.gz
 	offensive? ( mirror://gentoo/gentoo-forums-offensive-${PV}.gz )"
 

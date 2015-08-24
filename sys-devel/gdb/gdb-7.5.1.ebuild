@@ -81,7 +81,7 @@ src_configure() {
 	local sysroot="${EPREFIX}"/usr/${CTARGET}
 	local myconf=(
 		--with-pkgversion="$(gdb_branding)"
-		--with-bugurl='http://bugs.gentoo.org/'
+		--with-bugurl='https://bugs.gentoo.org/'
 		--disable-werror
 		$(is_cross && echo \
 			--with-sysroot="${sysroot}" \

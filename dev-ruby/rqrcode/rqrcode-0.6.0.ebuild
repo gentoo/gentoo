@@ -16,7 +16,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Library for encoding QR Codes"
-HOMEPAGE="http://whomwah.github.com/rqrcode/"
+HOMEPAGE="https://whomwah.github.com/rqrcode/"
 
 LICENSE="MIT"
 SLOT="0"

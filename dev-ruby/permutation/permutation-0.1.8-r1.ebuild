@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGES README"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Library to perform different operations with permutations of sequences (strings, arrays, etc.)"
-HOMEPAGE="http://flori.github.com/permutation"
+HOMEPAGE="https://flori.github.com/permutation"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
 SLOT="0"

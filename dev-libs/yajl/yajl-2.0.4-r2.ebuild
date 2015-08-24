@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils cmake-multilib vcs-snapshot
 
 DESCRIPTION="Small event-driven (SAX-style) JSON parser"
-HOMEPAGE="http://lloyd.github.com/yajl/"
+HOMEPAGE="https://lloyd.github.com/yajl/"
 SRC_URI="https://github.com/lloyd/yajl/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"

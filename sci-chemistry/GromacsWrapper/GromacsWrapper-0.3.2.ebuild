@@ -23,7 +23,7 @@ fi
 inherit eutils distutils-r1 ${scm_eclass}
 
 DESCRIPTION="Python framework for Gromacs"
-HOMEPAGE="http://orbeckst.github.com/GromacsWrapper/"
+HOMEPAGE="https://orbeckst.github.com/GromacsWrapper/"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"

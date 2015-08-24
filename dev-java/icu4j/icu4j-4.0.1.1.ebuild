@@ -29,7 +29,7 @@ IUSE=""
 RDEPEND=">=virtual/jre-1.4"
 
 # build.xml does file version detection that fails for 1.7
-# http://bugs.gentoo.org/show_bug.cgi?id=213555
+# https://bugs.gentoo.org/show_bug.cgi?id=213555
 DEPEND="test? ( =virtual/jdk-1.6* )
 	!test? ( || ( =virtual/jdk-1.6* =virtual/jdk-1.5* =virtual/jdk-1.4* ) )
 	app-arch/unzip"

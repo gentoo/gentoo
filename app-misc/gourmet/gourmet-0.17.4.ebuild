@@ -11,7 +11,7 @@ DISTUTILS_NO_PARALLEL_BUILD=1
 inherit distutils-r1
 
 DESCRIPTION="Recipe Organizer and Shopping List Generator for Gnome"
-HOMEPAGE="http://thinkle.github.com/gourmet/"
+HOMEPAGE="https://thinkle.github.com/gourmet/"
 SRC_URI="https://github.com/thinkle/gourmet/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

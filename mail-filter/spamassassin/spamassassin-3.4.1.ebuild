@@ -89,7 +89,7 @@ src_configure() {
 	# Set the path to the Perl executable explictly.  This will be used to
 	# create the initial sharpbang line in the scripts and might cause
 	# a versioned app name end in there, see
-	# <http://bugs.gentoo.org/show_bug.cgi?id=62276>
+	# <https://bugs.gentoo.org/show_bug.cgi?id=62276>
 	myconf+=" PERL_BIN=${EPREFIX}/usr/bin/perl"
 
 	# Setting the following env var ensures that no questions are asked.

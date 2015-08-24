@@ -35,7 +35,7 @@ src_prepare() {
 	# http://code.google.com/p/libixp/issues/detail?id=2
 	sed -i -e 's:ixp_serve9pconn:ixp_serve9conn:' include/ixp.h || die
 
-	# http://bugs.gentoo.org/393299 http://code.google.com/p/wmii/issues/detail?id=247
+	# https://bugs.gentoo.org/393299 http://code.google.com/p/wmii/issues/detail?id=247
 	sed -i -e '69s:uint32_t:unsigned long:' include/ixp.h || die
 }
 

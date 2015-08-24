@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read"
-HOMEPAGE="http://khenriks.github.com/mp3fs/"
+HOMEPAGE="https://khenriks.github.com/mp3fs/"
 SRC_URI="https://github.com/khenriks/mp3fs/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"

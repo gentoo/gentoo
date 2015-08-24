@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils autotools
 
 DESCRIPTION="Delivery framework for general Input Method configuration"
-HOMEPAGE="http://tagoh.github.com/imsettings/"
+HOMEPAGE="https://tagoh.github.com/imsettings/"
 SRC_URI="https://bitbucket.org/tagoh/imsettings/downloads/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

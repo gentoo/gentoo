@@ -5,7 +5,7 @@
 EAPI=3
 
 DESCRIPTION="Use native OS MPI in prefix environment"
-HOMEPAGE="http://prefix.gentoo.org"
+HOMEPAGE="https://prefix.gentoo.org"
 SRC_URI=""
 
 LICENSE="GPL-3"

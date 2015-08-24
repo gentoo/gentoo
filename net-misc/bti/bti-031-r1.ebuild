@@ -6,7 +6,7 @@ EAPI=5
 inherit bash-completion-r1 eutils
 
 DESCRIPTION="A command line twitter/identi.ca client"
-HOMEPAGE="http://gregkh.github.com/bti/"
+HOMEPAGE="https://gregkh.github.com/bti/"
 SRC_URI="mirror://kernel/software/web/bti/${P}.tar.bz2"
 
 LICENSE="GPL-2"

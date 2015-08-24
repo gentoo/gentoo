@@ -5,7 +5,7 @@
 MY_P="${P/gnap-ext/gnap-tools}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="Gentoo-based Network Appliance extensions and remastering tool"
-HOMEPAGE="http://embedded.gentoo.org/gnap.xml"
+HOMEPAGE="https://embedded.gentoo.org/gnap.xml"
 
 SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
 	!minimal? ( mirror://gentoo/gnap-basefs-${PV}.tar.bz2

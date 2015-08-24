@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils multilib toolchain-funcs user
 
 DESCRIPTION="Inspire IRCd - The Stable, High-Performance Modular IRCd"
-HOMEPAGE="http://inspircd.github.com/"
-SRC_URI="http://www.github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://inspircd.github.com/"
+SRC_URI="https://www.github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

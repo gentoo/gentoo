@@ -12,7 +12,7 @@ GITHUB_COMMIT="4e86d5e"
 
 DESCRIPTION="A libc optimized for small size"
 HOMEPAGE="http://www.fefe.de/dietlibc/"
-SRC_URI="http://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

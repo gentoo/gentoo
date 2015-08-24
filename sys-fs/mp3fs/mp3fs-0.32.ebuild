@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read"
-HOMEPAGE="http://khenriks.github.com/mp3fs/"
+HOMEPAGE="https://khenriks.github.com/mp3fs/"
 SRC_URI="mirror://github/khenriks/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

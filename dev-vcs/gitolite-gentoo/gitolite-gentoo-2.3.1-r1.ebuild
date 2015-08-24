@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils perl-module user
 
 DESCRIPTION="Highly flexible server for git directory version tracker, Gentoo fork"
-HOMEPAGE="http://cgit.gentoo.org/proj/gitolite-gentoo.git"
+HOMEPAGE="https://cgit.gentoo.org/proj/gitolite-gentoo.git"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

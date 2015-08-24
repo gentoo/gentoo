@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs versionator vcs-snapshot
 
 MY_PV="$(delete_all_version_separators)"
 DESCRIPTION="A stream editor for manipulating CSV files"
-HOMEPAGE="http://neilb.bitbucket.org/csvfix/ https://bitbucket.org/neilb/csvfix/"
+HOMEPAGE="https://neilb.bitbucket.org/csvfix/ https://bitbucket.org/neilb/csvfix/"
 SRC_URI="https://bitbucket.org/neilb/csvfix/get/version-${PV}.tar.bz2 -> ${P}.tar.bz2
 	doc? ( https://bitbucket.org/neilb/csvfix/downloads/csvfix_man_html_${MY_PV}0.zip )"
 

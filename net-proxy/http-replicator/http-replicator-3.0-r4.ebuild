@@ -63,6 +63,6 @@ pkg_postinst() {
 	einfo "  good http mirrors"
 	einfo
 	einfo "For more information please refer to the following forum thread:"
-	einfo "  http://forums.gentoo.org/viewtopic-t-173226.html"
+	einfo "  https://forums.gentoo.org/viewtopic-t-173226.html"
 	einfo
 }

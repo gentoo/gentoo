@@ -81,7 +81,7 @@ pkg_nofetch() {
 	else
 		einfo "This version is no longer available from Google."
 		einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."
-		einfo "Please file a version bump bug on http://bugs.gentoo.org (search	existing bugs for ${PN} first!)."
+		einfo "Please file a version bump bug on https://bugs.gentoo.org (search	existing bugs for ${PN} first!)."
 	fi
 }
 

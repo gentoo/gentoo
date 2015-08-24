@@ -75,7 +75,7 @@ src_install() {
 	udev_dorules "${FILESDIR}"/99-ntfs3g.rules
 	prune_libtool_files
 
-	# http://bugs.gentoo.org/398069
+	# https://bugs.gentoo.org/398069
 	rmdir "${D}"/sbin
 
 	dosym mount.ntfs-3g /usr/sbin/mount.ntfs #374197

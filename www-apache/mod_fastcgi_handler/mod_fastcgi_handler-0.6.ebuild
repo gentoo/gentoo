@@ -12,7 +12,7 @@ inherit apache-module
 
 DESCRIPTION="A simple FastCGI handler module"
 HOMEPAGE="https://github.com/hollow/mod_fastcgi_handler"
-SRC_URI="http://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://nodeload.github.com/${GITHUB_AUTHOR}/${GITHUB_PROJECT}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

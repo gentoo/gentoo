@@ -63,7 +63,7 @@ src_test() {
 	case "${LD_PRELOAD}" in
 		*libsandbox*)
 			ewarn "Unable to run tests when sanbox is enabled."
-			ewarn "See http://bugs.gentoo.org/290249"
+			ewarn "See https://bugs.gentoo.org/290249"
 			return 0
 			;;
 	esac

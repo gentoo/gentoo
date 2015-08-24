@@ -38,7 +38,7 @@ CLASSPATH_DIR="/usr/gnu-classpath-${CLASSPATH_SLOT}"
 
 src_configure() {
 	# Keep libjvm.so out of /usr
-	# http://bugs.gentoo.org/show_bug.cgi?id=181896
+	# https://bugs.gentoo.org/show_bug.cgi?id=181896
 	INSTALL_DIR="/usr/$(get_libdir)/${PN}"
 
 	filter-flags "-fomit-frame-pointer"

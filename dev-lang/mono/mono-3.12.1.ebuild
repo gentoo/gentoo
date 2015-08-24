@@ -34,7 +34,7 @@ DEPEND="${COMMONDEPEND}
 
 pkg_pretend() {
 	# If CONFIG_SYSVIPC is not set in your kernel .config, mono will hang while compiling.
-	# See http://bugs.gentoo.org/261869 for more info."
+	# See https://bugs.gentoo.org/261869 for more info."
 	CONFIG_CHECK="SYSVIPC"
 	use kernel_linux && check_extra_config
 }
@@ -66,7 +66,7 @@ src_prepare() {
 
 src_configure() {
 	# NOTE: We need the static libs for now so mono-debugger works.
-	# See http://bugs.gentoo.org/show_bug.cgi?id=256264 for details
+	# See https://bugs.gentoo.org/show_bug.cgi?id=256264 for details
 	#
 	# --without-moonlight since www-plugins/moonlight is not the only one
 	# using mono: https://bugzilla.novell.com/show_bug.cgi?id=641005#c3

@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="cache"
 inherit ruby-fakegem
 
 DESCRIPTION="A modern, pretty RDoc template"
-HOMEPAGE="http://fauna.github.com/fauna/allison/files/README.html"
+HOMEPAGE="https://fauna.github.com/fauna/allison/files/README.html"
 
 LICENSE="AFL-3.0"
 SLOT="0"

@@ -78,7 +78,7 @@ src_configure() {
 	if [[ ${CHOST} != *-uclibc ]] && grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
 		eerror "INTL sanity check failed, aborting build."
 		eerror "Please post your ${S}/config.log file as an"
-		eerror "attachment to http://bugs.gentoo.org/show_bug.cgi?id=81096"
+		eerror "attachment to https://bugs.gentoo.org/show_bug.cgi?id=81096"
 		die "Preventing included intl cruft from building"
 	fi
 }

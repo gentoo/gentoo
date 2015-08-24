@@ -31,7 +31,7 @@ DOCS="AUTHORS ChangeLog README"
 src_prepare() {
 	sed -i -e '/svgconvert_prog/s:rsvg:&-convert:' configure || die #413183
 
-	# http://bugs.gentoo.org/472766
+	# https://bugs.gentoo.org/472766
 	shopt -s nullglob
 	cards=$(echo -n /dev/dri/card* | sed 's/ /:/g')
 	if test -n "${cards}"; then

@@ -7,7 +7,7 @@ EAPI=4
 inherit vim-plugin vcs-snapshot
 
 DESCRIPTION="vim plugin: visualize your Vim undo tree"
-HOMEPAGE="http://sjl.bitbucket.org/gundo.vim/"
+HOMEPAGE="https://sjl.bitbucket.org/gundo.vim/"
 SRC_URI="https://github.com/sjl/gundo.vim/tarball/v${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

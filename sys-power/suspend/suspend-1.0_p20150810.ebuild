@@ -54,5 +54,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "In order to make this package work with genkernel see:"
-	elog "http://bugs.gentoo.org/show_bug.cgi?id=156445"
+	elog "https://bugs.gentoo.org/show_bug.cgi?id=156445"
 }

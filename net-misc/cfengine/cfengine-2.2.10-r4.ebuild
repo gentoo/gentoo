@@ -27,7 +27,7 @@ PDEPEND="vim-syntax? ( app-vim/cfengine-syntax )"
 src_prepare() {
 	# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=520696
 	# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511666
-	# http://bugs.gentoo.org/339808
+	# https://bugs.gentoo.org/339808
 	epatch "${FILESDIR}/admit-noclass-520696.patch" \
 		"${FILESDIR}/511666-segfault.patch" \
 		"${FILESDIR}/${P}-snprintf_buffer_overflow.patch"

@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Submit tax forms (Umsatzsteuervoranmeldung) to the german digital tax project ELSTER"
-HOMEPAGE="http://stesie.github.com/geierlein/"
+HOMEPAGE="https://stesie.github.com/geierlein/"
 SRC_URI="https://github.com/stesie/geierlein/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"

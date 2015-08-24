@@ -58,7 +58,7 @@ S=${WORKDIR}/opt/google/earth/free
 pkg_nofetch() {
 	einfo "Wrong checksum or file size means that Google silently replaced the distfile with a newer version."
 	einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."
-	einfo "Please file a version bump bug on http://bugs.gentoo.org (search existing bugs for googleearth first!)."
+	einfo "Please file a version bump bug on https://bugs.gentoo.org (search existing bugs for googleearth first!)."
 	einfo "By redigesting the file yourself, you will install a different version than the ebuild says, untested!"
 }
 

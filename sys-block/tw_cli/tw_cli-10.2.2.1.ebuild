@@ -19,7 +19,7 @@ SRC_URI="kernel_linux? ( ${SRC_URI_BASE}/${SRC_URI_A_linux} )
 RELNOTES="${SRC_URI_BASE}/${PV}_Release_Notes.pdf"
 
 # Note: 3ware gave permission to redistribute the binaries before:
-# Ref: http://bugs.gentoo.org/show_bug.cgi?id=60690#c106
+# Ref: https://bugs.gentoo.org/show_bug.cgi?id=60690#c106
 #
 # Please note that the LSI-tw_cli license does allow redistribution, despite
 # being a EULA:

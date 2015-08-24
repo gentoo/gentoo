@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Runs a command as a Unix daemon"
-HOMEPAGE="http://bmc.github.com/daemonize/"
+HOMEPAGE="https://bmc.github.com/daemonize/"
 SRC_URI="https://github.com/bmc/${PN}/tarball/release-${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD"

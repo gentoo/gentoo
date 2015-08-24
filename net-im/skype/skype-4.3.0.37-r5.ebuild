@@ -101,7 +101,7 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 
-	# http://bugs.gentoo.org/360815
+	# https://bugs.gentoo.org/360815
 	elog "For webcam support, see \"LD_PRELOAD\" section of \"README.lib\" document provided by"
 	elog "media-libs/libv4l package and \"README\" document of this package."
 

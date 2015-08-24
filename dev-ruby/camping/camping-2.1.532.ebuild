@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A small web framework modeled after Ruby on Rails"
-HOMEPAGE="http://wiki.github.com/camping/camping"
+HOMEPAGE="https://wiki.github.com/camping/camping"
 
 LICENSE="MIT"
 SLOT="0"

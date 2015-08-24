@@ -265,7 +265,7 @@ pkg_setup() {
 		elog "in ${ROOT%/}/etc/make.conf. This way only the firmwares you own"
 		elog "the hardware will be installed."
 	fi
-	# according to http://devmanual.gentoo.org/general-concepts/use-flags/index.html
+	# according to https://devmanual.gentoo.org/general-concepts/use-flags/index.html
 	# we should not die here. However, there is no sensible fallback choice to make
 	# because the user may have either the one or the other. WYGIWYG
 	if use dvb_cards_tda10046 && use dvb_cards_tda10046lifeview; then

@@ -16,7 +16,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md History"
 inherit ruby-fakegem
 
 DESCRIPTION="Makes http fun! Also, makes consuming restful web services dead easy"
-HOMEPAGE="http://jnunemaker.github.com/httparty"
+HOMEPAGE="https://jnunemaker.github.com/httparty"
 
 LICENSE="MIT"
 SLOT="0"

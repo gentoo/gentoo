@@ -34,6 +34,6 @@ pkg_postinst() {
 	fi
 
 	einfo "Please read this forum thread for help and troubleshooting:"
-	einfo "http://forums.gentoo.org/viewtopic-t-409194.html"
+	einfo "https://forums.gentoo.org/viewtopic-t-409194.html"
 	echo
 }

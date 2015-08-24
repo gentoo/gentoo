@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Dummy scrollkeeper for testing rarian"
-HOMEPAGE="http://gnome.gentoo.org"
+HOMEPAGE="https://gnome.gentoo.org"
 
 LICENSE="metapackage"
 SLOT="0"

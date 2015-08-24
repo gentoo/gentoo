@@ -41,7 +41,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-python/pyside-tools
 	>=dev-lang/swig-2.0.4-r1:0"
 
-# http://bugs.gentoo.org/show_bug.cgi?id=352435
+# https://bugs.gentoo.org/show_bug.cgi?id=352435
 # https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
 RESTRICT="bindist mirror"
 

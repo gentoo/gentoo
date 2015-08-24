@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs eutils
 
 DESCRIPTION="Dynamic web browser based on WebKit and GTK+"
-HOMEPAGE="http://portix.bitbucket.org/dwb/"
+HOMEPAGE="https://portix.bitbucket.org/dwb/"
 SRC_URI="https://www.bitbucket.org/portix/dwb/downloads/${P}.tar.gz"
 
 LICENSE="GPL-3"

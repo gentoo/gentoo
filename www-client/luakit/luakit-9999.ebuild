@@ -22,7 +22,7 @@ else
 fi
 
 DESCRIPTION="fast, small, webkit-gtk based micro-browser extensible by lua"
-HOMEPAGE="http://mason-larobina.github.com/luakit/"
+HOMEPAGE="https://mason-larobina.github.com/luakit/"
 
 LICENSE="GPL-3"
 SLOT="0"

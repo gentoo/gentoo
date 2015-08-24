@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	xml? ( virtual/pkgconfig )"
 
 src_prepare() {
-	# http://cgit.gentoo.org/proj/sparse.git
+	# https://cgit.gentoo.org/proj/sparse.git
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 }
 

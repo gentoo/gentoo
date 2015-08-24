@@ -9,7 +9,7 @@
 		<maintainer status="active">
 			<email>ignorantguru@users.sourceforge.net</email>
 		</maintainer>
-		<changelog>http://ignorantguru.github.com/spacefm/news.html</changelog>
+		<changelog>https://ignorantguru.github.com/spacefm/news.html</changelog>
 		<doc lang="en">https://github.com/IgnorantGuru/spacefm/wiki/</doc>
 		<bugs-to>https://github.com/IgnorantGuru/spacefm/issues</bugs-to>
 	</upstream>

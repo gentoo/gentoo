@@ -51,14 +51,14 @@ pkg_postinst() {
 	ewarn "32bit systems might have to rebuild all gdbm databases due to"
 	ewarn "LFS changes in the gdbm format.  You can either delete the db"
 	ewarn "and regenerate it from scratch, or use the converter:"
-	ewarn "http://bugs.gentoo.org/attachment.cgi?id=215326"
+	ewarn "https://bugs.gentoo.org/attachment.cgi?id=215326"
 	ewarn
 	ewarn "See this comment for information on how to use it:"
-	ewarn "http://bugs.gentoo.org/299390#c15"
+	ewarn "https://bugs.gentoo.org/299390#c15"
 	ewarn
 	ewarn "You should be able to locate most gdbm db's on your system with:"
 	ewarn "find /etc /var -type f -exec file {} + | grep 'GNU dbm 1.x or ndbm database'"
 	ewarn
 	ewarn "You could also try using this helper script:"
-	ewarn "http://bugs.gentoo.org/attachment.cgi?id=222581"
+	ewarn "https://bugs.gentoo.org/attachment.cgi?id=222581"
 }

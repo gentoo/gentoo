@@ -7,7 +7,7 @@ EAPI=5
 inherit git-2
 
 DESCRIPTION="noVNC is a VNC client implemented using HTML5 technologies"
-HOMEPAGE="http://kanaka.github.com/noVNC/"
+HOMEPAGE="https://kanaka.github.com/noVNC/"
 EGIT_REPO_URI="https://github.com/kanaka/noVNC.git"
 S="${WORKDIR}/noVNC-${PV}"
 

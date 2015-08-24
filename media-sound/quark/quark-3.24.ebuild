@@ -7,8 +7,8 @@ EAPI=4
 inherit autotools eutils fdo-mime gnome2-utils
 
 DESCRIPTION="Quark is the Anti-GUI Music Player with a cool Docklet!"
-HOMEPAGE="http://hsgg.github.com/quark/"
-SRC_URI="http://hsgg.github.com/${PN}/${P}.tar.gz"
+HOMEPAGE="https://hsgg.github.com/quark/"
+SRC_URI="https://hsgg.github.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI="3"
 inherit eutils
 
 DESCRIPTION="dot.conf configuration file parser"
-HOMEPAGE="http://www.github.com/williamh/dotconf"
+HOMEPAGE="https://www.github.com/williamh/dotconf"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 

@@ -376,7 +376,7 @@ src_prepare() {
 			use ghcmakebinary && return 1
 
 			# pick only registerised arches
-			# http://bugs.gentoo.org/463814
+			# https://bugs.gentoo.org/463814
 			use amd64 && return 0
 			use x86 && return 0
 			return 1

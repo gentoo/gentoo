@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils autotools user
 
 DESCRIPTION="mount and unmount removable devices without a password"
-HOMEPAGE="http://ignorantguru.github.com/udevil/"
+HOMEPAGE="https://ignorantguru.github.com/udevil/"
 SRC_URI="https://github.com/IgnorantGuru/udevil/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -65,7 +65,7 @@ pkg_postinst() {
 		elog
 		elog "When using ${PN} without udisks, and without the udisks-daemon running,"
 		elog "you may need to enable kernel polling for device media changes to be detected."
-		elog "See http://ignorantguru.github.com/${PN}/#polling"
+		elog "See https://ignorantguru.github.com/${PN}/#polling"
 		has_version '<virtual/udev-173' && ewarn "You need at least udev-173"
 		kernel_is lt 2 6 38 && ewarn "You need at least kernel 2.6.38"
 		einfo

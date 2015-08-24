@@ -62,7 +62,7 @@ pkg_postinst() {
 	einfo
 	einfo "For more information please refer to the following forum thread:"
 	einfo
-	einfo "  http://forums.gentoo.org/viewtopic-t-173226.html"
+	einfo "  https://forums.gentoo.org/viewtopic-t-173226.html"
 	einfo
 	einfo "Starting with 4.x releases, the conf.d parameters have changed."
 	echo

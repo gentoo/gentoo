@@ -5,7 +5,7 @@
 EAPI=3
 
 DESCRIPTION="GObject-based XIM protocol library"
-HOMEPAGE="http://tagoh.bitbucket.org/libgxim/"
+HOMEPAGE="https://tagoh.bitbucket.org/libgxim/"
 SRC_URI="https://bitbucket.org/tagoh/libgxim/downloads/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

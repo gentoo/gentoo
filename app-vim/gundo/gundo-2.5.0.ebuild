@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit vim-plugin python-single-r1
 
 DESCRIPTION="vim plugin: visualize your Vim undo tree"
-HOMEPAGE="http://sjl.bitbucket.org/gundo.vim/"
+HOMEPAGE="https://sjl.bitbucket.org/gundo.vim/"
 SRC_URI="https://github.com/sjl/gundo.vim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86 ~x64-macos"

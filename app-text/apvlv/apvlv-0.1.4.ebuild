@@ -8,7 +8,7 @@ inherit eutils cmake-utils
 
 MY_P="${P}-Source"
 DESCRIPTION="Alf's PDF Viewer Like Vim"
-HOMEPAGE="http://naihe2010.github.com/apvlv/"
+HOMEPAGE="https://naihe2010.github.com/apvlv/"
 SRC_URI="mirror://github/naihe2010/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

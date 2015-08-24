@@ -100,6 +100,6 @@ pkg_postinst() {
 	kernel-2_pkg_postinst
 
 	elog
-	elog "For more info on this patchset, see: http://forums.gentoo.org/viewtopic-t-941030-start-0.html"
+	elog "For more info on this patchset, see: https://forums.gentoo.org/viewtopic-t-941030-start-0.html"
 	elog
 }

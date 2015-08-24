@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby wrapper around the Twitter API"
-HOMEPAGE="http://sferik.github.com/twitter/"
+HOMEPAGE="https://sferik.github.com/twitter/"
 SRC_URI="https://github.com/sferik/twitter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

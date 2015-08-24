@@ -7,7 +7,7 @@ EAPI=5
 inherit readme.gentoo elisp
 
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-2+"

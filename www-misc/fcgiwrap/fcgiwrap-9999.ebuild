@@ -20,7 +20,7 @@ if [[ ${PV} == *9999* ]]; then
 	KEYWORDS=""
 else
 	MY_REV="58ec209"
-	#SRC_URI="http://download.github.com/gnosek-${P}-4-g${MY_REV}.tar.gz"
+	#SRC_URI="https://download.github.com/gnosek-${P}-4-g${MY_REV}.tar.gz"
 	SRC_URI="mirror://gentoo/${P}.tar.gz"
 	S="${WORKDIR}/gnosek-${PN}-${MY_REV}"
 

@@ -32,7 +32,7 @@ src_install() {
 	env INTERACTIVE=no INSTALL_DIR="${D}/usr" TEMP_DIR="${T}" \
 		FINAL_INSTALL_DIR=/usr \
 		./install-${P} \
-		|| die "failed to install - please attach ${T}/air-install.log to a bug report at http://bugs.gentoo.org"
+		|| die "failed to install - please attach ${T}/air-install.log to a bug report at https://bugs.gentoo.org"
 
 	dodoc README
 

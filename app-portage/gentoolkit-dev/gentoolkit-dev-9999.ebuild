@@ -12,7 +12,7 @@ inherit python-r1
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/gentoolkit.git
-		http://anongit.gentoo.org/git/proj/gentoolkit.git"
+		https://anongit.gentoo.org/git/proj/gentoolkit.git"
 	EGIT_BRANCH="gentoolkit-dev"
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.gz"

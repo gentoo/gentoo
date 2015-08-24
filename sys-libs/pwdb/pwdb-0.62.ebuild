@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="Password database"
-HOMEPAGE="http://packages.gentoo.org/package/sys-libs/pwdb"
+HOMEPAGE="https://packages.gentoo.org/package/sys-libs/pwdb"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="|| ( BSD GPL-2 )"

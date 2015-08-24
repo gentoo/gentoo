@@ -34,7 +34,7 @@ COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 if [[ ${PV} == 9999* ]]
 then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git
-		http://anongit.gentoo.org/git/proj/${PN}.git"
+		https://anongit.gentoo.org/git/proj/${PN}.git"
 	inherit git-2 bash-completion-r1 eutils
 	S="${WORKDIR}/${PN}"
 	SRC_URI="${COMMON_URI}"

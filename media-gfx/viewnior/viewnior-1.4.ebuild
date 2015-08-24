@@ -6,7 +6,7 @@ EAPI="5"
 inherit fdo-mime gnome2-utils autotools
 
 DESCRIPTION="Fast and simple image viewer"
-HOMEPAGE="http://xsisqox.github.com/Viewnior/index.html"
+HOMEPAGE="https://xsisqox.github.com/Viewnior/index.html"
 SRC_URI="https://www.dropbox.com/s/zytq0suabesv933/${P}.tar.gz"
 
 LICENSE="GPL-3"

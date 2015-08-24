@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 DOCS="README"
 
 src_prepare() {
-	# http://bugs.gentoo.org/470874
+	# https://bugs.gentoo.org/470874
 	local d="${WORKDIR}"/debian/patches
 	sed -i -e '/#/d' "${d}"/series || die
 	EPATCH_SOURCE="${d}" epatch $(<"${d}"/series)

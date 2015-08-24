@@ -34,7 +34,7 @@ pkg_setup() {
 
 src_prepare() {
 	find . -name Makefile.am -exec sed -i -e '/CFLAGS/s:-g -O2::' {} + || die
-	# http://bugs.gentoo.org/509886
+	# https://bugs.gentoo.org/509886
 	use elibc_uclibc && { sed -i -e 's:oldapi queue_timer:queue_timer:' test/Makefile.am || die; }
 	epatch_user
 	eautoreconf

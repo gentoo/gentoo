@@ -36,7 +36,7 @@ inherit eutils toolchain-funcs user
 # POPA3D_VIRTUAL_HOME_PATH
 #
 # Set this field to the base virtual home path. For more information
-# read the virtual guide here: http://forums.gentoo.org/viewtopic.php?t=82386
+# read the virtual guide here: https://forums.gentoo.org/viewtopic.php?t=82386
 #
 ######
 # 12/07/2005 - port001

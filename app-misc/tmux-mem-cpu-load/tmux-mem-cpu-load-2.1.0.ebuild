@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="amd64 x86"
-	SRC_URI="http://www.github.com/thewtex/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+	SRC_URI="https://www.github.com/thewtex/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="CPU, RAM memory, and load monitor for use with tmux"

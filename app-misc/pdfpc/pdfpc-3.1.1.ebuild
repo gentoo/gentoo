@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Presenter console with multi-monitor support for PDF files"
-HOMEPAGE="http://davvil.github.com/pdfpc/"
+HOMEPAGE="https://davvil.github.com/pdfpc/"
 SRC_URI="mirror://github/davvil/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"

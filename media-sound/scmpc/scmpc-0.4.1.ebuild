@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="a client for MPD which submits your tracks to last.fm"
-HOMEPAGE="http://cmende.github.com/scmpc/"
+HOMEPAGE="https://cmende.github.com/scmpc/"
 SRC_URI="https://dev.gentoo.org/~angelos/${P}.tar.bz2"
 
 LICENSE="GPL-2"

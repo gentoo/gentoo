@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="command line date and time utilities"
-HOMEPAGE="http://hroptatyr.github.com/dateutils/"
+HOMEPAGE="https://hroptatyr.github.com/dateutils/"
 SRC_URI="https://bitbucket.org/hroptatyr/${PN}/downloads/${P}.tar.xz"
 
 LICENSE="BSD"

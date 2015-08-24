@@ -9,7 +9,7 @@ inherit readme.gentoo
 [[ "${PV}" == "9999" ]] && inherit git-2
 
 DESCRIPTION="The Gentoo Development Guide"
-HOMEPAGE="http://devmanual.gentoo.org/"
+HOMEPAGE="https://devmanual.gentoo.org/"
 if [[ "${PV}" == "9999" ]]; then
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/devmanual.git"
 else

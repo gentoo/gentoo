@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils cmake-utils gnome2-utils
 
 DESCRIPTION="Alf's PDF Viewer Like Vim"
-HOMEPAGE="http://naihe2010.github.com/apvlv/"
+HOMEPAGE="https://naihe2010.github.com/apvlv/"
 SRC_URI="https://github.com/naihe2010/apvlv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

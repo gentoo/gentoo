@@ -43,7 +43,7 @@ src_configure() {
 
 src_install() {
 	default
-	# http://bugs.gentoo.org/401221
+	# https://bugs.gentoo.org/401221
 	mv -vf "${ED}"usr/share/man/man1/efax{,-0.9a}.1 || die
 	mv -vf "${ED}"usr/share/man/man1/efix{,-0.9a}.1 || die
 }

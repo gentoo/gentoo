@@ -81,7 +81,7 @@ src_install() {
 			"${ED}"/usr/$(get_libdir)/pkgconfig/${PN}.pc || die
 	fi
 
-	# http://bugs.gentoo.org/467768
+	# https://bugs.gentoo.org/467768
 	local _rdocdir=/usr/share/doc/${PF}/html/${PN}
 	[[ -d ${ED}/${_rdocdir} ]] && dosym ${_rdocdir} /usr/share/gtk-doc/html/${PN}
 }

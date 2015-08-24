@@ -34,13 +34,13 @@ src_prepare() {
 	# Don't use -Werror
 	sed -i -e 's/ -Werror//' {src,tests}/Makefile.{am,in} || die
 
-	# Disable MONO for now because of http://bugs.gentoo.org/382491
+	# Disable MONO for now because of https://bugs.gentoo.org/382491
 	sed -i -e '/^MONO_REQUIRED_VERSION/s:=.*:=9999:' configure || die
 	use introspection && vala_src_prepare
 }
 
 src_configure() {
-	# http://bugs.gentoo.org/409133
+	# https://bugs.gentoo.org/409133
 	export APPINDICATOR_PYTHON_CFLAGS=' '
 	export APPINDICATOR_PYTHON_LIBS=' '
 

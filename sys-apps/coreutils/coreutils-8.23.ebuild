@@ -86,7 +86,7 @@ src_configure() {
 	econf \
 		--with-packager="Gentoo" \
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})" \
-		--with-packager-bug-reports="http://bugs.gentoo.org/" \
+		--with-packager-bug-reports="https://bugs.gentoo.org/" \
 		--enable-install-program="arch" \
 		--enable-no-install-program="groups,hostname,kill,su,uptime" \
 		--enable-largefile \

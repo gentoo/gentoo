@@ -60,7 +60,7 @@ src_install() {
 	dohtml {NEWS,README,RELEASE,UPGRADING}.html
 	prune_libtool_files --all
 
-	# http://bugs.gentoo.org/467768
+	# https://bugs.gentoo.org/467768
 	local _rdocdir=/usr/share/doc/${PF}/html/${MY_PN}
 	[[ -d ${ED}/${_rdocdir} ]] && dosym ${_rdocdir} /usr/share/gtk-doc/html/${MY_PN}
 }

@@ -18,7 +18,7 @@ RUBY_FAKEGEM_GEMSPEC="jeweler.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Rake tasks for managing gems and versioning and a generator for creating a new project"
-HOMEPAGE="http://wiki.github.com/technicalpickles/jeweler"
+HOMEPAGE="https://wiki.github.com/technicalpickles/jeweler"
 
 LICENSE="MIT"
 SLOT="0"

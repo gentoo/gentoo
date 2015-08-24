@@ -64,6 +64,6 @@ pkg_postinst() {
 		elog "Upstream does NOT support such way of building CARE,"
 		elog "it provides only prebuilt binaries."
 		elog "CARE also has known problems on hardened systems"
-		elog "Please do NOT file bugs about them to http://bugs.gentoo.org"
+		elog "Please do NOT file bugs about them to https://bugs.gentoo.org"
 	fi
 }

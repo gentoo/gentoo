@@ -9,7 +9,7 @@ inherit vim-plugin
 
 MY_PN="Gundo"
 DESCRIPTION="vim plugin: visualize your Vim undo tree"
-HOMEPAGE="http://sjl.bitbucket.org/gundo.vim/"
+HOMEPAGE="https://sjl.bitbucket.org/gundo.vim/"
 SRC_URI="https://github.com/vim-scripts/${MY_PN}/tarball/${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

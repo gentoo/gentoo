@@ -40,7 +40,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-support_for_more_than_one_CPU.patch \
 		"${FILESDIR}"/${P}-vala-0.24.patch
 
-	# See http://bugs.gentoo.org/ wrt #428438
+	# See https://bugs.gentoo.org/ wrt #428438
 	echo src/configurator.c >> po/POTFILES.skip
 	echo src/power-infos.c >> po/POTFILES.skip
 

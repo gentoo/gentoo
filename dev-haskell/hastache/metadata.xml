@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		Haskell implementation of Mustache templates (&lt;http://mustache.github.com/&gt;).
+		Haskell implementation of Mustache templates (&lt;https://mustache.github.com/&gt;).
 		
 		See homepage for examples of usage: &lt;https://github.com/lymar/hastache&gt;
 	</longdescription>

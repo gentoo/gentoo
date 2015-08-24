@@ -6,7 +6,7 @@ EAPI=4
 inherit readme.gentoo
 
 DESCRIPTION="Notifications for syslog entries via libnotify"
-HOMEPAGE="http://jtniehof.github.com/syslog-notify/"
+HOMEPAGE="https://jtniehof.github.com/syslog-notify/"
 SRC_URI="mirror://github/jtniehof/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -34,6 +34,6 @@ src_compile() {
 pkg_postinst() {
 	if use threads; then
 		elog "If you can't connect MPD, please unset USE threads."
-		elog "See, http://bugs.gentoo.org/276970 for information."
+		elog "See, https://bugs.gentoo.org/276970 for information."
 	fi
 }

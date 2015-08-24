@@ -91,7 +91,7 @@ pkg_setup() {
 			echo "rm ${directory}"
 			echo 'emerge -1 $(< /tmp/jruby.fix)'
 
-			eerror "For more information, please see http://bugs.gentoo.org/show_bug.cgi?id=302187"
+			eerror "For more information, please see https://bugs.gentoo.org/show_bug.cgi?id=302187"
 			fail="true"
 		fi
 	done

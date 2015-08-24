@@ -42,6 +42,6 @@ pkg_postinst() {
 	elog " APR should be available with Tomcat, for more information"
 	elog " please see http://tomcat.apache.org/tomcat-6.0-doc/apr.html"
 	elog
-	elog " Please report any bugs to http://bugs.gentoo.org/"
+	elog " Please report any bugs to https://bugs.gentoo.org/"
 	elog
 }

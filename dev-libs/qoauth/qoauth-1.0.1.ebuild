@@ -7,7 +7,7 @@ EAPI=4
 inherit qt4-r2
 
 DESCRIPTION="A Qt-based library for OAuth support"
-HOMEPAGE="http://wiki.github.com/ayoy/qoauth"
+HOMEPAGE="https://wiki.github.com/ayoy/qoauth"
 SRC_URI="http://files.ayoy.net/qoauth/release/${PV}/src/${P}-src.tar.bz2"
 
 LICENSE="LGPL-2.1"

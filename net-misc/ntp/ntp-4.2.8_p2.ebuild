@@ -123,6 +123,6 @@ pkg_postinst() {
 		eerror "The notrust option was found in your /etc/ntp.conf!"
 		ewarn "If your ntpd starts sending out weird responses,"
 		ewarn "then make sure you have keys properly setup and see"
-		ewarn "http://bugs.gentoo.org/41827"
+		ewarn "https://bugs.gentoo.org/41827"
 	fi
 }

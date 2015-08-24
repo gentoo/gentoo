@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils git-2
 
 DESCRIPTION="Growl Implementation For Linux"
-HOMEPAGE="http://mattn.github.com/growl-for-linux/"
+HOMEPAGE="https://mattn.github.com/growl-for-linux/"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -9,7 +9,7 @@ EGIT_REPO_URI="git://anongit.gentoo.org/proj/eselect.git"
 inherit autotools git-r3 bash-completion-r1
 
 DESCRIPTION="Gentoo's multi-purpose configuration and management tool"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Eselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
 
 LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-2.5 )"
 SLOT="0"
