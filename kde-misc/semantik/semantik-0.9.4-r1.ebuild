@@ -8,7 +8,7 @@ CMAKE_REQUIRED="never"
 NO_WAF_LIBDIR="true"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
-inherit python-single-r1 kde4-base waf-utils
+inherit eutils python-single-r1 kde4-base waf-utils
 
 DESCRIPTION="Mindmapping-like tool for document generation"
 HOMEPAGE="http://freehackers.org/~tnagy/semantik.html https://code.google.com/p/semantik/"
@@ -31,9 +31,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog README TODO )
-PATCHES=( "${FILESDIR}"/${PN}-0.9.0-wscript_ldconfig.patch )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
 	kde4-base_pkg_setup
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-0.9.0-wscript_ldconfig.patch"
 }
