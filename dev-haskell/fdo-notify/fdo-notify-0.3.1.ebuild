@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Desktop Notifications client"
-HOMEPAGE="http://bitbucket.org/taejo/fdo-notify/"
+HOMEPAGE="https://bitbucket.org/taejo/fdo-notify/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

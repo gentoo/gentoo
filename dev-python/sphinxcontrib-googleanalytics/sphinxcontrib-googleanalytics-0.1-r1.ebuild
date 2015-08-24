@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Sphinx extension googleanalytics"
-HOMEPAGE="http://bitbucket.org/birkenfeld/sphinx-contrib"
+HOMEPAGE="https://bitbucket.org/birkenfeld/sphinx-contrib"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

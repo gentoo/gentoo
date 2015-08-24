@@ -6,7 +6,7 @@ EAPI=5
 
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="http://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
 EGIT_BRANCH="python-exec2"
 
 inherit git-r3

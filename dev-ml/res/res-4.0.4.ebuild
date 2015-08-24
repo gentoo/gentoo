@@ -9,7 +9,7 @@ OASIS_BUILD_DOCS=1
 inherit oasis
 
 DESCRIPTION="Resizable Array and Buffer modules for O'Caml"
-HOMEPAGE="http://bitbucket.org/mmottl/res"
+HOMEPAGE="https://bitbucket.org/mmottl/res"
 SRC_URI="https://bitbucket.org/mmottl/res/downloads/${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception"
 

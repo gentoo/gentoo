@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="Sphinx spelling extension"
-HOMEPAGE="http://bitbucket.org/dhellmann/sphinxcontrib-spelling"
+HOMEPAGE="https://bitbucket.org/dhellmann/sphinxcontrib-spelling"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

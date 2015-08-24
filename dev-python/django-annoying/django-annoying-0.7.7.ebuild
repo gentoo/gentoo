@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="This is django application that try to eliminate annoying things in Django framework"
-HOMEPAGE="http://bitbucket.org/offline/django-annoying/wiki/Home"
+HOMEPAGE="https://bitbucket.org/offline/django-annoying/wiki/Home"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

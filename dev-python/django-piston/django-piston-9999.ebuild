@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 mercurial
 
 DESCRIPTION="A mini-framework for Django for creating RESTful APIs"
-HOMEPAGE="http://bitbucket.org/jespern/django-piston/wiki/Home"
-EHG_REPO_URI="http://bitbucket.org/jespern/django-piston/"
+HOMEPAGE="https://bitbucket.org/jespern/django-piston/wiki/Home"
+EHG_REPO_URI="https://bitbucket.org/jespern/django-piston/"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ MY_PN=${PN/-wez}
 
 DESCRIPTION="command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files"
 HOMEPAGE="https://github.com/wez/atomicparsley"
-SRC_URI="http://bitbucket.org/wez/${MY_PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://bitbucket.org/wez/${MY_PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

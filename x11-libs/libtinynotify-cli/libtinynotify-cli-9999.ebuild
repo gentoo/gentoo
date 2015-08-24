@@ -6,7 +6,7 @@ EAPI=5
 
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="http://bitbucket.org/mgorny/tinynotify-send.git"
+EGIT_REPO_URI="https://bitbucket.org/mgorny/tinynotify-send.git"
 
 inherit git-r3
 #endif

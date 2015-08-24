@@ -9,8 +9,8 @@ OASIS_BUILD_DOCS=1
 inherit oasis
 
 DESCRIPTION="Partially Ordered Map ADT for O'Caml"
-HOMEPAGE="http://bitbucket.org/mmottl/pomap"
-SRC_URI="http://bitbucket.org/mmottl/pomap/downloads/${P}.tar.gz"
+HOMEPAGE="https://bitbucket.org/mmottl/pomap"
+SRC_URI="https://bitbucket.org/mmottl/pomap/downloads/${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception"
 
 DEPEND=""

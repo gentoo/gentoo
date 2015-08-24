@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Wraps the best available JSON implementation available in a common interface"
-HOMEPAGE="http://bitbucket.org/runeh/anyjson"
+HOMEPAGE="https://bitbucket.org/runeh/anyjson"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

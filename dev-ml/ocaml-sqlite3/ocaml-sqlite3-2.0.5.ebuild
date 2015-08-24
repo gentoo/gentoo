@@ -13,8 +13,8 @@ MY_PN="sqlite3-ocaml"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A package for ocaml that provides access to SQLite databases"
-HOMEPAGE="http://bitbucket.org/mmottl/sqlite3-ocaml"
-SRC_URI="http://bitbucket.org/mmottl/${MY_PN}/downloads/${MY_P}.tar.gz"
+HOMEPAGE="https://bitbucket.org/mmottl/sqlite3-ocaml"
+SRC_URI="https://bitbucket.org/mmottl/${MY_PN}/downloads/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

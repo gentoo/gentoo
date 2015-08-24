@@ -10,7 +10,7 @@ OASIS_BUILD_TESTS=1
 inherit oasis
 
 DESCRIPTION="Library for automated conversion of OCaml-values to and from S-expressions"
-HOMEPAGE="http://bitbucket.org/yminsky/ocaml-core/wiki/Home"
+HOMEPAGE="https://bitbucket.org/yminsky/ocaml-core/wiki/Home"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

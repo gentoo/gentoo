@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A mini-framework for Django for creating RESTful APIs"
-HOMEPAGE="http://bitbucket.org/jespern/django-piston/wiki/Home"
+HOMEPAGE="https://bitbucket.org/jespern/django-piston/wiki/Home"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

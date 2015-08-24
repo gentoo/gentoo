@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="ChangeLog Contributors.rdoc README.rdoc History.rdoc"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Ruby extension library providing an API to PostgreSQL"
-HOMEPAGE="http://bitbucket.org/ged/ruby-pg/"
+HOMEPAGE="https://bitbucket.org/ged/ruby-pg/"
 
 LICENSE="|| ( GPL-2 Ruby )"
 SLOT="0"
