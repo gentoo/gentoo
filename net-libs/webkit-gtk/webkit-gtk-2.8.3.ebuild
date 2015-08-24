@@ -60,7 +60,8 @@ RDEPEND="
 		>=media-libs/gst-plugins-base-1.2:1.0 )
 	introspection? ( >=dev-libs/gobject-introspection-1.32.0 )
 	libsecret? ( app-crypt/libsecret )
-	opengl? ( virtual/opengl )
+	opengl? ( virtual/opengl
+		x11-libs/cairo[opengl] )
 	spell? ( >=app-text/enchant-0.22:= )
 	wayland? ( >=x11-libs/gtk+-3.14:3[wayland] )
 	webgl? (
