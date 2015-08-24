@@ -8847,7 +8847,7 @@ dev-util/cmdtest 0.6 0.10: black box tests Unix command line tools
 dev-util/cmocka 0.3.1 0.3.1-r1 0.4.1 1.0.1: A unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.10 1.11 1.12 1.13: A semantic grep for the C language
-dev-util/coccinelle 1.0.0 1.0.1: Program matching and transformation engine
+dev-util/coccinelle 1.0.0 1.0.1 1.0.2: Program matching and transformation engine
 dev-util/cocom 0.996-r1: Toolset to help create compilers, cross-compilers, interpreters, and other language processors
 dev-util/codeblocks 13.12 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.11 0.12.0: COmputer Language Manipulation
