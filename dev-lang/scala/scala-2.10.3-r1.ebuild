@@ -83,8 +83,7 @@ COMMON_DEP="dev-java/ant-core:0
 	dev-java/hawtjni-runtime:0"
 
 DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.6.0
-	<virtual/jdk-1.8.0
+	|| ( =virtual/jdk-1.6* =virtual/jdk-1.7* )
 	java-virtuals/jdk-with-com-sun:0
 	!binary? (
 		dev-java/ant-core:0

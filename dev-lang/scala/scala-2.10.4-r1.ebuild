@@ -83,16 +83,14 @@ COMMON_DEP="dev-java/ant-core:0
 DEPEND="${COMMON_DEP}
 	java-virtuals/jdk-with-com-sun:0
 	!binary? (
-		>=virtual/jdk-1.6.0
-		<virtual/jdk-1.8.0
+		|| ( =virtual/jdk-1.6* =virtual/jdk-1.7* )
 		dev-java/ant-core:0
 		dev-java/ant-contrib:0
 		dev-java/ant-nodeps:0
 		media-gfx/graphviz
 	)
 	binary? (
-		>=virtual/jdk-1.7.0
-		<virtual/jdk-1.8.0
+		=virtual/jdk-1.7*
 	)
 	app-arch/xz-utils:0"
 
