@@ -9,7 +9,7 @@ EGO_SRC="golang.org/x/tools"
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
-	EGIT_COMMIT="ac303766f5f240c1796eeea3dc9bf34f1261aa35"
+	EGIT_COMMIT="6c9aff3"
 	ARCHIVE_URI="https://github.com/golang/tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 	inherit golang-vcs-snapshot
