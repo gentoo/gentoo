@@ -7,8 +7,8 @@ EAPI="5"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="small utility to wait for an arbitrary process to exit"
-HOMEPAGE="http://dev.gentoo.org/~zzam/wait_on_pid/"
-SRC_URI="mirror://gentoo/$P.tar.bz2 http://dev.gentoo.org/~zzam/wait_on_pid/$P.tar.bz2"
+HOMEPAGE="https://dev.gentoo.org/~zzam/wait_on_pid/"
+SRC_URI="mirror://gentoo/$P.tar.bz2 https://dev.gentoo.org/~zzam/wait_on_pid/$P.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

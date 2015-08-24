@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="A collection of Gentoo themes for splashutils"
-HOMEPAGE="http://dev.gentoo.org/~spock/"
+HOMEPAGE="https://dev.gentoo.org/~spock/"
 SRC_URI="mirror://gentoo/fbsplash-theme-emergence-r2.tar.bz2
 	 mirror://gentoo/fbsplash-theme-gentoo-r2.tar.bz2
 	 mirror://gentoo/fbsplash-theme-emerge-world-1.0.tar.bz2

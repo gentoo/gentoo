@@ -8,7 +8,7 @@ inherit eutils
 DESCRIPTION="A utility to run commands with fake root privileges"
 HOMEPAGE="http://sourceforge.net/projects/fakerootng/"
 SRC_URI="mirror://sourceforge/${PN//-/}/${PF}.tar.gz
-	http://dev.gentoo.org/~ssuominen/${P}-gcc47.patch.xz"
+	https://dev.gentoo.org/~ssuominen/${P}-gcc47.patch.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

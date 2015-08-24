@@ -9,7 +9,7 @@ inherit cmake-utils eutils python-r1 multilib-minimal
 
 DESCRIPTION="A HTML/CSS User Interface library"
 HOMEPAGE="http://librocket.com/"
-SRC_URI="http://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

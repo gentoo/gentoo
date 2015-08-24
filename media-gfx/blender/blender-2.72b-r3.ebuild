@@ -37,13 +37,13 @@ HOMEPAGE="http://www.blender.org"
 
 case ${PV} in
 	*_p*)
-		SRC_URI="http://dev.gentoo.org/~lu_zero/${P}.tar.gz" ;;
+		SRC_URI="https://dev.gentoo.org/~lu_zero/${P}.tar.gz" ;;
 	*)
 		SRC_URI="http://download.blender.org/source/${P}.tar.gz" ;;
 esac
 
 if [[ -n ${PATCHSET} ]]; then
-	SRC_URI+=" http://dev.gentoo.org/~flameeyes/${PN}/${P}-patches-${PATCHSET}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~flameeyes/${PN}/${P}-patches-${PATCHSET}.tar.xz"
 fi
 
 SLOT="0"

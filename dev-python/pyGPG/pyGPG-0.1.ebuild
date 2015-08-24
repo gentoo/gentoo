@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://github.com/dol-sen/pyGPG.git"
 
 DESCRIPTION="A python interface wrapper for gnupg's gpg command"
 HOMEPAGE="https://github.com/dol-sen/pyGPG"
-SRC_URI="http://dev.gentoo.org/~dolsen/releases/pyGPG/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/pyGPG/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

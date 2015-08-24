@@ -17,7 +17,7 @@ JEDIT_P="${JEDIT_PN}-${JEDIT_PV}"
 DESCRIPTION="Isabelle is a generic proof assistant"
 HOMEPAGE="http://www.cl.cam.ac.uk/research/hvg/isabelle/index.html"
 SRC_URI="http://www.cl.cam.ac.uk/research/hvg/isabelle/dist/${MY_P}.tar.gz
-		doc? ( http://dev.gentoo.org/~gienah/snapshots/${MY_P}-doc-src.tar.gz )
+		doc? ( https://dev.gentoo.org/~gienah/snapshots/${MY_P}-doc-src.tar.gz )
 		pide? ( http://www4.in.tum.de/~wenzelm/test/${JEDIT_P}.tar.gz )"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ inherit git-2 bash-completion-r1
 
 EGIT_REPO_URI="git://github.com/gentoo-perl/genlop.git"
 DESCRIPTION="A nice emerge.log parser"
-HOMEPAGE="http://www.gentoo.org/proj/en/perl"
+HOMEPAGE="https://www.gentoo.org/proj/en/perl"
 SRC_URI=""
 
 LICENSE="GPL-2"

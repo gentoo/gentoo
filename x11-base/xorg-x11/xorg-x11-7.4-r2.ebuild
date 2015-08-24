@@ -147,7 +147,7 @@ pkg_postinst() {
 	elog
 
 	# (#76985)
-	elog "Visit http://www.gentoo.org/doc/en/index.xml?catid=desktop"
+	elog "Visit https://www.gentoo.org/doc/en/index.xml?catid=desktop"
 	elog "for more information on configuring X."
 	elog
 }

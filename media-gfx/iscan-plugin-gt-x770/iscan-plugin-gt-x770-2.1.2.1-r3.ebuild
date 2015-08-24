@@ -12,8 +12,8 @@ MY_PVR="$(replace_version_separator 3 -)"
 DESCRIPTION="Epson Perfection V500 scanner plugin for SANE 'epkowa' backend"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 SRC_URI="
-	x86? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}/${MY_PV}/${PN}-${MY_PVR}.i386.rpm )
-	amd64? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}/${MY_PV}/${PN}-${MY_PVR}.x86_64.rpm )
+	x86? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}/${MY_PV}/${PN}-${MY_PVR}.i386.rpm )
+	amd64? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}/${MY_PV}/${PN}-${MY_PVR}.x86_64.rpm )
 "
 
 LICENSE="AVASYS"

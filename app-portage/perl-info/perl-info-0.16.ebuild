@@ -3,9 +3,9 @@
 # $Id$
 
 DESCRIPTION="Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl"
-HOMEPAGE="http://www.gentoo.org/proj/en/perl/"
+HOMEPAGE="https://www.gentoo.org/proj/en/perl/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
-	http://dev.gentoo.org/~tove/files/${P}.tar.gz"
+	https://dev.gentoo.org/~tove/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

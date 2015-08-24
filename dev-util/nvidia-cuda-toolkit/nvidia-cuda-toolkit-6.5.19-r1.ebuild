@@ -47,7 +47,7 @@ pkg_setup() {
 		ewarn "Starting with version 6.5 NVIDIA dropped more and more"
 		ewarn "the support for 32bit linux."
 		ewarn "Be aware that bugfixes and new features may not be available."
-		ewarn "http://dev.gentoo.org/~jlec/distfiles/CUDA_Toolkit_Release_Notes.pdf"
+		ewarn "https://dev.gentoo.org/~jlec/distfiles/CUDA_Toolkit_Release_Notes.pdf"
 	fi
 }
 

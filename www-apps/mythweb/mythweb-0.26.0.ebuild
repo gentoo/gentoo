@@ -15,7 +15,7 @@ DESCRIPTION="PHP scripts intended to manage MythTV from a web browser"
 HOMEPAGE="http://www.mythtv.org"
 LICENSE="GPL-2"
 SRC_URI="ftp://ftp.osuosl.org/pub/mythtv/${MY_P}.tar.bz2
-	${BACKPORTS:+http://dev.gentoo.org/~cardoe/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
+	${BACKPORTS:+https://dev.gentoo.org/~cardoe/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~x86"
 

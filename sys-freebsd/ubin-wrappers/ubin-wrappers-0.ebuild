@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="/usr/bin wrapper scripts for FreeBSD script compatibility"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI=""
 
 LICENSE="public-domain"

@@ -9,7 +9,7 @@ DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple 
 HOMEPAGE="http://synergy-project.org/ https://github.com/synergy/synergy"
 SRC_URI="
 	https://github.com/${PN}/${PN}/archive/v${PV}-stable.tar.gz -> ${P}.tar.gz
-	http://dev.gentoo.org/~hasufell/distfiles/${PN}.png
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
 "
 
 LICENSE="GPL-2"

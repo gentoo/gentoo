@@ -9,7 +9,7 @@ inherit eutils gnome2-utils games
 DESCRIPTION="A mashup of \"Not\" and \"Pacman\""
 HOMEPAGE="http://stabyourself.net/notpacman/"
 SRC_URI="http://stabyourself.net/dl.php?file=notpacman-1004/notpacman-linux.zip -> ${P}.zip
-	http://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png"
 
 LICENSE="WTFPL-2"
 SLOT="0"

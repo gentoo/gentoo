@@ -8,9 +8,9 @@ inherit eutils user
 DESCRIPTION="Perl based e-mail filtering tool, sensitive to html tags, mime types and attachments"
 HOMEPAGE="http://mailtools.anomy.net/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/sample_e-mail-architecture.png.tar
+	https://dev.gentoo.org/~jlec/distfiles/sample_e-mail-architecture.png.tar
 	http://mailtools.anomy.net/dist/${PN}-${PV}.tar.gz
-	http://dev.gentoo.org/~pacho/maintainer-needed/sample_e-mail-architektur.flw"
+	https://dev.gentoo.org/~pacho/maintainer-needed/sample_e-mail-architektur.flw"
 
 LICENSE="GPL-2"
 SLOT="0"

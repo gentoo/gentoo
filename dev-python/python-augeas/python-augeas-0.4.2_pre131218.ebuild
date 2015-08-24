@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python bindings for Augeas"
 HOMEPAGE="http://augeas.net/"
 #SRC_URI="https://fedorahosted.org/released/${PN}/${P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

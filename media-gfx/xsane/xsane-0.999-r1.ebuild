@@ -9,7 +9,7 @@ DESCRIPTION="graphical scanning frontend"
 HOMEPAGE="http://www.xsane.org/"
 SRC_URI="
 	http://www.xsane.org/download/${P}.tar.gz
-	http://dev.gentoo.org/~dilfridge/distfiles/${PN}-0.998-patches-2.tar.xz
+	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-0.998-patches-2.tar.xz
 "
 
 LICENSE="GPL-2"

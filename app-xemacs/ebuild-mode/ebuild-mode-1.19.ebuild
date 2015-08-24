@@ -6,7 +6,7 @@ inherit xemacs-elisp eutils
 
 MY_PN="gentoo-syntax"
 DESCRIPTION="An Emacs mode for editing ebuilds and other Gentoo specific files"
-HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/index.xml"
+HOMEPAGE="https://www.gentoo.org/proj/en/lisp/emacs/index.xml"
 SRC_URI="mirror://gentoo/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2+"

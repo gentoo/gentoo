@@ -12,7 +12,7 @@ inherit autotools eutils gnome2-utils games
 DESCRIPTION="Free Awale - The game of all Africa"
 HOMEPAGE="http://www.nongnu.org/awale/"
 SRC_URI="mirror://nongnu/awale/${P}.tar.gz"
-SRC_URI="${SRC_URI} http://dev.gentoo.org/~hasufell/distfiles/${P}-no-autoreconf2.patch.xz" # STABLE ARCH
+SRC_URI="${SRC_URI} https://dev.gentoo.org/~hasufell/distfiles/${P}-no-autoreconf2.patch.xz" # STABLE ARCH
 
 LICENSE="GPL-2"
 SLOT="0"

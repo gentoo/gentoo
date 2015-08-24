@@ -5,13 +5,13 @@
 EAPI=5
 
 DESCRIPTION="User land tool for cleaning up old perl installs"
-HOMEPAGE="http://www.gentoo.org/proj/en/perl/"
+HOMEPAGE="https://www.gentoo.org/proj/en/perl/"
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/gentoo-perl/perl-cleaner.git"
 else
-	SRC_URI="mirror://gentoo/${P}.tar.bz2 http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
+	SRC_URI="mirror://gentoo/${P}.tar.bz2 https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 fi
 

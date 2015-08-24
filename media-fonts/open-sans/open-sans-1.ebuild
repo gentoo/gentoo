@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="A clean and modern sans-serif typeface designed for legibility across interfaces"
 HOMEPAGE="http://www.opensans.com/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.zip"
 # renamed from unversioned google zip
 
 LICENSE="Apache-2.0"

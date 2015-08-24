@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="A mode for editing Visual Basic programs"
 HOMEPAGE="http://www.emacswiki.org/emacs/VisualBasicMode"
 # taken from http://www.emacswiki.org/emacs/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

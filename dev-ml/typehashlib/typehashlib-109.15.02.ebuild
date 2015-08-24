@@ -10,7 +10,7 @@ MY_P=${PN/-/_}-${PV}
 DESCRIPTION="Syntax extension for deriving 'typehash' functions automatically"
 HOMEPAGE="http://www.janestreet.com/ocaml"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV}/individual/${MY_P}.tar.gz
-	http://dev.gentoo.org/~aballier/distfiles/${MY_P}.tar.gz"
+	https://dev.gentoo.org/~aballier/distfiles/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"

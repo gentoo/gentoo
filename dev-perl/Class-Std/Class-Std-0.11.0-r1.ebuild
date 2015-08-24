@@ -9,7 +9,7 @@ MODULE_VERSION=0.011
 inherit perl-module
 
 DESCRIPTION='Support for creating standard "inside-out" classes'
-SRC_URI+=" http://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${P}-patch.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${P}-patch.tar.bz2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

@@ -5,7 +5,7 @@
 EAPI=3
 
 DESCRIPTION="PHP eselect module"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 SRC_URI="http://olemarkus.org/~olemarkus/gentoo/eselect-php-${PV}.bz2"
 
 LICENSE="GPL-2"

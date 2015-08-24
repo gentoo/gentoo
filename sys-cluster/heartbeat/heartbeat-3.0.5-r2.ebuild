@@ -43,7 +43,7 @@ pkg_setup() {
 	python_pkg_setup
 
 	ewarn "If you're upgrading from heartbeat-2.x please follow:"
-	ewarn "http://www.gentoo.org/proj/en/cluster/ha-cluster/heartbeat-upgrade.xml"
+	ewarn "https://www.gentoo.org/proj/en/cluster/ha-cluster/heartbeat-upgrade.xml"
 }
 
 src_prepare() {

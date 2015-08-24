@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Commandline tool for popular vector formats convertion"
 HOMEPAGE="http://sk1project.org/modules.php?name=Products&product=uniconvertor https://code.google.com/p/uniconvertor/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x86-solaris"
 SLOT="0"

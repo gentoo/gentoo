@@ -9,7 +9,7 @@ MODULE_VERSION=6.03
 inherit perl-module
 
 DESCRIPTION="Provide https support for LWP::UserAgent"
-SRC_URI+=" http://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${PN}_ca-cert-r1.patch.gz"
+SRC_URI+=" https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/${PN}_ca-cert-r1.patch.gz"
 
 SLOT="0"
 IUSE=""

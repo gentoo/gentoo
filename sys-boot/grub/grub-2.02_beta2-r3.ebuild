@@ -19,11 +19,11 @@ if [[ ${PV} != 9999 ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
 		SRC_URI="mirror://gnu-alpha/${PN}/${MY_P}.tar.xz
-			http://dev.gentoo.org/~floppym/dist/${P}-gentoo.tar.xz"
+			https://dev.gentoo.org/~floppym/dist/${P}-gentoo.tar.xz"
 		S=${WORKDIR}/${MY_P}
 	else
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-			http://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
+			https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
 	KEYWORDS="amd64 x86"

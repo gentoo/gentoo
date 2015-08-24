@@ -8,9 +8,9 @@ inherit eutils games
 
 DESCRIPTION="Counter-Strike 2D is freeware clone of Counter-Strike with some added features in gameplay"
 HOMEPAGE="http://www.cs2d.com/"
-SRC_URI="http://dev.gentoo.org/~maksbotan/cs2d/cs2d_${PV}_linux.zip
-	http://dev.gentoo.org/~maksbotan/cs2d/cs2d_${PV}_win.zip
-	http://dev.gentoo.org/~maksbotan/cs2d/cs2d.png"
+SRC_URI="https://dev.gentoo.org/~maksbotan/cs2d/cs2d_${PV}_linux.zip
+	https://dev.gentoo.org/~maksbotan/cs2d/cs2d_${PV}_win.zip
+	https://dev.gentoo.org/~maksbotan/cs2d/cs2d.png"
 LICENSE="freedist"
 
 SLOT="0"

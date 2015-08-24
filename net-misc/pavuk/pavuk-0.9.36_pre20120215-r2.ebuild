@@ -12,7 +12,7 @@ inherit eutils autotools-utils
 
 DESCRIPTION="Web spider and website mirroring tool"
 HOMEPAGE="http://www.pavuk.org/"
-SRC_URI="http://dev.gentoo.org/~pacho/maintainer-needed/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pacho/maintainer-needed/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

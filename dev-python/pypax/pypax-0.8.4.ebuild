@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python{2_7,3_3} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python module to get or set either PT_PAX and/or XATTR_PAX flags"
-HOMEPAGE="http://dev.gentoo.org/~blueness/elfix/
-	http://www.gentoo.org/proj/en/hardened/pax-quickstart.xml"
-SRC_URI="http://dev.gentoo.org/~blueness/elfix/elfix-${PV}.tar.gz"
+HOMEPAGE="https://dev.gentoo.org/~blueness/elfix/
+	https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml"
+SRC_URI="https://dev.gentoo.org/~blueness/elfix/elfix-${PV}.tar.gz"
 
 S="${WORKDIR}/elfix-${PV}/scripts"
 

@@ -11,7 +11,7 @@ inherit distutils-r1 eutils virtualx
 DESCRIPTION="Computer Algebra System in pure Python"
 HOMEPAGE="http://sympy.org"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz
-	http://dev.gentoo.org/~grozin/${P}-system-mpmath.patch.gz"
+	https://dev.gentoo.org/~grozin/${P}-system-mpmath.patch.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils cmake-utils flag-o-matic
 DESCRIPTION="find unused include directives in C/C++ programs"
 HOMEPAGE="https://code.google.com/p/include-what-you-use/"
 # picked from google drive
-SRC_URI="http://dev.gentoo.org/~slyfox/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

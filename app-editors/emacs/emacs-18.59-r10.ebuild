@@ -10,7 +10,7 @@ DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
 	ftp://ftp.splode.com/pub/users/friedman/emacs/${P}-linux22x-elf-glibc21.diff.gz
-	http://dev.gentoo.org/~ulm/emacs/${P}-patches-8.tar.bz2"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-8.tar.bz2"
 
 LICENSE="GPL-1+ GPL-2+ BSD" #HPND
 SLOT="18"

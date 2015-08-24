@@ -8,7 +8,7 @@ inherit user eutils webapp vcs-snapshot
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="http://tt-rss.org/"
-SRC_URI="http://dev.gentoo.org/~tomka/files/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~tomka/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~mips ~x86"

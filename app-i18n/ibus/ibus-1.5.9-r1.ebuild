@@ -29,7 +29,7 @@ REQUIRED_USE="
 		|| ( deprecated ( gtk3 introspection ) ) )" #342903
 
 [[ -n ${UPSTREAM_VER} ]] && \
-	UPSTRAM_PATCHSET_URI="http://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+	UPSTRAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
 SRC_URI="https://github.com/ibus/ibus/releases/download/${PV}/${P}.tar.gz
 	${UPSTRAM_PATCHSET_URI}"

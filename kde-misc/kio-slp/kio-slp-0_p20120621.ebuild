@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="Service Location Protocol component for KIO"
 HOMEPAGE="http://websvn.kde.org/trunk/playground/network/kio_slp/"
-SRC_URI="http://dev.gentoo.org/~creffett/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~creffett/${P}.tar.xz"
 
 LICENSE="GPL-1"
 KEYWORDS="~amd64 ~x86"

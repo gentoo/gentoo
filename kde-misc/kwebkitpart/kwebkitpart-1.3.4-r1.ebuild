@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="A WebKit KPart for Konqueror"
 HOMEPAGE="https://projects.kde.org/projects/extragear/base/kwebkitpart"
-SRC_URI="http://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="4"

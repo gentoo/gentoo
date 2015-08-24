@@ -14,8 +14,8 @@ FIRMWARE="esfwdd.bin"
 
 DESCRIPTION="Epson ${SCANNER} and similar scanner plugin for SANE 'epkowa' backend"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="amd64? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.x86_64.rpm )
-	x86? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.i386.rpm )"
+SRC_URI="amd64? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.x86_64.rpm )
+	x86? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.i386.rpm )"
 
 LICENSE="AVASYS"
 SLOT="0"

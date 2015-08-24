@@ -11,7 +11,7 @@ DESCRIPTION="Language and environment for statistical computing and graphics"
 HOMEPAGE="http://www.r-project.org/"
 SRC_URI="
 	mirror://cran/src/base/R-3/${P}.tar.gz
-	bash-completion? ( http://dev.gentoo.org/~bicatali/distfiles/${BCP}.bz2 )"
+	bash-completion? ( https://dev.gentoo.org/~bicatali/distfiles/${BCP}.bz2 )"
 
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1"
 SLOT="0"

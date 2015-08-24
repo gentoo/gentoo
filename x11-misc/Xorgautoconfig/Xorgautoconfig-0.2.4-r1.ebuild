@@ -5,7 +5,7 @@
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Xorgautconfig generates xorg.conf files for PPC based computers"
-HOMEPAGE="http://dev.gentoo.org/~josejx/Xorgautoconfig.html"
+HOMEPAGE="https://dev.gentoo.org/~josejx/Xorgautoconfig.html"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

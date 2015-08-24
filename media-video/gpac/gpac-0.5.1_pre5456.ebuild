@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	KEYWORDS="alpha sparc"
 else
 	if [[ ${PV%_p*} != ${PV} ]] ; then
-		SRC_URI="http://dev.gentoo.org/~lu_zero/${PN}/${P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~lu_zero/${PN}/${P}.tar.xz"
 	else
 		SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 	fi

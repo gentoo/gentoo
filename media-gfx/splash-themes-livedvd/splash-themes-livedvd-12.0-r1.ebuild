@@ -7,8 +7,8 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Gentoo theme for gensplash consoles"
-HOMEPAGE="http://www.gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~tampakrap/tarballs/${P}.tar.bz2"
+HOMEPAGE="https://www.gentoo.org/"
+SRC_URI="https://dev.gentoo.org/~tampakrap/tarballs/${P}.tar.bz2"
 
 LICENSE="Artistic GPL-2 BitstreamVera"
 SLOT="0"

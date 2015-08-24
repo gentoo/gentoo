@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 	EHG_CHECKOUT_DIR=${S}/all
 	inherit mercurial
 else
-	SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

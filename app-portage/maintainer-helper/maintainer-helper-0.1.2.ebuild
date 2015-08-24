@@ -10,8 +10,8 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 inherit distutils
 
 DESCRIPTION="An application to help with ebuild maintenance"
-HOMEPAGE="http://dev.gentoo.org/~jokey/maintainer-helper"
-SRC_URI="http://dev.gentoo.org/~jokey/maintainer-helper/${P}.tar.bz2"
+HOMEPAGE="https://dev.gentoo.org/~jokey/maintainer-helper"
+SRC_URI="https://dev.gentoo.org/~jokey/maintainer-helper/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

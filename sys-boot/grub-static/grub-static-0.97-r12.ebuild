@@ -99,7 +99,7 @@ setup_boot_dir() {
 		ewarn "cause problems such as an unbootable system."
 		ewarn "This means you must use either grub-install or perform"
 		ewarn "root/setup manually! For more help, see the handbook:"
-		ewarn "http://www.gentoo.org/doc/en/handbook/handbook-${ARCH}.xml?part=1&chap=10#grub-install-auto"
+		ewarn "https://www.gentoo.org/doc/en/handbook/handbook-${ARCH}.xml?part=1&chap=10#grub-install-auto"
 		ebeep
 	fi
 

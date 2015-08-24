@@ -9,7 +9,7 @@ inherit multilib toolchain-funcs eutils multilib-minimal
 DESCRIPTION="SELinux binary policy representation library"
 HOMEPAGE="http://userspace.selinuxproject.org"
 SRC_URI="http://userspace.selinuxproject.org/releases/20131030/${P}.tar.gz"
-#	http://dev.gentoo.org/~swift/patches/${PN}/patchbundle-${P}-r1.tar.gz"
+#	https://dev.gentoo.org/~swift/patches/${PN}/patchbundle-${P}-r1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

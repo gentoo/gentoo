@@ -9,7 +9,7 @@ inherit readme.gentoo elisp
 DESCRIPTION="Elisp client for the LysKOM conference system"
 HOMEPAGE="http://www.lysator.liu.se/lyskom/klienter/emacslisp/index.en.html"
 # snapshot of git://git.lysator.liu.se/${PN}/${PN}.git
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

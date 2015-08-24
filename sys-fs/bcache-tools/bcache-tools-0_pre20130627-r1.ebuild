@@ -8,7 +8,7 @@ inherit toolchain-funcs udev
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="http://bcache.evilpiepirate.org/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-2"

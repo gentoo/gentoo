@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Fortune database of #gentoo-dev quotes"
-HOMEPAGE="http://dev.gentoo.org/~avenj"
+HOMEPAGE="https://dev.gentoo.org/~avenj"
 SRC_URI="http://ircd.oppresses.us/~avenj/files/gentoo-dev-${PV}.gz"
 
 LICENSE="GPL-2"

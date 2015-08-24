@@ -10,7 +10,7 @@ DESCRIPTION="Graphical boot animation (splash) and logger"
 HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
 SRC_URI="
 	http://www.freedesktop.org/software/plymouth/releases/${P}.tar.bz2
-	http://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
+	https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,7 +38,7 @@ RDEPEND="${CDEPEND}
 
 DOC_CONTENTS="
 	Follow the following instructions to set up Plymouth:\n
-	http://dev.gentoo.org/~aidecoe/doc/en/plymouth.xml
+	https://dev.gentoo.org/~aidecoe/doc/en/plymouth.xml
 "
 
 src_prepare() {

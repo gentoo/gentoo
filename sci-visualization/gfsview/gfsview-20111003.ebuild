@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="Graphical viewer for Gerris simulation files"
 HOMEPAGE="http://gfs.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~bicatali/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

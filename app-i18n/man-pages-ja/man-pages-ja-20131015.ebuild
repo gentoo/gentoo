@@ -8,7 +8,7 @@ GENTOO_MAN_P="portage-${PN}-20060415"
 DESCRIPTION="A collection of manual pages translated into Japanese"
 HOMEPAGE="http://linuxjm.sourceforge.jp/ http://www.gentoo.gr.jp/jpmain/translation.xml"
 SRC_URI="http://linuxjm.sourceforge.jp/${P}.tar.gz
-	http://dev.gentoo.org/~hattya/distfiles/${GENTOO_MAN_P}.tar.gz"
+	https://dev.gentoo.org/~hattya/distfiles/${GENTOO_MAN_P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-2 LGPL-2+ LGPL-2 BSD MIT ISC HPND FDL-1.1+ LDP-1 LDP-1a man-pages Texinfo-manual"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit cmake-utils linux-info readme.gentoo
 DESCRIPTION="Toolset to accelerate the boot process and application startup"
 HOMEPAGE="http://e4rat.sourceforge.net/"
 #SRC_URI="mirror://sourceforge/${PN}/${P/-/_}_src.tar.gz"
-SRC_URI="http://dev.gentoo.org/~pacho/${PN}/${PN}-0.2.4_pre20141201.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pacho/${PN}/${PN}-0.2.4_pre20141201.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

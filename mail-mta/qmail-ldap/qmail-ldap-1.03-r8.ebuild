@@ -22,7 +22,7 @@ HOMEPAGE="
 	http://qmail.org
 "
 SRC_URI="mirror://qmail/qmail-${PV}.tar.gz
-	http://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}
+	https://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}
 	http://www.nrg4u.com/qmail/${QMAIL_LDAP_F}
 	mirror://gentoo/${QMAIL_LDAP_CONTROLS_F}
 	mirror://gentoo/${P}-queue-custom-error.patch

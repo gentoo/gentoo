@@ -10,8 +10,8 @@ HOMEPAGE="http://www.tldp.org/LDP/abs/html"
 # Upstream likes to update the tarballs without changing the names.
 # - http://bash.deta.in/abs-guide-${PV}.tar.bz2
 # - http://bash.deta.in/abs-guide.pdf <- remember to rename with ${PV}
-SRC_URI="http://dev.gentoo.org/~dirtyepic/dist/${P}.tar.bz2
-	pdf? ( http://dev.gentoo.org/~dirtyepic/dist/${P}.pdf )"
+SRC_URI="https://dev.gentoo.org/~dirtyepic/dist/${P}.tar.bz2
+	pdf? ( https://dev.gentoo.org/~dirtyepic/dist/${P}.pdf )"
 
 LICENSE="OPL"
 IUSE="pdf"

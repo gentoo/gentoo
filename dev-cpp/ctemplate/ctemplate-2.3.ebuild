@@ -11,7 +11,7 @@ inherit autotools-utils elisp-common python-any-r1
 
 DESCRIPTION="A simple but powerful template language for C++"
 HOMEPAGE="http://code.google.com/p/ctemplate/"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

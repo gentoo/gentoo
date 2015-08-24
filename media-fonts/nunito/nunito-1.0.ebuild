@@ -8,7 +8,7 @@ inherit font
 
 DESCRIPTION="A well balanced Sans Serif with rounded terminals"
 HOMEPAGE="https://www.google.com/webfonts/specimen/Nunito https://code.google.com/p/googlefontdirectory/source/browse/nunito"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

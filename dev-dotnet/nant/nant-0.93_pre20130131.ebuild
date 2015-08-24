@@ -7,7 +7,7 @@ inherit mono-env eutils
 
 DESCRIPTION=".NET build tool"
 HOMEPAGE="http://nant.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~pacho/${PN}/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~pacho/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

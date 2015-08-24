@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A library for client-side HTTP"
 HOMEPAGE="https://github.com/haskell/HTTP"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz
-		http://dev.gentoo.org/~gienah/2big4tree/dev-haskell/http/${MY_P}-test-suite.tar.gz"
+		https://dev.gentoo.org/~gienah/2big4tree/dev-haskell/http/${MY_P}-test-suite.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

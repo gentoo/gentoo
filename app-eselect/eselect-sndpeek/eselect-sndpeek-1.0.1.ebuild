@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages the /usr/bin/sndpeek symlink"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/sndpeek.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"

@@ -13,7 +13,7 @@ MY_PN="${PN/nagios-/}"
 MY_P="${MY_PN}-${PV}"
 S="${WORKDIR}/${MY_P}"
 
-SRC_URI="http://dev.gentoo.org/~flameeyes/${MY_PN}/${MY_P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~flameeyes/${MY_PN}/${MY_P}.tar.xz"
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
 

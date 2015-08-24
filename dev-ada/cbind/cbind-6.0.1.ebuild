@@ -7,7 +7,7 @@
 # so, "inherit gnat" should not appear here!
 
 DESCRIPTION="This tool is designed to aid in the creation of Ada bindings to C"
-SRC_URI="http://dev.gentoo.org/~george/src/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~george/src/${P}.tar.bz2"
 HOMEPAGE="http://www.rational.com/"
 LICENSE="GMGPL"
 

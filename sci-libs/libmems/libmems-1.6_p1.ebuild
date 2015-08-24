@@ -10,7 +10,7 @@ inherit autotools-utils
 
 DESCRIPTION="Library for sci-biology/mauve"
 HOMEPAGE="http://gel.ahabs.wisc.edu/mauve/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-2"

@@ -8,7 +8,7 @@ inherit elisp-common eutils fdo-mime gnome2-utils readme.gentoo user
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
-SRC_URI="http://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

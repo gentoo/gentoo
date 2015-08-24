@@ -6,7 +6,7 @@ EAPI=5
 inherit systemd toolchain-funcs udev
 
 DESCRIPTION="Split of readahead systemd implementation"
-HOMEPAGE="http://dev.gentoo.org/~pacho/systemd-readahead.html"
+HOMEPAGE="https://dev.gentoo.org/~pacho/systemd-readahead.html"
 SRC_URI="http://www.freedesktop.org/software/systemd/systemd-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1 MIT"

@@ -13,8 +13,8 @@ if [[ ${PV} == *9999* ]]; then
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
-		http://dev.gentoo.org/~jmbsvicetto/distfiles/${P}.tar.bz2
-		http://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.bz2"
+		https://dev.gentoo.org/~jmbsvicetto/distfiles/${P}.tar.bz2
+		https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.bz2"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 fi
 
@@ -23,7 +23,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 multilib ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
-HOMEPAGE="http://www.gentoo.org/proj/en/releng/catalyst/"
+HOMEPAGE="https://www.gentoo.org/proj/en/releng/catalyst/"
 
 LICENSE="GPL-2"
 SLOT="0"

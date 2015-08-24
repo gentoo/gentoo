@@ -47,6 +47,6 @@ src_install() {
 pkg_postinst() {
 	chown -R logcheck:logcheck /etc/logcheck /var/lib/logcheck || die
 
-	elog "Please read the guide ad http://www.gentoo.org/doc/en/logcheck.xml"
+	elog "Please read the guide ad https://www.gentoo.org/doc/en/logcheck.xml"
 	elog "for installation instructions."
 }

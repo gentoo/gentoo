@@ -10,7 +10,7 @@ DESCRIPTION="Collaborative editing environment for GNU Emacs"
 HOMEPAGE="http://rudel.sourceforge.net/
 	http://www.emacswiki.org/emacs/Rudel"
 # snapshot of bzr://rudel.bzr.sourceforge.net/bzrroot/rudel/trunk
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit nsplugins
 
 DESCRIPTION="Cisco OpenH264 library and Gecko Media Plugin for mozilla packages"
 HOMEPAGE="http://www.openh264.org/"
-SRC_URI="http://dev.gentoo.org/~axs/distfiles/gmp-${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~axs/distfiles/gmp-${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

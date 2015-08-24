@@ -10,7 +10,7 @@ DESCRIPTION="Emacs mode for editing and previewing Graphviz dot graphs"
 HOMEPAGE="http://users.skynet.be/ppareit/projects/graphviz-dot-mode/graphviz-dot-mode.html
 	http://www.graphviz.org/"
 # taken from http://users.skynet.be/ppareit/projects/${PN}/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -9,7 +9,7 @@ MY_P="${P/_/-}"
 DESCRIPTION="A droid derived Sans-Serif style CJK font"
 HOMEPAGE="http://wqy.sourceforge.net/en/"
 SRC_URI="mirror://sourceforge/wqy/${MY_P}.tar.gz
-	http://dev.gentoo.org/~dlan/distfiles/${PN}.ttc.xd3"
+	https://dev.gentoo.org/~dlan/distfiles/${PN}.ttc.xd3"
 
 LICENSE="Apache-2.0 GPL-3"
 SLOT="0"

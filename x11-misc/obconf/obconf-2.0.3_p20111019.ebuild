@@ -7,7 +7,7 @@ inherit autotools fdo-mime eutils
 
 DESCRIPTION="ObConf is a tool for configuring the Openbox window manager"
 HOMEPAGE="http://openbox.org/wiki/ObConf:About"
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

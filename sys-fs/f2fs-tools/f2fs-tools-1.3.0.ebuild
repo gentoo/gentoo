@@ -8,7 +8,7 @@ inherit multilib
 
 DESCRIPTION="Tools for Flash-Friendly File System (F2FS)"
 HOMEPAGE="http://git.kernel.org/?p=linux/kernel/git/jaegeuk/f2fs-tools.git;a=summary"
-SRC_URI="http://dev.gentoo.org/~blueness/f2fs-tools/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~blueness/f2fs-tools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -10,7 +10,7 @@ MY_P="${PN}-$(replace_version_separator 3 -)"
 
 DESCRIPTION="Epson Perfection 2480/2580 PHOTO scanner plugin for SANE 'epkowa' backend"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="http://dev.gentoo.org/~flameeyes/avasys/${MY_P}.c2.i386.rpm"
+SRC_URI="https://dev.gentoo.org/~flameeyes/avasys/${MY_P}.c2.i386.rpm"
 
 LICENSE="EPSON EAPL"
 SLOT="0"

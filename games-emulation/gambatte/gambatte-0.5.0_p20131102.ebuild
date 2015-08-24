@@ -8,7 +8,7 @@ inherit scons-utils qt4-r2 games
 
 DESCRIPTION="An accuracy-focused Gameboy / Gameboy Color emulator"
 HOMEPAGE="http://sourceforge.net/projects/gambatte"
-SRC_URI="http://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

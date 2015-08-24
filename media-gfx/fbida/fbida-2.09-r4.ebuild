@@ -9,7 +9,7 @@ DESCRIPTION="Image viewers for the framebuffer console (fbi) and X11 (ida)"
 HOMEPAGE="http://www.kraxel.org/blog/linux/fbida/"
 SRC_URI="
 	http://www.kraxel.org/releases/${PN}/${P}.tar.gz
-	http://dev.gentoo.org/~jer/${P}-jpeg-9a.patch.bz2
+	https://dev.gentoo.org/~jer/${P}-jpeg-9a.patch.bz2
 	mirror://gentoo/ida.png.bz2
 "
 LICENSE="GPL-2 IJG"

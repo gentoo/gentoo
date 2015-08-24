@@ -21,7 +21,7 @@ SRC_URI="http://www.mico.org/${P}.tar.gz"
 	SRC_URI=""
 
 [[ -n ${PATCH_VER} ]] &&
-	SRC_URI="${SRC_URI} http://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.bz2"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit autotools-utils linux-info multilib systemd toolchain-funcs
 
 PATCH_VER=
 [[ -n ${PATCH_VER} ]] && \
-	PATCHSET_URI="http://dev.gentoo.org/~jlec/distfiles/${P}-patches-${PATCH_VER}.tar.lzma"
+	PATCHSET_URI="https://dev.gentoo.org/~jlec/distfiles/${P}-patches-${PATCH_VER}.tar.lzma"
 
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"

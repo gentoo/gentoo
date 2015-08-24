@@ -11,7 +11,7 @@ inherit autotools bash-completion-r1 eutils gnome2
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
 
-SRC_URI="${SRC_URI} http://dev.gentoo.org/~tetromino/distfiles/${PN}/${PN}-3.16.2-pyongyang.tar.xz"
+SRC_URI="${SRC_URI} https://dev.gentoo.org/~tetromino/distfiles/${PN}/${PN}-3.16.2-pyongyang.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="2"

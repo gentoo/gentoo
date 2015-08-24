@@ -11,7 +11,7 @@ PATCHVER="r2"
 DESCRIPTION="free MS Word reader"
 HOMEPAGE="http://www.winfield.demon.nl"
 SRC_URI="http://www.winfield.demon.nl/linux/${P}.tar.gz
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-gentoo-patches-${PATCHVER}.tar.bz2"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-gentoo-patches-${PATCHVER}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"

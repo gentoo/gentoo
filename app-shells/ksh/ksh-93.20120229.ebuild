@@ -15,9 +15,9 @@ ksh_release() {
 }
 
 SRC_URI="mirror://gentoo/INIT.$(ksh_release).tgz
-	http://dev.gentoo.org/~floppym/distfiles/INIT.$(ksh_release).tgz
+	https://dev.gentoo.org/~floppym/distfiles/INIT.$(ksh_release).tgz
 	mirror://gentoo/ast-base.$(ksh_release).tgz
-	http://dev.gentoo.org/~floppym/distfiles/ast-base.$(ksh_release).tgz"
+	https://dev.gentoo.org/~floppym/distfiles/ast-base.$(ksh_release).tgz"
 
 LICENSE="CPL-1.0 EPL-1.0"
 SLOT="0"

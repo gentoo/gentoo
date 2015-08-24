@@ -13,7 +13,7 @@ DESCRIPTION="Java molecular viever for 3-D chemical structures"
 HOMEPAGE="http://jmol.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${MY_P}-${PV}-full.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${PN}-selfSignedCertificate.store.tar"
+	https://dev.gentoo.org/~jlec/distfiles/${PN}-selfSignedCertificate.store.tar"
 
 WEBAPP_MANUAL_SLOT="yes"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit eutils python
 DESCRIPTION="Official MythTV plugins"
 HOMEPAGE="http://www.mythtv.org"
 SRC_URI="https://github.com/MythTV/mythtv/archive/v0.27.tar.gz -> mythtv-0.27.tar.gz
-	${BACKPORTS:+http://dev.gentoo.org/~rich0/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
+	${BACKPORTS:+https://dev.gentoo.org/~rich0/distfiles/${MY_P}-${BACKPORTS}.tar.xz}"
 
 LICENSE="GPL-2"
 SLOT="0"

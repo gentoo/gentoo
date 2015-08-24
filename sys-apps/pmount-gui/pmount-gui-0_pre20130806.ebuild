@@ -8,7 +8,7 @@ if [ ${PV} = 9999* ]; then
 	EGIT_REPO_URI="git://git.tdb.fi/pmount-gui"
 	inherit git-2
 else
-	SRC_URI="http://dev.gentoo.org/~ssuominen/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

@@ -10,9 +10,9 @@
 inherit eutils flag-o-matic toolchain-funcs multilib unpacker
 
 DESCRIPTION="sandbox'd LD_PRELOAD hack"
-HOMEPAGE="http://www.gentoo.org/proj/en/portage/sandbox/"
+HOMEPAGE="https://www.gentoo.org/proj/en/portage/sandbox/"
 SRC_URI="mirror://gentoo/${P}.tar.lzma
-	http://dev.gentoo.org/~vapier/dist/${P}.tar.lzma"
+	https://dev.gentoo.org/~vapier/dist/${P}.tar.lzma"
 
 LICENSE="GPL-2"
 SLOT="0"

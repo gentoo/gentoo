@@ -5,7 +5,7 @@
 inherit user
 
 DESCRIPTION="base for all cron ebuilds"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit mono java-pkg-opt-2 toolchain-funcs
 DESCRIPTION="A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java"
 HOMEPAGE="http://www.cs.rit.edu/~ats/projects/lp/doc/jay/package-summary.html"
 SRC_URI="http://www.cs.rit.edu/~ats/projects/lp/doc/jay/doc-files/src.zip -> ${P}.zip
-	http://dev.gentoo.org/~ssuominen/${P}-mono.snk.bz2"
+	https://dev.gentoo.org/~ssuominen/${P}-mono.snk.bz2"
 
 LICENSE="public-domain BSD"
 SLOT="0"

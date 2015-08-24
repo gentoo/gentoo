@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Yet Another NFS - a Java NFS library"
 HOMEPAGE="https://java.net/projects/yanfs"
-SRC_URI="http://dev.gentoo.org/~ercpe/distfiles/dev-java/yanfs/yanfs-1.0.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/dev-java/yanfs/yanfs-1.0.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

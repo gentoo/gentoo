@@ -8,7 +8,7 @@ inherit base eutils multilib
 
 DESCRIPTION="convertor written in Perl that converts LATEX documents to HTML"
 SRC_URI="http://saftsack.fs.uni-bayreuth.de/~latex2ht/current/${P}.tar.gz
-	http://dev.gentoo.org/~dilfridge/distfiles/${PN}-match-multiline.patch.bz2"
+	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-match-multiline.patch.bz2"
 HOMEPAGE="http://www.latex2html.org/"
 
 LICENSE="GPL-2"

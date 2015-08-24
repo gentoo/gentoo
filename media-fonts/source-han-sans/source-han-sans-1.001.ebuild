@@ -11,10 +11,10 @@ inherit font
 
 DESCRIPTION="Pan-CJK OpenType/CFF font family"
 HOMEPAGE="https://github.com/adobe-fonts/source-han-sans/"
-SRC_URI="linguas_ja? ( http://dev.gentoo.org/~yngwin/distfiles/${PN}-ja-${PV}.tar.xz )
-	linguas_ko? ( http://dev.gentoo.org/~yngwin/distfiles/${PN}-ko-${PV}.tar.xz )
-	linguas_zh_CN? ( http://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_CN-${PV}.tar.xz )
-	linguas_zh_TW? ( http://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_TW-${PV}.tar.xz )"
+SRC_URI="linguas_ja? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ja-${PV}.tar.xz )
+	linguas_ko? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ko-${PV}.tar.xz )
+	linguas_zh_CN? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_CN-${PV}.tar.xz )
+	linguas_zh_TW? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_TW-${PV}.tar.xz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"

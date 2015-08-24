@@ -7,7 +7,7 @@ EAPI=5
 inherit systemd s6
 
 DESCRIPTION="Gentoo MySQL init scripts."
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

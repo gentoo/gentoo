@@ -18,7 +18,7 @@ function php_get_uri ()
 			echo "http://www.php.net/distributions/${2}"
 		;;
 		"olemarkus")
-			echo "http://dev.gentoo.org/~olemarkus/php/${2}"
+			echo "https://dev.gentoo.org/~olemarkus/php/${2}"
 		;;
 		"gentoo")
 			echo "mirror://gentoo/${2}"
@@ -775,7 +775,7 @@ pkg_postinst() {
 
 	elog
 	elog "For more details on how minor version slotting works (PHP_TARGETS) please read the upgrade guide:"
-	elog "http://www.gentoo.org/proj/en/php/php-upgrading.xml"
+	elog "https://www.gentoo.org/proj/en/php/php-upgrading.xml"
 	elog
 }
 

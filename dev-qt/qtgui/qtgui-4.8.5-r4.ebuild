@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils qt4-build
 
 DESCRIPTION="The GUI module for the Qt toolkit"
-SRC_URI+=" http://dev.gentoo.org/~pesa/patches/${PN}-systemtrayicon-plugin-system.patch"
+SRC_URI+=" https://dev.gentoo.org/~pesa/patches/${PN}-systemtrayicon-plugin-system.patch"
 
 SLOT="4"
 if [[ ${QT4_BUILD_TYPE} == live ]]; then

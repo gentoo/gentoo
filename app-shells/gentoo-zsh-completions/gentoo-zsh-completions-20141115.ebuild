@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Gentoo specific zsh completion support (includes emerge and ebuild commands)"
 HOMEPAGE="https://github.com/radhermit/gentoo-zsh-completions"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
 
 LICENSE="ZSH"
 SLOT="0"

@@ -11,7 +11,7 @@ PVER=1701
 
 DESCRIPTION="Baselayout for Gentoo Prefix installs"
 HOMEPAGE="http://prefix.gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~grobian/distfiles/${P}.${PVER}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.${PVER}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit gnome2-utils
 DESCRIPTION="a derivative of the standard Tango theme, using a more orange approach"
 HOMEPAGE="http://packages.ubuntu.com/gutsy/x11/tangerine-icon-theme"
 SRC_URI="mirror://ubuntu/pool/universe/t/${PN}/${PN}_${PV}.tar.gz
-	http://www.gentoo.org/images/gentoo-logo.svg"
+	https://www.gentoo.org/images/gentoo-logo.svg"
 
 LICENSE="CC-BY-SA-2.5 LGPL-2.1"
 SLOT="0"

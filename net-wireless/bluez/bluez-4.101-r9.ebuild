@@ -10,7 +10,7 @@ inherit autotools eutils multilib python-single-r1 readme.gentoo \
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org/"
 SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz
-	http://dev.gentoo.org/~pacho/bluez/${P}-patches.tar.xz"
+	https://dev.gentoo.org/~pacho/bluez/${P}-patches.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

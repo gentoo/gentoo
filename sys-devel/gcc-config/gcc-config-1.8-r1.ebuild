@@ -9,7 +9,7 @@ inherit eutils unpacker toolchain-funcs multilib
 DESCRIPTION="utility to manage compilers"
 HOMEPAGE="https://gitweb.gentoo.org/proj/gcc-config.git/"
 SRC_URI="mirror://gentoo/${P}.tar.xz
-	http://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
+	https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

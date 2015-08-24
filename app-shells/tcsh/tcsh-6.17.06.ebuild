@@ -11,7 +11,7 @@ CONFVER="1.9"
 DESCRIPTION="Enhanced version of the Berkeley C shell (csh)"
 HOMEPAGE="http://www.tcsh.org/"
 SRC_URI="ftp://ftp.astron.com/pub/tcsh/beta/${P}.tar.gz
-	http://www.gentoo.org/~grobian/distfiles/tcsh-gentoo-patches-r${CONFVER}.tar.bz2"
+	https://www.gentoo.org/~grobian/distfiles/tcsh-gentoo-patches-r${CONFVER}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

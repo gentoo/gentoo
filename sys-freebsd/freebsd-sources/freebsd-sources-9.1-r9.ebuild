@@ -11,7 +11,7 @@ KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="symlink"
 
 SRC_URI="mirror://gentoo/${SYS}.tar.bz2
-	http://dev.gentoo.org/~naota/patch/${P}-en-13-03.patch"
+	https://dev.gentoo.org/~naota/patch/${P}-en-13-03.patch"
 
 RDEPEND="=sys-freebsd/freebsd-mk-defs-${RV}*"
 DEPEND=""

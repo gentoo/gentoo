@@ -8,7 +8,7 @@ inherit eutils scons-utils games
 DESCRIPTION="Futuristic real-time strategy game"
 HOMEPAGE="http://www.boswars.org/"
 SRC_URI="http://www.boswars.org/dist/releases/${P}-src.tar.gz
-	http://dev.gentoo.org/~hasufell/distfiles/${P}-fixed-images-for-libpng-1.6.tar.xz
+	https://dev.gentoo.org/~hasufell/distfiles/${P}-fixed-images-for-libpng-1.6.tar.xz
 	mirror://gentoo/bos.png"
 
 LICENSE="GPL-2"

@@ -9,7 +9,7 @@ inherit versionator
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="http://bash-completion.alioth.debian.org/"
 SRC_URI="http://bash-completion.alioth.debian.org/files/${P}.tar.bz2
-	http://dev.gentoo.org/~mgorny/dist/bashcomp2-pre1.tar.gz"
+	https://dev.gentoo.org/~mgorny/dist/bashcomp2-pre1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

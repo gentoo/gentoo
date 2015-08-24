@@ -10,7 +10,7 @@ inherit cmake-utils multilib vcs-snapshot
 
 DESCRIPTION="Free Decision Diagram Library"
 HOMEPAGE="http://itval.sourceforge.net/ https://github.com/atomopawn/FDDL"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit autotools-utils
 
 DESCRIPTION="C library for manipulating tar archives"
 HOMEPAGE="http://www.feep.net/libtar/ http://repo.or.cz/w/libtar.git/"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

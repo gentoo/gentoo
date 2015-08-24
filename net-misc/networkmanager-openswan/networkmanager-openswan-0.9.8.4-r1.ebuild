@@ -11,7 +11,7 @@ inherit autotools eutils gnome2
 DESCRIPTION="NetworkManager Openswan plugin"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
-SRC_URI="${SRC_URI} http://dev.gentoo.org/~pacho/gnome/${P}-patches.tar.bz2"
+SRC_URI="${SRC_URI} https://dev.gentoo.org/~pacho/gnome/${P}-patches.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

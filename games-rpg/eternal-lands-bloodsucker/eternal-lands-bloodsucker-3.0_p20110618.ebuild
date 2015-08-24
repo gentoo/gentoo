@@ -8,7 +8,7 @@ inherit eutils games
 
 DESCRIPTION="Non-official map pack for Eternal Lands"
 HOMEPAGE="http://maps.el-pl.org/"
-SRC_URI="http://dev.gentoo.org/~rich0/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~rich0/distfiles/${P}.tar.bz2"
 LICENSE="CC-BY-NC-SA-3.0"
 SLOT="0"
 

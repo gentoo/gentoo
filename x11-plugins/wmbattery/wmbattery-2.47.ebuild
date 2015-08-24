@@ -8,7 +8,7 @@ inherit autotools
 DESCRIPTION="A dockable app to report APM, ACPI, or SPIC battery status"
 HOMEPAGE="http://windowmaker.org/dockapps/?name=wmbattery"
 # Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

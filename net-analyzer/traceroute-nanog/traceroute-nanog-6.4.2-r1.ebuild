@@ -11,8 +11,8 @@ DEB_PL="1"
 DESCRIPTION="Traceroute with AS lookup, TOS support, MTU discovery and other features"
 HOMEPAGE="http://packages.debian.org/traceroute-nanog"
 SRC_URI="
-	http://dev.gentoo.org/~jer/${MY_P}.orig.tar.gz
-	http://dev.gentoo.org/~jer/${MY_P}-${DEB_PL}.diff.gz
+	https://dev.gentoo.org/~jer/${MY_P}.orig.tar.gz
+	https://dev.gentoo.org/~jer/${MY_P}-${DEB_PL}.diff.gz
 "
 RESTRICT="mirror"
 

@@ -8,7 +8,7 @@ inherit eutils linux-info
 
 DESCRIPTION="Minimalistic UEFI bootloader"
 HOMEPAGE="http://freedesktop.org/wiki/Software/gummiboot/"
-SRC_URI="http://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

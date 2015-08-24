@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Lua eselect module"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="GPL-2"
 SLOT="0"

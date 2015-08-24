@@ -9,7 +9,7 @@ inherit eutils autotools
 DESCRIPTION="A very fast real-time fractal zoomer"
 HOMEPAGE="http://xaos.sf.net/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/${PN}.png.tar
+	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.tar
 	mirror://sourceforge/${PN}/${P}.tar.gz"
 
 SLOT="0"

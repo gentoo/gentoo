@@ -7,7 +7,7 @@ inherit readme.gentoo scons-utils toolchain-funcs
 
 DESCRIPTION="The SunPinyin IMEngine Wrapper for XIM Framework"
 HOMEPAGE="https://sunpinyin.googlecode.com/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/sunpinyin-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0"

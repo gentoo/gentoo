@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Tweak your sound card volume from Emacs"
 HOMEPAGE="https://github.com/dbrock/volume-el"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

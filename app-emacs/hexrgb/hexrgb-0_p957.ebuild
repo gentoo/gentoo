@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Functions to manipulate colors, including RGB hex strings"
 HOMEPAGE="http://www.emacswiki.org/emacs/hexrgb.el"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

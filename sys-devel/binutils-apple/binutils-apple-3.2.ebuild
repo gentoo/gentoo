@@ -16,9 +16,9 @@ LP64PATCHES=binutils-apple-LP64-patches-1
 
 DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools 3.2"
 HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
-SRC_URI="http://www.gentoo.org/~grobian/distfiles/${LD64}.tar.gz
-	http://www.gentoo.org/~grobian/distfiles/${CCTOOLS}.tar.gz
-	http://www.gentoo.org/~grobian/distfiles/${LP64PATCHES}.tar.bz2"
+SRC_URI="https://www.gentoo.org/~grobian/distfiles/${LD64}.tar.gz
+	https://www.gentoo.org/~grobian/distfiles/${CCTOOLS}.tar.gz
+	https://www.gentoo.org/~grobian/distfiles/${LP64PATCHES}.tar.bz2"
 
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"

@@ -67,9 +67,9 @@ HOMEPAGE="http://www.scala-lang.org/"
 SRC_URI="!binary?
 (	https://github.com/scala/scala/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${JURI[@]}
-	http://dev.gentoo.org/~gienah/snapshots/${P}-maven-deps.tar.gz
+	https://dev.gentoo.org/~gienah/snapshots/${P}-maven-deps.tar.gz
 )
-binary? ( http://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.bz2 )"
+binary? ( https://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="${SV}/${PV}"
@@ -153,7 +153,7 @@ java_prepare() {
 		fi
 		# Note: to bump scala, some things to try are:
 		# 1. update all the sha1s in JURI
-		# 2. remove the http://dev.gentoo.org/~gienah/snapshots/${P}-maven-deps.tar.gz from SRC_URI
+		# 2. remove the https://dev.gentoo.org/~gienah/snapshots/${P}-maven-deps.tar.gz from SRC_URI
 		# 3. try emerge scala.  Check if it downloads more stuff in src_compile to ${WORKDIR}/.m2
 		# or /var/tmp/portage/.m2 or /root/.m2
 		# 4. tar up all the .m2 junk into ${P}-maven-deps.tar.gz and add it to SRC_URI.

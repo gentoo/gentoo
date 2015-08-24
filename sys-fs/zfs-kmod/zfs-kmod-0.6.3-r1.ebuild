@@ -16,7 +16,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	inherit eutils versionator
 	SRC_URI="https://github.com/zfsonlinux/zfs/archive/zfs-${PV}.tar.gz
-		http://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-${PR}.tar.xz"
+		https://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-${PR}.tar.xz"
 	S="${WORKDIR}/zfs-zfs-${PV}"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi

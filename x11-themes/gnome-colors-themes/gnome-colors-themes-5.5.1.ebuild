@@ -9,7 +9,7 @@ DESCRIPTION="Some gnome-colors iconsets including a Gentoo one"
 HOMEPAGE="http://code.google.com/p/gnome-colors/"
 
 SRC_URI="http://gnome-colors.googlecode.com/files/gnome-colors-${PV}.tar.gz
-	http://dev.gentoo.org/~pacho/gnome-gentoo-${PV}.tar.gz"
+	https://dev.gentoo.org/~pacho/gnome-gentoo-${PV}.tar.gz"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"

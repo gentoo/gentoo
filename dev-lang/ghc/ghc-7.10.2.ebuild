@@ -62,7 +62,7 @@ GHC_P=${PN}-${GHC_PV} # using ${P} is almost never correct
 #SRC_URI="!binary? ( http://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.bz2 )"
 # Upstream tarball was repackaged and inplace-updated. CDN cached old version for
 # many users
-SRC_URI="!binary? ( http://dev.gentoo.org/~slyfox/distfiles/${GHC_P}-src.tar.bz2 )"
+SRC_URI="!binary? ( https://dev.gentoo.org/~slyfox/distfiles/${GHC_P}-src.tar.bz2 )"
 S="${WORKDIR}"/${GHC_P}
 
 [[ -n $arch_binaries ]] && SRC_URI+=" !ghcbootstrap? ( $arch_binaries )"

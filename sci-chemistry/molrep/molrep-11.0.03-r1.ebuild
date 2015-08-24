@@ -8,7 +8,7 @@ inherit eutils flag-o-matic fortran-2 multilib toolchain-funcs
 
 DESCRIPTION="molecular replacement program"
 HOMEPAGE="http://www.ysbl.york.ac.uk/~alexei/molrep.html"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.gz"
 
 LICENSE="ccp4"
 SLOT="0"

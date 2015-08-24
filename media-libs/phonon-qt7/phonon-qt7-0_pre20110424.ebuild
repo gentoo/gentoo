@@ -8,7 +8,7 @@ inherit cmake-utils base
 
 DESCRIPTION="Phonon QuickTime7 backend"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/phonon/phonon-quicktime"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~ppc-macos ~x64-macos"

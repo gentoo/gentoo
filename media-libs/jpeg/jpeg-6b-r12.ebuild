@@ -12,7 +12,7 @@ inherit eutils libtool toolchain-funcs multilib-minimal
 DESCRIPTION="library to load, handle and manipulate images in the JPEG format (transition package)"
 HOMEPAGE="http://www.ijg.org/"
 SRC_URI="mirror://gentoo/jpegsrc.v${PV}.tar.gz
-	http://dev.gentoo.org/~ssuominen/${P}-patchset-${PATCH_VER}.tar.xz"
+	https://dev.gentoo.org/~ssuominen/${P}-patchset-${PATCH_VER}.tar.xz"
 
 LICENSE="IJG"
 SLOT="62"

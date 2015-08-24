@@ -16,7 +16,7 @@ HOU_NAME=_linuxclient${MY_PV}_xp2.tar.gz
 
 DESCRIPTION="Epic role-playing game set in a huge medieval fantasy world of Dungeons and Dragons"
 HOMEPAGE="http://nwn.bioware.com/downloads/linuxclient.html"
-SRC_URI="http://dev.gentoo.org/~calchan/distfiles/nwn-libs-1.tar.bz2
+SRC_URI="https://dev.gentoo.org/~calchan/distfiles/nwn-libs-1.tar.bz2
 	linguas_fr? (
 		!sou? ( !hou? ( ${PATCH_URL_BASE}/French${PACKAGE_NAME} ) )
 		sou? ( ${PATCH_URL_BASE}/French${SOU_NAME} )

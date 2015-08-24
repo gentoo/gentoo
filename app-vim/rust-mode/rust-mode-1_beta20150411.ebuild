@@ -10,7 +10,7 @@ MY_PN="${PN}-vim"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Rust mode for vim"
 HOMEPAGE="http://www.rust-lang.org/"
-SRC_URI="http://dev.gentoo.org/~jauhien/distfiles/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jauhien/distfiles/${MY_P}.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"

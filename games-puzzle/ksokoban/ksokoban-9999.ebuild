@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit mercurial
 	EHG_REPO_URI="http://hg.code.sf.net/p/ksokoban/code"
 else
-	SRC_URI="http://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

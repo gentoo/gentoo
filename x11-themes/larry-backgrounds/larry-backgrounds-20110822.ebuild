@@ -5,8 +5,8 @@
 EAPI="3"
 
 DESCRIPTION="Wallpapers featuring Gentoo mascot Larry the cow"
-HOMEPAGE="http://www.gentoo.org/main/en/graphics.xml#wallpapers"
-web_home='http://www.gentoo.org/images/backgrounds'
+HOMEPAGE="https://www.gentoo.org/main/en/graphics.xml#wallpapers"
+web_home='https://www.gentoo.org/images/backgrounds'
 SRC_URI="
 	${web_home}/gentoo-abducted-800x600.png
 	${web_home}/gentoo-abducted-1024x768.png

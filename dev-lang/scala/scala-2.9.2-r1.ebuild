@@ -19,7 +19,7 @@ SV="$(get_version_component_range 1-2)"
 DESCRIPTION="The Scala Programming Language"
 HOMEPAGE="http://www.scala-lang.org/"
 SRC_URI="!binary? ( ${HOMEPAGE}downloads/distrib/files/${MY_P}.tgz -> ${P}.tar.gz )
-	binary? ( http://dev.gentoo.org/~ali_bush/distfiles/${P}-gentoo-binary.tar.bz2 )"
+	binary? ( https://dev.gentoo.org/~ali_bush/distfiles/${P}-gentoo-binary.tar.bz2 )"
 LICENSE="BSD"
 SLOT="${SV}/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"

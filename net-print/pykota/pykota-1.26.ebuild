@@ -10,7 +10,7 @@ inherit distutils
 
 DESCRIPTION="Flexible print quota and accounting package for use with CUPS and lpd"
 HOMEPAGE="http://www.pykota.com"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

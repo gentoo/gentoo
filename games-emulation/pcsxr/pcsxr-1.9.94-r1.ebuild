@@ -10,7 +10,7 @@ DESCRIPTION="PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulato
 HOMEPAGE="http://pcsxr.codeplex.com"
 # codeplex doesn't support direct downloads but GPL-2 doesn't mind me
 # mirroring it.
-SRC_URI="http://dev.gentoo.org/~mgorny/dist/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.zip"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"

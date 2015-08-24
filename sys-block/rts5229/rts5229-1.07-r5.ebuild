@@ -8,7 +8,7 @@ inherit linux-mod
 
 DESCRIPTION="PCIE RTS5229 card reader driver for Linux"
 HOMEPAGE="http://www.realtek.com.tw/Downloads/downloadsView.aspx?PNid=15&PFid=25&Level=4&Conn=3&DownTypeID=3"
-SRC_URI="http://dev.gentoo.org/~vikraman/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~vikraman/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

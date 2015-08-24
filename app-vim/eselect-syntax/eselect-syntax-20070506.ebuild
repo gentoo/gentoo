@@ -5,7 +5,7 @@
 inherit eutils vim-plugin
 
 DESCRIPTION="vim plugin: Eselect syntax highlighting, filetype and indent settings"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="vim"

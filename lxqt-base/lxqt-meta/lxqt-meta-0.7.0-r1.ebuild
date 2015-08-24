@@ -18,7 +18,7 @@ S="${WORKDIR}"
 
 DOC_CONTENTS="
 	For your convenience you can review
-	http://www.gentoo.org/proj/en/desktop/lxde/lxde-howto.xml and
+	https://www.gentoo.org/proj/en/desktop/lxde/lxde-howto.xml and
 	http://wiki.lxde.org/en/LXDE-Qt"
 
 RDEPEND="

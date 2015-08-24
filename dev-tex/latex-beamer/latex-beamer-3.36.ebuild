@@ -8,7 +8,7 @@ inherit latex-package
 
 DESCRIPTION="LaTeX class for creating presentations using a video projector"
 HOMEPAGE="https://bitbucket.org/rivanvx/beamer/wiki/Home"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.zip"
 
 LICENSE="GPL-2 FDL-1.2 LPPL-1.3c"
 SLOT="0"

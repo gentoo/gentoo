@@ -11,7 +11,7 @@ MY_P="${PV/./_}"
 DESCRIPTION="Designed to heavily load CPU chips [testing purposes]"
 HOMEPAGE="http://pages.sbcglobal.net/redelm/"
 #SRC_URI="http://pages.sbcglobal.net/redelm/cpuburn_${MY_P}_tar.gz -> ${P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="A generic, reliable, fast & flexible logging framework for Java"
 HOMEPAGE="http://logback.qos.ch/"
 SRC_URI="http://logback.qos.ch/dist/${PN}-${PV}.tar.gz
-		http://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}-build.tar.bz2"
+		https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}-build.tar.bz2"
 
 LICENSE="|| ( EPL-1.0 LGPL-2.1 )"
 SLOT="0"

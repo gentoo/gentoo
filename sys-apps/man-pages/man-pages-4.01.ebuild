@@ -12,7 +12,7 @@ SRC_URI="mirror://kernel/linux/docs/man-pages/Archive/${P}.tar.xz
 	mirror://kernel/linux/docs/man-pages/${P}.tar.xz
 	http://man7.org/linux/man-pages/download/${P}.tar.xz
 	mirror://gentoo/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
-	http://dev.gentoo.org/~cardoe/files/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2"
+	https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2"
 
 LICENSE="man-pages GPL-2+ BSD"
 SLOT="0"

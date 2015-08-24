@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="ebdftopcf optimially generators PCF files from BDF files"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

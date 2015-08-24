@@ -8,7 +8,7 @@ inherit autotools-utils
 
 DESCRIPTION="Multithreaded multifrontal sparse QR factorization library"
 HOMEPAGE="http://www.cise.ufl.edu/research/sparse/SPQR"
-SRC_URI="http://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

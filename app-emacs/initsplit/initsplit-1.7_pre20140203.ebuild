@@ -9,7 +9,7 @@ inherit readme.gentoo elisp
 DESCRIPTION="Split customizations into different files"
 HOMEPAGE="http://www.emacswiki.org/emacs/InitSplit"
 # taken from https://github.com/dabrahams/${PN}
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

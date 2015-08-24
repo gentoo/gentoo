@@ -5,9 +5,9 @@
 EAPI=5
 
 DESCRIPTION="Gentoo - 10 Years Compiling Background Artwork"
-HOMEPAGE="http://www.gentoo.org/proj/en/pr/releases/10.0/graphics.xml"
+HOMEPAGE="https://www.gentoo.org/proj/en/pr/releases/10.0/graphics.xml"
 
-SRC_URI="http://dev.gentoo.org/~flameeyes/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~flameeyes/${P}.tar.xz"
 
 LICENSE="CC-BY-SA-3.0"
 KEYWORDS="amd64 ~mips x86"

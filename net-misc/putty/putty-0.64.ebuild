@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ~ppc64 sparc x86"
 IUSE="doc +gtk ipv6 kerberos"
 SRC_URI="
-	http://dev.gentoo.org/~jer/${PN}-icons.tar.bz2
+	https://dev.gentoo.org/~jer/${PN}-icons.tar.bz2
 	http://the.earth.li/~sgtatham/${PN}/latest/${P}.tar.gz
 "
 

@@ -8,7 +8,7 @@ inherit cmake-utils cuda eutils git-r3 multilib toolchain-funcs
 
 DESCRIPTION="Library for performing fast approximate nearest neighbor searches in high dimensional spaces"
 HOMEPAGE="http://www.cs.ubc.ca/research/flann/"
-SRC_URI="test? ( http://dev.gentoo.org/~bicatali/distfiles/${PN}-1.8.4-testdata.tar.xz )"
+SRC_URI="test? ( https://dev.gentoo.org/~bicatali/distfiles/${PN}-1.8.4-testdata.tar.xz )"
 EGIT_REPO_URI="https://github.com/mariusmuja/flann.git"
 
 LICENSE="BSD"

@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit subversion
 	SRC_URI=""
 else
-	SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.xz"
 fi
 
 DESCRIPTION="TOra - Toolkit For Oracle"

@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/neovim/neovim.git"
 else
-	SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

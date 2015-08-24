@@ -11,7 +11,7 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="Apache XML-RPC is a Java implementation of XML-RPC"
 HOMEPAGE="http://ws.apache.org/xmlrpc/"
 SRC_URI="https://archive.apache.org/dist/ws/${PN}/sources/apache-${P}-src.tar.bz2
-		http://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}-build.tar.gz"
+		https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}-build.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="3"

@@ -18,7 +18,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
 	clang? ( http://llvm.org/releases/${PV}/compiler-rt-3.4.src.tar.gz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz
 		http://llvm.org/releases/${PV}/clang-tools-extra-3.4.src.tar.gz )
-	!doc? ( http://dev.gentoo.org/~mgorny/dist/${PN}-3.4-manpages.tar.bz2 )"
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/${PN}-3.4-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/3.4"

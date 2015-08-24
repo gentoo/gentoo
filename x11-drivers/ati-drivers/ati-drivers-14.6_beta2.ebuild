@@ -227,7 +227,7 @@ pkg_setup() {
 	elog
 	elog "If your card is older then use ${CATEGORY}/xf86-video-ati"
 	elog "For migration informations please refer to:"
-	elog "http://www.gentoo.org/proj/en/desktop/x/x11/ati-migration-guide.xml"
+	elog "https://www.gentoo.org/proj/en/desktop/x/x11/ati-migration-guide.xml"
 	einfo
 }
 
@@ -380,7 +380,7 @@ src_install() {
 
 	# There used to be some code here that tried to detect running
 	# under a "native multilib" portage ((precursor of)
-	# http://dev.gentoo.org/~kanaka/auto-multilib/). I removed that, it
+	# https://dev.gentoo.org/~kanaka/auto-multilib/). I removed that, it
 	# should just work (only doing some duplicate work). --marienz
 	if has_multilib_profile; then
 		local OABI=${ABI}

@@ -12,7 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}.git"
 else
-	SRC_URI="http://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 

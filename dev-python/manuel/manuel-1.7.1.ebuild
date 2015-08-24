@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Manuel lets you build tested documentation"
 HOMEPAGE="https://github.com/benji-york/manuel/ https://pypi.python.org/pypi/manuel"
 # A snapshot was required since upstream missed out half the source
-SRC_URI="http://dev.gentoo.org/~idella4/tarballs/${P}-20130316.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~idella4/tarballs/${P}-20130316.tar.bz2"
 
 LICENSE="ZPL"
 SLOT="0"

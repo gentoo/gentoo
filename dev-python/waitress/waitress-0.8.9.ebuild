@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A pure-Python WSGI server"
 HOMEPAGE="http://docs.pylonsproject.org/projects/waitress/en/latest/ https://pypi.python.org/pypi/waitress/ https://github.com/Pylons/waitress"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz \
-		doc? ( http://dev.gentoo.org/~idella4/pylons_sphinx_theme.tar.gz )"
+		doc? ( https://dev.gentoo.org/~idella4/pylons_sphinx_theme.tar.gz )"
 
 LICENSE="MIT"
 SLOT="0"

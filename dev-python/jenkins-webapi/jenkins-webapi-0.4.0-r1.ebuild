@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Module for interacting with the Jenkins CI server"
 HOMEPAGE="https://github.com/gvalkov/jenkins-webapi"
-SRC_URI="http://dev.gentoo.org/~idella4/tarballs/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~idella4/tarballs/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

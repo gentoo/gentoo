@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="The Unico GTK+ 3.x theming engine"
 HOMEPAGE="https://launchpad.net/unico"
 #SRC_URI="https://launchpad.net/${MY_PN}/${PV%.*}/${PV}/+download/${MY_P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~tetromino/distfiles/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

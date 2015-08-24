@@ -9,7 +9,7 @@ inherit eutils qt4-r2 autotools
 DESCRIPTION="GPS waypoints, tracks and routes converter"
 HOMEPAGE="http://www.gpsbabel.org/"
 SRC_URI="
-	http://dev.gentoo.org/~patrick/${P}.tar.gz
+	https://dev.gentoo.org/~patrick/${P}.tar.gz
 	doc? ( http://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
 LICENSE="GPL-2"
 

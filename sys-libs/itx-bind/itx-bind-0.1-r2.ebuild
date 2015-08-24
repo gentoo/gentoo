@@ -7,7 +7,7 @@ EAPI=2
 inherit toolchain-funcs
 
 DESCRIPTION="the bind library for interix"
-HOMEPAGE="http://dev.gentoo.org/~mduft"
+HOMEPAGE="https://dev.gentoo.org/~mduft"
 SRC_URI=""
 
 LICENSE="ISC BSD-4"

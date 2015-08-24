@@ -10,7 +10,7 @@ MY_PN="PLCEdit"
 DESCRIPTION="Qt4 notepad for PLC programming"
 HOMEPAGE="http://www.qt-apps.org/content/show.php/PLCEdit?content=78380"
 #upstreams default tarball is quite messy. Better repack it myself :/
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

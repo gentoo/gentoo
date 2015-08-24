@@ -8,7 +8,7 @@ inherit autotools-utils
 
 DESCRIPTION="Extended sparse matrix package"
 HOMEPAGE="http://www.cise.ufl.edu/research/sparse/CXSparse/"
-SRC_URI="http://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

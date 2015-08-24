@@ -10,7 +10,7 @@ inherit kde4-base
 EGIT_REPO_URI="git://anongit.kde.org/akonadi-googledata-resource"
 DESCRIPTION="Google services integration in Akonadi"
 HOMEPAGE="https://projects.kde.org/projects/unmaintained/akonadi-googledata-resource"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
 LICENSE="GPL-2"
 
 SLOT="4"

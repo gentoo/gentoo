@@ -10,7 +10,7 @@ DESCRIPTION="VDR plugin: receive schedule and event information from ATSC broadc
 HOMEPAGE="http://www.fepg.org/atscepg.html"
 SRC_URI="http://www.fepg.org/files/${P}.tgz
 		mirror://gentoo/atscepg-${PV}_vdr-1.7.13.tbz
-		http://dev.gentoo.org/~hd_brummy/distfiles/atscepg-${PV}_vdr-1.7.13.tbz"
+		https://dev.gentoo.org/~hd_brummy/distfiles/atscepg-${PV}_vdr-1.7.13.tbz"
 
 SLOT="0"
 LICENSE="GPL-2"

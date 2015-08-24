@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils multilib git-r3 autotools
 
 DESCRIPTION="Gentoo Linux USE flags editor"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/ufed.git"
 

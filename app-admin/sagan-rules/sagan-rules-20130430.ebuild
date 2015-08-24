@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="Rules for Sagan log analyzer"
 HOMEPAGE="http://sagan.softwink.com/"
-SRC_URI="http://dev.gentoo.org/~maksbotan/sagan/sagan-rules-${PV}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~maksbotan/sagan/sagan-rules-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

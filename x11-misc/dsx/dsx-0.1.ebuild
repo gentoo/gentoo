@@ -8,7 +8,7 @@ PYTHON_DEPEND="2"
 inherit python
 
 DESCRIPTION="command line selection of your X desktop environment"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

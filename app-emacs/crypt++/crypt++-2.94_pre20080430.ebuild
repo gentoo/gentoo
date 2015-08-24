@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Handle all sorts of compressed and encrypted files"
 HOMEPAGE="http://www.emacswiki.org/emacs/CryptPlusPlus"
 # snapshot from http://cvs.xemacs.org/viewcvs.cgi/XEmacs/packages/xemacs-packages/os-utils/crypt.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -32,11 +32,11 @@ HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 # Use a gentoo hosted url since upstream uses a session based url that causes the
 # files to no longer be available after the session expires.
 SRC_URI="
-	http://dev.gentoo.org/~idella4/tarballs/${PN}_${MY_PVR}.tar.gz
-	http://dev.gentoo.org/~flameeyes/avasys/${PN}_${MY_PVR}.tar.gz
+	https://dev.gentoo.org/~idella4/tarballs/${PN}_${MY_PVR}.tar.gz
+	https://dev.gentoo.org/~flameeyes/avasys/${PN}_${MY_PVR}.tar.gz
 	doc? (
-		http://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_e.pdf
-		linguas_ja? ( http://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_j.pdf )
+		https://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_e.pdf
+		linguas_ja? ( https://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_j.pdf )
 	)"
 LICENSE="GPL-2 AVASYS"
 SLOT="0"

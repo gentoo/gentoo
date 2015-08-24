@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python bindings for FLANN artificial neural network library"
 HOMEPAGE="http://www.cs.ubc.ca/~mariusm/index.php/FLANN/FLANN/"
 SRC_URI="http://people.cs.ubc.ca/~mariusm/uploads/FLANN/flann-${PV}-src.zip
-	test? ( http://dev.gentoo.org/~bicatali/distfiles/flann-${PV}-testdata.tar.xz )"
+	test? ( https://dev.gentoo.org/~bicatali/distfiles/flann-${PV}-testdata.tar.xz )"
 
 LICENSE="BSD"
 SLOT="0"

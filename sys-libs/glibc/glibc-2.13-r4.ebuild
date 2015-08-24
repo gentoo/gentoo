@@ -99,7 +99,7 @@ SRC_URI=$(
 	}
 	gentoo_uris() {
 		local devspace="HTTP~vapier/dist/URI HTTP~azarah/glibc/URI"
-		devspace=${devspace//HTTP/http://dev.gentoo.org/}
+		devspace=${devspace//HTTP/https://dev.gentoo.org/}
 		echo mirror://gentoo/$1 ${devspace//URI/$1}
 	}
 

@@ -10,7 +10,7 @@ inherit eutils linux-info toolchain-funcs
 
 DESCRIPTION="Utilities allowing the read and write of CPU model-specific registers (MSR)"
 HOMEPAGE="http://www.kernel.org/pub/linux/utils/cpu/msr-tools/"
-SRC_URI="http://dev.gentoo.org/~kensington/distfiles/${P}.tar.gz mirror://debian/pool/main/m/${PN}/${DEB_P}.diff.gz"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tar.gz mirror://debian/pool/main/m/${PN}/${DEB_P}.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

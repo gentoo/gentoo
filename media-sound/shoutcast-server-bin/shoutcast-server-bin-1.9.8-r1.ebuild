@@ -65,6 +65,6 @@ pkg_postinst() {
 	elog "and can help you with server setup."
 	elog
 	elog "An Gentoo Linux shoutcast guide can be found at "
-	elog "http://www.gentoo.org/doc/en/shoutcast-config.xml"
+	elog "https://www.gentoo.org/doc/en/shoutcast-config.xml"
 	elog
 }

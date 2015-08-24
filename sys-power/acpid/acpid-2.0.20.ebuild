@@ -47,7 +47,7 @@ pkg_postinst() {
 		elog
 		elog "You may wish to read the Gentoo Linux Power Management Guide,"
 		elog "which can be found online at:"
-		elog "http://www.gentoo.org/doc/en/power-management-guide.xml"
+		elog "https://www.gentoo.org/doc/en/power-management-guide.xml"
 		elog
 	fi
 

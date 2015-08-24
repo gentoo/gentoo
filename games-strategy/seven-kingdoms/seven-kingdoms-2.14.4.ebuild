@@ -15,7 +15,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Seven Kingdoms: Ancient Adversaries"
 HOMEPAGE="http://7kfans.com/"
 SRC_URI="mirror://sourceforge/skfans/${MY_PN}-source-${PV}.tar.bz2
-	http://dev.gentoo.org/~pinkbyte/distfiles/${MY_PN}.png"
+	https://dev.gentoo.org/~pinkbyte/distfiles/${MY_PN}.png"
 
 LICENSE="GPL-2"
 SLOT="0"

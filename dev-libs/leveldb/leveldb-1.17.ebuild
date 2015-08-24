@@ -11,7 +11,7 @@ GITCRAP="e353fbc7ea81"
 DESCRIPTION="a fast key-value storage library written at Google"
 HOMEPAGE="https://github.com/google/leveldb"
 #SRC_URI="https://${PN}.googlecode.com/archive/${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~floppym/dist/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

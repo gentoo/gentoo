@@ -8,7 +8,7 @@ inherit cmake-utils fortran-2
 
 DESCRIPTION="Protein Complex Structural Alignment"
 HOMEPAGE="http://zhanglab.ccmb.med.umich.edu/MM-align/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/MM-align-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/MM-align-${PV}.tar.xz"
 
 SLOT="0"
 LICENSE="tm-align"

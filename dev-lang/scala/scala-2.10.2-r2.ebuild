@@ -56,9 +56,9 @@ HOMEPAGE="http://www.scala-lang.org/"
 SRC_URI="!binary?
 (	https://github.com/scala/scala/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${JURI[@]}
-	http://dev.gentoo.org/~gienah/snapshots/${P}-maven-deps.tar.gz
+	https://dev.gentoo.org/~gienah/snapshots/${P}-maven-deps.tar.gz
 )
-binary? ( http://dev.gentoo.org/~tomwij/files/dist/${P}-gentoo-binary.tar.bz2 )"
+binary? ( https://dev.gentoo.org/~tomwij/files/dist/${P}-gentoo-binary.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="${SV}/${PV}"

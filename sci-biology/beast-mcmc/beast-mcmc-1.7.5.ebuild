@@ -20,7 +20,7 @@ MY_P=BEASTv${PV}
 DESCRIPTION="Bayesian MCMC of Evolution & Phylogenetics using Molecular Sequences"
 HOMEPAGE="http://code.google.com/p/beast-mcmc/"
 #SRC_URI=""
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-3"
 SLOT="0"

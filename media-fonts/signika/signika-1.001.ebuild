@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="A sans-serif with gentle character designed for signage"
 HOMEPAGE="http://ancymonic.com/projects/Signika"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/freepascal/fpcbuild-${PV}.tar.gz
 	sparc? ( mirror://sourceforge/freepascal/${PN}-2.6.2.sparc-linux.tar )
 	x86? ( mirror://sourceforge/freepascal/${P}.i386-linux.tar )
 	doc? ( mirror://sourceforge/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz
-		http://dev.gentoo.org/~radhermit/distfiles/${P}-fpctoc.htx.bz2 )"
+		https://dev.gentoo.org/~radhermit/distfiles/${P}-fpctoc.htx.bz2 )"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"

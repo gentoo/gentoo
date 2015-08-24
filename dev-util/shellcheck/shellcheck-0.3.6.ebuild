@@ -15,7 +15,7 @@ DESCRIPTION="Shell script analysis tool"
 HOMEPAGE="http://www.shellcheck.net/"
 SRC_URI="
 	mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
-#	http://dev.gentoo.org/~mjo/distfiles/${PN}-man-${PV}.tar.xz"
+#	https://dev.gentoo.org/~mjo/distfiles/${PN}-man-${PV}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"

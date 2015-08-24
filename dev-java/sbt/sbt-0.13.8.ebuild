@@ -33,13 +33,13 @@ EGIT_COMMIT="v${PV}"
 EGIT_REPO_URI="https://github.com/sbt/sbt.git"
 SRC_URI="!binary?
 (
-	http://dev.gentoo.org/~gienah/snapshots/${P}-src.tar.bz2
-	http://dev.gentoo.org/~gienah/snapshots/${P}-ivy2-deps.tar.bz2
-	http://dev.gentoo.org/~gienah/snapshots/${P}-sbt-deps.tar.bz2
-	http://dev.gentoo.org/~gienah/snapshots/${P}-test-deps.tar.bz2
+	https://dev.gentoo.org/~gienah/snapshots/${P}-src.tar.bz2
+	https://dev.gentoo.org/~gienah/snapshots/${P}-ivy2-deps.tar.bz2
+	https://dev.gentoo.org/~gienah/snapshots/${P}-sbt-deps.tar.bz2
+	https://dev.gentoo.org/~gienah/snapshots/${P}-test-deps.tar.bz2
 	http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/${L_PN}/${PV}/${L_PN}.jar -> ${BL_P}.jar
 )
-binary? ( http://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.bz2 )"
+binary? ( https://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="0"
@@ -67,9 +67,9 @@ src_unpack() {
 java_prepare() {
 	if ! use binary; then
 		# Note: to bump sbt, some things to try are:
-		# 1. remove the http://dev.gentoo.org/~gienah/snapshots/${P}-ivy2-deps.tar.bz2
-		# http://dev.gentoo.org/~gienah/snapshots/${P}-sbt-deps.tar.bz2 and
-		# http://dev.gentoo.org/~gienah/snapshots/${P}-test-deps.tar.bz2 from SRC_URI
+		# 1. remove the https://dev.gentoo.org/~gienah/snapshots/${P}-ivy2-deps.tar.bz2
+		# https://dev.gentoo.org/~gienah/snapshots/${P}-sbt-deps.tar.bz2 and
+		# https://dev.gentoo.org/~gienah/snapshots/${P}-test-deps.tar.bz2 from SRC_URI
 		# 2. Comment the sbt publishLocal line in src_compile.
 		# 3. try:
 		# FEATURES='noclean -test' emerge -v dev-java/sbt

@@ -5,8 +5,8 @@
 EAPI=5
 
 DESCRIPTION="Manages Ruby on Rails symlinks"
-HOMEPAGE="http://www.gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~flameeyes/ruby-team/${P}.tar.xz"
+HOMEPAGE="https://www.gentoo.org/"
+SRC_URI="https://dev.gentoo.org/~flameeyes/ruby-team/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

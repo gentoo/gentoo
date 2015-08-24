@@ -11,7 +11,7 @@ inherit base haskell-cabal
 
 DESCRIPTION="Draw pretty sequence diagrams of D-Bus traffic"
 HOMEPAGE="http://willthompson.co.uk/bustle/"
-SRC_URI="http://willthompson.co.uk/${PN}/releases/${PV}/${P}.tar.gz http://dev.gentoo.org/~slyfox/bustle-0.4.0-tests.tar.gz"
+SRC_URI="http://willthompson.co.uk/${PN}/releases/${PV}/${P}.tar.gz https://dev.gentoo.org/~slyfox/bustle-0.4.0-tests.tar.gz"
 
 LICENSE="LGPL-2 GPL-2" # bustle-dbus-monitor.c is GPL-2, rest is LGPL-2
 SLOT="0"

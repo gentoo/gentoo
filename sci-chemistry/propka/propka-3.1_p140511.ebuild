@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes"
 HOMEPAGE="http://propka.ki.ku.dk/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="all-rights-reserved"

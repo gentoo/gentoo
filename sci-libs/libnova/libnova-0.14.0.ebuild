@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Celestial Mechanics and Astronomical Calculation Library"
 HOMEPAGE="http://libnova.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~bicatali/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~bicatali/${P}.tar.gz"
 # bad tar ball on sf, rebuild it from svn
 #SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

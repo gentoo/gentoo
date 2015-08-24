@@ -13,7 +13,7 @@ HOMEPAGE="
 	http://blt.sourceforge.net/
 	http://jos.decoster.googlepages.com/bltfortk8.5.2"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/${PN}${PV}${MY_V_SUFFIX}.tar.gz
+	https://dev.gentoo.org/~jlec/distfiles/${PN}${PV}${MY_V_SUFFIX}.tar.gz
 	http://jos.decoster.googlepages.com/${PN}${PV}${MY_V_SUFFIX}.tar.gz"
 
 IUSE="jpeg static-libs X"

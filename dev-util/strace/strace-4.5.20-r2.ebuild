@@ -9,7 +9,7 @@ inherit flag-o-matic eutils
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
 HOMEPAGE="http://sourceforge.net/projects/strace/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
-	http://dev.gentoo.org/~flameeyes/patches/${PN}/${P}-ioctls.patch.bz2"
+	https://dev.gentoo.org/~flameeyes/patches/${PN}/${P}-ioctls.patch.bz2"
 
 LICENSE="BSD"
 SLOT="0"

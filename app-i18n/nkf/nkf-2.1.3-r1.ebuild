@@ -9,8 +9,8 @@ inherit eutils distutils-r1 perl-module toolchain-funcs
 DESCRIPTION="Network Kanji code conversion Filter with UTF-8/16 support"
 HOMEPAGE="http://sourceforge.jp/projects/nkf/"
 SRC_URI="mirror://sourceforge.jp/nkf/59912/${P}.tar.gz
-	linguas_ja? ( http://dev.gentoo.org/~naota/files/nkf.1j )
-	python? ( http://dev.gentoo.org/~naota/files/NKF_python20090602.tgz )"
+	linguas_ja? ( https://dev.gentoo.org/~naota/files/nkf.1j )
+	python? ( https://dev.gentoo.org/~naota/files/NKF_python20090602.tgz )"
 
 LICENSE="ZLIB"
 SLOT="0"

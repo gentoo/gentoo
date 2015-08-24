@@ -8,7 +8,7 @@ inherit base pam eutils
 
 DESCRIPTION="The Console Display Manager"
 HOMEPAGE="https://wiki.archlinux.org/index.php/CDM"
-SRC_URI="http://dev.gentoo.org/~gienah/snapshots/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~gienah/snapshots/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

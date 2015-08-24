@@ -12,7 +12,7 @@ KEYWORDS="amd64 x86"
 
 Gnat_Name="gnat-gcc"
 My_PN="asis"
-SRC_URI="http://dev.gentoo.org/~george/src/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~george/src/${P}.tar.bz2"
 
 IUSE="doc"
 RDEPEND="=dev-lang/gnat-gcc-${PV}*"

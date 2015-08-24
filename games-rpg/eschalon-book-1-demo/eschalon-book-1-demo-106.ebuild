@@ -7,7 +7,7 @@ inherit eutils games
 
 DESCRIPTION="A classic role-playing game"
 HOMEPAGE="http://basiliskgames.com/eschalon-book-i"
-SRC_URI="http://dev.gentoo.org/~calchan/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~calchan/distfiles/${P}.tar.gz"
 
 LICENSE="eschalon-book-1-demo"
 SLOT="0"

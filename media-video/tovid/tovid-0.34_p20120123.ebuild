@@ -16,7 +16,7 @@ inherit distutils gnome2-utils
 
 DESCRIPTION="A collection of DVD authoring tools"
 HOMEPAGE="http://tovid.wikia.com/wiki/Tovid_Wiki"
-SRC_URI="http://dev.gentoo.org/~ssuominen/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.gz"
 #SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

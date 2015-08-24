@@ -10,7 +10,7 @@ MY_PN="EmfEngine"
 
 DESCRIPTION="Native vector graphics file format on Windows"
 HOMEPAGE="http://soft.proindependent.com/emf/index.html"
-SRC_URI="http://dev.gentoo.org/~jelc/distfiles/${MY_PN}-${PV}-opensource.zip"
+SRC_URI="https://dev.gentoo.org/~jelc/distfiles/${MY_PN}-${PV}-opensource.zip"
 
 SLOT="0"
 LICENSE="GPL-3"

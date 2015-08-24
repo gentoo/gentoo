@@ -9,7 +9,7 @@ inherit eutils toolchain-funcs versionator
 MY_PV="$(delete_all_version_separators)"
 DESCRIPTION="A stream editor for manipulating CSV files"
 HOMEPAGE="http://code.google.com/p/csvfix/"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.bz2
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.bz2
 	doc? ( http://csvfix.googlecode.com/files/CSVfix_man_html_${MY_PV}0.zip )"
 
 LICENSE="MIT"

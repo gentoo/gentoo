@@ -11,8 +11,8 @@ inherit perl-module toolchain-funcs
 
 DESCRIPTION="Perl extension for iptables libiptc library"
 SRC_URI="${SRC_URI}
-http://dev.gentoo.org/~pinkbyte/distfiles/${PN}/${P}-support-for-iptables-1.4.12.patch.bz2
-http://dev.gentoo.org/~pinkbyte/distfiles/${PN}/${P}-support-for-iptables-1.4.16.2.patch.bz2"
+https://dev.gentoo.org/~pinkbyte/distfiles/${PN}/${P}-support-for-iptables-1.4.12.patch.bz2
+https://dev.gentoo.org/~pinkbyte/distfiles/${PN}/${P}-support-for-iptables-1.4.16.2.patch.bz2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

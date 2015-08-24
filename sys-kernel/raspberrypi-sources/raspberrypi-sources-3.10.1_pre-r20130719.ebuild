@@ -20,6 +20,6 @@ HOMEPAGE="https://github.com/raspberrypi/linux"
 # https://github.com/raspberrypi/linux/tarball/${MY_COMMIT} ->
 #		raspberrypi-sources-${MY_COMMIT}.tar.gz
 SRC_URI="${KERNEL_URI}
-	http://dev.gentoo.org/~xmw/${PN}/${PF}.patch.xz"
+	https://dev.gentoo.org/~xmw/${PN}/${PF}.patch.xz"
 
 KEYWORDS="~arm"

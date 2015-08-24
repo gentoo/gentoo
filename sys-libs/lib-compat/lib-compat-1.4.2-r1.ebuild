@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Compatibility C++ and libc5 and libc6 libraries for very old programs"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"

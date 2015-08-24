@@ -8,7 +8,7 @@ ACT_Ver="2010"
 Gnat_Name="gnat-gcc"
 
 DESCRIPTION="The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)"
-SRC_URI="http://dev.gentoo.org/~george/src/asis-gpl-${ACT_Ver}-src.tgz"
+SRC_URI="https://dev.gentoo.org/~george/src/asis-gpl-${ACT_Ver}-src.tgz"
 HOMEPAGE="https://libre.adacore.com/"
 LICENSE="GPL-2"
 

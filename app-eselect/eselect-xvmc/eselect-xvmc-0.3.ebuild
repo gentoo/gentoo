@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages XvMC implementations"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

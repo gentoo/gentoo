@@ -10,7 +10,7 @@ MY_P="${PN}${PV}_Linux"
 
 DESCRIPTION="A direct-method program for SAD/SIR phasing"
 HOMEPAGE="http://cryst.iphy.ac.cn/Project/protein/protein-I.html"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${MY_P}.zip"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${MY_P}.zip"
 
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"

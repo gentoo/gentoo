@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Major modes for MATLAB .m and .tlc files"
 HOMEPAGE="http://matlab-emacs.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

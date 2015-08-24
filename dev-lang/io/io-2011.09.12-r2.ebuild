@@ -9,7 +9,7 @@ inherit cmake-utils
 DESCRIPTION="Io is a small, prototype-based programming language"
 HOMEPAGE="http://www.iolanguage.com"
 SRC_URI="mirror://gentoo/${P}.tar.gz
-		http://dev.gentoo.org/~araujo/snapshots/${P}.tar.gz"
+		https://dev.gentoo.org/~araujo/snapshots/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

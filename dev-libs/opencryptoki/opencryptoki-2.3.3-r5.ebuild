@@ -14,7 +14,7 @@ DESCRIPTION="PKCS#11 provider cryptographic hardware"
 HOMEPAGE="http://sourceforge.net/projects/opencryptoki"
 SRC_URI="mirror://sourceforge/opencryptoki/${P}.tar.bz2
 	${BACKPORTS:+
-		http://dev.gentoo.org/~flameeyes/${PN}/${P}-backports-${BACKPORTS}.tar.bz2}"
+		https://dev.gentoo.org/~flameeyes/${PN}/${P}-backports-${BACKPORTS}.tar.bz2}"
 
 # Upstream is looking into relicensing it into CPL-1.0 entirely; the CCA
 # token sources are under CPL-1.0 already.

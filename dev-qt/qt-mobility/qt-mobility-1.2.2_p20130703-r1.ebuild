@@ -8,7 +8,7 @@ inherit multilib qt4-r2
 
 DESCRIPTION="Additional Qt APIs for mobile devices and desktop platforms"
 HOMEPAGE="http://doc-snapshots.qt.io/qt-mobility/index.html"
-SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"

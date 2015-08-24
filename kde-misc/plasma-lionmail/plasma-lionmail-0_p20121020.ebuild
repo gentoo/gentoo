@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="A Plasma widget displaying new and important email"
 HOMEPAGE="http://www.kde.org http://www.vizzzion.org"
-SRC_URI="http://dev.gentoo.org/~creffett/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~creffett/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="4"

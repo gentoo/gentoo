@@ -13,8 +13,8 @@ MY_P="stone_soup-${PV}"
 DESCRIPTION="Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="http://crawl.develz.org/wordpress/"
 SRC_URI="https://crawl.develz.org/release/stone_soup-${PV}.tar.xz
-	http://dev.gentoo.org/~hasufell/distfiles/${PN}.png
-	http://dev.gentoo.org/~hasufell/distfiles/${PN}.svg"
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
+	https://dev.gentoo.org/~hasufell/distfiles/${PN}.svg"
 
 # 3-clause BSD: mt19937ar.cc, MSVC/stdint.h
 # 2-clause BSD: all contributions by Steve Noonan and Jesse Luehrs

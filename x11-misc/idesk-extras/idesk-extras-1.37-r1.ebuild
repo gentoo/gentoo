@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Graphical configuration for iDesk plus icons"
 HOMEPAGE="http://www.jmurray.id.au/idesk-extras.html" # dead?
-SRC_URI="http://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

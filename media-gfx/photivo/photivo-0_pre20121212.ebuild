@@ -8,7 +8,7 @@ inherit qt4-r2
 
 DESCRIPTION="Photo processor for RAW and Bitmap images"
 HOMEPAGE="http://www.photivo.org"
-SRC_URI="http://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

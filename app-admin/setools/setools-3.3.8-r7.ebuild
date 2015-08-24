@@ -10,7 +10,7 @@ inherit autotools java-pkg-opt-2 python-r1 eutils toolchain-funcs
 DESCRIPTION="SELinux policy tools"
 HOMEPAGE="http://www.tresys.com/selinux/selinux_policy_tools.shtml"
 SRC_URI="http://oss.tresys.com/projects/setools/chrome/site/dists/${P}/${P}.tar.bz2
-	http://dev.gentoo.org/~perfinion/patches/setools/${P}-04-gentoo-patches.tar.bz2"
+	https://dev.gentoo.org/~perfinion/patches/setools/${P}-04-gentoo-patches.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

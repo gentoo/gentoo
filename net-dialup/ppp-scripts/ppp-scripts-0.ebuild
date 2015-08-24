@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Common set of scripts for various PPP implementations"
 HOMEPAGE="https://gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

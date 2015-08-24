@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="CLI and C api to get data from Bugzilla"
 HOMEPAGE="https://github.com/yaccz/cbugzilla"
-SRC_URI="http://dev.gentoo.org/~yac/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yac/distfiles/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="a popup menu of icons like in AfterStep, as a dockable application"
 HOMEPAGE="http://windowmaker.org/dockapps/?name=wmmenu"
 # Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

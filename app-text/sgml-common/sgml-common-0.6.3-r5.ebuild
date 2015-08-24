@@ -9,7 +9,7 @@ inherit eutils prefix
 DESCRIPTION="Base ISO character entities and utilities for SGML"
 HOMEPAGE="http://www.iso.ch/cate/3524030.html"
 #SRC_URI="mirror://kde/devel/docbook/SOURCES/${P}.tgz"
-SRC_URI="http://dev.gentoo.org/~floppym/dist/${PN}/${P}-gentoo.tar.gz"
+SRC_URI="https://dev.gentoo.org/~floppym/dist/${PN}/${P}-gentoo.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

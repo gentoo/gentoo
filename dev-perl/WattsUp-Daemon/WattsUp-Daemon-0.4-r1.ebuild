@@ -7,8 +7,8 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="Watt's Up Monitoring Daemon"
-HOMEPAGE="http://dev.gentoo.org/~robbat2/wattsup-daemon/"
-SRC_URI="http://dev.gentoo.org/~robbat2/wattsup-daemon/${P}.tar.gz"
+HOMEPAGE="https://dev.gentoo.org/~robbat2/wattsup-daemon/"
+SRC_URI="https://dev.gentoo.org/~robbat2/wattsup-daemon/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"

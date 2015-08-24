@@ -9,7 +9,7 @@ inherit cmake-utils python-any-r1 games
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
 HOMEPAGE="http://www.freeorion.org"
-SRC_URI="http://dev.gentoo.org/~tomka/files/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~tomka/files/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"

@@ -12,7 +12,7 @@ DESCRIPTION="A simple image, PDF and postscript file annotator"
 HOMEPAGE="http://code.google.com/p/whyteboard"
 SRC_URI="
 	http://whyteboard.googlecode.com/files/${P}.tar.gz
-	http://dev.gentoo.org/~lxnay/${PN}/${PN}.png"
+	https://dev.gentoo.org/~lxnay/${PN}/${PN}.png"
 
 LICENSE="ISC"
 SLOT="0"

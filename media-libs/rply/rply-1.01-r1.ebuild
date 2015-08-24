@@ -10,7 +10,7 @@ DESCRIPTION="A library to read and write PLY files"
 HOMEPAGE="http://w3.impa.br/~diego/software/rply/"
 # SRC_URI="http://w3.impa.br/~diego/software/rply/${P}.tar.gz"
 # Tarball no longer available from upstream website
-SRC_URI="http://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

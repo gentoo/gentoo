@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Tool for updating or switching between versions of the Linux kernel source"
 HOMEPAGE="https://github.com/psomas/ketchup"
-SRC_URI="http://dev.gentoo.org/~psomas/${PF}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~psomas/${PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

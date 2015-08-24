@@ -9,7 +9,7 @@ inherit gnome2
 
 DESCRIPTION="GTK update icon cache"
 HOMEPAGE="http://www.gtk.org/"
-SRC_URI="http://dev.gentoo.org/~eva/distfiles/${PN}/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~eva/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"

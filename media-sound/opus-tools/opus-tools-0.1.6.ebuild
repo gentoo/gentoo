@@ -17,7 +17,7 @@ HOMEPAGE="http://opus-codec.org/"
 if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
-	SRC_URI="http://dev.gentoo.org/~lu_zero/${PN}/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~lu_zero/${PN}/${P}.tar.xz"
 else # Official release
 	SRC_URI="http://downloads.xiph.org/releases/opus/${P}.tar.gz"
 fi

@@ -10,7 +10,7 @@ HOMEPAGE="http://mikachan-font.com/"
 #SRC_URI="http://mikachan.sourceforge.jp/mikachanALL.exe
 #	http://mikachan.sourceforge.jp/puchi.exe"
 SRC_URI="mirror://gentoo/${P/-ttc/}.tar.bz2
-	http://dev.gentoo.org/~usata/${P/-ttc/}.tar.bz2"
+	https://dev.gentoo.org/~usata/${P/-ttc/}.tar.bz2"
 
 LICENSE="free-noncomm"
 SLOT="0"

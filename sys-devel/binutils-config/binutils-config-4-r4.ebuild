@@ -5,7 +5,7 @@
 EAPI="4"
 
 DESCRIPTION="Utility to change the binutils version being used"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

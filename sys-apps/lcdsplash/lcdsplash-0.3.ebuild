@@ -5,9 +5,9 @@
 inherit multilib
 
 DESCRIPTION="splash Gentoo boot information on LCD's"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-	http://dev.gentoo.org/~vapier/dist/${P}.tar.bz2"
+	https://dev.gentoo.org/~vapier/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

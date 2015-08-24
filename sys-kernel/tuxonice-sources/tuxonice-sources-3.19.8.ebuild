@@ -12,7 +12,7 @@ detect_version
 detect_arch
 
 DESCRIPTION="TuxOnIce + Gentoo patchset sources"
-HOMEPAGE="http://dev.gentoo.org/~mpagano/genpatches/ http://tuxonice.nigelcunningham.com.au/ https://github.com/NigelCunningham/tuxonice-kernel"
+HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/ http://tuxonice.nigelcunningham.com.au/ https://github.com/NigelCunningham/tuxonice-kernel"
 
 TUXONICE_PV="3.19.8"
 TUXONICE_DATE="2015-05-12"

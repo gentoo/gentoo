@@ -56,7 +56,7 @@ src_prepare() {
 		-e 's/-ggdb3//' \
 		Makefile || die 'sed Makefile failed.'
 	sed -i \
-		-e 's#https://www\.cyphertite\.com#http://www.gentoo.org/#' \
+		-e 's#https://www\.cyphertite\.com#https://www.gentoo.org/#' \
 		-e "s#/usr/local#/usr#" \
 		../xombrero.h || die 'sed ../xombrero.c failed.'
 	sed -i \

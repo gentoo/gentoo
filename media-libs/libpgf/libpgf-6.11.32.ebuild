@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Library to load, handle and manipulate images in the PGF format"
 HOMEPAGE="http://www.libpgf.org/"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

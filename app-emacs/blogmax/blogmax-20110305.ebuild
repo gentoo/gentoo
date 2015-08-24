@@ -9,7 +9,7 @@ inherit eutils readme.gentoo elisp
 DESCRIPTION="Blogging in Emacs"
 HOMEPAGE="http://billstclair.com/blogmax/index.html"
 # taken from http://billstclair.com/blogmax.zip
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.zip"
 
 LICENSE="GPL-1+"
 SLOT="0"

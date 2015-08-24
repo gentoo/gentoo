@@ -521,7 +521,7 @@ pkg_postinst() {
 	elog
 	elog "Getting started using OpenLDAP? There is some documentation available:"
 	elog "Gentoo Guide to OpenLDAP Authentication"
-	elog "(http://www.gentoo.org/doc/en/ldap-howto.xml)"
+	elog "(https://www.gentoo.org/doc/en/ldap-howto.xml)"
 	elog
 
 	# note to bug #110412

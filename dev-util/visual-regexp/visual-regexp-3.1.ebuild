@@ -9,7 +9,7 @@ inherit eutils
 DESCRIPTION="Type the regexp and visualize it on a sample of your choice"
 HOMEPAGE="http://laurent.riesterer.free.fr/regexp/"
 SRC_URI="
-	http://dev.gentoo.org/~jlec/distfiles/visualregexp-icon.png.tar
+	https://dev.gentoo.org/~jlec/distfiles/visualregexp-icon.png.tar
 	http://laurent.riesterer.free.fr/regexp/visual_regexp-${PV}.tcl"
 
 LICENSE="GPL-2"

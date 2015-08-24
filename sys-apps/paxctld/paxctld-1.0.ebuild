@@ -6,7 +6,7 @@ EAPI="5"
 
 DESCRIPTION="PaX flags maintenance daemon"
 HOMEPAGE="http://www.grsecurity.net/"
-SRC_URI="http://dev.gentoo.org/~blueness/hardened-sources/paxctld/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://dev.gentoo.org/~blueness/hardened-sources/paxctld/${PN}_${PV}.orig.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"

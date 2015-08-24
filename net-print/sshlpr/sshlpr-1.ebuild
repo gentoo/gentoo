@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="ssh-lpr backend for cups -- print to remote systems over ssh"
 HOMEPAGE="http://www.masella.name/technical/sshlpr.html"
-SRC_URI="http://dev.gentoo.org/~radhermit/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
@@ -56,14 +56,14 @@
 		implementations will behave the same. Thus, for
 		example, one could use this library for server-side
 		rendering and
-		&lt;http://github.com/jgm/commonmark.js commonmark.js&gt;
+		&lt;https://github.com/jgm/commonmark.js commonmark.js&gt;
 		for client-side previewing.
 		
 		-   Ease of installation: cmark is portable and has
 		minimal dependencies.
 		
 		cmark does not provide Haskell versions of the whole
-		&lt;http://github.com/jgm/cmark libcmark&gt; API, which is
+		&lt;https://github.com/jgm/cmark libcmark&gt; API, which is
 		built around mutable @cmark_node@ objects. Instead, it
 		provides functions for converting CommonMark to HTML
 		(and other formats), and a function for converting

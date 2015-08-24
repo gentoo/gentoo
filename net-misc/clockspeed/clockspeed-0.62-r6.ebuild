@@ -12,7 +12,7 @@ HOMEPAGE="http://cr.yp.to/clockspeed.html"
 LEAPSECONDS_DATE="20081114"
 
 SRC_URI="http://cr.yp.to/clockspeed/${P}.tar.gz
-	http://dev.gentoo.org/~pacho/maintainer-needed/leapsecs.dat."$LEAPSECONDS_DATE""
+	https://dev.gentoo.org/~pacho/maintainer-needed/leapsecs.dat."$LEAPSECONDS_DATE""
 
 LICENSE="all-rights-reserved"
 SLOT="0"

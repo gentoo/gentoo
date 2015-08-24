@@ -10,7 +10,7 @@ DESCRIPTION="An Emacs minor mode for highlighting broken formatting rules"
 HOMEPAGE="http://www.jpl.org/ftp/pub/elisp/
 	http://www.emacswiki.org/emacs/DevelockMode"
 # taken from http://www.jpl.org/ftp/pub/elisp/${PN}.el.gz
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.gz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

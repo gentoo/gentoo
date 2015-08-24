@@ -8,7 +8,7 @@ inherit python-single-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="The SunPinYin IMEngine for IBus Framework"
 HOMEPAGE="https://sunpinyin.googlecode.com/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/sunpinyin-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0"

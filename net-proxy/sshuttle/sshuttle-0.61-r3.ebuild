@@ -9,7 +9,7 @@ inherit eutils linux-info python-single-r1
 
 DESCRIPTION="Transparent proxy server that works as a poor man's VPN using ssh"
 HOMEPAGE="https://github.com/apenwarr/sshuttle/"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit java-pkg-2 eutils java-ant-2
 DESCRIPTION="A Java based console for remote management 389 server"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2
-	http://dev.gentoo.org/~lxnay/${PN}/fedora.png"
+	https://dev.gentoo.org/~lxnay/${PN}/fedora.png"
 
 LICENSE="LGPL-2.1"
 SLOT="1.1"

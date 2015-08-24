@@ -9,11 +9,11 @@ if [[ "${PV}" == "9999" ]]; then
 fi
 
 DESCRIPTION="Script used to reinstall Python packages after changing of active Python versions"
-HOMEPAGE="http://www.gentoo.org/proj/en/Python/"
+HOMEPAGE="https://www.gentoo.org/proj/en/Python/"
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/python-updater.git"
 else
-	SRC_URI="http://dev.gentoo.org/~floppym/dist/${P}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 fi
 

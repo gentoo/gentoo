@@ -12,8 +12,8 @@ DESCRIPTION="Qt based clone of the Origin plotting package"
 HOMEPAGE="http://soft.proindependent.com/qtiplot.html
 	http://www.staff.science.uu.nl/~zeven101/qtiplot.html"
 SRC_URI="
-	http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2
-	http://dev.gentoo.org/~dilfridge/distfiles/${P}-origin.patch.bz2"
+	https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2
+	https://dev.gentoo.org/~dilfridge/distfiles/${P}-origin.patch.bz2"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"

@@ -15,7 +15,7 @@ DIR_PV=$(get_version_component_range 1-2)
 DESCRIPTION="Service to log activities and present to other apps"
 HOMEPAGE="http://launchpad.net/zeitgeist/"
 SRC_URI="http://launchpad.net/zeitgeist/${DIR_PV}/${PV}/+download/${P}.tar.xz
-	http://dev.gentoo.org/~eva/distfiles/${PN}/${P}.tar.xz"
+	https://dev.gentoo.org/~eva/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+ LGPL-3+ GPL-2+"
 SLOT="0"

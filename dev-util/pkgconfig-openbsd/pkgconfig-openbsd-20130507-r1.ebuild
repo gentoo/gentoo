@@ -13,7 +13,7 @@ PKG_M4_VERSION=0.28
 
 DESCRIPTION="A perl based version of pkg-config from OpenBSD"
 HOMEPAGE="http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/pkg-config/"
-SRC_URI="http://dev.gentoo.org/~ssuominen/${P}.tar.xz
+SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz
 	pkg-config? ( http://pkgconfig.freedesktop.org/releases/pkg-config-${PKG_M4_VERSION}.tar.gz )"
 
 LICENSE="ISC"

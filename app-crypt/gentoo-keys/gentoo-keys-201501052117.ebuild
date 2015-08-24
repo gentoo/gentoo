@@ -6,7 +6,7 @@ EAPI="5"
 
 DESCRIPTION="A Openpgp/gpg keyring of official Gentoo release media gpg keys"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Gentoo-keys"
-SRC_URI="http://dev.gentoo.org/~dolsen/releases/keyrings/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/keyrings/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit cannadic eutils
 
 DESCRIPTION="Japanese Canna dictionary for 2channelers"
 HOMEPAGE="http://omaemona.sourceforge.net/packages/Canna/"
-SRC_URI="http://dev.gentoo.org/~naota/files/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~naota/files/${P}.tar.gz"
 #SRC_URI="http://omaemona.sourceforge.net/packages/Canna/2ch.t"
 
 LICENSE="public-domain"

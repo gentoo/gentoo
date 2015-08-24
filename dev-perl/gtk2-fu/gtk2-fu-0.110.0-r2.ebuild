@@ -11,7 +11,7 @@ inherit perl-module
 
 DESCRIPTION="gtk2-fu is a layer on top of perl gtk2, that brings power, simplicity and speed of development"
 SRC_URI+="
-http://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${MY_PN:-${PN}}/${MY_PN:-${PN}}-${PV}-patch.tar.bz2"
+https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${MY_PN:-${PN}}/${MY_PN:-${PN}}-${PV}-patch.tar.bz2"
 
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 x86"

@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="A small subset of Eclipse core libraries for modular applications"
 HOMEPAGE="https://code.google.com/p/eclipsito/"
-SRC_URI="http://dev.gentoo.org/~tomwij/files/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~tomwij/files/dist/${P}.tar.xz"
 
 LICENSE="EPL-1.0"
 SLOT="0"

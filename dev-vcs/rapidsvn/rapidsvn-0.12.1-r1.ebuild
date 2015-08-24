@@ -19,7 +19,7 @@ DESCRIPTION="Cross-platform GUI front-end for the Subversion revision system"
 HOMEPAGE="http://rapidsvn.tigris.org/"
 SRC_URI="
 	http://www.rapidsvn.org/download/release/${PV}/${P}.tar.gz
-	doc? ( http://dev.gentoo.org/~jlec/distfiles/svncpp.dox.xz )"
+	doc? ( https://dev.gentoo.org/~jlec/distfiles/svncpp.dox.xz )"
 
 LICENSE="GPL-2 LGPL-2.1 FDL-1.2"
 SLOT="0"

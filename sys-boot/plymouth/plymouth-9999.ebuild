@@ -5,7 +5,7 @@
 EAPI=5
 
 SRC_URI="
-	http://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
+	https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/plymouth"
@@ -46,7 +46,7 @@ RDEPEND="${CDEPEND}
 
 DOC_CONTENTS="
 	Follow the following instructions to set up Plymouth:\n
-	http://dev.gentoo.org/~aidecoe/doc/en/plymouth.xml
+	https://dev.gentoo.org/~aidecoe/doc/en/plymouth.xml
 "
 
 src_prepare() {

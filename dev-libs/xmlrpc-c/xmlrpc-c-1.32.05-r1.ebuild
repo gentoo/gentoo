@@ -19,7 +19,7 @@ inherit eutils multilib
 
 DESCRIPTION="A lightweigt RPC library based on XML and HTTP"
 HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~maksbotan/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~maksbotan/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

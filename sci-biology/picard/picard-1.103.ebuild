@@ -11,7 +11,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java-based command-line utilities that manipulate SAM files"
 HOMEPAGE="http://picard.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"

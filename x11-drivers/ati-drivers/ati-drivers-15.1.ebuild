@@ -225,7 +225,7 @@ pkg_setup() {
 	elog
 	elog "If your card is older then use ${CATEGORY}/xf86-video-ati"
 	elog "For migration informations please refer to:"
-	elog "http://www.gentoo.org/proj/en/desktop/x/x11/ati-migration-guide.xml"
+	elog "https://www.gentoo.org/proj/en/desktop/x/x11/ati-migration-guide.xml"
 	einfo
 }
 

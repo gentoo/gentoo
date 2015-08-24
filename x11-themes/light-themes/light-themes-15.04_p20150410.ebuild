@@ -12,7 +12,7 @@ DESCRIPTION="GTK2/GTK3 Ambiance and Radiance themes from Ubuntu"
 HOMEPAGE="https://launchpad.net/light-themes"
 SRC_URI="
 	mirror://ubuntu/pool/main/${MY_PN:0:1}/${MY_PN}/${MY_PN}_${MY_PV}.orig.tar.gz
-	http://dev.gentoo.org/~pacho/${PN}/Gentoo-Buttons-r1.tar.xz
+	https://dev.gentoo.org/~pacho/${PN}/Gentoo-Buttons-r1.tar.xz
 "
 
 LICENSE="CC-BY-SA-3.0 CC-BY-SA-4.0"

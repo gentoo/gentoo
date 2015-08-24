@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Image viewer/manager with optional support for MPEG movies"
 HOMEPAGE="http://pornview.sourceforge.net"
-SRC_URI="http://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz
+SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz
 	mirror://github/gentoo/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

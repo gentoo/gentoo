@@ -5,8 +5,8 @@
 EAPI=5
 
 DESCRIPTION="Tool to manage OpenRC services that need to be restarted"
-HOMEPAGE="http://dev.gentoo.org/~mschiff/restart_services/"
-SRC_URI="http://dev.gentoo.org/~mschiff/src/${PN}/${P}.tgz"
+HOMEPAGE="https://dev.gentoo.org/~mschiff/restart_services/"
+SRC_URI="https://dev.gentoo.org/~mschiff/src/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Numerical optimisation library"
 HOMEPAGE="http://gna.org/projects/minfx"
 #SRC_URI="http://download.gna.org/${PN}/${P}.tar.gz"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"

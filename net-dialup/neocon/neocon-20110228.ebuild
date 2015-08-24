@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A simple serial console utility that tries to open ttys repeatedly"
 HOMEPAGE="http://wiki.openmoko.org/wiki/NeoCon"
-SRC_URI="http://dev.gentoo.org/~radhermit/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

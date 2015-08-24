@@ -9,7 +9,7 @@ MY_P="mplay-${PV}"
 DESCRIPTION="mplayer wrapper script as backend for vdr-mplayer"
 HOMEPAGE="http://www.vdr-portal.de/board/thread.php?threadid=62306"
 SRC_URI="mirror://gentoo/${MY_P}.tgz
-	http://dev.gentoo.org/~zzam/distfiles/${MY_P}.tgz"
+	https://dev.gentoo.org/~zzam/distfiles/${MY_P}.tgz"
 
 KEYWORDS="x86 ~amd64"
 SLOT="0"

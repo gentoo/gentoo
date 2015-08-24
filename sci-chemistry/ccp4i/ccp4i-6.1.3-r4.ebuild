@@ -21,9 +21,9 @@ HOMEPAGE="http://www.ccp4.ac.uk/"
 SRC_URI="
 	${SRC}/${PV}/${MY_P}-core-src.tar.gz
 	mirror://gentoo/${P}-arpwarp.patch.bz2
-	http://dev.gentoo.org/~jlec/distfiles/${PV}-oasis4.0.patch.bz2"
+	https://dev.gentoo.org/~jlec/distfiles/${PV}-oasis4.0.patch.bz2"
 [[ -n ${UPDATE} ]] && SRC_URI="${SRC_URI} ${SRC}/${PV}/updates/${P}-src-patch-${UPDATE}.tar.gz"
-[[ -n ${PATCHDATE} ]] && SRC_URI="${SRC_URI} http://dev.gentoo.org/~jlec/science-dist/${PV}-${PATCHDATE}-updates.patch.bz2"
+[[ -n ${PATCHDATE} ]] && SRC_URI="${SRC_URI} https://dev.gentoo.org/~jlec/science-dist/${PV}-${PATCHDATE}-updates.patch.bz2"
 
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"

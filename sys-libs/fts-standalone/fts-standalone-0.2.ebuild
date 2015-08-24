@@ -7,8 +7,8 @@ EAPI="5"
 MY_P=${P/-standalone/}
 
 DESCRIPTION="Standalone fts library for use with musl"
-HOMEPAGE="http://dev.gentoo.org/~blueness/fts-standalone"
-SRC_URI="http://dev.gentoo.org/~blueness/fts-standalone/${MY_P}.tar.gz"
+HOMEPAGE="https://dev.gentoo.org/~blueness/fts-standalone"
+SRC_URI="https://dev.gentoo.org/~blueness/fts-standalone/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

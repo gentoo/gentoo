@@ -17,7 +17,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	KEYWORDS="~amd64 ~arm ~mips ~x86 ~x86-fbsd"
 	SRC_URI="http://www.${PN}-browser.org/downloads/${PN}_${PV}_all_.tar.bz2
-		http://dev.gentoo.org/~ssuominen/${P}-save_as.patch.xz"
+		https://dev.gentoo.org/~ssuominen/${P}-save_as.patch.xz"
 fi
 
 inherit eutils fdo-mime gnome2-utils pax-utils python-any-r1 cmake-utils vala ${_live_inherits}

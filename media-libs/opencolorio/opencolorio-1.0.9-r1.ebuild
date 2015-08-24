@@ -13,7 +13,7 @@ DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="http://opencolorio.org/"
 SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz \
 		-> ${P}.tar.gz
-	http://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-yaml-0.5-compat.patch.bz2"
+	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-yaml-0.5-compat.patch.bz2"
 
 LICENSE="BSD"
 SLOT="0"

@@ -18,7 +18,7 @@ else
 	SRC_URI="http://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${MY_PV}.orig.tar.gz"
 	# upstream has no permissions to use some kde written code so repack git
 	# repo every time
-	#SRC_URI="http://dev.gentoo.org/~scarabeus/${P}.tar.xz"
+	#SRC_URI="https://dev.gentoo.org/~scarabeus/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 	PATCHES=( "${FILESDIR}/${P}-optionaltests.patch" )
 fi

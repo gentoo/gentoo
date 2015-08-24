@@ -12,7 +12,7 @@ inherit eutils fdo-mime linux-info python-single-r1 udev autotools toolchain-fun
 DESCRIPTION="HP Linux Imaging and Printing. Includes printer, scanner, fax drivers and service tools"
 HOMEPAGE="http://hplipopensource.com/hplip-web/index.html"
 SRC_URI="mirror://sourceforge/hplip/${P}.tar.gz
-		http://dev.gentoo.org/~billie/distfiles/${PN}-3.15.6-patches-1.tar.xz"
+		https://dev.gentoo.org/~billie/distfiles/${PN}-3.15.6-patches-1.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

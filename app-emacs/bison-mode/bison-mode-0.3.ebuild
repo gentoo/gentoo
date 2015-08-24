@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Emacs major mode for Bison, Yacc and Lex grammars"
 HOMEPAGE="https://github.com/Wilfred/bison-mode"
-SRC_URI="http://dev.gentoo.org/~nicolasbock/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~nicolasbock/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

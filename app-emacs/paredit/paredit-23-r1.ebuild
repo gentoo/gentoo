@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Minor mode for performing structured editing of S-expressions"
 HOMEPAGE="http://mumble.net/~campbell/emacs/
 	http://www.emacswiki.org/emacs/ParEdit"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Replay Gain library from Musepack"
 HOMEPAGE="http://www.musepack.net/"
-SRC_URI="http://dev.gentoo.org/~ssuominen/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

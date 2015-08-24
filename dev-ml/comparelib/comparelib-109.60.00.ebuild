@@ -9,7 +9,7 @@ inherit oasis
 DESCRIPTION="Camlp4 syntax extension that derives comparison functions from type representations"
 HOMEPAGE="http://www.janestreet.com/ocaml"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV}/individual/${P}.tar.gz
-	http://dev.gentoo.org/~aballier/distfiles/${P}.tar.gz"
+	https://dev.gentoo.org/~aballier/distfiles/${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"

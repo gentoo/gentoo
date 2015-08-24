@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Standard font for Android 4.0 (Ice Cream Sandwich) and later"
 HOMEPAGE="http://developer.android.com/design/style/typography.html"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 # fonts downloaded from https://googlefontdirectory.googlecode.com/hg/apache/
 # and repackaged; versioning is once again a mess
 

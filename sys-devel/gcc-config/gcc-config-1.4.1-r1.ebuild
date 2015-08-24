@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs multilib
 W_VER="1.5.1"
 
 DESCRIPTION="Utility to change the gcc compiler being used"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

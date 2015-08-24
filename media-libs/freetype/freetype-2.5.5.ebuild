@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
 		mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
 	doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
 		mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )
-	infinality? ( http://dev.gentoo.org/~polynomial-c/${P}-infinality-patches.tar.xz )"
+	infinality? ( https://dev.gentoo.org/~polynomial-c/${P}-infinality-patches.tar.xz )"
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"

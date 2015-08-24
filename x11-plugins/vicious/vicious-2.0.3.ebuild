@@ -6,7 +6,7 @@ EAPI=3
 
 DESCRIPTION="Modular widget library for x11-wm/awesome"
 HOMEPAGE="http://awesome.naquadah.org/wiki/Vicious"
-SRC_URI="http://dev.gentoo.org/~wired/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~wired/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit eutils java-pkg-2 java-ant-2
 DESCRIPTION="Java-based Ruby interpreter implementation"
 HOMEPAGE="http://jruby.codehaus.org/"
 SRC_URI="http://jruby.org.s3.amazonaws.com/downloads/${PV}/${PN}-src-${PV}.tar.gz
-	http://dev.gentoo.org/~tomwij/files/dist/${P}-mvn-ant-ant.patch"
+	https://dev.gentoo.org/~tomwij/files/dist/${P}-mvn-ant-ant.patch"
 
 LICENSE="|| ( EPL-1.0 GPL-2 LGPL-2.1 )"
 SLOT="0"

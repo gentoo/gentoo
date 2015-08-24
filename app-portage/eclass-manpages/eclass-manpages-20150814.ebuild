@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="collection of Gentoo eclass manpages"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"

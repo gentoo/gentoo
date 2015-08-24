@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="A GTK/Pango-based terminal that uses libvterm to provide terminal emulation"
 HOMEPAGE="http://www.leonerd.org.uk/code/pangoterm/"
-SRC_URI="http://dev.gentoo.org/~tranquility/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~tranquility/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

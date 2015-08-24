@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="Qt4-based filemanager"
 HOMEPAGE="https://github.com/ABBAPOH/andromeda"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

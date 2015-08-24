@@ -9,7 +9,7 @@ HOMEPAGE="http://phpunit.de"
 
 PHPUNIT_PHAR="${P}.phar"
 
-SRC_URI="http://dev.gentoo.org/~olemarkus/phpunit/${PHPUNIT_PHAR}"
+SRC_URI="https://dev.gentoo.org/~olemarkus/phpunit/${PHPUNIT_PHAR}"
 
 LICENSE="BSD"
 SLOT="0"

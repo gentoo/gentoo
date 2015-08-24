@@ -4,7 +4,7 @@
 
 EAPI=4
 CMAKE_VERBOSE=1
-MY_MIRROR=http://dev.gentoo.org/~xarthisius/distfiles
+MY_MIRROR=https://dev.gentoo.org/~xarthisius/distfiles
 
 inherit cmake-utils multilib toolchain-funcs
 

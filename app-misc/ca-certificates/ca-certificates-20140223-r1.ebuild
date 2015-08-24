@@ -51,7 +51,7 @@ if ${PRECOMPILED} ; then
 else
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${DEB_VER}${NMU_PR:++nmu}${NMU_PR}.tar.xz
 		ftp://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/${RTM_NAME}/src/nss-${NSS_VER}.tar.gz
-		cacert? ( http://dev.gentoo.org/~anarchy/patches/nss-3.14.1-add_spi+cacerts_ca_certs.patch )"
+		cacert? ( https://dev.gentoo.org/~anarchy/patches/nss-3.14.1-add_spi+cacerts_ca_certs.patch )"
 fi
 
 LICENSE="MPL-1.1"

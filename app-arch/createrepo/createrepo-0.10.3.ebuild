@@ -12,7 +12,7 @@ inherit python-single-r1 bash-completion-r1 eutils
 DESCRIPTION="Creates a common rpm-metadata repository"
 HOMEPAGE="http://createrepo.baseurl.org/"
 SRC_URI="http://createrepo.baseurl.org/download/${P}.tar.gz
-	http://dev.gentoo.org/~pacho/maintainer-needed/${PN}-0.9.9-head.patch.bz2"
+	https://dev.gentoo.org/~pacho/maintainer-needed/${PN}-0.9.9-head.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

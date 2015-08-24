@@ -5,9 +5,9 @@
 EAPI=5
 
 DESCRIPTION="Compatibility libc6 libraries for Loki games"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="http://www.blfh.de/gentoo/distfiles/${P}.tar.bz2
-	http://dev.gentoo.org/~wolf31o2/sources/lib-compat-loki/${P}.tar.bz2"
+	https://dev.gentoo.org/~wolf31o2/sources/lib-compat-loki/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -13,7 +13,7 @@ DESCRIPTION="An IRC bot extensible with C or TCL"
 HOMEPAGE="http://www.eggheads.org/"
 SRC_URI="
 	ftp://ftp.eggheads.org/pub/eggdrop/source/1.6/${MY_P}.tar.bz2
-	http://dev.gentoo.org/~binki/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCHSET_V}.tar.bz2"
+	https://dev.gentoo.org/~binki/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCHSET_V}.tar.bz2"
 
 KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
 LICENSE="GPL-2"

@@ -4,7 +4,7 @@
 
 EAPI=5
 DESCRIPTION="Meta package for all fortune-mod packages"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 
 LICENSE="metapackage"
 SLOT="0"

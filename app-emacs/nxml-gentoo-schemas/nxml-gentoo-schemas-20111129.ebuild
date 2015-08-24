@@ -7,8 +7,8 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="Extension for nxml-mode with Gentoo-specific schemas"
-HOMEPAGE="http://dev.gentoo.org/~flameeyes/nxml-gentoo-schemas/"
-SRC_URI="http://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://dev.gentoo.org/~flameeyes/nxml-gentoo-schemas/"
+SRC_URI="https://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.bz2"
 
 LICENSE="HPND"
 SLOT="0"

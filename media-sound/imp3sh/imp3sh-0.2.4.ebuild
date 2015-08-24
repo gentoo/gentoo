@@ -5,7 +5,7 @@
 inherit toolchain-funcs
 
 DESCRIPTION="flexible playlist manipulation shell and song player/streamer"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

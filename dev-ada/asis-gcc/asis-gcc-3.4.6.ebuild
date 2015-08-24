@@ -14,7 +14,7 @@ Gnat_Name="gnat-gcc"
 My_PN="asis"
 My_PV="3.4.4"
 
-SRC_URI="http://dev.gentoo.org/~george/src/${My_PN}-${My_PV}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~george/src/${My_PN}-${My_PV}.tar.bz2"
 
 IUSE="doc"
 RDEPEND="=dev-lang/gnat-gcc-${PV}*"

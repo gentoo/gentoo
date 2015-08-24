@@ -7,8 +7,8 @@ EAPI=5
 inherit bash-completion-r1
 
 DESCRIPTION="A nice emerge.log parser"
-HOMEPAGE="http://www.gentoo.org/proj/en/perl"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
+HOMEPAGE="https://www.gentoo.org/proj/en/perl"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

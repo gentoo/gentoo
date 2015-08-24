@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="bareos fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries"
 HOMEPAGE="https://github.com/bareos/fastlzlib"
-SRC_URI="http://dev.gentoo.org/~mschiff/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~mschiff/distfiles/${P}.zip"
 
 LICENSE="BSD-1 BSD-2"
 SLOT="0"

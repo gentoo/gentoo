@@ -13,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://github.com/gentoo/eudev.git"
 	inherit git-2
 else
-	SRC_URI="http://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 fi
 
@@ -251,7 +251,7 @@ pkg_postinst() {
 	elog
 	elog "For more information on eudev on Gentoo, writing udev rules, and"
 	elog "fixing known issues visit:"
-	elog "         http://www.gentoo.org/doc/en/udev-guide.xml"
+	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
 	elog
 
 	# http://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69

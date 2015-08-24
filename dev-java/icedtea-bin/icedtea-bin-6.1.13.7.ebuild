@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit java-vm-2 prefix versionator
 
-dist="http://dev.gentoo.org/~chewi/distfiles"
+dist="https://dev.gentoo.org/~chewi/distfiles"
 TARBALL_VERSION="${PV}"
 
 DESCRIPTION="A Gentoo-made binary build of the IcedTea JDK"

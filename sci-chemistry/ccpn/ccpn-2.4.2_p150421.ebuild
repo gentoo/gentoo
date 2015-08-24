@@ -18,7 +18,7 @@ DESCRIPTION="The Collaborative Computing Project for NMR"
 HOMEPAGE="http://www.ccpn.ac.uk/ccpn"
 SRC_URI="http://www-old.ccpn.ac.uk/download/${MY_PN}/analysis${MY_PV}.tar.gz"
 [[ -n ${PATCHSET} ]] \
-	&& SRC_URI+=" http://dev.gentoo.org/~jlec/distfiles/ccpn-update-${MY_MAJOR}-${PATCHSET}.patch.xz"
+	&& SRC_URI+=" https://dev.gentoo.org/~jlec/distfiles/ccpn-update-${MY_MAJOR}-${PATCHSET}.patch.xz"
 
 SLOT="0"
 LICENSE="|| ( CCPN LGPL-2.1 )"

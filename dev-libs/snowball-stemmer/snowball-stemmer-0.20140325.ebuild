@@ -13,7 +13,7 @@ PVDATE=$(get_after_major_version)
 
 DESCRIPTION="This contains all you need to include the snowball stemming algorithms into a C project of your own"
 HOMEPAGE="http://snowball.tartarus.org/download.php"
-SRC_URI="http://dev.gentoo.org/~graaff/libstemmer_c-${PVDATE}.tgz"
+SRC_URI="https://dev.gentoo.org/~graaff/libstemmer_c-${PVDATE}.tgz"
 
 # This will probably be different if this ebuild ends up being used for both
 # Java and C.

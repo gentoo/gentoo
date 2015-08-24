@@ -11,7 +11,7 @@ PATCH_V="2"
 DESCRIPTION="C++ STL library"
 HOMEPAGE="http://stlport.sourceforge.net/"
 SRC_URI="mirror://sourceforge/stlport/${P}.tar.bz2
-	http://dev.gentoo.org/~xarthisius/distfiles/${PN}-patches-${PV}-${PATCH_V}.tbz2"
+	https://dev.gentoo.org/~xarthisius/distfiles/${PN}-patches-${PV}-${PATCH_V}.tbz2"
 
 LICENSE="boehm-gc HPND"
 SLOT="0"

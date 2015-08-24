@@ -9,7 +9,7 @@ inherit readme.gentoo elisp eutils
 DESCRIPTION="Source code browser for Emacs"
 HOMEPAGE="http://ecb.sourceforge.net/"
 # snapshot of https://github.com/alexott/ecb.git, created with "make distrib"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

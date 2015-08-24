@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="a dockapp application that displays nine configurable buttons"
 HOMEPAGE="http://windowmaker.org/dockapps/?name=wmbutton"
 # Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz
 	branding? ( mirror://gentoo/${PN}-buttons.xpm )"
 
 LICENSE="GPL-2"

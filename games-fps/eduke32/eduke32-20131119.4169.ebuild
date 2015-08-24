@@ -25,7 +25,7 @@ MY_XXX=1.33
 DESCRIPTION="Port of Duke Nukem 3D for SDL"
 HOMEPAGE="http://www.eduke32.com/ http://hrp.duke4.net/"
 SRC_URI="http://dukeworld.duke4.net/eduke32/synthesis/${MY_PV}-${MY_BUILD}/${PN}_src_${MY_PV}-${MY_BUILD}.tar.xz
-	http://dev.gentoo.org/~hasufell/distfiles/eduke32-icons.tar
+	https://dev.gentoo.org/~hasufell/distfiles/eduke32-icons.tar
 	textures? (	http://www.duke4.org/files/nightfright/duke3d_hrp.zip -> duke3d_hrp_${MY_HRP}.zip )
 	sc55-musicpack? ( http://www.duke4.org/files/nightfright/music/duke3d_mus.zip -> duke3d_mus_${MY_SC55}.zip )
 	opl-musicpack? ( http://www.duke4.org/files/nightfright/music/duke3d_musopl.zip -> duke3d_musopl_${MY_OPL}.zip )

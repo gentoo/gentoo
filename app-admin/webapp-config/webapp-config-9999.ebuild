@@ -14,7 +14,7 @@ then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://dev.gentoo.org/~blueness/${PN}/${P}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 fi
 

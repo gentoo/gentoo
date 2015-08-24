@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="An OpenPGP/GPG key management tool for seed files and keyrings"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Gentoo-keys"
-SRC_URI="http://dev.gentoo.org/~dolsen/releases/${PN}/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

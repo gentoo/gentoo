@@ -12,7 +12,7 @@ inherit kde4-base
 
 DESCRIPTION="Small utility which bothers you at certain intervals"
 HOMEPAGE="http://userbase.kde.org/RSIBreak"
-SRC_URI="http://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2 FDL-1.2"
 SLOT="4"

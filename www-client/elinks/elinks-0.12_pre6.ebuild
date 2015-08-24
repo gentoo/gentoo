@@ -9,8 +9,8 @@ MY_P="${P/_/}"
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
 SRC_URI="http://elinks.or.cz/download/${MY_P}.tar.bz2
-	http://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
-	http://dev.gentoo.org/~axs/distfiles/${PN}-0.12_pre5-js185-patches.tar.bz2"
+	https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
+	https://dev.gentoo.org/~axs/distfiles/${PN}-0.12_pre5-js185-patches.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

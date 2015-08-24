@@ -27,7 +27,7 @@ else
 				mirror://debian/pool/main/s/${PN}/${PN}_${PV}-1_all.deb
 			)
 		)
-		${BACKPORTS:+http://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz}"
+		${BACKPORTS:+https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz}"
 fi
 
 DESCRIPTION="Open Source implementation of a 16-bit x86 BIOS"

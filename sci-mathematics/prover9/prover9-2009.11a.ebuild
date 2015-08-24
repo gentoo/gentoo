@@ -15,7 +15,7 @@ DESCRIPTION="Automated theorem prover for first-order and equational logic"
 HOMEPAGE="http://www.cs.unm.edu/~mccune/mace4/"
 SRC_URI="
 	http://www.cs.unm.edu/~mccune/mace4/download/${MY_P}.tar.gz
-	http://dev.gentoo.org/~jlec/distfiles/${MY_PN}-2009-11A-makefile.patch.xz"
+	https://dev.gentoo.org/~jlec/distfiles/${MY_PN}-2009-11A-makefile.patch.xz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

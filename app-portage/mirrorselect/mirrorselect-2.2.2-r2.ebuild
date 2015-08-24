@@ -11,8 +11,8 @@ inherit eutils distutils-r1 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Mirrorselect"
-SRC_URI="http://dev.gentoo.org/~dolsen/releases/mirrorselect/${P}.tar.gz
-	http://dev.gentoo.org/~dolsen/releases/mirrorselect/mirrorselect-test
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/mirrorselect/${P}.tar.gz
+	https://dev.gentoo.org/~dolsen/releases/mirrorselect/mirrorselect-test
 	"
 
 LICENSE="GPL-2"

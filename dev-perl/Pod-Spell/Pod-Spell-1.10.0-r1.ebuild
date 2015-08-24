@@ -9,7 +9,7 @@ MODULE_VERSION=1.01
 inherit perl-module
 
 DESCRIPTION="A formatter for spellchecking Pod"
-SRC_URI+=" mirror://gentoo/podspell.1.gz http://dev.gentoo.org/~tove/files/podspell.1.gz"
+SRC_URI+=" mirror://gentoo/podspell.1.gz https://dev.gentoo.org/~tove/files/podspell.1.gz"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"

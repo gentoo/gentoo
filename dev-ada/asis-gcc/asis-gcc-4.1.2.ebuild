@@ -14,7 +14,7 @@ Gnat_Name="gnat-gcc"
 My_PN="asis"
 # can reuse the same sources, but we need to force an upgrade
 My_PV="4.1.1"
-SRC_URI="http://dev.gentoo.org/~george/src/${PN}-${My_PV}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~george/src/${PN}-${My_PV}.tar.bz2"
 
 IUSE="doc"
 RDEPEND="=dev-lang/gnat-gcc-${PV}*"

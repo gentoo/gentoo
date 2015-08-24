@@ -7,8 +7,8 @@ EAPI=5
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="Baselayout for Java"
-HOMEPAGE="http://www.gentoo.org/proj/en/java/"
-SRC_URI="http://dev.gentoo.org/~sera/distfiles/${P}.tar.gz"
+HOMEPAGE="https://www.gentoo.org/proj/en/java/"
+SRC_URI="https://dev.gentoo.org/~sera/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

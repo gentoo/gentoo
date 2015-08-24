@@ -23,6 +23,6 @@ IUSE=""
 DESCRIPTION="Full sources including Gentoo and Linux-VServer patchsets for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:VPS"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}
-	http://dev.gentoo.org/~hollow/distfiles/${MY_PN}-${CKV}_${PVR}.tar.bz2"
+	https://dev.gentoo.org/~hollow/distfiles/${MY_PN}-${CKV}_${PVR}.tar.bz2"
 
 UNIPATCH_LIST="${DISTDIR}/${MY_PN}-${CKV}_${PVR}.tar.bz2"

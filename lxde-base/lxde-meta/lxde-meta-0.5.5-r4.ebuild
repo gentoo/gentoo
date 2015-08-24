@@ -33,5 +33,5 @@ RDEPEND=">=lxde-base/menu-cache-0.3.3
 
 pkg_postinst() {
 	elog "For your convenience you can review the LXDE Configuration HOWTO at"
-	elog "http://www.gentoo.org/proj/en/desktop/lxde/lxde-howto.xml"
+	elog "https://www.gentoo.org/proj/en/desktop/lxde/lxde-howto.xml"
 }

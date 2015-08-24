@@ -9,7 +9,7 @@ inherit versionator
 DESCRIPTION="Printer information files for foomatic-db-engine to generate ppds"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
 #SRC_URI="http://www.openprinting.org/download/foomatic/${PN}-$(replace_version_separator 2 -).tar.gz"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${PN}-$(replace_version_separator 2 -).tar.gz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${PN}-$(replace_version_separator 2 -).tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

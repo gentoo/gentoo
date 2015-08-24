@@ -12,7 +12,7 @@ MODULE_VERSION=0.39
 inherit wxwidgets perl-module
 
 DESCRIPTION="Scintilla source code editing component for wxWidgets"
-SRC_URI+=" http://dev.gentoo.org/~tove/distfiles/dev-perl/${PN}-0.34-patches.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~tove/distfiles/dev-perl/${PN}-0.34-patches.tar.gz"
 
 LICENSE+=" HPND"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit multilib
 
 DESCRIPTION="Image rotation package"
 HOMEPAGE="http://cardtable.sourceforge.net/tcltk/"
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.zip"
 
 LICENSE="tcltk"
 SLOT="0"

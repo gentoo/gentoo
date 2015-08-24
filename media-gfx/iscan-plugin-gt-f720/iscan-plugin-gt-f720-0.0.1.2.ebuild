@@ -12,8 +12,8 @@ MY_P="esci-interpreter-gt-f720-${MY_PVR}"
 
 DESCRIPTION="Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="amd64? ( http://dev.gentoo.org/~flameeyes/avasys/${MY_P}.x86_64.rpm )
-	x86? ( http://dev.gentoo.org/~flameeyes/avasys/${MY_P}.i386.rpm )"
+SRC_URI="amd64? ( https://dev.gentoo.org/~flameeyes/avasys/${MY_P}.x86_64.rpm )
+	x86? ( https://dev.gentoo.org/~flameeyes/avasys/${MY_P}.i386.rpm )"
 
 LICENSE="AVASYS"
 SLOT="0"

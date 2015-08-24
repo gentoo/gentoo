@@ -47,7 +47,7 @@ else
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -149,7 +149,7 @@ pkg_postinst() {
 	elog 'Documentation is available in the genkernel manual page'
 	elog 'as well as the following URL:'
 	echo
-	elog 'http://www.gentoo.org/doc/en/genkernel.xml'
+	elog 'https://www.gentoo.org/doc/en/genkernel.xml'
 	echo
 	ewarn "This package is known to not work with reiser4.  If you are running"
 	ewarn "reiser4 and have a problem, do not file a bug.  We know it does not"

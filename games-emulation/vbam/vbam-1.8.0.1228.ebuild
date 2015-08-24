@@ -11,7 +11,7 @@ ESVN_REPO_URI="https://vbam.svn.sourceforge.net/svnroot/vbam/trunk"
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
 HOMEPAGE="http://sourceforge.net/projects/vbam/"
-SRC_URI="http://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

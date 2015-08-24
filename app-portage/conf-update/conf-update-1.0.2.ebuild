@@ -7,8 +7,8 @@ EAPI="4"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="${PN} is a ncurses-based config management utility"
-HOMEPAGE="http://dev.gentoo.org/~nimiux/app-portage/${PN}"
-SRC_URI="http://dev.gentoo.org/~nimiux/app-portage/${PN}/distfiles/${PF}.tar.bz2"
+HOMEPAGE="https://dev.gentoo.org/~nimiux/app-portage/${PN}"
+SRC_URI="https://dev.gentoo.org/~nimiux/app-portage/${PN}/distfiles/${PF}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

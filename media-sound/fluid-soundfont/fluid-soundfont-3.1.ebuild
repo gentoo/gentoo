@@ -7,7 +7,7 @@ EAPI=4
 DESCRIPTION="The Fluid R3 soundfont"
 HOMEPAGE="http://musescore.org/en/handbook/soundfont"
 SRC_URI="http://prereleases.musescore.org/soundfont/${PN}_${PV}.tar.gz
-	 timidity? ( http://dev.gentoo.org/~hwoarang/distfiles/timidity.cfg.bz2 )"
+	 timidity? ( https://dev.gentoo.org/~hwoarang/distfiles/timidity.cfg.bz2 )"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils autotools flag-o-matic
 
 DESCRIPTION="LDAP authentication and authorization plugin for OpenVPN 2.x"
 HOMEPAGE="https://code.google.com/p/openvpn-auth-ldap/"
-SRC_URI="http://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

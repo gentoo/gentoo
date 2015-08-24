@@ -7,7 +7,7 @@ EAPI=5
 inherit xemacs-elisp
 
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
-HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
+HOMEPAGE="https://www.gentoo.org/proj/en/lisp/emacs/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2+"

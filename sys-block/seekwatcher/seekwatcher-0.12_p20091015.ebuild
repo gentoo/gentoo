@@ -10,7 +10,7 @@ inherit eutils distutils
 DESCRIPTION="Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance"
 HOMEPAGE="http://oss.oracle.com/~mason/seekwatcher/"
 #SRC_URI="http://oss.oracle.com/~mason/seekwatcher/${P}.tar.bz2"
-SRC_URI="http://dev.gentoo.org/~slyfox/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~slyfox/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

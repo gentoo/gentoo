@@ -9,7 +9,7 @@ MY_P=${PN}-III-$(get_version_component_range 2-3)
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="http://www.xiph.org/paranoia"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${MY_P}.src.tgz
-	http://dev.gentoo.org/~ssuominen/${MY_P}-patches-2.tbz2"
+	https://dev.gentoo.org/~ssuominen/${MY_P}-patches-2.tbz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

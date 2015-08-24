@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A lightweight streaming audio player for Logitech Media Server"
 HOMEPAGE="http://squeezeslave.googlecode.com"
-SRC_URI="http://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

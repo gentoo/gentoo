@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages configuration of TiMidity++ patchsets"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/timidity.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"

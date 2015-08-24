@@ -11,8 +11,8 @@ HOMEPAGE="http://www.kornshell.com/"
 
 KSH_PV=${PV:3:4}-${PV:7:2}-${PV:9:2}
 
-SRC_URI="http://dev.gentoo.org/~floppym/distfiles/INIT.${KSH_PV}.tgz
-	http://dev.gentoo.org/~floppym/distfiles/ast-base.${KSH_PV}.tgz"
+SRC_URI="https://dev.gentoo.org/~floppym/distfiles/INIT.${KSH_PV}.tgz
+	https://dev.gentoo.org/~floppym/distfiles/ast-base.${KSH_PV}.tgz"
 
 LICENSE="CPL-1.0 EPL-1.0"
 SLOT="0"

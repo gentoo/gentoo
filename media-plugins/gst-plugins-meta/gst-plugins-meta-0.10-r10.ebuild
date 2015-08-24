@@ -7,7 +7,7 @@ EAPI="5"
 inherit multilib-build
 
 DESCRIPTION="Meta ebuild to pull in gst plugins for apps"
-HOMEPAGE="http://www.gentoo.org"
+HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="metapackage"
 SLOT="0.10"

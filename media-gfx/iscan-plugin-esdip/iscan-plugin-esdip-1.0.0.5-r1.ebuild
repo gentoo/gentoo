@@ -11,8 +11,8 @@ MY_PVR="$(replace_version_separator 3 -)"
 
 DESCRIPTION="Plugin for 'epkowa' backend for image manipulation"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=L"
-SRC_URI="amd64? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.ltdl7.x86_64.rpm )
-	x86? ( http://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.ltdl7.i386.rpm )"
+SRC_URI="amd64? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.ltdl7.x86_64.rpm )
+	x86? ( https://dev.gentoo.org/~flameeyes/avasys/${PN}-${MY_PVR}.ltdl7.i386.rpm )"
 
 LICENSE="AVASYS"
 SLOT="0"

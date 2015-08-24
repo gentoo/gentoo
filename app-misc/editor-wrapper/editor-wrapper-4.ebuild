@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Wrapper scripts that will execute EDITOR or PAGER"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="MIT"

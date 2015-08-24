@@ -13,8 +13,8 @@ inherit eutils
 DESCRIPTION="VGA BIOS implementation"
 HOMEPAGE="http://www.nongnu.org/vgabios/"
 SRC_URI="http://savannah.gnu.org/download/${PN}/${P}.tgz
-	http://dev.gentoo.org/~cardoe/distfiles/${P}-bins.tar.xz
-	http://dev.gentoo.org/~cardoe/distfiles/${P}-fixes-${FIXES}.tar.bz2"
+	https://dev.gentoo.org/~cardoe/distfiles/${P}-bins.tar.xz
+	https://dev.gentoo.org/~cardoe/distfiles/${P}-fixes-${FIXES}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

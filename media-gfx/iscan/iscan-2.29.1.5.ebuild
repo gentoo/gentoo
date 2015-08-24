@@ -29,9 +29,9 @@ MY_DOC="userg_revQ"
 
 DESCRIPTION="EPSON Image Scan! for Linux (including sane-epkowa backend)"
 HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="http://dev.gentoo.org/~flameeyes/avasys/${PN}_${MY_PVR}.tar.gz
-	doc? ( http://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_e.pdf
-		linguas_ja? ( http://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_j.pdf )
+SRC_URI="https://dev.gentoo.org/~flameeyes/avasys/${PN}_${MY_PVR}.tar.gz
+	doc? ( https://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_e.pdf
+		linguas_ja? ( https://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_j.pdf )
 	)"
 LICENSE="GPL-2 AVASYS"
 SLOT="0"

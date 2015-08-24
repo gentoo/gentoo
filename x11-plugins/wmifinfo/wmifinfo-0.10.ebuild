@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="a dockapp for monitoring network interfaces"
 HOMEPAGE="http://windowmaker.org/dockapps/?name=wmifinfo"
 # Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
-SRC_URI="http://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

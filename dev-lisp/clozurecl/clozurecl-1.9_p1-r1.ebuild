@@ -12,8 +12,8 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Common Lisp implementation, derived from Digitool's MCL product"
 HOMEPAGE="http://ccl.clozure.com/"
 SRC_URI="
-	x86?   ( http://dev.gentoo.org/~grozin/${MY_P}-linuxx86.tar.bz2 )
-	amd64? ( http://dev.gentoo.org/~grozin/${MY_P}-linuxx86.tar.bz2 )"
+	x86?   ( https://dev.gentoo.org/~grozin/${MY_P}-linuxx86.tar.bz2 )
+	amd64? ( https://dev.gentoo.org/~grozin/${MY_P}-linuxx86.tar.bz2 )"
 	# ppc?   ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxppc.tar.gz )
 	# ppc64? ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxppc.tar.gz )"
 

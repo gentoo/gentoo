@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Biojava bytecode manipulation library"
 HOMEPAGE="http://biojava.org"
-SRC_URI="http://dev.gentoo.org/~serkan/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~serkan/distfiles/${P}.tar.bz2"
 # svn export svn://code.open-bio.org/biojava/bytecode/trunk -r {20081007}
 LICENSE="LGPL-2.1"
 SLOT="0"

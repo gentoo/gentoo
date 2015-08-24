@@ -10,8 +10,8 @@ JAVA_PKG_IUSE="source" # doc
 inherit java-pkg-2 java-ant-2 unpacker
 
 DESCRIPTION="Java Solution for Real-Time and Embedded Systems"
-SRC_URI="http://dev.gentoo.org/~tomwij/files/dist/${P}.tar.xz
-	http://dev.gentoo.org/~tomwij/files/dist/${P}-build.xml.tar.xz"
+SRC_URI="https://dev.gentoo.org/~tomwij/files/dist/${P}.tar.xz
+	https://dev.gentoo.org/~tomwij/files/dist/${P}-build.xml.tar.xz"
 HOMEPAGE="http://javolution.org"
 
 LICENSE="BSD"

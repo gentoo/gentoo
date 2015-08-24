@@ -8,7 +8,7 @@ inherit autotools
 
 DESCRIPTION="MPI library for algorithmic differentiation"
 HOMEPAGE="http://www.mcs.anl.gov/~utke/AdjoinableMPI/AdjoinableMPIDox/index.html"
-SRC_URI="http://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jauhien/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

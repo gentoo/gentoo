@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages the /usr/bin/chuck symlink"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/chuck.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"

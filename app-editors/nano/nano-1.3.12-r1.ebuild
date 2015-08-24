@@ -76,5 +76,5 @@ src_install() {
 
 pkg_postinst() {
 	einfo "More helpful info about nano, visit the GDP page:"
-	einfo "http://www.gentoo.org/doc/en/nano-basics-guide.xml"
+	einfo "https://www.gentoo.org/doc/en/nano-basics-guide.xml"
 }

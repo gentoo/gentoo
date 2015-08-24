@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Google's font family that aims to support all the world's languages"
 HOMEPAGE="https://www.google.com/get/noto/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/${P}.zip"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.zip"
 # renamed from upstream's unversioned Noto-hinted.zip
 # version number based on the timestamp of most recently updated font in the zip
 

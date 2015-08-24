@@ -9,7 +9,7 @@ inherit vdr-plugin-2 ssl-cert
 DESCRIPTION="VDR Plugin: Web Access To Settings"
 HOMEPAGE="http://live.vdr-developer.org"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-		http://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.bz2"
+		https://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

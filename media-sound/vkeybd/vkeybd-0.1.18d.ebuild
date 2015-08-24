@@ -62,5 +62,5 @@ pkg_postinst() {
 	elog "vkeybdmap-\$LANG is searched in prior. For example, /etc/vkeybdmap-de"
 	elog "can be used for the german locale. See the localization guide:"
 	elog
-	elog "http://www.gentoo.org/doc/en/guide-localization.xml"
+	elog "https://www.gentoo.org/doc/en/guide-localization.xml"
 }

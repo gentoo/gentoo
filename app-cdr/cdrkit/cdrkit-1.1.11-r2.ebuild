@@ -8,7 +8,7 @@ inherit cmake-utils eutils
 DESCRIPTION="A set of tools for CD/DVD reading and recording, including cdrecord"
 HOMEPAGE="http://cdrkit.org"
 SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${PV}.orig.tar.gz
-	http://dev.gentoo.org/~ssuominen/${P}-libcdio-paranoia.tar.xz"
+	https://dev.gentoo.org/~ssuominen/${P}-libcdio-paranoia.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

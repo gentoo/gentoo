@@ -4,8 +4,8 @@
 
 S="${WORKDIR}/livecd-${PV}"
 DESCRIPTION="Gentoo theme for gensplash consoles"
-HOMEPAGE="http://www.gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~wolf31o2/sources/${PN}/${PF}.tar.bz2"
+HOMEPAGE="https://www.gentoo.org/"
+SRC_URI="https://dev.gentoo.org/~wolf31o2/sources/${PN}/${PF}.tar.bz2"
 
 SLOT=${PV}
 LICENSE="GPL-2"

@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="http://dev.gentoo.org/~radhermit/vim/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~radhermit/vim/${P}.tar.xz"
 fi
 
 DESCRIPTION="vim plugin: a code-completion engine for Vim"

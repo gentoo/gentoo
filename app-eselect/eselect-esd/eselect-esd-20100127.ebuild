@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Manages configuration of ESounD implementation or PulseAudio wrapper"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/esd.eselect-${PV}.bz2"
 
 LICENSE="GPL-2"

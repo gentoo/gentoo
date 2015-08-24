@@ -8,7 +8,7 @@ inherit autotools eutils flag-o-matic
 MY_P=${PN}-0.9.0rc1-2
 
 DESCRIPTION="FLTK based amixer Frontend"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

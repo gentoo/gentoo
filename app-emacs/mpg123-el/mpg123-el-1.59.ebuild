@@ -8,7 +8,7 @@ inherit elisp toolchain-funcs
 
 DESCRIPTION="Emacs front-end to mpg123 audio player and OggVorbis audio player"
 HOMEPAGE="http://www.gentei.org/~yuuji/software/mpg123el/"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="mpg123-el"
 SLOT="0"

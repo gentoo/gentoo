@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Drop-down menu interface"
 HOMEPAGE="http://www.emacswiki.org/emacs/dropdown-list.el"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

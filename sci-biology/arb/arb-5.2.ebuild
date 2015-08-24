@@ -10,7 +10,7 @@ DESCRIPTION="Tools for DNA/RNA sequence database handling and data analysis, phy
 HOMEPAGE="http://www.arb-home.de/"
 SRC_URI="
 	http://download.arb-home.de/release/arb_${PV}/arbsrc.tgz -> ${P}.tgz
-	http://dev.gentoo.org/~jlec/distfiles/${P}-linker.patch.bz2"
+	https://dev.gentoo.org/~jlec/distfiles/${P}-linker.patch.bz2"
 
 SLOT="0"
 LICENSE="arb"

@@ -7,7 +7,7 @@ EAPI="5"
 DESCRIPTION="Theme for GNOME 2 and 3"
 HOMEPAGE="http://gnome-look.org/content/show.php/Zukitwo?content=140562"
 # Upstream download URI updates file contents without changing the filename
-SRC_URI="http://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

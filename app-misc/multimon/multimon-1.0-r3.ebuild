@@ -9,7 +9,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="Decoding digital transmission codes"
 HOMEPAGE="http://www.baycom.org/~tom/ham/linux/multimon.html"
 SRC_URI="http://www.baycom.org/~tom/ham/linux/multimon.tar.gz
-		 http://dev.gentoo.org/~lu_zero/distfiles/${P}-ubuntu.patch.xz"
+		 https://dev.gentoo.org/~lu_zero/distfiles/${P}-ubuntu.patch.xz"
 
 SLOT="0"
 LICENSE="GPL-2"

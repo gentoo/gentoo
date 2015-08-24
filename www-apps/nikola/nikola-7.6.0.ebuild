@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A static website and blog generator"
 HOMEPAGE="http://getnikola.com/"
-SRC_URI="http://dev.gentoo.org/~yngwin/distfiles/a-study-in-scarlet.txt"
+SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/a-study-in-scarlet.txt"
 MY_PN="Nikola"
 
 if [[ ${PV} == *9999* ]]; then

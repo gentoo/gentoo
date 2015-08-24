@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="Plasmoid that shows the state of keyboard leds"
 HOMEPAGE="http://websvn.kde.org/trunk/playground/base/plasma/applets/kbstateapplet"
-SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

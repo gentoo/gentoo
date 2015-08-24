@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Emacs major mode for devicetree sources"
 HOMEPAGE="https://github.com/bgamari/dts-mode"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
