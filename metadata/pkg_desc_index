@@ -4805,7 +4805,7 @@ dev-libs/nettle 2.7.1-r4 3.1.1: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 0.91 1.0 1.1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.1.1 0.1.2-r1: generate javascript to dom bindings from w3c webidl files
-dev-libs/nspr 4.10.2 4.10.6-r1 4.10.7-r1 4.10.8: Netscape Portable Runtime
+dev-libs/nspr 4.10.8 4.10.9: Netscape Portable Runtime
 dev-libs/nss 3.19.2: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3: Alternative to vendor specific OpenCL ICD loaders
@@ -17443,6 +17443,7 @@ x11-misc/kapow 1.4.3 1.4.4: A punch clock program designed to easily keep track 
 x11-misc/kaqaz 1.2.0: Modern note manager
 x11-misc/kbdd 0.5.2 0.7: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
+x11-misc/kronometer 2.0.0: KF5-based stopwatch application
 x11-misc/ktsuss 2: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
 x11-misc/light-locker 1.6.0: A simple locker using lightdm
