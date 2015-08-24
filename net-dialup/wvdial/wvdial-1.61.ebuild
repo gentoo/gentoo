@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Excellent program to automatically configure PPP sessions"
 HOMEPAGE="http://alumnit.ca/wiki/?WvDial"
-SRC_URI="http://wvstreams.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

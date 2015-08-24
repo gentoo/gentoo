@@ -5,8 +5,8 @@
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Computes changes between binary or text files and creates deltas"
-HOMEPAGE="http://xdelta.googlecode.com/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://xdelta.googlecode.com/"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

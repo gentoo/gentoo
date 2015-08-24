@@ -7,7 +7,7 @@ inherit eutils user
 
 DESCRIPTION="library and programs to collect, send, process, and generate reports from NetFlow data"
 HOMEPAGE="https://code.google.com/p/flow-tools/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

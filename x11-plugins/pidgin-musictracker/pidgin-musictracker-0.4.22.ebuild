@@ -8,7 +8,7 @@ inherit autotools
 
 DESCRIPTION="A Pidgin now playing plugin to publicise the songs you are listening to in your status message"
 HOMEPAGE="https://code.google.com/p/pidgin-musictracker/"
-SRC_URI="http://pidgin-musictracker.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://pidgin-musictracker.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

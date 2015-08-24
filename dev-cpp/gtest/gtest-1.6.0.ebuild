@@ -9,7 +9,7 @@ inherit python libtool
 
 DESCRIPTION="Google C++ Testing Framework"
 HOMEPAGE="https://code.google.com/p/googletest/"
-SRC_URI="http://googletest.googlecode.com/files/${P}.zip"
+SRC_URI="https://googletest.googlecode.com/files/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

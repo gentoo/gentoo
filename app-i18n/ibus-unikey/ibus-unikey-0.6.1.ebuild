@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Vietnamese Input Method Engine for IBUS using Unikey IME"
 HOMEPAGE="https://code.google.com/p/ibus-unikey/"
-SRC_URI="http://ibus-unikey.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ibus-unikey.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

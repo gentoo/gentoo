@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="GPU-accelerated attack against WPA-PSK authentication"
 HOMEPAGE="https://code.google.com/p/pyrit/"
-SRC_URI="http://pyrit.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://pyrit.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

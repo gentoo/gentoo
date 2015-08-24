@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="Libchart is a chart creation PHP library that is easy to use"
 HOMEPAGE="http://naku.dohcrew.com/libchart"
-SRC_URI="http://libchart.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://libchart.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3 BitstreamVera"
 KEYWORDS="~x86 ~amd64"

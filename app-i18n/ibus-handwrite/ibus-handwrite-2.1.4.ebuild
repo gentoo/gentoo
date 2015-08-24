@@ -8,7 +8,7 @@ inherit eutils python autotools-utils multilib
 
 DESCRIPTION="hand write recognition/input using ibus IM engine"
 HOMEPAGE="https://code.google.com/p/ibus-handwrite/"
-SRC_URI="http://ibus-handwrite.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://ibus-handwrite.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

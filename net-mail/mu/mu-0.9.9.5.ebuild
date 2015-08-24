@@ -8,8 +8,8 @@ inherit base elisp-common
 
 DESCRIPTION="Set of tools to deal with Maildirs, in particular, searching and indexing"
 HOMEPAGE="http://www.djcbsoftware.nl/code/mu/"
-SRC_URI="http://mu0.googlecode.com/files/${P}.tar.gz
-		doc? ( http://mu0.googlecode.com/files/mu4e-manual-${PV}.pdf )"
+SRC_URI="https://mu0.googlecode.com/files/${P}.tar.gz
+		doc? ( https://mu0.googlecode.com/files/mu4e-manual-${PV}.pdf )"
 
 LICENSE="GPL-3"
 SLOT="0"

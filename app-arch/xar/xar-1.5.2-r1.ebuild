@@ -8,7 +8,7 @@ inherit autotools base eutils
 
 DESCRIPTION="An easily extensible archive format"
 HOMEPAGE="https://code.google.com/p/xar"
-SRC_URI="http://xar.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://xar.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

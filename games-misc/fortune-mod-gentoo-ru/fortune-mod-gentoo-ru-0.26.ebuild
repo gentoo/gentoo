@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="Fortune database of quotes from gentoo.ru forum and gentoo@conference.gentoo.ru"
 HOMEPAGE="http://fortunes.gentoo.ru"
-SRC_URI="http://slepnoga.googlecode.com/files/gentoo-ru-${PV}.gz
+SRC_URI="https://slepnoga.googlecode.com/files/gentoo-ru-${PV}.gz
 	http://maryasin.name/fortunes-gentoo-ru/gentoo-ru-${PV}.gz"
 
 LICENSE="fairuse"

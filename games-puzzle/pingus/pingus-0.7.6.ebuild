@@ -7,7 +7,7 @@ inherit eutils scons-utils toolchain-funcs flag-o-matic games
 
 DESCRIPTION="free Lemmings clone"
 HOMEPAGE="http://pingus.seul.org/"
-SRC_URI="http://pingus.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://pingus.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

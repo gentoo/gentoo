@@ -13,7 +13,7 @@ inherit eutils java-pkg-2 python-any-r1 waf-utils
 DESCRIPTION="a constraint solver for relational logic"
 HOMEPAGE="http://alloy.mit.edu/kodkod/index.html"
 SRC_URI="http://alloy.mit.edu/kodkod/${PV}/${P}.zip
-	http://waf.googlecode.com/files/waf-1.7.16"
+	https://waf.googlecode.com/files/waf-1.7.16"
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"

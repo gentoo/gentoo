@@ -7,7 +7,7 @@ inherit eutils gnome2-utils
 
 DESCRIPTION="A volume control trayicon with mouse wheel support"
 HOMEPAGE="http://oliwer.net/b/volwheel.html"
-SRC_URI="http://olwtools.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://olwtools.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

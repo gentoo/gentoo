@@ -8,7 +8,7 @@ inherit eutils qt4-r2
 
 DESCRIPTION="A program to create compositions from video files"
 HOMEPAGE="https://code.google.com/p/videocut/"
-SRC_URI="http://${PN}.googlecode.com/files/${PN}_${PV}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -10,7 +10,7 @@ MY_P="${PN}-00${PV}"
 
 DESCRIPTION="ReplicatorG is a simple, open source 3D printing program"
 HOMEPAGE="http://replicat.org/start"
-SRC_URI="http://replicatorg.googlecode.com/files/${MY_P}-linux.tgz"
+SRC_URI="https://replicatorg.googlecode.com/files/${MY_P}-linux.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"

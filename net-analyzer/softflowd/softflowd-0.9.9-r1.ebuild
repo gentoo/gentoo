@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="flow-based network traffic analyser capable of Cisco NetFlow data export"
 HOMEPAGE="http://www.mindrot.org/projects/softflowd/"
-SRC_URI="http://softflowd.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://softflowd.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

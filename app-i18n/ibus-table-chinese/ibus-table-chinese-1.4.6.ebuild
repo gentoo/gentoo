@@ -8,7 +8,7 @@ inherit cmake-utils
 DESCRIPTION="Chinese input tables for ibus-table"
 HOMEPAGE="https://github.com/definite/ibus-table-chinese"
 MY_P="${P}-Source"
-SRC_URI="http://ibus.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://ibus.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

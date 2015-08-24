@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Text progressbar library for python"
 HOMEPAGE="https://code.google.com/p/python-progressbar/ https://pypi.python.org/pypi/progressbar"
-SRC_URI="http://python-${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://python-${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD )"
 SLOT="0"

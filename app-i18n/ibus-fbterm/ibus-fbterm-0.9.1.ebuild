@@ -6,7 +6,7 @@ EAPI="4"
 inherit autotools-utils
 
 DESCRIPTION="ibus-fbterm is a input method for FbTerm based on iBus"
-HOMEPAGE="http://ibus-fbterm.googlecode.com"
+HOMEPAGE="https://ibus-fbterm.googlecode.com"
 SRC_URI="https://ibus-fbterm.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

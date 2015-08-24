@@ -8,7 +8,7 @@ inherit perl-app perl-module toolchain-funcs
 
 DESCRIPTION="essential command-line utilities for MySQL"
 HOMEPAGE="http://www.maatkit.org/"
-SRC_URI="http://maatkit.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://maatkit.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

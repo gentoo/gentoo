@@ -10,7 +10,7 @@ inherit python-single-r1
 
 DESCRIPTION="threaded compressor logic for zlib/lzma"
 HOMEPAGE="https://code.google.com/p/threadzip/"
-SRC_URI="http://threadzip.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://threadzip.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

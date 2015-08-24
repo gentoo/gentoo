@@ -12,7 +12,7 @@ MY_DATE=${PV/*_p}
 
 DESCRIPTION="A software version control visualization tool"
 HOMEPAGE="https://code.google.com/p/gource/"
-SRC_URI="http://gource.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://gource.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit autotools-utils
 
 DESCRIPTION="Testing of network intrusion detection systems, firewalls and TCP/IP stacks"
 HOMEPAGE="https://code.google.com/p/fragroute-ipv6/"
-SRC_URI="http://fragroute-ipv6.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://fragroute-ipv6.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

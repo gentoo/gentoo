@@ -9,7 +9,7 @@ inherit autotools python-single-r1 linux-info libtool eutils
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://code.google.com/p/cryptsetup/"
-SRC_URI="http://cryptsetup.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://cryptsetup.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

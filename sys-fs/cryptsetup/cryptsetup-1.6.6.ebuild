@@ -9,7 +9,7 @@ inherit autotools python-single-r1 linux-info libtool eutils versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://code.google.com/p/cryptsetup/"
-SRC_URI="http://cryptsetup.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://cryptsetup.googlecode.com/files/${P}.tar.xz"
 SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-2+"

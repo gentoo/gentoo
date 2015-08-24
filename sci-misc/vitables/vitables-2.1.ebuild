@@ -15,7 +15,7 @@ inherit distutils eutils
 
 DESCRIPTION="A graphical tool for browsing and editing files in both PyTables and HDF5 formats"
 HOMEPAGE="http://vitables.org/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

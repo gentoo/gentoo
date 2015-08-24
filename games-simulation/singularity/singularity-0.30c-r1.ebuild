@@ -9,8 +9,8 @@ inherit eutils python-single-r1 games
 MUSIC=endgame-${PN}-music-006
 DESCRIPTION="A simulation of a true AI. Go from computer to computer, pursued by the entire world"
 HOMEPAGE="http://www.emhsoft.com/singularity/"
-SRC_URI="http://endgame-singularity.googlecode.com/files/${P}-src.tar.gz
-	music? ( http://endgame-singularity.googlecode.com/files/${MUSIC}.zip )"
+SRC_URI="https://endgame-singularity.googlecode.com/files/${P}-src.tar.gz
+	music? ( https://endgame-singularity.googlecode.com/files/${MUSIC}.zip )"
 
 LICENSE="GPL-2 CC-BY-SA-2.5"
 SLOT="0"

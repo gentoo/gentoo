@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE thumbnailer based on ffmpegthumbnailer"
 HOMEPAGE="https://code.google.com/p/ffmpegthumbnailer/"
-SRC_URI="http://ffmpegthumbnailer.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ffmpegthumbnailer.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="4"

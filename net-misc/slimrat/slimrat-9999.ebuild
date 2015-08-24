@@ -9,7 +9,7 @@ inherit eutils subversion
 DESCRIPTION="Linux Rapidshare downloader"
 HOMEPAGE="https://code.google.com/p/slimrat/"
 SRC_URI=""
-ESVN_REPO_URI="http://${PN}.googlecode.com/svn/trunk/"
+ESVN_REPO_URI="https://${PN}.googlecode.com/svn/trunk/"
 
 LICENSE="MIT"
 SLOT="0"

@@ -4,7 +4,7 @@
 
 DESCRIPTION="Debian Etch instance example for Ganeti"
 HOMEPAGE="https://code.google.com/p/ganeti/"
-SRC_URI="http://ganeti.googlecode.com/files/${P}.tar"
+SRC_URI="https://ganeti.googlecode.com/files/${P}.tar"
 
 LICENSE="GPL-2"
 SLOT="0"

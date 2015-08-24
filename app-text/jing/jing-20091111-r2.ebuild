@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jing: A RELAX NG validator in Java"
 HOMEPAGE="http://thaiopensource.com/relaxng/jing.html"
-SRC_URI="http://jing-trang.googlecode.com/files/${P}.zip"
+SRC_URI="https://jing-trang.googlecode.com/files/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

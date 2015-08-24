@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python module that makes it easy to work with STDF"
 HOMEPAGE="https://code.google.com/p/pystdf/"
-SRC_URI="http://pystdf.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://pystdf.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

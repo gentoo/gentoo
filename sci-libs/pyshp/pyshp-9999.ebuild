@@ -12,7 +12,7 @@ HOMEPAGE="https://pypi.python.org/pypi/pyshp/"
 
 if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
-	ESVN_REPO_URI="http://${PN}.googlecode.com/svn/trunk"
+	ESVN_REPO_URI="https://${PN}.googlecode.com/svn/trunk"
 	inherit subversion
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

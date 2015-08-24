@@ -9,7 +9,7 @@ inherit autotools subversion
 DESCRIPTION="Tools and a library for creating fractal flames"
 HOMEPAGE="http://flam3.com/"
 SRC_URI=""
-ESVN_REPO_URI="http://flam3.googlecode.com/svn/trunk/src/"
+ESVN_REPO_URI="https://flam3.googlecode.com/svn/trunk/src/"
 
 LICENSE="GPL-2"
 SLOT="0"

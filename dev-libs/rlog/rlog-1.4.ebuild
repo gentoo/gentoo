@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A C++ logging library"
 HOMEPAGE="https://code.google.com/p/rlog/"
-SRC_URI="http://rlog.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://rlog.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

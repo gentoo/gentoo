@@ -6,13 +6,13 @@ EAPI=4
 inherit cmake-utils multilib
 
 #if LIVE
-ESVN_REPO_URI="http://libdivsufsort.googlecode.com/svn/trunk/"
+ESVN_REPO_URI="https://libdivsufsort.googlecode.com/svn/trunk/"
 inherit subversion
 #endif
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
 HOMEPAGE="https://code.google.com/p/libdivsufsort/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

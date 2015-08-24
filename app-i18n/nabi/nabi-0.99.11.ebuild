@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Simple Hanguk X Input Method"
 HOMEPAGE="https://code.google.com/p/nabi/"
-SRC_URI="http://nabi.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://nabi.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Unpacker for various archiving formats, e.g. rar v3"
 HOMEPAGE="http://unarchiver.c3.cx/"
-SRC_URI="http://theunarchiver.googlecode.com/files/${PN}${PV}_src.zip"
+SRC_URI="https://theunarchiver.googlecode.com/files/${PN}${PV}_src.zip"
 LICENSE="LGPL-2.1"
 
 SLOT="0"

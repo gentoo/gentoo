@@ -11,7 +11,7 @@ DESCRIPTION="Modern Video Toolkit"
 HOMEPAGE="http://movit.sesse.net/"
 # Tests need gtest, makefile unconditionally builds tests, so ... yey!
 SRC_URI="http://movit.sesse.net/${P}.tar.gz
-	http://googletest.googlecode.com/files/gtest-1.7.0.zip"
+	https://googletest.googlecode.com/files/gtest-1.7.0.zip"
 LICENSE="GPL-2+"
 SLOT="0"
 

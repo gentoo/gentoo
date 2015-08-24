@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils versionator mozextension multilib
 
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="http://eid-mw.googlecode.com/svn/trunk/"
+	ESVN_REPO_URI="https://eid-mw.googlecode.com/svn/trunk/"
 	inherit subversion autotools
 	SRC_URI=""
 else

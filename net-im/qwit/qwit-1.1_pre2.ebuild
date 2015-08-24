@@ -10,7 +10,7 @@ MY_P=${P/_/-}-src
 
 DESCRIPTION="Qt4 cross-platform client for Twitter"
 HOMEPAGE="https://code.google.com/p/qwit/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

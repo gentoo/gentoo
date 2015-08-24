@@ -20,7 +20,7 @@ RESTRICT="test"
 
 DESCRIPTION="Google AdWords API Perl Client"
 HOMEPAGE="https://code.google.com/p/google-api-adwords-perl/"
-SRC_URI="http://google-api-adwords-perl.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://google-api-adwords-perl.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

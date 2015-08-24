@@ -11,7 +11,7 @@ MYP=${P}-rev2613
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"
 HOMEPAGE="http://www.bulletphysics.com/"
-SRC_URI="http://bullet.googlecode.com/files/${MYP}.tgz"
+SRC_URI="https://bullet.googlecode.com/files/${MYP}.tgz"
 
 LICENSE="ZLIB"
 SLOT="0"

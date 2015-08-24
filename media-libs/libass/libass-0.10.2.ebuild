@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="Library for SSA/ASS subtitles rendering"
 HOMEPAGE="https://code.google.com/p/libass/"
-SRC_URI="http://libass.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://libass.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0/5" # subslot = libass soname version

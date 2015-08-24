@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Google's Python argument parsing library"
 HOMEPAGE="https://code.google.com/p/python-gflags/"
-SRC_URI="http://python-gflags.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://python-gflags.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

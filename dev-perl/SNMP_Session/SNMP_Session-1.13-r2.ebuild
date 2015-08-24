@@ -7,7 +7,7 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="A SNMP Perl Module"
-SRC_URI="http://snmp-session.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://snmp-session.googlecode.com/files/${P}.tar.gz"
 HOMEPAGE="https://code.google.com/p/snmp-session/"
 
 LICENSE="Artistic-2"

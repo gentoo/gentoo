@@ -9,8 +9,8 @@ JAVA_PKG_IUSE="doc source"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Java binding for libinklevel"
-HOMEPAGE="http://mso.googlecode.com/"
-SRC_URI="http://mso.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://mso.googlecode.com/"
+SRC_URI="https://mso.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

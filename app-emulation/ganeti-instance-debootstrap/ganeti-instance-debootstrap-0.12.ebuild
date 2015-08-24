@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Scripts to build Ganeti VMs with debootstrap"
 HOMEPAGE="https://code.google.com/p/ganeti/"
-SRC_URI="http://ganeti.googlecode.com/files/ganeti-instance-debootstrap-${PV}.tar.gz"
+SRC_URI="https://ganeti.googlecode.com/files/ganeti-instance-debootstrap-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

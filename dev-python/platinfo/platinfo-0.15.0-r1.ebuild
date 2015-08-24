@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Determines and returns consistent names for platforms"
 HOMEPAGE="https://code.google.com/p/platinfo/"
-SRC_URI="http://platinfo.googlecode.com/files/${P}.zip"
+SRC_URI="https://platinfo.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"

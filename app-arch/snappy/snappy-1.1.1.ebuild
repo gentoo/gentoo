@@ -8,7 +8,7 @@ inherit eutils autotools
 
 DESCRIPTION="A high-speed compression/decompression library by Google"
 HOMEPAGE="https://code.google.com/p/snappy/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

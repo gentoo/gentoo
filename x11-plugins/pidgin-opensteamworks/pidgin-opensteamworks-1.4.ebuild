@@ -8,8 +8,8 @@ inherit toolchain-funcs
 
 DESCRIPTION="Steam protocol plugin for pidgin"
 HOMEPAGE="https://code.google.com/p/pidgin-opensteamworks/"
-SRC_URI="http://pidgin-opensteamworks.googlecode.com/files/steam-mobile-${PV}.tar.bz2
-	http://pidgin-opensteamworks.googlecode.com/files/icons.zip
+SRC_URI="https://pidgin-opensteamworks.googlecode.com/files/steam-mobile-${PV}.tar.bz2
+	https://pidgin-opensteamworks.googlecode.com/files/icons.zip
 	-> ${PN}-icons.zip"
 
 LICENSE="GPL-3"

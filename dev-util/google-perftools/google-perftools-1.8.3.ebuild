@@ -8,7 +8,7 @@ inherit toolchain-funcs eutils flag-o-matic
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://code.google.com/p/google-perftools/"
-SRC_URI="http://google-perftools.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://google-perftools.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="An extremely memory-efficient hash_map implementation"
 HOMEPAGE="https://code.google.com/p/google-sparsehash/"
-SRC_URI="http://google-sparsehash.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://google-sparsehash.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

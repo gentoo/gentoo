@@ -11,7 +11,7 @@ MY_P=${PN}${PV%.*.*}-${PV}
 
 DESCRIPTION="a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression"
 HOMEPAGE="http://xdelta.org/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="3"

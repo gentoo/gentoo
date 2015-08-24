@@ -12,7 +12,7 @@ MY_P=${PN/-/.}-${PV}
 
 DESCRIPTION="Dependency injection for Java (JSR-330)"
 HOMEPAGE="https://code.google.com/p/atinject/"
-SRC_URI="http://atinject.googlecode.com/files/${MY_P}-bundle.jar"
+SRC_URI="https://atinject.googlecode.com/files/${MY_P}-bundle.jar"
 
 LICENSE="Apache-2.0"
 SLOT="0"

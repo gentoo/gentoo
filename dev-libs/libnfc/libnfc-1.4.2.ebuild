@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Near Field Communications (NFC) library"
 HOMEPAGE="http://www.libnfc.org/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

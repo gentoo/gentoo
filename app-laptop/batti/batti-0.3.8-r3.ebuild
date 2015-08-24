@@ -10,7 +10,7 @@ inherit distutils-r1 gnome2-utils eutils
 
 DESCRIPTION="A upower based battery monitor for the system tray, similar to batterymon"
 HOMEPAGE="https://code.google.com/p/batti-gtk/"
-SRC_URI="http://batti-gtk.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://batti-gtk.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

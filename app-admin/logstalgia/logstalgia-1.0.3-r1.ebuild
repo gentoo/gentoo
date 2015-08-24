@@ -6,7 +6,7 @@ EAPI="5"
 
 DESCRIPTION="Replays or streams an access_log as a retro arcade game-like simulation"
 HOMEPAGE="https://code.google.com/p/logstalgia/"
-SRC_URI="http://logstalgia.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://logstalgia.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

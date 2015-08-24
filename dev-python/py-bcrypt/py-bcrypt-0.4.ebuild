@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="py-bcrypt is an implementation of the OpenBSD Blowfish password hashing algorithm"
 HOMEPAGE="https://code.google.com/p/py-bcrypt/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"

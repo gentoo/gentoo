@@ -17,7 +17,7 @@ HOMEPAGE="http://julialang.org/"
 # dSFMT is not meant to be packaged
 SRC_URI="http://gentooexperimental.org/~patrick/${P}.tar.bz2
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-2.2.tar.gz -> dsfmt-2.2.tar.gz
-	http://double-conversion.googlecode.com/files/double-conversion-1.1.1.tar.gz"
+	https://double-conversion.googlecode.com/files/double-conversion-1.1.1.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

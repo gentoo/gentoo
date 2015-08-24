@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python Simple Smartcard Interpreter"
 HOMEPAGE="https://code.google.com/p/pssi/"
-SRC_URI="http://pssi.googlecode.com/files/${P}.tar"
+SRC_URI="https://pssi.googlecode.com/files/${P}.tar"
 
 LICENSE="GPL-3"
 SLOT="0"

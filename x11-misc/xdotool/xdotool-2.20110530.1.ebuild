@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs flag-o-matic multilib
 
 DESCRIPTION="Simulate keyboard input and mouse activity, move and resize windows"
 HOMEPAGE="http://www.semicomplete.com/projects/xdotool/"
-SRC_URI="http://semicomplete.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://semicomplete.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

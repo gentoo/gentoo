@@ -12,7 +12,7 @@ HOMEPAGE="http://www.json.org"
 
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}-all"
-SRC_URI="http://json-simple.googlecode.com/files/${MY_P}.zip"
+SRC_URI="https://json-simple.googlecode.com/files/${MY_P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"

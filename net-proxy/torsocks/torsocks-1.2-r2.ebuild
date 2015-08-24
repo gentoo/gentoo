@@ -8,7 +8,7 @@ inherit autotools eutils multilib
 
 DESCRIPTION="Use most socks-friendly applications with Tor"
 HOMEPAGE="https://code.google.com/p/torsocks"
-SRC_URI="http://${PN}.googlecode.com/files/${PN}-1.2.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${PN}-1.2.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

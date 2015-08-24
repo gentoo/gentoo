@@ -7,7 +7,7 @@ EAPI="5"
 inherit cmake-utils eutils multilib
 
 if [ "${PV}" != "9999" ]; then
-	SRC_URI="http://downloads.votca.googlecode.com/hg/${P}_pristine.tar.gz"
+	SRC_URI="https://downloads.votca.googlecode.com/hg/${P}_pristine.tar.gz"
 else
 	SRC_URI=""
 	inherit mercurial

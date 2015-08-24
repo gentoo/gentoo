@@ -7,7 +7,7 @@ inherit qt4-r2
 
 DESCRIPTION="Qt widget to display images with animated transition effect"
 HOMEPAGE="http://www.qt-apps.org/content/show.php/PictureFlow?content=75348"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils multilib user
 
 DESCRIPTION="Framework for biometric-based authentication"
 HOMEPAGE="https://code.google.com/p/bioapi-linux/"
-SRC_URI="http://bioapi-linux.googlecode.com/files/${PN}_${PV}.tar.gz"
+SRC_URI="https://bioapi-linux.googlecode.com/files/${PN}_${PV}.tar.gz"
 
 LICENSE="bioapi"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit eutils autotools
 
 DESCRIPTION="a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL"
 HOMEPAGE="http://guichan.sourceforge.net/"
-SRC_URI="http://guichan.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://guichan.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

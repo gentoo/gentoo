@@ -8,7 +8,7 @@ inherit autotools-utils
 
 DESCRIPTION="Implementation of the EWF (SMART and EnCase) image format"
 HOMEPAGE="https://code.google.com/p/libewf/"
-SRC_URI="http://libewf.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://libewf.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/2"

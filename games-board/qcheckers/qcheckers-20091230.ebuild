@@ -9,7 +9,7 @@ MY_PN=${PN/qc/QC}
 
 DESCRIPTION="Qt4 based checkers game"
 HOMEPAGE="https://code.google.com/p/qcheckers/"
-SRC_URI="http://qcheckers.googlecode.com/files/${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://qcheckers.googlecode.com/files/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

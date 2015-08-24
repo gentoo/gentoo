@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="GTK+ GUI building tool"
 HOMEPAGE="http://www.crowdesigner.org"
-SRC_URI="http://nothing-personal.googlecode.com/files/crow-${PV}.tar.xz"
+SRC_URI="https://nothing-personal.googlecode.com/files/crow-${PV}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

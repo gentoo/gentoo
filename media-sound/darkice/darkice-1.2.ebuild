@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A live audio streamer"
 HOMEPAGE="https://code.google.com/p/darkice/"
-SRC_URI="http://darkice.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://darkice.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="A fcitx module to look up pinyin candidate words on the internet"
 HOMEPAGE="http://fcitx-im.org/"
-SRC_URI="http://fcitx.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://fcitx.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

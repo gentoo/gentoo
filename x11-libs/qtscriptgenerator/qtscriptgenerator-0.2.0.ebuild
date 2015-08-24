@@ -10,7 +10,7 @@ MY_P=${PN}-src-${PV}
 
 DESCRIPTION="Tool for generating Qt bindings for Qt Script"
 HOMEPAGE="https://code.google.com/p/qtscriptgenerator/"
-SRC_URI="http://qtscriptgenerator.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://qtscriptgenerator.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

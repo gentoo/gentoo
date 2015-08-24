@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Perl binding for MeCab"
 HOMEPAGE="http://mecab.sourceforge.net/"
-SRC_URI="http://mecab.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://mecab.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"

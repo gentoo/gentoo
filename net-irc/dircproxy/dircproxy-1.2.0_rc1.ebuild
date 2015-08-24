@@ -7,7 +7,7 @@ inherit eutils
 MY_P="${P/_rc/-RC}"
 DESCRIPTION="an IRC proxy server"
 HOMEPAGE="https://code.google.com/p/dircproxy"
-SRC_URI="http://dircproxy.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://dircproxy.googlecode.com/files/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

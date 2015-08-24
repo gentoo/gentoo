@@ -7,7 +7,7 @@ inherit xfconf
 
 DESCRIPTION="A panel plug-in to control MPRIS2 compatible players like Pragha (from the same authors)"
 HOMEPAGE="https://github.com/matiasdelellis/xfce4-soundmenu-plugin"
-SRC_URI="http://dissonance.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://dissonance.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

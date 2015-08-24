@@ -6,7 +6,7 @@ EAPI="2"
 
 DESCRIPTION="A reference-guided aligner for next-generation sequencing technologies"
 HOMEPAGE="https://code.google.com/p/mosaik-aligner/"
-SRC_URI="http://mosaik-aligner.googlecode.com/files/Mosaik-${PV}-source.tar.bz2"
+SRC_URI="https://mosaik-aligner.googlecode.com/files/Mosaik-${PV}-source.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

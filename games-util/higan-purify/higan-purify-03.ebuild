@@ -10,7 +10,7 @@ MY_P=purify_v${PV}-source
 
 DESCRIPTION="Rom purifier for higan"
 HOMEPAGE="http://byuu.org/higan/"
-SRC_URI="http://higan.googlecode.com/files/${MY_P}.tar.xz"
+SRC_URI="https://higan.googlecode.com/files/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs cmake-utils unpacker
 MY_P="${PN}-dynamics-${PV}"
 DESCRIPTION="an integrated solution for real time simulation of physics environments"
 HOMEPAGE="https://code.google.com/p/newton-dynamics/"
-SRC_URI="http://newton-dynamics.googlecode.com/files/${MY_P}.rar"
+SRC_URI="https://newton-dynamics.googlecode.com/files/${MY_P}.rar"
 
 LICENSE="ZLIB"
 SLOT="0"

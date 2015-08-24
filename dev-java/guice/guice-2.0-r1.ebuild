@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Guice is a lightweight dependency injection framework for Java 5 and above"
 HOMEPAGE="https://code.google.com/p/google-guice/"
-SRC_URI="http://google-guice.googlecode.com/files/${P}-src.zip"
+SRC_URI="https://google-guice.googlecode.com/files/${P}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="2"

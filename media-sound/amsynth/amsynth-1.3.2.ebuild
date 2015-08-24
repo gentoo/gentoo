@@ -10,7 +10,7 @@ MY_P=${P/ams/amS}
 
 DESCRIPTION="Virtual analogue synthesizer"
 HOMEPAGE="https://code.google.com/p/amsynth/"
-SRC_URI="http://amsynth.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://amsynth.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

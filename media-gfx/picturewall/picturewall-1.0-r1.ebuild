@@ -10,7 +10,7 @@ MY_PN="PictureWall"
 
 DESCRIPTION="Qt4 picture viewer and image searching tool using google.com"
 HOMEPAGE="http://www.qt-apps.org/content/show.php?content=106101"
-SRC_URI="http://picturewall.googlecode.com/files/${MY_PN}_${PV}.zip"
+SRC_URI="https://picturewall.googlecode.com/files/${MY_PN}_${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ EAPI="3"
 
 DESCRIPTION="C++ binding to GuiLoader library"
 HOMEPAGE="http://www.crowdesigner.org"
-SRC_URI="http://nothing-personal.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://nothing-personal.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

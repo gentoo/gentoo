@@ -9,7 +9,7 @@ inherit autotools-utils
 
 DESCRIPTION="An encoder/decoder for the VCDIFF (RFC3284) format"
 HOMEPAGE="https://code.google.com/p/open-vcdiff/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/0"

@@ -8,7 +8,7 @@ inherit cmake-utils eutils multilib
 MY_P="${P}-Source"
 DESCRIPTION="Qt IBus library and Qt input method plugin"
 HOMEPAGE="https://code.google.com/p/ibus/"
-SRC_URI="http://ibus.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://ibus.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

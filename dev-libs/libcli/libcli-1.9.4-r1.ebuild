@@ -9,7 +9,7 @@ inherit eutils multilib toolchain-funcs
 DESCRIPTION="Cisco-style (telnet) command-line interface library"
 
 HOMEPAGE="http://sites.dparrish.com/libcli"
-SRC_URI="http://libcli.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://libcli.googlecode.com/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 
 SLOT="0"

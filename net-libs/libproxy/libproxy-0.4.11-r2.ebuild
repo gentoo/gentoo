@@ -9,7 +9,7 @@ inherit cmake-multilib eutils flag-o-matic mono python-r1
 
 DESCRIPTION="Library for automatic proxy configuration management"
 HOMEPAGE="https://code.google.com/p/libproxy/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

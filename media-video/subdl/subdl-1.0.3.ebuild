@@ -8,7 +8,7 @@ inherit python-single-r1
 
 DESCRIPTION="A command-line tool for downloading subs from opensubtitles.org"
 HOMEPAGE="https://code.google.com/p/subdl/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.zip"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

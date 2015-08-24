@@ -9,7 +9,7 @@ inherit base toolchain-funcs
 DESCRIPTION="Libpurple (Pidgin) plug-in supporting microblog services like Twitter or identi.ca"
 HOMEPAGE="https://code.google.com/p/microblog-purple/"
 MY_P="${P/pidgin-/}"
-SRC_URI="http://microblog-purple.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://microblog-purple.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

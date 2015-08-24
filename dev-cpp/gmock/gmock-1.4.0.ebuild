@@ -8,7 +8,7 @@ inherit libtool eutils
 
 DESCRIPTION="Google's C++ mocking framework"
 HOMEPAGE="https://code.google.com/p/googlemock/"
-SRC_URI="http://googlemock.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://googlemock.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

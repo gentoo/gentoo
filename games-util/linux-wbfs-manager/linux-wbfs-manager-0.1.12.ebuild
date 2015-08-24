@@ -4,13 +4,13 @@
 
 EAPI=5
 if [[ "${PV}" == "9999" ]]; then
-	ESVN_REPO_URI="http://linux-wbfs-manager.googlecode.com/svn/trunk/"
+	ESVN_REPO_URI="https://linux-wbfs-manager.googlecode.com/svn/trunk/"
 	inherit toolchain-funcs subversion
 	SRC_URI=""
 	#KEYWORDS=""
 else
 	inherit toolchain-funcs
-	SRC_URI="http://linux-wbfs-manager.googlecode.com/files/${P}.tar.gz"
+	SRC_URI="https://linux-wbfs-manager.googlecode.com/files/${P}.tar.gz"
 	KEYWORDS="amd64 ~ppc x86"
 fi;
 

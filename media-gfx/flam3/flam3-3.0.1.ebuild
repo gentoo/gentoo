@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="Tools and a library for creating flame fractal images"
 HOMEPAGE="http://flam3.com/"
-SRC_URI="http://flam3.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://flam3.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

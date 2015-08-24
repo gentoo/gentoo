@@ -24,7 +24,7 @@ src_prepare() {
 	sed -i -e '/^CF/s:?=:+=:' -e '/^CF/s:-O2 -g::' Makefile || die
 
 	cat <<-EOF > "${T}"/README.rsync
-	http://hardlinkpy.googlecode.com/svn/trunk/hardlink.py has regex '^\..*\.\?{6,6}$'
+	https://hardlinkpy.googlecode.com/svn/trunk/hardlink.py has regex '^\..*\.\?{6,6}$'
 	for excluding rsync temporary files by default.
 
 	To accomplish same with this version, you can use following syntax:

@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A small general purpose fuzzer for C programs"
 HOMEPAGE="https://code.google.com/p/bunny-the-fuzzer"
-SRC_URI="http://bunny-the-fuzzer.googlecode.com/files/${P}.tgz"
+SRC_URI="https://bunny-the-fuzzer.googlecode.com/files/${P}.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

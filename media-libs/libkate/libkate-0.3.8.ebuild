@@ -8,7 +8,7 @@ inherit python
 
 DESCRIPTION="Codec for karaoke and text encapsulation for Ogg"
 HOMEPAGE="https://code.google.com/p/libkate/"
-SRC_URI="http://libkate.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://libkate.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

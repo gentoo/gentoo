@@ -9,7 +9,7 @@ inherit eutils python-single-r1
 MY_P="${P/pyaim-t/pyaimt}"
 DESCRIPTION="Python based jabber transport for AIM"
 HOMEPAGE="https://code.google.com/p/pyaimt/"
-SRC_URI="http://pyaimt.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://pyaimt.googlecode.com/files/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

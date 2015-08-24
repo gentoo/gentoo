@@ -7,7 +7,7 @@ inherit autotools libtool gnome2-utils games
 
 DESCRIPTION="Chinese chess with gtkmm and c++"
 HOMEPAGE="https://code.google.com/p/gmchess/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 RESTRICT="test"
 
 LICENSE="GPL-2"

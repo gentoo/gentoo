@@ -7,7 +7,7 @@ inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Libpinyin module for Fcitx"
 HOMEPAGE="http://fcitx-im.org/"
-SRC_URI="http://fcitx.googlecode.com/files/${P}_dict.tar.xz"
+SRC_URI="https://fcitx.googlecode.com/files/${P}_dict.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

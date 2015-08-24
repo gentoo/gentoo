@@ -6,7 +6,7 @@ EAPI=2
 
 DESCRIPTION="FUSE file system to navigate, extract, create and modify ZIP archives based on libzip"
 HOMEPAGE="https://code.google.com/p/fuse-zip/"
-SRC_URI="http://fuse-zip.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://fuse-zip.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

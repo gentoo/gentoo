@@ -8,7 +8,7 @@ inherit gnome2-utils
 DESCRIPTION="Colorized icons shared between all gnome-colors iconsets"
 HOMEPAGE="https://code.google.com/p/gnome-colors/"
 
-SRC_URI="http://gnome-colors.googlecode.com/files/gnome-colors-${PV}.tar.gz
+SRC_URI="https://gnome-colors.googlecode.com/files/gnome-colors-${PV}.tar.gz
 	branding? ( http://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )"
 
 LICENSE="GPL-2

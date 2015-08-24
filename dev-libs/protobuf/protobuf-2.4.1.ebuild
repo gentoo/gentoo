@@ -12,7 +12,7 @@ inherit autotools eutils distutils java-pkg-opt-2 elisp-common
 
 DESCRIPTION="Google's Protocol Buffers -- an efficient method of encoding structured data"
 HOMEPAGE="https://code.google.com/p/protobuf/"
-SRC_URI="http://protobuf.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://protobuf.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"

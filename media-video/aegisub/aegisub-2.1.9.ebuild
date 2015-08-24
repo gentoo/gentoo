@@ -9,7 +9,7 @@ inherit autotools wxwidgets
 
 DESCRIPTION="Advanced SSA/ASS subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
-SRC_URI="http://rion-overlay.googlecode.com/files/${P}.tar.xz"
+SRC_URI="https://rion-overlay.googlecode.com/files/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

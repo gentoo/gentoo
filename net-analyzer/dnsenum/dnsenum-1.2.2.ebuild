@@ -6,7 +6,7 @@ EAPI=4
 
 DESCRIPTION="A perl script to enumerate DNS from a server"
 HOMEPAGE="https://code.google.com/p/dnsenum/"
-SRC_URI="http://dnsenum.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://dnsenum.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

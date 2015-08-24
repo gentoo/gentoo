@@ -7,7 +7,7 @@ inherit libtool
 
 DESCRIPTION="A rendering library for Kate streams using Pango and Cairo"
 HOMEPAGE="https://code.google.com/p/libtiger/"
-SRC_URI="http://libtiger.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://libtiger.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

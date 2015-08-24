@@ -9,7 +9,7 @@ MY_P="$PN-$(get_version_component_range 1-2)b"
 
 DESCRIPTION="A fully automated, active web application security reconnaissance tool"
 HOMEPAGE="https://code.google.com/p/skipfish/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tgz"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tgz"
 
 LICENSE="Apache-2.0 LGPL-3"
 SLOT="0"

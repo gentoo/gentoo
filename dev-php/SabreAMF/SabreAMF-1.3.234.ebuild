@@ -10,7 +10,7 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="SabreAMF is a Flash Remoting server and client for PHP"
 HOMEPAGE="http://osflash.org/sabreamf"
-SRC_URI="http://sabreamf.googlecode.com/files/${P}.tgz"
+SRC_URI="https://sabreamf.googlecode.com/files/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

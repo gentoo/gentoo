@@ -7,7 +7,7 @@ inherit scons-utils toolchain-funcs #udev
 
 DESCRIPTION="exFAT filesystem FUSE module"
 HOMEPAGE="https://code.google.com/p/exfat/"
-SRC_URI="http://exfat.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://exfat.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

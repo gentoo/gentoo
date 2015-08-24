@@ -7,7 +7,7 @@ inherit autotools linux-info udev
 
 DESCRIPTION="A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip"
 HOMEPAGE="https://code.google.com/p/madwimax/"
-SRC_URI="http://madwimax.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://madwimax.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,7 +14,7 @@ inherit eutils multiprocessing toolchain-funcs gnome2-utils games
 
 DESCRIPTION="An Interactive Fiction (IF) player supporting all major formats"
 HOMEPAGE="http://ccxvii.net/gargoyle/"
-SRC_URI="http://garglk.googlecode.com/files/${P}-sources.zip"
+SRC_URI="https://garglk.googlecode.com/files/${P}-sources.zip"
 
 LICENSE="BSD GPL-2 MIT Hugo Glulxe"
 SLOT="0"

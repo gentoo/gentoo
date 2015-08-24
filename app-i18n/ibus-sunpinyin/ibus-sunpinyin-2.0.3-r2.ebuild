@@ -7,7 +7,7 @@ PYTHON_DEPEND="2:2.5"
 inherit eutils python scons-utils
 
 DESCRIPTION="The SunPinYin IMEngine for IBus Framework"
-HOMEPAGE="http://sunpinyin.googlecode.com"
+HOMEPAGE="https://sunpinyin.googlecode.com"
 SRC_URI="${HOMEPAGE}/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 CDDL"

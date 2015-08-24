@@ -7,7 +7,7 @@ EAPI="4"
 MY_P="${P}_autoconf"
 DESCRIPTION="Stressful Application Test"
 HOMEPAGE="https://code.google.com/p/stressapptest/"
-SRC_URI="http://stressapptest.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://stressapptest.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

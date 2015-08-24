@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="An offline viewer for different map providers"
 HOMEPAGE="https://code.google.com/p/gmapcatcher/"
-SRC_URI="http://gmapcatcher.googlecode.com/files/mapcatcher_${PV}.tar.gz"
+SRC_URI="https://gmapcatcher.googlecode.com/files/mapcatcher_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -12,7 +12,7 @@ MY_P=${PN}_${PV}
 
 DESCRIPTION="Simple Chart Library for Python"
 HOMEPAGE="https://code.google.com/p/graphy/"
-SRC_URI="http://${PN}.googlecode.com/files/${MY_P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"

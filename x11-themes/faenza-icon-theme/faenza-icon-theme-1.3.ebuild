@@ -10,7 +10,7 @@ MY_P=${PN}_${PV}
 DESCRIPTION="A scalable icon theme called Faenza"
 HOMEPAGE="http://tiheum.deviantart.com/art/Faenza-Icons-173323228"
 # Use Ubuntu repo which has a proper faenza-icon-theme tarball
-#SRC_URI="http://faenza-icon-theme.googlecode.com/files/${PN}_${PV}.tar.gz"
+#SRC_URI="https://faenza-icon-theme.googlecode.com/files/${PN}_${PV}.tar.gz"
 SRC_URI="https://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/${PN:0:1}/${PN}/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-3"

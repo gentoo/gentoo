@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs flag-o-matic cmake-utils games
 
 DESCRIPTION="Help a girl by name of Violet to struggle with hordes of monsters"
 HOMEPAGE="https://code.google.com/p/violetland/"
-SRC_URI="http://violetland.googlecode.com/files/${PN}-v${PV}-src.zip"
+SRC_URI="https://violetland.googlecode.com/files/${PN}-v${PV}-src.zip"
 
 LICENSE="GPL-3 CC-BY-SA-3.0"
 SLOT="0"

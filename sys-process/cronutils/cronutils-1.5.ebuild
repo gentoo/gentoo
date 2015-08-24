@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utilities to assist running batch processing jobs"
 HOMEPAGE="https://code.google.com/p/cronutils/"
-SRC_URI="http://cronutils.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://cronutils.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

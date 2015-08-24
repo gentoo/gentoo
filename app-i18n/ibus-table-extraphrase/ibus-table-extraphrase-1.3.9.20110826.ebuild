@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Chinese extra phrases for ibus-table based IME"
 HOMEPAGE="https://code.google.com/p/ibus/"
-SRC_URI="http://ibus.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

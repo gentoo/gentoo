@@ -7,7 +7,7 @@ inherit eutils multilib flag-o-matic
 
 DESCRIPTION="Lightweight audio player"
 HOMEPAGE="https://code.google.com/p/gejengel"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

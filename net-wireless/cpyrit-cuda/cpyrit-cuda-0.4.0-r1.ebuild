@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="A sub-package that adds CUDA-capability to Pyrit"
 HOMEPAGE="https://code.google.com/p/pyrit/"
-SRC_URI="http://pyrit.googlecode.com/files/cpyrit-cuda-${PV}.tar.gz"
+SRC_URI="https://pyrit.googlecode.com/files/cpyrit-cuda-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

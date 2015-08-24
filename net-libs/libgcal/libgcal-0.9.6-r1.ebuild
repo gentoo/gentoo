@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="C/C++ interface to the Google Data API"
 HOMEPAGE="https://code.google.com/p/libgcal/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

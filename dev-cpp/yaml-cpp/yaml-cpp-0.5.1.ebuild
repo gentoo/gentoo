@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="A YAML parser and emitter in C++"
 HOMEPAGE="https://code.google.com/p/yaml-cpp/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

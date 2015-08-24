@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="C library for reading, writing, and modifying Windows bitmap image files"
 HOMEPAGE="https://code.google.com/p/libbmp/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0/2"

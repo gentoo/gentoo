@@ -9,8 +9,8 @@ LM_VERSION="20121025"
 
 DESCRIPTION="Data sets for Sunpinyin"
 HOMEPAGE="https://open-gram.googlecode.com/"
-SRC_URI="http://open-gram.googlecode.com/files/dict.utf8-${DICT_VERSION}.tar.bz2
-	http://open-gram.googlecode.com/files/lm_sc.t3g.arpa-${LM_VERSION}.tar.bz2"
+SRC_URI="https://open-gram.googlecode.com/files/dict.utf8-${DICT_VERSION}.tar.bz2
+	https://open-gram.googlecode.com/files/lm_sc.t3g.arpa-${LM_VERSION}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"

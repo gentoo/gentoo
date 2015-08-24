@@ -8,7 +8,7 @@ inherit eutils multiprocessing
 
 DESCRIPTION="Port of many Plan 9 programs and libraries"
 HOMEPAGE="http://swtch.com/plan9port/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tgz"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tgz"
 
 LICENSE="9base BSD-4 MIT LGPL-2.1 BigelowHolmes"
 SLOT="0"

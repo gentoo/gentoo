@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/tvraman/emacspeak.git"
 	inherit git-r3
 else
-	SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+	SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 

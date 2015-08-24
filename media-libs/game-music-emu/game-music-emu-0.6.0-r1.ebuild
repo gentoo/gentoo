@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Video game music file emulators"
 HOMEPAGE="https://code.google.com/p/game-music-emu/"
-SRC_URI="http://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

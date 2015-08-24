@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="PSSH provides parallel versions of OpenSSH and related tools"
 HOMEPAGE="https://code.google.com/p/parallel-ssh/"
-SRC_URI="http://parallel-ssh.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://parallel-ssh.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

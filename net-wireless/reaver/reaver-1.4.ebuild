@@ -10,7 +10,7 @@ inherit autotools-utils
 
 DESCRIPTION="Brute force attack against Wifi Protected Setup"
 HOMEPAGE="https://code.google.com/p/reaver-wps/"
-SRC_URI="http://reaver-wps.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://reaver-wps.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

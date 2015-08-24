@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Downloads videos from various Flash-based video hosting sites"
 HOMEPAGE="https://code.google.com/p/get-flash-videos/"
-SRC_URI="http://get-flash-videos.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://get-flash-videos.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

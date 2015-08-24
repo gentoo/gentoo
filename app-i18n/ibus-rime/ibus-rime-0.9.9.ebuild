@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Rime Input Method Engine for IBus Framework"
 HOMEPAGE="https://code.google.com/p/rimeime/"
-SRC_URI="http://rimeime.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://rimeime.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

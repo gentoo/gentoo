@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils games
 
 DESCRIPTION="Color lines game written with SDL with bonus features"
-HOMEPAGE="http://color-lines.googlecode.com/"
-SRC_URI="http://color-lines.googlecode.com/files/lines_${PV}.tar.gz"
+HOMEPAGE="https://color-lines.googlecode.com/"
+SRC_URI="https://color-lines.googlecode.com/files/lines_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit elisp-common python
 
 DESCRIPTION="A simple but powerful template language for C++"
 HOMEPAGE="https://code.google.com/p/ctemplate/"
-SRC_URI="http://ctemplate.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://ctemplate.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
