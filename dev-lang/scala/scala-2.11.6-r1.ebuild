@@ -16,12 +16,12 @@ SV="$(get_version_component_range 1-2)"
 # creating the binary:
 # JAVA_PKG_FORCE_VM="$available-1.7" USE="doc source" ebuild scala-*.ebuild compile
 # cd $WORDKIR
-# tar -cjf scala-2.11.7-gentoo-binary.tar.bz2 scala-2.11.7/build/pack/bin \
-# scala-2.11.7/build/pack/lib/ scala-2.11.7/build/pack/man \
-# scala-2.11.7/src/actors/ scala-2.11.7/src/forkjoin/ \
-# scala-2.11.7/src/library scala-2.11.7/src/library-aux/ \
-# scala-2.11.7/src/reflect/ scala-2.11.7/docs/TODO \
-# scala-2.11.7/doc/README scala-2.11.7/build/scaladoc/compiler
+# tar -cjf scala-2.11.6-gentoo-binary.tar.bz2 scala-2.11.6/build/pack/bin \
+# scala-2.11.6/build/pack/lib/ scala-2.11.6/build/pack/man \
+# scala-2.11.6/src/actors/ scala-2.11.6/src/forkjoin/ \
+# scala-2.11.6/src/library scala-2.11.6/src/library-aux/ \
+# scala-2.11.6/src/reflect/ scala-2.11.6/docs/TODO \
+# scala-2.11.6/doc/README scala-2.11.6/build/scaladoc/compiler
 
 # In the pullJarFiles function in tools/binary-repo-lib.sh it executes find commands
 # to search for .desired.sha1 files, which contain sha1 hashes that are appended
@@ -73,7 +73,7 @@ COMMON_DEP="dev-java/ant-core:0
 DEPEND="${COMMON_DEP}
 	java-virtuals/jdk-with-com-sun:0
 	!binary? (
-		|| ( =virtual/jdk-1.6* =virtual/jdk-1.7* =virtual/jdk-1.8* )
+		|| ( =virtual/jdk-1.7* =virtual/jdk-1.8* )
 		dev-java/ant-core:0
 		dev-java/ant-contrib:0
 		dev-java/ant-nodeps:0
@@ -85,7 +85,7 @@ DEPEND="${COMMON_DEP}
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.6
+	>=virtual/jre-1.7
 	app-eselect/eselect-scala
 	!dev-lang/scala-bin:0"
 
@@ -93,7 +93,7 @@ PDEPEND="emacs? ( app-emacs/scala-mode:0 )"
 
 S="${WORKDIR}/${P}"
 
-CHECKREQS_MEMORY="1536M"
+CHECKREQS_MEMORY="1532M"
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
@@ -143,10 +143,6 @@ java_prepare() {
 			-e 's@\(<artifact:dependencies .*>\)@\1\n        <localRepository refid="localrepo" />@g' \
 			-i "${S}/build.xml" \
 			|| die "Could not change location of .m2 maven download directory in ${S}/build.xml"
-		sed -e 's@-Xmx1024M@-Xmx1536M@' \
-			-e 's@-XX:MaxPermSize=128M@-XX:MaxPermSize=256M@' \
-			-i "${S}/test/partest" \
-			|| die "Could not change increase memory size in ${S}/test/partest"
 	fi
 }
 
