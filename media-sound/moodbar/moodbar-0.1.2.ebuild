@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils
 
 DESCRIPTION="The moodbar tool and gstreamer plugin for Amarok"
-HOMEPAGE="http://amarok.kde.org/wiki/Moodbar"
+HOMEPAGE="https://amarok.kde.org/wiki/Moodbar"
 SRC_URI="http://pwsp.net/~qbob/moodbar-${PV}.tar.gz"
 
 LICENSE="GPL-2"

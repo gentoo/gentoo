@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Documentation for developing for the GNOME desktop environment"
-HOMEPAGE="http://developer.gnome.org/"
+HOMEPAGE="https://developer.gnome.org/"
 
 LICENSE="FDL-1.1+ CC-BY-SA-3.0 CC-BY-SA-4.0"
 SLOT="0"

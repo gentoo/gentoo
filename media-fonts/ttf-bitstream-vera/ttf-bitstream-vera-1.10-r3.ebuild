@@ -5,7 +5,7 @@
 inherit gnome.org font
 
 DESCRIPTION="Bitstream Vera font family"
-HOMEPAGE="http://www.gnome.org/fonts/"
+HOMEPAGE="https://www.gnome.org/fonts/"
 LICENSE="BitstreamVera"
 
 SLOT="0"

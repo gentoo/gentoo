@@ -15,7 +15,7 @@ inherit kde4-base
 DESCRIPTION="Scripting Meta Object Kompiler Engine - Qt bindings"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug +phonon qimageblitz qscintilla qwt webkit xmlpatterns"
-HOMEPAGE="http://techbase.kde.org/Development/Languages/Smoke"
+HOMEPAGE="https://techbase.kde.org/Development/Languages/Smoke"
 
 # Maybe make more of Qt optional?
 DEPEND="

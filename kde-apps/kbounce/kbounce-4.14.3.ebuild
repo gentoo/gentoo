@@ -10,8 +10,8 @@ inherit kde4-base
 
 DESCRIPTION="KDE Bounce Ball Game"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kbounce/
-	http://games.kde.org/game.php?game=kbounce
+	https://www.kde.org/applications/games/kbounce/
+	https://games.kde.org/game.php?game=kbounce
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

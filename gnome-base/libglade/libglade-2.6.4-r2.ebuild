@@ -14,7 +14,7 @@ PYTHON_REQ_USE='xml(+)'
 inherit autotools eutils gnome2 multilib-minimal python-single-r1 virtualx
 
 DESCRIPTION="Library to construct graphical interfaces at runtime"
-HOMEPAGE="http://library.gnome.org/devel/libglade/stable/"
+HOMEPAGE="https://library.gnome.org/devel/libglade/stable/"
 
 LICENSE="LGPL-2"
 SLOT="2.0"
@@ -95,7 +95,7 @@ multilib_src_install_all() {
 pkg_postinst() {
 	echo ">>> Updating XML catalog"
 	"${EPREFIX}"/usr/bin/xmlcatalog --noout --add "system" \
-		"http://glade.gnome.org/glade-2.0.dtd" \
+		"https://glade.gnome.org/glade-2.0.dtd" \
 		"${EPREFIX}"/usr/share/xml/libglade/glade-2.0.dtd /etc/xml/catalog
 	gnome2_pkg_postinst
 }

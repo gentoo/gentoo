@@ -8,7 +8,7 @@ GCONF_DEBUG="yes" # disable asserts
 inherit gnome2
 
 DESCRIPTION="Daemon for PGP public key sharing using DNS-SD and HKP"
-HOMEPAGE="http://projects.gnome.org/seahorse/"
+HOMEPAGE="https://projects.gnome.org/seahorse/"
 
 LICENSE="GPL-2+"
 SLOT="0"

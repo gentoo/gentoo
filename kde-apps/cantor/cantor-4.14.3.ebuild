@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit kde4-base python-single-r1
 
 DESCRIPTION="KDE4 interface for doing mathematics and scientific computing"
-HOMEPAGE="http://www.kde.org/applications/education/cantor http://edu.kde.org/cantor"
+HOMEPAGE="https://www.kde.org/applications/education/cantor https://edu.kde.org/cantor"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="analitza debug postscript python qalculate +R"
 

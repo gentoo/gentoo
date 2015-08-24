@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 kde4-base
 
 DESCRIPTION="KDE4 translation tool"
-HOMEPAGE="http://www.kde.org/applications/development/lokalize
-http://l10n.kde.org/tools"
+HOMEPAGE="https://www.kde.org/applications/development/lokalize
+https://l10n.kde.org/tools"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

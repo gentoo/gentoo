@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="Gnome keyboard configuration library"
-HOMEPAGE="http://www.gnome.org"
+HOMEPAGE="https://www.gnome.org"
 
 LICENSE="LGPL-2+"
 SLOT="0"

@@ -9,8 +9,8 @@ inherit kde4-base
 
 DESCRIPTION="Kiriki - a gtali clone for KDE4"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kiriki/
-	http://games.kde.org/game.php?game=kiriki
+	https://www.kde.org/applications/games/kiriki/
+	https://games.kde.org/game.php?game=kiriki
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

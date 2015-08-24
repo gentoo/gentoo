@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit eutils gnome2 multilib-minimal
 
 DESCRIPTION="D-Bus accessibility specifications and registration daemon"
-HOMEPAGE="http://live.gnome.org/Accessibility"
+HOMEPAGE="https://live.gnome.org/Accessibility"
 
 LICENSE="LGPL-2+"
 SLOT="2"

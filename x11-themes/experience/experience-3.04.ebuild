@@ -3,8 +3,8 @@
 # $Id$
 
 DESCRIPTION="GTK+2 themes which copy and improve the look of XP Luna"
-HOMEPAGE="http://art.gnome.org/themes/gtk2/1058"
-#SRC_URI="http://art.gnome.org/download/themes/gtk2/1058/GTK2-EXperience.tar.gz"
+HOMEPAGE="https://art.gnome.org/themes/gtk2/1058"
+#SRC_URI="https://art.gnome.org/download/themes/gtk2/1058/GTK2-EXperience.tar.gz"
 SRC_URI="http://freshmeat.net/redir/${PN}/50795/url_tgz/${PN}-gtk-${PV}.tar.gz"
 
 KEYWORDS="amd64 ~ppc sparc x86"

@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 inherit cmake-utils flag-o-matic
 
 DESCRIPTION="KDE Meta Object Compiler"
-HOMEPAGE="http://www.kde.org"
+HOMEPAGE="https://www.kde.org"
 SRC_URI="mirror://kde/stable/${MY_PN}/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="BSD-2"

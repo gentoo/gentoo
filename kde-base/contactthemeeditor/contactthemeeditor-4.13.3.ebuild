@@ -9,7 +9,7 @@ KMNAME="kdepim"
 inherit kde4-meta
 
 DESCRIPTION="A contact theme editor for KAddressBook"
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="debug"
 

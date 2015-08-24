@@ -8,8 +8,8 @@ VIRTUALX_REQUIRED="test"
 inherit kde4-base
 
 DESCRIPTION="Todo management application for KDE"
-HOMEPAGE="http://zanshin.kde.org/"
-SRC_URI="http://files.kde.org/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://zanshin.kde.org/"
+SRC_URI="https://files.kde.org/${PN}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="4"

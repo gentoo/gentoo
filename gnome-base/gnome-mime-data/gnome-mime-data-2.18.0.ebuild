@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit gnome2
 
 DESCRIPTION="MIME data for Gnome"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ KMNAME="kde-runtime"
 inherit kde4-meta
 
 DESCRIPTION="Nepomuk KDE4 client"
-HOMEPAGE+=" http://userbase.kde.org/Nepomuk"
+HOMEPAGE+=" https://userbase.kde.org/Nepomuk"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug"
 

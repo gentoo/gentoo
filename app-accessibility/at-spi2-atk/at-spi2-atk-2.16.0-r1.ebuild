@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools eutils gnome2 multilib-minimal
 
 DESCRIPTION="Gtk module for bridging AT-SPI to Atk"
-HOMEPAGE="http://live.gnome.org/Accessibility"
+HOMEPAGE="https://live.gnome.org/Accessibility"
 
 LICENSE="LGPL-2+"
 SLOT="2"

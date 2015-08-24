@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools eutils gnome2
 
 DESCRIPTION="Disk Utility for GNOME using udisks"
-HOMEPAGE="http://git.gnome.org/browse/gnome-disk-utility"
+HOMEPAGE="https://git.gnome.org/browse/gnome-disk-utility"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -8,7 +8,7 @@ GCONF_DEBUG="no" # --enable-debug does not do anything useful
 inherit gnome2
 
 DESCRIPTION="GLib geocoding library that uses the Yahoo! Place Finder service"
-HOMEPAGE="http://git.gnome.org/browse/geocode-glib"
+HOMEPAGE="https://git.gnome.org/browse/geocode-glib"
 
 # FIXME: should be slot 1.0 but upstream failed at renaming the libs
 #        and some files conflict from previous releases.

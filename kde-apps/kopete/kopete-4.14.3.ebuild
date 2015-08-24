@@ -8,7 +8,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE multi-protocol IM client"
-HOMEPAGE="http://kopete.kde.org http://www.kde.org/applications/internet/kopete"
+HOMEPAGE="https://kopete.kde.org https://www.kde.org/applications/internet/kopete"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug ssl v4l"
 

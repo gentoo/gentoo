@@ -9,7 +9,7 @@ inherit cmake-utils multilib
 MY_P=Kst-${PV}
 
 DESCRIPTION="Fast real-time large-dataset viewing and plotting tool"
-HOMEPAGE="http://kst.kde.org/"
+HOMEPAGE="https://kst.kde.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.2"

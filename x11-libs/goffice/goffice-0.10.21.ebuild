@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="A library of document-centric objects and utilities"
-HOMEPAGE="http://git.gnome.org/browse/goffice/"
+HOMEPAGE="https://git.gnome.org/browse/goffice/"
 
 LICENSE="GPL-2"
 SLOT="0.10"

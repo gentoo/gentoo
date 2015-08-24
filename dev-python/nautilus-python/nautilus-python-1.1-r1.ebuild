@@ -11,7 +11,7 @@ GNOME2_LA_PUNT="yes"
 inherit eutils gnome2 python
 
 DESCRIPTION="Python bindings for the Nautilus file manager"
-HOMEPAGE="http://projects.gnome.org/nautilus-python/"
+HOMEPAGE="https://projects.gnome.org/nautilus-python/"
 
 LICENSE="GPL-2"
 SLOT="0"

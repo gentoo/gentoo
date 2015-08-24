@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils gnome.org multilib-minimal
 
 DESCRIPTION="A library for sending desktop notifications"
-HOMEPAGE="http://git.gnome.org/browse/libnotify"
+HOMEPAGE="https://git.gnome.org/browse/libnotify"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

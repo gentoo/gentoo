@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="A graphical effect and filter library for KDE4"
-HOMEPAGE="http://websvn.kde.org/trunk/kdesupport/qimageblitz/"
+HOMEPAGE="https://websvn.kde.org/trunk/kdesupport/qimageblitz/"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"

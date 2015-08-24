@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="Meta package for GNOME-Light, merge this package to install"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 LICENSE="metapackage"
 SLOT="2.0"
 IUSE="cups +gnome-shell"

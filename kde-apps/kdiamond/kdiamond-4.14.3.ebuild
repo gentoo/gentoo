@@ -9,8 +9,8 @@ inherit kde4-base
 
 DESCRIPTION="KDE: KDiamond is a three-in-a-row game"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kdiamond/
-	http://games.kde.org/game.php?game=kdiamond
+	https://www.kde.org/applications/games/kdiamond/
+	https://games.kde.org/game.php?game=kdiamond
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

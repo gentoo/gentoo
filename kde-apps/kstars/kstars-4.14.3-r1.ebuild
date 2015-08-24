@@ -8,7 +8,7 @@ KDE_HANDBOOK="optional"
 inherit flag-o-matic kde4-base
 
 DESCRIPTION="KDE Desktop Planetarium"
-HOMEPAGE="http://www.kde.org/applications/education/kstars http://edu.kde.org/kstars"
+HOMEPAGE="https://www.kde.org/applications/education/kstars https://edu.kde.org/kstars"
 KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug fits indi"
 

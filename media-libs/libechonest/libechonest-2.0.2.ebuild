@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="A library for communicating with The Echo Nest"
-HOMEPAGE="http://projects.kde.org/projects/playground/libs/libechonest"
+HOMEPAGE="https://projects.kde.org/projects/playground/libs/libechonest"
 SRC_URI="http://files.lfranchi.com/${P}.tar.bz2
 	http://pwsp.cleinias.com/${P}.tar.bz2"
 

@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2 eutils
 
 DESCRIPTION="C++ bindings for gtksourceview"
-HOMEPAGE="http://projects.gnome.org/gtksourceviewmm/"
+HOMEPAGE="https://projects.gnome.org/gtksourceviewmm/"
 
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"

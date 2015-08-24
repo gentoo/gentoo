@@ -10,7 +10,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2 multilib multilib-minimal virtualx
 
 DESCRIPTION="The Gnome 2 Canvas library"
-HOMEPAGE="http://library.gnome.org/devel/libgnomecanvas/stable/"
+HOMEPAGE="https://library.gnome.org/devel/libgnomecanvas/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"

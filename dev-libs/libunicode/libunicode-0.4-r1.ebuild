@@ -6,7 +6,7 @@ EAPI=3
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Unicode library"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/${PN}/${PV}/${P}.gnome.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"

@@ -8,7 +8,7 @@ KMNAME="kdepim"
 inherit kde4-meta
 
 DESCRIPTION="An extensible cross-desktop storage service for PIM data and meta data"
-HOMEPAGE="http://pim.kde.org/akonadi"
+HOMEPAGE="https://pim.kde.org/akonadi"
 KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Collection of GSettings schemas for GNOME desktop"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

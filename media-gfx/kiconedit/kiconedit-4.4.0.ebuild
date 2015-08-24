@@ -12,7 +12,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE Icon Editor"
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 SRC_URI="mirror://kde/stable/${PV}/src/extragear/${P}.tar.bz2"
 
 LICENSE="GPL-2 FDL-1.2"

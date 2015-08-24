@@ -11,7 +11,7 @@ VIRTUALDBUS_TEST="true"
 inherit kde4-base
 
 DESCRIPTION="X terminal for use with KDE"
-HOMEPAGE="http://www.kde.org/applications/system/konsole http://konsole.kde.org"
+HOMEPAGE="https://www.kde.org/applications/system/konsole https://konsole.kde.org"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

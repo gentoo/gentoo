@@ -9,7 +9,7 @@ MY_P="${P/qt/qt-1}"
 inherit cmake-utils multibuild
 
 DESCRIPTION="PolicyKit Qt4 API wrapper library"
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 SRC_URI="mirror://kde/stable/apps/KDE4.x/admin/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"

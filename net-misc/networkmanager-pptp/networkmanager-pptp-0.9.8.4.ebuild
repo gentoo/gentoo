@@ -8,7 +8,7 @@ GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
 inherit eutils gnome2-utils gnome.org
 
 DESCRIPTION="NetworkManager PPTP plugin"
-HOMEPAGE="http://www.gnome.org/projects/NetworkManager/"
+HOMEPAGE="https://www.gnome.org/projects/NetworkManager/"
 
 LICENSE="GPL-2+"
 SLOT="0"

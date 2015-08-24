@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Library to handle directed acyclic graphs"
-HOMEPAGE="http://live.gnome.org/liblarch"
+HOMEPAGE="https://live.gnome.org/liblarch"
 SRC_URI="http://gtg.fritalk.com/publique/gtg.fritalk.com/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-3"

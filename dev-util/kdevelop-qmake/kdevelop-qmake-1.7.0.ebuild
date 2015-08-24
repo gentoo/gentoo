@@ -9,7 +9,7 @@ KMNAME="kdev-qmake"
 inherit kde4-base
 
 DESCRIPTION="qmake plugin for KDevelop 4"
-SRC_URI="http://quickgit.kde.org/?p=${KMNAME}.git&a=snapshot&h=${PV%%.0} -> ${P}.tar.gz"
+SRC_URI="https://quickgit.kde.org/?p=${KMNAME}.git&a=snapshot&h=${PV%%.0} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit kde4-base python-single-r1
 
 DESCRIPTION="Generic geographical map widget"
-HOMEPAGE="http://marble.kde.org/"
+HOMEPAGE="https://marble.kde.org/"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug designer-plugin gps +kde phonon plasma python shapefile test zip"
 

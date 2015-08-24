@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit gnome2 multilib python-r1 virtualx
 
 DESCRIPTION="A GObject plugins library"
-HOMEPAGE="http://developer.gnome.org/libpeas/stable/"
+HOMEPAGE="https://developer.gnome.org/libpeas/stable/"
 
 LICENSE="LGPL-2+"
 SLOT="0"

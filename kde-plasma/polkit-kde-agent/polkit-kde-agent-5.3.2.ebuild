@@ -8,7 +8,7 @@ KMNAME="${PN}-1"
 inherit kde5
 
 DESCRIPTION="PolKit agent module for KDE"
-HOMEPAGE="http://www.kde.org"
+HOMEPAGE="https://www.kde.org"
 KEYWORDS="~amd64"
 IUSE=""
 

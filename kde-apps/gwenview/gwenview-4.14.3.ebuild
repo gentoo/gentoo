@@ -10,7 +10,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE image viewer"
 HOMEPAGE="
-	http://www.kde.org/applications/graphics/gwenview/
+	https://www.kde.org/applications/graphics/gwenview/
 	http://gwenview.sourceforge.net/
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"

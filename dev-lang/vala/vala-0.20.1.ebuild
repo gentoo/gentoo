@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Compiler for the GObject type system"
-HOMEPAGE="http://live.gnome.org/Vala"
+HOMEPAGE="https://live.gnome.org/Vala"
 
 LICENSE="LGPL-2.1"
 SLOT="0.20"

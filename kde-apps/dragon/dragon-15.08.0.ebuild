@@ -9,7 +9,7 @@ KDE_PUNT_BOGUS_DEPS="true"
 inherit kde5
 
 DESCRIPTION="A simple video player"
-HOMEPAGE="http://www.kde.org/applications/multimedia/dragonplayer"
+HOMEPAGE="https://www.kde.org/applications/multimedia/dragonplayer"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 

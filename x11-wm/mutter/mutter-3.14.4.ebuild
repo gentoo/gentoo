@@ -8,7 +8,7 @@ GCONF_DEBUG="yes"
 inherit autotools eutils gnome2
 
 DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
-HOMEPAGE="http://git.gnome.org/browse/mutter/"
+HOMEPAGE="https://git.gnome.org/browse/mutter/"
 
 LICENSE="GPL-2+"
 SLOT="0"

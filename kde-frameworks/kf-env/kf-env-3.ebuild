@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Environment setting required for all KDE Frameworks apps to run"
-HOMEPAGE="http://community.kde.org/Frameworks"
+HOMEPAGE="https://community.kde.org/Frameworks"
 SRC_URI=""
 
 LICENSE="GPL-2"

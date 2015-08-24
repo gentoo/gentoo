@@ -7,7 +7,7 @@ EAPI=5
 inherit pam
 
 DESCRIPTION="pam.d files used by several KDE components"
-HOMEPAGE="http://www.kde.org"
+HOMEPAGE="https://www.kde.org"
 
 LICENSE="GPL-2"
 SLOT="0"

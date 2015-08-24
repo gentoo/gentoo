@@ -11,7 +11,7 @@ MY_P="SymbolEditor-${PV}"
 inherit kde4-base
 
 DESCRIPTION="Program to create libraries of QPainterPath objects with hints on how to render them"
-HOMEPAGE="http://userbase.kde.org/SymbolEditor"
+HOMEPAGE="https://userbase.kde.org/SymbolEditor"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${MY_P}-1.tar.bz2"
 
 LICENSE="GPL-2"

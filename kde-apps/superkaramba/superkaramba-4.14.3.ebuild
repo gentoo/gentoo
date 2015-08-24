@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 kde4-base
 
 DESCRIPTION="A tool to create interactive applets for the KDE desktop"
-HOMEPAGE="http://www.kde.org/applications/utilities/superkaramba
-http://utils.kde.org/projects/superkaramba"
+HOMEPAGE="https://www.kde.org/applications/utilities/superkaramba
+https://utils.kde.org/projects/superkaramba"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug python"
 

@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde4-base
 
 DESCRIPTION="Kill the bots or they kill you!"
-HOMEPAGE="http://www.kde.org/applications/games/killbots/"
+HOMEPAGE="https://www.kde.org/applications/games/killbots/"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

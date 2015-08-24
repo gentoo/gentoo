@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="Turns on numlock in X"
-HOMEPAGE="http://home.kde.org/~seli/numlockx/"
+HOMEPAGE="https://home.kde.org/~seli/numlockx/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="MIT"

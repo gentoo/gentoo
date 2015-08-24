@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 fi
 
 DESCRIPTION="Library for video acquisition using Genicam cameras"
-HOMEPAGE="http://live.gnome.org/Aravis"
+HOMEPAGE="https://live.gnome.org/Aravis"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

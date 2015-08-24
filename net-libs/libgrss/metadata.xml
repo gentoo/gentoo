@@ -3,8 +3,8 @@
 <pkgmetadata>
 <herd>gnome</herd>
   <upstream>
-    <bugs-to>http://bugs.gnome.org</bugs-to>
-    <changelog>http://git.gnome.org/browse/libgrss</changelog>
+    <bugs-to>https://bugs.gnome.org</bugs-to>
+    <changelog>https://git.gnome.org/browse/libgrss</changelog>
   </upstream>
   <maintainer>
     <email>lxnay@gentoo.org</email>

@@ -15,7 +15,7 @@ VIRTUALDBUS_TEST="true"
 inherit flag-o-matic kde4-base pax-utils
 
 DESCRIPTION="Advanced audio player based on KDE framework"
-HOMEPAGE="http://amarok.kde.org/"
+HOMEPAGE="https://amarok.kde.org/"
 if [[ ${PV} != *9999* ]]; then
 	if [[ $PV == *[6-9][0-9]* ]]; then
 		SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.bz2"
@@ -124,7 +124,7 @@ pkg_postinst() {
 		elog "You've disabled the amarok support for embedded mysql DBs."
 		elog "You'll have to configure amarok to use an external db server."
 		echo
-		elog "Please read http://amarok.kde.org/wiki/MySQL_Server for details on how"
+		elog "Please read https://amarok.kde.org/wiki/MySQL_Server for details on how"
 		elog "to configure the external db and migrate your data from the embedded database."
 		echo
 

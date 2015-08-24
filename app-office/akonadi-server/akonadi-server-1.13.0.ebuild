@@ -18,7 +18,7 @@ fi
 inherit cmake-utils ${scm_eclass}
 
 DESCRIPTION="The server part of Akonadi"
-HOMEPAGE="http://pim.kde.org/akonadi"
+HOMEPAGE="https://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

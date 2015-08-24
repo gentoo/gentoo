@@ -10,7 +10,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit gnome2
 
 DESCRIPTION="GNOME CORBA framework"
-HOMEPAGE="http://developer.gnome.org/libbonobo/stable/"
+HOMEPAGE="https://developer.gnome.org/libbonobo/stable/"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"

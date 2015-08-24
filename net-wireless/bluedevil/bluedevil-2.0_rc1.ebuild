@@ -11,7 +11,7 @@ inherit kde4-base
 
 MY_P=${PN}-${PV/_/-}
 DESCRIPTION="Bluetooth stack for KDE"
-HOMEPAGE="http://projects.kde.org/projects/extragear/base/bluedevil"
+HOMEPAGE="https://projects.kde.org/projects/extragear/base/bluedevil"
 SRC_URI="mirror://kde/unstable/${PN}/${PV/_/-}/src/${MY_P}.tar.xz"
 
 LICENSE="GPL-2+"

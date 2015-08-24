@@ -34,7 +34,7 @@ pkg_setup() {
 		while read line; do ewarn "${line}"; done <<-EOF
 		Your current Emacs is compiled with GTK+. There is a long-standing
 		bug in GTK+ that prevents Emacs from recovering from X disconnects:
-		<http://bugzilla.gnome.org/show_bug.cgi?id=85715>
+		<https://bugzilla.gnome.org/show_bug.cgi?id=85715>
 		If you run Emacs as a daemon, then it is strongly recommended that
 		you compile it with the Motif or the Lucid toolkit instead, i.e.
 		with USE="motif -athena -gtk" or USE="athena -gtk -motif".

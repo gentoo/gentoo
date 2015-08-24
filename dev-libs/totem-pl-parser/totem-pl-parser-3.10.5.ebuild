@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Playlist parsing library"
-HOMEPAGE="http://developer.gnome.org/totem-pl-parser/stable/"
+HOMEPAGE="https://developer.gnome.org/totem-pl-parser/stable/"
 
 LICENSE="LGPL-2+"
 SLOT="0/18"

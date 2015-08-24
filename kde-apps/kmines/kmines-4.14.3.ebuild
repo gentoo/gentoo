@@ -10,8 +10,8 @@ inherit kde4-base
 
 DESCRIPTION="KMines is a classic mine sweeper game"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kmines/
-	http://games.kde.org/game.php?game=kmines
+	https://www.kde.org/applications/games/kmines/
+	https://games.kde.org/game.php?game=kmines
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

@@ -10,7 +10,7 @@ EGIT_BRANCH="KDE/4.14"
 inherit kde4-meta
 
 DESCRIPTION="KTimeTracker tracks time spent on various tasks"
-HOEMPAGE="http://www.kde.org/applications/utilities/ktimetracker/"
+HOEMPAGE="https://www.kde.org/applications/utilities/ktimetracker/"
 KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

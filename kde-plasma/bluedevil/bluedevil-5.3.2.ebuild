@@ -7,7 +7,7 @@ EAPI=5
 inherit fdo-mime kde5
 
 DESCRIPTION="Bluetooth stack for KDE"
-HOMEPAGE="http://projects.kde.org/projects/extragear/base/bluedevil"
+HOMEPAGE="https://projects.kde.org/projects/extragear/base/bluedevil"
 KEYWORDS="~amd64"
 IUSE=""
 

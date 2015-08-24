@@ -10,7 +10,7 @@ EGIT_BRANCH="KDE/4.14"
 inherit kde4-meta
 
 DESCRIPTION="KDE Notes application"
-HOMEPAGE="http://www.kde.org/applications/utilities/knotes/"
+HOMEPAGE="https://www.kde.org/applications/utilities/knotes/"
 KEYWORDS=" ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

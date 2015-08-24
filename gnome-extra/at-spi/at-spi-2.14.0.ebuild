@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="The Gnome Accessibility Toolkit"
-HOMEPAGE="http://projects.gnome.org/accessibility/"
+HOMEPAGE="https://projects.gnome.org/accessibility/"
 SRC_URI=""
 
 LICENSE="metapackage"

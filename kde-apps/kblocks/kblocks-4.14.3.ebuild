@@ -8,7 +8,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE: Kblocks is a single-player Tetris-like game"
-HOMEPAGE="http://www.kde.org/applications/games/kblocks/"
+HOMEPAGE="https://www.kde.org/applications/games/kblocks/"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

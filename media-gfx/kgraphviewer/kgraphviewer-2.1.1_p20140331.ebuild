@@ -11,8 +11,8 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE graphviz dot graph file viewer"
-HOMEPAGE="http://www.kde.org/applications/graphics/kgraphviewer/
-http://extragear.kde.org/apps/kgraphviewer/"
+HOMEPAGE="https://www.kde.org/applications/graphics/kgraphviewer/
+https://extragear.kde.org/apps/kgraphviewer/"
 SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 FDL-1.2"

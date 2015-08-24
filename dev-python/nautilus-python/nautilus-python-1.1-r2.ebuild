@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils gnome2 python-single-r1
 
 DESCRIPTION="Python bindings for the Nautilus file manager"
-HOMEPAGE="http://projects.gnome.org/nautilus-python/"
+HOMEPAGE="https://projects.gnome.org/nautilus-python/"
 
 LICENSE="GPL-2"
 SLOT="0"

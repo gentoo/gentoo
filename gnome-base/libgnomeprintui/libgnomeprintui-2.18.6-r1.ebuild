@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="User interface libraries for gnome print"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="2.2"

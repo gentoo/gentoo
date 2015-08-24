@@ -11,7 +11,7 @@ PYTHON_COMPAT=(python2_7 )
 inherit gnome2 python-r1
 
 DESCRIPTION="GooCanvas python bindings"
-HOMEPAGE="http://live.gnome.org/PyGoocanvas"
+HOMEPAGE="https://live.gnome.org/PyGoocanvas"
 
 LICENSE="GPL-2"
 SLOT="0"

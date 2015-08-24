@@ -8,7 +8,7 @@ GCONF_DEBUG="yes"
 inherit gnome2
 
 DESCRIPTION="A nautilus extension for sending files to locations"
-HOMEPAGE="http://www.gnome.org"
+HOMEPAGE="https://www.gnome.org"
 
 LICENSE="GPL-2+"
 SLOT="0"

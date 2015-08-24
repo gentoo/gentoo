@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Unofficial taglib plugins maintained by the Amarok team"
-HOMEPAGE="http://developer.kde.org/~wheeler/taglib.html"
+HOMEPAGE="https://developer.kde.org/~wheeler/taglib.html"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -9,7 +9,7 @@ VALA_MIN_API_VERSION="0.24"
 inherit gnome2 vala
 
 DESCRIPTION="Clocks application for GNOME"
-HOMEPAGE="http://live.gnome.org/GnomeClocks"
+HOMEPAGE="https://live.gnome.org/GnomeClocks"
 
 LICENSE="GPL-2+"
 SLOT="0"

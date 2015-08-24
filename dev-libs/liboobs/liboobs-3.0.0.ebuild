@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit gnome2
 
 DESCRIPTION="Liboobs is a wrapping library to the System Tools Backends"
-HOMEPAGE="http://library.gnome.org/devel/liboobs/stable/"
+HOMEPAGE="https://library.gnome.org/devel/liboobs/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"

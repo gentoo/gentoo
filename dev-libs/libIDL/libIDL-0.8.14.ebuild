@@ -9,7 +9,7 @@ GCONF_DEBUG="no"
 inherit eutils gnome2
 
 DESCRIPTION="CORBA tree builder"
-HOMEPAGE="http://www.gnome.org/"
+HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="LGPL-2"
 SLOT="0"

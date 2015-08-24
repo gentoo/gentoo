@@ -12,7 +12,7 @@ inherit kde4-base
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend"
 HOMEPAGE="https://projects.kde.org/projects/extragear/multimedia/kmplayer"
-SRC_URI="http://kmplayer.kde.org/pkgs/${P}.tar.bz2"
+SRC_URI="https://kmplayer.kde.org/pkgs/${P}.tar.bz2"
 
 LICENSE="GPL-2 FDL-1.2 LGPL-2.1"
 SLOT="4"

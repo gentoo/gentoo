@@ -10,7 +10,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit gnome2
 
 DESCRIPTION="User Interface routines for Gnome"
-HOMEPAGE="http://library.gnome.org/devel/libgnomeui/stable/"
+HOMEPAGE="https://library.gnome.org/devel/libgnomeui/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"

@@ -10,8 +10,8 @@ inherit kde4-base
 
 DESCRIPTION="KDE Space Game"
 HOMEPAGE="
-	http://www.kde.org/applications/games/kspaceduel/
-	http://games.kde.org/game.php?game=kspaceduel
+	https://www.kde.org/applications/games/kspaceduel/
+	https://games.kde.org/game.php?game=kspaceduel
 "
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-multilib
 
 DESCRIPTION="A library for reading and editing audio meta data"
-HOMEPAGE="http://developer.kde.org/~wheeler/taglib.html"
+HOMEPAGE="https://developer.kde.org/~wheeler/taglib.html"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MPL-1.1"

@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="GTK+ & GNOME Accessibility Toolkit"
-HOMEPAGE="http://projects.gnome.org/accessibility/"
+HOMEPAGE="https://projects.gnome.org/accessibility/"
 
 LICENSE="LGPL-2+"
 SLOT="0"

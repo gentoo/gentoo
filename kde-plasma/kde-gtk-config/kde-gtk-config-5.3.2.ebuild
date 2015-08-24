@@ -8,7 +8,7 @@ KDE_PUNT_BOGUS_DEPS="true"
 inherit kde5
 
 DESCRIPTION="KDE systemsettings kcm to set GTK application look&feel"
-HOMEPAGE="http://projects.kde.org/kde-gtk-config"
+HOMEPAGE="https://projects.kde.org/kde-gtk-config"
 LICENSE="GPL-3"
 KEYWORDS="~amd64"
 

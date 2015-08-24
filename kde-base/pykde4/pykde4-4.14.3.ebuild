@@ -13,7 +13,7 @@ inherit python-r1 portability kde4-base multilib eutils
 DESCRIPTION="Python bindings for KDE4"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="akonadi debug doc examples test"
-HOMEPAGE="http://techbase.kde.org/Development/Languages/Python"
+HOMEPAGE="https://techbase.kde.org/Development/Languages/Python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

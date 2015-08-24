@@ -12,7 +12,7 @@ PYTHON_REQ_USE="xml"
 inherit eutils gnome2 multilib-minimal python-r1
 
 DESCRIPTION="GNOME configuration system and daemon"
-HOMEPAGE="http://projects.gnome.org/gconf/"
+HOMEPAGE="https://projects.gnome.org/gconf/"
 
 LICENSE="LGPL-2+"
 SLOT="2"

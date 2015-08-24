@@ -6,15 +6,15 @@ inherit eutils games
 
 DESCRIPTION="a collection of all the greatest Quake movies"
 HOMEPAGE="http://www.planetquake.com/cineplex/history.html"
-SRC_URI="http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/camper.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/rgb.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/rgb2.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/rgb3_preview.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/ta2.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/op_bays.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/artifact.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/blah/blahmov.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/blah/blahouts.zip"
+SRC_URI="https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/camper.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/rgb.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/rgb2.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/rgb3_preview.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/ta2.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/op_bays.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/artifact.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/blah/blahmov.zip
+	https://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/blah/blahouts.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
