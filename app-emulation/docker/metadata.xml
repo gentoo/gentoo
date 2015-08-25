@@ -21,6 +21,10 @@
 		<email>alunduil@gentoo.org</email>
 		<name>Alex Brandt</name>
 	</maintainer>
+	<maintainer>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
 	<use>
 		<flag name="aufs">
 			Enables dependencies for the "aufs" graph driver, including
