@@ -7292,7 +7292,7 @@ dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/pika 0.9.14: Pure-Python implementation of the AMQP
 dev-python/pillow 2.8.1 2.8.2 2.9.0: Python Imaging Library (fork)
-dev-python/pip 1.5.6 6.0.8 6.1.1 7.0.0 7.0.1 7.0.3 7.1.0 7.1.2: Installs python packages -- replacement for easy_install
+dev-python/pip 1.5.6 7.1.0 7.1.2: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
 dev-python/pkginfo 1.0 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -13442,7 +13442,7 @@ net-irc/srvx 1.3.1: A complete set of services for IRCu 2.10.10+ and bahamut bas
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.4: An advanced Internet Relay Chat daemon
-net-irc/weechat 1.1.1 1.2 9999: Portable and multi-interface IRC client
+net-irc/weechat 1.1.1 1.2 1.3 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/xchat-otr 0.3: Off-The-Record messaging (OTR) for xchat
 net-irc/znc 1.2-r1 1.4 1.4-r1 9999: An advanced IRC Bouncer
@@ -14410,6 +14410,7 @@ net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.4-r2 2.4-r3: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/inspectrum 9999: a tool for analysing captured signals, primarily from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r3 0.9.18-r4: IrDA management and handling utilities
 net-wireless/iw 3.10 3.10-r1 3.11 3.13 3.14 3.17 4.0: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 9999: IEEE 802.11 wireless LAN sniffer
@@ -16870,7 +16871,7 @@ www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposit
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
 www-apps/mantisbt 1.2.15-r1: PHP/MySQL/Web based bugtracking system
-www-apps/mediawiki 1.19.23 1.19.24 1.22.15 1.23.8 1.23.9 1.24.1 1.24.2: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.19.23 1.19.24 1.22.15 1.23.8 1.23.9 1.23.10 1.24.1 1.24.2 1.24.3 1.25.2: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/metadot 6.1.6 6.4.5.4: Metadot is a CMS with file, page and link management, and collaboration features
 www-apps/mirmon 1.38-r4: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
