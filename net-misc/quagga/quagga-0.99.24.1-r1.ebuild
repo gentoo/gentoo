@@ -103,6 +103,11 @@ src_install() {
 	fowners root:quagga /etc/quagga
 	fperms 0770 /etc/quagga
 
+	# Path for PIDs before first reboot should be created here, bug #558194
+	dodir /run/quagga
+	fowners quagga:quagga /run/quagga
+	fperms 0770 /run/quagga
+
 	# Install systemd-related stuff, bug #553136
 	systemd_dotmpfilesd "${FILESDIR}/systemd/quagga.conf"
 	systemd_dounit "${FILESDIR}/systemd/zebra.service"
