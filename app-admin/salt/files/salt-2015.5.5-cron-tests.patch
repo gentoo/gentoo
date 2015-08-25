@@ -1,0 +1,17 @@
+diff --git a/tests/unit/modules/cron_test.py b/tests/unit/modules/cron_test.py
+index 017eabd..dac0122 100644
+--- a/tests/unit/modules/cron_test.py
++++ b/tests/unit/modules/cron_test.py
+@@ -573,10 +573,10 @@ class PsTestCase(TestCase):
+     @patch('salt.modules.cron._write_cron_lines')
+     @patch('salt.modules.cron.list_tab', new=MagicMock(return_value=STUB_SIMPLE_CRON_DICT))
+     def test_set_special(self, write_cron_lines_mock):
+-        expected_write_call = call('DUMMY_USER',
++        expected_write_call = [call('DUMMY_USER',
+                                    ['5 0 * * * /tmp/no_script.sh\n',
+                                     '# Lines below here are managed by Salt, do not edit\n',
+-                                    '@hourly echo Hi!\n'])
++                                    '@hourly echo Hi!\n'])]
+         ret = cron.set_special('DUMMY_USER', '@hourly', 'echo Hi!')
+         write_cron_lines_mock.assert_has_calls(expected_write_call)
+ 
