@@ -23,10 +23,9 @@ IUSE="debug kerberos mms-agent ssl +tools"
 
 RDEPEND="app-arch/snappy
 	>=dev-cpp/yaml-cpp-0.5.1
-	>=dev-libs/boost-1.50[threads(+)]
+	>=dev-libs/boost-1.57[threads(+)]
 	>=dev-libs/libpcre-8.30[cxx]
 	dev-libs/snowball-stemmer
-	dev-util/google-perftools[-minimal]
 	net-libs/libpcap
 	sys-libs/zlib
 	mms-agent? ( app-admin/mms-agent )
@@ -44,13 +43,20 @@ pkg_setup() {
 	enewgroup mongodb
 	enewuser mongodb -1 -1 /var/lib/${PN} mongodb
 
-	scons_opts="--variant-dir=build --cc=$(tc-getCC) --cxx=$(tc-getCXX)"
+	# Maintainer notes
+	#
+	# --use-system-tcmalloc is strongly NOT recommended:
+	# https://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
+	#
+	# --c++11 is required by scons instead of auto detection:
+	# https://jira.mongodb.org/browse/SERVER-19661
+
+	scons_opts="--variant-dir=build --cc=$(tc-getCC) --cxx=$(tc-getCXX) --c++11"
 	scons_opts+=" --disable-warnings-as-errors"
 	scons_opts+=" --use-system-boost"
 	scons_opts+=" --use-system-pcre"
 	scons_opts+=" --use-system-snappy"
 	scons_opts+=" --use-system-stemmer"
-	scons_opts+=" --use-system-tcmalloc"
 	scons_opts+=" --use-system-yaml"
 
 	if use debug; then
