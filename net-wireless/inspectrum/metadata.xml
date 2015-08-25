@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>zerochaos@gentoo.org</email>
+<name>Rick Farina</name>
+<description>maintainer</description>
+</maintainer>
+<herd>radio</herd>
+<longdescription lang="en">
+</longdescription>
+</pkgmetadata>
