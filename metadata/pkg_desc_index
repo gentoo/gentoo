@@ -12515,7 +12515,7 @@ media-sound/quodlibet 2.6.3 3.1.2 3.4.1: audio library tagger, manager, and play
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/redoflacs 0.15 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
-media-sound/retrovol 0.12: Systemtray volume mixer applet from PuppyLinux
+media-sound/retrovol 0.12 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rezound 0.12.3_beta-r2: Sound editor and recorder
 media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Replay Gain information
@@ -12529,7 +12529,7 @@ media-sound/schismtracker 20110101 20120105: a free reimplementation of Impulse 
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.2-r1: Seq24 is a loop based MIDI sequencer with focus on live performances
 media-sound/setmixer 19941227_p1: A commandline mixer
-media-sound/sexypsf 0.4.7: sexyPSF is an open-source PSF1 (Playstation music) file player
+media-sound/sexypsf 0.4.7 0.4.8: sexyPSF is an open-source PSF1 (Playstation music) file player
 media-sound/sfc 0.018-r1: SoundFontCombi is an opensource software pseudo synthesizer
 media-sound/shell-fm 0.8-r1: A lightweight console based player for Last.FM radio streams
 media-sound/shnflacverify 0.3: This program helps manage the verification of checksums related to Shorten and FLAC files
