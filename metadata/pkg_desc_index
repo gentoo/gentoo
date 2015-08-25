@@ -2478,7 +2478,7 @@ app-text/zathura-ps 0.2.2 9999: PostScript plug-in for zathura
 app-text/zemberek-server 0.7.1 0.7.1-r1: A Turkish spell checker server based on Zemberek NLP library
 app-text/zpspell 0.4.3-r1: Zemberek-Pardus spell checker interface
 app-vim/airline 0.7 9999: vim plugin: lean & mean statusline for vim that's light as air
-app-vim/align 42 43: vim plugin: commands and maps to help produce aligned text
+app-vim/align 43: vim plugin: commands and maps to help produce aligned text
 app-vim/alternate 2.18: vim plugin: quickly switch between .c and .h files
 app-vim/ansiesc 12: vim plugin: ansi escape sequences concealed, but highlighted as specified
 app-vim/ant_menu 0.5.7.1: vim plugin: Java ant build system integration
@@ -2488,13 +2488,13 @@ app-vim/bash-support 3.12 4.1 4.2.1: vim plugin: Bash-IDE - Write and run bash s
 app-vim/bnf-syntax 1.2-r1: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.1 1.0.2 1.0.3: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0: vim plugin: sets vim breakpoints visually
-app-vim/bufexplorer 7.4.2 7.4.5-r1 7.4.6: vim plugin: easily browse vim buffers
+app-vim/bufexplorer 7.4.6: vim plugin: easily browse vim buffers
 app-vim/c-support 6.0 6.1 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
 app-vim/calendar 2.5 2.9: vim plugin: calendar window
 app-vim/cctree 1.60 1.61: vim plugin: Cscope based source-code browser and code flow analysis tool
 app-vim/cecutil 17: vim plugin: library used by many of Charles Campbell's plugins
 app-vim/cfengine-syntax 20141019: vim plugin: Cfengine 3 configuration files syntax
-app-vim/checkattach 0.15 0.16 0.17: vim plugin: check for attachments when writing mails with mutt
+app-vim/checkattach 0.17: vim plugin: check for attachments when writing mails with mutt
 app-vim/closetag 0.9.1: vim plugin: close HTML/XML tags quickly
 app-vim/cmdalias 3.0: vim plugin: library for alias creation
 app-vim/colorschemes 20140623-r1: vim plugin: a collection of color schemes from vim.org
@@ -2505,7 +2505,7 @@ app-vim/conque 2.3 2.3-r1: vim plugin: Run interactive commands inside a Vim buf
 app-vim/cream 0.43: An easy-to-use configuration of the GVim text editor
 app-vim/csound-syntax 3.1: vim plugin: Syntax highlighting, filetype detection, folding, macros, and templates for Csound files
 app-vim/csv 0.30 0.31: vim plugin: display and alter csv files
-app-vim/ctrlp 1.78 1.79: vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
+app-vim/ctrlp 1.79: vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
 app-vim/ctx 1.17: vim plugin: display current scope context in a C file
 app-vim/curcmdmode 1.0: vim plugin: library for extending vim's mode() function
 app-vim/cvsmenu 1.80 1.147: vim plugin: CVS(NT) integration script
@@ -2514,7 +2514,7 @@ app-vim/detectindent 1.0 1.0_p20110723: vim plugin: automatically detect file in
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.9.4 2.9.6: vim plugin: a simple alignment plugin
-app-vim/easytags 3.9.1 3.10.1: vim plugin: automated tag file generation and syntax highlighting
+app-vim/easytags 3.10.1 3.11: vim plugin: automated tag file generation and syntax highlighting
 app-vim/ebnf-syntax 1.1-r1: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
 app-vim/emmet 0.85: vim plugin: HTML and CSS hi-speed coding
 app-vim/enhancedcommentify 2.3: vim plugin: enhanced comment creation
@@ -2525,7 +2525,7 @@ app-vim/exheres-syntax 20080908 20090310 99999999: vim plugin: exheres format hi
 app-vim/extra-syntax 2 3 4: vim plugin: metapackage for all extra syntax packages
 app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0: vim plugin: fold creation utility
-app-vim/fugitive 1.2 2.1 2.2 9999: vim plugin: a git wrapper for vim
+app-vim/fugitive 2.2 9999: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1: vim plugin: library for simplifying indent files
 app-vim/gentoo-syntax 20120109 20130619 20141129 20150823 99999999: vim plugin: Gentoo and portage related syntax highlighting, filetype, and indent settings
@@ -2559,7 +2559,7 @@ app-vim/notes 0.29 0.33: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
 app-vim/pam-syntax 20030818 20060424: vim plugin: PAM configuration syntax highlighting
-app-vim/pathogen 2.2 2.3: vim plugin: manage your runtimepath
+app-vim/pathogen 2.3: vim plugin: manage your runtimepath
 app-vim/pdv 1.0.1: vim plugin: PDV (phpDocumentor for Vim)
 app-vim/perl-support 4.8 4.14 5.1 5.2: vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
 app-vim/pgn-syntax 1.0: vim plugin: PGN (chess Portable Game Notation) syntax highlighting
@@ -2580,7 +2580,7 @@ app-vim/screen 1.3 1.4 1.5: vim plugin: simulate a split shell with screen or tm
 app-vim/searchcomplete 1.1: vim plugin: tab completion in searches
 app-vim/securemodelines 20140926: vim plugin: secure, user-configurable modeline support
 app-vim/selinux-syntax 20041225: vim plugin: SELinux type enforcement policy syntax
-app-vim/session 2.4.14 2.7 2.8 2.9 2.10.1: vim plugin: extended session management for vim
+app-vim/session 2.10.1 2.12: vim plugin: extended session management for vim
 app-vim/showmarks 2.2: vim plugin: show location marks visually
 app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
 app-vim/slimv 0.9.11 0.9.12 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
@@ -2592,7 +2592,7 @@ app-vim/surround 2.0 2.1: vim plugin: Delete/change/add parentheses/quotes/XML-t
 app-vim/syntastic 3.5.0 3.6.0 9999: vim plugin: syntax checking using external tools
 app-vim/tagbar 2.5 2.6 2.6.1: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.5 4.6: vim plugin: ctags-based source code browser
-app-vim/tcomment 3.04 3.06: vim plugin: an extensible and universal comment toggler
+app-vim/tcomment 3.06 3.07: vim plugin: an extensible and universal comment toggler
 app-vim/thlnk 1.2.1: vim plugin: linking in plaintext
 app-vim/tmpl 0.1: vim plugin: Syntax for Sam Tregar's HTML::Template
 app-vim/toggle 0.5: vim plugin: quickly toggle boolean-type keywords
@@ -2604,7 +2604,7 @@ app-vim/unite 2.0 4.0: vim plugin: unite all sources
 app-vim/uptime 1.3: vim plugin: display vim uptimes
 app-vim/vcscommand 1.99.47: vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugin
 app-vim/vim-latex 1.8.23.20130116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
-app-vim/vim-misc 1.8.5 1.11 1.13.1 1.16.1 1.17 1.17.1 1.17.6: vim plugin: miscellaneous auto-load scripts
+app-vim/vim-misc 1.17.1 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-r 0.9.9.2 0.9.9.3 0.9.9.4 0.9.9.7 0.9.9.8 0.9.9.9 1.0: vim plugin: integrate vim with R
 app-vim/vim-spell-cs 20061021: vim spell files: Czech (cs)
 app-vim/vim-spell-da 20060116: vim spell files: Danish (da)
@@ -2631,9 +2631,9 @@ app-vim/webapi 0.1 0.2: vim plugin: interface to Web APIs
 app-vim/wikipedia-syntax 20101113: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r1: vim plugin: XQuery syntax highlighting
 app-vim/xsl-syntax 0.3.11-r1: vim plugin: Syntax for XSLT (with HTML and others)
-app-vim/yankring 12.0 14.0 15.0 17.0 18.0: vim plugin: maintains a history of previous yanks and deletes
+app-vim/yankring 18.0 19.0: vim plugin: maintains a history of previous yanks and deletes
 app-vim/youcompleteme 20130910 99999999: vim plugin: a code-completion engine for Vim
-app-vim/zoomwin 23 24: vim plugin: brief-style window zooming
+app-vim/zoomwin 24: vim plugin: brief-style window zooming
 app-xemacs/ada 1.14: Ada language support
 app-xemacs/apel 1.32 1.34: A Portable Emacs Library. Used by XEmacs MIME support
 app-xemacs/auctex 1.47 1.51: Basic TeX/LaTeX support
