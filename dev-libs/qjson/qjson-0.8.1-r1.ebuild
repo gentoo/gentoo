@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-multilib multilib
+inherit cmake-multilib multilib qmake-utils
 
 DESCRIPTION="A library for mapping JSON data to QVariant objects"
 HOMEPAGE="http://qjson.sourceforge.net"
@@ -24,8 +24,8 @@ DOCS=( ChangeLog README.md )
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DQT_QMAKE_EXECUTABLE="$(qt4_get_bindir)/qmake"
 		$(cmake-utils_use test QJSON_BUILD_TESTS)
-		-DQT_QMAKE_EXECUTABLE=/usr/$(get_libdir)/qt4/bin/qmake
 	)
 
 	cmake-utils_src_configure
@@ -33,9 +33,10 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake-utils_src_compile
+
 	use doc && if is_final_abi; then
-		cd "${S}"/doc || die "Failed to move inside doc directory"
-		doxygen Doxyfile || die "Generating documentation failed"
+		cd "${S}"/doc || die
+		doxygen Doxyfile || die
 	fi
 }
 

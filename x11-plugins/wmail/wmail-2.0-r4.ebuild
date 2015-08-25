@@ -31,7 +31,7 @@ src_prepare() {
 
 	# Honour Gentoo LDFLAGS, see bug #337407
 	sed -i 's/-o $@ $^ $(LIBS)/$(LDFLAGS) -o $@ $^ $(LIBS)/' "${S}/src/Makefile.in"
-	sed -e 's#<dockapp.h>#<libdockapp/dockapp.h>#' -i *.c || die
+	sed -e 's#<dockapp.h>#<libdockapp/dockapp.h>#' -i src/*.c || die
 }
 
 src_configure() {
