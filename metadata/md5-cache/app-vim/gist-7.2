@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: interact with gists (gist.github.com)
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=2423 https://github.com/mattn/gist-vim
+KEYWORDS=~amd64 ~x86 ~x64-macos
+LICENSE=BSD
+RDEPEND=app-vim/webapi net-misc/curl dev-vcs/git || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/mattn/gist-vim/archive/7.2.tar.gz -> gist-7.2.tar.gz
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+_md5_=72aa757c2c4187ef312e39ed61c1fda4
