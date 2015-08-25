@@ -9,6 +9,7 @@
 		<flag name="embedded">Embed plugins instead of building them as real plugins. When disabling this USE flag make sure you specify all used plugins in your uWSGI configuration. Note: Language plugins will always be built as real plugins.</flag>
 		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> instead of libc's malloc</flag>
 		<flag name="json">Support json as a configuration file format.</flag>
+		<flag name="pypy">Build the pypy plugin to run your code using <pkg>virtual/pypy</pkg>.</flag>
 		<flag name="python_asyncio">Use the EXPERIMENTAL asyncio (tulip) for python3.4 async request dispatching and as LoopEngine (see http://uwsgi-docs.readthedocs.org/en/latest/asyncio.html).</flag>
 		<flag name="python_gevent">Use <pkg>dev-python/gevent</pkg> for async request dispatching and as LoopEngine (see http://projects.unbit.it/uwsgi/wiki/Gevent).</flag>
 		<flag name="routing">Enable routing support</flag>
