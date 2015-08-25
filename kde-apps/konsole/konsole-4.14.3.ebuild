@@ -13,7 +13,7 @@ inherit kde4-base
 DESCRIPTION="X terminal for use with KDE"
 HOMEPAGE="https://www.kde.org/applications/system/konsole https://konsole.kde.org"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="debug"
+IUSE="debug minimal"
 
 COMMONDEPEND="
 	!aqua? (
@@ -36,3 +36,12 @@ RDEPEND="${COMMONDEPEND}"
 
 # can't connect to a kded instance, fails to connect to dbus
 RESTRICT="test"
+
+src_install() {
+	kde4-base_src_install
+
+	if use minimal; then
+		rm "${D}/usr/bin/konsole" || die
+		rm "${D}/usr/bin/konsoleprofile" || die
+	fi
+}
