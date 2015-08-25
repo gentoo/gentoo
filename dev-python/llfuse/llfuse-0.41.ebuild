@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3} pypy )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 
 inherit distutils-r1
 
@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	# use system setuptools
 	sed -i '/use_setuptools/d' setup.py || die
+
+	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
