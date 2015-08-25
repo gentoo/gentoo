@@ -19,11 +19,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="python? ( ${PYTHON_DEPS} )
+	>=dev-libs/libevdev-1.2.99.902"
 DEPEND="app-arch/xz-utils
 	${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-install-man.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.2.0-install-man.patch )
 
 src_prepare() {
 	if ! use python ; then
