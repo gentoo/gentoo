@@ -29,7 +29,7 @@ python_compile_all() {
 src_test() {
 	# tests/test_flac.py uses temp files with a constant path.
 	# If we had multiple python implementations, we would hit a race.
-	DISTUTILS_NO_PARALLEL_BUILD=1 distutils-r1_src_test
+	distutils-r1_src_test
 }
 
 python_test() {
