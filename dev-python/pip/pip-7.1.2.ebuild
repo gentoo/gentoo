@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3  )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit bash-completion-r1 distutils-r1
 
@@ -18,17 +18,17 @@ SLOT="0"
 
 # Check pip/_vendor/vendor.txt for this
 VENDOR_DEPEND="
-	>=dev-python/distlib-0.2.1
-	>=dev-python/html5lib-0.999999
-	>=dev-python/six-1.9
-	>=dev-python/colorama-0.3.3
-	>=dev-python/requests-2.7.0
-	>=dev-python/CacheControl-0.11.5
-	>=dev-python/lockfile-0.10.2
-	>=dev-python/progress-1.2
-	>=dev-python/ipaddress-1.0.14
-	>=dev-python/packaging-15.3
-	>=dev-python/retrying-1.3.3
+	>=dev-python/distlib-0.2.1[${PYTHON_USEDEP}]
+	>=dev-python/html5lib-0.999999[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9[${PYTHON_USEDEP}]
+	>=dev-python/colorama-0.3.3[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.7.0[${PYTHON_USEDEP}]
+	>=dev-python/CacheControl-0.11.5[${PYTHON_USEDEP}]
+	>=dev-python/lockfile-0.10.2[${PYTHON_USEDEP}]
+	>=dev-python/progress-1.2[${PYTHON_USEDEP}]
+	>=dev-python/ipaddress-1.0.14[${PYTHON_USEDEP}]
+	>=dev-python/packaging-15.3[${PYTHON_USEDEP}]
+	>=dev-python/retrying-1.3.3[${PYTHON_USEDEP}]
 "
 RDEPEND="${VENDOR_DEPEND}
 	>=dev-python/setuptools-18.2[${PYTHON_USEDEP}]
