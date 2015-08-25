@@ -9,6 +9,6 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: display and alter csv files"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2830"
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="ft-csv.txt"
