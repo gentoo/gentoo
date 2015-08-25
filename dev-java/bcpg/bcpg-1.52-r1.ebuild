@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,7 @@ src_unpack() {
 }
 
 java_prepare() {
-	if ! test; then
+	if ! use test; then
 		local RM_TEST_FILES=(
 			org/bouncycastle/openpgp/test
 			org/bouncycastle/openpgp/examples/test
