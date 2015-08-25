@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>base-system</herd>
-	<use>
-		<flag name="bzip2">
-      Add support for pcregrep command to search within
-      bzip2-compressed files, through <pkg>sys-libs/zlib</pkg>.
-    </flag>
-		<flag name="pcre16">
-      Build 16 bit PCRE library.
-    </flag>
-		<flag name="pcre32">
-      Build 32 bit PCRE library.
-    </flag>
-		<flag name="readline">
-      Add support for command line editing to pcretest, through
-      <pkg>sys-libs/readline</pkg>.
-    </flag>
-		<flag name="recursion-limit">
-      Limit match recursion to 8192; if disabled, the default limit is
-      used, which is the same as the match limit.
-    </flag>
-		<flag name="zlib">
-      Add support for pcregrep command to search within
-      gzip-compressed files, through <pkg>app-arch/gzip</pkg>.
-    </flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/a:pcre:pcre</remote-id>
-		<remote-id type="sourceforge">pcre</remote-id>
-	</upstream>
+<herd>base-system</herd>
+<use>
+	<flag name="bzip2">
+		Add support for pcregrep command to search within
+		bzip2-compressed files (via <pkg>app-arch/bzip2</pkg>).
+	</flag>
+	<flag name="pcre16">Build PCRE library for 16 bit characters (e.g. UTF-16).</flag>
+	<flag name="pcre32">Build PCRE library for 32 bit characters (e.g. UTF-32).</flag>
+	<flag name="readline">
+		Add support for command line editing to pcretest, through
+		<pkg>sys-libs/readline</pkg>.
+	</flag>
+	<flag name="recursion-limit">
+		Limit match recursion to 8192; if disabled, the default limit is
+		used, which is the same as the match limit.
+	</flag>
+	<flag name="zlib">
+		Add support for pcregrep command to search within
+		gzip-compressed files (via <pkg>sys-libs/zlib</pkg>).
+	</flag>
+</use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:pcre:pcre</remote-id>
+	<remote-id type="sourceforge">pcre</remote-id>
+</upstream>
 </pkgmetadata>

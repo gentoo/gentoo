@@ -6,7 +6,7 @@
 
 EAPI="5"
 
-inherit eutils multilib-minimal
+inherit multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/tatsuhiro-t/nghttp2.git"
@@ -36,10 +36,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-third-party.patch
-}
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \

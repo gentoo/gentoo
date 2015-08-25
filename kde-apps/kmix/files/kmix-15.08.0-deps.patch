@@ -1,0 +1,25 @@
+From ea58dd9a8cba08566ce6045341a5695d688abb45 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Thu, 20 Aug 2015 04:41:45 +1000
+Subject: [PATCH] Remove unused dependency.
+
+REVIEW:
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 01afa4a..85886c0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,7 +43,6 @@ if (KMIX_KF5_BUILD)
+ 		I18n
+ 		XmlGui
+ 		DBusAddons
+-		KCMUtils
+ 		KDELibs4Support)
+ 	find_package(KF5ConfigWidgets)
+ 	find_package(KF5IconThemes)
+-- 
+2.4.6
+
