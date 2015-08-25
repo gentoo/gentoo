@@ -19,7 +19,7 @@ else
 	# upstream has no permissions to use some kde written code so repack git
 	# repo every time
 	#SRC_URI="https://dev.gentoo.org/~scarabeus/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 	PATCHES=( "${FILESDIR}/${P}-optionaltests.patch" )
 fi
 
