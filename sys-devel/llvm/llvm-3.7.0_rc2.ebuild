@@ -363,7 +363,7 @@ src_install() {
 
 	if use clang; then
 		# note: magic applied in multilib_src_install()!
-		CLANG_VERSION=${PN%.*}
+		CLANG_VERSION=${PV%.*}
 
 		MULTILIB_CHOST_TOOLS+=(
 			/usr/bin/clang
@@ -386,8 +386,8 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	if multilib_is_native_abi; then
-		# Install docs.
-		#use doc && dohtml -r "${S}"/docs/_build/html/
+		# Install man pages.
+		#use doc || doman "${WORKDIR}"/${P}-manpages/*.1
 
 		# Symlink the gold plugin.
 		if use gold; then
