@@ -3,10 +3,10 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: display and alter csv files
 EAPI=5
 HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=2830
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=vim
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/csv-0.31.tar.bz2 http://dev.gentoo.org/~radhermit/vim/csv-0.31.tar.bz2
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
-_md5_=8fd6b302db50c6fd83beeae8d47a4fed
+_md5_=0dcfe3976ad7f707c64a66a8858847bb
