@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_DEPEND="python? 2"
 
-inherit eutils flag-o-matic python toolchain-funcs
+inherit autotools eutils flag-o-matic python toolchain-funcs
 
 DESCRIPTION="A useful collection of mail servers, clients, and filters"
 HOMEPAGE="https://www.gnu.org/software/mailutils/mailutils.html"
@@ -57,6 +57,11 @@ src_prepare() {
 	echo "#!/bin/sh" > build-aux/py-compile
 	epatch "${FILESDIR}/${P}-array_bounds.patch"
 	epatch "${FILESDIR}/${P}-readline-6.3.patch" #503954
+	if use mysql; then
+		sed -i -e /^INCLUDES/s:$:$(mysql_config --include): \
+			sql/Makefile.am || die
+		eautoreconf
+	fi
 }
 
 src_configure() {
