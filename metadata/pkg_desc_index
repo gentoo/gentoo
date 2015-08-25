@@ -10463,6 +10463,7 @@ kde-apps/kigo 4.14.3: KDE Go game
 kde-apps/killbots 4.14.3: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 4.14.3: KDE web development - image map editor
 kde-apps/kimgio 4.14.3: KDE WebP image format plugin
+kde-apps/kio-extras 15.08.0: KIO plugins present a filesystem-like view of arbitrary data
 kde-apps/kioclient 4.14.3: Command-line tool for network-transparent operations
 kde-apps/kiriki 4.14.3: Kiriki - a gtali clone for KDE4
 kde-apps/kiten 4.14.3: KDE Japanese dictionary and reference
@@ -10849,19 +10850,16 @@ kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Plat
 kde-misc/yakuake 2.9.9-r2: A quake-style terminal emulator based on KDE konsole technology
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1: Todo management application for KDE
-kde-plasma/baloo 5.9.2: Framework for searching and managing metadata
 kde-plasma/bluedevil 5.3.2 5.4.0: Bluetooth stack for KDE
 kde-plasma/breeze 5.3.2 5.4.0: Breeze visual style for the Plasma desktop
 kde-plasma/kde-cli-tools 5.3.2 5.4.0: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 5.3.2 5.4.0: KDE systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.3.2 5.4.0: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 5.3.2 5.4.0: Extra Plasma applets and engines
-kde-plasma/kfilemetadata 5.9.2: Library for extracting file metadata
 kde-plasma/kgamma 5.4.0: Screen gamma values kcontrol module
 kde-plasma/khelpcenter 5.3.2 5.4.0: The KDE Help Center
 kde-plasma/khotkeys 5.3.2 5.4.0: KDE workspace hotkey module
 kde-plasma/kinfocenter 5.3.2 5.4.0: A utility that provides information about a computer system
-kde-plasma/kio-extras 5.3.2: KIO plugins present a filesystem-like view of arbitrary data
 kde-plasma/kmenuedit 5.3.2 5.4.0: KDE menu editor
 kde-plasma/kscreen 5.3.2 5.4.0: KDE screen management
 kde-plasma/ksshaskpass 5.3.2 5.4.0: KDE implementation of ssh-askpass with Kwallet integration

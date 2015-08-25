@@ -3178,6 +3178,8 @@ kde-apps/kget:gpg - Enable signature verification by QGpgME via kde-base/kdepiml
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
 kde-apps/kget:webkit - Enable KdeWebkit browser plugin using kde-misc/kwebkitpart
 kde-apps/kig:scripting - Support Python scripting
+kde-apps/kio-extras:phonon - Enable file audio preview plugin using media-libs/phonon
+kde-apps/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kmix:canberra - Enable sound event support using media-libs/libcanberra
 kde-apps/konqueror:bookmarks - Add dependency on bookmark package.
 kde-apps/kopete:addbookmarks - Automatically add incoming urls to bookmarks.
@@ -3316,14 +3318,11 @@ kde-misc/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-plasma/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
-kde-plasma/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
 kde-plasma/kinfocenter:egl - Retrieve information about OpenGL via EGL
 kde-plasma/kinfocenter:gles - Show OpenGL ES information in kinfocenter
 kde-plasma/kinfocenter:nfs - Show information about NFS mounts, shares and log entries
 kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kinfocenter:samba - Show information about Samba mounts, shares and log entries
-kde-plasma/kio-extras:phonon - Enable file audio preview plugin using media-libs/phonon
-kde-plasma/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/libksysguard:processui - Enables the Interface to view process libs.
