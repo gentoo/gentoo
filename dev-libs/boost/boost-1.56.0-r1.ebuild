@@ -114,7 +114,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-1.55.0-tools-c98-compat.patch" \
 		"${FILESDIR}/${PN}-1.52.0-threads.patch" \
 		"${FILESDIR}/${PN}-1.56.0-build-auto_index-tool.patch" \
-		"${FILESDIR}/${PN}-1.55.0-variadic-templates.patch"
+		"${FILESDIR}/${PN}-1.55.0-variadic-templates.patch" \
+		"${FILESDIR}/${PN}-1.56.0-atomic.patch"
 
 	# Do not try to build missing 'wave' tool, bug #522682
 	# Upstream bugreport - https://svn.boost.org/trac/boost/ticket/10507
