@@ -4,11 +4,11 @@ DESCRIPTION=A highly configurable, drop-in replacement for sendmail
 EAPI=5
 HOMEPAGE=http://www.exim.org/
 IUSE=dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X
-KEYWORDS=alpha amd64 ~hppa ia64 ppc ~ppc64 sparc x86 ~x86-fbsd ~x86-solaris
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/sed-4.0.5 >=sys-libs/db-3.2 dev-libs/libpcre perl? ( dev-lang/perl:= ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls[pkcs11?] dev-libs/libtasn1 ) ldap? ( >=net-nds/openldap-2.0.7 ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r2 ) redis? ( dev-libs/hiredis ) spf? ( >=mail-filter/libspf2-1.2.5-r1 ) dmarc? ( mail-filter/opendmarc ) srs? ( mail-filter/libsrs_alt ) X? ( x11-proto/xproto x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXaw ) sqlite? ( dev-db/sqlite ) radius? ( net-dialup/radiusclient ) virtual/libiconv !mail-mta/courier !mail-mta/esmtp !mail-mta/mini-qmail !<mail-mta/msmtp-1.4.19-r1 !>=mail-mta/msmtp-1.4.19-r1[mta] !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] !net-mail/mailwrapper >=net-mail/mailbase-0.00-r5 virtual/logger dcc? ( mail-filter/dcc ) selinux? ( sec-policy/selinux-exim )
 REQUIRED_USE=spf? ( exiscan-acl ) srs? ( exiscan-acl ) dmarc? ( spf dkim ) pkcs11? ( gnutls )
 SLOT=0
 SRC_URI=ftp://ftp.exim.org/pub/exim/exim4/exim-4.85.tar.bz2 mirror://gentoo/system_filter.exim.gz doc? ( ftp://ftp.exim.org/pub/exim/exim4/exim-html-4.85.tar.bz2 )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=4e95d9a570ce309f60459926d44904f3
+_md5_=803764d3d02bc3f2d8355d751039733a
