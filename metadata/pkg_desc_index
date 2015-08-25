@@ -12596,7 +12596,7 @@ media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder
 media-sound/vmpk 0.5.1 0.6.0 0.6.1: Virtual MIDI Piano Keyboard
 media-sound/volti 0.2.3 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
-media-sound/volumeicon 0.4.6 0.5.0: A lightweight volume control that sits in your systray
+media-sound/volumeicon 0.4.6 0.5.0 0.5.1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
 media-sound/vorbis-tools 1.4.0 1.4.0-r1 1.4.0-r2: tools for using the Ogg Vorbis sound file format
 media-sound/vorbisgain 0.37-r1: Calculator of perceived sound level for Ogg Vorbis files
