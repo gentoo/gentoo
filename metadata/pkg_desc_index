@@ -2528,7 +2528,7 @@ app-vim/foldutil 3.0: vim plugin: fold creation utility
 app-vim/fugitive 2.2 9999: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1: vim plugin: library for simplifying indent files
-app-vim/gentoo-syntax 20120109 20130619 20141129 20150823 99999999: vim plugin: Gentoo and portage related syntax highlighting, filetype, and indent settings
+app-vim/gentoo-syntax 20150823 99999999: vim plugin: Gentoo and portage related syntax highlighting, filetype, and indent settings
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.1 7.2: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
@@ -2537,7 +2537,7 @@ app-vim/gitolite-syntax 20111225 20130306: vim plugin: gitolite syntax highlight
 app-vim/gitv 1.3 9999: vim plugin: gitk for vim
 app-vim/gnupg 2.5: vim plugin: transparent editing of gpg encrypted files
 app-vim/greputils 2.8: vim plugin: interface with grep, find and id-utils
-app-vim/gtk-syntax 20110214-r1 20121015 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xlib, Gimp, Gnome, and more
+app-vim/gtk-syntax 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xlib, Gimp, Gnome, and more
 app-vim/gundo 2.2.2 2.4.0 2.5.0: vim plugin: visualize your Vim undo tree
 app-vim/help-extra-syntax 20050106-r1: vim plugin: extra syntax highlighting for help files
 app-vim/increment 1.1: vim plugin: easily create sequences of incremented values
@@ -2569,7 +2569,7 @@ app-vim/puppet-syntax 3.0.1: vim plugin: Puppet configuration files syntax
 app-vim/pushpop 4.0: vim plugin: pushd / popd from the vim commandline
 app-vim/pyclewn 2.0.1 2.1: Pyclewn allows using vim as a front end to a debugger (pdb or gdb)
 app-vim/python-mode 0.6.10 0.6.18-r2 0.6.18-r3: Provide python code looking for bugs, refactoring and other useful things
-app-vim/rails 4.3 4.4 5.0 5.1: vim plugin: aids developing Ruby on Rails applications
+app-vim/rails 5.1 5.2: vim plugin: aids developing Ruby on Rails applications
 app-vim/recover 0.18: vim plugin: show differences for recovered files
 app-vim/reload 0.6.17: vim plugin: automatic reloading of vim scripts
 app-vim/repeat 1.1: vim plugin: use the repeat command "." with plugin maps
@@ -2583,7 +2583,7 @@ app-vim/selinux-syntax 20041225: vim plugin: SELinux type enforcement policy syn
 app-vim/session 2.10.1 2.12: vim plugin: extended session management for vim
 app-vim/showmarks 2.2: vim plugin: show location marks visually
 app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
-app-vim/slimv 0.9.11 0.9.12 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
+app-vim/slimv 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
 app-vim/snipmate 0.83: vim plugin: TextMate-style snippets
 app-vim/splice 1.0.1: vim plugin: resolve conflicts during three-way merges
 app-vim/sudoedit 0.20 0.21: vim plugin: edit files using sudo or su
@@ -2605,7 +2605,7 @@ app-vim/uptime 1.3: vim plugin: display vim uptimes
 app-vim/vcscommand 1.99.47: vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugin
 app-vim/vim-latex 1.8.23.20130116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
 app-vim/vim-misc 1.17.1 1.17.6: vim plugin: miscellaneous auto-load scripts
-app-vim/vim-r 0.9.9.2 0.9.9.3 0.9.9.4 0.9.9.7 0.9.9.8 0.9.9.9 1.0: vim plugin: integrate vim with R
+app-vim/vim-r 1.0 1.2.6: vim plugin: integrate vim with R
 app-vim/vim-spell-cs 20061021: vim spell files: Czech (cs)
 app-vim/vim-spell-da 20060116: vim spell files: Danish (da)
 app-vim/vim-spell-de 20051008 20080213: vim spell files: German (de)
@@ -2626,7 +2626,7 @@ app-vim/vimcommander 0.80 0.81: vim plugin: Total Commander style file explorer
 app-vim/vimoutliner 0.3.4-r2: vim plugin: easy and fast outlining
 app-vim/vimpress 2.1.5 3.2.0: vim plugin: manage wordpress blogs from vim
 app-vim/vimpython 1.13: vim plugin: A set of menus/shortcuts to work with Python files
-app-vim/voom 4.6 4.7 5.0 5.1: vim plugin: emulates a two-pane text outliner
+app-vim/voom 5.1: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.1 0.2: vim plugin: interface to Web APIs
 app-vim/wikipedia-syntax 20101113: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r1: vim plugin: XQuery syntax highlighting
@@ -11274,7 +11274,7 @@ media-gfx/album 4.07 4.13: HTML photo album generator
 media-gfx/aoi 2.5 2.7.2: A free, open-source 3D modelling and rendering studio
 media-gfx/apng2gif 1.4 1.5 1.6: create a GIF from an APNG
 media-gfx/apngasm 2.5 2.6 2.7: create an APNG from multiple PNG files
-media-gfx/apngdis 2.7: extract PNG frames from an APNG
+media-gfx/apngdis 2.7 2.8: extract PNG frames from an APNG
 media-gfx/apngopt 1.2: optimize APNG images
 media-gfx/aqsis 1.8.2: Open source RenderMan-compliant 3D rendering solution
 media-gfx/argyllcms 1.4.0-r1 1.4.0-r2 1.5.1 1.6.2 1.6.3 1.6.3-r1 1.7.0: Open source, ICC compatible color management system
