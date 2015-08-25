@@ -1,0 +1,29 @@
+From 4fbc6623eba0d32f1cc8609d605a6b5a2e051e15 Mon Sep 17 00:00:00 2001
+From: Laurent Bigonville <bigon@bigon.be>
+Date: Tue, 14 Jul 2015 19:07:56 +0200
+Subject: [PATCH 1/1] Set self.sename to sename after calling
+ semanage_seuser_set_sename()
+
+This fixes audit information that are being logged and a crash when the
+python-audit binding is not installed.
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=734806
+---
+ policycoreutils/semanage/seobject.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policycoreutils/semanage/seobject.py b/policycoreutils/semanage/seobject.py
+index 568ebfd..2edb050 100644
+--- a/policycoreutils/semanage/seobject.py
++++ b/policycoreutils/semanage/seobject.py
+@@ -575,6 +575,7 @@ class loginRecords(semanageRecords):
+ 
+ 		if sename != "":
+ 			semanage_seuser_set_sename(self.sh, u, sename)
++                        self.sename = sename
+ 		else:
+ 			self.sename = self.oldsename
+ 			
+-- 
+2.4.6
+

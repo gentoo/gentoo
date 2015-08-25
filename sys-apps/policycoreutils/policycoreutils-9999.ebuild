@@ -67,12 +67,9 @@ RDEPEND="${DEPEND}
 
 src_unpack() {
 	# Override default one because we need the SRC_URI ones even in case of 9999 ebuilds
+	default
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
-	fi
-	if [ -n ${A} ] ; then
-		S="${S2}"
-		unpack ${A};
 	fi
 }
 
@@ -88,6 +85,8 @@ src_prepare() {
 		epatch "${FILESDIR}/0070-remove-symlink-attempt-fails-with-gentoo-sandbox-approach.patch"
 		epatch "${FILESDIR}/0110-build-mcstrans-bug-472912.patch"
 		epatch "${FILESDIR}/0120-build-failure-for-mcscolor-for-CONTEXT__CONTAINS.patch"
+		epatch "${FILESDIR}/0130-Only-invoke-RPM-on-RPM-enabled-Linux-distributions-bug-534682.patch"
+		epatch "${FILESDIR}/0140-Set-self.sename-to-sename-after-calling-semanage-bug-557370.patch"
 	fi
 
 	# rlpkg is more useful than fixfiles
