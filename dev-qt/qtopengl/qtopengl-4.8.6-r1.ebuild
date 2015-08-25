@@ -11,7 +11,7 @@ DESCRIPTION="The OpenGL module for the Qt toolkit"
 if [[ ${QT4_BUILD_TYPE} == live ]]; then
 	KEYWORDS="alpha arm hppa ia64 ppc ppc64"
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 IUSE="egl qt3support"
