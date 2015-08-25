@@ -1999,12 +1999,12 @@ dev-libs/libnl:python - Install experimental dev-lang/python bindings
 dev-libs/libnl:utils - Install command line interface utils
 dev-libs/libowfat:diet - Compile against dev-libs/dietlibc
 dev-libs/libp11:doc - Generate and install API documentation for the package.
-dev-libs/libpcre:bzip2 - Add support for pcregrep command to search within bzip2-compressed files, through sys-libs/zlib.
-dev-libs/libpcre:pcre16 - Build 16 bit PCRE library.
-dev-libs/libpcre:pcre32 - Build 32 bit PCRE library.
+dev-libs/libpcre:bzip2 - Add support for pcregrep command to search within bzip2-compressed files (via app-arch/bzip2).
+dev-libs/libpcre:pcre16 - Build PCRE library for 16 bit characters (e.g. UTF-16).
+dev-libs/libpcre:pcre32 - Build PCRE library for 32 bit characters (e.g. UTF-32).
 dev-libs/libpcre:readline - Add support for command line editing to pcretest, through sys-libs/readline.
 dev-libs/libpcre:recursion-limit - Limit match recursion to 8192; if disabled, the default limit is used, which is the same as the match limit.
-dev-libs/libpcre:zlib - Add support for pcregrep command to search within gzip-compressed files, through app-arch/gzip.
+dev-libs/libpcre:zlib - Add support for pcregrep command to search within gzip-compressed files (via sys-libs/zlib).
 dev-libs/libpeas:glade - Install the glade catalog
 dev-libs/libpeas:python - Build support for loading dev-lang/python plugins
 dev-libs/librra:recurrence - Enable recurrence support (EXPERIMENTAL)
