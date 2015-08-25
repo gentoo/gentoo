@@ -9,7 +9,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-single-r1 multiprocessing autotools
+inherit eutils linux-info python-single-r1 multiprocessing autotools
 
 CODENAME="Helix"
 case ${PV} in
@@ -134,7 +134,14 @@ DEPEND="${COMMON_DEPEND}
 # generated addons package.  #488118
 [[ ${PV} == "9999" ]] && DEPEND+=" virtual/jre"
 
+CONFIG_CHECK="~IP_MULTICAST"
+ERROR_IP_MULTICAST="
+In some cases Kodi needs to access multicast addresses.
+Please consider enabling IP_MULTICAST under Networking options.
+"
+
 pkg_setup() {
+	check_extra_config
 	python-single-r1_pkg_setup
 }
 
