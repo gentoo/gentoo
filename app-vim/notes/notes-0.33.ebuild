@@ -12,7 +12,7 @@ DESCRIPTION="vim plugin: easy note taking in vim"
 HOMEPAGE="http://peterodding.com/code/vim/notes/"
 SRC_URI="https://github.com/xolox/vim-notes/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
