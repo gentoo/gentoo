@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<herd>kde</herd>
 	<use>
+		<flag name="evdev">Enable configuration module for desktop input devices.</flag>
 		<flag name="gtk2">Add support for gtk+2-based applications using legacy xembed systray icons via libappindicator.</flag>
 		<flag name="gtk3">Add support for gtk+3-based applications using legacy xembed systray icons via libappindicator.</flag>
 		<flag name="legacy-systray">Add support for applications using legacy xembed systray icons.</flag>
