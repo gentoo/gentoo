@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils flag-o-matic autotools
 
-PATCHSET_REV="-r6"
+PATCHSET_REV="-r8"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
@@ -242,9 +242,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
-	elog "If you are new to mutt you may want to take a look at"
-	elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
-	elog "   https://wiki.gentoo.org/wiki/Mutt"
-	echo
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		echo
+		elog "If you are new to mutt you may want to take a look at"
+		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
+		elog "   https://wiki.gentoo.org/wiki/Mutt"
+		echo
+	fi
 }
