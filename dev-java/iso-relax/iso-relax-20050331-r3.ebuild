@@ -1,7 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI="5"
 JAVA_PKG_IUSE="source"
 
 inherit java-pkg-2 java-ant-2
@@ -19,18 +20,21 @@ SRC_URI="mirror://gentoo/${P}-gentoo.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-DEPEND=">=virtual/jdk-1.4
-	dev-java/ant-core"
-RDEPEND=">=virtual/jre-1.4"
+DEPEND=">=virtual/jdk-1.6
+	dev-java/ant-core:0"
+RDEPEND=">=virtual/jre-1.6
+	dev-java/ant-core:0"
 
 EANT_BUILD_TARGET="release"
 
-src_install() {
+src_prepare() {
+	java-pkg_jarfrom --into lib ant-core ant.jar
+}
 
+src_install() {
 	java-pkg_dojar isorelax.jar
 	use source && java-pkg_dosrc src/*
-
 }
