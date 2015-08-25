@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils fdo-mime gnome2-utils pax-utils unpacker
 
 DESCRIPTION="Spotify is a social music platform"
-HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
+HOMEPAGE="https://www.spotify.com/download/previews/"
 MY_PV="${PV}.g9b85d43.7-1"
 MY_P="${PN}-client_${MY_PV}"
 SRC_BASE="http://repository.spotify.com/pool/non-free/${PN:0:1}/${PN}/"
