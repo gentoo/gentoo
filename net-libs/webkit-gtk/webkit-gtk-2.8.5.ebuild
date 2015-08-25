@@ -141,6 +141,9 @@ src_prepare() {
 	# https://bugs.webkit.org/show_bug.cgi?id=129542
 	epatch "${FILESDIR}"/${PN}-2.8.1-ia64-malloc.patch
 
+	# https://bugs.webkit.org/show_bug.cgi?id=148379
+	epatch "${FILESDIR}"/${PN}-2.8.5-webkit2gtkinjectedbundle-j1.patch
+
 	gnome2_src_prepare
 }
 
