@@ -11,7 +11,7 @@ SRC_URI="http://repo.or.cz/w/glpng.git/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="static-libs"
 
 RDEPEND="virtual/opengl[${MULTILIB_USEDEP}]
