@@ -13621,7 +13621,7 @@ net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/qtweetlib 0.5 9999: Qt based Twitter library
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.3.0 0.5.0: RabbitMQ C client
-net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.4 1.0.5: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.4 1.0.5 1.0.6: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/rest 0.7.92-r1 0.7.92-r2 0.7.93: Helper library for RESTful services
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
