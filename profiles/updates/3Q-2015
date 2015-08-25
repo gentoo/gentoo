@@ -5,3 +5,6 @@ slotmove dev-util/kdevelop-qmake 0 4
 move dev-java/biojava sci-biology/biojava
 move x11-plugins/bitlbee-steam net-im/bitlbee-steam
 move media-video/kdenlive kde-apps/kdenlive
+move kde-plasma/baloo kde-frameworks/baloo
+move kde-plasma/kfilemetadata kde-frameworks/kfilemetadata
+move kde-plasma/kio-extras kde-apps/kio-extras

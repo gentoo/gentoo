@@ -11,7 +11,7 @@ inherit fdo-mime kde5
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kio-extras"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="exif mtp phonon samba +sftp slp"
 
 COMMON_DEPEND="
@@ -54,6 +54,7 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kcontrol:4
 	!kde-base/kdebase-kioslaves:4[-minimal(-)]
 	!kde-base/kio-extras
+	!kde-plasma/kio-extras
 "
 DEPEND="${COMMON_DEPEND}
 	x11-misc/shared-mime-info
