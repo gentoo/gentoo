@@ -1,9 +1,9 @@
 # These are added during tree generation only.
-/cache/
-/dtd/
-/glsa/
-/md5-cache/
-/news/
+/cache
+/dtd
+/glsa
+/md5-cache
+/news
 /herds.xml
 /timestamp
 /timestamp.chk
