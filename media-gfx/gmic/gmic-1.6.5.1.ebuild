@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils toolchain-funcs bash-completion-r1 flag-o-matic
 
 DESCRIPTION="GREYC's Magic Image Converter"
-HOMEPAGE="http://gmic.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
+HOMEPAGE="http://gmic.eu/"
+SRC_URI="http://gmic.eu/files/source/${PN}_${PV}.tar.gz"
 
 LICENSE="CeCILL-2 FDL-1.3"
 SLOT="0"
@@ -18,14 +18,14 @@ IUSE="ffmpeg fftw graphicsmagick jpeg opencv openexr openmp png tiff X zlib"
 DEPEND="
 	fftw? ( sci-libs/fftw:3.0[threads] )
 	graphicsmagick? ( media-gfx/graphicsmagick )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	opencv? ( >=media-libs/opencv-2.3.1a-r1 )
 	openexr? (
 		media-libs/ilmbase
 		media-libs/openexr
 	)
-	png? ( media-libs/libpng )
-	tiff? ( media-libs/tiff )
+	png? ( media-libs/libpng:0= )
+	tiff? ( media-libs/tiff:0 )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
@@ -67,7 +67,7 @@ src_prepare() {
 
 src_compile() {
 	emake AR="$(tc-getAR)" CC="$(tc-getCXX)" CFLAGS="${CXXFLAGS}" \
-		LIB="$(get_libdir)" OPT_CFLAGS= DEBUG_CFLAGS= linux lib
+		LIB="$(get_libdir)" OPT_CFLAGS= DEBUG_CFLAGS= cli lib
 	emake man bashcompletion
 }
 

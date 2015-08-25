@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="G'MIC GIMP plugin"
 HOMEPAGE="http://gmic.eu/"
-SRC_URI="mirror://sourceforge/gmic/gmic_${PV}.tar.gz"
+SRC_URI="http://gmic.eu/files/source/gmic_${PV}.tar.gz"
 
 LICENSE="CeCILL-2"
 SLOT="0"
@@ -36,9 +36,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	cp "${FILESDIR}"/gmic-1.6.0.2-makefile.patch "${WORKDIR}" || die
-	edos2unix "${WORKDIR}"/gmic-1.6.0.2-makefile.patch
-	epatch "${WORKDIR}"/gmic-1.6.0.2-makefile.patch
+	epatch "${FILESDIR}"/gmic-${PV}-makefile.patch
 
 	if ! use openmp ; then
 		sed -i -r "s/^(OPENMP_(CFLAGS|LIBS) =).*/\1/" Makefile || die
