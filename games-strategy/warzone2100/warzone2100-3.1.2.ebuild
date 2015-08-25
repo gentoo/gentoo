@@ -24,7 +24,7 @@ RDEPEND=">=dev-games/physfs-2[zip]
 	dev-libs/fribidi
 	media-libs/fontconfig
 	media-libs/freetype:2
-	media-libs/glew
+	media-libs/glew:=
 	media-libs/libogg
 	media-libs/libpng:0
 	media-libs/libtheora

@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	dbus? ( >=dev-qt/qtdbus-4.5:4 )
 	>=dev-qt/qtopengl-4.5:4
 	>=dev-qt/qtsql-4.5:4[sqlite]
-	system-sqlite? ( dev-db/sqlite[fts3(+)] )
+	system-sqlite? ( dev-db/sqlite:3[fts3(+)] )
 	>=media-libs/taglib-1.8[mp4]
 	>=dev-libs/glib-2.24.1-r1
 	dev-libs/libxml2
@@ -57,7 +57,7 @@ COMMON_DEPEND="
 	lastfm? ( >=media-libs/liblastfm-1 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	moodbar? ( sci-libs/fftw:3.0 )
-	projectm? ( media-libs/glew )
+	projectm? ( media-libs/glew:= )
 "
 # now only presets are used, libprojectm is internal
 # https://github.com/clementine-player/Clementine/tree/master/3rdparty/libprojectm/patches
@@ -94,7 +94,8 @@ RESTRICT="test"
 S="${WORKDIR}/${P^}"
 
 PATCHES=(
-	"${FILESDIR}"/clementine-1.2.3-namespaces.patch
+	"${FILESDIR}/${PN}-1.2.3-namespaces.patch"
+	"${FILESDIR}/${P}-hide_boost_includes_from_q_moc.patch"
 )
 
 src_prepare() {

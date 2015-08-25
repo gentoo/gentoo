@@ -19,6 +19,7 @@ IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pretend[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
