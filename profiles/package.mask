@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Doug Goldstein <cardoe@gentoo.org> (25 Aug 2015)
+# Masked for removal in 30 days. Users should use the modules available
+# via the kernel as upstream has deprecated these packages.
+app-emulation/kvm-kmod
+
 # Bernard Cafarelli <voyageur@gentoo.org> (24 Aug 2015)
 # Masked for removal in 30 days. Abandoned upstream,
 # last version does not compile. Bug #543644
