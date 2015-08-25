@@ -11,7 +11,7 @@ DESCRIPTION="vim plugin: aid Lisp development by providing a SLIME-like Lisp and
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2531"
 SRC_URI="https://bitbucket.org/kovisoft/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="|| ( app-editors/vim[python,${PYTHON_USEDEP}] app-editors/gvim[python,${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}

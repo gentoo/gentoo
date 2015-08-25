@@ -11,7 +11,13 @@ HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2628"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-lang/R
-	|| ( app-vim/conque app-vim/screen )"
+RDEPEND="dev-lang/R"
 
 VIM_PLUGIN_HELPFILES="r-plugin.txt"
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "This plugin requires the vimcom R package to be installed,"
+		elog "see https://github.com/jalvesaq/VimCom for instructions."
+	fi
+}
