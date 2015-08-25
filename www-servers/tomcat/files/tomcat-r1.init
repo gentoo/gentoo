@@ -20,7 +20,6 @@ PIDFILE=/@GENTOO_PORTAGE_EPREFIX@var/run/${RC_SVCNAME}.pid
 
 export JAVA_HOME=`java-config ${TOMCAT_JVM:+--select-vm ${TOMCAT_JVM}} --jre-home`
 export CLASSPATH="${CATALINA_HOME}/bin/bootstrap.jar:${CATALINA_HOME}/bin/tomcat-juli.jar"
-[[ @SLOT@ = 6 ]] && CLASSPATH+=":/@GENTOO_PORTAGE_EPREFIX@usr/share/tomcat-servlet-api-2.5/lib/jsp-api.jar:/@GENTOO_PORTAGE_EPREFIX@usr/share/tomcat-servlet-api-2.5/lib/servlet-api.jar"
 
 depend() {
 	use dns logger net
