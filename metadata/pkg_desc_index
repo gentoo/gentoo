@@ -7939,7 +7939,7 @@ dev-qt/qtchooser 0_p20150102: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.4.2: Multi-threading concurrence support library for the Qt5 framework
 dev-qt/qtcore 4.8.5-r2 4.8.6-r2 4.8.7 5.4.2: Cross-platform application development framework
 dev-qt/qtdbus 4.8.5 4.8.6-r1 4.8.7 5.4.2: The D-Bus module for the Qt5 framework
-dev-qt/qtdeclarative 4.8.5 4.8.6-r1 4.8.7 5.4.2 5.4.2-r1: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdeclarative 4.8.5 4.8.6-r1 4.8.7 5.4.2-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.5-r1 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolkit
 dev-qt/qtdiag 5.4.2: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgraphicaleffects 5.4.2: Set of QML types for adding visual effects to user interfaces
