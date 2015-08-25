@@ -24,19 +24,19 @@ RDEPEND="!mail-client/nmh
 	!mail-client/mailx
 	!mail-client/nail
 	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/readline:*
 	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
 	virtual/mta
-	berkdb? ( sys-libs/db )
+	berkdb? ( sys-libs/db:* )
 	bidi? ( dev-libs/fribidi )
 	gdbm? ( sys-libs/gdbm )
-	guile? ( dev-scheme/guile )
+	guile? ( dev-scheme/guile:* )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	nls? ( sys-devel/gettext )
 	pam? ( virtual/pam )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	sasl? ( virtual/gsasl )
 	ssl? ( net-libs/gnutls )
 	tcpd? ( sys-apps/tcp-wrappers )
