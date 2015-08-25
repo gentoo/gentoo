@@ -1,0 +1,153 @@
+--- gmic-1.6.5.1/src/Makefile
++++ gmic-1.6.5.1/src/Makefile
+@@ -85,7 +85,6 @@
+ ifndef NO_STDLIB
+ MANDATORY_CFLAGS += -std=c++11
+ endif
+-MANDATORY_LIBS += -L$(USR)/$(LIB)
+ ifeq ($(notdir $(CC)),g++)
+ MANDATORY_CFLAGS += -Wall -W
+ MANDATORY_LIBS += -lm
+@@ -138,13 +137,13 @@
+ # Flags to enable image display, using X11
+ # (keep /usr/ dirname here since X11 is located in /usr/ on Mac too).
+ # This requires the presence of the X11 include and library files.
+-X11_CFLAGS = -Dcimg_display=1 -Dcimg_appname=\\\"gmic\\\" -I/usr/X11R6/include #-Dcimg_use_xrandr
+-X11_LIBS = -L/usr/X11R6/lib -lX11 -lpthread #-lXrandr
++X11_CFLAGS = -Dcimg_display=1 -Dcimg_appname=\\\"gmic\\\" #-Dcimg_use_xrandr
++X11_LIBS = -lX11 -lpthread #-lXrandr
+ 
+ # Flags to enable fast display, using XShm.
+ # This requires the presence of the X11 extension include and library files.
+ XSHM_CFLAGS = -Dcimg_use_xshm
+-XSHM_LIBS = -L$(USR)/X11R6/lib -lXext
++XSHM_LIBS = -lXext
+ 
+ # Flags to enable image display, using GDI32.
+ # This requires the presence of the GDI32 include and library files.
+@@ -168,8 +167,8 @@
+ 
+ # Flags to enable native support for MINC2 image files, using the MINC2 library.
+ # ( http://en.wikibooks.org/wiki/MINC/Reference/MINC2.0_Users_Guide )
+-MINC2_CFLAGS = -Dcimg_use_minc2 -I${HOME}/local/include
+-MINC2_LIBS = -lminc_io -lvolume_io2 -lminc2 -lnetcdf -lhdf5 -lz -L${HOME}/local/lib
++MINC2_CFLAGS = -Dcimg_use_minc2
++MINC2_LIBS = -lminc_io -lvolume_io2 -lminc2 -lnetcdf -lhdf5 -lz
+ 
+ # Flags to enable native support for downloading files from the network.
+ # ( http://curl.haxx.se/libcurl/ )
+@@ -308,7 +307,6 @@
+ 
+ cli:
+ 	$(MAKE) "CFLAGS+=$(STD_CLI_CFLAGS) $(OPT_CFLAGS)" "LIBS+=$(STD_CLI_LIBS)" gmic
+-	strip gmic$(EXE)
+ 
+ gimp:
+ 	$(MAKE) "CFLAGS+=$(STD_GIMP_CFLAGS) $(OPT_CFLAGS)" "LIBS+=$(STD_GIMP_LIBS)" gmic_gimp
+@@ -318,11 +316,9 @@
+ 
+ gmicol:
+ 	$(MAKE) "CFLAGS+=$(STD_GMICOL_CFLAGS) $(OPT_CFLAGS)" "LIBS+=$(STD_GMICOL_LIBS)" gmic
+-	strip gmic$(EXE)
+ 
+ static:
+ 	$(MAKE) "CFLAGS+=$(STATIC_CLI_CFLAGS) $(OPT_CFLAGS)" "LIBS+=$(STATIC_CLI_LIBS)" gmic
+-	strip gmic$(EXE)
+ 
+ debug:
+ 	$(MAKE) "CFLAGS+=$(STD_CLI_CFLAGS) $(DEBUG_CFLAGS)" "LIBS+=$(STD_CLI_LIBS)" gmic
+@@ -338,24 +334,22 @@
+ libgmic.o: gmic.cpp gmic.h gmic_def.h CImg.h
+ 	$(CC) -o libgmic.o -c gmic.cpp -fPIC $(CFLAGS)
+ 
+-libgmic: libgmic.o gmic_use_lib.cpp
+-	ar rcs libgmic.a libgmic.o
++libgmic: libgmic.o
++	$(AR) rcs libgmic.a libgmic.o
+ ifeq ($(OS),Darwin)
+-	$(CC) -shared -o libgmic.so libgmic.o $(LIBS)
++	$(CC) $(LDFLAGS) -shared -o libgmic.so libgmic.o $(LIBS)
+ else
+-	$(CC) -shared -Wl,-soname,libgmic.so.1 -o libgmic.so libgmic.o $(LIBS)
+-	$(CC) -o gmic_use_lib gmic_use_lib.cpp -L. -lgmic
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,libgmic.so.1 -o libgmic.so libgmic.o $(LIBS)
+ endif
+ 
+ gmic_gimp.o: gmic.cpp gmic.h gmic_def.h CImg.h
+ 	$(CC) -o gmic_gimp.o -c gmic.cpp -Dgmic_gimp $(CFLAGS)
+ 
+ gmic_gimp : gmic_gimp.o gmic_gimp.cpp
+-	$(CC) -o gmic_gimp gmic_gimp.cpp gmic_gimp.o -Dgmic_gimp `gimptool-2.0$(EXE) --cflags` $(CFLAGS) `gimptool-2.0$(EXE) --libs` $(LIBS)
+-	strip gmic_gimp$(EXE)
++	$(CC) -o gmic_gimp gmic_gimp.cpp gmic_gimp.o -Dgmic_gimp `gimptool-2.0$(EXE) --cflags` $(CFLAGS) $(LDFLAGS) `gimptool-2.0$(EXE) --libs` $(LIBS)
+ 
+ gmic: gmic.cpp gmic.h gmic_def.h CImg.h
+-	$(CC) -o gmic gmic.cpp -Dgmic_main $(CFLAGS) $(LIBS)
++	$(CC) -o gmic gmic.cpp -Dgmic_main $(CFLAGS) $(LDFLAGS) $(LIBS)
+ 
+ gmic_def.h:
+ 	@wget --quiet -O gmic_def.h http://gmic.eu/gmic_def.h
+@@ -380,38 +374,43 @@
+ # Generate bash completion script (requires 'gmic' to be installed first).
+ bashcompletion:
+ 	@mkdir -p ../resources
+-	@\gmic -v - gmic_def.gmic raw:gmic_def.gmic,uchar -document_gmic bash 2> ../resources/gmic_bashcompletion.sh
++	@./gmic -v - gmic_def.gmic raw:gmic_def.gmic,uchar -document_gmic bash 2> ../resources/gmic_bashcompletion.sh
+ 
+ # Generate man page (requires 'gmic' to be installed first).
+ man:
+ 	@mkdir -p ../man
+-	@\gmic -v - gmic_def.gmic raw:gmic_def.gmic,uchar -__help man 2> ../man/gmic.1
+-	@gzip -f ../man/gmic.1
++	@./gmic -v - gmic_def.gmic raw:gmic_def.gmic,uchar -__help man 2> ../man/gmic.1
+ 
+ # Install/uninstall/clean procedures.
+-install:
++install-gimp:
+ 	mkdir -p $(DESTDIR)$(PLUGINDIR)/
+ 	cp -f gmic_gimp $(DESTDIR)$(PLUGINDIR)/
++
++install-bin:
+ 	mkdir -p $(DESTDIR)$(USR)/$(BIN)/
+ 	cp -f gmic $(DESTDIR)$(USR)/$(BIN)/
++
++install-lib:
+ 	mkdir -p $(DESTDIR)$(USR)/$(INCLUDE)/
+ 	cp -f gmic.h $(DESTDIR)$(USR)/$(INCLUDE)/
+-
+ ifneq ($(OS),Darwin)
+ 	mkdir -p $(DESTDIR)$(USR)/share
+ 	mkdir -p $(DESTDIR)$(USR)/$(LIB)
+ 	cp -f libgmic.so $(DESTDIR)$(USR)/$(LIB)/libgmic.so.1.6.5
+ 	ln -fs libgmic.so.1.6.5 $(DESTDIR)$(USR)/$(LIB)/libgmic.so.1
+ 	ln -fs libgmic.so.1 $(DESTDIR)$(USR)/$(LIB)/libgmic.so
+-	cp -f ../zart/zart $(DESTDIR)$(USR)/$(BIN)/
+ endif
++
++install-zart:
++	cp -f ../zart/zart $(DESTDIR)$(USR)/$(BIN)/
++
++install-man:
+ 	mkdir -p $(DESTDIR)$(USR)/share/man/
+ 	mkdir -p $(DESTDIR)$(USR)/share/man/man1/
+-	mkdir -p $(DESTDIR)$(USR)/share/man/fr/man1/
+-	cp -f ../man/gmic.1.gz $(DESTDIR)$(USR)/share/man/man1/gmic.1.gz
+-	cp -f ../man/gmic.1.gz $(DESTDIR)$(USR)/share/man/fr/man1/gmic.1.gz
++	cp -f ../man/gmic.1 $(DESTDIR)$(USR)/share/man/man1/gmic.1
++
++install-bash:
+ 	if [ -d /etc/bash_completion.d/ ]; then mkdir -p $(DESTDIR)/etc/bash_completion.d/; cp -f ../resources/gmic_bashcompletion.sh $(DESTDIR)/etc/bash_completion.d/gmic; fi
+-	if [ -d /opt/local/etc/bash_completion.d/ ]; then mkdir -p $(DESTDIR)/opt/local/etc/bash_completion.d/; cp -f ../resources/gmic_bashcompletion.sh $(DESTDIR)/opt/local/etc/bash_completion.d/gmic; fi
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(USR)/$(BIN)/gmic
+@@ -421,8 +420,7 @@
+ 	rm -f $(DESTDIR)$(USR)/$(LIB)/libgmic.so.1
+ 	rm -f $(DESTDIR)$(USR)/$(LIB)/libgmic.so
+ 	rm -rf $(DESTDIR)$(USR)/share/doc/gmic/
+-	rm -f $(DESTDIR)$(USR)/share/man/man1/gmic.1.gz
+-	rm -f $(DESTDIR)$(USR)/share/man/fr/man1/gmic.1.gz
++	rm -f $(DESTDIR)$(USR)/share/man/man1/gmic.1
+ 
+ distclean: clean
+ 
