@@ -1,6 +1,6 @@
 diff -Naur apache-tomcat-6.0.44-src.orig/build.xml apache-tomcat-6.0.44-src/build.xml
 --- apache-tomcat-6.0.44-src.orig/build.xml	2015-05-08 13:22:05.000000000 +0100
-+++ apache-tomcat-6.0.44-src/build.xml	2015-08-16 14:10:03.609366396 +0100
++++ apache-tomcat-6.0.44-src/build.xml	2015-08-25 23:38:46.147332131 +0100
 @@ -159,12 +159,14 @@
        </fileset>
      </copy>
@@ -16,7 +16,7 @@ diff -Naur apache-tomcat-6.0.44-src.orig/build.xml apache-tomcat-6.0.44-src/buil
  
    </target>
  
-@@ -307,14 +309,18 @@
+@@ -307,19 +309,25 @@
        manifest="${tomcat.manifests}/annotations-api.jar.manifest" />
  
      <!-- Servlet 2.5 Implementation JAR File -->
@@ -35,7 +35,14 @@ diff -Naur apache-tomcat-6.0.44-src.orig/build.xml apache-tomcat-6.0.44-src/buil
  
  
      <!-- JSP 2.1 EL Implementation JAR File -->
-@@ -492,12 +498,14 @@
++<!--
+     <jarIt jarfile="${el-api.jar}" filesId="files.el-api"
+       manifest="${tomcat.manifests}/el-api.jar.manifest" />
++-->
+ 
+     <!-- Bootstrap JAR File -->
+     <jarIt jarfile="${bootstrap.jar}" filesId="files.bootstrap"
+@@ -492,12 +500,14 @@
  
    <target name="deploy" depends="build-only,build-docs,warn.dbcp">
  
@@ -50,7 +57,7 @@ diff -Naur apache-tomcat-6.0.44-src.orig/build.xml apache-tomcat-6.0.44-src/buil
  
      <!-- Copy scripts -->
      <copy todir="${tomcat.build}/bin">
-@@ -649,9 +657,11 @@
+@@ -649,9 +659,11 @@
        </fileset>
      </txt2html>
  

@@ -24,7 +24,7 @@ SAPI_SLOT="2.5"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/oracle-javamail:0
-	dev-java/tomcat-servlet-api:${SAPI_SLOT}"
+	>=dev-java/tomcat-servlet-api-6.0.44-r1:${SAPI_SLOT}"
 RDEPEND="${COMMON_DEP}
 	>=virtual/jre-1.6
 	!<dev-java/tomcat-native-1.1.20"
@@ -44,9 +44,11 @@ java_prepare() {
 	find -name '*.jar' -type f -delete -print || die
 
 	# Remove bundled javamail, servlet-api
-	rm -rv java/javax/{mail,servlet} || die
+	rm -rv java/javax/{el,mail,servlet} || die
 
-	epatch "${FILESDIR}/${P}-build.xml.patch"
+	epatch \
+		"${FILESDIR}/${P}-build.xml.patch" \
+		"${FILESDIR}/tomcat-6-sysprop.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
