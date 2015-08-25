@@ -5018,7 +5018,7 @@ dev-ml/labltk 8.06.0: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.8 1.9: A cross-platform library for manipulating the terminal
 dev-ml/lwt 2.4.3 2.4.6 2.5.0: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.2: DSL for SQL Queries in Caml
-dev-ml/menhir 20130116 20140422 20141215: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20141215: LR(1) parser generator for the OCaml language
 dev-ml/oasis 0.3.0 0.4.1 0.4.4 0.4.5: OASIS is a tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
@@ -17013,7 +17013,7 @@ www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for 
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 9999: Pretty small HTTP server - a command-line tool to share files
-www-servers/resin 4.0.44: A fast Servlet and JSP engine
+www-servers/resin 4.0.44 4.0.44-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
 www-servers/skunkweb 3.4.4: robust Python web application server
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
