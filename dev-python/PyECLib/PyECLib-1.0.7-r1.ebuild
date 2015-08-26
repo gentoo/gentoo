@@ -26,5 +26,8 @@ PATCHES=(
 
 python_install() {
 	distutils-r1_python_install
-	sed -i "s/^libdir.*$/libdir='\/usr\/lib'/g" "${D}"/usr/lib/libgf_complete.la || die
+	# sed -i "s/^libdir.*$/libdir='\/usr\/lib'/g" "${D}"/usr/lib/libgf_complete.la || die
+	# sed -i "s/^dependency_libs.*$/dependency_libs=''/g" "${D}"/usr/lib/libgf_complete.la "${D}"/usr/lib/libJerasure.la || die
+	# package installs broken la files...
+	rm "${D}"/usr/lib/*.la || die
 }

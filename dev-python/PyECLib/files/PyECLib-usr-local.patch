@@ -32,8 +32,8 @@
 -            libdirs = [ (topdir + "/" + locallibsrcdir + "/.libs "),
 -                        (topdir + "/" + locallibsrcdir + "/src/.libs ")] 
 +            libdirs = []
-+            #libdirs = [ (topdir + "/" + locallibsrcdir + "/.libs "),
-+            #            (topdir + "/" + locallibsrcdir + "/src/.libs ")] 
++            libdirs = [ (topdir + "/" + locallibsrcdir + "/.libs "),
++                        (topdir + "/" + locallibsrcdir + "/src/.libs ")] 
              for d in libdirs:
                  libflags = libflags + " -L" + d
                  default_library_paths.append(d)
