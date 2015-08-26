@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/expat/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ~ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 IUSE="elibc_FreeBSD examples static-libs unicode"
 RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r6
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
