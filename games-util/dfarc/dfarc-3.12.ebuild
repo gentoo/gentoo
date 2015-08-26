@@ -18,7 +18,7 @@ IUSE="nls"
 RDEPEND="
 	app-arch/bzip2
 	x11-misc/xdg-utils
-	x11-libs/wxGTK:${WX_GTK_VER}"
+	x11-libs/wxGTK:${WX_GTK_VER}[X]"
 DEPEND="${RDEPEND}
 	nls? ( >=dev-util/intltool-0.31 )"
 
