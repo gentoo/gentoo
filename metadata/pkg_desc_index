@@ -6843,7 +6843,7 @@ dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6: Language defining a data descripti
 dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0: A library to multiply test cases
-dev-python/decorator 3.4.0-r1 3.4.2 4.0.2: Simplifies the usage of decorators for the average programmer
+dev-python/decorator 3.4.2 4.0.2: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.8 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1: XML bomb protection for Python stdlib modules, an xml serialiser
@@ -7445,7 +7445,7 @@ dev-python/pyminuit 1.2.1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.2-r1 0.7.13.3: Python machine learning package
 dev-python/pymongo 2.6.3 2.7.2 2.8.1 3.0.3: Python driver for MongoDB
 dev-python/pymountboot 0.2.1 0.2.2 9999: Python extension module to (re)mount /boot
-dev-python/pympler 0.3.1 0.4.1 0.4.2: Memory profiling for Python applications
+dev-python/pympler 0.4.1 0.4.2: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.6.3 0.6.6: Pure-Python MySQL Driver
