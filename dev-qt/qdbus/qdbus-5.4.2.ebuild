@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="Interface to Qt applications communicating over D-Bus"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm hppa ~ppc64 ~x86"
+	KEYWORDS="amd64 arm hppa ~ppc64 ~x86"
 fi
 
 IUSE=""
