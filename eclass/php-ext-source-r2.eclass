@@ -191,8 +191,9 @@ php-ext-source-r2_src_install() {
 	for slot in $(php_get_slots); do
 		php_init_slot_env ${slot}
 
-		# Let's put the default module away
-		insinto "${EXT_DIR}"
+		# Let's put the default module away. Strip $EPREFIX from
+		# $EXT_DIR before calling newins (which handles EPREFIX itself).
+		insinto "${EXT_DIR#$EPREFIX}"
 		newins "modules/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so" || die "Unable to install extension"
 
 		local doc
@@ -217,12 +218,12 @@ php_get_slots() {
 php_init_slot_env() {
 	libdir=$(get_libdir)
 
-	PHPIZE="/usr/${libdir}/${1}/bin/phpize"
-	PHPCONFIG="/usr/${libdir}/${1}/bin/php-config"
-	PHPCLI="/usr/${libdir}/${1}/bin/php"
-	PHPCGI="/usr/${libdir}/${1}/bin/php-cgi"
+	PHPIZE="${EPREFIX}/usr/${libdir}/${1}/bin/phpize"
+	PHPCONFIG="${EPREFIX}/usr/${libdir}/${1}/bin/php-config"
+	PHPCLI="${EPREFIX}/usr/${libdir}/${1}/bin/php"
+	PHPCGI="${EPREFIX}/usr/${libdir}/${1}/bin/php-cgi"
 	PHP_PKG="$(best_version =dev-lang/php-${1:3}*)"
-	PHPPREFIX="/usr/${libdir}/${slot}"
+	PHPPREFIX="${EPREFIX}}/usr/${libdir}/${slot}"
 	EXT_DIR="$(${PHPCONFIG} --extension-dir 2>/dev/null)"
 	PHP_CURRENTSLOT=${1:3}
 
@@ -239,7 +240,7 @@ php-ext-source-r2_buildinilist() {
 	PHPINIFILELIST=""
 	local x
 	for x in ${PHPSAPILIST} ; do
-		if [[ -f "/etc/php/${x}-${1}/php.ini" ]] ; then
+		if [[ -f "${EPREFIX}/etc/php/${x}-${1}/php.ini" ]] ; then
 			PHPINIFILELIST="${PHPINIFILELIST} etc/php/${x}-${1}/ext/${PHP_EXT_NAME}.ini"
 		fi
 	done
@@ -281,7 +282,7 @@ php-ext-source-r2_createinifiles() {
 		done
 
 		# Add support for installing PHP files into a version dependant directory
-		PHP_EXT_SHARED_DIR="/usr/share/php/${PHP_EXT_NAME}"
+		PHP_EXT_SHARED_DIR="${EPREFIX}/usr/share/php/${PHP_EXT_NAME}"
 	done
 }
 
