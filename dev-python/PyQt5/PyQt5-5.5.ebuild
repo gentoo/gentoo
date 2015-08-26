@@ -17,7 +17,7 @@ if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
 else
 	MY_P=${MY_PN}-${PV}
-	SRC_URI="http://www.riverbankcomputing.com/static/Downloads/${PN}/${MY_P}.tar.gz"
+	SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
 fi
 
 LICENSE="GPL-3"
