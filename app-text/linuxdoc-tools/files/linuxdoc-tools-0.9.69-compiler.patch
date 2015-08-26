@@ -1,0 +1,52 @@
+Strip hardcoded CC, CFLAGS, LDFLAGS as linuxdoc-tools build system ignores
+systemd-wide values of these variables.
+
+diff --git a/Makefile.in b/Makefile.in
+index 359f14e..4af3ee3 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -42,14 +42,6 @@ tex_ddir           = $(DESTDIR)$(texdir)
+ 
+ progs    := sgml2html sgml2info sgml2latex sgml2lyx sgml2rtf sgml2txt sgmlcheck
+ 
+-PROFILE  =
+-INCLUDE  =
+-OPTIMIZE = -O
+-DEBUG    =
+-WARN     =
+-CFLAGS   = $(DEBUG) $(INCLUDE) $(WARN) $(PROFILE) $(OPTIMIZE)
+-LDFLAGS  = $(DEBUG) $(PROFILE)
+-
+ all:
+ ifeq ($(BUILD_SGMLSASP), true)
+ 	@echo "Compiling the SGML translator tools (in sgmls-1.1/)..."
+diff --git a/rtf-fix/Makefile b/rtf-fix/Makefile
+index 7b02427..c0628bf 100644
+--- a/rtf-fix/Makefile
++++ b/rtf-fix/Makefile
+@@ -1,6 +1,4 @@
+-CC=gcc
+ LEX=flex
+-CFLAGS=-O
+ 
+ all: rtf2rtf
+ 
+diff --git a/sgmls-1.1/Makefile b/sgmls-1.1/Makefile
+index 7a1cffa..6dc53ad 100644
+--- a/sgmls-1.1/Makefile
++++ b/sgmls-1.1/Makefile
+@@ -15,14 +15,7 @@ MANDIR=$(PREFIX)/man/man$(MANEXT)
+ # Permissions mode to use for man pages.
+ MANMODE=444
+ 
+-CC=gcc
+-PROFILE=
+ INCLUDE=
+-OPTIMIZE=-O
+-DEBUG=
+-WARN=
+-CFLAGS=$(DEBUG) $(INCLUDE) $(WARN) $(PROFILE) $(OPTIMIZE)
+-LDFLAGS=$(DEBUG) $(PROFILE)
+ # Additional libraries needed.
+ # Ultrix needs -li
+ LIBS=

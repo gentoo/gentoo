@@ -30,16 +30,17 @@ DEPEND="
 		dev-python/nosexcover[${PYTHON_USEDEP}]
 		dev-python/openstack-nose-plugin[${PYTHON_USEDEP}]
 		dev-python/nosehtmloutput[${PYTHON_USEDEP}]
+		dev-python/oslo-sphinx[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		<dev-python/sphinx-1.2[${PYTHON_USEDEP}]
-		dev-python/oslo-sphinx[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0[${PYTHON_USEDEP}]
 		dev-python/python-swiftclient[${PYTHON_USEDEP}]
 	)"
 
 RDEPEND="
 	>=dev-python/dnspython-1.9.4[${PYTHON_USEDEP}]
-	>=dev-python/eventlet-0.9.15[${PYTHON_USEDEP}]
+	>=dev-python/eventlet-0.16.1[${PYTHON_USEDEP}]
+	!~dev-python/eventlet-0.17.0[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.5[${PYTHON_USEDEP}]
 	!~dev-python/netifaces-0.10.0[${PYTHON_USEDEP}]
@@ -47,6 +48,7 @@ RDEPEND="
 	>=dev-python/pastedeploy-1.3.3[${PYTHON_USEDEP}]
 	>=dev-python/simplejson-2.0.9[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]
+	>=dev-python/PyECLib-1.0.7[${PYTHON_USEDEP}]
 	memcached? ( net-misc/memcached )
 	net-misc/rsync[xattr]"
 
@@ -55,7 +57,7 @@ CONFIG_CHECK="~EXT3_FS_XATTR ~SQUASHFS_XATTR ~CIFS_XATTR ~JFFS2_FS_XATTR
 ~ZFS"
 
 PATCHES=(
-"${FILESDIR}/cve-2015-1856-master-kilo.patch"
+	"${FILESDIR}/cve-2015-5223-stable-kilo.patch"
 )
 
 pkg_setup() {

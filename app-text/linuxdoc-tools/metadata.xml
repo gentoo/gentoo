@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-  <longdescription>
-    Linuxdoc-Tools is a small bug-fix version of SGML-Tools 1.0.9, and
-    is a toolset for processing LinuxDoc DTD SGML files.  This system
-    is tailored for LinuxDoc DTD sgml files, and other DTDs are not
-    supported.  If you need the tool for DocBook DTD (which is now a
-    more popular DTD than LinuxDoc in writing technical software
-    documentation), then you should check other packages such as
-    SGMLTools-Lite and OpenJade.
-  </longdescription>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>itumaykin@gmail.com</email>
+		<name>Coacher</name>
+	</maintainer>
+	<longdescription>
+	Linuxdoc-Tools is a small bug-fix version of SGML-Tools 1.0.9, and
+	is a toolset for processing LinuxDoc DTD SGML files.  This system
+	is tailored for LinuxDoc DTD sgml files, and other DTDs are not
+	supported.  If you need the tool for DocBook DTD (which is now a
+	more popular DTD than LinuxDoc in writing technical software
+	documentation), then you should check other packages such as
+	SGMLTools-Lite and OpenJade.
+	</longdescription>
 </pkgmetadata>
