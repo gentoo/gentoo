@@ -10556,7 +10556,7 @@ kde-apps/nepomuk 4.14.3: Nepomuk KDE4 client
 kde-apps/nsplugins 4.14.3: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3: KDE hexeditor
 kde-apps/okular 4.14.3: Okular is a universal document viewer based on KPDF for KDE 4
-kde-apps/oxygen-icons 4.14.3: Oxygen SVG icon theme
+kde-apps/oxygen-icons 4.14.3 15.04.3: Oxygen SVG icon theme
 kde-apps/pairs 4.14.3: KDE memory and pairs game
 kde-apps/palapeli 4.14.3: KDE jigsaw puzzle game
 kde-apps/parley 4.14.3: KDE Educational: vocabulary trainer
