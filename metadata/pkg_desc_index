@@ -14583,7 +14583,7 @@ sci-biology/embassy-signature 0.1.0-r3 0.1.650: EMBOSS integrated version of Pro
 sci-biology/embassy-structure 0.1.0-r3 0.1.650: EMBOSS integrated version of Protein structure add-on package
 sci-biology/embassy-topo 1.0.0-r5 2.0.650: EMBOSS integrated version of Transmembrane protein display
 sci-biology/embassy-vienna 1.7.2 1.7.2.650: EMBOSS integrated version of Vienna RNA package - RNA folding
-sci-biology/emboss 6.0.1 6.3.1_p4-r1 6.6.0: The European Molecular Biology Open Software Suite - A sequence analysis package
+sci-biology/emboss 6.3.1_p4-r1 6.6.0: The European Molecular Biology Open Software Suite - A sequence analysis package
 sci-biology/eugene 4.1: Eukaryotic gene predictor
 sci-biology/exonerate 2.2.0-r1: Generic tool for pairwise sequence comparison
 sci-biology/express 0.9.5 0.9.5-r1 1.5.1: Streaming RNA-Seq Analysis

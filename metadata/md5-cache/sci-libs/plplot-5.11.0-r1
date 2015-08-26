@@ -4,11 +4,11 @@ DESCRIPTION=Multi-language scientific plotting library
 EAPI=5
 HOMEPAGE=http://plplot.sourceforge.net/
 IUSE=ada cairo cxx doc +dynamic examples fortran gd java jpeg latex lua ocaml octave pdf pdl png python qhull qt4 shapefile svg tcl test threads tk truetype wxwidgets X python_targets_python2_7 test elibc_FreeBSD java
-KEYWORDS=amd64 ppc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2
 RDEPEND=ada? ( virtual/gnat:* ) cairo? ( x11-libs/cairo:0=[svg?,X?] ) gd? ( media-libs/gd:2=[jpeg?,png?] ) java? ( >=virtual/jre-1.5:* ) latex? ( app-text/ghostscript-gpl virtual/latex-base ) lua? ( dev-lang/lua:0= ) ocaml? ( dev-lang/ocaml dev-ml/camlidl cairo? ( dev-ml/cairo-ocaml[gtk] ) ) octave? ( sci-mathematics/octave:0= ) pdf? ( media-libs/libharu:0= ) pdl? ( dev-perl/PDL dev-perl/XML-DOM ) python? ( dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] qt4? ( dev-python/PyQt4[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) ) qhull? ( media-libs/qhull:0= ) qt4? ( dev-qt/qtgui:4= dev-qt/qtsvg:4= ) shapefile? ( sci-libs/shapelib:0= ) tcl? ( dev-lang/tcl:0= dev-tcltk/itcl:0= tk? ( dev-lang/tk:0= dev-tcltk/itk ) ) truetype? ( media-fonts/freefont media-libs/lasi:0= gd? ( media-libs/gd:2=[truetype] ) ) wxwidgets? ( x11-libs/wxGTK:2.8=[X] x11-libs/agg:0=[truetype?] ) X? ( x11-libs/libX11:0= x11-libs/libXau:0= x11-libs/libXdmcp:0= ) fortran? ( virtual/fortran ) java? ( >=dev-java/java-config-2.2.0 )
 REQUIRED_USE=python? ( python_targets_python2_7 ) qt4? ( dynamic ) test? ( latex ) tk? ( tcl )
 SLOT=0/12
 SRC_URI=mirror://sourceforge/plplot/plplot-5.11.0.tar.gz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
-_md5_=7a8d3ad44507c2ead9870c848a39ffd9
+_md5_=2891dd3c56baa9a6928f4980c0f706ea
