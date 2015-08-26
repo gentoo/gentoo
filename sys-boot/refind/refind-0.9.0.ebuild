@@ -13,26 +13,28 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
 
-DOCS="BUILDING.txt NEWS.txt README.txt refind.conf-sample {refind,Styles}"
+DOCS="NEWS.txt README.txt refind.conf-sample docs/refind docs/Styles"
 
 DEPEND=">=sys-boot/gnu-efi-3.0u"
 RDEPEND=""
 
 src_compile() {
-	emake gnuefi || die "Failed to build refind EFI binary"
+	emake gnuefi
 
-	cd "${S}/filesystems"
-	for fs in ext2 ext4 reiserfs iso9660 hfs btrfs ; do
-		if use "${fs}" ; then
+	pushd "${S}/filesystems" > /dev/null
+	for fs in ${IUSE}; do
+		fs=${fs#+}
+		if use "${fs}"; then
 			einfo "Building ${fs} filesystem driver"
 			rm -f fsw_efi.o
 
 			# ARCH detection in the Makefile not working
 			use x86 && buildarch=ia32
 			use amd64 && buildarch=x86_64
-			emake DRIVERNAME=${fs} ARCH=${buildarch} -f Make.gnuefi || die "Failed building ${fs} filesystem EFI binary"
+			emake DRIVERNAME=${fs} ARCH=${buildarch} -f Make.gnuefi
 		fi
 	done
+	popd > /dev/null
 }
 
 src_install() {
@@ -48,14 +50,15 @@ src_install() {
 	use x86 && filearch=ia32
 	use amd64 && filearch=x64
 	insinto "/usr/share/${P}/refind/drivers_${filearch}"
-	for fs in ext2 ext4 reiserfs iso9660 hfs btrfs ; do
-		if use "${fs}" ; then doins "drivers_${filearch}/${fs}_${filearch}.efi" ; fi
+	for fs in ${IUSE}; do
+		fs=${fs#+}
+		if use "${fs}"; then
+			doins "drivers_${filearch}/${fs}_${filearch}.efi"
+		fi
 	done
 
-	for dir in images icons fonts banners ; do
-		insinto "/usr/share/${P}/refind/${dir}"
-		doins -r "${dir}"
-	done
+	insinto "/usr/share/${P}/refind"
+	doins -r images icons fonts banners
 
 	insinto "/usr/share/${P}/keys"
 	doins keys/*
@@ -65,10 +68,10 @@ pkg_postinst() {
 	einfo ""
 	einfo "EFI executables have been built and installed into /usr/share/${P}"
 	einfo "You will need to use the provided install script 'install.sh' or"
-	einfo "manually install the binaries into your EFI System Partition."
+	einfo "manually install the binaries into your EFI System Partition"
 	einfo ""
 	einfo "For key generation and binary signing for use with SecureBoot, the"
-	einfo "package app-crypt/sbsigntool can be installed."
+	einfo "package app-crypt/sbsigntool can be installed"
 	einfo ""
 	einfo "A sample configration can be found at"
 	einfo "/usr/share/doc/${P}/refind.conf-sample.bz2"
