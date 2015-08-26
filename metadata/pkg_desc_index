@@ -6675,7 +6675,7 @@ dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support 
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.8.0 1.9.0: A software library for rapid development of hardware-accelerated multitouch applications
 dev-python/Numdifftools 0.6.0 0.7.7: Solves automatic numerical differentiation problems in one or more variables
-dev-python/PyECLib 1.0.7: Messaging API for RPC and notifications over a number of different messaging transports
+dev-python/PyECLib 1.0.7 1.0.7-r1: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.0 1.25.1 1.25.2: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
@@ -10455,7 +10455,7 @@ kde-apps/kfmclient 4.14.3: KDE tool for opening URLs from the command line
 kde-apps/kfourinline 4.14.3: KDE four-in-a-row game
 kde-apps/kgamma 4.14.3: KDE screen gamma values kcontrol module
 kde-apps/kgeography 4.14.3: KDE: a geography learning tool
-kde-apps/kget 4.14.3: An advanced download manager for KDE
+kde-apps/kget 4.14.3 15.08.0: An advanced download manager for KDE
 kde-apps/kglobalaccel 4.14.3: KDE's Global Shortcut Daemon
 kde-apps/kgoldrunner 4.14.3: KDE: KGoldrunner is a game of action and puzzle solving
 kde-apps/kgpg 4.14.3 4.14.3-r1: KDE gpg keyring manager
