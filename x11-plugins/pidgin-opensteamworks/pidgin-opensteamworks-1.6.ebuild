@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Steam protocol plugin for pidgin"
-HOMEPAGE="https://code.google.com/p/pidgin-opensteamworks/"
+HOMEPAGE="https://github.com/eionrobb/pidgin-opensteamworks/"
 SRC_URI="https://github.com/EionRobb/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://pidgin-opensteamworks.googlecode.com/files/icons.zip
 	-> ${PN}-icons.zip"
@@ -51,5 +51,5 @@ src_install() {
 	popd || die
 	insinto /usr/share/pixmaps/pidgin/protocols
 	doins -r "${WORKDIR}"/{16,48}
-	dodoc README.md
+	dodoc ${P}/README.md
 }
