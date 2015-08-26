@@ -7273,7 +7273,7 @@ dev-python/passwordmeter 0.1.7-r1: A password strength measuring library
 dev-python/paste 1.7.5.1-r1 1.7.5.1-r2 2.0.2: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 1.5.2: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2: A pluggable command-line frontend, including commands to setup package file layouts
-dev-python/path-py 7.3 7.4 7.6.1 7.7: A module wrapper for os.path
+dev-python/path-py 7.3 7.4 7.6.1 7.7 7.7.1: A module wrapper for os.path
 dev-python/pathlib 1.0.1: Object-oriented filesystem paths
 dev-python/pathtools 0.1.2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.4.0: Python module to describe statistical models and design matrices
