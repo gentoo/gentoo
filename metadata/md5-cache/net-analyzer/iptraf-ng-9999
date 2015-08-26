@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=>=sys-libs/ncurses-5.7-r7:5= virtual/os-headers !net-analyzer/iptraf >=dev-vcs/git-1.8.2.1
+DEPEND=>=sys-libs/ncurses-5.7-r7:0= virtual/os-headers !net-analyzer/iptraf >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A console-based network monitoring utility
 EAPI=5
 HOMEPAGE=http://fedorahosted.org/iptraf-ng/
 IUSE=doc
 LICENSE=GPL-2 doc? ( FDL-1.1 )
-RDEPEND=>=sys-libs/ncurses-5.7-r7:5=
+RDEPEND=>=sys-libs/ncurses-5.7-r7:0=
 RESTRICT=test
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=41c2b1ed31fd6ad3b80a337271935745
+_md5_=5b471b9321434345636bbcc5c53b84f6

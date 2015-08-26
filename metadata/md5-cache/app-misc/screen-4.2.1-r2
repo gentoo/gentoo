@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=>=sys-libs/ncurses-5.2:5= pam? ( virtual/pam ) sys-apps/texinfo !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-libs/ncurses-5.2:0= pam? ( virtual/pam ) sys-apps/texinfo !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Full-screen window manager that multiplexes physical terminals between several processes
 EAPI=5
 HOMEPAGE=https://www.gnu.org/software/screen/
 IUSE=debug nethack pam selinux multiuser
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/ncurses-5.2:5= pam? ( virtual/pam ) selinux? ( sec-policy/selinux-screen )
+RDEPEND=>=sys-libs/ncurses-5.2:0= pam? ( virtual/pam ) selinux? ( sec-policy/selinux-screen )
 SLOT=0
 SRC_URI=mirror://gnu/screen/screen-4.2.1.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=09f641e352daf7537963ecfa20574be2
+_md5_=3c6d8671760a7052ad401f87c47c4a21

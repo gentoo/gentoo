@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:5 sys-libs/zlib sys-devel/flex sys-devel/bison =net-libs/nacl-0_p20110221* virtual/pkgconfig
+DEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:0 sys-libs/zlib sys-devel/flex sys-devel/bison =net-libs/nacl-0_p20110221* virtual/pkgconfig
 DESCRIPTION=high performance network sniffer for packet inspection
 EAPI=5
 HOMEPAGE=http://netsniff-ng.org/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:5 sys-libs/zlib
+RDEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:0 sys-libs/zlib
 SLOT=0
 SRC_URI=http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.5.9-rc3.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8107da34a3bc82d7f61458570cede187
+_md5_=b3fcc38348786b52afeade0c5c1845a8

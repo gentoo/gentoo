@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure postinst
-DEPEND=sys-libs/ncurses:5= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 ) sys-devel/autoconf virtual/pkgconfig filecaps? ( sys-libs/libcap )
+DEPEND=sys-libs/ncurses:0= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 ) sys-devel/autoconf virtual/pkgconfig filecaps? ( sys-libs/libcap )
 DESCRIPTION=My TraceRoute, an Excellent network diagnostic tool
 EAPI=5
 HOMEPAGE=http://www.bitwizard.nl/mtr/
 IUSE=gtk ipv6 +filecaps
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
-RDEPEND=sys-libs/ncurses:5= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+RDEPEND=sys-libs/ncurses:0= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=ftp://ftp.bitwizard.nl/mtr/mtr-0.86.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fcaps	3a17f16a21cfbb14acca5c05e5c130eb	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=0ae774ac429c8a8fc2fb5f247afc7bc4
+_md5_=e26eb92f0cfc17edf5e13b8c15d6ff68

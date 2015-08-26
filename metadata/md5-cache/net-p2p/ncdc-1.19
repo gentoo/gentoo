@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure
-DEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls sys-libs/ncurses:5[unicode] sys-libs/zlib geoip? ( dev-libs/geoip ) dev-util/makeheaders virtual/pkgconfig
+DEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls sys-libs/ncurses:0[unicode] sys-libs/zlib geoip? ( dev-libs/geoip ) dev-util/makeheaders virtual/pkgconfig
 DESCRIPTION=ncurses directconnect client
 EAPI=5
 HOMEPAGE=http://dev.yorhel.nl/ncdc
 IUSE=geoip
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=MIT
-RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls sys-libs/ncurses:5[unicode] sys-libs/zlib geoip? ( dev-libs/geoip )
+RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls sys-libs/ncurses:0[unicode] sys-libs/zlib geoip? ( dev-libs/geoip )
 SLOT=0
 SRC_URI=http://dev.yorhel.nl/download/ncdc-1.19.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=77a737f58df0379489ba336b5e7088b6
+_md5_=8b9ee893277ca9a4161e5f5cddab4011

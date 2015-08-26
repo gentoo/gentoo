@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:5 sys-libs/zlib sys-devel/flex sys-devel/bison =net-libs/nacl-0_p20110221* virtual/pkgconfig dev-vcs/git
+DEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:0 sys-libs/zlib sys-devel/flex sys-devel/bison =net-libs/nacl-0_p20110221* virtual/pkgconfig dev-vcs/git
 DESCRIPTION=high performance network sniffer for packet inspection
 EAPI=5
 HOMEPAGE=http://netsniff-ng.org/
 LICENSE=GPL-2
-RDEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:5 sys-libs/zlib
+RDEPEND=dev-libs/geoip dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:0 sys-libs/zlib
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=312c8ef5ff4319cd8424af52169e884f
+_md5_=ad233ba2d59db7cfe32cf1f8affcdc46
