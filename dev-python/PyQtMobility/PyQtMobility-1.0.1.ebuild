@@ -14,8 +14,8 @@ inherit python
 MY_P=${PN}-gpl-${PV}
 
 DESCRIPTION="Python bindings for Nokia's QtMobility libraries"
-HOMEPAGE="http://www.riverbankcomputing.co.uk/software/pyqtmobility/intro"
-SRC_URI="http://www.riverbankcomputing.co.uk/static/Downloads/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="http://sourceforge.net/projects/pyqt/files/PyQtMobility/"
+SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="|| ( GPL-2 GPL-3 )"

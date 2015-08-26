@@ -19,7 +19,7 @@ HOMEPAGE="http://net-tools.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls selinux static"
+IUSE="ipv6 nls selinux static"
 
 RDEPEND="!<sys-apps/openrc-0.9.9.3
 	selinux? ( sys-libs/libselinux )"
@@ -56,6 +56,7 @@ set_opt() {
 
 src_configure() {
 	set_opt I18N use nls
+	set_opt HAVE_AFINET6 use ipv6
 	set_opt HAVE_HWIB has_version '>=sys-kernel/linux-headers-2.6'
 	set_opt HAVE_HWTR has_version '<sys-kernel/linux-headers-3.5'
 	set_opt HAVE_HWSTRIP has_version '<sys-kernel/linux-headers-3.6'
