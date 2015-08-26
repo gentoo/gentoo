@@ -13829,7 +13829,7 @@ net-misc/directvnc 0.7.6-r1 0.7.8: Very thin VNC client for unix framebuffer sys
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/dropbear 2014.66 2015.67 2015.68: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 2.4.10 2.6.33 2.8.4 2.10.2 2.10.41 2.10.41-r1 3.6.8: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 2.10.2 3.6.8: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.1.1 2.3.3: User friendly Bitcoin client
