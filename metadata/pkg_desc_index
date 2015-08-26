@@ -3988,7 +3988,7 @@ dev-java/jdbc-postgresql 8.3_p603 8.4_p701-r1 9.2_p1003 9.2_p1004 9.3_p1100 9.4_
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: JDepend traverses Java class file directories and generates design quality metrics per package
-dev-java/jdom 1.0_beta9-r2 1.0_beta9-r4 1.0_beta10-r4 1.0_beta10-r6 1.0-r2 1.0-r4 1.1.3 2.0.6 2.0.6-r1: Java API to manipulate XML data
+dev-java/jdom 1.0_beta9-r2 1.0_beta9-r4 1.0_beta10-r4 1.0_beta10-r6 1.0-r2 1.0-r4 1.1.3 2.0.6 2.0.6-r1 2.0.6-r2: Java API to manipulate XML data
 dev-java/jdom-jaxen 1.0_beta9-r2 1.0_beta10-r1 1.0-r1: Jaxen binding for jdom
 dev-java/jdynamite 1.2: Dynamic Template in Java
 dev-java/jebl 2013.02.18 9999: Java Evolutionary Biology Library
