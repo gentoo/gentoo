@@ -10,6 +10,9 @@
     <email>luke-jr+gentoobugs@utopios.org</email>
     <name>Luke Dashjr</name>
   </maintainer>
+  <use>
+    <flag name="fox">Build a x11-libs/fox GUI</flag>
+  </use>
   <upstream>
     <remote-id type="github">signal11/hidapi</remote-id>
   </upstream>
