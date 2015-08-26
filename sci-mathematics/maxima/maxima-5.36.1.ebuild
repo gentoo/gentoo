@@ -144,12 +144,12 @@ src_configure() {
 		done
 	fi
 
-	econf ${CONFS} $(use_with tk wish) --with-lispdir="${SITELISP}"/${PN}
+	econf ${CONFS} $(use_with tk wish) --with-lispdir="${EPREFIX}/${SITELISP}"/${PN}
 }
 
 src_install() {
 	docompress -x /usr/share/info
-	emake DESTDIR="${D}" emacsdir="${SITELISP}/${PN}" install
+	emake DESTDIR="${D}" emacsdir="${EPREFIX}/${SITELISP}/${PN}" install
 
 	use tk && make_desktop_entry xmaxima xmaxima \
 		/usr/share/${PN}/${PV}/xmaxima/maxima-new.png \
