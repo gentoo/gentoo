@@ -26,9 +26,9 @@ DEPEND="${DEPEND} test? ( www-client/firefox )"
 ruby_add_bdepend "test? ( dev-ruby/rspec:2 dev-ruby/launchy >=dev-ruby/selenium-webdriver-2.0 )"
 
 ruby_add_rdepend "
-	>=dev-ruby/mime-types-1.16
+	>=dev-ruby/mime-types-1.16:*
 	>=dev-ruby/nokogiri-1.3.3
-	>=dev-ruby/rack-1.0.0
+	>=dev-ruby/rack-1.0.0:*
 	>=dev-ruby/rack-test-0.5.4
 	>=dev-ruby/xpath-2.0.0:2"
 
