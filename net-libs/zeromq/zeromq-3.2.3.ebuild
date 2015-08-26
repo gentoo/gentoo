@@ -19,7 +19,7 @@ DEPEND="
 	|| ( sys-devel/gcc sys-devel/gcc-apple )
 	pgm? (
 		virtual/pkgconfig
-		=net-libs/openpgm-5.1.118
+		~net-libs/openpgm-5.1.118
 	)
 	elibc_glibc? ( sys-apps/util-linux )"
 RDEPEND=""
