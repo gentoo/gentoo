@@ -55,7 +55,10 @@ RDEPEND="
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-"
+	|| (
+		<sys-libs/ncurses-6
+		sys-libs/ncurses:5
+	)"
 
 src_unpack() {
 	unpack ${A}
