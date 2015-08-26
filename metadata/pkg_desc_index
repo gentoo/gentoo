@@ -10500,14 +10500,14 @@ kde-apps/konsole 4.14.3: X terminal for use with KDE
 kde-apps/kopete 4.14.3 4.14.3-r1: KDE multi-protocol IM client
 kde-apps/kpasswdserver 4.14.3: KDED Password Module
 kde-apps/kpat 4.14.3: KDE patience game
-kde-apps/kppp 4.14.3: KDE: A dialer and front-end to pppd
+kde-apps/kppp 4.14.3 15.08.0: KDE: A dialer and front-end to pppd
 kde-apps/kqtquickcharts 4.14.3: Qt Quick 1 plugin for beautiful and interactive charts
 kde-apps/kquitapp 4.14.3: A CLI application quitter
 kde-apps/krdc 4.14.3 15.08.0: KDE remote desktop connection (RDP and VNC) client
 kde-apps/kreadconfig 4.14.3: KDE: A command-line tool to read KConfig entries
 kde-apps/kremotecontrol 4.14.3: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 4.14.3: KDE Board Game
-kde-apps/krfb 4.14.3: VNC-compatible server to share KDE desktops
+kde-apps/krfb 4.14.3 15.08.0: VNC-compatible server to share KDE desktops
 kde-apps/kruler 4.14.3: A screen ruler for KDE
 kde-apps/ksaneplugin 4.14.3: SANE Plugin for KDE
 kde-apps/kscd 4.14.3 15.08.0: KDE CD player
