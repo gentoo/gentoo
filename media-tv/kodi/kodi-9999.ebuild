@@ -11,7 +11,7 @@ PYTHON_REQ_USE="sqlite"
 
 inherit eutils linux-info python-single-r1 multiprocessing autotools
 
-CODENAME="Helix"
+CODENAME="Isengard"
 case ${PV} in
 9999)
 	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
@@ -21,7 +21,8 @@ case ${PV} in
 	MY_PV=${PV/_p/_r}
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="http://mirrors.kodi.tv/releases/source/${MY_PV}-${CODENAME}.tar.gz -> ${P}.tar.gz
-		http://mirrors.kodi.tv/releases/source/${MY_P}-generated-addons.tar.xz"
+		https://github.com/xbmc/xbmc/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz
+		!java? ( http://mirrors.kodi.tv/releases/source/${MY_P}-generated-addons.tar.xz )"
 	KEYWORDS="~amd64 ~x86"
 
 	S=${WORKDIR}/xbmc-${PV}-${CODENAME}
@@ -150,13 +151,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-arm-flags.patch #400617
-	epatch "${FILESDIR}"/${P}-texturepacker.patch
+	epatch "${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400617
+	epatch "${FILESDIR}"/${PN}-9999-texturepacker.patch
 
 	# some dirs ship generated autotools, some dont
 	multijob_init
-	local d
-	for d in $(printf 'f:\n\t@echo $(BOOTSTRAP_TARGETS)\ninclude bootstrap.mk\n' | emake -f - f) ; do
+	local d dirs=(
+		tools/depends/native/TexturePacker/src/configure
+		$(printf 'f:\n\t@echo $(BOOTSTRAP_TARGETS)\ninclude bootstrap.mk\n' | emake -f - f)
+	)
+	for d in "${dirs[@]}" ; do
 		[[ -e ${d} ]] && continue
 		pushd ${d/%configure/.} >/dev/null || die
 		AT_NOELIBTOOLIZE="yes" AT_TOPLEVEL_EAUTORECONF="yes" \
