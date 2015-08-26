@@ -4517,7 +4517,7 @@ dev-libs/elfutils 0.158 0.159 0.160 0.161 0.162 0.163: Libraries/utilities to ha
 dev-libs/embryo 1.7.10 9999: load and control programs compiled in embryo language (small/pawn variant)
 dev-libs/engine_pkcs11 0.1.8: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.1.0-r4 2.1.0-r5: Stream-oriented XML parser library
+dev-libs/expat 2.1.0-r5: Stream-oriented XML parser library
 dev-libs/fampp2 6.0.1 7.0.1: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
@@ -10722,7 +10722,7 @@ kde-frameworks/kservice 5.13.0: Framework providing advanced features for plugin
 kde-frameworks/ktexteditor 5.13.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.13.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.13.0: Framework for converting units
-kde-frameworks/kwallet 5.13.0 5.13.0-r1: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwallet 5.13.0-r1: Framework providing desktop-wide storage for passwords
 kde-frameworks/kwidgetsaddons 5.13.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.13.0: Framework providing access to certain properties and features of the window manager
 kde-frameworks/kxmlgui 5.13.0: Framework for managing menu and toolbar actions in an abstract way
@@ -11604,7 +11604,7 @@ media-libs/giflib 4.1.6-r2 4.1.6-r3 4.2.3 4.2.3-r1 5.0.6 5.1.0 5.1.1: Library to
 media-libs/glew 1.9.0 1.10.0-r1 1.10.0-r2 1.11.0 1.12.0 1.13.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 2.7.7 3.1.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.2.4 0.9.3.2 0.9.5.1 0.9.6.1: OpenGL Mathematics
-media-libs/glpng 1.45-r1 1.46-r1: An OpenGL PNG image library
+media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/gluon 0.71.0: Free and Open Source framework for creating and distributing games
 media-libs/glyr 1.0.5: A music related metadata searchengine, both with commandline interface and C API
