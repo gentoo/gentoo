@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-COMMON_DEPEND="sys-libs/ncurses:5="
+COMMON_DEPEND="sys-libs/ncurses:0="
 RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl"
 DEPEND="${COMMON_DEPEND}

@@ -20,7 +20,7 @@ RESTRICT="test"
 # to fix bug 85999
 RDEPEND="
 	>=sys-fs/e2fsprogs-1.27
-	>=sys-libs/ncurses-5.7-r7:5=
+	>=sys-libs/ncurses-5.7-r7:0=
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 	readline? ( >=sys-libs/readline-5.2:0= )
 	selinux? ( sys-libs/libselinux )

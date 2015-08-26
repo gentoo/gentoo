@@ -21,7 +21,7 @@ KEYWORDS=""
 IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
-	>=sys-libs/ncurses-5.2:5=
+	>=sys-libs/ncurses-5.2:0=
 	pam? ( virtual/pam )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-screen )"

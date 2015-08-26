@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ~ia64 x86"
 
 RDEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses:5=
+	sys-libs/ncurses:0=
 "
 DEPEND="
 	${RDEPEND}

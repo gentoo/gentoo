@@ -23,7 +23,7 @@ RDEPEND="dev-libs/geoip
 	net-libs/libnet:1.1
 	net-libs/libnetfilter_conntrack
 	net-libs/libpcap
-	sys-libs/ncurses:5
+	sys-libs/ncurses:0
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	sys-devel/flex

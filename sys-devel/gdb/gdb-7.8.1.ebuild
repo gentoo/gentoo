@@ -53,7 +53,7 @@ REQUIRED_USE="
 
 RDEPEND="server? ( !dev-util/gdbserver )
 	client? (
-		>=sys-libs/ncurses-5.2-r2:5=
+		>=sys-libs/ncurses-5.2-r2:0=
 		sys-libs/readline:0=
 		expat? ( dev-libs/expat )
 		lzma? ( app-arch/xz-utils )

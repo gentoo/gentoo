@@ -8,3 +8,6 @@ move media-video/kdenlive kde-apps/kdenlive
 move kde-plasma/baloo kde-frameworks/baloo
 move kde-plasma/kfilemetadata kde-frameworks/kfilemetadata
 move kde-plasma/kio-extras kde-apps/kio-extras
+slotmove =sys-libs/ncurses-5.9-r3 5 0
+slotmove =sys-libs/ncurses-5.9-r4 5 0
+slotmove ~sys-libs/ncurses-6.0 5 0

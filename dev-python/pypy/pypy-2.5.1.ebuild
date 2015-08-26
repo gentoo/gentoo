@@ -23,7 +23,7 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	dev-libs/openssl:0=[-bindist]
 	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
-	ncurses? ( sys-libs/ncurses:5/5 )
+	ncurses? ( =sys-libs/ncurses-5*:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
 		dev-lang/tk:0=

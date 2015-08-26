@@ -16,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE="unicode"
 
 DEPEND="
-	sys-libs/ncurses:5=[unicode?]
+	sys-libs/ncurses:0=[unicode?]
 	sys-libs/readline:0"
 RDEPEND="${DEPEND}
 	dev-vcs/git"

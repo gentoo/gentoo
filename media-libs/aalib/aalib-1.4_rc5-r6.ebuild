@@ -22,7 +22,7 @@ RDEPEND="
 	X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] )
 	gpm? ( >=sys-libs/gpm-1.20.7-r2[${MULTILIB_USEDEP}] )
 	slang? ( >=sys-libs/slang-2.2.4-r1[${MULTILIB_USEDEP}] )
-	>=sys-libs/ncurses-5.9-r3:5=[${MULTILIB_USEDEP}]
+	>=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

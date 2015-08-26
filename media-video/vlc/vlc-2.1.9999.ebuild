@@ -115,7 +115,7 @@ RDEPEND="
 		mpeg? ( >=media-libs/libmpeg2-0.3.2:0 )
 		mtp? ( >=media-libs/libmtp-1.0.0:0 )
 		musepack? ( >=media-sound/musepack-tools-444:0 )
-		ncurses? ( sys-libs/ncurses:5=[unicode] )
+		ncurses? ( sys-libs/ncurses:0=[unicode] )
 		ogg? ( media-libs/libogg:0 )
 		opencv? ( >media-libs/opencv-2.0:0 )
 		opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )

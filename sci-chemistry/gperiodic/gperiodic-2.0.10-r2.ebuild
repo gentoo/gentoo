@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 IUSE="nls"
 
 RDEPEND="
-	sys-libs/ncurses:5
+	sys-libs/ncurses:0
 	x11-libs/gtk+:2
 	x11-libs/cairo[X]
 	nls? ( sys-devel/gettext )"

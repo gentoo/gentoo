@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses:5="
+	sys-libs/ncurses:0="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig

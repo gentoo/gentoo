@@ -27,7 +27,7 @@ DEPEND="
 	>=net-misc/curl-7.20.0-r1[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
-	ncurses? ( sys-libs/ncurses:5= )
+	ncurses? ( sys-libs/ncurses:0= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

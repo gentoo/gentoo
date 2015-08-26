@@ -14,7 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="sys-libs/ncurses:5"
+DEPEND="sys-libs/ncurses:0"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/src"

@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 RDEPEND="
 	app-text/ghostscript-gpl
 	dev-libs/libpcre:3=
-	sys-libs/ncurses:5=
+	sys-libs/ncurses:0=
 	virtual/lapack
 	curl? ( net-misc/curl:0= )
 	fftw? ( sci-libs/fftw:3.0= )

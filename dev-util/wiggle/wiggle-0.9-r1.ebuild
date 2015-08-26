@@ -29,7 +29,7 @@ RDEPEND="
 	sys-apps/sed
 	sys-apps/coreutils
 	sys-devel/patch
-	sys-libs/ncurses:5=
+	sys-libs/ncurses:0=
 	"
 DEPEND="${RDEPEND}
 	sys-apps/groff

@@ -19,7 +19,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~a
 IUSE=""
 
 RDEPEND="
-	>=sys-libs/ncurses-5.2:5=
+	>=sys-libs/ncurses-5.2:0=
 	>=sys-libs/readline-4.1:0="
 DEPEND="${RDEPEND}"
 

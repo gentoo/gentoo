@@ -15,7 +15,7 @@ KEYWORDS="~amd64 hppa ~ia64 ~ppc ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linu
 IUSE="debug examples unicode"
 
 RDEPEND="
-	sys-libs/ncurses:5=[unicode?]
+	sys-libs/ncurses:0=[unicode?]
 "
 DEPEND="
 	${RDEPEND}

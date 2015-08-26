@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~x86"
 
-DEPEND="sys-libs/ncurses:5="
+DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
 PATCHES=(

@@ -60,7 +60,7 @@ RDEPEND="
 	dev-libs/libffi:0
 	dev-libs/openssl:0[-bindist]
 	sys-libs/glibc:2.2
-	sys-libs/ncurses:5/5
+	=sys-libs/ncurses-5*:0
 	sys-libs/zlib:0
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )

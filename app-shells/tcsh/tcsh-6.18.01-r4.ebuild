@@ -22,7 +22,7 @@ RESTRICT="test"
 
 # we need gettext because we run autoconf (AM_ICONV)
 RDEPEND="
-	>=sys-libs/ncurses-5.1:5=
+	>=sys-libs/ncurses-5.1:0=
 	virtual/libiconv"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
