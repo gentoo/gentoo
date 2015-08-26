@@ -6680,7 +6680,7 @@ dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenF
 dev-python/PyGithub 1.25.0 1.25.1 1.25.2: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.1 4.11.4: Python bindings for the Qt framework
-dev-python/PyQt5 5.4.2 5.5: Python bindings for the Qt framework
+dev-python/PyQt5 5.5: Python bindings for the Qt framework
 dev-python/PyQtMobility 1.0.1: Python bindings for Nokia's QtMobility libraries
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
@@ -16016,6 +16016,7 @@ sys-boot/quik 2.1.6: OldWorld PowerMac Bootloader
 sys-boot/raincoat 0.5 0.11: Flash the Xbox boot chip
 sys-boot/raspberrypi-firmware 0_p20130722 0_p20130815 1_pre20130801 1_pre20130807: Raspberry PI boot loader and firmware
 sys-boot/raspberrypi-mkimage 0_p20120201: Raspberry Pi kernel mangling tool mkimage/imagetool-uncompressed.py
+sys-boot/refind 0.9.0: The rEFInd UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
