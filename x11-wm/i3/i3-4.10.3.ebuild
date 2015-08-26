@@ -47,7 +47,7 @@ src_prepare() {
 		#!/bin/sh
 		exec /usr/bin/i3
 	EOF
-
+	sed -e 's/FALSE/false/' -i src/handlers.c || die #546444
 	epatch_user #471716
 }
 
