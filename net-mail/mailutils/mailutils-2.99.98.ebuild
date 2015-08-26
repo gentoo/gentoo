@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RDEPEND="!mail-client/nmh
 	!mail-filter/libsieve
 	!mail-client/mailx
 	!mail-client/nail
-	sys-libs/ncurses
+	sys-libs/ncurses:*
 	sys-libs/readline:*
 	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
 	virtual/mta
@@ -58,7 +58,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-array_bounds.patch"
 	epatch "${FILESDIR}/${P}-readline-6.3.patch" #503954
 	if use mysql; then
-		sed -i -e /^INCLUDES/s:$:$(mysql_config --include): \
+		sed -i -e /^INCLUDES/"s:$:$(mysql_config --include):" \
 			sql/Makefile.am || die
 		eautoreconf
 	fi
