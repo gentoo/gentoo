@@ -153,6 +153,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9999-nomythtv.patch
 	epatch "${FILESDIR}"/${P}-no-arm-flags.patch #400617
 	epatch "${FILESDIR}"/${PN}-14.0-dvddemux-ffmpeg.patch #526992#36
+	epatch "${FILESDIR}"/${P}-gcc-5.patch #557300
 	# The mythtv patch touches configure.ac, so force a regen
 	rm -f configure
 
