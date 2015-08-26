@@ -26,5 +26,5 @@ PATCHES=(
 
 python_install() {
 	distutils-r1_python_install
-	sed -i "s/^libdir.*$/libdir='\/usr\/lib'/g" "${D}"/usr/lib/libgf_complete.la || die
+	rm "${D}"/usr/lib/*.la || die
 }
