@@ -8,9 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Steam protocol plugin for pidgin"
 HOMEPAGE="https://github.com/eionrobb/pidgin-opensteamworks/"
-SRC_URI="https://github.com/EionRobb/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://pidgin-opensteamworks.googlecode.com/files/icons.zip
-	-> ${PN}-icons.zip"
+SRC_URI="https://github.com/EionRobb/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -37,6 +35,7 @@ pkg_setup() {
 src_prepare() {
 	# see https://code.google.com/p/pidgin-opensteamworks/issues/detail?id=31
 	cp "${FILESDIR}"/${PN}-1.3-Makefile "${S}"/${P}/steam-mobile/Makefile || die
+	unzip "${S}"/${P}/steam-mobile/releases/icons.zip || die
 }
 
 src_compile() {
