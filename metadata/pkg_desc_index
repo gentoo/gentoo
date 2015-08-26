@@ -7883,7 +7883,7 @@ dev-python/websockify 0.6.0: WebSockets support for any application/server
 dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.9.4 0.9.6 0.10 0.10.1 0.10.4: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13: Fixed size round-robin style database
@@ -8422,7 +8422,7 @@ dev-ruby/rubyzip 0.9.9-r1 0.9.9-r2 1.1.7 1.1.7-r1: A ruby library for reading an
 dev-ruby/safe_yaml 1.0.4 1.0.4-r1 1.0.4-r2: Parse YAML safely, without that pesky arbitrary object deserialization vulnerability
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.0.6-r1 2.1.0 4.0.0-r1: Sanitize is a whitelist-based HTML sanitizer
-dev-ruby/sass 3.2.19 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.16 3.4.17: An extension of CSS3, adding nested rules, variables, mixins, selector inheritance, and more
+dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.17 3.4.18: An extension of CSS3, adding nested rules, variables, mixins, selector inheritance, and more
 dev-ruby/sass-rails 3.2.6 4.0.5 5.0.1 5.0.2 5.0.3: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sdoc 0.3.20 0.4.1: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.2.0 2.3.3 2.3.4 2.3.5: Advanced seed data handling for Rails, combining the best practices of several methods together
