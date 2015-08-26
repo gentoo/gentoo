@@ -104,7 +104,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/gkrellm 2.3.5-r3: Single process stack of various system monitors
-app-admin/glance 2015.1.0-r1 2015.1.1-r1 2015.1.9999: Provides services for discovering, registering, and retrieving virtual machine images
+app-admin/glance 2015.1.1-r1 2015.1.9999: Provides services for discovering, registering, and retrieving virtual machine images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -206,7 +206,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4: syslog replacement with advanced filterin
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.0.5-r1 11.1.5-r1: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.0.5-r1 11.0.6 11.1.5-r1 11.1.6: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -7255,7 +7255,7 @@ dev-python/oslo-rootwrap 1.2.0 1.3.0 1.6.0: The Oslo Rootwrap allows fine filter
 dev-python/oslo-serialization 1.0.0 1.0.0-r1 1.3.0 1.3.0-r1 1.4.0 1.5.0: oslo.serialization library
 dev-python/oslo-sphinx 2.2.0-r1 2.5.0 3.0.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-utils 1.0.0 1.1.0 1.2.1 1.3.0 1.4.0 1.5.0: Oslo Utility library
-dev-python/oslo-vmware 0.7.0 0.11.1 0.11.2: Oslo VMware library for OpenStack projects
+dev-python/oslo-vmware 0.7.0 0.11.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0: Oslo test framework
 dev-python/osprofiler 0.3.0: OpenStack Profiler Library
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
@@ -7530,7 +7530,7 @@ dev-python/python-caja 1.8.0: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34 0.34-r1: A Python extension module for cdb
 dev-python/python-ceilometerclient 1.0.10: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 1.0.9 1.1.1 1.1.2 1.2.1 1.2.1-r1: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 1.0.9 1.1.2 1.2.1 1.2.1-r1: A client for the OpenStack Cinder API
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, based on PyTunes
 dev-python/python-daemon 1.6-r1 2.0.4 2.0.5: Library to implement a well-behaved Unix daemon process
@@ -7571,7 +7571,7 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.4: This library implements webservice bindings for the Musicbrainz NGS site
 dev-python/python-nbxmpp 0.5.1 0.5.2 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.0 2.23.1 2.23.2 2.25.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0: A client for the OpenStack Nova API
 dev-python/python-nss 0.12-r1 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
@@ -15868,7 +15868,7 @@ sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
-sys-auth/keystone 2015.1.0 2015.1.1 2015.1.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 2015.1.1 2015.1.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r1: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.1-r1 0.10.1 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
@@ -16033,7 +16033,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 0.80.9 0.80.10-r1 0.94.2-r1 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 2015.1.0-r1 2015.1.1 2015.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 2015.1.1 2015.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.9-r1 1.0.10 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
@@ -16078,7 +16078,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4: A high performance and portable MPI impleme
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 2015.1.0-r2 2015.1.1 2015.1.9999: A virtual network service for Openstack
+sys-cluster/neutron 2015.1.1 2015.1.9999: A virtual network service for Openstack
 sys-cluster/nova 2015.1.1-r2 2015.1.9999: A cloud computing fabric controller (main part of an IaaS system) written in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
@@ -16947,7 +16947,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 31.0.1889.99 31.0.1889.174: A fast and secure web browser
 www-client/opera-beta 31.0.1889.98 32.0.1948.4: A fast and secure web browser
-www-client/opera-developer 32.0.1933.0 33.0.1963.0: A fast and secure web browser
+www-client/opera-developer 32.0.1933.0 33.0.1963.0 33.0.1967.0: A fast and secure web browser
 www-client/otter 0.9.06 0.9.07_p81 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla

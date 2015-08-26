@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=pgm? ( virtual/pkgconfig =net-libs/openpgm-5.1.118 ) || ( sys-apps/util-linux sys-freebsd/freebsd-lib ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=pgm? ( virtual/pkgconfig ~net-libs/openpgm-5.1.118 ) || ( sys-apps/util-linux sys-freebsd/freebsd-lib ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=ZeroMQ is a brokerless messaging kernel with extremely high performance
 EAPI=4
 HOMEPAGE=http://www.zeromq.org
@@ -10,4 +10,4 @@ RDEPEND=!net-libs/cppzmq
 SLOT=0
 SRC_URI=http://download.zeromq.org/zeromq-2.2.0.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f302770c925b69b5b735f7fee154426a
+_md5_=0480c7460cbd176b6dfdd70a020bc53a
