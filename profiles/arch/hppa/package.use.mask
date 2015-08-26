@@ -151,10 +151,6 @@ dev-vcs/git gtk
 app-cdr/cdrdao gcdmaster
 net-im/pidgin eds
 
-# Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
-# qtmultimedia is not keyworded, bug 293671
-dev-python/PyQt4 multimedia
-
 # Jeroen Roovers <jer@gentoo.org> (15 Apr 2008)
 # media-sound/fluidsynth fails to build with stable libtool, so it can't be
 # tested for ~hppa keywording right now

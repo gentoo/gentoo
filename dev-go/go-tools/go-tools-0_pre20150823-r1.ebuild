@@ -81,7 +81,12 @@ src_install() {
 	cp -sR "$(go env GOROOT)" "${T}/goroot" || die
 
 	GOROOT="${T}/goroot" golang-build_src_install
-	dobin bin/* "${T}/goroot/bin/godoc"
+
+	# bug 558818: install binaries in $GOROOT/bin to avoid file collisions
+	exeinto "$(go env GOROOT)/bin"
+	doexe bin/* "${T}/goroot/bin/godoc"
+	dodir /usr/bin
+	ln "${ED}$(go env GOROOT)/bin/godoc" "${ED}usr/bin/godoc" || die
 
 	if has_version '<dev-lang/go-1.5'; then
 		exeinto "$(go env GOTOOLDIR)"

@@ -26,5 +26,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	x11-proto/xf86vidmodeproto
+	!<kde-apps/kde4-l10n-15.08.0
 	!kde-apps/kgamma:5
 "

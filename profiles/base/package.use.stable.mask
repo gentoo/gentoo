@@ -5,6 +5,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Davide Pesavento <pesa@gentoo.org> (26 Aug 2015)
+# The corresponding Qt5 modules are not stable yet, and we don't want
+# to stabilize them solely because of PyQt5 when there are no other
+# in-tree users yet.
+dev-python/PyQt5 positioning sensors serialport webchannel websockets
+
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
