@@ -24,7 +24,7 @@ CDEPEND="ssl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
 	caps? ( sys-libs/libcap-ng )
 	>=dev-db/sqlite-3.8.2[${MULTILIB_USEDEP}]
 	>=sys-libs/e2fsprogs-libs-1.42.9[${MULTILIB_USEDEP}]
-	sys-libs/ncurses:5=
+	sys-libs/ncurses:0=
 	>=sys-libs/readline-6.2_p5-r1[${MULTILIB_USEDEP}]
 	afs? ( net-fs/openafs )
 	hdb-ldap? ( >=net-nds/openldap-2.3.0 )

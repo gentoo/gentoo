@@ -23,7 +23,7 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/pkgconfig
 	emacs? ( virtual/emacs )
-	ncurses? ( sys-libs/ncurses:5= )
+	ncurses? ( sys-libs/ncurses:0= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

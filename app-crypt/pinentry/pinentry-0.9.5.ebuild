@@ -21,9 +21,9 @@ RDEPEND="
 	app-eselect/eselect-pinentry
 	caps? ( sys-libs/libcap )
 	gtk? ( x11-libs/gtk+:2 )
-	ncurses? ( sys-libs/ncurses:5= )
+	ncurses? ( sys-libs/ncurses:0= )
 	qt4? ( >=dev-qt/qtgui-4.4.1:4 )
-	static? ( >=sys-libs/ncurses-5.7-r5:5=[static-libs,-gpm] )
+	static? ( >=sys-libs/ncurses-5.7-r5:0=[static-libs,-gpm] )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext

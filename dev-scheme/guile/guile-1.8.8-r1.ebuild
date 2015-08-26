@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/gmp-4.1:0=
 	>=sys-devel/libtool-1.5.6
 	sys-devel/gettext
-	sys-libs/ncurses:5=
+	sys-libs/ncurses:0=
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo"

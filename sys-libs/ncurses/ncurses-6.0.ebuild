@@ -14,15 +14,16 @@ HOMEPAGE="https://www.gnu.org/software/ncurses/ http://dickey.his.com/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 
 LICENSE="MIT"
-# TODO: We should migrate this to SLOT=0.
 # The subslot reflects the SONAME.
-SLOT="5/6"
+SLOT="0/6"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs test threads tinfo trace unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
 #	berkdb? ( sys-libs/db )"
+# Block the older ncurses that installed all files w/SLOT=5. #557472
 RDEPEND="${DEPEND}
+	!<=sys-libs/ncurses-5.9-r4:0
 	!<x11-terms/rxvt-unicode-9.06-r3
 	!<x11-terms/st-0.6-r1
 	!app-emulation/emul-linux-x86-baselibs"

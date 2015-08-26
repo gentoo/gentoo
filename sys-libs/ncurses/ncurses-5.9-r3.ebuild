@@ -13,12 +13,13 @@ HOMEPAGE="https://www.gnu.org/software/ncurses/ http://dickey.his.com/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="5"
+SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs tinfo trace unicode"
 
 DEPEND="gpm? ( sys-libs/gpm )"
 #	berkdb? ( sys-libs/db )"
+# Block the older ncurses that installed all files w/SLOT=5. #557472
 RDEPEND="${DEPEND}
 	!<x11-terms/rxvt-unicode-9.06-r3
 	abi_x86_32? (

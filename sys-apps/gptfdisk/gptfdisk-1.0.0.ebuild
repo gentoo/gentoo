@@ -17,7 +17,7 @@ IUSE="kernel_linux ncurses static"
 
 LIB_DEPEND="
 	dev-libs/popt[static-libs(+)]
-	ncurses? ( >=sys-libs/ncurses-5.7-r7:5=[static-libs(+)] )
+	ncurses? ( >=sys-libs/ncurses-5.7-r7:0=[static-libs(+)] )
 	kernel_linux? ( sys-apps/util-linux[static-libs(+)] )" # libuuid
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}

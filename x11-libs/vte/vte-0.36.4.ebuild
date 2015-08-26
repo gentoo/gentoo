@@ -21,7 +21,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.1.9:3[introspection?]
 	>=x11-libs/pango-1.22.0
 
-	sys-libs/ncurses:5=
+	sys-libs/ncurses:0=
 	x11-libs/libX11
 	x11-libs/libXft
 

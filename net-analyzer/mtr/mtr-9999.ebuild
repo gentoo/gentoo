@@ -17,7 +17,7 @@ KEYWORDS=""
 IUSE="gtk ipv6"
 
 RDEPEND="
-	sys-libs/ncurses:5=
+	sys-libs/ncurses:0=
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:2

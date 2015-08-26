@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE="gnutls sasl"
 
 RDEPEND="
-	sys-libs/ncurses:5
+	sys-libs/ncurses:0
 	net-nds/openldap
 	dev-libs/popt
 	dev-libs/glib:2

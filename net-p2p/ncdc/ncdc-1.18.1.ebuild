@@ -19,7 +19,7 @@ RDEPEND="app-arch/bzip2
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	net-libs/gnutls
-	sys-libs/ncurses:5[unicode]
+	sys-libs/ncurses:0[unicode]
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	dev-util/makeheaders

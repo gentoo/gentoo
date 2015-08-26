@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="nls readline"
 
-RDEPEND="sys-libs/ncurses:5=
+RDEPEND="sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	nls? ( virtual/libintl )
 "

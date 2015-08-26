@@ -39,7 +39,7 @@ RDEPEND="dev-libs/glib:2=
 	xmpp? ( dev-libs/expat:0= )
 	zlib? ( sys-libs/zlib:0= )
 
-	ncurses? ( sys-libs/ncurses:5=[unicode=]
+	ncurses? ( sys-libs/ncurses:0=[unicode=]
 		gpm? ( sys-libs/gpm:0= )
 		spell? ( app-text/aspell:0= ) )
 	sqlite? ( dev-db/sqlite:3= )"
