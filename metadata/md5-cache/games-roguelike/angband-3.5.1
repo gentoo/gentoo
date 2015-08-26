@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-DEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses ) ) ) ncurses? ( sys-libs/ncurses ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer[mp3] media-libs/libsdl[sound] ) ) virtual/pkgconfig
+DEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses[unicode] ) ) ) ncurses? ( sys-libs/ncurses[unicode] ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer[mp3] media-libs/libsdl[sound] ) ) virtual/pkgconfig
 DESCRIPTION=A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 EAPI=5
 HOMEPAGE=http://rephial.org/
 IUSE=ncurses sdl +sound X
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
-RDEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses ) ) ) ncurses? ( sys-libs/ncurses ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer[mp3] media-libs/libsdl[sound] ) ) games-misc/games-envd
+RDEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses[unicode] ) ) ) ncurses? ( sys-libs/ncurses[unicode] ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer[mp3] media-libs/libsdl[sound] ) ) games-misc/games-envd
 SLOT=0
 SRC_URI=http://rephial.org/downloads/3.5/angband-v3.5.1.tar.gz
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=36636157c70e46a06555c66b93960ae8
+_md5_=bce9a40cea573bf21ad98f3ba7397f57
