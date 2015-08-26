@@ -1,0 +1,25 @@
+--- tools/depends/native/TexturePacker/Makefile
++++ tools/depends/native/TexturePacker/Makefile
+@@ -9,14 +9,10 @@
+ 
+ ifeq ($(NATIVEPLATFORM),)
+   PLATFORM = native
+-  EXTRA_CONFIGURE = --enable-static
+ else
+   PLATFORM = $(NATIVEPLATFORM)
+ endif
+ 
+-ifeq ($(NATIVE_OS), linux)
+-  EXTRA_CONFIGURE = --enable-static
+-endif
+ ifeq ($(NATIVE_OS), android)
+   EXTRA_CONFIGURE = --enable-static
+ endif
+@@ -35,7 +35,6 @@ all: .installed-$(PLATFORM)
+ $(PLATFORM): ../libsquish-native/.installed-$(PLATFORM)
+ 	-rm -rf $(PLATFORM)/*; mkdir -p $(PLATFORM)
+ 	cd $(PLATFORM); cp -a $(SOURCE)/* .
+-	cd $(PLATFORM); ./autogen.sh
+ 	cd $(PLATFORM); ./configure --prefix=$(PREFIX) $(EXTRA_CONFIGURE) EXTRA_DEFINES="$(NATIVE_ARCH_DEFINES)"
+ 
+ 
