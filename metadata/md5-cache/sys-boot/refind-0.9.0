@@ -8,4 +8,4 @@ KEYWORDS=~x86 ~amd64
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/refind/refind-src-0.9.0.zip
-_md5_=e18c08bb69ce3a97d619a31051f434f4
+_md5_=f4606c62ca51fce091b9cd8856c637e3
