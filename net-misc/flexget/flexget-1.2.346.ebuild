@@ -29,7 +29,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/feedparser-5.1.3[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.7.5[${PYTHON_USEDEP}]
-	<dev-python/sqlalchemy-0.9.99
+	<dev-python/sqlalchemy-1.999[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=dev-python/beautifulsoup-4.1:4[${PYTHON_USEDEP}]
 	<dev-python/beautifulsoup-4.4:4[${PYTHON_USEDEP}]
