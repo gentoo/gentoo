@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Manuel Rüger <mrueg@gentoo.org> (26 Aug 2015)
+# Masked for removal in 30 days.
+# Superseded by app-i18n/atokx3.
+# See bug #553208
+app-i18n/atokx2
+
 # Doug Goldstein <cardoe@gentoo.org> (25 Aug 2015)
 # Masked for removal in 30 days. Users should use the modules available
 # via the kernel as upstream has deprecated these packages.
