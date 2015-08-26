@@ -21,7 +21,7 @@ IUSE="pgm test static-libs"
 RDEPEND="!net-libs/cppzmq"
 DEPEND="pgm? (
 		virtual/pkgconfig
-		=net-libs/openpgm-5.1.118
+		~net-libs/openpgm-5.1.118
 	)
 	|| ( sys-apps/util-linux sys-freebsd/freebsd-lib )"
 
