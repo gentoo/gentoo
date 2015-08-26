@@ -31,6 +31,8 @@ FILECAPS=(
 	cap_sys_rawio usr/bin/likwid-{perfctr,bench,powermeter}
 )
 
+S=${WORKDIR}/likwid-likwid-${PV}
+
 src_prepare() {
 	# See Bug 558402
 	epatch "${FILESDIR}"/${P}-Makefile.patch \
