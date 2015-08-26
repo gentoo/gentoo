@@ -107,6 +107,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xrdb
 	x11-apps/xset
 	x11-apps/xsetroot
+	!<kde-apps/kio-extras-5.4.0
 	!kde-base/freespacenotifier
 	!kde-base/libtaskmanager
 	!kde-base/kcminit
