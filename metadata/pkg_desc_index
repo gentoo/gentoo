@@ -734,7 +734,7 @@ app-dicts/myspell-tn 20060316: Setswana dictionaries for myspell/hunspell
 app-dicts/myspell-uk 1.6.5: Ukrainian dictionaries for myspell/hunspell
 app-dicts/myspell-zu 20060316: Zulu dictionaries for myspell/hunspell
 app-dicts/opendict 0.6.3-r1: OpenDict is a free cross-platform dictionary program
-app-dicts/prime-dict 1.0.0-r1 1.0.0-r2 1.0.0-r3: Dictionary files for PRIME input method
+app-dicts/prime-dict 1.0.0-r2 1.0.0-r3: Dictionary files for PRIME input method
 app-dicts/qvortaro 0.4.1: Esperanto Dictionary
 app-dicts/stardict-cdict-en-zh-big5 2.4.2: Stardict Dictionary English to Traditional Chinese (BIG5)
 app-dicts/stardict-cdict-en-zh-gb 2.4.2: Stardict Dictionary English to Simplified Chinese (GB)
@@ -7976,7 +7976,7 @@ dev-qt/qtx11extras 5.4.2: Linux/X11-specific support library for the Qt5 framewo
 dev-qt/qtxml 5.4.2: SAX and DOM implementation library for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.5 4.8.6-r1 4.8.7 5.4.2: XPath, XQuery, and XSLT support library for the Qt5 framework
 dev-ruby/GeoRuby 2.2.1-r2 2.2.1-r3 2.5.2: Ruby data holder for OGC Simple Features
-dev-ruby/RubyInline 3.12.2 3.12.3 3.12.3-r1 3.12.4: Allows to embed C/C++ in Ruby code
+dev-ruby/RubyInline 3.12.3 3.12.3-r1 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r2 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/actionmailer 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: Framework for designing email-service layers
 dev-ruby/actionpack 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: Eases web-request routing, handling, and response
@@ -10503,7 +10503,7 @@ kde-apps/kpat 4.14.3: KDE patience game
 kde-apps/kppp 4.14.3: KDE: A dialer and front-end to pppd
 kde-apps/kqtquickcharts 4.14.3: Qt Quick 1 plugin for beautiful and interactive charts
 kde-apps/kquitapp 4.14.3: A CLI application quitter
-kde-apps/krdc 4.14.3: KDE remote desktop connection (RDP and VNC) client
+kde-apps/krdc 4.14.3 15.08.0: KDE remote desktop connection (RDP and VNC) client
 kde-apps/kreadconfig 4.14.3: KDE: A command-line tool to read KConfig entries
 kde-apps/kremotecontrol 4.14.3: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 4.14.3: KDE Board Game
@@ -16445,7 +16445,7 @@ sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is N
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.10-r1 9999: Lightweight, fast and simple C library focused on standards-conformance and safety
-sys-libs/ncurses 5.9-r3 5.9-r4 6.0: console display library
+sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r100 6.0: console display library
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-db 2.2.3_pre1-r2 2.2.3_pre1-r3 2.2.3_pre1-r4: Allows important system files to be stored in a fast database file rather than plain text
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
