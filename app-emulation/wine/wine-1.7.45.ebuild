@@ -164,6 +164,15 @@ usr/share/applications/wine-winecfg.desktop"
 wine_build_environment_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
 
+	# bug #549768
+	if use abi_x86_64 && [[ $(gcc-major-version) = 5 ]]; then
+		eerror "64-bit wine cannot be built with gcc-5.1 or 5.2 due to compiler bugs;"
+		eerror "you may use gcc-config to select an older compiler version."
+		eerror "See https://bugs.gentoo.org/549768"
+		eerror
+		return 1
+	fi
+
 	if use abi_x86_64 && [[ $(( $(gcc-major-version) * 100 + $(gcc-minor-version) )) -lt 404 ]]; then
 		eerror "You need gcc-4.4+ to build 64-bit wine"
 		eerror
