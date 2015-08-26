@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/59912/${P}.tar.gz
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-macos"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-macos"
 IUSE="perl python l10n_ja"
 
 src_prepare() {
@@ -31,6 +31,15 @@ src_prepare() {
 	fi
 
 	default
+}
+
+src_configure() {
+	default
+	if use perl; then
+		cd NKF.mod
+		perl-module_src_configure
+		cd - >/dev/null
+	fi
 }
 
 src_compile() {
