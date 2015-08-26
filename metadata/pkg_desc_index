@@ -10430,7 +10430,7 @@ kde-apps/kdegames-meta 4.14.3: kdegames - merge this to pull in all kdegames-der
 kde-apps/kdegraphics-meta 4.14.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 4.14.3: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 4.14.3 15.08.0: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
-kde-apps/kdenetwork-filesharing 4.14.3: kcontrol filesharing config module for SMB
+kde-apps/kdenetwork-filesharing 4.14.3 15.08.0: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 0.9.8 0.9.10 15.08.0: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3: KDE GUI for passwd
