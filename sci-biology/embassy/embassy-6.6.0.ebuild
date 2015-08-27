@@ -9,7 +9,7 @@ HOMEPAGE="http://emboss.sourceforge.net/embassy/"
 
 LICENSE+=" freedist"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86 ~x86-linux ~ppc-macos"
 
 RDEPEND+="
 	>=sci-biology/embassy-cbstools-1.0.0.650

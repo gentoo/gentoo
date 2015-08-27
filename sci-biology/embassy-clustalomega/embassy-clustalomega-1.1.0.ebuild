@@ -10,7 +10,7 @@ AUTOTOOLS_AUTORECONF=1
 
 inherit emboss-r1
 
-KEYWORDS="amd64 ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86 ~x86-linux ~ppc-macos"
 
 RDEPEND+=" sci-biology/clustal-omega"
 
