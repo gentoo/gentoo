@@ -30,12 +30,10 @@ VENDOR_DEPEND="
 	>=dev-python/packaging-15.3[${PYTHON_USEDEP}]
 	>=dev-python/retrying-1.3.3[${PYTHON_USEDEP}]
 "
-RDEPEND="
+RDEPEND="${VENDOR_DEPEND}
 	>=dev-python/setuptools-18.2[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-# circular #558808
-PDEPEND="${VENDOR_DEPEND}"
 
 # required test data isn't bundled with the tarball
 RESTRICT="test"
