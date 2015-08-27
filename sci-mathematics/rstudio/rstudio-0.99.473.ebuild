@@ -154,7 +154,7 @@ src_configure() {
 		-DDISTRO_SHARE=share/${PN}
 		$(cmake-utils_use !dedicated RSTUDIO_INSTALL_FREEDESKTOP)
 		-DRSTUDIO_TARGET=$(usex dedicated "Server" "$(usex server "Development" "Desktop")")
-		-DQT_QMAKE_EXECUTABLE="${EROOT}"usr/lib64/qt5/bin/cmake
+		-DQT_QMAKE_EXECUTABLE="${EROOT}"usr/lib64/qt5/bin/qmake
 		)
 
 	cmake-utils_src_configure
