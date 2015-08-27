@@ -12,7 +12,7 @@ SRC_URI="mirror://github/flavio/qjson/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm hppa ~ppc ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="debug doc test"
 
 RDEPEND=">=dev-qt/qtcore-4.8.6:4[${MULTILIB_USEDEP}]"
