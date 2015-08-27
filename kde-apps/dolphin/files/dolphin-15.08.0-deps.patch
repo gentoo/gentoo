@@ -1,0 +1,48 @@
+From 4c0d110b2d36153a564602223b4dd3e04b1f4158 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Wed, 26 Aug 2015 22:53:44 +1000
+Subject: [PATCH] Update dependencies.
+
+It appears that KF5TextEditor was added for KTextEdit, but that is actually
+provided by KF5TextWidgets. It's then necessary to explicitly link to KF5Parts
+(it was previously brought in implicitly by KF5TextEditor).
+
+REVIEW: 124932
+---
+ CMakeLists.txt     | 2 +-
+ src/CMakeLists.txt | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b56fd7a..a5580e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,7 +62,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     Solid
+     IconThemes
+     Completion
+-    TextEditor
++    TextWidgets
+     WindowSystem
+     Notifications
+ )
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2a5e5a6..9689923 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -143,10 +143,11 @@ target_link_libraries(
+     KF5::KIOWidgets
+     KF5::KIOFileWidgets
+     KF5::Completion
+-    KF5::TextEditor
++    KF5::TextWidgets
+     KF5::WindowSystem
+     KF5::ConfigCore
+     KF5::NewStuff
++    KF5::Parts
+ )
+ 
+ if(HAVE_BALOO)
+-- 
+2.4.6
+
