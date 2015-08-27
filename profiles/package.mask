@@ -504,7 +504,6 @@ sys-libs/lib-compat
 sys-libs/lib-compat-loki
 games-action/mutantstorm-demo
 games-action/phobiaii
-games-emulation/handy
 games-fps/rtcw
 games-fps/unreal
 games-strategy/heroes3
