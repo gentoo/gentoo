@@ -28,7 +28,7 @@ DEPEND="
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	media-libs/freeglut
 	media-libs/freetype:2
-	media-libs/glew
+	media-libs/glew:0=
 	media-libs/libpng:0=
 	media-video/mpeg-tools
 	sys-libs/zlib
