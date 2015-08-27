@@ -1,0 +1,130 @@
+--- rstudio-0.99.473-orig/CMakeGlobals.txt	2015-08-12 09:58:43.000000000 +1000
++++ rstudio-0.99.473/CMakeGlobals.txt	2015-08-26 22:12:43.614346285 +1000
+@@ -111,7 +111,7 @@
+    else()
+      set(RSTUDIO_INSTALL_BIN bin)
+    endif()
+-   set(RSTUDIO_INSTALL_SUPPORTING .)
++   set(RSTUDIO_INSTALL_SUPPORTING ${DISTRO_SHARE})
+ endif()
+ 
+ # if the install prefix is /usr/local then tweak as appropriate
+--- rstudio-0.99.473-orig/src/cpp/server/CMakeLists.txt	2015-08-12 09:58:43.000000000 +1000
++++ rstudio-0.99.473/src/cpp/server/CMakeLists.txt	2015-08-26 22:15:30.988353389 +1000
+@@ -160,7 +160,7 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_DEBIAN_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_DEBIAN_DIR})
+ 
+    # install configured redhat init.d script
+    set(RSERVER_INITD_REDHAT_DIR "extras/init.d/redhat")
+@@ -168,7 +168,7 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_REDHAT_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_REDHAT_DIR})
+ 
+    # install configured suse init.d script
+    set(RSERVER_INITD_SUSE_DIR "extras/init.d/suse")
+@@ -176,13 +176,13 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_SUSE_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_SUSE_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_SUSE_DIR})
+ 
+    # install pam profile
+    set(RSERVER_PAM_DIR "extras/pam")
+    set(RSERVER_PAM_PROFILE "${RSERVER_PAM_DIR}/rstudio")
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_PAM_PROFILE}
+-           DESTINATION ${RSERVER_PAM_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_PAM_DIR})
+ 
+    # install configured apparmor profile
+    set(RSERVER_APPARMOR_DIR "extras/apparmor")
+@@ -190,9 +190,9 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_APPARMOR_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_APPARMOR_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_APPARMOR_PROFILE}
+-           DESTINATION ${RSERVER_APPARMOR_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_APPARMOR_DIR})
+    install(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_APPARMOR_DIR}/apparmor-profile-load
+-           DESTINATION ${RSERVER_APPARMOR_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_APPARMOR_DIR})
+ 
+    # install configured upstart profile
+    set(RSERVER_UPSTART_DIR "extras/upstart")
+@@ -200,12 +200,12 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_UPSTART_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE}
+-           DESTINATION ${RSERVER_UPSTART_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_UPSTART_DIR})
+    set(RSERVER_UPSTART_PROFILE_REDHAT "${RSERVER_UPSTART_DIR}/rstudio-server.redhat.conf")
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT}
+-           DESTINATION ${RSERVER_UPSTART_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_UPSTART_DIR})
+            
+     # install configured systemd profile
+    set(RSERVER_SYSTEMD_DIR "extras/systemd")
+--- rstudio-0.99.473-orig/src/cpp/server/ServerOptions.cpp	2015-08-12 09:58:43.000000000 +1000
++++ rstudio-0.99.473/src/cpp/server/ServerOptions.cpp	2015-08-26 22:12:43.615346286 +1000
+@@ -314,8 +314,8 @@
+ 
+    // convert relative paths by completing from the system installation
+    // path (this allows us to be relocatable)
+-   resolvePath(resourcePath, &wwwLocalPath_);
+-   resolvePath(resourcePath, &wwwSymbolMapsPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &wwwLocalPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &wwwSymbolMapsPath_);
+    resolvePath(binaryPath, &authPamHelperPath_);
+    resolvePath(binaryPath, &rsessionPath_);
+    resolvePath(binaryPath, &rldpathPath_);
+--- rstudio-0.99.473-orig/src/cpp/session/SessionOptions.cpp	2015-08-12 09:58:43.000000000 +1000
++++ rstudio-0.99.473/src/cpp/session/SessionOptions.cpp	2015-08-26 22:17:40.594358890 +1000
+@@ -43,7 +43,7 @@
+ namespace session {  
+ 
+ namespace {
+-const char* const kDefaultPandocPath = "bin/pandoc";
++const char* const kDefaultPandocPath = "bin";
+ const char* const kDefaultPostbackPath = "bin/postback/rpostback";
+ const char* const kDefaultRsclangPath = "bin/rsclang";
+ } // anonymous namespace
+@@ -431,14 +431,14 @@
+    }
+    
+    // convert relative paths by completing from the app resource path
+-   resolvePath(resourcePath, &rResourcesPath_);
+-   resolvePath(resourcePath, &agreementFilePath_);
+-   resolvePath(resourcePath, &wwwLocalPath_);
+-   resolvePath(resourcePath, &wwwSymbolMapsPath_);
+-   resolvePath(resourcePath, &coreRSourcePath_);
+-   resolvePath(resourcePath, &modulesRSourcePath_);
+-   resolvePath(resourcePath, &sessionLibraryPath_);
+-   resolvePath(resourcePath, &sessionPackageArchivesPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &rResourcesPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &agreementFilePath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &wwwLocalPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &wwwSymbolMapsPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &coreRSourcePath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &modulesRSourcePath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &sessionLibraryPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &sessionPackageArchivesPath_);
+    resolvePostbackPath(resourcePath, &rpostbackPath_);
+ #ifdef _WIN32
+    resolvePath(resourcePath, &consoleIoPath_);
+@@ -447,7 +447,7 @@
+    resolvePath(resourcePath, &msysSshPath_);
+    resolvePath(resourcePath, &sumatraPath_);
+ #endif
+-   resolvePath(resourcePath, &hunspellDictionariesPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &hunspellDictionariesPath_);
+    resolvePath(resourcePath, &mathjaxPath_);
+    resolvePath(resourcePath, &libclangHeadersPath_);
+    resolvePandocPath(resourcePath, &pandocPath_);
