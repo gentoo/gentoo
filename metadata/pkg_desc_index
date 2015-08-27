@@ -11344,7 +11344,7 @@ media-gfx/freewrl 1.22.13-r3 2.3.3 9999: VRML97 and X3D compliant browser, libra
 media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
 media-gfx/geeqie 1.2-r1: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.6 1.7 1.8 1.9: create an APNG from a GIF
-media-gfx/gif2png 2.5.8 2.5.9 2.5.10: Converts images from gif format to png format
+media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to png format
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3: A slim GTK-based image browser

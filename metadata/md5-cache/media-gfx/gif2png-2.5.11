@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=media-libs/libpng-1.2:0 sys-libs/zlib
+DESCRIPTION=Converts images from gif format to png format
+EAPI=5
+HOMEPAGE=http://catb.org/~esr/gif2png/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=ZLIB
+RDEPEND=>=media-libs/libpng-1.2:0 sys-libs/zlib
+SLOT=0
+SRC_URI=http://catb.org/~esr/gif2png/gif2png-2.5.11.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=57bb5bc82cf891a2e11e395feee30c40
