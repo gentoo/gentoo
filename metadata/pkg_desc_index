@@ -16138,7 +16138,7 @@ sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple
 sys-devel/gcc-config 1.4.1-r1 1.5-r1 1.5-r2 1.5.1 1.5.1-r1 1.6 1.7 1.7.1 1.7.2 1.7.3 1.8 1.8-r1: utility to manage compilers
 sys-devel/gdb 7.5 7.5.1 7.6 7.6.1 7.6.2 7.7-r1 7.7.1 7.8 7.8.1 7.8.2 7.9 7.9.1 9999: GNU debugger
 sys-devel/gdb-apple 563 768-r1 960 962 966 1344 1346 1461 1518 1705 1708 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
-sys-devel/gettext 0.19.4 0.19.5 0.19.5.1: GNU locale utilities
+sys-devel/gettext 0.19.4 0.19.5 0.19.5.1-r1: GNU locale utilities
 sys-devel/gnuconfig 20130516 20131128 20140212 20140728 20150304 20150308 20150727 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
@@ -16937,7 +16937,7 @@ www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download too
 www-client/firefox 38.1.1 38.2.0 40.0.2: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 40.0.2: Firefox Web Browser
 www-client/google-chrome 44.0.2403.157_p1: The web browser from Google
-www-client/google-chrome-beta 45.0.2454.46_p1: The web browser from Google
+www-client/google-chrome-beta 45.0.2454.78_p1: The web browser from Google
 www-client/google-chrome-unstable 46.0.2490.4_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -16993,7 +16993,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.508: Adobe Flash Player
-www-plugins/chrome-binary-plugins 44.0.2403.157_p1 45.0.2454.46_beta1 46.0.2490.4_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 44.0.2403.157_p1 45.0.2454.78_beta1 46.0.2490.4_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
