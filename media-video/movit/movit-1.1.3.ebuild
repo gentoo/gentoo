@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/mesa
-	dev-cpp/eigen:3
+	>=dev-cpp/eigen-3.2.0:3
 	media-libs/libepoxy
 	sci-libs/fftw
 	media-libs/libsdl2
