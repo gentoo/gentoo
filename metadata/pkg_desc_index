@@ -10498,7 +10498,7 @@ kde-apps/kompare 4.14.3: Kompare is a program to view the differences between fi
 kde-apps/konq-plugins 4.14.3 15.08.0: Various plugins for konqueror
 kde-apps/konqueror 4.14.3 15.08.0: KDE: Web browser and file manager
 kde-apps/konquest 4.14.3: Galactic Strategy KDE Game
-kde-apps/konsole 4.14.3: X terminal for use with KDE
+kde-apps/konsole 4.14.3 15.08.0: KDE's terminal emulator
 kde-apps/kopete 4.14.3 4.14.3-r1 15.08.0: KDE multi-protocol IM client
 kde-apps/kpasswdserver 4.14.3 15.08.0: KDED Password Module
 kde-apps/kpat 4.14.3: KDE patience game
