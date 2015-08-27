@@ -1,13 +1,15 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="4"
+
+inherit eutils vcs-snapshot
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="git://git.infradead.org/mtd-utils.git"
 
-	inherit git
+	inherit git-2
 	SRC_URI=""
 	#KEYWORDS=""
 else
@@ -18,7 +20,7 @@ else
 		MY_PV="${PV}-02ae0aac87576d07202a62d11294ea55b56f450b"
 		SRC_URI="mirror://gentoo/${PN}-snapshot-${MY_PV}.tar.xz"
 	fi
-	KEYWORDS="amd64 arm ~mips ppc x86 ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
 DESCRIPTION="MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)"
@@ -38,22 +40,22 @@ RDEPEND="!sys-fs/mtd
 DEPEND="${RDEPEND}
 	xattr? ( sys-apps/acl )"
 
-# Diff snapshots have diff versions encoded into their dirnames
-S=${WORKDIR}/${PN}
-
 makeopts() {
-	echo CROSS=${CHOST}-
+	# These affect build output, so keep it common between compile & install.
+	echo CROSS=${CHOST}- V=1
 	use xattr || echo WITHOUT_XATTR=1
 }
 
 src_compile() {
-	cd "${S}"*
-	emake $(makeopts) || die
+	tc-export AR CC RANLIB
+	local compileopts=(
+		AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
+	)
+	emake $(makeopts) "${compileopts[@]}"
 }
 
 src_install() {
-	cd "${S}"*
-	emake $(makeopts) install DESTDIR="${ED}" || die
+	emake $(makeopts) install DESTDIR="${ED}"
 	dodoc *.txt
 	newdoc mkfs.ubifs/README README.mkfs.ubifs
 	# TODO: check ubi-utils for docs+scripts
