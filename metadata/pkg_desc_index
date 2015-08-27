@@ -13629,6 +13629,7 @@ net-libs/rest 0.7.92-r1 0.7.92-r2 0.7.93: Helper library for RESTful services
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/serf 1.3.8: HTTP client library
+net-libs/signond 8.57: Signon daemon for libaccounts-glib
 net-libs/socket++ 1.12.12-r2 1.12.13: C++ Socket Library
 net-libs/socket_wrapper 1.1.3 1.1.4: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
