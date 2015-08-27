@@ -25,10 +25,13 @@ ruby_add_bdepend "
 	doc? ( >=dev-ruby/hoe-2.10 )
 	test? (
 		>=dev-ruby/hoe-2.10
-		virtual/ruby-minitest
+		>=dev-ruby/minitest-4.7:0
 	)"
 
 all_ruby_prepare() {
 	# Put the proper version number in the gemspec.
 	sed -i -e "s/ s.version = \".*\"/ s.version = \"${PV}\"/" arel.gemspec || die
+
+	# Use a consistent minitest version
+	sed -i -e '1igem "minitest", "~>4.7"' Rakefile || die
 }
