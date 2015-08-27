@@ -1,0 +1,51 @@
+--- setup.py	2015-08-27 14:33:44.643517647 -0500
++++ setup.py.new	2015-08-27 14:34:05.202517349 -0500
+@@ -60,13 +60,12 @@
+ 
+ default_library_paths = [default_python_libdir,
+                          ('%s/usr/local/lib' % _exec_prefix),
+-                         '/lib', '/usr/lib', '/usr/local/lib',
+-                         'src/c/liberasurecode-1.0.7/src/.libs']
++                         '/lib', '/usr/lib', '/usr/local/lib']
+ 
+ default_include_paths = [default_python_incdir,
+                          '/usr/local/include', '/usr/local/include/jerasure',
+                          '/usr/include', 'src/c/pyeclib_c',
+-                         '/usr/local/include']
++                         '/usr/include/liberasurecode', '/usr/local/include']
+ 
+ libflags = ''
+ includeflags = ''
+@@ -120,6 +119,7 @@
+         if (os.path.isfile(library_file_path)):
+             missing = False
+             break
++    missing = False
+     if missing:
+         # try using an integrated copy of the library
+         srcpath = "src/c/"
+@@ -228,24 +228,6 @@
+             ldpath_str = "DYLD_LIBRARY_PATH"
+         else:
+             ldpath_str = "LD_LIBRARY_PATH"
+-        print("***************************************************")
+-        print("**                                                 ")
+-        print("** PyECLib libraries have been installed to:       ")
+-        print("**   %susr/local/lib" % installroot)
+-        print("**                                                 ")
+-        print("** Any user using this library must update:        ")
+-        print("**   %s" % ldpath_str)
+-        print("**                                                 ")
+-        print("** Run 'ldconfig' or place this line:              ")
+-        print("**   export %s=%s" % (ldpath_str, "%susr/local/lib"
+-                                     % installroot))
+-        print("**                                                 ")
+-        print("** into .bashrc, .profile, or the appropriate shell")
+-        print("** start-up script!  Also look at ldconfig(8) man  ")
+-        print("** page for a more static LD configuration         ")
+-        print("**                                                 ")
+-        print("***************************************************")
+-
+ 
+ module = Extension('pyeclib_c',
+                    define_macros=[('MAJOR VERSION', '0'),
