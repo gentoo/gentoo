@@ -16102,7 +16102,7 @@ sys-cluster/resource-agents 1.0.4-r1 1.0.4-r2 3.9.4 3.9.5 3.9.6: Resources pack 
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
-sys-cluster/swift 2.3.0 2.3.0-r1: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.3.0-r1: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13 4.1.7 4.2.9-r4: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.1 4.9.2 4.9.3: OpenVZ ConTainers control utility
@@ -16408,7 +16408,7 @@ sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
 sys-libs/libapparmor 2.8.3 2.8.4: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libcap 2.17 2.19 2.20 2.21 2.22 2.22-r1 2.22-r2 2.24 2.24-r1 2.24-r2: POSIX 1003.1e capabilities
+sys-libs/libcap 2.22-r2 2.24-r2: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.6.6 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
 sys-libs/libcxx 0.0_p20130725 0.0_p20131222 0.0_p20140322 3.6.0 3.6.1 3.6.2 9999: New implementation of the C++ standard library, targeting C++11
