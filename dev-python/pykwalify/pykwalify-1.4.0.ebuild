@@ -30,8 +30,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-S.patch )
-
 python_test() {
 	py.test || die
 }
