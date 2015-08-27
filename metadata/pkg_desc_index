@@ -12610,7 +12610,7 @@ media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/waheela 0.3: Amarok Fullscreen Player
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
 media-sound/wavegain 1.3.0 1.3.1: ReplayGain for WAVE audio files
-media-sound/wavpack 4.60.1 4.60.1-r1 4.70.0: Hybrid lossless audio compression tools
+media-sound/wavpack 4.70.0: Hybrid lossless audio compression tools
 media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r1: WavSplit is a simple command line tool to split WAV files
 media-sound/wildmidi 0.2.3.5 0.3.6 0.3.7 0.3.8: Midi processing library and a midi player using the gus patch set
@@ -12622,7 +12622,7 @@ media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
 media-sound/xmp 3.5.0: Extended Module Player
 media-sound/xnoise 0.2.20 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
-media-sound/yoshimi 1.0.0 1.1.0 1.2.0 1.2.1 1.2.4 1.2.5 1.3.1 1.3.2: A software synthesizer based on ZynAddSubFX
+media-sound/yoshimi 1.3.2 1.3.5.2: A software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 2.4.1 2.4.2 2.4.3 2.5.0 2.5.1: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516: simple command line tools for DVB cards. Includes a RTP multicast stream server
@@ -14447,7 +14447,7 @@ net-wireless/rfkill 0.5: Tool to read and control rfkill status through /dev/rfk
 net-wireless/rfswitch 1.3: Drivers for software based wireless radio switches
 net-wireless/rtl-sdr 0.5.0 0.5.3 0.5.3-r1 0.5.3_p20150730 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 net-wireless/rtl8180 0.22_pre20050528: Driver for the rtl8180 wireless chipset
-net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
+net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618 2011.08.1_p20140618-r1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/ubertooth 0.0_p534 2014.04.1-r1 9999: An open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.8.2: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/wavemon 0.7.5 0.7.6: Ncurses based monitor for IEEE 802.11 wireless LAN cards

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=virtual/libusb:0 ncurses? ( sys-libs/ncurses:0= ) gtk? ( x11-libs/gtk+:2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
+EAPI=5
+HOMEPAGE=http://www.kismetwireless.net/spectools/
+IUSE=debug +ncurses +gtk
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0 ncurses? ( sys-libs/ncurses:0= ) gtk? ( x11-libs/gtk+:2 )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~zerochaos/distfiles/spectools-2011-08-R1_p20140618.tar.xz
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5
+_md5_=a01fbfcb8933bd24efabc00a80196859
