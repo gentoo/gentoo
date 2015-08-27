@@ -94,7 +94,7 @@ src_install() {
 		doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/cover"
 		doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/vet"
 	else
-		rm "${D}"/usr/bin/{cover,vet} ||
+		rm "${D}"$(go env GOROOT)/bin/{cover,vet} ||
 			die "unable to remove cover and vet"
 	fi
 }
