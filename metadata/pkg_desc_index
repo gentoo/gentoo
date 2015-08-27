@@ -10363,12 +10363,13 @@ kde-apps/ark 4.14.3-r1: KDE Archiving tool
 kde-apps/artikulate 4.14.3: Language learning application that helps improving pronunciation skills
 kde-apps/attica 4.14.3: Open Collaboration Services provider management
 kde-apps/audiocd-kio 4.14.3 15.08.0: KDE kioslaves from the kdemultimedia package
+kde-apps/baloo-widgets 4.14.3 15.08.0: Widget library for baloo
 kde-apps/blinken 4.14.3: KDE version of the Simon Says game
 kde-apps/bomber 4.14.3: KDE arcade bombing game
 kde-apps/bovo 4.14.3: Five-in-a-row Board Game
 kde-apps/cantor 4.14.3: KDE4 interface for doing mathematics and scientific computing
 kde-apps/cervisia 4.14.3: Cervisia - A KDE CVS frontend
-kde-apps/dolphin 4.14.3: A KDE filemanager focusing on usability
+kde-apps/dolphin 4.14.3 15.08.0: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins 4.14.3: Extra Dolphin plugins
 kde-apps/dragon 4.14.3 15.08.0: A simple video player
 kde-apps/drkonqi 4.14.3: KDE crash handler, gives the user feedback if a program crashed
@@ -10580,7 +10581,6 @@ kde-base/akonadi 4.4.11.1-r1: An extensible cross-desktop storage service for PI
 kde-base/akonadiconsole 4.14.3 4.14.8 4.14.10: Akonadi developer console
 kde-base/akregator 4.4.2015.06 4.14.3 4.14.8 4.14.10: KDE news feed aggregator
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project
-kde-base/baloo-widgets 4.14.3: Widget library for baloo
 kde-base/blogilo 4.4.2015.06 4.14.3 4.14.8 4.14.10: KDE Blogging Client
 kde-base/calendarjanitor 4.14.3 4.14.8 4.14.10: A tool to scan calendar data for buggy instances
 kde-base/contactthemeeditor 4.13.3: A contact theme editor for KAddressBook
