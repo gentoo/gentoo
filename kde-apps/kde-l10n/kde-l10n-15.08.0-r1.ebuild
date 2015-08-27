@@ -15,6 +15,8 @@ DEPEND="
 "
 RDEPEND="
 	!<kde-apps/kde4-l10n-${PV}
+	!kde-apps/kde4-l10n[-minimal]
+	!<kde-apps/kdepim-l10n-${PV}
 "
 
 KEYWORDS=" ~amd64 ~x86"
@@ -62,6 +64,12 @@ src_prepare() {
 				# Drop KDE4-based part
 				sed -e '/add_subdirectory(4)/ s/^/#/'\
 					-i "${S}"/${DIR}/CMakeLists.txt || die
+
+				# Remove kdepim translations (part of kde-apps/kdepim-l10n)
+				for subdir in kdepim kdepimlibs kdepim-runtime pim; do
+					find "${S}/${DIR}" -name CMakeLists.txt -type f \
+						-exec sed -i -e "/add_subdirectory( *${subdir} *)/ s/^/#/" {} +
+				done
 
 				# Handbook optional
 				sed -e '/KF5DocTools/ s/ REQUIRED//'\
