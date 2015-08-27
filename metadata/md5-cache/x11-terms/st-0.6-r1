@@ -10,4 +10,4 @@ RDEPEND=!<sys-libs/ncurses-6.0 media-libs/fontconfig x11-libs/libX11 x11-libs/li
 SLOT=0
 SRC_URI=http://dl.suckless.org/st/st-0.6.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5b85c0e6526056371f9070b986e86201
+_md5_=a275816ae1273344e3f9bf20114b3fd0
