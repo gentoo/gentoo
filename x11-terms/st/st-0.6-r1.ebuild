@@ -37,6 +37,7 @@ src_prepare() {
 		-e "/^X11LIB/{s:/usr/X11R6/lib:/usr/$(get_libdir)/X11:}" \
 		-i config.mk || die
 	sed -e '/@echo/!s:@::' \
+		-e '/tic/d' \
 		-i Makefile || die
 	tc-export CC
 
