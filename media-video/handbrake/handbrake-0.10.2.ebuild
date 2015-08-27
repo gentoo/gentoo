@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils gnome2-utils python-any-r1
 
 if [[ ${PV} = *9999* ]]; then
-	ESVN_REPO_URI="svn://svn.handbrake.fr/HandBrake/trunk"
-	inherit subversion
+	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
+	inherit git-r3
 	KEYWORDS=""
 else
 	SRC_URI="http://handbrake.fr/rotation.php?file=HandBrake-${PV}.tar.bz2 -> ${P}.tar.bz2"
