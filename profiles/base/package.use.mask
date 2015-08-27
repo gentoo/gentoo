@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michael Palimaka <kensington@gentoo.org> (27 Aug 2015)
+# Unreleased dependencies
+kde-apps/dolphin thumbnail
+
 # James Le Cuirot <chewi@gentoo.org> (18 Aug 2015)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
 # anything in the tree. The toolchain folks aren't keen to support it
