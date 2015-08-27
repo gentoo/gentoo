@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 net-libs/accounts-qt net-libs/signond net-libs/libproxy[-kde] x11-libs/libnotify test? ( dev-qt/qttest:5 )
+DESCRIPTION=Signon UI
+EAPI=5
+HOMEPAGE=https://launchpad.net/signon-ui
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-3
+RDEPEND=dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 net-libs/accounts-qt net-libs/signond net-libs/libproxy[-kde] x11-libs/libnotify
+RESTRICT=test
+SLOT=0
+SRC_URI=https://launchpad.net/signon-ui/trunk/0.15/+download/signon-ui-0.15.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=8077f14a1435c280e950b727292138ba
