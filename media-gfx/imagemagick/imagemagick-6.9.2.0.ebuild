@@ -19,9 +19,8 @@ IUSE="autotrace bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri jbig 
 
 RESTRICT="perl? ( userpriv )"
 
-# Drop the libtool dep once libltdl goes stable.
 RDEPEND="
-	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
+	dev-libs/libltdl:0
 	autotrace? ( >=media-gfx/autotrace-0.31.1 )
 	bzip2? ( app-arch/bzip2 )
 	corefonts? ( media-fonts/corefonts )
@@ -70,8 +69,6 @@ REQUIRED_USE="corefonts? ( truetype )
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-6.9.1.7-cflags.patch
-
 	epatch_user
 
 	elibtoolize # for Darwin modules
@@ -152,7 +149,7 @@ src_test() {
 
 src_install() {
 	# Ensure documentation installation files and paths with each release!
-	emake \
+	emake -j1 \
 		DESTDIR="${D}" \
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install

@@ -25,9 +25,15 @@ multilib_src_configure() {
 	local mycmakeargs="-DAPULSEPATH=${EPREFIX}/usr/$(get_libdir)/apulse"
 
 	cmake-utils_src_configure
+
+	# Ensure all relevant libdirs are added
+	DIRS=
+	_add_dir() { DIRS="${EPREFIX}/usr/$(get_libdir)/apulse${DIRS:+:${DIRS}}"; }
+	multilib_foreach_abi _add_dir
+	sed -e "s#@@DIRS@@#${DIRS}#g" "${FILESDIR}"/apulse > "${T}"/apulse
 }
 
 multilib_src_install() {
 	cmake-utils_src_install
-	dobin "${FILESDIR}"/apulse
+	dobin "${T}"/apulse
 }
