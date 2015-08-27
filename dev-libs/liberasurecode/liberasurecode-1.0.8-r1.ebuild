@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-inherit autotools multilib toolchain-funcs
+
+inherit autotools eutils multilib toolchain-funcs
 
 DESCRIPTION="Erasure Code API library written in C with pluggable Erasure Code backends."
 HOMEPAGE="https://bitbucket.org/tsg-/liberasurecode/overview"
@@ -14,7 +15,7 @@ S="${WORKDIR}/tsg--${PN}-${CUSTOM_VERSION}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
+IUSE="doc static-libs"
 
 RDEPEND=""
 DEPEND="sys-devel/autoconf
@@ -25,14 +26,18 @@ src_prepare() {
 		-e 's/mmx\ /mmx2\ /g' \
 		-e 's/cat\ g/#cat\ g/g' configure.ac || die
 	sed -i -e "s/^TARGET_DIR.*$/TARGET_DIR=\/usr\/share\/doc\/${PF}\/html/g" doc/Makefile.am || die
-	eautoreconf -i -v || die "autoconf failed"
+	eautoreconf -i -v
 }
 
 src_configure() {
-		econf --htmldir /usr/share/doc/${PF}
+		econf \
+			--htmldir=/usr/share/doc/${PF} \
+			--disable-werror \
+			$(use_enable doc doxygen) \
+			$(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	rm "${D}"/usr/$(get_libdir)/*.la || die
+	default
+	prune_libtool_files
 }
