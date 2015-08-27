@@ -23,7 +23,7 @@ RDEPEND="!!<x11-misc/lightdm-1.1.1
 	x11-libs/gtk+:3
 	>=x11-misc/lightdm-1.2.2
 	x11-themes/gnome-themes-standard
-	x11-themes/gnome-icon-theme"
+	|| ( >=x11-themes/adwaita-icon-theme-3.14.1 x11-themes/gnome-icon-theme )"
 
 GENTOO_BG="gentoo-bg_65.jpg"
 
