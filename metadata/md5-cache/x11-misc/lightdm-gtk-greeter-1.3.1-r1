@@ -6,7 +6,7 @@ HOMEPAGE=https://launchpad.net/lightdm-gtk-greeter
 IUSE=branding
 KEYWORDS=amd64 arm ~ppc x86
 LICENSE=GPL-3 LGPL-3 branding? ( CC-BY-3.0 )
-RDEPEND=!!<x11-misc/lightdm-1.1.1 x11-libs/gtk+:3 >=x11-misc/lightdm-1.2.2 x11-themes/gnome-themes-standard x11-themes/gnome-icon-theme
+RDEPEND=!!<x11-misc/lightdm-1.1.1 x11-libs/gtk+:3 >=x11-misc/lightdm-1.2.2 x11-themes/gnome-themes-standard || ( >=x11-themes/adwaita-icon-theme-3.14.1 x11-themes/gnome-icon-theme )
 SLOT=0
 SRC_URI=https://launchpad.net/lightdm-gtk-greeter/1.4/1.3.1/+download/lightdm-gtk-greeter-1.3.1.tar.gz branding? ( https://dev.gentoo.org/~hwoarang/distfiles/lightdm-gentoo-patch-2.tar.gz )
-_md5_=79fc8c9f1c5335047ac1afba856a9e25
+_md5_=bd2ec6f55b68129e5f687f05bffcb37d

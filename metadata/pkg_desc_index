@@ -10401,7 +10401,7 @@ kde-apps/kcharselect 4.14.3: KDE character selection utility
 kde-apps/kcmshell 4.14.3 15.08.0: KCMShell is a utility to host KDE control modules independently of SystemSettings
 kde-apps/kcolorchooser 4.14.3: KDE color selector/editor
 kde-apps/kcontrol 4.14.3 15.08.0: The KDE Control Center
-kde-apps/kcron 4.14.3: KDE Task Scheduler
+kde-apps/kcron 4.14.3 15.08.0: KDE Task Scheduler
 kde-apps/kde-base-artwork 4.14.3 15.08.0: KDE base artwork
 kde-apps/kde-dev-scripts 4.14.3: KDE Development Scripts
 kde-apps/kde-dev-utils 4.14.3: KDE Development Utilities
@@ -10409,7 +10409,7 @@ kde-apps/kde-l10n 15.08.0: KDE internationalization package
 kde-apps/kde-wallpapers 4.14.3 15.08.0: KDE wallpapers
 kde-apps/kde4-l10n 4.14.3 15.08.0: KDE internationalization package
 kde-apps/kdeaccessibility-meta 4.14.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
-kde-apps/kdeadmin-meta 4.14.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
+kde-apps/kdeadmin-meta 4.14.3 15.08.0: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdeartwork-colorschemes 4.14.3: KDE extra colorschemes
 kde-apps/kdeartwork-desktopthemes 4.14.3: Additional KDE4 Plasma themes
 kde-apps/kdeartwork-emoticons 4.14.3: EmotIcons (icons for things like smilies :-) for kde
@@ -10522,7 +10522,7 @@ kde-apps/ksquares 4.14.3: KSquares is an implementation of the game squares for 
 kde-apps/kstars 4.14.3 4.14.3-r1: KDE Desktop Planetarium
 kde-apps/kstart 4.14.3 15.08.0: KDE: Utility to launch applications with special window properties
 kde-apps/ksudoku 4.14.3: KDE Sudoku
-kde-apps/ksystemlog 4.14.3: KDE system log viewer
+kde-apps/ksystemlog 4.14.3 15.08.0: KDE system log viewer
 kde-apps/kteatime 4.14.3: KDE timer for making a fine cup of tea
 kde-apps/ktimer 4.14.3: KDE Timer
 kde-apps/ktimezoned 4.14.3 15.08.0: KDE: Timezone daemon
@@ -10534,7 +10534,7 @@ kde-apps/ktux 4.14.3: KDE: screensaver featuring the Space-Faring Tux
 kde-apps/kubrick 4.14.3: A game based on the "Rubik's Cube" puzzle
 kde-apps/kuiserver 4.14.3 15.08.0: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 4.14.3 15.08.0: KDE: Plugins to manage filtering URIs
-kde-apps/kuser 4.14.3: KDE application that helps you manage system users
+kde-apps/kuser 4.14.3 15.08.0: KDE application that helps you manage system users
 kde-apps/kwalletd 4.14.3-r1 4.14.3-r2 15.08.0: KDE Password Server
 kde-apps/kwalletmanager 4.14.3: KDE Wallet Management Tool
 kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning program
@@ -15920,7 +15920,7 @@ sys-auth/pam_usb 0.5.0: A pam module to provide authentication using USB device
 sys-auth/pam_yubico 2.17-r1 2.19-r1: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20101024-r2 20120417-r3 20140313 20150213: PAM base configuration files
 sys-auth/passwdqc 1.3.0: Password strength checking library (and PAM module)
-sys-auth/polkit 0.112-r2 0.112-r3 0.113: Policy framework for controlling privileges for system-wide services
+sys-auth/polkit 0.112-r3 0.113: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-kde-agent 0.99.1-r1: PolKit agent module for KDE
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.112.0-r1: PolicyKit Qt4 API wrapper library
