@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=expect? ( dev-tcltk/expect ) perl? ( dev-lang/perl ) python? ( dev-lang/python ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A testsuite for the linux kernel
 EAPI=5
-HOMEPAGE=http://ltp.sourceforge.net/
+HOMEPAGE=http://linux-test-project.github.io/
 IUSE=expect perl pm open-posix python rt
 KEYWORDS=~amd64 ~hppa ~ppc ~x86
 LICENSE=GPL-2
 RESTRICT=test
 SLOT=0
-SRC_URI=mirror://sourceforge/ltp/LTP%20Source/ltp-20150420/ltp-full-20150420.tar.bz2 -> ltp-20150420.tar.bz2
+SRC_URI=https://github.com/linux-test-project/ltp/archive/20150420.tar.gz -> ltp-20150420.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=78edbd3409932704a636f4ef05b11fd3
+_md5_=f7a159b30b9a39c40d20d52df369aced
