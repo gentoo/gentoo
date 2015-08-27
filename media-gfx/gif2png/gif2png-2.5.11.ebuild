@@ -18,8 +18,6 @@ RDEPEND=">=media-libs/libpng-1.2:0
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS NEWS README"
-
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-makefile.patch
 	tc-export CC
