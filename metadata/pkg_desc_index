@@ -13251,7 +13251,7 @@ net-firewall/ipkungfu 0.5.2-r1 0.6.1: A nice iptables firewall script
 net-firewall/ipsec-tools 0.8.0-r5 0.8.1-r1 0.8.2: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.1: Netflow iptables module
-net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2: Linux kernel (2.4+) firewall, NAT and packet mangling tools
+net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
 net-firewall/nfacct 1.0.0 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
