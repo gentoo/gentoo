@@ -16276,7 +16276,7 @@ sys-fs/mac-fdisk 0.1-r7 0.1_p16: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.2.6-r1 3.3.1-r2 3.3.2-r1 3.3.3 3.3.4: A useful tool for running RAID systems - it can be used as a replacement for the raidtools
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
-sys-fs/mtd-utils 1.4.5 1.4.6 1.4.8 1.5.0 1.5.1 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
+sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.13 4.0.15 4.0.16 4.0.17 4.0.18: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1: Device mapper target autoconfig
