@@ -1,0 +1,289 @@
+diff --git a/Accounts/Accounts.pro b/Accounts/Accounts.pro
+index b5e77fc..8b3d0d6 100644
+--- a/Accounts/Accounts.pro
++++ b/Accounts/Accounts.pro
+@@ -44,8 +44,10 @@ QT -= gui
+ 
+ greaterThan(QT_MAJOR_VERSION, 4) {
+     TARGET = accounts-qt5
++    CMAKE_BASENAME = AccountsQt5
+ } else {
+     TARGET = accounts-qt
++    CMAKE_BASENAME = AccountsQt
+ }
+ 
+ PKGCONFIG += \
+@@ -65,10 +67,12 @@ pkgconfig.files = $${TARGET}.pc
+ include($${TOP_SRC_DIR}/common-pkgconfig.pri)
+ INSTALLS += pkgconfig
+ 
+-QMAKE_SUBSTITUTES += AccountsQtConfig.cmake.in \
+-    AccountsQtConfigVersion.cmake.in
+-cmake_modules.files = AccountsQtConfig.cmake \
+-    AccountsQtConfigVersion.cmake
+-cmake_modules.path = $${CMAKE_CONFIG_PATH}
++QMAKE_SUBSTITUTES += \
++    $${CMAKE_BASENAME}Config.cmake.in \
++    $${CMAKE_BASENAME}ConfigVersion.cmake.in
++cmake_modules.files = \
++    $${CMAKE_BASENAME}Config.cmake \
++    $${CMAKE_BASENAME}ConfigVersion.cmake
++cmake_modules.path = $${CMAKE_CONFIG_PATH}/$${CMAKE_BASENAME}
+ 
+-INSTALLS += cmake_modules
+\ No newline at end of file
++INSTALLS += cmake_modules
+diff --git a/Accounts/AccountsQt5Config.cmake.in b/Accounts/AccountsQt5Config.cmake.in
+new file mode 100644
+index 0000000..55a8964
+--- /dev/null
++++ b/Accounts/AccountsQt5Config.cmake.in
+@@ -0,0 +1,5 @@
++#  ACCOUNTSQT_INCLUDE_DIRS - The libaccounts-qt include directories
++#  ACCOUNTSQT_LIBRARIES - The libraries needed to use libaccounts-qt
++
++set(ACCOUNTSQT_LIBRARIES $${INSTALL_LIBDIR}/lib$${TARGET}.so)
++set(ACCOUNTSQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET}/)
+\ No newline at end of file
+diff --git a/Accounts/AccountsQt5ConfigVersion.cmake.in b/Accounts/AccountsQt5ConfigVersion.cmake.in
+new file mode 100644
+index 0000000..d086b47
+--- /dev/null
++++ b/Accounts/AccountsQt5ConfigVersion.cmake.in
+@@ -0,0 +1,10 @@
++set(PACKAGE_VERSION $${PROJECT_VERSION})
++
++if("${PACKAGE_VERSION}" VERSION_LESS "${PACKAGE_FIND_VERSION}" )
++   set(PACKAGE_VERSION_COMPATIBLE FALSE)
++else("${PACKAGE_VERSION}" VERSION_LESS "${PACKAGE_FIND_VERSION}" )
++   set(PACKAGE_VERSION_COMPATIBLE TRUE)
++   if( "${PACKAGE_FIND_VERSION}" STREQUAL "${PACKAGE_VERSION}")
++      set(PACKAGE_VERSION_EXACT TRUE)
++   endif( "${PACKAGE_FIND_VERSION}" STREQUAL "${PACKAGE_VERSION}")
++endif("${PACKAGE_VERSION}" VERSION_LESS "${PACKAGE_FIND_VERSION}" )
+\ No newline at end of file
+diff --git a/Accounts/manager.cpp b/Accounts/manager.cpp
+index fd1821a..2eb077f 100644
+--- a/Accounts/manager.cpp
++++ b/Accounts/manager.cpp
+@@ -187,6 +187,31 @@ Manager::Manager(const QString &serviceType, QObject *parent):
+ }
+ 
+ /*!
++ * Constructor, allowing option flags to be specified.
++ * Users should check for lastError() to check if manager construction
++ * was fully succesful.
++ */
++Manager::Manager(Options options, QObject *parent):
++    QObject(parent),
++    d(new Private)
++{
++    bool disableNotifications = options.testFlag(DisableNotifications);
++
++    GError *error = NULL;
++    AgManager *manager =
++        (AgManager *)g_initable_new(AG_TYPE_MANAGER, NULL, &error,
++                                    "use-dbus", !disableNotifications,
++                                    NULL);
++    if (Q_LIKELY(manager)) {
++        d->init(this, manager);
++    } else {
++        qWarning() << "Manager could not be created." << error->message;
++        d->lastError = Error(error);
++        g_error_free(error);
++    }
++}
++
++/*!
+  * Destructor.
+  */
+ Manager::~Manager()
+@@ -501,6 +526,23 @@ bool Manager::abortOnTimeout() const
+ }
+ 
+ /*!
++ * @return Configuration options for this object.
++ */
++Manager::Options Manager::options() const
++{
++    bool useDBus = true;
++    g_object_get(d->m_manager,
++                 "use-dbus", &useDBus,
++                 NULL);
++
++    Options opts;
++    if (!useDBus) {
++        opts |= DisableNotifications;
++    }
++    return opts;
++}
++
++/*!
+  * Gets the last error. Not all operations set/reset the error; see the
+  * individual methods' documentation to see if they set the last error or
+  * not. Call this method right after an account operation
+diff --git a/Accounts/manager.h b/Accounts/manager.h
+index d32c514..c88be2b 100644
+--- a/Accounts/manager.h
++++ b/Accounts/manager.h
+@@ -53,8 +53,18 @@ class ACCOUNTS_EXPORT Manager: public QObject
+     Q_OBJECT
+ 
+ public:
++    /*!
++     * @enum Option
++     * @brief Specifies options for the object.
++     */
++    enum Option {
++        DisableNotifications = 0x1, /**< Disable all inter-process notifications */
++    };
++    Q_DECLARE_FLAGS(Options, Option)
++
+     Manager(QObject *parent = 0);
+     Manager(const QString &serviceType, QObject *parent = 0);
++    Manager(Options options, QObject *parent = 0);
+     ~Manager();
+ 
+     Account *account(const AccountId &id) const;
+@@ -83,6 +93,8 @@ public:
+     void setAbortOnTimeout(bool abort);
+     bool abortOnTimeout() const;
+ 
++    Options options() const;
++
+     Error lastError() const;
+ 
+ Q_SIGNALS:
+@@ -105,4 +117,6 @@ private:
+ 
+ } //namespace Accounts
+ 
++Q_DECLARE_OPERATORS_FOR_FLAGS(Accounts::Manager::Options)
++
+ #endif // ACCOUNTS_MANAGER_H
+diff --git a/Accounts/provider.cpp b/Accounts/provider.cpp
+index 7e2941d..93a24c5 100644
+--- a/Accounts/provider.cpp
++++ b/Accounts/provider.cpp
+@@ -3,7 +3,7 @@
+  * This file is part of libaccounts-qt
+  *
+  * Copyright (C) 2009-2011 Nokia Corporation.
+- * Copyright (C) 2012 Canonical Ltd.
++ * Copyright (C) 2012-2014 Canonical Ltd.
+  *
+  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
+  *
+@@ -82,8 +82,10 @@ Provider &Provider::operator=(const Provider &other)
+ 
+ Provider::~Provider()
+ {
+-    ag_provider_unref(m_provider);
+-    m_provider = 0;
++    if (m_provider != 0) {
++        ag_provider_unref(m_provider);
++        m_provider = 0;
++    }
+ }
+ 
+ /*!
+@@ -153,6 +155,15 @@ QString Provider::iconName() const
+ }
+ 
+ /*!
++ * @return A regular expression pattern which matches all the internet domains
++ * in which this type of account can be used.
++ */
++QString Provider::domainsRegExp() const
++{
++    return UTF8(ag_provider_get_domains_regex(m_provider));
++}
++
++/*!
+  * @return Whether the provider supports creating one account at most.
+  */
+ bool Provider::isSingleAccount() const
+diff --git a/Accounts/provider.h b/Accounts/provider.h
+index 27d923d..7c04c3f 100644
+--- a/Accounts/provider.h
++++ b/Accounts/provider.h
+@@ -3,7 +3,7 @@
+  * This file is part of libaccounts-qt
+  *
+  * Copyright (C) 2009-2011 Nokia Corporation.
+- * Copyright (C) 2012 Canonical Ltd.
++ * Copyright (C) 2012-2014 Canonical Ltd.
+  *
+  * Contact: Alberto Mardegan <alberto.mardegan@canonical.com>
+  *
+@@ -61,6 +61,7 @@ public:
+     QString pluginName() const;
+     QString trCatalog() const;
+     QString iconName() const;
++    QString domainsRegExp() const;
+     bool isSingleAccount() const;
+     const QDomDocument domDocument() const;
+ 
+diff --git a/common-project-config.pri b/common-project-config.pri
+index c252e81..de6f0ae 100644
+--- a/common-project-config.pri
++++ b/common-project-config.pri
+@@ -62,7 +62,7 @@ isEmpty( LIBDIR ) {
+ }
+ 
+ isEmpty ( CMAKE_CONFIG_PATH ) {
+-    CMAKE_CONFIG_PATH = $${INSTALL_LIBDIR}/cmake/AccountsQt/
++    CMAKE_CONFIG_PATH = $${INSTALL_LIBDIR}/cmake
+     message("====")
+     message("==== NOTE: To override the cmake module installation path run: `qmake CMAKE_CONFIG_PATH=/custom/path'")
+     message("==== (current installation path is `$${CMAKE_CONFIG_PATH}')")
+diff --git a/common-vars.pri b/common-vars.pri
+index 8b2d740..07ffb59 100644
+--- a/common-vars.pri
++++ b/common-vars.pri
+@@ -13,7 +13,7 @@ PROJECT_NAME = accounts-qt
+ #-----------------------------------------------------------------------------
+ # Project version
+ #-----------------------------------------------------------------------------
+-PROJECT_VERSION = 1.11
++PROJECT_VERSION = 1.13
+ 
+ #-----------------------------------------------------------------------------
+ # Library version
+diff --git a/tests/MyProvider.provider b/tests/MyProvider.provider
+index 1f1dd5c..3ffbbb5 100644
+--- a/tests/MyProvider.provider
++++ b/tests/MyProvider.provider
+@@ -5,6 +5,7 @@
+   <description>fast &amp; furious</description>
+   <translations>accounts</translations>
+   <plugin>generic-oauth</plugin>
++  <domains>.*example.net</domains>
+   <single-account>true</single-account>
+ 
+   <template>
+diff --git a/tests/accountstest.cpp b/tests/accountstest.cpp
+index b51bcab..beaa006 100644
+--- a/tests/accountstest.cpp
++++ b/tests/accountstest.cpp
+@@ -72,6 +72,12 @@ void AccountsTest::managerTestCase()
+     mgr->setTimeout(123);
+     QCOMPARE(mgr->timeout(), quint32(123));
+ 
++    QCOMPARE(mgr->options().testFlag(Manager::DisableNotifications), false);
++
++    delete mgr;
++
++    mgr = new Manager(Manager::DisableNotifications);
++    QCOMPARE(mgr->options().testFlag(Manager::DisableNotifications), true);
+     delete mgr;
+ }
+ 
+@@ -210,6 +216,7 @@ void AccountsTest::providerTestCase()
+     QCOMPARE(provider.description(), QString("fast & furious"));
+     QCOMPARE(provider.trCatalog(), QString("accounts"));
+     QCOMPARE(provider.pluginName(), QString("generic-oauth"));
++    QCOMPARE(provider.domainsRegExp(), QString(".*example.net"));
+     QCOMPARE(provider.isSingleAccount(), true);
+ 
+     QDomDocument dom = provider.domDocument();
