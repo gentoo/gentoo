@@ -1853,7 +1853,7 @@ app-misc/recoll 1.17.3-r1 1.19.5: A personal full text search package
 app-misc/regex-markup 0.10.0: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/relevation 1.3: a command-line searcher for the Revelation password manager
-app-misc/remind 03.01.13 03.01.14 03.01.15: Ridiculously functional reminder program
+app-misc/remind 03.01.15: Ridiculously functional reminder program
 app-misc/reptyr 0.5 0.6 0.6.1 0.6.2: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.0-r2: Command line tool for transfering mp3s to and from a Rio 600, 800, Rio Riot, and Nike PSA/Play
@@ -13677,8 +13677,8 @@ net-mail/getmail 4.48.0: A POP3 mail retriever with reliable Maildir and mbox de
 net-mail/gnubiff 2.2.15-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
-net-mail/imapsync 1.592-r1 1.607-r1: A tool allowing incremental and recursive imap transfer from one mailbox to another
-net-mail/isync 1.0.6 1.1.0 1.1.1 1.1.2 1.2.0: MailDir mailbox synchronizer
+net-mail/imapsync 1.592-r1 1.607-r1 1.644: A tool allowing incremental and recursive imap transfer from one mailbox to another
+net-mail/isync 1.0.6 1.2.0: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.39: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
@@ -17789,7 +17789,7 @@ x11-plugins/wmfishtime 1.24-r1 1.24-r2: A fun clock applet for your desktop feat
 x11-plugins/wmforkplop 0.9.3 0.9.3-r1: monitors the forking activity of the kernel and most active processes
 x11-plugins/wmfortune 0.241: a dockapp showing fortune-mod messages
 x11-plugins/wmfrog 0.2.0-r1 0.3.1: a weather application, it shows the weather in a graphical way
-x11-plugins/wmfsm 0.34-r2 0.36: dockapp for monitoring filesystem usage
+x11-plugins/wmfsm 0.34-r1 0.34-r2 0.36: dockapp for monitoring filesystem usage
 x11-plugins/wmget 0.6.0: a libcurl based dockapp for automated downloads
 x11-plugins/wmgrabimage 0.72-r1: wmGrabImage grabs an image from the WWW and displays it
 x11-plugins/wmgtemp 1.0: CPU and SYS temperature dockapp
