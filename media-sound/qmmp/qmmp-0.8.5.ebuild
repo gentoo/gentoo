@@ -41,7 +41,6 @@ RDEPEND="media-libs/taglib
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
 	mplayer? ( media-video/mplayer )
-	)
 	mpris? ( dev-qt/qtdbus:4 )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
