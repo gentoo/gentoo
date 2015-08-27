@@ -16,9 +16,9 @@
 		<name>Robin H. Johnson</name>
 		<description>Maintainer, has 1st gen WiSpy hardware for testing</description>
 	</maintainer>
-<use>
-	<flag name="debug">Build the raw output client for spectools. (for developers)</flag>
-	<flag name="ncurses">Build the ncurses based client for spectools</flag>
-	<flag name="gtk">Build the gtk-2 based client for spectools</flag>
-</use>
+	<use>
+		<flag name="debug">Build the raw output client for spectools. (for developers)</flag>
+		<flag name="ncurses">Build the ncurses based client for spectools</flag>
+		<flag name="gtk">Build the gtk-2 based client for spectools</flag>
+	</use>
 </pkgmetadata>
