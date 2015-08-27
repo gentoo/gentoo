@@ -12,6 +12,6 @@ inherit emboss-r1
 
 LICENSE+=" freedist"
 
-KEYWORDS="amd64 ~ppc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~x86-linux ~ppc-macos"
 
 PATCHES=( "${FILESDIR}"/${P}_fix-build-system.patch )
