@@ -173,6 +173,11 @@ src_prepare() {
 
 	[[ ${PV} == "9999" ]] && emake -f codegenerator.mk
 
+	# JsonSchemaBuilder isn't built by the Kodi build system, but it used by it, so manually build it #558798
+	if use java ; then
+		emake -C tools/depends/native/JsonSchemaBuilder/
+	fi
+
 	# Disable internal func checks as our USE/DEPEND
 	# stuff handles this just fine already #408395
 	export ac_cv_lib_avcodec_ff_vdpau_vc1_decode_picture=yes
