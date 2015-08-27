@@ -4925,7 +4925,7 @@ dev-libs/yaz 3.0.50 3.0.53 4.2.30 4.2.51: C/C++ programmer's toolkit supporting 
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.60-r1 0.13.62: Lightweight library used to easily extract data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
-dev-lisp/asdf 1.86-r1 1.89 3.0.3 3.1.4: ASDF is Another System Definition Facility for Common Lisp
+dev-lisp/asdf 1.86-r1 1.89 3.0.3 3.1.4 3.1.5: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
 dev-lisp/cl-clx 0.7.1 0.7.2 0.7.3: CLX is the Common Lisp interface to the X11 protocol primarily for SBCL
 dev-lisp/cl-ppcre 1.2.10 1.2.11 1.2.12 1.2.13 1.2.14 1.2.15 1.2.16: CL-PPCRE is a portable regular expression library for Common Lisp
@@ -4939,7 +4939,7 @@ dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
 dev-lisp/hyperspec 7.0 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/sbcl 1.0.55-r1 1.1.18 1.2.2 1.2.4 1.2.6 1.2.7 1.2.9 1.2.10 1.2.11 1.2.13: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
-dev-lisp/uiop 3.0.3 3.1.4: UIOP is a portability layer spun off ASDF3
+dev-lisp/uiop 3.0.3 3.1.4 3.1.5: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/lgi 0.6.2 0.6.2-r1 0.7.2 0.9.0: Lua bindings using gobject-introspection
