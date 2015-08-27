@@ -34,10 +34,12 @@ RDEPEND="dev-libs/atk
 	media-libs/freetype
 	media-libs/gst-plugins-base
 	media-libs/gstreamer
+	media-libs/libcanberra[gtk]
 	media-libs/libogg
 	media-libs/libpng:1.2
 	media-libs/libvorbis
 	media-libs/speex
+	virtual/krb5
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
