@@ -9,8 +9,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Library for testing Java code using mock objects"
-SRC_URI="http://${PN}.codehaus.org/dist/${P}-jars.zip"
-HOMEPAGE="http://jmock.codehaus.org"
+SRC_URI="http://www.${PN}.org/downloads/${P}-jars.zip"
+HOMEPAGE="http://www.jmock.org/"
 
 LICENSE="BSD"
 SLOT="1.0"
@@ -30,7 +30,7 @@ JAVA_GENTOO_CLASSPATH="junit"
 
 src_unpack() {
 	unpack ${A}
-	unzip ${PN}-core-${PV}.jar -d src || die
+	unzip "${PN}-core-${PV}.jar" -d src || die
 }
 
 java_prepare() {
