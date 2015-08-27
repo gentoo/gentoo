@@ -20,7 +20,7 @@ DEPEND="
 	x11-libs/libXrender
 	semantic-desktop? (
 		$(add_kdebase_dep baloo)
-		$(add_kdebase_dep baloo-widgets)
+		$(add_kdeapps_dep baloo-widgets)
 		$(add_kdebase_dep kfilemetadata)
 	)
 "
