@@ -13580,6 +13580,7 @@ net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its AP
 net-libs/librpcsecgss 0.16 0.19 0.19-r1: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
 net-libs/librsync 0.9.7-r3: Flexible remote checksum-based differencing
 net-libs/libs3 2.0-r1: A C Library API for Amazon S3
+net-libs/libsignon-glib 1.12: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.46.0-r1 2.48.1 2.50.0: An HTTP library implementation in C
 net-libs/libsoup-gnome 2.46.0 2.46.0-r1 2.48.1 2.50.0: GNOME plugin for libsoup
@@ -13629,6 +13630,7 @@ net-libs/rest 0.7.92-r1 0.7.92-r2 0.7.93: Helper library for RESTful services
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/serf 1.3.8: HTTP client library
+net-libs/signon-oauth2 0.21: OAuth2 plugin for Signon daemon
 net-libs/signond 8.57: Signon daemon for libaccounts-glib
 net-libs/socket++ 1.12.12-r2 1.12.13: C++ Socket Library
 net-libs/socket_wrapper 1.1.3 1.1.4: A library passing all socket communications through unix sockets
