@@ -1,0 +1,36 @@
+--- build.xml.orig	2015-02-15 02:58:04.000000000 +0000
++++ build.xml	2015-08-27 23:11:09.807800249 +0100
+@@ -267,7 +267,7 @@
+ 		</javac>
+ 	</target>
+ 	
+-	<target name="compile" depends="compile.core, compile.junit, compile.contrib, compile.samples"
++	<target name="compile" depends="compile.core, compile.contrib, compile.samples"
+ 	 		description="Compiles all JDOM code (core, samples, junit, contrib)" />
+ 
+ 	<!-- =================================================================== -->
+@@ -296,7 +296,7 @@
+ 	<!-- =================================================================== -->
+ 	<!-- Creates the jars                                           -->
+ 	<!-- =================================================================== -->
+-	<target name="jars" depends="compile, javadoc"
++	<target name="jars" depends="compile"
+ 	    description="Builds the Jars">
+ 		<fixcrlf srcdir="." includes="**/*.bat" excludes="build*.*" eol="crlf"/>
+ 		<fixcrlf srcdir="." includes="**/*.sh" excludes="build*.*" eol="lf"/>
+@@ -320,6 +320,7 @@
+ 			<fileset dir="${contrib.build}" includes="**/*" />
+ 			<fileset dir="${metainf.build}" excludes="**/MANIFEST.MF" />
+ 		</jar>
++<!--
+ 		<jar jarfile="${package}/${jarbase}-junit.jar" >
+ 			<fileset dir="${junit.build}" includes="**/*" />
+ 			<fileset dir="${metainf.build}" excludes="**/MANIFEST.MF" />
+@@ -332,6 +333,7 @@
+ 			<fileset dir="${contrib.src}" includes="**/*" />
+ 		</jar>
+ 	    	    
++-->
+ 	</target>
+ 	
+ 	<target name="androidtests" depends="jars">
