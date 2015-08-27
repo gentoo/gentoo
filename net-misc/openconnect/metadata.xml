@@ -2,15 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<maintainer>
 		<email>mattsch@gmail.com</email>
 		<name>Matthew Schultz</name>
 		<description>Proxied maintainer. Assign bugs to him.</description>
 	</maintainer>
-	<maintainer>
-		<email>floppym@gentoo.org</email>
-		<name>Mike Gilbert</name>
-	</maintainer>
-	<herd>proxy-maintainers</herd>
 	<use>
 		<flag name='gssapi'>Build GSSAPI support.</flag>
 		<flag name='java'>Build JNI bindings using jni.h</flag>
