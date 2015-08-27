@@ -251,11 +251,6 @@ dev-java/exolabtools
 dev-java/burlap
 dev-java/caucho-services
 
-# Michael Sterrett <mr_bones_@gentoo.org> (13 Jul 2015)
-# No commit since 2007 and no further linux support besides
-# Masked for removal on 20150812
-games-emulation/handy
-
 # Sergey Popov <pinkbyte@gentoo.org> (13 Jul 2015)
 # Mask new version of Boost - it's known to cause breakages
 ~dev-util/boost-build-1.58.0
