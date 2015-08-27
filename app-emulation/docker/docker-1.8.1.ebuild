@@ -20,7 +20,7 @@ else
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
-inherit bash-completion-r1 linux-info multilib systemd udev user
+inherit eutils bash-completion-r1 linux-info multilib systemd udev user
 
 DESCRIPTION="Docker complements kernel namespacing with a high-level API which operates at the process level"
 HOMEPAGE="https://dockerproject.org"
@@ -170,6 +170,7 @@ pkg_setup() {
 
 src_prepare() {
 	cd "src/${EGO_PN}" || die
+	epatch "${FILESDIR}"/15404-fix-go14_15.patch
 	# allow user patches (use sparingly - upstream won't support them)
 	epatch_user
 }
