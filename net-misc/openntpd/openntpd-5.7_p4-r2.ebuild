@@ -76,6 +76,9 @@ pkg_postinst() {
 			ewarn "Unable to remove legacy ${EROOT%/}${NTP_HOME}/etc directory"
 	fi
 
+	# Fix permissions on home directory
+	chown root:root "${EROOT%/}${NTP_HOME}" || die
+
 	[[ -f ${EROOT}var/log/ntpd.log ]] && \
 		ewarn "Logfile '${EROOT}var/log/ntpd.log' might be orphaned, please remove it if not in use via syslog."
 
