@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure
+DEFINED_PHASES=compile configure prepare
 DEPEND=>=media-sound/jack-audio-connection-kit-0.109.2 qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 dev-qt/qtwidgets:5 ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) alsa? ( media-libs/alsa-lib ) dbus? ( dev-qt/qtdbus:4 ) portaudio? ( media-libs/portaudio )
 DESCRIPTION=A Qt application to control the JACK Audio Connection Kit and ALSA sequencer connections
 EAPI=5
@@ -10,4 +10,4 @@ RDEPEND=>=media-sound/jack-audio-connection-kit-0.109.2 qt5? ( dev-qt/qtcore:5 d
 SLOT=0
 SRC_URI=mirror://sourceforge/qjackctl/qjackctl-0.4.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=6c3a942a0f753f0b3816d2069097a862
+_md5_=e6b24b8ec080c7f4a12de14356f3eed0
