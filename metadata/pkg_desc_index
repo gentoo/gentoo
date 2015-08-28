@@ -4890,7 +4890,7 @@ dev-libs/tvision 2.1.0_pre2-r3: Text User Interface that implements the well kno
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/uchardet 0.0.1: C port of Mozilla's Automatic Charset Detection algorithm
 dev-libs/ucl 1.03-r1: the UCL Compression Library
-dev-libs/ucommon 5.2.2-r3 6.0.3 6.1.10 6.3.1 6.5.2: Portable C++ runtime for threads and sockets
+dev-libs/ucommon 5.2.2-r3 6.0.3 6.1.10 6.3.1 6.5.2 6.5.7: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
 dev-libs/urdfdom 0.3.0 9999: URDF (U-Robot Description Format) library
