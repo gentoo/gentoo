@@ -6,11 +6,11 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
-	<maintainer>
-		<email>bugs@bergstroem.nu</email>
-		<name>Johan Bergström</name>
-		<description>Proxy Maintainer. CC on bugs</description>
-	</maintainer>
+    <maintainer>
+        <email>julien@thebault.co</email>
+        <name>Lujeni</name>
+        <description>Proxy-Maintainer, assign bugs</description>
+    </maintainer>
 	<longdescription lang="en">
 	MongoDB (from "humongous") is a scalable, high-performance, open source,
 	schema-free, document-oriented database. Written in C++, MongoDB features:
