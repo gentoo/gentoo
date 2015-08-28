@@ -21,6 +21,7 @@ S="${WORKDIR}/${PN/-ppds}-$(get_version_component_range 3 ${PV})"
 
 src_prepare() {
 	epatch "${FILESDIR}/Makefile.in-4.0.20120117.patch"
+	rm db/source/PPD/Kyocera/ReadMe.htm || die # bug #559008
 }
 
 src_install() {
