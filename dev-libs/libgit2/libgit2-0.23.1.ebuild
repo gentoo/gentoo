@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,20 +6,31 @@ EAPI=5
 
 inherit cmake-utils multilib
 
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~ppc-macos"
+fi
+
 DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.github.com/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="0/21"
-KEYWORDS="~amd64 ~x86 ~ppc-macos"
-IUSE="examples ssh test threads trace"
+SLOT="0/23"
+IUSE="examples gssapi ssh test threads trace"
 
 RDEPEND="
+	dev-libs/openssl:0
 	sys-libs/zlib
 	net-libs/http-parser
-	ssh? ( net-libs/libssh2 )"
-DEPEND="${RDEPEND}"
+	gssapi? ( virtual/krb5 )
+	ssh? ( net-libs/libssh2 )
+"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS CONTRIBUTING.md CONVENTIONS.md README.md )
 
@@ -35,6 +46,7 @@ src_configure() {
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		$(cmake-utils_use_build test CLAR)
 		$(cmake-utils_use_enable trace TRACE)
+		$(cmake-utils_use_use gssapi GSSAPI)
 		$(cmake-utils_use_use ssh SSH)
 		$(cmake-utils_use threads THREADSAFE)
 	)

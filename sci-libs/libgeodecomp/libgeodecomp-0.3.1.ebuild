@@ -13,16 +13,20 @@ SRC_URI="http://www.libgeodecomp.org/archive/${P}.tar.bz2"
 SLOT="0"
 LICENSE="Boost-1.0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc"
+IUSE="doc examples"
 
 RDEPEND=">=dev-libs/boost-1.48"
 DEPEND="${RDEPEND}
-	dev-libs/libflatarray"
+	dev-libs/libflatarray
+	examples? ( !sys-cluster/mpich2 )"
 
 S="${WORKDIR}/${P}/src"
 
 src_prepare() {
 	epatch "${FILESDIR}/libflatarray.patch"
+	if ! use examples ; then
+		sed -i 's/examples//g' CMakeLists.txt
+	fi
 }
 
 src_compile() {
