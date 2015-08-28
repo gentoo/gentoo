@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare unpack
-DEPEND=>=dev-libs/glib-2.16:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra >=x11-libs/gtk+-2.16:2 app-text/gtkspell:2 app-text/poppler[cairo] x11-libs/gtksourceview:2.0 x11-libs/pango !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=>=dev-libs/glib-2.16:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra >=x11-libs/gtk+-2.16:2 app-text/gtkspell:2 app-text/poppler[cairo] x11-libs/gtksourceview:2.0 x11-libs/pango !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Simple LaTeX editor for GTK+ users
-EAPI=2
+EAPI=5
 HOMEPAGE=http://gummi.midnightcoding.org
-IUSE=linguas_ca linguas_da linguas_de linguas_fr linguas_el linguas_it linguas_nl linguas_pt_BR linguas_ru linguas_zh_TW
+IUSE=linguas_ar linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_es linguas_fr linguas_hu linguas_it linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sv linguas_zh_CN linguas_zh_TW
 LICENSE=MIT
 RDEPEND=>=dev-libs/glib-2.16:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra >=x11-libs/gtk+-2.16:2
 SLOT=0
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=9164980392633d502660769b33ce77b9
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=76acab19ed1c17660245e3231ac67115

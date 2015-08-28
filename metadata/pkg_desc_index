@@ -375,7 +375,7 @@ app-backup/obnam 1.9 1.13 1.14: A backup program that supports encryption and de
 app-backup/pdumpfs 1.3-r2: a daily backup system similar to Plan9's dumpfs
 app-backup/qt4-fsarchiver 0.6.19.6 0.6.19.7: Qt4 frontend for fsarchiver
 app-backup/rdiff-backup 1.2.8-r1 1.3.3 1.3.3-r1: Local/remote mirroring+incremental backup
-app-backup/rdumpfs 20131002: a rsync-based dump file system backup tool
+app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rear 1.15-r1 1.17.0 1.17.1: Fully automated disaster recovery, suppors broad variety of backup strategies and scenarios.
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/rsnapshot 1.3.1 1.3.1-r1 1.3.1-r2: A filesystem backup utility based on rsync
