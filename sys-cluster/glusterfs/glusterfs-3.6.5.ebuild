@@ -43,7 +43,7 @@ SITEFILE="50${PN}-mode-gentoo.el"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-silent_rules.patch"
 	"${FILESDIR}/${PN}-3.5.1-Add-libraries-using-LIBADD-instead-of-LDFLAGS.patch"
-	"${FILESDIR}/${PN}-3.5.1-build-shared-only.patch"
+	"${FILESDIR}/${PN}-3.6.5-build-shared-only.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
@@ -55,6 +55,14 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
 pkg_setup() {
 	( use georeplication || use glupy ) && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	autotools-utils_src_prepare
+
+	# contrib/argp-standalone source dir is not clean...
+	cd contrib/argp-standalone
+	emake distclean
 }
 
 src_configure() {
@@ -139,6 +147,7 @@ src_install() {
 
 	# QA
 	rm -rf "${ED}/var/run/" || die
+	use static-libs || find "${ED}"/usr/$(get_libdir)/ -type f -name '*.la' -delete
 
 	use georeplication && python_fix_shebang "${ED}"
 }
