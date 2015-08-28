@@ -159,8 +159,8 @@ do_configure() {
 	fi
 	# See comments in src_configure.
 	if [[ ${target} != "cross" ]] ; then
-		local tic_path="${WORKDIR}/cross/progs/tic"
-		[[ -d ${tic_path} ]] && export TIC_PATH=${tic_path}
+		local cross_path="${WORKDIR}/cross"
+		[[ -d ${cross_path} ]] && export TIC_PATH="${cross_path}/progs/tic"
 	fi
 
 	# Force bash until upstream rebuilds the configure script with a newer
