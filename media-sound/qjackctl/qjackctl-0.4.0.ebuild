@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog README TODO TRANSLATORS"
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}-qobject-include.patch"
+}
+
 src_configure() {
 	use qt5 && export PATH="$(qt5_get_bindir):${PATH}"
 	econf \
