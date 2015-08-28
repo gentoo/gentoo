@@ -46,8 +46,8 @@ RDEPEND="
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
 	|| (
-		<sys-libs/ncurses-6
-		sys-libs/ncurses:5
+		sys-libs/ncurses:0/5
+		sys-libs/ncurses:5/5
 	)
 "
 
