@@ -8,7 +8,7 @@ KDE_HANDBOOK=optional
 inherit kde4-base
 
 DESCRIPTION="KDE PIM internationalization package"
-HOMEPAGE="https://l10n.kde.org"
+HOMEPAGE="http://l10n.kde.org"
 
 DEPEND="
 	sys-devel/gettext
