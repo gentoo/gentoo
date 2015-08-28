@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,8 +8,8 @@ VIRTUALX_REQUIRED="test"
 inherit kde4-base
 
 DESCRIPTION="A DropDrawers clone. Multiple information organizer"
-HOMEPAGE="https://basket.kde.org/"
-SRC_URI="https://${PN}.kde.org/downloads/${P}.tar.bz2"
+HOMEPAGE="http://basket.kde.org/"
+SRC_URI="http://${PN}.kde.org/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"
