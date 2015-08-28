@@ -30,13 +30,13 @@ SLOT="0"
 IUSE="egl gles1 gles2"
 
 RDEPEND="
-	egl? ( media-libs/glew )
-	gles1? ( media-libs/glew )
-	gles2? ( media-libs/glew )
 	media-libs/mesa[egl?,gles1?,gles2?]
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
+	egl? ( media-libs/glew )
+	gles1? ( media-libs/glew )
+	gles2? ( media-libs/glew )
 	virtual/glu
 	x11-proto/xproto"
 
@@ -51,25 +51,11 @@ src_unpack() {
 src_prepare() {
 	base_src_prepare
 
-	eautoreconf
-}
-
-src_configure() {
-	# We're not using the complete buildsystem if we only want to build
-	# glxinfo and glxgears.
-	if use egl || use gles1 || use gles2; then
-		default_src_configure
-	fi
+	[[ $PV = 9999* ]] && eautoreconf
 }
 
 src_compile() {
-	if ! use egl && ! use gles1 && ! use gles2; then
-		tc-export CC
-		emake LDLIBS='-lX11 -lGL' src/xdemos/glxinfo
-		emake LDLIBS='-lX11 -lGL -lm' src/xdemos/glxgears
-	else
-		emake -C src/xdemos glxgears glxinfo
-	fi
+	emake -C src/xdemos glxgears glxinfo
 
 	if use egl; then
 		emake LDLIBS="-lEGL" -C src/egl/opengl/ eglinfo

@@ -19,22 +19,24 @@ DESCRIPTION="Mesa's OpenGL utility and demo programs (glxgears and glxinfo)"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
+	KEYWORDS=""
 else
 	SRC_URI="ftp://ftp.freedesktop.org/pub/${MY_PN/-//}/${PV}/${MY_P}.tar.bz2"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="egl gles1 gles2"
 
 RDEPEND="
-	media-libs/freeglut
-	media-libs/glew
 	media-libs/mesa[egl?,gles1?,gles2?]
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
+	egl? ( media-libs/glew )
+	gles1? ( media-libs/glew )
+	gles2? ( media-libs/glew )
 	virtual/glu
 	x11-proto/xproto"
 
@@ -49,7 +51,7 @@ src_unpack() {
 src_prepare() {
 	base_src_prepare
 
-	eautoreconf
+	[[ $PV = 9999* ]] && eautoreconf
 }
 
 src_compile() {
