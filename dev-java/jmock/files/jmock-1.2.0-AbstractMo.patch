@@ -1,0 +1,27 @@
+--- src/org/jmock/expectation/AssertMo.java.orig	2015-08-28 10:15:13.490000000 +0000
++++ src/org/jmock/expectation/AssertMo.java	2015-08-28 10:15:22.206000000 +0000
+@@ -73,15 +73,15 @@
+         assertTrue("Should not have verified", threwException);
+     }
+ 
+-    static protected void failNotEquals( String message,
+-                                         Object expected,
+-                                         Object actual ) {
+-        String formatted = "";
+-        if (message != null) {
+-            formatted = message + " ";
+-        }
+-        fail(formatted + "\nExpected:<" + expected + ">\nReceived:<" + actual + ">");
+-    }
++//    static protected void failNotEquals( String message,
++//                                         Object expected,
++//                                         Object actual ) {
++//        String formatted = "";
++//        if (message != null) {
++//            formatted = message + " ";
++//        }
++//        fail(formatted + "\nExpected:<" + expected + ">\nReceived:<" + actual + ">");
++//    }
+ 
+     public static void notImplemented( String mockName ) {
+         throw new NotImplementedException("Not Implemented in " + mockName);
