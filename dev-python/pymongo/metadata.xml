@@ -4,11 +4,6 @@
 	<herd>python</herd>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>bugs@bergstroem.nu</email>
-		<name>Johan Bergström</name>
-		<description>Proxy-Maintainer, assign bugs</description>
-	</maintainer>
-	<maintainer>
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>

@@ -34,7 +34,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.3-shared.patch
 	epatch "${FILESDIR}"/${PN}-2.8.17-config.patch
-	epatch "${FILESDIR}"/${P}-sharedlua.patch
+	epatch "${FILESDIR}"/${PN}-2.8.19-sharedlua.patch
 
 	# Copy lua modules into build dir
 	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
