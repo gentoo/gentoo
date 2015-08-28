@@ -11,5 +11,6 @@
 		compression.</longdescription>
 	<upstream>
 		<remote-id type="google-code">snappy</remote-id>
+		<remote-id type="github">google/snappy</remote-id>
 	</upstream>
 </pkgmetadata>

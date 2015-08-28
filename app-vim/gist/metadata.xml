@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>vim</herd>
+	<upstream>
+		<remote-id type="github">mattn/gist-vim</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>java</herd>
-<use><flag name='binary'>Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.</flag></use>
+	<herd>java</herd>
+	<use>
+		<flag name="binary">Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">scala/scala</remote-id>
+	</upstream>
 </pkgmetadata>

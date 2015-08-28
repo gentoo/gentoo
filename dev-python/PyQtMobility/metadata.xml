@@ -22,5 +22,6 @@
 			<name>Phil Thompson</name>
 		</maintainer>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<remote-id type="sourceforge">pyqt</remote-id>
 	</upstream>
 </pkgmetadata>
