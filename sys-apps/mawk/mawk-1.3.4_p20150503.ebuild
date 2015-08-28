@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 MY_P=${P/_p/-}
 DESCRIPTION="an (often faster than gawk) awk-interpreter"
