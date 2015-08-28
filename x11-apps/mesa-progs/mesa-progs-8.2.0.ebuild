@@ -27,15 +27,14 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="egl gles1 gles2"
+IUSE="egl gles2"
 
 RDEPEND="
-	media-libs/mesa[egl?,gles1?,gles2?]
+	media-libs/mesa[egl?,gles2?]
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	egl? ( media-libs/glew )
-	gles1? ( media-libs/glew )
 	gles2? ( media-libs/glew )
 	virtual/glu
 	x11-proto/xproto"
@@ -62,10 +61,6 @@ src_compile() {
 		emake -C src/egl/eglut/ libeglut_x11.la
 		emake LDLIBS="-lGL -lEGL -lX11 -lm" -C src/egl/opengl/ eglgears_x11
 
-		if use gles1; then
-			emake LDLIBS="-lGLESv1_CM -lEGL -lX11" -C src/egl/opengles1/ es1_info
-			emake LDLIBS="-lGLESv1_CM -lEGL -lX11 -lm" -C src/egl/opengles1/ gears_x11
-		fi
 		if use gles2; then
 			emake LDLIBS="-lGLESv2 -lEGL -lX11" -C src/egl/opengles2/ es2_info
 			emake LDLIBS="-lGLESv2 -lEGL -lX11 -lm" -C src/egl/opengles2/ es2gears_x11
@@ -77,11 +72,6 @@ src_install() {
 	dobin src/xdemos/{glxgears,glxinfo}
 	if use egl; then
 		dobin src/egl/opengl/egl{info,gears_x11}
-
-		if use gles1; then
-			dobin src/egl/opengles1/es1_info
-			newbin src/egl/opengles1/gears_x11 es1gears_x11
-		fi
 
 		use gles2 && dobin src/egl/opengles2/es2{_info,gears_x11}
 	fi

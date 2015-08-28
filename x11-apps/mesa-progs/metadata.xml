@@ -4,7 +4,6 @@
 <herd>x11</herd>
 <use>
         <flag name='egl'>Build EGL utilities</flag>
-        <flag name='gles1'>Build OpenGL ES 1 utilities</flag>
         <flag name='gles2'>Build OpenGL ES 2 utilities</flag>
 </use>
 </pkgmetadata>
