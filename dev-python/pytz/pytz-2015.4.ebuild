@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="World timezone definitions for Python"
-HOMEPAGE="http://pythonhosted.org/pytz/"
+HOMEPAGE="http://pythonhosted.org/pytz/ https://pypi.python.org/pypi/pytz/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"
