@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer>
+    <email>karl.j.linden@gmail.com</email>
+    <name>Karl Lindén</name>
+  </maintainer>
   <herd>proaudio</herd>
   <use>
     <flag name="fdgl">Use experimental force-directed graph layout</flag>
