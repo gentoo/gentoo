@@ -1,0 +1,11 @@
+--- a/src/daemon/PowerManager.cpp	2015-08-17 00:52:12.786176023 +0200
++++ b/src/daemon/PowerManager.cpp	2015-08-17 00:53:30.259207476 +0200
+@@ -209,7 +209,7 @@
+ #endif // HAVE_CONSOLEKIT2
+ 
+         // check if upower interface exists
+-        if (interface->isServiceRegistered(UPOWER_SERVICE))
++//        if (interface->isServiceRegistered(UPOWER_SERVICE))
+             m_backends << new UPowerBackend(UPOWER_SERVICE, UPOWER_PATH, UPOWER_OBJECT);
+     }
+ 
