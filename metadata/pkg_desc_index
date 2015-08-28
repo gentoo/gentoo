@@ -16146,7 +16146,7 @@ sys-devel/flex 2.5.35 2.5.35_p10 2.5.37 2.5.38-r1 2.5.39 2.5.39-r1: The Fast Lex
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.0 4.8.1-r1 4.8.2 4.8.3 4.8.4 4.8.5 4.9.0 4.9.1 4.9.2 4.9.3 5.1.0 5.2.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.4.1-r1 1.5-r1 1.5-r2 1.5.1 1.5.1-r1 1.6 1.7 1.7.1 1.7.2 1.7.3 1.8 1.8-r1: utility to manage compilers
-sys-devel/gdb 7.6.2 7.7.1 7.8.2 7.9.1 9999: GNU debugger
+sys-devel/gdb 7.6.2 7.7.1 7.8.2 7.9.1 7.10 9999: GNU debugger
 sys-devel/gdb-apple 563 768-r1 960 962 966 1344 1346 1461 1518 1705 1708 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.4 0.19.5 0.19.5.1-r1: GNU locale utilities
 sys-devel/gnuconfig 20130516 20131128 20140212 20140728 20150304 20150308 20150727 99999999: Updated config.sub and config.guess file from GNU
