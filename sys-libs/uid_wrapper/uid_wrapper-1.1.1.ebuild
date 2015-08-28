@@ -17,3 +17,10 @@ IUSE="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+# Work around a problem with >=dev-util/cmake-3.3.0 (bug #558340)
+# Because of this we cannot use cmake-multilib_src_configure() here.
+multilib_src_configure() {
+	local mycmakeargs=( -DCMAKE_LIBRARY_PATH=/usr/$(get_libdir) )
+	cmake-utils_src_configure
+}
