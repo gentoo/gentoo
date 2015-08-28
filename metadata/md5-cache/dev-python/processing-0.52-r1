@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=app-arch/unzip dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
 DESCRIPTION=Package for using processes, which mimics the threading module API
 EAPI=5
-HOMEPAGE=http://pyprocessing.berlios.de/ https://pypi.python.org/pypi/processing
+HOMEPAGE=https://pypi.python.org/pypi/processing
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
@@ -11,4 +11,4 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://pypi/p/processing/processing-0.52.zip
 _eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f0b44e462262898476d9041e83f775f6
+_md5_=d5f819657d1d43a49e6f06e8c9b91f8a
