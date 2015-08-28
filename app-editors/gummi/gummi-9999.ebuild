@@ -1,12 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-inherit autotools base eutils subversion
+EAPI=5
+inherit autotools base eutils git-r3
 
-ESVN_REPO_URI="http://svn.midnightcoding.org/gummi/trunk"
-ESVN_PROJECT="${PN/-svn}"
+EGIT_REPO_URI="https://github.com/alexandervdm/gummi"
 
 DESCRIPTION="Simple LaTeX editor for GTK+ users"
 HOMEPAGE="http://gummi.midnightcoding.org"
@@ -16,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-LANGS="ca da de fr el it nl pt_BR ru zh_TW"
+LANGS="ar ca cs da de el es fr hu it nl pl pt pt_BR ro ru sv zh_CN zh_TW"
 
 for X in ${LANGS} ; do
 	IUSE="${IUSE} linguas_${X}"
@@ -32,7 +31,7 @@ DEPEND="${RDEPEND}
 	x11-libs/gtksourceview:2.0
 	x11-libs/pango"
 
-DOCS=( AUTHORS ChangeLog README )
+DOCS=( AUTHORS ChangeLog README.md )
 
 src_prepare() {
 	strip-linguas ${LANGS}
