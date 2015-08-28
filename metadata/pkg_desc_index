@@ -14929,7 +14929,7 @@ sci-geosciences/opencpn 3.0.2 3.2.2 4.0.0: a free, open source software for mari
 sci-geosciences/opencpn-plugin-br24radar 1.1: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-climatology 1.0: Climatology Plugin for OpenCPN (includes CL-DATA)
 sci-geosciences/opencpn-plugin-launcher 1.0: Launcher Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-logbookkonni 1.2012: Logbook Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-logbookkonni 1.2012 1.2018: Logbook Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-objsearch 0.5.1: Chart Object Search Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-ocpndebugger 1.0: NMEA-data and plugin-API Debugger Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-statusbar 0.5: Statusbar Plugin for OpenCPN
