@@ -3748,7 +3748,6 @@ dev-java/cglib 3.0 3.1: cglib is a powerful, high performance and quality Code G
 dev-java/charva 1.1.4-r1: A Java Windowing Toolkit for Text Terminals
 dev-java/classmate 0.9.0-r1: Library for introspecting generic type information of types, member/static methods, fields
 dev-java/cldc-api 1.1-r1: Java ME Connected Limited Device Configuration API
-dev-java/cocoon 2.1.11: A Web Publishing Framework for Apache
 dev-java/codemodel 2.6: Java library for code generators
 dev-java/cofoja 1.2: Contracts for Java
 dev-java/colt 1.2.0-r2: A set of Open Source Libraries for High Performance Scientific and Technical Computing in Java
@@ -17539,7 +17538,7 @@ x11-misc/rofi 0.15.5 0.15.7: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.0: Qt application for getting screenshots
-x11-misc/sddm 0.11.0-r1: Simple Desktop Display Manager
+x11-misc/sddm 0.11.0-r1 0.11.0-r2: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
 x11-misc/shared-mime-info 1.4 1.4-r1: The Shared MIME-info Database specification
