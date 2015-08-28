@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
 DEPEND=>=x11-libs/pango-1.0.3 >=x11-libs/gtk+-2.6:2 >=dev-libs/glib-2.6:2 >=gnome-base/gconf-2.12 >=gnome-base/libglade-2.4 >=gnome-base/libgnome-2.12 >=gnome-base/libgnomeui-2.12 >=gnome-base/libbonoboui-2.0.0 >=gnome-base/libgnomecanvas-2.0.0 >=dev-libs/libxml2-2.4.23 dev-perl/XML-Parser virtual/pkgconfig >=dev-util/intltool-0.17 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=a game where you build full molecules, from simple inorganic to extremely complex organic ones
 EAPI=5
-HOMEPAGE=https://ftp.gnome.org/pub/GNOME/sources/atomix/
+HOMEPAGE=http://ftp.gnome.org/pub/GNOME/sources/atomix/
 IUSE=debug
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=>=x11-libs/pango-1.0.3 >=x11-libs/gtk+-2.6:2 >=dev-libs/glib-2.6:2 >=gno
 SLOT=0
 SRC_URI=mirror://gnome/sources/atomix/2.14/atomix-2.14.0.tar.bz2
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e9c2dcbb446941d0fb5075da99e2c6bf
+_md5_=a529dfc84e0a6b0db363c794c034f2c4
