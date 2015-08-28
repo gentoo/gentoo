@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils multilib-minimal
+inherit cmake-multilib
 
 DESCRIPTION="A wrapper to fake privilege separation"
 HOMEPAGE="https://cwrap.org/uid_wrapper.html"
@@ -16,15 +16,3 @@ IUSE="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-multilib_src_configure() {
-	cmake-utils_src_configure
-}
-
-multilib_src_compile() {
-	cmake-utils_src_compile
-}
-
-multilib_src_install() {
-	cmake-utils_src_install
-}
