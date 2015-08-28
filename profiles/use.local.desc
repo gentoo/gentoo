@@ -3162,6 +3162,7 @@ kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
 kde-apps/dolphin-plugins:mercurial - Enable support for the mercurial VCS
 kde-apps/gwenview:kipi - Support for the KDE Image Plugin Interface.
 kde-apps/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
+kde-apps/kaccounts-integration:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-apps/kalzium:solver - Enable the equation solver
 kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configuration

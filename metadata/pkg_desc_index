@@ -10382,6 +10382,7 @@ kde-apps/gwenview 4.14.3: KDE image viewer
 kde-apps/jovie 4.14.3: Jovie is a text to speech application
 kde-apps/juk 4.14.3 15.08.0: Jukebox and music manager for KDE
 kde-apps/kaccessible 4.14.3: Provides accessibility services like focus tracking
+kde-apps/kaccounts-integration 15.08.0: Administer web accounts for the sites and services across the Plasma desktop
 kde-apps/kajongg 4.14.3: The classical Mah Jongg for four players
 kde-apps/kalgebra 4.14.3: MathML-based graph calculator for KDE
 kde-apps/kalzium 4.14.3: KDE: periodic table of the elements
