@@ -125,6 +125,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	dev-lang/swig
+	dev-libs/crossguid
 	dev-util/gperf
 	X? ( x11-proto/xineramaproto )
 	dev-util/cmake
