@@ -13,9 +13,11 @@ SRC_URI="http://www.johnath.com/beep/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
+IUSE="suid"
 
-PATCHES=( ${FILESDIR}/${PN}-1.2.2-Makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/"${PN}"-1.2.2-Makefile.patch
+)
 
 pkg_setup() {
 	tc-export CC
@@ -23,7 +25,12 @@ pkg_setup() {
 
 src_install() {
 	dobin beep
-	fperms 0711 /usr/bin/beep
+	if use suid; then
+		fowners :audio /usr/bin/beep
+		fperms 4710 /usr/bin/beep
+	else
+		fperms 0711 /usr/bin/beep
+	fi
 	doman beep.1.gz
 	dodoc CHANGELOG CREDITS README
 }
