@@ -18,7 +18,7 @@ SLOT="4/3"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=media-libs/opencv-2.4.9"
+DEPEND=">=media-libs/opencv-2.4.9 <media-libs/opencv-3.0.0"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}/extra/${PN}
