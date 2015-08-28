@@ -21,6 +21,7 @@ else
 fi
 
 IUSE=""
+RESTRICT="test" # needs to communicate with the TPM and gtest is all broken
 
 DEPEND="app-crypt/tpm-tools[pkcs11]
 	dev-libs/opencryptoki[tpm]
