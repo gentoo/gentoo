@@ -3823,7 +3823,7 @@ dev-java/felix-gogo-command 0.12.0: Felix Gogo Command
 dev-java/felix-gogo-runtime 0.10.0: Felix Gogo Runtime
 dev-java/felix-shell 1.4.3: Felix Shell
 dev-java/felix-utils 1.2.0: Felix Utils
-dev-java/flute 1.3-r1 1.3-r2: Flute is an implementation for SAC
+dev-java/flute 1.3-r2: Flute is an implementation for SAC
 dev-java/flyingsaucer 7-r2: 100% Java XHTML+CSS renderer
 dev-java/fontbox 0.1.0 1.7.1: An open source Java library for parsing font files
 dev-java/fop 2.0-r1: Formatting Objects Processor is a print formatter driven by XSL
@@ -3943,7 +3943,7 @@ dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.51: Oracle's documentation bundle (including API) for Java SE
-dev-java/java-service-wrapper 3.2.3 3.3.1 3.3.3 3.5.14 3.5.14-r1 3.5.25: A wrapper that makes it possible to install a Java Application as daemon
+dev-java/java-service-wrapper 3.5.14-r1 3.5.25: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/java-xmlbuilder 0.6-r1: A utility that allows simple XML documents to be constructed using Java
 dev-java/javacc 4.0-r4 4.2 5.0 5.0-r1: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
@@ -14314,7 +14314,7 @@ net-print/fax4cups 1.29-r1: Fax backend for CUPS
 net-print/foo2zjs 99999999: Support for printing to ZjStream-based printers
 net-print/foomatic-db 4.0.20140105 4.0.20141025 4.0.20150819: Printer information files for foomatic-db-engine to generate ppds
 net-print/foomatic-db-engine 4.0.11 4.0.12: Generates ppds out of xml foomatic printer description files
-net-print/foomatic-db-ppds 4.0.20140105 4.0.20141025 4.0.20150819: linuxprinting.org PPD files for postscript printers
+net-print/foomatic-db-ppds 4.0.20140105 4.0.20141025 4.0.20150819-r1: linuxprinting.org PPD files for postscript printers
 net-print/foomatic-filters 4.0.17-r1: Foomatic wrapper scripts
 net-print/foomatic-gui 0.7.9.5-r1: GNOME interface for configuring the Foomatic printer filter system
 net-print/gmso2 0.1-r1: GMSO 2 queries ink levels of libinklevel supported printers
