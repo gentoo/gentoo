@@ -17,7 +17,7 @@ SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${MY_P}-src.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/swing-worker:0"
 
