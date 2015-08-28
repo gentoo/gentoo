@@ -3728,7 +3728,7 @@ dev-java/bcpkix 1.50 1.52: Java cryptography APIs
 dev-java/bcprov 1.38-r2 1.38-r3 1.40-r1 1.45 1.45-r1 1.48-r1 1.49-r2 1.49-r3 1.50 1.50-r1 1.52 1.52-r1: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
 dev-java/beansbinding 1.2.1 1.2.1-r1: Implementation of JSR295
-dev-java/blowfishj 2.14-r1 2.14-r2 2.14-r3: Blowfish implementation in Java
+dev-java/blowfishj 2.14-r2 2.14-r3: Blowfish implementation in Java
 dev-java/bnd-junit 2.1.0: Junit plugin for bndlib, a swiss army knife for OSGi
 dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
@@ -3872,7 +3872,7 @@ dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protoco
 dev-java/gnu-jaf 1.1.1: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
 dev-java/gnu-regexp 1.1.4-r2: GNU regular expression package for Java
-dev-java/groovy 1.6.8 1.7.5 1.7.10 1.8.5 1.8.5-r1: Groovy is a high-level dynamic language for the JVM
+dev-java/groovy 1.7.5 1.8.5-r1: Groovy is a high-level dynamic language for the JVM
 dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 07 13.0.1 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
 dev-java/guice 2.0-r1 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
@@ -3949,7 +3949,7 @@ dev-java/javacc 4.0-r4 4.2 5.0 5.0-r1: Java Compiler Compiler - The Java Parser 
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
-dev-java/javassist 2.6-r1 2.6-r2 3.4 3.4-r1 3.7 3.7-r1 3.14.0 3.14.0-r1 3.18.2: Javassist makes Java bytecode manipulation simple
+dev-java/javassist 2.6-r1 2.6-r2 3.14.0 3.14.0-r1 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r1: Dependency injection for Java (JSR-330)
 dev-java/javolution 2.2.4-r1 2.2.4-r2 4.0.2 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
@@ -4017,7 +4017,7 @@ dev-java/jigsaw 2.2.6: W3 Consortium's Java-based Web server libraries
 dev-java/jikes 1.22-r13: IBM's open source, high performance Java compiler
 dev-java/jinklevel 0.1: Java binding for libinklevel
 dev-java/jinput 2.0.6-r1: An implementation of an API for game controller discovery and polled input
-dev-java/jisp 2.5.1-r2 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine written in Pure Java
+dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine written in Pure Java
 dev-java/jjtraveler 0.4.3-r2: A visitor combinator framework for Java
 dev-java/jlayer 1.0.1: MP3 decoder/player/converter library for Java
 dev-java/jlex 1.2.6-r1 1.2.6-r2: JLex: a lexical analyzer generator for Java
