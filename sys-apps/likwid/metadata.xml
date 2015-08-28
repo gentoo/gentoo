@@ -7,4 +7,7 @@
 		<name>Brendan Horan</name>
 		<description>Proxy - Maintainer. Assign bugs to him</description>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">rrze-likwid/likwid</remote-id>
+	</upstream>
 </pkgmetadata>

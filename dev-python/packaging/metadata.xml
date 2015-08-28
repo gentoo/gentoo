@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">packaging</remote-id>
+		<remote-id type="github">pypa/packaging</remote-id>
 	</upstream>
 </pkgmetadata>

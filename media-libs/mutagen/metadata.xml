@@ -4,5 +4,6 @@
 	<herd>sound</herd>
 	<upstream>
 		<remote-id type="google-code">mutagen</remote-id>
+		<remote-id type="bitbucket">lazka/mutagen</remote-id>
 	</upstream>
 </pkgmetadata>

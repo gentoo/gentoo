@@ -100,7 +100,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}/redis.service-2" redis.service
 	systemd_newtmpfilesd "${FILESDIR}/redis.tmpfiles" redis.conf
 
-	nonfatal dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README
+	dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README
 
 	dobin src/redis-cli
 	dosbin src/redis-benchmark src/redis-server src/redis-check-aof src/redis-check-dump

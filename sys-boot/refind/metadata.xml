@@ -17,4 +17,7 @@
 		<flag name="btrfs"> Builds the EFI binary btrfs filesystem driver</flag>
 		<flag name="ntfs">Builds the EFI binary ntfs filesystem driver</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">refind</remote-id>
+	</upstream>
 </pkgmetadata>

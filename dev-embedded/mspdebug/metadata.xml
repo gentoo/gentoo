@@ -10,5 +10,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">mspdebug</remote-id>
+		<remote-id type="github">dlbeer/mspdebug</remote-id>
 	</upstream>
 </pkgmetadata>

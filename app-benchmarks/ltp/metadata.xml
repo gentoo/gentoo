@@ -21,5 +21,6 @@
 </longdescription>
 	<upstream>
 		<remote-id type="sourceforge">ltp</remote-id>
+		<remote-id type="github">linux-test-project/ltp</remote-id>
 	</upstream>
 </pkgmetadata>
