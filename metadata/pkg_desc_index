@@ -1834,7 +1834,7 @@ app-misc/ompload 20101220: CLI script for uploading files to http://ompldr.org/
 app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r1: pal command-line calendar program
-app-misc/pax-utils 1.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 1.1: ELF related utils for ELF 32/64 binaries that can check files for security relevant properties
+app-misc/pax-utils 1.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 1.1 1.1.1: ELF related utils for ELF 32/64 binaries that can check files for security relevant properties
 app-misc/pdfpc 3.1.1 4.0.0-r1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
@@ -6711,7 +6711,7 @@ dev-python/aplpy 0.9.14: Astronomical Plotting Library in Python
 dev-python/appdirs 1.2.0-r1 1.4.0: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.0-r1 4.2.1: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
-dev-python/apsw 3.8.7.1_p1 3.8.10.1_p1: APSW - Another Python SQLite Wrapper
+dev-python/apsw 3.8.7.1_p1 3.8.10.1_p1 3.8.11.1_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 0.8.1 0.8.9 0.9.0: Bash tab completion for argparse
 dev-python/argh 0.25.0 0.26.0 0.26.1: A simple argparse wrapper
