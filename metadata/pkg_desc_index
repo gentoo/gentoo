@@ -4644,7 +4644,7 @@ dev-libs/libgaminggear 0.10.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.4 1.5.4-r1 1.5.4-r100 1.6.3-r3 1.6.3-r4: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.16.1 0.17.1 0.17.2: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.16.0 0.17.0 0.18.0 0.19.0-r1 0.20.0-r1 0.21.3 0.21.5 0.22.0 0.22.1 0.22.2 0.22.3 0.23.0 9999: A linkable library for Git
+dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.0 0.23.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.0.12 0.0.16 0.0.24 0.22.0 0.22.8: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
@@ -7262,7 +7262,7 @@ dev-python/oslo-vmware 0.7.0 0.11.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0: Oslo test framework
 dev-python/osprofiler 0.3.0: OpenStack Profiler Library
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
-dev-python/packaging 15.3: Core utilities for Python packages
+dev-python/packaging 15.3 15.3-r1: Core utilities for Python packages
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.10.1 1.12.2 1.13.0 1.15.1-r1 1.15.2: SSH2 protocol library
@@ -7706,7 +7706,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8: Allow customization of the process title
-dev-python/setuptools 2.2 7.0 8.0.1 8.2.1 9.1 12.0.1 12.0.3 12.0.5 15.0 15.2 16.0 17.0 17.1.1 18.0.1 18.1 18.2 18.2-r2 9999: a collection of extensions to Distutils
+dev-python/setuptools 2.2 7.0 8.0.1 8.2.1 9.1 12.0.1 12.0.3 12.0.5 15.0 15.2 16.0 17.0 17.1.1 18.0.1 18.1 18.2 18.2-r2 18.2-r3 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.5.4 1.5.5 1.7.0: package to manage versions by scm tags via setuptools
@@ -10560,7 +10560,7 @@ kde-apps/nsplugins 4.14.3 15.08.0: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3: KDE hexeditor
 kde-apps/okular 4.14.3: Okular is a universal document viewer based on KPDF for KDE 4
 kde-apps/oxygen-icons 4.14.3 15.04.3: Oxygen SVG icon theme
-kde-apps/pairs 4.14.3: KDE memory and pairs game
+kde-apps/pairs 4.14.3 15.04.3: KDE memory and pairs game
 kde-apps/palapeli 4.14.3: KDE jigsaw puzzle game
 kde-apps/parley 4.14.3: KDE Educational: vocabulary trainer
 kde-apps/phonon-kde 4.14.3 15.08.0: Phonon KDE Integration
