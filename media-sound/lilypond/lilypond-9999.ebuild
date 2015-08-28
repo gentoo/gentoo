@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/lilypond-9999.ebuild,v 1.9 2015/04/08 17:59:42 mgorny Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
 	>=dev-scheme/guile-1.8.2[deprecated,regex]
-	media-fonts/urw-fonts
+	media-fonts/tex-gyre
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
@@ -82,7 +82,7 @@ src_configure() {
 	# version of texi2html than is currently in the tree
 
 	econf \
-		--with-ncsb-dir=/usr/share/fonts/urw-fonts \
+		--with-texgyre-dir=/usr/share/fonts/tex-gyre \
 		--disable-documentation \
 		--disable-optimising \
 		--disable-pipe \
