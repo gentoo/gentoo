@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (28 Aug 2015)
+# Masked for removal in 30 days.
+# Only needed for ruby18 which has been removed a long time
+# ago. This gem is a no-op for newer ruby implementations
+# and nothing in the tree depends on it.
+dev-ruby/require_relative
+
 # Manuel Rüger <mrueg@gentoo.org> (26 Aug 2015)
 # Masked for removal in 30 days.
 # Superseded by app-i18n/atokx3.

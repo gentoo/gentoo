@@ -24,7 +24,7 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rubygems-2.1.0"
 
-ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/activesupport virtual/ruby-minitest )"
+ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/activesupport )"
 
 all_ruby_prepare() {
 	sed -i -e '/files/d' ${PN}.gemspec || die
