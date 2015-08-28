@@ -1677,7 +1677,7 @@ app-misc/boxes 1.1.2-r1: Draw any kind of boxes around your text
 app-misc/brewtarget 2.0.2 2.1.0: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.90 5.94: A set of profiles for the GNU Screen console window manager (app-misc/screen)
-app-misc/ca-certificates 20090709 20110421 20110502 20110502-r1 20110502-r2 20110502-r3 20110502-r4 20111025 20120212 20120623 20121114 20130119 20130610 20130906-r1 20140223-r1 20140223.3.15.5-r1 20140223.3.16-r1 20140325.3.16.3 20140927.3.17.2 20141019.3.17.4 20141019.3.19: Common CA Certificates PEM files
+app-misc/ca-certificates 20130906-r1 20140223-r1 20140223.3.15.5-r1 20140223.3.16-r1 20140325.3.16.3 20140927.3.17.2 20141019.3.17.4 20141019.3.19: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 0.40 0.43 0.44: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -1712,7 +1712,7 @@ app-misc/detachtty 9: Attach/detach from interactive processes across the networ
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
 app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
 app-misc/digitemp 3.5.0-r2: Temperature logging and reporting using Dallas Semiconductor's iButtons and 1-Wire protocol
-app-misc/dnetc 2.9011.496-r1 2.9015.504 2.9103.509 2.9107.516 2.9108.517 2.9109.518 2.9110.519 2.9110.519b: distributed.net client
+app-misc/dnetc 2.9107.516 2.9108.517 2.9109.518 2.9110.519 2.9110.519b: distributed.net client
 app-misc/dtach 0.8-r1: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
@@ -16445,6 +16445,7 @@ sys-libs/libstdc++-v3 3.3.6 3.3.6-r1: Compatibility package for running binaries
 sys-libs/libstdc++-v3-bin 3.3.6: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3: Compatibility package for old termcap-based programs
 sys-libs/libtrash 3.2-r1: Provides a trash can by intercepting certain calls to glibc
+sys-libs/libudev-compat 186: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 0.99-r1 1.0.1 1.0.1-r1 1.1: Portable and efficient API to determine the call-chain of a program
 sys-libs/libutempter 1.1.5 1.1.5-r1 1.1.6 1.1.6-r1 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info, which need root access
 sys-libs/libvpd 2.1.3 2.2.4: Library implementation for listing vpds
