@@ -29,6 +29,7 @@ RDEPEND="
 	pcap? ( net-libs/libpcap )
 	wireshark-plugins? (
 		>=net-analyzer/wireshark-1.8.3-r1:=
+		!>net-analyzer/wireshark-1.98
 	)
 "
 DEPEND="${RDEPEND}
