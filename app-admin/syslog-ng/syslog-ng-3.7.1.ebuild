@@ -4,7 +4,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit python-any-r1 eutils multilib systemd versionator
+inherit autotools python-any-r1 eutils multilib systemd versionator
 
 MY_PV=${PV/_/}
 MY_PV_MM=$(get_version_component_range 1-2)
@@ -46,6 +46,14 @@ pkg_setup() {
 src_prepare() {
 	epatch_user
 	use python && python_fix_shebang .
+
+	if use !json ; then
+		sed -i \
+			-e '1 s/cim //' \
+			scl/Makefile.am || die
+		eautoreconf
+	fi
+
 	cp "${FILESDIR}"/*logrotate*.in "${TMPDIR}" || die
 	cd "${TMPDIR}" || die
 
