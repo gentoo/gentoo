@@ -20,9 +20,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="test"
 
-ruby_add_bdepend "test? ( virtual/ruby-minitest )"
+ruby_add_bdepend "test? ( >=dev-ruby/minitest-4.7:0 )"
 
 all_ruby_prepare() {
 	rm Gemfile || die
 	sed -i -e '/[Bb]undler/d' Rakefile test/require_relative_test.rb || die
+	sed -i -e '1igem "minitest", "~> 4.7"' test/require_relative_test.rb || die
 }
