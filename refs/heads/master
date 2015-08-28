@@ -1,23 +1,13 @@
 certificate version 0.1
-pusher Jonathan Callen <jcallen@gentoo.org> 1440733762 -0400
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1440733762-99c5551534d5e9f53a59
+pusher 0x8883FA56A308A8D7 1440739996 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo
+nonce 1440739996-406935d51cd32dda3946
 
-06a6b968363f711e7b73ff7ef6bbb38e10c0ffab 6cd5bf391e8e5a5c1ff028394339107479db8abf refs/heads/master
+6cd5bf391e8e5a5c1ff028394339107479db8abf 665a076b8cb68d8a74d5af20ea20b5758f57c4fe refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCgAGBQJV39pCAAoJEEIQbvYRB3mgO9gQAMNbFqo+VpGbzZArXjRClkkW
-//bpVK+G0a0BHZ/TtRXFeABgHrKnwGFrtMmrSbSWLtCKHkYfe/DsGxSD4TfoJPBI
-KAh0g9oYwN2F+Vt9u0/10DRQOqfu1Hfn0PVnmCO+DZ6UszudRJfrZgCm8a/i6yue
-26+uVvOVCf8dMO+4MhA3CLq1nkJS/Nr096mGfT8ZuDdJ6lD7GUy1+XVYv4E6L++/
-nNXpoTvly4rOdZKbkyqTPe5E0gONt/ZvJ79ThUl3f3hSZCNQFs7aTZ4CH5WCVTo6
-o5JiskbukxdhMu05urQmF/4DDesQ6jogv3r1T0QQWadMIh4X3CVgNuTPwfSMI996
-Pg9QQxjfatrtqlWospH9kpWXk+09bAXlOHE03HB5b5sBE/EA3mo9eCgIhJgjY9xH
-3oCKrWx08iKVD7yYvs73Too2OhIyls/yPcnUcFEk/y/J1gR0WR0oG7AC/Q80xzcn
-hybTatAORZQILel0IAXKSSHAsLDWMKhG1dL9oe4DfWJVNwOCGaTEbPFfWt5E8Q8P
-o8N1ydLk8VqpPbeLJJmlMjL/PcFShIsgnxztzalSiIF1Nh6iC/yOPh3Aq1fxwss8
-fchhbpgbV4cHq7BM6g/XwL6z0hvcPFiedE8Im+Xgsa4DagH/mcR3iRXPVpmY2cO2
-8UeG/oraMc+lPudShNGf
-=lX+D
+iF4EABEIAAYFAlXf8pwACgkQiIP6VqMIqNdBJQD+KMh/Egc+cAufr9dv0q4HMKcB
+WzSwJ5SuQs1k2ZsiOlEA/3Pbxixg8YNhohRQb4QHFvY4rcss1Es/DJhuJL1e2wFK
+=nIN3
 -----END PGP SIGNATURE-----
