@@ -39,6 +39,16 @@
 #LIBVIRT_MAXWAIT="500"
 
 
+# LIBVIRT_IGNORE_AUTOSTART
+# If the VM is marked for autostart in its XML configuration then we won't
+# save its start when the init script is stopped. The result is that when
+# the init script starts back up, no attempt will be made to start the VM or
+# confirm it is started.
+# Valid values are yes or no
+
+#LIBVIRT_IGNORE_AUTOSTART="no"
+
+
 # LIBVIRT_NET_SHUTDOWN
 # If libvirtd created networks for you (e.g. NATed networks) then this init
 # script will shut them down for you if this is set to 'yes'. Otherwise,

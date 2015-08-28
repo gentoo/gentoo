@@ -35,7 +35,7 @@ RDEPEND="
 	dev-qt/qtscript:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	git? ( dev-libs/libgit2 )
+	git? ( dev-libs/libgit2:= )
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtxmlpatterns:5
