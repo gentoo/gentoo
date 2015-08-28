@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="http://downloads.skewed.de/${PN}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="An efficient python module for manipulation and statistical analysis of graphs"
