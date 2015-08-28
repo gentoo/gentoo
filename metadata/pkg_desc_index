@@ -1664,7 +1664,7 @@ app-misc/basenji 1.0.0: Basenji is a volume indexing tool designed for easy and 
 app-misc/bb 1.3.0_rc1-r3 1.3.0_rc1-r4: Demonstration program for visual effects of aalib
 app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition and SQL support
 app-misc/beanstalkd 1.4.6-r1 1.9-r1 1.10: A simple, fast work queue
-app-misc/beep 1.2.2-r1 1.3: The advanced PC speaker beeper
+app-misc/beep 1.2.2-r1 1.3-r1: The advanced PC speaker beeper
 app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, you remove files by shooting at them
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
@@ -3901,7 +3901,7 @@ dev-java/icedtea 6.1.13.7 7.2.5.5: A harness to build OpenJDK using Free Softwar
 dev-java/icedtea-bin 6.1.13.7 6.1.13.7-r1 7.2.5.5 7.2.5.5-r1: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1: FOSS Java browser plugin and Web Start implementation
-dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
+dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/invokebinder 1.2: Provide a friendly DSL for binding method handles
 dev-java/iso-relax 20050331-r3: Interfaces useful for applications which support RELAX Core
@@ -3919,7 +3919,7 @@ dev-java/jackson-dataformat-xml 2.5.1: XML data format extension for Jackson
 dev-java/jackson-dataformat-yaml 2.5.1: YAML data format extension for Jackson
 dev-java/jackson-module-jaxb-annotations 2.5.1: JAXB alternative to native Jackson annotations
 dev-java/jacl 1.4.1: Jacl is an implementation of Tcl written in Java
-dev-java/jad-bin 1.5.8e 1.5.8e-r1: Jad - The fast JAva Decompiler
+dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
 dev-java/jade 3.3-r1 3.3-r2: JADE is FIPA-compliant Java Agent Development Environment
 dev-java/jaffl 0.5.11: An abstracted interface to invoking native functions from java
 dev-java/jakarta-jstl 1.1.2-r2: An implementation of the JSP Standard Tag Library (JSTL)
@@ -3944,7 +3944,7 @@ dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.51: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.14-r1 3.5.25: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/java-xmlbuilder 0.6-r1: A utility that allows simple XML documents to be constructed using Java
-dev-java/javacc 4.0-r4 4.2 5.0 5.0-r1: Java Compiler Compiler - The Java Parser Generator
+dev-java/javacc 4.0-r4 4.2 5.0-r1: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
@@ -3977,7 +3977,7 @@ dev-java/jclasslib 3.0-r1: A bytecode viewer is a tool
 dev-java/jcmdline 1.0.2-r2: Library for parsing/handling of command line parameters
 dev-java/jcodings 1.0.4 1.0.5 1.0.11: Byte-based encoding support library for Java
 dev-java/jcommander 1.32: Command line parsing framework for Java
-dev-java/jcommon 1.0.16 1.0.18 1.0.23: JCommon is a collection of useful classes used by JFreeChart, JFreeReport and other projects
+dev-java/jcommon 1.0.18 1.0.23: JCommon is a collection of useful classes used by JFreeChart, JFreeReport and other projects
 dev-java/jcs 2.0: JCS is a distributed caching system written in Java for server-side Java applications
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
 dev-java/jdbc-jaybird 2.1.5-r1 2.1.5-r2 2.1.6 2.2.7 2.2.8: JDBC Type 2 and 4 drivers for Firebird SQL server
