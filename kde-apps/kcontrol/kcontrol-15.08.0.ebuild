@@ -19,5 +19,7 @@ RDEPEND="
 
 src_prepare() {
 	kde4-meta_src_prepare
-	use handbook && sed -i -e "/add_subdirectory(kcm_ssl)/d" doc/kcontrol/CMakeLists.txt || die
+	if use handbook; then
+		sed -i -e "/add_subdirectory(kcm_ssl)/d" doc/kcontrol/CMakeLists.txt || die
+	fi
 }
