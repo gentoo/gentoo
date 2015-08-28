@@ -3934,7 +3934,7 @@ dev-java/janino 2.7.0: An embedded compiler for run-time compilation purposes
 dev-java/jansi 1.1 1.11-r1: Jansi is a small java library that allows you to use ANSI escape sequences in your console output
 dev-java/jansi-native 1.5: Native JNI component for dev-java/jansi
 dev-java/japitools 0.9.7-r1: Java API compatibility testing tools
-dev-java/jarbundler 1.7 1.8.1-r1 1.8.1-r2 2.3.1: Jar Bundler Ant Task
+dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jarjar 0.9 1.4: Tool for repackaging third-party jars
 dev-java/java-config 2.2.0: Java environment configuration query tool
 dev-java/java-config-wrapper 0.16: Wrapper for java-config
