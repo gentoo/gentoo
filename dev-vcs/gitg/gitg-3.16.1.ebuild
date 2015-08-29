@@ -64,6 +64,10 @@ src_prepare() {
 		-e '/CFLAGS/s:-O0::g' \
 		-i configure.ac || die
 
+	sed \
+		-e 's/name="WebKit2" version="3.0"/name="WebKit2" version="4.0"/' \
+		-i Gitg-1.0.gir || die
+
 	gnome2_src_prepare
 	vala_src_prepare
 }
