@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 jruby"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22 jruby"
 
 inherit ruby-ng
 
@@ -19,5 +19,6 @@ IUSE=""
 RDEPEND="ruby_targets_ruby19? ( || ( dev-ruby/minitest[ruby_targets_ruby19] dev-lang/ruby:1.9 ) )
 	ruby_targets_ruby20? ( || ( dev-ruby/minitest[ruby_targets_ruby20] dev-lang/ruby:2.0 ) )
 	ruby_targets_ruby21? ( || ( dev-ruby/minitest[ruby_targets_ruby21] dev-lang/ruby:2.1 ) )
+	ruby_targets_ruby22? ( || ( dev-ruby/minitest[ruby_targets_ruby22] dev-lang/ruby:2.2 ) )
 	ruby_targets_jruby? ( dev-ruby/minitest[ruby_targets_jruby] )"
 DEPEND=""
