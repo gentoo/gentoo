@@ -1,0 +1,12 @@
+diff -Naur litecoin-0.10.2.2.orig/src/leveldbwrapper.cpp litecoin-0.10.2.2/src/leveldbwrapper.cpp
+--- litecoin-0.10.2.2.orig/src/leveldbwrapper.cpp	2015-06-15 04:51:30.000000000 -0400
++++ litecoin-0.10.2.2/src/leveldbwrapper.cpp	2015-08-28 21:30:45.968538185 -0400
+@@ -11,7 +11,7 @@
+ #include <leveldb/cache.h>
+ #include <leveldb/env.h>
+ #include <leveldb/filter_policy.h>
+-#include <memenv.h>
++#include <leveldb/helpers/memenv.h>
+ 
+ void HandleError(const leveldb::Status& status) throw(leveldb_error)
+ {
