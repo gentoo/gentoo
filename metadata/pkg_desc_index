@@ -2140,7 +2140,7 @@ app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zs
 app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
 app-shells/hstr 1.17: Shell history suggest box - easily view, navigate, search and manage your command history
 app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
-app-shells/localshell 1.1 1.2 1.3.1 1.3.4: Localshell allows per-user/group local control of shell execution
+app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 50d 50d-r1 50e 50f 51 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/pdmenu 1.3.2-r1 1.3.4: A simple console menu program
