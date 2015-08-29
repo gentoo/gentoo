@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-libs/glib-2.38:2
 	>=dev-libs/gobject-introspection-0.10.1
 	dev-libs/libgit2:0/22[threads]
-	>dev-libs/libgit2-glib-0.22.0[ssh]
+	>=dev-libs/libgit2-glib-0.22.0[ssh]
 	<dev-libs/libgit2-glib-0.23.0
 	>=dev-libs/libpeas-1.5.0[gtk]
 	>=gnome-base/gsettings-desktop-schemas-0.1.1
