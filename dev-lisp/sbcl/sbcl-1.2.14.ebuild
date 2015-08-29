@@ -7,7 +7,7 @@ inherit multilib eutils flag-o-matic pax-utils
 
 #same order as http://www.sbcl.org/platform-table.html
 BV_X86=1.2.7
-BV_AMD64=1.2.13
+BV_AMD64=1.2.14
 BV_PPC=1.2.7
 BV_SPARC=1.0.28
 BV_ALPHA=1.0.28
