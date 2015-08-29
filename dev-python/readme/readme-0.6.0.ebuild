@@ -29,13 +29,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.rst )
 
-python_prepare_all() {
-	# remove failing test for now
-	rm tests/fixtures/test_rst_008* || die
-
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
-	py.test -v || die "Tests failed under ${EPYTHON}"
+	py.test || die "Tests failed under ${EPYTHON}"
 }
