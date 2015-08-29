@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sound</herd>
+<use>
+	<flag name="opus">Adds support for the Opus codec.</flag>
+</use>
 </pkgmetadata>
