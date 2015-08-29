@@ -5,11 +5,11 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1
 
 DESCRIPTION="Low-level, data-driven core of boto 3."
 HOMEPAGE="https://github.com/boto/botocore"
-SRC_URI="https://github.com/boto/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/boto/${PN}/archive/${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
