@@ -17,7 +17,7 @@ kde-apps/kaccounts-integration kdepim
 
 # Michael Palimaka <kensington@gentoo.org> (27 Aug 2015)
 # Unreleased dependencies
-kde-apps/dolphin thumbnail
+kde-apps/dolphin:5 thumbnail
 
 # James Le Cuirot <chewi@gentoo.org> (18 Aug 2015)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
