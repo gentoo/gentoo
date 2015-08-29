@@ -11,6 +11,7 @@ mips
 nios2
 ppc
 ppc64
+riscv
 s390
 sh
 sparc
