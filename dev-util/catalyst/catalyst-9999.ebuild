@@ -32,7 +32,6 @@ IUSE="ccache doc kernel_linux"
 DEPEND="
 	app-text/asciidoc
 	>=dev-python/snakeoil-0.5.2
-	<dev-python/snakeoil-0.6.5
 "
 RDEPEND="
 	app-arch/lbzip2
