@@ -46,6 +46,7 @@ RDEPEND="${DEPEND}
 	|| ( sys-power/upower-pm-utils >=sys-power/upower-0.9.23 )
 	!systemd? ( sys-auth/polkit-pkla-compat )
 	!kde-base/powerdevil
+	!kde-base/systemsettings[handbook]
 "
 
 src_install() {
