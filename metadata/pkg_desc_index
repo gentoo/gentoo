@@ -4940,7 +4940,7 @@ dev-lisp/ecls 12.12.1 13.5.1-r1 15.3.7 16.0.0: ECL is an embeddable Common Lisp 
 dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
 dev-lisp/hyperspec 7.0 7.0-r1: Common Lisp ANSI-standard Hyperspec
-dev-lisp/sbcl 1.0.55-r1 1.1.18 1.2.2 1.2.4 1.2.6 1.2.7 1.2.9 1.2.10 1.2.11 1.2.13 1.2.14: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.1.18 1.2.13 1.2.14: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/uiop 3.0.3 3.1.4 3.1.5: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
