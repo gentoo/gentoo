@@ -1,8 +1,0 @@
-diff -r -U1 maxima-5.28.0.orig/configure.in maxima-5.28.0/configure.in
---- maxima-5.28.0.orig/configure.in	2012-08-12 23:17:53.000000000 +0700
-+++ maxima-5.28.0/configure.in	2012-08-15 21:47:42.000000000 +0700
-@@ -350,3 +350,3 @@
- dnl n.b. openmcl_default_name is hardcoded in "with" message
--openmcl_default_name=openmcl
-+openmcl_default_name=ccl
- AC_ARG_ENABLE(openmcl,
