@@ -11612,7 +11612,7 @@ media-libs/glm 0.9.2.4 0.9.3.2 0.9.5.1 0.9.6.1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/gluon 0.71.0: Free and Open Source framework for creating and distributing games
-media-libs/glyr 1.0.5: A music related metadata searchengine, both with commandline interface and C API
+media-libs/glyr 1.0.5 1.0.7: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.9 0.10.17 1.2.1 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.11 0.2.12: A framework for easy media discovery and browsing
@@ -15232,7 +15232,7 @@ sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.18.1 5.34.1 5.36.1: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.34.1 5.36.1: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.1.0 2.2.0-r3: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
