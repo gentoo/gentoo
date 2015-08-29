@@ -4,6 +4,11 @@
   <herd>games</herd>
   <use>
     <flag name="editor">Build map editor</flag>
+	<flag name="debug">Create debug build</flag>
+	<flag name="server">Build UFO-AI server component</flag>
+	<flag name="client">Build UFO-AI client GUI</flag>
+	<flag name="sse">Make use of sse enhancements</flag>
+	<flag name="profile">Use profile-guided optimizations</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">ufoai</remote-id>
