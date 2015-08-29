@@ -28,6 +28,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
+ruby_add_rdepend ">=dev-ruby/hoe-1.5.1"
+
 each_ruby_test() {
 	cd test || die
 	${RUBY} -I../lib:.. -S testrb test_*.rb || die

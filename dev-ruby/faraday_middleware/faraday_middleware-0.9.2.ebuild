@@ -36,6 +36,7 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	dev-ruby/bundler
 	>=dev-ruby/multi_xml-0.5.3
+	>=dev-ruby/rack-cache-1.1
 	>=dev-ruby/simple_oauth-0.1
 	>=dev-ruby/hashie-1.2
 	>=dev-ruby/rash-0.3 )"
