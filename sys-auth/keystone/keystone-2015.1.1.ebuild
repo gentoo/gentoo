@@ -156,6 +156,7 @@ python_install() {
 	diropts -m 0750
 	keepdir /etc/keystone /var/log/keystone
 	insinto /etc/keystone
+	insopts -m0640 -okeystone -gkeystone
 	doins etc/keystone.conf.sample etc/logging.conf.sample
 	doins etc/default_catalog.templates etc/policy.json
 	doins etc/policy.v3cloudsample.json etc/keystone-paste.ini

@@ -175,6 +175,7 @@ python_install() {
 	done
 
 	insinto /etc/cinder
+	insopts -m0640 -o cinder -g cinder
 	newins "${S}/etc/cinder/cinder.conf.sample" "cinder.conf"
 	newins "${S}/etc/cinder/api-paste.ini" "api-paste.ini"
 	newins "${S}/etc/cinder/logging_sample.conf" "logging_sample.conf"
