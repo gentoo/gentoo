@@ -1,8 +1,0 @@
-diff -r -U1 maxima-5.28.0.orig/src/Makefile.am maxima-5.28.0/src/Makefile.am
---- maxima-5.28.0.orig/src/Makefile.am	2012-06-15 12:21:34.000000000 +0700
-+++ maxima-5.28.0/src/Makefile.am	2012-08-25 09:32:26.000000000 +0700
-@@ -199,3 +199,3 @@
- if SBCL
--EXECUTESBCL = "$(SBCL_NAME)" --noinform --noprint --eval
-+EXECUTESBCL = "$(SBCL_NAME)" --noinform --noprint --no-sysinit --no-userinit --eval
- all-local: sharefiles.mk $(SBCL_MAXIMA)
