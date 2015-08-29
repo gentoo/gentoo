@@ -14258,7 +14258,7 @@ net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and 
 net-p2p/ktorrent 4.3.1-r1: A BitTorrent program for KDE
 net-p2p/linuxdcpp 1.0.3-r1: Direct connect client, looks and works like famous DC++
 net-p2p/litecoin-qt 0.10.2.2: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/litecoind 0.10.2.2-r1: P2P Internet currency based on Bitcoin but easier to mine
+net-p2p/litecoind 0.10.2.2-r1 0.10.2.2-r2: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/microdc 0.11.0: A small command-line based Direct Connect client
 net-p2p/microdc2 0.15.6-r2: A small command-line based Direct Connect client
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
