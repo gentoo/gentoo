@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,6 +32,7 @@ RDEPEND="|| ( app-editors/nano
 	app-editors/lpe
 	app-editors/mg
 	app-editors/ne
+	app-editors/neovim
 	app-editors/ng
 	app-editors/nvi
 	app-editors/qemacs
