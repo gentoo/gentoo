@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 EGIT_CHECKOUT_DIR=${S}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-EGL_SCREEN_BIT_MESA.patch
+)
+
 src_unpack() {
 	default
 	[[ $PV = 9999* ]] && git-r3_src_unpack

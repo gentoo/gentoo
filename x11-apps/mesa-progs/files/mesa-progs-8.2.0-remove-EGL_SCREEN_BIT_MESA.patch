@@ -1,0 +1,33 @@
+diff --git a/src/egl/eglut/eglut.c b/src/egl/eglut/eglut.c
+index 2ee6f15..9921746 100644
+--- a/src/egl/eglut/eglut.c
++++ b/src/egl/eglut/eglut.c
+@@ -76,8 +76,7 @@ _eglutNow(void)
+ static void
+ _eglutDestroyWindow(struct eglut_window *win)
+ {
+-   if (_eglut->surface_type != EGL_PBUFFER_BIT &&
+-       _eglut->surface_type != EGL_SCREEN_BIT_MESA)
++   if (_eglut->surface_type != EGL_PBUFFER_BIT)
+       eglDestroySurface(_eglut->dpy, win->surface);
+ 
+    _eglutNativeFiniWindow(win);
+@@ -175,7 +174,6 @@ _eglutCreateWindow(const char *title, int x, int y, int w, int h)
+             win->config, win->native.u.pixmap, NULL);
+       break;
+    case EGL_PBUFFER_BIT:
+-   case EGL_SCREEN_BIT_MESA:
+       win->surface = win->native.u.surface;
+       break;
+    default:
+@@ -289,9 +287,7 @@ eglutDestroyWindow(int win)
+    if (window->index != win)
+       return;
+ 
+-   /* XXX it causes some bug in st/egl KMS backend */
+-   if ( _eglut->surface_type != EGL_SCREEN_BIT_MESA)
+-      eglMakeCurrent(_eglut->dpy, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
++   eglMakeCurrent(_eglut->dpy, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+ 
+    _eglutDestroyWindow(_eglut->current);
+ }
