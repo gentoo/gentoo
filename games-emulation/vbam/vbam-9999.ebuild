@@ -6,7 +6,7 @@ EAPI=5
 WX_GTK_VER="3.0"
 inherit cmake-utils wxwidgets subversion gnome2-utils fdo-mime games
 
-ESVN_REPO_URI="https://vbam.svn.sourceforge.net/svnroot/vbam/trunk"
+ESVN_REPO_URI="https://svn.code.sf.net/p/vbam/code/trunk"
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
 HOMEPAGE="http://sourceforge.net/projects/vbam/"
@@ -19,7 +19,7 @@ REQUIRED_USE="|| ( sdl gtk wxwidgets )"
 
 RDEPEND=">=media-libs/libpng-1.4:0=
 	media-libs/libsdl[joystick]
-	link? ( <media-libs/libsfml-2.0 )
+	link? ( >=media-libs/libsfml-2.0 )
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
