@@ -331,13 +331,13 @@ if [[ ${PN} != oxygen-icons ]]; then
 	kderdepend+=" kde-apps/oxygen-icons"
 fi
 
-# add a dependency over kde-l10n
+# add a dependency over kde4-l10n
 if [[ ${KDEBASE} != "kde-base" && -n ${KDE_LINGUAS} ]]; then
 	for _lingua in ${KDE_LINGUAS}; do
-		# if our package has linguas, pull in kde-l10n with selected lingua enabled,
+		# if our package has linguas, pull in kde4-l10n with selected lingua enabled,
 		# but only for selected ones.
 		# this can't be done on one line because if user doesn't use any localisation
-		# then he is probably not interested in kde-l10n at all.
+		# then he is probably not interested in kde4-l10n at all.
 		kderdepend+="
 		linguas_${_lingua}? ( $(add_kdeapps_dep kde4-l10n "linguas_${_lingua}(+)") )
 		"
@@ -681,11 +681,11 @@ kde4-base_src_prepare() {
 	fi
 
 	# Enable/disable handbooks for kde4-base packages
-	# kde-l10n inherits kde4-base but is metpackage, so no check for doc
+	# kde4-l10n inherits kde4-base but is metapackage, so no check for doc
 	# kdelibs inherits kde4-base but handle installing the handbook itself
 	if ! has kde4-meta ${INHERITED} && in_iuse handbook; then
 		if [[ ${KDEBASE} == kde-base ]]; then
-			if [[ ${PN} != kde-l10n && ${PN} != kdepim-l10n && ${PN} != kdelibs ]] && use !handbook; then
+			if [[ ${PN} != kde4-l10n && ${PN} != kdepim-l10n && ${PN} != kdelibs ]] && use !handbook; then
 				# documentation in kde4-functions
 				: ${KDE_DOC_DIRS:=doc}
 				local dir
