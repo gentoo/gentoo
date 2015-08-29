@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install setup unpack
-DEPEND=tcpd? ( >=sys-apps/tcp-wrappers-7.6-r7 ) dev-vcs/git
+DEPEND=tcpd? ( >=sys-apps/tcp-wrappers-7.6-r7 ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Netkit - portmapper
-EAPI=0
+EAPI=5
 HOMEPAGE=ftp://ftp.porcupine.org/pub/security/index.html
 IUSE=selinux tcpd
 LICENSE=BSD GPL-2
 RDEPEND=selinux? ( sec-policy/selinux-portmap )
 SLOT=0
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=df9ec5016a6c8787506bbe60b5c18462
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=eec5bdcbf3633d548155e1489683574e
