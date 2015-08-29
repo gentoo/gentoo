@@ -3948,7 +3948,7 @@ dev-java/javacc 4.0-r4 4.2 5.0-r1: Java Compiler Compiler - The Java Parser Gene
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
-dev-java/javassist 2.6-r1 2.6-r2 3.14.0 3.14.0-r1 3.18.2: Javassist makes Java bytecode manipulation simple
+dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r1: Dependency injection for Java (JSR-330)
 dev-java/javolution 2.2.4-r1 2.2.4-r2 4.0.2 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
