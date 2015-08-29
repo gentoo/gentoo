@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,11 +14,11 @@ SRC_URI="https://github.com/jboss-javassist/javassist/archive/rel_${PV//./_}_ga_
 
 LICENSE="MPL-1.1"
 SLOT="3"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.4"
-DEPEND=">=virtual/jdk-1.4
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip"
 
 S="${WORKDIR}/${PN}-rel_${PV//./_}_ga_build"
