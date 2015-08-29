@@ -21,7 +21,7 @@ IUSE="+cxx +crywrap dane doc examples guile nls +openssl pkcs11 static-libs test
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
-RDEPEND=">=dev-libs/libtasn1-3.9[${MULTILIB_USEDEP}]
+RDEPEND=">=dev-libs/libtasn1-4.3[${MULTILIB_USEDEP}]
 	>=dev-libs/nettle-3.1[gmp,${MULTILIB_USEDEP}]
 	>=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}]
 	tools? ( sys-devel/autogen )
