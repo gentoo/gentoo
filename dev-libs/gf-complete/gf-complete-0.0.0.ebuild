@@ -11,7 +11,7 @@ HOMEPAGE="http://jerasure.org/"
 SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/${P}.tar.gz"
 S="${WORKDIR}/${PN}.git"
 
-LICENSE="all-rights-reserved"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
