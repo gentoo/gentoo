@@ -2068,7 +2068,7 @@ app-pda/synce-core 0.16-r1: Base libraries, including RAPI protocol, tools and d
 app-pda/synce-sync-engine 0.15.1-r3: A synchronization engine for SynCE
 app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update with safe automatic updating functionality
-app-portage/conf-update 1.0.2: conf-update is a ncurses-based config management utility
+app-portage/conf-update 1.0.2 1.0.3: conf-update is a ncurses-based config management utility
 app-portage/cpuinfo2cpuflags 1 2: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r1: demerge - revert to previous installation states
