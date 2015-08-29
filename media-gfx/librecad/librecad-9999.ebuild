@@ -19,18 +19,18 @@ REQUIRED_USE="|| ( qt4 qt5 )"
 
 DEPEND="
 	qt4? (
-	            dev-qt/qtcore:4
-	            dev-qt/qtgui:4
-	            dev-qt/qtsvg:4
-	            dev-qt/qthelp:4
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		dev-qt/qtsvg:4
+		dev-qt/qthelp:4
 	)
 	qt5? (
-	            dev-qt/qtcore:5
-	            dev-qt/qtgui:5
-	            dev-qt/qthelp:5
-	            dev-qt/qtsvg:5
-	            dev-qt/qtwidgets:5
-	            dev-qt/qtxml:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qthelp:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtxml:5
 	)
 
 	dev-libs/boost
@@ -46,11 +46,12 @@ src_prepare() {
 }
 
 src_configure() {
-	    if use qt4; then
-	            eqmake4 -r
-			else
-	            eqmake5 -r
-	    fi
+	if use qt4
+	then
+		eqmake4 -r
+	else
+		eqmake5 -r
+	fi
 }
 
 src_install() {
