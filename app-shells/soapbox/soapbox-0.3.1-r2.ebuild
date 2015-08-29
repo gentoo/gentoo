@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit multilib toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="http://dag.wieers.com/home-made/soapbox/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86 ~ppc ~ppc64"
 IUSE=""
 
 src_prepare() {
