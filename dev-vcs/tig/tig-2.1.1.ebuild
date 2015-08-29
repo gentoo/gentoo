@@ -17,7 +17,7 @@ IUSE="unicode"
 
 DEPEND="
 	sys-libs/ncurses:0=[unicode?]
-	sys-libs/readline:0"
+	sys-libs/readline:0="
 RDEPEND="${DEPEND}
 	dev-vcs/git"
 
