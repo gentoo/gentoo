@@ -11610,7 +11610,7 @@ media-libs/glew 1.9.0 1.10.0-r1 1.10.0-r2 1.11.0 1.12.0 1.13.0: The OpenGL Exten
 media-libs/glfw 2.7.7 3.1.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.2.4 0.9.3.2 0.9.5.1 0.9.6.1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
-media-libs/glu 9.0.0 9.0.0-r1 9999: The OpenGL Utility Library
+media-libs/glu 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/gluon 0.71.0: Free and Open Source framework for creating and distributing games
 media-libs/glyr 1.0.5 1.0.7: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
@@ -17081,7 +17081,7 @@ x11-apps/viewres 1.0.4: graphical class browser for Xt
 x11-apps/whyteboard 0.41.1: A simple image, PDF and postscript file annotator
 x11-apps/x11perf 1.5.4 1.6.0: X rendering operation stress test utility
 x11-apps/xauth 1.0.8 1.0.9 1.0.9-r1 1.0.9-r2: X authority file utility
-x11-apps/xbacklight 1.2.1: Sets backlight level using the RandR 1.2 BACKLIGHT output property
+x11-apps/xbacklight 1.2.1-r1: Sets backlight level using the RandR 1.2 BACKLIGHT output property
 x11-apps/xbiff 1.0.3: mailbox flag for X
 x11-apps/xcalc 1.0.5 1.0.6: scientific calculator for X
 x11-apps/xclipboard 1.1.2 1.1.3: interchange between cut buffer and selection
