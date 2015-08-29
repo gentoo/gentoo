@@ -47,6 +47,7 @@ kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 kde-base/kactivities minimal
 kde-base/kde-meta -kdepim minimal
+kde-base/systemsettings -handbook
 net-libs/libkpeople minimal
 sys-auth/polkit-kde-agent minimal
 
