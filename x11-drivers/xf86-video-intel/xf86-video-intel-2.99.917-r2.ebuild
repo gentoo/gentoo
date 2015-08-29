@@ -5,6 +5,7 @@
 EAPI=5
 
 XORG_DRI=dri
+XORG_EAUTORECONF=yes
 inherit linux-info xorg-2
 
 DESCRIPTION="X.Org driver for Intel cards"
