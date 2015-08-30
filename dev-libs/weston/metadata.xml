@@ -16,9 +16,7 @@
 	<flag name='resize-optimization'>Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi</flag>
 	<flag name='rpi'>Raspberry Pi GPU support</flag>
 	<flag name='screen-sharing'>Enable screen-sharing through RDP</flag>
-	<flag name='tablet'>Enable interface for tablets</flag>
 	<flag name='unwind'>Enable libunwind usage for backtraces</flag>
-	<flag name='view'>Install wayland-view example application</flag>
 	<flag name='wayland-compositor'>Enable Wayland compositor support</flag>
 	<flag name='xwayland'>Enable ability support native X11 applications</flag>
 </use>
