@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>base-system</herd>
+<use>
+	<flag name='manpager'>Enable manpager wrapper for colorizing output</flag>
+</use>
 </pkgmetadata>
