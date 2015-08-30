@@ -13,7 +13,10 @@ DESCRIPTION="KDE wallpapers"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+DEPEND="$(add_frameworks_dep extra-cmake-modules)"
 RDEPEND="!kde-apps/kde-wallpapers:4"
+
+PATCHES=( "${FILESDIR}/${PN}-15.08.0-kf5-port.patch" ) # bug 559156
 
 src_configure() {
 	local mycmakeargs=( -DWALLPAPER_INSTALL_DIR="${EPREFIX}/usr/share/wallpapers" )
