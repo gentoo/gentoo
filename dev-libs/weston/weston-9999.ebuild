@@ -27,15 +27,13 @@ fi
 
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
-IUSE="colord dbus +drm +egl editor examples fbdev gles2 headless ivi +opengl rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor +X xwayland"
+IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor +X xwayland"
 
 REQUIRED_USE="
-	drm? ( egl )
-	egl? ( || ( gles2 opengl ) )
-	gles2? ( !opengl )
+	drm? ( gles2 )
 	screen-sharing? ( rdp )
 	test? ( X )
-	wayland-compositor? ( egl )
+	wayland-compositor? ( gles2 )
 "
 
 RDEPEND="
@@ -45,7 +43,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	media-libs/libwebp:0=
 	virtual/jpeg
-	>=x11-libs/cairo-1.11.3[gles2(-)?,opengl?]
+	>=x11-libs/cairo-1.11.3
 	>=x11-libs/libdrm-2.4.30
 	x11-libs/libxkbcommon
 	x11-libs/pixman
@@ -61,15 +59,9 @@ RDEPEND="
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
 	)
-	egl? (
-		media-libs/mesa[gles2,wayland]
-	)
 	editor? ( x11-libs/pango )
 	gles2? (
-		media-libs/mesa[wayland]
-	)
-	opengl? (
-		media-libs/mesa[wayland]
+		media-libs/mesa[gles2,wayland]
 	)
 	rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 )
 	rpi? (
@@ -105,21 +97,13 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-	if use examples || use gles2 || use test; then
-		myconf="--enable-simple-clients
-			$(use_enable egl simple-egl-clients)"
+	if use examples || use test; then
+		myconf="--enable-simple-clients"
 	else
-		myconf="--disable-simple-clients
-			--disable-simple-egl-clients"
+		myconf="--disable-simple-clients"
 	fi
 
-	if use gles2; then
-		myconf+=" --with-cairo=glesv2"
-	elif use opengl; then
-		myconf+=" --with-cairo=gl"
-	else
-		myconf+=" --with-cairo=image"
-	fi
+	myconf+=" --with-cairo=image --disable-simple-egl-clients"
 
 	econf \
 		$(use_enable examples demo-clients-install) \
@@ -134,7 +118,7 @@ src_configure() {
 		$(use_enable X x11-compositor) \
 		$(use_enable launch weston-launch) \
 		$(use_enable colord) \
-		$(use_enable egl) \
+		$(use_enable gles2 egl) \
 		$(use_enable unwind libunwind) \
 		$(use_enable resize-optimization) \
 		$(use_enable screen-sharing) \
