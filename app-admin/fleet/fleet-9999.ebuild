@@ -43,13 +43,3 @@ src_install() {
 	insinto /etc/${PN}
 	newins "${PN}".conf.sample "${PN}".conf
 }
-
-pkg_postinst() {
-	ewarn "Please read this if you are upgrading from a version <0.10.0-r1."
-	ewarn ""
-	ewarn "Starting with fleet 0.10 the fleetctl utility has"
-	ewarn "'--endpoint=unix:///var/run/fleet.sock' as default argument, which is"
-	ewarn "why we have introduced the fleet.socket unit and renamed the service"
-	ewarn "from fleetd.service to fleet.service. If you run fleet on system"
-	ewarn "startup, please re-enable it via 'systemctl enable fleet'."
-}

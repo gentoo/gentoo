@@ -4,6 +4,8 @@
 
 EAPI=5
 
+EGO_PN="github.com/coreos/fleet"
+
 inherit systemd vcs-snapshot
 
 DESCRIPTION="A Distributed init System"
@@ -16,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="doc examples test"
 
 DEPEND="
-	>=dev-lang/go-1.3
+	>=dev-lang/go-1.4:=
 	test? ( dev-go/go-tools )
 "
 RDEPEND=""
@@ -40,17 +42,6 @@ src_install() {
 	use doc && dodoc -r Documentation
 	use examples && dodoc -r examples
 
-	keepdir /etc/${PN}
 	insinto /etc/${PN}
 	newins "${PN}".conf.sample "${PN}".conf
-}
-
-pkg_postinst() {
-	ewarn "Please read this if you are upgrading from a version <0.10.0-r1."
-	ewarn ""
-	ewarn "Starting with fleet 0.10 the fleetctl utility has"
-	ewarn "'--endpoint=unix:///var/run/fleet.sock' as default argument, which is"
-	ewarn "why we have introduced the fleet.socket unit and renamed the service"
-	ewarn "from fleetd.service to fleet.service. If you run fleet on system"
-	ewarn "startup, please re-enable it via 'systemctl enable fleet'."
 }
