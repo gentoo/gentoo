@@ -4907,8 +4907,8 @@ dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an 
 dev-libs/vc 0.7.3 0.7.4: SIMD Vector Class Library for C++
 dev-libs/vdk 2.5.1: A Visual Development Kit for RAD
 dev-libs/vrb 0.3.0 0.5.1: Library for a virtual ring buffer
-dev-libs/wayland 0.95.0 1.0.6 1.1.0 1.2.0 1.2.1 1.2.1-r1 1.3.0 1.4.0 1.5.0 1.6.0 1.6.1 1.7.0 1.8.1: Wayland protocol libraries
-dev-libs/weston 1.2.0-r1 1.2.1 1.4.0 1.5.0 1.6.0 1.6.1 1.7.0: Wayland reference compositor
+dev-libs/wayland 1.6.1 1.7.0 1.8.1: Wayland protocol libraries
+dev-libs/weston 1.6.1 1.7.0: Wayland reference compositor
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.19 1.2.20 1.2.21 1.3.2 1.3.3: Xapian Probabilistic Information Retrieval library
@@ -6906,7 +6906,7 @@ dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expen
 dev-python/doit 0.23.0-r1 0.27.0 0.28.0: Automation tool
 dev-python/doit-py 0.3.0: doit tasks for python stuff
 dev-python/doublex 1.7 1.8.1: Python test doubles
-dev-python/doublex-expects 0.4.0: Expects plugin for Doublex test doubles assertions
+dev-python/doublex-expects 0.4.0 0.7.0_rc1: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols
 dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
@@ -16187,7 +16187,7 @@ sys-firmware/iwl6030-ucode 17.168.5.2 18.168.6.1: Intel (R) Wireless WiFi Advanc
 sys-firmware/iwl6050-ucode 9.201.4.1 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
 sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25: Firmware for Intel (R) Dual Band Wireless-AC 7260
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
-sys-firmware/seabios 1.7.5 1.7.5-r1: Open Source implementation of a 16-bit x86 BIOS
+sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
 sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-6400 DVB Card
