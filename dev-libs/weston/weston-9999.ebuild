@@ -62,7 +62,6 @@ RDEPEND="
 		>=virtual/udev-136
 	)
 	egl? (
-		media-libs/glu
 		media-libs/mesa[gles2,wayland]
 	)
 	editor? ( x11-libs/pango )
