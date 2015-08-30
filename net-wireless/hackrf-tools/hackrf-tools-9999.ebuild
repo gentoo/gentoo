@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-DESCRIPTION="library for communicating with HackRF SDR platform"
+DESCRIPTION="tools for communicating with HackRF SDR platform"
 HOMEPAGE="http://greatscottgadgets.com/hackrf/"
 
 if [[ ${PV} == "9999" ]] ; then
