@@ -12,7 +12,7 @@ SRC_URI="http://download.sourceforge.net/ccsh/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc sparc x86 ~ppc64"
 IUSE=""
 
 src_compile() {
