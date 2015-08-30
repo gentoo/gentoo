@@ -96,7 +96,7 @@ app-admin/fam 2.7.0-r6 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
 app-admin/filewatcher 2.4.6: This is a configuration file control system and IDS
-app-admin/fleet 0.11.0 0.11.0-r1 0.11.1 9999: A Distributed init System
+app-admin/fleet 0.11.0-r1 0.11.1 0.11.5 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1: Backup/restore for subversion backends
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
 app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor API & Server

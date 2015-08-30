@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst test unpack
+DEFINED_PHASES=compile install test unpack
 DEPEND=>=dev-lang/go-1.3:= test? ( dev-go/go-tools ) >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
 DESCRIPTION=A Distributed init System
 EAPI=5
@@ -7,4 +7,4 @@ IUSE=doc examples test
 LICENSE=Apache-2.0
 SLOT=0
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=8483923759cf9ddd4270d70cd93eff2d
+_md5_=4bd8020fb60e6db45b45945795bea36a
