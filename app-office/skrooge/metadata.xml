@@ -4,5 +4,6 @@
 	<herd>kde</herd>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
+		<flag name="crypt">Enable encryption using <pkg>dev-db/sqlcipher</pkg></flag>
 	</use>
 </pkgmetadata>
