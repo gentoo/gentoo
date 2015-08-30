@@ -14423,7 +14423,7 @@ net-wireless/gr-iqbal 0.36.0 0.37.2 9999: gnuradio I/Q balancing
 net-wireless/gr-osmosdr 0.1.4 0.1.4_p20150730 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 9999: paints monochrome images into the waterfall of a receiver
 net-wireless/gr-rds 9999: gnuradio FM RDS Receiver
-net-wireless/hackrf-tools 2014.08.1 2015.07.2 2015.07.2-r1 9999: library for communicating with HackRF SDR platform
+net-wireless/hackrf-tools 2015.07.2-r1 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
