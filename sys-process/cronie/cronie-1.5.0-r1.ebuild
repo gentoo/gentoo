@@ -82,4 +82,10 @@ src_install() {
 
 pkg_postinst() {
 	cron_pkg_postinst
+
+	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
+		ewarn "You should restart ${PN} daemon or else you might experience segfaults"
+		ewarn "or ${PN} not working reliably anymore."
+		einfo "(see https://bugs.gentoo.org/557406 for details.)"
+	fi
 }
