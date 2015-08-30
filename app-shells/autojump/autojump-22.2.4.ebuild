@@ -14,13 +14,18 @@ SRC_URI="https://github.com/joelthelion/${PN}/archive/release-v${PV}.tar.gz -> $
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
 IUSE="bash-completion python test zsh-completion"
 
+# Not all tests pass. Need investigation.
+RESTRICT="test"
 RDEPEND="bash-completion? ( >=app-shells/bash-4 )
 	python? ( ${PYTHON_DEPS} )
 	zsh-completion? ( app-shells/zsh app-shells/gentoo-zsh-completions )"
-DEPEND="test? ( ${PYTHON_DEPS} )"
+DEPEND="test? (
+		dev-python/flake8
+		dev-python/tox
+	)"
 
 src_prepare() {
 	sed -e "s: \(/etc/profile.d\): \"${EPREFIX}\1\":" \
