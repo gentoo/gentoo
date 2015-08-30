@@ -4,10 +4,10 @@ DESCRIPTION=X.509 collection accessing and storing methods
 EAPI=5
 HOMEPAGE=https://github.com/vincenthz/hs-certificate
 IUSE=executable test doc hscolour profile
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD
 RDEPEND=>=dev-haskell/asn1-encoding-0.9:=[profile?] <dev-haskell/asn1-encoding-0.10:=[profile?] >=dev-haskell/asn1-types-0.3:=[profile?] <dev-haskell/asn1-types-0.4:=[profile?] >=dev-haskell/crypto-pubkey-types-0.3:=[profile?] <dev-haskell/crypto-pubkey-types-0.5:=[profile?] dev-haskell/mtl:=[profile?] >=dev-haskell/pem-0.1:=[profile?] <dev-haskell/pem-0.3:=[profile?] >=dev-haskell/x509-1.5.0:=[profile?] <dev-haskell/x509-1.6:=[profile?] >=dev-lang/ghc-7.4.1:=
 SLOT=0/1.5.0
 SRC_URI=mirror://hackage/packages/archive/x509-store/1.5.0/x509-store-1.5.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	844d30b2063d113d41e54823109e4325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e617d2e2dae99457792cb492b8d8c3cc
+_md5_=69a1065895ae915697a44a8807f84bb2
