@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=sci-libs/fftw-3.0.1 audacious? ( >=media-sound/audacious-3.5 >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile )
+DEPEND=>=sci-libs/fftw-3.0.1 audacious? ( =media-sound/audacious-3.5* >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile )
 DESCRIPTION=High Quality Reverb and Impulse Response Convolution library including XMMS/Audacious Effect plugins
 EAPI=5
 HOMEPAGE=https://savannah.nongnu.org/projects/freeverb3
 IUSE=cpu_flags_x86_3dnow cpu_flags_x86_avx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 audacious forcefpu jack openmp plugdouble threads
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=sci-libs/fftw-3.0.1 audacious? ( >=media-sound/audacious-3.5 >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile )
+RDEPEND=>=sci-libs/fftw-3.0.1 audacious? ( =media-sound/audacious-3.5* >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile )
 SLOT=0
 SRC_URI=mirror://nongnu/freeverb3/freeverb3-3.1.1.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=61a1217c82f24963e33a44aca2424536
+_md5_=76a34a467dd425a879c417a21b0cb060
