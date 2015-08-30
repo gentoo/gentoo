@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DESCRIPTION=Lightweight, fast and simple C library focused on standards-conformance and safety
+EAPI=5
+HOMEPAGE=http://www.musl-libc.org/
+IUSE=crosscompile_opts_headers-only
+KEYWORDS=-* ~amd64 ~arm ~mips ~ppc ~x86
+LICENSE=MIT LGPL-2 GPL-2
+RDEPEND=!sys-apps/getent
+SLOT=0
+SRC_URI=http://www.musl-libc.org/releases/musl-1.1.11.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=c9bb3b15a269fc7512a5b40b486644fd

@@ -10,5 +10,5 @@ RDEPEND=perl? ( dev-lang/perl:= ) php? ( php_targets_php5-5? ( dev-lang/php:5.5 
 REQUIRED_USE=php? ( || ( php_targets_php5-5 php_targets_php5-4 ) )
 SLOT=0
 SRC_URI=ftp://ftp.ossp.org/pkg/lib/uuid/uuid-1.6.2.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	php-ext-source-r2	f5fb7301b23c79ad7fef68a2d8de2116	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	php-ext-source-r2	c7734fd29f845538cafd6759266f26cc	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
 _md5_=352d267596dc4e153fe93cc31bbb64e6
