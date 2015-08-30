@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/uthash
 	sys-libs/libcap
 	net-libs/librsync
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	sys-libs/zlib
 	acl? ( sys-apps/acl )
 	afs? ( net-fs/openafs )
