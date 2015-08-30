@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Command-line trash can emulation"
-HOMEPAGE="http://www.iq-computing.de/perltrash"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="ftp://www.iq-computing.de/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
