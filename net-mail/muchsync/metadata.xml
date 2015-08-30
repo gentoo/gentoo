@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		Muchsync brings notmuch to all of your computers by synchronizing your
+		mail messages and notmuch tags across machines. The protocol is heavily
+		pipelined to work efficiently over high-latency networks such as mobile
+		broadband. Muchsync supports arbitrary pairwise synchronization among
+		replicas.
+	</longdescription>
+</pkgmetadata>

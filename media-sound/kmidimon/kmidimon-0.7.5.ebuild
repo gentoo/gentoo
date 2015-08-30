@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
+PATCHES=( "${FILESDIR}/${P}-kdelibs-4.14.11.patch" )
 
 src_configure() {
 	local mycmakeargs=(
