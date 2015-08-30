@@ -17,7 +17,7 @@ IUSE="+wallpapers"
 RDEPEND="
 	$(add_kdebase_dep kcminit)
 	$(add_kdeapps_dep kdebase-runtime-meta)
-	wallpapers? ( $(add_kdeapps_dep kde-wallpapers) )
+	wallpapers? ( || ( $(add_kdeapps_dep kde-wallpapers) kde-apps/kde-wallpapers:5 ) )
 	$(add_kdeapps_dep kfmclient)
 	$(add_kdeapps_dep knotify)
 	$(add_kdeapps_dep kreadconfig)
