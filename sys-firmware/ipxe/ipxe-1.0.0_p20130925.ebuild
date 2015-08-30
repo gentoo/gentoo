@@ -16,10 +16,9 @@ SRC_URI="https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="iso +qemu undi usb vmware"
+IUSE="iso lkrn +qemu undi usb vmware"
 
-DEPEND="sys-devel/make
-	dev-lang/perl
+DEPEND="dev-lang/perl
 	sys-libs/zlib
 	iso? (
 		sys-boot/syslinux
@@ -81,6 +80,7 @@ src_compile() {
 	use iso && ipxemake bin/ipxe.iso
 	use undi && ipxemake bin/undionly.kpxe
 	use usb && ipxemake bin/ipxe.usb
+	use lkrn && ipxemake bin/ipxe.lkrn
 }
 
 src_install() {
@@ -93,4 +93,5 @@ src_install() {
 	use iso && doins bin/*.iso
 	use undi && doins bin/*.kpxe
 	use usb && doins bin/*.usb
+	use lkrn && doins bin/*.lkrn
 }
