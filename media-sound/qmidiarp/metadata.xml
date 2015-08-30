@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="sourceforge">qmidiarp</remote-id>
 	</upstream>
+  <use>
+    <flag name="lv2">Enables Ladspa V2 plugins.</flag>
+  </use>
 </pkgmetadata>
