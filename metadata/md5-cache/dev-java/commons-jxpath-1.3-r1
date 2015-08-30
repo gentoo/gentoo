@@ -4,10 +4,10 @@ DESCRIPTION=Applies XPath expressions to graphs of objects of all kinds
 EAPI=5
 HOMEPAGE=http://commons.apache.org/jxpath/
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=amd64 ~ppc ~ppc64 x86 ~x86-fbsd
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.6 dev-java/commons-beanutils:1.7 java-virtuals/servlet-api:2.5 dev-java/jdom:1.0 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://apache/commons/jxpath/source/commons-jxpath-1.3-src.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=48b0d5d6a853a331a0b8c0f58ce38c29
+_md5_=35d23dae31c998a13dc47fcacb7f6bf1
