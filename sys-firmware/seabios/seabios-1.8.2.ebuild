@@ -32,9 +32,10 @@ HOMEPAGE="http://www.seabios.org"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0"
-IUSE="+binary +seavgabios"
+IUSE="+binary debug +seavgabios"
 
-REQUIRED_USE="ppc? ( binary )
+REQUIRED_USE="debug? ( !binary )
+	ppc? ( binary )
 	ppc64? ( binary )"
 
 DEPEND="
@@ -73,7 +74,14 @@ src_prepare() {
 }
 
 src_configure() {
-	use binary || tc-ld-disable-gold #438058
+	use binary && return
+
+	tc-ld-disable-gold #438058
+
+	if use debug ; then
+		echo "CONFIG_DEBUG_LEVEL=8" >.config
+	fi
+	_emake config
 }
 
 _emake() {
