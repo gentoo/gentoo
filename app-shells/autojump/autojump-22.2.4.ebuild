@@ -14,7 +14,7 @@ SRC_URI="https://github.com/joelthelion/${PN}/archive/release-v${PV}.tar.gz -> $
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
 IUSE="bash-completion python test zsh-completion"
 
 # Not all tests pass. Need investigation.
