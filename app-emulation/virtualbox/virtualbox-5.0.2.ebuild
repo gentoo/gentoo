@@ -48,7 +48,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 		media-libs/libsdl:0[X,video]
 	)
 
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.6:= )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.6:= )
 	virtual/pkgconfig
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	!headless? ( x11-libs/libXinerama )
@@ -288,20 +288,26 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} || die
+		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} ; then
+			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/${each}"
+		fi
 	done
 
 	if ! use headless ; then
 		doins VBoxSDL
 		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxSDL
 		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxSDL
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL || die
+		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL ; then
+			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxSDL"
+		fi
 
 		if use opengl && use qt4 ; then
 			doins VBoxTestOGL
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
 			fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL || die
+			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL ; then
+				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxTestOGL"
+			fi
 		fi
 
 		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxSDL
@@ -310,8 +316,9 @@ src_install() {
 			doins VirtualBox
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VirtualBox
 			fperms 4750 /usr/$(get_libdir)/${PN}/VirtualBox
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox \
-				|| die
+			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox ; then
+				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VirtualBox"
+			fi
 
 			dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VirtualBox
 
@@ -330,7 +337,9 @@ src_install() {
 	doins VBoxHeadless
 	fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
 	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
-	pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless || die
+	if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless ; then
+		ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxHeadless"
+	fi
 
 	insinto /usr/$(get_libdir)/${PN}
 	# Install EFI Firmware files (bug #320757)
