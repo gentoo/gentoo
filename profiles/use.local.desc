@@ -6941,6 +6941,7 @@ sys-apps/kmod:lzma - Enable support for XZ compressed modules
 sys-apps/kmod:tools - Install module loading/unloading tools.
 sys-apps/kmod:zlib - Enable support for gzipped modules
 sys-apps/lm_sensors:sensord - Enable sensord - a daemon that can be used to periodically log sensor readings from hardware health-monitoring chips
+sys-apps/man-db:manpager - Enable manpager wrapper for colorizing output
 sys-apps/memtest86:serial - Compile with serial console support
 sys-apps/memtest86+:floppy - Install a script to create floppy disks containing memtest86+ binaries.
 sys-apps/memtest86+:serial - Compile with serial console support

@@ -2323,6 +2323,7 @@ app-text/lodgeit 0.3_p20120507 0.3_p20120618-r1: Command-line interface to paste
 app-text/logmerge 0.4_beta: Merge multiple logs such that multilined entries appear in chronological order without breaks
 app-text/lout 3.38-r1 3.39: high-level language for document formatting
 app-text/lv 4.51-r3: Powerful Multilingual File Viewer
+app-text/manpager 1: Enable colorization of man pages
 app-text/mathtex 1.04: MathTeX lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mbtpdfasm 1.0.28-r1: Tool to assemble/merge PDF files, extract information from, and update the metadata in PDF files
 app-text/mecab 0.996: Yet Another Part-of-Speech and Morphological Analyzer
@@ -7699,7 +7700,7 @@ dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
 dev-python/scrapy 0.25.1 1.0.0 1.0.1: A high-level Python Screen Scraping framework
 dev-python/scripttest 1.2-r1 1.3: A very small text templating language
 dev-python/seaborn 0.5.1 0.6.0: Statistical data visualization
-dev-python/selenium 2.42.1 2.45.0 2.46.0: Python language binding for Selenium Remote Control (version 1.0 and 2.0)
+dev-python/selenium 2.42.1 2.46.0 2.47.1: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.4.1: This small python library provides a few tools to handle SemVer in Python.
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
 dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
@@ -15751,7 +15752,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/magneto-core 254: Entropy Package Manager notification applet library
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
-sys-apps/man-db 2.6.6 2.6.7.1 2.7.1 2.7.2: a man replacement that utilizes berkdb instead of flat files
+sys-apps/man-db 2.6.6 2.6.7.1 2.7.1 2.7.2 2.7.2-r1: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.00 4.01 4.02: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/mawk 1.3.4_p20100625 1.3.4_p20141206 1.3.4_p20150503: an (often faster than gawk) awk-interpreter
