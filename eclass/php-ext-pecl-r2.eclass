@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: php-ext-pecl-r1.eclass
+# @ECLASS: php-ext-pecl-r2.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
 # @AUTHOR:
@@ -62,14 +62,14 @@ SRC_URI="http://pecl.php.net/get/${FILENAME}"
 HOMEPAGE="http://pecl.php.net/${PECL_PKG}"
 
 
-# @FUNCTION: php-ext-pecl-r1_src_compile
+# @FUNCTION: php-ext-pecl-r2_src_compile
 # @DESCRIPTION:
 # Takes care of standard compile for PECL packages.
 php-ext-pecl-r2_src_compile() {
 	php-ext-source-r2_src_compile
 }
 
-# @FUNCTION: php-ext-pecl-r1_src_install
+# @FUNCTION: php-ext-pecl-r2_src_install
 # @DESCRIPTION:
 # Takes care of standard install for PECL packages.
 # You can also simply add examples to IUSE to automagically install
