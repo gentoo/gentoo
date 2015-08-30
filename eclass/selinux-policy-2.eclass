@@ -198,6 +198,7 @@ selinux-policy-2_src_prepare() {
 	for i in ${MODS}; do
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.te) $modfiles"
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.fc) $modfiles"
+		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.cil) $modfiles"
 		if [ ${add_interfaces} -eq 1 ];
 		then
 			modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.if) $modfiles"
@@ -239,7 +240,7 @@ selinux-policy-2_src_compile() {
 
 # @FUNCTION: selinux-policy-2_src_install
 # @DESCRIPTION:
-# Install the built .pp files in the correct subdirectory within
+# Install the built .pp (or copied .cil) files in the correct subdirectory within
 # /usr/share/selinux.
 selinux-policy-2_src_install() {
 	local BASEDIR="/usr/share/selinux"
@@ -248,7 +249,11 @@ selinux-policy-2_src_install() {
 		for j in ${MODS}; do
 			einfo "Installing ${i} ${j} policy package"
 			insinto ${BASEDIR}/${i}
-			doins "${S}"/${i}/${j}.pp || die "Failed to add ${j}.pp to ${i}"
+			if [ -f "${S}/${i}/${j}.pp" ] ; then
+			  doins "${S}"/${i}/${j}.pp || die "Failed to add ${j}.pp to ${i}"
+			elif [ -f "${S}/${i}/${j}.cil" ] ; then
+			  doins "${S}"/${i}/${j}.cil || die "Failed to add ${j}.cil to ${i}"
+			fi
 
 			if [[ "${POLICY_FILES[@]}" == *"${j}.if"* ]];
 			then
@@ -261,14 +266,11 @@ selinux-policy-2_src_install() {
 
 # @FUNCTION: selinux-policy-2_pkg_postinst
 # @DESCRIPTION:
-# Install the built .pp files in the SELinux policy stores, effectively
+# Install the built .pp (or copied .cil) files in the SELinux policy stores, effectively
 # activating the policy on the system.
 selinux-policy-2_pkg_postinst() {
 	# build up the command in the case of multiple modules
 	local COMMAND
-	for i in ${MODS}; do
-		COMMAND="-i ${i}.pp ${COMMAND}"
-	done
 
 	for i in ${POLICY_TYPES}; do
 		if [ "${i}" == "strict" ] && [ "${MODS}" = "unconfined" ];
@@ -279,7 +281,14 @@ selinux-policy-2_pkg_postinst() {
 		einfo "Inserting the following modules into the $i module store: ${MODS}"
 
 		cd /usr/share/selinux/${i} || die "Could not enter /usr/share/selinux/${i}"
-		semodule -s ${i} ${COMMAND}
+		for j in ${MODS} ; do
+			if [ -f "${j}.pp" ] ; then
+				COMMAND="${j}.pp ${COMMAND}"
+			elif [ -f "${j}.cil" ] ; then
+				COMMAND="${j}.cil ${COMMAND}"
+			fi
+		done
+		semodule -s ${i} -i ${COMMAND}
 		if [ $? -ne 0 ];
 		then
 			ewarn "SELinux module load failed. Trying full reload...";
@@ -313,6 +322,7 @@ selinux-policy-2_pkg_postinst() {
 		else
 			einfo "SELinux modules loaded succesfully."
 		fi
+		COMMAND="";
 	done
 
 	# Relabel depending packages
