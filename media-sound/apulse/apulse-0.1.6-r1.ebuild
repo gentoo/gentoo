@@ -21,19 +21,21 @@ RDEPEND="${DEPEND}
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/apulse )
 
-multilib_src_configure() {
-	local mycmakeargs="-DAPULSEPATH=${EPREFIX}/usr/$(get_libdir)/apulse"
-
-	cmake-utils_src_configure
-
-	# Ensure all relevant libdirs are added
+src_prepare() {
+	# Ensure all relevant libdirs are added, to support all ABIs
 	DIRS=
 	_add_dir() { DIRS="${EPREFIX}/usr/$(get_libdir)/apulse${DIRS:+:${DIRS}}"; }
 	multilib_foreach_abi _add_dir
 	sed -e "s#@@DIRS@@#${DIRS}#g" "${FILESDIR}"/apulse > "${T}"/apulse
 }
 
-multilib_src_install() {
+multilib_src_configure() {
+	local mycmakeargs="-DAPULSEPATH=${EPREFIX}/usr/$(get_libdir)/apulse"
+	cmake-utils_src_configure
+}
+
+multilib_src_install_all() {
 	cmake-utils_src_install
+	einstalldocs
 	dobin "${T}"/apulse
 }
