@@ -64,7 +64,7 @@ RESTRICT="test"
 COMMON_DEPEND="
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	capi? ( net-dialup/capi4k-utils )
-	ncurses? ( >=sys-libs/ncurses-5.2:=[${MULTILIB_USEDEP}] )
+	ncurses? ( >=sys-libs/ncurses-5.2:0=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
