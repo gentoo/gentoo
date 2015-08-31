@@ -6,11 +6,6 @@
 	<name>Alice Ferrazzi</name>
 	<description>Assign bugs to me.</description>
 </maintainer>
-<maintainer>
-	<email>mrueg@gentoo.org</email>
-	<name>Manuel Rüger</name>
-	<description>CC him on bugs.</description>
-</maintainer>
 <use>
 	<flag name="extras">Installs additional modules used by ikiwiki plugins</flag>
 </use>
