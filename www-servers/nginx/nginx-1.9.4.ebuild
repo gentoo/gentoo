@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 # Maintainer notes:
 # - http_rewrite-independent pcre-support makes sense for matching locations without an actual rewrite
 # - any http-module activates the main http-functionality and overrides USE=-http
 # - keep the following requirements in mind before adding external modules:
-#   * alive upstream
-#   * sane packaging
-#   * builds cleanly
-#   * does not need a patch for nginx core
+#	* alive upstream
+#	* sane packaging
+#	* builds cleanly
+#	* does not need a patch for nginx core
 # - TODO: test the google-perftools module (included in vanilla tarball)
 
 # prevent perl-module from adding automagic perl DEPENDs
@@ -54,12 +54,12 @@ HTTP_FANCYINDEX_MODULE_URI="https://github.com/aperezdc/ngx-fancyindex/archive/v
 HTTP_FANCYINDEX_MODULE_WD="${WORKDIR}/ngx-fancyindex-${HTTP_FANCYINDEX_MODULE_PV}"
 
 # http_lua (https://github.com/openresty/lua-nginx-module, BSD license)
-HTTP_LUA_MODULE_PV="0.9.15"
+HTTP_LUA_MODULE_PV="0.9.16"
 HTTP_LUA_MODULE_P="ngx_http_lua-${HTTP_LUA_MODULE_PV}"
 HTTP_LUA_MODULE_URI="https://github.com/openresty/lua-nginx-module/archive/v${HTTP_LUA_MODULE_PV}.tar.gz"
 HTTP_LUA_MODULE_WD="${WORKDIR}/lua-nginx-module-${HTTP_LUA_MODULE_PV}"
 
-# http_auth_pam (http://web.iti.upv.es/~sto/nginx/, BSD-2 license)
+# http_auth_pam (https://github.com/stogh/ngx_http_auth_pam_module/, http://web.iti.upv.es/~sto/nginx/, BSD-2 license)
 HTTP_AUTH_PAM_MODULE_PV="1.4"
 HTTP_AUTH_PAM_MODULE_P="ngx_http_auth_pam-${HTTP_AUTH_PAM_MODULE_PV}"
 HTTP_AUTH_PAM_MODULE_URI="https://github.com/stogh/ngx_http_auth_pam_module/archive/v${HTTP_AUTH_PAM_MODULE_PV}.tar.gz"
@@ -96,7 +96,7 @@ HTTP_DAV_EXT_MODULE_URI="https://github.com/arut/nginx-dav-ext-module/archive/v$
 HTTP_DAV_EXT_MODULE_WD="${WORKDIR}/nginx-dav-ext-module-${HTTP_DAV_EXT_MODULE_PV}"
 
 # echo-nginx-module (https://github.com/agentzh/echo-nginx-module, BSD license)
-HTTP_ECHO_MODULE_PV="0.57"
+HTTP_ECHO_MODULE_PV="0.58"
 HTTP_ECHO_MODULE_P="ngx_http_echo-${HTTP_ECHO_MODULE_PV}"
 HTTP_ECHO_MODULE_URI="https://github.com/agentzh/echo-nginx-module/archive/v${HTTP_ECHO_MODULE_PV}.tar.gz"
 HTTP_ECHO_MODULE_WD="${WORKDIR}/echo-nginx-module-${HTTP_ECHO_MODULE_PV}"
@@ -109,28 +109,28 @@ HTTP_SECURITY_MODULE_URI="https://www.modsecurity.org/tarball/${HTTP_SECURITY_MO
 HTTP_SECURITY_MODULE_WD="${WORKDIR}/${HTTP_SECURITY_MODULE_P}"
 
 # push-stream-module (http://www.nginxpushstream.com, https://github.com/wandenberg/nginx-push-stream-module, GPL-3)
-HTTP_PUSH_STREAM_MODULE_PV="0.4.1"
+HTTP_PUSH_STREAM_MODULE_PV="0.5.1"
 HTTP_PUSH_STREAM_MODULE_P="ngx_http_push_stream-${HTTP_PUSH_STREAM_MODULE_PV}"
 HTTP_PUSH_STREAM_MODULE_URI="https://github.com/wandenberg/nginx-push-stream-module/archive/${HTTP_PUSH_STREAM_MODULE_PV}.tar.gz"
 HTTP_PUSH_STREAM_MODULE_WD="${WORKDIR}/nginx-push-stream-module-${HTTP_PUSH_STREAM_MODULE_PV}"
 
 # sticky-module (https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng, BSD-2)
-HTTP_STICKY_MODULE_PV="1.2.5"
+HTTP_STICKY_MODULE_PV="1.2.6"
 HTTP_STICKY_MODULE_P="nginx_http_sticky_module_ng-${HTTP_STICKY_MODULE_PV}"
 HTTP_STICKY_MODULE_URI="https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/${HTTP_STICKY_MODULE_PV}.tar.bz2"
-HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-bd312d586752"
-
-# ajp-module (https://github.com/yaoweibin/nginx_ajp_module, BSD-2)
-HTTP_AJP_MODULE_PV="0.3.0"
-HTTP_AJP_MODULE_P="ngx_http_ajp_module-${HTTP_AJP_MODULE_PV}"
-HTTP_AJP_MODULE_URI="https://github.com/yaoweibin/nginx_ajp_module/archive/v${HTTP_AJP_MODULE_PV}.tar.gz"
-HTTP_AJP_MODULE_WD="${WORKDIR}/nginx_ajp_module-${HTTP_AJP_MODULE_PV}"
+HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-c78b7dd79d0d"
 
 # mogilefs-module (http://www.grid.net.ru/nginx/mogilefs.en.html, BSD-2)
 HTTP_MOGILEFS_MODULE_PV="1.0.4"
 HTTP_MOGILEFS_MODULE_P="ngx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
 HTTP_MOGILEFS_MODULE_URI="http://www.grid.net.ru/nginx/download/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}.tar.gz"
 HTTP_MOGILEFS_MODULE_WD="${WORKDIR}/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+
+# memc-module (https://github.com/openresty/memc-nginx-module, BSD-2)
+HTTP_MEMC_MODULE_PV="0.16"
+HTTP_MEMC_MODULE_P="ngx_memc_module-${HTTP_MEMC_MODULE_PV}"
+HTTP_MEMC_MODULE_URI="https://github.com/openresty/memc-nginx-module/archive/v${HTTP_MEMC_MODULE_PV}.tar.gz"
+HTTP_MEMC_MODULE_WD="${WORKDIR}/memc-nginx-module-${HTTP_MEMC_MODULE_PV}"
 
 inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator multilib
 
@@ -154,14 +154,14 @@ SRC_URI="http://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_security? ( ${HTTP_SECURITY_MODULE_URI} -> ${HTTP_SECURITY_MODULE_P}.tar.gz )
 	nginx_modules_http_push_stream? ( ${HTTP_PUSH_STREAM_MODULE_URI} -> ${HTTP_PUSH_STREAM_MODULE_P}.tar.gz )
 	nginx_modules_http_sticky? ( ${HTTP_STICKY_MODULE_URI} -> ${HTTP_STICKY_MODULE_P}.tar.bz2 )
-	nginx_modules_http_ajp? ( ${HTTP_AJP_MODULE_URI} -> ${HTTP_AJP_MODULE_P}.tar.gz )
-	nginx_modules_http_mogilefs? ( ${HTTP_MOGILEFS_MODULE_URI} -> ${HTTP_MOGILEFS_MODULE_P}.tar.gz )"
+	nginx_modules_http_mogilefs? ( ${HTTP_MOGILEFS_MODULE_URI} -> ${HTTP_MOGILEFS_MODULE_P}.tar.gz )
+	nginx_modules_http_memc? ( ${HTTP_MEMC_MODULE_URI} -> ${HTTP_MEMC_MODULE_P}.tar.gz )"
 
 LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="0"
+SLOT="mainline"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif fastcgi
@@ -187,10 +187,11 @@ NGINX_MODULES_3RD="
 	http_push_stream
 	http_sticky
 	http_ajp
-	http_mogilefs"
+	http_mogilefs
+	http_memc"
 
 IUSE="aio debug +http +http-cache ipv6 libatomic luajit +pcre pcre-jit rtmp
-selinux ssl userland_GNU vim-syntax"
+selinux ssl threads userland_GNU vim-syntax"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -230,7 +231,7 @@ CDEPEND="
 	nginx_modules_http_security? ( >=dev-libs/libxml2-2.7.8 dev-libs/apr-util www-servers/apache )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
-"
+	!www-servers/nginx:0"
 DEPEND="${CDEPEND}
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
@@ -270,23 +271,32 @@ pkg_setup() {
 		ewarn "To actually disable all http-functionality you also have to disable"
 		ewarn "all nginx http modules."
 	fi
+
+	if use nginx_modules_http_ajp; then
+		eerror "The AJP module currently doesn't build for nginx >1.8."
+		eerror "It will be reintroduced with the 1.9 series when proven stable."
+		eerror "Either disable it or stick with nginx 1.7.x."
+		die "AJP module not supported"
+	fi
+
+	if use nginx_modules_http_mogilefs && use threads; then
+		eerror "mogilefs won't compile with threads support."
+		eerror "Please disable either flag and try again."
+		die "Can't compile mogilefs with threads support"
+	fi
 }
 
 src_prepare() {
+	epatch_user
+
 	epatch "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 
 	if use nginx_modules_http_upstream_check; then
-		epatch "${FILESDIR}"/check_1.7.2+.patch
+		epatch "${FILESDIR}/check-1.9.2".patch
 	fi
 
 	if use nginx_modules_http_lua; then
 		sed -i -e 's/-llua5.1/-llua/' "${HTTP_LUA_MODULE_WD}/config" || die
-	fi
-
-	if use nginx_modules_http_ajp; then
-		pushd "${HTTP_AJP_MODULE_WD}" > /dev/null
-		epatch "${FILESDIR}"/AJP-nginx-1.7.9+.patch
-		popd > /dev/null
 	fi
 
 	find auto/ -type f -print0 | xargs -0 sed -i 's:\&\& make:\&\& \\$(MAKE):' || die
@@ -302,8 +312,6 @@ src_prepare() {
 			sed -i -e "/${module}/d" auto/install || die
 		fi
 	done
-
-	epatch_user
 }
 
 src_configure() {
@@ -323,59 +331,60 @@ src_configure() {
 
 	cd "${S}"
 
-	local myconf= http_enabled= mail_enabled=
+	local myconf=() http_enabled= mail_enabled=
 
-	use aio       && myconf+=" --with-file-aio --with-aio_module"
-	use debug     && myconf+=" --with-debug"
-	use ipv6      && myconf+=" --with-ipv6"
-	use libatomic && myconf+=" --with-libatomic"
-	use pcre      && myconf+=" --with-pcre"
-	use pcre-jit  && myconf+=" --with-pcre-jit"
+	use aio		  && myconf+=( --with-file-aio )
+	use debug	  && myconf+=( --with-debug )
+	use ipv6	  && myconf+=( --with-ipv6 )
+	use libatomic && myconf+=( --with-libatomic )
+	use pcre	  && myconf+=( --with-pcre )
+	use pcre-jit  && myconf+=( --with-pcre-jit )
+	use threads   && myconf+=( --with-threads )
 
 	# HTTP modules
 	for mod in $NGINX_MODULES_STD; do
 		if use nginx_modules_http_${mod}; then
 			http_enabled=1
 		else
-			myconf+=" --without-http_${mod}_module"
+			myconf+=( --without-http_${mod}_module )
 		fi
 	done
 
 	for mod in $NGINX_MODULES_OPT; do
 		if use nginx_modules_http_${mod}; then
 			http_enabled=1
-			myconf+=" --with-http_${mod}_module"
+			myconf+=( --with-http_${mod}_module )
 		fi
 	done
 
 	if use nginx_modules_http_fastcgi; then
-		myconf+=" --with-http_realip_module"
+		myconf+=( --with-http_realip_module )
 	fi
 
 	# third-party modules
 	if use nginx_modules_http_upload_progress; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_UPLOAD_PROGRESS_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_UPLOAD_PROGRESS_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_headers_more; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_HEADERS_MORE_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_HEADERS_MORE_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_cache_purge; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_CACHE_PURGE_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_CACHE_PURGE_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_slowfs_cache; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_SLOWFS_CACHE_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_SLOWFS_CACHE_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_fancyindex; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_FANCYINDEX_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_FANCYINDEX_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_lua; then
@@ -387,79 +396,79 @@ src_configure() {
 			export LUA_LIB=$(pkg-config --variable libdir lua)
 			export LUA_INC=$(pkg-config --variable includedir lua)
 		fi
-		myconf+=" --add-module=${DEVEL_KIT_MODULE_WD}"
-		myconf+=" --add-module=${HTTP_LUA_MODULE_WD}"
+		myconf+=( --add-module=${DEVEL_KIT_MODULE_WD} )
+		myconf+=( --add-module=${HTTP_LUA_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_auth_pam; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_AUTH_PAM_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_AUTH_PAM_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_upstream_check; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_UPSTREAM_CHECK_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_UPSTREAM_CHECK_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_metrics; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_METRICS_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_METRICS_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_naxsi ; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_NAXSI_MODULE_WD}"
+		myconf+=(  --add-module=${HTTP_NAXSI_MODULE_WD} )
 	fi
 
 	if use rtmp ; then
 		http_enabled=1
-		myconf+=" --add-module=${RTMP_MODULE_WD}"
+		myconf+=( --add-module=${RTMP_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_dav_ext ; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_DAV_EXT_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_DAV_EXT_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_echo ; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_ECHO_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_ECHO_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_security ; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_SECURITY_MODULE_WD}/nginx/modsecurity"
+		myconf+=( --add-module=${HTTP_SECURITY_MODULE_WD}/nginx/modsecurity )
 	fi
 
 	if use nginx_modules_http_push_stream ; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_PUSH_STREAM_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_PUSH_STREAM_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_sticky ; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_STICKY_MODULE_WD}"
-	fi
-
-	if use nginx_modules_http_ajp ; then
-		http_enabled=1
-		myconf+=" --add-module=${HTTP_AJP_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_STICKY_MODULE_WD} )
 	fi
 
 	if use nginx_modules_http_mogilefs ; then
 		http_enabled=1
-		myconf+=" --add-module=${HTTP_MOGILEFS_MODULE_WD}"
+		myconf+=( --add-module=${HTTP_MOGILEFS_MODULE_WD} )
 	fi
+
+		if use nginx_modules_http_memc ; then
+				http_enabled=1
+				myconf+=( --add-module=${HTTP_MEMC_MODULE_WD} )
+		fi
 
 	if use http || use http-cache; then
 		http_enabled=1
 	fi
 
 	if [ $http_enabled ]; then
-		use http-cache || myconf+=" --without-http-cache"
-		use ssl && myconf+=" --with-http_ssl_module"
+		use http-cache || myconf+=( --without-http-cache )
+		use ssl && myconf+=( --with-http_ssl_module )
 	else
-		myconf+=" --without-http --without-http-cache"
+		myconf+=( --without-http --without-http-cache )
 	fi
 
 	# MAIL modules
@@ -467,18 +476,18 @@ src_configure() {
 		if use nginx_modules_mail_${mod}; then
 			mail_enabled=1
 		else
-			myconf+=" --without-mail_${mod}_module"
+			myconf+=( --without-mail_${mod}_module )
 		fi
 	done
 
 	if [ $mail_enabled ]; then
-		myconf+=" --with-mail"
-		use ssl && myconf+=" --with-mail_ssl_module"
+		myconf+=( --with-mail )
+		use ssl && myconf+=( --with-mail_ssl_module )
 	fi
 
 	# custom modules
 	for mod in $NGINX_ADD_MODULES; do
-		myconf+=" --add-module=${mod}"
+		myconf+=(  --add-module=${mod} )
 	done
 
 	# https://bugs.gentoo.org/286772
@@ -486,7 +495,7 @@ src_configure() {
 	tc-export CC
 
 	if ! use prefix; then
-		myconf+=" --user=${PN} --group=${PN}"
+		myconf+=( --user=${PN}" "--group=${PN} )
 	fi
 
 	./configure \
@@ -503,7 +512,7 @@ src_configure() {
 		--http-fastcgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/fastcgi \
 		--http-scgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/scgi \
 		--http-uwsgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/uwsgi \
-		${myconf} || die "configure failed"
+		"${myconf[@]}" || die "configure failed"
 
 	# A purely cosmetic change that makes nginx -V more readable. This can be
 	# good if people outside the gentoo community would troubleshoot and
@@ -592,12 +601,6 @@ src_install() {
 		dodoc "${HTTP_UPSTREAM_CHECK_MODULE_WD}"/{README,CHANGES}
 	fi
 
-# README.md is still empty
-#	if use nginx_modules_http_metrics; then
-#		docinto ${HTTP_METRICS_MODULE_P}
-#		dodoc "${HTTP_METRICS_MODULE_WD}"/README.md
-#	fi
-
 	if use nginx_modules_http_naxsi; then
 		insinto /etc/nginx
 		doins "${HTTP_NAXSI_MODULE_WD}"/../naxsi_config/naxsi_core.rules
@@ -633,9 +636,9 @@ src_install() {
 		dodoc "${HTTP_STICKY_MODULE_WD}"/{README.md,Changelog.txt,docs/sticky.pdf}
 	fi
 
-	if use nginx_modules_http_ajp; then
-		docinto ${HTTP_AJP_MODULE_P}
-		dodoc "${HTTP_AJP_MODULE_WD}"/README
+	if use nginx_modules_http_memc; then
+		docinto ${HTTP_MEMC_MODULE_P}
+		dodoc "${HTTP_MEMC_MODULE_WD}"/README.markdown
 	fi
 }
 
