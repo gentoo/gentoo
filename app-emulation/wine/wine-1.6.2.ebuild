@@ -53,7 +53,7 @@ RESTRICT="test"
 NATIVE_DEPEND="
 	truetype? ( >=media-libs/freetype-2.0.0  )
 	capi? ( net-dialup/capi4k-utils )
-	ncurses? ( >=sys-libs/ncurses-5.2:= )
+	ncurses? ( >=sys-libs/ncurses-5.2:0= )
 	udisks? ( sys-apps/dbus )
 	fontconfig? ( media-libs/fontconfig:= )
 	gphoto2? ( media-libs/libgphoto2:= )
@@ -96,7 +96,7 @@ COMMON_DEPEND="
 		abi_x86_64? ( ${NATIVE_DEPEND} )
 		abi_x86_32? (
 			truetype? ( >=media-libs/freetype-2.5.0.1[abi_x86_32(-)] )
-			ncurses? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] )
+			ncurses? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_32(-)] )
 			udisks? ( >=sys-apps/dbus-1.6.18-r1[abi_x86_32(-)] )
 			fontconfig? ( >=media-libs/fontconfig-2.10.92[abi_x86_32(-)] )
 			gphoto2? ( >=media-libs/libgphoto2-2.5.3.1[abi_x86_32(-)] )
