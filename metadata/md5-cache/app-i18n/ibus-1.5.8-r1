@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install postinst postrm preinst prepare setup test
 DEPEND=>=dev-libs/glib-2.26:2 gnome-base/librsvg:2 sys-apps/dbus[X?] app-text/iso-codes >=gnome-base/dconf-0.13.4 x11-libs/libnotify gconf? ( >=gnome-base/gconf-2.12:2 ) gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) X? ( x11-libs/libX11 x11-libs/gtk+:2 ) introspection? ( >=dev-libs/gobject-introspection-0.6.8 ) nls? ( virtual/libintl ) wayland? ( dev-libs/wayland ) >=dev-lang/perl-5.8.1 dev-util/gtk-doc-am dev-util/intltool virtual/pkgconfig nls? ( >=sys-devel/gettext-0.16.1 ) vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) gnome-base/gconf >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Intelligent Input Bus for Linux / Unix OS
 EAPI=5
-HOMEPAGE=https://code.google.com/p/ibus/
+HOMEPAGE=https://github.com/ibus/ibus/wiki
 IUSE=deprecated gconf gtk +gtk3 +introspection nls +python test vala wayland +X python_targets_python2_7 test
 KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=LGPL-2.1
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ibus/ibus/releases/download/1.5.8/ibus-1.5.8.tar.gz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=4ff4837c84d4c29f3a567270081e4b0c
+_md5_=7ce89ee987d4237cd90a8fba534b19a8
