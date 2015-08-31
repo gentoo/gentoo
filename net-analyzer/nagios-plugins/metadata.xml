@@ -11,6 +11,11 @@
       <name>Chris Reffett</name>
       <description>Proxy maintainer. CC him on bugs.</description>
   </maintainer>
+  <maintainer>
+      <email>mjo@gentoo.org</email>
+      <name>Michael Orlitzky</name>
+      <description>Maintainer. CC him on bugs.</description>
+  </maintainer>
   <herd>proxy-maintainers</herd>
   <herd>sysadmin</herd>
   <use>

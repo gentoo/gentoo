@@ -13,7 +13,7 @@ SRC_URI="http://nagios-plugins.org/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game postgres samba snmp ssh +ssl"
+IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game postgres samba selinux snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
 # get built if the binary it uses is installed. For example, check_snmp
@@ -41,7 +41,8 @@ DEPEND="${REAL_DEPEND}
 
 # Basically everything collides with nagios-plugins.
 RDEPEND="${DEPEND}
-	!net-analyzer/monitoring-plugins"
+	!net-analyzer/monitoring-plugins
+	selinux? ( sec-policy/selinux-nagios )"
 
 # At least one test is interactive.
 RESTRICT="test"
