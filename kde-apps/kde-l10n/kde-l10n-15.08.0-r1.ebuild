@@ -17,6 +17,7 @@ RDEPEND="
 	!<kde-apps/kde4-l10n-${PV}
 	!kde-apps/kde4-l10n[-minimal]
 	!<kde-apps/kdepim-l10n-${PV}
+	!<kde-apps/ktp-l10n-${PV}
 "
 
 KEYWORDS=" ~amd64 ~x86"
@@ -70,6 +71,13 @@ src_prepare() {
 					find "${S}/${DIR}" -name CMakeLists.txt -type f \
 						-exec sed -i -e "/add_subdirectory( *${subdir} *)/ s/^/#/" {} +
 				done
+
+				# Remove ktp translations (part of kde-apps/ktp-l10n)
+				# Drop that hack (and kde-apps/ktp-l10n) after ktp:4 removal
+				find "${S}"/${DIR}/5/${LNG}/messages/kdenetwork -type f \
+					\( -name kaccounts*po -o -name kcm_ktp*po -o -name kcmtelepathy*po \
+					-o -name kded_ktp*po -o -name ktp*po -o -name plasma*ktp*po \) \
+					-delete
 
 				# Handbook optional
 				sed -e '/KF5DocTools/ s/ REQUIRED//'\
