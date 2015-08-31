@@ -8965,7 +8965,7 @@ dev-util/itstool 1.2.0-r1 2.0.2: Translation tool for XML documents that uses ge
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.609.1 1.609.2 1.622 1.626: Extensible continuous integration server
+dev-util/jenkins-bin 1.609.1 1.609.2 1.626 1.627: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.4 2.5.5: A graphical debugger interface
@@ -17297,7 +17297,7 @@ x11-libs/libcryptui 3.12.2: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.6.1 0.6.4 0.7.0: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.20-r1 2.4.33 2.4.46 2.4.52 2.4.53 2.4.54 2.4.56 2.4.58 2.4.59 2.4.59-r1 2.4.62 2.4.64 9999: X.Org libdrm library
+x11-libs/libdrm 2.4.59 2.4.64 9999: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 0.1.17-r1 1.1.4 1.2.2.1 1.2.3 1.2.3-r1 9999: A library for file management
 x11-libs/libfm-extra 1.2.3: A library for file management
