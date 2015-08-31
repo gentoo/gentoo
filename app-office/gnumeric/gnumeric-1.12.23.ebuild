@@ -14,7 +14,7 @@ HOMEPAGE="http://www.gnumeric.org/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 IUSE="+introspection libgda perl python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -30,8 +30,8 @@ RDEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
 	>=dev-libs/glib-2.38.0:2
-	>=gnome-extra/libgsf-1.14.32:=
-	>=x11-libs/goffice-0.10.21:0.10
+	>=gnome-extra/libgsf-1.14.33:=
+	>=x11-libs/goffice-0.10.22:0.10
 	>=dev-libs/libxml2-2.4.12:2
 	>=x11-libs/pango-1.24.0:=
 

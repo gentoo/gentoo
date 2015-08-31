@@ -16,7 +16,7 @@ LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"
 IUSE="+crypt debug +introspection test vala"
 REQUIRED_USE="vala? ( introspection )"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2
@@ -45,11 +45,6 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	# FIXME: disable failing test
-	sed -e '/test_get_sync);/d' \
-		-e '/test_get_async);/d' \
-		-i libsecret/test-service.c || die
-
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 }
