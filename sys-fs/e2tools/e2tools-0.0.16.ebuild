@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs
+inherit toolchain-funcs eutils
 
 DESCRIPTION="utilities to read, write, and manipulate files in an ext2/ext3 filesystem"
 HOMEPAGE="http://home.earthlink.net/~k_sheff/sw/e2tools/"
@@ -20,6 +20,8 @@ DEPEND="sys-fs/e2fsprogs
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-prototypes.patch
+	epatch "${FILESDIR}"/${P}-qsort-const.patch
 	sed -i '/e2cp_LDADD/s:-L@[^@]*@::' Makefile.in || die
 }
 
