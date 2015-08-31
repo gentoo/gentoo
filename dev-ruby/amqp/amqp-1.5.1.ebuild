@@ -24,7 +24,7 @@ IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/multi_json dev-ruby/evented-spec )"
 ruby_add_rdepend ">=dev-ruby/eventmachine-0.12.4
-	>=dev-ruby/amq-protocol-1.9.2"
+	>=dev-ruby/amq-protocol-1.9.2:0"
 
 all_ruby_prepare() {
 	#rm Gemfile || die
