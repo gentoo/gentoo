@@ -10,4 +10,7 @@
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">dvorka/hstr</remote-id>
+	</upstream>
 </pkgmetadata>

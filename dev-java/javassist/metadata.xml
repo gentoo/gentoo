@@ -4,5 +4,6 @@
 	<herd>java</herd>
 	<upstream>
 		<remote-id type="sourceforge">jboss</remote-id>
+		<remote-id type="github">jboss-javassist/javassist</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>mr_bones_@gentoo.org</email>
-	<name>Michael Sterrett</name>
-</maintainer>
-<use>
-	<flag name='amqp'>Enable support for AMQP destinations</flag>
-	<flag name='smtp'>Enable support for SMTP destinations</flag>
-	<flag name='spoof-source'>Enable support for spoofed source addresses</flag>
-	<flag name='json'>Enable support for JSON template formatting via <pkg>dev-libs/json-c</pkg></flag>
-	<flag name='mongodb'>Enable support for mongodb destinations</flag>
-	<flag name='pacct'>Enable support for reading Process Accounting files (EXPERIMENTAL, Linux only)</flag>
-	<flag name='redis'>Enable support for Redis destinations</flag>
-</use>
+	<maintainer>
+		<email>mr_bones_@gentoo.org</email>
+		<name>Michael Sterrett</name>
+	</maintainer>
+	<use>
+		<flag name="amqp">Enable support for AMQP destinations</flag>
+		<flag name="smtp">Enable support for SMTP destinations</flag>
+		<flag name="spoof-source">Enable support for spoofed source addresses</flag>
+		<flag name="json">Enable support for JSON template formatting via <pkg>dev-libs/json-c</pkg></flag>
+		<flag name="mongodb">Enable support for mongodb destinations</flag>
+		<flag name="pacct">Enable support for reading Process Accounting files (EXPERIMENTAL, Linux only)</flag>
+		<flag name="redis">Enable support for Redis destinations</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">balabit/syslog-ng</remote-id>
+	</upstream>
 </pkgmetadata>

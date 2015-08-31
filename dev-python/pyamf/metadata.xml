@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="github">hydralabs/pyamf</remote-id>
+		<remote-id type="pypi">PyAMF</remote-id>
 	</upstream>
 </pkgmetadata>

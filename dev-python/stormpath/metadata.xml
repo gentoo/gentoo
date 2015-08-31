@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">stormpath/stormpath-sdk-python</remote-id>
+		<remote-id type="pypi">stormpath</remote-id>
 	</upstream>
 </pkgmetadata>
