@@ -5,5 +5,6 @@
 	<upstream>
 		<remote-id type="pypi">distlib</remote-id>
 		<remote-id type="github">vsajip/distlib</remote-id>
+		<remote-id type="bitbucket">vinay.sajip/distlib</remote-id>
 	</upstream>
 </pkgmetadata>

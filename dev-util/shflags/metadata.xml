@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">shflags</remote-id>
+		<remote-id type="github">kward/shflags</remote-id>
 	</upstream>
 </pkgmetadata>

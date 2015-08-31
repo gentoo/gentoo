@@ -8,5 +8,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">libgit2/pygit2</remote-id>
+    <remote-id type="pypi">pygit2</remote-id>
   </upstream>
 </pkgmetadata>
