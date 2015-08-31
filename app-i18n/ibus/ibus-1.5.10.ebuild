@@ -14,7 +14,7 @@ UPSTREAM_VER=
 inherit autotools bash-completion-r1 eutils gnome2-utils multilib python-single-r1 readme.gentoo vala virtualx
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
-HOMEPAGE="https://code.google.com/p/ibus/"
+HOMEPAGE="https://github.com/ibus/ibus/wiki"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

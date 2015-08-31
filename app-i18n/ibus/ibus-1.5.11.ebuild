@@ -3,27 +3,36 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 VALA_MIN_API_VERSION="0.20"
 VALA_USE_DEPEND="vapigen"
 # Vapigen is needed for the vala binding
 # Valac is needed when building from git for the engine
+UPSTREAM_VER=
 
-inherit bash-completion-r1 eutils gnome2-utils multilib python-single-r1 readme.gentoo vala virtualx
+inherit autotools bash-completion-r1 eutils gnome2-utils multilib python-single-r1 readme.gentoo vala virtualx
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="deprecated gconf gtk +gtk3 +introspection nls +python test vala wayland +X"
-REQUIRED_USE="|| ( gtk gtk3 X )
+REQUIRED_USE="
+	|| ( gtk gtk3 X )
 	deprecated? ( python )
+	vala? ( introspection )
 	python? (
 		${PYTHON_REQUIRED_USE}
 		|| ( deprecated ( gtk3 introspection ) ) )" #342903
+
+[[ -n ${UPSTREAM_VER} ]] && \
+	UPSTRAM_PATCHSET_URI="http://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+
+SRC_URI="https://github.com/ibus/ibus/releases/download/${PV}/${P}.tar.gz
+	${UPSTRAM_PATCHSET_URI}"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.26:2
@@ -32,7 +41,6 @@ COMMON_DEPEND="
 	app-text/iso-codes
 	>=gnome-base/dconf-0.13.4
 	x11-libs/libnotify
-
 	gconf? ( >=gnome-base/gconf-2.12:2 )
 	gtk? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
@@ -63,8 +71,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.16.1 )
-	vala? ( $(vala_depend) )
-	gnome-base/gconf"
+	vala? ( $(vala_depend) )"
 
 # stress test in bus/ fails
 # IBUS-CRITICAL **: bus_test_client_init: assertion `ibus_bus_is_connected (_bus)' failed
@@ -95,11 +102,20 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Upstream's patchset
+	if [[ -n ${UPSTREAM_VER} ]]; then
+		EPATCH_SUFFIX="patch" \
+		EPATCH_FORCE="yes" \
+		EPATCH_OPTS="-p1" \
+			epatch "${WORKDIR}"/patches-upstream
+	fi
+
 	# We run "dconf update" in pkg_postinst/postrm to avoid sandbox violations
-	sed -e 's/dconf update/$(NULL)/' \
+	sed -e 's/dconf update/:/' \
 		-i data/dconf/Makefile.{am,in} || die
 	use vala && vala_src_prepare
-	cp "${S}"/client/gtk2/ibusimcontext.c "${S}"/client/gtk3/ibusimcontext.c || die
+
+	eautoreconf
 }
 
 src_configure() {
