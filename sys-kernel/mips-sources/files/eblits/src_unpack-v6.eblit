@@ -28,18 +28,17 @@ eblit-mips-sources-src_unpack() {
 	# machine patches and if a machine USE flag is enabled, then unset
 	# its corresponding variable.
 	# See 0000_README for the patch numbers and their meanings.
-	local p_generic="501*"
-	local p_ip27="502*" p_ip28="503*" p_ip30="504*" p_ip32r10k="6001*"
+	local p_generic="51*"
+	local p_ip27="52*" p_ip28="53*" p_ip30="54*"
 	use ip27 && unset p_generic p_ip27
 	use ip28 && unset p_ip28
 	use ip30 && unset p_generic p_ip30
-	use ip32r10k && unset p_ip32r10k
 
 	# Remove symlinks for any patches that we don't want applied.  We do
 	# this by looping through all the above variables, and deleting
 	# matching symlinks that point to the corresponding patches.
 	# The remaining symlinks will be applied to the kernel source.
-	local patchlist="${p_generic} ${p_ip27} ${p_ip28} ${p_ip30} ${p_ip32r10k}"
+	local patchlist="${p_generic} ${p_ip27} ${p_ip28} ${p_ip30}"
 	for x in $patchlist; do rm -f "./${x}"; done
 
 	# Rename the source tree to match the linux-mips git checkout date and
