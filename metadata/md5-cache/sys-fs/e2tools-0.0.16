@@ -1,11 +1,12 @@
-DEFINED_PHASES=prepare
+DEFINED_PHASES=configure prepare
 DEPEND=sys-fs/e2fsprogs sys-libs/e2fsprogs-libs
 DESCRIPTION=utilities to read, write, and manipulate files in an ext2/ext3 filesystem
-EAPI=4
-HOMEPAGE=http://home.earthlink.net/~k_sheff/sw/e2tools/index.html
+EAPI=5
+HOMEPAGE=http://home.earthlink.net/~k_sheff/sw/e2tools/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-fs/e2fsprogs sys-libs/e2fsprogs-libs
 SLOT=0
 SRC_URI=http://home.earthlink.net/~k_sheff/sw/e2tools/e2tools-0.0.16.tar.gz
-_md5_=36e02ad7adb439ec360bc2de6fb22908
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=1ade980955002902a4016082a2ed3109
