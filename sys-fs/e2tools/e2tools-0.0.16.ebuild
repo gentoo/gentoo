@@ -4,6 +4,8 @@
 
 EAPI="5"
 
+inherit toolchain-funcs
+
 DESCRIPTION="utilities to read, write, and manipulate files in an ext2/ext3 filesystem"
 HOMEPAGE="http://home.earthlink.net/~k_sheff/sw/e2tools/"
 SRC_URI="http://home.earthlink.net/~k_sheff/sw/${PN}/${P}.tar.gz"
@@ -24,5 +26,6 @@ src_prepare() {
 src_configure() {
 	# The configure script is ancient.
 	export CONFIG_SHELL="/bin/bash"
+	tc-export CC
 	default
 }
