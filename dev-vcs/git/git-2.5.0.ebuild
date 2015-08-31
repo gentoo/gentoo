@@ -187,6 +187,8 @@ exportmakeopts() {
 	fi
 	if [[ ${CHOST} == *-solaris* ]]; then
 		myopts+=" NEEDS_LIBICONV=YesPlease"
+		myopts+=" HAVE_CLOCK_MONOTONIC=1"
+		myopts+=" HAVE_GETDELIM=1"
 	fi
 
 	has_version '>=app-text/asciidoc-8.0' \
