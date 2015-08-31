@@ -3942,7 +3942,7 @@ dev-java/java-config-wrapper 0.16: Wrapper for java-config
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
-dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.51: Oracle's documentation bundle (including API) for Java SE
+dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.14-r1 3.5.25: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/java-xmlbuilder 0.6-r1: A utility that allows simple XML documents to be constructed using Java
 dev-java/javacc 4.0-r4 4.2 5.0-r1: Java Compiler Compiler - The Java Parser Generator
@@ -4157,8 +4157,8 @@ dev-java/offo-hyphenation 1.2: Hyphenation patterns for Apache Fop
 dev-java/ognl 2.6.9-r2 3.0.8: Object-Graph Navigation Language; an expression language for getting/setting properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.51: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.7.0.80 1.8.0.51: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 4.3 5.0.0: OSGi Service Platform Core API (Companion Code)
@@ -11013,7 +11013,7 @@ mail-filter/mimedefang 2.73 2.74 2.75: Antispam, antivirus and other customizabl
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.9.2-r1 2.9.3 2.10.0 2.10.2 2.10.3: A milter-based application to provide DKIM signing and verification
 mail-filter/opendmarc 1.1.3 1.3.0 1.3.1: Open source DMARC implementation
-mail-filter/opensmtpd-extras 5.4.5.201506020835: Extra tables, filters, and various other addons for OpenSMTPD
+mail-filter/opensmtpd-extras 5.4.5.201506020835 5.7.1: Extra tables, filters, and various other addons for OpenSMTPD
 mail-filter/p3scan 2.3.1 2.3.2-r1 2.3.2-r2: This is a full-transparent proxy-server for POP3-Clients
 mail-filter/policyd 1.82-r1: Policy daemon for postfix and other MTAs
 mail-filter/policyd-weight 0.1.15.2-r1: Weighted Policy daemon for Postfix
@@ -11096,7 +11096,7 @@ media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
 media-fonts/cm-unicode 0.7.0: Computer Modern Unicode fonts
 media-fonts/comic-neue 2.2: Typographically savvy casual script typeface
-media-fonts/corefonts 1-r4 1-r6 1-r7: Microsoft's TrueType core fonts
+media-fonts/corefonts 1-r7: Microsoft's TrueType core fonts
 media-fonts/courier-prime 1.203: A redesign of Courier
 media-fonts/cronyx-fonts 2.3.1-r2 2.3.8: Cronyx Cyrillic bitmap fonts for X
 media-fonts/croscorefonts 1.21.0 1.23.0: Open licensed fonts metrically compatible with MS corefonts
@@ -11178,7 +11178,7 @@ media-fonts/jsmath 1.0: Raster fonts for jsmath
 media-fonts/jsmath-extra-dark 1.0: Extra raster fonts for jsmath, dark version
 media-fonts/jsmath-extra-light 1.0: Extra raster fonts for jsmath, light version
 media-fonts/kacst-fonts 1.6.2 2.0: KACST Arabic TrueType Fonts
-media-fonts/kanjistrokeorders 2.012 2.013 2.014 2.015 2.016: font to view stroke order diagrams for Kanji, Kana and etc
+media-fonts/kanjistrokeorders 2.012 2.016: font to view stroke order diagrams for Kanji, Kana and etc
 media-fonts/khmer 5.0-r1: Fonts for the Khmer language of Cambodia
 media-fonts/kochi-substitute 20030809-r3: Kochi Japanese TrueType fonts with Wadalab Fonts
 media-fonts/konfont 0.1: Fontset for KON2
@@ -16023,7 +16023,7 @@ sys-boot/mbr-gpt 0.0.1: An MBR that can handle BIOS-based boot on GPT
 sys-boot/milo 2.4.18: The Alpha MIniLOader, for Alpha Machines without SRM
 sys-boot/netboot 0.10.2: netbooting utility
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
-sys-boot/os-prober 1.53 1.57-r1 1.62 1.65: Utility to detect other OSs on a set of drives
+sys-boot/os-prober 1.65 1.66: Utility to detect other OSs on a set of drives
 sys-boot/palo 1.92 1.95 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.8.8-r4 0.8.8-r5 0.9.0 0.9.2 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2: Plymouth plugin for OpenRC
