@@ -20,6 +20,10 @@ CHOST_amd64=${CHOST}
 LIBDIR_amd64="lib"
 IUSE_IMPLICIT="abi_x86_64"
 
+# Anthony G. Basile <blueness@gentoo.org> (31 Aug 2015)
+# Relect these flags from arch/amd64 which we don't inherit
+CPU_FLAGS_X86="mmx mmxext sse sse2"
+
 # Anthony G. Basile <blueness@gentoo.org> (26 Jan 2013)
 # Unhide the CPU_FLAGS_X86 USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_X86"
