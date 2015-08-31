@@ -30,6 +30,7 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( Changelog README )
+PATCHES=( "${FILESDIR}/${P}-kdelibs-4.14.11.patch" )
 
 src_install() {
 	kde4-base_src_install
