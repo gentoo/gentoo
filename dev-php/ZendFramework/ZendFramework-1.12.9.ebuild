@@ -24,9 +24,15 @@ IUSE="cli doc examples minimal"
 DEPEND="cli? ( dev-lang/php:*[simplexml,tokenizer] )"
 RDEPEND="${DEPEND}"
 
+src_unpack() {
+	default
+	if use minimal ; then
+		mv "${WORKDIR}/${P}-minimal" "${S}" || die
+	fi
+}
+
 src_prepare() {
 	if use minimal ; then
-		S="${WORKDIR}/${P}-minimal"
 		if use doc ; then
 			mv "${WORKDIR}/${P}/documentation" "${S}"
 		fi
