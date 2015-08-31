@@ -47,6 +47,8 @@ RDEPEND="${CDEPEND}
 
 RESTRICT="!kde? ( test )"
 
+PATCHES=( "${FILESDIR}/${P}-kdelibs-4.14.11.patch" )
+
 src_unpack(){
 	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
