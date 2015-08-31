@@ -3996,7 +3996,7 @@ dev-java/jebl 2013.02.18 9999: Java Evolutionary Biology Library
 dev-java/jempbox 0.2.0 1.7.1: An open source Java library for parsing font files
 dev-java/jettison 1.0: A JSON StAX implementation
 dev-java/jexcelapi 2.6.8 2.6.8-r1: A Java API to read, write, and modify Excel spreadsheets
-dev-java/jffi 1.0.11 1.0.11-r1 1.2.5 1.2.6 1.2.7 1.2.7-r2 1.2.8: An optimized Java interface to libffi
+dev-java/jffi 1.0.11 1.0.11-r1 1.2.5 1.2.6 1.2.7 1.2.7-r2 1.2.8 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.4.3-r1 1.4.3-r2 1.4.3-r3 1.5.0 1.5.1 1.6.0 1.6.0-r1 1.6.0-r2: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.13 1.0.14 1.0.19: JFreeChart is a free Java class library for generating charts
@@ -6850,7 +6850,7 @@ dev-python/decorator 3.4.2 4.0.2: Simplifies the usage of decorators for the ave
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.8 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/demjson 1.6 2.2.2 2.2.3: encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
+dev-python/demjson 2.2.2 2.2.3: encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
 dev-python/dicttoxml 1.5.6 1.6.6: Converts a Python dictionary or other ata type to a valid XML string
 dev-python/diff-match-patch 20121119: Diff, match and patch algorithms for plain text
 dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
