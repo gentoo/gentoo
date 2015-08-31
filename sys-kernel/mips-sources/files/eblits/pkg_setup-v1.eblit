@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,9 @@ eblit-mips-sources-pkg_setup() {
 	# See if we're on a cobalt system first (must use the cobalt-mips profile)
 	if use cobalt; then
 		arch_is_selected="yes"
-		[ "${DO_CBLT}" = "test" ] 						\
+		[ "${DO_CBLT}" = "test" ]						\
 			&& err_disabled_mach "Cobalt Microsystems" "CBLT" "cobalt" "test"
-		[ "${DO_CBLT}" = "no" ] 						\
+		[ "${DO_CBLT}" = "no" ]							\
 			&& err_disabled_mach "Cobalt Microsystems" "CBLT" "cobalt"
 		show_cobalt_info
 	fi

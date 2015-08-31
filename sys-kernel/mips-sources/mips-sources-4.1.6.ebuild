@@ -5,19 +5,10 @@
 # EAPI Version
 EAPI="5"
 
-# INCLUDED:
-# 1) linux sources from kernel.org
-# 2) linux-mips.org GIT snapshot diff
-# 3) Generic Fixes
-# 4) Patch for the IOC3 Metadriver (IP27, IP30)
-# 5) Patch for IP30 Support
-# 6) Experimental patches (if needed)
-
 #//------------------------------------------------------------------------------
 
 # Version Data
-OKV=${PV/_/-}
-GITDATE="20150418"			# Date of diff between kernel.org and lmo GIT
+GITDATE="20150830"			# Date of diff between kernel.org and lmo GIT
 GENPATCHREV="1"				# Tarball revision for patches
 
 # Directories
@@ -25,10 +16,11 @@ S="${WORKDIR}/linux-${OKV}-${GITDATE}"
 MIPS_PATCHES="${WORKDIR}/mips-patches"
 
 # Kernel-2 Vars
-K_SECURITY_UNSUPPORTED="1"
-K_NOUSENAME="0"
-K_NOUSEPR="0"
-K_USEPV="0"
+K_SECURITY_UNSUPPORTED="yes"
+K_NOUSENAME="yes"
+K_NOSETEXTRAVERSION="yes"
+K_NOUSEPR="yes"
+K_BASE_VER="4.0"
 ETYPE="sources"
 
 # Inherit Eclasses
@@ -41,10 +33,9 @@ BASE_KV="$(get_version_component_range 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="http://www.linux-mips.org/ https://www.gentoo.org/"
-SLOT="${OKV}"
+HOMEPAGE="http://www.linux-mips.org/ http://www.gentoo.org/"
 KEYWORDS="-* ~mips"
-IUSE="cobalt ip27 ip28 ip30 ip32r10k"
+IUSE="cobalt ip27 ip28 ip30"
 DEPEND=">=sys-devel/gcc-4.6.0"
 RDEPEND=""
 
@@ -153,8 +144,8 @@ load_eblit_funcs() {
 	eblit-include show_ip22_info v3
 	eblit-include show_ip27_info v3
 	eblit-include show_ip28_info v1
-	eblit-include show_ip30_info v3
-	eblit-include show_ip32_info v3
+	eblit-include show_ip30_info v4
+	eblit-include show_ip32_info v4
 	eblit-include show_cobalt_info v1
 
 	# This makes sure pkg_setup & pkg_postinst gets into any binpkg.
@@ -171,6 +162,6 @@ pkg_setup() {
 	pkg_setup
 }
 
-src_unpack() { eblit-run src_unpack v5 ; }
+src_unpack() { eblit-run src_unpack v6 ; }
 
 #//------------------------------------------------------------------------------

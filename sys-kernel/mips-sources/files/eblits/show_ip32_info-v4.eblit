@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,19 +22,6 @@ show_ip32_info() {
 	einfo "\t\040\040gbefb driver exists for O2 yet.  Feel free to submit"
 	einfo "\t\040\040patches!"
 	echo -e ""
-
-	if use ip32r10k; then
-		eerror "The R10K patch for IP32 is now updated and will apply to 3.0.x kernels."
-		eerror "When it did apply and booted, it was flaky at best, and didn't stay online"
-		eerror "for long before locking up.  Don't attempt to play with this unless you"
-		eerror "are seriously interested in kernel hacking."
-		echo -e ""
-		eerror "We're interesting in finding anyone with knowledge of the R10000"
-		eerror "workaround for speculative execution listed in the R10000 Processor"
-		eerror "manual, or those who are familiar with the IP32 chipset and the feature"
-		eerror "called \"Juice\"."
-		echo -e ""
-	fi
 
 	einfo "To Build 64bit kernels for SGI O2 (IP32) or SGI Indy/Indigo2 R4x00 (IP22)"
 	einfo "systems, you need to use the ${GOOD}vmlinux.32${NORMAL} make target."
