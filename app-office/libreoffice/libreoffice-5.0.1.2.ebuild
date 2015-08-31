@@ -32,7 +32,7 @@ unset SCM_ECLASS
 
 DESCRIPTION="LibreOffice, a full office productivity suite"
 HOMEPAGE="http://www.libreoffice.org"
-SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
+SRC_URI="branding? ( http://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
 [[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
 
 # Split modules following git/tarballs
@@ -198,8 +198,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 if [[ ${PV} != *9999* ]]; then
-	#PDEPEND="=app-office/libreoffice-l10n-$(get_version_component_range 1-2)*"
-	PDEPEND=">=app-office/libreoffice-l10n-4.4"
+	PDEPEND="=app-office/libreoffice-l10n-$(get_version_component_range 1-2)*"
 else
 	# Translations are not reliable on live ebuilds
 	# rather force people to use english only.
@@ -246,9 +245,6 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
-
-	# from master branch
-	"${FILESDIR}/${PN}-4.4.5.2-fix-KDE4-listbox-regression.patch"
 )
 
 REQUIRED_USE="

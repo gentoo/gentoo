@@ -32,7 +32,7 @@ unset SCM_ECLASS
 
 DESCRIPTION="LibreOffice, a full office productivity suite"
 HOMEPAGE="http://www.libreoffice.org"
-SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
+SRC_URI="branding? ( http://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
 [[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
 
 # Split modules following git/tarballs
@@ -104,7 +104,7 @@ COMMON_DEPEND="
 	>=app-text/libetonyek-0.1.2
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
-	>=app-text/libmwaw-0.3.5
+	>=app-text/libmwaw-0.3.6
 	>=app-text/libodfgen-0.1.0
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
