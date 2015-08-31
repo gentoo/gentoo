@@ -28,8 +28,8 @@ COMMON_DEPEND="
 	dev-libs/dbus-glib
 	>=dev-libs/libgee-0.10:0.8[introspection]
 	dev-libs/libxml2
-	sys-libs/ncurses:=
-	sys-libs/readline:=
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
 
 	bluetooth? ( >=net-wireless/bluez-5 )
 	eds? ( >=gnome-extra/evolution-data-server-3.8:=[vala] )
