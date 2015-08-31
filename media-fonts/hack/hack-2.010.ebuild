@@ -6,8 +6,6 @@ EAPI="5"
 
 inherit font versionator
 
-MyPV=
-
 DESCRIPTION="A typeface designed for source code"
 HOMEPAGE="https://github.com/chrissimpkins/Hack"
 SRC_URI="https://github.com/chrissimpkins/Hack/releases/download/v${PV}/Hack-v$(replace_version_separator 1 '_' )-otf.zip"
