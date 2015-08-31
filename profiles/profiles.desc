@@ -189,6 +189,7 @@ amd64		hardened/linux/amd64/no-multilib			stable
 amd64		hardened/linux/amd64/no-multilib/selinux		stable
 amd64		hardened/linux/amd64/x32				dev
 amd64		hardened/linux/musl/amd64				exp
+amd64		hardened/linux/musl/amd64/x32				exp
 arm		hardened/linux/arm/armv7a				dev
 arm		hardened/linux/arm/armv6j				dev
 arm		hardened/linux/musl/arm/armv7a				exp
