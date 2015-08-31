@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,12 +9,14 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility to detect other OSs on a set of drives"
 HOMEPAGE="http://packages.debian.org/source/sid/os-prober"
-SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+S=${WORKDIR}/${PN}
 
 src_prepare() {
 	# use default GNU rules
