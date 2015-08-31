@@ -20,3 +20,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	sed -i '/e2cp_LDADD/s:-L@[^@]*@::' Makefile.in || die
 }
+
+src_configure() {
+	# The configure script is ancient.
+	export CONFIG_SHELL="/bin/bash"
+	default
+}
