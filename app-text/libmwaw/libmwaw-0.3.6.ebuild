@@ -4,15 +4,20 @@
 
 EAPI=5
 
-inherit base eutils
+EGIT_REPO_URI="git://git.code.sf.net/p/libmwaw/libmwaw"
+inherit eutils
+[[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing many pre-OSX MAC text formats"
 HOMEPAGE="http://sourceforge.net/p/libmwaw/wiki/Home/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+[[ ${PV} == 9999 ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+
+[[ ${PV} == 9999 ]] || \
+KEYWORDS="~amd64 ~arm ~x86"
+
 IUSE="doc static-libs"
 
 RDEPEND="
@@ -26,6 +31,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
+
+src_prepare() {
+	[[ ${PV} == 9999 ]] && eautoreconf
+}
 
 src_configure() {
 	# zip is hard enabled as the zlib is dep on the rdeps anyway
