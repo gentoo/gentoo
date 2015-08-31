@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 DESCRIPTION="utilities to read, write, and manipulate files in an ext2/ext3 filesystem"
-HOMEPAGE="http://home.earthlink.net/~k_sheff/sw/e2tools/index.html"
+HOMEPAGE="http://home.earthlink.net/~k_sheff/sw/e2tools/"
 SRC_URI="http://home.earthlink.net/~k_sheff/sw/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
