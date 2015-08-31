@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit gnatbuild
 
 DESCRIPTION="GNAT Ada Compiler - gcc version"
@@ -28,7 +29,7 @@ RDEPEND=">=dev-libs/mpfr-3.1.2
 	>=dev-libs/gmp-5.1.3
 	>=dev-libs/mpc-1.0.1
 	>=sys-libs/zlib-1.2
-	>=sys-libs/ncurses-5.7"
+	>=sys-libs/ncurses-5.7:*"
 
 DEPEND="${RDEPEND}
 	doc? ( >=sys-apps/texinfo-5 )
