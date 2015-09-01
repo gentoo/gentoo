@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="An encoder/decoder for the VCDIFF (RFC3284) format"
-HOMEPAGE="https://code.google.com/p/open-vcdiff/"
+HOMEPAGE="https://github.com/google/open-vcdiff"
 SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
