@@ -1,13 +1,13 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit versionator autotools
 
 DESCRIPTION="C-Client Library for Open Source Java Message Service (JMS)"
-HOMEPAGE="https://mq.dev.java.net/"
+HOMEPAGE="https://mq.java.net/"
 
 # set this for rc and final versions to the build-number of open-mq
 MY_BUILDV="b7"
@@ -75,5 +75,5 @@ src_prepare() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die
+	emake install DESTDIR="${D}"
 }
