@@ -12,7 +12,7 @@ MY_PN="MDAnalysis"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A python library to analyze and manipulate molecular dynamics trajectories"
-HOMEPAGE="https://code.google.com/p/mdanalysis/"
+HOMEPAGE="http://www.mdanalysis.org/"
 SRC_URI="https://mdanalysis.googlecode.com/files/${MY_P}.tar.gz"
 
 SLOT="0"
