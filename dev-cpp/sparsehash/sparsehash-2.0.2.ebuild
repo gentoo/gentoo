@@ -5,7 +5,7 @@
 EAPI="4"
 
 DESCRIPTION="An extremely memory-efficient hash_map implementation"
-HOMEPAGE="https://code.google.com/p/sparsehash/"
+HOMEPAGE="https://github.com/google/sparsehash"
 SRC_URI="https://sparsehash.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
