@@ -7,7 +7,7 @@ EAPI="2"
 inherit versionator autotools
 
 DESCRIPTION="C-Client Library for Open Source Java Message Service (JMS)"
-HOMEPAGE="https://mq.dev.java.net/"
+HOMEPAGE="https://mq.java.net/"
 
 # set this for rc and final versions to the build-number of open-mq
 MY_BUILDV="b7"
