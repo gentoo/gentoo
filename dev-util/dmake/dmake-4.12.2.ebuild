@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Improved make"
-HOMEPAGE="https://code.google.com/a/apache-extras.org/p/dmake/"
+HOMEPAGE="https://github.com/mohawk2/dmake"
 SRC_URI="http://${PN}.apache-extras.org.codespot.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-1"
