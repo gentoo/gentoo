@@ -7,7 +7,7 @@ EAPI="5"
 inherit cmake-utils
 
 DESCRIPTION="C port of Mozilla's Automatic Charset Detection algorithm"
-HOMEPAGE="https://code.google.com/p/uchardet/"
+HOMEPAGE="https://github.com/BYVoid/uchardet"
 SRC_URI="https://uchardet.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MPL-1.1"

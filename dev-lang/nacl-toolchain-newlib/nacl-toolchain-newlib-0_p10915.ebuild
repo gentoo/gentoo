@@ -12,7 +12,7 @@ GCC_PV="4.4.3"
 NACL_REVISION="${PV##*_p}"
 
 DESCRIPTION="Native Client newlib-based toolchain (only for compiling IRT)"
-HOMEPAGE="https://code.google.com/chrome/nativeclient/"
+HOMEPAGE="https://developer.chrome.com/native-client/sdk/download"
 SRC_URI="mirror://gnu/binutils/binutils-${BINUTILS_PV}.tar.bz2
 	ftp://sources.redhat.com/pub/newlib/newlib-${NEWLIB_PV}.tar.gz
 	mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_PV}.tar.bz2

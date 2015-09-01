@@ -7,7 +7,7 @@ EAPI=5
 inherit scons-utils eutils
 
 DESCRIPTION="Binary-decimal and decimal-binary routines forIEEE doubles"
-HOMEPAGE="https://code.google.com/p/double-conversion/"
+HOMEPAGE="https://github.com/google/double-conversion"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

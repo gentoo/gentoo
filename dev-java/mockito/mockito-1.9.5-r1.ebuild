@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A mocking framework for Java"
-HOMEPAGE="https://code.google.com/p/mockito/"
+HOMEPAGE="https://github.com/mockito/mockito"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"

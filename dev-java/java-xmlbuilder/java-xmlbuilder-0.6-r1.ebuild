@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A utility that allows simple XML documents to be constructed using Java"
-HOMEPAGE="https://code.google.com/p/java-xmlbuilder/"
+HOMEPAGE="https://github.com/jmurty/java-xmlbuilder"
 SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
