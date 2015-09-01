@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python Simple Smartcard Interpreter"
-HOMEPAGE="https://code.google.com/p/pssi/"
+HOMEPAGE="https://github.com/Eric-Bourry/pssi"
 SRC_URI="https://pssi.googlecode.com/files/${P}.tar"
 
 LICENSE="GPL-3"
