@@ -8,7 +8,7 @@ PYTHON_DEPEND="2"
 inherit python libtool
 
 DESCRIPTION="Google C++ Testing Framework"
-HOMEPAGE="https://code.google.com/p/googletest/"
+HOMEPAGE="https://github.com/google/googletest"
 SRC_URI="https://googletest.googlecode.com/files/${P}.zip"
 
 LICENSE="BSD"

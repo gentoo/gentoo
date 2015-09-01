@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-any-r1 autotools-multilib
 
 DESCRIPTION="Google C++ Testing Framework"
-HOMEPAGE="https://code.google.com/p/googletest/"
+HOMEPAGE="https://github.com/google/googletest"
 SRC_URI="https://googletest.googlecode.com/files/${P}.zip"
 
 LICENSE="BSD"
