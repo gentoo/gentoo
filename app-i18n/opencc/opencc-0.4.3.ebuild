@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils multilib eutils
 
 DESCRIPTION="Libraries for conversion between Traditional and Simplified Chinese"
-HOMEPAGE="https://code.google.com/p/opencc/"
+HOMEPAGE="https://github.com/BYVoid/OpenCC"
 SRC_URI="https://opencc.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
