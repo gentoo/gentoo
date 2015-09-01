@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="JvYAMLb, YAML processor extracted from JRuby"
-HOMEPAGE="https://code.google.com/p/jvyamlb/"
+HOMEPAGE="https://github.com/olabini/jvyamlb"
 SRC_URI="https://jvyamlb.googlecode.com/files/jvyamlb-src-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
