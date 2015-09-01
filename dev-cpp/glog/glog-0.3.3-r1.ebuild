@@ -6,7 +6,7 @@ EAPI="4"
 inherit eutils multilib-minimal
 
 DESCRIPTION="Google's C++ logging library"
-HOMEPAGE="https://code.google.com/p/google-glog/"
+HOMEPAGE="https://github.com/google/glog"
 SRC_URI="https://google-glog.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
