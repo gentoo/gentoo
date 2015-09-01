@@ -1,0 +1,72 @@
+From 8714ab407c54d5989d15a78eb15550c2d52d95b8 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Mon, 24 Aug 2015 14:13:37 -0400
+Subject: [PATCH] png: Fix some integer overflows
+
+The png loader was not careful enough in some places. Width * height
+can overflow an integer.
+
+This should fix http://bugzilla.gnome.org/734556.
+---
+ gdk-pixbuf/io-png.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/gdk-pixbuf/io-png.c b/gdk-pixbuf/io-png.c
+index 3336b1e..5690875 100644
+--- a/gdk-pixbuf/io-png.c
++++ b/gdk-pixbuf/io-png.c
+@@ -267,6 +267,7 @@ gdk_pixbuf__png_image_load (FILE *f, GError **error)
+         gchar *density_str;
+         guint32 retval;
+         gint compression_type;
++        gpointer ptr;
+ 
+ #ifdef PNG_USER_MEM_SUPPORTED
+ 	png_ptr = png_create_read_struct_2 (PNG_LIBPNG_VER_STRING,
+@@ -326,8 +327,8 @@ gdk_pixbuf__png_image_load (FILE *f, GError **error)
+ 
+ 	rows = g_new (png_bytep, h);
+ 
+-	for (i = 0; i < h; i++)
+-		rows[i] = pixbuf->pixels + i * pixbuf->rowstride;
++        for (i = 0, ptr = pixbuf->pixels; i < h; i++, ptr += pixbuf->rowstride)
++		rows[i] = ptr;
+ 
+ 	png_read_image (png_ptr, rows);
+         png_read_end (png_ptr, info_ptr);
+@@ -745,6 +746,7 @@ png_row_callback   (png_structp png_read_ptr,
+ {
+         LoadContext* lc;
+         guchar* old_row = NULL;
++        gsize rowstride;
+ 
+         lc = png_get_progressive_ptr(png_read_ptr);
+ 
+@@ -770,8 +772,9 @@ png_row_callback   (png_structp png_read_ptr,
+         lc->max_row_seen_in_chunk = MAX(lc->max_row_seen_in_chunk, ((gint)row_num));
+         lc->last_row_seen_in_chunk = row_num;
+         lc->last_pass_seen_in_chunk = pass_num;
+-        
+-        old_row = lc->pixbuf->pixels + (row_num * lc->pixbuf->rowstride);
++
++        rowstride = lc->pixbuf->rowstride;
++        old_row = lc->pixbuf->pixels + (row_num * rowstride);
+ 
+         png_progressive_combine_row(lc->png_read_ptr, old_row, new_row);
+ }
+@@ -1123,11 +1126,9 @@ static gboolean real_save_png (GdkPixbuf        *pixbuf,
+        png_set_shift (png_ptr, &sig_bit);
+        png_set_packing (png_ptr);
+ 
+-       ptr = pixels;
+-       for (y = 0; y < h; y++) {
++       for (y = 0, ptr = pixels; y < h; y++, ptr += rowstride) {
+                row_ptr = (png_bytep)ptr;
+                png_write_rows (png_ptr, &row_ptr, 1);
+-               ptr += rowstride;
+        }
+ 
+        png_write_end (png_ptr, info_ptr);
+-- 
+2.5.1
+
