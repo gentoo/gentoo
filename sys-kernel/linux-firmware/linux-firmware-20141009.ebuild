@@ -60,7 +60,7 @@ RDEPEND="!savedconfig? (
 		!sys-firmware/iwl7260-ucode
 		!sys-firmware/iwl7265-ucode
 		!sys-firmware/iwl3160-7260-bt-ucode
-		!x11-drivers/radeon-ucode
+		!sys-firmware/radeon-ucode
 	)"
 #add anything else that collides to this
 
