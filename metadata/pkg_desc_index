@@ -10393,7 +10393,7 @@ kde-apps/kamera 4.14.3: KDE digital camera manager
 kde-apps/kanagram 4.14.3: KDE: letter order game
 kde-apps/kapman 4.14.3: Pac-Man clone for KDE
 kde-apps/kapptemplate 4.14.3: KAppTemplate - A shell script to create the necessary framework to develop KDE applications
-kde-apps/kate 4.14.3: Kate is an MDI texteditor
+kde-apps/kate 4.14.3 15.08.0: Kate is an advanced text editor
 kde-apps/katomic 4.14.3: KDE Atomic Entertainment Game
 kde-apps/kblackbox 4.14.3: KDE Blackbox Game
 kde-apps/kblocks 4.14.3: KDE: Kblocks is a single-player Tetris-like game
@@ -10543,7 +10543,7 @@ kde-apps/kuser 4.14.3 15.08.0: KDE application that helps you manage system user
 kde-apps/kwalletd 4.14.3-r1 4.14.3-r2 15.08.0: KDE Password Server
 kde-apps/kwalletmanager 4.14.3: KDE Wallet Management Tool
 kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning program
-kde-apps/kwrite 4.14.3: KDE MDI editor/IDE
+kde-apps/kwrite 4.14.3 15.08.0: KDE simple text editor
 kde-apps/libkcddb 4.14.3 15.08.0: KDE library for CDDB
 kde-apps/libkcompactdisc 4.14.3 15.08.0: KDE library for playing & ripping CDs
 kde-apps/libkdcraw 4.14.3 4.14.3-r1: KDE digital camera raw image library wrapper
