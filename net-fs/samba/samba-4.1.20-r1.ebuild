@@ -36,6 +36,7 @@ CDEPEND="${PYTHON_DEPS}
 	sys-libs/libcap
 	>=sys-libs/ntdb-1.0[python,${PYTHON_USEDEP}]
 	>=sys-libs/ldb-1.1.17
+	sys-libs/ncurses:0=
 	>=sys-libs/tdb-1.2.12[python,${PYTHON_USEDEP}]
 	>=sys-libs/talloc-2.1.2[python,${PYTHON_USEDEP}]
 	>=sys-libs/tevent-0.9.18
@@ -147,6 +148,10 @@ src_install() {
 	# Make all .so files executable
 	find "${D}" -type f -name "*.so" -exec chmod +x {} +
 
+	# install example config file
+	insinto /etc/samba
+	doins examples/smb.conf.default
+
 	# Install init script and conf.d file
 	newinitd "${CONFDIR}/samba4.initd-r1" samba
 	newconfd "${CONFDIR}/samba4.confd" samba
@@ -171,6 +176,6 @@ pkg_postinst() {
 
 	elog "For further information and migration steps make sure to read "
 	elog "http://samba.org/samba/history/${P}.html "
-	elog "http://samba.org/samba/history/${PN}-4.0.0.html and"
+	elog "http://samba.org/samba/history/${PN}-4.1.0.html and"
 	elog "http://wiki.samba.org/index.php/Samba4/HOWTO "
 }

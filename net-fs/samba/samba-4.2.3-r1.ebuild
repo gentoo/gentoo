@@ -11,14 +11,12 @@ inherit python-single-r1 waf-utils multilib linux-info systemd eutils
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
 
-if [ "${PV}" = "4.9999" ]; then
-	EGIT_REPO_URI="git://git.samba.org/samba.git"
-	KEYWORDS=""
-	inherit git-2
-else
-	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~hppa ~x86"
-fi
+SRC_PATH="stable"
+[[ ${PV} = *_rc* ]] && SRC_PATH="rc"
+
+SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
+KEYWORDS="~amd64 ~hppa ~x86"
+[[ ${PV} = *_rc* ]] && KEYWORDS=""
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="http://www.samba.org/"
@@ -27,7 +25,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 IUSE="acl addns ads aio avahi client cluster cups dmapi fam gnutls iprint
-ldap quota selinux swat syslog test winbind"
+ldap quota selinux syslog systemd test winbind"
 
 # sys-apps/attr is an automagic dependency (see bug #489748)
 # sys-libs/pam is an automagic dependency (see bug #489770)
@@ -38,12 +36,17 @@ CDEPEND="${PYTHON_DEPS}
 	sys-libs/readline:=
 	virtual/libiconv
 	dev-python/subunit[${PYTHON_USEDEP}]
+	>=net-libs/socket_wrapper-1.1.2
 	sys-apps/attr
 	sys-libs/libcap
-	>=sys-libs/ldb-1.1.16
-	>=sys-libs/tdb-1.2.11[python,${PYTHON_USEDEP}]
-	>=sys-libs/talloc-2.0.8[python,${PYTHON_USEDEP}]
-	>=sys-libs/tevent-0.9.18
+	>=sys-libs/ldb-1.1.20
+	sys-libs/ncurses:0=
+	>=sys-libs/nss_wrapper-1.0.2
+	>=sys-libs/ntdb-1.0[python,${PYTHON_USEDEP}]
+	>=sys-libs/talloc-2.1.2[python,${PYTHON_USEDEP}]
+	>=sys-libs/tdb-1.3.6[python,${PYTHON_USEDEP}]
+	>=sys-libs/tevent-0.9.25
+	>=sys-libs/uid_wrapper-1.0.1
 	sys-libs/zlib
 	virtual/pam
 	acl? ( virtual/acl )
@@ -55,7 +58,8 @@ CDEPEND="${PYTHON_DEPS}
 	fam? ( virtual/fam )
 	gnutls? ( dev-libs/libgcrypt:0
 		>=net-libs/gnutls-1.4.0 )
-	ldap? ( net-nds/openldap )"
+	ldap? ( net-nds/openldap )
+	systemd? ( sys-apps/systemd:0= )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
@@ -63,20 +67,16 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-samba )
 "
 
-REQUIRED_USE="ads? ( acl ldap )
+REQUIRED_USE="ads? ( acl gnutls ldap )
 	${PYTHON_REQUIRED_USE}"
 
 RESTRICT="mirror"
 
 S="${WORKDIR}/${MY_P}"
 
-CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
+PATCHES=( "${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch" )
 
-# sys-apps/dmapi is an automagic dependency (see bug #474492)
-PATCHES=(
-	"${FILESDIR}/named.conf.dlz.patch"
-	"${FILESDIR}/${PN}-4.0.19-automagic_aio_fix.patch"
-)
+CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
@@ -96,6 +96,10 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	epatch ${PATCHES[@]}
+}
+
 src_configure() {
 	local myconf=''
 	use "cluster" && myconf+=" --with-ctdb-dir=/usr"
@@ -111,7 +115,6 @@ src_configure() {
 		--disable-rpath-install \
 		--nopyc \
 		--nopyo \
-		--disable-ntdb \
 		--bundled-libraries=NONE \
 		--builtin-libraries=NONE \
 		$(use_with addns dnsupdate) \
@@ -130,7 +133,7 @@ src_configure() {
 		--with-pam_smbpass \
 		$(use_with quota quotas) \
 		$(use_with syslog) \
-		$(use_with swat) \
+		$(use_with systemd) \
 		$(use_with winbind)
 		"
 	use "ads" && myconf+=" --with-shared-modules=idmap_ad"
@@ -151,6 +154,10 @@ src_install() {
 	# Make all .so files executable
 	find "${D}" -type f -name "*.so" -exec chmod +x {} +
 
+	# install example config file
+	insinto /etc/samba
+	doins examples/smb.conf.default
+
 	# Install init script and conf.d file
 	newinitd "${CONFDIR}/samba4.initd-r1" samba
 	newconfd "${CONFDIR}/samba4.confd" samba
@@ -160,6 +167,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/smbd.{service,socket}
 	systemd_newunit "${FILESDIR}"/smbd_at.service 'smbd@.service'
 	systemd_dounit "${FILESDIR}"/winbindd.service
+	systemd_dounit "${FILESDIR}"/samba.service
 }
 
 src_test() {
@@ -167,8 +175,6 @@ src_test() {
 }
 
 pkg_postinst() {
-	elog "This is is the first stable release of Samba 4.0"
-
 	ewarn "Be aware the this release contains the best of all of Samba's"
 	ewarn "technology parts, both a file server (that you can reasonably expect"
 	ewarn "to upgrade existing Samba 3.x releases to) and the AD domain"
@@ -176,6 +182,6 @@ pkg_postinst() {
 
 	elog "For further information and migration steps make sure to read "
 	elog "http://samba.org/samba/history/${P}.html "
-	elog "http://samba.org/samba/history/${PN}-4.0.0.html and"
+	elog "http://samba.org/samba/history/${PN}-4.2.0.html and"
 	elog "http://wiki.samba.org/index.php/Samba4/HOWTO "
 }
