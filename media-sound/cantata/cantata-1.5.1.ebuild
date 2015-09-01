@@ -9,7 +9,7 @@ PLOCALES="cs de en_GB es hu ko pl ru zh_CN"
 inherit kde4-base l10n
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
-HOMEPAGE="https://code.google.com/p/cantata/"
+HOMEPAGE="https://github.com/cdrummond/cantata"
 SRC_URI="https://drive.google.com/uc?export=download&id=0Bzghs6gQWi60UktwaTRMTjRIUW8 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"
