@@ -12,7 +12,7 @@ SRC_URI="http://dev.yorhel.nl/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND="sys-libs/ncurses:0=[unicode]"
 DEPEND="${RDEPEND}
