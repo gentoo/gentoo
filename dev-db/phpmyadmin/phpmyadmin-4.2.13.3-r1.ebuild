@@ -7,12 +7,11 @@ EAPI="5"
 inherit eutils webapp
 
 MY_PV=${PV/_/-}
-MY_PN="phpMyAdmin"
-MY_P="${MY_PN}-${MY_PV}-all-languages"
+MY_P="phpMyAdmin-${MY_PV}-all-languages"
 
 DESCRIPTION="Web-based administration for MySQL database in PHP"
-HOMEPAGE="https://www.phpmyadmin.net/"
-SRC_URI="https://files.phpmyadmin.net/${MY_PN}/${MY_PV}/${MY_P}.zip"
+HOMEPAGE="http://www.phpmyadmin.net/"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"

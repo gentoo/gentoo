@@ -4,17 +4,18 @@
 
 EAPI="5"
 
-inherit eutils webapp depend.php
+inherit eutils webapp
 
 MY_PV=${PV/_/-}
-MY_P="phpMyAdmin-${MY_PV}-all-languages"
+MY_PN="phpMyAdmin"
+MY_P="${MY_PN}-${MY_PV}-all-languages"
 
 DESCRIPTION="Web-based administration for MySQL database in PHP"
-HOMEPAGE="http://www.phpmyadmin.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+HOMEPAGE="https://www.phpmyadmin.net/"
+SRC_URI="https://files.phpmyadmin.net/${MY_PN}/${MY_PV}/${MY_P}.zip"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS=""
 IUSE="setup"
 
 RDEPEND="
@@ -23,10 +24,10 @@ RDEPEND="
 		dev-lang/php[mysqli]
 		dev-lang/php[mysql]
 	)
+	virtual/httpd-php:*
 "
 
 need_httpd_cgi
-need_php_httpd
 
 S="${WORKDIR}"/${MY_P}
 

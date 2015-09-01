@@ -14,7 +14,4 @@
 			exploits in the past.
 		</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">phpmyadmin</remote-id>
-	</upstream>
 </pkgmetadata>
