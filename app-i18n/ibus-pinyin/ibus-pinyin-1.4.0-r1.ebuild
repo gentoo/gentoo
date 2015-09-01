@@ -11,7 +11,7 @@ inherit python
 
 PYDB_TAR="pinyin-database-1.2.99.tar.bz2"
 DESCRIPTION="Chinese PinYin IMEngine for IBus Framework"
-HOMEPAGE="https://code.google.com/p/ibus/"
+HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz
 	https://ibus.googlecode.com/files/${PYDB_TAR}"
 
