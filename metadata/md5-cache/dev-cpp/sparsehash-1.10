@@ -1,10 +1,10 @@
 DEFINED_PHASES=install prepare
 DESCRIPTION=An extremely memory-efficient hash_map implementation
 EAPI=4
-HOMEPAGE=https://code.google.com/p/google-sparsehash/
+HOMEPAGE=https://github.com/google/sparsehash
 KEYWORDS=amd64 x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=https://google-sparsehash.googlecode.com/files/sparsehash-1.10.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=565f9e3e58942260e3dd6e9d3bcdd807
+_md5_=279d368d2d072d3845f5199f3d9803e2

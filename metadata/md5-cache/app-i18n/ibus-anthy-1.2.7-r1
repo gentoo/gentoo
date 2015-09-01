@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install postinst postrm prepare setup
 DEPEND=>=app-i18n/ibus-1.2.0.20100111 !>=app-i18n/ibus-1.4.99 app-i18n/anthy >=dev-python/pygtk-2.15.2 nls? ( virtual/libintl ) dev-lang/swig dev-util/intltool virtual/pkgconfig nls? ( >=sys-devel/gettext-0.16.1 ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 DESCRIPTION=Japanese input method Anthy IMEngine for IBus Framework
 EAPI=3
-HOMEPAGE=https://code.google.com/p/ibus/
+HOMEPAGE=https://github.com/ibus/ibus/wiki
 IUSE=nls
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=>=app-i18n/ibus-1.2.0.20100111 !>=app-i18n/ibus-1.4.99 app-i18n/anthy >=
 SLOT=0
 SRC_URI=https://ibus.googlecode.com/files/ibus-anthy-1.2.7.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=03790d0c4c0e252cd4efdb55dbba65fd
+_md5_=1eabe82329838a558d27527e771a7d5f

@@ -2,10 +2,10 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A YAML parser and emitter in C++
 EAPI=4
-HOMEPAGE=https://code.google.com/p/yaml-cpp/
+HOMEPAGE=https://github.com/jbeder/yaml-cpp
 KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://yaml-cpp.googlecode.com/files/yaml-cpp-0.3.0.tar.gz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=1b73e6ba522b6d02b5512f308e9f6840
+_md5_=16362299aabb706253b54497afdf31c5

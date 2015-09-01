@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpa
 DEPEND=dev-libs/glib:2 dev-libs/openssl x11-libs/libxcb emacs? ( virtual/emacs ) ibus? ( >=app-i18n/ibus-1.4.1 ) renderer? ( x11-libs/gtk+:2 ) qt4? ( dev-qt/qtgui:4 app-i18n/zinnia ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] virtual/pkgconfig
 DESCRIPTION=The Mozc engine for IBus Framework
 EAPI=5
-HOMEPAGE=https://code.google.com/p/mozc/
+HOMEPAGE=https://github.com/google/mozc
 IUSE=emacs +ibus +qt4 renderer test python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD ipadic public-domain unicode
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://mozc.googlecode.com/files/mozc-1.10.1390.102.tar.bz2 https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2 test? ( https://googlemock.googlecode.com/files/gmock-1.6.0.zip https://googletest.googlecode.com/files/gtest-1.6.0.zip mirror://sourceforge/jsoncpp/jsoncpp-src-0.6.0-rc2.tar.gz )
 _eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=eceb2e50bb051086077fdb23e2dee026
+_md5_=717008c1d8448570707a1962a7cb7c33
