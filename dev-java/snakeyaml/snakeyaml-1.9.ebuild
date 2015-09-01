@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A YAML 1.1 parser and emitter for Java 5"
-HOMEPAGE="https://code.google.com/p/snakeyaml/"
+HOMEPAGE="https://bitbucket.org/asomov/snakeyaml"
 SRC_URI="https://snakeyaml.googlecode.com/files/SnakeYAML-all-${PV}.zip"
 
 LICENSE="Apache-2.0"
