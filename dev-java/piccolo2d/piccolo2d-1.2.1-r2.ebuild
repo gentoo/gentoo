@@ -9,7 +9,7 @@ inherit eutils java-pkg-2 java-ant-2
 
 MY_PN="piccolo"
 DESCRIPTION="A Structured 2D Graphics Framework"
-HOMEPAGE="https://code.google.com/p/piccolo2d/"
+HOMEPAGE="http://piccolo2d.info/community.html"
 SRC_URI="https://piccolo2d.googlecode.com/files/Piccolo2D.Java-${PV}.zip"
 
 LICENSE="BSD"
