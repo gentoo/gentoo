@@ -7,7 +7,7 @@ EAPI=2
 inherit eutils
 
 DESCRIPTION="Scripts to build Ganeti VMs with debootstrap"
-HOMEPAGE="https://code.google.com/p/ganeti/"
+HOMEPAGE="http://www.ganeti.org/"
 SRC_URI="https://ganeti.googlecode.com/files/ganeti-instance-debootstrap-${PV}.tar.gz"
 
 LICENSE="GPL-2"
