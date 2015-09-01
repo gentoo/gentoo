@@ -9,7 +9,7 @@ MY_P="gperftools-${PV}"
 inherit toolchain-funcs eutils flag-o-matic autotools-utils
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
-HOMEPAGE="https://code.google.com/p/gperftools/"
+HOMEPAGE="https://github.com/gperftools/gperftools"
 SRC_URI="https://gperftools.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="MIT"
