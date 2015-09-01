@@ -11,7 +11,7 @@ MY_P="Mupen64Plus-${PV/./-}-src"
 PATCH_VERSION="20100507"
 
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator"
-HOMEPAGE="https://code.google.com/p/mupen64plus/"
+HOMEPAGE="http://www.mupen64plus.org/"
 SRC_URI="https://mupen64plus.googlecode.com/files/${MY_P}.tar.gz mirror://gentoo/${P}-patches-${PATCH_VERSION}.tar.bz2"
 
 LICENSE="GPL-2"
