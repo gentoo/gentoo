@@ -16,7 +16,7 @@ JAVA_PKG_BSFIX_NAME="build.xml build_BEAST_MCMC.xml build_coalsim.xml build_deve
 inherit java-pkg-2 java-ant-2 eutils
 
 DESCRIPTION="Bayesian MCMC of Evolution & Phylogenetics using Molecular Sequences"
-HOMEPAGE="https://code.google.com/p/beast-mcmc/"
+HOMEPAGE="https://github.com/beast-dev/beast-mcmc"
 #SRC_URI=""
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
