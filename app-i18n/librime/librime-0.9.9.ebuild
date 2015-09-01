@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils multilib
 
 DESCRIPTION="Rime Input Method Engine library"
-HOMEPAGE="https://code.google.com/p/rimeime/"
+HOMEPAGE="http://rime.im/"
 SRC_URI="https://rimeime.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
