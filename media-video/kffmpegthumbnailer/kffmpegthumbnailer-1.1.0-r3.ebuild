@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="KDE thumbnailer based on ffmpegthumbnailer"
-HOMEPAGE="https://code.google.com/p/ffmpegthumbnailer/"
+HOMEPAGE="https://github.com/dirkvdb/ffmpegthumbnailer"
 SRC_URI="https://ffmpegthumbnailer.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
