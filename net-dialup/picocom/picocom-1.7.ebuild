@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="minimal dumb-terminal emulation program"
-HOMEPAGE="https://code.google.com/p/picocom/"
+HOMEPAGE="https://github.com/npat-efault/picocom"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
