@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 inherit eutils python-r1 multilib
 
 DESCRIPTION="Library to parse proxy auto-config files"
-HOMEPAGE="https://code.google.com/p/pacparser/"
+HOMEPAGE="https://github.com/pacparser/pacparser"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-3"
