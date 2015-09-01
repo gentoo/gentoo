@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst postrm setup unpack
 DEPEND=>=app-emacs/dropdown-list-20080316 >=virtual/emacs-23
 DESCRIPTION=Yet another snippet extension for Emacs
 EAPI=0
-HOMEPAGE=https://code.google.com/p/yasnippet/
+HOMEPAGE=https://github.com/capitaomorte/yasnippet
 IUSE=doc
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT GPL-2
@@ -10,4 +10,4 @@ RDEPEND=>=app-emacs/dropdown-list-20080316 >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://yasnippet.googlecode.com/files/yasnippet-0.5.10.tar.bz2 doc? ( https://yasnippet.googlecode.com/files/yasnippet-doc-0.5.10.tar.bz2 )
 _eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=b64174dbbed9a30a72c45f7b686422d9
+_md5_=e9a44aa4c02bf613c6a78b4ed86da5ba
