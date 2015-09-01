@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="source doc test"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Fast, efficient Java serialization and cloning"
-HOMEPAGE="https://code.google.com/p/kryo/"
+HOMEPAGE="https://github.com/EsotericSoftware/kryo"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.zip"
 
 LICENSE="BSD-2"
