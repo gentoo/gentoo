@@ -5,7 +5,7 @@
 inherit toolchain-funcs
 
 DESCRIPTION="Run a command with a new system hostname"
-HOMEPAGE="https://code.google.com/p/chname"
+HOMEPAGE="https://github.com/marineam/chname"
 SRC_URI="https://chname.googlecode.com/files/chname-1.0.tar.gz"
 
 LICENSE="GPL-2"
