@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (1 Sep 2015)
+# Currently broken upstream. We still hope it will get fixed.
+app-office/libreoffice telepathy
+
 # Johannes Huber <johu@gentoo.org> (28 Aug 2015)
 # Dependency not in tree yet
 kde-apps/kaccounts-integration kdepim
