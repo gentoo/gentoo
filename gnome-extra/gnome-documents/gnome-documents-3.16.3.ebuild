@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 
-inherit gnome2
+inherit autotools eutils gnome2
 
 DESCRIPTION="A document manager application for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Documents"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Documents"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 # Need gdk-pixbuf-2.25 for gdk_pixbuf_get_pixels_with_length
 COMMON_DEPEND="
@@ -29,9 +29,9 @@ COMMON_DEPEND="
 	>=net-libs/gnome-online-accounts-3.2.0
 	>=net-libs/libsoup-2.41.3:2.4
 	>=net-libs/libzapojit-0.0.2
-	>=net-libs/webkit-gtk-1.10.0:3
+	>=net-libs/webkit-gtk-2.6:4
 	>=x11-libs/gdk-pixbuf-2.25:2[introspection]
-	>=x11-libs/gtk+-3.13.2:3[introspection]
+	>=x11-libs/gtk+-3.15.5:3[introspection]
 	x11-libs/pango[introspection]
 "
 RDEPEND="${COMMON_DEPEND}
@@ -44,7 +44,17 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50.1
 	virtual/pkgconfig
+
+	app-text/yelp-tools
 "
+# eautoreconf requires yelp-tools
+
+src_prepare() {
+	# https://bugzilla.gnome.org/show_bug.cgi?id=750334
+	epatch "${FILESDIR}"/${PN}-3.16.2-parallel-make.patch
+	eautoreconf
+	gnome2_src_prepare
+}
 
 src_configure() {
 	gnome2_src_configure ITSTOOL="$(type -P true)"
