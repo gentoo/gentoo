@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Minuit numerical function minimization in Python"
-HOMEPAGE="https://code.google.com/p/pyminuit"
+HOMEPAGE="https://github.com/jpivarski/pyminuit"
 SRC_URI="
 	https://pyminuit.googlecode.com/files/${P}.tgz
 	https://pyminuit.googlecode.com/files/Minuit-1_7_9-patch1.tar.gz
