@@ -11,7 +11,7 @@ MY_P=${MY_P/_/-}
 MY_DATE=${PV/*_p}
 
 DESCRIPTION="A software version control visualization tool"
-HOMEPAGE="https://code.google.com/p/gource/"
+HOMEPAGE="http://gource.io/"
 SRC_URI="https://gource.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
