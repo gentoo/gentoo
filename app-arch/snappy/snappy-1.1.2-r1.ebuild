@@ -8,7 +8,7 @@ AUTOTOOLS_AUTO_DEPEND="yes"
 inherit eutils autotools-multilib
 
 DESCRIPTION="A high-speed compression/decompression library by Google"
-HOMEPAGE="https://code.google.com/p/snappy/"
+HOMEPAGE="https://github.com/google/snappy"
 # upstream uses google drive which has hash-based URLS
 SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
 

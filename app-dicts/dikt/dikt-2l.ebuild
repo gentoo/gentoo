@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="A dictionary for KDE"
-HOMEPAGE="https://code.google.com/p/dikt/"
+HOMEPAGE="http://www.dikt.ml/index.html"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.txz -> ${P}.tar.xz"
 
 LICENSE="BSD-2"

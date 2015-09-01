@@ -11,7 +11,7 @@ MY_PV="$(replace_version_separator 3 '-')"
 MY_P="qxmledit-${MY_PV}-src"
 
 DESCRIPTION="Qt4 XML Editor"
-HOMEPAGE="https://code.google.com/p/qxmledit/"
+HOMEPAGE="http://qxmledit.org/"
 SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tgz"
 
 LICENSE="LGPL-2"
