@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Core library of matchers for building test expressions"
-HOMEPAGE="https://code.google.com/p/${MY_PN}/"
+HOMEPAGE="https://github.com/hamcrest"
 SRC_URI="https://${MY_PN}.googlecode.com/files/${MY_P}.tgz"
 
 LICENSE="BSD-2"
