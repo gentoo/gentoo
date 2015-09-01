@@ -7,7 +7,7 @@ EAPI="4"
 inherit webapp eutils
 
 DESCRIPTION="ruTorrent is a front-end for the popular Bittorrent client rTorrent"
-HOMEPAGE="https://code.google.com/p/rutorrent/"
+HOMEPAGE="https://github.com/Novik/ruTorrent"
 SRC_URI="
 			https://rutorrent.googlecode.com/files/${P}.tar.gz
 			https://rutorrent.googlecode.com/files/plugins-${PV}.tar.gz"
