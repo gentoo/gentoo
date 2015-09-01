@@ -2,10 +2,10 @@ DEFINED_PHASES=-
 DEPEND=virtual/pkgconfig
 DESCRIPTION=libpurple twitter protocol
 EAPI=4
-HOMEPAGE=https://code.google.com/p/prpltwtr/
+HOMEPAGE=https://github.com/mikeage/prpltwtr
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-im/pidgin-2.6
 SLOT=0
 SRC_URI=https://prpltwtr.googlecode.com/files/prpltwtr-0.12.0.tar.gz
-_md5_=bc030b7952c8a1f8c18e78bee112a687
+_md5_=44b837d34b8145f5f83e32bc2fbde792

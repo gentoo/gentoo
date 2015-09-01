@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst setup
 DEPEND==www-servers/apache-2*
 DESCRIPTION=An Apache2 module for running Python WSGI applications
 EAPI=5
-HOMEPAGE=https://code.google.com/p/modwsgi/
+HOMEPAGE=https://github.com/GrahamDumpleton/mod_wsgi
 IUSE=python_targets_python3_3 python_targets_python3_4 python_targets_python2_7 python_single_target_python3_3 python_single_target_python3_4 python_single_target_python2_7
 KEYWORDS=amd64 ppc x86
 LICENSE=Apache-2.0
@@ -10,4 +10,4 @@ RDEPEND==www-servers/apache-2*
 SLOT=0
 SRC_URI=https://github.com/GrahamDumpleton/mod_wsgi/archive/4.3.0.tar.gz -> mod_wsgi-4.3.0.tar.gz
 _eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=d89c8dd63bf3c6e3b594460936afde65
+_md5_=598dbfed7d020f05b9183e32f1597cbe

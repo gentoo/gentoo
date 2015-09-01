@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=x11-libs/libxkbfile dev-qt/qtgui:4 dev-qt/qtsvg:4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Qt4-based keyboard layout switcher
 EAPI=4
-HOMEPAGE=https://code.google.com/p/qxkb/
+HOMEPAGE=https://github.com/disels/qxkb
 IUSE=debug
 KEYWORDS=~amd64
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libxkbfile dev-qt/qtgui:4 dev-qt/qtsvg:4 x11-apps/setxkbmap
 SLOT=0
 SRC_URI=https://qxkb.googlecode.com/files/qxkb-0.4.4.tar.bz2
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f333668c03a2bb52107ab116d16436dd
+_md5_=f6539a17e255c227021da46d696d7bf0

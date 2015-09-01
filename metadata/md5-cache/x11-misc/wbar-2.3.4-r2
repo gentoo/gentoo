@@ -2,7 +2,7 @@ DEFINED_PHASES=configure postinst prepare
 DEPEND=media-libs/imlib2[X] x11-libs/libX11 gtk? ( gnome-base/libglade media-libs/freetype:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) dev-util/intltool sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A fast, lightweight quick launch bar
 EAPI=5
-HOMEPAGE=https://code.google.com/p/wbar/
+HOMEPAGE=https://github.com/rodolf0/wbar
 IUSE=gtk
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=media-libs/imlib2[X] x11-libs/libX11 gtk? ( gnome-base/libglade media-li
 SLOT=0
 SRC_URI=https://wbar.googlecode.com/files/wbar-2.3.4.tgz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=d685cc20f295526837d116844fb8e5ae
+_md5_=bc7aff4911866223b58f29ac8ac9a8db

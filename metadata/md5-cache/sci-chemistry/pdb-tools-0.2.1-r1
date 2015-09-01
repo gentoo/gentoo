@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install prepare setup
 DEPEND=python_single_target_pypy? ( virtual/pypy:0= ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_pypy(+)?,python_single_target_python2_7(+)?] virtual/fortran
 DESCRIPTION=Tools for manipulating and doing calculations on wwPDB macromolecule structure files
 EAPI=5
-HOMEPAGE=https://code.google.com/p/pdb-tools/
+HOMEPAGE=https://github.com/harmslab/pdbtools
 IUSE=python_targets_pypy python_targets_python2_7 python_single_target_pypy python_single_target_python2_7
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_pypy python_single_target_python2_7 ) pyt
 SLOT=0
 SRC_URI=https://pdb-tools.googlecode.com/files/pdbTools_0.2.1.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=940060b5dab282f3e08339c8bba74525
+_md5_=e2fae13e3bf0959e968a743ef54458cf
