@@ -187,7 +187,7 @@ app-admin/rigo 254: Rigo, the Sabayon Application Browser
 app-admin/rsyslog 8.7.0-r2 8.9.0 8.12.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2014.7.4 2014.7.5 2015.5.1 2015.5.3 2015.5.5 9999: Salt is a remote execution and configuration manager
+app-admin/salt 2015.5.3 2015.5.5 9999: Salt is a remote execution and configuration manager
 app-admin/setools 3.3.8-r5 3.3.8-r7 9999: Policy Analysis Tools for SELinux
 app-admin/showconsole 1.08: small daemon for logging console output during boot
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -16387,7 +16387,7 @@ sys-kernel/hardened-sources 3.2.69-r11 3.2.69-r13 3.2.70 3.2.71 3.14.48 3.14.49 
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 3.16.6 4.1.4: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20140603 20140809 20140902 20141009 20150206 20150320 99999999: Linux firmware files
+sys-kernel/linux-firmware 20140603 20140809 20140902 20141009 20150206 20150320 20150812 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 3.19 4.0 4.1 4.2: Linux system headers
 sys-kernel/mips-sources 4.1.6 4.2.0: Linux-Mips GIT sources for MIPS-based machines, dated 20150830
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8: Kernel sources with OpenVZ patchset
@@ -16950,7 +16950,7 @@ www-client/dwb 2013.03.30 2014.03.07 2014.03.07-r1 9999: Dynamic web browser bas
 www-client/elinks 0.12_pre6 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.14.2 3.16.2 3.16.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
-www-client/firefox 38.1.1 38.2.0 40.0.2: Firefox Web Browser
+www-client/firefox 38.1.1 38.2.0 38.2.1 40.0.3: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 40.0.2: Firefox Web Browser
 www-client/google-chrome 44.0.2403.157_p1: The web browser from Google
 www-client/google-chrome-beta 45.0.2454.78_p1: The web browser from Google
