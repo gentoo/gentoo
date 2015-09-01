@@ -8500,7 +8500,7 @@ dev-ruby/trollop 1.16.2-r4 2.0 2.1.1 2.1.2: Trollop is a commandline option pars
 dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.1 2.5.3: Makes following links in your web application faster
 dev-ruby/twitter 5.13.0 5.14.0: Ruby wrapper around the Twitter API
-dev-ruby/twitter-text 1.12.0: Text handling for Twitter
+dev-ruby/twitter-text 1.12.0 1.13.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 0.7.1 0.7.2 0.7.3: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.43 0.3.43-r1 0.3.44 1.2.2: Daylight-savings aware timezone library
