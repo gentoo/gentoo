@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils
 
 DESCRIPTION="A C++ logging library"
-HOMEPAGE="https://code.google.com/p/rlog/"
+HOMEPAGE="http://www.arg0.net/rlog"
 SRC_URI="https://rlog.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
