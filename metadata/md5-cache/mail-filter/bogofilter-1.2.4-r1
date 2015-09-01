@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/libiconv berkdb? ( >=sys-libs/db-3.2 ) !berkdb? ( sqlite? ( >=dev-db/sqlite-3.6.22 ) !sqlite? ( tokyocabinet? ( dev-db/tokyocabinet ) !tokyocabinet? ( >=sys-libs/db-3.2 ) ) ) sci-libs/gsl app-arch/pax
 SLOT=0
 SRC_URI=mirror://sourceforge/bogofilter/bogofilter-1.2.4.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=b46c527ba5700ab85bc3b89afa8f9db1

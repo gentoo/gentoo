@@ -7,5 +7,5 @@ IUSE=qt5 static-libs
 LICENSE=MIT
 RDEPEND=>=dev-libs/libusb-1.0.18:1=[static-libs=] qt5? ( dev-qt/qtwidgets:5= )
 SLOT=0
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5
 _md5_=27a61ac876946aa2f6eba889986d2fba

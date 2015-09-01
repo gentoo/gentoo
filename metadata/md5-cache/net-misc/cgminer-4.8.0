@@ -10,5 +10,5 @@ RDEPEND=net-misc/curl >=dev-libs/jansson-2.6 ncurses? ( sys-libs/ncurses ) avalo
 REQUIRED_USE=|| ( ants1 ants2 avalon avalon2 bab bitmine_A1 bflsc bitforce bitfury cointerra drillbit hashfast hashratio icarus klondike knc minion modminer spondoolies )
 SLOT=0
 SRC_URI=http://ck.kolivas.org/apps/cgminer/cgminer-4.8.0.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=9973c13ce666a5ef4ce82e2ca8d1f11b

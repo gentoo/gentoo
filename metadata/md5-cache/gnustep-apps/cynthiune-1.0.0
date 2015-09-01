@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/audiofile media-libs/taglib alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) flac? ( media-libs/flac ) mad? ( media-libs/libid3tag media-libs/libmad ) musepack? ( >=media-sound/musepack-tools-444 ) modplug? ( media-libs/libmodplug ) timidity? ( media-sound/timidity++ ) vorbis? ( >=media-libs/libogg-1.1.2 >=media-libs/libvorbis-1.0.1-r2 ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
 SLOT=0
 SRC_URI=http://savannah.nongnu.org/download/gap/Cynthiune-1.0.0.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	707840264bcc460d4e700dcc8c6aa746	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	707840264bcc460d4e700dcc8c6aa746	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=c6b2b59a5246bc9839709e06b031d03b

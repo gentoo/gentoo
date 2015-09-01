@@ -9,5 +9,5 @@ LICENSE=ISC BSD BSD-1 BSD-2 BSD-4
 RDEPEND=mail-mta/opensmtpd dev-libs/libevent dev-libs/openssl filter-python? ( dev-lang/python:2.7 ) filter-perl? ( dev-lang/perl ) filter-lua? ( luajit? ( dev-lang/luajit ) !luajit? ( dev-lang/lua ) ) filter-dnsbl? ( net-libs/libasr ) table-sqlite? ( dev-db/sqlite:3 ) table-mysql? ( virtual/mysql ) table-postgres? ( dev-db/postgresql ) table-redis? ( dev-libs/hiredis ) table-python? ( dev-lang/python:2.7 ) scheduler-python? ( dev-lang/python:2.7 ) queue-python? ( dev-lang/python:2.7 )
 SLOT=0
 SRC_URI=https://www.opensmtpd.org/archives/opensmtpd-extras-201506020835.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=318236058d6ce2e4c777df7364cb507a

@@ -8,5 +8,5 @@ LICENSE=MILO
 RDEPEND=sys-fs/mtools
 SLOT=0
 SRC_URI=http://www.suse.de/~stepan/source/milo-2.2-18.tar.bz2 mirror://kernel/linux/kernel/v2.2/linux-2.2.25.tar.bz2 https://dev.gentoo.org/~taviso/milo/ldmilo-patched-20010430 http://ftp.namesys.com/pub/reiserfs-for-2.2/linux-2.2.20-reiserfs-3.5.35.diff.bz2 https://dev.gentoo.org/~taviso/milo/linload.exe http://www.ibiblio.org/pub/Linux/docs/HOWTO/MILO-HOWTO
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	02090c5a622458303e6bf68837ac6b96	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=48e72cb47867f4f7e46c6a802007d33a
