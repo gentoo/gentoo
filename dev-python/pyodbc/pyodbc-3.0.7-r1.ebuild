@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="python ODBC module to connect to almost any database"
-HOMEPAGE="https://code.google.com/p/pyodbc"
+HOMEPAGE="https://github.com/mkleehammer/pyodbc"
 SRC_URI="https://pyodbc.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"
