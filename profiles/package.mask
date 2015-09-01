@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (01 Sep 2015)
+# Fails to build (bug #559330). Dead upstream.
+# Masked for removal in 30 days.
+kde-misc/socket-sentry
+
 # Matt Turner <mattst88@gentoo.org> (28 Aug 2015)
 # Masked for removal in 30 days. Bug 482304
 x11-libs/libXevie
