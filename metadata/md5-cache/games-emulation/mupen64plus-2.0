@@ -1,10 +1,10 @@
 DEFINED_PHASES=-
 DESCRIPTION=A fork of Mupen64 Nintendo 64 emulator, meta-package
 EAPI=5
-HOMEPAGE=https://code.google.com/p/mupen64plus/
+HOMEPAGE=http://www.mupen64plus.org/
 IUSE=+audio-sdl +input-sdl +rsp-hle +ui-console +ui-m64py +video-glide64mk2 +video-rice
 KEYWORDS=~amd64 ~x86
 LICENSE=metapackage
 RDEPEND=games-emulation/mupen64plus-core audio-sdl? ( games-emulation/mupen64plus-audio-sdl ) input-sdl? ( games-emulation/mupen64plus-input-sdl ) rsp-hle? ( games-emulation/mupen64plus-rsp-hle ) ui-console? ( games-emulation/mupen64plus-ui-console ) ui-m64py? ( games-emulation/m64py ) video-glide64mk2? ( games-emulation/mupen64plus-video-glide64mk2 ) video-rice? ( games-emulation/mupen64plus-video-rice )
 SLOT=0
-_md5_=b9697acca62c8ccf82ef986b1d7be3f3
+_md5_=a8e43224726217b9fd73944103e56a5f

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( >=media-libs/openjpeg-2.1 ) !jpeg2k? ( !<media-libs/openjpeg-2.1 ) png? ( media-libs/libpng ) tiff? ( media-libs/tiff ) webp? ( media-libs/libwebp ) zlib? ( sys-libs/zlib )
 DESCRIPTION=C library for image processing and analysis
 EAPI=4
-HOMEPAGE=https://code.google.com/p/leptonica/
+HOMEPAGE=http://www.leptonica.org/
 IUSE=gif jpeg jpeg2k png tiff webp utils zlib static-libs
 KEYWORDS=alpha amd64 ~arm ~mips ppc ppc64 ~sparc x86
 LICENSE=Apache-2.0
@@ -10,4 +10,4 @@ RDEPEND=gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( >=media-libs
 SLOT=0
 SRC_URI=http://www.leptonica.com/source/leptonica-1.71.tar.gz
 _eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=c71692ebf075dc9087109cb621f26fd6
+_md5_=b688923b2f7a46af0551d825c7db7a9c
