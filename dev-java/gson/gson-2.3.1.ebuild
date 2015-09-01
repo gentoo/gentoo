@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java library to convert JSON to Java objects and vice-versa"
-HOMEPAGE="https://code.google.com/p/google-gson/"
+HOMEPAGE="https://github.com/google/gson"
 SRC_URI="http://search.maven.org/remotecontent?filepath=com/google/code/${PN}/${PN}/${PV}/${P}-sources.jar"
 LICENSE="Apache-2.0"
 SLOT="2.2.2"
