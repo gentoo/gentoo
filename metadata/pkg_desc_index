@@ -16192,6 +16192,7 @@ sys-firmware/iwl6030-ucode 17.168.5.2 18.168.6.1: Intel (R) Wireless WiFi Advanc
 sys-firmware/iwl6050-ucode 9.201.4.1 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
 sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25: Firmware for Intel (R) Dual Band Wireless-AC 7260
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
+sys-firmware/radeon-ucode 20140204 20140430 20140823: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
@@ -17152,7 +17153,6 @@ x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundati
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 14.4_p1 14.6_beta2 14.9-r2 14.12-r2 14.12-r3 15.1 15.7: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
 x11-drivers/nvidia-drivers 96.43.23 173.14.39 304.125 331.113 340.76 343.36 346.87 349.16 352.30 355.06-r1: NVIDIA Accelerated Graphics Driver
-x11-drivers/radeon-ucode 20140204 20140430 20140823: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
@@ -17751,7 +17751,7 @@ x11-plugins/pidgin-sipe 1.18.0-r1 1.19.0 1.19.1: Pidgin Plug-in SIPE (Sip Exchan
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/prpltwtr 0.12.0: libpurple twitter protocol
-x11-plugins/purple-facebook 20150727 20150728 20150731 20150806: Facebook protocol plugin for libpurple
+x11-plugins/purple-facebook 20150806 20150827: Facebook protocol plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch, inspired by Pidgin-libnotify and Guifications
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/qled 0.6.2: Custom Led widget plugin for Qt-Designer
