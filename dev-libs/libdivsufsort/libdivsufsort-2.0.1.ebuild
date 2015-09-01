@@ -6,7 +6,7 @@ EAPI=4
 inherit cmake-utils multilib
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
-HOMEPAGE="https://code.google.com/p/libdivsufsort/"
+HOMEPAGE="https://github.com/y-256/libdivsufsort"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="MIT"
