@@ -257,11 +257,6 @@ sci-biology/flower
 # Wrong version #553670
 =sys-kernel/gentoo-sources-4.1.1
 
-# Brian Evans <grknight@gentoo.org> (19 Jun 2015)
-# The Cyphertite backup service is closing as of August 18th, 2015.
-# Package masked for removal in 30 days. bug 552578
-app-backup/cyphertite
-
 # Patrick Lauer <patrick@gentoo.org> (14 Jun 2015)
 # Has race condition / failure modes that make systems unusable
 # See #551724 and duplicates
