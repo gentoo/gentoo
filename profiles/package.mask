@@ -257,11 +257,6 @@ sci-biology/flower
 # Wrong version #553670
 =sys-kernel/gentoo-sources-4.1.1
 
-# Brian Evans <grknight@gentoo.org> (19 Jun 2015)
-# The Cyphertite backup service is closing as of August 18th, 2015.
-# Package masked for removal in 30 days. bug 552578
-app-backup/cyphertite
-
 # Patrick Lauer <patrick@gentoo.org> (14 Jun 2015)
 # Has race condition / failure modes that make systems unusable
 # See #551724 and duplicates
@@ -271,13 +266,6 @@ app-backup/cyphertite
 # Masking PHP 7 pre-release versions
 dev-lang/php:7.0
 =virtual/httpd-php-7.0
-
-# Brian Evans <grknight@gentoo.org> (30 Apr 2015)
-# It is unclear if dev-php/smarty-2* is affected by
-# security bug 526542.  Masked for removal in 30 days
-# Please update your code to the latest version
-<dev-php/smarty-2.6.29
-=dev-php/PEAR-PhpDocumentor-1.4.4
 
 # Ryan Hill <rhill@gentoo.org> (28 Apr 2015)
 # Moving to /lib/gentoo/functions.sh broke the eclass
@@ -313,14 +301,6 @@ app-emulation/emul-linux-x86-sdl
 app-emulation/emul-linux-x86-soundlibs
 app-emulation/emul-linux-x86-xlibs
 app-emulation/emul-linux-x86-jna
-
-# Brian Evans <grknight@gentoo.org> (22 Mar 2015)
-# PHP 5.3.x is vulnerable to several security bugs and has
-# reached EOL status. (Bugs #533998, #537586, #537590, #538822, #541098)
-# Masked pending resolution to bug #538756
-dev-lang/php:5.3
-virtual/httpd-php:5.3
-=mail-client/squirrelmail-1.4.22
 
 # Lars Wendler <polynomial-c@gentoo.org> (8 Mar 2015)
 # Masked for testing
