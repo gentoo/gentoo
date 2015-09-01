@@ -47,9 +47,10 @@ RDEPEND="
 "
 
 python_prepare_all() {
-	sed -i '/^hacking/d' test-requirements.txt
-	sed -i '/^argparse/d' requirements.txt
+	sed -i '/^hacking/d' test-requirements.txt || die
+	sed -i '/^argparse/d' requirements.txt || die
 	use doc && esetup.py build_sphinx
+	distutils-r1_python_prepare_all
 }
 
 python_test() {

@@ -40,7 +40,7 @@ RDEPEND="
 "
 
 python_prepare() {
-	sed -i '/^hacking/d' test-requirements.txt
+	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare
 }
 
