@@ -147,7 +147,7 @@ multilib_src_install_all() {
 		# Probably fontforge needs less but this way makes things simplier...
 		einfo "Installing internal headers required for fontforge"
 		local header
-		find src/truetype include/freetype/internal -name '*.h' | \
+		find src/truetype include/internal -name '*.h' | \
 		while read header; do
 			mkdir -p "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
 			cp ${header} "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
