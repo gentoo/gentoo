@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils webapp depend.php
+inherit eutils webapp
 
 MY_PV=${PV/_/-}
 MY_P="phpMyAdmin-${MY_PV}-all-languages"
@@ -23,10 +23,10 @@ RDEPEND="
 		dev-lang/php[mysqli]
 		dev-lang/php[mysql]
 	)
+	virtual/httpd-php:*
 "
 
 need_httpd_cgi
-need_php_httpd
 
 S="${WORKDIR}"/${MY_P}
 

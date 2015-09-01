@@ -8,7 +8,7 @@ inherit toolchain-funcs multilib
 MY_P=pidginTeX-${PV}
 
 DESCRIPTION="Pidgin plugin to render LaTeX expressions in messages"
-HOMEPAGE="https://code.google.com/p/pidgintex"
+HOMEPAGE="https://github.com/Micket/pidgintex"
 SRC_URI="https://pidgintex.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

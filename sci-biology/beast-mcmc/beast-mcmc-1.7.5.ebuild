@@ -18,7 +18,7 @@ inherit java-pkg-2 java-ant-2 eutils
 MY_P=BEASTv${PV}
 
 DESCRIPTION="Bayesian MCMC of Evolution & Phylogenetics using Molecular Sequences"
-HOMEPAGE="https://code.google.com/p/beast-mcmc/"
+HOMEPAGE="https://github.com/beast-dev/beast-mcmc"
 #SRC_URI=""
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 

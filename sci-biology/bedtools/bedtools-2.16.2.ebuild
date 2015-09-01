@@ -7,7 +7,7 @@ EAPI=4
 inherit flag-o-matic
 
 DESCRIPTION="Tools for manipulation and analysis of BED, GFF/GTF, VCF, and SAM/BAM file formats"
-HOMEPAGE="https://code.google.com/p/bedtools/"
+HOMEPAGE="https://github.com/arq5x/bedtools2"
 SRC_URI="https://bedtools.googlecode.com/files/BEDTools.v${PV}.tar.gz"
 
 LICENSE="GPL-2"

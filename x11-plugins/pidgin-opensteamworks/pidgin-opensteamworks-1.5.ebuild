@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Steam protocol plugin for pidgin"
-HOMEPAGE="https://code.google.com/p/pidgin-opensteamworks/"
+HOMEPAGE="https://github.com/eionrobb/pidgin-opensteamworks"
 SRC_URI="https://pidgin-opensteamworks.googlecode.com/svn/trunk/steam-mobile/releases/steam-mobile-${PV}.tar.bz2
 	https://pidgin-opensteamworks.googlecode.com/files/icons.zip
 	-> ${PN}-icons.zip"

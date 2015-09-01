@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="Directory hierarchy mapping tool from FreeBSD"
-HOMEPAGE="https://code.google.com/p/mtree-port/"
+HOMEPAGE="https://github.com/archiecobbs/mtree-port"
 SRC_URI="https://mtree-port.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"

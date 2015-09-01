@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="FUSE-based single file backing store via Amazon S3"
-HOMEPAGE="https://code.google.com/p/s3backer"
+HOMEPAGE="https://github.com/archiecobbs/s3backer"
 SRC_URI="https://s3backer.googlecode.com/files/s3backer-${PV}.tar.gz"
 
 LICENSE="GPL-2"

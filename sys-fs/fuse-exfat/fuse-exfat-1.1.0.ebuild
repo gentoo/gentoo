@@ -6,7 +6,7 @@ EAPI=5
 inherit scons-utils toolchain-funcs
 
 DESCRIPTION="exFAT filesystem FUSE module"
-HOMEPAGE="https://code.google.com/p/exfat/"
+HOMEPAGE="https://github.com/relan/exfat"
 SRC_URI="https://docs.google.com/uc?export=download&id=0B7CLI-REKbE3VTdaa0EzTkhYdU0 -> ${P}.tar.gz"
 
 LICENSE="GPL-2+" # COPYING is GPL-2 but ChangeLog says "Relicensed the project from GPLv3+ to GPLv2+"
