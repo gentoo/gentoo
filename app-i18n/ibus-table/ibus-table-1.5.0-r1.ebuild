@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"
 inherit eutils python-single-r1
 
 DESCRIPTION="The Table Engine for IBus Framework"
-HOMEPAGE="https://code.google.com/p/ibus/"
+HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
