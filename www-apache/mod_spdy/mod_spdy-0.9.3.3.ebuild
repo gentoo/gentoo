@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Apache module for rewriting web pages to reduce latency and bandwidth"
-HOMEPAGE="https://code.google.com/p/mod-spdy"
+HOMEPAGE="https://code.google.com/p/mod-spdy/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
