@@ -27,7 +27,7 @@ src_compile() {
 	fi
 	export CPPFLAGS="${CPPFLAGS} -DMKSH_DEFAULT_PROFILEDIR=\\\"${EPREFIX}/etc\\\""
 	# we can't assume lto existing/enabled, so we add a fallback
-	sh Build.sh -r -c lto || sh Rebuild.sh || die
+	sh Build.sh -r -c lto || sh Build.sh -r || die
 }
 
 src_install() {
