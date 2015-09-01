@@ -11,7 +11,7 @@ MY_P="${P}-ipv6"
 inherit autotools-utils
 
 DESCRIPTION="Testing of network intrusion detection systems, firewalls and TCP/IP stacks"
-HOMEPAGE="https://code.google.com/p/fragroute-ipv6/"
+HOMEPAGE="https://github.com/stsi/fragroute-ipv6"
 SRC_URI="https://fragroute-ipv6.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="BSD"
