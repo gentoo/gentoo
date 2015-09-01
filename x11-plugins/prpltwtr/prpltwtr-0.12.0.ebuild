@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="libpurple twitter protocol"
-HOMEPAGE="https://code.google.com/p/prpltwtr/"
+HOMEPAGE="https://github.com/mikeage/prpltwtr"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
