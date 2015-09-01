@@ -40,6 +40,7 @@ CDEPEND="${PYTHON_DEPS}
 	sys-apps/attr
 	sys-libs/libcap
 	>=sys-libs/ldb-1.1.20
+	sys-libs/ncurses:0=
 	>=sys-libs/nss_wrapper-1.0.2
 	>=sys-libs/ntdb-1.0[python,${PYTHON_USEDEP}]
 	>=sys-libs/talloc-2.1.2[python,${PYTHON_USEDEP}]

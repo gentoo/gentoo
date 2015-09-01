@@ -41,6 +41,7 @@ CDEPEND="${PYTHON_DEPS}
 	sys-apps/attr
 	sys-libs/libcap
 	>=sys-libs/ldb-1.1.16
+	sys-libs/ncurses:0=
 	>=sys-libs/tdb-1.2.11[python,${PYTHON_USEDEP}]
 	>=sys-libs/talloc-2.0.8[python,${PYTHON_USEDEP}]
 	>=sys-libs/tevent-0.9.18
