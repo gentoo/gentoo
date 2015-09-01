@@ -10245,7 +10245,7 @@ gnome-extra/gnome-contacts 3.14.2 3.16.2: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.6: Thumbnail generator for directories
 gnome-extra/gnome-do 0.9: GNOME Do allows you to get things done quickly
 gnome-extra/gnome-do-plugins 0.8.5: Plugins to put the Do in Gnome Do
-gnome-extra/gnome-documents 3.14.2 3.14.3 3.16.2: A document manager application for GNOME
+gnome-extra/gnome-documents 3.14.3 3.16.2 3.16.3: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.10: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.14.1 3.16.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
@@ -16192,7 +16192,7 @@ sys-firmware/iwl6030-ucode 17.168.5.2 18.168.6.1: Intel (R) Wireless WiFi Advanc
 sys-firmware/iwl6050-ucode 9.201.4.1 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
 sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25: Firmware for Intel (R) Dual Band Wireless-AC 7260
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
-sys-firmware/radeon-ucode 20140204 20140430 20140823: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
+sys-firmware/radeon-ucode 20140204 20140430 20140823 20150511: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
