@@ -5,7 +5,7 @@
 inherit eutils games
 
 DESCRIPTION="Open-source port of the DOS game Tyrian, vertical scrolling shooter"
-HOMEPAGE="https://code.google.com/p/opentyrian/"
+HOMEPAGE="https://bitbucket.org/opentyrian/opentyrian/wiki/Home"
 SRC_URI="http://darklomax.org/tyrian/tyrian21.zip
 	 mirror://gentoo/${P}.tar.bz2"
 

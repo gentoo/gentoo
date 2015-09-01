@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-multilib
 
 DESCRIPTION="Video game music file emulators"
-HOMEPAGE="https://code.google.com/p/game-music-emu/"
+HOMEPAGE="https://bitbucket.org/mpyne/game-music-emu/wiki/Home"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

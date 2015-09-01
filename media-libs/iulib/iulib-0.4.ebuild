@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils toolchain-funcs multilib scons-utils
 
 DESCRIPTION="easy-to-use image and video I/O functions"
-HOMEPAGE="https://code.google.com/p/iulib/"
+HOMEPAGE="https://github.com/tmbdev/iulib"
 SRC_URI="https://iulib.googlecode.com/files/${P}.tgz"
 
 LICENSE="Apache-2.0"

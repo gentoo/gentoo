@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils multilib flag-o-matic
 
 DESCRIPTION="Lightweight audio player"
-HOMEPAGE="https://code.google.com/p/gejengel"
+HOMEPAGE="https://github.com/dirkvdb/gejengel"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

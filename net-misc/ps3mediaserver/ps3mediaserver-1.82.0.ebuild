@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils
 
 DESCRIPTION="DLNA compliant UPNP server for streaming media to Playstation 3"
-HOMEPAGE="https://code.google.com/p/ps3mediaserver"
+HOMEPAGE="https://github.com/ps3mediaserver/ps3mediaserver"
 SRC_URI="https://ps3mediaserver.googlecode.com/files/pms-generic-linux-unix-${PV}.tgz"
 
 LICENSE="GPL-2"

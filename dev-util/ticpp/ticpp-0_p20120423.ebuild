@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="A completely new interface to TinyXML that uses MANY of the C++ strengths"
-HOMEPAGE="https://code.google.com/p/ticpp/"
+HOMEPAGE="https://github.com/rjpcomputing/ticpp"
 SRC_URI="https://dev.gentoo.org/~ago/distfiles/${P}.tar.bz2"
 
 LICENSE="MIT"

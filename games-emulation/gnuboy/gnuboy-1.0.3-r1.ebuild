@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils games
 
 DESCRIPTION="Gameboy emulator with multiple renderers"
-HOMEPAGE="https://code.google.com/p/gnuboy/"
+HOMEPAGE="http://sourceforge.net/projects/gnuboy/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

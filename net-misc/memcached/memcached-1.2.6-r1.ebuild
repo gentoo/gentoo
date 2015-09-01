@@ -8,7 +8,7 @@ MY_PV="${PV/_rc/-rc}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="High-performance, distributed memory object caching system"
-HOMEPAGE="http://www.danga.com/memcached/"
+HOMEPAGE="http://memcached.org/"
 SRC_URI="http://www.danga.com/memcached/dist/${MY_P}.tar.gz"
 
 LICENSE="BSD"

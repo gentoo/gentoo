@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1
 
 DESCRIPTION="Plugins for Quod Libet and Ex Falso"
-HOMEPAGE="https://code.google.com/p/quodlibet/"
+HOMEPAGE="https://github.com/quodlibet/quodlibet/"
 SRC_URI="https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"

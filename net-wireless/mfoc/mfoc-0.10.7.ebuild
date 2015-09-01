@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="Mifare Classic Offline Cracker"
-HOMEPAGE="https://code.google.com/p/mfoc"
+HOMEPAGE="https://github.com/nfc-tools/mfoc"
 SRC_URI="https://mfoc.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"

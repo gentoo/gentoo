@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils git-r3
 
 DESCRIPTION="a high level library for C++ designed to make easier the creation and decoding of network packets"
-HOMEPAGE="https://code.google.com/p/libcrafter/"
+HOMEPAGE="https://github.com/pellegre/libcrafter"
 EGIT_REPO_URI="https://github.com/pellegre/${PN}"
 
 LICENSE="BSD"

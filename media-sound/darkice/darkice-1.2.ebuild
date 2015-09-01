@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A live audio streamer"
-HOMEPAGE="https://code.google.com/p/darkice/"
+HOMEPAGE="http://www.darkice.org/"
 SRC_URI="https://darkice.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
