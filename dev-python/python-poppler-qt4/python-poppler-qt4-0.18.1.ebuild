@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1 eutils
 
 DESCRIPTION="A python binding for libpoppler-qt4"
-HOMEPAGE="https://code.google.com/p/python-poppler-qt4/"
+HOMEPAGE="https://github.com/wbsoft/python-poppler-qt4"
 SRC_URI="https://github.com/wbsoft/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
