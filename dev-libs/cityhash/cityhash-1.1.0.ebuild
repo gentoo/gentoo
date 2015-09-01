@@ -5,7 +5,7 @@ EAPI=4
 
 DESCRIPTION="Google's CityHash family of hash functions"
 
-HOMEPAGE="https://code.google.com/p/cityhash/"
+HOMEPAGE="https://github.com/google/cityhash"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
