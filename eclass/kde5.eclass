@@ -404,7 +404,7 @@ kde5_src_prepare() {
 			popd > /dev/null
 		fi
 
-		if [[ ${KDE_HANDBOOK} = true && -d ${KDE_DOC_DIR} ]] ; then
+		if [[ ${KDE_HANDBOOK} = true && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
 			pushd ${KDE_DOC_DIR} > /dev/null
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
