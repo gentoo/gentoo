@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-lang/perl:=[-build(-)]
 DESCRIPTION=A SNMP Perl Module
 EAPI=5
-HOMEPAGE=https://code.google.com/p/snmp-session/
+HOMEPAGE=https://github.com/sleinen/snmp-session
 KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~sparc-solaris ~x86-solaris
 LICENSE=Artistic-2
 RDEPEND=dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=https://snmp-session.googlecode.com/files/SNMP_Session-1.13.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=d068a3faa933c4b0702d23ccb879d5cb
+_md5_=dbc0875eb43fa0fd5fb2e256ebdbf9e5

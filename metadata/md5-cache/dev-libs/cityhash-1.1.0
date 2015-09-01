@@ -1,9 +1,9 @@
 DEFINED_PHASES=-
 DESCRIPTION=Google's CityHash family of hash functions
 EAPI=4
-HOMEPAGE=https://code.google.com/p/cityhash/
+HOMEPAGE=https://github.com/google/cityhash
 KEYWORDS=~amd64
 LICENSE=BSD
 SLOT=0
 SRC_URI=https://cityhash.googlecode.com/files/cityhash-1.1.0.tar.gz
-_md5_=2fb18d19a3ab16f1c1a2b7b7d893bdef
+_md5_=dba1a4ef08b845951d9f41d2c92ff399
