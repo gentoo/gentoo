@@ -9,7 +9,7 @@ inherit versionator
 MY_DATE="$(get_version_component_range 3)"
 
 DESCRIPTION="Library for providing a basic file input/output abstraction layer"
-HOMEPAGE="https://code.google.com/p/libbfio/"
+HOMEPAGE="https://github.com/libyal/libbfio"
 SRC_URI="http://dev.pentoo.ch/~zero/distfiles/${PN}-alpha-${MY_DATE}.tar.gz"
 
 LICENSE="LGPL-3"
