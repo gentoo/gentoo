@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols"
-HOMEPAGE="https://code.google.com/p/dpkt/"
+HOMEPAGE="https://github.com/kbandla/dpkt"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
