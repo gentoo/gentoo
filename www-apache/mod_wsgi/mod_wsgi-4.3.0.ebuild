@@ -10,7 +10,7 @@ PYTHON_REQ_USE="threads"
 inherit apache-module eutils python-single-r1
 
 DESCRIPTION="An Apache2 module for running Python WSGI applications"
-HOMEPAGE="https://code.google.com/p/modwsgi/"
+HOMEPAGE="https://github.com/GrahamDumpleton/mod_wsgi"
 SRC_URI="https://github.com/GrahamDumpleton/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
