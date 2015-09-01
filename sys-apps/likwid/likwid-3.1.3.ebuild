@@ -9,7 +9,7 @@ FORTRAN_NEEDED=fortran
 inherit eutils fcaps fortran-2 linux-info multilib
 
 DESCRIPTION="A lightweight performance-oriented tool suite for x86 multicore environments"
-HOMEPAGE="https://code.google.com/p/likwid/"
+HOMEPAGE="https://github.com/rrze-likwid/likwid"
 SRC_URI="http://ftp.fau.de/pub/likwid/likwid-${PV}.tar.gz"
 
 LICENSE="GPL-3"
