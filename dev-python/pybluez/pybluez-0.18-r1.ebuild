@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P="PyBluez-${PV}"
 
 DESCRIPTION="Python bindings for Bluez Bluetooth Stack"
-HOMEPAGE="https://code.google.com/p/pybluez/"
+HOMEPAGE="https://github.com/karulis/pybluez"
 SRC_URI="https://pybluez.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
