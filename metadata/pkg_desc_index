@@ -7739,7 +7739,7 @@ dev-python/snakeoil 0.6.4 0.6.5 9999: Miscellaneous python utility code
 dev-python/snappy 0.5-r2: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.5-r2 0.12.20 0.12.22: SOAP Services for Python
-dev-python/socketio-client 0.5.6: A socket.io client library for Python
+dev-python/socketio-client 0.6.5: A socket.io client library for Python
 dev-python/socketpool 0.5.2 0.5.2-r1 0.5.3: A simple Python socket pool
 dev-python/socksipy 1.00 1.02: SOCKS proxy implementation for python
 dev-python/south 1.0: Intelligent schema migrations for Django apps
@@ -13292,7 +13292,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26 4.1.18 4.1.19 4.2.3: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26 4.1.19 4.1.20 4.2.3: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
