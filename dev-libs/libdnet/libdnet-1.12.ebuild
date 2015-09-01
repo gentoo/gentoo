@@ -11,7 +11,7 @@ DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 eutils
 
 DESCRIPTION="simplified, portable interface to several low-level networking routines"
-HOMEPAGE="https://code.google.com/p/libdnet/"
+HOMEPAGE="https://github.com/dugsong/libdnet"
 SRC_URI="https://libdnet.googlecode.com/files/${P}.tgz
 	ipv6? ( https://fragroute-ipv6.googlecode.com/files/${P}.ipv6-1.patch.gz )"
 
