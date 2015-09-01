@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python module that makes it easy to work with STDF"
-HOMEPAGE="https://code.google.com/p/pystdf/"
+HOMEPAGE="https://github.com/cmars/pystdf"
 SRC_URI="https://pystdf.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
