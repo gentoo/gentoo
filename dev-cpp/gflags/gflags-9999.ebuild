@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Google's C++ argument parsing library"
-HOMEPAGE="https://code.google.com/p/gflags/"
+HOMEPAGE="http://gflags.github.io/gflags/"
 
 LICENSE="BSD"
 SLOT="0"

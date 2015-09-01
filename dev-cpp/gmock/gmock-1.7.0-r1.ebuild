@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit libtool multilib-minimal python-any-r1
 
 DESCRIPTION="Google's C++ mocking framework"
-HOMEPAGE="https://code.google.com/p/googlemock/"
+HOMEPAGE="https://github.com/google/googlemock"
 SRC_URI="https://googlemock.googlecode.com/files/${P}.zip"
 
 LICENSE="BSD"

@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils multilib versionator toolchain-funcs
 
 DESCRIPTION="Rime Input Method Engine library"
-HOMEPAGE="https://code.google.com/p/rimeime/"
+HOMEPAGE="http://rime.im/"
 SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
 
 LICENSE="GPL-3"

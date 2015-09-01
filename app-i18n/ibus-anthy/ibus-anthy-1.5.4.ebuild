@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1 autotools gnome2-utils
 
 DESCRIPTION="Japanese input method Anthy IMEngine for IBus Framework"
-HOMEPAGE="https://code.google.com/p/ibus/"
+HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz
 	https://raw.github.com/ibus/ibus-anthy/${PV}/engine/anthy.i"
 

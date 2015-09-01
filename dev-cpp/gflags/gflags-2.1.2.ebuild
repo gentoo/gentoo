@@ -7,7 +7,7 @@ EAPI="5"
 inherit cmake-multilib
 
 DESCRIPTION="Google's C++ argument parsing library"
-HOMEPAGE="https://code.google.com/p/gflags/"
+HOMEPAGE="http://gflags.github.io/gflags/"
 SRC_URI="https://github.com/gflags/gflags/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

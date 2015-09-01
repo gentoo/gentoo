@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit elisp-common eutils multilib multiprocessing python-single-r1 toolchain-funcs
 
 DESCRIPTION="The Mozc engine for IBus Framework"
-HOMEPAGE="https://code.google.com/p/mozc/"
+HOMEPAGE="https://github.com/google/mozc"
 
 PROTOBUF_VER="2.5.0"
 GMOCK_VER="1.6.0"

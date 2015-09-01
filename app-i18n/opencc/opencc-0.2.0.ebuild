@@ -7,7 +7,7 @@ EAPI=4
 inherit cmake-utils multilib
 
 DESCRIPTION="Libraries for Simplified-Traditional Chinese Conversion"
-HOMEPAGE="https://code.google.com/p/open-chinese-convert/"
+HOMEPAGE="https://github.com/BYVoid/OpenCC"
 SRC_URI="https://open-chinese-convert.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

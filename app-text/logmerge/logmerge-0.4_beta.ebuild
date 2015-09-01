@@ -6,7 +6,7 @@ EAPI="5"
 
 MY_PV="${PV/_/-}"
 DESCRIPTION="Merge multiple logs such that multilined entries appear in chronological order without breaks"
-HOMEPAGE="https://code.google.com/p/logmerge/"
+HOMEPAGE="https://github.com/ildar-shaimordanov/logmerge"
 SRC_URI="https://${PN}.googlecode.com/files/${PN}-${MY_PV}.zip"
 
 LICENSE="MIT"

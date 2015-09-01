@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Translit, Russian Traditional, Yawerty tables for IBus-Table"
-HOMEPAGE="https://code.google.com/p/ibus/"
+HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://ibus.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"

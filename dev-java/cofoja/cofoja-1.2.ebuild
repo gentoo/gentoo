@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Contracts for Java"
-HOMEPAGE="https://code.google.com/p/cofoja/"
+HOMEPAGE="https://github.com/nhatminhle/cofoja"
 SRC_URI="https://github.com/nhatminhle/${PN}/archive/v${PV}.zip"
 
 LICENSE="LGPL-2"

@@ -6,7 +6,7 @@ EAPI="5"
 inherit cmake-utils eutils multilib
 
 DESCRIPTION="Qt IBus library and Qt input method plugin"
-HOMEPAGE="https://code.google.com/p/ibus/"
+HOMEPAGE="https://github.com/ibus/ibus/wiki"
 SRC_URI="https://github.com/ibus/ibus-qt/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools-utils
 
 DESCRIPTION="Implementation of the EWF (SMART and EnCase) image format"
-HOMEPAGE="https://code.google.com/p/libewf/"
+HOMEPAGE="https://github.com/libyal/libewf"
 SRC_URI="https://googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/${P}.tar.gz"
 
 LICENSE="BSD"
