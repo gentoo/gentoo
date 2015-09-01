@@ -6,7 +6,7 @@ EAPI="5"
 inherit autotools eutils multilib elisp-common gnome2-utils
 
 DESCRIPTION="Simple, secure and flexible input method library"
-HOMEPAGE="https://code.google.com/p/uim/"
+HOMEPAGE="https://github.com/uim/uim/"
 SRC_URI="https://uim.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2 LGPL-2.1"
