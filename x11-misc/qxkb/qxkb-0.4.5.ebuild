@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Qt4-based keyboard layout switcher"
-HOMEPAGE="https://code.google.com/p/qxkb/"
+HOMEPAGE="https://github.com/disels/qxkb"
 SRC_URI="https://qxkb.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
