@@ -10214,7 +10214,7 @@ gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bott
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
 gnome-extra/cinnamon 2.4.7 2.6.8 2.6.9: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 2.4.2-r2 2.6.0: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-control-center 2.4.2-r2 2.4.2-r3 2.6.0 2.6.0-r1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.4.2 2.6.4 2.6.5: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.4.1 2.4.2 2.6.0: Cinnamon's library for the Desktop Menu fd.o specification
 gnome-extra/cinnamon-screensaver 2.4.2 2.6.3 2.6.4: Screensaver for Cinnamon
@@ -13292,7 +13292,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26 4.1.19 4.1.20 4.2.3: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.19 4.1.20-r1 4.2.3-r1: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
