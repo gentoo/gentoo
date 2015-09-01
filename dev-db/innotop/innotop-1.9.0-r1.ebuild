@@ -7,7 +7,7 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="innotop - A text-mode MySQL and InnoDB monitor like mytop, but with many more features"
-HOMEPAGE="https://code.google.com/p/innotop/"
+HOMEPAGE="https://github.com/innotop/innotop"
 SRC_URI="https://innotop.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
