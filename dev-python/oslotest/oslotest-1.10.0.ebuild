@@ -39,6 +39,11 @@ RDEPEND="
 	>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 "
 
+python_prepare() {
+	sed -i '/^hacking/d' test-requirements.txt
+	distutils-r1_python_prepare
+}
+
 python_compile_all() {
 	if use doc; then
 	 	esetup.py build_sphinx
