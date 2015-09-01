@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils apache-module
 
 DESCRIPTION="An Apache2 authentication DSO using external programs"
-HOMEPAGE="https://code.google.com/p/mod-auth-external/"
+HOMEPAGE="https://github.com/phokz/mod-auth-external"
 SRC_URI="https://mod-auth-external.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-1.1"
