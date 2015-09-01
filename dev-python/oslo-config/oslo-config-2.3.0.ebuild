@@ -5,36 +5,35 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
-inherit distutils-r1
+inherit distutils-r1 vcs-snapshot
 
-DESCRIPTION="OpenStack Client Configuation Library"
-HOMEPAGE="http://www.openstack.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+MY_PN=${PN/-/.}
+
+DESCRIPTION="Oslo Configuration API"
+HOMEPAGE="https://launchpad.net/oslo"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
-CDEPEND="dev-python/pbr[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-1.3[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
 	test? (
-		dev-python/extras[${PYTHON_USEDEP}]
-		>=dev-python/fixtures-0.3.14[${PYTHON_USEDEP}]
-		>=dev-python/oslotest-1.5.1[${PYTHON_USEDEP}]
-		<dev-python/oslotest-1.6.0[${PYTHON_USEDEP}]
-		>=dev-python/python-keystoneclient-1.1.0[${PYTHON_USEDEP}]
+		>=dev-python/fixtures-1.3.1[${PYTHON_USEDEP}]
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-		>=dev-python/testtools-0.9.36[${PYTHON_USEDEP}]
-		!~dev-python/testtools-1.2.0[${PYTHON_USEDEP}]
+		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
+		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-i18n-1.5.0[${PYTHON_USEDEP}]
+		>=dev-python/mock-1.2[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
-		<dev-python/oslo-sphinx-2.6.0[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
 		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
@@ -42,26 +41,19 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	>=dev-python/appdirs-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/netaddr-0.7.12[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/stevedore-1.5.0[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}"/test_get_all_clouds.patch
-	)
-
-	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
+	sed -i '/^hacking/d' test-requirements.txt
+	sed -i '/^argparse/d' requirements.txt
 	use doc && esetup.py build_sphinx
 }
 
 python_test() {
-	distutils_install_for_testing
-
-	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPTYHON}"
+	rm -rf .testrepository || die "could not remove '.testrepository' under ${EPTYHON}"
 
 	testr init || die "testr init failed under ${EPYTHON}"
 	testr run || die "testr run failed under ${EPYTHON}"
