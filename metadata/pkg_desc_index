@@ -14782,7 +14782,7 @@ sci-chemistry/mrbump 0.4.4: An automated scheme for Molecular Replacement
 sci-chemistry/msms-bin 2.6.1-r1: MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces
 sci-chemistry/mustang 3.2.1: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.9-r1 2.10: A powerful and highly parallelized molecular dynamics code
-sci-chemistry/nmrglue 0.4 0.5-r1: A module for working with NMR data in Python
+sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
 sci-chemistry/oasis 4.0-r3: A direct-method program for SAD/SIR phasing
 sci-chemistry/openbabel 2.3.2: Interconverts file formats used in molecular modeling
