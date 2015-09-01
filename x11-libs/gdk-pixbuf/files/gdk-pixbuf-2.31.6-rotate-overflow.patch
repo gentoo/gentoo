@@ -1,0 +1,27 @@
+From 4f68cb78a5277f169b9531e6998c00c7976594e4 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Mon, 24 Aug 2015 15:29:36 -0400
+Subject: [PATCH] Avoid integer overflow in gdk_pixbuf_rotate_simple
+
+Same as before: don't do ptr = base + y * rowstride if y and
+rowstride are integers.
+---
+ gdk-pixbuf/gdk-pixbuf-scale.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdk-pixbuf/gdk-pixbuf-scale.c b/gdk-pixbuf/gdk-pixbuf-scale.c
+index 4288c65..475126a 100644
+--- a/gdk-pixbuf/gdk-pixbuf-scale.c
++++ b/gdk-pixbuf/gdk-pixbuf-scale.c
+@@ -396,7 +396,7 @@ gdk_pixbuf_composite_color_simple (const GdkPixbuf *src,
+   return dest;
+ }
+ 
+-#define OFFSET(pb, x, y) ((x) * (pb)->n_channels + (y) * (pb)->rowstride)
++#define OFFSET(pb, x, y) ((x) * (pb)->n_channels + (gsize)(y) * (pb)->rowstride)
+ 
+ /**
+  * gdk_pixbuf_rotate_simple:
+-- 
+2.5.1
+

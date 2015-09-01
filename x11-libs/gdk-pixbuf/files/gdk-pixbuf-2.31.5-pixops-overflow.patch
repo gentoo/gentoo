@@ -1,0 +1,38 @@
+From 8dba67cb4f38d62a47757741ad41e3f245b4a32a Mon Sep 17 00:00:00 2001
+From: Benjamin Otte <otte@redhat.com>
+Date: Mon, 17 Aug 2015 18:52:47 +0200
+Subject: [PATCH] pixops: Fix oversight for CVE-2015-4491
+
+The n_x variable could be made large enough to overflow, too.
+
+Also included are various testcases for this vulnerability:
+- The original exploit (adapted for the testsuite)
+- Causing overflow by making both X and Y variables large
+- Causing overflow using only the X variable
+- Causing overflow using only the Y variable
+
+https://bugzilla.gnome.org/show_bug.cgi?id=752297
+---
+ gdk-pixbuf/pixops/pixops.c    |   6 ++-
+ 1 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/gdk-pixbuf/pixops/pixops.c b/gdk-pixbuf/pixops/pixops.c
+index ce51745..7f2cbff 100644
+--- a/gdk-pixbuf/pixops/pixops.c
++++ b/gdk-pixbuf/pixops/pixops.c
+@@ -1275,7 +1275,11 @@ make_filter_table (PixopsFilter *filter)
+   gsize n_weights;
+   int *weights;
+ 
+-  n_weights = SUBSAMPLE * SUBSAMPLE * n_x * n_y;
++  n_weights = SUBSAMPLE * SUBSAMPLE * n_x;
++  if (n_weights / (SUBSAMPLE * SUBSAMPLE) != n_x)
++    return NULL; /* overflow, bail */
++
++  n_weights *= n_y;
+   if (n_weights / (SUBSAMPLE * SUBSAMPLE * n_x) != n_y)
+     return NULL; /* overflow, bail */
+ 
+-- 
+2.5.1
+
