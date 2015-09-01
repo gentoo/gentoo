@@ -46,7 +46,7 @@ DEPEND="
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-		>=dev-python/dtt-0.4.0[${PYTHON_USEDEP}]
+		>=dev-python/ddt-0.4.0[${PYTHON_USEDEP}]
 		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	)"
 
