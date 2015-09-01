@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="This library provides a pure python interface for the Twitter API"
-HOMEPAGE="https://code.google.com/p/python-twitter/"
+HOMEPAGE="https://github.com/bear/python-twitter"
 SRC_URI="https://python-twitter.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -7,7 +7,7 @@ EAPI=4
 inherit toolchain-funcs eutils flag-o-matic
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
-HOMEPAGE="https://code.google.com/p/google-perftools/"
+HOMEPAGE="https://github.com/gperftools/gperftools"
 SRC_URI="https://google-perftools.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"

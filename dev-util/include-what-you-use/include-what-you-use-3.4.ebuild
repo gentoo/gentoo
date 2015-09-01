@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils cmake-utils flag-o-matic
 
 DESCRIPTION="find unused include directives in C/C++ programs"
-HOMEPAGE="https://code.google.com/p/include-what-you-use/"
+HOMEPAGE="https://github.com/include-what-you-use/include-what-you-use"
 # picked from google drive
 SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.src.tar.gz"
 

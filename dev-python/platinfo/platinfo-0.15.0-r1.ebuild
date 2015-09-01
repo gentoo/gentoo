@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Determines and returns consistent names for platforms"
-HOMEPAGE="https://code.google.com/p/platinfo/"
+HOMEPAGE="https://github.com/trentm/platinfo"
 SRC_URI="https://platinfo.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"
