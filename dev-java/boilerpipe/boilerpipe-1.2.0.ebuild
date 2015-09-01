@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Boilerplate Removal and Fulltext Extraction from HTML pages"
-HOMEPAGE="https://code.google.com/p/boilerpipe/"
+HOMEPAGE="https://github.com/kohlschutter/boilerpipe"
 SRC_URI="https://${PN}.googlecode.com/files/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
