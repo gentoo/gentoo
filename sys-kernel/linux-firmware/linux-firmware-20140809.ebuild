@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -59,7 +59,7 @@ RDEPEND="!savedconfig? (
 		!sys-firmware/iwl3160-ucode
 		!sys-firmware/iwl7260-ucode
 		!sys-firmware/iwl3160-7260-bt-ucode
-		!x11-drivers/radeon-ucode
+		!sys-firmware/radeon-ucode
 	)"
 #add anything else that collides to this
 
