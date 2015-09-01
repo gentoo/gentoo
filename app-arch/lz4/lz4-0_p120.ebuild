@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Extremely Fast Compression algorithm"
-HOMEPAGE="https://code.google.com/p/lz4/"
+HOMEPAGE="https://github.com/Cyan4973/lz4"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
