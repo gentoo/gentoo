@@ -5,9 +5,54 @@
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
+	<natural-name>PNMixer</natural-name>
+	<longdescription lang='en'>
+		PNMixer is a simple mixer application designed to run in your system
+		tray. It integrates nicely into desktop environments that don't have
+		a panel that supports applets, and therefore can't run a mixer applet.
+		In particular it's been used quite a lot with fbpanel and tint2, but
+		should run fine in any system tray.
+
+		PNMixer is designed to work on systems that use ALSA for sound
+		management. Any other sound driver like OSS or FFADO, or sound
+		server like PulseAudio or Jackd, are currently not supported
+		(patches welcome).
+
+		PNMixer is a fork of OBMixer with a number of additions.
+		These include:
+			* Volume adjustment with the scroll wheel
+			* Select which ALSA device and channel to use
+			* Detect disconnect from sound system and re-connect if requested
+			* Bind and use HotKeys for volume control
+			* Texual display of volume level in popup window
+			* Continous volume adjustment when dragging the slider (not just
+				when you let go)
+			* Draw a volume level onto system tray icon
+			* Use system icon theme for icons and use mute/low/medium/high
+				volume icons
+			* Configurable middle click action
+			* Preferences for:
+				- volume text display
+				- volume text position
+				- icon theme
+				- amount to adjust per scoll
+				- middle click action
+				- drawing of volume level on tray icon
+
+		Source and so on are at: https://github.com/nicklan/pnmixer
+	</longdescription>
 	<upstream>
-		<doc lang="en">https://github.com/nicklan/pnmixer/wiki</doc>
 		<bugs-to>https://github.com/nicklan/pnmixer/issues</bugs-to>
+		<changelog>https://github.com/nicklan/pnmixer/releases</changelog>
+		<doc lang="en">https://github.com/nicklan/pnmixer/wiki</doc>
 		<remote-id type="github">nicklan/pnmixer</remote-id>
+		<maintainer status='active'>
+			<email>hasufell@gentoo.org</email>
+			<name>Julian Ospald</name>
+		</maintainer>
+		<maintainer status='active'>
+			<email>elboulangero@gmail.com</email>
+			<name>El Boulangero</name>
+		</maintainer>
 	</upstream>
 </pkgmetadata>

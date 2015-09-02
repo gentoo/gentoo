@@ -3,9 +3,10 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 MY_P="PythonDaap-${PV}"
 
@@ -18,12 +19,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-DEPEND=""
-RDEPEND=""
-
 S="${WORKDIR}/${MY_P}"
 
-CFLAGS="${CFLAGS} -fno-strict-aliasing"
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+	append-cflags -fno-strict-aliasing
+}
 
 python_install_all() {
 	use examples && local EXAMPLES=( examples/. )

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<herd>python</herd>
-<maintainer>
-	<email>andreis.vinogradovs@gmail.com</email>
-</maintainer>
-<maintainer>
-	<email>maksbotan@gentoo.org</email>
-	<name>Maxim Koltsov</name>
-</maintainer>
-<longdescription>
+	<herd>proxy-maintainers</herd>
+	<herd>python</herd>
+	<maintainer>
+		<email>andreis.vinogradovs@gmail.com</email>
+	</maintainer>
+	<maintainer>
+		<email>maksbotan@gentoo.org</email>
+		<name>Maxim Koltsov</name>
+	</maintainer>
+	<longdescription>
 	This package provides Python bindings for Network Security Services (NSS)
 	and the Netscape Portable Runtime (NSPR)
-</longdescription> 
+</longdescription>
 </pkgmetadata>
