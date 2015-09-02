@@ -7525,7 +7525,9 @@ dev-python/pyte 0.4.9: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.1 2.7.2: py.test: simple powerful testing with Python
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-cov 1.6 1.8.1: py.test plugin for coverage reporting
+dev-python/pytest-django 2.8.0: A Django plugin for py.test
 dev-python/pytest-localserver 0.3.4: Py.test plugin to test server connections locally
+dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-runner 2.1.2 2.5.1 2.6.1 2.6.2: Adds support for tests durring installation of setup.py files
 dev-python/pytest-timeout 0.4: py.test plugin to abort hanging tests
 dev-python/python-augeas 0.4.1 0.4.2_pre131218 0.5.0: Python bindings for Augeas
