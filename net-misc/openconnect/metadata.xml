@@ -8,7 +8,7 @@
 	<maintainer>
 		<email>mattsch@gmail.com</email>
 		<name>Matthew Schultz</name>
-		<description>Proxied maintainer. Assign bugs to him.</description>
+		<description>Proxied maintainer. Copy on bugs.</description>
 	</maintainer>
 	<use>
 		<flag name='gssapi'>Build GSSAPI support.</flag>
