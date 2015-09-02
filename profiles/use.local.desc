@@ -1679,21 +1679,21 @@ dev-java/gnu-classpath:gtk - Build with Gtk+ AWT peers
 dev-java/gnu-classpath:qt4 - Build with Qt4 AWT peers
 dev-java/gnu-classpath:xml - Build with native XML backend
 dev-java/ibm-jdk-bin:javacomm - Enable Java Communications API support
-dev-java/icedtea:X - Make X buildtime-only depenency.
-dev-java/icedtea:alsa - Make alsa buildtime-only dependency.
-dev-java/icedtea:cacao - Build CACAO virtual machine on platforms supporting HotSpot. (experimental)
-dev-java/icedtea:cups - Make CUPS build-only dependency.
+dev-java/icedtea:awt - Install non-headless AWT libraries, needed by some GUIs (used to be X flag)
+dev-java/icedtea:cacao - Use the CACAO virtual machine rather than HotSpot.
 dev-java/icedtea:infinality - Enable better font rendering using fontconfig.
 dev-java/icedtea:jamvm - Use the JamVM virtual machine rather than HotSpot.
 dev-java/icedtea:jbootstrap - If possible, recompile the final IcedTea executables with itself.
 dev-java/icedtea:nsplugin - Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.
 dev-java/icedtea:nss - Enable NSS security provider support.
-dev-java/icedtea:pax_kernel - For building when running a PaX enabled kernel.
+dev-java/icedtea:pax_kernel - Apply patch needed for pax enabled kernels.
+dev-java/icedtea:sctp - Build the SCTP NIO channel implementation against lksctp
 dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
 dev-java/icedtea:sunec - Build the SunEC provider against system NSS
 dev-java/icedtea:systemtap - Enable SystemTap probes in HotSpot.
 dev-java/icedtea:webstart - Enable Web Start support (via NetX).
 dev-java/icedtea:zero - Enable Zero assembler port (usually for non-HotSpot architectures)
+dev-java/icedtea-bin:awt - Install non-headless AWT libraries, needed by some GUIs (used to be X flag)
 dev-java/icedtea-bin:webstart - Provide javaws command through symlink to icedtea-web
 dev-java/icedtea-web:icedtea7 - Build icedtea-7 support in addition to icedtea-6 support. Requires icedtea{-bin}-7
 dev-java/icedtea-web:javascript - Enable support for using proxy auto config (PAC) files.
