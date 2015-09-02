@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm ~ia64 ~mips ppc ppc64 x86"
 IUSE="hybrid idea ipv6 kerberos ldap nat pam rc5 readline selinux stats"
 
 CDEPEND="
