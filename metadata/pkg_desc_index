@@ -17701,7 +17701,7 @@ x11-plugins/desklet-justanicon 0.2: A configurable desktop icon
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/echievements 2: Show enlightenment echievements
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
-x11-plugins/fsviewer 0.2.6: A file system viewer for Window Maker
+x11-plugins/fsviewer 0.2.6 0.2.6-r1: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2: Cpu load flames for GKrellM 2
 x11-plugins/gkrellflynn 0.8: A funny GKrellM2 load monitor (for Doom(tm) fans)
@@ -17754,7 +17754,7 @@ x11-plugins/pidgin-opensteamworks 1.4 1.5 1.5.1 1.6-r1: Steam protocol plugin fo
 x11-plugins/pidgin-otr 3.2.1 4.0.1: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
-x11-plugins/pidgin-sipe 1.18.0-r1 1.19.0 1.19.1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
+x11-plugins/pidgin-sipe 1.18.0-r1 1.19.0 1.19.1 1.20.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/prpltwtr 0.12.0: libpurple twitter protocol
