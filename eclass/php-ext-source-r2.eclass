@@ -129,10 +129,10 @@ php-ext-source-r2_src_prepare() {
 # Runs phpize and autotools in addition to the standard src_unpack
 php-ext-source-r2_phpize() {
 	if [[ "${PHP_EXT_SKIP_PHPIZE}" != 'yes' ]] ; then
-		# Create configure out of config.m4
-		# I wish I could run this to solve #329071, but I cannot
-		#autotools_run_tool ${PHPIZE}
-		${PHPIZE}
+		# Create configure out of config.m4. We use autotools_run_tool
+		# to avoid some warnings about WANT_AUTOCONF and
+		# WANT_AUTOMAKE (see bugs #329071 and #549268).
+		autotools_run_tool ${PHPIZE}
 		# force run of libtoolize and regeneration of related autotools
 		# files (bug 220519)
 		rm aclocal.m4
