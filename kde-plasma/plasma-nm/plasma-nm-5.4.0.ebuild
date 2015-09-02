@@ -50,7 +50,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	!kde-base/plasma-nm
+	!kde-misc/plasma-nm
 "
 
 src_configure() {
