@@ -45,19 +45,10 @@ DEPEND="${DEPEND}
 	java? ( >=virtual/jdk-1.6 )
 	nls? ( sys-devel/gettext )"
 
-tun_tap_check() {
-	ebegin "Checking for TUN/TAP support"
-	if { ! linux_chkconfig_present TUN; }; then
-		eerror "Please enable TUN/TAP support in your kernel config, found at:"
-		eerror
-		eerror "  Device Drivers  --->"
-		eerror "    [*] Network device support  --->"
-		eerror "      <*>   Universal TUN/TAP device driver support"
-		eerror
-		eerror "and recompile your kernel ..."
-		die "no CONFIG_TUN support detected!"
-	fi
-	eend $?
+CONFIG_CHECK="~TUN"
+
+pkg_pretend() {
+	check_extra_config
 }
 
 pkg_setup() {
@@ -65,19 +56,6 @@ pkg_setup() {
 
 	if use doc; then
 		python-any-r1_pkg_setup
-	fi
-
-	if use kernel_linux; then
-		get_version
-		if linux_config_exists; then
-			tun_tap_check
-		else
-			ewarn "Was unable to determine your kernel .config"
-			ewarn "Please note that OpenConnect requires CONFIG_TUN to be set in your"
-			ewarn "kernel .config, Without it, it will not work correctly."
-			# We don't die here, so it's possible to compile this package without
-			# kernel sources available. Required for cross-compilation.
-		fi
 	fi
 }
 

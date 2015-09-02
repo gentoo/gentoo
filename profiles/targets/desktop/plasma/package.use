@@ -49,6 +49,7 @@ kde-base/kactivities minimal
 kde-base/kde-meta -kdepim minimal
 kde-base/systemsettings -handbook
 net-libs/libkpeople minimal
+net-p2p/ktorrent -plasma
 sys-auth/polkit-kde-agent minimal
 
 # Required by app-office/libreoffice
