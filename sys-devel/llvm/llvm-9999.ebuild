@@ -155,6 +155,8 @@ src_unpack() {
 src_prepare() {
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
+	# Fix libdir for ocaml bindings install, bug #559134
+	epatch "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-multilib.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
@@ -189,6 +191,11 @@ src_prepare() {
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
 		epatch "${FILESDIR}"/cmake/clang-0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+
+		# Fix WX sections, bug #421527
+		find "${S}"/projects/compiler-rt/lib/builtins -type f -name \*.S -exec sed \
+			 -e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
+			 -i {} \; || die
 
 		# Workaround bug #553416 until upstream fixes it
 		epatch "${FILESDIR}"/clang-3.7-strip_doc_refs.patch
