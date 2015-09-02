@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Need to let configure know where to find stddef.h
 #EXTRA_CONFGCC="${WORKDIR}/usr/lib/include/"
 
+EAPI=5
 inherit gnatbuild
 
 DESCRIPTION="GNAT Ada Compiler - gcc version"
@@ -28,9 +29,9 @@ SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/gcc-${PV}/gcc-core-${PV}.tar.bz2
 KEYWORDS="amd64 ~ppc x86"
 
 # starting with 4.3.0 gnat needs these libs
-DEPEND=">=dev-libs/mpfr-2.3.1
+DEPEND=">=dev-libs/mpfr-2.3.1:*
 	<sys-apps/texinfo-5.1
-	>=dev-libs/gmp-4.2.2"
+	>=dev-libs/gmp-4.2.2:*"
 RDEPEND="${DEPEND}"
 
 #QA_EXECSTACK="${BINPATH:1}/gnatls ${BINPATH:1}/gnatbind ${BINPATH:1}/gnatmake
