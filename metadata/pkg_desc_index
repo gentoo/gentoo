@@ -16457,7 +16457,7 @@ sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE S
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6 3.3.6-r1: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libstdc++-v3-bin 3.3.6: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
-sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3: Compatibility package for old termcap-based programs
+sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libtrash 3.2-r1: Provides a trash can by intercepting certain calls to glibc
 sys-libs/libudev-compat 186: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 0.99-r1 1.0.1 1.0.1-r1 1.1: Portable and efficient API to determine the call-chain of a program
