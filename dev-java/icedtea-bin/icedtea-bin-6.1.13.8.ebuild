@@ -26,63 +26,63 @@ LICENSE="GPL-2-with-linking-exception"
 SLOT="6"
 KEYWORDS="-* ~amd64 ~ppc ~x86"
 
-IUSE="+X +alsa cjk +cups doc examples nsplugin selinux source webstart"
-REQUIRED_USE="nsplugin? ( X )"
-RESTRICT="strip"
+IUSE="+awt +alsa cjk +cups doc examples +gtk nsplugin selinux source webstart"
+REQUIRED_USE="gtk? ( awt ) nsplugin? ( awt )"
 
-# 423161
+RESTRICT="preserve-libs strip"
 QA_PREBUILT="opt/.*"
 
-ALSA_COMMON_DEP="
-	>=media-libs/alsa-lib-1.0"
-CUPS_COMMON_DEP="
-	>=net-print/cups-2.0"
-X_COMMON_DEP="
+RDEPEND="media-fonts/dejavu
 	>=media-libs/freetype-2.5:2
-	>=x11-libs/gtk+-2.24:2
-	>=x11-libs/libX11-1.6
-	>=x11-libs/libXext-1.3
-	>=x11-libs/libXi-1.7
-	>=x11-libs/libXrender-0.9.4
-	>=x11-libs/libXtst-1.2"
-
-COMMON_DEP="
-	>=media-libs/giflib-4.1.6-r1
 	>=media-libs/lcms-2.6:2
-	media-libs/libpng:0/16
 	>=sys-devel/gcc-4.8.4
 	>=sys-libs/glibc-2.20
 	>=sys-libs/zlib-1.2.3-r1
-	virtual/jpeg:62"
-
-RDEPEND="${COMMON_DEP}
-	X? (
-		${X_COMMON_DEP}
-		media-fonts/dejavu
-		cjk? (
-			media-fonts/arphicfonts
-			media-fonts/baekmuk-fonts
-			media-fonts/lklug
-			media-fonts/lohit-fonts
-			media-fonts/sazanami
-		)
+	virtual/jpeg:62
+	alsa? ( >=media-libs/alsa-lib-1.0 )
+	awt? (
+		>=media-libs/giflib-4.1.6-r1
+		media-libs/libpng:0/16
+		>=x11-libs/libX11-1.6
+		>=x11-libs/libXext-1.3
+		>=x11-libs/libXi-1.7
+		>=x11-libs/libXrender-0.9.4
+		>=x11-libs/libXtst-1.2
 	)
-	alsa? ( ${ALSA_COMMON_DEP} )
-	cups? ( ${CUPS_COMMON_DEP} )
+	cjk? (
+		media-fonts/arphicfonts
+		media-fonts/baekmuk-fonts
+		media-fonts/lklug
+		media-fonts/lohit-fonts
+		media-fonts/sazanami
+	)
+	cups? ( >=net-print/cups-2.0 )
+	gtk? ( >=x11-libs/gtk+-2.24:2 )
 	selinux? ( sec-policy/selinux-java )"
 
 PDEPEND="webstart? ( dev-java/icedtea-web:0 )
 	nsplugin? ( dev-java/icedtea-web:0[nsplugin] )"
 
 src_prepare() {
-	# Ensures HeadlessGraphicsEnvironment is used.
-	if ! use X; then
-		rm -r jre/lib/$(get_system_arch)/xawt || die
+	if ! use alsa; then
+		rm -v jre/lib/$(get_system_arch)/libjsoundalsa.* || die
 	fi
 
-	# Reprefixify because prefix may be different.
-	sed -i 's:=/:=@GENTOO_PORTAGE_EPREFIX@/:' jre/lib/fontconfig.Gentoo.properties || die
-	eprefixify jre/lib/fontconfig.Gentoo.properties
+	if ! use awt; then
+		rm -vr jre/lib/$(get_system_arch)/{xawt,libsplashscreen.*} \
+		   {,jre/}bin/policytool bin/appletviewer || die
+	fi
+
+	if [[ -n "${EPREFIX}" ]]; then
+		# The binaries are built on a non-prefixed system. The binary
+		# "bfc" fontconfig therefore must be replaced with a plain text
+		# "properties" fontconfig. The "src" file that accompanies the
+		# "bfc" file can be used as a template.
+		rm -v jre/lib/fontconfig.Gentoo.bfc || die
+		mv -v jre/lib/fontconfig.Gentoo.properties{.src,} || die
+		sed -i 's:=/:=@GENTOO_PORTAGE_EPREFIX@/:' jre/lib/fontconfig.Gentoo.properties || die
+		eprefixify jre/lib/fontconfig.Gentoo.properties
+	fi
 }
 
 src_install() {
