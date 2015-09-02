@@ -17,7 +17,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
-VIDEO_CARDS="exynos freedreno intel nouveau omap radeon tegra vmware"
+VIDEO_CARDS="amdgpu exynos freedreno intel nouveau omap radeon tegra vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -44,13 +44,13 @@ src_configure() {
 		# Udev is only used by tests now.
 		--disable-udev
 		--disable-cairo-tests
+		$(use_enable video_cards_amdgpu amdgpu)
 		$(use_enable video_cards_exynos exynos-experimental-api)
 		$(use_enable video_cards_freedreno freedreno)
 		$(use_enable video_cards_intel intel)
 		$(use_enable video_cards_nouveau nouveau)
 		$(use_enable video_cards_omap omap-experimental-api)
 		$(use_enable video_cards_radeon radeon)
-		$(use_enable video_cards_radeon amdgpu)
 		$(use_enable video_cards_tegra tegra-experimental-api)
 		$(use_enable video_cards_vmware vmwgfx)
 		$(use_enable libkms)
