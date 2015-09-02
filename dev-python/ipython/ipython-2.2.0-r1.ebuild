@@ -24,7 +24,6 @@ CDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/simplegeneric[${PYTHON_USEDEP}]
 	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
@@ -53,6 +52,7 @@ RDEPEND="${CDEPEND}
 		dev-python/pygments[${PYTHON_USEDEP}]
 		>=dev-python/pyzmq-2.1.11[${PYTHON_USEDEP}] )"
 DEPEND="${CDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PY2_USEDEP}]
