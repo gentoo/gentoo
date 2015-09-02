@@ -16175,6 +16175,7 @@ sys-devel/sparse 0.4.3 0.4.4 0.5.0 9999: C semantic parser
 sys-devel/systemd-m4 9999: autoconf macros for packages using systemd
 sys-devel/ucpp 1.3.4 9999: A quick and light preprocessor, but anyway fully compliant to C99
 sys-firmware/alsa-firmware 1.0.28 1.0.29: Advanced Linux Sound Architecture firmware
+sys-firmware/amdgpu-ucode 20150803: Microcode for V.Islands Radeon GPUs and APUs
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
@@ -16953,9 +16954,9 @@ www-client/epiphany 3.14.2 3.16.2 3.16.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.1.1 38.2.0 38.2.1 40.0.3: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 38.2.1 40.0.3: Firefox Web Browser
-www-client/google-chrome 44.0.2403.157_p1: The web browser from Google
+www-client/google-chrome 45.0.2454.85_p1: The web browser from Google
 www-client/google-chrome-beta 45.0.2454.78_p1: The web browser from Google
-www-client/google-chrome-unstable 46.0.2490.6_p1: The web browser from Google
+www-client/google-chrome-unstable 47.0.2498.0_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17010,7 +17011,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.508: Adobe Flash Player
-www-plugins/chrome-binary-plugins 44.0.2403.157_p1 45.0.2454.78_beta1 46.0.2490.6_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 45.0.2454.78_beta1 45.0.2454.85_p1 47.0.2498.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
