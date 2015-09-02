@@ -6,6 +6,7 @@
 
 # Keep it sorted.
 
+amdgpu - VIDEO_CARDS setting to build driver for AMDGPU video cards
 apm - VIDEO_CARDS setting to build driver for apm video cards
 ark - VIDEO_CARDS setting to build driver for ark video cards
 ast - VIDEO_CARDS setting to build driver for ASpeedTech video cards
