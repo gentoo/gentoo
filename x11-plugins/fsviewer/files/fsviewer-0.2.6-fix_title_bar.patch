@@ -1,0 +1,62 @@
+diff -Naur fsviewer-app-0.2.6.orig/src/FSFileView.c fsviewer-app-0.2.6/src/FSFileView.c
+--- fsviewer-app-0.2.6.orig/src/FSFileView.c	2007-10-14 21:06:02.000000000 +0200
++++ fsviewer-app-0.2.6/src/FSFileView.c	2015-09-02 21:18:39.574691303 +0200
+@@ -430,7 +430,7 @@
+ 				   WMResizableWindowMask);
+ 	attributes.window_level = WMNormalWindowLevel;
+ 	attributes.extra_flags = GSFullKeyboardEventsFlag;
+-	attributes.flags = (GSWindowStyleAttr | GSWindowLevelAttr |
++	attributes.flags = (/*GSWindowStyleAttr |*/ GSWindowLevelAttr |
+ 			    GSExtraFlagsAttr);
+ 	WMSetWindowAttributes(fView->dpy, WMWidgetXID(fView->fileView),
+ 			      &attributes);
+diff -Naur fsviewer-app-0.2.6.orig/src/FSFinder.c fsviewer-app-0.2.6/src/FSFinder.c
+--- fsviewer-app-0.2.6.orig/src/FSFinder.c	2006-07-23 09:24:16.000000000 +0200
++++ fsviewer-app-0.2.6/src/FSFinder.c	2015-09-02 21:18:39.574691303 +0200
+@@ -144,7 +144,7 @@
+ 			       WMResizableWindowMask);
+     attributes.window_level = WMNormalWindowLevel;
+     attributes.extra_flags = GSFullKeyboardEventsFlag;
+-    attributes.flags = (GSWindowStyleAttr | GSWindowLevelAttr |
++    attributes.flags = (/*GSWindowStyleAttr |*/ GSWindowLevelAttr |
+ 			GSExtraFlagsAttr);
+     WMSetWindowAttributes(finder->dpy, WMWidgetXID(finder->win),
+ 			  &attributes);
+diff -Naur fsviewer-app-0.2.6.orig/src/FSViewer.c fsviewer-app-0.2.6/src/FSViewer.c
+--- fsviewer-app-0.2.6.orig/src/FSViewer.c	2007-10-14 17:29:04.000000000 +0200
++++ fsviewer-app-0.2.6/src/FSViewer.c	2015-09-02 21:18:39.574691303 +0200
+@@ -161,7 +161,7 @@
+     attributes.window_level = WMFloatingWindowLevel;
+     attributes.extra_flags = GSFullKeyboardEventsFlag;
+     attributes.flags =
+-	(GSWindowStyleAttr | GSWindowLevelAttr | GSExtraFlagsAttr);
++	(/*GSWindowStyleAttr |*/ GSWindowLevelAttr | GSExtraFlagsAttr);
+     WMSetWindowAttributes(fsViewer->dpy, window, &attributes);
+     WMAppAddWindow(fsViewer->wmContext, window);
+ 
+@@ -189,7 +189,7 @@
+     attributes.window_level = WMNormalWindowLevel;
+     attributes.extra_flags = GSFullKeyboardEventsFlag;
+     attributes.flags =
+-	(GSWindowStyleAttr | GSWindowLevelAttr | GSExtraFlagsAttr);
++	(/*GSWindowStyleAttr |*/ GSWindowLevelAttr | GSExtraFlagsAttr);
+     WMSetWindowAttributes(fsViewer->dpy, window, &attributes);
+     WMAppAddWindow(fsViewer->wmContext, window);
+ }
+@@ -216,7 +216,7 @@
+     attributes.window_level = WMFloatingWindowLevel;
+     attributes.extra_flags = GSFullKeyboardEventsFlag;
+     attributes.flags =
+-	(GSWindowStyleAttr | GSWindowLevelAttr | GSExtraFlagsAttr);
++	(/*GSWindowStyleAttr |*/ GSWindowLevelAttr | GSExtraFlagsAttr);
+     WMSetWindowAttributes(fsViewer->dpy, window, &attributes);
+     WMAppAddWindow(fsViewer->wmContext, window);
+ }
+@@ -476,6 +476,7 @@
+       bindtextdomain("FSViewer", getenv("NLSPATH"));
+     else
+       bindtextdomain("FSViewer", LOCALEDIR);
++      bind_textdomain_codeset("FSViewer", "UTF-8");
+     textdomain("FSViewer");
+ 
+     if (!XSupportsLocale()) {
