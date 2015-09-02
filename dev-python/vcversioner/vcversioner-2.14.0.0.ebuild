@@ -4,15 +4,27 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="Use version control tags to discover version numbers"
-HOMEPAGE="https://github.com/habnabit/vcversioner"
+HOMEPAGE="https://github.com/habnabit/vcversioner https://pypi.python.org/pypi/vcversioner"
 SRC_URI="mirror://pypi/v/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
+
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	"
+
+# not included
+RESTRICT=test
+
+python_test() {
+	py.test || die
+}
