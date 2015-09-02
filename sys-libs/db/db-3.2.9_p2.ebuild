@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,12 +33,12 @@ IUSE="doc"
 DEPEND="${RDEPEND}
 	=sys-libs/db-1.85*"
 
-# This doesn't build without exceptions
-export CXXFLAGS="${CXXFLAGS/-fno-exceptions/-fexceptions}"
-
 S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
+	# This doesn't build without exceptions
+	export CXXFLAGS="${CXXFLAGS/-fno-exceptions/-fexceptions}"
+
 	unpack "${MY_P}".tar.gz
 
 	chmod -R ug+w *
