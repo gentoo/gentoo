@@ -7481,7 +7481,7 @@ dev-python/pypgsql 2.5.1 2.5.1-r1: Python Interface to PostgreSQL
 dev-python/pyphen 0.8 0.9.1: Python module for hyphenation using hunspell dictionaries
 dev-python/pyplusplus 1.0.0-r1 1.0.0_p20131206 9999: Object-oriented framework for creating a code generator for Boost.Python library
 dev-python/pyprof2calltree 1.3.1 1.3.2: convert python profile data to kcachegrind calltree form
-dev-python/pyproj 1.9.3-r1 1.9.4: Python interface to PROJ.4 library
+dev-python/pyproj 1.9.4: Python interface to PROJ.4 library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 2.4.0 2.5.1 2.6.0: A fast, compliant alternative implementation of the Python language
@@ -7582,7 +7582,7 @@ dev-python/python-musicbrainz-ngs 0.4: This library implements webservice bindin
 dev-python/python-nbxmpp 0.5.1 0.5.2 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0: A client for the OpenStack Quantum API
 dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0: A client for the OpenStack Nova API
-dev-python/python-nss 0.12-r1 0.16.0: Python bindings for Network Security Services (NSS)
+dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
 dev-python/python-openstackclient 1.0.4: A client for the OpenStack APIs
