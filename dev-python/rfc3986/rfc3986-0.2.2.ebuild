@@ -4,15 +4,15 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3)
 
 inherit distutils-r1
 
-DESCRIPTION="Use version control tags to discover version numbers"
-HOMEPAGE="https://github.com/habnabit/vcversioner https://pypi.python.org/pypi/vcversioner"
-SRC_URI="mirror://pypi/v/${PN}/${P}.tar.gz"
+DESCRIPTION="Validating URI References per RFC 3986"
+HOMEPAGE="http://tools.ietf.org/html/rfc3986 https://github.com/sigmavirus24/rfc3986 https://rfc3986.rtfd.org"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
@@ -20,10 +20,8 @@ IUSE="test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-	"
-
-# not included
-RESTRICT=test
+"
+RDEPEND=""
 
 python_test() {
 	py.test || die
