@@ -26,7 +26,7 @@ CDEPEND="
 	memcache? ( dev-libs/libmemcache )
 	mysql?    ( >=virtual/mysql-4.0 )
 	pcre?     ( >=dev-libs/libpcre-3.1 )
-	php?      ( dev-lang/php:=[cgi] )
+	php?      ( dev-lang/php:*[cgi] )
 	rrdtool?  ( net-analyzer/rrdtool )
 	ssl?    ( >=dev-libs/openssl-0.9.7:=[kerberos?] )
 	webdav? (
