@@ -39,9 +39,9 @@ CDEPEND="dev-java/ant-core:0
 	java-virtuals/servlet-api:3.0
 	readline? ( >=dev-java/libreadline-java-0.8.0:0 )"
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.7"
+	>=virtual/jre-1.6"
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.7
+	>=virtual/jdk-1.6
 	app-arch/unzip
 	test? (
 		dev-java/junit:4
