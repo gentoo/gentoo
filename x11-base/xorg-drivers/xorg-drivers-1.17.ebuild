@@ -32,6 +32,7 @@ IUSE_INPUT_DEVICES="
 	input_devices_wacom
 "
 IUSE_VIDEO_CARDS="
+	video_cards_amdgpu
 	video_cards_apm
 	video_cards_ast
 	video_cards_chips
@@ -104,6 +105,7 @@ PDEPEND="
 	input_devices_synaptics?   ( x11-drivers/xf86-input-synaptics )
 	input_devices_wacom?       ( x11-drivers/xf86-input-wacom )
 
+	video_cards_amdgpu?        ( x11-drivers/xf86-video-amdgpu )
 	video_cards_apm?           ( x11-drivers/xf86-video-apm )
 	video_cards_ast?           ( x11-drivers/xf86-video-ast )
 	video_cards_chips?         ( x11-drivers/xf86-video-chips )
