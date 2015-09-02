@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-inherit autotools-utils
+inherit autotools-utils toolchain-funcs
 
 MYP=${P/-20/-snapshot-}
 
@@ -17,16 +17,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
-RDEPEND="sci-libs/gerris
+RDEPEND="
+	sci-libs/gerris
 	media-libs/ftgl
 	media-libs/mesa[osmesa]
 	x11-libs/gtk+:2
 	>=x11-libs/gtkglext-1.0.6
-	x11-libs/startup-notification"
-
+	x11-libs/startup-notification
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MYP}"
 
-export LIBS=-lGL
+src_prepare() {
+	export LIBS="$($(tc-getPKG_CONFIG) --libs gl)"
+	autotools-utils_src_prepare
+}

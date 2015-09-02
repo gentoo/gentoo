@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit toolchain-funcs
 
 DESCRIPTION="Extracts files from Microsoft cabinet archive files"
@@ -16,17 +17,19 @@ IUSE="extras"
 
 RDEPEND="extras? ( dev-lang/perl )"
 
-# the code attempts to set up a fnmatch replacement, but then fails to code
-# it properly leading to undefined references to rpl_fnmatch().  This may be
-# removed in the future if building still works by setting "yes" to "no".
-export ac_cv_func_fnmatch_works=yes
+src_prepare() {
+	# the code attempts to set up a fnmatch replacement, but then fails to code
+	# it properly leading to undefined references to rpl_fnmatch().  This may be
+	# removed in the future if building still works by setting "yes" to "no".
+	export ac_cv_func_fnmatch_works=yes
+}
 
 src_compile() {
 	emake AR="$(tc-getAR)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO doc/magic
 	dohtml doc/wince_cab_format.html
 	if use extras; then

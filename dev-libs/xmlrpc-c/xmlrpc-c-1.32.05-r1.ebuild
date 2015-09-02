@@ -42,14 +42,14 @@ pkg_setup() {
 	use curl || ewarn "Curl support disabled: No client library will be built"
 }
 
-#Bug 214137: We need to filter this.
-unset SRCDIR
-
-# Bug 255440
-export LC_ALL=C
-export LANG=C
-
 src_prepare() {
+	#Bug 214137: We need to filter this.
+	unset SRCDIR
+
+	# Bug 255440
+	export LC_ALL=C
+	export LANG=C
+
 	epatch "${FILESDIR}"/${PN}-1.32.05-Wimplicit.patch
 	sed -i \
 		-e "/CFLAGS_COMMON/s|-g -O3$||" \
