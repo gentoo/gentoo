@@ -179,6 +179,9 @@ start() {
 	[ ! -e "${netstatefile}" ] && touch "${netstatefile}"
 	[ ! -e "${gueststatefile}" ] && touch "${gueststatefile}"
 
+	# if the user didn't want to start any guests up then respect their wish
+	[ "x${LIBVIRT_START}" = "xno" ] && return 0
+
 	# start networks
 	ebegin "Starting libvirt networks"
 	while read -r line

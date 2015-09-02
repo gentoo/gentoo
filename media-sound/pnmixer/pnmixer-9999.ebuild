@@ -5,7 +5,7 @@
 EAPI=5
 
 WANT_LIBTOOL=none
-inherit autotools eutils gnome2-utils git-2
+inherit autotools eutils gnome2-utils git-r3
 
 DESCRIPTION="Volume mixer for the system tray"
 HOMEPAGE="https://github.com/nicklan/pnmixer"
@@ -24,7 +24,7 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libX11
 	libnotify? ( x11-libs/libnotify )"
 DEPEND="${RDEPEND}
-	sys-devel/gettext
+	dev-util/intltool
 	virtual/pkgconfig"
 
 src_prepare() {

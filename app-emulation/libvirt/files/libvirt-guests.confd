@@ -39,6 +39,15 @@
 #LIBVIRT_MAXWAIT="500"
 
 
+# LIBVIRT_START
+# If this value is set to 'no', then guests and networks that were shutdown
+# by this script when it was stopped will not be started when it is started
+# back up.
+# Valid values are yes or no
+
+#LIBVIRT_START="yes"
+
+
 # LIBVIRT_IGNORE_AUTOSTART
 # If the VM is marked for autostart in its XML configuration then we won't
 # save its start when the init script is stopped. The result is that when
