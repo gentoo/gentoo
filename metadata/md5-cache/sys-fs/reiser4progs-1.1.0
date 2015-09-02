@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=!static? ( ~sys-libs/libaal-1.0.6 readline? ( sys-libs/readline ) ) static-libs? ( ~sys-libs/libaal-1.0.6[static-libs(+)] ) static? ( ~sys-libs/libaal-1.0.6[static-libs(+)] readline? ( sys-libs/readline[static-libs(+)] ) )
+DESCRIPTION=reiser4progs: mkfs, fsck, etc...
+EAPI=4
+HOMEPAGE=https://sourceforge.net/projects/reiser4/
+IUSE=debug readline static static-libs
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 -sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( ~sys-libs/libaal-1.0.6 readline? ( sys-libs/readline ) ) static-libs? ( ~sys-libs/libaal-1.0.6[static-libs(+)] )
+SLOT=0
+SRC_URI=mirror://sourceforge/reiser4/reiser4progs-1.1.0.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=0849e3d6f4861fa7082e982c1412ccb9
