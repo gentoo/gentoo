@@ -15,7 +15,7 @@ SRC_URI="https://openpgm.googlecode.com/files/libpgm-${PV}~dfsg.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ppc ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ~ppc ppc64 ~x86 ~x86-fbsd"
 IUSE="static-libs"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
