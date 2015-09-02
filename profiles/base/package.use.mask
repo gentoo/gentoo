@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (02 Sep 2015)
+# x11-drivers/xf86-video-amdgpu is not keyworded on most arches
+x11-base/xorg-drivers video_cards_amdgpu
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Sep 2015)
 # Currently broken upstream. We still hope it will get fixed.
 app-office/libreoffice telepathy

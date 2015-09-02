@@ -155,6 +155,7 @@ video_cards_ilo
 # vmware wasn't added with mesa-8.0, but it should still be masked
 video_cards_vmware
 # llvm is not keyworded
+video_cards_amdgpu
 video_cards_radeonsi
 
 # dspam and dspam-web use this one

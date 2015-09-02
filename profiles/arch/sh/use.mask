@@ -135,6 +135,7 @@ video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
 # Mask more VIDEO_CARDs added with mesa-8.0
+video_cards_amdgpu
 video_cards_r100
 video_cards_r200
 video_cards_r300
