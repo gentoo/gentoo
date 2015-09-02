@@ -14,7 +14,7 @@ HOMEPAGE="http://icedtea.classpath.org"
 SRC_URI="doc? ( ${dist}/${PN}-doc-${TARBALL_VERSION}.tar.xz )
 	source? ( ${dist}/${PN}-src-${TARBALL_VERSION}.tar.xz )"
 
-for arch in amd64 arm ppc x86; do
+for arch in ppc; do
 	SRC_URI+="
 		${arch}? (
 			${dist}/${PN}-core-${TARBALL_VERSION}-${arch}.tar.xz
@@ -24,62 +24,51 @@ done
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="7"
-KEYWORDS="-* ~amd64 ~arm ~ppc ~x86"
+KEYWORDS="-* ~ppc"
 
-IUSE="+X +alsa cjk +cups doc examples nsplugin pulseaudio selinux source webstart"
-REQUIRED_USE="nsplugin? ( X )"
-RESTRICT="strip"
+IUSE="+alsa +awt cjk +cups doc examples +gtk nsplugin pulseaudio selinux source webstart"
+REQUIRED_USE="gtk? ( awt ) nsplugin? ( awt )"
 
-# 423161
+RESTRICT="preserve-libs strip"
 QA_PREBUILT="opt/.*"
 
-ALSA_COMMON_DEP="
-	>=media-libs/alsa-lib-1.0"
-CUPS_COMMON_DEP="
-	>=net-print/cups-2.0"
-X_COMMON_DEP="
-		>=dev-libs/atk-2.12
-		>=dev-libs/glib-2.40:2
-		>=media-libs/fontconfig-2.11:1.0
-		>=media-libs/freetype-2.5.3:2
-		>=x11-libs/cairo-1.12
-		x11-libs/gdk-pixbuf:2
-		>=x11-libs/gtk+-2.24:2
+# gsettings-desktop-schemas is needed for native proxy support. #431972
+RDEPEND=">=dev-libs/glib-2.40:2
+	>=gnome-base/gsettings-desktop-schemas-3.12.2
+	media-fonts/dejavu
+	>=media-libs/fontconfig-2.11:1.0
+	>=media-libs/freetype-2.5.3:2
+	>=media-libs/lcms-2.6:2
+	>=sys-devel/gcc-4.8.4
+	>=sys-libs/glibc-2.20
+	>=sys-libs/zlib-1.2.3-r1
+	virtual/jpeg:62
+	alsa? ( >=media-libs/alsa-lib-1.0 )
+	awt? (
+		>=media-libs/giflib-4.1.6-r1
+		media-libs/libpng:0/16
 		>=x11-libs/libX11-1.6
 		>=x11-libs/libXext-1.3
 		>=x11-libs/libXi-1.7
 		>=x11-libs/libXrender-0.9.4
 		>=x11-libs/libXtst-1.2
-		>=x11-libs/pango-1.36"
-
-COMMON_DEP="
-	>=media-libs/giflib-4.1.6-r1
-	>=media-libs/lcms-2.6:2
-	media-libs/libpng:0/16
-	>=sys-devel/gcc-4.8.4
-	>=sys-libs/glibc-2.20
-	>=sys-libs/zlib-1.2.3-r1
-	virtual/jpeg:62"
-
-# cups is needed for X. #390945 #390975
-# gsettings-desktop-schemas is needed for native proxy support. #431972
-RDEPEND="${COMMON_DEP}
-	X? (
-		${CUPS_COMMON_DEP}
-		${X_COMMON_DEP}
-		media-fonts/dejavu
-		cjk? (
-			media-fonts/arphicfonts
-			media-fonts/baekmuk-fonts
-			media-fonts/lklug
-			media-fonts/lohit-fonts
-			media-fonts/sazanami
-		)
 	)
-	alsa? ( ${ALSA_COMMON_DEP} )
-	cups? ( ${CUPS_COMMON_DEP} )
-	selinux? ( sec-policy/selinux-java )
-	>=gnome-base/gsettings-desktop-schemas-3.12.2"
+	cjk? (
+		media-fonts/arphicfonts
+		media-fonts/baekmuk-fonts
+		media-fonts/lklug
+		media-fonts/lohit-fonts
+		media-fonts/sazanami
+	)
+	cups? ( >=net-print/cups-2.0 )
+	gtk? (
+		>=dev-libs/atk-2.12
+		>=x11-libs/cairo-1.12
+		x11-libs/gdk-pixbuf:2
+		>=x11-libs/gtk+-2.24:2
+		>=x11-libs/pango-1.36
+	)
+	selinux? ( sec-policy/selinux-java )"
 
 DEPEND="!arm? ( dev-util/patchelf )"
 
@@ -94,14 +83,25 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	# Ensures HeadlessGraphicsEnvironment is used.
-	if ! use X; then
-		rm -r jre/lib/$(get_system_arch)/xawt || die
+	if ! use alsa; then
+		rm -v jre/lib/$(get_system_arch)/libjsoundalsa.* || die
 	fi
 
-	# Reprefixify because prefix may be different.
-	sed -i 's:=/:=@GENTOO_PORTAGE_EPREFIX@/:' jre/lib/fontconfig.Gentoo.properties || die
-	eprefixify jre/lib/fontconfig.Gentoo.properties
+	if ! use awt; then
+		rm -vr jre/lib/$(get_system_arch)/{xawt,libsplashscreen.*} \
+		   {,jre/}bin/policytool bin/appletviewer || die
+	fi
+
+	if ! use gtk; then
+		rm -v jre/lib/$(get_system_arch)/libjavagtk.* || die
+	fi
+
+	if [[ -n "${EPREFIX}" ]]; then
+		# The binaries are built on a non-prefixed system so the
+		# fontconfig needs to have prefixes inserted.
+		sed -i 's:=/:=@GENTOO_PORTAGE_EPREFIX@/:' jre/lib/fontconfig.Gentoo.properties || die
+		eprefixify jre/lib/fontconfig.Gentoo.properties
+	fi
 
 	# Fix the RPATHs, except on arm.
 	# https://bugs.gentoo.org/show_bug.cgi?id=543658#c3

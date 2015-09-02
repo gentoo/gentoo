@@ -3,6 +3,7 @@
 <pkgmetadata>
   <herd>java</herd>
 <use>
+  <flag name="awt">Install non-headless AWT libraries, needed by some GUIs (used to be X flag)</flag>
   <flag name="webstart">Provide javaws command through symlink to icedtea-web</flag>
 </use>
 </pkgmetadata>
