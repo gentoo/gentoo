@@ -6,7 +6,3 @@
 
 # Location of the lighttpd configuration file
 LIGHTTPD_CONF="/etc/lighttpd/lighttpd.conf"
-
-# Location of the lighttpd pid file
-LIGHTTPD_PID="$(/usr/bin/awk '/^server.pid-file/{s=$3};{sub("\"","",s)};END{print s}' ${LIGHTTPD_CONF})"
-
