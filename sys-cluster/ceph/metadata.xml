@@ -19,6 +19,7 @@ Ceph is a distributed network file system designed to provide excellent performa
 	<flag name='babeltrace'>Add support for LTTng babeltrace</flag>
 	<flag name='nss'>Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
 	<flag name='radosgw'>Add radosgw support</flag>
+	<flag name='jemalloc'>Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
 	<flag name='xfs'>Add xfs support</flag>
 	<flag name='zfs'>Add zfs support</flag>
 </use>
