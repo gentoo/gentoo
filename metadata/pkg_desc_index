@@ -6678,7 +6678,7 @@ dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support 
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.8.0 1.9.0: A software library for rapid development of hardware-accelerated multitouch applications
 dev-python/Numdifftools 0.6.0 0.7.7: Solves automatic numerical differentiation problems in one or more variables
-dev-python/PyECLib 1.0.7 1.0.7-r2: Messaging API for RPC and notifications over a number of different messaging transports
+dev-python/PyECLib 1.0.7-r2: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.0 1.25.1 1.25.2: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
@@ -7249,7 +7249,7 @@ dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network e
 dev-python/os-testr 0.3.0: OpenStack logging config library provides standardized configuration for all openstack projects.
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
 dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2: library for running multi-thread, multi-process applications
-dev-python/oslo-config 1.3.0 1.4.0 1.6.0 1.6.1 1.7.0 1.9.3 1.10.0 1.11.0 1.12.1 2.3.0: Oslo Configuration API
+dev-python/oslo-config 1.9.3 2.3.0 2.4.0: Oslo Configuration API
 dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0: OpenStack Common DB Code
 dev-python/oslo-i18n 1.0.0 1.3.1 1.4.0 1.5.0 1.6.0: oslo.i18n library
