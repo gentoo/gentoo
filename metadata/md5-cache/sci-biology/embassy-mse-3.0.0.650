@@ -9,5 +9,5 @@ LICENSE=LGPL-2 GPL-2
 RDEPEND=ncurses? ( sys-libs/ncurses ) dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( media-libs/gd[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt )
 SLOT=0
 SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/MSE-3.0.0.650.tar.gz -> embassy-mse-3.0.0.650.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	emboss-r1	3a35d39ed2170438e28672a85b806260	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	emboss-r1	3a35d39ed2170438e28672a85b806260	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=d489994e5cf5e217e589fc37e17556af

@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/libusb:1 dev-libs/glib:2 dev-libs/nss || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] x11-libs/gdk-pixbuf )
 SLOT=0
 SRC_URI=http://cgit.freedesktop.org/libfprint/libfprint/snapshot/v_0_5_1.tar.bz2 -> libfprint-0.5.1.tar.bz2 https://dev.gentoo.org/~patrick/libfprint-0.5.1-add-vfs5011-driver.patch
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
 _md5_=052d982da314bf45cb0af352b1fee44b

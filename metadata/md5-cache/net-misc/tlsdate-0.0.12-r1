@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/openssl dev-libs/libevent dbus? ( sys-apps/dbus )
 SLOT=0
 SRC_URI=https://github.com/ioerror/tlsdate/tarball/tlsdate-0.0.12 -> tlsdate-0.0.12.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
 _md5_=35384d7162462a2309ffe8041b712112

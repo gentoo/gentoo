@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.32:= >=x11-libs/gtk+-3.2:3= >=media-libs/clutter-1.12:1.0= >=x11-libs/libwnck-3:3= x11-libs/libX11:= x11-libs/libXcomposite:= x11-libs/libXdamage:= x11-libs/libXinerama:= >=xfce-base/garcon-0.2.0:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfconf-4.10:=
 SLOT=0
 SRC_URI=mirror://xfce/src/apps/xfdashboard/0.4/xfdashboard-0.4.0.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	xfconf	d842ab8b2140980394561496bf157447
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	xfconf	d842ab8b2140980394561496bf157447
 _md5_=47243bee2207c1890412190080e82c1f

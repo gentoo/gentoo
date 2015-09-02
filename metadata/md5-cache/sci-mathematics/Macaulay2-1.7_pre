@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~tomka/files/Macaulay2-1.7_pre.tar.bz2 http://www.math.uiuc.edu/Macaulay2/Downloads/OtherSourceCode/trunk/factory-4.0.0+m4.tar.gz http://www.math.uiuc.edu/Macaulay2/Downloads/OtherSourceCode/trunk/factory.4.0.1-gftables.tar.gz http://www.math.uiuc.edu/Macaulay2/Downloads/OtherSourceCode/trunk/gtest-1.7.0.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=286cbe6355f52c5094a8c14ad40bde64

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtgui:4 media-libs/ladspa-sdk:= x11-libs/libSM:= media-sound/jack-audio-connection-kit:= media-libs/alsa-lib:= >=media-libs/dssi-1.0.0:= media-libs/liblo:= media-libs/liblrdf:= sci-libs/fftw:3.0 media-libs/libsamplerate:=[sndfile] lirc? ( app-misc/lirc:= )
 SLOT=0
 SRC_URI=mirror://sourceforge/rosegarden/rosegarden-13.10.tar.bz2
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=fd6b110014542ffacbf35edc2d098889

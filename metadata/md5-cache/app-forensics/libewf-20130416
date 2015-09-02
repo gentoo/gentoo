@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=sys-libs/zlib fuse? ( sys-fs/fuse ) uuid? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib )
 SLOT=0/2
 SRC_URI=https://libewf.googlecode.com/files/libewf-20130416.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=b4fa3d8db7c3f279b7fb24fe19ae5ccf

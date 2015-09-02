@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gnome-base/libglade:2.0 sci-chemistry/mpqc >=sci-libs/libghemical-3.0.0 >=x11-libs/liboglappth-1.0.0 virtual/opengl x11-libs/pango x11-libs/gtk+:2 x11-libs/gtkglext openbabel? ( sci-chemistry/openbabel )
 SLOT=0
 SRC_URI=http://bioinformatics.org/ghemical/download/current/ghemical-3.0.0.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=90f022345ac2209034ee24e0e2b441ef

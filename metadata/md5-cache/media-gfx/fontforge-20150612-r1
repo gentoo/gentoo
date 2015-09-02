@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libltdl:0 dev-libs/libxml2:2= >=media-libs/freetype-2.3.7:2= ca
 REQUIRED_USE=cairo? ( png ) python? ( ^^ ( python_single_target_python3_3 python_single_target_python3_4 python_single_target_python2_7 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python2_7? ( python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=https://github.com/fontforge/fontforge/releases/download/20150612/fontforge-20150612.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	3b63e63ae2b19314bc2a8704f8b09437	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=5be1958b879afa84a9651e15f7295169

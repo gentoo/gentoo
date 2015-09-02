@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND==sys-libs/db-4* dev-libs/glib:2
 SLOT=0
 SRC_URI=mirror://github/libpinyin/libpinyin/libpinyin-lite-0.8.0.tar.gz -> libpinyin-0.8.0.tar mirror://github/libpinyin/libpinyin/model.text.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=ad00f570c983de87b03f3eadeb6dcc4d

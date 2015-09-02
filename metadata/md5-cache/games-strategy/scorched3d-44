@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[video] media-libs/sdl-net media-libs/libpng:0 sys-libs/zlib virtual/jpeg:0 dev-libs/expat media-fonts/dejavu !dedicated? ( virtual/opengl virtual/glu media-libs/glew media-libs/libogg media-libs/libvorbis media-libs/openal media-libs/freealut x11-libs/wxGTK:2.8[X] media-libs/freetype:2 sci-libs/fftw:3.0 ) mysql? ( virtual/mysql ) games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://sourceforge/scorched3d/Scorched3D-44-src.tar.gz
-_eclasses_=autotools	8056957fdccf2b3cd6e282a4b4551d1a	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
 _md5_=aa41b26b09e525ca55ce2d8ced2bc6ae
