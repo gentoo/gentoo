@@ -12,17 +12,17 @@ inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.7.0_}/${P/_}.src.tar.xz
-	clang? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.7.0_}/compiler-rt-${PV/_}.src.tar.xz
-		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.7.0_}/cfe-${PV/_}.src.tar.xz
-		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.7.0_}/clang-tools-extra-${PV/_}.src.tar.xz )
-	lldb? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.7.0_}/lldb-${PV/_}.src.tar.xz )"
-#	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P/_rc*}-manpages.tar.bz2 )"
+SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
+	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
+	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P}-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="clang debug +doc gold libedit +libffi lldb multitarget ncurses ocaml
+IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
 	python +static-analyzer test xml video_cards_radeon kernel_Darwin"
 
 COMMON_DEPEND="
@@ -130,9 +130,6 @@ pkg_setup() {
 src_unpack() {
 	default
 
-	rm -f "${S}"/tools/clang "${S}"/projects/compiler-rt \
-		|| die "symlinks removal failed"
-
 	if use clang; then
 		mv "${WORKDIR}"/cfe-${PV/_}.src "${S}"/tools/clang \
 			|| die "clang source directory move failed"
@@ -151,6 +148,8 @@ src_unpack() {
 src_prepare() {
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
+	# Fix libdir for ocaml bindings install, bug #559134
+	epatch "${FILESDIR}"/cmake/${P}-ocaml-multilib.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
@@ -182,6 +181,11 @@ src_prepare() {
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
 		epatch "${FILESDIR}"/cmake/clang-0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+
+		# Fix WX sections, bug #421527
+		find "${S}"/projects/compiler-rt/lib/builtins -type f -name \*.S -exec sed \
+			 -e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
+			 -i {} \; || die
 
 		# Workaround bug #553416 until upstream fixes it
 		epatch "${FILESDIR}"/clang-3.7-strip_doc_refs.patch
@@ -389,7 +393,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		# Install man pages.
-		#use doc || doman "${WORKDIR}"/${P}-manpages/*.1
+		use doc || doman "${WORKDIR}"/${P}-manpages/*.1
 
 		# Symlink the gold plugin.
 		if use gold; then
