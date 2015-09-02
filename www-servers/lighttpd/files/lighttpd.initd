@@ -5,6 +5,8 @@
 
 extra_started_commands="reload graceful"
 
+LIGHTTPD_PID="$($(which lighttpd) -pf ${LIGHTTPD_CONF} | grep pid | cut -d '=' -f 2 | tr -d \\\" | tr -d [:space:])"
+
 depend() {
 	need net
 	use mysql logger spawn-fcgi ldap slapd netmount dns
@@ -19,9 +21,10 @@ checkconfig() {
 	fi
 
 	if [ -z "${LIGHTTPD_PID}" ] ; then
-		ewarn "server.pid-file variable in ${LIGHTTPD_CONF}"
-		ewarn "is not set. Falling back to lighttpd.pid"
-		LIGHTTPD_PID="/run/lighttpd.pid"
+		eerror "server.pid-file variable in ${LIGHTTPD_CONF}"
+		eerror "is not set. Please set this variable properly"
+		eerror "and try again"
+		return 1
 	fi
 	/usr/sbin/lighttpd -t -f ${LIGHTTPD_CONF} >/dev/null
 }
