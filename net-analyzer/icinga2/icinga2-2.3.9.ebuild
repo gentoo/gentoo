@@ -61,6 +61,12 @@ src_configure() {
 		-DICINGA2_COMMAND_GROUP=icingacmd
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=yes
 	)
+	if use minimal; then
+		mycmakeargs+=(
+			-DICINGA2_WITH_MYSQL=OFF
+			-DICINGA2_WITH_PGSQL=OFF
+		)
+	fi
 	if use postgres; then
 		mycmakeargs+=(
 			-DICINGA2_WITH_PGSQL=ON
