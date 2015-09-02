@@ -3,9 +3,10 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python interface to PROJ.4 library"
 HOMEPAGE="https://github.com/jswhit/pyproj"
@@ -16,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE="doc"
 
-CFLAGS="${CFLAGS} -fno-strict-aliasing"
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+	append-cflags -fno-strict-aliasing
+}
 
 python_test() {
 	einfo "Testruns do not have regular unittest type tests, instead for test.py,"
