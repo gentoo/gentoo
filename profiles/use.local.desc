@@ -7114,6 +7114,7 @@ sys-boot/refind:reiserfs - Builds the EFI binary reiserfs filesystem driver
 sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace
 sys-cluster/ceph:cryptopp - Use dev-libs/crypto++ for cryptography
 sys-cluster/ceph:fuse - Build fuse client
+sys-cluster/ceph:jemalloc - Use dev-libs/jemalloc for allocations
 sys-cluster/ceph:libaio - Use libaio as asynchronous input/output library
 sys-cluster/ceph:libatomic - Use libatomic instead of builtin atomic operations
 sys-cluster/ceph:lttng - Add support for LTTng
