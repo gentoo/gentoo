@@ -225,6 +225,7 @@ dri
 
 # 2006/02/05 Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
+video_cards_amdgpu
 video_cards_apm
 video_cards_ark
 video_cards_ast
