@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 CDEPEND="dev-java/resin-servlet-api:3.0
 	dev-java/jsr101:0
-	dev-java/mojarra:1.2
+	dev-java/mojarra:2.2
 	dev-java/oracle-javamail:0
 	dev-java/validation-api:1.0
 	dev-java/glassfish-xmlrpc-api:0
@@ -40,7 +40,7 @@ JAVA_ANT_REWRITE_CLASSPATH="yes"
 
 EANT_GENTOO_CLASSPATH="
 jsr101
-mojarra-1.2
+mojarra-2.2
 oracle-javamail
 validation-api-1.0
 glassfish-xmlrpc-api
