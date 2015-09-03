@@ -38,6 +38,7 @@ JAVA_RM_FILES=(
 	src/test/java/org/apache/commons/beanutils/BeanMapTestCase.java
 	src/test/java/org/apache/commons/beanutils/bugs/Jira422TestCase.java
 	src/test/java/org/apache/commons/beanutils/BeanificationTestCase.java
+	src/test/java/org/apache/commons/beanutils/DefaultIntrospectionContextTestCase.java
 )
 
 EANT_GENTOO_CLASSPATH="commons-logging,commons-collections"
