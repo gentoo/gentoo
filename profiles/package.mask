@@ -62,11 +62,6 @@ app-emulation/kvm-kmod
 # last version does not compile. Bug #543644
 sys-devel/dragonegg
 
-# Bernard Cafarelli <voyageur@gentoo.org> (24 Aug 2015)
-# New llvm version for testing
-=sys-devel/llvm-3.7.0*
-=sys-devel/clang-3.7.0*
-
 # Andreas Sturmlechner <andreas.sturmlechner@gmail.com> (24 Aug 2015)
 # Masked until >=sys-auth/consolekit-0.9.2 gets unmasked
 =x11-misc/sddm-0.11.0-r2
