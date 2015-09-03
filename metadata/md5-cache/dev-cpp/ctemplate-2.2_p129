@@ -10,5 +10,5 @@ RDEPEND=vim-syntax? ( >=app-editors/vim-core-7 ) emacs? ( virtual/emacs )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/ctemplate-2.2_p129.tar.bz2
-_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7feb275d850f45095537e76c5aa80494	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=04cf66845698f72c365f78a3be8a1e82

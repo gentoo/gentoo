@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/redland-1.0.6 jack? ( >=media-sound/jack-audio-connection-kit-0.107.0 ) || ( media-libs/lv2 media-libs/lv2core )
 SLOT=0
 SRC_URI=http://download.drobilla.net/slv2-0.6.6.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-any-r1	22fd4ff5f65f020695315a5127524a91	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
 _md5_=7845bc59cd6733df0b8955c04666ea6d
