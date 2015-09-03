@@ -1,0 +1,20 @@
+diff -r -U2 maxima-5.37.1.orig/src/db.lisp maxima-5.37.1/src/db.lisp
+--- maxima-5.37.1.orig/src/db.lisp	2015-08-11 01:01:13.000000000 +0600
++++ maxima-5.37.1/src/db.lisp	2015-09-04 00:21:43.596685564 +0600
+@@ -389,10 +389,14 @@
+ 
+ (defmfun isp (pat)
+-  (let ((isp 'unknown))
++  (let ((isp 'unknown) #+ccl (err t))
+     (ignore-errors
+       (setq isp
+ 	    (cond ((truep pat))
+ 		  ((falsep pat) nil)
+-		  (t 'unknown))))
++		  (t 'unknown)))
++      (setq err nil))
++    #+ccl
++    (when err
++      (setq +labs nil))
+     isp))
+ 

@@ -101,7 +101,7 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( imaxima-0 rmaxima-0 wish-1 xdg-utils-0 )
+	PATCHES=( imaxima-0 rmaxima-0 wish-1 xdg-utils-0 db-0 )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
