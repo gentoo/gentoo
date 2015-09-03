@@ -1,5 +1,5 @@
---- a/CMake/InstallResources.cmake	2013-12-01 18:28:12.000000000 +0100
-+++ b/CMake/InstallResources.cmake	2014-10-29 12:38:29.963602465 +0100
+--- a/CMake/InstallResources.cmake
++++ b/CMake/InstallResources.cmake
 @@ -201,11 +201,6 @@
    set(OGRE_PLUGIN_DIR_DBG "")
    set(OGRE_SAMPLES_DIR_REL "")
