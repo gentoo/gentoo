@@ -191,10 +191,10 @@ _python_build_set_globals
 #			dev-python/baz[python_targets_python2_7(-)?,python_single_target_python2_7(+)?] )
 #	)
 #	(
-#		dev-lang/python:2.6
-#		dev-python/foo[python_targets_python2_6(-)?,python_single_target_python2_6(+)?]
-#		|| ( dev-python/bar[python_targets_python2_6(-)?,python_single_target_python2_6(+)?]
-#			dev-python/baz[python_targets_python2_6(-)?,python_single_target_python2_6(+)?] )
+#		dev-lang/python:3.3
+#		dev-python/foo[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
+#		|| ( dev-python/bar[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
+#			dev-python/baz[python_targets_python3_3(-)?,python_single_target_python3_3(+)?] )
 #	)
 # )
 # @CODE
