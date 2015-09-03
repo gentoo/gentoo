@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>releng</herd>
+	<maintainer>
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<longdescription>A python interface library for common compression ,
+		decompression and contents generation.  It aims to create a simple,
+		easily extended and configurable common interface to various compressison
+		routines.  It can easily be extended with with custom compression,
+		decompression, and contents definitions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dol-sen/pyDeComp</remote-id>
+	</upstream>
+</pkgmetadata>
