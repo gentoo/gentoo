@@ -15241,7 +15241,7 @@ sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.34.1 5.36.1: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.34.1 5.36.1 5.37.1: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.1.0 2.2.0-r3: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
@@ -16101,7 +16101,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 2015.1.1 2015.1.9999: A virtual network service for Openstack
-sys-cluster/nova 2015.1.1-r2 2015.1.1-r3 2015.1.9999: A cloud computing fabric controller (main part of an IaaS system) written in Python
+sys-cluster/nova 2015.1.1-r3 2015.1.9999: A cloud computing fabric controller (main part of an IaaS system) written in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
