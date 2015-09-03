@@ -14162,7 +14162,7 @@ net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.16 1.16.1 1.16.2 1.16.3: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.9 5.2.10: improved Whois Client
-net-misc/wicd 1.7.2.4-r3 1.7.3 1.7.3-r1: A lightweight wired and wireless network manager for Linux
+net-misc/wicd 1.7.2.4-r3 1.7.3 1.7.3-r1 1.7.3-r2: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
