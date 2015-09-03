@@ -10220,7 +10220,7 @@ gnome-extra/at-spi 2.12.0 2.14.0: The Gnome Accessibility Toolkit
 gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bottom of the screen
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
-gnome-extra/cinnamon 2.4.7 2.6.8 2.6.9: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon 2.4.7 2.6.9: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 2.4.2-r2 2.4.2-r3 2.6.0 2.6.0-r1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.4.2 2.6.4 2.6.5: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.4.1 2.4.2 2.6.0: Cinnamon's library for the Desktop Menu fd.o specification
