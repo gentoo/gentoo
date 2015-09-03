@@ -22,7 +22,7 @@ RDEPEND=">=dev-lang/mono-2.0"
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	/usr/bin/gmcs \
+	/usr/bin/mcs \
 		-t:library \
 		-out:log4net.dll \
 		-keyfile:"${DISTDIR}"/log4net.snk \
