@@ -13,7 +13,7 @@ SRC_URI="mirror://apache/commons/beanutils/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1.7"
-KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 CDEPEND="dev-java/commons-collections:0
@@ -38,6 +38,7 @@ JAVA_RM_FILES=(
 	src/test/java/org/apache/commons/beanutils/BeanMapTestCase.java
 	src/test/java/org/apache/commons/beanutils/bugs/Jira422TestCase.java
 	src/test/java/org/apache/commons/beanutils/BeanificationTestCase.java
+	src/test/java/org/apache/commons/beanutils/DefaultIntrospectionContextTestCase.java
 )
 
 EANT_GENTOO_CLASSPATH="commons-logging,commons-collections"
