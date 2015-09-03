@@ -12,8 +12,11 @@
 		optimizations (-Os, -O0, -O1, -O2, -O3)</flag>
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
+	<flag name="gstreamer-0">Use gstreamer:0.10 instead of gstreamer:1 for media support</flag>
 	<flag name="ipc">Use inter-process communication between tabs and plugins.
 		Allows for greater stability in case of plugin crashes</flag>
+	<flag name="jemalloc3">Enable or disable jemalloc3 
+		(forced-on when supported prior to 38.0)</flag>
 	<flag name='roaming'>Build roaming extension support (default on)</flag>
 	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
 		Use system cairo instead of bundled.</flag>
