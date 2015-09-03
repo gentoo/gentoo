@@ -74,12 +74,12 @@ inherit multibuild python-utils-r1
 #
 # Example:
 # @CODE
-# PYTHON_COMPAT=( python2_5 python2_6 python2_7 )
+# PYTHON_COMPAT=( python2_7 python3_3 python3_4} )
 # @CODE
 #
 # Please note that you can also use bash brace expansion if you like:
 # @CODE
-# PYTHON_COMPAT=( python{2_5,2_6,2_7} )
+# PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
 if ! declare -p PYTHON_COMPAT &>/dev/null; then
 	die 'PYTHON_COMPAT not declared.'
@@ -139,8 +139,8 @@ fi
 # Example value:
 # @CODE
 # dev-lang/python-exec:=
-# python_targets_python2_6? ( dev-lang/python:2.6[gdbm] )
 # python_targets_python2_7? ( dev-lang/python:2.7[gdbm] )
+# python_targets_pypy? ( virtual/pypy[gdbm] )
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
@@ -160,7 +160,7 @@ fi
 #
 # Example value:
 # @CODE
-# python_targets_python2_6(-)?,python_targets_python2_7(-)?
+# python_targets_python2_7(-)?,python_targets_python3_4(-)?
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
@@ -178,7 +178,7 @@ fi
 #
 # Example value:
 # @CODE
-# || ( python_targets_python2_6 python_targets_python2_7 )
+# || ( python_targets_python2_7 python_targets_python3_4 )
 # @CODE
 
 _python_set_globals() {
@@ -355,17 +355,17 @@ python_gen_useflags() {
 #
 # Example:
 # @CODE
-# PYTHON_COMPAT=( python{2_5,2_6,2_7} )
+# PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy )
 # RDEPEND="$(python_gen_cond_dep \
-#   'dev-python/unittest2[${PYTHON_USEDEP}]' python{2_5,2_6})"
+#   'dev-python/unittest2[${PYTHON_USEDEP}]' python2_7 pypy )"
 # @CODE
 #
 # It will cause the variable to look like:
 # @CODE
-# RDEPEND="python_targets_python2_5? (
-#     dev-python/unittest2[python_targets_python2_5?] )
-#	python_targets_python2_6? (
-#     dev-python/unittest2[python_targets_python2_6?] )"
+# RDEPEND="python_targets_python2_7? (
+#     dev-python/unittest2[python_targets_python2_7?] )
+#	python_targets_pypy? (
+#     dev-python/unittest2[python_targets_pypy?] )"
 # @CODE
 python_gen_cond_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -410,7 +410,7 @@ python_gen_cond_dep() {
 #
 # Example value:
 # @CODE
-# ${WORKDIR}/foo-1.3-python2_6
+# ${WORKDIR}/foo-1.3-python2_7
 # @CODE
 
 # @FUNCTION: python_copy_sources
