@@ -173,7 +173,7 @@ pkg_postinst() {
 
 	elog
 	elog "If you are upgrading from a previous version of ${PN}, please read:"
-	elog "  http://www.gluster.org/community/documentation/index.php/Upgrade_to_3.5"
+	elog "  http://www.gluster.org/community/documentation/index.php/Upgrade_to_3.6"
 
 	use emacs && elisp-site-regen
 }
