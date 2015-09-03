@@ -5,6 +5,22 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Manuel Rüger <mrueg@gentoo.org> (03 Sep 2015)
+# Mask USE=ruby for packages that solely rely on the soon to be deprecated
+# ruby 1.9
+# See bug #547828
+<app-mobilephone/obexftp-0.24 ruby
+# See bug #541648
+<dev-libs/Ice-3.6 ruby
+# See bug #547768
+<net-irc/epic5-1.10-r1 ruby
+# See bug #547832
+sci-libs/gdal ruby
+# See bug #547834
+<sys-apps/paludis-2.4.0 ruby
+# See bug #480574
+media-libs/mlt ruby
+
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (02 Sep 2015)
 # x11-drivers/xf86-video-amdgpu is not keyworded on most arches
 x11-base/xorg-drivers video_cards_amdgpu
