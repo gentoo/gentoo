@@ -192,26 +192,11 @@ dev-perl/gtk2-fu
 # Bugs: 478174, 546192, 556200.
 sys-apps/systemd-ui
 
-# Patrice Clement <monsieurp@gentoo.org> (3 Aug 2015)
-# Broken and no releases in 10 years (!).
-# Removal in 30 days. See bug #451790.
-www-servers/skunkweb
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2 Aug 2015)
 # This package is a part of >=dev-lang/ghc-7.4. Gentoo
 # ebuilds use that. You can safely uninstall dev-haskell/deepseq
 # and fix leftovers with 'haskell-updater' run.
 dev-haskell/deepseq
-
-# Patrice Clement <monsieurp@gentoo.org> (1 Aug 2015)
-# Package relying on j2me. Not useful anymore since j2me has long been removed.
-# Removal in 30 days. See bug #556460.
-dev-java/antenna
-
-# Patrice Clement <monsieurp@gentoo.org> (30 Jul 2015)
-# Broken and upstream dead isn't always a good mix.
-# Removal in 30 days. See bug #368049.
-dev-java/jjtraveler
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (28 Jul 2015)
 # Dev channel releases are only for people who are developers or want more

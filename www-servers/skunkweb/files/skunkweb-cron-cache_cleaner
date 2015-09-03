@@ -1,4 +1,0 @@
-#! /bin/sh
-
-nice -n 5 /usr/share/skunkweb/util/cache_reaper.py -c /var/lib/skunkweb/cache > /dev/null 2>&1
-
