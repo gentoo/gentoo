@@ -3706,7 +3706,6 @@ dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
 dev-java/ant-swing 1.9.2: Apache Ant's optional tasks for Swing
 dev-java/ant-testutil 1.9.2: Apache Ant's optional test utility classes
 dev-java/ant-trax 1.9.2: Apache Ant .jar with optional tasks depending on XML transformer (Deprecated!)
-dev-java/antenna 1.0.2-r1 1.0.2-r2: Ant task for J2ME
 dev-java/antlr 2.7.7-r5 2.7.7-r6 3.1.3-r3 4.4: A parser generator for C++, C#, Java, and Python
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r4: A small set of Java classes that simplify building desktop applications
@@ -4018,7 +4017,6 @@ dev-java/jikes 1.22-r13: IBM's open source, high performance Java compiler
 dev-java/jinklevel 0.1: Java binding for libinklevel
 dev-java/jinput 2.0.6-r1: An implementation of an API for game controller discovery and polled input
 dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine written in Pure Java
-dev-java/jjtraveler 0.4.3-r2: A visitor combinator framework for Java
 dev-java/jlayer 1.0.1: MP3 decoder/player/converter library for Java
 dev-java/jlex 1.2.6-r1 1.2.6-r2: JLex: a lexical analyzer generator for Java
 dev-java/jlfgr 1.0-r1: Java(TM) Look and Feel Graphics Repository
@@ -17047,7 +17045,6 @@ www-servers/pound 2.6 2.7d 2.7f: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 9999: Pretty small HTTP server - a command-line tool to share files
 www-servers/resin 4.0.44-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
-www-servers/skunkweb 3.4.4: robust Python web application server
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.3 1.6.3-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
