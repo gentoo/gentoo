@@ -1,0 +1,23 @@
+Patch from Sven Eden via bug 552370
+https://bugs.gentoo.org/show_bug.cgi?id=552370
+
+--- a/include/IL/il.h	2009-03-08 08:10:08.000000000 +0100
++++ b/include/IL/il.h	2015-09-03 16:22:04.056637044 +0200
+@@ -63,13 +63,13 @@
+ 	#endif
+ #endif
+ 
+-#ifdef RESTRICT_KEYWORD
+-#define RESTRICT restrict
+-#define CONST_RESTRICT const restrict
++#if defined(RESTRICT_KEYWORD) && !defined(__cplusplus)
++#define RESTRICT __restrict__
++#define CONST_RESTRICT const __restrict__
+ #else
+ #define RESTRICT
+ #define CONST_RESTRICT const
+-#endif
++#endif // RESTRICT keyword and not C++
+ 
+ #include <stdio.h>
+ 

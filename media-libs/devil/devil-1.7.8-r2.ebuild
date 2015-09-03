@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-proto/xextproto )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-{CVE-2009-3994,libpng14,nvtt-glut,ILUT}.patch
+	epatch "${FILESDIR}"/${P}-{CVE-2009-3994,libpng14,nvtt-glut,ILUT,restrict}.patch
 	eautoreconf
 }
 
