@@ -1,5 +1,5 @@
---- a/CMake/InstallResources.cmake	2014-10-29 12:43:49.000000000 +0100
-+++ b/CMake/InstallResources.cmake	2014-10-29 12:46:10.017611431 +0100
+--- a/CMake/InstallResources.cmake
++++ b/CMake/InstallResources.cmake
 @@ -178,10 +178,6 @@
  
  # CREATE CONFIG FILES - BUILD DIR VERSIONS

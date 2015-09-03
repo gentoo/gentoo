@@ -68,8 +68,10 @@ src_prepare() {
 	rm -f Tools/XMLConverter/{include,src}/tiny*.*
 
 	# Fix some path issues
-	epatch "${FILESDIR}/${P}-remove_resource_path_to_bindir.patch" \
-		"${FILESDIR}/${P}-remove_media_path_to_bindir.patch"
+	epatch \
+		"${FILESDIR}/${P}-remove_resource_path_to_bindir.patch" \
+		"${FILESDIR}/${P}-remove_media_path_to_bindir.patch" \
+		"${FILESDIR}/${P}-gcc52.patch"
 }
 
 src_configure() {
