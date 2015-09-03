@@ -6774,6 +6774,7 @@ dev-python/buildutils 0.3-r1: Extensions for developing Python libraries and app
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/cached-property 0.1.5 1.0.0 1.2.0: A cached-property for decorating methods in classes
+dev-python/cachetools 1.1.0: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.5.3-r1 0.5.4 0.6 0.6-r1 0.7.1 0.7.2: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
 dev-python/carbon 0.9.12-r1 0.9.13: Backend data caching and persistence daemon for Graphite
@@ -6995,6 +6996,7 @@ dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/futures 2.2.0 3.0.2 3.0.3: Backport of the concurrent.futures package from Python 3.2
+dev-python/futurist 0.4.0: Useful additions to futures, from the future.
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 1.7 1.8 1.8-r1 1.9: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
 dev-python/gdata 2.0.14 2.0.17-r1 2.0.18: Python client library for Google data APIs
@@ -7109,7 +7111,7 @@ dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easi
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0: Provides access to the system keyring service
-dev-python/keystonemiddleware 1.5.0 1.5.2: A middleware for the OpenStack Keystone API
+dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
@@ -7254,7 +7256,7 @@ dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0: Helpers to maintain useful i
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0: OpenStack Common DB Code
 dev-python/oslo-i18n 1.0.0 1.3.1 1.4.0 1.5.0 1.6.0: oslo.i18n library
 dev-python/oslo-log 0.3.0 1.0.0 1.1.0 1.10.0: OpenStack logging config library provides standardized configuration for all openstack projects.
-dev-python/oslo-messaging 1.4.1 1.5.1 1.7.0 1.8.0 1.8.2 1.8.3 1.9.0 1.10.0: Messaging API for RPC and notifications over a number of different messaging transports
+dev-python/oslo-messaging 1.4.1 1.5.1 1.7.0 1.8.0 1.8.2 1.8.3 1.9.0 1.10.0 2.4.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/oslo-middleware 0.4.0 0.5.0 1.0.0 1.1.0 1.2.0 1.3.0: Library includes components to be injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 0.3.2: The Oslo Policy library provides support for RBAC policy enforcement across all OpenStack services.
 dev-python/oslo-rootwrap 1.2.0 1.3.0 1.6.0: The Oslo Rootwrap allows fine filtering of shell commands to run as root from OpenStack services
@@ -7574,7 +7576,7 @@ dev-python/python-levenshtein 0.10.2-r1 0.11.1 0.11.2 0.12.0: Functions for fast
 dev-python/python-linux-procfs 0.4.6 9999: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-lzo 1.08-r1: Python interface to lzo
 dev-python/python-magic 0.4.6-r1: Access the libmagic file type identification library
-dev-python/python-memcached 1.53-r1 1.54: Pure python memcached client
+dev-python/python-memcached 1.53-r1 1.54 1.57: Pure python memcached client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
 dev-python/python-mpd 0.5.3 0.5.4: Python MPD client library
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
