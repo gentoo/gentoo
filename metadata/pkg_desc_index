@@ -6803,7 +6803,7 @@ dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Pyth
 dev-python/cliapp 1.20130808 1.20140315 1.20150305: Framework for Unix-like command line programs
 dev-python/click 2.0 4.0-r1 4.1: A Python package for creating beautiful command line interfaces
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
-dev-python/cliff 1.8.0 1.10.1 1.12.0 1.13.0: Command Line Interface Formulation Framework
+dev-python/cliff 1.8.0 1.10.1 1.12.0 1.13.0 1.14.0: Command Line Interface Formulation Framework
 dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output in programs created by the cliff framework
 dev-python/clint 0.3.1-r1 0.4.1 0.5.1: Python Command-line Application Tools
 dev-python/cloudlib 0.4.0: Cloud middleware for in application use.
@@ -6949,6 +6949,7 @@ dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 1.10.0-r1 1.10.1 1.10.2: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
+dev-python/fasteners 0.13.0: A python package that provides useful locks
 dev-python/feedgenerator 1.6 1.7: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.1.3-r2: Parse RSS and Atom feeds in Python
 dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
@@ -7008,7 +7009,7 @@ dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Geve
 dev-python/gevent-websocket 0.9.3 0.9.5: Websocket handler for the gevent pywsgi server
 dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages branch
 dev-python/git-python 0.3.6 1.0.0 1.0.1: Library used to interact with Git repositories
-dev-python/git-review 1.24: Tool to submit code to Gerrit
+dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/glance_store 0.1.10 0.4.0 0.5.0 0.6.0: A connection pool for python-ldap
 dev-python/globre 0.1.2-r1: A glob matching library, providing an interface similar to the 're' module
@@ -7249,7 +7250,7 @@ dev-python/os-diskconfig-python-novaclient-ext 0.1.1 0.1.1-r1 0.1.2 9999: Disk C
 dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network extension support to python-novaclient
 dev-python/os-testr 0.3.0: OpenStack logging config library provides standardized configuration for all openstack projects.
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
-dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2: library for running multi-thread, multi-process applications
+dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 1.9.3 2.3.0 2.4.0: Oslo Configuration API
 dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0: OpenStack Common DB Code
@@ -7262,7 +7263,7 @@ dev-python/oslo-rootwrap 1.2.0 1.3.0 1.6.0: The Oslo Rootwrap allows fine filter
 dev-python/oslo-serialization 1.0.0 1.0.0-r1 1.3.0 1.3.0-r1 1.4.0 1.5.0: oslo.serialization library
 dev-python/oslo-sphinx 2.2.0-r1 2.5.0 3.0.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-utils 1.0.0 1.1.0 1.2.1 1.3.0 1.4.0 1.5.0 2.4.0: Oslo Utility library
-dev-python/oslo-vmware 0.7.0 0.11.2: Oslo VMware library for OpenStack projects
+dev-python/oslo-vmware 0.7.0 0.11.2 1.21.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0: Oslo test framework
 dev-python/osprofiler 0.3.0: OpenStack Profiler Library
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
@@ -7540,7 +7541,7 @@ dev-python/python-caja 1.8.0: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34 0.34-r1: A Python extension module for cdb
 dev-python/python-ceilometerclient 1.0.10: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 1.0.9 1.1.2 1.2.1 1.2.1-r1: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 1.0.9 1.1.2 1.2.1 1.2.1-r1 1.3.1: A client for the OpenStack Cinder API
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, based on PyTunes
 dev-python/python-daemon 1.6-r1 2.0.4 2.0.5: Library to implement a well-behaved Unix daemon process
@@ -7581,17 +7582,17 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.4: This library implements webservice bindings for the Musicbrainz NGS site
 dev-python/python-nbxmpp 0.5.1 0.5.2 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 1.0.4: A client for the OpenStack APIs
+dev-python/python-openstackclient 1.0.4 1.6.0: A client for the OpenStack APIs
 dev-python/python-pam 0.1.4: A python interface to the PAM library on linux using ctypes
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt4 0.18.1: A python binding for libpoppler-qt4
 dev-python/python-prctl 1.5.0-r1 1.6.0 1.6.1: Control process attributes through prctl
 dev-python/python-ptrace 0.8.1-r1: python-ptrace is a debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
-dev-python/python-saharaclient 0.7.0 0.9.0: This is a client for the OpenStack Sahara API, aka HADOOP
+dev-python/python-saharaclient 0.7.0 0.9.0 0.11.0: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-scw 0.4.7-r1: Python binding for Scw
 dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
