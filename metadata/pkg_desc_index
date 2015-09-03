@@ -4533,7 +4533,7 @@ dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Sche
 dev-libs/gdl 3.14.0 3.16.0: GNOME docking library
 dev-libs/gecode 3.7.3: Gecode is an environment for developing constraint-based systems and applications
 dev-libs/geoip 1.6.5 1.6.6: easily lookup countries by IP addresses, even when Reverse DNS entries don't exist
-dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
+dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 9999: A library that implements a user interface that focuses on simplicity and minimalism
 dev-libs/gjs 1.40.1-r1 1.42.0 1.43.3: Javascript bindings for GNOME
@@ -4571,7 +4571,7 @@ dev-libs/intel-common 13.0.0.079 13.0.0.079-r1 13.0.1.117 13.1.2.146 13.1.3.163 
 dev-libs/isl 0.11.1 0.12.2 0.13 0.14 0.14.1 0.15: A library for manipulating integer points bounded by linear constraints
 dev-libs/jansson 2.4 2.6 2.7: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0: Jemalloc is a general-purpose scalable concurrent allocator
-dev-libs/jerasure 0.0.0: A Library in C Facilitating Erasure Coding for Storage Applications
+dev-libs/jerasure 0.0.0 2.0.0: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.9-r1 0.10-r1 0.11 0.11-r1 0.12: A JSON implementation in C
 dev-libs/json-glib 1.0.2 1.0.2-r1 1.0.4: A library providing GLib serialization and deserialization support for the JSON format
 dev-libs/jsoncpp 0.5.0-r1 0.10.2-r1 1.6.2-r1: C++ JSON reader and writer
