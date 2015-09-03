@@ -1,12 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
 GENTOO_DEPEND_ON_PERL="no"
+JAVA_PKG_OPT_USE="collectd_plugins_java"
+# XXX: 5.4.1-r0 stated 2* but it builds fine against 3.4
+PYTHON_COMPAT=( python2_7 )
 
-inherit autotools base eutils linux-info multilib perl-app systemd user
+inherit autotools base eutils java-pkg-opt-2 linux-info multilib perl-app python-single-r1 systemd user
 
 DESCRIPTION="A a daemon which collects system statistic and provides mechanisms to store the values"
 
@@ -67,7 +70,6 @@ COMMON_DEPEND="
 	collectd_plugins_gmond?			( sys-cluster/ganglia )
 	collectd_plugins_ipmi?			( >=sys-libs/openipmi-2.0.16-r1 )
 	collectd_plugins_iptables?		( >=net-firewall/iptables-1.4.13 )
-	collectd_plugins_java?			( virtual/jre dev-java/java-config-wrapper )
 	collectd_plugins_libvirt?		( app-emulation/libvirt dev-libs/libxml2 )
 	collectd_plugins_lvm?			( sys-fs/lvm2 )
 	collectd_plugins_memcachec?		( dev-libs/libmemcached )
@@ -82,7 +84,7 @@ COMMON_DEPEND="
 	collectd_plugins_perl?			( dev-lang/perl:=[ithreads] )
 	collectd_plugins_ping?			( net-libs/liboping )
 	collectd_plugins_postgresql?		( dev-db/postgresql )
-	collectd_plugins_python?		( =dev-lang/python-2* )
+	collectd_plugins_python?		( ${PYTHON_DEPS} )
 	collectd_plugins_routeros?		( net-libs/librouteros )
 	collectd_plugins_rrdcached?		( net-analyzer/rrdtool )
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool )
@@ -104,13 +106,18 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
+	collectd_plugins_java?			( >=virtual/jdk-1.6 )
 	kernel_linux? (
 		collectd_plugins_vserver?	( sys-kernel/vserver-sources )
 	)"
 
 RDEPEND="${COMMON_DEPEND}
+	collectd_plugins_java?			( >=virtual/jre-1.6 )
 	collectd_plugins_syslog?		( virtual/logger )
 	selinux?						( sec-policy/selinux-collectd )"
+
+REQUIRED_USE="
+	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4.1"-{nohal,libocci,libperl,lt}.patch
@@ -199,6 +206,9 @@ pkg_setup() {
 		fi
 	fi
 
+	java-pkg-opt-2_pkg_setup
+	use collectd_plugins_python && python-single-r1_pkg_setup
+
 	enewgroup collectd
 	enewuser collectd -1 -1 /var/lib/collectd collectd
 }
@@ -214,6 +224,11 @@ src_prepare() {
 
 	# fix installdirs for perl, bug 444360
 	sed -i -e 's/INSTALL_BASE=$(DESTDIR)$(prefix) //' bindings/Makefile.am || die
+
+	if use collectd_plugins_java; then
+		# Set javac -source and -target flags according to (R)DEPEND.
+		sed -i -e "s/\$(JAVAC)/\0 $(java-pkg_javac-args)/g" bindings/java/Makefile.am || die
+	fi
 
 	rm -r libltdl || die
 
@@ -283,9 +298,9 @@ src_configure() {
 		fi
 	done
 
-	# Need JAVA_HOME for java.
+	# JAVA_HOME is set by eclasses.
 	if use collectd_plugins_java; then
-		myconf+=" --with-java=$(java-config -g JAVA_HOME)"
+		myconf+=" --with-java"
 	fi
 
 	# Need libiptc ONLY for iptables. If we try to use it otherwise bug 340109 happens.
@@ -313,6 +328,7 @@ src_install() {
 
 	find "${D}/usr/" -name "*.la" -exec rm -f {} +
 
+	use collectd_plugins_java && java-pkg_regjar "${ED}"/usr/share/${PN}/java/*.jar
 	# use collectd_plugins_ping && setcap cap_net_raw+ep ${D}/usr/sbin/collectd
 	# we cannot do this yet
 
