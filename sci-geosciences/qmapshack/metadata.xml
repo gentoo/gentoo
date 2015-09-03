@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<maintainer>
+  <email>grozin@gentoo.org</email>
+  <name>Andrey Grozin</name>
+</maintainer>
+<longdescription lang="en">
+  Use QMapShack to plan your next outdoor trip or to visualize and archive
+  all the GPS recordings of your past exciting adventures.
+  QMapShack is the next generation of the famous QLandkarte GT application.
+  And of course it's even better and easier to use.
+</longdescription>
+</pkgmetadata>
