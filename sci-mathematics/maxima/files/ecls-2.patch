@@ -1,0 +1,35 @@
+diff -r -U1 maxima-5.37.1.orig/src/maxima.in maxima-5.37.1/src/maxima.in
+--- maxima-5.37.1.orig/src/maxima.in	2015-05-22 04:40:03.000000000 +0600
++++ maxima-5.37.1/src/maxima.in	2015-09-03 16:33:30.913866985 +0600
+@@ -188,3 +188,3 @@
+ elif [ "$MAXIMA_LISP" = "ecl" ]; then
+-   exec "$maxima_image_base"  $MAXIMA_LISP_OPTIONS -- "$@"
++   exec "$maxima_image_base"  $MAXIMA_LISP_OPTIONS -norc -- "$@"
+ 
+diff -r -U1 maxima-5.37.1.orig/src/maxima.system maxima-5.37.1/src/maxima.system
+--- maxima-5.37.1.orig/src/maxima.system	2015-09-01 02:26:13.000000000 +0600
++++ maxima-5.37.1/src/maxima.system	2015-09-03 16:42:47.071843596 +0600
+@@ -61,2 +61,10 @@
+ #+ecl
++(defun split-ld-flags-for-ecl (string &aux space)
++  (setf string (string-trim '(#\Space) string))
++  (if (setf space (position #\Space string))
++    (cons (subseq string 0 space)
++      (split-ld-flags-for-ecl (subseq string (1+ space))))
++    (cons string nil)))
++
++#+ecl
+ (defun build-maxima-lib ()
+@@ -77,2 +85,7 @@
+ 			 files)))
++	(c::build-fasl "binary-ecl/maxima" :lisp-files obj
++		       :ld-flags
++                       (let ((x (symbol-value (find-symbol "*AUTOCONF-LD-FLAGS*"
++                                                           (find-package "MAXIMA")))))
++                         (if (and x (not (string= x ""))) (split-ld-flags-for-ecl x))))
+ 	(c::build-program "binary-ecl/maxima" :lisp-files obj
+@@ -81,3 +94,3 @@
+ 							      (find-package "MAXIMA")))))
+-			    (if (and x (not (string= x ""))) (list x)))
++			    (if (and x (not (string= x ""))) (split-ld-flags-for-ecl x)))
+ 			  :epilogue-code '(progn (require :defsystem)

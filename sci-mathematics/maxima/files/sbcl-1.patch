@@ -1,0 +1,18 @@
+diff -r -U1 maxima-5.37.1.orig/src/maxima.in maxima-5.37.1/src/maxima.in
+--- maxima-5.37.1.orig/src/maxima.in	2015-05-22 04:40:03.000000000 +0600
++++ maxima-5.37.1/src/maxima.in	2015-09-03 16:22:57.340893630 +0600
+@@ -193,5 +193,5 @@
+   if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --eval '(cl-user::run)' --end-toplevel-options "$@"
++    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --no-sysinit --no-userinit --eval '(cl-user::run)' --end-toplevel-options "$@"
+   else
+-    exec "@SBCL_NAME@" --core "$maxima_image_base.core" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --eval '(cl-user::run)' --end-toplevel-options "$@"
++    exec "@SBCL_NAME@" --core "$maxima_image_base.core" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --no-sysinit --no-userinit --eval '(cl-user::run)' --end-toplevel-options "$@"
+   fi
+diff -r -U1 maxima-5.37.1.orig/src/server.lisp maxima-5.37.1/src/server.lisp
+--- maxima-5.37.1.orig/src/server.lisp	2015-04-10 01:41:59.000000000 +0600
++++ maxima-5.37.1/src/server.lisp	2015-09-03 16:23:47.100891537 +0600
+@@ -10,3 +10,2 @@
+ (eval-when (:compile-toplevel :load-toplevel :execute)
+-  #+sbcl (require 'asdf)		    ;not needed here for a recent SBCL
+   #+sbcl (require 'sb-posix)
