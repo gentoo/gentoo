@@ -60,7 +60,7 @@ COMMON_DEPEND="
 	>=x11-libs/startup-notification-0.11
 	x11-libs/libX11
 	>=x11-libs/libXfixes-5.0
-	>=x11-wm/muffin-2.4[introspection]
+	>=x11-wm/muffin-2.5[introspection]
 	${PYTHON_DEPS}
 	networkmanager? (
 		gnome-base/libgnome-keyring
