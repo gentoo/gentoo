@@ -16,7 +16,9 @@ IUSE=""
 RESTRICT="strip" #bug #137340
 QA_FLAGS_IGNORED="${GAMES_PREFIX_OPT:1}/bin/adom"
 
-RDEPEND=">=sys-libs/ncurses-5.9-r3[abi_x86_32(-)]"
+RDEPEND="|| (
+	>=sys-libs/ncurses-5.9-r3:0/5[abi_x86_32(-)]
+	>=sys-libs/ncurses-5.9-r3:5/5[abi_x86_32(-)] )"
 
 S=${WORKDIR}/${PN}
 
