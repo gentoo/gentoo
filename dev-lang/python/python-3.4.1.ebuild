@@ -31,6 +31,7 @@ RDEPEND="app-arch/bzip2
 	>=sys-libs/zlib-1.1.3
 	virtual/libffi
 	virtual/libintl
+	xml? ( >=dev-libs/expat-2.1 )
 	!build? (
 		gdbm? ( sys-libs/gdbm[berkdb] )
 		ncurses? (
@@ -44,7 +45,6 @@ RDEPEND="app-arch/bzip2
 			dev-tcltk/blt
 			dev-tcltk/tix
 		)
-		xml? ( >=dev-libs/expat-2.1 )
 	)
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
@@ -93,7 +93,7 @@ src_prepare() {
 src_configure() {
 	if use build; then
 		# Disable extraneous modules with extra dependencies.
-		export PYTHON_DISABLE_MODULES="gdbm _curses _curses_panel readline _sqlite3 _tkinter _elementtree pyexpat"
+		export PYTHON_DISABLE_MODULES="gdbm _curses _curses_panel readline _sqlite3 _tkinter"
 		export PYTHON_DISABLE_SSL="1"
 	else
 		local disable
