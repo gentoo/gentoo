@@ -9,5 +9,5 @@ LICENSE=|| ( EPL-1.0 LGPL-2.1 )
 RDEPEND=dev-java/jansi:0 dev-java/janino:0 dev-java/slf4j-api:0 dev-java/oracle-javamail:0 java-virtuals/servlet-api:3.0 tomcat? ( www-servers/tomcat:7 ) >=virtual/jre-1.6 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=http://logback.qos.ch/dist/logback-1.0.13.tar.gz https://dev.gentoo.org/~ercpe/distfiles/dev-java/logback/logback-1.0.13-build.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	c7374d201551e4fb8552994ef210e0f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=0db1da13eaa1b6715464780b2c3f180c

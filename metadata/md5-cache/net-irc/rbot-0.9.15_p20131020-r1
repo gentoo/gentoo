@@ -10,5 +10,5 @@ RDEPEND=spell? ( aspell? ( app-text/aspell ) !aspell? ( app-text/hunspell ) ) fi
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 )
 SLOT=0
 SRC_URI=http://dev.a3li.li/gentoo/distfiles/rbot-0.9.15_p20131020.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-ng	497a8201c1d4a4129a8ac57a2bf2abb5	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-utils-2	c7374d201551e4fb8552994ef210e0f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-ng	497a8201c1d4a4129a8ac57a2bf2abb5	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=3fdfb7b09bac3a7d96cd7d8a6e21e856

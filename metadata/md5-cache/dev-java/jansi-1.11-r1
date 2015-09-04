@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-java/jansi-native:0 >=virtual/jre-1.5 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=1.11
 SRC_URI=https://github.com/fusesource/jansi/tarball/jansi-project-1.11 -> jansi-1.11.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	7c8af272d218f7b7df22fd16bb0bfb63	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	c7374d201551e4fb8552994ef210e0f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=4133f37a00dce01fee08bc46a800dabb
