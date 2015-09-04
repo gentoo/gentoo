@@ -8,7 +8,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-2"
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/catalyst.git"
 	EGIT_MASTER="master"
-	EGIT_BRANCH="3.0"
+	EGIT_BRANCH="pending"
 	SRC_URI=""
 	KEYWORDS=""
 	S="${WORKDIR}/${PN}"
@@ -33,9 +33,9 @@ IUSE="ccache doc kernel_linux"
 DEPEND="
 	app-text/asciidoc
 	>=dev-python/snakeoil-0.5.2
-	<dev-python/snakeoil-0.6.5
 "
 RDEPEND="
+	=dev-python/pyDeComp-9999
 	app-arch/lbzip2
 	app-crypt/shash
 	virtual/cdrtools
