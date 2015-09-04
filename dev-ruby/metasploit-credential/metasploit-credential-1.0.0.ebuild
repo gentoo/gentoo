@@ -26,27 +26,3 @@ ruby_add_rdepend ">=dev-ruby/metasploit-concern-1.0.0:1.0
 	>=dev-ruby/railties-4.0.9:4.0
 	dev-ruby/net-ssh
 	dev-ruby/pg"
-ruby_add_bdepend "dev-ruby/bundler"
-
-all_ruby_prepare() {
-	[ -f Gemfile.lock ] && rm Gemfile.lock
-	#For now, we don't support development or testing at all
-	#if ! use development; then
-		sed -i -e "/^group :development do/,/^end$/d" Gemfile || die
-		sed -i -e "/s.add_development_dependency/d" "${PN}".gemspec || die
-	#fi
-	#if ! use test; then
-		sed -i -e "/^group :test do/,/^end$/d" Gemfile || die
-	#fi
-	#if ! use test && ! use development; then
-		sed -i -e "/^group :development, :test do/,/^end$/d" Gemfile || die
-	#fi
-}
-
-each_ruby_prepare() {
-	if [ -f Gemfile ]
-	then
-		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
-		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
-	fi
-}
