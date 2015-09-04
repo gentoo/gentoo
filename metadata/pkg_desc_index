@@ -18098,7 +18098,7 @@ x11-wm/dwm 6.0: a dynamic window manager for X11
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/emerald 0.8.8: Emerald Window Decorator
 x11-wm/enlightenment 0.16.9999 0.17.6 0.17.9999 0.18.7 0.18.8 0.19.4 0.19.8 1.0.2 1.0.6 1.0.7 1.0.8 1.0.9 1.0.10 1.0.11 1.0.13 1.0.14 1.0.15 1.0.16 1.0.17: Enlightenment Window Manager (e16)
-x11-wm/evilwm 1.0.1 1.1.0: A minimalist, no frills window manager for X
+x11-wm/evilwm 1.0.1 1.1.0 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.2 1.3.5 1.3.5-r1 1.3.6-r1 1.3.7 1.3.7-r1 1.3.7-r2 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0: Get out of my way, Window Manager!
