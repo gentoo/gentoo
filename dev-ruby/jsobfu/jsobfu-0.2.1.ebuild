@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/rapid7/jsobfu"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rkelly-remix-0.0.6:0"
