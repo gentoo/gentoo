@@ -8013,7 +8013,7 @@ dev-ruby/allison 2.0.3-r2 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/amatch 0.3.0: Approximate Matching Extension for Ruby
 dev-ruby/ammeter 1.1.2: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
-dev-ruby/amq-protocol 1.9.2: An AMQP 0.9.1 serialization library for Ruby
+dev-ruby/amq-protocol 1.9.2 2.0.0: An AMQP 0.9.1 serialization library for Ruby
 dev-ruby/amqp 1.5.1: AMQP client implementation in Ruby/EventMachine
 dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all the time
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
@@ -8240,7 +8240,7 @@ dev-ruby/mimemagic 0.3.0: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.2.7 4.2.9 4.2.10: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
 dev-ruby/minitest 4.7.5 4.7.5-r1 4.7.5-r2 5.3.3 5.3.3-r1 5.5.1 5.6.1 5.7.0 5.8.0: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
-dev-ruby/mixlib-shellout 1.6.1 2.0.1 2.1.0: Run external commands on Unix or Windows
+dev-ruby/mixlib-shellout 2.1.0 2.2.0: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4 0.11.4-r1 0.12.7 0.12.10 0.12.10-r1 0.13.3 0.13.3-r1 0.13.3-r2 0.14.0 1.1.0: A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock
 dev-ruby/modernizr 2.6.2: Neatly packaged Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.7.20 0.8.0: A unified interface to key/value stores
@@ -8439,7 +8439,7 @@ dev-ruby/safe_yaml 1.0.4 1.0.4-r1 1.0.4-r2: Parse YAML safely, without that pesk
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.0.6-r1 2.1.0 4.0.0-r1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.17 3.4.18: An extension of CSS3, adding nested rules, variables, mixins, selector inheritance, and more
-dev-ruby/sass-rails 3.2.6 4.0.5 5.0.1 5.0.2 5.0.3: Official Ruby-on-Rails Integration with Sass
+dev-ruby/sass-rails 3.2.6 4.0.5 5.0.3 5.0.4: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sdoc 0.3.20 0.4.1: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.2.0 2.3.3 2.3.4 2.3.5: Advanced seed data handling for Rails, combining the best practices of several methods together
 dev-ruby/selenium-webdriver 2.45.0 2.46.2 2.47.0 2.47.1: This gem provides Ruby bindings for WebDriver
