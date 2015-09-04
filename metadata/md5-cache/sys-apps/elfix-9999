@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=~dev-python/pypax-9999[ptpax=,xtpax=] ptpax? ( dev-libs/elfutils ) xtpax? ( sys-apps/attr ) dev-vcs/git
+DESCRIPTION=A suite of tools to work with ELF objects on Hardened Gentoo
+EAPI=5
+HOMEPAGE=https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml https://dev.gentoo.org/~blueness/elfix/
+IUSE=+ptpax +xtpax
+LICENSE=GPL-3
+RDEPEND=~dev-python/pypax-9999[ptpax=,xtpax=] ptpax? ( dev-libs/elfutils ) xtpax? ( sys-apps/attr )
+REQUIRED_USE=|| ( ptpax xtpax )
+RESTRICT=test
+SLOT=0
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=4ad43855d7cf93abb291620572947c75
