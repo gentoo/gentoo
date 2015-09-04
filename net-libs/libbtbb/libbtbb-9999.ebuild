@@ -40,7 +40,7 @@ get_PV() { local pv=$(best_version $1); pv=${pv#$1-}; pv=${pv%-r*}; pv=${pv//_};
 
 which_plugins() {
 	if has_version '>=net-analyzer/wireshark-1.12.0'; then
-		plugins="btbb"
+		plugins="btbb btbredr"
 	elif has_version '<net-analyzer/wireshark-1.12.0'; then
 		plugins="btbb btle btsm"
 	fi
