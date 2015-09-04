@@ -17,5 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "|| ( dev-ruby/activerecord:3.2
+			dev-ruby/activerecord:4.0
 			dev-ruby/activerecord:4.1
 			dev-ruby/activerecord:4.2 )"
