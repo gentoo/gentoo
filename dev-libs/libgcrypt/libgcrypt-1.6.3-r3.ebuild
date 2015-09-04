@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
 	)"
 DEPEND="${RDEPEND}
-	doc? ( sys-apps/texinfo )"
+	doc? ( virtual/texi2dvi )"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
