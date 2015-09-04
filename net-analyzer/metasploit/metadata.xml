@@ -8,7 +8,6 @@
 	</maintainer>
 	<use>
 		<flag name='development'>Install dependencies needed for metasploit and exploit development</flag>
-		<flag name='lorcon'>Enable lorcon for raw packet injection</flag>
 		<flag name='oracle'>Enable restricted oracle modules which have additional deps</flag>
 		<flag name='pcap'>Enable libpcap for packet sniffing</flag>
 	</use>
