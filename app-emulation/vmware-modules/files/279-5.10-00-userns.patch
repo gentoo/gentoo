@@ -1,0 +1,16 @@
+correctly initializes UID/GID values
+gets UID correctly in light of user namespace API
+origionally from https://462666.bugs.gentoo.org/attachment.cgi?id=342888
+
+--- a/vmblock-only/linux/inode.c   2013-03-20 17:37:48.000000000 +0100
++++ b/vmblock-only/linux/inode.c   2013-03-20 17:41:22.000000000 +0100
+@@ -135,7 +135,8 @@
+    inode->i_size = INODE_TO_IINFO(inode)->nameLen;
+    inode->i_version = 1;
+    inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
+-   inode->i_uid = inode->i_gid = 0;
++   inode->i_uid = GLOBAL_ROOT_UID;
++   inode->i_gid = GLOBAL_ROOT_GID;
+    inode->i_op = &LinkInodeOps;
+ 
+    d_add(dentry, inode);

@@ -1,63 +1,79 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+# $Header: $
 
 EAPI="5"
+
+#never ever ever have more than one ruby in here
+USE_RUBY="ruby21"
+inherit eutils ruby-ng
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/rapid7/metasploit-framework.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}"/all
 	inherit git-r3
 	KEYWORDS=""
+	SLOT="9999"
 else
-	#https://github.com/rapid7/metasploit-framework/wiki/Downloads-by-Version
-	SRC_URI="http://downloads.metasploit.com/data/releases/archive/framework-${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~x86"
-	S="${WORKDIR}"/msf3
+	##Tags https://github.com/rapid7/metasploit-framework/releases
+	##Releases https://github.com/rapid7/metasploit-framework/wiki/Downloads-by-Version
+	#SRC_URI="https://github.com/rapid7/metasploit-framework/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	##Snapshots
+	MY_PV=${PV/_p/-}
+	SRC_URI="https://github.com/rapid7/metasploit-framework/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	RUBY_S="${PN}-framework-${MY_PV}"
+	inherit versionator
+	SLOT="$(get_version_component_range 1).$(get_version_component_range 2)"
 fi
-
-#ruby20 doesn't have wide enough support in gentoo yet (but is semi-supported upstream)
-USE_RUBY="ruby19"
-inherit eutils ruby-ng
 
 DESCRIPTION="Advanced open-source framework for developing, testing, and using vulnerability exploit code"
 HOMEPAGE="http://www.metasploit.org/"
-SLOT="9999"
 LICENSE="BSD"
-IUSE="development +java lorcon oracle +pcap test"
+IUSE="development +java oracle +pcap test"
 
 #multiple known bugs with tests reported upstream and ignored
 #http://dev.metasploit.com/redmine/issues/8418 - worked around (fix user creation when possible)
 RESTRICT="test"
 
 RUBY_COMMON_DEPEND="virtual/ruby-ssl
-	dev-ruby/activesupport:3.2
-	dev-ruby/activerecord:3.2
+	>=dev-ruby/activesupport-4.0.9:4.0
+	>=dev-ruby/actionpack-4.0.9:4.0
+	>=dev-ruby/activerecord-4.0.9:4.0
 	dev-ruby/bcrypt-ruby
 	dev-ruby/builder:3
 	dev-ruby/bundler
+	=dev-ruby/jsobfu-0.2*
 	dev-ruby/json
 	dev-ruby/kissfft
-	=dev-ruby/metasploit_data_models-0.17.0
-	=dev-ruby/meterpreter_bins-0.0.6
+	=dev-ruby/metasploit_data_models-1.2.5
+	dev-ruby/meterpreter_bins:0.0.22
+	dev-ruby/metasploit-payloads:1.0.9
+	>=dev-ruby/metasploit-credential-1.0.0:1.0
+	>=dev-ruby/metasploit-concern-1.0.0:1.0
+	>=dev-ruby/metasploit-model-1.0.0:1.0
 	dev-ruby/msgpack
 	dev-ruby/nokogiri
+	=dev-ruby/recog-2.0.6:2
 	=dev-ruby/rkelly-remix-0.0.6
 	dev-ruby/sqlite3
 	>=dev-ruby/pg-0.11
 	=dev-ruby/packetfu-1.1.9
-	dev-ruby/rb-readline
+	>=dev-ruby/rubyzip-1.1
+	dev-ruby/rb-readline-r7
 	dev-ruby/robots
 	java? ( dev-ruby/rjb )
-	lorcon? ( net-wireless/lorcon[ruby] )
 	oracle? ( dev-ruby/ruby-oci8 )
 	pcap? ( dev-ruby/pcaprub
 		dev-ruby/network_interface )
 	development? ( dev-ruby/fivemat
+			dev-ruby/pry
 			dev-ruby/redcarpet
 			dev-ruby/yard
 			>=dev-ruby/rake-10.0.0
 			>=dev-ruby/factory_girl-4.1.0 )"
+	#lorcon doesn't support ruby21
+	#lorcon? ( net-wireless/lorcon[ruby] )
 ruby_add_bdepend "${RUBY_COMMON_DEPEND}
 		test? ( >=dev-ruby/factory_girl-4.1.0
 			dev-ruby/fivemat
@@ -71,9 +87,8 @@ ruby_add_rdepend "${RUBY_COMMON_DEPEND}"
 COMMON_DEPEND="dev-db/postgresql[server]
 	>=app-crypt/johntheripper-1.7.9-r1[-minimal]
 	net-analyzer/nmap"
-DEPEND+=" ${COMMON_DEPEND}"
 RDEPEND+=" ${COMMON_DEPEND}
-	>=app-eselect/eselect-metasploit-0.13"
+	>=app-eselect/eselect-metasploit-0.16"
 
 RESTRICT="strip"
 
@@ -82,7 +97,9 @@ QA_PREBUILT="
 	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_armle_linux.bin
 	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x86_solaris.bin
 	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x64_linux.bin
+	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x64_linux_dll.bin
 	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x86_bsd.bin
+	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x64_bsd.bin
 	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_mipsbe_linux.bin
 	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_mipsle_linux.bin
 	usr/$(get_libdir)/${PN}${SLOT}/data/meterpreter/msflinker_linux_x86.bin
@@ -90,6 +107,7 @@ QA_PREBUILT="
 	usr/$(get_libdir)/${PN}${SLOT}/data/meterpreter/ext_server_networkpug.lso
 	usr/$(get_libdir)/${PN}${SLOT}/data/meterpreter/ext_server_stdapi.lso
 	usr/$(get_libdir)/${PN}${SLOT}/data/exploits/CVE-2013-2171.bin
+	usr/$(get_libdir)/${PN}${SLOT}/data/exploits/CVE-2014-3153.elf
 	usr/$(get_libdir)/${PN}${SLOT}/data/android/libs/x86/libndkstager.so
 	usr/$(get_libdir)/${PN}${SLOT}/data/android/libs/mips/libndkstager.so
 	usr/$(get_libdir)/${PN}${SLOT}/data/android/libs/armeabi/libndkstager.so
@@ -113,8 +131,10 @@ all_ruby_unpack() {
 		git-r3_src_unpack
 	else
 		default_src_unpack
-		mv "${WORKDIR}"/all/msf3/* "${WORKDIR}"/all
-		rm -r msf3
+#		mv "${WORKDIR}"/all/msf3/* "${WORKDIR}"/all
+#		rm -r msf3
+		#msf_version=$(grep --color=never "CURRENT_VERSION =" ${S}/spec/lib/msf/core/framework_spec.rb)
+		#msf_version=${msf_version#*=}
 	fi
 }
 
@@ -138,12 +158,14 @@ all_ruby_prepare() {
 	rm Gemfile.lock
 	#The Gemfile contains real known deps
 	#add our dep on upstream rb-readline instead of bundled one
-	sed -i "/gem 'packetfu'/a #use upstream readline instead of bundled\ngem 'rb-readline'" Gemfile || die
+	#and then they broke it...
+	#sed -i "/gem 'packetfu'/a #use upstream readline instead of bundled\ngem 'rb-readline'" Gemfile || die
 	sed -i "/gem 'fivemat'/s/, '1.2.1'//" Gemfile || die
 	#remove the bundled readline
 	#https://github.com/rapid7/metasploit-framework/pull/3105
 	#this PR was closed due to numerous changes to their local fork, almost entirely for non-linux
-	rm lib/rbreadline.rb
+	#but now we have to go back to bundled readline because otherwise it's broken
+	#rm lib/rbreadline.rb
 	#now we edit the Gemfile based on use flags
 	#even if we pass --without=blah bundler still calculates the deps and messes us up
 	if ! use pcap; then
@@ -158,11 +180,13 @@ all_ruby_prepare() {
 	if ! use test && ! use development; then
 		sed -i -e "/^group :development/,/^end$/d" Gemfile || die
 	fi
-	if use test; then
-		#We don't need simplecov
-		sed -i -e "s#gem 'simplecov', '0.5.4', :require => false##" Gemfile || die
-		sed -i -e "s#require 'simplecov'##" spec/spec_helper.rb || die
-	fi
+	#We don't need simplecov
+	sed -i -e "/^group :coverage/,/^end$/d" Gemfile || die
+	sed -i -e "s#require 'simplecov'##" spec/spec_helper.rb || die
+
+	#we need to edit the gemspec too, since it tries to call git instead of anything sane
+	#probably a better way to fix this... if I care at some point
+	sed -i -e "/^  spec.files/,/^  }/d" metasploit-framework.gemspec || die
 
 	#let's bogart msfupdate
 	rm msfupdate
@@ -191,10 +215,10 @@ all_ruby_prepare() {
 }
 
 each_ruby_prepare() {
-	BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
-	BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
+	MSF_ROOT="." BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
+	MSF_ROOT="." BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
 
-	#force all metasploit executables to ruby19, ruby18 is not supported anymore and ruby20 is not supported yet
+	#force all metasploit executables to use desired ruby version
 	#https://dev.metasploit.com/redmine/issues/8357
 	for file in $(ls -1 msf*)
 	do
@@ -248,7 +272,6 @@ all_ruby_install() {
 		#These dirs contain prebuilt binaries for running on the TARGET not the HOST
 		SEARCH_DIRS_MASK="/usr/lib*/${PN}${SLOT}/data/meterpreter"
 		SEARCH_DIRS_MASK="/usr/lib*/${PN}${SLOT}/data/exploits"
-		SEARCH_DIRS_MASK="/usr/lib*/${PN}${SLOT}/data/android/libs"
 	EOF
 }
 
@@ -257,7 +280,7 @@ pkg_postinst() {
 	elog "otherwise you may be missing important environmental variables."
 
 	elog "You need to prepare the database by running:"
-	elog "emerge --config postgresql-server"
+	elog "emerge --config postgresql"
 	elog "/etc/init.d/postgresql-<version> start"
 	elog "emerge --config =metasploit-${PV}"
 

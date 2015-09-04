@@ -1,0 +1,41 @@
+replaces usage of vfs_readdir with iterate_dir. origionally found here:
+https://bugs.gentoo.org/show_bug.cgi?id=508204
+
+diff -Naur vmblock-only/linux/file.c vmblock-only/linux/file.c
+--- vmblock-only/linux/file.c	2013-11-05 23:33:26.000000000 -0500
++++ vmblock-only/linux/file.c	2014-04-26 10:58:03.062635343 -0400
+@@ -166,11 +166,9 @@
+ 
+ static int
+ FileOpReaddir(struct file *file,  // IN
+-              void *dirent,       // IN
+-              filldir_t filldir)  // IN
++		struct dir_context *ctx)
+ {
+    int ret;
+-   FilldirInfo info;
+    struct file *actualFile;
+ 
+    if (!file) {
+@@ -184,11 +182,8 @@
+       return -EINVAL;
+    }
+ 
+-   info.filldir = filldir;
+-   info.dirent = dirent;
+-
+    actualFile->f_pos = file->f_pos;
+-   ret = vfs_readdir(actualFile, Filldir, &info);
++   ret = iterate_dir(actualFile, ctx);
+    file->f_pos = actualFile->f_pos;
+ 
+    return ret;
+@@ -237,7 +232,7 @@
+ 
+ 
+ struct file_operations RootFileOps = {
+-   .readdir = FileOpReaddir,
++   .iterate = FileOpReaddir,
+    .open    = FileOpOpen,
+    .release = FileOpRelease,
+ };

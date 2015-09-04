@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>vmware</herd>
+	<longdescription>
+		VMware kernel modules.
+	</longdescription>
 	<use>
     	<flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
     	<flag name="vmci">Build the Virtual Machine Communication Interface module; disable this if you want to use the module from the mainline kernel</flag>

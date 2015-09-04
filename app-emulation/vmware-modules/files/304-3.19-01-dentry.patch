@@ -1,0 +1,14 @@
+There is an level of abstrxtion in the newre API as of 3.19 here
+--- a/vmnet-only/driver.c	2015-02-07 03:54:17.000000000 +0300
++++ c/vmnet-only/driver.c	2015-02-24 03:58:06.043605137 +0300
+@@ -1191,8 +1191,8 @@
+    struct inode *inode = NULL;
+    long err;
+
+-   if (filp && filp->f_dentry) {
+-      inode = filp->f_dentry->d_inode;
++   if (filp && filp->f_path.dentry) {
++      inode = filp->f_path.dentry->d_inode;
+    }
+    err = VNetFileOpIoctl(inode, filp, iocmd, ioarg);
+    return err;

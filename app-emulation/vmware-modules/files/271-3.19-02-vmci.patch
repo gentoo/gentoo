@@ -1,0 +1,29 @@
+diff -rupN vmci-only/linux/vmciKernelIf.c vmci-only.new/linux/vmciKernelIf.c
+--- vmci-only/linux/vmciKernelIf.c	2015-05-05 11:22:55.276071501 -0400
++++ vmci-only.new/linux/vmciKernelIf.c	2015-05-05 11:23:58.912074950 -0400
+@@ -40,6 +40,7 @@
+ #include <linux/socket.h>       /* For memcpy_{to,from}iovec(). */
+ #include <linux/vmalloc.h>
+ #include <linux/wait.h>
++#include <linux/skbuff.h>
+ 
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+diff -rupN vmci-only/linux/vmciKernelIf.c vmci-only.new/linux/vmciKernelIf.c
+--- vmci-only/linux/vmciKernelIf.c	2013-11-05 23:33:26.000000000 -0500
++++ vmci-only.new/linux/vmciKernelIf.c	2015-05-05 11:21:59.929068500 -0400
+@@ -1246,11 +1246,11 @@ __VMCIMemcpyFromQueue(void *dest,
+       }
+ 
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)dest;
++         struct msghdr *msg = dest;
+          int err;
+ 
+          /* The iovec will track bytesCopied internally. */
+-         err = memcpy_toiovec(iov, (uint8 *)va + pageOffset, toCopy);
++         err = memcpy_to_msg(msg, (uint8 *)va + pageOffset, toCopy);
+          if (err != 0) {
+             kunmap(kernelIf->page[pageIndex]);
+             return VMCI_ERROR_INVALID_ARGS;
+

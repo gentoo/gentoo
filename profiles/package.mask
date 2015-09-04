@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Rick Farina <zerochaos@gentoo.org> (04 Sep 2015)
+# Ancient, please upgrade to ~arch version
+=net-analyzer/metasploit-2.7
+
 # Michael Palimaka <kensington@gentoo.org> (01 Sep 2015)
 # Fails to build (bug #559330). Dead upstream.
 # Masked for removal in 30 days.
