@@ -1,0 +1,318 @@
+From 9638af24a1e890d673549f0b25d854458e07032e Mon Sep 17 00:00:00 2001
+From: Yuli Khodorkovskiy <ykhodorkovskiy@tresys.com>
+Date: Thu, 2 Jul 2015 09:27:36 -0400
+Subject: [PATCH] libsemanage: Add policy binary and file_contexts.local to the
+ store
+
+This patch writes policy.kern and file_contexts.local to the policy store as
+well as /etc/selinux/. Additionally, policy.kern and file_contexts.local
+are now parsed from the store rather than the final directory which was
+the old behavior. This allows all policy related files to be kept in the
+policy store.
+
+This patch also renames /var/lib/selinux/tmp to 'final' and changes
+policy.kern in the store to longer be a symlink.
+
+Signed-off-by: Yuli Khodorkovskiy <ykhodorkovskiy@tresys.com>
+---
+ libsemanage/src/booleans_policydb.c      |  6 ++--
+ libsemanage/src/direct_api.c             | 33 +++++++++++++++----
+ libsemanage/src/interfaces_policydb.c    |  6 ++--
+ libsemanage/src/nodes_policydb.c         |  6 ++--
+ libsemanage/src/ports_policydb.c         |  6 ++--
+ libsemanage/src/semanage_store.c         | 55 ++++++++++++++++++++++++--------
+ libsemanage/src/semanage_store.h         |  5 +++
+ libsemanage/src/users_base_policydb.c    |  6 ++--
+ libsemanage/utils/semanage_migrate_store |  3 +-
+ 9 files changed, 86 insertions(+), 40 deletions(-)
+
+diff --git a/libsemanage/src/booleans_policydb.c b/libsemanage/src/booleans_policydb.c
+index 74af2a3..6869d6c 100644
+--- a/libsemanage/src/booleans_policydb.c
++++ b/libsemanage/src/booleans_policydb.c
+@@ -55,10 +55,8 @@ int bool_policydb_dbase_init(semanage_handle_t * handle,
+ {
+ 
+ 	if (dbase_policydb_init(handle,
+-				semanage_final_path(SEMANAGE_FINAL_SELINUX,
+-						    SEMANAGE_KERNEL),
+-				semanage_final_path(SEMANAGE_FINAL_TMP,
+-						    SEMANAGE_KERNEL),
++				semanage_path(SEMANAGE_ACTIVE, SEMANAGE_STORE_KERNEL),
++				semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL),
+ 				&SEMANAGE_BOOL_RTABLE,
+ 				&SEMANAGE_BOOL_POLICYDB_RTABLE,
+ 				&dconfig->dbase) < 0)
+diff --git a/libsemanage/src/direct_api.c b/libsemanage/src/direct_api.c
+index d57f934..3c6b168 100644
+--- a/libsemanage/src/direct_api.c
++++ b/libsemanage/src/direct_api.c
+@@ -196,10 +196,8 @@ int semanage_direct_connect(semanage_handle_t * sh)
+ 		goto err;
+ 
+ 	if (fcontext_file_dbase_init(sh,
+-				     semanage_final_path(SEMANAGE_FINAL_SELINUX,
+-							 SEMANAGE_FC_LOCAL),
+-				     semanage_final_path(SEMANAGE_FINAL_TMP,
+-							 SEMANAGE_FC_LOCAL),
++				     semanage_path(SEMANAGE_ACTIVE, SEMANAGE_STORE_FC_LOCAL),
++				     semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_FC_LOCAL),
+ 				     semanage_fcontext_dbase_local(sh)) < 0)
+ 		goto err;
+ 
+@@ -1041,7 +1039,7 @@ static int semanage_direct_commit(semanage_handle_t * sh)
+ 	size_t fc_buffer_len = 0;
+ 	const char *ofilename = NULL;
+ 	const char *path;
+-	int retval = -1, num_modinfos = 0, i;
++	int retval = -1, num_modinfos = 0, i, missing_policy_kern = 0;
+ 	sepol_policydb_t *out = NULL;
+ 	struct cil_db *cildb = NULL;
+ 	semanage_module_info_t *modinfos = NULL;
+@@ -1143,8 +1141,20 @@ static int semanage_direct_commit(semanage_handle_t * sh)
+ 	modified |= dontaudit_modified;
+ 	modified |= preserve_tunables_modified;
+ 
++	/* This is for systems that have already migrated with an older version
++	 * of semanage_migrate_store. The older version did not copy policy.kern so
++	 * the policy binary must be rebuilt here.
++	 */
++	if (!sh->do_rebuild && !modified) {
++		path = semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL);
++
++		if (access(path, F_OK) != 0) {
++			missing_policy_kern = 1;
++		}
++	}
++
+ 	/* If there were policy changes, or explicitly requested, rebuild the policy */
+-	if (sh->do_rebuild || modified) {
++	if (sh->do_rebuild || modified || missing_policy_kern) {
+ 		/* =================== Module expansion =============== */
+ 
+ 		retval = semanage_get_active_modules(sh, &modinfos, &num_modinfos);
+@@ -1302,6 +1312,17 @@ static int semanage_direct_commit(semanage_handle_t * sh)
+ 	if (retval < 0)
+ 		goto cleanup;
+ 
++	retval = semanage_copy_policydb(sh);
++	if (retval < 0)
++		goto cleanup;
++
++	path = semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_FC_LOCAL);
++	if (access(path, F_OK) == 0) {
++		retval = semanage_copy_fc_local(sh);
++		if (retval < 0)
++			goto cleanup;
++	}
++
+ 	/* run genhomedircon if its enabled, this should be the last operation
+ 	 * which requires the out policydb */
+ 	if (!sh->conf->disable_genhomedircon) {
+diff --git a/libsemanage/src/interfaces_policydb.c b/libsemanage/src/interfaces_policydb.c
+index 6a42eed..552ce7d 100644
+--- a/libsemanage/src/interfaces_policydb.c
++++ b/libsemanage/src/interfaces_policydb.c
+@@ -51,10 +51,8 @@ int iface_policydb_dbase_init(semanage_handle_t * handle,
+ {
+ 
+ 	if (dbase_policydb_init(handle,
+-				semanage_final_path(SEMANAGE_FINAL_SELINUX,
+-						    SEMANAGE_KERNEL),
+-				semanage_final_path(SEMANAGE_FINAL_TMP,
+-						    SEMANAGE_KERNEL),
++				semanage_path(SEMANAGE_ACTIVE, SEMANAGE_STORE_KERNEL),
++				semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL),
+ 				&SEMANAGE_IFACE_RTABLE,
+ 				&SEMANAGE_IFACE_POLICYDB_RTABLE,
+ 				&dconfig->dbase) < 0)
+diff --git a/libsemanage/src/nodes_policydb.c b/libsemanage/src/nodes_policydb.c
+index 56012fb..7224f00 100644
+--- a/libsemanage/src/nodes_policydb.c
++++ b/libsemanage/src/nodes_policydb.c
+@@ -50,10 +50,8 @@ int node_policydb_dbase_init(semanage_handle_t * handle,
+ {
+ 
+ 	if (dbase_policydb_init(handle,
+-				semanage_final_path(SEMANAGE_FINAL_SELINUX,
+-						    SEMANAGE_KERNEL),
+-				semanage_final_path(SEMANAGE_FINAL_TMP,
+-						    SEMANAGE_KERNEL),
++				semanage_path(SEMANAGE_ACTIVE, SEMANAGE_STORE_KERNEL),
++				semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL),
+ 				&SEMANAGE_NODE_RTABLE,
+ 				&SEMANAGE_NODE_POLICYDB_RTABLE,
+ 				&dconfig->dbase) < 0)
+diff --git a/libsemanage/src/ports_policydb.c b/libsemanage/src/ports_policydb.c
+index b9600f0..37d7deb 100644
+--- a/libsemanage/src/ports_policydb.c
++++ b/libsemanage/src/ports_policydb.c
+@@ -50,10 +50,8 @@ int port_policydb_dbase_init(semanage_handle_t * handle,
+ {
+ 
+ 	if (dbase_policydb_init(handle,
+-				semanage_final_path(SEMANAGE_FINAL_SELINUX,
+-						    SEMANAGE_KERNEL),
+-				semanage_final_path(SEMANAGE_FINAL_TMP,
+-						    SEMANAGE_KERNEL),
++				semanage_path(SEMANAGE_ACTIVE, SEMANAGE_STORE_KERNEL),
++				semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL),
+ 				&SEMANAGE_PORT_RTABLE,
+ 				&SEMANAGE_PORT_POLICYDB_RTABLE,
+ 				&dconfig->dbase) < 0)
+diff --git a/libsemanage/src/semanage_store.c b/libsemanage/src/semanage_store.c
+index 6051691..2856aaf 100644
+--- a/libsemanage/src/semanage_store.c
++++ b/libsemanage/src/semanage_store.c
+@@ -110,10 +110,12 @@ static const char *semanage_sandbox_paths[SEMANAGE_STORE_NUM_PATHS] = {
+ 	"/disable_dontaudit",
+ 	"/preserve_tunables",
+ 	"/modules/disabled",
++	"/policy.kern",
++	"/file_contexts.local"
+ };
+ 
+ static char const * const semanage_final_prefix[SEMANAGE_FINAL_NUM] = {
+-	"/tmp",
++	"/final",
+ 	"",
+ };
+ 
+@@ -943,9 +945,7 @@ int semanage_make_final(semanage_handle_t *sh)
+ 		goto cleanup;
+ 	}
+ 
+-	/* Copy in exported databases.
+-	 * i = 1 to avoid copying the top level directory.
+-	 */
++	// Build final directory structure
+ 	int i;
+ 	for (i = 1; i < SEMANAGE_FINAL_PATH_NUM; i++) {
+ 		if (strlen(semanage_final_path(SEMANAGE_FINAL_TMP, i)) >= sizeof(fn)) {
+@@ -959,12 +959,6 @@ int semanage_make_final(semanage_handle_t *sh)
+ 			status = -1;
+ 			goto cleanup;
+ 		}
+-
+-		semanage_copy_file(
+-			semanage_final_path(SEMANAGE_FINAL_SELINUX, i),
+-			semanage_final_path(SEMANAGE_FINAL_TMP, i),
+-			sh->conf->file_mode);
+-		/* ignore errors, these files may not exist */
+ 	}
+ 
+ cleanup:
+@@ -2019,8 +2013,7 @@ int semanage_read_policydb(semanage_handle_t * sh, sepol_policydb_t * in)
+ 	FILE *infile = NULL;
+ 
+ 	if ((kernel_filename =
+-	     semanage_final_path(SEMANAGE_FINAL_SELINUX,
+-				 SEMANAGE_KERNEL)) == NULL) {
++	     semanage_path(SEMANAGE_ACTIVE, SEMANAGE_STORE_KERNEL)) == NULL) {
+ 		goto cleanup;
+ 	}
+ 	if ((infile = fopen(kernel_filename, "r")) == NULL) {
+@@ -2061,7 +2054,7 @@ int semanage_write_policydb(semanage_handle_t * sh, sepol_policydb_t * out)
+ 	FILE *outfile = NULL;
+ 
+ 	if ((kernel_filename =
+-	     semanage_final_path(SEMANAGE_FINAL_TMP, SEMANAGE_KERNEL)) == NULL) {
++	     semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL)) == NULL) {
+ 		goto cleanup;
+ 	}
+ 	if ((outfile = fopen(kernel_filename, "wb")) == NULL) {
+@@ -2921,3 +2914,39 @@ int semanage_nc_sort(semanage_handle_t * sh, const char *buf, size_t buf_len,
+ 
+ 	return 0;
+ }
++
++int semanage_copy_policydb(semanage_handle_t *sh)
++{
++	const char *src = NULL;
++	const char *dst = NULL;
++	int rc = -1;
++
++	src = semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL);
++	dst = semanage_final_path(SEMANAGE_FINAL_TMP, SEMANAGE_KERNEL);
++
++	rc = semanage_copy_file(src, dst, sh->conf->file_mode);
++	if (rc != 0) {
++		goto cleanup;
++	}
++
++cleanup:
++	return rc;
++}
++
++int semanage_copy_fc_local(semanage_handle_t *sh)
++{
++	const char *src = NULL;
++	const char *dst = NULL;
++	int rc = -1;
++
++	src = semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_FC_LOCAL);
++	dst = semanage_final_path(SEMANAGE_FINAL_TMP, SEMANAGE_FC_LOCAL);
++
++	rc = semanage_copy_file(src, dst, sh->conf->file_mode);
++	if (rc != 0) {
++		goto cleanup;
++	}
++
++cleanup:
++	return rc;
++}
+diff --git a/libsemanage/src/semanage_store.h b/libsemanage/src/semanage_store.h
+index 62c7079..ade43f2 100644
+--- a/libsemanage/src/semanage_store.h
++++ b/libsemanage/src/semanage_store.h
+@@ -55,6 +55,8 @@ enum semanage_sandbox_defs {
+ 	SEMANAGE_DISABLE_DONTAUDIT,
+ 	SEMANAGE_PRESERVE_TUNABLES,
+ 	SEMANAGE_MODULES_DISABLED,
++	SEMANAGE_STORE_KERNEL,
++	SEMANAGE_STORE_FC_LOCAL,
+ 	SEMANAGE_STORE_NUM_PATHS
+ };
+ 
+@@ -148,4 +150,7 @@ int semanage_nc_sort(semanage_handle_t * sh,
+ 		     size_t buf_len,
+ 		     char **sorted_buf, size_t * sorted_buf_len);
+ 
++int semanage_copy_policydb(semanage_handle_t *sh);
++int semanage_copy_fc_local(semanage_handle_t *sh);
++
+ #endif
+diff --git a/libsemanage/src/users_base_policydb.c b/libsemanage/src/users_base_policydb.c
+index 0a6ab9c..b42279c 100644
+--- a/libsemanage/src/users_base_policydb.c
++++ b/libsemanage/src/users_base_policydb.c
+@@ -50,10 +50,8 @@ int user_base_policydb_dbase_init(semanage_handle_t * handle,
+ {
+ 
+ 	if (dbase_policydb_init(handle,
+-				semanage_final_path(SEMANAGE_FINAL_SELINUX,
+-						    SEMANAGE_KERNEL),
+-				semanage_final_path(SEMANAGE_FINAL_TMP,
+-						    SEMANAGE_KERNEL),
++				semanage_path(SEMANAGE_ACTIVE, SEMANAGE_STORE_KERNEL),
++				semanage_path(SEMANAGE_TMP, SEMANAGE_STORE_KERNEL),
+ 				&SEMANAGE_USER_BASE_RTABLE,
+ 				&SEMANAGE_USER_BASE_POLICYDB_RTABLE,
+ 				&dconfig->dbase) < 0)
+diff --git a/libsemanage/utils/semanage_migrate_store b/libsemanage/utils/semanage_migrate_store
+index 2f85e9c..b170eda 100755
+--- a/libsemanage/utils/semanage_migrate_store
++++ b/libsemanage/utils/semanage_migrate_store
+@@ -243,7 +243,8 @@ if __name__ == "__main__":
+ 		"users.local",
+ 		"users_extra.local",
+ 		"disable_dontaudit",
+-		"preserve_tunables" ]
++		"preserve_tunables",
++		"policy.kern" ]
+ 
+ 
+ 	create_dir(newroot_path(), 0o755)
+-- 
+2.4.6
+
