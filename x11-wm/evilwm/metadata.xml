@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+		<description>Proxy-Maintainer. Assign bugs to him</description>
+	</maintainer>
 	<longdescription>
 	A minimalist window manager for the X Window System. It maximises screen 
 	real estate and provides good keyboard control. It is currently based on 
