@@ -1,9 +1,0 @@
-DEFINED_PHASES=configure
-DESCRIPTION=the best variant of the Yacc parser generator
-EAPI=5
-HOMEPAGE=http://invisible-island.net/byacc/byacc.html
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
-LICENSE=public-domain
-SLOT=0
-SRC_URI=ftp://invisible-island.net/byacc/byacc-20140527.tgz
-_md5_=898970a9eaf7dde8a86a766f9357ed06

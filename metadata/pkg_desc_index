@@ -1331,7 +1331,7 @@ app-emulation/virtualbox-guest-additions 4.3.28 4.3.30 5.0.0 5.0.2: VirtualBox k
 app-emulation/virtualbox-modules 4.3.28 4.3.30 5.0.0 5.0.2: Kernel Modules for Virtualbox
 app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
-app-emulation/vmware-modules 271.3 279.1-r1 279.2 279.3: VMware kernel modules
+app-emulation/vmware-modules 271.3 271.3-r1 279.1-r1 279.2 279.3 279.6 304.0 304.2: VMware kernel modules
 app-emulation/vmware-player 5.0.3.1410761 6.0.1.1379776 6.0.2.1744117 6.0.3.1895310: Emulate a complete PC on your PC without the usual performance overhead of most emulators
 app-emulation/vmware-tools 9.2.3.1031769 9.6.1.1379776 9.6.2.1744117: VMware Tools for guest operating systems
 app-emulation/vmware-view-open-client 4.5.0.297975-r1: Open Source VMware View Client
@@ -8020,6 +8020,7 @@ dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all t
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.5.4-r1 0.5.4-r2: Provides POSIX tarchive management from Ruby programs
 dev-ruby/arel 3.0.3 4.0.2 5.0.1.20140414130214 6.0.0 6.0.2: Arel is a Relational Algebra for Ruby
+dev-ruby/arel-helpers 2.0.1: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.2: Processor for converting AsciiDoc source files or strings into HTML 5, DocBook 4.5 and other formats
 dev-ruby/ast 2.0.0 2.1.0: A library for working with abstract syntax trees
@@ -8233,8 +8234,12 @@ dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.3.5: Lightweight and flexible library for writing command-line apps
 dev-ruby/metaclass 0.0.1-r1 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
-dev-ruby/metasploit_data_models 0.17.0: The database layer for Metasploit
-dev-ruby/meterpreter_bins 0.0.6 0.0.10: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
+dev-ruby/metasploit-credential 1.0.0: Code for modeling and managing credentials in Metasploit
+dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
+dev-ruby/metasploit-payloads 1.0.9: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit_data_models 1.2.5: The database layer for Metasploit
+dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.4.3-r1 2.5 2.6.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mimemagic 0.3.0: Fast mime detection by extension or content
@@ -8295,6 +8300,7 @@ dev-ruby/pdf-inspector 1.1.0-r1 1.2.0: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.1.1-r1 1.3.3: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library to perform different operations with permutations of sequences (strings, arrays, etc.)
 dev-ruby/pg 0.14.1 0.17.1 0.17.1-r1 0.18.2: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg_array_parser 0.0.9: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.5 1.1.5-r1 1.1.6: A pkg-config implementation by Ruby
 dev-ruby/plist 3.1.0-r1: A library to manipulate Property List files, also known as plists
 dev-ruby/png 1.2.0-r2 1.2.1: An almost pure-Ruby Portable Network Graphics (PNG) library
@@ -8302,6 +8308,7 @@ dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 
 dev-ruby/poltergeist 1.6.0: A PhantomJS driver for Capybara
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.9 0.3.10 0.3.11: The posix-spawn library aims to implement a subset of the Ruby 1.9 Process::spawn
+dev-ruby/postgres_ext 2.4.1: Adds native PostgreSQL data types to ActiveRecord and querying extensions for ActiveRecord and Arel
 dev-ruby/power_assert 0.2.2 0.2.3 0.2.4: Shows each value of variables and method calls in the expression
 dev-ruby/prawn 1.2.1-r2 1.3.0 2.0.1 2.0.2: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.1 0.2.2: Provides support for tables in Prawn
@@ -8338,12 +8345,14 @@ dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rb-gsl 1.16.0.3 1.16.0.4 1.16.0.5 1.16.0.6: Ruby interface to GNU Scientific Library
 dev-ruby/rb-inotify 0.9.5 0.9.5-r1: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.1 0.5.2 0.5.3: Ruby implementation of the GNU readline C library
+dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
 dev-ruby/rbpdf 1.18.6-r1: Ruby on Rails TCPDF plugin
 dev-ruby/rbtree 0.4.2: Ruby/RBTree module
 dev-ruby/rcairo 1.14.1 1.14.1-r1: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.7 2.1.7.1 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.0.1-r1 4.0.1-r2 4.1.2 4.1.2-r1: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r1 0.6.38-r2: A multipurpose documentation format for Ruby
+dev-ruby/recog 2.0.6: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.2.9-r3 4.2.9-r4: A module for using Textile in Ruby
 dev-ruby/redis 3.0.6 3.0.7 3.2.1: A Ruby client library for Redis
@@ -8431,6 +8440,7 @@ dev-ruby/ruby2ruby 2.1.4 2.2.0: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.6.6 3.7.0 3.7.1: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.2.2 2.2.5 2.2.5-r1 2.4.6 2.4.8: Centralized Ruby extension management system
+dev-ruby/rubyntlm 0.4.0: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r4 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.7.0 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
@@ -12964,7 +12974,7 @@ net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address 
 net-analyzer/masscan 1.0.3-r1: Mass IP port scanner
 net-analyzer/mate-netspeed 1.8.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/metasploit 2.7 4.9.3 9999: Advanced open-source framework for developing, testing, and using vulnerability exploit code
+net-analyzer/metasploit 2.7 4.11.4_p2015090201: Advanced open-source framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.2_p3: Nagios/Icinga event broker module that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.1: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client

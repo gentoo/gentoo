@@ -1,9 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=New GNU Portable Threads Library
-EAPI=5
-HOMEPAGE=http://thread.gmane.org/gmane.comp.encryption.gpg.announce/179
-KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
-LICENSE=GPL-3
-SLOT=0
-SRC_URI=mirror://gnupg/npth/npth-0.91.tar.bz2
-_md5_=1a8b1112a6938650ef4dcdaeb8df4592

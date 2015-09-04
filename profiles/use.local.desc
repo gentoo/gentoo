@@ -4828,7 +4828,6 @@ net-analyzer/icinga2:nano-syntax - Adds support for syntax used in the nano edit
 net-analyzer/icinga2:plugins - Adds support for nagios plugins
 net-analyzer/linkchecker:sqlite - Mozilla Bookmark parsing
 net-analyzer/metasploit:development - Install dependencies needed for metasploit and exploit development
-net-analyzer/metasploit:lorcon - Enable lorcon for raw packet injection
 net-analyzer/metasploit:oracle - Enable restricted oracle modules which have additional deps
 net-analyzer/metasploit:pcap - Enable libpcap for packet sniffing
 net-analyzer/monitoring-plugins:dns - Install net-dns/bind-tools required for monitoring DNS servers. Disabling the flag does not remove any plugins.
