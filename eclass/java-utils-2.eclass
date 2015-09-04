@@ -2203,7 +2203,7 @@ java-pkg_init-compiler_() {
 
 		if has ${compiler} ${JAVA_PKG_FILTER_COMPILER}; then
 			if [[ -z ${JAVA_PKG_FORCE_COMPILER} ]]; then
-				einfo "Filtering ${compiler}"
+				einfo "Filtering ${compiler}" >&2
 				continue
 			fi
 		fi
@@ -2243,10 +2243,10 @@ java-pkg_init-compiler_() {
 	# If it hasn't been defined already, default to javac
 	if [[ -z ${GENTOO_COMPILER} ]]; then
 		if [[ -n ${compilers} ]]; then
-			einfo "No suitable compiler found: defaulting to JDK default for compilation"
+			einfo "No suitable compiler found: defaulting to JDK default for compilation" >&2
 		else
 			# probably don't need to notify users about the default.
-			:;#einfo "Defaulting to javac for compilation"
+			:;#einfo "Defaulting to javac for compilation" >&2
 		fi
 		if java-config -g GENTOO_COMPILER 2> /dev/null; then
 			export GENTOO_COMPILER=$(java-config -g GENTOO_COMPILER)
@@ -2254,7 +2254,7 @@ java-pkg_init-compiler_() {
 			export GENTOO_COMPILER=javac
 		fi
 	else
-		einfo "Using ${GENTOO_COMPILER} for compilation"
+		einfo "Using ${GENTOO_COMPILER} for compilation" >&2
 	fi
 
 }
