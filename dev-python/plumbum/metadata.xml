@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription>
+    A library for shell script-like programs in python,
+    attempting to mimic the shell syntax (shell combinators) where it makes sense,
+    while keeping it all Pythonic and cross-platform.
+  </longdescription>
+</pkgmetadata>
