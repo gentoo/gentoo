@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-ml/pipebang-109.15.00:=
 	>=dev-ml/sexplib-109.20.00:=
 	>=dev-ml/variantslib-109.15.00:=
+	dev-ml/custom_printf:=
 	dev-ml/pa_test:=
 	dev-ml/enumerate:=
 	dev-ml/pa_bench:=

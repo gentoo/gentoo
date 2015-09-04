@@ -18,7 +18,8 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-langcjk-2015
 !<dev-texlive/texlive-langcjk-2014
 "
-RDEPEND="${DEPEND} "
+RDEPEND="${DEPEND} dev-lang/ruby
+"
 TEXLIVE_MODULE_BINSCRIPTS="
 	texmf-dist/scripts/convbkmk/convbkmk.rb
 	texmf-dist/scripts/ptex2pdf/ptex2pdf.lua

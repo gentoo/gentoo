@@ -23,6 +23,5 @@ DEPEND=">=dev-texlive/texlive-basic-2015
 !dev-texlive/texlive-documentation-korean
 !dev-texlive/texlive-documentation-japanese
 "
-RDEPEND="${DEPEND} dev-lang/ruby
-"
+RDEPEND="${DEPEND} "
 TEXLIVE_MODULE_BINSCRIPTS="texmf-dist/scripts/cjk-gs-integrate/cjk-gs-integrate.pl"
