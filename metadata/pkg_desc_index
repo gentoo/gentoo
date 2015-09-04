@@ -6996,7 +6996,7 @@ dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/futures 2.2.0 3.0.2 3.0.3: Backport of the concurrent.futures package from Python 3.2
-dev-python/futurist 0.4.0: Useful additions to futures, from the future.
+dev-python/futurist 0.4.0: Useful additions to futures, from the future
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 1.7 1.8 1.8-r1 1.9: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
 dev-python/gdata 2.0.14 2.0.17-r1 2.0.18: Python client library for Google data APIs
