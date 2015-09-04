@@ -1,0 +1,13 @@
+diff -rupN vmnet-only/vm_device_version.h vmnet-only.new/vm_device_version.h
+--- vmnet-only/vm_device_version.h	2013-11-06 00:40:52.000000000 -0500
++++ vmnet-only.new/vm_device_version.h	2015-05-05 12:03:06.879202223 -0400
+@@ -53,7 +53,9 @@
+  *    VMware HD Audio codec
+  *    VMware HD Audio controller
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+ #define PCI_VENDOR_ID_VMWARE                    0x15AD
++#endif
+ #define PCI_DEVICE_ID_VMWARE_SVGA2              0x0405
+ #define PCI_DEVICE_ID_VMWARE_SVGA               0x0710
+ #define PCI_DEVICE_ID_VMWARE_NET                0x0720

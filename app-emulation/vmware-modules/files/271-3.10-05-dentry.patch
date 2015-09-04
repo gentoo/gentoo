@@ -1,0 +1,34 @@
+starting with kernel 3.6, d_revalidate takes an unsigned int "flags"
+as the second argument, not a nameidata pointer! see fs/namei.c 
+for implementation
+
+diff -Naur vmblock-only/linux/dentry.c vmblock-only/linux/dentry.c
+--- vmblock-only/linux/dentry.c	2013-11-05 23:33:26.000000000 -0500
++++ vmblock-only/linux/dentry.c	2014-04-26 10:58:03.062635343 -0400
+@@ -32,7 +32,7 @@
+ #include "block.h"
+ 
+ 
+-static int DentryOpRevalidate(struct dentry *dentry, struct nameidata *nd);
++static int DentryOpRevalidate(struct dentry *dentry, unsigned int flags);
+ 
+ struct dentry_operations LinkDentryOps = {
+    .d_revalidate = DentryOpRevalidate,
+@@ -60,7 +60,7 @@
+ 
+ static int
+ DentryOpRevalidate(struct dentry *dentry,  // IN: dentry revalidating
+-                   struct nameidata *nd)   // IN: lookup flags & intent
++                   unsigned int flags)   // IN: lookup flags & intent
+ {
+    VMBlockInodeInfo *iinfo;
+    struct nameidata actualNd;
+@@ -101,7 +101,7 @@
+    if (actualDentry &&
+        actualDentry->d_op &&
+        actualDentry->d_op->d_revalidate) {
+-      return actualDentry->d_op->d_revalidate(actualDentry, nd);
++      return actualDentry->d_op->d_revalidate(actualDentry, flags);
+    }
+ 
+    if (compat_path_lookup(iinfo->name, 0, &actualNd)) {

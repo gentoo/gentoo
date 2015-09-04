@@ -1,0 +1,67 @@
+Sources:
+https://531682.bugs.gentoo.org/attachment.cgi?id=396484
+https://531682.bugs.gentoo.org/attachment.cgi?id=396482
+diff -rupN vmblock-only.orig/linux/dentry.c vmblock-only/linux/dentry.c
+--- vmblock-only.orig/linux/dentry.c	2015-02-14 18:05:46.000000000 -0500
++++ vmblock-only/linux/dentry.c	2015-02-14 18:09:59.000000000 -0500
+@@ -63,7 +63,7 @@ DentryOpRevalidate(struct dentry *dentry
+                    unsigned int flags)   // IN: lookup flags & intent
+ {
+    VMBlockInodeInfo *iinfo;
+-   struct nameidata actualNd;
++   struct path actualNd;
+    struct dentry *actualDentry;
+    int ret;
+ 
+diff -rupN vmblock-only.orig/linux/filesystem.c vmblock-only/linux/filesystem.c
+--- vmblock-only.orig/linux/filesystem.c	2014-11-20 19:29:15.000000000 -0500
++++ vmblock-only/linux/filesystem.c	2015-02-14 18:10:49.000000000 -0500
+@@ -322,7 +322,7 @@ Iget(struct super_block *sb,    // IN: f
+ {
+    VMBlockInodeInfo *iinfo;
+    struct inode *inode;
+-   struct nameidata actualNd;
++   struct path actualNd;
+ 
+    ASSERT(sb);
+ 
+diff -rupN vmblock-only.orig/shared/compat_namei.h vmblock-only/shared/compat_namei.h
+--- vmblock-only.orig/shared/compat_namei.h	2014-11-20 19:29:15.000000000 -0500
++++ vmblock-only/shared/compat_namei.h	2015-02-14 18:08:38.000000000 -0500
+@@ -26,21 +26,21 @@
+  * struct. They were both replaced with a struct path.
+  */
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+-#define compat_vmw_nd_to_dentry(nd) (nd).path.dentry
++#define compat_vmw_nd_to_dentry(nd) (nd).dentry
+ #else
+ #define compat_vmw_nd_to_dentry(nd) (nd).dentry
+ #endif
+ 
+ /* In 2.6.25-rc2, path_release(&nd) was replaced with path_put(&nd.path). */
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+-#define compat_path_release(nd) path_put(&(nd)->path)
++#define compat_path_release(nd) path_put(nd)
+ #else
+ #define compat_path_release(nd) path_release(nd)
+ #endif
+ 
+ /* path_lookup was removed in 2.6.39 merge window VFS merge */
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 38)
+-#define compat_path_lookup(name, flags, nd)     kern_path(name, flags, &((nd)->path))
++#define compat_path_lookup(name, flags, nd)     kern_path(name, flags, nd)
+ #else
+ #define compat_path_lookup(name, flags, nd)     path_lookup(name, flags, nd)
+ #endif
+diff -u vmblock-only.orig/linux/file.c vmblock-only/linux/file.c
+--- vmblock-only.orig/linux/file.c	2015-02-11 12:18:29.000000000 -0500
++++ vmblock-only/linux/file.c	2015-02-11 12:41:41.000000000 -0500
+@@ -92,7 +92,7 @@
+     * and that would try to acquire the inode's semaphore; if the two inodes
+     * are the same we'll deadlock.
+     */
+-   if (actualFile->f_dentry && inode == actualFile->f_dentry->d_inode) {
++   if (actualFile->f_path.dentry && inode == actualFile->f_path.dentry->d_inode) {
+       Warning("FileOpOpen: identical inode encountered, open cannot succeed.\n");
+       if (filp_close(actualFile, current->files) < 0) {
+          Warning("FileOpOpen: unable to close opened file.\n");

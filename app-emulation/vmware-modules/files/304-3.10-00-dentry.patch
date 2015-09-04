@@ -1,0 +1,43 @@
+Minor change the API, now it just gets passed flags instead of a pointer to the nameidata
+--- a/vmblock-only/linux/dentry.c	2015-02-07 03:11:55.000000000 +0300
++++ c/vmblock-only/linux/dentry.c	2015-02-24 03:58:06.038605919 +0300
+@@ -32,7 +32,11 @@
+ #include "block.h"
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
+ static int DentryOpRevalidate(struct dentry *dentry, struct nameidata *nd);
++#else
++static int DentryOpRevalidate(struct dentry *dentry, unsigned int);
++#endif
+ 
+ struct dentry_operations LinkDentryOps = {
+    .d_revalidate = DentryOpRevalidate,
+@@ -58,9 +62,12 @@
+  *----------------------------------------------------------------------------
+  */
+ 
+-static int
+-DentryOpRevalidate(struct dentry *dentry,  // IN: dentry revalidating
+-                   struct nameidata *nd)   // IN: lookup flags & intent
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
++static int DentryOpRevalidate(struct dentry *dentry, struct nameidata *nd)
++#else
++static int DentryOpRevalidate(struct dentry *dentry, unsigned int flags)
++#endif
++
+ {
+    VMBlockInodeInfo *iinfo;
+    struct nameidata actualNd;
+@@ -101,7 +108,11 @@
+    if (actualDentry &&
+        actualDentry->d_op &&
+        actualDentry->d_op->d_revalidate) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
++      return actualDentry->d_op->d_revalidate(actualDentry, flags);
++#else
+       return actualDentry->d_op->d_revalidate(actualDentry, nd);
++#endif
+    }
+ 
+    if (compat_path_lookup(iinfo->name, 0, &actualNd)) {
