@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-gcc5.patch
 	)
 
 src_compile() {
