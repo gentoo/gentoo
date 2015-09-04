@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 CDEPEND="
-  >=dev-python/pbr-1.6[${PYTHON_USEDEP}]
+	>=dev-python/pbr-1.6[${PYTHON_USEDEP}]
 	<dev-python/pbr-2.0[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
