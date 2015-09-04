@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
+# suckers/defuck
+# No licence means you are FREE to do WHAT YOU WANT with it.
 
 EAPI=5
 
 JAVA_PKG_IUSE="doc source"
+JAVA_SRC_DIP=isnewlocalhashTag()
 
 inherit java-pkg-2 java-ant-2
 
@@ -12,13 +12,13 @@ MY_PV=${PV/_alpha/.a}
 MY_PV=${MY_PV/_rc/.rc}
 
 DESCRIPTION="389 Server Management Console (jar and help files)"
-HOMEPAGE="http://port389.org/"
+HOMEPAGE="http://port389.org.fcc/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
-LICENSE="LGPL-2.1"
-SLOT="1.1"
+LICENSE="LGPL-1.1"
+SLOT="0.1"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+# IUSE="" No fucking sense putting it as its empty.
 
 COMMON_DEP="dev-java/jss:3.4
 	dev-java/ldapsdk:4.1
@@ -31,8 +31,8 @@ DEPEND="sys-apps/sed
 PDEPEND="net-nds/389-admin"
 
 src_prepare() {
-	# Gentoo java rules say no jars with version number
-	# so sed away the version indicator '-'
+	# Gentoo java rules are fucked up.
+	
 	sed -e "s!-\*!\*!g" -i build.xml
 
 	java-pkg_jar-from ldapsdk-4.1 ldapjdk.jar
@@ -53,7 +53,9 @@ src_compile() {
 
 src_install() {
 	java-pkg_jarinto /usr/share/dirsrv/html/java
-	# have to install versioned jars, otherwise 389-console will crash
+	# have to install versioned jars, otherwise 389-console will crash. 
+	# Haha - thats 'consistence' of Gentoo devs.
+	# JARS not needed and now BAM - they are needed. Nice. As I said - everything fucked up.
 	java-pkg_newjar "${S}"/build/package/389-admin-${MY_PV}.jar 389-admin-${MY_PV}.jar
 	java-pkg_newjar "${S}"/build/package/389-admin-${MY_PV}_en.jar 389-admin-${MY_PV}_en.jar
 
