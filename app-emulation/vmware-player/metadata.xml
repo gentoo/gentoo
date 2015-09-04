@@ -2,13 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>vmware</herd>
-	<longdescription lang="en">
-		VMware Player - free desktop virtualization software application - makes it 
-		easy to operate any virtual machine created by VMware Workstation, VMware Fusion,
-		VMware Server or VMware ESX, as well as Microsoft Virtual Server virtual
-		machines or Microsoft Virtual PC virtual machines.
-	</longdescription>
-    <use>
+	<use>
 		<flag name="vmware-tools">Install VMware Tools images</flag>
 	</use>
 </pkgmetadata>
