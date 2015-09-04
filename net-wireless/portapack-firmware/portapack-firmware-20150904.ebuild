@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Firmware and scripts for controlling the Portapack from Sharebrained"
 HOMEPAGE="https://github.com/sharebrained/portapack-hackrf/releases"
-SRC_URI="https://github.com/sharebrained/portapack-hackrf/releases/download/20150722/portapack-h1-firmware-${PV}.tar.bz2"
+SRC_URI="https://github.com/sharebrained/portapack-hackrf/releases/download/${PV}/portapack-h1-firmware-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
