@@ -27,11 +27,11 @@ RESTRICT="test"
 
 #ruby_add_bdepend "test? ( dev-ruby/sfl dev-ruby/bundler )"
 
-ruby_add_rdepend ">=dev-ruby/sass-3.1 =dev-ruby/sass-3*
-	=dev-ruby/railties-4*
-	>=dev-ruby/sprockets-rails-2.0 <dev-ruby/sprockets-rails-4
-	>=dev-ruby/sprockets-2.8 <dev-ruby/sprockets-4
-	>=dev-ruby/tilt-1.1 =dev-ruby/tilt-1*"
+ruby_add_rdepend ">=dev-ruby/sass-3.1:* =dev-ruby/sass-3*:*
+	=dev-ruby/railties-4*:*
+	>=dev-ruby/sprockets-rails-2.0:* <dev-ruby/sprockets-rails-4:*
+	>=dev-ruby/sprockets-2.8:* <dev-ruby/sprockets-4:*
+	>=dev-ruby/tilt-1.1:* <dev-ruby/tilt-3:*"
 
 each_ruby_test() {
 	${RUBY} -S bundle exec rake test || die

@@ -37,7 +37,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Don't use utempter even if it is found on the system
-	epatch "${FILESDIR}"/4.0.2-no-utempter.patch
+	epatch "${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
 
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
