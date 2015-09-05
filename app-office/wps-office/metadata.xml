@@ -6,7 +6,6 @@
 	<name>Pacho Ramos</name>
 </maintainer>
 <use>
-	<flag name="corefonts">Ensure <pkg>media-fonts/corefonts</pkg> is present</flag>
 	<flag name="sharedfonts">Preserve fonts from WPS</flag>
 </use>
 </pkgmetadata>

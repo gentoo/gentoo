@@ -40,12 +40,12 @@ SRC_URI="
 SLOT="0"
 RESTRICT="strip mirror" # mirror as explained at bug #547372
 LICENSE="WPS-EULA"
-IUSE="corefonts +sharedfonts"
+IUSE="+sharedfonts"
 
 UNBUNDLED_LIBS="
-	dev-qt/qtwebkit:4
-	media-libs/tiff:3
 "
+#	media-libs/tiff:3
+#	dev-qt/qtwebkit:4
 #	dev-qt/qtcore:4
 #	dev-qt/qtdbus:4
 #	media-libs/phonon
@@ -84,7 +84,6 @@ NATIVE_DEPEND="
 RDEPEND="
 	${UNBUNDLED_LIBS}
 	${NATIVE_DEPEND}
-	corefonts? ( media-fonts/corefonts )
 	net-nds/openldap
 	dev-db/sqlite:3
 "
@@ -99,9 +98,9 @@ src_prepare() {
 #	rm -f libQtCore.so* || die
 #	rm -f libQtDBus.so* || die
 #	rm -f libQtNetwork.so || die
-	rm -f libQtWebKit.so* || die
+#	rm -f libQtWebKit.so* || die
 #	rm -f libphonon.so*
-	rm -f libtiff.so.4* || die
+#	rm -f libtiff.so.4* || die
 }
 
 src_install() {
