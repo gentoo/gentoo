@@ -6,9 +6,8 @@ EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
-VALA_MIN_API_VERSION="0.18"
 
-inherit autotools bash-completion-r1 check-reqs eutils gnome2 multilib-minimal user systemd udev vala
+inherit autotools bash-completion-r1 check-reqs eutils gnome2 user systemd udev vala multilib-minimal
 
 DESCRIPTION="System service to accurately color manage input and output devices"
 HOMEPAGE="http://www.freedesktop.org/software/colord/"
@@ -16,7 +15,7 @@ SRC_URI="http://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/2" # subslot = libcolord soname version
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 # We prefer policykit enabled by default, bug #448058
 IUSE="argyllcms examples extra-print-profiles +gusb +introspection +policykit scanner systemd +udev vala"
@@ -32,7 +31,7 @@ COMMON_DEPEND="
 	>=media-libs/lcms-2.6:2=[${MULTILIB_USEDEP}]
 	argyllcms? ( media-gfx/argyllcms )
 	gusb? ( >=dev-libs/libgusb-0.2.2[introspection?,${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.8 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.8:= )
 	policykit? ( >=sys-auth/polkit-0.103 )
 	scanner? (
 		media-gfx/sane-backends

@@ -1,0 +1,31 @@
+--- Makefile.am.old	2015-09-06 00:16:38.997836415 +0800
++++ Makefile.am	2015-09-06 01:05:00.376009752 +0800
+@@ -133,6 +133,7 @@
+ 	$(CCLD) -o tests/cgm-concurrent tests/cgm-concurrent.o \
+ 		$(NIH_LIBS) $(NIH_DBUS_LIBS) $(DBUS_LIBS) -lpthread -lcgmanager
+ 
++if HAVE_PAMMODULE
+ pam_LTLIBRARIES = pam_cgm.la
+ pam_cgm_la_SOURCES = pam/pam_cgm.c pam/cgmanager.c pam/cgmanager.h
+ pam_cgm_la_CFLAGS = $(AM_CFLAGS)
+@@ -145,4 +146,6 @@
+ 	rm -f "$(DESTDIR)$(pamdir)/pam_cgm.a"
+ uninstall-local:
+ 	rm -f "$(DESTDIR)$(pamdir)/pam_cgm.so"
++endif
++
+ tests: TESTS_CGM_CONCURRENT TESTS_SCM TEST_NSTEST
+--- configure.ac.old	2015-09-06 00:55:48.262972928 +0800
++++ configure.ac	2015-09-06 01:04:19.683301852 +0800
+@@ -127,6 +127,11 @@
+ 
+ AS_AC_EXPAND(SBINDIR, "$sbindir")
+ 
++AC_ARG_ENABLE(pam-module,
++	[AS_HELP_STRING([--enable-pam-module],[build PAM module])],
++	, enable_pam_module=no)
++AM_CONDITIONAL([HAVE_PAMMODULE], [test "x$enable_pam_module" != "xno" ])
++
+ AC_ARG_WITH(
+ 	[pamdir],
+ 	[AS_HELP_STRING([--with-pamdir=PATH],[Specify the directory where PAM modules are stored])],
