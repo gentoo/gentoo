@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,21 +13,21 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gtk"
 
 RDEPEND="
-	>=net-misc/networkmanager-0.9.6
+	>=net-misc/networkmanager-0.9.10:=
 	>=dev-libs/dbus-glib-0.74
 	>=dev-libs/glib-2.32:2
 	net-dialup/ppp:=
 	net-dialup/pptpclient
 	gtk? (
 		app-crypt/libsecret
-		>=gnome-extra/nm-applet-0.9.9.0
+		>=gnome-extra/nm-applet-1.0.5
 		>=x11-libs/gtk+-3.4:3
-	)"
-
+	)
+"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/intltool

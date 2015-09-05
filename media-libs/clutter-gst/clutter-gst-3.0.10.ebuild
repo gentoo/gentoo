@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	>=media-libs/gst-plugins-bad-1.4:1.0
 	>=media-libs/gst-plugins-base-1.4:1.0[introspection?]
 	virtual/libgudev
-	introspection? ( >=dev-libs/gobject-introspection-0.6.8 )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.8:= )
 "
 # uses goom from gst-plugins-good
 RDEPEND="${COMMON_DEPEND}
