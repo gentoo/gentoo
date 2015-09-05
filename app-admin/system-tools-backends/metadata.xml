@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<herd>lxqt</herd>
 <longdescription lang="en">
 The System Tools Backends are a set of cross-platform modules for Linux,
 FreeBSD, Solaris and other Unix systems. The backends provide an common DBus
