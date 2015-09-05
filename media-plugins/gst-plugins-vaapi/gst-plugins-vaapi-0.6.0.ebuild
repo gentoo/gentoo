@@ -12,7 +12,7 @@ SRC_URI="http://www.freedesktop.org/software/vaapi/releases/${MY_PN}/${MY_PN}-${
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+drm opengl wayland +X"
 REQUIRED_USE="|| ( drm opengl wayland X )"
 
