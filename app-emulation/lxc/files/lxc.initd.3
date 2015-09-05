@@ -111,29 +111,8 @@ stop() {
 	    return 0
 	fi
 
-	init_pid=$(lxc-info -n ${CONTAINER} --pid | awk '{ print $2 }')
-
-	if [ -z "${init_pid}" ]; then
-	    ewarn "${CONTAINER} doesn't seem to be running."
-	    return 0
-	fi
-
-	ebegin "Shutting down system in ${CONTAINER}"
-	kill -PWR ${init_pid}
-	eend $?
-
-	TIMEOUT=${TIMEOUT:-30}
-	i=0
-	while [ -n "$(pgrep -P ${init_pid})" -a $i -lt ${TIMEOUT} ]; do
-		sleep 1
-		i=$(expr $i + 1)
-	done
-
-	if [ -n "${missingprocs}" ]; then
-		ewarn "Something failed to properly shut down in ${CONTAINER}"
-	fi
-
+	# 10s should be enough to shut everything down
 	ebegin "Stopping ${CONTAINER}"
-	lxc-stop -n ${CONTAINER}
+	lxc-stop -t 10 -n ${CONTAINER}
 	eend $?
 }

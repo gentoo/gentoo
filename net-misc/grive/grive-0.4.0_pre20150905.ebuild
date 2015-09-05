@@ -8,15 +8,15 @@ inherit cmake-utils
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-2
-	EGIT_REPO_URI="git://github.com/linwiz/${PN}.git"
+	EGIT_REPO_URI="git://github.com/vitalif/${PN}2.git"
 else
 	inherit vcs-snapshot
-	COMMIT="afd106ff47758d74daac4db35002e5e0d8d4d389"
-	SRC_URI="https://github.com/linwiz/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	COMMIT="5dc7028c8aebb26d35ed31c4b07ac180cc1887c9"
+	SRC_URI="https://github.com/vitalif/${PN}2/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 
-DESCRIPTION="an open source Linux client for Google Drive"
-HOMEPAGE="http://www.lbreda.com/grive/"
+DESCRIPTION="An open source Linux client for Google Drive"
+HOMEPAGE="https://github.com/vitalif/grive2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,8 +31,5 @@ RDEPEND="
 	net-misc/curl
 	sys-libs/glibc
 	dev-libs/yajl
-	"
-
+"
 DEPEND="${RDEPEND}"
-
-DOCS=( "README" )
