@@ -24,5 +24,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.50.1
+	sys-devel/gettext
 	virtual/pkgconfig
 "
