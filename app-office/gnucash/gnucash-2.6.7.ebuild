@@ -4,6 +4,7 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
+GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools eutils gnome2 python-single-r1
@@ -14,13 +15,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
-IUSE="chipcard debug +doc hbci mysql ofx postgres python quotes sqlite"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
 RDEPEND="
-	>=app-crypt/libsecret-0.18
 	>=dev-libs/glib-2.32.0:2
 	>=dev-libs/popt-1.5
 	>=dev-libs/libxml2-2.5.10:2
@@ -33,6 +33,7 @@ RDEPEND="
 	>=x11-libs/gtk+-2.24:2
 	>=x11-libs/goffice-0.7.0:0.8[gnome]
 	x11-libs/pango
+	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	ofx? ( >=dev-libs/libofx-0.9.1 )
 	hbci? ( >=net-libs/aqbanking-5[gtk,ofx?]
 		sys-libs/gwenhywfar[gtk]
@@ -48,13 +49,11 @@ RDEPEND="
 	mysql? ( dev-db/libdbi dev-db/libdbi-drivers[mysql] )
 "
 DEPEND="${RDEPEND}
-	>=app-text/scrollkeeper-0.3
 	virtual/pkgconfig
 	dev-util/intltool
 	gnome-base/gnome-common
 	sys-devel/libtool
 "
-
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
 pkg_setup() {
@@ -93,6 +92,7 @@ src_configure() {
 	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
 	gnome2_src_configure \
 		$(use_enable debug) \
+		$(use_enable gnome-keyring password-storage) \
 		$(use_enable ofx) \
 		$(use_enable hbci aqbanking) \
 		$(use_enable python) \
