@@ -15,15 +15,12 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
 SLOT="2.0"
 IUSE="+bogofilter crypt highlight ldap map spamassassin spell ssl +weather"
-# Needs x11-libs/libcryptui keyworded
-#KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
 # password from inside evolution, bug 160302
-PINENTRY_DEPEND="|| ( app-crypt/pinentry[gtk] app-crypt/pinentry[qt4] )"
+PINENTRY_DEPEND="|| ( app-crypt/pinentry[gnome-keyring] app-crypt/pinentry[gtk] app-crypt/pinentry[qt4] )"
 
-# gtk+-3.16 needed for gtk_drag_cancel
 # glade-3 support is for maintainers only per configure.ac
 # pst is not mature enough and changes API/ABI frequently
 # dconf explicitely needed for backup plugin
@@ -33,7 +30,7 @@ PINENTRY_DEPEND="|| ( app-crypt/pinentry[gtk] app-crypt/pinentry[qt4] )"
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.4
 	>=app-text/enchant-1.1.7
-	>=dev-libs/glib-2.40:2
+	>=dev-libs/glib-2.40:2[dbus]
 	>=dev-libs/libgdata-0.10:=
 	>=dev-libs/libxml2-2.7.3:2
 	>=gnome-base/gnome-desktop-2.91.3:3=
@@ -44,7 +41,7 @@ COMMON_DEPEND="
 	>=net-libs/webkit-gtk-2.2:3
 	>=x11-libs/cairo-1.9.15:=[glib]
 	>=x11-libs/gdk-pixbuf-2.24:2
-	>=x11-libs/gtk+-3.16:3
+	>=x11-libs/gtk+-3.10:3
 	>=x11-libs/libnotify-0.7:=
 	>=x11-misc/shared-mime-info-0.22
 
@@ -76,6 +73,7 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.40.0
+	dev-util/itstool
 	virtual/pkgconfig
 "
 # eautoreconf needs:
@@ -109,9 +107,7 @@ file from /usr/share/applications if you use a different browser)."
 src_prepare() {
 	# Fix relink issues in src_install
 	ELTCONF="--reverse-deps"
-
 	gnome2_src_prepare
-
 }
 
 src_configure() {
@@ -136,8 +132,7 @@ src_configure() {
 			--without-nspr-includes
 			--without-nss-libs
 			--without-nss-includes") \
-		$(use_enable weather) \
-		ITSTOOL=$(type -P true)
+		$(use_enable weather)
 }
 
 src_install() {
