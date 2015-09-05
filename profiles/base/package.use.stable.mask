@@ -91,10 +91,6 @@ sys-apps/systemd ssl
 # Clang is not stable
 app-portage/eix clang
 
-# Pacho Ramos <pacho@gentoo.org> (17 Nov 2013)
-# Still needs gnutls-3
->=net-nntp/pan-0.139 ssl
-
 # Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
 # sys-cluster/cman is still in ~arch.
 sys-cluster/pacemaker cman
