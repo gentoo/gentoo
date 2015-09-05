@@ -162,6 +162,9 @@ fcaps() {
 						: $(( ++notfound ))
 						continue
 						;;
+					# ENOTSUP and EOPNOTSUPP might be the same value which means
+					# strerror() on them is unstable -- we can get both. #559608
+					*"Not supported"*|\
 					*"Operation not supported"*)
 						local fstype=$(stat -f -c %T "${file}")
 						ewarn "Could not set caps on '${file}' due to missing filesystem support:"
