@@ -15,12 +15,13 @@ HOMEPAGE="https://github.com/rapid7/${PN}"
 
 LICENSE="BSD-2"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/nokogiri"
 
 ruby_add_bdepend "test? (
+	dev-ruby/regexp_parser
 	dev-ruby/rspec:3
 	dev-util/aruba
 	dev-util/cucumber
