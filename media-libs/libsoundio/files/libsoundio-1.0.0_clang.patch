@@ -1,0 +1,32 @@
+From 85c219067579e299f9faddd2c24836cf96cc245b Mon Sep 17 00:00:00 2001
+From: Andrew Kelley <superjoe30@gmail.com>
+Date: Thu, 3 Sep 2015 14:05:19 -0700
+Subject: [PATCH] build: fix build on linux with clang
+
+closes #8
+---
+ src/alsa.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/alsa.cpp b/src/alsa.cpp
+index 18ef1de..8e779a6 100644
+--- a/src/alsa.cpp
++++ b/src/alsa.cpp
+@@ -1016,7 +1016,7 @@ static int instream_wait_for_poll(SoundIoInStreamPrivate *is) {
+     }
+ }
+ 
+-void outstream_thread_run(void *arg) {
++static void outstream_thread_run(void *arg) {
+     SoundIoOutStreamPrivate *os = (SoundIoOutStreamPrivate *) arg;
+     SoundIoOutStream *outstream = &os->pub;
+     SoundIoOutStreamAlsa *osa = &os->backend_data.alsa;
+@@ -1367,7 +1367,7 @@ static int outstream_start_alsa(SoundIoPrivate *si, SoundIoOutStreamPrivate *os)
+     return 0;
+ }
+ 
+-int outstream_begin_write_alsa(SoundIoPrivate *si, SoundIoOutStreamPrivate *os,
++static int outstream_begin_write_alsa(SoundIoPrivate *si, SoundIoOutStreamPrivate *os,
+         struct SoundIoChannelArea **out_areas, int *frame_count)
+ {
+     *out_areas = nullptr;
