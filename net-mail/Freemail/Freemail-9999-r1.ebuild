@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 EGIT_REPO_URI="git://github.com/freenet/plugin-Freemail-official.git
 	https://github.com/freenet/plugin-Freemail-official.git"
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-CDEPEND="dev-java/bcprov:0
+CDEPEND="dev-java/bcprov:1.38
 	net-p2p/freenet"
 DEPEND="${CDEPEND}
 	>=virtual/jdk-1.5"
@@ -27,13 +27,14 @@ RDEPEND="${CDEPEND}
 	>=virtual/jre-1.5"
 
 EANT_GENTOO_CLASSPATH="bcprov freenet"
+
 src_prepare() {
 	epatch "${FILESDIR}"/build.patch
 	java-ant_rewrite-classpath
 }
 
 src_install() {
-	java-pkg_dojar dist/Freemail.jar
+	java-pkg_dojar dist/"${PN}.jar"
 	dodir /var/freenet/plugins
 	fperms freenet:freenet /var/freenet/plugins
 	dodoc README || die "installation of documentation failed"
