@@ -1058,7 +1058,6 @@ app-office/skrooge:activities - Enable kactivities support
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/texmacs:pdf - Add the experimental native pdf export
 app-office/texstudio:video - Use phonon for video embedding
-app-office/wps-office:corefonts - Ensure media-fonts/corefonts is present
 app-office/wps-office:sharedfonts - Preserve fonts from WPS
 app-pda/barry:boost - Enable boost support
 app-pda/barry:desktop - Install the GUI desktop control panel
