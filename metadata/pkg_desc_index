@@ -12053,7 +12053,7 @@ media-plugins/gst-plugins-taglib 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer taglib bas
 media-plugins/gst-plugins-theora 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
 media-plugins/gst-plugins-v4l2 0.10.31-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-vaapi 0.5.10: Hardware accelerated video decoding through VA-API plugin
+media-plugins/gst-plugins-vaapi 0.5.10 0.6.0: Hardware accelerated video decoding through VA-API plugin
 media-plugins/gst-plugins-voaacenc 1.2.4-r1 1.4.5: GStreamer plugin for encoding AAC
 media-plugins/gst-plugins-voamrwbenc 1.2.4-r1 1.4.5: GStreamer plugin for encoding AMR-WB
 media-plugins/gst-plugins-vorbis 0.10.36 0.10.36-r1: plugin for gstreamer
