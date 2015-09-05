@@ -8020,7 +8020,7 @@ dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all t
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.5.4-r1 0.5.4-r2: Provides POSIX tarchive management from Ruby programs
 dev-ruby/arel 3.0.3 4.0.2 5.0.1.20140414130214 6.0.0 6.0.2: Arel is a Relational Algebra for Ruby
-dev-ruby/arel-helpers 2.0.1: Tools to help construct database queries
+dev-ruby/arel-helpers 2.0.1 2.1.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.2: Processor for converting AsciiDoc source files or strings into HTML 5, DocBook 4.5 and other formats
 dev-ruby/ast 2.0.0 2.1.0: A library for working with abstract syntax trees
@@ -8352,10 +8352,11 @@ dev-ruby/rcairo 1.14.1 1.14.1-r1: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.7 2.1.7.1 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.0.1-r1 4.0.1-r2 4.1.2 4.1.2-r1: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r1 0.6.38-r2: A multipurpose documentation format for Ruby
-dev-ruby/recog 2.0.6: Pattern recognition for hosts, services, and content
+dev-ruby/recog 2.0.6 2.0.12: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.2.9-r3 4.2.9-r4: A module for using Textile in Ruby
 dev-ruby/redis 3.0.6 3.0.7 3.2.1: A Ruby client library for Redis
+dev-ruby/regexp_parser 0.3.1: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/request_store 1.0.5 1.1.0 1.2.0: Per-request global storage for Rack
 dev-ruby/require_relative 1.0.3-r1: Backport require_relative from ruby 1.9.2
 dev-ruby/rest-client 1.8.0 1.8.0-r1: Simple Simple HTTP and REST client for Ruby
@@ -8440,7 +8441,7 @@ dev-ruby/ruby2ruby 2.1.4 2.2.0: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.6.6 3.7.0 3.7.1: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.2.2 2.2.5 2.2.5-r1 2.4.6 2.4.8: Centralized Ruby extension management system
-dev-ruby/rubyntlm 0.4.0: Ruby/NTLM provides message creator and parser for the NTLM authentication.
+dev-ruby/rubyntlm 0.4.0 0.5.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r4 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.7.0 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
