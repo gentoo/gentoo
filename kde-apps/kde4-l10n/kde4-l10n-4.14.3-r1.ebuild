@@ -13,9 +13,9 @@ HOMEPAGE="http://l10n.kde.org"
 DEPEND="
 	sys-devel/gettext
 "
-RDEPEND="!<kde-base/konq-plugins-4.6"
+RDEPEND=""
 
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="minimal"
 
 # /usr/portage/distfiles $ ls -1 kde-l10n-*-${PV}.* |sed -e 's:-${PV}.tar.xz::' -e 's:kde-l10n-::' |tr '\n' ' '
@@ -34,7 +34,6 @@ done
 S="${WORKDIR}"
 
 src_unpack() {
-	local LNG DIR
 	if [[ -z ${A} ]]; then
 		elog
 		elog "You either have the LINGUAS variable unset, or it only"
@@ -47,8 +46,10 @@ src_unpack() {
 	fi
 
 	[[ -n ${A} ]] && unpack ${A}
-	cd "${S}"
+}
 
+src_prepare() {
+	local LNG DIR
 	# add all linguas to cmake
 	if [[ -n ${A} ]]; then
 		for LNG in ${LINGUAS}; do
@@ -58,22 +59,18 @@ src_unpack() {
 			fi
 		done
 	fi
-}
-
-src_prepare() {
 	find "${S}" -name CMakeLists.txt -type f \
 		-exec sed -i -e 's:^ *add_subdirectory( *kdepim-runtime *):# no kdepim-runtime:g' {} +
 	find "${S}" -name CMakeLists.txt -type f \
 		-exec sed -i -e 's:^ *add_subdirectory( *kdepim *):# no kdepim:g' {} +
+	find "${S}" -name CMakeLists.txt -type f \
+		-exec sed -i -e 's:^ *add_subdirectory( *kdepimlibs *):# no kdepimlibs:g' {} +
 
-	# quick workaround for bug 493278
-	find "${S}" -name "akonadi_knut_resource*" -delete
+	# Drop translations that get installed with plasma 5 and kde apps 5 packages
+	if use minimal; then
 
-				# Drop translations that get installed with plasma 5 and kde apps 5 packages
-				if use minimal; then
-
-					# KDE Workspace 4
-					rm -f "${S}"/*/messages/kde-workspace/{freespacenotifier,\
+		# KDE Workspace 4
+		rm -f "${S}"/*/messages/kde-workspace/{freespacenotifier,\
 joystick,kaccess,kcmaccess,kcm_autostart,kcmbell,kcmcolors,kcm_desktoppaths,\
 kcm_desktopthemedetails,kcmdevinfo,kcmfonts,kcm_infobase,kcminfo,\
 kcm_infosummary,kcminit,kcminput,kcmkclock,kcmkeyboard,kcmkeys,\
@@ -99,8 +96,8 @@ plasma_runner_webshortcuts,plasma_runner_windowedwidgets,plasma_runner_windows,\
 powerdevilactivitiesconfig,powerdevilglobalconfig,powerdevil,\
 powerdevilprofilesconfig,processcore,processui,systemsettings}.po
 
-					# KDE Runtime 4
-					rm -f "${S}"/*/messages/kde-runtime/{attica_kde,drkonqi,\
+		# KDE Runtime 4
+		rm -f "${S}"/*/messages/kde-runtime/{attica_kde,drkonqi,\
 filetypes,htmlsearch,kcmcomponentchooser,kcm_emoticons,kcmhtmlsearch,\
 kcmicons,kcmkded,kcmnotify,kcm_phonon,kcmshell,kdesu,kglobalaccel,\
 khelpcenter,kio_applications,kio_archive,kio_bookmarks,kioclient,\
@@ -108,8 +105,8 @@ kio_fish,kio_info,kio_man,kio_nfs,kio_recentdocuments,kio_remote,\
 kio_sftp,kio_smb,kio_thumbnail,kmimetypefinder,knetattach,kstart,\
 ktraderclient,phonon_kde,soliduiserver}.po
 
-					# KDE Plasma Addons 4
-					rm -f "${S}"/*/messages/kdeplasma-addons/{konqprofiles,\
+		# KDE Plasma Addons 4
+		rm -f "${S}"/*/messages/kdeplasma-addons/{konqprofiles,\
 konsoleprofiles,lancelot,liblancelot-datamodels,libplasma_groupingcontainment,\
 libplasmaweather,plasma_applet_binaryclock,plasma_applet_bookmarks,\
 plasma_applet_bubblemon,plasma_applet_CharSelectApplet,plasma_applet_comic,\
@@ -130,14 +127,14 @@ plasma_runner_konquerorsessions,plasma_runner_konsolesessions,\
 plasma_runner_kopete,plasma_runner_krunner_dictionary,plasma_runner_mediawiki,\
 plasma_runner_spellcheckrunner,plasma_runner_translator,plasma_runner_youtube}.po
 
-					# KDELIBS 4
-					rm -f "${S}"/*/messages/kdelibs/{akonadi_baloo_indexer,\
+		# KDELIBS 4
+		rm -f "${S}"/*/messages/kdelibs/{akonadi_baloo_indexer,\
 baloo_file,baloo_file_extractor,baloosearch,balooshow,kcm_baloofile,kfilemetadata,\
 kio_baloosearch,kio_tags,kio_timeline,plasma_runner_baloosearchrunner}.po
 
-					# KDE Applications 4
-					rm -f "${S}"/*/messages/applications/useraccount.po
-				fi
+		# KDE Applications 4
+		rm -f "${S}"/*/messages/applications/useraccount.po
+	fi
 
 	kde4-base_src_prepare
 }

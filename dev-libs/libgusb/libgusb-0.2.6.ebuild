@@ -9,12 +9,12 @@ VALA_USE_DEPEND="vapigen"
 inherit eutils gnome2 multilib-minimal vala
 
 DESCRIPTION="GObject wrapper for libusb"
-HOMEPAGE="https://gitorious.org/gusb/"
+HOMEPAGE="https://github.com/hughsie/libgusb"
 SRC_URI="http://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="+introspection static-libs vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -22,11 +22,10 @@ REQUIRED_USE="vala? ( introspection )"
 # Yes, we really need API from dev-libs/libusb-1.0.19, not virtual/libusb
 RDEPEND="
 	>=dev-libs/glib-2.28:2[${MULTILIB_USEDEP}]
-	>=dev-libs/libusb-1.0.19[udev,${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-1.29 )
+	virtual/libusb:1[udev,${MULTILIB_USEDEP}]
+	introspection? ( >=dev-libs/gobject-introspection-1.29:= )
 "
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
 	dev-libs/libxslt
 	dev-util/gtk-doc-am
 	virtual/pkgconfig[${MULTILIB_USEDEP}]

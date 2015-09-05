@@ -30,14 +30,9 @@ RDEPEND="
 	$(add_kdebase_dep libkdepim)
 	$(add_kdebase_dep libkleo)
 	$(add_kdebase_dep libkpgp)
-	nls? ( || (
-		(
-			$(add_kdeapps_dep kde4-l10n '' 15.04.0)
-		)
-		(
-			$(add_kdeapps_dep kde4-l10n '' 4.14.3)
-			$(add_kdebase_dep kdepim-l10n '' 4.4.11.1-r1)
-		)
-	) )
+	nls? (
+		$(add_kdeapps_dep kde4-l10n '' 4.14.3)
+		$(add_kdebase_dep kdepim-l10n '' 4.4.11.1-r1)
+	)
 	!kde-base/kdepim-runtime
 "

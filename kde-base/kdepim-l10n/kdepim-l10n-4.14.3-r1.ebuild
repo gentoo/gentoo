@@ -13,14 +13,19 @@ HOMEPAGE="http://l10n.kde.org"
 DEPEND="
 	sys-devel/gettext
 "
-RDEPEND=""
+RDEPEND="
+	!<kde-apps/kde-l10n-15.08.0-r1
+	!<kde-apps/kde4-l10n-4.14.3-r1
+"
 
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 MY_LANGS="ar bg bs ca ca@valencia cs da de el en_GB es et eu fa fi fr ga gl he
 hi hr hu ia id is it ja kk km ko lt lv mr nb nds nl nn pa pl pt pt_BR ro ru sk
 sl sr sv tr ug uk wa zh_CN zh_TW"
+
+PIM_L10N="kdepim kdepimlibs kdepim-runtime"
 
 URI_BASE="${SRC_URI/-${PV}.tar.xz/}"
 SRC_URI=""
@@ -33,7 +38,6 @@ done
 S="${WORKDIR}"
 
 src_unpack() {
-	local LNG DIR
 	if [[ -z ${A} ]]; then
 		elog
 		elog "You either have the LINGUAS variable unset, or it only"
@@ -47,8 +51,10 @@ src_unpack() {
 
 	# For EAPI >= 3, or if not using .tar.xz archives:
 	[[ -n ${A} ]] && unpack ${A}
-	cd "${S}"
+}
 
+src_prepare() {
+	local LNG DIR
 	# add all linguas to cmake
 	if [[ -n ${A} ]]; then
 		for LNG in ${LINGUAS}; do
@@ -57,38 +63,41 @@ src_unpack() {
 				echo "add_subdirectory( ${DIR} )" >> "${S}"/CMakeLists.txt
 			fi
 
-			# remove everything except kdepim and kdepim-runtime
+			# Remove everything except subdirs defined in PIM_L10N
 			for SUBDIR in data docs messages scripts ; do
 				if [[ -d "${S}/${DIR}/${SUBDIR}" ]] ; then
 					einfo "   ${SUBDIR} subdirectory"
 					echo > "${S}/${DIR}/${SUBDIR}/CMakeLists.txt"
-					[[ -d "${S}/${DIR}/${SUBDIR}/kdepim" ]] && ( echo "add_subdirectory(kdepim)" >> "${S}/${DIR}/${SUBDIR}/CMakeLists.txt" )
-					[[ -d "${S}/${DIR}/${SUBDIR}/kdepim-runtime" ]] && ( echo "add_subdirectory(kdepim-runtime)" >> "${S}/${DIR}/${SUBDIR}/CMakeLists.txt" )
+					for pim in ${PIM_L10N}; do
+						[[ -d "${S}/${DIR}/${SUBDIR}/${pim}" ]] && \
+							( echo "add_subdirectory(${pim})" >> "${S}/${DIR}/${SUBDIR}/CMakeLists.txt" )
+					done
 				fi
 			done
 
-			# in some cases we may have sub-lingua subdirs, e.g. sr :(
+			# In some cases we may have sub-lingua subdirs, e.g. sr :(
 			for XSUBDIR in "${S}/${DIR}/${LNG}"@* ; do
 				XLNG=$(echo ${XSUBDIR}|sed -e 's:^.*/::')
 				if [[ -d "${XSUBDIR}" ]] ; then
 					einfo "   ${XLNG} variant"
-					# remove everything except kdepim and kdepim-runtime
+					# Remove everything except subdirs defined in PIM_L10N
 					for SUBDIR in data docs messages scripts ; do
 						if [[ -d "${XSUBDIR}/${SUBDIR}" ]] ; then
 							einfo "      ${SUBDIR} subdirectory"
 							echo > "${XSUBDIR}/${SUBDIR}/CMakeLists.txt"
-							[[ -d "${XSUBDIR}/${SUBDIR}/kdepim" ]] && ( echo "add_subdirectory(kdepim)" >> "${XSUBDIR}/${SUBDIR}/CMakeLists.txt" )
-							[[ -d "${XSUBDIR}/${SUBDIR}/kdepim-runtime" ]] && ( echo "add_subdirectory(kdepim-runtime)" >> "${XSUBDIR}/${SUBDIR}/CMakeLists.txt" )
+							for pim in ${PIM_L10N}; do
+								[[ -d "${XSUBDIR}/${SUBDIR}/${pim}" ]] && \
+									( echo "add_subdirectory(${pim})" >> "${XSUBDIR}/${SUBDIR}/CMakeLists.txt" )
+							done
 						fi
 					done
 				fi
 			done
 		done
 	fi
-}
 
-src_prepare() {
-	[[ -n ${A} ]] && kde4-base_src_prepare
+	# quick workaround for bug 493278
+	find "${S}" -name "akonadi_knut_resource*" -delete
 }
 
 src_configure() {
