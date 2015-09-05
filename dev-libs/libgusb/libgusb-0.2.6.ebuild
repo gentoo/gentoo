@@ -22,7 +22,7 @@ REQUIRED_USE="vala? ( introspection )"
 # Yes, we really need API from dev-libs/libusb-1.0.19, not virtual/libusb
 RDEPEND="
 	>=dev-libs/glib-2.28:2[${MULTILIB_USEDEP}]
-	>=dev-libs/libusb-1.0.19[udev,${MULTILIB_USEDEP}]
+	virtual/libusb:1[udev,${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.29:= )
 "
 DEPEND="${RDEPEND}
