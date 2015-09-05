@@ -16,7 +16,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+bibutils embed_data_files +hexpat +network test_citeproc unicode_collation"
 
 RDEPEND=">=app-text/pandoc-1.12.1:=[profile?]
