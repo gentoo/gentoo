@@ -1,0 +1,42 @@
+From 055ae13e08ed1af220001de7b55d5c9defe64476 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Mon, 9 Mar 2015 22:01:43 +0100
+Subject: avviddec: Error out if we try to allocate a buffer without being
+ negotiated
+
+Otherwise we just run into assertions because we should've errored out
+already.
+
+diff --git a/ext/libav/gstavviddec.c b/ext/libav/gstavviddec.c
+index 5a1b7ed..23f9c74 100644
+--- a/ext/libav/gstavviddec.c
++++ b/ext/libav/gstavviddec.c
+@@ -1114,6 +1114,9 @@ get_output_buffer (GstFFMpegVidDec * ffmpegdec, GstVideoCodecFrame * frame)
+ 
+   GST_LOG_OBJECT (ffmpegdec, "get output buffer");
+ 
++  if (!ffmpegdec->output_state)
++    goto not_negotiated;
++
+   ret =
+       gst_video_decoder_allocate_output_frame (GST_VIDEO_DECODER (ffmpegdec),
+       frame);
+@@ -1154,9 +1157,14 @@ get_output_buffer (GstFFMpegVidDec * ffmpegdec, GstVideoCodecFrame * frame)
+   /* special cases */
+ alloc_failed:
+   {
+-    GST_DEBUG_OBJECT (ffmpegdec, "pad_alloc failed");
++    GST_DEBUG_OBJECT (ffmpegdec, "allocation failed");
+     return ret;
+   }
++not_negotiated:
++  {
++    GST_DEBUG_OBJECT (ffmpegdec, "not negotiated");
++    return GST_FLOW_NOT_NEGOTIATED;
++  }
+ }
+ 
+ static void
+-- 
+cgit v0.10.2
+

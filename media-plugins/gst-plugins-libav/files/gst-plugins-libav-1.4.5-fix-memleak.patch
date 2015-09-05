@@ -1,0 +1,23 @@
+From 98f0b80c8d0ff5da7b3dc579a0230e9efeae87fd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Tue, 2 Jun 2015 09:09:09 +0200
+Subject: avauddev: Unref decoded AVFrame after we're done with it
+
+Otherwise we might leak some memory, like all compressed data when using
+avdec_ac3.
+
+diff --git a/ext/libav/gstavauddec.c b/ext/libav/gstavauddec.c
+index dd32466..bf16857 100644
+--- a/ext/libav/gstavauddec.c
++++ b/ext/libav/gstavauddec.c
+@@ -590,6 +590,7 @@ gst_ffmpegauddec_audio_frame (GstFFMpegAudDec * ffmpegdec,
+   }
+ 
+ beach:
++  av_frame_unref (&frame);
+   GST_DEBUG_OBJECT (ffmpegdec, "return flow %d, out %p, len %d",
+       *ret, *outbuf, len);
+   return len;
+-- 
+cgit v0.10.2
+
