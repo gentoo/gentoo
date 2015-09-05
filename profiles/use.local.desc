@@ -6394,10 +6394,8 @@ net-wireless/spectools:debug - Build the raw output client for spectools. (for d
 net-wireless/spectools:gtk - Build the gtk-2 based client for spectools
 net-wireless/spectools:ncurses - Build the ncurses based client for spectools
 net-wireless/ubertooth:bluez - use bluez to support clock following and scanning
-net-wireless/ubertooth:dfu - Install ubertooth-dfu (needed for read/write of firmware)
 net-wireless/ubertooth:pcap - Use libpcap for packet capture and read/write
 net-wireless/ubertooth:specan - Enable the ubertooth spectrum analyzer
-net-wireless/ubertooth:ubertooth0-firmware - Build/install ubertooth0-firmware
 net-wireless/ubertooth:ubertooth1-firmware - Build/install ubertooth1-firmware
 net-wireless/wepattack:john - Build with app-crypt/johntheripper support
 net-wireless/wireless-tools:multicall - Build the most commonly used tools as one binary
