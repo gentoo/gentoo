@@ -8,11 +8,13 @@
 	</maintainer>
 	<use>
 		<flag name="client">Build fwknop client</flag>
-		<flag name="gdbm">Replace file digest-cache with gdbm</flag>
+		<flag name="extras">Install example AppArmor policy for fwknopd server</flag>
+		<flag name="firewalld">Use <pkg>net-firewall/firewalld</pkg> as the default server backend</flag>
+		<flag name="gdbm">Replace file-based digest-cache with gdbm one</flag>
 		<flag name="gpg">Enable GPG support via <pkg>app-crypt/gpgme</pkg></flag>
+		<flag name="iptables">Use <pkg>net-firewall/iptables</pkg> as the default server backend</flag>
 		<flag name="server">Build fwknopd server</flag>
-		<flag name="extras">Install example apparmor policy</flag>
-		<flag name="udp-server">Build fwknopd with UDP server mode only</flag>
+		<flag name="udp-server">Enable UDP server mode only (no <pkg>net-libs/libpcap</pkg> dependency)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mrash/fwknop</remote-id>
