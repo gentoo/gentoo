@@ -6,7 +6,7 @@ EAPI=5
 GCONF_DEBUG=no
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 multilib python-single-r1
+inherit eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="A simple audiofile converter application for the GNOME environment"
 HOMEPAGE="http://soundconverter.org/"
@@ -47,6 +47,9 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	# Fix broken files dropping, upstream bug #1419259
+	epatch "${FILESDIR}/${P}-files-dropping.patch"
+
 	python_fix_shebang .
 	gnome2_src_prepare
 }
