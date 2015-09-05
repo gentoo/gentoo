@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Note: if your package uses the texi2dvi utility, it must depend on the
+# virtual/texi2dvi package to pull in all the right deps.  The tool is not
+# usable out-of-the-box because it requires the large tex packages.
+
 EAPI="5"
 
 inherit flag-o-matic
