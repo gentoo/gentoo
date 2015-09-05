@@ -19,8 +19,18 @@
 		<remote-id type="github">lxc/lxd</remote-id>
 	</upstream>
 	<use>
+		<flag name="criu">
+			Add support for live-migrateable containers
+		</flag>
+		<flag name="daemon">
+			Build the system daemon, not just the client tool
+		</flag>
 		<flag name="image">
 			Installs the lxd-images image-fetching script
+		</flag>
+		<flag name="lvm">
+			Allow using the Logical Volume Manager as pool
+			for disk image storage
 		</flag>
 	</use>
 </pkgmetadata>
