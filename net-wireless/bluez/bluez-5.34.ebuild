@@ -124,7 +124,6 @@ multilib_src_configure() {
 		--enable-tools \
 		--enable-manpages \
 		--enable-monitor \
-		--disable-valgrind \
 		$(multilib_native_use_enable cups) \
 		$(multilib_native_use_enable obex) \
 		$(multilib_native_use_enable readline client) \
