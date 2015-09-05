@@ -954,7 +954,7 @@ app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.4: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.9.6 4.10.0 4.10.1: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
-app-doc/gnucash-docs 2.6.6: Documentation package for GnuCash
+app-doc/gnucash-docs 2.6.6 2.6.7: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1: yet another free document preparation system
 app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition, folklore, and humor
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
@@ -1972,7 +1972,7 @@ app-office/dia2code 0.8.7: Convert UML diagrams produced with Dia to various sou
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.6.1 0.6.2 0.7.1 0.7.3: Submit tax forms (Umsatzsteuervoranmeldung) to the german digital tax project ELSTER
 app-office/glabels 3.2.0 3.2.1: Program for creating labels and business cards
-app-office/gnucash 2.6.5 2.6.6: A personal finance manager
+app-office/gnucash 2.6.6 2.6.7: A personal finance manager
 app-office/gnumeric 1.12.22 1.12.23: The GNOME Spreadsheet
 app-office/grisbi 1.0.0: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
@@ -3315,7 +3315,7 @@ dev-haskell/geniplate-mirror 0.7.1: Use Template Haskell to generate Uniplate-li
 dev-haskell/ghc-paths 0.1.0.9: Knowledge of GHC's installation directories
 dev-haskell/gio 0.12.0 0.12.3 0.12.4-r1 0.12.5.0-r1 0.12.5.3 0.13.0.3 0.13.0.4 0.13.1.0: Binding to the GIO
 dev-haskell/glade 0.12.1 0.12.1-r1 0.12.5.0-r1 0.12.5.0-r2: Binding to the glade library
-dev-haskell/glib 0.12.0 0.12.3.1 0.12.4-r1 0.12.5.0-r1 0.12.5.4 0.13.0.6 0.13.0.7 0.13.1.0: Binding to the GLIB library for Gtk2Hs
+dev-haskell/glib 0.12.0 0.12.3.1 0.12.4-r1 0.12.5.0-r1 0.12.5.4 0.13.0.6 0.13.0.7 0.13.1.0 0.13.2.1: Binding to the GLIB library for Gtk2Hs
 dev-haskell/glob 0.7.2 0.7.3 0.7.5: Globbing library
 dev-haskell/gluraw 1.2.0.0 1.3.0.0 1.4.0.1 1.5.0.1: A raw binding for the OpenGL graphics system
 dev-haskell/glut 2.1.1.1 2.1.1.2 2.3.0.0 2.3.1.0 2.4.0.0 2.5.1.1 2.7.0.1: A binding for the OpenGL Utility Toolkit
