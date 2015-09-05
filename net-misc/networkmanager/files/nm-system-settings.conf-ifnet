@@ -1,6 +1,0 @@
-[main]
-plugins=ifnet,keyfile
-
-[ifnet]
-managed=true
-auto_refresh=false
