@@ -140,12 +140,12 @@ src_configure() {
 		$(use_enable smtp) \
 		$(use_with idn) \
 		$(use_with kerberos gss) \
-		$(use slang && echo --with-slang) \
+		$(use slang && echo --with-slang=${EPREFIX}/usr) \
+		$(use !slang && echo --with-curses=${EPREFIX}/usr) \
 		--enable-compressed \
 		--enable-external-dotlock \
 		--enable-nfs-fix \
 		--sysconfdir=${EPREFIX}/etc/${PN} \
-		--with-curses \
 		--with-docdir=${EPREFIX}/usr/share/doc/${PN}-${PVR} \
 		--with-regex \
 		--with-exec-shell=${EPREFIX}/bin/sh"
@@ -153,10 +153,12 @@ src_configure() {
 	case $CHOST in
 		*-solaris*)
 			# Solaris has no flock in the standard headers
-			myconf="${myconf} --enable-fcntl --disable-flock"
+			myconf+=" --enable-fcntl --disable-flock"
+			# wchar_t depends on locale
+			myconf+=" --without-wc-funcs"
 		;;
 		*)
-			myconf="${myconf} --disable-fcntl --enable-flock"
+			myconf+=" --disable-fcntl --enable-flock"
 		;;
 	esac
 
