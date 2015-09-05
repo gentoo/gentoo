@@ -5,12 +5,9 @@
 EAPI=5
 
 EGIT_REPO_URI="git://git.savannah.gnu.org/screen.git"
-EGIT_BOOTSTRAP="cd src; ./autogen.sh"
-EGIT_SOURCEDIR="${WORKDIR}/${P}" # needed for setting S later on
+EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
 
-WANT_AUTOCONF="2.5"
-
-inherit eutils flag-o-matic toolchain-funcs pam autotools user git-2
+inherit eutils flag-o-matic toolchain-funcs pam autotools user git-r3
 
 DESCRIPTION="Full-screen window manager that multiplexes physical terminals between several processes"
 HOMEPAGE="https://www.gnu.org/software/screen/"
@@ -70,15 +67,12 @@ src_configure() {
 		--with-sys-screenrc="${EPREFIX}/etc/screenrc" \
 		--with-pty-mode=0620 \
 		--with-pty-group=5 \
-		--enable-rxvt_osc \
 		--enable-telnet \
-		--enable-colors256 \
 		$(use_enable pam)
 }
 
 src_compile() {
 	LC_ALL=POSIX emake comm.h term.h
-	emake osdef.h
 
 	emake -C doc screen.info
 	default
@@ -115,7 +109,7 @@ src_install() {
 	pamd_mimic_system screen auth
 
 	dodoc \
-		README ChangeLog INSTALL TODO NEWS* patchlevel.h \
+		README ChangeLog INSTALL TODO NEWS* \
 		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
 
 	doman doc/screen.1

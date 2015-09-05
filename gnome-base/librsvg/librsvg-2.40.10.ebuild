@@ -5,7 +5,6 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
-VALA_MIN_API_VERSION="0.18"
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools gnome2 multilib-minimal vala
@@ -15,7 +14,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+
 IUSE="+introspection vala tools"
 REQUIRED_USE="
 	vala? ( introspection )
@@ -28,8 +28,8 @@ RDEPEND="
 	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libcroco-0.6.8-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30.7:2[introspection?,${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.10.8 )
-	tools? ( >=x11-libs/gtk+-3.2.0:3 )
+	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
+	tools? ( >=x11-libs/gtk+-3.10.0:3 )
 "
 DEPEND="${RDEPEND}
 	dev-libs/gobject-introspection-common
@@ -41,8 +41,8 @@ DEPEND="${RDEPEND}
 # >=gtk-doc-am-1.13, gobject-introspection-common, vala-common needed by eautoreconf
 
 src_prepare() {
-	# https://bugzilla.gnome.org/show_bug.cgi?id=712693
-	epatch "${FILESDIR}/${PN}-2.40.1-gtk-optional.patch"
+	# https://bugzilla.gnome.org/show_bug.cgi?id=653323
+	epatch "${FILESDIR}/${PN}-2.40.10-gtk-optional.patch"
 
 	# https://bugzilla.gnome.org/show_bug.cgi?id=731826
 	epatch "${FILESDIR}/${PN}-2.40.2-vala-out-of-source.patch"
