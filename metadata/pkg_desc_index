@@ -1333,7 +1333,7 @@ app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
 app-emulation/vmware-modules 271.3 271.3-r1 279.1-r1 279.2 279.3 279.6 304.0 304.2: VMware kernel modules
 app-emulation/vmware-player 5.0.3.1410761 6.0.1.1379776 6.0.2.1744117 6.0.3.1895310 6.0.6.2700073 7.1.0.2496824 7.1.2.2780323: Emulate a complete PC on your PC without the usual performance overhead of most emulators
-app-emulation/vmware-tools 9.2.3.1031769 9.6.1.1379776 9.6.2.1744117: VMware Tools for guest operating systems
+app-emulation/vmware-tools 9.2.3.1031769 9.6.1.1379776 9.6.2.1744117 9.6.5.2700073: VMware Tools for guest operating systems
 app-emulation/vmware-view-open-client 4.5.0.297975-r1: Open Source VMware View Client
 app-emulation/vmware-vix 1.11.4.744019: VMware VIX API for Linux
 app-emulation/vmware-workstation 9.0.3.1410761 10.0.1.1379776-r1 10.0.2.1744117 10.0.3.1895310 10.0.6.2700073 11.1.0.2496824 11.1.2.2780323: Emulate a complete PC on your PC without the usual performance overhead of most emulators
@@ -10228,7 +10228,7 @@ gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.30.0: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.6 2.40.8 2.40.9: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.9 2.40.10: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.14.2-r1 3.16.2: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
@@ -14189,7 +14189,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.08.23 2015.08.28: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.08.28 2015.09.03: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -16989,9 +16989,9 @@ www-client/midori 0.5.8 0.5.8-r1 0.5.10: A lightweight web browser based on WebK
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 31.0.1889.174: A fast and secure web browser
-www-client/opera-beta 31.0.1889.98 32.0.1948.4: A fast and secure web browser
+www-client/opera-beta 32.0.1948.4 32.0.1948.12: A fast and secure web browser
 www-client/opera-developer 32.0.1933.0 33.0.1963.0 33.0.1967.0: A fast and secure web browser
-www-client/otter 0.9.06 0.9.07_p81 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
+www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
@@ -17006,7 +17006,7 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
 www-client/vimb 2.9: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.249.12_p1 1.0.252.3_p1: A new browser for our friends
+www-client/vivaldi 1.0.252.3_p1 1.0.264.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
