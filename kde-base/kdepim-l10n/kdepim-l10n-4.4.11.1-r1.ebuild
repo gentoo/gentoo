@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ KDE_MINIMAL="4.6"
 inherit kde4-base
 
 DESCRIPTION="KDE PIM internationalization package"
-HOMEPAGE="https://l10n.kde.org"
+HOMEPAGE="http://l10n.kde.org"
 
 DEPEND="
 	sys-devel/gettext

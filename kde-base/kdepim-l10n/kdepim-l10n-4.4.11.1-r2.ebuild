@@ -3,8 +3,8 @@
 # $Id$
 
 EAPI=5
+KDE_MINIMAL="4.6"
 
-KDE_HANDBOOK=optional
 inherit kde4-base
 
 DESCRIPTION="KDE PIM internationalization package"
@@ -13,21 +13,27 @@ HOMEPAGE="http://l10n.kde.org"
 DEPEND="
 	sys-devel/gettext
 "
-RDEPEND=""
+RDEPEND="
+	!<kde-apps/kde-l10n-15.08.0-r1
+	!<kde-apps/kde4-l10n-4.14.3-r1
+"
 
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-MY_LANGS="ar bg bs ca ca@valencia cs da de el en_GB es et eu fa fi fr ga gl he
-hi hr hu ia id is it ja kk km ko lt lv mr nb nds nl nn pa pl pt pt_BR ro ru sk
-sl sr sv tr ug uk wa zh_CN zh_TW"
+MY_LANGS="ar bg ca ca@valencia cs csb da de el en_GB eo es et eu
+		fi fr fy ga gl gu he hi hr hu id is it ja kk km kn ko lt lv
+		mai mk ml nb nds nl nn pa pl pt pt_BR ro ru si sk sl sr sv tg
+		tr uk wa zh_CN zh_TW"
 
-URI_BASE="${SRC_URI/-${PV}.tar.xz/}"
+PIM_L10N="kdepim kdepimlibs"
+
+URI_BASE="${SRC_URI/-${PV}.tar.bz2/}"
 SRC_URI=""
 
 for MY_LANG in ${MY_LANGS} ; do
 	IUSE="${IUSE} linguas_${MY_LANG}"
-	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE/kdepim/kde}/kde-l10n-${MY_LANG}-${PV}.tar.xz )"
+	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE}/kde-l10n-${MY_LANG}-4.4.5.tar.bz2 )"
 done
 
 S="${WORKDIR}"
@@ -49,36 +55,43 @@ src_unpack() {
 	[[ -n ${A} ]] && unpack ${A}
 	cd "${S}"
 
-	# add all linguas to cmake
+	# for all linguas do:
 	if [[ -n ${A} ]]; then
 		for LNG in ${LINGUAS}; do
-			DIR="kde-l10n-${LNG}-${PV}"
+			einfo "Processing ${LNG} localization"
+			DIR="kde-l10n-${LNG}-4.4.5"
+
+			# add subdir to toplevel cmake file
 			if [[ -d "${DIR}" ]] ; then
 				echo "add_subdirectory( ${DIR} )" >> "${S}"/CMakeLists.txt
 			fi
 
-			# remove everything except kdepim and kdepim-runtime
+			# Remove everything except subdirs defined in PIM_L10N
 			for SUBDIR in data docs messages scripts ; do
 				if [[ -d "${S}/${DIR}/${SUBDIR}" ]] ; then
 					einfo "   ${SUBDIR} subdirectory"
 					echo > "${S}/${DIR}/${SUBDIR}/CMakeLists.txt"
-					[[ -d "${S}/${DIR}/${SUBDIR}/kdepim" ]] && ( echo "add_subdirectory(kdepim)" >> "${S}/${DIR}/${SUBDIR}/CMakeLists.txt" )
-					[[ -d "${S}/${DIR}/${SUBDIR}/kdepim-runtime" ]] && ( echo "add_subdirectory(kdepim-runtime)" >> "${S}/${DIR}/${SUBDIR}/CMakeLists.txt" )
+					for pim in ${PIM_L10N}; do
+						[[ -d "${S}/${DIR}/${SUBDIR}/${pim}" ]] && \
+							( echo "add_subdirectory(${pim})" >> "${S}/${DIR}/${SUBDIR}/CMakeLists.txt" )
+					done
 				fi
 			done
 
-			# in some cases we may have sub-lingua subdirs, e.g. sr :(
+			# In some cases we may have sub-lingua subdirs, e.g. sr :(
 			for XSUBDIR in "${S}/${DIR}/${LNG}"@* ; do
 				XLNG=$(echo ${XSUBDIR}|sed -e 's:^.*/::')
 				if [[ -d "${XSUBDIR}" ]] ; then
 					einfo "   ${XLNG} variant"
-					# remove everything except kdepim and kdepim-runtime
+					# Remove everything except subdirs defined in PIM_L10N
 					for SUBDIR in data docs messages scripts ; do
 						if [[ -d "${XSUBDIR}/${SUBDIR}" ]] ; then
 							einfo "      ${SUBDIR} subdirectory"
 							echo > "${XSUBDIR}/${SUBDIR}/CMakeLists.txt"
-							[[ -d "${XSUBDIR}/${SUBDIR}/kdepim" ]] && ( echo "add_subdirectory(kdepim)" >> "${XSUBDIR}/${SUBDIR}/CMakeLists.txt" )
-							[[ -d "${XSUBDIR}/${SUBDIR}/kdepim-runtime" ]] && ( echo "add_subdirectory(kdepim-runtime)" >> "${XSUBDIR}/${SUBDIR}/CMakeLists.txt" )
+							for pim in ${PIM_L10N}; do
+								[[ -d "${XSUBDIR}/${SUBDIR}/${pim}" ]] && \
+									( echo "add_subdirectory(${pim})" >> "${XSUBDIR}/${SUBDIR}/CMakeLists.txt" )
+							done
 						fi
 					done
 				fi
@@ -92,9 +105,8 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
-		$(cmake-utils_use_build handbook docs)
-	)
+	mycmakeargs="${mycmakeargs}
+		-DBUILD_docs=OFF"
 	[[ -n ${A} ]] && kde4-base_src_configure
 }
 

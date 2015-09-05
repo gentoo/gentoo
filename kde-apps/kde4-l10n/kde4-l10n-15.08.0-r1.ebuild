@@ -16,7 +16,6 @@ DEPEND="
 "
 RDEPEND="
 	!<kde-apps/kde-l10n-${PV}
-	!kde-base/kdepim-l10n
 "
 
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
@@ -88,8 +87,8 @@ src_prepare() {
 
 					# Remove dirs
 					while read path; do
-						if [[ -e "${SDIR}"/${path%\ *}/CMakeLists.txt ]] ; then
-							sed -e "/${path#*\ }/ s/^/#/"\
+						if [[ -n ${path} && -e "${SDIR}"/${path%\ *}/CMakeLists.txt ]] ; then
+							sed -e ":${path#*\ }: s:^:#:"\
 								-i "${SDIR}"/${path%\ *}/CMakeLists.txt
 						fi
 					done < <(grep -v "^#" "${REMOVE_DIRS}")
@@ -104,14 +103,10 @@ src_prepare() {
 					done
 				else
 					if [[ -d "${KMNAME}-${LNG}-${LV}" ]] ; then
-						# Create missing kdepim directories
-						local subdirs="kdepim kdepimlibs kdepim-runtime"
-						for path in ${subdirs}; do
-							mkdir -p "${SDIR}"/messages/${path} || die
-							echo "add_subdirectory(${path})" >> \
-								"${SDIR}"/messages/CMakeLists.txt
+						# Do not try to copy kdepim localisation
+						for path in kdepim kdepimlibs kdepim-runtime; do
+							rm -rf "${KMNAME}-${LNG}-${LV}/messages/${path}" || die
 						done
-						unset subdirs
 						# Merge legacy localisation
 						for path in $(find "${KMNAME}-${LNG}-${LV}" -name "*.po"); do
 							cp -rn "${path}" "${path/${LV}/${PV}/4/${LNG}}" || die
@@ -122,6 +117,8 @@ src_prepare() {
 			fi
 		done
 	fi
+
+	kde4-base_src_prepare
 }
 
 src_configure() {
