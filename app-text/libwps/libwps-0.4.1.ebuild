@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
-# KEYWORDS="~alpha ~amd64 ~arm ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~x86"
 IUSE="doc debug static-libs"
 
 RDEPEND="

@@ -16,10 +16,10 @@ SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="exif +introspection +l10n packagekit tracker xmp"
+IUSE="exif +introspection +nls packagekit tracker xmp"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.34:2
+	>=dev-libs/glib-2.34:2[dbus]
 	>=gnome-extra/cinnamon-desktop-2.6.1:0=
 	>=x11-libs/pango-1.28.3
 	>=x11-libs/gtk+-3.3.17:3[introspection?]
@@ -33,13 +33,13 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
-	introspection? ( >=dev-libs/gobject-introspection-0.6.4 )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 	tracker? ( >=app-misc/tracker-0.12:= )
 	xmp? ( >=media-libs/exempi-2.1.0:= )
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-icon-theme-symbolic
-	l10n? ( >=gnome-extra/cinnamon-translations-2.2 )
+	nls? ( >=gnome-extra/cinnamon-translations-2.2 )
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}

@@ -8,17 +8,19 @@
 
 EAPI="5"
 
-inherit multilib multilib-minimal udev user
+inherit eutils multilib multilib-minimal udev user
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
 SRC_URI="mirror://sourceforge/gphoto/${P}.tar.bz2"
 
 LICENSE="GPL-2"
+
+# FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
 
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux"
-IUSE="doc examples exif gd jpeg nls serial zeroconf"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux"
+IUSE="doc examples exif gd jpeg nls serial"
 
 # By default, drivers for all supported cameras will be compiled.
 # If you want to only compile for specific camera(s), set CAMERAS
@@ -48,13 +50,10 @@ for camera in ${IUSE_CAMERAS}; do
 	IUSE="${IUSE} cameras_${camera}"
 done
 
-# libgphoto2 actually links to libltdl, leave old libtool multilib dep there for now
+# libgphoto2 actually links to libltdl
 RDEPEND="
 	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
-	|| (
-		dev-libs/libltdl:0[${MULTILIB_USEDEP}]
-		>=sys-devel/libtool-2.4.2-r1[${MULTILIB_USEDEP}]
-	)
+	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	>=virtual/libusb-1-r1:1[${MULTILIB_USEDEP}]
 	cameras_ax203? ( >=media-libs/gd-2.0.35-r4:=[${MULTILIB_USEDEP}] )
 	cameras_st2205? ( >=media-libs/gd-2.0.35-r4:=[${MULTILIB_USEDEP}] )
@@ -62,12 +61,12 @@ RDEPEND="
 	gd? ( >=media-libs/gd-2.0.35-r4[jpeg=,${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	serial? ( >=dev-libs/lockdev-1.0.3.1.2-r2[${MULTILIB_USEDEP}] )
-	zeroconf? ( >=net-dns/avahi-0.6.31-r2[mdnsresponder-compat,${MULTILIB_USEDEP}] )
 	!<sys-fs/udev-175
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-medialibs-20140508
 		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)"
+	)
+"
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	sys-devel/flex
@@ -95,12 +94,6 @@ src_prepare() {
 	# Handle examples ourselves
 	sed 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' -i Makefile.am Makefile.in \
 		|| die "examples sed failed"
-
-	# Fix pkgconfig file when USE="-exif"
-	# https://sourceforge.net/p/gphoto/bugs/980/
-	if ! use exif; then
-		sed -i "s/, @REQUIREMENTS_FOR_LIBEXIF@//" libgphoto2.pc.in || die " libgphoto2.pc sed failed"
-	fi
 
 	# If running eautoreconf
 	# sed -e 's/sleep 2//' -i m4m/gp-camlibs.m4 || die
@@ -131,12 +124,6 @@ multilib_src_configure() {
 	local myconf
 	use doc || myconf=( ac_cv_path_DOXYGEN=false )
 
-	# gd detection is broken: https://sourceforge.net/p/gphoto/bugs/982/
-	if use gd; then
-		export LIBGD_CFLAGS=" "
-		export LIBGD_LIBS="-lgd"
-	fi
-
 	# Upstream doesn't default to --enable-option-checking due having another
 	# configure in libgphoto2_port/ that also needs to be checked on every bump
 	#
@@ -145,7 +132,6 @@ multilib_src_configure() {
 	econf \
 		--disable-docs \
 		--disable-gp2ddb \
-		$(use_with zeroconf bonjour) \
 		$(use_enable nls) \
 		$(use_with exif libexif auto) \
 		$(use_with gd) \
@@ -173,12 +159,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install_all() {
-	# Empty dependency_libs in .la files, bug #386665
-	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
-
-	# Remove recursive symlink
-	# https://sourceforge.net/p/gphoto/bugs/983/
-	rm "${ED}/usr/include/gphoto2/gphoto2" || die
+	prune_libtool_files --modules
 
 	# Clean up unwanted files
 	rm "${ED}/usr/share/doc/${PF}/"{ABOUT-NLS,COPYING} || die "rm failed"
@@ -189,7 +170,7 @@ multilib_src_install_all() {
 		doins examples/README examples/*.c examples/*.h
 	fi
 
-	# FIXME: fixup autoconf bug
+	# FIXME: fixup autoconf bug #????
 	if ! use doc && [ -d "${ED}/usr/share/doc/${PF}/apidocs.html" ]; then
 		rm -fr "${ED}/usr/share/doc/${PF}/apidocs.html"
 	fi

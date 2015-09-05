@@ -26,9 +26,7 @@ COMMON_DEPEND="
 	virtual/libgudev:=
 	x11-libs/cairo:=
 	>=x11-libs/gtk+-3:3
-	|| (
-		>=x11-misc/colord-0.1.24:=[udev]
-		x11-misc/colord:=[scanner] )
+	>=x11-misc/colord-0.1.24:=[udev]
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-utils
