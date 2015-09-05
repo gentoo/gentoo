@@ -3725,7 +3725,7 @@ dev-java/bcel 5.2-r2 5.2-r3 6.0_rc3: The Byte Code Engineering Library: analyze,
 dev-java/bcmail 1.38-r3 1.38-r4 1.45-r2 1.45-r3 1.50 1.50-r1 1.52 1.52-r1: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
 dev-java/bcpkix 1.50 1.52: Java cryptography APIs
-dev-java/bcprov 1.38-r2 1.38-r3 1.40-r1 1.45 1.45-r1 1.48-r1 1.49-r2 1.49-r3 1.50 1.50-r1 1.52 1.52-r1: Java cryptography APIs
+dev-java/bcprov 1.38-r3 1.40-r1 1.45 1.45-r1 1.48-r1 1.49-r2 1.49-r3 1.50 1.50-r1 1.52 1.52-r1: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
 dev-java/beansbinding 1.2.1 1.2.1-r1 1.2.1-r2: Implementation of JSR295
 dev-java/blowfishj 2.14-r2 2.14-r3: Blowfish implementation in Java
@@ -4160,7 +4160,7 @@ dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's Java SE Development
 dev-java/oracle-jre-bin 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
-dev-java/osgi-core-api 4.3 5.0.0: OSGi Service Platform Core API (Companion Code)
+dev-java/osgi-core-api 5.0.0: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
 dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
@@ -13683,7 +13683,7 @@ net-libs/wt 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.2: A brokerless kernel
-net-mail/Freemail 9999: Anonymous IMAP/SMTP e-mail server over Freenet
+net-mail/Freemail 9999-r1: Anonymous IMAP/SMTP e-mail server over Freenet
 net-mail/altermime 0.3.7 0.3.10 0.3.10-r1 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0: Tool written in Python for archiving and compressing old email in mailboxes
