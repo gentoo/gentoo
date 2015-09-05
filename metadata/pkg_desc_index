@@ -14017,7 +14017,7 @@ net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.0.2-r1 1.0.4-r1 1.0.6: Universal network configuration daemon for laptops, desktops, servers and virtualization hosts
 net-misc/networkmanager-openconnect 0.9.10.0 0.9.10.0-r1 1.0.0 1.0.2: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.2 1.0.6: NetworkManager Openswan plugin
-net-misc/networkmanager-openvpn 1.0.2 1.0.6: NetworkManager OpenVPN plugin
+net-misc/networkmanager-openvpn 1.0.2 1.0.6-r1: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.0.2 1.0.6: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 0.9.8: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-misc/networkmanager-vpnc 1.0.2 1.0.6: NetworkManager VPNC plugin
