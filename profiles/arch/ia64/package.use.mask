@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
+# sys-boot/gnu-efi is not supported on all archs.
+sys-apps/systemd -gnuefi
+
 # James Le Cuirot <chewi@gentoo.org> (11 Jul 2015)
 # Requires dev-java/fop but we don't support java on ia64.
 gnome-extra/libgda reports
