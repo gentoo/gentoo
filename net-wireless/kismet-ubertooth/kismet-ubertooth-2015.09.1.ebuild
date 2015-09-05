@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,8 +26,8 @@ SLOT="0/${PV}"
 IUSE=""
 
 DEPEND=">=net-wireless/kismet-2011.03.2-r1:= \
-	>=net-wireless/ubertooth-2012.02.2:= \
-	>=net-libs/libbtbb-2012.02.2:= \
+	>=net-wireless/ubertooth-${PV}:= \
+	>=net-libs/libbtbb-${PV}:= \
 	virtual/libusb:1"
 RDEPEND="${DEPEND}"
 

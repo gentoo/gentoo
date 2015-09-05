@@ -9,10 +9,8 @@
 	</longdescription>
 	<use>
 		<flag name="bluez">use bluez to support clock following and scanning</flag>
-		<flag name="dfu">Install ubertooth-dfu (needed for read/write of firmware)</flag>
 		<flag name="pcap">Use libpcap for packet capture and read/write</flag>
 		<flag name="specan">Enable the ubertooth spectrum analyzer</flag>
-		<flag name="ubertooth0-firmware">Build/install ubertooth0-firmware</flag>
 		<flag name="ubertooth1-firmware">Build/install ubertooth1-firmware</flag>
 	</use>
 	<upstream>
