@@ -3,17 +3,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-DAEMON=/usr/sbin/cgproxy
-PIDFILE=/run/cgproxy.pid
-NESTED=yes
-OPTIONS=
+description="Control Group manager proxy"
+pidfile="/run/cgproxy.pid"
+command="/usr/sbin/cgproxy"
+command_args="--daemon"
+command_background="yes"
+retry="TERM/45"
+NESTED="${NESTED:-no}"
 
 depend() {
 	after cgmanager
 }
 
-start() {
-	ebegin "Starting cgproxy server"
+start_pre() {
 	if ! /usr/sbin/cgproxy --check-master; then
 		ewarn "cgmanager is not running"
 		return 1
@@ -21,17 +23,6 @@ start() {
 	# cgproxy should only run on container unless on older kernel
 	if [ -e /proc/self/ns/pid ] && [ "$NESTED" != "yes" ]; then
 		eerror "Too old kernel to support cgroup, please update to >3.8"
-		return 1 
+		return 1
 	fi
-
-	start-stop-daemon --start --pidfile ${PIDFILE} --exec ${DAEMON} \
-		-- --daemon ${OPTIONS}
-
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping cgproxy server"
-	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
-	eend $?
 }
