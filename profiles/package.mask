@@ -181,10 +181,6 @@ kde-base/kdepim-strigi-analyzer
 # Upcoming, too young to go into testing unmasked
 dev-libs/iniparser:4
 
-# Matthew Thode <prometheanfire@gentoo.org> (04 Aug 2015)
-# removing old and never working horizon Bug #556710
-www-apps/horizon
-
 # Mikle Kolyada <zlogene@hemtoo.org> (04 Aug 2015)
 # Unmaintained since 2010. No longer available
 # on CPAN and nothing in the tree depends on it.
