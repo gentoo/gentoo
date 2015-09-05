@@ -3738,7 +3738,7 @@ dev-java/bsh 2.0_beta4-r4: BeanShell: A small embeddable Java source interpreter
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytecode 20081007: Biojava bytecode manipulation library
 dev-java/bytelist 1.0.10: JRuby support library
-dev-java/c3p0 0.9.1.2: Library for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources
+dev-java/c3p0 0.9.1.2 0.9.5.1: Library for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources
 dev-java/cacao 0.99.4: Cacao Java Virtual Machine
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
 dev-java/castor 0.9.9.1-r7 1.1.1-r3: Data binding framework for Java
@@ -4101,6 +4101,7 @@ dev-java/lzma 4.63: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95: Implementations of LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
 dev-java/matrix-toolkits-java 0.9.12: BLAS and LAPACK-derived matrix data structures and linear algebra methods
 dev-java/maven-bin 1.1-r1 1.1-r3 2.0.11 2.0.11-r2 2.2.1 2.2.1-r2 3.0.4-r1 3.1.0 3.1.0-r1 3.1.1 3.2.3 3.2.5: Project Management and Comprehension Tool for Java
+dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765: Modified MersenneTwister java port for Freenet
 dev-java/metadata-extractor 2.2.2-r2 2.2.2-r4: Metadata extraction framework for Exif and IPTC metadata segments, extraction support for JPEG files
 dev-java/metainf-services 1.5: Generates META-INF/services files automatically
@@ -4143,11 +4144,11 @@ dev-java/netbeans-platform 8.0.2: Netbeans Platform
 dev-java/netbeans-profiler 8.0.2: Netbeans Profiler Cluster
 dev-java/netbeans-webcommon 8.0.2: Netbeans Web Services Cluster
 dev-java/netbeans-websvccommon 8.0.2: Netbeans Web Services Common Cluster
-dev-java/netty-buffer 4.0.19 4.0.21: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-buffer 4.0.21: Async event-driven framework for rapid development of high performance network applications
 dev-java/netty-codec 4.0.19 4.0.21: Async event-driven framework for rapid development of high performance network applications
 dev-java/netty-common 4.0.21: Async event-driven framework for rapid development of high performance network applications
 dev-java/netty-handler 4.0.19: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-transport 4.0.19 4.0.21 4.0.21-r1: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-transport 4.0.21-r1: Async event-driven framework for rapid development of high performance network applications
 dev-java/neuroph 2.3 2.3.1 2.4: A lightweight Java neural network framework
 dev-java/objenesis 1.3: A small Java library with one purpose: To instantiate a new object of a class
 dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
@@ -4271,6 +4272,7 @@ dev-java/touchgraph-graphlayout 1.22: TouchGraph provides a set of interfaces fo
 dev-java/trident 1.3: Java animation library
 dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for Java
 dev-java/txw2-runtime 20070407-r2: TXW is a library that allows you to write XML documents
+dev-java/typesafe-config 1.3.0: a library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/validation-api 1.0.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.5.2 1.6.0_pre12: Sun J3D: 3D vector math package
