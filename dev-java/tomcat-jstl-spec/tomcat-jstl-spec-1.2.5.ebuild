@@ -17,7 +17,7 @@ SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/tomcat/taglibs/${MY_P
 
 LICENSE="Apache-2.0"
 SLOT="1.2.5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 CDEPEND="java-virtuals/servlet-api:3.0"

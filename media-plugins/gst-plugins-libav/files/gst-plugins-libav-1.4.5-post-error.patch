@@ -1,0 +1,24 @@
+From 07d185161ea5d543f2ae1c6485da79dd7ee01173 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Olivier=20Cr=C3=AAte?= <olivier.crete@collabora.com>
+Date: Tue, 2 Jun 2015 20:48:33 -0400
+Subject: avviddec: Post error message before returning a flow error
+
+This is required.
+
+diff --git a/ext/libav/gstavviddec.c b/ext/libav/gstavviddec.c
+index 23f9c74..e2d8245 100644
+--- a/ext/libav/gstavviddec.c
++++ b/ext/libav/gstavviddec.c
+@@ -1479,7 +1479,8 @@ gst_ffmpegviddec_handle_frame (GstVideoDecoder * decoder,
+       GST_TIME_ARGS (frame->pts), GST_TIME_ARGS (frame->duration));
+ 
+   if (!gst_buffer_map (frame->input_buffer, &minfo, GST_MAP_READ)) {
+-    GST_ERROR_OBJECT (ffmpegdec, "Failed to map buffer");
++    GST_ELEMENT_ERROR (ffmpegdec, STREAM, DECODE, ("Decoding problem"),
++        ("Failed to map buffer for reading"));
+     return GST_FLOW_ERROR;
+   }
+ 
+-- 
+cgit v0.10.2
+

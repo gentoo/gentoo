@@ -12,19 +12,18 @@ SRC_URI="http://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="1.0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="libav +orc"
 
 RDEPEND="
-	>=media-libs/gstreamer-1.2.3:1.0[${MULTILIB_USEDEP}]
-	>=media-libs/gst-plugins-base-1.2.3:1.0[${MULTILIB_USEDEP}]
-	libav? (
-		<media-video/libav-10:0=[${MULTILIB_USEDEP}]
-		>=media-video/libav-9.12:0=[${MULTILIB_USEDEP}] )
-	!libav? ( >=media-video/ffmpeg-1.2.6-r1:0=[${MULTILIB_USEDEP}] )
+	>=media-libs/gstreamer-1.4.0:1.0[${MULTILIB_USEDEP}]
+	>=media-libs/gst-plugins-base-1.4.0:1.0[${MULTILIB_USEDEP}]
+	!libav? ( >=media-video/ffmpeg-2.2:0=[${MULTILIB_USEDEP}] )
+	libav? ( >=media-video/libav-10:0=[${MULTILIB_USEDEP}] )
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
+	app-arch/xz-utils
 	>=dev-util/gtk-doc-am-1.12
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "
@@ -32,16 +31,18 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
-	# compatibility with recent releases
-	# TODO: likely apply them with libav-10 when it's out but there will
-	# probably be an upstream gst-libav release compatible at that time.
-	if has_version '>=media-video/ffmpeg-2.0' ; then
-		sed -i -e 's/ CODEC_ID/ AV_CODEC_ID/g' \
-			   -e 's/ CodecID/ AVCodecID/g' \
-			   ext/libav/*.{c,h} || die
-		epatch "${FILESDIR}/${PN}-1.2.4-ffmpeg2.patch"
-		epatch "${FILESDIR}/${PN}-1.2.4-fix-memory-leak.patch" #494282
-	fi
+	# Upstream patches
+	# avviddec: Error out if we try to allocate a buffer without being negotiated
+	epatch "${FILESDIR}"/${P}-allocate-buffer.patch
+
+	# avauddev: Unref decoded AVFrame after we're done with it
+	epatch "${FILESDIR}"/${P}-fix-memleak.patch
+
+	# avviddec: Post error message before returning a flow error
+	epatch "${FILESDIR}"/${P}-post-error.patch
+
+	# avviddec: Release stream lock while calling avcodec_decode_video2()
+	epatch "${FILESDIR}"/${P}-h265-fixes.patch
 }
 
 multilib_src_configure() {
@@ -65,12 +66,4 @@ multilib_src_compile() {
 multilib_src_install_all() {
 	einstalldocs
 	prune_libtool_files --modules
-}
-
-pkg_postinst() {
-	if ! use libav; then
-		elog "Please note that upstream uses media-video/libav"
-		elog "rather than media-video/ffmpeg. If you encounter any"
-		elog "issues try to move from ffmpeg to libav."
-	fi
 }

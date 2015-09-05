@@ -6,25 +6,26 @@ EAPI="5"
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit java-pkg-2 java-pkg-simple 
+inherit java-pkg-2 java-pkg-simple
 
-MY_PV="${PV}.a"
+MY_PV="${PV}a"
+MY_P="${PN}-${PN}-${MY_PV}"
 
 DESCRIPTION="Java HTML parser that makes sense of real-world HTML soup"
 HOMEPAGE="http://jsoup.org/"
-SRC_URI="https://github.com/jhy/${PN}/archive/${PN}-${MY_PV}.tar.gz"
+SRC_URI="https://github.com/jhy/${PN}/archive/${PN}-${MY_PV}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.5"
-DEPEND=">=virtual/jdk-1.5
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6
 	test? ( dev-java/junit:4 )"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+S="${WORKDIR}/${MY_P}"
 
 JAVA_SRC_DIR="src/main/java"
 

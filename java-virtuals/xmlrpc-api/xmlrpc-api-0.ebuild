@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=""
 RDEPEND="dev-java/glassfish-xmlrpc-api:0"
