@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnome</herd>
-	<maintainer>
-		<email>eva@gentoo.org</email>
-		<name>Gilles Dartiguelongue</name>
-	</maintainer>
+	<herd>lxqt</herd>
 	<longdescription lang="en">
 		Liboobs is a wrapping library to the System Tools Backends, it will
 		provide easy to access GObjects to system configuration details, like
