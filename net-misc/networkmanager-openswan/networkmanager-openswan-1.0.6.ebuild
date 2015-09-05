@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 RDEPEND="
@@ -24,6 +24,7 @@ RDEPEND="
 	|| ( net-misc/openswan net-misc/libreswan )
 	gtk? (
 		app-crypt/libsecret
+		>=gnome-extra/nm-applet-0.9.10
 		>=x11-libs/gtk+-3.4:3
 	)
 "
