@@ -6,7 +6,7 @@ EAPI=5
 GCONF_DEBUG="no"
 GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
 
-inherit eutils gnome2
+inherit eutils gnome2 user
 
 DESCRIPTION="NetworkManager OpenVPN plugin"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -32,6 +32,11 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
 "
+
+pkg_setup() {
+	enewgroup nm-openvpn
+	enewuser nm-openvpn -1 -1 -1 nm-openvpn
+}
 
 src_prepare() {
 	# Test will fail if the machine doesn't have a particular locale installed
