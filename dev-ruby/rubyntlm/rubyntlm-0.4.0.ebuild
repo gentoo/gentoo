@@ -11,7 +11,7 @@ DESCRIPTION="Ruby/NTLM provides message creator and parser for the NTLM authenti
 HOMEPAGE="http://rubygems.org/gems/rubyntlm"
 SRC_URI="mirror://rubygems/${P}.gem"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
