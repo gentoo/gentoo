@@ -138,4 +138,4 @@ UNINSTALL_IGNORE="/lib/modules/* /var/run /var/lock"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (23 Aug 2013)
 # Make emerge messages default to English as per Council decision
-LC_MESSAGES=C
+LC_MESSAGES="C"
