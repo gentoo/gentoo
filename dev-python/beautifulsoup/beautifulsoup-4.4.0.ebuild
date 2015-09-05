@@ -26,8 +26,9 @@ RDEPEND="$(python_gen_cond_dep 'dev-python/html5lib[${PYTHON_USEDEP}]' python2_7
 		$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]' python2_7 'python3*')"
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		!dev-python/chardet[${PYTHON_USEDEP}] )"
+		!!dev-python/chardet )"
 # See https://bugs.launchpad.net/beautifulsoup/+bug/1471359 to explain need for blocker
+[[ ${PV} == 4.4.0 ]] || die "Don't forget to remove the chardet blocker!"
 
 S=${WORKDIR}/${MY_P}
 
