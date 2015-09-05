@@ -1,30 +1,32 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+GCONF_DEBUG="no"
 GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
 
-inherit eutils gnome2-utils gnome.org
+inherit eutils gnome2
 
 DESCRIPTION="NetworkManager OpenVPN plugin"
-HOMEPAGE="https://www.gnome.org/projects/NetworkManager/"
+HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gtk test"
 
 RDEPEND="
 	>=dev-libs/dbus-glib-0.74
-	>=net-misc/networkmanager-0.9.8
+	>=dev-libs/glib-2.32:2
+	>=net-misc/networkmanager-0.9.10:=
 	>=net-misc/openvpn-2.1_rc9
 	gtk? (
-		>=x11-libs/gtk+-2.91.4:3
-		gnome-base/gnome-keyring
-		gnome-base/libgnome-keyring
-	)"
-
+		app-crypt/libsecret
+		>=gnome-extra/nm-applet-1.0.5
+		>=x11-libs/gtk+-3.4:3
+	)
+"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	>=dev-util/intltool-0.35
@@ -33,24 +35,20 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# Test will fail if the machine doesn't have a particular locale installed
-	# FAIL: (tls-import-data) unexpected 'ca' secret value
+	# FAIL: (tls-import-data) unexpected 'ca' secret value, upstream bug #742708
 	sed '/test_non_utf8_import (plugin, test_dir)/ d' \
 		-i properties/tests/test-import-export.c || die "sed failed"
 
-	gnome2_disable_deprecation_warning
+	gnome2_src_prepare
 }
 
 src_configure() {
-	econf \
+	# --localstatedir=/var needed per bug #536248
+	gnome2_src_configure \
+		--localstatedir=/var \
 		--disable-more-warnings \
 		--disable-static \
 		--with-dist-version=Gentoo \
-		--with-gtkver=3 \
 		$(use_with gtk gnome) \
 		$(use_with test tests)
-}
-
-src_install() {
-	default
-	prune_libtool_files
 }
