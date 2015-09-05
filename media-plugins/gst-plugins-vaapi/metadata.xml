@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>gstreamer</herd>
+	<use>
+		<flag name="drm">Enable DRM renderer</flag>
+	</use>
 	<upstream>
 		<remote-id type="gitorious">vaapi/gstreamer-vaapi</remote-id>
 	</upstream>
