@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
+# sys-boot/gnu-efi is not supported on all archs.
+sys-apps/systemd -gnuefi
+
 # Michael Palimaka <kensington@gentoo.org> (12 Aug 2015)
 # Unkeyworded dependencies
 kde-frameworks/kauth policykit

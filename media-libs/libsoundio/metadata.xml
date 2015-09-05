@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>sir.suriv@gmail.com</email>
+	<name>Diogo Pereira</name>
+	<description>Proxy maintainer. Assign bugs to him.</description>
+</maintainer>
+<longdescription lang="en">
+	C99 library providing cross-platform audio input and output. The API is
+	suitable for real-time software such as digital audio workstations as
+	well as consumer software such as music players.
+</longdescription>
+<upstream>
+	<maintainer status="active">
+		<email>superjoe30@gmail.com</email>
+		<name>Andrew Kelley</name>
+	</maintainer>
+	<remote-id type="github">andrewrk/libsoundio</remote-id>
+	<bugs-to>https://github.com/andrewrk/libsoundio/issues</bugs-to>
+	<doc lang="en">http://libsound.io/doc/</doc>
+</upstream>
+</pkgmetadata>

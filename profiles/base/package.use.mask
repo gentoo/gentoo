@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
+# sys-boot/gnu-efi is not supported on all archs.
+sys-apps/systemd gnuefi
+
 # Manuel Rüger <mrueg@gentoo.org> (03 Sep 2015)
 # Mask USE=ruby for packages that solely rely on the soon to be deprecated
 # ruby 1.9

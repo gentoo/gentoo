@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
+# sys-boot/gnu-efi is not supported on all archs.
+sys-apps/systemd -gnuefi
+
 # James Le Cuirot <chewi@gentoo.org> (28 Jul 2015)
 # JavaFX and the browser plugin are included on x64 Linux.
 dev-java/oracle-jdk-bin -javafx -nsplugin
