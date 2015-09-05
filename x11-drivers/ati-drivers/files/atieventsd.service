@@ -1,0 +1,9 @@
+[Unit]
+Description=Catalyst event Daemon
+Requires=acpid.socket
+
+[Service]
+ExecStart=/opt/sbin/atieventsd --nodaemon
+
+[Install]
+WantedBy=multi-user.target

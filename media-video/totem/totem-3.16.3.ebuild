@@ -27,7 +27,7 @@ KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 # FIXME:
 # Runtime dependency on gnome-session-2.91
 RDEPEND="
-	>=dev-libs/glib-2.35:2
+	>=dev-libs/glib-2.35:2[dbus]
 	>=dev-libs/libpeas-1.1[gtk]
 	>=dev-libs/libxml2-2.6:2
 	>=dev-libs/totem-pl-parser-3.10.1:0=[introspection?]
@@ -52,7 +52,7 @@ RDEPEND="
 	gnome-base/gsettings-desktop-schemas
 	x11-themes/gnome-icon-theme-symbolic
 
-	introspection? ( >=dev-libs/gobject-introspection-0.6.7 )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 	lirc? ( app-misc/lirc )
 	nautilus? ( >=gnome-base/nautilus-2.91.3 )
 	python? (
@@ -66,7 +66,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.5
-	app-text/scrollkeeper
 	app-text/yelp-tools
 	dev-libs/appstream-glib
 	>=dev-util/gtk-doc-am-1.14
