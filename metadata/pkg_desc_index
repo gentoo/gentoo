@@ -3803,7 +3803,7 @@ dev-java/dom4j 1.6.1-r4: Java library for working with XML
 dev-java/dsiutils 1.0.10-r2: A Mish Mash of classes that were initially distributed with mg4j (amount others)
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library for implementation of interoperable metaobject protocols for dynamic languages
-dev-java/easymock 3.2-r1 3.3.1: Provides Mock Objects for interfaces in JUnit tests by generating them on the fly
+dev-java/easymock 3.3.1: Provides Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Provides Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easyneurons 2.3: GUI neural network editor for neuroph
 dev-java/echo2 2.1.1: Echo2 is the next-generation of the Echo Web Framework
