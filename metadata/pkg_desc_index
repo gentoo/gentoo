@@ -3860,7 +3860,7 @@ dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
 dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
 dev-java/glassfish-jms-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-persistence 1.0-r1: Glassfish implementation of persistence API
-dev-java/glassfish-servlet-api 2_beta44: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
+dev-java/glassfish-servlet-api 2_beta44 3.1.1: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
 dev-java/glassfish-transaction-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-xmlrpc-api 1.1.1: Project GlassFish XML RPC API
 dev-java/glazedlists 1.7.0-r1 1.8.0: A toolkit for list transformations
@@ -15983,7 +15983,7 @@ sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewi
 sys-block/fio 1.17.2 1.99.10 2.0.14-r1 2.0.15 2.1.9 2.2.4-r1 2.2.9: Jens Axboe's Flexible IO tester
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r1 0.1h-r2: Partition table rescue/guessing tool
-sys-block/gparted 0.21.0 0.22.0: Gnome Partition Editor
+sys-block/gparted 0.22.0 0.23.0: Gnome Partition Editor
 sys-block/hdrecover 0.4: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
