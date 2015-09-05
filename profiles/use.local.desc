@@ -5059,11 +5059,13 @@ net-dns/unbound:gost - Enable GOST support
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/firewalld:gui - Builds and installs GUI configurator and GTK+ applet
 net-firewall/fwknop:client - Build fwknop client
-net-firewall/fwknop:extras - Install example apparmor policy
-net-firewall/fwknop:gdbm - Replace file digest-cache with gdbm
+net-firewall/fwknop:extras - Install example AppArmor policy for fwknopd server
+net-firewall/fwknop:firewalld - Use net-firewall/firewalld as the default server backend
+net-firewall/fwknop:gdbm - Replace file-based digest-cache with gdbm one
 net-firewall/fwknop:gpg - Enable GPG support via app-crypt/gpgme
+net-firewall/fwknop:iptables - Use net-firewall/iptables as the default server backend
 net-firewall/fwknop:server - Build fwknopd server
-net-firewall/fwknop:udp-server - Build fwknopd with UDP server mode only
+net-firewall/fwknop:udp-server - Enable UDP server mode only (no net-libs/libpcap dependency)
 net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
 net-firewall/ipsec-tools:idea - Enable support for the IDEA algorithm
 net-firewall/ipsec-tools:nat - Enable NAT-Traversal

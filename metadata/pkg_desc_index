@@ -4051,7 +4051,7 @@ dev-java/jsap 2.1: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.49 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/jscience 1.0.4-r1: Java Tools and Libraries for the Advancement of Sciences
 dev-java/json-simple 1.1: Simple Java toolkit for JSON
-dev-java/jsoup 1.7.2 1.8.1: Java HTML parser that makes sense of real-world HTML soup
+dev-java/jsoup 1.7.2 1.8.1 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jspeex 0.9.7-r1: Speex speech codec library for Java
 dev-java/jsr101 1.4-r2: Java(TM) API for XML-Based RPC Specification Interface Classes
 dev-java/jsr173 1.0-r1: The Streaming API for XML (StAX) is a Java API for parsing and writing XML easily and efficiently
@@ -12019,7 +12019,7 @@ media-plugins/gst-plugins-jack 0.10.31-r1 1.2.4-r1 1.4.5: plugin for gstreamer
 media-plugins/gst-plugins-jpeg 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer encoder/decoder for JPEG format
 media-plugins/gst-plugins-ladspa 0.10.23 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-libav 1.2.4 1.2.4-r1 1.4.5 1.4.5-r1: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.4.5-r1 1.4.5-r2: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libmms 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
 media-plugins/gst-plugins-libnice 0.1.8 0.1.8-r100 0.1.10 0.1.10-r100 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer encoder/decoder for PNG images
@@ -13274,7 +13274,7 @@ net-firewall/firewalld 0.3.10 0.3.13 0.3.14.2: A firewall daemon with D-BUS inte
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.0.1.3592-r1 5.1.0.3599: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
-net-firewall/fwknop 2.6.6-r1: Single Packet Authorization and Port Knocking application
+net-firewall/fwknop 2.6.7: Single Packet Authorization and Port Knocking application
 net-firewall/gshield 2.8-r3: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r1 0.6.1: A nice iptables firewall script
 net-firewall/ipsec-tools 0.8.0-r5 0.8.1-r1 0.8.2: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
