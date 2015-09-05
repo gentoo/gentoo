@@ -1,0 +1,25 @@
+From 8c0b59e4ba46d97916193d01be683d459e7fb0fb Mon Sep 17 00:00:00 2001
+From: kassoulet <gautier@soundconverter.org>
+Date: Sat, 7 Feb 2015 16:23:49 +0100
+Subject: [PATCH] Fix broken files dropping.
+
+The current folder was added to the list of dropped files.
+
+Closes lp:1419259
+---
+ soundconverter/ui.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/soundconverter/ui.py b/soundconverter/ui.py
+index c652254..a7656a1 100644
+--- a/soundconverter/ui.py
++++ b/soundconverter/ui.py
+@@ -174,7 +174,7 @@ def drag_data_received(self, widget, context, x, y, selection,
+                              mime_id, time):
+         widget.stop_emission('drag_data_received')
+         if mime_id >= 0 and mime_id < len(self.drop_mime_types):
+-            uris = [filename_to_uri(uri.strip()) for uri in selection.data.split('\n')]
++            uris = [filename_to_uri(uri.strip()) for uri in selection.data.split('\n') if uri]
+             self.add_uris(uris)
+             context.finish(True, False, time)
+ 
