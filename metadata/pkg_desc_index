@@ -612,7 +612,7 @@ app-crypt/truecrypt 7.1a 7.2: Free open-source disk encryption software
 app-crypt/xca 1.1.0 1.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests and revokation lists
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-neo-manager 1.1.0 1.2.1 1.3.0: Cross platform personalization tool for the YubiKey NEO
-app-crypt/zuluCrypt 4.7.6: Front end to cryptsetup
+app-crypt/zuluCrypt 4.7.6 4.7.7: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
 app-dicts/aspell-bg 4.1.0: Bulgarian language dictionary for aspell
