@@ -9,7 +9,7 @@ inherit xorg-2
 
 DESCRIPTION="Library providing generic access to the PCI bus and devices"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="minimal zlib"
+IUSE="zlib"
 
 DEPEND="!<x11-base/xorg-server-1.5
 	zlib? (	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )"
