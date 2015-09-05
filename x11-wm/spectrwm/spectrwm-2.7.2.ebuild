@@ -12,7 +12,7 @@ SRC_URI="http://opensource.conformal.com/snapshots/${PN}/${P}.tgz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="x11-misc/dmenu"
