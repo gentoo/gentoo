@@ -8964,7 +8964,7 @@ dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.25 2.24.27 2.24.28: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.21 1.24: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.21 1.24: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 2.24.27 3.14.13 3.16.3 3.16.4: GTK update icon cache
+dev-util/gtk-update-icon-cache 2.24.27 3.14.13 3.16.4 3.16.5: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.6 1.1.7: A code search tool
 dev-util/httpup 0.4.0k: synchronisation tool for http file repositories
@@ -10244,7 +10244,7 @@ gnome-extra/cinnamon-menus 2.4.1 2.4.2 2.6.0: Cinnamon's library for the Desktop
 gnome-extra/cinnamon-screensaver 2.4.2 2.6.3 2.6.4: Screensaver for Cinnamon
 gnome-extra/cinnamon-session 2.4.3 2.6.2 2.6.3: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 2.4.3 2.6.2 2.6.3: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 2.4.4 2.6.1 2.6.2: Translation data for Cinnamon
+gnome-extra/cinnamon-translations 2.4.4 2.6.2 2.6.3: Translation data for Cinnamon
 gnome-extra/cjs 2.4.2 2.6.0 2.6.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/connman-gnome 0.7: Provides a daemon for managing internet connections
 gnome-extra/docky 2.2.0: Elegant, powerful, clean dock
