@@ -10249,7 +10249,7 @@ gnome-extra/cjs 2.4.2 2.6.0 2.6.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/connman-gnome 0.7: Provides a daemon for managing internet connections
 gnome-extra/docky 2.2.0: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.8.2 0.9.9: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.12.11 3.16.4_pre20150704 3.16.4: Evolution groupware backend
+gnome-extra/evolution-data-server 3.12.11 3.16.4 3.16.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.12.11 3.16.3-r1 3.16.4: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gdesklets-core 0.36.3-r4: GNOME Desktop Applets: Core library for desktop applets
@@ -10983,7 +10983,7 @@ mail-client/clawsker 0.7.8 0.7.10: Applet to edit Claws Mail's hidden preference
 mail-client/cone 0.89 0.90 0.90-r1 0.92: CONE: COnsole News reader and Emailer
 mail-client/drac 1.12-r1: A robust implementation of POP-before-SMTP
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
-mail-client/evolution 3.12.11 3.16.3 3.16.4: Integrated mail, addressbook and calendaring functionality
+mail-client/evolution 3.12.11 3.16.4 3.16.5: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.6.3-r1 0.6.5 0.10.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/mail-notification 5.4-r8: Status icon informing about new mail
