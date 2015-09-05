@@ -1293,7 +1293,7 @@ app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
 app-emulation/libvirt 1.2.15-r1 1.2.17-r5 1.2.18-r1 1.2.19 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 0.2.0 0.2.1 0.2.2: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
-app-emulation/lxc 1.0.6-r1 1.0.7 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2: LinuX Containers userspace utilities
+app-emulation/lxc 1.0.6-r1 1.0.7 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2 1.1.3: LinuX Containers userspace utilities
 app-emulation/lxd 0.13 0.14: Fast, dense and secure container management
 app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743: Opensourced tools for VMware guests
@@ -13892,7 +13892,7 @@ net-misc/gogoc 1.2-r2 1.2-r3: Client to connect to a tunnel broker using the TSP
 net-misc/goog-sitemapgen 1.5: A python script which will generate an XML sitemap for your web site
 net-misc/googlecl 0.9.14: Command line tools for the Google Data APIs
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
-net-misc/grive 0.2.0-r1 0.3.0_pre20130503 0.3.0_pre20141119: an open source Linux client for Google Drive
+net-misc/grive 0.4.0_pre20150905: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gsutil 3.42 4.13 4.14: command line tool for interacting with cloud storage services
 net-misc/gtkvncviewer 0.4: A small GTK tool to connect to VNC servers
@@ -14426,7 +14426,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.0_rc1 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 1.23-r2 1.98_p20150105 2.0 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
-net-wireless/bluez 4.101-r9 5.25 5.33: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 4.101-r9 5.25 5.33 5.34: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
