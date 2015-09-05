@@ -12580,7 +12580,7 @@ media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player
 media-sound/sonic-visualiser 1.9 2.3 2.4.1: Music audio files viewer and analiser
 media-sound/sooperlooper 1.6.17 1.6.18: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.14.0 3.16.1: CD ripper for GNOME
-media-sound/soundconverter 2.1.3 2.1.4 2.1.5: A simple audiofile converter application for the GNOME environment
+media-sound/soundconverter 2.1.5 2.1.5-r1: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 2.0.3 2.1.2: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1: A Midi Controllable Audio Sampler
