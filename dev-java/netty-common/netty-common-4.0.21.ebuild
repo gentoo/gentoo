@@ -23,9 +23,9 @@ CDEPEND="dev-java/commons-logging:0
 	dev-java/log4j:0
 	dev-java/slf4j-nop:0
 	dev-java/slf4j-api:0"
-RDEPEND=">=virtual/jre-1.6
+RDEPEND=">=virtual/jre-1.7
 		${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
+DEPEND=">=virtual/jdk-1.7
 		${CDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${MY_P}.Final/${PN/${MY_PN}-}"
