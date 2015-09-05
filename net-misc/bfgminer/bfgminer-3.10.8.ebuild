@@ -42,7 +42,7 @@ REQUIRED_USE='
 DEPEND='
 	net-misc/curl
 	ncurses? (
-		sys-libs/ncurses[unicode?]
+		sys-libs/ncurses:=[unicode?]
 	)
 	>=dev-libs/jansson-2
 	net-libs/libblkmaker:=
