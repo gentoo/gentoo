@@ -584,7 +584,10 @@ app-emulation/libvirt:virtualbox - Support management of VirtualBox virtualisati
 app-emulation/libvirt:wireshark-plugins - Build the net-analyzer/wireshark plugin for the Libvirt RPC protocol
 app-emulation/libvirt:xen - Support management of Xen virtualisation (app-emulation/xen)
 app-emulation/lxc:cgmanager - Enable support for cgroup management using app-admin/cgmanager
+app-emulation/lxd:criu - Add support for live-migrateable containers
+app-emulation/lxd:daemon - Build the system daemon, not just the client tool
 app-emulation/lxd:image - Installs the lxd-images image-fetching script
+app-emulation/lxd:lvm - Allow using the Logical Volume Manager as pool for disk image storage
 app-emulation/open-vm-tools:doc - Generate API documentation
 app-emulation/open-vm-tools:fuse - Build vmblock-fuse in favor of FUSE based blocking mechanism for DnD
 app-emulation/open-vm-tools:grabbitmqproxy - Enable grabbitmqproxy
