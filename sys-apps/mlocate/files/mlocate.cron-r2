@@ -28,7 +28,7 @@ fi
 # check the config file
 NODEVS=""
 if [ ! -f /etc/updatedb.conf ]; then
-	NODEVS=$(< /proc/filesystems awk '$1 == "nodev" && $2 != "rootfs" { print $2 }')
+	NODEVS=$(awk '$1 == "nodev" && $2 != "rootfs" { print $2 }' /proc/filesystems)
 fi
 
 # alter the priority of the updatedb process
