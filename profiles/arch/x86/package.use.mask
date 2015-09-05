@@ -33,10 +33,6 @@ net-im/telepathy-connection-managers -steam
 # >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
 >x11-drivers/nvidia-drivers-346 uvm
 
-# Pacho Ramos <pacho@gentoo.org> (18 Jan 2015)
-# Missing keywords
-media-plugins/gst-plugins-meta vaapi
-
 # Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
 # Unmask skype support for unstable keywords
 net-im/bitlbee -skype
