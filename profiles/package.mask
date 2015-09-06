@@ -30,10 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Mike Gilbert <floppym@gentoo.org> (06 Sep 2015)
-# Ebuild fails to call make install, bug 559772.
-=dev-libs/libcgroup-0.41-r1
-
 # Rick Farina <zerochaos@gentoo.org> (04 Sep 2015)
 # Ancient, please upgrade to ~arch version
 =net-analyzer/metasploit-2.7
