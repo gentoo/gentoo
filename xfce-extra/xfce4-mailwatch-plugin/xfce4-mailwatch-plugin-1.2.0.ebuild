@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,16 +14,16 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="debug ipv6 ssl"
 
-RDEPEND=">=dev-libs/glib-2
-	>=x11-libs/gtk+-2.18:2
-	x11-libs/libX11
+RDEPEND=">=dev-libs/glib-2:=
+	>=x11-libs/gtk+-2.18:2=
+	x11-libs/libX11:=
 	>=xfce-base/exo-0.7.2
-	>=xfce-base/libxfce4ui-4.10
-	>=xfce-base/libxfce4util-4.10
+	>=xfce-base/libxfce4ui-4.10:=
+	>=xfce-base/libxfce4util-4.10:=
 	>=xfce-base/xfce4-panel-4.10
 	ssl? (
-		dev-libs/libgcrypt:0
-		>=net-libs/gnutls-2
+		dev-libs/libgcrypt:0=
+		>=net-libs/gnutls-2:=
 		)"
 DEPEND="${RDEPEND}
 	dev-util/intltool
