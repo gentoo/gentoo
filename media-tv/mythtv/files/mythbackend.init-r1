@@ -1,0 +1,70 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="MythTV backend recording daemon"
+extra_commands="resched upnprebuild"
+description_resched="Forces the recording scheduler to update"
+description_upnprebuild="Rebuilds the UPnP media cache"
+
+depend() {
+	# mythbackend doesn't need to run on the same machine that
+	# mysql runs on. so its use for that reason
+	use logger net.lo mysql LCDd
+}
+
+start() {
+	local logging=
+
+	[ -z "${MYTHBACKEND_VERBOSE}" ] && \
+		MYTHBACKEND_VERBOSE="general"
+	[ -z "${MYTHBACKEND_LOGGING}" ] && \
+		MYTHBACKEND_LOGGING="files"
+	case "${MYTHBACKEND_LOGGING}" in
+		database) logging="--enable-dblog" ;;
+		syslog\ *) logging="--${MYTHBACKEND_LOGGING}" ;;
+		files) logging="--logpath /var/log/mythtv" ;;
+		console) logging="--nologserver" ;;
+		*)
+			eerror "Invalid MYTHBACKEND_LOGGING value"
+			exit 1
+			;;
+	esac
+
+	#fixes for bug #101308
+	unset DISPLAY
+	unset SESSION_MANAGER
+
+	# Work around any strange permissions that may be on these files.
+	[ "x${MYTHBACKEND_LOGGING}" = "xfiles" ] && \
+		checkpath --dir --owner mythv:video --mode 0664 /var/log/mythtv
+	checkpath --dir --owner mythv:video --mode 0664 /home/mythtv
+
+	ebegin "Starting MythTV Backend"
+	start-stop-daemon --start --quiet --exec /usr/bin/mythbackend \
+                --pidfile /var/run/mythbackend.pid -- \
+		--daemon --pidfile /var/run/mythbackend.pid --user mythtv:video \
+		--verbose ${MYTHBACKEND_VERBOSE} \
+		${logging} ${MYTHBACKEND_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping MythTV Backend"
+	start-stop-daemon --stop --retry 10 --progress \
+		--pidfile=/var/run/mythbackend.pid
+	eend $?
+}
+
+resched() {
+	ebegin "Updating the recording scheduler"
+	/usr/bin/mythbackend --resched
+	eend $?
+}
+
+upnprebuild() {
+	ebegin "Rebuilding UPnP media cache"
+	/usr/bin/mythbackend --upnprebuild
+	eend $?
+}
