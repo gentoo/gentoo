@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>gnustep</herd>
-<herd>proxy-maintainers</herd>
 <longdescription>
 The makefile package is a simple, powerful and extensible way to write
 makefiles for a GNUstep-based project.  It allows the user to write a
