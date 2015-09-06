@@ -12,7 +12,7 @@ inherit autotools gnome2 python-single-r1
 
 DESCRIPTION="Drop-down terminal for GTK+ desktops"
 HOMEPAGE="https://github.com/Guake/guake"
-SRC_URI="https://github.com/${PN^}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
