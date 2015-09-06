@@ -8,4 +8,4 @@ RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/ndk/android-ndk-r8b-linux-x86.tar.bz2
-_md5_=63aa5a5505fc851e22491f7831741cc6
+_md5_=f46b3605f678e0b2c2e236fcd81adb38
