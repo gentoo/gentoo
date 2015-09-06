@@ -14,3 +14,4 @@ slotmove ~sys-libs/ncurses-6.0 5 0
 move kde-base/baloo-widgets kde-apps/baloo-widgets
 slotmove =kde-apps/kde-base-artwork-15.08.0 5 4
 move x11-drivers/radeon-ucode sys-firmware/radeon-ucode
+move dev-python/pyDeComp dev-python/pydecomp
