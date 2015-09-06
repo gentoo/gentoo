@@ -17,10 +17,10 @@ DESCRIPTION="A mid-level packet manipulation library"
 HOMEPAGE="https://rubygems.org/gems/packetfu"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 
-ruby_add_rdepend " >=dev-ruby/pcaprub-0.9.2"
+ruby_add_rdepend " >=dev-ruby/pcaprub-0.9.2:*"
 
 RUBY_PATCHES=( "${FILESDIR}"/${P}-ruby2x-encoding.patch )
 

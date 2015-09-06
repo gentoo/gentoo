@@ -17,12 +17,37 @@ DESCRIPTION="A mid-level packet manipulation library"
 HOMEPAGE="https://rubygems.org/gems/packetfu"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 
 ruby_add_rdepend "
 	dev-ruby/network_interface:0
-	>=dev-ruby/pcaprub-0.9.2
+	dev-ruby/pcaprub:0.12
 "
 
-ruby_add_bdepend "test? ( >=dev-ruby/rspec-its-1.2.0:1 )"
+ruby_add_bdepend "test? ( >=dev-ruby/rspec-its-1.2.0:1 )
+			dev-ruby/bundler"
+
+all_ruby_prepare() {
+	[ -f Gemfile.lock ] && rm Gemfile.lock
+	#For now, we don't support development or testing at all
+	#if ! use development; then
+		sed -i -e "/^group :development do/,/^end$/d" Gemfile || die
+		sed -i -e "/s.add_development_dependency/d" "${PN}".gemspec || die
+		sed -i -e "/spec.add_development_dependency/d" "${PN}".gemspec || die
+	#fi
+	#if ! use test; then
+		sed -i -e "/^group :test do/,/^end$/d" Gemfile || die
+	#fi
+	#if ! use test && ! use development; then
+		sed -i -e "/^group :development, :test do/,/^end$/d" Gemfile || die
+	#fi
+}
+
+each_ruby_prepare() {
+	if [ -f Gemfile ]
+	then
+		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
+		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
+	fi
+}
