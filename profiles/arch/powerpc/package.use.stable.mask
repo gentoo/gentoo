@@ -22,6 +22,11 @@
 # Missing stable
 dev-libs/protobuf python
 
+# Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
+# webkit-gtk is going to stay in ~all but amd64/x86
+# that are the only arches upstream is taking care
+>=x11-libs/wxGTK-3.0.2.0-r1 webkit
+
 # Justin Lecher <jlec@gentoo.org> (21 Feb 2015)
 # Needs stable GNOME-3
 net-fs/netatalk tracker
