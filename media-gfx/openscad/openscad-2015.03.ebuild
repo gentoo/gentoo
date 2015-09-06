@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit qt4-r2
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
 HOMEPAGE="http://www.openscad.org/"
-SRC_URI="https://openscad.googlecode.com/files/${P}.src.tar.gz"
+SRC_URI="http://files.openscad.org/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,13 +20,13 @@ CDEPEND="media-gfx/opencsg
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
-	dev-cpp/eigen:2
-	dev-libs/gmp
-	dev-libs/mpfr
+	dev-cpp/eigen:3
+	dev-libs/gmp:0
+	dev-libs/mpfr:0
 	dev-libs/boost:=
-	sys-libs/glibc
+	x11-libs/qscintilla
 "
-DEPEND="${CDEPEND} sys-devel/gcc"
+DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}"
 
 src_prepare() {
