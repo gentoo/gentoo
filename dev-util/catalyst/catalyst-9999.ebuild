@@ -34,6 +34,7 @@ DEPEND="
 	>=dev-python/snakeoil-0.5.2
 "
 RDEPEND="
+	=dev-python/pydecomp-9999
 	app-arch/lbzip2
 	app-crypt/shash
 	virtual/cdrtools
