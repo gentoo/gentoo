@@ -160,6 +160,10 @@ src_prepare() {
 	# https://github.com/linuxmint/Cinnamon/issues/3577
 	epatch "${FILESDIR}"/${PN}-2.4.5-gnome-3.14.patch
 
+	# Fix build with clutter[-gtk]
+	# https://github.com/linuxmint/Cinnamon/pull/4600
+	epatch "${FILESDIR}"/${PN}-2.6.13-test-recorder-includes.patch
+
 	# Use pkexec instead of gksu (from Arch)
 	# https://github.com/linuxmint/Cinnamon/issues/3565
 	sed -i 's/gksu/pkexec/' files/usr/bin/cinnamon-settings-users || die
