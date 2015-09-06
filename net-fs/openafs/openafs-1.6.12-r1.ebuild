@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
-KEYWORDS="amd64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc kerberos +modules pam"
 
