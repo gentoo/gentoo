@@ -5,7 +5,7 @@
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
 
-inherit ruby-fakegem
+inherit ruby-fakegem versionator
 
 RUBY_FAKEGEM_EXTRAINSTALL="app config script spec"
 
