@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="4"
 
-inherit eutils toolchain-funcs user
+inherit eutils systemd toolchain-funcs user
 
 MY_PV="${PV//_alpha/a}"
 MY_PV="${MY_PV//_beta/b}"
@@ -18,16 +18,22 @@ SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="+client ipv6 kernel_linux ldap selinux +server ssl vim-syntax"
 
-DEPEND="selinux? ( sec-policy/selinux-dhcp )
-	client? ( kernel_linux? ( sys-apps/net-tools ) )
+DEPEND="
+	client? (
+		kernel_linux? (
+			ipv6? ( sys-apps/iproute2 )
+			sys-apps/net-tools
+		)
+	)
 	ldap? (
 		net-nds/openldap
 		ssl? ( dev-libs/openssl )
 	)"
 RDEPEND="${DEPEND}
+	selinux? ( sec-policy/selinux-dhcp )
 	vim-syntax? ( app-vim/dhcpd-syntax )"
 
 S="${WORKDIR}/${MY_P}"
@@ -45,17 +51,17 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.0-fix-perms.patch
 	# Enable dhclient to equery NTP servers
 	epatch "${FILESDIR}"/${PN}-4.0-dhclient-ntp.patch
-	# resolvconf support in dhclient-script
-	epatch "${FILESDIR}"/${PN}-4.2.2-dhclient-resolvconf.patch
+	epatch "${FILESDIR}"/${PN}-4.3.1-dhclient-resolvconf.patch
 	# Stop downing the interface on Linux as that breaks link daemons
 	# such as wpa_supplicant and netplug
 	epatch "${FILESDIR}"/${PN}-3.0.3-dhclient-no-down.patch
-	epatch "${FILESDIR}"/${PN}-4.2.0-errwarn-message.patch
 	# Enable dhclient to get extra configuration from stdin
 	epatch "${FILESDIR}"/${PN}-4.2.2-dhclient-stdin-conf.patch
 	epatch "${FILESDIR}"/${PN}-4.2.2-nogateway.patch #265531
 	epatch "${FILESDIR}"/${PN}-4.2.4-quieter-ping.patch #296921
 	epatch "${FILESDIR}"/${PN}-4.2.4-always-accept-4.patch #437108
+	epatch "${FILESDIR}"/${PN}-4.2.5-iproute2-path.patch #480636
+	epatch "${FILESDIR}"/${PN}-4.2.5-bindtodevice-inet6.patch #471142
 
 	# Brand the version with Gentoo
 	sed -i \
@@ -108,7 +114,7 @@ src_prepare() {
 	binddir=${binddir}
 	GMAKE=${MAKE:-gmake}
 	EOF
-	epatch "${FILESDIR}"/${PN}-4.2.2-bind-disable.patch
+	epatch "${FILESDIR}"/${PN}-4.3.3-bind-disable.patch
 	cd bind-*/
 	epatch "${FILESDIR}"/${PN}-4.2.2-bind-parallel-build.patch #380717
 	epatch "${FILESDIR}"/${PN}-4.2.2-bind-build-flags.patch
@@ -154,7 +160,7 @@ src_configure() {
 	# perl and we don't want to require that #383837.
 	cd bind/bind-*/ || die
 	eval econf \
-		$(sed -n '/ [.].configure /{s:^[^-]*::;s:>.*::;p}' ../Makefile) \
+		$(sed -n '/^bindconfig =/,/^$/{:a;N;$!ba;s,^[^-]*,,;s,\\\s*\n\s*--,--,g;s, @[[:upper:]]\+@,,g;P;D}' ../Makefile.in) \
 		--disable-symtable \
 		--without-make-clean
 }
@@ -198,6 +204,14 @@ src_install() {
 		newconfd "${FILESDIR}"/dhcrelay.conf dhcrelay
 		newinitd "${FILESDIR}"/dhcrelay.init3 dhcrelay6
 		newconfd "${FILESDIR}"/dhcrelay6.conf dhcrelay6
+
+		systemd_newtmpfilesd "${FILESDIR}"/dhcpd.tmpfiles dhcpd.conf
+		systemd_dounit "${FILESDIR}"/dhcpd4.service
+		systemd_dounit "${FILESDIR}"/dhcpd6.service
+		systemd_dounit "${FILESDIR}"/dhcrelay4.service
+		systemd_dounit "${FILESDIR}"/dhcrelay6.service
+		systemd_install_serviced "${FILESDIR}"/dhcrelay4.service.conf
+		systemd_install_serviced "${FILESDIR}"/dhcrelay6.service.conf
 
 		sed -i "s:#@slapd@:$(usex ldap slapd ''):" "${ED}"/etc/init.d/* || die #442560
 	fi

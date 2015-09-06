@@ -24,6 +24,7 @@ S="${WORKDIR}/${PN}-r${PV}"
 ANDROID_NDK_DIR="opt/${PN}"
 
 QA_PREBUILT="*"
+PYTHON_UPDATER_IGNORE="1"
 
 src_configure() {
 	:

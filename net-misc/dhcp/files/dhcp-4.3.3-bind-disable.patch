@@ -1,0 +1,30 @@
+--- dhcp-4.3.3/bind/Makefile.in
++++ dhcp-4.3.3/bind/Makefile.in
+@@ -40,6 +40,7 @@
+ @BIND_ATF_TRUE@all: bind1 atf bind2
+ 
+ bind1:
++disable:
+ # Extract the source from the tarball, if it hasn't been already.
+ 	@if test -d ${bindsrcdir} ; then                    \
+ 		echo ${bindsrcdir} already unpacked... ;    \
+@@ -68,6 +69,7 @@
+ 	fi
+ 
+ atf:
++disable:
+ # Build and copy the ATF support if not yet installed.
+ 	@if test -d ./atf ; then				      \
+ 		echo ATF support already installed ;		      \
+@@ -79,6 +81,7 @@
+ 	fi
+ 
+ bind2:
++disable:
+ # Build and install the export libraries
+ # No need to do anything if we already have something installed.
+ 	@if test -d ${binddir}/lib ; then                                    \
+--- dhcp-4.3.3/bind/test
++++ dhcp-4.3.3/bind/test
+@@ -0,0 +1 @@
++--disable-kqueue --disable-epoll --disable-devpoll --without-openssl --without-libxml2 --enable-exportlib --with-gssapi=no --enable-threads=no @BINDCONFIG@ --with-export-includedir=${binddir}/include --with-export-libdir=${binddir}/lib
