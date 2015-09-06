@@ -3860,7 +3860,7 @@ dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
 dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
 dev-java/glassfish-jms-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-persistence 1.0-r1: Glassfish implementation of persistence API
-dev-java/glassfish-servlet-api 2_beta44 3.1.1: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
+dev-java/glassfish-servlet-api 3.1.1: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
 dev-java/glassfish-transaction-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-xmlrpc-api 1.1.1: Project GlassFish XML RPC API
 dev-java/glazedlists 1.7.0-r1 1.8.0: A toolkit for list transformations
@@ -4051,7 +4051,7 @@ dev-java/jsap 2.1: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.49 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/jscience 1.0.4-r1: Java Tools and Libraries for the Advancement of Sciences
 dev-java/json-simple 1.1: Simple Java toolkit for JSON
-dev-java/jsoup 1.7.2 1.8.1 1.8.3: Java HTML parser that makes sense of real-world HTML soup
+dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jspeex 0.9.7-r1: Speex speech codec library for Java
 dev-java/jsr101 1.4-r2: Java(TM) API for XML-Based RPC Specification Interface Classes
 dev-java/jsr173 1.0-r1: The Streaming API for XML (StAX) is a Java API for parsing and writing XML easily and efficiently
