@@ -4157,8 +4157,8 @@ dev-java/offo-hyphenation 1.2: Hyphenation patterns for Apache Fop
 dev-java/ognl 2.6.9-r2 3.0.8: Object-Graph Navigation Language; an expression language for getting/setting properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.51 1.8.0.60-r1: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.7.0.80 1.8.0.51 1.8.0.60-r1: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0: OSGi Service Platform Core API (Companion Code)
@@ -5121,7 +5121,7 @@ dev-perl/AppConfig 1.660.0-r1 1.710.0: Perl5 module for reading configuration fi
 dev-perl/Archive-Any 0.94.100: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.720.0: Generic archive extracting mechanism
 dev-perl/Archive-Rar 2.20.0-r1: Archive::Rar - Interface with the rar command
-dev-perl/Archive-Zip 1.370.0 1.450.0 1.460.0 1.480.0 1.490.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Archive-Zip 1.370.0 1.480.0 1.490.0 1.500.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 2.20.0-r1: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
@@ -5146,7 +5146,7 @@ dev-perl/Authen-SCRAM 0.5.0: Salted Challenge Response Authentication Mechanism 
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
 dev-perl/B-Hooks-EndOfScope 0.120.0-r1 0.150.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
-dev-perl/B-Hooks-Parser 0.120.0-r1 0.130.0: Interface to perls parser variables
+dev-perl/B-Hooks-Parser 0.130.0 0.160.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.130.0-r1 1.140.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.290.0-r1: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.260.0 0.270.0: Helper functions for op tree manipulation
@@ -5277,7 +5277,7 @@ dev-perl/Contextual-Return 0.4.7-r1: Create context-sensitive return values
 dev-perl/Convert-ASN1 0.260.0-r1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.123.0-r1: Extract data from Macintosh BinHex files
-dev-perl/Convert-Binary-C 0.760.0-r1: Binary Data Conversion using C Types
+dev-perl/Convert-Binary-C 0.760.0-r1 0.770.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.80.0-r1: Color space conversions and named lookups
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2: A Perl interface to the uulib library
