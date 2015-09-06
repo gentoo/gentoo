@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ DESCRIPTION="SiliconDust HDHomeRun Utilties"
 HOMEPAGE="http://www.silicondust.com/support/hdhomerun/downloads/linux/"
 SRC_URI="http://download.silicondust.com/hdhomerun/${PN}_${PV}.tgz"
 
-LICENSE="LGPL-3+"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
