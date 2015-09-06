@@ -5,13 +5,6 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
-	<maintainer>
-		<email>cardoe@gentoo.org</email>
-		<name>Doug Goldstein</name>
-		<description>Feel free to update/modify this package, just don't break
-			my limited use case that I use it for.</description>
-	</maintainer>
-
 	<use>
 		<flag name="legacy-toolchains">Install legacy toolchains</flag>
         <flag name="target-32">Support for 32-bit targets</flag>
