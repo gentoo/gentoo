@@ -21,8 +21,9 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="atm berkdb +iptables ipv6 minimal selinux"
 
+# We could make libmnl optional, but it's tiny, so eh
 RDEPEND="!net-misc/arpd
-	net-libs/libmnl
+	!minimal? ( net-libs/libmnl )
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
 	berkdb? ( sys-libs/db:= )
 	atm? ( net-dialup/linux-atm )
@@ -38,7 +39,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
-	use ipv6 || epatch "${FILESDIR}"/${PN}-3.10.0-no-ipv6.patch #326849
+	use ipv6 || epatch "${FILESDIR}"/${PN}-4.2.0-no-ipv6.patch #326849
 
 	sed -i \
 		-e '/^CC =/d' \
@@ -82,6 +83,7 @@ src_configure() {
 	TC_CONFIG_XT  := $(usex iptables y n)
 	# We've locked in recent enough kernel headers #549948
 	TC_CONFIG_IPSET := y
+	HAVE_MNL      := $(usex minimal n y)
 	HAVE_SELINUX  := $(usex selinux y n)
 	IP_CONFIG_SETNS := ${setns}
 	# Use correct iptables dir, #144265 #293709

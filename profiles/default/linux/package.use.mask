@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
+# This is masked in base/package.use.mask as Linux only.
+sys-auth/consolekit -cgroups
+
 # Michael Palimaka <kensington@gentoo.org> (03 Sep 2015)
 # Native inotify support is preferred on linux.
 app-misc/strigi fam
