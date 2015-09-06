@@ -12,7 +12,7 @@ SRC_URI="http://www.sixxs.net/archive/sixxs/aiccu/unix/${PN}_${PV//\./}.tar.gz"
 
 LICENSE="SixXS"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 arm hppa ppc ~sparc ~x86"
 IUSE="systemd"
 
 RDEPEND="
