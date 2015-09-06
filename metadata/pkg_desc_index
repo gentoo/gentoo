@@ -3937,6 +3937,7 @@ dev-java/jansi-native 1.5: Native JNI component for dev-java/jansi
 dev-java/japitools 0.9.7-r1: Java API compatibility testing tools
 dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jarjar 0.9 1.4: Tool for repackaging third-party jars
+dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
 dev-java/java-config 2.2.0: Java environment configuration query tool
 dev-java/java-config-wrapper 0.16: Wrapper for java-config
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
@@ -5183,7 +5184,7 @@ dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r1: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.113.0-r1 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CHI 0.590.0 0.600.0: Unified cache handling interface
-dev-perl/CPAN-Changes 0.270.0 0.300.0: Read and write Changes files
+dev-perl/CPAN-Changes 0.270.0 0.300.0 0.400.2: Read and write Changes files
 dev-perl/CPAN-Checksums 2.80.0-r1: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-Meta-Check 0.4.0 0.9.0-r1: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.9-r1 1.111.11: Create a minimal mirror of CPAN
@@ -5276,11 +5277,11 @@ dev-perl/Context-Preserve 0.10.0-r1: Pass chained return values from subs, modif
 dev-perl/Contextual-Return 0.4.7-r1: Create context-sensitive return values
 dev-perl/Convert-ASN1 0.260.0-r1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
-dev-perl/Convert-BinHex 1.123.0-r1: Extract data from Macintosh BinHex files
+dev-perl/Convert-BinHex 1.123.0-r1 1.124.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.760.0-r1 0.770.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.80.0-r1: Color space conversions and named lookups
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
-dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2: A Perl interface to the uulib library
+dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0: A Perl interface to the uulib library
 dev-perl/Coro 6.410.0 6.420.0 6.470.0: The only real threads in perl
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
