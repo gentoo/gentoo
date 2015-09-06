@@ -7,5 +7,10 @@
     <name>Karol Herbst</name>
     <description>Proxy-Maintainer. Assign bugs to him</description>
   </maintainer>
+  <maintainer>
+    <email>dryatu@gmail.com</email>
+    <name>Sami Loone</name>
+    <description>Proxy-Maintainer. Assign bugs to him</description>
+  </maintainer>
   <longdescription>TeamSpeak Client (Voice Communication Software)</longdescription>
 </pkgmetadata>
