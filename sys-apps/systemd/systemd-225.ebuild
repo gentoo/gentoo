@@ -164,6 +164,9 @@ src_configure() {
 	# Fix systems broken by bug #509454.
 	[[ ${MY_UDEVDIR} ]] || MY_UDEVDIR=/lib/udev
 
+	# Prevent conflicts with i686 cross toolchain, bug 559726
+	tc-export AR CC NM OBJCOPY RANLIB
+
 	multilib-minimal_src_configure
 }
 
