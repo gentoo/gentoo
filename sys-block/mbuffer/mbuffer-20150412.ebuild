@@ -12,7 +12,7 @@ SRC_URI="http://www.maier-komor.de/software/mbuffer/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug ssl"
 
 DEPEND="ssl? ( dev-libs/openssl )"
