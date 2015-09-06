@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
+# This is for cgmanager which is linux only.
+# Unmasked in default/linux/package.use.mask.
+sys-auth/consolekit cgroups
+
 # Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd gnuefi
