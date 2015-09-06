@@ -24,7 +24,7 @@ done
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="6"
-KEYWORDS="-* ~amd64 ~ppc ~x86"
+KEYWORDS="-* amd64 ~ppc x86"
 
 IUSE="+awt +alsa cjk +cups doc examples +gtk nsplugin selinux source webstart"
 REQUIRED_USE="gtk? ( awt ) nsplugin? ( awt )"
