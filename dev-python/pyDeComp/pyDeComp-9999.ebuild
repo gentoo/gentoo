@@ -22,7 +22,7 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND="dev-python/pyGPG[${PYTHON_USEDEP}]"
+DEPEND=""
 RDEPEND="${DEPEND}
 	"
 
