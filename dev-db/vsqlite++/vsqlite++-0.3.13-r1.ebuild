@@ -17,7 +17,7 @@ LICENSE="BSD"
 
 SLOT="0"
 
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND=">=dev-libs/boost-1.33.1"
 
