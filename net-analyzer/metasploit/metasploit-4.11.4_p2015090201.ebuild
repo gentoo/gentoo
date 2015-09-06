@@ -58,13 +58,13 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	=dev-ruby/rkelly-remix-0.0.6
 	dev-ruby/sqlite3
 	>=dev-ruby/pg-0.11
-	=dev-ruby/packetfu-1.1.9
+	dev-ruby/packetfu:1.1.9
 	>=dev-ruby/rubyzip-1.1
 	dev-ruby/rb-readline-r7
 	dev-ruby/robots
 	java? ( dev-ruby/rjb )
 	oracle? ( dev-ruby/ruby-oci8 )
-	pcap? ( dev-ruby/pcaprub
+	pcap? ( dev-ruby/pcaprub:*
 		dev-ruby/network_interface )
 	development? ( dev-ruby/fivemat
 			dev-ruby/pry
