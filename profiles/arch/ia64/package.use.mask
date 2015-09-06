@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
+# Missing keywords
+media-sound/pulseaudio ofono-headset
+
 # Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
