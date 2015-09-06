@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/ThreePointEleven/Features/SoundRecorder"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # For the list of plugins, see src/audioProfile.js
