@@ -4,10 +4,10 @@ DESCRIPTION=SDK for making video editors and more
 EAPI=5
 HOMEPAGE=http://wiki.pitivi.org/wiki/GES
 IUSE=+introspection
-KEYWORDS=amd64
+KEYWORDS=amd64 ~x86
 LICENSE=LGPL-2+
 RDEPEND=>=dev-libs/glib-2.34:2 dev-libs/libxml2:2 >=media-libs/gstreamer-1.4:1.0[introspection?] >=media-libs/gst-plugins-base-1.4:1.0[introspection?] introspection? ( >=dev-libs/gobject-introspection-0.9.6 ) media-libs/gnonlin:1.0
 SLOT=1.0
 SRC_URI=http://gstreamer.freedesktop.org/src/gstreamer-editing-services/gstreamer-editing-services-1.4.0.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=6bf2752f7d69c10911410fff0072f8c0
+_md5_=a35e563c2c27d98ca5d28217989651a8
