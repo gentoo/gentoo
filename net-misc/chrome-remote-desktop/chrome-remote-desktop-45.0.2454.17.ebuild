@@ -64,7 +64,7 @@ S=${WORKDIR}
 QA_PREBUILT="/opt/google/chrome-remote-desktop/*"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-41.0.2272.41-always-sudo.patch #541708
+	epatch "${FILESDIR}"/${PN}-44.0.2403.44-always-sudo.patch #541708
 }
 
 src_install() {
