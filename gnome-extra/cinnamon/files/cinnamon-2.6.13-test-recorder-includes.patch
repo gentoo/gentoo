@@ -1,0 +1,36 @@
+From cf960f096e426521fc898733580d47c725e52953 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sun, 6 Sep 2015 14:53:48 -0400
+Subject: [PATCH] build: append ST_CFLAGS when building test-recorder
+
+test-recorder #includes st.h, which pulls in lots of headers, some of which
+might not be in TEST_CINNAMON_RECORDER_CFLAGS, depending on how clutter and
+gstreamer were configured.
+
+Fixes build failure reported at https://bugs.gentoo.org/559794 :
+
+In file included from ./st/st-bin.h:27:0,
+                 from st.h:4,
+                 from cinnamon-recorder.c:19:
+./st/st-types.h:26:21: fatal error: gtk/gtk.h: No such file or directory
+---
+ src/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 3d8fdd3..e6e54a9 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -199,7 +199,8 @@ libcinnamon_la_SOURCES += $(cinnamon_recorder_sources) $(cinnamon_recorder_non_g
+ 
+ noinst_PROGRAMS += test-recorder
+ 
+-test_recorder_CPPFLAGS = $(TEST_CINNAMON_RECORDER_CFLAGS)
++test_recorder_CPPFLAGS = $(TEST_CINNAMON_RECORDER_CFLAGS) \
++                       $(ST_CFLAGS)
+ test_recorder_LDADD = $(TEST_CINNAMON_RECORDER_LIBS) \
+                        libst-1.0.la
+ 
+-- 
+2.5.1
+
