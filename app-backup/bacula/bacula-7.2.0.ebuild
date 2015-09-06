@@ -143,13 +143,6 @@ src_prepare() {
 	# bug 504370
 	sed -i -e '/Alias=bacula-dir/d' platforms/systemd/bacula-dir.service.in || die
 
-	# Fix tmpfiles config for client-only (no bacula user) install
-	# NOTE: Change only first occurance (user) not second (group)
-	# bug 528398
-	if use bacula-clientonly; then
-		sed -i -e 's/bacula/root/' platforms/systemd/bacula.conf.in || die
-	fi
-
 	# fix bundled libtool (bug 466696)
 	# But first move directory with M4 macros out of the way.
 	# It is only needed by autoconf and gives errors during elibtoolize.
