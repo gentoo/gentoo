@@ -13,7 +13,7 @@ SRC_URI="https://rst2pdf.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 x86"
 IUSE="svg"
 
 DEPEND="dev-python/docutils[${PYTHON_USEDEP}]
