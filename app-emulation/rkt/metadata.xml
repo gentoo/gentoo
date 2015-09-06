@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>mail@stefanjunker.de</email>
+		<name>Stefan Junker</name>
+	</maintainer>	
+	<maintainer>
+		<email>alunduil@gentoo.org</email>
+		<name>Alex Brandt</name>
+	</maintainer>
+	<longdescription lang="en">
+		rkt is a new container runtime, designed for composability, security,
+		and speed. Today we are releasing a prototype version on GitHub to begin
+		gathering feedback from our community and explain why we are building
+		rkt. 
+	</longdescription>
+	<use>
+		<flag name="actool">Install the actool for ACI manipulation</flag>
+		<flag name="rkt_stage1_coreos">Download and use a prebuilt stage1.aci from CoreOS</flag>
+		<flag name="rkt_stage1_src">Build the stage1.aci from source</flag>
+		<flag name="rkt_stage1_host">Assemble stage1.aci from host binaries</flag>
+	</use>
+</pkgmetadata>
