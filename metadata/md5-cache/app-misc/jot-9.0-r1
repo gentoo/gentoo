@@ -3,9 +3,9 @@ DEPEND=>=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=Print out increasing, decreasing, random, or redundant data
 EAPI=5
 HOMEPAGE=http://freshmeat.net/projects/bsd-jot/
-KEYWORDS=amd64 ~ppc x86
+KEYWORDS=amd64 ppc x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5728285dba334b2bb5b7f6ac3c5f5cd4
+_md5_=6a24cbf8d86520b3db605412cb290f3e
