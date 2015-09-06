@@ -108,7 +108,8 @@ RDEPEND="!x64-macos? (
 
 # A PaX header isn't created by scanelf so depend on paxctl to avoid
 # fallback marking. See bug #427642.
-DEPEND="jce? ( app-arch/unzip )
+DEPEND="app-arch/zip
+	jce? ( app-arch/unzip )
 	examples? ( x64-macos? ( app-arch/unzip ) )
 	pax_kernel? ( sys-apps/paxctl )"
 
@@ -181,6 +182,11 @@ src_prepare() {
 	if use jce ; then
 		mv "${WORKDIR}"/${JCE_DIR} jre/lib/security/ || die
 	fi
+
+	# Delete Oracle's evil usage tracker. Not just because it's evil but
+	# because it breaks the sandbox during builds and we can't find any
+	# other feasible way to disable it or make it write somewhere else.
+	zip -d jre/lib/rt.jar sun/usagetracker/\* || die
 }
 
 src_install() {
