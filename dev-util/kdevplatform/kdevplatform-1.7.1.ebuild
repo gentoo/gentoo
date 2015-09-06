@@ -21,7 +21,7 @@ IUSE="+classbrowser cvs debug +konsole reviewboard subversion"
 if [[ $PV == *9999 ]]; then
 	KEYWORDS=""
 else
-	KEYWORDS="amd64 ~ppc x86"
+	KEYWORDS="amd64 ppc x86"
 fi
 
 RESTRICT="test"
