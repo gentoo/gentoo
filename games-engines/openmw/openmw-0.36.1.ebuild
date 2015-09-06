@@ -20,6 +20,7 @@ RDEPEND="
 	app-arch/unshield
 	>=dev-games/mygui-3.2.1[ogre]
 	>=dev-games/ogre-1.9.0[-double-precision,freeimage,ois,opengl,zip]
+	media-libs/freeimage[jpeg,png]
 	>=dev-libs/boost-1.46.0
 	dev-libs/tinyxml
 	>=dev-qt/qtcore-4.7.0:4
