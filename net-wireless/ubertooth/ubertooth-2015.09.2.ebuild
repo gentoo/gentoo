@@ -35,7 +35,8 @@ if [[ ${PV} == "9999" ]] ; then
 	S="${WORKDIR}/${P}/host"
 else
 	S="${WORKDIR}/${PN}-${MY_PV}/host"
-	SRC_URI="https://github.com/greatscottgadgets/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.xz"
+	SRC_URI="https://github.com/greatscottgadgets/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.xz
+		https://github.com/greatscottgadgets/${PN}/releases/download/${MY_PV}/${PN}_one_rx_only.dfu"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 DESCRIPTION="An open source wireless development platform suitable for Bluetooth experimentation"
@@ -88,6 +89,7 @@ src_install() {
 		ewarn "on the latest and/or can build your own."
 	else
 	        use ubertooth1-firmware && newins ubertooth-one-firmware-bin/bluetooth_rxtx.dfu ${PN}-one-${PV}-bluetooth_rxtx.dfu
+	        use ubertooth1-firmware && newins "${DISTDIR}"/${PN}_one_rx_only.dfu ${PN}-one-${PV}-bluetooth_rx_only.dfu
 	fi
 	popd
 
