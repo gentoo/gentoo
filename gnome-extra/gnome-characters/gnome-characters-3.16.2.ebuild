@@ -14,7 +14,7 @@ HOMEPAGE="https://live.gnome.org/Gucharmap"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="${COMMON_DEPEND}

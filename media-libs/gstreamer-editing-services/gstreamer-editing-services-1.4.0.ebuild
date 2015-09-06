@@ -13,7 +13,7 @@ SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~x86"
 IUSE="+introspection"
 
 # FIXME: There is something odd with pygobject check for >=4.22,
