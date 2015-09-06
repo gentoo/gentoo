@@ -7346,7 +7346,6 @@ dev-python/py-xmlrpc 0.8.8.3-r1 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 2.0.6 2.0.7: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.3.10: python interface to Clamd (Clamav daemon)
-dev-python/pyDeComp 9999: A python interface library for common compression, decompression and contents handling
 dev-python/pyGPG 0.1 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyacoustid 1.0.0-r1: Python module for Chromaprint acoustic fingerprinting and the Acoustid API
@@ -7389,6 +7388,7 @@ dev-python/pycups 1.9.72 1.9.73: Python bindings for the CUPS API
 dev-python/pycurl 7.19.3.1-r2 7.19.5.1: python binding for curl/libcurl
 dev-python/pycxx 6.2.5 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydb 1.26-r1: Extended python debugger
+dev-python/pydecomp 9999: A python interface library for common compression, decompression and contents handling
 dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.3-r1 2.0.5: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 2.3.6-r1 3.1.0: Python DNS (Domain Name System) library
