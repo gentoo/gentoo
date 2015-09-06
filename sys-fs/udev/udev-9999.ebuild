@@ -147,6 +147,12 @@ src_prepare() {
 	fi
 }
 
+src_configure() {
+	# Prevent conflicts with i686 cross toolchain, bug 559726
+	tc-export AR CC NM OBJCOPY RANLIB
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	tc-export CC #463846
 	export cc_cv_CFLAGS__flto=no #502950
