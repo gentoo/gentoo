@@ -13,11 +13,11 @@ SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="pam"
+IUSE="pam selinux"
 
-RDEPEND="
-	sys-libs/libnih[dbus]
-	sys-apps/dbus"
+RDEPEND="sys-libs/libnih[dbus]
+	sys-apps/dbus
+	selinux? ( sec-policy/selinux-cgmanager )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
