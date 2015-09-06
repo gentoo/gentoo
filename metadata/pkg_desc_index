@@ -4662,7 +4662,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r1 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.0-r200 12.10.0-r300 12.10.1-r200 12.10.1-r201 12.10.1-r300 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 0.9.0 1.0.0 1.0.1: Library to handle input devices in Wayland
+dev-libs/libinput 0.7.0 0.9.0 1.0.0 1.0.1: Library to handle input devices in Wayland
 dev-libs/libisoburn 1.3.8 1.4.0: Enables creation and expansion of ISO-9660 filesystems on all CD/DVD media supported by libburn
 dev-libs/libisofs 1.3.8 1.4.0: libisofs is an open-source library for reading, mastering and writing optical discs
 dev-libs/libixion 0.7.0 0.9.0 0.9.1 9999: General purpose formula parser & interpreter
