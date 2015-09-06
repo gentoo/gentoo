@@ -31,6 +31,7 @@ S="${WORKDIR}/${PN}-r${PV}"
 ANDROID_NDK_DIR="opt/${PN}"
 
 QA_PREBUILT="*"
+PYTHON_UPDATER_IGNORE="1"
 
 pkg_pretend() {
 	check-reqs_pkg_pretend

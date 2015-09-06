@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,6 +32,7 @@ ANDROID_TC_X86_ANDROID_4_4="${ANDROID_NDK_DIR}/toolchains/x86-4.4.3/prebuilt/lin
 ANDROID_TC_X86_ANDROID_4_6="${ANDROID_NDK_DIR}/toolchains/x86-4.6/prebuilt/linux-x86"
 
 QA_PREBUILT="*"
+PYTHON_UPDATER_IGNORE="1"
 
 src_configure() {
 	:
