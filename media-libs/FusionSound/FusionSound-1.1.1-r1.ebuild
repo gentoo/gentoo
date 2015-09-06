@@ -11,7 +11,7 @@ SRC_URI="http://www.directfb.org/downloads/Core/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc x86"
+KEYWORDS="alpha amd64 hppa ppc ppc64 x86"
 IUSE="alsa cddb ffmpeg mad oss timidity vorbis"
 
 RDEPEND=">=dev-libs/DirectFB-${PV}
