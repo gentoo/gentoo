@@ -785,10 +785,6 @@ media-libs/shivavg
 # not needed anymore for Asterisk 1.6.
 net-misc/asterisk-spandsp_codec_g726
 
-# Doug Goldstein <cardoe@gentoo.org> (07 Jul 2010)
-# No actual Gentoo support yet. If you're interested, please see bug #295993
-net-misc/netcf
-
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from
 # long ago.  Courtesy mask ... time to upgrade.
