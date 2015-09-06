@@ -9,13 +9,13 @@ USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="FAQ.rdoc README.rdoc USAGE.rdoc"
 
-inherit multilib ruby-fakegem
+inherit multilib ruby-fakegem versionator
 
 DESCRIPTION="Libpcap bindings for ruby compat"
 HOMEPAGE="https://rubygems.org/gems/pcaprub"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND+="net-libs/libpcap"
@@ -25,10 +25,10 @@ RDEPEND+="net-libs/libpcap"
 RESTRICT="test"
 
 each_ruby_configure() {
-	${RUBY} -Cext/pcaprub_c extconf.rb || die
+	${RUBY} -Cext/${PN} extconf.rb || die
 }
 
 each_ruby_compile() {
-	emake -C ext/pcaprub_c V=1
-	cp ext/pcaprub_c/pcaprub_c$(get_modname) lib || die
+	emake -C ext/${PN} V=1
+	cp ext/${PN}/${PN}$(get_modname) lib || die
 }
