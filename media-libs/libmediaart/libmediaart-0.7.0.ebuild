@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/GNOME/libmediaart"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="gtk +introspection qt4 qt5 vala"
 REQUIRED_USE="
 	?? ( gtk qt4 qt5 )
