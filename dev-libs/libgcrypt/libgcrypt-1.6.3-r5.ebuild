@@ -15,7 +15,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc static-libs"
+IUSE="doc static-libs +threads"
 
 RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
 	abi_x86_32? (
@@ -45,11 +45,11 @@ multilib_src_configure() {
 		append-cflags -Wa,--divide
 	fi
 	local myeconfargs=(
-		--disable-padlock-support # bug 201917
 		--disable-dependency-tracking
 		--enable-noexecstack
 		--disable-O-flag-munging
 		$(use_enable static-libs static)
+		$(use_enable threads)
 
 		# disabled due to various applications requiring privileges
 		# after libgcrypt drops them (bug #468616)

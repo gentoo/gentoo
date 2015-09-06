@@ -3,10 +3,6 @@
 <pkgmetadata>
 	<herd>cluster</herd>
 	<maintainer>
-		<email>cardoe@gentoo.org</email>
-		<name>Doug Goldstein</name>
-	</maintainer>
-	<maintainer>
 		<email>robbat2@gentoo.org</email>
 		<name>Robin Johnson</name>
 	</maintainer>
