@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/msitools"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
