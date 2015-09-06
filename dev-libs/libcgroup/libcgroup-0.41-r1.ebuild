@@ -58,6 +58,7 @@ src_configure() {
 
 	use elibc_musl && append-ldflags "-lfts"
 	econf \
+		$(use_enable static-libs static) \
 		$(use_enable daemon) \
 		$(use_enable pam) \
 		$(use_enable tools) \
@@ -72,6 +73,7 @@ src_test() {
 }
 
 src_install() {
+	default
 	prune_libtool_files --all
 
 	insinto /etc/cgroup
