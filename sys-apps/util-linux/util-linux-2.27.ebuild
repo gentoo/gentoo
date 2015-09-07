@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 PYTHON_COMPAT=( python2_7 python3_{3,4} )
 
 inherit eutils toolchain-funcs libtool flag-o-matic bash-completion-r1 \
-	python-single-r1 multilib-minimal
+	python-single-r1 multilib-minimal systemd
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
@@ -25,7 +25,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="caps +cramfs fdformat ncurses nls pam python selinux slang static-libs +suid test tty-helpers udev unicode"
+IUSE="caps +cramfs fdformat ncurses nls pam python selinux slang static-libs +suid systemd test tty-helpers udev unicode"
 
 RDEPEND="!sys-process/schedutils
 	!sys-apps/setarch
@@ -36,14 +36,15 @@ RDEPEND="!sys-process/schedutils
 	!<app-shells/bash-completion-1.3-r2
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib )
-	ncurses? ( >=sys-libs/ncurses-5.2-r2 )
+	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	pam? ( sys-libs/pam )
 	python? ( ${PYTHON_DEPS} )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
-	udev? ( virtual/udev )
+	systemd? ( sys-apps/systemd )
+	udev? ( virtual/libudev:= )
 	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140406-r2
+		!<=app-emulation/emul-linux-x86-baselibs-20150406-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
 	)"
 DEPEND="${RDEPEND}
@@ -61,7 +62,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-runuser-bash-completion.patch #522288
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
 		eautoreconf
@@ -84,7 +84,12 @@ lfs_fallocate_test() {
 
 multilib_src_configure() {
 	lfs_fallocate_test
+	# The scanf test in a run-time test which fails while cross-compiling.
+	# Blindly assume a POSIX setup since we require libmount, and libmount
+	# itself fails when the scanf test fails. #531856
+	tc-is-cross-compiler && export scanf_cv_alloc_modifier=ms
 	export ac_cv_header_security_pam_misc_h=$(multilib_native_usex pam) #485486
+	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
 	# We manually set --libdir to the default since on prefix, econf will set it to
 	# a value which the configure script does not recognize.  This makes it set the
 	# usrlib_execdir to a bad value. bug #518898#c2, fixed upstream for >2.25
@@ -92,6 +97,7 @@ multilib_src_configure() {
 	econf \
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin" \
 		--libdir='${prefix}/'"$(get_libdir)" \
+		--docdir='${datarootdir}'/doc/${PF} \
 		$(multilib_native_use_enable nls) \
 		--enable-agetty \
 		--with-bashcompletiondir="$(get_bashcompdir)" \
@@ -119,6 +125,8 @@ multilib_src_configure() {
 		$(use_with selinux) \
 		$(multilib_native_use_with slang) \
 		$(use_enable static-libs static) \
+		$(multilib_native_use_with systemd) \
+		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_unitdir)" "no") \
 		$(multilib_native_use_with udev) \
 		$(tc-has-tls || echo --disable-tls)
 }
@@ -144,7 +152,7 @@ multilib_src_install() {
 		emake DESTDIR="${D}" install-usrlib_execLTLIBRARIES \
 			install-pkgconfigDATA install-uuidincHEADERS \
 			install-nodist_blkidincHEADERS install-nodist_mountincHEADERS \
-			install-nodist_smartcolsincHEADERS
+			install-nodist_smartcolsincHEADERS install-nodist_fdiskincHEADERS
 	fi
 
 	if multilib_is_native_abi; then
