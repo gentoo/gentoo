@@ -7219,7 +7219,7 @@ dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18: Network address re
 dev-python/netcdf4-python 1.0.4: Python/numpy interface to netCDF
 dev-python/netifaces 0.8-r2 0.10.4: Portable network interface information
 dev-python/netlib 0.10 0.10.1 0.11.1 0.11.2 0.12.0: Collection of network utility classes used by pathod and mitmproxy
-dev-python/networkx 1.9.1 1.10: Python tools to manipulate graphs and complex networks
+dev-python/networkx 1.9.1 1.10 1.10-r1: Python tools to manipulate graphs and complex networks
 dev-python/nevow 0.11.1 0.11.1-r1: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r1: A Python framework for creating text-based applications
 dev-python/nltk 2.0.4 3.0.3 3.0.4: Natural Language Toolkit
