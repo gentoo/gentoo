@@ -4,7 +4,7 @@ DESCRIPTION=A file manager for the GNOME desktop
 EAPI=5
 HOMEPAGE=https://wiki.gnome.org/Apps/Nautilus
 IUSE=exif gnome +introspection packagekit +previewer sendto tracker xmp test
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=GPL-2+ LGPL-2+ FDL-1.1
 PDEPEND=gnome? ( >=x11-themes/gnome-icon-theme-1.1.91 x11-themes/gnome-icon-theme-symbolic ) tracker? ( >=gnome-extra/nautilus-tracker-tags-0.12 ) previewer? ( >=gnome-extra/sushi-0.1.9 ) sendto? ( >=gnome-extra/nautilus-sendto-3.0.1 ) >=gnome-base/gvfs-1.14[gtk]
 RDEPEND=>=dev-libs/glib-2.43.4:2[dbus] >=x11-libs/pango-1.28.3 >=x11-libs/gtk+-3.15.2:3[introspection?] >=dev-libs/libxml2-2.7.8:2 >=gnome-base/gnome-desktop-3:3= gnome-base/dconf >=gnome-base/gsettings-desktop-schemas-3.8.0 x11-libs/libX11 x11-libs/libXext x11-libs/libXrender exif? ( >=media-libs/libexif-0.6.20 ) introspection? ( >=dev-libs/gobject-introspection-0.6.4 ) tracker? ( >=app-misc/tracker-0.16:= ) xmp? ( >=media-libs/exempi-2.1.0 ) packagekit? ( app-admin/packagekit-base ) sendto? ( !<gnome-extra/nautilus-sendto-3.0.1 )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnome/sources/nautilus/3.16/nautilus-3.16.2.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
-_md5_=8b10d5e3b8abbf505a57735c6c27822e
+_md5_=901eb2e8940d3e123775989d904608de

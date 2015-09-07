@@ -4,10 +4,10 @@ DESCRIPTION=The Gnome System Monitor
 EAPI=5
 HOMEPAGE=https://help.gnome.org/users/gnome-system-monitor/
 IUSE=systemd +X
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.37.3:2 >=gnome-base/libgtop-2.28.2:2= >=x11-libs/gtk+-3.12:3[X(+)] >=dev-cpp/gtkmm-3.3.18:3.0 >=dev-cpp/glibmm-2.34:2 >=dev-libs/libxml2-2.0:2 >=gnome-base/librsvg-2.35:2 systemd? ( >=sys-apps/systemd-38:0= ) X? ( >=x11-libs/libwnck-2.91.0:3 )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-system-monitor/3.16/gnome-system-monitor-3.16.0.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=21a4535a1d2732f23de056194460ce39
+_md5_=8efc2b39e19e9c557ba99348c4bd4974

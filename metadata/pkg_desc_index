@@ -16466,7 +16466,7 @@ sys-libs/libieee1284 0.2.11-r1 0.2.11-r2 0.2.11-r3: Library to query devices usi
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: template based math library, written in C++, for symbolic and numeric calculus applications
-sys-libs/libnih 1.0.3 1.0.3-r1 1.0.3-r2 1.0.3-r3: Light-weight 'standard library' of C functions
+sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 3.7.0: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 0.2.11 0.2.12: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.0.8 2.1.0-r1 2.1.1: library that provides direct access to the IEEE 1394 bus
