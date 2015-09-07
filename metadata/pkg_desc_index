@@ -181,7 +181,7 @@ app-admin/radmind 1.14.1: command-line tools and server to remotely administer m
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically secure random number generator
 app-admin/recursos 2.0: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
-app-admin/restart_services 0.11.0 0.12.0 0.13.0: Tool to manage OpenRC services that need to be restarted
+app-admin/restart_services 0.11.0 0.12.0 0.13.0 0.13.0-r1: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.0.0 1.2.0 1.3.2 1.3.2-r1: (R)?ex is a small script to ease the execution of remote commands
 app-admin/rigo 254: Rigo, the Sabayon Application Browser
 app-admin/rsyslog 8.7.0-r2 8.9.0 8.12.0: An enhanced multi-threaded syslogd with database support and more
