@@ -16,11 +16,11 @@ SRC_URI="https://github.com/injekt/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/minitest )"
+ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' slop.gemspec || die
