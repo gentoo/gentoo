@@ -4796,7 +4796,7 @@ dev-libs/m17n-lib 1.5.2 1.5.5 1.6.2 1.6.3 1.6.3-r1 1.6.4: Multilingual Library f
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
-dev-libs/mathjax 2.1 2.2 2.4: JavaScript display engine for LaTeX, MathML and AsciiMath
+dev-libs/mathjax 2.2 2.4.0 2.5.3: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/matrixssl 3.6.1: embedded SSL implementation
 dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
 dev-libs/mini-xml 2.7-r1 2.8: Small XML parsing library to read XML and XML-like data files
