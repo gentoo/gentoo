@@ -7,6 +7,5 @@
 	<flag name="gdbui">Enable GUI for attaching GDB to a running process</flag>
 	<flag name="okteta">Enable hex editor plugin</flag>
 	<flag name="qthelp">Enable support for QtHelp documentation browsing</flag>
-	<flag name="reviewboard">Enable reviewboard support</flag>
 </use>
 </pkgmetadata>
