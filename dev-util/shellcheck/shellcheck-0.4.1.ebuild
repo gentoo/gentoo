@@ -22,7 +22,7 @@ IUSE=""
 
 RDEPEND="
 	dev-haskell/json:=[profile?]
-	>=dev-haskell/mtl-0.2.1:=[profile?]
+	>=dev-haskell/mtl-2.2.1:=[profile?]
 	dev-haskell/parsec:=[profile?]
 	>=dev-haskell/quickcheck-2.7.4:2=[profile?]
 	dev-haskell/regex-tdfa:=[profile?]
