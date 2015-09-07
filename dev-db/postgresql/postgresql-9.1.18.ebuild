@@ -78,7 +78,7 @@ pkg_setup() {
 	use server && CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
 	enewgroup postgres 70
-	enewuser postgres 70 /bin/bash /var/lib/postgresql postgres
+	enewuser postgres 70 /bin/sh /var/lib/postgresql postgres
 
 	use python && python-single-r1_pkg_setup
 }
