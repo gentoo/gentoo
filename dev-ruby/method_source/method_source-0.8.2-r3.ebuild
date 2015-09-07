@@ -17,7 +17,7 @@ IUSE=""
 SLOT="0"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 
 ruby_add_bdepend "test? ( >=dev-ruby/bacon-1.1.0 )"
 
