@@ -22,7 +22,7 @@ IUSE="debug"
 DEPEND="
 	x11-libs/libXScrnSaver
 	dev-qt/qtsql:4[sqlite]
-	>=media-video/vlc-1.2
+	>=media-video/vlc-1.2[X]
 	x11-libs/libXScrnSaver
 "
 RDEPEND="${DEPEND}"
