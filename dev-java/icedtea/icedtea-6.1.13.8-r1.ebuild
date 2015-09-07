@@ -152,6 +152,10 @@ src_unpack() {
 }
 
 java_prepare() {
+	# CACAO has a fixed default max heap of 128MB. This sucks.
+	cp "${FILESDIR}"/${SLOT}-cacao-dynmaxheap.patch patches/cacao/dynmaxheap.patch || die
+	epatch "${FILESDIR}"/${SLOT}-cacao-dynmaxheap-Makefile.patch
+
 	# For bootstrap builds as the sandbox control file might not yet exist.
 	addpredict /proc/self/coredump_filter
 

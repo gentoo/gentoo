@@ -1,0 +1,10 @@
+--- Makefile.in.orig	2015-07-22 14:54:37.116940780 -0700
++++ Makefile.in	2015-09-06 05:05:47.220000000 -0700
+@@ -134,6 +134,7 @@
+ @WITH_RHINO_TRUE@	patches/rhino.patch
+ 
+ @BUILD_CACAO_TRUE@am__append_10 = \
++@BUILD_CACAO_TRUE@	patches/cacao/dynmaxheap.patch \
+ @BUILD_CACAO_TRUE@	patches/cacao/launcher.patch \
+ @BUILD_CACAO_TRUE@	patches/cacao/memory.patch \
+ @BUILD_CACAO_TRUE@	patches/cacao/armhf.patch \
