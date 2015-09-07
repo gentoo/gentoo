@@ -83,10 +83,6 @@ media-video/mpv libcaca
 # Not yet stabilized dependencies blocking sec bug 514886
 app-office/libreoffice firebird
 
-# Mike Gilbert <floppym@gentoo.org> (30 May 2014)
-# >=net-libs/gnutls-3.1.4 is not going stable any time soon.
-sys-apps/systemd ssl
-
 # Agostino Sarubbo <ago@gentoo.org> (31 Aug 2013)
 # Clang is not stable
 app-portage/eix clang
