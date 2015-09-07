@@ -1,6 +1,6 @@
---- gsmc-1.1.orig/configure.ac	2011-01-12 18:14:55.633360421 -0200
-+++ gsmc-1.1/configure.ac	2011-01-12 19:58:12.617251642 -0200
-@@ -7,26 +7,13 @@
+--- configure.ac.orig	2015-09-07 16:25:35.000000000 +0200
++++ configure.ac	2015-09-07 16:26:30.000000000 +0200
+@@ -7,26 +7,17 @@
  AM_INIT_AUTOMAKE(gsmc, 1.0, ik5nax@amsat.org)
  
  # Checks for programs.
@@ -27,12 +27,16 @@
 -done
 +PKG_PROG_PKG_CONFIG
 +PKG_CHECK_MODULES([GTK], [gtk+-2.0])
++dnl Check for libm for floor
++AC_SEARCH_LIBS([floor], [m], [], [
++      AC_MSG_ERROR([unable to find the floor() function])
++])
  
  # Checks for header files.
  AC_HEADER_STDC
 
---- gsmc-1.1.orig/Makefile.am	2011-01-12 18:14:55.633360421 -0200
-+++ gsmc-1.1/Makefile.am	2011-01-12 20:37:21.034615478 -0200
+--- Makefile.am.orig	2011-01-12 18:14:55.633360421 -0200
++++ Makefile.am	2011-01-12 20:37:21.034615478 -0200
 @@ -2,8 +2,8 @@
       
  bin_PROGRAMS=gsmc
