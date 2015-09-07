@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/559656
+
+https://lists.gnu.org/archive/html/qemu-devel/2015-09/msg01199.html
+
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [PATCH] e1000: Avoid infinite loop in processing	transmit descriptor
+Newsgroups: gmane.comp.emulators.qemu
+Date: 2015-09-04 16:21:06 GMT (2 days, 12 hours and 51 minutes ago)
+From: P J P <pjp@fedoraproject.org>
+
+While processing transmit descriptors, it could lead to an infinite
+loop if 'bytes' was to become zero; Add a check to avoid it.
+
+[The guest can force 'bytes' to 0 by setting the hdr_len and mss
+descriptor fields to 0.
+--Stefan]
+
+Signed-off-by: P J P <pjp@fedoraproject.org>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ hw/net/e1000.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+index 5c6bcd0..09c9e9d 100644
+--- a/hw/net/e1000.c
++++ b/hw/net/e1000.c
+@@ -740,7 +740,8 @@ process_tx_desc(E1000State *s, struct e1000_tx_desc *dp)
+                 memmove(tp->data, tp->header, tp->hdr_len);
+                 tp->size = tp->hdr_len;
+             }
+-        } while (split_size -= bytes);
++            split_size -= bytes;
++        } while (bytes && split_size);
+     } else if (!tp->tse && tp->cptse) {
+         // context descriptor TSE is not set, while data descriptor TSE is set
+         DBGOUT(TXERR, "TCP segmentation error\n");
+-- 
+2.4.3
