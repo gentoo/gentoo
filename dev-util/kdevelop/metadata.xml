@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>kde</herd>
-<use>
-	<flag name="cmake">Enable support for CMake build system</flag>
-	<flag name="gdbui">Enable GUI for attaching GDB to a running process</flag>
-	<flag name="okteta">Enable hex editor plugin</flag>
-	<flag name="qthelp">Enable support for QtHelp documentation browsing</flag>
-	<flag name="reviewboard">Enable reviewboard support</flag>
-</use>
+	<herd>kde</herd>
+	<use>
+		<flag name="cmake">Enable support for CMake build system</flag>
+		<flag name="gdbui">Enable GUI for attaching GDB to a running process</flag>
+		<flag name="okteta">Enable hex editor plugin</flag>
+		<flag name="qthelp">Enable support for QtHelp documentation browsing</flag>
+	</use>
 </pkgmetadata>

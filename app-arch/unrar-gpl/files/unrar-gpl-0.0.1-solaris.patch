@@ -1,0 +1,63 @@
+* grobian@gentoo.org: allow compilation on non glibc hosts by use of an
+                      external library for argp, and check for certain
+                      headers before including them
+
+--- configure.ac
++++ configure.ac
+@@ -14,7 +14,7 @@
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS([limits.h stdlib.h string.h unistd.h])
++AC_CHECK_HEADERS([limits.h stdlib.h string.h unistd.h error.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+@@ -24,6 +24,7 @@
+ AC_FUNC_MALLOC
+ AC_FUNC_REALLOC
+ AC_CHECK_FUNCS([atexit realpath setenv strchr])
++AC_SEARCH_LIBS([argp_usage], [argp])
+ 
+ AC_CONFIG_FILES([Makefile
+                  src/Makefile])
+--- src/unrar.c
++++ src/unrar.c
+@@ -24,7 +24,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <time.h>
++#ifdef HAVE_ERROR_H
+ #include <error.h>
++#endif
+ #include <errno.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+--- src/opts.c
++++ src/opts.c
+@@ -22,7 +22,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#ifdef HAVE_ERROR_H
+ #include <error.h>
++#endif
+ #include <argp.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+--- src/opts.h
++++ src/opts.h
+@@ -56,4 +56,13 @@
+ int parse_opts (int argc, char **argv, struct arguments_t *arguments);
+ int compat_parse_opts (int argc, char **argv, struct arguments_t *arguments);
+ 
++#ifndef HAVE_ERROR_H
++#define error(S, E, ...) \
++	fflush(stdout); \
++	fprintf(stderr, "unrar: " __VA_ARGS__); \
++	if (E != 0) fprintf(stderr, ": %s", strerror(E)); \
++	fprintf(stderr, "\n"); \
++	if (S != 0) exit(S);
++#endif
++
+ #endif
