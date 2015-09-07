@@ -15692,7 +15692,7 @@ sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.4 4.5.1: A selection of tools from Debian
 sys-apps/diffutils 3.3: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12 2.2.12-r1: XFS data management API library
-sys-apps/dmidecode 2.12-r1: DMI (Desktop Management Interface) table related utilities
+sys-apps/dmidecode 2.12-r1 3.0: DMI (Desktop Management Interface) table related utilities
 sys-apps/dmtcp 1.2.6: DMTCP is the Distributed MultiThreaded Checkpointing tool
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r4: Dog is better than cat
