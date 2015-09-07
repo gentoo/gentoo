@@ -18,7 +18,7 @@ REQUIRED_USE="
 	|| ( aqua wayland X )
 	wayland? ( egl )
 "
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 # NOTE: glx flavour uses libdrm + >=mesa-7.3
 # >=libX11-1.3.1 needed for X Generic Event support
