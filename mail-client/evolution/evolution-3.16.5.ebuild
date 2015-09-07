@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
 SLOT="2.0"
 IUSE="+bogofilter crypt highlight ldap map spamassassin spell ssl +weather"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~x86 ~x86-fbsd"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
 # password from inside evolution, bug 160302
