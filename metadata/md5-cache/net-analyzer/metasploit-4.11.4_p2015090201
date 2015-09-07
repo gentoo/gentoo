@@ -4,7 +4,7 @@ DESCRIPTION=Advanced open-source framework for developing, testing, and using vu
 EAPI=5
 HOMEPAGE=http://www.metasploit.org/
 IUSE=development +java oracle +pcap test test elibc_FreeBSD ruby_targets_ruby21
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=BSD
 RDEPEND=ruby_targets_ruby21? ( virtual/ruby-ssl[ruby_targets_ruby21] >=dev-ruby/activesupport-4.0.9:4.0[ruby_targets_ruby21] >=dev-ruby/actionpack-4.0.9:4.0[ruby_targets_ruby21] >=dev-ruby/activerecord-4.0.9:4.0[ruby_targets_ruby21] dev-ruby/bcrypt-ruby[ruby_targets_ruby21] dev-ruby/builder:3[ruby_targets_ruby21] dev-ruby/bundler[ruby_targets_ruby21] =dev-ruby/jsobfu-0.2*[ruby_targets_ruby21] dev-ruby/json[ruby_targets_ruby21] dev-ruby/kissfft[ruby_targets_ruby21] =dev-ruby/metasploit_data_models-1.2.5[ruby_targets_ruby21] dev-ruby/meterpreter_bins:0.0.22[ruby_targets_ruby21] dev-ruby/metasploit-payloads:1.0.9[ruby_targets_ruby21] >=dev-ruby/metasploit-credential-1.0.0:1.0[ruby_targets_ruby21] >=dev-ruby/metasploit-concern-1.0.0:1.0[ruby_targets_ruby21] >=dev-ruby/metasploit-model-1.0.0:1.0[ruby_targets_ruby21] dev-ruby/msgpack[ruby_targets_ruby21] dev-ruby/nokogiri[ruby_targets_ruby21] =dev-ruby/recog-2.0.6:2[ruby_targets_ruby21] =dev-ruby/rkelly-remix-0.0.6[ruby_targets_ruby21] dev-ruby/sqlite3[ruby_targets_ruby21] >=dev-ruby/pg-0.11[ruby_targets_ruby21] dev-ruby/packetfu:1.1.9[ruby_targets_ruby21] >=dev-ruby/rubyzip-1.1[ruby_targets_ruby21] dev-ruby/rb-readline-r7[ruby_targets_ruby21] dev-ruby/robots[ruby_targets_ruby21] java? ( dev-ruby/rjb[ruby_targets_ruby21] ) oracle? ( dev-ruby/ruby-oci8[ruby_targets_ruby21] ) pcap? ( dev-ruby/pcaprub:*[ruby_targets_ruby21] dev-ruby/network_interface[ruby_targets_ruby21] ) development? ( dev-ruby/fivemat[ruby_targets_ruby21] dev-ruby/pry[ruby_targets_ruby21] dev-ruby/redcarpet[ruby_targets_ruby21] dev-ruby/yard[ruby_targets_ruby21] >=dev-ruby/rake-10.0.0[ruby_targets_ruby21] >=dev-ruby/factory_girl-4.1.0[ruby_targets_ruby21] ) ) dev-db/postgresql[server] >=app-crypt/johntheripper-1.7.9-r1[-minimal] net-analyzer/nmap >=app-eselect/eselect-metasploit-0.16 ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
 REQUIRED_USE=|| ( ruby_targets_ruby21 )
@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=4.11
 SRC_URI=https://github.com/rapid7/metasploit-framework/archive/4.11.4-2015090201.tar.gz -> metasploit-4.11.4_p2015090201.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-utils-2	c7374d201551e4fb8552994ef210e0f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-ng	497a8201c1d4a4129a8ac57a2bf2abb5	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=25bb5234e8ddb3a8217ec4fd4d2bd8f4
+_md5_=e1d94026214925fb8bd0b6e114ffe994

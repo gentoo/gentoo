@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/glib-2.28:2 >=media-libs/gupnp-dlna-0.9.4:2.0 >=net-libs/dleyn
 DESCRIPTION=library implementing services that allow clients to discover and manipulate DLNA renderers
 EAPI=5
 HOMEPAGE=https://01.org/dleyna/
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.28:2 >=media-libs/gupnp-dlna-0.9.4:2.0 >=net-libs/dleyna-core-0.5 >=net-libs/gssdp-0.13.2 >=net-libs/gupnp-0.20.5 >=net-libs/gupnp-av-0.11.5 >=net-libs/libsoup-2.28.2:2.4 net-libs/dleyna-connector-dbus
 SLOT=0
 SRC_URI=https://01.org/sites/default/files/downloads/dleyna/dleyna-renderer-0.5.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f7f8b3616d5b5e2bd03c31e646a18011
+_md5_=7d1acddc071854947027d7e43b047270

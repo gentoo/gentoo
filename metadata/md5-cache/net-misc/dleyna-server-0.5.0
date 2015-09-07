@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/glib-2.28:2 dev-libs/libxml2 >=media-libs/gupnp-dlna-0.9.4:2.0
 DESCRIPTION=library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 EAPI=5
 HOMEPAGE=https://01.org/dleyna/
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.28:2 dev-libs/libxml2 >=media-libs/gupnp-dlna-0.9.4:2.0 >=net-libs/dleyna-core-0.5 >=net-libs/gssdp-0.13.2 >=net-libs/gupnp-0.20.3 >=net-libs/gupnp-av-0.11.5 >=net-libs/libsoup-2.28.2:2.4
 SLOT=0
 SRC_URI=https://01.org/sites/default/files/downloads/dleyna/dleyna-server-0.5.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=11b735b39c98e4924c8fe94d750e38b3
+_md5_=35ca55e0c126a897cca68cc20729ec9d
