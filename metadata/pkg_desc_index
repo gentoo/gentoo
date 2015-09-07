@@ -315,7 +315,7 @@ app-arch/undms 1.3-r1: Decompress Amiga DMS disk images to ADF
 app-arch/unlzx 1.1: Unarchiver for Amiga LZX archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7 2.0_pre7_p1: Script for unpacking various file formats
-app-arch/unrar 5.0.14 5.1.6 5.2.1 5.2.2 5.2.3 5.2.7 5.3.2: Uncompress rar files
+app-arch/unrar 5.1.6 5.2.7 5.3.2 5.3.3: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 0.6_p20120308: InstallShield CAB file extractor
@@ -2955,7 +2955,7 @@ dev-db/unixODBC 2.3.1 2.3.1-r1 2.3.2-r1 2.3.2-r2: A complete ODBC driver manager
 dev-db/vbisam 2.0: replacement for IBM's C-ISAM
 dev-db/virtuoso-odbc 6.1.6 6.1.8: ODBC driver for OpenLink Virtuoso Open-Source Edition
 dev-db/virtuoso-server 6.1.6 6.1.8: Server binaries for Virtuoso, high-performance object-relational SQL database
-dev-db/vsqlite++ 0.3.12 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
+dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.0.6.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
@@ -8525,7 +8525,7 @@ dev-ruby/treetop 1.4.15-r1 1.5.3 1.6.3: Treetop is a language for describing lan
 dev-ruby/trollop 1.16.2-r4 2.0 2.1.1 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.1 2.5.3: Makes following links in your web application faster
-dev-ruby/twitter 5.13.0 5.14.0: Ruby wrapper around the Twitter API
+dev-ruby/twitter 5.13.0 5.14.0 5.15.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.12.0 1.13.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 0.7.1 0.7.2 0.7.3: Runs HTTP requests in parallel while cleanly encapsulating handling logic
