@@ -5189,10 +5189,10 @@ dev-perl/CPAN-Checksums 2.80.0-r1: Write a CHECKSUMS file for a directory as on 
 dev-perl/CPAN-Meta-Check 0.4.0 0.9.0-r1: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.9-r1 1.111.11: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.100.0 2.140.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.140.0 2.340.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CQL-Parser 1.120.0-r1 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
-dev-perl/CSS-Packer 1.2.1: Another CSS minifier
+dev-perl/CSS-Packer 1.2.1 2.0.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/Cache 2.40.0-r1: the Cache interface
 dev-perl/Cache-Cache 1.60.0-r1: Generic cache interface and implementations
@@ -5297,7 +5297,7 @@ dev-perl/Crypt-PasswdMD5 1.300.0-r1 1.400.0: Provides interoperable MD5-based cr
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
 dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
 dev-perl/Crypt-Random-Source 0.70.0-r1: Get weak or strong random data from pluggable sources
-dev-perl/Crypt-Rijndael 1.110.0-r1 1.120.0: Crypt::CBC compliant Rijndael encryption module
+dev-perl/Crypt-Rijndael 1.110.0-r1 1.120.0 1.130.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.100.0-r1 0.150.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.640.0 0.720.0: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
@@ -5305,7 +5305,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/CryptX 0.006 0.012 0.021: Self-contained crypto toolkit
+dev-perl/CryptX 0.021 0.25.0: Self-contained crypto toolkit
 dev-perl/Curses 1.280.0-r1 1.320.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
@@ -5354,10 +5354,10 @@ dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
 dev-perl/Data-Structure-Util 0.150.0: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0: Validate and convert data types.
 dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded using flat URIs
-dev-perl/Data-UUID 1.217.0-r1 1.219.0-r1 1.220.0: Perl extension for generating Globally/Universally Unique Identifiers (GUIDs/UUIDs)
+dev-perl/Data-UUID 1.217.0-r1 1.220.0 1.221.0: Perl extension for generating Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
-dev-perl/Data-Validate-Domain 0.100.0: Light weight module for validating domains
+dev-perl/Data-Validate-Domain 0.100.0 0.110.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.240.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Data-Visitor 0.300.0-r1: Visitor style traversal of Perl data structures
 dev-perl/Date-Calc 6.300.0-r1 6.400.0: Gregorian calendar date calculations
@@ -5366,7 +5366,7 @@ dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
 dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
-dev-perl/DateManip 6.410.0 6.430.0 6.490.0: Perl date manipulation routines
+dev-perl/DateManip 6.410.0 6.490.0 6.510.0: Perl date manipulation routines
 dev-perl/DateTime 1.030.0 1.120.0 1.180.0: A date and time object
 dev-perl/DateTime-Event-ICal 0.110.0 0.120.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0: DateTime::Set extension for create basic recurrence sets
@@ -14340,7 +14340,7 @@ net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produ
 net-print/cups-pk-helper 0.2.4-r1 0.2.5: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.2.0 1.4.0: Dymo SDK for LabelWriter/LabelManager printers
-net-print/epson-inkjet-printer-escpr 1.4.4: Epson Inkjet Printer Driver (ESC/P-R)
+net-print/epson-inkjet-printer-escpr 1.4.4 1.5.2: Epson Inkjet Printer Driver (ESC/P-R)
 net-print/fax4cups 1.29-r1: Fax backend for CUPS
 net-print/foo2zjs 99999999: Support for printing to ZjStream-based printers
 net-print/foomatic-db 4.0.20140105 4.0.20141025 4.0.20150819: Printer information files for foomatic-db-engine to generate ppds
