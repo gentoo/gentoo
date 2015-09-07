@@ -1,0 +1,17 @@
+diff -Naur openmp-3.7.0.src.orig/runtime/src/CMakeLists.txt openmp-3.7.0.src/runtime/src/CMakeLists.txt
+--- openmp-3.7.0.src.orig/runtime/src/CMakeLists.txt	2015-07-15 23:41:36.000000000 +0200
++++ openmp-3.7.0.src/runtime/src/CMakeLists.txt	2015-09-05 23:41:17.105242541 +0200
+@@ -288,13 +288,6 @@
+   endforeach()
+ else()
+   install(TARGETS omp LIBRARY DESTINATION lib${LIBOMP_LIBDIR_SUFFIX})
+-  # Create aliases (symlinks) of the library for backwards compatibility
+-  set(LIBOMP_ALIASES "libgomp;libiomp5")
+-  foreach(alias IN LISTS LIBOMP_ALIASES)
+-    install(CODE "execute_process(COMMAND \"\${CMAKE_COMMAND}\" -E create_symlink \"${LIBOMP_LIB_FILE}\"
+-      \"${alias}${CMAKE_SHARED_LIBRARY_SUFFIX}\" WORKING_DIRECTORY
+-      \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/lib${LIBOMP_LIBDIR_SUFFIX})")
+-  endforeach()
+ endif()
+ install(
+   FILES
