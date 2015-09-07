@@ -12086,7 +12086,7 @@ media-plugins/mediastreamer-bcg729 1.0.0 1.0.0-r1: Backported G729 implementatio
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Linphone
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
-media-plugins/mythplugins 0.26.0_p20130922 0.27_p20140321 0.27.1_p20140817 0.27.3_p20141009 0.27.4_p20150124 0.27.5_p20150627: Official MythTV plugins
+media-plugins/mythplugins 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627: Official MythTV plugins
 media-plugins/npapi-vlc 2.0.0 9999: Mozilla plugin based on VLC
 media-plugins/qmmp-plugin-pack 0.8.3 0.8.4 0.8.6: A set of extra plugins for Qmmp
 media-plugins/quodlibet-plugins 2.6.3 3.1.2: Plugins for Quod Libet and Ex Falso
@@ -15898,7 +15898,7 @@ sys-apps/usbredir 0.4.3 0.4.4 0.5 0.5.1 0.6 0.7 9999: A simple TCP daemon and se
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.25.2-r2 2.26.2 2.27 9999: Various useful Linux utilities
+sys-apps/util-linux 2.24.1-r2 2.24.1-r3 2.24.2 2.25.1 2.25.1-r1 2.25.2 2.25.2-r1 2.25.2-r2 2.26 2.26.1 2.26.1-r1 2.26.2 2.27 9999: Various useful Linux utilities
 sys-apps/v86d 0.1.10: A daemon to run x86 code in an emulated environment
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
 sys-apps/watchdog 5.13-r1 5.14: A software watchdog and /dev/watchdog daemon
