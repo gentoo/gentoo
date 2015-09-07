@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,14 +6,14 @@ EAPI=5
 
 DESCRIPTION="JavaScript display engine for LaTeX, MathML and AsciiMath"
 HOMEPAGE="http://www.mathjax.org/"
-SRC_URI="https://github.com/mathjax/MathJax/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mathjax/MathJax/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
-RESTRICT="binchecks"
+RESTRICT="binchecks strip"
 
 S=${WORKDIR}/MathJax-${PV}
 
@@ -40,10 +40,10 @@ src_install() {
 	dodoc README*
 	use doc && dohtml -r docs/html/*
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
+		insinto /usr/share/${PN}/examples
 		doins -r test/*
 	fi
-	rm -rf test docs LICENSE README* || die
+	rm -r test docs LICENSE README* || die
 
 	webinstalldir=/usr/share/${PN}
 	insinto ${webinstalldir}
