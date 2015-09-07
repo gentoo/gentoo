@@ -33,7 +33,8 @@ DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
 	>=dev-lang/perl-5.0
 	clang? ( sys-devel/clang )
-	system-llvm? ( >=sys-devel/llvm-3.6.0[multitarget(-)] )
+	system-llvm? ( >=sys-devel/llvm-3.6.0[multitarget(-)]
+		<sys-devel/llvm-3.7.0[multitarget(-)] )
 "
 RDEPEND="${CDEPEND}"
 
