@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-iostream.patch #527658
+	epatch "${FILESDIR}"/${P}-boost-ver-check.patch #548310
 }
 
 src_configure() {
