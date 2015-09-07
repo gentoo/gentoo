@@ -15,25 +15,25 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV/_/-}/${MY_P}.tar.bz2"
 LICENSE="qwt mathml? ( LGPL-2.1 Nokia-Qt-LGPL-Exception-1.1 )"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 SLOT="6"
-IUSE="doc examples mathml opengl qt4 qt5 static-libs svg"
+IUSE="designer doc examples mathml opengl qt4 qt5 static-libs svg"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
 
 DEPEND="
 	!<x11-libs/qwt-5.2.3
 	qt4? (
-		dev-qt/designer:4
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
+		designer? ( dev-qt/designer:4 )
 		opengl? ( dev-qt/qtopengl:4 )
 		svg? ( dev-qt/qtsvg:4 )
 	)
 	qt5? (
-		dev-qt/designer:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtwidgets:5
+		designer? ( dev-qt/designer:5 )
 		opengl? ( dev-qt/qtopengl:5 )
 		svg? ( dev-qt/qtsvg:5 )
 	)
@@ -56,11 +56,12 @@ src_prepare() {
 		QWT_INSTALL_LIBS = "${EPREFIX}/usr/$(get_libdir)"
 		QWT_INSTALL_HEADERS = "${EPREFIX}/usr/include/qwt6"
 		QWT_INSTALL_DOCS = "${EPREFIX}/usr/share/doc/${PF}"
-		QWT_CONFIG += QwtPlot QwtWidgets QwtDesigner QwtPkgConfig
+		QWT_CONFIG += QwtPlot QwtWidgets QwtPkgConfig
 		VERSION = ${PV/_*}
 		QWT_VERSION = ${PV/_*}
 	EOF
 
+	use designer && echo "QWT_CONFIG += QwtDesigner" >> qwtconfig.pri
 	use mathml && echo "QWT_CONFIG += QwtMathML" >> qwtconfig.pri
 	use opengl && echo "QWT_CONFIG += QwtOpenGL" >> qwtconfig.pri
 	use svg && echo "QWT_CONFIG += QwtSvg" >> qwtconfig.pri
