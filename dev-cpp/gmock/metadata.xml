@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">googlemock</remote-id>
+		<remote-id type="github">google/googlemock</remote-id>
 	</upstream>
 </pkgmetadata>

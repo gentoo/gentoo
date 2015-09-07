@@ -10,4 +10,7 @@
 		<email>nikoli@gmx.us</email>
 		<name>Nikoli</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">BYVoid/uchardet</remote-id>
+	</upstream>
 </pkgmetadata>

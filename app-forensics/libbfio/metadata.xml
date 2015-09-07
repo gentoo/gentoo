@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>zerochaos@gentoo.org</email>
-<name>Rick Farina</name>
-</maintainer>
+	<maintainer>
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">libyal/libbfio</remote-id>
+	</upstream>
 </pkgmetadata>
-

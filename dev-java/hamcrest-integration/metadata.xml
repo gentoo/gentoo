@@ -2,5 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
+	<upstream>
+		<remote-id type="github">hamcrest/</remote-id>
+	</upstream>
 </pkgmetadata>
-

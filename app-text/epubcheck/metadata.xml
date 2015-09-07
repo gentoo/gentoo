@@ -4,4 +4,7 @@
   <maintainer>
     <email>flameeyes@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">IDPF/epubcheck</remote-id>
+  </upstream>
 </pkgmetadata>

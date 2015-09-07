@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">ffmpegthumbnailer</remote-id>
+		<remote-id type="github">dirkvdb/ffmpegthumbnailer</remote-id>
 	</upstream>
 </pkgmetadata>

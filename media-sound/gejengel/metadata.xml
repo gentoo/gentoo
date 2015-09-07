@@ -11,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="google-code">gejengel</remote-id>
+		<remote-id type="github">dirkvdb/gejengel</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>forensics</herd>
-<use>
-	<flag name="bfio">Enables libbfio for chaining file in file handling</flag>
-	<flag name="rawio">Enables raw IO handling</flag>
-	<flag name="ewf">Enables the v1 API</flag>
-	<flag name="fuse">Enable fuse support for ewfmount</flag>
-	<flag name="uuid">Enable UUID support in the ewftools</flag>
-</use>
+	<herd>forensics</herd>
+	<use>
+		<flag name="bfio">Enables libbfio for chaining file in file handling</flag>
+		<flag name="rawio">Enables raw IO handling</flag>
+		<flag name="ewf">Enables the v1 API</flag>
+		<flag name="fuse">Enable fuse support for ewfmount</flag>
+		<flag name="uuid">Enable UUID support in the ewftools</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libyal/libewf</remote-id>
+	</upstream>
 </pkgmetadata>

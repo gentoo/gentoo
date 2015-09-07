@@ -10,6 +10,7 @@
 </longdescription>
   <upstream>
     <remote-id type="pypi">gmpy2</remote-id>
+    <remote-id type="github">aleaxit/gmpy</remote-id>
   </upstream>
   <use>
     <flag name="mpir">Use <pkg>sci-libs/mpir</pkg> as gmp implementation</flag>

@@ -4,5 +4,6 @@
 	<herd>netmon</herd>
 	<upstream>
 		<remote-id type="google-code">libdnet</remote-id>
+		<remote-id type="github">dugsong/libdnet</remote-id>
 	</upstream>
 </pkgmetadata>

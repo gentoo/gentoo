@@ -16,5 +16,6 @@
 	<upstream>
 		<remote-id type="google-code">ps3mediaserver</remote-id>
 		<remote-id type="sourceforge">ps3mediaserver</remote-id>
+		<remote-id type="github">ps3mediaserver/ps3mediaserver</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -5,4 +5,7 @@
   <maintainer>
     <email>jlec@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">Unidata/netcdf4-python</remote-id>
+  </upstream>
 </pkgmetadata>

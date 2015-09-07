@@ -21,5 +21,7 @@
 		- generally safe for usage in filenames
 		- not ugly (e.g. "MSWin32" is ugly) 
 	</longdescription>
+	<upstream>
+		<remote-id type="github">trentm/platinfo</remote-id>
+	</upstream>
 </pkgmetadata>
-

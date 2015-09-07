@@ -6,12 +6,14 @@
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
   </maintainer>
-<longdescription lang="en">
+  <longdescription lang="en">
 PinYin engine for IBus platform. It provides a Chinese PinYin input method.
 </longdescription>
-<use>
-  <flag name="boost">Compile against <pkg>dev-libs/boost</pkg> libraries</flag>
-  <flag name="opencc">Enable support for <pkg>app-i18n/opencc</pkg></flag>
-</use>
+  <use>
+    <flag name="boost">Compile against <pkg>dev-libs/boost</pkg> libraries</flag>
+    <flag name="opencc">Enable support for <pkg>app-i18n/opencc</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">ibus/ibus</remote-id>
+  </upstream>
 </pkgmetadata>
-

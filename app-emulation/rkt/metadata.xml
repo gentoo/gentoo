@@ -4,7 +4,7 @@
 	<maintainer>
 		<email>mail@stefanjunker.de</email>
 		<name>Stefan Junker</name>
-	</maintainer>	
+	</maintainer>
 	<maintainer>
 		<email>alunduil@gentoo.org</email>
 		<name>Alex Brandt</name>
@@ -21,4 +21,7 @@
 		<flag name="rkt_stage1_src">Build the stage1.aci from source</flag>
 		<flag name="rkt_stage1_host">Assemble stage1.aci from host binaries</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">coreos/rkt</remote-id>
+	</upstream>
 </pkgmetadata>

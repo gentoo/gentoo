@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<longdescription lang='en'>
+	<herd>netmon</herd>
+	<longdescription lang="en">
 Libcrafter is a high level library for C++ designed to facilitate the creation
 and decoding of network packets. It is able to craft or decode packets of most
 common networks protocols, send them on the wire, capture them and match
@@ -27,4 +27,7 @@ Ethernet, SLL (Linux cooked-mode capture), ARP, DHCP, DHCP options, IP, IP
 options, IPv6, ICMP, ICMPv6, ICMP extensions, ICMPv6 extensions, TCP, TCP
 options, UDP and DNS
 </longdescription>
+	<upstream>
+		<remote-id type="github">pellegre/libcrafter</remote-id>
+	</upstream>
 </pkgmetadata>

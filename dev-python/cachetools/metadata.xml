@@ -7,4 +7,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">cachetools</remote-id>
+	</upstream>
 </pkgmetadata>

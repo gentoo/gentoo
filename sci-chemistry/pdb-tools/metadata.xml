@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="google-code">pdb-tools</remote-id>
+    <remote-id type="github">harmslab/pdbtools</remote-id>
   </upstream>
 </pkgmetadata>

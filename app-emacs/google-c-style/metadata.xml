@@ -3,4 +3,7 @@
 <pkgmetadata>
 	<herd>chromium</herd>
 	<herd>emacs</herd>
+	<upstream>
+		<remote-id type="github">google/styleguide</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -11,5 +11,6 @@
 	</longdescription>
   <upstream>
     <remote-id type="pypi">rfc3986</remote-id>
+    <remote-id type="github">sigmavirus24/rfc3986</remote-id>
   </upstream>
 </pkgmetadata>

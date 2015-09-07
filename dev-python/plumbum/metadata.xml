@@ -11,4 +11,7 @@
     attempting to mimic the shell syntax (shell combinators) where it makes sense,
     while keeping it all Pythonic and cross-platform.
   </longdescription>
+  <upstream>
+    <remote-id type="pypi">plumbum</remote-id>
+  </upstream>
 </pkgmetadata>

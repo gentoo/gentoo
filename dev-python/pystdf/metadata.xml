@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">pystdf</remote-id>
+		<remote-id type="github">cmars/pystdf</remote-id>
 	</upstream>
 </pkgmetadata>

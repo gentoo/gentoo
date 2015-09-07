@@ -6,4 +6,7 @@
 		<email>jlec@gentoo.org</email>
 		<name>Justin Lecher</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">pytest-pythonpath</remote-id>
+	</upstream>
 </pkgmetadata>

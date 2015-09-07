@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
 	<use>
-		<flag name='domain-aware'>Ignore leading domain names in username
+		<flag name="domain-aware">Ignore leading domain names in username
 			(Windows compat)</flag>
-		<flag name='faillog'>Log failed login attempts</flag>
-		<flag name='ignore-case'>Ignore string case in username (mostly Windows
+		<flag name="faillog">Log failed login attempts</flag>
+		<flag name="ignore-case">Ignore string case in username (mostly Windows
 			compat)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">phokz/pwauth</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-biology</herd>
+  <upstream>
+    <remote-id type="github">beast-dev/beast-mcmc</remote-id>
+  </upstream>
 </pkgmetadata>

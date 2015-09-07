@@ -7,5 +7,6 @@ developers to use system bluetooth resources. It works on machines running the
 GNU/Linux operating system and the bluez bluetooth stack.</longdescription>
 	<upstream>
 		<remote-id type="google-code">pybluez</remote-id>
+		<remote-id type="github">karulis/pybluez</remote-id>
 	</upstream>
 </pkgmetadata>

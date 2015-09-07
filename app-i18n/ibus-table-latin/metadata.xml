@@ -5,5 +5,6 @@
 	<longdescription lang="en">The Latin tables for Ibus-Table.</longdescription>
 	<upstream>
 		<remote-id type="google-code">ibus</remote-id>
+		<remote-id type="github">ibus/ibus</remote-id>
 	</upstream>
 </pkgmetadata>

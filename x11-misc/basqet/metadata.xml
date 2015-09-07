@@ -4,5 +4,6 @@
 	<herd>qt</herd>
 	<upstream>
 		<remote-id type="google-code">basqet</remote-id>
+		<remote-id type="bitbucket">ridderby/basqet</remote-id>
 	</upstream>
 </pkgmetadata>

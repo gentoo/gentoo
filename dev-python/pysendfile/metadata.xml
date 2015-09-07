@@ -4,5 +4,6 @@
   <herd>openstack</herd>
   <upstream>
     <remote-id type="pypi">pysendfile</remote-id>
+    <remote-id type="github">giampaolo/pysendfile</remote-id>
   </upstream>
 </pkgmetadata>

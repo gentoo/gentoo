@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="google-code">dpkt</remote-id>
+		<remote-id type="github">kbandla/dpkt</remote-id>
 	</upstream>
 </pkgmetadata>

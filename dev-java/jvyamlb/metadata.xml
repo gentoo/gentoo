@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">jvyamlb</remote-id>
+		<remote-id type="github">olabini/jvyamlb</remote-id>
 	</upstream>
 </pkgmetadata>

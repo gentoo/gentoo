@@ -4,5 +4,6 @@
 	<herd>cpp</herd>
 	<upstream>
 		<remote-id type="google-code">google-sparsehash</remote-id>
+		<remote-id type="github">google/sparsehash</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
 	<herd>sound</herd>
 	<upstream>
 		<remote-id type="google-code">game-music-emu</remote-id>
+		<remote-id type="bitbucket">mpyne/game-music-emu</remote-id>
 	</upstream>
 </pkgmetadata>

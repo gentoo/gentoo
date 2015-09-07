@@ -4,5 +4,6 @@
 	<herd>cjk</herd>
 	<upstream>
 		<remote-id type="google-code">ibus</remote-id>
+		<remote-id type="github">ibus/ibus</remote-id>
 	</upstream>
 </pkgmetadata>

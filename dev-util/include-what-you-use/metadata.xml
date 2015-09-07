@@ -5,4 +5,7 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">include-what-you-use/include-what-you-use</remote-id>
+	</upstream>
 </pkgmetadata>

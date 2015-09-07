@@ -7,5 +7,6 @@
 	</use>
 	<upstream>
 		<remote-id type="google-code">wbar</remote-id>
+		<remote-id type="github">rodolf0/wbar</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
 	<herd>net-im</herd>
 	<upstream>
 		<remote-id type="google-code">iksemel</remote-id>
+		<remote-id type="github">meduketto/iksemel</remote-id>
 	</upstream>
 </pkgmetadata>

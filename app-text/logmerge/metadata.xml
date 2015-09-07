@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -7,4 +7,7 @@
   <longdescription>
     Merge multiple logs such that multilined entries appear in chronological order without breaks.
   </longdescription>
+  <upstream>
+    <remote-id type="github">ildar-shaimordanov/logmerge</remote-id>
+  </upstream>
 </pkgmetadata>

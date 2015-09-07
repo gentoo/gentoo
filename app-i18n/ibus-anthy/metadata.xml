@@ -6,6 +6,7 @@
 libanthy.</longdescription>
 	<upstream>
 		<remote-id type="google-code">ibus</remote-id>
+		<remote-id type="github">ibus/ibus</remote-id>
 	</upstream>
 	<use>
 		<flag name="deprecated">Install deprecated pygtk2 library</flag>

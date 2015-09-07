@@ -3,4 +3,7 @@
 <pkgmetadata>
 	<herd>java</herd>
 	<longdescription>Reflections scans your classpath, indexes the metadata, allows you to query it on runtime and may save and collect that information for many modules within your project.</longdescription>
+	<upstream>
+		<remote-id type="github">ronmamo/reflections</remote-id>
+	</upstream>
 </pkgmetadata>

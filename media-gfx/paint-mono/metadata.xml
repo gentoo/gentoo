@@ -4,5 +4,6 @@
 	<herd>dotnet</herd>
 	<upstream>
 		<remote-id type="google-code">paint-mono</remote-id>
+		<remote-id type="github">shana/paint-mono</remote-id>
 	</upstream>
 </pkgmetadata>

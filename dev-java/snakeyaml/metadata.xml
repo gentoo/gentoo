@@ -6,5 +6,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="google-code">snakeyaml</remote-id>
+		<remote-id type="bitbucket">asomov/snakeyaml</remote-id>
 	</upstream>
 </pkgmetadata>
