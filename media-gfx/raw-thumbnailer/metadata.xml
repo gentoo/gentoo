@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">raw-thumbnailer</remote-id>
+		<remote-id type="github">erlendd/raw-thumbnailer</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
 	<herd>desktop-misc</herd>
 	<upstream>
 		<remote-id type="google-code">grun</remote-id>
+		<remote-id type="github">lrgc/grun</remote-id>
 	</upstream>
 </pkgmetadata>

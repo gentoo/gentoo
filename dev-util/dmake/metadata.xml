@@ -5,5 +5,7 @@
 		<email>chithanh@gentoo.org</email>
 		<name>Chí-Thanh Christopher Nguyễn</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">mohawk2/dmake</remote-id>
+	</upstream>
 </pkgmetadata>
-

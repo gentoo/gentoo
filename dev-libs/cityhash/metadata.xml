@@ -5,4 +5,7 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">google/cityhash</remote-id>
+	</upstream>
 </pkgmetadata>

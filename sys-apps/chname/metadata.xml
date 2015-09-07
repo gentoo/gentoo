@@ -7,5 +7,6 @@
 	<longdescription lang="en">Run a command with a new system hostname. Requires utsname namespaces.</longdescription>
 	<upstream>
 		<remote-id type="google-code">chname</remote-id>
+		<remote-id type="github">marineam/chname</remote-id>
 	</upstream>
 </pkgmetadata>

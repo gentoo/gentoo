@@ -4,5 +4,6 @@
   <herd>java</herd>
   <upstream>
     <remote-id type="google-code">matrix-toolkits-java</remote-id>
+    <remote-id type="github">fommil/matrix-toolkits-java</remote-id>
   </upstream>
 </pkgmetadata>

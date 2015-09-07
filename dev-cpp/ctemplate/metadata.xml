@@ -4,5 +4,6 @@
 	<herd>cpp</herd>
 	<upstream>
 		<remote-id type="google-code">google-ctemplate</remote-id>
+		<remote-id type="github">olafvdspek/ctemplate</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,23 +4,23 @@
   <maintainer>
     <email>flameeyes@gentoo.org</email>
   </maintainer>
-
   <use>
     <flag name="largepages">
       Use (experimental) larger pages for tcmalloc, this increases
       memory usage, but should speed up the allocation/free
       operations.
     </flag>
-
     <flag name="debug">
       Build a set of libraries with debug support (so-called
       debugalloc). These are available by default but are not needed
       unless you're actually developing using tcmalloc.
     </flag>
-
     <flag name="minimal">
       Only build the tcmalloc_minimal library, ignoring the heap
       checker and the profilers.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">gperftools/gperftools</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">boto/botocore</remote-id>
+		<remote-id type="pypi">botocore</remote-id>
 	</upstream>
 </pkgmetadata>

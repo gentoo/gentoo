@@ -4,5 +4,6 @@
 	<herd>sound</herd>
 	<upstream>
 		<remote-id type="google-code">volti</remote-id>
+		<remote-id type="github">gen2brain/volti</remote-id>
 	</upstream>
 </pkgmetadata>

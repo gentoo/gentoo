@@ -11,7 +11,12 @@
 	for UFW using PyGTK and PyQt (the latter in early stage of development).</longdescription>
 	<upstream>
 		<remote-id type="google-code">ufw-frontends</remote-id>
+		<remote-id type="github">baudm/ufw-frontends</remote-id>
 	</upstream>
-	<use><flag name="policykit">Use pkexec to gain root privileges</flag></use>
-	<use><flag name="kde">Use kdesu to gain root privileges (note: the flag has lower priority than "policykit")</flag></use>
+	<use>
+		<flag name="policykit">Use pkexec to gain root privileges</flag>
+	</use>
+	<use>
+		<flag name="kde">Use kdesu to gain root privileges (note: the flag has lower priority than "policykit")</flag>
+	</use>
 </pkgmetadata>

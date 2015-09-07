@@ -6,5 +6,6 @@
 Traditional Chinese and Simplified Chinese.</longdescription>
 	<upstream>
 		<remote-id type="google-code">open-chinese-convert</remote-id>
+		<remote-id type="github">BYVoid/OpenCC</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
 	<herd>java</herd>
 	<upstream>
 		<remote-id type="google-code">zemberek</remote-id>
+		<remote-id type="github">ahmetaa/zemberek-nlp</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="google-code">google-glog</remote-id>
+		<remote-id type="github">google/glog</remote-id>
 	</upstream>
 </pkgmetadata>

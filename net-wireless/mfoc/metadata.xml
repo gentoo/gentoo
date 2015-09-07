@@ -5,4 +5,7 @@
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">nfc-tools/mfoc</remote-id>
+	</upstream>
 </pkgmetadata>

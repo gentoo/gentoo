@@ -8,5 +8,6 @@ intended for math but mathTeX is fully compatible with LaTeX and any package can
 be used and mimeTeX also supports many other features.</longdescription>
 	<upstream>
 		<remote-id type="google-code">pidgintex</remote-id>
+		<remote-id type="github">Micket/pidgintex</remote-id>
 	</upstream>
 </pkgmetadata>

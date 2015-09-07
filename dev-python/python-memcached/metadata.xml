@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
-<maintainer>
-<email>robbat2@gentoo.org</email>
-<name>Robin H. Johnson</name>
-</maintainer>
-<longdescription lang="en">
+	<herd>python</herd>
+	<maintainer>
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<longdescription lang="en">
 This is a Python based API (implemented in 100% python) for communicating with
 the memcached distributed memory object cache daemon.
 </longdescription>
+	<upstream>
+		<remote-id type="pypi">python-memcached</remote-id>
+	</upstream>
 </pkgmetadata>
-

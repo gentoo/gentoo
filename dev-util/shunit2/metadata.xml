@@ -11,5 +11,6 @@
   	can do the job.</longdescription>
 	<upstream>
 		<remote-id type="google-code">shunit2</remote-id>
+		<remote-id type="github">kward/shunit2</remote-id>
 	</upstream>
 </pkgmetadata>

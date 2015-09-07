@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">exfat</remote-id>
+		<remote-id type="github">relan/exfat</remote-id>
 	</upstream>
 </pkgmetadata>

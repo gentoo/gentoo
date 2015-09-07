@@ -5,5 +5,7 @@
 		<email>ago@gentoo.org</email>
 		<name>Agostino Sarubbo</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">rjpcomputing/ticpp</remote-id>
+	</upstream>
 </pkgmetadata>
-

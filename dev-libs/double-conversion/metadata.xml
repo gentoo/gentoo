@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription lang='en'>
+  <herd>sci</herd>
+  <longdescription lang="en">
   This library consists of efficient conversion routines that have
   been extracted from the V8 JavaScript engine. The code has been
   refactored and improved so that it can be used more easily in other
   projects.
 </longdescription>
+  <upstream>
+    <remote-id type="github">google/double-conversion</remote-id>
+  </upstream>
 </pkgmetadata>

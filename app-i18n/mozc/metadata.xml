@@ -12,5 +12,6 @@ Mozc is a Japanese Input Method Editor (IME) designed for multi-platform such as
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">jsoncpp</remote-id>
+		<remote-id type="github">google/mozc</remote-id>
 	</upstream>
 </pkgmetadata>

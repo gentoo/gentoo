@@ -5,4 +5,7 @@
 		<email>dastergon@gentoo.org</email>
 		<name>Pavlos Ratis</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">smxi/inxi</remote-id>
+	</upstream>
 </pkgmetadata>

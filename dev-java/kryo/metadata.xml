@@ -7,7 +7,9 @@
 	The goals of the project are speed, efficiency, and an easy to use API. The project
 	is useful any time objects need to be persisted, whether to a file, database, or over
 	the network. Kryo can also perform automatic deep and shallow copying/cloning. This is direct copying
-	from object to object, not object->bytes->object.
+	from object to object, not object-&gt;bytes-&gt;object.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">EsotericSoftware/kryo</remote-id>
+	</upstream>
 </pkgmetadata>
-

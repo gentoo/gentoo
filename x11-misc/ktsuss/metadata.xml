@@ -9,5 +9,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">ktsuss</remote-id>
+		<remote-id type="github">nomius/ktsuss</remote-id>
 	</upstream>
 </pkgmetadata>

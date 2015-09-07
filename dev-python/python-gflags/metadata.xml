@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="google-code">python-gflags</remote-id>
+		<remote-id type="github">gflags/python-gflags</remote-id>
 	</upstream>
 </pkgmetadata>

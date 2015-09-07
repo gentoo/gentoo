@@ -5,4 +5,7 @@
   <maintainer>
     <email>flameeyes@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">googleads/googleads-perl-lib</remote-id>
+  </upstream>
 </pkgmetadata>

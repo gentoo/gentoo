@@ -6,7 +6,10 @@
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 	</maintainer>
-<use>
-	<flag name="webp">Build support for WEBP image format</flag>
-</use>
+	<use>
+		<flag name="webp">Build support for WEBP image format</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">samkpo/qiviewer</remote-id>
+	</upstream>
 </pkgmetadata>

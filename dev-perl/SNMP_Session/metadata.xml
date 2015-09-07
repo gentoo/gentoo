@@ -4,5 +4,6 @@
 	<herd>perl</herd>
 	<upstream>
 		<remote-id type="google-code">snmp-session</remote-id>
+		<remote-id type="github">sleinen/snmp-session</remote-id>
 	</upstream>
 </pkgmetadata>

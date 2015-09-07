@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="google-code">python-twitter</remote-id>
+		<remote-id type="github">bear/python-twitter</remote-id>
 	</upstream>
 </pkgmetadata>

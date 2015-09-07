@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">s3backer</remote-id>
+		<remote-id type="github">archiecobbs/s3backer</remote-id>
 	</upstream>
 </pkgmetadata>

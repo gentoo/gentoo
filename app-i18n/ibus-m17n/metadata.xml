@@ -8,9 +8,10 @@
   </longdescription>
   <upstream>
     <remote-id type="cpe">cpe:/a:ibus_project:ibus-m17n</remote-id>
+    <remote-id type="github">ibus/ibus</remote-id>
   </upstream>
   <use>
-    <flag name='gtk'>
+    <flag name="gtk">
       Build the preference interfaces, based on
       <pkg>x11-libs/gtk+</pkg> (GTK+ 2).
     </flag>

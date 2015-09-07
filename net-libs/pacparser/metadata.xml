@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>bicatali@gentoo.org</email>
-</maintainer>
-<longdescription>
+  <maintainer>
+    <email>bicatali@gentoo.org</email>
+  </maintainer>
+  <longdescription>
   A library to parse proxy auto-config (PAC) files. Proxy auto-config
   files are a vastly used proxy configuration method these days. Web
   browsers can use a PAC file to determine which proxy server to use
@@ -20,7 +20,8 @@
   add this PAC file parsing capability to  any program (C and Python
   supported right now).
 </longdescription>
-<upstream>
-  <remote-id type="google-code">pacproxy</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="google-code">pacproxy</remote-id>
+    <remote-id type="github">pacparser/pacparser</remote-id>
+  </upstream>
 </pkgmetadata>

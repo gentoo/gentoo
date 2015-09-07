@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="google-code">nsscache</remote-id>
+		<remote-id type="github">google/nsscache</remote-id>
 	</upstream>
 </pkgmetadata>
