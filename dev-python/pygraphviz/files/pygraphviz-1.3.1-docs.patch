@@ -1,0 +1,29 @@
+ setup.py | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index fc0a96f..98b7f58 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,13 +36,6 @@ release.write_versionfile()
+ sys.path.pop(0)
+ 
+ packages = ["pygraphviz", "pygraphviz.tests"]
+-docdirbase = 'share/doc/pygraphviz-%s' % release.version
+-data = [
+-    (docdirbase, glob("*.txt")),
+-    (os.path.join(docdirbase, 'examples'), glob("examples/*.py")),
+-    (os.path.join(docdirbase, 'examples'), glob("examples/*.dat")),
+-    (os.path.join(docdirbase, 'examples'), glob("examples/*.dat.gz")),
+-]
+ package_data = {'': ['*.txt'], }
+ 
+ if __name__ == "__main__":
+@@ -75,7 +68,6 @@ if __name__ == "__main__":
+         download_url=release.download_url,
+         classifiers=release.classifiers,
+         packages=packages,
+-        data_files=data,
+         ext_modules=extension,
+         cmdclass={
+             'install': AddExtensionInstallCommand,
