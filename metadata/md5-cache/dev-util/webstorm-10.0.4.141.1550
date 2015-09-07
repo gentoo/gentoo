@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=JavaScript IDE for complex client-side development and server-side development with Node.js
+EAPI=5
+HOMEPAGE=http://www.jetbrains.com/webstorm
+KEYWORDS=~amd64 ~x86
+LICENSE=WebStorm WebStorm_Academic WebStorm_Classroom WebStorm_OpenSource WebStorm_personal
+RDEPEND=>=virtual/jdk-1.7
+SLOT=10
+SRC_URI=http://download.jetbrains.com/webstorm/WebStorm-10.0.4.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=34e593561dcdc5a835fedaccdebcd946

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=test? ( dev-python/flake8 dev-python/tox )
+DESCRIPTION=change directory command that learns
+EAPI=5
+HOMEPAGE=https://github.com/joelthelion/autojump
+IUSE=bash-completion python test zsh-completion python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+KEYWORDS=~amd64 ~x86 ~ppc ~ppc64
+LICENSE=GPL-3
+RDEPEND=bash-completion? ( >=app-shells/bash-4 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zsh-completion? ( app-shells/zsh app-shells/gentoo-zsh-completions )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/joelthelion/autojump/archive/release-v22.2.4.tar.gz -> autojump-22.2.4.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_md5_=e0ce0f67ad80b54a54ab12bcec4ec7e7
