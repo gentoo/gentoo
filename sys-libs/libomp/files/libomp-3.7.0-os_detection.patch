@@ -1,0 +1,19 @@
+diff -Naur openmp-3.7.0.src.orig/runtime/tools/lib/Uname.pm openmp-3.7.0.src/runtime/tools/lib/Uname.pm
+--- openmp-3.7.0.src.orig/runtime/tools/lib/Uname.pm	2015-01-19 19:29:35.000000000 +0100
++++ openmp-3.7.0.src/runtime/tools/lib/Uname.pm	2015-09-04 19:30:25.821746740 +0200
+@@ -236,15 +236,6 @@
+         $bulk =~ m{^DISTRIB_ID\s*=\s*(.*?)\s*$}m
+             or runtime_error( "$release: There is no DISTRIB_ID:", $bulk, "(eof)" );
+         $values{ operating_system_name } = $1;
+-        $bulk =~ m{^DISTRIB_RELEASE\s*=\s*(.*?)\s*$}m
+-            or runtime_error( "$release: There is no DISTRIB_RELEASE:", $bulk, "(eof)" );
+-        $values{ operating_system_release } = $1;
+-        $bulk =~ m{^DISTRIB_CODENAME\s*=\s*(.*?)\s*$}m
+-            or runtime_error( "$release: There is no DISTRIB_CODENAME:", $bulk, "(eof)" );
+-        $values{ operating_system_codename } = $1;
+-        $bulk =~ m{^DISTRIB_DESCRIPTION\s*="?\s*(.*?)"?\s*$}m
+-            or runtime_error( "$release: There is no DISTRIB_DESCRIPTION:", $bulk, "(eof)" );
+-        $values{ operating_system_description } = $1;
+     } else {
+         # Oops. lsb-release is missed or not informative. Try other *-release files.
+         $release = "/etc/system-release";
