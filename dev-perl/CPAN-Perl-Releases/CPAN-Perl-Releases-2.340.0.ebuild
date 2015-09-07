@@ -4,7 +4,7 @@
 
 EAPI=5
 MODULE_AUTHOR=BINGOS
-MODULE_VERSION=2.10
+MODULE_VERSION=2.34
 inherit perl-module
 
 DESCRIPTION='Mapping Perl releases on CPAN to the location of the tarballs'
