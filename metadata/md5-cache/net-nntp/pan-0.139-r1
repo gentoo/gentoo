@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.16:2 dev-libs/gmime:2.6 gnome-keyring? ( >=gnome-base/libgnome-keyring-3.2 ) libnotify? ( >=x11-libs/libnotify-0.4.1:0= ) spell? ( >=app-text/enchant-1.6 >=app-text/gtkspell-2.0.7:2 ) ssl? ( >=net-libs/gnutls-3:0= ) app-text/gnome-doc-utils >=dev-util/intltool-0.35.5 sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=A newsreader for GNOME
+EAPI=5
+HOMEPAGE=http://pan.rebelbase.com/
+IUSE=dbus gnome-keyring libnotify spell ssl
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.16:2 dev-libs/gmime:2.6 gnome-keyring? ( >=gnome-base/libgnome-keyring-3.2 ) libnotify? ( >=x11-libs/libnotify-0.4.1:0= ) spell? ( >=app-text/enchant-1.6 >=app-text/gtkspell-2.0.7:2 ) ssl? ( >=net-libs/gnutls-3:0= )
+SLOT=0
+SRC_URI=http://pan.rebelbase.com/download/releases/0.139/source/pan-0.139.tar.bz2
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=26b942a9101371d12d57a90599c0b13c
