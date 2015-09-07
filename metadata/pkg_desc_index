@@ -12086,7 +12086,7 @@ media-plugins/mediastreamer-bcg729 1.0.0 1.0.0-r1: Backported G729 implementatio
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Linphone
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
-media-plugins/mythplugins 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627: Official MythTV plugins
+media-plugins/mythplugins 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627-r1: Official MythTV plugins
 media-plugins/npapi-vlc 2.0.0 9999: Mozilla plugin based on VLC
 media-plugins/qmmp-plugin-pack 0.8.3 0.8.4 0.8.6: A set of extra plugins for Qmmp
 media-plugins/quodlibet-plugins 2.6.3 3.1.2: Plugins for Quod Libet and Ex Falso
@@ -13423,7 +13423,7 @@ net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
 net-im/turses 0.2.13-r1 0.2.23: Command line twitter client
 net-im/vacuum 1.2.4 9999: Qt4 Crossplatform Jabber client
 net-im/ysm 2.9.9.1: A console ICQ client supporting versions 7/8
-net-irc/anope 1.8.7-r1: Anope IRC Services
+net-irc/anope 1.8.7-r2: Anope IRC Services
 net-irc/asuka 1.2.1: The QuakeNet IRC Server
 net-irc/atheme-services 6.0.11-r1 7.0.6-r1 9999: A portable and secure set of open-source and modular IRC services
 net-irc/bip 0.8.8-r1: Multiuser IRC proxy with SSL support
@@ -14134,7 +14134,7 @@ net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC co
 net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/strongswan 5.3.2: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-misc/strongswan 5.3.2 5.3.3: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.14 5.17 5.18 5.19 5.20 5.22 5.23: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.14_p11 3.3.15_p4 3.3.15_p7 3.3.15_p9 3.4_p4 3.4_p5 3.4_p6 3.4_p7: Complete 3270 access package
@@ -15898,7 +15898,7 @@ sys-apps/usbredir 0.4.3 0.4.4 0.5 0.5.1 0.6 0.7 9999: A simple TCP daemon and se
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.24.1-r2 2.24.1-r3 2.24.2 2.25.1 2.25.1-r1 2.25.2 2.25.2-r1 2.25.2-r2 2.26 2.26.1 2.26.1-r1 2.26.2 2.27 9999: Various useful Linux utilities
+sys-apps/util-linux 2.24.1-r3 2.24.2 2.25.2-r2 2.26.2 2.27 9999: Various useful Linux utilities
 sys-apps/v86d 0.1.10: A daemon to run x86 code in an emulated environment
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
 sys-apps/watchdog 5.13-r1 5.14: A software watchdog and /dev/watchdog daemon
@@ -16229,21 +16229,21 @@ sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-64
 sys-firmware/vgabios 0.6c-r1 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.4 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
-sys-freebsd/boot0 8.2 9.1 10.1 10.2: FreeBSD's bootloader
-sys-freebsd/freebsd-bin 8.2 9.1 10.1 10.2: FreeBSD /bin tools
-sys-freebsd/freebsd-cddl 8.2 9.1 10.1 10.2: FreeBSD CDDL (opensolaris/zfs) extra software
+sys-freebsd/boot0 8.2 9.1 10.2: FreeBSD's bootloader
+sys-freebsd/freebsd-bin 8.2 9.1 10.2: FreeBSD /bin tools
+sys-freebsd/freebsd-cddl 8.2 9.1 10.2: FreeBSD CDDL (opensolaris/zfs) extra software
 sys-freebsd/freebsd-contrib 8.2 9.1: Contributed sources for FreeBSD
-sys-freebsd/freebsd-lib 8.2-r1 9.1-r10 9.1-r11 10.1-r1 10.2: FreeBSD's base system libraries
-sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.1 10.2: FreeBSD libexec things
-sys-freebsd/freebsd-mk-defs 8.2 9.1 10.1 10.2: Makefiles definitions used for building and installing libraries and system files
-sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.1 10.2: FreeBSD's PAM authentication modules
-sys-freebsd/freebsd-pf 8.2 9.1 10.1 10.2: FreeBSD's base system libraries
-sys-freebsd/freebsd-rescue 8.2 9.1 10.1 10.2: FreeBSD's rescue binaries
-sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.1-r1 10.2: FreeBSD sbin utils
-sys-freebsd/freebsd-share 8.2 9.1 10.1 10.2: FreeBSD shared tools/files
-sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.1-r6 10.2: FreeBSD kernel sources
-sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.1-r2 10.2-r1: FreeBSD's base system source for /usr/bin
-sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.1 10.2-r1: FreeBSD /usr/sbin tools
+sys-freebsd/freebsd-lib 8.2-r1 9.1-r10 9.1-r11 10.2: FreeBSD's base system libraries
+sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.2: FreeBSD libexec things
+sys-freebsd/freebsd-mk-defs 8.2 9.1 10.2: Makefiles definitions used for building and installing libraries and system files
+sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.2: FreeBSD's PAM authentication modules
+sys-freebsd/freebsd-pf 8.2 9.1 10.2: FreeBSD's base system libraries
+sys-freebsd/freebsd-rescue 8.2 9.1 10.2: FreeBSD's rescue binaries
+sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.2: FreeBSD sbin utils
+sys-freebsd/freebsd-share 8.2 9.1 10.2: FreeBSD shared tools/files
+sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.2: FreeBSD kernel sources
+sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.2-r1: FreeBSD's base system source for /usr/bin
+sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.2-r1: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulators/virtio-kmod
 sys-fs/archivemount 0.8.3 0.8.4 0.8.5: Mount archives using libarchive and FUSE
