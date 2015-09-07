@@ -13,7 +13,7 @@ SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "|| ( dev-ruby/activerecord:3.2
