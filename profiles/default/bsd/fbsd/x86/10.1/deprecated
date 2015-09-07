@@ -1,0 +1,4 @@
+default/bsd/fbsd/x86/10.2
+Please read carefully the wiki.
+Might be your environment is broken if you do not perform the correct procedure.
+https://wiki.gentoo.org/wiki/Gentoo_FreeBSD/Upgrade_Guide

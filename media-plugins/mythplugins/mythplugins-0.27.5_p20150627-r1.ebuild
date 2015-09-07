@@ -4,11 +4,12 @@
 
 EAPI=5
 
-PYTHON_DEPEND="2:2.7"
+PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="xml"
 BACKPORTS="9498257571e8158926b60a0eefc74568c4436823"
 MY_P=${P%_p*}
 
-inherit eutils python
+inherit eutils python-single-r1
 
 DESCRIPTION="Official MythTV plugins"
 HOMEPAGE="http://www.mythtv.org"
@@ -51,8 +52,10 @@ DEPEND="!media-plugins/mytharchive
 	media-libs/freetype:=
 	libass? ( >=media-libs/libass-0.9.11:= )
 	media-libs/libpng:=
-	theora? ( media-libs/libtheora:= media-libs/libogg:= )
-	vorbis? ( media-libs/libogg:= )
+	theora? (
+		media-libs/libtheora:=
+		media-libs/libogg:=
+	)
 	xvid? ( >=media-libs/xvid-1.1.0:= )
 	virtual/libudev:=
 	ieee1394? (
@@ -87,7 +90,9 @@ DEPEND="!media-plugins/mytharchive
 	mythmusic? (
 		>=media-libs/flac-1.1.2:=
 		>=media-libs/taglib-1.6:=
-		vorbis? ( >=media-libs/libvorbis-1.0:= )
+		>=media-libs/libvorbis-1.0:=
+		media-libs/libogg:=
+		>=media-sound/lame-3.93.1
 		virtual/opengl
 		cdda? (
 			dev-libs/libcdio:=
@@ -96,7 +101,7 @@ DEPEND="!media-plugins/mytharchive
 
 	)
 	mythnetvision? (
-		=dev-lang/python-2*:=[xml]
+		${PYTHON_DEPS}
 		dev-python/lxml:=
 		dev-python/mysql-python:=
 		dev-python/oauth:=
@@ -124,14 +129,15 @@ REQUIRED_USE="
 	cdr? ( mythmusic cdda )
 	exif? ( mythgallery )
 	fftw? ( mythmusic )
+	mythmusic? ( vorbis )
 	mythnews? ( mythbrowser )
-	raw? ( mythgallery )"
+	raw? ( mythgallery )
+	mythnetvision? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/mythtv-0.27.5/mythplugins"
 
 pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
+	use mythnetvision? && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -145,7 +151,7 @@ src_prepare() {
 src_configure() {
 	./configure \
 		--prefix=/usr \
-		--python=python2 \
+		--python=${EPYTHON} \
 		--enable-opengl \
 		$(use_enable mythzoneminder) \
 		$(use_enable mytharchive) \

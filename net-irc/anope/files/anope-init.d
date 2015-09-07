@@ -7,6 +7,10 @@ PIDFILE=/run/anope/services.pid
 
 extra_started_commands="reload"
 
+depend() {
+	use ircd
+}
+
 start_pre() {
 	checkpath -o ${ANOPE_USER} -d "$(dirname $PIDFILE)"
 }

@@ -1,9 +1,0 @@
-# /etc/conf.d/crypto-loop: Configuration file for /etc/init.d/crypto-loop
-
-# More info can be found in the init.d script
-
-# Specify loopback configurations here.  The format of this file is
-# shown in the following commented-out example.  One line per loopback
-# configuration.  For possible hash values, see `man hashalot`.
-
-# loop=/dev/loop0 hash='' cipher=serpent keysize=256 device=/dev/system/test other=''
