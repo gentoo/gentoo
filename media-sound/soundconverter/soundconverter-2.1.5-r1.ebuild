@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="aac flac mp3 opus vorbis"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
