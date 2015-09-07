@@ -65,7 +65,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	emake
-	multilib_is_native_abi && use doc && ARTEXFONTS="${T}/fonts" emake -C doc gcrypt.pdf
+	multilib_is_native_abi && use doc && VARTEXFONTS="${T}/fonts" emake -C doc gcrypt.pdf
 }
 
 multilib_src_install() {
