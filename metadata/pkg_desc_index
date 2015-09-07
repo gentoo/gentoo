@@ -316,7 +316,7 @@ app-arch/unlzx 1.1: Unarchiver for Amiga LZX archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7 2.0_pre7_p1: Script for unpacking various file formats
 app-arch/unrar 5.1.6 5.2.7 5.3.2 5.3.3: Uncompress rar files
-app-arch/unrar-gpl 0.0.1_p20080417-r1: Free rar unpacker for old (pre v3) rar files
+app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 0.6_p20120308: InstallShield CAB file extractor
 app-arch/unzip 5.52-r2 6.0-r3: unzipper for pkzip-compressed files
@@ -8304,7 +8304,7 @@ dev-ruby/pdf-core 0.5.0 0.5.1 0.6.0: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.1.1-r1 1.3.3: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library to perform different operations with permutations of sequences (strings, arrays, etc.)
-dev-ruby/pg 0.14.1 0.17.1 0.17.1-r1 0.18.2: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg 0.17.1 0.17.1-r1 0.18.2: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.5 1.1.5-r1 1.1.6: A pkg-config implementation by Ruby
 dev-ruby/plist 3.1.0-r1: A library to manipulate Property List files, also known as plists
@@ -8483,7 +8483,7 @@ dev-ruby/slop 3.6.0 4.1.0 4.2.0: A simple option parser with an easy to remember
 dev-ruby/snmplib 1.2.0 1.2.0-r1: SNMP library implemented in pure Ruby
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
 dev-ruby/sparklines 0.5.2-r4 0.5.2-r5: Create sparklines, small graphs to be used inline in texts
-dev-ruby/spork 0.9.2 0.9.2-r1 0.9.2-r2: Spork is Tim Harper's implementation of test server
+dev-ruby/spork 0.9.2-r1 0.9.2-r2: Spork is Tim Harper's implementation of test server
 dev-ruby/spreadsheet 0.6.9: Ruby library to read and write spreadsheet documents
 dev-ruby/spring 1.3.6: Rails application preloader
 dev-ruby/sprockets 2.2.3 2.11.3 2.12.3 2.12.3-r1 3.1.0 3.2.0: Ruby library for compiling and serving web assets
@@ -8996,14 +8996,14 @@ dev-util/jenkins-bin 1.609.1 1.609.2 1.626 1.627: Extensible continuous integrat
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.4 2.5.5: A graphical debugger interface
-dev-util/kdevelop 4.5.2 4.6.0 4.7.1 4.7.1-r1: Integrated Development Environment for Unix, supporting KDE/Qt, C/C++ and many other languages
+dev-util/kdevelop 4.7.1-r1: Integrated Development Environment for Unix, supporting KDE/Qt, C/C++ and many other languages
 dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0: A LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 1.5.2 1.6.0 1.7.1: PHP plugin for KDevelop 4
-dev-util/kdevelop-php-docs 1.5.2 1.6.0 1.7.1: PHP documentation plugin for KDevelop 4
-dev-util/kdevelop-python 1.5.2 1.6.0 1.7.1: Python plugin for KDevelop 4
-dev-util/kdevelop-qmake 1.6.0 1.7.0: qmake plugin for KDevelop 4
+dev-util/kdevelop-php 1.7.1: PHP plugin for KDevelop 4
+dev-util/kdevelop-php-docs 1.7.1: PHP documentation plugin for KDevelop 4
+dev-util/kdevelop-python 1.7.1: Python plugin for KDevelop 4
+dev-util/kdevelop-qmake 1.7.0: qmake plugin for KDevelop 4
 dev-util/kdevelop-qmljs 1.7.0: QML and javascript plugin for KDevelop 4
-dev-util/kdevplatform 1.5.2 1.6.0-r1 1.7.1: KDE development support libraries and apps
+dev-util/kdevplatform 1.7.1: KDE development support libraries and apps
 dev-util/kdoc 2.0_alpha54: C++ and IDL Source Documentation System
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/ketchup 0.9.8 1.0 1.1_beta3 9999: tool for updating or switching between versions of the Linux kernel source
@@ -14464,7 +14464,7 @@ net-wireless/irda-utils 0.9.18-r3 0.9.18-r4: IrDA management and handling utilit
 net-wireless/iw 3.10 3.10-r1 3.11 3.13 3.14 3.17 4.0: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-ubertooth 2015.09.2 9999: Provides basic bluetooth support in kismet
-net-wireless/lorcon 0.0_p20130212-r1 0.0_p20150109 9999: A generic library for injecting 802.11 frames
+net-wireless/lorcon 0.0_p20150109 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
 net-wireless/madwifi-ng 0.9.3.3 0.9.4 0.9.4-r1 0.9.4.4119.20100201 0.9.4.4133.20100621 0.9.4.4165.20110816 0.9.4.4180.20120502: Next Generation driver for Atheros based IEEE 802.11a/b/g wireless LAN cards
 net-wireless/madwifi-ng-tools 0.9.3.3 0.9.4 0.9.4.4119.20100201 0.9.4.4133.20100621 0.9.4.4165.20110816 0.9.4.4180.20120502: Next Generation tools for configuration of Atheros based IEEE 802.11a/b/g wireless LAN cards

@@ -2648,7 +2648,6 @@ dev-util/kdevelop:cmake - Enable support for CMake build system
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
 dev-util/kdevelop:okteta - Enable hex editor plugin
 dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
-dev-util/kdevelop:reviewboard - Enable reviewboard support
 dev-util/kdevelop-qmake:tools - Build and install the qmake-parser debugging tool
 dev-util/kdevplatform:classbrowser - Enable the class browser plugin
 dev-util/kdevplatform:konsole - Enable kde-apps/konsole integration
