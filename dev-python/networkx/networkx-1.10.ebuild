@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples test"
 
-COMMON_DEPEND="
-	dev-python/matplotlib[${PYTHON_USEDEP}]
+COMMON_DEPEND="dev-python/matplotlib[${PYTHON_USEDEP}]
 		sci-libs/scipy[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -37,7 +36,7 @@ RDEPEND="
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
 	examples? (
 		${COMMON_DEPEND}
-		dev-python/pygraphviz[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/pygraphviz[${PYTHON_USEDEP}]' python2_7)
 		dev-python/pyparsing[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
