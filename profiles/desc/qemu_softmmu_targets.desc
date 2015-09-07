@@ -29,6 +29,7 @@ sh4eb - system emulation target
 sh4 - system emulation target
 sparc - system emulation target
 sparc64 - system emulation target
+tricore - system emulation target
 unicore32 - system emulation target
 x86_64 - system emulation target
 xtensaeb - system emulation target

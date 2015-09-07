@@ -22,9 +22,10 @@ mipsn32 - MIPS N32 ABI userspace emulation target
 mipsn32el - MIPS N32 ABI LE userspace emulation target
 mips - userspace emulation target
 or32 - OpenRISC userspace emulation target
+ppc - PowerPC 32-bit big endian userspace emulation target
+ppc64 - PowerPC 64-bit big endian userspace emulation target
 ppc64abi32 - userspace emulation target
-ppc64 - userspace emulation target
-ppc - userspace emulation target
+ppc64le - PowerPC 64-bit little endian userspace emulation target
 s390x - userspace emulation target
 sh4eb - userspace emulation target
 sh4 - userspace emulation target
