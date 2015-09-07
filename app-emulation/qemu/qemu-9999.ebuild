@@ -268,7 +268,29 @@ pkg_setup() {
 	enewgroup kvm 78
 }
 
+# Sanity check to make sure target lists are kept up-to-date.
+check_targets() {
+	local var=$1 mak=$2
+	local detected sorted
+
+	pushd "${S}"/default-configs >/dev/null || die
+
+	detected=$(echo $(printf '%s\n' *-${mak}.mak | sed "s:-${mak}.mak::" | sort -u))
+	sorted=$(echo $(printf '%s\n' ${!var} | sort -u))
+	if [[ ${sorted} != "${detected}" ]] ; then
+		eerror "The ebuild needs to be kept in sync."
+		eerror "${var}: ${sorted}"
+		eerror "$(printf '%-*s' ${#var} configure): ${detected}"
+		die "sync ${var} to the list of targets"
+	fi
+
+	popd >/dev/null
+}
+
 src_prepare() {
+	check_targets IUSE_SOFTMMU_TARGETS softmmu
+	check_targets IUSE_USER_TARGETS linux-user
+
 	# Alter target makefiles to accept CFLAGS set via flag-o
 	sed -i -r \
 		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
