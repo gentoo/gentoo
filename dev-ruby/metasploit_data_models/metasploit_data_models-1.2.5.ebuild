@@ -15,7 +15,7 @@ SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 RESTRICT=test
 #IUSE="development test"
 IUSE=""
