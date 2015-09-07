@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
+
 inherit eutils flag-o-matic multilib toolchain-funcs
 
 MY_PN=${PN}src
@@ -29,7 +30,7 @@ src_prepare() {
 	else
 		sed_args+=( -e "s:-shared:& -Wl,-soname -Wl,libunrar$(get_libname ${PV%.*.*}):" )
 	fi
-	sed -i "${sed_args[@]}" makefile
+	sed -i "${sed_args[@]}" makefile || die
 }
 
 src_configure() {
@@ -44,8 +45,8 @@ src_compile() {
 	}
 
 	unrar_make CXXFLAGS+=" -fPIC" -C build-lib lib
-	ln -s libunrar$(get_libname ${PV%.*.*}) build-lib/libunrar$(get_libname)
-	ln -s libunrar$(get_libname ${PV%.*.*}) build-lib/libunrar$(get_libname ${PV})
+	ln -s libunrar$(get_libname ${PV%.*.*}) build-lib/libunrar$(get_libname) || die
+	ln -s libunrar$(get_libname ${PV%.*.*}) build-lib/libunrar$(get_libname ${PV}) || die
 
 	unrar_make -C build-bin
 }
