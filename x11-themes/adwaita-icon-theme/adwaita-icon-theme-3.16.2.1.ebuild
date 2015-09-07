@@ -17,7 +17,7 @@ LICENSE="|| ( LGPL-3 CC-BY-SA-3.0 )
 	branding? ( CC-Sampling-Plus-1.0 )"
 SLOT="0"
 IUSE="branding"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 COMMON_DEPEND="
 	>=x11-themes/hicolor-icon-theme-0.10

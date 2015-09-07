@@ -13,13 +13,16 @@ SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+d
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-IUSE="+dbus nls static-libs test +threads"
+IUSE="+dbus nls static-libs +threads"
 
+# The configure phase will check for valgrind headers, and the tests will use
+# that header, but only to do dynamic valgrind detection.  The tests aren't
+# run directly through valgrind, only by developers directly.  So don't bother
+# depending on valgrind here. #559830
 RDEPEND="dbus? ( dev-libs/expat >=sys-apps/dbus-1.2.16 )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
-	virtual/pkgconfig
-	test? ( dev-util/valgrind )"
+	virtual/pkgconfig"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.0.3-optional-dbus.patch
