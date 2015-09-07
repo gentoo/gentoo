@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ RDEPEND="${CDEPEND}"
 
 src_prepare() {
 	#Use our CFLAGS (specifically don't force x86)
-	sed -i "s/QMAKE_CXXFLAGS_RELEASE = .*//g" ${PN}.pro
+	sed -i "s/QMAKE_CXXFLAGS_RELEASE = .*//g" ${PN}.pro  || die
 
-	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro
+	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
 }
