@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic autotools
 
 DESCRIPTION="Parallel Indexed XZ compressor"
 HOMEPAGE="https://github.com/vasi/pixz"
@@ -16,32 +16,34 @@ LIB_DEPEND=">=app-arch/libarchive-2.8:=[static-libs(+)]
 	>=app-arch/xz-utils-5[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )"
+	static? ( ${LIB_DEPEND} )
+	app-text/asciidoc"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/vasi/pixz.git"
-	inherit git-2
+	EGIT_REPO_URI="https://github.com/vasi/${PN}.git"
+	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/vasi/${PN}/archive/v${PV}.zip -> ${P}.zip"
+	SRC_URI="https://github.com/vasi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
-	DEPEND="${DEPEND} app-text/asciidoc"
 fi
+
+src_prepare() {
+	eautoreconf
+}
 
 src_configure() {
 	use static && append-ldflags -static
+	append-flags -std=gnu99
+	econf
 }
 
 src_compile() {
-	if [[ ${PV} == "9999" ]] ; then
-		emake CC="$(tc-getCC)" OPT="" all pixz.1
-	else
-		emake CC="$(tc-getCC)" OPT="" all
-	fi
+	emake CC="$(tc-getCC)" OPT=""
 }
 
 src_install() {
-	dobin pixz
-	doman pixz.1
-	dodoc README TODO
+	dobin src/pixz
+	doman src/pixz.1
+	dodoc README.md TODO
 }
