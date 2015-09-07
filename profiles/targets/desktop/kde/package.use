@@ -28,3 +28,10 @@ media-libs/phonon designer
 
 # Enable crash-reporter here instead of in ebuild
 kde-apps/kdebase-runtime-meta crash-reporter
+
+# Required by KDE Applications 15.08
+app-crypt/qca qt5
+>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619-r1 qt5
+>=media-libs/phonon-4.8.3 qt5
+>=media-libs/phonon-vlc-0.8.2 qt5
+sys-auth/polkit-qt qt5
