@@ -18,7 +18,7 @@ IUSE=""
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=virtual/jdk-1.7"
-S=${WORKDIR}/${PN}-${MY_PV}
+S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 src_install() {
 	local dir="/opt/${PN}"
