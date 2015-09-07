@@ -38,8 +38,8 @@ dev-java/osgi-core-api:0
 java-virtuals/interceptor-api:0
 java-virtuals/servlet-api:2.4"
 
-RDEPEND=">=virtual/jdk-1.6
->=virtual/jre-1.6
+RDEPEND=">=virtual/jdk-1.8
+>=virtual/jre-1.8
 ${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
