@@ -1,23 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit toolchain-funcs flag-o-matic eutils
+inherit toolchain-funcs flag-o-matic autotools
 
 DESCRIPTION="Parallel Indexed XZ compressor"
 HOMEPAGE="https://github.com/vasi/pixz"
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/vasi/pixz.git"
-	inherit git-2
-	KEYWORDS=""
-else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
-	KEYWORDS="~amd64 ~arm ~x86"
-fi
-
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="static"
@@ -26,14 +16,26 @@ LIB_DEPEND=">=app-arch/libarchive-2.8:=[static-libs(+)]
 	>=app-arch/xz-utils-5[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )"
+	static? ( ${LIB_DEPEND} )
+	app-text/asciidoc"
+
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="https://github.com/vasi/${PN}.git"
+	inherit git-r3
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/vasi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-lm.patch
+	eautoreconf
 }
 
 src_configure() {
 	use static && append-ldflags -static
+	append-flags -std=gnu99
+	econf
 }
 
 src_compile() {
@@ -41,7 +43,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin pixz
-	doman pixz.1
-	dodoc README TODO
+	dobin src/pixz
+	doman src/pixz.1
+	dodoc README.md TODO
 }

@@ -12,7 +12,7 @@ SRC_URI="https://01.org/sites/default/files/downloads/dleyna/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 COMMON_DEPEND="

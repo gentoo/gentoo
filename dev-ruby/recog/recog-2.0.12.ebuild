@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rapid7/${PN}"
 
 LICENSE="BSD-2"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/nokogiri"

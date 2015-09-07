@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/winrb/rubyntlm"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 all_ruby_prepare() {
