@@ -3,22 +3,27 @@
 # $Id$
 
 EAPI=5
-MODULE_AUTHOR=BINGOS
-MODULE_VERSION=2.10
+
+MODULE_AUTHOR=DROLSKY
+MODULE_VERSION=0.11
+
 inherit perl-module
 
-DESCRIPTION='Mapping Perl releases on CPAN to the location of the tarballs'
+DESCRIPTION="Domain and host name validation"
+
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa"
 IUSE="test"
 
-RDEPEND=""
+RDEPEND="
+	virtual/perl-Exporter
+	dev-perl/Net-Domain-TLD
+"
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-File-Spec
-		virtual/perl-IO
-		>=virtual/perl-Test-Simple-0.470.0
+		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
 

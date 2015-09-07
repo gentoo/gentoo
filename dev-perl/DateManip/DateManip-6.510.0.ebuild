@@ -6,7 +6,7 @@ EAPI=5
 
 MY_PN=Date-Manip
 MODULE_AUTHOR=SBECK
-MODULE_VERSION=6.43
+MODULE_VERSION=6.51
 inherit perl-module
 
 DESCRIPTION="Perl date manipulation routines"
@@ -16,17 +16,23 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="test"
 
 RDEPEND="
+	virtual/perl-Carp
+	virtual/perl-Data-Dumper
+	virtual/perl-Encode
+	virtual/perl-File-Spec
+	virtual/perl-IO
 	virtual/perl-Storable
 "
 DEPEND="${RDEPEND}
-	>=dev-perl/Module-Build-0.390.0
+	>=dev-perl/Module-Build-0.210.0
 	test? (
 		dev-perl/Test-Pod
 		dev-perl/Test-Pod-Coverage
 		dev-perl/Test-Inter
+		virtual/perl-Test-Simple
 	)
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"
 
 mydoc="HISTORY"
