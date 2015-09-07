@@ -244,7 +244,7 @@ src_compile() {
 	mkdir -p "${BUILD_OBJ_DIR}" && cd "${BUILD_OBJ_DIR}" || die
 
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake -f "${S}"/client.mk
 
 	# Only build enigmail extension if crypt enabled.
