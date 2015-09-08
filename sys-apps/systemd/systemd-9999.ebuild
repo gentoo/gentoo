@@ -4,9 +4,6 @@
 
 EAPI=5
 
-AUTOTOOLS_AUTORECONF=yes
-AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
@@ -15,7 +12,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-inherit autotools-utils bash-completion-r1 linux-info multilib \
+inherit autotools bash-completion-r1 linux-info multilib \
 	multilib-minimal pam systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
@@ -29,7 +26,7 @@ IUSE="acl apparmor audit cryptsetup curl elfutils gcrypt gnuefi http
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 
-MINKV="3.8"
+MINKV="3.11"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.26:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
@@ -88,21 +85,14 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/binutils-2.23.1
 	>=sys-devel/gcc-4.6
 	>=sys-kernel/linux-headers-${MINKV}
-	ia64? ( >=sys-kernel/linux-headers-3.9 )
 	virtual/pkgconfig
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-	test? ( >=sys-apps/dbus-1.6.8-r1:0 )"
-
-if [[ -n ${AUTOTOOLS_AUTORECONF} ]]; then
-	DEPEND+="
-		app-text/docbook-xml-dtd:4.2
-		app-text/docbook-xml-dtd:4.5
-		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt:0
-		>=dev-libs/libgcrypt-1.4.5:0"
-fi
-
-PATCHES=( "${FILESDIR}/218-Dont-enable-audit-by-default.patch" )
+	test? ( >=sys-apps/dbus-1.6.8-r1:0 )
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt:0
+	>=dev-libs/libgcrypt-1.4.5:0"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
@@ -154,8 +144,9 @@ src_unpack() {
 src_prepare() {
 	# Bug 463376
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
-
-	autotools-utils_src_prepare
+	epatch "${FILESDIR}/218-Dont-enable-audit-by-default.patch"
+	epatch_user
+	eautoreconf
 }
 
 src_configure() {
@@ -247,7 +238,7 @@ multilib_src_configure() {
 	# Work around bug 463846.
 	tc-export CC
 
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
