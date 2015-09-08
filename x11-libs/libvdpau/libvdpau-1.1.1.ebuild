@@ -4,7 +4,7 @@
 
 EAPI=5
 VIRTUALX_REQUIRED="test"
-inherit autotools-multilib virtualx
+inherit autotools-multilib flag-o-matic virtualx
 
 DESCRIPTION="VDPAU wrapper and trace libraries"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/VDPAU"
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 	dri? ( >=x11-proto/dri2proto-2.2 )"
 
 src_configure() {
+	append-cppflags -D_GNU_SOURCE
 	local myeconfargs=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable doc documentation)
