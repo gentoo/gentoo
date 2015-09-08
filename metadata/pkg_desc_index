@@ -3128,7 +3128,7 @@ dev-go/go-snappy 0_pre20150729 9999: The Snappy compression format in the Go pro
 dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data structures to aid in debugging
 dev-go/go-sys 0_pre20150729 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20150806 9999: Go text processing support
-dev-go/go-tools 0_pre20150805 0_pre20150823-r1 9999: Go Tools
+dev-go/go-tools 0_pre20150805 0_pre20150823-r1 0_pre20150902 9999: Go Tools
 dev-go/godep 0_pre20150807: dependency tool for go
 dev-go/sanitized-anchor-name 0_pre20150822 9999: A Go function to provide sanitized anchor names
 dev-go/sarama 1.4.3 9999: Sarama is a Go library for Apache Kafka
