@@ -4,7 +4,7 @@
 
 EAPI=5
 MODULE_AUTHOR=BINGOS
-MODULE_VERSION=1.28
+MODULE_VERSION=1.38
 inherit perl-module
 
 DESCRIPTION="Patch perl source a la Devel::PPPort's buildperl.pl"
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-perl/Module-Pluggable
 "
 DEPEND="${RDEPEND}
-	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
+	virtual/perl-ExtUtils-MakeMaker
 "
 
 SRC_TEST="do parallel"

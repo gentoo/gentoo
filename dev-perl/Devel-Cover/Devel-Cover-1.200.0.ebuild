@@ -4,7 +4,7 @@
 
 EAPI=5
 MODULE_AUTHOR=PJCJ
-MODULE_VERSION=1.17
+MODULE_VERSION=1.20
 inherit perl-module
 
 DESCRIPTION='Code coverage metrics for Perl'
@@ -20,7 +20,7 @@ DEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Warn
 	)
 "
+
 SRC_TEST="do parallel"

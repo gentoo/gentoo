@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=DROLSKY
-MODULE_VERSION=1.12
+MODULE_VERSION=1.20
 inherit perl-module
 
 DESCRIPTION="A date and time object"
@@ -16,15 +16,24 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="test"
 
 RDEPEND="
+	virtual/perl-Carp
+	>=dev-perl/DateTime-Locale-0.410.0
+	>=dev-perl/DateTime-TimeZone-1.740.0
 	>=dev-perl/Params-Validate-0.760.0
-	>=dev-perl/DateTime-TimeZone-1.90.0
-	>=dev-perl/DateTime-Locale-0.440.0
+	virtual/perl-Scalar-List-Utils
+	dev-perl/Try-Tiny
+	virtual/perl-XSLoader
 "
 DEPEND="${RDEPEND}
-	dev-perl/Module-Build
+	>=dev-perl/Module-Build-0.280.0
 	test? (
+		virtual/perl-ExtUtils-MakeMaker
+		virtual/perl-File-Spec
+		virtual/perl-Storable
 		dev-perl/Test-Fatal
+		>=virtual/perl-Test-Simple-0.880.0
+		>=dev-perl/Test-Warnings-0.5.0
 	)
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"
