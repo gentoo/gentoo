@@ -1,0 +1,19 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Sep  8 10:10:18 UTC 2015
+Subject: Fix data path fallback
+
+Distutils installs into "/usr/share/blink", but
+blink was unable to find it on gentoo, probably due
+to python-exec magic.
+
+--- blink-1.4.1/blink/resources.py
++++ blink-1.4.1/blink/resources.py
+@@ -71,7 +71,7 @@
+             if os.path.exists(os.path.join(application_directory, 'resources', 'blink.ui')):
+                 cls._cached_directory = os.path.join(application_directory, 'resources').decode(sys.getfilesystemencoding())
+             else:
+-                cls._cached_directory = os.path.join(application_directory, 'share', 'blink').decode(sys.getfilesystemencoding())
++                cls._cached_directory = os.path.join(sys.prefix, 'share', 'blink').decode(sys.getfilesystemencoding())
+         return DirectoryContextManager(cls._cached_directory)
+ 
+     @classmethod
