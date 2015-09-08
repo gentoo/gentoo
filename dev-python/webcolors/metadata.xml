@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">webcolors</remote-id>
+		<remote-id type="github">ubernostrum/webcolors</remote-id>
 	</upstream>
 </pkgmetadata>

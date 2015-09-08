@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-pythonpath</remote-id>
+		<remote-id type="github">bigsassy/pytest-pythonpath</remote-id>
 	</upstream>
 </pkgmetadata>

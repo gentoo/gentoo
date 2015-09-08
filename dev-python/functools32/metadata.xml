@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">functools32</remote-id>
+		<remote-id type="github">MiCHiLU/python-functools32</remote-id>
 	</upstream>
 </pkgmetadata>
