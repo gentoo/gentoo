@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils versionator fdo-mime gnome2-utils pax-utils vmware-bundle
+inherit eutils versionator fdo-mime gnome2-utils pax-utils systemd vmware-bundle
 
 MY_PN="VMware-Player"
 MY_PV=$(get_version_component_range 1-3)
@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="vmware GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="cups doc +vmware-tools"
+IUSE="cups doc ovftool +vmware-tools"
 RESTRICT="strip"
 
 # vmware-workstation should not use virtual/libc as this is a
@@ -93,10 +93,12 @@ src_unpack() {
 			vmware-usbarbitrator \
 			vmware-network-editor \
 			vmware-player-setup
-			#vmware-ovftool
 	do
 		vmware-bundle_extract-bundle-component "${bundle}" "${component}" "${S}"
 	done
+
+	use ovftool && \
+		vmware-bundle_extract-bundle-component "${bundle}" vmware-ovftool
 }
 
 src_prepare() {
@@ -134,6 +136,9 @@ src_install() {
 	dosym "${VM_INSTALL_DIR}"/lib/vmware/lib/libssl.so.0.9.8/libssl.so.0.9.8 \
 		"${VM_INSTALL_DIR}"/lib/vmware/lib/libvmwarebase.so.0/libssl.so.0.9.8
 
+	# https://github.com/gentoo/vmware/issues/7
+	dosym "${VM_INSTALL_DIR}"/lib/vmware/ /usr/$(get_libdir)/vmware
+
 	# install the ancillaries
 	insinto /usr
 	doins -r share
@@ -153,6 +158,17 @@ src_install() {
 
 	exeinto "${VM_INSTALL_DIR}"/lib/vmware/setup
 	doexe vmware-config
+
+	# install ovftool
+	if use ovftool; then
+		cd "${S}"
+
+		insinto "${VM_INSTALL_DIR}"/lib/vmware-ovftool
+		doins -r vmware-ovftool/*
+
+		chmod 0755 "${D}${VM_INSTALL_DIR}"/lib/vmware-ovftool/{ovftool,ovftool.bin}
+		dosym "${D}${VM_INSTALL_DIR}"/lib/vmware-ovftool/ovftool "${VM_INSTALL_DIR}"/bin/ovftool
+	fi
 
 	# create symlinks for the various tools
 	local tool ; for tool in thnuclnt vmplayer{,-daemon} \
@@ -203,8 +219,11 @@ src_install() {
 	local initscript="${T}/vmware.rc"
 
 	sed -e "s:@@BINDIR@@:${VM_INSTALL_DIR}/bin:g" \
-		"${FILESDIR}/vmware-11.0.rc" > "${initscript}" || die
+		"${FILESDIR}/vmware-11.${PV_MINOR}.rc" > "${initscript}" || die
 	newinitd "${initscript}" vmware || die
+
+	systemd_dounit "${FILESDIR}/vmware-usbarbitrator.service"
+	systemd_dounit "${FILESDIR}/vmware-network.service"
 
 	# fill in variable placeholders
 	sed -e "s:@@LIBCONF_DIR@@:${VM_INSTALL_DIR}/lib/vmware/libconf:g" \

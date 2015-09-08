@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<herd>vmware</herd>
 	<use>
+		<flag name='ovftool'>Install OVF tool for importing and exporting appliance files</flag>
 		<flag name="vmware-tools">Install VMware Tools images</flag>
 	</use>
 </pkgmetadata>
