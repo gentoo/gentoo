@@ -118,7 +118,7 @@ app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of passwords and related information
 app-admin/keepass 2.28 2.29 2.30: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassx 0.4.3 2.0_alpha5 2.0_alpha6: Qt password manager compatible with its Win32 and Pocket PC versions
+app-admin/keepassx 0.4.3 2.0_alpha6 2.0_beta2: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8: A command line interface to KeePass database files
 app-admin/lastpass 3.1.61: Online password manager and form filler that makes web browsing easier and more secure
@@ -12757,7 +12757,7 @@ media-video/gpac 0.5.0-r1 0.5.1_pre5456 0.5.2 9999: GPAC is an implementation of
 media-video/griffith 0.13 0.13-r1: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1: GTK+ UVC Viewer
-media-video/gxine 0.5.907-r1: GTK+ Front-End for libxine
+media-video/gxine 0.5.907-r1 0.5.908: GTK+ Front-End for libxine
 media-video/h264enc 9.4.0 9.4.1 10.4.1: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 media-video/handbrake 0.10.2 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
 media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using aalib
