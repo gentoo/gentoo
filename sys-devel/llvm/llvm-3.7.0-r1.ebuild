@@ -186,9 +186,6 @@ src_prepare() {
 		find "${S}"/projects/compiler-rt/lib/builtins -type f -name \*.S -exec sed \
 			 -e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
 			 -i {} \; || die
-
-		# Workaround bug #553416 until upstream fixes it
-		epatch "${FILESDIR}"/clang-3.7-strip_doc_refs.patch
 	fi
 
 	if use lldb; then
@@ -275,6 +272,7 @@ multilib_src_configure() {
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
 			-DLLVM_INSTALL_HTML="${EPREFIX}/usr/share/doc/${PF}/html"
+			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 			-DLLVM_INSTALL_UTILS=ON
 		)
 
