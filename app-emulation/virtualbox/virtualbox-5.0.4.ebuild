@@ -11,7 +11,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.0_beta3-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.2-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise as well as home use"
@@ -48,7 +48,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 		media-libs/libsdl:0[X,video]
 	)
 
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.6:= )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.6:= )
 	virtual/pkgconfig
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	!headless? ( x11-libs/libXinerama )
@@ -167,14 +167,12 @@ src_prepare() {
 	fi
 
 	if ! gcc-specs-pie ; then
-		EPATCH_EXCLUDE="050_${PN}-4.3.14-nopie.patch"
+		EPATCH_EXCLUDE="050_${PN}-5.0.2-nopie.patch"
 	fi
 
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/patches"
-
-	#epatch "${FILESDIR}/${PN}-5.0.0_beta1-dont_build_validationkit.patch"
 
 	epatch_user
 }
@@ -290,22 +288,26 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} || die
+		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} ; then
+			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/${each}"
+		fi
 	done
 
 	if ! use headless ; then
-		for each in VBox{SDL,Headless} ; do
-			doins ${each}
-			fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
-			fperms 4750 /usr/$(get_libdir)/${PN}/${each}
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each}
-		done
+		doins VBoxSDL
+		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxSDL
+		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxSDL
+		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL ; then
+			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxSDL"
+		fi
 
 		if use opengl && use qt4 ; then
 			doins VBoxTestOGL
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
 			fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL
+			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL ; then
+				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxTestOGL"
+			fi
 		fi
 
 		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxSDL
@@ -314,25 +316,29 @@ src_install() {
 			doins VirtualBox
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VirtualBox
 			fperms 4750 /usr/$(get_libdir)/${PN}/VirtualBox
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox \
-				|| die
+			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox ; then
+				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VirtualBox"
+			fi
 
 			dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VirtualBox
 
 			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
 
-		pushd "${S}"/src/VBox/Resources/OSE &>/dev/null || die
+		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
 		for size in 16 32 48 64 128 ; do
 			newicon -s ${size} ${PN}-${size}px.png ${PN}.png
 		done
 		newicon ${PN}-48px.png ${PN}.png
+		doicon -s scalable ${PN}.svg
 		popd &>/dev/null || die
-	else
-		doins VBoxHeadless
-		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
-		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless || die
+	fi
+
+	doins VBoxHeadless
+	fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
+	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
+	if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless ; then
+		ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxHeadless"
 	fi
 
 	insinto /usr/$(get_libdir)/${PN}

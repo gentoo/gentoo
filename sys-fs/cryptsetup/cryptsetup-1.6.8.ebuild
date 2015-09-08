@@ -8,8 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit autotools python-single-r1 linux-info libtool eutils versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
-HOMEPAGE="https://code.google.com/p/cryptsetup/"
-SRC_URI="https://cryptsetup.googlecode.com/files/${P}.tar.xz"
+HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
 SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-2+"
@@ -28,7 +27,7 @@ LIB_DEPEND="dev-libs/libgpg-error[static-libs(+)]
 	sys-apps/util-linux[static-libs(+)]
 	gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
-	openssl? ( dev-libs/openssl[static-libs(+)] )
+	openssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
 	udev? ( virtual/libudev[static-libs(+)] )"
@@ -75,7 +74,7 @@ src_configure() {
 		$(use_enable reencrypt cryptsetup-reencrypt) \
 		$(use_enable udev) \
 		$(use_enable !urandom dev-random) \
-		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/}; do use ${x} && echo ${x} ; done)
+		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 }
 
 src_test() {
@@ -99,32 +98,6 @@ src_install() {
 	fi
 	prune_libtool_files --modules
 
-	newconfd "${FILESDIR}"/1.0.6-dmcrypt.confd dmcrypt
-	newinitd "${FILESDIR}"/1.5.1-dmcrypt.rc dmcrypt
-}
-
-pkg_postinst() {
-	if use gcrypt ; then
-		elog "If you were using the whirlpool hash with libgcrypt, you might be impacted"
-		elog "by broken code in <libgcrypt-1.6.0 versions.  See this page for more details:"
-		elog "https://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions#8._Issues_with_Specific_Versions_of_cryptsetup"
-	fi
-
-	if [[ -z ${REPLACING_VERSIONS} ]] ; then
-		elog "Please see the example for configuring a LUKS mountpoint"
-		elog "in /etc/conf.d/dmcrypt"
-		elog
-		elog "If you are using baselayout-2 then please do:"
-		elog "rc-update add dmcrypt boot"
-		elog "This version introduces a command line arguement 'key_timeout'."
-		elog "If you want the search for the removable key device to timeout"
-		elog "after 10 seconds add the following to your bootloader config:"
-		elog "key_timeout=10"
-		elog "A timeout of 0 will mean it will wait indefinitely."
-		elog
-		elog "Users using cryptsetup-1.0.x (dm-crypt plain) volumes must use"
-		elog "a compatibility mode when using cryptsetup-1.1.x. This can be"
-		elog "done by specifying the cipher (-c), key size (-s) and hash (-h)."
-		elog "For more info, see https://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions#6._Issues_with_Specific_Versions_of_cryptsetup"
-	fi
+	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
+	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
 }

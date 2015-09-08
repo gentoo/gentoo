@@ -78,9 +78,10 @@ src_prepare() {
 
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
+	use X || echo "VBOX_WITH_X11_ADDITIONS :=" >> LocalConfig.kmk
 
 	# stupid new header references...
-	for vboxheader in {product,revision}-generated.h ; do
+	for vboxheader in {product,revision,version}-generated.h ; do
 		for mdir in vbox{guest,sf} ; do
 			ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
 				"${WORKDIR}/${mdir}/${vboxheader}"
@@ -110,20 +111,10 @@ src_configure() {
 }
 
 src_compile() {
-	for each in /src/VBox/{Runtime,Additions/common} \
-		/src/VBox/Additions/linux/sharedfolders ; do
-			cd "${S}"${each} || die
-			MAKE="kmk" \
-			emake TOOL_YASM_AS=yasm \
-			KBUILD_VERBOSE=2
-	done
-
-	if use X; then
-		cd "${S}"/src/VBox/Additions/x11/VBoxClient || die
-		MAKE="kmk" \
-		emake TOOL_YASM_AS=yasm \
-		KBUILD_PATH="${S}/kBuild"
-	fi
+	MAKE="kmk" \
+	emake TOOL_YASM_AS=yasm \
+	VBOX_ONLY_ADDITIONS=1 \
+	KBUILD_VERBOSE=2
 
 	# Now creating the kernel modules. We must do this _after_
 	# we compiled the user-space tools as we need two of the
