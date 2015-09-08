@@ -10885,7 +10885,7 @@ kde-misc/wacomtablet 2.1.0: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 2.9.9-r2: A quake-style terminal emulator based on KDE konsole technology
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
-kde-misc/zanshin 0.2.1-r1: Todo management application for KDE
+kde-misc/zanshin 0.2.1-r1 0.2.2: Todo management application for KDE
 kde-plasma/bluedevil 5.4.0: Bluetooth stack for KDE
 kde-plasma/breeze 5.4.0: Breeze visual style for the Plasma desktop
 kde-plasma/kde-cli-tools 5.4.0: Tools based on KDE Frameworks 5 to better interact with the system
@@ -17772,7 +17772,7 @@ x11-plugins/pidgin-libnotify 0.14-r1: pidgin-libnotify provides popups for pidgi
 x11-plugins/pidgin-mbpurple 0.3.0-r2: Libpurple (Pidgin) plug-in supporting microblog services like Twitter or identi.ca
 x11-plugins/pidgin-mpris 0.2.6: Gets current song from MPRIS-aware media players
 x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening to in your status message
-x11-plugins/pidgin-opensteamworks 1.4 1.5 1.5.1 1.6-r1: Steam protocol plugin for pidgin
+x11-plugins/pidgin-opensteamworks 1.4 1.5 1.5.1 1.6-r1 1.6.1: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 3.2.1 4.0.1: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
