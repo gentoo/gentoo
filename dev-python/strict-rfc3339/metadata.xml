@@ -4,5 +4,6 @@
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">strict-rfc3339</remote-id>
+		<remote-id type="github">danielrichman/strict-rfc3339</remote-id>
 	</upstream>
 </pkgmetadata>

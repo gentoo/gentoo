@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-django</remote-id>
+		<remote-id type="github">pytest-dev/pytest-django</remote-id>
 	</upstream>
 </pkgmetadata>
