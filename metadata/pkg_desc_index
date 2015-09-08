@@ -1324,12 +1324,12 @@ app-emulation/vice 2.4 2.4.20: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 0.5.6 2.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
-app-emulation/virtualbox 4.3.28 4.3.30 5.0.0 5.0.0-r1 5.0.2: Family of powerful x86 virtualization products for enterprise as well as home use
-app-emulation/virtualbox-additions 4.3.28 4.3.30 5.0.0 5.0.2: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 4.3.28.100309 4.3.30.101610 5.0.0.101573 5.0.2.102096: Family of powerful x86 virtualization products for enterprise as well as home use
-app-emulation/virtualbox-extpack-oracle 4.3.28.100309 4.3.30.101610 5.0.0.101573 5.0.2.102096: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 4.3.28 4.3.30 5.0.0 5.0.2: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 4.3.28 4.3.30 5.0.0 5.0.2: Kernel Modules for Virtualbox
+app-emulation/virtualbox 4.3.28 4.3.30 5.0.2 5.0.4: Family of powerful x86 virtualization products for enterprise as well as home use
+app-emulation/virtualbox-additions 4.3.28 4.3.30 5.0.2 5.0.4: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 4.3.28.100309 4.3.30.101610 5.0.2.102096 5.0.4.102546: Family of powerful x86 virtualization products for enterprise as well as home use
+app-emulation/virtualbox-extpack-oracle 4.3.28.100309 4.3.30.101610 5.0.2.102096 5.0.4.102546: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 4.3.28 4.3.30 5.0.2 5.0.4: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 4.3.28 4.3.30 5.0.2 5.0.4: Kernel Modules for Virtualbox
 app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
 app-emulation/vmware-modules 271.3-r1 279.6 304.2: VMware kernel modules
@@ -15001,7 +15001,7 @@ sci-libs/acml 4.1.0-r2: AMD Core Math Library for x86 and amd64 CPUs
 sci-libs/adolc 2.4.1 2.5.0 2.5.2: Automatic differentiation system for C/C++
 sci-libs/alglib 3.7.0 3.8.2 3.10.0: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 3.4.4 3.6.2 4.650.4 5.100.2 5.200.2 5.400.2: Streamlined C++ linear algebra library
+sci-libs/armadillo 3.4.4 3.6.2 4.650.4 5.400.2 5.500.2: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.3-r1 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.16 2.2.17: Arbitrary precision float arithmetics and functions
 sci-libs/avogadrolibs 0.7.2-r1: Advanced molecule editor and visualizer 2 - libraries
@@ -16273,7 +16273,7 @@ sys-fs/clamfs 1.0.1-r1: A FUSE-based user-space file system with on-access anti-
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryptsetup 1.6.2 1.6.5 1.6.6 1.6.7: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.6.2 1.6.5 1.6.7 1.6.8: Tool to setup encrypted devices with dm-crypt
 sys-fs/davl 1.2.4-r1: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.28 1.33 1.40 1.44 1.45 1.46: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.16 1.18.1 1.19: Copy data from one file or block device to another with read-error recovery
@@ -16980,7 +16980,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.2.4 4.3: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 44.0.2403.89 45.0.2454.46 45.0.2454.85 46.0.2486.0 46.0.2490.6 47.0.2498.0: Open-source version of Google Chrome web browser
+www-client/chromium 44.0.2403.89 45.0.2454.46 45.0.2454.85 46.0.2490.6 46.0.2490.13 47.0.2498.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5: Lean FLTK based web browser
@@ -17255,7 +17255,7 @@ x11-drivers/xf86-video-trident 1.3.7: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
 x11-drivers/xf86-video-v4l 0.2.0: video4linux driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
-x11-drivers/xf86-video-virtualbox 4.3.28 4.3.30 5.0.0 5.0.2: VirtualBox video driver
+x11-drivers/xf86-video-virtualbox 4.3.28 4.3.30 5.0.2 5.0.4: VirtualBox video driver
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
