@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<longdescription lang="en">
+		SIP SIMPLE client SDK is a Software Development Kit for easy
+		development of SIP end-points that support rich media like Audio,
+		Video, Instant Messaging, File Transfers, Desktop Sharing and Presence.
+		Other media types can be easily added by using an extensible high-level
+		API.
+
+		The software has undergone in the past years several interoperability
+		tests at SIPIT (http://www.sipit.net) and today is of industry strength
+		quality.
+	</longdescription>
+</pkgmetadata>
