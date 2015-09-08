@@ -4529,7 +4529,7 @@ dev-libs/ferrisloki 3.0.13: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5: foreign function call libraries
 dev-libs/folks 0.10.1-r1 0.11.1: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.0e: Simple XLS data extraction library
-dev-libs/fribidi 0.19.5-r1 0.19.6: A free implementation of the unicode bidirectional algorithm
+dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.14.0 3.16.0: GNOME docking library
