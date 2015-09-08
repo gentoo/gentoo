@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
+# Masked for testing
+>=net-fs/samba-4.3.0
+
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (08 Sep 2015)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -286,10 +290,6 @@ app-emulation/emul-linux-x86-sdl
 app-emulation/emul-linux-x86-soundlibs
 app-emulation/emul-linux-x86-xlibs
 app-emulation/emul-linux-x86-jna
-
-# Lars Wendler <polynomial-c@gentoo.org> (8 Mar 2015)
-# Masked for testing
->=net-fs/samba-4.2.0
 
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
