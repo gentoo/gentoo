@@ -13,7 +13,7 @@ HOMEPAGE="http://people.freedesktop.org/~hughsient/appstream-glib/"
 SRC_URI="http://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-SLOT="0/7"
+SLOT="0/8" # soname version
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection nls"
 
