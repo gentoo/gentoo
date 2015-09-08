@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+applet gnome vala"
 
 CDEPEND="
-	dev-util/appdata-tools
+	dev-libs/appstream-glib
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/gobject-introspection-1.44.0
 	sys-apps/dbus

@@ -26,7 +26,7 @@ DEPEND="net-misc/curl
 		checksum? ( dev-libs/openssl )
 	)"
 
-REQUIRE_USE="checksum? ( metalink )"
+REQUIRED_USE="checksum? ( metalink )"
 
 RDEPEND="${DEPEND}"
 
