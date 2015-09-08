@@ -1,0 +1,19 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Accepts any valid combination of logging options to mythbackend
+# To get a valid list run: /usr/bin/mythbackend -v help
+#MYTHBACKEND_VERBOSE="general"
+
+# Configures where mythbackend logs
+# Valid values:
+# * files           - logs each individual daemon in /var/log/mythtv (default)
+# * database        - logs into the database
+# * syslog FACILITY - logs to syslog using FACILITY (see syslog(3))
+# * console         - logs only to the console (no mythlogserver)
+#MYTHBACKEND_LOGGING="files"
+
+# Allows you to pass specific startup options to mythbackend
+# e.g. --noupnp
+#MYTHBACKEND_OPTS=""
