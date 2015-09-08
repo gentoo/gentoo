@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Fabian Groffen <grobian@gentoo.org> (08 Sep 2015)
+# GnuTLS support is currently broken/causes hang, bug #559834
+# http://dev.mutt.org/trac/ticket/3772
+>=mail-client/mutt-1.5.23-r8 gnutls
+
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is for cgmanager which is linux only.
 # Unmasked in default/linux/package.use.mask.
