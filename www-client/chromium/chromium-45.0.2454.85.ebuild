@@ -187,6 +187,7 @@ src_prepare() {
 	# fi
 
 	epatch "${FILESDIR}/${PN}-system-jinja-r7.patch"
+	epatch "${FILESDIR}/${PN}-tracing-r0.patch"
 
 	epatch_user
 
