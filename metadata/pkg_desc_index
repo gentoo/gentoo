@@ -12953,7 +12953,7 @@ net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.9.6 1.10.4 1.11.1 1.11.4 1.11.7 1.12.0 1.12.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.3.5 2.3.6 2.3.7 2.3.8 2.3.9 2.3.10 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.3.5 2.3.6 2.3.7 2.3.8 2.3.9 2.3.10 2.3.10-r1 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
