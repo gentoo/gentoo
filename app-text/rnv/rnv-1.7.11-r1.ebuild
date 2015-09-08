@@ -13,10 +13,9 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="scheme"
 
 RDEPEND="dev-libs/expat
-	scheme? ( dev-scheme/scm[libscm] )"
+	dev-scheme/scm[libscm]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
