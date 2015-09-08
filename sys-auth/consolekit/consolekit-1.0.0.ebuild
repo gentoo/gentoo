@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="acl cgroups debug doc kernel_linux pam policykit selinux test"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=
