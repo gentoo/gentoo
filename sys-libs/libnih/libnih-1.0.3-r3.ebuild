@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+d
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~x86"
 IUSE="+dbus nls static-libs +threads"
 
 # The configure phase will check for valgrind headers, and the tests will use
