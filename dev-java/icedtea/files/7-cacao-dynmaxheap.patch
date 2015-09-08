@@ -1,0 +1,42 @@
+# HG changeset patch
+# User James Le Cuirot <chewi@gentoo.org>
+# Date 1441543564 -3600
+#      Sun Sep 06 13:46:04 2015 +0100
+# Node ID d0224f4490d6694e77dcb0ff7eae8e2297b822bf
+# Parent  e215e36be9fc2b7dfe43ff10ec1afe639b289aa5
+Dynamically set the maximum heap size on Linux
+
+diff -r e215e36be9fc -r d0224f4490d6 src/vm/vm.cpp
+--- cacao/cacao/src/vm/vm.cpp	Mon Feb 11 19:31:28 2013 +0100
++++ cacao/cacao/src/vm/vm.cpp	Sun Sep 06 13:46:04 2015 +0100
+@@ -33,6 +33,10 @@
+ #include <errno.h>
+ #include <stdlib.h>
+ 
++#if defined(__LINUX__)
++#include <unistd.h>
++#endif
++
+ #include "vm/types.h"
+ 
+ #include "arch.h"
+@@ -702,6 +706,19 @@
+ 	opt_heapstartsize = HEAP_STARTSIZE;
+ 	opt_stacksize     = STACK_SIZE;
+ 
++#if defined(__LINUX__)
++	// Calculate 1/4 of the physical memory.
++	uint64_t qmem = sysconf(_SC_PHYS_PAGES) * sysconf(_SC_PAGESIZE) / 4;
++
++	if (qmem > INT32_MAX) {
++		// More than 2GB will overflow so cap it.
++		opt_heapmaxsize = 2047 * 1024 * 1024;
++	} else if (qmem > HEAP_MAXSIZE) {
++		// Otherwise use this if greater than default (128MB).
++		opt_heapmaxsize = (s4) qmem;
++	}
++#endif
++
+ 	// First of all, parse the -XX options.
+ 
+ #if defined(ENABLE_VMLOG)

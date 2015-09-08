@@ -196,6 +196,10 @@ src_unpack() {
 }
 
 java_prepare() {
+	# CACAO has a fixed default max heap of 128MB. This sucks.
+	cp "${FILESDIR}"/${SLOT}-cacao-dynmaxheap.patch patches/cacao/dynmaxheap.patch || die
+	epatch "${FILESDIR}"/${SLOT}-cacao-dynmaxheap-Makefile.patch
+
 	if ! use cups; then
 		# CUPS is always needed at build time but you can at least make it dlopen.
 		sed -i 's/SYSTEM_CUPS="true"/SYSTEM_CUPS="false"/g' Makefile.in || die
