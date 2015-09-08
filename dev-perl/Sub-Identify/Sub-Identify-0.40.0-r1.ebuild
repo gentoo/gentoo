@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Retrieve names of code references"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~hppa ppc x86 ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND=""

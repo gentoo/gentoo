@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="safely and cleanly create closures via string eval"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-fbsd ~x64-macos"
 IUSE="test minimal"
 
 # Scalar::Util -> Scalar-List-Utils
