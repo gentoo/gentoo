@@ -1,0 +1,40 @@
+diff -urpN chromium-45.0.2454.85.orig/third_party/widevine/cdm/stub/widevine_cdm_version.h chromium-45.0.2454.85/third_party/widevine/cdm/stub/widevine_cdm_version.h
+--- chromium-45.0.2454.85.orig/third_party/widevine/cdm/stub/widevine_cdm_version.h	2015-08-22 12:01:59.000000000 -0700
++++ chromium-45.0.2454.85/third_party/widevine/cdm/stub/widevine_cdm_version.h	2015-09-07 15:56:23.565523620 -0700
+@@ -5,11 +5,4 @@
+ // This is a stand-in for a generated file that is available when the
+ // Widevine CDM is available.
+ 
+-#ifndef WIDEVINE_CDM_VERSION_H_
+-#define WIDEVINE_CDM_VERSION_H_
+-
+-#include "third_party/widevine/cdm/widevine_cdm_common.h"
+-
+-#define WIDEVINE_CDM_AVAILABLE
+-
+-#endif  // WIDEVINE_CDM_VERSION_H_
++#include "third_party/widevine/cdm/widevine_cdm_version.h"
+diff -urpN chromium-45.0.2454.85.orig/third_party/widevine/cdm/widevine_cdm_version.h chromium-45.0.2454.85/third_party/widevine/cdm/widevine_cdm_version.h
+--- chromium-45.0.2454.85.orig/third_party/widevine/cdm/widevine_cdm_version.h	2015-09-07 15:54:27.540799242 -0700
++++ chromium-45.0.2454.85/third_party/widevine/cdm/widevine_cdm_version.h	2015-09-07 15:53:51.289197885 -0700
+@@ -14,4 +14,20 @@
+ //  - WIDEVINE_CDM_VERSION_STRING (with the version of the CDM that's available
+ //    as a string, e.g., "1.0.123.456").
+ 
++#include "third_party/widevine/cdm/widevine_cdm_common.h"
++#define WIDEVINE_CDM_AVAILABLE 1
++
++// Gentoo uses purportedly "unsupported" widevine code-paths, designed for
++// (i.e.) Chrome for Windows, which presume the widevine cdm is a dynamic
++// component updated according to an end-user run-time mechanism and a policy
++// set by Google.
++//
++// Gentoo's chromium will instead load the CDM version provided by the
++// www-plugins/chrome-binary-plugins package. We don't yet know what version
++// this will be (unless we want to create a costly reverse dependency).  Until
++// upstream comes up with a better solution (it seems they're working on it),
++// we opt to lie, but to do so conspicuously, so as to avoid confusing humans.
++//
++#define WIDEVINE_CDM_VERSION_STRING "unsupported.gentoo.widevine-cdm.hack"
++
+ #endif  // WIDEVINE_CDM_VERSION_H_

@@ -371,6 +371,11 @@ dev-libs/elfutils threads
 # Build failures (bug 499072)
 =www-client/chromium-33* aura
 
+# Greg Turner <gmt@be-evil.net> (24 Aug 2015)
+# Arch profiles may undo this as appropriate to whitelist
+# chromium widevine-cdm support (bug 547630).
+www-client/chromium widevine
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (4 Jan 2014)
 # Mask until dependencies are keyworded (bug 497068)
 dev-vcs/git mediawiki
