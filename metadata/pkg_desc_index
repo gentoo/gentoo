@@ -8001,7 +8001,7 @@ dev-ruby/actionmailer 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: Fram
 dev-ruby/actionpack 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.1.1: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actionview 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/actionview 4.1.11 4.1.12 4.1.13 4.1.13-r1 4.2.2 4.2.3 4.2.4: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.2 4.2.3 4.2.4: Job framework with pluggable queues
 dev-ruby/activeldap 3.2.2 4.0.4: Ruby/ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: A toolkit for building modeling frameworks like Active Record and Active Resource
@@ -16100,7 +16100,7 @@ sys-cluster/ganglia 3.5.0 3.5.0-r1 3.6.0-r1 3.7.1 3.7.1-r1: A scalable distribut
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
 sys-cluster/gfs-kernel 2.03.09: GFS kernel module
-sys-cluster/glusterfs 3.1.2 3.5.4 3.6.5: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 3.1.2 3.5.4 3.6.5 3.7.4: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r2: Heartbeat high availability cluster manager
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10: C++ runtime system for parallel and distributed applications
