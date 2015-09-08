@@ -167,7 +167,7 @@ src_prepare() {
 		tools/Makefile || die
 
 	# Patch python.
-	epatch "${FILESDIR}/lammps-python3.patch"
+	epatch "${FILESDIR}/lammps-python3-r1.patch"
 	epatch "${FILESDIR}/python-shebang.patch"
 }
 

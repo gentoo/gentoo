@@ -1,0 +1,39 @@
+commit e5ba382ccbfe08a1a4681e1b6ac851379eb41c7c
+Author: Rafael Mendonça França <rafaelmfranca@gmail.com>
+Date:   Fri Aug 28 01:36:00 2015 -0300
+
+    Merge pull request #21402 from k0kubun/ruby20-url-helper
+    
+    Fix mail_to to work well with Ruby 2.0
+
+diff --git a/actionview/lib/action_view/helpers/url_helper.rb b/actionview/lib/action_view/helpers/url_helper.rb
+index b130457..97e299d 100644
+--- a/actionview/lib/action_view/helpers/url_helper.rb
++++ b/actionview/lib/action_view/helpers/url_helper.rb
+@@ -471,7 +471,7 @@ module ActionView
+         }.compact
+         extras = extras.empty? ? '' : '?' + ERB::Util.html_escape(extras.join('&'))
+ 
+-        encoded_email_address = ERB::Util.url_encode(email_address).gsub("%40", "@")
++        encoded_email_address = ERB::Util.url_encode(email_address.to_str).gsub("%40", "@")
+         html_options["href"] = "mailto:#{encoded_email_address}#{extras}".html_safe
+ 
+         content_tag(:a, name || email_address, html_options, &block)
+diff --git a/actionview/test/template/url_helper_test.rb b/actionview/test/template/url_helper_test.rb
+index 10195dd..b044ebd 100644
+--- a/actionview/test/template/url_helper_test.rb
++++ b/actionview/test/template/url_helper_test.rb
+@@ -505,6 +505,13 @@ class UrlHelperTest < ActiveSupport::TestCase
+     )
+   end
+ 
++  def test_mail_to_with_html_safe_string
++    assert_dom_equal(
++      %{<a href="mailto:david@loudthinking.com">david@loudthinking.com</a>},
++      mail_to("david@loudthinking.com".html_safe)
++    )
++  end
++
+   def test_mail_to_with_img
+     assert_dom_equal %{<a href="mailto:feedback@example.com"><img src="/feedback.png" /></a>},
+       mail_to('feedback@example.com', '<img src="/feedback.png" />'.html_safe)
