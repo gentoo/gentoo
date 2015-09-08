@@ -162,6 +162,9 @@ src_install() {
 
 	insinto /etc/selinux
 	doins "${FILESDIR}/config"
+
+	insinto /usr/share/portage/config/sets
+	doins "${FILESDIR}/selinux.conf" || die "failed to install selinux-rebuild portage set"
 }
 
 pkg_preinst() {
