@@ -1,0 +1,17 @@
+[Unit]
+Description=VMware Network
+Requires=local-fs.target
+Wants=network.target vmware-usbarbitrator.service
+After=local-fs.target network.target vmware-usbarbitrator.service
+
+[Service]
+Type=simple
+ExecStartPre=/sbin/modprobe -av vmci vmmon vsock vmblock vmnet
+ExecStart=/opt/vmware/bin/vmware-networks --start 
+ExecStop=/opt/vmware/bin/vmware-networks --stop
+ExecStopPost=/sbin/modprobe -rv vmmon vsock vmblock vmnet vmci
+TimeoutSec=0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
