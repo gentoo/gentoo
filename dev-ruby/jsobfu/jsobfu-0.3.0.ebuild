@@ -21,6 +21,8 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rkelly-remix-0.0.6:0"
 
+ruby_add_bdepend "test? ( dev-ruby/execjs )"
+
 all_ruby_prepare() {
 	sed -i -e '/simplecov/ s:^:#:' \
 		-e '/config.\(color\|tty\|formatter\)/ s:^:#:' \

@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools-multilib
+VIRTUALX_REQUIRED="test"
+inherit autotools-multilib flag-o-matic virtualx
 
 DESCRIPTION="VDPAU wrapper and trace libraries"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/VDPAU"
@@ -11,7 +12,7 @@ SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc dri"
 
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
@@ -30,6 +31,7 @@ DEPEND="${RDEPEND}
 	dri? ( >=x11-proto/dri2proto-2.2 )"
 
 src_configure() {
+	append-cppflags -D_GNU_SOURCE
 	local myeconfargs=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable doc documentation)
@@ -37,6 +39,10 @@ src_configure() {
 	)
 
 	autotools-multilib_src_configure
+}
+
+multilib_src_test() {
+	Xemake check
 }
 
 src_install() {

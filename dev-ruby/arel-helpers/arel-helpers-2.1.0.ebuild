@@ -23,7 +23,10 @@ ruby_add_rdepend "|| ( dev-ruby/activerecord:3.2
 			dev-ruby/activerecord:4.1
 			dev-ruby/activerecord:4.2 )"
 
-ruby_add_bdepend "test? ( dev-ruby/activerecord[sqlite] )"
+ruby_add_bdepend "test? (
+	dev-ruby/rr
+	dev-ruby/activerecord[sqlite]
+)"
 
 all_ruby_prepare() {
 	sed -i -e '/pry-nav/ s:^:#:' spec/spec_helper.rb || die
