@@ -17005,7 +17005,7 @@ www-client/qupzilla 1.8.6 1.8.6-r1: Qt WebKit web browser
 www-client/qutebrowser 0.2.1 0.3.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/seamonkey 2.33.1-r1 2.35: Seamonkey Web Browser
-www-client/seamonkey-bin 2.33.1 2.33.1-r1: Mozilla Application Suite - web browser, email, HTML editor, IRC
+www-client/seamonkey-bin 2.33.1 2.33.1-r1 2.35: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
