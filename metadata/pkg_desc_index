@@ -5311,9 +5311,9 @@ dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 2.19.3-r1 3.3.0 3.4.2: PostgreSQL database driver for the DBI module
-dev-perl/DBD-SQLite 1.350.0-r1 1.370.0-r1 1.400.0-r1 1.460.0: Self Contained RDBMS in a DBI Driver
+dev-perl/DBD-SQLite 1.350.0-r1 1.460.0 1.480.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.20.0-r1 4.31.0: The Perl DBD:mysql Module
-dev-perl/DBI 1.628.0 1.631.0 1.633.0: The Perl DBI Module
+dev-perl/DBI 1.628.0 1.633.0 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0: create a temporary database from a DBIx::Class::Schema
 dev-perl/DBIx-Class 0.82.50 0.82.700: Extensible and flexible object <-> relational mapper
@@ -5367,7 +5367,7 @@ dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateManip 6.410.0 6.490.0 6.510.0: Perl date manipulation routines
-dev-perl/DateTime 1.030.0 1.120.0 1.180.0: A date and time object
+dev-perl/DateTime 1.030.0 1.180.0 1.200.0: A date and time object
 dev-perl/DateTime-Event-ICal 0.110.0 0.120.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0: DateTime::Set extension for create basic recurrence sets
 dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and objects
@@ -5382,9 +5382,9 @@ dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.540.0-r1 1.560.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.450.0-r1: Localization support for DateTime
+dev-perl/DateTime-Locale 0.450.0-r1 0.460.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.320.0 0.340.0: Datetime sets and set math
-dev-perl/DateTime-TimeZone 1.810.0 1.880.0: Time zone object base class and factory
+dev-perl/DateTime-TimeZone 1.810.0 1.880.0 1.930.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
 dev-perl/Debug-Client 0.200.0-r1 0.290.0: Client side code for perl debugger
@@ -5392,7 +5392,7 @@ dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings w
 dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckCompiler 0.50.0: Check the compiler's availability
-dev-perl/Devel-Cover 1.170.0 1.180.0: Code coverage metrics for Perl
+dev-perl/Devel-Cover 1.180.0 1.200.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.110.0-r1 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.14 0.6.18: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
@@ -5401,7 +5401,7 @@ dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
 dev-perl/Devel-NYTProf 5.60.0 6.10.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.2.0: Introspect overloaded operators
-dev-perl/Devel-PatchPerl 1.280.0 1.340.0: Patch perl source a la Devel::PPPort's buildperl.pl
+dev-perl/Devel-PatchPerl 1.340.0 1.380.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.14-r1: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
 dev-perl/Devel-Size 0.790.0-r1 0.800.0: Perl extension for finding the memory usage of Perl variables
@@ -13329,7 +13329,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.19 4.1.20-r1 4.2.3-r1: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.19 4.1.20-r1 4.2.3-r1 4.2.4: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
@@ -16500,7 +16500,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.10-r1 1.1.11 9999: Lightweight, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.10-r1 1.1.11 1.1.11-r1 9999: Lightweight, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-db 2.2.3_pre1-r2 2.2.3_pre1-r3 2.2.3_pre1-r4: Allows important system files to be stored in a fast database file rather than plain text
