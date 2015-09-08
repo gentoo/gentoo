@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (08 Sep 2015)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-47
+
 # Rick Farina <zerochaos@gentoo.org> (04 Sep 2015)
 # Ancient, please upgrade to ~arch version
 =net-analyzer/metasploit-2.7
@@ -197,11 +202,6 @@ sys-apps/systemd-ui
 # ebuilds use that. You can safely uninstall dev-haskell/deepseq
 # and fix leftovers with 'haskell-updater' run.
 dev-haskell/deepseq
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (28 Jul 2015)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-46
 
 # Davide Pesavento <pesa@gentoo.org> (23 Jul 2015)
 # Standalone version of qtwebkit from the 2.3 upstream branch.
