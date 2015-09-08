@@ -1019,7 +1019,7 @@ app-editors/jasspa-microemacs 20091011-r2: Jasspa Microemacs
 app-editors/jed 0.99.19: Console S-Lang-based editor
 app-editors/jedit 5.0.0 5.2.0: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
-app-editors/joe 3.7-r2 4.0: A free ASCII-Text Screen Editor for UNIX
+app-editors/joe 3.7-r2 4.0 4.1: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs - a light emacs-like editor without LISP bindings
 app-editors/juffed 0.10: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p23 3.1_p24 3.1_p26 3.1_p27: portable version of JOE's Own Editor
