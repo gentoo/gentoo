@@ -5,7 +5,8 @@
     <email>slis@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="tools">Build additional tool programs</flag>
+    <flag name="3d">Require all 2D coordinates stored as 3D</flag>
+    <flag name="tools">Build additional tool programs: tff2lff</flag>
   </use>
   <upstream>
     <remote-id type="github">LibreCAD/LibreCAD</remote-id>
