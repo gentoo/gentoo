@@ -23,3 +23,5 @@ RDEPEND="
 	dev-python/greenlet[${PYTHON_USEDEP}]
 	dev-python/twisted-core[${PYTHON_USEDEP}]
 "
+
+PATCHES=( "${FILESDIR}/${P}-libressl.patch" )
