@@ -4,11 +4,11 @@ DESCRIPTION=Collection of simple PIN or passphrase entry dialogs which utilize t
 EAPI=5
 HOMEPAGE=http://gnupg.org/aegypten2/index.html
 IUSE=clipboard emacs gtk ncurses qt4 caps gnome-keyring static
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libgpg-error-1.17 >=dev-libs/libassuan-2 app-eselect/eselect-pinentry caps? ( sys-libs/libcap ) gtk? ( x11-libs/gtk+:2 ) ncurses? ( sys-libs/ncurses:0= ) qt4? ( >=dev-qt/qtgui-4.4.1:4 ) static? ( >=sys-libs/ncurses-5.7-r5:0=[static-libs,-gpm] )
 REQUIRED_USE=|| ( ncurses gtk qt4 ) gtk? ( !static ) qt4? ( !static ) static? ( ncurses )
 SLOT=0
 SRC_URI=mirror://gnupg/pinentry/pinentry-0.9.5.tar.bz2
 _eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=7124c8315a4a33356d1a715a6c36b939
+_md5_=20e4918faaa262e4a2eb3de74ad9e9c0
