@@ -17,5 +17,6 @@
     <flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
     <flag name="qemu-block">Transparently create files as QCow2/QED images in the backend, including the possibility to snapshot.</flag>
     <flag name="systemtap">Enable support for <pkg>dev-util/systemtap</pkg></flag>
+    <flag name="tiering">Enable support for data classification/tiering (requires <pkg>dev-db/sqlite:3</pkg>)</flag>
   </use>
 </pkgmetadata>
