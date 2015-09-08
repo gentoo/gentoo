@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>amynka@gentoo.org</email>
-	</maintainer>
-	<longdescription>
+<maintainer>
+	<email>amynka@gentoo.org</email>
+	<name>Amy Winston</name>
+</maintainer>
+<longdescription lang="en">
+	libebur128 is a library that implements the EBU R128 standard for loudness normalisation.
 </longdescription>
-	<upstream>
-		<remote-id type="github">jiixyj/libebur128</remote-id>
-	</upstream>
+<upstream>
+	<maintainer status="active">
+		<email>jan.kokemueller@gmail.com</email>
+		<name>Jan Kokemüller</name>
+	</maintainer>
+	<maintainer status="active">
+		<email>superjoe30@gmail.com</email>
+		<name>Andrew Kelley</name>
+	</maintainer>
+	<remote-id type="github">jiixyj/libebur128</remote-id>
+	<bugs-to>https://github.com/jiixyj/libebur128/issues</bugs-to>
+</upstream>
 </pkgmetadata>
