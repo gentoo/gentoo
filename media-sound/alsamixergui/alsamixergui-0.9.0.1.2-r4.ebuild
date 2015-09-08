@@ -36,7 +36,7 @@ src_prepare() {
 
 src_configure() {
 	append-ldflags "-L$(dirname $(fltk-config --libs))"
-	append-flags "-I/usr/include/fltk"
+	append-flags "-I$(fltk-config --includedir)"
 	econf
 }
 
