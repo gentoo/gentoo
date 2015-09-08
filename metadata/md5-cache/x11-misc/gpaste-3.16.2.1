@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst postrm preinst prepare unpack
-DEPEND=dev-util/appdata-tools >=dev-libs/glib-2.44:2 >=dev-libs/gobject-introspection-1.44.0 sys-apps/dbus >=x11-libs/gdk-pixbuf-2.26:2 >=x11-libs/gtk+-3.16:3 x11-libs/libX11 x11-libs/libXi gnome? ( gnome-base/gnome-control-center:2 media-libs/clutter x11-libs/pango ) dev-util/intltool virtual/pkgconfig vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=dev-libs/appstream-glib >=dev-libs/glib-2.44:2 >=dev-libs/gobject-introspection-1.44.0 sys-apps/dbus >=x11-libs/gdk-pixbuf-2.26:2 >=x11-libs/gtk+-3.16:3 x11-libs/libX11 x11-libs/libXi gnome? ( gnome-base/gnome-control-center:2 media-libs/clutter x11-libs/pango ) dev-util/intltool virtual/pkgconfig vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Clipboard management system
 EAPI=5
 HOMEPAGE=https://github.com/Keruspe/GPaste
 IUSE=+applet gnome vala
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-util/appdata-tools >=dev-libs/glib-2.44:2 >=dev-libs/gobject-introspection-1.44.0 sys-apps/dbus >=x11-libs/gdk-pixbuf-2.26:2 >=x11-libs/gtk+-3.16:3 x11-libs/libX11 x11-libs/libXi gnome? ( gnome-base/gnome-control-center:2 media-libs/clutter x11-libs/pango ) gnome? ( gnome-base/gnome-shell )
+RDEPEND=dev-libs/appstream-glib >=dev-libs/glib-2.44:2 >=dev-libs/gobject-introspection-1.44.0 sys-apps/dbus >=x11-libs/gdk-pixbuf-2.26:2 >=x11-libs/gtk+-3.16:3 x11-libs/libX11 x11-libs/libXi gnome? ( gnome-base/gnome-control-center:2 media-libs/clutter x11-libs/pango ) gnome? ( gnome-base/gnome-shell )
 SLOT=0
 SRC_URI=https://github.com/Keruspe/GPaste/archive/v3.16.2.1.tar.gz -> gpaste-3.16.2.1.tar.gz
 _eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
-_md5_=4f76e9094f3f2dfaa16b15fa29e0f4bd
+_md5_=fae177c212ac4d6f7f1b2690d7762fb5

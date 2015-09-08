@@ -16941,7 +16941,7 @@ www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module us
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
 www-apps/moodle 2.7.9 2.8.7 2.9.1: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
-www-apps/mythweb 0.26.0 0.27 0.27.1: PHP scripts intended to manage MythTV from a web browser
+www-apps/mythweb 0.26.0 0.27 0.27.5: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 3.7.5 3.7.5-r1 3.8.0: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generator
