@@ -2485,7 +2485,7 @@ app-vim/align 43: vim plugin: commands and maps to help produce aligned text
 app-vim/alternate 2.18: vim plugin: quickly switch between .c and .h files
 app-vim/ansiesc 12: vim plugin: ansi escape sequences concealed, but highlighted as specified
 app-vim/ant_menu 0.5.7.1: vim plugin: Java ant build system integration
-app-vim/autoalign 13: vim plugin: automatically align bib, c, c++, tex and vim code
+app-vim/autoalign 13 14: vim plugin: automatically align bib, c, c++, tex and vim code
 app-vim/automatictexplugin 12.5-r1: vim plugin: a comprehensive plugin for editing LaTeX files
 app-vim/bash-support 3.12 4.1 4.2.1: vim plugin: Bash-IDE - Write and run bash scripts using menus and hotkeys
 app-vim/bnf-syntax 1.2-r1: vim plugin: BNF file syntax highlighting
@@ -2513,7 +2513,7 @@ app-vim/ctx 1.17: vim plugin: display current scope context in a C file
 app-vim/curcmdmode 1.0: vim plugin: library for extending vim's mode() function
 app-vim/cvsmenu 1.80 1.147: vim plugin: CVS(NT) integration script
 app-vim/dbext 21.0 22.0: vim plugin: easy access to databases
-app-vim/detectindent 1.0 1.0_p20110723: vim plugin: automatically detect file indent settings
+app-vim/detectindent 1.0 1.0_p20110723 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.9.4 2.9.6: vim plugin: a simple alignment plugin
@@ -13329,7 +13329,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.19 4.1.20-r1 4.2.3-r1 4.2.4: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.19 4.1.20-r1 4.2.3-r1 4.2.4 4.3.0: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
