@@ -1340,7 +1340,7 @@ app-emulation/vmware-vix 1.11.4.744019: VMware VIX API for Linux
 app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073 11.1.2.2780323: Emulate a complete PC on your PC without the usual performance overhead of most emulators
 app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
-app-emulation/wine 1.6.2 1.6.2-r1 1.7.3-r1 1.7.4-r1 1.7.8-r1 1.7.9-r1 1.7.10-r1 1.7.11-r1 1.7.12-r1 1.7.13-r1 1.7.14-r1 1.7.15-r1 1.7.16-r1 1.7.17-r1 1.7.18-r1 1.7.19-r2 1.7.20-r1 1.7.21-r1 1.7.22-r1 1.7.28-r1 1.7.29-r1 1.7.33-r1 1.7.34 1.7.35 1.7.36 1.7.37 1.7.38-r1 1.7.39-r1 1.7.40-r1 1.7.41 1.7.42 1.7.43 1.7.44 1.7.45 1.7.46 1.7.47 1.7.50 9999: Free implementation of Windows(tm) on Unix
+app-emulation/wine 1.6.2 1.6.2-r1 1.7.3-r1 1.7.4-r1 1.7.8-r1 1.7.9-r1 1.7.10-r1 1.7.11-r1 1.7.12-r1 1.7.13-r1 1.7.14-r1 1.7.15-r1 1.7.16-r1 1.7.17-r1 1.7.18-r1 1.7.19-r2 1.7.20-r1 1.7.21-r1 1.7.22-r1 1.7.28-r1 1.7.29-r1 1.7.33-r1 1.7.34 1.7.35 1.7.36 1.7.37 1.7.38-r1 1.7.39-r1 1.7.40-r1 1.7.41 1.7.42 1.7.43 1.7.44 1.7.45 1.7.46 1.7.47 1.7.50 1.7.51 9999: Free implementation of Windows(tm) on Unix
 app-emulation/winetricks 20150706 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
