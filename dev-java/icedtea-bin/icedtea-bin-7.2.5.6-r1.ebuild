@@ -24,7 +24,7 @@ done
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="7"
-KEYWORDS="-* ~ppc"
+KEYWORDS="-* ppc"
 
 IUSE="+alsa +awt cjk +cups doc examples +gtk nsplugin pulseaudio selinux source webstart"
 REQUIRED_USE="gtk? ( awt ) nsplugin? ( awt )"
