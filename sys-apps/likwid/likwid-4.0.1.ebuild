@@ -10,7 +10,8 @@ inherit eutils fcaps linux-info multilib fortran-2
 
 DESCRIPTION="A performance-oriented tool suite for x86 multicore environments"
 HOMEPAGE="https://github.com/rrze-likwid/likwid"
-SRC_URI="https://github.com/rrze-likwid/likwid/archive/likwid-${PV}.tar.gz"
+# Upstream have made a habit of making changes to the tagged realesed tarball
+SRC_URI="https://dev.gentoo.org/~idella4/tarballs/likwid-${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,6 +24,8 @@ DEPEND="${RDEPEND}
 	sys-apps/sed
 	fortran? ( sys-devel/gcc:*[fortran] )
 	dev-lang/lua:0"
+
+RESTRICT="mirror"
 
 CONFIG_CHECK="~X86_MSR"
 
