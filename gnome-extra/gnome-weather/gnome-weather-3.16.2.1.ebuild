@@ -23,7 +23,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.11.4:3
 "
 DEPEND="${RDEPEND}
-	dev-util/appdata-tools
+	dev-libs/appstream-glib
 	>=dev-util/intltool-0.26
 	virtual/pkgconfig
 	test? ( dev-util/dogtail )
