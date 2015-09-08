@@ -12,7 +12,7 @@ SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 IUSE="pam selinux"
 
 RDEPEND="sys-libs/libnih[dbus]
