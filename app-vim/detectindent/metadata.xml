@@ -6,5 +6,7 @@
 		Vim plugin which automatically detects indent settings for files which
 		do not have modelines.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ciaranm/detectindent</remote-id>
+	</upstream>
 </pkgmetadata>
-
