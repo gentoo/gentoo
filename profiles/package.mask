@@ -80,10 +80,6 @@ app-emulation/kvm-kmod
 # last version does not compile. Bug #543644
 sys-devel/dragonegg
 
-# Andreas Sturmlechner <andreas.sturmlechner@gmail.com> (24 Aug 2015)
-# Masked until >=sys-auth/consolekit-0.9.2 gets unmasked
-=x11-misc/sddm-0.11.0-r2
-
 # Matt Turner <mattst88@gentoo.org> (22 Aug 2015)
 # nouveau has been in the kernel since 2.6.33
 # Masked for removal in 30 days.
