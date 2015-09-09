@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=ETHER
-MODULE_VERSION=1.67
+MODULE_VERSION=1.69
 inherit perl-module
 
 DESCRIPTION="Uniform Resource Identifiers (absolute and relative)"
