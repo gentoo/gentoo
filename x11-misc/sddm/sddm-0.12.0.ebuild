@@ -12,7 +12,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
-IUSE="consolekit pam systemd"
+IUSE="consolekit +pam systemd"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -33,11 +33,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 pkg_pretend() {
-        if [[ ${MERGE_TYPE} != binary  && $(tc-getCC) == *gcc* ]]; then
-                if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 7 ]] ; then
-                        die 'The active compiler needs to be gcc 4.7 (or newer)'
-                fi
-        fi
+	if [[ ${MERGE_TYPE} != binary  && $(tc-getCC) == *gcc* ]]; then
+		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 7 ]] ; then
+			die 'The active compiler needs to be gcc 4.7 (or newer)'
+		fi
+	fi
 }
 
 src_prepare() {
