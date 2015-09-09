@@ -6678,7 +6678,7 @@ dev-python/Djblets 0.7.31: A collection of useful extensions for Django
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.8.0 1.9.0: A software library for rapid development of hardware-accelerated multitouch applications
-dev-python/Numdifftools 0.6.0 0.7.7: Solves automatic numerical differentiation problems in one or more variables
+dev-python/Numdifftools 0.6.0 0.7.7 0.9.12: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyECLib 1.0.7-r2: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.0 1.25.1 1.25.2: Python library to access the Github API v3
@@ -6862,7 +6862,7 @@ dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.c
 dev-python/distlib 0.2.1: Distribution utilities
 dev-python/django 1.4.22 1.5.12 1.6.11 1.7.10 1.8.4 9999: High-level Python web framework
 dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2: This is django application that try to eliminate annoying things in Django framework
-dev-python/django-appconf 0.6: A helper class for handling configuration defaults of packaged apps gracefully
+dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.6: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
 dev-python/django-celery 3.1.16: Celery Integration for Django
@@ -6945,7 +6945,7 @@ dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python d
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
 dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4: Highly concurrent networking library
-dev-python/execnet 1.2.0-r2 1.3.0: Rapid multi-Python deployment
+dev-python/execnet 1.2.0-r2 1.3.0 1.4.1: Rapid multi-Python deployment
 dev-python/expects 0.2.1 0.4.2 0.7.2 0.8.0_rc1 0.8.0_rc2: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
@@ -7016,7 +7016,7 @@ dev-python/git-python 0.3.6 1.0.0 1.0.1: Library used to interact with Git repos
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/glance_store 0.1.10 0.4.0 0.5.0 0.6.0: A connection pool for python-ldap
-dev-python/globre 0.1.2-r1: A glob matching library, providing an interface similar to the 're' module
+dev-python/globre 0.1.2-r1 0.1.3: A glob matching library, providing an interface similar to the 're' module
 dev-python/gmpy 2.0.4 2.0.6: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-keyring-python 2.32.0-r1: Python bindings for the interfacing with the GNOME keyring
 dev-python/gnome-python-base 2.28.1-r1: Provides the base files for the gnome-python bindings
@@ -7292,7 +7292,7 @@ dev-python/pathtools 0.1.2: Pattern matching and various utilities for file syst
 dev-python/patsy 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.4.0: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2 0.8.2-r1 0.10.8 0.11.0 1.0.1 1.1.1 1.2.0 1.3.0 1.6.0: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 0.8.2 0.8.2-r1 0.10.8 0.11.0 1.0.1 1.1.1 1.2.0 1.3.0 1.6.0 1.7.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/peewee 2.5.1 2.6.2 2.6.3: Small python ORM
@@ -7324,6 +7324,7 @@ dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
 dev-python/pretend 1.0.7 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 14.05.7 15.5.7 15.6.3: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
+dev-python/process-tests 1.1.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1: Text progressbar library for python
@@ -7505,7 +7506,7 @@ dev-python/pyregion 1.1.2 1.1.4: Python module to parse ds9 region file
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 0.2: Generates and parses RFC 3339 timestamps
 dev-python/pyringe 1.0.2: Debugger capable of attaching and injecting code
-dev-python/pyro 3.16-r1 4.25: Advanced and powerful Distributed Object Technology system written entirely in Python
+dev-python/pyro 3.16-r1 4.25 4.39: Advanced and powerful Distributed Object Technology system written entirely in Python
 dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyrtf 0.45-r1: A set of Python classes that make it possible to produce RTF documents from Python programs
 dev-python/pysaml2 2.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
@@ -7532,13 +7533,15 @@ dev-python/pysyck 0.61.2-r1: Python bindings for the Syck YAML parser and emitte
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1: Hierarchical datasets for Python
 dev-python/pyte 0.4.9: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.1 2.7.2: py.test: simple powerful testing with Python
+dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
-dev-python/pytest-cov 1.6 1.8.1: py.test plugin for coverage reporting
+dev-python/pytest-cov 1.6 1.8.1 2.1.0: py.test plugin for coverage reporting
 dev-python/pytest-django 2.8.0: A Django plugin for py.test
 dev-python/pytest-localserver 0.3.4: Py.test plugin to test server connections locally
 dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-runner 2.1.2 2.5.1 2.6.1 2.6.2: Adds support for tests durring installation of setup.py files
 dev-python/pytest-timeout 0.4: py.test plugin to abort hanging tests
+dev-python/pytest-xdist 1.13.1: Distributed testing and loop-on-failing modes
 dev-python/python-application 1.5.0: Basic building blocks for python applications
 dev-python/python-augeas 0.4.1 0.4.2_pre131218 0.5.0: Python bindings for Augeas
 dev-python/python-barbicanclient 3.0.1 3.0.3: Client library for Barbican API.
@@ -9049,8 +9052,8 @@ dev-util/netbeans 8.0.2: Netbeans IDE
 dev-util/ninja 1.5.1 1.5.3 1.6.0 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nsis 2.46-r1: Nullsoft Scriptable Install System
-dev-util/nvidia-cuda-sdk 5.5.22 6.5.14 6.5.19 7.0.28: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 5.5.22 6.5.14 6.5.19 6.5.19-r1 7.0.28: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-sdk 5.5.22 6.5.14 6.5.19 7.0.28 7.5.18: NVIDIA CUDA Software Development Kit
+dev-util/nvidia-cuda-toolkit 5.5.22 6.5.14 6.5.19 6.5.19-r1 7.0.28 7.5.18: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
