@@ -9312,8 +9312,8 @@ games-action/lugaru 1.0c-r1: 3D arcade with unique fighting system and anthropom
 games-action/lugaru-demo 1.0c: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/luola 1.3.2: A 2D multiplayer arcade game resembling V-Wing
 games-action/maelstrom 3.0.6-r2: An asteroids battle game
-games-action/minetest 0.4.10-r1 0.4.10-r2: An InfiniMiner/Minecraft inspired game
-games-action/minetest_game 0.4.10: The main game for the Minetest game engine
+games-action/minetest 0.4.10-r1 0.4.10-r2 0.4.13: An InfiniMiner/Minecraft inspired game
+games-action/minetest_game 0.4.10 0.4.13: The main game for the Minetest game engine
 games-action/moon-buggy 1.0.51: A simple console game, where you drive a car across the moon's surface
 games-action/mutantstorm-demo 1.33: shoot through crazy psychedelic 3D environments
 games-action/nighthawk 2.2: A tribute to Paradroid by Andrew Braybrook

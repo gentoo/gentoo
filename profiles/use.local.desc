@@ -2791,6 +2791,7 @@ games-action/minetest:leveldb - Enable LevelDB backend
 games-action/minetest:luajit - Use dev-lang/luajit instead of dev-lang/lua
 games-action/minetest:redis - Enable redis backend via dev-libs/hiredis
 games-action/minetest:server - Build minetest server
+games-action/minetest:spatial - Enable SpatialIndex AreaStore backend
 games-action/openlierox:breakpad - Compile with support for breakpad crash reporting system
 games-action/solar2:bundled-libs - Use the upstream provided bundled libraries.
 games-action/super-hexagon:bundled-libs - Use the upstream provided bundled libraries.
