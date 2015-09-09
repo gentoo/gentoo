@@ -17,10 +17,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/apipkg-1.4[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-RDEPEND=""
+	test? (	dev-python/pytest[${PYTHON_USEDEP}]	)"
 
 #PATCHES=( "${FILESDIR}"/1.2.0-tests.patch )
 

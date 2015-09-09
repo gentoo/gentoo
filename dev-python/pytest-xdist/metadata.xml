@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>jlec@gentoo.org</email>
+		<name>Justin Lecher</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">pxml</remote-id>
+		<remote-id type="github">metagriffin/pxml</remote-id>
+	</upstream>
+</pkgmetadata>

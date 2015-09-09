@@ -4,5 +4,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="github">jezdez/django-appconf</remote-id>
+    <remote-id type="pypi">django-appconf</remote-id>
   </upstream>
 </pkgmetadata>
