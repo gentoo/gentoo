@@ -12,8 +12,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 public-domain"
 SLOT="0"
-IUSE="consolekit systemd +upower"
-REQUIRED_USE="?? ( upower systemd )"
+IUSE="consolekit systemd"
 
 RDEPEND="sys-libs/pam
 	>=x11-base/xorg-server-1.15.1
@@ -24,21 +23,21 @@ RDEPEND="sys-libs/pam
 	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
 	systemd? ( sys-apps/systemd:= )
-	upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) )"
+	!systemd? ( || ( sys-power/upower sys-power/upower-pm-utils ) )"
 DEPEND="${RDEPEND}
-	>=sys-devel/gcc-4.7.0
 	virtual/pkgconfig"
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		[[ $(gcc-version) < 4.7 ]] && \
+	if [[ ${MERGE_TYPE} != binary  && $(tc-getCC) == *gcc* ]]; then
+		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 7 ]] ; then
 			die 'The active compiler needs to be gcc 4.7 (or newer)'
+		fi
 	fi
 }
 
 src_prepare() {
 	use consolekit && epatch "${FILESDIR}/${P}-consolekit.patch"
-	use upower && epatch "${FILESDIR}/${PN}-0.10.0-upower.patch"
+	use !systemd && epatch "${FILESDIR}/${PN}-0.10.0-upower.patch"
 	# fix bug 552318
 	epatch "${FILESDIR}/${P}-dbus-config.patch"
 
@@ -68,7 +67,7 @@ pkg_postinst() {
 	ewarn "see https://github.com/gentoo/qt/pull/52"
 }
 
-pkg_setup() {
+pkg_postinst() {
 	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/sddm ${PN}
+	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN} video
 }
