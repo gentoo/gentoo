@@ -6962,7 +6962,7 @@ dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.0 2.4.0-r1 2.4.1: A wrapper around PyFl
 dev-python/flask 0.10.1-r1 0.10.1-r2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0: Simple and extensible admin interface framework for Flask
 dev-python/flask-babel 0.8-r1 0.9: i18n and l10n support for Flask based on Babel and pytz
-dev-python/flask-cors 1.8.0 1.9.0: A Flask extension for Cross Origin Resource Sharing (CORS)
+dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-evolution 0.5-r1 0.6: Simple migrations for Flask/SQLAlchemy projects
 dev-python/flask-login 0.2.11: Login session support for Flask
