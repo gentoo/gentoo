@@ -7136,7 +7136,7 @@ dev-python/libnacl 1.4.0 1.4.3: Python ctypes wrapper for libsodium
 dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp, an alternative protocol to UPnP IGD
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 1.2.15 1.2.17 1.2.18 9999: libvirt Python bindings
+dev-python/libvirt-python 1.2.15 1.2.17 1.2.18 1.2.19 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/livereload 2.3.2 2.4.0: Python LiveReload is an awesome tool for web developers
