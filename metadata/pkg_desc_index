@@ -6229,7 +6229,7 @@ dev-perl/Tk-JPEG-Lite 2.14.30-r1: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
 dev-perl/Tree-DAG_Node 1.60.0-r1 1.90.0-r1 1.100.0 1.110.0 1.130.0 1.160.0 1.240.0: (Super)class for representing nodes in a tree
 dev-perl/Tree-Simple 1.180.0-r1 1.250.0: A simple tree object
-dev-perl/Try-Tiny 0.180.0 0.190.0: Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.190.0.ebuild
+dev-perl/Try-Tiny 0.180.0 0.190.0 0.220.0: Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.207.260-r1 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
