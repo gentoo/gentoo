@@ -53,7 +53,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# Does not build with system pugixml, use builtin for now
+	# system pugixml lacks long long ops support, use builtin for now
 	econf $(use_with dbus) $(use_enable nls locales) \
 		--with-pugixml=builtin \
 		--disable-autoupdatecheck
