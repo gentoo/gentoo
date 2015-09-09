@@ -321,3 +321,7 @@ net-libs/ortp srtp
 # Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
+
+# Marius Brehler <marfbre@linux.sungazer.de> (13 Aug 2015)
+# missing keyword
+>=sci-misc/boinc-7.4.42-r1 X

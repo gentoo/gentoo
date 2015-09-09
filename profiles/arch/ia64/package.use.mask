@@ -277,3 +277,7 @@ dev-lisp/clisp hyperspec pari svm
 
 # missing keywords
 media-plugins/gst-plugins-meta dts dv lame libvisual modplug mms taglib vcd wavpack
+
+# Marius Brehler <marfbre@linux.sungazer.de> (13 Aug 2015)
+# missing keyword
+>=sci-misc/boinc-7.4.42-r1 X
