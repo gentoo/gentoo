@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (09 Sep 2015)
+# Package to be used with gentoo-x86 CVS, so pretty much defunct now.
+# Removal in 30 days. Bug #560056.
+app-portage/lightweight-cvs-toolkit
+
 # Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
 # Masked for testing
 >=net-fs/samba-4.3.0
