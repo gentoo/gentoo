@@ -21,6 +21,7 @@ SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 
 ruby_add_rdepend " >=dev-ruby/pcaprub-0.9.2:*"
+DEPEND="${DEPEND} !dev-ruby/packetfu:0"
 
 RUBY_PATCHES=( "${FILESDIR}"/${P}-ruby2x-encoding.patch )
 

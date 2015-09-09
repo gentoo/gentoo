@@ -27,6 +27,7 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "test? ( >=dev-ruby/rspec-its-1.2.0:1 )
 			dev-ruby/bundler"
+DEPEND="${DEPEND} !dev-ruby/packetfu:0"
 
 all_ruby_prepare() {
 	[ -f Gemfile.lock ] && rm Gemfile.lock
