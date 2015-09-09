@@ -209,7 +209,7 @@ app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via n
 app-admin/sysstat 11.0.2 11.0.5-r1 11.0.6 11.1.5-r1 11.1.6: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 6.12 6.13 6.14 6.14-r1 6.14-r2 7.0 7.0-r1 7.0-r2 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
@@ -8251,7 +8251,7 @@ dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
 dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.0.9: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit-payloads 1.0.9-r1: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/metasploit_data_models 1.2.5: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
