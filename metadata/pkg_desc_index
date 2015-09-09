@@ -13332,7 +13332,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.19 4.1.20-r1 4.2.3-r1 4.2.4 4.3.0: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.19 4.1.20-r1 4.2.3-r1 4.2.4 4.2.4-r1 4.3.0: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer

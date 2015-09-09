@@ -5121,6 +5121,7 @@ net-fs/nfs-utils:nfsv4 - Enable support for NFSv4
 net-fs/nfs-utils:nfsv41 - Enable support for NFSv4.1
 net-fs/nfs-utils:uuid - Support UUID lookups in rpc.mountd
 net-fs/openafs:modules - Build libafs kernel module. Disable only if you know what you're doing: without this module OpenAFS client will not work.
+net-fs/samba:addc - Enable Active Directory Domain Controller support
 net-fs/samba:addns - Enable AD DNS integration
 net-fs/samba:ads - Enable Active Directory support
 net-fs/samba:aio - Enable asynchronous IO support
@@ -5136,6 +5137,7 @@ net-fs/samba:smbclient - Enable smbclient tool
 net-fs/samba:smbsharemodes - Enable special smb share modes (?)
 net-fs/samba:smbtav2 - Enable Samba Traffic Analyzer version 2
 net-fs/samba:swat - Enables support for swat configuration gui
+net-fs/samba:system-mitkrb5 - Use app-crypt/mit-krb5 instead of app-crypt/heimdal.
 net-fs/samba:winbind - Enables support for the winbind auth daemon
 net-fs/smbnetfs:gnome - Use the gnome-base/gnome-keyring for password management.
 net-ftp/frox:transparent - Enable transparent proxying of data connections
