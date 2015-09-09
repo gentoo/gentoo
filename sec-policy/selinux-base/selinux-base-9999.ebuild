@@ -166,8 +166,3 @@ src_install() {
 	insinto /usr/share/portage/config/sets
 	doins "${FILESDIR}/selinux.conf" || die "failed to install selinux-rebuild portage set"
 }
-
-pkg_preinst() {
-	has_version "<${CATEGORY}/${PN}-2.20101213-r13"
-	previous_less_than_r13=$?
-}
