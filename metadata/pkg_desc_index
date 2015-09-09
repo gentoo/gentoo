@@ -8274,7 +8274,7 @@ dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios pl
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.0.8-r1 0.6.0.8-r2 0.6.0.9 0.6.1.1: Numerical N-dimensional Array class
-dev-ruby/naught 1.0.0: A toolkit for building Null Objects in Ruby
+dev-ruby/naught 1.0.0 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/nenv 0.2.0: Convenient wrapper for Ruby's ENV
 dev-ruby/net-http-digest_auth 1.4-r1 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4 2.9.4-r1: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
@@ -8311,7 +8311,7 @@ dev-ruby/pdf-inspector 1.1.0-r1 1.2.0: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.1.1-r1 1.3.3: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library to perform different operations with permutations of sequences (strings, arrays, etc.)
 dev-ruby/pg 0.17.1 0.17.1-r1 0.18.2 0.18.3: Ruby extension library providing an API to PostgreSQL
-dev-ruby/pg_array_parser 0.0.9: Simple library to parse PostgreSQL arrays into a array of strings
+dev-ruby/pg_array_parser 0.0.9-r1: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.5 1.1.5-r1 1.1.6: A pkg-config implementation by Ruby
 dev-ruby/plist 3.1.0-r1: A library to manipulate Property List files, also known as plists
 dev-ruby/png 1.2.0-r2 1.2.1: An almost pure-Ruby Portable Network Graphics (PNG) library
@@ -8359,7 +8359,7 @@ dev-ruby/rb-readline 0.5.1 0.5.2 0.5.3: Ruby implementation of the GNU readline 
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
 dev-ruby/rbpdf 1.18.6-r1: Ruby on Rails TCPDF plugin
 dev-ruby/rbtree 0.4.2: Ruby/RBTree module
-dev-ruby/rcairo 1.14.1 1.14.1-r1: Ruby bindings for cairo
+dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.7 2.1.7.1 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.0.1-r1 4.0.1-r2 4.1.2 4.1.2-r1: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r1 0.6.38-r2: A multipurpose documentation format for Ruby
@@ -8451,7 +8451,7 @@ dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discov
 dev-ruby/ruby2ruby 2.1.4 2.2.0: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.6.6 3.7.0 3.7.1: A ruby parser written in pure ruby
-dev-ruby/rubygems 2.2.2 2.2.5 2.2.5-r1 2.4.6 2.4.8: Centralized Ruby extension management system
+dev-ruby/rubygems 2.2.5-r1 2.4.8: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.4.0 0.5.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r4 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.7.0 0.8.1: Ruby Test is a universal test harness for Ruby
