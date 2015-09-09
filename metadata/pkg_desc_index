@@ -4158,8 +4158,8 @@ dev-java/offo-hyphenation 1.2: Hyphenation patterns for Apache Fop
 dev-java/ognl 2.6.9-r2 3.0.8: Object-Graph Navigation Language; an expression language for getting/setting properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.51 1.8.0.60-r1: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.7.0.80 1.8.0.51 1.8.0.60-r1: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.51 1.8.0.60-r2: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.7.0.80 1.8.0.51 1.8.0.60-r2: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0: OSGi Service Platform Core API (Companion Code)
