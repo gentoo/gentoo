@@ -1,21 +1,24 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: Exp $
+# $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
+
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 inherit ruby-fakegem versionator
 
 DESCRIPTION="Simple library to parse PostgreSQL arrays into a array of strings"
 HOMEPAGE="https://github.com/dockyard/pg_array_parser"
-SRC_URI="mirror://rubygems/${P}.gem"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="$(get_version_component_range 1-3)"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
-RESTRICT=test
 
 ruby_add_bdepend "dev-ruby/bundler"
 
@@ -39,4 +42,13 @@ each_ruby_prepare() {
 		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
 		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
 	fi
+}
+
+each_ruby_configure() {
+	${RUBY} -Cext/pg_array_parser extconf.rb || die
+}
+
+each_ruby_compile() {
+	emake -Cext/pg_array_parser V=1
+	cp ext/pg_array_parser/pg_array_parser.so lib/
 }
