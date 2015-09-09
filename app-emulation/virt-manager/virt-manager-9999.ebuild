@@ -16,7 +16,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-2
 	SRC_URI=""
 	KEYWORDS=""
-	EGIT_REPO_URI="git://git.fedorahosted.org/virt-manager.git"
+	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
