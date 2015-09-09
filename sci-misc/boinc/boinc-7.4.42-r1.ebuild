@@ -40,7 +40,7 @@ RDEPEND="
 		virtual/jpeg:0=
 		x11-libs/gtk+:2
 		>=x11-libs/libnotify-0.7
-		x11-libs/wxGTK:2.8[X,opengl]
+		x11-libs/wxGTK:3.0[X,opengl,webkit]
 	)
 "
 DEPEND="${RDEPEND}
@@ -74,7 +74,7 @@ src_configure() {
 
 	# look for wxGTK
 	if use X; then
-		WX_GTK_VER="2.8"
+		WX_GTK_VER="3.0"
 		need-wxwidgets unicode
 		myeconfargs+=(--with-wx-config="${WX_CONFIG}")
 	else
