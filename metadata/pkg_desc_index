@@ -15877,7 +15877,7 @@ sys-apps/stroke 0.1.3: A powerful tool to change file timestamps (including ctim
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 218-r3 219_p112 224-r1 225 9999: System and service manager for Linux
+sys-apps/systemd 218-r3 219_p112 224-r1 225 226 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/systemd-ui 3 9999: System and service manager for Linux
