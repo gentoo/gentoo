@@ -183,10 +183,17 @@ src_prepare() {
 		mv "${WORKDIR}"/${JCE_DIR} jre/lib/security/ || die
 	fi
 
-	# Delete Oracle's evil usage tracker. Not just because it's evil but
-	# because it breaks the sandbox during builds and we can't find any
-	# other feasible way to disable it or make it write somewhere else.
-	zip -d jre/lib/rt.jar sun/usagetracker/\* || die
+	if [[ -n ${JAVA_PKG_STRICT} ]] ; then
+		eqawarn "Ensure that this only calls trackJavaUsage(). If not, see bug #559936."
+		eqawarn
+		eqawarn "$(./bin/javap -J-Duser.home=${T} -c sun.misc.PostVMInitHook || die)"
+	fi
+
+	# Remove the hook that calls Oracle's evil usage tracker. Not just
+	# because it's evil but because it breaks the sandbox during builds
+	# and we can't find any other feasible way to disable it or make it
+	# write somewhere else. See bug #559936 for details.
+	zip -d jre/lib/rt.jar sun/misc/PostVMInitHook.class || die
 }
 
 src_install() {
