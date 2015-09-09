@@ -217,7 +217,7 @@ src_configure() {
 		myconf="${myconf} --without-bindings=perl,python"
 	fi
 
-	use python && myconf="${myconf} --python=$(EPYTHON)"
+	use python && myconf="${myconf} --python=${EPYTHON}"
 
 	if use debug; then
 		myconf="${myconf} --compile-type=debug"
@@ -228,9 +228,9 @@ src_configure() {
 	fi
 
 	# Video
-	use vdpau && myconf="${myconf} --enable-vdpau"
+	myconf="${myconf} $(use_enable vdpau)"
 	myconf="${myconf} $(use_enable vaapi)"
-	use crystalhd && myconf="${myconf} --enable-crystalhd"
+	myconf="${myconf} $(use_enable crystalhd)"
 
 	# Input
 	use input_devices_joystick || myconf="${myconf} --disable-joystick-menu"
@@ -321,7 +321,7 @@ src_install() {
 	done
 
 	# Ensure that Python scripts are executed by Python 2
-	python_convert_shebangs -q -r 2 "${ED}/usr/share/mythtv"
+	python_fix_shebang "${ED}/usr/share/mythtv"
 
 	# Make shell & perl scripts executable
 	find "${ED}" -type f -name '*.sh' -o -type f -name '*.pl' | \
@@ -335,8 +335,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use python && python_mod_optimize MythTV
-
 	elog "To have this machine operate as recording host for MythTV, "
 	elog "mythbackend must be running. Run the following:"
 	elog "rc-update add mythbackend default"
@@ -350,10 +348,6 @@ pkg_postinst() {
 	elog
 	elog "Note that the systemd unit now restarts by default and logs"
 	elog "to journald via the console at the notice verbosity."
-}
-
-pkg_postrm() {
-	use python && python_mod_cleanup MythTV
 }
 
 pkg_info() {
