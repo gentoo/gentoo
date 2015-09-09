@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>samba</herd>
+	<herd>samba</herd>
 	<maintainer>
 		<email>samba@gentoo.org</email>
 		<name>Samba Team</name>
@@ -14,8 +14,8 @@
 		<flag name="ads">Enable Active Directory support</flag>
 		<flag name="swat">Enables support for swat configuration gui</flag>
 		<flag name="winbind">Enables support for the winbind auth daemon</flag>
-	        <flag name="client">Enables the client part</flag>
-	        <flag name="server">Enables the server part</flag>
+		<flag name="client">Enables the client part</flag>
+		<flag name="server">Enables the server part</flag>
 		<flag name="netapi">Enable building of netapi bits</flag>
 		<flag name="addns">Enable AD DNS integration</flag>
 		<flag name="aio">Enable asynchronous IO support</flag>
