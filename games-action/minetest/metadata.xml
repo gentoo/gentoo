@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>maddin081591@gmail.com</email>
@@ -44,6 +43,8 @@
 		</flag>
 		<flag name="redis">Enable redis backend via
 			<pkg>dev-libs/hiredis</pkg>
+		</flag>
+		<flag name="spatial">Enable SpatialIndex AreaStore backend
 		</flag>
 		<flag name="server">Build minetest server</flag>
 	</use>
