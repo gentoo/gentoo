@@ -1,0 +1,26 @@
+diff -u CMakeLists.txt CMakeLists.txt 
+--- CMakeLists.txt      2015-09-05 22:40:50.000000000 +0200
++++ CMakeLists.txt      2015-09-07 12:15:33.419530808 +0200
+@@ -35,22 +35,6 @@
+ # Definitions
+ add_definitions(-Wall -std=c++11 -DQT_NO_CAST_FROM_ASCII)
+ 
+-# Default build type
+-if(NOT CMAKE_BUILD_TYPE)
+-    set(CMAKE_BUILD_TYPE Release)
+-endif()
+-
+-# Handle build type
+-if(CMAKE_BUILD_TYPE MATCHES [Dd]ebug)
+-    message(STATUS "Debug build")
+-    add_definitions(-DDEBUG)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+-else()
+-    message(STATUS "Release build")
+-    add_definitions(-DNDEBUG)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+-endif()
+-
+ # Default absolute paths
+ if(NOT DEFINED CMAKE_INSTALL_SYSCONFDIR)
+     set(CMAKE_INSTALL_SYSCONFDIR "/etc")
