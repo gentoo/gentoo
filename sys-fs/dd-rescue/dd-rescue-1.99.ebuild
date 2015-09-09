@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Similar to dd but can copy from source with errors"
 HOMEPAGE="http://www.garloff.de/kurt/linux/ddrescue/"
-SRC_URI="http://www.garloff.de/kurt/linux/ddrescue/${MY_P}.tar.gz"
+SRC_URI="http://www.garloff.de/kurt/linux/ddrescue/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,9 +22,11 @@ RDEPEND="lzo? ( dev-libs/lzo )
 	xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_PN}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	epatch "${FILESDIR}/${MY_PN}-1.99-test_fix.patch"
+
 	sed -i \
 		-e 's:-ldl:$(LDFLAGS) -ldl:' \
 		-e 's:-shared:$(CFLAGS) $(LDFLAGS) -shared:' \
@@ -34,7 +36,9 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
+	# OpenSSL is only used by a random helper tool we don't install.
 	ac_cv_header_attr_xattr_h=$(usex xattr) \
+	ac_cv_header_openssl_evp_h=no \
 	ac_cv_lib_lzo2_lzo1x_1_compress=$(usex lzo) \
 	econf
 }
