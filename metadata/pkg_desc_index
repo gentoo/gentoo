@@ -131,7 +131,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.8.8 3.8.9 3.8.9-r1 3.9.1: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 1.4.4 1.5.3: Tool for managing events and logs
+app-admin/logstash-bin 1.4.5 1.5.4: Tool for managing events and logs
 app-admin/logstash-forwarder 0.4.0-r1: Collects logs locally in preparation for processing elsewhere
 app-admin/logsurfer+ 1.8-r1: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
