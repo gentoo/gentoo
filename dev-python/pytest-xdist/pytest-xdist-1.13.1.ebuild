@@ -17,7 +17,16 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="
+	>=dev-python/execnet-1.1[${PYTHON_USEDEP}]
+	>=dev-python/pytest-2.4.2[${PYTHON_USEDEP}]
+	>=dev-python/py-1.4.22[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	"
+
+python_test() {
+	find -name __pycache__ -exec rm -r '{}' + || die
+	py.test -vv || die
+}
