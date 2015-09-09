@@ -215,7 +215,7 @@ app-admin/testdisk 6.12 6.13 6.14 6.14-r1 6.14-r2 7.0 7.0-r1 7.0-r2 7.0-r3: Chec
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r1: Files which haven't been accessed in a given period of time are removed from specified directories
 app-admin/tripwire 2.4.2.2-r3: Open Source File Integrity Checker and IDS
-app-admin/ulogd 2.0.4-r1 2.0.5: A userspace logging daemon for netfilter/iptables related logging
+app-admin/ulogd 2.0.4-r1 2.0.5 2.0.5-r1: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/usermin 1.600: A web-based user administration interface
 app-admin/vault 0.1.2 0.1.2-r1 9999: A tool for managing secrets
