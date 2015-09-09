@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 #no tests
-RESTRICT=test
+RESTRICT="test strip"
 
 QA_PREBUILT="
 	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/msflinker_linux_x86.bin
