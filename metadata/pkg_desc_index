@@ -6233,13 +6233,13 @@ dev-perl/Try-Tiny 0.180.0 0.190.0: Minimal try/catch with proper localization of
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.207.260-r1 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
-dev-perl/UNIVERSAL-isa 1.201.207.260-r1: Attempt to recover from people calling UNIVERSAL::isa as a function
+dev-perl/UNIVERSAL-isa 1.201.207.260-r1 1.201.506.140: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
-dev-perl/UNIVERSAL-require 0.150.0-r1 0.160.0: UNIVERSAL::require - require() modules from a variable
-dev-perl/URI 1.600.0-r1 1.670.0 1.680.0: Uniform Resource Identifiers (absolute and relative)
+dev-perl/UNIVERSAL-require 0.160.0 0.180.0: UNIVERSAL::require - require() modules from a variable
+dev-perl/URI 1.600.0-r1 1.680.0 1.690.0: Uniform Resource Identifiers (absolute and relative)
 dev-perl/URI-Encode 0.90.0: Simple percent Encoding/Decoding
 dev-perl/URI-Fetch 0.90.0-r1: Smart URI fetching/caching
-dev-perl/URI-Find 20111103.0.0-r1: Find URIs in plain text
+dev-perl/URI-Find 20111103.0.0-r1 20140709.0.0: Find URIs in plain text
 dev-perl/UUID 0.50.0: Perl extension for using UUID interfaces as defined in e2fsprogs.
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r1: Client API for the NeuStar UltraDNS Transaction Protocol
@@ -6258,7 +6258,7 @@ dev-perl/Unix-Syslog 1.100.0-r1: A Perl module which provides access to the syst
 dev-perl/User-Identity 0.930.0-r1 0.940.0: Maintains info about a physical person
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
 dev-perl/Validate-Tiny 1.015 1.551: Minimalistic data validation
-dev-perl/Variable-Magic 0.530.0-r1 0.570.0: Associate user-defined magic to variables from Perl
+dev-perl/Variable-Magic 0.530.0-r1 0.570.0 0.580.0: Associate user-defined magic to variables from Perl
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
