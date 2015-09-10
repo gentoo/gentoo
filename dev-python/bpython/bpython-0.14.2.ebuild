@@ -11,11 +11,8 @@ PYTHON_REQ_USE="ncurses"
 inherit distutils-r1
 
 DESCRIPTION="Syntax highlighting and autocompletion for the Python interpreter"
-HOMEPAGE="http://www.bpython-interpreter.org/ https://bitbucket.org/bobf/bpython/ https://pypi.python.org/pypi/bpython"
-SRC_URI="
-	http://www.bpython-interpreter.org/releases/${P}.tar.gz
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	"
+HOMEPAGE="http://www.bpython-interpreter.org/ https://github.com/bpython/bpython https://pypi.python.org/pypi/bpython"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,7 +21,6 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/curtsies-0.1.18[${PYTHON_USEDEP}]
-	<dev-python/curtsies-0.2.0[${PYTHON_USEDEP}]
 	dev-python/greenlet[${PYTHON_USEDEP}]
 	dev-python/jedi[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
