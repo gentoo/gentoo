@@ -1,0 +1,22 @@
+The uninstall target is created automatically by FindKDE4Internal. Due to
+cmake policy changes in kdelibs-4.14.11, this target name collision causes
+a build failure.
+
+https://bugs.gentoo.org/show_bug.cgi?id=558574
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -35,13 +35,6 @@
+ 
+ add_subdirectory( src )
+ 
+-CONFIGURE_FILE( "${PROJECT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+-                "${PROJECT_BINARY_DIR}/cmake_uninstall.cmake"
+-                IMMEDIATE @ONLY )
+-
+-ADD_CUSTOM_TARGET( uninstall
+-  "${CMAKE_COMMAND}" -P "${PROJECT_BINARY_DIR}/cmake_uninstall.cmake" )
+-
+ message("-------------------------------------------------------------------")
+ message(" Required for build:   qt4-dev (>>= 4.6) ")
+ message(" Required for runtime: nmap+nping ( >= 6.00 ), dig ")
