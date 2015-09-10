@@ -10382,7 +10382,7 @@ gnustep-libs/pantomime 1.2.0 1.2.2: A set of Objective-C classes that model a ma
 gnustep-libs/performance 0.4.0: Help improve the performance of GNUstep applications
 gnustep-libs/prefsmodule 1.1.1_pre20061204-r1: Preferences is the GNUstep program with which you define your own personal user experience
 gnustep-libs/renaissance 0.9.0: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/smbkit 0.0.1.20061010: SMBKit offers a samba library and headers for GNUstep
+gnustep-libs/smbkit 0.0.1.20061010 0.0.1.20061010-r1: SMBKit offers a samba library and headers for GNUstep
 gnustep-libs/sqlclient 1.7.0: GNUstep lightweight database abstraction layer
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
