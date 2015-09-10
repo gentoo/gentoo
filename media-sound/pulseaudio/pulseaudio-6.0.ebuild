@@ -379,4 +379,11 @@ pkg_postinst() {
 		elog "The libsamplerate based resamplers are now deprecated, because they offer no"
 		elog "particular advantage over speex. Upstream suggests disabling them."
 	fi
+
+	# Needed for pulseaudio-6.0 update from older versions
+	if use udev; then
+		if ! version_is_at_least 6.0 ${REPLACING_VERSIONS}; then
+			udevadm control --reload && udevadm trigger
+		fi
+	fi
 }
