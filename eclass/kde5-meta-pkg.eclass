@@ -18,4 +18,6 @@ HOMEPAGE="https://www.kde.org/"
 LICENSE="metapackage"
 SLOT="5"
 
+RDEPEND+=" !kde-apps/${PN}:4"
+
 fi
