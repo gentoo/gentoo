@@ -6,8 +6,8 @@ HOMEPAGE=https://www.kde.org/
 IUSE=test doc debug test
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2+
-RDEPEND=>=kde-frameworks/kconfig-5.13 >=kde-frameworks/kcoreaddons-5.13 >=kde-frameworks/ki18n-5.13 >=kde-frameworks/kio-5.13 >=kde-frameworks/kservice-5.13 >=kde-frameworks/plasma-5.13 >=kde-frameworks/solid-5.13 >=kde-frameworks/threadweaver-5.13 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=kde-frameworks/kf-env-3 >=dev-qt/qtcore-5.4.1:5
+RDEPEND=>=kde-frameworks/kconfig-5.13 >=kde-frameworks/kcoreaddons-5.13 >=kde-frameworks/ki18n-5.13 >=kde-frameworks/kio-5.13 >=kde-frameworks/kservice-5.13 >=kde-frameworks/plasma-5.13 >=kde-frameworks/solid-5.13 >=kde-frameworks/threadweaver-5.13 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=kde-frameworks/kf-env-3 !kde-apps/kde4-l10n[-minimal(-)] !<kde-apps/kde4-l10n-15.08.0-r1 >=dev-qt/qtcore-5.4.1:5
 SLOT=5/5.13
 SRC_URI=mirror://kde/stable/frameworks/5.13/portingAids/krunner-5.13.0.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnome2-utils	44555579e85afa5c035d2bd5428252da	kde5	677891f0b4d370c094ec41f4674ee3c6	kde5-functions	8d35a2afa9dbf82a1f95578e7b849572	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnome2-utils	44555579e85afa5c035d2bd5428252da	kde5	c1127f580183d3e2263e04b8a5bda5fa	kde5-functions	8d35a2afa9dbf82a1f95578e7b849572	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
 _md5_=a0c61eece240d414d542e5b10cc3c6de
