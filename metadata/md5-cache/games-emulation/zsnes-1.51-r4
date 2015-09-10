@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-DEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0[abi_x86_32(-)] ) dev-lang/nasm debug? ( virtual/pkgconfig ) amd64? ( >=sys-apps/portage-2.1 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses:0[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0[abi_x86_32(-)] ) dev-lang/nasm debug? ( virtual/pkgconfig ) amd64? ( >=sys-apps/portage-2.1 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=SNES (Super Nintendo) emulator that uses x86 assembly
 EAPI=5
 HOMEPAGE=http://www.zsnes.com/ http://ipherswipsite.com/zsnes/
 IUSE=ao custom-cflags +debug opengl pax_kernel png
 KEYWORDS=-* amd64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0[abi_x86_32(-)] ) games-misc/games-envd
+RDEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses:0[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0[abi_x86_32(-)] ) games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://sourceforge/zsnes/zsnes151src.tar.bz2
 _eclasses_=autotools	7feb275d850f45095537e76c5aa80494	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	9c0a2dd4a6a25b6b7851fa01019cc809	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=f337582e1d43c5b5ea67c84bb42f9c30
+_md5_=71f24e2c961fe9e4f89bfacfcb716350
