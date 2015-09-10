@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Alexandre Rostovtsev <tetromino@gentoo.org> (10 Sep 2015)
+# Requires wifi USE flag, which is masked for this arch
+net-misc/networkmanager wext
+
 # Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
 # Missing keywords
 media-sound/pulseaudio ofono-headset
