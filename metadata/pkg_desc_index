@@ -12133,7 +12133,7 @@ media-plugins/vdr-cpumon 0.0.6_p1: VDR Plugin: Show cpu-usage on OSD
 media-plugins/vdr-decruft 0.0.4-r1: VDR Plugin: Clean unwanted entries from channels.conf
 media-plugins/vdr-devstatus 0.4.1: VDR plugin: display the usa status of the available DVB devices
 media-plugins/vdr-dummydevice 1.0.3 2.0.0: VDR Plugin: dummy output device - for recording server without any output devices
-media-plugins/vdr-duplicates 0.0.5 0.0.5-r1: VDR Plugin: show duplicated records
+media-plugins/vdr-duplicates 0.0.5 0.0.5-r1 0.1.0: VDR Plugin: show duplicated records
 media-plugins/vdr-dvbapi 2.1.1: VDR Plugin: allows connect VDR to OScam
 media-plugins/vdr-dvbhddevice 0.0.8_p20130302 0.0.9_p20130409 2.1.3_p20140115 2.1.3_p20140115-r1 2.1.6_p20141116-r1: VDR Plugin: output device for the 'Full Featured' TechnoTrend S2-6400 DVB Card
 media-plugins/vdr-dvbsddevice 2.0.0 2.2.0: VDR Plugin: output device for the 'Full Featured' SD DVB Card
