@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Iconsets for Claws Mail
+EAPI=5
+HOMEPAGE=http://www.claws-mail.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 GPL-3 CC-BY-3.0 CC-BY-SA-2.5 CC-BY-NC-SA-3.0 CC-BY-ND-3.0 MPL-1.1 freedist public-domain all-rights-reserved
+RDEPEND=mail-client/claws-mail
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.claws-mail.org/themes/claws-mail-themes-20140629.tar.gz
+_md5_=4ac7f40f3d1056eb2a383c4dcfac5802

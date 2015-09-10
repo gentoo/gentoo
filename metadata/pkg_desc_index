@@ -527,7 +527,7 @@ app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.5.5: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.5.5 1.6.0: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat-bin 0.46 0.47 0.49: An multi-threaded multihash cracker
@@ -4649,7 +4649,7 @@ dev-libs/libgdata 0.16.1 0.17.1 0.17.2: GLib-based library for accessing online 
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.0 0.23.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.0.12 0.0.16 0.0.24 0.22.0 0.22.8: Git library for GLib
-dev-libs/libgpg-error 1.13 1.18 1.19: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.13 1.18 1.19 1.20: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
 dev-libs/libgusb 0.2.5 0.2.6: GObject wrapper for libusb
@@ -17982,7 +17982,7 @@ x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
 x11-themes/bespin 0_p20140225: Very configurable Qt4/KDE4 style derived from the Oxygen project
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/chameleon-xcursors 0.5: Style neutral scalable cursor theme
-x11-themes/claws-mail-themes 20120129: Iconsets for Claws Mail
+x11-themes/claws-mail-themes 20120129 20140629: Iconsets for Claws Mail
 x11-themes/clearlooks-phenix 3.0.15 5.0.7 6.0.3 9999: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
 x11-themes/comix-xcursors 0.7.3 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
