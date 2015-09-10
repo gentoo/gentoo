@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="compute-only dhcp doc l3 metadata openvswitch linuxbridge server test sqlite mysql postgres"
+IUSE="compute-only dhcp doc ipv6 l3 metadata openvswitch linuxbridge server test sqlite mysql postgres"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( !mysql !postgres !sqlite !dhcp !l3 !metadata !server
 						|| ( openvswitch linuxbridge ) )"
@@ -129,6 +129,7 @@ RDEPEND="
 	net-firewall/iptables
 	net-firewall/ebtables
 	openvswitch? ( net-misc/openvswitch )
+	ipv6? ( net-misc/radvd )
 	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
 
 PATCHES=(
