@@ -7941,6 +7941,7 @@ dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatib
 dev-python/xmltodict 0.9.1 0.9.2: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1 0.5.0_rc1-r1: Python library providing easy scripting with Jabber
 dev-python/xvfbwrapper 0.2.2 0.2.4: Python wrapper for running a display inside X virtual framebuffer
+dev-python/yappi 0.93: Yet Another Python Profiler
 dev-python/yapps 2.2.0: An easy to use parser generator
 dev-python/yapsy 1.10.423 1.11.023 1.11.223: A fat-free DIY Python plugin management toolkit
 dev-python/yenc 0.4.0-r1: Module providing raw yEnc encoding/decoding
