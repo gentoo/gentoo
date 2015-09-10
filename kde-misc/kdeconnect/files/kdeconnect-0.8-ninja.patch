@@ -1,0 +1,36 @@
+From d9e0c61185a5ecbd9b013740fe73d21ba5adaa44 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Thu, 10 Sep 2015 21:56:39 +1000
+Subject: [PATCH] Fix make with ninja.
+
+The custom command name must differ from the name of the generated file.
+
+REVIEW: 125137
+---
+ cmake/DbusInterfaceMacros.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/DbusInterfaceMacros.cmake b/cmake/DbusInterfaceMacros.cmake
+index 9d4810d..801452a 100644
+--- a/cmake/DbusInterfaceMacros.cmake
++++ b/cmake/DbusInterfaceMacros.cmake
+@@ -12,7 +12,7 @@ macro (generate_and_install_dbus_interface main_project_target header_file outpu
+         OPTIONS ${qdbus_options}
+     )
+     add_custom_target(
+-        ${output_xml_file}
++        ${output_xml_file}_target
+         SOURCES ${CMAKE_CURRENT_BINARY_DIR}/${output_xml_file}
+     )
+     install(
+@@ -21,6 +21,6 @@ macro (generate_and_install_dbus_interface main_project_target header_file outpu
+     )
+     add_dependencies(
+         ${main_project_target}
+-        ${output_xml_file}
++        ${output_xml_file}_target
+     )
+ endmacro (generate_and_install_dbus_interface)
+-- 
+2.4.6
+

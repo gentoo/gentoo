@@ -42,6 +42,8 @@ DEPEND="${COMMON_DEPEND}
 
 [[ ${KDE_BUILD_TYPE} != live ]] && S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}/${P}-ninja.patch" )
+
 pkg_postinst(){
 	elog
 	elog "Optional dependency:"
