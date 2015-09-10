@@ -7294,6 +7294,7 @@ dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 0.8.2 0.8.2-r1 0.10.8 0.11.0 1.0.1 1.1.1 1.2.0 1.3.0 1.6.0 1.7.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
+dev-python/pdoc 0.3.1: A simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/peewee 2.5.1 2.6.2 2.6.3: Small python ORM
 dev-python/pep8 1.4.5 1.5.6 1.5.7 1.6.1 1.6.2: Python style guide checker
