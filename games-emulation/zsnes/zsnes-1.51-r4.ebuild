@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/libsdl[sound,video,abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)]
 	ao? ( media-libs/libao[abi_x86_32(-)] )
-	debug? ( sys-libs/ncurses[abi_x86_32(-)] )
+	debug? ( sys-libs/ncurses:0[abi_x86_32(-)] )
 	opengl? ( virtual/opengl[abi_x86_32(-)] )
 	png? ( media-libs/libpng:0[abi_x86_32(-)] )"
 DEPEND="${RDEPEND}
