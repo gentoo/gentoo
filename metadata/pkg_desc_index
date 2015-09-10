@@ -2959,7 +2959,7 @@ dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrap
 dev-db/wxsqlite3 3.0.6.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
-dev-db/xtrabackup-bin 2.1.9 2.2.3 2.2.5: MySQL hot backup software that performs non-blocking backups for InnoDB and XtraDB databases
+dev-db/xtrabackup-bin 2.1.9 2.2.5 2.2.12: MySQL hot backup software that performs non-blocking backups for InnoDB and XtraDB databases
 dev-dotnet/art-sharp 2.24.2: GtkSharp's art module of the gnome-sharp tarball
 dev-dotnet/atk-sharp 2.12.10: GtkSharp's atk module of the gtk-sharp tarball
 dev-dotnet/dbus-sharp 0.7.0-r1: D-Bus for .NET
@@ -16576,7 +16576,7 @@ sys-process/fcron 3.1.1 3.1.2-r2: A command scheduler with extended capabilities
 sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/fuser-bsd 1142334561: fuser(1) utility for *BSD
 sys-process/glances 2.2.1 2.3 2.4.2: CLI curses based monitoring tool
-sys-process/htop 1.0.3: interactive process viewer
+sys-process/htop 1.0.3 1.0.3-r1: interactive process viewer
 sys-process/incron 0.5.10 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5: tool for identifying where in the system latency is happening
