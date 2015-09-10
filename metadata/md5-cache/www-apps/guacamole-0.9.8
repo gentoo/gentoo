@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-java/maven-bin:*
+DESCRIPTION=Guacamole is a html5 vnc client as servlet
+EAPI=5
+HOMEPAGE=http://guac-dev.org/
+IUSE=ldap mysql postgres noauth
+KEYWORDS=~x86 ~amd64
+LICENSE=MIT
+RDEPEND=dev-java/maven-bin:* www-servers/tomcat[websockets] >virtual/jre-1.6 net-misc/guacamole-server mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) ldap? ( net-nds/openldap )
+SLOT=0
+SRC_URI=mirror://sourceforge/guacamole/guacamole-client-0.9.8.tar.gz mysql? ( http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-jdbc-0.9.8.tar.gz ) postgres? ( http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-jdbc-0.9.8.tar.gz ) noauth? ( http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-noauth-0.9.8.tar.gz ) ldap? ( http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-ldap-0.9.8.tar.gz )
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=38b3d6f1f87ffd580283f19d51b21cac
