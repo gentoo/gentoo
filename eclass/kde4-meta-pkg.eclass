@@ -14,7 +14,7 @@ _KDE4_META_PKG_ECLASS=1
 
 inherit kde4-functions
 
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 
 LICENSE="metapackage"
 IUSE="aqua"
