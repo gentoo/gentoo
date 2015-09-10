@@ -49,7 +49,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-buffer.patch \
 		"${FILESDIR}"/${P}-gcc47.patch \
 		"${FILESDIR}"/${P}-stack-align.patch \
-		"${FILESDIR}"/${P}-cross-compile.patch
+		"${FILESDIR}"/${P}-cross-compile.patch \
+		"${FILESDIR}"/${P}-arch.patch
 
 	# The sdl detection logic uses AC_PROG_PATH instead of
 	# AC_PROG_TOOL, so force the var to get set the way we
@@ -76,6 +77,7 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	export BUILD_CXX=$(tc-getBUILD_CXX)
+	export NFLAGS=-O1
 	use amd64 && multilib_toolchain_setup x86
 	use custom-cflags || strip-flags
 
@@ -87,9 +89,7 @@ src_configure() {
 		$(use_enable png libpng) \
 		$(use_enable opengl) \
 		--disable-debug \
-		--disable-cpucheck \
-		--enable-release \
-		force_arch=no
+		--disable-cpucheck
 }
 
 src_compile() {
