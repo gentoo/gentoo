@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,9 +34,11 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS HACKING NEWS TODO Translation )
+PATCHES=( "${FILESDIR}/${P}-kdelibs-4.14.11.patch" )
 
 src_prepare() {
 	l10n_for_each_disabled_locale_do nmapsi_disable_locale
+	cmake-utils_src_prepare
 }
 
 src_configure() {
