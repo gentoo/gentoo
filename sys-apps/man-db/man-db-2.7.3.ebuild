@@ -13,7 +13,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~arm-linux ~x86-linux"
-IUSE="berkdb +gdbm nls selinux static-libs zlib"
+IUSE="berkdb +gdbm +manpager nls selinux static-libs zlib"
 
 CDEPEND=">=dev-libs/libpipeline-1.4.0
 	berkdb? ( sys-libs/db )
@@ -32,6 +32,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mandb )
 "
+PDEPEND="manpager? ( app-text/manpager )"
 
 pkg_setup() {
 	# Create user now as Makefile in src_install does setuid/chown
@@ -53,6 +54,11 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable static-libs static) \
 		--with-db=$(usex gdbm gdbm $(usex berkdb db gdbm))
+
+	# Disable color output from groff so that the manpager can add it. #184604
+	sed -i \
+		-e '/^#DEFINE.*\<[nt]roff\>/{s:^#::;s:$: -c:}' \
+		src/man_db.conf || die
 }
 
 src_install() {
