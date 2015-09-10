@@ -14,8 +14,10 @@ _KDE5_META_PKG_ECLASS=1
 
 inherit kde5-functions
 
-HOMEPAGE="http://www.kde.org/"
+HOMEPAGE="https://www.kde.org/"
 LICENSE="metapackage"
 SLOT="5"
+
+RDEPEND+=" !kde-apps/${PN}:4"
 
 fi
