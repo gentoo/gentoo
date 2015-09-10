@@ -10815,7 +10815,7 @@ kde-misc/kcm-ufw 0.4.3-r1: KCM module to control the Uncomplicated Firewall
 kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
 kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
 kde-misc/kde-gtk-config 2.2.1: KDE systemsettings kcm to set GTK application look&feel
-kde-misc/kdeconnect 0.7.3 0.8: Adds communication between KDE and your smartphone
+kde-misc/kdeconnect 0.8: Adds communication between KDE and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.97-r2 0.9.98 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 2.7.5 3.0: Nice KDE replacement to the du command
