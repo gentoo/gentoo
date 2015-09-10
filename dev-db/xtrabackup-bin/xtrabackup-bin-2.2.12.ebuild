@@ -1,13 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 MY_PN="percona-${PN/-bin}"
-MY_PVR="${PV}-4982"
 MY_P="${MY_PN}-${PV}"
-MY_PF="${MY_PN}-${MY_PVR}"
 
 inherit eutils
 
@@ -16,10 +14,10 @@ InnoDB and XtraDB databases"
 HOMEPAGE="http://www.percona.com/software/percona-xtrabackup"
 SRC_URI="
 	amd64? (
-		http://www.percona.com/downloads/XtraBackup/XtraBackup-${PV}/binary/tarball/${MY_PF}-Linux-x86_64.tar.gz
+		http://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-x86_64.tar.gz
 	)
 	x86? (
-		http://www.percona.com/downloads/XtraBackup/XtraBackup-${PV}/binary/tarball/${MY_PF}-Linux-i686.tar.gz
+		http://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-i686.tar.gz
 	)"
 
 LICENSE="GPL-2"
@@ -31,7 +29,8 @@ DEPEND=""
 RDEPEND="dev-libs/libaio
 	|| ( dev-libs/libgcrypt:0/11 dev-libs/libgcrypt:11/11 )
 	dev-libs/libgpg-error
-	dev-perl/DBD-mysql"
+	dev-perl/DBD-mysql
+	sys-libs/zlib"
 
 if use amd64; then
 	S="${WORKDIR}/${MY_P}-Linux-x86_64"
@@ -45,8 +44,9 @@ src_prepare() {
 }
 
 src_install() {
-	for bin in innobackupex xbcrypt xbstream xtrabackup; do
-		dobin bin/${bin}
+	for tool in innobackupex xbcrypt xbstream xtrabackup; do
+		dobin bin/${tool}
+		doman man/man1/${tool}.1
 	done
 }
 
