@@ -15796,7 +15796,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/magneto-core 254: Entropy Package Manager notification applet library
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
-sys-apps/man-db 2.6.6 2.6.7.1 2.7.1 2.7.2 2.7.2-r1: a man replacement that utilizes berkdb instead of flat files
+sys-apps/man-db 2.6.6 2.6.7.1 2.7.2 2.7.2-r1 2.7.3: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.00 4.01 4.02: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/mawk 1.3.4_p20100625 1.3.4_p20141206 1.3.4_p20150503: an (often faster than gawk) awk-interpreter
@@ -17079,7 +17079,7 @@ www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for 
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 9999: Pretty small HTTP server - a command-line tool to share files
-www-servers/resin 4.0.44-r2: A fast Servlet and JSP engine
+www-servers/resin 4.0.44-r3: A fast Servlet and JSP engine
 www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.3 1.6.3-r1: A fast and very simple Ruby web server
