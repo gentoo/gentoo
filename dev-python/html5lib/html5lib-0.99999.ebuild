@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1
 
 DESCRIPTION="HTML parser based on the HTML5 specification"
-HOMEPAGE="https://github.com/html5lib/html5lib-python/"
+HOMEPAGE="https://github.com/html5lib/html5lib-python/ https://html5lib.readthedocs.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
