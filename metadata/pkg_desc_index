@@ -3874,7 +3874,7 @@ dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
 dev-java/gnu-regexp 1.1.4-r2: GNU regular expression package for Java
 dev-java/groovy 1.7.5 1.8.5-r1: Groovy is a high-level dynamic language for the JVM
 dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
-dev-java/guava 07 13.0.1 13.0.1-r1 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
+dev-java/guava 07 13.0.1 13.0.1-r1 13.0.1-r2 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
 dev-java/guice 2.0-r1 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
 dev-java/hamcrest-core 1.1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
