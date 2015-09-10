@@ -26,12 +26,12 @@ RDEPEND="
 	media-libs/clutter:1.0[introspection]
 	media-libs/cogl:1.0[introspection]
 	>=media-libs/libchamplain-0.12.10-r1:0.12[gtk,introspection]
+	net-libs/libgfbgraph
 	net-libs/libsoup:2.4[introspection]
 	>=sci-geosciences/geocode-glib-3.15.2[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
 	>=x11-libs/gtk+-3.15.9:3[introspection]
 "
-
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
