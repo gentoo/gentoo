@@ -26,3 +26,5 @@ RDEPEND="${DEPEND}
 	bluetooth? ( net-wireless/bluedevil:4 )
 	networkmanager? ( || ( kde-misc/plasma-nm kde-misc/networkmanagement kde-plasma/plasma-nm ) )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-4.14.3-networkmanager-1.0.6.patch" )
