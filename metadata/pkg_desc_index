@@ -13058,7 +13058,7 @@ net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
 net-analyzer/nmap 6.47-r1 6.47-r2 6.47-r3 6.49_beta2 9999: A utility for network discovery and security auditing
-net-analyzer/nmapsi 0.4 0.4.1: A Qt4 frontend to nmap
+net-analyzer/nmapsi 0.4.1: A Qt4 frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nrpe 2.15-r2 2.15-r3: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r3: Network Security Analysis Tool, an application-level network security scanner
