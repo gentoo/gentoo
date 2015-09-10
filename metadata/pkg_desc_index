@@ -6923,7 +6923,7 @@ dev-python/editobj 0.5.7-r1 0.5.7-r2: EditObj can create a dialog box to edit AN
 dev-python/edpwd 0.0.7: Encrypt/Decrypt Password Library that wraps up Blowfish
 dev-python/egenix-mx-base 3.2.5 3.2.8: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
-dev-python/elasticsearch-curator 2.1.2 3.0.0 3.2.3: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-curator 2.1.2 3.0.0 3.2.3 3.3.0: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 1.4.0 1.5.0 1.6.0: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
