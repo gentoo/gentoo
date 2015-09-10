@@ -16872,7 +16872,7 @@ www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
-www-apache/mpm_itk 2.4.7_p2: Run virtual hosts under separate users/groups
+www-apache/mpm_itk 2.4.7_p3: Run virtual hosts under separate users/groups
 www-apache/passenger 4.0.53 4.0.59 5.0.4 5.0.13 5.0.14 5.0.16: Passenger (a.k.a. mod_rails) makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
