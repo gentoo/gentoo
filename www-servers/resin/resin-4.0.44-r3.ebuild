@@ -77,14 +77,6 @@ src_prepare() {
 
 	rm -rf lib/* || die
 
-	java-pkg_jar-from --into lib jsr101
-	java-pkg_jar-from --into lib mojarra-1.2
-	java-pkg_jar-from --into lib oracle-javamail
-	java-pkg_jar-from --into lib validation-api-1.0
-	java-pkg_jar-from --into lib glassfish-xmlrpc-api
-	java-pkg_jar-from --into lib glassfish-deployment-api-1.2
-	java-pkg_jar-from --into lib resin-servlet-api-3.0 resin-servlet-api.jar
-
 	ln -s $(java-config --jdk-home)/lib/tools.jar || die
 }
 
