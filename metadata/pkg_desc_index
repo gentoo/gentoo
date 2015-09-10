@@ -7051,7 +7051,7 @@ dev-python/hgtools 6.0 6.3: Classes and setuptools plugin for Mercurial reposito
 dev-python/hiredis 0.1.1-r2 0.2.0: Python extension that wraps hiredis
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
 dev-python/html2text 2014.4.5-r1: Turn HTML into equivalent Markdown-structured text
-dev-python/html5lib 0.99999 0.999999: HTML parser based on the HTML5 specification
+dev-python/html5lib 0.99999 0.999999 0.9999999: HTML parser based on the HTML5 specification
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
 dev-python/httmock 1.2.2: A mocking library for requests
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
@@ -7122,7 +7122,7 @@ dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enha
 dev-python/kiwisolver 0.1.3: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/kombu 2.5.16 3.0.23 3.0.24 3.0.26: AMQP Messaging Framework for Python
 dev-python/larch 1.20130808 1.20131130: Copy-on-write B-tree data structure
-dev-python/ldap3 0.9.8.2 0.9.8.4 0.9.8.6 0.9.8.7 0.9.8.8: A strictly RFC 4511 conforming LDAP V3 pure Python client
+dev-python/ldap3 0.9.8.2 0.9.8.4 0.9.8.6 0.9.8.7 0.9.8.8 0.9.9: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.10.2: A compiler written in Python for the LESS language
 dev-python/libasyncns-python 0.7.1-r1: Python bindings for libasyncns
