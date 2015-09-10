@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Anthony G. Basile <blueness@gentoo.org> (10 Sep 2015)
+# # seccomp code is currently broken, bug #560098
+app-misc/pax-utils seccomp
+
 # Mikle Kolyada <zlogene@gentoo.org> (12 Apr 2015)
 # GNOME Shell does not work on mips
 net-misc/wicd gnome-shell

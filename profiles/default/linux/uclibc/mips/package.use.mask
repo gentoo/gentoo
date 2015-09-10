@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Anthony G. Basile <blueness@gentoo.org> (10 Sep 2015)
+# # seccomp code is currently broken, bug #560098
+app-misc/pax-utils seccomp
+
 # Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
 # sys-devel/clang is not keyworded on mips.
 app-doc/doxygen clang
