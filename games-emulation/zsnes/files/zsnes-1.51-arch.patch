@@ -1,0 +1,77 @@
+--- configure.in.orig
++++ configure.in
+@@ -233,72 +233,8 @@
+   debug=no)
+ AC_MSG_CHECKING(if you want gdb friendly executable)
+ AC_MSG_RESULT($debug)
+-if test x$debug = xyes; then
+-dnl - It is easier to debug zsnes with no optimization enabled.
+-  ZSNESEXE="zsnesd"
+-  PSR_TEMP=""
+-  CFLAGS="$CFLAGS -Wall -W -DDEBUG -O0 -fno-omit-frame-pointer -gstabs3"
+-  NFLAGS="$NFLAGS -DDEBUG -g -F stabs -s -O0"
+-else
+-  ZSNESEXE="zsnes"
+-  PSR_TEMP="	rm -f t_\$*.c"
+-
+-  CFLAGSBAK="$CFLAGS"
+-  AC_ARG_VAR(force_arch, [Force architecture to optimize GCC/G++ for])
+-  AC_MSG_CHECKING(which cpu architecture to optimize for)
+-  if test x$force_arch != x; then
+-    CFLAGS="$CFLAGS -march=$force_arch"
+-    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]])],
+-    [AC_MSG_RESULT(forcing $force_arch)],
+-    [AC_MSG_RESULT($force_arch ??)
+-    AC_MSG_WARN(incorrect force_arch parameter)
+-    force_arch=""
+-    CFLAGS="$CFLAGSBAK"
+-    AC_MSG_CHECKING(for autodetected architecture)])
+-  else
+-    if test x$ARCH_INFO = x; then
+-      case x$target in
+-        i686-*-*)
+-          AC_MSG_RESULT(guessing i686)
+-          CFLAGS="$CFLAGS -march=i686"
+-          ;;
+-        i586-*-*)
+-          AC_MSG_RESULT(guessing i586)
+-          CFLAGS="$CFLAGS -march=i586"
+-          ;;
+-        i486-*-*)
+-          AC_MSG_RESULT(guessing i486)
+-          CFLAGS="$CFLAGS -march=i486"
+-          ;;
+-        *)
+-          AC_MSG_RESULT(guessing i386)
+-          CFLAGS="$CFLAGS -march=i386"
+-          AC_MSG_WARN([This is not what you want, use --target or force-arch])
+-          ;;
+-      esac
+-    else
+-      AC_MSG_RESULT($ARCH_INFO)
+-      CFLAGS="$CFLAGS -march=$ARCH_INFO"
+-    fi
+-  fi
+-
+-  AC_ARG_ENABLE(release,
+-    [  --enable-release        Build ultra-optimized release binary (zsnes)],
+-    release=$enableval,
+-    release=no)
+-  AC_MSG_CHECKING(if you want crazy optimizations)
+-  AC_MSG_RESULT($release)
+-  if test x$release = xyes; then
+-    if test x$force_arch = x; then
+-      AC_MSG_WARN([If you intend to distribute this binary, make sure you use force_arch and set to i586 (or whichever CPU Arch you intend for)])
+-    fi
+-    CFLAGS="$CFLAGS -O3 -fomit-frame-pointer -fprefetch-loop-arrays -fforce-addr $STRIP -D__RELEASE__"
+-    NFLAGS="$NFLAGS -O99999999 -D__RELEASE__"
+-  else
+-    CFLAGS="$CFLAGS -O3 -fomit-frame-pointer $STRIP"
+-    NFLAGS="$NFLAGS -O1"
+-  fi
+-fi
++ZSNESEXE="zsnes"
++PSR_TEMP="	rm -f t_\$*.c"
+ CXXFLAGS="$CFLAGS -fno-rtti"
+ 
+ if test x$enable_jma != xno; then
