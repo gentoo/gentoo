@@ -9,5 +9,6 @@
 	<upstream>
 		<remote-id type="pypi">pxml</remote-id>
 		<remote-id type="github">metagriffin/pxml</remote-id>
+		<remote-id type="bitbucket">pytest-dev/pytest-xdist</remote-id>
 	</upstream>
 </pkgmetadata>

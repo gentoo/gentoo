@@ -8,5 +8,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">Pyro</remote-id>
+    <remote-id type="github">irmen/Pyro4</remote-id>
   </upstream>
 </pkgmetadata>
