@@ -121,6 +121,9 @@ src_prepare() {
 	# Force use of /run, avoid eautoreconf, upstream bug #737139, fixed in 'master'
 	sed -e 's:$localstatedir/run/:/run/:' -i configure || die
 
+	# Don't build examples, they are not needed and can cause build failure
+	sed -e '/^\s*examples\s*\\/d' -i Makefile.{am,in} || die
+
 	use vala && vala_src_prepare
 
 	epatch_user # don't remove, users often want custom patches for NM
