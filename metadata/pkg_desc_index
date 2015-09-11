@@ -9098,7 +9098,7 @@ dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 3.4.1 4.0.6 4.5.2 4.5.3: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 3.4.1 4.0.6 4.5.2 4.5.3: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 3.4.1 3.4.1-r1 4.0.6 4.0.6-r1 4.5.2 4.5.2-r1 4.5.3 4.5.3-r1: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.1: Qt Build Suite
 dev-util/qdevelop 0.28: A development environment entirely dedicated to Qt4
 dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machines
