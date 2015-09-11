@@ -8262,7 +8262,7 @@ dev-ruby/mimemagic 0.3.0: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.2.7 4.2.9 4.2.10: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
 dev-ruby/minitest 4.7.5 4.7.5-r1 4.7.5-r2 5.3.3 5.3.3-r1 5.5.1 5.6.1 5.7.0 5.8.0: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
-dev-ruby/mixlib-shellout 2.1.0 2.2.0: Run external commands on Unix or Windows
+dev-ruby/mixlib-shellout 2.1.0 2.2.0 2.2.1: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4 0.11.4-r1 0.12.7 0.12.10 0.12.10-r1 0.13.3 0.13.3-r1 0.13.3-r2 0.14.0 1.1.0: A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock
 dev-ruby/modernizr 2.6.2: Neatly packaged Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.7.20 0.8.0: A unified interface to key/value stores
