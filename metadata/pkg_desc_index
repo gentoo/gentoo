@@ -103,7 +103,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
-app-admin/gkrellm 2.3.5-r3: Single process stack of various system monitors
+app-admin/gkrellm 2.3.5-r3 2.3.6_rc1: Single process stack of various system monitors
 app-admin/glance 2015.1.1-r1 2015.1.9999: Provides services for discovering, registering, and retrieving virtual machine images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
