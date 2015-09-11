@@ -522,7 +522,7 @@ app-crypt/gentoo-keys 201501052117: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.1-r1 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.1-r1 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.19 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.1.6 2.1.7 2.1.7-r1 2.1.8: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.19 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.0.29 2.1.6 2.1.7 2.1.7-r1 2.1.8: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -15747,7 +15747,7 @@ sys-apps/haveged 1.5 1.7a 1.7a-r1 1.9.1: A simple entropy daemon using the HAVEG
 sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
 sys-apps/hdparm 9.39 9.45 9.47 9.48: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.45.1 1.46.6 1.47.1: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.46.6 1.47.1 1.47.2: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2: Utility to manage hardware, network, power or other profiles (fork)
@@ -16281,7 +16281,7 @@ sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compres
 sys-fs/cryptsetup 1.6.2 1.6.5 1.6.7 1.6.8: Tool to setup encrypted devices with dm-crypt
 sys-fs/davl 1.2.4-r1: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.28 1.46 1.99: Similar to dd but can copy from source with errors
-sys-fs/ddrescue 1.16 1.18.1 1.19: Copy data from one file or block device to another with read-error recovery
+sys-fs/ddrescue 1.18.1 1.19 1.20: Copy data from one file or block device to another with read-error recovery
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
