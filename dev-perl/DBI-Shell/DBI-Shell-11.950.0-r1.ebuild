@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="dev-perl/IO-Tee
-	dev-perl/text-reform
+	dev-perl/Text-Reform
 	dev-perl/DBI
 	dev-perl/Text-CSV_XS"
 DEPEND="${RDEPEND}"

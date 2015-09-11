@@ -4,20 +4,25 @@
 
 EAPI=5
 
-MY_PN=Text-Autoformat
-MODULE_AUTHOR=DCONWAY
-MODULE_VERSION=1.669002
+MODULE_AUTHOR=NEILB
+MODULE_VERSION=1.72
 inherit perl-module
 
 DESCRIPTION="Automatic text wrapping and reformatting"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE=""
+IUSE="test"
 
-RDEPEND=">=dev-perl/Text-Reform-1.11
-	virtual/perl-version"
+RDEPEND="
+	virtual/perl-Carp
+	virtual/perl-Exporter
+	dev-perl/Text-Reform
+	virtual/perl-Text-Tabs+Wrap
+"
 DEPEND="${RDEPEND}
-	dev-perl/Module-Build"
+	virtual/perl-ExtUtils-MakeMaker
+	test? ( >=virtual/perl-Test-Simple-0.880.0 )
+"
 
-SRC_TEST=do
+SRC_TEST="do parallel"

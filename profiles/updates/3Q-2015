@@ -19,3 +19,4 @@ slotmove =dev-ruby/packetfu-1.1.9* 0 1.1.9
 slotmove =dev-ruby/packetfu-1.1.10* 0 1.1.10
 slotmove =dev-ruby/packetfu-1.1.11* 0 1.1.11
 move dev-perl/text-autoformat dev-perl/Text-Autoformat
+move dev-perl/text-reform dev-perl/Text-Reform
