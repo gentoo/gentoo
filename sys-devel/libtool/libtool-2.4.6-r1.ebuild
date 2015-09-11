@@ -53,6 +53,12 @@ src_prepare() {
 	popd >/dev/null
 	AT_NOELIBTOOLIZE=yes eautoreconf
 	epunt_cxx
+
+	# Make sure timestamps don't trigger a rebuild of man pages. #556512
+	if [[ ${PV} != "9999" ]] ; then
+		touch doc/*.1
+		export HELP2MAN=false
+	fi
 }
 
 src_configure() {
