@@ -4274,7 +4274,7 @@ dev-java/touchgraph-graphlayout 1.22: TouchGraph provides a set of interfaces fo
 dev-java/trident 1.3: Java animation library
 dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for Java
 dev-java/txw2-runtime 20070407-r2: TXW is a library that allows you to write XML documents
-dev-java/typesafe-config 1.3.0: a library of arguably useful Java utilities
+dev-java/typesafe-config 1.3.0 1.3.0-r1: a library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/validation-api 1.0.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.5.2 1.6.0_pre12: Sun J3D: 3D vector math package
@@ -4331,7 +4331,7 @@ dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: Java
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
-dev-lang/ekopath 6.0.477_p20150809 6.0.481_p20150811: PathScale EKOPath Compiler Suite
+dev-lang/ekopath 6.0.477_p20150809 6.0.481_p20150811 6.0.521_p20150910: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5: Elixir programming language
 dev-lang/epic 0.9.2 0.9.3 0.9.3.2 0.9.3.3: Compiler for a simple functional language
 dev-lang/erlang 15.2.3.1 17.3 17.5 18.0: Erlang programming language, runtime environment, and large collection of libraries

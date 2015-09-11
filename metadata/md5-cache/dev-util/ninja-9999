@@ -8,4 +8,4 @@ LICENSE=Apache-2.0
 RDEPEND=emacs? ( virtual/emacs ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) zsh-completion? ( app-shells/zsh ) !<net-irc/ninja-1.5.9_pre14-r1
 SLOT=0
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=eb0afe01b599d1456ac607acfde49d40
+_md5_=0dbb55d157cd6f97a9a85fec81cd01b7
