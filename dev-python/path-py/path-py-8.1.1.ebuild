@@ -24,6 +24,7 @@ DEPEND="
 	test? (
 		dev-python/appdirs[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)"
 
 S="${WORKDIR}/${MY_P}"

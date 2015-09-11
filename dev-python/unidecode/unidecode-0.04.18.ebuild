@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 
 MY_PN=Unidecode
@@ -23,5 +24,5 @@ S=${WORKDIR}/${MY_P}
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	esetup.py test || die "Tests failed under ${EPYTHON}"
+	esetup.py test
 }

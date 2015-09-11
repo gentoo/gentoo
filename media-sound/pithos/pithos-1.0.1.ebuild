@@ -22,9 +22,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libnotify appindicator +keybinder"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pylast[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}
+RDEPEND="
+	dev-python/pylast[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-3.12[${PYTHON_USEDEP}]
 	media-libs/gstreamer:1.0[introspection]
@@ -33,9 +32,11 @@ RDEPEND="${DEPEND}
 	libnotify? ( x11-libs/libnotify[introspection] )
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
 	keybinder? ( dev-libs/keybinder:3[introspection] )"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 PATCHES=("${FILESDIR}/${PN}-1.0.0-icons.patch")
 
 python_test() {
-	esetup.py test || die
+	esetup.py test
 }

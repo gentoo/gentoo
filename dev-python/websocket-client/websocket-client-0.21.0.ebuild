@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
 
 inherit distutils-r1 vcs-snapshot
@@ -23,7 +24,7 @@ RDEPEND="
 "
 
 python_test() {
-	esetup.py test || die "Tests failed under ${EPYTHON}"
+	esetup.py test
 }
 
 python_install_all() {

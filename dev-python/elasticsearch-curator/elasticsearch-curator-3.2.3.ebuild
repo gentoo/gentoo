@@ -74,7 +74,7 @@ python_test() {
 	done
 
 	export TEST_ES_SERVER="localhost:${ES_PORT}"
-	esetup.py test || die "Tests failed on ${EPYTHON}"
+	esetup.py test
 
 	pkill -F ${PID}
 }

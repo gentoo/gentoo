@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 pypy )
 
 inherit distutils-r1
@@ -17,7 +18,8 @@ KEYWORDS="amd64 x86 ~x64-macos"
 IUSE="test"
 
 RDEPEND="dev-python/httplib2[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -26,5 +28,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 PATCHES=( "${FILESDIR}/${PN}-exclude-tests.patch" )
 
 python_test() {
-	esetup.py test || die "Tests fail with ${EPYTHON}"
+	esetup.py test
 }

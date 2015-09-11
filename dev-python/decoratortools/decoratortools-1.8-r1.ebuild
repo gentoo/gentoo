@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python2_7 pypy )
 
 inherit distutils-r1
@@ -19,7 +20,8 @@ SLOT="0"
 KEYWORDS="amd64 ~ia64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
-DEPEND="app-arch/unzip
+DEPEND="
+	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
@@ -31,5 +33,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	esetup.py test && einfo "Tests passed under ${EPYTHON}" || die "Tests failed under ${EPYTHON}"
+	esetup.py test
 }
