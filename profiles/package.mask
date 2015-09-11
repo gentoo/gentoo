@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Markos Chandras <hwoarang@gentoo.org> (11 Sep 2015)
+# Ebuild not ready for general use yet. Needs a bit more
+# clean up
+=media-sound/qmmp-0.9*
+=media-plugins/qmmp-plugin-pack-0.9*
+
 # Michał Górny <mgorny@gentoo.org> (09 Sep 2015)
 # Package to be used with gentoo-x86 CVS, so pretty much defunct now.
 # Removal in 30 days. Bug #560056.
