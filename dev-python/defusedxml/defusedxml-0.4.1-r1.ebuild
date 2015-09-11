@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 PYTHON_REQ_USE="xml(+)"
 
@@ -18,7 +19,7 @@ LICENSE="PSF-2"
 SLOT="0"
 
 python_test() {
-	esetup.py test || die "Tests failed under ${EPYTHON}"
+	esetup.py test
 }
 
 python_install_all() {
