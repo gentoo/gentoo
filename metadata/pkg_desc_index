@@ -6102,7 +6102,7 @@ dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Cycle 1.60.0: Cyclically insert into a Template from a sequence of values
 dev-perl/Template-Plugin-Latex 2.170.0-r1 3.60.0: LaTeX support for the Template Toolkit
 dev-perl/Template-Tiny 1.120.0-r1: Template Toolkit reimplemented in as little code as possible
-dev-perl/Template-Toolkit 2.240.0-r1 2.250.0-r1 2.260.0: The Template Toolkit
+dev-perl/Template-Toolkit 2.250.0-r1 2.260.0: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-ProgressBar 2.140.0-r1 2.150.0 2.160.0 2.170.0: Perl module for Term-ProgressBar
@@ -6170,12 +6170,13 @@ dev-perl/Test-YAML 1.50.0: Testing Module for YAML Implementations
 dev-perl/Test-use-ok 0.110.0-r1 0.160.0: Alternative to Test::More::use_ok
 dev-perl/Text-Aligner 0.70.0-r1: Used to justify strings to various alignment styles
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
+dev-perl/Text-Autoformat 1.669.2-r1 1.690.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.710.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.320.0-r1 1.330.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 0.950.0 1.160.0 1.190.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
-dev-perl/Text-Diff 1.410.0-r1: Easily create test classes in an xUnit style
+dev-perl/Text-Diff 1.410.0-r1 1.430.0: Perform diffs on files and record sets
 dev-perl/Text-FindIndent 0.100.0-r1: Heuristically determine the indent style
 dev-perl/Text-Format 0.580.0-r1 0.590.0: Various subroutines to format text
 dev-perl/Text-German 0.60.0-r1: German grundform reduction
@@ -6191,9 +6192,9 @@ dev-perl/Text-Patch 1.800.0-r1: Patches text with given patch
 dev-perl/Text-Quoted 2.60.0-r1 2.80.0: Extract the structure of a quoted mail message
 dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarisms
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
-dev-perl/Text-Table 1.127.0-r1: Organize Data in Tables
+dev-perl/Text-Table 1.127.0-r1 1.130.0: Organize Data in Tables
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
-dev-perl/Text-Unidecode 0.40.0-r1 1.230.0: Plain ASCII transliterations of Unicode text
+dev-perl/Text-Unidecode 0.40.0-r1 1.230.0 1.240.0: Plain ASCII transliterations of Unicode text
 dev-perl/Text-VimColor 0.260: Syntax highlighting using vim
 dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
@@ -6419,7 +6420,6 @@ dev-perl/set-scalar 1.280.0 1.290.0: Scalar set operations
 dev-perl/strictures 1.4.4-r1 2.0.0: Turn on strict and make all warnings fatal
 dev-perl/string-crc32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/syntax 0.4.0: Activate syntax extensions
-dev-perl/text-autoformat 1.669.2-r1 1.690.0: Automatic text wrapping and reformatting
 dev-perl/text-reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/text-wrapper 1.40.0-r1: Word wrap text by breaking long lines
@@ -11300,7 +11300,7 @@ media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
 media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
 media-fonts/tibetan-machine-font 1.901: Fonts for the Tibetan and Himalayan languages
 media-fonts/ttf-bitstream-vera 1.10-r3: Bitstream Vera font family
-media-fonts/ubuntu-font-family 0.71.2 0.71.2-r1 0.80: A set of matching libre/open fonts funded by Canonical
+media-fonts/ubuntu-font-family 0.71.2 0.71.2-r1 0.80 0.83: A set of matching libre/open fonts funded by Canonical
 media-fonts/umeplus-fonts 20130511 20131109 20150115: UmePlus fonts are modified Ume and M+ fonts for Japanese
 media-fonts/unfonts 1.0.2_pre080608-r1: Korean Un fonts collection
 media-fonts/unfonts-extra 1.0.2_pre080608-r1: Korean Un fonts extras collection
