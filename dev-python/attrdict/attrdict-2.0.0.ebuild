@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
 inherit distutils-r1
@@ -26,5 +27,5 @@ DEPEND="
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 python_test() {
-	esetup.py nosetests || die "tests failed under ${EPYTHON}"
+	esetup.py nosetests
 }
