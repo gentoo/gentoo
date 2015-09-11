@@ -35,10 +35,9 @@ python_test() {
 }
 
 python_compile() {
-        python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-        distutils-r1_python_compile
+	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
+	distutils-r1_python_compile
 }
-
 
 python_compile_all() {
 	use doc && emake -C doc html

@@ -39,6 +39,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
 
+PATCHES=( "${FILESDIR}/${P}-networkmanager-1.0.6.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use !modemmanager DISABLE_MODEMMANAGER_SUPPORT)
