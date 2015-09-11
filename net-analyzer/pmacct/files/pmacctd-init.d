@@ -25,13 +25,17 @@ checkconfig() {
 start() {
 	checkconfig || return 1
 	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon --start --pidfile "${PMACCTDPID}" --exec /usr/sbin/"${SVCNAME}" \
-		-- -D -f "${PMACCTDCONF}" -F "${PMACCTDPID}" ${OPTS}
+	start-stop-daemon --start \
+		--pidfile "${PMACCTDPID}" \
+		--exec /usr/sbin/"${SVCNAME}" \
+		-- -D -f "${PMACCTDCONF}" \ -F "${PMACCTDPID}" ${OPTS}
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop --pidfile "${PMACCTDPID}" --exec /usr/sbin/"${SVCNAME}"
+	start-stop-daemon --stop \
+		--pidfile "${PMACCTDPID}" \
+		--exec /usr/sbin/"${SVCNAME}"
 	eend $?
 }

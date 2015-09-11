@@ -22,7 +22,7 @@ RDEPEND="
 		<dev-libs/mongo-c-driver-0.98
 	)
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	sqlite? ( =dev-db/sqlite-3* )
 "
 DEPEND="
@@ -51,6 +51,8 @@ src_configure() {
 		$(use_enable sqlite sqlite3) \
 		$(use_enable threads) \
 		$(use_enable ulog) \
+		$(usex mysql "--with-mysql-includes=$(mysql_config --variable=pkgincludedir)" '') \
+		$(usex mysql "--with-mysql-libs=$(mysql_config --variable=pkglibdir)" '') \
 		--disable-debug
 }
 
