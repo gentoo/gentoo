@@ -15983,7 +15983,7 @@ sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics f
 sys-auth/ykclient 2.13 2.14: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.16.2 1.17.1: Library and tool for personalization of Yubico's YubiKey
-sys-auth/yubikey-personalization-gui 3.1.18 3.1.20: GUI for personalization of Yubico's YubiKey
+sys-auth/yubikey-personalization-gui 3.1.18 3.1.20 3.1.21: GUI for personalization of Yubico's YubiKey
 sys-block/afacli 4.1: Dell AACRAID-based PERC RAID controller management tool
 sys-block/aoetools 35 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 1.2.20618 1.7.21229: Adaptec RAID Controller Command Line Utility
@@ -17113,7 +17113,7 @@ x11-apps/mkfontdir 1.0.7: create an index of X font files in a directory
 x11-apps/mkfontscale 1.1.1 1.1.2: create an index of scalable font files for X
 x11-apps/oclock 1.0.3: round X clock
 x11-apps/python-whiteboard 20101012: Build and operate a electronic whiteboard Wiimote and IR Pen
-x11-apps/radeontop 0.7-r1 0.8 9999: Utility to view Radeon GPU utilization
+x11-apps/radeontop 0.8 0.9 9999: Utility to view Radeon GPU utilization
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5: X.Org rstart application
 x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
@@ -17319,7 +17319,7 @@ x11-libs/libXfixes 5.0.1: X.Org Xfixes library
 x11-libs/libXfont 1.4.9 1.5.1: X.Org Xfont library
 x11-libs/libXfontcache 1.0.5-r1: X.Org Xfontcache library
 x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
-x11-libs/libXi 1.7.2 1.7.4: X.Org Xi library
+x11-libs/libXi 1.7.2 1.7.4 1.7.5: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
 x11-libs/libXmu 1.1.1 1.1.1-r1 1.1.2: X.Org Xmu library
 x11-libs/libXp 1.0.2 1.0.3: X.Org Xp library
@@ -17367,7 +17367,7 @@ x11-libs/libva-vdpau-driver 0.7.4-r2 0.7.4-r3 9999: VDPAU Backend for Video Acce
 x11-libs/libvdpau 0.9 1.1 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libview 0.6.6-r2: VMware's Incredibly Exciting Widgets
 x11-libs/libwnck 2.31.0 3.4.9 3.14.0: A window navigation construction kit
-x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1: X C-language Bindings library
+x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1: X C-language Bindings library
 x11-libs/libxdl_view 4.2-r2: An X-Windows Based Toolkit
 x11-libs/libxkbcommon 0.2.0 0.3.1 0.4.1 0.5.0: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
