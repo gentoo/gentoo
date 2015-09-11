@@ -38,5 +38,5 @@ python_test() {
 	# some errors appear to have crept in the suite undert py3 since addition.
 	# Python2.7 now passes all.
 
-	esetup.py testr --coverage # || die "tests failed under ${EPYTHON}"
+	esetup.py testr --coverage
 }
