@@ -21,5 +21,6 @@ HOMEPAGE="https://godoc.org/golang.org/x/oauth2"
 LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE=""
-DEPEND="dev-go/go-net:="
+DEPEND="dev-go/go-net:=
+	dev-go/go-tools:="
 RDEPEND=""
