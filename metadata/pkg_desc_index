@@ -242,7 +242,7 @@ app-arch/bzip2 1.0.6 1.0.6-r1 1.0.6-r2 1.0.6-r3 1.0.6-r4 1.0.6-r6 1.0.6-r7: A hi
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.2 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.12 1.3.13 1.3.14: SFV checksum utility (simple file verification)
-app-arch/cpio 2.11 2.11-r1 2.11-r3: A file archival tool which can also read and write tar files
+app-arch/cpio 2.11-r3: A file archival tool which can also read and write tar files
 app-arch/createrepo 0.10.3: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
@@ -2078,7 +2078,7 @@ app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20150814: collection of Gentoo eclass manpages
 app-portage/eix 0.30.4 0.30.7 0.30.8 0.30.10 0.30.11: Search and query ebuilds, portage incl. local settings, ext. overlays, version changes, and more
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
-app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.5: Elog viewer for Gentoo
+app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6: Elog viewer for Gentoo
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.2 0.3 0.4: A simple portage wrapper which works like other package managers
 app-portage/epm 1.40 9999: rpm workalike for Gentoo Linux
