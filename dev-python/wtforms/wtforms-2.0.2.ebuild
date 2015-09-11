@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 
 inherit distutils-r1
@@ -21,7 +22,8 @@ IUSE="doc"
 
 S="${WORKDIR}/${MY_P}"
 
-DEPEND="app-arch/unzip
+DEPEND="
+	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )"
 RDEPEND=""
@@ -31,7 +33,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test || die "Tests failed for ${EPYTHON}"
+	esetup.py test
 }
 
 python_install_all() {
