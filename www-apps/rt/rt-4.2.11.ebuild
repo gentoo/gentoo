@@ -103,7 +103,7 @@ DEPEND="
 	dev-perl/locale-maketext-fuzzy
 	dev-perl/net-server
 	dev-perl/regexp-common
-	dev-perl/text-autoformat
+	dev-perl/Text-Autoformat
 	dev-perl/text-template
 	dev-perl/text-wrapper
 	virtual/perl-Digest
