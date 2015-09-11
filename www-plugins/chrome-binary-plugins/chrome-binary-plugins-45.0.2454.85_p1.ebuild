@@ -80,9 +80,6 @@ src_install() {
 		doins libwidevinecdm.so
 		strings ./chrome | grep -C 1 " (version:" | tail -1 > widevine.version
 		doins widevine.version
-		einfo "Please note that if you intend to use this with www-clients/chromium,"
-		einfo "you'll need to enable the widevine USE flag there as well, in order to"
-		einfo "utilize the widevine USE flag that's been used here."
 	fi
 
 	if use flash; then
