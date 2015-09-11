@@ -41,9 +41,9 @@ src_configure() {
 src_install() {
 	autotools-multilib_src_install
 	if use hardened; then
-		pax-mark m usr/bin/orc-bugreport || die
-		pax-mark m usr/bin/orcc || die
-		pax-mark m usr/$(get_libdir)/liborc*.so* || die
+		pax-mark m "${ED}"usr/bin/orc-bugreport
+		pax-mark m "${ED}"usr/bin/orcc
+		pax-mark m "${ED}"usr/$(get_libdir)/liborc*.so*
 	fi
 }
 
