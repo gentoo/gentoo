@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,7 @@ IUSE="nls"
 RDEPEND="
 	sys-libs/ncurses
 	x11-libs/libpciaccess
+	x11-libs/libdrm
 	nls? ( sys-libs/ncurses[unicode] virtual/libintl )
 "
 DEPEND="${RDEPEND}

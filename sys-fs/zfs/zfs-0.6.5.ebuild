@@ -124,7 +124,7 @@ pkg_postinst() {
 		update_moduledb
 	fi
 
-	if [ -e "${EROOT}/etc/runlevels/boot/zfs" ]
+	if [ -e "${EROOT}etc/runlevels/boot/zfs" ]
 	then
 		einfo 'The zfs boot script has been split into the zfs-import,'
 		einfo 'zfs-mount and zfs-share scripts, with zed being added in the'
@@ -136,29 +136,29 @@ pkg_postinst() {
 		einfo 'The zfs-import and zfs-mount scripts have been added to the boot'
 		einfo 'runlevel while the zfs-share script is in the default runlevel.'
 
-		rm "${EROOT}/etc/runlevels/boot/zfs"
-		ln -snf "${EROOT}/etc/init.d/zfs-import" \
-			"${EROOT}/etc/runlevels/boot/zfs-import"
-		ln -snf "${EROOT}/etc/init.d/zfs-mount" \
-			"${EROOT}/etc/runlevels/boot/zfs-mount"
-		ln -snf "${EROOT}/etc/init.d/zfs-share" \
-			"${EROOT}/etc/runlevels/default/zfs-share"
+		rm "${EROOT}etc/runlevels/boot/zfs"
+		ln -snf "${EROOT}etc/init.d/zfs-import" \
+			"${EROOT}etc/runlevels/boot/zfs-import"
+		ln -snf "${EROOT}etc/init.d/zfs-mount" \
+			"${EROOT}etc/runlevels/boot/zfs-mount"
+		ln -snf "${EROOT}etc/init.d/zfs-share" \
+			"${EROOT}etc/runlevels/default/zfs-share"
 	else
-		[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ] || \
+		[ -e "${EROOT}etc/runlevels/boot/zfs-import" ] || \
 			einfo "You should add zfs-import to the boot runlevel."
-		[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ] || \
+		[ -e "${EROOT}etc/runlevels/boot/zfs-mount" ] || \
 			einfo "You should add zfs-mount to the boot runlevel."
-		[ -e "${EROOT}/etc/runlevels/default/zfs-share" ] || \
+		[ -e "${EROOT}etc/runlevels/default/zfs-share" ] || \
 			einfo "You should add zfs-share to the default runlevel."
 	fi
 
-	[ -e "${EROOT}/etc/runlevels/default/zfs-zed" ] || \
+	[ -e "${EROOT}etc/runlevels/default/zfs-zed" ] || \
 		einfo "You should add zfs-zed to the default runlevel."
 
-	if [ -e "${EROOT}/etc/runlevels/shutdown/zfs-shutdown" ]
+	if [ -e "${EROOT}etc/runlevels/shutdown/zfs-shutdown" ]
 	then
 		einfo "The zfs-shutdown script is obsolete. Removing it from runlevel."
-		rm "${EROOT}/etc/runlevels/shutdown/zfs-shutdown"
+		rm "${EROOT}etc/runlevels/shutdown/zfs-shutdown"
 	fi
 
 }
