@@ -5,18 +5,17 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-DISTUTILS_NO_PARALLEL_BUILD=true
 
-inherit gnome2 distutils-r1
+inherit gnome2 distutils-r1 virtualx
 
 DESCRIPTION="Multiple GNOME terminals in one window"
 HOMEPAGE="http://www.tenshu.net/p/terminator.html"
-SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_${PV}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dbus gnome +libnotify"
+IUSE="dbus doc gnome +libnotify"
 
 RDEPEND="
 	dev-libs/keybinder:0[python]
@@ -36,7 +35,34 @@ python_prepare_all() {
 		"${FILESDIR}"/0.90-without-icon-cache.patch
 		"${FILESDIR}"/0.94-session.patch
 	)
+
+	local i p
+	if [[ -n "${LINGUAS+x}" ]] ; then
+		pushd "${S}"/po > /dev/null
+		strip-linguas -i .
+		for i in *.po; do
+			if ! has ${i%.po} ${LINGUAS} ; then
+				rm ${i} || die
+			fi
+		done
+		popd > /dev/null
+	fi
+
+	sed \
+		-e "/'share', 'doc'/s:${PN}:${PF}:g" \
+		-i setup.py terminatorlib/util.py || die
+
+	use doc || \
+		sed \
+			-e '/install_documentation/s:True:False:g' \
+			-i setup.py || die
+
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	VIRTUALX_COMMAND="esetup.py"
+	virtualmake test
 }
 
 pkg_postinst() {
