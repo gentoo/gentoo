@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/sumerc/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
