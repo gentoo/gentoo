@@ -3943,7 +3943,7 @@ dev-java/java-config-wrapper 0.16: Wrapper for java-config
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
-dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.51 1.8.0.60: Oracle's documentation bundle (including API) for Java SE
+dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.60: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.14-r1 3.5.25: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/java-xmlbuilder 0.6-r1: A utility that allows simple XML documents to be constructed using Java
 dev-java/javacc 4.0-r4 4.2 5.0-r1: Java Compiler Compiler - The Java Parser Generator
@@ -6170,7 +6170,7 @@ dev-perl/Test-YAML 1.50.0: Testing Module for YAML Implementations
 dev-perl/Test-use-ok 0.110.0-r1 0.160.0: Alternative to Test::More::use_ok
 dev-perl/Text-Aligner 0.70.0-r1: Used to justify strings to various alignment styles
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
-dev-perl/Text-Autoformat 1.669.2-r1 1.690.0: Automatic text wrapping and reformatting
+dev-perl/Text-Autoformat 1.669.2-r1 1.690.0 1.720.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.710.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.320.0-r1 1.330.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
@@ -6190,6 +6190,7 @@ dev-perl/Text-Netstring 0.70.0-r1: Create and manipulate netstrings
 dev-perl/Text-Password-Pronounceable 0.300.0-r1: Generate pronounceable passwords
 dev-perl/Text-Patch 1.800.0-r1: Patches text with given patch
 dev-perl/Text-Quoted 2.60.0-r1 2.80.0: Extract the structure of a quoted mail message
+dev-perl/Text-Reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarisms
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
 dev-perl/Text-Table 1.127.0-r1 1.130.0: Organize Data in Tables
@@ -6420,7 +6421,6 @@ dev-perl/set-scalar 1.280.0 1.290.0: Scalar set operations
 dev-perl/strictures 1.4.4-r1 2.0.0: Turn on strict and make all warnings fatal
 dev-perl/string-crc32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/syntax 0.4.0: Activate syntax extensions
-dev-perl/text-reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/text-wrapper 1.40.0-r1: Word wrap text by breaking long lines
 dev-perl/tie-encryptedhash 1.240.0-r1: Hashes (and objects based on hashes) with encrypting fields
