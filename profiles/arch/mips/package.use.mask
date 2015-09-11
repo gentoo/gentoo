@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Frysinger <vapier@gentoo.org> (10 Sep 2015)
+# Requires matplotlib which requires a bit more.
+dev-python/numpydoc test
+
 # Anthony G. Basile <blueness@gentoo.org> (10 Sep 2015)
 # # seccomp code is currently broken, bug #560098
 app-misc/pax-utils seccomp
