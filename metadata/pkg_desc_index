@@ -15867,7 +15867,7 @@ sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1 2.7: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.08-r1 1.09: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
