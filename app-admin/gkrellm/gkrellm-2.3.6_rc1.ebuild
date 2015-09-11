@@ -26,7 +26,11 @@ RDEPEND="
 	nls? ( virtual/libintl )
 	ntlm? ( net-libs/libntlm )
 	X? (
+		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libX11
 		x11-libs/pango
 		)"
 DEPEND="${RDEPEND}
