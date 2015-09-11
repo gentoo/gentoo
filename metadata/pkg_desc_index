@@ -7057,7 +7057,7 @@ dev-python/httmock 1.2.2: A mocking library for requests
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httplib2 0.8 0.9.1: A comprehensive HTTP client library
 dev-python/httpretty 0.7.0 0.7.1 0.8.0 0.8.0-r1 0.8.10: HTTP client mock for Python
-dev-python/humanfriendly 1.25 1.26 1.27 1.29 1.31 1.33: Human friendly output for text interfaces using Python
+dev-python/humanfriendly 1.33 1.35: Human friendly output for text interfaces using Python
 dev-python/hypothesis 1.7.1 1.9.0: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
@@ -7158,7 +7158,7 @@ dev-python/lz4 0.6.1 0.7.0: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
-dev-python/mako 0.7.3-r1 0.7.3-r2 1.0.0: A Python templating language
+dev-python/mako 1.0.0 1.0.2: A Python templating language
 dev-python/mamba 0.6 0.8.4 0.8.5: The definitive testing tool for Python. Born under the banner of Behavior Driven Development
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1: An extensible, multi-protocol, multi-user, interactive application server
@@ -7286,7 +7286,7 @@ dev-python/passwordmeter 0.1.7-r1: A password strength measuring library
 dev-python/paste 1.7.5.1-r1 1.7.5.1-r2 2.0.2: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 1.5.2: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2: A pluggable command-line frontend, including commands to setup package file layouts
-dev-python/path-py 7.3 7.4 7.6.1 7.7 7.7.1 8.1: A module wrapper for os.path
+dev-python/path-py 7.7.1 8.1 8.1.1: A module wrapper for os.path
 dev-python/pathlib 1.0.1: Object-oriented filesystem paths
 dev-python/pathtools 0.1.2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.4.0: Python module to describe statistical models and design matrices
@@ -7930,7 +7930,7 @@ dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
 dev-python/wtf-peewee 0.2.3: Small python ORM
-dev-python/wtforms 1.0.4 2.0.1 2.0.2: Flexible forms validation and rendering library for python web development
+dev-python/wtforms 2.0.1 2.0.2: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xcffib 0.1.10 0.2.0 0.2.1 0.2.5 0.3.2 0.3.4: A drop in replacement for xpyb, an XCB python binding
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
