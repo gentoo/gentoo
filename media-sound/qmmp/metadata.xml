@@ -7,9 +7,11 @@
 	<name>Markos Chandras</name>
 	</maintainer>
   <use>
+    <flag name="analyzer">Enable visual analyzer</flag>
     <flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
 	<flag name="crossfade">Enable crossfade effect when switching tracks</flag>
 	<flag name="cover">Enable album cover support</flag>
+	<flag name="cue">enable CUE sheet parsing</flag>
 	<flag name="enca">Detects the character encoding automatically</flag>
 	<flag name="game">Enable Game music support</flag>
 	<flag name="lyrics">Fetch track lyrics from the web</flag>
@@ -17,6 +19,7 @@
 	<flag name="mpris">Enable MPRIS support</flag>
 	<flag name="notifier">Enable qmmps' notifier system</flag>
 	<flag name="opus">Enable the opus plugin</flag>
+	<flag name="qsui">Enable QMMP simple UI</flag>
 	<flag name="stereo">Enable stereo effect</flag>
 	<flag name="tray">Build tray icon</flag>
 	<flag name="kde">Use kde4 notifier system</flag>
