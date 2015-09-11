@@ -11,7 +11,7 @@ inherit perl-module toolchain-funcs
 DESCRIPTION="building, finding and using SDL binaries"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~x86"
 
 # File::Fetch, File::Find, Test::More -> dev-lang/perl
 RDEPEND="
