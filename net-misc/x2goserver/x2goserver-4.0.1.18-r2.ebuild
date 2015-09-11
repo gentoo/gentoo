@@ -22,7 +22,7 @@ RDEPEND="dev-perl/Capture-Tiny
 	dev-perl/File-BaseDir
 	dev-perl/File-ReadBackwards
 	media-fonts/font-cursor-misc
-	media-fonts/font-misc-misc
+	media-fonts/font-misc-misc[nls]
 	>=net-misc/nx-3.5.0.25
 	net-misc/openssh
 	x11-apps/xauth
