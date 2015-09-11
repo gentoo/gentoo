@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
 IUSE="xml gd mysql postgres latex vim-syntax"
 
-RDEPEND="dev-perl/text-autoformat
+RDEPEND="dev-perl/Text-Autoformat
 	mysql? ( dev-perl/DBD-mysql )
 	postgres? ( dev-perl/DBD-Pg )
 	>=dev-perl/AppConfig-1.56"
 DEPEND="${RDEPEND}"
-PDEPEND="dev-perl/text-autoformat
+PDEPEND="dev-perl/Text-Autoformat
 	vim-syntax? ( app-vim/tt2-syntax )
 	xml? ( dev-perl/Template-XML )
 	gd? ( dev-perl/Template-GD )
