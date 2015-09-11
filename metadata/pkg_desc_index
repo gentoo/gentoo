@@ -522,7 +522,7 @@ app-crypt/gentoo-keys 201501052117: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.1-r1 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.1-r1 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.19 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.1.6 2.1.7 2.1.7-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.19 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.1.6 2.1.7 2.1.7-r1 2.1.8: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG

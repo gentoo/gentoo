@@ -8,4 +8,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=https://github.com/golang/tools/archive/1330b28.tar.gz -> go-tools-0_pre20150902.tar.gz http://golang.org/favicon.ico -> go-favicon.ico
 _eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
-_md5_=c179b02540e3eedd4b35e350b8a9d903
+_md5_=31227ffb10488c757865925bc5b89525
