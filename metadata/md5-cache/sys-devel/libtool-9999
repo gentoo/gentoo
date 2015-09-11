@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69 >=sys-devel/automake-1.13
 SLOT=2
 _eclasses_=autotools	7feb275d850f45095537e76c5aa80494	eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=5e9e6dc4266dae0436f13f88ba980f9f
+_md5_=c4eda0bef38bce0fc784da814ae6b301
