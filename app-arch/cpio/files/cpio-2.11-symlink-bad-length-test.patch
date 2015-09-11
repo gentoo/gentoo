@@ -1,0 +1,39 @@
+https://lists.gnu.org/archive/html/bug-cpio/2015-06/msg00001.html
+https://bugs.gentoo.org/554760
+
+this fix is squashed into 0396591026410f91f7a81b4b150bc7285d9f2278
+(as upstream doesn't seem to understand git)
+
+>From bebf9662c406d1d137a66c567d8748b489d352e7 Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <address@hidden>
+Date: Thu, 4 Jun 2015 13:27:42 +0200
+Subject: [PATCH] tests: fix expected output for old file
+
+Thanks Victor Rodriguez.  Upstream thread:
+http://lists.gnu.org/archive/html/bug-cpio/2015-06/msg00000.html
+
+* tests/symlink-bad-length.at (STDOUT): Expect the year string
+'2014' is printed and not time because the file in archive is
+older than 6 months.
+* Thanks: Mention Victor.
+---
+ THANKS                      | 1 +
+ tests/symlink-bad-length.at | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/symlink-bad-length.at b/tests/symlink-bad-length.at
+index e1a7093..2cdc692 100644
+--- a/tests/symlink-bad-length.at
++++ b/tests/symlink-bad-length.at
+@@ -57,7 +57,7 @@ cat stderr | grep -v \
+ echo >&2 STDERR
+ ],
+ [0],
+-[-rw-rw-r--   1 10029    10031          13 Nov 25 11:52 FILE
++[-rw-rw-r--   1 10029    10031          13 Nov 25  2014 FILE
+ ],[STDERR
+ ])
+ 
+-- 
+2.1.0
+

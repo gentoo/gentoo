@@ -20,6 +20,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-gets.patch #424974
 	epatch "${FILESDIR}"/${P}-non-gnu-compilers.patch #275295
 	epatch "${FILESDIR}"/${P}-security.patch #530512 #536010
+	epatch "${FILESDIR}"/${P}-symlink-bad-length-test.patch #554760
 	eautoreconf
 }
 
