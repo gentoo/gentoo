@@ -41,7 +41,10 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.2-python.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.2-python.patch
+	"${FILESDIR}"/${P}-fix-debug-build.patch
+)
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
