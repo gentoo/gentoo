@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
 inherit distutils-r1 vcs-snapshot
@@ -32,7 +33,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test || die "Tests failed under ${EPYTHON}"
+	esetup.py test
 }
 
 python_install_all() {
@@ -40,5 +41,5 @@ python_install_all() {
 
 	distutils-r1_python_install_all
 
-	rm "${D}"/usr/README.rst || die "Couldn't remove spurious README.rst"
+	rm "${ED}"/usr/README.rst || die "Couldn't remove spurious README.rst"
 }
