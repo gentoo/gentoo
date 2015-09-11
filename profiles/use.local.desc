@@ -4327,9 +4327,11 @@ media-sound/pulseaudio:systemd - Build with sys-apps/systemd support to replace 
 media-sound/pulseaudio:webrtc-aec - Uses the webrtc.org AudioProcessing library for enhancing VoIP calls greatly in applications that support it by performing acoustic echo cancellation, analog gain control, noise suppression and other processing.
 media-sound/pulseaudio:xen - Builds a special paravirtualized module for running in a Xen guest.
 media-sound/qmidiarp:lv2 - Enables Ladspa V2 plugins.
+media-sound/qmmp:analyzer - Enable visual analyzer
 media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-sound/qmmp:cover - Enable album cover support
 media-sound/qmmp:crossfade - Enable crossfade effect when switching tracks
+media-sound/qmmp:cue - enable CUE sheet parsing
 media-sound/qmmp:enca - Detects the character encoding automatically
 media-sound/qmmp:game - Enable Game music support
 media-sound/qmmp:kde - Use kde4 notifier system
@@ -4339,6 +4341,7 @@ media-sound/qmmp:mpris - Enable MPRIS support
 media-sound/qmmp:notifier - Enable qmmps' notifier system
 media-sound/qmmp:opus - Enable the opus plugin
 media-sound/qmmp:projectm - Enable projectm music visualization plugin
+media-sound/qmmp:qsui - Enable QMMP simple UI
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/qmmp:stereo - Enable stereo effect
 media-sound/qmmp:tray - Build tray icon
