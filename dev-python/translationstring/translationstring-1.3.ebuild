@@ -24,7 +24,7 @@ RDEPEND=""
 DOCS=( COPYRIGHT.txt README.rst )
 
 python_test() {
-	esetup.py test || die
+	esetup.py test
 }
 
 src_install() {
