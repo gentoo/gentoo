@@ -6,6 +6,11 @@
 # for libvirtd, you may override this. Or if you only use libvirtd locally.
 rc_need="net"
 
+# The termination timeout (start-stop-daemon parameter "retry") ensures
+# that the service will be terminated within a given time (25 + 5 seconds
+# per default) when you are stopping the service.
+#LIBVIRTD_TERMTIMEOUT="TERM/25/KILL/5"
+
 # LIBVIRTD_OPTS
 # You may want to add '--listen' to have libvirtd listen for tcp/ip connections
 # if you want to use libvirt for remote control
