@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription lang="en">
+  <herd>sci</herd>
+  <longdescription lang="en">
   A Python module for numerical optimization.
 </longdescription>
-<upstream>
-  <remote-id type="pypi">scikits.optimization</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">scikits.optimization</remote-id>
+  </upstream>
 </pkgmetadata>

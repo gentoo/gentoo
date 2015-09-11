@@ -28,6 +28,5 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 python_test() {
-	PYTHONPATH="${BUILD_DIR}/lib/" \
-		esetup.py test || die
+	esetup.py test
 }
