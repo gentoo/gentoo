@@ -28,7 +28,7 @@ else
 	SRC_URI+=" ${BACKPORTS:+
 		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
 		https://dev.gentoo.org/~tamiko/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="" # "~amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 	SLOT="0/${PV}"
 fi
 S="${WORKDIR}/${P%_rc*}"
