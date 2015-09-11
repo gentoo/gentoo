@@ -29,6 +29,8 @@
 #define USE_XLIBINT_H
 #define X_SHARED_MEMORY
 
+#define USE_L_FLAG
+
 #defpath DEST bin
 #defpath MAN_DEST man-dest
 #defpath RI include

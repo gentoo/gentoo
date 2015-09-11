@@ -4,18 +4,6 @@ http://bugs.gentoo.org/107428
 respect user LDFLAGS
 http://bugs.gentoo.org/126872
 
---- urt/lib/makefile.src
-+++ urt/lib/makefile.src
-@@ -181,8 +181,7 @@
- # Rebuild the library from all the .o files.
- buildlib: $(OBJS)
- 	-rm -f $(LIBNAME)
--	ar rc $(LIBNAME)
--	ar q $(LIBNAME) $(OBJS)
-+	ar rc $(LIBNAME) $(OBJS)
- #ifndef NO_RANLIB
- 	ranlib $(LIBNAME)
- #endif
 --- urt/tools/clock/makefile.src
 +++ urt/tools/clock/makefile.src
 @@ -6,7 +6,7 @@ install: rleClock
@@ -47,11 +35,11 @@ http://bugs.gentoo.org/126872
  
  crop.out: crop.c rle_box.o
 -	${CC} ${CFLAGS} crop.c rle_box.o ${LIBS} -o crop.new
-+	${CC} ${LDFLAGS} ${CFLAGS} crop.c rle_box.o ${LIBS} -o crop.new
++	${CC} ${LDFLAGS} ${CFLAGS} crop.c rle_box.o ${LIBS} -o crop.new -lm
  	mv crop.new crop.out
  rlebox.out: rlebox.c rle_box.o
 -	${CC} ${CFLAGS} rlebox.c rle_box.o ${LIBS} -o rlebox.new
-+	${CC} ${LDFLAGS} ${CFLAGS} rlebox.c rle_box.o ${LIBS} -o rlebox.new
++	${CC} ${LDFLAGS} ${CFLAGS} rlebox.c rle_box.o ${LIBS} -o rlebox.new -lm
  	mv rlebox.new rlebox.out
  
  # rleClock has it's own directory, must be built special
@@ -145,7 +133,7 @@ http://bugs.gentoo.org/126872
  
  rletogif.out: ${OBJ}
 -	${CC} ${CFLAGS} ${OBJ} ${LIBS} -o rletogif.new
-+	${CC} ${CFLAGS} ${LDFLAGS} ${OBJ} ${LIBS} -o rletogif.new
++	${CC} ${CFLAGS} ${LDFLAGS} ${OBJ} ${LIBS} -o rletogif.new -lm
  	mv rletogif.new rletogif.out
  
  # Incremental install, copies executable to DEST dir.

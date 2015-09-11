@@ -1,0 +1,118 @@
+diff --git a/lib/makefile.src b/lib/makefile.src
+index 2335e46..8aacfd4 100644
+--- a/lib/makefile.src
++++ b/lib/makefile.src
+@@ -10,7 +10,7 @@ RANLIB = ranlib
+ #endif
+ 
+ # If nothing else is specified, default is to build the library.
+-default: buildlib
++default: buildlib buildshared
+ 
+ #ifadd	NEED_GETOPT	OPT_OBJS	getopt.o
+ #emit OPT_OBJS
+@@ -26,7 +26,17 @@ OBJS = Runput.o buildmap.o cmd_name.o colorquant.o dither.o \
+ 	vaxshort.o \
+ 	$(OPT_OBJS)
+ 
+-LIBNAME = librle.a
++LIBNAME = librle
++API_VERSION = 3
++MINOR_VERSION = 1
++PATCH_VERSION = 0
++
++FULL_VERSION = $(API_VERSION).$(MINOR_VERSION).$(PATCH_VERSION)
++
++SHARED = $(LIBNAME).so.$(FULL_VERSION)
++SONAME = $(LIBNAME).so.$(API_VERSION)
++LDNAME = $(LIBNAME).so
++STATIC = $(LIBNAME).a
+ 
+ # Just rebuild the object files.
+ objs: $(OBJS)
+@@ -37,23 +47,24 @@ objs: $(OBJS)
+ # Do nothing if $(DEST) is empty (or not defined)
+ install: buildlib
+ 	@sh -c "if test '$(DEST)x' != x ; then \
+-		echo cp $(LIBNAME) $(DEST)/$(LIBNAME) ; \
+-		cp $(LIBNAME) $(DEST)/$(LIBNAME) ; \
++		echo cp $(LIBNAME) $(DEST)/ ; \
++		cp $(LIBNAME)* $(DEST)/ ; \
+ 		if test x$(RANLIB) != x ; then \
+-			echo ranlib $(DEST)/$(LIBNAME) ; \
+-			ranlib $(DEST)/$(LIBNAME) ; \
++			echo ranlib $(DEST)/$(STATIC) ; \
++			ranlib $(DEST)/$(STATIC) ; \
+ 		else \
+ 			true ; \
+ 		fi ; \
+ 		if test -d $(DEST)/debug ; then \
+-			echo cp $(LIBNAME) $(DEST)/debug/$(LIBNAME) ; \
++			echo cp $(LIBNAME) $(DEST)/debug/ ; \
++			cp $(LIBNAME)* $(DEST)/debug/ ; \
+ 			if test x$(RANLIB) != x ; then \
+-				cp $(LIBNAME) $(DEST)/debug/$(LIBNAME) ; \
+-				echo ranlib $(DEST)/debug/$(LIBNAME) ; \
++				cp $(LIBNAME) $(DEST)/debug/$(STATIC) ; \
++				echo ranlib $(DEST)/debug/$(STATIC) ; \
+ 			else \
+ 				true ; \
+ 			fi ; \
+-			ranlib $(DEST)/debug/$(LIBNAME) ; \
++			ranlib $(DEST)/debug/$(STATIC) ; \
+ 		else \
+ 			true ; \
+ 		fi ; \
+@@ -63,12 +74,17 @@ install: buildlib
+ 	touch install
+ 
+ # Rebuild the library from all the .o files.
++
++buildshared: $(OBJS)
++	$(CC) ${CFLAGS} ${LDFLAGS} -o $(SHARED) $(OBJS) $(LIBS) -shared -Wl,-soname,$(SONAME)
++	ln -sf $(SHARED) $(LDNAME)
++	ln -sf $(SHARED) $(SONAME)
++	touch buildshared
++
+ buildlib: $(OBJS)
+-	-rm -f $(LIBNAME)
+-	ar rc $(LIBNAME)
+-	ar q $(LIBNAME) $(OBJS)
++	ar rcs $(STATIC) $(OBJS)
+ #ifndef NO_RANLIB
+-	ranlib $(LIBNAME)
++	ranlib $(STATIC)
+ #endif
+ 	touch buildlib
+ 
+@@ -76,10 +92,10 @@ buildlib: $(OBJS)
+ pristine: clean
+ 	-@if test $(DEST)X != X ; then \
+ 		echo rm -f $(DEST)/$(LIBNAME) $(DEST)/debug/$(LIBNAME) ; \
+-		rm -f $(DEST)/$(LIBNAME) $(DEST)/debug/$(LIBNAME) ; \
++		rm -f $(DEST)/$(LIBNAME)* $(DEST)/debug/$(LIBNAME)* ; \
+ 	else \
+ 		echo rm -f $(LIBNAME) ; \
+-		rm -f $(LIBNAME) ; \
++		rm -f $(LIBNAME)* ; \
+ 	fi
+ 	-rm -f install
+ 
+@@ -88,7 +104,7 @@ clean:
+ 	-rm -f *.o
+ 	-@if test x$(DEST) != x ; then \
+ 		echo rm -f $(LIBNAME) ; \
+-		rm -f $(LIBNAME) ; \
++		rm -f $(LIBNAME)* ; \
+ 	else \
+ 		true ; \
+ 	fi
+@@ -124,7 +140,7 @@ linstall: llib-lrle.ln
+ 
+ # Make all objects depend on rle_config.h, even if they really don't.
+ # This forces a recompile whenever a reconfiguration happens.
+-$(OBJS):${RI}/rle_config.h
++$(OBJS): ${RI}/rle_config.h
+ 
+ # Dependencies on .h files:
+ # DO NOT DELETE THIS LINE
