@@ -13658,7 +13658,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.0.5 1.2.1 9999: HTTP/2 C Library
-net-libs/nodejs 0.8.28 0.10.30 0.10.38 0.12.6 0.12.7: Evented IO for V8 Javascript
+net-libs/nodejs 0.12.6 0.12.7: Evented IO for V8 Javascript
 net-libs/obby 0.4.8: Library for collaborative text editing
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)

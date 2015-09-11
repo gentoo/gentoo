@@ -3,10 +3,10 @@ DEPEND=dev-perl/Archive-Extract dev-perl/Archive-Zip dev-perl/Capture-Tiny dev-p
 DESCRIPTION=building, finding and using SDL binaries
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Alien-SDL/
-KEYWORDS=~amd64 ~hppa ~x86
+KEYWORDS=amd64 ~hppa ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Archive-Extract dev-perl/Archive-Zip dev-perl/Capture-Tiny dev-perl/File-ShareDir dev-perl/File-Which dev-perl/Text-Patch media-libs/libsdl virtual/perl-Archive-Tar virtual/perl-Digest-SHA virtual/perl-ExtUtils-CBuilder virtual/perl-ExtUtils-MakeMaker dev-perl/Module-Build virtual/perl-File-Spec virtual/perl-File-Temp dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/F/FR/FROGGS/Alien-SDL-1.446.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=f881fc19bcf4da1ad877542ba33aee45
+_md5_=765c359d29ca97d87f3b307081a5cb8e
