@@ -8387,7 +8387,7 @@ dev-ruby/rjb 1.5.3: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.2-r1 2.13.4: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 1.9.0 1.9.1: Yet-another-markdown-parser but fast, pure Ruby, using a strict syntax definition
+dev-ruby/rouge 1.9.0 1.9.1 1.10.1: Yet-another-markdown-parser but fast, pure Ruby, using a strict syntax definition
 dev-ruby/rqrcode 0.6.0 0.7.0: Library for encoding QR Codes
 dev-ruby/rr 1.1.2 1.1.2-r1: A double framework that features a rich selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.4.8-r2 1.4.9 1.5.3 1.5.4: Ruby bindings for rrdtool
