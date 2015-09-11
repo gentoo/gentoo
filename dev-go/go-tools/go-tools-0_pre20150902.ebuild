@@ -56,8 +56,6 @@ src_prepare() {
 		-i src/${go_src}/go/types/stdlib_test.go || die
 	sed -e 's:TestRepoRootForImportPath(:_\0:' \
 		-i src/${go_src}/go/vcs/vcs_test.go || die
-	sed -e 's:TestStdlib(:_\0:' \
-	-i src/${go_src}/refactor/lexical/lexical_test.go || die
 
 	# Add favicon to the godoc web interface (bug 551030)
 	cp "${DISTDIR}"/go-favicon.ico "src/${go_src}/godoc/static/favicon.ico" ||
@@ -75,6 +73,14 @@ src_compile() {
 	popd >/dev/null
 
 	golang-build_src_compile
+}
+
+src_test() {
+	# Create a writable GOROOT in order to avoid sandbox violations.
+	cp -sR "$(go env GOROOT)" "${T}/goroot" || die
+	mkdir -p "${T}/goroot/test" || die
+	GOROOT="${T}/goroot" golang-build_src_test
+	rm -rf "${T}/goroot"
 }
 
 src_install() {
