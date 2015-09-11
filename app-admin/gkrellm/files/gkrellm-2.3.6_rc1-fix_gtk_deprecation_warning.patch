@@ -1,0 +1,29 @@
+From e15c0d4a029e14e8fbd03f2773b8504d7e090ced Mon Sep 17 00:00:00 2001
+From: Bill Wilson
+Date: Tue, 21 Oct 2014 18:49:41 -0500
+Subject: Fix deprecated allow-shring & allow-grow warnings
+
+Reported by Troy Engel, avoid recent GTK version deprecated warnings
+by using gtk_window_set_resizable().
+
+diff --git a/src/main.c b/src/main.c
+index 205f462..d130d81 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1553,9 +1553,10 @@ create_widget_tree()
+ 
+ 	gtk_widget_realize(gtree.window);
+ 
+-	/* gtk_window_set_resizable() */
+-	g_object_set(G_OBJECT(gtree.window), "allow_shrink", FALSE, NULL);
+-	g_object_set(G_OBJECT(gtree.window), "allow_grow", FALSE, NULL);
++	/* Set the toplevel window size handling to be under program control.
++	*/
++	gtk_window_set_resizable((GtkWindow *) gtree.window, FALSE);
++
+ 	if (!decorated)
+ 		gtk_window_set_decorated((GtkWindow *) gtree.window, FALSE);
+ 
+-- 
+cgit v0.10.2-6-g49f6
+
