@@ -39,7 +39,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test || die "tests failed under ${EPYTYHON}"
+	esetup.py test
 }
 
 python_install_all() {
