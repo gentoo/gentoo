@@ -10,4 +10,4 @@ RESTRICT=bindist mirror strip
 SLOT=beta
 SRC_URI=amd64? ( https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_46.0.2490.22-1_amd64.deb ) x86? ( https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_46.0.2490.22-1_i386.deb )
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=f35eb24d541420c29cc81cdc9efafb79
+_md5_=a298ad95eeea170c424be0b43ae88a8b
