@@ -3340,7 +3340,9 @@ kde-plasma/plasma-desktop:gtk3 - Add support for gtk+3-based applications using 
 kde-plasma/plasma-desktop:legacy-systray - Add support for applications using legacy xembed systray icons.
 kde-plasma/plasma-desktop:touchpad - Enable configuration module for synaptics-based touchpads.
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
+kde-plasma/plasma-meta:mediacenter - Pull in kde-plasma/plasma-mediacenter
 kde-plasma/plasma-meta:sddm - Pull in the x11-misc/sddm display manager and KCM
+kde-plasma/plasma-meta:sdk - Pull in kde-plasma/plasma-sdk
 kde-plasma/plasma-meta:wallpapers - Install the KDE wallpapers
 kde-plasma/plasma-nm:modemmanager - Enable support for mobile broadband devices
 kde-plasma/plasma-nm:openconnect - Build support for the OpenConnect VPN client
