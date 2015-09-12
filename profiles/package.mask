@@ -368,7 +368,7 @@ www-apps/trac-downloads
 
 # Markos Chandras <hwoarang@gentoo.org> (18 Nov 2014)
 # Mask latest development version for testing
-=x11-misc/lightdm-1.15*
+=x11-misc/lightdm-1.16*
 
 # Mike Pagano <mpagano@gentoo.org> (16 Oct 2014)
 # A regression in kernels 3.17.0 lead to file system corruption
