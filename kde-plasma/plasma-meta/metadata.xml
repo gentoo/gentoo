@@ -4,7 +4,9 @@
 	<herd>kde</herd>
 	<use>
 		<flag name="display-manager">Pull in a graphical display manager</flag>
+		<flag name="mediacenter">Pull in <pkg>kde-plasma/plasma-mediacenter</pkg></flag>
 		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and KCM</flag>
+		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg></flag>
 		<flag name="wallpapers">Install the KDE wallpapers</flag>
 	</use>
 </pkgmetadata>
