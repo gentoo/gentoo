@@ -65,19 +65,18 @@ src_compile() {
 
 src_install() {
 	#TODO: add installation of GNOME Shell 3.2 extension
-	dobin	checkmagick*
+	dobin checkmagick*
 
 	udev_dorules 62-magick.rules
 
-	insinto	/usr/share/${PN}
-	doins *.py
+	python_moduleinto /usr/share/${PN}
+	python_domodule *.py
 
-	insinto	/usr/share/${PN}/MagickIcons
+	insinto /usr/share/${PN}/MagickIcons
 	doins MagickIcons/*.png
 
-	exeinto /usr/share/${PN}
-	doexe magick-rotation
-	doexe xrotate.py
+	python_scriptinto /usr/share/${PN}
+	python_doscript magick-rotation xrotate.py
 
 	dodoc *.txt ChangeLog
 
