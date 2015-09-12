@@ -140,13 +140,6 @@ src_prepare() {
 		-i build-outputs.mk || die "sed failed"
 
 	if use python ; then
-		if [[ ${CHOST} == *-darwin* ]] ; then
-			# http://mail-archives.apache.org/mod_mbox/subversion-dev/201306.mbox/%3C20130614113003.GA19257@tarsus.local2%3E
-			# in short, we don't have gnome-keyring stuff here, patch
-			# borrowed from MacPorts
-			epatch "${FILESDIR}"/${PN}-1.8.5-swig-python-no-gnome-keyring.patch
-		fi
-
 		# XXX: make python_copy_sources accept path
 		S=${S}/subversion/bindings/swig/python python_copy_sources
 		rm -r "${S}"/subversion/bindings/swig/python || die
