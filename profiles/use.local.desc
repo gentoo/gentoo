@@ -6347,7 +6347,6 @@ net-wireless/bladerf-fpga:x115 - bitstream for the x115KLE Cyclone IV FPGA blade
 net-wireless/bladerf-fpga:x40 - bitstream for the x40KLE Cyclone IV FPGA bladerf model"
 net-wireless/blueman:appindicator - Enable usage of dev-libs/libappindicator to export menu options
 net-wireless/blueman:gconf - Enable the GConf configuration backend
-net-wireless/blueman:gnome - Install the sendto-plugin for gnome-base/nautilus
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
 net-wireless/blueman:sendto - Install the sendto-plugin for gnome-base/nautilus
 net-wireless/blueman:thunar - Install the sendto-plugin for xfce-base/thunar

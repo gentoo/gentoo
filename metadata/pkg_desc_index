@@ -14445,7 +14445,7 @@ net-wireless/bladerf 2015.02 2015.07 9999: Libraries for supporing the BladeRF h
 net-wireless/bladerf-firmware 1.7.1 1.8.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.0_rc1 2.1.1: Bluetooth stack for KDE
-net-wireless/blueman 1.23-r2 1.98_p20150105 2.0 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
+net-wireless/blueman 1.23-r2 2.0 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
 net-wireless/bluez 4.101-r9 5.25 5.33 5.34: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
