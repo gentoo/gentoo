@@ -11826,7 +11826,7 @@ media-libs/libsamplerate 0.1.8-r1: Secret Rabbit Code (aka libsamplerate) is a S
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r8 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.3-r200: Simple Direct Media Layer
-media-libs/libsfml 1.6-r1 2.2 2.3.1: Simple and Fast Multimedia Library (SFML)
+media-libs/libsfml 1.6-r1 2.2 2.3.1 2.3.2: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.3.1 2.3.1-r1: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59 1.36.59-r1 2.1.1-r2 2.1.1-r3 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 0.3.8 1.1.0 1.8.0 1.8.1: A library for the sidplay2 fork with resid-fp
