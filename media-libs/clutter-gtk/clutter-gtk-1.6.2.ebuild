@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Clutter"
 LICENSE="LGPL-2.1+"
 
 SLOT="1.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="examples +introspection"
 
 RDEPEND="
