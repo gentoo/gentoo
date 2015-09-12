@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit bash-completion-r1
+inherit bash-completion-r1 eutils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://projects.archlinux.org/netctl.git"
@@ -51,19 +51,6 @@ src_install() {
 	newbashcomp contrib/bash-completion netctl
 	insinto /usr/share/zsh/site-functions
 	newins contrib/zsh-completion _netctl
-}
-
-optfeature() {
-	local desc=$1
-	shift
-	while (( $# )); do
-		if has_version "$1"; then
-			elog "  [I] $1 for ${desc}"
-		else
-			elog "  [ ] $1 for ${desc}"
-		fi
-		shift
-	done
 }
 
 pkg_postinst() {
