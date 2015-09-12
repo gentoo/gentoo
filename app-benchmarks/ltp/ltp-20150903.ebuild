@@ -8,7 +8,7 @@ inherit autotools eutils readme.gentoo
 
 DESCRIPTION="A testsuite for the linux kernel"
 HOMEPAGE="http://linux-test-project.github.io/"
-SRC_URI="https://github.com/linux-test-project/ltp/archive/20150420.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linux-test-project/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
