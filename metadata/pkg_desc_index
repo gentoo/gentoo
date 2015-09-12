@@ -16944,7 +16944,7 @@ www-apps/metadot 6.1.6 6.4.5.4: Metadot is a CMS with file, page and link manage
 www-apps/mirmon 1.38-r4: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
-www-apps/moodle 2.7.9 2.8.7 2.9.1: The Moodle Course Management System
+www-apps/moodle 2.7.10 2.8.8 2.9.2: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.26.0 0.27 0.27.5: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
@@ -17519,7 +17519,7 @@ x11-misc/ksuperkey 0.4: Utility allowing you to use the Super key as a shortcut 
 x11-misc/ktsuss 2: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
 x11-misc/light-locker 1.6.0: A simple locker using lightdm
-x11-misc/lightdm 1.10.3 1.10.5 1.12.3 1.13.2 1.14.2 1.15.3: A lightweight display manager
+x11-misc/lightdm 1.10.3 1.10.5 1.12.3 1.14.2 1.15.3 1.16.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 1.3.1-r1 1.6.1 1.9.0 2.0.0 2.0.1: LightDM GTK+ Greeter
 x11-misc/lightdm-kde 0.3.2.1: LightDM KDE greeter
 x11-misc/lineak-defaultplugin 0.9.0 0.9.0-r1: Mute/unmute and other macros for LINEAK

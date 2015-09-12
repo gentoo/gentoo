@@ -4,11 +4,11 @@ DESCRIPTION=Email client for GNOME
 EAPI=5
 HOMEPAGE=http://pawsa.fedorapeople.org/balsa/
 IUSE=crypt gnome gtkhtml gnome-keyring +gtkspell kerberos ldap libnotify rubrica sqlite ssl webkit xface
-KEYWORDS=~alpha amd64 ~ppc ~sparc ~x86
+KEYWORDS=~alpha amd64 ~ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.32:2 >=x11-libs/gtk+-3.4.0:3 dev-libs/gmime:2.6 >=net-libs/libesmtp-1.0.3:= net-mail/mailbase media-libs/libcanberra:=[gtk3] x11-themes/hicolor-icon-theme x11-themes/gnome-icon-theme crypt? ( >=app-crypt/gpgme-1.0:= ) gnome? ( >=x11-libs/gtksourceview-3.2.0:3.0 ) gnome-keyring? ( app-crypt/libsecret ) gtkhtml? ( gnome-extra/gtkhtml:4.0 ) sqlite? ( >=dev-db/sqlite-2.8:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) gtkspell? ( >=app-text/gtkspell-3.0.3:3 ) !gtkspell? ( app-text/enchant ) kerberos? ( app-crypt/mit-krb5 ) ldap? ( net-nds/openldap ) rubrica? ( dev-libs/libxml2:2 ) ssl? ( dev-libs/openssl:= ) webkit? ( net-libs/webkit-gtk:4 ) xface? ( >=media-libs/compface-1.5.1:= )
 REQUIRED_USE=gtkhtml? ( !webkit )
 SLOT=0
 SRC_URI=http://pawsa.fedorapeople.org/balsa/balsa-2.5.2.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=185f346f8ed5068ac9fae418969a8953
+_md5_=e8b79dcd4b3268c895357ea586374d49

@@ -4,7 +4,7 @@ DESCRIPTION=GNOME database access library
 EAPI=5
 HOMEPAGE=http://www.gnome-db.org/
 IUSE=berkdb canvas firebird gnome-keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres reports sourceview ssl vala debug elibc_FreeBSD java python_targets_python2_7
-KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
 LICENSE=GPL-2+ LGPL-2+
 RDEPEND=app-text/iso-codes >=dev-libs/glib-2.32:2 >=dev-libs/libxml2-2 dev-libs/libxslt sys-libs/readline:0= sys-libs/ncurses:0= berkdb? ( sys-libs/db:* ) firebird? ( dev-db/firebird ) gnome-keyring? ( app-crypt/libsecret ) gtk? ( >=x11-libs/gtk+-3.0.0:3 canvas? ( x11-libs/goocanvas:2.0= ) sourceview? ( x11-libs/gtksourceview:3.0 ) graphviz? ( media-gfx/graphviz ) ) http? ( >=net-libs/libsoup-2.24:2.4 ) introspection? ( >=dev-libs/gobject-introspection-1.30:= ) json? ( dev-libs/json-glib ) ldap? ( net-nds/openldap:= ) mdb? ( >app-office/mdbtools-0.5:= ) mysql? ( virtual/mysql:= ) postgres? ( dev-db/postgresql:= ) reports? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-java/fop dev-python/reportlab ) ssl? ( dev-libs/openssl:= ) >=dev-db/sqlite-3.6.22:3= vala? ( dev-libs/libgee:0.8 ) java? ( >=dev-java/java-config-2.2.0 )
 REQUIRED_USE=reports? ( python_targets_python2_7 ) canvas? ( gtk ) graphviz? ( gtk ) sourceview? ( gtk )
@@ -12,4 +12,4 @@ RESTRICT=test firebird? ( bindist )
 SLOT=5/4
 SRC_URI=mirror://gnome/sources/libgda/5.2/libgda-5.2.4.tar.xz
 _eclasses_=autotools	7feb275d850f45095537e76c5aa80494	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	c7374d201551e4fb8552994ef210e0f7	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=1384041ee78a166c4adde196eb458ea7
+_md5_=2e67c5aa2f59225f54b1460e5fa9e555
