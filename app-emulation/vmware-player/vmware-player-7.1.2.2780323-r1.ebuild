@@ -84,6 +84,8 @@ VM_INSTALL_DIR="/opt/vmware"
 
 QA_PREBUILT="/opt/*"
 
+QA_WX_LOAD="opt/vmware/lib/vmware/bin/vmware-vmx-stats opt/vmware/lib/vmware/bin/vmware-vmx-debug opt/vmware/lib/vmware/bin/vmware-vmx"
+
 src_unpack() {
 	default
 	local bundle=${A%.tar}
