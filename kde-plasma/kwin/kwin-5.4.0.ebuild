@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="KDE window manager"
 LICENSE="GPL-2+"
-KEYWORDS=" ~amd64"
+KEYWORDS="~amd64"
 IUSE="gles2 wayland"
 
 COMMON_DEPEND="

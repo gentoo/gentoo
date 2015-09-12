@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="A utility that provides information about a computer system"
 HOMEPAGE="http://www.kde.org/applications/system/kinfocenter/"
 SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-small.png"
-KEYWORDS=" ~amd64"
+KEYWORDS="~amd64"
 IUSE="egl gles ieee1394 +opengl +pci samba nfs wayland X"
 
 REQUIRED_USE="egl? ( || ( gles opengl ) )"
