@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Jason Zaman <perfinion@gentoo.org> (12 Sep 2015)
+# Login fails with consolekit-1.0.0, Bug 560088
+x11-misc/slim consolekit
+
 # Fabian Groffen <grobian@gentoo.org> (08 Sep 2015)
 # GnuTLS support is currently broken/causes hang, bug #559834
 # http://dev.mutt.org/trac/ticket/3772
