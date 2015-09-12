@@ -35,7 +35,7 @@ RDEPEND="dev-cpp/cairomm
 	dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/libaio
-	dev-libs/libsigc++
+	dev-libs/libsigc++:2
 	dev-libs/libxml2
 	=dev-libs/openssl-0.9.8*
 	dev-libs/xmlrpc-c
