@@ -13,7 +13,6 @@
 		<flag name="gconf">Enable the GConf configuration backend</flag>
 		<flag name="network">Add functionality to setup (host) PAN connections using either <pkg>net-dns/dnsmasq</pkg> or <pkg>net-misc/dhcp</pkg></flag>
 		<flag name="sendto">Install the sendto-plugin for <pkg>gnome-base/nautilus</pkg></flag>
-		<flag name="gnome">Install the sendto-plugin for <pkg>gnome-base/nautilus</pkg></flag>
 		<flag name="thunar">Install the sendto-plugin for <pkg>xfce-base/thunar</pkg></flag>
 	</use>
 	<upstream>
