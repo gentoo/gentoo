@@ -10711,75 +10711,75 @@ kde-base/smokekde 4.14.3: Scripting Meta Object Kompiler Engine - KDE bindings
 kde-base/smokeqt 4.14.3-r1: Scripting Meta Object Kompiler Engine - Qt bindings
 kde-base/solid-actions-kcm 4.11.14 4.11.19 4.11.22: KDE control module for Solid actions
 kde-base/systemsettings 4.11.14 4.11.19 4.11.22: System settings utility
-kde-frameworks/attica 5.13.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.13.0: Framework for searching and managing metadata
-kde-frameworks/bluez-qt 5.13.0: Qt wrapper for Bluez 5 DBus API
-kde-frameworks/extra-cmake-modules 5.13.0: Extra modules and scripts for CMake
-kde-frameworks/frameworkintegration 5.13.0: Framework for integrating Qt applications with KDE workspaces
-kde-frameworks/kactivities 5.13.0: Framework for working with KDE activities
-kde-frameworks/kapidox 5.13.0: Framework for building KDE API documentation in a standard format and style
-kde-frameworks/karchive 5.13.0: Framework for easy reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.13.0: Framework to let applications perform actions as a privileged user
-kde-frameworks/kbookmarks 5.13.0: Framework for managing bookmarks stored in XBEL format
-kde-frameworks/kcmutils 5.13.0: Framework to work with KDE System Settings modules
-kde-frameworks/kcodecs 5.13.0: Framework for manipulating strings using various encodings
-kde-frameworks/kcompletion 5.13.0: Framework for common completion tasks such as filename or URL completion
-kde-frameworks/kconfig 5.13.0: Framework for reading and writing configuration
-kde-frameworks/kconfigwidgets 5.13.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.13.0: Framework for solving common problems such as caching, randomisation, and more
-kde-frameworks/kcrash 5.13.0: Framework for intercepting and handling application crashes
-kde-frameworks/kdbusaddons 5.13.0: Framework for registering services and applications according to freedesktop standards
-kde-frameworks/kdeclarative 5.13.0: Framework providing integration of QML and KDE work spaces
-kde-frameworks/kded 5.13.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.13.0: Framework easing the development transition from KDE 4 to KF 5
-kde-frameworks/kdesignerplugin 5.13.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
-kde-frameworks/kdesu 5.13.0: Framework to handle super user actions
-kde-frameworks/kdewebkit 5.13.0: Framework providing KDE integration of QtWebKit
-kde-frameworks/kdnssd 5.13.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.13.0: Framework providing tools to generate documentation in various formats from DocBook files
-kde-frameworks/kemoticons 5.13.0: Framework for converting text emoticons to graphical representations
+kde-frameworks/attica 5.13.0 5.14.0: Framework providing access to Open Collaboration Services
+kde-frameworks/baloo 5.13.0 5.14.0: Framework for searching and managing metadata
+kde-frameworks/bluez-qt 5.13.0 5.14.0: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/extra-cmake-modules 5.13.0 5.14.0: Extra modules and scripts for CMake
+kde-frameworks/frameworkintegration 5.13.0 5.14.0: Framework for integrating Qt applications with KDE workspaces
+kde-frameworks/kactivities 5.13.0 5.14.0: Framework for working with KDE activities
+kde-frameworks/kapidox 5.13.0 5.14.0: Framework for building KDE API documentation in a standard format and style
+kde-frameworks/karchive 5.13.0 5.14.0: Framework for easy reading, creation, and manipulation of various archive formats
+kde-frameworks/kauth 5.13.0 5.14.0: Framework to let applications perform actions as a privileged user
+kde-frameworks/kbookmarks 5.13.0 5.14.0: Framework for managing bookmarks stored in XBEL format
+kde-frameworks/kcmutils 5.13.0 5.14.0: Framework to work with KDE System Settings modules
+kde-frameworks/kcodecs 5.13.0 5.14.0: Framework for manipulating strings using various encodings
+kde-frameworks/kcompletion 5.13.0 5.14.0: Framework for common completion tasks such as filename or URL completion
+kde-frameworks/kconfig 5.13.0 5.14.0: Framework for reading and writing configuration
+kde-frameworks/kconfigwidgets 5.13.0 5.14.0: Framework providing an assortment of configuration-related widgets
+kde-frameworks/kcoreaddons 5.13.0 5.14.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcrash 5.13.0 5.14.0: Framework for intercepting and handling application crashes
+kde-frameworks/kdbusaddons 5.13.0 5.14.0: Framework for registering services and applications according to freedesktop standards
+kde-frameworks/kdeclarative 5.13.0 5.14.0: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kded 5.13.0 5.14.0: Central daemon of KDE workspaces
+kde-frameworks/kdelibs4support 5.13.0 5.14.0: Framework easing the development transition from KDE 4 to KF 5
+kde-frameworks/kdesignerplugin 5.13.0 5.14.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
+kde-frameworks/kdesu 5.13.0 5.14.0: Framework to handle super user actions
+kde-frameworks/kdewebkit 5.13.0 5.14.0: Framework providing KDE integration of QtWebKit
+kde-frameworks/kdnssd 5.13.0 5.14.0: Framework for network service discovery using Zeroconf
+kde-frameworks/kdoctools 5.13.0 5.14.0: Framework providing tools to generate documentation in various formats from DocBook files
+kde-frameworks/kemoticons 5.13.0 5.14.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 3: Environment setting required for all KDE Frameworks apps to run
-kde-frameworks/kfilemetadata 5.13.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.13.0: Framework to handle global shortcuts
-kde-frameworks/kguiaddons 5.13.0: Framework providing assorted high-level user interface components
-kde-frameworks/khtml 5.13.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.13.0: Framework based on Gettext for internationalizing user interface text
-kde-frameworks/kiconthemes 5.13.0: Framework for icon theming and configuration
-kde-frameworks/kidletime 5.13.0: Framework for detection and notification of device idle time
-kde-frameworks/kimageformats 5.13.0: Framework providing additional format plugins for Qt's image I/O system
-kde-frameworks/kinit 5.13.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.13.0: Framework providing transparent file and data management
-kde-frameworks/kitemmodels 5.13.0: Framework providing data models that help with tasks such as sorting and filtering
-kde-frameworks/kitemviews 5.13.0: Framework providing additional widgets for item models
-kde-frameworks/kjobwidgets 5.13.0: Framework providing assorted widgets for showing the progress of jobs
-kde-frameworks/kjs 5.13.0: ECMAScipt compatible parser and engine
-kde-frameworks/kjsembed 5.13.0: Framework binding JavaScript objects to QObjects
-kde-frameworks/kmediaplayer 5.13.0: Framework providing a common interface for KParts that can play media files
-kde-frameworks/knewstuff 5.13.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.13.0: Framework for notifying the user of an event, including feedback and persistant events
-kde-frameworks/knotifyconfig 5.13.0: Framework for configuring desktop notifications
-kde-frameworks/kpackage 5.13.0: Framework to install and load packages of non binary content
-kde-frameworks/kparts 5.13.0: Framework providing elaborate user-interface components
-kde-frameworks/kpeople 5.13.0: KDE contact person abstraction library
-kde-frameworks/kplotting 5.13.0: Framework providing easy data-plotting functions
-kde-frameworks/kpty 5.13.0: Framework for pseudo terminal devices and running child processes
-kde-frameworks/kross 5.13.0: Framework for embedding scripting into applications
-kde-frameworks/krunner 5.13.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.13.0: Framework providing advanced features for plugins, such as file type association and locating
-kde-frameworks/ktexteditor 5.13.0: Framework providing a full text editor component
-kde-frameworks/ktextwidgets 5.13.0: Framework providing an assortment of widgets for displaying and editing text
-kde-frameworks/kunitconversion 5.13.0: Framework for converting units
-kde-frameworks/kwallet 5.13.0-r1: Framework providing desktop-wide storage for passwords
-kde-frameworks/kwidgetsaddons 5.13.0: An assortment of high-level widgets for common tasks
-kde-frameworks/kwindowsystem 5.13.0: Framework providing access to certain properties and features of the window manager
-kde-frameworks/kxmlgui 5.13.0: Framework for managing menu and toolbar actions in an abstract way
-kde-frameworks/kxmlrpcclient 5.13.0: Framework providing client-side support for the XML-RPC protocol
-kde-frameworks/modemmanager-qt 5.13.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.13.0: NetworkManager bindings for Qt
-kde-frameworks/plasma 5.13.0: Plasma framework
-kde-frameworks/solid 5.13.0: Framework providing platform independent hardware discovery, abstraction, and management
-kde-frameworks/sonnet 5.13.0: Framework for providing spell-checking capabilities through abstraction of popular backends
-kde-frameworks/threadweaver 5.13.0: Framework for managing threads using job and queue-based interfaces
+kde-frameworks/kfilemetadata 5.13.0 5.14.0: Library for extracting file metadata
+kde-frameworks/kglobalaccel 5.13.0 5.14.0: Framework to handle global shortcuts
+kde-frameworks/kguiaddons 5.13.0 5.14.0: Framework providing assorted high-level user interface components
+kde-frameworks/khtml 5.13.0 5.14.0: KHTML web rendering engine
+kde-frameworks/ki18n 5.13.0 5.14.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/kiconthemes 5.13.0 5.14.0: Framework for icon theming and configuration
+kde-frameworks/kidletime 5.13.0 5.14.0: Framework for detection and notification of device idle time
+kde-frameworks/kimageformats 5.13.0 5.14.0: Framework providing additional format plugins for Qt's image I/O system
+kde-frameworks/kinit 5.13.0 5.14.0: Helper library to speed up start of applications on KDE work spaces
+kde-frameworks/kio 5.13.0 5.14.0: Framework providing transparent file and data management
+kde-frameworks/kitemmodels 5.13.0 5.14.0: Framework providing data models that help with tasks such as sorting and filtering
+kde-frameworks/kitemviews 5.13.0 5.14.0: Framework providing additional widgets for item models
+kde-frameworks/kjobwidgets 5.13.0 5.14.0: Framework providing assorted widgets for showing the progress of jobs
+kde-frameworks/kjs 5.13.0 5.14.0: ECMAScipt compatible parser and engine
+kde-frameworks/kjsembed 5.13.0 5.14.0: Framework binding JavaScript objects to QObjects
+kde-frameworks/kmediaplayer 5.13.0 5.14.0: Framework providing a common interface for KParts that can play media files
+kde-frameworks/knewstuff 5.13.0 5.14.0: Framework for downloading and sharing additional application data
+kde-frameworks/knotifications 5.13.0 5.14.0: Framework for notifying the user of an event, including feedback and persistant events
+kde-frameworks/knotifyconfig 5.13.0 5.14.0: Framework for configuring desktop notifications
+kde-frameworks/kpackage 5.13.0 5.14.0: Framework to install and load packages of non binary content
+kde-frameworks/kparts 5.13.0 5.14.0: Framework providing elaborate user-interface components
+kde-frameworks/kpeople 5.13.0 5.14.0: KDE contact person abstraction library
+kde-frameworks/kplotting 5.13.0 5.14.0: Framework providing easy data-plotting functions
+kde-frameworks/kpty 5.13.0 5.14.0: Framework for pseudo terminal devices and running child processes
+kde-frameworks/kross 5.13.0 5.14.0: Framework for embedding scripting into applications
+kde-frameworks/krunner 5.13.0 5.14.0: Framework for providing different actions given a string query
+kde-frameworks/kservice 5.13.0 5.14.0: Framework providing advanced features for plugins, such as file type association and locating
+kde-frameworks/ktexteditor 5.13.0 5.14.0: Framework providing a full text editor component
+kde-frameworks/ktextwidgets 5.13.0 5.14.0: Framework providing an assortment of widgets for displaying and editing text
+kde-frameworks/kunitconversion 5.13.0 5.14.0: Framework for converting units
+kde-frameworks/kwallet 5.13.0-r1 5.14.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwidgetsaddons 5.13.0 5.14.0: An assortment of high-level widgets for common tasks
+kde-frameworks/kwindowsystem 5.13.0 5.14.0: Framework providing access to certain properties and features of the window manager
+kde-frameworks/kxmlgui 5.13.0 5.14.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlrpcclient 5.13.0 5.14.0: Framework providing client-side support for the XML-RPC protocol
+kde-frameworks/modemmanager-qt 5.13.0 5.14.0: ModemManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.13.0 5.14.0: NetworkManager bindings for Qt
+kde-frameworks/plasma 5.13.0 5.14.0: Plasma framework
+kde-frameworks/solid 5.13.0 5.14.0: Framework providing platform independent hardware discovery, abstraction, and management
+kde-frameworks/sonnet 5.13.0 5.14.0: Framework for providing spell-checking capabilities through abstraction of popular backends
+kde-frameworks/threadweaver 5.13.0 5.14.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/about-distro 1.1.0: KCM displaying distribution and system information
 kde-misc/adjustableclock 4.1.4: Plasmoid to show date and time in adjustable format using rich text
 kde-misc/akonadi-facebook 0_p20130209: Facebook services integration in Akonadi
