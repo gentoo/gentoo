@@ -88,6 +88,8 @@ src_prepare() {
 
 	if [[ "${PV}" == "9999" ]];
 	then
+		# fix automake failure about missing 'config/config.rpath'
+		touch config/config.rpath
 		eautoreconf
 	fi
 
