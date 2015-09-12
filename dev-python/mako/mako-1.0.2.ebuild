@@ -43,7 +43,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	optfeature dev-python/beaker "Caching support"
+	optfeature "Caching support" dev-python/beaker
 	for v in ${REPLACING_VERSIONS}; do
 		if ! version_is_at_least 0.7.3-r2 $v; then
 			ewarn "dev-python/beaker is no longer hard dependency of ${P}"
