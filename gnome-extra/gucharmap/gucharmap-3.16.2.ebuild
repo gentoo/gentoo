@@ -14,7 +14,7 @@ HOMEPAGE="https://live.gnome.org/Gucharmap"
 
 LICENSE="GPL-3"
 SLOT="2.90"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="cjk +introspection test vala"
 REQUIRED_USE="vala? ( introspection )"
 
