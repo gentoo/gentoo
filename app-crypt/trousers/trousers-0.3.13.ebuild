@@ -78,6 +78,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-nouseradd.patch
+	epatch "${FILESDIR}"/${P}-build.patch
 	mv configure.in configure.ac || die
 	eautoreconf
 }
