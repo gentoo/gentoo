@@ -8259,7 +8259,7 @@ dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.4.3-r1 2.5 2.6.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mimemagic 0.3.0: Fast mime detection by extension or content
-dev-ruby/mini_magick 4.2.7 4.2.9 4.2.10: Manipulate images with minimal use of memory
+dev-ruby/mini_magick 4.2.7 4.2.9 4.2.10 4.3.3: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
 dev-ruby/minitest 4.7.5 4.7.5-r1 4.7.5-r2 5.3.3 5.3.3-r1 5.5.1 5.6.1 5.7.0 5.8.0: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/mixlib-shellout 2.1.0 2.2.0 2.2.1: Run external commands on Unix or Windows
