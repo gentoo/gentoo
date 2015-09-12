@@ -17,7 +17,7 @@ checkconfig() {
 	for k in net.netfilter.nf_conntrack_max \
 		net.ipv4.netfilter.ip_conntrack_max \
 		net.nf_conntrack_max; do
-		if sysctl -e -n ${k} &>/dev/null; then
+		if sysctl -e -n ${k} 2>&1 > /dev/null; then
 			nf_ct_available=1 # sysctl key found
 			break
 		fi
