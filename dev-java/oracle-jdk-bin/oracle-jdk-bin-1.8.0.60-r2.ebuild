@@ -184,6 +184,9 @@ src_prepare() {
 	fi
 
 	if [[ -n ${JAVA_PKG_STRICT} ]] ; then
+		# Mark this binary early to run it now.
+		pax-mark Cm ./bin/javap
+
 		eqawarn "Ensure that this only calls trackJavaUsage(). If not, see bug #559936."
 		eqawarn
 		eqawarn "$(./bin/javap -J-Duser.home=${T} -c sun.misc.PostVMInitHook || die)"
