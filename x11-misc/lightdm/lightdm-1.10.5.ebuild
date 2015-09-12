@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 arm ~ppc x86"
 IUSE="+gtk +introspection kde qt4"
 REQUIRED_USE="|| ( gtk kde )"
 
