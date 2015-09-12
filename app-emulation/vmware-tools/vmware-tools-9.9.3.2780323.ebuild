@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: Exp $
+# $Id$
 
 inherit versionator vmware-bundle
 
@@ -46,9 +46,13 @@ src_unpack() {
 
 src_install() {
 	insinto "${VM_INSTALL_DIR}"/lib/vmware/isoimages
+	local somethingdone;
 	local guest ; for guest in ${IUSE_VMWARE_GUEST} ; do
 		if use "vmware_guest_${guest}" ; then
 			doins "${guest}".iso{,.sig}
+			somethingdone=yes
 		fi
 	done
+
+	[ -n "${somethingdone}" ] || ewarn  "You should set VMWARE_GUEST in make.conf to specify which operating systems you need."
 }
