@@ -607,6 +607,14 @@ distutils-r1_run_phase() {
 	fi
 	local -x PYTHONPATH="${BUILD_DIR}/lib:${PYTHONPATH}"
 
+	# Bug 559644
+	# using PYTHONPATH when the ${BUILD_DIR}/lib is not created yet might lead to
+	# problems in setup.py scripts that try to import modules/packages from that path
+	# during the build process (Python at startup evaluates PYTHONPATH, if the dir is
+	# not valid then associates a NullImporter object to ${BUILD_DIR}/lib storing it
+	# in the sys.path_importer_cache)
+	mkdir -p "${BUILD_DIR}/lib" || die
+
 	# We need separate home for each implementation, for .pydistutils.cfg.
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		local -x HOME=${HOME}/${EPYTHON}
