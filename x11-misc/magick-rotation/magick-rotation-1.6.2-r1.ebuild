@@ -18,6 +18,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND="${PYTHON_DEPS}
 	x11-libs/libX11
 	x11-libs/libXrandr"
@@ -68,14 +70,14 @@ src_install() {
 	udev_dorules 62-magick.rules
 
 	insinto	/usr/share/${PN}
-	doins	*.py
+	doins *.py
 
 	insinto	/usr/share/${PN}/MagickIcons
-	doins	MagickIcons/*.png
+	doins MagickIcons/*.png
 
 	exeinto /usr/share/${PN}
-	doexe	magick-rotation
-	doexe	xrotate.py
+	doexe magick-rotation
+	doexe xrotate.py
 
 	dodoc *.txt ChangeLog
 
@@ -83,16 +85,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature() {
-		elog "  [\e[1m$(has_version ${1} && echo I || echo ' ')\e[0m] ${1} (${2})"
-	}
-
-	elog
+	echo
 	elog "In order to use Magick Rotation with an on-screen keyboard and handwriting,"
 	elog "the following additional package may also be installed for use at run-time:"
 	elog
-	optfeature 'media-gfx/cellwriter' "Magick Rotation's default onscreen keyboard"
-	elog
+	optfeature "Magick Rotation's default onscreen keyboard" media-gfx/cellwriter
+	echo
 
 	ewarn "in order to use Magick Rotation you have to be in the 'magick' group."
 	ewarn "Just run 'gpasswd -a <USER> magick', then have <USER> re-login."
