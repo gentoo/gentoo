@@ -40,7 +40,7 @@ RDEPEND="dev-cpp/cairomm
 	dev-libs/expat
 	dev-libs/libaio
 	=dev-libs/libgcrypt-1.5*
-	dev-libs/libsigc++
+	dev-libs/libsigc++:2
 	dev-libs/libxml2
 	dev-libs/openssl:0.9.8
 	dev-libs/xmlrpc-c
