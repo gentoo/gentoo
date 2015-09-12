@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/560212
+
+pull in headers for funcs that are used
+
+--- a/libdm/dm_handle2path.c
++++ b/libdm/dm_handle2path.c
+@@ -20,6 +20,9 @@
+ #include <dmapi_kern.h>
+ #include "dmapi_lib.h"
+ 
++#include <fcntl.h> /* open */
++#include <unistd.h> /* close */
++#include <string.h> /* strlen */
+ #include <mntent.h>
+ #include <dirent.h>
+ #ifdef linux

@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/559572
+
+make sure we can handle large files properly (like log files over 2GiB)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -10,6 +10,8 @@
+ AC_STRUCT_ST_BLKSIZE
+ AC_STRUCT_ST_BLOCKS
+ 
++AC_SYS_LARGEFILE
++
+ AC_CHECK_LIB([popt],[poptParseArgvString],,
+   AC_MSG_ERROR([libpopt required but not found]))
+ 

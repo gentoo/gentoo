@@ -24,6 +24,7 @@ src_prepare() {
 		-e "/^PKG_DOC_DIR/s:@pkg_name@:${PF}:" \
 		include/builddefs.in \
 		|| die
+	epatch "${FILESDIR}"/${P}-headers.patch
 
 	multilib_copy_sources
 }
