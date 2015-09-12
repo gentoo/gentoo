@@ -407,7 +407,7 @@ app-benchmarks/ioping 0.8 0.9: Simple disk I/0 latency measuring tool
 app-benchmarks/iozone 3.397 3.408: Filesystem benchmarking program
 app-benchmarks/jmeter 2.0.1-r4 2.0.1-r5 2.0.1-r6: Load test and measure performance on HTTP/FTP services and databases
 app-benchmarks/libc-bench 20110206: Time and memory-efficiency tests of various C/POSIX standard library functions
-app-benchmarks/ltp 20130503 20140828 20150119 20150420: A testsuite for the linux kernel
+app-benchmarks/ltp 20130503 20140828 20150119 20150420 20150903: A testsuite for the linux kernel
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/os-autoinst 9999: automated testing of Operating Systems
 app-benchmarks/phoronix-test-suite 4.8.4 4.8.5: Phoronix's comprehensive, cross-platform testing and benchmark suite
