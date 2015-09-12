@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Devhelp"
 
 LICENSE="GPL-2+"
 SLOT="0/3-1" # subslot = 3-(libdevhelp-3 soname version)
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="gedit"
 REQUIRED_USE="gedit? ( ${PYTHON_REQUIRED_USE} )"
 

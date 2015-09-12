@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/LaTeXila"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+introspection +latexmk rubber"
 
 COMMON_DEPEND="$(vala_depend)

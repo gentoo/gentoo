@@ -13,7 +13,7 @@ HOMEPAGE="https://git.gnome.org/browse/libgfbgraph/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+introspection"
 
 RDEPEND="

@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Documents"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Need gdk-pixbuf-2.25 for gdk_pixbuf_get_pixels_with_length
 COMMON_DEPEND="

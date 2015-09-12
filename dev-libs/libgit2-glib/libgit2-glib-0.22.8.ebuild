@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libgit2-glib"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="python ssh +vala"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

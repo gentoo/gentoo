@@ -17,7 +17,7 @@ SRC_URI="https://launchpad.net/history-manager/$(get_version_component_range 1-2
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

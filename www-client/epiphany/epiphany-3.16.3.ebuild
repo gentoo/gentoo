@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+jit +nss test"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.5.5

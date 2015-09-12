@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Sudoku"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 # fixed vala & gtk+ from gnome-3.16 branch

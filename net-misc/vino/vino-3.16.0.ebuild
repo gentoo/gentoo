@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Vino"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="crypt libsecret ipv6 jpeg ssl +telepathy zeroconf +zlib"
 # bug #394611; tight encoding requires zlib encoding
 REQUIRED_USE="jpeg? ( zlib )"

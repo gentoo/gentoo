@@ -14,7 +14,7 @@ HOMEPAGE="http://gupnp.org/"
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+introspection"
 
 RDEPEND="
