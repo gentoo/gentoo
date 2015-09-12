@@ -7584,7 +7584,7 @@ dev-python/python-heatclient 0.4.0 0.5.0 0.6.0 0.7.0: OpenStack Orchestration AP
 dev-python/python-iptables 0.8.0 0.9.0: Python bindings for iptables
 dev-python/python-ironicclient 0.5.1: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
-dev-python/python-keystoneclient 1.0.0-r1 1.1.1 1.3.1 1.3.2 1.4.0 1.5.0 1.6.0 1.6.0-r1: Client Library for OpenStack Identity
+dev-python/python-keystoneclient 1.3.1 1.3.2 1.7.1: Client Library for OpenStack Identity
 dev-python/python-ldap 2.4.15 2.4.19 2.4.20 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.10.2-r1 0.11.1 0.11.2 0.12.0: Functions for fast computation of Levenshtein (edit) distance, and edit operations
 dev-python/python-linux-procfs 0.4.6 9999: Python classes to extract information from the Linux kernel /proc files
@@ -13283,7 +13283,7 @@ net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.1d-r2 2.0.1e: Arno's iptables firewall script
 net-firewall/arptables 0.0.3.4-r2: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
-net-firewall/conntrack-tools 1.4.2: Connection tracking userspace tools
+net-firewall/conntrack-tools 1.4.2 1.4.3: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r1: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1: Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.2: Command line util for managing firewall rules
@@ -13596,7 +13596,7 @@ net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative pro
 net-libs/libndp 1.4 1.5: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r5 1.1.6 1.2_rc3: library to provide an API for commonly used low-level network functions (mainly packet injection)
 net-libs/libnetfilter_acct 1.0.2: Userspace library providing interface to extended accounting infrastructure of NetFilter
-net-libs/libnetfilter_conntrack 1.0.3 1.0.4: programming interface (API) to the in-kernel connection tracking state table
+net-libs/libnetfilter_conntrack 1.0.3 1.0.4 1.0.5: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0: userspace library that provides the programming interface to the user-space helper infrastructure
 net-libs/libnetfilter_cttimeout 1.0.0: netlink interface to the connection tracking timeout infrastructure in the kernel packet filter
 net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by the kernel packet filter
