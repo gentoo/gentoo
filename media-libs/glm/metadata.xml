@@ -9,6 +9,6 @@
 		header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specification. 
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">ogl-math</remote-id>
+		<remote-id type="github">g-trunc/glm</remote-id>
 	</upstream>
 </pkgmetadata>
