@@ -17459,7 +17459,7 @@ x11-misc/easystroke 0.6.0 0.6.0-r1: a gesture-recognition application for X11
 x11-misc/efax-gtk 3.2.9 3.2.11 3.2.12 3.2.13: A graphical frontend for the 'efax' application
 x11-misc/electricsheep 2.7_beta11: realize the collective dream of sleeping computers from all over the internet
 x11-misc/etm 696-r1: Event and Task Manager, an intuitive time management application
-x11-misc/evolvotron 0.6.1 0.6.2 0.6.3: Generative art image evolver
+x11-misc/evolvotron 0.6.2 0.6.3: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221: A Pager for fluxbox
 x11-misc/fbpanel 6.1-r2: light-weight X11 desktop panel
@@ -17555,13 +17555,13 @@ x11-misc/pathfinder 1.6.36 1.7.45 1.7.47 1.7.49: File manager based on the FOX T
 x11-misc/pcmanfm 0.9.10 1.1.2 1.2.2 1.2.3 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.7.0 0.8.0 0.9.0: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
-x11-misc/piedock 1.6.4 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
+x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
 x11-misc/py3status 2.6: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r1: A lightweight panel/taskbar for X11 window managers
 x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 2.0.2: Lightweight and cross-platform clipboard history applet
-x11-misc/qps 1.10.12.1 1.10.16: Visual process manager - Qt version of ps/top
+x11-misc/qps 1.10.16: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
 x11-misc/qterm 0.5.12 0.5.12-r1: A BBS client for Linux
 x11-misc/qtfm 5.5: A small, lightweight file manager for desktops based on pure Qt
