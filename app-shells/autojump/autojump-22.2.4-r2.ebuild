@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit python-r1 vcs-snapshot
+inherit bash-completion-r1 python-r1 vcs-snapshot
 
 DESCRIPTION="change directory command that learns"
 HOMEPAGE="https://github.com/joelthelion/autojump"
@@ -24,6 +24,7 @@ DEPEND="test? ( dev-python/flake8 dev-python/tox )"
 
 src_prepare() {
 	sed -e "s: \(/etc/profile.d\): \"${EPREFIX}\1\":" \
+		-e "s:/usr/local/share:/usr/share:" \
 		-i bin/autojump.sh || die
 }
 
@@ -37,8 +38,8 @@ src_install() {
 	insinto /etc/profile.d
 	doins bin/${PN}.sh
 
+	newbashcomp bin/${PN}.bash ${PN}
 	insinto /usr/share/"${PN}"/
-	doins bin/${PN}.bash
 	doins bin/${PN}.zsh
 	insinto /usr/share/zsh/site-functions
 	doins bin/_j
