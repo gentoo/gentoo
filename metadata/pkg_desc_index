@@ -4900,7 +4900,7 @@ dev-libs/urdfdom 0.3.0 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.7.12 0.7.13 0.8.4 0.8.5 0.8.6: userspace RCU (read-copy-update) library
-dev-libs/ustr 1.0.4-r5: Low-overhead managed string library for C
+dev-libs/ustr 1.0.4-r5 1.0.4-r6: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
