@@ -259,6 +259,10 @@ multilib_src_compile() {
 multilib_src_test() {
 	multilib_is_native_abi || continue
 
+	# Needed for bus-related tests
+	local -x SANDBOX_WRITE=${SANDBOX_WRITE}
+	addwrite /sys/fs/kdbus
+
 	default
 }
 
