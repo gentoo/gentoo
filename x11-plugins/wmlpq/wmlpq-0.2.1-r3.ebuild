@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Windowmaker dockapp which monitors up to 5 printqueues"
@@ -17,20 +18,17 @@ IUSE=""
 DEPEND=">=x11-libs/libdockapp-0.7:="
 RDEPEND="${DEPEND}"
 
-src_prepare()
-{
+src_prepare() {
 	epatch "${FILESDIR}/${PN}-makefile-ldflags.patch"
 
 	sed -e 's#<dockapp.h>#<libdockapp/dockapp.h>#' -i *.c || die
 }
 
-src_compile()
-{
+src_compile() {
 	emake CC=$(tc-getCC) LDFLAGS="${LDFLAGS}"
 }
 
-src_install()
-{
+src_install() {
 	dodir /usr/bin
 	emake DESTDIR="${D}"/usr/bin install
 
