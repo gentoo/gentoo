@@ -17961,7 +17961,7 @@ x11-terms/mate-terminal 1.8.0 1.8.1: The MATE Terminal
 x11-terms/mlterm 3.4.5 3.5.0: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: Terminal emulator with transparency support as well as rxvt backwards compatibility with tab support
-x11-terms/pangoterm 0.0_pre20150323: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
+x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
 x11-terms/qterminal 0.4.0 0.5.0_p20140913 0.6.0: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 2.6.3 2.6.5 2.9.3-r1: A terminal emulator designed to integrate with the ROX environment
