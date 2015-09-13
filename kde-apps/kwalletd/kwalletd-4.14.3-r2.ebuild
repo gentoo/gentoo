@@ -12,6 +12,7 @@ KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug gpg"
 
 DEPEND="
+	dev-libs/libgcrypt:0=
 	gpg? (
 		app-crypt/gpgme
 		$(add_kdebase_dep kdepimlibs)
