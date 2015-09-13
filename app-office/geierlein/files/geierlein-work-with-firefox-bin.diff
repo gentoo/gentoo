@@ -1,0 +1,12 @@
+diff -Naur geierlein-0.7.3/bin/xgeierlein.in geierlein-0.7.3-1/bin/xgeierlein.in
+--- geierlein-0.7.3/bin/xgeierlein.in	2015-02-12 12:38:29.000000000 +0100
++++ geierlein-0.7.3-1/bin/xgeierlein.in	2015-05-09 10:19:28.780700796 +0200
+@@ -19,7 +19,7 @@
+   exit 0
+ fi
+ 
+-for search in firefox iceweasel xulrunner; do
++for search in firefox firefox-bin iceweasel xulrunner; do
+   if [ "$XULRUNNER" = "" ]; then
+     XULRUNNER="$(which $search)"
+   fi
