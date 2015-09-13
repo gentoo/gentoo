@@ -14899,7 +14899,7 @@ sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
 sci-electronics/gnucap 0.35.20091207: GNUCap is the GNU Circuit Analysis Package
 sci-electronics/gplcver 2.11a 2.12a: Verilog simulator
 sci-electronics/gresistor 0.0.1 0.0.1-r1 0.0.1-r2: Translate a resistor color codes into a readable value
-sci-electronics/gsmc 1.1-r1 1.1-r2: A GTK program for doing Smith Chart calculations
+sci-electronics/gsmc 1.1-r2: A GTK program for doing Smith Chart calculations
 sci-electronics/gspeakers 0.11-r1: GTK based loudspeaker enclosure and crossovernetwork designer
 sci-electronics/gspiceui 0.9.99 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.45 3.3.47 3.3.59 3.3.64 3.3.65 3.3.66: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
