@@ -10,5 +10,5 @@ RDEPEND=X? ( x11-libs/gtk+:2 ) ruby? ( dev-lang/ruby ) app-shells/tcsh >=dev-lan
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://drqueue.org/files/drqueue.0.64.4.tgz
-_eclasses_=distutils-r1	1375d7df3597739c70e997d7508c6f79	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=ffc437db706b64efc6ac27a23f54640e
