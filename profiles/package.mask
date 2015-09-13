@@ -103,57 +103,17 @@ x11-base/nouveau-drm
 # Masked for removal in 30 days.
 dev-ruby/ruby-goocanvas
 
-# Patrice Clement <monsieurp@gentoo.org> (19 Aug 2015)
-# Upstream dead: no releases since 2010.
-# Technology has moved on and there are far better alternatives
-# (easymock, mockito and jmock).
-# Masked for removal in 30 days. See bug #190307.
-dev-java/mockobjects
-
-# Patrice Clement <monsieurp@gentoo.org> (19 Aug 2015)
-# Upstream dead too: no releases since 2005.
-# Masked for removal in 30 days. See bug #190307.
-dev-java/xdoclet
-
 # Johannes Huber <johu@gentoo.org> (18 Aug 2015)
 # Masked for removal in 30 days. Does not compile with
 # dev-python/PyQt4-4.11.4, which blocks stabilization.
 # Dead upstream. Last commit 6 years ago. See bug #558020.
 net-misc/guidedog
 
-# Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
-# Dependency of dev-java/base64. This project isn't getting a lot of traction
-# and we already have a ton of Java serialiser APIs in the tree.
-# Masked for removal. See bug #557866.
-dev-java/java-xmlbuilder
-
-# Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
-# Last release was in 2008. Does not compile with recent JDKs (>= 1.8).
-# Masked for removal. See bug #557920.
-dev-java/httpunit
-
-# Patrice Clement <monsieurp@gentoo.org> (16 Aug 2015)
-# Project discontinued: part of the java.util namespace as of Java 8.
-# See https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html.
-# Masked for removal. See bug #557866.
-dev-java/base64
-
 # Brian Evans <grknight@gentoo.org> (16 Aug 2015)
 # Mask new PEAR installer as it is likely to break
 # many old scripts
 >=dev-php/pear-1.10.0_alpha1
 >=dev-php/PEAR-PEAR-1.10.0_alpha1
-
-# Patrice Clement <monsieurp@gentoo.org> (14 Aug 2015)
-# Unreachable HOMEPAGE (dead). Very very very old package: 
-# last release came out in 2001.
-# Masked for removal in 30 days. See bug #232666.
-dev-java/tclib
-
-# Patrice Clement <monsieurp@gentoo.org> (14 Aug 2015)
-# Last release is over 13 years old (!).
-# Masked for removal in 30 days. See bug #177032.
-app-text/jdictionary
 
 # Johannes Huber <johu@@gentoo.org> (13 Aug 2015)
 # Nepomuk removal. Announced via portage news item on 2015/08/11.
@@ -175,11 +135,6 @@ kde-misc/ksoprano
 kde-misc/nepomukshell
 kde-misc/pgame
 media-video/bangarang
-
-# Patrice Clement <monsieurp@gentoo.org> (11 Aug 2015)
-# Old and doesn't compile with recent JDKs (>= 1.8).
-# Masked for removal in 30 days. See bug #557210.
-app-text/jing
 
 # Johannes Huber <johu@gentoo.org> (10 Aug 2015)
 # Masked for removal in 30 days. Not needed anymore for
