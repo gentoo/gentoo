@@ -2,7 +2,7 @@ Title: PBXT now unsupported in MySQL/MariaDB
 Author: Robin H. Johnson <robbat2@gentoo.org>
 Content-Type: text/plain
 Posted: 2013-06-01
-Revision: 3
+Revision: 4
 News-Item-Format: 1.0
 Display-If-Installed: dev-db/mysql
 Display-If-Installed: dev-db/mysql-cluster
