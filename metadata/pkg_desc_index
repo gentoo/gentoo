@@ -18184,7 +18184,7 @@ xfce-base/xfce4-appfinder 4.10.1 4.12.0-r1: A tool to find and launch installed 
 xfce-base/xfce4-meta 4.10 4.12: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.10.1 4.12.0 4.12.0-r1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.10.1-r2 4.12.1: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.10.1 4.12.0: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-settings 4.10.1 4.12.0 4.12.0-r1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.10.0 4.12.0-r1: A simple client-server configuration storage and query system for the Xfce desktop environment
 xfce-base/xfdesktop 4.10.2 4.12.2 4.12.3: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.10.1 4.12.3 4.12.3-r1: Window manager for the Xfce desktop environment
