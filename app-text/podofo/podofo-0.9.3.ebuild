@@ -33,6 +33,10 @@ DOCS="AUTHORS ChangeLog TODO"
 src_prepare() {
 	local x sed_args
 
+	# bug 556962
+	sed -i -e 's|Decrypt( pEncryptedBuffer, nOutputLen, pDecryptedBuffer, m_lLen );|Decrypt( pEncryptedBuffer, (pdf_long)nOutputLen, pDecryptedBuffer, (pdf_long\&)m_lLen );|' \
+		test/unit/EncryptTest.cpp || die
+
 	sed -i \
 		-e "s:LIBDIRNAME \"lib\":LIBDIRNAME \"$(get_libdir)\":" \
 		-e "s:LIBIDN_FOUND:HAVE_LIBIDN:g" \
