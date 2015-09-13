@@ -59,9 +59,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	if ! multilib_is_native_abi ; then
-		cd tools
-		emake
-		cd "${BUILD_DIR}"
+		emake -C tools
 	fi
 	emake check
 }
