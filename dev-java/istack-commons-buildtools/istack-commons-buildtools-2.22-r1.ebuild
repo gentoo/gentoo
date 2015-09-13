@@ -6,6 +6,8 @@ EAPI=5
 
 inherit java-pkg-2 java-pkg-simple
 
+JAVA_PKG_IUSE="doc source"
+
 MY_PN=${PN%%-*}
 
 DESCRIPTION="IStack Commons - Buildtools jar"
@@ -14,15 +16,15 @@ SRC_URI="https://maven.java.net/content/repositories/releases/com/sun/${MY_PN}/$
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="amd64 x86"
+IUSE="doc source"
 
 CDEPEND="dev-java/ant-core:0
 	dev-java/codemodel:2"
 RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 DEPEND=">=virtual/jdk-1.6
-	app-arch/unzip
+	app-arch/zip
 	${CDEPEND}"
 
 JAVA_GENTOO_CLASSPATH="ant-core,codemodel-2"
