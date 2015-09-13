@@ -4,12 +4,12 @@ Content-Type: text/plain
 Posted: 2013-06-01
 Revision: 3
 News-Item-Format: 1.0
-Display-If-Installed: dev-db/mysql[pbxt,-minimal]
-Display-If-Installed: dev-db/mysql-cluster[pbxt,-minimal]
-Display-If-Installed: dev-db/mariadb[pbxt,-minimal]
-Display-If-Installed: dev-db/mariadb-galera[pbxt,-minimal]
-Display-If-Installed: dev-db/percona-server[pbxt,-minimal]
-Display-If-Installed: dev-db/google-mysql[pbxt,-minimal]
+Display-If-Installed: dev-db/mysql
+Display-If-Installed: dev-db/mysql-cluster
+Display-If-Installed: dev-db/mariadb
+Display-If-Installed: dev-db/mariadb-galera
+Display-If-Installed: dev-db/percona-server
+Display-If-Installed: dev-db/google-mysql
 
 The PBXT/PrimeBase engine is unsupported upstream in MySQL & MariaDB for some
 time now [1]. It is no longer built in the upstream MariaDB 5.5 binaries[2][3]
