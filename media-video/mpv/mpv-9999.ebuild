@@ -27,7 +27,7 @@ fi
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="+alsa bluray cdio +cli doc-pdf drm dvb +dvd egl +enca encode +iconv
-jack jpeg ladspa lcms +libass libav libcaca libguess libmpv lua luajit openal
+jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
 +opengl oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux v4l vaapi
 vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
 
@@ -83,7 +83,6 @@ RDEPEND="
 	iconv? ( virtual/libiconv )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg:0 )
-	ladspa? ( media-libs/ladspa-sdk )
 	libass? (
 		>=media-libs/libass-0.12.1:=[enca?,fontconfig]
 		virtual/ttf-fonts
@@ -184,7 +183,6 @@ src_configure() {
 		$(use_enable dvd dvdnav)
 		$(use_enable cdio cdda)
 		$(use_enable enca)
-		$(use_enable ladspa)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
 		--disable-vapoursynth	# vapoursynth is not packaged
