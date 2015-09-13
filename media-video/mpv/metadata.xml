@@ -20,7 +20,6 @@
 		<flag name="cdio">Enable CDDA support via <pkg>dev-libs/libcdio-paranoia</pkg></flag>
 		<flag name="doc-pdf">Build documentation in pdf format</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video output</flag>
-		<flag name="dvdnav">Enable support for DVD navigation using <pkg>media-libs/libdvdnav</pkg></flag>
 		<flag name="egl">Enable EGL backend for X11 OpenGL video output (experimental)</flag>
 		<flag name="enca">Enable support for charset discovery and conversion using <pkg>app-i18n/enca</pkg></flag>
 		<flag name="jpeg">Enable support for saving screenshots to JPEG format</flag>
@@ -28,15 +27,10 @@
 		<flag name="libmpv">Build mpv shared library</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI and <pkg>net-misc/youtube-dl</pkg> hook-script</flag>
 		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
-		<flag name="mpg123">Enable support for mp3 decoding via <pkg>media-sound/mpg123</pkg> instead of relying on ffmpeg support</flag>
-		<flag name="postproc">Enable image post-processing via libpostproc</flag>
 		<flag name="pvr">Enable Video4Linux2 MPEG PVR</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="rubberband">Enable high quality pitch correction via <pkg>media-libs/rubberband</pkg></flag>
-		<flag name="quvi">Enable support for streaming sites using <pkg>media-libs/libquvi</pkg></flag>
-		<flag name="radio">Enable V4L2 radio interface and support</flag>
 		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs</flag>
-		<flag name="shm">Enable support for shm</flag>
 		<flag name="vf-dlopen">Install additional video filters for using with -vf dlopen</flag>
 	</use>
 	<upstream>
