@@ -7832,7 +7832,7 @@ dev-python/theano 0.6.0: Python library to define and optimize multi-dimensional
 dev-python/thunarx-python 0.3.0-r1: Python bindings for the Thunar file manager
 dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.3: A complete yet simple CSS parser for Python
-dev-python/tlslite 0.4.3-r1: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
+dev-python/tlslite 0.4.3-r1 0.4.8: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/tmdb3 0.6.17 0.7.2: TheMovieDB.org APIv3 interface
 dev-python/toolz 0.7.0 0.7.1 0.7.2: List processing tools and functional utilities
 dev-python/torment 2.0.2 2.0.3 2.0.4: A Study in Fixture Based Testing Frameworking
