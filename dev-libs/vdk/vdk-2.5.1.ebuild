@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="A Visual Development Kit for RAD"
 SRC_URI="mirror://sourceforge/vdklib/${P}.tar.gz"
-HOMEPAGE="http://www.mariomotta.it/vdklib/"
+HOMEPAGE="http://sourceforge.net/projects/vdklib/"
 
 SLOT="0"
 LICENSE="GPL-2"
