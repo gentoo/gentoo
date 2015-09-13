@@ -1,13 +1,13 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils
 
 DESCRIPTION="gbdfed Bitmap Font Editor"
-HOMEPAGE="http://www.math.nmsu.edu/~mleisher/Software/gbdfed/"
-SRC_URI="http://www.math.nmsu.edu/~mleisher/Software/gbdfed/${P}.tbz2"
+HOMEPAGE="http://sofia.nmsu.edu/~mleisher/Software/gbdfed/"
+SRC_URI="http://sofia.nmsu.edu/~mleisher/Software/gbdfed/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +21,7 @@ RDEPEND=">=x11-libs/gtk+-2.6:2
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed "s:-D.*_DISABLE_DEPRECATED::" -i Makefile.in #248562
+	sed "s:-D.*_DISABLE_DEPRECATED::" -i Makefile.in || die #248562
 }
 
 src_install() {
