@@ -15313,7 +15313,7 @@ sci-mathematics/spin 6.2.1 6.2.3 6.2.5: Tool for formal verification of distribu
 sci-mathematics/topcom 0.17.4-r1: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/wxmaxima 13.04.2 15.04.0-r1 15.08.1: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 13.04.2 15.04.0-r1 15.08.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 1.6.5 1.6.6: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.3.2 1.3.3 1.3.4: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
