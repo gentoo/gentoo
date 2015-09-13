@@ -13281,7 +13281,7 @@ net-dns/unbound 1.4.22-r1 1.5.1-r2 1.5.4: A validating, recursive and caching DN
 net-dns/updatedd 2.6: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
-net-firewall/arno-iptables-firewall 2.0.1d-r2 2.0.1e: Arno's iptables firewall script
+net-firewall/arno-iptables-firewall 2.0.1d-r2 2.0.1e 2.0.1f_rc1: Arno's iptables firewall script
 net-firewall/arptables 0.0.3.4-r2: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.2 1.4.3: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r1: Python script to submit firewall logs to dshield.org
@@ -14276,7 +14276,7 @@ net-p2p/btpd 0.15: BitTorrent client consisting of a daemon and client
 net-p2p/classified-ads 0.07 0.07_p20150728: Program for displaying classified advertisement items
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
-net-p2p/ctorrent 3.3.2-r2: Enhanced CTorrent is a BitTorrent console client written in C and C++
+net-p2p/ctorrent 3.3.2-r2 3.3.2-r3: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/datacoin-hp 9999: High-performance version of datacoin (primecoin-hp fork)
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/dclib 0.3.23: DirectConnect client library
