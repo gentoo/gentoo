@@ -544,7 +544,7 @@ app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.2 0.18.3: GObject library for accessing the freedesktop.org Secret Service API
-app-crypt/libu2f-host 0.0.2 0.0.4: Yubico Universal 2nd Factor (U2F) Host C Library
+app-crypt/libu2f-host 0.0.2 0.0.4 1.0.0: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libykneomgr 0.1.6 0.1.7: YubiKey NEO CCID Manager C Library
 app-crypt/loop-aes-losetup 2.21: Various useful Linux utilities
 app-crypt/mcrypt 2.6.8-r2: replacement of the old unix crypt(1)
@@ -13545,7 +13545,7 @@ net-libs/jreen 1.2.0: Qt XMPP library
 net-libs/ldns 1.6.17: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.18: Accounts SSO (Single Sign-On) management library for GLib applications
-net-libs/libasr 1.0.1 1.0.1.201505061057: Async Resolver Library from OpenBSD/OpenSMTPD
+net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r3: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.10.0 0.10.1 0.11.0 9999: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.2 0.5.0 0.5.1: C implementation of getblocktemplate (BIP 22)
