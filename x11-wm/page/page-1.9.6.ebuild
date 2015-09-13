@@ -33,9 +33,3 @@ DEPEND="x11-proto/xcb-proto
 	x11-libs/cairo
 	x11-libs/pango
 	dev-libs/glib"
-
-PATCHES=("${FILESDIR}"/"${P}-${PN}.hxx.patch")
-
-src_prepare() {
-	epatch "${PATCHES[@]}"
-}
