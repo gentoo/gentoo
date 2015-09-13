@@ -16,7 +16,7 @@ SRC_URI="https://maven.java.net/content/repositories/releases/com/sun/${MY_PN}/$
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc source"
 
 CDEPEND="dev-java/ant-core:0
