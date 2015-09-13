@@ -39,7 +39,7 @@ src_install() {
 	doins bin/${PN}.sh
 
 	newbashcomp bin/${PN}.bash ${PN}
-	insinto /usr/share/"${PN}"/
+	insinto /usr/share/${PN}/
 	doins bin/${PN}.zsh
 	insinto /usr/share/zsh/site-functions
 	doins bin/_j
