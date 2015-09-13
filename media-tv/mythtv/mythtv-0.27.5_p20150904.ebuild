@@ -140,7 +140,7 @@ S="${WORKDIR}/${MY_P}/mythtv"
 MYTHTV_GROUPS="video,audio,tty,uucp"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	python-single-r1_pkg_setup
 	enewuser mythtv -1 /bin/bash /home/mythtv ${MYTHTV_GROUPS}
 	usermod -a -G ${MYTHTV_GROUPS} mythtv
 }
