@@ -3906,7 +3906,7 @@ dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set 
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/invokebinder 1.2: Provide a friendly DSL for binding method handles
 dev-java/iso-relax 20050331-r3: Interfaces useful for applications which support RELAX Core
-dev-java/istack-commons-buildtools 2.22 20090620: istack-commons - buildtools
+dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22 20070122-r1 20090620-r1: istack-commons
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
 dev-java/istack-commons-tools 2.22: IStack Commons - Tools jar
