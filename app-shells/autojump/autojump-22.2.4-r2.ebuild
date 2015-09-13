@@ -36,21 +36,21 @@ src_install() {
 	dobin bin/autojump
 
 	insinto /etc/profile.d
-	doins bin/${PN}.sh
+	doins bin/"${PN}".sh
 
-	newbashcomp bin/${PN}.bash ${PN}
+	newbashcomp bin/"${PN}".bash "${PN}"
 	insinto /usr/share/"${PN}"/
-	doins bin/${PN}.zsh
+	doins bin/"${PN}.zsh"
 	insinto /usr/share/zsh/site-functions
 	doins bin/_j
 
 	python_foreach_impl python_domodule bin/autojump_argparse.py bin/autojump_data.py bin/autojump_utils.py
-	if use python ; then
+	if use python; then
 		python_foreach_impl python_domodule tools/autojump_ipython.py
 		einfo 'This tool provides "j" for ipython, please add'
 		einfo '"import autojump_ipython" to your ipy_user_conf.py.'
 	fi
 
-	doman docs/${PN}.1
+	doman docs/"${PN}.1"
 	dodoc README.md
 }
