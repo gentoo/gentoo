@@ -1,0 +1,60 @@
+diff --git a/README b/README
+index 8d0d067..551b716 100644
+--- a/README
++++ b/README
+@@ -72,7 +72,7 @@
+         platforms.
+
+ 	Note that parallel builds (using the "-j" make(1) option) are
+-	*not* supported.
++	also supported. Beware that parallel install will not work though.
+ 
+         If you invoke "make" later with different configuration parameters,
+         it is advisable to run:
+diff --git a/rules.make b/rules.make
+index 929b0a3..a8cb9b0 100644
+--- a/rules.make
++++ b/rules.make
+@@ -243,8 +243,8 @@ lib$(PROGRAM_PREFIX)chicken$(PROGRAM_SUFFIX)$(A): $(APPLY_HACK_OBJECT) $(LIBCHIC
+ 
+ # import libraries and extensions
+ 
+-%.so: %.o
+-	$(LINKER) $(LINKER_OPTIONS) $(LINKER_LINK_SHARED_DLOADABLE_OPTIONS) $^ $(LINKER_OUTPUT_OPTION) $@ \
++%.so: %.o $(PRIMARY_LIBCHICKEN)
++	$(LINKER) $(LINKER_OPTIONS) $(LINKER_LINK_SHARED_DLOADABLE_OPTIONS) $< $(LINKER_OUTPUT_OPTION) $@ \
+ 	  $(LINKER_LIBRARY_PREFIX)$(PROGRAM_PREFIX)chicken$(PROGRAM_SUFFIX)$(LINKER_LIBRARY_SUFFIX) \
+ 	  $(LIBRARIES)
+ 
+@@ -580,9 +580,9 @@ chicken-profile.c: $(SRCDIR)chicken-profile.scm
+ 	$(CHICKEN) $< $(CHICKEN_PROGRAM_OPTIONS) -output-file $@ 
+ chicken-install.c: $(SRCDIR)chicken-install.scm setup-download.c setup-api.c
+ 	$(CHICKEN) $< $(CHICKEN_PROGRAM_OPTIONS) -output-file $@ 
+-chicken-uninstall.c: $(SRCDIR)chicken-uninstall.scm
++chicken-uninstall.c: $(SRCDIR)chicken-uninstall.scm setup-api.c
+ 	$(CHICKEN) $< $(CHICKEN_PROGRAM_OPTIONS) -output-file $@ 
+-chicken-status.c: $(SRCDIR)chicken-status.scm
++chicken-status.c: $(SRCDIR)chicken-status.scm setup-api.c
+ 	$(CHICKEN) $< $(CHICKEN_PROGRAM_OPTIONS) -output-file $@ 
+ csc.c: $(SRCDIR)csc.scm
+ 	$(CHICKEN) $< $(CHICKEN_PROGRAM_OPTIONS) -output-file $@ 
+@@ -673,14 +673,17 @@ bench: $(CHICKEN_SHARED_EXECUTABLE) $(CSI_SHARED_EXECUTABLE) $(CSC_PROGRAM)$(EXE
+ .PHONY: boot-chicken
+ 
+ boot-chicken:
++	"$(MAKE)" PLATFORM=$(PLATFORM) CONFIG= confclean
+ 	"$(MAKE)" PLATFORM=$(PLATFORM) PREFIX=/nowhere CONFIG= \
+ 	  CHICKEN=$(CHICKEN) PROGRAM_SUFFIX=-boot-stage1 STATICBUILD=1 \
+	  C_COMPILER_OPTIMIZATION_OPTIONS="$(C_COMPILER_OPTIMIZATION_OPTIONS)" C_HACKED_APPLY= BUILDING_CHICKEN_BOOT=1 \
+-	  confclean chicken-boot-stage1$(EXE)
++	  chicken-boot-stage1$(EXE)
++	"$(MAKE)" PLATFORM=$(PLATFORM) CONFIG= touchfiles
+ 	"$(MAKE)" PLATFORM=$(PLATFORM) PREFIX=/nowhere CONFIG= \
+ 	  CHICKEN=.$(SEP)chicken-boot-stage1$(EXE) PROGRAM_SUFFIX=-boot \
+ 	  STATICBUILD=1 C_COMPILER_OPTIMIZATION_OPTIONS="$(C_COMPILER_OPTIMIZATION_OPTIONS)" \
+-	  touchfiles chicken-boot$(EXE) confclean
++	  chicken-boot$(EXE)
++	"$(MAKE)" PLATFORM=$(PLATFORM) CONFIG= confclean
+ 
+ .PHONY: touchfiles
+ 
