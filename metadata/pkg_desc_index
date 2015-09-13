@@ -2125,7 +2125,7 @@ app-portage/smart-live-rebuild 1.3.3 1.3.4 1.3.4.1 9999: Check live packages for
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.3 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
-app-shells/autojump 22.2.4 22.2.4-r1: change directory command that learns
+app-shells/autojump 22.2.4-r2: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p33 4.3_p33-r1 4.3_p33-r2 4.3_p39_pre0 4.3_p39 4.3_p42 4.4_alpha-r1: The standard GNU Bourne again shell
 app-shells/bash-completion 1.3-r2 2.1 2.1-r2 2.1-r91 2.1-r92 2.1-r93 2.1_p20141224: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r1: bash source code debugging
@@ -18144,7 +18144,7 @@ x11-wm/mutter 3.14.4 3.16.2 3.16.2-r1 3.16.3: GNOME 3 compositing window manager
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
-x11-wm/page 1.9.5: A mouse friendly tiling window manager
+x11-wm/page 1.9.6: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.5-r1 2.7_rc1 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
 x11-wm/qtile 0.5-r1 0.6 0.7.0 0.8.0 0.9.1-r1 0.10.0 0.10.1 9999: A full-featured, hackable tiling window manager written in Python
