@@ -1,0 +1,28 @@
+--- a/ustr-conf.h.in	2007-10-22 08:00:55.000000000 +0200
++++ b/ustr-conf.h.in	2015-09-10 12:24:34.998796842 +0200
+@@ -4,13 +4,24 @@
+ /* this is the custom version for the library itself, for everyone else
+  * ustr-import generates one depending on the options. */
+ 
++/* If this is GCC with major version 5 and up, the default C standard
++ * has changed from C89 to C99 so the old inline behaviour must be
++ * restored:
++ */
++#if defined(__GNUC__) \
++ && (__GNUC__ > 4) \
++ && defined(__STDC_VERSION__) \
++ && (__STDC_VERSION__ >= 199901L)
++#  define inline inline __attribute__ ((gnu_inline))
++#endif /* GCC greater than major version 4 and not -std=c89 set */
++
+ /* The default is now to link against libc. */
+ #ifndef USTR_CONF_INCLUDE_CODEONLY_HEADERS
+ #define USTR_CONF_INCLUDE_CODEONLY_HEADERS 0
+ #endif
+ 
+ /* We can't: if defined(__GLIBC__) && (!defined(_GNU_SOURCE) || !_GNU_SOURCE)
+- *  because by the time we've included a libc header it's too late. */ 
++ *  because by the time we've included a libc header it's too late. */
+ #ifndef _GNU_SOURCE
+ #define _GNU_SOURCE 1
+ #endif
