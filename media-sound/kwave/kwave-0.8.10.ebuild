@@ -41,7 +41,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	$(add_kdeapps_dep poxml extras)
+	$(add_kdeapps_dep poxml)
 	|| ( media-gfx/imagemagick[png,svg] media-gfx/graphicsmagick[imagemagick,png,svg] )
 "
 
