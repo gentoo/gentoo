@@ -66,6 +66,8 @@ src_prepare() {
 	EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
 		epatch "${WORKDIR}/patches"
 
+	epatch "${FILESDIR}/${P}-asm-ilp32+volatile.diff"
+
 	einfo "Unbundling gems..."
 	cd "$S"
 	rm -r \

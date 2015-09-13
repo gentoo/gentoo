@@ -66,6 +66,9 @@ src_prepare() {
 	EPATCH_EXCLUDE="${excluded_patches}" EPATCH_FORCE="yes" EPATCH_SUFFIX="patch" \
 		epatch "${WORKDIR}/patches"
 
+	epatch "${FILESDIR}/${P}-SVNr39186-asm-volatile.diff"
+	epatch "${FILESDIR}/${P}-SVNr40636-asm-ilp32.diff"
+
 	# We can no longer unbundle all of rake because rubygems now depends
 	# on this. We leave the actual rake code around to bootstrap
 	# rubygems, but remove the bits that would cause a file collision.
