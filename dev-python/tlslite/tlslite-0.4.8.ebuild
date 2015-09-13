@@ -14,10 +14,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 #Refrain for now setting IUSE test and deps of test given test restricted.
-IUSE="doc gmp"
-RESTRICT="test"
+IUSE="doc"
 
 DEPEND="
 	>=dev-libs/cryptlib-3.3.3[python,${PYTHON_USEDEP}]
@@ -27,13 +26,20 @@ DEPEND="
 	)"
 RDEPEND="${DEPEND}"
 
+RESTRICT="test"
+
 # Tests still hang
 python_test() {
-	"${S}"/tests/tlstest.py client localhost:4443 .
-	"${S}"/tests/tlstest.py server localhost:4442 .
+	cd tests || die
+	"${PYTHON}" "${S}"/tests/tlstest.py client localhost:4443 . || die
+	"${PYTHON}" "${S}"/tests/tlstest.py server localhost:4442 . || die
 }
 
 python_install_all(){
+	use doc && HTML_DOCS=( docs/. )
 	distutils-r1_python_install_all
-	use doc && dohtml -r docs/
+}
+
+pkg_postinst() {
+	optfeature "GMP support" dev-python/gmpy
 }
