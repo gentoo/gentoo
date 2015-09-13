@@ -42,14 +42,14 @@ DEPEND="
 		acl? ( virtual/acl[static-libs] )
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
-		sys-libs/ncurses[static-libs]
+		sys-libs/ncurses:=[static-libs]
 		ssl? ( dev-libs/openssl:0[static-libs] )
 	)
 	!static? (
 		acl? ( virtual/acl )
 		dev-libs/lzo
 		ssl? ( dev-libs/openssl:0 )
-		sys-libs/ncurses
+		sys-libs/ncurses:=
 		sys-libs/zlib
 	)
 	python? ( ${PYTHON_DEPS} )
