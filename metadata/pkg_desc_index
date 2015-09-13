@@ -9253,7 +9253,7 @@ dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/statcvs 0.5.0: StatCVS generates HTML reports from CVS repository logs
 dev-vcs/statsvn 0.5.0: StatSVN generates HTML reports from SVN repository logs
 dev-vcs/stgit 0.16-r2 0.17.1-r1: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.7.20 1.7.21 1.8.13-r1 1.8.14 1.8.14-r1 1.9.0 1.9.1: Advanced version control system
+dev-vcs/subversion 1.7.21 1.8.14 1.8.14-r1 1.9.0 1.9.1: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.10 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.2.2-r1 1.3.0: Tool collecting path entries across SVN history
@@ -14277,7 +14277,7 @@ net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
-net-p2p/freenet 0.7.5_p1466 0.7.5_p1467: An encrypted network without censorship
+net-p2p/freenet 0.7.5_p1470: An encrypted network without censorship
 net-p2p/gift 0.11.8.1-r1: A OpenFT, Gnutella and FastTrack p2p network daemon
 net-p2p/gift-ares 0.3.0-r1: Ares Plugin for giFT
 net-p2p/gift-fasttrack 0.8.9-r1: FastTrack Plugin for giFT
@@ -16417,7 +16417,7 @@ sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.107 3.4.9999 3.10.82 3.10.87 3.12.44 3.12.9999 3.14.48 3.14.51 3.18.16 3.18.20 3.18.21 4.0.4 4.0.5 4.0.9 4.1.6 4.2.0 4.2.0-r1: Full sources including the Gentoo patchset for the 4.2 kernel tree
-sys-kernel/git-sources 4.2_rc2 4.2_rc3 4.2_rc4 4.2_rc5 4.2_rc6 4.2_rc7 4.2_rc8: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 4.2_rc2 4.2_rc3 4.2_rc4 4.2_rc5 4.2_rc6 4.2_rc7 4.2_rc8 4.3_rc1: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 3.2.69-r13 3.2.71 3.14.49 3.14.51 4.0.8 4.1.6 4.1.6-r1 4.1.6-r2: Hardened kernel sources (kernel series 4.1)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
@@ -16433,7 +16433,7 @@ sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.46_p46 3.18.17_p14 4.0.5_p4 4.1.5_p5: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2 0.6.2-r1 0.6.2-r2 0.6.2-r3 0.6.2-r4 0.6.2-r5 0.6.3 0.6.3-r1 0.6.4 0.6.4.2 0.6.5 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.107 3.10.79 3.10.80 3.10.81 3.12.43 3.12.44 3.14.43 3.14.44 3.14.45 3.18.14 3.18.16 3.19.8 4.0.4 4.0.5 4.0.6: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.71 3.4.108 3.10.87 3.12.47 3.14.51 3.18.21 4.1.6 4.2.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.71 3.4.108 3.10.88 3.12.47 3.14.52 3.18.21 4.1.7 4.2.0: Full sources for the Linux kernel
 sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3 2.3.7.4: Full sources including Linux-VServer patchsets for the 3.18 kernel tree
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
@@ -17514,10 +17514,10 @@ x11-misc/light-locker 1.6.0: A simple locker using lightdm
 x11-misc/lightdm 1.10.3 1.10.5 1.12.3 1.14.2 1.15.3 1.16.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 1.3.1-r1 1.6.1 1.9.0 2.0.0 2.0.1: LightDM GTK+ Greeter
 x11-misc/lightdm-kde 0.3.2.1: LightDM KDE greeter
-x11-misc/lineak-defaultplugin 0.9.0 0.9.0-r1: Mute/unmute and other macros for LINEAK
+x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1: Linux support for Easy Access and Internet Keyboards features X11 support
-x11-misc/lndir 1.0.2 1.0.3: create a shadow directory of symbolic links to another directory tree
+x11-misc/lndir 1.0.3: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
 x11-misc/lxmed 20110717 20120515: freedesktop.org specification compatible menu editor
 x11-misc/macopix 1.7.4: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system
@@ -17569,7 +17569,7 @@ x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
 x11-misc/qxkb 0.4.4-r1 0.4.5 0.4.6: Qt4-based keyboard layout switcher
 x11-misc/read-edid 1.4.2 3.0.1 3.0.2: Program that can get information from a PnP monitor
 x11-misc/rednotebook 1.4.0 1.8.0: A graphical journal with calendar, templates, tags, keyword searching, and export functionality
-x11-misc/redshift 1.7 1.7-r1 1.9.1 1.9.1-r1 1.9.1-r2 1.10: A screen color temperature adjusting software
+x11-misc/redshift 1.10: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2: A fast, small and powerful file manager and graphical shell
@@ -17596,11 +17596,11 @@ x11-misc/stalonetray 0.8.1 0.8.3: System tray utility including support for KDE 
 x11-misc/sunflower 0.2_alpha59: Small and highly customizable twin-panel file manager with plugin-support
 x11-misc/superswitcher 0.6: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
-x11-misc/sw-notify-send 0.1.1 1.2.1 9999: A system-wide variant of tinynotify-send
+x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.5.3 0.5.4 0.5.5: Simple X hotkey daemon
 x11-misc/synergy 1.6.3 1.7.3 1.7.4: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
-x11-misc/tint2 0.11-r1 0.11-r2: A lightweight panel/taskbar
+x11-misc/tint2 0.11-r2: A lightweight panel/taskbar
 x11-misc/tintwizard 0.3.4-r1: GUI wizard which generates config files for tint2 panels
 x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
@@ -17644,11 +17644,11 @@ x11-misc/xcalendar 4.0-r1: A simple interactive calendar program with a notebook
 x11-misc/xcalib 0.8: xcalib is a tiny monitor calibration loader for X.org
 x11-misc/xcape 1.0 1.1: Utility to make modifier keys send custom key events when pressed on their own
 x11-misc/xcave 2.3.2 2.4.0: View and manage contents of your wine cellar
-x11-misc/xcb 2.4 2.4-r1: Marc Lehmann's improved X Cut Buffers
+x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
 x11-misc/xclip 0.12: Command-line utility to read data from standard in and place it in an X selection
 x11-misc/xcompmgr 1.1.6 1.1.7: X Compositing manager
 x11-misc/xdaliclock 2.41 2.43: Dali Clock is a digital clock. When a digit changes, it melts into its new shape
-x11-misc/xdesktopwaves 1.3 1.3-r1: A cellular automata setting the background of your X Windows desktop under water
+x11-misc/xdesktopwaves 1.3-r1: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.15: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.9 0.10: xdg-user-dirs-gtk integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
 x11-misc/xdg-utils 1.1.0_rc2 1.1.0_rc2-r1 1.1.0_rc3_p20150119 1.1.0_rc3_p20150825: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
@@ -17656,10 +17656,10 @@ x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016: front end to xdu for viewing disk usage graphically under X11
 x11-misc/xdo 0.3 0.4: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
-x11-misc/xdotool 2.20101012.3049 2.20110530.1: Simulate keyboard input and mouse activity, move and resize windows
+x11-misc/xdotool 2.20110530.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.40 1.40.1: MS-Explorer-like minimalist file manager for X
-x11-misc/xfishtank 2.1 2.1-r1: Turns your root window into an aquarium
+x11-misc/xfishtank 2.1-r1: Turns your root window into an aquarium
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
@@ -17674,7 +17674,7 @@ x11-misc/xmountains 2.9: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19: Program suite to record, replay and distribute user actions
 x11-misc/xnots 0.2.1-r1: A desktop sticky note program for the unix geek
 x11-misc/xoo 0.7: A graphical wrapper around xnest
-x11-misc/xorg-cf-files 1.0.4 1.0.4-r1 1.0.5: Old Imake-related build files
+x11-misc/xorg-cf-files 1.0.5: Old Imake-related build files
 x11-misc/xosview 1.14 1.15 1.16: X11 operating system viewer
 x11-misc/xpad 4.2: a sticky note application for jotting down things to remember
 x11-misc/xplanet 1.2.2 1.3.0 1.3.0-r1: Render images of the earth into the X root window
