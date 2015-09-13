@@ -1786,7 +1786,6 @@ app-misc/interceptty 0.6: a program that can sit between a serial port and an ap
 app-misc/irtrans-irclient 6.01.05: IRTrans Server
 app-misc/irtrans-irserver 6.09.04: IRTrans Server
 app-misc/jail 2.0: a tool that builds a chroot and configures all the required files, directories and libraries
-app-misc/jdictionary 1.8-r2 1.8-r3: A online Java-based dictionary
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
 app-misc/joy2key 1.6.3: An application that translates joystick events to keyboard events
@@ -2290,7 +2289,6 @@ app-text/itex2mml 1.5.2: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r3: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r6: TeX macros used by Jade TeX output
-app-text/jing 20091111-r1 20091111-r2: Jing: A RELAX NG validator in Java
 app-text/jist 1.5.1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
@@ -3720,7 +3718,6 @@ dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 1.2.2-r1 2.1-r5 2.1-r6 2.1-r7 2.1-r8: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/balloontip 1.2.1: A balloon tip component to spice up your Java Swing applications
-dev-java/base64 2.3.7: A Base64 encoder written in java
 dev-java/batik 1.8-r1 1.8-r2: Java based SVG toolkit
 dev-java/bcel 5.2-r2 5.2-r3 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
 dev-java/bcmail 1.38-r3 1.38-r4 1.45-r2 1.45-r3 1.50 1.50-r1 1.52 1.52-r1: Java cryptography APIs
@@ -3894,7 +3891,6 @@ dev-java/htmlparser 1.4-r1: Implementation of the HTML5 parsing algorithm in Jav
 dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.org)
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
-dev-java/httpunit 1.7: HttpUnit emulates the relevant portions of browser behavior
 dev-java/ibm-jdk-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Development Kit
 dev-java/ibm-jre-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
@@ -3945,7 +3941,6 @@ dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.60: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.14-r1 3.5.25: A wrapper that makes it possible to install a Java Application as daemon
-dev-java/java-xmlbuilder 0.6-r1: A utility that allows simple XML documents to be constructed using Java
 dev-java/javacc 4.0-r4 4.2 5.0-r1: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326: CUP Parser Generator for Java
@@ -4116,7 +4111,6 @@ dev-java/mimepull 1.8: Pull API for parsing MIME messages
 dev-java/mina-core 1.1.7: Apache MINA Project
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
-dev-java/mockobjects 0.09-r4: Test-first development process for building object-oriented software
 dev-java/mojarra 2.2.12: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
 dev-java/msv 20050627-r2 20050627-r3 20130601: Multi-Schema XML Validator, a Java tool for validating XML documents
 dev-java/mx4j 3.0.2-r1: Metapackage for mx4j
@@ -4258,7 +4252,6 @@ dev-java/swt 3.5.2 3.6.1 3.7.1 3.7.2 3.7.2-r1 3.8.2 4.2 4.2-r1 4.2-r2: GTK based
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
 dev-java/tapestry 3.0.4-r1: An open-source framework for creating dynamic, robust, highly scalable web applications in Java
-dev-java/tclib 1.1: Type-Specific Collections Library
 dev-java/telnetd 2.0: A telnet daemon for use in java applications
 dev-java/testng 6.8-r2: Testing framework introducing some new functionalities that make it more powerful and easier to use
 dev-java/texhyphj 1.1: Re-implementation of Franklin Mark Liang's hyphenation algorithm in Java
@@ -4286,7 +4279,6 @@ dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4
 dev-java/wstx 3.2.9: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2: Apache's XSLT processor for transforming XML documents into HTML, text, or other XML document types
 dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
-dev-java/xdoclet 1.2.3: XDoclet is an extended Javadoc Doclet engine
 dev-java/xerces 1.3.1-r2 2.11.0: The next generation of high performance, fully compliant XML parsers in the Apache Xerces family
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
 dev-java/xjavac 20110814: The implementation of the javac compiler for IBM JDK 1.4 (needed for xerces-2)
@@ -8570,7 +8562,7 @@ dev-ruby/yard 0.8.7.3 0.8.7.6: Documentation generation tool for the Ruby progra
 dev-ruby/zentest 4.9.5 4.11.0: ZenTest provides tools to support testing: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bigloo 3.0c_p4 3.4a_p3 3.6a: Bigloo is a Scheme implementation
 dev-scheme/c-wrapper 0.6.1: Foreign function interface for C and Objective-C libraries
-dev-scheme/chicken 4.8.0.3-r1: Chicken is a Scheme interpreter and native Scheme to C compiler
+dev-scheme/chicken 4.8.0.3-r1 4.10.0: Chicken is a Scheme interpreter and native Scheme to C compiler
 dev-scheme/elk 3.99.8: Scheme implementation designed to be embeddable extension to C/C++ applications
 dev-scheme/escm 1.1: escm - Embedded Scheme Processor
 dev-scheme/gambit 4.6.2 4.6.3 4.6.4 4.6.5 4.6.7 4.6.9 4.7.0 4.7.0-r1: Gambit-C is a native Scheme to C compiler and interpreter
