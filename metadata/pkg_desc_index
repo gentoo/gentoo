@@ -11446,7 +11446,7 @@ media-gfx/kphotoalbum 4.5 4.6.2: KDE Photo Album is a tool for indexing, searchi
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 1.2.0: Program to create cross stitch patterns
-media-gfx/librecad 2.0.5 2.0.6 2.0.7 2.0.8 9999: Generic 2D CAD program
+media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r1: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.3.1 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.2.0 0.3.0 0.4.0: LXImage Image Viewer - GPicView replacement
