@@ -22,7 +22,7 @@ RDEPEND="
 	app-i18n/pology
 	app-shells/bash:*
 	dev-vcs/subversion
-	kde-apps/poxml[extras]
+	kde-apps/poxml
 "
 DEPEND="${RDEPEND}"
 
