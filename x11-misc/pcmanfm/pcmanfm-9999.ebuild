@@ -57,7 +57,7 @@ src_prepare() {
 	sed -i "s:-Werror::" configure.ac || die
 	eautoreconf
 	export LINGUAS="${LINGUAS:-${PLOCALE_BACKUP}}"
-	l10n_get_locales > ${S}/po/LINGUAS
+	l10n_get_locales > "${S}"/po/LINGUAS
 	epatch_user
 }
 

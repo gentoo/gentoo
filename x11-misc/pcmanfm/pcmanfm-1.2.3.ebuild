@@ -44,7 +44,7 @@ DOC_CONTENTS="PCmanFM can optionally support the menu://applications/
 
 src_prepare() {
 	export LINGUAS="${LINGUAS:-${PLOCALE_BACKUP}}"
-	l10n_get_locales > ${S}/po/LINGUAS
+	l10n_get_locales > "${S}"/po/LINGUAS
 	epatch_user
 }
 
