@@ -48,8 +48,7 @@ LIB_DEPEND="
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	skey? ( >=sys-auth/skey-1.1.5-r1[static-libs(+)] )
 	ssl? (
-		!bindist? ( >=dev-libs/openssl-0.9.8f:0[-bindist] )
-		bindist? ( >=dev-libs/openssl-0.9.8f:0 )
+		>=dev-libs/openssl-0.9.8f:0[bindist=]
 		dev-libs/openssl[static-libs(+)]
 	)
 	>=sys-libs/zlib-1.2.3[static-libs(+)]"
