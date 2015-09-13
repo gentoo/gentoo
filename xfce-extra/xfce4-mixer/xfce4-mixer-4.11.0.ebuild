@@ -29,6 +29,7 @@ RDEPEND="${COMMON_DEPEND}
 	!alsa? ( !oss? ( media-plugins/gst-plugins-meta:0.10 ) )"
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig"
 
 pkg_setup() {
