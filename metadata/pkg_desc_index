@@ -17471,7 +17471,7 @@ x11-misc/fracplanet 0.4.0: Fractal planet and terrain generator
 x11-misc/fraqtive 0.4.7 0.4.8: an open source, multi-platform generator of the Mandelbrot family fractals
 x11-misc/ftmenu 0.4.0: A tray menu for the Fluxbox toolbar
 x11-misc/gbase 0.5: a convert program for decimal, hexadecimal, octal and binary values
-x11-misc/gbdfed 1.5 1.6: gbdfed Bitmap Font Editor
+x11-misc/gbdfed 1.6: gbdfed Bitmap Font Editor
 x11-misc/gccmakedep 1.0.2-r1 1.0.3: create dependencies in makefiles using 'gcc -M'
 x11-misc/gcolor2 0.4-r4: A GTK+ color selector
 x11-misc/gdevilspie 0.5-r1: A user friendly interface to the devilspie window matching daemon, to create rules easily
