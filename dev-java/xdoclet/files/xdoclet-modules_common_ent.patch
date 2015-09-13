@@ -1,9 +1,0 @@
---- modules/modules-common.ent.orig	2005-02-23 15:47:39.000000000 -0500
-+++ modules/modules-common.ent	2005-02-23 17:25:17.000000000 -0500
-@@ -294,5 +294,6 @@
-             out="${module.tag.doclipse.file}"
-             extension=".xml"
-             style="${docs.stylesheets.dir}/doclipse.xslt">
-+            <xmlcatalog refid="xtags"/>
-         </xslt>
-     </target>
