@@ -11950,7 +11950,7 @@ media-libs/svgalib 1.9.25-r4: A library for running svga graphics on the console
 media-libs/t1lib 5.1.2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.9.1-r2: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tiff 3.9.7-r1 4.0.3-r6 4.0.5: Tag Image File Format (TIFF) library
+media-libs/tiff 3.9.7-r1 4.0.3-r6 4.0.5 4.0.6: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20120120 0_pre20130223 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
@@ -12813,7 +12813,7 @@ media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
 media-video/mplayer 1.1.1-r1 1.2_pre20130729 1.2_pre20141011 1.2_pre20150214 1.2_pre20150214-r1 1.2_pre20150730 9999: Media Player for Linux
 media-video/mplayer-resume 2.0: MPlayer wrapper script to save/resume playback position
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
-media-video/mpv 0.3.10 0.8.3-r1 0.9.2-r1 0.9.2_p20150824 9999: Media player based on MPlayer and mplayer2
+media-video/mpv 0.9.2-r1 0.9.2_p20150824 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.7.3 0.7.3-r1 0.8.6 0.8.6-r1: Mark commercial breaks in VDR recordings
 media-video/nvidia-settings 331.20 340.58 343.22: NVIDIA Linux X11 Settings Utility
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
