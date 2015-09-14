@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=BSD
 RDEPEND=>=net-firewall/iptables-1.4.6 net-libs/libnfnetlink
 SLOT=0
-SRC_URI=http://miniupnp.free.fr/files/miniupnpd-1.9.20141209.tar.gz
+SRC_URI=http://miniupnp.free.fr/files/miniupnpd-1.9.20150721.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=1eced7302d99aed4a9100adc4f7ca4ac
+_md5_=33e43bb5916f74a3ad3dd6d4860901cc
