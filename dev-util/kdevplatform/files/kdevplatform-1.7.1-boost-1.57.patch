@@ -1,0 +1,45 @@
+From a430a60a274d369d98105b9d51285d5a9a6bc86f Mon Sep 17 00:00:00 2001
+From: Kevin Funk <kfunk@kde.org>
+Date: Fri, 4 Sep 2015 17:52:15 +0200
+Subject: [PATCH] Make compile (cf. BOOST_JOIN)
+
+Also see https://bugreports.qt.io/browse/QTBUG-22829
+---
+ plugins/classbrowser/documentclassesfolder.cpp | 2 ++
+ plugins/classbrowser/documentclassesfolder.h   | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/plugins/classbrowser/documentclassesfolder.cpp b/plugins/classbrowser/documentclassesfolder.cpp
+index c578305..55cb637 100644
+--- a/plugins/classbrowser/documentclassesfolder.cpp
++++ b/plugins/classbrowser/documentclassesfolder.cpp
+@@ -29,7 +29,9 @@
+ #include <QTimer>
+ #include <KIcon>
+ 
++#ifndef Q_MOC_RUN
+ #include <boost/foreach.hpp>
++#endif
+ 
+ using namespace KDevelop;
+ using namespace ClassModelNodes;
+diff --git a/plugins/classbrowser/documentclassesfolder.h b/plugins/classbrowser/documentclassesfolder.h
+index 91edfe8..80f6fb6 100644
+--- a/plugins/classbrowser/documentclassesfolder.h
++++ b/plugins/classbrowser/documentclassesfolder.h
+@@ -23,9 +23,12 @@
+ #define KDEVPLATFORM_PLUGIN_DOCUMENTCLASSESFOLDER_H
+ 
+ #include "classmodelnode.h"
++
++#ifndef Q_MOC_RUN
+ #include <boost/multi_index_container.hpp>
+ #include <boost/multi_index/member.hpp>
+ #include <boost/multi_index/ordered_index.hpp>
++#endif
+ 
+ namespace ClassModelNodes
+ {
+-- 
+2.4.6
+

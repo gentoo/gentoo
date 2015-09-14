@@ -44,6 +44,8 @@ RDEPEND="${COMMON_DEPEND}
 	!<dev-util/kdevelop-${KDEVELOP_VERSION}:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-boost-1.57.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_build classbrowser)
