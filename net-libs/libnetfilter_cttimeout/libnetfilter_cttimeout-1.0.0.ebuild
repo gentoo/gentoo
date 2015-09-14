@@ -11,7 +11,7 @@ SRC_URI="http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa x86"
+KEYWORDS="alpha amd64 ~arm hppa x86"
 IUSE="static-libs"
 
 RDEPEND="net-libs/libmnl"

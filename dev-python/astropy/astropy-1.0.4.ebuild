@@ -19,6 +19,7 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-libs/expat-2.1.0:0=
+	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
