@@ -1,0 +1,17 @@
+--- configure.ac.orig	2015-09-14 11:27:54.974472081 +0200
++++ configure.ac	2015-09-14 11:34:37.729155044 +0200
+@@ -151,9 +151,12 @@
+ AC_SUBST(CREDSSPOBJ)
+ 
+ # xrandr
+-if test -n "$PKG_CONFIG"; then
+-    PKG_CHECK_MODULES(XRANDR, xrandr, [HAVE_XRANDR=1], [HAVE_XRANDR=0])
++AC_ARG_WITH([xrandr], AS_HELP_STRING([--without-xrandr], [Build without Xrandr library (default: true)]))
++AS_IF([test "x$with_xrandr" != "xno"], [
++    if test -n "$PKG_CONFIG"; then
++        PKG_CHECK_MODULES(XRANDR, xrandr, [HAVE_XRANDR=1], [HAVE_XRANDR=0])
+ fi
++])
+ if test x"$HAVE_XRANDR" = "x1"; then
+     CFLAGS="$CFLAGS $XRANDR_CFLAGS"
+     LIBS="$LIBS $XRANDR_LIBS"

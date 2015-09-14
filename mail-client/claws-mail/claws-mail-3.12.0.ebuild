@@ -12,7 +12,7 @@ inherit autotools-utils multilib gnome2-utils eutils python-single-r1
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="http://www.claws-mail.org/"
 
-SRC_URI="mirror://sourceforge/sylpheed-claws/${P}.tar.bz2"
+SRC_URI="http://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"
@@ -49,7 +49,7 @@ PLUGINBLOCK="!!mail-client/claws-mail-acpi-notifier
 	!!mail-client/claws-mail-pdf-viewer"
 
 COMMONDEPEND=">=sys-devel/gettext-0.12.1
-	gdata? ( >=dev-libs/libgdata-0.6.4 )
+	gdata? ( >=dev-libs/libgdata-0.17.1 )
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( >=x11-libs/gtk+-2.20:2 )
 	pda? ( >=app-pda/jpilot-0.99 )
@@ -71,7 +71,7 @@ COMMONDEPEND=">=sys-devel/gettext-0.12.1
 		libnotify? ( x11-libs/libnotify )
 		libcanberra? (  media-libs/libcanberra[gtk] )
 		libindicate? ( dev-libs/libindicate:3[gtk] )
-		dev-libs/glib
+		dev-libs/glib:2
 	)
 	smime? ( >=app-crypt/gpgme-0.4.5 )
 	calendar? ( >=net-misc/curl-7.9.7 )
@@ -83,6 +83,7 @@ COMMONDEPEND=">=sys-devel/gettext-0.12.1
 
 DEPEND="${PLUGINBLOCK}
 	${COMMONDEPEND}
+	app-arch/xz-utils
 	xface? ( >=media-libs/compface-1.4 )
 	virtual/pkgconfig"
 
@@ -90,7 +91,7 @@ RDEPEND="${COMMONDEPEND}
 	pdf? ( app-text/ghostscript-gpl )
 	clamav? ( app-antivirus/clamav )
 	networkmanager? ( net-misc/networkmanager )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS}
 		>=dev-python/pygtk-2.10.3 )
 	rss? ( net-misc/curl
@@ -142,7 +143,6 @@ src_configure() {
 		--enable-newmail-plugin
 		--enable-tnef_parse-plugin
 		--disable-generic-umpc
-		--disable-maemo
 		--disable-bsfilter-plugin
 		--disable-geolocation-plugin
 	)
