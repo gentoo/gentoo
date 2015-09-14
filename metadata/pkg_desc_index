@@ -574,7 +574,7 @@ app-crypt/paperkey 1.3: OpenPGP key archiver
 app-crypt/pdfcrack 0.13 0.14: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.28-r1 0.29: A PGP packet visualizer
-app-crypt/pinentry 0.9.0 0.9.0-r3 0.9.5: Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
+app-crypt/pinentry 0.9.0 0.9.0-r3 0.9.5 0.9.6: Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/pius 2.0.9 2.0.10 2.0.11: A tool for signing and email all UIDs on a set of PGP keys
 app-crypt/pkcrack 1.2.2 1.2.2-r1: PkZip cipher breaker
 app-crypt/pkcs11-data 0.7.4: Utilities for PKCS#11 data object manipulation in
@@ -4457,7 +4457,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.52.0-r7 1.53.0-r1 1.54.0-r1 1.55.0-r2 1.56.0-r1 1.57.0 1.58.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 0_pre20131206 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.5 1.11.4 1.11.8: A C++ crypto library
+dev-libs/botan 1.10.5 1.10.10 1.11.4 1.11.8 1.11.20: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25: Parser and analyzer for backtraces produced by gdb
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -17173,6 +17173,7 @@ x11-apps/xsm 1.0.3: X Session Manager
 x11-apps/xstdcmap 1.0.3: X standard colormap utility
 x11-apps/xtitle 1.0.2 1.0.3: Set window title and icon name for an X11 terminal window
 x11-apps/xtrap 1.0.2-r1: X.Org xtrap application
+x11-apps/xvfb-run 1.17.2_p2: Run a command in a virtual X server environment
 x11-apps/xvidtune 1.0.2-r1 1.0.3: video mode tuner for Xorg
 x11-apps/xvinfo 1.1.2 1.1.3: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
