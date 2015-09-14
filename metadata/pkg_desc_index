@@ -4996,7 +4996,7 @@ dev-ml/dose3 3.3_beta2-r2 3.3 4.0_rc3: Library and a collection of tools to perf
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
 dev-ml/eliom 3.0.3 4.1.0 4.1.0-r1 4.2: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00: Syntax extension to produce a list of all values of a type
-dev-ml/extlib 1.5.4 1.6.1: Standard library extensions for O'Caml
+dev-ml/extlib 1.5.4 1.6.1 1.7.0: Standard library extensions for O'Caml
 dev-ml/facile 1.1: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/faillib 109.60.00 111.17.00: Syntax extension for inserting the current location
 dev-ml/fieldslib 109.20.00 109.20.02 109.20.03: Folding over record fields
@@ -11929,7 +11929,7 @@ media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) a
 media-libs/slv2 0.6.6 0.6.6-r1: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
-media-libs/soxr 0.1.0 0.1.1: The SoX Resampler library
+media-libs/soxr 0.1.0 0.1.1 0.1.2: The SoX Resampler library
 media-libs/spandsp 0.0.6_pre12-r1 0.0.6_pre21 0.0.6: SpanDSP is a library of DSP functions for telephony
 media-libs/speex 1.2_rc1-r2: Audio compression format designed for speech
 media-libs/sratom 0.4.4 0.4.6: Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
