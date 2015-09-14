@@ -49,7 +49,7 @@ LIB_DEPEND="
 	skey? ( >=sys-auth/skey-1.1.5-r1[static-libs(+)] )
 	ssl? (
 		>=dev-libs/openssl-0.9.8f:0[bindist=]
-		dev-libs/openssl[static-libs(+)]
+		dev-libs/openssl:0[static-libs(+)]
 	)
 	>=sys-libs/zlib-1.2.3[static-libs(+)]"
 RDEPEND="
