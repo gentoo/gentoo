@@ -2016,7 +2016,7 @@ app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40: Simple person
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.0.7.21 1.99.1 1.99.2 1.99.2-r1: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.3 4.4.1 4.4.1-r1: A nice LaTeX-IDE
-app-office/texstudio 2.8.8 2.9.4: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.8.8 2.9.4 2.10.0: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.6 0.6.20131229 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.0.53.0 4.0.70.0: Project collaboration and tracking software for upwork.com
 app-office/wps-office 9.1.0.4961_alpha18_p1 9.1.0.4975_alpha19_p1: WPS Office is an office productivity suite
@@ -6832,7 +6832,7 @@ dev-python/ctypesgen 0_p72 0_p72-r1: Python wrapper generator for ctypes
 dev-python/curtsies 0.1.18 0.2.3: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.1.6-r2: Python package for convex optimization
 dev-python/cx_Freeze 4.3.1-r2 4.3.2 4.3.3: Create standalone executables from Python scripts
-dev-python/cython 0.22 0.22.1 0.23 0.23.1: A Python to C compiler
+dev-python/cython 0.22 0.22.1 0.23 0.23.1 0.23.2: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
@@ -7894,7 +7894,7 @@ dev-python/waitress 0.8.9: A pure-Python WSGI server
 dev-python/warlock 1.0.1 1.1.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.3: Framework for plotting astronomical and geospatial data
-dev-python/wcwidth 0.1.4: Measures number of Terminal column cells of wide-character codes
+dev-python/wcwidth 0.1.4 0.1.5: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 0.21-r1 0.22 0.23: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.10.1: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
