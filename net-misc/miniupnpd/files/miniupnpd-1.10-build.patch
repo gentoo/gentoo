@@ -67,8 +67,8 @@
 -endif # ifdef IPTABLESPATH
  endif # ifdef PCFILE_FOUND
  
--LDLIBS += -lnfnetlink
-+LDLIBS += -lip4tc -lnfnetlink
+-#LDLIBS += -lnfnetlink
++LDLIBS += -lip4tc
 +CPPFLAGS += -DIPTABLES_143
  
  TEST := $(shell $(PKG_CONFIG) --atleast-version=1.0.2 libnetfilter_conntrack && $(PKG_CONFIG) --atleast-version=1.0.3 libmnl && echo 1)
