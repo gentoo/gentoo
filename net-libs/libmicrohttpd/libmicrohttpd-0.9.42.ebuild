@@ -16,7 +16,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="epoll messages ssl static-libs test"
 
 RDEPEND="ssl? (
-		dev-libs/libgcrypt:0
+		dev-libs/libgcrypt:0=
 		net-libs/gnutls
 	)"
 
