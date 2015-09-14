@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,17 +36,18 @@ PDEPEND="branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )"
 
 src_prepare() {
 	# Our Gentoo-specific config changes
-	epatch "${FILESDIR}"/${P}-config.diff
-	epatch "${FILESDIR}"/${PN}-1.3.5-arm.patch
-	epatch "${FILESDIR}"/${P}-honour-cflags.patch
-	epatch "${FILESDIR}"/${P}-libslim-cmake-fixes.patch
-	epatch "${FILESDIR}"/${PN}-1.3.5-disable-ck-for-systemd.patch
-	epatch "${FILESDIR}"/${P}-strip-systemd-unit-install.patch
-	epatch "${FILESDIR}"/${P}-systemd-session.patch
-	epatch "${FILESDIR}"/${P}-session-chooser.patch
-	epatch "${FILESDIR}"/${P}-fix-slimlock-nopam-v2.patch
-	epatch "${FILESDIR}"/${P}-drop-zlib.patch
-	epatch "${FILESDIR}"/${P}-freetype.patch
+	epatch "${FILESDIR}"/${P}-config.diff \
+		"${FILESDIR}"/${PN}-1.3.5-arm.patch \
+		"${FILESDIR}"/${P}-honour-cflags.patch \
+		"${FILESDIR}"/${P}-libslim-cmake-fixes.patch \
+		"${FILESDIR}"/${PN}-1.3.5-disable-ck-for-systemd.patch \
+		"${FILESDIR}"/${P}-strip-systemd-unit-install.patch \
+		"${FILESDIR}"/${P}-systemd-session.patch \
+		"${FILESDIR}"/${P}-session-chooser.patch \
+		"${FILESDIR}"/${P}-fix-slimlock-nopam-v2.patch \
+		"${FILESDIR}"/${P}-drop-zlib.patch \
+		"${FILESDIR}"/${P}-freetype.patch \
+		"${FILESDIR}"/${P}-envcpy-bad-pointer-arithmetic.patch
 
 	if use elibc_FreeBSD; then
 		sed -i -e 's/"-DHAVE_SHADOW"/"-DNEEDS_BASENAME"/' CMakeLists.txt \
