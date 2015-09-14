@@ -12676,7 +12676,7 @@ media-tv/kodi 14.1 15.1 9999: Kodi is a free and open source media-player and en
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: small utils for DVB to scan, zap, view signal strength, ...
 media-tv/linuxtv-dvb-firmware 2009.07.06-r1 2009.09.19: Firmware files needed for operation of some dvb-devices
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
-media-tv/mythtv 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627 0.27.5_p20150904: Homebrew PVR project
+media-tv/mythtv 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627 0.27.5_p20150904-r1: Homebrew PVR project
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r1: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
