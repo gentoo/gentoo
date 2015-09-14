@@ -27,7 +27,7 @@ REQUIRED_USE="
 # glib-2.30.1 needed to avoid linking failure due to .la files (bug #399129)
 COMMON_DEPEND="
 	>=dev-libs/glib-2.30.1:2
-	>=dev-libs/libgcrypt-1.4.2:0
+	>=dev-libs/libgcrypt-1.4.2:0=
 	dev-libs/libgpg-error
 	>=net-libs/gnutls-2.12
 	>=x11-libs/cairo-1.2
