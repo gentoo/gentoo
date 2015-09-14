@@ -20,6 +20,8 @@ IUSE="doc test"
 RDEPEND="
 	>=dev-libs/expat-2.1.0:0=
 	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/ply[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	>=sci-astronomy/erfa-1.2:0=
 	>=sci-astronomy/wcslib-4.25:0=
 	>=sci-libs/cfitsio-3.350:0=
@@ -42,16 +44,23 @@ DEPEND="${RDEPEND}
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=( "${FILESDIR}/${P}-disable_helper.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-disable_helper.patch"
+	"${FILESDIR}/${P}-system-six.patch"
+	"${FILESDIR}/${P}-system-pytest.patch"
+	"${FILESDIR}/${P}-system-configobj.patch"
+	)
 
 python_prepare_all() {
+	export mydistutilsargs="--offline"
 	rm -r ${PN}_helpers || die
-	rm -r cextern/*/* || die
-	distutils-r1_python_prepare_all
-}
+	cp "${FILESDIR}"/astropy-ply.py astropy/extern/ply.py || die
+	rm -r cextern/{expat,erfa,cfitsio,wcslib} || die
 
-python_compile() {
-	distutils-r1_python_compile --use-system-libraries --offline
+	echo "[build]" >> setup.cfg
+	echo "use_system_libraries=1" >> setup.cfg
+
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
@@ -60,19 +69,15 @@ python_compile_all() {
 		VARTEXFONTS="${T}"/fonts \
 			MPLCONFIGDIR="${BUILD_DIR}" \
 			PYTHONPATH="${BUILD_DIR}"/lib \
-			esetup.py build_sphinx --offline
+			esetup.py build_sphinx
 	fi
 }
 
 python_test() {
-	esetup.py --offline test
-}
-
-python_install() {
-	distutils-r1_python_install --offline --use-system-libraries
+	py.test -vv -k "not test_web_profile" astropy || die
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all --offline
+	distutils-r1_python_install_all
 }
