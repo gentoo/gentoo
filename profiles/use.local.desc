@@ -5983,6 +5983,7 @@ net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/pr
 net-misc/rancid-git:git - Enable git (version control system) support
 net-misc/rdesktop:kerberos - Enable CredSPP support + Kerberos authentication with net-libs/libgssglue
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
+net-misc/rdesktop:xrandr - Enable XRandR window extension support
 net-misc/remmina:freerdp - Add support for the net-misc/freerdp application
 net-misc/remmina:ssh - Enable support for SSH/SFTP protocol; see also 'vte'
 net-misc/remmina:telepathy - Enable telepathy support

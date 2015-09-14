@@ -10967,7 +10967,7 @@ mail-client/alot 0.3.6: Experimental terminal UI for net-mail/notmuch written in
 mail-client/alpine 2.00-r5: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.4.14 2.5.2: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
-mail-client/claws-mail 3.9.0 3.9.0-r1 3.9.1 3.9.1-r1 3.9.2 3.9.3 3.10.1 3.11.1-r1: An email client (and news reader) based on GTK+
+mail-client/claws-mail 3.9.0 3.9.3 3.10.1 3.11.1-r1 3.12.0: An email client (and news reader) based on GTK+
 mail-client/claws-mail-acpi-notifier 1.0.28: This plugin enables mail notification via LEDs on some laptops
 mail-client/claws-mail-address_keeper 1.0.7: Plugin for Claws to collect all recipients in an address book folder
 mail-client/claws-mail-archive 0.6.13: Plugin for Claws to add archiving features
@@ -13552,7 +13552,7 @@ net-libs/libdom 0.1.1 0.1.2-r1: implementation of the W3C DOM, written in C
 net-libs/libeXosip 3.5.0 4.0.0: library that hides the complexity of using the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6 1.0.6-r1: lib that implements the client side of the SMTP protocol
-net-libs/libetpan 1.1 1.5: A portable, efficient middleware for different kinds of mail access
+net-libs/libetpan 1.1 1.5 1.6: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 2.0.4: A library designed to facilitate performing flow-based measurement tasks using packet-based inputs
 net-libs/libgadu 1.11.4 1.12.0 1.12.1: This library implements the client side of the Gadu-Gadu protocol
 net-libs/libgcal 0.9.6-r1: C/C++ interface to the Google Data API
@@ -14089,7 +14089,7 @@ net-misc/radvd 1.9.8 1.15 2.10 2.11 2.11-r1: Linux IPv6 Router Advertisement Dae
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
-net-misc/rdesktop 1.7.1 1.8.1 1.8.2 1.8.3: A Remote Desktop Protocol Client
+net-misc/rdesktop 1.7.1 1.8.1 1.8.2 1.8.3 1.8.3-r1: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
 net-misc/remmina 1.0.0_p20130723 1.1.1 1.1.2 1.2.0_rc3 9999: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r1: redirects TCP connections from one IP address and port to another
