@@ -275,7 +275,7 @@ src_install() {
 	insinto /usr/share/mythtv/database
 	doins database/*
 
-	newinitd "${FILESDIR}"/mythbackend.init-r1 mythbackend
+	newinitd "${FILESDIR}"/mythbackend.init-r2 mythbackend
 	newconfd "${FILESDIR}"/mythbackend.conf-r1 mythbackend
 	systemd_dounit "${FILESDIR}"/mythbackend.service
 
