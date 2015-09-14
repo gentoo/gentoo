@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.0.23-automagic.patch
 	epatch "${FILESDIR}"/${PN}-1.0.28-libav10.patch
+	has_version '>=media-video/ffmpeg-2.8' && epatch "${FILESDIR}"/${PN}-1.0.29-ffmpeg29.patch
 
 	epatch_user
 

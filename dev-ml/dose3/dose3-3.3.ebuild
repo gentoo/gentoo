@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 MY_P="${P/_beta/-beta}"
 DESCRIPTION="Library and a collection of tools to perform la large spectrum of analysis on package repositories"
 HOMEPAGE="http://dose.gforge.inria.fr/public_html/"
@@ -39,6 +41,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed -e 's/INSTALLOPTS=-s/INSTALLOPTS=/' -i Makefile.config.in || die
+	has_version '>=dev-ml/extlib-1.7' && epatch "${FILESDIR}/extlib.patch"
 }
 
 src_configure() {
