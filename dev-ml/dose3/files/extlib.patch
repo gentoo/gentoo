@@ -1,0 +1,12 @@
+Index: dose3-3.3/doseparse/stdOptions.ml
+===================================================================
+--- dose3-3.3.orig/doseparse/stdOptions.ml
++++ dose3-3.3/doseparse/stdOptions.ml
+@@ -20,6 +20,7 @@ include Util.Logging(struct let label =
+ module type Ot = sig
+   val options :
+     ?usage:string ->
++    ?status:int ->
+     ?version:string ->
+     ?suppress_usage:bool ->
+     ?suppress_help:bool ->
