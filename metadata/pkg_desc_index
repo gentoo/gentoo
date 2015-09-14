@@ -371,7 +371,7 @@ app-backup/kbackup 0.8-r1: KBackup is a program that lets you back up any direct
 app-backup/luckybackup 0.4.7-r1 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
 app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
 app-backup/mylvmbackup 0.11 0.13 0.14: mylvmbackup is a tool for quickly creating backups of MySQL server's data files using LVM snapshots
-app-backup/obnam 1.9 1.14 1.16: A backup program that supports encryption and deduplication
+app-backup/obnam 1.9 1.16 1.17: A backup program that supports encryption and deduplication
 app-backup/pdumpfs 1.3-r2: a daily backup system similar to Plan9's dumpfs
 app-backup/qt4-fsarchiver 0.6.19.6 0.6.19.7: Qt4 frontend for fsarchiver
 app-backup/rdiff-backup 1.2.8-r1 1.3.3 1.3.3-r1: Local/remote mirroring+incremental backup
