@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>shell-tools</herd>
-  <maintainer>
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
-  </maintainer>
   <upstream>
     <remote-id type="github">nelhage/reptyr</remote-id>
   </upstream>
