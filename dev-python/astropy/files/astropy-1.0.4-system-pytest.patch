@@ -1,0 +1,14 @@
+diff -ur astropy-1.0/astropy/tests/helper.py astropy-1.0.pytest/astropy/tests/helper.py
+--- astropy-1.0/astropy/tests/helper.py	2015-02-18 22:45:32.000000000 +0100
++++ astropy-1.0.pytest/astropy/tests/helper.py	2015-02-19 16:20:28.201778929 +0100
+@@ -35,8 +35,8 @@
+                                 AstropyDeprecationWarning,
+                                 AstropyPendingDeprecationWarning)
+ from ..config import configuration
+-
+-if os.environ.get('ASTROPY_USE_SYSTEM_PYTEST') or '_pytest' in sys.modules:
++# Modified by Fedora package
++if True or os.environ.get('ASTROPY_USE_SYSTEM_PYTEST') or '_pytest' in sys.modules:
+     import pytest
+ 
+ else:
