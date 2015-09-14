@@ -8167,4 +8167,6 @@ xfce-extra/xfce4-soundmenu-plugin:keybinder - Enable shortcut support using dev-
 xfce-extra/xfce4-soundmenu-plugin:lastfm - Enable last.fm support using media-libs/libclastfm
 xfce-extra/xfce4-taskmanager:gksu - Build against x11-libs/libgksu to provide "Run as root" option in the application's menu
 xfce-extra/xfce4-taskmanager:gtk3 - Use GTK+3 instead of GTK+2
-xfce-extra/xfswitch-plugin:gdm - Use gdmflexiserver from gnome-base/gdm instead of x11-misc/lightdm
+xfce-extra/xfswitch-plugin:gdm - Compatibility with gnome-base/gdm only
+xfce-extra/xfswitch-plugin:lightdm - Compatibility with x11-misc/lightdm only
+xfce-extra/xfswitch-plugin:lxdm - Compatibility with lxde-base/lxdm only
