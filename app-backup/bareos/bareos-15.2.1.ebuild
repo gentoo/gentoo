@@ -16,13 +16,17 @@ RESTRICT="mirror"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="acl clientonly +director examples ipv6 logwatch mysql ndmp postgres python qt4
+KEYWORDS=""
+IUSE="acl clientonly +director fastlz ipv6 logwatch mysql ndmp postgres python qt4
 		readline scsi-crypto sql-pooling +sqlite ssl static +storage-daemon tcpd
-		vim-syntax X"
+		vim-syntax X cephfs glusterfs lmdb rados"
 
 DEPEND="
 	!app-backup/bacula
+	cephfs? ( sys-cluster/ceph )
+	rados? ( sys-cluster/ceph )
+	glusterfs? ( sys-cluster/glusterfs )
+	lmdb? ( dev-db/lmdb )
 	dev-libs/gmp:0
 	!clientonly? (
 		postgres? ( dev-db/postgresql:*[threads] )
@@ -34,6 +38,7 @@ DEPEND="
 		dev-qt/qtsvg:4
 		x11-libs/qwt:5
 	)
+	fastlz? ( dev-libs/bareos-fastlzlib )
 	logwatch? ( sys-apps/logwatch )
 	tcpd? ( sys-apps/tcp-wrappers )
 	readline? ( sys-libs/readline:0 )
@@ -41,15 +46,15 @@ DEPEND="
 		acl? ( virtual/acl[static-libs] )
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
-		sys-libs/ncurses[static-libs]
+		sys-libs/ncurses:=[static-libs]
 		ssl? ( dev-libs/openssl:0[static-libs] )
 	)
 	!static? (
 		acl? ( virtual/acl )
-		sys-libs/zlib
 		dev-libs/lzo
-		sys-libs/ncurses
 		ssl? ( dev-libs/openssl:0 )
+		sys-libs/ncurses:=
+		sys-libs/zlib
 	)
 	python? ( ${PYTHON_DEPS} )
 	"
@@ -155,27 +160,33 @@ src_configure() {
 		$(use_enable !readline conio) \
 		$(use_enable scsi-crypto) \
 		$(use_enable sql-pooling) \
+		$(use_with fastlz) \
 		$(use_with mysql) \
 		$(use_with postgres postgresql) \
 		$(use_with python) \
-		$(use_with readline readline /usr) \
+		$(use_with readline) \
 		$(use_with sqlite sqlite3) \
 		$(use sqlite || echo "--without-sqlite3") \
 		$(use_with ssl openssl) \
 		$(use_with tcpd tcp-wrappers) \
+		$(use_enable lmdb) \
+		$(use_with glusterfs) \
+		$(use_with rados) \
+		$(use_with cephfs) \
 		"
 
 	econf \
 		--libdir=/usr/$(get_libdir) \
 		--docdir=/usr/share/doc/${PF} \
 		--htmldir=/usr/share/doc/${PF}/html \
-		--with-pid-dir=/run \
+		--with-pid-dir=/run/bareos \
 		--sysconfdir=/etc/bareos \
 		--with-subsys-dir=/run/lock/subsys \
 		--with-working-dir=/var/lib/bareos \
 		--with-logdir=/var/log/bareos \
 		--with-scriptdir=/usr/libexec/bareos \
 		--with-plugindir=/usr/$(get_libdir)/${PN}/plugin \
+		--with-backenddir=/usr/$(get_libdir)/${PN}/backend \
 		--with-dir-user=bareos \
 		--with-dir-group=bareos \
 		--with-sd-user=root \
@@ -183,8 +194,10 @@ src_configure() {
 		--with-fd-user=root \
 		--with-fd-group=bareos \
 		--with-sbin-perm=0755 \
+		--with-systemd \
 		--enable-smartalloc \
 		--enable-dynamic-cats-backends \
+		--enable-dynamic-storage-backends \
 		--enable-batch-insert \
 		--disable-afs \
 		--host=${CHOST} \
@@ -299,12 +312,6 @@ src_install() {
 	dodoc README.md
 	use ndmp && dodoc README.NDMP
 	use scsi-crypto && dodoc README.scsicrypto
-
-	# install examples (bug #457504)
-	if use examples; then
-		docinto examples/
-		dodoc -r examples/*
-	fi
 
 	# vim-files
 	if use vim-syntax; then

@@ -16,7 +16,7 @@ RESTRICT="mirror"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="acl clientonly +director fastlz ipv6 logwatch mysql ndmp postgres python qt4
 		readline scsi-crypto sql-pooling +sqlite ssl static +storage-daemon tcpd
 		vim-syntax X cephfs glusterfs lmdb rados"
@@ -46,14 +46,14 @@ DEPEND="
 		acl? ( virtual/acl[static-libs] )
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
-		sys-libs/ncurses[static-libs]
+		sys-libs/ncurses:=[static-libs]
 		ssl? ( dev-libs/openssl:0[static-libs] )
 	)
 	!static? (
 		acl? ( virtual/acl )
 		dev-libs/lzo
 		ssl? ( dev-libs/openssl:0 )
-		sys-libs/ncurses
+		sys-libs/ncurses:=
 		sys-libs/zlib
 	)
 	python? ( ${PYTHON_DEPS} )
