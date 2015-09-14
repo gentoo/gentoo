@@ -231,6 +231,9 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]]; then
 	# Choices are bzip2, lz4, lzma, lzo.  bzip2 and lzma enabled by default as they are system libraries
 	mysql_version_is_at_least "10.1.1" && IUSE="${IUSE} innodb-lz4 innodb-lzo"
 
+	# It can also compress with app-arch/snappy
+	mysql_version_is_at_least "10.1.7" && IUSE="${IUSE} innodb-snappy"
+
 	# 10.1.2 introduces a cracklib password checker
 	mysql_version_is_at_least "10.1.1" && IUSE="${IUSE} cracklib"
 fi
@@ -364,6 +367,7 @@ if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
 		"
 
 	mysql_version_is_at_least "10.1.2" && DEPEND="${DEPEND} cracklib? ( sys-libs/cracklib:0= )"
+	mysql_version_is_at_least "10.1.7" && DEPEND="${DEPEND} innodb-snappy? ( app-arch/snappy )"
 fi
 
 if [[ ${PN} == "percona-server" ]] ; then
