@@ -1,0 +1,175 @@
+https://bugs.gentoo.org/560418
+
+fix from upstream
+
+From 075d7556964f5a871a73c22ac4b69f5361295099 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim=20R=C3=BChsen?= <tim.ruehsen@gmx.de>
+Date: Tue, 11 Aug 2015 16:48:08 +0200
+Subject: [PATCH] Fix IP address exposure in FTP code
+
+* src/ftp.c (getftp): Do not use PORT when PASV fails.
+* tests/FTPServer.px: Add pasv_not_supported server flag.
+* tests/Makefile.am: Add Test-ftp-pasv-not-supported.px
+* tests/Test-ftp-pasv-not-supported.px: New test
+
+Fix IP address exposure when automatically falling back from
+passive mode to active mode (using the PORT command). A behavior that
+may be used to expose a client's privacy even when using a proxy.
+---
+ NEWS                                 |  2 ++
+ src/ftp.c                            | 19 +++++++-----
+ tests/FTPServer.pm                   |  8 +++++
+ tests/Makefile.am                    |  3 +-
+ tests/Test-ftp-pasv-not-supported.px | 60 ++++++++++++++++++++++++++++++++++++
+ 5 files changed, 84 insertions(+), 8 deletions(-)
+ create mode 100755 tests/Test-ftp-pasv-not-supported.px
+
+diff --git a/src/ftp.c b/src/ftp.c
+index 68f1a33..9dab99c 100644
+--- a/src/ftp.c
++++ b/src/ftp.c
+@@ -252,7 +252,6 @@ getftp (struct url *u, wgint passed_expected_bytes, wgint *qtyread,
+   char *respline, *tms;
+   const char *user, *passwd, *tmrate;
+   int cmd = con->cmd;
+-  bool pasv_mode_open = false;
+   wgint expected_bytes = 0;
+   bool got_expected_bytes = false;
+   bool rest_failed = false;
+@@ -883,13 +882,19 @@ Error in server response, closing control connection.\n"));
+                           ? CONERROR : CONIMPOSSIBLE);
+                 }
+ 
+-              pasv_mode_open = true;  /* Flag to avoid accept port */
+               if (!opt.server_response)
+                 logputs (LOG_VERBOSE, _("done.    "));
+-            } /* err==FTP_OK */
+-        }
++            }
++          else
++            return err;
+ 
+-      if (!pasv_mode_open)   /* Try to use a port command if PASV failed */
++          /*
++           * We do not want to fall back from PASSIVE mode to ACTIVE mode !
++           * The reason is the PORT command exposes the client's real IP address
++           * to the server. Bad for someone who relies on privacy via a ftp proxy.
++           */
++        }
++      else
+         {
+           err = ftp_do_port (csock, &local_sock);
+           /* FTPRERR, WRITEFAILED, bindport (FTPSYSERR), HOSTERR,
+@@ -1148,8 +1153,8 @@ Error in server response, closing control connection.\n"));
+     }
+ 
+   /* If no transmission was required, then everything is OK.  */
+-  if (!pasv_mode_open)  /* we are not using pasive mode so we need
+-                              to accept */
++  if (!opt.ftp_pasv)  /* we are not using passive mode so we need
++                         to accept */
+     {
+       /* Wait for the server to connect to the address we're waiting
+          at.  */
+diff --git a/tests/FTPServer.pm b/tests/FTPServer.pm
+index c0a6e47..a5185d6 100644
+--- a/tests/FTPServer.pm
++++ b/tests/FTPServer.pm
+@@ -740,6 +740,14 @@ sub run
+                     last;
+                 }
+ 
++                if (defined($self->{_server_behavior}{pasv_not_supported})
++                    && $cmd eq 'PASV')
++                {
++                    print {$conn->{socket}}
++                      "500 PASV not supported.\r\n";
++                    next;
++                }
++
+                 # Run the command.
+                 &{$command_table->{$cmd}}($conn, $cmd, $rest);
+             }
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 5d387aa..daf162f 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -127,7 +127,8 @@ PX_TESTS = \
+              Test--start-pos.px \
+              Test--start-pos--continue.px \
+              Test--httpsonly-r.px \
+-             Test-204.px
++             Test-204.px \
++             Test-ftp-pasv-not-supported.px
+ 
+ EXTRA_DIST = FTPServer.pm FTPTest.pm HTTPServer.pm HTTPTest.pm \
+              WgetTests.pm WgetFeature.pm WgetFeature.cfg $(PX_TESTS) \
+diff --git a/tests/Test-ftp-pasv-not-supported.px b/tests/Test-ftp-pasv-not-supported.px
+new file mode 100755
+index 0000000..97d0610
+--- /dev/null
++++ b/tests/Test-ftp-pasv-not-supported.px
+@@ -0,0 +1,60 @@
++#!/usr/bin/env perl
++
++use strict;
++use warnings;
++
++use FTPTest;
++
++# This test checks whether Wget *does not* fall back from passive mode to
++# active mode using a PORT command. Wget <= 1.16.3 made a fallback exposing
++# the client's real IP address to the remote FTP server.
++#
++# This behavior circumvents expected privacy when using a proxy / proxy network (e.g. Tor).
++#
++# Wget >= 1.16.4 does it right. This test checks it.
++
++###############################################################################
++
++# From bug report 10.08.2015 from tomtidaly@sigaint.org
++my $afile = <<EOF;
++FTP PORT command code in v1.16.3?
++
++In the past it could be possible for a site over http connection to
++redirect wget to FPT using FTP PORT command so the site gets the real IP
++of the computer even when wget proxy command is in use I believe:
++https://lists.torproject.org/pipermail/tor-talk/2012-April/024040.html
++
++Is that code still present in wget v1.16.3? It was present in v1.13.4.
++EOF
++
++$afile =~ s/\n/\r\n/g;
++
++
++# code, msg, headers, content
++my %urls = (
++    '/afile.txt' => {
++        content => $afile,
++    },
++);
++
++my $cmdline = $WgetTest::WGETPATH . " -S ftp://localhost:{{port}}/afile.txt";
++
++my $expected_error_code = 8;
++
++my %expected_downloaded_files = (
++    'afile.txt' => {
++        content => $afile,
++    },
++);
++
++###############################################################################
++
++my $the_test = FTPTest->new (
++                             server_behavior => {pasv_not_supported => 1},
++                             input => \%urls,
++                             cmdline => $cmdline,
++                             errcode => $expected_error_code,
++                             output => \%expected_downloaded_files);
++exit !$the_test->run();
++
++# vim: et ts=4 sw=4
+-- 
+2.5.1
+
