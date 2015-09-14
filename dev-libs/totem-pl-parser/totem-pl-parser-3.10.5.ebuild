@@ -20,8 +20,8 @@ RDEPEND="
 	dev-libs/gmime:2.6
 	>=net-libs/libsoup-2.43:2.4
 	archive? ( >=app-arch/libarchive-3 )
-	crypt? ( dev-libs/libgcrypt:0 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5 )
+	crypt? ( dev-libs/libgcrypt:0= )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 	quvi? ( >=media-libs/libquvi-0.9.1:0= )
 "
 DEPEND="${RDEPEND}
