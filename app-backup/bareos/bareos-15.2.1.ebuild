@@ -224,7 +224,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	doicon scripts/bareos.png
+	newicon src/images/bareos_logo_shadow.png bareos.png
 
 	# install bat icon and desktop file when enabled
 	# (for some reason ./configure doesn't pick this up)
