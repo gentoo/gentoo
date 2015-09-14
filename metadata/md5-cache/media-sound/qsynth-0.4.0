@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=qt5? ( dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtcore:5 ) !qt5? ( >=dev-qt/qtcore-4.2:4 >=dev-qt/qtgui-4.2:4 ) >=media-sound/fluidsynth-1.0.7a[jack?,alsa?,pulseaudio?] x11-libs/libX11
+DESCRIPTION=A Qt application to control FluidSynth
+EAPI=5
+HOMEPAGE=http://qsynth.sourceforge.net/
+IUSE=debug jack alsa pulseaudio +qt5
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=qt5? ( dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtcore:5 ) !qt5? ( >=dev-qt/qtcore-4.2:4 >=dev-qt/qtgui-4.2:4 ) >=media-sound/fluidsynth-1.0.7a[jack?,alsa?,pulseaudio?] x11-libs/libX11
+REQUIRED_USE=|| ( alsa jack pulseaudio )
+SLOT=0
+SRC_URI=mirror://sourceforge/qsynth/qsynth-0.4.0.tar.gz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=018ed3be852c10d1a53b3284e9b8ad2a

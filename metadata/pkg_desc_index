@@ -120,7 +120,7 @@ app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of 
 app-admin/keepass 2.28 2.29 2.30: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.3 2.0_alpha6 2.0_beta2: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
-app-admin/kpcli 2.7 2.8: A command line interface to KeePass database files
+app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
 app-admin/lastpass 3.1.61: Online password manager and form filler that makes web browsing easier and more secure
 app-admin/lastpass-cli 0.3.0 0.5.0: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.9: Checks /proc for libraries being mapped but marked as deleted
@@ -12542,7 +12542,7 @@ media-sound/qmmp 0.8.3 0.8.4 0.8.5 0.8.8 0.9.1 9999: Qt4-based audio player with
 media-sound/qmpdclient 1.2.2-r1: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.2.2_p2345 0.3.1: A graphical frontend to the LinuxSampler engine
-media-sound/qsynth 0.3.6 0.3.9: A Qt application to control FluidSynth
+media-sound/qsynth 0.3.6 0.3.9 0.4.0: A Qt application to control FluidSynth
 media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1 1.0.1-r1: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 0.9.5: A simple frontend to mp3gain, vorbisgain and metaflac
@@ -16461,7 +16461,7 @@ sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association
 sys-libs/libcap 2.22-r2 2.24-r2: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.6.6 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
-sys-libs/libcxx 0.0_p20130725 0.0_p20131222 0.0_p20140322 3.6.0 3.6.1 3.6.2 9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxx 0.0_p20130725 0.0_p20131222 0.0_p20140322 3.6.0 3.6.1 3.6.2 3.7.0 9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libfreevec 1.0.4: Altivec enabled libc memory function
