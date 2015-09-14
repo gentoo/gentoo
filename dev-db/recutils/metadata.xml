@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>maintainer-needed@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="curl">Enable support for remote descriptors using libcurl</flag>
