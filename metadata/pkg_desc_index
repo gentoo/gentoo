@@ -7954,7 +7954,7 @@ dev-qt/pixeltool 4.8.5 4.8.6-r1 4.8.7 5.4.2: Qt screen magnifier
 dev-qt/qdbus 5.4.2: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 4.8.5 4.8.6-r1 4.8.7 5.4.2: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.4.2: Qt documentation generator
-dev-qt/qt-creator 2.8.1 3.2.2 3.4.2: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 2.8.1 3.2.2 3.4.2 3.5.0: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.4.2_p0 5.5.0_p0: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.5: Cross-platform application development framework (metapackage)
 dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and desktop platforms
