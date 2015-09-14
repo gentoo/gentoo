@@ -14184,7 +14184,7 @@ net-misc/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/vtun 3.0.2-r2 3.0.3: Create virtual tunnels over TCP/IP networks with traffic shaping, encryption, and compression
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.16 1.16.1 1.16.2 1.16.3: Network utility to retrieve files from the WWW
+net-misc/wget 1.16 1.16.1 1.16.2 1.16.3 1.16.3-r1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.9 5.2.10: improved Whois Client
 net-misc/wicd 1.7.3 1.7.3-r2: A lightweight wired and wireless network manager for Linux
