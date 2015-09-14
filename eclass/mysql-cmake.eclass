@@ -236,6 +236,10 @@ configure_cmake_standard() {
 					$(cmake-utils_use_with innodb-lzo INNODB_LZO) )
 		fi
 
+		if in_iuse innodb-snappy ; then
+			mycmakeargs+=( $(cmake-utils_use_with innodb-snappy INNODB_SNAPPY)  )
+		fi
+
 		if mysql_version_is_at_least "10.1.2" ; then
 			mycmakeargs+=( $(mysql-cmake_use_plugin cracklib CRACKLIB_PASSWORD_CHECK ) )
 		fi
