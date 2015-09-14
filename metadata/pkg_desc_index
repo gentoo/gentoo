@@ -16410,7 +16410,7 @@ sys-infiniband/perftest 1.4.0 2.0: OpenIB uverbs micro-benchmarks
 sys-infiniband/qperf 0.4.9: Measure RDMA and IP performance
 sys-infiniband/rds-tools 2.0.4-r2 2.0.4-r3: OpenIB userspace rds-tools
 sys-infiniband/srptools 0.0.4-r2 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
-sys-kernel/aufs-sources 3.18.16 3.18.19 3.18.20 4.0.4 4.0.5 4.0.6 4.0.7 4.0.9 4.1.0 4.1.3 4.1.4 4.1.5 4.1.6: Full sources including the Gentoo patchset for the 4.1 kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.16 3.18.20 4.0.4 4.0.5 4.0.9 4.1.6: Full sources including the Gentoo patchset for the 4.1 kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.107 3.10.82 3.10.83 3.10.86 3.10.87 3.14.46 3.14.48 3.14.50 3.14.51 3.18.16 3.18.19 3.19.8 4.0.7 4.0.9 4.1.3 4.1.5 4.1.6: Full Linux 4.1 kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2: Generic initramfs generation tool
