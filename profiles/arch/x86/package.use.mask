@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Brian Evans <grknight@gentoo.org (14 Sep 2015)
+# Unmask new USE flags for mariadb on supported arches
+>=dev-db/mariadb-10.1.0 -mroonga -sst-xtrabackup -galera
+
 # Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi

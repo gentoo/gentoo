@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Brian Evans <grknight@gentoo.org (14 Sep 2015)
+# Mask new USE flags for mariadb which all arches do not yet have dependencies
+>=dev-db/mariadb-10.1.0 mroonga sst-xtrabackup galera
+
 # Fabian Groffen <grobian@gentoo.org> (08 Sep 2015)
 # GnuTLS support is currently broken/causes hang, bug #559834
 # http://dev.mutt.org/trac/ticket/3772
