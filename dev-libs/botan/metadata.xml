@@ -8,4 +8,7 @@
     <name>Jack Lloyd </name>
     <description>Ebuild contributor and botan author</description>
 </maintainer>
+<use>
+	<flag name="boost">use <pkg>dev-libs/boost</pkg></flag>
+</use>
 </pkgmetadata>
