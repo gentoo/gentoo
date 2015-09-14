@@ -9209,7 +9209,7 @@ dev-vcs/git 1.8.5.6 1.9.5 2.0.5 2.1.4 2.2.2 2.2.3 2.3.8 2.3.9 2.4.6 2.4.8 2.4.9 
 dev-vcs/git-annex 5.20140927 5.20141125 5.20141203 5.20141231 5.20150219 5.20150327 5.20150617 5.20150710 5.20150731: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
-dev-vcs/git-cola 2.1.2 2.2.1: The highly caffeinated git GUI
+dev-vcs/git-cola 2.1.2 2.2.1 2.3: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-flow 0.4.1 1.8.0-r1: Git extensions to provide high-level repository operations for Vincent Driessen's branching model
