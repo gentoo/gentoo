@@ -12492,7 +12492,7 @@ media-sound/musescore 1.1 1.2 1.3: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.1: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.2.1 1.3: Qt4 music player
 media-sound/ncmpc 0.20 0.21 0.24 0.24-r1: A ncurses client for the Music Player Daemon (MPD)
-media-sound/ncmpcpp 0.6.4 0.6.5 0.6.6 9999: featureful ncurses based MPD client inspired by ncmpc
+media-sound/ncmpcpp 0.6.4 0.6.5 0.6.7 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/neroaac 1.5.1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-sound/neutrino 0.8.4: A GNOME application to manage Creative music players using the PDE protocol
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
