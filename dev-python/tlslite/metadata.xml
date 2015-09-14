@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">trevp/tlslite</remote-id>
+		<remote-id type="pypi">tlslite</remote-id>
 	</upstream>
 </pkgmetadata>
