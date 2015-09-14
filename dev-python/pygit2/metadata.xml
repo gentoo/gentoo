@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
-  <maintainer>
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
-  </maintainer>
   <upstream>
     <remote-id type="github">libgit2/pygit2</remote-id>
     <remote-id type="pypi">pygit2</remote-id>
