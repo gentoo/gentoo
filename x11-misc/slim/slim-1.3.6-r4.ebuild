@@ -56,6 +56,8 @@ src_prepare() {
 	if use branding; then
 		sed -i -e 's/  default/  slim-gentoo-simple/' slim.conf || die
 	fi
+
+	epatch_user
 }
 
 src_configure() {
