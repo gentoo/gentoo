@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd
 IUSE="doc emacs system-jsoncpp ncurses qt4 qt5"
 
 RDEPEND="
-	>=app-arch/libarchive-2.8.0:=
+	>=app-arch/libarchive-3.0.0:=
 	>=dev-libs/expat-2.0.1
 	>=net-misc/curl-7.20.0-r1[ssl]
 	sys-libs/zlib
