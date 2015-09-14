@@ -16432,7 +16432,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.46_p46 3.18.17_p14 4.0.5_p4 4.1.5_p5: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2 0.6.2-r1 0.6.2-r2 0.6.2-r3 0.6.2-r4 0.6.2-r5 0.6.3 0.6.3-r1 0.6.4 0.6.4.2 0.6.5 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
-sys-kernel/tuxonice-sources 3.4.107 3.10.79 3.10.80 3.10.81 3.12.43 3.12.44 3.14.43 3.14.44 3.14.45 3.18.14 3.18.16 3.19.8 4.0.4 4.0.5 4.0.6: TuxOnIce + Gentoo patchset sources
+sys-kernel/tuxonice-sources 3.4.107 3.10.79 3.10.80 3.10.81 3.10.87 3.12.43 3.12.44 3.14.43 3.14.44 3.14.45 3.14.51 3.18.14 3.18.16 3.18.21 3.19.8 4.0.4 4.0.5 4.0.6 4.0.9 4.1.6 4.2.0: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.71 3.4.108 3.10.88 3.12.47 3.14.52 3.18.21 4.1.7 4.2.0: Full sources for the Linux kernel
 sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3 2.3.7.4: Full sources including Linux-VServer patchsets for the 3.18 kernel tree
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
