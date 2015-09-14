@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/559980
+
+From e4d2b8ce5db86bd56efdaf64b974925bd7a7b249 Mon Sep 17 00:00:00 2001
+From: Magnus Granberg <zorry@gentoo.org>
+Date: Fri, 11 Sep 2015 17:38:40 -0400
+Subject: [PATCH] build: use -fstack-check=no when available
+
+Some compilers (such as the one in hardened/Gentoo) default this
+option to on which leads to build failures:
+src/stacks.c: In function 'call16_back':
+src/stacks.c:139:5: error: 'asm' operand has impossible constraints
+     asm volatile(
+     ^
+
+URL: https://bugs.gentoo.org/559980
+Reported-by: Alon Bar-Lev <alonbl@gentoo.org>
+Signed-off-by: Magnus Granberg <zorry@gentoo.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index e287530..3a0d2e8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -63,6 +63,7 @@ COMMONCFLAGS := -I$(OUT) -Isrc -Os -MD -g \
+ COMMONCFLAGS += $(call cc-option,$(CC),-nopie,)
+ COMMONCFLAGS += $(call cc-option,$(CC),-fno-stack-protector,)
+ COMMONCFLAGS += $(call cc-option,$(CC),-fno-stack-protector-all,)
++COMMONCFLAGS += $(call cc-option,$(CC),-fstack-check=no,)
+ COMMA := ,
+ 
+ CFLAGS32FLAT := $(COMMONCFLAGS) -DMODE16=0 -DMODESEGMENT=0
+-- 
+2.5.1
+
