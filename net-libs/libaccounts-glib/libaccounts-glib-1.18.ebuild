@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit autotools
+
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
 HOMEPAGE="https://01.org/gsso/"
 SRC_URI="http://dev.gentoo.org/~kensington/distfiles/${P}.tar.gz"
@@ -21,6 +23,11 @@ DEPEND="
 	dev-libs/libxml2"
 
 RDEPEND="$DEPEND"
+
+src_prepare() {
+	sed -i -e "/tests\/Makefile/d" configure.ac || die
+	eautoreconf
+}
 
 src_configure() {
 	export HAVE_GCOV_FALSE='#'
