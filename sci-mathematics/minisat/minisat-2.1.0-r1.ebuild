@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="4"
 
 inherit eutils toolchain-funcs
 
@@ -19,8 +19,8 @@ LICENSE="MIT"
 
 IUSE="debug doc extended-solver"
 
-DEPEND="sys-libs/zlib"
-RDEPEND="${DEPEND}"
+RDEPEND="sys-libs/zlib"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}
 
@@ -39,15 +39,14 @@ pkg_setup() {
 		mydir="core"
 	fi
 
-	tc-export CXX
+	tc-export CXX AR
 
 	if has_version ">=sci-mathematics/minisat-2.2.0" ; then
-		elog ""
-		elog "The minisat2 2.1 and 2.2 ABIs are not compatible and there"
-		elog "is currently no slotting.  Please mask it yourself (eg, in"
-		elog "packages.mask) if you need to use the 2.1x version."
-		elog ""
-		epause 5
+		ewarn ""
+		ewarn "The minisat2 2.1 and 2.2 ABIs are not compatible and there"
+		ewarn "is currently no slotting.  Please mask it yourself (eg, in"
+		ewarn "packages.mask) if you need to use the 2.1x version."
+		ewarn ""
 	fi
 }
 
@@ -61,7 +60,6 @@ src_prepare() {
 src_compile() {
 	export MROOT="${S}"
 	emake -C ${mydir} "$myconf" || die
-
 	if ! use debug; then
 		LIB="${PN}" emake -C ${mydir} lib || die
 	else

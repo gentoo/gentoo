@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="4"
 
 inherit eutils toolchain-funcs
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="MIT"
 
-IUSE="debug doc extended-solver"
+IUSE="debug doc +extended-solver"
 
 DEPEND="sys-libs/zlib"
 RDEPEND="${DEPEND}"
@@ -36,21 +36,21 @@ pkg_setup() {
 	else
 		mydir="core"
 	fi
-	tc-export CXX
+	tc-export CXX AR
 
 	if has_version "=sci-mathematics/minisat-2.1*" ; then
-		elog ""
-		elog "The minisat2 2.1 and 2.2 ABIs are not compatible and there"
-		elog "is currently no slotting.  Please mask it yourself (eg, in"
-		elog "packages.mask) if you still need the older version."
-		elog ""
-		epause 5
+		ewarn ""
+		ewarn "The minisat2 2.1 and 2.2 ABIs are not compatible and there"
+		ewarn "is currently no slotting.  Please mask it yourself (eg, in"
+		ewarn "package.mask) if you still need the older version."
+		ewarn ""
 	fi
 }
 
 src_prepare() {
-	sed -e "s/\$(CXX) \$^/\$(CXX) \$(LDFLAGS) \$^/" \
-		-i -e "s|-O3|${CFLAGS}|" mtl/template.mk || die
+	sed -i -e "s/\$(CXX) \$^/\$(CXX) \$(LDFLAGS) \$^/" \
+		-e "s|-O3|${CFLAGS}|" \
+		mtl/template.mk || die
 }
 
 src_compile() {
@@ -76,6 +76,9 @@ src_install() {
 	doins utils/*.h || die
 
 	newbin ${mydir}/${PN}_${myext} ${PN} || die
+	# Doh! Main.o causes symbol conflicts in clients using libminisat.a
+	elog "Fixing static library..."
+	${AR} -dv ${mydir}/lib${PN}_${myext}.a Main.o${myconf}
 	newlib.a ${mydir}/lib${PN}_${myext}.a lib${PN}.a || die
 
 	dodoc README doc/ReleaseNotes-2.2.0.txt || die
