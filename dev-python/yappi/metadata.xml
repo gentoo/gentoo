@@ -8,5 +8,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="pypi">yappi</remote-id>
+    <remote-id type="bitbucket">sumerc/yappi</remote-id>
   </upstream>
 </pkgmetadata>
