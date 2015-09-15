@@ -5,20 +5,15 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{3_3,3_4} )
-inherit base python-single-r1 user
+inherit autotools eutils python-single-r1 user
 
 MY_PV=${PV/_/-}
 DESCRIPTION="An advanced IRC Bouncer"
 
-if [[ ${PV} == *9999* ]]; then
-	inherit git-2
-	EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/znc/znc.git"}
-	SRC_URI=""
-	KEYWORDS=""
-else
-	SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
-fi
+inherit git-r3
+EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/znc/znc.git"}
+SRC_URI=""
+KEYWORDS=""
 
 HOMEPAGE="http://znc.in"
 LICENSE="GPL-2"
@@ -28,13 +23,15 @@ IUSE="daemon debug ipv6 perl python ssl sasl tcl"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	dev-libs/icu
+	sys-libs/zlib
 	perl? ( >=dev-lang/perl-5.10 )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( >=dev-libs/openssl-0.9.7d:0 )
 	tcl? ( dev-lang/tcl:0= )
 "
-DEPEND="
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	perl? (
 		>=dev-lang/swig-2.0.12
@@ -42,14 +39,9 @@ DEPEND="
 	python? (
 		>=dev-lang/swig-2.0.12
 	)
-	${RDEPEND}
 "
 
 S=${WORKDIR}/${PN}-${MY_PV}
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.0-systemwideconfig.patch"
-)
 
 CONFDIR="/var/lib/znc"
 
@@ -64,11 +56,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} == *9999* ]]; then
-		./autogen.sh
-	fi
+	AT_M4DIR="${S}/m4" \
+		eautoreconf
 
-	base_src_prepare
+	# build system quirk, it does not define AM_INIT_AUTOMAKE, nor
+	# does it have Makefile.am in the root dir, but we need '--add-missing'
+	automake --add-missing
 }
 
 src_configure() {
@@ -86,8 +79,8 @@ src_install() {
 	emake install DESTDIR="${D}"
 	dodoc NOTICE README.md
 	if use daemon; then
-		newinitd "${FILESDIR}"/znc.initd znc
-		newconfd "${FILESDIR}"/znc.confd znc
+		newinitd "${FILESDIR}"/znc.initd-r1 znc
+		newconfd "${FILESDIR}"/znc.confd-r1 znc
 	fi
 }
 
@@ -103,7 +96,8 @@ pkg_postinst() {
 		elog "A config file was installed in /etc/conf.d"
 		if [[ ! -d "${EROOT}${CONFDIR}" ]]; then
 			elog
-			elog "Run 'emerge --config znc' to configure ZNC"
+			elog "Run 'emerge --config znc' under portage"
+			elog "or 'cave config znc' under paludis to configure ZNC"
 			elog "as a system-wide daemon."
 			elog
 			elog "To generate a new SSL certificate, run:"
