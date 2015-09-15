@@ -282,7 +282,7 @@ app-arch/p7zip 9.20.1-r5 9.38.1-r2: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.6.3 0.6.11 0.6.12 0.6.13: A PAR-2.0 file verification and repair tool
 app-arch/pax 3.4.12.16 3.4.12.16-r1: pax (Portable Archive eXchange) is the POSIX standard archive tool
-app-arch/pbzip2 1.1.8 1.1.9 1.1.10 1.1.11 1.1.12: Parallel bzip2 (de)compressor using libbz2
+app-arch/pbzip2 1.1.8 1.1.12: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdlzip 1.5: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
@@ -1854,7 +1854,7 @@ app-misc/regex-markup 0.10.0: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/relevation 1.3: a command-line searcher for the Revelation password manager
 app-misc/remind 03.01.15: Ridiculously functional reminder program
-app-misc/reptyr 0.5 0.6 0.6.1 0.6.2: A utility to attach a running program to a new terminal
+app-misc/reptyr 0.5 0.6.2: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.0-r2: Command line tool for transfering mp3s to and from a Rio 600, 800, Rio Riot, and Nike PSA/Play
 app-misc/rl 0.2.7: Randomize lines from text files or stdin
