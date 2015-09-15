@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit flag-o-matic libtool multilib
+inherit flag-o-matic libtool multilib eutils
 
 if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="http://hg.debian.org/hg/xine-lib/xine-lib-1.2"
@@ -130,6 +130,7 @@ src_prepare() {
 	for x in 0 1 2 3; do
 		sed -i -e "/^O${x}_CFLAGS=\"-O${x}\"/d" configure || die
 	done
+	has_version '>=media-video/ffmpeg-2.9' && epatch "${FILESDIR}/ffmpeg29.patch"
 }
 
 src_configure() {
