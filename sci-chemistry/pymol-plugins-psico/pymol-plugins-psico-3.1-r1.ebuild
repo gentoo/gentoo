@@ -26,7 +26,6 @@ RDEPEND="
 		media-libs/qhull
 		media-video/mplayer
 		sci-biology/stride
-		sci-chemistry/ccp4-apps[${PYTHON_USEDEP}]
 		sci-chemistry/dssp
 		sci-chemistry/mm-align
 		sci-chemistry/pdbmat

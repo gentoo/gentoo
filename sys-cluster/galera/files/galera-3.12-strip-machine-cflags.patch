@@ -1,0 +1,64 @@
+diff -aurN a/galerautils/src/SConscript b/galerautils/src/SConscript
+--- a/galerautils/src/SConscript	2015-03-16 07:18:42.000000000 -0400
++++ b/galerautils/src/SConscript	2015-04-07 15:03:21.661301200 -0400
+@@ -1,4 +1,4 @@
+-Import('env', 'x86', 'sysname')
++Import('env', 'sysname')
+ 
+ libgalerautils_env = env.Clone()
+ 
+@@ -33,21 +33,6 @@
+ crc32c_sources = [ '#/www.evanjones.ca/crc32c.c' ]
+ crc32c_objs = crc32c_env.SharedObject(crc32c_sources)
+ 
+-if x86:
+-    crc32c_env.Append(CFLAGS = ' -msse4.2')
+-    if sysname == 'sunos':
+-        # Ideally we want to simply strip SSE4.2 flag from the resulting
+-        # crc32.pic.o
+-        # (see http://ffmpeg.org/pipermail/ffmpeg-user/2013-March/013977.html)
+-        # but that requires some serious scons-fu, so we just don't
+-        # compile hardware support in if host CPU does not have it.
+-        from subprocess import check_call
+-        try:
+-            check_call("isainfo -v | grep sse4.2 >/dev/null 2>&1", shell=True);
+-        except:
+-            libgalerautils_env.Append(CPPFLAGS = ' -DCRC32C_NO_HARDWARE')
+-            crc32c_env.Append(CPPFLAGS = ' -DCRC32C_NO_HARDWARE')
+-
+ libgalerautils_env.StaticLibrary('galerautils',
+                                  libgalerautils_objs + crc32c_objs)
+ 
+diff -aurN a/SConstruct b/SConstruct
+--- a/SConstruct	2015-09-15 09:15:07.770091000 -0400
++++ b/SConstruct	2015-09-15 09:18:41.160091000 -0400
+@@ -87,29 +87,6 @@
+ if dbug:
+     opt_flags = opt_flags + ' -DGU_DBUG_ON'
+ 
+-if sysname == 'sunos':
+-    compile_arch = ' -mtune=native'
+-    link_arch    = ''
+-elif x86:
+-    if bits == 32:
+-        compile_arch = ' -m32 -march=i686'
+-        link_arch    = compile_arch
+-        if sysname == 'linux':
+-            link_arch = link_arch + ' -Wl,-melf_i386'
+-    else:
+-        compile_arch = ' -m64'
+-        link_arch    = compile_arch
+-        if sysname == 'linux':
+-            link_arch = link_arch + ' -Wl,-melf_x86_64'
+-elif machine == 's390x':
+-    compile_arch = ' -mzarch -march=z196 -mtune=zEC12'
+-    link_arch    = ''
+-    if bits == 32:
+-        compile_arch += ' -m32'
+-else:
+-    compile_arch = ' -mtune=native'
+-    link_arch    = ''
+-
+ 
+ boost      = int(ARGUMENTS.get('boost', 1))
+ boost_pool = int(ARGUMENTS.get('boost_pool', 0))

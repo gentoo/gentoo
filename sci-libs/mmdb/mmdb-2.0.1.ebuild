@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,5 @@ LICENSE="GPL-2 LGPL-3"
 SLOT="2"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="static-libs"
-
-DEPEND="!<sci-libs/ccp4-libs-6.1.3"
-RDEPEND=""
 
 S="${WORKDIR}"/${MY_P}

@@ -1,0 +1,21 @@
+diff -aurN a/chromium/build_config.h b/chromium/build_config.h
+--- a/chromium/build_config.h	2015-08-27 03:32:41.000000000 -0400
++++ b/chromium/build_config.h	2015-09-15 09:50:21.765091000 -0400
+@@ -46,8 +46,6 @@
+ #elif defined(__sun)
+ #define OS_SOLARIS 1
+ #define TOOLKIT_GTK
+-#else
+-#error Please add support for your platform in build/build_config.h
+ #endif
+ 
+ #if defined(USE_OPENSSL) && defined(USE_NSS)
+@@ -132,8 +130,6 @@
+ #define ARCH_CPU_32_BITS 1
+ #endif
+ #define ARCH_CPU_BIG_ENDIAN 1
+-#else
+-#error Please add support for your architecture in build/build_config.h
+ #endif
+ 
+ // Type detection for wchar_t.
