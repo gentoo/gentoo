@@ -2888,9 +2888,10 @@ dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 2.4.13 2.4.14 2.6.8 2.6.11 3.0.5 3.0.6: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
+dev-db/mycli 1.4.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.44 5.5.45 5.6.24 5.6.25 5.6.25-r1 5.6.26 5.6.26-r1: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.44 5.5.45 5.6.26 5.6.26-r1: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.19 7.2.20 7.3.8 7.3.9-r1: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1: C client library for MariaDB/MySQL
