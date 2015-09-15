@@ -37,6 +37,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-cgpt-static.patch
 	sed -i \
 		-e 's: -Werror : :g' \
+		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \
+		-e 's:${DESTDIR}/default:${DESTDIR}/etc/default:g' \
 		Makefile || die
 }
 
@@ -64,10 +66,7 @@ src_test() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}/usr" install
-	if ! use minimal ; then
-		rm -r "${ED}"/usr/default || die
-	fi
+	_emake DESTDIR="${ED}" install
 
 	insinto /usr/share/vboot/devkeys
 	doins tests/devkeys/*
