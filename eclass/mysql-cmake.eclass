@@ -195,9 +195,9 @@ configure_cmake_standard() {
 		if ! use extraengine ; then
 			mycmakeargs+=(
 				-DWITHOUT_FEDERATED_STORAGE_ENGINE=1
-				-DPLUGIN_FEDERATED=0
+				-DPLUGIN_FEDERATED=NO
 				-DWITHOUT_FEDERATEDX_STORAGE_ENGINE=1
-				-DPLUGIN_FEDERATEDX=0 )
+				-DPLUGIN_FEDERATEDX=NO )
 		fi
 
 		mycmakeargs+=(

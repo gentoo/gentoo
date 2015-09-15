@@ -7,7 +7,7 @@ inherit toolchain-funcs bash-completion-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.cs.fau.de/hlwm"
+	EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm.git"
 	EXTRA_DEPEND="app-text/asciidoc"
 else
 	SRC_URI="http://herbstluftwm.org/tarballs/${P}.tar.gz"

@@ -99,10 +99,7 @@ RDEPEND="
 	vaapi? ( >=x11-libs/libva-1.2.1-r1[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vpx? ( >=media-libs/libvpx-1.2.0_pre20130625[${MULTILIB_USEDEP}] )
-	X? (
-		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
-	)
+	X? ( >=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 
@@ -131,7 +128,7 @@ RDEPEND="${RDEPEND}
 # x264 requires gpl2
 REQUIRED_USE="
 	rtmp? ( network )
-	amr? ( gpl ) aac? ( gpl ) x264? ( gpl ) X? ( gpl ) cdio? ( gpl ) x265? ( gpl )
+	amr? ( gpl ) aac? ( gpl ) x264? ( gpl ) cdio? ( gpl ) x265? ( gpl )
 	test? ( encode zlib )
 	fontconfig? ( truetype )
 "
