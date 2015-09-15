@@ -56,6 +56,5 @@ src_prepare() {
 
 src_install() {
 	default
-	newbashcomp arch/*/trunk/bash_completion adb
-	bashcomp_alias adb fastboot
+	newbashcomp arch/*/trunk/bash_completion fastboot
 }
