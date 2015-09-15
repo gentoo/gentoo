@@ -12,7 +12,7 @@ SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc dri"
 
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
