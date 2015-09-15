@@ -4892,7 +4892,7 @@ dev-libs/urdfdom 0.3.0 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.7.12 0.7.13 0.8.4 0.8.5 0.8.6: userspace RCU (read-copy-update) library
-dev-libs/ustr 1.0.4-r5 1.0.4-r6: Low-overhead managed string library for C
+dev-libs/ustr 1.0.4-r5 1.0.4-r7: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
@@ -7225,7 +7225,7 @@ dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style 
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.18.2 0.19.2 0.20.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
-dev-python/numexpr 2.4 2.4.1 2.4.3: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.4 2.4.1 2.4.3 2.4.4: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.0-r1 1.8.1 1.8.2 1.9.0 1.9.0-r1 1.9.1 1.9.2: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -7284,7 +7284,7 @@ dev-python/pathtools 0.1.2: Pattern matching and various utilities for file syst
 dev-python/patsy 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.4.0: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2 0.8.2-r1 0.10.8 0.11.0 1.0.1 1.1.1 1.2.0 1.3.0 1.6.0 1.7.0: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 0.8.2 0.8.2-r1 0.10.8 0.11.0 1.0.1 1.1.1 1.2.0 1.3.0 1.6.0 1.7.0 1.8.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.1: A simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
