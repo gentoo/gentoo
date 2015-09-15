@@ -30,6 +30,41 @@
 
 #--- END OF EXAMPLES ---
 
+# Justin Lecher <jlec@gentoo.org> (15 Sep 2015)
+# Outdated and multiple bugs
+# Use upstream installer for up to version
+dev-libs/libjwc_c
+dev-libs/libjwc_f
+sci-chemistry/arp-warp-bin
+sci-chemistry/balbes
+sci-chemistry/ccp4
+sci-chemistry/ccp4-apps
+sci-chemistry/ccp4i
+<sci-chemistry/coot-8
+sci-chemistry/imosflm
+sci-chemistry/makecif
+sci-chemistry/molrep
+sci-chemistry/mosflm
+sci-chemistry/mrbump
+sci-chemistry/oasis
+sci-chemistry/pdb-extract
+sci-chemistry/pointless
+sci-chemistry/refmac
+sci-chemistry/scala
+sci-chemistry/sfcheck
+sci-chemistry/solve-resolve-bin
+sci-chemistry/xdsi
+sci-chemistry/xia2
+sci-libs/balbes-db
+sci-libs/cctbx
+<sci-libs/coot-data-3
+sci-libs/ccp4-libs
+<=sci-libs/clipper-2.1_p100511-r1
+sci-libs/mmdb:0
+<sci-libs/monomer-db-5.41
+<sci-libs/ssm-1.4
+x11-libs/libxdl_view
+
 # Michał Górny <mgorny@gentoo.org> (09 Sep 2015)
 # Package to be used with gentoo-x86 CVS, so pretty much defunct now.
 # Removal in 30 days. Bug #560056.
