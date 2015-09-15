@@ -42,6 +42,7 @@ roccat_konextd - INPUT_DEVICES setting to build driver for Roccat KoneXTD input 
 roccat_konextdoptical - INPUT_DEVICES setting to build driver for Roccat KoneXTD Optical input devices
 roccat_kovaplus - INPUT_DEVICES setting to build driver for Roccat Kova[+] input devices
 roccat_lua - INPUT_DEVICES setting to build driver for Roccat Lua input devices
+roccat_nyth - INPUT_DEVICES setting to build driver for Roccat Nyth input devices
 roccat_pyra - INPUT_DEVICES setting to build driver for Roccat Pyra input devices
 roccat_savu - INPUT_DEVICES setting to build driver for Roccat Savu input devices
 roccat_ryosmk - INPUT_DEVICES setting to build driver for Roccat RyosMK Pro input devices
