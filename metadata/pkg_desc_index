@@ -8249,7 +8249,7 @@ dev-ruby/metasploit-payloads 1.0.9-r1: Compiled binaries for Metasploit's Meterp
 dev-ruby/metasploit_data_models 1.2.5: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
-dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.4.3-r1 2.5 2.6.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
+dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.4.3-r1 2.5 2.6.1 2.6.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mimemagic 0.3.0: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.2.7 4.2.9 4.2.10 4.3.3: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
