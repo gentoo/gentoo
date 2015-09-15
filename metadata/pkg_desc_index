@@ -6859,7 +6859,7 @@ dev-python/django-auth-ldap 1.2.2 1.2.6: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
 dev-python/django-celery 3.1.16: Celery Integration for Django
 dev-python/django-compressor 1.4 1.5: Compresses linked and inline javascript or CSS into a single cached file
-dev-python/django-crispy-forms 1.4.0 1.5.0 1.5.1: Best way to have Django DRY forms
+dev-python/django-crispy-forms 1.4.0 1.5.0 1.5.1 1.5.2: Best way to have Django DRY forms
 dev-python/django-debug-toolbar 1.3.2: A configurable set of panels that display debug information
 dev-python/django-discover-runner 0.4 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
@@ -15824,7 +15824,7 @@ sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.0: PaX flags maintenance daemon
-sys-apps/pciutils 3.2.0 3.2.1 3.3.0-r2 3.3.1 3.4.0: Various utilities dealing with the PCI bus
+sys-apps/pciutils 3.2.0 3.3.1 3.4.0: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.12-r1 1.8.13 1.8.13-r1 1.8.14: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r1 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
