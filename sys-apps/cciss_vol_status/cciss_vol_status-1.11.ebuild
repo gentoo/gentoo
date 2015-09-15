@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ DESCRIPTION="Shows status of logical drives attached to HP SmartArray controller
 HOMEPAGE="http://cciss.sourceforge.net/#cciss_utils"
 LICENSE="GPL-2"
 SRC_URI="mirror://sourceforge/cciss/${P}.tar.gz"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 ~x86"
 SLOT="0"
 RDEPEND=""
 DEPEND=""
