@@ -1863,7 +1863,7 @@ app-misc/roadnav 0.19-r1: Roadnav is a street map application with routing and G
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/run-mailcap 3.39_p1 3.52_p1: Execute programs via entries in the mailcap file
 app-misc/scope 0.04-r1: Serial Line Analyser
-app-misc/screen 4.0.3-r6 4.0.3-r7 4.0.3-r8 4.2.1-r2 4.3.1 9999: Full-screen window manager that multiplexes physical terminals between several processes
+app-misc/screen 4.0.3-r6 4.0.3-r7 4.0.3-r8 4.2.1-r2 4.3.1 4.3.1-r1 9999: Full-screen window manager that multiplexes physical terminals between several processes
 app-misc/screenfetch 2.7.7 3.2.2 3.6.5 9999: A Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Write patterns on disk/file
