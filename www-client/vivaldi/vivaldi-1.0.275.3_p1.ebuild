@@ -8,7 +8,7 @@ CHROMIUM_LANGS="
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr sv
 	sw ta te th tr uk vi zh_CN zh_TW
 "
-inherit chromium multilib unpacker toolchain-funcs
+inherit chromium eutils multilib unpacker toolchain-funcs
 
 DESCRIPTION="A new browser for our friends"
 HOMEPAGE="http://vivaldi.com/"
@@ -66,6 +66,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.0.275.3_p1-flash.patch
+
 	sed -i \
 		-e 's|vivaldi-snapshot|vivaldi|g' \
 		usr/share/applications/${PN}-snapshot.desktop \
