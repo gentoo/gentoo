@@ -26,10 +26,11 @@ IUSE_INPUT_DEVICES="
 	input_devices_roccat_konextdoptical
 	input_devices_roccat_kovaplus
 	input_devices_roccat_lua
+	input_devices_roccat_nyth
 	input_devices_roccat_pyra
-	input_devices_roccat_savu
 	input_devices_roccat_ryosmk
 	input_devices_roccat_ryostkl
+	input_devices_roccat_savu
 	input_devices_roccat_tyon
 "
 IUSE="${IUSE_INPUT_DEVICES} lua"
@@ -38,7 +39,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	=dev-libs/libgaminggear-0.10*
+	=dev-libs/libgaminggear-0.11*
 	x11-libs/gtk+:2
 	x11-libs/libnotify
 	media-libs/libcanberra
