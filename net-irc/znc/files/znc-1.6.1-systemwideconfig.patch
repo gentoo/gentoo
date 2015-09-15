@@ -1,0 +1,215 @@
+Add system-wide daemon support.
+
+This patch adds system-wide daemon support to ZNC so that you can run
+one ZNC instance system-wide using the new "--system-wide-config-as"
+option.
+
+Patch is based on @mrueg version from 2012.
+
+X-Gentoo-Bug: 438430
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=438430
+---
+ include/znc/znc.h |  3 ++
+ src/main.cpp      | 83 ++++++++++++++++++++++++++++++++++++++++---------------
+ src/znc.cpp       |  7 ++++-
+ 3 files changed, 70 insertions(+), 23 deletions(-)
+
+diff --git a/include/znc/znc.h b/include/znc/znc.h
+index cf2326e..16394f9 100644
+--- a/include/znc/znc.h
++++ b/include/znc/znc.h
+@@ -187,6 +187,8 @@ public:
+ 
+ 	static void DumpConfig(const CConfig* Config);
+ 
++	void SetSystemWideConfig(bool systemWideConfig);
++
+ private:
+ 	CFile* InitPidFile();
+ 	bool DoRehash(CString& sError);
+@@ -231,6 +233,7 @@ protected:
+ 	unsigned int           m_uiConnectPaused;
+ 	TCacheMap<CString>     m_sConnectThrottle;
+ 	bool                   m_bProtectWebSessions;
++	bool                   m_bSystemWideConfig;
+ 	bool                   m_bHideVersion;
+ };
+ 
+diff --git a/src/main.cpp b/src/main.cpp
+index 09b2c9c..bd5cca6 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -16,6 +16,9 @@
+ 
+ #include <znc/znc.h>
+ #include <signal.h>
++#include <sys/types.h>
++#include <pwd.h>
++#include <grp.h>
+ 
+ #if defined(HAVE_LIBSSL) && defined(HAVE_PTHREAD)
+ #include <znc/Threads.h>
+@@ -99,34 +102,36 @@ static inline int getopt_long(int argc, char * const argv[], const char *optstri
+ #endif
+ 
+ static const struct option g_LongOpts[] = {
+-	{ "help",        no_argument,       0, 'h' },
+-	{ "version",     no_argument,       0, 'v' },
+-	{ "debug",       no_argument,       0, 'D' },
+-	{ "foreground",  no_argument,       0, 'f' },
+-	{ "no-color",    no_argument,       0, 'n' },
+-	{ "allow-root",  no_argument,       0, 'r' },
+-	{ "makeconf",    no_argument,       0, 'c' },
+-	{ "makepass",    no_argument,       0, 's' },
+-	{ "makepem",     no_argument,       0, 'p' },
+-	{ "datadir",     required_argument, 0, 'd' },
++	{ "help",                  no_argument,       0, 'h' },
++	{ "version",               no_argument,       0, 'v' },
++	{ "debug",                 no_argument,       0, 'D' },
++	{ "foreground",            no_argument,       0, 'f' },
++	{ "no-color",              no_argument,       0, 'n' },
++	{ "allow-root",            no_argument,       0, 'r' },
++	{ "makeconf",              no_argument,       0, 'c' },
++	{ "makepass",              no_argument,       0, 's' },
++	{ "makepem",               no_argument,       0, 'p' },
++	{ "datadir",               required_argument, 0, 'd' },
++	{ "system-wide-config-as", required_argument, 0, 'S' },
+ 	{ 0, 0, 0, 0 }
+ };
+ 
+ static void GenerateHelp(const char *appname) {
+ 	CUtils::PrintMessage("USAGE: " + CString(appname) + " [options]");
+ 	CUtils::PrintMessage("Options are:");
+-	CUtils::PrintMessage("\t-h, --help         List available command line options (this page)");
+-	CUtils::PrintMessage("\t-v, --version      Output version information and exit");
+-	CUtils::PrintMessage("\t-f, --foreground   Don't fork into the background");
+-	CUtils::PrintMessage("\t-D, --debug        Output debugging information (Implies -f)");
+-	CUtils::PrintMessage("\t-n, --no-color     Don't use escape sequences in the output");
+-	CUtils::PrintMessage("\t-r, --allow-root   Don't complain if ZNC is run as root");
+-	CUtils::PrintMessage("\t-c, --makeconf     Interactively create a new config");
+-	CUtils::PrintMessage("\t-s, --makepass     Generates a password for use in config");
++	CUtils::PrintMessage("\t-h, --help                    List available command line options (this page)");
++	CUtils::PrintMessage("\t-v, --version                 Output version information and exit");
++	CUtils::PrintMessage("\t-f, --foreground              Don't fork into the background");
++	CUtils::PrintMessage("\t-D, --debug                   Output debugging information (Implies -f)");
++	CUtils::PrintMessage("\t-n, --no-color                Don't use escape sequences in the output");
++	CUtils::PrintMessage("\t-r, --allow-root              Don't complain if ZNC is run as root");
++	CUtils::PrintMessage("\t-c, --makeconf                Interactively create a new config");
++	CUtils::PrintMessage("\t-s, --makepass                Generates a password for use in config");
+ #ifdef HAVE_LIBSSL
+-	CUtils::PrintMessage("\t-p, --makepem      Generates a pemfile for use with SSL");
++	CUtils::PrintMessage("\t-p, --makepem                 Generates a pemfile for use with SSL");
+ #endif /* HAVE_LIBSSL */
+-	CUtils::PrintMessage("\t-d, --datadir      Set a different ZNC repository (default is ~/.znc)");
++	CUtils::PrintMessage("\t-d, --datadir                 Set a different ZNC repository (default is ~/.znc)");
++	CUtils::PrintMessage("\t-S, --system-wide-config-as   Create a system-wide ZNC daemon configuration");
+ }
+ 
+ static void die(int sig) {
+@@ -192,6 +197,8 @@ int main(int argc, char** argv) {
+ 	bool bMakeConf = false;
+ 	bool bMakePass = false;
+ 	bool bAllowRoot = false;
++	bool bSystemWideConfig = false;
++	CString sSystemWideConfigUser = "znc";
+ 	bool bForeground = false;
+ #ifdef ALWAYS_RUN_IN_FOREGROUND
+ 	bForeground = true;
+@@ -201,7 +208,7 @@ int main(int argc, char** argv) {
+ #endif
+ 	CZNC::CreateInstance();
+ 
+-	while ((iArg = getopt_long(argc, argv, "hvnrcspd:Df", g_LongOpts, &iOptIndex)) != -1) {
++	while ((iArg = getopt_long(argc, argv, "hvnrcspd:DfS:", g_LongOpts, &iOptIndex)) != -1) {
+ 		switch (iArg) {
+ 		case 'h':
+ 			GenerateHelp(argv[0]);
+@@ -219,6 +226,10 @@ int main(int argc, char** argv) {
+ 		case 'c':
+ 			bMakeConf = true;
+ 			break;
++		case 'S':
++			bSystemWideConfig = true;
++			sSystemWideConfigUser = optarg;
++			break;
+ 		case 's':
+ 			bMakePass = true;
+ 			break;
+@@ -254,8 +265,36 @@ int main(int argc, char** argv) {
+ 		return 1;
+ 	}
+ 
++	if (bSystemWideConfig && getuid() == 0) {
++		struct passwd *pwd;
++
++		pwd = getpwnam(sSystemWideConfigUser.c_str());
++		if (pwd == NULL) {
++			CUtils::PrintError("Daemon user not found.");
++			return 1;
++		}
++
++		if ((long) pwd->pw_uid == 0) {
++			CUtils::PrintError("Please define a daemon user other than root.");
++			return 1;
++		}
++		if (setgroups(0, NULL) != 0) {
++			CUtils::PrintError("setgroups: Unable to clear supplementary group IDs");
++			return 1;
++		}
++		if (setgid((long) pwd->pw_gid) != 0) {
++			CUtils::PrintError("setgid: Unable to drop group privileges");
++			return 1;
++		}
++		if (setuid((long) pwd->pw_uid) != 0) {
++			CUtils::PrintError("setuid: Unable to drop user privileges");
++			return 1;
++		}
++	}
++
+ 	CZNC* pZNC = &CZNC::Get();
+ 	pZNC->InitDirs(((argc) ? argv[0] : ""), sDataDir);
++	pZNC->SetSystemWideConfig(bSystemWideConfig);
+ 
+ #ifdef HAVE_LIBSSL
+ 	if (bMakePem) {
+@@ -304,7 +343,7 @@ int main(int argc, char** argv) {
+ 		CUtils::PrintStatus(true, "");
+ 	}
+ 
+-	if (isRoot()) {
++	if (isRoot() && !bSystemWideConfig) {
+ 		CUtils::PrintError("You are running ZNC as root! Don't do that! There are not many valid");
+ 		CUtils::PrintError("reasons for this and it can, in theory, cause great damage!");
+ 		if (!bAllowRoot) {
+diff --git a/src/znc.cpp b/src/znc.cpp
+index 78cda1a..b33e860 100644
+--- a/src/znc.cpp
++++ b/src/znc.cpp
+@@ -55,6 +55,7 @@ CZNC::CZNC() {
+ 	m_sConnectThrottle.SetTTL(30000);
+ 	m_pLockFile = NULL;
+ 	m_bProtectWebSessions = true;
++	m_bSystemWideConfig = false;
+ 	m_bHideVersion = false;
+ 	m_uDisabledSSLProtocols = Csock::EDP_SSL;
+ 	m_sSSLProtocols = "";
+@@ -861,7 +862,7 @@ bool CZNC::WriteNewConfig(const CString& sConfigFile) {
+ 	CUtils::PrintMessage("");
+ 
+ 	File.UnLock();
+-	return bFileOpen && CUtils::GetBoolInput("Launch ZNC now?", true);
++	return bFileOpen && !m_bSystemWideConfig && CUtils::GetBoolInput("Launch ZNC now?", true);
+ }
+ 
+ void CZNC::BackupConfigOnce(const CString& sSuffix) {
+@@ -1973,3 +1974,7 @@ void CZNC::LeakConnectQueueTimer(CConnectQueueTimer *pTimer) {
+ bool CZNC::WaitForChildLock() {
+ 	return m_pLockFile && m_pLockFile->ExLock();
+ }
++
++void CZNC::SetSystemWideConfig(bool systemWideConfig) {
++	m_bSystemWideConfig = systemWideConfig;
++}
+-- 
+2.5.0
+
