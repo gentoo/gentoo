@@ -37,7 +37,7 @@
 # K_EXTRAEWARN			- same as K_EXTRAEINFO except using ewarn instead of einfo
 # K_SYMLINK				- if this is set, then forcably create symlink anyway
 #
-# K_BASE_VER			- for git-sources, declare the base version this patch is 
+# K_BASE_VER			- for git-sources, declare the base version this patch is
 #						  based off of.
 # K_DEFCONFIG			- Allow specifying a different defconfig target.
 #						  If length zero, defaults to "defconfig".
@@ -57,7 +57,7 @@
 #						  code. If empty, will be set to "1" if deblobbing is
 #						  possible. Test ONLY for "1".
 # K_DEBLOB_TAG     		- This will be the version of deblob script. It's a upstream SVN tag
-#						  such asw -gnu or -gnu1. 
+#						  such asw -gnu or -gnu1.
 # K_PREDEBLOBBED		- This kernel was already deblobbed elsewhere.
 #						  If false, either optional deblobbing will be available
 #						  or the license will note the inclusion of freedist
@@ -396,7 +396,7 @@ detect_version() {
 
 
 	fi
-	
+
 	debug-print-kernel2-variables
 
 	handle_genpatches
@@ -854,7 +854,7 @@ postinst_sources() {
 	if [[ -n ${K_SECURITY_UNSUPPORTED} ]]; then
 		ewarn "This means that it is likely to be vulnerable to recent security issues."
 		ewarn "For specific information on why this kernel is unsupported, please read:"
-		ewarn "http://www.gentoo.org/proj/en/security/kernel.xml"
+		ewarn "https://wiki.gentoo.org/wiki/Project:Kernel_Security"
 	fi
 
 	# warn sparc users that they need to do cross-compiling with >= 2.6.25(bug #214765)
@@ -1001,11 +1001,11 @@ unipatch() {
 				done
 				UNIPATCH_DROP+=" $(basename ${j})"
 			done
-		else 
+		else
 			UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
 			debug-print "genpatches tarball: $tarball"
 
-			# check gcc version < 4.9.X uses patch 5000 and = 4.9.X uses patch 5010			
+			# check gcc version < 4.9.X uses patch 5000 and = 4.9.X uses patch 5010
 			if [[ $(gcc-major-version) -eq 4 ]] && [[ $(gcc-minor-version) -ne 9 ]]; then
 				# drop 5000_enable-additional-cpu-optimizations-for-gcc-4.9.patch
 				if [[ $UNIPATCH_DROP != *"5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"* ]]; then
