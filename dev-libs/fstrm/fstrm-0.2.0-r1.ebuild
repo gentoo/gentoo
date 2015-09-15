@@ -11,7 +11,7 @@ SRC_URI="https://github.com/farsightsec/${PN}/releases/download/v${PV}/${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 x86"
 IUSE="static-libs utils"
 
 RDEPEND="utils? ( dev-libs/libevent[${MULTILIB_USEDEP}] )"
