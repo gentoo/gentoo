@@ -1,0 +1,25 @@
+r37450 | rtogni | 2015-08-17 23:17:16 +0200 (Mon, 17 Aug 2015) | 3 lines
+
+Stop using deprecatet AVPacket.destruct
+
+Index: libmpdemux/demux_lavf.c
+===================================================================
+--- libmpdemux/demux_lavf.c	(revision 37449)
++++ libmpdemux/demux_lavf.c	(revision 37450)
+@@ -682,16 +682,9 @@
+         return 1;
+     }
+ 
+-    if(pkt.destruct == av_destruct_packet && !CONFIG_MEMALIGN_HACK){
+-        dp=new_demux_packet(0);
+-        dp->len=pkt.size;
+-        dp->buffer=pkt.data;
+-        pkt.destruct= NULL;
+-    }else{
+         dp=new_demux_packet(pkt.size);
+         memcpy(dp->buffer, pkt.data, pkt.size);
+         av_free_packet(&pkt);
+-    }
+ 
+     if(pkt.pts != AV_NOPTS_VALUE){
+         dp->pts=pkt.pts * av_q2d(priv->avfc->streams[id]->time_base);

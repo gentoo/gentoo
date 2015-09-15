@@ -1,0 +1,325 @@
+r37476 | rtogni | 2015-09-05 18:20:27 +0200 (Sat, 05 Sep 2015) | 5 lines
+
+Replace deprecated get_buffer, buffer_hints, and others
+
+This is needed to compile with latest FFmpeg
+
+
+Index: libmpcodecs/vd_ffmpeg.c
+===================================================================
+--- libmpcodecs/vd_ffmpeg.c	(revision 37475)
++++ libmpcodecs/vd_ffmpeg.c	(revision 37476)
+@@ -40,6 +40,7 @@
+ #if CONFIG_VDPAU
+ #include "libavcodec/vdpau.h"
+ #endif
++#include "libavutil/pixdesc.h"
+ 
+ static const vd_info_t info = {
+     "FFmpeg's libavcodec codec family",
+@@ -95,8 +96,11 @@
+ 
+ #include "m_option.h"
+ 
+-static int get_buffer(AVCodecContext *avctx, AVFrame *pic);
++static int get_buffer(AVCodecContext *avctx, AVFrame *pic, int isreference);
++static int mpcodec_default_get_buffer(AVCodecContext *avctx, AVFrame *frame);
++static int get_buffer2(AVCodecContext *avctx, AVFrame *frame, int flags);
+ static void release_buffer(AVCodecContext *avctx, AVFrame *pic);
++static void mpcodec_default_release_buffer(AVCodecContext *s, AVFrame *pic);
+ static void draw_slice(struct AVCodecContext *s, const AVFrame *src, int offset[4],
+                        int y, int type, int height);
+ 
+@@ -269,16 +273,10 @@
+     if (lavc_param_vismv || (lavc_param_debug & (FF_DEBUG_VIS_MB_TYPE|FF_DEBUG_VIS_QP))) {
+         ctx->do_slices = ctx->do_dr1 = 0;
+     }
+     if(ctx->do_dr1){
+-        avctx->flags |= CODEC_FLAG_EMU_EDGE;
+-        avctx->  reget_buffer =
+-        avctx->    get_buffer =     get_buffer;
+-        avctx->release_buffer = release_buffer;
++        avctx->get_buffer2 = get_buffer2;
+     } else if (lavc_codec->capabilities & CODEC_CAP_DR1) {
+-        avctx->flags &= ~CODEC_FLAG_EMU_EDGE;
+-        avctx->  reget_buffer = avcodec_default_reget_buffer;
+-        avctx->    get_buffer = avcodec_default_get_buffer;
+-        avctx->release_buffer = avcodec_default_release_buffer;
++        avctx->get_buffer2 = avcodec_default_get_buffer2;
+     }
+     avctx->slice_flags = 0;
+ }
+@@ -309,9 +304,7 @@
+     if (IMGFMT_IS_HWACCEL(imgfmt)) {
+         ctx->do_dr1    = 1;
+         ctx->nonref_dr = 0;
+-        avctx->get_buffer      = get_buffer;
+-        avctx->release_buffer  = release_buffer;
+-        avctx->reget_buffer    = get_buffer;
++        avctx->get_buffer2 = get_buffer2;
+         mp_msg(MSGT_DECVIDEO, MSGL_V, IMGFMT_IS_XVMC(imgfmt) ?
+                MSGTR_MPCODECS_XVMCAcceleratedMPEG2 :
+                "[VD_FFMPEG] VDPAU accelerated decoding\n");
+@@ -384,7 +377,6 @@
+ #endif
+     avctx->flags2|= lavc_param_fast;
+     avctx->codec_tag= sh->format;
+-    avctx->stream_codec_tag= sh->video.fccHandler;
+     avctx->idct_algo= lavc_param_idct_algo;
+     avctx->error_concealment= lavc_param_error_concealment;
+     avctx->debug= lavc_param_debug;
+@@ -668,7 +660,7 @@
+     return 0;
+ }
+ 
+-static int get_buffer(AVCodecContext *avctx, AVFrame *pic){
++static int get_buffer(AVCodecContext *avctx, AVFrame *pic, int isreference){
+     sh_video_t *sh = avctx->opaque;
+     vd_ffmpeg_ctx *ctx = sh->context;
+     mp_image_t *mpi=NULL;
+@@ -677,27 +669,12 @@
+     int width = FFMAX(avctx->width,  -(-avctx->coded_width  >> avctx->lowres));
+     int height= FFMAX(avctx->height, -(-avctx->coded_height >> avctx->lowres));
+     // special case to handle reget_buffer
+-    if (pic->opaque && pic->data[0] && (!pic->buffer_hints || pic->buffer_hints & FF_BUFFER_HINTS_REUSABLE))
++    if (pic->opaque && pic->data[0])
+         return 0;
+     avcodec_align_dimensions(avctx, &width, &height);
+ //printf("get_buffer %d %d %d\n", pic->reference, ctx->ip_count, ctx->b_count);
+ 
+-    if (pic->buffer_hints) {
+-        mp_msg(MSGT_DECVIDEO, MSGL_DBG2, "Buffer hints: %u\n", pic->buffer_hints);
+-        type = MP_IMGTYPE_TEMP;
+-        if (pic->buffer_hints & FF_BUFFER_HINTS_READABLE)
+-            flags |= MP_IMGFLAG_READABLE;
+-        if (pic->buffer_hints & FF_BUFFER_HINTS_PRESERVE ||
+-            pic->buffer_hints & FF_BUFFER_HINTS_REUSABLE) {
+-            ctx->ip_count++;
+-            type = MP_IMGTYPE_IP;
+-            flags |= MP_IMGFLAG_PRESERVE;
+-        }
+-        flags|=(avctx->skip_idct<=AVDISCARD_DEFAULT && avctx->skip_frame<=AVDISCARD_DEFAULT && ctx->do_slices) ?
+-                 MP_IMGFLAG_DRAW_CALLBACK:0;
+-        mp_msg(MSGT_DECVIDEO, MSGL_DBG2, type == MP_IMGTYPE_IP ? "using IP\n" : "using TEMP\n");
+-    } else {
+-        if(!pic->reference){
++        if(!isreference){
+             ctx->b_count++;
+             flags|=(avctx->skip_idct<=AVDISCARD_DEFAULT && avctx->skip_frame<=AVDISCARD_DEFAULT && ctx->do_slices) ?
+                      MP_IMGFLAG_DRAW_CALLBACK:0;
+@@ -711,11 +688,10 @@
+         }else{
+             type= MP_IMGTYPE_IP;
+         }
+-    }
+ 
+     if (ctx->nonref_dr) {
+         if (flags & MP_IMGFLAG_PRESERVE)
+-            return avcodec_default_get_buffer(avctx, pic);
++            return mpcodec_default_get_buffer(avctx, pic);
+         // Use NUMBERED since for e.g. TEMP vos assume there will
+         // be no other frames between the get_image and matching put_image.
+         type = MP_IMGTYPE_NUMBERED;
+@@ -722,7 +698,6 @@
+     }
+ 
+     if(init_vo(sh, avctx->pix_fmt, 1) < 0){
+-        avctx->release_buffer= avcodec_default_release_buffer;
+         goto disable_dr1;
+     }
+ 
+@@ -822,7 +797,6 @@
+ else
+     printf(".");
+ #endif
+-    pic->type= FF_BUFFER_TYPE_USER;
+     return 0;
+ 
+ disable_dr1:
+@@ -829,13 +803,11 @@
+     ctx->do_dr1 = 0;
+     // For frame-multithreading these contexts aren't
+     // the same and must both be updated.
+-    ctx->avctx->get_buffer   =
+-    avctx->get_buffer        = avcodec_default_get_buffer;
+-    ctx->avctx->reget_buffer =
+-    avctx->reget_buffer      = avcodec_default_reget_buffer;
++    ctx->avctx->get_buffer2   =
++    avctx->get_buffer2 = avcodec_default_get_buffer2;
+     if (pic->data[0])
+-        release_buffer(avctx, pic);
+-    return avctx->get_buffer(avctx, pic);
++        mpcodec_default_release_buffer(avctx, pic);
++    return avctx->get_buffer2(avctx, pic,0);
+ }
+ 
+ static void release_buffer(struct AVCodecContext *avctx, AVFrame *pic){
+@@ -843,8 +815,8 @@
+     sh_video_t *sh = avctx->opaque;
+     vd_ffmpeg_ctx *ctx = sh->context;
+     int i;
+-    if (pic->type != FF_BUFFER_TYPE_USER) {
+-        avcodec_default_release_buffer(avctx, pic);
++    if (pic->opaque == NULL) {
++        mpcodec_default_release_buffer(avctx, pic);
+         return;
+     }
+ 
+@@ -954,7 +926,7 @@
+     // even when we do dr we might actually get a buffer we had
+     // FFmpeg allocate - this mostly happens with nonref_dr.
+     // Ensure we treat it correctly.
+-    dr1= ctx->do_dr1 && pic->type == FF_BUFFER_TYPE_USER;
++    dr1= ctx->do_dr1 && pic->opaque != NULL;
+     if(ret<0) mp_msg(MSGT_DECVIDEO, MSGL_WARN, "Error while decoding frame!\n");
+ //printf("repeat: %d\n", pic->repeat_pict);
+ //-- vstats generation
+@@ -1128,3 +1100,148 @@
+     set_format_params(avctx, selected_format);
+     return selected_format;
+ }
++
++
++/*
++ FFWrapper
++*/
++static int mpcodec_default_get_buffer(AVCodecContext *avctx, AVFrame *frame)
++{
++    return avcodec_default_get_buffer2(avctx, frame, 0);
++}
++
++static void mpcodec_default_release_buffer(AVCodecContext *s, AVFrame *pic)
++{
++    av_frame_unref(pic);
++}
++
++typedef struct CompatReleaseBufPriv {
++    AVCodecContext avctx;
++    AVFrame frame;
++    uint8_t avframe_padding[1024]; // hack to allow linking to a avutil with larger AVFrame
++} CompatReleaseBufPriv;
++
++static void compat_free_buffer(void *opaque, uint8_t *data)
++{
++    CompatReleaseBufPriv *priv = opaque;
++    release_buffer(&priv->avctx, &priv->frame);
++    av_freep(&priv);
++}
++
++static void compat_release_buffer(void *opaque, uint8_t *data)
++{
++    AVBufferRef *buf = opaque;
++    av_buffer_unref(&buf);
++}
++
++static int get_buffer2(AVCodecContext *avctx, AVFrame *frame, int flags)
++{
++    /*
++     * Wrap an old get_buffer()-allocated buffer in a bunch of AVBuffers.
++     * We wrap each plane in its own AVBuffer. Each of those has a reference to
++     * a dummy AVBuffer as its private data, unreffing it on free.
++     * When all the planes are freed, the dummy buffer's free callback calls
++     * release_buffer().
++     */
++    CompatReleaseBufPriv *priv = NULL;
++    AVBufferRef *dummy_buf = NULL;
++    int planes, i, ret;
++
++    ret = get_buffer(avctx, frame, flags & AV_GET_BUFFER_FLAG_REF);
++    if (ret < 0)
++        return ret;
++
++    /* return if the buffers are already set up
++     * this would happen e.g. when a custom get_buffer() calls
++     * avcodec_default_get_buffer
++     */
++    if (frame->buf[0])
++        goto end0;
++
++    priv = av_mallocz(sizeof(*priv));
++    if (!priv) {
++        ret = AVERROR(ENOMEM);
++        goto fail;
++    }
++    priv->avctx = *avctx;
++    priv->frame = *frame;
++
++    dummy_buf = av_buffer_create(NULL, 0, compat_free_buffer, priv, 0);
++    if (!dummy_buf) {
++        ret = AVERROR(ENOMEM);
++        goto fail;
++    }
++
++#define WRAP_PLANE(ref_out, data, data_size)                            \
++do {                                                                    \
++    AVBufferRef *dummy_ref = av_buffer_ref(dummy_buf);                  \
++    if (!dummy_ref) {                                                   \
++        ret = AVERROR(ENOMEM);                                          \
++        goto fail;                                                      \
++    }                                                                   \
++    ref_out = av_buffer_create(data, data_size, compat_release_buffer,  \
++                               dummy_ref, 0);                           \
++    if (!ref_out) {                                                     \
++        av_buffer_unref(&dummy_ref);                                    \
++        av_frame_unref(frame);                                          \
++        ret = AVERROR(ENOMEM);                                          \
++        goto fail;                                                      \
++    }                                                                   \
++} while (0)
++
++    if (avctx->codec_type == AVMEDIA_TYPE_VIDEO) {
++        const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(frame->format);
++
++        planes = av_pix_fmt_count_planes(frame->format);
++        /* workaround for AVHWAccel plane count of 0, buf[0] is used as
++           check for allocated buffers: make libavcodec happy */
++        if (desc && desc->flags & AV_PIX_FMT_FLAG_HWACCEL)
++            planes = 1;
++        if (!desc || planes <= 0) {
++            ret = AVERROR(EINVAL);
++            goto fail;
++        }
++
++        for (i = 0; i < planes; i++) {
++            int v_shift    = (i == 1 || i == 2) ? desc->log2_chroma_h : 0;
++            int plane_size = (frame->height >> v_shift) * frame->linesize[i];
++
++            WRAP_PLANE(frame->buf[i], frame->data[i], plane_size);
++        }
++    } else {
++        int planar = av_sample_fmt_is_planar(frame->format);
++        planes = planar ? avctx->channels : 1;
++
++        if (planes > FF_ARRAY_ELEMS(frame->buf)) {
++            frame->nb_extended_buf = planes - FF_ARRAY_ELEMS(frame->buf);
++            frame->extended_buf = av_malloc_array(sizeof(*frame->extended_buf),
++                                            frame->nb_extended_buf);
++            if (!frame->extended_buf) {
++                ret = AVERROR(ENOMEM);
++                goto fail;
++            }
++        }
++
++        for (i = 0; i < FFMIN(planes, FF_ARRAY_ELEMS(frame->buf)); i++)
++            WRAP_PLANE(frame->buf[i], frame->extended_data[i], frame->linesize[0]);
++
++        for (i = 0; i < frame->nb_extended_buf; i++)
++            WRAP_PLANE(frame->extended_buf[i],
++                       frame->extended_data[i + FF_ARRAY_ELEMS(frame->buf)],
++                       frame->linesize[0]);
++    }
++
++    av_buffer_unref(&dummy_buf);
++
++end0:
++    frame->width  = avctx->width;
++    frame->height = avctx->height;
++
++    return 0;
++
++fail:
++    release_buffer(avctx, frame);
++    av_freep(&priv);
++    av_buffer_unref(&dummy_buf);
++    return ret;
++}
