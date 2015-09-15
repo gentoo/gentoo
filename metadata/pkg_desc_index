@@ -4636,7 +4636,7 @@ dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented inter
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
-dev-libs/libgaminggear 0.10.1: Provides functionality for gaming input devices
+dev-libs/libgaminggear 0.10.1 0.11.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.4-r1 1.5.4-r100 1.6.3-r4 1.6.3-r5 1.6.4: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.16.1 0.17.1 0.17.2: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
@@ -15857,7 +15857,7 @@ sys-apps/restartd 0.2.2: A daemon for checking your running and not running proc
 sys-apps/rigo-daemon 254: Entropy Client DBus Services, aka RigoDaemon
 sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1: Daemon to use hardware random number generators
-sys-apps/roccat-tools 3.4.0 3.5.0 3.5.0-r1: Utility for advanced configuration of Roccat devices
+sys-apps/roccat-tools 3.4.0 3.5.0 3.5.0-r1 3.6.1 3.7.0: Utility for advanced configuration of Roccat devices
 sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
