@@ -1,0 +1,40 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_commands="config"
+extra_started_commands="reload save"
+command="/usr/bin/znc"
+command_args="--datadir \"${ZNC_DATADIR}\""
+pidfile="${ZNC_PIDFILE:-/run/znc/znc.pid}"
+user=${ZNC_USER:-znc}
+group=${ZNC_GROUP:-znc}
+start_stop_daemon_args="--chdir \"${ZNC_DATADIR}\" --user ${user} --group ${group} ${ZNC_SSDARGS}"
+retry="${ZNC_TERMTIMEOUT}"
+
+required_dirs="${ZNC_DATADIR}"
+
+depend() {
+	use dns logger
+}
+
+start_pre() {
+	checkpath -d -m 0770 -o ${user}:${group} "$(dirname ${pidfile})"
+}
+
+stop_post() {
+	rm -f "${pidfile}"
+}
+
+reload() {
+	ebegin "Reloading ZNC Configuration File from Disk"
+	start-stop-daemon --signal SIGHUP --pidfile "${pidfile}"
+	eend $?
+}
+
+save() {
+	ebegin "Saving ZNC Configuration File to Disk"
+	start-stop-daemon --signal SIGUSR1 --pidfile "${pidfile}"
+	eend $?
+}
