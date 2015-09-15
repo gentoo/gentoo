@@ -276,6 +276,11 @@ multilib_src_configure() {
 	# Misc stuff
 	use hardcoded-tables && myconf+=( --enable-hardcoded-tables )
 
+	# Forcing arm would make the compiler break left and right
+	if [[ ${ABI} == arm ]]; then
+		filter-flags -marm
+	fi
+
 	# Specific workarounds for too-few-registers arch...
 	if [[ ${ABI} == x86 ]]; then
 		local CFLAGS=${CFLAGS} CXXFLAGS=${CXXFLAGS}
