@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="htmlreport pcre qt4"
 
-RDEPEND="htmlreport? ( ${PYTHON_DEPS} )
+RDEPEND="htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
 	>=dev-libs/tinyxml2-2
 	qt4? ( dev-qt/qtgui:4 )
 	pcre? ( dev-libs/libpcre )"
@@ -35,6 +35,8 @@ src_prepare() {
 	./dmake || die
 
 	epatch "${FILESDIR}"/${PN}-1.69-c++0x.patch
+
+	epatch_user
 }
 
 src_configure() {
@@ -95,6 +97,8 @@ src_install() {
 		distutils-r1_src_install
 		popd
 		find "${D}" -name "*.egg-info" -delete
+	else
+		rm "${ED}/usr/bin/cppcheck-htmlreport" || die
 	fi
 	doman ${PN}.1
 	dodoc readme.txt
