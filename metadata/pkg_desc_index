@@ -17017,7 +17017,7 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
 www-client/vimb 2.9: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.264.3_p1 1.0.270.16_p1: A new browser for our friends
+www-client/vivaldi 1.0.264.3_p1 1.0.270.16_p1 1.0.275.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
