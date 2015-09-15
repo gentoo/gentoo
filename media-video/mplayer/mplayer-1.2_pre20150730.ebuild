@@ -265,6 +265,17 @@ src_prepare() {
 
 	# Use sane default for >=virtual/udev-197
 	sed -i -e '/default_dvd_device/s:/dev/dvd:/dev/cdrom:' configure || die
+
+	if has_version '>=media-video/ffmpeg-2.9'; then
+		epatch "${FILESDIR}/${P}-av_fmt.patch"
+		epatch "${FILESDIR}/${P}-rev.patch"
+		epatch "${FILESDIR}/${P}-chan.patch"
+		epatch "${FILESDIR}/${P}-frame.patch"
+		epatch "${FILESDIR}/${P}-get_buffer.patch"
+		epatch "${FILESDIR}/${P}-pkt_destruct.patch"
+		epatch "${FILESDIR}/${P}-alloc.patch"
+		epatch "${FILESDIR}/${P}-encode.patch"
+	fi
 }
 
 src_configure() {

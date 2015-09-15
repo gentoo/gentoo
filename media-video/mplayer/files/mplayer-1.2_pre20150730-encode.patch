@@ -1,0 +1,82 @@
+r37453 | rtogni | 2015-08-23 22:32:50 +0200 (Sun, 23 Aug 2015) | 3 lines
+
+Replace deprecated av_encode_video() with av_encode_video2()
+
+Index: libmpcodecs/vf_uspp.c
+===================================================================
+--- libmpcodecs/vf_uspp.c	(revision 37452)
++++ libmpcodecs/vf_uspp.c	(revision 37453)
+@@ -177,11 +177,16 @@
+         const int x1= offset[i+count-1][0];
+         const int y1= offset[i+count-1][1];
+         int offset;
++        AVPacket pkt;
++        int ret, got_pkt;
+         p->frame->data[0]= p->src[0] + x1 + y1 * p->frame->linesize[0];
+         p->frame->data[1]= p->src[1] + x1/2 + y1/2 * p->frame->linesize[1];
+         p->frame->data[2]= p->src[2] + x1/2 + y1/2 * p->frame->linesize[2];
+ 
+-        avcodec_encode_video(p->avctx_enc[i], p->outbuf, p->outbuf_size, p->frame);
++        av_init_packet(&pkt);
++        pkt.data = p->outbuf;
++        pkt.size = p->outbuf_size;
++        avcodec_encode_video2(p->avctx_enc[i], &pkt, p->frame, &got_pkt);
+         p->frame_dec = p->avctx_enc[i]->coded_frame;
+ 
+         offset= (BLOCK-x1) + (BLOCK-y1)*p->frame_dec->linesize[0];
+Index: libmpcodecs/vf_lavc.c
+===================================================================
+--- libmpcodecs/vf_lavc.c	(revision 37452)
++++ libmpcodecs/vf_lavc.c	(revision 37453)
+@@ -86,6 +86,8 @@
+     mp_image_t* dmpi;
+     int out_size;
+     AVFrame *pic= vf->priv->pic;
++    int ret, got_pkt;
++    AVPacket pkt;
+ 
+     pic->data[0]=mpi->planes[0];
+     pic->data[1]=mpi->planes[1];
+@@ -94,10 +96,14 @@
+     pic->linesize[1]=mpi->stride[1];
+     pic->linesize[2]=mpi->stride[2];
+ 
+-    out_size = avcodec_encode_video(&lavc_venc_context,
+-	vf->priv->outbuf, vf->priv->outbuf_size, pic);
++    av_init_packet(&pkt);
++    pkt.data = vf->priv->outbuf;
++    pkt.size = vf->priv->outbuf_size;
++    ret = avcodec_encode_video2(&lavc_venc_context, &pkt, pic, &got_pkt);
+ 
+-    if(out_size<=0) return 1;
++    if(ret<=0) return 1;
++    if(!got_pkt) return 1;
++    out_size =  pkt.size;
+ 
+     dmpi=vf_get_image(vf->next,IMGFMT_MPEGPES,
+ 	MP_IMGTYPE_EXPORT, 0,
+Index: libmpcodecs/vf_mcdeint.c
+===================================================================
+--- libmpcodecs/vf_mcdeint.c	(revision 37452)
++++ libmpcodecs/vf_mcdeint.c	(revision 37453)
+@@ -92,6 +92,8 @@
+ 
+ static void filter(struct vf_priv_s *p, uint8_t *dst[3], uint8_t *src[3], int dst_stride[3], int src_stride[3], int width, int height){
+     int x, y, i;
++    int got_pkt;
++    AVPacket pkt;
+ 
+     for(i=0; i<3; i++){
+         p->frame->data[i]= src[i];
+@@ -101,7 +103,10 @@
+     p->avctx_enc->me_cmp=
+     p->avctx_enc->me_sub_cmp= FF_CMP_SAD /*| (p->parity ? FF_CMP_ODD : FF_CMP_EVEN)*/;
+     p->frame->quality= p->qp*FF_QP2LAMBDA;
+-    avcodec_encode_video(p->avctx_enc, p->outbuf, p->outbuf_size, p->frame);
++    av_init_packet(&pkt);
++    pkt.data = p->outbuf;
++    pkt.size = p->outbuf_size;
++    avcodec_encode_video2(p->avctx_enc, &pkt, p->frame, &got_pkt);
+     p->frame_dec = p->avctx_enc->coded_frame;
+ 
+     for(i=0; i<3; i++){
