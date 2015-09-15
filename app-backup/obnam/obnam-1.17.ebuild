@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="A backup program that supports encryption and deduplication"
 HOMEPAGE="http://obnam.org/"
@@ -19,18 +19,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}
-	dev-python/cliapp
-	dev-python/fuse-python
-	dev-python/larch
+	dev-python/cliapp[${PYTHON_USEDEP}]
+	dev-python/fuse-python[${PYTHON_USEDEP}]
+	dev-python/larch[${PYTHON_USEDEP}]
 	!=dev-python/paramiko-1.13.0
-	|| ( <dev-python/paramiko-1.13.0 >dev-python/paramiko-1.13.0 )
-	dev-python/pyyaml
-	dev-python/tracing
-	dev-python/ttystatus
+	|| ( <dev-python/paramiko-1.13.0[${PYTHON_USEDEP}] >dev-python/paramiko-1.13.0[${PYTHON_USEDEP}] )
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/tracing[${PYTHON_USEDEP}]
+	dev-python/ttystatus[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}"
-
-PATCHES=( )
 
 src_compile() {
 	addwrite /proc/self/comm
