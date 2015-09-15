@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
-  <maintainer>
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
-  </maintainer>
   <upstream>
     <remote-id type="bitbucket">brandon/backports</remote-id>
   </upstream>

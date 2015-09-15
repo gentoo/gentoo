@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>maintainer-needed@gentoo.org</email>
 	</maintainer>
 	<longdescription lang="en">Snappy is a compression/decompression library. It does not aim for
 		maximum compression, or compatibility with any other compression
