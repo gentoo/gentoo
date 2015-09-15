@@ -5,23 +5,16 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{3_3,3_4} )
-inherit base python-single-r1 systemd user
+inherit eutils python-single-r1 systemd user
 
 MY_PV=${PV/_/-}
 GTEST_VER="1.7.0"
 GTEST_URL="https://googletest.googlecode.com/files/gtest-${GTEST_VER}.zip"
 DESCRIPTION="An advanced IRC Bouncer"
 
-if [[ ${PV} == "9999" ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="git://github.com/znc/znc.git"
-	SRC_URI="test? ( ${GTEST_URL} )"
-	KEYWORDS=""
-else
-	SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz
-		test? ( ${GTEST_URL} )"
-	KEYWORDS="~amd64 ~arm ~x86"
-fi
+SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz
+	test? ( ${GTEST_URL} )"
+KEYWORDS="~amd64 ~arm ~x86"
 
 HOMEPAGE="http://znc.in"
 LICENSE="GPL-2"
@@ -31,13 +24,15 @@ IUSE="daemon debug ipv6 perl python ssl sasl tcl test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	dev-libs/icu
+	sys-libs/zlib
 	perl? ( >=dev-lang/perl-5.10 )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( >=dev-libs/openssl-0.9.7d:0 )
 	tcl? ( dev-lang/tcl:0= )
 "
-DEPEND="
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	perl? (
 		>=dev-lang/swig-2.0.12
@@ -45,7 +40,6 @@ DEPEND="
 	python? (
 		>=dev-lang/swig-2.0.12
 	)
-	${RDEPEND}
 "
 
 S=${WORKDIR}/${PN}-${MY_PV}
@@ -68,25 +62,18 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		git-r3_src_unpack
-	else
-		default
-	fi
+	default
 
 	if use test; then
 		cd "${S}"/test || die "Failed to chdir into '${S}/test'"
-		unpack $(basename ${GTEST_URL})
-		mv gtest-${GTEST_VER} gtest || die "Failed to rename '${S}/test/gtest-${GTEST_VER}' dir"
+		unpack ${GTEST_URL##*/}
+		mv gtest-${GTEST_VER} gtest \
+			|| die "Failed to rename '${S}/test/gtest-${GTEST_VER}' dir"
 	fi
 }
 
 src_prepare() {
-	if [[ ${PV} == *9999* ]]; then
-		./autogen.sh
-	fi
-
-	base_src_prepare
+	epatch ${PATCHES[@]}
 }
 
 src_configure() {
@@ -123,7 +110,8 @@ pkg_postinst() {
 		elog "A config file was installed in /etc/conf.d"
 		if [[ ! -d "${EROOT}${ZNC_DATADIR}" ]]; then
 			elog
-			elog "Run 'emerge --config znc' to configure ZNC"
+			elog "Run 'emerge --config znc' under portage"
+			elog "or 'cave config znc' under paludis to configure ZNC"
 			elog "as a system-wide daemon."
 			elog
 			elog "To generate a new SSL certificate, run:"
