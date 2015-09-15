@@ -9,7 +9,7 @@ EAPI="5"
 
 # Version Data
 GITDATE="20150830"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="2"				# Tarball revision for patches
+GENPATCHREV="3"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}-${GITDATE}"
