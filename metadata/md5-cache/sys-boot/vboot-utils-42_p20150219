@@ -10,4 +10,4 @@ RDEPEND=!static? ( dev-libs/openssl:0= sys-apps/util-linux:= ) !minimal? ( app-a
 SLOT=0
 SRC_URI=mirror://gentoo/vboot-utils-42_p20150219.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e351e185b56d12d23e34927757be11cd
+_md5_=18e7bc8d381f5ed58036380ddcfcd13b
